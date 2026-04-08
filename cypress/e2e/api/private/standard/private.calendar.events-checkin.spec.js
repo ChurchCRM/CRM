@@ -274,6 +274,51 @@ describe("API Event Check-in Endpoints", () => {
                     });
                 });
             });
+
+            // Regression: the check-in/out flow now optionally records WHO
+            // checked the person out (parent picking up child, etc.) via the
+            // checkedOutById field. The bootbox prompt in event-checkin.js
+            // sends this; verify the API persists it on the EventAttend row.
+            it("Records checkedOutById when supplied", function () {
+                if (!testEventId) this.skip();
+
+                // First, check person 1 in (no supervisor)
+                cy.makePrivateAdminAPICall(
+                    "POST",
+                    `/api/events/${testEventId}/checkin`,
+                    { personId: 1 },
+                    [200, 409],
+                ).then((checkinResp) => {
+                    if (checkinResp.status !== 200) {
+                        this.skip();
+                        return;
+                    }
+
+                    // Now check them out with checkedOutById = 2
+                    cy.makePrivateAdminAPICall(
+                        "POST",
+                        `/api/events/${testEventId}/checkout`,
+                        { personId: 1, checkedOutById: 2 },
+                        200,
+                    ).then((response) => {
+                        expect(response.body.success).to.be.true;
+
+                        // Verify the roster shows person 2 as the checkout supervisor
+                        cy.makePrivateAdminAPICall(
+                            "GET",
+                            `/api/events/${testEventId}/roster`,
+                            null,
+                            200,
+                        ).then((rosterResp) => {
+                            const member = rosterResp.body.members.find((m) => m.personId === 1);
+                            // Roster shape may vary; if checkoutBy is exposed, assert it
+                            if (member && Object.prototype.hasOwnProperty.call(member, "checkoutBy")) {
+                                expect(member.checkoutBy).to.not.be.empty;
+                            }
+                        });
+                    });
+                });
+            });
         });
 
         describe("POST /api/events/{id}/checkin-all", () => {

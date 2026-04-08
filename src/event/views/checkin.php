@@ -249,7 +249,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <?php if (!$att['isCheckedOut']): ?>
                                 <div class="dropdown-divider"></div>
                                 <button type="button" class="dropdown-item checkout-btn"
-                                        data-person-id="<?= $att['personId'] ?>">
+                                        data-person-id="<?= $att['personId'] ?>"
+                                        data-person-name="<?= InputUtils::escapeAttribute($att['fullName']) ?>">
                                     <i class="ti ti-door-exit me-2"></i><?= gettext('Check Out') ?>
                                 </button>
                                 <?php else: ?>

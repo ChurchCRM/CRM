@@ -443,14 +443,83 @@ $(() => {
     $("#childDetails, #adultDetails").html("").hide();
   });
 
-  // Inline check-out via dropdown action (no intermediate page)
+  // Inline check-out via dropdown action — opens a "checked out by" prompt
+  // so the user can record who is checking the person out (e.g. parent
+  // picking up a child) or skip and check out without a supervisor.
   $(document).on("click", ".checkout-btn", function () {
-    const personId = $(this).data("person-id");
+    const personId = parseInt($(this).data("person-id"), 10);
+    const personName = $(this).data("person-name") || "";
+    if (!personId) return;
+    openCheckoutByDialog(personId, personName);
+  });
 
+  function openCheckoutByDialog(personId, personName) {
+    const safeName = window.CRM.escapeHtml(String(personName));
+    const dialog = bootbox.dialog({
+      title: i18next.t("Check out") + ": " + safeName,
+      message:
+        '<p class="mb-2">' +
+        i18next.t("Optional — record who is checking this person out (e.g. a parent picking up a child).") +
+        "</p>" +
+        '<select class="form-select" id="checkoutBySelect" placeholder="' +
+        i18next.t("Search for supervisor...") +
+        '"></select>' +
+        '<small class="text-muted mt-2 d-block">' +
+        i18next.t("Leave blank to check out without recording the supervisor.") +
+        "</small>",
+      buttons: {
+        cancel: {
+          label: '<i class="ti ti-x"></i> ' + i18next.t("Cancel"),
+          className: "btn-link",
+        },
+        skip: {
+          label: '<i class="ti ti-check"></i> ' + i18next.t("Skip & Check Out"),
+          className: "btn-outline-warning",
+          callback: function () {
+            performCheckout(personId, null);
+          },
+        },
+        confirm: {
+          label: '<i class="ti ti-user-check"></i> ' + i18next.t("Confirm Check Out"),
+          className: "btn-primary",
+          callback: function () {
+            const val = $("#checkoutBySelect").val();
+            const supervisorId = val ? parseInt(val, 10) : null;
+            performCheckout(personId, supervisorId);
+          },
+        },
+      },
+    });
+
+    // Initialize TomSelect on the supervisor search field once the modal is shown
+    dialog.on("shown.bs.modal", function () {
+      const el = document.getElementById("checkoutBySelect");
+      if (!el || el.tomselect) return;
+      new TomSelect(el, {
+        valueField: "objid",
+        labelField: "text",
+        searchField: "text",
+        placeholder: i18next.t("Search for supervisor..."),
+        load: (query, callback) => {
+          if (query.length < 2) return callback();
+          fetch(`${window.CRM.root}/api/persons/search/${encodeURIComponent(query)}`)
+            .then((res) => res.json())
+            .then((data) => callback(data.map((p) => ({ objid: p.objid, text: p.text }))))
+            .catch(() => callback());
+        },
+      });
+    });
+  }
+
+  function performCheckout(personId, checkedOutById) {
+    const payload = { personId: personId };
+    if (checkedOutById) {
+      payload.checkedOutById = checkedOutById;
+    }
     fetch(`${window.CRM.root}/api/events/${eventId}/checkout`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ personId }),
+      body: JSON.stringify(payload),
     })
       .then((res) => {
         if (!res.ok) return res.json().then((d) => Promise.reject(d));
@@ -476,7 +545,7 @@ $(() => {
         const msg = err?.message || i18next.t("Check-out failed. Please try again.");
         window.CRM.notify(msg, { type: "danger", delay: 5000 });
       });
-  });
+  }
 
   // Delete attendance via dropdown action (bootbox confirm first)
   $(document).on("click", ".delete-attendance-btn", function () {
