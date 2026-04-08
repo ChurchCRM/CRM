@@ -65,7 +65,8 @@ window.CRM.EventUtils.initializeTimePicker = (timeString, hourSelectId, minuteSe
  * @param {string} period - Period (AM/PM)
  * @returns {string} Time string in format "h:mm A"
  */
-window.CRM.EventUtils.formatTime12Hour = (hour, minute, period) => `${hour}:${String(minute).padStart(2, "0")} ${period}`;
+window.CRM.EventUtils.formatTime12Hour = (hour, minute, period) =>
+  `${hour}:${String(minute).padStart(2, "0")} ${period}`;
 
 /**
  * Setup auto-submit on time picker change

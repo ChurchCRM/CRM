@@ -1,40 +1,39 @@
 window.moveEventModal = {
   getButtons: (confirmLabel, confirmClass) => ({
-      cancel: {
-        label: `<i class="fa-solid fa-times me-1"></i>${i18next.t("Cancel")}`,
-        className: "btn-secondary",
-      },
-      confirm: {
-        label: `<i class="fa-solid fa-check me-1"></i>${i18next.t(confirmLabel || "Confirm")}`,
-        className: confirmClass || "btn-primary",
-      },
-    }),
-  buildMessage: (_eventTitle, fromLabel, fromDate, toLabel, toDate) => (
-      '<p class="text-muted mb-3">' +
-      i18next.t("Are you sure you want to continue?") +
-      "</p>" +
-      '<div class="d-flex align-items-stretch gap-2">' +
-      '<div class="card flex-fill border-danger-subtle mb-0">' +
-      '<div class="card-body py-2 px-3">' +
-      '<div class="text-danger small fw-medium mb-1"><i class="fa-solid fa-calendar-xmark me-1"></i>' +
-      i18next.t(fromLabel) +
-      "</div>" +
-      '<div class="fw-semibold">' +
-      fromDate +
-      "</div>" +
-      "</div></div>" +
-      '<div class="d-flex align-items-center text-muted px-1"><i class="fa-solid fa-arrow-right"></i></div>' +
-      '<div class="card flex-fill border-success-subtle mb-0">' +
-      '<div class="card-body py-2 px-3">' +
-      '<div class="text-success small fw-medium mb-1"><i class="fa-solid fa-calendar-check me-1"></i>' +
-      i18next.t(toLabel) +
-      "</div>" +
-      '<div class="fw-semibold">' +
-      toDate +
-      "</div>" +
-      "</div></div>" +
-      "</div>"
-    ),
+    cancel: {
+      label: `<i class="fa-solid fa-times me-1"></i>${i18next.t("Cancel")}`,
+      className: "btn-secondary",
+    },
+    confirm: {
+      label: `<i class="fa-solid fa-check me-1"></i>${i18next.t(confirmLabel || "Confirm")}`,
+      className: confirmClass || "btn-primary",
+    },
+  }),
+  buildMessage: (_eventTitle, fromLabel, fromDate, toLabel, toDate) =>
+    '<p class="text-muted mb-3">' +
+    i18next.t("Are you sure you want to continue?") +
+    "</p>" +
+    '<div class="d-flex align-items-stretch gap-2">' +
+    '<div class="card flex-fill border-danger-subtle mb-0">' +
+    '<div class="card-body py-2 px-3">' +
+    '<div class="text-danger small fw-medium mb-1"><i class="fa-solid fa-calendar-xmark me-1"></i>' +
+    i18next.t(fromLabel) +
+    "</div>" +
+    '<div class="fw-semibold">' +
+    fromDate +
+    "</div>" +
+    "</div></div>" +
+    '<div class="d-flex align-items-center text-muted px-1"><i class="fa-solid fa-arrow-right"></i></div>' +
+    '<div class="card flex-fill border-success-subtle mb-0">' +
+    '<div class="card-body py-2 px-3">' +
+    '<div class="text-success small fw-medium mb-1"><i class="fa-solid fa-calendar-check me-1"></i>' +
+    i18next.t(toLabel) +
+    "</div>" +
+    '<div class="fw-semibold">' +
+    toDate +
+    "</div>" +
+    "</div></div>" +
+    "</div>",
   modalCallBack: (result) => {
     if (result === true) {
       const evt = window.moveEventModal.event;
@@ -93,7 +92,9 @@ function deleteCalendar() {
     method: "DELETE",
     path: `calendars/${window.calendarPropertiesModal.calendar.Id}`,
   }).done(() => {
-    const eventSource = window.CRM.fullcalendar.getEventSourceById(`user-${window.calendarPropertiesModal.calendar.Id}`);
+    const eventSource = window.CRM.fullcalendar.getEventSourceById(
+      `user-${window.calendarPropertiesModal.calendar.Id}`,
+    );
     if (eventSource) {
       eventSource.remove();
     }
@@ -148,15 +149,14 @@ window.calendarPropertiesModal = {
       jsonURL = `${window.CRM.fullURL}/api/public/calendar/${calendar.AccessToken}/events`;
     }
 
-    const copyBtn = (url) => (
-        '<button type="button" class="btn btn-icon btn-ghost-secondary copy-url-btn" data-url="' +
-        url +
-        '" title="' +
-        i18next.t("Copy to clipboard") +
-        '">' +
-        '<i class="fa-regular fa-copy"></i>' +
-        "</button>"
-      );
+    const copyBtn = (url) =>
+      '<button type="button" class="btn btn-icon btn-ghost-secondary copy-url-btn" data-url="' +
+      url +
+      '" title="' +
+      i18next.t("Copy to clipboard") +
+      '">' +
+      '<i class="fa-regular fa-copy"></i>' +
+      "</button>";
 
     const urlRow = (label, url) => {
       if (!url) return "";
@@ -182,16 +182,15 @@ window.calendarPropertiesModal = {
       );
     };
 
-    const colorSwatch = (hex) => (
-        '<span class="d-inline-flex align-items-center gap-2">' +
-        '<span style="display:inline-block;width:1.25rem;height:1.25rem;border-radius:4px;border:1px solid var(--tblr-border-color);background:#' +
-        hex +
-        '"></span>' +
-        "<code>#" +
-        hex +
-        "</code>" +
-        "</span>"
-      );
+    const colorSwatch = (hex) =>
+      '<span class="d-inline-flex align-items-center gap-2">' +
+      '<span style="display:inline-block;width:1.25rem;height:1.25rem;border-radius:4px;border:1px solid var(--tblr-border-color);background:#' +
+      hex +
+      '"></span>' +
+      "<code>#" +
+      hex +
+      "</code>" +
+      "</span>";
 
     // Access token section
     let tokenSection =
