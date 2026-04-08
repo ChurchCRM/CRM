@@ -102,6 +102,6 @@ $(document).ready(function() {
 </script>
 
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/calendar-event-editor.min.js') ?>"></script>
-<script src="<?= SystemURLs::assetVersioned('/skin/js/Calendar.js') ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/event-calendars.min.js') ?>"></script>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

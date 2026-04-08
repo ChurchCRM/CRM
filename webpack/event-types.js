@@ -11,7 +11,7 @@ window.CRM.EventUtils = window.CRM.EventUtils || {};
  * @param {number} defaultHour - Default hour to select (0-23), default 9
  * @param {number} defaultMin - Default minute to select (0, 15, 30, 45), default 0
  */
-window.CRM.EventUtils.populateTimeDropdown = function (selectId, defaultHour = 9, defaultMin = 0) {
+window.CRM.EventUtils.populateTimeDropdown = (selectId, defaultHour = 9, defaultMin = 0) => {
   const select = document.getElementById(selectId);
   if (!select) return;
 
@@ -20,10 +20,10 @@ window.CRM.EventUtils.populateTimeDropdown = function (selectId, defaultHour = 9
 
   for (let hour = 0; hour < 24; hour++) {
     for (let min = 0; min < 60; min += 15) {
-      const time24 = String(hour).padStart(2, "0") + ":" + String(min).padStart(2, "0") + ":00";
+      const time24 = `${String(hour).padStart(2, "0")}:${String(min).padStart(2, "0")}:00`;
       const displayHour = hour % 12 || 12;
       const period = hour < 12 ? "AM" : "PM";
-      const displayTime = displayHour + ":" + String(min).padStart(2, "0") + " " + period;
+      const displayTime = `${displayHour}:${String(min).padStart(2, "0")} ${period}`;
 
       const option = document.createElement("option");
       option.value = time24;
@@ -43,7 +43,7 @@ window.CRM.EventUtils.populateTimeDropdown = function (selectId, defaultHour = 9
  * @param {string} minuteSelectId - ID of minute select element
  * @param {string} periodSelectId - ID of period (AM/PM) select element
  */
-window.CRM.EventUtils.initializeTimePicker = function (timeString, hourSelectId, minuteSelectId, periodSelectId) {
+window.CRM.EventUtils.initializeTimePicker = (timeString, hourSelectId, minuteSelectId, periodSelectId) => {
   const timePattern = /^(\d{1,2}):(\d{2}) (AM|PM)$/i;
   const match = timeString.match(timePattern);
 
@@ -52,7 +52,7 @@ window.CRM.EventUtils.initializeTimePicker = function (timeString, hourSelectId,
     const minuteSelect = document.getElementById(minuteSelectId);
     const periodSelect = document.getElementById(periodSelectId);
 
-    if (hourSelect) hourSelect.value = parseInt(match[1]);
+    if (hourSelect) hourSelect.value = parseInt(match[1], 10);
     if (minuteSelect) minuteSelect.value = match[2];
     if (periodSelect) periodSelect.value = match[3].toUpperCase();
   }
@@ -65,9 +65,7 @@ window.CRM.EventUtils.initializeTimePicker = function (timeString, hourSelectId,
  * @param {string} period - Period (AM/PM)
  * @returns {string} Time string in format "h:mm A"
  */
-window.CRM.EventUtils.formatTime12Hour = function (hour, minute, period) {
-  return hour + ":" + String(minute).padStart(2, "0") + " " + period;
-};
+window.CRM.EventUtils.formatTime12Hour = (hour, minute, period) => `${hour}:${String(minute).padStart(2, "0")} ${period}`;
 
 /**
  * Setup auto-submit on time picker change
@@ -78,21 +76,21 @@ window.CRM.EventUtils.formatTime12Hour = function (hour, minute, period) {
  * @param {string} hiddenInputId - ID of hidden input to store combined time
  * @param {string} originalTime - Original time value to compare against
  */
-window.CRM.EventUtils.setupTimePickerAutoSubmit = function (
+window.CRM.EventUtils.setupTimePickerAutoSubmit = (
   formSelector,
   hourSelectId,
   minuteSelectId,
   periodSelectId,
   hiddenInputId,
   originalTime,
-) {
-  const updateTimeAndSubmit = function () {
-    const hour = $("#" + hourSelectId).val();
-    const minute = $("#" + minuteSelectId).val();
-    const period = $("#" + periodSelectId).val();
+) => {
+  const updateTimeAndSubmit = () => {
+    const hour = $(`#${hourSelectId}`).val();
+    const minute = $(`#${minuteSelectId}`).val();
+    const period = $(`#${periodSelectId}`).val();
     const timeString = window.CRM.EventUtils.formatTime12Hour(hour, minute, period);
 
-    $("#" + hiddenInputId).val(timeString);
+    $(`#${hiddenInputId}`).val(timeString);
 
     // Only submit if the time actually changed
     if (timeString !== originalTime) {
@@ -100,5 +98,5 @@ window.CRM.EventUtils.setupTimePickerAutoSubmit = function (
     }
   };
 
-  $("#" + hourSelectId + ", #" + minuteSelectId + ", #" + periodSelectId).on("change", updateTimeAndSubmit);
+  $(`#${hourSelectId}, #${minuteSelectId}, #${periodSelectId}`).on("change", updateTimeAndSubmit);
 };

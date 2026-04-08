@@ -9,6 +9,8 @@ require_once SystemURLs::getDocumentRoot() . '/Include/QuillEditorHelper.php';
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/repeat-event-editor.min.css') ?>">
+
 <div class="card">
     <div class="card-status-top bg-primary"></div>
     <div class="card-header">

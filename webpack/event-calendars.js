@@ -1,18 +1,15 @@
 window.moveEventModal = {
-  getButtons: function (confirmLabel, confirmClass) {
-    return {
+  getButtons: (confirmLabel, confirmClass) => ({
       cancel: {
-        label: '<i class="fa-solid fa-times me-1"></i>' + i18next.t("Cancel"),
+        label: `<i class="fa-solid fa-times me-1"></i>${i18next.t("Cancel")}`,
         className: "btn-secondary",
       },
       confirm: {
-        label: '<i class="fa-solid fa-check me-1"></i>' + i18next.t(confirmLabel || "Confirm"),
+        label: `<i class="fa-solid fa-check me-1"></i>${i18next.t(confirmLabel || "Confirm")}`,
         className: confirmClass || "btn-primary",
       },
-    };
-  },
-  buildMessage: function (eventTitle, fromLabel, fromDate, toLabel, toDate) {
-    return (
+    }),
+  buildMessage: (_eventTitle, fromLabel, fromDate, toLabel, toDate) => (
       '<p class="text-muted mb-3">' +
       i18next.t("Are you sure you want to continue?") +
       "</p>" +
@@ -37,14 +34,13 @@ window.moveEventModal = {
       "</div>" +
       "</div></div>" +
       "</div>"
-    );
-  },
-  modalCallBack: function (result) {
+    ),
+  modalCallBack: (result) => {
     if (result === true) {
-      var evt = window.moveEventModal.event;
+      const evt = window.moveEventModal.event;
       window.CRM.APIRequest({
         method: "POST",
-        path: "events/" + evt.id + "/time",
+        path: `events/${evt.id}/time`,
         data: JSON.stringify({
           startTime: evt.allDay ? evt.startStr : evt.start.toISOString(),
           endTime: evt.end ? evt.end.toISOString() : null,
@@ -54,32 +50,32 @@ window.moveEventModal = {
       window.moveEventModal.revertFunc();
     }
   },
-  handleEventDrop: function (info) {
-    var event = info.event;
-    var revertFunc = info.revert;
-    var originalStart = info.oldEvent.start ? info.oldEvent.start.toLocaleString() : info.oldEvent.startStr;
-    var newStart = event.start ? event.start.toLocaleString() : event.startStr;
+  handleEventDrop: (info) => {
+    const event = info.event;
+    const revertFunc = info.revert;
+    const originalStart = info.oldEvent.start ? info.oldEvent.start.toLocaleString() : info.oldEvent.startStr;
+    const newStart = event.start ? event.start.toLocaleString() : event.startStr;
     window.moveEventModal.revertFunc = revertFunc;
     window.moveEventModal.event = event;
     bootbox.confirm({
-      title: '<i class="fa-solid fa-calendar-arrow-up me-2 text-primary"></i>' + event.title,
+      title: `<i class="fa-solid fa-calendar-arrow-up me-2 text-primary"></i>${event.title}`,
       message: window.moveEventModal.buildMessage(event.title, "From", originalStart, "To", newStart),
       buttons: window.moveEventModal.getButtons("Move"),
       callback: window.moveEventModal.modalCallBack,
       className: "modal-sm",
     });
   },
-  handleEventResize: function (info) {
-    var event = info.event;
-    var revertFunc = info.revert;
-    var originalEnd = info.oldEvent.end
+  handleEventResize: (info) => {
+    const event = info.event;
+    const revertFunc = info.revert;
+    const originalEnd = info.oldEvent.end
       ? info.oldEvent.end.toLocaleString()
       : info.oldEvent.endStr || info.oldEvent.startStr;
-    var newEnd = event.end ? event.end.toLocaleString() : event.endStr || event.startStr;
+    const newEnd = event.end ? event.end.toLocaleString() : event.endStr || event.startStr;
     window.moveEventModal.revertFunc = revertFunc;
     window.moveEventModal.event = event;
     bootbox.confirm({
-      title: '<i class="fa-solid fa-clock me-2 text-primary"></i>' + event.title,
+      title: `<i class="fa-solid fa-clock me-2 text-primary"></i>${event.title}`,
       message: window.moveEventModal.buildMessage(event.title, "Old End", originalEnd, "New End", newEnd),
       buttons: window.moveEventModal.getButtons("Resize"),
       callback: window.moveEventModal.modalCallBack,
@@ -88,37 +84,37 @@ window.moveEventModal = {
   },
 };
 
-window.CRM.refreshAllFullCalendarSources = function () {
+window.CRM.refreshAllFullCalendarSources = () => {
   window.CRM.fullcalendar.refetchEvents();
 };
 
 function deleteCalendar() {
   window.CRM.APIRequest({
     method: "DELETE",
-    path: "calendars/" + window.calendarPropertiesModal.calendar.Id,
-  }).done(function () {
-    var eventSource = window.CRM.fullcalendar.getEventSourceById("user-" + window.calendarPropertiesModal.calendar.Id);
+    path: `calendars/${window.calendarPropertiesModal.calendar.Id}`,
+  }).done(() => {
+    const eventSource = window.CRM.fullcalendar.getEventSourceById(`user-${window.calendarPropertiesModal.calendar.Id}`);
     if (eventSource) {
       eventSource.remove();
     }
     initializeFilterSettings();
-    setTimeout(function () {
+    setTimeout(() => {
       window.location.reload();
     }, 1000);
   });
 }
 
 window.calendarPropertiesModal = {
-  _copyToClipboard: function (text) {
+  _copyToClipboard: (text) => {
     if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
       navigator.clipboard
         .writeText(text)
-        .then(function () {
+        .then(() => {
           // brief visual feedback handled by btn animation
         })
-        .catch(function () {
+        .catch(() => {
           // Fallback to old method if clipboard API fails
-          var fallbackTextarea = document.createElement("textarea");
+          const fallbackTextarea = document.createElement("textarea");
           fallbackTextarea.value = text;
           fallbackTextarea.setAttribute("readonly", "");
           fallbackTextarea.style.position = "absolute";
@@ -128,7 +124,7 @@ window.calendarPropertiesModal = {
             fallbackTextarea.select();
             document.execCommand("copy");
             document.body.removeChild(fallbackTextarea);
-          } catch (e) {
+          } catch (_e) {
             document.body.removeChild(fallbackTextarea);
             if (typeof bootbox !== "undefined") {
               bootbox.alert(i18next.t("Unable to copy to clipboard. Please copy the URL manually."));
@@ -142,18 +138,17 @@ window.calendarPropertiesModal = {
       }
     }
   },
-  getBootboxContent: function (calendar) {
-    var HTMLURL = "";
-    var icsURL = "";
-    var jsonURL = "";
+  getBootboxContent: (calendar) => {
+    let HTMLURL = "";
+    let icsURL = "";
+    let jsonURL = "";
     if (calendar.AccessToken) {
-      HTMLURL = window.CRM.fullURL + "/external/calendars/" + calendar.AccessToken;
-      icsURL = window.CRM.fullURL + "/api/public/calendar/" + calendar.AccessToken + "/ics";
-      jsonURL = window.CRM.fullURL + "/api/public/calendar/" + calendar.AccessToken + "/events";
+      HTMLURL = `${window.CRM.fullURL}/external/calendars/${calendar.AccessToken}`;
+      icsURL = `${window.CRM.fullURL}/api/public/calendar/${calendar.AccessToken}/ics`;
+      jsonURL = `${window.CRM.fullURL}/api/public/calendar/${calendar.AccessToken}/events`;
     }
 
-    var copyBtn = function (url) {
-      return (
+    const copyBtn = (url) => (
         '<button type="button" class="btn btn-icon btn-ghost-secondary copy-url-btn" data-url="' +
         url +
         '" title="' +
@@ -162,9 +157,8 @@ window.calendarPropertiesModal = {
         '<i class="fa-regular fa-copy"></i>' +
         "</button>"
       );
-    };
 
-    var urlRow = function (label, url) {
+    const urlRow = (label, url) => {
       if (!url) return "";
       return (
         '<div class="mb-3">' +
@@ -188,8 +182,7 @@ window.calendarPropertiesModal = {
       );
     };
 
-    var colorSwatch = function (hex) {
-      return (
+    const colorSwatch = (hex) => (
         '<span class="d-inline-flex align-items-center gap-2">' +
         '<span style="display:inline-block;width:1.25rem;height:1.25rem;border-radius:4px;border:1px solid var(--tblr-border-color);background:#' +
         hex +
@@ -199,10 +192,9 @@ window.calendarPropertiesModal = {
         "</code>" +
         "</span>"
       );
-    };
 
     // Access token section
-    var tokenSection =
+    let tokenSection =
       '<div class="mb-3">' +
       '<label class="form-label text-muted small mb-1">' +
       i18next.t("Access Token") +
@@ -232,7 +224,7 @@ window.calendarPropertiesModal = {
     }
     tokenSection += "</div>";
 
-    var frm_str =
+    const frm_str =
       '<form id="some-form" class="px-1">' +
       tokenSection +
       urlRow(i18next.t("HTML URL"), HTMLURL) +
@@ -258,29 +250,28 @@ window.calendarPropertiesModal = {
       "</div>" +
       "</form>";
 
-    var $object = $("<div/>").html(frm_str).contents();
+    const $object = $("<div/>").html(frm_str).contents();
 
     // Wire up copy buttons after DOM insertion (bootbox calls this after render)
     // Use .off() first to prevent handler accumulation across modal re-opens
-    setTimeout(function () {
+    setTimeout(() => {
       $(".copy-url-btn")
         .off("click")
         .on("click", function () {
-          var url = $(this).data("url");
+          const url = $(this).data("url");
           window.calendarPropertiesModal._copyToClipboard(url);
-          var $icon = $(this).find("i");
+          const $icon = $(this).find("i");
           $icon.removeClass("fa-regular fa-copy").addClass("fa-solid fa-check text-success");
-          var self = this;
-          setTimeout(function () {
-            $(self).find("i").removeClass("fa-solid fa-check text-success").addClass("fa-regular fa-copy");
+          setTimeout(() => {
+            $(this).find("i").removeClass("fa-solid fa-check text-success").addClass("fa-regular fa-copy");
           }, 1500);
         });
     }, 50);
 
     return $object;
   },
-  getButtons: function () {
-    var buttons = [];
+  getButtons: () => {
+    const buttons = [];
     buttons.push({
       label: i18next.t("Cancel"),
       className: "btn btn-secondary float-end",
@@ -294,39 +285,39 @@ window.calendarPropertiesModal = {
     }
     return buttons;
   },
-  show: function (calendar) {
+  show: (calendar) => {
     window.calendarPropertiesModal.calendar = calendar;
-    var bootboxmessage = window.calendarPropertiesModal.getBootboxContent(calendar);
+    const bootboxmessage = window.calendarPropertiesModal.getBootboxContent(calendar);
     window.calendarPropertiesModal.modal = bootbox.dialog({
       title: calendar.Name,
       message: bootboxmessage,
       show: true,
       buttons: window.calendarPropertiesModal.getButtons(),
-      onEscape: function () {
+      onEscape: () => {
         window.calendarPropertiesModal.modal.modal("hide");
       },
     });
     $("#NewAccessToken").click(window.calendarPropertiesModal.newAccessToken);
     $("#DeleteAccessToken").click(window.calendarPropertiesModal.deleteAccessToken);
   },
-  newAccessToken: function () {
+  newAccessToken: () => {
     window.CRM.APIRequest({
       method: "POST",
-      path: "calendars/" + window.calendarPropertiesModal.calendar.Id + "/NewAccessToken",
-    }).done(function (newcalendar) {
-      var closeBtn = $('<button class="btn btn-primary float-end mt-3">' + i18next.t("Close") + "</button>");
-      var $body = $(window.calendarPropertiesModal.modal).find(".bootbox-body");
+      path: `calendars/${window.calendarPropertiesModal.calendar.Id}/NewAccessToken`,
+    }).done((newcalendar) => {
+      const closeBtn = $(`<button class="btn btn-primary float-end mt-3">${i18next.t("Close")}</button>`);
+      const $body = $(window.calendarPropertiesModal.modal).find(".bootbox-body");
       $body.html(window.calendarPropertiesModal.getBootboxContent(newcalendar));
       $body.append(closeBtn);
       $("#NewAccessToken").click(window.calendarPropertiesModal.newAccessToken);
       $("#DeleteAccessToken").click(window.calendarPropertiesModal.deleteAccessToken);
-      closeBtn.on("click", function () {
+      closeBtn.on("click", () => {
         window.calendarPropertiesModal.modal.modal("hide");
       });
 
-      var calendarRow = $('[data-calendarid="' + newcalendar.Id + '"]').closest("tr");
+      const calendarRow = $(`[data-calendarid="${newcalendar.Id}"]`).closest("tr");
       if (calendarRow.length > 0) {
-        var accessTokenCell = calendarRow.find(".calendar-access-token-cell");
+        const accessTokenCell = calendarRow.find(".calendar-access-token-cell");
         if (accessTokenCell.length > 0) {
           accessTokenCell.text(newcalendar.AccessToken);
         }
@@ -336,14 +327,14 @@ window.calendarPropertiesModal = {
       window.calendarPropertiesModal.calendar = newcalendar;
     });
   },
-  deleteAccessToken: function () {
+  deleteAccessToken: () => {
     window.CRM.APIRequest({
       method: "DELETE",
-      path: "calendars/" + window.calendarPropertiesModal.calendar.Id + "/AccessToken",
-    }).done(function (newcalendar) {
-      var calendarRow = $('[data-calendarid="' + newcalendar.Id + '"]').closest("tr");
+      path: `calendars/${window.calendarPropertiesModal.calendar.Id}/AccessToken`,
+    }).done((newcalendar) => {
+      const calendarRow = $(`[data-calendarid="${newcalendar.Id}"]`).closest("tr");
       if (calendarRow.length > 0) {
-        var accessTokenCell = calendarRow.find(".calendar-access-token-cell");
+        const accessTokenCell = calendarRow.find(".calendar-access-token-cell");
         if (accessTokenCell.length > 0) {
           accessTokenCell.text("");
         } else {
@@ -357,7 +348,7 @@ window.calendarPropertiesModal = {
         window.calendarPropertiesModal.modal.modal("hide");
       }
 
-      setTimeout(function () {
+      setTimeout(() => {
         document.body.focus();
       }, 300);
     });
@@ -365,7 +356,7 @@ window.calendarPropertiesModal = {
 };
 
 function fieldError(inputField) {
-  var p = $(inputField).parent().find("p .form-field-error");
+  let p = $(inputField).parent().find("p .form-field-error");
   if (p.length === 0) {
     p = $("<p class='form-field-error'>");
     $(inputField).parent().append(p);
@@ -374,8 +365,8 @@ function fieldError(inputField) {
 }
 
 window.newCalendarModal = {
-  getBootboxContent: function () {
-    var frm_str =
+  getBootboxContent: () => {
+    const frm_str =
       '<form id="some-form"><table class="table modal-table">' +
       "<tr>" +
       "<td>" +
@@ -407,12 +398,12 @@ window.newCalendarModal = {
       "</tr>" +
       "</table>" +
       "</form>";
-    var object = $("<div/>").html(frm_str).contents();
+    const object = $("<div/>").html(frm_str).contents();
 
     return object;
   },
-  getButtons: function () {
-    var buttons = [];
+  getButtons: () => {
+    const buttons = [];
     buttons.push({
       label: i18next.t("Save"),
       className: "btn btn-primary float-end",
@@ -425,20 +416,20 @@ window.newCalendarModal = {
 
     return buttons;
   },
-  validateNewCalendar: function () {
-    var status = true;
+  validateNewCalendar: () => {
+    let status = true;
     if (!$("#calendarName").val()) {
       fieldError($("#calendarName"));
       status = false;
     }
     return status;
   },
-  saveButtonCallback: function () {
+  saveButtonCallback: () => {
     $(".form-field-error").remove();
     if (!window.newCalendarModal.validateNewCalendar()) {
       return false;
     }
-    var newCalendar = {
+    const newCalendar = {
       Name: $("#calendarName").val(),
       ForegroundColor: $("#ForegroundColor").val().replace(/^#/, ""),
       BackgroundColor: $("#BackgroundColor").val().replace(/^#/, ""),
@@ -447,18 +438,18 @@ window.newCalendarModal = {
       method: "POST",
       path: "calendars",
       data: JSON.stringify(newCalendar),
-    }).done(function () {
+    }).done(() => {
       initializeFilterSettings();
     });
   },
-  show: function () {
-    var bootboxmessage = window.newCalendarModal.getBootboxContent();
+  show: () => {
+    const bootboxmessage = window.newCalendarModal.getBootboxContent();
     window.calendarPropertiesModal.modal = bootbox.dialog({
       title: i18next.t("New Calendar"),
       message: bootboxmessage,
       show: true,
       buttons: window.newCalendarModal.getButtons(),
-      onEscape: function () {
+      onEscape: () => {
         window.calendarPropertiesModal.modal.modal("hide");
       },
     });
@@ -472,17 +463,17 @@ function initializeCalendar() {
     window.CRM.fullcalendar.destroy();
   }
 
-  var mobileHeaderToolbar = {
+  const mobileHeaderToolbar = {
     start: "prev,next",
     center: "title",
     end: "today",
   };
-  var desktopHeaderToolbar = {
+  const desktopHeaderToolbar = {
     start: "prev,next today",
     center: "title",
     end: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
   };
-  var mobileFooterToolbar = { end: "dayGridMonth,timeGridWeek,timeGridDay,listMonth" };
+  const mobileFooterToolbar = { end: "dayGridMonth,timeGridWeek,timeGridDay,listMonth" };
 
   window.CRM.fullcalendar = new FullCalendar.Calendar(document.getElementById("calendar"), {
     locale: window.CRM.lang || "en",
@@ -491,8 +482,8 @@ function initializeCalendar() {
     footerToolbar: window.innerWidth < 768 ? mobileFooterToolbar : false,
     contentHeight: "auto",
     windowResizeDelay: 200,
-    windowResize: function () {
-      var nowMobile = window.innerWidth < 768;
+    windowResize: () => {
+      const nowMobile = window.innerWidth < 768;
       window.CRM.fullcalendar.setOption("headerToolbar", nowMobile ? mobileHeaderToolbar : desktopHeaderToolbar);
       window.CRM.fullcalendar.setOption("footerToolbar", nowMobile ? mobileFooterToolbar : false);
     },
@@ -502,9 +493,9 @@ function initializeCalendar() {
     eventResize: window.moveEventModal.handleEventResize,
     selectMirror: true,
     select: window.showNewEventForm,
-    eventClick: function (info) {
-      var eventData = info.event;
-      var jsEvent = info.jsEvent;
+    eventClick: (info) => {
+      const eventData = info.event;
+      const jsEvent = info.jsEvent;
       jsEvent.preventDefault();
 
       if (eventData.url !== "null") {
@@ -512,10 +503,10 @@ function initializeCalendar() {
       } else if (eventData.editable || eventData.startEditable || eventData.durationEditable) {
         window.showEventForm(eventData);
       } else {
-        alert(i18next.t("Holiday") + ": " + eventData.title);
+        alert(`${i18next.t("Holiday")}: ${eventData.title}`);
       }
     },
-    loading: function (isLoading) {
+    loading: (isLoading) => {
       window.CRM.isCalendarLoading = isLoading;
     },
   });
@@ -526,36 +517,36 @@ function initializeCalendar() {
  * No cache-busting parameter — FullCalendar refetches via refetchEvents().
  */
 function GetCalendarURL(calendarType, calendarID) {
-  var endpoint;
+  let endpoint;
   if (calendarType === "user") {
     endpoint = "/api/calendars/";
   } else if (calendarType === "system") {
     endpoint = "/api/systemcalendars/";
   }
-  return window.CRM.root + endpoint + calendarID + "/fullcalendar";
+  return `${window.CRM.root + endpoint + calendarID}/fullcalendar`;
 }
 
 /**
  * Get the deterministic event source ID for a calendar.
  */
 function GetCalendarSourceId(calendarType, calendarID) {
-  return calendarType + "-" + calendarID;
+  return `${calendarType}-${calendarID}`;
 }
 
 /**
  * Build a sidebar list-group item for a calendar with a BS5 form-switch toggle.
  */
 function getCalendarFilterElement(calendar, type) {
-  var sourceId = GetCalendarSourceId(type, calendar.Id);
-  var switchId = "display-" + sourceId;
+  const sourceId = GetCalendarSourceId(type, calendar.Id);
+  const switchId = `display-${sourceId}`;
 
-  var publicBadge = calendar.AccessToken
+  const publicBadge = calendar.AccessToken
     ? '<span class="badge bg-azure-lt ms-1" title="' +
       i18next.t("Public calendar") +
       '"><i class="fa-solid fa-globe fa-xs"></i></span>'
     : "";
 
-  var html =
+  const html =
     '<div class="list-group-item px-2 py-2" data-source-id="' +
     sourceId +
     '">' +
@@ -604,8 +595,8 @@ function getCalendarFilterElement(calendar, type) {
  * Remove all existing FullCalendar event sources to prevent duplicates.
  */
 function clearAllEventSources() {
-  var sources = window.CRM.fullcalendar.getEventSources();
-  for (var i = sources.length - 1; i >= 0; i--) {
+  const sources = window.CRM.fullcalendar.getEventSources();
+  for (let i = sources.length - 1; i >= 0; i--) {
     sources[i].remove();
   }
 }
@@ -614,8 +605,8 @@ function clearAllEventSources() {
  * Add an event source with a deterministic ID (prevents duplicates).
  */
 function addCalendarEventSource(calendarType, calendarID) {
-  var sourceId = GetCalendarSourceId(calendarType, calendarID);
-  var existing = window.CRM.fullcalendar.getEventSourceById(sourceId);
+  const sourceId = GetCalendarSourceId(calendarType, calendarID);
+  const existing = window.CRM.fullcalendar.getEventSourceById(sourceId);
   if (!existing) {
     window.CRM.fullcalendar.addEventSource({
       id: sourceId,
@@ -628,8 +619,8 @@ function addCalendarEventSource(calendarType, calendarID) {
  * Remove an event source by its deterministic ID.
  */
 function removeCalendarEventSource(calendarType, calendarID) {
-  var sourceId = GetCalendarSourceId(calendarType, calendarID);
-  var existing = window.CRM.fullcalendar.getEventSourceById(sourceId);
+  const sourceId = GetCalendarSourceId(calendarType, calendarID);
+  const existing = window.CRM.fullcalendar.getEventSourceById(sourceId);
   if (existing) {
     existing.remove();
   }
@@ -637,8 +628,8 @@ function removeCalendarEventSource(calendarType, calendarID) {
 
 function registerCalendarSelectionEvents() {
   $(document).on("change", ".calendarSelectionBox", function () {
-    var calendarType = $(this).data("calendartype");
-    var calendarId = $(this).data("calendarid");
+    const calendarType = $(this).data("calendartype");
+    const calendarId = $(this).data("calendarid");
 
     if ($(this).is(":checked")) {
       addCalendarEventSource(calendarType, calendarId);
@@ -650,9 +641,9 @@ function registerCalendarSelectionEvents() {
   $(document).on("click", ".calendarproperties", function () {
     window.CRM.APIRequest({
       method: "GET",
-      path: "calendars/" + $(this).data("calendarid"),
-    }).done(function (data) {
-      var calendar = data.Calendars && data.Calendars[0] ? data.Calendars[0] : null;
+      path: `calendars/${$(this).data("calendarid")}`,
+    }).done((data) => {
+      const calendar = data.Calendars?.[0] ? data.Calendars[0] : null;
       if (calendar && typeof calendar.AccessToken !== "undefined") {
         window.calendarPropertiesModal.show(calendar);
       } else {
@@ -666,8 +657,8 @@ function registerCalendarSelectionEvents() {
   });
 
   $(document).on("click", ".calendarfocus", function () {
-    var calendarTypeToKeep = $(this).data("calendartype");
-    var calendarIDToKeep = $(this).data("calendarid");
+    const calendarTypeToKeep = $(this).data("calendartype");
+    const calendarIDToKeep = $(this).data("calendarid");
     $(".calendarSelectionBox").each(function () {
       if ($(this).data("calendartype") === calendarTypeToKeep && $(this).data("calendarid") === calendarIDToKeep) {
         if (!$(this).is(":checked")) {
@@ -680,7 +671,7 @@ function registerCalendarSelectionEvents() {
       }
     });
     $(this).removeClass("calendarfocus").addClass("calendarunfocus");
-    $(this).html('<i class="fa-solid fa-expand me-1"></i>' + i18next.t("Unfocus"));
+    $(this).html(`<i class="fa-solid fa-expand me-1"></i>${i18next.t("Unfocus")}`);
   });
 
   $(document).on("click", ".calendarunfocus", function () {
@@ -690,7 +681,7 @@ function registerCalendarSelectionEvents() {
       }
     });
     $(this).removeClass("calendarunfocus").addClass("calendarfocus");
-    $(this).html('<i class="fa-solid fa-crosshairs me-1"></i>' + i18next.t("Focus"));
+    $(this).html(`<i class="fa-solid fa-crosshairs me-1"></i>${i18next.t("Focus")}`);
   });
 }
 
@@ -699,9 +690,9 @@ function showAllUserCalendars() {
     method: "GET",
     path: "calendars",
     suppressErrorDialog: true,
-  }).done(function (calendars) {
+  }).done((calendars) => {
     $("#calendarUserList").empty();
-    $.each(calendars.Calendars, function (idx, calendar) {
+    $.each(calendars.Calendars, (_idx, calendar) => {
       $("#calendarUserList").append(getCalendarFilterElement(calendar, "user"));
       addCalendarEventSource("user", calendar.Id);
     });
@@ -713,9 +704,9 @@ function showAllSystemCalendars() {
     method: "GET",
     path: "systemcalendars",
     suppressErrorDialog: true,
-  }).done(function (calendars) {
+  }).done((calendars) => {
     $("#calendarSystemList").empty();
-    $.each(calendars.Calendars, function (idx, calendar) {
+    $.each(calendars.Calendars, (_idx, calendar) => {
       $("#calendarSystemList").append(getCalendarFilterElement(calendar, "system"));
       addCalendarEventSource("system", calendar.Id);
     });
@@ -732,7 +723,7 @@ function initializeNewCalendarButton() {
   if (window.CRM.calendarJSArgs.isModifiable) {
     $("#addCalendarBtn")
       .removeClass("d-none")
-      .on("click", function () {
+      .on("click", () => {
         window.newCalendarModal.show();
       });
   }
@@ -747,8 +738,8 @@ function displayAccessTokenAPITest() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  window.CRM.onLocalesReady(function () {
+document.addEventListener("DOMContentLoaded", () => {
+  window.CRM.onLocalesReady(() => {
     initializeCalendar();
     initializeFilterSettings();
     initializeNewCalendarButton();

@@ -34,6 +34,8 @@ module.exports = {
     'groups-sundayschool-class-view': './webpack/groups-sundayschool-class-view',
     'repeat-event-editor': './webpack/repeat-event-editor',
     'event-checkin': './webpack/event-checkin',
+    'event-calendars': './webpack/event-calendars',
+    'event-types': './webpack/event-types',
   },
   output: {
     path: path.resolve('./src/skin/v2'),

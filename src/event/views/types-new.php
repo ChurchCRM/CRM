@@ -114,7 +114,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   </div>
 </div>
 
-<script src="<?= $sRootPath ?>/skin/js/event/EventUtils.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/event-types.min.js') ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 $(document).ready(function() {
   // Sync visible time selectors to hidden field
