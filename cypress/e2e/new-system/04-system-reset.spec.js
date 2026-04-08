@@ -77,9 +77,10 @@ describe('04 - System Reset', () => {
             manualLogin();
             cy.visit('/admin/system/reset');
 
-            // Danger banner at top
-            cy.get('.alert-danger', { timeout: 15000 }).should('be.visible');
-            cy.contains('Destructive Operation').should('be.visible');
+            // Danger banner at top — scope to the top warning banner so it
+            // doesn't match hidden backup status alerts also in the DOM.
+            cy.contains('.alert-danger', 'Destructive Operation', { timeout: 15000 })
+                .should('be.visible');
 
             // Reset button should be disabled until user types RESET
             cy.get('#resetBtn').should('be.disabled');

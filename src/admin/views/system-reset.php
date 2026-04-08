@@ -44,14 +44,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <label class="form-label"><?= gettext('Backup Type') ?></label>
                     <div class="form-selectgroup form-selectgroup-boxes d-flex flex-column gap-2">
                         <label class="form-selectgroup-item flex-fill">
-                            <input type="radio" name="archiveType" value="0" class="form-selectgroup-input" checked>
+                            <input type="radio" name="archiveType" value="2" class="form-selectgroup-input" checked>
                             <div class="form-selectgroup-label d-flex align-items-center p-3">
                                 <div class="me-3">
                                     <span class="form-selectgroup-check"></span>
                                 </div>
                                 <div>
                                     <strong><?= gettext('SQL Only') ?></strong>
-                                    <div class="text-secondary"><?= gettext('Database dump only (smaller, faster)') ?></div>
+                                    <div class="text-secondary"><?= gettext('Database dump only (.sql)') ?></div>
                                 </div>
                             </div>
                         </label>
@@ -116,13 +116,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
             <div class="card-body">
                 <p class="text-secondary"><?= gettext('Resetting will permanently delete:') ?></p>
-                <ul class="list-unstyled space-y-1">
-                    <li><i class="ti ti-x text-danger me-1"></i><?= gettext('All people and family records') ?></li>
-                    <li><i class="ti ti-x text-danger me-1"></i><?= gettext('All groups, roles, and memberships') ?></li>
-                    <li><i class="ti ti-x text-danger me-1"></i><?= gettext('All financial data (pledges, payments, deposits)') ?></li>
-                    <li><i class="ti ti-x text-danger me-1"></i><?= gettext('All events and attendance records') ?></li>
-                    <li><i class="ti ti-x text-danger me-1"></i><?= gettext('All uploaded photos and documents') ?></li>
-                    <li><i class="ti ti-x text-danger me-1"></i><?= gettext('All system settings and custom fields') ?></li>
+                <ul class="list-unstyled">
+                    <li class="mb-1"><i class="ti ti-x text-danger me-1"></i><?= gettext('All people and family records') ?></li>
+                    <li class="mb-1"><i class="ti ti-x text-danger me-1"></i><?= gettext('All groups, roles, and memberships') ?></li>
+                    <li class="mb-1"><i class="ti ti-x text-danger me-1"></i><?= gettext('All financial data (pledges, payments, deposits)') ?></li>
+                    <li class="mb-1"><i class="ti ti-x text-danger me-1"></i><?= gettext('All events and attendance records') ?></li>
+                    <li class="mb-1"><i class="ti ti-x text-danger me-1"></i><?= gettext('All uploaded photos and documents') ?></li>
+                    <li class="mb-0"><i class="ti ti-x text-danger me-1"></i><?= gettext('All system settings and custom fields') ?></li>
                 </ul>
 
                 <div class="hr-text"><?= gettext('Confirm') ?></div>
