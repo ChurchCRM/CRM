@@ -81,7 +81,7 @@ $app->get('/dashboard', function (Request $request, Response $response) {
     $monthlyData = [];
 
     foreach ($allMonths as $mVal) {
-        $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $mVal, $EventYear);
+        $daysInMonth = DateTimeUtils::getDaysInMonth($mVal, $EventYear);
         $monthMin = sprintf('%04d-%02d-01 00:00:00', $EventYear, $mVal);
         $monthMax = sprintf('%04d-%02d-%02d 23:59:59', $EventYear, $mVal, $daysInMonth);
 
@@ -150,14 +150,14 @@ $app->get('/dashboard', function (Request $request, Response $response) {
             ];
         }
 
-        // Monthly averages (Propel ORM)
+        // Monthly averages — eventcounts_evtcnt has no FK relation to events_event
+        // in the schema, so we filter by the event IDs we already loaded above.
         $averages = [];
         if ($eType !== 'All' && !empty($events[0]['counts'])) {
+            $eventIds = array_column($events, 'id');
+
             $avgCounts = EventCountsQuery::create()
-                ->useEventQuery()
-                    ->filterByType((int) $eType)
-                    ->filterByStart(['min' => $monthMin, 'max' => $monthMax])
-                ->endUse()
+                ->filterByEvtcntEventid($eventIds, Criteria::IN)
                 ->addAsColumn('avg_count', 'AVG(evtcnt_countcount)')
                 ->select(['EvtcntCountname', 'avg_count'])
                 ->groupByEvtcntCountid()

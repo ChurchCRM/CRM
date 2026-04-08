@@ -204,7 +204,7 @@ class EventService
         while ($current <= $rangeEnd) {
             $year = (int) $current->format('Y');
             $month = (int) $current->format('m');
-            $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+            $daysInMonth = DateTimeUtils::getDaysInMonth($month, $year);
             $actualDay = min($dom, $daysInMonth);
 
             $occurrence = new \DateTime(sprintf('%04d-%02d-%02d', $year, $month, $actualDay));
