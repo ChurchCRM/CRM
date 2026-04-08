@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\model\ChurchCRM;
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Base\Event as BaseEvent;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -41,7 +42,7 @@ class Event extends BaseEvent
         $this->editable = $editable;
     }
 
-    public function checkInPerson($PersonId, $CheckedInById = null): array
+    public function checkInPerson(int $PersonId, ?int $CheckedInById = null): array
     {
         $AttendanceRecord = EventAttendQuery::create()
             ->filterByEvent($this)
@@ -59,10 +60,16 @@ class Event extends BaseEvent
 
         $AttendanceRecord->save();
 
+        $this->addTimelineNote(
+            $PersonId,
+            sprintf(gettext('Checked in to event: %s'), $this->getTitle()),
+            $CheckedInById
+        );
+
         return ['status' => 'success'];
     }
 
-    public function checkOutPerson($PersonId, $CheckedOutById = null): array
+    public function checkOutPerson(int $PersonId, ?int $CheckedOutById = null): array
     {
         $AttendanceRecord = EventAttendQuery::create()
             ->filterByEvent($this)
@@ -84,7 +91,28 @@ class Event extends BaseEvent
 
         $AttendanceRecord->save();
 
+        $this->addTimelineNote(
+            $PersonId,
+            sprintf(gettext('Checked out from event: %s'), $this->getTitle()),
+            $CheckedOutById
+        );
+
         return ['status' => 'success'];
+    }
+
+    /**
+     * Add a timeline note for event check-in/out on a person's timeline.
+     */
+    private function addTimelineNote(int $personId, string $text, ?int $actionById, string $type = 'event'): void
+    {
+        $note = new Note();
+        $note->setPerId($personId);
+        $note->setFamId(0);
+        $note->setText($text);
+        $note->setType($type);
+        $note->setPrivate(0);
+        $note->setEntered($actionById ?? AuthenticationManager::getCurrentUser()->getId());
+        $note->save();
     }
 
     public function getViewURI(): string

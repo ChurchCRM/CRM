@@ -380,6 +380,30 @@ $financeMenu->addItem(
 
 ---
 
+## Event MVC Module (`/event/*`) <!-- learned: 2026-04-07 -->
+
+The `/event` MVC module follows the same pattern as `/admin` and `/finance`:
+
+| Component | Location |
+|-----------|----------|
+| Entry point | `src/event/index.php` using `MvcAppFactory::create('/event', [...])` |
+| Middleware | `AddEventsRoleAuthMiddleware` |
+| Routes | `src/event/routes/event.php` |
+| Views | `src/event/views/` rendered via PhpRenderer |
+| `.htaccess` | Blocks direct PHP access and routes through Slim |
+
+```
+src/event/
+├── index.php              # MvcAppFactory::create('/event', [...])
+├── .htaccess              # Blocks direct PHP, routes through Slim
+├── routes/
+│   └── event.php          # Event page routes
+└── views/
+    └── [feature].php      # Tabler-rendered views
+```
+
+---
+
 ## Deprecated Locations (DO NOT USE)
 
 | Path | Status | Reason |

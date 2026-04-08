@@ -44,7 +44,7 @@ export function initializeMainDashboard() {
     return `<img class="avatar avatar-sm rounded-circle ${viewClass}" src="${photoUrl}" ${dataIdAttr} alt="" style="cursor: pointer; object-fit: cover;" title="${i18next.t("View Photo")}" />`;
   }
 
-  let dataTableDashboardDefaults = {
+  const dataTableDashboardDefaults = {
     paging: false,
     ordering: false,
     info: false,
@@ -57,24 +57,22 @@ export function initializeMainDashboard() {
   };
 
   // Define action column for families and base columns without action
-  let actionFamilyColumn = {
+  const actionFamilyColumn = {
     width: "15%",
     sortable: false,
     title: i18next.t("Action"),
     data: "FamilyId",
     className: "no-export",
-    render: function (data, type, row) {
-      return window.CRM.renderFamilyActionMenu(row.FamilyId, row.Name);
-    },
+    render: (data, type, row) => window.CRM.renderFamilyActionMenu(row.FamilyId, row.Name),
     searchable: false,
   };
 
-  let dataTableFamilyColumns = [
+  const dataTableFamilyColumns = [
     {
       width: "35%",
       title: i18next.t("Name"),
       data: "Name",
-      render: function (data, type, row) {
+      render: (data, type, row) => {
         // Show photo if available, otherwise show Tabler avatar with initials
         var photoIcon = row.HasPhoto
           ? generatePhotoImg(row.FamilyId, "family")
@@ -111,15 +109,13 @@ export function initializeMainDashboard() {
       width: "30%",
       title: i18next.t("Location"),
       data: "Address",
-      render: function (data, type, row) {
+      render: (data, type, row) => {
         if (!data) return '<span class="text-muted">—</span>';
         // Extract city and state from address (last parts before country)
-        let parts = data.split(",").map(function (s) {
-          return s.trim();
-        });
+        const parts = data.split(",").map((s) => s.trim());
         if (parts.length >= 2) {
           // Try to get city and state (usually 2nd and 3rd from end, before country)
-          let cityState = parts.slice(-3, -1).join(", ");
+          const cityState = parts.slice(-3, -1).join(", ");
           if (cityState) {
             return '<span title="' + data + '">' + cityState + "</span>";
           }
@@ -129,12 +125,12 @@ export function initializeMainDashboard() {
     },
   ];
 
-  let latestFamilyColumns = dataTableFamilyColumns.slice();
+  const latestFamilyColumns = dataTableFamilyColumns.slice();
   latestFamilyColumns.push({
     width: "20%",
     title: i18next.t("Created"),
     data: "Created",
-    render: function (data) {
+    render: (data) => {
       if (!data) return "";
       // Parse datetime format and calculate relative time
       return '<small class="text-muted">' + moment(data).fromNow() + "</small>";
@@ -152,17 +148,17 @@ export function initializeMainDashboard() {
   };
   $.extend(dataTableConfig, window.CRM.plugin.dataTable);
   $.extend(dataTableConfig, dataTableDashboardDefaults);
-  let latestFamiliesTable = $("#latestFamiliesDashboardItem").DataTable(dataTableConfig);
-  latestFamiliesTable.on("draw", function () {
+  const latestFamiliesTable = $("#latestFamiliesDashboardItem").DataTable(dataTableConfig);
+  latestFamiliesTable.on("draw", () => {
     syncCartButtons();
   });
 
-  let updatedFamilyColumns = dataTableFamilyColumns.slice();
+  const updatedFamilyColumns = dataTableFamilyColumns.slice();
   updatedFamilyColumns.push({
     width: "20%",
     title: i18next.t("Updated"),
     data: "LastEdited",
-    render: function (data) {
+    render: (data) => {
       if (!data) return "";
       // Parse datetime format and calculate relative time
       return '<small class="text-muted">' + moment(data).fromNow() + "</small>";
@@ -180,15 +176,15 @@ export function initializeMainDashboard() {
   };
   $.extend(dataTableConfig, window.CRM.plugin.dataTable);
   $.extend(dataTableConfig, dataTableDashboardDefaults);
-  let updatedFamiliesTable = $("#updatedFamiliesDashboardItem").DataTable(dataTableConfig);
-  updatedFamiliesTable.on("draw", function () {
+  const updatedFamiliesTable = $("#updatedFamiliesDashboardItem").DataTable(dataTableConfig);
+  updatedFamiliesTable.on("draw", () => {
     syncCartButtons();
   });
 
   dataTableConfig = {
     ajax: {
       url: window.CRM.root + "/api/persons/birthday",
-      dataSrc: function (json) {
+      dataSrc: (json) => {
         if (!json.people || json.people.length === 0) {
           $("#PersonBirthdayDashboardItem")
             .closest(".card-body")
@@ -215,15 +211,13 @@ export function initializeMainDashboard() {
         data: "PersonId",
         orderable: false,
         className: "text-center",
-        render: function (data, type, row) {
-          return "";
-        },
+        render: (data, type, row) => "",
       },
       {
         width: "60%",
         title: i18next.t("Name"),
         data: "FirstName",
-        render: function (data, type, row) {
+        render: (data, type, row) => {
           var ageText = row.Age ? ' <small class="text-muted">(' + row.Age + ")</small>" : "";
           // Show photo if available, otherwise show Tabler avatar with initials
           var photoIcon = row.HasPhoto
@@ -249,9 +243,9 @@ export function initializeMainDashboard() {
         width: "40%",
         title: i18next.t("Birthday"),
         data: "DaysUntil",
-        render: function (data, type, row) {
+        render: (data, type, row) => {
           if (row.Birthday === undefined) return "";
-          let diff = row.DaysUntil;
+          const diff = row.DaysUntil;
 
           let badge = "";
           if (diff === 0) {
@@ -290,8 +284,8 @@ export function initializeMainDashboard() {
   dataTableConfig.pageLength = 5;
   // Include pagination control in DOM (dashboard defaults remove it)
   dataTableConfig.dom = "<'row'<'col-sm-12'tr>><'row'<'col-sm-12'p>>";
-  let birthdayPersonTable = $("#PersonBirthdayDashboardItem").DataTable(dataTableConfig);
-  birthdayPersonTable.on("draw", function () {
+  const birthdayPersonTable = $("#PersonBirthdayDashboardItem").DataTable(dataTableConfig);
+  birthdayPersonTable.on("draw", () => {
     syncCartButtons();
     // Refresh image loader for dynamically added photos
     if (window.CRM && window.CRM.peopleImageLoader) {
@@ -302,7 +296,7 @@ export function initializeMainDashboard() {
   dataTableConfig = {
     ajax: {
       url: window.CRM.root + "/api/families/anniversaries",
-      dataSrc: function (json) {
+      dataSrc: (json) => {
         if (!json.families || json.families.length === 0) {
           $("#FamiliesWithAnniversariesDashboardItem")
             .closest(".card-body")
@@ -327,7 +321,7 @@ export function initializeMainDashboard() {
         width: "50%",
         title: i18next.t("Name"),
         data: "Name",
-        render: function (data, type, row) {
+        render: (data, type, row) => {
           // Show photo if available, otherwise show Tabler avatar with initials
           var photoIcon = row.HasPhoto
             ? generatePhotoImg(row.FamilyId, "family")
@@ -350,14 +344,14 @@ export function initializeMainDashboard() {
         width: "50%",
         title: i18next.t("Anniversary"),
         data: "WeddingDate",
-        render: function (data, type, row) {
+        render: (data, type, row) => {
           if (!data) return "";
-          let weddingDate = moment(data, ["MMMM D, YYYY", "MMMM D", "MM-DD-YYYY"]);
-          let thisYear = moment().year();
-          let anniversaryThisYear = weddingDate.clone().year(thisYear);
-          let today = moment().startOf("day");
-          let diff = anniversaryThisYear.diff(today, "days");
-          let years = thisYear - weddingDate.year();
+          const weddingDate = moment(data, ["MMMM D, YYYY", "MMMM D", "MM-DD-YYYY"]);
+          const thisYear = moment().year();
+          const anniversaryThisYear = weddingDate.clone().year(thisYear);
+          const today = moment().startOf("day");
+          const diff = anniversaryThisYear.diff(today, "days");
+          const years = thisYear - weddingDate.year();
 
           let badge = "";
           if (diff === 0) {
@@ -403,8 +397,8 @@ export function initializeMainDashboard() {
   dataTableConfig.pageLength = 5;
   // Include pagination control in DOM (dashboard defaults remove it)
   dataTableConfig.dom = "<'row'<'col-sm-12'tr>><'row'<'col-sm-12'p>>";
-  let anniversaryFamiliesTable = $("#FamiliesWithAnniversariesDashboardItem").DataTable(dataTableConfig);
-  anniversaryFamiliesTable.on("draw", function () {
+  const anniversaryFamiliesTable = $("#FamiliesWithAnniversariesDashboardItem").DataTable(dataTableConfig);
+  anniversaryFamiliesTable.on("draw", () => {
     syncCartButtons();
     if (window.CRM && window.CRM.peopleImageLoader) {
       window.CRM.peopleImageLoader.refresh();
@@ -412,26 +406,24 @@ export function initializeMainDashboard() {
   });
 
   // Define action column for persons and base columns without action
-  let actionPersonColumn = {
+  const actionPersonColumn = {
     width: "15%",
     sortable: false,
     title: i18next.t("Action"),
     data: "PersonId",
     className: "no-export",
-    render: function (data, type, row) {
-      return window.CRM.renderPersonActionMenu(row.PersonId, row.FirstName + " " + row.LastName, {
+    render: (data, type, row) => window.CRM.renderPersonActionMenu(row.PersonId, row.FirstName + " " + row.LastName, {
         familyId: row.FamilyId || null,
-      });
-    },
+      }),
     searchable: false,
   };
 
-  let dataTablePersonColumns = [
+  const dataTablePersonColumns = [
     {
       width: "25%",
       title: i18next.t("Name"),
       data: "FirstName",
-      render: function (data, type, row) {
+      render: (data, type, row) => {
         // Show photo if available, otherwise show Tabler avatar with initials
         var photoIcon = row.HasPhoto
           ? generatePhotoImg(row.PersonId, "person")
@@ -456,7 +448,7 @@ export function initializeMainDashboard() {
       width: "25%",
       title: i18next.t("Family"),
       data: "FamilyName",
-      render: function (data, type, row) {
+      render: (data, type, row) => {
         if (!row.FamilyId || !row.FamilyName) {
           return '<span class="text-muted">—</span>';
         }
@@ -478,12 +470,12 @@ export function initializeMainDashboard() {
     },
   ];
 
-  let updatedPersonColumns = dataTablePersonColumns.slice();
+  const updatedPersonColumns = dataTablePersonColumns.slice();
   updatedPersonColumns.push({
     width: "20%",
     title: i18next.t("Updated"),
     data: "LastEdited",
-    render: function (data) {
+    render: (data) => {
       if (!data) return "";
       // Parse datetime format and calculate relative time
       return '<small class="text-muted">' + moment(data).fromNow() + "</small>";
@@ -502,18 +494,18 @@ export function initializeMainDashboard() {
   };
   $.extend(dataTableConfig, window.CRM.plugin.dataTable);
   $.extend(dataTableConfig, dataTableDashboardDefaults);
-  let updatedPersonTable = $("#updatedPersonDashboardItem").DataTable(dataTableConfig);
-  updatedPersonTable.on("draw", function () {
+  const updatedPersonTable = $("#updatedPersonDashboardItem").DataTable(dataTableConfig);
+  updatedPersonTable.on("draw", () => {
     syncCartButtons();
     // No need to refresh image loader; inline photos have been removed
   });
 
-  let latestPersonColumns = dataTablePersonColumns.slice();
+  const latestPersonColumns = dataTablePersonColumns.slice();
   latestPersonColumns.push({
     width: "20%",
     title: i18next.t("Created"),
     data: "Created",
-    render: function (data) {
+    render: (data) => {
       if (!data) return "";
       // Parse datetime format and calculate relative time
       return '<small class="text-muted">' + moment(data).fromNow() + "</small>";
@@ -531,8 +523,8 @@ export function initializeMainDashboard() {
   };
   $.extend(dataTableConfig, window.CRM.plugin.dataTable);
   $.extend(dataTableConfig, dataTableDashboardDefaults);
-  let latestPersonTable = $("#latestPersonDashboardItem").DataTable(dataTableConfig);
-  latestPersonTable.on("draw", function () {
+  const latestPersonTable = $("#latestPersonDashboardItem").DataTable(dataTableConfig);
+  latestPersonTable.on("draw", () => {
     syncCartButtons();
     // Refresh image loader for dynamically added photos
     if (window.CRM && window.CRM.peopleImageLoader) {
@@ -552,13 +544,13 @@ export function initializeMainDashboard() {
           path: "families/familiesInCart",
           suppressErrorDialog: true,
         }),
-      ]).then(function (responses) {
-        let cartData = responses[0];
-        let familiesData = responses[1];
+      ]).then((responses) => {
+        const cartData = responses[0];
+        const familiesData = responses[1];
 
-        let peopleInCart = cartData.PeopleCart || [];
-        let familiesInCart = familiesData.familiesInCart || [];
-        let groupsInCart = cartData.GroupCart || [];
+        const peopleInCart = cartData.PeopleCart || [];
+        const familiesInCart = familiesData.familiesInCart || [];
+        const groupsInCart = cartData.GroupCart || [];
 
         window.CRM.cartManager.syncButtonStates(peopleInCart, familiesInCart, groupsInCart);
       });
@@ -574,10 +566,10 @@ export function initializeMainDashboard() {
 
   // Today's Events widget
   if ($("#todayEventsDashboardItem").length > 0) {
-    let todayEventsConfig = {
+    const todayEventsConfig = {
       ajax: {
         url: window.CRM.root + "/api/events/today",
-        dataSrc: function (json) {
+        dataSrc: (json) => {
           if (!json.events || json.events.length === 0) {
             $("#todayEventsDashboardItem")
               .closest(".card-body")
@@ -602,8 +594,7 @@ export function initializeMainDashboard() {
           width: "35%",
           title: i18next.t("Event"),
           data: "title",
-          render: function (data, type, row) {
-            return (
+          render: (data, type, row) => (
               '<a href="' +
               window.CRM.root +
               "/Checkin.php?EventID=" +
@@ -611,14 +602,13 @@ export function initializeMainDashboard() {
               '"><strong>' +
               window.CRM.escapeHtml(data) +
               "</strong></a>"
-            );
-          },
+            ),
         },
         {
           width: "15%",
           title: i18next.t("Type"),
           data: "typeName",
-          render: function (data) {
+          render: (data) => {
             if (!data) return "";
             return '<span class="badge bg-blue-lt">' + window.CRM.escapeHtml(data) + "</span>";
           },
@@ -627,7 +617,7 @@ export function initializeMainDashboard() {
           width: "15%",
           title: i18next.t("Time"),
           data: "start",
-          render: function (data) {
+          render: (data) => {
             if (!data) return "";
             return '<small class="text-muted">' + moment(data).format("h:mm A") + "</small>";
           },
@@ -636,13 +626,13 @@ export function initializeMainDashboard() {
           width: "15%",
           title: i18next.t("Attendance"),
           data: "checkedIn",
-          render: function (data, type, row) {
-            let total = row.totalAttendees || 0;
-            let checked = data || 0;
+          render: (data, type, row) => {
+            const total = row.totalAttendees || 0;
+            const checked = data || 0;
             if (total === 0 && checked === 0) {
               return '<span class="text-muted">—</span>';
             }
-            let badgeClass = checked > 0 ? "bg-green-lt" : "bg-secondary-lt";
+            const badgeClass = checked > 0 ? "bg-green-lt" : "bg-secondary-lt";
             return '<span class="badge ' + badgeClass + '">' + checked + " / " + total + "</span>";
           },
         },
@@ -652,8 +642,7 @@ export function initializeMainDashboard() {
           data: "id",
           orderable: false,
           className: "no-export",
-          render: function (data) {
-            return (
+          render: (data) => (
               '<a href="' +
               window.CRM.root +
               "/Checkin.php?EventID=" +
@@ -662,8 +651,7 @@ export function initializeMainDashboard() {
               '<i class="fa-solid fa-clipboard-check me-1"></i>' +
               i18next.t("Check-in") +
               "</a>"
-            );
-          },
+            ),
         },
       ],
     };
@@ -676,8 +664,8 @@ export function initializeMainDashboard() {
     window.CRM.APIRequest({
       method: "GET",
       path: "deposits/dashboard",
-    }).done(function (data) {
-      let lineDataRaw = data;
+    }).done((data) => {
+      const lineDataRaw = data;
 
       if (!lineDataRaw || lineDataRaw.length === 0) {
         $("#depositChartRow .card-body").html(
@@ -694,9 +682,9 @@ export function initializeMainDashboard() {
         return;
       }
 
-      let labels = [];
-      let values = [];
-      $.each(lineDataRaw, function (i, val) {
+      const labels = [];
+      const values = [];
+      $.each(lineDataRaw, (i, val) => {
         labels.push(moment(val.Date).format("MM-DD-YY"));
         values.push(val.totalAmount);
       });

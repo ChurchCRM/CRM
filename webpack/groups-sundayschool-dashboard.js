@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const data = await response.json();
         window.location.href = `${window.CRM.root}/groups/sundayschool/class/${data.Id}`;
       } catch (error) {
-        console.error("Failed to create Sunday School class:", error);
+        window.CRM.notify(i18next.t("Failed to create class. Please try again."), { type: "danger", delay: 5000 });
       }
     });
   }
@@ -73,7 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       window.CRM.notify(i18next.t("Members added to cart."), { type: "success", delay: 3000 });
     } catch (error) {
-      console.error("Failed to add members to cart:", error);
       window.CRM.notify(i18next.t("Failed to add members to cart. Please try again."), { type: "danger", delay: 5000 });
     }
   });
@@ -122,7 +121,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = await createRes.json();
       window.location.href = `${window.CRM.root}/Checkin.php?EventID=${data.eventId}`;
     } catch (error) {
-      console.error("Failed to start check-in:", error);
       // Fall back to check-in page
       window.location.href = `${window.CRM.root}/Checkin.php`;
     }
@@ -148,7 +146,6 @@ document.addEventListener("DOMContentLoaded", () => {
             window.location.reload();
           })
           .catch((error) => {
-            console.error("Failed to delete class:", error);
             window.CRM.notify(i18next.t("Failed to delete class. Please try again."), { type: "danger", delay: 5000 });
           });
       },

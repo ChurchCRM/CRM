@@ -175,21 +175,21 @@ require_once __DIR__ . '/Include/Header.php';
 
 <div class="mb-3">
     <a href="ListEvents.php" class="btn btn-outline-secondary">
-        <i class="fas fa-chevron-left mr-1"></i>
+        <i class="ti ti-chevron-left me-1"></i>
         <?= gettext('Return to Events') ?>
     </a>
 </div>
 
-<div class="card card-primary">
+<div class="card">
     <div class="card-header">
         <h3 class="card-title mb-0">
-            <i class="fas fa-redo mr-2"></i><?= gettext('Create Repeat Events') ?>
+            <i class="ti ti-repeat me-2"></i><?= gettext('Create Repeat Events') ?>
         </h3>
     </div>
     <div class="card-body">
         <?php if ($iErrors > 0): ?>
             <div class="alert alert-danger">
-                <i class="fas fa-exclamation-triangle mr-2"></i>
+                <i class="ti ti-alert-triangle me-2"></i>
                 <?= InputUtils::escapeHTML($errorMsg) ?>
             </div>
         <?php endif; ?>
@@ -207,20 +207,20 @@ require_once __DIR__ . '/Include/Header.php';
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="EventTypeID" class="font-weight-bold">
+                            <div class="mb-3">
+                                <label for="EventTypeID" class="fw-bold">
                                     <span class="text-danger">*</span> <?= gettext('Event Type') ?>
                                 </label>
                                 <?php if ($iTypeID > 0 && $eventType !== null): ?>
                                     <input type="hidden" name="EventTypeID" value="<?= InputUtils::escapeAttribute($iTypeID) ?>">
                                     <div class="form-control-plaintext">
-                                        <span class="badge badge-info event-type-badge"><?= InputUtils::escapeHTML($sTypeName) ?></span>
-                                        <a href="RepeatEventEditor.php" class="btn btn-sm btn-outline-secondary ml-2">
-                                            <i class="fas fa-exchange-alt mr-1"></i><?= gettext('Change') ?>
+                                        <span class="badge bg-info-lt text-info"><?= InputUtils::escapeHTML($sTypeName) ?></span>
+                                        <a href="RepeatEventEditor.php" class="btn btn-sm btn-outline-secondary ms-2">
+                                            <i class="ti ti-switch-horizontal me-1"></i><?= gettext('Change') ?>
                                         </a>
                                     </div>
                                 <?php else: ?>
-                                    <select name="EventTypeID" id="EventTypeID" class="form-control" required>
+                                    <select name="EventTypeID" id="EventTypeID" class="form-select" required>
                                         <option value=""><?= gettext('Select an event type…') ?></option>
                                         <?php foreach ($allEventTypes as $et): ?>
                                             <option value="<?= InputUtils::escapeAttribute($et->getId()) ?>"
@@ -233,8 +233,8 @@ require_once __DIR__ . '/Include/Header.php';
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="EventTitle" class="font-weight-bold">
+                            <div class="mb-3">
+                                <label for="EventTitle" class="fw-bold">
                                     <span class="text-danger">*</span> <?= gettext('Event Title') ?>
                                 </label>
                                 <input type="text" name="EventTitle" id="EventTitle" class="form-control"
@@ -246,8 +246,8 @@ require_once __DIR__ . '/Include/Header.php';
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="font-weight-bold"><?= gettext('Event Description') ?></label>
+                    <div class="mb-3">
+                        <label class="fw-bold"><?= gettext('Event Description') ?></label>
                         <?= getQuillEditorContainer('EventDesc', 'EventDescInput', '', 'form-control', '80px') ?>
                     </div>
                 </div>
@@ -261,8 +261,8 @@ require_once __DIR__ . '/Include/Header.php';
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="StartTime" class="font-weight-bold">
+                            <div class="mb-3">
+                                <label for="StartTime" class="fw-bold">
                                     <span class="text-danger">*</span> <?= gettext('Start Time') ?>
                                 </label>
                                 <input type="time" name="StartTime" id="StartTime" class="form-control"
@@ -270,8 +270,8 @@ require_once __DIR__ . '/Include/Header.php';
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="EndTime" class="font-weight-bold">
+                            <div class="mb-3">
+                                <label for="EndTime" class="fw-bold">
                                     <span class="text-danger">*</span> <?= gettext('End Time') ?>
                                 </label>
                                 <input type="time" name="EndTime" id="EndTime" class="form-control"
@@ -292,10 +292,10 @@ require_once __DIR__ . '/Include/Header.php';
                     <div class="event-recurrence-patterns">
                         <!-- Weekly -->
                         <div class="form-check mb-3 d-flex align-items-center flex-wrap">
-                            <input class="form-check-input mt-0 mr-2" type="radio" name="RecurType" id="recurWeekly"
+                            <input class="form-check-input mt-0 me-2" type="radio" name="RecurType" id="recurWeekly"
                                    value="weekly" <?= ($sDefRecurType === 'weekly') ? 'checked' : '' ?>>
-                            <label class="form-check-label mr-3 mb-0 recur-label" for="recurWeekly"><?= gettext('Every week on') ?></label>
-                            <select name="RecurDOW" id="RecurDOW" class="form-control form-control-sm recur-select-dow"
+                            <label class="form-check-label me-3 mb-0 recur-label" for="recurWeekly"><?= gettext('Every week on') ?></label>
+                            <select name="RecurDOW" id="RecurDOW" class="form-select form-select-sm recur-select-dow"
                                 <?= ($sDefRecurType !== 'weekly') ? 'disabled' : '' ?>>
                                 <?php
                                 $days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -309,10 +309,10 @@ require_once __DIR__ . '/Include/Header.php';
 
                         <!-- Monthly -->
                         <div class="form-check mb-3 d-flex align-items-center flex-wrap">
-                            <input class="form-check-input mt-0 mr-2" type="radio" name="RecurType" id="recurMonthly"
+                            <input class="form-check-input mt-0 me-2" type="radio" name="RecurType" id="recurMonthly"
                                    value="monthly" <?= ($sDefRecurType === 'monthly') ? 'checked' : '' ?>>
-                            <label class="form-check-label mr-3 mb-0 recur-label" for="recurMonthly"><?= gettext('Every month on the') ?></label>
-                            <select name="RecurDOM" id="RecurDOM" class="form-control form-control-sm recur-select-dom"
+                            <label class="form-check-label me-3 mb-0 recur-label" for="recurMonthly"><?= gettext('Every month on the') ?></label>
+                            <select name="RecurDOM" id="RecurDOM" class="form-select form-select-sm recur-select-dom"
                                 <?= ($sDefRecurType !== 'monthly') ? 'disabled' : '' ?>>
                                 <?php for ($d = 1; $d <= 31; $d++): ?>
                                     <option value="<?= $d ?>" <?= ($iDefRecurDOM === $d) ? 'selected' : '' ?>>
@@ -324,15 +324,15 @@ require_once __DIR__ . '/Include/Header.php';
 
                         <!-- Yearly -->
                         <div class="form-check mb-3 d-flex align-items-center flex-wrap">
-                            <input class="form-check-input mt-0 mr-2" type="radio" name="RecurType" id="recurYearly"
+                            <input class="form-check-input mt-0 me-2" type="radio" name="RecurType" id="recurYearly"
                                    value="yearly" <?= ($sDefRecurType === 'yearly') ? 'checked' : '' ?>>
-                            <label class="form-check-label mr-3 mb-0 recur-label" for="recurYearly"><?= gettext('Every year on') ?></label>
+                            <label class="form-check-label me-3 mb-0 recur-label" for="recurYearly"><?= gettext('Every year on') ?></label>
                             <input type="text" name="RecurDOY" id="RecurDOY" class="form-control form-control-sm recur-input-doy"
                                    placeholder="MM-DD"
                                    value="<?= InputUtils::escapeAttribute($sDefRecurDOY) ?>"
                                    pattern="\d{2}-\d{2}" title="<?= gettext('Format: MM-DD (e.g. 04-12 for April 12)') ?>"
                                 <?= ($sDefRecurType !== 'yearly') ? 'disabled' : '' ?>>
-                            <small class="text-muted ml-2"><?= gettext('Format: MM-DD (e.g. 04-12 for April 12)') ?></small>
+                            <small class="text-secondary ms-2"><?= gettext('Format: MM-DD (e.g. 04-12 for April 12)') ?></small>
                         </div>
                     </div>
                 </div>
@@ -349,15 +349,15 @@ require_once __DIR__ . '/Include/Header.php';
                     </p>
                     <div class="row">
                         <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="RangeStart" class="font-weight-bold"><?= gettext('From') ?></label>
+                            <div class="mb-3">
+                                <label for="RangeStart" class="fw-bold"><?= gettext('From') ?></label>
                                 <input type="date" name="RangeStart" id="RangeStart" class="form-control"
                                        value="<?= InputUtils::escapeAttribute($sRangeStart) ?>" required>
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="RangeEnd" class="font-weight-bold"><?= gettext('To') ?></label>
+                            <div class="mb-3">
+                                <label for="RangeEnd" class="fw-bold"><?= gettext('To') ?></label>
                                 <input type="date" name="RangeEnd" id="RangeEnd" class="form-control"
                                        value="<?= InputUtils::escapeAttribute($sRangeEnd) ?>" required>
                             </div>
@@ -376,8 +376,8 @@ require_once __DIR__ . '/Include/Header.php';
                         <!-- Calendars -->
                         <?php if ($allCalendars->count() > 0): ?>
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="font-weight-bold"><?= gettext('Pin to Calendars') ?></label>
+                            <div class="mb-3">
+                                <label class="fw-bold"><?= gettext('Pin to Calendars') ?></label>
                                 <?php foreach ($allCalendars as $calendar): ?>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" name="PinnedCalendars[]"
@@ -394,9 +394,9 @@ require_once __DIR__ . '/Include/Header.php';
 
                         <!-- Linked Group -->
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="LinkedGroupId" class="font-weight-bold"><?= gettext('Linked Group') ?></label>
-                                <select name="LinkedGroupId" id="LinkedGroupId" class="form-control">
+                            <div class="mb-3">
+                                <label for="LinkedGroupId" class="fw-bold"><?= gettext('Linked Group') ?></label>
+                                <select name="LinkedGroupId" id="LinkedGroupId" class="form-select">
                                     <option value="0"><?= gettext('No Group (Select for Kiosk Check-in)') ?></option>
                                     <?php foreach ($allGroups as $group): ?>
                                         <option value="<?= InputUtils::escapeAttribute($group->getId()) ?>">
@@ -412,16 +412,16 @@ require_once __DIR__ . '/Include/Header.php';
                     </div>
 
                     <!-- Status -->
-                    <div class="form-group">
-                        <label class="font-weight-bold"><?= gettext('Event Status') ?></label>
-                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                            <label class="btn btn-outline-success active">
-                                <input type="radio" name="EventStatus" value="0" checked>
-                                <i class="fas fa-check mr-1"></i><?= gettext('Active') ?>
+                    <div class="mb-3">
+                        <label class="fw-bold"><?= gettext('Event Status') ?></label>
+                        <div class="btn-group" role="group">
+                            <input type="radio" class="btn-check" name="EventStatus" id="statusActive" value="0" checked autocomplete="off">
+                            <label class="btn btn-outline-success" for="statusActive">
+                                <i class="ti ti-check me-1"></i><?= gettext('Active') ?>
                             </label>
-                            <label class="btn btn-outline-secondary">
-                                <input type="radio" name="EventStatus" value="1">
-                                <i class="fas fa-ban mr-1"></i><?= gettext('Inactive') ?>
+                            <input type="radio" class="btn-check" name="EventStatus" id="statusInactive" value="1" autocomplete="off">
+                            <label class="btn btn-outline-secondary" for="statusInactive">
+                                <i class="ti ti-ban me-1"></i><?= gettext('Inactive') ?>
                             </label>
                         </div>
                     </div>
@@ -430,10 +430,10 @@ require_once __DIR__ . '/Include/Header.php';
 
             <div class="d-flex justify-content-between">
                 <a href="ListEvents.php" class="btn btn-outline-secondary">
-                    <i class="fas fa-times mr-1"></i><?= gettext('Cancel') ?>
+                    <i class="ti ti-x me-1"></i><?= gettext('Cancel') ?>
                 </a>
                 <button type="submit" name="CreateRepeat" value="1" class="btn btn-primary btn-lg">
-                    <i class="fas fa-redo mr-1"></i><?= gettext('Create Repeat Events') ?>
+                    <i class="ti ti-repeat me-1"></i><?= gettext('Create Repeat Events') ?>
                 </button>
             </div>
         </form>

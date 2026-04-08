@@ -121,6 +121,18 @@ return SlimUtils::renderErrorJSON($response, gettext('Validation failed'), ['err
 - ❌ Return raw exception messages (use gettext() for localization and sanitization)
 - ❌ Log exceptions separately in routes (renderErrorJSON handles all logging)
 
+### Never Throw HttpBadRequestException in Route Handlers <!-- learned: 2026-04-07 -->
+
+API route handlers must use `SlimUtils::renderErrorJSON()` instead of throwing `HttpBadRequestException`. Thrown exceptions can expose stack traces and bypass the custom error handler. `HttpNotFoundException` is fine to throw (Slim handles it natively), but `HttpBadRequestException` should return a JSON error response directly.
+
+```php
+// ✅ CORRECT
+return SlimUtils::renderErrorJSON($response, gettext('invalid event type id'), [], 400);
+
+// ❌ WRONG — can expose stack traces
+throw new HttpBadRequestException($request, gettext('invalid event type id'));
+```
+
 ## API Response Standardization
 
 **Maintain consistent error response format across all APIs** to prevent client-side errors.

@@ -182,6 +182,10 @@ class TimelineService
                 $item['style'] = 'fa-calendar';
                 $item['color'] = 'success';
                 break;
+            case 'event':
+                $item['style'] = 'fa-calendar-check';
+                $item['color'] = 'success';
+                break;
             case 'verify':
             case 'verify-link':
             case 'verify-URL':

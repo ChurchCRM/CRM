@@ -22,7 +22,6 @@ use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\Join;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Exception\HttpBadRequestException;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 
@@ -301,14 +300,14 @@ function newEvent(Request $request, Response $response, array $args): Response
     $type = EventTypeQuery::create()
         ->findOneById($input['Type']);
     if (empty($type)) {
-        throw new HttpBadRequestException($request, gettext('invalid event type id'));
+        return SlimUtils::renderErrorJSON($response, gettext('invalid event type id'), 400);
     }
 
     $calendars = CalendarQuery::create()
         ->filterById($input['PinnedCalendars'])
         ->find();
     if (count($calendars) !== count($input['PinnedCalendars'])) {
-        throw new HttpBadRequestException($request, gettext('invalid calendar pinning'));
+        return SlimUtils::renderErrorJSON($response, gettext('invalid calendar pinning'), 400);
     }
 
     // we have event type and pined calendars.  now create the event.
@@ -370,7 +369,7 @@ function createRepeatEvents(Request $request, Response $response, array $args): 
     $validRecurTypes = ['weekly', 'monthly', 'yearly'];
     $recurType = $input['RecurType'] ?? '';
     if (!in_array($recurType, $validRecurTypes, true)) {
-        throw new HttpBadRequestException($request, gettext('invalid recurrence type'));
+        return SlimUtils::renderErrorJSON($response, gettext('invalid recurrence type'), 400);
     }
 
     try {
@@ -393,7 +392,7 @@ function createRepeatEvents(Request $request, Response $response, array $args): 
             'inactive'       => (int) ($input['Inactive'] ?? 0),
         ]);
     } catch (\InvalidArgumentException $e) {
-        throw new HttpBadRequestException($request, $e->getMessage());
+        return SlimUtils::renderErrorJSON($response, $e->getMessage(), 400);
     }
 
     return SlimUtils::renderJSON($response, [

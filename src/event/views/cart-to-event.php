@@ -33,7 +33,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         <div class="d-flex align-items-center">
                                             <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="avatar avatar-sm rounded-circle me-2" alt="" />
                                             <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $person->getId() ?>">
-                                                <?= $person->getFullName() ?>
+                                                <?= InputUtils::escapeHTML($person->getFullName()) ?>
                                             </a>
                                         </div>
                                     </td>
@@ -60,7 +60,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <option value="0" <?= ($selectedEventType === 0) ? 'selected' : '' ?>><?= gettext('All Event Types') ?></option>
                                 <?php foreach ($aEventTypes as $eventType) { ?>
                                     <option value="<?= $eventType->getId() ?>" <?= ($selectedEventType === $eventType->getId()) ? 'selected' : '' ?>>
-                                        <?= $eventType->getName() ?>
+                                        <?= InputUtils::escapeHTML($eventType->getName()) ?>
                                     </option>
                                 <?php } ?>
                             </select>
@@ -76,7 +76,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <select id="EventID" name="EventID" class="form-select" required>
                                 <option value="" disabled selected><?= gettext('Choose an event...') ?></option>
                                 <?php foreach ($aEvents as $evt) { ?>
-                                    <option value="<?= $evt->getId() ?>"><?= $evt->getTitle() ?></option>
+                                    <option value="<?= $evt->getId() ?>"><?= InputUtils::escapeHTML($evt->getTitle()) ?></option>
                                 <?php } ?>
                             </select>
                         </div>

@@ -5,7 +5,7 @@
  * Uses TomSelect AJAX for person search.
  */
 
-$(function () {
+$(() => {
   // Initialize DataTable for already checked-in people
   if ($("#checkedinTable").length > 0) {
     $("#checkedinTable").DataTable(window.CRM.plugin.dataTable);
@@ -36,34 +36,26 @@ function initializePersonSearchFields() {
       labelField: "text",
       searchField: "text",
       placeholder: placeholder,
-      load: function (query, callback) {
+      load: (query, callback) => {
         if (query.length < 2) return callback();
         fetch(window.CRM.root + "/api/persons/search/" + encodeURIComponent(query))
-          .then(function (response) {
-            return response.json();
-          })
-          .then(function (data) {
+          .then((response) => response.json())
+          .then((data) => {
             callback(
-              data.map(function (person) {
-                return {
+              data.map((person) => ({
                   objid: person.objid,
                   text: person.text,
                   uri: person.uri,
-                };
-              }),
+                })),
             );
           })
-          .catch(function () {
+          .catch(() => {
             callback();
           });
       },
       render: {
-        option: function (data, escapeHtmlTs) {
-          return "<div>" + escapeHtmlTs(data.text) + "</div>";
-        },
-        item: function (data, escapeHtmlTs) {
-          return "<div>" + escapeHtmlTs(data.text) + "</div>";
-        },
+        option: (data, escapeHtmlTs) => "<div>" + escapeHtmlTs(data.text) + "</div>",
+        item: (data, escapeHtmlTs) => "<div>" + escapeHtmlTs(data.text) + "</div>",
       },
       onChange: function (value) {
         // Dispatch a custom event so bindPersonSearchEvents can react
@@ -83,7 +75,7 @@ function bindPersonSearchEvents() {
   // Handle person selection for child field - update hidden field and show details
   $("#child")
     .off("tomselect:change")
-    .on("tomselect:change", function (e, value, tsInstance) {
+    .on("tomselect:change", (e, value, tsInstance) => {
       if (value) {
         const selectedData = tsInstance.options[value];
         $("#child-id").val(selectedData.objid);
@@ -97,7 +89,7 @@ function bindPersonSearchEvents() {
   // Handle person selection for adult field
   $("#adult")
     .off("tomselect:change")
-    .on("tomselect:change", function (e, value, tsInstance) {
+    .on("tomselect:change", (e, value, tsInstance) => {
       if (value) {
         const selectedData = tsInstance.options[value];
         $("#adult-id").val(selectedData.objid);
@@ -111,7 +103,7 @@ function bindPersonSearchEvents() {
   // Handle person selection for adultout field (checkout form)
   $("#adultout")
     .off("tomselect:change")
-    .on("tomselect:change", function (e, value, tsInstance) {
+    .on("tomselect:change", (e, value, tsInstance) => {
       if (value) {
         const selectedData = tsInstance.options[value];
         $("#adultout-id").val(selectedData.objid);
@@ -123,10 +115,10 @@ function bindPersonSearchEvents() {
   // When form is reset, clear all selections and details
   $("#AddAttendees")
     .off("reset")
-    .on("reset", function () {
+    .on("reset", () => {
       // Use setTimeout to allow the form reset to complete first
-      setTimeout(function () {
-        ["#child", "#adult"].forEach(function (sel) {
+      setTimeout(() => {
+        ["#child", "#adult"].forEach((sel) => {
           var el = document.querySelector(sel);
           if (el && el.tomselect) {
             el.tomselect.clear(true);
@@ -161,7 +153,7 @@ function displayPersonDetails(element, person) {
       '<i class="fa-solid fa-circle-check text-success me-2"></i>' +
       '<a href="' +
       personViewUrl +
-      '" class="text-dark fw-bold" target="_blank">' +
+      '" class="text-dark fw-bold" target="_blank" rel="noopener noreferrer">' +
       escapeHtml(person.text) +
       "</a>" +
       "</div>";
@@ -189,57 +181,57 @@ function escapeHtml(text) {
 // Roster-Based Check-in (for group-linked events)
 // =============================================================================
 
-$(function () {
-  var $rosterContainer = $("#rosterCheckin");
+$(() => {
+  const $rosterContainer = $("#rosterCheckin");
   if ($rosterContainer.length === 0) return;
 
-  var eventId = $rosterContainer.data("event-id");
+  const eventId = $rosterContainer.data("event-id");
   if (!eventId) return;
 
   loadRoster(eventId);
 
   // Batch check-in all
   $("#checkinAllBtn").on("click", function () {
-    var $btn = $(this);
+    const $btn = $(this);
     $btn.prop("disabled", true);
     fetch(window.CRM.root + "/api/events/" + eventId + "/checkin-all", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
     })
-      .then(function (res) {
+      .then((res) => {
         if (!res.ok) throw new Error("HTTP " + res.status);
         return res.json();
       })
-      .then(function () {
+      .then(() => {
         loadRoster(eventId);
       })
-      .catch(function () {
+      .catch(() => {
         window.CRM.DisplayAlert(i18next.t("Error"), i18next.t("Check-in failed. Please try again."));
       })
-      .finally(function () {
+      .finally(() => {
         $btn.prop("disabled", false);
       });
   });
 
   // Batch check-out all
   $("#checkoutAllBtn").on("click", function () {
-    var $btn = $(this);
+    const $btn = $(this);
     $btn.prop("disabled", true);
     fetch(window.CRM.root + "/api/events/" + eventId + "/checkout-all", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
     })
-      .then(function (res) {
+      .then((res) => {
         if (!res.ok) throw new Error("HTTP " + res.status);
         return res.json();
       })
-      .then(function () {
+      .then(() => {
         loadRoster(eventId);
       })
-      .catch(function () {
+      .catch(() => {
         window.CRM.DisplayAlert(i18next.t("Error"), i18next.t("Check-out failed. Please try again."));
       })
-      .finally(function () {
+      .finally(() => {
         $btn.prop("disabled", false);
       });
   });
@@ -251,12 +243,12 @@ $(function () {
  */
 function loadRoster(eventId) {
   fetch(window.CRM.root + "/api/events/" + eventId + "/roster")
-    .then(function (res) {
+    .then((res) => {
       if (!res.ok) throw new Error("HTTP " + res.status);
       return res.json();
     })
-    .then(function (data) {
-      var $container = $("#rosterCheckin");
+    .then((data) => {
+      const $container = $("#rosterCheckin");
 
       // If no group members, hide roster and keep the walk-in form as primary
       if (!data.members || data.members.length === 0) {
@@ -269,23 +261,21 @@ function loadRoster(eventId) {
       $("#walkinCardTitle").text(i18next.t("Add Walk-in / Visitor"));
 
       // Update group name
-      var groupNames = data.groups.map(function (g) {
-        return g.name;
-      });
+      const groupNames = data.groups.map((g) => g.name);
       $("#rosterGroupName").text(groupNames.length > 0 ? "— " + groupNames.join(", ") : "");
 
       // Update stats
-      var stats = data.stats;
+      const stats = data.stats;
       $("#rosterStats").text(stats.checkedIn + " / " + stats.total + " " + i18next.t("checked in"));
 
       // Render member lists
-      var $notCheckedIn = $("#notCheckedInList").empty();
-      var $checkedIn = $("#checkedInList").empty();
-      var notCheckedInCount = 0;
-      var checkedInCount = 0;
+      const $notCheckedIn = $("#notCheckedInList").empty();
+      const $checkedIn = $("#checkedInList").empty();
+      let notCheckedInCount = 0;
+      let checkedInCount = 0;
 
-      data.members.forEach(function (member) {
-        var card = buildMemberCard(member, eventId);
+      data.members.forEach((member) => {
+        const card = buildMemberCard(member, eventId);
         if (member.status === "checked_in") {
           $checkedIn.append(card);
           checkedInCount++;
@@ -307,8 +297,7 @@ function loadRoster(eventId) {
       $("#rosterLoading").addClass("d-none");
       $("#rosterGrid").removeClass("d-none");
     })
-    .catch(function (err) {
-      console.error("Failed to load roster:", err);
+    .catch(() => {
       $("#rosterCheckin").addClass("d-none");
     });
 }
@@ -320,15 +309,15 @@ function loadRoster(eventId) {
  * @returns {string} HTML string
  */
 function buildMemberCard(member, eventId) {
-  var isCheckedIn = member.status === "checked_in";
-  var btnClass = isCheckedIn ? "btn-outline-secondary" : "btn-success";
-  var btnIcon = isCheckedIn ? "ti-door-exit" : "ti-check";
-  var btnText = isCheckedIn ? i18next.t("Check Out") : i18next.t("Check In");
-  var action = isCheckedIn ? "checkout" : "checkin";
+  const isCheckedIn = member.status === "checked_in";
+  const btnClass = isCheckedIn ? "btn-outline-secondary" : "btn-success";
+  const btnIcon = isCheckedIn ? "ti-door-exit" : "ti-check";
+  const btnText = isCheckedIn ? i18next.t("Check Out") : i18next.t("Check In");
+  const action = isCheckedIn ? "checkout" : "checkin";
 
-  var roleBadge = member.role ? '<span class="badge bg-blue-lt ms-2">' + escapeHtml(member.role) + "</span>" : "";
+  const roleBadge = member.role ? '<span class="badge bg-blue-lt ms-2">' + escapeHtml(member.role) + "</span>" : "";
 
-  var photoHtml = member.hasPhoto
+  const photoHtml = member.hasPhoto
     ? '<span class="avatar avatar-sm me-2" style="background-image: url(' +
       window.CRM.root +
       "/api/person/" +
@@ -336,12 +325,12 @@ function buildMemberCard(member, eventId) {
       '/photo)"></span>'
     : '<span class="avatar avatar-sm me-2 bg-primary-lt"><i class="ti ti-user"></i></span>';
 
-  var timeInfo = "";
+  let timeInfo = "";
   if (isCheckedIn && member.checkinTime) {
     timeInfo = '<small class="text-secondary ms-2">' + escapeHtml(member.checkinTime) + "</small>";
   }
 
-  var html =
+  const html =
     '<div class="d-flex align-items-center justify-content-between p-2 border rounded roster-member" data-person-id="' +
     member.personId +
     '">' +
@@ -375,10 +364,10 @@ function buildMemberCard(member, eventId) {
 
 // Delegate click handler for roster action buttons
 $(document).on("click", ".roster-action-btn", function () {
-  var $btn = $(this);
-  var action = $btn.data("action");
-  var personId = $btn.data("person-id");
-  var eventId = $btn.data("event-id");
+  const $btn = $(this);
+  const action = $btn.data("action");
+  const personId = $btn.data("person-id");
+  const eventId = $btn.data("event-id");
 
   $btn.prop("disabled", true);
 
@@ -387,16 +376,15 @@ $(document).on("click", ".roster-action-btn", function () {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ personId: personId }),
   })
-    .then(function (res) {
+    .then((res) => {
       if (!res.ok) throw new Error("HTTP " + res.status);
       return res.json();
     })
-    .then(function () {
+    .then(() => {
       // Reload roster to reflect changes
       loadRoster(eventId);
     })
-    .catch(function (err) {
-      console.error("Check-in/out failed:", err);
+    .catch(() => {
       $btn.prop("disabled", false);
     });
 });

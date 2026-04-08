@@ -15,14 +15,15 @@ use ChurchCRM\model\ChurchCRM\Base\EventType as BaseEventType;
  */
 class EventType extends BaseEventType
 {
-	public function isSundaySchool(): bool
-	{
-		$groupId = $this->getGroupId();
-		if (empty($groupId)) {
-			return false;
-		}
+    public function isSundaySchool(): bool
+    {
+        $groupId = $this->getGroupId();
+        if (empty($groupId)) {
+            return false;
+        }
 
-		$group = GroupQuery::create()->findPk($groupId);
-		return $group !== null && $group->isSundaySchool();
-	}
+        $group = GroupQuery::create()->findPk((int) $groupId);
+
+        return $group !== null && $group->isSundaySchool();
+    }
 }

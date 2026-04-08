@@ -20,6 +20,9 @@ import type {
 // Declare moment as global (loaded via CDN in header)
 declare const moment: typeof import("moment");
 
+// Declare i18next as global (loaded via skin-core.js)
+declare const i18next: { t(key: string, options?: Record<string, unknown>): string };
+
 // Declare bootstrap on window (set by skin-core.js via @tabler/core)
 declare global {
   interface Window {
@@ -870,14 +873,16 @@ function renderFamilyMemberOptions(members: FamilyMember[]): string {
  */
 function showCheckinByModal(personId: number, action: "checkin" | "checkout", personName: string): void {
   const isCheckin = action === "checkin";
-  const title = isCheckin ? "Who is bringing in " + personName + "?" : "Who is picking up " + personName + "?";
+  const title = isCheckin
+    ? i18next.t("Who is bringing in {{name}}?", { name: personName })
+    : i18next.t("Who is picking up {{name}}?", { name: personName });
 
   // Set modal title
   $("#checkinByModalTitle").text(title);
 
   // Show loading state
   $("#checkinByModalBody").html(
-    '<div class="text-center py-4"><i class="fa-solid fa-spinner fa-spin fa-2x text-primary"></i><p class="mt-2 text-muted">Loading family members...</p></div>',
+    `<div class="text-center py-4"><i class="fa-solid fa-spinner fa-spin fa-2x text-primary"></i><p class="mt-2 text-muted">${i18next.t("Loading family members...")}</p></div>`,
   );
 
   // Store the callback to invoke after selection

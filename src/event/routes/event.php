@@ -80,7 +80,7 @@ $app->post('/cart-to-event', function (Request $request, Response $response) {
                 $eventAttend = new EventAttend();
                 $eventAttend
                     ->setEventId($iEventID)
-                    ->setPersonId($element);
+                    ->setPersonId((int) $element);
                 $eventAttend->save();
                 $iCount++;
             } catch (\Throwable $ex) {

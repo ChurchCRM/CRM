@@ -10,7 +10,6 @@ use ChurchCRM\model\ChurchCRM\EventCountNameQuery;
 use ChurchCRM\model\ChurchCRM\EventCountName;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
-use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 
 AuthenticationManager::redirectHomeIfNotAdmin();
@@ -175,7 +174,7 @@ if ($numCounts) {
         </div>
 
           <div class="form-group">
-            <label class="font-weight-bold"><?= gettext('Settings') ?></label>
+            <label class="fw-bold"><?= gettext('Settings') ?></label>
             <div class="row">
               <div class="col-md-4">
                 <div class="form-check">
@@ -184,8 +183,8 @@ if ($numCounts) {
                 </div>
               </div>
               <div class="col-md-6">
-                <label class="sr-only" for="type_grpid"><?= gettext('Linked Group') ?></label>
-                <select class="form-control" id="type_grpid" name="type_grpid">
+                <label class="visually-hidden" for="type_grpid"><?= gettext('Linked Group') ?></label>
+                <select class="form-select" id="type_grpid" name="type_grpid">
                   <option value="0"><?= gettext('No Group') ?></option>
                   <?php
                   $groups = GroupQuery::create()->orderByName()->find();

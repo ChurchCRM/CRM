@@ -384,6 +384,21 @@ $sSQL = 'ALTER TABLE `person_custom` DROP IF EXISTS `' . $sField . '`';
 RunQuery($sSQL);
 ```
 
+### Timeline Note Types for Event Check-in/out <!-- learned: 2026-04-07 -->
+
+The `Note` model supports a `type` field for filtering. Existing types: `note`, `create`, `edit`, `verify`, `group`, `photo`, `user`, `cal`. The `event` type is used for check-in/out timeline entries. Use `setType('event')` and add the type to `TimelineService::createTimeLineItem()` switch for icon/color mapping.
+
+```php
+$note = new Note();
+$note->setPerId($personId);
+$note->setFamId(0);
+$note->setText(sprintf(gettext('Checked in to event: %s'), $event->getTitle()));
+$note->setType('event');
+$note->setPrivate(0);
+$note->setEntered($currentUserId);
+$note->save();
+```
+
 ### MySQL ENUM Columns Need Exact String Values <!-- learned: 2026-04-03 -->
 
 When a MySQL column uses `ENUM('Sunday','Monday',...)`, Propel setters require the
