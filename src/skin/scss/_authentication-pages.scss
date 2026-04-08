@@ -283,6 +283,8 @@ body.page-auth .mb-3 {
   text-align: center !important;
   font-weight: 300 !important;
   font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Courier New', monospace;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 // Form footer with links
@@ -588,6 +590,7 @@ body.page-auth .alert {
   z-index: 3;
   margin-top: auto;
   padding: 40px 20px 20px;
+  padding-bottom: max(20px, env(safe-area-inset-bottom));
   text-align: center;
   color: rgba(255, 255, 255, 0.8);
   font-size: 13px;
@@ -606,13 +609,18 @@ body.page-auth .alert {
 
 .auth-footer-social {
   margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
 
   a {
-    display: inline-block;
-    margin: 0 8px;
-    width: 32px;
-    height: 32px;
-    line-height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    // 44px minimum touch target per Apple/Google guidelines
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.15);
     transition: all 0.2s;
@@ -624,7 +632,7 @@ body.page-auth .alert {
     }
 
     i {
-      font-size: 14px;
+      font-size: 16px;
     }
   }
 }
@@ -850,6 +858,20 @@ body.page-auth .btn {
   }
 
   .register-benefits li {
+    font-size: 12px;
+  }
+
+  // 2FA code input — reduce size to prevent overflow on narrow screens
+  #TwoFACode {
+    font-size: 1.5em !important;
+    letter-spacing: 0.2em !important;
+    padding: 10px 8px !important;
+  }
+
+  // Footer — reduce top padding on mobile, keep touch targets
+  .auth-footer {
+    padding: 24px 16px 16px;
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
     font-size: 12px;
   }
 }

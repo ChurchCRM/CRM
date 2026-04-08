@@ -1,6 +1,7 @@
 /* ChurchCRM Family Registration Styles */
 
 .register-box {
+  width: 90%;
   margin: 30px auto;
   position: relative;
   z-index: 2;
@@ -21,6 +22,13 @@
   color: white;
   padding: 20px;
   margin: 0 -30px 30px -30px;
+}
+
+/* Stepper label: hide text on very small screens, show only circle */
+@media (max-width: 400px) {
+  .bs-stepper-label {
+    display: none;
+  }
 }
 
 .step-header h4 {
@@ -109,37 +117,36 @@
 .member-card .row {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
 }
 
 .member-card .mb-3 {
   margin-bottom: 1rem;
 }
 
-.member-card .row > [class*="col-"] {
-  padding-right: 15px;
-  padding-left: 15px;
+/* Column widths — only enforce at md breakpoint and above so they stack on mobile */
+@media (min-width: 768px) {
+  .member-card .row .col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .member-card .row .col-md-7 {
+    flex: 0 0 58.333333%;
+    max-width: 58.333333%;
+  }
+
+  .member-card .row .col-md-5 {
+    flex: 0 0 41.666667%;
+    max-width: 41.666667%;
+  }
 }
 
-.member-card .row .col-md-6 {
-  flex: 0 0 50%;
-  max-width: 50%;
-}
-
-.member-card .row .col-md-7 {
-  flex: 0 0 58.333333%;
-  max-width: 58.333333%;
-}
-
-.member-card .row .col-md-5 {
-  flex: 0 0 41.666667%;
-  max-width: 41.666667%;
-}
-
-.member-card .row .col-md-12 {
-  flex: 0 0 100%;
-  max-width: 100%;
+/* Below md: stack all columns full-width */
+@media (max-width: 767.98px) {
+  .member-card .row > [class*="col-"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
 }
 
 /* Form control styling for member cards */
@@ -398,4 +405,92 @@
 .registration-error p {
   color: #666;
   margin-bottom: 20px;
+}
+
+/* ── Mobile Responsive Overrides ───────────────────────────────── */
+@media (max-width: 767.98px) {
+  .register-box {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 12px;
+    margin: 16px auto;
+  }
+
+  .bs-stepper .content {
+    padding: 16px;
+  }
+
+  .step-header {
+    margin: 0 -16px 20px -16px;
+    padding: 16px;
+  }
+
+  .step-header h4 {
+    font-size: 1rem;
+  }
+
+  .step-header p {
+    font-size: 0.8rem;
+  }
+
+  /* Prevent iOS auto-zoom on input focus */
+  .member-card .form-control,
+  .member-card .form-select,
+  .register-box .form-control,
+  .register-box .form-select {
+    font-size: 16px;
+  }
+
+  /* Member card spacing */
+  .member-card .card-header {
+    padding: 10px 14px;
+  }
+
+  .member-card .card-body {
+    padding: 14px;
+  }
+
+  .member-card h5 {
+    font-size: 0.9rem;
+  }
+
+  /* Phone input: stack "No format" checkbox below on mobile */
+  .member-card .input-group > .input-group-text:last-child {
+    border-top: 1px solid #ced4da;
+    border-left: 1px solid #ced4da;
+    font-size: 0.8rem;
+  }
+
+  /* Nav buttons: full-width stacked on mobile */
+  .bs-stepper .content > .mb-3:last-child {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
+
+  .bs-stepper .content > .mb-3:last-child .btn {
+    width: 100%;
+    margin-right: 0 !important;
+  }
+
+  /* Family count badge */
+  .family-count-badge {
+    padding: 4px 10px;
+    font-size: 12px;
+  }
+
+  /* Review cards */
+  .register-box .card-body {
+    padding: 16px;
+  }
+
+  /* Register logo */
+  .register-logo {
+    margin-bottom: 12px !important;
+  }
+
+  .register-logo .h2,
+  .register-logo a {
+    font-size: 1.25rem;
+  }
 }
