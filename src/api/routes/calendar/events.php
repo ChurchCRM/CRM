@@ -49,6 +49,7 @@ $app->group('/events', function (RouteCollectorProxy $group): void {
     $group->post('/{id}/checkout', 'checkoutPerson')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
     $group->post('/{id}/checkin-all', 'checkinAll')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
     $group->post('/{id}/checkout-all', 'checkoutAll')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
+    $group->post('/{id}/checkin-people', 'checkinPeople')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
 
     $group->delete('/{id}', 'deleteEvent')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
     $group->delete('/{id}/attendance/{personId}', 'deleteAttendance')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
@@ -1014,6 +1015,61 @@ function checkoutAll(Request $request, Response $response, array $args): Respons
     return SlimUtils::renderJSON($response, [
         'success' => true,
         'checkedOut' => $checkedOutCount,
+    ]);
+}
+
+/**
+ * @OA\Post(
+ *     path="/events/{id}/checkin-people",
+ *     operationId="checkinPeople",
+ *     summary="Batch check-in a list of people for an event",
+ *     description="Used by Family View 'Check In Family' (#6838) and any other UI that needs to check in a known set of people. Each ID is processed via Event::checkInPerson() which creates timeline notes and timestamps.",
+ *     tags={"Calendar"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\RequestBody(required=true, @OA\JsonContent(
+ *         required={"personIds"},
+ *         @OA\Property(property="personIds", type="array", @OA\Items(type="integer"), example={101,102,103}),
+ *         @OA\Property(property="checkedInById", type="integer", nullable=true, example=55, description="Person ID of whoever is checking these people in")
+ *     )),
+ *     @OA\Response(response=200, description="People checked in",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="success", type="boolean"),
+ *             @OA\Property(property="checkedIn", type="integer")
+ *         )
+ *     ),
+ *     @OA\Response(response=400, description="Invalid input"),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="AddEvents role required"),
+ *     @OA\Response(response=404, description="Event not found")
+ * )
+ */
+function checkinPeople(Request $request, Response $response, array $args): Response
+{
+    $input = $request->getParsedBody();
+    $personIds = $input['personIds'] ?? [];
+
+    if (!is_array($personIds) || empty($personIds)) {
+        return SlimUtils::renderErrorJSON($response, gettext('personIds must be a non-empty array'), [], 400);
+    }
+
+    $checkedInById = InputUtils::filterInt($input['checkedInById'] ?? 0) ?: null;
+
+    /** @var Event $event */
+    $event = $request->getAttribute('event');
+
+    $checkedInCount = 0;
+    foreach ($personIds as $rawId) {
+        $personId = (int) $rawId;
+        if ($personId > 0) {
+            $event->checkInPerson($personId, $checkedInById);
+            $checkedInCount++;
+        }
+    }
+
+    return SlimUtils::renderJSON($response, [
+        'success' => true,
+        'checkedIn' => $checkedInCount,
     ]);
 }
 
