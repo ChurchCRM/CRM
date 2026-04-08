@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       const data = await createRes.json();
-      window.location.href = `${window.CRM.root}/event/checkin?EventID=${data.eventId}`;
+      window.location.href = `${window.CRM.root}/event/checkin/${data.eventId}`;
     } catch (error) {
       // Fall back to check-in page
       window.location.href = `${window.CRM.root}/event/checkin`;
