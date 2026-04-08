@@ -14425,3 +14425,416 @@ msgstr "Faili suurus ületab serveri piirangut %s"
 msgid "Missing image data in request"
 msgstr "Päringus puuduvad pildandmed"
 
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Leia inimesed, kes ei osalenud üritusel"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Puuduvad isikud"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Valige soovitud üritus"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Täiustatud filtreerimine grupi, klassifikatsiooni ja rolli järgi"
+
+#: 
+msgid "All congregation members included"
+msgstr "Kõik koguduse liikmed on kaasatud"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ChMeetings eksport lõpetati edukalt"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "ChMeetings-ühilduv veeruvorming"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Kontaktandmed, perekonna rollid ja olulised kuupäevad"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Looge oma koguduse andmebaasist täielik varukoopia. Laadige alla ainult andmebaasi SQL-fail või täielik arhiiv koos üleslaaditud fotodega."
+
+#: 
+msgid "Database Backup"
+msgstr "Andmebaasi varukoopia"
+
+#: 
+msgid "Export"
+msgstr "Eksport"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Eksportige koguduse andmed CSV-vormingusse. Valige kaasatavad väljad ning filtreerige klassifikatsiooni, grupi, soo ja muu järgi."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Eksportige kõik isikud ChMeetings-i eeldatavas vormingus, et hõlpsasti sünkroniseerida oma koguduse andmed ChMeetings-i platvormiga."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Eksportige oma koguduse andmed erinevatesse vormingutesse"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Väline (WebDAV) varukoopia pistikprogrammi kaudu"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "ChMeetings CSV eksport ebaõnnestus"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Perekonna või isiku kirje paigutus"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Paindlik väljade valimine"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Mine andmebaasi varukoopia juurde"
+
+#: 
+msgid "Open CSV Export"
+msgstr "Ava CSV eksport"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Taasta süsteemi varukoopia lehelt"
+
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "Süsteemivärskendus on saadaval. Palun uuendage oma paigaldust."
+
+#: 
+msgid "API Access"
+msgstr "API juurdepääs"
+
+#: 
+msgid "API Key"
+msgstr "API võti"
+
+#: 
+msgid "API key regenerated"
+msgstr "API võti uuendati"
+
+#: 
+msgid "Account"
+msgstr "Konto"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Täiustatud seaded"
+
+#: 
+msgid "An error occurred."
+msgstr "Ilmnes viga."
+
+#: 
+msgid "Appearance"
+msgstr "Välimus"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Tagasi rahanduse juhtpaneelile"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Tagasi gruppide juhtpaneelile"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Tagasi isikute juhtpaneelile"
+
+#: 
+msgid "Blue"
+msgstr "Sinine"
+
+#: 
+msgid "Change Photo"
+msgstr "Muuda fotot"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "Muudatused jõustuvad järgmisel sisselogimisel."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Valige heleda ja tumeda värviskeemi vahel"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "ChurchCRM-i tõlkeid haldab kogukond POEditoris. Saate aidata järgmiselt:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Kohandage rakenduse välimust ja tunnetust"
+
+#: 
+msgid "Cyan"
+msgstr "Tsüaan"
+
+#: 
+msgid "Dark"
+msgstr "Tume"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Ainult andmebaas (.sql) või täielik arhiiv (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Andmetabelites kuvatavate ridade vaikearv. Jõustub järgmisel lehelaadimise korral."
+
+#: 
+msgid "Edit own family only"
+msgstr "Muuda ainult oma perekonda"
+
+#: 
+msgid "Enter text here..."
+msgstr "Sisestage tekst siia..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Registreerimise tühistamine ebaõnnestus. Palun proovige uuesti."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Ürituse kustutamine ebaõnnestus. Palun proovige uuesti."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "Kahefaktorilise autentimise keelamine ebaõnnestus. Palun proovige uuesti."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "QR-koodi loomine ebaõnnestus. Palun proovige uuesti."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "Kalendriandmete laadimine ebaõnnestus. Palun proovige uuesti."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Ürituse laadimine ebaõnnestus. Palun proovige uuesti."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "Taastekoode ei õnnestunud laadida. Palun värskendage lehte."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Ürituse salvestamine ebaõnnestus. Palun proovige uuesti."
+
+#: 
+msgid "Failed to save setting"
+msgstr "Seade salvestamine ebaõnnestus"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Filipiini keel – Filipiinid"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Vigaste või kohmakate tõlgete parandamine oma keeles"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "Leidsite tõlkevea?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Annab kõik õigused"
+
+#: 
+msgid "Green"
+msgstr "Roheline"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Aidake tõlkeid parandada"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "Kui märkate moonutatud märke, tekstina kuvatavaid HTML-üksusi või tõlkeid, mis rikuvad lehepaigutust, palun teatage probleemist GitHubis, et see saaks kõigi jaoks lahendatud."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "Lisage oma API võti päringutesse, kasutades x-api-key päist:"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Vigane JSON-väärtus — seadet ei salvestatud. Palun parandage see ja proovige uuesti."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "Liituge tõlkeprojektiga POEditoris"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Keele- ja piirkonnaseaded"
+
+#: 
+msgid "Light"
+msgstr "Hele"
+
+#: 
+msgid "Lime"
+msgstr "Laimroheline"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "Malajalami keel – India"
+
+#: 
+msgid "Manage 2FA"
+msgstr "Halda kahefaktorilist autentimist"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "Hallake lisaeelistusi, nagu e-posti eraldajad ja kuvavalikud"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Hallake oma API võtit väliste integratsioonide jaoks"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "Meetod pole lubatud"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "Puuduvad või valed tõlked?"
+
+#: 
+msgid "My Account"
+msgstr "Minu konto"
+
+#: 
+msgid "Orange"
+msgstr "Oranž"
+
+#: 
+msgid "Override the system default locale"
+msgstr "Tühistage süsteemi vaikekeele sätted"
+
+#: 
+msgid "Page Not Found"
+msgstr "Lehte ei leitud"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "Teie praeguse keele tõlgitud stringide protsent"
+
+#: 
+msgid "Pink"
+msgstr "Roosa"
+
+#: 
+msgid "Primary Color"
+msgstr "Põhivärv"
+
+#: 
+msgid "Profile and security"
+msgstr "Profiil ja turvalisus"
+
+#: 
+msgid "Purple"
+msgstr "Lilla"
+
+#: 
+msgid "Red"
+msgstr "Punane"
+
+#: 
+msgid "Regenerate"
+msgstr "Taasloo"
+
+#: 
+msgid "Rows per page"
+msgstr "Ridu lehel"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Määrake luba tõeseks, et lubada sellel kasutajal seadet ise muuta."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Määrake nuppude, linkide ja aktiivsete elementide rõhuvärv"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Olemasolevate tõlgete parema sõnastuse soovitamine"
+
+#: 
+msgid "System Update Available"
+msgstr "Süsteemivärskendus on saadaval"
+
+#: 
+msgid "Tables"
+msgstr "Tabelid"
+
+#: 
+msgid "Teal"
+msgstr "Sinakasroheline"
+
+#: 
+msgid "Theme Mode"
+msgstr "Teema režiim"
+
+#: 
+msgid "Toggle search"
+msgstr "Lülita otsing"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Puuduvate stringide tõlkimine katvuse parandamiseks"
+
+#: 
+msgid "Translation Progress"
+msgstr "Tõlke edenemine"
+
+#: 
+msgid "Usage"
+msgstr "Kasutus"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "Kasutage seda võtit API-päringute autentimiseks. Taasloomisel muutub praegune võti kehtetuks."
+
+#: 
+msgid "User Config"
+msgstr "Kasutaja seaded"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Kinnitamine ebaõnnestus. Palun proovige uuesti."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "Versioon %s on saadaval. Palun uuendage oma paigaldust."
+
+#: 
+msgid "View All"
+msgstr "Vaata kõiki"
+
+#: 
+msgid "Yellow"
+msgstr "Kollane"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "Teie praegused juurdepääsutasemed (ainult lugemine)"
+
