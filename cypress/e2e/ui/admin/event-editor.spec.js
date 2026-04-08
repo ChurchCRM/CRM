@@ -263,4 +263,72 @@ describe('Event Editor', () => {
             });
         });
     });
+
+    // ──────────────────────────────────────────────────────────────────────
+    // Quick Mode Toggle (#8499)
+    // ──────────────────────────────────────────────────────────────────────
+    describe('Quick Mode Toggle (#8499)', () => {
+        it('hides advanced fields by default for new events', () => {
+            createEventFromFirstType();
+
+            // Advanced fields should be hidden initially for new events
+            cy.get('.event-editor-advanced').should('not.be.visible');
+
+            // Toggle button should exist with "Show More Options" text
+            cy.get('#toggleAdvancedBtn').should('exist').and('contain', 'Show More Options');
+        });
+
+        it('shows advanced fields when toggle is clicked', () => {
+            createEventFromFirstType();
+
+            cy.get('#toggleAdvancedBtn').click();
+
+            // Advanced fields should now be visible
+            cy.get('.event-editor-advanced').first().should('be.visible');
+            cy.get('#toggleAdvancedBtn').should('contain', 'Hide Advanced Options');
+        });
+
+        it('toggles advanced fields back to hidden when clicked twice', () => {
+            createEventFromFirstType();
+
+            cy.get('#toggleAdvancedBtn').click();
+            cy.get('.event-editor-advanced').first().should('be.visible');
+
+            cy.get('#toggleAdvancedBtn').click();
+            cy.get('.event-editor-advanced').should('not.be.visible');
+        });
+    });
+
+    // ──────────────────────────────────────────────────────────────────────
+    // Date Validation (#6629)
+    // ──────────────────────────────────────────────────────────────────────
+    describe('Date Validation (#6629)', () => {
+        it('blocks form submission when end date is before start date', () => {
+            createEventFromFirstType();
+
+            const eventTitle = 'Date Validation Test ' + Date.now();
+            cy.get('input[name="EventTitle"]').clear().type(eventTitle);
+
+            // Set an invalid range: end before start
+            cy.get('#EventDateRange').clear().type('2026-12-31 09:00 AM - 2026-01-01 10:00 AM', { force: true });
+
+            cy.get('button[name="SaveChanges"]').click();
+
+            // Should NOT have redirected to dashboard (blocked by client-side validation)
+            cy.url().should('include', '/event/editor');
+        });
+
+        it('allows form submission when end date is on or after start date', () => {
+            createEventFromFirstType();
+
+            const eventTitle = 'Valid Dates Test ' + Date.now();
+            cy.get('input[name="EventTitle"]').clear().type(eventTitle);
+
+            // The default daterangepicker value should be valid (start === end same day)
+            cy.get('button[name="SaveChanges"]').click();
+
+            // Should redirect to dashboard
+            cy.url().should('include', '/event/dashboard');
+        });
+    });
 });

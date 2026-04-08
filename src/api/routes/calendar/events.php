@@ -302,14 +302,14 @@ function newEvent(Request $request, Response $response, array $args): Response
     $type = EventTypeQuery::create()
         ->findOneById($input['Type']);
     if (empty($type)) {
-        return SlimUtils::renderErrorJSON($response, gettext('invalid event type id'), 400);
+        return SlimUtils::renderErrorJSON($response, gettext('invalid event type id'), [], 400);
     }
 
     $calendars = CalendarQuery::create()
         ->filterById($input['PinnedCalendars'])
         ->find();
     if (count($calendars) !== count($input['PinnedCalendars'])) {
-        return SlimUtils::renderErrorJSON($response, gettext('invalid calendar pinning'), 400);
+        return SlimUtils::renderErrorJSON($response, gettext('invalid calendar pinning'), [], 400);
     }
 
     // we have event type and pined calendars.  now create the event.
@@ -371,7 +371,7 @@ function createRepeatEvents(Request $request, Response $response, array $args): 
     $validRecurTypes = ['weekly', 'monthly', 'yearly'];
     $recurType = $input['RecurType'] ?? '';
     if (!in_array($recurType, $validRecurTypes, true)) {
-        return SlimUtils::renderErrorJSON($response, gettext('invalid recurrence type'), 400);
+        return SlimUtils::renderErrorJSON($response, gettext('invalid recurrence type'), [], 400);
     }
 
     try {
@@ -394,7 +394,7 @@ function createRepeatEvents(Request $request, Response $response, array $args): 
             'inactive'       => (int) ($input['Inactive'] ?? 0),
         ]);
     } catch (\InvalidArgumentException $e) {
-        return SlimUtils::renderErrorJSON($response, $e->getMessage(), 400);
+        return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400);
     }
 
     return SlimUtils::renderJSON($response, [

@@ -462,4 +462,147 @@ describe("API Event Check-in Endpoints", () => {
             });
         });
     });
+
+    // ──────────────────────────────────────────────────────────────────────
+    // POST /api/events/{id}/checkin-people  (#6838 family check-in)
+    // ──────────────────────────────────────────────────────────────────────
+    describe("POST /api/events/{id}/checkin-people", () => {
+        let eventId;
+
+        before(() => {
+            cy.setupAdminSession();
+            // Quick-create an event we can check people into
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/events/quick-create",
+                { eventTypeId: 1 },
+                200,
+            ).then((response) => {
+                eventId = response.body.eventId;
+            });
+        });
+
+        it("Checks in a list of people", function () {
+            if (!eventId) this.skip();
+
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/events/${eventId}/checkin-people`,
+                { personIds: [1, 2, 3] },
+                200,
+            ).then((response) => {
+                expect(response.body.success).to.be.true;
+                expect(response.body.checkedIn).to.be.a("number");
+                expect(response.body.checkedIn).to.be.at.least(0);
+            });
+        });
+
+        it("Records the checkedInById when provided", function () {
+            if (!eventId) this.skip();
+
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/events/${eventId}/checkin-people`,
+                { personIds: [4], checkedInById: 1 },
+                200,
+            ).then((response) => {
+                expect(response.body.success).to.be.true;
+            });
+        });
+
+        it("Returns 400 when personIds is empty", function () {
+            if (!eventId) this.skip();
+
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/events/${eventId}/checkin-people`,
+                { personIds: [] },
+                400,
+            );
+        });
+
+        it("Returns 400 when personIds is missing", function () {
+            if (!eventId) this.skip();
+
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/events/${eventId}/checkin-people`,
+                {},
+                400,
+            );
+        });
+
+        it("Returns 401 when not authenticated", () => {
+            cy.apiRequest({
+                method: "POST",
+                url: "/api/events/1/checkin-people",
+                body: { personIds: [1] },
+                failOnStatusCode: false,
+            }).then((response) => {
+                expect(response.status).to.eq(401);
+            });
+        });
+    });
+
+    // ──────────────────────────────────────────────────────────────────────
+    // DELETE /api/events/{id}/attendance/{personId}
+    // ──────────────────────────────────────────────────────────────────────
+    describe("DELETE /api/events/{id}/attendance/{personId}", () => {
+        let eventId;
+
+        before(() => {
+            cy.setupAdminSession();
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/events/quick-create",
+                { eventTypeId: 1 },
+                200,
+            ).then((response) => {
+                eventId = response.body.eventId;
+                // Check someone in so we have an attendance record to delete
+                if (eventId) {
+                    cy.makePrivateAdminAPICall(
+                        "POST",
+                        `/api/events/${eventId}/checkin`,
+                        { personId: 5 },
+                        200,
+                    );
+                }
+            });
+        });
+
+        it("Deletes an attendance record", function () {
+            if (!eventId) this.skip();
+
+            cy.makePrivateAdminAPICall(
+                "DELETE",
+                `/api/events/${eventId}/attendance/5`,
+                null,
+                200,
+            ).then((response) => {
+                expect(response.body.success).to.be.true;
+            });
+        });
+
+        it("Returns 404 when no attendance record exists", function () {
+            if (!eventId) this.skip();
+
+            cy.makePrivateAdminAPICall(
+                "DELETE",
+                `/api/events/${eventId}/attendance/99999`,
+                null,
+                404,
+            );
+        });
+
+        it("Returns 401 when not authenticated", () => {
+            cy.apiRequest({
+                method: "DELETE",
+                url: "/api/events/1/attendance/1",
+                failOnStatusCode: false,
+            }).then((response) => {
+                expect(response.status).to.eq(401);
+            });
+        });
+    });
 });
