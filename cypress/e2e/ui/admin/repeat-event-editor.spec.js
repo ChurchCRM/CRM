@@ -85,9 +85,17 @@ describe('Repeat Event Editor', () => {
 
     it('should show Create Repeat Events link on dashboard empty state', () => {
         // The link only appears in empty-state OR via dropdown
-        cy.visit('/event/dashboard');
-        // Check the page loads
-        cy.contains('Events Dashboard').should('exist');
+        // Guard against intermittent 500 responses by checking the HTTP
+        // status first; surface a clear failure if the server returns 5xx.
+        cy.request({ url: '/event/dashboard', failOnStatusCode: false }).then((resp) => {
+            if (resp.status === 200) {
+                cy.visit('/event/dashboard');
+                cy.contains('Events Dashboard').should('exist');
+            } else {
+                // Fail with a clear message so CI logs show the server error.
+                throw new Error('Failed to load /event/dashboard; status: ' + resp.status);
+            }
+        });
     });
 
     it('should have repeat event link from event types list', () => {

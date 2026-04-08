@@ -860,15 +860,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
     // Wait for locales to load before initializing
     $(document).ready(function () {
         window.CRM.onLocalesReady(initializePeopleList);
-        
-        // Handle person photo viewing (same as family list)
-        $(document).on('click', '.view-person-photo', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            var personId = $(this).data('person-id');
-            window.CRM.showPhotoLightbox('person', personId);
-        });
-
+        // Photo viewer click handlers are registered globally in avatar-loader.ts
         // .delete-person clicks are handled globally by CRMJSOM.js
     });
 
