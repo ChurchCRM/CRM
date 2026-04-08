@@ -180,14 +180,16 @@ foreach ($monthlyData as $monthData):
             <?php $eventId = (int) $event['id']; ?>
             <tr>
               <td>
-                <div class="fw-medium"><?= InputUtils::escapeHTML($event['title']) ?></div>
+                <a href="<?= $sRootPath ?>/event/editor/<?= $eventId ?>" class="fw-medium text-reset text-decoration-none">
+                  <?= InputUtils::escapeHTML($event['title']) ?>
+                </a>
                 <?php
                   // Quill leaves "<p><br /></p>" when the description is empty —
                   // strip tags and trim before deciding whether to show anything.
                   $descText = trim(strip_tags((string) ($event['desc'] ?? '')));
                 ?>
                 <?php if ($descText !== ''): ?>
-                  <small class="text-muted"><?= InputUtils::escapeHTML($descText) ?></small>
+                  <div><small class="text-muted"><?= InputUtils::escapeHTML($descText) ?></small></div>
                 <?php endif; ?>
               </td>
               <td>
@@ -230,38 +232,12 @@ foreach ($monthlyData as $monthData):
               </td>
               <?php if ($canEditEvents): ?>
                 <td class="text-center">
-                  <div class="dropdown">
-                    <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                      <i class="ti ti-dots-vertical"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-end">
-                      <a class="dropdown-item" href="<?= $sRootPath ?>/event/checkin/<?= $eventId ?>">
-                        <i class="ti ti-clipboard-check me-2"></i><?= gettext('Check-in') ?>
-                      </a>
-                      <a class="dropdown-item" href="<?= $sRootPath ?>/event/editor/<?= $eventId ?>">
-                        <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
-                      </a>
-                      <?php if ($event['inactive']): ?>
-                        <form method="POST" action="<?= $sRootPath ?>/event/dashboard" class="d-inline">
-                          <input type="hidden" name="EID" value="<?= $eventId ?>">
-                          <input type="hidden" name="WhichType" value="<?= InputUtils::escapeAttribute($eType) ?>">
-                          <input type="hidden" name="WhichYear" value="<?= InputUtils::escapeAttribute($EventYear) ?>">
-                          <button type="submit" name="Action" value="Activate" class="dropdown-item">
-                            <i class="ti ti-circle-check me-2"></i><?= gettext('Activate') ?>
-                          </button>
-                        </form>
-                      <?php endif; ?>
-                      <div class="dropdown-divider"></div>
-                      <form method="POST" action="<?= $sRootPath ?>/event/dashboard" class="d-inline" onsubmit="return confirm('<?= gettext('Deleting an event will also delete all attendance counts. Delete this event?') ?>')">
-                        <input type="hidden" name="EID" value="<?= $eventId ?>">
-                        <input type="hidden" name="WhichType" value="<?= InputUtils::escapeAttribute($eType) ?>">
-                        <input type="hidden" name="WhichYear" value="<?= InputUtils::escapeAttribute($EventYear) ?>">
-                        <button type="submit" name="Action" value="Delete" class="dropdown-item text-danger">
-                          <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
-                        </button>
-                      </form>
-                    </div>
-                  </div>
+                  <div
+                    class="event-action-menu-placeholder"
+                    data-event-id="<?= $eventId ?>"
+                    data-event-title="<?= InputUtils::escapeAttribute($event['title']) ?>"
+                    data-event-inactive="<?= (int) $event['inactive'] ?>"
+                  ></div>
                 </td>
               <?php endif; ?>
             </tr>
@@ -316,6 +292,27 @@ foreach ($monthlyData as $monthData):
   </div>
 </div>
 <?php endif; ?>
+
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+  // Hydrate the placeholder cells with the standard event action menu.
+  // The renderer + global click handlers live in src/skin/js/CRMJSOM.js.
+  (function hydrateEventActionMenus() {
+    function render() {
+      var nodes = document.querySelectorAll('.event-action-menu-placeholder');
+      nodes.forEach(function (node) {
+        var id = parseInt(node.dataset.eventId, 10);
+        var title = node.dataset.eventTitle || '';
+        var inactive = node.dataset.eventInactive === '1';
+        node.innerHTML = window.CRM.renderEventActionMenu(id, title, { inactive: inactive });
+      });
+    }
+    if (window.CRM && window.CRM.localesLoaded) {
+      render();
+    } else {
+      window.addEventListener('CRM.localesReady', render, { once: true });
+    }
+  })();
+</script>
 
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

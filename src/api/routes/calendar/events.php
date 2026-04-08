@@ -53,6 +53,8 @@ $app->group('/events', function (RouteCollectorProxy $group): void {
 
     $group->delete('/{id}', 'deleteEvent')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
     $group->delete('/{id}/attendance/{personId}', 'deleteAttendance')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
+
+    $group->post('/{id}/status', 'setEventStatus')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
 });
 
 /**
@@ -533,6 +535,37 @@ function deleteEvent(Request $request, Response $response, array $args): Respons
 
 /**
  * @OA\Post(
+ *     path="/events/{id}/status",
+ *     operationId="setEventStatus",
+ *     summary="Activate or deactivate an event",
+ *     tags={"Calendar"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\RequestBody(required=true, @OA\JsonContent(
+ *         required={"active"},
+ *         @OA\Property(property="active", type="boolean", example=true, description="true to activate, false to deactivate")
+ *     )),
+ *     @OA\Response(response=200, description="Event status updated"),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="AddEvents role required"),
+ *     @OA\Response(response=404, description="Event not found")
+ * )
+ */
+function setEventStatus(Request $request, Response $response, array $args): Response
+{
+    $input = $request->getParsedBody();
+    $active = !empty($input['active']);
+
+    /** @var Event $event */
+    $event = $request->getAttribute('event');
+    $event->setInActive($active ? 0 : 1);
+    $event->save();
+
+    return SlimUtils::renderSuccessJSON($response);
+}
+
+/**
+ * @OA\Post(
  *     path="/events/quick-create",
  *     operationId="quickCreateEvent",
  *     summary="Quick-create an event from EventType defaults",
@@ -878,6 +911,10 @@ function checkinPerson(Request $request, Response $response, array $args): Respo
 
     /** @var Event $event */
     $event = $request->getAttribute('event');
+    if ((int) $event->getInActive() === 1) {
+        return SlimUtils::renderErrorJSON($response, gettext('Cannot check in to an inactive event. Activate the event first.'), [], 409);
+    }
+
     $event->checkInPerson($personId, $checkedInById);
 
     return SlimUtils::renderJSON($response, [
@@ -953,6 +990,10 @@ function checkinAll(Request $request, Response $response, array $args): Response
 {
     /** @var Event $event */
     $event = $request->getAttribute('event');
+    if ((int) $event->getInActive() === 1) {
+        return SlimUtils::renderErrorJSON($response, gettext('Cannot check in to an inactive event. Activate the event first.'), [], 409);
+    }
+
     $groups = $event->getGroups();
 
     // Deduplicate: a person may belong to multiple linked groups
@@ -1057,6 +1098,9 @@ function checkinPeople(Request $request, Response $response, array $args): Respo
 
     /** @var Event $event */
     $event = $request->getAttribute('event');
+    if ((int) $event->getInActive() === 1) {
+        return SlimUtils::renderErrorJSON($response, gettext('Cannot check in to an inactive event. Activate the event first.'), [], 409);
+    }
 
     $checkedInCount = 0;
     foreach ($personIds as $rawId) {

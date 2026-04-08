@@ -42,4 +42,76 @@ describe("Events Dashboard (MVC)", () => {
         cy.contains("Manage Event Types").click();
         cy.url().should("include", "/event/types");
     });
+
+    describe("Event action menu", () => {
+        it("renders the standard action dropdown for each event row", () => {
+            cy.visit("event/dashboard");
+            // Wait for the action menu to be hydrated by JS
+            cy.get(".event-action-menu-placeholder .dropdown", { timeout: 10000 })
+                .should("have.length.at.least", 1);
+        });
+
+        it("event title link navigates to the event editor", () => {
+            cy.visit("event/dashboard");
+            cy.get("table tbody tr td:first-child a").first().then(($link) => {
+                const href = $link.attr("href");
+                expect(href).to.include("/event/editor/");
+            });
+        });
+
+        it("dropdown menu has View, Edit, Check-in, Deactivate, Delete items", () => {
+            cy.visit("event/dashboard");
+            cy.get(".event-action-menu-placeholder .dropdown button[data-bs-toggle='dropdown']", { timeout: 10000 })
+                .first()
+                .click({ force: true });
+            cy.get(".dropdown-menu.show").within(() => {
+                cy.contains("View").should("exist");
+                cy.contains("Edit").should("exist");
+                cy.contains("Check-in").should("exist");
+                // For an active event the toggle says Deactivate
+                cy.contains(/Deactivate|Activate/).should("exist");
+                cy.contains("Delete").should("exist");
+            });
+        });
+
+        it("Deactivate POSTs /api/events/{id}/status with active=false", () => {
+            cy.visit("event/dashboard");
+            cy.intercept("POST", "**/api/events/*/status").as("status");
+
+            // Find an event currently marked Active
+            cy.get("table tbody tr").contains(".badge", "Active").first().parents("tr").within(() => {
+                cy.get(".event-action-menu-placeholder .dropdown button[data-bs-toggle='dropdown']")
+                    .click({ force: true });
+            });
+
+            cy.get(".dropdown-menu.show").contains("Deactivate").click();
+
+            cy.wait("@status").then(({ request, response }) => {
+                expect(response.statusCode).to.eq(200);
+                expect(request.body).to.deep.equal({ active: false });
+            });
+        });
+
+        it("Activate POSTs /api/events/{id}/status with active=true (when an inactive event exists)", () => {
+            cy.visit("event/dashboard");
+            cy.intercept("POST", "**/api/events/*/status").as("status");
+
+            cy.get("table tbody tr").then(($rows) => {
+                const $inactive = $rows.filter((_, r) => Cypress.$(r).find(".badge:contains('Inactive')").length > 0);
+                if ($inactive.length === 0) {
+                    // No inactive events to activate — nothing to assert here
+                    return;
+                }
+                cy.wrap($inactive.first()).within(() => {
+                    cy.get(".event-action-menu-placeholder .dropdown button[data-bs-toggle='dropdown']")
+                        .click({ force: true });
+                });
+                cy.get(".dropdown-menu.show").contains("Activate").click();
+                cy.wait("@status").then(({ request, response }) => {
+                    expect(response.statusCode).to.eq(200);
+                    expect(request.body).to.deep.equal({ active: true });
+                });
+            });
+        });
+    });
 });

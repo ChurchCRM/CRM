@@ -137,6 +137,23 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
+<?php if (!empty($eventInactive)): ?>
+<!-- Inactive event banner — block check-in entirely -->
+<div class="alert alert-warning mb-3">
+    <div class="d-flex align-items-center">
+        <i class="ti ti-alert-triangle me-2 fs-3"></i>
+        <div class="flex-grow-1">
+            <strong><?= gettext('This event is inactive.') ?></strong>
+            <div class="small text-muted">
+                <?= gettext('Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in.') ?>
+            </div>
+        </div>
+        <a href="<?= $sRootPath ?>/event/dashboard" class="btn btn-outline-secondary ms-3">
+            <?= gettext('Back to Events Dashboard') ?>
+        </a>
+    </div>
+</div>
+<?php else: ?>
 <!-- Walk-in / Visitor Check-In (API-driven, no page reload) -->
 <div class="card" id="walkinCheckinCard">
     <div class="card-status-top bg-primary"></div>
@@ -178,6 +195,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
 </div>
+<?php endif; ?>
 
 <!-- Attendance Table -->
 <div class="card">

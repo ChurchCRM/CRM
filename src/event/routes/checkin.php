@@ -45,9 +45,11 @@ $app->get('/checkin[/{eventId}]', function (Request $request, Response $response
 
     $event = null;
     $attendees = [];
+    $eventInactive = false;
     if ($eventId > 0) {
         $event = EventQuery::create()->findOneById($eventId);
         if ($event !== null) {
+            $eventInactive = (int) $event->getInActive() === 1;
             $eventAttendees = EventAttendQuery::create()
                 ->filterByEventId($eventId)
                 ->find();
@@ -97,6 +99,7 @@ $app->get('/checkin[/{eventId}]', function (Request $request, Response $response
         ]),
         'eventId'           => $eventId,
         'event'             => $event,
+        'eventInactive'     => $eventInactive,
         'eventTypeId'       => $eventTypeId,
         'eventTypes'        => $eventTypes,
         'activeEvents'      => $activeEvents,
