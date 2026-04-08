@@ -81,7 +81,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             </select>
                         </div>
                         <div class="card-footer text-end">
-                            <a href="<?= $sRootPath ?>/EventEditor.php" class="btn btn-outline-secondary me-2"><?= gettext('Create New Event') ?></a>
+                            <a href="<?= $sRootPath ?>/event/editor" class="btn btn-outline-secondary me-2"><?= gettext('Create New Event') ?></a>
                             <button type="submit" name="Submit" class="btn btn-primary"><?= gettext('Check In to Event') ?></button>
                         </div>
                     </form>

@@ -88,7 +88,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <div class="card-body py-2">
         <div class="d-flex flex-wrap gap-2">
           <?php if ($canEditEvents): ?>
-            <a href="<?= $sRootPath ?>/EventEditor.php" class="btn btn-primary btn-sm">
+            <a href="<?= $sRootPath ?>/event/editor" class="btn btn-primary btn-sm">
               <i class="fa-solid fa-plus me-1"></i><?= gettext('Add Event') ?>
             </a>
           <?php endif; ?>
@@ -233,7 +233,7 @@ foreach ($monthlyData as $monthData):
                       <a class="dropdown-item" href="<?= $sRootPath ?>/event/checkin/<?= $eventId ?>">
                         <i class="ti ti-clipboard-check me-2"></i><?= gettext('Check-in') ?>
                       </a>
-                      <a class="dropdown-item" href="<?= $sRootPath ?>/EventEditor.php?EID=<?= $eventId ?>">
+                      <a class="dropdown-item" href="<?= $sRootPath ?>/event/editor/<?= $eventId ?>">
                         <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
                       </a>
                       <?php if ($event['inactive']): ?>
@@ -301,7 +301,7 @@ foreach ($monthlyData as $monthData):
       <?php endif; ?>
     </p>
     <?php if ($canEditEvents): ?>
-      <a href="<?= $sRootPath ?>/EventEditor.php" class="btn btn-primary me-2">
+      <a href="<?= $sRootPath ?>/event/editor" class="btn btn-primary me-2">
         <i class="fa-solid fa-plus me-1"></i><?= gettext('Create First Event') ?>
       </a>
       <a href="<?= $sRootPath ?>/event/repeat-editor" class="btn btn-outline-primary">

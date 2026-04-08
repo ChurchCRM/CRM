@@ -99,7 +99,7 @@ $(document).ready(function() {
     const typeId = $(this).data('type-id');
     const f = document.createElement('form');
     f.method = 'POST';
-    f.action = '<?= $sRootPath ?>/EventEditor.php';
+    f.action = '<?= $sRootPath ?>/event/editor';
     const i = document.createElement('input');
     i.type = 'hidden'; i.name = 'EN_tyid'; i.value = typeId;
     f.appendChild(i);

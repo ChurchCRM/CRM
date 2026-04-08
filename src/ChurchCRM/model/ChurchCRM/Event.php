@@ -117,6 +117,6 @@ class Event extends BaseEvent
 
     public function getViewURI(): string
     {
-        return SystemURLs::getRootPath() . '/EventEditor.php?calendarAction=' . $this->getID();
+        return SystemURLs::getRootPath() . '/event/editor/' . $this->getID();
     }
 }

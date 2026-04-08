@@ -166,7 +166,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       
       // Add edit link if an event is assigned
       if (currentEventId) {
-        html += '<a href="' + window.CRM.root + '/EventEditor.php?EID=' + currentEventId + '" class="btn btn-sm btn-outline-primary" title="' + i18next.t('Edit Event') + '">';
+        html += '<a href="' + window.CRM.root + '/event/editor/' + currentEventId + '" class="btn btn-sm btn-outline-primary" title="' + i18next.t('Edit Event') + '">';
         html += '<i class="fa-solid fa-pen-to-square"></i>';
         html += '</a>';
       }

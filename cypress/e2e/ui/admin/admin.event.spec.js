@@ -20,7 +20,7 @@ describe("Admin Event", () => {
     });
 
     it("Create New Event", () => {
-        cy.visit("EventEditor.php");
+        cy.visit("event/editor");
         cy.contains("Church Event Editor");
         cy.contains("Create a new Event");
     });

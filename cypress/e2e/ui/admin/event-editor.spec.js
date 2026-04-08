@@ -20,7 +20,7 @@ describe('Event Editor', () => {
         createEventFromFirstType();
 
         // Verify event editor loads
-        cy.url().should('include', '/EventEditor.php');
+        cy.url().should('include', '/event/editor');
         cy.contains('Create a new Event').should('exist');
     });
 
@@ -191,7 +191,7 @@ describe('Event Editor', () => {
             const eventId = createdEvent.Id;
 
             // Step 3: Navigate directly to edit page
-            cy.visit(`/EventEditor.php?EID=${eventId}`);
+            cy.visit(`/event/editor/${eventId}`);
 
             // Step 4: Verify we're editing (not creating new)
             cy.contains('Editing Event').should('exist');
@@ -246,7 +246,7 @@ describe('Event Editor', () => {
             const eventId = createdEvent.Id;
 
             // Navigate directly to edit page
-            cy.visit(`/EventEditor.php?EID=${eventId}`);
+            cy.visit(`/event/editor/${eventId}`);
 
             // Verify all data loads correctly (not empty/default values)
             cy.get('input[name="EventTitle"]').should('have.value', testTitle);

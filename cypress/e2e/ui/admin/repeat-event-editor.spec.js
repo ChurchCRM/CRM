@@ -6,7 +6,7 @@ describe('Repeat Event Editor', () => {
     });
 
     it('should display repeat event editor page', () => {
-        cy.visit('/RepeatEventEditor.php');
+        cy.visit('/Repeatevent/editor');
         cy.contains('Create Repeat Events').should('exist');
         cy.contains('Event Template').should('exist');
         cy.contains('Recurrence Pattern').should('exist');
@@ -20,13 +20,13 @@ describe('Repeat Event Editor', () => {
             cy.get('a.btn-outline-success').click();
         });
 
-        cy.url().should('include', '/RepeatEventEditor.php');
+        cy.url().should('include', '/Repeatevent/editor');
         cy.url().should('include', 'EN_tyid=');
         cy.contains('Change').should('exist');
     });
 
     it('should have weekly recurrence pre-selected for a weekly event type', () => {
-        cy.visit('/RepeatEventEditor.php');
+        cy.visit('/Repeatevent/editor');
         // Verify the weekly radio exists
         cy.get('#recurWeekly').should('exist');
         cy.get('#recurMonthly').should('exist');
@@ -34,7 +34,7 @@ describe('Repeat Event Editor', () => {
     });
 
     it('should enable/disable recurrence inputs based on selection', () => {
-        cy.visit('/RepeatEventEditor.php');
+        cy.visit('/Repeatevent/editor');
 
         // Select weekly
         cy.get('#recurWeekly').check();
@@ -98,11 +98,11 @@ describe('Repeat Event Editor', () => {
     it('should show Create Repeat Events button on ListEvents page', () => {
         cy.visit('/event/dashboard');
         cy.contains('Create Repeat Events').should('exist');
-        cy.get('a[href*="RepeatEventEditor.php"]').should('exist');
+        cy.get('a[href*="Repeatevent/editor"]').should('exist');
     });
 
     it('should show Repeat button on EventNames page', () => {
         cy.visit('/event/types');
-        cy.get('a[href*="RepeatEventEditor.php"]').should('exist');
+        cy.get('a[href*="Repeatevent/editor"]').should('exist');
     });
 });

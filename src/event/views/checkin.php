@@ -29,7 +29,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <span class="text-secondary">(<?= $event->getStart('M j, Y') ?>)</span>
             </span>
             <div>
-                <a href="<?= $sRootPath ?>/EventEditor.php?EID=<?= $eventId ?>" class="btn btn-sm btn-outline-primary me-2">
+                <a href="<?= $sRootPath ?>/event/editor/<?= $eventId ?>" class="btn btn-sm btn-outline-primary me-2">
                     <i class="ti ti-pencil me-1"></i><?= gettext('Edit Event') ?>
                 </a>
                 <a href="<?= $sRootPath ?>/event/checkin" class="btn btn-sm btn-outline-secondary">
@@ -78,7 +78,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
     <div class="card-footer text-end">
-        <a class="btn btn-primary" href="<?= $sRootPath ?>/EventEditor.php">
+        <a class="btn btn-primary" href="<?= $sRootPath ?>/event/editor">
             <i class="ti ti-plus me-1"></i><?= gettext('Add New') . ' ' . gettext('Event') ?>
         </a>
     </div>
