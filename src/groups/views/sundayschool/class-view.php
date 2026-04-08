@@ -512,13 +512,24 @@ if ($bCanManageGroups) {
         <!-- Events Card -->
         <div class="card mb-3">
             <div class="card-header d-flex align-items-center">
-                <h3 class="card-title m-0"><i class="fa-solid fa-calendar-days me-1"></i> <?= gettext('Events') ?></h3>
+                <h3 class="card-title m-0"><i class="ti ti-calendar me-1"></i> <?= gettext('Events') ?></h3>
                 <span class="badge bg-primary-lt text-primary ms-2"><?= count($groupEvents) ?></span>
+                <button
+                    type="button"
+                    class="btn btn-sm btn-primary ms-auto"
+                    id="quickCreateTodaysEventBtn"
+                    data-group-id="<?= (int) $iGroupId ?>"
+                    title="<?= gettext("Create today's class event and link it to this class for kiosk check-in") ?>">
+                    <i class="ti ti-plus me-1"></i><?= gettext("Create Today's Event") ?>
+                </button>
             </div>
             <?php if (count($groupEvents) === 0): ?>
             <div class="card-body text-center text-muted py-4">
-                <i class="fa-solid fa-calendar-xmark fa-2x mb-2 d-block"></i>
-                <?= gettext('No events linked to this class.') ?>
+                <i class="ti ti-calendar-off mb-2 d-block" style="font-size: 2rem;"></i>
+                <p class="mb-2"><?= gettext('No events linked to this class.') ?></p>
+                <p class="small text-muted mb-0">
+                    <?= gettext("Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster.") ?>
+                </p>
             </div>
             <?php else: ?>
             <div class="list-group list-group-flush">
@@ -527,26 +538,41 @@ if ($bCanManageGroups) {
                     $hasKiosk  = isset($kioskEventSet[(int) $evt->getId()]);
                     $startDate = $evt->getStart() ? $evt->getStart()->format('M j, Y') : '';
                     $startTime = $evt->getStart() ? $evt->getStart()->format('g:i A') : '';
+                    $eventId   = (int) $evt->getId();
                 ?>
                 <div class="list-group-item">
-                    <div class="d-flex align-items-start">
+                    <div class="d-flex align-items-center gap-2">
                         <div class="me-auto">
-                            <div class="fw-bold"><?= InputUtils::escapeHTML($evt->getTitle()) ?></div>
+                            <a href="<?= $sRootPath ?>/event/view/<?= $eventId ?>" class="fw-bold text-reset">
+                                <?= InputUtils::escapeHTML($evt->getTitle()) ?>
+                            </a>
                             <?php if ($startDate): ?>
-                            <span class="text-muted small"><?= InputUtils::escapeHTML($startDate) ?></span>
-                            <span class="text-muted small ms-1"><?= InputUtils::escapeHTML($startTime) ?></span>
+                            <div>
+                                <span class="text-muted small"><?= InputUtils::escapeHTML($startDate) ?></span>
+                                <span class="text-muted small ms-1"><?= InputUtils::escapeHTML($startTime) ?></span>
+                            </div>
                             <?php endif; ?>
                         </div>
-                        <div class="d-flex gap-1 align-items-center">
-                            <?php if ($hasKiosk): ?>
-                            <span class="badge bg-success-lt text-success" title="<?= gettext('Kiosk Enabled') ?>">
-                                <i class="fa-solid fa-tablet-screen-button me-1"></i><?= gettext('Kiosk') ?>
-                            </span>
-                            <?php endif; ?>
-                            <?php if (!$isActive): ?>
-                            <span class="badge bg-danger-lt text-danger"><?= gettext('Inactive') ?></span>
-                            <?php endif; ?>
-                        </div>
+                        <?php if ($hasKiosk): ?>
+                        <span class="badge bg-success-lt text-success" title="<?= gettext('Kiosk Enabled') ?>">
+                            <i class="ti ti-device-ipad me-1"></i><?= gettext('Kiosk') ?>
+                        </span>
+                        <?php endif; ?>
+                        <?php if (!$isActive): ?>
+                        <span class="badge bg-secondary-lt"><?= gettext('Inactive') ?></span>
+                        <?php endif; ?>
+                        <?php if ($isActive): ?>
+                        <a href="<?= $sRootPath ?>/event/checkin/<?= $eventId ?>"
+                           class="btn btn-sm btn-outline-primary"
+                           title="<?= gettext('Take Attendance') ?>">
+                            <i class="ti ti-clipboard-check me-1"></i><?= gettext('Check-in') ?>
+                        </a>
+                        <?php endif; ?>
+                        <a href="<?= $sRootPath ?>/event/editor/<?= $eventId ?>"
+                           class="btn btn-sm btn-ghost-secondary"
+                           title="<?= gettext('Edit Event') ?>">
+                            <i class="ti ti-pencil"></i>
+                        </a>
                     </div>
                 </div>
                 <?php endforeach; ?>
