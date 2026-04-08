@@ -222,6 +222,10 @@ msgstr "Lumikha ng File"
 msgid "Title"
 msgstr "Pamagat"
 
+#: 
+msgid "Suffix"
+msgstr "Karagdag"
+
 #. Context: queryparameters_qrp
 #: 
 msgid "Gender"
@@ -359,6 +363,10 @@ msgid "Map Cart"
 msgstr "I-mapa ang Cart"
 
 #: 
+msgid "Bulk Mail Presort"
+msgstr "Presorting ng Pangkatang Koreo"
+
+#: 
 msgid "Quiet Presort"
 msgstr "Tahimik na Presort"
 
@@ -484,6 +492,10 @@ msgid "Information to Include"
 msgstr "Impormasyon na Isasama"
 
 #: 
+msgid "Address"
+msgstr "Tirahan"
+
+#: 
 msgid "Birthday"
 msgstr "Kaarawan"
 
@@ -552,6 +564,10 @@ msgid "Church Name"
 msgstr "Pangalan ng Simbahan"
 
 #: 
+msgid "Disclaimer"
+msgstr "Paunawa"
+
+#: 
 msgid "Create Directory"
 msgstr "Lumikha ng Direktoryo"
 
@@ -562,6 +578,10 @@ msgstr "Editor ng Naibigay na Item"
 #: 
 msgid "Save and Add"
 msgstr "I-save at Idagdag"
+
+#: 
+msgid "Item"
+msgstr "Aytem"
 
 #: 
 msgid "Multiple items"
@@ -929,6 +949,10 @@ msgid "Delete Photo"
 msgstr "Burahin ang Larawan"
 
 #: 
+msgid "Timeline"
+msgstr "Talaan ng Panahon"
+
+#: 
 msgid "Pledges and Payments"
 msgstr "Mga Pangako at Pagbabayad"
 
@@ -1097,6 +1121,14 @@ msgid "Check"
 msgstr "Tseke"
 
 #: 
+msgid "Cash"
+msgstr "Pera"
+
+#: 
+msgid "Bank Draft"
+msgstr "Tseke ng Bangko"
+
+#: 
 msgid "Minimum Total Amount:"
 msgstr "Pinakamababang Kabuuang Halaga:"
 
@@ -1139,6 +1171,10 @@ msgstr "Address ng Simbahan"
 #: 
 msgid "Blank"
 msgstr "Blangko"
+
+#: 
+msgid "Remittance Slip:"
+msgstr "Resibo ng Remittance:"
 
 #: 
 msgid "Sort Data by:"
@@ -1501,6 +1537,10 @@ msgid "Sort by"
 msgstr "Ayusin ayon sa"
 
 #: 
+msgid "Zero"
+msgstr "Wala"
+
+#: 
 msgid "Assign starting at #"
 msgstr "Italaga simula sa #"
 
@@ -1623,6 +1663,10 @@ msgstr "Grupo"
 #: 
 msgid "Option"
 msgstr "Opsyon"
+
+#: 
+msgid "Error: Duplicate"
+msgstr "Error: Duplikado"
 
 #: 
 msgid "Duplicate name found."
@@ -1801,6 +1845,10 @@ msgid "Monthly"
 msgstr "Buwanang"
 
 #: 
+msgid "Quarterly"
+msgstr "Tuwing Tatlong Buwan"
+
+#: 
 msgid "Once"
 msgstr "Isang beses"
 
@@ -1867,6 +1915,10 @@ msgstr "Ang pagpasok ng halaga ng Prompt ay magpapahintulot ng pagsasama ng libr
 #: 
 msgid "Property List"
 msgstr "Listahan ng Katangian"
+
+#: 
+msgid "Prompt"
+msgstr "Paalala"
 
 #: 
 msgid "Warning"
@@ -2046,6 +2098,10 @@ msgid "User Editor"
 msgstr "Editor ng User"
 
 #: 
+msgid "User"
+msgstr "Gumagamit"
+
+#: 
 msgid "Login Name"
 msgstr "Pangalan sa Login"
 
@@ -2162,6 +2218,10 @@ msgid "Version"
 msgstr "Bersyon"
 
 #: 
+msgid "Copyright"
+msgstr "Karapatang-sipi"
+
+#: 
 msgid "All rights reserved"
 msgstr "Lahat ng karapatan ay nakalaan"
 
@@ -2170,8 +2230,20 @@ msgid "True / False"
 msgstr "Totoo / Mali"
 
 #: 
+msgid "Text Field (50 char)"
+msgstr "Tekstong Field (50 titik)"
+
+#: 
+msgid "Text Field (100 char)"
+msgstr "Tekstong Field (100 titik)"
+
+#: 
 msgid "Text Field (long)"
 msgstr "Text Field (matagal)"
+
+#: 
+msgid "Season"
+msgstr "Panahon"
 
 #: 
 msgid "Person from Group"
@@ -2356,6 +2428,10 @@ msgstr "Pangalan ng Miyembro"
 #: 
 msgid "Adult/Child"
 msgstr "Matanda/Bata"
+
+#: 
+msgid "Cell Phone"
+msgstr "Selpon"
 
 #: 
 msgid "Member/Friend"
@@ -2566,6 +2642,14 @@ msgid "Events"
 msgstr "Mga Kaganapan"
 
 #: 
+msgid "Fundraiser"
+msgstr "Pangongolekta ng Pondo"
+
+#: 
+msgid "Email Export"
+msgstr "I-export ang Email"
+
+#: 
 msgid "Import Data"
 msgstr "Mag-import ng Data"
 
@@ -2712,6 +2796,10 @@ msgstr "Nabigo ang validation ng pirma ng signature definition file"
 #: 
 msgid "One or more files failed signature validation"
 msgstr "Isa o higit pang mga file ay nabigong ma-validate ang pirma"
+
+#: 
+msgid "item"
+msgstr "aytem"
 
 #: 
 msgid "Buyer # "
@@ -3125,6 +3213,21 @@ msgstr "Bosnia at Herzegovina (Босна и Херцеговина)"
 #: 
 msgid "Ceuta and Melilla (Ceuta y Melilla)"
 msgstr "Ceuta at Melilla (Ceuta y Melilla)"
+
+#. Context: countries
+#: 
+msgid "China (中国)"
+msgstr "Tsina (中国)"
+
+#. Context: countries
+#: 
+msgid "Egypt (‫مصر‬‎)"
+msgstr "Ehipto (‫مصر‬‎)"
+
+#. Context: countries
+#: 
+msgid "Japan (日本)"
+msgstr "Hapon (日本)"
 
 #. Context: countries
 #: 
@@ -4411,6 +4514,18 @@ msgid "Maximum number of Calendar Events"
 msgstr "Pinakamataas na bilang ng mga Kaganapan sa Kalendaryo"
 
 #: 
+msgid "%d month old"
+msgid_plural "%d months old"
+msgstr[0] "%d buwang gulang"
+msgstr[1] "%d buwang gulang"
+
+#: 
+msgid "%d year old"
+msgid_plural "%d years old"
+msgstr[0] "%d taong gulang"
+msgstr[1] "%d taong gulang"
+
+#: 
 msgid "Missing PHP ZipArchive"
 msgstr "Nawawalang PHP ZipArchive"
 
@@ -5494,6 +5609,10 @@ msgid "All system files have passed integrity validation."
 msgstr "Lahat ng mga file ng sistema ay naipasa ang validation ng integridad."
 
 #: 
+msgid "ChurchCRM Installation"
+msgstr "Pag-install ng ChurchCRM"
+
+#: 
 msgid "Copy"
 msgstr "Kopyahin"
 
@@ -5600,6 +5719,12 @@ msgstr "Hindi kilalang error"
 #: 
 msgid "deposit(s) with no payments"
 msgstr "deposito(s) na walang mga pagbabayad"
+
+#: 
+msgid "%d event in %s"
+msgid_plural "%d events in %s"
+msgstr[0] "%d kaganapan sa %s"
+msgstr[1] "%d kaganapan sa %s"
 
 #: 
 msgid "All Event Types"
@@ -5821,6 +5946,12 @@ msgstr "hal., Paaralan ng Linggo, Pag-aaral ng Bibliya..."
 #: 
 msgid "optional"
 msgstr "opsyonal"
+
+#: 
+msgid "person"
+msgid_plural "people"
+msgstr[0] "tao"
+msgstr[1] "mga tao"
 
 #: 
 msgid "%d Orphaned Files Detected"
@@ -6249,6 +6380,10 @@ msgstr "Bumalik sa mga Pamilya"
 #: 
 msgid "Birth & Family"
 msgstr "Kapanganakan at Pamilya"
+
+#: 
+msgid "Cart"
+msgstr "Listahan"
 
 #: 
 msgid "Change this in System Settings."
@@ -7207,6 +7342,24 @@ msgid "Validation pending"
 msgstr "Naghihintay ng validation"
 
 #: 
+msgid "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
+msgstr[0] "%d Tao ay naidagdag sa Listahan."
+msgstr[1] "%d Tao ay naidagdag sa Listahan."
+
+#: 
+msgid "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
+msgstr[0] "%d Tao ay matagumpay na naidagdag sa napiling Pamilya."
+msgstr[1] "%d Tao ay matagumpay na naidagdag sa napiling Pamilya."
+
+#: 
+msgid "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
+msgstr[0] "%d Tao ay matagumpay na naidagdag sa napiling Grupo."
+msgstr[1] "%d Tao ay matagumpay na naidagdag sa napiling Grupo."
+
+#: 
 msgid "A "
 msgstr "Isang "
 
@@ -7507,6 +7660,12 @@ msgid "Must start with / if not empty; no trailing slash. Only letters, numbers,
 msgstr "Dapat magsimula sa / kung hindi blangko; walang trailing slash. Mga letra, numero, underscore, dash, dot at / lamang ang pinapayagan."
 
 #: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d tao"
+msgstr[1] "%d tao"
+
+#: 
 msgid "All Classifications"
 msgstr "Lahat ng Klasipikasyon"
 
@@ -7705,6 +7864,12 @@ msgstr "natuklasan ang hindi pagkatugma"
 #: 
 msgid "mismatches detected"
 msgstr "mga hindi pagkatugma ay natuklasan"
+
+#: 
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d oras"
+msgstr[1] "%d oras"
 
 #: 
 msgid "About WebDAV Backups"
@@ -8914,6 +9079,12 @@ msgstr "o mas bago para magpatuloy."
 #: 
 msgid "\"Why Came\" Notes"
 msgstr "Mga Tala ng \"Bakit Dumating\""
+
+#: 
+msgid "%d result for \"%s\""
+msgid_plural "%d results for \"%s\""
+msgstr[0] "%d resulta para sa \"%s\""
+msgstr[1] "%d resulta para sa \"%s\""
 
 #: 
 msgid "(optional — leave blank to include all roles)"
@@ -12570,4 +12741,384 @@ msgstr "Ang sukat ng file ay lumagpas sa limitasyon ng server na %s"
 #: 
 msgid "Missing image data in request"
 msgstr "Nawawalang datos ng larawan sa kahilingan"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Hanapin ang mga taong hindi dumalo sa isang kaganapan"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Mga nawawalang tao"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Piliin ang nais na kaganapan"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Advanced na pagsasala ayon sa grupo, klasipikasyon, at papel"
+
+#: 
+msgid "All congregation members included"
+msgstr "Lahat ng miyembro ng kongregasyon ay kasama"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "Matagumpay na natapos ang pag-export ng ChMeetings"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "Format ng kolumna na katugma sa ChMeetings"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Impormasyon sa pakikipag-ugnayan, mga papel sa pamilya, at mahahalagang petsa"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Lumikha ng kumpletong backup ng database ng inyong simbahan. I-download ang SQL file na database lamang o isang kumpletong archive kasama ang mga na-upload na larawan."
+
+#: 
+msgid "Export"
+msgstr "I-export"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "I-export ang datos ng kongregasyon sa format na CSV. Pumili ng mga field na isasama at i-filter ayon sa klasipikasyon, grupo, kasarian, at iba pa."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "I-export ang lahat ng tao sa format na inaasahan ng ChMeetings, na ginagawang madaling i-sync ang datos ng inyong kongregasyon sa platform ng ChMeetings."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "I-export ang datos ng inyong simbahan sa iba't ibang format"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "External (WebDAV) backup sa pamamagitan ng plugin"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Nabigo ang pag-export ng ChMeetings CSV"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Layout ng rekord ng pamilya o indibidwal"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Flexible na pagpili ng field"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Pumunta sa Database Backup"
+
+#: 
+msgid "Open CSV Export"
+msgstr "Buksan ang CSV Export"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "I-restore mula sa pahina ng System Backup"
+
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "May available na update ng sistema. Mangyaring i-upgrade ang inyong installation."
+
+#: 
+msgid "API key regenerated"
+msgstr "Na-regenerate ang API key"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Mga Advanced na Setting"
+
+#: 
+msgid "An error occurred."
+msgstr "Nagkaroon ng error."
+
+#: 
+msgid "Appearance"
+msgstr "Hitsura"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Bumalik sa Finance Dashboard"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Bumalik sa Ministeryo Dashboard"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Bumalik sa Mga Tao Dashboard"
+
+#: 
+msgid "Blue"
+msgstr "Asul"
+
+#: 
+msgid "Change Photo"
+msgstr "Baguhin ang Larawan"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "Hindi magkakabisa ang mga pagbabago hanggang sa susunod na pag-login."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Pumili sa pagitan ng maliwanag at madilim na color scheme"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "Ang mga pagsasalin ng ChurchCRM ay pinamamahalaan ng komunidad sa POEditor. Maaari kang tumulong sa pamamagitan ng:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "I-customize ang hitsura ng application"
+
+#: 
+msgid "Dark"
+msgstr "Madilim"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Database lamang (.sql) o kumpletong archive (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Default na bilang ng mga hanay na ipinapakita sa mga talahanayan ng datos. Magkakabisa sa susunod na pag-load ng pahina."
+
+#: 
+msgid "Edit own family only"
+msgstr "I-edit ang sariling pamilya lamang"
+
+#: 
+msgid "Enter text here..."
+msgstr "Mag-type ng teksto dito..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Nabigo ang pagkansela ng enrollment. Mangyaring subukan muli."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Nabigo ang pagtanggal ng kaganapan. Mangyaring subukan muli."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "Nabigo ang pag-disable ng two-factor authentication. Mangyaring subukan muli."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "Nabigo ang paggawa ng QR code. Mangyaring subukan muli."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "Nabigo ang pag-load ng datos ng kalendaryo. Mangyaring subukan muli."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Nabigo ang pag-load ng kaganapan. Mangyaring subukan muli."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "Nabigo ang pag-load ng mga recovery code. Mangyaring i-refresh ang pahina."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Nabigo ang pag-save ng kaganapan. Mangyaring subukan muli."
+
+#: 
+msgid "Failed to save setting"
+msgstr "Nabigo ang pag-save ng setting"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Filipino - Pilipinas"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Pagwawasto ng mga maling o hindi angkop na pagsasalin sa inyong wika"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "Nakahanap ng bug sa mga pagsasalin?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Nagbibigay ng lahat ng pribilehiyo"
+
+#: 
+msgid "Green"
+msgstr "Berde"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Tulungang Mapabuti ang mga Pagsasalin"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "Kung mapansin mo ang mga nasisira na karakter, HTML entities na lumalabas bilang teksto, o mga pagsasalin na pumipigil sa layout ng pahina, mangyaring iulat ang isyu sa GitHub upang maayos ito para sa lahat."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "Isama ang iyong API key sa mga kahilingan gamit ang x-api-key header:"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Di-wastong JSON value — hindi na-save ang setting. Mangyaring itama ito at subukang muli."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "Sumali sa Translation Project sa POEditor"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Mga setting ng wika at rehiyon"
+
+#: 
+msgid "Light"
+msgstr "Maliwanag"
+
+#: 
+msgid "Manage 2FA"
+msgstr "Pamahalaan ang 2FA"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "Pamahalaan ang mga karagdagang kagustuhan tulad ng mga delimiter ng email at mga opsyon sa display"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Pamahalaan ang iyong API key para sa mga external na integrasyon"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "Hindi Pinahintulutang Paraan"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "Mga nawawala o maling pagsasalin?"
+
+#: 
+msgid "My Account"
+msgstr "Aking Account"
+
+#: 
+msgid "Orange"
+msgstr "Dalandan"
+
+#: 
+msgid "Override the system default locale"
+msgstr "I-override ang default na locale ng sistema"
+
+#: 
+msgid "Page Not Found"
+msgstr "Hindi Nahanap ang Pahina"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "Porsyento ng mga string na nasalin para sa inyong kasalukuyang wika"
+
+#: 
+msgid "Pink"
+msgstr "Rosas"
+
+#: 
+msgid "Primary Color"
+msgstr "Pangunahing Kulay"
+
+#: 
+msgid "Profile and security"
+msgstr "Profile at seguridad"
+
+#: 
+msgid "Purple"
+msgstr "Lila"
+
+#: 
+msgid "Red"
+msgstr "Pula"
+
+#: 
+msgid "Regenerate"
+msgstr "I-regenerate"
+
+#: 
+msgid "Rows per page"
+msgstr "Mga hanay bawat pahina"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Itakda ang Permission sa True upang payagan ang user na baguhin ang setting mismo."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Itakda ang accent color na ginagamit para sa mga button, link, at aktibong elemento"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Magmungkahi ng mas magandang pagkakasalita para sa mga kasalukuyang pagsasalin"
+
+#: 
+msgid "System Update Available"
+msgstr "May Available na Update ng Sistema"
+
+#: 
+msgid "Tables"
+msgstr "Mga Talahanayan"
+
+#: 
+msgid "Theme Mode"
+msgstr "Mode ng Tema"
+
+#: 
+msgid "Toggle search"
+msgstr "I-toggle ang paghahanap"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Pagsasalin ng mga nawawalang string upang mapabuti ang saklaw"
+
+#: 
+msgid "Translation Progress"
+msgstr "Pag-unlad ng Pagsasalin"
+
+#: 
+msgid "Usage"
+msgstr "Paggamit"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "Gamitin ang key na ito upang i-authenticate ang mga kahilingan ng API. Ang pag-regenerate ay magpapawalang-bisa ng kasalukuyang key."
+
+#: 
+msgid "User Config"
+msgstr "Pagsasaayos ng Gumagamit"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Nabigo ang pag-verify. Mangyaring subukan muli."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "Ang bersyon %s ay available na. Mangyaring i-upgrade ang inyong installation."
+
+#: 
+msgid "View All"
+msgstr "Tingnan Lahat"
+
+#: 
+msgid "Yellow"
+msgstr "Dilaw"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "Inyong kasalukuyang antas ng access (read-only)"
 

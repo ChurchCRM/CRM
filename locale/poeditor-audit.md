@@ -1,9 +1,9 @@
 # ChurchCRM Locale Audit Report
 
 **Total Supported Locales:** 47
-**Complete Locales (≥90%):** 39
+**Complete Locales (≥90%):** 40
 **Good Locales (75-89%):** 1
-**Needs Work (<75%):** 7
+**Needs Work (<75%):** 6
 **WIP Candidates (>5%, not yet added):** 5
 
 ## Locale Completeness Overview
@@ -13,20 +13,28 @@
 | `ta` | Tamil | 3510 | 99.91% | 🟢 Complete | ✅ Yes |
 | `am` | Amharic | 3509 | 99.89% | 🟢 Complete | ✅ Yes |
 | `zh-cn` | Chinese | 3509 | 99.89% | 🟢 Complete | ✅ Yes |
+| `fi` | Finnish | 3509 | 99.89% | 🟢 Complete | ✅ Yes |
 | `hi` | Hindi | 3509 | 99.89% | 🟢 Complete | ✅ Yes |
+| `hu` | Hungarian | 3509 | 99.89% | 🟢 Complete | ✅ Yes |
 | `pt-br` | Portuguese (BR) | 3509 | 99.89% | 🟢 Complete | ✅ Yes |
 | `ru` | Russian | 3509 | 99.89% | 🟢 Complete | ✅ Yes |
 | `th` | Thai | 3509 | 99.89% | 🟢 Complete | ✅ Yes |
+| `sq` | Albanian | 3508 | 99.86% | 🟢 Complete | ✅ Yes |
 | `ar` | Arabic | 3508 | 99.86% | 🟢 Complete | ✅ Yes |
 | `zh-tw` | Chinese (TW) | 3508 | 99.86% | 🟢 Complete | ✅ Yes |
+| `cs` | Czech | 3508 | 99.86% | 🟢 Complete | ✅ Yes |
+| `et` | Estonian | 3508 | 99.86% | 🟢 Complete | ✅ Yes |
 | `el` | Greek | 3508 | 99.86% | 🟢 Complete | ✅ Yes |
+| `he` | Hebrew | 3508 | 99.86% | 🟢 Complete | ✅ Yes |
 | `ja` | Japanese | 3508 | 99.86% | 🟢 Complete | ✅ Yes |
 | `ko` | Korean | 3508 | 99.86% | 🟢 Complete | ✅ Yes |
 | `te` | Telugu | 3508 | 99.86% | 🟢 Complete | ✅ Yes |
 | `uk` | Ukrainian | 3508 | 99.86% | 🟢 Complete | ✅ Yes |
 | `it` | Italian | 3507 | 99.83% | 🟢 Complete | ✅ Yes |
 | `pt` | Portuguese | 3507 | 99.83% | 🟢 Complete | ✅ Yes |
+| `tr` | Turkish | 3507 | 99.83% | 🟢 Complete | ✅ Yes |
 | `vi` | Vietnamese | 3507 | 99.83% | 🟢 Complete | ✅ Yes |
+| `af` | Afrikaans | 3506 | 99.8% | 🟢 Complete | ✅ Yes |
 | `es` | Spanish | 3506 | 99.8% | 🟢 Complete | ✅ Yes |
 | `es-ar` | Spanish (AR) | 3506 | 99.8% | 🟢 Complete | ✅ Yes |
 | `es-co` | Spanish (CO) | 3506 | 99.8% | 🟢 Complete | ✅ Yes |
@@ -37,20 +45,12 @@
 | `nl` | Dutch | 3504 | 99.74% | 🟢 Complete | ✅ Yes |
 | `sv` | Swedish | 3503 | 99.72% | 🟢 Complete | ✅ Yes |
 | `id` | Indonesian | 3502 | 99.69% | 🟢 Complete | ✅ Yes |
+| `ro` | Romanian | 3502 | 99.69% | 🟢 Complete | ✅ Yes |
 | `de` | German | 3500 | 99.63% | 🟢 Complete | ✅ Yes |
+| `nb` | Norwegian Bokmål | 3500 | 99.63% | 🟢 Complete | ✅ Yes |
 | `fr` | French | 3494 | 99.46% | 🟢 Complete | ✅ Yes |
-| `hu` | Hungarian | 3427 | 97.55% | 🟢 Complete | ✅ Yes |
-| `cs` | Czech | 3426 | 97.52% | 🟢 Complete | ✅ Yes |
-| `he` | Hebrew | 3426 | 97.52% | 🟢 Complete | ✅ Yes |
-| `ro` | Romanian | 3421 | 97.38% | 🟢 Complete | ✅ Yes |
-| `sq` | Albanian | 3406 | 96.95% | 🟢 Complete | ✅ Yes |
-| `et` | Estonian | 3406 | 96.95% | 🟢 Complete | ✅ Yes |
-| `fi` | Finnish | 3406 | 96.95% | 🟢 Complete | ✅ Yes |
-| `tr` | Turkish | 3405 | 96.93% | 🟢 Complete | ✅ Yes |
-| `af` | Afrikaans | 3404 | 96.9% | 🟢 Complete | ✅ Yes |
-| `nb` | Norwegian Bokmål | 3401 | 96.81% | 🟢 Complete | ✅ Yes |
-| `fil` | Filipino | 3023 | 86.05% | 🟡 Good | ✅ Yes |
-| `ml` | Malayalam | 2602 | 74.07% | 🟠 Needs Work | ✅ Yes |
+| `ml` | Malayalam | 3467 | 98.69% | 🟢 Complete | ✅ Yes |
+| `fil` | Filipino | 3154 | 89.78% | 🟡 Good | ✅ Yes |
 | `my` | Burmese | 67 | 1.91% | 🟠 Needs Work | ❌ No |
 | `sl` | Slovenian | 65 | 1.85% | 🟠 Needs Work | ❌ No |
 | `sr-cyrl` | Serbian (Cyrillic) | 58 | 1.65% | 🟠 Needs Work | ❌ No |
@@ -65,9 +65,9 @@
 
 ## Status Summary
 
-- **🟢 Complete (≥90%):** 39 locales ready for production
+- **🟢 Complete (≥90%):** 40 locales ready for production
 - **🟡 Good (75-89%):** 1 locales with solid translation coverage
-- **🟠 Needs Work (<75%):** 1 locales requiring translator attention
+- **🟠 Needs Work (<75%):** 0 locales requiring translator attention
 - **🔴 Incomplete:** 0 locales (requiring translator attention)
 - **N/A:** 6 locales (English variants - English is the default language)
 
