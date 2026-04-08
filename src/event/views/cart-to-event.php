@@ -105,11 +105,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 <?php } ?>
 
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    document.getElementById('EventTypeFilter')?.addEventListener('change', function () {
-        document.getElementById('eventTypeFilterForm').submit();
-    });
-</script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::assetVersioned('/skin/v2/event-cart-to-event.min.js') ?>"></script>
 
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

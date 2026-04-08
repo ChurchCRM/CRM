@@ -89,47 +89,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-$(document).ready(function() {
-  if ($("#eventTypesTable tbody tr").length > 0) {
-    $('#eventTypesTable').DataTable(window.CRM.plugin.dataTable);
-  }
-
-  // Create event from type
-  $(document).on('click', '.create-event-btn', function() {
-    const typeId = $(this).data('type-id');
-    const f = document.createElement('form');
-    f.method = 'POST';
-    f.action = '<?= $sRootPath ?>/event/editor';
-    const i = document.createElement('input');
-    i.type = 'hidden'; i.name = 'EN_tyid'; i.value = typeId;
-    f.appendChild(i);
-    document.body.appendChild(f);
-    f.submit();
-  });
-
-  // Delete event type with confirmation
-  $(document).on('click', '.delete-type-btn', function() {
-    const typeId = $(this).data('type-id');
-    const typeName = $(this).data('type-name');
-    bootbox.confirm({
-      title: i18next.t('Delete Event Type'),
-      message: i18next.t('Deleting this event type will NOT delete existing events. Are you sure?'),
-      buttons: {
-        confirm: { label: i18next.t('Yes'), className: 'btn-danger' },
-        cancel:  { label: i18next.t('No'),  className: 'btn-default' }
-      },
-      callback: function(result) {
-        if (result) {
-          const f = document.createElement('form');
-          f.method = 'POST';
-          f.action = '<?= $sRootPath ?>/event/types/' + typeId + '/delete';
-          document.body.appendChild(f);
-          f.submit();
-        }
-      }
-    });
-  });
-});
+window.CRM = window.CRM || {};
+window.CRM.eventTypesList = { rootPath: <?= json_encode($sRootPath) ?> };
 </script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::assetVersioned('/skin/v2/event-types-list.min.js') ?>"></script>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

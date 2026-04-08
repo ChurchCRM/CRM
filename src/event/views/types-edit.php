@@ -149,17 +149,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   </a>
 </div>
 
-<script src="<?= SystemURLs::assetVersioned('/skin/v2/event-types.min.js') ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-$(document).ready(function() {
-  const currentTime = '<?= InputUtils::escapeAttribute($startTimeDisplay) ?>';
-  window.CRM.EventUtils.initializeTimePicker(currentTime, 'EventHour', 'EventMinute', 'EventPeriod');
-  window.CRM.EventUtils.setupTimePickerAutoSubmit(
-    'form[name="EventTypeEditForm"]',
-    'EventHour', 'EventMinute', 'EventPeriod',
-    'newEvtStartTime', currentTime
-  );
-});
+window.CRM = window.CRM || {};
+window.CRM.eventTypeForm = {
+  mode: 'edit',
+  currentTime: <?= json_encode($startTimeDisplay) ?>
+};
 </script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::assetVersioned('/skin/v2/event-types.min.js') ?>"></script>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

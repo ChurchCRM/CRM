@@ -36,6 +36,9 @@ module.exports = {
     'event-checkin': './webpack/event-checkin',
     'event-calendars': './webpack/event-calendars',
     'event-types': './webpack/event-types',
+    'event-editor': './webpack/event-editor',
+    'event-types-list': './webpack/event-types-list',
+    'event-cart-to-event': './webpack/event-cart-to-event',
   },
   output: {
     path: path.resolve('./src/skin/v2'),

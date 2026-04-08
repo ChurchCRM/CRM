@@ -85,6 +85,8 @@ window.CRM.EventUtils.setupTimePickerAutoSubmit = (
   hiddenInputId,
   originalTime,
 ) => {
+  const $ = window.$;
+  if (!$) return;
   const updateTimeAndSubmit = () => {
     const hour = $(`#${hourSelectId}`).val();
     const minute = $(`#${minuteSelectId}`).val();
@@ -101,3 +103,44 @@ window.CRM.EventUtils.setupTimePickerAutoSubmit = (
 
   $(`#${hourSelectId}, #${minuteSelectId}, #${periodSelectId}`).on("change", updateTimeAndSubmit);
 };
+
+// ---------------------------------------------------------------------------
+// Auto-init for /event/types/new and /event/types/{id} pages
+// Reads `window.CRM.eventTypeForm` set inline by views to determine which mode.
+// ---------------------------------------------------------------------------
+document.addEventListener("DOMContentLoaded", () => {
+  const $ = window.$;
+  if (!$) return;
+
+  const cfg = window.CRM?.eventTypeForm;
+  if (!cfg) return;
+
+  if (cfg.mode === "new") {
+    // Sync visible time selectors to hidden field on submit
+    $('form[name="UpdateEventNames"]').on("submit", () => {
+      const hour = $("#newEvtHour").val();
+      const minute = $("#newEvtMinute").val();
+      const period = $("#newEvtPeriod").val();
+      if (hour && minute && period) {
+        $("#newEvtStartTime").val(window.CRM.EventUtils.formatTime12Hour(hour, minute, period));
+      }
+    });
+
+    // Recurrence pattern radio handling: enable only the matching control
+    $(".event-recurrence-patterns input[type=radio]").on("change", function () {
+      $('.event-recurrence-patterns select, .event-recurrence-patterns input[type=text]').prop("disabled", true);
+      $(this).closest(".form-check").find("select, input[type=text]").prop("disabled", false);
+    });
+  } else if (cfg.mode === "edit") {
+    const currentTime = cfg.currentTime || "9:00 AM";
+    window.CRM.EventUtils.initializeTimePicker(currentTime, "EventHour", "EventMinute", "EventPeriod");
+    window.CRM.EventUtils.setupTimePickerAutoSubmit(
+      'form[name="EventTypeEditForm"]',
+      "EventHour",
+      "EventMinute",
+      "EventPeriod",
+      "newEvtStartTime",
+      currentTime,
+    );
+  }
+});

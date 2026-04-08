@@ -114,25 +114,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   </div>
 </div>
 
-<script src="<?= SystemURLs::assetVersioned('/skin/v2/event-types.min.js') ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-$(document).ready(function() {
-  // Sync visible time selectors to hidden field
-  $('form[name="UpdateEventNames"]').on('submit', function() {
-    const hour = $('#newEvtHour').val();
-    const minute = $('#newEvtMinute').val();
-    const period = $('#newEvtPeriod').val();
-    if (hour && minute && period) {
-      $('#newEvtStartTime').val(window.CRM.EventUtils.formatTime12Hour(hour, minute, period));
-    }
-  });
-
-  // Recurrence pattern radio handling: enable only the matching control
-  $('.event-recurrence-patterns input[type=radio]').change(function() {
-    $('.event-recurrence-patterns select, .event-recurrence-patterns input[type=text]').prop('disabled', true);
-    $(this).closest('.form-check').find('select, input[type=text]').prop('disabled', false);
-  });
-});
+window.CRM = window.CRM || {};
+window.CRM.eventTypeForm = { mode: 'new' };
 </script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::assetVersioned('/skin/v2/event-types.min.js') ?>"></script>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

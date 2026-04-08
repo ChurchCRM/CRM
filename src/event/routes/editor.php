@@ -308,8 +308,28 @@ $app->post('/editor', function (Request $request, Response $response) {
     $startDt = \DateTime::createFromFormat('Y-m-d H:i a', $rangeParts[0]);
     $endDt = \DateTime::createFromFormat('Y-m-d H:i a', $rangeParts[1]);
     if (!$startDt || !$endDt) {
-        return $response->withHeader('Location', SystemURLs::getRootPath() . '/event/editor')->withStatus(302);
+        $_SESSION['sGlobalMessage'] = gettext('Invalid date format.');
+        $_SESSION['sGlobalMessageClass'] = 'danger';
+        $back = SystemURLs::getRootPath() . '/event/editor';
+        if ($iEventID > 0) {
+            $back .= '/' . $iEventID;
+        }
+
+        return $response->withHeader('Location', $back)->withStatus(302);
     }
+
+    // Server-side date order validation (#6629)
+    if ($endDt < $startDt) {
+        $_SESSION['sGlobalMessage'] = gettext('Event end date/time must be on or after the start date/time.');
+        $_SESSION['sGlobalMessageClass'] = 'danger';
+        $back = SystemURLs::getRootPath() . '/event/editor';
+        if ($iEventID > 0) {
+            $back .= '/' . $iEventID;
+        }
+
+        return $response->withHeader('Location', $back)->withStatus(302);
+    }
+
     $sEventStart = $startDt->format('Y-m-d H:i');
     $sEventEnd = $endDt->format('Y-m-d H:i');
 

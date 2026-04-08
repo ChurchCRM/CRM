@@ -65,40 +65,38 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <?php if ($isAdmin): ?>
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-$(document).ready(function() {
-    window.CRM.settingsPanel.init({
-        container: '#calendarSettings',
-        title: <?= json_encode(gettext('Calendar Settings'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
-        icon: 'fa-solid fa-sliders',
-        headerClass: 'bg-info-lt',
-        settings: [
-            {
-                name: 'bEnabledEvents',
-                type: 'boolean',
-                label: <?= json_encode(gettext('Enable Events Menu'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
-                tooltip: <?= json_encode(gettext('Show or hide the Events menu in the main navigation.'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
-            },
-            {
-                name: 'bEnableExternalCalendarAPI',
-                type: 'boolean',
-                label: <?= json_encode(gettext('Enable External Calendar API'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
-                tooltip: <?= json_encode(gettext('Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps.'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
-            }
+<?php
+$calendarSettingsPanelConfig = [
+    'container'           => '#calendarSettings',
+    'title'               => gettext('Calendar Settings'),
+    'icon'                => 'fa-solid fa-sliders',
+    'headerClass'         => 'bg-info-lt',
+    'showAllSettingsLink' => false,
+    'settings'            => [
+        [
+            'name'    => 'bEnabledEvents',
+            'type'    => 'boolean',
+            'label'   => gettext('Enable Events Menu'),
+            'tooltip' => gettext('Show or hide the Events menu in the main navigation.'),
         ],
-        showAllSettingsLink: false,
-        onSave: function() {
-            setTimeout(function() {
-                window.location.reload();
-            }, 1500);
-        }
-    });
-});
+        [
+            'name'    => 'bEnableExternalCalendarAPI',
+            'type'    => 'boolean',
+            'label'   => gettext('Enable External Calendar API'),
+            'tooltip' => gettext('Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps.'),
+        ],
+    ],
+];
+?>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+window.CRM = window.CRM || {};
+window.CRM.calendarSettingsPanel = <?= json_encode($calendarSettingsPanelConfig, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
 </script>
 <?php endif; ?>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    window.CRM.calendarJSArgs = <?= json_encode($calendarJSArgs, JSON_THROW_ON_ERROR) ?>;
+window.CRM = window.CRM || {};
+window.CRM.calendarJSArgs = <?= json_encode($calendarJSArgs, JSON_THROW_ON_ERROR) ?>;
 </script>
 
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/calendar-event-editor.min.js') ?>"></script>

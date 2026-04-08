@@ -85,7 +85,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                      maxlength="100" class="form-control" placeholder="<?= gettext('Enter event title...') ?>" required>
             </td>
           </tr>
-          <tr>
+          <tr class="event-editor-advanced" <?= !$eventExists ? 'style="display:none;"' : '' ?>>
             <td class="text-secondary fw-semibold" style="width:180px"><?= gettext('Event Description') ?></td>
             <td colspan="3">
               <?= getQuillEditorContainer('EventDesc', 'EventDescInput', $sEventDesc, 'form-control', '100px') ?>
@@ -102,7 +102,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </td>
           </tr>
           <?php if ($showLinkedGroup): ?>
-            <tr>
+            <tr class="event-editor-advanced" <?= !$eventExists ? 'style="display:none;"' : '' ?>>
               <td class="text-secondary fw-semibold" style="width:180px"><?= gettext('Linked Group') ?></td>
               <td colspan="3">
                 <select name="LinkedGroupId" id="LinkedGroupId" class="form-select" style="max-width: 400px;">
@@ -156,14 +156,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <?php endif; ?>
             </td>
           </tr>
-          <tr>
+          <tr class="event-editor-advanced" <?= !$eventExists ? 'style="display:none;"' : '' ?>>
             <td class="text-secondary fw-semibold" style="width:180px"><?= gettext('Sermon / Event Text') ?></td>
             <td colspan="3">
               <small class="form-text text-secondary mb-2"><?= gettext('Optional - Add sermon notes or additional event details') ?></small>
               <?= getQuillEditorContainer('EventText', 'EventTextInput', $sEventText, 'form-control', '200px') ?>
             </td>
           </tr>
-          <tr>
+          <tr class="event-editor-advanced" <?= !$eventExists ? 'style="display:none;"' : '' ?>>
             <td class="text-secondary fw-semibold" style="width:180px">
               <span class="text-danger">*</span><?= gettext('Event Status') ?>
             </td>
@@ -183,6 +183,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <tr>
             <td></td>
             <td>
+              <button type="button" id="toggleAdvancedBtn" class="btn btn-link p-0 mb-3 d-block">
+                <i class="ti ti-chevron-down me-1" id="toggleAdvancedIcon"></i>
+                <span id="toggleAdvancedLabel"><?= !$eventExists ? gettext('Show More Options') : gettext('Hide Advanced Options') ?></span>
+              </button>
               <button type="submit" name="SaveChanges" value="<?= gettext('Save Changes') ?>" class="btn btn-primary">
                 <i class="ti ti-device-floppy me-1"></i><?= gettext('Save Changes') ?>
               </button>
@@ -200,32 +204,16 @@ $endStr = sprintf('%s %s:%s', $defaults['sEventEndDate'], $defaults['iEventEndHo
 ?>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-$(document).ready(function() {
-  var startDate = moment("<?= $startStr ?>", "YYYY-MM-DD H:mm").format("YYYY-MM-DD h:mm A");
-  var endDate = moment("<?= $endStr ?>", "YYYY-MM-DD H:mm").format("YYYY-MM-DD h:mm A");
-  $('#EventDateRange').val(startDate + " - " + endDate);
-  $('#EventDateRange').daterangepicker({
-    timePicker: true,
-    timePickerIncrement: 30,
-    linkedCalendars: true,
-    showDropdowns: true,
-    locale: { format: 'YYYY-MM-DD h:mm A' },
-    startDate: startDate,
-    endDate: endDate
-  });
+window.CRM = window.CRM || {};
+window.CRM.eventEditor = <?= json_encode([
+    'startStr' => $startStr,
+    'endStr' => $endStr,
+    'eventExists' => (bool) $eventExists,
+], JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+</script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::assetVersioned('/skin/v2/event-editor.min.js') ?>"></script>
 
-  function updateRealTotal() {
-    var total = 0;
-    $('.attendance-count').each(function() {
-      total += parseInt($(this).val()) || 0;
-    });
-    $('#RealTotal').val(total);
-  }
-
-  $('.attendance-count').on('input change', updateRealTotal);
-  updateRealTotal();
-});
-
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
 (function() {
   <?= getQuillEditorInitScript('EventDesc', 'EventDescInput', gettext("Enter event description..."), false) ?>
 })();
