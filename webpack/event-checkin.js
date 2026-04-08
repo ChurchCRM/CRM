@@ -475,14 +475,14 @@ $(() => {
         skip: {
           label: '<i class="ti ti-check"></i> ' + i18next.t("Skip & Check Out"),
           className: "btn-outline-warning",
-          callback: function () {
+          callback: () => {
             performCheckout(personId, null);
           },
         },
         confirm: {
           label: '<i class="ti ti-user-check"></i> ' + i18next.t("Confirm Check Out"),
           className: "btn-primary",
-          callback: function () {
+          callback: () => {
             const val = $("#checkoutBySelect").val();
             const supervisorId = val ? parseInt(val, 10) : null;
             performCheckout(personId, supervisorId);
@@ -492,7 +492,7 @@ $(() => {
     });
 
     // Initialize TomSelect on the supervisor search field once the modal is shown
-    dialog.on("shown.bs.modal", function () {
+    dialog.on("shown.bs.modal", () => {
       const el = document.getElementById("checkoutBySelect");
       if (!el || el.tomselect) return;
       new TomSelect(el, {
