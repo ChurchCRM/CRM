@@ -502,7 +502,7 @@ function initializeCalendar() {
       } else if (eventData.editable || eventData.startEditable || eventData.durationEditable) {
         window.showEventForm(eventData);
       } else {
-        alert(`${i18next.t("Holiday")}: ${eventData.title}`);
+        window.CRM.notify(`${i18next.t("Holiday")}: ${eventData.title}`, { type: "info", delay: 4000 });
       }
     },
     loading: (isLoading) => {

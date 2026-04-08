@@ -14,16 +14,15 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <i class="ti ti-chevron-left me-1"></i><?= gettext('Return to Events') ?>
   </a>
   <?php if ($eventExists && $eventId > 0): ?>
-    <div>
-      <a href="<?= $sRootPath ?>/event/checkin/<?= $eventId ?>" class="btn btn-info me-2">
+    <div class="d-flex gap-2">
+      <a href="<?= $sRootPath ?>/event/checkin/<?= $eventId ?>" class="btn btn-info">
         <i class="ti ti-clipboard-check me-1"></i><?= gettext('Manage Check-ins') ?>
       </a>
-      <form method="POST" action="<?= $sRootPath ?>/event/dashboard" class="d-inline" onsubmit="return confirm('<?= gettext('Deleting this event will also delete all attendance records. Are you sure?') ?>');">
-        <input type="hidden" name="EID" value="<?= $eventId ?>">
-        <button type="submit" name="Action" value="Delete" class="btn btn-outline-danger">
-          <i class="ti ti-trash me-1"></i><?= gettext('Delete Event') ?>
-        </button>
-      </form>
+      <button type="button" class="btn btn-outline-danger delete-event"
+              data-event_id="<?= $eventId ?>"
+              data-event_title="<?= InputUtils::escapeAttribute($sEventTitle) ?>">
+        <i class="ti ti-trash me-1"></i><?= gettext('Delete Event') ?>
+      </button>
     </div>
   <?php endif; ?>
 </div>
@@ -98,23 +97,37 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <td colspan="3">
               <input type="text" name="EventDateRange" id="EventDateRange"
                      class="form-control" style="max-width: 400px;" required>
-              <small class="form-text text-secondary"><?= gettext('Select start and end date/time') ?></small>
+              <small class="form-text text-secondary">
+                <?= gettext('Select start and end date/time.') ?>
+                <?php if (!$eventExists && $iTypeID > 0): ?>
+                  <span class="text-info">
+                    <i class="ti ti-sparkles me-1"></i>
+                    <?= gettext('Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type\'s default start time.') ?>
+                  </span>
+                <?php endif; ?>
+              </small>
             </td>
           </tr>
           <?php if ($showLinkedGroup): ?>
             <tr class="event-editor-advanced" <?= !$eventExists ? 'style="display:none;"' : '' ?>>
-              <td class="text-secondary fw-semibold" style="width:180px"><?= gettext('Linked Group') ?></td>
+              <td class="text-secondary fw-semibold" style="width:180px">
+                <?= gettext('Linked Group') ?>
+                <div class="text-secondary small fw-normal mt-1">
+                  <i class="ti ti-info-circle me-1"></i><?= gettext('Required for Kiosk') ?>
+                </div>
+              </td>
               <td colspan="3">
                 <select name="LinkedGroupId" id="LinkedGroupId" class="form-select" style="max-width: 400px;">
-                  <option value="0"><?= gettext('No Group (Select for Kiosk Check-in)') ?></option>
+                  <option value="0"><?= gettext('No Group') ?></option>
                   <?php foreach ($groups as $group): ?>
                     <option value="<?= (int) $group->getId() ?>" <?= ($iLinkedGroupId === (int) $group->getId()) ? 'selected' : '' ?>>
                       <?= InputUtils::escapeHTML($group->getName()) ?>
                     </option>
                   <?php endforeach; ?>
                 </select>
-                <small class="form-text text-secondary">
-                  <?= gettext('Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk.') ?>
+                <small class="form-text text-secondary mt-2 d-block">
+                  <strong><?= gettext('What is this for?') ?></strong>
+                  <?= gettext('A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet.') ?>
                 </small>
               </td>
             </tr>
@@ -126,15 +139,26 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="mt-2">
                   <input type="number" id="RealTotal" class="form-control" readonly value="0"
                          style="background-color: #e9ecef; font-weight: bold; max-width: 200px;">
-                  <small class="form-text text-secondary"><?= gettext('Auto-calculated from counts above') ?></small>
+                  <small class="form-text text-secondary"><?= gettext('Auto-totalled from counts at right') ?></small>
                 </div>
               <?php endif; ?>
             </td>
             <td colspan="3">
               <input type="hidden" name="NumAttendCounts" value="<?= count($counts) ?>">
               <?php if (empty($counts)): ?>
-                <?= gettext('No Attendance counts recorded') ?>
+                <div class="alert alert-info mb-0">
+                  <i class="ti ti-info-circle me-1"></i>
+                  <?= gettext('No attendance count categories defined for this event type yet.') ?>
+                  <a href="<?= $sRootPath ?>/event/types/<?= (int) $iTypeID ?>" class="alert-link">
+                    <?= gettext('Add categories on the Event Type page') ?>
+                  </a>
+                  <?= gettext('(e.g. Members, Visitors, Children) so volunteers can record headcounts here.') ?>
+                </div>
               <?php else: ?>
+                <small class="form-text text-secondary mb-2 d-block">
+                  <strong><?= gettext('What are these for?') ?></strong>
+                  <?= gettext('These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page.') ?>
+                </small>
                 <div class="row">
                   <?php foreach ($counts as $i => $c): ?>
                     <div class="col-md-4 col-sm-6 mb-2">

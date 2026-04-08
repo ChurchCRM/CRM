@@ -108,32 +108,50 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <div class="mb-3">
         <label class="form-label fw-bold"><?= gettext('Attendance Count Categories') ?></label>
         <div class="table-responsive">
-          <table class="table table-sm table-bordered">
+          <table class="table table-sm table-vcenter">
             <thead>
               <tr>
                 <th><?= gettext('Category Name') ?></th>
-                <th style="width: 120px;" class="no-export"><?= gettext('Actions') ?></th>
+                <th style="width: 200px;" class="no-export text-end"><?= gettext('Actions') ?></th>
               </tr>
             </thead>
             <tbody>
               <?php foreach ($counts as $c): ?>
+                <?php $cid = (int) $c['id']; ?>
                 <tr data-cy="attendance-count-row">
-                  <td><?= InputUtils::escapeHTML($c['name']) ?></td>
-                  <td class="text-center">
-                    <button type="submit" name="Action" value="DELETE_<?= (int) $c['id'] ?>"
-                            class="btn btn-outline-danger btn-sm" data-cy="remove-attendance-count"
-                            onclick="return confirm('<?= gettext('Remove this attendance count?') ?>');">
-                      <i class="ti ti-trash me-1"></i><?= gettext('Remove') ?>
-                    </button>
+                  <td>
+                    <input
+                      class="form-control form-control-sm"
+                      type="text"
+                      name="countName_<?= $cid ?>"
+                      value="<?= InputUtils::escapeAttribute($c['name']) ?>"
+                      maxlength="20"
+                      data-cy="attendance-count-edit-input" />
+                  </td>
+                  <td class="text-end">
+                    <div class="btn-group btn-group-sm">
+                      <button type="submit" name="Action" value="RENAME_<?= $cid ?>"
+                              class="btn btn-outline-primary"
+                              data-cy="rename-attendance-count"
+                              title="<?= gettext('Save changes to this category name') ?>">
+                        <i class="ti ti-device-floppy me-1"></i><?= gettext('Save') ?>
+                      </button>
+                      <button type="submit" name="Action" value="DELETE_<?= $cid ?>"
+                              class="btn btn-outline-danger"
+                              data-cy="remove-attendance-count"
+                              data-confirm="<?= InputUtils::escapeAttribute(gettext('Remove this attendance count?')) ?>">
+                        <i class="ti ti-trash"></i>
+                      </button>
+                    </div>
                   </td>
                 </tr>
               <?php endforeach; ?>
-              <tr>
+              <tr class="table-light">
                 <td>
                   <input class="form-control form-control-sm" type="text" name="newCountName" maxlength="20"
                          placeholder="<?= gettext('e.g., Visitors, Children') ?>" data-cy="attendance-count-input" />
                 </td>
-                <td class="text-center">
+                <td class="text-end">
                   <button type="submit" name="Action" value="ADD" class="btn btn-primary btn-sm"
                           data-cy="add-attendance-count">
                     <i class="ti ti-plus me-1"></i><?= gettext('Add') ?>
@@ -143,6 +161,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </tbody>
           </table>
         </div>
+        <small class="text-muted">
+          <?= gettext('Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field.') ?>
+        </small>
       </div>
     </form>
   </div>

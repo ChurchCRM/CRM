@@ -115,6 +115,36 @@ document.addEventListener("DOMContentLoaded", () => {
   const cfg = window.CRM?.eventTypeForm;
   if (!cfg) return;
 
+  // Bootbox-style confirms for any submit button with data-confirm.
+  // We intercept the click, show a modal, and re-trigger the submit only
+  // after the user confirms. The data-bb-confirmed flag prevents an infinite
+  // loop when the form actually submits.
+  $(document).on("click", "[data-confirm]", function (e) {
+    const $btn = $(this);
+    if ($btn.data("bb-confirmed")) {
+      $btn.removeData("bb-confirmed");
+      return;
+    }
+    const msg = $btn.data("confirm");
+    if (!msg) return;
+    e.preventDefault();
+    e.stopPropagation();
+    bootbox.confirm({
+      title: i18next.t("Confirm"),
+      message: msg,
+      buttons: {
+        cancel: { label: '<i class="ti ti-x"></i> ' + i18next.t("Cancel") },
+        confirm: { label: '<i class="ti ti-check"></i> ' + i18next.t("OK"), className: "btn-danger" },
+      },
+      callback: (result) => {
+        if (result) {
+          $btn.data("bb-confirmed", true);
+          $btn.trigger("click");
+        }
+      },
+    });
+  });
+
   if (cfg.mode === "new") {
     // Sync visible time selectors to hidden field on submit
     $('form[name="UpdateEventNames"]').on("submit", () => {

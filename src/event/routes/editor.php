@@ -139,9 +139,14 @@ function buildCountsForType(int $typeId): array
 }
 
 /**
- * Build attendance count rows from existing EventCounts records.
+ * Build attendance count rows for an existing event.
+ *
+ * If the event already has EventCounts rows, return them.
+ * Otherwise (event predates its type's categories, or counts were never
+ * filled in), fall back to the type's defined count categories with zero
+ * values so the user can fill them in directly from the editor.
  */
-function buildCountsForEvent(int $eventId): array
+function buildCountsForEvent(int $eventId, int $typeId = 0): array
 {
     $eventCounts = EventCountsQuery::create()
         ->filterByEvtcntEventid($eventId)
@@ -156,6 +161,12 @@ function buildCountsForEvent(int $eventId): array
             'count' => (int) $ec->getEvtcntCountcount(),
             'notes' => $ec->getEvtcntNotes(),
         ];
+    }
+
+    // No counts saved yet for this event — show the type's defined categories
+    // so the user can enter values directly.
+    if (empty($counts) && $typeId > 0) {
+        return buildCountsForType($typeId);
     }
 
     return $counts;
@@ -211,7 +222,7 @@ $app->get('/editor[/{id}]', function (Request $request, Response $response, arra
             $iLinkedGroupId = (int) $linkedGroups->getFirst()->getId();
         }
 
-        $counts = buildCountsForEvent($eventId);
+        $counts = buildCountsForEvent($eventId, $iTypeID);
         if (!empty($counts) && isset($counts[0]['notes'])) {
             $sCountNotes = $counts[0]['notes'];
         }

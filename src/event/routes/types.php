@@ -240,6 +240,20 @@ $app->post('/types/{id}', function (Request $request, Response $response, array 
         return $response->withHeader('Location', SystemURLs::getRootPath() . '/event/types/' . $tyid)->withStatus(302);
     }
 
+    // Handle RENAME_<countId> action for renaming an existing count category
+    if (strpos($action, 'RENAME_') === 0) {
+        $ctid = (int) mb_substr($action, 7);
+        $newName = trim((string) InputUtils::legacyFilterInput($body['countName_' . $ctid] ?? ''));
+        if ($ctid > 0 && $newName !== '') {
+            $count = EventCountNameQuery::create()->findOneById($ctid);
+            if ($count !== null && (int) $count->getTypeId() === $tyid) {
+                $count->setName($newName);
+                $count->save();
+            }
+        }
+        return $response->withHeader('Location', SystemURLs::getRootPath() . '/event/types/' . $tyid)->withStatus(302);
+    }
+
     $eventType = EventTypeQuery::create()->findOneById($tyid);
     if ($eventType === null) {
         return $response->withHeader('Location', SystemURLs::getRootPath() . '/event/types')->withStatus(302);

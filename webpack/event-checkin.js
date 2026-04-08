@@ -478,15 +478,26 @@ $(() => {
       });
   });
 
-  // Delete attendance via dropdown action (confirm first)
+  // Delete attendance via dropdown action (bootbox confirm first)
   $(document).on("click", ".delete-attendance-btn", function () {
     const personId = $(this).data("person-id");
     const personName = $(this).data("person-name");
 
-    if (!confirm(`${i18next.t("Delete check-in record for")} ${personName}?`)) {
-      return;
-    }
+    bootbox.confirm({
+      title: i18next.t("Delete attendance record?"),
+      message: `${i18next.t("Delete check-in record for")} <strong>${window.CRM.escapeHtml(String(personName || ""))}</strong>?`,
+      buttons: {
+        cancel: { label: '<i class="ti ti-x"></i> ' + i18next.t("Cancel") },
+        confirm: { label: '<i class="ti ti-trash"></i> ' + i18next.t("Delete"), className: "btn-danger" },
+      },
+      callback: (confirmed) => {
+        if (!confirmed) return;
+        deleteAttendanceRecord(personId);
+      },
+    });
+  });
 
+  function deleteAttendanceRecord(personId) {
     fetch(`${window.CRM.root}/api/events/${eventId}/attendance/${personId}`, {
       method: "DELETE",
     })
@@ -507,5 +518,5 @@ $(() => {
       .catch(() => {
         window.CRM.notify(i18next.t("Failed to delete. Please try again."), { type: "danger", delay: 5000 });
       });
-  });
+  }
 });
