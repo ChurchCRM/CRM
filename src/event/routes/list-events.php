@@ -6,8 +6,8 @@ use ChurchCRM\model\ChurchCRM\EventAttendQuery;
 use ChurchCRM\model\ChurchCRM\EventCountsQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
+use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
 use ChurchCRM\Utils\DateTimeUtils;
-use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -204,12 +204,11 @@ $app->get('/dashboard', function (Request $request, Response $response) {
     ]);
 });
 
-// POST /event/dashboard — handle delete/activate actions
+// POST /event/dashboard — handle delete/activate actions. Requires AddEvent permission.
 $app->post('/dashboard', function (Request $request, Response $response) {
     $body = $request->getParsedBody();
-    $canEditEvents = AuthenticationManager::getCurrentUser()->isAddEvent();
 
-    if (!empty($body['Action']) && !empty($body['EID']) && $canEditEvents) {
+    if (!empty($body['Action']) && !empty($body['EID'])) {
         $eID = (int) $body['EID'];
         $action = $body['Action'];
 
@@ -240,4 +239,4 @@ $app->post('/dashboard', function (Request $request, Response $response) {
     }
 
     return $response->withHeader('Location', $target)->withStatus(302);
-});
+})->add(new AddEventsRoleAuthMiddleware());

@@ -1,12 +1,12 @@
 <?php
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\EventCountName;
 use ChurchCRM\model\ChurchCRM\EventCountNameQuery;
 use ChurchCRM\model\ChurchCRM\EventType;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -15,10 +15,6 @@ use Slim\Views\PhpRenderer;
 
 // GET /event/types — list all event types
 $app->get('/types', function (Request $request, Response $response) {
-    if (!AuthenticationManager::getCurrentUser()->isAddEvent()) {
-        return $response->withHeader('Location', SystemURLs::getRootPath())->withStatus(302);
-    }
-
     $eventTypes = EventTypeQuery::create()->orderById()->find();
     $rows = [];
 
@@ -85,14 +81,10 @@ $app->get('/types', function (Request $request, Response $response) {
         ]),
         'rows' => $rows,
     ]);
-});
+})->add(new AddEventsRoleAuthMiddleware());
 
 // GET /event/types/new — create new event type form
 $app->get('/types/new', function (Request $request, Response $response) {
-    if (!AuthenticationManager::getCurrentUser()->isAddEvent()) {
-        return $response->withHeader('Location', SystemURLs::getRootPath())->withStatus(302);
-    }
-
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
     return $renderer->render($response, 'types-new.php', [
@@ -105,14 +97,10 @@ $app->get('/types/new', function (Request $request, Response $response) {
             [gettext('New')],
         ]),
     ]);
-});
+})->add(new AddEventsRoleAuthMiddleware());
 
 // POST /event/types/new — create new event type
 $app->post('/types/new', function (Request $request, Response $response) {
-    if (!AuthenticationManager::getCurrentUser()->isAddEvent()) {
-        return $response->withHeader('Location', SystemURLs::getRootPath())->withStatus(302);
-    }
-
     $body = $request->getParsedBody();
 
     $eName = InputUtils::legacyFilterInput($body['newEvtName'] ?? '');
@@ -175,14 +163,10 @@ $app->post('/types/new', function (Request $request, Response $response) {
     }
 
     return $response->withHeader('Location', SystemURLs::getRootPath() . '/event/types')->withStatus(302);
-});
+})->add(new AddEventsRoleAuthMiddleware());
 
 // GET /event/types/{id} — edit event type
 $app->get('/types/{id}', function (Request $request, Response $response, array $args) {
-    if (!AuthenticationManager::getCurrentUser()->isAddEvent()) {
-        return $response->withHeader('Location', SystemURLs::getRootPath())->withStatus(302);
-    }
-
     $tyid = (int) $args['id'];
     $eventType = EventTypeQuery::create()->findOneById($tyid);
 
@@ -241,14 +225,10 @@ $app->get('/types/{id}', function (Request $request, Response $response, array $
         'counts'           => $countsArray,
         'groups'           => $groups,
     ]);
-});
+})->add(new AddEventsRoleAuthMiddleware());
 
 // POST /event/types/{id} — handle edit actions
 $app->post('/types/{id}', function (Request $request, Response $response, array $args) {
-    if (!AuthenticationManager::getCurrentUser()->isAddEvent()) {
-        return $response->withHeader('Location', SystemURLs::getRootPath())->withStatus(302);
-    }
-
     $tyid = (int) $args['id'];
     $body = $request->getParsedBody();
     $action = $body['Action'] ?? '';
@@ -303,17 +283,13 @@ $app->post('/types/{id}', function (Request $request, Response $response, array 
     }
 
     return $response->withHeader('Location', SystemURLs::getRootPath() . '/event/types/' . $tyid)->withStatus(302);
-});
+})->add(new AddEventsRoleAuthMiddleware());
 
 // POST /event/types/{id}/delete — delete event type
 $app->post('/types/{id}/delete', function (Request $request, Response $response, array $args) {
-    if (!AuthenticationManager::getCurrentUser()->isAddEvent()) {
-        return $response->withHeader('Location', SystemURLs::getRootPath())->withStatus(302);
-    }
-
     $tyid = (int) $args['id'];
     EventTypeQuery::create()->filterById($tyid)->delete();
     EventCountNameQuery::create()->filterByTypeId($tyid)->delete();
 
     return $response->withHeader('Location', SystemURLs::getRootPath() . '/event/types')->withStatus(302);
-});
+})->add(new AddEventsRoleAuthMiddleware());

@@ -1,6 +1,5 @@
 <?php
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\model\ChurchCRM\EventAudience;
@@ -11,6 +10,7 @@ use ChurchCRM\model\ChurchCRM\EventCountsQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -161,12 +161,8 @@ function buildCountsForEvent(int $eventId): array
     return $counts;
 }
 
-// GET /event/editor — show the editor (new or edit)
+// GET /event/editor — show the editor (new or edit). Requires AddEvent permission.
 $app->get('/editor[/{id}]', function (Request $request, Response $response, array $args) {
-    if (!AuthenticationManager::getCurrentUser()->isAddEvent()) {
-        return $response->withHeader('Location', SystemURLs::getRootPath())->withStatus(302);
-    }
-
     $params = $request->getQueryParams();
     $eventId = (int) ($args['id'] ?? $params['EID'] ?? $params['calendarAction'] ?? 0);
     $typeId = (int) ($params['EN_tyid'] ?? 0);
@@ -273,14 +269,10 @@ $app->get('/editor[/{id}]', function (Request $request, Response $response, arra
         'eventTypes'      => EventTypeQuery::create()->orderByName()->find(),
         'groups'          => GroupQuery::create()->orderByName()->find(),
     ]);
-});
+})->add(new AddEventsRoleAuthMiddleware());
 
-// POST /event/editor — save event (new or update)
+// POST /event/editor — save event (new or update). Requires AddEvent permission.
 $app->post('/editor', function (Request $request, Response $response) {
-    if (!AuthenticationManager::getCurrentUser()->isAddEvent()) {
-        return $response->withHeader('Location', SystemURLs::getRootPath())->withStatus(302);
-    }
-
     $body = $request->getParsedBody();
 
     $iEventID = (int) ($body['EventID'] ?? 0);
@@ -392,4 +384,4 @@ $app->post('/editor', function (Request $request, Response $response) {
     return $response
         ->withHeader('Location', SystemURLs::getRootPath() . '/event/dashboard')
         ->withStatus(302);
-});
+})->add(new AddEventsRoleAuthMiddleware());

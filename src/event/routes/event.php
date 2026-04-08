@@ -6,6 +6,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -58,9 +59,9 @@ $app->get('/cart-to-event', function (Request $request, Response $response) {
         'aEventTypes'       => EventTypeQuery::create()->find(),
         'selectedEventType' => $selectedEventType,
     ]);
-});
+})->add(new AddEventsRoleAuthMiddleware());
 
-// POST /event/cart-to-event — process the form submission
+// POST /event/cart-to-event — process the form submission. Requires AddEvent + ManageGroups.
 $app->post('/cart-to-event', function (Request $request, Response $response) {
     AuthenticationManager::redirectHomeIfFalse(
         AuthenticationManager::getCurrentUser()->isManageGroupsEnabled(),
@@ -97,4 +98,4 @@ $app->post('/cart-to-event', function (Request $request, Response $response) {
     return $response
         ->withHeader('Location', SystemURLs::getRootPath() . '/event/cart-to-event')
         ->withStatus(302);
-});
+})->add(new AddEventsRoleAuthMiddleware());

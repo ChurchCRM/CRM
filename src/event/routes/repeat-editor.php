@@ -1,14 +1,13 @@
 <?php
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\Service\EventService;
+use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -88,9 +87,9 @@ $app->get('/repeat-editor[/{typeId}]', function (Request $request, Response $res
         'rangeStart'      => DateTimeUtils::getTodayDate(),
         'rangeEnd'        => (new \DateTime('+1 year'))->format('Y-m-d'),
     ]);
-});
+})->add(new AddEventsRoleAuthMiddleware());
 
-// POST /event/repeat-editor — process repeat event creation
+// POST /event/repeat-editor — process repeat event creation. Requires AddEvent permission.
 $app->post('/repeat-editor', function (Request $request, Response $response) {
     $body = $request->getParsedBody();
 
@@ -172,4 +171,4 @@ $app->post('/repeat-editor', function (Request $request, Response $response) {
     return $response
         ->withHeader('Location', SystemURLs::getRootPath() . '/event/dashboard')
         ->withStatus(302);
-});
+})->add(new AddEventsRoleAuthMiddleware());

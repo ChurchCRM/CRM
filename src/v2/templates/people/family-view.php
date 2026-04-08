@@ -21,9 +21,7 @@ $memberCount = count($family->getPeople());
 $familyEmails = $family->getEmails();
 
 // Build active events list for the family check-in modal (#6838)
-$eventsEnabled = SystemConfig::getBooleanValue('bEnabledEvents');
-$canAddEvent = AuthenticationManager::getCurrentUser()->isAddEvent();
-$showFamilyCheckin = $eventsEnabled && $canAddEvent;
+$showFamilyCheckin = AuthenticationManager::getCurrentUser()->canManageEvents();
 $activeEventsForCheckin = [];
 $familyPersonIds = [];
 if ($showFamilyCheckin) {
