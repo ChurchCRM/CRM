@@ -262,18 +262,16 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         LoggerUtils::getAppLogger()->error("Failed to retrieve student's age", ['exception' => $ex]);
                     }
 
-                    $personPhoto = new \ChurchCRM\dto\Photo('person', $kidId);
-                    $photoIcon   = '';
-                    if ($personPhoto->hasUploadedPhoto()) {
-                        $photoIcon = ' <button class="btn btn-sm btn-outline-secondary view-person-photo" data-person-id="' . $kidId . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button>';
-                    }
                     $inCart = isset($_SESSION['aPeopleCart']) && in_array($kidId, $_SESSION['aPeopleCart'], false);
                     ?>
                     <tr>
                         <td>
-                            <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $kidId ?>">
-                                <?= InputUtils::escapeHTML($firstName) ?>
-                            </a><?= $photoIcon ?>
+                            <div class="d-flex align-items-center">
+                                <img data-image-entity-type="person" data-image-entity-id="<?= $kidId ?>" class="avatar avatar-xs rounded-circle me-2" alt="" />
+                                <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $kidId ?>">
+                                    <?= InputUtils::escapeHTML($firstName) ?>
+                                </a>
+                            </div>
                         </td>
                         <td><?= InputUtils::escapeHTML($LastName) ?></td>
                         <td><?= $birthDate ?></td>
@@ -348,7 +346,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
 
-    <script src="<?= SystemURLs::assetVersioned('/skin/js/cart-photo-viewer.js') ?>"></script>
 <?php } ?>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/groups-sundayschool-dashboard.min.js"></script>

@@ -614,7 +614,7 @@ export class CartManager {
                     <a href="${window.CRM.root}/CartToFamily.php" class="dropdown-item">
                         <i class="fa-solid fa-users text-info"></i> ${i18next.t("Empty Cart to Family")}
                     </a>
-                    <a href="${window.CRM.root}/CartToEvent.php" class="dropdown-item">
+                    <a href="${window.CRM.root}/event/cart-to-event" class="dropdown-item">
                         <i class="fa-solid fa-clipboard-list text-info"></i> ${i18next.t("Check In to Event")}
                     </a>
                     <a href="${window.CRM.root}/MapUsingGoogle.php?GroupID=0" class="dropdown-item">

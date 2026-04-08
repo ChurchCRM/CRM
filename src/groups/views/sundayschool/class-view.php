@@ -562,7 +562,6 @@ if ($bCanManageGroups) {
     window.CRM.currentGroupName = <?= json_encode($iGroupName, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
 </script>
 <script src="<?= $sRootPath ?>/skin/js/sundayschool-actions.js?v=<?= filemtime(SystemURLs::getDocumentRoot() . '/skin/js/sundayschool-actions.js') ?>"></script>
-<script src="<?= SystemURLs::assetVersioned('/skin/js/cart-photo-viewer.js') ?>"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/groups-sundayschool-class-view.min.js"></script>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
