@@ -43,6 +43,84 @@ describe("Events Dashboard (MVC)", () => {
         cy.url().should("include", "/event/types");
     });
 
+    describe("Stat cards data accuracy", () => {
+        it("Event Types card shows total types, not types-with-events-this-year", () => {
+            // Fetch the actual count via the API and assert the dashboard matches.
+            cy.request("/api/events/types").then((apiResp) => {
+                const apiCount = Array.isArray(apiResp.body) ? apiResp.body.length : 0;
+                cy.visit("event/dashboard");
+                cy.contains(".card", "Event Types").within(() => {
+                    // Find the digit shown in the card and assert it equals API count
+                    cy.get("h2, h3, .h2, .h3, .stat-value, .display-4").first().invoke("text").then((txt) => {
+                        const shown = parseInt(txt.replace(/\D/g, ""), 10);
+                        expect(shown).to.equal(apiCount);
+                    });
+                });
+            });
+        });
+
+        it("event title row does not render Quill empty placeholder (<p><br /></p>)", () => {
+            cy.visit("event/dashboard");
+            // The literal markup must NEVER appear as text under any event row
+            cy.get("table tbody").should("not.contain.text", "<p>");
+            cy.get("table tbody").should("not.contain.text", "<br />");
+        });
+    });
+
+    describe("Inactive event guards", () => {
+        it("shows a warning banner on /event/checkin/{id} for an inactive event", () => {
+            // Find or create an inactive event by deactivating one via the API
+            cy.request("/api/events").then((listResp) => {
+                const events = listResp.body.Events || listResp.body || [];
+                if (!events.length) return;
+                const eventId = events[0].Id;
+
+                // Force-deactivate via the status endpoint
+                cy.request({
+                    method: "POST",
+                    url: `/api/events/${eventId}/status`,
+                    body: { active: false },
+                });
+
+                cy.visit(`event/checkin/${eventId}`);
+
+                // The walk-in form should NOT be present
+                cy.get("#checkinBtn").should("not.exist");
+                // The inactive warning banner should be visible
+                cy.contains("This event is inactive").should("be.visible");
+
+                // Re-activate so other tests aren't affected
+                cy.request({
+                    method: "POST",
+                    url: `/api/events/${eventId}/status`,
+                    body: { active: true },
+                });
+            });
+        });
+
+        it("API rejects check-in to inactive event with 409", () => {
+            cy.request("/api/events").then((listResp) => {
+                const events = listResp.body.Events || listResp.body || [];
+                if (!events.length) return;
+                const eventId = events[0].Id;
+
+                cy.request({ method: "POST", url: `/api/events/${eventId}/status`, body: { active: false } });
+
+                cy.request({
+                    method: "POST",
+                    url: `/api/events/${eventId}/checkin`,
+                    body: { personId: 1 },
+                    failOnStatusCode: false,
+                }).then((resp) => {
+                    expect(resp.status).to.eq(409);
+                });
+
+                // Restore
+                cy.request({ method: "POST", url: `/api/events/${eventId}/status`, body: { active: true } });
+            });
+        });
+    });
+
     describe("Event action menu", () => {
         it("renders the standard action dropdown for each event row", () => {
             cy.visit("event/dashboard");
