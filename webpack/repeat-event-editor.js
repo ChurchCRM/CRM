@@ -9,18 +9,14 @@
 
 import "./repeat-event-editor.css";
 
-document.addEventListener("DOMContentLoaded", function () {
-  const t = window.i18next
-    ? window.i18next.t.bind(window.i18next)
-    : (s) => s;
+document.addEventListener("DOMContentLoaded", () => {
+  const t = window.i18next ? window.i18next.t.bind(window.i18next) : (s) => s;
 
   // ---------------------------------------------------------------------------
   // Recurrence-type radio group: enable/disable associated controls
   // ---------------------------------------------------------------------------
   function updateRecurrenceInputs() {
-    const selected = document.querySelector(
-      'input[name="RecurType"]:checked'
-    );
+    const selected = document.querySelector('input[name="RecurType"]:checked');
     const type = selected ? selected.value : null;
 
     const recurDow = document.getElementById("RecurDOW");
@@ -69,38 +65,20 @@ document.addEventListener("DOMContentLoaded", function () {
   // ---------------------------------------------------------------------------
   const form = document.querySelector('form[name="RepeatEventsForm"]');
   if (form) {
-    form.addEventListener("submit", function (e) {
+    form.addEventListener("submit", (e) => {
       const startTime = document.getElementById("StartTime");
       const endTime = document.getElementById("EndTime");
-      if (
-        startTime &&
-        endTime &&
-        startTime.value &&
-        endTime.value &&
-        endTime.value <= startTime.value
-      ) {
+      if (startTime && endTime && startTime.value && endTime.value && endTime.value <= startTime.value) {
         e.preventDefault();
-        window.CRM.notify(
-          t("End time must be after start time."),
-          { type: "warning", delay: 5000 }
-        );
+        window.CRM.notify(t("End time must be after start time."), { type: "warning", delay: 5000 });
         return;
       }
 
       const rangeStart = document.getElementById("RangeStart");
       const rangeEnd = document.getElementById("RangeEnd");
-      if (
-        rangeStart &&
-        rangeEnd &&
-        rangeStart.value &&
-        rangeEnd.value &&
-        rangeEnd.value < rangeStart.value
-      ) {
+      if (rangeStart && rangeEnd && rangeStart.value && rangeEnd.value && rangeEnd.value < rangeStart.value) {
         e.preventDefault();
-        window.CRM.notify(
-          t("Range end date must be on or after range start date."),
-          { type: "warning", delay: 5000 }
-        );
+        window.CRM.notify(t("Range end date must be on or after range start date."), { type: "warning", delay: 5000 });
       }
     });
   }
