@@ -40,27 +40,35 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 Stat cards display quick metrics using a consistent card pattern. Each card must follow this exact structure:
 
-### Column Grid
+### Column Grid <!-- updated: 2026-04-09 -->
 
-**Mobile-first responsive sizing** using Bootstrap 5 utilities:
+**Mobile-first responsive sizing.** The canonical stat-card grid is
+`col-6 col-lg-3` — two columns on every size below laptop, four columns on
+laptop and up. See `responsive-design-guidelines.md` for the full form-factor
+reference.
 
 ```html
 <div class="row mb-3">
-    <!-- Primary metric: 2 columns on mobile, 3 columns on lg+ -->
-    <div class="col-sm-6 col-lg-3">
+    <!-- Primary metric: 2 columns on mobile/tablet, 4 columns on lg+ -->
+    <div class="col-6 col-lg-3">
         <!-- card content -->
     </div>
 
     <!-- Secondary metrics (same sizing) -->
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-6 col-lg-3">
         <!-- card content -->
     </div>
 </div>
 ```
 
-- `col-sm-6`: **50% width on small screens (SM+)** — two columns across
-- `col-lg-3`: **25% width on large screens (LG+)** — four columns across
+- `col-6`: **50% width at every size** — two columns across, even on 375px phones
+- `col-lg-3`: **25% width on large screens (LG+, ≥992px)** — four columns across
 - **Always** add `mb-3` to the row for spacing
+
+> **Do not use `col-sm-6`** for stat cards. PR #8524 rejected the old pattern
+> because it stacked to one-up below 576px, which looks empty on modern phones.
+> For 5+ stat cards, use `col-6 col-lg` (auto-equal) instead of `col-lg-3`. For
+> 6 cards, use `col-6 col-md-4 col-lg-2`.
 
 ### Card Component
 
@@ -129,7 +137,7 @@ Example:
 ```php
 <div class="row mb-3">
     <!-- Total Revenue -->
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-6 col-lg-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -148,7 +156,7 @@ Example:
     </div>
 
     <!-- Active Funds -->
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-6 col-lg-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -172,7 +180,7 @@ Example:
 
 ```php
 <div class="row mb-3">
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-6 col-lg-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -190,7 +198,7 @@ Example:
         </div>
     </div>
 
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-6 col-lg-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -208,7 +216,7 @@ Example:
         </div>
     </div>
 
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-6 col-lg-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -226,7 +234,7 @@ Example:
         </div>
     </div>
 
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-6 col-lg-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -253,15 +261,22 @@ Example:
 - No custom margin utilities needed on individual cards
 - Gap between stat cards handled by Bootstrap's grid gutters
 
-## Responsive Behavior
+## Responsive Behavior <!-- updated: 2026-04-09 -->
 
-ChurchCRM dashboards are **mobile-first** using Bootstrap's breakpoints:
+ChurchCRM dashboards follow the three canonical form factors defined in
+[`responsive-design-guidelines.md`](./responsive-design-guidelines.md):
 
-- **Mobile (< 576px)**: Single column (stat cards stack)
-- **Small (SM, ≥ 576px)**: Two columns per row (`col-sm-6`)
-- **Large (LG, ≥ 992px)**: Four columns per row (`col-lg-3`)
+- **Mobile (< 768px)**: Two columns per row (`col-6`). Stat cards never stack to
+  one-up — even on 375px phones, 2-up looks better than 1-up.
+- **Tablet (768px – 1199.98px)**: Still two columns for 4 stat cards
+  (`col-6` carries through). For 6 stat cards, bump to three columns with
+  `col-md-4`. Hamburger nav is still in effect.
+- **Laptop/Desktop (≥ 1200px)**: Four columns for 4 stat cards (`col-lg-3`),
+  five for 5 (`col-lg`), six for 6 (`col-lg-2`). Vertical Tabler sidebar
+  appears at `xl` (1200px).
 
-Grid is **never** hardcoded to specific column counts — always use responsive column classes.
+Grid is **never** hardcoded to specific column counts — always use responsive
+column classes.
 
 ## Common Anti-Patterns
 
@@ -272,7 +287,7 @@ Grid is **never** hardcoded to specific column counts — always use responsive 
 
 ✅ **Correct** — Mobile-first responsive:
 ```html
-<div class="col-sm-6 col-lg-3"><!-- card --></div>
+<div class="col-6 col-lg-3"><!-- card --></div>
 ```
 
 ---
