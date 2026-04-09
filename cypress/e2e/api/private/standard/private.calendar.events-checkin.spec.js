@@ -15,6 +15,40 @@ describe("API Event Check-in Endpoints", () => {
     // No browser login — these are pure API tests using x-api-key auth
     // (cy.makePrivateAdminAPICall sets the header for us).
 
+    describe("GET /api/events", () => {
+        it("Returns the events list wrapped in an Events array", () => {
+            // Make sure at least one event exists so the response shape is meaningful
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/events/quick-create",
+                { eventTypeId: 1 },
+                200,
+            );
+
+            cy.makePrivateAdminAPICall("GET", "/api/events", null, 200).then((response) => {
+                expect(response.body).to.have.property("Events");
+                expect(response.body.Events).to.be.an("array");
+                expect(response.body.Events.length).to.be.at.least(1);
+
+                const event = response.body.Events[0];
+                expect(event).to.have.property("Id");
+                expect(event).to.have.property("Title");
+                expect(event).to.have.property("Start");
+                expect(event).to.have.property("End");
+            });
+        });
+
+        it("Returns 401 when not authenticated", () => {
+            cy.apiRequest({
+                method: "GET",
+                url: "/api/events",
+                failOnStatusCode: false,
+            }).then((response) => {
+                expect(response.status).to.eq(401);
+            });
+        });
+    });
+
     describe("POST /api/events/quick-create", () => {
         it("Creates a new event from an event type", () => {
             cy.makePrivateAdminAPICall(

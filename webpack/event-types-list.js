@@ -34,10 +34,14 @@ document.addEventListener("DOMContentLoaded", () => {
     f.submit();
   }
 
-  // Create event from type
+  // Create event from type — navigate to GET /event/editor?typeId=<id>
+  // so the editor's prefill logic kicks in. Posting to /event/editor would
+  // hit the save handler, not the prefill logic.
   $(document).on("click", ".create-event-btn", function () {
-    const typeId = $(this).data("type-id");
-    postForm(`${rootPath}/event/editor`, { EN_tyid: typeId });
+    const typeId = parseInt($(this).data("type-id"), 10);
+    if (Number.isInteger(typeId) && typeId > 0) {
+      window.location.href = `${rootPath}/event/editor?typeId=${typeId}`;
+    }
   });
 
   // Delete event type with confirmation

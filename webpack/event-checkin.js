@@ -394,10 +394,10 @@ $(() => {
   });
 
   // Event type filter navigation — same coercion as above.
-  $("#EventTypeFilter").on("change", function () {
+  $("#typeFilter").on("change", function () {
     const typeId = parseInt(this.value, 10);
     if (Number.isInteger(typeId) && typeId >= 0) {
-      window.location.href = `${window.CRM.root}/event/checkin?EventTypeID=${typeId}`;
+      window.location.href = `${window.CRM.root}/event/checkin?typeId=${typeId}`;
     }
   });
 

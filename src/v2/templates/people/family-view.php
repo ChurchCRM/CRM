@@ -63,8 +63,8 @@ $otherPeople = $family->getOtherPeople();
     window.CRM.familyEmailMD5 ="<?= $familyEmailMD5 ?>";
     <?php if ($showFamilyCheckin): ?>
     window.CRM.familyCheckin = {
-        familyPersonIds: <?= json_encode($familyPersonIds) ?>,
-        activeEvents: <?= json_encode($activeEventsForCheckin) ?>
+        familyPersonIds: <?= json_encode($familyPersonIds, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+        activeEvents: <?= json_encode($activeEventsForCheckin, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
     };
     <?php endif; ?>
 </script>

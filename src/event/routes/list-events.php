@@ -20,12 +20,12 @@ $app->get('/dashboard', function (Request $request, Response $response) {
     $canEditEvents = AuthenticationManager::getCurrentUser()->isAddEvent();
 
     $eType = 'All';
-    if (!empty($params['WhichType']) && $params['WhichType'] !== 'All') {
-        $eType = (int) $params['WhichType'];
+    if (!empty($params['type']) && $params['type'] !== 'All') {
+        $eType = (int) $params['type'];
     }
 
-    $EventYear = !empty($params['WhichYear'])
-        ? (int) $params['WhichYear']
+    $EventYear = !empty($params['year'])
+        ? (int) $params['year']
         : (int) DateTimeUtils::getCurrentYear();
 
     // --- Dashboard Stats (Propel ORM) ---
@@ -51,13 +51,21 @@ $app->get('/dashboard', function (Request $request, Response $response) {
     // Total number of event types defined in the system (not filtered by year).
     $totalEventTypes = EventTypeQuery::create()->count();
 
-    // Event types that have events
-    $eventTypesWithEvents = EventTypeQuery::create()
-        ->useEventTypeQuery()
-        ->endUse()
+    // Event types that have at least one event. Two-step query — get distinct
+    // type IDs from EventQuery, then fetch the EventType rows. (The previous
+    // EventTypeQuery::create()->useEventTypeQuery() chain was nonsense — the
+    // self-relation method doesn't exist on EventTypeQuery.)
+    $typeIdsWithEvents = EventQuery::create()
+        ->select('Type')
         ->distinct()
-        ->orderById()
-        ->find();
+        ->find()
+        ->getData();
+    $eventTypesWithEvents = !empty($typeIdsWithEvents)
+        ? EventTypeQuery::create()
+            ->filterById($typeIdsWithEvents, Criteria::IN)
+            ->orderById()
+            ->find()
+        : EventTypeQuery::create()->limit(0)->find();
 
     // Available years
     $yearQuery = EventQuery::create()
@@ -224,11 +232,11 @@ $app->post('/dashboard', function (Request $request, Response $response) {
     }
 
     $query = [];
-    if (!empty($body['WhichType'])) {
-        $query['WhichType'] = $body['WhichType'];
+    if (!empty($body['type'])) {
+        $query['type'] = $body['type'];
     }
-    if (!empty($body['WhichYear'])) {
-        $query['WhichYear'] = $body['WhichYear'];
+    if (!empty($body['year'])) {
+        $query['year'] = $body['year'];
     }
     $target = SystemURLs::getRootPath() . '/event/dashboard';
     if (!empty($query)) {

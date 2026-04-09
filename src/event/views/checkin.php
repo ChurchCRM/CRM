@@ -53,8 +53,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <!-- Event Type Filter -->
             <div class="col-md-4">
                 <div class="mb-3">
-                    <label for="EventTypeFilter" class="form-label"><?= gettext('Filter by Type') ?></label>
-                    <select id="EventTypeFilter" class="form-select">
+                    <label for="typeFilter" class="form-label"><?= gettext('Filter by Type') ?></label>
+                    <select id="typeFilter" class="form-select">
                         <option value="0"><?= gettext('All Event Types') ?></option>
                         <?php foreach ($eventTypes as $type): ?>
                             <option value="<?= $type->getId() ?>" <?= ($eventTypeId == $type->getId()) ? 'selected' : '' ?>>

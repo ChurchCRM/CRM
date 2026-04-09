@@ -42,6 +42,13 @@ class EventService
      *
      * @throws \InvalidArgumentException if event type is invalid or date range is invalid
      */
+    /**
+     * Hard cap on the number of events a single createRepeatEvents() call can
+     * generate. Prevents a wide date range (e.g. weekly for 10 years) from
+     * creating thousands of rows in one request and locking the table.
+     */
+    public const MAX_REPEAT_OCCURRENCES = 366;
+
     public function createRepeatEvents(array $data): array
     {
         $type = EventTypeQuery::create()->findOneById((int) $data['typeId']);
@@ -49,17 +56,26 @@ class EventService
             throw new \InvalidArgumentException(gettext('Invalid event type ID'));
         }
 
-        $rangeStart = new \DateTime($data['rangeStart']);
-        $rangeStart->setTime(0, 0, 0);
-        $rangeEnd = new \DateTime($data['rangeEnd']);
-        $rangeEnd->setTime(23, 59, 59);
+        // Use createFromFormat with strict ('!') anchor and explicit catch
+        // so a malformed date string returns 400 instead of bubbling up as 500.
+        try {
+            $rangeStart = new \DateTime($data['rangeStart'] ?? '');
+            $rangeStart->setTime(0, 0, 0);
+            $rangeEnd = new \DateTime($data['rangeEnd'] ?? '');
+            $rangeEnd->setTime(23, 59, 59);
+        } catch (\Throwable $e) {
+            throw new \InvalidArgumentException(gettext('Invalid date format for rangeStart or rangeEnd'));
+        }
 
         if ($rangeStart > $rangeEnd) {
             throw new \InvalidArgumentException(gettext('Range start must be before range end'));
         }
 
-        $startTime = $data['startTime'] ?? '09:00';
-        $endTime = $data['endTime'] ?? '10:00';
+        // Normalize start/end time to HH:MM:SS so we don't end up appending
+        // ":00" to a string that already includes seconds (e.g. "09:00:00"
+        // → "09:00:00:00" which would be an invalid timestamp).
+        $startTime = self::normalizeTime($data['startTime'] ?? '09:00');
+        $endTime = self::normalizeTime($data['endTime'] ?? '10:00');
         $recurType = $data['recurType'] ?? 'weekly';
         $title = $data['title'];
         $desc = $data['desc'] ?? '';
@@ -83,10 +99,18 @@ class EventService
             $rangeEnd
         );
 
+        if (count($occurrenceDates) > self::MAX_REPEAT_OCCURRENCES) {
+            throw new \InvalidArgumentException(sprintf(
+                gettext('Too many occurrences (%d) — narrow the date range. Maximum allowed: %d'),
+                count($occurrenceDates),
+                self::MAX_REPEAT_OCCURRENCES
+            ));
+        }
+
         $createdIds = [];
         foreach ($occurrenceDates as $occurrenceDate) {
-            $eventStart = $occurrenceDate->format('Y-m-d') . ' ' . $startTime . ':00';
-            $eventEnd = $occurrenceDate->format('Y-m-d') . ' ' . $endTime . ':00';
+            $eventStart = $occurrenceDate->format('Y-m-d') . ' ' . $startTime;
+            $eventEnd = $occurrenceDate->format('Y-m-d') . ' ' . $endTime;
 
             $event = new Event();
             $event->setTitle($title);
@@ -273,5 +297,26 @@ class EventService
         }
 
         return $dates;
+    }
+
+    /**
+     * Normalize a time string to HH:MM:SS so the caller can safely concatenate
+     * it with a date without worrying about whether the input had seconds.
+     *
+     * Accepts:
+     *   - "9:00"      → "09:00:00"
+     *   - "09:00"     → "09:00:00"
+     *   - "09:00:00"  → "09:00:00"
+     * Falls back to "09:00:00" for unparseable input.
+     */
+    private static function normalizeTime(string $time): string
+    {
+        $parsed = \DateTimeImmutable::createFromFormat('H:i:s', $time)
+            ?: \DateTimeImmutable::createFromFormat('H:i', $time);
+        if ($parsed === false) {
+            return '09:00:00';
+        }
+
+        return $parsed->format('H:i:s');
     }
 }

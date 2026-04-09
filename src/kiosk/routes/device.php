@@ -259,10 +259,30 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         return $response->withAddedHeader('Content-type', $photo->getPhotoContentType());
     });
 
-    $group->get('/activeClassMember/{PersonId}/family', function (Request $request, Response $response, array $args): Response {
+    $group->get('/activeClassMember/{PersonId}/family', function (Request $request, Response $response, array $args) use ($getKioskFromCookie): Response {
+        // Same kiosk-cookie gating as the other /device/* routes — without
+        // this anyone who can reach the URL can enumerate person ids and
+        // disclose family adult names + photo flags.
+        $kiosk = $getKioskFromCookie();
+        if ($kiosk === null) {
+            return SlimUtils::renderErrorJSON($response, gettext('Kiosk device not found'), [], 401);
+        }
+
         $personId = InputUtils::filterInt($args['PersonId'] ?? 0);
         if ($personId <= 0) {
             return SlimUtils::renderErrorJSON($response, gettext('Invalid person ID'), [], 400);
+        }
+
+        // Verify the requested person is actually part of the kiosk's
+        // active class roster — prevents enumeration outside the assigned
+        // group's members.
+        $assignment = $kiosk->getActiveAssignment();
+        if ($assignment === null) {
+            return SlimUtils::renderErrorJSON($response, gettext('No active assignment'), [], 403);
+        }
+        $rosterIds = array_map('intval', array_column($assignment->getActiveGroupMembers(), 'PersonId'));
+        if (!in_array($personId, $rosterIds, true)) {
+            return SlimUtils::renderErrorJSON($response, gettext('Person not in active class roster'), [], 403);
         }
 
         $person = PersonQuery::create()->findOneById($personId);

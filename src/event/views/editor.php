@@ -38,7 +38,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <p class="text-secondary mb-3"><span class="text-danger">*</span> <?= gettext('Required fields') ?></p>
 
     <form method="post" action="<?= $sRootPath ?>/event/editor" name="EventsEditor">
-      <input type="hidden" name="EventID" value="<?= $eventId ?>">
+      <input type="hidden" name="eventId" value="<?= $eventId ?>">
       <input type="hidden" name="EventExists" value="<?= $eventExists ? 1 : 0 ?>">
 
       <table class="table">
@@ -48,7 +48,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <span class="text-danger">*</span><?= gettext('Event Type') ?>
             </td>
             <td colspan="3">
-              <select name="EN_tyid" class="form-select w-100" id="event_type_id">
+              <select name="typeId" class="form-select w-100" id="event_type_id">
                 <option><?= gettext('Select your event type') ?></option>
                 <?php foreach ($eventTypes as $et): ?>
                   <option value="<?= (int) $et->getId() ?>"><?= InputUtils::escapeHTML($et->getName()) ?></option>
@@ -57,7 +57,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <script nonce="<?= SystemURLs::getCSPNonce() ?>">
                 $('#event_type_id').on('change', function(e) {
                   e.preventDefault();
-                  window.location.href = '<?= $sRootPath ?>/event/editor?EN_tyid=' + this.value;
+                  window.location.href = '<?= $sRootPath ?>/event/editor?typeId=' + this.value;
                 });
               </script>
             </td>
@@ -69,7 +69,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </td>
             <td colspan="3">
               <input type="hidden" name="EventTypeName" value="<?= InputUtils::escapeAttribute($sTypeName) ?>">
-              <input type="hidden" name="EventTypeID" value="<?= (int) $iTypeID ?>">
+              <input type="hidden" name="typeId" value="<?= (int) $iTypeID ?>">
               <span class="badge bg-info-lt text-info" style="font-size: 1rem;">
                 <?= InputUtils::escapeHTML($sTypeName) ?>
               </span>

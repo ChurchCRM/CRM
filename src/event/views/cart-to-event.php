@@ -55,8 +55,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <!-- Event Type Filter -->
                     <form id="eventTypeFilterForm" method="GET" action="<?= $sRootPath ?>/event/cart-to-event" class="mb-4">
                         <div class="mb-3">
-                            <label class="form-label" for="EventTypeFilter"><?= gettext('Filter by Event Type') ?></label>
-                            <select id="EventTypeFilter" name="EventTypeFilter" class="form-select">
+                            <label class="form-label" for="typeId"><?= gettext('Filter by Event Type') ?></label>
+                            <select id="typeId" name="typeId" class="form-select">
                                 <option value="0" <?= ($selectedEventType === 0) ? 'selected' : '' ?>><?= gettext('All Event Types') ?></option>
                                 <?php foreach ($aEventTypes as $eventType) { ?>
                                     <option value="<?= $eventType->getId() ?>" <?= ($selectedEventType === $eventType->getId()) ? 'selected' : '' ?>>
@@ -72,8 +72,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <!-- Event Selection Form -->
                     <form name="CartToEvent" action="<?= $sRootPath ?>/event/cart-to-event" method="POST">
                         <div class="mb-3">
-                            <label class="form-label" for="EventID"><?= gettext('Select Event') ?></label>
-                            <select id="EventID" name="EventID" class="form-select" required>
+                            <label class="form-label" for="eventId"><?= gettext('Select Event') ?></label>
+                            <select id="eventId" name="eventId" class="form-select" required>
                                 <option value="" disabled selected><?= gettext('Choose an event...') ?></option>
                                 <?php foreach ($aEvents as $evt) { ?>
                                     <option value="<?= $evt->getId() ?>"><?= InputUtils::escapeHTML($evt->getTitle()) ?></option>

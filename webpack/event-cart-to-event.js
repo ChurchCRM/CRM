@@ -3,7 +3,7 @@
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("EventTypeFilter")?.addEventListener("change", () => {
+  document.getElementById("typeId")?.addEventListener("change", () => {
     document.getElementById("eventTypeFilterForm")?.submit();
   });
 });

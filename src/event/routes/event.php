@@ -22,8 +22,8 @@ $app->get('/cart-to-event', function (Request $request, Response $response) {
 
     $selectedEventType = 0;
     $params = $request->getQueryParams();
-    if (isset($params['EventTypeFilter'])) {
-        $selectedEventType = (int) $params['EventTypeFilter'];
+    if (isset($params['typeId'])) {
+        $selectedEventType = (int) $params['typeId'];
     }
 
     $eventQuery = EventQuery::create();
@@ -70,8 +70,8 @@ $app->post('/cart-to-event', function (Request $request, Response $response) {
 
     $body = $request->getParsedBody();
 
-    if (!empty($body['Submit']) && !empty($_SESSION['aPeopleCart']) && !empty($body['EventID'])) {
-        $iEventID = (int) $body['EventID'];
+    if (!empty($body['Submit']) && !empty($_SESSION['aPeopleCart']) && !empty($body['eventId'])) {
+        $iEventID = (int) $body['eventId'];
         $event = EventQuery::create()->findPk($iEventID);
         $iCount = 0;
 
@@ -90,7 +90,7 @@ $app->post('/cart-to-event', function (Request $request, Response $response) {
         Cart::emptyAll();
 
         return $response
-            ->withHeader('Location', SystemURLs::getRootPath() . '/event/checkin/' . $iEventID . '?AddedCount=' . $iCount)
+            ->withHeader('Location', SystemURLs::getRootPath() . '/event/checkin/' . $iEventID . '?addedCount=' . $iCount)
             ->withStatus(302);
     }
 

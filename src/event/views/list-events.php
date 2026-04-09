@@ -110,8 +110,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <form id="eventFilterForm" name="EventFilterForm" method="GET" action="<?= $sRootPath ?>/event/dashboard">
       <div class="row align-items-end">
         <div class="col-md-5">
-          <label for="WhichType" class="form-label mb-1"><?= gettext('Event Type') ?></label>
-          <select name="WhichType" id="WhichType" class="form-select form-select-sm">
+          <label for="type" class="form-label mb-1"><?= gettext('Event Type') ?></label>
+          <select name="type" id="type" class="form-select form-select-sm">
             <option value="All"><?= gettext('All Types') ?></option>
             <?php foreach ($eventTypesWithEvents as $type): ?>
               <option value="<?= InputUtils::escapeAttribute($type->getId()) ?>" <?= ($type->getId() == $eType) ? 'selected' : '' ?>>
@@ -121,8 +121,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           </select>
         </div>
         <div class="col-md-5">
-          <label for="WhichYear" class="form-label mb-1"><?= gettext('Year') ?></label>
-          <select name="WhichYear" id="WhichYear" class="form-select form-select-sm">
+          <label for="year" class="form-label mb-1"><?= gettext('Year') ?></label>
+          <select name="year" id="year" class="form-select form-select-sm">
             <?php foreach ($availableYears as $year): ?>
               <option value="<?= InputUtils::escapeAttribute($year) ?>" <?= ($year == $EventYear) ? 'selected' : '' ?>>
                 <?= InputUtils::escapeHTML($year) ?>

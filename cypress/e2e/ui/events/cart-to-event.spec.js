@@ -28,10 +28,10 @@ describe("Cart to Event (MVC)", () => {
         // Navigate to cart-to-event — should show the person, not the empty state
         cy.visit("event/cart-to-event");
         cy.contains("Check In to Event").should("exist");
-        cy.get("#EventID").should("exist");
+        cy.get("#eventId").should("exist");
     });
 
-    // Note: the #EventID dropdown and submit form only render when the cart
+    // Note: the #eventId dropdown and submit form only render when the cart
     // is non-empty (the view gates the entire form behind `if ($cartCount > 0)`).
     // Testing event selection + form submission requires the cart to be populated
     // in the same PHP session as the /event/ entry point, which is not reliably

@@ -33,11 +33,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="EventTypeID" class="form-label fw-bold">
+                                <label for="typeId" class="form-label fw-bold">
                                     <span class="text-danger">*</span> <?= gettext('Event Type') ?>
                                 </label>
                                 <?php if ($typeId > 0 && $eventType !== null): ?>
-                                    <input type="hidden" name="EventTypeID" value="<?= (int) $typeId ?>">
+                                    <input type="hidden" name="typeId" value="<?= (int) $typeId ?>">
                                     <div>
                                         <span class="badge bg-info-lt text-info"><?= InputUtils::escapeHTML($typeName) ?></span>
                                         <a href="<?= $sRootPath ?>/event/repeat-editor" class="btn btn-sm btn-outline-secondary ms-2">
@@ -45,7 +45,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         </a>
                                     </div>
                                 <?php else: ?>
-                                    <select name="EventTypeID" id="EventTypeID" class="form-select" required>
+                                    <select name="typeId" id="typeId" class="form-select" required>
                                         <option value=""><?= gettext('Select an event type…') ?></option>
                                         <?php foreach ($allEventTypes as $et): ?>
                                             <option value="<?= (int) $et->getId() ?>"

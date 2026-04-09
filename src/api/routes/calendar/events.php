@@ -372,23 +372,46 @@ function newEvent(Request $request, Response $response, array $args): Response
  */
 function createRepeatEvents(Request $request, Response $response, array $args): Response
 {
-    $input = $request->getParsedBody();
+    $input = $request->getParsedBody() ?? [];
+
+    // Validate required fields up-front so a malformed request returns a
+    // clean 400 instead of triggering PHP notices / exceptions deeper in
+    // the service.
+    $required = ['Title', 'Type', 'StartTime', 'EndTime', 'RecurType', 'RangeStart', 'RangeEnd'];
+    foreach ($required as $key) {
+        if (!isset($input[$key]) || $input[$key] === '' || $input[$key] === null) {
+            return SlimUtils::renderErrorJSON($response, sprintf(gettext('Missing required field: %s'), $key), [], 400);
+        }
+    }
 
     $validRecurTypes = ['weekly', 'monthly', 'yearly'];
-    $recurType = $input['RecurType'] ?? '';
+    $recurType = $input['RecurType'];
     if (!in_array($recurType, $validRecurTypes, true)) {
         return SlimUtils::renderErrorJSON($response, gettext('invalid recurrence type'), [], 400);
+    }
+
+    // Strict YYYY-MM-DD date validation — passing an empty/garbage string to
+    // DateTime defaults to "now", which would silently produce events outside
+    // the caller's intended range.
+    foreach (['RangeStart', 'RangeEnd'] as $dateField) {
+        $parsed = \DateTimeImmutable::createFromFormat('!Y-m-d', $input[$dateField]);
+        if ($parsed === false || $parsed->format('Y-m-d') !== $input[$dateField]) {
+            return SlimUtils::renderErrorJSON($response, sprintf(gettext('Invalid date for %s — expected YYYY-MM-DD'), $dateField), [], 400);
+        }
+    }
+    if ($input['RangeEnd'] < $input['RangeStart']) {
+        return SlimUtils::renderErrorJSON($response, gettext('RangeEnd must be on or after RangeStart'), [], 400);
     }
 
     try {
         $service = new EventService();
         $createdIds = $service->createRepeatEvents([
             'title'          => $input['Title'],
-            'typeId'         => (int) ($input['Type'] ?? 0),
+            'typeId'         => (int) $input['Type'],
             'desc'           => $input['Desc'] ?? '',
             'text'           => $input['Text'] ?? '',
-            'startTime'      => $input['StartTime'] ?? '09:00',
-            'endTime'        => $input['EndTime'] ?? '10:00',
+            'startTime'      => $input['StartTime'],
+            'endTime'        => $input['EndTime'],
             'recurType'      => $recurType,
             'recurDOW'       => $input['RecurDOW'] ?? null,
             'recurDOM'       => isset($input['RecurDOM']) ? (int) $input['RecurDOM'] : null,
@@ -573,14 +596,13 @@ function setEventStatus(Request $request, Response $response, array $args): Resp
  *     path="/events/quick-create",
  *     operationId="quickCreateEvent",
  *     summary="Quick-create an event from EventType defaults",
- *     description="Creates an event with minimal input, using EventType defaults for title, time, and group. If an event of the same type already exists for the given date, returns the existing event instead.",
+ *     description="Creates an event with minimal input, using EventType defaults for title, time, and group. **At least one of eventTypeId or groupId is required.** If only groupId is provided, the event type is auto-detected from the group's linked EventType. If an event of the same type already exists for the given date, returns the existing event instead.",
  *     tags={"Calendar"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\RequestBody(required=true, @OA\JsonContent(
- *         required={"eventTypeId"},
- *         @OA\Property(property="eventTypeId", type="integer", example=5, description="Event type ID"),
- *         @OA\Property(property="date", type="string", format="date", example="2026-04-05", description="Event date (defaults to today)"),
- *         @OA\Property(property="groupId", type="integer", example=12, description="Override group ID (defaults to EventType's linked group)")
+ *         @OA\Property(property="eventTypeId", type="integer", example=5, description="Event type ID. Either eventTypeId OR groupId is required."),
+ *         @OA\Property(property="groupId", type="integer", example=12, description="Group ID — when provided without eventTypeId, the event type is auto-detected from the group's linked EventType."),
+ *         @OA\Property(property="date", type="string", format="date", example="2026-04-05", description="Event date (defaults to today)")
  *     )),
  *     @OA\Response(response=200, description="Event created or existing event found",
  *         @OA\JsonContent(
@@ -681,12 +703,20 @@ function quickCreateEvent(Request $request, Response $response, array $args): Re
         $title = $groupName . ' — ' . $formattedDate;
     }
 
-    // Calculate start/end times from type defaults
+    // Calculate start/end times from type defaults. getDefStartTime() can
+    // return either a DateTime or a raw string depending on the Propel
+    // codegen path that built the model — handle both.
     $startTimeStr = '09:00:00';
     if ($eventType !== null) {
         $defStartTime = $eventType->getDefStartTime();
-        if ($defStartTime !== null) {
+        if ($defStartTime instanceof \DateTimeInterface) {
             $startTimeStr = $defStartTime->format('H:i:s');
+        } elseif (is_string($defStartTime) && $defStartTime !== '') {
+            $parsed = \DateTimeImmutable::createFromFormat('H:i:s', $defStartTime)
+                ?: \DateTimeImmutable::createFromFormat('H:i', $defStartTime);
+            if ($parsed !== false) {
+                $startTimeStr = $parsed->format('H:i:s');
+            }
         }
     }
     $start = $date . ' ' . $startTimeStr;
@@ -1296,10 +1326,18 @@ function generateRecurringEvents(Request $request, Response $response, array $ar
     }
 
     $groupId = (int) $eventType->getGroupId();
+    // getDefStartTime() can return either a DateTime or a raw string
+    // depending on the Propel codegen path — handle both safely.
     $startTimeStr = '09:00:00';
     $defStartTime = $eventType->getDefStartTime();
-    if ($defStartTime !== null) {
+    if ($defStartTime instanceof \DateTimeInterface) {
         $startTimeStr = $defStartTime->format('H:i:s');
+    } elseif (is_string($defStartTime) && $defStartTime !== '') {
+        $parsed = \DateTimeImmutable::createFromFormat('H:i:s', $defStartTime)
+            ?: \DateTimeImmutable::createFromFormat('H:i', $defStartTime);
+        if ($parsed !== false) {
+            $startTimeStr = $parsed->format('H:i:s');
+        }
     }
 
     // Resolve pinned calendars if provided

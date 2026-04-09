@@ -53,25 +53,24 @@ describe("Standard User - Event Check-in", () => {
 
     it("Filter events by type dropdown exists", () => {
         cy.visit("event/checkin");
-        cy.get("#EventTypeFilter").should("exist");
+        cy.get("#typeFilter").should("exist");
     });
 
     /**
-     * Regression: the EventTypeFilter change handler used to be bound INSIDE
+     * Regression: the type filter change handler used to be bound INSIDE
      * an `if (!eventId) return;` guard, which meant it never fired on the
      * landing page (where the filter is the most useful). Selecting a type
      * should navigate the page and apply the URL param.
      */
-    it("Selecting an event type filter navigates with EventTypeID param", () => {
+    it("Selecting an event type filter navigates with typeId param", () => {
         cy.visit("event/checkin");
         // Pick the first real event type (skip the "All Event Types" placeholder
-        // whose value is "0"). At least one event type exists because before()
-        // verified it.
-        cy.get("#EventTypeFilter option").then(($options) => {
+        // whose value is "0").
+        cy.get("#typeFilter option").then(($options) => {
             const realType = [...$options].find((o) => o.value && o.value !== "0");
             expect(realType, "at least one real event type option must exist").to.exist;
-            cy.get("#EventTypeFilter").select(realType.value);
-            cy.url().should("include", `EventTypeID=${realType.value}`);
+            cy.get("#typeFilter").select(realType.value);
+            cy.url().should("include", `typeId=${realType.value}`);
         });
     });
 

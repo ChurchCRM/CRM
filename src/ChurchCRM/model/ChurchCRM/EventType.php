@@ -3,6 +3,7 @@
 namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\model\ChurchCRM\Base\EventType as BaseEventType;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
 
 /**
  * Skeleton subclass for representing a row from the 'event_types' table.

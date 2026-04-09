@@ -43,15 +43,15 @@ describe("Events Dashboard (MVC)", () => {
 
     it("should have event type and year filters", () => {
         cy.visit("event/dashboard");
-        cy.get("#WhichType").should("exist");
-        cy.get("#WhichYear").should("exist");
-        cy.get("#WhichType option").should("have.length.at.least", 1);
+        cy.get("#type").should("exist");
+        cy.get("#year").should("exist");
+        cy.get("#type option").should("have.length.at.least", 1);
     });
 
     it("should filter dashboard by URL params", () => {
-        cy.visit("event/dashboard?WhichYear=2024");
+        cy.visit("event/dashboard?year=2024");
         cy.contains("Events Dashboard").should("exist");
-        cy.url().should("include", "WhichYear=2024");
+        cy.url().should("include", "year=2024");
     });
 
     it("should have Manage Event Types button in header", () => {

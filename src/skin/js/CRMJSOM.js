@@ -700,13 +700,18 @@ window.CRM.renderEventActionMenu = function (eventId, eventTitle, options) {
       e.stopPropagation();
       var $btn = $(this);
       var eventId = $btn.data("event_id");
+      // The data-event_title attribute is already HTML-escaped by
+      // renderEventActionMenu(), so jQuery's .data() returns the escaped form
+      // (e.g. "Sunday &amp; Friends"). Embedding it directly in the bootbox
+      // message HTML preserves the correct rendering — calling escapeHtml()
+      // again would double-escape (e.g. "&amp;amp;").
       var eventTitle = $btn.data("event_title");
       bootbox.confirm({
         title: i18next.t("Delete this event?"),
         message:
           i18next.t("Deleting an event will also delete all attendance counts. This cannot be undone.") +
           " <b>" +
-          window.CRM.escapeHtml(String(eventTitle || "")) +
+          String(eventTitle || "") +
           "</b>",
         buttons: {
           cancel: { label: '<i class="ti ti-x"></i>' + i18next.t("Cancel") },

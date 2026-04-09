@@ -46,6 +46,24 @@ describe('Event Type Management', () => {
         cy.get('#newEvtPeriod').should('have.value', 'AM');
     });
 
+    /**
+     * Filter the eventTypesTable DataTable to a specific search string.
+     *
+     * DataTables 2.x with the CRM `layout` config doesn't render the legacy
+     * `#tableId_filter input[type=search]` element, so the selector-based
+     * approach used elsewhere doesn't work here. Instead drive the DataTable
+     * JS API directly — selector-independent and works with any layout.
+     *
+     * Without filtering, default 10-row pagination drops new rows off page 1
+     * once enough types accumulate, and `cy.contains` can't find them.
+     */
+    function filterEventTypesTable(query) {
+        cy.window().then((win) => {
+            const dt = win.$('#eventTypesTable').DataTable();
+            dt.search(query).draw();
+        });
+    }
+
     it('should create event type with midnight (12:00 AM)', () => {
         cy.visit('/event/types/new');
 
@@ -56,8 +74,10 @@ describe('Event Type Management', () => {
         cy.contains('button', 'Save Event Type').click();
 
         cy.url().should('include', '/event/types');
-        cy.contains(midnight).should('exist');
-        cy.contains('12:00 AM').should('exist');
+        cy.get('#eventTypesTable', { timeout: 10000 }).should('exist');
+        filterEventTypesTable(midnight);
+        cy.get('#eventTypesTable tbody tr', { timeout: 10000 }).should('have.length', 1);
+        cy.get('#eventTypesTable tbody tr').should('contain', midnight).and('contain', '12:00 AM');
     });
 
     it('should create event type with noon (12:00 PM)', () => {
@@ -70,12 +90,10 @@ describe('Event Type Management', () => {
         cy.contains('button', 'Save Event Type').click();
 
         cy.url().should('include', '/event/types');
-        // Wait for the DataTable to finish rendering before checking content.
-        // The table loads via server-side rendering on redirect, but the
-        // DataTable JS init can take a beat on slower CI runners.
-        cy.get('#eventTypesTable tbody tr', { timeout: 10000 }).should('have.length.at.least', 1);
-        cy.contains(noon, { timeout: 10000 }).should('exist');
-        cy.contains('12:00 PM').should('exist');
+        cy.get('#eventTypesTable', { timeout: 10000 }).should('exist');
+        filterEventTypesTable(noon);
+        cy.get('#eventTypesTable tbody tr', { timeout: 10000 }).should('have.length', 1);
+        cy.get('#eventTypesTable tbody tr').should('contain', noon).and('contain', '12:00 PM');
     });
 
     it('should create event type with attendance counts', () => {
@@ -90,8 +108,9 @@ describe('Event Type Management', () => {
         cy.url().should('include', '/event/types');
         cy.url().should('not.include', '/new');
 
-        // Find the row and click edit
-        cy.contains(eventTypeName).should('exist');
+        cy.get('#eventTypesTable', { timeout: 10000 }).should('exist');
+        filterEventTypesTable(eventTypeName);
+        cy.get('#eventTypesTable tbody tr', { timeout: 10000 }).should('have.length', 1).and('contain', eventTypeName);
     });
 
     it('should enable recurrence pattern dropdowns correctly', () => {

@@ -18,10 +18,10 @@ use Slim\Views\PhpRenderer;
 $app->get('/checkin[/{eventId}]', function (Request $request, Response $response, array $args) {
     $params = $request->getQueryParams();
 
-    $eventId = (int) ($args['eventId'] ?? $params['EventID'] ?? 0);
-    $eventTypeId = (int) ($params['EventTypeID'] ?? 0);
+    $eventId = (int) ($args['eventId'] ?? 0);
+    $eventTypeId = (int) ($params['typeId'] ?? 0);
     $directEventAccess = $eventId > 0;
-    $addedCount = (int) ($params['AddedCount'] ?? 0);
+    $addedCount = (int) ($params['addedCount'] ?? 0);
 
     // Get all active event types for the filter
     $eventTypes = EventTypeQuery::create()

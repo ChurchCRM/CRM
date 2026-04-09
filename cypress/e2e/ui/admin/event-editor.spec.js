@@ -5,7 +5,7 @@ describe('Event Editor', () => {
 
     /**
      * Helper: navigate to EventEditor by getting the first event type's ID
-     * and visiting /event/editor?EN_tyid={id} directly.
+     * and visiting /event/editor?typeId={id} directly.
      */
     function createEventFromFirstType() {
         cy.visit('/event/types');
@@ -13,7 +13,7 @@ describe('Event Editor', () => {
         cy.get('#eventTypesTable tbody tr').first().find('a').first().invoke('attr', 'href').then((href) => {
             // href is like /event/types/3
             const typeId = href.split('/').pop();
-            cy.visit('/event/editor?EN_tyid=' + typeId);
+            cy.visit('/event/editor?typeId=' + typeId);
         });
     }
 
@@ -260,9 +260,9 @@ describe('Event Editor', () => {
             // Verify all data loads correctly (not empty/default values)
             cy.get('input[name="EventTitle"]').should('have.value', testTitle);
 
-            // Verify EventID hidden field has a value (not 0)
-            cy.get('input[name="EventID"]').should('not.have.value', '0');
-            cy.get('input[name="EventID"]').invoke('val').then((val) => {
+            // Verify eventId hidden field has a value (not 0)
+            cy.get('input[name="eventId"]').should('not.have.value', '0');
+            cy.get('input[name="eventId"]').invoke('val').then((val) => {
                 expect(parseInt(val)).to.equal(eventId);
             });
 

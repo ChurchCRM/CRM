@@ -175,8 +175,8 @@ function buildCountsForEvent(int $eventId, int $typeId = 0): array
 // GET /event/editor — show the editor (new or edit). Requires AddEvent permission.
 $app->get('/editor[/{id}]', function (Request $request, Response $response, array $args) {
     $params = $request->getQueryParams();
-    $eventId = (int) ($args['id'] ?? $params['EID'] ?? $params['calendarAction'] ?? 0);
-    $typeId = (int) ($params['EN_tyid'] ?? 0);
+    $eventId = (int) ($args['id'] ?? 0);
+    $typeId = (int) ($params['typeId'] ?? 0);
 
     $event = null;
     $eventExists = false;
@@ -286,8 +286,8 @@ $app->get('/editor[/{id}]', function (Request $request, Response $response, arra
 $app->post('/editor', function (Request $request, Response $response) {
     $body = $request->getParsedBody();
 
-    $iEventID = (int) ($body['EventID'] ?? 0);
-    $iTypeID = (int) ($body['EventTypeID'] ?? 0);
+    $iEventID = (int) ($body['eventId'] ?? 0);
+    $iTypeID = (int) ($body['typeId'] ?? 0);
     $eventExists = (int) ($body['EventExists'] ?? 0);
 
     if ($iTypeID <= 0) {

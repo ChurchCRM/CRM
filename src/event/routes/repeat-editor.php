@@ -16,7 +16,7 @@ use Slim\Views\PhpRenderer;
 // GET /event/repeat-editor — display the repeat event creation form
 $app->get('/repeat-editor[/{typeId}]', function (Request $request, Response $response, array $args) {
     $params = $request->getQueryParams();
-    $typeId = (int) ($args['typeId'] ?? $params['EN_tyid'] ?? 0);
+    $typeId = (int) ($args['typeId'] ?? $params['typeId'] ?? 0);
 
     $eventType = null;
     $typeName = '';
@@ -93,7 +93,7 @@ $app->get('/repeat-editor[/{typeId}]', function (Request $request, Response $res
 $app->post('/repeat-editor', function (Request $request, Response $response) {
     $body = $request->getParsedBody();
 
-    $iTypeID      = InputUtils::filterInt($body['EventTypeID'] ?? 0);
+    $iTypeID      = InputUtils::filterInt($body['typeId'] ?? 0);
     $sTitle       = InputUtils::legacyFilterInput($body['EventTitle'] ?? '');
     $sDesc        = InputUtils::sanitizeHTML($body['EventDescInput'] ?? '');
     $sStartTime   = InputUtils::legacyFilterInput($body['StartTime'] ?? '09:00');
@@ -115,6 +115,13 @@ $app->post('/repeat-editor', function (Request $request, Response $response) {
     $validRecurTypes = ['weekly', 'monthly', 'yearly'];
     $errorMsg = '';
 
+    // Strict YYYY-MM-DD validation — comparing two arbitrary strings with > can
+    // produce wrong results, and an unparseable date would later throw inside
+    // EventService::createRepeatEvents() (caught as InvalidArgumentException
+    // there now, but better to validate up front and give a clear error here).
+    $startParsed = !empty($sRangeStart) ? \DateTimeImmutable::createFromFormat('!Y-m-d', $sRangeStart) : false;
+    $endParsed = !empty($sRangeEnd) ? \DateTimeImmutable::createFromFormat('!Y-m-d', $sRangeEnd) : false;
+
     if (empty($iTypeID)) {
         $errorMsg = gettext('You must select an event type.');
     } elseif (empty($sTitle)) {
@@ -123,7 +130,11 @@ $app->post('/repeat-editor', function (Request $request, Response $response) {
         $errorMsg = gettext('You must select a valid recurrence pattern.');
     } elseif (empty($sRangeStart) || empty($sRangeEnd)) {
         $errorMsg = gettext('You must specify a date range.');
-    } elseif ($sRangeStart > $sRangeEnd) {
+    } elseif ($startParsed === false || $startParsed->format('Y-m-d') !== $sRangeStart) {
+        $errorMsg = gettext('Range start must be a valid YYYY-MM-DD date.');
+    } elseif ($endParsed === false || $endParsed->format('Y-m-d') !== $sRangeEnd) {
+        $errorMsg = gettext('Range end must be a valid YYYY-MM-DD date.');
+    } elseif ($startParsed > $endParsed) {
         $errorMsg = gettext('Range start must be before range end.');
     }
 
