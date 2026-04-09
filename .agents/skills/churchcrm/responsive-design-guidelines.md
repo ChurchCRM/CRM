@@ -265,6 +265,19 @@ there when introducing a new page or fixing a responsive bug.
 | Long labels crammed into card tabs | Use `d-none d-xl-inline` + `d-xl-none` short label pair |
 | Using `vh` for min heights of interactive content | Mobile browser chrome moves — use `min-height` with a pixel value |
 
+## Admin pages are laptop-optimized by design <!-- learned: 2026-04-09 -->
+
+Admin pages (`src/admin/**`, `SystemSettings.php`, Plugin Management,
+OptionManager, PropertyList, user management) are intentionally built for
+laptop/desktop use. They contain dense configuration tables, multi-column
+settings grids, and bulk operations that are **not expected to be usable on a
+phone**. When auditing responsive behaviour, treat admin pages as laptop-only
+and do not penalize them for lacking mobile stacking.
+
+Rule of thumb: if a page sits under the **Admin** menu item, it is laptop-first.
+All other top-level nav pages and their child pages must work on mobile (<768),
+tablet (768–1199) and laptop (≥1200).
+
 ## Main nav page audit reference <!-- learned: 2026-04-09 -->
 
 The main sidebar destinations (from `src/ChurchCRM/Config/Menu/Menu.php`) and
@@ -277,7 +290,23 @@ whether they follow the canonical patterns:
 | Groups → Dashboard | `src/groups/views/dashboard.php` | 4 stat `col-6 col-lg-3`, full-width table | ✅ (table-responsive added 2026-04-09) |
 | Sunday School → Dashboard | `src/groups/views/sundayschool/dashboard.php` | 6 stat `col-6 col-md-4 col-lg-2` | ✅ (md step added 2026-04-09) |
 | Finance → Dashboard | `src/finance/views/dashboard.php` | 4 stat `col-6 col-lg-3`, 8/4 split, `table-responsive` | ✅ |
-| Admin → Dashboard | `src/admin/views/dashboard.php` | 8/4 split, `col-md-6 col-lg-4` quick-start grid | ✅ |
+| Admin → Dashboard | `src/admin/views/dashboard.php` | 8/4 split, `col-md-6 col-lg-4` quick-start grid | ✅ (laptop-optimized) |
 
-When adding a new top-level nav destination, add it to this table as part of the
-same PR.
+## Next-level page audit (mobile/tablet-relevant) <!-- learned: 2026-04-09 -->
+
+Second-tier pages most likely to be used on a phone or tablet (field use,
+check-in kiosks, quick lookups). Admin pages intentionally excluded — see above.
+
+| Page | File | Issue found | Fix |
+|---|---|---|---|
+| Person List | `src/v2/templates/people/person-list.php` | Filter grid jumped `col-12` → `col-lg-*`, collapsed on tablets | `col-12 col-sm-6 col-lg-{3,4}` 2026-04-09 |
+| Family List | `src/v2/templates/people/family-list.php` | `#families` table had no `.table-responsive` wrapper | Added 2026-04-09 |
+| Events Dashboard | `src/event/views/list-events.php` | Hardcoded `<th style="width: NNNpx">` broke responsive sizing; no table wrapper | Removed inline widths, wrapped in `.table-responsive` 2026-04-09 |
+| Event Check-in | `src/event/views/checkin.php` | Attendance table lacked `.table-responsive` wrapper | Added 2026-04-09 |
+| Photo Directory | `src/v2/templates/people/photo-gallery.php` | Already uses `col-6 col-md-4 col-lg-3` grid | ✅ |
+| Family Map | `src/people/views/map-view.php` | Full-viewport map — intentionally desktop-ish but works on tablet | ✅ |
+| Person View | `src/people/views/person-view.php` | Uses `col-lg-8`/`col-lg-4` split, stacks cleanly | ✅ |
+| Calendar | `src/event/views/calendars.php` | FullCalendar handles its own responsive layout | ✅ |
+
+When adding a new top-level or second-level nav destination, add it to the
+appropriate table as part of the same PR.

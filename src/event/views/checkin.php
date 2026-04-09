@@ -205,8 +205,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="card-header">
         <h3 class="card-title"><?= gettext('People Checked In') ?></h3>
     </div>
-    <div class="card-body" style="overflow: visible;">
-        <table id="checkedinTable" class="table table-vcenter table-hover data-table">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+        <table id="checkedinTable" class="table table-vcenter table-hover data-table mb-0">
             <thead>
                 <tr>
                     <th><?= gettext('Name') ?></th>
@@ -272,6 +273,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <?php endforeach; ?>
             </tbody>
         </table>
+        </div>
     </div>
 </div>
 <?php endif; ?>

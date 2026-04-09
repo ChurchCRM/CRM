@@ -159,19 +159,19 @@ foreach ($monthlyData as $monthData):
     </h3>
     <span class="badge bg-blue-lt ms-auto"><?= (int) $EventYear ?></span>
   </div>
-  <div class="card-body p-0" style="overflow: visible;">
-    <div style="overflow: visible;">
+  <div class="card-body p-0">
+    <div class="table-responsive">
       <table class="table table-hover table-vcenter mb-0">
         <thead>
           <tr>
             <th><?= gettext('Event') ?></th>
-            <th style="width: 130px;"><?= gettext('Type') ?></th>
-            <th style="width: 120px;" class="text-center"><?= gettext('Attendance') ?></th>
-            <th style="width: 100px;"><?= gettext('Head Count') ?></th>
-            <th style="width: 140px;"><?= gettext('Date') ?></th>
-            <th style="width: 70px;" class="text-center"><?= gettext('Status') ?></th>
+            <th><?= gettext('Type') ?></th>
+            <th class="text-center"><?= gettext('Attendance') ?></th>
+            <th><?= gettext('Head Count') ?></th>
+            <th><?= gettext('Date') ?></th>
+            <th class="text-center"><?= gettext('Status') ?></th>
             <?php if ($canEditEvents): ?>
-              <th style="width: 80px;" class="text-center no-export"><?= gettext('Actions') ?></th>
+              <th class="text-center no-export"><?= gettext('Actions') ?></th>
             <?php endif; ?>
           </tr>
         </thead>
