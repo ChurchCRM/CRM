@@ -268,10 +268,6 @@ msgid "Add Cart to Event"
 msgstr "הוסף סל לאירוע"
 
 #: 
-msgid "OR"
-msgstr "או"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "הסל שלך ריק!"
 
@@ -392,10 +388,6 @@ msgstr "כן"
 #: 
 msgid "No"
 msgstr "לא"
-
-#: 
-msgid "Event Checkin"
-msgstr "כניסה לאירוע"
 
 #: 
 msgid "Select Event"
@@ -651,10 +643,6 @@ msgid "Church Event Editor"
 msgstr "עורך אירועי מוסד"
 
 #: 
-msgid "Edit Event Types"
-msgstr "ערוך סוגי אירועים"
-
-#: 
 msgid "Edit Event Type"
 msgstr "ערוך סוג אירוע"
 
@@ -724,20 +712,8 @@ msgid "Create a new Event"
 msgstr "צור אירוע חדש"
 
 #: 
-msgid " errors. Please see below"
-msgstr " שגיאות. אנא ראה מטה"
-
-#: 
 msgid "Select your event type"
 msgstr "בחר את סוג האירוע"
-
-#: 
-msgid "You must pick an event type."
-msgstr "עליך לבחור סוג אירוע"
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "לא נרשמה נוכחות"
 
 #: 
 msgid "Event Status"
@@ -2913,10 +2889,6 @@ msgid "Date Entered"
 msgstr "תאריך הכניסה:"
 
 #: 
-msgid "There were "
-msgstr "היו "
-
-#: 
 msgid "Inactive"
 msgstr "לא פעיל"
 
@@ -4864,14 +4836,6 @@ msgid "Select event"
 msgstr "בחר אירוע"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "האדם כבר נרשם לאירוע זה"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "מבוגר רושם יציאה"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "טקסט לפני השם באימיילים/דוחות"
 
@@ -5427,10 +5391,6 @@ msgid "Sign out"
 msgstr "יציאה"
 
 #: 
-msgid "Sermon Text"
-msgstr "טקסט דרשה"
-
-#: 
 msgid "Change Settings"
 msgstr "שינוי הגדרות"
 
@@ -5946,10 +5906,6 @@ msgstr "פונקציות לאיתחול מסד נתונים"
 msgid "Reset Database"
 msgstr "אתחל בסיס נתונים"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "פעולה זו תאפס את נתוני המערכת ותפעיל מחדש את המערכת כהתקנה חדשה."
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6152,18 +6108,6 @@ msgstr "אמת"
 #: 
 msgid "Family has no emails to use"
 msgstr "אין כתובת דוא\"ל לשימוש"
-
-#: 
-msgid "User Interface"
-msgstr "ממשק משתמש"
-
-#: 
-msgid "Locale"
-msgstr "מקום"
-
-#: 
-msgid "Override system locale"
-msgstr "החלפת מיקום מערכת"
 
 #: 
 msgid "Deleted"
@@ -7234,10 +7178,6 @@ msgid "All Types"
 msgstr "כל הסוגים"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "האם אתה בטוח שברצונך למחוק רשומת צ'ק-אין זו?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "קטגוריות ספירת נוכחות"
 
@@ -7278,10 +7218,6 @@ msgid "Create New Event"
 msgstr "צור אירוע חדש"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "צור סוג אירוע כדי להתחיל."
-
-#: 
 msgid "Current DB Version"
 msgstr "גרסת מסד נתונים נוכחית"
 
@@ -7300,14 +7236,6 @@ msgstr "שעת התחלה כברירת מחדל"
 #: 
 msgid "Delete Event"
 msgstr "מחק אירוע"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "מחיקת אירוע תמחוק גם את כל ספירות הנוכחות. למחוק אירוע זה?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "מחיקת אירוע זה תמחוק גם את כל רישומי הנוכחות. האם את/ה בטוח/ה?"
 
 #: 
 msgid "Edit Event"
@@ -7375,10 +7303,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "אופציונלי - הוסף הערות דרשה או פרטי אירוע נוספים"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "אופציונלי - השאר ריק אם אין מעקב"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "הערות אופציונליות לגבי הנוכחות..."
 
@@ -7409,10 +7333,6 @@ msgstr "שמור סוג אירוע"
 #: 
 msgid "Search by name or email..."
 msgstr "חפש לפי שם או אימייל..."
-
-#: 
-msgid "Search for adult..."
-msgstr "חפש מבוגר..."
 
 #: 
 msgid "Search for supervisor..."

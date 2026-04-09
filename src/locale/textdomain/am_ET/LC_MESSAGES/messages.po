@@ -268,10 +268,6 @@ msgid "Add Cart to Event"
 msgstr "ጋሪን ወደ ክስተት ያክሉ"
 
 #: 
-msgid "OR"
-msgstr "ወይም"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "ጋሪዎ ባዶ ነው!"
 
@@ -392,10 +388,6 @@ msgstr "አዎ"
 #: 
 msgid "No"
 msgstr "አይ"
-
-#: 
-msgid "Event Checkin"
-msgstr "የክስተት ተመዝግቦ መግባት"
 
 #: 
 msgid "Select Event"
@@ -650,10 +642,6 @@ msgid "Church Event Editor"
 msgstr "የቤተ ክርስቲያን ዝግጅት አዘጋጅ"
 
 #: 
-msgid "Edit Event Types"
-msgstr "የክስተት ዓይነቶችን ያርትዑ"
-
-#: 
 msgid "Edit Event Type"
 msgstr "የክስተት አይነትን ያርትዑ"
 
@@ -723,20 +711,8 @@ msgid "Create a new Event"
 msgstr "አዲስ ክስተት ይፍጠሩ"
 
 #: 
-msgid " errors. Please see below"
-msgstr " ስህተቶች. እባኮትን ከታች ይመልከቱ"
-
-#: 
 msgid "Select your event type"
 msgstr "የክስተት አይነትዎን ይምረጡ"
-
-#: 
-msgid "You must pick an event type."
-msgstr "የክስተት አይነት መምረጥ አለብህ።"
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "ምንም የተገኝነት ብዛት ተመዝግቧል"
 
 #: 
 msgid "Event Status"
@@ -2914,10 +2890,6 @@ msgid "Date Entered"
 msgstr "የገባበት ቀን"
 
 #: 
-msgid "There were "
-msgstr "እዚያ ነበሩ "
-
-#: 
 msgid "Inactive"
 msgstr "እንቅስቃሴ-አልባ"
 
@@ -4865,14 +4837,6 @@ msgid "Select event"
 msgstr "ክስተት ይምረጡ"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "ሰው አስቀድሞ ለዚህ ክስተት ተመዝግቦ ገብቷል።"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "አዋቂዎች የሆነ ይዞ ሚወጣ"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "በኢሜል/ሪፖርቶች ውስጥ ከስም በፊት ይፃፉ"
 
@@ -5429,10 +5393,6 @@ msgid "Sign out"
 msgstr "ዘግተ ውጣ"
 
 #: 
-msgid "Sermon Text"
-msgstr "የስብከት ጽሑፍ"
-
-#: 
 msgid "Change Settings"
 msgstr "ቅንብሮችን ይቀይሩ"
 
@@ -5952,11 +5912,6 @@ msgstr "\n"
 msgid "Reset Database"
 msgstr "የውሂብ ጎታ ዳግም አስጀምር"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "\n"
-"ይህ ስርዓት ውሂብን እንደገና ያስጀምረዋል እና ስርዓቱን እንደ አዲስ ጭነት እንደገና ያስጀምረዋል።"
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6165,18 +6120,6 @@ msgstr "አረጋገጥ"
 #: 
 msgid "Family has no emails to use"
 msgstr "ቤተሰብ ለመጠቀም ምንም ኢሜይሎች የሉትም።"
-
-#: 
-msgid "User Interface"
-msgstr "የተጠቃሚ በይነገጽ"
-
-#: 
-msgid "Locale"
-msgstr "አካባቢ"
-
-#: 
-msgid "Override system locale"
-msgstr "የስርዓት አካባቢን ይሽሩ"
 
 #: 
 msgid "Deleted"
@@ -7247,10 +7190,6 @@ msgid "All Types"
 msgstr "ሁሉም አይነቶች"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "ይህንን የመገኘት መዝገብ ለመሰረዝ እርግጠኛ ነዎት?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "የመገኘት ቆጠራ ምድቦች"
 
@@ -7291,10 +7230,6 @@ msgid "Create New Event"
 msgstr "አዲስ ኩነት ፍጠር"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "ለመጀመር የኩነት አይነት ይፍጠሩ።"
-
-#: 
 msgid "Current DB Version"
 msgstr "የአሁኑ የዳታቤዝ ስሪት"
 
@@ -7313,14 +7248,6 @@ msgstr "መደበኛ መጀመሪያ ሰዓት"
 #: 
 msgid "Delete Event"
 msgstr "ኩነት ሰርዝ"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "ኩነትን መሰረዝ ሁሉንም የመገኘት ቆጠራዎች ይሠርዛል። ይህ ኩነት ይሰረዝ?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "ይህንን ኩነት መሰረዝ ሁሉንም የመገኘት መዝገቦችን ይሠርዛል። እርግጠኛ ነዎት?"
 
 #: 
 msgid "Edit Event"
@@ -7388,10 +7315,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "አማራጭ - የስብከት ማስታወሻዎችን ወይም ተጨማሪ ዝርዝሮችን ያክሉ"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "አማራጭ - የማይከታተሉ ከሆነ ባዶ ይተውት"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "ስለ መገኘት አማራጭ ማስታወሻዎች..."
 
@@ -7422,10 +7345,6 @@ msgstr "የኩነት አይነትን አስቀምጥ"
 #: 
 msgid "Search by name or email..."
 msgstr "በስም ወይም በኢሜይል ፈልግ..."
-
-#: 
-msgid "Search for adult..."
-msgstr "አዋቂ ፈልግ..."
 
 #: 
 msgid "Search for supervisor..."

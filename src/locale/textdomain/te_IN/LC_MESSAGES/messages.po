@@ -268,10 +268,6 @@ msgid "Add Cart to Event"
 msgstr "ఈవెంట్‌కి కార్ట్‌ని జోడించండి"
 
 #: 
-msgid "OR"
-msgstr "లేదా"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "మీ కార్ట్ ఖాళీగా ఉంది!"
 
@@ -392,10 +388,6 @@ msgstr "అవును"
 #: 
 msgid "No"
 msgstr "కాదు"
-
-#: 
-msgid "Event Checkin"
-msgstr "ఈవెంట్ తనిఖీ"
 
 #: 
 msgid "Select Event"
@@ -650,10 +642,6 @@ msgid "Church Event Editor"
 msgstr "చర్చి ఈవెంట్ ఎడిటర్"
 
 #: 
-msgid "Edit Event Types"
-msgstr "ఈవెంట్ రకాలను సవరించండి"
-
-#: 
 msgid "Edit Event Type"
 msgstr "ఈవెంట్ రకాన్ని సవరించండి"
 
@@ -723,20 +711,8 @@ msgid "Create a new Event"
 msgstr "కొత్త ఈవెంట్‌ని సృష్టించండి"
 
 #: 
-msgid " errors. Please see below"
-msgstr " లోపాలు. దయచేసి క్రింద చూడండి"
-
-#: 
 msgid "Select your event type"
 msgstr "మీ ఈవెంట్ రకాన్ని ఎంచుకోండి"
-
-#: 
-msgid "You must pick an event type."
-msgstr "మీరు తప్పనిసరిగా ఈవెంట్ రకాన్ని ఎంచుకోవాలి."
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "హాజరు గణనలు నమోదు కాలేదు"
 
 #: 
 msgid "Event Status"
@@ -2899,10 +2875,6 @@ msgid "Date Entered"
 msgstr "నమోదు చేసిన తేదీ"
 
 #: 
-msgid "There were "
-msgstr "ఉన్నాయి "
-
-#: 
 msgid "Inactive"
 msgstr "నిష్క్రియ"
 
@@ -4841,14 +4813,6 @@ msgid "Select event"
 msgstr "సంఘటనను ఎంచుకోండి"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "వ్యక్తి ఈ సంఘటనకు ఇప్పటికే చెక్ఇన్ చేయబడ్డారు"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "పెద్దవారు వ్యక్తిని చెక్‌అవుట్ చేస్తున్నారు"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "ఇమెయిల్‌లు/నివేదికలలో పేరుకు ముందు వచనం"
 
@@ -5404,10 +5368,6 @@ msgid "Sign out"
 msgstr "సైన్ అవుట్"
 
 #: 
-msgid "Sermon Text"
-msgstr "ప్రసంగం టెక్స్ట్"
-
-#: 
 msgid "Change Settings"
 msgstr "సెట్టింగ్‌లను మార్చండి"
 
@@ -5919,10 +5879,6 @@ msgstr "డేటాబేస్ రీసెట్ ఫంక్షన్లు"
 msgid "Reset Database"
 msgstr "డేటాబేస్‌ను రీసెట్ చేయండి"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "ఇది సిస్టమ్ డేటాను రీసెట్ చేస్తుంది మరియు సిస్టమ్‌ను కొత్త ఇన్‌స్టాల్‌గా రీస్టార్ట్ చేస్తుంది."
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6125,18 +6081,6 @@ msgstr "ధృవీకరించండి"
 #: 
 msgid "Family has no emails to use"
 msgstr "ఉపయోగించడానికి కుటుంబానికి ఇమెయిల్‌లు లేవు"
-
-#: 
-msgid "User Interface"
-msgstr "వినియోగదారు ఇంటర్‌ఫేస్"
-
-#: 
-msgid "Locale"
-msgstr "స్థానికం"
-
-#: 
-msgid "Override system locale"
-msgstr "సిస్టమ్ స్థానికాన్ని భర్తీ చేయండి"
 
 #: 
 msgid "Deleted"
@@ -7207,10 +7151,6 @@ msgid "All Types"
 msgstr "అన్ని టైప్‌లు"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "మీరు ఈ చెక్-ఇన్ రికార్డ్‌ను తొలగించాలనుకుంటున్నారా?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "హాజరు గణన కేటగిరీలు"
 
@@ -7251,10 +7191,6 @@ msgid "Create New Event"
 msgstr "కొత్త ఈవెంట్ సృష్టించండి"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "ప్రారంభించడానికి ఒక ఈవెంట్ టైప్‌ను సృష్టించండి."
-
-#: 
 msgid "Current DB Version"
 msgstr "ప్రస్తుత DB వెర్షన్"
 
@@ -7273,14 +7209,6 @@ msgstr "డిఫాల్ట్ ప్రారంభ సమయం"
 #: 
 msgid "Delete Event"
 msgstr "ఈవెంట్‌ను తొలగించండి"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "ఈవెంట్‌ను తొలగించడం వల్ల అన్ని హాజరు గణనలు కూడా తొలగించబడతాయి. ఈ ఈవెంట్‌ను తొలగించాలా?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "ఈ ఈవెంట్‌ను తొలగించడం వల్ల అన్ని హాజరు రికార్డ్‌లు కూడా తొలగించబడతాయి. మీరు ఖచ్చితంగా ఉన్నారా?"
 
 #: 
 msgid "Edit Event"
@@ -7348,10 +7276,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "ఐచ్ఛికం - ప్రసంగ నోట్స్ లేదా అదనపు ఈవెంట్ వివరాలను జోడించండి"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "ఐచ్ఛికం - ట్రాకింగ్ చేయకపోతే ఖాళీగా ఉంచండి"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "హాజరు గురించి ఐచ్ఛిక నోట్స్..."
 
@@ -7382,10 +7306,6 @@ msgstr "ఈవెంట్ టైప్‌ను సేవ్ చేయండి
 #: 
 msgid "Search by name or email..."
 msgstr "పేరు లేదా ఇమెయిల్ ద్వారా శోధించండి..."
-
-#: 
-msgid "Search for adult..."
-msgstr "పెద్దవారిని శోధించండి..."
 
 #: 
 msgid "Search for supervisor..."

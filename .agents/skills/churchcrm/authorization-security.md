@@ -42,6 +42,33 @@ if (!$currentUser->canEditPerson($iPersonID, $person->getFamId())) {
 }
 ```
 
+## MVC Module Middleware: View vs Add Split <!-- learned: 2026-04-09 -->
+
+When wrapping an MVC module with role middleware via `MvcAppFactory::create([... 'roleMiddleware' => ...])`, choose **the lowest permission tier the module's *read* routes need**, then add the higher tier per write route.
+
+```php
+// ❌ WRONG — module-level AddEvents middleware 403s the dashboard, calendar,
+// and read-only check-in pages for users who only have View permission.
+$app = MvcAppFactory::create('/event', [
+    'roleMiddleware' => AddEventsRoleAuthMiddleware::class,
+]);
+
+// ✅ CORRECT — module-level View gate, Add gate per write route
+$app = MvcAppFactory::create('/event', [
+    'roleMiddleware' => ViewEventsRoleAuthMiddleware::class,
+]);
+
+$app->get('/dashboard', $listEventsHandler);                     // View only
+$app->post('/editor', $saveEventHandler)
+    ->add(new AddEventsRoleAuthMiddleware());                    // requires Add
+$app->post('/types/{id}', $saveTypeHandler)
+    ->add(new AddEventsRoleAuthMiddleware());                    // requires Add
+```
+
+**Why it matters**: menu items linking to read-only routes (`Calendar`, `Check-in`, `Events Dashboard`) are visible to all logged-in users. If the module middleware demands the elevated write permission, every click 403s — defeats the menu and looks like a regression.
+
+**Defense in depth**: it's still fine for `AddEventsRoleAuthMiddleware` to additionally enforce the system-wide feature flag (`bEnabledEvents`), so writes are blocked even if a route is missing the per-route middleware.
+
 ## Authorization Redirect Pattern
 
 **For permission checks, use this pattern:**
@@ -100,6 +127,41 @@ if ($person === null) {
 - ❌ `header('Location: ...')` directly (bypasses root path handling)
 - ❌ `header('Location: ' . SystemURLs::getRootPath() . ...)` (RedirectUtils does this automatically)
 - ❌ Unhandled exception throws for access denied (use security redirects)
+
+## Kiosk Device Routes — Cookie + Roster Check <!-- learned: 2026-04-09 -->
+
+Routes under `/kiosk/device/*` are NOT user-authenticated — they identify the caller via a kiosk device cookie, not a `User` session. Every device route must:
+
+1. Validate the kiosk cookie via `$getKioskFromCookie()` and 401 if missing
+2. **For routes that take a `PersonId` argument**: verify that person belongs to the kiosk's active assignment roster, otherwise the endpoint becomes a person-id enumeration oracle disclosing names and photo flags
+
+```php
+$group->get('/activeClassMember/{PersonId}/family', function (Request $req, Response $res, array $args) use ($getKioskFromCookie): Response {
+    $kiosk = $getKioskFromCookie();
+    if ($kiosk === null) {
+        return SlimUtils::renderErrorJSON($res, gettext('Kiosk device not found'), [], 401);
+    }
+
+    $personId = InputUtils::filterInt($args['PersonId'] ?? 0);
+    if ($personId <= 0) {
+        return SlimUtils::renderErrorJSON($res, gettext('Invalid person ID'), [], 400);
+    }
+
+    // Roster membership check — prevents enumeration outside assigned group
+    $assignment = $kiosk->getActiveAssignment();
+    if ($assignment === null) {
+        return SlimUtils::renderErrorJSON($res, gettext('No active assignment'), [], 403);
+    }
+    $rosterIds = array_map('intval', array_column($assignment->getActiveGroupMembers(), 'PersonId'));
+    if (!in_array($personId, $rosterIds, true)) {
+        return SlimUtils::renderErrorJSON($res, gettext('Person not in active class roster'), [], 403);
+    }
+
+    // ... safe to fetch + return person data
+});
+```
+
+**Related**: `Event::checkInPerson()` / `Event::checkOutPerson()` are called from kiosk routes with no `User` session. Any code path they touch must guard `AuthenticationManager::getCurrentUser()` with `isUserAuthenticated()` first — see `Event::addTimelineNote()` in `src/ChurchCRM/model/ChurchCRM/Event.php` for the fallback pattern.
 
 ## HTML Sanitization & XSS Protection
 

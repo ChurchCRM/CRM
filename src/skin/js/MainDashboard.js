@@ -668,7 +668,7 @@ export function initializeMainDashboard() {
     $("#todayEventsDashboardItem").DataTable(todayEventsConfig);
   }
 
-  if ($("#depositChartRow").is(":visible")) {
+  if ($("#deposit-lineGraph").length > 0) {
     window.CRM.APIRequest({
       method: "GET",
       path: "deposits/dashboard",

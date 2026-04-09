@@ -268,10 +268,6 @@ msgid "Add Cart to Event"
 msgstr "Ajouter le Panier à l'évènement"
 
 #: 
-msgid "OR"
-msgstr "OU"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Votre panier est vide !"
 
@@ -392,10 +388,6 @@ msgstr "Oui"
 #: 
 msgid "No"
 msgstr "Non"
-
-#: 
-msgid "Event Checkin"
-msgstr "Enregistrement Événements"
 
 #: 
 msgid "Select Event"
@@ -648,10 +640,6 @@ msgid "Church Event Editor"
 msgstr "Gestionnaire d'événement de l'église"
 
 #: 
-msgid "Edit Event Types"
-msgstr "Modifier les types d'événements"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Modifier le type d'événement"
 
@@ -721,20 +709,8 @@ msgid "Create a new Event"
 msgstr "Créer un événement"
 
 #: 
-msgid " errors. Please see below"
-msgstr " erreurs. Voir ci-dessous"
-
-#: 
 msgid "Select your event type"
 msgstr "Sélectionner votre type d'événement"
-
-#: 
-msgid "You must pick an event type."
-msgstr "Vous devez choisir un type d'événement."
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "Aucune présence enregistrée"
 
 #: 
 msgid "Event Status"
@@ -2912,10 +2888,6 @@ msgid "Date Entered"
 msgstr "Date entrée:"
 
 #: 
-msgid "There were "
-msgstr "Il y avait "
-
-#: 
 msgid "Inactive"
 msgstr "Inactif"
 
@@ -4862,14 +4834,6 @@ msgid "Select event"
 msgstr "Sélectionner un événement"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "Cette personne a déjà été inscris pour cet événement"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "Adulte autorisé à chercher"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Texte avant le nom dans les emails/rapports"
 
@@ -5426,10 +5390,6 @@ msgid "Sign out"
 msgstr "Se déconnecter"
 
 #: 
-msgid "Sermon Text"
-msgstr "Texte de la Prédication"
-
-#: 
 msgid "Change Settings"
 msgstr "Changer les Réglages"
 
@@ -5945,10 +5905,6 @@ msgstr "Fonctions de réinitialisation de la base de données"
 msgid "Reset Database"
 msgstr "Réinitialiser la base"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "Ceci réinitialisera le système et redémarrera comme une nouvelle installation"
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6153,18 +6109,6 @@ msgstr "Vérifier"
 #: 
 msgid "Family has no emails to use"
 msgstr "Aucune adresse email renseignée pour cette famille"
-
-#: 
-msgid "User Interface"
-msgstr "Interface utilisateur"
-
-#: 
-msgid "Locale"
-msgstr "Lieu"
-
-#: 
-msgid "Override system locale"
-msgstr "Remplacer les paramètres régionaux du système"
 
 #: 
 msgid "Deleted"
@@ -7235,10 +7179,6 @@ msgid "All Types"
 msgstr "Tous les types"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "Êtes-vous sûr de vouloir supprimer cet enregistrement de présence ?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "Catégories de décompte de présence"
 
@@ -7279,10 +7219,6 @@ msgid "Create New Event"
 msgstr "Créer un nouvel événement"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "Créez un type d'événement pour commencer."
-
-#: 
 msgid "Current DB Version"
 msgstr "Version actuelle de la base de données"
 
@@ -7301,14 +7237,6 @@ msgstr "Heure de début par défaut"
 #: 
 msgid "Delete Event"
 msgstr "Supprimer l'événement"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "La suppression d'un événement supprimera également tous les décomptes de présence. Supprimer cet événement ?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "La suppression de cet événement supprimera également tous les enregistrements de présence. Êtes-vous sûr ?"
 
 #: 
 msgid "Edit Event"
@@ -7376,10 +7304,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "Optionnel - Ajouter des notes de prédication ou des détails supplémentaires sur l'événement"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "Optionnel - laisser vide si vous ne suivez pas"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "Notes optionnelles sur la présence..."
 
@@ -7410,10 +7334,6 @@ msgstr "Enregistrer le type d'événement"
 #: 
 msgid "Search by name or email..."
 msgstr "Rechercher par nom ou courriel..."
-
-#: 
-msgid "Search for adult..."
-msgstr "Rechercher un adulte..."
 
 #: 
 msgid "Search for supervisor..."

@@ -281,10 +281,6 @@ msgid "Add Cart to Event"
 msgstr "Adauga in cos la eveniment"
 
 #: 
-msgid "OR"
-msgstr "SAU"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Cosul dvs. este gol!"
 
@@ -408,10 +404,6 @@ msgstr "Da"
 #: 
 msgid "No"
 msgstr "Nu"
-
-#: 
-msgid "Event Checkin"
-msgstr "Evenimentul Checkin"
 
 #: 
 msgid "Select Event"
@@ -676,10 +668,6 @@ msgid "Church Event Editor"
 msgstr "Editor de evenimente bisericești"
 
 #: 
-msgid "Edit Event Types"
-msgstr "Editare Tipuri de evenimente"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Editare tip de eveniment"
 
@@ -750,20 +738,8 @@ msgid "Create a new Event"
 msgstr "Crează eveniment nou"
 
 #: 
-msgid " errors. Please see below"
-msgstr "erori. Vă rugăm să consultați mai jos"
-
-#: 
 msgid "Select your event type"
 msgstr "Selectează tip eveniment"
-
-#: 
-msgid "You must pick an event type."
-msgstr "Trebuie să alegi un tip de eveniment"
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "Nu a fost înregistrat niciun număr de prezență"
 
 #: 
 #, fuzzy
@@ -2992,10 +2968,6 @@ msgid "Date Entered"
 msgstr "Dată activare"
 
 #: 
-msgid "There were "
-msgstr "Au fost"
-
-#: 
 msgid "Inactive"
 msgstr "Inactiv"
 
@@ -4943,14 +4915,6 @@ msgid "Select event"
 msgstr "Selectează eveniment"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "Persoana a fost deja înregistrată pentru acest eveniment"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "Persoană pentru check-out pentru adulți"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Text înainte de nume în email-uri/rapoarte"
 
@@ -5507,10 +5471,6 @@ msgid "Sign out"
 msgstr "Ieșire"
 
 #: 
-msgid "Sermon Text"
-msgstr "Textul predicii"
-
-#: 
 msgid "Change Settings"
 msgstr "Schimbă setările"
 
@@ -6026,10 +5986,6 @@ msgstr "Funcții de resetare a Bazei de Date"
 msgid "Reset Database"
 msgstr "Resetare bază de date"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "Aceasta va reseta datele sistemului și va reporni sistemul ca o instalare nouă"
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6232,18 +6188,6 @@ msgstr "Verifică"
 #: 
 msgid "Family has no emails to use"
 msgstr "Familia nu are adrese de email de utilizat"
-
-#: 
-msgid "User Interface"
-msgstr "Interfață de Utilizator"
-
-#: 
-msgid "Locale"
-msgstr "Localizare"
-
-#: 
-msgid "Override system locale"
-msgstr "Suprascrieți localizarea sistemului"
 
 #: 
 msgid "Deleted"
@@ -7315,10 +7259,6 @@ msgid "All Types"
 msgstr "Toate tipurile"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "Sigur doriți să ștergeți această înregistrare de check-in?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "Categorii numărare prezență"
 
@@ -7359,10 +7299,6 @@ msgid "Create New Event"
 msgstr "Creează eveniment nou"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "Creați un tip de eveniment pentru a începe."
-
-#: 
 msgid "Current DB Version"
 msgstr "Versiune actuală BD"
 
@@ -7381,14 +7317,6 @@ msgstr "Ora de start implicită"
 #: 
 msgid "Delete Event"
 msgstr "Șterge evenimentul"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "Ștergerea unui eveniment va șterge și toate numărătorile de prezență. Ștergeți acest eveniment?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "Ștergerea acestui eveniment va șterge și toate înregistrările de prezență. Sigur doriți să continuați?"
 
 #: 
 msgid "Edit Event"
@@ -7456,10 +7384,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "Opțional - Adăugați note despre predică sau detalii suplimentare despre eveniment"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "Opțional - lăsați gol dacă nu monitorizați"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "Note opționale despre prezență..."
 
@@ -7490,10 +7414,6 @@ msgstr "Salvează tipul de eveniment"
 #: 
 msgid "Search by name or email..."
 msgstr "Căutare după nume sau e-mail..."
-
-#: 
-msgid "Search for adult..."
-msgstr "Caută adult..."
 
 #: 
 msgid "Search for supervisor..."
