@@ -200,30 +200,20 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
+<?php if ($depositEnabled) { ?>
 <div class="row">
     <div class="col-12">
         <div class="card mb-3" id="depositChartRow">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><i class="fa-solid fa-circle-dollar-to-slot me-2"></i> <?= gettext('Deposit Tracking') ?></h3>
             </div>
-            <?php if ($depositEnabled) { ?>
-                <div class="card-body">
-                    <div id="deposit-lineGraph" style="min-height: 300px;"></div>
-                </div>
-            <?php } else { ?>
-                <div class="card-body">
-                    <div class="empty">
-                        <div class="empty-icon">
-                            <i class="fa-solid fa-circle-dollar-to-slot fa-3x text-muted"></i>
-                        </div>
-                        <p class="empty-title"><?= gettext('No Deposit Tracking') ?></p>
-                        <p class="empty-subtitle text-muted"><?= gettext('You do not have finance permissions to view deposits.') ?></p>
-                    </div>
-                </div>
-            <?php } ?>
+            <div class="card-body">
+                <div id="deposit-lineGraph" style="min-height: 300px;"></div>
+            </div>
         </div>
     </div>
 </div>
+<?php } ?>
 
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/root-dashboard.min.js') ?>"></script>
 <?php
