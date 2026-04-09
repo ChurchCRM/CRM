@@ -193,3 +193,19 @@ When fixing a failed test:
 - Do not skip build/lint even for "small" or "obvious" fixes
 - Do not commit even when the user says "fix it" — build + review first
 - Silence or follow-up questions from the user are NOT approval to commit
+
+### Pre-push enforcement (Biome lint)
+
+**Biome lint must pass before any `git push`.** This is enforced both ways:
+
+- **Git hook**: `.githooks/pre-push` runs `npm run lint` automatically. The
+  hook is wired up by the `prepare` script in `package.json` (sets
+  `core.hooksPath=.githooks`), so `npm install` enables it for every clone.
+  The hook is a no-op in CI (`$CI`/`$GITHUB_ACTIONS`).
+- **Agent rule**: agents must run `npm run lint` themselves *before* asking
+  for push approval — never rely on the hook to surface failures. Show the
+  output in the conversation.
+
+**Never use `git push --no-verify`** unless the user explicitly authorizes
+it for an emergency hot-fix AND the PR description names the rule that was
+bypassed and why. See [`git-workflow.md → Mandatory Pre-Push Biome Check`](.agents/skills/churchcrm/git-workflow.md).
