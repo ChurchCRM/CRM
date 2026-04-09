@@ -143,9 +143,7 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
                     </h5>
                 </div>
                 <div class="card-body" style="overflow: visible;">
-                    <div class="table-responsive">
-                        <table class="table" id="groupsTable"></table>
-                    </div>
+                    <table class="table" id="groupsTable"></table>
                 </div>
             </div>
 

@@ -58,7 +58,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-home"></i> <?= gettext('Families') ?></h3>
     </div>
-    <div class="table-responsive">
+    <div style="overflow: visible;">
         <table class="table table-vcenter table-hover card-table" id="families">
             <thead>
                 <tr>

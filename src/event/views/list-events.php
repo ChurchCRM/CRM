@@ -159,8 +159,8 @@ foreach ($monthlyData as $monthData):
     </h3>
     <span class="badge bg-blue-lt ms-auto"><?= (int) $EventYear ?></span>
   </div>
-  <div class="card-body p-0">
-    <div class="table-responsive">
+  <div class="card-body p-0" style="overflow: visible;">
+    <div style="overflow: visible;">
       <table class="table table-hover table-vcenter mb-0">
         <thead>
           <tr>

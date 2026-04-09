@@ -49,7 +49,7 @@ codebase:
 - Stat cards: `col-6` (two-up, never stack to one-up — looks empty on 375px)
 - Main columns: `col-12` (stack everything)
 - Form fields: `col-12`
-- Tables: **must** be wrapped in `.table-responsive`
+- Tables: **must** be wrapped — `.table-responsive` if rows have no action dropdowns, **otherwise** `<div style="overflow: visible;">` (see [`table-action-menu.md`](./table-action-menu.md) — `.table-responsive` clips dropdowns)
 - Touch targets: minimum **44×44px** (Apple HIG)
 - Page headers: use icon-only buttons (`font-size: 0` trick, see `_tabler-bridge.scss`)
 - Labels on multi-step forms: hide under 400px (`d-none d-sm-inline`)
@@ -69,8 +69,9 @@ codebase:
   balanced two-column layouts. Do NOT use the 8/4 split at md — it cramps the
   narrow column.
 - Form fields: `col-md-6` for paired fields (name/email, date range)
-- Tables: `table-responsive` still required — many data tables overflow at
-  768–992px
+- Tables: wrapper still required — `.table-responsive` for rows without
+  action dropdowns, `<div style="overflow: visible;">` for rows with action
+  dropdowns (see `table-action-menu.md`)
 - Card header tabs: keep visible but consider shorter labels
   (`<span class="d-none d-xl-inline">Latest Families</span><span class="d-xl-none">New</span>`)
 
@@ -158,14 +159,37 @@ On mobile and tablet they stack automatically (both become `col-12`).
 </div>
 ```
 
-### Tables must be wrapped
+### Tables must be wrapped — but NOT with `.table-responsive` if the rows have action dropdowns <!-- learned: 2026-04-09 -->
 
-Every `<table class="table">` inside a card **must** sit inside a
-`.table-responsive` wrapper. Without it, rows with long text (emails, addresses,
-comments) break the card's horizontal overflow on phones.
+> **⚠️ Critical conflict with [`table-action-menu.md`](./table-action-menu.md):**
+> `.table-responsive` sets `overflow-x: auto`, which (per CSS spec) forces
+> `overflow-y: auto` as well — and that **clips absolutely-positioned row
+> dropdowns on their last rows**. For tables that have per-row action menus
+> (the `ti-dots-vertical` dropdown pattern), you **must** use
+> `<div style="overflow: visible;">` as the wrapper instead. See the Overflow
+> section of `table-action-menu.md` for the full root cause.
+
+**Decision flow for every table in a card:**
+
+```
+Does the table have per-row action dropdowns?
+├── YES → Use <div style="overflow: visible;"> (dropdowns can escape)
+│         Accept horizontal overflow on phones — it's the lesser evil
+│         compared to broken action menus.
+└── NO  → Use .table-responsive (proper mobile horizontal scroll)
+```
 
 ```html
-<!-- ✅ CORRECT -->
+<!-- ✅ CORRECT — table with row action dropdowns -->
+<div class="card-body" style="overflow: visible;">
+    <div style="overflow: visible;">
+        <table class="table table-vcenter table-hover card-table">
+            <!-- rows with ti-dots-vertical dropdown in last <td> -->
+        </table>
+    </div>
+</div>
+
+<!-- ✅ CORRECT — table with NO row actions (e.g. simple read-only list) -->
 <div class="card-body p-0">
     <div class="table-responsive">
         <table class="table table-vcenter table-hover card-table mb-0">
@@ -178,9 +202,16 @@ comments) break the card's horizontal overflow on phones.
 <div class="card-body">
     <table class="table" id="groupsTable"></table>
 </div>
+
+<!-- ❌ WRONG — clips dropdowns on last row (very easy to miss!) -->
+<div class="table-responsive">
+    <table>
+        <tr><td>...<div class="dropdown"><!-- CLIPPED --></div></td></tr>
+    </table>
+</div>
 ```
 
-DataTables-generated tables (`$('#groupsTable').DataTable(...)`) also need the
+DataTables-generated tables (`$('#groupsTable').DataTable(...)`) also need a
 wrapper — DataTables' built-in responsive plugin is not enabled by default in
 this codebase.
 
@@ -259,7 +290,8 @@ there when introducing a new page or fixing a responsive bug.
 | `col-sm-6 col-lg-3` stat cards | Use `col-6 col-lg-3` (don't stack on tiny phones) |
 | `col-lg-8 col-md-8` main content | Use `col-lg-8` only; stack on md |
 | Inline `width: 300px` on inputs | Use `col-md-*` wrappers + `w-100` |
-| Bare `<table class="table">` in card | Wrap in `.table-responsive` |
+| Bare `<table class="table">` in card (no row dropdowns) | Wrap in `.table-responsive` |
+| Bare `<table class="table">` in card (WITH row dropdowns) | Wrap in `<div style="overflow: visible;">` — `.table-responsive` clips dropdowns (see `table-action-menu.md`) |
 | `navbar-expand-lg` on vertical navbar | The canonical Tabler sidebar is `navbar-expand-xl` |
 | Hardcoded icon `font-size: 12px` on touch targets | Default (≥16px) or bigger for mobile |
 | Long labels crammed into card tabs | Use `d-none d-xl-inline` + `d-xl-none` short label pair |
@@ -287,7 +319,7 @@ whether they follow the canonical patterns:
 |---|---|---|---|
 | Dashboard | `src/v2/templates/root/dashboard.php` | 5 stat cards `col-6 col-lg`, 8/4 split | ✅ |
 | People → Dashboard | `src/people/views/dashboard.php` | 4 stat `col-6 col-lg-3`, 6/6 split | ✅ |
-| Groups → Dashboard | `src/groups/views/dashboard.php` | 4 stat `col-6 col-lg-3`, full-width table | ✅ (table-responsive added 2026-04-09) |
+| Groups → Dashboard | `src/groups/views/dashboard.php` | 4 stat `col-6 col-lg-3`, DataTable with row dropdowns in `overflow:visible` wrapper | ✅ |
 | Sunday School → Dashboard | `src/groups/views/sundayschool/dashboard.php` | 6 stat `col-6 col-md-4 col-lg-2` | ✅ (md step added 2026-04-09) |
 | Finance → Dashboard | `src/finance/views/dashboard.php` | 4 stat `col-6 col-lg-3`, 8/4 split, `table-responsive` | ✅ |
 | Admin → Dashboard | `src/admin/views/dashboard.php` | 8/4 split, `col-md-6 col-lg-4` quick-start grid | ✅ (laptop-optimized) |
@@ -300,9 +332,9 @@ check-in kiosks, quick lookups). Admin pages intentionally excluded — see abov
 | Page | File | Issue found | Fix |
 |---|---|---|---|
 | Person List | `src/v2/templates/people/person-list.php` | Filter grid jumped `col-12` → `col-lg-*`, collapsed on tablets | `col-12 col-sm-6 col-lg-{3,4}` 2026-04-09 |
-| Family List | `src/v2/templates/people/family-list.php` | `#families` table had no `.table-responsive` wrapper | Added 2026-04-09 |
-| Events Dashboard | `src/event/views/list-events.php` | Hardcoded `<th style="width: NNNpx">` broke responsive sizing; no table wrapper | Removed inline widths, wrapped in `.table-responsive` 2026-04-09 |
-| Event Check-in | `src/event/views/checkin.php` | Attendance table lacked `.table-responsive` wrapper | Added 2026-04-09 |
+| Family List | `src/v2/templates/people/family-list.php` | `#families` table has row dropdowns — already used `overflow:visible` wrapper | ✅ |
+| Events Dashboard | `src/event/views/list-events.php` | Hardcoded `<th style="width: NNNpx">` prevented column reflow | Removed inline widths 2026-04-09 (kept `overflow:visible` wrapper for row dropdowns) |
+| Event Check-in | `src/event/views/checkin.php` | Attendance table has row dropdowns — already used `overflow:visible` wrapper | ✅ |
 | Photo Directory | `src/v2/templates/people/photo-gallery.php` | Already uses `col-6 col-md-4 col-lg-3` grid | ✅ |
 | Family Map | `src/people/views/map-view.php` | Full-viewport map — intentionally desktop-ish but works on tablet | ✅ |
 | Person View | `src/people/views/person-view.php` | Uses `col-lg-8`/`col-lg-4` split, stacks cleanly | ✅ |
@@ -316,10 +348,10 @@ at the back of the room):
 | Page | File | Issue found | Fix |
 |---|---|---|---|
 | Event Editor | `src/event/views/editor.php` | Form built as `<table>` with 9× `style="width:180px"` on `<td>` labels — broke mobile entirely | Converted to Bootstrap `row`/`col-md-3`+`col-md-9` form pattern 2026-04-09 |
-| Event Types List | `src/event/views/types-list.php` | `<div style="overflow: visible;">` wrapper around table | Replaced with `.table-responsive` 2026-04-09 |
+| Event Types List | `src/event/views/types-list.php` | Has row action dropdowns — `overflow:visible` wrapper is correct | ✅ (no change; must stay `overflow:visible` for dropdowns) |
 | Event Type Edit | `src/event/views/types-edit.php` | `<th style="width: 200px;">` on Actions column | Replaced with `w-1` utility class 2026-04-09 |
-| Group View | `src/groups/views/group-view.php` | `<div style="overflow: visible;">` wrapper around `#membersTable` | Replaced with `.table-responsive` 2026-04-09 |
-| Sunday School Class View | `src/groups/views/sundayschool/class-view.php` | `<div style="overflow: visible;">` wrapper around student roster table | Replaced with `.table-responsive` 2026-04-09 |
+| Group View | `src/groups/views/group-view.php` | `#membersTable` populated by GroupView.js with row dropdowns — `overflow:visible` wrapper is correct | ✅ (no change; must stay `overflow:visible` for dropdowns) |
+| Sunday School Class View | `src/groups/views/sundayschool/class-view.php` | Student roster has row action dropdowns — `overflow:visible` wrapper is correct | ✅ (no change; must stay `overflow:visible` for dropdowns) |
 | Event Repeat Editor | `src/event/views/repeat-editor.php` | Small fixed-width inline selects (`w:auto`, `w:100px`) inside `flex-wrap` rows | ✅ (wraps cleanly, intentionally small) |
 | Event Types New | `src/event/views/types-new.php` | Narrow time-picker widths (70/100/150px) | ✅ (inline time-pickers, acceptable sizing) |
 
