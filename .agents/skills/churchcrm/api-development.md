@@ -121,6 +121,18 @@ return SlimUtils::renderErrorJSON($response, gettext('Validation failed'), ['err
 - ❌ Return raw exception messages (use gettext() for localization and sanitization)
 - ❌ Log exceptions separately in routes (renderErrorJSON handles all logging)
 
+### Never Throw HttpBadRequestException in Route Handlers <!-- learned: 2026-04-07 -->
+
+API route handlers must use `SlimUtils::renderErrorJSON()` instead of throwing `HttpBadRequestException`. Thrown exceptions can expose stack traces and bypass the custom error handler. `HttpNotFoundException` is fine to throw (Slim handles it natively), but `HttpBadRequestException` should return a JSON error response directly.
+
+```php
+// ✅ CORRECT
+return SlimUtils::renderErrorJSON($response, gettext('invalid event type id'), [], 400);
+
+// ❌ WRONG — can expose stack traces
+throw new HttpBadRequestException($request, gettext('invalid event type id'));
+```
+
 ## API Response Standardization
 
 **Maintain consistent error response format across all APIs** to prevent client-side errors.
@@ -454,6 +466,31 @@ return $response;
 ```
 
 **Feature-flag middleware on export routes** — Only add `SundaySchoolEnabledMiddleware` (or similar) to routes whose content is *exclusively* about that feature. General exports that merely enrich data with SS info should NOT be gated — block only the SS-specific logic inside the handler when the feature is off.
+
+### Route All Check-in/Check-out Through the Event Model <!-- learned: 2026-04-08 -->
+
+When migrating legacy pages, refactor **all** code paths to use the same model method
+instead of copy-pasting the persistence logic. For event check-in, the canonical entry
+points are `Event::checkInPerson()` and `Event::checkOutPerson()` — they set consistent
+timestamps, create the timeline Note (`type='event'`), and fire hooks.
+
+Even cart-to-event bulk check-in — which historically created `EventAttend` rows directly —
+should call the model method so every path produces identical side effects.
+
+```php
+// ❌ Direct ORM bypasses model logic (no timeline note, inconsistent timestamps)
+$ea = new EventAttend();
+$ea->setEventId($eventId)->setPersonId($personId)->save();
+
+// ✅ Use model method — sets timestamps, writes timeline note, fires hooks
+$event = EventQuery::create()->findPk($eventId);
+if ($event !== null) {
+    $event->checkInPerson($personId);
+}
+```
+
+Same rule applies anywhere a "canonical" mutator method exists on a model — prefer the
+model method over hand-rolling the same sequence of ORM calls.
 
 ### Note Privacy: nte_Private Stores personId, Not a Boolean <!-- learned: 2026-03-29 -->
 

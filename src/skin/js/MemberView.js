@@ -48,22 +48,5 @@ $(".delete-person").click(function (event) {
   });
 });
 
-// Photo viewer click handlers for person avatars in family member tables
-$(document).on("click", ".view-person-photo", function (e) {
-  var personId = $(e.currentTarget).data("person-id");
-  if (window.CRM && window.CRM.showPhotoLightbox) {
-    window.CRM.showPhotoLightbox("person", personId);
-  }
-  e.preventDefault();
-  e.stopPropagation();
-});
-
-// Photo viewer click handler for family avatars
-$(document).on("click", ".view-family-photo", function (e) {
-  var familyId = $(e.currentTarget).data("family-id");
-  if (window.CRM && window.CRM.showPhotoLightbox) {
-    window.CRM.showPhotoLightbox("family", familyId);
-  }
-  e.preventDefault();
-  e.stopPropagation();
-});
+// Photo viewer click handlers (.view-person-photo / .view-family-photo) are
+// registered globally in avatar-loader.ts

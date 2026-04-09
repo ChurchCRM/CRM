@@ -504,6 +504,34 @@ $users = UserQuery::create()
 
 ---
 
+## Branch Consolidation — Merging Multiple Feature Branches <!-- learned: 2026-04-07 -->
+
+When consolidating multiple feature branches into one:
+
+1. **Audit each branch** before merging:
+   - `git log master..branch --oneline` — identify unique commits per branch
+   - `git diff master...branch --name-only` — find overlapping files
+   - `git branch --merged master` — identify already-merged branches (safe to delete)
+
+2. **Merge in order of increasing conflict risk** (clean merges first)
+
+3. **Conflict resolution patterns:**
+   - Modify/delete conflicts where the file was refactored away in master — accept the deletion
+   - Import conflicts from merges — keep all imports from both sides
+   - Overlapping edits to the same file — manually review and combine intent from both branches
+
+```bash
+# Example: consolidating branch-a and branch-b into branch-combined
+git checkout -b branch-combined master
+git merge branch-a            # clean merge first
+git merge branch-b            # higher-conflict merge second
+# Resolve any conflicts, then:
+git add <resolved-files>
+git commit -m "Merge branch-b into branch-combined"
+```
+
+---
+
 ## Troubleshooting
 
 ### Commit Message Mistakes

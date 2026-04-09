@@ -1260,6 +1260,50 @@ cy.get("#latestPersonDashboardItem").then(($table) => {
 });
 ```
 
+### Cypress Cannot Be Run From the Agent's Bash Tool <!-- learned: 2026-04-09 -->
+
+**Don't try.** Cypress fails immediately with `MODULE_NOT_FOUND` and only the trailing two lines of the error stack survive into the captured output (`code: 'MODULE_NOT_FOUND'` / `requireStack: []`). The full electron stack and the actual missing-module path are stripped before reaching stdout.
+
+The root cause: the Bash sandbox corrupts the path the cypress CLI hands to electron. With `DEBUG=cypress:* node node_modules/cypress/bin/cypress run ...` you can see the full spawn args and the entry point becomes:
+
+```
+/Users/.../Cypress.app/Contents/MacOS/Contents/Resources/app/index.js
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+```
+
+Doubled-up `Contents/`. Same command in the user's interactive terminal works fine because the sandbox env (PATH/PWD/argv resolution) differs.
+
+**What to do**: ask the user to run cypress for you, e.g.:
+
+```bash
+npx cypress run --config-file cypress/configs/docker.config.ts \
+  --spec "cypress/e2e/ui/admin/event-types.spec.js" \
+  > src/event-tests-output.txt 2>&1
+```
+
+Then read `src/event-tests-output.txt` for the full result. Do **not** run `npx cypress install` / `cache clear` to try to "fix" it — the project rules forbid touching the binary cache and the issue isn't in the cache anyway.
+
+### Filtering DataTables 2.x via JS API, not Selectors <!-- learned: 2026-04-09 -->
+
+When a test creates a row and then asserts it appears in a DataTable, default 10-row pagination drops the new row off page 1 once enough rows accumulate. `cy.contains()` then can't find it (DataTables removes off-page rows from the DOM in client-side mode).
+
+**Don't** use the legacy `#tableId_filter input[type=search]` selector — DataTables 2.x with the CRM `layout` config (`topStart: 'search'`) doesn't render that element; the search input lives under `div.dt-search`.
+
+**Do** drive the DataTable JS API directly via `cy.window()`. It's selector-independent and works with any layout/version:
+
+```js
+function filterEventTypesTable(query) {
+  cy.window().then((win) => {
+    win.$('#eventTypesTable').DataTable().search(query).draw();
+  });
+}
+
+// usage
+cy.get('#eventTypesTable', { timeout: 10000 }).should('exist'); // wait for init
+filterEventTypesTable(uniqueName);
+cy.get('#eventTypesTable tbody tr').should('have.length', 1).and('contain', uniqueName);
+```
+
 ### Never Mix Success and Error Status Codes <!-- learned: 2026-04-07 -->
 
 Each test must assert a **single** specific expected status code (or a tightly scoped set when

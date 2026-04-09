@@ -53,40 +53,40 @@ class InputUtils
     /**
      * Sanitize rich text HTML with XSS protection using HTML Purifier
      * Use this for user-provided HTML content (e.g., event descriptions from Quill editor)
-     * 
+     *
      * @param string $sInput HTML input to sanitize
      * @return string Clean HTML with dangerous tags/attributes removed
      */
     public static function sanitizeHTML($sInput): string
     {
         $sInput = trim($sInput);
-        
+
         if (empty($sInput)) {
             return '';
         }
-        
+
         // Configure HTML Purifier with strict XSS protection
         $config = \HTMLPurifier_Config::createDefault();
-        
+
         // Define allowed HTML tags for safe content (rich text)
-        $config->set('HTML.Allowed', 
+        $config->set('HTML.Allowed',
             'a[href],b,i,u,h1,h2,h3,h4,h5,h6,pre,address,img[src|alt|width|height],table,td,tr,ol,li,ul,p,sub,sup,s,hr,span,blockquote,div,small,big,tt,code,kbd,samp,del,ins,cite,q,br,strong,em'
         );
-        
+
         // Block dangerous protocols: only allow safe URLs
         $config->set('URI.AllowedSchemes', ['http' => true, 'https' => true, 'ftp' => true, 'mailto' => true]);
-        
+
         // Disable dangerous elements that could bypass sanitization
         $config->set('HTML.ForbiddenElements', ['script', 'iframe', 'embed', 'object', 'form', 'style', 'meta']);
-        
+
         // Disable automatic paragraph wrapping
         $config->set('AutoFormat.AutoParagraph', false);
-        
+
         // Enable ID attributes for accessibility
         $config->set('Attr.EnableID', true);
-        
+
         $purifier = new \HTMLPurifier($config);
-        
+
         return $purifier->purify($sInput);
     }
 
@@ -146,7 +146,7 @@ class InputUtils
      * Converts special characters to HTML entities: &, <, >, ", '
      * Automatically handles stripslashes() for magic quotes compatibility
      * Use this when outputting user/database values in HTML
-     * 
+     *
      * @param string $sInput Text to escape
      * @return string HTML-escaped text safe for display
      */
@@ -160,7 +160,7 @@ class InputUtils
      * Alias for escapeHTML() - both use ENT_QUOTES for full safety
      * Automatically handles stripslashes() for magic quotes compatibility
      * Use this when outputting user/database values in HTML attributes
-     * 
+     *
      * @param string $sInput Text to escape
      * @return string HTML-escaped text safe for attribute use
      */

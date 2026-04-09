@@ -380,6 +380,49 @@ $financeMenu->addItem(
 
 ---
 
+## Event MVC Module (`/event/*`) <!-- learned: 2026-04-07 -->
+
+The `/event` MVC module follows the same pattern as `/admin` and `/finance`:
+
+| Component | Location |
+|-----------|----------|
+| Entry point | `src/event/index.php` using `MvcAppFactory::create('/event', [...])` |
+| Middleware | `AddEventsRoleAuthMiddleware` |
+| Routes | `src/event/routes/event.php` |
+| Views | `src/event/views/` rendered via PhpRenderer |
+| `.htaccess` | Blocks direct PHP access and routes through Slim |
+
+```
+src/event/
+├── index.php              # MvcAppFactory::create('/event', [...])
+├── .htaccess              # Blocks direct PHP, routes through Slim
+├── routes/
+│   └── event.php          # Event page routes
+└── views/
+    └── [feature].php      # Tabler-rendered views
+```
+
+### Route File Naming & Organization — One File per Resource <!-- learned: 2026-04-08 -->
+
+For modules with many legacy pages (the `/event` migration had ~10), split routes by
+logical resource rather than cramming everything into one `event.php`:
+
+- One route file per page/feature in `src/event/routes/` (e.g., `event-types.php`,
+  `event-attendance.php`, `event-checkin.php`)
+- Matching view file of the same base name in `src/event/views/`
+- Register each route file in `src/event/index.php`:
+  ```php
+  require __DIR__ . '/routes/event-types.php';
+  require __DIR__ . '/routes/event-attendance.php';
+  require __DIR__ . '/routes/event-checkin.php';
+  ```
+- Small per-route helper functions can be defined at the top of the route file — do
+  not create a dedicated service class for one-off helpers that only serve that page.
+
+This keeps each file under ~300 lines and makes it obvious which route handles which view.
+
+---
+
 ## Deprecated Locations (DO NOT USE)
 
 | Path | Status | Reason |
