@@ -281,10 +281,6 @@ msgid "Add Cart to Event"
 msgstr "加入購物車事件"
 
 #: 
-msgid "OR"
-msgstr "或"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "您的購物車是空的！"
 
@@ -409,10 +405,6 @@ msgstr "是"
 #: 
 msgid "No"
 msgstr "否"
-
-#: 
-msgid "Event Checkin"
-msgstr "事件記登"
 
 #: 
 msgid "Select Event"
@@ -678,10 +670,6 @@ msgid "Church Event Editor"
 msgstr "教會活動編輯器"
 
 #: 
-msgid "Edit Event Types"
-msgstr "編輯活動類型"
-
-#: 
 msgid "Edit Event Type"
 msgstr "編輯活動類型"
 
@@ -752,20 +740,8 @@ msgid "Create a new Event"
 msgstr "建立新活動"
 
 #: 
-msgid " errors. Please see below"
-msgstr "錯誤。請參考下面"
-
-#: 
 msgid "Select your event type"
 msgstr "選擇您的活動類型"
-
-#: 
-msgid "You must pick an event type."
-msgstr "你必須選擇事件類型"
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "沒有記錄考勤計數"
 
 #: 
 #, fuzzy
@@ -3005,10 +2981,6 @@ msgid "Date Entered"
 msgstr "輸入日期"
 
 #: 
-msgid "There were "
-msgstr "曾有"
-
-#: 
 msgid "Inactive"
 msgstr "待用"
 
@@ -4969,15 +4941,6 @@ msgid "Select event"
 msgstr "選擇活動"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "此人已經對本事件簽到"
-
-#: 
-#, fuzzy
-msgid "Adult Checking Out Person"
-msgstr "成人登出人員"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "電子郵件/報告中姓名前的文字"
 
@@ -5539,10 +5502,6 @@ msgid "Sign out"
 msgstr "登出"
 
 #: 
-msgid "Sermon Text"
-msgstr "佈道文字"
-
-#: 
 msgid "Change Settings"
 msgstr "更變設定\n"
 ""
@@ -6091,11 +6050,6 @@ msgstr "資料庫重置功能"
 msgid "Reset Database"
 msgstr "重置資料庫"
 
-#: 
-#, fuzzy
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "這將重置系統資料，並以新安裝的方式重新啟動系統。"
-
 #. Context: locales
 #: 
 #, fuzzy
@@ -6330,21 +6284,6 @@ msgstr "確認"
 #, fuzzy
 msgid "Family has no emails to use"
 msgstr "家庭沒有電子郵件可使用"
-
-#: 
-#, fuzzy
-msgid "User Interface"
-msgstr "用戶界面"
-
-#: 
-#, fuzzy
-msgid "Locale"
-msgstr "本地"
-
-#: 
-#, fuzzy
-msgid "Override system locale"
-msgstr "覆蓋系統區域設置"
 
 #: 
 #, fuzzy
@@ -7429,10 +7368,6 @@ msgid "All Types"
 msgstr "所有類型"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "您確定要刪除此簽到記錄嗎？"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "考勤統計類別"
 
@@ -7473,10 +7408,6 @@ msgid "Create New Event"
 msgstr "建立新活動"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "建立一個活動類型以開始。"
-
-#: 
 msgid "Current DB Version"
 msgstr "目前資料庫版本"
 
@@ -7495,14 +7426,6 @@ msgstr "預設開始時間"
 #: 
 msgid "Delete Event"
 msgstr "刪除活動"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "刪除活動也將刪除所有考勤統計。刪除此活動嗎？"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "刪除此活動也將刪除所有考勤記錄。確定嗎？"
 
 #: 
 msgid "Edit Event"
@@ -7570,10 +7493,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "可選 - 添加講道筆記或額外的活動詳情"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "可選 - 如果不跟踪則留空"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "有關考勤的可選筆記..."
 
@@ -7604,10 +7523,6 @@ msgstr "儲存活動類型"
 #: 
 msgid "Search by name or email..."
 msgstr "依姓名或電子郵件搜尋..."
-
-#: 
-msgid "Search for adult..."
-msgstr "搜尋成年人..."
 
 #: 
 msgid "Search for supervisor..."

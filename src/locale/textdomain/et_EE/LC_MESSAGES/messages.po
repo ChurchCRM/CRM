@@ -268,10 +268,6 @@ msgid "Add Cart to Event"
 msgstr "Lisa korv üritusele"
 
 #: 
-msgid "OR"
-msgstr "VÕI"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Su korv on tühi!"
 
@@ -392,10 +388,6 @@ msgstr "Jah"
 #: 
 msgid "No"
 msgstr "Ei"
-
-#: 
-msgid "Event Checkin"
-msgstr "Ürituste registreerimine"
 
 #: 
 msgid "Select Event"
@@ -651,10 +643,6 @@ msgid "Church Event Editor"
 msgstr "Koguduse/kiriku ürituse toimetaja"
 
 #: 
-msgid "Edit Event Types"
-msgstr "Muutke sündmuste tüüpe"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Muutke sündmuste tüüpi"
 
@@ -724,20 +712,8 @@ msgid "Create a new Event"
 msgstr "Looge uus sündmus"
 
 #: 
-msgid " errors. Please see below"
-msgstr " vead. Palun vaadake allpool"
-
-#: 
 msgid "Select your event type"
 msgstr "Valige sündmuse tüüp"
-
-#: 
-msgid "You must pick an event type."
-msgstr "Peate valima sündmuse tüübi."
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "Ühtegi osalemisarvestust ei registreeritud"
 
 #: 
 msgid "Event Status"
@@ -2915,10 +2891,6 @@ msgid "Date Entered"
 msgstr "Sisestamise kuupäev"
 
 #: 
-msgid "There were "
-msgstr "Seal olid"
-
-#: 
 msgid "Inactive"
 msgstr "Mitteaktiivne"
 
@@ -4864,14 +4836,6 @@ msgid "Select event"
 msgstr "Valige sündmus"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "Isik on selle sündmuse jaoks juba registreerunud"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "Täiskasvanud väljaregistreeriv isik"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Tekst enne nime e-kirjades/aruannetes"
 
@@ -5428,10 +5392,6 @@ msgid "Sign out"
 msgstr "Logi välja"
 
 #: 
-msgid "Sermon Text"
-msgstr "Jutluse tekst"
-
-#: 
 msgid "Change Settings"
 msgstr "Muuda seadeid"
 
@@ -5948,10 +5908,6 @@ msgstr "Andmebaasi lähtestamise funktsioonid"
 msgid "Reset Database"
 msgstr "Lähtesta andmebaas"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "See lähtestab süsteemi andmed ja taaskäivitab süsteemi uue installina."
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6155,18 +6111,6 @@ msgstr "Kinnitage"
 #: 
 msgid "Family has no emails to use"
 msgstr "Perel pole kasutada e-kirju"
-
-#: 
-msgid "User Interface"
-msgstr "Kasutajaliides"
-
-#: 
-msgid "Locale"
-msgstr "Lokaal"
-
-#: 
-msgid "Override system locale"
-msgstr "Süsteemi lokaadi alistamine"
 
 #: 
 msgid "Deleted"
@@ -7237,10 +7181,6 @@ msgid "All Types"
 msgstr "Kõik tüübid"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "Kas olete kindel, et soovite selle sisse kontrollimirekordid kustutada?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "Kohaloleku loendamise kategooriad"
 
@@ -7281,10 +7221,6 @@ msgid "Create New Event"
 msgstr "Loo uus sündmus"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "Alustamiseks looge sündmuse tüüp."
-
-#: 
 msgid "Current DB Version"
 msgstr "Praegune andmebaasi versioon"
 
@@ -7303,14 +7239,6 @@ msgstr "Vaikimisi algusaeg"
 #: 
 msgid "Delete Event"
 msgstr "Kustuta sündmus"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "Sündmuse kustutamine kustutab ka kõik kohaloleku loendused. Kustuta see sündmus?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "Selle sündmuse kustutamine kustutab ka kõik kohaloleku kirjed. Kas olete kindel?"
 
 #: 
 msgid "Edit Event"
@@ -7378,10 +7306,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "Valikuline - lisage jutluse märkmed või täiendavad sündmuse üksikasjad"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "Valikuline - jätke tühjaks, kui te ei jälgige"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "Valikulised märkmed kohaloleku kohta..."
 
@@ -7412,10 +7336,6 @@ msgstr "Salvesta sündmuse tüüp"
 #: 
 msgid "Search by name or email..."
 msgstr "Otsing nime või e-posti järgi..."
-
-#: 
-msgid "Search for adult..."
-msgstr "Otsing täiskasvanule..."
 
 #: 
 msgid "Search for supervisor..."

@@ -284,10 +284,6 @@ msgid "Add Cart to Event"
 msgstr "Korb zur Veranstaltung hinzufügen"
 
 #: 
-msgid "OR"
-msgstr "oder"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Der Korb ist leer!"
 
@@ -411,10 +407,6 @@ msgstr "Ja"
 #: 
 msgid "No"
 msgstr "Nein"
-
-#: 
-msgid "Event Checkin"
-msgstr "Anmeldung zur Veranstaltung"
 
 #: 
 msgid "Select Event"
@@ -679,10 +671,6 @@ msgid "Church Event Editor"
 msgstr "Veranstaltungs Editor"
 
 #: 
-msgid "Edit Event Types"
-msgstr "Veranstaltungsarten bearbeiten"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Veranstaltungsart bearbeiten"
 
@@ -753,20 +741,8 @@ msgid "Create a new Event"
 msgstr "Neues Event erstellen"
 
 #: 
-msgid " errors. Please see below"
-msgstr "Fehler. Siehe unten"
-
-#: 
 msgid "Select your event type"
 msgstr "Eventtyp auswählen"
-
-#: 
-msgid "You must pick an event type."
-msgstr "Es muss ein Eventtyp ausgewählt werden."
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "Keine Besucherzahlen eingegeben"
 
 #: 
 #, fuzzy
@@ -3011,10 +2987,6 @@ msgid "Date Entered"
 msgstr "Datum:"
 
 #: 
-msgid "There were "
-msgstr "Es gab "
-
-#: 
 msgid "Inactive"
 msgstr "Inaktiv"
 
@@ -4962,14 +4934,6 @@ msgid "Select event"
 msgstr "Veranstaltung auswählen"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "Person wurde für dieses Event bereits eingecheckt"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "Erwachsene Check-Out Person"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Text vor dem Namen in E-Mails/Berichten"
 
@@ -5526,10 +5490,6 @@ msgid "Sign out"
 msgstr "Ausloggen"
 
 #: 
-msgid "Sermon Text"
-msgstr "Predigttext"
-
-#: 
 msgid "Change Settings"
 msgstr "Einstellung ändern"
 
@@ -6046,10 +6006,6 @@ msgstr "Datenbank-Rücksetzfunktionen"
 msgid "Reset Database"
 msgstr "Datenbank zurücksetzen"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "Dadurch werden die Systemdaten zurückgesetzt und das System als Neuinstallation neu gestartet."
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6253,18 +6209,6 @@ msgstr "Verifizieren"
 #: 
 msgid "Family has no emails to use"
 msgstr "Die Familie hat keine E-Mailadresse"
-
-#: 
-msgid "User Interface"
-msgstr "Benutzeroberfläche"
-
-#: 
-msgid "Locale"
-msgstr "Schauplatz"
-
-#: 
-msgid "Override system locale"
-msgstr "Gebietsschema des Systems außer Kraft setzen"
 
 #: 
 msgid "Deleted"
@@ -7335,10 +7279,6 @@ msgid "All Types"
 msgstr "Alle Typen"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "Sind Sie sicher, dass Sie diesen Check-in-Datensatz löschen möchten?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "Anwesenheits-Zählkategorien"
 
@@ -7379,10 +7319,6 @@ msgid "Create New Event"
 msgstr "Neues Ereignis erstellen"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "Erstellen Sie einen Ereignistyp, um zu beginnen."
-
-#: 
 msgid "Current DB Version"
 msgstr "Aktuelle DB-Version"
 
@@ -7401,14 +7337,6 @@ msgstr "Standardstartzeit"
 #: 
 msgid "Delete Event"
 msgstr "Ereignis löschen"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "Das Löschen eines Ereignisses löscht auch alle Anwesenheitszählungen. Dieses Ereignis löschen?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "Das Löschen dieses Ereignisses löscht auch alle Anwesenheitsdatensätze. Sind Sie sicher?"
 
 #: 
 msgid "Edit Event"
@@ -7476,10 +7404,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "Optional - Predigt-Notizen oder zusätzliche Ereignisdetails hinzufügen"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "Optional - Leerzeichen lassen, wenn nicht verfolgt"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "Optionale Notizen zur Anwesenheit..."
 
@@ -7510,10 +7434,6 @@ msgstr "Ereignistyp speichern"
 #: 
 msgid "Search by name or email..."
 msgstr "Nach Name oder E-Mail suchen..."
-
-#: 
-msgid "Search for adult..."
-msgstr "Nach Erwachsenem suchen..."
 
 #: 
 msgid "Search for supervisor..."

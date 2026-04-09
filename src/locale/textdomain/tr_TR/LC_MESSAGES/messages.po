@@ -268,10 +268,6 @@ msgid "Add Cart to Event"
 msgstr "Etkinliğe Sepet Ekle"
 
 #: 
-msgid "OR"
-msgstr "VEYA"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Sepetiniz boş!"
 
@@ -392,10 +388,6 @@ msgstr "Evet"
 #: 
 msgid "No"
 msgstr "Numara"
-
-#: 
-msgid "Event Checkin"
-msgstr "Olay kontrolü"
 
 #: 
 msgid "Select Event"
@@ -651,10 +643,6 @@ msgid "Church Event Editor"
 msgstr "Kilise Etkinlik Editörü"
 
 #: 
-msgid "Edit Event Types"
-msgstr "Etkinlik Türlerini Düzenle"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Etkinlik Türünü Düzenle"
 
@@ -724,20 +712,8 @@ msgid "Create a new Event"
 msgstr "Yeni Bir Etkinlik Oluşturun"
 
 #: 
-msgid " errors. Please see below"
-msgstr " hatalar. Lütfen aşağıya bakın"
-
-#: 
 msgid "Select your event type"
 msgstr "Etkinlik Türünüzü Seçin"
-
-#: 
-msgid "You must pick an event type."
-msgstr "Bir olay türü seçmelisiniz."
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "Katılım sayısı kaydedilmedi"
 
 #: 
 msgid "Event Status"
@@ -2915,10 +2891,6 @@ msgid "Date Entered"
 msgstr "Girilen tarih"
 
 #: 
-msgid "There were "
-msgstr "Vardı"
-
-#: 
 msgid "Inactive"
 msgstr "Aktif olmayan"
 
@@ -4865,14 +4837,6 @@ msgid "Select event"
 msgstr "Etkinliği Seçin"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "Bu etkinlik için kişi zaten kontrol edildi"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "Yetişkin Kişiyi Kontrol Etme"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "E -postalarda/raporlarda addan önce metin"
 
@@ -5429,10 +5393,6 @@ msgid "Sign out"
 msgstr "oturumu Kapat"
 
 #: 
-msgid "Sermon Text"
-msgstr "Vaaz metni"
-
-#: 
 msgid "Change Settings"
 msgstr "Ayarları değiştir"
 
@@ -5949,10 +5909,6 @@ msgstr "Veritabanı Sıfırlama İşlevleri"
 msgid "Reset Database"
 msgstr "Veritabanını sıfırla"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "Bu, sistem verilerini sıfırlar ve sistemi yeni bir yükleme olarak yeniden başlatır."
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6156,18 +6112,6 @@ msgstr "Doğrulayın"
 #: 
 msgid "Family has no emails to use"
 msgstr "Ailenin kullanılacak e -postaları yok"
-
-#: 
-msgid "User Interface"
-msgstr "Kullanıcı arayüzü"
-
-#: 
-msgid "Locale"
-msgstr "Yer"
-
-#: 
-msgid "Override system locale"
-msgstr "Sistem yerel ayarını geçersiz kılmak"
 
 #: 
 msgid "Deleted"
@@ -7238,10 +7182,6 @@ msgid "All Types"
 msgstr "Tüm Türler"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "Bu giriş (check-in) kaydını silmek istediğinizden emin misiniz?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "Katılım Sayısı Kategorileri"
 
@@ -7282,10 +7222,6 @@ msgid "Create New Event"
 msgstr "Yeni Etkinlik Oluştur"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "Başlamak için bir etkinlik türü oluşturun."
-
-#: 
 msgid "Current DB Version"
 msgstr "Mevcut Veritabanı Sürümü"
 
@@ -7304,14 +7240,6 @@ msgstr "Varsayılan Başlangıç Saati"
 #: 
 msgid "Delete Event"
 msgstr "Etkinliği Sil"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "Bir etkinliği silmek tüm katılım sayılarını da silecektir. Bu etkinlik silinsin mi?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "Bu etkinliği silmek tüm katılım kayıtlarını da silecektir. Emin misiniz?"
 
 #: 
 msgid "Edit Event"
@@ -7379,10 +7307,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "İsteğe bağlı - Vaaz notları veya ek etkinlik detayları ekleyin"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "İsteğe bağlı - takip etmiyorsanız boş bırakın"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "Katılım hakkında isteğe bağlı notlar..."
 
@@ -7413,10 +7337,6 @@ msgstr "Etkinlik Türünü Kaydet"
 #: 
 msgid "Search by name or email..."
 msgstr "İsim veya e-posta ile ara..."
-
-#: 
-msgid "Search for adult..."
-msgstr "Yetişkin ara..."
 
 #: 
 msgid "Search for supervisor..."

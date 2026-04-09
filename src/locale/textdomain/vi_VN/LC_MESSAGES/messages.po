@@ -279,10 +279,6 @@ msgid "Add Cart to Event"
 msgstr "Thêm vào giỏ rồi gửi đến Sự kiện"
 
 #: 
-msgid "OR"
-msgstr "HOẶC"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Giỏ của bạn đang trống!"
 
@@ -404,10 +400,6 @@ msgstr "Có"
 #: 
 msgid "No"
 msgstr "Không"
-
-#: 
-msgid "Event Checkin"
-msgstr "Đăng ký sự kiện"
 
 #: 
 msgid "Select Event"
@@ -663,10 +655,6 @@ msgid "Church Event Editor"
 msgstr "Chỉnh sửa sự kiện Hội Thánh"
 
 #: 
-msgid "Edit Event Types"
-msgstr "Chỉnh sửa loại sự kiện"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Chỉnh sửa loại sự kiện"
 
@@ -736,20 +724,8 @@ msgid "Create a new Event"
 msgstr "Tạo sự kiện mới"
 
 #: 
-msgid " errors. Please see below"
-msgstr " bị lỗi. Vui lòng xem bên dưới"
-
-#: 
 msgid "Select your event type"
 msgstr "Lựa chọn loại sự kiện"
-
-#: 
-msgid "You must pick an event type."
-msgstr "Bạn cần chọn loại sự kiện"
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "Không có số điểm chuyên cần nào được ghi lại"
 
 #: 
 msgid "Event Status"
@@ -2927,10 +2903,6 @@ msgid "Date Entered"
 msgstr "Ngày nhập vào"
 
 #: 
-msgid "There were "
-msgstr "Đã có"
-
-#: 
 msgid "Inactive"
 msgstr "Hủy kích hoạt"
 
@@ -4877,14 +4849,6 @@ msgid "Select event"
 msgstr "Chọn sự kiện"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "Một người đã được đăng ký cho sự kiện này"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "Người lớn trả phòng"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Văn bản trước tên trong email / báo cáo"
 
@@ -5441,10 +5405,6 @@ msgid "Sign out"
 msgstr "Thoát khỏi"
 
 #: 
-msgid "Sermon Text"
-msgstr "Văn bản Bài giảng"
-
-#: 
 msgid "Change Settings"
 msgstr "Thay đổi cài đặt"
 
@@ -5952,10 +5912,6 @@ msgstr "Các chức năng thiết lập lại cơ sở dữ liệu"
 msgid "Reset Database"
 msgstr "Đặt lại cơ sở dữ liệu"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "Thao tác này sẽ đặt lại dữ liệu hệ thống và sẽ khởi động lại hệ thống khi cài đặt mới."
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6159,18 +6115,6 @@ msgstr "Kiểm chứng"
 #: 
 msgid "Family has no emails to use"
 msgstr "Gia đình không có email nào để sử dụng"
-
-#: 
-msgid "User Interface"
-msgstr "Giao diện người dùng"
-
-#: 
-msgid "Locale"
-msgstr "Ngôn ngữ"
-
-#: 
-msgid "Override system locale"
-msgstr "Ghi đè ngôn ngữ hệ thống"
 
 #: 
 msgid "Deleted"
@@ -7240,10 +7184,6 @@ msgid "All Types"
 msgstr "Tất cả các loại"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "Bạn có chắc chắn muốn xóa bản ghi điểm danh này không?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "Các danh mục đếm số người tham dự"
 
@@ -7284,10 +7224,6 @@ msgid "Create New Event"
 msgstr "Tạo sự kiện mới"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "Tạo một loại sự kiện để bắt đầu."
-
-#: 
 msgid "Current DB Version"
 msgstr "Phiên bản CSDL hiện tại"
 
@@ -7306,14 +7242,6 @@ msgstr "Giờ bắt đầu mặc định"
 #: 
 msgid "Delete Event"
 msgstr "Xóa sự kiện"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "Xóa một sự kiện cũng sẽ xóa tất cả số liệu điểm danh. Xóa sự kiện này?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "Xóa sự kiện này cũng sẽ xóa tất cả hồ sơ điểm danh. Bạn có chắc không?"
 
 #: 
 msgid "Edit Event"
@@ -7381,10 +7309,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "Tùy chọn - Thêm ghi chú bài giảng hoặc chi tiết sự kiện bổ sung"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "Tùy chọn - để trống nếu không theo dõi"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "Ghi chú tùy chọn về việc tham dự..."
 
@@ -7415,10 +7339,6 @@ msgstr "Lưu loại sự kiện"
 #: 
 msgid "Search by name or email..."
 msgstr "Tìm theo tên hoặc email..."
-
-#: 
-msgid "Search for adult..."
-msgstr "Tìm người lớn..."
 
 #: 
 msgid "Search for supervisor..."

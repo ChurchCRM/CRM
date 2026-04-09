@@ -269,10 +269,6 @@ msgid "Add Cart to Event"
 msgstr "कार्ट को इवेंट में जोड़ें"
 
 #: 
-msgid "OR"
-msgstr "या"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "आपका कार्ट खाली है!"
 
@@ -392,10 +388,6 @@ msgstr "हाँ"
 #: 
 msgid "No"
 msgstr "नहीं"
-
-#: 
-msgid "Event Checkin"
-msgstr "इवेंट चेकइन"
 
 #: 
 msgid "Select Event"
@@ -647,10 +639,6 @@ msgid "Church Event Editor"
 msgstr "चर्च इवेंट संपादक"
 
 #: 
-msgid "Edit Event Types"
-msgstr "इवेंट प्रकार संपादित करें"
-
-#: 
 msgid "Edit Event Type"
 msgstr "इवेंट प्रकार संपादित करें"
 
@@ -720,20 +708,8 @@ msgid "Create a new Event"
 msgstr "एक नया इवेंट बनाएँ"
 
 #: 
-msgid " errors. Please see below"
-msgstr " त्रुटियाँ। कृपया नीचे देखें"
-
-#: 
 msgid "Select your event type"
 msgstr "अपना इवेंट प्रकार चुनें"
-
-#: 
-msgid "You must pick an event type."
-msgstr "आपको एक इवेंट प्रकार चुनना होगा।"
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "कोई उपस्थिति गणना दर्ज नहीं की गई"
 
 #: 
 msgid "Event Status"
@@ -2890,10 +2866,6 @@ msgid "Date Entered"
 msgstr "दर्ज की गई तिथि"
 
 #: 
-msgid "There were "
-msgstr "वहां थे "
-
-#: 
 msgid "Inactive"
 msgstr "निष्क्रिय"
 
@@ -4832,14 +4804,6 @@ msgid "Select event"
 msgstr "कार्यक्रम चुनें"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "व्यक्ति पहले ही इस कार्यक्रम के लिए चेक-इन कर चुका है"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "व्यक्ति को चेक-आउट करने वाला वयस्क"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "ईमेल/रिपोर्ट में नाम से पहले का टेक्स्ट"
 
@@ -5395,10 +5359,6 @@ msgid "Sign out"
 msgstr "साइन आउट"
 
 #: 
-msgid "Sermon Text"
-msgstr "धर्मोपदेश पाठ"
-
-#: 
 msgid "Change Settings"
 msgstr "सेटिंग्स बदलें"
 
@@ -5906,10 +5866,6 @@ msgstr "डेटाबेस रीसेट फ़ंक्शन"
 msgid "Reset Database"
 msgstr "डेटाबेस रीसेट करें"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "यह सिस्टम डेटा को रीसेट कर देगा और सिस्टम को नए इंस्टाल के रूप में पुनरारंभ करेगा।"
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6112,18 +6068,6 @@ msgstr "सत्यापित करें"
 #: 
 msgid "Family has no emails to use"
 msgstr "परिवार के पास उपयोग के लिए कोई ईमेल नहीं है"
-
-#: 
-msgid "User Interface"
-msgstr "यूज़र इंटरफ़ेस"
-
-#: 
-msgid "Locale"
-msgstr "स्थानीयता"
-
-#: 
-msgid "Override system locale"
-msgstr "सिस्टम स्थानीयता को ओवरराइड करें"
 
 #: 
 msgid "Deleted"
@@ -7194,10 +7138,6 @@ msgid "All Types"
 msgstr "सभी प्रकार"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "क्या आप वाकई इस चेक-इन रिकॉर्ड को हटाना चाहते हैं?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "उपस्थिति गणना श्रेणियाँ"
 
@@ -7238,10 +7178,6 @@ msgid "Create New Event"
 msgstr "नया कार्यक्रम बनाएं"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "शुरू करने के लिए एक इवेंट प्रकार बनाएं।"
-
-#: 
 msgid "Current DB Version"
 msgstr "वर्तमान डेटाबेस संस्करण"
 
@@ -7260,14 +7196,6 @@ msgstr "डिफ़ॉल्ट प्रारंभ समय"
 #: 
 msgid "Delete Event"
 msgstr "इवेंट हटाएं"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "इवेंट हटाने से सभी उपस्थिति गणनाएं भी हट जाएंगी। इस इवेंट को हटाएं?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "इस इवेंट को हटाने से सभी उपस्थिति रिकॉर्ड भी हट जाएंगे। क्या आप निश्चित हैं?"
 
 #: 
 msgid "Edit Event"
@@ -7335,10 +7263,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "वैकल्पिक - उपदेश नोट्स या अतिरिक्त इवेंट विवरण जोड़ें"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "वैकल्पिक - ट्रैक नहीं कर रहे हों तो खाली छोड़ें"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "उपस्थिति के बारे में वैकल्पिक नोट्स..."
 
@@ -7369,10 +7293,6 @@ msgstr "इवेंट प्रकार सहेजें"
 #: 
 msgid "Search by name or email..."
 msgstr "नाम या ईमेल द्वारा खोजें..."
-
-#: 
-msgid "Search for adult..."
-msgstr "वयस्क खोजें..."
 
 #: 
 msgid "Search for supervisor..."

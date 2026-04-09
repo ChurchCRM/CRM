@@ -283,10 +283,6 @@ msgid "Add Cart to Event"
 msgstr "Lägg korgen till evenemang"
 
 #: 
-msgid "OR"
-msgstr "ELLER"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Korgen är tom!"
 
@@ -410,10 +406,6 @@ msgstr "Ja"
 #: 
 msgid "No"
 msgstr "Nej"
-
-#: 
-msgid "Event Checkin"
-msgstr "Evenemang inchekning"
 
 #: 
 msgid "Select Event"
@@ -679,10 +671,6 @@ msgid "Church Event Editor"
 msgstr "Kyrkans evenemang redigeringsverktyg"
 
 #: 
-msgid "Edit Event Types"
-msgstr "Redigera evenemangtyper"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Redigera evenemangtyp"
 
@@ -753,20 +741,8 @@ msgid "Create a new Event"
 msgstr "Skapa en ny händelse"
 
 #: 
-msgid " errors. Please see below"
-msgstr "fel. Se nedan"
-
-#: 
 msgid "Select your event type"
 msgstr "Välj din händelsetyp"
-
-#: 
-msgid "You must pick an event type."
-msgstr "Du måste välja en händelsetyp."
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "Inga deltagare angiven"
 
 #: 
 #, fuzzy
@@ -3026,10 +3002,6 @@ msgid "Date Entered"
 msgstr "Datum in"
 
 #: 
-msgid "There were "
-msgstr "Det var"
-
-#: 
 msgid "Inactive"
 msgstr "Inaktiv"
 
@@ -4976,14 +4948,6 @@ msgid "Select event"
 msgstr "Välj händelse"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "Personen har redan checkats in för det här evenemanget"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "Vuxen checka ut person"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Text före namn i e-postmeddelanden / rapporter"
 
@@ -5540,10 +5504,6 @@ msgid "Sign out"
 msgstr "Logga ut"
 
 #: 
-msgid "Sermon Text"
-msgstr "Predikan text"
-
-#: 
 msgid "Change Settings"
 msgstr "Ändra inställningar"
 
@@ -6060,10 +6020,6 @@ msgstr "Funktioner för återställning av databaser"
 msgid "Reset Database"
 msgstr "Återställ databasen"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "Detta återställer systemdata och startar om systemet som en ny installation."
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6267,18 +6223,6 @@ msgstr "Verifiera"
 #: 
 msgid "Family has no emails to use"
 msgstr "Familjen har inga e-postadresser att använda"
-
-#: 
-msgid "User Interface"
-msgstr "Användargränssnitt"
-
-#: 
-msgid "Locale"
-msgstr "Språkinställning"
-
-#: 
-msgid "Override system locale"
-msgstr "Åsidosätt systemets språkinställning"
 
 #: 
 msgid "Deleted"
@@ -7349,10 +7293,6 @@ msgid "All Types"
 msgstr "Alla typer"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "Är du säker på att du vill radera denna incheckningspost?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "Kategorier för närvaroräkning"
 
@@ -7393,10 +7333,6 @@ msgid "Create New Event"
 msgstr "Skapa ny händelse"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "Skapa en händelsetyp för att komma igång."
-
-#: 
 msgid "Current DB Version"
 msgstr "Nuvarande DB-version"
 
@@ -7415,14 +7351,6 @@ msgstr "Standardstarttid"
 #: 
 msgid "Delete Event"
 msgstr "Radera händelse"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "Att radera en händelse kommer också att radera alla närvaroräkningar. Radera händelsen?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "Att radera denna händelse kommer också att radera alla närvaroposter. Är du säker?"
 
 #: 
 msgid "Edit Event"
@@ -7490,10 +7418,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "Valfritt - Lägg till predikoanteckningar eller ytterligare händelsedetaljer"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "Valfritt - lämna tomt om du inte spårar"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "Valfria anteckningar om närvaro..."
 
@@ -7524,10 +7448,6 @@ msgstr "Spara händelsetyp"
 #: 
 msgid "Search by name or email..."
 msgstr "Sök efter namn eller e-post..."
-
-#: 
-msgid "Search for adult..."
-msgstr "Sök efter vuxen..."
 
 #: 
 msgid "Search for supervisor..."

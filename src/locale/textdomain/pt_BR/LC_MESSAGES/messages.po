@@ -266,10 +266,6 @@ msgid "Add Cart to Event"
 msgstr "Adicionar Carrinho a um Evento"
 
 #: 
-msgid "OR"
-msgstr "OU"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Seu Carrinho está vazio!"
 
@@ -389,10 +385,6 @@ msgstr "Sim"
 #: 
 msgid "No"
 msgstr "Não"
-
-#: 
-msgid "Event Checkin"
-msgstr "Check-in do evento"
 
 #: 
 msgid "Select Event"
@@ -644,10 +636,6 @@ msgid "Church Event Editor"
 msgstr "Editor de Eventos da Igreja"
 
 #: 
-msgid "Edit Event Types"
-msgstr "Editar os tipos de eventos"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Edite o tipo do evento"
 
@@ -717,20 +705,8 @@ msgid "Create a new Event"
 msgstr "Criar um Novo Evento"
 
 #: 
-msgid " errors. Please see below"
-msgstr "erros. Por favor, veja abaixo"
-
-#: 
 msgid "Select your event type"
 msgstr "Selecione o Tipo de Evento"
-
-#: 
-msgid "You must pick an event type."
-msgstr "Você deve escolher um tipo de evento."
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "Não foi registrada a contagem dos presentes"
 
 #: 
 msgid "Event Status"
@@ -2888,10 +2864,6 @@ msgid "Date Entered"
 msgstr "Data de entrada"
 
 #: 
-msgid "There were "
-msgstr "foram "
-
-#: 
 msgid "Inactive"
 msgstr "Inativo"
 
@@ -4830,14 +4802,6 @@ msgid "Select event"
 msgstr "Selecionar evento"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "A pessoa já fez check-in para este evento"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "Pessoas adultas realizando o check-out"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Texto antes do nome nos e-mails /relatórios"
 
@@ -5393,10 +5357,6 @@ msgid "Sign out"
 msgstr "Sair"
 
 #: 
-msgid "Sermon Text"
-msgstr "Texto do Sermão"
-
-#: 
 msgid "Change Settings"
 msgstr "Configurações"
 
@@ -5909,10 +5869,6 @@ msgstr "Funções de redefinição da base de dados"
 msgid "Reset Database"
 msgstr "Redefinir banco de dados"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "Isto vai limpar os dados do sistema e reiniciá-lo como uma nova instalação"
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6115,18 +6071,6 @@ msgstr "Verificar"
 #: 
 msgid "Family has no emails to use"
 msgstr "A família não tem e-mails para usar"
-
-#: 
-msgid "User Interface"
-msgstr "Interface do Usuário"
-
-#: 
-msgid "Locale"
-msgstr "Local"
-
-#: 
-msgid "Override system locale"
-msgstr "Substituir Local do Sistema"
 
 #: 
 msgid "Deleted"
@@ -7197,10 +7141,6 @@ msgid "All Types"
 msgstr "Todos os tipos"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "Tem certeza de que deseja excluir este registro de check-in?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "Categorias de contagem de presença"
 
@@ -7241,10 +7181,6 @@ msgid "Create New Event"
 msgstr "Criar novo evento"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "Crie um tipo de evento para começar."
-
-#: 
 msgid "Current DB Version"
 msgstr "Versão atual do banco de dados"
 
@@ -7263,14 +7199,6 @@ msgstr "Hora de início padrão"
 #: 
 msgid "Delete Event"
 msgstr "Excluir evento"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "Excluir um evento também excluirá todas as contagens de presença. Excluir este evento?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "Excluir este evento também excluirá todos os registros de presença. Tem certeza?"
 
 #: 
 msgid "Edit Event"
@@ -7338,10 +7266,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "Opcional - Adicionar notas de sermão ou detalhes de evento adicionais"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "Opcional - deixe em branco se não acompanhar"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "Anotações opcionais sobre presença..."
 
@@ -7372,10 +7296,6 @@ msgstr "Salvar tipo de evento"
 #: 
 msgid "Search by name or email..."
 msgstr "Pesquisar por nome ou e-mail..."
-
-#: 
-msgid "Search for adult..."
-msgstr "Procurar adulto..."
 
 #: 
 msgid "Search for supervisor..."

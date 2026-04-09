@@ -268,10 +268,6 @@ msgid "Add Cart to Event"
 msgstr "Lisää tapahtuma koriin"
 
 #: 
-msgid "OR"
-msgstr "TAI"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Sinun korisi on tyhjä!"
 
@@ -392,10 +388,6 @@ msgstr "Kyllä"
 #: 
 msgid "No"
 msgstr "Ei"
-
-#: 
-msgid "Event Checkin"
-msgstr "Tapahtumaan sisäänkirjautuminen"
 
 #: 
 msgid "Select Event"
@@ -651,10 +643,6 @@ msgid "Church Event Editor"
 msgstr "Kirkon tapahtumien muokkaus"
 
 #: 
-msgid "Edit Event Types"
-msgstr "Muokkaa tapahtumatyyppejä"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Muokkaa tapahtumatyyppiä"
 
@@ -724,20 +712,8 @@ msgid "Create a new Event"
 msgstr "Luo uusi tapahtuma"
 
 #: 
-msgid " errors. Please see below"
-msgstr " virhettä. Katso alta"
-
-#: 
 msgid "Select your event type"
 msgstr "Valitse tapahtumatyyppi"
-
-#: 
-msgid "You must pick an event type."
-msgstr "Sinun on valittava tapahtumatyyppi."
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "Osallistujamääriä ei ole kirjattu"
 
 #: 
 msgid "Event Status"
@@ -2894,10 +2870,6 @@ msgid "Date Entered"
 msgstr "Tallennuspäivä"
 
 #: 
-msgid "There were "
-msgstr "Siellä oli "
-
-#: 
 msgid "Inactive"
 msgstr "Epäaktiivinen"
 
@@ -4836,14 +4808,6 @@ msgid "Select event"
 msgstr "Valitse tapahtuma"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "Henkilö on jo kirjattu sisään tähän tapahtumaan"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "Aikuinen, joka kirjaa henkilön ulos"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Teksti ennen nimeä sähköposteissa/raporteissa"
 
@@ -5399,10 +5363,6 @@ msgid "Sign out"
 msgstr "Kirjaudu ulos"
 
 #: 
-msgid "Sermon Text"
-msgstr "Saarnan teksti"
-
-#: 
 msgid "Change Settings"
 msgstr "Muuta asetuksia"
 
@@ -5909,10 +5869,6 @@ msgstr "Tietokannan nollaustoiminnot"
 msgid "Reset Database"
 msgstr "Nollaa tietokanta"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "Tämä nollaa järjestelmän tiedot ja käynnistää järjestelmän uudelleen puhtaana asennuksena."
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6115,18 +6071,6 @@ msgstr "Vahvista"
 #: 
 msgid "Family has no emails to use"
 msgstr "Perheellä ei ole sähköpostiosoitteita käytettäväksi"
-
-#: 
-msgid "User Interface"
-msgstr "Käyttöliittymä"
-
-#: 
-msgid "Locale"
-msgstr "Kielialue"
-
-#: 
-msgid "Override system locale"
-msgstr "Ohita järjestelmän kieliasetus"
 
 #: 
 msgid "Deleted"
@@ -7197,10 +7141,6 @@ msgid "All Types"
 msgstr "Kaikki tyypit"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "Haluatko varmasti poistaa tämän sisäänkirjautumistiedon?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "Läsnäoloseurannan kategoriat"
 
@@ -7241,10 +7181,6 @@ msgid "Create New Event"
 msgstr "Luo uusi tapahtuma"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "Luo tapahtumatyyppi aloittaaksesi."
-
-#: 
 msgid "Current DB Version"
 msgstr "Nykyinen tietokantaversio"
 
@@ -7263,14 +7199,6 @@ msgstr "Oletusalkamisaika"
 #: 
 msgid "Delete Event"
 msgstr "Poista tapahtuma"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "Tapahtuman poistaminen poistaa myös kaikki osallistumisen laskurit. Poistetaanko tapahtuma?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "Tapahtuman poistaminen poistaa myös kaikki osallistumisen tietueet. Oletko varma?"
 
 #: 
 msgid "Edit Event"
@@ -7338,10 +7266,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "Valinnainen - Lisää saarnakatsaus tai muita tapahtumatietoja"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "Valinnainen - jätä tyhjäksi, jos et seurata"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "Valinnaisia muistiinpanoja osallistumisesta..."
 
@@ -7372,10 +7296,6 @@ msgstr "Tallenna tapahtumatyyppi"
 #: 
 msgid "Search by name or email..."
 msgstr "Hae nimen tai sähköpostin mukaan..."
-
-#: 
-msgid "Search for adult..."
-msgstr "Hae aikuista..."
 
 #: 
 msgid "Search for supervisor..."
