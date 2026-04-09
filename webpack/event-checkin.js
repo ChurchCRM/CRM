@@ -381,17 +381,24 @@ $(() => {
   // These selectors live on the "select an event" landing page (when no
   // eventId is set), so they must be bound BEFORE the eventId guard below.
 
-  // Event selector navigation
+  // Event selector navigation. Coerce the dropdown value to a positive
+  // integer before interpolating into the URL — even though the option
+  // values come from server-rendered HTML we control, parseInt + bounds
+  // check defends against any future change and silences the
+  // js/xss-through-dom CodeQL alert.
   $("#EventSelector").on("change", function () {
-    const id = $(this).val();
-    if (id) {
+    const id = parseInt($(this).val(), 10);
+    if (Number.isInteger(id) && id > 0) {
       window.location.href = `${window.CRM.root}/event/checkin/${id}`;
     }
   });
 
-  // Event type filter navigation
+  // Event type filter navigation — same coercion as above.
   $("#EventTypeFilter").on("change", function () {
-    window.location.href = `${window.CRM.root}/event/checkin?EventTypeID=${this.value}`;
+    const typeId = parseInt(this.value, 10);
+    if (Number.isInteger(typeId) && typeId >= 0) {
+      window.location.href = `${window.CRM.root}/event/checkin?EventTypeID=${typeId}`;
+    }
   });
 
   // Everything below requires an active event context
