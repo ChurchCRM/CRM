@@ -268,10 +268,6 @@ msgid "Add Cart to Event"
 msgstr "Додати кошик до події"
 
 #: 
-msgid "OR"
-msgstr "АБО"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Ваш кошик порожній!"
 
@@ -392,10 +388,6 @@ msgstr "Так"
 #: 
 msgid "No"
 msgstr "Немає"
-
-#: 
-msgid "Event Checkin"
-msgstr "Реєстрація події"
 
 #: 
 #, fuzzy
@@ -651,10 +643,6 @@ msgid "Church Event Editor"
 msgstr "Редактор церковних подій"
 
 #: 
-msgid "Edit Event Types"
-msgstr "Редагувати типи подій"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Редагувати тип події"
 
@@ -724,20 +712,8 @@ msgid "Create a new Event"
 msgstr "Створити нову подію"
 
 #: 
-msgid " errors. Please see below"
-msgstr " помилки. Дивіться нижче"
-
-#: 
 msgid "Select your event type"
 msgstr "Виберіть тип події"
-
-#: 
-msgid "You must pick an event type."
-msgstr "Ви повинні вибрати тип події."
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "Кількість відвідувачів не зафіксовано"
 
 #: 
 msgid "Event Status"
@@ -2915,10 +2891,6 @@ msgid "Date Entered"
 msgstr "Дата вступу"
 
 #: 
-msgid "There were "
-msgstr "Там були "
-
-#: 
 msgid "Inactive"
 msgstr "Неактивний"
 
@@ -4865,14 +4837,6 @@ msgid "Select event"
 msgstr "Виберіть подію"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "Людина вже зареєстрована на цю подію"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "Дорослий, який виписує особу"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Текст перед назвою в електронних листах / звітах"
 
@@ -5429,10 +5393,6 @@ msgid "Sign out"
 msgstr "Вийти з аккаунта"
 
 #: 
-msgid "Sermon Text"
-msgstr "Текст проповіді"
-
-#: 
 msgid "Change Settings"
 msgstr "Змінити налаштування"
 
@@ -5953,10 +5913,6 @@ msgstr "Функції скидання бази даних"
 msgid "Reset Database"
 msgstr "Скинути базу даних"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "Це скине дані системи та перезапустить систему як нову установку."
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6160,18 +6116,6 @@ msgstr "Перевірити"
 #: 
 msgid "Family has no emails to use"
 msgstr "Сім'я не має електронних листів для використання"
-
-#: 
-msgid "User Interface"
-msgstr "Інтерфейс користувача"
-
-#: 
-msgid "Locale"
-msgstr "Локаль"
-
-#: 
-msgid "Override system locale"
-msgstr "Замінити локальний рівень системи"
 
 #: 
 msgid "Deleted"
@@ -7244,10 +7188,6 @@ msgid "All Types"
 msgstr "Усі типи"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "Ви впевнені, що хочете видалити цей запис про реєстрацію?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "Категорії підрахунку відвідуваності"
 
@@ -7288,10 +7228,6 @@ msgid "Create New Event"
 msgstr "Створити нову подію"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "Створіть тип події, щоб почати."
-
-#: 
 msgid "Current DB Version"
 msgstr "Поточна версія БД"
 
@@ -7310,14 +7246,6 @@ msgstr "Час початку за замовчуванням"
 #: 
 msgid "Delete Event"
 msgstr "Видалити подію"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "Видалення події також видалить усі підрахунки відвідуваності. Видалити цю подію?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "Видалення цієї події також видалить усі записи про відвідуваність. Ви впевнені?"
 
 #: 
 msgid "Edit Event"
@@ -7385,10 +7313,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "Додатково — додайте нотатки проповіді або додаткові деталі події"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "Додатково — залиште порожнім, якщо не відстежуєте"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "Додаткові нотатки про відвідуваність..."
 
@@ -7419,10 +7343,6 @@ msgstr "Зберегти тип події"
 #: 
 msgid "Search by name or email..."
 msgstr "Пошук за іменем або поштою..."
-
-#: 
-msgid "Search for adult..."
-msgstr "Пошук дорослого..."
 
 #: 
 msgid "Search for supervisor..."

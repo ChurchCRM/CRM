@@ -268,10 +268,6 @@ msgid "Add Cart to Event"
 msgstr "Voeg mandjie by die geleentheid"
 
 #: 
-msgid "OR"
-msgstr "OF"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Jou mandjie is leeg"
 
@@ -392,10 +388,6 @@ msgstr "Ja"
 #: 
 msgid "No"
 msgstr "Nee"
-
-#: 
-msgid "Event Checkin"
-msgstr "Geleentheid inklok"
 
 #: 
 msgid "Select Event"
@@ -651,10 +643,6 @@ msgid "Church Event Editor"
 msgstr "Kerk geleentheid redigeerder. "
 
 #: 
-msgid "Edit Event Types"
-msgstr "Redigeer tipe geleenthede"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Redigeer geleentheidstipe"
 
@@ -724,20 +712,8 @@ msgid "Create a new Event"
 msgstr "Skep 'n nuwe geleentheid"
 
 #: 
-msgid " errors. Please see below"
-msgstr " foute. Sien onder Asseblief"
-
-#: 
 msgid "Select your event type"
 msgstr "Kies u tipe gebeurtenis"
-
-#: 
-msgid "You must pick an event type."
-msgstr "U moet 'n tipe gebeurtenis kies."
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "Geen bywoningsgetalle aangeteken nie"
 
 #: 
 msgid "Event Status"
@@ -2915,10 +2891,6 @@ msgid "Date Entered"
 msgstr "Datum ingevoer"
 
 #: 
-msgid "There were "
-msgstr "Daar was "
-
-#: 
 msgid "Inactive"
 msgstr "Onaktief"
 
@@ -4865,14 +4837,6 @@ msgid "Select event"
 msgstr "Kies gebeurtenis"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "Persoon is reeds vir hierdie geleentheid aangemeld"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "Volwasse persoon wat uitklok"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "SMS voor naam in e-posse / verslae"
 
@@ -5429,10 +5393,6 @@ msgid "Sign out"
 msgstr "Teken uit"
 
 #: 
-msgid "Sermon Text"
-msgstr "Preekteks"
-
-#: 
 msgid "Change Settings"
 msgstr "Verander instellings"
 
@@ -5949,10 +5909,6 @@ msgstr "Databasisherstelfunksies"
 msgid "Reset Database"
 msgstr "Stel die databasis terug"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "Dit sal die stelseldata herstel en die stelsel weer begin as 'n nuwe installasie."
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6156,19 +6112,6 @@ msgstr "Verifieer"
 #: 
 msgid "Family has no emails to use"
 msgstr "Gesin het geen e-posse om te gebruik nie"
-
-#: 
-msgid "User Interface"
-msgstr "Gebruikerskoppelvlak"
-
-#: 
-msgid "Locale"
-msgstr "Lokaal"
-
-#: 
-#, fuzzy
-msgid "Override system locale"
-msgstr "Ignoreer stelsel-lokaal"
 
 #: 
 msgid "Deleted"
@@ -7239,10 +7182,6 @@ msgid "All Types"
 msgstr "Alle Tipes"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "Is jy seker dat jy hierdie insluitrekord wil skrap?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "Bywoning Tel Kategorieë"
 
@@ -7283,10 +7222,6 @@ msgid "Create New Event"
 msgstr "Skep Nuwe Gelegentheid"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "Skep 'n geleentheidtipe om te begin."
-
-#: 
 msgid "Current DB Version"
 msgstr "Huidigas DB Weergawe"
 
@@ -7305,14 +7240,6 @@ msgstr "Verstek Begintyd"
 #: 
 msgid "Delete Event"
 msgstr "Vee Gelegentheid Uit"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "As jy 'n gelegentheid uitvee, word alle bywoningstellings ook uitgewee. Vee hierdie gelegentheid uit?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "As jy hierdie gelegentheid uitvee, word alle bywoningsrekords ook uitgewee. Is jy seker?"
 
 #: 
 msgid "Edit Event"
@@ -7380,10 +7307,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "Opsioneel - Voeg prediking notas of bykomende gelegentheidsbesonderhede"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "Opsioneel - laat leeg as jy nie spoor hou nie"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "Opsioneel notas oor bywoning..."
 
@@ -7414,10 +7337,6 @@ msgstr "Save Gelegentheidstipe"
 #: 
 msgid "Search by name or email..."
 msgstr "Soek volgens naam of e-pos..."
-
-#: 
-msgid "Search for adult..."
-msgstr "Soek na volwassene..."
 
 #: 
 msgid "Search for supervisor..."

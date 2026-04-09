@@ -268,10 +268,6 @@ msgid "Add Cart to Event"
 msgstr "카트를 행사에 추가"
 
 #: 
-msgid "OR"
-msgstr "또는"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "카트가 비어 있습니다!"
 
@@ -392,10 +388,6 @@ msgstr "예"
 #: 
 msgid "No"
 msgstr "아니요"
-
-#: 
-msgid "Event Checkin"
-msgstr "행사 체크인"
 
 #: 
 msgid "Select Event"
@@ -651,10 +643,6 @@ msgid "Church Event Editor"
 msgstr "교회 행사 편집"
 
 #: 
-msgid "Edit Event Types"
-msgstr "행사 유형 편집"
-
-#: 
 msgid "Edit Event Type"
 msgstr "행사 유형 수정"
 
@@ -724,20 +712,8 @@ msgid "Create a new Event"
 msgstr "새 행사를 생성"
 
 #: 
-msgid " errors. Please see below"
-msgstr "개의 오류가 있습니다. 아래 내용을 확인하세요."
-
-#: 
 msgid "Select your event type"
 msgstr "행사 유형을 선택하세요"
-
-#: 
-msgid "You must pick an event type."
-msgstr "행사 유형을 꼭 선택해야 합니다."
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "등록된 출석 집계가 없습니다."
 
 #: 
 msgid "Event Status"
@@ -2913,10 +2889,6 @@ msgid "Date Entered"
 msgstr "입력일:"
 
 #: 
-msgid "There were "
-msgstr "총 "
-
-#: 
 msgid "Inactive"
 msgstr "비활성"
 
@@ -4861,14 +4833,6 @@ msgid "Select event"
 msgstr "행사 선택"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "이미 이 행사에 체크인했습니다"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "체크아웃 담당 성인"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "이메일/보고서에서 이름 앞에 붙는 문구"
 
@@ -5424,10 +5388,6 @@ msgid "Sign out"
 msgstr "로그아웃"
 
 #: 
-msgid "Sermon Text"
-msgstr "설교 전문"
-
-#: 
 msgid "Change Settings"
 msgstr "설정 변경"
 
@@ -5940,10 +5900,6 @@ msgstr "데이터베이스 초기화 기능"
 msgid "Reset Database"
 msgstr "데이터베이스 초기화"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "시스템 데이터를 초기화하여 새 설치처럼 다시 시작합니다."
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6146,18 +6102,6 @@ msgstr "확인"
 #: 
 msgid "Family has no emails to use"
 msgstr "해당 가족에 사용할 이메일이 없습니다"
-
-#: 
-msgid "User Interface"
-msgstr "사용자 인터페이스"
-
-#: 
-msgid "Locale"
-msgstr "로캘"
-
-#: 
-msgid "Override system locale"
-msgstr "시스템 로캘 무시"
 
 #: 
 msgid "Deleted"
@@ -7227,10 +7171,6 @@ msgid "All Types"
 msgstr "모든 유형"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "이 체크인 기록을 삭제하시겠습니까?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "출석 집계 카테고리"
 
@@ -7271,10 +7211,6 @@ msgid "Create New Event"
 msgstr "새 행사 생성"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "시작하려면 행사 유형을 생성하세요."
-
-#: 
 msgid "Current DB Version"
 msgstr "현재 DB 버전"
 
@@ -7293,14 +7229,6 @@ msgstr "기본 시작 시간"
 #: 
 msgid "Delete Event"
 msgstr "행사 삭제"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "행사를 삭제하면 모든 출석 집계도 삭제됩니다. 이 행사를 삭제하시겠습니까?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "이 행사를 삭제하면 모든 출석 기록도 삭제됩니다. 계속하시겠습니까?"
 
 #: 
 msgid "Edit Event"
@@ -7368,10 +7296,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "선택사항 - 설교 메모 또는 추가 행사 세부정보 추가"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "선택사항 - 추적하지 않는 경우 비워두세요"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "출석에 대한 선택적 메모..."
 
@@ -7402,10 +7326,6 @@ msgstr "행사 유형 저장"
 #: 
 msgid "Search by name or email..."
 msgstr "이름 또는 이메일로 검색..."
-
-#: 
-msgid "Search for adult..."
-msgstr "성인 검색..."
 
 #: 
 msgid "Search for supervisor..."

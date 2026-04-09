@@ -266,10 +266,6 @@ msgid "Add Cart to Event"
 msgstr "Voeg werkbestand toe aan activiteit"
 
 #: 
-msgid "OR"
-msgstr "OF"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Uw werkbestand is leeg."
 
@@ -389,10 +385,6 @@ msgstr "Ja"
 #: 
 msgid "No"
 msgstr "Nee"
-
-#: 
-msgid "Event Checkin"
-msgstr "Mutaties per activiteit"
 
 #: 
 msgid "Select Event"
@@ -644,10 +636,6 @@ msgid "Church Event Editor"
 msgstr "Activiteiten"
 
 #: 
-msgid "Edit Event Types"
-msgstr "Hoofdactiviteiten"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Hoofdactiviteiten"
 
@@ -717,20 +705,8 @@ msgid "Create a new Event"
 msgstr "Nieuwe activiteit"
 
 #: 
-msgid " errors. Please see below"
-msgstr "fouten. Zie hieronder"
-
-#: 
 msgid "Select your event type"
 msgstr "Selecteer hoofdactiviteit"
-
-#: 
-msgid "You must pick an event type."
-msgstr "Selectie hoofdactiviteit is verplicht"
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "Geen opkomst tellingen opgenomen"
 
 #: 
 msgid "Event Status"
@@ -2889,10 +2865,6 @@ msgid "Date Entered"
 msgstr "Datum opgevoerd"
 
 #: 
-msgid "There were "
-msgstr "Daar waren"
-
-#: 
 msgid "Inactive"
 msgstr "Niet actieve"
 
@@ -4832,14 +4804,6 @@ msgid "Select event"
 msgstr "Selecteer activiteit"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "De persoon is al voor deze activiteit toegevoegd"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "Volwassen persoon die uitcheckt"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Tekst voor naam in e-mails/rapporten"
 
@@ -5395,10 +5359,6 @@ msgid "Sign out"
 msgstr "Uitloggen"
 
 #: 
-msgid "Sermon Text"
-msgstr "Tekst"
-
-#: 
 msgid "Change Settings"
 msgstr "Instellingen"
 
@@ -5910,10 +5870,6 @@ msgstr "Functies voor het resetten van de database"
 msgid "Reset Database"
 msgstr "Database resetten"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "Hierdoor worden de systeemgegevens gereset en wordt het systeem opnieuw opgestart als een nieuwe installatie."
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6116,18 +6072,6 @@ msgstr "Verifiëren"
 #: 
 msgid "Family has no emails to use"
 msgstr "Familie heeft geen e-mails om te gebruiken"
-
-#: 
-msgid "User Interface"
-msgstr "Gebruikersomgeving"
-
-#: 
-msgid "Locale"
-msgstr "lokaal"
-
-#: 
-msgid "Override system locale"
-msgstr "Lokale instelling van systeem overschrijven"
 
 #: 
 msgid "Deleted"
@@ -7199,10 +7143,6 @@ msgid "All Types"
 msgstr "Alle typen"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "Weet u zeker dat u dit incheckverslag wilt verwijderen?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "Aanwezigheidstellincategorieën"
 
@@ -7243,10 +7183,6 @@ msgid "Create New Event"
 msgstr "Nieuw Evenement Maken"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "Maak een evenementtype om te beginnen."
-
-#: 
 msgid "Current DB Version"
 msgstr "Huidige Databaseversie"
 
@@ -7265,14 +7201,6 @@ msgstr "Standaard Starttijd"
 #: 
 msgid "Delete Event"
 msgstr "Evenement Verwijderen"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "Het verwijderen van een evenement verwijdert ook alle aanwezigheidstellingen. Dit evenement verwijderen?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "Het verwijderen van dit evenement verwijdert ook alle aanwezigheidsrecords. Weet je het zeker?"
 
 #: 
 msgid "Edit Event"
@@ -7340,10 +7268,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "Optioneel - Voeg preeknotities of aanvullende evenementdetails toe"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "Optioneel - laat leeg als je niet bijhoudt"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "Optionele notities over aanwezigheid..."
 
@@ -7374,10 +7298,6 @@ msgstr "Evenementtype Opslaan"
 #: 
 msgid "Search by name or email..."
 msgstr "Zoeken op naam of e-mail..."
-
-#: 
-msgid "Search for adult..."
-msgstr "Zoeken naar volwassene..."
 
 #: 
 msgid "Search for supervisor..."

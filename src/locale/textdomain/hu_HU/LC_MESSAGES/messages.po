@@ -279,10 +279,6 @@ msgid "Add Cart to Event"
 msgstr "Add kosárba a rendezvény"
 
 #: 
-msgid "OR"
-msgstr "VAGY"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Az Ön kosara üres!"
 
@@ -406,10 +402,6 @@ msgstr "Igen"
 #: 
 msgid "No"
 msgstr "Nincs"
-
-#: 
-msgid "Event Checkin"
-msgstr "Event Checkin"
 
 #: 
 msgid "Select Event"
@@ -673,10 +665,6 @@ msgid "Church Event Editor"
 msgstr "Church Esemény szerkesztő"
 
 #: 
-msgid "Edit Event Types"
-msgstr "Szerkesztése Esemény típusok"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Szerkesztése Esemény típusa"
 
@@ -746,20 +734,8 @@ msgid "Create a new Event"
 msgstr "Új esemény létrehozása"
 
 #: 
-msgid " errors. Please see below"
-msgstr "hibák. Kérjük, olvassa el az alábbi"
-
-#: 
 msgid "Select your event type"
 msgstr "Válassza ki az esemény típusát"
-
-#: 
-msgid "You must pick an event type."
-msgstr "Választania kell egy eseménytípust."
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "Nem számít Részvétel rögzített"
 
 #: 
 #, fuzzy
@@ -2986,10 +2962,6 @@ msgid "Date Entered"
 msgstr "Rögzítés dátuma"
 
 #: 
-msgid "There were "
-msgstr "Volt összesen "
-
-#: 
 msgid "Inactive"
 msgstr "Inaktív"
 
@@ -4928,14 +4900,6 @@ msgid "Select event"
 msgstr "Válasszon eseményt"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "A személy már bejelentkezett erre az eseményre"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "Felnőtt, aki kijelentkezteti a személyt"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Név előtti szöveg e-mailekben/jelentésekben"
 
@@ -5491,10 +5455,6 @@ msgid "Sign out"
 msgstr "Kijelentkezés"
 
 #: 
-msgid "Sermon Text"
-msgstr "Prédikáció szövege"
-
-#: 
 msgid "Change Settings"
 msgstr "Beállítások módosítása"
 
@@ -6006,10 +5966,6 @@ msgstr "Adatbázis visszaállítási funkciók"
 msgid "Reset Database"
 msgstr "Adatbázis visszaállítása"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "Ez visszaállítja a rendszer adatait, és új telepítésként indítja újra a rendszert."
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6212,18 +6168,6 @@ msgstr "Ellenőrzés"
 #: 
 msgid "Family has no emails to use"
 msgstr "A család nem rendelkezik e-mailekhez"
-
-#: 
-msgid "User Interface"
-msgstr "Felhasználói felület"
-
-#: 
-msgid "Locale"
-msgstr "Terület"
-
-#: 
-msgid "Override system locale"
-msgstr "Rendszer-terület felülbírálása"
 
 #: 
 msgid "Deleted"
@@ -7294,10 +7238,6 @@ msgid "All Types"
 msgstr "Az Összes Típus"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "Biztosan törölni szeretné ezt az érkezési nyilvántartást?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "Részvételi Szám Kategóriák"
 
@@ -7338,10 +7278,6 @@ msgid "Create New Event"
 msgstr "Új Esemény Létrehozása"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "Az első lépéshez hozzon létre egy eseménytípust."
-
-#: 
 msgid "Current DB Version"
 msgstr "Jelenlegi Adatbázis Verzió"
 
@@ -7360,14 +7296,6 @@ msgstr "Alapértelmezett Kezdési Idő"
 #: 
 msgid "Delete Event"
 msgstr "Esemény Törlése"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "Az esemény törlése az összes részvételi számlálást is törli. Törli ezt az eseményt?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "Az esemény törlése az összes részvételi nyilvántartást is törli. Biztos vagy ebben?"
 
 #: 
 msgid "Edit Event"
@@ -7435,10 +7363,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "Opcionális - Adjon hozzá prédikációs megjegyzéseket vagy további esemény részleteket"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "Opcionális - hagyja üresen, ha nem követi nyomon"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "Opcionális megjegyzések a részvételről..."
 
@@ -7469,10 +7393,6 @@ msgstr "Eseménytípus Mentése"
 #: 
 msgid "Search by name or email..."
 msgstr "Keresés név vagy e-mail alapján..."
-
-#: 
-msgid "Search for adult..."
-msgstr "Keresés felnőtt alapján..."
 
 #: 
 msgid "Search for supervisor..."

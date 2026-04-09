@@ -278,10 +278,6 @@ msgid "Add Cart to Event"
 msgstr "เพิ่มตะกร้าไปยังกิจกรรม"
 
 #: 
-msgid "OR"
-msgstr "หรือ"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "ตะกร้าของคุณว่างเปล่า!"
 
@@ -401,10 +397,6 @@ msgstr "ใช่"
 #: 
 msgid "No"
 msgstr "ไม่"
-
-#: 
-msgid "Event Checkin"
-msgstr "เช็คอินกิจกรรม"
 
 #: 
 msgid "Select Event"
@@ -656,10 +648,6 @@ msgid "Church Event Editor"
 msgstr "ตัวแก้ไขกิจกรรมคริสตจักร"
 
 #: 
-msgid "Edit Event Types"
-msgstr "แก้ไขประเภทกิจกรรม"
-
-#: 
 msgid "Edit Event Type"
 msgstr "แก้ไขประเภทกิจกรรม"
 
@@ -729,20 +717,8 @@ msgid "Create a new Event"
 msgstr "สร้างกิจกรรมใหม่"
 
 #: 
-msgid " errors. Please see below"
-msgstr " ข้อผิดพลาด กรุณาดูด้านล่าง"
-
-#: 
 msgid "Select your event type"
 msgstr "เลือกประเภทกิจกรรมของคุณ"
-
-#: 
-msgid "You must pick an event type."
-msgstr "คุณต้องเลือกประเภทกิจกรรม"
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "ไม่มีจำนวนผู้เข้าร่วมที่บันทึก"
 
 #: 
 msgid "Event Status"
@@ -2899,10 +2875,6 @@ msgid "Date Entered"
 msgstr "วันที่ป้อน"
 
 #: 
-msgid "There were "
-msgstr "มี "
-
-#: 
 msgid "Inactive"
 msgstr "ไม่ใช้งาน"
 
@@ -4841,14 +4813,6 @@ msgid "Select event"
 msgstr "เลือกกิจกรรม"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "บุคคลได้เช็คอินสำหรับกิจกรรมนี้แล้ว"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "ผู้ใหญ่ที่เช็คเอาท์บุคคล"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "ข้อความก่อนชื่อในอีเมล/รายงาน"
 
@@ -5404,10 +5368,6 @@ msgid "Sign out"
 msgstr "ออกจากระบบ"
 
 #: 
-msgid "Sermon Text"
-msgstr "ข้อความเทศนา"
-
-#: 
 msgid "Change Settings"
 msgstr "เปลี่ยนการตั้งค่า"
 
@@ -5917,10 +5877,6 @@ msgstr "ฟังก์ชันรีเซ็ตฐานข้อมูล"
 msgid "Reset Database"
 msgstr "รีเซ็ตฐานข้อมูล"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "การดำเนินการนี้จะรีเซ็ตข้อมูลระบบและจะรีสตาร์ทระบบเป็นการติดตั้งใหม่"
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6123,18 +6079,6 @@ msgstr "ยืนยัน"
 #: 
 msgid "Family has no emails to use"
 msgstr "ครอบครัวไม่มีอีเมลให้ใช้"
-
-#: 
-msgid "User Interface"
-msgstr "ส่วนติดต่อผู้ใช้"
-
-#: 
-msgid "Locale"
-msgstr "ภาษา"
-
-#: 
-msgid "Override system locale"
-msgstr "แทนที่ภาษาระบบ"
 
 #: 
 msgid "Deleted"
@@ -7204,10 +7148,6 @@ msgid "All Types"
 msgstr "ประเภททั้งหมด"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบระเบียนการเช็คอินนี้?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "หมวดหมู่การนับจำนวนผู้เข้าร่วม"
 
@@ -7248,10 +7188,6 @@ msgid "Create New Event"
 msgstr "สร้างกิจกรรมใหม่"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "สร้างประเภทกิจกรรมเพื่อเริ่มต้น"
-
-#: 
 msgid "Current DB Version"
 msgstr "เวอร์ชันฐานข้อมูลปัจจุบัน"
 
@@ -7270,14 +7206,6 @@ msgstr "เวลาเริ่มต้นเริ่มต้น"
 #: 
 msgid "Delete Event"
 msgstr "ลบกิจกรรม"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "การลบกิจกรรมจะลบการนับผู้เข้าร่วมทั้งหมดด้วย ลบกิจกรรมนี้?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "การลบกิจกรรมนี้จะลบระเบียนการเข้าร่วมทั้งหมดด้วย คุณแน่ใจหรือไม่?"
 
 #: 
 msgid "Edit Event"
@@ -7345,10 +7273,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "ทางเลือก - เพิ่มบันทึกเทศนาหรือรายละเอียดกิจกรรมเพิ่มเติม"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "ทางเลือก - เว้นว่างหากไม่ติดตาม"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "บันทึกทางเลือกเกี่ยวกับการเข้าร่วม..."
 
@@ -7379,10 +7303,6 @@ msgstr "บันทึกประเภทกิจกรรม"
 #: 
 msgid "Search by name or email..."
 msgstr "ค้นหาตามชื่อหรืออีเมล..."
-
-#: 
-msgid "Search for adult..."
-msgstr "ค้นหาผู้ใหญ่..."
 
 #: 
 msgid "Search for supervisor..."

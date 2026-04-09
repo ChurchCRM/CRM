@@ -268,10 +268,6 @@ msgid "Add Cart to Event"
 msgstr "Añadir carrito al evento"
 
 #: 
-msgid "OR"
-msgstr "O"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "¡Su carrito está vacío!"
 
@@ -391,10 +387,6 @@ msgstr "Sí"
 #: 
 msgid "No"
 msgstr "No"
-
-#: 
-msgid "Event Checkin"
-msgstr "Registro de evento"
 
 #: 
 msgid "Select Event"
@@ -646,10 +638,6 @@ msgid "Church Event Editor"
 msgstr "Editor de eventos de iglesia"
 
 #: 
-msgid "Edit Event Types"
-msgstr "Editor tipos de eventos"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Editar Tipo de evento"
 
@@ -719,20 +707,8 @@ msgid "Create a new Event"
 msgstr "Crear un nuevo evento"
 
 #: 
-msgid " errors. Please see below"
-msgstr " errores. Vea a continuación"
-
-#: 
 msgid "Select your event type"
 msgstr "Seleccionar su tipo de evento"
-
-#: 
-msgid "You must pick an event type."
-msgstr "Debe elegir un tipo de evento"
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "no se han grabado registros de asistencia"
 
 #: 
 msgid "Event Status"
@@ -2889,10 +2865,6 @@ msgid "Date Entered"
 msgstr "Fecha de entrada"
 
 #: 
-msgid "There were "
-msgstr "Hubieron "
-
-#: 
 msgid "Inactive"
 msgstr "Inactivo"
 
@@ -4831,14 +4803,6 @@ msgid "Select event"
 msgstr "Seleccionar evento"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "La persona ya ingresó a este evento"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "Adulto Registrando Salida de persona"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Texto antes del nombre en correo electrónicos/reportes"
 
@@ -5394,10 +5358,6 @@ msgid "Sign out"
 msgstr "Cerrar sesión"
 
 #: 
-msgid "Sermon Text"
-msgstr "Texto de Sermón"
-
-#: 
 msgid "Change Settings"
 msgstr "Cambiar ajustes"
 
@@ -5911,10 +5871,6 @@ msgstr "Funciones de restablecimiento de base de datos"
 msgid "Reset Database"
 msgstr "Restablecer base de datos"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "Esto restablecerá los datos del sistema y lo reiniciará como una nueva instalación."
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6117,18 +6073,6 @@ msgstr "Verificar"
 #: 
 msgid "Family has no emails to use"
 msgstr "La familia no tiene correo electrónicos para usar"
-
-#: 
-msgid "User Interface"
-msgstr "Interfaz de usuario"
-
-#: 
-msgid "Locale"
-msgstr "Localización"
-
-#: 
-msgid "Override system locale"
-msgstr "Sobrescribir localización de sistema"
 
 #: 
 msgid "Deleted"
@@ -7201,10 +7145,6 @@ msgid "All Types"
 msgstr "Todos los tipos"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "¿Está seguro que desea eliminar este registro de check-in?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "Categorías de recuento de asistencia"
 
@@ -7245,10 +7185,6 @@ msgid "Create New Event"
 msgstr "Crear nuevo evento"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "Crea un tipo de evento para comenzar."
-
-#: 
 msgid "Current DB Version"
 msgstr "Versión actual de la base de datos"
 
@@ -7267,14 +7203,6 @@ msgstr "Hora de inicio predeterminada"
 #: 
 msgid "Delete Event"
 msgstr "Eliminar evento"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "Al eliminar un evento, también se eliminarán todos los registros de asistencia. ¿Eliminar este evento?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "Al eliminar este evento, también se eliminarán todos los registros de asistencia. ¿Estás seguro?"
 
 #: 
 msgid "Edit Event"
@@ -7342,10 +7270,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "Opcional: agregue notas del sermón o detalles adicionales del evento"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "Opcional: déjelo en blanco si no realiza seguimiento"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "Notas opcionales sobre la asistencia..."
 
@@ -7376,10 +7300,6 @@ msgstr "Guardar tipo de evento"
 #: 
 msgid "Search by name or email..."
 msgstr "Buscar por nombre o email..."
-
-#: 
-msgid "Search for adult..."
-msgstr "Buscar adulto..."
 
 #: 
 msgid "Search for supervisor..."

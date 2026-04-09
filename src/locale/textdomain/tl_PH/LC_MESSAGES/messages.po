@@ -266,10 +266,6 @@ msgid "Add Cart to Event"
 msgstr "Idagdag ang Cart sa Kaganapan"
 
 #: 
-msgid "OR"
-msgstr "O"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Ang iyong cart ay walang laman!"
 
@@ -389,10 +385,6 @@ msgstr "Oo"
 #: 
 msgid "No"
 msgstr "Hindi"
-
-#: 
-msgid "Event Checkin"
-msgstr "Pagpasok sa Kaganapan"
 
 #: 
 msgid "Select Event"
@@ -644,10 +636,6 @@ msgid "Church Event Editor"
 msgstr "Editor ng Kaganapan ng Simbahan"
 
 #: 
-msgid "Edit Event Types"
-msgstr "I-edit ang mga Uri ng Kaganapan"
-
-#: 
 msgid "Edit Event Type"
 msgstr "I-edit ang Uri ng Kaganapan"
 
@@ -717,20 +705,8 @@ msgid "Create a new Event"
 msgstr "Lumikha ng bagong Kaganapan"
 
 #: 
-msgid " errors. Please see below"
-msgstr " mga pagkakamali. Pakitingnan sa ibaba"
-
-#: 
 msgid "Select your event type"
 msgstr "Piliin ang iyong uri ng kaganapan"
-
-#: 
-msgid "You must pick an event type."
-msgstr "Kailangan mong pumili ng uri ng kaganapan."
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "Walang naitalang bilang ng presensya"
 
 #: 
 msgid "Event Status"
@@ -2863,10 +2839,6 @@ msgid "Date Entered"
 msgstr "Petsa ng Pagpasok"
 
 #: 
-msgid "There were "
-msgstr "Mayroon "
-
-#: 
 msgid "Inactive"
 msgstr "Hindi Aktibo"
 
@@ -4801,14 +4773,6 @@ msgid "Select event"
 msgstr "Pumili ng kaganapan"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "Ang tao ay naka-check in na para sa kaganapang ito"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "Matandang Nag-che-check out ng Tao"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Teksto bago ang pangalan sa mga email/ulat"
 
@@ -5364,10 +5328,6 @@ msgid "Sign out"
 msgstr "Mag-sign out"
 
 #: 
-msgid "Sermon Text"
-msgstr "Teksto ng Sermon"
-
-#: 
 msgid "Change Settings"
 msgstr "Baguhin ang mga Setting"
 
@@ -5879,10 +5839,6 @@ msgstr "Mga Tungkulin ng Pag-reset ng Database"
 msgid "Reset Database"
 msgstr "I-reset ang Database"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "Ire-reset nito ang datos ng sistema at ipapalabas muli ang sistema bilang bagong install."
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6085,18 +6041,6 @@ msgstr "I-verify"
 #: 
 msgid "Family has no emails to use"
 msgstr "Ang pamilya ay walang mga email na magagamit"
-
-#: 
-msgid "User Interface"
-msgstr "Interface ng User"
-
-#: 
-msgid "Locale"
-msgstr "Lokasyon"
-
-#: 
-msgid "Override system locale"
-msgstr "I-override ang locale ng sistema"
 
 #: 
 msgid "Deleted"
@@ -7167,10 +7111,6 @@ msgid "All Types"
 msgstr "Lahat ng Uri"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "Sigurado ka bang gusto mong burahin ang rekord ng check-in na ito?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "Mga Kategorya ng Bilang ng Presensya"
 
@@ -7211,10 +7151,6 @@ msgid "Create New Event"
 msgstr "Lumikha ng Bagong Kaganapan"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "Lumikha ng uri ng kaganapan para magsimula."
-
-#: 
 msgid "Current DB Version"
 msgstr "Kasalukuyang Bersyon ng DB"
 
@@ -7233,14 +7169,6 @@ msgstr "Default na Oras ng Simula"
 #: 
 msgid "Delete Event"
 msgstr "Burahin ang Kaganapan"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "Ang pagbubura ng kaganapan ay magbubura rin ng lahat ng bilang ng presensya. Burahin ang kaganapang ito?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "Ang pagbubura ng kaganapang ito ay magbubura rin ng lahat ng mga rekord ng presensya. Sigurado ka?"
 
 #: 
 msgid "Edit Event"
@@ -7308,10 +7236,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "Opsyonal - Magdagdag ng mga tala ng sermon o karagdagang detalye ng kaganapan"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "Opsyonal - iwanang blangko kung hindi sinusubaybayan"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "Mga opsyonal na tala tungkol sa presensya..."
 
@@ -7342,10 +7266,6 @@ msgstr "I-save ang Uri ng Kaganapan"
 #: 
 msgid "Search by name or email..."
 msgstr "Maghanap ayon sa pangalan o email..."
-
-#: 
-msgid "Search for adult..."
-msgstr "Maghanap ng matanda..."
 
 #: 
 msgid "Search for supervisor..."

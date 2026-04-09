@@ -277,10 +277,6 @@ msgid "Add Cart to Event"
 msgstr "Добавить в корзину меропритие"
 
 #: 
-msgid "OR"
-msgstr "ИЛИ"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Ваша корзина пуста!"
 
@@ -404,10 +400,6 @@ msgstr "Да "
 #: 
 msgid "No"
 msgstr "Нет"
-
-#: 
-msgid "Event Checkin"
-msgstr "Чек-ин мероприятия"
 
 #: 
 msgid "Select Event"
@@ -672,10 +664,6 @@ msgid "Church Event Editor"
 msgstr "Редактор Церковных мероприятий"
 
 #: 
-msgid "Edit Event Types"
-msgstr "Изменить тип мероприятия"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Редактировать тип мероприятия"
 
@@ -746,20 +734,8 @@ msgid "Create a new Event"
 msgstr "Создать новое мероприятие"
 
 #: 
-msgid " errors. Please see below"
-msgstr " Ошибки. Пожалуйста, смотрите ниже"
-
-#: 
 msgid "Select your event type"
 msgstr "Выберите тип вашего мероприятия"
-
-#: 
-msgid "You must pick an event type."
-msgstr "Вы должны выбрать тип мероприятия."
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "Нет посещений счету не записаны"
 
 #: 
 #, fuzzy
@@ -2993,10 +2969,6 @@ msgid "Date Entered"
 msgstr "Дата членства"
 
 #: 
-msgid "There were "
-msgstr "Были"
-
-#: 
 msgid "Inactive"
 msgstr "Неактивный"
 
@@ -4938,14 +4910,6 @@ msgid "Select event"
 msgstr "Выберите мероприятие"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "Человек уже зарегистрирован на это мероприятие"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "Взрослый, отмечающий уход"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Текст перед именем в письмах/отчетах"
 
@@ -5501,10 +5465,6 @@ msgid "Sign out"
 msgstr "Выйти"
 
 #: 
-msgid "Sermon Text"
-msgstr "Текст проповеди"
-
-#: 
 msgid "Change Settings"
 msgstr "Изменить настройки"
 
@@ -6020,10 +5980,6 @@ msgstr "Функции сброса базы данных"
 msgid "Reset Database"
 msgstr "Сбросить базу данных"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "Это приведет к сбросу системных данных и перезапуску системы как новую установку."
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6227,18 +6183,6 @@ msgstr "Проверить"
 #: 
 msgid "Family has no emails to use"
 msgstr "У семьи нет адресов электронной почты"
-
-#: 
-msgid "User Interface"
-msgstr "Пользовательский интерфейс"
-
-#: 
-msgid "Locale"
-msgstr "Локаль"
-
-#: 
-msgid "Override system locale"
-msgstr "Переопределить системную локаль"
 
 #: 
 msgid "Deleted"
@@ -7311,10 +7255,6 @@ msgid "All Types"
 msgstr "Все типы"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "Удалить запись о регистрации?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "Категории подсчета посещаемости"
 
@@ -7355,10 +7295,6 @@ msgid "Create New Event"
 msgstr "Создать новое событие"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "Создайте тип события, чтобы начать."
-
-#: 
 msgid "Current DB Version"
 msgstr "Текущая версия БД"
 
@@ -7377,14 +7313,6 @@ msgstr "Время начала по умолчанию"
 #: 
 msgid "Delete Event"
 msgstr "Удалить событие"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "Удаление события удалит данные о посещаемости. Удалить?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "Вы уверены? Все записи посещаемости будут удалены."
 
 #: 
 msgid "Edit Event"
@@ -7452,10 +7380,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "Опционально — добавьте заметки или детали"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "Опционально — оставьте пустым, если не отслеживаете"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "Опциональные заметки о посещаемости..."
 
@@ -7486,10 +7410,6 @@ msgstr "Сохранить тип события"
 #: 
 msgid "Search by name or email..."
 msgstr "Поиск по имени или почте..."
-
-#: 
-msgid "Search for adult..."
-msgstr "Поиск взрослого..."
 
 #: 
 msgid "Search for supervisor..."
