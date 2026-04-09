@@ -829,7 +829,7 @@ require_once __DIR__ . '/Include/Header.php';
                                                     <input name="LastName<?= $iCount ?>" type="text" value="<?= $aLastNames[$iCount] ?>" class="form-control form-control-sm">
                                                 </td>
                                                 <td>
-                                                    <input name="Suffix<?= $iCount ?>" type="text" value="<?= $aSuffix[$iCount] ?>" class="form-control form-control-sm" style="width: 60px;">
+                                                    <input name="Suffix<?= $iCount ?>" type="text" value="<?= $aSuffix[$iCount] ?>" class="form-control form-control-sm" maxlength="6">
                                                 </td>
                                                 <td>
                                                     <select name="Gender<?= $iCount ?>" class="form-select form-select-sm">
@@ -882,7 +882,7 @@ require_once __DIR__ . '/Include/Header.php';
                                                 <td>
                                                     <?php if (!array_key_exists($iCount, $aperFlags) || !$aperFlags[$iCount]) {
                                                         $UpdateBirthYear = 1; ?>
-                                                        <input name="BirthYear<?= $iCount ?>" type="text" value="<?= $aBirthYears[$iCount] ?>" class="form-control form-control-sm" style="width: 70px;" maxlength="4">
+                                                        <input name="BirthYear<?= $iCount ?>" type="text" value="<?= $aBirthYears[$iCount] ?>" class="form-control form-control-sm" maxlength="4">
                                                         <?php if (array_key_exists($iCount, $aBirthDateError)) { ?>
                                                         <span class="text-danger small"><?= $aBirthDateError[$iCount] ?></span>
                                                         <?php }
