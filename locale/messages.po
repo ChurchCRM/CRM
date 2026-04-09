@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-07 20:54+0000\n"
+"POT-Creation-Date: 2026-04-08 05:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -683,13 +683,25 @@ msgstr ""
 msgid "All donations from this family have been moved to another family."
 msgstr ""
 
+msgid "All events and attendance records"
+msgstr ""
+
+msgid "All financial data (pledges, payments, deposits)"
+msgstr ""
+
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
+msgstr ""
+
+msgid "All groups, roles, and memberships"
 msgstr ""
 
 msgid "All information is correct"
 msgstr ""
 
 msgid "All members already in cart"
+msgstr ""
+
+msgid "All people and family records"
 msgstr ""
 
 msgid "All rights reserved"
@@ -704,7 +716,13 @@ msgstr ""
 msgid "All system files have passed integrity validation."
 msgstr ""
 
+msgid "All system settings and custom fields"
+msgstr ""
+
 msgid "All timezones match"
+msgstr ""
+
+msgid "All uploaded photos and documents"
 msgstr ""
 
 msgid "Allow Pre-release Upgrades"
@@ -1188,10 +1206,16 @@ msgstr ""
 msgid "Backup failed. Please try again."
 msgstr ""
 
+msgid "Backup failed. You can still proceed with the reset, but your data will be lost."
+msgstr ""
+
 msgid "Backup generated and copied to remote server"
 msgstr ""
 
 msgid "Backup in progress, please wait..."
+msgstr ""
+
+msgid "Backup ready!"
 msgstr ""
 
 msgid "Backup to External Storage Now"
@@ -1254,6 +1278,9 @@ msgid ""
 "- 401/403 errors: Check username and password\n"
 "- Connection timeout: Verify the endpoint URL is correct\n"
 "- Certificate errors: Ensure the WebDAV server has a valid SSL certificate"
+msgstr ""
+
+msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
 msgstr ""
 
 #. Context: queryparameters_qrp
@@ -2349,6 +2376,9 @@ msgstr ""
 msgid "Creating Backup..."
 msgstr ""
 
+msgid "Creating backup..."
+msgstr ""
+
 msgid "Credit Card"
 msgstr ""
 
@@ -2505,6 +2535,9 @@ msgstr ""
 msgid "Data/Reports"
 msgstr ""
 
+msgid "Database + uploaded photos (larger)"
+msgstr ""
+
 msgid "Database Backup"
 msgstr ""
 
@@ -2527,6 +2560,9 @@ msgid "Database Upgrade Failed"
 msgstr ""
 
 msgid "Database Version"
+msgstr ""
+
+msgid "Database dump only (.sql)"
 msgstr ""
 
 msgid "Database information confirmation and correction report signer"
@@ -2840,6 +2876,9 @@ msgid "Description"
 msgstr ""
 
 msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
+msgstr ""
+
+msgid "Destructive Operation"
 msgstr ""
 
 msgid "Detailed breakdown of a single deposit slip."
@@ -7828,6 +7867,9 @@ msgstr ""
 msgid "Recipient Naming Method"
 msgstr ""
 
+msgid "Recommended"
+msgstr ""
+
 msgid "Recommended Order"
 msgstr ""
 
@@ -8039,6 +8081,9 @@ msgstr ""
 msgid "Reset your password"
 msgstr ""
 
+msgid "Resetting will permanently delete:"
+msgstr ""
+
 msgid "Restore"
 msgstr ""
 
@@ -8230,6 +8275,9 @@ msgid "SMTP Username"
 msgstr ""
 
 msgid "SMTP server for sending emails"
+msgstr ""
+
+msgid "SQL Only"
 msgstr ""
 
 msgid "SSE"
@@ -8967,7 +9015,13 @@ msgstr ""
 msgid "Step 1 — Upload CSV File"
 msgstr ""
 
+msgid "Step 1: Create a Backup"
+msgstr ""
+
 msgid "Step 2 — Map Columns"
+msgstr ""
+
+msgid "Step 2: Reset Database"
 msgstr ""
 
 msgid "Street"
@@ -9450,6 +9504,9 @@ msgstr ""
 msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
 msgstr ""
 
+msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr ""
+
 msgid "This plugin does not support connection testing."
 msgstr ""
 
@@ -9502,9 +9559,6 @@ msgid "This will remove it from all people currently assigned to it."
 msgstr ""
 
 msgid "This will replace any previously enrolled 2FA methods"
-msgstr ""
-
-msgid "This will reset the system data and will restart the system as a new install."
 msgstr ""
 
 msgid "Thursdays"
@@ -9784,6 +9838,9 @@ msgid "Two-factor authentication is one of the best ways to protect your account
 msgstr ""
 
 msgid "Type"
+msgstr ""
+
+msgid "Type RESET to confirm"
 msgstr ""
 
 msgid "Type of Group"
@@ -11155,6 +11212,9 @@ msgid "their classroom"
 msgstr ""
 
 msgid "to another group?"
+msgstr ""
+
+msgid "to enable the reset button"
 msgstr ""
 
 msgid "total"
