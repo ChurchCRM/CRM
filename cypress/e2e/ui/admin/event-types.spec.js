@@ -70,7 +70,11 @@ describe('Event Type Management', () => {
         cy.contains('button', 'Save Event Type').click();
 
         cy.url().should('include', '/event/types');
-        cy.contains(noon).should('exist');
+        // Wait for the DataTable to finish rendering before checking content.
+        // The table loads via server-side rendering on redirect, but the
+        // DataTable JS init can take a beat on slower CI runners.
+        cy.get('#eventTypesTable tbody tr', { timeout: 10000 }).should('have.length.at.least', 1);
+        cy.contains(noon, { timeout: 10000 }).should('exist');
         cy.contains('12:00 PM').should('exist');
     });
 

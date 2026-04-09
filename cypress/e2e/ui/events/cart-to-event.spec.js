@@ -24,37 +24,28 @@ describe("Cart to Event (MVC)", () => {
             const expectedEventId = createResp.body.eventId;
             expect(expectedEventId, "quick-create returned an eventId").to.be.a("number");
 
-            // Step 2 — re-establish the browser session and visit a page so we
-            // have a real PHP session cookie set in the browser.
+            // Step 2 — re-establish the browser session. The /api/ and /event/
+            // entry points may run on different PHP session paths, so we add to
+            // the cart from within the browser (not via cy.request to /api/cart/).
+            // Visit a person page and click the "Add to Cart" button to guarantee
+            // the cart is populated in the SAME session as the /event/ module.
             cy.setupAdminSession({ forceLogin: true });
+            cy.visit("PersonView.php?PersonID=3");
+            cy.get(".AddToCart[data-cart-id='3']", { timeout: 10000 }).first().click();
+
+            // Step 3 — navigate to cart-to-event. "Check In to Event" only
+            // renders when the cart is non-empty, so this also verifies the
+            // cart was populated.
             cy.visit("event/cart-to-event");
+            cy.contains("Check In to Event");
 
-            // Step 3 — populate the cart via cy.request, which sends the
-            // browser's session cookies (sticky session). We must wait for it
-            // to complete before reloading the page, otherwise the cart-to-event
-            // GET will see an empty cart.
-            cy.request({
-                method: "POST",
-                url: "/api/cart/",
-                body: { Persons: [3] },
-                headers: { "Content-Type": "application/json" },
-            }).then((cartResp) => {
-                expect(cartResp.status).to.eq(200);
+            // Step 4 — select the event and submit.
+            cy.get(`#EventID option[value="${expectedEventId}"]`).should("exist");
+            cy.get("#EventID").select(String(expectedEventId));
+            cy.get('button[name="Submit"]').click();
 
-                // Step 4 — reload so the page re-fetches the (now non-empty) cart.
-                cy.visit("event/cart-to-event");
-                cy.contains("Check In to Event");
-
-                // Step 5 — verify the event we created shows up in the dropdown
-                // and select it explicitly by id.
-                cy.get(`#EventID option[value="${expectedEventId}"]`).should("exist");
-                cy.get("#EventID").select(String(expectedEventId));
-
-                // Step 6 — submit and verify the redirect lands on the
-                // check-in page for the event we created.
-                cy.get('button[name="Submit"]').click();
-                cy.url().should("include", `/event/checkin/${expectedEventId}`);
-            });
+            // Step 5 — verify redirect.
+            cy.url().should("include", `/event/checkin/${expectedEventId}`);
         });
     });
 });
