@@ -638,6 +638,17 @@ TomSelect hides options with `value=""` (treats them as placeholder/clear state)
 
 When TomSelect is inside a card with `table-responsive` or constrained overflow, dropdowns get clipped. Fix: pass `dropdownParent: 'body'` to TomSelect init and add a `body > .ts-dropdown` SCSS rule in `_tabler-bridge.scss` to preserve Tabler styling.
 
+### Reading TomSelect values: never use jQuery `option:selected` <!-- learned: 2026-04-09 -->
+
+TomSelect does **not** reliably mirror its current selection back onto the underlying `<option selected>` attribute — `$("#mySelect option:selected").val()` may return `undefined` even when the user has clearly picked an item. Always read the value via the TomSelect instance API:
+
+```js
+const el = document.getElementById("targetRoleSelection");
+const value = el.tomselect ? el.tomselect.getValue() : window.jQuery(el).val();
+```
+
+This bit `promptSelection` in `CRMJSOM.js` (issue #8570 — "Cart empty to group" sent `groupID` only because `RoleID` was undefined and `JSON.stringify` silently dropped it, yielding a confusing `Invalid request data` 400). When forwarding select values into a payload, **also validate before sending** — `JSON.stringify({ a: undefined })` becomes `"{}"`, so missing values become silent server-side errors.
+
 ### marked.parse() XSS Prevention <!-- learned: 2026-03-30 -->
 
 When rendering user-supplied markdown (e.g., GitHub release notes) with `marked`, strip raw HTML to prevent XSS:
