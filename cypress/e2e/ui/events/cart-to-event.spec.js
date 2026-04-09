@@ -24,18 +24,18 @@ describe("Cart to Event (MVC)", () => {
             const expectedEventId = createResp.body.eventId;
             expect(expectedEventId, "quick-create returned an eventId").to.be.a("number");
 
-            // Step 2 — re-establish the browser session. The /api/ and /event/
-            // entry points may run on different PHP session paths, so we add to
-            // the cart from within the browser (not via cy.request to /api/cart/).
-            // Visit a person page and click the "Add to Cart" button to guarantee
-            // the cart is populated in the SAME session as the /event/ module.
+            // Step 2 — re-establish the browser session and add a person to the
+            // cart via the UI. Intercept the AJAX POST to /api/cart/ so we can
+            // wait for it to complete before navigating away.
             cy.setupAdminSession({ forceLogin: true });
+            cy.intercept("POST", "**/api/cart/").as("addToCart");
             cy.visit("PersonView.php?PersonID=3");
             cy.get(".AddToCart[data-cart-id='3']", { timeout: 10000 }).first().click();
+            cy.wait("@addToCart").its("response.statusCode").should("eq", 200);
 
             // Step 3 — navigate to cart-to-event. "Check In to Event" only
             // renders when the cart is non-empty, so this also verifies the
-            // cart was populated.
+            // cart was populated in the same session.
             cy.visit("event/cart-to-event");
             cy.contains("Check In to Event");
 
