@@ -97,12 +97,26 @@ codebase:
 ### Stat cards row <!-- learned: 2026-04-09 -->
 
 The project standard is **`col-6 col-lg-3`** for 4 stat cards, or **`col-6 col-lg`**
-(auto-equal) for 5+ stat cards. This gives 2-up on mobile, 4-up on laptop.
+(auto-equal) for 5+ stat cards.
+
+> **Heads-up on the breakpoint vs the form-factor model:** Bootstrap's `lg`
+> breakpoint activates at **992px**, which sits *inside* the Tablet form
+> factor (768–1199.98px) defined above — it is not the same as the 1200px
+> Laptop boundary. So `col-6 col-lg-3` actually goes:
+> - **2-up** on Mobile and narrow Tablet (`< 992px`)
+> - **4-up** from wide Tablet through Laptop/Desktop (`≥ 992px`)
+>
+> This is intentional — by 992px there's enough width for 4 stat cards to
+> breathe, so we let them flow before the 1200px sidebar transition. If you
+> truly need to gate 4-up on the 1200px sidebar threshold, use `col-xl-3`
+> instead. Do **not** describe `col-lg-*` as "laptop and up" in narrative
+> text — it switches at 992px (wide tablet), not 1200px.
+
 **Do not use `col-sm-6`** — it stacks to one-up below 576px, which PR #8524
 explicitly rejected because 2-up looks better on 375px phones.
 
 ```html
-<!-- ✅ CORRECT — 4 stat cards, 2×2 on mobile, 2×2 on tablet, 1×4 on laptop -->
+<!-- ✅ CORRECT — 4 stat cards: 2-up below lg (992px), 4-up at lg and above -->
 <div class="row mb-3">
     <div class="col-6 col-lg-3">
         <div class="card card-sm">
@@ -211,9 +225,14 @@ Does the table have per-row action dropdowns?
 </div>
 ```
 
-DataTables-generated tables (`$('#groupsTable').DataTable(...)`) also need a
-wrapper — DataTables' built-in responsive plugin is not enabled by default in
-this codebase.
+DataTables-generated tables (`$('#groupsTable').DataTable(...)`) should also
+sit inside the same wrapper rules (`overflow: visible` for action-menu rows,
+`.table-responsive` otherwise). The global config in
+[`src/Include/Header.php:136`](../../../src/Include/Header.php#L136) sets
+`window.CRM.plugin.dataTable.responsive = true`, so the responsive plugin is
+enabled by default — but `.table-responsive` (or the `overflow: visible`
+escape hatch) is still required to protect the *card layout* from
+extra-wide content the responsive plugin can't collapse.
 
 ### Tab labels: show/hide by form factor
 

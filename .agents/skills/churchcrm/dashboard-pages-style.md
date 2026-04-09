@@ -43,13 +43,16 @@ Stat cards display quick metrics using a consistent card pattern. Each card must
 ### Column Grid <!-- updated: 2026-04-09 -->
 
 **Mobile-first responsive sizing.** The canonical stat-card grid is
-`col-6 col-lg-3` — two columns on every size below laptop, four columns on
-laptop and up. See `responsive-design-guidelines.md` for the full form-factor
-reference.
+`col-6 col-lg-3` — two columns below Bootstrap `lg` (`<992px`), four columns
+at `lg` and above (`≥992px`). Note that `lg` activates at **992px**, which
+is *inside* the Tablet form factor (768–1199.98px), not at the 1200px
+Laptop boundary. See `responsive-design-guidelines.md` for the full
+form-factor reference and the rationale for letting 4-up start before the
+1200px sidebar transition.
 
 ```html
 <div class="row mb-3">
-    <!-- Primary metric: 2 columns on mobile/tablet, 4 columns on lg+ -->
+    <!-- Primary metric: 2-up below 992px, 4-up from lg (992px) and above -->
     <div class="col-6 col-lg-3">
         <!-- card content -->
     </div>
