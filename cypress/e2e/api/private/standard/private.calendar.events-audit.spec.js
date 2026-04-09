@@ -54,55 +54,44 @@ describe("API Event Audit Endpoints", () => {
         });
 
         it("closes a stuck event end-to-end (create → check in → audit → close)", () => {
-            // 1. Find an event type. /api/events/types returns a Propel
-            // ObjectCollection serialized as an OBJECT keyed by index — not a
-            // true JS array. Normalize via Object.values() before reading [0].
-            cy.makePrivateAdminAPICall("GET", "/api/events/types", null, 200).then((typesResp) => {
-                const types = Array.isArray(typesResp.body)
-                    ? typesResp.body
-                    : Object.values(typesResp.body);
-                expect(types.length, "at least one event type must be seeded").to.be.greaterThan(0);
-                expect(types[0]).to.have.property("Id");
-                const eventTypeId = types[0].Id;
+            // 1. Quick-create a fresh past-dated event using the seeded
+            // "Church Service" type (id 1), the same way the other passing
+            // event API specs do.
+            const past = new Date(Date.now() - 24 * 60 * 60 * 1000); // 24h ago
+            const yyyy = past.getFullYear();
+            const mm = String(past.getMonth() + 1).padStart(2, "0");
+            const dd = String(past.getDate()).padStart(2, "0");
 
-                // 2. Create a fresh event in the past
-                const past = new Date(Date.now() - 24 * 60 * 60 * 1000); // 24h ago
-                const yyyy = past.getFullYear();
-                const mm = String(past.getMonth() + 1).padStart(2, "0");
-                const dd = String(past.getDate()).padStart(2, "0");
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/events/quick-create",
+                { eventTypeId: 1, date: `${yyyy}-${mm}-${dd}` },
+                200,
+            ).then((createResp) => {
+                const eventId = createResp.body.eventId;
+                expect(eventId).to.be.a("number");
 
+                // 2. Check person 1 in (no checkout). The event is active by
+                // default so the inactive guard does NOT apply.
                 cy.makePrivateAdminAPICall(
                     "POST",
-                    "/api/events/quick-create",
-                    { eventTypeId, date: `${yyyy}-${mm}-${dd}` },
+                    `/api/events/${eventId}/checkin`,
+                    { personId: 1 },
                     200,
-                ).then((createResp) => {
-                    const eventId = createResp.body.eventId;
-                    expect(eventId).to.be.a("number");
+                );
 
-                    // 3. Check person 1 in (no checkout). The event is in the
-                    // past so the inactive guard does NOT apply (the event is
-                    // still active by default), so this must succeed with 200.
-                    cy.makePrivateAdminAPICall(
-                        "POST",
-                        `/api/events/${eventId}/checkin`,
-                        { personId: 1 },
-                        200,
-                    );
-
-                    // 4. Close it via the audit endpoint
-                    cy.makePrivateAdminAPICall(
-                        "POST",
-                        "/api/events/audit/close",
-                        { eventIds: [eventId], checkoutPeople: true, deactivate: true },
-                        200,
-                    ).then((closeResp) => {
-                        expect(closeResp.body).to.have.property("success", true);
-                        expect(closeResp.body).to.have.property("eventsClosed");
-                        expect(closeResp.body).to.have.property("peopleCheckedOut");
-                        expect(closeResp.body.eventsClosed).to.be.greaterThan(0);
-                        expect(closeResp.body.peopleCheckedOut).to.be.greaterThan(0);
-                    });
+                // 3. Close it via the audit endpoint
+                cy.makePrivateAdminAPICall(
+                    "POST",
+                    "/api/events/audit/close",
+                    { eventIds: [eventId], checkoutPeople: true, deactivate: true },
+                    200,
+                ).then((closeResp) => {
+                    expect(closeResp.body).to.have.property("success", true);
+                    expect(closeResp.body).to.have.property("eventsClosed");
+                    expect(closeResp.body).to.have.property("peopleCheckedOut");
+                    expect(closeResp.body.eventsClosed).to.be.greaterThan(0);
+                    expect(closeResp.body.peopleCheckedOut).to.be.greaterThan(0);
                 });
             });
         });

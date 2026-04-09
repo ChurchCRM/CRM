@@ -9,27 +9,11 @@ describe("API Repeat Events", () => {
     // (cy.makePrivateAdminAPICall sets the header for us).
 
     describe("POST /api/events/repeat", () => {
-        let eventTypeId;
-
-        before(() => {
-            // Fetch an event type to use in tests. /api/events/types returns a
-            // Propel ObjectCollection serialized as an OBJECT keyed by index
-            // ("0", "1", ...), not a true JS array — normalize via Object.values.
-            // Hard-fail (no skip) if the seed has no event types — repeat events
-            // are unusable without one.
-            cy.makePrivateAdminAPICall("GET", "/api/events/types", null, 200).then((response) => {
-                const types = Array.isArray(response.body)
-                    ? response.body
-                    : Object.values(response.body);
-                expect(types.length, "at least one event type must be seeded").to.be.greaterThan(0);
-                expect(types[0]).to.have.property("Id");
-                eventTypeId = types[0].Id;
-            });
-        });
+        // Use eventTypeId 1 (the seeded "Church Service" type) the same way
+        // the other passing event API specs do, instead of fetching it.
+        const eventTypeId = 1;
 
         it("Creates weekly repeat events and returns count and IDs", () => {
-            expect(eventTypeId, "before() must have populated eventTypeId").to.be.a("number");
-
             const today = new Date();
             const TWENTY_EIGHT_DAYS_MS = 28 * 24 * 60 * 60 * 1000;
             const startDate = today.toISOString().slice(0, 10);
@@ -62,8 +46,6 @@ describe("API Repeat Events", () => {
         });
 
         it("Creates monthly repeat events", () => {
-            expect(eventTypeId, "before() must have populated eventTypeId").to.be.a("number");
-
             cy.makePrivateAdminAPICall(
                 "POST",
                 "/api/events/repeat",
@@ -88,8 +70,6 @@ describe("API Repeat Events", () => {
         });
 
         it("Creates yearly repeat events", () => {
-            expect(eventTypeId, "before() must have populated eventTypeId").to.be.a("number");
-
             cy.makePrivateAdminAPICall(
                 "POST",
                 "/api/events/repeat",
@@ -113,8 +93,6 @@ describe("API Repeat Events", () => {
         });
 
         it("Returns 400 for invalid recurrence type", () => {
-            expect(eventTypeId, "before() must have populated eventTypeId").to.be.a("number");
-
             cy.makePrivateAdminAPICall(
                 "POST",
                 "/api/events/repeat",

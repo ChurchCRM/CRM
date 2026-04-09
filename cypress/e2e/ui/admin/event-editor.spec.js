@@ -321,13 +321,13 @@ describe('Event Editor', () => {
             const eventTitle = 'Date Validation Test ' + Date.now();
             cy.get('input[name="EventTitle"]').clear().type(eventTitle);
 
-            // Set an invalid range: end before start. Click body to dismiss the
-            // daterangepicker dropdown so its .drp-buttons overlay doesn't cover
-            // the SaveChanges button when we click it next.
+            // Set an invalid range: end before start. After typing into the
+            // daterangepicker input, the .drp-buttons overlay covers the
+            // SaveChanges button. Press Escape to close the picker, then
+            // submit the form via JS rather than clicking the obscured button.
             cy.get('#EventDateRange').clear().type('2026-12-31 09:00 AM - 2026-01-01 10:00 AM', { force: true });
-            cy.get('body').click(0, 0);
-
-            cy.get('button[name="SaveChanges"]').click({ force: true });
+            cy.get('#EventDateRange').type('{esc}');
+            cy.get('form[name="EventsEditor"]').submit();
 
             // Should NOT have redirected to dashboard (blocked by client-side validation)
             cy.url().should('include', '/event/editor');

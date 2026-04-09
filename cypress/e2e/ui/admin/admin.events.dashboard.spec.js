@@ -1,29 +1,24 @@
 /// <reference types="cypress" />
 
 /**
- * Helper — quick-create a fresh event using the first available event type
- * and return its id via a callback. Centralized so every test in this file
- * can guarantee the dashboard has at least one row to assert against.
+ * Helper — quick-create a fresh event using the seeded "Church Service"
+ * event type (id 1) and return its id via a callback. Centralized so
+ * every test in this file can guarantee the dashboard has at least one
+ * row to assert against.
  *
- * Tests in this file are SELF-SUFFICIENT — they never depend on seed data.
+ * Tests in this file are SELF-SUFFICIENT — they never depend on seed
+ * data being populated, only on the seeded event types being present
+ * (which the other passing event specs also rely on).
  */
 function createTestEvent(callback) {
-    cy.makePrivateAdminAPICall("GET", "/api/events/types", null, 200).then((typesResp) => {
-        const types = Array.isArray(typesResp.body)
-            ? typesResp.body
-            : Object.values(typesResp.body);
-        expect(types.length, "at least one event type must be seeded").to.be.greaterThan(0);
-        expect(types[0]).to.have.property("Id");
-
-        cy.makePrivateAdminAPICall(
-            "POST",
-            "/api/events/quick-create",
-            { eventTypeId: types[0].Id },
-            200,
-        ).then((createResp) => {
-            expect(createResp.body).to.have.property("eventId");
-            callback(createResp.body.eventId);
-        });
+    cy.makePrivateAdminAPICall(
+        "POST",
+        "/api/events/quick-create",
+        { eventTypeId: 1 },
+        200,
+    ).then((createResp) => {
+        expect(createResp.body).to.have.property("eventId");
+        callback(createResp.body.eventId);
     });
 }
 
@@ -73,15 +68,19 @@ describe("Events Dashboard (MVC)", () => {
     describe("Stat cards data accuracy", () => {
         it("Event Types card shows total types, not types-with-events-this-year", () => {
             // Fetch the actual count via the API and assert the dashboard matches.
-            // Normalize the ObjectCollection-as-object response to a real array.
-            cy.request("/api/events/types").then((apiResp) => {
-                const types = Array.isArray(apiResp.body)
-                    ? apiResp.body
-                    : Object.values(apiResp.body);
-                const apiCount = types.length;
+            // /api/events/types returns { EventTypes: [...] } — read the
+            // wrapped array, NOT the raw response body.
+            cy.makePrivateAdminAPICall("GET", "/api/events/types", null, 200).then((apiResp) => {
+                expect(apiResp.body).to.have.property("EventTypes");
+                const apiCount = apiResp.body.EventTypes.length;
+                cy.setupAdminSession({ forceLogin: true });
                 cy.visit("event/dashboard");
-                cy.contains(".card", "Event Types").within(() => {
-                    cy.get("h2, h3, .h2, .h3, .stat-value, .display-4").first().invoke("text").then((txt) => {
+
+                // The view renders the count as a plain <div class="fw-medium">
+                // inside the Event Types card-body — not as <h2>/<h3>. Match the
+                // stat label text and read the digit from its sibling .fw-medium.
+                cy.contains(".card-body", "Event Types").within(() => {
+                    cy.get(".fw-medium").first().invoke("text").then((txt) => {
                         const shown = parseInt(txt.replace(/\D/g, ""), 10);
                         expect(shown).to.equal(apiCount);
                     });

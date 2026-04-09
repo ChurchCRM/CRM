@@ -12,25 +12,16 @@ describe("Standard User - Event Check-in", () => {
 
     before(() => {
         // Create the event we'll use throughout this suite via the admin API
-        // (the standard user can't create events). We grab the first event
-        // type, quick-create an event under it, then capture its id.
-        cy.setupAdminSession();
-        cy.makePrivateAdminAPICall("GET", "/api/events/types", null, 200).then((typesResp) => {
-            const types = Array.isArray(typesResp.body)
-                ? typesResp.body
-                : Object.values(typesResp.body);
-            expect(types.length, "at least one event type must be seeded").to.be.greaterThan(0);
-            expect(types[0]).to.have.property("Id");
-
-            cy.makePrivateAdminAPICall(
-                "POST",
-                "/api/events/quick-create",
-                { eventTypeId: types[0].Id },
-                200,
-            ).then((createResp) => {
-                expect(createResp.body).to.have.property("eventId");
-                testEventId = createResp.body.eventId;
-            });
+        // (the standard user can't create events). We use eventTypeId: 1 — the
+        // seeded "Church Service" type — same as the other passing event specs.
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/api/events/quick-create",
+            { eventTypeId: 1 },
+            200,
+        ).then((createResp) => {
+            expect(createResp.body).to.have.property("eventId");
+            testEventId = createResp.body.eventId;
         });
     });
 
