@@ -209,7 +209,7 @@ if ($bCanManageGroups) {
                 <?php endif; ?>
 
                 <!-- DataTable -->
-                <div style="overflow: visible;">
+                <div class="table-responsive">
                     <table class="table table-hover table-vcenter table-sm" id="membersTable"></table>
                 </div>
             </div>

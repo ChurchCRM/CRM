@@ -11,7 +11,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="card">
   <div class="card-body">
     <?php if (count($rows) > 0): ?>
-      <div style="overflow: visible;">
+      <div class="table-responsive">
         <table id="eventTypesTable" class="table table-hover table-vcenter">
           <thead>
             <tr>

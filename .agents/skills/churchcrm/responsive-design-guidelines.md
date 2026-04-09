@@ -308,5 +308,44 @@ check-in kiosks, quick lookups). Admin pages intentionally excluded — see abov
 | Person View | `src/people/views/person-view.php` | Uses `col-lg-8`/`col-lg-4` split, stacks cleanly | ✅ |
 | Calendar | `src/event/views/calendars.php` | FullCalendar handles its own responsive layout | ✅ |
 
+## Events / Groups / Sunday School audit <!-- learned: 2026-04-09 -->
+
+Third pass focused on pages used during services/check-in (phones and tablets
+at the back of the room):
+
+| Page | File | Issue found | Fix |
+|---|---|---|---|
+| Event Editor | `src/event/views/editor.php` | Form built as `<table>` with 9× `style="width:180px"` on `<td>` labels — broke mobile entirely | Converted to Bootstrap `row`/`col-md-3`+`col-md-9` form pattern 2026-04-09 |
+| Event Types List | `src/event/views/types-list.php` | `<div style="overflow: visible;">` wrapper around table | Replaced with `.table-responsive` 2026-04-09 |
+| Event Type Edit | `src/event/views/types-edit.php` | `<th style="width: 200px;">` on Actions column | Replaced with `w-1` utility class 2026-04-09 |
+| Group View | `src/groups/views/group-view.php` | `<div style="overflow: visible;">` wrapper around `#membersTable` | Replaced with `.table-responsive` 2026-04-09 |
+| Sunday School Class View | `src/groups/views/sundayschool/class-view.php` | `<div style="overflow: visible;">` wrapper around student roster table | Replaced with `.table-responsive` 2026-04-09 |
+| Event Repeat Editor | `src/event/views/repeat-editor.php` | Small fixed-width inline selects (`w:auto`, `w:100px`) inside `flex-wrap` rows | ✅ (wraps cleanly, intentionally small) |
+| Event Types New | `src/event/views/types-new.php` | Narrow time-picker widths (70/100/150px) | ✅ (inline time-pickers, acceptable sizing) |
+
+## Form layout anti-pattern: `<table>` for form rows <!-- learned: 2026-04-09 -->
+
+Several legacy forms (e.g. the pre-fix `src/event/views/editor.php`) use a
+`<table class="table">` with `<td style="width:180px">` for the label column
+and `<td colspan="3">` for the input. This **cannot be made responsive** — the
+label column stays 180px on a 360px phone, leaving 180px for the input.
+
+**Fix**: replace with the Bootstrap horizontal form pattern:
+
+```html
+<div class="row mb-3">
+  <label for="FieldName" class="col-md-3 col-form-label text-md-end fw-semibold">
+    <span class="text-danger">*</span><?= gettext('Field') ?>
+  </label>
+  <div class="col-md-9">
+    <input type="text" name="FieldName" id="FieldName" class="form-control" required>
+  </div>
+</div>
+```
+
+On mobile (<768) this stacks label-above-input. On tablet/laptop the label
+sits right-aligned at 25% and the input fills 75%. Use `offset-md-3` for
+action rows that need to align with the input column.
+
 When adding a new top-level or second-level nav destination, add it to the
 appropriate table as part of the same PR.

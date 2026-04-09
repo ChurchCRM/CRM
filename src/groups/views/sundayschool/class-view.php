@@ -224,7 +224,7 @@ if ($bCanManageGroups) {
                     <?= gettext('Showing students with birthdays in') ?> <span class="month"></span>
                     <i class="fa-solid fa-times float-end birthday-filter-clear" style="cursor:pointer;" title="<?= gettext('Clear filter') ?>"></i>
                 </div>
-                <div style="overflow: visible;">
+                <div class="table-responsive">
                     <table id="sundayschool" class="table table-hover data-table w-100">
                         <thead>
                             <tr>
