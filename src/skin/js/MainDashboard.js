@@ -218,16 +218,30 @@ export function initializeMainDashboard() {
         title: i18next.t("Name"),
         data: "FirstName",
         render: (data, type, row) => {
-          var ageText = row.Age ? ' <small class="text-muted">(' + row.Age + ")</small>" : "";
+          // The Birthdays widget lives in a narrow sidebar column at every
+          // breakpoint (mobile, tablet, and desktop xl-sidebar). Renders MUST
+          // tolerate ~120px of name space without breaking layout.
+          //
+          // The server returns Age as a localized long string like
+          // "66 years old". Re-format here as "66 yrs" on its own line so:
+          //   1. the name never has to share a line with the age,
+          //   2. wrapping happens between name and age, not mid-phrase,
+          //   3. the column stays compact at every viewport.
+          let ageText = "";
+          if (row.Age) {
+            const match = String(row.Age).match(/\d+/);
+            if (match) {
+              ageText = '<div class="text-muted small lh-1 mt-1">' + match[0] + " " + i18next.t("yrs") + "</div>";
+            }
+          }
           // Show photo if available, otherwise show Tabler avatar with initials
-          var photoIcon = row.HasPhoto
+          const photoIcon = row.HasPhoto
             ? generatePhotoImg(row.PersonId, "person")
             : generateTablerAvatar(row.FormattedName, row.PersonId, "person");
-          photoIcon += " ";
           return (
-            '<div class="d-flex align-items-center gap-3">' +
+            '<div class="d-flex align-items-center gap-2">' +
             photoIcon +
-            ' <div><a href="' +
+            '<div class="min-w-0 flex-grow-1"><a class="text-break" href="' +
             window.CRM.root +
             "/PersonView.php?PersonID=" +
             row.PersonId +
@@ -322,21 +336,22 @@ export function initializeMainDashboard() {
         title: i18next.t("Name"),
         data: "Name",
         render: (data, type, row) => {
-          // Show photo if available, otherwise show Tabler avatar with initials
-          var photoIcon = row.HasPhoto
+          // Anniversaries widget shares the narrow sidebar column with the
+          // Birthdays widget — keep the markup symmetrical (gap-2, min-w-0,
+          // text-break) so long family names wrap cleanly at every breakpoint.
+          const photoIcon = row.HasPhoto
             ? generatePhotoImg(row.FamilyId, "family")
             : generateTablerAvatar(data, row.FamilyId, "family");
-          photoIcon += " ";
           return (
-            '<div class="d-flex align-items-center gap-3">' +
+            '<div class="d-flex align-items-center gap-2">' +
             photoIcon +
-            ' <a href="' +
+            '<div class="min-w-0 flex-grow-1"><a class="text-break" href="' +
             window.CRM.root +
             "/v2/family/" +
             row.FamilyId +
             '"><strong>' +
             data +
-            "</strong></a></div>"
+            "</strong></a></div></div>"
           );
         },
       },
