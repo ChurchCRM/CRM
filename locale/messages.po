@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-09 16:34-0700\n"
+"POT-Creation-Date: 2026-04-09 16:52-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -6801,9 +6801,6 @@ msgstr ""
 msgid "No Data Found"
 msgstr ""
 
-msgid "No Deposit Tracking"
-msgstr ""
-
 msgid "No Deposits"
 msgstr ""
 
@@ -11178,9 +11175,6 @@ msgstr ""
 msgid "You can reset your ChurchCRM password by clicking this link"
 msgstr ""
 
-msgid "You do not have finance permissions to view deposits."
-msgstr ""
-
 msgid "You have no items in your cart."
 msgstr ""
 
@@ -11530,6 +11524,12 @@ msgstr ""
 msgid "mismatches detected"
 msgstr ""
 
+msgid "mo"
+msgstr ""
+
+msgid "mos"
+msgstr ""
+
 msgid "name@example.com"
 msgstr ""
 
@@ -11677,6 +11677,9 @@ msgid "with this property..."
 msgstr ""
 
 msgid "years"
+msgstr ""
+
+msgid "yr"
 msgstr ""
 
 msgid "yrs"

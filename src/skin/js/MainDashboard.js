@@ -222,17 +222,26 @@ export function initializeMainDashboard() {
           // breakpoint (mobile, tablet, and desktop xl-sidebar). Renders MUST
           // tolerate ~120px of name space without breaking layout.
           //
-          // The server returns Age as a localized long string like
-          // "66 years old". Re-format here as "66 yrs" on its own line so:
-          //   1. the name never has to share a line with the age,
-          //   2. wrapping happens between name and age, not mid-phrase,
-          //   3. the column stays compact at every viewport.
+          // Use the API's NumericAge + AgeUnit pair (added by people-persons
+          // birthdays endpoint) so we can render a compact, locale-aware,
+          // plural-aware label on its own line below the name. This handles
+          // infants ("6 mo") and singular vs plural ("1 yr" vs "66 yrs"); the
+          // legacy `row.Age` localized string is kept as a fallback for safety.
           let ageText = "";
-          if (row.Age) {
-            const match = String(row.Age).match(/\d+/);
-            if (match) {
-              ageText = '<div class="text-muted small lh-1 mt-1">' + match[0] + " " + i18next.t("yrs") + "</div>";
+          if (typeof row.NumericAge === "number" && row.AgeUnit) {
+            let unit;
+            if (row.AgeUnit === "month") {
+              unit = row.NumericAge === 1 ? i18next.t("mo") : i18next.t("mos");
+            } else {
+              unit = row.NumericAge === 1 ? i18next.t("yr") : i18next.t("yrs");
             }
+            ageText = '<div class="text-muted small lh-1 mt-1">' + row.NumericAge + " " + unit + "</div>";
+          } else if (row.Age) {
+            // Fallback: server didn't send NumericAge — render the localized
+            // long string verbatim. Escape it via jQuery .text() before
+            // injecting to avoid XSS.
+            const safeAge = $("<div>").text(String(row.Age)).html();
+            ageText = '<div class="text-muted small lh-1 mt-1">' + safeAge + "</div>";
           }
           // Show photo if available, otherwise show Tabler avatar with initials
           const photoIcon = row.HasPhoto

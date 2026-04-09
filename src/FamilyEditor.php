@@ -829,7 +829,7 @@ require_once __DIR__ . '/Include/Header.php';
                                                     <input name="LastName<?= $iCount ?>" type="text" value="<?= $aLastNames[$iCount] ?>" class="form-control form-control-sm">
                                                 </td>
                                                 <td>
-                                                    <input name="Suffix<?= $iCount ?>" type="text" value="<?= $aSuffix[$iCount] ?>" class="form-control form-control-sm" maxlength="6">
+                                                    <input name="Suffix<?= $iCount ?>" type="text" value="<?= $aSuffix[$iCount] ?>" class="form-control form-control-sm" maxlength="50">
                                                 </td>
                                                 <td>
                                                     <select name="Gender<?= $iCount ?>" class="form-select form-select-sm">

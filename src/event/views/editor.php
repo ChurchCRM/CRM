@@ -111,9 +111,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <div class="row mb-3 event-editor-advanced" <?= !$eventExists ? 'style="display:none;"' : '' ?>>
             <label for="LinkedGroupId" class="col-md-3 col-form-label text-md-end fw-semibold">
               <?= gettext('Linked Group') ?>
-              <div class="text-secondary small fw-normal mt-1">
+              <span class="d-block text-secondary small fw-normal mt-1">
                 <i class="ti ti-info-circle me-1"></i><?= gettext('Required for Kiosk') ?>
-              </div>
+              </span>
             </label>
             <div class="col-md-9">
               <select name="LinkedGroupId" id="LinkedGroupId" class="form-select" style="max-width: 400px;">
