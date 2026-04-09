@@ -322,12 +322,15 @@ describe('Event Editor', () => {
             cy.get('input[name="EventTitle"]').clear().type(eventTitle);
 
             // Set an invalid range: end before start. After typing into the
-            // daterangepicker input, the .drp-buttons overlay covers the
-            // SaveChanges button. Press Escape to close the picker, then
-            // submit the form via JS rather than clicking the obscured button.
+            // daterangepicker input, the .drp-buttons overlay can cover the
+            // SaveChanges button. Use requestSubmit() (NOT form.submit()) so
+            // the JS submit handler still fires — submit() bypasses event
+            // listeners and would let the bad date through.
             cy.get('#EventDateRange').clear().type('2026-12-31 09:00 AM - 2026-01-01 10:00 AM', { force: true });
             cy.get('#EventDateRange').type('{esc}');
-            cy.get('form[name="EventsEditor"]').submit();
+            cy.get('form[name="EventsEditor"]').then(($form) => {
+                $form[0].requestSubmit();
+            });
 
             // Should NOT have redirected to dashboard (blocked by client-side validation)
             cy.url().should('include', '/event/editor');
