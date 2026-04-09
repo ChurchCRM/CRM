@@ -1,10 +1,43 @@
 /// <reference types="cypress" />
 
+/**
+ * These tests exercise the /event/checkin MVC pages from a standard
+ * (non-admin) user's perspective. They are SELF-SUFFICIENT — every
+ * precondition (event type, active event) is created via the API at the
+ * start of the suite so the tests don't depend on whatever happens to
+ * be in the seed database.
+ */
 describe("Standard User - Event Check-in", () => {
+    let testEventId;
+
+    before(() => {
+        // Create the event we'll use throughout this suite via the admin API
+        // (the standard user can't create events). We grab the first event
+        // type, quick-create an event under it, then capture its id.
+        cy.setupAdminSession();
+        cy.makePrivateAdminAPICall("GET", "/api/events/types", null, 200).then((typesResp) => {
+            const types = Array.isArray(typesResp.body)
+                ? typesResp.body
+                : Object.values(typesResp.body);
+            expect(types.length, "at least one event type must be seeded").to.be.greaterThan(0);
+            expect(types[0]).to.have.property("Id");
+
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/events/quick-create",
+                { eventTypeId: types[0].Id },
+                200,
+            ).then((createResp) => {
+                expect(createResp.body).to.have.property("eventId");
+                testEventId = createResp.body.eventId;
+            });
+        });
+    });
+
     beforeEach(() => cy.setupStandardSession());
 
     it("View Event Check-in via URL with event ID", () => {
-        cy.visit("event/checkin/3");
+        cy.visit(`event/checkin/${testEventId}`);
         cy.contains("Event Check-in");
         // Direct event access shows event title in the info bar
         cy.get("body").should("contain.text", "Event:");
@@ -19,20 +52,12 @@ describe("Standard User - Event Check-in", () => {
     it("Selecting an event shows the check-in form", () => {
         cy.visit("event/checkin");
 
-        // Pick the first real event option (skip the disabled "Choose an event..." placeholder)
-        // and assert the URL contains whatever id was actually selected, instead of hardcoding
-        // an id that drifts as the test seed grows.
-        cy.get("#EventSelector option").then(($options) => {
-            const realOption = [...$options].find((o) => o.value && o.value !== "");
-            if (!realOption) {
-                cy.log("No active events seeded — skipping");
-                return;
-            }
-            const eventId = realOption.value;
-            cy.get("#EventSelector").select(eventId);
-            cy.url().should("include", `/event/checkin/${eventId}`);
-            cy.contains("Check In Person");
-        });
+        // Select the event we created in `before()` explicitly by id —
+        // no dependence on placeholder/option order.
+        cy.get(`#EventSelector option[value="${testEventId}"]`).should("exist");
+        cy.get("#EventSelector").select(String(testEventId));
+        cy.url().should("include", `/event/checkin/${testEventId}`);
+        cy.contains("Check In Person");
     });
 
     it("Filter events by type dropdown exists", () => {
@@ -48,17 +73,19 @@ describe("Standard User - Event Check-in", () => {
      */
     it("Selecting an event type filter navigates with EventTypeID param", () => {
         cy.visit("event/checkin");
-        // Pick the first non-zero option (= a real event type)
+        // Pick the first real event type (skip the "All Event Types" placeholder
+        // whose value is "0"). At least one event type exists because before()
+        // verified it.
         cy.get("#EventTypeFilter option").then(($options) => {
             const realType = [...$options].find((o) => o.value && o.value !== "0");
-            if (!realType) return; // no event types seeded — nothing to test
+            expect(realType, "at least one real event type option must exist").to.exist;
             cy.get("#EventTypeFilter").select(realType.value);
             cy.url().should("include", `EventTypeID=${realType.value}`);
         });
     });
 
     it("Walk-in check-in form has child and adult selectors", () => {
-        cy.visit("event/checkin/3");
+        cy.visit(`event/checkin/${testEventId}`);
         cy.get("#child").should("exist");
         cy.get("#adult").should("exist");
         cy.get("#checkinBtn").should("exist");
@@ -78,9 +105,9 @@ describe("Standard User - Event Check-in", () => {
      * personId payload (not blocked by the false-negative validation).
      */
     it("Walk-in check-in submits the selected person to /api/events/{id}/checkin", () => {
-        cy.intercept("POST", "**/api/events/3/checkin").as("checkinPost");
+        cy.intercept("POST", `**/api/events/${testEventId}/checkin`).as("checkinPost");
 
-        cy.visit("event/checkin/3");
+        cy.visit(`event/checkin/${testEventId}`);
 
         // Open the #child TomSelect dropdown and type to trigger the AJAX search
         cy.get("#child + .ts-wrapper .ts-control").click();

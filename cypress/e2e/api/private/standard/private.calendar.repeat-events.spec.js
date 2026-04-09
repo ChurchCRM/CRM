@@ -5,9 +5,8 @@
  * Tests bulk creation of recurring events from a template.
  */
 describe("API Repeat Events", () => {
-    beforeEach(() => {
-        cy.setupAdminSession();
-    });
+    // No browser login — these are pure API tests using x-api-key auth
+    // (cy.makePrivateAdminAPICall sets the header for us).
 
     describe("POST /api/events/repeat", () => {
         let eventTypeId;
@@ -16,22 +15,20 @@ describe("API Repeat Events", () => {
             // Fetch an event type to use in tests. /api/events/types returns a
             // Propel ObjectCollection serialized as an OBJECT keyed by index
             // ("0", "1", ...), not a true JS array — normalize via Object.values.
-            cy.setupAdminSession();
-            cy.makePrivateAdminAPICall("GET", "/api/events/types", null, [200, 404]).then(
-                (response) => {
-                    if (response.status !== 200 || !response.body) return;
-                    const types = Array.isArray(response.body)
-                        ? response.body
-                        : Object.values(response.body);
-                    if (types.length > 0 && types[0] && types[0].Id) {
-                        eventTypeId = types[0].Id;
-                    }
-                },
-            );
+            // Hard-fail (no skip) if the seed has no event types — repeat events
+            // are unusable without one.
+            cy.makePrivateAdminAPICall("GET", "/api/events/types", null, 200).then((response) => {
+                const types = Array.isArray(response.body)
+                    ? response.body
+                    : Object.values(response.body);
+                expect(types.length, "at least one event type must be seeded").to.be.greaterThan(0);
+                expect(types[0]).to.have.property("Id");
+                eventTypeId = types[0].Id;
+            });
         });
 
-        it("Creates weekly repeat events and returns count and IDs", function () {
-            if (!eventTypeId) this.skip();
+        it("Creates weekly repeat events and returns count and IDs", () => {
+            expect(eventTypeId, "before() must have populated eventTypeId").to.be.a("number");
 
             const today = new Date();
             const TWENTY_EIGHT_DAYS_MS = 28 * 24 * 60 * 60 * 1000;
@@ -64,8 +61,8 @@ describe("API Repeat Events", () => {
             });
         });
 
-        it("Creates monthly repeat events", function () {
-            if (!eventTypeId) this.skip();
+        it("Creates monthly repeat events", () => {
+            expect(eventTypeId, "before() must have populated eventTypeId").to.be.a("number");
 
             cy.makePrivateAdminAPICall(
                 "POST",
@@ -90,8 +87,8 @@ describe("API Repeat Events", () => {
             });
         });
 
-        it("Creates yearly repeat events", function () {
-            if (!eventTypeId) this.skip();
+        it("Creates yearly repeat events", () => {
+            expect(eventTypeId, "before() must have populated eventTypeId").to.be.a("number");
 
             cy.makePrivateAdminAPICall(
                 "POST",
@@ -115,8 +112,8 @@ describe("API Repeat Events", () => {
             });
         });
 
-        it("Returns 400 for invalid recurrence type", function () {
-            if (!eventTypeId) this.skip();
+        it("Returns 400 for invalid recurrence type", () => {
+            expect(eventTypeId, "before() must have populated eventTypeId").to.be.a("number");
 
             cy.makePrivateAdminAPICall(
                 "POST",

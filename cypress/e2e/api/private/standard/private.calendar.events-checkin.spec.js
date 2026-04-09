@@ -12,9 +12,8 @@
  * - POST /events/generate-recurring
  */
 describe("API Event Check-in Endpoints", () => {
-    beforeEach(() => {
-        cy.setupAdminSession();
-    });
+    // No browser login — these are pure API tests using x-api-key auth
+    // (cy.makePrivateAdminAPICall sets the header for us).
 
     describe("POST /api/events/quick-create", () => {
         it("Creates a new event from an event type", () => {
@@ -140,21 +139,23 @@ describe("API Event Check-in Endpoints", () => {
         let testEventId;
 
         before(() => {
-            cy.setupAdminSession();
-            // Create a fresh event linked to group 1 (Angels class)
+            // Create a fresh event linked to group 1 (Angels class). The
+            // suite asserts on testEventId in every test, so make sure
+            // before() actually populated it before the tests run.
             cy.makePrivateAdminAPICall(
                 "POST",
                 "/api/events/quick-create",
                 { eventTypeId: 2, groupId: 1 },
                 200,
             ).then((response) => {
+                expect(response.body).to.have.property("eventId");
                 testEventId = response.body.eventId;
             });
         });
 
         describe("GET /api/events/{id}/roster", () => {
-            it("Returns roster with members and stats", function () {
-                if (!testEventId) this.skip();
+            it("Returns roster with members and stats", () => {
+                expect(testEventId, "before() must have populated testEventId").to.be.a("number");
 
                 cy.makePrivateAdminAPICall(
                     "GET",
@@ -203,8 +204,8 @@ describe("API Event Check-in Endpoints", () => {
         });
 
         describe("POST /api/events/{id}/checkin", () => {
-            it("Checks in a person and returns status", function () {
-                if (!testEventId) this.skip();
+            it("Checks in a person and returns status", () => {
+                expect(testEventId, "before() must have populated testEventId").to.be.a("number");
 
                 // Get a person from the roster first
                 cy.makePrivateAdminAPICall(
@@ -213,10 +214,7 @@ describe("API Event Check-in Endpoints", () => {
                     null,
                     200,
                 ).then((rosterResponse) => {
-                    if (rosterResponse.body.members.length === 0) {
-                        this.skip();
-                        return;
-                    }
+                    expect(rosterResponse.body.members.length, "roster must have at least one member to check in").to.be.greaterThan(0);
                     const personId = rosterResponse.body.members[0].personId;
 
                     cy.makePrivateAdminAPICall(
@@ -232,8 +230,8 @@ describe("API Event Check-in Endpoints", () => {
                 });
             });
 
-            it("Returns 400 for missing personId", function () {
-                if (!testEventId) this.skip();
+            it("Returns 400 for missing personId", () => {
+                expect(testEventId, "before() must have populated testEventId").to.be.a("number");
 
                 cy.makePrivateAdminAPICall(
                     "POST",
@@ -245,8 +243,17 @@ describe("API Event Check-in Endpoints", () => {
         });
 
         describe("POST /api/events/{id}/checkout", () => {
-            it("Checks out a previously checked-in person", function () {
-                if (!testEventId) this.skip();
+            it("Checks out a previously checked-in person", () => {
+                expect(testEventId, "before() must have populated testEventId").to.be.a("number");
+
+                // Make sure at least one person is checked in first so we have
+                // someone to check out (independent of test ordering).
+                cy.makePrivateAdminAPICall(
+                    "POST",
+                    `/api/events/${testEventId}/checkin`,
+                    { personId: 1 },
+                    200,
+                );
 
                 cy.makePrivateAdminAPICall(
                     "GET",
@@ -257,10 +264,7 @@ describe("API Event Check-in Endpoints", () => {
                     const checkedIn = rosterResponse.body.members.find(
                         (m) => m.status === "checked_in",
                     );
-                    if (!checkedIn) {
-                        this.skip();
-                        return;
-                    }
+                    expect(checkedIn, "at least one person must be checked in").to.exist;
 
                     cy.makePrivateAdminAPICall(
                         "POST",
@@ -279,21 +283,17 @@ describe("API Event Check-in Endpoints", () => {
             // checked the person out (parent picking up child, etc.) via the
             // checkedOutById field. The bootbox prompt in event-checkin.js
             // sends this; verify the API persists it on the EventAttend row.
-            it("Records checkedOutById when supplied", function () {
-                if (!testEventId) this.skip();
+            it("Records checkedOutById when supplied", () => {
+                expect(testEventId, "before() must have populated testEventId").to.be.a("number");
 
-                // First, check person 1 in (no supervisor)
+                // First, check person 1 in (no supervisor) — must succeed
+                // because the event is active.
                 cy.makePrivateAdminAPICall(
                     "POST",
                     `/api/events/${testEventId}/checkin`,
                     { personId: 1 },
-                    [200, 409],
-                ).then((checkinResp) => {
-                    if (checkinResp.status !== 200) {
-                        this.skip();
-                        return;
-                    }
-
+                    200,
+                ).then(() => {
                     // Now check them out with checkedOutById = 2
                     cy.makePrivateAdminAPICall(
                         "POST",
@@ -322,8 +322,8 @@ describe("API Event Check-in Endpoints", () => {
         });
 
         describe("POST /api/events/{id}/checkin-all", () => {
-            it("Batch checks in all group members", function () {
-                if (!testEventId) this.skip();
+            it("Batch checks in all group members", () => {
+                expect(testEventId, "before() must have populated testEventId").to.be.a("number");
 
                 cy.makePrivateAdminAPICall(
                     "POST",
@@ -337,8 +337,8 @@ describe("API Event Check-in Endpoints", () => {
                 });
             });
 
-            it("Verifies all members show as checked in after batch", function () {
-                if (!testEventId) this.skip();
+            it("Verifies all members show as checked in after batch", () => {
+                expect(testEventId, "before() must have populated testEventId").to.be.a("number");
 
                 cy.makePrivateAdminAPICall(
                     "GET",
@@ -355,8 +355,8 @@ describe("API Event Check-in Endpoints", () => {
         });
 
         describe("POST /api/events/{id}/checkout-all", () => {
-            it("Batch checks out all checked-in people", function () {
-                if (!testEventId) this.skip();
+            it("Batch checks out all checked-in people", () => {
+                expect(testEventId, "before() must have populated testEventId").to.be.a("number");
 
                 cy.makePrivateAdminAPICall(
                     "POST",
@@ -515,7 +515,6 @@ describe("API Event Check-in Endpoints", () => {
         let eventId;
 
         before(() => {
-            cy.setupAdminSession();
             // Quick-create an event we can check people into
             cy.makePrivateAdminAPICall(
                 "POST",
@@ -523,12 +522,13 @@ describe("API Event Check-in Endpoints", () => {
                 { eventTypeId: 1 },
                 200,
             ).then((response) => {
+                expect(response.body).to.have.property("eventId");
                 eventId = response.body.eventId;
             });
         });
 
-        it("Checks in a list of people", function () {
-            if (!eventId) this.skip();
+        it("Checks in a list of people", () => {
+            expect(eventId, "before() must have populated eventId").to.be.a("number");
 
             cy.makePrivateAdminAPICall(
                 "POST",
@@ -542,8 +542,8 @@ describe("API Event Check-in Endpoints", () => {
             });
         });
 
-        it("Records the checkedInById when provided", function () {
-            if (!eventId) this.skip();
+        it("Records the checkedInById when provided", () => {
+            expect(eventId, "before() must have populated eventId").to.be.a("number");
 
             cy.makePrivateAdminAPICall(
                 "POST",
@@ -555,8 +555,8 @@ describe("API Event Check-in Endpoints", () => {
             });
         });
 
-        it("Returns 400 when personIds is empty", function () {
-            if (!eventId) this.skip();
+        it("Returns 400 when personIds is empty", () => {
+            expect(eventId, "before() must have populated eventId").to.be.a("number");
 
             cy.makePrivateAdminAPICall(
                 "POST",
@@ -566,8 +566,8 @@ describe("API Event Check-in Endpoints", () => {
             );
         });
 
-        it("Returns 400 when personIds is missing", function () {
-            if (!eventId) this.skip();
+        it("Returns 400 when personIds is missing", () => {
+            expect(eventId, "before() must have populated eventId").to.be.a("number");
 
             cy.makePrivateAdminAPICall(
                 "POST",
@@ -596,28 +596,26 @@ describe("API Event Check-in Endpoints", () => {
         let eventId;
 
         before(() => {
-            cy.setupAdminSession();
             cy.makePrivateAdminAPICall(
                 "POST",
                 "/api/events/quick-create",
                 { eventTypeId: 1 },
                 200,
             ).then((response) => {
+                expect(response.body).to.have.property("eventId");
                 eventId = response.body.eventId;
                 // Check someone in so we have an attendance record to delete
-                if (eventId) {
-                    cy.makePrivateAdminAPICall(
-                        "POST",
-                        `/api/events/${eventId}/checkin`,
-                        { personId: 5 },
-                        200,
-                    );
-                }
+                cy.makePrivateAdminAPICall(
+                    "POST",
+                    `/api/events/${eventId}/checkin`,
+                    { personId: 5 },
+                    200,
+                );
             });
         });
 
-        it("Deletes an attendance record", function () {
-            if (!eventId) this.skip();
+        it("Deletes an attendance record", () => {
+            expect(eventId, "before() must have populated eventId").to.be.a("number");
 
             cy.makePrivateAdminAPICall(
                 "DELETE",
@@ -629,8 +627,8 @@ describe("API Event Check-in Endpoints", () => {
             });
         });
 
-        it("Returns 404 when no attendance record exists", function () {
-            if (!eventId) this.skip();
+        it("Returns 404 when no attendance record exists", () => {
+            expect(eventId, "before() must have populated eventId").to.be.a("number");
 
             cy.makePrivateAdminAPICall(
                 "DELETE",
