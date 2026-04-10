@@ -1,26 +1,26 @@
 {
   "%d result for \"%s\"": {
-    "other": ""
+    "other": "%d 個「%s」的搜尋結果"
   },
   "%d repeat event created successfully.": {
-    "other": ""
+    "other": "已成功建立 %d 個重複活動。"
   },
-  "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above.": "",
-  "Both latitude and longitude must be provided together (or both left blank for automatic detection).": "",
-  "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates.": "",
-  "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address.": "",
-  "Latitude must be a number between -90 and 90.": "",
-  "Longitude must be a number between -180 and 180.": "",
-  "Map Coordinates": "",
-  "Please select a group.": "",
-  "Please select a role.": "",
-  "Please select both a group and a role.": "",
-  "Range: -180 to 180.": "",
-  "Range: -90 to 90.": "",
-  "e.g., -74.0060": "",
-  "e.g., 40.7128": "",
-  "mo": "",
-  "mos": "",
-  "yr": "",
-  "yrs": ""
+  "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above.": "座標儲存後，地圖將顯示於此——可從地址自動偵測，或在上方手動輸入。",
+  "Both latitude and longitude must be provided together (or both left blank for automatic detection).": "緯度與經度必須同時填寫（或同時留空以自動偵測）。",
+  "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates.": "教會資訊已儲存，但地址無法自動定位。請在「地圖座標」下方手動輸入緯度和經度。",
+  "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address.": "儲存時將透過 OpenStreetMap 從地址自動偵測座標。您也可以在下方手動輸入——手動輸入的數值優先於自動偵測。兩者皆留空時，系統將從地址進行地理編碼。",
+  "Latitude must be a number between -90 and 90.": "緯度必須為 -90 至 90 之間的數字。",
+  "Longitude must be a number between -180 and 180.": "經度必須為 -180 至 180 之間的數字。",
+  "Map Coordinates": "地圖座標",
+  "Please select a group.": "請選擇一個群組。",
+  "Please select a role.": "請選擇一個角色。",
+  "Please select both a group and a role.": "請同時選擇群組與角色。",
+  "Range: -180 to 180.": "範圍：-180 至 180。",
+  "Range: -90 to 90.": "範圍：-90 至 90。",
+  "e.g., -74.0060": "e.g., -74.0060",
+  "e.g., 40.7128": "e.g., 40.7128",
+  "mo": "月",
+  "mos": "月",
+  "yr": "年",
+  "yrs": "年"
 }
