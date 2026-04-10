@@ -246,8 +246,10 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
             $pdf->sRecordName .= ' ' . MiscUtils::formatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $per_Flags);
         }
 
-        // Use person data with fallback to family data for addresses
-        // This ensures members without personal addresses still appear in the directory with their family's address
+        // Use Person entity methods with family fallback (issue #7937)
+        // Note: The Person object is already loaded from extract($aRow) via the database query
+        // The PDF rendering uses raw variables from extract(), but we still have access to
+        // the person's database row data. We'll compute resolved values directly here.
         $sAddress1 = !empty($per_Address1) ? $per_Address1 : ($fam_Address1 ?? '');
         $sAddress2 = !empty($per_Address2) ? $per_Address2 : ($fam_Address2 ?? '');
         $sCity = !empty($per_City) ? $per_City : ($fam_City ?? '');

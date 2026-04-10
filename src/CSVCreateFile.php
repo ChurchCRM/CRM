@@ -372,22 +372,20 @@ if ($sFormat === 'addtocart') {
         $sCountry = '';
 
         extract($aRow);
-        $person = PersonQuery::create()->findOneById($per_ID);
+        $person = PersonQuery::create()->joinWith('Family')->findOneById($per_ID);
 
-        // Use person data with fallback to family data for addresses/contact
-        // This ensures members without personal addresses still get exported with their family's address
-        // Note: Similar logic exists in DirectoryReports.php - consider centralizing in PersonService
-        // if this pattern needs to be reused elsewhere (see issue #7937)
-        $sHomePhone = !empty($per_HomePhone) ? $per_HomePhone : ($fam_HomePhone ?? '');
+        // Use Person entity methods with family fallback (issue #7937)
+        // Person entity provides resolved address fields that automatically fall back to family data
+        $sHomePhone = $person->getResolvedHomePhone();
         $sWorkPhone = $per_WorkPhone ?? '';
         $sCellPhone = $per_CellPhone ?? '';
-        $sCountry = !empty($per_Country) ? $per_Country : ($fam_Country ?? '');
-        $sAddress1 = !empty($per_Address1) ? $per_Address1 : ($fam_Address1 ?? '');
-        $sAddress2 = !empty($per_Address2) ? $per_Address2 : ($fam_Address2 ?? '');
-        $sCity = !empty($per_City) ? $per_City : ($fam_City ?? '');
-        $sState = !empty($per_State) ? $per_State : ($fam_State ?? '');
-        $sZip = !empty($per_Zip) ? $per_Zip : ($fam_Zip ?? '');
-        $sEmail = !empty($per_Email) ? $per_Email : ($fam_Email ?? '');
+        $sCountry = $person->getResolvedCountry();
+        $sAddress1 = $person->getResolvedAddress1();
+        $sAddress2 = $person->getResolvedAddress2();
+        $sCity = $person->getResolvedCity();
+        $sState = $person->getResolvedState();
+        $sZip = $person->getResolvedZip();
+        $sEmail = $person->getEmail();
 
         // Check if we're filtering out people with incomplete addresses
         if (!($bSkipIncompleteAddr && (strlen($sCity) === 0 || strlen($sState) === 0 || strlen($sZip) === 0 || (strlen($sAddress1) === 0 && strlen($sAddress2) === 0)))) {

@@ -27,7 +27,7 @@ describe("csv export", () => {
 
         it("should include address columns in CSV export with family fallback", () => {
             // Test default format includes address fields when requested
-            // This also validates the family fallback logic for addresses
+            // This validates the family fallback logic for addresses (issue #7937)
             cy.request({
                 method: "POST",
                 url: "/CSVCreateFile.php",
@@ -46,28 +46,43 @@ describe("csv export", () => {
             }).then((response) => {
                 expect(response.status).to.eq(200);
                 expect(response.headers["content-type"]).to.include("text/csv");
-                
+
                 // Verify no PHP errors in response
                 expect(response.body).to.not.include("Fatal error");
                 expect(response.body).to.not.include("Parse error");
-                
+
+                // Parse CSV to validate structure and data
+                const lines = response.body.split('\n').filter(line => line.trim().length > 0);
+                expect(lines.length).to.be.greaterThan(1, "Expected header + data rows");
+
                 // Verify CSV header contains address columns
-                const lines = response.body.split('\n');
-                expect(lines.length).to.be.greaterThan(1);
-                const header = lines[0].toLowerCase();
-                expect(header).to.include("address 1");
-                expect(header).to.include("city");
-                expect(header).to.include("state");
-                
-                // Verify at least one data row exists (family fallback should populate addresses)
-                // Filter out empty lines
-                const dataLines = lines.slice(1).filter(line => line.trim().length > 0);
-                expect(dataLines.length).to.be.greaterThan(0, "Expected at least one data row in export");
+                const headerLine = lines[0];
+                const headers = headerLine.split(',').map(h => h.toLowerCase().trim());
+                expect(headers).to.include("address 1");
+                expect(headers).to.include("city");
+                expect(headers).to.include("state");
+
+                // Find column indices for address fields
+                const addr1Index = headers.findIndex(h => h.includes("address 1"));
+                const cityIndex = headers.findIndex(h => h.includes("city"));
+                const stateIndex = headers.findIndex(h => h.includes("state"));
+
+                // Validate that at least one data row has populated address values (proves fallback works)
+                let hasAddressData = false;
+                for (let i = 1; i < lines.length; i++) {
+                    const fields = lines[i].split(',');
+                    if (fields[addr1Index] && fields[addr1Index].trim() && fields[cityIndex] && fields[cityIndex].trim()) {
+                        hasAddressData = true;
+                        break;
+                    }
+                }
+                expect(hasAddressData).to.be.true("Expected at least one row with populated address (fallback should work)");
             });
         });
 
         it("should include address columns in rollup format CSV export", () => {
             // Test rollup format includes address fields when requested
+            // Rollup format rolls up multiple family members into single family rows
             cy.request({
                 method: "POST",
                 url: "/CSVCreateFile.php",
@@ -86,22 +101,36 @@ describe("csv export", () => {
             }).then((response) => {
                 expect(response.status).to.eq(200);
                 expect(response.headers["content-type"]).to.include("text/csv");
-                
+
                 // Verify no PHP errors in response
                 expect(response.body).to.not.include("Fatal error");
                 expect(response.body).to.not.include("Parse error");
-                
+
+                // Parse CSV to validate structure and data
+                const lines = response.body.split('\n').filter(line => line.trim().length > 0);
+                expect(lines.length).to.be.greaterThan(1, "Expected header + data rows");
+
                 // Verify CSV header contains address columns
-                const lines = response.body.split('\n');
-                expect(lines.length).to.be.greaterThan(1);
-                const header = lines[0].toLowerCase();
-                expect(header).to.include("address 1");
-                expect(header).to.include("city");
-                expect(header).to.include("state");
-                
-                // Verify at least one data row exists
-                const dataLines = lines.slice(1).filter(line => line.trim().length > 0);
-                expect(dataLines.length).to.be.greaterThan(0, "Expected at least one data row in export");
+                const headerLine = lines[0];
+                const headers = headerLine.split(',').map(h => h.toLowerCase().trim());
+                expect(headers).to.include("address 1");
+                expect(headers).to.include("city");
+                expect(headers).to.include("state");
+
+                // Find column indices for address fields
+                const addr1Index = headers.findIndex(h => h.includes("address 1"));
+                const cityIndex = headers.findIndex(h => h.includes("city"));
+
+                // Validate that at least one data row has populated address values (proves fallback works)
+                let hasAddressData = false;
+                for (let i = 1; i < lines.length; i++) {
+                    const fields = lines[i].split(',');
+                    if (fields[addr1Index] && fields[addr1Index].trim() && fields[cityIndex] && fields[cityIndex].trim()) {
+                        hasAddressData = true;
+                        break;
+                    }
+                }
+                expect(hasAddressData).to.be.true("Expected at least one row with populated address (fallback should work)");
             });
         });
     });
