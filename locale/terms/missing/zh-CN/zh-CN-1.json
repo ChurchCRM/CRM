@@ -1,9 +1,5 @@
 {
-  "BCC": "密送",
-  "N/A": "不适用",
-  "name@example.com": "name@example.com",
-  "Azure": "Azure",
   "%d repeat event created successfully.": {
-    "other": "%d 个重复事件已成功创建。"
+    "other": ""
   }
 }
