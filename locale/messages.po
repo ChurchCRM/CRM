@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-10 01:31+0000\n"
+"POT-Creation-Date: 2026-04-10 03:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -252,7 +252,7 @@ msgstr ""
 msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
 msgstr ""
 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
 msgstr ""
 
 msgid "A new password has been generated and sent to your email address."
@@ -1404,6 +1404,9 @@ msgstr ""
 msgid "Bosnia and Herzegovina (Босна и Херцеговина)"
 msgstr ""
 
+msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr ""
+
 #. Context: countries
 msgid "Botswana"
 msgstr ""
@@ -1894,6 +1897,9 @@ msgstr ""
 msgid "Church information saved successfully"
 msgstr ""
 
+msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr ""
+
 msgid "Church name is required."
 msgstr ""
 
@@ -2312,6 +2318,9 @@ msgid "Cook Islands"
 msgstr ""
 
 msgid "Coordinate database file name"
+msgstr ""
+
+msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
 msgstr ""
 
 msgid "Copied"
@@ -4781,9 +4790,6 @@ msgstr ""
 msgid "Geocoded"
 msgstr ""
 
-msgid "Geocoded coordinates:"
-msgstr ""
-
 msgid "Geocoding failed"
 msgstr ""
 
@@ -5786,6 +5792,9 @@ msgstr ""
 msgid "Latitude"
 msgstr ""
 
+msgid "Latitude must be a number between -90 and 90."
+msgstr ""
+
 #. Context: countries
 msgid "Latvia (Latvija)"
 msgstr ""
@@ -5980,6 +5989,9 @@ msgid "Login to your account"
 msgstr ""
 
 msgid "Longitude"
+msgstr ""
+
+msgid "Longitude must be a number between -180 and 180."
 msgstr ""
 
 msgid "Looking for stuck events..."
@@ -6193,6 +6205,9 @@ msgid "Map"
 msgstr ""
 
 msgid "Map Cart"
+msgstr ""
+
+msgid "Map Coordinates"
 msgstr ""
 
 msgid "Map Settings"
@@ -8169,6 +8184,12 @@ msgid "Range start must be before range end"
 msgstr ""
 
 msgid "Range start must be before range end."
+msgstr ""
+
+msgid "Range: -180 to 180."
+msgstr ""
+
+msgid "Range: -90 to 90."
 msgstr ""
 
 msgid "RangeEnd must be on or after RangeStart"
@@ -10400,9 +10421,6 @@ msgstr ""
 msgid "Updated People"
 msgstr ""
 
-msgid "Updated automatically on every save."
-msgstr ""
-
 msgid "Updated via Family"
 msgstr ""
 
@@ -11393,6 +11411,12 @@ msgid "deposit(s) with no payments"
 msgstr ""
 
 msgid "e.g. Sunday Service"
+msgstr ""
+
+msgid "e.g., -74.0060"
+msgstr ""
+
+msgid "e.g., 40.7128"
 msgstr ""
 
 msgid "e.g., Church Website"
