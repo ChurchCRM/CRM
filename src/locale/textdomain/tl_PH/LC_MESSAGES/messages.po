@@ -1173,6 +1173,10 @@ msgid "Summary Data"
 msgstr "Data ng Buod"
 
 #: 
+msgid "CSV"
+msgstr "CSV"
+
+#: 
 msgid "Back"
 msgstr "Bumalik"
 
@@ -1287,6 +1291,14 @@ msgstr "Pinakamataas na distansya"
 #: 
 msgid "Data file format"
 msgstr "Format ng data file"
+
+#: 
+msgid "GPS Visualizer"
+msgstr "GPS Visualizer"
+
+#: 
+msgid "Street Atlas USA"
+msgstr "Street Atlas USA"
 
 #: 
 msgid "Include families in the coordinate file"
@@ -1897,6 +1909,10 @@ msgid "Select Property Type"
 msgstr "Pumili ng Uri ng Katangian"
 
 #: 
+msgid "A"
+msgstr "A"
+
+#: 
 msgid "Entering a Prompt value will allow the association of a free-form value."
 msgstr "Ang pagpasok ng halaga ng Prompt ay magpapahintulot ng pagsasama ng libreng-anyo na halaga."
 
@@ -2457,6 +2473,10 @@ msgstr "Tinatayang halaga "
 #: 
 msgid "Donated by "
 msgstr "Ibinigay ni "
+
+#: 
+msgid "Paddle"
+msgstr "Paddle"
 
 #: 
 msgid "Bid"
@@ -3096,6 +3116,10 @@ msgstr "Mga Kaarawan"
 #: 
 msgid "Weekly on"
 msgstr "Lingguhang sa"
+
+#: 
+msgid "s"
+msgstr "s"
 
 #: 
 msgid "Monthly on"
@@ -14611,4 +14635,810 @@ msgstr "Dilaw"
 #: 
 msgid "Your current access levels (read-only)"
 msgstr "Inyong kasalukuyang antas ng access (read-only)"
+
+#: 
+msgid "%d repeat event created successfully."
+msgid_plural "%d repeat events created successfully."
+msgstr[0] "%d paulit-ulit na kaganapan ay matagumpay na nalilikha."
+msgstr[1] "%d paulit-ulit na kaganapan ay matagumpay na nalilikha."
+
+#: 
+msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
+msgstr "(hal. Mga Miyembro, Bisita, Mga Bata) para makapagtala ang mga boluntaryo ng bilang ng tao dito."
+
+#: 
+msgid "1. Sunday School Class"
+msgstr "1. Klase ng Sunday School"
+
+#: 
+msgid "2. Event Type"
+msgstr "2. Uri ng Kaganapan"
+
+#: 
+msgid "3. Event"
+msgstr "3. Kaganapan"
+
+#: 
+msgid "4. Kiosk"
+msgstr "4. Kiosk"
+
+#: 
+msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
+msgstr "Ang klase ay isang Grupo na may uri na \"Sunday School\". Naglalaman ito ng mga mag-aaral at guro (mga miyembro na may mga papel)."
+
+#: 
+msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
+msgstr "Ang isang naka-link na grupo ay nagtatali sa kaganapang ito sa isang klase o listahan ng ministeryo. Kapag ang kaganapan ay itinalaga sa isang Kiosk, kinukuha ng kiosk ang mga miyembro ng grupo at ipinapakita ang mga ito bilang isang listahang pindutin para mag-check-in. Para sa mga klase ng Sunday School, i-link ang grupo ng klase dito para makapag-check in ang mga boluntaryo ng mga mag-aaral mula sa isang tablet."
+
+#: 
+msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr "Isang tiyak na pagkakataon (hal. \"Preschool — Abr 12\"). Nagmamana ng mga default mula sa uri at naka-link sa grupo ng klase sa pamamagitan ng audience. Ito ang batayan ng pagtatala ng presensya ng mga boluntaryo."
+
+#: 
+msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr "Isang tablet na itinalaga sa isang kaganapan. Kinukuha ng kiosk ang listahan ng naka-link na grupo ng kaganapan at ipinapakita ang pindutin para mag-check-in. Kung walang naka-link na grupo, wala itong listahang ipapakita ang kiosk."
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "Magdagdag ng Walk-in / Bisita"
+
+#: 
+msgid "Add categories on the Event Type page"
+msgstr "Magdagdag ng mga kategorya sa pahina ng Uri ng Kaganapan"
+
+#: 
+msgid "Add people to your cart first, then come back to check them in to an event."
+msgstr "Magdagdag muna ng mga tao sa iyong cart, pagkatapos ay bumalik para i-check in sila sa isang kaganapan."
+
+#: 
+msgid "All clear!"
+msgstr "Lahat ay maayos!"
+
+#: 
+msgid "All events and attendance records"
+msgstr "Lahat ng mga kaganapan at talaan ng presensya"
+
+#: 
+msgid "All financial data (pledges, payments, deposits)"
+msgstr "Lahat ng datos na pinansyal (mga pangako, pagbabayad, deposito)"
+
+#: 
+msgid "All groups, roles, and memberships"
+msgstr "Lahat ng mga grupo, papel, at pagiging miyembro"
+
+#: 
+msgid "All people and family records"
+msgstr "Lahat ng mga talaan ng tao at pamilya"
+
+#: 
+msgid "All system settings and custom fields"
+msgstr "Lahat ng mga setting ng sistema at custom na mga field"
+
+#: 
+msgid "All uploaded photos and documents"
+msgstr "Lahat ng mga na-upload na litrato at dokumento"
+
+#: 
+msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
+msgstr "Ang Uri ng Kaganapan ay isang template — pangalan, default na oras ng pagsisimula, paulit-ulit, mga kategorya ng bilang ng presensya. Opsyonal na naka-link sa isang grupo ng klase bilang default na audience nito."
+
+#: 
+msgid "Attendance record deleted."
+msgstr "Ang talaan ng presensya ay natanggal."
+
+#: 
+msgid "Audit"
+msgstr "Audit"
+
+#: 
+msgid "Audit Events"
+msgstr "Mga Kaganapan ng Audit"
+
+#: 
+msgid "Auto-totalled from counts at right"
+msgstr "Awtomatikong pinagsama mula sa mga bilang sa kanan"
+
+#: 
+msgid "Back to Events"
+msgstr "Bumalik sa mga Kaganapan"
+
+#: 
+msgid "Back to Events Dashboard"
+msgstr "Bumalik sa Dashboard ng mga Kaganapan"
+
+#: 
+msgid "Backup failed. You can still proceed with the reset, but your data will be lost."
+msgstr "Nabigo ang backup. Maaari ka pa ring magpatuloy sa pag-reset, ngunit mawawala ang iyong data."
+
+#: 
+msgid "Backup ready!"
+msgstr "Handa na ang backup!"
+
+#: 
+msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
+msgstr "Bago mag-reset, lubos naming inirerekomenda ang pag-download ng backup ng iyong kasalukuyang data. Ito ang iyong tanging pagkakataon para mapanatili ito."
+
+#: 
+msgid "Bulk-create a series of recurring events"
+msgstr "Likhain nang maramian ang isang serye ng mga paulit-ulit na kaganapan"
+
+#: 
+msgid "By"
+msgstr "Ni"
+
+#: 
+msgid "Cannot check in to an inactive event. Activate the event first."
+msgstr "Hindi maaaring mag-check in sa isang hindi aktibong kaganapan. I-activate muna ang kaganapan."
+
+#: 
+msgid "Change"
+msgstr "Baguhin"
+
+#: 
+msgid "Check In All"
+msgstr "I-check In ang Lahat"
+
+#: 
+msgid "Check In Family"
+msgstr "I-check In ang Pamilya"
+
+#: 
+msgid "Check Out All"
+msgstr "I-check Out ang Lahat"
+
+#: 
+msgid "Check in all %d family members to a single event."
+msgstr "I-check in ang %d miyembro ng pamilya sa isang kaganapan."
+
+#: 
+msgid "Check out"
+msgstr "I-check Out"
+
+#: 
+msgid "Check-in By"
+msgstr "Nag-check In"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "Nabigo ang check-in. Subukan muli."
+
+#: 
+msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
+msgstr "Ang check-in ay hindi pinagana para sa mga hindi aktibong kaganapan. I-activate ang kaganapan mula sa Dashboard ng mga Kaganapan para paganahin ang check-in."
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "Nabigo ang check-out. Subukan muli."
+
+#: 
+msgid "Checked in to event: %s"
+msgstr "Nag-check in sa kaganapan: %s"
+
+#: 
+msgid "Checked out from event: %s"
+msgstr "Nag-check out mula sa kaganapan: %s"
+
+#: 
+msgid "Close All Stuck Events"
+msgstr "Isara ang Lahat ng Natitirang Kaganapan"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "Kumpirmahin ang Check Out"
+
+#: 
+msgid "Create Repeat Events"
+msgstr "Lumikha ng mga Paulit-ulit na Kaganapan"
+
+#: 
+msgid "Create Today's Event"
+msgstr "Lumikha ng Kaganapan Ngayon"
+
+#: 
+msgid "Create a new event type with recurrence and attendance settings"
+msgstr "Lumikha ng bagong uri ng kaganapan na may paulit-ulit at mga setting ng presensya"
+
+#: 
+msgid "Create one now"
+msgstr "Lumikha ng isa ngayon"
+
+#: 
+msgid "Create today's class event and link it to this class for kiosk check-in"
+msgstr "Lumikha ng kaganapan ng klase ngayon at i-link ito sa klase na ito para sa kiosk check-in"
+
+#: 
+msgid "Creating backup..."
+msgstr "Ginagawa ang backup..."
+
+#: 
+msgid "Creating..."
+msgstr "Ginagawa..."
+
+#: 
+msgid "Database + uploaded photos (larger)"
+msgstr "Database + mga na-upload na litrato (mas malaki)"
+
+#: 
+msgid "Database dump only (.sql)"
+msgstr "Database dump lamang (.sql)"
+
+#: 
+msgid "Date Range"
+msgstr "Saklaw ng Petsa"
+
+#: 
+msgid "Date range cannot exceed 1 year"
+msgstr "Ang saklaw ng petsa ay hindi maaaring lumampas sa 1 taon"
+
+#: 
+msgid "Deactivate"
+msgstr "I-deactivate"
+
+#: 
+msgid "Delete Event Type"
+msgstr "Tanggalin ang Uri ng Kaganapan"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "Tanggalin ang talaan ng presensya?"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "Tanggalin ang talaan ng check-in para sa"
+
+#: 
+msgid "Delete this event?"
+msgstr "Tanggalin ang kaganapang ito?"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "Ang pagtanggal ng isang kaganapan ay magtatanggal din ng lahat ng bilang ng presensya. Hindi ito maaaring ibalik."
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "Ang pagtanggal ng uri ng kaganapang ito ay HINDI magtatanggal ng mga kasalukuyang kaganapan. Sigurado ka ba?"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "Ang pagtanggal ng kaganapang ito ay magtatanggal din ng lahat ng talaan ng presensya. Hindi ito maaaring ibalik."
+
+#: 
+msgid "Destructive Operation"
+msgstr "Mapanganib na Operasyon"
+
+#: 
+msgid "Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field."
+msgstr "I-edit ang pangalan ng kategorya at i-click ang I-save, o gamitin ang icon ng basurahan para tanggalin. Ang mga bagong row ay idinaragdag sa pamamagitan ng field sa ibaba."
+
+#: 
+msgid "End Time"
+msgstr "Oras ng Pagtatapos"
+
+#: 
+msgid "End time must be after start time."
+msgstr "Ang oras ng pagtatapos ay dapat pagkatapos ng oras ng pagsisimula."
+
+#: 
+msgid "Ended"
+msgstr "Natapos na"
+
+#: 
+msgid "Ends"
+msgstr "Nagtatapos"
+
+#: 
+msgid "Event Audit"
+msgstr "Audit ng Kaganapan"
+
+#: 
+msgid "Event Check-in"
+msgstr "Check-in ng Kaganapan"
+
+#: 
+msgid "Event Details"
+msgstr "Mga Detalye ng Kaganapan"
+
+#: 
+msgid "Event Template"
+msgstr "Template ng Kaganapan"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "Mayroon na ang kaganapan. Inililipat sa check-in..."
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "Nalilikha ang kaganapan. Inililipat sa check-in..."
+
+#: 
+msgid "Event end date/time must be on or after the start date/time."
+msgstr "Ang petsa/oras ng pagtatapos ng kaganapan ay dapat sa o pagkatapos ng petsa/oras ng pagsisimula."
+
+#: 
+msgid "Event title is required."
+msgstr "Kinakailangan ang pamagat ng kaganapan."
+
+#: 
+msgid "Event type ID is required"
+msgstr "Kinakailangan ang ID ng uri ng kaganapan"
+
+#: 
+msgid "Event type ID or group ID is required"
+msgstr "Kinakailangan ang ID ng uri ng kaganapan o ID ng grupo"
+
+#: 
+msgid "Event type has no date configured for yearly recurrence"
+msgstr "Ang uri ng kaganapan ay walang petsang na-configure para sa taunang paulit-ulit"
+
+#: 
+msgid "Event type has no day-of-week configured for weekly recurrence"
+msgstr "Ang uri ng kaganapan ay walang araw ng linggo na na-configure para sa lingguhang paulit-ulit"
+
+#: 
+msgid "Event type has no recurrence pattern configured"
+msgstr "Ang uri ng kaganapan ay walang pattern ng paulit-ulit na na-configure"
+
+#: 
+msgid "Event type has no valid day-of-month configured for monthly recurrence"
+msgstr "Ang uri ng kaganapan ay walang wastong araw ng buwan na na-configure para sa buwanang paulit-ulit"
+
+#: 
+msgid "Events will be created for every matching occurrence within this date range."
+msgstr "Ang mga kaganapan ay lilikha para sa bawat katugmang pagkakataon sa loob ng saklaw ng petsang ito."
+
+#: 
+msgid "Every month on the"
+msgstr "Bawat buwan sa"
+
+#: 
+msgid "Every week on"
+msgstr "Bawat linggo sa"
+
+#: 
+msgid "Every year on"
+msgstr "Bawat taon sa"
+
+#: 
+msgid "Everyone is checked in!"
+msgstr "Lahat ay naka-check in na!"
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "Nabigo ang paglikha ng klase. Subukan muli."
+
+#: 
+msgid "Failed to create event."
+msgstr "Nabigo ang paglikha ng kaganapan."
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "Nabigo ang paglikha ng kaganapan. Subukan muli."
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "Nabigo ang pagtanggal. Subukan muli."
+
+#: 
+msgid "Fastest workflow:"
+msgstr "Pinakamabilis na daloy ng trabaho:"
+
+#: 
+msgid "Find past events that are still active or have un-checked-out attendees"
+msgstr "Hanapin ang mga nakaraang kaganapan na aktibo pa rin o may mga kalahok na hindi pa naka-check out"
+
+#: 
+msgid "Format: MM-DD (e.g. 04-12 for April 12)"
+msgstr "Format: MM-DD (hal. 04-12 para sa Abril 12)"
+
+#: 
+msgid "Group Roster"
+msgstr "Listahan ng Grupo"
+
+#: 
+msgid "Hide Advanced Options"
+msgstr "Itago ang mga Advanced na Opsyon"
+
+#: 
+msgid "How Sunday School + Events + Kiosks fit together"
+msgstr "Paano Magkasya ang Sunday School + Mga Kaganapan + Mga Kiosk"
+
+#: 
+msgid "Invalid date for %s — expected YYYY-MM-DD"
+msgstr "Hindi wastong petsa para sa %s — inaasahang YYYY-MM-DD"
+
+#: 
+msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr "Hindi wastong format ng petsa para sa rangeStart o rangeEnd"
+
+#: 
+msgid "Invalid date format."
+msgstr "Hindi wastong format ng petsa."
+
+#: 
+msgid "Invalid date; expected format YYYY-MM-DD"
+msgstr "Hindi wastong petsa; inaasahang format na YYYY-MM-DD"
+
+#: 
+msgid "Invalid event type ID"
+msgstr "Hindi wastong ID ng uri ng kaganapan"
+
+#: 
+msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
+msgstr "Hindi wastong format ng taunang paulit-ulit; inaasahang MM-DD (hal. 04-12)"
+
+#: 
+msgid "Just now"
+msgstr "Ngayon lang"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "Iwanang blangko para mag-check out nang hindi nirerekord ang superbisor."
+
+#: 
+msgid "Link events to a group for Kiosk check-in functionality."
+msgstr "I-link ang mga kaganapan sa isang grupo para sa functionality ng Kiosk check-in."
+
+#: 
+msgid "Linked Groups"
+msgstr "Mga Naka-link na Grupo"
+
+#: 
+msgid "Looking for stuck events..."
+msgstr "Naghahanap ng mga natitirang kaganapan..."
+
+#: 
+msgid "Manage event names, recurrence patterns, and attendance counts"
+msgstr "Pamahalaan ang mga pangalan ng kaganapan, mga pattern ng paulit-ulit, at mga bilang ng presensya"
+
+#: 
+msgid "Missing required field: %s"
+msgstr "Nawawalang kinakailangang field: %s"
+
+#: 
+msgid "No Events Today"
+msgstr "Walang mga Kaganapan Ngayon"
+
+#: 
+msgid "No Group"
+msgstr "Walang Grupo"
+
+#: 
+msgid "No active assignment"
+msgstr "Walang aktibong itinalaga"
+
+#: 
+msgid "No active events found."
+msgstr "Walang nahanap na aktibong kaganapan."
+
+#: 
+msgid "No attendance count categories defined for this event type yet."
+msgstr "Wala pang mga kategorya ng bilang ng presensya na itinakda para sa uri ng kaganapang ito."
+
+#: 
+msgid "No one has been checked in to this event yet."
+msgstr "Wala pang naka-check in sa kaganapang ito."
+
+#: 
+msgid "No past events are still marked Active."
+msgstr "Walang mga nakaraang kaganapan na minarkahang Aktibo."
+
+#: 
+msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr "Buksan ang isang klase → i-click ang \"Lumikha ng Kaganapan Ngayon\" — ang kaganapan ay nalilikha at naka-link sa klase sa isang pagkakataon, pagkatapos ay mapupunta ka sa pahina ng check-in na handa para sa kiosk o walk-in na presensya."
+
+#: 
+msgid "Optional Settings"
+msgstr "Mga Opsyonal na Setting"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "Opsyonal — itala kung sino ang nag-check out sa taong ito (hal. isang magulang na sumusundo ng bata)."
+
+#: 
+msgid "Person checked out."
+msgstr "Nag-check out ang tao."
+
+#: 
+msgid "Person is not checked in"
+msgstr "Ang tao ay hindi naka-check in"
+
+#: 
+msgid "Person not in active class roster"
+msgstr "Ang tao ay wala sa listahan ng aktibong klase"
+
+#: 
+msgid "Pin to Calendars"
+msgstr "I-pin sa mga Kalendaryo"
+
+#: 
+msgid "Please select a person to check in."
+msgstr "Pumili ng tao para i-check in."
+
+#: 
+msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
+msgstr "Paunang napuno batay sa uri ng kaganapang ito — para sa mga paulit-ulit na uri, ang petsa ay ang susunod na pagkakataon pagkatapos ng huling kaganapan ng uri na ito, at ang oras ay tumutugma sa default na oras ng pagsisimula ng uri."
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "Ang petsa ng katapusan ng saklaw ay dapat sa o pagkatapos ng petsa ng simula ng saklaw."
+
+#: 
+msgid "Range end must be a valid YYYY-MM-DD date."
+msgstr "Ang katapusan ng saklaw ay dapat na isang wastong petsa na YYYY-MM-DD."
+
+#: 
+msgid "Range start must be a valid YYYY-MM-DD date."
+msgstr "Ang simula ng saklaw ay dapat na isang wastong petsa na YYYY-MM-DD."
+
+#: 
+msgid "Range start must be before range end"
+msgstr "Ang simula ng saklaw ay dapat bago ang katapusan ng saklaw"
+
+#: 
+msgid "Range start must be before range end."
+msgstr "Ang simula ng saklaw ay dapat bago ang katapusan ng saklaw."
+
+#: 
+msgid "RangeEnd must be on or after RangeStart"
+msgstr "Ang RangeEnd ay dapat sa o pagkatapos ng RangeStart"
+
+#: 
+msgid "Recommended"
+msgstr "Inirerekomenda"
+
+#: 
+msgid "Required for Kiosk"
+msgstr "Kinakailangan para sa Kiosk"
+
+#: 
+msgid "Resetting will permanently delete:"
+msgstr "Ang pag-reset ay permanenteng magtatanggal ng:"
+
+#: 
+msgid "SQL Only"
+msgstr "SQL Lamang"
+
+#: 
+msgid "Save Time"
+msgstr "Makatipid ng Oras"
+
+#: 
+msgid "Save changes to this category name"
+msgstr "I-save ang mga pagbabago sa pangalan ng kategoryang ito"
+
+#: 
+msgid "Select an event type…"
+msgstr "Pumili ng uri ng kaganapan…"
+
+#: 
+msgid "Select start and end date/time."
+msgstr "Pumili ng petsa/oras ng simula at katapusan."
+
+#: 
+msgid "Show More Options"
+msgstr "Ipakita ang Higit pang mga Opsyon"
+
+#: 
+msgid "Skip"
+msgstr "Laktawan"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "Laktawan at I-check Out"
+
+#: 
+msgid "Start Check-in"
+msgstr "Simulan ang Check-in"
+
+#: 
+msgid "Starts"
+msgstr "Nagsisimula"
+
+#: 
+msgid "Step 1: Create a Backup"
+msgstr "Hakbang 1: Lumikha ng Backup"
+
+#: 
+msgid "Step 2: Reset Database"
+msgstr "Hakbang 2: I-reset ang Database"
+
+#: 
+msgid "Still Checked In"
+msgstr "Naka-check In Pa Rin"
+
+#: 
+msgid "Stuck Events"
+msgstr "Mga Natitirang Kaganapan"
+
+#: 
+msgid "Take Attendance"
+msgstr "Kumuha ng Presensya"
+
+#: 
+msgid "The Events module is disabled"
+msgstr "Ang module ng mga Kaganapan ay hindi pinagana"
+
+#: 
+msgid "The same start and end time will be used for all generated events."
+msgstr "Ang parehong oras ng simula at katapusan ay gagamitin para sa lahat ng nabuong kaganapan."
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "Walang mga kaganapang nakatakda para ngayon"
+
+#: 
+msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
+msgstr "Ang mga ito ay mga lalagyan ng bilang ng tao — pinupunan ng mga boluntaryo ang mga ito pagkatapos ng kaganapan para mapaghatian ng dashboard ang presensya (hal. ilang miyembro kumpara sa mga bisita). Ang mga ito ay hiwalay mula sa mga indibidwal na check-in sa pahina ng Check-in."
+
+#: 
+msgid "This event is inactive."
+msgstr "Ang kaganapang ito ay hindi aktibo."
+
+#: 
+msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr "Pinapahintulutan ka ng pahinang ito na permanenteng burahin ang lahat ng data sa database ng ChurchCRM. Hindi maaaring ibalik ang aksyong ito."
+
+#: 
+msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
+msgstr "Inililista ng ulat na ito ang bawat kaganapan na lumipas na ang petsa ng katapusan ngunit naka-mark pa rin bilang Aktibo. Mga karaniwang sanhi: nakalimutang pindutin ng boluntaryo ang 'Check Out', nawalan ng koneksyon ang kiosk, o nililikha at inabandona ang kaganapan. Ang mga lumang kaganapan (nakalipas na mga taon) na hindi kailanman na-deactivate ay lumalabas din dito. Ipinapakita ng kolum na 'Naka-check In Pa Rin' kung may natitira pang nasa gitna ng check-in. Ang pagsasara ng isang kaganapan mula sa ulat na ito ay nagche-check out sa lahat (gamit ang kasalukuyang oras) at minarkahan ang kaganapan bilang Hindi Aktibo."
+
+#: 
+msgid "This title will be used for all generated events."
+msgstr "Ang pamagat na ito ay gagamitin para sa lahat ng nabuong kaganapan."
+
+#: 
+msgid "Today's Events"
+msgstr "Mga Kaganapan Ngayon"
+
+#: 
+msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
+msgstr "Napakaraming pagkakataon (%d) — paliitin ang saklaw ng petsa. Maximum na pinahihintulutan: %d"
+
+#: 
+msgid "Type RESET to confirm"
+msgstr "I-type ang RESET para kumpirmahin"
+
+#: 
+msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
+msgstr "Gamitin ang button sa itaas para likhain ang kaganapan ngayon sa isang click. Ito ay awtomatikong i-link sa klase na ito para makuha ng Kiosk ang listahan."
+
+#: 
+msgid "Use this form to bulk-create a series of recurring events. Each event is created individually and can be edited or deleted independently after creation."
+msgstr "Gamitin ang form na ito para likhain nang maramian ang isang serye ng mga paulit-ulit na kaganapan. Ang bawat kaganapan ay nililikha nang isa-isa at maaaring i-edit o tanggalin nang hiwalay pagkatapos ng paglikha."
+
+#: 
+msgid "Used as the default start time when creating events of this type."
+msgstr "Ginagamit bilang default na oras ng pagsisimula kapag lumilikha ng mga kaganapan ng uri na ito."
+
+#: 
+msgid "User must have Add Event permission and the Events module must be enabled"
+msgstr "Ang gumagamit ay dapat may pahintulot na Magdagdag ng Kaganapan at ang module ng mga Kaganapan ay dapat na pinagana"
+
+#: 
+msgid "Valid startDate and endDate are required"
+msgstr "Kinakailangan ang wastong startDate at endDate"
+
+#: 
+msgid "View Event"
+msgstr "Tingnan ang Kaganapan"
+
+#: 
+msgid "What are these for?"
+msgstr "Para saan ang mga ito?"
+
+#: 
+msgid "What does this find?"
+msgstr "Ano ang hahanapin nito?"
+
+#: 
+msgid "What is this for?"
+msgstr "Para saan ito?"
+
+#: 
+msgid "Who is bringing them in?"
+msgstr "Sino ang nagdadala sa kanila?"
+
+#: 
+msgid "You must select a valid recurrence pattern."
+msgstr "Kailangan mong pumili ng wastong pattern ng paulit-ulit."
+
+#: 
+msgid "You must select an event type."
+msgstr "Kailangan mong pumili ng uri ng kaganapan."
+
+#: 
+msgid "You must specify a date range."
+msgstr "Kailangan mong tukuyin ang saklaw ng petsa."
+
+#: 
+msgid "checked in"
+msgstr "naka-check in"
+
+#: 
+msgid "e.g., Sunday Worship Service"
+msgstr "hal., Lingguhang Pagsamba"
+
+#: 
+msgid "endDate must be after startDate"
+msgstr "Ang endDate ay dapat pagkatapos ng startDate"
+
+#: 
+msgid "eventIds must be a non-empty array"
+msgstr "Ang eventIds ay dapat na hindi walang laman na array"
+
+#: 
+msgid "invalid recurrence type"
+msgstr "hindi wastong uri ng paulit-ulit"
+
+#: 
+msgid "personIds must be a non-empty array"
+msgstr "Ang personIds ay dapat na hindi walang laman na array"
+
+#: 
+msgid "to enable the reset button"
+msgstr "para paganahin ang button ng reset"
+
+#: 
+msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
+msgstr "Ang isang mapa ay lilitaw dito kapag na-save na ang mga koordinado — awtomatikong natukoy mula sa iyong address o manu-manong ipinasok sa itaas."
+
+#: 
+msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr "Ang parehong latitude at longitude ay dapat ibigay nang magkasama (o pareho itong iwanang blangko para sa awtomatikong pagtukoy)."
+
+#: 
+msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr "Na-save ang impormasyon ng simbahan, ngunit hindi awtomatikong natukoy ang address. Mangyaring ipasok ang latitude at longitude nang manu-mano sa ilalim ng Mga Koordinado ng Mapa."
+
+#: 
+msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
+msgstr "Ang mga koordinado ay awtomatikong natutukoy mula sa iyong address kapag na-save (sa pamamagitan ng OpenStreetMap). Maaari mo rin itong ipasok nang manu-mano sa ibaba — ang mga manu-manong halaga ay palaging nangunguna kaysa sa awtomatikong pagtukoy. Iwanang blangko ang pareho para hayaan ang sistema na mag-geocode mula sa address."
+
+#: 
+msgid "Latitude must be a number between -90 and 90."
+msgstr "Ang latitude ay dapat na numero sa pagitan ng -90 at 90."
+
+#: 
+msgid "Longitude must be a number between -180 and 180."
+msgstr "Ang longitude ay dapat na numero sa pagitan ng -180 at 180."
+
+#: 
+msgid "Map Coordinates"
+msgstr "Mga Koordinado ng Mapa"
+
+#: 
+msgid "Please select a group."
+msgstr "Pumili ng grupo."
+
+#: 
+msgid "Please select a role."
+msgstr "Pumili ng papel."
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "Pumili ng grupo at papel."
+
+#: 
+msgid "Range: -180 to 180."
+msgstr "Saklaw: -180 hanggang 180."
+
+#: 
+msgid "Range: -90 to 90."
+msgstr "Saklaw: -90 hanggang 90."
+
+#: 
+msgid "mo"
+msgstr "buwan"
+
+#: 
+msgid "mos"
+msgstr "buwan"
+
+#: 
+msgid "yr"
+msgstr "taon"
+
+#: 
+msgid "yrs"
+msgstr "taon"
 

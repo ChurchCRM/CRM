@@ -3689,5 +3689,21 @@
     "eventIds must be a non-empty array": "eventIds debe ser un arreglo no vacío",
     "invalid recurrence type": "tipo de recurrencia inválido",
     "personIds must be a non-empty array": "personIds debe ser un arreglo no vacío",
-    "to enable the reset button": "para habilitar el botón de restablecimiento"
+    "to enable the reset button": "para habilitar el botón de restablecimiento",
+    "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above.": "Aquí aparecerá un mapa una vez que se guarden las coordenadas — ya sea detectadas automáticamente desde su dirección o ingresadas manualmente arriba.",
+    "Both latitude and longitude must be provided together (or both left blank for automatic detection).": "La latitud y longitud deben proporcionarse juntas (o ambas en blanco para detección automática).",
+    "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates.": "La información de la parroquia se guardó, pero no se pudo ubicar automáticamente la dirección. Por favor ingrese la latitud y longitud manualmente en Coordenadas del Mapa.",
+    "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address.": "Las coordenadas se detectan automáticamente desde su dirección al guardar (mediante OpenStreetMap). También puede ingresarlas manualmente a continuación — los valores manuales siempre tienen prioridad sobre la detección automática. Deje ambos en blanco para que el sistema geolocalice desde la dirección.",
+    "Latitude must be a number between -90 and 90.": "La latitud debe ser un número entre -90 y 90.",
+    "Longitude must be a number between -180 and 180.": "La longitud debe ser un número entre -180 y 180.",
+    "Map Coordinates": "Coordenadas del Mapa",
+    "Please select a group.": "Por favor seleccione un ministerio.",
+    "Please select a role.": "Por favor seleccione un rol.",
+    "Please select both a group and a role.": "Por favor seleccione un ministerio y un rol.",
+    "Range: -180 to 180.": "Rango: -180 a 180.",
+    "Range: -90 to 90.": "Rango: -90 a 90.",
+    "mo": "mes",
+    "mos": "meses",
+    "yr": "año",
+    "yrs": "años"
 }

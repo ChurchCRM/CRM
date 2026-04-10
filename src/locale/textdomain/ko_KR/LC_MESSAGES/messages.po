@@ -15401,3 +15401,67 @@ msgstr "personIds는 비어 있지 않은 배열이어야 합니다"
 msgid "to enable the reset button"
 msgstr "초기화 버튼을 활성화하려면"
 
+#: 
+msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
+msgstr "좌표가 저장되면 여기에 지도가 표시됩니다 — 주소에서 자동으로 감지되거나 위에서 수동으로 입력된 좌표입니다."
+
+#: 
+msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr "위도와 경도는 함께 입력해야 합니다 (또는 자동 감지를 위해 둘 다 비워 두세요)."
+
+#: 
+msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr "교회 정보가 저장되었지만 주소를 자동으로 찾을 수 없었습니다. 지도 좌표 항목에서 위도와 경도를 수동으로 입력해 주세요."
+
+#: 
+msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
+msgstr "저장 시 주소에서 좌표가 자동으로 감지됩니다 (OpenStreetMap 사용). 아래에서 수동으로 입력할 수도 있습니다 — 수동 값은 항상 자동 감지보다 우선합니다. 시스템이 주소에서 좌표를 자동 검색하도록 하려면 둘 다 비워 두세요."
+
+#: 
+msgid "Latitude must be a number between -90 and 90."
+msgstr "위도는 -90에서 90 사이의 숫자여야 합니다."
+
+#: 
+msgid "Longitude must be a number between -180 and 180."
+msgstr "경도는 -180에서 180 사이의 숫자여야 합니다."
+
+#: 
+msgid "Map Coordinates"
+msgstr "지도 좌표"
+
+#: 
+msgid "Please select a group."
+msgstr "사역팀을 선택해 주세요."
+
+#: 
+msgid "Please select a role."
+msgstr "역할을 선택해 주세요."
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "사역팀과 역할을 모두 선택해 주세요."
+
+#: 
+msgid "Range: -180 to 180."
+msgstr "범위: -180 ~ 180"
+
+#: 
+msgid "Range: -90 to 90."
+msgstr "범위: -90 ~ 90"
+
+#: 
+msgid "mo"
+msgstr "개월"
+
+#: 
+msgid "mos"
+msgstr "개월"
+
+#: 
+msgid "yr"
+msgstr "년"
+
+#: 
+msgid "yrs"
+msgstr "년"
+

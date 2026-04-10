@@ -3669,5 +3669,21 @@
     "eventIds must be a non-empty array": "eventIds는 비어 있지 않은 배열이어야 합니다",
     "invalid recurrence type": "유효하지 않은 반복 유형",
     "personIds must be a non-empty array": "personIds는 비어 있지 않은 배열이어야 합니다",
-    "to enable the reset button": "초기화 버튼을 활성화하려면"
+    "to enable the reset button": "초기화 버튼을 활성화하려면",
+    "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above.": "좌표가 저장되면 여기에 지도가 표시됩니다 — 주소에서 자동으로 감지되거나 위에서 수동으로 입력된 좌표입니다.",
+    "Both latitude and longitude must be provided together (or both left blank for automatic detection).": "위도와 경도는 함께 입력해야 합니다 (또는 자동 감지를 위해 둘 다 비워 두세요).",
+    "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates.": "교회 정보가 저장되었지만 주소를 자동으로 찾을 수 없었습니다. 지도 좌표 항목에서 위도와 경도를 수동으로 입력해 주세요.",
+    "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address.": "저장 시 주소에서 좌표가 자동으로 감지됩니다 (OpenStreetMap 사용). 아래에서 수동으로 입력할 수도 있습니다 — 수동 값은 항상 자동 감지보다 우선합니다. 시스템이 주소에서 좌표를 자동 검색하도록 하려면 둘 다 비워 두세요.",
+    "Latitude must be a number between -90 and 90.": "위도는 -90에서 90 사이의 숫자여야 합니다.",
+    "Longitude must be a number between -180 and 180.": "경도는 -180에서 180 사이의 숫자여야 합니다.",
+    "Map Coordinates": "지도 좌표",
+    "Please select a group.": "사역팀을 선택해 주세요.",
+    "Please select a role.": "역할을 선택해 주세요.",
+    "Please select both a group and a role.": "사역팀과 역할을 모두 선택해 주세요.",
+    "Range: -180 to 180.": "범위: -180 ~ 180",
+    "Range: -90 to 90.": "범위: -90 ~ 90",
+    "mo": "개월",
+    "mos": "개월",
+    "yr": "년",
+    "yrs": "년"
 }

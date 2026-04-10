@@ -15441,3 +15441,67 @@ msgstr "personIds boş olmayan bir dizi olmalıdır"
 msgid "to enable the reset button"
 msgstr "sıfırlama düğmesini etkinleştirmek için"
 
+#: 
+msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
+msgstr "Koordinatlar kaydedildikten sonra burada bir harita görünecektir — adresinizden otomatik algılanır veya yukarıda manuel olarak girilir."
+
+#: 
+msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr "Enlem ve boylam birlikte girilmeli ya da otomatik algılama için ikisi de boş bırakılmalıdır."
+
+#: 
+msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr "Kilise bilgileri kaydedildi, ancak adres otomatik olarak konumlandırılamadı. Lütfen enlemi ve boylamı Harita Koordinatları bölümünden manuel olarak girin."
+
+#: 
+msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
+msgstr "Koordinatlar kayıt sırasında adresinizden otomatik olarak algılanır (OpenStreetMap aracılığıyla). Aşağıya manuel olarak da girebilirsiniz — manuel değerler her zaman otomatik algılamaya göre önceliklidir. Sistemin adresten coğrafi kodlama yapması için her ikisini de boş bırakın."
+
+#: 
+msgid "Latitude must be a number between -90 and 90."
+msgstr "Enlem, -90 ile 90 arasında bir sayı olmalıdır."
+
+#: 
+msgid "Longitude must be a number between -180 and 180."
+msgstr "Boylam, -180 ile 180 arasında bir sayı olmalıdır."
+
+#: 
+msgid "Map Coordinates"
+msgstr "Harita Koordinatları"
+
+#: 
+msgid "Please select a group."
+msgstr "Lütfen bir grup seçin."
+
+#: 
+msgid "Please select a role."
+msgstr "Lütfen bir rol seçin."
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "Lütfen hem bir grup hem de bir rol seçin."
+
+#: 
+msgid "Range: -180 to 180."
+msgstr "Aralık: -180 ile 180."
+
+#: 
+msgid "Range: -90 to 90."
+msgstr "Aralık: -90 ile 90."
+
+#: 
+msgid "mo"
+msgstr "ay"
+
+#: 
+msgid "mos"
+msgstr "ay"
+
+#: 
+msgid "yr"
+msgstr "yıl"
+
+#: 
+msgid "yrs"
+msgstr "yıl"
+

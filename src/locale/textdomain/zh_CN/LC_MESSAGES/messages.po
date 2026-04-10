@@ -15510,3 +15510,67 @@ msgstr "personIds 必须是非空数组"
 msgid "to enable the reset button"
 msgstr "以启用重置按钮"
 
+#: 
+msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
+msgstr "坐标保存后，地图将在此处显示——可从您的地址自动检测，也可在上方手动输入。"
+
+#: 
+msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr "纬度和经度必须同时提供（或同时留空以进行自动检测）。"
+
+#: 
+msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr "教会信息已保存，但无法自动定位地址。请在「地图坐标」下手动输入纬度和经度。"
+
+#: 
+msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
+msgstr "坐标将在保存时通过 OpenStreetMap 从您的地址自动检测。您也可以在下方手动输入——手动值始终优先于自动检测。两者均留空可让系统根据地址进行地理编码。"
+
+#: 
+msgid "Latitude must be a number between -90 and 90."
+msgstr "纬度必须是 -90 至 90 之间的数字。"
+
+#: 
+msgid "Longitude must be a number between -180 and 180."
+msgstr "经度必须是 -180 至 180 之间的数字。"
+
+#: 
+msgid "Map Coordinates"
+msgstr "地图坐标"
+
+#: 
+msgid "Please select a group."
+msgstr "请选择一个事工组。"
+
+#: 
+msgid "Please select a role."
+msgstr "请选择一个角色。"
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "请同时选择一个事工组和一个角色。"
+
+#: 
+msgid "Range: -180 to 180."
+msgstr "范围：-180 至 180。"
+
+#: 
+msgid "Range: -90 to 90."
+msgstr "范围：-90 至 90。"
+
+#: 
+msgid "mo"
+msgstr "月"
+
+#: 
+msgid "mos"
+msgstr "月"
+
+#: 
+msgid "yr"
+msgstr "年"
+
+#: 
+msgid "yrs"
+msgstr "年"
+
