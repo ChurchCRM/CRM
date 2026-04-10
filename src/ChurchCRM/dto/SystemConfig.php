@@ -2,8 +2,9 @@
 
 namespace ChurchCRM\dto;
 
-use ChurchCRM\Config;
 use ChurchCRM\data\Countries;
+use ChurchCRM\model\ChurchCRM\Config;
+use ChurchCRM\model\ChurchCRM\ConfigQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Utils\InputUtils;
 use Exception;
@@ -452,7 +453,8 @@ class   SystemConfig
     public static function getBooleanValue(string $name): bool
     {
         if (!isset(self::$configs[$name])) {
-            throw new \Exception(gettext('An invalid configuration name has been requested') . ': ' . $name);
+            // For dynamic config keys (like plugin.*), delegate to getValue() which handles DB lookup
+            return boolval(self::getValue($name));
         }
 
         return self::$configs[$name]->getBooleanValue();
@@ -461,7 +463,8 @@ class   SystemConfig
     public static function getIntValue(string $name): int
     {
         if (!isset(self::$configs[$name])) {
-            throw new \Exception(gettext('An invalid configuration name has been requested') . ': ' . $name);
+            // For dynamic config keys (like plugin.*), delegate to getValue() which handles DB lookup
+            return (int) self::getValue($name);
         }
 
         return (int) self::$configs[$name]->getValue();
@@ -470,6 +473,18 @@ class   SystemConfig
     public static function setValue(string $name, $value): void
     {
         if (!isset(self::$configs[$name])) {
+            // For dynamic config keys (like plugin.*), handle directly via database
+            if (strpos($name, 'plugin.') === 0) {
+                // Find or create the config row by name
+                $dbConfig = ConfigQuery::create()->findOneByName($name);
+                if (!$dbConfig) {
+                    $dbConfig = new Config();
+                    $dbConfig->setName($name);
+                }
+                $dbConfig->setValue($value);
+                $dbConfig->save();
+                return;
+            }
             throw new \Exception(gettext('An invalid configuration name has been requested') . ': ' . $name);
         }
 
