@@ -9,6 +9,8 @@
  *  - Client-side date order validation (#6629)
  */
 
+import flatpickr from "flatpickr";
+
 document.addEventListener("DOMContentLoaded", () => {
   const $ = window.$;
   if (!$) return;
@@ -17,20 +19,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const t = window.i18next ? window.i18next.t.bind(window.i18next) : (s) => s;
 
   // ---------------------------------------------------------------------------
-  // daterangepicker setup
+  // flatpickr range picker setup (replaces daterangepicker)
   // ---------------------------------------------------------------------------
   if (cfg.startStr && cfg.endStr) {
-    const startDate = window.moment(cfg.startStr, "YYYY-MM-DD H:mm").format("YYYY-MM-DD h:mm A");
-    const endDate = window.moment(cfg.endStr, "YYYY-MM-DD H:mm").format("YYYY-MM-DD h:mm A");
-    $("#EventDateRange").val(`${startDate} - ${endDate}`);
-    $("#EventDateRange").daterangepicker({
-      timePicker: true,
-      timePickerIncrement: 30,
-      linkedCalendars: true,
-      showDropdowns: true,
-      locale: { format: "YYYY-MM-DD h:mm A" },
-      startDate,
-      endDate,
+    // Initialize input display (legacy formats are kept for now)
+    try {
+      document.querySelector("#EventDateRange").value = `${cfg.startStr} - ${cfg.endStr}`;
+    } catch (e) {
+      // ignore if element missing
+    }
+
+    // flatpickr will attempt to parse provided defaultDate strings according
+    // to the given dateFormat. Using 24-hour parse for input values emitted
+    // from the server (YYYY-MM-DD H:mm).
+    flatpickr("#EventDateRange", {
+      mode: "range",
+      enableTime: true,
+      time_24hr: false,
+      dateFormat: "Y-m-d H:i",
+      altInput: false,
+      defaultDate: [cfg.startStr, cfg.endStr],
+      minuteIncrement: 30,
     });
   }
 
@@ -62,12 +71,28 @@ document.addEventListener("DOMContentLoaded", () => {
   // Client-side date order validation (#6629) — block submit if end < start
   // ---------------------------------------------------------------------------
   $('form[name="EventsEditor"]').on("submit", (e) => {
-    const range = $("#EventDateRange").val() || "";
-    const parts = range.split(" - ");
-    if (parts.length !== 2) return;
-    const start = window.moment(parts[0], "YYYY-MM-DD h:mm A");
-    const end = window.moment(parts[1], "YYYY-MM-DD h:mm A");
-    if (start.isValid() && end.isValid() && end.isBefore(start)) {
+    // Prefer reading parsed dates from flatpickr instance when available.
+    const el = document.querySelector("#EventDateRange");
+    let startDate = null;
+    let endDate = null;
+    if (el && el._flatpickr && Array.isArray(el._flatpickr.selectedDates) && el._flatpickr.selectedDates.length === 2) {
+      startDate = el._flatpickr.selectedDates[0];
+      endDate = el._flatpickr.selectedDates[1];
+    } else {
+      // Fallback: try to parse the input value as two parts (string parsing)
+      const range = $("#EventDateRange").val() || "";
+      const parts = range.split(" - ");
+      if (parts.length === 2) {
+        const s = Date.parse(parts[0]);
+        const eDate = Date.parse(parts[1]);
+        if (!isNaN(s) && !isNaN(eDate)) {
+          startDate = new Date(s);
+          endDate = new Date(eDate);
+        }
+      }
+    }
+
+    if (startDate && endDate && endDate < startDate) {
       e.preventDefault();
       const msg = t("Event end date/time must be on or after the start date/time.");
       if (window.CRM && window.CRM.notify) {

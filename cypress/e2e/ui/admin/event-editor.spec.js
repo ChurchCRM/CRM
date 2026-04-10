@@ -25,6 +25,16 @@ describe('Event Editor', () => {
         cy.contains('Create a new Event').should('exist');
     });
 
+    it('initializes flatpickr on EventDateRange input', () => {
+        createEventFromFirstType();
+
+        // Ensure the date range input exists and flatpickr instance is attached
+        cy.get('#EventDateRange').should('exist').then(($el) => {
+            // The flatpickr instance is stored on the DOM element as _flatpickr
+            expect($el[0]._flatpickr).to.exist;
+        });
+    });
+
     it('should display attendance count fields', () => {
         createEventFromFirstType();
 
