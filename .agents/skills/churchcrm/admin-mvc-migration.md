@@ -237,6 +237,36 @@ $app->post('/event/types/{id}', function (Request $req, Response $res, array $ar
 });
 ```
 
+## URL Parameter Modernization — Drop Legacy Names <!-- learned: 2026-04-09 -->
+
+When migrating a legacy page to MVC, **rename URL/form parameters to modern camelCase and delete the legacy names entirely**. Do not keep `??` fallbacks for the old names — they create silent ambiguity, ship dead code paths, and the migration is the right moment to break the contract because the page's URL structure is already changing.
+
+**Legacy → modern**:
+
+| Legacy (PascalCase, hungarian, mixed) | Modern (camelCase) |
+|---|---|
+| `EventTypeID`, `EventID`, `WhichType`, `WhichYear`, `EN_tyid`, `EID` | `typeId`, `eventId`, `type`, `year` |
+| `AddedCount`, `EventTypeFilter` | `addedCount`, `typeFilter` |
+| `personID`, `FamilyID` | `personId`, `familyId` |
+
+```php
+// ❌ WRONG — keeps legacy fallback "just in case"
+$eventId = (int) ($args['id'] ?? $params['EID'] ?? $params['calendarAction'] ?? $params['eventId'] ?? 0);
+
+// ✅ CORRECT — modern name only
+$eventId = (int) ($args['id'] ?? 0);
+$typeId  = (int) ($params['typeId'] ?? 0);
+```
+
+**Update everything in one commit**:
+1. PHP routes — `$args['…']` and `$params['…']` reads
+2. PHP routes — `$body['…']` reads in POST handlers
+3. View files — `name="…"` and `id="…"` on form fields, `<label for="…">`, redirect URLs
+4. Webpack JS — `$('#OldId')` selectors and any URL-building string templates
+5. Cypress specs — selectors, URL assertions, redirect expectations
+
+**No backwards-compat shims**: this is the user's standing rule for migrations — see `MEMORY.md` → "No backward compat shims". Old bookmarks/links to the legacy `*.php` file are already broken by the MVC move; the URL parameter rename is the tail end of the same break, not a new one.
+
 ## Middleware Order (CRITICAL) <!-- learned: 2026-04-07 -->
 
 > **Full reference:** [`slim-4-best-practices.md` → Middleware Order](./slim-4-best-practices.md)

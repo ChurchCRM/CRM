@@ -14344,6 +14344,11 @@ msgstr "İstekte görüntü verisi eksik"
 
 #. Context: query_qry
 #: 
+msgid "Find people who didn't attend an event"
+msgstr "Bir etkinliğe katılmayan kişileri bul"
+
+#. Context: query_qry
+#: 
 msgid "Missing people"
 msgstr "Eksik kişiler"
 
@@ -14753,4 +14758,742 @@ msgstr "Sarı"
 #: 
 msgid "Your current access levels (read-only)"
 msgstr "Mevcut erişim seviyeleriniz (salt okunur)"
+
+#: 
+msgid "%d repeat event created successfully."
+msgid_plural "%d repeat events created successfully."
+msgstr[0] "%d tekrar eden etkinlik başarıyla oluşturuldu."
+msgstr[1] "%d tekrar eden etkinlik başarıyla oluşturuldu."
+
+#: 
+msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
+msgstr "(ör. Üyeler, Ziyaretçiler, Çocuklar) gönüllüler burada katılımcı sayısını kaydedebilir."
+
+#: 
+msgid "1. Sunday School Class"
+msgstr "1. Pazar Okulu Sınıfı"
+
+#: 
+msgid "2. Event Type"
+msgstr "2. Etkinlik Türü"
+
+#: 
+msgid "3. Event"
+msgstr "3. Etkinlik"
+
+#: 
+msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
+msgstr "Sınıf, \"Pazar Okulu\" türünde bir Hizmettir. Öğrencileri ve öğretmenleri (rolleri olan üyeleri) içerir."
+
+#: 
+msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
+msgstr "Bağlı bir hizmet, bu etkinliği bir sınıf veya hizmet listesiyle ilişkilendirir. Etkinlik bir Kiosk'a atandığında, kiosk hizmet üyelerini çeker ve dokunarak giriş yapılabilir liste olarak gösterir. Pazar Okulu sınıfları için, gönüllülerin tabletlerden öğrenci girişini yapabilmesi amacıyla sınıf hizmetini buraya bağlayın."
+
+#: 
+msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr "Belirli bir gerçekleşme (ör. \"Anaokulu — 12 Nis\"). Türden varsayılanları devralır ve kitle aracılığıyla sınıf hizmetiyle bağlantılıdır. Gönüllüler bu etkinlik için yoklama alır."
+
+#: 
+msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr "Bir etkinliğe atanmış tablet. Kiosk, etkinliğin bağlı hizmet listesini çeker ve dokunarak giriş seçeneğini gösterir. Bağlı hizmet olmadan kiosk'un gösterecek listesi yoktur."
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "Yürüyerek Gelen / Ziyaretçi Ekle"
+
+#: 
+msgid "Add categories on the Event Type page"
+msgstr "Etkinlik Türü sayfasında kategoriler ekleyin"
+
+#: 
+msgid "Add people to your cart first, then come back to check them in to an event."
+msgstr "Önce kişileri seçiminize ekleyin, ardından bir etkinliğe giriş yapmak için geri dönün."
+
+#: 
+msgid "All clear!"
+msgstr "Her şey temiz!"
+
+#: 
+msgid "All events and attendance records"
+msgstr "Tüm etkinlikler ve katılım kayıtları"
+
+#: 
+msgid "All financial data (pledges, payments, deposits)"
+msgstr "Tüm finansal veriler (mali taahhütler, ödemeler, depozitolar)"
+
+#: 
+msgid "All groups, roles, and memberships"
+msgstr "Tüm hizmetler, roller ve üyelikler"
+
+#: 
+msgid "All people and family records"
+msgstr "Tüm kişi ve aile kayıtları"
+
+#: 
+msgid "All system settings and custom fields"
+msgstr "Tüm sistem ayarları ve özel alanlar"
+
+#: 
+msgid "All uploaded photos and documents"
+msgstr "Yüklenen tüm fotoğraflar ve belgeler"
+
+#: 
+msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
+msgstr "Etkinlik Türü bir şablondur — ad, varsayılan başlangıç saati, tekrarlama, katılım sayısı kategorileri. İsteğe bağlı olarak varsayılan kitle olarak bir sınıf hizmetiyle bağlanabilir."
+
+#: 
+msgid "Attendance record deleted."
+msgstr "Katılım kaydı silindi."
+
+#: 
+msgid "Audit"
+msgstr "Denetim"
+
+#: 
+msgid "Audit Events"
+msgstr "Etkinlikleri Denetle"
+
+#: 
+msgid "Auto-totalled from counts at right"
+msgstr "Sağdaki sayımlardan otomatik toplam"
+
+#: 
+msgid "Back to Events"
+msgstr "Etkinliklere Dön"
+
+#: 
+msgid "Back to Events Dashboard"
+msgstr "Etkinlikler Panosuna Dön"
+
+#: 
+msgid "Backup failed. You can still proceed with the reset, but your data will be lost."
+msgstr "Yedekleme başarısız oldu. Sıfırlamaya devam edebilirsiniz, ancak verileriniz kaybolacaktır."
+
+#: 
+msgid "Backup ready!"
+msgstr "Yedekleme hazır!"
+
+#: 
+msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
+msgstr "Sıfırlamadan önce mevcut verilerinizin yedeğini indirmenizi şiddetle tavsiye ederiz. Bu, verileri korumak için tek fırsatınızdır."
+
+#: 
+msgid "Bulk-create a series of recurring events"
+msgstr "Bir dizi tekrar eden etkinliği toplu oluştur"
+
+#: 
+msgid "By"
+msgstr "Tarafından"
+
+#: 
+msgid "Cannot check in to an inactive event. Activate the event first."
+msgstr "Etkin olmayan bir etkinliğe giriş yapılamaz. Önce etkinliği etkinleştirin."
+
+#: 
+msgid "Change"
+msgstr "Değiştir"
+
+#: 
+msgid "Check In All"
+msgstr "Hepsini Giriş Yaptır"
+
+#: 
+msgid "Check In Family"
+msgstr "Aileyi Giriş Yaptır"
+
+#: 
+msgid "Check Out All"
+msgstr "Hepsini Çıkış Yaptır"
+
+#: 
+msgid "Check in all %d family members to a single event."
+msgstr "Tüm %d aile üyesini tek bir etkinliğe giriş yaptır."
+
+#: 
+msgid "Check out"
+msgstr "Çıkış yap"
+
+#: 
+msgid "Check-in By"
+msgstr "Giriş Yapan"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "Giriş başarısız oldu. Lütfen tekrar deneyin."
+
+#: 
+msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
+msgstr "Etkin olmayan etkinlikler için giriş devre dışıdır. Girişi etkinleştirmek için Etkinlikler Panosundan etkinliği etkinleştirin."
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "Çıkış başarısız oldu. Lütfen tekrar deneyin."
+
+#: 
+msgid "Checked in to event: %s"
+msgstr "%s etkinliğine giriş yapıldı"
+
+#: 
+msgid "Checked out from event: %s"
+msgstr "%s etkinliğinden çıkış yapıldı"
+
+#: 
+msgid "Close All Stuck Events"
+msgstr "Tüm Takılı Etkinlikleri Kapat"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "Çıkışı Onayla"
+
+#: 
+msgid "Create Repeat Events"
+msgstr "Tekrar Eden Etkinlikler Oluştur"
+
+#: 
+msgid "Create Today's Event"
+msgstr "Bugünün Etkinliğini Oluştur"
+
+#: 
+msgid "Create a new event type with recurrence and attendance settings"
+msgstr "Tekrarlama ve katılım ayarlarıyla yeni bir etkinlik türü oluştur"
+
+#: 
+msgid "Create one now"
+msgstr "Şimdi oluştur"
+
+#: 
+msgid "Create today's class event and link it to this class for kiosk check-in"
+msgstr "Bugünün sınıf etkinliğini oluştur ve kiosk girişi için bu sınıfa bağla"
+
+#: 
+msgid "Creating backup..."
+msgstr "Yedekleme oluşturuluyor..."
+
+#: 
+msgid "Creating..."
+msgstr "Oluşturuluyor..."
+
+#: 
+msgid "Database + uploaded photos (larger)"
+msgstr "Veritabanı + yüklenen fotoğraflar (daha büyük)"
+
+#: 
+msgid "Database dump only (.sql)"
+msgstr "Yalnızca veritabanı dökümü (.sql)"
+
+#: 
+msgid "Date Range"
+msgstr "Tarih Aralığı"
+
+#: 
+msgid "Date range cannot exceed 1 year"
+msgstr "Tarih aralığı 1 yılı aşamaz"
+
+#: 
+msgid "Deactivate"
+msgstr "Devre Dışı Bırak"
+
+#: 
+msgid "Delete Event Type"
+msgstr "Etkinlik Türünü Sil"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "Katılım kaydı silinsin mi?"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "Şunun giriş kaydını sil:"
+
+#: 
+msgid "Delete this event?"
+msgstr "Bu etkinlik silinsin mi?"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "Bir etkinliği silmek tüm katılım sayımlarını da siler. Bu işlem geri alınamaz."
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "Bu etkinlik türünü silmek mevcut etkinlikleri SİLMEYECEKTİR. Emin misiniz?"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "Bu etkinliği silmek tüm katılım kayıtlarını da siler. Bu işlem geri alınamaz."
+
+#: 
+msgid "Destructive Operation"
+msgstr "Yıkıcı İşlem"
+
+#: 
+msgid "Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field."
+msgstr "Bir kategori adını düzenleyin ve Kaydet'e tıklayın veya kaldırmak için çöp kutusu simgesini kullanın. Yeni satırlar alt alan aracılığıyla eklenir."
+
+#: 
+msgid "End Time"
+msgstr "Bitiş Saati"
+
+#: 
+msgid "End time must be after start time."
+msgstr "Bitiş saati başlangıç saatinden sonra olmalıdır."
+
+#: 
+msgid "Ended"
+msgstr "Sona Erdi"
+
+#: 
+msgid "Ends"
+msgstr "Bitiş"
+
+#: 
+msgid "Event Audit"
+msgstr "Etkinlik Denetimi"
+
+#: 
+msgid "Event Check-in"
+msgstr "Etkinlik Girişi"
+
+#: 
+msgid "Event Details"
+msgstr "Etkinlik Detayları"
+
+#: 
+msgid "Event Template"
+msgstr "Etkinlik Şablonu"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "Etkinlik zaten mevcut. Giriş sayfasına yönlendiriliyor..."
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "Etkinlik oluşturuldu. Giriş sayfasına yönlendiriliyor..."
+
+#: 
+msgid "Event end date/time must be on or after the start date/time."
+msgstr "Etkinlik bitiş tarihi/saati, başlangıç tarihi/saatinde veya sonrasında olmalıdır."
+
+#: 
+msgid "Event title is required."
+msgstr "Etkinlik başlığı zorunludur."
+
+#: 
+msgid "Event type ID is required"
+msgstr "Etkinlik türü kimliği zorunludur"
+
+#: 
+msgid "Event type ID or group ID is required"
+msgstr "Etkinlik türü kimliği veya hizmet kimliği zorunludur"
+
+#: 
+msgid "Event type has no date configured for yearly recurrence"
+msgstr "Etkinlik türünde yıllık tekrarlama için tarih yapılandırılmamış"
+
+#: 
+msgid "Event type has no day-of-week configured for weekly recurrence"
+msgstr "Etkinlik türünde haftalık tekrarlama için haftanın günü yapılandırılmamış"
+
+#: 
+msgid "Event type has no recurrence pattern configured"
+msgstr "Etkinlik türünde tekrarlama düzeni yapılandırılmamış"
+
+#: 
+msgid "Event type has no valid day-of-month configured for monthly recurrence"
+msgstr "Etkinlik türünde aylık tekrarlama için geçerli ayın günü yapılandırılmamış"
+
+#: 
+msgid "Events will be created for every matching occurrence within this date range."
+msgstr "Bu tarih aralığındaki her eşleşen oluşum için etkinlik oluşturulacaktır."
+
+#: 
+msgid "Every month on the"
+msgstr "Her ayın"
+
+#: 
+msgid "Every week on"
+msgstr "Her hafta"
+
+#: 
+msgid "Every year on"
+msgstr "Her yıl"
+
+#: 
+msgid "Everyone is checked in!"
+msgstr "Herkes giriş yaptı!"
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "Sınıf oluşturulamadı. Lütfen tekrar deneyin."
+
+#: 
+msgid "Failed to create event."
+msgstr "Etkinlik oluşturulamadı."
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "Etkinlik oluşturulamadı. Lütfen tekrar deneyin."
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "Silinemedi. Lütfen tekrar deneyin."
+
+#: 
+msgid "Fastest workflow:"
+msgstr "En hızlı iş akışı:"
+
+#: 
+msgid "Find past events that are still active or have un-checked-out attendees"
+msgstr "Hâlâ aktif olan veya çıkış yapmamış katılımcıları bulunan geçmiş etkinlikleri bul"
+
+#: 
+msgid "Format: MM-DD (e.g. 04-12 for April 12)"
+msgstr "Biçim: AA-GG (ör. Nisan 12 için 04-12)"
+
+#: 
+msgid "Group Roster"
+msgstr "Hizmet Listesi"
+
+#: 
+msgid "Hide Advanced Options"
+msgstr "Gelişmiş Seçenekleri Gizle"
+
+#: 
+msgid "How Sunday School + Events + Kiosks fit together"
+msgstr "Pazar Okulu + Etkinlikler + Kiosk'lar nasıl birlikte çalışır"
+
+#: 
+msgid "Invalid date for %s — expected YYYY-MM-DD"
+msgstr "%s için geçersiz tarih — YYYY-AA-GG bekleniyor"
+
+#: 
+msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr "rangeStart veya rangeEnd için geçersiz tarih biçimi"
+
+#: 
+msgid "Invalid date format."
+msgstr "Geçersiz tarih biçimi."
+
+#: 
+msgid "Invalid date; expected format YYYY-MM-DD"
+msgstr "Geçersiz tarih; beklenen biçim YYYY-AA-GG"
+
+#: 
+msgid "Invalid event type ID"
+msgstr "Geçersiz etkinlik türü kimliği"
+
+#: 
+msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
+msgstr "Geçersiz yıllık tekrarlama biçimi; AA-GG bekleniyor (ör. 04-12)"
+
+#: 
+msgid "Just now"
+msgstr "Az önce"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "Denetçiyi kaydetmeden çıkış yapmak için boş bırakın."
+
+#: 
+msgid "Link events to a group for Kiosk check-in functionality."
+msgstr "Kiosk giriş işlevi için etkinlikleri bir hizmetle ilişkilendirin."
+
+#: 
+msgid "Linked Groups"
+msgstr "Bağlı Hizmetler"
+
+#: 
+msgid "Looking for stuck events..."
+msgstr "Takılı etkinlikler aranıyor..."
+
+#: 
+msgid "Manage event names, recurrence patterns, and attendance counts"
+msgstr "Etkinlik adlarını, tekrarlama düzenlerini ve katılım sayımlarını yönet"
+
+#: 
+msgid "Missing required field: %s"
+msgstr "Zorunlu alan eksik: %s"
+
+#: 
+msgid "No Events Today"
+msgstr "Bugün Etkinlik Yok"
+
+#: 
+msgid "No Group"
+msgstr "Hizmet Yok"
+
+#: 
+msgid "No active assignment"
+msgstr "Aktif atama yok"
+
+#: 
+msgid "No active events found."
+msgstr "Aktif etkinlik bulunamadı."
+
+#: 
+msgid "No attendance count categories defined for this event type yet."
+msgstr "Bu etkinlik türü için henüz katılım sayısı kategorisi tanımlanmamış."
+
+#: 
+msgid "No one has been checked in to this event yet."
+msgstr "Bu etkinliğe henüz kimse giriş yapmadı."
+
+#: 
+msgid "No past events are still marked Active."
+msgstr "Geçmiş etkinliklerden hiçbiri hâlâ Aktif olarak işaretli değil."
+
+#: 
+msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr "Bir sınıf açın → \"Bugünün Etkinliğini Oluştur\"a tıklayın — etkinlik oluşturulur ve tek adımda sınıfa bağlanır, ardından kiosk veya doğrudan katılım için giriş sayfasına gelirsiniz."
+
+#: 
+msgid "Optional Settings"
+msgstr "İsteğe Bağlı Ayarlar"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "İsteğe bağlı — bu kişiyi çıkaran kişiyi kaydedin (ör. çocuğunu alan bir ebeveyn)."
+
+#: 
+msgid "Person checked out."
+msgstr "Kişi çıkış yaptı."
+
+#: 
+msgid "Person is not checked in"
+msgstr "Kişi giriş yapmamış"
+
+#: 
+msgid "Person not in active class roster"
+msgstr "Kişi aktif sınıf listesinde değil"
+
+#: 
+msgid "Pin to Calendars"
+msgstr "Takvimlere Sabitle"
+
+#: 
+msgid "Please select a person to check in."
+msgstr "Lütfen giriş yapacak bir kişi seçin."
+
+#: 
+msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
+msgstr "Bu etkinlik türüne göre önceden doldurulmuş — tekrar eden türler için tarih, bu türün son etkinliğinden sonraki oluşumdur ve saat türün varsayılan başlangıç saatiyle eşleşir."
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "Aralık bitiş tarihi, aralık başlangıç tarihinde veya sonrasında olmalıdır."
+
+#: 
+msgid "Range end must be a valid YYYY-MM-DD date."
+msgstr "Aralık bitişi geçerli bir YYYY-AA-GG tarihi olmalıdır."
+
+#: 
+msgid "Range start must be a valid YYYY-MM-DD date."
+msgstr "Aralık başlangıcı geçerli bir YYYY-AA-GG tarihi olmalıdır."
+
+#: 
+msgid "Range start must be before range end"
+msgstr "Aralık başlangıcı aralık bitişinden önce olmalıdır"
+
+#: 
+msgid "Range start must be before range end."
+msgstr "Aralık başlangıcı aralık bitişinden önce olmalıdır."
+
+#: 
+msgid "RangeEnd must be on or after RangeStart"
+msgstr "RangeEnd, RangeStart'ta veya sonrasında olmalıdır"
+
+#: 
+msgid "Recommended"
+msgstr "Önerilen"
+
+#: 
+msgid "Required for Kiosk"
+msgstr "Kiosk için Zorunlu"
+
+#: 
+msgid "Resetting will permanently delete:"
+msgstr "Sıfırlama kalıcı olarak silecektir:"
+
+#: 
+msgid "SQL Only"
+msgstr "Yalnızca SQL"
+
+#: 
+msgid "Save Time"
+msgstr "Zaman Kazanın"
+
+#: 
+msgid "Save changes to this category name"
+msgstr "Bu kategori adındaki değişiklikleri kaydet"
+
+#: 
+msgid "Select an event type…"
+msgstr "Bir etkinlik türü seçin…"
+
+#: 
+msgid "Select start and end date/time."
+msgstr "Başlangıç ve bitiş tarihi/saatini seçin."
+
+#: 
+msgid "Show More Options"
+msgstr "Daha Fazla Seçenek Göster"
+
+#: 
+msgid "Skip"
+msgstr "Atla"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "Atla ve Çıkış Yap"
+
+#: 
+msgid "Start Check-in"
+msgstr "Girişi Başlat"
+
+#: 
+msgid "Starts"
+msgstr "Başlangıç"
+
+#: 
+msgid "Step 1: Create a Backup"
+msgstr "Adım 1: Yedek Oluştur"
+
+#: 
+msgid "Step 2: Reset Database"
+msgstr "Adım 2: Veritabanını Sıfırla"
+
+#: 
+msgid "Still Checked In"
+msgstr "Hâlâ Giriş Yapılmış"
+
+#: 
+msgid "Stuck Events"
+msgstr "Takılı Etkinlikler"
+
+#: 
+msgid "Take Attendance"
+msgstr "Yoklama Al"
+
+#: 
+msgid "The Events module is disabled"
+msgstr "Etkinlikler modülü devre dışı"
+
+#: 
+msgid "The same start and end time will be used for all generated events."
+msgstr "Oluşturulan tüm etkinlikler için aynı başlangıç ve bitiş saati kullanılacaktır."
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "Bugün için planlanmış etkinlik yok"
+
+#: 
+msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
+msgstr "Bunlar katılımcı sayısı gruplarıdır — gönüllüler etkinlikten sonra bunları doldurur, böylece pano katılımı ayrıştırabilir (ör. kaç cemaat üyesi ve kaç ziyaretçi). Bunlar, Giriş sayfasındaki bireysel girişlerden ayrıdır."
+
+#: 
+msgid "This event is inactive."
+msgstr "Bu etkinlik etkin değil."
+
+#: 
+msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr "Bu sayfa, ChurchCRM veritabanındaki tüm verileri kalıcı olarak silmenizi sağlar. Bu işlem geri alınamaz."
+
+#: 
+msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
+msgstr "Bu rapor, bitiş tarihi geçmiş ancak hâlâ Aktif olarak işaretli tüm etkinlikleri listeler. Yaygın nedenler: bir gönüllü 'Çıkış Yap'a dokunmayı unuttu, bir kiosk bağlantısını kaybetti veya etkinlik oluşturulup terk edildi. Hiç devre dışı bırakılmamış eski etkinlikler (yıllar önce) de burada görünür. 'Hâlâ Giriş Yapılmış' sütunu, giriş ortasında kalan biri olup olmadığını gösterir. Bu rapordan bir etkinliği kapatmak, herkesi çıkış yaptırır (geçerli saati kullanarak) ve etkinliği Etkin Değil olarak işaretler."
+
+#: 
+msgid "This title will be used for all generated events."
+msgstr "Bu başlık oluşturulan tüm etkinlikler için kullanılacaktır."
+
+#: 
+msgid "Today's Events"
+msgstr "Bugünün Etkinlikleri"
+
+#: 
+msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
+msgstr "Çok fazla oluşum (%d) — tarih aralığını daraltın. İzin verilen maksimum: %d"
+
+#: 
+msgid "Type RESET to confirm"
+msgstr "Onaylamak için RESET yazın"
+
+#: 
+msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
+msgstr "Bugünün etkinliğini tek tıklamayla oluşturmak için yukarıdaki düğmeyi kullanın. Bir Kiosk'un listeyi çekebilmesi için bu sınıfa otomatik olarak bağlanacaktır."
+
+#: 
+msgid "Use this form to bulk-create a series of recurring events. Each event is created individually and can be edited or deleted independently after creation."
+msgstr "Bir dizi tekrar eden etkinliği toplu oluşturmak için bu formu kullanın. Her etkinlik ayrı ayrı oluşturulur ve oluşturulduktan sonra bağımsız olarak düzenlenebilir veya silinebilir."
+
+#: 
+msgid "Used as the default start time when creating events of this type."
+msgstr "Bu türde etkinlikler oluştururken varsayılan başlangıç saati olarak kullanılır."
+
+#: 
+msgid "User must have Add Event permission and the Events module must be enabled"
+msgstr "Kullanıcının Etkinlik Ekle iznine sahip olması ve Etkinlikler modülünün etkin olması gerekir"
+
+#: 
+msgid "Valid startDate and endDate are required"
+msgstr "Geçerli startDate ve endDate zorunludur"
+
+#: 
+msgid "View Event"
+msgstr "Etkinliği Görüntüle"
+
+#: 
+msgid "What are these for?"
+msgstr "Bunlar ne için?"
+
+#: 
+msgid "What does this find?"
+msgstr "Bu ne bulur?"
+
+#: 
+msgid "What is this for?"
+msgstr "Bu ne için?"
+
+#: 
+msgid "Who is bringing them in?"
+msgstr "Onları kim getiriyor?"
+
+#: 
+msgid "You must select a valid recurrence pattern."
+msgstr "Geçerli bir tekrarlama düzeni seçmelisiniz."
+
+#: 
+msgid "You must select an event type."
+msgstr "Bir etkinlik türü seçmelisiniz."
+
+#: 
+msgid "You must specify a date range."
+msgstr "Bir tarih aralığı belirtmelisiniz."
+
+#: 
+msgid "checked in"
+msgstr "giriş yapıldı"
+
+#: 
+msgid "e.g., Sunday Worship Service"
+msgstr "ör. Pazar İbadet Ayini"
+
+#: 
+msgid "endDate must be after startDate"
+msgstr "endDate, startDate'den sonra olmalıdır"
+
+#: 
+msgid "eventIds must be a non-empty array"
+msgstr "eventIds boş olmayan bir dizi olmalıdır"
+
+#: 
+msgid "invalid recurrence type"
+msgstr "geçersiz tekrarlama türü"
+
+#: 
+msgid "personIds must be a non-empty array"
+msgstr "personIds boş olmayan bir dizi olmalıdır"
+
+#: 
+msgid "to enable the reset button"
+msgstr "sıfırlama düğmesini etkinleştirmek için"
 
