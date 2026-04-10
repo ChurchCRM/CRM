@@ -764,4 +764,76 @@ class Person extends BasePerson implements PhotoInterface
 
         return $initialString;
     }
+
+    /**
+     * Resolve address fields with family fallback (issue #7937).
+     *
+     * When a person doesn't have personal address/contact data, falls back to their family's data.
+     * Ensures complete address coverage for single-member households and people without personal address entries.
+     * Returns empty string if neither person nor family has the value.
+     *
+     * @return string Resolved address field with family fallback
+     */
+    public function getResolvedAddress1(): string
+    {
+        if (!empty(parent::getAddress1())) {
+            return parent::getAddress1();
+        }
+        $family = $this->getFamily();
+        return $family?->getAddress1() ?? '';
+    }
+
+    public function getResolvedAddress2(): string
+    {
+        if (!empty(parent::getAddress2())) {
+            return parent::getAddress2();
+        }
+        $family = $this->getFamily();
+        return $family?->getAddress2() ?? '';
+    }
+
+    public function getResolvedCity(): string
+    {
+        if (!empty(parent::getCity())) {
+            return parent::getCity();
+        }
+        $family = $this->getFamily();
+        return $family?->getCity() ?? '';
+    }
+
+    public function getResolvedState(): string
+    {
+        if (!empty(parent::getState())) {
+            return parent::getState();
+        }
+        $family = $this->getFamily();
+        return $family?->getState() ?? '';
+    }
+
+    public function getResolvedZip(): string
+    {
+        if (!empty(parent::getZip())) {
+            return parent::getZip();
+        }
+        $family = $this->getFamily();
+        return $family?->getZip() ?? '';
+    }
+
+    public function getResolvedCountry(): string
+    {
+        if (!empty(parent::getCountry())) {
+            return parent::getCountry();
+        }
+        $family = $this->getFamily();
+        return $family?->getCountry() ?? '';
+    }
+
+    public function getResolvedHomePhone(): string
+    {
+        if (!empty(parent::getHomePhone())) {
+            return parent::getHomePhone();
+        }
+        $family = $this->getFamily();
+        return $family?->getHomePhone() ?? '';
+    }
 }

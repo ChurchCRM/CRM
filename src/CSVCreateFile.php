@@ -374,21 +374,22 @@ if ($sFormat === 'addtocart') {
         extract($aRow);
         $person = PersonQuery::create()->findOneById($per_ID);
 
-        // Use person data only - each person must enter their own information
-        if ($sFormat === 'rollup') {
-            // Even in rollup format, use person data (no family inheritance)
-            $sHomePhone = $per_HomePhone ?? '';
+        // Use Person entity methods with family fallback (issue #7937)
+        // Person entity provides resolved address fields that automatically fall back to family data
+        // Family relationship is lazy-loaded when accessed
+        if ($person) {
+            $sHomePhone = $person->getResolvedHomePhone();
             $sWorkPhone = $per_WorkPhone ?? '';
             $sCellPhone = $per_CellPhone ?? '';
-            $sCountry = $per_Country ?? '';
-            $sAddress1 = $per_Address1 ?? '';
-            $sAddress2 = $per_Address2 ?? '';
-            $sCity = $per_City ?? '';
-            $sState = $per_State ?? '';
-            $sZip = $per_Zip ?? '';
-            $sEmail = $per_Email ?? '';
+            $sCountry = $person->getResolvedCountry();
+            $sAddress1 = $person->getResolvedAddress1();
+            $sAddress2 = $person->getResolvedAddress2();
+            $sCity = $person->getResolvedCity();
+            $sState = $person->getResolvedState();
+            $sZip = $person->getResolvedZip();
+            $sEmail = $person->getEmail();
         } else {
-            // Individual data - use person data only
+            // Fallback if person not found (use raw variables from extract)
             $sHomePhone = $per_HomePhone ?? '';
             $sWorkPhone = $per_WorkPhone ?? '';
             $sCellPhone = $per_CellPhone ?? '';
