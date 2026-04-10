@@ -1,13 +1,11 @@
 {
   "%d result for \"%s\"": {
-    "other": "\"%s\"에 대한 %d개의 결과"
+    "other": ""
   },
   "BCC": "",
   "N/A": "",
   "name@example.com": "",
-  "Azure": "Azure",
   "%d repeat event created successfully.": {
-    "other": "%d개의 반복 이벤트가 성공적으로 생성되었습니다."
-  },
-  "4. Kiosk": "4. 키오스크"
+    "other": ""
+  }
 }

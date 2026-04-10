@@ -1,19 +1,11 @@
 {
   "%d result for \"%s\"": {
-    "other": "%d hasil untuk \"%s\""
+    "other": ""
   },
-  "Administrator": "Administrator",
-  "Email BCC": "Email BCC",
-  "Format": "Format",
-  "Manual": "Manual",
-  "Minimum": "Minimum",
   "BCC": "",
   "N/A": "",
   "name@example.com": "",
-  "Azure": "Azure",
-  "Malayalam - India": "Malayalam - India",
   "%d repeat event created successfully.": {
-    "other": "%d acara berulang berhasil dibuat."
-  },
-  "Audit": "Audit"
+    "other": ""
+  }
 }
