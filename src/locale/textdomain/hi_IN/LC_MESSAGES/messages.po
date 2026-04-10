@@ -14719,3 +14719,589 @@ msgstr "पीला"
 msgid "Your current access levels (read-only)"
 msgstr "आपके वर्तमान पहुँच स्तर (केवल-पठन)"
 
+#: 
+msgid "%d repeat event created successfully."
+msgid_plural "%d repeat events created successfully."
+msgstr[0] "%d आवर्ती कार्यक्रम सफलतापूर्वक बनाया गया।"
+msgstr[1] "%d आवर्ती कार्यक्रम सफलतापूर्वक बनाए गए।"
+
+#: 
+msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
+msgstr "(जैसे सदस्य, आगंतुक, बच्चे) ताकि स्वयंसेवक यहाँ उपस्थिति संख्या दर्ज कर सकें।"
+
+#: 
+msgid "1. Sunday School Class"
+msgstr "1. संडे स्कूल कक्षा"
+
+#: 
+msgid "2. Event Type"
+msgstr "2. कार्यक्रम प्रकार"
+
+#: 
+msgid "3. Event"
+msgstr "3. कार्यक्रम"
+
+#: 
+msgid "4. Kiosk"
+msgstr "4. चेक-इन कियोस्क"
+
+#: 
+msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
+msgstr "एक कक्षा \"संडे स्कूल\" प्रकार का एक समूह है। इसमें छात्र और शिक्षक (भूमिकाओं वाले सदस्य) होते हैं।"
+
+#: 
+msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
+msgstr "एक लिंक किया गया समूह इस कार्यक्रम को एक कक्षा या मंत्रालय रोस्टर से जोड़ता है। जब कार्यक्रम को किसी कियोस्क को सौंपा जाता है, तो कियोस्क समूह के सदस्यों को खींचता है और उन्हें टैप-टू-चेक-इन सूची के रूप में दिखाता है।"
+
+#: 
+msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr "एक विशिष्ट घटना (जैसे \"प्रीस्कूल — 12 अप्रैल\")। प्रकार से डिफ़ॉल्ट विरासत में मिलती है और दर्शकों के माध्यम से कक्षा समूह से जुड़ी होती है।"
+
+#: 
+msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr "एक टैबलेट जो एक कार्यक्रम को सौंपा गया है। कियोस्क कार्यक्रम के लिंक किए गए समूह रोस्टर को खींचता है।"
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "वॉक-इन / आगंतुक जोड़ें"
+
+#: 
+msgid "Add categories on the Event Type page"
+msgstr "कार्यक्रम प्रकार पृष्ठ पर श्रेणियाँ जोड़ें"
+
+#: 
+msgid "Add people to your cart first, then come back to check them in to an event."
+msgstr "पहले लोगों को अपने चयन में जोड़ें, फिर किसी कार्यक्रम में उन्हें चेक इन करने के लिए वापस आएँ।"
+
+#: 
+msgid "All clear!"
+msgstr "सब ठीक है!"
+
+#: 
+msgid "All events and attendance records"
+msgstr "सभी कार्यक्रम और उपस्थिति अभिलेख"
+
+#: 
+msgid "All financial data (pledges, payments, deposits)"
+msgstr "सभी वित्तीय डेटा (वित्तीय प्रतिबद्धताएँ, भुगतान, जमा)"
+
+#: 
+msgid "All groups, roles, and memberships"
+msgstr "सभी समूह, भूमिकाएँ और सदस्यताएँ"
+
+#: 
+msgid "All people and family records"
+msgstr "सभी व्यक्ति और परिवार अभिलेख"
+
+#: 
+msgid "All system settings and custom fields"
+msgstr "सभी सिस्टम सेटिंग्स और कस्टम फ़ील्ड"
+
+#: 
+msgid "All uploaded photos and documents"
+msgstr "सभी अपलोड किए गए फ़ोटो और दस्तावेज़"
+
+#: 
+msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
+msgstr "एक कार्यक्रम प्रकार एक टेम्पलेट है — नाम, डिफ़ॉल्ट प्रारंभ समय, पुनरावृत्ति, उपस्थिति गणना श्रेणियाँ।"
+
+#: 
+msgid "Attendance record deleted."
+msgstr "उपस्थिति अभिलेख हटाया गया।"
+
+#: 
+msgid "Audit"
+msgstr "ऑडिट"
+
+#: 
+msgid "Audit Events"
+msgstr "ऑडिट कार्यक्रम"
+
+#: 
+msgid "Auto-totalled from counts at right"
+msgstr "दाईं ओर की गणनाओं से स्वतः योग"
+
+#: 
+msgid "Back to Events"
+msgstr "कार्यक्रमों पर वापस जाएँ"
+
+#: 
+msgid "Back to Events Dashboard"
+msgstr "कार्यक्रम डैशबोर्ड पर वापस जाएँ"
+
+#: 
+msgid "Backup failed. You can still proceed with the reset, but your data will be lost."
+msgstr "बैकअप विफल हुआ। आप फिर भी रीसेट के साथ आगे बढ़ सकते हैं, लेकिन आपका डेटा खो जाएगा।"
+
+#: 
+msgid "Backup ready!"
+msgstr "बैकअप तैयार है!"
+
+#: 
+msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
+msgstr "रीसेट करने से पहले, हम दृढ़ता से आपके वर्तमान डेटा का बैकअप डाउनलोड करने की अनुशंसा करते हैं।"
+
+#: 
+msgid "Bulk-create a series of recurring events"
+msgstr "आवर्ती कार्यक्रमों की एक श्रृंखला एकसाथ बनाएँ"
+
+#: 
+msgid "By"
+msgstr "द्वारा"
+
+#: 
+msgid "Cannot check in to an inactive event. Activate the event first."
+msgstr "निष्क्रिय कार्यक्रम में चेक इन नहीं किया जा सकता। पहले कार्यक्रम सक्रिय करें।"
+
+#: 
+msgid "Change"
+msgstr "बदलें"
+
+#: 
+msgid "Check In All"
+msgstr "सभी को चेक इन करें"
+
+#: 
+msgid "Check In Family"
+msgstr "परिवार को चेक इन करें"
+
+#: 
+msgid "Check Out All"
+msgstr "सभी को चेक आउट करें"
+
+#: 
+msgid "Check in all %d family members to a single event."
+msgstr "सभी %d परिवार के सदस्यों को एक कार्यक्रम में चेक इन करें।"
+
+#: 
+msgid "Check out"
+msgstr "चेक आउट"
+
+#: 
+msgid "Check-in By"
+msgstr "चेक-इन किसके द्वारा"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "चेक-इन विफल हुआ। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
+msgstr "निष्क्रिय कार्यक्रमों के लिए चेक-इन अक्षम है। चेक-इन सक्षम करने के लिए कार्यक्रम डैशबोर्ड से कार्यक्रम सक्रिय करें।"
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "चेक-आउट विफल हुआ। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Checked in to event: %s"
+msgstr "कार्यक्रम में चेक इन किया: %s"
+
+#: 
+msgid "Checked out from event: %s"
+msgstr "कार्यक्रम से चेक आउट किया: %s"
+
+#: 
+msgid "Close All Stuck Events"
+msgstr "सभी अटके कार्यक्रम बंद करें"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "चेक आउट की पुष्टि करें"
+
+#: 
+msgid "Create Repeat Events"
+msgstr "आवर्ती कार्यक्रम बनाएँ"
+
+#: 
+msgid "Create Today's Event"
+msgstr "आज का कार्यक्रम बनाएँ"
+
+#: 
+msgid "Create a new event type with recurrence and attendance settings"
+msgstr "पुनरावृत्ति और उपस्थिति सेटिंग्स के साथ एक नया कार्यक्रम प्रकार बनाएँ"
+
+#: 
+msgid "Create one now"
+msgstr "अभी एक बनाएँ"
+
+#: 
+msgid "Create today's class event and link it to this class for kiosk check-in"
+msgstr "आज का कक्षा कार्यक्रम बनाएँ और कियोस्क चेक-इन के लिए इसे इस कक्षा से लिंक करें"
+
+#: 
+msgid "Creating backup..."
+msgstr "बैकअप बनाया जा रहा है..."
+
+#: 
+msgid "Creating..."
+msgstr "बनाया जा रहा है..."
+
+#: 
+msgid "Database + uploaded photos (larger)"
+msgstr "डेटाबेस + अपलोड किए गए फ़ोटो (बड़ा)"
+
+#: 
+msgid "Database dump only (.sql)"
+msgstr "केवल डेटाबेस डंप (.sql)"
+
+#: 
+msgid "Date Range"
+msgstr "तारीख सीमा"
+
+#: 
+msgid "Date range cannot exceed 1 year"
+msgstr "तारीख सीमा 1 वर्ष से अधिक नहीं हो सकती"
+
+#: 
+msgid "Deactivate"
+msgstr "निष्क्रिय करें"
+
+#: 
+msgid "Delete Event Type"
+msgstr "कार्यक्रम प्रकार हटाएँ"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "उपस्थिति अभिलेख हटाएँ?"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "चेक-इन अभिलेख हटाएँ"
+
+#: 
+msgid "Delete this event?"
+msgstr "यह कार्यक्रम हटाएँ?"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "कार्यक्रम हटाने से सभी उपस्थिति गणनाएँ भी हट जाएंगी। यह क्रिया पूर्ववत नहीं की जा सकती।"
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "इस कार्यक्रम प्रकार को हटाने से मौजूदा कार्यक्रम नहीं हटेंगे। क्या आप सुनिश्चित हैं?"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "यह कार्यक्रम हटाने से सभी उपस्थिति अभिलेख भी हट जाएंगे। यह क्रिया पूर्ववत नहीं की जा सकती।"
+
+#: 
+msgid "Destructive Operation"
+msgstr "विनाशकारी क्रिया"
+
+#: 
+msgid "Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field."
+msgstr "एक श्रेणी नाम संपादित करें और सहेजें पर क्लिक करें, या हटाने के लिए ट्रैश आइकन का उपयोग करें।"
+
+#: 
+msgid "End Time"
+msgstr "समाप्ति समय"
+
+#: 
+msgid "End time must be after start time."
+msgstr "समाप्ति समय प्रारंभ समय के बाद होना चाहिए।"
+
+#: 
+msgid "Ended"
+msgstr "समाप्त"
+
+#: 
+msgid "Ends"
+msgstr "समाप्त होता है"
+
+#: 
+msgid "Event Audit"
+msgstr "कार्यक्रम ऑडिट"
+
+#: 
+msgid "Event Check-in"
+msgstr "कार्यक्रम चेक-इन"
+
+#: 
+msgid "Event Details"
+msgstr "कार्यक्रम विवरण"
+
+#: 
+msgid "Event Template"
+msgstr "कार्यक्रम टेम्पलेट"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "कार्यक्रम पहले से मौजूद है। चेक-इन पर पुनर्निर्देशित किया जा रहा है..."
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "कार्यक्रम बनाया गया। चेक-इन पर पुनर्निर्देशित किया जा रहा है..."
+
+#: 
+msgid "Event end date/time must be on or after the start date/time."
+msgstr "कार्यक्रम समाप्ति तारीख/समय प्रारंभ तारीख/समय पर या उसके बाद होनी चाहिए।"
+
+#: 
+msgid "Event title is required."
+msgstr "कार्यक्रम शीर्षक आवश्यक है।"
+
+#: 
+msgid "Event type ID is required"
+msgstr "कार्यक्रम प्रकार ID आवश्यक है"
+
+#: 
+msgid "Event type ID or group ID is required"
+msgstr "कार्यक्रम प्रकार ID या समूह ID आवश्यक है"
+
+#: 
+msgid "Event type has no date configured for yearly recurrence"
+msgstr "कार्यक्रम प्रकार में वार्षिक पुनरावृत्ति के लिए कोई तारीख कॉन्फ़िगर नहीं की गई है"
+
+#: 
+msgid "Event type has no day-of-week configured for weekly recurrence"
+msgstr "कार्यक्रम प्रकार में साप्ताहिक पुनरावृत्ति के लिए सप्ताह का दिन कॉन्फ़िगर नहीं किया गया है"
+
+#: 
+msgid "Event type has no recurrence pattern configured"
+msgstr "कार्यक्रम प्रकार में कोई पुनरावृत्ति पैटर्न कॉन्फ़िगर नहीं किया गया है"
+
+#: 
+msgid "Event type has no valid day-of-month configured for monthly recurrence"
+msgstr "कार्यक्रम प्रकार में मासिक पुनरावृत्ति के लिए महीने का वैध दिन कॉन्फ़िगर नहीं किया गया है"
+
+#: 
+msgid "Events will be created for every matching occurrence within this date range."
+msgstr "इस तारीख सीमा के भीतर हर मिलान घटना के लिए कार्यक्रम बनाए जाएंगे।"
+
+#: 
+msgid "Every month on the"
+msgstr "हर महीने"
+
+#: 
+msgid "Every week on"
+msgstr "हर हफ्ते"
+
+#: 
+msgid "Every year on"
+msgstr "हर साल"
+
+#: 
+msgid "Everyone is checked in!"
+msgstr "सभी चेक इन हो गए हैं!"
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "कक्षा बनाने में विफल। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Failed to create event."
+msgstr "कार्यक्रम बनाने में विफल।"
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "कार्यक्रम बनाने में विफल। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "हटाने में विफल। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Fastest workflow:"
+msgstr "सबसे तेज़ कार्यप्रवाह:"
+
+#: 
+msgid "Find past events that are still active or have un-checked-out attendees"
+msgstr "ऐसे पुराने कार्यक्रम खोजें जो अभी भी सक्रिय हैं या जिनके प्रतिभागी चेक आउट नहीं हुए"
+
+#: 
+msgid "Format: MM-DD (e.g. 04-12 for April 12)"
+msgstr "प्रारूप: MM-DD (जैसे 12 अप्रैल के लिए 04-12)"
+
+#: 
+msgid "Group Roster"
+msgstr "समूह रोस्टर"
+
+#: 
+msgid "Hide Advanced Options"
+msgstr "उन्नत विकल्प छुपाएँ"
+
+#: 
+msgid "How Sunday School + Events + Kiosks fit together"
+msgstr "संडे स्कूल + कार्यक्रम + कियोस्क कैसे एक साथ काम करते हैं"
+
+#: 
+msgid "Invalid date for %s — expected YYYY-MM-DD"
+msgstr "%s के लिए अमान्य तारीख — YYYY-MM-DD अपेक्षित"
+
+#: 
+msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr "rangeStart या rangeEnd के लिए अमान्य तारीख प्रारूप"
+
+#: 
+msgid "Invalid date format."
+msgstr "अमान्य तारीख प्रारूप।"
+
+#: 
+msgid "Invalid date; expected format YYYY-MM-DD"
+msgstr "अमान्य तारीख; अपेक्षित प्रारूप YYYY-MM-DD"
+
+#: 
+msgid "Invalid event type ID"
+msgstr "अमान्य कार्यक्रम प्रकार ID"
+
+#: 
+msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
+msgstr "अमान्य वार्षिक पुनरावृत्ति प्रारूप; MM-DD अपेक्षित (जैसे 04-12)"
+
+#: 
+msgid "Just now"
+msgstr "अभी-अभी"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "पर्यवेक्षक को रिकॉर्ड किए बिना चेक आउट करने के लिए खाली छोड़ें।"
+
+#: 
+msgid "Link events to a group for Kiosk check-in functionality."
+msgstr "कियोस्क चेक-इन कार्यक्षमता के लिए कार्यक्रमों को एक समूह से लिंक करें।"
+
+#: 
+msgid "Linked Groups"
+msgstr "लिंक किए गए समूह"
+
+#: 
+msgid "Looking for stuck events..."
+msgstr "अटके कार्यक्रम खोजे जा रहे हैं..."
+
+#: 
+msgid "Manage event names, recurrence patterns, and attendance counts"
+msgstr "कार्यक्रम नाम, पुनरावृत्ति पैटर्न और उपस्थिति गणनाएँ प्रबंधित करें"
+
+#: 
+msgid "Missing required field: %s"
+msgstr "आवश्यक फ़ील्ड गुम: %s"
+
+#: 
+msgid "No Events Today"
+msgstr "आज कोई कार्यक्रम नहीं"
+
+#: 
+msgid "No Group"
+msgstr "कोई समूह नहीं"
+
+#: 
+msgid "No active assignment"
+msgstr "कोई सक्रिय असाइनमेंट नहीं"
+
+#: 
+msgid "No active events found."
+msgstr "कोई सक्रिय कार्यक्रम नहीं मिला।"
+
+#: 
+msgid "No attendance count categories defined for this event type yet."
+msgstr "इस कार्यक्रम प्रकार के लिए अभी तक कोई उपस्थिति गणना श्रेणी परिभाषित नहीं की गई है।"
+
+#: 
+msgid "No one has been checked in to this event yet."
+msgstr "अभी तक कोई भी इस कार्यक्रम में चेक इन नहीं हुआ है।"
+
+#: 
+msgid "No past events are still marked Active."
+msgstr "कोई पुराना कार्यक्रम अभी भी सक्रिय के रूप में चिह्नित नहीं है।"
+
+#: 
+msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr "एक कक्षा खोलें → \"आज का कार्यक्रम बनाएँ\" पर क्लिक करें — कार्यक्रम बनाया जाता है और कक्षा से एक ही बार में लिंक किया जाता है।"
+
+#: 
+msgid "Optional Settings"
+msgstr "वैकल्पिक सेटिंग्स"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "वैकल्पिक — इस व्यक्ति को चेक आउट करने वाले का नाम दर्ज करें (जैसे बच्चे को लेने आया माता-पिता)।"
+
+#: 
+msgid "Person checked out."
+msgstr "व्यक्ति चेक आउट हो गया।"
+
+#: 
+msgid "Person is not checked in"
+msgstr "व्यक्ति चेक इन नहीं है"
+
+#: 
+msgid "Person not in active class roster"
+msgstr "व्यक्ति सक्रिय कक्षा रोस्टर में नहीं है"
+
+#: 
+msgid "Pin to Calendars"
+msgstr "कैलेंडर में पिन करें"
+
+#: 
+msgid "Please select a person to check in."
+msgstr "कृपया चेक इन के लिए एक व्यक्ति चुनें।"
+
+#: 
+msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
+msgstr "इस कार्यक्रम प्रकार के आधार पर पूर्व-भरा — आवर्ती प्रकारों के लिए, तारीख इस प्रकार के अंतिम कार्यक्रम के बाद की अगली घटना है।"
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "सीमा समाप्ति तारीख सीमा प्रारंभ तारीख पर या उसके बाद होनी चाहिए।"
+
+#: 
+msgid "Range end must be a valid YYYY-MM-DD date."
+msgstr "सीमा समाप्ति एक वैध YYYY-MM-DD तारीख होनी चाहिए।"
+
+#: 
+msgid "Range start must be a valid YYYY-MM-DD date."
+msgstr "सीमा प्रारंभ एक वैध YYYY-MM-DD तारीख होनी चाहिए।"
+
+#: 
+msgid "Range start must be before range end"
+msgstr "सीमा प्रारंभ सीमा समाप्ति से पहले होनी चाहिए"
+
+#: 
+msgid "Range start must be before range end."
+msgstr "सीमा प्रारंभ सीमा समाप्ति से पहले होनी चाहिए।"
+
+#: 
+msgid "RangeEnd must be on or after RangeStart"
+msgstr "RangeEnd, RangeStart पर या उसके बाद होना चाहिए"
+
+#: 
+msgid "Recommended"
+msgstr "अनुशंसित"
+
+#: 
+msgid "Required for Kiosk"
+msgstr "कियोस्क के लिए आवश्यक"
+
+#: 
+msgid "Resetting will permanently delete:"
+msgstr "रीसेट करने से स्थायी रूप से हट जाएगा:"
+
+#: 
+msgid "SQL Only"
+msgstr "केवल SQL"
+
+#: 
+msgid "Save Time"
+msgstr "समय बचाएँ"
+
+#: 
+msgid "Save changes to this category name"
+msgstr "इस श्रेणी नाम में परिवर्तन सहेजें"
+
+#: 
+msgid "Select an event type…"
+msgstr "एक कार्यक्रम प्रकार चुनें…"
+
+#: 
+msgid "Select start and end date/time."
+msgstr "प्रारंभ और समाप्ति तारीख/समय चुनें।"
+
+#: 
+msgid "Show More Options"
+msgstr "अधिक विकल्प दिखाएँ"
+
+#: 
+msgid "Skip"
+msgstr "छोड़ें"
+
