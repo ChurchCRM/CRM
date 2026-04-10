@@ -1,12 +1,12 @@
 {
   "%d result for \"%s\"": {
-    "other": ""
+    "other": "「%s」有 %d 個結果"
   },
   "BCC": "",
   "N/A": "",
   "name@example.com": "",
-  "Azure": "",
+  "Azure": "Azure",
   "%d repeat event created successfully.": {
-    "other": ""
+    "other": "%d 個重複活動已成功建立。"
   }
 }

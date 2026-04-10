@@ -1,4 +1,15 @@
 {
+  "zh-CN": ["Azure"],
+  "zh-TW": ["Azure"],
+  "pt-br": ["Azure"],
+  "pt": ["Azure", "Manual", "Material"],
+  "es-AR": ["Azure", "Manual", "Material", "Malayalam - India"],
+  "es-CO": ["Azure", "Manual", "Material", "Malayalam - India"],
+  "es-SV": ["Azure", "Manual", "Material", "Malayalam - India"],
+  "es-MX": ["Azure", "Manual", "Material", "Malayalam - India"],
+  "es": ["Azure", "Manual", "Material", "Malayalam - India"],
+  "tr": ["Azure", "Kiosk", "4. Kiosk"],
+  "fr": ["Azure", "Confession", "Format", "Minimum", "Options", "Photo", "options", "page", "Communication", "Parents", "Configuration", "Continent", "Cyan", "Filipino - Philippines", "Indigo", "Orange", "Audit"],
   "fil": [
     "Email/Username",
     "Password",
