@@ -1,23 +1,23 @@
 {
   "%d repeat event created successfully.": {
-    "other": ""
+    "other": "%d 个重复活动已成功创建。"
   },
-  "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above.": "",
-  "Both latitude and longitude must be provided together (or both left blank for automatic detection).": "",
-  "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates.": "",
-  "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address.": "",
-  "Latitude must be a number between -90 and 90.": "",
-  "Longitude must be a number between -180 and 180.": "",
-  "Map Coordinates": "",
-  "Please select a group.": "",
-  "Please select a role.": "",
-  "Please select both a group and a role.": "",
-  "Range: -180 to 180.": "",
-  "Range: -90 to 90.": "",
-  "e.g., -74.0060": "",
-  "e.g., 40.7128": "",
-  "mo": "",
-  "mos": "",
-  "yr": "",
-  "yrs": ""
+  "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above.": "坐标保存后，地图将在此处显示——可从您的地址自动检测，也可在上方手动输入。",
+  "Both latitude and longitude must be provided together (or both left blank for automatic detection).": "纬度和经度必须同时提供（或同时留空以进行自动检测）。",
+  "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates.": "教会信息已保存，但无法自动定位地址。请在「地图坐标」下手动输入纬度和经度。",
+  "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address.": "坐标将在保存时通过 OpenStreetMap 从您的地址自动检测。您也可以在下方手动输入——手动值始终优先于自动检测。两者均留空可让系统根据地址进行地理编码。",
+  "Latitude must be a number between -90 and 90.": "纬度必须是 -90 至 90 之间的数字。",
+  "Longitude must be a number between -180 and 180.": "经度必须是 -180 至 180 之间的数字。",
+  "Map Coordinates": "地图坐标",
+  "Please select a group.": "请选择一个事工组。",
+  "Please select a role.": "请选择一个角色。",
+  "Please select both a group and a role.": "请同时选择一个事工组和一个角色。",
+  "Range: -180 to 180.": "范围：-180 至 180。",
+  "Range: -90 to 90.": "范围：-90 至 90。",
+  "e.g., -74.0060": "e.g., -74.0060",
+  "e.g., 40.7128": "e.g., 40.7128",
+  "mo": "月",
+  "mos": "月",
+  "yr": "年",
+  "yrs": "年"
 }

@@ -1,29 +1,29 @@
 {
   "%d result for \"%s\"": {
-    "other": ""
+    "other": "%d hasil untuk \"%s\""
   },
   "BCC": "",
   "N/A": "",
   "name@example.com": "",
   "%d repeat event created successfully.": {
-    "other": ""
+    "other": "%d acara berulang berhasil dibuat."
   },
-  "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above.": "",
-  "Both latitude and longitude must be provided together (or both left blank for automatic detection).": "",
-  "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates.": "",
-  "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address.": "",
-  "Latitude must be a number between -90 and 90.": "",
-  "Longitude must be a number between -180 and 180.": "",
-  "Map Coordinates": "",
-  "Please select a group.": "",
-  "Please select a role.": "",
-  "Please select both a group and a role.": "",
-  "Range: -180 to 180.": "",
-  "Range: -90 to 90.": "",
-  "e.g., -74.0060": "",
-  "e.g., 40.7128": "",
-  "mo": "",
-  "mos": "",
-  "yr": "",
-  "yrs": ""
+  "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above.": "Peta akan muncul di sini setelah koordinat disimpan — baik terdeteksi otomatis dari alamat Anda atau dimasukkan secara manual di atas.",
+  "Both latitude and longitude must be provided together (or both left blank for automatic detection).": "Lintang dan bujur harus diberikan bersama (atau keduanya dibiarkan kosong untuk deteksi otomatis).",
+  "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates.": "Informasi gereja tersimpan, tetapi alamat tidak dapat dilokasi secara otomatis. Silakan masukkan lintang dan bujur secara manual di bawah Koordinat Peta.",
+  "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address.": "Koordinat terdeteksi otomatis dari alamat Anda saat disimpan (melalui OpenStreetMap). Anda juga dapat memasukkannya secara manual di bawah — nilai manual selalu lebih diutamakan daripada deteksi otomatis. Biarkan keduanya kosong agar sistem melakukan geokode dari alamat.",
+  "Latitude must be a number between -90 and 90.": "Lintang harus berupa angka antara -90 dan 90.",
+  "Longitude must be a number between -180 and 180.": "Bujur harus berupa angka antara -180 dan 180.",
+  "Map Coordinates": "Koordinat Peta",
+  "Please select a group.": "Silakan pilih pelayanan.",
+  "Please select a role.": "Silakan pilih peran.",
+  "Please select both a group and a role.": "Silakan pilih pelayanan dan peran.",
+  "Range: -180 to 180.": "Rentang: -180 hingga 180.",
+  "Range: -90 to 90.": "Rentang: -90 hingga 90.",
+  "e.g., -74.0060": "e.g., -74.0060",
+  "e.g., 40.7128": "e.g., 40.7128",
+  "mo": "bl.",
+  "mos": "bl.",
+  "yr": "th.",
+  "yrs": "th."
 }
