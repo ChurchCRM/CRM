@@ -372,20 +372,35 @@ if ($sFormat === 'addtocart') {
         $sCountry = '';
 
         extract($aRow);
-        $person = PersonQuery::create()->joinWith('Family')->findOneById($per_ID);
+        $person = PersonQuery::create()->findOneById($per_ID);
 
         // Use Person entity methods with family fallback (issue #7937)
         // Person entity provides resolved address fields that automatically fall back to family data
-        $sHomePhone = $person->getResolvedHomePhone();
-        $sWorkPhone = $per_WorkPhone ?? '';
-        $sCellPhone = $per_CellPhone ?? '';
-        $sCountry = $person->getResolvedCountry();
-        $sAddress1 = $person->getResolvedAddress1();
-        $sAddress2 = $person->getResolvedAddress2();
-        $sCity = $person->getResolvedCity();
-        $sState = $person->getResolvedState();
-        $sZip = $person->getResolvedZip();
-        $sEmail = $person->getEmail();
+        // Family relationship is lazy-loaded when accessed
+        if ($person) {
+            $sHomePhone = $person->getResolvedHomePhone();
+            $sWorkPhone = $per_WorkPhone ?? '';
+            $sCellPhone = $per_CellPhone ?? '';
+            $sCountry = $person->getResolvedCountry();
+            $sAddress1 = $person->getResolvedAddress1();
+            $sAddress2 = $person->getResolvedAddress2();
+            $sCity = $person->getResolvedCity();
+            $sState = $person->getResolvedState();
+            $sZip = $person->getResolvedZip();
+            $sEmail = $person->getEmail();
+        } else {
+            // Fallback if person not found (use raw variables from extract)
+            $sHomePhone = $per_HomePhone ?? '';
+            $sWorkPhone = $per_WorkPhone ?? '';
+            $sCellPhone = $per_CellPhone ?? '';
+            $sCountry = $per_Country ?? '';
+            $sAddress1 = $per_Address1 ?? '';
+            $sAddress2 = $per_Address2 ?? '';
+            $sCity = $per_City ?? '';
+            $sState = $per_State ?? '';
+            $sZip = $per_Zip ?? '';
+            $sEmail = $per_Email ?? '';
+        }
 
         // Check if we're filtering out people with incomplete addresses
         if (!($bSkipIncompleteAddr && (strlen($sCity) === 0 || strlen($sState) === 0 || strlen($sZip) === 0 || (strlen($sAddress1) === 0 && strlen($sAddress2) === 0)))) {
