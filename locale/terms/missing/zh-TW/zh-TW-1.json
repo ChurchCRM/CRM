@@ -1,12 +1,12 @@
 {
   "%d result for \"%s\"": {
-    "other": ""
+    "other": "%d 個 \"%s\" 的結果"
   },
-  "BCC": "",
-  "N/A": "",
-  "name@example.com": "",
-  "Azure": "",
+  "BCC": "密件副本",
+  "N/A": "不適用",
+  "name@example.com": "name@example.com",
+  "Azure": "Azure",
   "%d repeat event created successfully.": {
-    "other": ""
+    "other": "%d 個重複事件已成功建立。"
   }
 }

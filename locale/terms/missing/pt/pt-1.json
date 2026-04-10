@@ -1,8 +1,8 @@
 {
-  "Manual": "",
-  "Material": "",
-  "BCC": "",
-  "N/A": "",
-  "name@example.com": "",
-  "Azure": ""
+  "Manual": "Manual",
+  "Material": "Material",
+  "BCC": "CCO",
+  "N/A": "N/D",
+  "name@example.com": "nome@exemplo.com",
+  "Azure": "Azure"
 }

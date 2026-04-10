@@ -1,8 +1,8 @@
 {
-  "Kiosk": "",
-  "BCC": "",
-  "N/A": "",
-  "name@example.com": "",
-  "Azure": "",
-  "4. Kiosk": ""
+  "Kiosk": "Kiosk",
+  "BCC": "Gizli (BCC)",
+  "N/A": "Uygulanamaz",
+  "name@example.com": "isim@ornek.com",
+  "Azure": "Azure",
+  "4. Kiosk": "4. Kiosk"
 }
