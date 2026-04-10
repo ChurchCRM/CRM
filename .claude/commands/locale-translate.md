@@ -6,7 +6,22 @@ Translate missing ChurchCRM UI terms for one or all locales.
 
 ---
 
-## Step 1: Branch setup <!-- learned: 2026-04-04 -->
+## ⛔ MANDATORY: Data Loss Prevention Rules <!-- learned: 2026-04-09 -->
+
+**These rules are NON-NEGOTIABLE. Every translation session MUST follow them.**
+
+1. **ALWAYS create a new branch** before translating ANY locale — no exceptions
+2. **ALWAYS commit + push after EVERY locale** — never accumulate uncommitted translations
+3. **ALWAYS upload to POEditor after EVERY locale** — reduces manual steps
+4. **If any step fails, STOP and report** — do not continue without saving work
+
+**Why:** Cloud/remote agent sessions can timeout at any moment. Uncommitted translations are LOST FOREVER. We have lost hours of work from agents that translated 20+ locales without committing.
+
+---
+
+## Step 1: Branch setup (MANDATORY) <!-- learned: 2026-04-09 -->
+
+**MUST happen before any translation work begins.**
 
 Check if already on a `locale/*` branch first:
 
@@ -16,14 +31,19 @@ git branch --show-current
 
 If already on a `locale/*` branch, **skip to Step 2**.
 
-If not, try the branch manager (it may fail on push with 403 — that's OK, the branch is created locally):
+If not, create a new branch:
 
 ```bash
 node locale/scripts/locale-branch-manager.js --init
-# If it errors on push, ignore the error — branch was created
+# If it errors on push, ignore the error — branch was created locally
 ```
 
-The push will be handled by `report_progress` below.
+If the branch manager fails entirely, create manually:
+```bash
+git checkout -b locale/$(node -p "require('./package.json').version")-$(date +%Y-%m-%d)
+```
+
+**Do NOT proceed to Step 2 until you are on a locale/* branch.**
 
 ---
 
@@ -83,11 +103,60 @@ rm /tmp/<LOCALE>-1-trans.json
 
 For locales with multiple batch files (Telugu has 2 files), repeat for each file.
 
-### 4d. Commit and push using report_progress tool <!-- learned: 2026-04-04 -->
+### 4d. Commit and push IMMEDIATELY (MANDATORY) <!-- learned: 2026-04-09 -->
 
-**IMPORTANT: Do NOT use `locale-branch-manager.js --commit-and-push`** — it requires direct git push which fails with 403.
+**⛔ NEVER skip this step. NEVER accumulate multiple locales without committing.**
 
-Instead, use the `report_progress` tool after each locale (or batch of small locales). The tool runs `git add . && git commit && git push` using the agent's credentials.
+After each locale (or small batch of ≤3 trivial locales), commit and push:
+
+**Option A — `report_progress` tool** (GitHub Copilot / remote agents):
+Use the `report_progress` tool which runs `git add . && git commit && git push`.
+
+**Option B — direct git** (Claude Code / local agents):
+```bash
+git add locale/terms/missing/<LOCALE>/ locale/terms/english-ok.json
+git commit -m "locale: translate <CODE> (<LANGUAGE>, <N> terms)"
+git push origin $(git branch --show-current)
+```
+
+**Option C — branch manager script**:
+```bash
+node locale/scripts/locale-branch-manager.js --commit-and-push \
+  --locale <CODE> --language "<LANGUAGE>" --terms <N>
+```
+
+**If push fails with 403:** Try `report_progress` instead. If that also fails, at minimum `git commit` locally so work is not lost, then report the push failure.
+
+### 4e. Upload to POEditor IMMEDIATELY (MANDATORY) <!-- learned: 2026-04-09 -->
+
+**⛔ After EVERY locale is committed, upload it to POEditor right away.**
+
+```bash
+node locale/scripts/poeditor-upload-missing.js --locale <CODE> --yes
+```
+
+- `--yes` skips confirmation prompts (agent should not wait for human input)
+- The script automatically refreshes local missing-term files after upload (removes translated terms from batch files)
+- The script reads `POEDITOR_TOKEN` from `.env` automatically
+- Rate limit: POEditor allows 1 upload per 20s — the script handles retries
+
+### 4f. Commit the refreshed batch files (only if 4e succeeded) <!-- learned: 2026-04-09 -->
+
+If the upload succeeded and the batch files were refreshed by POEditor, commit the updated files:
+
+```bash
+git add locale/terms/missing/<CODE>/
+git commit -m "locale: update missing terms for <CODE> after POEditor upload"
+git push origin $(git branch --show-current)
+```
+
+This keeps the branch in sync with POEditor's state — the next agent session (or resume) sees accurate remaining work.
+
+**Skip this step if upload failed** — nothing changed locally, nothing to commit.
+
+**If upload fails:** Log the error, **skip step 4f**, and continue to the next locale. The upload can be retried later with `npm run locale:upload:missing -- --locale <CODE>`. The committed+pushed translations are safe on the branch regardless.
+
+**Why upload immediately?** If the agent times out, all committed+uploaded locales are already in POEditor. Without this step, someone must manually run the upload for all translated locales.
 
 ---
 
@@ -131,6 +200,11 @@ Return: "✅ Applied N translations to locale/terms/missing/<CODE>/<CODE>-1.json
 
 **Critical:** The sub-agent MUST apply before returning. If it only produces translations without applying, the work is lost.
 
+**After sub-agent returns:** The parent agent MUST immediately:
+1. `git add locale/terms/missing/<CODE>/` + `git commit` + `git push` (or `report_progress`)
+2. `node locale/scripts/poeditor-upload-missing.js --locale <CODE> --yes`
+3. Only THEN proceed to the next locale
+
 ---
 
 ## Example: Translating French (small locale)
@@ -168,4 +242,34 @@ After all locales are done:
 ```bash
 node locale/scripts/locale-translate.js --list
 # Should show "Total: 0 locales, 0 terms" or only N/A entries
+```
+
+---
+
+## English-OK allowlist <!-- learned: 2026-04-08 -->
+
+Some terms have `value = key` intentionally — country names, brand names, and universal tech terms
+that stay in English regardless of locale (e.g. `"Australia": "Australia"` in Filipino).
+
+The upload script (`poeditor-upload-missing.js`) normally skips these as "suspect" (identical to source key).
+To mark them as safe to upload, add them to `locale/terms/english-ok.json`:
+
+```json
+{
+  "fil": ["Australia", "Admin", "Dashboard", "Email/Username", ...],
+  "id": ["Australia", ...]
+}
+```
+
+When translating a locale with country names (e.g. fil), set `value = key` for countries and then
+add ALL those country/tech/brand terms to the `english-ok.json` allowlist so the uploader treats
+them as valid translations, not untranslated suspects.
+
+To review which terms would be allowlisted for a locale:
+```bash
+python3 -c "
+import json
+d = json.load(open('locale/terms/english-ok.json'))
+print(f\"fil: {len(d.get('fil', []))} terms\")
+"
 ```

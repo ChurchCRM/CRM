@@ -7,7 +7,7 @@ describe("Admin Calendar", () => {
 
     it("Create New Calendar", () => {
         const title = "Calendar: " + new Date().getTime();
-        cy.visit("v2/calendar");
+        cy.visit("event/calendars");
         cy.contains("Calendar");
 
         // Open the Calendars offcanvas panel, then click New Calendar

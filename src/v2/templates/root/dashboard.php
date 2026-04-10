@@ -7,8 +7,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
 <!-- Stat Cards Row -->
-<div class="row mb-3">
-    <div class="col-6 col-lg">
+<div class="row row-cards mb-3 g-2">
+    <div class="col-6 col-md-4 col-lg">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -25,7 +25,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="col-6 col-lg">
+    <div class="col-6 col-md-4 col-lg">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -42,7 +42,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="col-6 col-lg">
+    <div class="col-6 col-md-4 col-lg">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -59,7 +59,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="col-6 col-lg">
+    <div class="col-6 col-md-4 col-lg">
         <div class="card card-sm<?= $sundaySchoolEnabled ? '' : ' opacity-50' ?>">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -81,7 +81,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="col-6 col-lg">
+    <div class="col-6 col-md-4 col-lg">
         <div class="card card-sm<?= $eventsEnabled ? '' : ' opacity-50' ?>">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -104,6 +104,26 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
 </div>
+
+<?php if ($eventsEnabled) { ?>
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="card" id="todayEventsCard">
+            <div class="card-header d-flex align-items-center">
+                <h3 class="card-title"><i class="fa-solid fa-calendar-day me-2"></i><?= gettext("Today's Events") ?></h3>
+                <div class="ms-auto">
+                    <a href="<?= SystemURLs::getRootPath() ?>/event/checkin" class="btn btn-sm btn-outline-primary">
+                        <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Check-in') ?>
+                    </a>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-vcenter table-hover card-table mb-0" width="100%" id="todayEventsDashboardItem"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<?php } ?>
 
 <div class="row">
     <!-- People card — primary content (2/3 width) -->
@@ -165,7 +185,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
             <div class="card-body p-0">
                 <p class="text-muted small px-3 pt-3 mb-2"><?= gettext('Past & next 7 days') ?></p>
-                <table class="table table-hover mb-0" width="100%" id="PersonBirthdayDashboardItem"></table>
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0" width="100%" id="PersonBirthdayDashboardItem"></table>
+                </div>
             </div>
         </div>
         <div class="card mb-3" id="anniversaryCard">
@@ -174,36 +196,28 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
             <div class="card-body p-0">
                 <p class="text-muted small px-3 pt-3 mb-2"><?= gettext('Past & next 7 days') ?></p>
-                <table class="table table-hover mb-0" width="100%" id="FamiliesWithAnniversariesDashboardItem"></table>
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0" width="100%" id="FamiliesWithAnniversariesDashboardItem"></table>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
+<?php if ($depositEnabled) { ?>
 <div class="row">
     <div class="col-12">
         <div class="card mb-3" id="depositChartRow">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><i class="fa-solid fa-circle-dollar-to-slot me-2"></i> <?= gettext('Deposit Tracking') ?></h3>
             </div>
-            <?php if ($depositEnabled) { ?>
-                <div class="card-body">
-                    <div id="deposit-lineGraph" style="min-height: 300px;"></div>
-                </div>
-            <?php } else { ?>
-                <div class="card-body">
-                    <div class="empty">
-                        <div class="empty-icon">
-                            <i class="fa-solid fa-circle-dollar-to-slot fa-3x text-muted"></i>
-                        </div>
-                        <p class="empty-title"><?= gettext('No Deposit Tracking') ?></p>
-                        <p class="empty-subtitle text-muted"><?= gettext('You do not have finance permissions to view deposits.') ?></p>
-                    </div>
-                </div>
-            <?php } ?>
+            <div class="card-body">
+                <div id="deposit-lineGraph" style="min-height: 300px;"></div>
+            </div>
         </div>
     </div>
 </div>
+<?php } ?>
 
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/root-dashboard.min.js') ?>"></script>
 <?php

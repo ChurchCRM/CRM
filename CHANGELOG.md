@@ -10,6 +10,8 @@ Release notes are stored in the [`changelog/`](./changelog/) folder — one file
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| [7.2.0](./changelog/7.2.0.md) | April 2026 | Event MVC epic, responsive design guidelines, 27 locales translated, GA4 tracking, mobile UX |
+| [7.1.2](./changelog/7.1.2.md) | April 2026 | User settings redesign, CSV import fields, MvcAppFactory, React removal |
 | [7.1.1](./changelog/7.1.1.md) | April 2026 | Stored XSS fix, CSP hardening, notification system redesign, CSS cleanup |
 | [7.1.0](./changelog/7.1.0.md) | April 2026 | Tabler/BS5 UI overhaul, 46 locales, security hardening, export hub, Functions.php removal |
 | [7.0.5](./changelog/7.0.5.md) | March 2026 | Effortless upgrades, mapping precision, 100% translations |

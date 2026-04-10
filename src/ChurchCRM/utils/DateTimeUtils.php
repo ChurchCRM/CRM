@@ -179,6 +179,22 @@ class DateTimeUtils
     }
 
     /**
+     * Return the number of days in a given month/year.
+     *
+     * Use this instead of `cal_days_in_month()` — the PHP calendar extension
+     * is not enabled in all environments (notably the Docker test image).
+     *
+     * @param int $month The month (1-12)
+     * @param int $year  The year (e.g., 2026)
+     *
+     * @return int Number of days in the month (28-31)
+     */
+    public static function getDaysInMonth(int $month, int $year): int
+    {
+        return (int) date('t', mktime(0, 0, 0, $month, 1, $year));
+    }
+
+    /**
      * Returns the system datetime format converted to Moment.js syntax,
      * JSON-encoded and ready for embedding in a JavaScript literal.
      *

@@ -22,7 +22,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
         }
     };
 </script>
-<div class="register-box" style="width: 90%; max-width: 900px;">
+<div class="register-box" style="max-width: 900px;">
     <div class="register-logo text-center mb-4">
         <a href="<?= SystemURLs::getRootPath() ?>/" class="h2"><?= ChurchMetaData::getChurchName() ?></a>
         <p class="text-muted mt-2"><?= gettext("We're so glad you're here! Register your family in just 3 easy steps.") ?></p>

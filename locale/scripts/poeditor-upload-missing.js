@@ -43,6 +43,13 @@ const POEDITOR_API_BASE = 'https://api.poeditor.com/v2';
 const PROJECT_ID = '77079';
 const MISSING_DIR = localeConfig.terms.missing;
 const LOCALES_FILE = localeConfig.localesJson;
+
+// File containing terms that are intentionally English for a locale
+// (e.g. brand names, country names). This allowlist lets the uploader
+// send translations that are identical to the source key.
+const ENGLISH_OK_FILE = localeConfig.terms.englishOk;
+const SAMPLE_SIZE = 5;
+
 // POEditor rate limits (free tier):
 //   - Uploads: 1 request per 20 seconds
 //   - General: 100 requests/min, 2000 requests/hour
@@ -153,6 +160,34 @@ function buildLocaleMap() {
     return map;
 }
 
+// ── English-OK allowlist ─────────────────────────────────────────────────────
+
+/**
+ * Loads locale/terms/english-ok.json and returns a Map from locale code
+ * (lowercase) to a Set of term keys that are intentionally English (e.g.
+ * country names, brand names, universal tech terms).  Terms in this set are
+ * safe to upload to POEditor even though their translation is identical to the
+ * source key.
+ *
+ * Returns an empty Map if the file does not exist.
+ */
+function loadEnglishOkAllowlist() {
+    if (!fs.existsSync(ENGLISH_OK_FILE)) return new Map();
+    try {
+        const raw = JSON.parse(fs.readFileSync(ENGLISH_OK_FILE, 'utf8'));
+        const result = new Map();
+        for (const [locale, terms] of Object.entries(raw)) {
+            if (Array.isArray(terms)) {
+                result.set(locale.toLowerCase(), new Set(terms));
+            }
+        }
+        return result;
+    } catch (err) {
+        console.warn(`  ⚠️  Could not load english-ok allowlist: ${sanitize(err.message)}`);
+        return new Map();
+    }
+}
+
 // ── Term analysis ────────────────────────────────────────────────────────────
 
 /**
@@ -185,11 +220,15 @@ function isNotIdenticalToKey(termKey, value) {
 
 /**
  * Analyzes a single batch file and splits its terms into three buckets:
- *   localizedTerms – have translations that differ from the source key
- *   suspectTerms   – translation is identical to the source key
+ *   localizedTerms – have translations that differ from the source key,
+ *                    OR are in the english-ok allowlist (intentionally English)
+ *   suspectTerms   – translation is identical to the source key and NOT in allowlist
  *   emptyTerms     – no translation found at all
+ *
+ * @param {string} filePath - path to the batch JSON file
+ * @param {Set<string>} [englishOkSet] - optional set of terms safe to upload as-is
  */
-function analyzeFile(filePath) {
+function analyzeFile(filePath, englishOkSet = new Set()) {
     const raw = JSON.parse(fs.readFileSync(filePath, 'utf8'));
     const localizedTerms = {};
     const suspectTerms = {};
@@ -199,7 +238,12 @@ function analyzeFile(filePath) {
         if (!hasAnyTranslation(value)) {
             emptyTerms[term] = value;
         } else if (!isNotIdenticalToKey(term, value)) {
-            suspectTerms[term] = value;
+            // Value is identical to the source key — check the allowlist
+            if (englishOkSet.has(term)) {
+                localizedTerms[term] = value;
+            } else {
+                suspectTerms[term] = value;
+            }
         } else {
             localizedTerms[term] = value;
         }
@@ -513,6 +557,12 @@ async function main() {
     if (autoYes) console.log('  🔸 AUTO-CONFIRM — skipping confirmation prompts\n');
 
     const localeMap = buildLocaleMap();
+    const englishOkAllowlist = loadEnglishOkAllowlist();
+
+    if (fs.existsSync(ENGLISH_OK_FILE)) {
+        const totalAllowlisted = [...englishOkAllowlist.values()].reduce((n, s) => n + s.size, 0);
+        console.log(`  📋 English-OK allowlist loaded: ${totalAllowlisted} term(s) across ${englishOkAllowlist.size} locale(s)\n`);
+    }
 
     if (!fs.existsSync(MISSING_DIR)) {
         console.log('  No missing terms directory found. Run: npm run locale:download');
@@ -585,9 +635,12 @@ async function main() {
         const allSuspect = {};
         let totalEmpty = 0;
 
+        const englishOkSet = englishOkAllowlist.get(folderKey) ?? new Set();
+        const englishOkCount = englishOkSet.size;
+
         for (const file of jsonFiles) {
             const filePath = path.join(folderPath, file);
-            const { localizedTerms, suspectTerms, emptyTerms } = analyzeFile(filePath);
+            const { localizedTerms, suspectTerms, emptyTerms } = analyzeFile(filePath, englishOkSet);
             Object.assign(allLocalized, localizedTerms);
             Object.assign(allSuspect, suspectTerms);
             totalEmpty += Object.keys(emptyTerms).length;
@@ -599,6 +652,7 @@ async function main() {
         console.log(
             `  Files: ${jsonFiles.length}` +
             `  |  Ready to upload: ${localizedCount}` +
+            (englishOkCount > 0 ? `  |  English-OK (allowlisted): ${englishOkCount}` : '') +
             `  |  Suspect (skipped): ${suspectCount}` +
             `  |  Empty: ${totalEmpty}`
         );

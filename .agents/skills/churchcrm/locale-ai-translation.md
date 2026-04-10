@@ -22,15 +22,15 @@ npm run locale:translate:list
 
 ---
 
-## ⚡ Recommended: Parallel Sub-Agents (Fastest) <!-- learned: 2026-04-04 -->
+## ⚡ Parallel Sub-Agents (Fastest) <!-- learned: 2026-04-09 -->
 
 **For 10+ locales:** Use the `/locale-translate` skill with parallel `general-purpose` sub-agents
 
-1. **Run** `/locale-translate --all` (or give the problem statement below)
+1. **MANDATORY:** Create a `locale/*` branch FIRST (see `/locale-translate` Step 1)
 2. **Small locales (≤10 terms):** Agent handles inline — all at once, one commit
 3. **Large locales (>10 terms):** Agent dispatches 4 parallel `general-purpose` sub-agents
 4. **Each sub-agent:** Reads → translates → applies (must apply before returning)
-5. **Commit:** Use `report_progress` after each batch (never `--commit-and-push` script)
+5. **MANDATORY after each locale:** commit → push → upload to POEditor (never skip)
 
 **Tested result:** 28 locales / 665 terms in ~30 minutes (April 2026)
 
@@ -67,13 +67,27 @@ N/A, name@example.com, @, SMS, SMTP, API, HTTP, HTTPS, JSON, CSV, XML, HTML, CSS
 
 ---
 
-## Commit After Each Locale
+## ⛔ MANDATORY: Commit + Push + Upload After Each Locale <!-- learned: 2026-04-09 -->
 
 ```bash
+# 1. Commit
+git add locale/terms/missing/<CODE>/ locale/terms/english-ok.json
 git commit -m "locale: translate <code> (<language>, <N> terms)"
+
+# 2. Push (MANDATORY — saves work to remote)
+git push origin $(git branch --show-current)
+
+# 3. Upload to POEditor (MANDATORY — saves work to cloud)
+node locale/scripts/poeditor-upload-missing.js --locale <CODE> --yes
 ```
 
-Commit immediately after translating each locale. Do not batch multiple locales.
+**All three steps are MANDATORY after EVERY locale. No exceptions.**
+
+- Never accumulate multiple locales without committing
+- Never commit without pushing — local-only commits are lost if the machine/session dies
+- Upload to POEditor (if fails → skip refreshed file commit, continue to next locale)
+- After successful upload, commit the refreshed batch files (POEditor removes accepted terms)
+- If push fails, stop and report. If upload fails, log error and continue (translations are safe on branch)
 
 ---
 
@@ -131,10 +145,12 @@ See [Locale Stack Ranking](./locale-stack-ranking.md) for TIER-1 (53% coverage, 
 - **Telugu (te) and Amharic (am)** — do separately (>100 terms each)
 - **Variant groups (es/es-MX/es-AR...)** — process in one agent (shared vocab, trivial diff)
 
-### Commit Strategy
+### Commit Strategy (MANDATORY — no exceptions) <!-- learned: 2026-04-09 -->
 
-1. **All small locales** (≤10 terms) → one `report_progress` commit
-2. **Each large locale** (>10 terms) → one `report_progress` commit after sub-agents confirm apply
+1. **All small locales** (≤10 terms) → one commit + push + POEditor upload per locale (or batch of ≤3)
+2. **Each large locale** (>10 terms) → one commit + push + POEditor upload after sub-agent confirms apply
+3. **NEVER proceed to next locale without:** commit → push (REQUIRED), upload (continue even if fails)
+4. **If session may timeout:** commit+push more frequently, not less. Upload failures don't block progress.
 
 ---
 

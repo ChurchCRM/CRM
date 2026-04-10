@@ -33,14 +33,25 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
             <span id="startTime"></span> &mdash; <span id="endTime"></span>
           </div>
         </div>
-        <div class="kiosk-stats mt-2 mt-md-0">
-          <div class="kiosk-stat checked-in">
-            <i class="fa-solid fa-check me-1"></i>
-            <span id="checkedInCount">0</span> <?= gettext('Here') ?>
+        <div class="d-flex flex-column align-items-end mt-2 mt-md-0">
+          <div class="kiosk-stats mb-2">
+            <div class="kiosk-stat checked-in">
+              <i class="fa-solid fa-check me-1"></i>
+              <span id="checkedInCount">0</span> <?= gettext('Here') ?>
+            </div>
+            <div class="kiosk-stat not-here">
+              <i class="fa-solid fa-clock me-1"></i>
+              <span id="notCheckedInCount">0</span> <?= gettext('Expected') ?>
+            </div>
           </div>
-          <div class="kiosk-stat not-here">
-            <i class="fa-solid fa-clock me-1"></i>
-            <span id="notCheckedInCount">0</span> <?= gettext('Expected') ?>
+          <!-- Check-in By toggle -->
+          <div class="kiosk-checkin-by-toggle">
+            <div class="form-check form-switch">
+              <input type="checkbox" class="form-check-input" id="checkinByToggle">
+              <label class="form-check-label text-white" for="checkinByToggle">
+                <i class="fa-solid fa-user-check me-1"></i><?= gettext('Check-in By') ?>
+              </label>
+            </div>
           </div>
         </div>
       </div>
@@ -111,6 +122,28 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
   <button type="button" class="kiosk-fab kiosk-fab-checkout" id="checkoutAllBtn" title="Checkout all students">
     <i class="fa-solid fa-right-from-bracket"></i>
   </button>
+</div>
+
+<!-- Check-in By Modal -->
+<div class="modal fade" id="checkinByModal" tabindex="-1" aria-labelledby="checkinByModalTitle" aria-modal="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="checkinByModalTitle"><?= gettext('Who is bringing them in?') ?></h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="<?= gettext('Cancel') ?>"></button>
+      </div>
+      <div class="modal-body" id="checkinByModalBody">
+        <div class="text-center py-4">
+          <i class="fa-solid fa-spinner fa-spin fa-2x text-primary"></i>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="checkinBySkipBtn">
+          <i class="fa-solid fa-forward me-1"></i><?= gettext('Skip') ?>
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/kiosk.min.js') ?>"></script>

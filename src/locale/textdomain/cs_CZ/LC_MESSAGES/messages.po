@@ -268,10 +268,6 @@ msgid "Add Cart to Event"
 msgstr "Přidat košík do události"
 
 #: 
-msgid "OR"
-msgstr "NEBO"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Váš košík je prázdný!"
 
@@ -392,10 +388,6 @@ msgstr "Ano"
 #: 
 msgid "No"
 msgstr "Ne"
-
-#: 
-msgid "Event Checkin"
-msgstr "Přihlašování na událost"
 
 #: 
 msgid "Select Event"
@@ -651,10 +643,6 @@ msgid "Church Event Editor"
 msgstr "Editor sborových událostí"
 
 #: 
-msgid "Edit Event Types"
-msgstr "Upravit typy událostí"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Upravit typ události"
 
@@ -724,20 +712,8 @@ msgid "Create a new Event"
 msgstr "Vytvořit novou událost"
 
 #: 
-msgid " errors. Please see below"
-msgstr " chyb. Viz níže"
-
-#: 
 msgid "Select your event type"
 msgstr "Vyberte typ události"
-
-#: 
-msgid "You must pick an event type."
-msgstr "Musíte vybrat typ události"
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "Žádné zaznamenané počty účastníků"
 
 #: 
 msgid "Event Status"
@@ -2913,10 +2889,6 @@ msgid "Date Entered"
 msgstr "Zadané datum"
 
 #: 
-msgid "There were "
-msgstr "Bylo tam "
-
-#: 
 msgid "Inactive"
 msgstr "Neaktivní"
 
@@ -4857,14 +4829,6 @@ msgid "Select event"
 msgstr "Vyberte událost"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "Osoba již byla pro tuto událost odhlášena"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "Dospělá odbavující osoba"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Text před jménem v e-mailech/výkazech"
 
@@ -5420,10 +5384,6 @@ msgid "Sign out"
 msgstr "Odhlásit se"
 
 #: 
-msgid "Sermon Text"
-msgstr "Text kázání"
-
-#: 
 msgid "Change Settings"
 msgstr "Změnit nastavení"
 
@@ -5937,10 +5897,6 @@ msgstr "Funkce obnovení databáze"
 msgid "Reset Database"
 msgstr "Vymazat databázi"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "Tímto se obnoví systémová data a systém se restartuje jako nová instalace."
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6143,18 +6099,6 @@ msgstr "Ověřit"
 #: 
 msgid "Family has no emails to use"
 msgstr "Rodina nemá zadán e-mail"
-
-#: 
-msgid "User Interface"
-msgstr "Uživatelské rozhraní"
-
-#: 
-msgid "Locale"
-msgstr "Locale"
-
-#: 
-msgid "Override system locale"
-msgstr "Potlačení systémového nastavení locale"
 
 #: 
 msgid "Deleted"
@@ -7226,10 +7170,6 @@ msgid "All Types"
 msgstr "Všechny typy"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "Opravdu chcete smazat tento záznam o přihlášení?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "Kategorie počítání docházky"
 
@@ -7270,10 +7210,6 @@ msgid "Create New Event"
 msgstr "Vytvořit novou akci"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "Vytvořte typ události a můžete začít."
-
-#: 
 msgid "Current DB Version"
 msgstr "Aktuální verze databáze"
 
@@ -7292,14 +7228,6 @@ msgstr "Výchozí čas zahájení"
 #: 
 msgid "Delete Event"
 msgstr "Smazat událost"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "Smazáním události se smažou také všechny počty účastníků. Chcete tuto událost smazat?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "Smazáním této události se smažou také všechny záznamy o účasti. Opravdu chcete pokračovat?"
 
 #: 
 msgid "Edit Event"
@@ -7367,10 +7295,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "Volitelné – Přidejte poznámky o kázání nebo další podrobnosti o události"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "Volitelné - pokud nesledujete, nechte prázdné"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "Volitelné poznámky k docházce..."
 
@@ -7403,24 +7327,12 @@ msgid "Search by name or email..."
 msgstr "Hledat podle jména nebo e-mailu..."
 
 #: 
-msgid "Search for adult..."
-msgstr "Hledat dospělého..."
-
-#: 
 msgid "Search for supervisor..."
 msgstr "Hledat nadřízeného..."
 
 #: 
 msgid "Select Event for Check-In"
 msgstr "Vyberte akci pro check-in"
-
-#: 
-msgid "Select start and end date/time"
-msgstr "Vyberte počáteční a koncový datum/čas"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "Vyberte událost, kterou chcete zkontrolovat ve svém košíku členů"
 
 #: 
 msgid "Sermon / Event Text"
@@ -7788,10 +7700,6 @@ msgstr "Před uložením mimo pracoviště zašifrujte zálohy pomocí externíc
 #: 
 msgid "User authentication"
 msgstr "Ověření uživatele"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "Uživatel musí mít oprávnění Add Event"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8314,10 +8222,6 @@ msgid "State (Other)"
 msgstr "Stát (Jiný)"
 
 #: 
-msgid "Status:"
-msgstr "Stav:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Souhrn závazků a plateb podle fondů za daný fiskální rok."
 
@@ -8368,10 +8272,6 @@ msgstr "Celkové vklady:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Sledovat sliby a průběh plateb pro kampaně a rozpočtování fiskálního roku."
-
-#: 
-msgid "Type:"
-msgstr "Typ:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8798,10 +8698,6 @@ msgid "Disable 2FA"
 msgstr "Zakázat 2FA"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "Exportujte všechna data o osobách ve formátu ChMeetings pro import do externích systémů."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "Exportovat do ChMeetings CSV"
 
@@ -9059,10 +8955,6 @@ msgid "Add Your First Property Type"
 msgstr "Přidejte svůj první typ vlastnosti"
 
 #: 
-msgid "Auto-calculated from counts above"
-msgstr "Automaticky vypočítáno z výše uvedených počtů"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Smazáním tohoto pole nevratně ztratíte všechna data členů skupiny přiřazená k tomuto poli!"
 
@@ -9252,10 +9144,6 @@ msgstr "Registrace kiosku je zakázána"
 #: 
 msgid "Kiosk not found"
 msgstr "Kiosek nebyl nalezen"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "Propojte tuto událost se skupinou pro funkci check-in na kiosku. Členové skupiny se zobrazí na kiosku."
 
 #: 
 msgid "Linked Group"
@@ -10458,10 +10346,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "Vyžadovat, aby se všichni uživatelé přihlásili k dvoufaktorovému ověřování"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "Mapa se zobrazí, jakmile bude uložena adresa. Souřadnice jsou detekovány automaticky — ruční zadávání není potřeba."
-
-#: 
 msgid "Active Groups"
 msgstr "Aktivní skupiny"
 
@@ -10512,10 +10396,6 @@ msgstr "Rodina nemá adresu pro geokódování"
 #: 
 msgid "Father"
 msgstr "Otec"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "Geokódované souřadnice:"
 
 #: 
 msgid "Geocoding failed"
@@ -10596,10 +10476,6 @@ msgstr "Časové pásmo"
 #: 
 msgid "Total Groups"
 msgstr "Skupin celkem"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "Aktualizováno automaticky při každém uložení."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10783,14 +10659,6 @@ msgstr "Přidejte svou první vlastnost"
 #: 
 msgid "Add a Person"
 msgstr "Přidat osobu"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Přidat nový závazek"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "Přidat platbu k aktuální sbírce"
 
 #: 
 msgid "Add all cart items to a group"
@@ -11009,10 +10877,6 @@ msgid "Check Out"
 msgstr "Odhlásit"
 
 #: 
-msgid "Check Out Person"
-msgstr "Odhlásit osobu"
-
-#: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
 msgstr "Zkontrolovat aktualizace a upgradovat instalaci ChurchCRM"
 
@@ -11137,10 +11001,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "Vytvořte ruční zálohu alespoň jednou týdně, nebo povolte plugin pro externí zálohy pro automatické WebDAV zálohy podle plánu."
 
 #: 
-msgid "Create a new deposit"
-msgstr "Vytvořit novou sbírku"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "Vytvářet a upravovat rodinné informace a vztahy"
 
@@ -11195,10 +11055,6 @@ msgstr "Definovat vlastnosti specifické pro skupinu členů"
 #: 
 msgid "Delete All"
 msgstr "Smazat vše"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "Smazat záznam registrace"
 
 #: 
 msgid "Delete Family"
@@ -11481,10 +11337,6 @@ msgid "Generate directory listings and printed materials"
 msgstr "Generovat seznamy adresáře a tištěné materiály"
 
 #: 
-msgid "Generate financial reports"
-msgstr "Generovat finanční sestavy"
-
-#: 
 msgid "Generate financial statements and giving reports"
 msgstr "Generovat finanční výkazy a přehledy darů"
 
@@ -11717,14 +11569,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "Spravovat nástroje pro e-mail a konfiguraci SMTP"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "Spravovat názvy událostí a kategorie"
-
-#: 
-msgid "Manage event type categories"
-msgstr "Spravovat kategorie typů událostí"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Spravovat rodiny, osoby a demografické údaje"
 
@@ -11855,10 +11699,6 @@ msgstr "Žádné narozeniny"
 #: 
 msgid "No Check-ins"
 msgstr "Žádné registrace účasti"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "Žádné sledování sbírek"
 
 #: 
 msgid "No Deposits"

@@ -220,6 +220,21 @@ describe("API Private Deposit Operations", () => {
                 [401, 403]
             );
         });
+
+        // Regression for PR #8562: the main dashboard JS used to hit
+        // /api/deposits/dashboard unconditionally, producing a bootbox error
+        // for non-finance users. The JS fix prevents the call client-side,
+        // but we also assert the server-side FinanceRoleAuthMiddleware
+        // (applied to the /deposits route group) denies the request so the
+        // fix is defense-in-depth, not the only line of defense.
+        it("Non-finance user denied getting deposit dashboard data", () => {
+            cy.makePrivateNoFinanceAPICall(
+                "GET",
+                `/api/deposits/dashboard`,
+                null,
+                [401, 403]
+            );
+        });
     });
 
     describe("Middleware Validation Tests", () => {

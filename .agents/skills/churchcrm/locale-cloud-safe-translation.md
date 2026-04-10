@@ -4,14 +4,17 @@
 
 Cloud-based AI sessions can timeout mid-translation, causing **lost work**. The previous workflow had no backup — if a session crashed at locale 20 of 39, all 20 translations had to be redone.
 
-## Solution
+## Solution (MANDATORY — all steps are NON-NEGOTIABLE) <!-- learned: 2026-04-09 -->
 
-The updated `/locale-translate` workflow now:
+The `/locale-translate` workflow MUST:
 
-1. **Creates a versioned branch** — `locale/{VERSION}-{DATE}` (e.g., `locale/7.1.0-2026-04-01`)
-2. **Commits after each locale** — translations are secure locally
-3. **Pushes after every commit** — work is immediately on remote (can't be lost to timeout)
-4. **Supports resume** — rerun the command and it skips already-translated locales
+1. **Create a versioned branch** — `locale/{VERSION}-{DATE}` — BEFORE any translation starts
+2. **Commit after each locale** — translations are secure locally
+3. **Push after every commit** — work is immediately on remote (can't be lost to timeout)
+4. **Upload to POEditor after every push** — `node locale/scripts/poeditor-upload-missing.js --locale <CODE> --yes`
+5. **Support resume** — rerun the command and it skips already-translated locales
+
+**None of these steps are optional.** We have lost hours of work from agents that skipped steps 2-4.
 
 ---
 
@@ -24,11 +27,11 @@ The updated `/locale-translate` workflow now:
 ```
 
 **What happens:**
-1. ✅ Creates branch `locale/7.1.0-2026-04-01`
-2. ✅ Translates locale 1 → commits → pushes
-3. ✅ Translates locale 2 → commits → pushes
-4. ✅ ... repeats for all 39 locales
-5. ✅ Branch on remote has all work
+1. Creates branch `locale/7.1.0-2026-04-01`
+2. Translates locale 1 → commits → pushes → uploads to POEditor
+3. Translates locale 2 → commits → pushes → uploads to POEditor
+4. ... repeats for all 39 locales
+5. Branch on remote has all work, POEditor has all translations
 
 ### If Cloud Session Times Out
 
@@ -76,27 +79,23 @@ node locale/scripts/locale-branch-manager.js --get-translated
 
 ---
 
-## Complete Workflow: Translation → Upload → Download
+## Complete Workflow: Translate+Upload → Download <!-- learned: 2026-04-09 -->
 
 ```
-Phase 1: TRANSLATE (Cloud-Safe Branch)
+Phase 1: TRANSLATE + UPLOAD (Cloud-Safe Branch)
 ├─ /locale-translate --all --version 7.1.0
 ├─ Creates locale/7.1.0-2026-04-01 branch
-├─ For each locale: translate → commit → push
-└─ Result: Branch on remote with all translations
+├─ For each locale: translate → commit → push → upload to POEditor
+└─ Result: Branch on remote AND POEditor both have all translations
 
-Phase 2: UPLOAD
-├─ npm run locale:upload:missing
-├─ Validates and shows samples
-├─ Uploads to POEditor for human review
-└─ Result: Translations in POEditor (pending approval)
-
-Phase 3: DOWNLOAD (Automated)
+Phase 2: DOWNLOAD (Automated)
 ├─ GH Action runs locale:download on schedule
 ├─ Fetches approved translations from POEditor
 ├─ Creates PR with src/locale/i18n/ updates
 └─ Result: Approved translations merged to main
 ```
+
+**Note:** Upload is now part of Phase 1, not a separate phase. Each locale is uploaded to POEditor immediately after it's committed and pushed. This eliminates the manual upload step and protects against data loss.
 
 ---
 
@@ -162,34 +161,29 @@ $ /locale-translate --all --version 7.1.0
 
 ## After Translations Are Complete
 
-Once all 39 locales are translated and on the branch:
+Once all locales are translated (each was committed, pushed, and uploaded per-locale):
 
 1. **Check branch status:**
    ```bash
    git log locale/7.1.0-* --oneline
-   # Shows 39 commits: locale: translate af, sq, am, ... 
+   # Shows N commits: locale: translate af, sq, am, ... 
    ```
 
-2. **Push (if not already):**
+2. **Verify all uploads reached POEditor:**
    ```bash
-   git push origin locale/7.1.0-2026-04-01
+   node locale/scripts/poeditor-upload-missing.js --dry-run
+   # Should show 0 terms to upload (all were uploaded per-locale)
    ```
 
-3. **Upload to POEditor:**
-   ```bash
-   npm run locale:upload:missing
-   # Validates batch files, shows samples, uploads
-   ```
+3. **Wait for POEditor approval** (human translators review)
 
-4. **Wait for POEditor approval** (human translators review)
-
-5. **Download (automatic via GH Action)**
+4. **Download (automatic via GH Action)**
    - Action runs on schedule or manually triggered
    - Fetches approved translations
    - Creates PR with updates
    - Review and merge
 
-6. **Cleanup (optional):**
+5. **Cleanup (optional):**
    ```bash
    # After merge, delete the locale branch
    git branch -d locale/7.1.0-2026-04-01

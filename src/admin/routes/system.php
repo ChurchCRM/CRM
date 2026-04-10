@@ -290,6 +290,16 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             unset($_SESSION['sGlobalMessage'], $_SESSION['sGlobalMessageClass']);
         }
 
+        // iChurchLatitude / iChurchLongitude are stored as strings in
+        // config_cfg but are semantically floats. Cast on read so the view
+        // can compare numerically without "0.0 vs '0' string" surprises, and
+        // emit empty string when unset so the form input renders blank
+        // instead of "0".
+        $rawLat = (string) SystemConfig::getValue('iChurchLatitude');
+        $rawLng = (string) SystemConfig::getValue('iChurchLongitude');
+        $latFloat = $rawLat === '' ? 0.0 : (float) $rawLat;
+        $lngFloat = $rawLng === '' ? 0.0 : (float) $rawLng;
+
         $churchInfo = [
             'sChurchName'      => SystemConfig::getValue('sChurchName'),
             'sChurchAddress'   => SystemConfig::getValue('sChurchAddress'),
@@ -299,8 +309,8 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'sChurchCountry'   => SystemConfig::getValue('sChurchCountry') ?: 'US',
             'sChurchPhone'     => SystemConfig::getValue('sChurchPhone'),
             'sChurchEmail'     => SystemConfig::getValue('sChurchEmail'),
-            'iChurchLatitude'  => SystemConfig::getValue('iChurchLatitude'),
-            'iChurchLongitude' => SystemConfig::getValue('iChurchLongitude'),
+            'iChurchLatitude'  => ($latFloat !== 0.0 || $lngFloat !== 0.0) ? (string) $latFloat : '',
+            'iChurchLongitude' => ($latFloat !== 0.0 || $lngFloat !== 0.0) ? (string) $lngFloat : '',
             'sTimeZone'        => SystemConfig::getValue('sTimeZone'),
             'sChurchWebSite'   => SystemConfig::getValue('sChurchWebSite'),
             'sLanguage'        => SystemConfig::getValue('sLanguage'),
@@ -342,6 +352,12 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $churchPhone   = trim($body['sChurchPhone'] ?? '');
         $churchEmail   = trim($body['sChurchEmail'] ?? '');
 
+        // Lat/long are not in the sanitization allow-list — they're numeric.
+        // Validate via filter_var below before saving. Empty string is allowed
+        // and means "let me geocode from the address" (fallback path).
+        $rawLatInput = trim((string) ($body['iChurchLatitude'] ?? ''));
+        $rawLngInput = trim((string) ($body['iChurchLongitude'] ?? ''));
+
         // Validation: Required fields
         $validationError = '';
         if (empty($churchName)) {
@@ -362,8 +378,32 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             $validationError = gettext('Email address is required.');
         }
 
+        // Coordinate validation — only if the user provided one or both fields.
+        // Both must be present together (you can't have lat without lng), and
+        // both must parse as floats in valid earth ranges.
+        $manualLat = null;
+        $manualLng = null;
+        if ($validationError === '' && ($rawLatInput !== '' || $rawLngInput !== '')) {
+            if ($rawLatInput === '' || $rawLngInput === '') {
+                $validationError = gettext('Both latitude and longitude must be provided together (or both left blank for automatic detection).');
+            } else {
+                $parsedLat = filter_var($rawLatInput, FILTER_VALIDATE_FLOAT);
+                $parsedLng = filter_var($rawLngInput, FILTER_VALIDATE_FLOAT);
+                if ($parsedLat === false || $parsedLat < -90.0 || $parsedLat > 90.0) {
+                    $validationError = gettext('Latitude must be a number between -90 and 90.');
+                } elseif ($parsedLng === false || $parsedLng < -180.0 || $parsedLng > 180.0) {
+                    $validationError = gettext('Longitude must be a number between -180 and 180.');
+                } else {
+                    $manualLat = $parsedLat;
+                    $manualLng = $parsedLng;
+                }
+            }
+        }
+
         if (!empty($validationError)) {
-            // Re-render with validation error via the system-wide notify
+            // Re-render with validation error via the system-wide notify.
+            // Echo the user's lat/long input so they can correct it (rather
+            // than wiping their entry and showing the previously-saved value).
             $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
             $churchInfo = [
@@ -375,8 +415,8 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
                 'sChurchCountry'   => $churchCountry,
                 'sChurchPhone'     => $churchPhone,
                 'sChurchEmail'     => $churchEmail,
-                'iChurchLatitude'  => SystemConfig::getValue('iChurchLatitude'),
-                'iChurchLongitude' => SystemConfig::getValue('iChurchLongitude'),
+                'iChurchLatitude'  => $rawLatInput !== '' ? $rawLatInput : (string) (float) SystemConfig::getValue('iChurchLatitude'),
+                'iChurchLongitude' => $rawLngInput !== '' ? $rawLngInput : (string) (float) SystemConfig::getValue('iChurchLongitude'),
                 'sTimeZone'        => $body['sTimeZone'] ?? '',
                 'sChurchWebSite'   => $body['sChurchWebSite'] ?? '',
                 'sLanguage'        => $body['sLanguage'] ?? '',
@@ -412,16 +452,32 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $zip     = $churchZip;
         $country = $churchCountry;
 
-        // Always re-geocode from address using GeoUtils (Nominatim / OpenStreetMap,
-        // no API key required). Coordinates are not exposed in the form — they are
-        // derived from the address automatically on every save.
+        // Coordinate resolution — manual entry always wins over auto-detection.
+        // 1. If admin entered both lat AND lng manually → use those, skip Nominatim
+        // 2. Otherwise → try to geocode from the address via GeoUtils (Nominatim)
+        // 3. If geocoding fails (returns 0,0 for a non-empty address) → surface a
+        //    warning flash so the admin knows to enter coordinates manually
         $latitude  = '';
         $longitude = '';
-        if ($address !== '') {
+        $geocodingFailed = false;
+
+        if ($manualLat !== null && $manualLng !== null) {
+            $latitude  = (string) $manualLat;
+            $longitude = (string) $manualLng;
+        } elseif ($address !== '') {
             $coords = GeoUtils::getLatLong($address, $city, $state, $zip, $country);
             if ($coords['Latitude'] !== 0.0 || $coords['Longitude'] !== 0.0) {
                 $latitude  = (string) $coords['Latitude'];
                 $longitude = (string) $coords['Longitude'];
+            } else {
+                // Geocoding silently returned no result — preserve any
+                // previously-saved coordinates (don't wipe them) and tell
+                // the admin to enter coordinates manually.
+                $previousLat = (float) SystemConfig::getValue('iChurchLatitude');
+                $previousLng = (float) SystemConfig::getValue('iChurchLongitude');
+                $latitude  = $previousLat !== 0.0 ? (string) $previousLat : '';
+                $longitude = $previousLng !== 0.0 ? (string) $previousLng : '';
+                $geocodingFailed = true;
             }
         }
 
@@ -445,9 +501,17 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         SystemConfig::setValue('sDefaultZip', $body['sDefaultZip'] ?? '');
         SystemConfig::setValue('sDefaultCountry', $body['sDefaultCountry'] ?? '');
 
-        // Flash success via the system-wide notify
-        $_SESSION['sGlobalMessage']     = gettext('Church information saved successfully');
-        $_SESSION['sGlobalMessageClass'] = 'success';
+        // Flash success via the system-wide notify. If geocoding silently
+        // failed (Nominatim returned no result for a non-empty address) we
+        // still saved the rest of the form, but warn the admin so they know
+        // to enter coordinates manually.
+        if ($geocodingFailed) {
+            $_SESSION['sGlobalMessage']      = gettext('Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates.');
+            $_SESSION['sGlobalMessageClass'] = 'warning';
+        } else {
+            $_SESSION['sGlobalMessage']      = gettext('Church information saved successfully');
+            $_SESSION['sGlobalMessageClass'] = 'success';
+        }
 
         return $response
             ->withHeader('Location', SystemURLs::getRootPath() . '/admin/system/church-info')

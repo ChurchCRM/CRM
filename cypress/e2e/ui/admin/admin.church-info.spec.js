@@ -237,4 +237,129 @@ describe("Admin - Church Information Page", () => {
 
         cy.get("#sChurchAddress").should("have.attr", "required");
     });
+
+    // Map coordinates / GPS-pin regression — issue #8528
+    // Auto-geocoding via Nominatim fails for many international addresses
+    // and for users who only have GPS coordinates. The form must let admins
+    // enter latitude/longitude manually as a fallback (or override).
+    describe("Map Coordinates (#8528)", () => {
+        // Helper: fill the always-required text fields so submission can succeed
+        function fillRequiredFields(suffix = "") {
+            cy.get("#sChurchName").clear().type("Coord Test Church" + suffix);
+            cy.get("#sChurchPhone").clear().type("(555) 123-4567");
+            cy.get("#sChurchEmail").clear().type("coord-test@example.com");
+            cy.get("#sChurchAddress").clear().type("123 Main St");
+            cy.get("#sChurchCity").clear().type("Springfield");
+            cy.get("#sChurchState", { timeout: 10000 }).siblings(".ts-wrapper").should("exist");
+            cy.tomSelectByValue("#sChurchState", "IL");
+            cy.get("#sChurchZip").clear().type("62701");
+        }
+
+        it("should expose latitude and longitude input fields", () => {
+            cy.visit("admin/system/church-info");
+
+            cy.get("#iChurchLatitude").should("exist").and("have.attr", "type", "number");
+            cy.get("#iChurchLongitude").should("exist").and("have.attr", "type", "number");
+            cy.contains("Map Coordinates").should("be.visible");
+        });
+
+        it("should accept manually entered GPS coordinates and persist them", () => {
+            cy.visit("admin/system/church-info");
+
+            cy.get("#sChurchCountry", { timeout: 10000 }).siblings(".ts-wrapper").should("exist");
+            fillRequiredFields(" Manual");
+
+            // The reporter's exact case: GPS coordinates from Davao City, Philippines
+            cy.get("#iChurchLatitude").clear().type("7.0933301");
+            cy.get("#iChurchLongitude").clear().type("125.5818270");
+
+            cy.wait(500);
+            cy.get("#church-info-form").submit();
+
+            cy.url({ timeout: 10000 }).should("include", "church-info");
+            cy.contains("Church information saved successfully", { timeout: 10000 }).should("be.visible");
+
+            // Coordinates should round-trip back into the form on the redirect
+            cy.get("#iChurchLatitude").should("have.value", "7.0933301");
+            cy.get("#iChurchLongitude").should("have.value", "125.581827");
+        });
+
+        it("should reject latitude outside the valid -90..90 range", () => {
+            cy.visit("admin/system/church-info");
+
+            cy.get("#sChurchCountry", { timeout: 10000 }).siblings(".ts-wrapper").should("exist");
+            fillRequiredFields(" BadLat");
+
+            // 91 is out of range
+            cy.get("#iChurchLatitude").clear().type("91");
+            cy.get("#iChurchLongitude").clear().type("0");
+
+            cy.wait(500);
+            cy.get("#church-info-form").submit();
+
+            cy.contains("Latitude must be a number between -90 and 90", { timeout: 10000 }).should("be.visible");
+            // The user's bad input should still be in the field so they can correct it
+            cy.get("#iChurchLatitude").should("have.value", "91");
+        });
+
+        it("should reject longitude outside the valid -180..180 range", () => {
+            cy.visit("admin/system/church-info");
+
+            cy.get("#sChurchCountry", { timeout: 10000 }).siblings(".ts-wrapper").should("exist");
+            fillRequiredFields(" BadLng");
+
+            cy.get("#iChurchLatitude").clear().type("0");
+            cy.get("#iChurchLongitude").clear().type("181");
+
+            cy.wait(500);
+            cy.get("#church-info-form").submit();
+
+            cy.contains("Longitude must be a number between -180 and 180", { timeout: 10000 }).should("be.visible");
+            cy.get("#iChurchLongitude").should("have.value", "181");
+        });
+
+        it("should reject lat without lng (and vice versa)", () => {
+            cy.visit("admin/system/church-info");
+
+            cy.get("#sChurchCountry", { timeout: 10000 }).siblings(".ts-wrapper").should("exist");
+            fillRequiredFields(" OnlyLat");
+
+            cy.get("#iChurchLatitude").clear().type("40.7128");
+            cy.get("#iChurchLongitude").clear();
+
+            cy.wait(500);
+            cy.get("#church-info-form").submit();
+
+            cy.contains("Both latitude and longitude must be provided together", { timeout: 10000 }).should("be.visible");
+        });
+
+        it("should fall back to auto-geocoding when both coordinate fields are blank", () => {
+            cy.visit("admin/system/church-info");
+
+            cy.get("#sChurchCountry", { timeout: 10000 }).siblings(".ts-wrapper").should("exist");
+            fillRequiredFields(" Auto");
+
+            // Explicitly blank both lat and lng — POST handler should fall back
+            // to GeoUtils::getLatLong() with the address. We don't assert on
+            // the resulting coordinates (Nominatim is external) — only that
+            // the save itself succeeds.
+            cy.get("#iChurchLatitude").clear();
+            cy.get("#iChurchLongitude").clear();
+
+            cy.wait(500);
+            cy.get("#church-info-form").submit();
+
+            cy.url({ timeout: 10000 }).should("include", "church-info");
+            // Either success (Nominatim found the address) OR a warning that
+            // it couldn't auto-locate — both are valid outcomes depending on
+            // network and OSM coverage.
+            cy.get("body", { timeout: 10000 }).should(($body) => {
+                const text = $body.text();
+                expect(
+                    text.includes("Church information saved successfully") ||
+                        text.includes("could not be auto-located"),
+                ).to.equal(true);
+            });
+        });
+    });
 });

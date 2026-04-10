@@ -349,6 +349,9 @@ function showViewContent(event, calendars, eventTypes) {
       <i class="fas fa-trash me-1"></i>${t("Delete")}</button>
     <div class="d-flex gap-2">
       <button type="button" class="btn btn-secondary" id="eventCancelBtn">${t("Close")}</button>
+      <a class="btn btn-outline-primary" id="eventCheckinBtn"
+         href="${(window.CRM && window.CRM.root) || ""}/event/checkin/${event.Id}">
+        <i class="fas fa-clipboard-check me-1"></i>${t("Check-in")}</a>
       <button type="button" class="btn btn-primary" id="eventEditBtn">
         <i class="fas fa-pencil me-1"></i>${t("Edit")}</button>
     </div>`;
@@ -438,19 +441,32 @@ function bindDeleteHandler(event) {
   }
 
   deleteBtn.addEventListener("click", () => {
-    if (!window.confirm(t("Are you sure you want to delete this event?"))) return;
-    fetch(`${CRMRoot}/api/events/${event.Id}`, {
-      credentials: "include",
-      method: "DELETE",
-      headers: { Accept: "application/json", "Content-Type": "application/json" },
-    })
-      .then((r) => {
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        closeModal();
-      })
-      .catch(() => {
-        if (window.CRM?.notify) window.CRM.notify(t("Failed to delete event. Please try again."), { type: "danger" });
-      });
+    bootbox.confirm({
+      title: t("Delete this event?"),
+      message:
+        t("Deleting this event will also delete all attendance records. This cannot be undone.") +
+        ` <strong>${escapeHtml(event.Title || "")}</strong>`,
+      buttons: {
+        cancel: { label: '<i class="ti ti-x"></i> ' + t("Cancel") },
+        confirm: { label: '<i class="ti ti-trash"></i> ' + t("Delete"), className: "btn-danger" },
+      },
+      callback: (confirmed) => {
+        if (!confirmed) return;
+        fetch(`${CRMRoot}/api/events/${event.Id}`, {
+          credentials: "include",
+          method: "DELETE",
+          headers: { Accept: "application/json", "Content-Type": "application/json" },
+        })
+          .then((r) => {
+            if (!r.ok) throw new Error(`HTTP ${r.status}`);
+            closeModal();
+          })
+          .catch(() => {
+            if (window.CRM?.notify)
+              window.CRM.notify(t("Failed to delete event. Please try again."), { type: "danger" });
+          });
+      },
+    });
   });
 }
 

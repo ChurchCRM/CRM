@@ -266,10 +266,6 @@ msgid "Add Cart to Event"
 msgstr "Idagdag ang Cart sa Kaganapan"
 
 #: 
-msgid "OR"
-msgstr "O"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Ang iyong cart ay walang laman!"
 
@@ -389,10 +385,6 @@ msgstr "Oo"
 #: 
 msgid "No"
 msgstr "Hindi"
-
-#: 
-msgid "Event Checkin"
-msgstr "Pagpasok sa Kaganapan"
 
 #: 
 msgid "Select Event"
@@ -644,10 +636,6 @@ msgid "Church Event Editor"
 msgstr "Editor ng Kaganapan ng Simbahan"
 
 #: 
-msgid "Edit Event Types"
-msgstr "I-edit ang mga Uri ng Kaganapan"
-
-#: 
 msgid "Edit Event Type"
 msgstr "I-edit ang Uri ng Kaganapan"
 
@@ -717,20 +705,8 @@ msgid "Create a new Event"
 msgstr "Lumikha ng bagong Kaganapan"
 
 #: 
-msgid " errors. Please see below"
-msgstr " mga pagkakamali. Pakitingnan sa ibaba"
-
-#: 
 msgid "Select your event type"
 msgstr "Piliin ang iyong uri ng kaganapan"
-
-#: 
-msgid "You must pick an event type."
-msgstr "Kailangan mong pumili ng uri ng kaganapan."
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "Walang naitalang bilang ng presensya"
 
 #: 
 msgid "Event Status"
@@ -1513,6 +1489,14 @@ msgid "Too many failed logins: your account has been locked.  Please contact an 
 msgstr "Napakaraming bagsak na login: ang iyong account ay nalock na. Makipag-ugnayan sa isang administrator."
 
 #: 
+msgid "Email/Username"
+msgstr "Email/Username"
+
+#: 
+msgid "Password"
+msgstr "Password"
+
+#: 
 msgid "Login"
 msgstr "Mag-login"
 
@@ -1667,6 +1651,10 @@ msgstr "Opsyon"
 #: 
 msgid "Error: Duplicate"
 msgstr "Error: Duplikado"
+
+#: 
+msgid "Default"
+msgstr "Default"
 
 #: 
 msgid "Duplicate name found."
@@ -2138,6 +2126,10 @@ msgid "Edit Self"
 msgstr "I-edit ang Sarili"
 
 #: 
+msgid "Admin"
+msgstr "Admin"
+
+#: 
 msgid "Last Login"
 msgstr "Huling Login"
 
@@ -2357,6 +2349,11 @@ msgstr "Error sa paggawa ng API Call sa"
 msgid "Error text"
 msgstr "Teksto ng Error"
 
+#. plugin:mailchimp:section:2:title
+#: 
+msgid "Dashboard"
+msgstr "Dashboard"
+
 #: 
 msgid "Change Password"
 msgstr "Baguhin ang Password"
@@ -2364,6 +2361,10 @@ msgstr "Baguhin ang Password"
 #: 
 msgid "Home"
 msgstr "Bahay"
+
+#: 
+msgid "Font"
+msgstr "Font"
 
 #: 
 msgid "Label Type"
@@ -2444,6 +2445,10 @@ msgstr "Ang opsyong ito ay nangangailangan ng kahit bersyon 3.22 ng MySQL! Pindu
 #: 
 msgid "Work"
 msgstr "Trabaho"
+
+#: 
+msgid "Cell"
+msgstr "Cell"
 
 #: 
 msgid "Estimated value "
@@ -2564,6 +2569,10 @@ msgstr "Mga Kaarawan ayon sa Buwan"
 #: 
 msgid "Students"
 msgstr "Mga Estudyante"
+
+#: 
+msgid "Mobile"
+msgstr "Mobile"
 
 #: 
 msgid "Home Address"
@@ -2830,10 +2839,6 @@ msgid "Date Entered"
 msgstr "Petsa ng Pagpasok"
 
 #: 
-msgid "There were "
-msgstr "Mayroon "
-
-#: 
 msgid "Inactive"
 msgstr "Hindi Aktibo"
 
@@ -2912,6 +2917,18 @@ msgstr "Default na Estado - Dapat 2-letrang abbreviation!"
 #: 
 msgid "Default account for receiving a copy of all emails"
 msgstr "Default na account para sa pagtanggap ng kopya ng lahat ng email"
+
+#: 
+msgid "SMTP Server Address (mail.server.com:25)"
+msgstr "SMTP Server Address (mail.server.com:25)"
+
+#: 
+msgid "SMTP Username"
+msgstr "SMTP Username"
+
+#: 
+msgid "SMTP Password"
+msgstr "SMTP Password"
 
 #: 
 msgid "Internationalization (I18n) support"
@@ -3061,6 +3078,11 @@ msgstr "Mga Katangian ng Pamilya"
 msgid "Property Types"
 msgstr "Mga Uri ng Katangian"
 
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Zip Code"
+msgstr "Zip Code"
+
 #. Context: queryparameters_qrp
 #: 
 msgid "Field"
@@ -3201,8 +3223,143 @@ msgstr "kilometro"
 
 #. Context: countries
 #: 
+msgid "Afghanistan (‫افغانستان‬‎)"
+msgstr "Afghanistan (‫افغانستان‬‎)"
+
+#. Context: countries
+#: 
+msgid "Åland Islands (Åland)"
+msgstr "Åland Islands (Åland)"
+
+#. Context: countries
+#: 
+msgid "Albania (Shqipëri)"
+msgstr "Albania (Shqipëri)"
+
+#. Context: countries
+#: 
+msgid "Algeria (‫الجزائر‬‎)"
+msgstr "Algeria (‫الجزائر‬‎)"
+
+#. Context: countries
+#: 
+msgid "American Samoa"
+msgstr "American Samoa"
+
+#. Context: countries
+#: 
+msgid "Andorra"
+msgstr "Andorra"
+
+#. Context: countries
+#: 
+msgid "Angola"
+msgstr "Angola"
+
+#. Context: countries
+#: 
+msgid "Anguilla"
+msgstr "Anguilla"
+
+#. Context: countries
+#: 
+msgid "Antarctica"
+msgstr "Antarctica"
+
+#. Context: countries
+#: 
 msgid "Antigua and Barbuda"
 msgstr "Antigua at Barbuda"
+
+#. Context: countries
+#: 
+msgid "Argentina"
+msgstr "Argentina"
+
+#. Context: countries
+#: 
+msgid "Armenia (Հայաստան)"
+msgstr "Armenia (Հայաստան)"
+
+#. Context: countries
+#: 
+msgid "Aruba"
+msgstr "Aruba"
+
+#. Context: countries
+#: 
+msgid "Ascension Island"
+msgstr "Ascension Island"
+
+#. Context: countries
+#: 
+msgid "Australia"
+msgstr "Australia"
+
+#. Context: countries
+#: 
+msgid "Austria (Österreich)"
+msgstr "Austria (Österreich)"
+
+#. Context: countries
+#: 
+msgid "Azerbaijan (Azərbaycan)"
+msgstr "Azerbaijan (Azərbaycan)"
+
+#. Context: countries
+#: 
+msgid "Bahamas"
+msgstr "Bahamas"
+
+#. Context: countries
+#: 
+msgid "Bahrain (‫البحرين‬‎)"
+msgstr "Bahrain (‫البحرين‬‎)"
+
+#. Context: countries
+#: 
+msgid "Bangladesh (বাংলাদেশ)"
+msgstr "Bangladesh (বাংলাদেশ)"
+
+#. Context: countries
+#: 
+msgid "Barbados"
+msgstr "Barbados"
+
+#. Context: countries
+#: 
+msgid "Belarus (Беларусь)"
+msgstr "Belarus (Беларусь)"
+
+#. Context: countries
+#: 
+msgid "Belgium (België)"
+msgstr "Belgium (België)"
+
+#. Context: countries
+#: 
+msgid "Belize"
+msgstr "Belize"
+
+#. Context: countries
+#: 
+msgid "Benin (Bénin)"
+msgstr "Benin (Bénin)"
+
+#. Context: countries
+#: 
+msgid "Bermuda"
+msgstr "Bermuda"
+
+#. Context: countries
+#: 
+msgid "Bhutan (འབྲུག)"
+msgstr "Bhutan (འབྲུག)"
+
+#. Context: countries
+#: 
+msgid "Bolivia"
+msgstr "Bolivia"
 
 #. Context: countries
 #: 
@@ -3211,8 +3368,103 @@ msgstr "Bosnia at Herzegovina (Босна и Херцеговина)"
 
 #. Context: countries
 #: 
+msgid "Botswana"
+msgstr "Botswana"
+
+#. Context: countries
+#: 
+msgid "Bouvet Island"
+msgstr "Bouvet Island"
+
+#. Context: countries
+#: 
+msgid "Brazil (Brasil)"
+msgstr "Brazil (Brasil)"
+
+#. Context: countries
+#: 
+msgid "British Indian Ocean Territory"
+msgstr "British Indian Ocean Territory"
+
+#. Context: countries
+#: 
+msgid "British Virgin Islands"
+msgstr "British Virgin Islands"
+
+#. Context: countries
+#: 
+msgid "Brunei"
+msgstr "Brunei"
+
+#. Context: countries
+#: 
+msgid "Bulgaria (България)"
+msgstr "Bulgaria (България)"
+
+#. Context: countries
+#: 
+msgid "Burkina Faso"
+msgstr "Burkina Faso"
+
+#. Context: countries
+#: 
+msgid "Burundi (Uburundi)"
+msgstr "Burundi (Uburundi)"
+
+#. Context: countries
+#: 
+msgid "Cambodia (កម្ពុជា)"
+msgstr "Cambodia (កម្ពុជា)"
+
+#. Context: countries
+#: 
+msgid "Cameroon (Cameroun)"
+msgstr "Cameroon (Cameroun)"
+
+#. Context: countries
+#: 
+msgid "Canada"
+msgstr "Canada"
+
+#. Context: countries
+#: 
+msgid "Canary Islands (islas Canarias)"
+msgstr "Canary Islands (islas Canarias)"
+
+#. Context: countries
+#: 
+msgid "Cape Verde (Kabu Verdi)"
+msgstr "Cape Verde (Kabu Verdi)"
+
+#. Context: countries
+#: 
+msgid "Caribbean Netherlands"
+msgstr "Caribbean Netherlands"
+
+#. Context: countries
+#: 
+msgid "Cayman Islands"
+msgstr "Cayman Islands"
+
+#. Context: countries
+#: 
+msgid "Central African Republic (République centrafricaine)"
+msgstr "Central African Republic (République centrafricaine)"
+
+#. Context: countries
+#: 
 msgid "Ceuta and Melilla (Ceuta y Melilla)"
 msgstr "Ceuta at Melilla (Ceuta y Melilla)"
+
+#. Context: countries
+#: 
+msgid "Chad (Tchad)"
+msgstr "Chad (Tchad)"
+
+#. Context: countries
+#: 
+msgid "Chile"
+msgstr "Chile"
 
 #. Context: countries
 #: 
@@ -3221,8 +3473,333 @@ msgstr "Tsina (中国)"
 
 #. Context: countries
 #: 
+msgid "Christmas Island"
+msgstr "Christmas Island"
+
+#. Context: countries
+#: 
+msgid "Clipperton Island"
+msgstr "Clipperton Island"
+
+#. Context: countries
+#: 
+msgid "Cocos (Keeling) Islands (Kepulauan Cocos (Keeling))"
+msgstr "Cocos (Keeling) Islands (Kepulauan Cocos (Keeling))"
+
+#. Context: countries
+#: 
+msgid "Colombia"
+msgstr "Colombia"
+
+#. Context: countries
+#: 
+msgid "Comoros (‫جزر القمر‬‎)"
+msgstr "Comoros (‫جزر القمر‬‎)"
+
+#. Context: countries
+#: 
+msgid "Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)"
+msgstr "Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)"
+
+#. Context: countries
+#: 
+msgid "Congo (Republic) (Congo-Brazzaville)"
+msgstr "Congo (Republic) (Congo-Brazzaville)"
+
+#. Context: countries
+#: 
+msgid "Cook Islands"
+msgstr "Cook Islands"
+
+#. Context: countries
+#: 
+msgid "Costa Rica"
+msgstr "Costa Rica"
+
+#. Context: countries
+#: 
+msgid "Côte d’Ivoire"
+msgstr "Côte d’Ivoire"
+
+#. Context: countries
+#: 
+msgid "Croatia (Hrvatska)"
+msgstr "Croatia (Hrvatska)"
+
+#. Context: countries
+#: 
+msgid "Cuba"
+msgstr "Cuba"
+
+#. Context: countries
+#: 
+msgid "Curaçao"
+msgstr "Curaçao"
+
+#. Context: countries
+#: 
+msgid "Cyprus (Κύπρος)"
+msgstr "Cyprus (Κύπρος)"
+
+#. Context: countries
+#: 
+msgid "Czech Republic (Česká republika)"
+msgstr "Czech Republic (Česká republika)"
+
+#. Context: countries
+#: 
+msgid "Denmark (Danmark)"
+msgstr "Denmark (Danmark)"
+
+#. Context: countries
+#: 
+msgid "Diego Garcia"
+msgstr "Diego Garcia"
+
+#. Context: countries
+#: 
+msgid "Djibouti"
+msgstr "Djibouti"
+
+#. Context: countries
+#: 
+msgid "Dominica"
+msgstr "Dominica"
+
+#. Context: countries
+#: 
+msgid "Dominican Republic (República Dominicana)"
+msgstr "Dominican Republic (República Dominicana)"
+
+#. Context: countries
+#: 
+msgid "Ecuador"
+msgstr "Ecuador"
+
+#. Context: countries
+#: 
 msgid "Egypt (‫مصر‬‎)"
 msgstr "Ehipto (‫مصر‬‎)"
+
+#. Context: countries
+#: 
+msgid "El Salvador"
+msgstr "El Salvador"
+
+#. Context: countries
+#: 
+msgid "Equatorial Guinea (Guinea Ecuatorial)"
+msgstr "Equatorial Guinea (Guinea Ecuatorial)"
+
+#. Context: countries
+#: 
+msgid "Eritrea"
+msgstr "Eritrea"
+
+#. Context: countries
+#: 
+msgid "Estonia (Eesti)"
+msgstr "Estonia (Eesti)"
+
+#. Context: countries
+#: 
+msgid "Ethiopia"
+msgstr "Ethiopia"
+
+#. Context: countries
+#: 
+msgid "Falkland Islands (Islas Malvinas)"
+msgstr "Falkland Islands (Islas Malvinas)"
+
+#. Context: countries
+#: 
+msgid "Faroe Islands (Føroyar)"
+msgstr "Faroe Islands (Føroyar)"
+
+#. Context: countries
+#: 
+msgid "Fiji"
+msgstr "Fiji"
+
+#. Context: countries
+#: 
+msgid "Finland (Suomi)"
+msgstr "Finland (Suomi)"
+
+#. Context: countries
+#: 
+msgid "France"
+msgstr "France"
+
+#. Context: countries
+#: 
+msgid "French Guiana (Guyane française)"
+msgstr "French Guiana (Guyane française)"
+
+#. Context: countries
+#: 
+msgid "French Polynesia (Polynésie française)"
+msgstr "French Polynesia (Polynésie française)"
+
+#. Context: countries
+#: 
+msgid "French Southern Territories (Terres australes françaises)"
+msgstr "French Southern Territories (Terres australes françaises)"
+
+#. Context: countries
+#: 
+msgid "Gabon"
+msgstr "Gabon"
+
+#. Context: countries
+#: 
+msgid "Gambia"
+msgstr "Gambia"
+
+#. Context: countries
+#: 
+msgid "Georgia (საქართველო)"
+msgstr "Georgia (საქართველო)"
+
+#. Context: countries
+#: 
+msgid "Germany (Deutschland)"
+msgstr "Germany (Deutschland)"
+
+#. Context: countries
+#: 
+msgid "Ghana (Gaana)"
+msgstr "Ghana (Gaana)"
+
+#. Context: countries
+#: 
+msgid "Gibraltar"
+msgstr "Gibraltar"
+
+#. Context: countries
+#: 
+msgid "Greece (Ελλάδα)"
+msgstr "Greece (Ελλάδα)"
+
+#. Context: countries
+#: 
+msgid "Greenland (Kalaallit Nunaat)"
+msgstr "Greenland (Kalaallit Nunaat)"
+
+#. Context: countries
+#: 
+msgid "Grenada"
+msgstr "Grenada"
+
+#. Context: countries
+#: 
+msgid "Guadeloupe"
+msgstr "Guadeloupe"
+
+#. Context: countries
+#: 
+msgid "Guam"
+msgstr "Guam"
+
+#. Context: countries
+#: 
+msgid "Guatemala"
+msgstr "Guatemala"
+
+#. Context: countries
+#: 
+msgid "Guernsey"
+msgstr "Guernsey"
+
+#. Context: countries
+#: 
+msgid "Guinea (Guinée)"
+msgstr "Guinea (Guinée)"
+
+#. Context: countries
+#: 
+msgid "Guinea-Bissau (Guiné Bissau)"
+msgstr "Guinea-Bissau (Guiné Bissau)"
+
+#. Context: countries
+#: 
+msgid "Guyana"
+msgstr "Guyana"
+
+#. Context: countries
+#: 
+msgid "Haiti"
+msgstr "Haiti"
+
+#. Context: countries
+#: 
+msgid "Heard & McDonald Islands"
+msgstr "Heard & McDonald Islands"
+
+#. Context: countries
+#: 
+msgid "Honduras"
+msgstr "Honduras"
+
+#. Context: countries
+#: 
+msgid "Hong Kong (香港)"
+msgstr "Hong Kong (香港)"
+
+#. Context: countries
+#: 
+msgid "Hungary (Magyarország)"
+msgstr "Hungary (Magyarország)"
+
+#. Context: countries
+#: 
+msgid "Iceland (Ísland)"
+msgstr "Iceland (Ísland)"
+
+#. Context: countries
+#: 
+msgid "India (भारत)"
+msgstr "India (भारत)"
+
+#. Context: countries
+#: 
+msgid "Indonesia"
+msgstr "Indonesia"
+
+#. Context: countries
+#: 
+msgid "Iran (‫ایران‬‎)"
+msgstr "Iran (‫ایران‬‎)"
+
+#. Context: countries
+#: 
+msgid "Iraq (‫العراق‬‎)"
+msgstr "Iraq (‫العراق‬‎)"
+
+#. Context: countries
+#: 
+msgid "Ireland"
+msgstr "Ireland"
+
+#. Context: countries
+#: 
+msgid "Isle of Man"
+msgstr "Isle of Man"
+
+#. Context: countries
+#: 
+msgid "Israel (‫ישראל‬‎)"
+msgstr "Israel (‫ישראל‬‎)"
+
+#. Context: countries
+#: 
+msgid "Italy (Italia)"
+msgstr "Italy (Italia)"
+
+#. Context: countries
+#: 
+msgid "Jamaica"
+msgstr "Jamaica"
 
 #. Context: countries
 #: 
@@ -3231,8 +3808,368 @@ msgstr "Hapon (日本)"
 
 #. Context: countries
 #: 
+msgid "Jersey"
+msgstr "Jersey"
+
+#. Context: countries
+#: 
+msgid "Jordan (‫الأردن‬‎)"
+msgstr "Jordan (‫الأردن‬‎)"
+
+#. Context: countries
+#: 
+msgid "Kazakhstan (Казахстан)"
+msgstr "Kazakhstan (Казахстан)"
+
+#. Context: countries
+#: 
+msgid "Kenya"
+msgstr "Kenya"
+
+#. Context: countries
+#: 
+msgid "Kiribati"
+msgstr "Kiribati"
+
+#. Context: countries
+#: 
+msgid "Kosovo (Kosovë)"
+msgstr "Kosovo (Kosovë)"
+
+#. Context: countries
+#: 
+msgid "Kuwait (‫الكويت‬‎)"
+msgstr "Kuwait (‫الكويت‬‎)"
+
+#. Context: countries
+#: 
+msgid "Kyrgyzstan (Кыргызстан)"
+msgstr "Kyrgyzstan (Кыргызстан)"
+
+#. Context: countries
+#: 
+msgid "Laos (ລາວ)"
+msgstr "Laos (ລາວ)"
+
+#. Context: countries
+#: 
+msgid "Lebanon (‫لبنان‬‎)"
+msgstr "Lebanon (‫لبنان‬‎)"
+
+#. Context: countries
+#: 
+msgid "Lesotho"
+msgstr "Lesotho"
+
+#. Context: countries
+#: 
+msgid "Liberia"
+msgstr "Liberia"
+
+#. Context: countries
+#: 
+msgid "Libya (‫ليبيا‬‎)"
+msgstr "Libya (‫ليبيا‬‎)"
+
+#. Context: countries
+#: 
+msgid "Liechtenstein"
+msgstr "Liechtenstein"
+
+#. Context: countries
+#: 
+msgid "Lithuania (Lietuva)"
+msgstr "Lithuania (Lietuva)"
+
+#. Context: countries
+#: 
+msgid "Luxembourg"
+msgstr "Luxembourg"
+
+#. Context: countries
+#: 
+msgid "Macau (澳門)"
+msgstr "Macau (澳門)"
+
+#. Context: countries
+#: 
+msgid "Macedonia (FYROM) (Македонија)"
+msgstr "Macedonia (FYROM) (Македонија)"
+
+#. Context: countries
+#: 
+msgid "Madagascar (Madagasikara)"
+msgstr "Madagascar (Madagasikara)"
+
+#. Context: countries
+#: 
+msgid "Malawi"
+msgstr "Malawi"
+
+#. Context: countries
+#: 
+msgid "Malaysia"
+msgstr "Malaysia"
+
+#. Context: countries
+#: 
+msgid "Maldives"
+msgstr "Maldives"
+
+#. Context: countries
+#: 
+msgid "Mali"
+msgstr "Mali"
+
+#. Context: countries
+#: 
+msgid "Malta"
+msgstr "Malta"
+
+#. Context: countries
+#: 
+msgid "Marshall Islands"
+msgstr "Marshall Islands"
+
+#. Context: countries
+#: 
+msgid "Martinique"
+msgstr "Martinique"
+
+#. Context: countries
+#: 
+msgid "Mauritania (‫موريتانيا‬‎)"
+msgstr "Mauritania (‫موريتانيا‬‎)"
+
+#. Context: countries
+#: 
+msgid "Mauritius (Moris)"
+msgstr "Mauritius (Moris)"
+
+#. Context: countries
+#: 
+msgid "Mayotte"
+msgstr "Mayotte"
+
+#. Context: countries
+#: 
+msgid "Mexico (México)"
+msgstr "Mexico (México)"
+
+#. Context: countries
+#: 
+msgid "Micronesia"
+msgstr "Micronesia"
+
+#. Context: countries
+#: 
+msgid "Moldova (Republica Moldova)"
+msgstr "Moldova (Republica Moldova)"
+
+#. Context: countries
+#: 
+msgid "Monaco"
+msgstr "Monaco"
+
+#. Context: countries
+#: 
+msgid "Mongolia (Монгол)"
+msgstr "Mongolia (Монгол)"
+
+#. Context: countries
+#: 
+msgid "Montenegro (Crna Gora)"
+msgstr "Montenegro (Crna Gora)"
+
+#. Context: countries
+#: 
+msgid "Montserrat"
+msgstr "Montserrat"
+
+#. Context: countries
+#: 
+msgid "Morocco (‫المغرب‬‎)"
+msgstr "Morocco (‫المغرب‬‎)"
+
+#. Context: countries
+#: 
+msgid "Mozambique (Moçambique)"
+msgstr "Mozambique (Moçambique)"
+
+#. Context: countries
+#: 
+msgid "Myanmar (Burma) (မြန်မာ)"
+msgstr "Myanmar (Burma) (မြန်မာ)"
+
+#. Context: countries
+#: 
+msgid "Namibia (Namibië)"
+msgstr "Namibia (Namibië)"
+
+#. Context: countries
+#: 
+msgid "Nauru"
+msgstr "Nauru"
+
+#. Context: countries
+#: 
+msgid "Nepal (नेपाल)"
+msgstr "Nepal (नेपाल)"
+
+#. Context: countries
+#: 
+msgid "Netherlands (Nederland)"
+msgstr "Netherlands (Nederland)"
+
+#. Context: countries
+#: 
+msgid "New Caledonia (Nouvelle-Calédonie)"
+msgstr "New Caledonia (Nouvelle-Calédonie)"
+
+#. Context: countries
+#: 
+msgid "New Zealand"
+msgstr "New Zealand"
+
+#. Context: countries
+#: 
+msgid "Nicaragua"
+msgstr "Nicaragua"
+
+#. Context: countries
+#: 
+msgid "Niger (Nijar)"
+msgstr "Niger (Nijar)"
+
+#. Context: countries
+#: 
+msgid "Nigeria"
+msgstr "Nigeria"
+
+#. Context: countries
+#: 
+msgid "Niue"
+msgstr "Niue"
+
+#. Context: countries
+#: 
+msgid "Norfolk Island"
+msgstr "Norfolk Island"
+
+#. Context: countries
+#: 
+msgid "Northern Mariana Islands"
+msgstr "Northern Mariana Islands"
+
+#. Context: countries
+#: 
+msgid "North Korea (조선 민주주의 인민 공화국)"
+msgstr "North Korea (조선 민주주의 인민 공화국)"
+
+#. Context: countries
+#: 
+msgid "Norway (Norge)"
+msgstr "Norway (Norge)"
+
+#. Context: countries
+#: 
+msgid "Oman (‫عُمان‬‎)"
+msgstr "Oman (‫عُمان‬‎)"
+
+#. Context: countries
+#: 
+msgid "Pakistan (‫پاکستان‬‎)"
+msgstr "Pakistan (‫پاکستان‬‎)"
+
+#. Context: countries
+#: 
+msgid "Palau"
+msgstr "Palau"
+
+#. Context: countries
+#: 
+msgid "Palestine (‫فلسطين‬‎)"
+msgstr "Palestine (‫فلسطين‬‎)"
+
+#. Context: countries
+#: 
+msgid "Panama (Panamá)"
+msgstr "Panama (Panamá)"
+
+#. Context: countries
+#: 
+msgid "Papua New Guinea"
+msgstr "Papua New Guinea"
+
+#. Context: countries
+#: 
+msgid "Paraguay"
+msgstr "Paraguay"
+
+#. Context: countries
+#: 
+msgid "Peru (Perú)"
+msgstr "Peru (Perú)"
+
+#. Context: countries
+#: 
 msgid "Philippines"
 msgstr "Pilipinas"
+
+#. Context: countries
+#: 
+msgid "Pitcairn Islands"
+msgstr "Pitcairn Islands"
+
+#. Context: countries
+#: 
+msgid "Poland (Polska)"
+msgstr "Poland (Polska)"
+
+#. Context: countries
+#: 
+msgid "Portugal"
+msgstr "Portugal"
+
+#. Context: countries
+#: 
+msgid "Puerto Rico"
+msgstr "Puerto Rico"
+
+#. Context: countries
+#: 
+msgid "Qatar (‫قطر‬‎)"
+msgstr "Qatar (‫قطر‬‎)"
+
+#. Context: countries
+#: 
+msgid "Réunion (La Réunion)"
+msgstr "Réunion (La Réunion)"
+
+#. Context: countries
+#: 
+msgid "Romania (România)"
+msgstr "Romania (România)"
+
+#. Context: countries
+#: 
+msgid "Russia (Россия)"
+msgstr "Russia (Россия)"
+
+#. Context: countries
+#: 
+msgid "Rwanda"
+msgstr "Rwanda"
+
+#. Context: countries
+#: 
+msgid "Saint Barthélemy (Saint-Barthélemy)"
+msgstr "Saint Barthélemy (Saint-Barthélemy)"
+
+#. Context: countries
+#: 
+msgid "Saint Helena"
+msgstr "Saint Helena"
 
 #. Context: countries
 #: 
@@ -3241,8 +4178,28 @@ msgstr "Saint Kitts at Nevis"
 
 #. Context: countries
 #: 
+msgid "Saint Lucia"
+msgstr "Saint Lucia"
+
+#. Context: countries
+#: 
+msgid "Saint Martin (Saint-Martin (partie française))"
+msgstr "Saint Martin (Saint-Martin (partie française))"
+
+#. Context: countries
+#: 
 msgid "Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)"
 msgstr "Saint Pierre at Miquelon (Saint-Pierre-et-Miquelon)"
+
+#. Context: countries
+#: 
+msgid "Samoa"
+msgstr "Samoa"
+
+#. Context: countries
+#: 
+msgid "San Marino"
+msgstr "San Marino"
 
 #. Context: countries
 #: 
@@ -3251,8 +4208,168 @@ msgstr "São Tomé at Príncipe (São Tomé e Príncipe)"
 
 #. Context: countries
 #: 
+msgid "Saudi Arabia (‫المملكة العربية السعودية‬‎)"
+msgstr "Saudi Arabia (‫المملكة العربية السعودية‬‎)"
+
+#. Context: countries
+#: 
+msgid "Senegal (Sénégal)"
+msgstr "Senegal (Sénégal)"
+
+#. Context: countries
+#: 
+msgid "Serbia (Србија)"
+msgstr "Serbia (Србија)"
+
+#. Context: countries
+#: 
+msgid "Seychelles"
+msgstr "Seychelles"
+
+#. Context: countries
+#: 
+msgid "Sierra Leone"
+msgstr "Sierra Leone"
+
+#. Context: countries
+#: 
+msgid "Singapore"
+msgstr "Singapore"
+
+#. Context: countries
+#: 
+msgid "Sint Maarten"
+msgstr "Sint Maarten"
+
+#. Context: countries
+#: 
+msgid "Slovakia (Slovensko)"
+msgstr "Slovakia (Slovensko)"
+
+#. Context: countries
+#: 
+msgid "Slovenia (Slovenija)"
+msgstr "Slovenia (Slovenija)"
+
+#. Context: countries
+#: 
+msgid "Solomon Islands"
+msgstr "Solomon Islands"
+
+#. Context: countries
+#: 
+msgid "Somalia (Soomaaliya)"
+msgstr "Somalia (Soomaaliya)"
+
+#. Context: countries
+#: 
+msgid "South Africa"
+msgstr "South Africa"
+
+#. Context: countries
+#: 
+msgid "South Georgia & South Sandwich Islands"
+msgstr "South Georgia & South Sandwich Islands"
+
+#. Context: countries
+#: 
+msgid "South Korea (대한민국)"
+msgstr "South Korea (대한민국)"
+
+#. Context: countries
+#: 
+msgid "South Sudan (‫جنوب السودان‬‎)"
+msgstr "South Sudan (‫جنوب السودان‬‎)"
+
+#. Context: countries
+#: 
+msgid "Spain (España)"
+msgstr "Spain (España)"
+
+#. Context: countries
+#: 
+msgid "Sri Lanka (ශ්‍රී ලංකාව)"
+msgstr "Sri Lanka (ශ්‍රී ලංකාව)"
+
+#. Context: countries
+#: 
+msgid "St. Vincent & Grenadines"
+msgstr "St. Vincent & Grenadines"
+
+#. Context: countries
+#: 
+msgid "Sudan (‫السودان‬‎)"
+msgstr "Sudan (‫السودان‬‎)"
+
+#. Context: countries
+#: 
+msgid "Suriname"
+msgstr "Suriname"
+
+#. Context: countries
+#: 
 msgid "Svalbard and Jan Mayen (Svalbard og Jan Mayen)"
 msgstr "Svalbard at Jan Mayen (Svalbard og Jan Mayen)"
+
+#. Context: countries
+#: 
+msgid "Swaziland"
+msgstr "Swaziland"
+
+#. Context: countries
+#: 
+msgid "Sweden (Sverige)"
+msgstr "Sweden (Sverige)"
+
+#. Context: countries
+#: 
+msgid "Switzerland (Schweiz)"
+msgstr "Switzerland (Schweiz)"
+
+#. Context: countries
+#: 
+msgid "Syria (‫سوريا‬‎)"
+msgstr "Syria (‫سوريا‬‎)"
+
+#. Context: countries
+#: 
+msgid "Taiwan (台灣)"
+msgstr "Taiwan (台灣)"
+
+#. Context: countries
+#: 
+msgid "Tajikistan"
+msgstr "Tajikistan"
+
+#. Context: countries
+#: 
+msgid "Tanzania"
+msgstr "Tanzania"
+
+#. Context: countries
+#: 
+msgid "Thailand (ไทย)"
+msgstr "Thailand (ไทย)"
+
+#. Context: countries
+#: 
+msgid "Timor-Leste"
+msgstr "Timor-Leste"
+
+#. Context: countries
+#: 
+msgid "Togo"
+msgstr "Togo"
+
+#. Context: countries
+#: 
+msgid "Tokelau"
+msgstr "Tokelau"
+
+#. Context: countries
+#: 
+msgid "Tonga"
+msgstr "Tonga"
 
 #. Context: countries
 #: 
@@ -3261,13 +4378,123 @@ msgstr "Trinidad at Tobago"
 
 #. Context: countries
 #: 
+msgid "Tristan da Cunha"
+msgstr "Tristan da Cunha"
+
+#. Context: countries
+#: 
+msgid "Tunisia (‫تونس‬‎)"
+msgstr "Tunisia (‫تونس‬‎)"
+
+#. Context: countries
+#: 
+msgid "Turkey (Türkiye)"
+msgstr "Turkey (Türkiye)"
+
+#. Context: countries
+#: 
+msgid "Turkmenistan"
+msgstr "Turkmenistan"
+
+#. Context: countries
+#: 
 msgid "Turks and Caicos Islands"
 msgstr "Turks at Caicos Islands"
 
 #. Context: countries
 #: 
+msgid "Tuvalu"
+msgstr "Tuvalu"
+
+#. Context: countries
+#: 
+msgid "U.S. Outlying Islands"
+msgstr "U.S. Outlying Islands"
+
+#. Context: countries
+#: 
+msgid "U.S. Virgin Islands"
+msgstr "U.S. Virgin Islands"
+
+#. Context: countries
+#: 
+msgid "Uganda"
+msgstr "Uganda"
+
+#. Context: countries
+#: 
+msgid "Ukraine (Україна)"
+msgstr "Ukraine (Україна)"
+
+#. Context: countries
+#: 
+msgid "United Arab Emirates (‫الإمارات العربية المتحدة‬‎)"
+msgstr "United Arab Emirates (‫الإمارات العربية المتحدة‬‎)"
+
+#. Context: countries
+#: 
+msgid "United Kingdom"
+msgstr "United Kingdom"
+
+#. Context: countries
+#: 
+msgid "United States"
+msgstr "United States"
+
+#. Context: countries
+#: 
+msgid "Uruguay"
+msgstr "Uruguay"
+
+#. Context: countries
+#: 
+msgid "Uzbekistan (Oʻzbekiston)"
+msgstr "Uzbekistan (Oʻzbekiston)"
+
+#. Context: countries
+#: 
+msgid "Vanuatu"
+msgstr "Vanuatu"
+
+#. Context: countries
+#: 
+msgid "Vatican City (Città del Vaticano)"
+msgstr "Vatican City (Città del Vaticano)"
+
+#. Context: countries
+#: 
+msgid "Venezuela"
+msgstr "Venezuela"
+
+#. Context: countries
+#: 
+msgid "Vietnam (Việt Nam)"
+msgstr "Vietnam (Việt Nam)"
+
+#. Context: countries
+#: 
 msgid "Wallis and Futuna"
 msgstr "Wallis at Futuna"
+
+#. Context: countries
+#: 
+msgid "Western Sahara (‫الصحراء الغربية‬‎)"
+msgstr "Western Sahara (‫الصحراء الغربية‬‎)"
+
+#. Context: countries
+#: 
+msgid "Yemen (‫اليمن‬‎)"
+msgstr "Yemen (‫اليمن‬‎)"
+
+#. Context: countries
+#: 
+msgid "Zambia"
+msgstr "Zambia"
+
+#. Context: countries
+#: 
+msgid "Zimbabwe"
+msgstr "Zimbabwe"
 
 #: 
 msgid "Please verify your family's information"
@@ -3378,6 +4605,11 @@ msgstr "Italyano - Italy"
 #: 
 msgid "Norwegian"
 msgstr "Norweñgo"
+
+#. Context: locales
+#: 
+msgid "Dutch - Netherlands"
+msgstr "Dutch - Netherlands"
 
 #. Context: locales
 #: 
@@ -3541,14 +4773,6 @@ msgid "Select event"
 msgstr "Pumili ng kaganapan"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "Ang tao ay naka-check in na para sa kaganapang ito"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "Matandang Nag-che-check out ng Tao"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Teksto bago ang pangalan sa mga email/ulat"
 
@@ -3697,6 +4921,10 @@ msgid "Notification for"
 msgstr "Abiso para sa"
 
 #: 
+msgid "ERROR"
+msgstr "ERROR"
+
+#: 
 msgid "Title FirstName MiddleName LastName"
 msgstr "Pamagat Pangalan GitnangPangalan Apelyido"
 
@@ -3729,8 +4957,20 @@ msgid "Event Log severity to write, used by ORM and App Logs"
 msgstr "Antas ng kalubhaan ng Event Log na isusulat, ginagamit ng ORM at App Logs"
 
 #: 
+msgid "Time zone"
+msgstr "Time zone"
+
+#: 
+msgid "KioskVisibilityTimestamp"
+msgstr "KioskVisibilityTimestamp"
+
+#: 
 msgid "Show/Hide Lost Password Link on the login screen"
 msgstr "Ipakita/Itago ang Lost Password Link sa screen ng pag-login"
+
+#: 
+msgid "Backup"
+msgstr "Backup"
 
 #: 
 msgid "Guardian(s) of"
@@ -3833,6 +5073,11 @@ msgstr "Ilipat"
 msgid "Arabic - Egypt"
 msgstr "Arabik - Egypt"
 
+#. Context: locales
+#: 
+msgid "Thai"
+msgstr "Thai"
+
 #: 
 msgid "Pending Self Verify"
 msgstr "Naghihintay ng Sariling Verification"
@@ -3900,6 +5145,10 @@ msgstr "S"
 
 #: 
 msgid "ENE"
+msgstr "ESE"
+
+#: 
+msgid "ESE"
 msgstr "ESE"
 
 #: 
@@ -4007,6 +5256,10 @@ msgid "Add Students"
 msgstr "Magdagdag ng mga Estudyante"
 
 #: 
+msgid "OK"
+msgstr "OK"
+
+#: 
 msgid "Please select target Role for members"
 msgstr "Pakipili ng target na Papel para sa mga miyembro"
 
@@ -4023,12 +5276,20 @@ msgid "All Members"
 msgstr "Lahat ng Miyembro"
 
 #: 
+msgid "PhotoBook"
+msgstr "PhotoBook"
+
+#: 
 msgid "With Photos"
 msgstr "May Mga Larawan"
 
 #: 
 msgid "Create PhotoBook"
 msgstr "Lumikha ng PhotoBook"
+
+#: 
+msgid "SSE"
+msgstr "SSE"
 
 #: 
 msgid "Recipient Naming Method"
@@ -4059,12 +5320,12 @@ msgid "Create Group + ADD Cart"
 msgstr "Lumikha ng Grupo + IDAGDAG ang Cart"
 
 #: 
-msgid "Sign out"
-msgstr "Mag-sign out"
+msgid "Profile"
+msgstr "Profile"
 
 #: 
-msgid "Sermon Text"
-msgstr "Teksto ng Sermon"
+msgid "Sign out"
+msgstr "Mag-sign out"
 
 #: 
 msgid "Change Settings"
@@ -4223,12 +5484,24 @@ msgid "Private Calendar"
 msgstr "Pribadong Kalendaryo"
 
 #: 
+msgid "Username"
+msgstr "Username"
+
+#: 
 msgid "Are you sure you want to move"
 msgstr "Sigurado ka bang gusto mong ilipat"
 
 #: 
+msgid "Access Token"
+msgstr "Access Token"
+
+#: 
 msgid "New Access Token"
 msgstr "Bagong Access Token"
+
+#: 
+msgid "ICS URL"
+msgstr "ICS URL"
 
 #: 
 msgid "Foreground Color"
@@ -4331,6 +5604,10 @@ msgid "Duplicate Emails"
 msgstr "Mga Duplicate na Email"
 
 #: 
+msgid "HTML URL"
+msgstr "HTML URL"
+
+#: 
 msgid "Latest People"
 msgstr "Pinakabagong mga Tao"
 
@@ -4405,6 +5682,11 @@ msgstr "Isama ang datos ng pakikipag-ugnayan at demograpiya sa katawan ng email 
 #: 
 msgid "Include family custom properties in global search."
 msgstr "Isama ang mga pasadyang katangian ng pamilya sa pandaigdigang paghahanap."
+
+#. Context: countries
+#: 
+msgid "Latvia (Latvija)"
+msgstr "Latvia (Latvija)"
 
 #: 
 msgid "You are about to add a new deposit without a comment"
@@ -4494,12 +5776,24 @@ msgid "Verification URL created"
 msgstr "Nilikha ang Verification URL"
 
 #: 
+msgid "URL"
+msgstr "URL"
+
+#: 
+msgid "PDF"
+msgstr "PDF"
+
+#: 
 msgid "Error sending email(s)"
 msgstr "Error sa pagpapadala ng email(s)"
 
 #: 
 msgid "Please check logs for more information"
 msgstr "Pakitingnan ang mga log para sa karagdagang impormasyon"
+
+#: 
+msgid "Verification URL"
+msgstr "URL ng Pagpapatunay"
 
 #: 
 msgid "Unexpected Person Id"
@@ -4544,10 +5838,6 @@ msgstr "Mga Tungkulin ng Pag-reset ng Database"
 #: 
 msgid "Reset Database"
 msgstr "I-reset ang Database"
-
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "Ire-reset nito ang datos ng sistema at ipapalabas muli ang sistema bilang bagong install."
 
 #. Context: locales
 #: 
@@ -4619,6 +5909,10 @@ msgid "Mailchimp is not active"
 msgstr "Hindi aktibo ang Mailchimp"
 
 #: 
+msgid "Mailchimp"
+msgstr "Mailchimp"
+
+#: 
 msgid "Lists"
 msgstr "Mga Listahan"
 
@@ -4641,6 +5935,10 @@ msgstr "Hindi wastong List id"
 #: 
 msgid "Audience not in the ChurchCRM"
 msgstr "Audience na wala sa ChurchCRM"
+
+#: 
+msgid "Web Server"
+msgstr "Web Server"
 
 #. Context: locales
 #: 
@@ -4703,6 +6001,11 @@ msgstr "Paglalarawan ng Kaganapan"
 msgid "Help translate this project"
 msgstr "Tumulong sa pagsasalin ng proyektong ito"
 
+#. Context: locales
+#: 
+msgid "Afrikaans"
+msgstr "Afrikaans"
+
 #: 
 msgid "Loading"
 msgstr "Naglo-load"
@@ -4740,18 +6043,6 @@ msgid "Family has no emails to use"
 msgstr "Ang pamilya ay walang mga email na magagamit"
 
 #: 
-msgid "User Interface"
-msgstr "Interface ng User"
-
-#: 
-msgid "Locale"
-msgstr "Lokasyon"
-
-#: 
-msgid "Override system locale"
-msgstr "I-override ang locale ng sistema"
-
-#: 
 msgid "Deleted"
 msgstr "Nabura"
 
@@ -4766,6 +6057,11 @@ msgstr "Hindi Wastong Petsa ng Kapanganakan: Nawawalang buwan at araw ng kapanga
 #: 
 msgid "System"
 msgstr "Sistema"
+
+#. Context: locales
+#: 
+msgid "Amharic - Ethiopia"
+msgstr "Amharic - Ethiopia"
 
 #. Context: locales
 #: 
@@ -4830,8 +6126,18 @@ msgstr "hindi wastong kahilingan sa grupo"
 
 #. Context: locales
 #: 
+msgid "Hindi - India"
+msgstr "Hindi - India"
+
+#. Context: locales
+#: 
 msgid "Japanese"
 msgstr "Hapon"
+
+#. Context: locales
+#: 
+msgid "Tamil - India"
+msgstr "Tamil - India"
 
 #: 
 msgid "Not Subscribed"
@@ -4867,6 +6173,11 @@ msgstr "Ingles - South Africa"
 msgid "English - Jamaica"
 msgstr "Ingles - Jamaica"
 
+#. Context: locales
+#: 
+msgid "Swahili"
+msgstr "Swahili"
+
 #: 
 msgid "One character from FirstName and one character from LastName"
 msgstr "Isang karakter mula sa Pangalan at isang karakter mula sa Apelyido"
@@ -4878,6 +6189,11 @@ msgstr "Dalawang karakter mula sa Pangalan"
 #: 
 msgid "Church Email not set, please visit the settings page"
 msgstr "Hindi nakatakda ang Email ng Simbahan, pakibisita ang pahina ng mga setting"
+
+#. Context: locales
+#: 
+msgid "Telugu - India"
+msgstr "Telugu - India"
 
 #. Context: locales
 #: 
@@ -4913,6 +6229,10 @@ msgid "No log files found."
 msgstr "Walang nakitang log file."
 
 #: 
+msgid "Log File"
+msgstr "Log File"
+
+#: 
 msgid "Size"
 msgstr "Sukat"
 
@@ -4931,6 +6251,10 @@ msgstr "Viewer ng Log File"
 #: 
 msgid "Filter by log level:"
 msgstr "I-filter ayon sa antas ng log:"
+
+#: 
+msgid "Error"
+msgstr "Error"
 
 #: 
 msgid "Info"
@@ -5179,6 +6503,14 @@ msgstr "Ang address ay kinakailangan"
 #: 
 msgid "City is required"
 msgstr "Ang lungsod ay kinakailangan"
+
+#: 
+msgid "Email Address"
+msgstr "Email Address"
+
+#: 
+msgid "Email address"
+msgstr "Email address"
 
 #: 
 msgid "Enter family name"
@@ -5433,6 +6765,10 @@ msgid "Setting updated successfully"
 msgstr "Matagumpay na na-update ang setting"
 
 #: 
+msgid "System Upgrade Wizard"
+msgstr "Gabay sa Pag-upgrade ng Sistema"
+
+#: 
 msgid "System upgrade completed successfully!"
 msgstr "Matagumpay na natapos ang system upgrade!"
 
@@ -5609,6 +6945,10 @@ msgid "All system files have passed integrity validation."
 msgstr "Lahat ng mga file ng sistema ay naipasa ang validation ng integridad."
 
 #: 
+msgid "Base URL"
+msgstr "Base URL"
+
+#: 
 msgid "ChurchCRM Installation"
 msgstr "Pag-install ng ChurchCRM"
 
@@ -5617,12 +6957,20 @@ msgid "Copy"
 msgstr "Kopyahin"
 
 #: 
+msgid "DSN"
+msgstr "DSN"
+
+#: 
 msgid "Database Server"
 msgstr "Server ng Database"
 
 #: 
 msgid "Debug Info"
 msgstr "Impormasyon ng Debug"
+
+#: 
+msgid "Document Root"
+msgstr "Document Root"
 
 #: 
 msgid "Email Configuration"
@@ -5635,6 +6983,14 @@ msgstr "Impormasyon ng Debug ng Email"
 #: 
 msgid "Filesystem Permissions"
 msgstr "Mga Pahintulot ng Filesystem"
+
+#: 
+msgid "Hostname"
+msgstr "Hostname"
+
+#: 
+msgid "IP Address"
+msgstr "IP Address"
 
 #: 
 msgid "Images Root"
@@ -5669,12 +7025,32 @@ msgid "PHP Configuration"
 msgstr "Konfigurasyong PHP"
 
 #: 
+msgid "Platform"
+msgstr "Platform"
+
+#: 
+msgid "Root Path"
+msgstr "Root Path"
+
+#: 
+msgid "SMTP Host"
+msgstr "SMTP Host"
+
+#: 
 msgid "Server Information"
 msgstr "Impormasyon ng Server"
 
 #: 
+msgid "Software"
+msgstr "Software"
+
+#: 
 msgid "System & Configuration"
 msgstr "Sistema at Konfigurasyong"
+
+#: 
+msgid "Tip:"
+msgstr "Tip:"
 
 #: 
 msgid "Valid Settings"
@@ -5735,10 +7111,6 @@ msgid "All Types"
 msgstr "Lahat ng Uri"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "Sigurado ka bang gusto mong burahin ang rekord ng check-in na ito?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "Mga Kategorya ng Bilang ng Presensya"
 
@@ -5763,6 +7135,10 @@ msgid "Check In to Event"
 msgstr "Mag-check In sa Kaganapan"
 
 #: 
+msgid "Check-in"
+msgstr "Check-in"
+
+#: 
 msgid "Choose an event..."
 msgstr "Pumili ng kaganapan..."
 
@@ -5773,10 +7149,6 @@ msgstr "Linisin"
 #: 
 msgid "Create New Event"
 msgstr "Lumikha ng Bagong Kaganapan"
-
-#: 
-msgid "Create an event type to get started."
-msgstr "Lumikha ng uri ng kaganapan para magsimula."
 
 #: 
 msgid "Current DB Version"
@@ -5797,14 +7169,6 @@ msgstr "Default na Oras ng Simula"
 #: 
 msgid "Delete Event"
 msgstr "Burahin ang Kaganapan"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "Ang pagbubura ng kaganapan ay magbubura rin ng lahat ng bilang ng presensya. Burahin ang kaganapang ito?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "Ang pagbubura ng kaganapang ito ay magbubura rin ng lahat ng mga rekord ng presensya. Sigurado ka?"
 
 #: 
 msgid "Edit Event"
@@ -5872,10 +7236,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "Opsyonal - Magdagdag ng mga tala ng sermon o karagdagang detalye ng kaganapan"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "Opsyonal - iwanang blangko kung hindi sinusubaybayan"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "Mga opsyonal na tala tungkol sa presensya..."
 
@@ -5908,24 +7268,12 @@ msgid "Search by name or email..."
 msgstr "Maghanap ayon sa pangalan o email..."
 
 #: 
-msgid "Search for adult..."
-msgstr "Maghanap ng matanda..."
-
-#: 
 msgid "Search for supervisor..."
 msgstr "Maghanap ng superbisor..."
 
 #: 
 msgid "Select Event for Check-In"
 msgstr "Pumili ng Kaganapan para sa Check-In"
-
-#: 
-msgid "Select start and end date/time"
-msgstr "Pumili ng petsa/oras ng simula at pagtatapos"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "Piliin ang kaganapan para mag-check in ng mga miyembro ng iyong cart"
 
 #: 
 msgid "Sermon / Event Text"
@@ -6092,6 +7440,10 @@ msgstr "I-drag at i-drop ang iyong backup file dito"
 #: 
 msgid "Edit records permission"
 msgstr "Pahintulot sa pag-edit ng mga rekord"
+
+#: 
+msgid "Encryption"
+msgstr "Enkripsiyon"
 
 #: 
 msgid "Exports database structure and data. Smaller file size."
@@ -6290,10 +7642,6 @@ msgid "User authentication"
 msgstr "Authentication ng user"
 
 #: 
-msgid "User must have Add Event permission"
-msgstr "Ang user ay dapat may pahintulot sa Pagdaragdag ng Kaganapan"
-
-#: 
 msgid "User must have Menu Options permission"
 msgstr "Ang user ay dapat may pahintulot sa Mga Opsyon ng Menu"
 
@@ -6348,6 +7696,10 @@ msgstr "Magdagdag ng Isa pang Miyembro ng Pamilya"
 #: 
 msgid "Add Pledge"
 msgstr "Magdagdag ng Pangako"
+
+#: 
+msgid "Admin Dashboard"
+msgstr "Dashboard ng Admin"
 
 #: 
 msgid "Advanced Operations"
@@ -6468,6 +7820,10 @@ msgstr "I-customize ang teksto na lumalabas sa mga pahayag ng buwis (sTaxReport1
 #: 
 msgid "Data Quality:"
 msgstr "Kalidad ng Data:"
+
+#: 
+msgid "Database:"
+msgstr "Database:"
 
 #: 
 msgid "Day"
@@ -6598,6 +7954,10 @@ msgid "Generate reports for tax statements, pledge tracking, and financial analy
 msgstr "Gumawa ng mga ulat para sa mga pahayag ng buwis, pagsubaybay ng pangako, at pagsusuri ng pananalapi."
 
 #: 
+msgid "ID"
+msgstr "ID"
+
+#: 
 msgid "Identify members who have not made any donations within a date range."
 msgstr "Tukuyin ang mga miyembro na walang nagawa na anumang donasyon sa loob ng isang hanay ng petsa."
 
@@ -6608,6 +7968,10 @@ msgstr "Nabigo ang pag-import"
 #: 
 msgid "Jan"
 msgstr "Ene"
+
+#: 
+msgid "Jr., Sr."
+msgstr "Jr., Sr."
 
 #: 
 msgid "Jul"
@@ -6636,6 +8000,10 @@ msgstr "L"
 #: 
 msgid "Manage Funds"
 msgstr "Pamahalaan ang mga Pondo"
+
+#: 
+msgid "Mar"
+msgstr "Mar"
 
 #: 
 msgid "Membership Reports"
@@ -6700,6 +8068,10 @@ msgstr "Mga Bukas na Deposito:"
 #: 
 msgid "Orphaned Files:"
 msgstr "Mga Orphaned na File:"
+
+#: 
+msgid "PDF/CSV"
+msgstr "PDF/CSV"
 
 #: 
 msgid "Payment"
@@ -6778,16 +8150,16 @@ msgid "Settings saved successfully"
 msgstr "Matagumpay na na-save ang mga setting"
 
 #: 
+msgid "Social Media"
+msgstr "Social Media"
+
+#: 
 msgid "Some application prerequisites are not met"
 msgstr "Ilang mga kinakailangan ng aplikasyon ay hindi natutugunan"
 
 #: 
 msgid "State (Other)"
 msgstr "Estado (Iba pa)"
-
-#: 
-msgid "Status:"
-msgstr "Katayuan:"
 
 #: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
@@ -6840,10 +8212,6 @@ msgstr "Kabuuang Deposito:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Subaybayan ang mga pangako at pag-unlad ng pagbabayad para sa mga kampanya at pagba-budget ng taong piskal."
-
-#: 
-msgid "Type:"
-msgstr "Uri:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -6968,6 +8336,10 @@ msgstr "Pasadyang port:"
 #: 
 msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Nagtatapos ng <strong>trailing slash</strong> (/)"
+
+#: 
+msgid "Error:"
+msgstr "Error:"
 
 #: 
 msgid "Find the line:"
@@ -7126,8 +8498,16 @@ msgid "Failed to copy URL"
 msgstr "Nabigo ang pagkopya ng URL"
 
 #: 
+msgid "Newsletter"
+msgstr "Newsletter"
+
+#: 
 msgid "Open in New Tab"
 msgstr "Buksan sa Bagong Tab"
+
+#: 
+msgid "Personal"
+msgstr "Personal"
 
 #: 
 msgid "Please confirm your family information:"
@@ -7258,10 +8638,6 @@ msgid "Disable 2FA"
 msgstr "I-disable ang 2FA"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "I-export ang lahat ng datos ng mga tao sa format ng ChMeetings para sa pag-import sa mga external na sistema."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "I-export sa ChMeetings CSV"
 
@@ -7336,6 +8712,10 @@ msgstr "Hindi wasto ang code"
 #: 
 msgid "Encryption key for storing 2FA secret keys in the database"
 msgstr "Key ng encryption para sa pag-iimbak ng mga secret key ng 2FA sa database"
+
+#: 
+msgid "Two-Factor Authentication"
+msgstr "Dalawang-Hakbang na Pagpapatunay"
 
 #: 
 msgid "Validation pending"
@@ -7510,10 +8890,6 @@ msgstr "Magdagdag ng Uri ng Katangian"
 #: 
 msgid "Add Your First Property Type"
 msgstr "Magdagdag ng Iyong Unang Uri ng Katangian"
-
-#: 
-msgid "Auto-calculated from counts above"
-msgstr "Awtomatikong kinakalkula mula sa mga bilang sa itaas"
 
 #: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
@@ -7706,10 +9082,6 @@ msgid "Kiosk not found"
 msgstr "Hindi nahanap ang kiosk"
 
 #: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "I-link ang kaganapang ito sa isang grupo para sa functionality ng Kiosk check-in. Ang mga miyembro ng grupo ay lilitaw sa kiosk."
-
-#: 
 msgid "Linked Group"
 msgstr "Naka-link na Grupo"
 
@@ -7746,6 +9118,10 @@ msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check
 msgstr "Ang kiosk na ito ay pinakamahusay na makita sa isang tablet sa landscape mode para sa pinakamainam na karanasan ng check-in."
 
 #: 
+msgid "Tip"
+msgstr "Tip"
+
+#: 
 msgid "Try Again"
 msgstr "Subukan Muli"
 
@@ -7772,6 +9148,14 @@ msgstr "kanilang silid-aralan"
 #: 
 msgid "All timezones match"
 msgstr "Lahat ng timezone ay magkatugma"
+
+#: 
+msgid "Baseline"
+msgstr "Baseline"
+
+#: 
+msgid "Browser"
+msgstr "Browser"
 
 #: 
 msgid "Browser differs from system config - dates may display incorrectly for this user."
@@ -8192,6 +9576,10 @@ msgid "From dashboard.vonage.com"
 msgstr "Mula sa dashboard.vonage.com"
 
 #: 
+msgid "GA4 Measurement ID"
+msgstr "GA4 Measurement ID"
+
+#: 
 msgid "Generate new code"
 msgstr "Gumawa ng bagong code"
 
@@ -8210,6 +9598,10 @@ msgstr "Ihanda ang iyong authenticator app (Google Authenticator, Microsoft Auth
 #: 
 msgid "Help"
 msgstr "Tulong"
+
+#: 
+msgid "Id"
+msgstr "Id"
 
 #: 
 msgid "Image shown when no Gravatar exists for the email address"
@@ -8284,6 +9676,18 @@ msgid "Loading recovery codes"
 msgstr "Naglo-load ng mga recovery code"
 
 #: 
+msgid "MailChimp"
+msgstr "MailChimp"
+
+#: 
+msgid "MailChimp API Key"
+msgstr "MailChimp API Key"
+
+#: 
+msgid "MailChimp Dashboard"
+msgstr "MailChimp Dashboard"
+
+#: 
 msgid "Manage Links"
 msgstr "Pamahalaan ang mga Link"
 
@@ -8355,6 +9759,10 @@ msgstr "Hindi Na-configure"
 #: 
 msgid "Not in CRM"
 msgstr "Wala sa CRM"
+
+#: 
+msgid "One-Time Code"
+msgstr "One-Time na Code"
 
 #: 
 msgid "Open MailChimp"
@@ -8581,6 +9989,14 @@ msgid "Verifying"
 msgstr "Nibe-verify"
 
 #: 
+msgid "Vonage API Key"
+msgstr "Vonage API Key"
+
+#: 
+msgid "Vonage API Secret"
+msgstr "Vonage API Secret"
+
+#: 
 msgid "WebDAV Configuration"
 msgstr "Konfigurasyong WebDAV"
 
@@ -8643,6 +10059,10 @@ msgstr "Ang kagustuhang wika ng iyong browser ay naiiba mula sa iyong ChurchCRM 
 #: 
 msgid "e.g., Church Website"
 msgstr "hal., Website ng Simbahan"
+
+#: 
+msgid "manifest."
+msgstr "manifest."
 
 #: 
 msgid "subscribers"
@@ -8849,16 +10269,16 @@ msgid "selected family has no coordinates"
 msgstr "ang napiling pamilya ay walang mga coordinate"
 
 #: 
+msgid "2FA"
+msgstr "2FA"
+
+#: 
 msgid "Leave blank to keep existing"
 msgstr "Iwanang blangko para mapanatili ang kasalukuyan"
 
 #: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Hilingin sa lahat ng user na mag-enroll sa two-factor authentication"
-
-#: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "Isang mapa ay lilitaw dito kapag na-save ang isang address sa kalye. Ang mga coordinate ay awtomatikong natuklasan — walang kinakailangang manual na pagpasok."
 
 #: 
 msgid "Active Groups"
@@ -8893,6 +10313,10 @@ msgid "Country is required."
 msgstr "Ang bansa ay kinakailangan."
 
 #: 
+msgid "Discord Chat"
+msgstr "Discord Chat"
+
+#: 
 msgid "Display Preview"
 msgstr "Ipakita ang Preview"
 
@@ -8907,10 +10331,6 @@ msgstr "Ang pamilya ay walang address sa kalye na i-geocode"
 #: 
 msgid "Father"
 msgstr "Ama"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "Mga geocoded na coordinate:"
 
 #: 
 msgid "Geocoding failed"
@@ -8985,12 +10405,12 @@ msgid "This is how your church information will appear on reports and directorie
 msgstr "Ganito lalabas ang impormasyon ng iyong simbahan sa mga ulat at mga direktoryo."
 
 #: 
-msgid "Total Groups"
-msgstr "Kabuuang mga Grupo"
+msgid "Time Zone"
+msgstr "Time Zone"
 
 #: 
-msgid "Updated automatically on every save."
-msgstr "Awtomatikong ina-update sa bawat pag-save."
+msgid "Total Groups"
+msgstr "Kabuuang mga Grupo"
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -8999,6 +10419,10 @@ msgstr "Ginagamit para sa pag-iskedyul ng mga kaganapan at pag-uulat ng mga oras
 #: 
 msgid "View Profile"
 msgstr "Tingnan ang Profile"
+
+#: 
+msgid "Website"
+msgstr "Website"
 
 #: 
 msgid "ZIP code is required."
@@ -9171,14 +10595,6 @@ msgid "Add a Person"
 msgstr "Magdagdag ng Tao"
 
 #: 
-msgid "Add a new pledge"
-msgstr "Magdagdag ng bagong pangako"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "Magdagdag ng pagbabayad sa kasalukuyang deposito"
-
-#: 
 msgid "Add all cart items to a group"
 msgstr "Idagdag ang lahat ng item ng cart sa isang grupo"
 
@@ -9221,6 +10637,10 @@ msgstr "Magdagdag ng mga kawani at boluntaryo"
 #: 
 msgid "Add staff or volunteers as system users"
 msgstr "Magdagdag ng mga kawani o boluntaryo bilang mga user ng sistema"
+
+#: 
+msgid "Administrator"
+msgstr "Tagapangasiwa"
 
 #: 
 msgid "Age Distribution"
@@ -9391,10 +10811,6 @@ msgid "Check Out"
 msgstr "Mag-check Out"
 
 #: 
-msgid "Check Out Person"
-msgstr "Mag-check Out ng Tao"
-
-#: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
 msgstr "Suriin ang mga update at i-upgrade ang iyong ChurchCRM installation"
 
@@ -9519,10 +10935,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "Lumikha ng manual na backup kahit isang beses sa isang linggo, o paganahin ang External Backup plugin para sa mga awtomatikong WebDAV backup sa isang iskedyul."
 
 #: 
-msgid "Create a new deposit"
-msgstr "Lumikha ng bagong deposito"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "Lumikha at mag-edit ng impormasyon at relasyon ng pamilya"
 
@@ -9577,10 +10989,6 @@ msgstr "Tukuyin ang mga katangiang tukoy sa grupo para sa mga miyembro"
 #: 
 msgid "Delete All"
 msgstr "Burahin Lahat"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "Burahin ang Entry ng Check-in"
 
 #: 
 msgid "Delete Family"
@@ -9683,6 +11091,10 @@ msgid "Edit custom properties for a group member"
 msgstr "I-edit ang mga pasadyang katangian para sa isang miyembro ng grupo"
 
 #: 
+msgid "Email BCC"
+msgstr "Email BCC"
+
+#: 
 msgid "Email Families"
 msgstr "Mag-email sa mga Pamilya"
 
@@ -9779,6 +11191,10 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Palawakin ang ChurchCRM gamit ang MailChimp, mga backup, at higit pa"
 
 #: 
+msgid "FY %s"
+msgstr "FY %s"
+
+#: 
 msgid "Failed to add members to cart. Please try again."
 msgstr "Nabigo ang pagdaragdag ng mga miyembro sa cart. Pakisubukan muli."
 
@@ -9835,6 +11251,10 @@ msgid "Forgot password?"
 msgstr "Nakalimutan ang password?"
 
 #: 
+msgid "Format"
+msgstr "Format"
+
+#: 
 msgid "Full Group View"
 msgstr "Buong View ng Grupo"
 
@@ -9849,10 +11269,6 @@ msgstr "Gumawa ng mga taunang pahayag ng pagbibigay para sa mga layunin ng buwis
 #: 
 msgid "Generate directory listings and printed materials"
 msgstr "Gumawa ng mga listahan ng direktoryo at mga naka-print na materyales"
-
-#: 
-msgid "Generate financial reports"
-msgstr "Gumawa ng mga ulat sa pananalapi"
 
 #: 
 msgid "Generate financial statements and giving reports"
@@ -10007,6 +11423,10 @@ msgid "Key People"
 msgstr "Mga Pangunahing Tao"
 
 #: 
+msgid "Kiosk"
+msgstr "Kiosk"
+
+#: 
 msgid "Kiosk Enabled"
 msgstr "Kiosk ay Pinagana"
 
@@ -10083,14 +11503,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "Pamahalaan ang mga kagamitan sa email at konfigurasyong SMTP"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "Pamahalaan ang mga pangalan at kategorya ng kaganapan"
-
-#: 
-msgid "Manage event type categories"
-msgstr "Pamahalaan ang mga kategorya ng uri ng kaganapan"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Pamahalaan ang mga pamilya, tao, at impormasyon ng demograpiya"
 
@@ -10123,6 +11535,10 @@ msgid "Manage your personal preferences and account settings"
 msgstr "Pamahalaan ang iyong mga personal na kagustuhan at mga setting ng account"
 
 #: 
+msgid "Manual"
+msgstr "Manwal"
+
+#: 
 msgid "Map cart items"
 msgstr "I-mapa ang mga item ng cart"
 
@@ -10149,6 +11565,10 @@ msgstr "Mga miyembro ay naidagdag sa cart."
 #: 
 msgid "Memberships"
 msgstr "Mga Pagiging Miyembro"
+
+#: 
+msgid "Minimum"
+msgstr "Minimum"
 
 #: 
 msgid "Modify family roles for group members"
@@ -10213,10 +11633,6 @@ msgstr "Walang mga Kaarawan"
 #: 
 msgid "No Check-ins"
 msgstr "Walang mga Check-in"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "Walang Pagsubaybay ng Deposito"
 
 #: 
 msgid "No Deposits"
@@ -11213,6 +12629,10 @@ msgid "People with no personal or work email on record"
 msgstr "Mga tao na walang personal o work email sa rekord"
 
 #: 
+msgid "Pre-flight"
+msgstr "Pre-flight"
+
+#: 
 msgid "Re-install"
 msgstr "Muling Mag-install"
 
@@ -11793,6 +13213,10 @@ msgid "Text All"
 msgstr "I-text Lahat"
 
 #: 
+msgid "Text Dashboard"
+msgstr "Dashboard ng Teksto"
+
+#: 
 msgid "Text Settings"
 msgstr "Mga Setting ng Text"
 
@@ -12052,10 +13476,24 @@ msgstr "Anumang serbisyong katugma sa WebDAV ay gumagana sa plugin na ito:\n"
 "\n"
 "Tandaan: Ang ilang mga serbisyo ay nangangailangan ng mga password na tukoy sa app para sa access ng WebDAV."
 
+#. plugin:openlp:section:4:title
+#: 
+msgid "Authentication"
+msgstr "Pagpapatunay"
+
 #. plugin:openlp:section:4:content
 #: 
 msgid "Authentication is required for API v2 if you've enabled it in OpenLP's Remote plugin settings. The plugin uses HTTP Basic Authentication. Most local network setups don't require authentication, but it's recommended for security."
 msgstr "Ang authentication ay kinakailangan para sa API v2 kung pinagana mo ito sa mga setting ng Remote plugin ng OpenLP. Gumagamit ang plugin ng HTTP Basic Authentication. Karamihan sa mga lokal na setup ng network ay hindi nangangailangan ng authentication, ngunit inirerekomenda ito para sa seguridad."
+
+#: 
+msgid "Auto TLS"
+msgstr "Auto TLS"
+
+#. plugin:external-backup:section:2:title
+#: 
+msgid "Auto-Backup"
+msgstr "Auto-Backup"
 
 #: 
 msgid "BCC All Mail To"
@@ -12491,6 +13929,12 @@ msgstr "Seguridad"
 msgid "Security Considerations"
 msgstr "Mga Pagsasaalang-alang sa Seguridad"
 
+#. plugin:openlp:section:2:title
+#. plugin:vonage:section:1:title
+#: 
+msgid "Setup"
+msgstr "Setup"
+
 #: 
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr "Ipakita ang breakdown ng mga denominasyon ng bill sa ulat ng deposit slip"
@@ -12637,6 +14081,11 @@ msgstr "Mga Setting ng Upgrade"
 msgid "Use Cases"
 msgstr "Mga Use Case"
 
+#. plugin:vonage:link:0:label
+#: 
+msgid "Vonage Dashboard"
+msgstr "Vonage Dashboard"
+
 #. plugin:vonage:link:2:label
 #: 
 msgid "Vonage Pricing"
@@ -12782,6 +14231,10 @@ msgid "Create a full backup of your church database. Download a database-only SQ
 msgstr "Lumikha ng kumpletong backup ng database ng inyong simbahan. I-download ang SQL file na database lamang o isang kumpletong archive kasama ang mga na-upload na larawan."
 
 #: 
+msgid "Database Backup"
+msgstr "Backup ng Database"
+
+#: 
 msgid "Export"
 msgstr "I-export"
 
@@ -12830,8 +14283,20 @@ msgid "A system update is available. Please upgrade your installation."
 msgstr "May available na update ng sistema. Mangyaring i-upgrade ang inyong installation."
 
 #: 
+msgid "API Access"
+msgstr "API Access"
+
+#: 
+msgid "API Key"
+msgstr "API Key"
+
+#: 
 msgid "API key regenerated"
 msgstr "Na-regenerate ang API key"
+
+#: 
+msgid "Account"
+msgstr "Account"
 
 #: 
 msgid "Advanced Settings"
@@ -12844,6 +14309,10 @@ msgstr "Nagkaroon ng error."
 #: 
 msgid "Appearance"
 msgstr "Hitsura"
+
+#: 
+msgid "Azure"
+msgstr "Azure"
 
 #: 
 msgid "Back to Finance Dashboard"
@@ -12880,6 +14349,10 @@ msgstr "Ang mga pagsasalin ng ChurchCRM ay pinamamahalaan ng komunidad sa POEdit
 #: 
 msgid "Customize the look and feel of the application"
 msgstr "I-customize ang hitsura ng application"
+
+#: 
+msgid "Cyan"
+msgstr "Cyan"
 
 #: 
 msgid "Dark"
@@ -12971,6 +14444,10 @@ msgid "Include your API key in requests using the x-api-key header:"
 msgstr "Isama ang iyong API key sa mga kahilingan gamit ang x-api-key header:"
 
 #: 
+msgid "Indigo"
+msgstr "Indigo"
+
+#: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "Di-wastong JSON value — hindi na-save ang setting. Mangyaring itama ito at subukang muli."
 
@@ -12985,6 +14462,15 @@ msgstr "Mga setting ng wika at rehiyon"
 #: 
 msgid "Light"
 msgstr "Maliwanag"
+
+#: 
+msgid "Lime"
+msgstr "Lime"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "Malayalam - India"
 
 #: 
 msgid "Manage 2FA"
@@ -13073,6 +14559,10 @@ msgstr "May Available na Update ng Sistema"
 #: 
 msgid "Tables"
 msgstr "Mga Talahanayan"
+
+#: 
+msgid "Teal"
+msgstr "Teal"
 
 #: 
 msgid "Theme Mode"

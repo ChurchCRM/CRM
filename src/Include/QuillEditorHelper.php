@@ -3,7 +3,7 @@
  * QuillEditorHelper.php - Shared helper functions for Quill rich text editor
  * 
  * Provides reusable functions for initializing Quill editors across the application.
- * Used by: NoteEditor.php, EventEditor.php, and other pages with rich text fields.
+ * Used by: NoteEditor.php, /event/editor, /event/repeat-editor, and other pages with rich text fields.
  * 
  * Benefits:
  * - Eliminates duplicate code (75+ lines consolidated)

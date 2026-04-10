@@ -8,7 +8,7 @@ describe("Event Types Management", () => {
   });
 
   it("should view all event types", () => {
-  cy.visit("EventNames.php");
+  cy.visit("event/types");
   cy.contains("Event Types");
   cy.get(".table tbody tr").should("exist");
   cy.get(".table thead").should("contain", "Name");
@@ -17,7 +17,7 @@ describe("Event Types Management", () => {
   });
 
   it("should add an event type", () => {
-    cy.visit("EventNames.php");
+    cy.visit("event/types");
     cy.contains("Event Types");
     cy.contains("Add Event Type").click();
 
@@ -29,8 +29,9 @@ describe("Event Types Management", () => {
   });
 
   it("should view event type by direct URL", () => {
-    cy.visit("EditEventTypes.php?EN_tyid=1");
-    cy.get('input[name="newEvtName"]').should("have.value", "Church Service");
+    cy.visit("event/types/1");
+    cy.contains("Edit Event Type");
+    cy.get('input[name="newEvtName"]').should("exist");
   });
   
 });

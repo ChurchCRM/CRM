@@ -1,6 +1,6 @@
 {
     "name": "churchcrm",
-    "version": "7.1.2",
+    "version": "7.2.0",
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -71,6 +71,7 @@
         "locale:upload:missing": "node locale/scripts/poeditor-upload-missing.js",
         "lint": "biome check webpack/",
         "lint:fix": "biome check --write webpack/",
+        "prepare": "git config core.hooksPath .githooks 2>/dev/null || true",
         "locale:lint": "node scripts/locale-check.js",
         "logs:clear": "rm -rf src/logs/*.log",
         "package": "npm run build && node scripts/package-release.js",

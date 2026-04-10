@@ -5,8 +5,8 @@ describe("Standard Calendar", () => {
 
     it("Create New Event", () => {
         const title = "My New Event - " + Cypress._.random(0, 1e6);
-        cy.visit("v2/calendar");
-        cy.url().should("include", "v2/calendar");
+        cy.visit("event/calendars");
+        cy.url().should("include", "event/calendars");
 
         // Click an empty calendar day to trigger showNewEventForm
         cy.get(".fc-daygrid-day").first().click();
@@ -24,8 +24,8 @@ describe("Standard Calendar", () => {
      * Each editor must have exactly one .ql-toolbar at all times.
      */
     it("Quill toolbars do not duplicate after form interactions", () => {
-        cy.visit("v2/calendar");
-        cy.url().should("include", "v2/calendar");
+        cy.visit("event/calendars");
+        cy.url().should("include", "event/calendars");
 
         cy.get(".fc-daygrid-day").first().click();
 
@@ -47,7 +47,7 @@ describe("Standard Calendar", () => {
     });
 
     it("Save button is disabled until required fields are filled", () => {
-        cy.visit("v2/calendar");
+        cy.visit("event/calendars");
 
         cy.get(".fc-daygrid-day").first().click();
         cy.get("#event-title-input").should("be.visible");
@@ -70,7 +70,7 @@ describe("Standard Calendar", () => {
     });
 
     it("All-day toggle switches date input types", () => {
-        cy.visit("v2/calendar");
+        cy.visit("event/calendars");
 
         cy.get(".fc-daygrid-day").first().click();
         cy.get("#event-title-input").should("be.visible");
@@ -91,7 +91,7 @@ describe("Standard Calendar", () => {
     });
 
     it("Delete button is hidden for new events", () => {
-        cy.visit("v2/calendar");
+        cy.visit("event/calendars");
 
         cy.get(".fc-daygrid-day").first().click();
         cy.get("#event-title-input").should("be.visible");
@@ -101,7 +101,7 @@ describe("Standard Calendar", () => {
     });
 
     it("Modal closes on Cancel button click", () => {
-        cy.visit("v2/calendar");
+        cy.visit("event/calendars");
 
         cy.get(".fc-daygrid-day").first().click();
         cy.get("#event-title-input").should("be.visible");
@@ -112,7 +112,7 @@ describe("Standard Calendar", () => {
     });
 
     it("Modal cleanup removes element and restores body state", () => {
-        cy.visit("v2/calendar");
+        cy.visit("event/calendars");
 
         cy.get(".fc-daygrid-day").first().click();
         cy.get("#event-title-input").should("be.visible");
@@ -129,7 +129,7 @@ describe("Standard Calendar", () => {
     });
 
     it("TomSelect dropdowns initialize correctly", () => {
-        cy.visit("v2/calendar");
+        cy.visit("event/calendars");
 
         cy.get(".fc-daygrid-day").first().click();
         cy.get("#event-title-input").should("be.visible");

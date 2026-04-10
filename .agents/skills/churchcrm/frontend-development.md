@@ -512,7 +512,7 @@ For critical settings that users should see at a glance, display the current val
 ```php
 <!-- PHP: Log Level Stat Card (always visible) -->
 <div class="row mb-3">
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-6 col-lg-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -637,6 +637,17 @@ TomSelect hides options with `value=""` (treats them as placeholder/clear state)
 ### TomSelect dropdownParent for Cards <!-- learned: 2026-03-30 -->
 
 When TomSelect is inside a card with `table-responsive` or constrained overflow, dropdowns get clipped. Fix: pass `dropdownParent: 'body'` to TomSelect init and add a `body > .ts-dropdown` SCSS rule in `_tabler-bridge.scss` to preserve Tabler styling.
+
+### Reading TomSelect values: never use jQuery `option:selected` <!-- learned: 2026-04-09 -->
+
+TomSelect does **not** reliably mirror its current selection back onto the underlying `<option selected>` attribute — `$("#mySelect option:selected").val()` may return `undefined` even when the user has clearly picked an item. Always read the value via the TomSelect instance API:
+
+```js
+const el = document.getElementById("targetRoleSelection");
+const value = el.tomselect ? el.tomselect.getValue() : window.jQuery(el).val();
+```
+
+This bit `promptSelection` in `CRMJSOM.js` (issue #8570 — "Cart empty to group" sent `groupID` only because `RoleID` was undefined and `JSON.stringify` silently dropped it, yielding a confusing `Invalid request data` 400). When forwarding select values into a payload, **also validate before sending** — `JSON.stringify({ a: undefined })` becomes `"{}"`, so missing values become silent server-side errors.
 
 ### marked.parse() XSS Prevention <!-- learned: 2026-03-30 -->
 
@@ -863,13 +874,12 @@ Clicking an avatar with an uploaded photo opens a lightbox overlay. **avatar-loa
 2. If `hasPhoto === true`, `loadUploadedPhoto.onload` adds `.view-person-photo` (or `.view-family-photo`) + `data-person-id` (or `data-family-id`) + `cursor: pointer`
 3. Images inside `#uploadImageButton` or `#uploadImageTrigger` are skipped (profile upload buttons)
 4. Initials and failed photo loads never get click classes
-5. Delegated click handlers (`$(document).on("click", ".view-person-photo", ...)`) call `window.CRM.showPhotoLightbox()`
+5. **`avatar-loader.ts` itself registers a single global delegated click handler** for `.view-person-photo` / `.view-family-photo` that calls `window.CRM.showPhotoLightbox()`. Per-page handlers are forbidden — they cause double-lightbox bugs.
 
 **Rules:**
 - Never add `.view-person-photo` / `.view-family-photo` in PHP templates that use avatar-loader
-- Always use `e.preventDefault()` + `e.stopPropagation()` in click handlers (avatars may be inside `<a>` links)
-- Don't register the same delegated handler in two JS files loaded on the same page (causes double lightbox)
-- Dashboard handles its own click classes via `generatePhotoImg()` (sets `src` directly, avatar-loader skips it)
+- **Never register a `.view-person-photo` / `.view-family-photo` click handler in any other file** — `avatar-loader.ts` owns it
+- Dashboard handles its own click classes via `generatePhotoImg()` (sets `src` directly, avatar-loader skips it) but the global handler in avatar-loader still routes the click
 
 **Exception:** Pages that render photos inline (not via avatar-loader) — like `verify-family-info.php` — must check `hasUploadedPhoto()` in PHP before adding click classes.
 

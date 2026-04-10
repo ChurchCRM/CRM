@@ -268,10 +268,6 @@ msgid "Add Cart to Event"
 msgstr "카트를 행사에 추가"
 
 #: 
-msgid "OR"
-msgstr "또는"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "카트가 비어 있습니다!"
 
@@ -392,10 +388,6 @@ msgstr "예"
 #: 
 msgid "No"
 msgstr "아니요"
-
-#: 
-msgid "Event Checkin"
-msgstr "행사 체크인"
 
 #: 
 msgid "Select Event"
@@ -651,10 +643,6 @@ msgid "Church Event Editor"
 msgstr "교회 행사 편집"
 
 #: 
-msgid "Edit Event Types"
-msgstr "행사 유형 편집"
-
-#: 
 msgid "Edit Event Type"
 msgstr "행사 유형 수정"
 
@@ -724,20 +712,8 @@ msgid "Create a new Event"
 msgstr "새 행사를 생성"
 
 #: 
-msgid " errors. Please see below"
-msgstr "개의 오류가 있습니다. 아래 내용을 확인하세요."
-
-#: 
 msgid "Select your event type"
 msgstr "행사 유형을 선택하세요"
-
-#: 
-msgid "You must pick an event type."
-msgstr "행사 유형을 꼭 선택해야 합니다."
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "등록된 출석 집계가 없습니다."
 
 #: 
 msgid "Event Status"
@@ -2913,10 +2889,6 @@ msgid "Date Entered"
 msgstr "입력일:"
 
 #: 
-msgid "There were "
-msgstr "총 "
-
-#: 
 msgid "Inactive"
 msgstr "비활성"
 
@@ -4861,14 +4833,6 @@ msgid "Select event"
 msgstr "행사 선택"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "이미 이 행사에 체크인했습니다"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "체크아웃 담당 성인"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "이메일/보고서에서 이름 앞에 붙는 문구"
 
@@ -5424,10 +5388,6 @@ msgid "Sign out"
 msgstr "로그아웃"
 
 #: 
-msgid "Sermon Text"
-msgstr "설교 전문"
-
-#: 
 msgid "Change Settings"
 msgstr "설정 변경"
 
@@ -5940,10 +5900,6 @@ msgstr "데이터베이스 초기화 기능"
 msgid "Reset Database"
 msgstr "데이터베이스 초기화"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "시스템 데이터를 초기화하여 새 설치처럼 다시 시작합니다."
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6146,18 +6102,6 @@ msgstr "확인"
 #: 
 msgid "Family has no emails to use"
 msgstr "해당 가족에 사용할 이메일이 없습니다"
-
-#: 
-msgid "User Interface"
-msgstr "사용자 인터페이스"
-
-#: 
-msgid "Locale"
-msgstr "로캘"
-
-#: 
-msgid "Override system locale"
-msgstr "시스템 로캘 무시"
 
 #: 
 msgid "Deleted"
@@ -7227,10 +7171,6 @@ msgid "All Types"
 msgstr "모든 유형"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "이 체크인 기록을 삭제하시겠습니까?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "출석 집계 카테고리"
 
@@ -7271,10 +7211,6 @@ msgid "Create New Event"
 msgstr "새 행사 생성"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "시작하려면 행사 유형을 생성하세요."
-
-#: 
 msgid "Current DB Version"
 msgstr "현재 DB 버전"
 
@@ -7293,14 +7229,6 @@ msgstr "기본 시작 시간"
 #: 
 msgid "Delete Event"
 msgstr "행사 삭제"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "행사를 삭제하면 모든 출석 집계도 삭제됩니다. 이 행사를 삭제하시겠습니까?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "이 행사를 삭제하면 모든 출석 기록도 삭제됩니다. 계속하시겠습니까?"
 
 #: 
 msgid "Edit Event"
@@ -7368,10 +7296,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "선택사항 - 설교 메모 또는 추가 행사 세부정보 추가"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "선택사항 - 추적하지 않는 경우 비워두세요"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "출석에 대한 선택적 메모..."
 
@@ -7404,24 +7328,12 @@ msgid "Search by name or email..."
 msgstr "이름 또는 이메일로 검색..."
 
 #: 
-msgid "Search for adult..."
-msgstr "성인 검색..."
-
-#: 
 msgid "Search for supervisor..."
 msgstr "감독자 검색..."
 
 #: 
 msgid "Select Event for Check-In"
 msgstr "체크인할 행사 선택"
-
-#: 
-msgid "Select start and end date/time"
-msgstr "시작 및 종료 날짜/시간 선택"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "장바구니 구성원을 체크인할 행사를 선택하세요"
 
 #: 
 msgid "Sermon / Event Text"
@@ -7787,10 +7699,6 @@ msgstr "외부에 저장하기 전에 외부 도구(GPG, 7-Zip)를 사용하여 
 #: 
 msgid "User authentication"
 msgstr "사용자 인증"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "사용자에게 행사 추가 권한이 있어야 합니다"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8314,10 +8222,6 @@ msgid "State (Other)"
 msgstr "주 (기타)"
 
 #: 
-msgid "Status:"
-msgstr "상태:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "회계연도의 기금별 서약 대 결제 요약입니다."
 
@@ -8368,10 +8272,6 @@ msgstr "총 입금:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "캠페인 및 회계연도 예산을 위한 서약 및 결제 진행 상황을 추적합니다."
-
-#: 
-msgid "Type:"
-msgstr "유형:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8798,10 +8698,6 @@ msgid "Disable 2FA"
 msgstr "2FA 비활성화"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "모든 사람 데이터를 ChMeetings 형식으로 내보내서 외부 시스템으로 가져옵니다."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "ChMeetings CSV로 내보내기"
 
@@ -9053,10 +8949,6 @@ msgid "Add Your First Property Type"
 msgstr "첫 번째 속성 유형 추가"
 
 #: 
-msgid "Auto-calculated from counts above"
-msgstr "위의 숫자에서 자동 계산됨"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "이 필드를 삭제하면 이 필드에 할당된 모든 그룹 구성원 데이터가 영구적으로 삭제됩니다!"
 
@@ -9244,10 +9136,6 @@ msgstr "키오스크 등록이 비활성화됨"
 #: 
 msgid "Kiosk not found"
 msgstr "키오스크를 찾을 수 없음"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "키오스크 체크인 기능을 위해 이 이벤트를 그룹에 연결하세요. 그룹 구성원이 키오스크에 표시됩니다."
 
 #: 
 msgid "Linked Group"
@@ -10448,10 +10336,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "모든 사용자에게 이중 인증 등록 요구"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "주소가 저장되면 여기에 지도가 표시됩니다. 좌표는 자동으로 감지됩니다 — 수동 입력이 필요하지 않습니다."
-
-#: 
 msgid "Active Groups"
 msgstr "활성 그룹"
 
@@ -10502,10 +10386,6 @@ msgstr "가족에게 지오코딩할 주소가 없습니다"
 #: 
 msgid "Father"
 msgstr "아버지"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "지오코딩된 좌표:"
 
 #: 
 msgid "Geocoding failed"
@@ -10586,10 +10466,6 @@ msgstr "시간대"
 #: 
 msgid "Total Groups"
 msgstr "총 그룹 수"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "저장할 때마다 자동으로 업데이트됩니다."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10766,14 +10642,6 @@ msgstr "첫 번째 속성 추가"
 #: 
 msgid "Add a Person"
 msgstr "사람 추가"
-
-#: 
-msgid "Add a new pledge"
-msgstr "새 서약 추가"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "현재 헌금 입금에 납부 추가"
 
 #: 
 msgid "Add all cart items to a group"
@@ -10992,10 +10860,6 @@ msgid "Check Out"
 msgstr "체크아웃"
 
 #: 
-msgid "Check Out Person"
-msgstr "사람 체크아웃"
-
-#: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
 msgstr "업데이트 확인 및 ChurchCRM 설치 업그레이드"
 
@@ -11120,10 +10984,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "최소 일주일에 한 번 수동 백업을 만들거나, 예약된 자동 WebDAV 백업을 위해 외부 백업 플러그인을 활성화하세요."
 
 #: 
-msgid "Create a new deposit"
-msgstr "새 헌금 입금 생성"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "가족 정보 및 관계 생성 및 편집"
 
@@ -11178,10 +11038,6 @@ msgstr "교인을 위한 그룹별 속성 정의"
 #: 
 msgid "Delete All"
 msgstr "전체 삭제"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "체크인 항목 삭제"
 
 #: 
 msgid "Delete Family"
@@ -11464,10 +11320,6 @@ msgid "Generate directory listings and printed materials"
 msgstr "디렉토리 목록 및 인쇄물 생성"
 
 #: 
-msgid "Generate financial reports"
-msgstr "재정 보고서 생성"
-
-#: 
 msgid "Generate financial statements and giving reports"
 msgstr "재정 명세서 및 헌금 보고서 생성"
 
@@ -11700,14 +11552,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "이메일 도구 및 SMTP 구성 관리"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "행사 이름 및 카테고리 관리"
-
-#: 
-msgid "Manage event type categories"
-msgstr "행사 유형 카테고리 관리"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "가족, 사람 및 인구통계 정보 관리"
 
@@ -11838,10 +11682,6 @@ msgstr "생일 없음"
 #: 
 msgid "No Check-ins"
 msgstr "체크인 없음"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "헌금 입금 추적 없음"
 
 #: 
 msgid "No Deposits"
@@ -14524,6 +14364,10 @@ msgid "Appearance"
 msgstr "외관"
 
 #: 
+msgid "Azure"
+msgstr "Azure"
+
+#: 
 msgid "Back to Finance Dashboard"
 msgstr "재정 대시보드로 돌아가기"
 
@@ -14820,4 +14664,740 @@ msgstr "노랑"
 #: 
 msgid "Your current access levels (read-only)"
 msgstr "현재 접근 수준 (읽기 전용)"
+
+#: 
+msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
+msgstr "(예: 성도, 방문자, 어린이) 자원봉사자가 여기서 인원수를 기록할 수 있습니다."
+
+#: 
+msgid "1. Sunday School Class"
+msgstr "1. 주일학교 반"
+
+#: 
+msgid "2. Event Type"
+msgstr "2. 이벤트 유형"
+
+#: 
+msgid "3. Event"
+msgstr "3. 이벤트"
+
+#: 
+msgid "4. Kiosk"
+msgstr "4. 키오스크"
+
+#: 
+msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
+msgstr "반은 \"주일학교\" 유형의 사역부서입니다. 학생과 교사(역할이 있는 성도)로 구성됩니다."
+
+#: 
+msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
+msgstr "연결된 그룹은 이 이벤트를 반 또는 사역부서 명단에 연결합니다. 이벤트가 Kiosk에 할당되면 Kiosk가 그룹 멤버를 가져와 탭으로 체크인할 수 있는 목록으로 표시합니다. 주일학교 반의 경우 여기서 반 그룹을 연결하면 자원봉사자가 태블릿으로 학생을 체크인할 수 있습니다."
+
+#: 
+msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr "특정 개최 회차(예: \"유아부 — 4월 12일\"). 유형의 기본값을 상속하고 참가자를 통해 반 그룹에 연결됩니다. 자원봉사자가 이것을 기준으로 출석을 기록합니다."
+
+#: 
+msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr "하나의 이벤트에 할당된 태블릿. Kiosk는 이벤트의 연결된 그룹 명단을 가져와 탭으로 체크인을 표시합니다. 연결된 그룹이 없으면 Kiosk에 표시할 명단이 없습니다."
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "방문자 / 방문객 추가"
+
+#: 
+msgid "Add categories on the Event Type page"
+msgstr "이벤트 유형 페이지에서 카테고리 추가"
+
+#: 
+msgid "Add people to your cart first, then come back to check them in to an event."
+msgstr "먼저 선택 목록에 사람을 추가한 후 이벤트 체크인을 위해 돌아오세요."
+
+#: 
+msgid "All clear!"
+msgstr "모두 완료!"
+
+#: 
+msgid "All events and attendance records"
+msgstr "모든 이벤트 및 출석 기록"
+
+#: 
+msgid "All financial data (pledges, payments, deposits)"
+msgstr "모든 재정 데이터(헌금서약, 납입금, 입금)"
+
+#: 
+msgid "All groups, roles, and memberships"
+msgstr "모든 사역부서, 역할 및 멤버십"
+
+#: 
+msgid "All people and family records"
+msgstr "모든 성도 및 가족 기록"
+
+#: 
+msgid "All system settings and custom fields"
+msgstr "모든 시스템 설정 및 사용자 정의 필드"
+
+#: 
+msgid "All uploaded photos and documents"
+msgstr "업로드된 모든 사진 및 문서"
+
+#: 
+msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
+msgstr "이벤트 유형은 템플릿입니다 — 이름, 기본 시작 시간, 반복, 출석 수 카테고리. 선택적으로 하나의 반 그룹을 기본 참가자로 연결할 수 있습니다."
+
+#: 
+msgid "Attendance record deleted."
+msgstr "출석 기록이 삭제되었습니다."
+
+#: 
+msgid "Audit"
+msgstr "감사"
+
+#: 
+msgid "Audit Events"
+msgstr "이벤트 감사"
+
+#: 
+msgid "Auto-totalled from counts at right"
+msgstr "오른쪽 집계에서 자동 합산"
+
+#: 
+msgid "Back to Events"
+msgstr "이벤트 목록으로 돌아가기"
+
+#: 
+msgid "Back to Events Dashboard"
+msgstr "이벤트 대시보드로 돌아가기"
+
+#: 
+msgid "Backup failed. You can still proceed with the reset, but your data will be lost."
+msgstr "백업에 실패했습니다. 초기화를 계속 진행할 수 있지만 데이터가 손실됩니다."
+
+#: 
+msgid "Backup ready!"
+msgstr "백업 완료!"
+
+#: 
+msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
+msgstr "초기화 전에 현재 데이터의 백업을 다운로드하실 것을 강력히 권장합니다. 이것이 데이터를 보존할 유일한 기회입니다."
+
+#: 
+msgid "Bulk-create a series of recurring events"
+msgstr "반복 이벤트 시리즈 일괄 생성"
+
+#: 
+msgid "By"
+msgstr "담당자"
+
+#: 
+msgid "Cannot check in to an inactive event. Activate the event first."
+msgstr "비활성 이벤트에는 체크인할 수 없습니다. 먼저 이벤트를 활성화하세요."
+
+#: 
+msgid "Change"
+msgstr "변경"
+
+#: 
+msgid "Check In All"
+msgstr "전체 체크인"
+
+#: 
+msgid "Check In Family"
+msgstr "가족 전체 체크인"
+
+#: 
+msgid "Check Out All"
+msgstr "전체 체크아웃"
+
+#: 
+msgid "Check in all %d family members to a single event."
+msgstr "%d명의 가족 전원을 하나의 이벤트에 체크인합니다."
+
+#: 
+msgid "Check out"
+msgstr "체크아웃"
+
+#: 
+msgid "Check-in By"
+msgstr "체크인 담당자"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "체크인에 실패했습니다. 다시 시도해 주세요."
+
+#: 
+msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
+msgstr "비활성 이벤트에서는 체크인이 비활성화됩니다. 이벤트 대시보드에서 이벤트를 활성화하여 체크인을 활성화하세요."
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "체크아웃에 실패했습니다. 다시 시도해 주세요."
+
+#: 
+msgid "Checked in to event: %s"
+msgstr "이벤트 체크인: %s"
+
+#: 
+msgid "Checked out from event: %s"
+msgstr "이벤트 체크아웃: %s"
+
+#: 
+msgid "Close All Stuck Events"
+msgstr "멈춘 이벤트 모두 닫기"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "체크아웃 확인"
+
+#: 
+msgid "Create Repeat Events"
+msgstr "반복 이벤트 생성"
+
+#: 
+msgid "Create Today's Event"
+msgstr "오늘 이벤트 생성"
+
+#: 
+msgid "Create a new event type with recurrence and attendance settings"
+msgstr "반복 및 출석 설정이 포함된 새 이벤트 유형 생성"
+
+#: 
+msgid "Create one now"
+msgstr "지금 생성"
+
+#: 
+msgid "Create today's class event and link it to this class for kiosk check-in"
+msgstr "오늘의 반 이벤트를 생성하고 Kiosk 체크인을 위해 이 반에 연결"
+
+#: 
+msgid "Creating backup..."
+msgstr "백업 생성 중..."
+
+#: 
+msgid "Creating..."
+msgstr "생성 중..."
+
+#: 
+msgid "Database + uploaded photos (larger)"
+msgstr "데이터베이스 + 업로드된 사진 (용량 큼)"
+
+#: 
+msgid "Database dump only (.sql)"
+msgstr "데이터베이스 덤프만 (.sql)"
+
+#: 
+msgid "Date Range"
+msgstr "날짜 범위"
+
+#: 
+msgid "Date range cannot exceed 1 year"
+msgstr "날짜 범위는 1년을 초과할 수 없습니다"
+
+#: 
+msgid "Deactivate"
+msgstr "비활성화"
+
+#: 
+msgid "Delete Event Type"
+msgstr "이벤트 유형 삭제"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "출석 기록을 삭제하시겠습니까?"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "체크인 기록 삭제 대상"
+
+#: 
+msgid "Delete this event?"
+msgstr "이 이벤트를 삭제하시겠습니까?"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "이벤트를 삭제하면 모든 출석 집계도 삭제됩니다. 이 작업은 취소할 수 없습니다."
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "이 이벤트 유형을 삭제해도 기존 이벤트는 삭제되지 않습니다. 계속하시겠습니까?"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "이 이벤트를 삭제하면 모든 출석 기록도 삭제됩니다. 이 작업은 취소할 수 없습니다."
+
+#: 
+msgid "Destructive Operation"
+msgstr "파괴적인 작업"
+
+#: 
+msgid "Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field."
+msgstr "카테고리 이름을 편집하고 저장을 클릭하거나 휴지통 아이콘을 사용하여 삭제하세요. 새 행은 하단 필드를 통해 추가됩니다."
+
+#: 
+msgid "End Time"
+msgstr "종료 시간"
+
+#: 
+msgid "End time must be after start time."
+msgstr "종료 시간은 시작 시간 이후여야 합니다."
+
+#: 
+msgid "Ended"
+msgstr "종료됨"
+
+#: 
+msgid "Ends"
+msgstr "종료"
+
+#: 
+msgid "Event Audit"
+msgstr "이벤트 감사"
+
+#: 
+msgid "Event Check-in"
+msgstr "이벤트 체크인"
+
+#: 
+msgid "Event Details"
+msgstr "이벤트 상세"
+
+#: 
+msgid "Event Template"
+msgstr "이벤트 템플릿"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "이벤트가 이미 존재합니다. 체크인 페이지로 이동 중..."
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "이벤트가 생성되었습니다. 체크인 페이지로 이동 중..."
+
+#: 
+msgid "Event end date/time must be on or after the start date/time."
+msgstr "이벤트 종료 날짜/시간은 시작 날짜/시간 이후여야 합니다."
+
+#: 
+msgid "Event title is required."
+msgstr "이벤트 제목은 필수입니다."
+
+#: 
+msgid "Event type ID is required"
+msgstr "이벤트 유형 ID가 필요합니다"
+
+#: 
+msgid "Event type ID or group ID is required"
+msgstr "이벤트 유형 ID 또는 그룹 ID가 필요합니다"
+
+#: 
+msgid "Event type has no date configured for yearly recurrence"
+msgstr "이벤트 유형에 연간 반복 날짜가 설정되지 않았습니다"
+
+#: 
+msgid "Event type has no day-of-week configured for weekly recurrence"
+msgstr "이벤트 유형에 주간 반복 요일이 설정되지 않았습니다"
+
+#: 
+msgid "Event type has no recurrence pattern configured"
+msgstr "이벤트 유형에 반복 패턴이 설정되지 않았습니다"
+
+#: 
+msgid "Event type has no valid day-of-month configured for monthly recurrence"
+msgstr "이벤트 유형에 월간 반복 유효한 날짜가 설정되지 않았습니다"
+
+#: 
+msgid "Events will be created for every matching occurrence within this date range."
+msgstr "이 날짜 범위 내의 모든 해당 반복 날짜에 이벤트가 생성됩니다."
+
+#: 
+msgid "Every month on the"
+msgstr "매월"
+
+#: 
+msgid "Every week on"
+msgstr "매주"
+
+#: 
+msgid "Every year on"
+msgstr "매년"
+
+#: 
+msgid "Everyone is checked in!"
+msgstr "모두 체크인 완료!"
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "반 생성에 실패했습니다. 다시 시도해 주세요."
+
+#: 
+msgid "Failed to create event."
+msgstr "이벤트 생성에 실패했습니다."
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "이벤트 생성에 실패했습니다. 다시 시도해 주세요."
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "삭제에 실패했습니다. 다시 시도해 주세요."
+
+#: 
+msgid "Fastest workflow:"
+msgstr "가장 빠른 작업 흐름:"
+
+#: 
+msgid "Find past events that are still active or have un-checked-out attendees"
+msgstr "아직 활성 상태이거나 체크아웃하지 않은 참가자가 있는 과거 이벤트 찾기"
+
+#: 
+msgid "Format: MM-DD (e.g. 04-12 for April 12)"
+msgstr "형식: MM-DD (예: 4월 12일은 04-12)"
+
+#: 
+msgid "Group Roster"
+msgstr "그룹 명단"
+
+#: 
+msgid "Hide Advanced Options"
+msgstr "고급 옵션 숨기기"
+
+#: 
+msgid "How Sunday School + Events + Kiosks fit together"
+msgstr "주일학교 + 이벤트 + Kiosk 연동 방법"
+
+#: 
+msgid "Invalid date for %s — expected YYYY-MM-DD"
+msgstr "%s의 날짜가 유효하지 않습니다 — YYYY-MM-DD 형식이 필요합니다"
+
+#: 
+msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr "rangeStart 또는 rangeEnd의 날짜 형식이 유효하지 않습니다"
+
+#: 
+msgid "Invalid date format."
+msgstr "날짜 형식이 유효하지 않습니다."
+
+#: 
+msgid "Invalid date; expected format YYYY-MM-DD"
+msgstr "날짜가 유효하지 않습니다. YYYY-MM-DD 형식이 필요합니다"
+
+#: 
+msgid "Invalid event type ID"
+msgstr "유효하지 않은 이벤트 유형 ID입니다"
+
+#: 
+msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
+msgstr "연간 반복 형식이 유효하지 않습니다. MM-DD 형식(예: 04-12)이 필요합니다"
+
+#: 
+msgid "Just now"
+msgstr "방금 전"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "감독자를 기록하지 않고 체크아웃하려면 빈 칸으로 두세요."
+
+#: 
+msgid "Link events to a group for Kiosk check-in functionality."
+msgstr "Kiosk 체크인 기능을 위해 이벤트를 그룹에 연결합니다."
+
+#: 
+msgid "Linked Groups"
+msgstr "연결된 그룹"
+
+#: 
+msgid "Looking for stuck events..."
+msgstr "멈춘 이벤트 검색 중..."
+
+#: 
+msgid "Manage event names, recurrence patterns, and attendance counts"
+msgstr "이벤트 이름, 반복 패턴 및 출석 수 관리"
+
+#: 
+msgid "Missing required field: %s"
+msgstr "필수 필드 누락: %s"
+
+#: 
+msgid "No Events Today"
+msgstr "오늘 이벤트 없음"
+
+#: 
+msgid "No Group"
+msgstr "그룹 없음"
+
+#: 
+msgid "No active assignment"
+msgstr "활성 할당 없음"
+
+#: 
+msgid "No active events found."
+msgstr "활성 이벤트를 찾을 수 없습니다."
+
+#: 
+msgid "No attendance count categories defined for this event type yet."
+msgstr "이 이벤트 유형에 아직 출석 수 카테고리가 정의되지 않았습니다."
+
+#: 
+msgid "No one has been checked in to this event yet."
+msgstr "이 이벤트에 아직 체크인한 사람이 없습니다."
+
+#: 
+msgid "No past events are still marked Active."
+msgstr "아직 활성으로 표시된 과거 이벤트가 없습니다."
+
+#: 
+msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr "반을 열기 → \"오늘 이벤트 생성\" 클릭 — 이벤트가 생성되어 반에 즉시 연결되고, Kiosk 또는 방문 출석에 대비한 체크인 페이지로 이동합니다."
+
+#: 
+msgid "Optional Settings"
+msgstr "선택적 설정"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "선택 사항 — 이 사람을 체크아웃하는 담당자를 기록합니다(예: 자녀를 데리러 온 부모)."
+
+#: 
+msgid "Person checked out."
+msgstr "체크아웃되었습니다."
+
+#: 
+msgid "Person is not checked in"
+msgstr "이 사람은 체크인하지 않았습니다"
+
+#: 
+msgid "Person not in active class roster"
+msgstr "이 사람은 활성 반 명단에 없습니다"
+
+#: 
+msgid "Pin to Calendars"
+msgstr "캘린더에 고정"
+
+#: 
+msgid "Please select a person to check in."
+msgstr "체크인할 사람을 선택해 주세요."
+
+#: 
+msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
+msgstr "이 이벤트 유형을 기반으로 미리 채워져 있습니다. 반복 유형의 경우 날짜는 이 유형의 마지막 이벤트 이후 다음 반복 날짜이며 시간은 유형의 기본 시작 시간과 일치합니다."
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "종료 날짜는 시작 날짜 이후여야 합니다."
+
+#: 
+msgid "Range end must be a valid YYYY-MM-DD date."
+msgstr "종료 날짜는 유효한 YYYY-MM-DD 형식이어야 합니다."
+
+#: 
+msgid "Range start must be a valid YYYY-MM-DD date."
+msgstr "시작 날짜는 유효한 YYYY-MM-DD 형식이어야 합니다."
+
+#: 
+msgid "Range start must be before range end"
+msgstr "시작 날짜는 종료 날짜 이전이어야 합니다"
+
+#: 
+msgid "Range start must be before range end."
+msgstr "시작 날짜는 종료 날짜 이전이어야 합니다."
+
+#: 
+msgid "RangeEnd must be on or after RangeStart"
+msgstr "RangeEnd는 RangeStart 이후여야 합니다"
+
+#: 
+msgid "Recommended"
+msgstr "권장"
+
+#: 
+msgid "Required for Kiosk"
+msgstr "Kiosk에 필수"
+
+#: 
+msgid "Resetting will permanently delete:"
+msgstr "초기화하면 다음이 영구적으로 삭제됩니다:"
+
+#: 
+msgid "SQL Only"
+msgstr "SQL만"
+
+#: 
+msgid "Save Time"
+msgstr "시간 절약"
+
+#: 
+msgid "Save changes to this category name"
+msgstr "이 카테고리 이름 변경 사항 저장"
+
+#: 
+msgid "Select an event type…"
+msgstr "이벤트 유형 선택..."
+
+#: 
+msgid "Select start and end date/time."
+msgstr "시작 및 종료 날짜/시간을 선택하세요."
+
+#: 
+msgid "Show More Options"
+msgstr "더 많은 옵션 표시"
+
+#: 
+msgid "Skip"
+msgstr "건너뛰기"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "건너뛰고 체크아웃"
+
+#: 
+msgid "Start Check-in"
+msgstr "체크인 시작"
+
+#: 
+msgid "Starts"
+msgstr "시작"
+
+#: 
+msgid "Step 1: Create a Backup"
+msgstr "1단계: 백업 생성"
+
+#: 
+msgid "Step 2: Reset Database"
+msgstr "2단계: 데이터베이스 초기화"
+
+#: 
+msgid "Still Checked In"
+msgstr "아직 체크인 중"
+
+#: 
+msgid "Stuck Events"
+msgstr "멈춘 이벤트"
+
+#: 
+msgid "Take Attendance"
+msgstr "출석 기록"
+
+#: 
+msgid "The Events module is disabled"
+msgstr "이벤트 모듈이 비활성화되었습니다"
+
+#: 
+msgid "The same start and end time will be used for all generated events."
+msgstr "생성되는 모든 이벤트에 동일한 시작 및 종료 시간이 사용됩니다."
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "오늘 예정된 이벤트가 없습니다"
+
+#: 
+msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
+msgstr "이것들은 인원 집계 버킷입니다 — 자원봉사자가 이벤트 후에 입력하면 대시보드에서 출석을 세분화(예: 성도 수 대 방문자 수)할 수 있습니다. 체크인 페이지의 개별 체크인과는 별개입니다."
+
+#: 
+msgid "This event is inactive."
+msgstr "이 이벤트는 비활성 상태입니다."
+
+#: 
+msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr "이 페이지에서 ChurchCRM 데이터베이스의 모든 데이터를 영구적으로 삭제할 수 있습니다. 이 작업은 취소할 수 없습니다."
+
+#: 
+msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
+msgstr "이 보고서는 종료 날짜가 지났지만 아직 활성으로 표시된 모든 이벤트를 나열합니다. 주요 원인: 자원봉사자가 '체크아웃' 탭을 잊은 경우, Kiosk의 연결이 끊긴 경우, 또는 이벤트가 생성되었다가 방치된 경우. 비활성화된 적 없는 오래된 이벤트(수년 전)도 여기에 표시됩니다. '아직 체크인 중' 열은 체크인이 중간에 남겨진 사람이 있는지를 보여줍니다. 이 보고서에서 이벤트를 닫으면 모두가 체크아웃되고(현재 시간 사용) 이벤트가 비활성으로 표시됩니다."
+
+#: 
+msgid "This title will be used for all generated events."
+msgstr "이 제목은 생성되는 모든 이벤트에 사용됩니다."
+
+#: 
+msgid "Today's Events"
+msgstr "오늘의 이벤트"
+
+#: 
+msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
+msgstr "반복 횟수가 너무 많습니다(%d회) — 날짜 범위를 좁히세요. 최대 허용 횟수: %d"
+
+#: 
+msgid "Type RESET to confirm"
+msgstr "확인을 위해 RESET을 입력하세요"
+
+#: 
+msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
+msgstr "위의 버튼을 클릭하여 오늘 이벤트를 한 번에 생성하세요. 이 반에 자동으로 연결되어 Kiosk가 명단을 가져올 수 있습니다."
+
+#: 
+msgid "Use this form to bulk-create a series of recurring events. Each event is created individually and can be edited or deleted independently after creation."
+msgstr "이 양식을 사용하여 반복 이벤트 시리즈를 일괄 생성하세요. 각 이벤트는 개별적으로 생성되며 생성 후 독립적으로 편집하거나 삭제할 수 있습니다."
+
+#: 
+msgid "Used as the default start time when creating events of this type."
+msgstr "이 유형의 이벤트를 생성할 때 기본 시작 시간으로 사용됩니다."
+
+#: 
+msgid "User must have Add Event permission and the Events module must be enabled"
+msgstr "사용자는 이벤트 추가 권한이 있어야 하며 이벤트 모듈이 활성화되어 있어야 합니다"
+
+#: 
+msgid "Valid startDate and endDate are required"
+msgstr "유효한 startDate와 endDate가 필요합니다"
+
+#: 
+msgid "View Event"
+msgstr "이벤트 보기"
+
+#: 
+msgid "What are these for?"
+msgstr "이것들은 무엇을 위한 것입니까?"
+
+#: 
+msgid "What does this find?"
+msgstr "이것은 무엇을 찾습니까?"
+
+#: 
+msgid "What is this for?"
+msgstr "이것은 무엇을 위한 것입니까?"
+
+#: 
+msgid "Who is bringing them in?"
+msgstr "누가 데려오나요?"
+
+#: 
+msgid "You must select a valid recurrence pattern."
+msgstr "유효한 반복 패턴을 선택해야 합니다."
+
+#: 
+msgid "You must select an event type."
+msgstr "이벤트 유형을 선택해야 합니다."
+
+#: 
+msgid "You must specify a date range."
+msgstr "날짜 범위를 지정해야 합니다."
+
+#: 
+msgid "checked in"
+msgstr "체크인 완료"
+
+#: 
+msgid "e.g., Sunday Worship Service"
+msgstr "예: 주일 예배"
+
+#: 
+msgid "endDate must be after startDate"
+msgstr "endDate는 startDate 이후여야 합니다"
+
+#: 
+msgid "eventIds must be a non-empty array"
+msgstr "eventIds는 비어 있지 않은 배열이어야 합니다"
+
+#: 
+msgid "invalid recurrence type"
+msgstr "유효하지 않은 반복 유형"
+
+#: 
+msgid "personIds must be a non-empty array"
+msgstr "personIds는 비어 있지 않은 배열이어야 합니다"
+
+#: 
+msgid "to enable the reset button"
+msgstr "초기화 버튼을 활성화하려면"
 

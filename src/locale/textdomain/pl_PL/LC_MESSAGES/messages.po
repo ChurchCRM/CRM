@@ -281,10 +281,6 @@ msgid "Add Cart to Event"
 msgstr "Dodaj Koszyk do Wydarzenia"
 
 #: 
-msgid "OR"
-msgstr "LUB"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Twój Koszyk jest pusty!"
 
@@ -408,10 +404,6 @@ msgstr "Tak"
 #: 
 msgid "No"
 msgstr "Nie"
-
-#: 
-msgid "Event Checkin"
-msgstr "Zapis do wydarzenia"
 
 #: 
 msgid "Select Event"
@@ -675,10 +667,6 @@ msgid "Church Event Editor"
 msgstr "Edytuj Wydarzenia"
 
 #: 
-msgid "Edit Event Types"
-msgstr "Edytuj Typy Wydarzeń"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Edytuj Typ Wydarzenia"
 
@@ -749,20 +737,8 @@ msgid "Create a new Event"
 msgstr "Utwórz nowe wydarzenie"
 
 #: 
-msgid " errors. Please see below"
-msgstr "Błędy. Popatrz poniżej"
-
-#: 
 msgid "Select your event type"
 msgstr "Wybierz typ wydarzenia"
-
-#: 
-msgid "You must pick an event type."
-msgstr "Musisz wybrać typ wydarzenia"
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "Nie odnotowano Uczestników"
 
 #: 
 #, fuzzy
@@ -2994,10 +2970,6 @@ msgid "Date Entered"
 msgstr "Data wprowadzenia"
 
 #: 
-msgid "There were "
-msgstr "Było "
-
-#: 
 msgid "Inactive"
 msgstr "Nieaktywny"
 
@@ -4938,14 +4910,6 @@ msgid "Select event"
 msgstr "Wybierz wydarzenie"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "Osoba została już zameldowana na to wydarzenie"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "Dorosły wymeldowujący osobę"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Tekst przed nazwiskiem w e-mailach/raportach"
 
@@ -5501,10 +5465,6 @@ msgid "Sign out"
 msgstr "Wyloguj się"
 
 #: 
-msgid "Sermon Text"
-msgstr "Tekst kazania"
-
-#: 
 msgid "Change Settings"
 msgstr "Zmień ustawienia"
 
@@ -6022,10 +5982,6 @@ msgstr "Funkcje Resetowania Bazy Danych"
 msgid "Reset Database"
 msgstr "Zresetuj Bazę Danych"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "Zresetujesz dane systemu i uruchomisz system jako nową instalację."
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6229,18 +6185,6 @@ msgstr "Zweryfikuj"
 #: 
 msgid "Family has no emails to use"
 msgstr "Rodzina nie ma adresów e-mail"
-
-#: 
-msgid "User Interface"
-msgstr "Interfejs użytkownika"
-
-#: 
-msgid "Locale"
-msgstr "Ustawienia lokalne"
-
-#: 
-msgid "Override system locale"
-msgstr "Zastąp systemowe ustawienia lokalne"
 
 #: 
 msgid "Deleted"
@@ -7312,10 +7256,6 @@ msgid "All Types"
 msgstr "Wszystkie typy"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "Usunąć ten rekord zameldowania?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "Kategorie liczebności"
 
@@ -7356,10 +7296,6 @@ msgid "Create New Event"
 msgstr "Utwórz nowe wydarzenie"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "Utwórz typ wydarzenia, aby zacząć."
-
-#: 
 msgid "Current DB Version"
 msgstr "Obecna wersja bazy"
 
@@ -7378,14 +7314,6 @@ msgstr "Domyślny czas rozpoczęcia"
 #: 
 msgid "Delete Event"
 msgstr "Usuń wydarzenie"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "Usunięcie wydarzenia usunie też statystyki obecności. Kontynuować?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "Usunięcie wydarzenia usunie też rekordy obecności. Kontynuować?"
 
 #: 
 msgid "Edit Event"
@@ -7453,10 +7381,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "Opcjonalnie - dodaj notatki lub szczegóły"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "Opcjonalnie - zostaw puste, jeśli nie śledzisz"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "Opcjonalne notatki o obecności..."
 
@@ -7489,24 +7413,12 @@ msgid "Search by name or email..."
 msgstr "Szukaj wg nazwiska lub e-mail..."
 
 #: 
-msgid "Search for adult..."
-msgstr "Szukaj dorosłego..."
-
-#: 
 msgid "Search for supervisor..."
 msgstr "Szukaj nadzorcy..."
 
 #: 
 msgid "Select Event for Check-In"
 msgstr "Wybierz wydarzenie do zameldowania"
-
-#: 
-msgid "Select start and end date/time"
-msgstr "Wybierz czas rozpoczęcia i zakończenia"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "Wybierz wydarzenie, by zameldować osoby z koszyka"
 
 #: 
 msgid "Sermon / Event Text"
@@ -7874,10 +7786,6 @@ msgstr "Używaj zewnętrznych narzędzi do szyfrowania kopii przed wysyłką poz
 #: 
 msgid "User authentication"
 msgstr "Uwierzytelnianie użytkownika"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "Użytkownik musi mieć uprawnienie dodawania wydarzeń"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8400,10 +8308,6 @@ msgid "State (Other)"
 msgstr "Województwo (inne)"
 
 #: 
-msgid "Status:"
-msgstr "Status:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Podsumowanie deklaracji vs wpłat w roku fiskalnym."
 
@@ -8454,10 +8358,6 @@ msgstr "Suma wpłat:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Śledź postępy deklaracji i płatności dla kampanii."
-
-#: 
-msgid "Type:"
-msgstr "Typ:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8884,10 +8784,6 @@ msgid "Disable 2FA"
 msgstr "Wyłącz 2FA"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "Eksportuj dane w formacie ChMeetings."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "Eksportuj do CSV ChMeetings"
 
@@ -9145,10 +9041,6 @@ msgid "Add Your First Property Type"
 msgstr "Dodaj Swój Pierwszy Typ Właściwości"
 
 #: 
-msgid "Auto-calculated from counts above"
-msgstr "Automatycznie obliczone z powyższych liczb"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Usuwając to pole, bezpowrotnie utracisz wszystkie dane członków grupy przypisane do tego pola!"
 
@@ -9338,10 +9230,6 @@ msgstr "Rejestracja kiosku wyłączona"
 #: 
 msgid "Kiosk not found"
 msgstr "Kiosk nie znaleziony"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "Połącz to wydarzenie z grupą, aby włączyć funkcję odprawy na kiosku. Członkowie grupy pojawią się na kiosku."
 
 #: 
 msgid "Linked Group"
@@ -10544,10 +10432,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "Wymagaj, aby wszyscy użytkownicy zarejestrowali się do uwierzytelniania dwuskładnikowego"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "Mapa pojawi się tutaj po zapisaniu adresu. Współrzędne są wykrywane automatycznie — nie jest wymagane ręczne wprowadzanie."
-
-#: 
 msgid "Active Groups"
 msgstr "Aktywne grupy"
 
@@ -10598,10 +10482,6 @@ msgstr "Rodzina nie ma adresu do geokodowania"
 #: 
 msgid "Father"
 msgstr "Ojciec"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "Geokodowane współrzędne:"
 
 #: 
 msgid "Geocoding failed"
@@ -10682,10 +10562,6 @@ msgstr "Strefa czasowa"
 #: 
 msgid "Total Groups"
 msgstr "Łącznie grup"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "Aktualizowane automatycznie przy każdym zapisie."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10869,14 +10745,6 @@ msgstr "Dodaj swoją pierwszą właściwość"
 #: 
 msgid "Add a Person"
 msgstr "Dodaj osobę"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Dodaj nowe zobowiązanie finansowe"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "Dodaj wpłatę do bieżącej ofiary"
 
 #: 
 msgid "Add all cart items to a group"
@@ -11091,10 +10959,6 @@ msgid "Check Out"
 msgstr "Wymelduj"
 
 #: 
-msgid "Check Out Person"
-msgstr "Wymelduj osobę"
-
-#: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
 msgstr "Sprawdź aktualizacje i uaktualnij instalację ChurchCRM"
 
@@ -11219,10 +11083,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "Twórz ręczną kopię zapasową przynajmniej raz w tygodniu lub włącz wtyczkę zewnętrznej kopii zapasowej dla automatycznych kopii WebDAV według harmonogramu."
 
 #: 
-msgid "Create a new deposit"
-msgstr "Utwórz nową ofiarę"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "Twórz i edytuj informacje o rodzinach i relacjach"
 
@@ -11277,10 +11137,6 @@ msgstr "Zdefiniuj właściwości specyficzne dla grupy dla członków"
 #: 
 msgid "Delete All"
 msgstr "Usuń wszystko"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "Usuń wpis obecności"
 
 #: 
 msgid "Delete Family"
@@ -11559,10 +11415,6 @@ msgid "Generate directory listings and printed materials"
 msgstr "Wygeneruj spisy katalogowe i materiały do druku"
 
 #: 
-msgid "Generate financial reports"
-msgstr "Wygeneruj raporty finansowe"
-
-#: 
 msgid "Generate financial statements and giving reports"
 msgstr "Wygeneruj zestawienia finansowe i raporty ofiar"
 
@@ -11791,14 +11643,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "Zarządzaj narzędziami e-mail i konfiguracją SMTP"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "Zarządzaj nazwami wydarzeń i kategoriami"
-
-#: 
-msgid "Manage event type categories"
-msgstr "Zarządzaj kategoriami typów wydarzeń"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Zarządzaj rodzinami, osobami i informacjami demograficznymi"
 
@@ -11925,10 +11769,6 @@ msgstr "Brak urodzin"
 #: 
 msgid "No Check-ins"
 msgstr "Brak rejestracji obecności"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "Brak śledzenia ofiar"
 
 #: 
 msgid "No Deposits"

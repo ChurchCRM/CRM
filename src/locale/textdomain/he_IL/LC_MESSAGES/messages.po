@@ -268,10 +268,6 @@ msgid "Add Cart to Event"
 msgstr "הוסף סל לאירוע"
 
 #: 
-msgid "OR"
-msgstr "או"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "הסל שלך ריק!"
 
@@ -392,10 +388,6 @@ msgstr "כן"
 #: 
 msgid "No"
 msgstr "לא"
-
-#: 
-msgid "Event Checkin"
-msgstr "כניסה לאירוע"
 
 #: 
 msgid "Select Event"
@@ -651,10 +643,6 @@ msgid "Church Event Editor"
 msgstr "עורך אירועי מוסד"
 
 #: 
-msgid "Edit Event Types"
-msgstr "ערוך סוגי אירועים"
-
-#: 
 msgid "Edit Event Type"
 msgstr "ערוך סוג אירוע"
 
@@ -724,20 +712,8 @@ msgid "Create a new Event"
 msgstr "צור אירוע חדש"
 
 #: 
-msgid " errors. Please see below"
-msgstr " שגיאות. אנא ראה מטה"
-
-#: 
 msgid "Select your event type"
 msgstr "בחר את סוג האירוע"
-
-#: 
-msgid "You must pick an event type."
-msgstr "עליך לבחור סוג אירוע"
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "לא נרשמה נוכחות"
 
 #: 
 msgid "Event Status"
@@ -2913,10 +2889,6 @@ msgid "Date Entered"
 msgstr "תאריך הכניסה:"
 
 #: 
-msgid "There were "
-msgstr "היו "
-
-#: 
 msgid "Inactive"
 msgstr "לא פעיל"
 
@@ -4864,14 +4836,6 @@ msgid "Select event"
 msgstr "בחר אירוע"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "האדם כבר נרשם לאירוע זה"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "מבוגר רושם יציאה"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "טקסט לפני השם באימיילים/דוחות"
 
@@ -5427,10 +5391,6 @@ msgid "Sign out"
 msgstr "יציאה"
 
 #: 
-msgid "Sermon Text"
-msgstr "טקסט דרשה"
-
-#: 
 msgid "Change Settings"
 msgstr "שינוי הגדרות"
 
@@ -5946,10 +5906,6 @@ msgstr "פונקציות לאיתחול מסד נתונים"
 msgid "Reset Database"
 msgstr "אתחל בסיס נתונים"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "פעולה זו תאפס את נתוני המערכת ותפעיל מחדש את המערכת כהתקנה חדשה."
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6152,18 +6108,6 @@ msgstr "אמת"
 #: 
 msgid "Family has no emails to use"
 msgstr "אין כתובת דוא\"ל לשימוש"
-
-#: 
-msgid "User Interface"
-msgstr "ממשק משתמש"
-
-#: 
-msgid "Locale"
-msgstr "מקום"
-
-#: 
-msgid "Override system locale"
-msgstr "החלפת מיקום מערכת"
 
 #: 
 msgid "Deleted"
@@ -7234,10 +7178,6 @@ msgid "All Types"
 msgstr "כל הסוגים"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "האם אתה בטוח שברצונך למחוק רשומת צ'ק-אין זו?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "קטגוריות ספירת נוכחות"
 
@@ -7278,10 +7218,6 @@ msgid "Create New Event"
 msgstr "צור אירוע חדש"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "צור סוג אירוע כדי להתחיל."
-
-#: 
 msgid "Current DB Version"
 msgstr "גרסת מסד נתונים נוכחית"
 
@@ -7300,14 +7236,6 @@ msgstr "שעת התחלה כברירת מחדל"
 #: 
 msgid "Delete Event"
 msgstr "מחק אירוע"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "מחיקת אירוע תמחוק גם את כל ספירות הנוכחות. למחוק אירוע זה?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "מחיקת אירוע זה תמחוק גם את כל רישומי הנוכחות. האם את/ה בטוח/ה?"
 
 #: 
 msgid "Edit Event"
@@ -7375,10 +7303,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "אופציונלי - הוסף הערות דרשה או פרטי אירוע נוספים"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "אופציונלי - השאר ריק אם אין מעקב"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "הערות אופציונליות לגבי הנוכחות..."
 
@@ -7411,24 +7335,12 @@ msgid "Search by name or email..."
 msgstr "חפש לפי שם או אימייל..."
 
 #: 
-msgid "Search for adult..."
-msgstr "חפש מבוגר..."
-
-#: 
 msgid "Search for supervisor..."
 msgstr "חפש מפקח/אחראי..."
 
 #: 
 msgid "Select Event for Check-In"
 msgstr "בחר אירוע לרישום כניסה (Check-In)"
-
-#: 
-msgid "Select start and end date/time"
-msgstr "בחר תאריך ושעה להתחלה וסיום"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "בחר את האירוע לרישום כניסה עבור החברים שבסל"
 
 #: 
 msgid "Sermon / Event Text"
@@ -7795,10 +7707,6 @@ msgstr "השתמש בכלים חיצוניים להצפנת גיבויים לפ�
 #: 
 msgid "User authentication"
 msgstr "אימות משתמש"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "המשתמש חייב להיות בעל הרשאת הוספת אירוע"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8321,10 +8229,6 @@ msgid "State (Other)"
 msgstr "מדינה/אזור (אחר)"
 
 #: 
-msgid "Status:"
-msgstr "סטטוס:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "סיכום התחייבויות מול תשלומים לפי קרן לשנת הכספים."
 
@@ -8375,10 +8279,6 @@ msgstr "סה\"כ הפקדות:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "עקוב אחר התחייבויות ותשלומים לקמפיינים ותקציב."
-
-#: 
-msgid "Type:"
-msgstr "סוג:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8805,10 +8705,6 @@ msgid "Disable 2FA"
 msgstr "בטל אימות דו-שלבי"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "ייצא נתוני אנשים בפורמט ChMeetings."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "ייצא ל-CSV של ChMeetings"
 
@@ -9063,10 +8959,6 @@ msgid "Add Your First Property Type"
 msgstr "הוסף את סוג המאפיין הראשון שלך"
 
 #: 
-msgid "Auto-calculated from counts above"
-msgstr "מחושב אוטומטית מהספירות למעלה"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "מחיקת שדה זה תגרום לאובדן בלתי הפיך של כל נתוני חברי הקבוצה שהוקצו לשדה זה!"
 
@@ -9255,10 +9147,6 @@ msgstr "רישום הקיוסק מושבת"
 #: 
 msgid "Kiosk not found"
 msgstr "הקיוסק לא נמצא"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "קשר אירוע זה לקבוצה לצורך פונקציית צ'ק-אין בקיוסק. חברי הקבוצה יופיעו בקיוסק."
 
 #: 
 msgid "Linked Group"
@@ -10460,10 +10348,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "דרוש מכל המשתמשים להירשם לאימות דו-שלבי"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "מפה תופיע כאן לאחר שתישמר כתובת. הקואורדינטות מזוהות אוטומטית — אין צורך בהזנה ידנית."
-
-#: 
 msgid "Active Groups"
 msgstr "קבוצות פעילות"
 
@@ -10514,10 +10398,6 @@ msgstr "למשפחה אין כתובת לגיאוקידוד"
 #: 
 msgid "Father"
 msgstr "אב"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "קואורדינטות מגיאוקודות:"
 
 #: 
 msgid "Geocoding failed"
@@ -10598,10 +10478,6 @@ msgstr "אזור זמן"
 #: 
 msgid "Total Groups"
 msgstr "סה\"כ קבוצות"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "מתעדכן אוטומטית בכל שמירה."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10784,14 +10660,6 @@ msgstr "הוסיפו את המאפיין הראשון שלכם"
 #: 
 msgid "Add a Person"
 msgstr "הוספת אדם"
-
-#: 
-msgid "Add a new pledge"
-msgstr "הוספת התחייבות כספית חדשה"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "הוספת תשלום להפקדת תרומות נוכחית"
 
 #: 
 msgid "Add all cart items to a group"
@@ -11010,10 +10878,6 @@ msgid "Check Out"
 msgstr "יציאה"
 
 #: 
-msgid "Check Out Person"
-msgstr "יציאת אדם"
-
-#: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
 msgstr "בדיקת עדכונים ושדרוג התקנת ChurchCRM"
 
@@ -11138,10 +11002,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "צרו גיבוי ידני לפחות פעם בשבוע, או הפעילו את תוסף הגיבוי החיצוני לגיבויי WebDAV אוטומטיים על פי לוח זמנים."
 
 #: 
-msgid "Create a new deposit"
-msgstr "יצירת הפקדת תרומות חדשה"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "יצירה ועריכה של מידע משפחתי ויחסים"
 
@@ -11196,10 +11056,6 @@ msgstr "הגדרת מאפיינים ייחודיים לקבוצה עבור חב�
 #: 
 msgid "Delete All"
 msgstr "מחיקת הכל"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "מחיקת רשומת נוכחות"
 
 #: 
 msgid "Delete Family"
@@ -11482,10 +11338,6 @@ msgid "Generate directory listings and printed materials"
 msgstr "יצירת רשימות מדריך וחומרים מודפסים"
 
 #: 
-msgid "Generate financial reports"
-msgstr "יצירת דוחות כספיים"
-
-#: 
 msgid "Generate financial statements and giving reports"
 msgstr "יצירת דוחות כספיים ודוחות תרומות"
 
@@ -11718,14 +11570,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "ניהול כלי דוא\"ל והגדרות SMTP"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "ניהול שמות אירועים וקטגוריות"
-
-#: 
-msgid "Manage event type categories"
-msgstr "ניהול קטגוריות סוגי אירועים"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "ניהול משפחות, אנשים ומידע דמוגרפי"
 
@@ -11856,10 +11700,6 @@ msgstr "אין ימי הולדת"
 #: 
 msgid "No Check-ins"
 msgstr "אין רישומי נוכחות"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "אין מעקב הפקדות"
 
 #: 
 msgid "No Deposits"

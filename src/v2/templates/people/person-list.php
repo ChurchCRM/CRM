@@ -158,44 +158,44 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
     <div class="card-body">
         <div class="row g-3">
             <!-- Demographics and Classification Row -->
-            <div class="col-lg-3">
+            <div class="col-12 col-sm-6 col-lg-3">
                 <div class="mb-0">
                     <label class="form-label" id="label-family-status"></label>
                     <select class="form-select filter-FamilyStatus" multiple="multiple"></select>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-12 col-sm-6 col-lg-3">
                 <div class="mb-0">
                     <label class="form-label" id="label-gender"></label>
                     <select class="form-select filter-Gender" multiple="multiple"></select>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-12 col-sm-6 col-lg-3">
                 <div class="mb-0">
                     <label class="form-label" id="label-classification"></label>
                     <select class="form-select filter-Classification" multiple="multiple"></select>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-12 col-sm-6 col-lg-3">
                 <div class="mb-0">
                     <label class="form-label" id="label-role"></label>
                     <select class="form-select filter-Role" multiple="multiple"></select>
                 </div>
             </div>
             <!-- Extended Attributes Row -->
-            <div class="col-lg-4">
+            <div class="col-12 col-sm-6 col-lg-4">
                 <div class="mb-0">
                     <label class="form-label" id="label-properties"></label>
                     <select class="form-select filter-Properties" multiple="multiple"></select>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-12 col-sm-6 col-lg-4">
                 <div class="mb-0">
                     <label class="form-label" id="label-custom"></label>
                     <select class="form-select filter-Custom" multiple="multiple"></select>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-12 col-sm-6 col-lg-4">
                 <div class="mb-0">
                     <label class="form-label" id="label-group"></label>
                     <select class="form-select filter-Group" multiple="multiple"></select>
@@ -860,15 +860,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
     // Wait for locales to load before initializing
     $(document).ready(function () {
         window.CRM.onLocalesReady(initializePeopleList);
-        
-        // Handle person photo viewing (same as family list)
-        $(document).on('click', '.view-person-photo', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            var personId = $(this).data('person-id');
-            window.CRM.showPhotoLightbox('person', personId);
-        });
-
+        // Photo viewer click handlers are registered globally in avatar-loader.ts
         // .delete-person clicks are handled globally by CRMJSOM.js
     });
 
