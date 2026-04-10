@@ -14722,3 +14722,745 @@ msgstr "Amarelo"
 msgid "Your current access levels (read-only)"
 msgstr "Seus níveis de acesso atuais (somente leitura)"
 
+#: 
+msgid "%d repeat event created successfully."
+msgid_plural "%d repeat events created successfully."
+msgstr[0] "%d evento recorrente criado com sucesso."
+msgstr[1] "%d eventos recorrentes criados com sucesso."
+
+#: 
+msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
+msgstr "(ex. Membros, Visitantes, Crianças) para que voluntários possam registrar contagens aqui."
+
+#: 
+msgid "1. Sunday School Class"
+msgstr "1. Turma de Escola Dominical"
+
+#: 
+msgid "2. Event Type"
+msgstr "2. Tipo de Evento"
+
+#: 
+msgid "3. Event"
+msgstr "3. Evento"
+
+#: 
+msgid "4. Kiosk"
+msgstr "4. Quiosque"
+
+#: 
+msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
+msgstr "Uma turma é um Ministério com tipo \"Escola Dominical\". Contém os alunos e professores (membros com funções)."
+
+#: 
+msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
+msgstr "Um ministério vinculado conecta este evento a uma turma ou lista de ministério. Quando o evento é atribuído a um Quiosque, o quiosque obtém os membros do ministério e os exibe como uma lista para registrar presença com um toque. Para turmas de Escola Dominical, vincule o ministério da turma aqui para que voluntários possam registrar a presença dos alunos a partir de um tablet."
+
+#: 
+msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr "Uma ocorrência específica (ex. \"Pré-escola — 12 abr\"). Herda os padrões do tipo e está vinculada ao ministério da turma através do público-alvo. É contra isso que os voluntários registram a presença."
+
+#: 
+msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr "Um tablet atribuído a um evento. O Quiosque obtém a lista do ministério vinculado ao evento e exibe a opção de registrar presença com um toque. Sem um ministério vinculado, o Quiosque não tem lista para exibir."
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "Adicionar visitante sem cadastro prévio"
+
+#: 
+msgid "Add categories on the Event Type page"
+msgstr "Adicione categorias na página Tipo de Evento"
+
+#: 
+msgid "Add people to your cart first, then come back to check them in to an event."
+msgstr "Adicione pessoas à sua Seleção primeiro, depois volte para registrar a presença delas em um evento."
+
+#: 
+msgid "All clear!"
+msgstr "Tudo certo!"
+
+#: 
+msgid "All events and attendance records"
+msgstr "Todos os eventos e registros de presença"
+
+#: 
+msgid "All financial data (pledges, payments, deposits)"
+msgstr "Todos os dados financeiros (compromissos financeiros, pagamentos, depósitos)"
+
+#: 
+msgid "All groups, roles, and memberships"
+msgstr "Todos os ministérios, funções e membros"
+
+#: 
+msgid "All people and family records"
+msgstr "Todos os registros de pessoas e famílias"
+
+#: 
+msgid "All system settings and custom fields"
+msgstr "Todas as configurações do sistema e campos personalizados"
+
+#: 
+msgid "All uploaded photos and documents"
+msgstr "Todas as fotos e documentos enviados"
+
+#: 
+msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
+msgstr "Um Tipo de Evento é um modelo — nome, horário de início padrão, recorrência, categorias de contagem de presença. Opcionalmente vinculado a um ministério de turma como público-alvo padrão."
+
+#: 
+msgid "Attendance record deleted."
+msgstr "Registro de presença excluído."
+
+#: 
+msgid "Audit"
+msgstr "Auditoria"
+
+#: 
+msgid "Audit Events"
+msgstr "Auditoria de Eventos"
+
+#: 
+msgid "Auto-totalled from counts at right"
+msgstr "Total calculado automaticamente a partir das contagens à direita"
+
+#: 
+msgid "Back to Events"
+msgstr "Voltar para Eventos"
+
+#: 
+msgid "Back to Events Dashboard"
+msgstr "Voltar para o Painel de Eventos"
+
+#: 
+msgid "Backup failed. You can still proceed with the reset, but your data will be lost."
+msgstr "A criação do backup falhou. Você ainda pode prosseguir com a redefinição, mas seus dados serão perdidos."
+
+#: 
+msgid "Backup ready!"
+msgstr "Backup pronto!"
+
+#: 
+msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
+msgstr "Antes de redefinir, recomendamos fortemente baixar um backup dos seus dados atuais. Esta é sua única chance de preservá-los."
+
+#: 
+msgid "Bulk-create a series of recurring events"
+msgstr "Criar em massa uma série de eventos recorrentes"
+
+#: 
+msgid "By"
+msgstr "Por"
+
+#: 
+msgid "Cannot check in to an inactive event. Activate the event first."
+msgstr "Não é possível registrar presença em um evento inativo. Ative o evento primeiro."
+
+#: 
+msgid "Change"
+msgstr "Alterar"
+
+#: 
+msgid "Check In All"
+msgstr "Registrar todos"
+
+#: 
+msgid "Check In Family"
+msgstr "Registrar família"
+
+#: 
+msgid "Check Out All"
+msgstr "Registrar saída de todos"
+
+#: 
+msgid "Check in all %d family members to a single event."
+msgstr "Registrar os %d membros da família em um único evento."
+
+#: 
+msgid "Check out"
+msgstr "Registrar saída"
+
+#: 
+msgid "Check-in By"
+msgstr "Registrado por"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "Falha ao registrar entrada. Por favor, tente novamente."
+
+#: 
+msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
+msgstr "O registro de entrada está desabilitado para eventos inativos. Ative o evento no Painel de Eventos para habilitar o registro de entrada."
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "Falha ao registrar saída. Por favor, tente novamente."
+
+#: 
+msgid "Checked in to event: %s"
+msgstr "Entrada registrada no evento: %s"
+
+#: 
+msgid "Checked out from event: %s"
+msgstr "Saída registrada do evento: %s"
+
+#: 
+msgid "Close All Stuck Events"
+msgstr "Fechar todos os eventos travados"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "Confirmar saída"
+
+#: 
+msgid "Create Repeat Events"
+msgstr "Criar eventos recorrentes"
+
+#: 
+msgid "Create Today's Event"
+msgstr "Criar o evento de hoje"
+
+#: 
+msgid "Create a new event type with recurrence and attendance settings"
+msgstr "Criar um novo tipo de evento com recorrência e configurações de presença"
+
+#: 
+msgid "Create one now"
+msgstr "Criar um agora"
+
+#: 
+msgid "Create today's class event and link it to this class for kiosk check-in"
+msgstr "Criar o evento da turma de hoje e vinculá-lo a esta turma para registro de entrada no Quiosque"
+
+#: 
+msgid "Creating backup..."
+msgstr "Criando backup..."
+
+#: 
+msgid "Creating..."
+msgstr "Criando..."
+
+#: 
+msgid "Database + uploaded photos (larger)"
+msgstr "Banco de dados + fotos enviadas (maior)"
+
+#: 
+msgid "Database dump only (.sql)"
+msgstr "Somente dump do banco de dados (.sql)"
+
+#: 
+msgid "Date Range"
+msgstr "Intervalo de datas"
+
+#: 
+msgid "Date range cannot exceed 1 year"
+msgstr "O intervalo de datas não pode exceder 1 ano"
+
+#: 
+msgid "Deactivate"
+msgstr "Desativar"
+
+#: 
+msgid "Delete Event Type"
+msgstr "Excluir tipo de evento"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "Excluir registro de presença?"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "Excluir registro de entrada para"
+
+#: 
+msgid "Delete this event?"
+msgstr "Excluir este evento?"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "Excluir um evento também excluirá todas as contagens de presença. Esta ação não pode ser desfeita."
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "Excluir este tipo de evento NÃO excluirá os eventos existentes. Tem certeza?"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "Excluir este evento também excluirá todos os registros de presença. Esta ação não pode ser desfeita."
+
+#: 
+msgid "Destructive Operation"
+msgstr "Operação destrutiva"
+
+#: 
+msgid "Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field."
+msgstr "Edite um nome de categoria e clique em Salvar, ou use o ícone de lixeira para remover. Novas linhas são adicionadas pelo campo inferior."
+
+#: 
+msgid "End Time"
+msgstr "Hora de término"
+
+#: 
+msgid "End time must be after start time."
+msgstr "A hora de término deve ser posterior à hora de início."
+
+#: 
+msgid "Ended"
+msgstr "Encerrado"
+
+#: 
+msgid "Ends"
+msgstr "Termina"
+
+#: 
+msgid "Event Audit"
+msgstr "Auditoria de Evento"
+
+#: 
+msgid "Event Check-in"
+msgstr "Registro de Entrada no Evento"
+
+#: 
+msgid "Event Details"
+msgstr "Detalhes do Evento"
+
+#: 
+msgid "Event Template"
+msgstr "Modelo de Evento"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "O evento já existe. Redirecionando para o registro de entrada..."
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "Evento criado. Redirecionando para o registro de entrada..."
+
+#: 
+msgid "Event end date/time must be on or after the start date/time."
+msgstr "A data/hora de término do evento deve ser igual ou posterior à data/hora de início."
+
+#: 
+msgid "Event title is required."
+msgstr "O título do evento é obrigatório."
+
+#: 
+msgid "Event type ID is required"
+msgstr "O ID do tipo de evento é obrigatório"
+
+#: 
+msgid "Event type ID or group ID is required"
+msgstr "O ID do tipo de evento ou o ID do ministério é obrigatório"
+
+#: 
+msgid "Event type has no date configured for yearly recurrence"
+msgstr "O tipo de evento não tem data configurada para recorrência anual"
+
+#: 
+msgid "Event type has no day-of-week configured for weekly recurrence"
+msgstr "O tipo de evento não tem dia da semana configurado para recorrência semanal"
+
+#: 
+msgid "Event type has no recurrence pattern configured"
+msgstr "O tipo de evento não tem padrão de recorrência configurado"
+
+#: 
+msgid "Event type has no valid day-of-month configured for monthly recurrence"
+msgstr "O tipo de evento não tem um dia do mês válido configurado para recorrência mensal"
+
+#: 
+msgid "Events will be created for every matching occurrence within this date range."
+msgstr "Eventos serão criados para cada ocorrência correspondente dentro deste intervalo de datas."
+
+#: 
+msgid "Every month on the"
+msgstr "Todo mês no dia"
+
+#: 
+msgid "Every week on"
+msgstr "Toda semana no"
+
+#: 
+msgid "Every year on"
+msgstr "Todo ano no"
+
+#: 
+msgid "Everyone is checked in!"
+msgstr "Todos registraram entrada!"
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "Falha ao criar a turma. Por favor, tente novamente."
+
+#: 
+msgid "Failed to create event."
+msgstr "Falha ao criar o evento."
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "Falha ao criar o evento. Por favor, tente novamente."
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "Falha ao excluir. Por favor, tente novamente."
+
+#: 
+msgid "Fastest workflow:"
+msgstr "Fluxo de trabalho mais rápido:"
+
+#: 
+msgid "Find past events that are still active or have un-checked-out attendees"
+msgstr "Encontrar eventos passados que ainda estão ativos ou têm participantes sem saída registrada"
+
+#: 
+msgid "Format: MM-DD (e.g. 04-12 for April 12)"
+msgstr "Formato: MM-DD (ex. 04-12 para 12 de abril)"
+
+#: 
+msgid "Group Roster"
+msgstr "Lista do Ministério"
+
+#: 
+msgid "Hide Advanced Options"
+msgstr "Ocultar opções avançadas"
+
+#: 
+msgid "How Sunday School + Events + Kiosks fit together"
+msgstr "Como Escola Dominical + Eventos + Quiosques funcionam juntos"
+
+#: 
+msgid "Invalid date for %s — expected YYYY-MM-DD"
+msgstr "Data inválida para %s — esperado AAAA-MM-DD"
+
+#: 
+msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr "Formato de data inválido para rangeStart ou rangeEnd"
+
+#: 
+msgid "Invalid date format."
+msgstr "Formato de data inválido."
+
+#: 
+msgid "Invalid date; expected format YYYY-MM-DD"
+msgstr "Data inválida; formato esperado AAAA-MM-DD"
+
+#: 
+msgid "Invalid event type ID"
+msgstr "ID de tipo de evento inválido"
+
+#: 
+msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
+msgstr "Formato de recorrência anual inválido; esperado MM-DD (ex. 04-12)"
+
+#: 
+msgid "Just now"
+msgstr "Agora"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "Deixe em branco para registrar saída sem registrar o supervisor."
+
+#: 
+msgid "Link events to a group for Kiosk check-in functionality."
+msgstr "Vincule eventos a um ministério para a funcionalidade de registro de entrada no Quiosque."
+
+#: 
+msgid "Linked Groups"
+msgstr "Ministérios vinculados"
+
+#: 
+msgid "Looking for stuck events..."
+msgstr "Procurando eventos travados..."
+
+#: 
+msgid "Manage event names, recurrence patterns, and attendance counts"
+msgstr "Gerenciar nomes de eventos, padrões de recorrência e contagens de presença"
+
+#: 
+msgid "Missing required field: %s"
+msgstr "Campo obrigatório ausente: %s"
+
+#: 
+msgid "No Events Today"
+msgstr "Nenhum evento hoje"
+
+#: 
+msgid "No Group"
+msgstr "Sem Ministério"
+
+#: 
+msgid "No active assignment"
+msgstr "Sem atribuição ativa"
+
+#: 
+msgid "No active events found."
+msgstr "Nenhum evento ativo encontrado."
+
+#: 
+msgid "No attendance count categories defined for this event type yet."
+msgstr "Nenhuma categoria de contagem de presença definida para este tipo de evento ainda."
+
+#: 
+msgid "No one has been checked in to this event yet."
+msgstr "Ninguém registrou entrada neste evento ainda."
+
+#: 
+msgid "No past events are still marked Active."
+msgstr "Nenhum evento passado ainda está marcado como Ativo."
+
+#: 
+msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr "Abra uma turma → clique em \"Criar o evento de hoje\" — o evento é criado e vinculado à turma em uma única etapa, então você vai para a página de registro de entrada pronta para um Quiosque ou presença sem cadastro prévio."
+
+#: 
+msgid "Optional Settings"
+msgstr "Configurações opcionais"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "Opcional — registre quem está registrando a saída desta pessoa (ex. um responsável buscando uma criança)."
+
+#: 
+msgid "Person checked out."
+msgstr "Saída da pessoa registrada."
+
+#: 
+msgid "Person is not checked in"
+msgstr "A pessoa não registrou entrada"
+
+#: 
+msgid "Person not in active class roster"
+msgstr "A pessoa não está na lista ativa da turma"
+
+#: 
+msgid "Pin to Calendars"
+msgstr "Fixar nos calendários"
+
+#: 
+msgid "Please select a person to check in."
+msgstr "Por favor, selecione uma pessoa para registrar entrada."
+
+#: 
+msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
+msgstr "Preenchido automaticamente com base neste tipo de evento — para tipos recorrentes, a data é a próxima ocorrência após o último evento deste tipo, e o horário corresponde ao horário de início padrão do tipo."
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "A data de término do intervalo deve ser igual ou posterior à data de início do intervalo."
+
+#: 
+msgid "Range end must be a valid YYYY-MM-DD date."
+msgstr "O término do intervalo deve ser uma data válida no formato AAAA-MM-DD."
+
+#: 
+msgid "Range start must be a valid YYYY-MM-DD date."
+msgstr "O início do intervalo deve ser uma data válida no formato AAAA-MM-DD."
+
+#: 
+msgid "Range start must be before range end"
+msgstr "O início do intervalo deve ser anterior ao término do intervalo"
+
+#: 
+msgid "Range start must be before range end."
+msgstr "O início do intervalo deve ser anterior ao término do intervalo."
+
+#: 
+msgid "RangeEnd must be on or after RangeStart"
+msgstr "RangeEnd deve ser igual ou posterior a RangeStart"
+
+#: 
+msgid "Recommended"
+msgstr "Recomendado"
+
+#: 
+msgid "Required for Kiosk"
+msgstr "Obrigatório para o Quiosque"
+
+#: 
+msgid "Resetting will permanently delete:"
+msgstr "A redefinição excluirá permanentemente:"
+
+#: 
+msgid "SQL Only"
+msgstr "Somente SQL"
+
+#: 
+msgid "Save Time"
+msgstr "Economizar tempo"
+
+#: 
+msgid "Save changes to this category name"
+msgstr "Salvar alterações neste nome de categoria"
+
+#: 
+msgid "Select an event type…"
+msgstr "Selecione um tipo de evento…"
+
+#: 
+msgid "Select start and end date/time."
+msgstr "Selecione a data/hora de início e término."
+
+#: 
+msgid "Show More Options"
+msgstr "Mostrar mais opções"
+
+#: 
+msgid "Skip"
+msgstr "Pular"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "Pular e registrar saída"
+
+#: 
+msgid "Start Check-in"
+msgstr "Iniciar registro de entrada"
+
+#: 
+msgid "Starts"
+msgstr "Inicia"
+
+#: 
+msgid "Step 1: Create a Backup"
+msgstr "Passo 1: Criar um backup"
+
+#: 
+msgid "Step 2: Reset Database"
+msgstr "Passo 2: Redefinir banco de dados"
+
+#: 
+msgid "Still Checked In"
+msgstr "Ainda com entrada registrada"
+
+#: 
+msgid "Stuck Events"
+msgstr "Eventos travados"
+
+#: 
+msgid "Take Attendance"
+msgstr "Registrar presença"
+
+#: 
+msgid "The Events module is disabled"
+msgstr "O módulo de Eventos está desabilitado"
+
+#: 
+msgid "The same start and end time will be used for all generated events."
+msgstr "O mesmo horário de início e término será usado para todos os eventos gerados."
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "Não há eventos agendados para hoje"
+
+#: 
+msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
+msgstr "Estas são categorias de contagem — os voluntários as preenchem após o evento para que o painel possa detalhar a presença (ex. quantos membros vs. visitantes). São independentes dos registros individuais na página de Registro de entrada."
+
+#: 
+msgid "This event is inactive."
+msgstr "Este evento está inativo."
+
+#: 
+msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr "Esta página permite apagar permanentemente todos os dados no banco de dados do ChurchCRM. Esta ação não pode ser desfeita."
+
+#: 
+msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
+msgstr "Este relatório lista cada evento cuja data de término passou, mas que ainda está marcado como Ativo. Causas comuns: um voluntário esqueceu de tocar em 'Registrar saída', um quiosque perdeu a conexão, ou o evento foi criado e abandonado. Eventos antigos (anos atrás) que nunca foram desativados também aparecem aqui. A coluna 'Ainda com entrada registrada' mostra se alguém ficou no meio do registro. Fechar um evento neste relatório registra a saída de todos (usando o horário atual) e marca o evento como Inativo."
+
+#: 
+msgid "This title will be used for all generated events."
+msgstr "Este título será usado para todos os eventos gerados."
+
+#: 
+msgid "Today's Events"
+msgstr "Eventos de hoje"
+
+#: 
+msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
+msgstr "Muitas ocorrências (%d) — reduza o intervalo de datas. Máximo permitido: %d"
+
+#: 
+msgid "Type RESET to confirm"
+msgstr "Digite RESET para confirmar"
+
+#: 
+msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
+msgstr "Use o botão acima para criar o evento de hoje com um clique. Ele será vinculado automaticamente a esta turma para que um Quiosque possa obter a lista."
+
+#: 
+msgid "Use this form to bulk-create a series of recurring events. Each event is created individually and can be edited or deleted independently after creation."
+msgstr "Use este formulário para criar em massa uma série de eventos recorrentes. Cada evento é criado individualmente e pode ser editado ou excluído de forma independente após a criação."
+
+#: 
+msgid "Used as the default start time when creating events of this type."
+msgstr "Usado como o horário de início padrão ao criar eventos deste tipo."
+
+#: 
+msgid "User must have Add Event permission and the Events module must be enabled"
+msgstr "O usuário deve ter permissão para Adicionar Evento e o módulo de Eventos deve estar habilitado"
+
+#: 
+msgid "Valid startDate and endDate are required"
+msgstr "startDate e endDate válidos são obrigatórios"
+
+#: 
+msgid "View Event"
+msgstr "Ver evento"
+
+#: 
+msgid "What are these for?"
+msgstr "Para que servem estas categorias?"
+
+#: 
+msgid "What does this find?"
+msgstr "O que isso encontra?"
+
+#: 
+msgid "What is this for?"
+msgstr "Para que serve isso?"
+
+#: 
+msgid "Who is bringing them in?"
+msgstr "Quem está trazendo-os?"
+
+#: 
+msgid "You must select a valid recurrence pattern."
+msgstr "Você deve selecionar um padrão de recorrência válido."
+
+#: 
+msgid "You must select an event type."
+msgstr "Você deve selecionar um tipo de evento."
+
+#: 
+msgid "You must specify a date range."
+msgstr "Você deve especificar um intervalo de datas."
+
+#: 
+msgid "checked in"
+msgstr "com entrada registrada"
+
+#: 
+msgid "e.g., Sunday Worship Service"
+msgstr "ex., Culto de Adoração Dominical"
+
+#: 
+msgid "endDate must be after startDate"
+msgstr "endDate deve ser posterior a startDate"
+
+#: 
+msgid "eventIds must be a non-empty array"
+msgstr "eventIds deve ser um array não vazio"
+
+#: 
+msgid "invalid recurrence type"
+msgstr "tipo de recorrência inválido"
+
+#: 
+msgid "personIds must be a non-empty array"
+msgstr "personIds deve ser um array não vazio"
+
+#: 
+msgid "to enable the reset button"
+msgstr "para habilitar o botão de redefinição"
+
