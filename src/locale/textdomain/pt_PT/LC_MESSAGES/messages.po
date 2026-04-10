@@ -7491,14 +7491,6 @@ msgid "Select Event for Check-In"
 msgstr "Selecione evento para check-in"
 
 #: 
-msgid "Select start and end date/time"
-msgstr "Selecione data/hora de início e término"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "Selecione o evento para fazer check-in dos membros do seu carrinho"
-
-#: 
 msgid "Sermon / Event Text"
 msgstr "Texto de sermão / evento"
 
@@ -7863,10 +7855,6 @@ msgstr "Use ferramentas externas (GPG, 7-Zip) para criptografar backups antes de
 #: 
 msgid "User authentication"
 msgstr "Autenticação do usuário"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "O usuário deve ter permissão de adicionar evento"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8389,10 +8377,6 @@ msgid "State (Other)"
 msgstr "Estado (Outro)"
 
 #: 
-msgid "Status:"
-msgstr "Status:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Resumo de promessas versus pagamentos por fundo para o ano fiscal."
 
@@ -8443,10 +8427,6 @@ msgstr "Total de depósitos:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Rastreie o progresso de promessas e pagamentos para campanhas e orçamentação do ano fiscal."
-
-#: 
-msgid "Type:"
-msgstr "Tipo:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8873,10 +8853,6 @@ msgid "Disable 2FA"
 msgstr "Desabilitar 2FA"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "Exporte todos os dados de pessoas em formato ChMeetings para importação em sistemas externos."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "Exportar para CSV do ChMeetings"
 
@@ -9131,10 +9107,6 @@ msgid "Add Your First Property Type"
 msgstr "Adicione o Seu Primeiro Tipo de Propriedade"
 
 #: 
-msgid "Auto-calculated from counts above"
-msgstr "Calculado automaticamente a partir das contagens acima"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Ao eliminar este campo, perderá irrevogavelmente todos os dados dos membros do grupo atribuídos a este campo!"
 
@@ -9323,10 +9295,6 @@ msgstr "Registo de quiosque desativado"
 #: 
 msgid "Kiosk not found"
 msgstr "Quiosque não encontrado"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "Associe este evento a um grupo para a funcionalidade de check-in no quiosque. Os membros do grupo aparecerão no quiosque."
 
 #: 
 msgid "Linked Group"
@@ -10528,10 +10496,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "Exigir que todos os utilizadores se inscrevam na autenticação de dois fatores"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "Um mapa aparecerá aqui assim que um endereço for guardado. As coordenadas são detetadas automaticamente — não é necessária entrada manual."
-
-#: 
 msgid "Active Groups"
 msgstr "Grupos ativos"
 
@@ -10582,10 +10546,6 @@ msgstr "A família não tem endereço para geocodificação"
 #: 
 msgid "Father"
 msgstr "Pai"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "Coordenadas geocodificadas:"
 
 #: 
 msgid "Geocoding failed"
@@ -10666,10 +10626,6 @@ msgstr "Fuso horário"
 #: 
 msgid "Total Groups"
 msgstr "Total de grupos"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "Atualizado automaticamente a cada gravação."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10852,14 +10808,6 @@ msgstr "Adicionar a Sua Primeira Propriedade"
 #: 
 msgid "Add a Person"
 msgstr "Adicionar uma Pessoa"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Adicionar uma nova promessa de doação"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "Adicionar um pagamento ao depósito atual"
 
 #: 
 msgid "Add all cart items to a group"
@@ -11078,10 +11026,6 @@ msgid "Check Out"
 msgstr "Registar Saída"
 
 #: 
-msgid "Check Out Person"
-msgstr "Registar Saída de Pessoa"
-
-#: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
 msgstr "Verificar atualizações e atualizar a sua instalação do ChurchCRM"
 
@@ -11206,10 +11150,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "Crie uma cópia de segurança manual pelo menos uma vez por semana, ou ative o plugin de Cópia de Segurança Externa para cópias automáticas via WebDAV segundo um agendamento."
 
 #: 
-msgid "Create a new deposit"
-msgstr "Criar um novo depósito"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "Criar e editar informações e relações familiares"
 
@@ -11264,10 +11204,6 @@ msgstr "Definir propriedades específicas do grupo para os fiéis"
 #: 
 msgid "Delete All"
 msgstr "Eliminar Tudo"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "Eliminar Registo de Entrada"
 
 #: 
 msgid "Delete Family"
@@ -11550,10 +11486,6 @@ msgid "Generate directory listings and printed materials"
 msgstr "Gerar listagens de diretório e materiais impressos"
 
 #: 
-msgid "Generate financial reports"
-msgstr "Gerar relatórios financeiros"
-
-#: 
 msgid "Generate financial statements and giving reports"
 msgstr "Gerar demonstrações financeiras e relatórios de ofertas"
 
@@ -11786,14 +11718,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "Gerir ferramentas de e-mail e configuração SMTP"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "Gerir nomes e categorias de eventos"
-
-#: 
-msgid "Manage event type categories"
-msgstr "Gerir categorias de tipos de eventos"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Gerir famílias, pessoas e informações demográficas"
 
@@ -11826,12 +11750,20 @@ msgid "Manage your personal preferences and account settings"
 msgstr "Gerir as suas preferências pessoais e definições de conta"
 
 #: 
+msgid "Manual"
+msgstr "Manual"
+
+#: 
 msgid "Map cart items"
 msgstr "Mapear itens do carrinho"
 
 #: 
 msgid "Map to Field"
 msgstr "Mapear para Campo"
+
+#: 
+msgid "Material"
+msgstr "Material"
 
 #: 
 msgid "Member Properties"
@@ -11916,10 +11848,6 @@ msgstr "Sem Aniversários"
 #: 
 msgid "No Check-ins"
 msgstr "Sem Registos de Entrada"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "Sem Rastreio de Depósitos"
 
 #: 
 msgid "No Deposits"
@@ -14482,6 +14410,10 @@ msgstr "O tamanho do ficheiro excede o limite do servidor de %s"
 msgid "Missing image data in request"
 msgstr "Dados de imagem em falta no pedido"
 
+#: 
+msgid "BCC"
+msgstr "CCO"
+
 #. Context: query_qry
 #: 
 msgid "Find people who didn't attend an event"
@@ -14492,10 +14424,18 @@ msgstr "Encontrar pessoas que não participaram num evento"
 msgid "Missing people"
 msgstr "Pessoas em falta"
 
+#: 
+msgid "N/A"
+msgstr "N/D"
+
 #. Context: queryparameters_qrp
 #: 
 msgid "Select the desired event"
 msgstr "Selecionar o evento pretendido"
+
+#: 
+msgid "name@example.com"
+msgstr "nome@exemplo.com"
 
 #: 
 msgid "Advanced filtering by group, classification, and role"
@@ -14600,6 +14540,10 @@ msgstr "Ocorreu um erro."
 #: 
 msgid "Appearance"
 msgstr "Aparência"
+
+#: 
+msgid "Azure"
+msgstr "Azure"
 
 #: 
 msgid "Back to Finance Dashboard"

@@ -7421,14 +7421,6 @@ msgid "Select Event for Check-In"
 msgstr "Wybierz wydarzenie do zameldowania"
 
 #: 
-msgid "Select start and end date/time"
-msgstr "Wybierz czas rozpoczęcia i zakończenia"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "Wybierz wydarzenie, by zameldować osoby z koszyka"
-
-#: 
 msgid "Sermon / Event Text"
 msgstr "Tekst kazania / wydarzenia"
 
@@ -7794,10 +7786,6 @@ msgstr "Używaj zewnętrznych narzędzi do szyfrowania kopii przed wysyłką poz
 #: 
 msgid "User authentication"
 msgstr "Uwierzytelnianie użytkownika"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "Użytkownik musi mieć uprawnienie dodawania wydarzeń"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8320,10 +8308,6 @@ msgid "State (Other)"
 msgstr "Województwo (inne)"
 
 #: 
-msgid "Status:"
-msgstr "Status:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Podsumowanie deklaracji vs wpłat w roku fiskalnym."
 
@@ -8374,10 +8358,6 @@ msgstr "Suma wpłat:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Śledź postępy deklaracji i płatności dla kampanii."
-
-#: 
-msgid "Type:"
-msgstr "Typ:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8804,10 +8784,6 @@ msgid "Disable 2FA"
 msgstr "Wyłącz 2FA"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "Eksportuj dane w formacie ChMeetings."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "Eksportuj do CSV ChMeetings"
 
@@ -9065,10 +9041,6 @@ msgid "Add Your First Property Type"
 msgstr "Dodaj Swój Pierwszy Typ Właściwości"
 
 #: 
-msgid "Auto-calculated from counts above"
-msgstr "Automatycznie obliczone z powyższych liczb"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Usuwając to pole, bezpowrotnie utracisz wszystkie dane członków grupy przypisane do tego pola!"
 
@@ -9258,10 +9230,6 @@ msgstr "Rejestracja kiosku wyłączona"
 #: 
 msgid "Kiosk not found"
 msgstr "Kiosk nie znaleziony"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "Połącz to wydarzenie z grupą, aby włączyć funkcję odprawy na kiosku. Członkowie grupy pojawią się na kiosku."
 
 #: 
 msgid "Linked Group"
@@ -10464,10 +10432,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "Wymagaj, aby wszyscy użytkownicy zarejestrowali się do uwierzytelniania dwuskładnikowego"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "Mapa pojawi się tutaj po zapisaniu adresu. Współrzędne są wykrywane automatycznie — nie jest wymagane ręczne wprowadzanie."
-
-#: 
 msgid "Active Groups"
 msgstr "Aktywne grupy"
 
@@ -10518,10 +10482,6 @@ msgstr "Rodzina nie ma adresu do geokodowania"
 #: 
 msgid "Father"
 msgstr "Ojciec"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "Geokodowane współrzędne:"
 
 #: 
 msgid "Geocoding failed"
@@ -10602,10 +10562,6 @@ msgstr "Strefa czasowa"
 #: 
 msgid "Total Groups"
 msgstr "Łącznie grup"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "Aktualizowane automatycznie przy każdym zapisie."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10789,14 +10745,6 @@ msgstr "Dodaj swoją pierwszą właściwość"
 #: 
 msgid "Add a Person"
 msgstr "Dodaj osobę"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Dodaj nowe zobowiązanie finansowe"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "Dodaj wpłatę do bieżącej ofiary"
 
 #: 
 msgid "Add all cart items to a group"
@@ -11011,10 +10959,6 @@ msgid "Check Out"
 msgstr "Wymelduj"
 
 #: 
-msgid "Check Out Person"
-msgstr "Wymelduj osobę"
-
-#: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
 msgstr "Sprawdź aktualizacje i uaktualnij instalację ChurchCRM"
 
@@ -11139,10 +11083,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "Twórz ręczną kopię zapasową przynajmniej raz w tygodniu lub włącz wtyczkę zewnętrznej kopii zapasowej dla automatycznych kopii WebDAV według harmonogramu."
 
 #: 
-msgid "Create a new deposit"
-msgstr "Utwórz nową ofiarę"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "Twórz i edytuj informacje o rodzinach i relacjach"
 
@@ -11197,10 +11137,6 @@ msgstr "Zdefiniuj właściwości specyficzne dla grupy dla członków"
 #: 
 msgid "Delete All"
 msgstr "Usuń wszystko"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "Usuń wpis obecności"
 
 #: 
 msgid "Delete Family"
@@ -11479,10 +11415,6 @@ msgid "Generate directory listings and printed materials"
 msgstr "Wygeneruj spisy katalogowe i materiały do druku"
 
 #: 
-msgid "Generate financial reports"
-msgstr "Wygeneruj raporty finansowe"
-
-#: 
 msgid "Generate financial statements and giving reports"
 msgstr "Wygeneruj zestawienia finansowe i raporty ofiar"
 
@@ -11711,14 +11643,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "Zarządzaj narzędziami e-mail i konfiguracją SMTP"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "Zarządzaj nazwami wydarzeń i kategoriami"
-
-#: 
-msgid "Manage event type categories"
-msgstr "Zarządzaj kategoriami typów wydarzeń"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Zarządzaj rodzinami, osobami i informacjami demograficznymi"
 
@@ -11845,10 +11769,6 @@ msgstr "Brak urodzin"
 #: 
 msgid "No Check-ins"
 msgstr "Brak rejestracji obecności"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "Brak śledzenia ofiar"
 
 #: 
 msgid "No Deposits"

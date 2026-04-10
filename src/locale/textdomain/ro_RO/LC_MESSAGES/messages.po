@@ -7424,14 +7424,6 @@ msgid "Select Event for Check-In"
 msgstr "Selectați evenimentul pentru Check-In"
 
 #: 
-msgid "Select start and end date/time"
-msgstr "Selectați data/ora de început și de sfârșit"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "Selectați evenimentul pentru a face check-in membrilor din coș"
-
-#: 
 msgid "Sermon / Event Text"
 msgstr "Text Predică / Eveniment"
 
@@ -7797,10 +7789,6 @@ msgstr "Utilizați instrumente externe (GPG, 7-Zip) pentru a cripta backup-urile
 #: 
 msgid "User authentication"
 msgstr "Autentificare utilizator"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "Utilizatorul trebuie să aibă permisiunea Adăugare eveniment"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8323,10 +8311,6 @@ msgid "State (Other)"
 msgstr "Județ/Provincie (Altele)"
 
 #: 
-msgid "Status:"
-msgstr "Stare:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Rezumatul angajamentelor vs plăți pe fond pentru anul fiscal."
 
@@ -8377,10 +8361,6 @@ msgstr "Total depozite:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Urmăriți angajamentele și progresul plăților pentru campanii și bugetarea anului fiscal."
-
-#: 
-msgid "Type:"
-msgstr "Tip:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8807,10 +8787,6 @@ msgid "Disable 2FA"
 msgstr "Dezactivează 2FA"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "Exportați toate datele persoanelor în format ChMeetings pentru importul în sisteme externe."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "Export în ChMeetings CSV"
 
@@ -9068,10 +9044,6 @@ msgid "Add Your First Property Type"
 msgstr "Adăugați Primul Dvs. Tip de Proprietate"
 
 #: 
-msgid "Auto-calculated from counts above"
-msgstr "Calculat automat din numărătorile de mai sus"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Prin ștergerea acestui câmp, veți pierde irevocabil toate datele membrilor grupului atribuite acestui câmp!"
 
@@ -9261,10 +9233,6 @@ msgstr "Înregistrare Chioșc Dezactivată"
 #: 
 msgid "Kiosk not found"
 msgstr "Chioșc negăsit"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "Asociați acest eveniment cu un grup pentru funcționalitatea de check-in la chioșc. Membrii grupului vor apărea pe chioșc."
 
 #: 
 msgid "Linked Group"
@@ -10467,10 +10435,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "Solicitați tuturor utilizatorilor să se înscrie pentru autentificarea în doi factori"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "O hartă va apărea aici după ce se salvează o adresă. Coordonatele sunt detectate automat — nu este necesară introducerea manuală."
-
-#: 
 msgid "Active Groups"
 msgstr "Grupuri active"
 
@@ -10521,10 +10485,6 @@ msgstr "Familia nu are o adresă pentru geocodificare"
 #: 
 msgid "Father"
 msgstr "Tată"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "Coordonate geocodificate:"
 
 #: 
 msgid "Geocoding failed"
@@ -10605,10 +10565,6 @@ msgstr "Fus orar"
 #: 
 msgid "Total Groups"
 msgstr "Total grupuri"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "Actualizat automat la fiecare salvare."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10792,14 +10748,6 @@ msgstr "Adaugă prima ta proprietate"
 #: 
 msgid "Add a Person"
 msgstr "Adaugă o persoană"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Adaugă un angajament financiar nou"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "Adaugă o plată la oferta curentă"
 
 #: 
 msgid "Add all cart items to a group"
@@ -11014,10 +10962,6 @@ msgid "Check Out"
 msgstr "Ieșire"
 
 #: 
-msgid "Check Out Person"
-msgstr "Ieșire persoană"
-
-#: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
 msgstr "Verificați actualizările și actualizați instalarea ChurchCRM"
 
@@ -11142,10 +11086,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "Creați o copie de siguranță manuală cel puțin o dată pe săptămână sau activați pluginul de copie de siguranță externă pentru copii WebDAV automate programate."
 
 #: 
-msgid "Create a new deposit"
-msgstr "Creați o ofertă nouă"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "Creați și editați informații despre familii și relații"
 
@@ -11200,10 +11140,6 @@ msgstr "Definiți proprietăți specifice grupului pentru membri"
 #: 
 msgid "Delete All"
 msgstr "Șterge tot"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "Șterge înregistrarea de prezență"
 
 #: 
 msgid "Delete Family"
@@ -11482,10 +11418,6 @@ msgid "Generate directory listings and printed materials"
 msgstr "Generați liste de director și materiale tipărite"
 
 #: 
-msgid "Generate financial reports"
-msgstr "Generați rapoarte financiare"
-
-#: 
 msgid "Generate financial statements and giving reports"
 msgstr "Generați situații financiare și rapoarte de contribuții"
 
@@ -11718,14 +11650,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "Gestionează instrumentele de e-mail și configurația SMTP"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "Gestionează numele evenimentelor și categoriile"
-
-#: 
-msgid "Manage event type categories"
-msgstr "Gestionează categoriile tipurilor de evenimente"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Gestionează familiile, persoanele și informațiile demografice"
 
@@ -11848,10 +11772,6 @@ msgstr "Fără zile de naștere"
 #: 
 msgid "No Check-ins"
 msgstr "Fără înregistrări de prezență"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "Fără urmărire oferte"
 
 #: 
 msgid "No Deposits"

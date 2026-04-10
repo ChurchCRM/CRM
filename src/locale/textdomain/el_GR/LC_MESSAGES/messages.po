@@ -7347,14 +7347,6 @@ msgid "Select Event for Check-In"
 msgstr "Select Εκδήλωση for Check-In"
 
 #: 
-msgid "Select start and end date/time"
-msgstr "Επιλέξτε ημερομηνία / ώρα έναρξης και λήξης"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "Επιλέξτε το συμβάν για να καταγράψετε την παρουσία των μελών του καλαθιού σας"
-
-#: 
 msgid "Sermon / Event Text"
 msgstr "Sermon / Εκδήλωση Text"
 
@@ -7719,10 +7711,6 @@ msgstr "Χρησιμοποιήστε εξωτερικά εργαλεία (GPG, 7
 #: 
 msgid "User authentication"
 msgstr "Ταυτοποίηση Χρήστη"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "User must have Add Εκδήλωση permission"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8245,10 +8233,6 @@ msgid "State (Other)"
 msgstr "Περιφέρεια (Άλλη)"
 
 #: 
-msgid "Status:"
-msgstr "Κατάσταση:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Περίληψη των υποσχέσεων και πληρωμών ανά κεφάλαιο για το οικονομικό έτος."
 
@@ -8299,10 +8283,6 @@ msgstr "Σύνολο Καταθέσεων:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Παρακολούθηση υποσχέσεων και πληρωμών για εκστρατείες και προϋπολογισμό."
-
-#: 
-msgid "Type:"
-msgstr "Τύπος:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8729,10 +8709,6 @@ msgid "Disable 2FA"
 msgstr "Απενεργοποίηση 2FA"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "Εξαγωγή all people data in ChMeetings format for import into external systems."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "Εξαγωγή to ChMeetings CSV"
 
@@ -8987,10 +8963,6 @@ msgid "Add Your First Property Type"
 msgstr "Προσθέστε τον Πρώτο Τύπο Ιδιότητας"
 
 #: 
-msgid "Auto-calculated from counts above"
-msgstr "Υπολογίζεται αυτόματα από τους παραπάνω αριθμούς"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Διαγράφοντας αυτό το πεδίο, θα χάσετε αμετάκλητα όλα τα δεδομένα μελών ομάδας που έχουν εκχωρηθεί σε αυτό το πεδίο!"
 
@@ -9179,10 +9151,6 @@ msgstr "Η εγγραφή κιόσκι είναι απενεργοποιημέν
 #: 
 msgid "Kiosk not found"
 msgstr "Το κιόσκι δεν βρέθηκε"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "Συνδέστε αυτή την εκδήλωση με μια ομάδα για λειτουργία check-in κιόσκι. Τα μέλη της ομάδας θα εμφανίζονται στο κιόσκι."
 
 #: 
 msgid "Linked Group"
@@ -10384,10 +10352,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "Απαιτήστε από όλους τους χρήστες να εγγραφούν στον έλεγχο ταυτότητας δύο παραγόντων"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "Ένας χάρτης θα εμφανιστεί εδώ μόλις αποθηκευτεί μια διεύθυνση. Οι συντεταγμένες ανιχνεύονται αυτόματα — δεν απαιτείται χειροκίνητη εισαγωγή."
-
-#: 
 msgid "Active Groups"
 msgstr "Ενεργές ομάδες"
 
@@ -10438,10 +10402,6 @@ msgstr "Η οικογένεια δεν έχει διεύθυνση για γεω
 #: 
 msgid "Father"
 msgstr "Πατέρας"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "Γεωκωδικοποιημένες συντεταγμένες:"
 
 #: 
 msgid "Geocoding failed"
@@ -10522,10 +10482,6 @@ msgstr "Ζώνη ώρας"
 #: 
 msgid "Total Groups"
 msgstr "Σύνολο ομάδων"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "Ενημερώνεται αυτόματα σε κάθε αποθήκευση."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10708,14 +10664,6 @@ msgstr "Προσθέστε την πρώτη σας ιδιότητα"
 #: 
 msgid "Add a Person"
 msgstr "Προσθήκη ατόμου"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Προσθήκη νέας οικονομικής δέσμευσης"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "Προσθήκη πληρωμής στην τρέχουσα κατάθεση προσφορών"
 
 #: 
 msgid "Add all cart items to a group"
@@ -10934,10 +10882,6 @@ msgid "Check Out"
 msgstr "Αποχώρηση"
 
 #: 
-msgid "Check Out Person"
-msgstr "Αποχώρηση ατόμου"
-
-#: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
 msgstr "Έλεγχος ενημερώσεων και αναβάθμιση της εγκατάστασης ChurchCRM"
 
@@ -11062,10 +11006,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "Δημιουργήστε χειροκίνητο αντίγραφο ασφαλείας τουλάχιστον μία φορά την εβδομάδα, ή ενεργοποιήστε το πρόσθετο Εξωτερικού Αντιγράφου για αυτόματα αντίγραφα WebDAV σε πρόγραμμα."
 
 #: 
-msgid "Create a new deposit"
-msgstr "Δημιουργία νέας κατάθεσης προσφορών"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "Δημιουργία και επεξεργασία πληροφοριών οικογένειας και σχέσεων"
 
@@ -11120,10 +11060,6 @@ msgstr "Ορισμός ιδιοτήτων ομάδας για τα μέλη"
 #: 
 msgid "Delete All"
 msgstr "Διαγραφή όλων"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "Διαγραφή εγγραφής παρουσίας"
 
 #: 
 msgid "Delete Family"
@@ -11406,10 +11342,6 @@ msgid "Generate directory listings and printed materials"
 msgstr "Δημιουργία καταλόγων και εκτυπωτικού υλικού"
 
 #: 
-msgid "Generate financial reports"
-msgstr "Δημιουργία οικονομικών αναφορών"
-
-#: 
 msgid "Generate financial statements and giving reports"
 msgstr "Δημιουργία οικονομικών καταστάσεων και αναφορών προσφορών"
 
@@ -11642,14 +11574,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "Διαχείριση εργαλείων email και ρυθμίσεων SMTP"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "Διαχείριση ονομάτων εκδηλώσεων και κατηγοριών"
-
-#: 
-msgid "Manage event type categories"
-msgstr "Διαχείριση κατηγοριών τύπων εκδηλώσεων"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Διαχείριση οικογενειών, ατόμων και δημογραφικών στοιχείων"
 
@@ -11780,10 +11704,6 @@ msgstr "Δεν υπάρχουν γενέθλια"
 #: 
 msgid "No Check-ins"
 msgstr "Δεν υπάρχουν καταγραφές παρουσίας"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "Δεν υπάρχει παρακολούθηση καταθέσεων"
 
 #: 
 msgid "No Deposits"

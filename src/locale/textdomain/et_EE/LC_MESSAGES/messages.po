@@ -7346,14 +7346,6 @@ msgid "Select Event for Check-In"
 msgstr "Valige sisse kontrolli sündmus"
 
 #: 
-msgid "Select start and end date/time"
-msgstr "Valige algus- ja lõppkuupäev/kellaaeg"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "Valige sündmus oma ostukorvi liikmete sisse kontrollimiseks"
-
-#: 
 msgid "Sermon / Event Text"
 msgstr "Jutlus / sündmuse tekst"
 
@@ -7718,10 +7710,6 @@ msgstr "Kasutage välist tööriista (GPG, 7-Zip) varukoopiaid krüptimiseks enn
 #: 
 msgid "User authentication"
 msgstr "Kasutaja autentimine"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "Kasutajal peavad olema sündmuse õigused lisada"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8244,10 +8232,6 @@ msgid "State (Other)"
 msgstr "Olek (Muu)"
 
 #: 
-msgid "Status:"
-msgstr "Olek:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Lubaduste vs maksete kokkuvõte rahastuse alusel rahanduslikuks aastaks."
 
@@ -8298,10 +8282,6 @@ msgstr "Kogu deposiidid:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Jälgige lubaduste ja maksete edenemist kampaaniate ja rahanduslike aastate eelarvete puhul."
-
-#: 
-msgid "Type:"
-msgstr "Tüüp:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8728,10 +8708,6 @@ msgid "Disable 2FA"
 msgstr "Keela 2FA"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "Ekspordi kõik inimeste andmed ChMeetings'i vormingus väliste süsteemide importimiseks."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "Ekspordi ChMeetings CSV-sse"
 
@@ -8986,10 +8962,6 @@ msgid "Add Your First Property Type"
 msgstr "Lisa Oma Esimene Omaduse Tüüp"
 
 #: 
-msgid "Auto-calculated from counts above"
-msgstr "Automaatselt arvutatud ülaltoodud arvudest"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Selle välja kustutamisega kaotate pöördumatult kõik sellele väljale määratud grupi liikmete andmed!"
 
@@ -9178,10 +9150,6 @@ msgstr "Kiosk Registreerimine Keelatud"
 #: 
 msgid "Kiosk not found"
 msgstr "Kiosk ei leitud"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "Siduge see sündmus rühmaga kiosk sisseregistreerimise funktsionaalsuse jaoks. Rühma liikmed ilmuvad kioskis."
 
 #: 
 msgid "Linked Group"
@@ -10383,10 +10351,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "Nõua kõigilt kasutajatelt kahefaktorilise autentimise kasutusele võtmist"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "Kaart ilmub siia, kui tänavaadress on salvestatud. Koordinaadid tuvastatakse automaatselt — käsitsi sisestamine pole vajalik."
-
-#: 
 msgid "Active Groups"
 msgstr "Aktiivsed rühmad"
 
@@ -10437,10 +10401,6 @@ msgstr "Perel puudub tänavaadress geokodeerimiseks"
 #: 
 msgid "Father"
 msgstr "Isa"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "Geokodeeritud koordinaadid:"
 
 #: 
 msgid "Geocoding failed"
@@ -10521,10 +10481,6 @@ msgstr "Ajavöönd"
 #: 
 msgid "Total Groups"
 msgstr "Rühmi kokku"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "Uuendatakse automaatselt igal salvestamisel."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10707,14 +10663,6 @@ msgstr "Lisage oma esimene omadus"
 #: 
 msgid "Add a Person"
 msgstr "Lisa isik"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Lisa uus annetus lubadus"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "Lisa makse praegusele korjandusele"
 
 #: 
 msgid "Add all cart items to a group"
@@ -10933,10 +10881,6 @@ msgid "Check Out"
 msgstr "Registreeri lahkumine"
 
 #: 
-msgid "Check Out Person"
-msgstr "Registreeri isiku lahkumine"
-
-#: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
 msgstr "Kontrollige värskendusi ja uuendage oma ChurchCRM installi"
 
@@ -11061,10 +11005,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "Looge käsitsi varukoopia vähemalt kord nädalas või lubage väline varundusplugin automaatsete WebDAV varunduste jaoks ajakava alusel."
 
 #: 
-msgid "Create a new deposit"
-msgstr "Loo uus korjandus"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "Looge ja muutke perekonna teavet ja suhteid"
 
@@ -11119,10 +11059,6 @@ msgstr "Määratlege grupispetsiifilised omadused liikmete jaoks"
 #: 
 msgid "Delete All"
 msgstr "Kustuta kõik"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "Kustuta registreerimiskirje"
 
 #: 
 msgid "Delete Family"
@@ -11405,10 +11341,6 @@ msgid "Generate directory listings and printed materials"
 msgstr "Looge kataloogi nimekirjad ja trükitud materjalid"
 
 #: 
-msgid "Generate financial reports"
-msgstr "Looge finantsaruandeid"
-
-#: 
 msgid "Generate financial statements and giving reports"
 msgstr "Looge finantsaruandeid ja annetuste aruandeid"
 
@@ -11641,14 +11573,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "Hallake e-posti tööriistu ja SMTP seadistust"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "Hallake sündmuste nimesid ja kategooriaid"
-
-#: 
-msgid "Manage event type categories"
-msgstr "Hallake sündmuse tüüpide kategooriaid"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Hallake perekondi, isikuid ja demograafilist teavet"
 
@@ -11779,10 +11703,6 @@ msgstr "Sünnipäevi ei ole"
 #: 
 msgid "No Check-ins"
 msgstr "Registreerimisi ei ole"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "Korjanduste jälgimine puudub"
 
 #: 
 msgid "No Deposits"
