@@ -147,7 +147,7 @@ describe("Mobile UX — Authenticated Pages", () => {
         // This test asserts the policy invariants (table is rendered, the
         // wrapper is NOT .table-responsive, dropdowns are reachable in the
         // DOM) instead of asserting no horizontal overflow.
-        cy.visit("/v2/groups");
+        cy.visit("/groups/dashboard");
         cy.get("#groupsTable_wrapper", { timeout: 15000 }).should("be.visible");
 
         // Policy invariant 1: table is NOT wrapped in .table-responsive
