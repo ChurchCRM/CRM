@@ -1,8 +1,8 @@
 {
   "%d result for \"%s\"": {
-    "other": ""
+    "other": "%d個\"%s\"的結果"
   },
   "%d repeat event created successfully.": {
-    "other": ""
+    "other": "%d個重複事件成功創建。"
   }
 }
