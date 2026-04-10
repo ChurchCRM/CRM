@@ -14,7 +14,8 @@ describe("csv export", () => {
                 form: true,
                 body: {
                     output: "csv",
-                    format: "0",
+                    Format: "Default",
+                    Source: "person",
                     familyonly: "false"
                 }
             }).then((response) => {
@@ -34,7 +35,8 @@ describe("csv export", () => {
                 form: true,
                 body: {
                     output: "csv",
-                    format: "1",
+                    Format: "Rollup",
+                    Source: "family",
                     familyonly: "true"
                 }
             }).then((response) => {
