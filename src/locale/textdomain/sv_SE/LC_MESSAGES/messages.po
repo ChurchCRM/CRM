@@ -7458,14 +7458,6 @@ msgid "Select Event for Check-In"
 msgstr "Välj händelse för incheckning"
 
 #: 
-msgid "Select start and end date/time"
-msgstr "Välj start- och slutdatum/tid"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "Välj händelsen för att checka in medlemmarna i din kundvagn"
-
-#: 
 msgid "Sermon / Event Text"
 msgstr "Prediko- / händelsetext"
 
@@ -7830,10 +7822,6 @@ msgstr "Använd externa verktyg (GPG, 7-Zip) för att kryptera säkerhetskopior 
 #: 
 msgid "User authentication"
 msgstr "Användarautentisering"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "Användaren måste ha behörighet att lägga till händelser"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8356,10 +8344,6 @@ msgid "State (Other)"
 msgstr "Region (Annat)"
 
 #: 
-msgid "Status:"
-msgstr "Status:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Sammanfattning av löften kontra betalningar per fond för räkenskapsåret."
 
@@ -8410,10 +8394,6 @@ msgstr "Totala insättningar:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Följ löften och betalningsframsteg för kampanjer och budgetering för räkenskapsår."
-
-#: 
-msgid "Type:"
-msgstr "Typ:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8840,10 +8820,6 @@ msgid "Disable 2FA"
 msgstr "Inaktivera 2FA"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "Exportera all persondata i ChMeetings-format för import till externa system."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "Exportera till ChMeetings CSV"
 
@@ -9098,10 +9074,6 @@ msgid "Add Your First Property Type"
 msgstr "Lägg till Din Första Egenskapstyp"
 
 #: 
-msgid "Auto-calculated from counts above"
-msgstr "Automatiskt beräknat från räkningarna ovan"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Genom att ta bort detta fält kommer du oåterkalleligt att förlora all gruppmedlemsdata som tilldelats detta fält!"
 
@@ -9290,10 +9262,6 @@ msgstr "Kioskregistrering inaktiverad"
 #: 
 msgid "Kiosk not found"
 msgstr "Kiosken hittades inte"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "Länka detta evenemang till en grupp för kioskens incheckningsfunktion. Gruppmedlemmarna visas på kiosken."
 
 #: 
 msgid "Linked Group"
@@ -10495,10 +10463,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "Kräv att alla användare registrerar sig för tvåfaktorsautentisering"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "En karta visas här när en gatuadress sparas. Koordinater detekteras automatiskt — ingen manuell inmatning krävs."
-
-#: 
 msgid "Active Groups"
 msgstr "Aktiva grupper"
 
@@ -10549,10 +10513,6 @@ msgstr "Familjen saknar gatuadress för geokodning"
 #: 
 msgid "Father"
 msgstr "Far"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "Geokodade koordinater:"
 
 #: 
 msgid "Geocoding failed"
@@ -10633,10 +10593,6 @@ msgstr "Tidszon"
 #: 
 msgid "Total Groups"
 msgstr "Totalt grupper"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "Uppdateras automatiskt vid varje sparning."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10819,14 +10775,6 @@ msgstr "Lägg till din första egenskap"
 #: 
 msgid "Add a Person"
 msgstr "Lägg till en person"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Lägg till ett nytt givarlöfte"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "Lägg till en betalning till aktuell kollektinsamling"
 
 #: 
 msgid "Add all cart items to a group"
@@ -11045,10 +10993,6 @@ msgid "Check Out"
 msgstr "Checka ut"
 
 #: 
-msgid "Check Out Person"
-msgstr "Checka ut person"
-
-#: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
 msgstr "Sök efter uppdateringar och uppgradera din ChurchCRM-installation"
 
@@ -11173,10 +11117,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "Skapa en manuell säkerhetskopia minst en gång i veckan, eller aktivera tillägget för extern säkerhetskopiering för automatiska WebDAV-säkerhetskopior enligt schema."
 
 #: 
-msgid "Create a new deposit"
-msgstr "Skapa en ny kollektinsamling"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "Skapa och redigera familjeinformation och relationer"
 
@@ -11231,10 +11171,6 @@ msgstr "Definiera gruppspecifika egenskaper för medlemmar"
 #: 
 msgid "Delete All"
 msgstr "Ta bort allt"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "Ta bort registreringspost"
 
 #: 
 msgid "Delete Family"
@@ -11513,10 +11449,6 @@ msgid "Generate directory listings and printed materials"
 msgstr "Generera kataloglistor och tryckt material"
 
 #: 
-msgid "Generate financial reports"
-msgstr "Generera ekonomiska rapporter"
-
-#: 
 msgid "Generate financial statements and giving reports"
 msgstr "Generera ekonomiska rapporter och gåvorapporter"
 
@@ -11749,14 +11681,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "Hantera e-postverktyg och SMTP-konfiguration"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "Hantera evenemangsnamn och kategorier"
-
-#: 
-msgid "Manage event type categories"
-msgstr "Hantera kategorier för evenemangstyper"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Hantera familjer, personer och demografisk information"
 
@@ -11883,10 +11807,6 @@ msgstr "Inga födelsedagar"
 #: 
 msgid "No Check-ins"
 msgstr "Inga registreringar"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "Ingen kollektspårning"
 
 #: 
 msgid "No Deposits"

@@ -7276,14 +7276,6 @@ msgid "Select Event for Check-In"
 msgstr "Pumili ng Kaganapan para sa Check-In"
 
 #: 
-msgid "Select start and end date/time"
-msgstr "Pumili ng petsa/oras ng simula at pagtatapos"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "Piliin ang kaganapan para mag-check in ng mga miyembro ng iyong cart"
-
-#: 
 msgid "Sermon / Event Text"
 msgstr "Teksto ng Sermon / Kaganapan"
 
@@ -7648,10 +7640,6 @@ msgstr "Gumamit ng mga external na kagamitan (GPG, 7-Zip) para i-encrypt ang mga
 #: 
 msgid "User authentication"
 msgstr "Authentication ng user"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "Ang user ay dapat may pahintulot sa Pagdaragdag ng Kaganapan"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8174,10 +8162,6 @@ msgid "State (Other)"
 msgstr "Estado (Iba pa)"
 
 #: 
-msgid "Status:"
-msgstr "Katayuan:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Buod ng mga pangako kumpara sa mga pagbabayad ayon sa pondo para sa taong piskal."
 
@@ -8228,10 +8212,6 @@ msgstr "Kabuuang Deposito:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Subaybayan ang mga pangako at pag-unlad ng pagbabayad para sa mga kampanya at pagba-budget ng taong piskal."
-
-#: 
-msgid "Type:"
-msgstr "Uri:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8658,10 +8638,6 @@ msgid "Disable 2FA"
 msgstr "I-disable ang 2FA"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "I-export ang lahat ng datos ng mga tao sa format ng ChMeetings para sa pag-import sa mga external na sistema."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "I-export sa ChMeetings CSV"
 
@@ -8916,10 +8892,6 @@ msgid "Add Your First Property Type"
 msgstr "Magdagdag ng Iyong Unang Uri ng Katangian"
 
 #: 
-msgid "Auto-calculated from counts above"
-msgstr "Awtomatikong kinakalkula mula sa mga bilang sa itaas"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Sa pagbubura ng larangang ito, mawawala ang lahat ng datos ng miyembro ng grupo na itinalaga para sa larangang ito nang hindi na mababawi!"
 
@@ -9108,10 +9080,6 @@ msgstr "Hindi Pinagana ang Pagpaparehistro ng Kiosk"
 #: 
 msgid "Kiosk not found"
 msgstr "Hindi nahanap ang kiosk"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "I-link ang kaganapang ito sa isang grupo para sa functionality ng Kiosk check-in. Ang mga miyembro ng grupo ay lilitaw sa kiosk."
 
 #: 
 msgid "Linked Group"
@@ -10313,10 +10281,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "Hilingin sa lahat ng user na mag-enroll sa two-factor authentication"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "Isang mapa ay lilitaw dito kapag na-save ang isang address sa kalye. Ang mga coordinate ay awtomatikong natuklasan — walang kinakailangang manual na pagpasok."
-
-#: 
 msgid "Active Groups"
 msgstr "Mga Aktibong Grupo"
 
@@ -10367,10 +10331,6 @@ msgstr "Ang pamilya ay walang address sa kalye na i-geocode"
 #: 
 msgid "Father"
 msgstr "Ama"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "Mga geocoded na coordinate:"
 
 #: 
 msgid "Geocoding failed"
@@ -10451,10 +10411,6 @@ msgstr "Time Zone"
 #: 
 msgid "Total Groups"
 msgstr "Kabuuang mga Grupo"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "Awtomatikong ina-update sa bawat pag-save."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10637,14 +10593,6 @@ msgstr "Idagdag ang Iyong Unang Katangian"
 #: 
 msgid "Add a Person"
 msgstr "Magdagdag ng Tao"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Magdagdag ng bagong pangako"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "Magdagdag ng pagbabayad sa kasalukuyang deposito"
 
 #: 
 msgid "Add all cart items to a group"
@@ -10863,10 +10811,6 @@ msgid "Check Out"
 msgstr "Mag-check Out"
 
 #: 
-msgid "Check Out Person"
-msgstr "Mag-check Out ng Tao"
-
-#: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
 msgstr "Suriin ang mga update at i-upgrade ang iyong ChurchCRM installation"
 
@@ -10991,10 +10935,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "Lumikha ng manual na backup kahit isang beses sa isang linggo, o paganahin ang External Backup plugin para sa mga awtomatikong WebDAV backup sa isang iskedyul."
 
 #: 
-msgid "Create a new deposit"
-msgstr "Lumikha ng bagong deposito"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "Lumikha at mag-edit ng impormasyon at relasyon ng pamilya"
 
@@ -11049,10 +10989,6 @@ msgstr "Tukuyin ang mga katangiang tukoy sa grupo para sa mga miyembro"
 #: 
 msgid "Delete All"
 msgstr "Burahin Lahat"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "Burahin ang Entry ng Check-in"
 
 #: 
 msgid "Delete Family"
@@ -11335,10 +11271,6 @@ msgid "Generate directory listings and printed materials"
 msgstr "Gumawa ng mga listahan ng direktoryo at mga naka-print na materyales"
 
 #: 
-msgid "Generate financial reports"
-msgstr "Gumawa ng mga ulat sa pananalapi"
-
-#: 
 msgid "Generate financial statements and giving reports"
 msgstr "Gumawa ng mga pahayag ng pananalapi at mga ulat ng pagbibigay"
 
@@ -11571,14 +11503,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "Pamahalaan ang mga kagamitan sa email at konfigurasyong SMTP"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "Pamahalaan ang mga pangalan at kategorya ng kaganapan"
-
-#: 
-msgid "Manage event type categories"
-msgstr "Pamahalaan ang mga kategorya ng uri ng kaganapan"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Pamahalaan ang mga pamilya, tao, at impormasyon ng demograpiya"
 
@@ -11709,10 +11633,6 @@ msgstr "Walang mga Kaarawan"
 #: 
 msgid "No Check-ins"
 msgstr "Walang mga Check-in"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "Walang Pagsubaybay ng Deposito"
 
 #: 
 msgid "No Deposits"

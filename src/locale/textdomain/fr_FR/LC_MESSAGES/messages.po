@@ -7344,14 +7344,6 @@ msgid "Select Event for Check-In"
 msgstr "Sélectionner un événement pour enregistrer la présence"
 
 #: 
-msgid "Select start and end date/time"
-msgstr "Sélectionner la date/heure de début et de fin"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "Sélectionnez l'événement pour enregistrer la présence de vos personnes du panier"
-
-#: 
 msgid "Sermon / Event Text"
 msgstr "Sermon / texte de l'événement"
 
@@ -7716,10 +7708,6 @@ msgstr "Utilisez des outils externes (GPG, 7-Zip) pour chiffrer les sauvegardes 
 #: 
 msgid "User authentication"
 msgstr "Authentification de l'utilisateur"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "L'utilisateur doit avoir la permission Ajouter un événement"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8242,10 +8230,6 @@ msgid "State (Other)"
 msgstr "État (Autre)"
 
 #: 
-msgid "Status:"
-msgstr "État:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Résumé des promesses par rapport aux paiements par fonds pour l'année fiscale."
 
@@ -8296,10 +8280,6 @@ msgstr "Versements totaux:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Suivez la progression des promesses et des paiements pour les campagnes et la budgétisation de l'année fiscale."
-
-#: 
-msgid "Type:"
-msgstr "Type:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8726,10 +8706,6 @@ msgid "Disable 2FA"
 msgstr "Désactiver 2FA"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "Exporter toutes les données de personnes au format ChMeetings pour l'importation dans des systèmes externes."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "Exporter vers CSV ChMeetings"
 
@@ -8984,10 +8960,6 @@ msgid "Add Your First Property Type"
 msgstr "Ajoutez Votre Premier Type de Propriété"
 
 #: 
-msgid "Auto-calculated from counts above"
-msgstr "Calculé automatiquement à partir des comptages ci-dessus"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "En supprimant ce champ, vous perdrez irrévocablement toutes les données des membres du groupe assignées à ce champ !"
 
@@ -9176,10 +9148,6 @@ msgstr "Enregistrement du kiosque désactivé"
 #: 
 msgid "Kiosk not found"
 msgstr "Kiosque non trouvé"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "Liez cet événement à un groupe pour la fonctionnalité d'enregistrement au kiosque. Les membres du groupe apparaîtront sur le kiosque."
 
 #: 
 msgid "Linked Group"
@@ -10381,10 +10349,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "Exiger que tous les utilisateurs s'inscrivent à l'authentification à deux facteurs"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "Une carte apparaîtra ici une fois qu'une adresse postale sera enregistrée. Les coordonnées sont détectées automatiquement — aucune saisie manuelle requise."
-
-#: 
 msgid "Active Groups"
 msgstr "Groupes actifs"
 
@@ -10435,10 +10399,6 @@ msgstr "La famille n'a pas d'adresse postale à géocoder"
 #: 
 msgid "Father"
 msgstr "Père"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "Coordonnées géocodées :"
 
 #: 
 msgid "Geocoding failed"
@@ -10519,10 +10479,6 @@ msgstr "Fuseau horaire"
 #: 
 msgid "Total Groups"
 msgstr "Total des groupes"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "Mis à jour automatiquement à chaque enregistrement."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10705,14 +10661,6 @@ msgstr "Ajouter votre première propriété"
 #: 
 msgid "Add a Person"
 msgstr "Ajouter une personne"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Ajouter un nouvel engagement financier"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "Ajouter un paiement au dépôt en cours"
 
 #: 
 msgid "Add all cart items to a group"
@@ -10931,10 +10879,6 @@ msgid "Check Out"
 msgstr "Extraire"
 
 #: 
-msgid "Check Out Person"
-msgstr "Extraire une personne"
-
-#: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
 msgstr "Vérifier les mises à jour et mettre à niveau votre installation ChurchCRM"
 
@@ -11003,6 +10947,10 @@ msgid "Complete these in any order to get ChurchCRM ready for your congregation.
 msgstr "Complétez ces étapes dans n'importe quel ordre pour préparer ChurchCRM pour votre assemblée."
 
 #: 
+msgid "Confession"
+msgstr "Confession"
+
+#: 
 msgid "Configure global system settings and preferences"
 msgstr "Configurer les paramètres et préférences globaux du système"
 
@@ -11053,10 +11001,6 @@ msgstr "Créer une sauvegarde de la base de données de votre paroisse"
 #: 
 msgid "Create a manual backup at least once a week, or enable the External Backup plugin for automatic WebDAV backups on a schedule."
 msgstr "Créez une sauvegarde manuelle au moins une fois par semaine, ou activez le plugin de sauvegarde externe pour des sauvegardes WebDAV automatiques selon un calendrier."
-
-#: 
-msgid "Create a new deposit"
-msgstr "Créer un nouveau dépôt"
 
 #: 
 msgid "Create and edit family information and relationships"
@@ -11113,10 +11057,6 @@ msgstr "Définir des propriétés spécifiques au groupe pour les fidèles"
 #: 
 msgid "Delete All"
 msgstr "Tout supprimer"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "Supprimer l'entrée d'enregistrement de présence"
 
 #: 
 msgid "Delete Family"
@@ -11379,6 +11319,10 @@ msgid "Forgot password?"
 msgstr "Mot de passe oublié ?"
 
 #: 
+msgid "Format"
+msgstr "Format"
+
+#: 
 msgid "Full Group View"
 msgstr "Vue complète du groupe"
 
@@ -11393,10 +11337,6 @@ msgstr "Générer des relevés annuels d'offrandes à des fins fiscales"
 #: 
 msgid "Generate directory listings and printed materials"
 msgstr "Générer des annuaires et des documents imprimés"
-
-#: 
-msgid "Generate financial reports"
-msgstr "Générer des rapports financiers"
 
 #: 
 msgid "Generate financial statements and giving reports"
@@ -11631,14 +11571,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "Gérer les outils e-mail et la configuration SMTP"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "Gérer les noms et catégories d'événements"
-
-#: 
-msgid "Manage event type categories"
-msgstr "Gérer les catégories de types d'événements"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Gérer les familles, les personnes et les informations démographiques"
 
@@ -11703,6 +11635,10 @@ msgid "Memberships"
 msgstr "Adhésions"
 
 #: 
+msgid "Minimum"
+msgstr "Minimum"
+
+#: 
 msgid "Modify family roles for group members"
 msgstr "Modifier les rôles familiaux pour les membres du groupe"
 
@@ -11765,10 +11701,6 @@ msgstr "Aucun anniversaire"
 #: 
 msgid "No Check-ins"
 msgstr "Aucun enregistrement de présence"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "Aucun suivi de dépôt"
 
 #: 
 msgid "No Deposits"
@@ -11879,6 +11811,10 @@ msgid "Open user menu"
 msgstr "Ouvrir le menu utilisateur"
 
 #: 
+msgid "Options"
+msgstr "Options"
+
+#: 
 msgid "Other Members"
 msgstr "Autres fidèles"
 
@@ -11907,6 +11843,10 @@ msgstr "Personnes par classification"
 #: 
 msgid "Person removed from class."
 msgstr "Personne retirée de la classe."
+
+#: 
+msgid "Photo"
+msgstr "Photo"
 
 #: 
 msgid "Photos only"
@@ -12521,12 +12461,20 @@ msgid "opportunities"
 msgstr "opportunités"
 
 #: 
+msgid "options"
+msgstr "options"
+
+#: 
 msgid "or connect an external service"
 msgstr "ou connecter un service externe"
 
 #: 
 msgid "our church"
 msgstr "notre paroisse"
+
+#: 
+msgid "page"
+msgstr "page"
 
 #: 
 msgid "properties"
@@ -12892,6 +12840,10 @@ msgstr "ChurchCRM peut envoyer des emails directement."
 msgid "Clipboard API not available. Please copy the URL manually."
 msgstr "L'API du presse-papiers n'est pas disponible. Veuillez copier l'URL manuellement."
 
+#: 
+msgid "Communication"
+msgstr "Communication"
+
 #. Context: query_qry
 #: 
 msgid "Compare pledges between two fiscal years"
@@ -13171,6 +13123,10 @@ msgstr "Non classé"
 #: 
 msgid "Number of months since becoming a friend"
 msgstr "Nombre de mois depuis qu'il est devenu ami"
+
+#: 
+msgid "Parents"
+msgstr "Parents"
 
 #: 
 msgid "Password reset emails — users cannot recover their accounts"
@@ -13677,6 +13633,15 @@ msgstr "Utilisations courantes des liens personnalisés :\n"
 "- Sites des organisations partenaires\n"
 "- Dossiers de stockage en nuage\n"
 "- Pages d'inscription aux événements"
+
+#. plugin:external-backup:section:1:title
+#: 
+msgid "Configuration"
+msgstr "Configuration"
+
+#: 
+msgid "Continent"
+msgstr "Continent"
 
 #. plugin:vonage:section:6:title
 #: 
@@ -14298,6 +14263,10 @@ msgstr "La taille du fichier dépasse la limite du serveur de %s"
 msgid "Missing image data in request"
 msgstr "Données d'image manquantes dans la requête"
 
+#: 
+msgid "BCC"
+msgstr "CCI"
+
 #. Context: query_qry
 #: 
 msgid "Find people who didn't attend an event"
@@ -14308,10 +14277,18 @@ msgstr "Trouver les personnes n'ayant pas participé à un événement"
 msgid "Missing people"
 msgstr "Personnes manquantes"
 
+#: 
+msgid "N/A"
+msgstr "S/O"
+
 #. Context: queryparameters_qrp
 #: 
 msgid "Select the desired event"
 msgstr "Sélectionner l'événement souhaité"
+
+#: 
+msgid "name@example.com"
+msgstr "nom@exemple.com"
 
 #: 
 msgid "Advanced filtering by group, classification, and role"
@@ -14418,6 +14395,10 @@ msgid "Appearance"
 msgstr "Apparence"
 
 #: 
+msgid "Azure"
+msgstr "Azure"
+
+#: 
 msgid "Back to Finance Dashboard"
 msgstr "Retour au tableau de bord des offrandes"
 
@@ -14452,6 +14433,10 @@ msgstr "Les traductions de ChurchCRM sont gérées par la communauté sur POEdit
 #: 
 msgid "Customize the look and feel of the application"
 msgstr "Personnaliser l'apparence de l'application"
+
+#: 
+msgid "Cyan"
+msgstr "Cyan"
 
 #: 
 msgid "Dark"
@@ -14509,6 +14494,11 @@ msgstr "Échec de l'enregistrement de l'événement. Veuillez réessayer."
 msgid "Failed to save setting"
 msgstr "Échec de l'enregistrement du paramètre"
 
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Filipino - Philippines"
+
 #: 
 msgid "Fixing incorrect or awkward translations in your language"
 msgstr "Corriger les traductions incorrectes ou maladroites dans votre langue"
@@ -14536,6 +14526,10 @@ msgstr "Si vous remarquez des caractères illisibles, des entités HTML affiché
 #: 
 msgid "Include your API key in requests using the x-api-key header:"
 msgstr "Incluez votre clé API dans les requêtes en utilisant l'en-tête x-api-key :"
+
+#: 
+msgid "Indigo"
+msgstr "Indigo"
 
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
@@ -14585,6 +14579,10 @@ msgstr "Des traductions manquantes ou incorrectes ?"
 #: 
 msgid "My Account"
 msgstr "Mon compte"
+
+#: 
+msgid "Orange"
+msgstr "Orange"
 
 #: 
 msgid "Override the system default locale"
@@ -14787,6 +14785,10 @@ msgstr "Un Type d'événement est un modèle — nom, heure de début par défau
 #: 
 msgid "Attendance record deleted."
 msgstr "Registre de présence supprimé."
+
+#: 
+msgid "Audit"
+msgstr "Audit"
 
 #: 
 msgid "Audit Events"

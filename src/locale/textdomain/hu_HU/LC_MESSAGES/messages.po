@@ -7403,14 +7403,6 @@ msgid "Select Event for Check-In"
 msgstr "Válasszon Eseményt az Érkezési Nyilvántartáshoz"
 
 #: 
-msgid "Select start and end date/time"
-msgstr "Válassza ki a kezdési és befejezési dátumot/időpontot"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "Válassza ki az eseményt a kocsiba helyezett tagok érkezési nyilvántartásához"
-
-#: 
 msgid "Sermon / Event Text"
 msgstr "Prédikáció / Eseményszöveg"
 
@@ -7775,10 +7767,6 @@ msgstr "Külső eszközök (GPG, 7-Zip) segítségével titkosítsa a biztonság
 #: 
 msgid "User authentication"
 msgstr "Felhasználói Hitelesítés"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "A felhasználónak AddEvent engedéllyel kell rendelkeznie"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8301,10 +8289,6 @@ msgid "State (Other)"
 msgstr "Állam/Megye (Egyéb)"
 
 #: 
-msgid "Status:"
-msgstr "Állapot:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "A vállalások és befizetések összefoglalója alaponként a pénzügyi évre vonatkozóan."
 
@@ -8355,10 +8339,6 @@ msgstr "Összes befizetés:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Vállalások és fizetési folyamatok követése kampányokhoz és a pénzügyi év költségvetéséhez."
-
-#: 
-msgid "Type:"
-msgstr "Típus:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8785,10 +8765,6 @@ msgid "Disable 2FA"
 msgstr "2FA letiltása"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "Minden személyi adat exportálása ChMeetings formátumba külső rendszerekbe történő importáláshoz."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "Exportálás ChMeetings CSV-be"
 
@@ -9043,10 +9019,6 @@ msgid "Add Your First Property Type"
 msgstr "Adja Hozzá az Első Tulajdonságtípusát"
 
 #: 
-msgid "Auto-calculated from counts above"
-msgstr "Automatikusan számítva a fenti számokból"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "A mező törlésével visszavonhatatlanul elveszíti az ehhez a mezőhöz rendelt összes csoporttag adatot!"
 
@@ -9235,10 +9207,6 @@ msgstr "Kiosk regisztráció letiltva"
 #: 
 msgid "Kiosk not found"
 msgstr "A kiosk nem található"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "Csatolja ezt az eseményt egy csoporthoz a kiosk bejelentkezési funkcióhoz. A csoport tagjai megjelennek a kioskon."
 
 #: 
 msgid "Linked Group"
@@ -10440,10 +10408,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "Kötelezze az összes felhasználót a kétfaktoros hitelesítés aktiválására"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "A térkép megjelenik, amint mentésre kerül egy cím. A koordináták automatikusan felismerésre kerülnek — nincs szükség kézi bevitelre."
-
-#: 
 msgid "Active Groups"
 msgstr "Aktív csoportok"
 
@@ -10494,10 +10458,6 @@ msgstr "A családnak nincs utcacíme a geokódoláshoz"
 #: 
 msgid "Father"
 msgstr "Apa"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "Geokódolt koordináták:"
 
 #: 
 msgid "Geocoding failed"
@@ -10578,10 +10538,6 @@ msgstr "Időzóna"
 #: 
 msgid "Total Groups"
 msgstr "Összes csoport"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "Minden mentéskor automatikusan frissül."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10764,14 +10720,6 @@ msgstr "Első tulajdonság hozzáadása"
 #: 
 msgid "Add a Person"
 msgstr "Személy hozzáadása"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Új felajánlás hozzáadása"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "Befizetés hozzáadása az aktuális letéthez"
 
 #: 
 msgid "Add all cart items to a group"
@@ -10990,10 +10938,6 @@ msgid "Check Out"
 msgstr "Kijelentkeztetés"
 
 #: 
-msgid "Check Out Person"
-msgstr "Személy kijelentkeztetése"
-
-#: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
 msgstr "Frissítések keresése és a ChurchCRM telepítés frissítése"
 
@@ -11118,10 +11062,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "Készítsen kézi biztonsági mentést legalább hetente egyszer, vagy engedélyezze a Külső biztonsági mentés bővítményt az automatikus WebDAV mentésekhez ütemezetten."
 
 #: 
-msgid "Create a new deposit"
-msgstr "Új letét létrehozása"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "Családi adatok és kapcsolatok létrehozása és szerkesztése"
 
@@ -11176,10 +11116,6 @@ msgstr "Csoportspecifikus tulajdonságok meghatározása tagok számára"
 #: 
 msgid "Delete All"
 msgstr "Összes törlése"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "Bejelentkezési bejegyzés törlése"
 
 #: 
 msgid "Delete Family"
@@ -11462,10 +11398,6 @@ msgid "Generate directory listings and printed materials"
 msgstr "Címtárlisták és nyomtatott anyagok készítése"
 
 #: 
-msgid "Generate financial reports"
-msgstr "Pénzügyi jelentések készítése"
-
-#: 
 msgid "Generate financial statements and giving reports"
 msgstr "Pénzügyi kimutatások és adománykimutatások készítése"
 
@@ -11698,14 +11630,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "E-mail eszközök és SMTP konfiguráció kezelése"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "Eseménynevek és kategóriák kezelése"
-
-#: 
-msgid "Manage event type categories"
-msgstr "Eseménytípus-kategóriák kezelése"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Családok, személyek és demográfiai adatok kezelése"
 
@@ -11836,10 +11760,6 @@ msgstr "Nincsenek születésnapok"
 #: 
 msgid "No Check-ins"
 msgstr "Nincsenek bejelentkezések"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "Nincs letétkövetés"
 
 #: 
 msgid "No Deposits"

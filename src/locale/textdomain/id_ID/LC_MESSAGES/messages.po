@@ -7338,14 +7338,6 @@ msgid "Select Event for Check-In"
 msgstr "Pilih Kegiatan untuk Presensi"
 
 #: 
-msgid "Select start and end date/time"
-msgstr "Pilih tanggal/waktu mulai dan selesai"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "Pilih kegiatan untuk mencatat kehadiran anggota keranjang"
-
-#: 
 msgid "Sermon / Event Text"
 msgstr "Teks Khotbah / Kegiatan"
 
@@ -7709,10 +7701,6 @@ msgstr "Gunakan alat eksternal untuk mengenkripsi cadangan sebelum disimpan di l
 #: 
 msgid "User authentication"
 msgstr "Autentikasi pengguna"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "Pengguna harus memiliki izin Tambah Kegiatan"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8235,10 +8223,6 @@ msgid "State (Other)"
 msgstr "Provinsi (Lainnya)"
 
 #: 
-msgid "Status:"
-msgstr "Status:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Ringkasan janji iman vs pembayaran per dana untuk tahun fiskal."
 
@@ -8289,10 +8273,6 @@ msgstr "Total Setoran:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Pantau progres janji iman dan pembayaran untuk kampanye atau anggaran."
-
-#: 
-msgid "Type:"
-msgstr "Tipe:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8719,10 +8699,6 @@ msgid "Disable 2FA"
 msgstr "Nonaktifkan 2FA"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "Ekspor semua data jemaat ke format ChMeetings."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "Ekspor ke CSV ChMeetings"
 
@@ -8974,10 +8950,6 @@ msgid "Add Your First Property Type"
 msgstr "Tambahkan Jenis Properti Pertama Anda"
 
 #: 
-msgid "Auto-calculated from counts above"
-msgstr "Dihitung otomatis dari hitungan di atas"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Dengan menghapus bidang ini, Anda akan kehilangan semua data anggota grup yang ditetapkan untuk bidang ini secara permanen!"
 
@@ -9165,10 +9137,6 @@ msgstr "Pendaftaran Kiosk Dinonaktifkan"
 #: 
 msgid "Kiosk not found"
 msgstr "Kiosk tidak ditemukan"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "Hubungkan acara ini ke grup untuk fungsi check-in Kiosk. Anggota grup akan tampil di kiosk."
 
 #: 
 msgid "Linked Group"
@@ -10369,10 +10337,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "Haruskan semua pengguna mendaftar di autentikasi dua faktor"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "Peta akan muncul di sini setelah alamat tersimpan. Koordinat terdeteksi secara otomatis — tidak diperlukan input manual."
-
-#: 
 msgid "Active Groups"
 msgstr "Kelompok Aktif"
 
@@ -10423,10 +10387,6 @@ msgstr "Keluarga tidak memiliki alamat untuk dikodekan secara geografis"
 #: 
 msgid "Father"
 msgstr "Ayah"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "Koordinat tergeokode:"
 
 #: 
 msgid "Geocoding failed"
@@ -10507,10 +10467,6 @@ msgstr "Zona Waktu"
 #: 
 msgid "Total Groups"
 msgstr "Total Kelompok"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "Diperbarui otomatis setiap kali disimpan."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10689,14 +10645,6 @@ msgid "Add a Person"
 msgstr "Tambah Orang"
 
 #: 
-msgid "Add a new pledge"
-msgstr "Tambah janji persembahan baru"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "Tambah pembayaran ke setoran saat ini"
-
-#: 
 msgid "Add all cart items to a group"
 msgstr "Tambah semua item daftar ke grup"
 
@@ -10739,6 +10687,10 @@ msgstr "Tambah staf dan sukarelawan"
 #: 
 msgid "Add staff or volunteers as system users"
 msgstr "Tambah staf atau sukarelawan sebagai pengguna sistem"
+
+#: 
+msgid "Administrator"
+msgstr "Administrator"
 
 #: 
 msgid "Age Distribution"
@@ -10909,10 +10861,6 @@ msgid "Check Out"
 msgstr "Checkout"
 
 #: 
-msgid "Check Out Person"
-msgstr "Check Out Orang"
-
-#: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
 msgstr "Periksa pembaruan dan tingkatkan instalasi ChurchCRM Anda"
 
@@ -11037,10 +10985,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "Buat cadangan manual setidaknya seminggu sekali, atau aktifkan plugin Cadangan Eksternal untuk cadangan WebDAV otomatis sesuai jadwal."
 
 #: 
-msgid "Create a new deposit"
-msgstr "Buat setoran baru"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "Buat dan edit informasi keluarga dan hubungan"
 
@@ -11095,10 +11039,6 @@ msgstr "Tentukan properti khusus grup untuk anggota"
 #: 
 msgid "Delete All"
 msgstr "Hapus Semua"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "Hapus Entri Check-in"
 
 #: 
 msgid "Delete Family"
@@ -11199,6 +11139,10 @@ msgstr "Edit Properti"
 #: 
 msgid "Edit custom properties for a group member"
 msgstr "Edit properti kustom untuk anggota grup"
+
+#: 
+msgid "Email BCC"
+msgstr "Email BCC"
 
 #: 
 msgid "Email Families"
@@ -11357,6 +11301,10 @@ msgid "Forgot password?"
 msgstr "Lupa kata sandi?"
 
 #: 
+msgid "Format"
+msgstr "Format"
+
+#: 
 msgid "Full Group View"
 msgstr "Tampilan Grup Lengkap"
 
@@ -11371,10 +11319,6 @@ msgstr "Buat laporan persembahan tahunan untuk keperluan pajak"
 #: 
 msgid "Generate directory listings and printed materials"
 msgstr "Buat daftar direktori dan materi cetak"
-
-#: 
-msgid "Generate financial reports"
-msgstr "Buat laporan keuangan"
 
 #: 
 msgid "Generate financial statements and giving reports"
@@ -11609,14 +11553,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "Kelola alat email dan konfigurasi SMTP"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "Kelola nama acara dan kategori"
-
-#: 
-msgid "Manage event type categories"
-msgstr "Kelola kategori tipe acara"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Kelola keluarga, orang, dan informasi demografi"
 
@@ -11649,6 +11585,10 @@ msgid "Manage your personal preferences and account settings"
 msgstr "Kelola preferensi pribadi dan pengaturan akun Anda"
 
 #: 
+msgid "Manual"
+msgstr "Manual"
+
+#: 
 msgid "Map cart items"
 msgstr "Petakan item daftar"
 
@@ -11675,6 +11615,10 @@ msgstr "Anggota ditambahkan ke daftar."
 #: 
 msgid "Memberships"
 msgstr "Keanggotaan"
+
+#: 
+msgid "Minimum"
+msgstr "Minimum"
 
 #: 
 msgid "Modify family roles for group members"
@@ -11739,10 +11683,6 @@ msgstr "Tidak Ada Ulang Tahun"
 #: 
 msgid "No Check-ins"
 msgstr "Tidak Ada Check-in"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "Tidak Ada Pelacakan Setoran"
 
 #: 
 msgid "No Deposits"
@@ -14425,6 +14365,10 @@ msgid "Appearance"
 msgstr "Tampilan"
 
 #: 
+msgid "Azure"
+msgstr "Azure"
+
+#: 
 msgid "Back to Finance Dashboard"
 msgstr "Kembali ke Dasbor Keuangan"
 
@@ -14577,6 +14521,11 @@ msgstr "Terang"
 msgid "Lime"
 msgstr "Hijau Muda"
 
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "Malayalam - India"
+
 #: 
 msgid "Manage 2FA"
 msgstr "Kelola 2FA"
@@ -14716,4 +14665,740 @@ msgstr "Kuning"
 #: 
 msgid "Your current access levels (read-only)"
 msgstr "Tingkat akses Anda saat ini (hanya baca)"
+
+#: 
+msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
+msgstr "(mis. Jemaat, Pengunjung, Anak-anak) sehingga sukarelawan dapat mencatat jumlah kehadiran di sini."
+
+#: 
+msgid "1. Sunday School Class"
+msgstr "1. Kelas Sekolah Minggu"
+
+#: 
+msgid "2. Event Type"
+msgstr "2. Jenis Acara"
+
+#: 
+msgid "3. Event"
+msgstr "3. Acara"
+
+#: 
+msgid "4. Kiosk"
+msgstr "4. Kios"
+
+#: 
+msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
+msgstr "Kelas adalah Kelompok dengan jenis \"Sekolah Minggu\". Kelas berisi murid dan pengajar (anggota dengan peran)."
+
+#: 
+msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
+msgstr "Kelompok yang ditautkan menghubungkan acara ini ke daftar kelas atau pelayanan. Ketika acara ditetapkan ke Kios, kios akan mengambil anggota kelompok dan menampilkannya sebagai daftar ketuk-untuk-absen. Untuk kelas Sekolah Minggu, tautkan kelompok kelas di sini agar sukarelawan dapat mengabsen murid dari tablet."
+
+#: 
+msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr "Pertemuan spesifik (mis. \"Pra-Sekolah — 12 Apr\"). Mewarisi pengaturan dari jenis acara dan ditautkan ke kelompok kelas melalui audiens. Ini yang digunakan sukarelawan untuk mencatat kehadiran."
+
+#: 
+msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr "Tablet yang ditetapkan untuk satu acara. Kios mengambil daftar kelompok yang ditautkan ke acara dan menampilkan ketuk-untuk-absen. Tanpa kelompok yang ditautkan, kios tidak memiliki daftar untuk ditampilkan."
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "Tambah Tamu / Pengunjung"
+
+#: 
+msgid "Add categories on the Event Type page"
+msgstr "Tambah kategori di halaman Jenis Acara"
+
+#: 
+msgid "Add people to your cart first, then come back to check them in to an event."
+msgstr "Tambahkan orang ke seleksi Anda terlebih dahulu, lalu kembali untuk mengabsen mereka ke suatu acara."
+
+#: 
+msgid "All clear!"
+msgstr "Semua bersih!"
+
+#: 
+msgid "All events and attendance records"
+msgstr "Semua acara dan catatan kehadiran"
+
+#: 
+msgid "All financial data (pledges, payments, deposits)"
+msgstr "Semua data keuangan (komitmen keuangan, pembayaran, setoran)"
+
+#: 
+msgid "All groups, roles, and memberships"
+msgstr "Semua pelayanan, peran, dan keanggotaan"
+
+#: 
+msgid "All people and family records"
+msgstr "Semua data jemaat dan keluarga"
+
+#: 
+msgid "All system settings and custom fields"
+msgstr "Semua pengaturan sistem dan bidang kustom"
+
+#: 
+msgid "All uploaded photos and documents"
+msgstr "Semua foto dan dokumen yang diunggah"
+
+#: 
+msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
+msgstr "Jenis Acara adalah templat — nama, waktu mulai default, perulangan, kategori hitungan kehadiran. Secara opsional ditautkan ke satu kelompok kelas sebagai audiens defaultnya."
+
+#: 
+msgid "Attendance record deleted."
+msgstr "Catatan kehadiran dihapus."
+
+#: 
+msgid "Audit"
+msgstr "Audit"
+
+#: 
+msgid "Audit Events"
+msgstr "Audit Acara"
+
+#: 
+msgid "Auto-totalled from counts at right"
+msgstr "Dijumlahkan otomatis dari hitungan di kanan"
+
+#: 
+msgid "Back to Events"
+msgstr "Kembali ke Acara"
+
+#: 
+msgid "Back to Events Dashboard"
+msgstr "Kembali ke Dasbor Acara"
+
+#: 
+msgid "Backup failed. You can still proceed with the reset, but your data will be lost."
+msgstr "Pencadangan gagal. Anda masih dapat melanjutkan pengaturan ulang, tetapi data Anda akan hilang."
+
+#: 
+msgid "Backup ready!"
+msgstr "Cadangan siap!"
+
+#: 
+msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
+msgstr "Sebelum mengatur ulang, kami sangat menyarankan mengunduh cadangan data Anda saat ini. Ini adalah satu-satunya kesempatan Anda untuk menyimpannya."
+
+#: 
+msgid "Bulk-create a series of recurring events"
+msgstr "Buat serangkaian acara berulang secara massal"
+
+#: 
+msgid "By"
+msgstr "Oleh"
+
+#: 
+msgid "Cannot check in to an inactive event. Activate the event first."
+msgstr "Tidak dapat absen ke acara yang tidak aktif. Aktifkan acara terlebih dahulu."
+
+#: 
+msgid "Change"
+msgstr "Ubah"
+
+#: 
+msgid "Check In All"
+msgstr "Absen Semua"
+
+#: 
+msgid "Check In Family"
+msgstr "Absen Keluarga"
+
+#: 
+msgid "Check Out All"
+msgstr "Keluar Semua"
+
+#: 
+msgid "Check in all %d family members to a single event."
+msgstr "Absen semua %d anggota keluarga ke satu acara."
+
+#: 
+msgid "Check out"
+msgstr "Absen Keluar"
+
+#: 
+msgid "Check-in By"
+msgstr "Diabsen Oleh"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "Absen masuk gagal. Silakan coba lagi."
+
+#: 
+msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
+msgstr "Absen masuk dinonaktifkan untuk acara yang tidak aktif. Aktifkan acara dari Dasbor Acara untuk mengaktifkan absen masuk."
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "Absen keluar gagal. Silakan coba lagi."
+
+#: 
+msgid "Checked in to event: %s"
+msgstr "Diabsen masuk ke acara: %s"
+
+#: 
+msgid "Checked out from event: %s"
+msgstr "Diabsen keluar dari acara: %s"
+
+#: 
+msgid "Close All Stuck Events"
+msgstr "Tutup Semua Acara Terhenti"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "Konfirmasi Absen Keluar"
+
+#: 
+msgid "Create Repeat Events"
+msgstr "Buat Acara Berulang"
+
+#: 
+msgid "Create Today's Event"
+msgstr "Buat Acara Hari Ini"
+
+#: 
+msgid "Create a new event type with recurrence and attendance settings"
+msgstr "Buat jenis acara baru dengan pengaturan perulangan dan kehadiran"
+
+#: 
+msgid "Create one now"
+msgstr "Buat sekarang"
+
+#: 
+msgid "Create today's class event and link it to this class for kiosk check-in"
+msgstr "Buat acara kelas hari ini dan tautkan ke kelas ini untuk absen masuk di kios"
+
+#: 
+msgid "Creating backup..."
+msgstr "Membuat cadangan..."
+
+#: 
+msgid "Creating..."
+msgstr "Membuat..."
+
+#: 
+msgid "Database + uploaded photos (larger)"
+msgstr "Database + foto yang diunggah (lebih besar)"
+
+#: 
+msgid "Database dump only (.sql)"
+msgstr "Ekspor database saja (.sql)"
+
+#: 
+msgid "Date Range"
+msgstr "Rentang Tanggal"
+
+#: 
+msgid "Date range cannot exceed 1 year"
+msgstr "Rentang tanggal tidak boleh melebihi 1 tahun"
+
+#: 
+msgid "Deactivate"
+msgstr "Nonaktifkan"
+
+#: 
+msgid "Delete Event Type"
+msgstr "Hapus Jenis Acara"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "Hapus catatan kehadiran?"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "Hapus catatan absen masuk untuk"
+
+#: 
+msgid "Delete this event?"
+msgstr "Hapus acara ini?"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "Menghapus acara juga akan menghapus semua hitungan kehadiran. Tindakan ini tidak dapat dibatalkan."
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "Menghapus jenis acara ini TIDAK akan menghapus acara yang sudah ada. Apakah Anda yakin?"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "Menghapus acara ini juga akan menghapus semua catatan kehadiran. Tindakan ini tidak dapat dibatalkan."
+
+#: 
+msgid "Destructive Operation"
+msgstr "Operasi Merusak"
+
+#: 
+msgid "Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field."
+msgstr "Edit nama kategori dan klik Simpan, atau gunakan ikon tempat sampah untuk menghapus. Baris baru ditambahkan melalui kolom di bagian bawah."
+
+#: 
+msgid "End Time"
+msgstr "Waktu Selesai"
+
+#: 
+msgid "End time must be after start time."
+msgstr "Waktu selesai harus setelah waktu mulai."
+
+#: 
+msgid "Ended"
+msgstr "Selesai"
+
+#: 
+msgid "Ends"
+msgstr "Berakhir"
+
+#: 
+msgid "Event Audit"
+msgstr "Audit Acara"
+
+#: 
+msgid "Event Check-in"
+msgstr "Absen Masuk Acara"
+
+#: 
+msgid "Event Details"
+msgstr "Detail Acara"
+
+#: 
+msgid "Event Template"
+msgstr "Templat Acara"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "Acara sudah ada. Mengalihkan ke halaman absen masuk..."
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "Acara dibuat. Mengalihkan ke halaman absen masuk..."
+
+#: 
+msgid "Event end date/time must be on or after the start date/time."
+msgstr "Tanggal/waktu berakhir acara harus pada atau setelah tanggal/waktu mulai."
+
+#: 
+msgid "Event title is required."
+msgstr "Judul acara diperlukan."
+
+#: 
+msgid "Event type ID is required"
+msgstr "ID jenis acara diperlukan"
+
+#: 
+msgid "Event type ID or group ID is required"
+msgstr "ID jenis acara atau ID kelompok diperlukan"
+
+#: 
+msgid "Event type has no date configured for yearly recurrence"
+msgstr "Jenis acara tidak memiliki tanggal yang dikonfigurasi untuk perulangan tahunan"
+
+#: 
+msgid "Event type has no day-of-week configured for weekly recurrence"
+msgstr "Jenis acara tidak memiliki hari dalam seminggu yang dikonfigurasi untuk perulangan mingguan"
+
+#: 
+msgid "Event type has no recurrence pattern configured"
+msgstr "Jenis acara tidak memiliki pola perulangan yang dikonfigurasi"
+
+#: 
+msgid "Event type has no valid day-of-month configured for monthly recurrence"
+msgstr "Jenis acara tidak memiliki tanggal dalam bulan yang valid untuk perulangan bulanan"
+
+#: 
+msgid "Events will be created for every matching occurrence within this date range."
+msgstr "Acara akan dibuat untuk setiap pertemuan yang sesuai dalam rentang tanggal ini."
+
+#: 
+msgid "Every month on the"
+msgstr "Setiap bulan pada"
+
+#: 
+msgid "Every week on"
+msgstr "Setiap minggu pada"
+
+#: 
+msgid "Every year on"
+msgstr "Setiap tahun pada"
+
+#: 
+msgid "Everyone is checked in!"
+msgstr "Semua orang sudah absen masuk!"
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "Gagal membuat kelas. Silakan coba lagi."
+
+#: 
+msgid "Failed to create event."
+msgstr "Gagal membuat acara."
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "Gagal membuat acara. Silakan coba lagi."
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "Gagal menghapus. Silakan coba lagi."
+
+#: 
+msgid "Fastest workflow:"
+msgstr "Alur kerja tercepat:"
+
+#: 
+msgid "Find past events that are still active or have un-checked-out attendees"
+msgstr "Temukan acara masa lalu yang masih aktif atau memiliki peserta yang belum absen keluar"
+
+#: 
+msgid "Format: MM-DD (e.g. 04-12 for April 12)"
+msgstr "Format: MM-DD (mis. 04-12 untuk 12 April)"
+
+#: 
+msgid "Group Roster"
+msgstr "Daftar Anggota Pelayanan"
+
+#: 
+msgid "Hide Advanced Options"
+msgstr "Sembunyikan Opsi Lanjutan"
+
+#: 
+msgid "How Sunday School + Events + Kiosks fit together"
+msgstr "Cara Sekolah Minggu + Acara + Kios bekerja bersama"
+
+#: 
+msgid "Invalid date for %s — expected YYYY-MM-DD"
+msgstr "Tanggal tidak valid untuk %s — diharapkan YYYY-MM-DD"
+
+#: 
+msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr "Format tanggal tidak valid untuk rangeStart atau rangeEnd"
+
+#: 
+msgid "Invalid date format."
+msgstr "Format tanggal tidak valid."
+
+#: 
+msgid "Invalid date; expected format YYYY-MM-DD"
+msgstr "Tanggal tidak valid; format yang diharapkan YYYY-MM-DD"
+
+#: 
+msgid "Invalid event type ID"
+msgstr "ID jenis acara tidak valid"
+
+#: 
+msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
+msgstr "Format perulangan tahunan tidak valid; diharapkan MM-DD (mis. 04-12)"
+
+#: 
+msgid "Just now"
+msgstr "Baru saja"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "Biarkan kosong untuk absen keluar tanpa mencatat pengawas."
+
+#: 
+msgid "Link events to a group for Kiosk check-in functionality."
+msgstr "Tautkan acara ke kelompok untuk fungsionalitas absen masuk Kios."
+
+#: 
+msgid "Linked Groups"
+msgstr "Kelompok Tertaut"
+
+#: 
+msgid "Looking for stuck events..."
+msgstr "Mencari acara yang terhenti..."
+
+#: 
+msgid "Manage event names, recurrence patterns, and attendance counts"
+msgstr "Kelola nama acara, pola perulangan, dan hitungan kehadiran"
+
+#: 
+msgid "Missing required field: %s"
+msgstr "Kolom wajib tidak diisi: %s"
+
+#: 
+msgid "No Events Today"
+msgstr "Tidak Ada Acara Hari Ini"
+
+#: 
+msgid "No Group"
+msgstr "Tidak Ada Kelompok"
+
+#: 
+msgid "No active assignment"
+msgstr "Tidak ada penugasan aktif"
+
+#: 
+msgid "No active events found."
+msgstr "Tidak ada acara aktif yang ditemukan."
+
+#: 
+msgid "No attendance count categories defined for this event type yet."
+msgstr "Belum ada kategori hitungan kehadiran yang ditentukan untuk jenis acara ini."
+
+#: 
+msgid "No one has been checked in to this event yet."
+msgstr "Belum ada yang absen masuk ke acara ini."
+
+#: 
+msgid "No past events are still marked Active."
+msgstr "Tidak ada acara masa lalu yang masih ditandai Aktif."
+
+#: 
+msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr "Buka kelas → klik \"Buat Acara Hari Ini\" — acara dibuat dan ditautkan ke kelas sekaligus, lalu Anda masuk ke halaman absen masuk yang siap untuk kios atau kehadiran langsung."
+
+#: 
+msgid "Optional Settings"
+msgstr "Pengaturan Opsional"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "Opsional — catat siapa yang mengabsen keluar orang ini (mis. orang tua yang menjemput anak)."
+
+#: 
+msgid "Person checked out."
+msgstr "Orang telah absen keluar."
+
+#: 
+msgid "Person is not checked in"
+msgstr "Orang tidak sedang absen masuk"
+
+#: 
+msgid "Person not in active class roster"
+msgstr "Orang tidak ada dalam daftar kelas aktif"
+
+#: 
+msgid "Pin to Calendars"
+msgstr "Sematkan ke Kalender"
+
+#: 
+msgid "Please select a person to check in."
+msgstr "Silakan pilih seseorang untuk diabsen masuk."
+
+#: 
+msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
+msgstr "Diisi otomatis berdasarkan jenis acara ini — untuk jenis berulang, tanggal adalah pertemuan berikutnya setelah acara terakhir jenis ini, dan waktu sesuai dengan waktu mulai default jenis ini."
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "Tanggal akhir rentang harus pada atau setelah tanggal awal rentang."
+
+#: 
+msgid "Range end must be a valid YYYY-MM-DD date."
+msgstr "Akhir rentang harus berupa tanggal YYYY-MM-DD yang valid."
+
+#: 
+msgid "Range start must be a valid YYYY-MM-DD date."
+msgstr "Awal rentang harus berupa tanggal YYYY-MM-DD yang valid."
+
+#: 
+msgid "Range start must be before range end"
+msgstr "Awal rentang harus sebelum akhir rentang"
+
+#: 
+msgid "Range start must be before range end."
+msgstr "Awal rentang harus sebelum akhir rentang."
+
+#: 
+msgid "RangeEnd must be on or after RangeStart"
+msgstr "RangeEnd harus pada atau setelah RangeStart"
+
+#: 
+msgid "Recommended"
+msgstr "Disarankan"
+
+#: 
+msgid "Required for Kiosk"
+msgstr "Diperlukan untuk Kios"
+
+#: 
+msgid "Resetting will permanently delete:"
+msgstr "Pengaturan ulang akan menghapus secara permanen:"
+
+#: 
+msgid "SQL Only"
+msgstr "SQL Saja"
+
+#: 
+msgid "Save Time"
+msgstr "Hemat Waktu"
+
+#: 
+msgid "Save changes to this category name"
+msgstr "Simpan perubahan nama kategori ini"
+
+#: 
+msgid "Select an event type…"
+msgstr "Pilih jenis acara…"
+
+#: 
+msgid "Select start and end date/time."
+msgstr "Pilih tanggal/waktu mulai dan selesai."
+
+#: 
+msgid "Show More Options"
+msgstr "Tampilkan Lebih Banyak Opsi"
+
+#: 
+msgid "Skip"
+msgstr "Lewati"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "Lewati & Absen Keluar"
+
+#: 
+msgid "Start Check-in"
+msgstr "Mulai Absen Masuk"
+
+#: 
+msgid "Starts"
+msgstr "Dimulai"
+
+#: 
+msgid "Step 1: Create a Backup"
+msgstr "Langkah 1: Buat Cadangan"
+
+#: 
+msgid "Step 2: Reset Database"
+msgstr "Langkah 2: Atur Ulang Database"
+
+#: 
+msgid "Still Checked In"
+msgstr "Masih Absen Masuk"
+
+#: 
+msgid "Stuck Events"
+msgstr "Acara Terhenti"
+
+#: 
+msgid "Take Attendance"
+msgstr "Catat Kehadiran"
+
+#: 
+msgid "The Events module is disabled"
+msgstr "Modul Acara dinonaktifkan"
+
+#: 
+msgid "The same start and end time will be used for all generated events."
+msgstr "Waktu mulai dan selesai yang sama akan digunakan untuk semua acara yang dibuat."
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "Tidak ada acara yang dijadwalkan untuk hari ini"
+
+#: 
+msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
+msgstr "Ini adalah kategori hitungan kehadiran — sukarelawan mengisinya setelah acara agar dasbor dapat merinci kehadiran (mis. berapa banyak jemaat vs. pengunjung). Ini terpisah dari absen masuk individu di halaman Absen Masuk."
+
+#: 
+msgid "This event is inactive."
+msgstr "Acara ini tidak aktif."
+
+#: 
+msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr "Halaman ini memungkinkan Anda menghapus semua data dalam database ChurchCRM secara permanen. Tindakan ini tidak dapat dibatalkan."
+
+#: 
+msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
+msgstr "Laporan ini mencantumkan setiap acara yang tanggal berakhirnya sudah lewat tetapi masih ditandai Aktif. Penyebab umum: sukarelawan lupa mengetuk 'Absen Keluar', kios kehilangan koneksi, atau acara dibuat dan ditinggalkan. Acara lama (bertahun-tahun yang lalu) yang tidak pernah dinonaktifkan juga muncul di sini. Kolom 'Masih Absen Masuk' menunjukkan apakah ada orang yang tertinggal di tengah proses absen masuk. Menutup acara dari laporan ini akan mengabsen keluar semua orang (menggunakan waktu saat ini) dan menandai acara sebagai Tidak Aktif."
+
+#: 
+msgid "This title will be used for all generated events."
+msgstr "Judul ini akan digunakan untuk semua acara yang dibuat."
+
+#: 
+msgid "Today's Events"
+msgstr "Acara Hari Ini"
+
+#: 
+msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
+msgstr "Terlalu banyak pertemuan (%d) — persempit rentang tanggal. Maksimum yang diizinkan: %d"
+
+#: 
+msgid "Type RESET to confirm"
+msgstr "Ketik RESET untuk konfirmasi"
+
+#: 
+msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
+msgstr "Gunakan tombol di atas untuk membuat acara hari ini dengan satu klik. Acara akan otomatis ditautkan ke kelas ini sehingga Kios dapat mengambil daftar anggota."
+
+#: 
+msgid "Use this form to bulk-create a series of recurring events. Each event is created individually and can be edited or deleted independently after creation."
+msgstr "Gunakan formulir ini untuk membuat serangkaian acara berulang secara massal. Setiap acara dibuat secara terpisah dan dapat diedit atau dihapus secara independen setelah dibuat."
+
+#: 
+msgid "Used as the default start time when creating events of this type."
+msgstr "Digunakan sebagai waktu mulai default saat membuat acara jenis ini."
+
+#: 
+msgid "User must have Add Event permission and the Events module must be enabled"
+msgstr "Pengguna harus memiliki izin Tambah Acara dan modul Acara harus diaktifkan"
+
+#: 
+msgid "Valid startDate and endDate are required"
+msgstr "startDate dan endDate yang valid diperlukan"
+
+#: 
+msgid "View Event"
+msgstr "Lihat Acara"
+
+#: 
+msgid "What are these for?"
+msgstr "Untuk apa ini?"
+
+#: 
+msgid "What does this find?"
+msgstr "Apa yang dicari ini?"
+
+#: 
+msgid "What is this for?"
+msgstr "Untuk apa ini?"
+
+#: 
+msgid "Who is bringing them in?"
+msgstr "Siapa yang membawa mereka masuk?"
+
+#: 
+msgid "You must select a valid recurrence pattern."
+msgstr "Anda harus memilih pola perulangan yang valid."
+
+#: 
+msgid "You must select an event type."
+msgstr "Anda harus memilih jenis acara."
+
+#: 
+msgid "You must specify a date range."
+msgstr "Anda harus menentukan rentang tanggal."
+
+#: 
+msgid "checked in"
+msgstr "absen masuk"
+
+#: 
+msgid "e.g., Sunday Worship Service"
+msgstr "mis., Ibadah Minggu"
+
+#: 
+msgid "endDate must be after startDate"
+msgstr "endDate harus setelah startDate"
+
+#: 
+msgid "eventIds must be a non-empty array"
+msgstr "eventIds harus berupa larik yang tidak kosong"
+
+#: 
+msgid "invalid recurrence type"
+msgstr "jenis perulangan tidak valid"
+
+#: 
+msgid "personIds must be a non-empty array"
+msgstr "personIds harus berupa larik yang tidak kosong"
+
+#: 
+msgid "to enable the reset button"
+msgstr "untuk mengaktifkan tombol atur ulang"
 
