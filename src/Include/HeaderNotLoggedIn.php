@@ -36,21 +36,6 @@ $localeInfo = Bootstrapper::getCurrentLocale(); // always returns a LocaleInfo o
 
     <?= PluginManager::getPluginHeadContent() ?>
 
-    <style>
-      html, body {
-        height: 100%;
-      }
-
-      body {
-        display: flex;
-        flex-direction: column;
-      }
-
-      body > *:not(.auth-footer) {
-        flex: 1;
-      }
-    </style>
-
 </head>
 <body class="antialiased <?= InputUtils::escapeAttribute($sBodyClass ?? 'page-auth') ?>">
 
