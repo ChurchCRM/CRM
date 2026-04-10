@@ -906,6 +906,95 @@ done
 
 ---
 
+## AI-Assisted Bulk Translation: Agent Patterns <!-- learned: 2026-04-09 -->
+
+When running bulk locale translation via AI sub-agents (e.g. the `locale-translate` skill), the following patterns were learned from empirical sessions:
+
+### ✅ What Works: One Locale Per Sub-Agent
+
+**Assign exactly ONE locale (2 files) to each sub-agent.** This is the only reliably completing pattern.
+
+```
+✅ agent-1: translate de (de-1.json + de-2.json)
+✅ agent-2: translate ru (ru-1.json + ru-2.json)
+✅ agent-3: translate ja (ja-1.json + ja-2.json)
+... (all launched in parallel)
+```
+
+**Why it works:** Each agent reads 2 files, translates ~190 terms, and applies 2 `--apply` calls — a total of ~4–6 operations well within token/time budget.
+
+### ❌ What Fails: Multiple Locales Per Sub-Agent
+
+**Do NOT assign 2+ locales per agent.** This pattern causes timeout/failure on nearly every locale beyond the first.
+
+```
+❌ agent-1: translate de + ja   → reads 4 files, translates 380 terms, times out
+❌ agent-1: translate sw + am   → reads 4 files, both incomplete
+```
+
+**Why it fails:** Reading 4 files + translating 380+ terms + applying 4 `--apply` calls exhausts the agent's context/time budget. The agent typically finishes reading but runs out of time before applying.
+
+### ✅ Commit Immediately After Each Batch
+
+**Always call `report_progress` to commit and push after each batch of agents completes.** Translations applied locally are lost on session termination if not committed.
+
+```
+❌ WRONG: Translate 20 locales, then call report_progress once → session expires, all work lost
+✅ RIGHT: Translate 10 locales, call report_progress → push → translate next 10 → call report_progress
+```
+
+### Translation Conventions for All Locales
+
+These rules must be stated explicitly in every agent prompt:
+
+- Preserve `%d`, `%s`, `%1$s` format specifiers exactly  
+- Preserve brand names: ChurchCRM, Vonage, MailChimp, GitHub, OpenLP, Nextcloud, Azure, Gravatar, WebDAV, POEditor, ownCloud  
+- Leave intentionally empty strings as `""`: `N/A`, `name@example.com`, `SHA1 Hash`, `BCC`  
+- For plural objects `{"one": "", "other": ""}`: provide both forms  
+- Country names (e.g., "Australia", "Canada") stay in English (value = key) — mark these in `locale/terms/english-ok.json` rather than translating  
+
+### Locale Church Vocabulary Reference
+
+| Locale | Members | Groups | Giving | Kiosk |
+|--------|---------|--------|--------|-------|
+| es/es-MX/es-AR/es-CO/es-SV | Miembros | Ministerios | Ofrendas | Quiosco |
+| pt/pt-br | Membros | Ministérios | Ofertas | Quiosque |
+| fr | Membres | Ministères | Offrandes | Borne interactive |
+| de | Gemeindemitglieder | Dienste | Gaben/Spenden | Kiosk |
+| ru | Прихожане | Служения | Пожертвования | Киоск |
+| zh-CN | 会众 | 事工部门 | 奉献 | 签到台 |
+| zh-TW | 會眾 | 事工部門 | 奉獻 | 簽到台 |
+| ja | 信徒 | ミニストリー | 献金 | チェックインキオスク |
+| ko | 교인 | 사역 | 헌금 | 출석 키오스크 |
+| ar | المؤمنين | الخدمات | العطاء | كشك |
+| hi | सदस्य | मंत्रालय | दान/अर्पण | चेक-इन कियोस्क |
+| id | Jemaat | Pelayanan | Persembahan | Kios |
+| sw | Wanachama wa Kanisa | Huduma | Sadaka/Matoleo | Kiosk |
+| am | አባላት | አገልግሎቶች | ስጦታ | ኪዮስክ |
+| vi | Giáo đoàn | Các bộ phận | Dâng hiến | Quầy điểm danh |
+| nl | Gemeenteleden | Bedieningen | Gaven/Giften | Kiosk |
+| pl | Parafianie | Posługi | Ofiary/Datki | Kiosk |
+| uk | Парафіяни | Служіння | Пожертвування | Кіоск |
+| el | Ενορίτες | Λειτουργίες | Προσφορές | Περίπτερο |
+| sv | Församlingsmedlemmar | Tjänster | Gåvor | Kiosk |
+| ro | Enoriași | Slujiri | Ofrande | Chioșc |
+| cs | Farníci/Členové | Služby | Příspěvky/Dary | Kiosek |
+| hu | Gyülekezeti tagok | Szolgálatok | Adományok | Kiosk |
+| he | מאמינים | שירותים | תרומות | קיוסק |
+| nb | Menighetsmedlemmer | Tjenester | Gaver | Kiosk |
+| fi | Seurakuntalaiset | Palvelut | Lahjoitukset | Kioski |
+| et | Koguduse liikmed | Teenistused | Annetused | Kioski |
+| af | Gemeentelede | Bedieninge | Gawes/Offergawes | Kiosk |
+| sq | Besimtarët | Shërbesat | Kontributet | Kiosk |
+| fil | Mga Miyembro ng Simbahan | Mga Ministeryo | Mga Handog | Kiosk |
+| ml | സഭാ അംഗങ്ങൾ | ശുശ്രൂഷകൾ | കാഴ്ചദ്രവ്യം | കിയോസ്ക് |
+| ta | சபை உறுப்பினர்கள் | ஊழியங்கள் | காணிக்கை | வருகை மையம் |
+| te | సంఘ సభ్యులు | పరిచర్యలు | కానుకలు | హాజరు కేంద్రం |
+| th | สมาชิกคริสตจักร | พันธกิจ | การถวาย | คีออสก์ |
+| tr | Cemaat üyeleri | Hizmetler | Bağışlar | Kiosk |
+
+---
+
 ## Related Skills
 
 - [Git Workflow](./git-workflow.md) - Locale rebuild in pre-commit checklist
@@ -914,4 +1003,4 @@ done
 
 ---
 
-Last updated: April 3, 2026
+Last updated: April 9, 2026
