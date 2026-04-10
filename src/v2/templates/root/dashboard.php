@@ -7,8 +7,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
 <!-- Stat Cards Row -->
-<div class="row mb-3">
-    <div class="col-6 col-lg">
+<div class="row row-cards mb-3 g-2">
+    <div class="col-6 col-md-4 col-lg">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -25,7 +25,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="col-6 col-lg">
+    <div class="col-6 col-md-4 col-lg">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -42,7 +42,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="col-6 col-lg">
+    <div class="col-6 col-md-4 col-lg">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -59,7 +59,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="col-6 col-lg">
+    <div class="col-6 col-md-4 col-lg">
         <div class="card card-sm<?= $sundaySchoolEnabled ? '' : ' opacity-50' ?>">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -81,7 +81,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="col-6 col-lg">
+    <div class="col-6 col-md-4 col-lg">
         <div class="card card-sm<?= $eventsEnabled ? '' : ' opacity-50' ?>">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -185,7 +185,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
             <div class="card-body p-0">
                 <p class="text-muted small px-3 pt-3 mb-2"><?= gettext('Past & next 7 days') ?></p>
-                <table class="table table-hover mb-0" width="100%" id="PersonBirthdayDashboardItem"></table>
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0" width="100%" id="PersonBirthdayDashboardItem"></table>
+                </div>
             </div>
         </div>
         <div class="card mb-3" id="anniversaryCard">
@@ -194,7 +196,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
             <div class="card-body p-0">
                 <p class="text-muted small px-3 pt-3 mb-2"><?= gettext('Past & next 7 days') ?></p>
-                <table class="table table-hover mb-0" width="100%" id="FamiliesWithAnniversariesDashboardItem"></table>
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0" width="100%" id="FamiliesWithAnniversariesDashboardItem"></table>
+                </div>
             </div>
         </div>
     </div>

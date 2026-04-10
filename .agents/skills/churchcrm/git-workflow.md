@@ -262,7 +262,7 @@ Before marking PR ready for review, ensure:
 
 ### Code Quality
 - [ ] PHP syntax validation passed (`npm run build:php`)
-- [ ] No linting errors (`npm run lint`)
+- [ ] **Biome lint passed (`npm run lint`) — also enforced by `.githooks/pre-push`**
 - [ ] Code follows project standards (read nearby files)
 
 ### Database & ORM
@@ -387,6 +387,41 @@ Remove every reference found before (or as part of) the deletion commit:
 7. Wait for explicit yes       ← "yes" / "lgtm" / "commit it" / "go ahead"
 8. git add → git commit → git push
 ```
+
+### Mandatory Pre-Push Biome Check <!-- learned: 2026-04-09 -->
+
+**Biome lint MUST pass before any `git push`.** This is enforced two ways
+so neither humans nor agents can ship code that fails CI lint:
+
+1. **Git hook** — `.githooks/pre-push` runs `npm run lint` automatically.
+   The hooks path is wired up by the `prepare` script in `package.json`
+   (`git config core.hooksPath .githooks`), so `npm install` enables it
+   for every clone. The hook is a no-op inside CI (`$CI` / `$GITHUB_ACTIONS`)
+   because the lint job runs there as a separate step.
+
+2. **Agent checklist** — agents must run `npm run lint` themselves before
+   even *asking* for push approval. Do not rely on the hook to catch
+   failures; surface them in the conversation so the user sees them.
+
+**Bypass policy:**
+
+```bash
+# ❌ NEVER (silent bypass — hides failing lint from reviewer)
+git push --no-verify
+
+# ✅ Only acceptable when:
+#    - The user explicitly authorizes it for an emergency hot-fix, AND
+#    - The PR description calls out exactly which rule was bypassed and why
+git push --no-verify   # bypassing lint per user approval — see PR body
+```
+
+If `npm run lint` ever times out or fails for an unrelated reason
+(e.g. missing `node_modules`), fix the root cause — never paper over
+it by removing the hook or bypassing.
+
+**Why this is hardcoded:** Lint failures used to land on master because
+contributors pushed before CI feedback arrived. The pre-push hook closes
+that loop locally so feedback is instant and the master branch stays green.
 
 **Examples:**
 

@@ -165,13 +165,13 @@ foreach ($monthlyData as $monthData):
         <thead>
           <tr>
             <th><?= gettext('Event') ?></th>
-            <th style="width: 130px;"><?= gettext('Type') ?></th>
-            <th style="width: 120px;" class="text-center"><?= gettext('Attendance') ?></th>
-            <th style="width: 100px;"><?= gettext('Head Count') ?></th>
-            <th style="width: 140px;"><?= gettext('Date') ?></th>
-            <th style="width: 70px;" class="text-center"><?= gettext('Status') ?></th>
+            <th><?= gettext('Type') ?></th>
+            <th class="text-center"><?= gettext('Attendance') ?></th>
+            <th><?= gettext('Head Count') ?></th>
+            <th><?= gettext('Date') ?></th>
+            <th class="text-center"><?= gettext('Status') ?></th>
             <?php if ($canEditEvents): ?>
-              <th style="width: 80px;" class="text-center no-export"><?= gettext('Actions') ?></th>
+              <th class="text-center no-export"><?= gettext('Actions') ?></th>
             <?php endif; ?>
           </tr>
         </thead>

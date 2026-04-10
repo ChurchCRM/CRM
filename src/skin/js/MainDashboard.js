@@ -218,16 +218,39 @@ export function initializeMainDashboard() {
         title: i18next.t("Name"),
         data: "FirstName",
         render: (data, type, row) => {
-          var ageText = row.Age ? ' <small class="text-muted">(' + row.Age + ")</small>" : "";
+          // The Birthdays widget lives in a narrow sidebar column at every
+          // breakpoint (mobile, tablet, and desktop xl-sidebar). Renders MUST
+          // tolerate ~120px of name space without breaking layout.
+          //
+          // Use the API's NumericAge + AgeUnit pair (added by people-persons
+          // birthdays endpoint) so we can render a compact, locale-aware,
+          // plural-aware label on its own line below the name. This handles
+          // infants ("6 mo") and singular vs plural ("1 yr" vs "66 yrs"); the
+          // legacy `row.Age` localized string is kept as a fallback for safety.
+          let ageText = "";
+          if (typeof row.NumericAge === "number" && row.AgeUnit) {
+            let unit;
+            if (row.AgeUnit === "month") {
+              unit = row.NumericAge === 1 ? i18next.t("mo") : i18next.t("mos");
+            } else {
+              unit = row.NumericAge === 1 ? i18next.t("yr") : i18next.t("yrs");
+            }
+            ageText = '<div class="text-muted small lh-1 mt-1">' + row.NumericAge + " " + unit + "</div>";
+          } else if (row.Age) {
+            // Fallback: server didn't send NumericAge — render the localized
+            // long string verbatim. Escape it via jQuery .text() before
+            // injecting to avoid XSS.
+            const safeAge = $("<div>").text(String(row.Age)).html();
+            ageText = '<div class="text-muted small lh-1 mt-1">' + safeAge + "</div>";
+          }
           // Show photo if available, otherwise show Tabler avatar with initials
-          var photoIcon = row.HasPhoto
+          const photoIcon = row.HasPhoto
             ? generatePhotoImg(row.PersonId, "person")
             : generateTablerAvatar(row.FormattedName, row.PersonId, "person");
-          photoIcon += " ";
           return (
-            '<div class="d-flex align-items-center gap-3">' +
+            '<div class="d-flex align-items-center gap-2">' +
             photoIcon +
-            ' <div><a href="' +
+            '<div class="min-w-0 flex-grow-1"><a class="text-break" href="' +
             window.CRM.root +
             "/PersonView.php?PersonID=" +
             row.PersonId +
@@ -322,21 +345,22 @@ export function initializeMainDashboard() {
         title: i18next.t("Name"),
         data: "Name",
         render: (data, type, row) => {
-          // Show photo if available, otherwise show Tabler avatar with initials
-          var photoIcon = row.HasPhoto
+          // Anniversaries widget shares the narrow sidebar column with the
+          // Birthdays widget — keep the markup symmetrical (gap-2, min-w-0,
+          // text-break) so long family names wrap cleanly at every breakpoint.
+          const photoIcon = row.HasPhoto
             ? generatePhotoImg(row.FamilyId, "family")
             : generateTablerAvatar(data, row.FamilyId, "family");
-          photoIcon += " ";
           return (
-            '<div class="d-flex align-items-center gap-3">' +
+            '<div class="d-flex align-items-center gap-2">' +
             photoIcon +
-            ' <a href="' +
+            '<div class="min-w-0 flex-grow-1"><a class="text-break" href="' +
             window.CRM.root +
             "/v2/family/" +
             row.FamilyId +
             '"><strong>' +
             data +
-            "</strong></a></div>"
+            "</strong></a></div></div>"
           );
         },
       },

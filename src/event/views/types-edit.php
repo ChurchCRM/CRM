@@ -112,7 +112,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <thead>
               <tr>
                 <th><?= gettext('Category Name') ?></th>
-                <th style="width: 200px;" class="no-export text-end"><?= gettext('Actions') ?></th>
+                <th class="no-export text-end w-1"><?= gettext('Actions') ?></th>
               </tr>
             </thead>
             <tbody>

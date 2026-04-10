@@ -388,10 +388,25 @@ function getPersonsWithBirthdays(Request $request, Response $response, array $ar
         }
         
         $formattedPerson['DaysUntil'] = $diff;
-        
+
         // Get age (respects hideAge setting)
+        // Age is the localized long string ("66 years old" / "6 months old"),
+        // kept for back-compat. NumericAge + AgeUnit are the machine-readable
+        // pair the dashboard uses for compact, plural-aware rendering — they
+        // correctly handle infants (months) and singular/plural in any locale.
         $formattedPerson['Age'] = $person->getAge();
-        
+        $birthDateForAge = $person->getBirthDate();
+        if ($birthDateForAge instanceof \DateTimeImmutable && !$person->hideAge()) {
+            $ageDiff = (new \DateTimeImmutable('today'))->diff($birthDateForAge);
+            if ($ageDiff->y < 1) {
+                $formattedPerson['NumericAge'] = $ageDiff->m;
+                $formattedPerson['AgeUnit']    = 'month';
+            } else {
+                $formattedPerson['NumericAge'] = $ageDiff->y;
+                $formattedPerson['AgeUnit']    = 'year';
+            }
+        }
+
         // Birthday date for display
         if ($person->getBirthDate()) {
             $formattedPerson['Birthday'] = date_format(
