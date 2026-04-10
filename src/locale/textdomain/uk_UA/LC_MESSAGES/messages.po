@@ -7353,14 +7353,6 @@ msgid "Select Event for Check-In"
 msgstr "Виберіть подію для реєстрації"
 
 #: 
-msgid "Select start and end date/time"
-msgstr "Виберіть дату та час початку й закінчення"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "Виберіть подію, щоб зареєструвати учасників із вашого кошика"
-
-#: 
 msgid "Sermon / Event Text"
 msgstr "Текст проповіді / події"
 
@@ -7727,10 +7719,6 @@ msgstr "Використовуйте зовнішні інструменти (GP
 #: 
 msgid "User authentication"
 msgstr "Автентифікація користувача"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "Користувач повинен мати дозвіл на додавання подій"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8253,10 +8241,6 @@ msgid "State (Other)"
 msgstr "Область/Регіон"
 
 #: 
-msgid "Status:"
-msgstr "Статус:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Підсумок обіцянок та платежів по фондах."
 
@@ -8307,10 +8291,6 @@ msgstr "Усього депозитів:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Відстежуйте обіцянки для бюджетування."
-
-#: 
-msgid "Type:"
-msgstr "Тип:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8737,10 +8717,6 @@ msgid "Disable 2FA"
 msgstr "Вимкнути 2FA"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "Експорт даних у форматі ChMeetings."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "Експортувати в ChMeetings CSV"
 
@@ -9001,10 +8977,6 @@ msgid "Add Your First Property Type"
 msgstr "Додайте Ваш Перший Тип Властивості"
 
 #: 
-msgid "Auto-calculated from counts above"
-msgstr "Автоматично розраховано з підрахунків вище"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Видаливши це поле, ви безповоротно втратите всі дані учасників групи, призначені для цього поля!"
 
@@ -9195,10 +9167,6 @@ msgstr "Реєстрацію кіосків вимкнено"
 #: 
 msgid "Kiosk not found"
 msgstr "Кіоск не знайдено"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "Прив'яжіть цю подію до групи для функції реєстрації через кіоск. Члени групи відображатимуться на кіоску."
 
 #: 
 msgid "Linked Group"
@@ -10402,10 +10370,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "Вимагати від усіх користувачів реєстрації в двофакторній автентифікації"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "Карта з'явиться тут після збереження адреси. Координати визначаються автоматично — ручне введення не потрібне."
-
-#: 
 msgid "Active Groups"
 msgstr "Активні групи"
 
@@ -10456,10 +10420,6 @@ msgstr "Сім'я не має адреси для геокодування"
 #: 
 msgid "Father"
 msgstr "Батько"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "Геокодовані координати:"
 
 #: 
 msgid "Geocoding failed"
@@ -10540,10 +10500,6 @@ msgstr "Часовий пояс"
 #: 
 msgid "Total Groups"
 msgstr "Всього груп"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "Оновлюється автоматично при кожному збереженні."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10728,14 +10684,6 @@ msgstr "Додайте свою першу властивість"
 #: 
 msgid "Add a Person"
 msgstr "Додати особу"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Додати нову обітницю"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "Додати платіж до поточного депозиту"
 
 #: 
 msgid "Add all cart items to a group"
@@ -10954,10 +10902,6 @@ msgid "Check Out"
 msgstr "Отримайте"
 
 #: 
-msgid "Check Out Person"
-msgstr "Отримайте особу"
-
-#: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
 msgstr "Перевірте оновлення та оновіть встановлення ChurchCRM"
 
@@ -11082,10 +11026,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "Створюйте резервну копію вручну не рідше разу на тиждень або увімкніть плагін зовнішнього резервного копіювання для автоматичних резервних копій WebDAV за розкладом."
 
 #: 
-msgid "Create a new deposit"
-msgstr "Створити новий депозит"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "Створювати та редагувати сімейну інформацію та зв'язки"
 
@@ -11140,10 +11080,6 @@ msgstr "Визначити специфічні для групи властив
 #: 
 msgid "Delete All"
 msgstr "Видалити все"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "Видалити запис реєстрації присутності"
 
 #: 
 msgid "Delete Family"
@@ -11426,10 +11362,6 @@ msgid "Generate directory listings and printed materials"
 msgstr "Створіть каталоги та друковані матеріали"
 
 #: 
-msgid "Generate financial reports"
-msgstr "Створіть фінансові звіти"
-
-#: 
 msgid "Generate financial statements and giving reports"
 msgstr "Створіть фінансові звіти та звіти про пожертви"
 
@@ -11662,14 +11594,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "Керуйте інструментами електронної пошти та конфігурацією SMTP"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "Керуйте назвами подій та категоріями"
-
-#: 
-msgid "Manage event type categories"
-msgstr "Керуйте категоріями типів подій"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Керуйте сім'ями, людьми та демографічною інформацією"
 
@@ -11800,10 +11724,6 @@ msgstr "Немає днів народження"
 #: 
 msgid "No Check-ins"
 msgstr "Немає реєстрацій"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "Немає відстеження депозитів"
 
 #: 
 msgid "No Deposits"

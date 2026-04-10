@@ -7347,14 +7347,6 @@ msgid "Select Event for Check-In"
 msgstr "Select Gelegentheid for Check-In"
 
 #: 
-msgid "Select start and end date/time"
-msgstr "Kies begin en eind datum/tyd"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "Kies die geleentheid om jou mandjielede in te kontroleer"
-
-#: 
 msgid "Sermon / Event Text"
 msgstr "Sermon / Gelegentheid Text"
 
@@ -7719,10 +7711,6 @@ msgstr "Gebruik eksterne gereedskap (GPG, 7-Zip) om rugsteune te enkripteer voor
 #: 
 msgid "User authentication"
 msgstr "Gebruiker Verifikasie"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "User must have Add Gelegentheid permission"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8245,10 +8233,6 @@ msgid "State (Other)"
 msgstr "Staat (Ander)"
 
 #: 
-msgid "Status:"
-msgstr "Status:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Opsomming van beloftes vs betalings per fonds vir die fiskaale jaar."
 
@@ -8299,10 +8283,6 @@ msgstr "Totale Deposito:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Spoor beloftes en betalingsvordering vir kampanjes en fiskaale jaarbudgetting."
-
-#: 
-msgid "Type:"
-msgstr "Tipe:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8729,10 +8709,6 @@ msgid "Disable 2FA"
 msgstr "Deaktiveer 2FA"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "Uitvoer all people data in ChMeetings format for import into external systems."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "Voer uit na ChMeetings CSV"
 
@@ -8987,10 +8963,6 @@ msgid "Add Your First Property Type"
 msgstr "Voeg jou eerste eiendomstipe by"
 
 #: 
-msgid "Auto-calculated from counts above"
-msgstr "Outomaties bereken vanaf bogenoemde tellings"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Deur hierdie veld te verwyder, sal u onherroeplik alle groep-liddata wat aan hierdie veld toegeken is, verloor!"
 
@@ -9179,10 +9151,6 @@ msgstr "Kiosk-registrasie gedeaktiveer"
 #: 
 msgid "Kiosk not found"
 msgstr "Kiosk nie gevind nie"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "Koppel hierdie gebeurtenis aan 'n groep vir kiosk-inboekfunksionaliteit. Die groeplede sal op die kiosk verskyn."
 
 #: 
 msgid "Linked Group"
@@ -10384,10 +10352,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "Vereis dat alle gebruikers tweefaktor-verifikasie aktiveer"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "'n Kaart sal hier verskyn sodra 'n straatadres gestoor is. Koördinate word outomaties opgespoor — geen handmatige invoer benodig nie."
-
-#: 
 msgid "Active Groups"
 msgstr "Aktiewe Groepe"
 
@@ -10438,10 +10402,6 @@ msgstr "Familie het geen straatadres vir geokodeering nie"
 #: 
 msgid "Father"
 msgstr "Vader"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "Georekodeerde koördinate:"
 
 #: 
 msgid "Geocoding failed"
@@ -10522,10 +10482,6 @@ msgstr "Tydsone"
 #: 
 msgid "Total Groups"
 msgstr "Totale Groepe"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "Outomaties opgedateer by elke stoor."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10708,14 +10664,6 @@ msgstr "Jou Eerste Eienskap Byvoeg"
 #: 
 msgid "Add a Person"
 msgstr "'n Persoon Byvoeg"
-
-#: 
-msgid "Add a new pledge"
-msgstr "'n Nuwe Verbintenis Byvoeg"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "'n Betaling by Huidige Insameling Voeg"
 
 #: 
 msgid "Add all cart items to a group"
@@ -10934,10 +10882,6 @@ msgid "Check Out"
 msgstr "Uitskep"
 
 #: 
-msgid "Check Out Person"
-msgstr "Persoon Uitskep"
-
-#: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
 msgstr "Soek opdateringsvelle en opgradeer jou ChurchCRM-installasie"
 
@@ -11062,10 +11006,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "Skep 'n handmatige rugsteun ten minste een keer per week, of aktiveer die Externe Rugsteun-inprop vir outomatiese WebDAV-rugsteune op 'n skedule."
 
 #: 
-msgid "Create a new deposit"
-msgstr "Skep 'n nuwe insameling"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "Skep en wysig familiale inligting en verhoudinge"
 
@@ -11120,10 +11060,6 @@ msgstr "Definieer ministerie-spesifieke eienskappe vir geloofsgenote"
 #: 
 msgid "Delete All"
 msgstr "Alles Verwyder"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "Kontrole-inskrywing Verwyder"
 
 #: 
 msgid "Delete Family"
@@ -11406,10 +11342,6 @@ msgid "Generate directory listings and printed materials"
 msgstr "Genereer adresboekaanlyste en gedrukte materiale"
 
 #: 
-msgid "Generate financial reports"
-msgstr "Genereer finansiële verslae"
-
-#: 
 msgid "Generate financial statements and giving reports"
 msgstr "Genereer finansiële verklarings en gawingverslae"
 
@@ -11562,6 +11494,10 @@ msgid "Key People"
 msgstr "Sleutel-Persone"
 
 #: 
+msgid "Kiosk"
+msgstr "Kiosk"
+
+#: 
 msgid "Kiosk Enabled"
 msgstr "Kiosk Geaktiveer"
 
@@ -11638,14 +11574,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "Bestuur e-pos-gereedskap en SMTP-konfigurasie"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "Bestuur gebegeurtenis-name en kategorieë"
-
-#: 
-msgid "Manage event type categories"
-msgstr "Bestuur gebegeurtenis-tipe kategorieë"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Bestuur families, mense, en demografiese inligting"
 
@@ -11710,6 +11638,10 @@ msgid "Memberships"
 msgstr "Lidmaatskippe"
 
 #: 
+msgid "Minimum"
+msgstr "Minimum"
+
+#: 
 msgid "Modify family roles for group members"
 msgstr "Wysig familierolle vir ministerie-lede"
 
@@ -11772,10 +11704,6 @@ msgstr "Geen Verjaardae"
 #: 
 msgid "No Check-ins"
 msgstr "Geen Kontroles"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "Geen Insameling-Sporing"
 
 #: 
 msgid "No Deposits"
@@ -14458,6 +14386,10 @@ msgid "Appearance"
 msgstr "Voorkoms"
 
 #: 
+msgid "Azure"
+msgstr "Azure"
+
+#: 
 msgid "Back to Finance Dashboard"
 msgstr "Terug na Finansiële Dashboard"
 
@@ -14585,6 +14517,10 @@ msgstr "As u deurmekaar karakters, HTML-entiteite wat as teks verskyn, of vertal
 #: 
 msgid "Include your API key in requests using the x-api-key header:"
 msgstr "Sluit u API-sleutel in versoeke in deur die x-api-key-koptekst te gebruik:"
+
+#: 
+msgid "Indigo"
+msgstr "Indigo"
 
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
@@ -14750,4 +14686,746 @@ msgstr "Geel"
 #: 
 msgid "Your current access levels (read-only)"
 msgstr "U huidige toegangsvlakke (leesalleen)"
+
+#: 
+msgid "%d repeat event created successfully."
+msgid_plural "%d repeat events created successfully."
+msgstr[0] "%d herhalingsgeleentheid suksesvol geskep."
+msgstr[1] "%d herhalingsgeleenthede suksesvol geskep."
+
+#: 
+msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
+msgstr "(bv. Gemeentelede, Besoekers, Kinders) sodat vrywilligers hooftellings hier kan aanteken."
+
+#: 
+msgid "1. Sunday School Class"
+msgstr "1. Sondagskoolklas"
+
+#: 
+msgid "2. Event Type"
+msgstr "2. Geleentheidstipe"
+
+#: 
+msgid "3. Event"
+msgstr "3. Geleentheid"
+
+#: 
+msgid "4. Kiosk"
+msgstr "4. Kiosk"
+
+#: 
+msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
+msgstr "ʼn Klas is ʼn Bediening met tipe \"Sondagskool\". Dit bevat die studente en onderwysers (lede met rolle)."
+
+#: 
+msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
+msgstr "ʼn Gekoppelde bediening verbind hierdie geleentheid aan ʼn klas- of bediening-lys. Wanneer die geleentheid aan ʼn Kiosk toegewys word, haal die kiosk die groeplede op en wys hulle as ʼn tik-om-in-te-teken-lys. Vir Sondagskoolklasse, koppel die klasgroep hier sodat vrywilligers studente van ʼn tablet kan inteken."
+
+#: 
+msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr "ʼn Spesifieke voorval (bv. \"Kleuterskool — 12 Apr\"). Erf standaardwaardes van die tipe en word gekoppel aan die klasgroep via die gehoor. Dit is waarteen vrywilligers teenwoordigheid aanteken."
+
+#: 
+msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr "ʼn Tablet toegewys aan een geleentheid. Die kiosk haal die geleentheid se gekoppelde groepinskrywing op en wys tik-om-in-te-teken. Sonder ʼn gekoppelde groep het die kiosk geen inskrywing om te vertoon nie."
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "Voeg Inloopbesoeker / Besoeker By"
+
+#: 
+msgid "Add categories on the Event Type page"
+msgstr "Voeg kategorieë by op die Geleentheidstipe-bladsy"
+
+#: 
+msgid "Add people to your cart first, then come back to check them in to an event."
+msgstr "Voeg eers mense by jou seleksie, kom dan terug om hulle by ʼn geleentheid in te teken."
+
+#: 
+msgid "All clear!"
+msgstr "Alles reg!"
+
+#: 
+msgid "All events and attendance records"
+msgstr "Alle geleenthede en teenwoordigheidsrekords"
+
+#: 
+msgid "All financial data (pledges, payments, deposits)"
+msgstr "Alle finansiële data (finansiële verbintenisse, betalings, deposito's)"
+
+#: 
+msgid "All groups, roles, and memberships"
+msgstr "Alle bedienings, rolle en lidmaatskappe"
+
+#: 
+msgid "All people and family records"
+msgstr "Alle persoon- en gesinsrekords"
+
+#: 
+msgid "All system settings and custom fields"
+msgstr "Alle stelselverstelling en pasgemaakte velde"
+
+#: 
+msgid "All uploaded photos and documents"
+msgstr "Alle opgelaaide foto's en dokumente"
+
+#: 
+msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
+msgstr "ʼn Geleentheidstipe is ʼn sjabloon — naam, standaard begintyd, herhalingspatroon, teenwoordigheidstelkategorieë. Opsioneel gekoppel aan een klasgroep as sy standaard gehoor."
+
+#: 
+msgid "Attendance record deleted."
+msgstr "Teenwoordigheidsrekord verwyder."
+
+#: 
+msgid "Audit"
+msgstr "Oudit"
+
+#: 
+msgid "Audit Events"
+msgstr "Oudit Geleenthede"
+
+#: 
+msgid "Auto-totalled from counts at right"
+msgstr "Outomaties opgetel van tellings regs"
+
+#: 
+msgid "Back to Events"
+msgstr "Terug na Geleenthede"
+
+#: 
+msgid "Back to Events Dashboard"
+msgstr "Terug na Geleenthede-kontroleskerm"
+
+#: 
+msgid "Backup failed. You can still proceed with the reset, but your data will be lost."
+msgstr "Rugsteun het misluk. Jy kan steeds voortgaan met die herinstelling, maar jou data sal verlore gaan."
+
+#: 
+msgid "Backup ready!"
+msgstr "Rugsteun gereed!"
+
+#: 
+msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
+msgstr "Voordat jy herinstel, beveel ons sterk aan om ʼn rugsteun van jou huidige data af te laai. Dit is jou enigste kans om dit te bewaar."
+
+#: 
+msgid "Bulk-create a series of recurring events"
+msgstr "Skep ʼn reeks herhalende geleenthede in grootmaat"
+
+#: 
+msgid "By"
+msgstr "Deur"
+
+#: 
+msgid "Cannot check in to an inactive event. Activate the event first."
+msgstr "Kan nie by ʼn onaktiewe geleentheid inteken nie. Aktiveer die geleentheid eers."
+
+#: 
+msgid "Change"
+msgstr "Verander"
+
+#: 
+msgid "Check In All"
+msgstr "Teken Almal In"
+
+#: 
+msgid "Check In Family"
+msgstr "Teken Gesin In"
+
+#: 
+msgid "Check Out All"
+msgstr "Teken Almal Uit"
+
+#: 
+msgid "Check in all %d family members to a single event."
+msgstr "Teken alle %d gesinsleden by een geleentheid in."
+
+#: 
+msgid "Check out"
+msgstr "Teken uit"
+
+#: 
+msgid "Check-in By"
+msgstr "Ingeteken deur"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "Intekening het misluk. Probeer asseblief weer."
+
+#: 
+msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
+msgstr "Intekening is gedeaktiveer vir onaktiewe geleenthede. Aktiveer die geleentheid van die Geleenthede-kontroleskerm om intekening te aktiveer."
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "Uittekening het misluk. Probeer asseblief weer."
+
+#: 
+msgid "Checked in to event: %s"
+msgstr "Ingeteken by geleentheid: %s"
+
+#: 
+msgid "Checked out from event: %s"
+msgstr "Uitgeteken van geleentheid: %s"
+
+#: 
+msgid "Close All Stuck Events"
+msgstr "Sluit Alle Vas Geleenthede"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "Bevestig Uittekening"
+
+#: 
+msgid "Create Repeat Events"
+msgstr "Skep Herhalende Geleenthede"
+
+#: 
+msgid "Create Today's Event"
+msgstr "Skep Vandag se Geleentheid"
+
+#: 
+msgid "Create a new event type with recurrence and attendance settings"
+msgstr "Skep ʼn nuwe geleentheidstipe met herhalingspatroon en teenwoordigheidsinstellings"
+
+#: 
+msgid "Create one now"
+msgstr "Skep een nou"
+
+#: 
+msgid "Create today's class event and link it to this class for kiosk check-in"
+msgstr "Skep vandag se klasgeleentheid en koppel dit aan hierdie klas vir kiosk-intekening"
+
+#: 
+msgid "Creating backup..."
+msgstr "Rugsteun word geskep..."
+
+#: 
+msgid "Creating..."
+msgstr "Besig om te skep..."
+
+#: 
+msgid "Database + uploaded photos (larger)"
+msgstr "Databasis + opgelaaide foto's (groter)"
+
+#: 
+msgid "Database dump only (.sql)"
+msgstr "Slegs databasis-dump (.sql)"
+
+#: 
+msgid "Date Range"
+msgstr "Datumreeks"
+
+#: 
+msgid "Date range cannot exceed 1 year"
+msgstr "Datumreeks kan nie 1 jaar oorskry nie"
+
+#: 
+msgid "Deactivate"
+msgstr "Deaktiveer"
+
+#: 
+msgid "Delete Event Type"
+msgstr "Verwyder Geleentheidstipe"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "Verwyder teenwoordigheidsrekord?"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "Verwyder intekeningrekord vir"
+
+#: 
+msgid "Delete this event?"
+msgstr "Verwyder hierdie geleentheid?"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "Die verwydering van ʼn geleentheid sal ook alle teenwoordigheidstellings verwyder. Dit kan nie ongedaan gemaak word nie."
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "Die verwydering van hierdie geleentheidstipe sal NIE bestaande geleenthede verwyder nie. Is jy seker?"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "Die verwydering van hierdie geleentheid sal ook alle teenwoordigheidsrekords verwyder. Dit kan nie ongedaan gemaak word nie."
+
+#: 
+msgid "Destructive Operation"
+msgstr "Verwoestende Operasie"
+
+#: 
+msgid "Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field."
+msgstr "Wysig ʼn kategorienaam en klik Stoor, of gebruik die vullisdrom-ikoon om te verwyder. Nuwe rye word bygevoeg via die onderste veld."
+
+#: 
+msgid "End Time"
+msgstr "Eindtyd"
+
+#: 
+msgid "End time must be after start time."
+msgstr "Eindtyd moet na begintyd wees."
+
+#: 
+msgid "Ended"
+msgstr "Geëindig"
+
+#: 
+msgid "Ends"
+msgstr "Eindig"
+
+#: 
+msgid "Event Audit"
+msgstr "Geleentheids-oudit"
+
+#: 
+msgid "Event Check-in"
+msgstr "Geleentheids-intekening"
+
+#: 
+msgid "Event Details"
+msgstr "Geleentheidsbesonderhede"
+
+#: 
+msgid "Event Template"
+msgstr "Geleentheidssjabloon"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "Geleentheid bestaan reeds. Besig om na intekening oor te skakel..."
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "Geleentheid geskep. Besig om na intekening oor te skakel..."
+
+#: 
+msgid "Event end date/time must be on or after the start date/time."
+msgstr "Geleentheid einddatum/-tyd moet op of na die begindatum/-tyd wees."
+
+#: 
+msgid "Event title is required."
+msgstr "Geleentheidstitel is verpligtend."
+
+#: 
+msgid "Event type ID is required"
+msgstr "Geleentheidstipe-ID is verpligtend"
+
+#: 
+msgid "Event type ID or group ID is required"
+msgstr "Geleentheidstipe-ID of groep-ID is verpligtend"
+
+#: 
+msgid "Event type has no date configured for yearly recurrence"
+msgstr "Geleentheidstipe het geen datum gekonfigureer vir jaarlikse herhaling nie"
+
+#: 
+msgid "Event type has no day-of-week configured for weekly recurrence"
+msgstr "Geleentheidstipe het geen weekdag gekonfigureer vir weeklikse herhaling nie"
+
+#: 
+msgid "Event type has no recurrence pattern configured"
+msgstr "Geleentheidstipe het geen herhalingspatroon gekonfigureer nie"
+
+#: 
+msgid "Event type has no valid day-of-month configured for monthly recurrence"
+msgstr "Geleentheidstipe het geen geldige dag-van-maand gekonfigureer vir maandelikse herhaling nie"
+
+#: 
+msgid "Events will be created for every matching occurrence within this date range."
+msgstr "Geleenthede sal geskep word vir elke ooreenstemmende voorval binne hierdie datumreeks."
+
+#: 
+msgid "Every month on the"
+msgstr "Elke maand op die"
+
+#: 
+msgid "Every week on"
+msgstr "Elke week op"
+
+#: 
+msgid "Every year on"
+msgstr "Elke jaar op"
+
+#: 
+msgid "Everyone is checked in!"
+msgstr "Almal is ingeteken!"
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "Kon nie klas skep nie. Probeer asseblief weer."
+
+#: 
+msgid "Failed to create event."
+msgstr "Kon nie geleentheid skep nie."
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "Kon nie geleentheid skep nie. Probeer asseblief weer."
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "Kon nie verwyder nie. Probeer asseblief weer."
+
+#: 
+msgid "Fastest workflow:"
+msgstr "Vinnigste werkstroom:"
+
+#: 
+msgid "Find past events that are still active or have un-checked-out attendees"
+msgstr "Vind verlede geleenthede wat steeds aktief is of nie-uitgetekende bywooners het"
+
+#: 
+msgid "Format: MM-DD (e.g. 04-12 for April 12)"
+msgstr "Formaat: MM-DD (bv. 04-12 vir 12 April)"
+
+#: 
+msgid "Group Roster"
+msgstr "Groep-inskrywing"
+
+#: 
+msgid "Hide Advanced Options"
+msgstr "Versteek Gevorderde Opsies"
+
+#: 
+msgid "How Sunday School + Events + Kiosks fit together"
+msgstr "Hoe Sondagskool + Geleenthede + Kiosks saamwerk"
+
+#: 
+msgid "Invalid date for %s — expected YYYY-MM-DD"
+msgstr "Ongeldige datum vir %s — YYYY-MM-DD verwag"
+
+#: 
+msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr "Ongeldige datumformaat vir rangeStart of rangeEnd"
+
+#: 
+msgid "Invalid date format."
+msgstr "Ongeldige datumformaat."
+
+#: 
+msgid "Invalid date; expected format YYYY-MM-DD"
+msgstr "Ongeldige datum; verwagde formaat YYYY-MM-DD"
+
+#: 
+msgid "Invalid event type ID"
+msgstr "Ongeldige geleentheidstipe-ID"
+
+#: 
+msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
+msgstr "Ongeldige jaarlikse herhalingsformaat; MM-DD verwag (bv. 04-12)"
+
+#: 
+msgid "Just now"
+msgstr "Sopas"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "Laat leeg om uit te teken sonder om die toesighouer aan te teken."
+
+#: 
+msgid "Link events to a group for Kiosk check-in functionality."
+msgstr "Koppel geleenthede aan ʼn bediening vir Kiosk-intekeningfunksionaliteit."
+
+#: 
+msgid "Linked Groups"
+msgstr "Gekoppelde Bedienings"
+
+#: 
+msgid "Looking for stuck events..."
+msgstr "Soek vas geleenthede..."
+
+#: 
+msgid "Manage event names, recurrence patterns, and attendance counts"
+msgstr "Bestuur geleenthedename, herhalingspatrone en teenwoordigheidstellings"
+
+#: 
+msgid "Missing required field: %s"
+msgstr "Verpligte veld ontbreek: %s"
+
+#: 
+msgid "No Events Today"
+msgstr "Geen Geleenthede Vandag"
+
+#: 
+msgid "No Group"
+msgstr "Geen Bediening"
+
+#: 
+msgid "No active assignment"
+msgstr "Geen aktiewe toekenning"
+
+#: 
+msgid "No active events found."
+msgstr "Geen aktiewe geleenthede gevind nie."
+
+#: 
+msgid "No attendance count categories defined for this event type yet."
+msgstr "Geen teenwoordigheidstelkategorieë vir hierdie geleentheidstipe gedefinieer nie."
+
+#: 
+msgid "No one has been checked in to this event yet."
+msgstr "Niemand is nog by hierdie geleentheid ingeteken nie."
+
+#: 
+msgid "No past events are still marked Active."
+msgstr "Geen verlede geleenthede is steeds as Aktief gemerk nie."
+
+#: 
+msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr "Maak ʼn klas oop → klik \"Skep Vandag se Geleentheid\" — die geleentheid word geskep en in een keer aan die klas gekoppel, dan land jy op die intekeningbladsy gereed vir ʼn kiosk- of inloopbywooning."
+
+#: 
+msgid "Optional Settings"
+msgstr "Opsionele Instellings"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "Opsioneel — teken aan wie hierdie persoon uitteken (bv. ʼn ouer wat ʼn kind kom haal)."
+
+#: 
+msgid "Person checked out."
+msgstr "Persoon uitgeteken."
+
+#: 
+msgid "Person is not checked in"
+msgstr "Persoon is nie ingeteken nie"
+
+#: 
+msgid "Person not in active class roster"
+msgstr "Persoon nie in aktiewe klasinskrywing nie"
+
+#: 
+msgid "Pin to Calendars"
+msgstr "Vaspen aan Kalenders"
+
+#: 
+msgid "Please select a person to check in."
+msgstr "Kies asseblief ʼn persoon om in te teken."
+
+#: 
+msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
+msgstr "Voorafgevul gebaseer op hierdie geleentheidstipe — vir herhalende tipes is die datum die volgende voorval na die laaste geleentheid van hierdie tipe, en die tyd stem ooreen met die tipe se standaard begintyd."
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "Reeks-einddatum moet op of na die reeks-begindatum wees."
+
+#: 
+msgid "Range end must be a valid YYYY-MM-DD date."
+msgstr "Reeks-einde moet ʼn geldige YYYY-MM-DD-datum wees."
+
+#: 
+msgid "Range start must be a valid YYYY-MM-DD date."
+msgstr "Reeks-begin moet ʼn geldige YYYY-MM-DD-datum wees."
+
+#: 
+msgid "Range start must be before range end"
+msgstr "Reeks-begin moet voor reeks-einde wees"
+
+#: 
+msgid "Range start must be before range end."
+msgstr "Reeks-begin moet voor reeks-einde wees."
+
+#: 
+msgid "RangeEnd must be on or after RangeStart"
+msgstr "RangeEnd moet op of na RangeStart wees"
+
+#: 
+msgid "Recommended"
+msgstr "Aanbeveel"
+
+#: 
+msgid "Required for Kiosk"
+msgstr "Verpligtend vir Kiosk"
+
+#: 
+msgid "Resetting will permanently delete:"
+msgstr "Herinstelling sal permanent verwyder:"
+
+#: 
+msgid "SQL Only"
+msgstr "Slegs SQL"
+
+#: 
+msgid "Save Time"
+msgstr "Spaar Tyd"
+
+#: 
+msgid "Save changes to this category name"
+msgstr "Stoor veranderinge aan hierdie kategorienaam"
+
+#: 
+msgid "Select an event type…"
+msgstr "Kies ʼn geleentheidstipe…"
+
+#: 
+msgid "Select start and end date/time."
+msgstr "Kies begin- en einddatum/-tyd."
+
+#: 
+msgid "Show More Options"
+msgstr "Wys Meer Opsies"
+
+#: 
+msgid "Skip"
+msgstr "Slaan oor"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "Slaan oor & Teken Uit"
+
+#: 
+msgid "Start Check-in"
+msgstr "Begin Intekening"
+
+#: 
+msgid "Starts"
+msgstr "Begin"
+
+#: 
+msgid "Step 1: Create a Backup"
+msgstr "Stap 1: Skep ʼn Rugsteun"
+
+#: 
+msgid "Step 2: Reset Database"
+msgstr "Stap 2: Herstel Databasis"
+
+#: 
+msgid "Still Checked In"
+msgstr "Nog Ingeteken"
+
+#: 
+msgid "Stuck Events"
+msgstr "Vas Geleenthede"
+
+#: 
+msgid "Take Attendance"
+msgstr "Neem Teenwoordigheid"
+
+#: 
+msgid "The Events module is disabled"
+msgstr "Die Geleenthede-module is gedeaktiveer"
+
+#: 
+msgid "The same start and end time will be used for all generated events."
+msgstr "Dieselfde begin- en eindtyd sal gebruik word vir alle gegenereerde geleenthede."
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "Daar is geen geleenthede vir vandag geskeduleer nie"
+
+#: 
+msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
+msgstr "Dit is hooftelbakke — vrywilligers vul dit in na die geleentheid sodat die kontroleskerm teenwoordigheid kan opbreek (bv. hoeveel gemeentelede teenoor besoekers). Hulle is apart van individuele intekeninge op die Intekening-bladsy."
+
+#: 
+msgid "This event is inactive."
+msgstr "Hierdie geleentheid is onaktief."
+
+#: 
+msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr "Hierdie bladsy laat jou toe om alle data in die ChurchCRM-databasis permanent uit te wis. Hierdie aksie kan nie ongedaan gemaak word nie."
+
+#: 
+msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
+msgstr "Hierdie verslag lys elke geleentheid waarvan die einddatum verstreke is maar wat steeds as Aktief gemerk is. Algemene oorsake: ʼn vrywilliger het vergeet om 'Teken Uit' te tik, ʼn kiosk het konneksie verloor, of die geleentheid is geskep en verlaat. Ou geleenthede (jare gelede) wat nooit gedeaktiveer is nie, verskyn ook hier. Die 'Nog Ingeteken'-kolom wys of iemand halfpad deur intekening agtergebly het. Die sluiting van ʼn geleentheid vanuit hierdie verslag teken almal uit (met die huidige tyd) en merk die geleentheid as Onaktief."
+
+#: 
+msgid "This title will be used for all generated events."
+msgstr "Hierdie titel sal gebruik word vir alle gegenereerde geleenthede."
+
+#: 
+msgid "Today's Events"
+msgstr "Vandag se Geleenthede"
+
+#: 
+msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
+msgstr "Te veel voorvalle (%d) — vernou die datumreeks. Maksimum toegelaat: %d"
+
+#: 
+msgid "Type RESET to confirm"
+msgstr "Tik RESET om te bevestig"
+
+#: 
+msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
+msgstr "Gebruik die knoppie hierbo om vandag se geleentheid met een klik te skep. Dit sal outomaties aan hierdie klas gekoppel word sodat ʼn Kiosk die inskrywing kan haal."
+
+#: 
+msgid "Use this form to bulk-create a series of recurring events. Each event is created individually and can be edited or deleted independently after creation."
+msgstr "Gebruik hierdie vorm om ʼn reeks herhalende geleenthede in grootmaat te skep. Elke geleentheid word individueel geskep en kan onafhanklik na skepping geredigeer of verwyder word."
+
+#: 
+msgid "Used as the default start time when creating events of this type."
+msgstr "Gebruik as die standaard begintyd wanneer geleenthede van hierdie tipe geskep word."
+
+#: 
+msgid "User must have Add Event permission and the Events module must be enabled"
+msgstr "Gebruiker moet Voeg Geleentheid By-toestemming hê en die Geleenthede-module moet geaktiveer wees"
+
+#: 
+msgid "Valid startDate and endDate are required"
+msgstr "Geldige beginDatum en eindDatum is verpligtend"
+
+#: 
+msgid "View Event"
+msgstr "Bekyk Geleentheid"
+
+#: 
+msgid "What are these for?"
+msgstr "Waarvoor is dit?"
+
+#: 
+msgid "What does this find?"
+msgstr "Wat vind dit?"
+
+#: 
+msgid "What is this for?"
+msgstr "Waarvoor is dit?"
+
+#: 
+msgid "Who is bringing them in?"
+msgstr "Wie bring hulle in?"
+
+#: 
+msgid "You must select a valid recurrence pattern."
+msgstr "Jy moet ʼn geldige herhalingspatroon kies."
+
+#: 
+msgid "You must select an event type."
+msgstr "Jy moet ʼn geleentheidstipe kies."
+
+#: 
+msgid "You must specify a date range."
+msgstr "Jy moet ʼn datumreeks spesifiseer."
+
+#: 
+msgid "checked in"
+msgstr "ingeteken"
+
+#: 
+msgid "e.g., Sunday Worship Service"
+msgstr "bv., Sondagse Erediens"
+
+#: 
+msgid "endDate must be after startDate"
+msgstr "eindDatum moet na beginDatum wees"
+
+#: 
+msgid "eventIds must be a non-empty array"
+msgstr "eventIds moet ʼn nie-leë skikking wees"
+
+#: 
+msgid "invalid recurrence type"
+msgstr "ongeldige herhalingstipe"
+
+#: 
+msgid "personIds must be a non-empty array"
+msgstr "personIds moet ʼn nie-leë skikking wees"
+
+#: 
+msgid "to enable the reset button"
+msgstr "om die herinstelknoppie te aktiveer"
 

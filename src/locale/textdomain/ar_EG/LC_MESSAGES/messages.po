@@ -7350,14 +7350,6 @@ msgid "Select Event for Check-In"
 msgstr "حدد الحدث لتسجيل الدخول"
 
 #: 
-msgid "Select start and end date/time"
-msgstr "حدد تاريخ/وقت البداية والنهاية"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "حدد الحدث لتسجيل دخول أعضاء سلتك"
-
-#: 
 msgid "Sermon / Event Text"
 msgstr "الخطبة / نص الحدث"
 
@@ -7726,10 +7718,6 @@ msgstr "استخدم أدوات خارجية (GPG و7-Zip) لتشفير النس
 #: 
 msgid "User authentication"
 msgstr "مصادقة المستخدم"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "يجب أن يكون للمستخدم إذن إضافة الحدث"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8252,10 +8240,6 @@ msgid "State (Other)"
 msgstr "الولاية (أخرى)"
 
 #: 
-msgid "Status:"
-msgstr "الحالة:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "ملخص التعهدات مقابل المدفوعات حسب الصندوق للسنة المالية."
 
@@ -8306,10 +8290,6 @@ msgstr "إجمالي الودائع:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "تتبع تقدم التعهدات والمدفوعات للحملات وميزانية السنة المالية."
-
-#: 
-msgid "Type:"
-msgstr "النوع:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8736,10 +8716,6 @@ msgid "Disable 2FA"
 msgstr "تعطيل 2FA"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "تصدير جميع بيانات الأشخاص بصيغة ChMeetings للاستيراد في الأنظمة الخارجية."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "تصدير إلى CSV ChMeetings"
 
@@ -9006,10 +8982,6 @@ msgid "Add Your First Property Type"
 msgstr "أضف نوع الخاصية الأول"
 
 #: 
-msgid "Auto-calculated from counts above"
-msgstr "يُحسب تلقائياً من الأعداد أعلاه"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "بحذف هذا الحقل، ستفقد بشكل لا رجعة فيه جميع بيانات أعضاء المجموعة المخصصة لهذا الحقل!"
 
@@ -9202,10 +9174,6 @@ msgstr "تسجيل الكشك معطل"
 #: 
 msgid "Kiosk not found"
 msgstr "الكشك غير موجود"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "اربط هذا الحدث بمجموعة لوظيفة تسجيل الدخول عبر الكشك. سيظهر أعضاء المجموعة على الكشك."
 
 #: 
 msgid "Linked Group"
@@ -10411,10 +10379,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "طلب من جميع المستخدمين التسجيل في المصادقة الثنائية"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "ستظهر خريطة هنا بمجرد حفظ عنوان الشارع. يتم اكتشاف الإحداثيات تلقائياً — لا يلزم الإدخال اليدوي."
-
-#: 
 msgid "Active Groups"
 msgstr "المجموعات النشطة"
 
@@ -10465,10 +10429,6 @@ msgstr "العائلة ليس لها عنوان شارع للترميز الجغ
 #: 
 msgid "Father"
 msgstr "الأب"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "الإحداثيات الجغرافية:"
 
 #: 
 msgid "Geocoding failed"
@@ -10549,10 +10509,6 @@ msgstr "المنطقة الزمنية"
 #: 
 msgid "Total Groups"
 msgstr "إجمالي المجموعات"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "يُحدَّث تلقائياً عند كل حفظ."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10739,14 +10695,6 @@ msgstr "أضف أول ممتلكات لك"
 #: 
 msgid "Add a Person"
 msgstr "أضف شخصًا"
-
-#: 
-msgid "Add a new pledge"
-msgstr "أضف التزامًا جديدًا"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "أضف دفعة إلى الإيداع الحالي"
 
 #: 
 msgid "Add all cart items to a group"
@@ -10965,10 +10913,6 @@ msgid "Check Out"
 msgstr "استرجع"
 
 #: 
-msgid "Check Out Person"
-msgstr "استرجع الشخص"
-
-#: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
 msgstr "تحقق من التحديثات وقم بترقية تثبيت ChurchCRM الخاص بك"
 
@@ -11093,10 +11037,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "قم بإنشاء نسخة احتياطية يدوية مرة واحدة على الأقل في الأسبوع، أو قم بتمكين مكون النسخ الاحتياطي الخارجي للنسخ الاحتياطية الآلية لـ WebDAV وفقاً لجدول زمني."
 
 #: 
-msgid "Create a new deposit"
-msgstr "إنشاء إيداع جديد"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "إنشاء وتحرير معلومات الأسرة والعلاقات"
 
@@ -11151,10 +11091,6 @@ msgstr "تحديد خصائص محددة للمجموعة لأعضائها"
 #: 
 msgid "Delete All"
 msgstr "حذف الكل"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "حذف إدخال الفحص"
 
 #: 
 msgid "Delete Family"
@@ -11437,10 +11373,6 @@ msgid "Generate directory listings and printed materials"
 msgstr "إنشاء قوائم الدليل والمواد المطبوعة"
 
 #: 
-msgid "Generate financial reports"
-msgstr "إنشاء التقارير المالية"
-
-#: 
 msgid "Generate financial statements and giving reports"
 msgstr "إنشاء البيانات المالية وتقارير المساهمات"
 
@@ -11673,14 +11605,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "إدارة أدوات البريد الإلكتروني وتكوين SMTP"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "إدارة أسماء الأحداث والفئات"
-
-#: 
-msgid "Manage event type categories"
-msgstr "إدارة فئات أنواع الأحداث"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "إدارة العائلات والأشخاص والمعلومات الديموغرافية"
 
@@ -11811,10 +11735,6 @@ msgstr "لا يوجد أعياد ميلاد"
 #: 
 msgid "No Check-ins"
 msgstr "لا توجد عمليات تسجيل"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "لا يوجد تتبع للودائع"
 
 #: 
 msgid "No Deposits"
@@ -14493,6 +14413,10 @@ msgid "Appearance"
 msgstr "المظهر"
 
 #: 
+msgid "Azure"
+msgstr "Azure"
+
+#: 
 msgid "Back to Finance Dashboard"
 msgstr "العودة إلى لوحة المالية"
 
@@ -14789,4 +14713,750 @@ msgstr "أصفر"
 #: 
 msgid "Your current access levels (read-only)"
 msgstr "مستويات الوصول الحالية (للقراءة فقط)"
+
+#: 
+msgid "%d repeat event created successfully."
+msgid_plural "%d repeat events created successfully."
+msgstr[0] "لم يتم إنشاء أي حدث متكرر."
+msgstr[1] "تم إنشاء حدث متكرر واحد بنجاح."
+msgstr[2] "تم إنشاء حدثين متكررين بنجاح."
+msgstr[3] "تم إنشاء %d أحداث متكررة بنجاح."
+msgstr[4] "تم إنشاء %d حدثاً متكرراً بنجاح."
+msgstr[5] "تم إنشاء %d حدث متكرر بنجاح."
+
+#: 
+msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
+msgstr "(مثل الأعضاء، الزوار، الأطفال) حتى يتمكن المتطوعون من تسجيل الأعداد هنا."
+
+#: 
+msgid "1. Sunday School Class"
+msgstr "1. فصل مدرسة الأحد"
+
+#: 
+msgid "2. Event Type"
+msgstr "2. نوع الحدث"
+
+#: 
+msgid "3. Event"
+msgstr "3. الحدث"
+
+#: 
+msgid "4. Kiosk"
+msgstr "4. كشك"
+
+#: 
+msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
+msgstr "الفصل هو مجموعة من نوع \"مدرسة الأحد\". يضم الطلاب والمعلمين (الأعضاء بأدوار محددة)."
+
+#: 
+msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
+msgstr "المجموعة المرتبطة تربط هذا الحدث بفصل أو قائمة مجموعة. عند تعيين الحدث إلى Kiosk، يسحب الـ Kiosk أعضاء المجموعة ويعرضهم كقائمة للتسجيل بلمسة. لفصول مدرسة الأحد، اربط مجموعة الفصل هنا حتى يتمكن المتطوعون من تسجيل حضور الطلاب من جهاز لوحي."
+
+#: 
+msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr "حدوث محدد (مثل \"ما قبل المدرسة — 12 أبريل\"). يرث الإعدادات الافتراضية من النوع ومرتبط بمجموعة الفصل عبر الجمهور. هذا ما يسجل المتطوعون الحضور ضده."
+
+#: 
+msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr "جهاز لوحي مخصص لحدث واحد. يسحب الـ Kiosk قائمة المجموعة المرتبطة بالحدث ويعرضها للتسجيل بلمسة. بدون مجموعة مرتبطة لا يوجد لدى الـ Kiosk قائمة لعرضها."
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "إضافة زائر مباشر / زيارة"
+
+#: 
+msgid "Add categories on the Event Type page"
+msgstr "أضف فئات في صفحة نوع الحدث"
+
+#: 
+msgid "Add people to your cart first, then come back to check them in to an event."
+msgstr "أضف أشخاصاً إلى قائمة التحديد أولاً، ثم عد لتسجيل حضورهم في حدث."
+
+#: 
+msgid "All clear!"
+msgstr "الجميع خرجوا!"
+
+#: 
+msgid "All events and attendance records"
+msgstr "جميع الأحداث وسجلات الحضور"
+
+#: 
+msgid "All financial data (pledges, payments, deposits)"
+msgstr "جميع البيانات المالية (التعهدات المالية، المدفوعات، الودائع)"
+
+#: 
+msgid "All groups, roles, and memberships"
+msgstr "جميع المجموعات والأدوار والعضويات"
+
+#: 
+msgid "All people and family records"
+msgstr "جميع سجلات الأشخاص والعائلات"
+
+#: 
+msgid "All system settings and custom fields"
+msgstr "جميع إعدادات النظام والحقول المخصصة"
+
+#: 
+msgid "All uploaded photos and documents"
+msgstr "جميع الصور والمستندات المرفوعة"
+
+#: 
+msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
+msgstr "نوع الحدث هو قالب — الاسم، وقت البدء الافتراضي، التكرار، وفئات عد الحضور. يمكن ربطه اختيارياً بمجموعة فصل كجمهور افتراضي."
+
+#: 
+msgid "Attendance record deleted."
+msgstr "تم حذف سجل الحضور."
+
+#: 
+msgid "Audit"
+msgstr "مراجعة"
+
+#: 
+msgid "Audit Events"
+msgstr "مراجعة الأحداث"
+
+#: 
+msgid "Auto-totalled from counts at right"
+msgstr "إجمالي محسوب تلقائياً من الأعداد على اليمين"
+
+#: 
+msgid "Back to Events"
+msgstr "العودة إلى الأحداث"
+
+#: 
+msgid "Back to Events Dashboard"
+msgstr "العودة إلى لوحة الأحداث"
+
+#: 
+msgid "Backup failed. You can still proceed with the reset, but your data will be lost."
+msgstr "فشل النسخ الاحتياطي. لا يزال بإمكانك المتابعة في إعادة الضبط، لكن ستُفقد بياناتك."
+
+#: 
+msgid "Backup ready!"
+msgstr "النسخة الاحتياطية جاهزة!"
+
+#: 
+msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
+msgstr "قبل إعادة الضبط، نوصي بشدة بتنزيل نسخة احتياطية من بياناتك الحالية. هذه فرصتك الوحيدة لحفظها."
+
+#: 
+msgid "Bulk-create a series of recurring events"
+msgstr "إنشاء سلسلة من الأحداث المتكررة دفعةً واحدة"
+
+#: 
+msgid "By"
+msgstr "بواسطة"
+
+#: 
+msgid "Cannot check in to an inactive event. Activate the event first."
+msgstr "لا يمكن تسجيل الحضور في حدث غير نشط. قم بتفعيل الحدث أولاً."
+
+#: 
+msgid "Change"
+msgstr "تغيير"
+
+#: 
+msgid "Check In All"
+msgstr "تسجيل حضور الجميع"
+
+#: 
+msgid "Check In Family"
+msgstr "تسجيل حضور العائلة"
+
+#: 
+msgid "Check Out All"
+msgstr "تسجيل خروج الجميع"
+
+#: 
+msgid "Check in all %d family members to a single event."
+msgstr "تسجيل حضور جميع أفراد العائلة الـ %d في حدث واحد."
+
+#: 
+msgid "Check out"
+msgstr "تسجيل الخروج"
+
+#: 
+msgid "Check-in By"
+msgstr "تسجيل الحضور بواسطة"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "فشل تسجيل الحضور. يرجى المحاولة مرة أخرى."
+
+#: 
+msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
+msgstr "تسجيل الحضور معطّل للأحداث غير النشطة. قم بتفعيل الحدث من لوحة الأحداث لتمكين تسجيل الحضور."
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "فشل تسجيل الخروج. يرجى المحاولة مرة أخرى."
+
+#: 
+msgid "Checked in to event: %s"
+msgstr "تم تسجيل الحضور في الحدث: %s"
+
+#: 
+msgid "Checked out from event: %s"
+msgstr "تم تسجيل الخروج من الحدث: %s"
+
+#: 
+msgid "Close All Stuck Events"
+msgstr "إغلاق جميع الأحداث المتوقفة"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "تأكيد تسجيل الخروج"
+
+#: 
+msgid "Create Repeat Events"
+msgstr "إنشاء أحداث متكررة"
+
+#: 
+msgid "Create Today's Event"
+msgstr "إنشاء حدث اليوم"
+
+#: 
+msgid "Create a new event type with recurrence and attendance settings"
+msgstr "إنشاء نوع حدث جديد مع إعدادات التكرار والحضور"
+
+#: 
+msgid "Create one now"
+msgstr "أنشئ واحداً الآن"
+
+#: 
+msgid "Create today's class event and link it to this class for kiosk check-in"
+msgstr "أنشئ حدث الفصل لليوم واربطه بهذا الفصل لتسجيل الحضور عبر Kiosk"
+
+#: 
+msgid "Creating backup..."
+msgstr "جارٍ إنشاء النسخة الاحتياطية..."
+
+#: 
+msgid "Creating..."
+msgstr "جارٍ الإنشاء..."
+
+#: 
+msgid "Database + uploaded photos (larger)"
+msgstr "قاعدة البيانات + الصور المرفوعة (أكبر حجماً)"
+
+#: 
+msgid "Database dump only (.sql)"
+msgstr "نسخة قاعدة البيانات فقط (.sql)"
+
+#: 
+msgid "Date Range"
+msgstr "نطاق التاريخ"
+
+#: 
+msgid "Date range cannot exceed 1 year"
+msgstr "لا يمكن أن يتجاوز نطاق التاريخ سنة واحدة"
+
+#: 
+msgid "Deactivate"
+msgstr "تعطيل"
+
+#: 
+msgid "Delete Event Type"
+msgstr "حذف نوع الحدث"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "حذف سجل الحضور؟"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "حذف سجل تسجيل الحضور لـ"
+
+#: 
+msgid "Delete this event?"
+msgstr "حذف هذا الحدث؟"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "سيؤدي حذف الحدث إلى حذف جميع أعداد الحضور. لا يمكن التراجع عن هذا الإجراء."
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "لن يؤدي حذف نوع الحدث هذا إلى حذف الأحداث الموجودة. هل أنت متأكد؟"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "سيؤدي حذف هذا الحدث إلى حذف جميع سجلات الحضور. لا يمكن التراجع عن هذا الإجراء."
+
+#: 
+msgid "Destructive Operation"
+msgstr "عملية تدميرية"
+
+#: 
+msgid "Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field."
+msgstr "عدّل اسم الفئة وانقر على حفظ، أو استخدم أيقونة الحذف للإزالة. تُضاف الصفوف الجديدة عبر الحقل السفلي."
+
+#: 
+msgid "End Time"
+msgstr "وقت الانتهاء"
+
+#: 
+msgid "End time must be after start time."
+msgstr "يجب أن يكون وقت الانتهاء بعد وقت البدء."
+
+#: 
+msgid "Ended"
+msgstr "انتهى"
+
+#: 
+msgid "Ends"
+msgstr "ينتهي"
+
+#: 
+msgid "Event Audit"
+msgstr "مراجعة الحدث"
+
+#: 
+msgid "Event Check-in"
+msgstr "تسجيل حضور الحدث"
+
+#: 
+msgid "Event Details"
+msgstr "تفاصيل الحدث"
+
+#: 
+msgid "Event Template"
+msgstr "قالب الحدث"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "الحدث موجود بالفعل. جارٍ التوجيه إلى تسجيل الحضور..."
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "تم إنشاء الحدث. جارٍ التوجيه إلى تسجيل الحضور..."
+
+#: 
+msgid "Event end date/time must be on or after the start date/time."
+msgstr "يجب أن يكون تاريخ/وقت انتهاء الحدث في نفس تاريخ/وقت البدء أو بعده."
+
+#: 
+msgid "Event title is required."
+msgstr "عنوان الحدث مطلوب."
+
+#: 
+msgid "Event type ID is required"
+msgstr "معرّف نوع الحدث مطلوب"
+
+#: 
+msgid "Event type ID or group ID is required"
+msgstr "معرّف نوع الحدث أو معرّف المجموعة مطلوب"
+
+#: 
+msgid "Event type has no date configured for yearly recurrence"
+msgstr "نوع الحدث لا يحتوي على تاريخ مُهيأ للتكرار السنوي"
+
+#: 
+msgid "Event type has no day-of-week configured for weekly recurrence"
+msgstr "نوع الحدث لا يحتوي على يوم أسبوعي مُهيأ للتكرار الأسبوعي"
+
+#: 
+msgid "Event type has no recurrence pattern configured"
+msgstr "نوع الحدث لا يحتوي على نمط تكرار مُهيأ"
+
+#: 
+msgid "Event type has no valid day-of-month configured for monthly recurrence"
+msgstr "نوع الحدث لا يحتوي على يوم شهري صالح مُهيأ للتكرار الشهري"
+
+#: 
+msgid "Events will be created for every matching occurrence within this date range."
+msgstr "سيتم إنشاء الأحداث لكل تكرار مطابق ضمن نطاق التاريخ هذا."
+
+#: 
+msgid "Every month on the"
+msgstr "كل شهر في"
+
+#: 
+msgid "Every week on"
+msgstr "كل أسبوع في"
+
+#: 
+msgid "Every year on"
+msgstr "كل عام في"
+
+#: 
+msgid "Everyone is checked in!"
+msgstr "الجميع سجّل حضوره!"
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "فشل إنشاء الفصل. يرجى المحاولة مرة أخرى."
+
+#: 
+msgid "Failed to create event."
+msgstr "فشل إنشاء الحدث."
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "فشل إنشاء الحدث. يرجى المحاولة مرة أخرى."
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "فشل الحذف. يرجى المحاولة مرة أخرى."
+
+#: 
+msgid "Fastest workflow:"
+msgstr "أسرع سير عمل:"
+
+#: 
+msgid "Find past events that are still active or have un-checked-out attendees"
+msgstr "البحث عن الأحداث الماضية التي لا تزال نشطة أو لديها حاضرون لم يسجلوا خروجهم"
+
+#: 
+msgid "Format: MM-DD (e.g. 04-12 for April 12)"
+msgstr "الصيغة: MM-DD (مثلاً 04-12 لـ 12 أبريل)"
+
+#: 
+msgid "Group Roster"
+msgstr "قائمة المجموعة"
+
+#: 
+msgid "Hide Advanced Options"
+msgstr "إخفاء الخيارات المتقدمة"
+
+#: 
+msgid "How Sunday School + Events + Kiosks fit together"
+msgstr "كيف تتكامل مدرسة الأحد والأحداث والـ Kiosks"
+
+#: 
+msgid "Invalid date for %s — expected YYYY-MM-DD"
+msgstr "تاريخ غير صالح لـ %s — الصيغة المتوقعة YYYY-MM-DD"
+
+#: 
+msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr "صيغة تاريخ غير صالحة لـ rangeStart أو rangeEnd"
+
+#: 
+msgid "Invalid date format."
+msgstr "صيغة التاريخ غير صالحة."
+
+#: 
+msgid "Invalid date; expected format YYYY-MM-DD"
+msgstr "تاريخ غير صالح؛ الصيغة المتوقعة YYYY-MM-DD"
+
+#: 
+msgid "Invalid event type ID"
+msgstr "معرّف نوع الحدث غير صالح"
+
+#: 
+msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
+msgstr "صيغة التكرار السنوي غير صالحة؛ الصيغة المتوقعة MM-DD (مثلاً 04-12)"
+
+#: 
+msgid "Just now"
+msgstr "للتو"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "اتركه فارغاً لتسجيل الخروج دون تسجيل المشرف."
+
+#: 
+msgid "Link events to a group for Kiosk check-in functionality."
+msgstr "اربط الأحداث بمجموعة لتمكين وظيفة تسجيل الحضور عبر Kiosk."
+
+#: 
+msgid "Linked Groups"
+msgstr "المجموعات المرتبطة"
+
+#: 
+msgid "Looking for stuck events..."
+msgstr "جارٍ البحث عن الأحداث المتوقفة..."
+
+#: 
+msgid "Manage event names, recurrence patterns, and attendance counts"
+msgstr "إدارة أسماء الأحداث وأنماط التكرار وأعداد الحضور"
+
+#: 
+msgid "Missing required field: %s"
+msgstr "الحقل المطلوب مفقود: %s"
+
+#: 
+msgid "No Events Today"
+msgstr "لا توجد أحداث اليوم"
+
+#: 
+msgid "No Group"
+msgstr "لا توجد مجموعة"
+
+#: 
+msgid "No active assignment"
+msgstr "لا يوجد تعيين نشط"
+
+#: 
+msgid "No active events found."
+msgstr "لم يتم العثور على أحداث نشطة."
+
+#: 
+msgid "No attendance count categories defined for this event type yet."
+msgstr "لم يتم تحديد فئات عد الحضور لهذا النوع من الأحداث بعد."
+
+#: 
+msgid "No one has been checked in to this event yet."
+msgstr "لم يسجل أحد حضوره في هذا الحدث بعد."
+
+#: 
+msgid "No past events are still marked Active."
+msgstr "لا توجد أحداث ماضية لا تزال مُعلَّمة كنشطة."
+
+#: 
+msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr "افتح فصلاً ← انقر على \"إنشاء حدث اليوم\" — يتم إنشاء الحدث وربطه بالفصل في خطوة واحدة، ثم تنتقل إلى صفحة تسجيل الحضور الجاهزة لـ Kiosk أو الحضور المباشر."
+
+#: 
+msgid "Optional Settings"
+msgstr "الإعدادات الاختيارية"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "اختياري — سجّل من يسجّل خروج هذا الشخص (مثلاً أحد الوالدين يأخذ طفلاً)."
+
+#: 
+msgid "Person checked out."
+msgstr "تم تسجيل خروج الشخص."
+
+#: 
+msgid "Person is not checked in"
+msgstr "الشخص غير مسجّل الحضور"
+
+#: 
+msgid "Person not in active class roster"
+msgstr "الشخص غير موجود في قائمة الفصل النشط"
+
+#: 
+msgid "Pin to Calendars"
+msgstr "تثبيت في التقاويم"
+
+#: 
+msgid "Please select a person to check in."
+msgstr "يرجى اختيار شخص لتسجيل حضوره."
+
+#: 
+msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
+msgstr "مملوء مسبقاً بناءً على نوع الحدث هذا — للأنواع المتكررة، التاريخ هو التكرار التالي بعد آخر حدث من هذا النوع، والوقت يطابق وقت البدء الافتراضي للنوع."
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "يجب أن يكون تاريخ نهاية النطاق في نفس تاريخ بدء النطاق أو بعده."
+
+#: 
+msgid "Range end must be a valid YYYY-MM-DD date."
+msgstr "يجب أن تكون نهاية النطاق تاريخاً صالحاً بصيغة YYYY-MM-DD."
+
+#: 
+msgid "Range start must be a valid YYYY-MM-DD date."
+msgstr "يجب أن يكون بدء النطاق تاريخاً صالحاً بصيغة YYYY-MM-DD."
+
+#: 
+msgid "Range start must be before range end"
+msgstr "يجب أن يكون بدء النطاق قبل نهاية النطاق"
+
+#: 
+msgid "Range start must be before range end."
+msgstr "يجب أن يكون بدء النطاق قبل نهاية النطاق."
+
+#: 
+msgid "RangeEnd must be on or after RangeStart"
+msgstr "يجب أن تكون RangeEnd في نفس وقت RangeStart أو بعده"
+
+#: 
+msgid "Recommended"
+msgstr "مُوصى به"
+
+#: 
+msgid "Required for Kiosk"
+msgstr "مطلوب لـ Kiosk"
+
+#: 
+msgid "Resetting will permanently delete:"
+msgstr "ستؤدي إعادة الضبط إلى الحذف الدائم لـ:"
+
+#: 
+msgid "SQL Only"
+msgstr "SQL فقط"
+
+#: 
+msgid "Save Time"
+msgstr "توفير الوقت"
+
+#: 
+msgid "Save changes to this category name"
+msgstr "حفظ التغييرات على اسم هذه الفئة"
+
+#: 
+msgid "Select an event type…"
+msgstr "اختر نوع الحدث…"
+
+#: 
+msgid "Select start and end date/time."
+msgstr "اختر تاريخ/وقت البدء والانتهاء."
+
+#: 
+msgid "Show More Options"
+msgstr "عرض المزيد من الخيارات"
+
+#: 
+msgid "Skip"
+msgstr "تخطي"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "تخطي وتسجيل الخروج"
+
+#: 
+msgid "Start Check-in"
+msgstr "بدء تسجيل الحضور"
+
+#: 
+msgid "Starts"
+msgstr "يبدأ"
+
+#: 
+msgid "Step 1: Create a Backup"
+msgstr "الخطوة 1: إنشاء نسخة احتياطية"
+
+#: 
+msgid "Step 2: Reset Database"
+msgstr "الخطوة 2: إعادة ضبط قاعدة البيانات"
+
+#: 
+msgid "Still Checked In"
+msgstr "لا يزال مسجلاً الحضور"
+
+#: 
+msgid "Stuck Events"
+msgstr "الأحداث المتوقفة"
+
+#: 
+msgid "Take Attendance"
+msgstr "تسجيل الحضور"
+
+#: 
+msgid "The Events module is disabled"
+msgstr "وحدة الأحداث معطّلة"
+
+#: 
+msgid "The same start and end time will be used for all generated events."
+msgstr "سيتم استخدام نفس وقت البدء والانتهاء لجميع الأحداث المُنشأة."
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "لا توجد أحداث مجدولة لليوم"
+
+#: 
+msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
+msgstr "هذه فئات عد الحضور — يملؤها المتطوعون بعد الحدث حتى تتمكن لوحة التحكم من تفصيل الحضور (مثل عدد الأعضاء مقابل الزوار). وهي منفصلة عن تسجيلات الحضور الفردية في صفحة تسجيل الحضور."
+
+#: 
+msgid "This event is inactive."
+msgstr "هذا الحدث غير نشط."
+
+#: 
+msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr "تتيح لك هذه الصفحة مسح جميع البيانات نهائياً من قاعدة بيانات ChurchCRM. لا يمكن التراجع عن هذا الإجراء."
+
+#: 
+msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
+msgstr "يعرض هذا التقرير كل حدث تجاوز تاريخ انتهائه ولكنه لا يزال مُعلَّماً كنشط. الأسباب الشائعة: نسي متطوع النقر على 'تسجيل الخروج'، أو فقد Kiosk الاتصال، أو تم إنشاء الحدث وتركه. تظهر هنا أيضاً الأحداث القديمة (من سنوات مضت) التي لم يتم تعطيلها قط. يُظهر عمود 'لا يزال مسجلاً الحضور' ما إذا بقي أحد في منتصف عملية تسجيل الحضور. عند إغلاق حدث من هذا التقرير يتم تسجيل خروج الجميع (باستخدام الوقت الحالي) ويُعلَّم الحدث كغير نشط."
+
+#: 
+msgid "This title will be used for all generated events."
+msgstr "سيتم استخدام هذا العنوان لجميع الأحداث المُنشأة."
+
+#: 
+msgid "Today's Events"
+msgstr "أحداث اليوم"
+
+#: 
+msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
+msgstr "عدد التكرارات كبير جداً (%d) — قلّل نطاق التاريخ. الحد الأقصى المسموح به: %d"
+
+#: 
+msgid "Type RESET to confirm"
+msgstr "اكتب RESET للتأكيد"
+
+#: 
+msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
+msgstr "استخدم الزر أعلاه لإنشاء حدث اليوم بنقرة واحدة. سيتم ربطه تلقائياً بهذا الفصل حتى يتمكن Kiosk من سحب القائمة."
+
+#: 
+msgid "Use this form to bulk-create a series of recurring events. Each event is created individually and can be edited or deleted independently after creation."
+msgstr "استخدم هذا النموذج لإنشاء سلسلة من الأحداث المتكررة دفعةً واحدة. يتم إنشاء كل حدث بشكل منفصل ويمكن تعديله أو حذفه باستقلالية بعد الإنشاء."
+
+#: 
+msgid "Used as the default start time when creating events of this type."
+msgstr "يُستخدم كوقت بدء افتراضي عند إنشاء أحداث من هذا النوع."
+
+#: 
+msgid "User must have Add Event permission and the Events module must be enabled"
+msgstr "يجب أن يمتلك المستخدم صلاحية إضافة الحدث ويجب أن تكون وحدة الأحداث مُفعَّلة"
+
+#: 
+msgid "Valid startDate and endDate are required"
+msgstr "تاريخ البدء وتاريخ الانتهاء الصالحان مطلوبان"
+
+#: 
+msgid "View Event"
+msgstr "عرض الحدث"
+
+#: 
+msgid "What are these for?"
+msgstr "ما الغرض منها؟"
+
+#: 
+msgid "What does this find?"
+msgstr "ماذا يجد هذا؟"
+
+#: 
+msgid "What is this for?"
+msgstr "ما الغرض من هذا؟"
+
+#: 
+msgid "Who is bringing them in?"
+msgstr "من يجلبهم؟"
+
+#: 
+msgid "You must select a valid recurrence pattern."
+msgstr "يجب عليك اختيار نمط تكرار صالح."
+
+#: 
+msgid "You must select an event type."
+msgstr "يجب عليك اختيار نوع الحدث."
+
+#: 
+msgid "You must specify a date range."
+msgstr "يجب عليك تحديد نطاق تاريخ."
+
+#: 
+msgid "checked in"
+msgstr "مسجّل الحضور"
+
+#: 
+msgid "e.g., Sunday Worship Service"
+msgstr "مثلاً، قداس الأحد"
+
+#: 
+msgid "endDate must be after startDate"
+msgstr "يجب أن يكون تاريخ الانتهاء بعد تاريخ البدء"
+
+#: 
+msgid "eventIds must be a non-empty array"
+msgstr "يجب أن تكون eventIds مصفوفة غير فارغة"
+
+#: 
+msgid "invalid recurrence type"
+msgstr "نوع تكرار غير صالح"
+
+#: 
+msgid "personIds must be a non-empty array"
+msgstr "يجب أن تكون personIds مصفوفة غير فارغة"
+
+#: 
+msgid "to enable the reset button"
+msgstr "لتمكين زر إعادة الضبط"
 

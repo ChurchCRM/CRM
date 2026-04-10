@@ -1,8 +1,26 @@
 {
   "%d result for \"%s\"": {
-    "other": "%d個\"%s\"的結果"
+    "other": ""
   },
   "%d repeat event created successfully.": {
-    "other": "%d個重複事件成功創建。"
-  }
+    "other": ""
+  },
+  "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above.": "",
+  "Both latitude and longitude must be provided together (or both left blank for automatic detection).": "",
+  "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates.": "",
+  "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address.": "",
+  "Latitude must be a number between -90 and 90.": "",
+  "Longitude must be a number between -180 and 180.": "",
+  "Map Coordinates": "",
+  "Please select a group.": "",
+  "Please select a role.": "",
+  "Please select both a group and a role.": "",
+  "Range: -180 to 180.": "",
+  "Range: -90 to 90.": "",
+  "e.g., -74.0060": "",
+  "e.g., 40.7128": "",
+  "mo": "",
+  "mos": "",
+  "yr": "",
+  "yrs": ""
 }

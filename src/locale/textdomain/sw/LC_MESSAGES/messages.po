@@ -7341,14 +7341,6 @@ msgid "Select Event for Check-In"
 msgstr "Chagua Tukio kwa ajili ya Usajili"
 
 #: 
-msgid "Select start and end date/time"
-msgstr "Chagua tarehe/muda wa kuanza na kuisha"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "Chagua tukio la kusajili wanachama wa kigari chako"
-
-#: 
 msgid "Sermon / Event Text"
 msgstr "Andiko la Mahubiri / Tukio"
 
@@ -7713,10 +7705,6 @@ msgstr "Tumia zana za nje kusimba nakala kabla ya kuzihifadhi nje ya eneo."
 #: 
 msgid "User authentication"
 msgstr "Uthibitishaji wa mtumiaji"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "Mtumiaji lazima awe na ruhusa ya Kuongeza Tukio"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8239,10 +8227,6 @@ msgid "State (Other)"
 msgstr "Mkoa (Mwingine)"
 
 #: 
-msgid "Status:"
-msgstr "Hali:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Muhtasari wa ahadi dhidi ya malipo kwa mwaka wa fedha."
 
@@ -8293,10 +8277,6 @@ msgstr "Jumla ya Amana:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Fuatilia ahadi na maendeleo ya malipo kwa ajili ya kampeni na bajeti."
-
-#: 
-msgid "Type:"
-msgstr "Aina:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8723,10 +8703,6 @@ msgid "Disable 2FA"
 msgstr "Zima 2FA"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "Toa data zote za watu katika mfumo wa ChMeetings."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "Toa kwa CSV ya ChMeetings"
 
@@ -8981,10 +8957,6 @@ msgid "Add Your First Property Type"
 msgstr "Ongeza Aina Yako ya Kwanza ya Mali"
 
 #: 
-msgid "Auto-calculated from counts above"
-msgstr "Imehesabiwa kiotomatiki kutoka hesabu hapo juu"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Kwa kufuta sehemu hii, utapoteza bila kurudi data zote za wanakikundi zilizowekwa kwa sehemu hii!"
 
@@ -9173,10 +9145,6 @@ msgstr "Usajili wa Kiosk Umezimwa"
 #: 
 msgid "Kiosk not found"
 msgstr "Kiosk haikupatikana"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "Unganisha tukio hili na kikundi kwa ajili ya kuingia kupitia kiosk. Wanakikundi wataonekana kwenye kiosk."
 
 #: 
 msgid "Linked Group"
@@ -10378,10 +10346,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "Lazimisha watumiaji wote kujiandikisha katika uthibitishaji wa hatua mbili"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "Ramani itaonekana hapa baada ya anwani ya mtaa kuhifadhiwa. Kuratibu zinagunduliwa kiotomatiki — hakuna uingizaji wa mkono unaohitajika."
-
-#: 
 msgid "Active Groups"
 msgstr "Vikundi Vilivyo Hai"
 
@@ -10432,10 +10396,6 @@ msgstr "Familia haina anwani ya mtaa kwa ajili ya kuandika ramani"
 #: 
 msgid "Father"
 msgstr "Baba"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "Kuratibu zilizogeokodiwa:"
 
 #: 
 msgid "Geocoding failed"
@@ -10516,10 +10476,6 @@ msgstr "Ukanda wa Saa"
 #: 
 msgid "Total Groups"
 msgstr "Jumla ya Vikundi"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "Husasishwa kiotomatiki kila wakati inapohifadhiwa."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10702,14 +10658,6 @@ msgstr "Ongeza Sifa Yako ya Kwanza"
 #: 
 msgid "Add a Person"
 msgstr "Ongeza Mtu"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Ongeza ahadi mpya ya sadaka"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "Ongeza malipo kwenye amana ya sasa"
 
 #: 
 msgid "Add all cart items to a group"
@@ -10928,10 +10876,6 @@ msgid "Check Out"
 msgstr "Ondoka"
 
 #: 
-msgid "Check Out Person"
-msgstr "Ondoa Mtu"
-
-#: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
 msgstr "Angalia masasisho na sasisha usakinishaji wako wa ChurchCRM"
 
@@ -11056,10 +11000,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "Tengeneza nakala ya mikono angalau mara moja kwa wiki, au wezesha programu-jalizi ya Hifadhi ya Nje kwa nakala za kiotomatiki za WebDAV kwa ratiba."
 
 #: 
-msgid "Create a new deposit"
-msgstr "Tengeneza amana mpya ya sadaka"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "Tengeneza na hariri maelezo ya familia na uhusiano"
 
@@ -11114,10 +11054,6 @@ msgstr "Fafanua sifa maalum za kikundi kwa washiriki"
 #: 
 msgid "Delete All"
 msgstr "Futa Yote"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "Futa Ingizo la Usajili"
 
 #: 
 msgid "Delete Family"
@@ -11400,10 +11336,6 @@ msgid "Generate directory listings and printed materials"
 msgstr "Tengeneza orodha za saraka na nyaraka za kuchapishwa"
 
 #: 
-msgid "Generate financial reports"
-msgstr "Tengeneza ripoti za fedha"
-
-#: 
 msgid "Generate financial statements and giving reports"
 msgstr "Tengeneza taarifa za fedha na ripoti za michango"
 
@@ -11632,14 +11564,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "Simamia zana za barua pepe na usanidi wa SMTP"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "Simamia majina na makundi ya matukio"
-
-#: 
-msgid "Manage event type categories"
-msgstr "Simamia makundi ya aina za matukio"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Simamia familia, watu, na taarifa za idadi ya watu"
 
@@ -11770,10 +11694,6 @@ msgstr "Hakuna Siku za Kuzaliwa"
 #: 
 msgid "No Check-ins"
 msgstr "Hakuna Usajili"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "Hakuna Ufuatiliaji wa Amana"
 
 #: 
 msgid "No Deposits"

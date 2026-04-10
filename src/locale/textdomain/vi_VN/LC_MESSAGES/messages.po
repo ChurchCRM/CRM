@@ -7349,14 +7349,6 @@ msgid "Select Event for Check-In"
 msgstr "Chọn sự kiện để điểm danh"
 
 #: 
-msgid "Select start and end date/time"
-msgstr "Chọn ngày/giờ bắt đầu và kết thúc"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "Chọn sự kiện để điểm danh cho các thành viên trong giỏ hàng"
-
-#: 
 msgid "Sermon / Event Text"
 msgstr "Nội dung Bài giảng / Sự kiện"
 
@@ -7720,10 +7712,6 @@ msgstr "Sử dụng các công cụ bên ngoài để mã hóa bản sao lưu tr
 #: 
 msgid "User authentication"
 msgstr "Xác thực người dùng"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "Người dùng phải có quyền Thêm sự kiện"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8246,10 +8234,6 @@ msgid "State (Other)"
 msgstr "Tỉnh/Thành phố (Khác)"
 
 #: 
-msgid "Status:"
-msgstr "Trạng thái:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Tóm tắt lời hứa so với thanh toán theo quỹ."
 
@@ -8300,10 +8284,6 @@ msgstr "Tổng số lần gửi tiền:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Theo dõi lời hứa và tiến độ thanh toán cho các chiến dịch."
-
-#: 
-msgid "Type:"
-msgstr "Loại:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8730,10 +8710,6 @@ msgid "Disable 2FA"
 msgstr "Tắt 2FA"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "Xuất tất cả dữ liệu người dùng theo định dạng ChMeetings."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "Xuất sang ChMeetings CSV"
 
@@ -8985,10 +8961,6 @@ msgid "Add Your First Property Type"
 msgstr "Thêm Loại Thuộc tính Đầu tiên của Bạn"
 
 #: 
-msgid "Auto-calculated from counts above"
-msgstr "Tự động tính từ các số đếm ở trên"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Bằng cách xóa trường này, bạn sẽ mất vĩnh viễn tất cả dữ liệu thành viên nhóm được gán cho trường này!"
 
@@ -9176,10 +9148,6 @@ msgstr "Đã tắt đăng ký ki-ốt"
 #: 
 msgid "Kiosk not found"
 msgstr "Không tìm thấy ki-ốt"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "Liên kết sự kiện này với một nhóm để sử dụng chức năng check-in ki-ốt. Các thành viên nhóm sẽ xuất hiện trên ki-ốt."
 
 #: 
 msgid "Linked Group"
@@ -10380,10 +10348,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "Yêu cầu tất cả người dùng đăng ký xác thực hai yếu tố"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "Bản đồ sẽ xuất hiện ở đây khi địa chỉ được lưu. Tọa độ được phát hiện tự động — không cần nhập thủ công."
-
-#: 
 msgid "Active Groups"
 msgstr "Nhóm hoạt động"
 
@@ -10434,10 +10398,6 @@ msgstr "Gia đình không có địa chỉ để mã hóa địa lý"
 #: 
 msgid "Father"
 msgstr "Cha"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "Tọa độ đã mã hóa địa lý:"
 
 #: 
 msgid "Geocoding failed"
@@ -10518,10 +10478,6 @@ msgstr "Múi giờ"
 #: 
 msgid "Total Groups"
 msgstr "Tổng số nhóm"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "Tự động cập nhật mỗi lần lưu."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10698,14 +10654,6 @@ msgstr "Them thuoc tinh dau tien cua ban"
 #: 
 msgid "Add a Person"
 msgstr "Them mot nguoi"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Them cam ket dang hien moi"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "Them khoan dang hien vao dot thu hien tai"
 
 #: 
 msgid "Add all cart items to a group"
@@ -10924,10 +10872,6 @@ msgid "Check Out"
 msgstr "Dang ky ra"
 
 #: 
-msgid "Check Out Person"
-msgstr "Dang ky ra cho nguoi"
-
-#: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
 msgstr "Kiem tra cap nhat va nang cap cai dat ChurchCRM cua ban"
 
@@ -11052,10 +10996,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "Tao ban sao luu thu cong it nhat moi tuan mot lan, hoac bat plugin Sao luu Ngoai de tu dong sao luu WebDAV theo lich."
 
 #: 
-msgid "Create a new deposit"
-msgstr "Tao dot thu hien moi"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "Tao va chinh sua thong tin gia dinh va cac moi quan he"
 
@@ -11110,10 +11050,6 @@ msgstr "Dinh nghia thuoc tinh rieng cua nhom cho thanh vien"
 #: 
 msgid "Delete All"
 msgstr "Xoa tat ca"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "Xoa muc dang ky vao"
 
 #: 
 msgid "Delete Family"
@@ -11214,6 +11150,10 @@ msgstr "Chinh sua thuoc tinh"
 #: 
 msgid "Edit custom properties for a group member"
 msgstr "Chinh sua thuoc tinh tuy chinh cho thanh vien nhom"
+
+#: 
+msgid "Email BCC"
+msgstr "Email BCC"
 
 #: 
 msgid "Email Families"
@@ -11390,10 +11330,6 @@ msgstr "Tao bao cao dang hien hang nam cho muc dich thue"
 #: 
 msgid "Generate directory listings and printed materials"
 msgstr "Tao danh ba va tai lieu in"
-
-#: 
-msgid "Generate financial reports"
-msgstr "Tao bao cao tai chinh"
 
 #: 
 msgid "Generate financial statements and giving reports"
@@ -11628,14 +11564,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "Quan ly cong cu email va cau hinh SMTP"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "Quan ly ten su kien va danh muc"
-
-#: 
-msgid "Manage event type categories"
-msgstr "Quan ly danh muc loai su kien"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Quan ly gia dinh, ca nhan va thong tin nhan khau hoc"
 
@@ -11766,10 +11694,6 @@ msgstr "Khong co ngay sinh nhat"
 #: 
 msgid "No Check-ins"
 msgstr "Khong co dang ky vao"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "Khong co theo doi dot thu hien"
 
 #: 
 msgid "No Deposits"
@@ -14452,6 +14376,10 @@ msgid "Appearance"
 msgstr "Giao diện"
 
 #: 
+msgid "Azure"
+msgstr "Azure"
+
+#: 
 msgid "Back to Finance Dashboard"
 msgstr "Quay lại Bảng điều khiển Tài chính"
 
@@ -14748,4 +14676,740 @@ msgstr "Vàng"
 #: 
 msgid "Your current access levels (read-only)"
 msgstr "Các cấp độ truy cập hiện tại của bạn (chỉ đọc)"
+
+#: 
+msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
+msgstr "(ví dụ: Giáo dân, Khách, Trẻ em) để các tình nguyện viên có thể ghi số lượng tại đây."
+
+#: 
+msgid "1. Sunday School Class"
+msgstr "1. Lớp Giáo lý Chúa nhật"
+
+#: 
+msgid "2. Event Type"
+msgstr "2. Loại sự kiện"
+
+#: 
+msgid "3. Event"
+msgstr "3. Sự kiện"
+
+#: 
+msgid "4. Kiosk"
+msgstr "4. Kiosk"
+
+#: 
+msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
+msgstr "Một lớp là một Nhóm có loại \"Giáo lý Chúa nhật\". Bao gồm học viên và giáo lý viên (giáo dân có vai trò)."
+
+#: 
+msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
+msgstr "Một nhóm được liên kết gắn sự kiện này với danh sách lớp học hoặc hội đoàn. Khi sự kiện được gán cho Kiosk, kiosk sẽ tải danh sách thành viên nhóm và hiển thị dưới dạng danh sách đăng ký. Đối với các lớp Giáo lý Chúa nhật, hãy liên kết nhóm lớp ở đây để tình nguyện viên có thể điểm danh học viên từ máy tính bảng."
+
+#: 
+msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr "Một lần tổ chức cụ thể (ví dụ: \"Mẫu giáo — 12/4\"). Kế thừa cài đặt mặc định từ loại và được liên kết với nhóm lớp qua đối tượng tham dự. Đây là cơ sở để tình nguyện viên điểm danh."
+
+#: 
+msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr "Máy tính bảng được gán cho một sự kiện. Kiosk tải danh sách nhóm được liên kết của sự kiện và hiển thị để đăng ký. Nếu không có nhóm liên kết, kiosk sẽ không có danh sách để hiển thị."
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "Thêm khách vãng lai / Người viếng thăm"
+
+#: 
+msgid "Add categories on the Event Type page"
+msgstr "Thêm danh mục trên trang Loại sự kiện"
+
+#: 
+msgid "Add people to your cart first, then come back to check them in to an event."
+msgstr "Thêm giáo dân vào danh sách đã chọn trước, sau đó quay lại để đăng ký họ tham dự sự kiện."
+
+#: 
+msgid "All clear!"
+msgstr "Tất cả ổn!"
+
+#: 
+msgid "All events and attendance records"
+msgstr "Tất cả sự kiện và hồ sơ điểm danh"
+
+#: 
+msgid "All financial data (pledges, payments, deposits)"
+msgstr "Tất cả dữ liệu tài chính (cam kết tài chính, thanh toán, tiền gửi)"
+
+#: 
+msgid "All groups, roles, and memberships"
+msgstr "Tất cả hội đoàn, vai trò và thành viên"
+
+#: 
+msgid "All people and family records"
+msgstr "Tất cả hồ sơ giáo dân và gia đình"
+
+#: 
+msgid "All system settings and custom fields"
+msgstr "Tất cả cài đặt hệ thống và trường tùy chỉnh"
+
+#: 
+msgid "All uploaded photos and documents"
+msgstr "Tất cả ảnh và tài liệu đã tải lên"
+
+#: 
+msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
+msgstr "Loại sự kiện là một mẫu — tên, thời gian bắt đầu mặc định, tần suất lặp lại, danh mục đếm điểm danh. Tùy chọn liên kết với một nhóm lớp làm đối tượng tham dự mặc định."
+
+#: 
+msgid "Attendance record deleted."
+msgstr "Đã xóa hồ sơ điểm danh."
+
+#: 
+msgid "Audit"
+msgstr "Kiểm tra"
+
+#: 
+msgid "Audit Events"
+msgstr "Kiểm tra sự kiện"
+
+#: 
+msgid "Auto-totalled from counts at right"
+msgstr "Tự động tính tổng từ các số liệu bên phải"
+
+#: 
+msgid "Back to Events"
+msgstr "Quay lại Sự kiện"
+
+#: 
+msgid "Back to Events Dashboard"
+msgstr "Quay lại Bảng điều khiển Sự kiện"
+
+#: 
+msgid "Backup failed. You can still proceed with the reset, but your data will be lost."
+msgstr "Sao lưu thất bại. Bạn vẫn có thể tiếp tục đặt lại, nhưng dữ liệu sẽ bị mất."
+
+#: 
+msgid "Backup ready!"
+msgstr "Sao lưu sẵn sàng!"
+
+#: 
+msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
+msgstr "Trước khi đặt lại, chúng tôi khuyến nghị mạnh mẽ tải xuống bản sao lưu dữ liệu hiện tại. Đây là cơ hội duy nhất để bảo tồn dữ liệu."
+
+#: 
+msgid "Bulk-create a series of recurring events"
+msgstr "Tạo hàng loạt chuỗi sự kiện lặp lại"
+
+#: 
+msgid "By"
+msgstr "Bởi"
+
+#: 
+msgid "Cannot check in to an inactive event. Activate the event first."
+msgstr "Không thể đăng ký tham dự sự kiện không hoạt động. Hãy kích hoạt sự kiện trước."
+
+#: 
+msgid "Change"
+msgstr "Thay đổi"
+
+#: 
+msgid "Check In All"
+msgstr "Đăng ký tất cả"
+
+#: 
+msgid "Check In Family"
+msgstr "Đăng ký gia đình"
+
+#: 
+msgid "Check Out All"
+msgstr "Đăng xuất tất cả"
+
+#: 
+msgid "Check in all %d family members to a single event."
+msgstr "Điểm danh tất cả %d thành viên gia đình vào một sự kiện duy nhất."
+
+#: 
+msgid "Check out"
+msgstr "Đăng xuất"
+
+#: 
+msgid "Check-in By"
+msgstr "Đăng ký bởi"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "Đăng ký thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
+msgstr "Đăng ký bị tắt cho sự kiện không hoạt động. Kích hoạt sự kiện từ Bảng điều khiển Sự kiện để bật đăng ký."
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "Đăng xuất thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Checked in to event: %s"
+msgstr "Đã đăng ký tham dự sự kiện: %s"
+
+#: 
+msgid "Checked out from event: %s"
+msgstr "Đã đăng xuất khỏi sự kiện: %s"
+
+#: 
+msgid "Close All Stuck Events"
+msgstr "Đóng tất cả sự kiện bị kẹt"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "Xác nhận đăng xuất"
+
+#: 
+msgid "Create Repeat Events"
+msgstr "Tạo sự kiện lặp lại"
+
+#: 
+msgid "Create Today's Event"
+msgstr "Tạo sự kiện hôm nay"
+
+#: 
+msgid "Create a new event type with recurrence and attendance settings"
+msgstr "Tạo loại sự kiện mới với cài đặt lặp lại và điểm danh"
+
+#: 
+msgid "Create one now"
+msgstr "Tạo ngay bây giờ"
+
+#: 
+msgid "Create today's class event and link it to this class for kiosk check-in"
+msgstr "Tạo sự kiện lớp hôm nay và liên kết với lớp này để đăng ký qua kiosk"
+
+#: 
+msgid "Creating backup..."
+msgstr "Đang tạo bản sao lưu..."
+
+#: 
+msgid "Creating..."
+msgstr "Đang tạo..."
+
+#: 
+msgid "Database + uploaded photos (larger)"
+msgstr "Cơ sở dữ liệu + ảnh đã tải lên (lớn hơn)"
+
+#: 
+msgid "Database dump only (.sql)"
+msgstr "Chỉ kết xuất cơ sở dữ liệu (.sql)"
+
+#: 
+msgid "Date Range"
+msgstr "Phạm vi ngày"
+
+#: 
+msgid "Date range cannot exceed 1 year"
+msgstr "Phạm vi ngày không được vượt quá 1 năm"
+
+#: 
+msgid "Deactivate"
+msgstr "Hủy kích hoạt"
+
+#: 
+msgid "Delete Event Type"
+msgstr "Xóa loại sự kiện"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "Xóa hồ sơ điểm danh?"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "Xóa hồ sơ đăng ký cho"
+
+#: 
+msgid "Delete this event?"
+msgstr "Xóa sự kiện này?"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "Xóa sự kiện cũng sẽ xóa tất cả số liệu điểm danh. Không thể hoàn tác."
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "Xóa loại sự kiện này sẽ KHÔNG xóa các sự kiện hiện có. Bạn có chắc không?"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "Xóa sự kiện này cũng sẽ xóa tất cả hồ sơ điểm danh. Không thể hoàn tác."
+
+#: 
+msgid "Destructive Operation"
+msgstr "Thao tác xóa dữ liệu"
+
+#: 
+msgid "Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field."
+msgstr "Chỉnh sửa tên danh mục và nhấn Lưu, hoặc dùng biểu tượng thùng rác để xóa. Thêm hàng mới qua trường ở cuối."
+
+#: 
+msgid "End Time"
+msgstr "Thời gian kết thúc"
+
+#: 
+msgid "End time must be after start time."
+msgstr "Thời gian kết thúc phải sau thời gian bắt đầu."
+
+#: 
+msgid "Ended"
+msgstr "Đã kết thúc"
+
+#: 
+msgid "Ends"
+msgstr "Kết thúc"
+
+#: 
+msgid "Event Audit"
+msgstr "Kiểm tra sự kiện"
+
+#: 
+msgid "Event Check-in"
+msgstr "Đăng ký tham dự sự kiện"
+
+#: 
+msgid "Event Details"
+msgstr "Chi tiết sự kiện"
+
+#: 
+msgid "Event Template"
+msgstr "Mẫu sự kiện"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "Sự kiện đã tồn tại. Đang chuyển đến trang đăng ký..."
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "Sự kiện đã được tạo. Đang chuyển đến trang đăng ký..."
+
+#: 
+msgid "Event end date/time must be on or after the start date/time."
+msgstr "Ngày/giờ kết thúc sự kiện phải bằng hoặc sau ngày/giờ bắt đầu."
+
+#: 
+msgid "Event title is required."
+msgstr "Tiêu đề sự kiện là bắt buộc."
+
+#: 
+msgid "Event type ID is required"
+msgstr "ID loại sự kiện là bắt buộc"
+
+#: 
+msgid "Event type ID or group ID is required"
+msgstr "ID loại sự kiện hoặc ID nhóm là bắt buộc"
+
+#: 
+msgid "Event type has no date configured for yearly recurrence"
+msgstr "Loại sự kiện chưa được cấu hình ngày cho lặp lại hàng năm"
+
+#: 
+msgid "Event type has no day-of-week configured for weekly recurrence"
+msgstr "Loại sự kiện chưa được cấu hình ngày trong tuần cho lặp lại hàng tuần"
+
+#: 
+msgid "Event type has no recurrence pattern configured"
+msgstr "Loại sự kiện chưa được cấu hình mẫu lặp lại"
+
+#: 
+msgid "Event type has no valid day-of-month configured for monthly recurrence"
+msgstr "Loại sự kiện chưa được cấu hình ngày trong tháng hợp lệ cho lặp lại hàng tháng"
+
+#: 
+msgid "Events will be created for every matching occurrence within this date range."
+msgstr "Sự kiện sẽ được tạo cho mỗi lần phù hợp trong phạm vi ngày này."
+
+#: 
+msgid "Every month on the"
+msgstr "Mỗi tháng vào ngày"
+
+#: 
+msgid "Every week on"
+msgstr "Mỗi tuần vào"
+
+#: 
+msgid "Every year on"
+msgstr "Mỗi năm vào"
+
+#: 
+msgid "Everyone is checked in!"
+msgstr "Tất cả đã đăng ký!"
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "Không thể tạo lớp. Vui lòng thử lại."
+
+#: 
+msgid "Failed to create event."
+msgstr "Không thể tạo sự kiện."
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "Không thể tạo sự kiện. Vui lòng thử lại."
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "Không thể xóa. Vui lòng thử lại."
+
+#: 
+msgid "Fastest workflow:"
+msgstr "Quy trình nhanh nhất:"
+
+#: 
+msgid "Find past events that are still active or have un-checked-out attendees"
+msgstr "Tìm các sự kiện đã qua vẫn còn hoạt động hoặc có người tham dự chưa đăng xuất"
+
+#: 
+msgid "Format: MM-DD (e.g. 04-12 for April 12)"
+msgstr "Định dạng: MM-DD (ví dụ: 04-12 cho ngày 12 tháng 4)"
+
+#: 
+msgid "Group Roster"
+msgstr "Danh sách nhóm"
+
+#: 
+msgid "Hide Advanced Options"
+msgstr "Ẩn tùy chọn nâng cao"
+
+#: 
+msgid "How Sunday School + Events + Kiosks fit together"
+msgstr "Cách Giáo lý Chúa nhật + Sự kiện + Kiosk hoạt động cùng nhau"
+
+#: 
+msgid "Invalid date for %s — expected YYYY-MM-DD"
+msgstr "Ngày không hợp lệ cho %s — dự kiến YYYY-MM-DD"
+
+#: 
+msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr "Định dạng ngày không hợp lệ cho rangeStart hoặc rangeEnd"
+
+#: 
+msgid "Invalid date format."
+msgstr "Định dạng ngày không hợp lệ."
+
+#: 
+msgid "Invalid date; expected format YYYY-MM-DD"
+msgstr "Ngày không hợp lệ; định dạng dự kiến YYYY-MM-DD"
+
+#: 
+msgid "Invalid event type ID"
+msgstr "ID loại sự kiện không hợp lệ"
+
+#: 
+msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
+msgstr "Định dạng lặp lại hàng năm không hợp lệ; dự kiến MM-DD (ví dụ: 04-12)"
+
+#: 
+msgid "Just now"
+msgstr "Vừa xong"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "Để trống để đăng xuất mà không ghi lại người giám sát."
+
+#: 
+msgid "Link events to a group for Kiosk check-in functionality."
+msgstr "Liên kết sự kiện với nhóm để sử dụng chức năng đăng ký qua Kiosk."
+
+#: 
+msgid "Linked Groups"
+msgstr "Nhóm được liên kết"
+
+#: 
+msgid "Looking for stuck events..."
+msgstr "Đang tìm sự kiện bị kẹt..."
+
+#: 
+msgid "Manage event names, recurrence patterns, and attendance counts"
+msgstr "Quản lý tên sự kiện, mẫu lặp lại và số liệu điểm danh"
+
+#: 
+msgid "Missing required field: %s"
+msgstr "Thiếu trường bắt buộc: %s"
+
+#: 
+msgid "No Events Today"
+msgstr "Không có sự kiện hôm nay"
+
+#: 
+msgid "No Group"
+msgstr "Không có nhóm"
+
+#: 
+msgid "No active assignment"
+msgstr "Không có phân công nào đang hoạt động"
+
+#: 
+msgid "No active events found."
+msgstr "Không tìm thấy sự kiện đang hoạt động."
+
+#: 
+msgid "No attendance count categories defined for this event type yet."
+msgstr "Chưa có danh mục đếm điểm danh nào được xác định cho loại sự kiện này."
+
+#: 
+msgid "No one has been checked in to this event yet."
+msgstr "Chưa có ai đăng ký tham dự sự kiện này."
+
+#: 
+msgid "No past events are still marked Active."
+msgstr "Không có sự kiện đã qua nào vẫn được đánh dấu là Hoạt động."
+
+#: 
+msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr "Mở một lớp → nhấn \"Tạo sự kiện hôm nay\" — sự kiện được tạo và liên kết với lớp trong một thao tác, sau đó bạn đến trang đăng ký sẵn sàng cho kiosk hoặc đăng ký trực tiếp."
+
+#: 
+msgid "Optional Settings"
+msgstr "Cài đặt tùy chọn"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "Tùy chọn — ghi lại người đang đăng xuất cho người này (ví dụ: phụ huynh đón con)."
+
+#: 
+msgid "Person checked out."
+msgstr "Người đã đăng xuất."
+
+#: 
+msgid "Person is not checked in"
+msgstr "Người chưa đăng ký"
+
+#: 
+msgid "Person not in active class roster"
+msgstr "Người không có trong danh sách lớp đang hoạt động"
+
+#: 
+msgid "Pin to Calendars"
+msgstr "Ghim vào Lịch"
+
+#: 
+msgid "Please select a person to check in."
+msgstr "Vui lòng chọn một người để đăng ký."
+
+#: 
+msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
+msgstr "Được điền tự động dựa trên loại sự kiện này — đối với các loại lặp lại, ngày là lần tiếp theo sau sự kiện cuối cùng của loại này, và thời gian khớp với thời gian bắt đầu mặc định của loại."
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "Ngày kết thúc phạm vi phải bằng hoặc sau ngày bắt đầu phạm vi."
+
+#: 
+msgid "Range end must be a valid YYYY-MM-DD date."
+msgstr "Ngày kết thúc phạm vi phải là ngày hợp lệ theo định dạng YYYY-MM-DD."
+
+#: 
+msgid "Range start must be a valid YYYY-MM-DD date."
+msgstr "Ngày bắt đầu phạm vi phải là ngày hợp lệ theo định dạng YYYY-MM-DD."
+
+#: 
+msgid "Range start must be before range end"
+msgstr "Ngày bắt đầu phạm vi phải trước ngày kết thúc"
+
+#: 
+msgid "Range start must be before range end."
+msgstr "Ngày bắt đầu phạm vi phải trước ngày kết thúc."
+
+#: 
+msgid "RangeEnd must be on or after RangeStart"
+msgstr "RangeEnd phải bằng hoặc sau RangeStart"
+
+#: 
+msgid "Recommended"
+msgstr "Được khuyến nghị"
+
+#: 
+msgid "Required for Kiosk"
+msgstr "Bắt buộc cho Kiosk"
+
+#: 
+msgid "Resetting will permanently delete:"
+msgstr "Đặt lại sẽ xóa vĩnh viễn:"
+
+#: 
+msgid "SQL Only"
+msgstr "Chỉ SQL"
+
+#: 
+msgid "Save Time"
+msgstr "Tiết kiệm thời gian"
+
+#: 
+msgid "Save changes to this category name"
+msgstr "Lưu thay đổi cho tên danh mục này"
+
+#: 
+msgid "Select an event type…"
+msgstr "Chọn loại sự kiện…"
+
+#: 
+msgid "Select start and end date/time."
+msgstr "Chọn ngày/giờ bắt đầu và kết thúc."
+
+#: 
+msgid "Show More Options"
+msgstr "Hiển thị thêm tùy chọn"
+
+#: 
+msgid "Skip"
+msgstr "Bỏ qua"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "Bỏ qua & Đăng xuất"
+
+#: 
+msgid "Start Check-in"
+msgstr "Bắt đầu đăng ký"
+
+#: 
+msgid "Starts"
+msgstr "Bắt đầu"
+
+#: 
+msgid "Step 1: Create a Backup"
+msgstr "Bước 1: Tạo bản sao lưu"
+
+#: 
+msgid "Step 2: Reset Database"
+msgstr "Bước 2: Đặt lại cơ sở dữ liệu"
+
+#: 
+msgid "Still Checked In"
+msgstr "Vẫn đang đăng ký"
+
+#: 
+msgid "Stuck Events"
+msgstr "Sự kiện bị kẹt"
+
+#: 
+msgid "Take Attendance"
+msgstr "Điểm danh"
+
+#: 
+msgid "The Events module is disabled"
+msgstr "Mô-đun Sự kiện bị tắt"
+
+#: 
+msgid "The same start and end time will be used for all generated events."
+msgstr "Thời gian bắt đầu và kết thúc giống nhau sẽ được sử dụng cho tất cả sự kiện được tạo."
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "Không có sự kiện nào được lên lịch cho hôm nay"
+
+#: 
+msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
+msgstr "Đây là các nhóm đếm số lượng — tình nguyện viên điền vào sau sự kiện để bảng điều khiển có thể phân tích điểm danh (ví dụ: bao nhiêu giáo dân so với khách). Chúng tách biệt với các đăng ký cá nhân trên trang Đăng ký."
+
+#: 
+msgid "This event is inactive."
+msgstr "Sự kiện này không hoạt động."
+
+#: 
+msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr "Trang này cho phép bạn xóa vĩnh viễn tất cả dữ liệu trong cơ sở dữ liệu ChurchCRM. Hành động này không thể hoàn tác."
+
+#: 
+msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
+msgstr "Báo cáo này liệt kê mọi sự kiện có ngày kết thúc đã qua nhưng vẫn được đánh dấu là Hoạt động. Nguyên nhân phổ biến: tình nguyện viên quên nhấn 'Đăng xuất', kiosk mất kết nối, hoặc sự kiện được tạo rồi bỏ qua. Các sự kiện cũ (từ những năm trước) chưa bao giờ bị hủy kích hoạt cũng hiển thị ở đây. Cột 'Vẫn đang đăng ký' cho biết liệu có ai bị bỏ lại giữa chừng không. Đóng sự kiện từ báo cáo này sẽ đăng xuất tất cả mọi người (sử dụng thời gian hiện tại) và đánh dấu sự kiện là Không hoạt động."
+
+#: 
+msgid "This title will be used for all generated events."
+msgstr "Tiêu đề này sẽ được sử dụng cho tất cả sự kiện được tạo."
+
+#: 
+msgid "Today's Events"
+msgstr "Sự kiện hôm nay"
+
+#: 
+msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
+msgstr "Quá nhiều lần xảy ra (%d) — hãy thu hẹp phạm vi ngày. Tối đa cho phép: %d"
+
+#: 
+msgid "Type RESET to confirm"
+msgstr "Nhập RESET để xác nhận"
+
+#: 
+msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
+msgstr "Sử dụng nút ở trên để tạo sự kiện hôm nay chỉ với một cú nhấp. Nó sẽ được tự động liên kết với lớp này để Kiosk có thể tải danh sách."
+
+#: 
+msgid "Use this form to bulk-create a series of recurring events. Each event is created individually and can be edited or deleted independently after creation."
+msgstr "Sử dụng biểu mẫu này để tạo hàng loạt chuỗi sự kiện lặp lại. Mỗi sự kiện được tạo riêng lẻ và có thể được chỉnh sửa hoặc xóa độc lập sau khi tạo."
+
+#: 
+msgid "Used as the default start time when creating events of this type."
+msgstr "Được sử dụng làm thời gian bắt đầu mặc định khi tạo sự kiện loại này."
+
+#: 
+msgid "User must have Add Event permission and the Events module must be enabled"
+msgstr "Người dùng phải có quyền Thêm sự kiện và mô-đun Sự kiện phải được bật"
+
+#: 
+msgid "Valid startDate and endDate are required"
+msgstr "Cần có startDate và endDate hợp lệ"
+
+#: 
+msgid "View Event"
+msgstr "Xem sự kiện"
+
+#: 
+msgid "What are these for?"
+msgstr "Những thứ này dùng để làm gì?"
+
+#: 
+msgid "What does this find?"
+msgstr "Điều này tìm kiếm gì?"
+
+#: 
+msgid "What is this for?"
+msgstr "Cái này dùng để làm gì?"
+
+#: 
+msgid "Who is bringing them in?"
+msgstr "Ai đang đưa họ vào?"
+
+#: 
+msgid "You must select a valid recurrence pattern."
+msgstr "Bạn phải chọn mẫu lặp lại hợp lệ."
+
+#: 
+msgid "You must select an event type."
+msgstr "Bạn phải chọn loại sự kiện."
+
+#: 
+msgid "You must specify a date range."
+msgstr "Bạn phải chỉ định phạm vi ngày."
+
+#: 
+msgid "checked in"
+msgstr "đã đăng ký"
+
+#: 
+msgid "e.g., Sunday Worship Service"
+msgstr "ví dụ: Thánh lễ Chúa nhật"
+
+#: 
+msgid "endDate must be after startDate"
+msgstr "endDate phải sau startDate"
+
+#: 
+msgid "eventIds must be a non-empty array"
+msgstr "eventIds phải là mảng không rỗng"
+
+#: 
+msgid "invalid recurrence type"
+msgstr "loại lặp lại không hợp lệ"
+
+#: 
+msgid "personIds must be a non-empty array"
+msgstr "personIds phải là mảng không rỗng"
+
+#: 
+msgid "to enable the reset button"
+msgstr "để kích hoạt nút đặt lại"
 

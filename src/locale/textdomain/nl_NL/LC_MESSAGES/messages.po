@@ -7308,14 +7308,6 @@ msgid "Select Event for Check-In"
 msgstr "Selecteer Evenement voor Inchecken"
 
 #: 
-msgid "Select start and end date/time"
-msgstr "Selecteer start- en einddatum/tijd"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "Selecteer het evenement om uw winkelwagenbezoekers in te checken"
-
-#: 
 msgid "Sermon / Event Text"
 msgstr "Preek / Evenementtekst"
 
@@ -7680,10 +7672,6 @@ msgstr "Gebruik externe tools (GPG, 7-Zip) om back-ups te versleutelen voordat u
 #: 
 msgid "User authentication"
 msgstr "Gebruikersverificatie"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "Gebruiker moet toestemming voor Evenement Toevoegen hebben"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8206,10 +8194,6 @@ msgid "State (Other)"
 msgstr "Staat (Ander)"
 
 #: 
-msgid "Status:"
-msgstr "Status:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Samenvatting van toezeggingen versus betalingen per fonds voor het fiscale jaar."
 
@@ -8260,10 +8244,6 @@ msgstr "Totale Stortingen:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Volg toezeggingen en betalingsvoortgang voor campagnes en budgettering van fiscale jaren."
-
-#: 
-msgid "Type:"
-msgstr "Type:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8690,10 +8670,6 @@ msgid "Disable 2FA"
 msgstr "2FA Uitschakelen"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "Exporteer alle persoongegevens in ChMeetings-indeling voor import in externe systemen."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "Exporteer naar ChMeetings CSV"
 
@@ -8948,10 +8924,6 @@ msgid "Add Your First Property Type"
 msgstr "Voeg Uw Eerste Eigenschapstype Toe"
 
 #: 
-msgid "Auto-calculated from counts above"
-msgstr "Automatisch berekend uit bovenstaande tellingen"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Door dit veld te verwijderen, verliest u onherroepelijk alle groepslidgegevens die aan dit veld zijn toegewezen!"
 
@@ -9140,10 +9112,6 @@ msgstr "Kiosk registratie uitgeschakeld"
 #: 
 msgid "Kiosk not found"
 msgstr "Kiosk niet gevonden"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "Koppel dit evenement aan een groep voor kiosk check-in functionaliteit. De groepsleden worden weergegeven op de kiosk."
 
 #: 
 msgid "Linked Group"
@@ -10345,10 +10313,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "Vereis dat alle gebruikers zich inschrijven voor tweefactorauthenticatie"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "Een kaart verschijnt hier zodra een straatadres is opgeslagen. Coördinaten worden automatisch gedetecteerd — geen handmatige invoer vereist."
-
-#: 
 msgid "Active Groups"
 msgstr "Actieve groepen"
 
@@ -10399,10 +10363,6 @@ msgstr "Familie heeft geen straatadres om te geocoderen"
 #: 
 msgid "Father"
 msgstr "Vader"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "Gegeocodeerde coördinaten:"
 
 #: 
 msgid "Geocoding failed"
@@ -10483,10 +10443,6 @@ msgstr "Tijdzone"
 #: 
 msgid "Total Groups"
 msgstr "Totaal groepen"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "Automatisch bijgewerkt bij elke opslag."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10669,14 +10625,6 @@ msgstr "Uw eerste eigenschap toevoegen"
 #: 
 msgid "Add a Person"
 msgstr "Een persoon toevoegen"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Een nieuwe toezegging toevoegen"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "Een betaling toevoegen aan de huidige storting"
 
 #: 
 msgid "Add all cart items to a group"
@@ -10895,10 +10843,6 @@ msgid "Check Out"
 msgstr "Uitchecken"
 
 #: 
-msgid "Check Out Person"
-msgstr "Persoon uitchecken"
-
-#: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
 msgstr "Controleer op updates en upgrade uw ChurchCRM-installatie"
 
@@ -11023,10 +10967,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "Maak minimaal eens per week een handmatige back-up of schakel de plug-in Externe back-up in voor automatische WebDAV-back-ups op een schema."
 
 #: 
-msgid "Create a new deposit"
-msgstr "Nieuwe storting aanmaken"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "Gezinsinformatie en relaties aanmaken en bewerken"
 
@@ -11081,10 +11021,6 @@ msgstr "Groepsspecifieke eigenschappen voor leden definiëren"
 #: 
 msgid "Delete All"
 msgstr "Alles verwijderen"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "Incheckregistratie verwijderen"
 
 #: 
 msgid "Delete Family"
@@ -11367,10 +11303,6 @@ msgid "Generate directory listings and printed materials"
 msgstr "Ledenlijsten en drukwerk genereren"
 
 #: 
-msgid "Generate financial reports"
-msgstr "Financiële rapporten genereren"
-
-#: 
 msgid "Generate financial statements and giving reports"
 msgstr "Financiële overzichten en giftenrapporten genereren"
 
@@ -11603,14 +11535,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "E-mailhulpmiddelen en SMTP-configuratie beheren"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "Evenementnamen en categorieën beheren"
-
-#: 
-msgid "Manage event type categories"
-msgstr "Evenementtypecategorieën beheren"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Gezinnen, personen en demografische informatie beheren"
 
@@ -11741,10 +11665,6 @@ msgstr "Geen verjaardagen"
 #: 
 msgid "No Check-ins"
 msgstr "Geen incheckregistraties"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "Geen stortingsopvolging"
 
 #: 
 msgid "No Deposits"

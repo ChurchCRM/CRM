@@ -7306,14 +7306,6 @@ msgid "Select Event for Check-In"
 msgstr "Valitse tapahtuma sisäänkirjausta varten"
 
 #: 
-msgid "Select start and end date/time"
-msgstr "Valitse alkamis- ja päättymispäivämäärä/-aika"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "Valitse tapahtuma ostoskorisi jäsenten sisäänkirjaamista varten"
-
-#: 
 msgid "Sermon / Event Text"
 msgstr "Saarna / Tapahtuman teksti"
 
@@ -7678,10 +7670,6 @@ msgstr "Käytä ulkoisia työkaluja (GPG, 7-Zip) varmuuskopioiden salaamiseen en
 #: 
 msgid "User authentication"
 msgstr "Käyttäjän todennus"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "Käyttäjällä on oltava Lisää tapahtuma -käyttöoikeus"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8204,10 +8192,6 @@ msgid "State (Other)"
 msgstr "Osavaltio/Maakunta (Muu)"
 
 #: 
-msgid "Status:"
-msgstr "Tila:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Yhteenveto sitoumuksista vs. maksut rahastoittain tilikaudelta."
 
@@ -8258,10 +8242,6 @@ msgstr "Talletukset yhteensä:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Seuraa sitoumuksia ja maksujen edistymistä kampanjoissa ja tilikauden budjetoinnissa."
-
-#: 
-msgid "Type:"
-msgstr "Tyyppi:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8688,10 +8668,6 @@ msgid "Disable 2FA"
 msgstr "Poista 2FA käytöstä"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "Vie kaikki henkilötiedot ChMeetings-muodossa ulkoisten järjestelmien tuontia varten."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "Vie ChMeetings CSV:ksi"
 
@@ -8946,10 +8922,6 @@ msgid "Add Your First Property Type"
 msgstr "Lisää Ensimmäinen Ominaisuustyyppisi"
 
 #: 
-msgid "Auto-calculated from counts above"
-msgstr "Laskettu automaattisesti yllä olevista luvuista"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Poistamalla tämän kentän menetät peruuttamattomasti kaikki tälle kentälle määritetyt ryhmän jäsentiedot!"
 
@@ -9138,10 +9110,6 @@ msgstr "Kioskirekisteröinti poistettu käytöstä"
 #: 
 msgid "Kiosk not found"
 msgstr "Kioskia ei löydy"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "Linkitä tämä tapahtuma ryhmään kioski-sisäänkirjautumistoimintoa varten. Ryhmän jäsenet näkyvät kioskilla."
 
 #: 
 msgid "Linked Group"
@@ -10343,10 +10311,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "Edellytä kaikkien käyttäjien rekisteröitymistä kaksivaiheiseen todennukseen"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "Kartta näkyy tässä, kun katuosoite on tallennettu. Koordinaatit havaitaan automaattisesti — manuaalista syöttöä ei tarvita."
-
-#: 
 msgid "Active Groups"
 msgstr "Aktiiviset ryhmät"
 
@@ -10397,10 +10361,6 @@ msgstr "Perheellä ei ole katuosoitetta geokoodausta varten"
 #: 
 msgid "Father"
 msgstr "Isä"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "Geokoodatut koordinaatit:"
 
 #: 
 msgid "Geocoding failed"
@@ -10481,10 +10441,6 @@ msgstr "Aikavyöhyke"
 #: 
 msgid "Total Groups"
 msgstr "Ryhmiä yhteensä"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "Päivitetään automaattisesti jokaisen tallennuksen yhteydessä."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10667,14 +10623,6 @@ msgstr "Lisää ensimmäinen ominaisuutesi"
 #: 
 msgid "Add a Person"
 msgstr "Lisää henkilö"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Lisää uusi lupaus"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "Lisää maksu nykyiseen kolehtikeräykseen"
 
 #: 
 msgid "Add all cart items to a group"
@@ -10893,10 +10841,6 @@ msgid "Check Out"
 msgstr "Kirjaa ulos"
 
 #: 
-msgid "Check Out Person"
-msgstr "Kirjaa henkilö ulos"
-
-#: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
 msgstr "Tarkista päivitykset ja päivitä ChurchCRM-asennuksesi"
 
@@ -11021,10 +10965,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "Luo manuaalinen varmuuskopio vähintään kerran viikossa tai ota käyttöön ulkoinen varmuuskopiointilisäosa automaattisiin WebDAV-varmuuskopioihin aikataulun mukaan."
 
 #: 
-msgid "Create a new deposit"
-msgstr "Luo uusi kolehtikeräys"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "Luo ja muokkaa perhetietoja ja -suhteita"
 
@@ -11079,10 +11019,6 @@ msgstr "Määritä ryhmäkohtaiset ominaisuudet jäsenille"
 #: 
 msgid "Delete All"
 msgstr "Poista kaikki"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "Poista kirjautumismerkintä"
 
 #: 
 msgid "Delete Family"
@@ -11365,10 +11301,6 @@ msgid "Generate directory listings and printed materials"
 msgstr "Luo hakemistoluettelot ja painetut materiaalit"
 
 #: 
-msgid "Generate financial reports"
-msgstr "Luo talousraportit"
-
-#: 
 msgid "Generate financial statements and giving reports"
 msgstr "Luo tilinpäätökset ja lahjoitusraportit"
 
@@ -11601,14 +11533,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "Hallitse sähköpostityökaluja ja SMTP-asetuksia"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "Hallitse tapahtumien nimiä ja kategorioita"
-
-#: 
-msgid "Manage event type categories"
-msgstr "Hallitse tapahtumatyyppien kategorioita"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Hallitse perheitä, henkilöitä ja väestötietoja"
 
@@ -11739,10 +11663,6 @@ msgstr "Ei syntymäpäiviä"
 #: 
 msgid "No Check-ins"
 msgstr "Ei kirjautumisia"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "Ei kolehtikeräysten seurantaa"
 
 #: 
 msgid "No Deposits"
