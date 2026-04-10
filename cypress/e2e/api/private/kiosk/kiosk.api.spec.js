@@ -314,3 +314,108 @@ describe("Kiosk API - Access Control", () => {
         });
     });
 });
+
+describe("Kiosk Device Endpoint - Acceptance Enforcement", () => {
+    let createdKioskId = null;
+    let kioskCookie = null;
+
+    before(() => {
+        // Register a new unaccepted kiosk device
+        cy.setupAdminSession();
+        cy.request({
+            method: "POST",
+            url: "/kiosk/api/allowRegistration",
+        });
+
+        // Make a request as a new device to get a kiosk cookie
+        cy.clearCookies();
+        cy.request({
+            method: "GET",
+            url: "/kiosk/device/",
+            failOnStatusCode: false,
+        }).then((response) => {
+            // Extract the kioskCookie from Set-Cookie header
+            const cookies = response.headers["set-cookie"];
+            if (cookies) {
+                const cookieStr = Array.isArray(cookies)
+                    ? cookies.find((c) => c.startsWith("kioskCookie="))
+                    : cookies;
+                if (cookieStr) {
+                    kioskCookie = cookieStr.split(";")[0].split("=")[1];
+                }
+            }
+        });
+
+        // Find the new kiosk ID
+        cy.clearCookies();
+        cy.setupAdminSession({ forceLogin: true });
+        cy.request({
+            method: "GET",
+            url: "/kiosk/api/devices",
+        }).then((response) => {
+            const devices = response.body.KioskDevices || [];
+            // The unaccepted device is the most recently created one
+            const unaccepted = devices.find((k) => !k.Accepted);
+            if (unaccepted) {
+                createdKioskId = unaccepted.Id;
+            }
+        });
+    });
+
+    after(() => {
+        if (createdKioskId) {
+            cy.setupAdminSession({ forceLogin: true });
+            cy.request({
+                method: "DELETE",
+                url: `/kiosk/api/devices/${createdKioskId}`,
+                failOnStatusCode: false,
+            });
+        }
+    });
+
+    it("unaccepted kiosk should be denied checkin (403)", () => {
+        if (!kioskCookie) {
+            cy.log("No kiosk cookie available, skipping");
+            return;
+        }
+        cy.request({
+            method: "POST",
+            url: "/kiosk/device/checkin",
+            headers: { Cookie: `kioskCookie=${kioskCookie}` },
+            body: { PersonId: 1 },
+            failOnStatusCode: false,
+        }).then((response) => {
+            expect(response.status).to.be.oneOf([401, 403]);
+        });
+    });
+
+    it("unaccepted kiosk should be denied activeClassMembers (403)", () => {
+        if (!kioskCookie) {
+            cy.log("No kiosk cookie available, skipping");
+            return;
+        }
+        cy.request({
+            method: "GET",
+            url: "/kiosk/device/activeClassMembers",
+            headers: { Cookie: `kioskCookie=${kioskCookie}` },
+            failOnStatusCode: false,
+        }).then((response) => {
+            expect(response.status).to.be.oneOf([401, 403]);
+        });
+    });
+
+    it("unaccepted kiosk should be denied photo access (403)", () => {
+        if (!kioskCookie) {
+            cy.log("No kiosk cookie available, skipping");
+            return;
+        }
+        cy.request({
+            method: "GET",
+            url: "/kiosk/device/activeClassMember/1/photo",
+            headers: { Cookie: `kioskCookie=${kioskCookie}` },
+            failOnStatusCode: false,
+        }).then((response) => {
+            expect(response.status).to.be.oneOf([401, 403]);
+        });
+    });
+});

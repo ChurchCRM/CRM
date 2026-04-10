@@ -142,12 +142,12 @@ describe("Kiosk Device UI", () => {
                 cy.get("#KioskTable tbody tr", { timeout: 10000 })
                     .contains(newDevice.Name)
                     .should("be.visible");
-                // Verify "No" badge in Accepted column
+                // Verify "Pending" status badge for unaccepted kiosk
                 cy.get("#KioskTable tbody tr")
                     .contains(newDevice.Name)
                     .parents("tr")
                     .find(".badge")
-                    .contains("No")
+                    .contains("Pending")
                     .should("be.visible");
             });
         });
