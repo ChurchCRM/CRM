@@ -243,6 +243,22 @@ window.CRM.groups = {
     };
     let initFunction = function () {};
 
+    // Read a value from a TomSelect-wrapped (or plain) select. TomSelect does
+    // not always mirror its current selection back onto the underlying
+    // <option selected> attribute, so `option:selected` is unreliable here —
+    // always prefer the TomSelect instance API when available. Returns "" if
+    // nothing is selected.
+    const readSelectValue = (id) => {
+      const el = document.getElementById(id);
+      if (!el) return "";
+      if (el.tomselect) {
+        const v = el.tomselect.getValue();
+        return v == null ? "" : String(v);
+      }
+      const jqVal = window.jQuery(el).val();
+      return jqVal == null ? "" : String(jqVal);
+    };
+
     if (selectOptions.Type & window.CRM.groups.selectTypes.Group) {
       options.title = i18next.t("Select Group");
       options.message +=
@@ -251,9 +267,12 @@ window.CRM.groups = {
         ':</span>\
                   <select name="targetGroupSelection" id="targetGroupSelection" class="form-control"></select>';
       options.buttons.confirm.callback = function () {
-        selectionCallback({
-          GroupID: window.jQuery("#targetGroupSelection option:selected").val(),
-        });
+        var groupId = readSelectValue("targetGroupSelection");
+        if (!groupId) {
+          bootbox.alert(i18next.t("Please select a group."));
+          return false;
+        }
+        selectionCallback({ GroupID: groupId });
       };
     }
     if (selectOptions.Type & window.CRM.groups.selectTypes.Role) {
@@ -264,9 +283,12 @@ window.CRM.groups = {
         ':</span>\
                   <select name="targetRoleSelection" id="targetRoleSelection" class="form-control"></select>';
       options.buttons.confirm.callback = function () {
-        selectionCallback({
-          RoleID: window.jQuery("#targetRoleSelection option:selected").val(),
-        });
+        var roleId = readSelectValue("targetRoleSelection");
+        if (!roleId) {
+          bootbox.alert(i18next.t("Please select a role."));
+          return false;
+        }
+        selectionCallback({ RoleID: roleId });
       };
     }
 
@@ -299,11 +321,13 @@ window.CRM.groups = {
     if (selectOptions.Type === (window.CRM.groups.selectTypes.Group | window.CRM.groups.selectTypes.Role)) {
       options.title = i18next.t("Select Group and Role");
       options.buttons.confirm.callback = function () {
-        selection = {
-          RoleID: window.jQuery("#targetRoleSelection option:selected").val(),
-          GroupID: window.jQuery("#targetGroupSelection option:selected").val(),
-        };
-        selectionCallback(selection);
+        var groupId = readSelectValue("targetGroupSelection");
+        var roleId = readSelectValue("targetRoleSelection");
+        if (!groupId || !roleId) {
+          bootbox.alert(i18next.t("Please select both a group and a role."));
+          return false;
+        }
+        selectionCallback({ GroupID: groupId, RoleID: roleId });
       };
     }
     options.message += "</div>";

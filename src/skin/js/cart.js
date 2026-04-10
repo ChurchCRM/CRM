@@ -436,6 +436,13 @@ export class CartManager {
         Type: window.CRM.groups.selectTypes.Group | window.CRM.groups.selectTypes.Role,
       },
       (selectedRole) => {
+        // Defensive — promptSelection should already validate, but the API
+        // requires both fields and JSON.stringify silently drops `undefined`,
+        // so a missing value would otherwise yield a confusing 400.
+        if (!selectedRole?.GroupID || !selectedRole?.RoleID) {
+          this.showNotification("danger", i18next.t("Please select both a group and a role."));
+          return;
+        }
         window.CRM.APIRequest({
           method: "POST",
           path: "cart/emptyToGroup",
