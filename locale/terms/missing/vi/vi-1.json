@@ -1,14 +1,14 @@
 {
   "%d result for \"%s\"": {
-    "other": ""
+    "other": "%d kết quả cho \"%s\""
   },
-  "Email BCC": "",
+  "Email BCC": "Email BCC",
   "BCC": "",
   "N/A": "",
   "name@example.com": "",
-  "Azure": "",
+  "Azure": "Azure",
   "%d repeat event created successfully.": {
-    "other": ""
+    "other": "%d sự kiện lặp lại đã được tạo thành công."
   },
   "4. Kiosk": "",
   "Check in all %d family members to a single event.": ""
