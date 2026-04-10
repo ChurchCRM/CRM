@@ -5,6 +5,9 @@ namespace ChurchCRM\Service;
 use ChurchCRM\model\ChurchCRM\Deposit;
 use ChurchCRM\model\ChurchCRM\DonationFund;
 use ChurchCRM\model\ChurchCRM\DonationFundQuery;
+use ChurchCRM\model\ChurchCRM\Event;
+use ChurchCRM\model\ChurchCRM\EventType;
+use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FundRaiser;
 use ChurchCRM\model\ChurchCRM\Group;
@@ -34,6 +37,8 @@ class DemoDataService
             'families' => 0,
             'people' => 0,
             'notes' => 0,
+            'events' => 0,
+            'event_types' => 0,
             'funds' => 0,
             'fundraisers' => 0,
             'pledges' => 0,
@@ -76,6 +81,10 @@ class DemoDataService
             $emailMap = $this->importCongregation();
 
             $this->importGroups($includeSundaySchool, $emailMap);
+
+            if ($includeEvents) {
+                $this->importEvents();
+            }
 
             if ($includeFinancial) {
                 $this->importFinancial();
@@ -789,7 +798,97 @@ class DemoDataService
 
     // Legacy membership import removed - memberships are created from `groups.json` during import.
 
-    // Event, attendance, pledge and calendar-event imports removed.
+    /**
+     * Import demo events from events.csv.
+     *
+     * Each CSV row becomes an Event record. The `category` column is mapped
+     * to an EventType — reusing existing types by name or creating new ones.
+     */
+    private function importEvents(): void
+    {
+        $filepath = self::DATA_PATH . '/events.csv';
+        if (!file_exists($filepath)) {
+            $this->addWarning('Event import skipped: events.csv not found');
+
+            return;
+        }
+
+        $handle = fopen($filepath, 'r');
+        if ($handle === false) {
+            $this->addWarning('Event import skipped: could not open events.csv');
+
+            return;
+        }
+
+        $header = fgetcsv($handle);
+        if ($header === false) {
+            fclose($handle);
+            $this->addWarning('Event import skipped: empty events.csv');
+
+            return;
+        }
+
+        // Build column index
+        $cols = array_flip($header);
+
+        // Category → EventType ID cache (reuse existing types by name)
+        $typeMap = [];
+        $existingTypes = EventTypeQuery::create()->find();
+        foreach ($existingTypes as $et) {
+            $typeMap[$et->getName()] = (int) $et->getId();
+        }
+
+        while (($row = fgetcsv($handle)) !== false) {
+            if (count($row) < count($header)) {
+                continue;
+            }
+            $data = array_combine($header, $row);
+
+            try {
+                // Resolve or create event type from category
+                $category = trim($data['category'] ?? '');
+                $typeId = 0;
+                if ($category !== '') {
+                    if (!isset($typeMap[$category])) {
+                        $eventType = new EventType();
+                        $eventType->setName($category);
+                        $eventType->setDefStartTime('09:00:00');
+                        $eventType->save();
+                        $typeMap[$category] = (int) $eventType->getId();
+                        $this->importResult['imported']['event_types']++;
+                    }
+                    $typeId = $typeMap[$category];
+                }
+
+                // Parse start/end dates
+                $startStr = $data['start'] ?? '';
+                $endStr = $data['end'] ?? '';
+                $start = new DateTime($startStr);
+                $end = new DateTime($endStr);
+
+                $event = new Event();
+                $event->setType($typeId);
+                $event->setTitle($data['title'] ?? '');
+                $event->setDesc($data['description'] ?? '');
+                $event->setText($data['event_text'] ?? '');
+                $event->setStart($start->format('Y-m-d H:i:s'));
+                $event->setEnd($end->format('Y-m-d H:i:s'));
+                $event->setInActive(($data['inactive'] ?? 'false') === 'true' ? 1 : 0);
+                $event->setURL($data['external_url'] ?? '');
+                $event->save();
+
+                $this->importResult['imported']['events']++;
+            } catch (Exception $e) {
+                $this->addWarning("Event import failed for '{$data['title']}': {$e->getMessage()}");
+            }
+        }
+
+        fclose($handle);
+        $this->logger->info('Demo events import complete', [
+            'events' => $this->importResult['imported']['events'],
+            'event_types' => $this->importResult['imported']['event_types'],
+        ]);
+    }
 
     private function loadJsonFile(string $filename): ?array
     {

@@ -90,7 +90,7 @@ $app->get('/dashboard', function (Request $request, Response $response) {
         $monthMax = sprintf('%04d-%02d-%02d 23:59:59', $EventYear, $mVal, $daysInMonth);
 
         $eventQuery = EventQuery::create()
-            ->joinWithEventType()
+            ->leftJoinWithEventType()
             ->filterByStart(['min' => $monthMin, 'max' => $monthMax])
             ->orderByStart();
 

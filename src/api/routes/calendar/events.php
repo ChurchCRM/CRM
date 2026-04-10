@@ -625,6 +625,22 @@ function quickCreateEvent(Request $request, Response $response, array $args): Re
         }
     }
 
+    // If still no event type and the group is a Sunday School class, fall back to
+    // the "Sunday School" event type by name so quick-create works out of the box
+    // even before the admin explicitly links the type to a group.
+    if ($eventType === null && $groupId > 0) {
+        $group = GroupQuery::create()->findOneById($groupId);
+        if ($group !== null && $group->isSundaySchool()) {
+            $eventType = EventTypeQuery::create()
+                ->filterByName('Sunday School')
+                ->filterByActive(1)
+                ->findOne();
+            if ($eventType !== null) {
+                $eventTypeId = $eventType->getId();
+            }
+        }
+    }
+
     if ($eventType === null && $groupId <= 0) {
         return SlimUtils::renderErrorJSON($response, gettext('Event type ID or group ID is required'), [], 400);
     }

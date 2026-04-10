@@ -438,6 +438,19 @@ $(() => {
       });
   });
 
+  // "Assign to me" button for check-in supervisor
+  $("#assignMeCheckin").on("click", () => {
+    const el = document.querySelector("#adult");
+    if (el?.tomselect) {
+      const userId = window.CRM.userId;
+      const userName = window.CRM.userName;
+      if (userId && userName) {
+        el.tomselect.addOption({ objid: userId, text: userName });
+        el.tomselect.setValue(userId);
+      }
+    }
+  });
+
   // Clear button
   $("#clearBtn").on("click", () => {
     ["#child", "#adult"].forEach((sel) => {
@@ -456,11 +469,13 @@ $(() => {
   $(document).on("click", ".checkout-btn", function () {
     const personId = parseInt($(this).data("person-id"), 10);
     const personName = $(this).data("person-name") || "";
+    const checkinId = $(this).data("checkin-id") ? parseInt($(this).data("checkin-id"), 10) : null;
+    const checkinName = $(this).data("checkin-name") || "";
     if (!personId) return;
-    openCheckoutByDialog(personId, personName);
+    openCheckoutByDialog(personId, personName, checkinId, checkinName);
   });
 
-  function openCheckoutByDialog(personId, personName) {
+  function openCheckoutByDialog(personId, personName, checkinId, checkinName) {
     const safeName = window.CRM.escapeHtml(String(personName));
     const dialog = bootbox.dialog({
       title: i18next.t("Check out") + ": " + safeName,
@@ -468,9 +483,16 @@ $(() => {
         '<p class="mb-2">' +
         i18next.t("Optional — record who is checking this person out (e.g. a parent picking up a child).") +
         "</p>" +
+        '<div class="input-group">' +
         '<select class="form-select" id="checkoutBySelect" placeholder="' +
         i18next.t("Search for supervisor...") +
         '"></select>' +
+        '<button type="button" class="btn btn-outline-secondary" id="assignMeCheckout" title="' +
+        i18next.t("Assign to me") +
+        '">' +
+        '<i class="ti ti-user-check"></i>' +
+        "</button>" +
+        "</div>" +
         '<small class="text-muted mt-2 d-block">' +
         i18next.t("Leave blank to check out without recording the supervisor.") +
         "</small>",
@@ -502,7 +524,7 @@ $(() => {
     dialog.on("shown.bs.modal", () => {
       const el = document.getElementById("checkoutBySelect");
       if (!el || el.tomselect) return;
-      new TomSelect(el, {
+      const ts = new TomSelect(el, {
         valueField: "objid",
         labelField: "text",
         searchField: "text",
@@ -514,6 +536,22 @@ $(() => {
             .then((data) => callback(data.map((p) => ({ objid: p.objid, text: p.text }))))
             .catch(() => callback());
         },
+      });
+
+      // Pre-populate with the person who checked them in (if available)
+      if (checkinId && checkinName) {
+        ts.addOption({ objid: checkinId, text: checkinName });
+        ts.setValue(checkinId);
+      }
+
+      // "Assign to me" button in checkout dialog
+      $("#assignMeCheckout").on("click", () => {
+        const userId = window.CRM.userId;
+        const userName = window.CRM.userName;
+        if (userId && userName) {
+          ts.addOption({ objid: userId, text: userName });
+          ts.setValue(userId);
+        }
       });
     });
   }

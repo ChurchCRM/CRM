@@ -3,6 +3,7 @@
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\EventCountName;
 use ChurchCRM\model\ChurchCRM\EventCountNameQuery;
+use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\EventType;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
@@ -56,6 +57,8 @@ $app->get('/types', function (Request $request, Response $response) {
             $countList[] = $cn->getName();
         }
 
+        $eventUsageCount = EventQuery::create()->filterByType((int) $et->getId())->count();
+
         $rows[] = [
             'id'         => (int) $et->getId(),
             'name'       => $et->getName(),
@@ -63,6 +66,7 @@ $app->get('/types', function (Request $request, Response $response) {
             'startTime'  => $displayTime,
             'countList'  => implode(', ', $countList),
             'active'     => (int) $et->getActive(),
+            'eventCount' => $eventUsageCount,
         ];
     }
 
@@ -302,9 +306,22 @@ $app->post('/types/{id}', function (Request $request, Response $response, array 
     return $response->withHeader('Location', SystemURLs::getRootPath() . '/event/types/' . $tyid)->withStatus(302);
 })->add(new AddEventsRoleAuthMiddleware());
 
-// POST /event/types/{id}/delete — delete event type
+// POST /event/types/{id}/delete — delete event type (only if no events use it)
 $app->post('/types/{id}/delete', function (Request $request, Response $response, array $args) {
     $tyid = (int) $args['id'];
+
+    // Prevent deletion if events reference this type
+    $eventCount = EventQuery::create()->filterByType($tyid)->count();
+    if ($eventCount > 0) {
+        $_SESSION['sGlobalMessage'] = sprintf(
+            gettext('Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first.'),
+            $eventCount
+        );
+        $_SESSION['sGlobalMessageClass'] = 'danger';
+
+        return $response->withHeader('Location', SystemURLs::getRootPath() . '/event/types/' . $tyid)->withStatus(302);
+    }
+
     EventTypeQuery::create()->filterById($tyid)->delete();
     EventCountNameQuery::create()->filterByTypeId($tyid)->delete();
 

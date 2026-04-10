@@ -44,12 +44,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Delete event type with confirmation
+  // Delete event type with confirmation (blocked if events use it)
   $(document).on("click", ".delete-type-btn", function () {
     const typeId = $(this).data("type-id");
+    const eventCount = parseInt($(this).data("event-count"), 10) || 0;
+
+    if (eventCount > 0) {
+      window.bootbox.alert({
+        title: t("Cannot Delete Event Type"),
+        message:
+          t("This event type is used by") +
+          " <strong>" +
+          eventCount +
+          "</strong> " +
+          t("event(s). Deactivate the type instead, or reassign the events first."),
+      });
+      return;
+    }
+
     window.bootbox.confirm({
       title: t("Delete Event Type"),
-      message: t("Deleting this event type will NOT delete existing events. Are you sure?"),
+      message: t("Are you sure you want to delete this event type? This cannot be undone."),
       buttons: {
         confirm: { label: t("Yes"), className: "btn-danger" },
         cancel: { label: t("No"), className: "btn-default" },

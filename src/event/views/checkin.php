@@ -179,9 +179,15 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <label for="adult" class="form-label">
                         <?= gettext('Checked In By') ?> <span class="text-secondary small">(<?= gettext('optional') ?>)</span>
                     </label>
-                    <select class="form-select person-search" id="adult"
-                        data-placeholder="<?= gettext('Search for supervisor...') ?>" tabindex="2">
-                    </select>
+                    <div class="input-group">
+                        <select class="form-select person-search" id="adult"
+                            data-placeholder="<?= gettext('Search for supervisor...') ?>" tabindex="2">
+                        </select>
+                        <button type="button" class="btn btn-outline-secondary assign-me-btn" id="assignMeCheckin"
+                            title="<?= gettext('Assign to me') ?>">
+                            <i class="ti ti-user-check"></i>
+                        </button>
+                    </div>
                     <div id="adultDetails" class="mt-2"></div>
                 </div>
             </div>
@@ -250,7 +256,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <div class="dropdown-divider"></div>
                                 <button type="button" class="dropdown-item checkout-btn"
                                         data-person-id="<?= $att['personId'] ?>"
-                                        data-person-name="<?= InputUtils::escapeAttribute($att['fullName']) ?>">
+                                        data-person-name="<?= InputUtils::escapeAttribute($att['fullName']) ?>"
+                                        <?php if ($att['checkinId']): ?>data-checkin-id="<?= $att['checkinId'] ?>"<?php endif; ?>
+                                        <?php if ($att['checkinBy']): ?>data-checkin-name="<?= InputUtils::escapeAttribute($att['checkinBy']) ?>"<?php endif; ?>>
                                     <i class="ti ti-door-exit me-2"></i><?= gettext('Check Out') ?>
                                 </button>
                                 <?php else: ?>
