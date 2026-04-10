@@ -165,30 +165,57 @@ $validationError     = $validationError ?? '';
                         </div>
                     </div>
 
+                    <hr class="my-3">
+                    <h5 class="mb-3"><?= gettext('Map Coordinates') ?></h5>
+                    <p class="text-muted small mb-3">
+                        <i class="fa-solid fa-circle-info me-1"></i>
+                        <?= gettext('Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address.') ?>
+                    </p>
+                    <div class="row">
+                        <div class="mb-3 col-md-4">
+                            <label for="iChurchLatitude"><?= gettext('Latitude') ?></label>
+                            <input type="number"
+                                   step="any"
+                                   min="-90"
+                                   max="90"
+                                   class="form-control"
+                                   id="iChurchLatitude"
+                                   name="iChurchLatitude"
+                                   value="<?= InputUtils::escapeHTML((string) $churchInfo['iChurchLatitude']) ?>"
+                                   placeholder="<?= gettext('e.g., 40.7128') ?>">
+                            <small class="form-text text-muted"><?= gettext('Range: -90 to 90.') ?></small>
+                        </div>
+                        <div class="mb-3 col-md-4">
+                            <label for="iChurchLongitude"><?= gettext('Longitude') ?></label>
+                            <input type="number"
+                                   step="any"
+                                   min="-180"
+                                   max="180"
+                                   class="form-control"
+                                   id="iChurchLongitude"
+                                   name="iChurchLongitude"
+                                   value="<?= InputUtils::escapeHTML((string) $churchInfo['iChurchLongitude']) ?>"
+                                   placeholder="<?= gettext('e.g., -74.0060') ?>">
+                            <small class="form-text text-muted"><?= gettext('Range: -180 to 180.') ?></small>
+                        </div>
+                    </div>
+
                     <?php
-                    $hasCoords = !empty($churchInfo['iChurchLatitude'])
-                        && !empty($churchInfo['iChurchLongitude'])
-                        && ((float) $churchInfo['iChurchLatitude'] !== 0.0
-                            || (float) $churchInfo['iChurchLongitude'] !== 0.0);
+                    $latFloat  = (float) $churchInfo['iChurchLatitude'];
+                    $lngFloat  = (float) $churchInfo['iChurchLongitude'];
+                    $hasCoords = ($latFloat !== 0.0 || $lngFloat !== 0.0)
+                        && $latFloat >= -90.0 && $latFloat <= 90.0
+                        && $lngFloat >= -180.0 && $lngFloat <= 180.0;
                     ?>
 
                     <?php if ($hasCoords): ?>
-                    <hr class="my-3">
-                    <h5 class="mb-3"><?= gettext('Map') ?></h5>
                     <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
                     <div id="church-location-map" class="mb-2 rounded border" style="height:280px;"></div>
-                    <p class="text-muted small mb-0">
-                        <i class="fa-solid fa-location-dot me-1"></i>
-                        <?= gettext('Geocoded coordinates:') ?>
-                        <?= InputUtils::escapeHTML($churchInfo['iChurchLatitude']) ?>,
-                        <?= InputUtils::escapeHTML($churchInfo['iChurchLongitude']) ?>
-                        &mdash; <?= gettext('Updated automatically on every save.') ?>
-                    </p>
                     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
                         window.CRM = window.CRM || {};
                         window.CRM.churchMapConfig = <?= json_encode([
-                            'lat'  => (float) $churchInfo['iChurchLatitude'],
-                            'lng'  => (float) $churchInfo['iChurchLongitude'],
+                            'lat'  => $latFloat,
+                            'lng'  => $lngFloat,
                             'name' => $churchInfo['sChurchName'],
                         ]) ?>;
                     </script>
@@ -196,7 +223,7 @@ $validationError     = $validationError ?? '';
                     <?php else: ?>
                     <div class="alert alert-info mt-3 mb-0">
                         <i class="fa-solid fa-location-dot me-2"></i>
-                        <?= gettext('A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required.') ?>
+                        <?= gettext('A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above.') ?>
                     </div>
                     <?php endif; ?>
                 </div>
