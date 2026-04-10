@@ -6,49 +6,76 @@ use ChurchCRM\Utils\InputUtils;
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
-<div class="card">
-  <div class="card-body">
-    <div class="row g-4 align-items-start">
-      <div class="col-lg-5 col-md-6">
-        <h4 class="mb-1">
-          <i class="fa-solid fa-desktop me-2 text-secondary"></i><?= gettext('Kiosk Registration') ?>
-        </h4>
-        <p class="text-secondary mb-3"><?= gettext('Toggle the switch below to open a 30-second window for new kiosk devices to register.') ?></p>
-        <div class="d-flex align-items-center gap-3">
-          <div class="form-check form-switch mb-0">
-            <input class="form-check-input" type="checkbox" id="isNewKioskRegistrationActive">
-            <label class="form-check-label visually-hidden" for="isNewKioskRegistrationActive"><?= gettext('Enable new kiosk registration') ?></label>
-          </div>
-          <span id="kioskRegistrationStatus" class="badge bg-secondary-lt text-secondary"><?= gettext('Inactive') ?></span>
+<!-- Dashboard Stat Cards -->
+<div class="row row-cards mb-3 g-2" id="kioskStats" style="display:none;">
+    <div class="col-6 col-md-3">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto"><span class="bg-primary text-white avatar rounded-circle"><i class="fa-solid fa-desktop"></i></span></div>
+                    <div class="col"><div class="fw-medium" id="statTotal">0</div><div class="text-muted"><?= gettext('Total Kiosks') ?></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto"><span class="bg-success text-white avatar rounded-circle"><i class="fa-solid fa-circle-check"></i></span></div>
+                    <div class="col"><div class="fw-medium" id="statOnline">0</div><div class="text-muted"><?= gettext('Online') ?></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto"><span class="bg-warning text-dark avatar rounded-circle"><i class="fa-solid fa-clock"></i></span></div>
+                    <div class="col"><div class="fw-medium" id="statPending">0</div><div class="text-muted"><?= gettext('Pending') ?></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto"><span class="bg-azure text-white avatar rounded-circle"><i class="fa-solid fa-calendar-check"></i></span></div>
+                    <div class="col"><div class="fw-medium" id="statAssigned">0</div><div class="text-muted"><?= gettext('Assigned') ?></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Registration + Setup -->
+<div class="card mb-3">
+  <div class="card-body py-3">
+    <div class="row g-3 align-items-center">
+      <div class="col-auto">
+        <div class="form-check form-switch mb-0">
+          <input class="form-check-input" type="checkbox" id="isNewKioskRegistrationActive">
+          <label class="form-check-label visually-hidden" for="isNewKioskRegistrationActive"><?= gettext('Enable new kiosk registration') ?></label>
         </div>
       </div>
-      <div class="col-lg-1 d-none d-lg-flex justify-content-center">
-        <div class="vr"></div>
+      <div class="col">
+        <strong><?= gettext('Register New Device') ?></strong>
+        <span class="text-muted ms-1"><?= gettext('Opens a 30-second window for devices to register at:') ?></span>
+        <code class="ms-1"><?= InputUtils::escapeHTML(SystemURLs::getURL()) ?>/kiosk</code>
       </div>
-      <div class="col-lg-6 col-md-6">
-        <h4 class="mb-1">
-          <i class="fa-solid fa-circle-info me-2 text-primary"></i><?= gettext('Setup Instructions') ?>
-        </h4>
-        <p class="text-secondary mb-2"><?= gettext('To set up a kiosk device, follow these steps:') ?></p>
-        <ol class="mb-0">
-          <li class="mb-1"><?= gettext('Click the registration toggle above to open a 30-second registration window.') ?></li>
-          <li class="mb-1"><?= gettext('On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:') ?>
-            <div class="mt-1 mb-1">
-              <code class="p-2 d-inline-block bg-light rounded"><?= InputUtils::escapeHTML(SystemURLs::getURL()) ?>/kiosk</code>
-            </div>
-          </li>
-          <li class="mb-1"><?= gettext('The device will register itself and appear in the table below as "Pending".') ?></li>
-          <li><?= gettext('Accept the device, then assign it to an event to begin check-in.') ?></li>
-        </ol>
+      <div class="col-auto">
+        <span id="kioskRegistrationStatus" class="badge bg-secondary-lt text-secondary"><?= gettext('Inactive') ?></span>
       </div>
     </div>
   </div>
 </div>
 
-<div class="card mt-3" id="eventsOverviewCard" style="display:none;">
+<div class="card mb-3" id="eventsOverviewCard" style="display:none;">
   <div class="card-header d-flex align-items-center">
     <h3 class="card-title">
-      <i class="fa-solid fa-calendar-check me-2"></i><?= gettext('Upcoming Sunday School Events') ?>
+      <i class="fa-solid fa-calendar-check me-2"></i><?= gettext('Upcoming Events') ?>
     </h3>
     <div class="card-options">
       <span class="badge bg-secondary-lt text-secondary" id="eventsOverviewCount"></span>
@@ -70,10 +97,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   </div>
 </div>
 
-<div class="card mt-3">
+<div class="card">
   <div class="card-header d-flex align-items-center">
     <h3 class="card-title">
-      <i class="fa-solid fa-list me-2"></i><?= gettext('Active Kiosks') ?>
+      <i class="fa-solid fa-desktop me-2"></i><?= gettext('Kiosk Devices') ?>
     </h3>
   </div>
   <div class="table-responsive">
@@ -344,6 +371,29 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     });
   });
 
+  // Update dashboard stat cards from kiosk data
+  function updateDashboardStats(kiosks) {
+    if (!kiosks || kiosks.length === 0) {
+      $('#kioskStats').hide();
+      return;
+    }
+    var total = kiosks.length;
+    var pending = 0;
+    var online = 0;
+    var assigned = 0;
+    var now = moment();
+    kiosks.forEach(function(k) {
+      if (!k.Accepted) pending++;
+      if (k.LastHeartbeat && now.diff(moment(k.LastHeartbeat), 'minutes') < 5) online++;
+      if (k.Accepted && k.KioskAssignments && k.KioskAssignments.length > 0 && k.KioskAssignments[0].EventId) assigned++;
+    });
+    $('#statTotal').text(total);
+    $('#statOnline').text(online);
+    $('#statPending').text(pending);
+    $('#statAssigned').text(assigned);
+    $('#kioskStats').show();
+  }
+
   function initKioskTable() {
     var dataTableConfig = {
       ajax: {
@@ -359,14 +409,29 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       columns: [
         {
           width: 'auto',
-          title: i18next.t('Id'),
-          data: 'Id',
-          searchable: false
+          title: i18next.t('Status'),
+          data: 'LastHeartbeat',
+          searchable: false,
+          render: function(data, type, full, meta) {
+            var isOnline = full.LastHeartbeat && moment().diff(moment(full.LastHeartbeat), 'minutes') < 5;
+            if (!full.Accepted) {
+              return '<span class="badge bg-warning text-dark">' + i18next.t('Pending') + '</span>';
+            }
+            if (isOnline) {
+              return '<span class="badge bg-success">' + i18next.t('Online') + '</span>';
+            }
+            return '<span class="badge bg-secondary-lt">' + i18next.t('Offline') + '</span>';
+          }
         },
         {
           width: 'auto',
           title: i18next.t('Kiosk Name'),
-          data: 'Name'
+          data: 'Name',
+          render: function(data, type, full, meta) {
+            var heartbeat = full.LastHeartbeat ? moment(full.LastHeartbeat).fromNow() : i18next.t('Never');
+            return '<div><span class="fw-medium">' + window.CRM.escapeHtml(data) + '</span></div>' +
+                   '<div class="text-muted small">' + i18next.t('Last seen') + ': ' + heartbeat + '</div>';
+          }
         },
         {
           width: 'auto',
@@ -384,40 +449,17 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         },
         {
           width: 'auto',
-          title: i18next.t('Last Heartbeat'),
-          data: 'LastHeartbeat',
-          render: function(data, type, full, meta) {
-            if (full.LastHeartbeat) {
-              return moment(full.LastHeartbeat).fromNow();
-            }
-            return i18next.t('Never');
-          }
-        },
-        {
-          width: 'auto',
-          title: i18next.t('Accepted'),
-          data: 'Accepted',
-          render: function(data, type, full, meta) {
-            if (full.Accepted) {
-              return '<span class="badge bg-green-lt text-green">' + i18next.t('Yes') + '</span>';
-            } else {
-              return '<span class="badge bg-warning text-dark">' + i18next.t('No') + '</span>';
-            }
-          }
-        },
-        {
-          width: 'auto',
           title: i18next.t('Actions'),
           data: null,
           defaultContent: '',
           orderable: false,
           render: function(data, type, full, meta) {
             var buttons = '<div class="btn-group btn-group-sm" role="group">';
+            if (!full.Accepted) {
+              buttons += '<button class="btn btn-success" onclick="window.CRM.kioskAPI.accept(' + full.Id + ').then(function() { window.CRM.kioskDataTable.ajax.reload(); window.CRM.notify(i18next.t(\'Kiosk accepted\'), {type: \'success\'}); })" title="' + i18next.t('Accept') + '"><i class="fa-solid fa-check me-1"></i>' + i18next.t('Accept') + '</button>';
+            }
             buttons += '<button class="btn btn-outline-primary" onclick="window.CRM.kioskAPI.reload(' + full.Id + ').then(function() { window.CRM.notify(i18next.t(\'Reload command sent\'), {type: \'success\'}); })" title="' + i18next.t('Reload') + '"><i class="fa-solid fa-sync"></i></button>';
             buttons += '<button class="btn btn-outline-info" onclick="window.CRM.kioskAPI.identify(' + full.Id + ').then(function() { window.CRM.notify(i18next.t(\'Identify command sent\'), {type: \'success\'}); })" title="' + i18next.t('Identify') + '"><i class="fa-solid fa-eye"></i></button>';
-            if (!full.Accepted) {
-              buttons += '<button class="btn btn-outline-success" onclick="window.CRM.kioskAPI.accept(' + full.Id + ').then(function() { window.CRM.kioskDataTable.ajax.reload(); window.CRM.notify(i18next.t(\'Kiosk accepted\'), {type: \'success\'}); })" title="' + i18next.t('Accept') + '"><i class="fa-solid fa-check"></i></button>';
-            }
             buttons += '<button class="btn btn-outline-danger" onclick="confirmDeleteKiosk(' + full.Id + ', \'' + window.CRM.escapeHtml(full.Name).replace(/'/g,"\\'") + '\')" title="' + i18next.t('Delete') + '"><i class="fa-solid fa-trash"></i></button>';
             buttons += '</div>';
             return buttons;
@@ -431,6 +473,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         ? window.CRM.kioskDataTable.rows().data().toArray()
         : [];
       renderEventsOverview(window.CRM.events.futureEvents, kiosks);
+      updateDashboardStats(kiosks);
     };
 
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
