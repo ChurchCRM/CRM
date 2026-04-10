@@ -1,21 +1,5 @@
 {
   "name@example.com": "",
-  "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above.": "निर्देशांक सहेजे जाने के बाद यहाँ एक मानचित्र दिखाई देगा — या तो आपके पते से स्वतः पहचाना गया या ऊपर मैन्युअल रूप से दर्ज किया गया।",
-  "Both latitude and longitude must be provided together (or both left blank for automatic detection).": "अक्षांश और देशांतर दोनों को एक साथ प्रदान किया जाना चाहिए (या स्वचालित पहचान के लिए दोनों को रिक्त छोड़ें)।",
-  "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates.": "कलीसिया की जानकारी सहेजी गई, लेकिन पता स्वतः नहीं मिल सका। कृपया मानचित्र निर्देशांक के अंतर्गत अक्षांश और देशांतर मैन्युअल रूप से दर्ज करें।",
-  "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address.": "सहेजते समय आपके पते से निर्देशांक स्वतः पहचाने जाते हैं (OpenStreetMap के माध्यम से)। आप उन्हें नीचे मैन्युअल रूप से भी दर्ज कर सकते हैं — मैन्युअल मान हमेशा स्वतः पहचान से प्राथमिकता लेते हैं। पते से जियोकोड करने के लिए दोनों को रिक्त छोड़ें।",
-  "Latitude must be a number between -90 and 90.": "अक्षांश -90 और 90 के बीच एक संख्या होनी चाहिए।",
-  "Longitude must be a number between -180 and 180.": "देशांतर -180 और 180 के बीच एक संख्या होनी चाहिए।",
-  "Map Coordinates": "मानचित्र निर्देशांक",
-  "Please select a group.": "कृपया एक समूह चुनें।",
-  "Please select a role.": "कृपया एक भूमिका चुनें।",
-  "Please select both a group and a role.": "कृपया एक समूह और एक भूमिका दोनों चुनें।",
-  "Range: -180 to 180.": "सीमा: -180 से 180।",
-  "Range: -90 to 90.": "सीमा: -90 से 90।",
-  "e.g., -74.0060": "e.g., -74.0060",
-  "e.g., 40.7128": "e.g., 40.7128",
-  "mo": "माह",
-  "mos": "माह",
-  "yr": "वर्ष",
-  "yrs": "वर्ष"
+  "e.g., -74.0060": "",
+  "e.g., 40.7128": ""
 }

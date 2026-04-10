@@ -1,29 +1,13 @@
 {
   "%d result for \"%s\"": {
-    "other": "%d kết quả cho \"%s\""
+    "other": ""
   },
   "BCC": "",
   "N/A": "",
   "name@example.com": "",
   "%d repeat event created successfully.": {
-    "other": "%d sự kiện lặp lại đã được tạo thành công."
+    "other": ""
   },
-  "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above.": "Bản đồ sẽ hiển thị ở đây sau khi tọa độ được lưu — được tự động phát hiện từ địa chỉ của bạn hoặc nhập thủ công ở trên.",
-  "Both latitude and longitude must be provided together (or both left blank for automatic detection).": "Cả vĩ độ và kinh độ phải được cung cấp cùng nhau (hoặc để trống cả hai để tự động phát hiện).",
-  "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates.": "Thông tin giáo xứ đã được lưu, nhưng địa chỉ không thể tự động xác định vị trí. Vui lòng nhập vĩ độ và kinh độ thủ công trong phần Tọa độ bản đồ.",
-  "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address.": "Tọa độ được tự động phát hiện từ địa chỉ của bạn khi lưu (qua OpenStreetMap). Bạn cũng có thể nhập thủ công bên dưới — giá trị thủ công luôn được ưu tiên hơn tự động phát hiện. Để trống cả hai để hệ thống tự địa mã hóa từ địa chỉ.",
-  "Latitude must be a number between -90 and 90.": "Vĩ độ phải là một số trong khoảng từ -90 đến 90.",
-  "Longitude must be a number between -180 and 180.": "Kinh độ phải là một số trong khoảng từ -180 đến 180.",
-  "Map Coordinates": "Tọa độ bản đồ",
-  "Please select a group.": "Vui lòng chọn một nhóm.",
-  "Please select a role.": "Vui lòng chọn một chức vụ.",
-  "Please select both a group and a role.": "Vui lòng chọn cả nhóm và chức vụ.",
-  "Range: -180 to 180.": "Phạm vi: -180 đến 180.",
-  "Range: -90 to 90.": "Phạm vi: -90 đến 90.",
-  "e.g., -74.0060": "e.g., -74.0060",
-  "e.g., 40.7128": "e.g., 40.7128",
-  "mo": "tháng",
-  "mos": "tháng",
-  "yr": "năm",
-  "yrs": "năm"
+  "e.g., -74.0060": "",
+  "e.g., 40.7128": ""
 }

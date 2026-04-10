@@ -1,20 +1,4 @@
 {
-  "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above.": "Um mapa aparecerá aqui quando as coordenadas forem salvas — detectadas automaticamente do seu endereço ou inseridas manualmente acima.",
-  "Both latitude and longitude must be provided together (or both left blank for automatic detection).": "Latitude e longitude devem ser fornecidas juntas (ou ambas em branco para detecção automática).",
-  "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates.": "Informações da paróquia salvas, mas o endereço não pôde ser localizado automaticamente. Por favor, insira a latitude e longitude manualmente em Coordenadas do Mapa.",
-  "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address.": "As coordenadas são detectadas automaticamente do seu endereço ao salvar (via OpenStreetMap). Você também pode inseri-las manualmente abaixo — valores manuais sempre têm precedência sobre a detecção automática. Deixe ambos em branco para que o sistema faça a geocodificação pelo endereço.",
-  "Latitude must be a number between -90 and 90.": "A latitude deve ser um número entre -90 e 90.",
-  "Longitude must be a number between -180 and 180.": "A longitude deve ser um número entre -180 e 180.",
-  "Map Coordinates": "Coordenadas do Mapa",
-  "Please select a group.": "Por favor, selecione um ministério.",
-  "Please select a role.": "Por favor, selecione uma função.",
-  "Please select both a group and a role.": "Por favor, selecione um ministério e uma função.",
-  "Range: -180 to 180.": "Intervalo: -180 a 180.",
-  "Range: -90 to 90.": "Intervalo: -90 a 90.",
-  "e.g., -74.0060": "e.g., -74.0060",
-  "e.g., 40.7128": "e.g., 40.7128",
-  "mo": "mês",
-  "mos": "meses",
-  "yr": "ano",
-  "yrs": "anos"
+  "e.g., -74.0060": "",
+  "e.g., 40.7128": ""
 }

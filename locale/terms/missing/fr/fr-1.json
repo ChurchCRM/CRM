@@ -1,20 +1,4 @@
 {
-  "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above.": "Une carte apparaîtra ici une fois les coordonnées enregistrées — soit détectées automatiquement depuis votre adresse, soit saisies manuellement ci-dessus.",
-  "Both latitude and longitude must be provided together (or both left blank for automatic detection).": "La latitude et la longitude doivent être fournies ensemble (ou toutes deux laissées vides pour la détection automatique).",
-  "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates.": "Informations de la paroisse enregistrées, mais l'adresse n'a pas pu être localisée automatiquement. Veuillez saisir la latitude et la longitude manuellement sous Coordonnées cartographiques.",
-  "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address.": "Les coordonnées sont détectées automatiquement depuis votre adresse lors de l'enregistrement (via OpenStreetMap). Vous pouvez également les saisir manuellement ci-dessous — les valeurs manuelles ont toujours la priorité sur la détection automatique. Laissez les deux champs vides pour que le système géocode l'adresse.",
-  "Latitude must be a number between -90 and 90.": "La latitude doit être un nombre entre -90 et 90.",
-  "Longitude must be a number between -180 and 180.": "La longitude doit être un nombre entre -180 et 180.",
-  "Map Coordinates": "Coordonnées cartographiques",
-  "Please select a group.": "Veuillez sélectionner un ministère.",
-  "Please select a role.": "Veuillez sélectionner un rôle.",
-  "Please select both a group and a role.": "Veuillez sélectionner un ministère et un rôle.",
-  "Range: -180 to 180.": "Plage : -180 à 180.",
-  "Range: -90 to 90.": "Plage : -90 à 90.",
-  "e.g., -74.0060": "e.g., -74.0060",
-  "e.g., 40.7128": "e.g., 40.7128",
-  "mo": "mois",
-  "mos": "mois",
-  "yr": "an",
-  "yrs": "ans"
+  "e.g., -74.0060": "",
+  "e.g., 40.7128": ""
 }
