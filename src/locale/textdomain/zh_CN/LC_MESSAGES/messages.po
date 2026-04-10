@@ -14838,3 +14838,739 @@ msgstr "黄色"
 msgid "Your current access levels (read-only)"
 msgstr "您当前的访问级别（只读）"
 
+#: 
+msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
+msgstr "（例如：会众、访客、儿童），义工可在此记录人数。"
+
+#: 
+msgid "1. Sunday School Class"
+msgstr "1. 主日学班级"
+
+#: 
+msgid "2. Event Type"
+msgstr "2. 活动类型"
+
+#: 
+msgid "3. Event"
+msgstr "3. 活动"
+
+#: 
+msgid "4. Kiosk"
+msgstr "4. 签到台"
+
+#: 
+msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
+msgstr "班级是类型为\"Sunday School\"的事工部门，包含学生和老师（带角色的会众）。"
+
+#: 
+msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
+msgstr "关联部门将此活动与班级或事工名册绑定。活动分配到签到台后，签到台会拉取部门成员并显示为点击签到列表。主日学班级请在此关联班级部门，义工即可通过平板为学生签到。"
+
+#: 
+msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr "特定的活动场次（例如\"幼儿班 — 4月12日\"），继承类型的默认设置，并通过受众关联班级部门。义工以此记录出席情况。"
+
+#: 
+msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr "分配给某一活动的平板（签到台）。签到台拉取活动关联部门的名册并显示点击签到。若未关联部门，签到台将没有名册可显示。"
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "添加现场访客"
+
+#: 
+msgid "Add categories on the Event Type page"
+msgstr "在活动类型页面添加分类"
+
+#: 
+msgid "Add people to your cart first, then come back to check them in to an event."
+msgstr "请先将人员加入选择，再返回此处为其签到活动。"
+
+#: 
+msgid "All clear!"
+msgstr "一切正常！"
+
+#: 
+msgid "All events and attendance records"
+msgstr "所有活动及出席记录"
+
+#: 
+msgid "All financial data (pledges, payments, deposits)"
+msgstr "所有财务数据（财务承诺、奉献、存款）"
+
+#: 
+msgid "All groups, roles, and memberships"
+msgstr "所有事工部门、角色及成员关系"
+
+#: 
+msgid "All people and family records"
+msgstr "所有人员及家庭记录"
+
+#: 
+msgid "All system settings and custom fields"
+msgstr "所有系统设置及自定义字段"
+
+#: 
+msgid "All uploaded photos and documents"
+msgstr "所有已上传的照片和文件"
+
+#: 
+msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
+msgstr "活动类型是模板，包含名称、默认开始时间、重复规则和出席计数分类，可选择关联一个班级部门作为默认受众。"
+
+#: 
+msgid "Attendance record deleted."
+msgstr "出席记录已删除。"
+
+#: 
+msgid "Audit"
+msgstr "审计"
+
+#: 
+msgid "Audit Events"
+msgstr "审计活动"
+
+#: 
+msgid "Auto-totalled from counts at right"
+msgstr "自动汇总右侧计数"
+
+#: 
+msgid "Back to Events"
+msgstr "返回活动"
+
+#: 
+msgid "Back to Events Dashboard"
+msgstr "返回活动仪表板"
+
+#: 
+msgid "Backup failed. You can still proceed with the reset, but your data will be lost."
+msgstr "备份失败。您仍可继续重置，但数据将丢失。"
+
+#: 
+msgid "Backup ready!"
+msgstr "备份已就绪！"
+
+#: 
+msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
+msgstr "重置前，强烈建议您下载当前数据的备份，这是保留数据的唯一机会。"
+
+#: 
+msgid "Bulk-create a series of recurring events"
+msgstr "批量创建一系列重复活动"
+
+#: 
+msgid "By"
+msgstr "操作者"
+
+#: 
+msgid "Cannot check in to an inactive event. Activate the event first."
+msgstr "无法签到到未激活的活动，请先激活该活动。"
+
+#: 
+msgid "Change"
+msgstr "更改"
+
+#: 
+msgid "Check In All"
+msgstr "全部签到"
+
+#: 
+msgid "Check In Family"
+msgstr "家庭签到"
+
+#: 
+msgid "Check Out All"
+msgstr "全部签出"
+
+#: 
+msgid "Check in all %d family members to a single event."
+msgstr "将全部 %d 位家庭成员签到同一活动。"
+
+#: 
+msgid "Check out"
+msgstr "签出"
+
+#: 
+msgid "Check-in By"
+msgstr "签到操作者"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "签到失败，请重试。"
+
+#: 
+msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
+msgstr "未激活的活动禁止签到，请在活动仪表板中激活活动以启用签到。"
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "签出失败，请重试。"
+
+#: 
+msgid "Checked in to event: %s"
+msgstr "已签到活动：%s"
+
+#: 
+msgid "Checked out from event: %s"
+msgstr "已从活动签出：%s"
+
+#: 
+msgid "Close All Stuck Events"
+msgstr "关闭所有卡住的活动"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "确认签出"
+
+#: 
+msgid "Create Repeat Events"
+msgstr "创建重复活动"
+
+#: 
+msgid "Create Today's Event"
+msgstr "创建今日活动"
+
+#: 
+msgid "Create a new event type with recurrence and attendance settings"
+msgstr "创建带有重复规则和出席设置的新活动类型"
+
+#: 
+msgid "Create one now"
+msgstr "立即创建"
+
+#: 
+msgid "Create today's class event and link it to this class for kiosk check-in"
+msgstr "创建今日班级活动并关联到此班级以供签到台使用"
+
+#: 
+msgid "Creating backup..."
+msgstr "正在创建备份…"
+
+#: 
+msgid "Creating..."
+msgstr "正在创建…"
+
+#: 
+msgid "Database + uploaded photos (larger)"
+msgstr "数据库 + 已上传照片（体积较大）"
+
+#: 
+msgid "Database dump only (.sql)"
+msgstr "仅数据库转储（.sql）"
+
+#: 
+msgid "Date Range"
+msgstr "日期范围"
+
+#: 
+msgid "Date range cannot exceed 1 year"
+msgstr "日期范围不能超过1年"
+
+#: 
+msgid "Deactivate"
+msgstr "停用"
+
+#: 
+msgid "Delete Event Type"
+msgstr "删除活动类型"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "删除出席记录？"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "删除以下人员的签到记录："
+
+#: 
+msgid "Delete this event?"
+msgstr "删除此活动？"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "删除活动将同时删除所有出席计数，此操作不可撤销。"
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "删除此活动类型不会删除已有活动，确认删除吗？"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "删除此活动将同时删除所有出席记录，此操作不可撤销。"
+
+#: 
+msgid "Destructive Operation"
+msgstr "危险操作"
+
+#: 
+msgid "Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field."
+msgstr "编辑分类名称后点击保存，或使用垃圾桶图标删除。通过底部字段添加新行。"
+
+#: 
+msgid "End Time"
+msgstr "结束时间"
+
+#: 
+msgid "End time must be after start time."
+msgstr "结束时间必须晚于开始时间。"
+
+#: 
+msgid "Ended"
+msgstr "已结束"
+
+#: 
+msgid "Ends"
+msgstr "结束"
+
+#: 
+msgid "Event Audit"
+msgstr "活动审计"
+
+#: 
+msgid "Event Check-in"
+msgstr "活动签到"
+
+#: 
+msgid "Event Details"
+msgstr "活动详情"
+
+#: 
+msgid "Event Template"
+msgstr "活动模板"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "活动已存在，正在跳转到签到页面…"
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "活动已创建，正在跳转到签到页面…"
+
+#: 
+msgid "Event end date/time must be on or after the start date/time."
+msgstr "活动结束日期/时间必须等于或晚于开始日期/时间。"
+
+#: 
+msgid "Event title is required."
+msgstr "活动标题为必填项。"
+
+#: 
+msgid "Event type ID is required"
+msgstr "活动类型ID为必填项"
+
+#: 
+msgid "Event type ID or group ID is required"
+msgstr "活动类型ID或部门ID为必填项"
+
+#: 
+msgid "Event type has no date configured for yearly recurrence"
+msgstr "活动类型未配置年度重复日期"
+
+#: 
+msgid "Event type has no day-of-week configured for weekly recurrence"
+msgstr "活动类型未配置每周重复的星期几"
+
+#: 
+msgid "Event type has no recurrence pattern configured"
+msgstr "活动类型未配置重复规则"
+
+#: 
+msgid "Event type has no valid day-of-month configured for monthly recurrence"
+msgstr "活动类型未配置有效的每月重复日期"
+
+#: 
+msgid "Events will be created for every matching occurrence within this date range."
+msgstr "将在此日期范围内为每个匹配的场次创建活动。"
+
+#: 
+msgid "Every month on the"
+msgstr "每月的"
+
+#: 
+msgid "Every week on"
+msgstr "每周的"
+
+#: 
+msgid "Every year on"
+msgstr "每年的"
+
+#: 
+msgid "Everyone is checked in!"
+msgstr "所有人均已签到！"
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "创建班级失败，请重试。"
+
+#: 
+msgid "Failed to create event."
+msgstr "创建活动失败。"
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "创建活动失败，请重试。"
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "删除失败，请重试。"
+
+#: 
+msgid "Fastest workflow:"
+msgstr "最快流程："
+
+#: 
+msgid "Find past events that are still active or have un-checked-out attendees"
+msgstr "查找仍处于激活状态或有未签出参与者的历史活动"
+
+#: 
+msgid "Format: MM-DD (e.g. 04-12 for April 12)"
+msgstr "格式：MM-DD（例如 04-12 表示4月12日）"
+
+#: 
+msgid "Group Roster"
+msgstr "部门名册"
+
+#: 
+msgid "Hide Advanced Options"
+msgstr "隐藏高级选项"
+
+#: 
+msgid "How Sunday School + Events + Kiosks fit together"
+msgstr "主日学、活动与签到台如何协同工作"
+
+#: 
+msgid "Invalid date for %s — expected YYYY-MM-DD"
+msgstr "%s 的日期无效，期望格式为 YYYY-MM-DD"
+
+#: 
+msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr "rangeStart 或 rangeEnd 的日期格式无效"
+
+#: 
+msgid "Invalid date format."
+msgstr "日期格式无效。"
+
+#: 
+msgid "Invalid date; expected format YYYY-MM-DD"
+msgstr "日期无效；期望格式为 YYYY-MM-DD"
+
+#: 
+msgid "Invalid event type ID"
+msgstr "活动类型ID无效"
+
+#: 
+msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
+msgstr "年度重复格式无效；期望格式为 MM-DD（例如 04-12）"
+
+#: 
+msgid "Just now"
+msgstr "刚刚"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "留空则签出时不记录监督员。"
+
+#: 
+msgid "Link events to a group for Kiosk check-in functionality."
+msgstr "将活动关联到部门以启用签到台签到功能。"
+
+#: 
+msgid "Linked Groups"
+msgstr "关联部门"
+
+#: 
+msgid "Looking for stuck events..."
+msgstr "正在查找卡住的活动…"
+
+#: 
+msgid "Manage event names, recurrence patterns, and attendance counts"
+msgstr "管理活动名称、重复规则和出席计数"
+
+#: 
+msgid "Missing required field: %s"
+msgstr "缺少必填字段：%s"
+
+#: 
+msgid "No Events Today"
+msgstr "今日无活动"
+
+#: 
+msgid "No Group"
+msgstr "无部门"
+
+#: 
+msgid "No active assignment"
+msgstr "无活动分配"
+
+#: 
+msgid "No active events found."
+msgstr "未找到活动中的活动。"
+
+#: 
+msgid "No attendance count categories defined for this event type yet."
+msgstr "此活动类型尚未定义出席计数分类。"
+
+#: 
+msgid "No one has been checked in to this event yet."
+msgstr "尚无人签到此活动。"
+
+#: 
+msgid "No past events are still marked Active."
+msgstr "没有历史活动仍标记为激活状态。"
+
+#: 
+msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr "打开班级 → 点击\"创建今日活动\" — 活动即创建并一次性关联到班级，然后跳转到签到页面，可供签到台或现场签到使用。"
+
+#: 
+msgid "Optional Settings"
+msgstr "可选设置"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "可选 — 记录为此人办理签出的人（例如接孩子的家长）。"
+
+#: 
+msgid "Person checked out."
+msgstr "人员已签出。"
+
+#: 
+msgid "Person is not checked in"
+msgstr "该人员未签到"
+
+#: 
+msgid "Person not in active class roster"
+msgstr "该人员不在活动班级名册中"
+
+#: 
+msgid "Pin to Calendars"
+msgstr "固定到日历"
+
+#: 
+msgid "Please select a person to check in."
+msgstr "请选择要签到的人员。"
+
+#: 
+msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
+msgstr "根据此活动类型预填 — 对于重复类型，日期为此类型最后一次活动后的下一场次，时间与类型默认开始时间一致。"
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "范围结束日期必须等于或晚于范围开始日期。"
+
+#: 
+msgid "Range end must be a valid YYYY-MM-DD date."
+msgstr "范围结束日期必须是有效的 YYYY-MM-DD 格式。"
+
+#: 
+msgid "Range start must be a valid YYYY-MM-DD date."
+msgstr "范围开始日期必须是有效的 YYYY-MM-DD 格式。"
+
+#: 
+msgid "Range start must be before range end"
+msgstr "范围开始日期必须早于范围结束日期"
+
+#: 
+msgid "Range start must be before range end."
+msgstr "范围开始日期必须早于范围结束日期。"
+
+#: 
+msgid "RangeEnd must be on or after RangeStart"
+msgstr "RangeEnd 必须等于或晚于 RangeStart"
+
+#: 
+msgid "Recommended"
+msgstr "推荐"
+
+#: 
+msgid "Required for Kiosk"
+msgstr "签到台必填"
+
+#: 
+msgid "Resetting will permanently delete:"
+msgstr "重置将永久删除："
+
+#: 
+msgid "SQL Only"
+msgstr "仅SQL"
+
+#: 
+msgid "Save Time"
+msgstr "节省时间"
+
+#: 
+msgid "Save changes to this category name"
+msgstr "保存此分类名称的更改"
+
+#: 
+msgid "Select an event type…"
+msgstr "选择活动类型…"
+
+#: 
+msgid "Select start and end date/time."
+msgstr "选择开始和结束日期/时间。"
+
+#: 
+msgid "Show More Options"
+msgstr "显示更多选项"
+
+#: 
+msgid "Skip"
+msgstr "跳过"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "跳过并签出"
+
+#: 
+msgid "Start Check-in"
+msgstr "开始签到"
+
+#: 
+msgid "Starts"
+msgstr "开始"
+
+#: 
+msgid "Step 1: Create a Backup"
+msgstr "第一步：创建备份"
+
+#: 
+msgid "Step 2: Reset Database"
+msgstr "第二步：重置数据库"
+
+#: 
+msgid "Still Checked In"
+msgstr "仍在签到中"
+
+#: 
+msgid "Stuck Events"
+msgstr "卡住的活动"
+
+#: 
+msgid "Take Attendance"
+msgstr "记录出席"
+
+#: 
+msgid "The Events module is disabled"
+msgstr "活动模块已禁用"
+
+#: 
+msgid "The same start and end time will be used for all generated events."
+msgstr "所有生成的活动将使用相同的开始和结束时间。"
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "今日没有安排活动"
+
+#: 
+msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
+msgstr "这些是人数统计分类 — 义工在活动结束后填写，以便仪表板按类型细分出席情况（例如会众与访客的数量）。这与签到页面上的个人签到是独立的。"
+
+#: 
+msgid "This event is inactive."
+msgstr "此活动未激活。"
+
+#: 
+msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr "此页面允许您永久清除 ChurchCRM 数据库中的所有数据，此操作不可撤销。"
+
+#: 
+msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
+msgstr "此报告列出所有结束日期已过但仍标记为激活的活动。常见原因：义工忘记点击签出、签到台断网，或活动创建后被废弃。旧活动也会显示在此。仍在签到中一列显示是否有人未签出。关闭活动时，所有人将以当前时间签出，活动标记为未激活。"
+
+#: 
+msgid "This title will be used for all generated events."
+msgstr "所有生成的活动将使用此标题。"
+
+#: 
+msgid "Today's Events"
+msgstr "今日活动"
+
+#: 
+msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
+msgstr "场次过多（%d）— 请缩小日期范围。最大允许数量：%d"
+
+#: 
+msgid "Type RESET to confirm"
+msgstr "输入 RESET 以确认"
+
+#: 
+msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
+msgstr "使用上方按钮一键创建今日活动，活动将自动关联到此班级，签到台即可拉取名册。"
+
+#: 
+msgid "Use this form to bulk-create a series of recurring events. Each event is created individually and can be edited or deleted independently after creation."
+msgstr "使用此表单批量创建一系列重复活动。每个活动独立创建，创建后可单独编辑或删除。"
+
+#: 
+msgid "Used as the default start time when creating events of this type."
+msgstr "创建此类型活动时作为默认开始时间。"
+
+#: 
+msgid "User must have Add Event permission and the Events module must be enabled"
+msgstr "用户必须具有添加活动权限且活动模块已启用"
+
+#: 
+msgid "Valid startDate and endDate are required"
+msgstr "需要有效的 startDate 和 endDate"
+
+#: 
+msgid "View Event"
+msgstr "查看活动"
+
+#: 
+msgid "What are these for?"
+msgstr "这些有什么用？"
+
+#: 
+msgid "What does this find?"
+msgstr "这个功能查找什么？"
+
+#: 
+msgid "What is this for?"
+msgstr "这有什么用？"
+
+#: 
+msgid "Who is bringing them in?"
+msgstr "谁带他们进来？"
+
+#: 
+msgid "You must select a valid recurrence pattern."
+msgstr "您必须选择有效的重复规则。"
+
+#: 
+msgid "You must select an event type."
+msgstr "您必须选择活动类型。"
+
+#: 
+msgid "You must specify a date range."
+msgstr "您必须指定日期范围。"
+
+#: 
+msgid "checked in"
+msgstr "已签到"
+
+#: 
+msgid "e.g., Sunday Worship Service"
+msgstr "例如：主日崇拜"
+
+#: 
+msgid "endDate must be after startDate"
+msgstr "endDate 必须晚于 startDate"
+
+#: 
+msgid "eventIds must be a non-empty array"
+msgstr "eventIds 必须是非空数组"
+
+#: 
+msgid "invalid recurrence type"
+msgstr "无效的重复类型"
+
+#: 
+msgid "personIds must be a non-empty array"
+msgstr "personIds 必须是非空数组"
+
+#: 
+msgid "to enable the reset button"
+msgstr "以启用重置按钮"
+
