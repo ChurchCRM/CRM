@@ -1,9 +1,5 @@
 {
-  "BCC": "",
-  "N/A": "",
-  "name@example.com": "",
-  "Azure": "Azure",
   "%d repeat event created successfully.": {
-    "other": "%d 个重复活动已成功创建。"
+    "other": ""
   }
 }
