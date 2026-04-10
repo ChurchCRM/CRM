@@ -22,7 +22,7 @@
   "Today's Events": "Dzisiejsze wydarzenia",
   "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d": "Zbyt wiele wystąpień (%d) — zawęź zakres dat. Maksymalna dozwolona liczba: %d",
   "Type RESET to confirm": "Wpisz RESET, aby potwierdzić",
-  "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster.": "",
+  "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster.": "Użyj przycisku powyżej, aby jednym kliknięciem utworzyć dzisiejsze wydarzenie. Zostanie ono automatycznie powiązane z tą klasą, dzięki czemu kiosk będzie mógł pobrać listę.",
   "Use this form to bulk-create a series of recurring events. Each event is created individually and can be edited or deleted independently after creation.": "Użyj tego formularza, aby zbiorczo utworzyć serię powtarzających się wydarzeń. Każde wydarzenie jest tworzone indywidualnie i może być edytowane lub usuwane niezależnie po utworzeniu.",
   "Used as the default start time when creating events of this type.": "Używane jako domyślna godzina rozpoczęcia podczas tworzenia wydarzeń tego typu.",
   "User must have Add Event permission and the Events module must be enabled": "Użytkownik musi mieć uprawnienie Dodaj wydarzenie, a moduł Wydarzeń musi być włączony",
