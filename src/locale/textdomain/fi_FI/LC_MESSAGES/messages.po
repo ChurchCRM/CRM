@@ -14642,3 +14642,809 @@ msgstr "Keltainen"
 msgid "Your current access levels (read-only)"
 msgstr "Nykyiset käyttöoikeutesi (vain luku)"
 
+#: 
+msgid "%d repeat event created successfully."
+msgid_plural "%d repeat events created successfully."
+msgstr[0] "%d toistuva tapahtuma luotu onnistuneesti."
+msgstr[1] "%d toistuvaa tapahtumaa luotu onnistuneesti."
+
+#: 
+msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
+msgstr "(esim. Seurakuntalaiset, Vierailijat, Lapset), jotta vapaaehtoiset voivat kirjata osallistujamäärät tähän."
+
+#: 
+msgid "1. Sunday School Class"
+msgstr "1. Pyhäkouluryhmä"
+
+#: 
+msgid "2. Event Type"
+msgstr "2. Tapahtumatyyppi"
+
+#: 
+msgid "3. Event"
+msgstr "3. Tapahtuma"
+
+#: 
+msgid "4. Kiosk"
+msgstr "4. Kioski"
+
+#: 
+msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
+msgstr "Luokka on ryhmä, jonka tyyppi on \"Pyhäkoulu\". Se sisältää oppilaat ja opettajat (jäsenet rooleilla)."
+
+#: 
+msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
+msgstr "Linkitetty ryhmä yhdistää tämän tapahtuman luokkaan tai palvelulistaan. Kun tapahtuma on määritetty kioskille, kioski hakee ryhmän jäsenet ja näyttää ne napauttamalla kirjattavana listana. Pyhäkouluryhmille linkitä luokkaryhmä tähän, jotta vapaaehtoiset voivat kirjata oppilaita sisään tabletilta."
+
+#: 
+msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr "Tietty tapahtumakerta (esim. \"Esikoulu — 12. huhtik.\"). Perii oletusarvot tyypiltä ja on linkitetty luokkaryhmään yleisön kautta. Tähän vapaaehtoiset kirjaavat läsnäolon."
+
+#: 
+msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr "Tabletti, joka on määritetty yhdelle tapahtumalle. Kioski hakee tapahtuman linkitetyn ryhmän listan ja näyttää napauttamalla kirjattavan näkymän. Ilman linkitettyä ryhmää kioskilla ei ole listaa näytettäväksi."
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "Lisää kävijä / vierailija"
+
+#: 
+msgid "Add categories on the Event Type page"
+msgstr "Lisää kategorioita Tapahtumatyyppi-sivulla"
+
+#: 
+msgid "Add people to your cart first, then come back to check them in to an event."
+msgstr "Lisää ensin henkilöitä koriin, sitten palaa kirjaamaan heidät tapahtumaan."
+
+#: 
+msgid "All clear!"
+msgstr "Kaikki kunnossa!"
+
+#: 
+msgid "All events and attendance records"
+msgstr "Kaikki tapahtumat ja läsnäolotiedot"
+
+#: 
+msgid "All financial data (pledges, payments, deposits)"
+msgstr "Kaikki taloudelliset tiedot (sitoumukset, maksut, talletukset)"
+
+#: 
+msgid "All groups, roles, and memberships"
+msgstr "Kaikki ryhmät, roolit ja jäsenyydet"
+
+#: 
+msgid "All people and family records"
+msgstr "Kaikki henkilö- ja perhetiedot"
+
+#: 
+msgid "All system settings and custom fields"
+msgstr "Kaikki järjestelmäasetukset ja mukautetut kentät"
+
+#: 
+msgid "All uploaded photos and documents"
+msgstr "Kaikki ladatut valokuvat ja asiakirjat"
+
+#: 
+msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
+msgstr "Tapahtumatyyppi on malli — nimi, oletusalkamisaika, toistuvuus, osallistumislaskurikategoriat. Valinnaisesti linkitetty yhteen luokkaryhmään oletusyleisönä."
+
+#: 
+msgid "Attendance record deleted."
+msgstr "Läsnäolotietue poistettu."
+
+#: 
+msgid "Audit"
+msgstr "Tarkastusloki"
+
+#: 
+msgid "Audit Events"
+msgstr "Tapahtumatarkastus"
+
+#: 
+msgid "Auto-totalled from counts at right"
+msgstr "Lasketaan automaattisesti oikealla olevista luvuista"
+
+#: 
+msgid "Back to Events"
+msgstr "Takaisin tapahtumiin"
+
+#: 
+msgid "Back to Events Dashboard"
+msgstr "Takaisin tapahtumanäkymään"
+
+#: 
+msgid "Backup failed. You can still proceed with the reset, but your data will be lost."
+msgstr "Varmuuskopiointi epäonnistui. Voit silti jatkaa nollaamista, mutta tietosi häviävät."
+
+#: 
+msgid "Backup ready!"
+msgstr "Varmuuskopio valmis!"
+
+#: 
+msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
+msgstr "Ennen nollaamista suosittelemme vahvasti lataamaan varmuuskopion nykyisistä tiedoistasi. Tämä on ainoa mahdollisuutesi säilyttää ne."
+
+#: 
+msgid "Bulk-create a series of recurring events"
+msgstr "Luo useita toistuvia tapahtumia kerralla"
+
+#: 
+msgid "By"
+msgstr "Tekijä"
+
+#: 
+msgid "Cannot check in to an inactive event. Activate the event first."
+msgstr "Ei voida kirjata sisään passiiviseen tapahtumaan. Aktivoi tapahtuma ensin."
+
+#: 
+msgid "Change"
+msgstr "Muuta"
+
+#: 
+msgid "Check In All"
+msgstr "Kirjaa kaikki sisään"
+
+#: 
+msgid "Check In Family"
+msgstr "Kirjaa perhe sisään"
+
+#: 
+msgid "Check Out All"
+msgstr "Kirjaa kaikki ulos"
+
+#: 
+msgid "Check in all %d family members to a single event."
+msgstr "Kirjaa kaikki %d perheenjäsentä sisään yhteen tapahtumaan."
+
+#: 
+msgid "Check out"
+msgstr "Kirjaa ulos"
+
+#: 
+msgid "Check-in By"
+msgstr "Kirjaaja"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "Sisäänkirjaus epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
+msgstr "Sisäänkirjaus on poistettu käytöstä passiivisille tapahtumille. Aktivoi tapahtuma tapahtumanäkymästä ottaaksesi sisäänkirjauksen käyttöön."
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "Uloskirjaus epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Checked in to event: %s"
+msgstr "Kirjattu sisään tapahtumaan: %s"
+
+#: 
+msgid "Checked out from event: %s"
+msgstr "Kirjattu ulos tapahtumasta: %s"
+
+#: 
+msgid "Close All Stuck Events"
+msgstr "Sulje kaikki jumissa olevat tapahtumat"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "Vahvista uloskirjaus"
+
+#: 
+msgid "Create Repeat Events"
+msgstr "Luo toistuvat tapahtumat"
+
+#: 
+msgid "Create Today's Event"
+msgstr "Luo tämän päivän tapahtuma"
+
+#: 
+msgid "Create a new event type with recurrence and attendance settings"
+msgstr "Luo uusi tapahtumatyyppi toistuvuus- ja läsnäoloasetuksilla"
+
+#: 
+msgid "Create one now"
+msgstr "Luo nyt"
+
+#: 
+msgid "Create today's class event and link it to this class for kiosk check-in"
+msgstr "Luo tämän päivän luokkatilaisuus ja linkitä se tähän luokkaan kioskin sisäänkirjausta varten"
+
+#: 
+msgid "Creating backup..."
+msgstr "Luodaan varmuuskopiota..."
+
+#: 
+msgid "Creating..."
+msgstr "Luodaan..."
+
+#: 
+msgid "Database + uploaded photos (larger)"
+msgstr "Tietokanta + ladatut valokuvat (suurempi)"
+
+#: 
+msgid "Database dump only (.sql)"
+msgstr "Vain tietokannan vedos (.sql)"
+
+#: 
+msgid "Date Range"
+msgstr "Aikaväli"
+
+#: 
+msgid "Date range cannot exceed 1 year"
+msgstr "Aikaväli ei voi ylittää yhtä vuotta"
+
+#: 
+msgid "Deactivate"
+msgstr "Deaktivoi"
+
+#: 
+msgid "Delete Event Type"
+msgstr "Poista tapahtumatyyppi"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "Poistetaanko läsnäolotietue?"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "Poista sisäänkirjauksen tietue kohteelle"
+
+#: 
+msgid "Delete this event?"
+msgstr "Poistetaanko tämä tapahtuma?"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "Tapahtuman poistaminen poistaa myös kaikki läsnäololaskurit. Tätä ei voi peruuttaa."
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "Tämän tapahtumatyypin poistaminen EI poista olemassa olevia tapahtumia. Oletko varma?"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "Tämän tapahtuman poistaminen poistaa myös kaikki läsnäolotietueet. Tätä ei voi peruuttaa."
+
+#: 
+msgid "Destructive Operation"
+msgstr "Tuhoava toiminto"
+
+#: 
+msgid "Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field."
+msgstr "Muokkaa kategorian nimeä ja napsauta Tallenna, tai käytä roskakori-kuvaketta poistamiseen. Uudet rivit lisätään alhaalla olevan kentän kautta."
+
+#: 
+msgid "End Time"
+msgstr "Lopetusaika"
+
+#: 
+msgid "End time must be after start time."
+msgstr "Lopetusajan on oltava alkamisajan jälkeen."
+
+#: 
+msgid "Ended"
+msgstr "Päättynyt"
+
+#: 
+msgid "Ends"
+msgstr "Päättyy"
+
+#: 
+msgid "Event Audit"
+msgstr "Tapahtuman tarkastus"
+
+#: 
+msgid "Event Check-in"
+msgstr "Tapahtuman sisäänkirjaus"
+
+#: 
+msgid "Event Details"
+msgstr "Tapahtuman tiedot"
+
+#: 
+msgid "Event Template"
+msgstr "Tapahtumamalli"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "Tapahtuma on jo olemassa. Siirrytään sisäänkirjaukseen..."
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "Tapahtuma luotu. Siirrytään sisäänkirjaukseen..."
+
+#: 
+msgid "Event end date/time must be on or after the start date/time."
+msgstr "Tapahtuman päättymispäivä/-aika on oltava alkamispäivän/-ajan jälkeen tai samana ajankohtana."
+
+#: 
+msgid "Event title is required."
+msgstr "Tapahtuman otsikko on pakollinen."
+
+#: 
+msgid "Event type ID is required"
+msgstr "Tapahtumatyypin tunnus on pakollinen"
+
+#: 
+msgid "Event type ID or group ID is required"
+msgstr "Tapahtumatyypin tunnus tai ryhmätunnus on pakollinen"
+
+#: 
+msgid "Event type has no date configured for yearly recurrence"
+msgstr "Tapahtumatyypillä ei ole päivämäärää määritetty vuosittaiselle toistuvuudelle"
+
+#: 
+msgid "Event type has no day-of-week configured for weekly recurrence"
+msgstr "Tapahtumatyypillä ei ole viikonpäivää määritetty viikoittaiselle toistuvuudelle"
+
+#: 
+msgid "Event type has no recurrence pattern configured"
+msgstr "Tapahtumatyypillä ei ole toistuvuusmallia määritetty"
+
+#: 
+msgid "Event type has no valid day-of-month configured for monthly recurrence"
+msgstr "Tapahtumatyypillä ei ole kelvollista kuukauden päivää määritetty kuukausittaiselle toistuvuudelle"
+
+#: 
+msgid "Events will be created for every matching occurrence within this date range."
+msgstr "Tapahtumat luodaan jokaista tähän aikaväliin sopivaa kertaa varten."
+
+#: 
+msgid "Every month on the"
+msgstr "Joka kuukausi"
+
+#: 
+msgid "Every week on"
+msgstr "Joka viikko"
+
+#: 
+msgid "Every year on"
+msgstr "Joka vuosi"
+
+#: 
+msgid "Everyone is checked in!"
+msgstr "Kaikki on kirjattu sisään!"
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "Luokan luominen epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Failed to create event."
+msgstr "Tapahtuman luominen epäonnistui."
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "Tapahtuman luominen epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "Poistaminen epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Fastest workflow:"
+msgstr "Nopein työnkulku:"
+
+#: 
+msgid "Find past events that are still active or have un-checked-out attendees"
+msgstr "Etsi menneitä tapahtumia, jotka ovat vielä aktiivisia tai joissa on uloskiriaamattomia osallistujia"
+
+#: 
+msgid "Format: MM-DD (e.g. 04-12 for April 12)"
+msgstr "Muoto: KK-PP (esim. 04-12 huhtikuun 12. päivälle)"
+
+#: 
+msgid "Group Roster"
+msgstr "Ryhmälista"
+
+#: 
+msgid "Hide Advanced Options"
+msgstr "Piilota lisäasetukset"
+
+#: 
+msgid "How Sunday School + Events + Kiosks fit together"
+msgstr "Kuinka pyhäkoulu, tapahtumat ja kioskitoiminnot liittyvät yhteen"
+
+#: 
+msgid "Invalid date for %s — expected YYYY-MM-DD"
+msgstr "Virheellinen päivämäärä kohteelle %s — odotetaan muotoa VVVV-KK-PP"
+
+#: 
+msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr "Virheellinen päivämäärämuoto rangeStart- tai rangeEnd-kentässä"
+
+#: 
+msgid "Invalid date format."
+msgstr "Virheellinen päivämäärämuoto."
+
+#: 
+msgid "Invalid date; expected format YYYY-MM-DD"
+msgstr "Virheellinen päivämäärä; odotetaan muotoa VVVV-KK-PP"
+
+#: 
+msgid "Invalid event type ID"
+msgstr "Virheellinen tapahtumatyypin tunnus"
+
+#: 
+msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
+msgstr "Virheellinen vuosittaisen toistuvuuden muoto; odotetaan KK-PP (esim. 04-12)"
+
+#: 
+msgid "Just now"
+msgstr "Juuri nyt"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "Jätä tyhjäksi kirjataksesi ulos ilman valvojan tietoja."
+
+#: 
+msgid "Link events to a group for Kiosk check-in functionality."
+msgstr "Linkitä tapahtumat ryhmään kioskin sisäänkirjaustoiminnallisuutta varten."
+
+#: 
+msgid "Linked Groups"
+msgstr "Linkitetyt ryhmät"
+
+#: 
+msgid "Looking for stuck events..."
+msgstr "Etsitään jumissa olevia tapahtumia..."
+
+#: 
+msgid "Manage event names, recurrence patterns, and attendance counts"
+msgstr "Hallinnoi tapahtumien nimiä, toistuvuusmalleja ja läsnäololaskureita"
+
+#: 
+msgid "Missing required field: %s"
+msgstr "Pakollinen kenttä puuttuu: %s"
+
+#: 
+msgid "No Events Today"
+msgstr "Ei tapahtumia tänään"
+
+#: 
+msgid "No Group"
+msgstr "Ei ryhmää"
+
+#: 
+msgid "No active assignment"
+msgstr "Ei aktiivista tehtävää"
+
+#: 
+msgid "No active events found."
+msgstr "Aktiivisia tapahtumia ei löydy."
+
+#: 
+msgid "No attendance count categories defined for this event type yet."
+msgstr "Tälle tapahtumatyypille ei ole vielä määritetty läsnäololaskurikategorioita."
+
+#: 
+msgid "No one has been checked in to this event yet."
+msgstr "Ketään ei ole vielä kirjattu sisään tähän tapahtumaan."
+
+#: 
+msgid "No past events are still marked Active."
+msgstr "Yhtään mennyttä tapahtumaa ei ole enää merkitty aktiiviseksi."
+
+#: 
+msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr "Avaa luokka → napsauta \"Luo tämän päivän tapahtuma\" — tapahtuma luodaan ja linkitetään luokkaan yhdellä kertaa, jonka jälkeen siirryt sisäänkirjaussivulle, joka on valmis kioskin tai kävijöiden kirjaamiseen."
+
+#: 
+msgid "Optional Settings"
+msgstr "Valinnaiset asetukset"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "Valinnainen — kirjaa kuka kirjaa tämän henkilön ulos (esim. vanhempi hakemassa lasta)."
+
+#: 
+msgid "Person checked out."
+msgstr "Henkilö kirjattu ulos."
+
+#: 
+msgid "Person is not checked in"
+msgstr "Henkilöä ei ole kirjattu sisään"
+
+#: 
+msgid "Person not in active class roster"
+msgstr "Henkilö ei ole aktiivisella luokkalistalla"
+
+#: 
+msgid "Pin to Calendars"
+msgstr "Kiinnitä kalentereihin"
+
+#: 
+msgid "Please select a person to check in."
+msgstr "Valitse kirjattava henkilö."
+
+#: 
+msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
+msgstr "Esitäytetty tämän tapahtumatyypin perusteella — toistuvilla tyypeillä päivämäärä on seuraava kerta tämän tyypin viimeisen tapahtuman jälkeen, ja aika vastaa tyypin oletusalkamisaikaa."
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "Aikavälin päättymispäivän on oltava alkamispäivän jälkeen tai samana päivänä."
+
+#: 
+msgid "Range end must be a valid YYYY-MM-DD date."
+msgstr "Aikavälin päättymispäivän on oltava kelvollinen VVVV-KK-PP-päivämäärä."
+
+#: 
+msgid "Range start must be a valid YYYY-MM-DD date."
+msgstr "Aikavälin alkamispäivän on oltava kelvollinen VVVV-KK-PP-päivämäärä."
+
+#: 
+msgid "Range start must be before range end"
+msgstr "Aikavälin alkamispäivän on oltava ennen päättymispäivää"
+
+#: 
+msgid "Range start must be before range end."
+msgstr "Aikavälin alkamispäivän on oltava ennen päättymispäivää."
+
+#: 
+msgid "RangeEnd must be on or after RangeStart"
+msgstr "RangeEnd-arvon on oltava RangeStart-arvon jälkeen tai samana päivänä"
+
+#: 
+msgid "Recommended"
+msgstr "Suositeltu"
+
+#: 
+msgid "Required for Kiosk"
+msgstr "Vaaditaan kioskille"
+
+#: 
+msgid "Resetting will permanently delete:"
+msgstr "Nollaaminen poistaa pysyvästi:"
+
+#: 
+msgid "SQL Only"
+msgstr "Vain SQL"
+
+#: 
+msgid "Save Time"
+msgstr "Säästä aikaa"
+
+#: 
+msgid "Save changes to this category name"
+msgstr "Tallenna muutokset tähän kategorian nimeen"
+
+#: 
+msgid "Select an event type…"
+msgstr "Valitse tapahtumatyyppi…"
+
+#: 
+msgid "Select start and end date/time."
+msgstr "Valitse alkamis- ja päättymispäivä/-aika."
+
+#: 
+msgid "Show More Options"
+msgstr "Näytä lisää vaihtoehtoja"
+
+#: 
+msgid "Skip"
+msgstr "Ohita"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "Ohita ja kirjaa ulos"
+
+#: 
+msgid "Start Check-in"
+msgstr "Aloita sisäänkirjaus"
+
+#: 
+msgid "Starts"
+msgstr "Alkaa"
+
+#: 
+msgid "Step 1: Create a Backup"
+msgstr "Vaihe 1: Luo varmuuskopio"
+
+#: 
+msgid "Step 2: Reset Database"
+msgstr "Vaihe 2: Nollaa tietokanta"
+
+#: 
+msgid "Still Checked In"
+msgstr "Vielä kirjattu sisään"
+
+#: 
+msgid "Stuck Events"
+msgstr "Jumissa olevat tapahtumat"
+
+#: 
+msgid "Take Attendance"
+msgstr "Kirjaa läsnäolo"
+
+#: 
+msgid "The Events module is disabled"
+msgstr "Tapahtumamooduuli on poistettu käytöstä"
+
+#: 
+msgid "The same start and end time will be used for all generated events."
+msgstr "Samaa alku- ja päättymisaikaa käytetään kaikille luotaville tapahtumille."
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "Tänään ei ole aikataulutettuja tapahtumia"
+
+#: 
+msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
+msgstr "Nämä ovat osallistujamäärälaskureita — vapaaehtoiset täyttävät ne tapahtuman jälkeen, jotta hallintapaneeli voi eritellä läsnäolon (esim. kuinka monta seurakuntalaisista vs. vierailijoista). Ne ovat erillisiä sisäänkirjaussivun yksilöllisistä sisäänkirjauksista."
+
+#: 
+msgid "This event is inactive."
+msgstr "Tämä tapahtuma on passiivinen."
+
+#: 
+msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr "Tämä sivu mahdollistaa kaikkien ChurchCRM-tietokannan tietojen pysyvän poistamisen. Tätä toimintoa ei voi peruuttaa."
+
+#: 
+msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
+msgstr "Tämä raportti listaa kaikki tapahtumat, joiden päättymispäivä on mennyt mutta jotka on vielä merkitty aktiivisiksi. Yleisiä syitä: vapaaehtoinen unohti napauttaa 'Kirjaa ulos', kioski menetti yhteyden tai tapahtuma luotiin ja hylättiin. Myös vanhat tapahtumat (vuosien takaa), joita ei koskaan deaktivoitu, näkyvät täällä. 'Vielä kirjattu sisään' -sarake näyttää, onko joku jäänyt kesken sisäänkirjauksen. Tapahtuman sulkeminen tästä raportista kirjaa kaikki ulos (käyttäen nykyistä aikaa) ja merkitsee tapahtuman passiiviseksi."
+
+#: 
+msgid "This title will be used for all generated events."
+msgstr "Tätä otsikkoa käytetään kaikille luotaville tapahtumille."
+
+#: 
+msgid "Today's Events"
+msgstr "Tämän päivän tapahtumat"
+
+#: 
+msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
+msgstr "Liian monta kertaa (%d) — supista aikaväliä. Suurin sallittu: %d"
+
+#: 
+msgid "Type RESET to confirm"
+msgstr "Kirjoita RESET vahvistaaksesi"
+
+#: 
+msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
+msgstr "Käytä yllä olevaa painiketta luodaksesi tämän päivän tapahtuman yhdellä napsautuksella. Se linkitetään automaattisesti tähän luokkaan, jotta kioski voi hakea listan."
+
+#: 
+msgid "Use this form to bulk-create a series of recurring events. Each event is created individually and can be edited or deleted independently after creation."
+msgstr "Käytä tätä lomaketta luodaksesi useita toistuvia tapahtumia kerralla. Jokainen tapahtuma luodaan erikseen ja sitä voidaan muokata tai poistaa itsenäisesti luomisen jälkeen."
+
+#: 
+msgid "Used as the default start time when creating events of this type."
+msgstr "Käytetään oletusalkamisaikana luotaessa tämän tyypin tapahtumia."
+
+#: 
+msgid "User must have Add Event permission and the Events module must be enabled"
+msgstr "Käyttäjällä on oltava Lisää tapahtuma -oikeus ja Tapahtumamooduuli on oltava käytössä"
+
+#: 
+msgid "Valid startDate and endDate are required"
+msgstr "Kelvolliset startDate ja endDate ovat pakollisia"
+
+#: 
+msgid "View Event"
+msgstr "Näytä tapahtuma"
+
+#: 
+msgid "What are these for?"
+msgstr "Mitä varten nämä ovat?"
+
+#: 
+msgid "What does this find?"
+msgstr "Mitä tämä etsii?"
+
+#: 
+msgid "What is this for?"
+msgstr "Mihin tämä on tarkoitettu?"
+
+#: 
+msgid "Who is bringing them in?"
+msgstr "Kuka tuo heidät sisään?"
+
+#: 
+msgid "You must select a valid recurrence pattern."
+msgstr "Sinun on valittava kelvollinen toistuvuusmalli."
+
+#: 
+msgid "You must select an event type."
+msgstr "Sinun on valittava tapahtumatyyppi."
+
+#: 
+msgid "You must specify a date range."
+msgstr "Sinun on määritettävä aikaväli."
+
+#: 
+msgid "checked in"
+msgstr "kirjattu sisään"
+
+#: 
+msgid "e.g., Sunday Worship Service"
+msgstr "esim. Sunnuntain jumalanpalvelus"
+
+#: 
+msgid "endDate must be after startDate"
+msgstr "endDate-arvon on oltava startDate-arvon jälkeen"
+
+#: 
+msgid "eventIds must be a non-empty array"
+msgstr "eventIds-arvon on oltava ei-tyhjä taulukko"
+
+#: 
+msgid "invalid recurrence type"
+msgstr "virheellinen toistuvuustyyppi"
+
+#: 
+msgid "personIds must be a non-empty array"
+msgstr "personIds-arvon on oltava ei-tyhjä taulukko"
+
+#: 
+msgid "to enable the reset button"
+msgstr "aktivoidaksesi nollauspainikkeen"
+
+#: 
+msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
+msgstr "Kartta ilmestyy tähän, kun koordinaatit on tallennettu — joko automaattisesti osoitteestasi tunnistettuna tai manuaalisesti yllä syötettynä."
+
+#: 
+msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr "Sekä leveysaste että pituusaste on annettava yhdessä (tai molemmat jätetään tyhjiksi automaattista tunnistusta varten)."
+
+#: 
+msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr "Seurakunnan tiedot tallennettu, mutta osoitetta ei voitu paikallistaa automaattisesti. Syötä leveysaste ja pituusaste manuaalisesti Karttakoordinaatit-kohdassa."
+
+#: 
+msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
+msgstr "Koordinaatit tunnistetaan automaattisesti osoitteestasi tallennettaessa (OpenStreetMapin kautta). Voit myös syöttää ne manuaalisesti alla — manuaaliset arvot ohittavat aina automaattisen tunnistuksen. Jätä molemmat tyhjiksi, jotta järjestelmä voi geokoodata osoitteesta."
+
+#: 
+msgid "Latitude must be a number between -90 and 90."
+msgstr "Leveysasteen on oltava luku välillä -90 ja 90."
+
+#: 
+msgid "Longitude must be a number between -180 and 180."
+msgstr "Pituusasteen on oltava luku välillä -180 ja 180."
+
+#: 
+msgid "Map Coordinates"
+msgstr "Karttakoordinaatit"
+
+#: 
+msgid "Please select a group."
+msgstr "Valitse ryhmä."
+
+#: 
+msgid "Please select a role."
+msgstr "Valitse rooli."
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "Valitse sekä ryhmä että rooli."
+
+#: 
+msgid "Range: -180 to 180."
+msgstr "Alue: -180–180."
+
+#: 
+msgid "Range: -90 to 90."
+msgstr "Alue: -90–90."
+
+#: 
+msgid "mo"
+msgstr "kk"
+
+#: 
+msgid "mos"
+msgstr "kk"
+
+#: 
+msgid "yr"
+msgstr "v."
+
+#: 
+msgid "yrs"
+msgstr "v."
+

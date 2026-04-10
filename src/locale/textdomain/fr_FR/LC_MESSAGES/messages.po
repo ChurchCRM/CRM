@@ -1416,7 +1416,7 @@ msgstr "Rôles du groupe"
 
 #: 
 msgid "Group role name changes are saved as soon as the box loses focus"
-msgstr "Les modifications apportées au nom du rôle du groupe sont enregistrées dès que la boîte perd le focus"
+msgstr "Les modifications apportées au nom du rôle du groupe sont enregistrées dès qu'il n'est plus sélectionné"
 
 #: 
 msgid "New Role"
@@ -2163,7 +2163,7 @@ msgstr "Modifier son propre compte"
 
 #: 
 msgid "Admin"
-msgstr "Administrateur"
+msgstr "Admin"
 
 #: 
 msgid "Last Login"
@@ -5735,11 +5735,11 @@ msgstr "Nom de la personne"
 
 #: 
 msgid "Custom message for church greeter email 1, max 255 characters"
-msgstr "Message d'accueil dans la paroisse personnalisé, e-mail 1, max 255 caractères"
+msgstr "Message d'accueil de l'église personnalisé, e-mail 1, max 255 caractères"
 
 #: 
 msgid "Custom message for church greeter email 2, max 255 characters"
-msgstr "Message d'accueil dans la paroisse personnalisé, e-mail 2, max 255 caractères"
+msgstr "Message d'accueil de l'église personnalisé, e-mail 2, max 255 caractères"
 
 #: 
 msgid "Include contact and demographic data in new member email notification body"
@@ -5777,11 +5777,11 @@ msgstr "Réussi"
 
 #: 
 msgid "Focus"
-msgstr "le point"
+msgstr "Sélectionner"
 
 #: 
 msgid "Unfocus"
-msgstr "Déconcentrer"
+msgstr "Désélectionner"
 
 #. Context: locales
 #: 
@@ -5882,7 +5882,7 @@ msgstr[1] "il y a %d mois"
 #: 
 msgid "%d year old"
 msgid_plural "%d years old"
-msgstr[0] "il y a %d an"
+msgstr[0] "%d an"
 msgstr[1] "il y a %d ans"
 
 #: 
@@ -6058,7 +6058,7 @@ msgstr "Ce champ est requis"
 
 #: 
 msgid "Text"
-msgstr "Texte"
+msgstr "SMS"
 
 #: 
 msgid "Event Description"
@@ -10362,7 +10362,7 @@ msgstr "Détecter automatiquement les coordonnées via l'adresse"
 
 #: 
 msgid "Church name is required."
-msgstr "Le nom de la paroisse est obligatoire."
+msgstr "Le nom de l'église est obligatoire."
 
 #: 
 msgid "City is required."
@@ -10426,7 +10426,7 @@ msgstr "Mère"
 
 #: 
 msgid "Optional. URL for your church website."
-msgstr "Facultatif. URL du site web de votre paroisse."
+msgstr "Facultatif. URL du site web de votre église."
 
 #: 
 msgid "Parents/Guardians"
@@ -10446,7 +10446,7 @@ msgstr "Obligatoire. Utilisé sur tous les rapports et communications."
 
 #: 
 msgid "Save Church Information"
-msgstr "Enregistrer les informations de la paroisse"
+msgstr "Enregistrer les informations de l'église"
 
 #: 
 msgid "Search or select..."
@@ -10470,7 +10470,7 @@ msgstr "Informations sur l'étudiant"
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
-msgstr "C'est ainsi que les informations de votre paroisse apparaîtront sur les rapports et les annuaires."
+msgstr "C'est ainsi que les informations de votre église apparaîtront sur les rapports et les annuaires."
 
 #: 
 msgid "Time Zone"
@@ -10680,7 +10680,7 @@ msgstr "Ajoutez tous les membres de votre foyer — adultes et enfants."
 
 #: 
 msgid "Add families and individuals one by one directly in ChurchCRM. Great for smaller congregations or topping up imported data."
-msgstr "Ajoutez des familles et des individus un par un directement dans ChurchCRM. Idéal pour les petites paroisses ou pour compléter des données importées."
+msgstr "Ajoutez des familles et des individus un par un directement dans ChurchCRM. Idéal pour les petites églises ou pour compléter des données importées."
 
 #: 
 msgid "Add first family"
@@ -10740,7 +10740,7 @@ msgstr "Une erreur s'est produite"
 
 #: 
 msgid "An individual church member. Stores name, birthday, personal email, and mobile."
-msgstr "Un fidèle de la paroisse. Contient le nom, la date de naissance, l'e-mail personnel et le mobile."
+msgstr "Un fidèle de l'église. Contient le nom, la date de naissance, l'e-mail personnel et le mobile."
 
 #: 
 msgid "An unexpected error occurred while processing your request. Please contact your administrator for assistance."
@@ -10884,7 +10884,7 @@ msgstr "Vérifier les mises à jour et mettre à niveau votre installation Churc
 
 #: 
 msgid "Check in attendees for church events and activities"
-msgstr "Enregistrer les participants aux événements et activités de la paroisse"
+msgstr "Enregistrer les participants aux événements et activités de l'église"
 
 #: 
 msgid "Check in to an event"
@@ -10904,7 +10904,7 @@ msgstr "Choisissez comment vous souhaitez remplir votre base de données. Vous p
 
 #: 
 msgid "Church Info"
-msgstr "Informations sur la paroisse"
+msgstr "Informations sur l'église"
 
 #: 
 msgid "Clear all"
@@ -10996,7 +10996,7 @@ msgstr "Copier vers un groupe"
 
 #: 
 msgid "Create a backup of your church database"
-msgstr "Créer une sauvegarde de la base de données de votre paroisse"
+msgstr "Créer une sauvegarde de la base de données de votre église"
 
 #: 
 msgid "Create a manual backup at least once a week, or enable the External Backup plugin for automatic WebDAV backups on a schedule."
@@ -11008,7 +11008,7 @@ msgstr "Créer et modifier les informations et relations familiales"
 
 #: 
 msgid "Create and manage church events and activities"
-msgstr "Créer et gérer les événements et activités de la paroisse"
+msgstr "Créer et gérer les événements et activités de l'église"
 
 #: 
 msgid "Create or edit property type categories"
@@ -11942,7 +11942,7 @@ msgstr "Enregistrer de nouveaux engagements financiers et paiements"
 
 #: 
 msgid "Record why attendees visited your church"
-msgstr "Enregistrer la raison de la visite des participants à la paroisse"
+msgstr "Enregistrer la raison de la visite des participants à l'église"
 
 #: 
 msgid "Register Your Family"
@@ -11974,7 +11974,7 @@ msgstr "Restaurer la sauvegarde"
 
 #: 
 msgid "Restore your church database from a backup file"
-msgstr "Restaurer la base de données de votre paroisse depuis un fichier de sauvegarde"
+msgstr "Restaurer la base de données de votre église depuis un fichier de sauvegarde"
 
 #: 
 msgid "Return to Dashboard"
@@ -12094,11 +12094,11 @@ msgstr "Créer une nouvelle campagne ou un événement de collecte de fonds"
 
 #: 
 msgid "Set your church name, address, and contact details"
-msgstr "Définir le nom, l'adresse et les coordonnées de votre paroisse"
+msgstr "Définir le nom, l'adresse et les coordonnées de votre église"
 
 #: 
 msgid "Set your church name, address, and contact email"
-msgstr "Définir le nom, l'adresse et l'e-mail de contact de votre paroisse"
+msgstr "Définir le nom, l'adresse et l'e-mail de contact de votre église"
 
 #: 
 msgid "Setup Progress"
@@ -12162,7 +12162,7 @@ msgstr "Informations de diagnostic système et configuration"
 
 #: 
 msgid "Tags"
-msgstr "Balises"
+msgstr "Badges"
 
 #: 
 msgid "Tax Statements"
@@ -12230,7 +12230,7 @@ msgstr "Téléversez un fichier CSV pour importer des familles et des personnes 
 
 #: 
 msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
-msgstr "Téléversez un CSV depuis Excel, Google Sheets ou votre précédent système de gestion de paroisse et associez les colonnes aux champs ChurchCRM."
+msgstr "Téléversez un CSV depuis Excel, Google Sheets ou votre précédent système de gestion de votre église et associez les colonnes aux champs ChurchCRM."
 
 #: 
 msgid "Upload failed."
@@ -12354,7 +12354,7 @@ msgstr "Nous n'avons pas pu traiter votre demande de réinitialisation de mot de
 
 #: 
 msgid "We'll use this to keep in touch and send church updates."
-msgstr "Nous l'utiliserons pour rester en contact et envoyer des nouvelles de la paroisse."
+msgstr "Nous l'utiliserons pour rester en contact et envoyer des nouvelles de l'église"
 
 #: 
 msgid "We're so glad you're here! Register your family in just 3 easy steps."
@@ -12470,7 +12470,7 @@ msgstr "ou connecter un service externe"
 
 #: 
 msgid "our church"
-msgstr "notre paroisse"
+msgstr "notre église"
 
 #: 
 msgid "page"
@@ -13053,7 +13053,7 @@ msgstr "Âge maximal"
 #. Context: queryparameters_qrp
 #: 
 msgid "Member, Regular Attender, etc."
-msgstr "Membre de la paroisse, Participant régulier, etc."
+msgstr "Membre de l'église, Participant régulier, etc."
 
 #. Context: query_qry
 #: 
@@ -13266,7 +13266,7 @@ msgstr "Sélectionnez le rôle familial souhaité."
 
 #: 
 msgid "Send text message"
-msgstr "Envoyer un message texte"
+msgstr "Envoyer un message SMS"
 
 #: 
 msgid "Some calendars have access tokens, but external calendar sharing is currently disabled. Enable it via Calendar Settings to allow external apps to subscribe to your calendars."
@@ -13282,23 +13282,23 @@ msgstr "Langue du système pour l'église."
 
 #: 
 msgid "Text All"
-msgstr "Texte Tous"
+msgstr "SMS à Tous"
 
 #: 
 msgid "Text Dashboard"
-msgstr "Tableau de bord Texte"
+msgstr "Tableau de bord SMS "
 
 #: 
 msgid "Text Settings"
-msgstr "Paramètres texte"
+msgstr "Paramètres SMS "
 
 #: 
 msgid "Text Tools"
-msgstr "Outils texte"
+msgstr "Outils SMS "
 
 #: 
 msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
-msgstr "Les actions de messagerie texte sont disponibles dans les vues Groupe et Classe d'école du dimanche. Utilisez le menu déroulant \"Texte\" pour copier les numéros de téléphone ou envoyer des messages SMS aux membres du groupe."
+msgstr "Les actions de messagerie SMS sont disponibles dans les vues Groupe et Classe d'école du dimanche. Utilisez le menu déroulant \"SMS\" pour copier les numéros de téléphone ou envoyer des messages SMS aux membres du groupe."
 
 #. Context: queryparameters_qrp
 #: 
@@ -13390,7 +13390,7 @@ msgstr "Vonage SMS non configuré"
 
 #: 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
-msgstr "Sans Vonage, les actions de texte ouvriront l'application SMS native de votre appareil ou copieront les numéros de téléphone dans le presse-papiers."
+msgstr "Sans Vonage, les actions de SMS ouvriront l'application SMS native de votre appareil ou copieront les numéros de téléphone dans le presse-papiers."
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -15437,4 +15437,68 @@ msgstr "personIds doit être un tableau non vide"
 #: 
 msgid "to enable the reset button"
 msgstr "pour activer le bouton de réinitialisation"
+
+#: 
+msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
+msgstr "Une carte apparaîtra ici une fois les coordonnées enregistrées — soit détectées automatiquement depuis votre adresse, soit saisies manuellement ci-dessus."
+
+#: 
+msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr "La latitude et la longitude doivent être fournies ensemble (ou toutes deux laissées vides pour la détection automatique)."
+
+#: 
+msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr "Informations de la paroisse enregistrées, mais l'adresse n'a pas pu être localisée automatiquement. Veuillez saisir la latitude et la longitude manuellement sous Coordonnées cartographiques."
+
+#: 
+msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
+msgstr "Les coordonnées sont détectées automatiquement depuis votre adresse lors de l'enregistrement (via OpenStreetMap). Vous pouvez également les saisir manuellement ci-dessous — les valeurs manuelles ont toujours la priorité sur la détection automatique. Laissez les deux champs vides pour que le système géocode l'adresse."
+
+#: 
+msgid "Latitude must be a number between -90 and 90."
+msgstr "La latitude doit être un nombre entre -90 et 90."
+
+#: 
+msgid "Longitude must be a number between -180 and 180."
+msgstr "La longitude doit être un nombre entre -180 et 180."
+
+#: 
+msgid "Map Coordinates"
+msgstr "Coordonnées cartographiques"
+
+#: 
+msgid "Please select a group."
+msgstr "Veuillez sélectionner un ministère."
+
+#: 
+msgid "Please select a role."
+msgstr "Veuillez sélectionner un rôle."
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "Veuillez sélectionner un ministère et un rôle."
+
+#: 
+msgid "Range: -180 to 180."
+msgstr "Plage : -180 à 180."
+
+#: 
+msgid "Range: -90 to 90."
+msgstr "Plage : -90 à 90."
+
+#: 
+msgid "mo"
+msgstr "mois"
+
+#: 
+msgid "mos"
+msgstr "mois"
+
+#: 
+msgid "yr"
+msgstr "an"
+
+#: 
+msgid "yrs"
+msgstr "ans"
 

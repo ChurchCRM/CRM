@@ -15413,3 +15413,67 @@ msgstr "personIds phải là mảng không rỗng"
 msgid "to enable the reset button"
 msgstr "để kích hoạt nút đặt lại"
 
+#: 
+msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
+msgstr "Bản đồ sẽ hiển thị ở đây sau khi tọa độ được lưu — được tự động phát hiện từ địa chỉ của bạn hoặc nhập thủ công ở trên."
+
+#: 
+msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr "Cả vĩ độ và kinh độ phải được cung cấp cùng nhau (hoặc để trống cả hai để tự động phát hiện)."
+
+#: 
+msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr "Thông tin giáo xứ đã được lưu, nhưng địa chỉ không thể tự động xác định vị trí. Vui lòng nhập vĩ độ và kinh độ thủ công trong phần Tọa độ bản đồ."
+
+#: 
+msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
+msgstr "Tọa độ được tự động phát hiện từ địa chỉ của bạn khi lưu (qua OpenStreetMap). Bạn cũng có thể nhập thủ công bên dưới — giá trị thủ công luôn được ưu tiên hơn tự động phát hiện. Để trống cả hai để hệ thống tự địa mã hóa từ địa chỉ."
+
+#: 
+msgid "Latitude must be a number between -90 and 90."
+msgstr "Vĩ độ phải là một số trong khoảng từ -90 đến 90."
+
+#: 
+msgid "Longitude must be a number between -180 and 180."
+msgstr "Kinh độ phải là một số trong khoảng từ -180 đến 180."
+
+#: 
+msgid "Map Coordinates"
+msgstr "Tọa độ bản đồ"
+
+#: 
+msgid "Please select a group."
+msgstr "Vui lòng chọn một nhóm."
+
+#: 
+msgid "Please select a role."
+msgstr "Vui lòng chọn một chức vụ."
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "Vui lòng chọn cả nhóm và chức vụ."
+
+#: 
+msgid "Range: -180 to 180."
+msgstr "Phạm vi: -180 đến 180."
+
+#: 
+msgid "Range: -90 to 90."
+msgstr "Phạm vi: -90 đến 90."
+
+#: 
+msgid "mo"
+msgstr "tháng"
+
+#: 
+msgid "mos"
+msgstr "tháng"
+
+#: 
+msgid "yr"
+msgstr "năm"
+
+#: 
+msgid "yrs"
+msgstr "năm"
+

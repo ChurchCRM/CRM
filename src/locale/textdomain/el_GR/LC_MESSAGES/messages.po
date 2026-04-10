@@ -14679,3 +14679,809 @@ msgstr "Κίτρινο"
 msgid "Your current access levels (read-only)"
 msgstr "Τα τρέχοντα επίπεδα πρόσβασής σας (μόνο ανάγνωση)"
 
+#: 
+msgid "%d repeat event created successfully."
+msgid_plural "%d repeat events created successfully."
+msgstr[0] "Δημιουργήθηκε επιτυχώς %d επαναλαμβανόμενη εκδήλωση."
+msgstr[1] "Δημιουργήθηκαν επιτυχώς %d επαναλαμβανόμενες εκδηλώσεις."
+
+#: 
+msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
+msgstr "(π.χ. Ενορίτες, Επισκέπτες, Παιδιά) ώστε οι εθελοντές να καταγράφουν εδώ το πλήθος των παρευρισκομένων."
+
+#: 
+msgid "1. Sunday School Class"
+msgstr "1. Τμήμα Κατηχητικού"
+
+#: 
+msgid "2. Event Type"
+msgstr "2. Τύπος Εκδήλωσης"
+
+#: 
+msgid "3. Event"
+msgstr "3. Εκδήλωση"
+
+#: 
+msgid "4. Kiosk"
+msgstr "4. Κιόσκι"
+
+#: 
+msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
+msgstr "Ένα τμήμα είναι μια Διακονία τύπου «Κατηχητικό». Περιέχει μαθητές και δασκάλους (μέλη με ρόλους)."
+
+#: 
+msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
+msgstr "Μια συνδεδεμένη διακονία συνδέει αυτή την εκδήλωση με ένα τμήμα ή κατάλογο διακονίας. Όταν η εκδήλωση ανατίθεται σε ένα Κιόσκι, το κιόσκι ανακτά τα μέλη και τα εμφανίζει ως λίστα tap-to-check-in. Για τμήματα κατηχητικού, συνδέστε εδώ τη διακονία τμήματος ώστε οι εθελοντές να κάνουν check-in μαθητών από tablet."
+
+#: 
+msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr "Μια συγκεκριμένη πραγματοποίηση (π.χ. «Προσχολικό — 12 Απρ»). Κληρονομεί προεπιλογές από τον τύπο και συνδέεται με τη διακονία τμήματος μέσω του κοινού. Αυτό χρησιμοποιούν οι εθελοντές για καταγραφή παρουσιών."
+
+#: 
+msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr "Ένα tablet που ανατίθεται σε μία εκδήλωση. Το κιόσκι ανακτά τον κατάλογο της συνδεδεμένης διακονίας και εμφανίζει tap-to-check-in. Χωρίς συνδεδεμένη διακονία, το κιόσκι δεν έχει κατάλογο να εμφανίσει."
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "Προσθήκη Αυτόκλητου / Επισκέπτη"
+
+#: 
+msgid "Add categories on the Event Type page"
+msgstr "Προσθήκη κατηγοριών στη σελίδα Τύπου Εκδήλωσης"
+
+#: 
+msgid "Add people to your cart first, then come back to check them in to an event."
+msgstr "Προσθέστε πρώτα άτομα στο καλάθι σας και μετά επιστρέψτε για check-in σε μια εκδήλωση."
+
+#: 
+msgid "All clear!"
+msgstr "Όλα εντάξει!"
+
+#: 
+msgid "All events and attendance records"
+msgstr "Όλες οι εκδηλώσεις και τα αρχεία παρουσίας"
+
+#: 
+msgid "All financial data (pledges, payments, deposits)"
+msgstr "Όλα τα οικονομικά δεδομένα (υποσχέσεις, πληρωμές, καταθέσεις)"
+
+#: 
+msgid "All groups, roles, and memberships"
+msgstr "Όλες οι διακονίες, ρόλοι και μελή"
+
+#: 
+msgid "All people and family records"
+msgstr "Όλα τα αρχεία ατόμων και οικογενειών"
+
+#: 
+msgid "All system settings and custom fields"
+msgstr "Όλες οι ρυθμίσεις συστήματος και προσαρμοσμένα πεδία"
+
+#: 
+msgid "All uploaded photos and documents"
+msgstr "Όλες οι ανεβασμένες φωτογραφίες και έγγραφα"
+
+#: 
+msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
+msgstr "Ο Τύπος Εκδήλωσης είναι πρότυπο — όνομα, προεπιλεγμένη ώρα έναρξης, επανάληψη, κατηγορίες καταμέτρησης παρουσίας. Προαιρετικά συνδέεται με ένα τμήμα ως προεπιλεγμένο κοινό."
+
+#: 
+msgid "Attendance record deleted."
+msgstr "Η εγγραφή παρουσίας διαγράφηκε."
+
+#: 
+msgid "Audit"
+msgstr "Έλεγχος"
+
+#: 
+msgid "Audit Events"
+msgstr "Εκδηλώσεις Ελέγχου"
+
+#: 
+msgid "Auto-totalled from counts at right"
+msgstr "Αυτόματη άθροιση από τις καταμετρήσεις στα δεξιά"
+
+#: 
+msgid "Back to Events"
+msgstr "Επιστροφή στις Εκδηλώσεις"
+
+#: 
+msgid "Back to Events Dashboard"
+msgstr "Επιστροφή στον Πίνακα Εκδηλώσεων"
+
+#: 
+msgid "Backup failed. You can still proceed with the reset, but your data will be lost."
+msgstr "Το αντίγραφο ασφαλείας απέτυχε. Μπορείτε να συνεχίσετε με την επαναφορά, αλλά τα δεδομένα σας θα χαθούν."
+
+#: 
+msgid "Backup ready!"
+msgstr "Το αντίγραφο ασφαλείας είναι έτοιμο!"
+
+#: 
+msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
+msgstr "Πριν την επαναφορά, συνιστούμε ανεπιφύλακτα να κατεβάσετε αντίγραφο ασφαλείας των τρεχόντων δεδομένων σας. Αυτή είναι η μοναδική ευκαιρία να τα διαφυλάξετε."
+
+#: 
+msgid "Bulk-create a series of recurring events"
+msgstr "Μαζική δημιουργία σειράς επαναλαμβανόμενων εκδηλώσεων"
+
+#: 
+msgid "By"
+msgstr "Από"
+
+#: 
+msgid "Cannot check in to an inactive event. Activate the event first."
+msgstr "Δεν είναι δυνατό το check-in σε ανενεργή εκδήλωση. Ενεργοποιήστε πρώτα την εκδήλωση."
+
+#: 
+msgid "Change"
+msgstr "Αλλαγή"
+
+#: 
+msgid "Check In All"
+msgstr "Check-in Όλων"
+
+#: 
+msgid "Check In Family"
+msgstr "Check-in Οικογένειας"
+
+#: 
+msgid "Check Out All"
+msgstr "Check-out Όλων"
+
+#: 
+msgid "Check in all %d family members to a single event."
+msgstr "Check-in όλων των %d μελών οικογένειας σε μία εκδήλωση."
+
+#: 
+msgid "Check out"
+msgstr "Check-out"
+
+#: 
+msgid "Check-in By"
+msgstr "Check-in από"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "Το check-in απέτυχε. Παρακαλώ δοκιμάστε ξανά."
+
+#: 
+msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
+msgstr "Το check-in είναι απενεργοποιημένο για ανενεργές εκδηλώσεις. Ενεργοποιήστε την εκδήλωση από τον Πίνακα Εκδηλώσεων για να ενεργοποιήσετε το check-in."
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "Το check-out απέτυχε. Παρακαλώ δοκιμάστε ξανά."
+
+#: 
+msgid "Checked in to event: %s"
+msgstr "Check-in στην εκδήλωση: %s"
+
+#: 
+msgid "Checked out from event: %s"
+msgstr "Check-out από την εκδήλωση: %s"
+
+#: 
+msgid "Close All Stuck Events"
+msgstr "Κλείσιμο Όλων των Κολλημένων Εκδηλώσεων"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "Επιβεβαίωση Check-out"
+
+#: 
+msgid "Create Repeat Events"
+msgstr "Δημιουργία Επαναλαμβανόμενων Εκδηλώσεων"
+
+#: 
+msgid "Create Today's Event"
+msgstr "Δημιουργία Σημερινής Εκδήλωσης"
+
+#: 
+msgid "Create a new event type with recurrence and attendance settings"
+msgstr "Δημιουργία νέου τύπου εκδήλωσης με ρυθμίσεις επανάληψης και παρουσίας"
+
+#: 
+msgid "Create one now"
+msgstr "Δημιουργήστε ένα τώρα"
+
+#: 
+msgid "Create today's class event and link it to this class for kiosk check-in"
+msgstr "Δημιουργία σημερινής εκδήλωσης τμήματος και σύνδεσή της με αυτό το τμήμα για check-in κιόσκι"
+
+#: 
+msgid "Creating backup..."
+msgstr "Δημιουργία αντιγράφου ασφαλείας..."
+
+#: 
+msgid "Creating..."
+msgstr "Δημιουργία..."
+
+#: 
+msgid "Database + uploaded photos (larger)"
+msgstr "Βάση δεδομένων + ανεβασμένες φωτογραφίες (μεγαλύτερο)"
+
+#: 
+msgid "Database dump only (.sql)"
+msgstr "Μόνο εξαγωγή βάσης δεδομένων (.sql)"
+
+#: 
+msgid "Date Range"
+msgstr "Εύρος Ημερομηνιών"
+
+#: 
+msgid "Date range cannot exceed 1 year"
+msgstr "Το εύρος ημερομηνιών δεν μπορεί να υπερβαίνει το 1 έτος"
+
+#: 
+msgid "Deactivate"
+msgstr "Απενεργοποίηση"
+
+#: 
+msgid "Delete Event Type"
+msgstr "Διαγραφή Τύπου Εκδήλωσης"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "Διαγραφή εγγραφής παρουσίας;"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "Διαγραφή εγγραφής check-in για"
+
+#: 
+msgid "Delete this event?"
+msgstr "Διαγραφή αυτής της εκδήλωσης;"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "Η διαγραφή μιας εκδήλωσης θα διαγράψει επίσης όλες τις καταμετρήσεις παρουσίας. Αυτή η ενέργεια δεν μπορεί να αναιρεθεί."
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "Η διαγραφή αυτού του τύπου εκδήλωσης ΔΕΝ θα διαγράψει τις υπάρχουσες εκδηλώσεις. Είστε σίγουροι;"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "Η διαγραφή αυτής της εκδήλωσης θα διαγράψει επίσης όλες τις εγγραφές παρουσίας. Αυτή η ενέργεια δεν μπορεί να αναιρεθεί."
+
+#: 
+msgid "Destructive Operation"
+msgstr "Καταστροφική Λειτουργία"
+
+#: 
+msgid "Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field."
+msgstr "Επεξεργαστείτε ένα όνομα κατηγορίας και κάντε κλικ Αποθήκευση, ή χρησιμοποιήστε το εικονίδιο κάδου για αφαίρεση. Νέες σειρές προστίθενται μέσω του κάτω πεδίου."
+
+#: 
+msgid "End Time"
+msgstr "Ώρα Λήξης"
+
+#: 
+msgid "End time must be after start time."
+msgstr "Η ώρα λήξης πρέπει να είναι μετά την ώρα έναρξης."
+
+#: 
+msgid "Ended"
+msgstr "Ολοκληρώθηκε"
+
+#: 
+msgid "Ends"
+msgstr "Λήγει"
+
+#: 
+msgid "Event Audit"
+msgstr "Έλεγχος Εκδήλωσης"
+
+#: 
+msgid "Event Check-in"
+msgstr "Check-in Εκδήλωσης"
+
+#: 
+msgid "Event Details"
+msgstr "Λεπτομέρειες Εκδήλωσης"
+
+#: 
+msgid "Event Template"
+msgstr "Πρότυπο Εκδήλωσης"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "Η εκδήλωση υπάρχει ήδη. Ανακατεύθυνση στο check-in..."
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "Η εκδήλωση δημιουργήθηκε. Ανακατεύθυνση στο check-in..."
+
+#: 
+msgid "Event end date/time must be on or after the start date/time."
+msgstr "Η ημερομηνία/ώρα λήξης πρέπει να είναι ίδια ή μετά την ημερομηνία/ώρα έναρξης."
+
+#: 
+msgid "Event title is required."
+msgstr "Ο τίτλος εκδήλωσης είναι υποχρεωτικός."
+
+#: 
+msgid "Event type ID is required"
+msgstr "Ο αναγνωριστικός αριθμός τύπου εκδήλωσης είναι υποχρεωτικός"
+
+#: 
+msgid "Event type ID or group ID is required"
+msgstr "Ο αναγνωριστικός αριθμός τύπου εκδήλωσης ή διακονίας είναι υποχρεωτικός"
+
+#: 
+msgid "Event type has no date configured for yearly recurrence"
+msgstr "Ο τύπος εκδήλωσης δεν έχει ρυθμισμένη ημερομηνία για ετήσια επανάληψη"
+
+#: 
+msgid "Event type has no day-of-week configured for weekly recurrence"
+msgstr "Ο τύπος εκδήλωσης δεν έχει ρυθμισμένη ημέρα εβδομάδας για εβδομαδιαία επανάληψη"
+
+#: 
+msgid "Event type has no recurrence pattern configured"
+msgstr "Ο τύπος εκδήλωσης δεν έχει ρυθμισμένο μοτίβο επανάληψης"
+
+#: 
+msgid "Event type has no valid day-of-month configured for monthly recurrence"
+msgstr "Ο τύπος εκδήλωσης δεν έχει ρυθμισμένη έγκυρη ημέρα μήνα για μηνιαία επανάληψη"
+
+#: 
+msgid "Events will be created for every matching occurrence within this date range."
+msgstr "Εκδηλώσεις θα δημιουργηθούν για κάθε αντίστοιχη εμφάνιση εντός αυτού του εύρους ημερομηνιών."
+
+#: 
+msgid "Every month on the"
+msgstr "Κάθε μήνα την"
+
+#: 
+msgid "Every week on"
+msgstr "Κάθε εβδομάδα την"
+
+#: 
+msgid "Every year on"
+msgstr "Κάθε χρόνο την"
+
+#: 
+msgid "Everyone is checked in!"
+msgstr "Όλοι έχουν κάνει check-in!"
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "Αποτυχία δημιουργίας τμήματος. Παρακαλώ δοκιμάστε ξανά."
+
+#: 
+msgid "Failed to create event."
+msgstr "Αποτυχία δημιουργίας εκδήλωσης."
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "Αποτυχία δημιουργίας εκδήλωσης. Παρακαλώ δοκιμάστε ξανά."
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "Αποτυχία διαγραφής. Παρακαλώ δοκιμάστε ξανά."
+
+#: 
+msgid "Fastest workflow:"
+msgstr "Ταχύτερη ροή εργασίας:"
+
+#: 
+msgid "Find past events that are still active or have un-checked-out attendees"
+msgstr "Εύρεση παλαιών εκδηλώσεων που είναι ακόμα ενεργές ή έχουν συμμετέχοντες χωρίς check-out"
+
+#: 
+msgid "Format: MM-DD (e.g. 04-12 for April 12)"
+msgstr "Μορφή: ΜΜ-ΗΗ (π.χ. 04-12 για 12 Απριλίου)"
+
+#: 
+msgid "Group Roster"
+msgstr "Κατάλογος Διακονίας"
+
+#: 
+msgid "Hide Advanced Options"
+msgstr "Απόκρυψη Σύνθετων Επιλογών"
+
+#: 
+msgid "How Sunday School + Events + Kiosks fit together"
+msgstr "Πώς συνδέονται το Κατηχητικό + Εκδηλώσεις + Κιόσκια"
+
+#: 
+msgid "Invalid date for %s — expected YYYY-MM-DD"
+msgstr "Μη έγκυρη ημερομηνία για %s — αναμένεται YYYY-MM-DD"
+
+#: 
+msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr "Μη έγκυρη μορφή ημερομηνίας για rangeStart ή rangeEnd"
+
+#: 
+msgid "Invalid date format."
+msgstr "Μη έγκυρη μορφή ημερομηνίας."
+
+#: 
+msgid "Invalid date; expected format YYYY-MM-DD"
+msgstr "Μη έγκυρη ημερομηνία· αναμένεται μορφή YYYY-MM-DD"
+
+#: 
+msgid "Invalid event type ID"
+msgstr "Μη έγκυρος αναγνωριστικός αριθμός τύπου εκδήλωσης"
+
+#: 
+msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
+msgstr "Μη έγκυρη μορφή ετήσιας επανάληψης· αναμένεται ΜΜ-ΗΗ (π.χ. 04-12)"
+
+#: 
+msgid "Just now"
+msgstr "Μόλις τώρα"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "Αφήστε κενό για check-out χωρίς καταγραφή του επόπτη."
+
+#: 
+msgid "Link events to a group for Kiosk check-in functionality."
+msgstr "Συνδέστε εκδηλώσεις με μια διακονία για λειτουργία check-in κιόσκι."
+
+#: 
+msgid "Linked Groups"
+msgstr "Συνδεδεμένες Διακονίες"
+
+#: 
+msgid "Looking for stuck events..."
+msgstr "Αναζήτηση κολλημένων εκδηλώσεων..."
+
+#: 
+msgid "Manage event names, recurrence patterns, and attendance counts"
+msgstr "Διαχείριση ονομάτων εκδηλώσεων, μοτίβων επανάληψης και καταμετρήσεων παρουσίας"
+
+#: 
+msgid "Missing required field: %s"
+msgstr "Λείπει υποχρεωτικό πεδίο: %s"
+
+#: 
+msgid "No Events Today"
+msgstr "Δεν υπάρχουν Εκδηλώσεις Σήμερα"
+
+#: 
+msgid "No Group"
+msgstr "Χωρίς Διακονία"
+
+#: 
+msgid "No active assignment"
+msgstr "Χωρίς ενεργή ανάθεση"
+
+#: 
+msgid "No active events found."
+msgstr "Δεν βρέθηκαν ενεργές εκδηλώσεις."
+
+#: 
+msgid "No attendance count categories defined for this event type yet."
+msgstr "Δεν έχουν οριστεί κατηγορίες καταμέτρησης παρουσίας για αυτόν τον τύπο εκδήλωσης."
+
+#: 
+msgid "No one has been checked in to this event yet."
+msgstr "Κανείς δεν έχει κάνει check-in σε αυτή την εκδήλωση ακόμα."
+
+#: 
+msgid "No past events are still marked Active."
+msgstr "Δεν υπάρχουν παλαιές εκδηλώσεις επισημασμένες ως Ενεργές."
+
+#: 
+msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr "Ανοίξτε ένα τμήμα → κάντε κλικ στο «Δημιουργία Σημερινής Εκδήλωσης» — η εκδήλωση δημιουργείται και συνδέεται με το τμήμα σε ένα βήμα, και μεταφέρεστε στη σελίδα check-in για κιόσκι ή αυτόκλητη παρακολούθηση."
+
+#: 
+msgid "Optional Settings"
+msgstr "Προαιρετικές Ρυθμίσεις"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "Προαιρετικό — καταγράψτε ποιος κάνει check-out αυτό το άτομο (π.χ. γονέας που παραλαμβάνει παιδί)."
+
+#: 
+msgid "Person checked out."
+msgstr "Το άτομο έκανε check-out."
+
+#: 
+msgid "Person is not checked in"
+msgstr "Το άτομο δεν έχει κάνει check-in"
+
+#: 
+msgid "Person not in active class roster"
+msgstr "Το άτομο δεν βρίσκεται στον ενεργό κατάλογο τμήματος"
+
+#: 
+msgid "Pin to Calendars"
+msgstr "Καρφίτσωμα σε Ημερολόγια"
+
+#: 
+msgid "Please select a person to check in."
+msgstr "Παρακαλώ επιλέξτε ένα άτομο για check-in."
+
+#: 
+msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
+msgstr "Προσυμπληρωμένο βάσει αυτού του τύπου εκδήλωσης — για επαναλαμβανόμενους τύπους, η ημερομηνία είναι η επόμενη εμφάνιση μετά την τελευταία εκδήλωση αυτού του τύπου, και η ώρα αντιστοιχεί στην προεπιλεγμένη ώρα έναρξης."
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "Η ημερομηνία λήξης εύρους πρέπει να είναι ίδια ή μετά την ημερομηνία έναρξης εύρους."
+
+#: 
+msgid "Range end must be a valid YYYY-MM-DD date."
+msgstr "Η λήξη εύρους πρέπει να είναι έγκυρη ημερομηνία YYYY-MM-DD."
+
+#: 
+msgid "Range start must be a valid YYYY-MM-DD date."
+msgstr "Η έναρξη εύρους πρέπει να είναι έγκυρη ημερομηνία YYYY-MM-DD."
+
+#: 
+msgid "Range start must be before range end"
+msgstr "Η έναρξη εύρους πρέπει να είναι πριν από τη λήξη εύρους"
+
+#: 
+msgid "Range start must be before range end."
+msgstr "Η έναρξη εύρους πρέπει να είναι πριν από τη λήξη εύρους."
+
+#: 
+msgid "RangeEnd must be on or after RangeStart"
+msgstr "Το RangeEnd πρέπει να είναι ίδιο ή μετά το RangeStart"
+
+#: 
+msgid "Recommended"
+msgstr "Συνιστάται"
+
+#: 
+msgid "Required for Kiosk"
+msgstr "Απαιτείται για Κιόσκι"
+
+#: 
+msgid "Resetting will permanently delete:"
+msgstr "Η επαναφορά θα διαγράψει μόνιμα:"
+
+#: 
+msgid "SQL Only"
+msgstr "Μόνο SQL"
+
+#: 
+msgid "Save Time"
+msgstr "Εξοικονόμηση Χρόνου"
+
+#: 
+msgid "Save changes to this category name"
+msgstr "Αποθήκευση αλλαγών σε αυτό το όνομα κατηγορίας"
+
+#: 
+msgid "Select an event type…"
+msgstr "Επιλέξτε τύπο εκδήλωσης…"
+
+#: 
+msgid "Select start and end date/time."
+msgstr "Επιλέξτε ημερομηνία/ώρα έναρξης και λήξης."
+
+#: 
+msgid "Show More Options"
+msgstr "Εμφάνιση Περισσότερων Επιλογών"
+
+#: 
+msgid "Skip"
+msgstr "Παράλειψη"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "Παράλειψη & Αποχώρηση"
+
+#: 
+msgid "Start Check-in"
+msgstr "Έναρξη Παρουσιολογίου"
+
+#: 
+msgid "Starts"
+msgstr "Ξεκινά"
+
+#: 
+msgid "Step 1: Create a Backup"
+msgstr "Βήμα 1: Δημιουργία Αντιγράφου Ασφαλείας"
+
+#: 
+msgid "Step 2: Reset Database"
+msgstr "Βήμα 2: Επαναφορά Βάσης Δεδομένων"
+
+#: 
+msgid "Still Checked In"
+msgstr "Εξακολουθεί να είναι Παρών"
+
+#: 
+msgid "Stuck Events"
+msgstr "Κολλημένες Εκδηλώσεις"
+
+#: 
+msgid "Take Attendance"
+msgstr "Καταγραφή Παρουσιών"
+
+#: 
+msgid "The Events module is disabled"
+msgstr "Η ενότητα Εκδηλώσεων είναι απενεργοποιημένη"
+
+#: 
+msgid "The same start and end time will be used for all generated events."
+msgstr "Η ίδια ώρα έναρξης και λήξης θα χρησιμοποιηθεί για όλες τις εκδηλώσεις."
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "Δεν υπάρχουν προγραμματισμένες εκδηλώσεις για σήμερα"
+
+#: 
+msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
+msgstr "Πρόκειται για κατηγορίες καταμέτρησης — οι εθελοντές τις συμπληρώνουν μετά την εκδήλωση ώστε ο πίνακας ελέγχου να αναλύει τις παρουσίες (π.χ. πόσα μέλη έναντι επισκεπτών). Είναι ξεχωριστές από τις μεμονωμένες παρουσίες στη σελίδα Παρουσιολογίου."
+
+#: 
+msgid "This event is inactive."
+msgstr "Αυτή η εκδήλωση είναι ανενεργή."
+
+#: 
+msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr "Αυτή η σελίδα σας επιτρέπει να διαγράψετε μόνιμα όλα τα δεδομένα στη βάση δεδομένων ChurchCRM. Αυτή η ενέργεια δεν μπορεί να αναιρεθεί."
+
+#: 
+msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
+msgstr "Αυτή η αναφορά εμφανίζει κάθε εκδήλωση της οποίας η ημερομηνία λήξης έχει παρέλθει αλλά εξακολουθεί να είναι επισημασμένη ως Ενεργή. Συνήθεις αιτίες: ένας εθελοντής ξέχασε να πατήσει 'Αποχώρηση', ένα κιόσκι έχασε τη σύνδεση, ή η εκδήλωση δημιουργήθηκε και εγκαταλείφθηκε. Παλαιές εκδηλώσεις (χρόνια πίσω) που δεν απενεργοποιήθηκαν ποτέ εμφανίζονται επίσης εδώ. Η στήλη 'Εξακολουθεί να είναι Παρών' δείχνει αν κάποιος έμεινε σε μέσο παρουσιολόγιο. Το κλείσιμο μιας εκδήλωσης από αυτήν την αναφορά κάνει αποχώρηση σε όλους (χρησιμοποιώντας την τρέχουσα ώρα) και επισημαίνει την εκδήλωση ως Ανενεργή."
+
+#: 
+msgid "This title will be used for all generated events."
+msgstr "Αυτός ο τίτλος θα χρησιμοποιηθεί για όλες τις δημιουργούμενες εκδηλώσεις."
+
+#: 
+msgid "Today's Events"
+msgstr "Εκδηλώσεις Σήμερα"
+
+#: 
+msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
+msgstr "Πάρα πολλές εμφανίσεις (%d) — περιορίστε το εύρος ημερομηνιών. Μέγιστο επιτρεπόμενο: %d"
+
+#: 
+msgid "Type RESET to confirm"
+msgstr "Πληκτρολογήστε RESET για επιβεβαίωση"
+
+#: 
+msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
+msgstr "Χρησιμοποιήστε το παραπάνω κουμπί για να δημιουργήσετε σε ένα κλικ την εκδήλωση σήμερα. Θα συνδεθεί αυτόματα με αυτήν την τάξη ώστε ένα Κιόσκι να μπορεί να ανακτήσει τη λίστα."
+
+#: 
+msgid "Use this form to bulk-create a series of recurring events. Each event is created individually and can be edited or deleted independently after creation."
+msgstr "Χρησιμοποιήστε αυτή τη φόρμα για μαζική δημιουργία μιας σειράς επαναλαμβανόμενων εκδηλώσεων. Κάθε εκδήλωση δημιουργείται μεμονωμένα και μπορεί να επεξεργαστεί ή να διαγραφεί ανεξάρτητα μετά τη δημιουργία."
+
+#: 
+msgid "Used as the default start time when creating events of this type."
+msgstr "Χρησιμοποιείται ως προεπιλεγμένη ώρα έναρξης κατά τη δημιουργία εκδηλώσεων αυτού του τύπου."
+
+#: 
+msgid "User must have Add Event permission and the Events module must be enabled"
+msgstr "Ο χρήστης πρέπει να έχει δικαίωμα Προσθήκης Εκδήλωσης και η ενότητα Εκδηλώσεων πρέπει να είναι ενεργοποιημένη"
+
+#: 
+msgid "Valid startDate and endDate are required"
+msgstr "Απαιτούνται έγκυρες ημερομηνίες startDate και endDate"
+
+#: 
+msgid "View Event"
+msgstr "Προβολή Εκδήλωσης"
+
+#: 
+msgid "What are these for?"
+msgstr "Σε τι χρησιμεύουν αυτά;"
+
+#: 
+msgid "What does this find?"
+msgstr "Τι βρίσκει αυτό;"
+
+#: 
+msgid "What is this for?"
+msgstr "Σε τι χρησιμεύει αυτό;"
+
+#: 
+msgid "Who is bringing them in?"
+msgstr "Ποιος τους φέρνει;"
+
+#: 
+msgid "You must select a valid recurrence pattern."
+msgstr "Πρέπει να επιλέξετε έγκυρο μοτίβο επανάληψης."
+
+#: 
+msgid "You must select an event type."
+msgstr "Πρέπει να επιλέξετε τύπο εκδήλωσης."
+
+#: 
+msgid "You must specify a date range."
+msgstr "Πρέπει να ορίσετε εύρος ημερομηνιών."
+
+#: 
+msgid "checked in"
+msgstr "παρών"
+
+#: 
+msgid "e.g., Sunday Worship Service"
+msgstr "π.χ., Κυριακάτικη Θεία Λειτουργία"
+
+#: 
+msgid "endDate must be after startDate"
+msgstr "Η ημερομηνία λήξης πρέπει να είναι μετά την ημερομηνία έναρξης"
+
+#: 
+msgid "eventIds must be a non-empty array"
+msgstr "Το eventIds πρέπει να είναι μη κενός πίνακας"
+
+#: 
+msgid "invalid recurrence type"
+msgstr "μη έγκυρος τύπος επανάληψης"
+
+#: 
+msgid "personIds must be a non-empty array"
+msgstr "Το personIds πρέπει να είναι μη κενός πίνακας"
+
+#: 
+msgid "to enable the reset button"
+msgstr "για ενεργοποίηση του κουμπιού επαναφοράς"
+
+#: 
+msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
+msgstr "Ένας χάρτης θα εμφανιστεί εδώ μόλις αποθηκευτούν οι συντεταγμένες — είτε αυτόματα από τη διεύθυνσή σας είτε καταχωρηθούν χειροκίνητα παραπάνω."
+
+#: 
+msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr "Το γεωγραφικό πλάτος και μήκος πρέπει να παρέχονται μαζί (ή και τα δύο να αφεθούν κενά για αυτόματη εντόπιση)."
+
+#: 
+msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr "Οι πληροφορίες εκκλησίας αποθηκεύτηκαν, αλλά η διεύθυνση δεν μπόρεσε να εντοπιστεί αυτόματα. Παρακαλώ εισαγάγετε χειροκίνητα το γεωγραφικό πλάτος και μήκος στις Συντεταγμένες Χάρτη."
+
+#: 
+msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
+msgstr "Οι συντεταγμένες εντοπίζονται αυτόματα από τη διεύθυνσή σας κατά την αποθήκευση (μέσω OpenStreetMap). Μπορείτε επίσης να τις εισαγάγετε χειροκίνητα παρακάτω — οι χειροκίνητες τιμές πάντα υπερισχύουν της αυτόματης εντόπισης. Αφήστε και τα δύο κενά για αυτόματη γεωκωδικοποίηση από τη διεύθυνση."
+
+#: 
+msgid "Latitude must be a number between -90 and 90."
+msgstr "Το γεωγραφικό πλάτος πρέπει να είναι αριθμός μεταξύ -90 και 90."
+
+#: 
+msgid "Longitude must be a number between -180 and 180."
+msgstr "Το γεωγραφικό μήκος πρέπει να είναι αριθμός μεταξύ -180 και 180."
+
+#: 
+msgid "Map Coordinates"
+msgstr "Συντεταγμένες Χάρτη"
+
+#: 
+msgid "Please select a group."
+msgstr "Παρακαλώ επιλέξτε ομάδα."
+
+#: 
+msgid "Please select a role."
+msgstr "Παρακαλώ επιλέξτε ρόλο."
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "Παρακαλώ επιλέξτε και ομάδα και ρόλο."
+
+#: 
+msgid "Range: -180 to 180."
+msgstr "Εύρος: -180 έως 180."
+
+#: 
+msgid "Range: -90 to 90."
+msgstr "Εύρος: -90 έως 90."
+
+#: 
+msgid "mo"
+msgstr "μήν."
+
+#: 
+msgid "mos"
+msgstr "μήν."
+
+#: 
+msgid "yr"
+msgstr "έτ."
+
+#: 
+msgid "yrs"
+msgstr "έτη"
+

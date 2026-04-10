@@ -3669,5 +3669,21 @@
     "eventIds must be a non-empty array": "eventIds は空でない配列でなければなりません",
     "invalid recurrence type": "無効な繰り返しタイプです",
     "personIds must be a non-empty array": "personIds は空でない配列でなければなりません",
-    "to enable the reset button": "リセットボタンを有効にするため"
+    "to enable the reset button": "リセットボタンを有効にするため",
+    "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above.": "座標が保存されると、ここに地図が表示されます。住所から自動検出するか、上記で手動入力してください。",
+    "Both latitude and longitude must be provided together (or both left blank for automatic detection).": "緯度と経度は両方同時に入力してください（自動検出の場合は両方空欄にしてください）。",
+    "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates.": "教会情報を保存しましたが、住所を自動的に位置特定できませんでした。「地図座標」で緯度と経度を手動で入力してください。",
+    "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address.": "座標は保存時に住所から自動検出されます（OpenStreetMap経由）。以下に手動で入力することもできます。手動入力値は常に自動検出より優先されます。システムに住所からジオコーディングさせる場合は両方空欄にしてください。",
+    "Latitude must be a number between -90 and 90.": "緯度は-90から90の間の数値である必要があります。",
+    "Longitude must be a number between -180 and 180.": "経度は-180から180の間の数値である必要があります。",
+    "Map Coordinates": "地図座標",
+    "Please select a group.": "グループを選択してください。",
+    "Please select a role.": "役割を選択してください。",
+    "Please select both a group and a role.": "グループと役割の両方を選択してください。",
+    "Range: -180 to 180.": "範囲：-180〜180",
+    "Range: -90 to 90.": "範囲：-90〜90",
+    "mo": "ヶ月",
+    "mos": "ヶ月",
+    "yr": "年",
+    "yrs": "年"
 }
