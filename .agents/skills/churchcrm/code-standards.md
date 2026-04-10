@@ -58,10 +58,63 @@ class MyClass {
 
 **File Structure Order:**
 1. `<?php` tag and namespace declaration
-2. All `use` statements (alphabetically organized)
+2. All `use` statements (grouped by namespace, alphabetically within each group)
 3. Class declaration and code
 
+**ChurchCRM Import Grouping Convention (based on PSR-12):** <!-- learned: 2026-03-29 -->
+
+Group `ChurchCRM\*` imports first, then third-party imports (`Propel\*`, `Psr\*`, `Slim\*`, `League\*`, etc.), alphabetically within each group. ChurchCRM's convention does **not** require a blank line between these groups (diverging from PSR-12 which does), but ordering must be consistent.
+
+```php
+// ✅ CORRECT — ChurchCRM before third-party
+use ChurchCRM\Service\AuthService;
+use ChurchCRM\Utils\InputUtils;
+use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Map\TableMap;
+
+// ❌ WRONG — ChurchCRM import after third-party
+use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Map\TableMap;
+use ChurchCRM\Service\AuthService;
+```
+
 **Exception:** Only use `\` prefix for global functions in namespaced code (e.g., `\MakeFYString()`)
+
+### Import Cleanup Gotcha: Casing Typos <!-- learned: 2026-03-29 -->
+
+When removing "unused" imports, verify the class is not referenced with **wrong casing** in the file body. PHP class resolution is case-insensitive on some filesystems, but `use` statement matching is exact — so a misspelled call like `FundraiserQuery::Create()` will make `use ChurchCRM\model\ChurchCRM\FundRaiserQuery` appear unused even though the code is broken.
+
+```php
+// ❌ TRAP — import looks unused but code is broken (wrong casing in call)
+use ChurchCRM\model\ChurchCRM\FundRaiserQuery; // static analysis marks as unused
+// ...
+$q = FundraiserQuery::Create(); // lowercase 'r' — class not found at runtime → 500
+
+// ✅ CORRECT — casing matches import
+use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
+// ...
+$q = FundRaiserQuery::create();
+```
+
+**Always do a case-sensitive grep for the short class name before removing its import.**
+
+### Missing Propel Query Imports in Legacy Files <!-- learned: 2026-03-30 -->
+
+Legacy `src/*.php` files sometimes use a Propel query class with **no `use` import at all**, causing a fatal `Class "FundRaiserQuery" not found` 500. This happens when a file was migrated piecemeal and the import was never added.
+
+When a legacy page 500s on first load with "Class not found", check whether the missing class is a Propel model — and add the `use` statement to the top of the file.
+
+```php
+// ❌ MISSING — causes Class "FundRaiserQuery" not found → 500
+$fundraisers = FundRaiserQuery::Create()->find();
+
+// ✅ ADD the import
+use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
+// ...
+$fundraisers = FundRaiserQuery::create()->find();
+```
+
+Propel model classes live at `src/ChurchCRM/model/ChurchCRM/{ClassName}.php`. The autoloader maps them — they just need a `use` statement.
 
 ## Database Access Standards
 
@@ -83,6 +136,44 @@ $event['eventName'];  // TypeError: Cannot access offset on object
 - Cast dynamic IDs to (int)
 - Check `=== null` not `empty()` for objects
 - Access properties as objects: `$obj->prop`, never `$obj['prop']`
+
+## AppIntegrityService Returns Plain Strings <!-- learned: 2026-03-30 -->
+
+`AppIntegrityService::getFilesFailingIntegrityCheck()` returns an array of **plain filename strings** (e.g., `['Include/Config.php', 'skin/v2/app.min.js']`), NOT objects with `->filename`/`->expectedhash`/`->actualhash` properties. When displaying these files in a template, render `$file` directly — not `$file->filename`.
+
+The integrity check has **no session cache** — it runs fresh on every page load (only called on ~4 admin pages, no perf concern). There is no `clearIntegrityCache()` method.
+
+## Strict vs Loose Comparisons — Type Safety Rules <!-- learned: 2026-03-29 -->
+
+When replacing `==`/`!=` with `===`/`!==`, you MUST cast the operands to matching types first. Legacy code uses `mysqli_fetch_array()` / `extract()` which return **strings**, not integers. Blindly switching to strict comparison breaks logic silently.
+
+```php
+// ❌ WRONG — $type_ID is "11" (string from DB), never matches int 11
+if ($type_ID === 11) { ... }
+
+// ✅ CORRECT — cast before strict comparison
+if ((int)$type_ID === 11) { ... }
+
+// ❌ WRONG — $bPrivate is undefined (null) for new forms, null !== 0 is TRUE
+if ($bPrivate !== 0) { echo 'checked'; }
+
+// ✅ CORRECT — use null coalescing to handle uninitialized variables
+if (($bPrivate ?? 0) !== 0) { echo 'checked'; }
+
+// ❌ WRONG — BOOLEAN column returns '0'/'1' string, not 'true'
+if ($grp_hasSpecialProps === 'true') { ... }
+
+// ✅ CORRECT — compare against expected DB return type
+if ((int)$grp_hasSpecialProps === 1) { ... }
+```
+
+**Rules for `==` → `===` migration:**
+- `mysqli_fetch_array()` / `extract()` values are always **strings** — cast to `(int)` before comparing to int literals
+- `$_GET` / `$_POST` values are always **strings** — use `(int)` cast or compare to string literals
+- Uninitialized variables are `null` — use `($var ?? default)` before strict comparison
+- Propel ORM getters return proper types — safe for direct strict comparison
+- `implode()` returns a **string** — don't compare to int 0
+- `mysqli_result` can be `false` on error — use `instanceof` check, not `!== 0`
 
 ## Global Functions from Namespaced Code
 
@@ -126,6 +217,24 @@ echo $notification?->title ?? 'No Title';
 // ❌ WRONG
 echo $notification->title;  // TypeError if null
 ```
+
+## HTML Output Escaping — Never Double-Escape <!-- learned: 2026-03-29 -->
+
+Store raw (sanitized) text in data arrays; call `escapeHTML()` only at the point of output. `sanitizeAndEscapeText()` already calls `htmlspecialchars()` internally — applying `escapeHTML()` on top of it double-encodes `&` → `&amp;amp;`, `<` → `&amp;lt;`, etc.
+
+```php
+// ❌ WRONG — sanitizeAndEscapeText() already HTML-encodes; escapeHTML() double-encodes
+$events[] = ['title' => InputUtils::sanitizeAndEscapeText($row['event_title'])];
+// ...
+echo InputUtils::escapeHTML($event['title']); // "&amp;amp;" rendered literally
+
+// ✅ CORRECT — sanitize (strip tags) when storing; escape at output
+$events[] = ['title' => InputUtils::sanitizeText($row['event_title'])];
+// ...
+echo InputUtils::escapeHTML($event['title']); // "&amp;" rendered as "&"
+```
+
+**Rule:** `sanitizeText()` → strips tags/trims (safe to store). `escapeHTML()` → HTML-encodes for output. Never chain both on the same value.
 
 ## Email Handling in APIs
 
@@ -202,6 +311,65 @@ $logger->error('Operation failed', ['error' => $e->getMessage()]);
 
 **Always include context** as second parameter array for meaningful logs.
 
+## Localization Standards <!-- learned: 2026-03-15 -->
+
+### Punctuation & Colon Placement
+
+**RULE: Colons are UI punctuation, not translatable content.** Move colons OUTSIDE gettext() and i18next.t() calls.
+
+```php
+// ❌ WRONG - Colon inside translation
+echo gettext('Birth Date:');
+echo gettext('Type:');
+echo gettext('File Name:');
+
+// ✅ CORRECT - Colon outside translation
+echo gettext('Birth Date') . ':';
+echo gettext('Type') . ':';
+echo gettext('File Name') . ':';
+```
+
+**Why:** Translators should translate content, not punctuation. Each language has different punctuation conventions that should be applied by the UI, not the translator.
+
+**Apply to:** All UI labels, field names, and sentence-ending colons (introducing lists).
+
+**Also update messages.po:** When moving a colon out of a gettext call, update the `msgid` in `locale/terms/messages.po`:
+
+```gettext
+# BEFORE
+msgid "Birth Date:"
+msgstr ""
+
+# AFTER
+msgid "Birth Date"
+msgstr ""
+```
+
+The `msgid` key must exactly match the string passed to gettext() in PHP code.
+
+## Unified Page Header Standard (MANDATORY) <!-- learned: 2026-03-25 -->
+
+**Every page must use the unified page header** rendered by `Header.php`. Never create duplicate `<h2>`, `.page-header`, or `.page-title` elements inside page content.
+
+### Required for all MVC pages
+
+| Variable | Required | Purpose |
+|----------|----------|---------|
+| `sPageTitle` | **Yes** | Browser tab title + `<h2>` heading |
+| `sPageSubtitle` | **Yes** (MVC) | Muted description below title |
+| `aBreadcrumbs` | **Yes** | Via `PageHeader::breadcrumbs()` — 3-4 levels max |
+| `sPageHeaderButtons` | No | Admin action buttons via `PageHeader::buttons()` |
+| `sSettingsCollapseId` | No | Inline settings panel collapse container |
+
+### Key rules
+
+- Breadcrumb URLs are **relative** — `getRootPath()` is prepended automatically
+- Admin buttons go in page header; **Quick Actions cards** go in page body (for everyday user actions)
+- Settings toggles use Bootstrap collapse: `['collapse' => '#settingsId']`
+- Main dashboard (`/v2/dashboard`) has **no breadcrumbs** — it IS Home
+
+See `tabler-components.md` → "Unified Page Header" for full examples.
+
 ## File Operations (Git)
 
 ### Moving/Renaming Files
@@ -233,7 +401,7 @@ git add new/path/file.php
   - "Replace deprecated HTML attributes with Bootstrap CSS"
   - "Add missing element ID for test selector"
 - **Wrong**: "Fixed the bug in src/EventEditor.php" (not imperative, includes file paths)
-- **Include issue number**: "Fix issue #7698: Replace Bootstrap 5 classes with BS4"
+- **Include issue number**: "Fix issue #7698: Migrate form classes to Bootstrap 5"
 
 ### PR Organization
 
@@ -266,10 +434,12 @@ Before committing code changes, verify:
 - [ ] Type casting applied to dynamic values (`(int)`, `(string)`, etc.)
 - [ ] Critical files use `require` not `include` (Header.php, Footer.php)
 - [ ] Deprecated HTML attributes replaced with CSS
-- [ ] Bootstrap 4.6.2 CSS classes applied correctly (not Bootstrap 5)
+- [ ] Bootstrap 5 / Tabler CSS classes applied correctly (see `tabler-components.md` for reference)
 - [ ] All UI text wrapped with i18next.t() (JavaScript) or gettext() (PHP)
 - [ ] No alert() calls - use window.CRM.notify() instead
 - [ ] Use InputUtils for HTML escaping (not htmlspecialchars directly)
+- [ ] Use `json_encode()` when outputting PHP values into `<script>` blocks (not string interpolation)
+- [ ] Use `window.CRM.escapeHtml()` in JS when inserting API data into DOM via `.html()` or template literals
 - [ ] Use RedirectUtils for redirects (not manual header/withHeader)
 - [ ] Use SlimUtils::renderErrorJSON for API errors (not throw exceptions)
 - [ ] TLS verification enabled by default for HTTPS requests

@@ -9,7 +9,7 @@ describe("Kiosk Manager", () => {
         it("should display the Kiosk Manager page", () => {
             cy.visit("kiosk/admin");
             cy.contains("Kiosk Manager");
-            cy.contains("Enable New Kiosk Registration");
+            cy.contains("Enable new kiosk registration");
             cy.contains("Active Kiosks");
         });
 
@@ -264,8 +264,8 @@ describe("Kiosk Manager Menu Integration", () => {
     it("should have Kiosk Manager link in admin menu", () => {
         cy.visit("/");
         
-        // Find and click the Admin parent menu to expand it
-        cy.get('.nav-sidebar').contains('a', 'Admin').first().click({ force: true });
+        // Find and click the Admin parent menu to expand it (avoid relying on old sidebar class)
+        cy.contains('a', 'Admin').first().click({ force: true });
         
         // Wait for menu to expand and check for Kiosk Manager menu item
         cy.get('a[href*="kiosk/admin"]', { timeout: 10000 }).should("exist").and("contain", "Kiosk Manager");
@@ -274,8 +274,8 @@ describe("Kiosk Manager Menu Integration", () => {
     it("should navigate to Kiosk Manager from menu", () => {
         cy.visit("/");
         
-        // Find and click the Admin parent menu to expand it
-        cy.get('.nav-sidebar').contains('a', 'Admin').first().click({ force: true });
+        // Find and click the Admin parent menu to expand it (avoid relying on old sidebar class)
+        cy.contains('a', 'Admin').first().click({ force: true });
         
         // Click Kiosk Manager link
         cy.get('a[href*="kiosk/admin"]', { timeout: 10000 }).click({ force: true });

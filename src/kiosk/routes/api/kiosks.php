@@ -3,8 +3,10 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\KioskAssignmentQuery;
 use ChurchCRM\model\ChurchCRM\KioskDeviceQuery;
+use ChurchCRM\Slim\Middleware\Api\KioskDeviceMiddleware;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Setting\SundaySchoolEnabledMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -101,17 +103,10 @@ $app->group('/api', function (RouteCollectorProxy $group): void {
      * )
      */
     $group->post('/devices/{kioskId:[0-9]+}/reload', function (Request $request, Response $response, array $args): Response {
-        $kioskId = (int) $args['kioskId'];
-
-        $kiosk = KioskDeviceQuery::create()->findOneById($kioskId);
-        if ($kiosk === null) {
-            return SlimUtils::renderErrorJSON($response, gettext('Kiosk not found'), [], 404);
-        }
-
-        $kiosk->reloadKiosk();
+        $request->getAttribute('kioskDevice')->reloadKiosk();
 
         return SlimUtils::renderSuccessJSON($response);
-    });
+    })->add(KioskDeviceMiddleware::class);
 
     /**
      * @OA\Post(
@@ -128,17 +123,10 @@ $app->group('/api', function (RouteCollectorProxy $group): void {
      * )
      */
     $group->post('/devices/{kioskId:[0-9]+}/identify', function (Request $request, Response $response, array $args): Response {
-        $kioskId = (int) $args['kioskId'];
-
-        $kiosk = KioskDeviceQuery::create()->findOneById($kioskId);
-        if ($kiosk === null) {
-            return SlimUtils::renderErrorJSON($response, gettext('Kiosk not found'), [], 404);
-        }
-
-        $kiosk->identifyKiosk();
+        $request->getAttribute('kioskDevice')->identifyKiosk();
 
         return SlimUtils::renderSuccessJSON($response);
-    });
+    })->add(KioskDeviceMiddleware::class);
 
     /**
      * @OA\Post(
@@ -155,18 +143,12 @@ $app->group('/api', function (RouteCollectorProxy $group): void {
      * )
      */
     $group->post('/devices/{kioskId:[0-9]+}/accept', function (Request $request, Response $response, array $args): Response {
-        $kioskId = (int) $args['kioskId'];
-
-        $kiosk = KioskDeviceQuery::create()->findOneById($kioskId);
-        if ($kiosk === null) {
-            return SlimUtils::renderErrorJSON($response, gettext('Kiosk not found'), [], 404);
-        }
-
-        $kiosk->setAccepted(true);
-        $kiosk->save();
+        $kioskDevice = $request->getAttribute('kioskDevice');
+        $kioskDevice->setAccepted(true);
+        $kioskDevice->save();
 
         return SlimUtils::renderSuccessJSON($response);
-    });
+    })->add(KioskDeviceMiddleware::class);
 
     /**
      * @OA\Post(
@@ -190,7 +172,6 @@ $app->group('/api', function (RouteCollectorProxy $group): void {
      * )
      */
     $group->post('/devices/{kioskId:[0-9]+}/assignment', function (Request $request, Response $response, array $args): Response {
-        $kioskId = (int) $args['kioskId'];
         $input = $request->getParsedBody();
 
         // Validate input parameters
@@ -205,15 +186,10 @@ $app->group('/api', function (RouteCollectorProxy $group): void {
             return SlimUtils::renderErrorJSON($response, gettext('Invalid assignment type'), [], 400);
         }
 
-        $kiosk = KioskDeviceQuery::create()->findOneById($kioskId);
-        if ($kiosk === null) {
-            return SlimUtils::renderErrorJSON($response, gettext('Kiosk not found'), [], 404);
-        }
-
-        $kiosk->setAssignment($assignmentType, $eventId);
+        $request->getAttribute('kioskDevice')->setAssignment($assignmentType, $eventId);
 
         return SlimUtils::renderSuccessJSON($response);
-    });
+    })->add(KioskDeviceMiddleware::class);
 
     /**
      * @OA\Delete(
@@ -232,13 +208,8 @@ $app->group('/api', function (RouteCollectorProxy $group): void {
      */
     $group->delete('/devices/{kioskId:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         $kioskId = (int) $args['kioskId'];
-
-        $kiosk = KioskDeviceQuery::create()->findOneById($kioskId);
-        if ($kiosk === null) {
-            return SlimUtils::renderErrorJSON($response, gettext('Kiosk not found'), [], 404);
-        }
-
-        $kioskName = $kiosk->getName();
+        $kioskDevice = $request->getAttribute('kioskDevice');
+        $kioskName = $kioskDevice->getName();
 
         try {
             // Delete associated assignments first (no cascade in schema)
@@ -247,7 +218,7 @@ $app->group('/api', function (RouteCollectorProxy $group): void {
                 ->delete();
 
             // Then delete the kiosk device
-            $kiosk->delete();
+            $kioskDevice->delete();
             LoggerUtils::getAppLogger()->info('Kiosk deleted', ['kioskId' => $kioskId, 'kioskName' => $kioskName]);
 
             return SlimUtils::renderSuccessJSON($response);
@@ -256,5 +227,5 @@ $app->group('/api', function (RouteCollectorProxy $group): void {
 
             return SlimUtils::renderErrorJSON($response, gettext('Failed to delete kiosk'), [], 500, $e, $request);
         }
-    });
-})->add(AdminRoleAuthMiddleware::class)->add(AuthMiddleware::class);
+    })->add(KioskDeviceMiddleware::class);
+})->add(SundaySchoolEnabledMiddleware::class)->add(AdminRoleAuthMiddleware::class)->add(AuthMiddleware::class);

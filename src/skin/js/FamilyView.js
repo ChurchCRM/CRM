@@ -1,4 +1,9 @@
 function initializeFamilyView() {
+  // Print button
+  $("#printFamily").on("click", function () {
+    window.print();
+  });
+
   if (!window.CRM.currentActive) {
     $("#family-deactivated").removeClass("d-none");
   }
@@ -59,7 +64,7 @@ function initializeFamilyView() {
       if (data.length === 0) {
         $("#family-property-no-data").show();
       } else {
-        $("#family-property-table").show();
+        $("#family-property-list").show();
         $.each(data, function (key, prop) {
           let { id: propId, name: propName, value: propVal, allowEdit, allowDelete } = prop;
           selectedFamilyProperties.push(propId);
@@ -68,15 +73,18 @@ function initializeFamilyView() {
           let safePropName = window.CRM.escapeHtml(propName || "");
           let safePropVal = window.CRM.escapeHtml(propVal || "");
 
-          let editIcon = allowEdit
-            ? `<a href="${window.CRM.root}/PropertyAssign.php?FamilyID=${window.CRM.currentFamily}&PropertyID=${propId}"><button type="button" class="btn btn-xs btn-primary"><i class="fa-solid fa-pen"></i></button></a>`
-            : "";
-          let deleteIcon = allowDelete
-            ? `<div class="btn btn-xs btn-danger delete-property" data-property-id="${propId}" data-property-name="${safePropName}"><i class="fa-solid fa-trash"></i></div>`
+          let deleteBtn = allowDelete
+            ? `<button class="btn btn-sm btn-ghost-danger delete-property" data-property-id="${propId}" data-property-name="${safePropName}" title="${i18next.t("Remove")}"><i class="fa-solid fa-trash"></i></button>`
             : "";
 
-          $("#family-property-table").append(
-            `<tr><td>${deleteIcon} ${editIcon}</td><td>${safePropName}</td><td>${safePropVal}</td></tr>`,
+          $("#family-property-list").append(
+            `<div class="list-group-item px-0 d-flex align-items-center">` +
+              `<div class="me-auto">` +
+              `<strong>${safePropName}</strong>` +
+              (safePropVal ? `<small class="text-muted d-block">${safePropVal}</small>` : "") +
+              `</div>` +
+              deleteBtn +
+              `</div>`,
           );
         });
 
@@ -131,101 +139,120 @@ function initializeFamilyView() {
     });
   }
 
-  let dataTableConfig = {
-    ajax: {
-      url: `${window.CRM.root}/api/payments/family/${window.CRM.currentFamily}/list`,
-      dataSrc: "data",
-    },
-    columns: [
-      {
-        width: "15px",
-        sortable: false,
-        title: i18next.t("Edit"),
-        data: "GroupKey",
-        render: function (data, type, row) {
-          return (
-            '<a class="btn btn-sm btn-primary" href="' +
-            window.CRM.root +
-            "/PledgeEditor.php?GroupKey=" +
-            row.GroupKey +
-            "&amp;linkBack=v2/family/" +
-            window.CRM.currentFamily +
-            '"><i class="fa-solid fa-pen"></i></a>'
-          );
+  // Pledges & Payments table — init after ensuring both types are returned by API
+  if ($("#pledge-payment-v2-table").length) {
+    let dataTableConfig = {
+      ajax: {
+        url: `${window.CRM.root}/api/payments/family/${window.CRM.currentFamily}/list`,
+        dataSrc: "data",
+      },
+      columns: [
+        {
+          title: i18next.t("Type"),
+          data: "PledgeOrPayment",
+          render: function (data) {
+            let color = data === "Pledge" ? "blue" : "green";
+            let icon = data === "Pledge" ? "fa-hand-holding-dollar" : "fa-money-bill-wave";
+            return `<span class="badge bg-${color}-lt text-${color}"><i class="fa-solid ${icon} me-1"></i>${data}</span>`;
+          },
         },
-        searchable: false,
-      },
-      {
-        width: "15px",
-        sortable: false,
-        title: i18next.t("Delete"),
-        data: "GroupKey",
-        render: function (data, type, row) {
-          return (
-            '<a class="btn btn-sm btn-danger" href="' +
-            window.CRM.root +
-            "/PledgeDelete.php?GroupKey=" +
-            row.GroupKey +
-            "&amp;linkBack=v2/family/" +
-            window.CRM.currentFamily +
-            '"><i class="fa-solid fa-trash-can"></i></a>'
-          );
+        { title: i18next.t("Fund"), data: "Fund" },
+        { title: i18next.t("Date"), type: "date", data: "Date" },
+        {
+          title: i18next.t("Amount"),
+          type: "num",
+          data: "Amount",
+          className: "text-end",
+          render: function (data) {
+            return "$" + parseFloat(data).toFixed(2);
+          },
         },
-        searchable: false,
-      },
-      {
-        title: i18next.t("Pledge or Payment"),
-        data: "PledgeOrPayment",
-      },
-      {
-        title: i18next.t("Fund"),
-        data: "Fund",
-      },
-      {
-        title: i18next.t("Fiscal Year"),
-        data: "FormattedFY",
-      },
-      {
-        title: i18next.t("Date"),
-        type: "date",
-        data: "Date",
-      },
-      {
-        title: i18next.t("Amount"),
-        type: "num",
-        data: "Amount",
-      },
-      {
-        title: i18next.t("NonDeductible"),
-        type: "num",
-        data: "Nondeductible",
-      },
-      {
-        title: i18next.t("Schedule"),
-        data: "Schedule",
-      },
-      {
-        title: i18next.t("Method"),
-        data: "Method",
-      },
-      {
-        title: i18next.t("Comment"),
-        data: "Comment",
-      },
-      {
-        title: i18next.t("Date Updated"),
-        type: "date",
-        data: "DateLastEdited",
-      },
-      {
-        title: i18next.t("Updated By"),
-        data: "EditedBy",
-      },
-    ],
-    order: [[5, "asc"]],
-  };
-  $.extend(dataTableConfig, window.CRM.plugin.dataTable);
-  $("#pledge-payment-v2-table").DataTable(dataTableConfig);
+        { title: i18next.t("Fiscal Year"), data: "FormattedFY" },
+        { title: i18next.t("Method"), data: "Method" },
+        { title: i18next.t("Comment"), data: "Comment" },
+        {
+          width: "40px",
+          sortable: false,
+          title: "",
+          data: "GroupKey",
+          className: "all no-export",
+          render: function (data, type, row) {
+            let linkBack = "v2/family/" + window.CRM.currentFamily;
+            let editUrl = window.CRM.root + "/PledgeEditor.php?GroupKey=" + row.GroupKey + "&amp;linkBack=" + linkBack;
+            let deleteUrl =
+              window.CRM.root + "/PledgeDelete.php?GroupKey=" + row.GroupKey + "&amp;linkBack=" + linkBack;
+            return (
+              '<div class="dropdown">' +
+              '<button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown" data-bs-display="static"><i class="fa-solid fa-ellipsis-vertical"></i></button>' +
+              '<div class="dropdown-menu dropdown-menu-end">' +
+              '<a class="dropdown-item" href="' +
+              editUrl +
+              '"><i class="fa-solid fa-pen me-2"></i>' +
+              i18next.t("Edit") +
+              "</a>" +
+              '<a class="dropdown-item text-danger" href="' +
+              deleteUrl +
+              '"><i class="fa-solid fa-trash-can me-2"></i>' +
+              i18next.t("Delete") +
+              "</a>" +
+              "</div></div>"
+            );
+          },
+          searchable: false,
+        },
+      ],
+      order: [[2, "desc"]],
+    };
+    $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+
+    // Force both types visible in API, then init DataTable
+    Promise.all([
+      window.CRM.APIRequest({
+        method: "POST",
+        path: `user/${window.CRM.userId}/setting/finance.show.pledges`,
+        dataType: "json",
+        data: JSON.stringify({ value: "true" }),
+      }),
+      window.CRM.APIRequest({
+        method: "POST",
+        path: `user/${window.CRM.userId}/setting/finance.show.payments`,
+        dataType: "json",
+        data: JSON.stringify({ value: "true" }),
+      }),
+    ])
+      .catch(function () {}) // ignore errors
+      .then(function () {
+        let pledgeTable = $("#pledge-payment-v2-table").DataTable(dataTableConfig);
+
+        // Type filter pills: client-side column 0 (Type) search
+        $(".pledge-type-pill").on("click", function (e) {
+          e.preventDefault();
+          $(".pledge-type-pill").removeClass("active");
+          $(this).addClass("active");
+          pledgeTable
+            .column(0)
+            .search($(this).data("filter") || "")
+            .draw();
+        });
+
+        // Fiscal year filter pills: client-side column 4 (Fiscal Year) search
+        $(".pledge-fy-pill").on("click", function (e) {
+          e.preventDefault();
+          $(".pledge-fy-pill").removeClass("active");
+          $(this).addClass("active");
+          pledgeTable
+            .column(4)
+            .search($(this).data("fy") || "")
+            .draw();
+        });
+
+        // Apply default FY filter (Current FY pill is active by default)
+        let defaultFY = $(".pledge-fy-pill.active").data("fy") || "";
+        if (defaultFY) {
+          pledgeTable.column(4).search(defaultFY).draw();
+        }
+      });
+  }
 
   $("#onlineVerify").on("click", function () {
     window.CRM.APIRequest({
@@ -262,22 +289,22 @@ function initializeFamilyView() {
                                 <h5 class="modal-title" id="verifyUrlLabel">
                                     <i class="fa-solid fa-link me-2"></i>${i18next.t("Verification URL")}
                                 </h5>
-                                <button type="button" class="btn-close btn-close-white" data-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" id="verifyUrlInput" value="${data.url}" readonly>
+                                    <input type="text" class="form-control" id="verifyUrlInput" value="${window.CRM.escapeHtml(data.url)}" readonly>
                                     <button class="btn btn-info" type="button" id="copyVerifyUrlBtn">
                                         <i class="fa-solid fa-copy me-2"></i>${i18next.t("Copy")}
                                     </button>
                                 </div>
                                 <p class="text-muted small">
-                                    <i class="fa-solid fa-info-circle me-2"></i>${i18next.t("Share this URL with family members to verify their information")}
+                                    <i class="fa-solid fa-circle-info me-2"></i>${i18next.t("Share this URL with family members to verify their information")}
                                 </p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">${i18next.t("Close")}</button>
-                                <a href="${data.url}" target="_blank" class="btn btn-primary">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">${i18next.t("Close")}</button>
+                                <a href="${window.CRM.escapeHtml(data.url)}" target="_blank" class="btn btn-primary">
                                     <i class="fa-solid fa-arrow-up-right-from-square me-2"></i>${i18next.t("Open in New Tab")}
                                 </a>
                             </div>
@@ -347,6 +374,9 @@ function initializeFamilyView() {
     window.CRM.showPhotoLightbox("family", window.CRM.currentFamily);
   });
 
+  // .view-family-photo / .view-person-photo click handlers are registered
+  // globally in avatar-loader.ts
+
   $("#activateDeactivate").on("click", function () {
     let popupTitle = window.CRM.currentActive ? i18next.t("Confirm Deactivation") : i18next.t("Confirm Activation");
     let popupMessage = window.CRM.currentActive
@@ -355,7 +385,7 @@ function initializeFamilyView() {
 
     bootbox.confirm({
       title: popupTitle,
-      message: `<p style="color: red">${popupMessage}</p>`,
+      message: `<p class="text-danger">${popupMessage}</p>`,
       callback: function (result) {
         if (result) {
           window.CRM.APIRequest({
@@ -371,29 +401,18 @@ function initializeFamilyView() {
     });
   });
 
-  $("#ShowPledges").on("change", function () {
-    updateUserSetting("finance.show.pledges", $(this).prop("checked") ? "true" : "false");
-  });
-
-  $("#ShowPayments").on("change", function () {
-    updateUserSetting("finance.show.payments", $(this).prop("checked") ? "true" : "false");
-  });
-
-  $("#ShowSinceDate").on("change", function () {
-    updateUserSetting("finance.show.since", $(this).val());
-  });
-
-  function updateUserSetting(setting, value) {
+  // Since date filter: save preference then reload page (server-side filter)
+  $("#ShowSinceDate").on("changeDate", function () {
+    let val = $(this).val();
     window.CRM.APIRequest({
       method: "POST",
-      path: `user/${window.CRM.userId}/setting/${setting}`,
+      path: `user/${window.CRM.userId}/setting/finance.show.since`,
       dataType: "json",
-      data: JSON.stringify({ value: value }),
+      data: JSON.stringify({ value: val }),
     }).then(function () {
-      //TODO NOT WORKING $("#pledge-payment-table").DataTable().ajax.reload();
       window.location.reload();
     });
-  }
+  });
 
   // Check if MailChimp plugin is active via API and load data if so
   // Only check if family has email (mailchimp-status-container is rendered conditionally in PHP)
@@ -418,20 +437,20 @@ function initializeFamilyView() {
                 return;
               }
               for (let emailData of data) {
-                let htmlVal = "";
+                let textVal = "";
                 let lists = emailData["list"] || [];
                 for (let list of lists) {
-                  let listName = list["name"];
-                  let listStatus = list["status"];
+                  let listName = window.CRM.escapeHtml(list["name"] || "");
+                  let listStatus = window.CRM.escapeHtml(String(list["status"] || ""));
                   let listOpenRate = list["stats"]?.["avg_open_rate"] || 0;
-                  if (listStatus !== 404) {
-                    htmlVal += `${listName} (${listStatus}) - ${(listOpenRate * 100).toFixed(2)}% ${i18next.t("open rate")}`;
+                  if (list["status"] !== 404) {
+                    textVal += `${listName} (${listStatus}) - ${(listOpenRate * 100).toFixed(2)}% ${i18next.t("open rate")}`;
                   }
                 }
-                if (htmlVal === "") {
-                  htmlVal = i18next.t("Not Subscribed");
+                if (textVal === "") {
+                  textVal = i18next.t("Not Subscribed");
                 }
-                $("#mailchimp-status").html(htmlVal);
+                $("#mailchimp-status").text(textVal);
               }
             },
             error: function () {

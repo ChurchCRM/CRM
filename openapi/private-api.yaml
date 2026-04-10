@@ -144,6 +144,64 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  /admin/api/import/csv/families:
+    get:
+      tags:
+        - Import
+      summary: 'Download a CSV import template for families (Admin role required)'
+      responses:
+        '200':
+          description: 'CSV file attachment'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /admin/api/import/csv/upload:
+    post:
+      tags:
+        - Import
+      summary: 'Upload a CSV file and return headers with auto-detected field mappings'
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                csvFile:
+                  type: string
+                  format: binary
+              type: object
+      responses:
+        '200':
+          description: 'Headers and auto-mapped suggestions returned'
+        '400':
+          description: 'Invalid file'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /admin/api/import/csv/execute:
+    post:
+      tags:
+        - Import
+      summary: 'Execute a CSV import using a previously uploaded file and column mapping'
+      responses:
+        '200':
+          description: 'Import completed'
+        '400':
+          description: 'Invalid token or mapping'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
   /api/orphaned-files:
     get:
       tags:
@@ -1101,6 +1159,107 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  /events/repeat:
+    post:
+      tags:
+        - Calendar
+      summary: 'Create a series of repeat events'
+      description: 'Generates individual event records for each occurrence of a recurring event within a date range. Each created event is independently editable.'
+      operationId: createRepeatEvents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - Title
+                - Type
+                - StartTime
+                - EndTime
+                - RecurType
+                - RangeStart
+                - RangeEnd
+              properties:
+                Title:
+                  type: string
+                  example: 'Sunday Worship Service'
+                Type:
+                  description: 'Event type ID from GET /events/types'
+                  type: integer
+                  example: 1
+                Desc:
+                  type: string
+                  nullable: true
+                Text:
+                  description: 'Rich text body (HTML allowed)'
+                  type: string
+                  nullable: true
+                StartTime:
+                  description: 'Event start time in HH:MM format'
+                  type: string
+                  example: '09:00'
+                EndTime:
+                  description: 'Event end time in HH:MM format'
+                  type: string
+                  example: '10:30'
+                RecurType:
+                  type: string
+                  enum: [weekly, monthly, yearly]
+                  example: weekly
+                RecurDOW:
+                  description: 'Day of week for weekly recurrence (e.g. Sunday)'
+                  type: string
+                  example: Sunday
+                RecurDOM:
+                  description: 'Day of month (1-31) for monthly recurrence'
+                  type: integer
+                  example: 1
+                RecurDOY:
+                  description: 'Month-day in MM-DD format for yearly recurrence'
+                  type: string
+                  example: 04-12
+                RangeStart:
+                  description: 'First date of the repetition range (inclusive)'
+                  type: string
+                  format: date
+                  example: '2026-01-01'
+                RangeEnd:
+                  description: 'Last date of the repetition range (inclusive)'
+                  type: string
+                  format: date
+                  example: '2026-12-31'
+                PinnedCalendars:
+                  type: array
+                  items: { type: integer }
+                  nullable: true
+                LinkedGroupId:
+                  type: integer
+                  nullable: true
+                Inactive:
+                  type: integer
+                  enum: [0, 1]
+                  nullable: true
+              type: object
+      responses:
+        '200':
+          description: 'Repeat events created'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                  count: { type: integer, example: 52 }
+                  eventIds: { type: array, items: { type: integer } }
+                type: object
+        '400':
+          description: 'Invalid input (bad event type, invalid dates, unknown recurrence type)'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'AddEvents role required'
+      security:
+        -
+          ApiKeyAuth: []
   '/events/{id}/time':
     post:
       tags:
@@ -1148,6 +1307,472 @@ paths:
           description: 'AddEvents role required'
         '404':
           description: 'Event not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/events/{id}/status':
+    post:
+      tags:
+        - Calendar
+      summary: 'Activate or deactivate an event'
+      operationId: setEventStatus
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - active
+              properties:
+                active:
+                  description: 'true to activate, false to deactivate'
+                  type: boolean
+                  example: true
+              type: object
+      responses:
+        '200':
+          description: 'Event status updated'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'AddEvents role required'
+        '404':
+          description: 'Event not found'
+      security:
+        -
+          ApiKeyAuth: []
+  /events/quick-create:
+    post:
+      tags:
+        - Calendar
+      summary: 'Quick-create an event from EventType defaults'
+      description: "Creates an event with minimal input, using EventType defaults for title, time, and group. **At least one of eventTypeId or groupId is required.** If only groupId is provided, the event type is auto-detected from the group's linked EventType. If an event of the same type already exists for the given date, returns the existing event instead."
+      operationId: quickCreateEvent
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                eventTypeId:
+                  description: 'Event type ID. Either eventTypeId OR groupId is required.'
+                  type: integer
+                  example: 5
+                groupId:
+                  description: "Group ID — when provided without eventTypeId, the event type is auto-detected from the group's linked EventType."
+                  type: integer
+                  example: 12
+                date:
+                  description: 'Event date (defaults to today)'
+                  type: string
+                  format: date
+                  example: '2026-04-05'
+              type: object
+      responses:
+        '200':
+          description: 'Event created or existing event found'
+          content:
+            application/json:
+              schema:
+                properties:
+                  eventId: { type: integer, example: 42 }
+                  created: { type: boolean, example: true }
+                  title: { type: string, example: 'Youth Sunday School — Apr 5, 2026' }
+                type: object
+        '400':
+          description: 'Invalid event type ID'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'AddEvents role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /events/today:
+    get:
+      tags:
+        - Calendar
+      summary: "Get today's events with attendance stats"
+      operationId: getTodaysEvents
+      responses:
+        '200':
+          description: "Today's events"
+          content:
+            application/json:
+              schema:
+                properties:
+                  events: { type: array, items: { properties: { id: { type: integer }, title: { type: string }, typeName: { type: string }, start: { type: string, format: date-time }, end: { type: string, format: date-time }, checkedIn: { type: integer }, totalAttendees: { type: integer } }, type: object } }
+                type: object
+        '401':
+          description: Unauthorized
+      security:
+        -
+          ApiKeyAuth: []
+  '/events/{id}/roster':
+    get:
+      tags:
+        - Calendar
+      summary: 'Get group members with attendance status for an event'
+      description: 'Returns all members of groups linked to this event, along with their check-in/check-out status.'
+      operationId: getEventRoster
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Roster with attendance status'
+        '401':
+          description: Unauthorized
+        '404':
+          description: 'Event not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/events/{id}/checkin':
+    post:
+      tags:
+        - Calendar
+      summary: 'Check in a person to an event via AJAX'
+      operationId: checkinPerson
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - personId
+              properties:
+                personId:
+                  type: integer
+                  example: 101
+                checkedInById:
+                  description: 'Person ID of whoever is checking this person in (e.g., parent dropping off child)'
+                  type: integer
+                  example: 55
+                  nullable: true
+              type: object
+      responses:
+        '200':
+          description: 'Person checked in'
+        '400':
+          description: 'Invalid person ID'
+        '401':
+          description: Unauthorized
+        '404':
+          description: 'Event not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/events/{id}/checkout':
+    post:
+      tags:
+        - Calendar
+      summary: 'Check out a person from an event via AJAX'
+      operationId: checkoutPerson
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - personId
+              properties:
+                personId:
+                  type: integer
+                  example: 101
+                checkedOutById:
+                  description: 'Person ID of whoever is checking this person out (e.g., parent picking up child)'
+                  type: integer
+                  example: 55
+                  nullable: true
+              type: object
+      responses:
+        '200':
+          description: 'Person checked out'
+        '400':
+          description: 'Invalid person ID'
+        '401':
+          description: Unauthorized
+        '404':
+          description: 'Event not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/events/{id}/checkin-all':
+    post:
+      tags:
+        - Calendar
+      summary: 'Batch check-in all group members for an event'
+      operationId: checkinAll
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'All members checked in'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean }
+                  checkedIn: { type: integer }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'AddEvents role required'
+        '404':
+          description: 'Event not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/events/{id}/checkout-all':
+    post:
+      tags:
+        - Calendar
+      summary: 'Batch check-out all checked-in people from an event'
+      operationId: checkoutAll
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'All people checked out'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean }
+                  checkedOut: { type: integer }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'AddEvents role required'
+        '404':
+          description: 'Event not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/events/{id}/checkin-people':
+    post:
+      tags:
+        - Calendar
+      summary: 'Batch check-in a list of people for an event'
+      description: "Used by Family View 'Check In Family' (#6838) and any other UI that needs to check in a known set of people. Each ID is processed via Event::checkInPerson() which creates timeline notes and timestamps."
+      operationId: checkinPeople
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - personIds
+              properties:
+                personIds:
+                  type: array
+                  items: { type: integer }
+                  example: [101, 102, 103]
+                checkedInById:
+                  description: 'Person ID of whoever is checking these people in'
+                  type: integer
+                  example: 55
+                  nullable: true
+              type: object
+      responses:
+        '200':
+          description: 'People checked in'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean }
+                  checkedIn: { type: integer }
+                type: object
+        '400':
+          description: 'Invalid input'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'AddEvents role required'
+        '404':
+          description: 'Event not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/events/{id}/attendance/{personId}':
+    delete:
+      tags:
+        - Calendar
+      summary: "Delete a person's attendance record from an event"
+      operationId: deleteAttendance
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Attendance deleted'
+        '404':
+          description: 'Event or attendance record not found'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'AddEvents role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /events/generate-recurring:
+    post:
+      tags:
+        - Calendar
+      summary: "Generate recurring events from an EventType's recurrence settings"
+      description: "Creates multiple events between startDate and endDate based on the EventType's recurrence pattern (weekly, monthly, or yearly). Optionally skips dates where an event of the same type already exists."
+      operationId: generateRecurringEvents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - eventTypeId
+                - startDate
+                - endDate
+              properties:
+                eventTypeId:
+                  type: integer
+                  example: 5
+                startDate:
+                  type: string
+                  format: date
+                  example: '2026-04-05'
+                endDate:
+                  type: string
+                  format: date
+                  example: '2026-06-28'
+                skipExisting:
+                  description: 'Skip dates that already have an event of this type'
+                  type: boolean
+                  example: true
+                pinnedCalendars:
+                  description: 'Calendar IDs to pin generated events to'
+                  type: array
+                  items: { type: integer }
+                  example: [1]
+              type: object
+      responses:
+        '200':
+          description: 'Events generated'
+          content:
+            application/json:
+              schema:
+                properties:
+                  created: { type: integer, example: 12 }
+                  skipped: { type: integer, example: 1 }
+                  events: { type: array, items: { properties: { id: { type: integer }, title: { type: string }, date: { type: string, format: date } }, type: object } }
+                type: object
+        '400':
+          description: 'Invalid input'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'AddEvents role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /events/audit/stuck:
+    get:
+      tags:
+        - Calendar
+      summary: 'List past events that are still marked active'
+      description: 'Returns every event whose end date has passed but which is still marked Active. Each row includes the count of attendees still checked in (no checkout). This is the audit set — anything in this list represents an event that was never properly closed, regardless of whether anyone forgot to check out.'
+      operationId: getStuckEvents
+      responses:
+        '200':
+          description: 'List of stuck events with stats'
+      security:
+        -
+          ApiKeyAuth: []
+  /events/audit/close:
+    post:
+      tags:
+        - Calendar
+      summary: 'Batch close stuck events'
+      description: 'For each event id provided, checks out anyone still checked in and marks the event inactive. Idempotent — events that are already closed/empty are skipped.'
+      operationId: closeStuckEvents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - eventIds
+              properties:
+                eventIds:
+                  type: array
+                  items: { type: integer }
+                  example: [42, 43, 44]
+                checkoutPeople:
+                  description: 'Auto check-out anyone still checked in (defaults to true)'
+                  type: boolean
+                  example: true
+                deactivate:
+                  description: 'Mark the event inactive after closing (defaults to true)'
+                  type: boolean
+                  example: true
+              type: object
+      responses:
+        '200':
+          description: 'Summary of close operation'
       security:
         -
           ApiKeyAuth: []
@@ -1691,7 +2316,7 @@ paths:
               schema:
                 type: array
                 items:
-                  properties: { id: { type: integer }, type: { type: string, enum: [family, person] }, name: { type: string }, salutation: { type: string }, address: { type: string }, latitude: { type: number, format: float }, longitude: { type: number, format: float }, classificationId: { type: integer }, profileUrl: { type: string } }
+                  properties: { id: { type: integer }, type: { type: string, enum: [family, person] }, name: { type: string }, salutation: { type: string }, address: { type: string }, latitude: { type: number, format: float }, longitude: { type: number, format: float }, classificationId: { type: integer }, profileUrl: { type: string }, directionsUrl: { type: string }, phone: { type: string } }
                   type: object
       security:
         -
@@ -1725,6 +2350,401 @@ paths:
       responses:
         '200':
           description: 'Array of neighbor families'
+      security:
+        -
+          ApiKeyAuth: []
+  /groups/properties:
+    get:
+      tags:
+        - Groups
+        - Properties
+      summary: 'Get all available group property definitions'
+      operationId: 3c929e5b03c7eeff4e161d487d664c24
+      responses:
+        '200':
+          description: 'Array of group property definitions'
+        '403':
+          description: 'MenuOptions role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/groups/{groupID}/properties':
+    get:
+      tags:
+        - Groups
+        - Properties
+      summary: 'Get properties assigned to a specific group'
+      operationId: 98445c6c10ef936f9b28026145a762b2
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Array of assigned properties with edit/delete flags'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { id: { type: integer }, name: { type: string }, value: { type: string }, prompt: { type: string }, allowEdit: { type: boolean }, allowDelete: { type: boolean } }
+                  type: object
+        '403':
+          description: 'MenuOptions role required'
+        '404':
+          description: 'Group not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/groups/{groupID}/properties/{propertyId}':
+    post:
+      tags:
+        - Groups
+        - Properties
+      summary: 'Assign or update a property on a group (ManageGroup role required)'
+      operationId: 907bec7d37630113ddbfe8274d656022
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: propertyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                value:
+                  description: 'Property value (required only when the property has a prompt)'
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'Property assigned successfully'
+        '403':
+          description: 'ManageGroup role required'
+        '404':
+          description: 'Group or property not found'
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - Groups
+        - Properties
+      summary: 'Remove a property from a group (ManageGroup role required)'
+      operationId: 4eceed4f2f09294d1af498593770964d
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: propertyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Property removed successfully'
+        '404':
+          description: 'Assignment not found'
+        '403':
+          description: 'ManageGroup role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/person/{personId}/notes':
+    get:
+      tags:
+        - People
+      summary: 'List user-type notes for a person'
+      description: "Returns all notes of type 'note' for the person, filtered by visibility for the current user. Private notes are only visible to admins or the user who entered them."
+      operationId: getPersonNotes
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: 'Note list'
+          content:
+            application/json:
+              schema:
+                properties:
+                  notes: { type: array, items: { properties: { id: { type: integer }, perId: { type: integer }, famId: { type: integer }, text: { type: string }, private: { type: boolean }, type: { type: string }, dateEntered: { type: string, format: date-time }, dateLastEdited: { type: string, format: date-time, nullable: true }, enteredBy: { type: integer }, editedBy: { type: integer } }, type: object } }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Notes permission required'
+        '404':
+          description: 'Person not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/person/{personId}/note':
+    post:
+      tags:
+        - People
+      summary: 'Create a note for a person'
+      operationId: createPersonNote
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - text
+              properties:
+                text:
+                  description: 'HTML note content (Quill output)'
+                  type: string
+                private:
+                  description: 'Mark note as private (visible to admins only)'
+                  type: boolean
+                  example: false
+              type: object
+      responses:
+        '201':
+          description: 'Note created'
+          content:
+            application/json:
+              schema:
+                properties:
+                  note: { type: object }
+                type: object
+        '400':
+          description: 'Note text is required'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Notes permission required'
+        '404':
+          description: 'Person not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/family/{familyId}/notes':
+    get:
+      tags:
+        - Families
+      summary: 'List user-type notes for a family'
+      description: "Returns all notes of type 'note' for the family, filtered by visibility for the current user."
+      operationId: getFamilyNotes
+      parameters:
+        -
+          name: familyId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: 'Note list'
+          content:
+            application/json:
+              schema:
+                properties:
+                  notes: { type: array, items: { properties: { id: { type: integer }, famId: { type: integer }, text: { type: string }, private: { type: boolean }, dateEntered: { type: string, format: date-time }, dateLastEdited: { type: string, format: date-time, nullable: true }, enteredBy: { type: integer }, editedBy: { type: integer } }, type: object } }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Notes permission required'
+        '404':
+          description: 'Family not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/family/{familyId}/note':
+    post:
+      tags:
+        - Families
+      summary: 'Create a note for a family'
+      operationId: createFamilyNote
+      parameters:
+        -
+          name: familyId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - text
+              properties:
+                text:
+                  description: 'HTML note content (Quill output)'
+                  type: string
+                private:
+                  description: 'Mark note as private (visible to admins only)'
+                  type: boolean
+                  example: false
+              type: object
+      responses:
+        '201':
+          description: 'Note created'
+          content:
+            application/json:
+              schema:
+                properties:
+                  note: { type: object }
+                type: object
+        '400':
+          description: 'Note text is required'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Notes permission required'
+        '404':
+          description: 'Family not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/note/{noteId}':
+    get:
+      tags:
+        - People
+      summary: 'Get a single note by ID'
+      description: 'Returns the note if it is visible to the current user. Private notes are only visible to admins or the user who entered them.'
+      operationId: getNote
+      parameters:
+        -
+          name: noteId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: 'Note object'
+          content:
+            application/json:
+              schema:
+                properties:
+                  note: { type: object }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Notes permission required'
+        '404':
+          description: 'Note not found or not visible to current user'
+      security:
+        -
+          ApiKeyAuth: []
+    put:
+      tags:
+        - People
+      summary: "Update a note's text and/or privacy"
+      description: "Only the note's author or an admin may update a note."
+      operationId: updateNote
+      parameters:
+        -
+          name: noteId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - text
+              properties:
+                text:
+                  description: 'Updated HTML note content'
+                  type: string
+                private:
+                  description: 'Update privacy flag'
+                  type: boolean
+                  example: false
+              type: object
+      responses:
+        '200':
+          description: 'Updated note'
+          content:
+            application/json:
+              schema:
+                properties:
+                  note: { type: object }
+                type: object
+        '400':
+          description: 'Note text is required'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Only the note author or an admin may edit this note'
+        '404':
+          description: 'Note not found'
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - People
+      summary: 'Delete a note'
+      description: "Deletes the note. Requires Notes permission. Only the note's author or an admin may delete it."
+      operationId: deleteNote
+      parameters:
+        -
+          name: noteId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: 'Note deleted'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Notes permission required or not note author/admin'
+        '404':
+          description: 'Note not found'
       security:
         -
           ApiKeyAuth: []
@@ -2172,6 +3192,35 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  '/family/{familyId}/geocode':
+    post:
+      tags:
+        - Families
+      summary: "Refresh geocoding (latitude/longitude) for a family's address"
+      parameters:
+        -
+          name: familyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Geocoding result with lat/lng'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean }
+                  message: { type: string }
+                  latitude: { type: number, format: float }
+                  longitude: { type: number, format: float }
+                type: object
+        '400':
+          description: 'Family has no street address to geocode'
+      security:
+        -
+          ApiKeyAuth: []
   /groups/:
     get:
       tags:
@@ -2432,6 +3481,120 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  '/groups/{groupID}/phones':
+    get:
+      tags:
+        - Groups
+      summary: 'Get cell phone numbers for group members (respects Do Not SMS)'
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Phone contact info for the group'
+          content:
+            application/json:
+              schema:
+                properties:
+                  phones: { description: 'Raw phone numbers', type: array, items: { type: string } }
+                  displayList: { description: 'Comma-separated display string', type: string }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/groups/{groupID}/sundayschool/phones':
+    get:
+      tags:
+        - Groups
+      summary: 'Get cell phone numbers for a Sunday School class, segmented by role'
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Phone contact info segmented by role (all/teachers/parents)'
+          content:
+            application/json:
+              schema:
+                properties:
+                  all: { type: object }
+                  teachers: { type: object }
+                  students: { type: object }
+                  parents: { type: object }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/groups/{groupID}/emails':
+    get:
+      tags:
+        - Groups
+      summary: 'Get email addresses for group members (respects Do Not Email)'
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Email contact info for the group'
+      security:
+        -
+          ApiKeyAuth: []
+  '/groups/{groupID}/sundayschool/emails':
+    get:
+      tags:
+        - Groups
+      summary: 'Get email addresses for a Sunday School class, segmented by role'
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Email contact info segmented by role (teachers/parents/kids)'
+      security:
+        -
+          ApiKeyAuth: []
+  /groups/sundayschool/export/email:
+    get:
+      tags:
+        - Groups
+      summary: 'Export people emails with group memberships as CSV'
+      responses:
+        '200':
+          description: 'CSV file with people emails and group role memberships'
+        '403':
+          description: 'ManageGroups role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /groups/sundayschool/export/classlist:
+    get:
+      tags:
+        - Groups
+      summary: 'Export Sunday School class roster as CSV'
+      responses:
+        '200':
+          description: 'CSV file with class members, parents, and contact info'
+        '403':
+          description: 'ManageGroups role required or Sunday School disabled'
+      security:
+        -
+          ApiKeyAuth: []
   '/groups/{groupID}/removeperson/{userID}':
     delete:
       tags:
@@ -2477,15 +3640,11 @@ paths:
           schema:
             type: integer
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
-              required:
-                - PersonID
               properties:
-                PersonID:
-                  type: integer
                 RoleID:
                   description: 'Defaults to group default role if omitted'
                   type: integer
@@ -2758,7 +3917,8 @@ paths:
     post:
       tags:
         - People
-      summary: "Upload a person's photo (base64)"
+      summary: "Upload a person's photo (base64 encoded)"
+      description: 'Upload a base64-encoded image file for a person. Supported formats: PNG, JPEG, JPG, GIF, WEBP. Maximum size: 10MB.'
       operationId: uploadPersonPhoto
       parameters:
         -
@@ -2769,6 +3929,7 @@ paths:
             type: integer
             example: 42
       requestBody:
+        description: 'Base64 encoded image data'
         required: true
         content:
           application/json:
@@ -2777,13 +3938,13 @@ paths:
                 - imgBase64
               properties:
                 imgBase64:
-                  description: 'Base64-encoded image data'
+                  description: 'Base64-encoded image data with data URI prefix'
                   type: string
-                  example: 'data:image/jpeg;base64,/9j/...'
+                  example: 'data:image/jpeg;base64,/9j/4AAQSkZJRg...'
               type: object
       responses:
         '200':
-          description: 'Photo uploaded'
+          description: 'Photo uploaded successfully'
           content:
             application/json:
               schema:
@@ -2792,11 +3953,13 @@ paths:
                   hasPhoto: { type: boolean, example: true }
                 type: object
         '400':
-          description: 'Upload failed'
+          description: 'Invalid image data or upload failed'
         '401':
           description: Unauthorized
         '403':
           description: 'EditRecords role required'
+        '404':
+          description: 'Person not found'
       security:
         -
           ApiKeyAuth: []
@@ -2804,6 +3967,7 @@ paths:
       tags:
         - People
       summary: "Delete a person's uploaded photo"
+      description: 'Remove the uploaded photo for a person. This operation is idempotent and will return success even if no photo exists.'
       operationId: deletePersonPhoto
       parameters:
         -
@@ -2815,12 +3979,12 @@ paths:
             example: 42
       responses:
         '200':
-          description: 'Photo deleted'
+          description: 'Photo deleted successfully'
           content:
             application/json:
               schema:
                 properties:
-                  success: { type: boolean }
+                  success: { type: boolean, example: true }
                 type: object
         '401':
           description: Unauthorized
@@ -2864,7 +4028,8 @@ paths:
     get:
       tags:
         - People
-      summary: 'Get a person by ID'
+      summary: "Get a person's full record by ID"
+      description: 'Returns the complete person object including family info, addresses, and other related details.'
       operationId: getPerson
       parameters:
         -
@@ -2876,7 +4041,15 @@ paths:
             example: 42
       responses:
         '200':
-          description: 'Person object (Propel JSON export)'
+          description: 'Person object'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                id: 42
+                firstName: John
+                lastName: Doe
         '401':
           description: Unauthorized
         '404':
@@ -2887,7 +4060,8 @@ paths:
     delete:
       tags:
         - People
-      summary: 'Delete a person'
+      summary: 'Delete a person record'
+      description: 'Permanently delete a person and all their associated records. Current user cannot delete their own account.'
       operationId: deletePerson
       parameters:
         -
@@ -2899,7 +4073,7 @@ paths:
             example: 42
       responses:
         '200':
-          description: 'Person deleted'
+          description: 'Person deleted successfully'
           content:
             application/json:
               schema:
@@ -2909,7 +4083,7 @@ paths:
         '401':
           description: Unauthorized
         '403':
-          description: 'DeleteRecords role required, or cannot delete yourself'
+          description: 'Cannot delete yourself or DeleteRecords role required'
         '404':
           description: 'Person not found'
       security:
@@ -2919,7 +4093,8 @@ paths:
     post:
       tags:
         - People
-      summary: 'Add a person to the selection cart'
+      summary: 'Add a person to the cart'
+      description: "Add a person to the current user's cart for batch operations."
       operationId: addPersonToCart
       parameters:
         -
@@ -2931,7 +4106,7 @@ paths:
             example: 42
       responses:
         '200':
-          description: 'Added to cart'
+          description: 'Person added to cart'
           content:
             application/json:
               schema:
@@ -2940,6 +4115,8 @@ paths:
                 type: object
         '401':
           description: Unauthorized
+        '404':
+          description: 'Person not found'
       security:
         -
           ApiKeyAuth: []
@@ -2983,6 +4160,24 @@ paths:
           description: 'Person or role not found'
         '500':
           description: 'Failed to save role'
+      security:
+        -
+          ApiKeyAuth: []
+  /persons/email/without:
+    get:
+      tags:
+        - People
+      summary: 'Get people with no personal or work email on record'
+      responses:
+        '200':
+          description: 'People without any email address'
+          content:
+            application/json:
+              schema:
+                properties:
+                  count: { type: integer }
+                  persons: { type: array, items: { type: object } }
+                type: object
       security:
         -
           ApiKeyAuth: []
@@ -3351,6 +4546,29 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  '/people/properties/definition/{propertyId}':
+    delete:
+      tags:
+        - Properties
+      summary: 'Delete a property definition and all its assignments (MenuOptions role required)'
+      operationId: 82d0e907ad5297dd38e7c28e5dfe1bfe
+      parameters:
+        -
+          name: propertyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Property definition deleted'
+        '404':
+          description: 'Property not found'
+        '403':
+          description: 'MenuOptions role required'
+      security:
+        -
+          ApiKeyAuth: []
   '/search/{query}':
     get:
       tags:
@@ -3394,6 +4612,27 @@ paths:
       responses:
         '200':
           description: 'Array of id/value pairs for matching custom fields'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { id: { type: integer }, value: { type: string } }
+                  type: object
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /system/properties/person:
+    get:
+      tags:
+        - System
+      summary: 'Get person property definitions as id/value pairs for settings dropdowns (Admin role required)'
+      operationId: 252a37a07f5516b784a2534ddf4ddfa9
+      responses:
+        '200':
+          description: 'Array of id/value pairs for person properties'
           content:
             application/json:
               schema:
@@ -3580,24 +4819,6 @@ paths:
           description: Unauthorized
         '403':
           description: 'Admin role required'
-      security:
-        -
-          ApiKeyAuth: []
-  /system/notification:
-    get:
-      tags:
-        - System
-      summary: 'Get current UI notifications (update alerts, system messages)'
-      operationId: d67011aae959ed9fd77c417c9bd9bd09
-      responses:
-        '200':
-          description: 'Array of UI notification objects'
-          content:
-            application/json:
-              schema:
-                properties:
-                  notifications: { type: array, items: { properties: { title: { type: string }, icon: { type: string }, type: { type: string }, message: { type: string }, link: { type: string } }, type: object } }
-                type: object
       security:
         -
           ApiKeyAuth: []
@@ -4287,3 +5508,6 @@ tags:
   -
     name: Plugins
     description: 'Plugin management (Admin role required)'
+  -
+    name: Import
+    description: Import

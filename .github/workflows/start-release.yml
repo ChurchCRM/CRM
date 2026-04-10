@@ -14,6 +14,7 @@ permissions:
 
 jobs:
   start-release:
+    timeout-minutes: 20
     runs-on: ubuntu-latest
     
     steps:
@@ -38,6 +39,12 @@ jobs:
       
       - name: Run release script
         run: ./scripts/startNewRelease.js ${{ inputs.version }}
+      
+      - name: Format web
+        run: npm run format:web
+      
+      - name: Build project
+        run: npm run build
       
       - name: Create release branch
         run: |

@@ -22,10 +22,10 @@ $(".delete-person").click(function (event) {
       i18next.t("Do you want to delete this person?  This cannot be undone.") + " <b>" + thisLink.data("person_name"),
     buttons: {
       cancel: {
-        label: '<i class="fa-solid fa-times"></i> ' + i18next.t("Cancel"),
+        label: '<i class="fa-solid fa-times"></i>' + i18next.t("Cancel"),
       },
       confirm: {
-        label: '<i class="fa-solid fa-trash"></i> ' + i18next.t("Delete"),
+        label: '<i class="fa-solid fa-trash"></i>' + i18next.t("Delete"),
         className: "btn-danger",
       },
     },
@@ -47,3 +47,6 @@ $(".delete-person").click(function (event) {
     },
   });
 });
+
+// Photo viewer click handlers (.view-person-photo / .view-family-photo) are
+// registered globally in avatar-loader.ts

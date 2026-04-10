@@ -2,8 +2,6 @@
 
 namespace ChurchCRM\Utils;
 
-use ChurchCRM\dto\SystemConfig;
-
 class InputUtils
 {
     private static string $AllowedHTMLTags = '<a><b><i><u><h1><h2><h3><h4><h5><h6><pre><address><img><table><td><tr><ol><li><ul><p><sub><sup><s><hr><span><blockquote><div><small><big><tt><code><kbd><samp><del><ins><cite><q>';
@@ -55,41 +53,92 @@ class InputUtils
     /**
      * Sanitize rich text HTML with XSS protection using HTML Purifier
      * Use this for user-provided HTML content (e.g., event descriptions from Quill editor)
-     * 
+     *
      * @param string $sInput HTML input to sanitize
      * @return string Clean HTML with dangerous tags/attributes removed
      */
     public static function sanitizeHTML($sInput): string
     {
         $sInput = trim($sInput);
-        
+
         if (empty($sInput)) {
             return '';
         }
-        
+
         // Configure HTML Purifier with strict XSS protection
         $config = \HTMLPurifier_Config::createDefault();
-        
+
         // Define allowed HTML tags for safe content (rich text)
-        $config->set('HTML.Allowed', 
+        $config->set('HTML.Allowed',
             'a[href],b,i,u,h1,h2,h3,h4,h5,h6,pre,address,img[src|alt|width|height],table,td,tr,ol,li,ul,p,sub,sup,s,hr,span,blockquote,div,small,big,tt,code,kbd,samp,del,ins,cite,q,br,strong,em'
         );
-        
+
         // Block dangerous protocols: only allow safe URLs
         $config->set('URI.AllowedSchemes', ['http' => true, 'https' => true, 'ftp' => true, 'mailto' => true]);
-        
+
         // Disable dangerous elements that could bypass sanitization
         $config->set('HTML.ForbiddenElements', ['script', 'iframe', 'embed', 'object', 'form', 'style', 'meta']);
-        
+
         // Disable automatic paragraph wrapping
         $config->set('AutoFormat.AutoParagraph', false);
-        
+
         // Enable ID attributes for accessibility
         $config->set('Attr.EnableID', true);
-        
+
         $purifier = new \HTMLPurifier($config);
-        
+
         return $purifier->purify($sInput);
+    }
+
+    /**
+     * Recursively sanitize JSON string values by stripping HTML tags.
+     * Use this for JSON configuration payloads where values should not contain HTML.
+     *
+     * @param mixed $data
+     * @return mixed
+     */
+    public static function sanitizeJsonStrings($data)
+    {
+        if (is_array($data)) {
+            $out = [];
+            foreach ($data as $k => $v) {
+                $out[$k] = self::sanitizeJsonStrings($v);
+            }
+
+            return $out;
+        }
+
+        if (is_string($data)) {
+            return self::sanitizeText($data);
+        }
+
+        return $data;
+    }
+
+    /**
+     * Validate JSON input and return decoded array/object.
+     * Accepts either a JSON string or already-decoded array. Throws on invalid JSON.
+     *
+     * @param mixed $json
+     * @return mixed
+     * @throws \InvalidArgumentException
+     */
+    public static function validateJson($json)
+    {
+        if (is_array($json) || is_object($json)) {
+            return $json;
+        }
+
+        if (is_string($json)) {
+            $trimmed = trim($json);
+            try {
+                return json_decode($trimmed, true, 512, JSON_THROW_ON_ERROR);
+            } catch (\JsonException $e) {
+                throw new \InvalidArgumentException('Invalid JSON: ' . $e->getMessage());
+            }
+        }
+
+        throw new \InvalidArgumentException('Invalid JSON input type');
     }
 
     /**
@@ -97,7 +146,7 @@ class InputUtils
      * Converts special characters to HTML entities: &, <, >, ", '
      * Automatically handles stripslashes() for magic quotes compatibility
      * Use this when outputting user/database values in HTML
-     * 
+     *
      * @param string $sInput Text to escape
      * @return string HTML-escaped text safe for display
      */
@@ -111,7 +160,7 @@ class InputUtils
      * Alias for escapeHTML() - both use ENT_QUOTES for full safety
      * Automatically handles stripslashes() for magic quotes compatibility
      * Use this when outputting user/database values in HTML attributes
-     * 
+     *
      * @param string $sInput Text to escape
      * @return string HTML-escaped text safe for attribute use
      */

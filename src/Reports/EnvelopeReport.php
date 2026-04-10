@@ -3,7 +3,7 @@
 namespace ChurchCRM\Reports;
 
 require_once __DIR__ . '/../Include/Config.php';
-require_once __DIR__ . '/../Include/Functions.php';
+require_once __DIR__ . '/../Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
@@ -106,7 +106,7 @@ foreach ($families as $family) {
 
     // Count the number of lines in the output string
     if (strlen($OutStr)) {
-        $numlines = mb_substr_count($OutStr, "\n");
+        $numlines = mb_substr_count($OutStr,"\n");
     } else {
         $numlines = 0;
     }

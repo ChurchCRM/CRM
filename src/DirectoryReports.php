@@ -1,21 +1,27 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 // Check for Create Directory user permission.
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isCreateDirectoryEnabled(), 'CreateDirectory');
 
 $sPageTitle = gettext('Directory reports');
+$sPageSubtitle = gettext('Generate directory listings and printed materials');
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Data & Reports'), '/QueryList.php'],
+    [gettext('Directory Reports')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
-<div class="card card-body">
-<form method="POST" action="Reports/DirectoryReport.php">
+<div class="card">
+  <div class="card-body">
+    <form method="POST" action="Reports/DirectoryReport.php">
 <?php
 
 // Get classifications for the selects
@@ -50,224 +56,213 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 }
 
 ?>
-<div class="table-responsive">
-<table class="table mx-auto">
-<?php if (!array_key_exists('cartdir', $_GET)) {
-    ?>
-    <tr>
-        <td class="LabelColumn"><?= gettext('Exclude Inactive Families') ?></td>
-        <td><input type="checkbox" Name="bExcludeInactive" value="1" checked></td>
-    </tr>
-    <tr>
-        <td class="LabelColumn"><?= gettext('Select classifications to include') ?></td>
-        <td class="TextColumn">
-            <div class="SmallText"><?= gettext('Use Ctrl Key to select multiple') ?></div>
-            <select name="sDirClassifications[]" size="5" multiple>
-            <option value="0"><?= gettext("Unassigned") ?></option>
-            <?php
-            while ($aRow = mysqli_fetch_array($rsClassifications)) {
-                extract($aRow);
-                echo '<option value="' . $lst_OptionID . '"';
-                if (in_array($lst_OptionID, $aDefaultClasses)) {
-                    echo ' selected';
-                }
-                echo '>' . gettext($lst_OptionName) . '</option>';
-            } ?>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td class="LabelColumn"><?= gettext('Group Membership') ?>:</td>
-        <td class="TextColumn">
-            <div class="SmallText"><?= gettext('Use Ctrl Key to select multiple') ?></div>
-            <select name="GroupID[]" size="5" multiple>
-                <?php
-                while ($aRow = mysqli_fetch_array($rsGroups)) {
-                    extract($aRow);
-                    echo '<option value="' . $grp_ID . '">' . $grp_Name . '</option>';
-                } ?>
-            </select>
-        </td>
-    </tr>
+<?php if (!array_key_exists('cartdir', $_GET)) : ?>
+      <div class="mb-3">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="bExcludeInactive" value="1" id="bExcludeInactive" checked>
+          <label class="form-check-label" for="bExcludeInactive"><?= gettext('Exclude Inactive Families') ?></label>
+        </div>
+      </div>
 
-    <?php
-}
-?>
+      <div class="mb-3">
+        <label class="form-label"><?= gettext('Select classifications to include') ?></label>
+        <small class="text-secondary d-block mb-1"><?= gettext('Use Ctrl Key to select multiple') ?></small>
+        <select class="form-select" name="sDirClassifications[]" size="5" multiple>
+          <option value="0"><?= gettext('Unassigned') ?></option>
+          <?php while ($aRow = mysqli_fetch_array($rsClassifications)) {
+              extract($aRow);
+              echo '<option value="' . $lst_OptionID . '"';
+              if (in_array($lst_OptionID, $aDefaultClasses)) {
+                  echo ' selected';
+              }
+              echo '>' . gettext($lst_OptionName) . '</option>';
+          } ?>
+        </select>
+      </div>
 
-    <tr>
-        <td class="LabelColumn"><?= gettext('Which role is the head of household?') ?></td>
-        <td class="TextColumn">
-            <div class="SmallText"><?= gettext('Use Ctrl Key to select multiple') ?></div>
-            <select name="sDirRoleHead[]" size="5" multiple>
-            <?php
-            while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
-                extract($aRow);
-                echo '<option value="' . $lst_OptionID . '"';
-                if (in_array($lst_OptionID, $aDirRoleHead)) {
-                    echo ' selected';
-                }
-                echo '>' . gettext($lst_OptionName) . '</option>';
-            }
-            ?>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td class="LabelColumn"><?= gettext('Which role is the spouse?') ?></td>
-        <td class="TextColumn">
-            <div class="SmallText"><?= gettext('Use Ctrl Key to select multiple') ?></div>
-            <select name="sDirRoleSpouse[]" size="5" multiple>
-            <?php
-                mysqli_data_seek($rsFamilyRoles, 0);
-            while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
-                extract($aRow);
-                echo '<option value="' . $lst_OptionID . '"';
-                if (in_array($lst_OptionID, $aDirRoleSpouse)) {
-                    echo ' selected';
-                }
-                echo '>' . gettext($lst_OptionName) . '</option>';
-            }
-            ?>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td class="LabelColumn"><?= gettext('Which role is a child?') ?></td>
-        <td class="TextColumn">
-            <div class="SmallText"><?= gettext('Use Ctrl Key to select multiple') ?></div>
-            <select name="sDirRoleChild[]" size="5" multiple>
-            <?php
-                mysqli_data_seek($rsFamilyRoles, 0);
-            while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
-                extract($aRow);
-                echo '<option value="' . $lst_OptionID . '"';
-                if (in_array($lst_OptionID, $aDirRoleChild)) {
-                    echo ' selected';
-                }
-                echo '>' . gettext($lst_OptionName) . '</option>';
-            }
-            ?>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td class="LabelColumn"><?= gettext('Information to Include') ?>:</td>
-        <td class="TextColumn">
-            <input type="checkbox" Name="bDirAddress" value="1" checked><?= gettext('Address') ?><br>
-            <input type="checkbox" Name="bDirWedding" value="1" checked><?= gettext('Wedding Date') ?><br>
-            <input type="checkbox" Name="bDirBirthday" value="1" checked><?= gettext('Birthday') ?><br>
+      <div class="mb-3">
+        <label class="form-label"><?= gettext('Group Membership') ?>:</label>
+        <small class="text-secondary d-block mb-1"><?= gettext('Use Ctrl Key to select multiple') ?></small>
+        <select class="form-select" name="GroupID[]" size="5" multiple>
+          <?php while ($aRow = mysqli_fetch_array($rsGroups)) {
+              extract($aRow);
+              echo '<option value="' . $grp_ID . '">' . $grp_Name . '</option>';
+          } ?>
+        </select>
+      </div>
+<?php endif; ?>
 
-            <input type="checkbox" Name="bDirFamilyPhone" value="1" checked><?= gettext('Family Home Phone') ?><br>
-            <input type="checkbox" Name="bDirFamilyWork" value="1" checked><?= gettext('Family Work Phone') ?><br>
-            <input type="checkbox" Name="bDirFamilyCell" value="1" checked><?= gettext('Family Cell Phone') ?><br>
-            <input type="checkbox" Name="bDirFamilyEmail" value="1" checked><?= gettext('Family Email') ?><br>
+      <div class="mb-3">
+        <label class="form-label"><?= gettext('Which role is the head of household?') ?></label>
+        <small class="text-secondary d-block mb-1"><?= gettext('Use Ctrl Key to select multiple') ?></small>
+        <select class="form-select" name="sDirRoleHead[]" size="5" multiple>
+          <?php while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
+              extract($aRow);
+              echo '<option value="' . $lst_OptionID . '"';
+              if (in_array($lst_OptionID, $aDirRoleHead)) {
+                  echo ' selected';
+              }
+              echo '>' . gettext($lst_OptionName) . '</option>';
+          } ?>
+        </select>
+      </div>
 
-            <input type="checkbox" Name="bDirPersonalPhone" value="1" checked><?= gettext('Personal Home Phone') ?><br>
-            <input type="checkbox" Name="bDirPersonalWork" value="1" checked><?= gettext('Personal Work Phone') ?><br>
-            <input type="checkbox" Name="bDirPersonalCell" value="1" checked><?= gettext('Personal Cell Phone') ?><br>
-            <input type="checkbox" Name="bDirPersonalEmail" value="1" checked><?= gettext('Personal Email') ?><br>
-            <input type="checkbox" Name="bDirPersonalWorkEmail" value="1" checked><?= gettext('Personal Work/Other Email') ?><br>
-            <input type="checkbox" Name="bDirPhoto" value="1" checked><?= gettext('Photos') ?><br>
-         <?php
-            if ($numCustomFields > 0) {
-                while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_ASSOC)) {
-                    if (($aSecurityType[$rowCustomField['custom_FieldSec']] == 'bAll') || ($_SESSION[$aSecurityType[$rowCustomField['custom_FieldSec']]])) {
-                        ?>
-                    <input type="checkbox" Name="bCustom<?= $rowCustomField['custom_Order'] ?>" value="1" checked><?= $rowCustomField['custom_Name'] ?><br>
-                        <?php
-                    }
-                }
-            }
-            ?>
+      <div class="mb-3">
+        <label class="form-label"><?= gettext('Which role is the spouse?') ?></label>
+        <small class="text-secondary d-block mb-1"><?= gettext('Use Ctrl Key to select multiple') ?></small>
+        <select class="form-select" name="sDirRoleSpouse[]" size="5" multiple>
+          <?php
+          mysqli_data_seek($rsFamilyRoles, 0);
+          while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
+              extract($aRow);
+              echo '<option value="' . $lst_OptionID . '"';
+              if (in_array($lst_OptionID, $aDirRoleSpouse)) {
+                  echo ' selected';
+              }
+              echo '>' . gettext($lst_OptionName) . '</option>';
+          } ?>
+        </select>
+      </div>
 
-        </td>
-    </tr>
-    <tr>
-     <td class="LabelColumn"><?= gettext('Number of Columns') ?>:</td>
-     <td class="TextColumn">
-            <input type="radio" Name="NumCols" value=1>1 col<br>
-            <input type="radio" Name="NumCols" value=2 checked>2 cols<br>
-            <input type="radio" Name="NumCols" value=3>3 cols<br>
-    </td>
-    </tr>
-    <tr>
-     <td class="LabelColumn"><?= gettext('Paper Size') ?>:</td>
-     <td class="TextColumn">
-            <input type="radio" name="PageSize" value="letter" checked>Letter (8.5x11)<br>
-            <input type="radio" name="PageSize" value="legal">Legal (8.5x14)<br>
-            <input type="radio" name="PageSize" value="a4">A4
-    </td>
-    </tr>
-    <tr>
-     <td class="LabelColumn"><?= gettext('Font Size') ?>:</td>
-     <td class="TextColumn">
-        <table>
-        <tr>
-            <td><input type="radio" Name="FSize" value=6>6<br>
-            <input type="radio" Name="FSize" value=8>8<br>
-            <input type="radio" Name="FSize" value=10 checked>10<br></td>
+      <div class="mb-3">
+        <label class="form-label"><?= gettext('Which role is a child?') ?></label>
+        <small class="text-secondary d-block mb-1"><?= gettext('Use Ctrl Key to select multiple') ?></small>
+        <select class="form-select" name="sDirRoleChild[]" size="5" multiple>
+          <?php
+          mysqli_data_seek($rsFamilyRoles, 0);
+          while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
+              extract($aRow);
+              echo '<option value="' . $lst_OptionID . '"';
+              if (in_array($lst_OptionID, $aDirRoleChild)) {
+                  echo ' selected';
+              }
+              echo '>' . gettext($lst_OptionName) . '</option>';
+          } ?>
+        </select>
+      </div>
 
-            <td><input type="radio" Name="FSize" value=12>12<br>
-            <input type="radio" Name="FSize" value=14>14<br>
-            <input type="radio" Name="FSize" value=16>16<br></td>
-        </tr>
-        </table>
-    </td>
-    </tr>
-    <tr>
-        <td class="LabelColumn"><?= gettext('Title page') ?>:</td>
-        <td class="TextColumn">
-            <table>
-                <tr>
-                    <td><?= gettext('Use Title Page') ?></td>
-                    <td><input type="checkbox" Name="bDirUseTitlePage" value="1"></td>
-                </tr>
-                <tr>
-                    <td><?= gettext('Church Name') ?></td>
-                    <td><input type="text" Name="sChurchName" value="<?= SystemConfig::getValue('sChurchName') ?>"></td>
-                </tr>
-                <tr>
-                    <td><?= gettext('Address') ?></td>
-                    <td><input type="text" Name="sChurchAddress" value="<?= SystemConfig::getValue('sChurchAddress') ?>"></td>
-                </tr>
-                <tr>
-                    <td><?= gettext('City') ?></td>
-                    <td><input type="text" Name="sChurchCity" value="<?= SystemConfig::getValue('sChurchCity') ?>"></td>
-                </tr>
-                <tr>
-                    <td><?= gettext('State') ?></td>
-                    <td><input type="text" Name="sChurchState" value="<?= SystemConfig::getValue('sChurchState') ?>"></td>
-                </tr>
-                <tr>
-                    <td><?= gettext('Zip') ?></td>
-                    <td><input type="text" Name="sChurchZip" value="<?= SystemConfig::getValue('sChurchZip') ?>"></td>
-                </tr>
-                <tr>
-                    <td><?= gettext('Phone') ?></td>
-                    <td><input type="text" Name="sChurchPhone" value="<?= SystemConfig::getValue('sChurchPhone') ?>"></td>
-                </tr>
-                <tr>
-                    <td><?= gettext('Disclaimer') ?></td>
-                    <td><textarea Name="sDirectoryDisclaimer" cols="35" rows="4"><?= SystemConfig::getValue('sDirectoryDisclaimer1') . ' ' . SystemConfig::getValue('sDirectoryDisclaimer2') ?></textarea></td>
-                </tr>
+      <div class="mb-3">
+        <label class="form-label"><?= gettext('Information to Include') ?>:</label>
+        <div class="row row-cols-2 row-cols-md-3 g-1">
+          <?php
+          $checkFields = [
+              'bDirAddress'        => gettext('Address'),
+              'bDirWedding'        => gettext('Wedding Date'),
+              'bDirBirthday'       => gettext('Birthday'),
+              'bDirFamilyPhone'    => gettext('Family Home Phone'),
+              'bDirFamilyWork'     => gettext('Family Work Phone'),
+              'bDirFamilyCell'     => gettext('Family Cell Phone'),
+              'bDirFamilyEmail'    => gettext('Family Email'),
+              'bDirPersonalPhone'  => gettext('Personal Home Phone'),
+              'bDirPersonalWork'   => gettext('Personal Work Phone'),
+              'bDirPersonalCell'   => gettext('Personal Cell Phone'),
+              'bDirPersonalEmail'  => gettext('Personal Email'),
+              'bDirPersonalWorkEmail' => gettext('Personal Work/Other Email'),
+              'bDirPhoto'          => gettext('Photos'),
+          ];
+          foreach ($checkFields as $name => $label) : ?>
+            <div class="col">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="<?= $name ?>" value="1" id="<?= $name ?>" checked>
+                <label class="form-check-label" for="<?= $name ?>"><?= $label ?></label>
+              </div>
+            </div>
+          <?php endforeach;
+          if ($numCustomFields > 0) {
+              while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_ASSOC)) {
+                  if (($aSecurityType[$rowCustomField['custom_FieldSec']] == 'bAll') || ($_SESSION[$aSecurityType[$rowCustomField['custom_FieldSec']]])) {
+                      $customName = 'bCustom' . $rowCustomField['custom_Order']; ?>
+                <div class="col">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="<?= $customName ?>" value="1" id="<?= $customName ?>" checked>
+                    <label class="form-check-label" for="<?= $customName ?>"><?= $rowCustomField['custom_Name'] ?></label>
+                  </div>
+                </div>
+              <?php }
+              }
+          } ?>
+        </div>
+      </div>
 
-            </table>
-        </td>
-    </tr>
+      <div class="row g-3 mb-3">
+        <div class="col-md-4">
+          <label class="form-label"><?= gettext('Number of Columns') ?>:</label>
+          <div class="d-flex gap-3">
+            <?php foreach ([1 => '1 col', 2 => '2 cols', 3 => '3 cols'] as $val => $label) : ?>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="NumCols" value="<?= $val ?>" id="NumCols<?= $val ?>" <?= $val === 2 ? 'checked' : '' ?>>
+                <label class="form-check-label" for="NumCols<?= $val ?>"><?= $label ?></label>
+              </div>
+            <?php endforeach; ?>
+          </div>
+        </div>
 
-</table>
-</div>
+        <div class="col-md-4">
+          <label class="form-label"><?= gettext('Paper Size') ?>:</label>
+          <div class="d-flex gap-3">
+            <?php foreach (['letter' => 'Letter (8.5x11)', 'legal' => 'Legal (8.5x14)', 'a4' => 'A4'] as $val => $label) : ?>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="PageSize" value="<?= $val ?>" id="PageSize<?= $val ?>" <?= $val === 'letter' ? 'checked' : '' ?>>
+                <label class="form-check-label" for="PageSize<?= $val ?>"><?= $label ?></label>
+              </div>
+            <?php endforeach; ?>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label"><?= gettext('Font Size') ?>:</label>
+          <div class="d-flex flex-wrap gap-2">
+            <?php foreach ([6, 8, 10, 12, 14, 16] as $fsize) : ?>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="FSize" value="<?= $fsize ?>" id="FSize<?= $fsize ?>" <?= $fsize === 10 ? 'checked' : '' ?>>
+                <label class="form-check-label" for="FSize<?= $fsize ?>"><?= $fsize ?></label>
+              </div>
+            <?php endforeach; ?>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold"><?= gettext('Title page') ?>:</label>
+        <div class="row g-3">
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="bDirUseTitlePage" value="1" id="bDirUseTitlePage">
+              <label class="form-check-label" for="bDirUseTitlePage"><?= gettext('Use Title Page') ?></label>
+            </div>
+          </div>
+          <?php
+          $titleFields = [
+              'sChurchName'    => gettext('Church Name'),
+              'sChurchAddress' => gettext('Address'),
+              'sChurchCity'    => gettext('City'),
+              'sChurchState'   => gettext('State'),
+              'sChurchZip'     => gettext('Zip'),
+              'sChurchPhone'   => gettext('Phone'),
+          ];
+          foreach ($titleFields as $key => $label) : ?>
+            <div class="col-md-6">
+              <label class="form-label" for="<?= $key ?>"><?= $label ?></label>
+              <input type="text" class="form-control" name="<?= $key ?>" id="<?= $key ?>" value="<?= SystemConfig::getValueForAttr($key) ?>">
+            </div>
+          <?php endforeach; ?>
+          <div class="col-12">
+            <label class="form-label" for="sDirectoryDisclaimer"><?= gettext('Disclaimer') ?></label>
+            <textarea class="form-control" name="sDirectoryDisclaimer" id="sDirectoryDisclaimer" rows="4"><?= SystemConfig::getValueForHtml('sDirectoryDisclaimer1') . ' ' . SystemConfig::getValueForHtml('sDirectoryDisclaimer2') ?></textarea>
+          </div>
+        </div>
+      </div>
 
 <?php if (array_key_exists('cartdir', $_GET)) {
-             echo '<input type="hidden" name="cartdir" value="M">';
+    echo '<input type="hidden" name="cartdir" value="M">';
 } ?>
 
-<p class="text-center">
-<BR>
-<input type="submit" class="btn btn-primary" name="Submit" value="<?= gettext('Create Directory') ?>">
-<input type="button" class="btn btn-secondary" name="Cancel" <?= 'value="' . gettext('Cancel') . '"' ?> onclick="javascript:document.location='v2/dashboard';">
-</p>
-</form>
+      <div class="d-flex gap-2 mt-3">
+        <input type="submit" class="btn btn-primary" name="Submit" value="<?= gettext('Create Directory') ?>">
+        <input type="button" class="btn btn-secondary" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location='v2/dashboard';">
+      </div>
+    </form>
+  </div>
 </div>
 <?php
 require_once __DIR__ . '/Include/Footer.php';

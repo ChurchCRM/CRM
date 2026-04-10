@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
@@ -41,7 +42,9 @@ $app->group('/map', function (RouteCollectorProxy $group): void {
  *             @OA\Property(property="latitude", type="number", format="float"),
  *             @OA\Property(property="longitude", type="number", format="float"),
  *             @OA\Property(property="classificationId", type="integer"),
- *             @OA\Property(property="profileUrl", type="string")
+ *             @OA\Property(property="profileUrl", type="string"),
+ *             @OA\Property(property="directionsUrl", type="string"),
+ *             @OA\Property(property="phone", type="string")
  *         ))
  *     )
  * )
@@ -76,10 +79,18 @@ function getMapFamilies(Request $request, Response $response, array $args): Resp
                     'longitude'        => (float) $latLng['Longitude'],
                     'classificationId' => (int) $person->getClsId(),
                     'profileUrl'       => SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $person->getId(),
+                    'directionsUrl'    => $person->getDirectionsUrl(),
+                    'phone'            => $person->getBestPhone(),
                 ];
             }
         }
     } elseif ($groupId !== null && $groupId > 0) {
+        // Build person → role map for this group (single query)
+        $roleMap = [];
+        foreach (Person2group2roleP2g2rQuery::create()->filterByGroupId($groupId)->find() as $p2g2r) {
+            $roleMap[(int) $p2g2r->getPersonId()] = (int) $p2g2r->getRoleId();
+        }
+
         // Return geocoded members of a specific group
         $persons = PersonQuery::create()
             ->usePerson2group2roleP2g2rQuery()
@@ -101,7 +112,10 @@ function getMapFamilies(Request $request, Response $response, array $args): Resp
                 'latitude'         => (float) $latLng['Latitude'],
                 'longitude'        => (float) $latLng['Longitude'],
                 'classificationId' => (int) $person->getClsId(),
+                'roleId'           => $roleMap[(int) $person->getId()] ?? 0,
                 'profileUrl'       => SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $person->getId(),
+                'directionsUrl'    => $person->getDirectionsUrl(),
+                'phone'            => $person->getBestPhone(),
             ];
         }
     } else {
@@ -126,6 +140,8 @@ function getMapFamilies(Request $request, Response $response, array $args): Resp
                 'longitude'        => (float) $family->getLongitude(),
                 'classificationId' => $classificationId,
                 'profileUrl'       => SystemURLs::getRootPath() . '/v2/family/' . $family->getId(),
+                'directionsUrl'    => $family->getDirectionsUrl(),
+                'phone'            => $family->getHomePhone() ?? '',
             ];
         }
     }

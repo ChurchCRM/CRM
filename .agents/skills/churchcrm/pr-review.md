@@ -239,9 +239,9 @@ For each type of change, determine what docs need updating:
 
 | Change type | Required doc update |
 |-------------|---------------------|
-| New feature / user-visible behaviour | `docs.churchcrm.io/` user docs page |
-| New admin setting or config option | `docs.churchcrm.io/` admin docs |
-| New API endpoint or changed response | OpenAPI annotations + `CRM/openapi/*.yaml` + docs site MDX |
+| New feature / user-visible behaviour | Documentation user docs page |
+| New admin setting or config option | Documentation admin docs |
+| New API endpoint or changed response | OpenAPI annotations + `CRM/openapi/*.yaml` + Documentation site MDX |
 | Breaking change | Release notes + migration guide |
 | New architectural pattern | Relevant skill file in `.agents/skills/churchcrm/` |
 | Complex multi-step admin procedure | GitHub Wiki article |
@@ -252,23 +252,23 @@ For each type of change, determine what docs need updating:
 
 ```bash
 # Has the feature touched user-facing UI text, settings, or API contracts?
-git diff origin/master...origin/<branch> -- 'src/**/*.php' 'src/**/*.js' 'react/**/*.tsx'
+git diff origin/master...origin/<branch> -- 'src/**/*.php' 'src/**/*.js' 'webpack/**/*.js'
 
 # Are there new routes?
 git diff origin/master...origin/<branch> -- 'src/api/routes/' 'src/admin/routes/'
 ```
 
-### Updating docs.churchcrm.io
+### Updating Documentation
 
 ```bash
-# Docs site is in docs.churchcrm.io/ repo
+# Docs site is in the docs repository (Documentation)
 cd ../docs.churchcrm.io
 
 # Regenerate OpenAPI MDX if API annotations changed
 npm run regen
 
 # Push to main — auto-deploys in ~90 seconds
-git add . && git commit -m "Update docs for PR #NUMBER" && git push
+git add . && git commit -m "Update Documentation for PR #NUMBER" && git push
 ```
 
 ### Updating wiki
@@ -423,6 +423,27 @@ All threads resolved."
 
 **Rule:** Never leave addressed threads unresolved. Always resolve them after pushing fixes.
 
+### Review comments may reference older commits <!-- learned: 2026-03-29 -->
+
+A PR with multiple commits will have review comments pinned to the commit SHA they were posted on. **Comments posted on an earlier commit may already be fixed by a later commit.** Before making any code changes, always verify the issue still exists in the current branch state:
+
+```bash
+# Check current branch file state
+git show origin/<branch>:<path/to/file>
+
+# Then compare to what the review comment describes
+# If the issue is already fixed: just resolve the thread, don't re-edit the code
+```
+
+**Workflow when review comments exist:**
+1. Fetch open threads (GraphQL above)
+2. `git show origin/<branch>:<file>` to read the current branch state
+3. For each thread: determine if it's **already fixed**, **needs a code change**, or **should be accepted as-is**
+4. Make any needed code changes, push, then resolve ALL addressed threads
+5. Post a single follow-up comment summarising each thread's resolution
+
+Resolving a thread without pushing code is valid when the issue was already fixed in a later commit — explain this in the follow-up comment.
+
 ---
 
 ## Phase 8 — Capture Learnings Back to Skills
@@ -437,7 +458,7 @@ When a PR review reveals a pattern or mistake that isn't yet documented:
 | ChurchCRM-specific standard (Bootstrap, ORM, etc.) | `code-standards.md` |
 | Git / PR workflow rule | `git-workflow.md` or `github-interaction.md` |
 | Security rule | `security-best-practices.md` or `authorization-security.md` |
-| Frontend pattern | `frontend-development.md` or `bootstrap-adminlte.md` |
+| Frontend pattern | `frontend-development.md` or `tabler-components.md` |
 | i18n pattern | `i18n-localization.md` |
 | Performance pattern | `performance-optimization.md` |
 | Generic PR/GitHub behaviour | `pr-description-guidelines.md` |
@@ -467,18 +488,18 @@ When a PR review reveals a pattern or mistake that isn't yet documented:
 
 Add to `development-workflows.md` (already documented there — no change needed).
 
-> **Scenario:** A PR adds a new `AdminLTE` card component but uses inline `style` attributes instead of utility classes.
+> **Scenario:** A PR adds a Tabler card component but uses inline `style` attributes instead of utility classes.
 
-Add to `bootstrap-adminlte.md` under a "Cards" section:
+Add to `tabler-components.md` under a "Cards" section:
 
 ```markdown
 ### Cards — Use utility classes, not inline styles
 
 // ✅ CORRECT
-<div class="card card-primary card-outline">
+<div class="card card-sm">
 
-// ❌ WRONG — inline styles break dark mode and consistency
-<div class="card" style="border-top: 3px solid #3c8dbc;">
+// ❌ WRONG — inline styles break Tabler theming
+<div class="card" style="border-top: 3px solid #206bc4;">
 ```
 
 ---
@@ -495,4 +516,39 @@ Add to `bootstrap-adminlte.md` under a "Cards" section:
 
 ---
 
-Last updated: 2026-03-03
+## Phase 7 — Post-PR Skill Updates (MANDATORY) <!-- learned: 2026-03-28 -->
+
+**After every PR is merged or ready for merge, update skill files with learnings from the session.**
+
+This is not optional — every PR teaches something. Capture it immediately while context is fresh.
+
+### What to Capture
+
+- **New patterns** discovered during implementation (e.g., print support, CSP-safe event binding)
+- **Gotchas** caught by PR reviewers (e.g., inline `onclick` blocked by CSP)
+- **Architecture decisions** made (e.g., global `@media print` vs per-page rules)
+- **Narrowed selectors** or corrections from review feedback
+- **New files/conventions** introduced (e.g., print button IDs, JS file mappings)
+
+### How to Update
+
+1. Identify which skill files are relevant to the PR's learnings
+2. Add a subsection with `<!-- learned: YYYY-MM-DD -->` on the heading
+3. Include a short explanation + code example (prefer examples over prose)
+4. Update the SKILL.md index if a new category was added
+5. Check if `MEMORY.md` needs a one-liner under Critical Patterns
+
+### Example Learnings by PR Type
+
+| PR Type | Skills to Update |
+|---------|-----------------|
+| UI/UX change | `frontend-development.md`, `tabler-components.md` |
+| Security fix | `security-best-practices.md`, `authorization-security.md` |
+| API change | `api-development.md`, `service-layer.md` |
+| CSP/inline JS fix | `security-best-practices.md`, `frontend-development.md` |
+| Test fix | `cypress-testing.md`, `testing.md` |
+| Print/PDF | `frontend-development.md` (Print Support section) |
+
+---
+
+Last updated: 2026-03-28

@@ -1,48 +1,48 @@
 <?php
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
 
 $sPageTitle = gettext("Password Reset");
-require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
+$sBodyClass = 'page-auth page-login';
+require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
 ?>
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-4">
-                <div class="text-center my-4">
-            <a href="<?= SystemURLs::getRootPath() ?>/"><?= ChurchMetaData::getChurchName() ?></a>
-                </div>
 
-                <div class="card mt-4">
-                    <div class="card-body">
-                        <h4 class="card-title text-center"><?= gettext('Reset your password') ?></h4>
-                        <p class="text-center text-muted mb-4"><?= gettext('Enter your login name and we will email you a link to reset your password.') ?></p>
-
-                        <form id="resetPasswordForm">
-                            <div class="form-group">
-                                <label for="username" class="sr-only"><?= gettext('Login Name') ?></label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
-                                    </div>
-                                    <input id="username" name="username" type="text" class="form-control" placeholder="<?= gettext('Login Name') ?>" required autofocus aria-label="<?= gettext('Login Name') ?>">
-                                </div>
-                            </div>
-
-                            <button type="button" id="resetPassword" class="btn btn-primary btn-block"><?= gettext('Send Reset Email'); ?></button>
-
-                            <div class="text-center mt-3">
-                                <a href="<?= SystemURLs::getRootPath() . '/session/begin' ?>"><?= gettext('Back to login') ?></a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+<div class="forgot-password-container">
+  <div class="forgot-password-card">
+    <!-- Header with Logo and Church Name -->
+    <div class="forgot-password-card-logo">
+      <img src="<?= SystemURLs::getRootPath() ?>/Images/logo-churchcrm-350.jpg" alt="ChurchCRM" />
     </div>
+    <h2><?= ChurchMetaData::getChurchName() ?></h2>
+    <p class="login-header-tagline"><?= gettext('Account Recovery') ?></p>
+
+    <!-- Form Title -->
+    <h3><i class="fa-solid fa-key me-2"></i><?= gettext('Reset your password') ?></h3>
+    <p><?= gettext('Enter your login name and we will email you a link to reset your password.') ?></p>
+
+    <form id="resetPasswordForm">
+      <div class="mb-3">
+        <label for="username"><?= gettext('Login Name') ?></label>
+        <input 
+          id="username" 
+          name="username" 
+          type="text" 
+          placeholder="<?= gettext('Enter your login name') ?>" 
+          required 
+          autofocus 
+          aria-label="<?= gettext('Login Name') ?>">
+      </div>
+
+      <button type="button" id="resetPassword" class="btn-reset"><?= gettext('Send Reset Email') ?></button>
+
+      <div class="form-footer">
+        <a href="<?= SystemURLs::getRootPath() . '/session/begin' ?>"><?= gettext('Back to login') ?></a>
+      </div>
+    </form>
+  </div>
+</div>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         $(document).ready(function() {
             var init = function() {
@@ -56,7 +56,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                         return;
                     }
 
-                    $btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> ' + i18next.t('Sending...'));
+                    $btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i>' + i18next.t('Sending...'));
                     $.ajax({
                         method: 'POST',
                         url: window.CRM.root + '/api/public/user/password-reset',
@@ -95,4 +95,4 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
         });
     </script>
 <?php
-require(SystemURLs::getDocumentRoot() . "/Include/FooterNotLoggedIn.php");
+require(SystemURLs::getDocumentRoot() ."/Include/FooterNotLoggedIn.php");

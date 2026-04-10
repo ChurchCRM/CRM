@@ -196,7 +196,7 @@ class AvatarLoader {
    */
   private updateViewPhotoButton(img: HTMLImageElement, hasPhoto: boolean): void {
     // Try to find the button - look up to the image-container's parent and search for the button
-    let imageContainer = img.closest(".image-container");
+    const imageContainer = img.closest(".image-container");
     let viewBtn = imageContainer?.querySelector("#view-larger-image-btn") as HTMLElement;
 
     // If not found, try looking in parent containers
@@ -217,9 +217,8 @@ class AvatarLoader {
       } else {
         viewBtn.classList.add("hide-if-no-photo");
       }
-    } else {
-      console.warn("Could not find view-larger-image-btn button for entity", img.dataset);
     }
+    // No button found — normal on list/dashboard pages where no view-larger-image button exists
   }
 
   /**
@@ -297,6 +296,17 @@ class AvatarLoader {
         // For inline/list photos, keep as circular avatar but use the uploaded photo
         img.classList.add("uploaded-photo");
         img.style.objectFit = "cover";
+      }
+
+      // Add click-to-view class so lightbox handlers can detect this photo.
+      // Only uploaded photos get this — initials and failed loads do not.
+      // Skip images inside upload buttons (profile pages handle their own click).
+      if (!img.closest("#uploadImageButton, #uploadImageTrigger")) {
+        const viewClass = config.entityType === "person" ? "view-person-photo" : "view-family-photo";
+        const dataAttr = config.entityType === "person" ? "data-person-id" : "data-family-id";
+        img.classList.add(viewClass);
+        img.setAttribute(dataAttr, String(config.entityId));
+        img.style.cursor = "pointer";
       }
 
       this.cleanupDataAttributes(img);
@@ -453,6 +463,28 @@ class AvatarLoader {
 
 // Create singleton instance
 const avatarLoader = new AvatarLoader();
+
+// Global delegated click handler for avatar lightbox.
+// avatar-loader adds .view-person-photo / .view-family-photo + cursor:pointer
+// to uploaded photos. This handler opens the lightbox when clicked.
+document.addEventListener("click", (e) => {
+  const target = (e.target as HTMLElement).closest<HTMLElement>(".view-person-photo, .view-family-photo");
+  if (!target) return;
+
+  e.preventDefault();
+  e.stopPropagation();
+
+  const showLightbox = (window as any).CRM?.showPhotoLightbox;
+  if (!showLightbox) return;
+
+  if (target.classList.contains("view-person-photo")) {
+    const personId = target.dataset.personId;
+    if (personId) showLightbox("person", parseInt(personId, 10));
+  } else if (target.classList.contains("view-family-photo")) {
+    const familyId = target.dataset.familyId;
+    if (familyId) showLightbox("family", parseInt(familyId, 10));
+  }
+});
 
 // Auto-initialize when DOM is ready
 if (document.readyState === "loading") {

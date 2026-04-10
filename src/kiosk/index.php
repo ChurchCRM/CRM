@@ -2,7 +2,6 @@
 
 require_once __DIR__ . '/../Include/LoadConfigs.php';
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\KioskDevice;
@@ -10,7 +9,6 @@ use ChurchCRM\model\ChurchCRM\KioskDeviceQuery;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
-use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -80,9 +78,11 @@ $getKioskFromCookie = function () use ($Kiosk): ?KioskDevice {
 $app = AppFactory::create();
 $app->setBasePath($basePath);
 
-// Add Slim error middleware for proper error handling and logging
+$app->addBodyParsingMiddleware();
+$app->addRoutingMiddleware();
+
+// Error middleware must be added AFTER routing (Slim 4 LIFO: last added = first executed)
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
-SlimUtils::setupErrorLogger($errorMiddleware);
 
 // Custom error handler
 $errorMiddleware->setDefaultErrorHandler(function (
@@ -95,7 +95,7 @@ $errorMiddleware->setDefaultErrorHandler(function (
     $logger = LoggerUtils::getAppLogger();
 
     if ($exception instanceof HttpNotFoundException) {
-        $logger->info('Kiosk 404 redirect', ['path' => $request->getUri()->getPath()]);
+        $logger->debug('Kiosk 404 redirect', ['path' => $request->getUri()->getPath()]);
         $response = $app->getResponseFactory()->createResponse(302);
 
         return $response->withHeader('Location', SystemURLs::getRootPath() . '/kiosk/admin');
@@ -117,9 +117,6 @@ $errorMiddleware->setDefaultErrorHandler(function (
         'error'   => gettext('An unexpected error occurred. Please contact your administrator.'),
     ]);
 });
-
-$app->addBodyParsingMiddleware();
-$app->addRoutingMiddleware();
 
 $app->add(new CorsMiddleware());
 $app->add(VersionMiddleware::class);

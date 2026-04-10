@@ -44,40 +44,54 @@ describe('04 - System Reset', () => {
                 cy.get('#NewPassword1').type('Cypress@01!');
                 cy.get('#NewPassword2').type('Cypress@01!');
                 cy.get('button[type=submit]').click();
-                cy.contains('Password Changed', { timeout: 10000 }).should('be.visible');
+                // ChurchInfoRequiredMiddleware redirects to church-info when sChurchName is empty
+                cy.url({ timeout: 15000 }).should('include', '/admin/system/church-info');
+            }
+        });
+
+        // After a DB reset sChurchName is empty; fill in the minimum required fields so the
+        // middleware stops redirecting and subsequent test navigation works normally.
+        cy.url().then((url) => {
+            if (url.includes('/admin/system/church-info')) {
+                // Wait for page to fully load — country defaults to US and populates state dropdown
+                cy.get('#sChurchCountry', { timeout: 10000 }).siblings('.ts-wrapper').should('exist');
+                cy.get('#sChurchName').clear().type('Test Community Church');
+                cy.get('#sChurchPhone').clear().type('(555) 123-4567');
+                cy.get('#sChurchEmail').clear().type('info@testchurch.org');
+                cy.get('#sChurchAddress').clear().type('123 Main Street');
+                cy.get('#sChurchCity').clear().type('Springfield');
+                // Country defaults to US — wait for state dropdown then verify value is set
+                cy.get('#sChurchState', { timeout: 10000 }).siblings('.ts-wrapper').should('exist');
+                cy.tomSelectByValue('#sChurchState', 'IL');
+                cy.get('#sChurchState').should('have.value', 'IL');
+                cy.get('#sChurchZip').clear().type('62701');
+                cy.wait(500);
+                cy.get('#church-info-form').submit();
+                cy.url({ timeout: 10000 }).should('include', 'church-info');
             }
         });
     };
 
     describe('Step 10a: Navigate to Reset Page', () => {
-        it('should navigate to system reset page and show bootbox warning', () => {
+        it('should display danger warning and reset card', () => {
             manualLogin();
             cy.visit('/admin/system/reset');
-            
-            // Wait for page to fully load and i18next to initialize
-            // The bootbox appears after CRM.onLocalesReady fires
-            cy.get('.bootbox', { timeout: 30000 }).should('be.visible');
-            
-            // Should show warning about reset
-            cy.contains('Warning').should('be.visible');
+
+            // Danger banner at top — scope to the top warning banner so it
+            // doesn't match hidden backup status alerts also in the DOM.
+            cy.contains('.alert-danger', 'Destructive Operation', { timeout: 15000 })
+                .should('be.visible');
+
+            // Reset button should be disabled until user types RESET
+            cy.get('#resetBtn').should('be.disabled');
         });
 
-        it('should show reset button after typing I AGREE', () => {
+        it('should enable reset button after typing RESET', () => {
             manualLogin();
             cy.visit('/admin/system/reset');
-            
-            // Wait for bootbox prompt
-            cy.get('.bootbox', { timeout: 30000 }).should('be.visible');
-            
-            // Type "I AGREE" in the prompt
-            cy.get('.bootbox input[type="text"]').type('I AGREE');
-            
-            // Click OK button on the bootbox
-            cy.get('.bootbox .btn-danger').click();
-            
-            // Should now see the reset page content (bootbox dismissed)
-            cy.get('#confirm-db', { timeout: 10000 }).should('be.visible');
-            cy.contains('Reset Database').should('be.visible');
+
+            cy.get('#confirmInput', { timeout: 15000 }).type('RESET');
+            cy.get('#resetBtn').should('not.be.disabled');
         });
     });
 
@@ -103,31 +117,18 @@ describe('04 - System Reset', () => {
     });
 
     describe('Step 10c: Verify System Reset and Login', () => {
-        it('should redirect to login or db-upgrade after reset', () => {
+        it('should redirect to login after reset', () => {
             // Clear any cached sessions since we just reset the database
             cy.clearCookies();
             cy.clearLocalStorage();
-            
-            // Visit homepage - should redirect somewhere after reset
+
+            // Visit homepage - should redirect to login after reset.
+            // A DB reset recreates the schema at the current version, so no version
+            // mismatch occurs and the db-upgrade page is never shown.
             cy.visit('/');
-            
-            // After reset, may go to:
-            // - /session/begin or /login (if DB version matches code)
-            // - /external/system/db-upgrade (if DB needs upgrade)
+
             cy.url({ timeout: 30000 }).should('satisfy', (url) => {
-                return url.includes('/session/begin') || 
-                       url.includes('/login') || 
-                       url.includes('/db-upgrade');
-            });
-            
-            // If on db-upgrade page, wait for it to complete and redirect
-            cy.url().then((url) => {
-                if (url.includes('/db-upgrade')) {
-                    cy.log('DB upgrade required after reset');
-                    cy.url({ timeout: 60000 }).should('satisfy', (newUrl) => {
-                        return newUrl.includes('/session/begin') || newUrl.includes('/login');
-                    });
-                }
+                return url.includes('/session/begin') || url.includes('/login');
             });
         });
 

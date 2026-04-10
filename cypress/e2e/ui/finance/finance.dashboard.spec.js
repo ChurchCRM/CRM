@@ -33,13 +33,11 @@ describe("Finance Dashboard", () => {
         cy.contains("Total Payments");
     });
 
-    it("should display Quick Actions section", () => {
+    it("should display action buttons", () => {
         cy.visit("/finance/");
 
-        cy.contains("Quick Actions");
         cy.contains("Create Deposit");
-        cy.contains("Add Payment");
-        cy.contains("Generate Reports");
+        cy.contains("Reports");
     });
 
     it("should navigate to deposits page from Create Deposit button", () => {
@@ -51,11 +49,11 @@ describe("Finance Dashboard", () => {
         cy.contains("Deposit Listing");
     });
 
-    it("should navigate to reports page from Generate Reports button", () => {
+    it("should navigate to reports page from Reports button", () => {
         cy.visit("/finance/");
 
-        // Find and click the Generate Reports button
-        cy.contains("a", "Generate Reports").click();
+        // Find and click the Reports button
+        cy.contains("a", "Reports").click();
         cy.url().should("contain", "/finance/reports");
         cy.contains("Financial Reports");
     });
@@ -114,14 +112,13 @@ describe("Finance Dashboard", () => {
     it("should navigate to settings from Church Information checklist item", () => {
         cy.visit("/finance/");
 
-        // Find the Settings button in the Church Information row
-        cy.contains("Church Information")
-            .parents(".list-group-item")
+        // Find the Settings button in the Church Information checklist row
+        cy.contains(".list-group-item", "Church Information")
             .find("a")
             .contains("Settings")
             .click();
 
-        cy.url().should("contain", "SystemSettings.php");
+        cy.url().should("contain", "admin/system/church-info");
     });
 
     it("should link deposits checklist to FindDepositSlip", () => {
@@ -146,12 +143,24 @@ describe("Finance Dashboard - Standard User Access", () => {
     it("should allow standard users with finance permission to access the dashboard", () => {
         // The standard test user (tony.wade) has finance permissions enabled in demo database
         cy.visit("/finance/");
-        
-        // Should be able to see the dashboard
-        cy.get("h1").should("contain", "Finance Dashboard");
-        
-        // Metrics should be visible
-        cy.get(".finance-metric-card").should("have.length.at.least", 3);
+
+        // Should be able to see the dashboard (page title is in h2.page-title from Tabler layout)
+        cy.get("h2.page-title").should("contain", "Finance Dashboard");
+
+        // Metrics should be visible (overview card with stat cards)
+        cy.contains("YTD Payments").should("exist");
+    });
+
+    it("should not show the Church Information settings link to non-admin users", () => {
+        cy.visit("/finance/");
+
+        // The Church Information checklist row should be visible (badge/status)
+        cy.contains(".list-group-item", "Church Information").should("exist");
+
+        // But the Settings link to admin/system/church-info should NOT be visible
+        cy.contains(".list-group-item", "Church Information")
+            .find("a[href*='admin/system/church-info']")
+            .should("not.exist");
     });
 });
 

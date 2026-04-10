@@ -1,12 +1,13 @@
 <?php
 
 require_once __DIR__ . '/../Include/Config.php';
-require_once __DIR__ . '/../Include/Functions.php';
+require_once __DIR__ . '/../Include/PageInit.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Reports\PdfNewsletterLabels;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\MiscUtils;
 
 $sLabelFormat = InputUtils::legacyFilterInput($_GET['labeltype']);
 $bRecipientNamingMethod = $_GET['recipientnamingmethod'];
@@ -15,7 +16,7 @@ setcookie('labeltype', $sLabelFormat, ['expires' => time() + 60 * 60 * 24 * 90, 
 // Instantiate the directory class and build the report.
 $pdf = new PdfNewsletterLabels($sLabelFormat);
 
-$sFontInfo = FontFromName($_GET['labelfont']);
+$sFontInfo = MiscUtils::fontFromName($_GET['labelfont']);
 setcookie('labelfont', $_GET['labelfont'], ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
 $sFontSize = $_GET['labelfontsize'];
 setcookie('labelfontsize', $sFontSize, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
@@ -36,16 +37,16 @@ foreach ($families as $family) {
     } else {
         $labelText = $pdf->makeSalutation($family->getID());
     }
-    if ($family->getAddress1() != '') {
-        $labelText .= "\n" . $family->getAddress1();
+    if ($family->getAddress1() !== '') {
+        $labelText .="\n" . $family->getAddress1();
     }
-    if ($family->getAddress2() != '') {
-        $labelText .= "\n" . $family->getAddress2();
+    if ($family->getAddress2() !== '') {
+        $labelText .="\n" . $family->getAddress2();
     }
     $labelText .= sprintf("\n%s, %s  %s", $family->getCity(), $family->getState(), $family->getZip());
 
-    if ($family->getCountry() != '' && $family->getCountry() != 'US' && $family->getCountry() != 'USA' && $family->getCountry() != 'United States') {
-        $labelText .= "\n" . $family->getCountry();
+    if ($family->getCountry() !== '' && $family->getCountry() !== 'US' && $family->getCountry() !== 'USA' && $family->getCountry() !== 'United States') {
+        $labelText .="\n" . $family->getCountry();
     }
 
     $pdf->addPdfLabel($labelText);

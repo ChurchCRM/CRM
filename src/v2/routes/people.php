@@ -5,9 +5,10 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\Service\PersonService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\view\PageHeader;
+use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -90,8 +91,10 @@ function listPeople(Request $request, Response $response, array $args): Response
     $members->find();
 
     $filterByClsId = '';
+    $filterByClsOptionId = '';
     if (isset($_GET['Classification'])) {
         $id = InputUtils::filterInt($_GET['Classification']);
+        $filterByClsOptionId = (string) $id;
         $option = ListOptionQuery::create()->filterById(1)->filterByOptionId($id)->findOne();
         if ($id === 0) {
             $filterByClsId = gettext('Unassigned');
@@ -103,8 +106,10 @@ function listPeople(Request $request, Response $response, array $args): Response
     }
 
     $filterByFmrId = '';
+    $filterByFmrOptionId = '';
     if (isset($_GET['FamilyRole'])) {
         $id = InputUtils::filterInt($_GET['FamilyRole']);
+        $filterByFmrOptionId = (string) $id;
         $option = ListOptionQuery::create()->filterById(2)->filterByOptionId($id)->findOne();
 
         if ($id === 0) {
@@ -141,9 +146,17 @@ function listPeople(Request $request, Response $response, array $args): Response
     $pageArgs = [
         'sMode'                           => $sMode,
         'sRootPath'                       => SystemURLs::getRootPath(),
+        'sPageTitle'                      => gettext('Person Listing'),
+        'sPageSubtitle'                   => gettext('Browse all people in your congregation with filtering and search'),
+        'aBreadcrumbs'                    => PageHeader::breadcrumbs([
+            [gettext('People'), '/people/dashboard'],
+            [gettext('Person Listing')],
+        ]),
         'members'                         => $members,
         'filterByClsId'                   => $filterByClsId,
+        'filterByClsOptionId'             => $filterByClsOptionId,
         'filterByFmrId'                   => $filterByFmrId,
+        'filterByFmrOptionId'             => $filterByFmrOptionId,
         'filterByGender'                  => $filterByGender,
         'familyActiveStatus'              => $familyActiveStatus,
         // no precomputed familyStatusMap: templates will call Family::isActive()
@@ -162,8 +175,12 @@ function viewPeoplePhotoGallery(Request $request, Response $response, array $arg
 
     // Get query parameters for filtering
     $queryParams = $request->getQueryParams();
-    $showOnlyWithPhotos = isset($queryParams['photosOnly']) && $queryParams['photosOnly'] === '1';
-    $classificationFilter = !empty($queryParams['classification']) ? InputUtils::filterInt($queryParams['classification']) : null;
+    // Default to photos-only; explicitly pass photosOnly=0 to show all
+    $showOnlyWithPhotos = !array_key_exists('photosOnly', $queryParams) || $queryParams['photosOnly'] !== '0';
+    // -1 is a sentinel for "Unassigned" (cls_id IS NULL); null means no filter
+    $classificationRaw    = $queryParams['classification'] ?? '';
+    $filterUnassigned     = ($classificationRaw === '-1');
+    $classificationFilter = (!$filterUnassigned && $classificationRaw !== '') ? InputUtils::filterInt($classificationRaw) : null;
 
     // Get classification list for filter dropdown
     $classifications = ListOptionQuery::create()
@@ -180,63 +197,80 @@ function viewPeoplePhotoGallery(Request $request, Response $response, array $arg
     }
 
     // Pagination parameters
-    $page = isset($queryParams['page']) ? max(1, InputUtils::filterInt($queryParams['page'])) : 1;
-    $limit = 100; // People per page
-    $offset = ($page - 1) * $limit;
+    $page           = isset($queryParams['page']) ? max(1, InputUtils::filterInt($queryParams['page'])) : 1;
+    $allowedLimits  = [20, 50, 100];
+    $requestedLimit = isset($queryParams['perPage']) ? (int)$queryParams['perPage'] : 50;
+    // 0 = show all; otherwise clamp to allowed values
+    $limit          = ($requestedLimit === 0) ? 0 : (in_array($requestedLimit, $allowedLimits, true) ? $requestedLimit : 50);
 
-    // Build query for people - using ORM (no family join needed for this view)
+    // Build base query
     $peopleQuery = PersonQuery::create()
         ->orderByLastName()
         ->orderByFirstName();
 
     // Exclude inactive classifications by default
     if (!empty($aInactiveClasses)) {
-        $peopleQuery->filterByClsId($aInactiveClasses, \Propel\Runtime\ActiveQuery\Criteria::NOT_IN);
+        $peopleQuery->filterByClsId($aInactiveClasses, Criteria::NOT_IN);
     }
 
-    // Apply classification filter if specified
-    if ($classificationFilter !== null) {
+    // Apply classification filter
+    if ($filterUnassigned) {
+        // Unassigned = cls_id = 0 (default) OR NULL
+        $peopleQuery->where('Person.ClsId IS NULL OR Person.ClsId = 0');
+    } elseif ($classificationFilter !== null) {
         $peopleQuery->filterByClsId($classificationFilter);
     }
 
-    // Get total count before pagination
-    $totalCount = (clone $peopleQuery)->count();
-    $totalPages = (int) ceil($totalCount / $limit);
-
-    // Apply pagination
-    $people = $peopleQuery
-        ->limit($limit)
-        ->offset($offset)
-        ->find();
-
-    // Build array of people with photo info
-    $peopleData = [];
-    foreach ($people as $person) {
-        $photo = new Photo('Person', $person->getId());
-        $hasPhoto = $photo->hasUploadedPhoto();
-
-        // Skip people without photos if filter is enabled
-        if ($showOnlyWithPhotos && !$hasPhoto) {
-            continue;
+    // When filtering by photos, photo availability is filesystem-based (not in DB),
+    // so we must fetch all people, filter, then paginate in PHP.
+    if ($showOnlyWithPhotos) {
+        $allPeople     = $peopleQuery->find();
+        $allPeopleData = [];
+        foreach ($allPeople as $person) {
+            $photo = new Photo('Person', $person->getId());
+            if ($photo->hasUploadedPhoto()) {
+                $allPeopleData[] = ['person' => $person, 'hasPhoto' => true];
+            }
         }
+        $totalMatched = count($allPeopleData);
+        $totalPages   = ($limit === 0) ? 1 : (int) ceil($totalMatched / $limit);
+        $peopleData   = ($limit === 0) ? $allPeopleData : array_slice($allPeopleData, ($page - 1) * $limit, $limit);
+    } else {
+        $totalMatched = (clone $peopleQuery)->count();
+        $totalPages   = ($limit === 0) ? 1 : (int) ceil($totalMatched / $limit);
+        $people       = ($limit === 0) ? $peopleQuery->find() : $peopleQuery->limit($limit)->offset(($page - 1) * $limit)->find();
+        $peopleData   = [];
+        foreach ($people as $person) {
+            $photo = new Photo('Person', $person->getId());
+            $peopleData[] = ['person' => $person, 'hasPhoto' => $photo->hasUploadedPhoto()];
+        }
+    }
 
-        $peopleData[] = [
-            'person'   => $person,
-            'hasPhoto' => $hasPhoto,
-        ];
+    // Build a quick id→name map for use in the template
+    $classificationMap = [];
+    foreach ($classifications as $cls) {
+        $classificationMap[$cls->getOptionId()] = $cls->getOptionName();
     }
 
     $pageArgs = [
         'sRootPath'            => SystemURLs::getRootPath(),
         'sPageTitle'           => gettext('Photo Directory'),
+        'sPageSubtitle'        => gettext('Browse photos of congregation members'),
+        'aBreadcrumbs'         => PageHeader::breadcrumbs([
+            [gettext('People'), '/people/dashboard'],
+            [gettext('Photo Directory')],
+        ]),
         'peopleData'           => $peopleData,
         'classifications'      => $classifications,
+        'classificationMap'    => $classificationMap,
         'showOnlyWithPhotos'   => $showOnlyWithPhotos,
         'classificationFilter' => $classificationFilter,
-        'totalPeople'          => count($peopleData),
+        'filterUnassigned'     => $filterUnassigned,
+        'totalPeople'          => $totalMatched,
         'currentPage'          => $page,
         'totalPages'           => $totalPages,
-        'totalCount'           => $totalCount,
+        'perPage'              => $limit,
+        'allowedLimits'        => $allowedLimits,
     ];
 
     return $renderer->render($response, 'photo-gallery.php', $pageArgs);

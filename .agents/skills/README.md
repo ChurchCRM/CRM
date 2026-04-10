@@ -6,7 +6,7 @@ This directory contains modular, task-focused development skills for AI coding a
 
 ```
 .agents/skills/
-├── churchcrm/          ← ChurchCRM-specific skills (34 files)
+├── churchcrm/          ← ChurchCRM-specific skills (42 files)
 │   ├── SKILL.md        ← Entry point index for ChurchCRM skills
 │   ├── api-development.md
 │   ├── database-operations.md
@@ -39,9 +39,9 @@ All project-specific skills live in **[`churchcrm/`](./churchcrm/)**. See [`chur
 
 ### Frontend & UI
 - [Frontend Development](./churchcrm/frontend-development.md)
-- [Bootstrap 4.6.2 & AdminLTE](./churchcrm/bootstrap-adminlte.md)
+- [Bootstrap 5 Migration](./churchcrm/bootstrap-5-migration.md)
+- [Tabler Components](./churchcrm/tabler-components.md)
 - [Webpack & TypeScript](./churchcrm/webpack-typescript.md)
-- [UI Development](./churchcrm/ui-development.md)
 - [i18n & Localization](./churchcrm/i18n-localization.md)
 - [AI Locale Translation](./churchcrm/locale-ai-translation.md)
 

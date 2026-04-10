@@ -10,4 +10,51 @@
       white-space: normal;
     }
   }
+
+  // On mobile, allow all cells to wrap to prevent horizontal overflow
+  @media (max-width: 767.98px) {
+    td {
+      white-space: normal;
+    }
+  }
+}
+
+// Dashboard metric cards
+.groups-metric-card {
+  .card-body {
+    color: #fff;
+
+    .metric-value {
+      font-size: 2.2rem;
+      font-weight: 700;
+    }
+
+    .metric-label {
+      opacity: 0.8;
+    }
+  }
+
+  &.metric-total {
+    .card-body {
+      background: linear-gradient(135deg, #007bff, #0056b3);
+    }
+  }
+
+  &.metric-active {
+    .card-body {
+      background: linear-gradient(135deg, #28a745, #1e7e34);
+    }
+  }
+
+  &.metric-inactive {
+    .card-body {
+      background: linear-gradient(135deg, #6c757d, #495057);
+    }
+  }
+
+  &.metric-memberships {
+    .card-body {
+      background: linear-gradient(135deg, #fd7e14, #dc6502);
+    }
+  }
 }

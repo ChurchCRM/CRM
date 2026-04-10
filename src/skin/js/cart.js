@@ -436,6 +436,13 @@ export class CartManager {
         Type: window.CRM.groups.selectTypes.Group | window.CRM.groups.selectTypes.Role,
       },
       (selectedRole) => {
+        // Defensive — promptSelection should already validate, but the API
+        // requires both fields and JSON.stringify silently drops `undefined`,
+        // so a missing value would otherwise yield a confusing 400.
+        if (!selectedRole?.GroupID || !selectedRole?.RoleID) {
+          this.showNotification("danger", i18next.t("Please select both a group and a role."));
+          return;
+        }
         window.CRM.APIRequest({
           method: "POST",
           path: "cart/emptyToGroup",
@@ -484,18 +491,33 @@ export class CartManager {
 
     if (!$button.length) return;
 
+    const isDropdownItem = $button.hasClass("dropdown-item");
+    const $icon = $button.find("i");
+
     if (inCart) {
       $element.removeClass("AddToCart").addClass("RemoveFromCart");
-      $button.removeClass("btn-primary").addClass("btn-danger");
 
-      const $icon = $button.find("i");
-      $icon.removeClass("fa-cart-plus").addClass("fa-shopping-cart");
+      if (isDropdownItem) {
+        // Dropdown item: swap Tabler icon and label text
+        $button.addClass("text-danger");
+        $icon.attr("class", "ti ti-trash me-2");
+        $button.find(".cart-label").text($button.data("label-remove") || "");
+      } else {
+        $button.removeClass("btn-primary").addClass("btn-danger");
+        $icon.removeClass("fa-cart-plus").addClass("fa-shopping-cart");
+      }
     } else {
       $element.removeClass("RemoveFromCart").addClass("AddToCart");
-      $button.removeClass("btn-danger").addClass("btn-primary");
 
-      const $icon = $button.find("i");
-      $icon.removeClass("fa-shopping-cart").addClass("fa-cart-plus");
+      if (isDropdownItem) {
+        // Dropdown item: swap Tabler icon and label text
+        $button.removeClass("text-danger");
+        $icon.attr("class", "ti ti-shopping-cart-plus me-2");
+        $button.find(".cart-label").text($button.data("label-add") || "");
+      } else {
+        $button.removeClass("btn-danger").addClass("btn-primary");
+        $icon.removeClass("fa-shopping-cart").addClass("fa-cart-plus");
+      }
     }
   }
 
@@ -599,7 +621,7 @@ export class CartManager {
                     <a href="${window.CRM.root}/CartToFamily.php" class="dropdown-item">
                         <i class="fa-solid fa-users text-info"></i> ${i18next.t("Empty Cart to Family")}
                     </a>
-                    <a href="${window.CRM.root}/CartToEvent.php" class="dropdown-item">
+                    <a href="${window.CRM.root}/event/cart-to-event" class="dropdown-item">
                         <i class="fa-solid fa-clipboard-list text-info"></i> ${i18next.t("Check In to Event")}
                     </a>
                     <a href="${window.CRM.root}/MapUsingGoogle.php?GroupID=0" class="dropdown-item">

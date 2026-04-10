@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\dto\Classification;
 use ChurchCRM\dto\SystemConfig;
@@ -10,6 +10,7 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\view\PageHeader;
 
 function CompareDistance($elem1, $elem2)
 {
@@ -68,6 +69,7 @@ function FamilyInfoByDistance($iFamily)
 }
 
 $sPageTitle = gettext('Family Geographic Utilities');
+$sPageSubtitle = gettext('View and manage family location data');
 
 // Create array with Classification Information (lst_ID = 1)
 $classifications = Classification::getAll();
@@ -111,7 +113,7 @@ $sCoordFileName = '';
 if (isset($_POST['FindNeighbors']) || isset($_POST['DataFile']) || isset($_POST['PersonIDList'])) {
     //Get all the variables from the request object and assign them locally
     $iFamily = InputUtils::legacyFilterInput($_POST['Family']);
-    $iNumNeighbors = InputUtils::legacyFilterInput($_POST['NumNeighbors']);
+    $iNumNeighbors = InputUtils::legacyFilterInput($_POST['NumNeighbors'], 'int');
     $nMaxDistance = InputUtils::legacyFilterInput($_POST['MaxDistance']);
     $sCoordFileName = InputUtils::legacyFilterInput($_POST['CoordFileName']);
     if (array_key_exists('CoordFileFormat', $_POST)) {
@@ -145,14 +147,14 @@ if (isset($_POST['DataFile'])) {
     header("Content-Disposition: attachment; filename=$filename");
 
     if ($sCoordFileFormat === 'GPSVisualizer') {
-        echo "Name,Latitude,Longitude\n";
+        echo"Name,Latitude,Longitude\n";
     }
 
     $counter = 0;
 
     foreach ($resultsByDistance as $oneResult) {
         if ($sCoordFileFamilies === 'NeighborFamilies') {
-            if ($counter++ == $iNumNeighbors) {
+            if ($counter++ === $iNumNeighbors) {
                 break;
             }
             if ($oneResult['Distance'] > $nMaxDistance) {
@@ -161,22 +163,26 @@ if (isset($_POST['DataFile'])) {
         }
 
         // Skip over the ones with no data
-        if ($oneResult['fam_Latitude'] == 0) {
+        if ((float)$oneResult['fam_Latitude'] === 0.0) {
             continue;
         }
 
         if ($sCoordFileFormat === 'GPSVisualizer') {
-            echo $oneResult['fam_Name'] . ',' . $oneResult['fam_Latitude'] . ',' . $oneResult['fam_Longitude'] . "\n";
+            echo $oneResult['fam_Name'] . ',' . $oneResult['fam_Latitude'] . ',' . $oneResult['fam_Longitude'] ."\n";
         } elseif ($sCoordFileFormat === 'StreetAtlasUSA') {
-            echo "BEGIN SYMBOL\n";
-            echo $oneResult['fam_Latitude'] . ',' . $oneResult['fam_Longitude'] . ',' . $oneResult['fam_Name'] . ',' . "Green Star\n";
-            echo "END\n";
+            echo"BEGIN SYMBOL\n";
+            echo $oneResult['fam_Latitude'] . ',' . $oneResult['fam_Longitude'] . ',' . $oneResult['fam_Name'] . ',' ."Green Star\n";
+            echo"END\n";
         }
     }
 
     exit;
 }
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('People'), '/people/dashboard'],
+    [gettext('Geographic Utilities')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 //Get Families for the list
@@ -184,19 +190,18 @@ $families = FamilyQuery::create()
     ->filterByDateDeactivated(null)
     ->orderByName()
     ->find(); ?>
-<form class="form-horizontal" method="POST" action="GeoPage.php" name="GeoPage">
-    <div class="card container">
+<form method="POST" action="GeoPage.php" name="GeoPage">
+    <div class="card">
         <div class="card-body">
-            <div class="form-group">
-                <label for="Family"
-                    class="control-label col-12 col-sm-3 col-md-3 col-lg-3"><?= gettext('Select Family') ?>:</label>
-                <div class="col-12 col-sm-9">
-                    <select name='Family' data-placeholder="<?= gettext('Select a family') ?>" class="form-control choiceSelectBox w-100">
+            <div class="mb-3">
+                <label for="Family" class="form-label"><?= gettext('Select Family') ?>:</label>
+                <div>
+                    <select name='Family' data-placeholder="<?= gettext('Select a family') ?>" class="form-select choiceSelectBox w-100">
                         <option></option>
                         <?php
                         foreach ($families as $family) {
-                            echo "\n<option value=\"" . $family->getId() . '"';
-                            if ($iFamily == $family->getId()) {
+                            echo"\n<option value=\"" . $family->getId() . '"';
+                            if ($iFamily === $family->getId()) {
                                 echo ' selected';
                             }
                             echo '>' . $family->getName() . '&nbsp;-&nbsp;' . $family->getAddress();
@@ -205,45 +210,38 @@ $families = FamilyQuery::create()
                     </select>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="NumNeighbors"
-                    class="control-label col-12 col-sm-3 col-md-3 col-lg-3"><?= gettext('Maximum number of neighbors') ?>:</label>
-                <div class="col-12 col-sm-9">
-                    <input type="text" class="form-control" name="NumNeighbors" value="<?= $iNumNeighbors ?>">
-                </div>
+            <div class="mb-3">
+                <label for="NumNeighbors" class="form-label"><?= gettext('Maximum number of neighbors') ?>:</label>
+                <input type="text" class="form-control" name="NumNeighbors" value="<?= InputUtils::escapeAttribute((string)$iNumNeighbors) ?>" style="max-width:120px">
             </div>
-            <div class="form-group">
-                <label for="MaxDistance" class="control-label col-12 col-sm-3 col-md-3 col-lg-3">
-                    <?= gettext('Maximum distance') . ' (' . gettext(SystemConfig::getValue('sDistanceUnit')) . "): " ?>
+            <div class="mb-3">
+                <label for="MaxDistance" class="form-label">
+                    <?= gettext('Maximum distance') . ' (' . gettext(SystemConfig::getValue('sDistanceUnit')) . '):' ?>
                 </label>
-                <div class="col-12 col-sm-9">
-                    <input type="text" class="form-control" name="MaxDistance" value="<?= $nMaxDistance ?>">
-                </div>
+                <input type="text" class="form-control" name="MaxDistance" value="<?= InputUtils::escapeAttribute((string)$nMaxDistance) ?>" style="max-width:120px">
             </div>
-            <div class="form-group">
-                <label for="Classification0"
-                    class="control-label col-12 col-sm-3 col-md-3 col-lg-3"><?= gettext('Show neighbors with these classifications') ?>:</label>
-                <div class="row col-sm-offset-3">
+            <div class="mb-3">
+                <label class="form-label"><?= gettext('Show neighbors with these classifications') ?>:</label>
+                <div class="row g-2">
                     <?php
                     foreach ($aClassificationName as $key => $value) {
                         $sClassNum = 'Classification' . $key;
                         $checked = (!$bClassificationPost || isset($_POST["$sClassNum"])); ?>
-                        <div class="col-6">
-                            <label class="checkbox-inline">
-                                <input type="checkbox" value="Guardian" value="1" name="Classification<?= $key ?>"
-                                    id="<?= $value ?>" <?= ($checked ? 'checked' : '') ?>> <?= _($value) ?>
-                            </label>
+                        <div class="col-6 col-md-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="1" name="Classification<?= $key ?>"
+                                    id="cls_<?= $key ?>" <?= ($checked ? 'checked' : '') ?>>
+                                <label class="form-check-label" for="cls_<?= $key ?>"><?= _($value) ?></label>
+                            </div>
                         </div>
                     <?php
                     }
                     ?>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="offset-2 col-8">
-                    <input type="submit" class="btn btn-primary" name="FindNeighbors"
-                        value="<?= gettext('Show Neighbors') ?>">
-                </div>
+            <div class="mb-3">
+                <input type="submit" class="btn btn-primary" name="FindNeighbors"
+                    value="<?= gettext('Show Neighbors') ?>">
             </div>
         </div>
 
@@ -258,83 +256,72 @@ $families = FamilyQuery::create()
         ?>
 
         <!--Datafile section -->
-        <div class="card card-default collapsed-box">
+        <div class="card mt-3">
             <div class="card-header">
                 <h3 class="card-title"><?= gettext('Make Data File') ?></h3>
-                <div class="card-tools float-right">
-                    <button class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i></button>
-                </div><!-- /.card-tools -->
+            </div>
             <div class="card-body">
-                <div class="form-group">
-                    <label for="CoordFileFormat"
-                        class="control-label col-12 col-sm-3 col-md-3 col-lg-3"><?= gettext('Data file format') ?>:</label>
-                    <div class="col-12 col-sm-9">
-                        <label class="radio-inline">
-                            <input type="radio" name="CoordFileFormat"
-                                value="GPSVisualizer" <?= ($sCoordFileFormat === 'GPSVisualizer' ? ' checked' : '') ?>>
-                            <?= gettext('GPS Visualizer') ?>
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="CoordFileFormat"
-                                value="StreetAtlasUSA" <?= ($sCoordFileFormat === 'StreetAtlasUSA' ? ' checked' : '') ?>>
-                            <?= gettext('Street Atlas USA') ?>
-                        </label>
+                <div class="mb-3">
+                    <label class="form-label"><?= gettext('Data file format') ?>:</label>
+                    <div class="d-flex gap-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="CoordFileFormat" id="fmt_gps"
+                                value="GPSVisualizer" <?= ($sCoordFileFormat === 'GPSVisualizer' ? 'checked' : '') ?>>
+                            <label class="form-check-label" for="fmt_gps"><?= gettext('GPS Visualizer') ?></label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="CoordFileFormat" id="fmt_sa"
+                                value="StreetAtlasUSA" <?= ($sCoordFileFormat === 'StreetAtlasUSA' ? 'checked' : '') ?>>
+                            <label class="form-check-label" for="fmt_sa"><?= gettext('Street Atlas USA') ?></label>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="CoordFileFamilies"
-                        class="control-label col-12 col-sm-3 col-md-3 col-lg-3"><?= gettext('Include families in the coordinate file') ?>:</label>
-                    <div class="col-12 col-sm-9">
-                        <label class="radio-inline">
-                            <input type="radio" name="CoordFileFamilies"
-                                value="AllFamilies" <?= ($sCoordFileFamilies === 'AllFamilies' ? ' checked' : '') ?>>
-                            <?= gettext('All Families') ?>
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="CoordFileFamilies"
-                                value="NeighborFamilies" <?= ($sCoordFileFamilies === 'NeighborFamilies' ? ' checked' : '') ?>>
-                            <?= gettext('Neighbor Families') ?>
-                        </label>
+                <div class="mb-3">
+                    <label class="form-label"><?= gettext('Include families in the coordinate file') ?>:</label>
+                    <div class="d-flex gap-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="CoordFileFamilies" id="fam_all"
+                                value="AllFamilies" <?= ($sCoordFileFamilies === 'AllFamilies' ? 'checked' : '') ?>>
+                            <label class="form-check-label" for="fam_all"><?= gettext('All Families') ?></label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="CoordFileFamilies" id="fam_neighbor"
+                                value="NeighborFamilies" <?= ($sCoordFileFamilies === 'NeighborFamilies' ? 'checked' : '') ?>>
+                            <label class="form-check-label" for="fam_neighbor"><?= gettext('Neighbor Families') ?></label>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="CoordFileName"
-                        class="control-label col-12 col-sm-3 col-md-3 col-lg-3"><?= gettext('Coordinate database file name') ?>:</label>
-                    <div class="col-12 col-sm-9">
-                        <input type="text" class="form-control" name="CoordFileName" value="<?= $sCoordFileName ?>">
-                    </div>
+                <div class="mb-3">
+                    <label for="CoordFileName" class="form-label"><?= gettext('Coordinate database file name') ?>:</label>
+                    <input type="text" class="form-control" name="CoordFileName" value="<?= InputUtils::escapeAttribute($sCoordFileName) ?>" style="max-width:300px">
                 </div>
-                <div class="form-group">
-                    <div class="offset-2 col-8">
-                        <input type="submit" class="btn btn-primary" name="DataFile"
-                            value="<?= gettext('Make Data File') ?>">
-                    </div>
+                <div class="mb-3">
+                    <input type="submit" class="btn btn-primary" name="DataFile"
+                        value="<?= gettext('Make Data File') ?>">
                 </div>
-        </div><!-- /.box -->
-    </div><!-- /.box container -->
+            </div>
+        </div>
 
-    <div class="card no-border">
+    <div class="card mt-3">
         <?php
         $aPersonIDs = [];
 
         if (
-            $iFamily != 0 &&
+            $iFamily !== 0 &&
             (isset($_POST['FindNeighbors']) ||
                 isset($_POST['PersonIDList']))
         ) {
             $resultsByDistance = FamilyInfoByDistance($iFamily);
 
             $counter = 0; ?>
-            <!-- Column Headings -->
-            <table id="neighbours" class="table table-striped table-bordered data-table dataTable no-footer"
-                cellspacing="0" role="grid">
-                <!--table class="table table-striped"-->
+            <div class="card-body p-0">
+            <table id="neighbours" class="table table-bordered data-table w-100">
                 <thead>
-                    <tr class="success">
-                        <td><strong><?= gettext('Distance') ?> </strong></td>
-                        <td><strong><?= gettext('Direction') ?></strong></td>
-                        <td><strong><?= gettext('Name') ?> </strong></td>
-                        <td><strong><?= gettext('Address') ?> </strong></td>
+                    <tr>
+                        <th><?= gettext('Distance') ?></th>
+                        <th><?= gettext('Direction') ?></th>
+                        <th><?= gettext('Name') ?></th>
+                        <th><?= gettext('Address') ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -354,16 +341,16 @@ $families = FamilyQuery::create()
                             continue;
                         }
                         $counter++; ?>
-                        <tr class="info">
-                            <td><?= $oneResult['Distance'] ?> </td>
-                            <td><?= $oneResult['Bearing'] ?>
+                        <tr class="table-active">
+                            <td><?= $oneResult['Distance'] ?></td>
+                            <td><?= InputUtils::escapeHTML($oneResult['Bearing']) ?>
                                 <a target="_blank"
                                     href="https://www.google.com/maps/dir/Current+Location/<?= $oneResult['fam_Latitude'] . ',' . $oneResult['fam_Longitude'] ?>"><?= gettext('Direct me') ?></a>
                             </td>
-                            <td><b><?= $oneResult['fam_Name'] ?> </b></td>
+                            <td><strong><?= InputUtils::escapeHTML($oneResult['fam_Name']) ?></strong></td>
                             <td>
                                 <a target="_blank"
-                                    href="http://maps.google.com/maps?q=<?= $oneResult['fam_Latitude'] . ',' . $oneResult['fam_Longitude'] ?>"><?= $oneResult['fam_Address'] ?></a>
+                                    href="http://maps.google.com/maps?q=<?= $oneResult['fam_Latitude'] . ',' . $oneResult['fam_Longitude'] ?>"><?= InputUtils::escapeHTML($oneResult['fam_Address']) ?></a>
                             </td>
                         </tr>
                         <?php
@@ -374,17 +361,17 @@ $families = FamilyQuery::create()
                                 $aPersonIDs[] = $per_ID;
                             } ?>
                             <tr>
-                                <td><BR></td>
-                                <td><BR></td>
-                                <td align="right"><?= $per_FirstName . ' ' . $per_LastName ?> </td>
-                                <td align="left"><?= $aClassificationName[$per_cls_ID] ?></td>
+                                <td></td>
+                                <td></td>
+                                <td class="text-end"><?= InputUtils::escapeHTML($per_FirstName . ' ' . $per_LastName) ?></td>
+                                <td><?= InputUtils::escapeHTML($aClassificationName[$per_cls_ID]) ?></td>
                             </tr>
                     <?php
                         }
                     } ?>
                 </tbody>
             </table>
-    </div><!-- /.box -->
+            </div>
 
     <?php
             $sPersonIDList = implode(',', $aPersonIDs); ?>
@@ -406,6 +393,7 @@ $families = FamilyQuery::create()
 <?php
         }
 ?>
+    </div>
 </form>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">

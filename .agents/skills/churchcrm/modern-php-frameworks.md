@@ -8,7 +8,7 @@ ChurchCRM requires PHP >=8.4 (defined in composer.json) with the following frame
 
 This skill consolidates verified best practices from PHP.net, OWASP, Slim 4 docs, and Perpl ORM documentation.
 
-## PHP 8.3+ Security Hardening
+## PHP 8.4+ Security Hardening
 
 ### Password Security (CRITICAL)
 
@@ -140,91 +140,9 @@ allow_url_include = 0
 
 ## Slim 4 Framework Best Practices
 
-### Middleware Ordering (CRITICAL)
-
-**Correct order in public/index.php:**
-
-```php
-// ✅ CORRECT - Slim 4 LIFO (Last In, First Out) ordering
-
-$app = AppFactory::create();
-
-// 1. AddBodyParsingMiddleware - First added, last executed
-$app->addBodyParsingMiddleware();
-
-// 2. AddRoutingMiddleware - Must come before error middleware
-$app->addRoutingMiddleware();
-
-// 3. Custom middleware
-$app->add(new CorsMiddleware());        // Runs 2nd (added later = runs earlier)
-$app->add(new AuthenticationMiddleware()); // Runs 1st
-
-// 4. ErrorMiddleware - Last added, first executed (catches all errors)
-$errorMiddleware = $app->addErrorMiddleware(
-    displayErrorDetails: $isDevelopment,
-    logErrorDetails: true,
-    logErrors: true
-);
-
-// Custom error handler
-$errorMiddleware->setDefaultErrorHandler(function (Request $request, Throwable $exception) use ($app) {
-    $response = $app->getResponseFactory()->createResponse();
-    return SlimUtils::renderErrorJSON(
-        $response, 
-        gettext('An error occurred'),
-        [],
-        500,
-        $exception,
-        $request
-    );
-});
-```
-
-**Why order matters:**
-- Routing must execute before Error middleware catches 404s properly
-- Body parsing must be first so subsequent middleware can access parsed body
-- Custom middleware order: Auth → Validation → Business Logic
-- Error middleware must be last to catch all exceptions
-
-**Source**: [Slim 4 Official Documentation](https://www.slimframework.com/docs/v4/)
-
-### Dependency Injection Pattern
-
-**Container setup in App.php:**
-
-```php
-use Psr\Container\ContainerInterface;
-
-$container = $app->getContainer();
-
-// Lazy-load expensive services
-$container->set('FinancialService', function(ContainerInterface $c) {
-    return new FinancialService(
-        $c->get('Database'),  // Lazy-loaded DB connection
-        $c->get('Logger')     // Logger instance
-    );
-});
-
-$container->set('PersonService', function(ContainerInterface $c) {
-    return new PersonService(
-        $c->get('Database'),
-        $c->get('EventDispatcher')
-    );
-});
-
-// Use in routes
-$app->post('/api/payments', function(Request $request, Response $response) use ($container): Response {
-    $service = $container->get('FinancialService');
-    $result = $service->processPayment($request->getParsedBody());
-    return $response->withJson(['data' => $result]);
-});
-```
-
-**Benefits:**
-- Services only instantiated when needed
-- Dependencies explicit and injectable
-- Easy to swap implementations for testing
-- Centralized configuration
+> **Canonical reference:** [`slim-4-best-practices.md`](./slim-4-best-practices.md) is the single source of truth
+> for Slim 4 middleware ordering, error handling, DI, and response patterns.
+> Consult that file for all Slim 4 questions. This section covers only PHP-level patterns.
 
 ### Error Handling Pattern
 
@@ -244,24 +162,6 @@ $app->post('/api/payment', function(Request $req, Response $res) use ($container
         $service = $container->get('PaymentService');
         $result = $service->process($req->getParsedBody());
         return $res->withJson(['success' => true, 'data' => $result]);
-    } catch (ValidationException $e) {
-        return SlimUtils::renderErrorJSON(
-            $res,
-            gettext('Validation failed'),
-            ['errors' => $e->getErrors()],
-            400,
-            $e,
-            $req
-        );
-    } catch (PaymentProcessor\Exception $e) {
-        return SlimUtils::renderErrorJSON(
-            $res,
-            gettext('Payment processing failed'),
-            [],
-            402,  // Payment Required
-            $e,
-            $req
-        );
     } catch (Throwable $e) {
         return SlimUtils::renderErrorJSON(
             $res,
@@ -274,12 +174,6 @@ $app->post('/api/payment', function(Request $req, Response $res) use ($container
     }
 });
 ```
-
-**Why it matters:**
-- Consumers receive consistent error format
-- Stack traces logged server-side, hidden from clients
-- Specific HTTP status codes convey error type (400 vs 402 vs 500)
-- Security: No information leakage to attacking clients
 
 ## Perpl ORM Best Practices
 
@@ -382,7 +276,7 @@ $books = $query->findObjects();  // ObjectCollection<Book>
 - [ ] Large result sets paginated or processed in batches
 
 ### Framework
-- [ ] Middleware order correct: Body → Routing → Custom → Error
+- [ ] Middleware order correct: Body → Routing → Error → Custom (LIFO: error wraps routing)
 - [ ] Services lazy-loaded through container
 - [ ] All errors caught and returned via SlimUtils::renderErrorJSON
 - [ ] No HTTP exceptions thrown from routes

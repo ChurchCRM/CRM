@@ -9,11 +9,21 @@ $(document).ready(function () {
     });
   });
 
-  $("#aDisallowedPasswords").select2({
-    tags: true,
-    tokenSeparators: [",", " "],
-    data: ["asfasf", "asdfasdf"],
-  });
+  var disallowedEl = document.getElementById("aDisallowedPasswords");
+  if (disallowedEl && !disallowedEl.tomselect) {
+    new TomSelect(disallowedEl, {
+      create: true,
+      persist: false,
+      delimiter: ",",
+      createOnBlur: true,
+      plugins: ["remove_button"],
+      options: [
+        { value: "asfasf", text: "asfasf" },
+        { value: "asdfasdf", text: "asdfasdf" },
+      ],
+      items: ["asfasf", "asdfasdf"],
+    });
+  }
 });
 
 function deleteUser(userId, userName) {

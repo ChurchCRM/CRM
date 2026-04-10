@@ -283,38 +283,40 @@ class Person extends BasePerson implements PhotoInterface
     }
 
     /**
-     * If person address found, return latitude and Longitude of person address
-     * Otherwise, return the family latitude and Longitude.
+     * Returns the latitude and longitude for this person.
+     *
+     * Priority:
+     *  1. Person has their own address → geocode it.
+     *  2. Geocoding fails or person has no address → use family's cached coords.
+     *  3. Family has no cached coords → geocode the family address and cache it.
+     *  4. Nothing available → returns ['Latitude' => 0, 'Longitude' => 0].
      */
     public function getLatLng(): array
     {
-        $bUseFamilyAddress = !empty($this->getAddress1()) && $this->getFamily();
+        $family = $this->getFamily();
 
-        $lat = 0;
-        $lng = 0;
-        if ($bUseFamilyAddress && $this->getFamily()->hasLatitudeAndLongitude()) {
-            $lat = $this->getFamily()->getLatitude();
-            $lng = $this->getFamily()->getLongitude();
-        } else {
-            // if person address is empty, this will get Family address
-            $sFullAddress = $this->getAddress();
-
-            $latLng = GeoUtils::getLatLong($sFullAddress);
+        // Person has their own address — try geocoding it first.
+        if (!empty($this->getAddress1())) {
+            $latLng = GeoUtils::getLatLong($this->getAddress());
             if (!empty($latLng['Latitude']) && !empty($latLng['Longitude'])) {
-                $lat = $latLng['Latitude'];
-                $lng = $latLng['Longitude'];
-            }
-
-            if ($bUseFamilyAddress) {
-                // if we are using a family address, cache the result to avoid additional work in the future
-                $this->getFamily()->updateLanLng();
+                return ['Latitude' => $latLng['Latitude'], 'Longitude' => $latLng['Longitude']];
             }
         }
 
-        return [
-            'Latitude'  => $lat,
-            'Longitude' => $lng,
-        ];
+        // No personal address, or geocoding failed — fall back to family coords.
+        if ($family) {
+            if ($family->hasLatitudeAndLongitude()) {
+                return ['Latitude' => $family->getLatitude(), 'Longitude' => $family->getLongitude()];
+            }
+
+            // Family has no cached coords yet — geocode family address and cache it.
+            $family->updateLanLng();
+            if ($family->hasLatitudeAndLongitude()) {
+                return ['Latitude' => $family->getLatitude(), 'Longitude' => $family->getLongitude()];
+            }
+        }
+
+        return ['Latitude' => 0, 'Longitude' => 0];
     }
 
     /**
@@ -660,6 +662,15 @@ class Person extends BasePerson implements PhotoInterface
         return preg_replace('/\D/', '', $this->getCellPhone());
     }
 
+    /**
+     * Returns the best available phone number for this person.
+     * Prefers cell phone; falls back to this person's home phone.
+     */
+    public function getBestPhone(): string
+    {
+        return $this->getCellPhone() ?: $this->getHomePhone() ?? '';
+    }
+
     public function postSave(?ConnectionInterface $con = null): void
     {
         $this->getPhoto()->refresh();
@@ -678,7 +689,7 @@ class Person extends BasePerson implements PhotoInterface
         if (!$birthDate instanceof \DateTimeImmutable || $this->hideAge()) {
             return false;
         }
-        $now = $date == null ? new \DateTimeImmutable('today') : \DateTimeImmutable::createFromFormat('Y-m-d', $date);
+        $now = $date === null ? new \DateTimeImmutable('today') : \DateTimeImmutable::createFromFormat('Y-m-d', $date);
         $age = date_diff($now, $birthDate);
 
         if ($age->y < 1) {
@@ -723,9 +734,9 @@ class Person extends BasePerson implements PhotoInterface
 
     public function getEmail(): ?string
     {
-        if (parent::getEmail() == null) {
+        if (parent::getEmail() === null) {
             $family = $this->getFamily();
-            if ($family != null) {
+            if ($family !== null) {
                 return $family->getEmail();
             }
         }

@@ -1,6 +1,5 @@
 <?php
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Utils\LoggerUtils;
@@ -72,16 +71,16 @@ $app->group('/api/database', function (RouteCollectorProxy $group): void {
 
                 try {
                     if ($objectType === 'VIEW') {
-                        $dropSQL = "DROP VIEW `$objectName`;";
+                        $dropSQL ="DROP VIEW `$objectName`;";
                     } else {
-                        $dropSQL = "DROP TABLE `$objectName`;";
+                        $dropSQL ="DROP TABLE `$objectName`;";
                     }
 
                     $connection->exec($dropSQL);
                     $droppedCount++;
                     $logger->debug("Dropped $objectType: $objectName");
                 } catch (\PDOException $e) {
-                    $logger->warning("Failed to drop $objectType $objectName: " . $e->getMessage());
+                    $logger->warning("Failed to drop $objectType $objectName:" . $e->getMessage());
                 }
             }
 
@@ -170,7 +169,7 @@ function exportChMeetings(Request $request, Response $response, array $args): Re
         'Address Line 2',
         'City',
         'State',
-        'ZIP Code',
+        'Zip Code',
         'Notes',
         'Join Date',
         'Family Id',

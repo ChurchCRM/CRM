@@ -1,13 +1,13 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\Classification;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Base\PersonQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -66,7 +66,7 @@ $sPerTable = 'person_per';
 
 // If our source is the cart contents, we don't need to build a WHERE filter string
 if ($sSource === 'cart') {
-    $sWhereExt = 'AND per_ID IN (' . convertCartToString($_SESSION['aPeopleCart']) . ')';
+    $sWhereExt = 'AND per_ID IN (' . Cart::getCartIdString() . ')';
 } else {
     // If we're filtering by groups, include the p2g2r table
     if (!empty($_POST['GroupID'])) {
@@ -90,7 +90,7 @@ if ($sSource === 'cart') {
                 $sWhereExt .= ' OR per_cls_ID = ' . $Class[$i];
             }
             $sWhereExt .= ') ';
-            // this is silly: should be something like..  $sWhereExt .= "AND per_cls_ID IN
+            // this is silly: should be something like..  $sWhereExt .="AND per_cls_ID IN
         }
     }
 
@@ -140,57 +140,57 @@ if ($sSource === 'cart') {
     }
 
     if (!empty($_POST['MembershipDate1'])) {
-        $sWhereExt .= "AND per_MembershipDate >= '" . InputUtils::legacyFilterInput($_POST['MembershipDate1'], 'char', 10) . "' ";
+        $sWhereExt .="AND per_MembershipDate >= '" . InputUtils::legacyFilterInput($_POST['MembershipDate1'], 'char', 10) ."'";
     }
-    if ($_POST['MembershipDate2'] != date('Y-m-d')) {
-        $sWhereExt .= "AND per_MembershipDate <= '" . InputUtils::legacyFilterInput($_POST['MembershipDate2'], 'char', 10) . "' ";
+    if ($_POST['MembershipDate2'] !== date('Y-m-d')) {
+        $sWhereExt .="AND per_MembershipDate <= '" . InputUtils::legacyFilterInput($_POST['MembershipDate2'], 'char', 10) ."'";
     }
 
     $refDate = getdate(time());
 
     if (!empty($_POST['BirthDate1'])) {
-        $sWhereExt .= "AND DATE_FORMAT(CONCAT(per_BirthYear,'-',per_BirthMonth,'-',per_BirthDay),'%Y-%m-%d') >= '" . InputUtils::legacyFilterInput($_POST['BirthDate1'], 'char', 10) . "' ";
+        $sWhereExt .="AND DATE_FORMAT(CONCAT(per_BirthYear,'-',per_BirthMonth,'-',per_BirthDay),'%Y-%m-%d') >= '" . InputUtils::legacyFilterInput($_POST['BirthDate1'], 'char', 10) ."'";
     }
 
-    if ($_POST['BirthDate2'] != date('Y-m-d')) {
-        $sWhereExt .= "AND DATE_FORMAT(CONCAT(per_BirthYear,'-',per_BirthMonth,'-',per_BirthDay),'%Y-%m-%d') <= '" . InputUtils::legacyFilterInput($_POST['BirthDate2'], 'char', 10) . "' ";
+    if ($_POST['BirthDate2'] !== date('Y-m-d')) {
+        $sWhereExt .="AND DATE_FORMAT(CONCAT(per_BirthYear,'-',per_BirthMonth,'-',per_BirthDay),'%Y-%m-%d') <= '" . InputUtils::legacyFilterInput($_POST['BirthDate2'], 'char', 10) ."'";
     }
 
     if (!empty($_POST['AnniversaryDate1'])) {
         $annivStart = getdate(strtotime(InputUtils::legacyFilterInput($_POST['AnniversaryDate1'])));
 
         // Add year to query if not in future
-        if ($annivStart['year'] < date('Y') || ($annivStart['year'] == date('Y') && $annivStart['mon'] <= date('m') && $annivStart['mday'] <= date('d'))) {
-            $sWhereExt .= "AND fam_WeddingDate >= '" . InputUtils::legacyFilterInput($_POST['AnniversaryDate1'], 'char', 10) . "' ";
+        if ($annivStart['year'] < date('Y') || ($annivStart['year'] === date('Y') && $annivStart['mon'] <= date('m') && $annivStart['mday'] <= date('d'))) {
+            $sWhereExt .="AND fam_WeddingDate >= '" . InputUtils::legacyFilterInput($_POST['AnniversaryDate1'], 'char', 10) ."'";
         } else {
-            $sWhereExt .= "AND DAYOFYEAR(fam_WeddingDate) >= DAYOFYEAR('" . InputUtils::legacyFilterInput($_POST['AnniversaryDate1'], 'char', 10) . "') ";
+            $sWhereExt .="AND DAYOFYEAR(fam_WeddingDate) >= DAYOFYEAR('" . InputUtils::legacyFilterInput($_POST['AnniversaryDate1'], 'char', 10) ."')";
         }
     }
 
-    if ($_POST['AnniversaryDate2'] != date('Y-m-d')) {
+    if ($_POST['AnniversaryDate2'] !== date('Y-m-d')) {
         $annivEnd = getdate(strtotime(InputUtils::legacyFilterInput($_POST['AnniversaryDate2'], 'char', 10)));
 
         // Add year to query if not in future
-        if ($annivEnd['year'] < date('Y') || ($annivEnd['year'] == date('Y') && $annivEnd['mon'] <= date('m') && $annivEnd['mday'] <= date('d'))) {
-            $sWhereExt .= "AND  fam_WeddingDate <= '" . InputUtils::legacyFilterInput($_POST['AnniversaryDate2'], 'char', 10) . "' ";
+        if ($annivEnd['year'] < date('Y') || ($annivEnd['year'] === date('Y') && $annivEnd['mon'] <= date('m') && $annivEnd['mday'] <= date('d'))) {
+            $sWhereExt .="AND  fam_WeddingDate <= '" . InputUtils::legacyFilterInput($_POST['AnniversaryDate2'], 'char', 10) ."'";
         } else {
             $refDate = getdate(strtotime($_POST['AnniversaryDate2']));
-            $sWhereExt .= "AND  DAYOFYEAR(fam_WeddingDate) <= DAYOFYEAR('" . InputUtils::legacyFilterInput($_POST['AnniversaryDate2'], 'char', 10) . "') ";
+            $sWhereExt .="AND  DAYOFYEAR(fam_WeddingDate) <= DAYOFYEAR('" . InputUtils::legacyFilterInput($_POST['AnniversaryDate2'], 'char', 10) ."')";
         }
     }
 
     if (!empty($_POST['EnterDate1'])) {
-        $sWhereExt .= "AND per_DateEntered >= '" . InputUtils::legacyFilterInput($_POST['EnterDate1'], 'char', 10) . "' ";
+        $sWhereExt .="AND per_DateEntered >= '" . InputUtils::legacyFilterInput($_POST['EnterDate1'], 'char', 10) ."'";
     }
-    if ($_POST['EnterDate2'] != date('Y-m-d')) {
-        $sWhereExt .= "AND per_DateEntered <= '" . InputUtils::legacyFilterInput($_POST['EnterDate2'], 'char', 10) . "' ";
+    if ($_POST['EnterDate2'] !== date('Y-m-d')) {
+        $sWhereExt .="AND per_DateEntered <= '" . InputUtils::legacyFilterInput($_POST['EnterDate2'], 'char', 10) ."'";
     }
 }
 
 if ($sFormat === 'addtocart') {
     // Get individual records to add to the cart
 
-    $sSQL = "SELECT per_ID FROM $sPerTable $sJoinFamTable WHERE 1 = 1 $sWhereExt $sGroupBy";
+    $sSQL ="SELECT per_ID FROM $sPerTable $sJoinFamTable WHERE 1 = 1 $sWhereExt $sGroupBy";
     $sSQL .= ' ORDER BY per_LastName';
     $rsLabelsToWrite = RunQuery($sSQL);
     while ($aRow = mysqli_fetch_array($rsLabelsToWrite)) {
@@ -202,11 +202,11 @@ if ($sFormat === 'addtocart') {
     // Build the complete SQL statement
 
     if ($sFormat === 'rollup') {
-        $sSQL = "(SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM $sPerTable $sJoinFamTable WHERE per_fam_ID = 0 $sWhereExt)
+        $sSQL ="(SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM $sPerTable $sJoinFamTable WHERE per_fam_ID = 0 $sWhereExt)
         UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sPerTable $sJoinFamTable WHERE per_fam_ID > 0 $sWhereExt GROUP BY per_fam_ID HAVING memberCount = 1)
         UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sPerTable $sJoinFamTable WHERE per_fam_ID > 0 $sWhereExt GROUP BY per_fam_ID HAVING memberCount > 1) ORDER BY SortMe";
     } else {
-        $sSQL = "SELECT * FROM $sPerTable $sJoinFamTable WHERE 1 = 1 $sWhereExt $sGroupBy ORDER BY per_LastName";
+        $sSQL ="SELECT * FROM $sPerTable $sJoinFamTable WHERE 1 = 1 $sWhereExt $sGroupBy ORDER BY per_LastName";
     }
 
     //Execute whatever SQL was entered
@@ -313,7 +313,7 @@ if ($sFormat === 'addtocart') {
         }
         while ($aFamRow = mysqli_fetch_array($rsFamCustomFields)) {
             extract($aFamRow);
-            if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || $_SESSION[$aSecurityType[$fam_custom_FieldSec]]) {
+            if (($aSecurityType[$fam_custom_FieldSec] === 'bAll') || $_SESSION[$aSecurityType[$fam_custom_FieldSec]]) {
                 if (isset($_POST["$fam_custom_Field"])) {
                     $bUsedCustomFields = true;
                     $headers[] = $fam_custom_Name;
@@ -325,7 +325,7 @@ if ($sFormat === 'addtocart') {
     if ($sFormat === 'rollup') {
         while ($aFamRow = mysqli_fetch_array($rsFamCustomFields)) {
             extract($aFamRow);
-            if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || $_SESSION[$aSecurityType[$fam_custom_FieldSec]]) {
+            if (($aSecurityType[$fam_custom_FieldSec] === 'bAll') || $_SESSION[$aSecurityType[$fam_custom_FieldSec]]) {
                 if (isset($_POST["$fam_custom_Field"])) {
                     $bUsedCustomFields = true;
                     $headers[] = $fam_custom_Name;
@@ -467,7 +467,7 @@ if ($sFormat === 'addtocart') {
                 if ($sFormat === 'default') {
                     if (isset($_POST['BirthdayDate'])) {
                         $birthDate = '';
-                        if ($per_BirthYear != '') {
+                        if ($per_BirthYear !== '') {
                             $birthDate = $per_BirthYear . '-';
                         }
                         $birthDate .= $per_BirthMonth . '-' . $per_BirthDay;
@@ -500,7 +500,7 @@ if ($sFormat === 'addtocart') {
                     if (isset($_POST['Age'])) {
                         if (isset($fam_WeddingDate)) {
                             $annivDate = getdate(strtotime($fam_WeddingDate));
-                            $age = $refDate['year'] - $annivDate['year'] - ($annivDate['mon'] > $refDate['mon'] || ($annivDate['mon'] == $refDate['mon'] && $annivDate['mday'] > $refDate['mday']));
+                            $age = $refDate['year'] - $annivDate['year'] - ($annivDate['mon'] > $refDate['mon'] || ($annivDate['mon'] === $refDate['mon'] && $annivDate['mday'] > $refDate['mday']));
                         } else {
                             $age = '';
                         }
@@ -508,7 +508,7 @@ if ($sFormat === 'addtocart') {
                     }
                 }
 
-                if ($bUsedCustomFields && ($sFormat == 'default')) {
+                if ($bUsedCustomFields && ($sFormat === 'default')) {
                     $sSQLcustom = 'SELECT * FROM person_custom WHERE per_ID = ' . $per_ID;
                     $rsCustomData = RunQuery($sSQLcustom);
                     $aCustomData = mysqli_fetch_array($rsCustomData);
@@ -522,12 +522,12 @@ if ($sFormat === 'addtocart') {
                             $type_ID = '';
 
                             extract($aCustomField);
-                            if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) {
+                            if ($aSecurityType[$custom_FieldSec] === 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) {
                                 if (isset($_POST["$custom_Field"])) {
-                                    if ($type_ID == 11) {
+                                    if ((int)$type_ID === 11) {
                                         $custom_Special = $sCountry;
                                     }
-                                    $row[] = displayCustomField($type_ID, trim($aCustomData[$custom_Field]), $custom_Special);
+                                    $row[] = CustomFieldUtils::display($type_ID, trim($aCustomData[$custom_Field]), $custom_Special);
                                 }
                             }
                         }
@@ -547,16 +547,16 @@ if ($sFormat === 'addtocart') {
 
                             extract($aFamCustomField);
                             if (isset($_POST["$fam_custom_Field"])) {
-                                if ($type_ID == 11) {
+                                if ((int)$type_ID === 11) {
                                     $fam_custom_Special = $sCountry;
                                 }
-                                $row[] = displayCustomField($type_ID, trim($aFamCustomData[$fam_custom_Field]), $fam_custom_Special);
+                                $row[] = CustomFieldUtils::display($type_ID, trim($aFamCustomData[$fam_custom_Field]), $fam_custom_Special);
                             }
                         }
                     }
                 }
 
-                if ($bUsedCustomFields && ($sFormat == 'rollup')) {
+                if ($bUsedCustomFields && ($sFormat === 'rollup')) {
                     $sSQLFamCustom = 'SELECT * FROM family_custom WHERE fam_ID = ' . $per_fam_ID;
                     $rsFamCustomData = RunQuery($sSQLFamCustom);
                     $aFamCustomData = mysqli_fetch_array($rsFamCustomData);
@@ -571,10 +571,10 @@ if ($sFormat === 'addtocart') {
 
                             extract($aFamCustomField);
                             if (isset($_POST["$fam_custom_Field"])) {
-                                if ($type_ID == 11) {
+                                if ((int)$type_ID === 11) {
                                     $fam_custom_Special = $sCountry;
                                 }
-                                $row[] = displayCustomField($type_ID, trim($aFamCustomData[$fam_custom_Field]), $fam_custom_Special);
+                                $row[] = CustomFieldUtils::display($type_ID, trim($aFamCustomData[$fam_custom_Field]), $fam_custom_Special);
                             }
                         }
                     }

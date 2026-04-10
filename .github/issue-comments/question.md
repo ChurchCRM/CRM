@@ -16,7 +16,7 @@ Attach logs or screenshots if helpful. Please redact any private information.
 
 **Advanced users**: If this is a UI flow you can reproduce, the Cypress Recorder helps. Capture the steps and attach an exported spec.
 
-👉 **[Bug Reporting & Diagnostics Guide](https://github.com/ChurchCRM/CRM/wiki/Bug-Reporting-and-Diagnostics)**
+👉 **[Bug Reporting & Diagnostics Guide](https://docs.churchcrm.io/administration/bug-reporting-and-diagnostics)**
 
 ---
 

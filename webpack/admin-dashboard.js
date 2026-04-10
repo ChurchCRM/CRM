@@ -4,10 +4,10 @@
 
 import "./admin-dashboard.css";
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   // Initialize tooltips if jQuery is available
   if (typeof jQuery !== "undefined") {
-    jQuery('[data-toggle="tooltip"]').tooltip();
+    jQuery('[data-bs-toggle="tooltip"]').tooltip();
   }
 
   // Add smooth scroll behavior

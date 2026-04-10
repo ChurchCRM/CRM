@@ -2,12 +2,16 @@ $(document).ready(function () {
   // Wait for locales to load before setting up cart handlers
   // CartManager uses i18next for notifications
   window.CRM.onLocalesReady(function () {
-    $('a[data-toggle="tab"]').on("shown.bs.tab", function (e) {
+    $('a[data-bs-toggle="tab"]').on("shown.bs.tab", function (e) {
       var target = $(e.target).attr("href"); // activated tab
-      $(target + " .choiceSelectBox").select2({ width: "resolve" });
+      $(target + " .choiceSelectBox").each(function () {
+        if (!this.tomselect) new TomSelect(this);
+      });
     });
 
-    $(".choiceSelectBox").select2({ width: "resolve" });
+    $(".choiceSelectBox").each(function () {
+      if (!this.tomselect) new TomSelect(this);
+    });
 
     $("#AddAllToCart").click(function () {
       // Use CartManager with notifications

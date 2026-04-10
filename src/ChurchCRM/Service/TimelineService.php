@@ -52,19 +52,26 @@ class TimelineService
         $eventsByPerson = EventAttendQuery::create()->findByPersonId($personID);
         foreach ($eventsByPerson as $personEvent) {
             $event = $personEvent->getEvent();
-            if ($event != null) {
-                $item = $this->createTimeLineItem(
-                    $event->getId(),
-                    'cal',
-                    $event->getStart('Y-m-d h:i:s'),
-                    $event->getTitle(),
-                    '',
-                    $event->getDesc(),
-                    '',
-                    ''
-                );
-                $timeline[$item['key']] = $item;
+            if ($event === null) {
+                continue;
             }
+
+            // Strip Quill empty markup ("<p><br /></p>") and any HTML so the
+            // description renders cleanly in the timeline.
+            $descText = trim(strip_tags((string) $event->getDesc()));
+
+            $item = $this->createTimeLineItem(
+                (string) $event->getId(),
+                'cal',
+                $event->getStart('Y-m-d H:i:s') ?: '',
+                $event->getStart('Y') ?: '',
+                $event->getTitle() ?: gettext('Event'),
+                $event->getViewURI(),
+                $descText,
+                '',
+                ''
+            );
+            $timeline[$item['key']] = $item;
         }
 
         return $timeline;
@@ -137,7 +144,7 @@ class TimelineService
                 $displayEditedBy = gettext('Self Verification');
             } else {
                 $editor = PersonQuery::create()->findPk($dbNote->getDisplayEditedBy());
-                if ($editor != null) {
+                if ($editor !== null) {
                     $displayEditedBy = $editor->getFullName();
                 }
             }
@@ -163,31 +170,43 @@ class TimelineService
         $item['type'] = $type;
         switch ($type) {
             case 'create':
-                $item['style'] = 'fa-plus-circle bg-blue';
+                $item['style'] = 'fa-circle-plus';
+                $item['color'] = 'primary';
                 break;
             case 'edit':
-                $item['style'] = 'fa-pencil bg-blue';
+                $item['style'] = 'fa-pencil';
+                $item['color'] = 'primary';
                 break;
             case 'photo':
-                $item['style'] = 'fa-camera bg-green';
+                $item['style'] = 'fa-camera';
+                $item['color'] = 'success';
                 break;
             case 'group':
-                $item['style'] = 'fa-users bg-gray';
+                $item['style'] = 'fa-users';
+                $item['color'] = 'secondary';
                 break;
             case 'cal':
-                $item['style'] = 'fa-calendar bg-green';
+                $item['style'] = 'fa-calendar';
+                $item['color'] = 'success';
+                break;
+            case 'event':
+                $item['style'] = 'fa-calendar-check';
+                $item['color'] = 'success';
                 break;
             case 'verify':
             case 'verify-link':
             case 'verify-URL':
-                $item['style'] = 'fa-circle-check bg-teal';
+                $item['style'] = 'fa-circle-check';
+                $item['color'] = 'info';
                 break;
             case 'user':
-                $item['style'] = 'fa-user-secret bg-gray';
+                $item['style'] = 'fa-user-secret';
+                $item['color'] = 'secondary';
                 break;
             default:
                 $item['slim'] = false;
-                $item['style'] = 'fa-sticky-note bg-green';
+                $item['style'] = 'fa-note-sticky';
+                $item['color'] = 'warning';
                 $item['editLink'] = $editLink;
                 $item['deleteLink'] = $deleteLink;
         }

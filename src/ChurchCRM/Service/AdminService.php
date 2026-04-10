@@ -2,9 +2,7 @@
 
 namespace ChurchCRM\Service;
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Utils\KeyManagerUtils;
 use ChurchCRM\Utils\URLValidator;
 
 /**
@@ -13,39 +11,6 @@ use ChurchCRM\Utils\URLValidator;
  */
 class AdminService
 {
-    /**
-     * Get setup tasks that need attention.
-     * These are configuration items that should be completed during initial setup.
-     *
-     * @return array Array of setup tasks with 'title', 'desc', 'link', and 'icon'
-     */
-    public function getSetupTasks(): array
-    {
-        $tasks = [];
-
-        // Check if church name is still default
-        if (SystemConfig::getValue('sChurchName') === 'Some Church') {
-            $tasks[] = [
-                'title' => gettext('Update Church Name'),
-                'desc' => gettext('Church name is set to default value'),
-                'link' => SystemURLs::getRootPath() . '/SystemSettings.php',
-                'icon' => 'fa-church',
-            ];
-        }
-
-        // Check if email/SMTP is configured
-        if (empty(SystemConfig::hasValidMailServerSettings())) {
-            $tasks[] = [
-                'title' => gettext('Configure Email'),
-                'desc' => gettext('SMTP server settings are not configured'),
-                'link' => SystemURLs::getRootPath() . '/SystemSettings.php',
-                'icon' => 'fa-envelope',
-            ];
-        }
-
-        return $tasks;
-    }
-
     /**
      * Get system configuration warnings.
      * These are PHP/server configuration issues that may affect functionality.
@@ -73,26 +38,6 @@ class AdminService
                 'desc' => gettext('Some application prerequisites are not met'),
                 'link' => SystemURLs::getRootPath() . '/admin/system/debug',
                 'severity' => 'danger',
-            ];
-        }
-
-        // Secrets configuration check - only show if 2FA is enabled
-        if (SystemConfig::getBooleanValue('bEnable2FA') && !KeyManagerUtils::getAreAllSecretsDefined()) {
-            $warnings[] = [
-                'title' => gettext('Missing Secret Keys'),
-                'desc' => gettext('Secret keys missing from Config.php'),
-                'link' => SystemURLs::getSupportURL('SecretsConfigurationCheckTask'),
-                'severity' => 'danger',
-            ];
-        }
-
-        // HTTPS check
-        if (!isset($_SERVER['HTTPS'])) {
-            $warnings[] = [
-                'title' => gettext('HTTPS Not Configured'),
-                'desc' => gettext('Install TLS/SSL certificate for better security'),
-                'link' => SystemURLs::getSupportURL('HttpsTask'),
-                'severity' => 'warning',
             ];
         }
 

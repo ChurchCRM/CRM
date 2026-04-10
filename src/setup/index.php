@@ -2,7 +2,11 @@
 
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
+use Psr\Http\Message\ServerRequestInterface;
+use Slim\Exception\HttpMethodNotAllowedException;
+use Slim\Exception\HttpNotFoundException;
 use Slim\Factory\AppFactory;
+use Slim\Psr7\Response as SlimResponse;
 
 if (file_exists('../Include/Config.php')) {
     header('Location: ../');
@@ -55,25 +59,27 @@ $GLOBALS['CHURCHCRM_SETUP_DOC_ROOT'] = dirname(__DIR__);
 $app = AppFactory::create();
 $app->setBasePath($basePath);
 
-// Add Slim error middleware for proper error handling and logging
-// Note: Setup runs before Config.php exists, so use lightweight error handler
-$errorMiddleware = $app->addErrorMiddleware(true, true, true);
-
 // Simple error handler for setup (no database/logging dependencies)
+// Error middleware must be added AFTER routing (LIFO) so it wraps
+// the routing layer and can catch HttpNotFoundException as a proper 404.
+// Note: Setup runs before Config.php exists, so use lightweight error handler.
+$app->addBodyParsingMiddleware();
+$app->addRoutingMiddleware();
+$errorMiddleware = $app->addErrorMiddleware(true, true, true);
 $errorMiddleware->setDefaultErrorHandler(function (
-    \Psr\Http\Message\ServerRequestInterface $request,
+    ServerRequestInterface $request,
     \Throwable $exception,
     bool $displayErrorDetails,
     bool $logErrors,
     bool $logErrorDetails
 ) {
-    $response = new \Slim\Psr7\Response();
+    $response = new SlimResponse();
     
     // Determine HTTP status code
     $statusCode = 500;
-    if ($exception instanceof \Slim\Exception\HttpNotFoundException) {
+    if ($exception instanceof HttpNotFoundException) {
         $statusCode = 404;
-    } elseif ($exception instanceof \Slim\Exception\HttpMethodNotAllowedException) {
+    } elseif ($exception instanceof HttpMethodNotAllowedException) {
         $statusCode = 405;
     }
     
@@ -93,9 +99,7 @@ $errorMiddleware->setDefaultErrorHandler(function (
     return $response->withStatus($statusCode)->withHeader('Content-Type', 'application/json');
 });
 
-// Add CORS middleware for browser API access
-$app->addBodyParsingMiddleware();
-$app->addRoutingMiddleware();
+// CORS and version middleware
 
 $app->add(VersionMiddleware::class);
 $app->add(new CorsMiddleware());

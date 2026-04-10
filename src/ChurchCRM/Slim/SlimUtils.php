@@ -5,9 +5,6 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\LoggerUtils;
 use Exception;
-use Monolog\Handler\StreamHandler;
-use Monolog\Level;
-use Monolog\Logger;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpMethodNotAllowedException;
@@ -105,29 +102,6 @@ class SlimUtils
     }
 
     /**
-     * Setup Monolog error handler for Slim error middleware
-     */
-    public static function setupErrorLogger($errorMiddleware)
-    {
-        $logPath = LoggerUtils::buildLogFilePath('slim-error');
-        $logger = new Logger('slim');
-        // Slim errors should be logged at WARNING level minimum to capture all errors
-        // regardless of system log level configuration
-        $logLevel = max(LoggerUtils::getLogLevel()->value, Level::Warning->value);
-        $logger->pushHandler(new StreamHandler($logPath, $logLevel));
-        $errorMiddleware->setDefaultErrorHandler(function (
-            Request $request,
-            Throwable $exception,
-            bool $displayErrorDetails,
-            bool $logErrors,
-            bool $logErrorDetails
-        ) use ($logger) {
-            $logger->error($exception->getMessage(), ['exception' => $exception]);
-            throw $exception;
-        });
-    }
-
-    /**
      * Get Slim base path from environment or calculate from SystemURLs root path
      * This ensures Slim routes work correctly whether installed at root (/) or in a subdirectory (/churchcrm)
      * 
@@ -201,7 +175,7 @@ class SlimUtils
             $logger->error('Uncaught exception: ' . $exception->getMessage(), $requestContext);
             
             $response = new Psr7Response();
-            
+
             // Determine appropriate HTTP status code based on exception type
             $statusCode = 500;
             if ($exception instanceof HttpNotFoundException) {
@@ -209,30 +183,188 @@ class SlimUtils
             } elseif ($exception instanceof HttpMethodNotAllowedException) {
                 $statusCode = 405;
             }
-            
+
             // Sanitize error message to prevent credential disclosure
             $sanitizedMessage = self::sanitizeErrorMessage($exception);
-            
-            // Include HTTP method and path in error response for debugging
-            $errorResponse = [
-                'error' => $sanitizedMessage,
-                'code' => $exception->getCode(),
-                'request' => [
-                    'method' => $request->getMethod(),
-                    'path' => $request->getUri()->getPath()
-                ]
-            ];
-            
-            // Do NOT include file/line/trace in responses to avoid leaking internals
-            
-            $response->getBody()->write(json_encode($errorResponse));
-            return $response->withStatus($statusCode)->withHeader('Content-Type', 'application/json');
+
+            $path = $request->getUri()->getPath();
+
+            if (self::isApiRequest($request)) {
+                // Include HTTP method and path in error response for debugging
+                $errorResponse = [
+                    'error' => $sanitizedMessage,
+                    'code' => $exception->getCode(),
+                    'request' => [
+                        'method' => $request->getMethod(),
+                        'path' => $path
+                    ]
+                ];
+
+                $response->getBody()->write(json_encode($errorResponse));
+                return $response->withStatus($statusCode)->withHeader('Content-Type', 'application/json');
+            }
+
+            // For non-API (MVC) requests render a skinned HTML error page using shared partial
+            try {
+                // Prepare variables expected by the partial
+                $code = $statusCode;
+                $title = ($statusCode >= 500) ? gettext('Server Error') : gettext('Not Found');
+                $message = $sanitizedMessage;
+                $returnUrl = SystemURLs::getRootPath() . '/v2/dashboard';
+                $returnText = gettext('Return to Dashboard');
+                $extraHtml = '';
+
+                ob_start();
+                // Include the shared error partial (path relative to src/ChurchCRM/Slim)
+                require __DIR__ . '/../../v2/templates/common/error-page.php';
+                $html = ob_get_clean();
+
+                $response->getBody()->write($html);
+                return $response->withStatus($statusCode)->withHeader('Content-Type', 'text/html');
+            } catch (Throwable $e) {
+                // If rendering the HTML page fails, fallback to JSON to ensure client receives an error
+                $errorResponse = [
+                    'error' => 'An error occurred while rendering the error page.',
+                    'code' => $exception->getCode(),
+                ];
+                $response->getBody()->write(json_encode($errorResponse));
+                return $response->withStatus(500)->withHeader('Content-Type', 'application/json');
+            }
         });
     }
 
     /**
-     * Render an array as JSON response
+     * Detect whether a request expects a JSON (API) response.
+     * Checks Accept header for application/json, X-Requested-With for AJAX,
+     * and path for /api/ segments.
      */
+    private static function isApiRequest(Request $request): bool
+    {
+        $accept = $request->getHeaderLine('Accept');
+        if (stripos($accept, 'application/json') !== false) {
+            return true;
+        }
+        if ($request->getHeaderLine('X-Requested-With') === 'XMLHttpRequest') {
+            return true;
+        }
+        $path = $request->getUri()->getPath();
+        return (bool) preg_match('#(^|/)api(/|$)#i', $path);
+    }
+
+    /**
+     * Register a default error handler for HTML-serving MVC modules.
+     *
+     * Browser requests render a full Tabler-styled error page (Header + shared
+     * error-page.php partial + Footer).  API / AJAX requests fall back to JSON.
+     *
+     * @param object $errorMiddleware  Slim ErrorMiddleware instance
+     * @param string $dashboardUrl     Absolute URL for the "go back" button (relative to root)
+     * @param string $dashboardText    Label for the "go back" button
+     */
+    public static function registerDefaultHtmlErrorHandler(
+        $errorMiddleware,
+        string $dashboardUrl,
+        string $dashboardText
+    ): void {
+        $logger = LoggerUtils::getAppLogger();
+
+        $errorMiddleware->setDefaultErrorHandler(function (
+            Request $request,
+            Throwable $exception,
+            bool $displayErrorDetails,
+            bool $logErrors,
+            bool $logErrorDetails
+        ) use ($logger, $dashboardUrl, $dashboardText) {
+            // Determine HTTP status code
+            $statusCode = 500;
+            if ($exception instanceof HttpNotFoundException) {
+                $statusCode = 404;
+            } elseif ($exception instanceof HttpMethodNotAllowedException) {
+                $statusCode = 405;
+            } elseif ($exception instanceof \Slim\Exception\HttpForbiddenException) {
+                $statusCode = 403;
+            }
+
+            // Log: info for 4xx, error for 5xx
+            $logContext = [
+                'exception' => $exception::class,
+                'message' => $exception->getMessage(),
+                'file' => $exception->getFile(),
+                'line' => $exception->getLine(),
+                'path' => $request->getUri()->getPath(),
+                'method' => $request->getMethod(),
+            ];
+            if ($statusCode >= 500) {
+                $logContext['trace'] = $exception->getTraceAsString();
+                $logger->error('MVC error', $logContext);
+            } else {
+                $logger->info('MVC ' . $statusCode, $logContext);
+            }
+
+            $response = new Psr7Response();
+
+            // API / AJAX requests get JSON
+            if (self::isApiRequest($request)) {
+                $errorResponse = [
+                    'error' => self::sanitizeErrorMessage($exception),
+                    'code' => $statusCode,
+                    'request' => [
+                        'method' => $request->getMethod(),
+                        'path' => $request->getUri()->getPath(),
+                    ],
+                ];
+                $response->getBody()->write(json_encode($errorResponse));
+                return $response->withStatus($statusCode)->withHeader('Content-Type', 'application/json');
+            }
+
+            // Browser requests get full Tabler HTML error page
+            try {
+                $code = $statusCode;
+                $title = match (true) {
+                    $statusCode === 404 => gettext('Page Not Found'),
+                    $statusCode === 403 => gettext('Permission Required'),
+                    $statusCode === 405 => gettext('Method Not Allowed'),
+                    $statusCode >= 500 => gettext('Server Error'),
+                    default => gettext('Error'),
+                };
+                $message = self::sanitizeErrorMessage($exception);
+                $returnUrl = SystemURLs::getRootPath() . $dashboardUrl;
+                $returnText = $dashboardText;
+                $extraHtml = '';
+
+                // Dev-mode technical details
+                if ($displayErrorDetails && $statusCode >= 500) {
+                    $escaped = htmlspecialchars($exception->getMessage());
+                    $extraHtml = '<div class="mb-4"><details class="card card-outline border-secondary">'
+                        . '<summary class="card-header cursor-pointer"><i class="ti ti-code"></i> '
+                        . gettext('Technical Details') . ' (Development Mode)</summary>'
+                        . '<div class="card-body"><pre class="mb-0"><code>' . $escaped . '</code></pre></div>'
+                        . '</details></div>';
+                }
+
+                $sPageTitle = $title;
+
+                ob_start();
+                require SystemURLs::getDocumentRoot() . '/Include/Header.php';
+                require SystemURLs::getDocumentRoot() . '/v2/templates/common/error-page.php';
+                require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
+                $html = ob_get_clean();
+
+                $response->getBody()->write($html);
+                return $response->withStatus($statusCode)->withHeader('Content-Type', 'text/html');
+            } catch (Throwable $renderEx) {
+                // If HTML rendering fails, fall back to JSON
+                $logger->error('Error page render failed', [
+                    'render_error' => $renderEx->getMessage(),
+                    'original_error' => $exception->getMessage(),
+                ]);
+                $fallback = ['error' => gettext('An error occurred.'), 'code' => $statusCode];
+                $response->getBody()->write(json_encode($fallback));
+                return $response->withStatus($statusCode)->withHeader('Content-Type', 'application/json');
+            }
+        });
+    }
+
     /**
      * Render an array as JSON response (canonical camel-case)
      */

@@ -10,7 +10,7 @@ The project welcomes, and depends on, contributions from developers and users in
 ## First Steps
 1. Read this whole page "top to bottom."
 2. Make sure you have a [GitHub account](https://github.com/signup/free).
-3. Introduce yourself in the developer chat at [Gitter](https://gitter.im/ChurchCRM/CRM).
+3. Introduce yourself in the developer chat at [Discord](https://discord.gg/tuWyFzj3Nj).
 4. Take a look at the [Open Issues](https://github.com/ChurchCRM/CRM/issues) page. We've made it easy for beginners with the [good first issue](https://github.com/ChurchCRM/CRM/labels/good%20first%20issue) label — these are issues that should be relatively easy to fix.
 5. Have fun!
 
@@ -228,7 +228,7 @@ ChurchCRM uses **standardized AI agent instructions** to ensure consistent code 
 - ✅ **HTML5:** Bootstrap 4.6.2 CSS only, no deprecated attributes
 - ✅ **Asset Paths:** Use `SystemURLs::getRootPath()`
 - ✅ **Services:** Business logic in Service classes
-- ✅ **PHP 8.3+:** (See [System Requirements](https://github.com/ChurchCRM/CRM/wiki/ChurchCRM-Application-Platform-Prerequisites)) Explicit nullable types, modern patterns
+- ✅ **PHP 8.4+:** (See [System Requirements](https://github.com/ChurchCRM/CRM/wiki/ChurchCRM-Application-Platform-Prerequisites)) Explicit nullable types, modern patterns
 - ✅ **i18n:** Wrap UI text with `gettext()` or `i18next.t()`
 
 ### Using AI Assistance

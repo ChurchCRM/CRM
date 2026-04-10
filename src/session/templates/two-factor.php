@@ -4,61 +4,59 @@ use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemURLs;
 
 $sPageTitle = gettext('Login');
+$sBodyClass = 'page-auth page-login';
 require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
 
 ?>
-<div class="login-box">
-    <!-- /.login-logo -->
-    <div class="card card-outline card-primary">
-        <div class="card-header text-center">
-            <a href="<?= SystemURLs::getRootPath() ?>" class="h1"><img src="<?= SystemURLs::getRootPath() ?>/Images/logo-churchcrm-350.jpg" alt="ChurchCRM" style="max-width:330px; height:auto;" /></a>
+
+
+<div class="login-container">
+  <div class="login-wrapper">
+    <!-- Form Section -->
+    <div class="login-form-section">
+      <div class="login-form-inner">
+        <!-- Header with Logo and Church Name -->
+        <div class="login-form-header">
+          <div class="login-header-logo">
+            <img src="<?= SystemURLs::getRootPath() ?>/Images/logo-churchcrm-350.jpg" alt="ChurchCRM" />
+          </div>
+          <h2 class="login-header-church-name"><?= ChurchMetaData::getChurchName() ?></h2>
+          <p class="login-header-tagline"><?= gettext('Security First') ?></p>
         </div>
-        <div class="card-body">
-            <p class="login-box-msg">
-                <b><?= ChurchMetaData::getChurchName() ?></b><br/>
-                <?= gettext('Two-Factor Authentication') ?>
-            </p>
 
-            <div class="alert alert-info d-flex" role="alert">
-                <div class="mr-3">
-                    <i class="fa fa-mobile-alt" aria-hidden="true"></i>
-                </div>
-                <div>
-                    <small><?= gettext('Enter the 6-digit code from your authenticator app') ?></small>
-                </div>
-            </div>
-
-            <form class="form-signin" role="form" method="post" name="TwoFAForm" action="<?= SystemURLs::getRootPath()?>/session/two-factor">
-                <div class="input-group mb-3">
-                    <input type="text" id="TwoFACode" name="TwoFACode" class="form-control form-control-lg" placeholder="000000" maxlength="6" inputmode="numeric" style="font-size: 1.75em; letter-spacing: 0.25em; text-align: center; font-weight: 300;" required autofocus>
-                    <div class="input-group-append">
-                        <div class="input-group-text" style="padding-right: 15px;">
-                            <span class="fa-solid fa-lock"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <?php if (isset($bInvalidCode) && $bInvalidCode) { ?>
-                    <div class="alert alert-danger d-flex align-items-center mb-3" role="alert">
-                        <i class="fa fa-exclamation-circle mr-2"></i>
-                        <div><?= gettext('Invalid code. Please try again.') ?></div>
-                    </div>
-                <?php } ?>
-
-                <div class="row">
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-primary btn-block">
-                            <i class="fa-solid fa-right-to-bracket mr-2"></i><?= gettext('Verify & Sign In') ?>
-                        </button>
-                    </div>
-                </div>
-            </form>
-
-            <p class="mt-3 text-muted small text-center mb-0">
-                <a href="<?= SystemURLs::getRootPath() ?>/session/begin" class="text-primary"><?= gettext('Use a different account') ?></a>
-            </p>
+        <!-- Form Title -->
+        <div class="login-form-title">
+          <h1><i class="fa-solid fa-shield"></i><?= gettext('Verify your identity') ?></h1>
+          <p><?= gettext('Enter the 6-digit code from your authenticator app to complete login') ?></p>
         </div>
-        <!-- /.card-body -->
+
+        <div class="alert alert-info">
+          <i class="fa-solid fa-mobile"></i>
+          <div><?= gettext('Enter the 6-digit code from your authenticator app') ?></div>
+        </div>
+
+        <?php if (isset($bInvalidCode) && $bInvalidCode) { ?>
+          <div class="alert alert-danger">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <div><?= gettext('Invalid code. Please try again.') ?></div>
+          </div>
+        <?php } ?>
+
+        <form method="post" name="TwoFAForm" action="<?= SystemURLs::getRootPath()?>/session/two-factor">
+          <div class="mb-3">
+            <label for="TwoFACode"><?= gettext('Authentication Code') ?></label>
+            <input type="text" id="TwoFACode" name="TwoFACode" placeholder="000000" maxlength="6" inputmode="numeric" required autofocus>
+          </div>
+
+          <button type="submit" class="btn-sign-in">
+            <i class="fa-solid fa-right-to-bracket"></i><?= gettext('Verify & Sign In') ?>
+          </button>
+        </form>
+
+        <div class="back-link">
+          <a href="<?= SystemURLs::getRootPath() ?>/session/begin"><?= gettext('Use a different account') ?></a>
+        </div>
+      </div>
     </div>
-    <!-- /.card -->
+  </div>
 </div>

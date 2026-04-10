@@ -4,15 +4,17 @@
  * This creates a standalone bundle that can be loaded only on pages that need it.
  * The createPhotoUploader function is exposed via window._CRM_createPhotoUploader
  *
- * Usage in PHP:
- * <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/photo-uploader.min.js"></script>
+ * Usage:
+ * Include the compiled bundle in your page, for example:
+ * <script src="/skin/v2/photo-uploader.min.js"></script>
+ * (When rendering server-side you may prepend the application's root path.)
  */
 
 // Import Uppy CSS
-// @uppy/core v5+ requires ./css/ export path instead of ./dist/
+// @uppy v5+ requires ./css/ export path instead of ./dist/
 import "@uppy/core/css/style.min.css";
-import "@uppy/dashboard/dist/style.min.css";
-import "@uppy/webcam/dist/style.min.css";
+import "@uppy/dashboard/css/style.min.css";
+import "@uppy/webcam/css/style.min.css";
 
 import { createPhotoUploader } from "./photo-uploader.js";
 

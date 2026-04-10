@@ -1,6 +1,6 @@
 /**
  * Dynamic Locale Loader
- * Loads locale files on-demand for moment, FullCalendar, Bootstrap DatePicker, and Select2
+ * Loads locale files on-demand for moment, FullCalendar, and Bootstrap DatePicker
  */
 
 window.CRM = window.CRM || {};
@@ -41,10 +41,6 @@ function checkBrowserLocale() {
   const browserLangCode = browserLocale.split("-")[0].split("_")[0];
   const crmLangCode = window.CRM.shortLocale || "";
 
-  console.log("[Locale Detection] Browser:", browserLocale, "->", browserLangCode);
-  console.log("[Locale Detection] CRM:", window.CRM.locale, "->", crmLangCode);
-  console.log("[Locale Detection] Match:", browserLangCode === crmLangCode);
-
   // Compare language codes only (ignore region variants)
   if (browserLangCode === crmLangCode) {
     return;
@@ -65,9 +61,7 @@ function checkBrowserLocale() {
     const userSettingsUrl = window.CRM.root + "/v2/user/" + window.CRM.userId;
 
     alert.innerHTML = `
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       <strong>${i18next.t("Browser language preference detected")}</strong>
       <div>${i18next.t("Your browser language preference differs from your ChurchCRM locale")}.</div>
       <div class="mt-2">
@@ -144,7 +138,6 @@ async function loadLocaleFiles(localeConfig) {
           .then(() => {
             if (typeof moment !== "undefined" && typeof moment.locale === "function") {
               moment.locale(localeConfig.momentLocale);
-              console.log(`Loaded moment locale: ${localeConfig.momentLocale}`);
             }
           })
           .catch((e) => console.warn(`Failed to load moment locale ${localeConfig.momentLocale}:`, e)),
@@ -158,19 +151,9 @@ async function loadLocaleFiles(localeConfig) {
     if (localeConfig.datePicker) {
       const dpPath = `${rootPath}/locale/vendor/bootstrap-datepicker/bootstrap-datepicker.${localeConfig.languageCode}.min.js`;
       promises.push(
-        loadScript(dpPath)
-          .then(() => console.log(`Loaded DatePicker locale: ${localeConfig.languageCode}`))
-          .catch((e) => console.warn(`Failed to load DatePicker locale ${localeConfig.languageCode}:`, e)),
-      );
-    }
-
-    // Load Select2 i18n if configured
-    if (localeConfig.select2) {
-      const s2Path = `${rootPath}/locale/vendor/select2/${localeConfig.languageCode}.js`;
-      promises.push(
-        loadScript(s2Path)
-          .then(() => console.log(`Loaded Select2 locale: ${localeConfig.languageCode}`))
-          .catch((e) => console.warn(`Failed to load Select2 locale ${localeConfig.languageCode}:`, e)),
+        loadScript(dpPath).catch((e) =>
+          console.warn(`Failed to load DatePicker locale ${localeConfig.languageCode}:`, e),
+        ),
       );
     }
 
@@ -182,15 +165,12 @@ async function loadLocaleFiles(localeConfig) {
       }
       const fcPath = `${rootPath}/locale/vendor/fullcalendar/${fcLocale}.js`;
       promises.push(
-        loadScript(fcPath)
-          .then(() => console.log(`Loaded FullCalendar locale: ${fcLocale}`))
-          .catch((e) => console.warn(`Failed to load FullCalendar locale ${fcLocale}:`, e)),
+        loadScript(fcPath).catch((e) => console.warn(`Failed to load FullCalendar locale ${fcLocale}:`, e)),
       );
     }
 
     // Wait for all locale files to load
     await Promise.all(promises);
-    console.log(`All locale files loaded for: ${localeConfig.locale}`);
 
     // Initialize i18next after locale keys are loaded
     if (typeof i18next !== "undefined" && window.CRM.i18keys) {
@@ -211,9 +191,9 @@ async function loadLocaleFiles(localeConfig) {
       // Detect browser locale and prompt user if different
       checkBrowserLocale();
 
-      // Dispatch event to signal that locales are ready
-      window.dispatchEvent(new Event("CRM.localesReady"));
+      // Set flag BEFORE dispatching so synchronous event listeners see it as true
       window.CRM.localesLoaded = true;
+      window.dispatchEvent(new Event("CRM.localesReady"));
     }
   } catch (error) {
     console.error("Error loading locale files:", error);

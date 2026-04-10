@@ -1,12 +1,34 @@
 <?php
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/api/system/logs', function (RouteCollectorProxy $group): void {
+    // Helper function to locate log files - checks primary logs dir first, falls back to temp if needed
+    $getLogsDir = static function (): ?string {
+        $docRoot = SystemURLs::getDocumentRoot();
+        $primaryLogsDir = $docRoot . '/logs';
+        
+        // Try primary logs directory first
+        if (is_dir($primaryLogsDir) && is_readable($primaryLogsDir)) {
+            return $primaryLogsDir;
+        }
+        
+        // Fall back to temp directory if application logs are there
+        $tempLogPattern = sys_get_temp_dir() . '/churchcrm-*.log';
+        if (!empty(glob($tempLogPattern)) || defined('UNIT_TEST')) {
+            // Temp directory has logs or we're in tests, use it
+            return sys_get_temp_dir();
+        }
+        
+        // Prefer primary if neither has logs (normal case for empty logs)
+        return $primaryLogsDir;
+    };
+    
     // Set log level
     $group->post('/loglevel', function (Request $request, Response $response, array $args): Response {
         $input = $request->getParsedBody();
@@ -33,8 +55,8 @@ $app->group('/api/system/logs', function (RouteCollectorProxy $group): void {
 
     // Delete all log files
     $group->delete('', function (Request $request, Response $response, array $args): Response {
-        $logsDir = __DIR__ . '/../../../../logs/';
-        $logFiles = glob($logsDir . '*.log');
+        $logsDir = SystemURLs::getDocumentRoot() . '/logs';
+        $logFiles = glob($logsDir . '/*.log');
 
         $deletedCount = 0;
         foreach ($logFiles as $logFile) {
@@ -48,7 +70,7 @@ $app->group('/api/system/logs', function (RouteCollectorProxy $group): void {
     });
 
     // Get log file content
-    $group->get('/{filename}', function (Request $request, Response $response, array $args): Response {
+    $group->get('/{filename}', function (Request $request, Response $response, array $args) use ($getLogsDir): Response {
         $filename = $args['filename'] ?? '';
 
         // Security: Check for path traversal first
@@ -63,29 +85,29 @@ $app->group('/api/system/logs', function (RouteCollectorProxy $group): void {
             return $response->withStatus(400);
         }
 
-        $logPath = __DIR__ . '/../../../../logs/' . $filename;
-
-        // Security: Prevent path traversal with realpath check
-        $realLogsDir = realpath(__DIR__ . '/../../../../logs/');
-        if (!$realLogsDir) {
-            $response->getBody()->write('Logs directory not found');
+        $logsDir = $getLogsDir();
+        if (!is_dir($logsDir) || !is_readable($logsDir)) {
+            $response->getBody()->write('Logs directory not accessible');
             return $response->withStatus(500);
         }
 
-        // Check if file exists first
-        if (!file_exists($logPath)) {
+        $logPath = $logsDir . '/' . $filename;
+
+        // Check if file exists
+        if (!file_exists($logPath) || !is_readable($logPath)) {
             $response->getBody()->write('Log file not found');
             return $response->withStatus(404);
         }
 
-        // Now check realpath for existing files only
-        $realLogPath = realpath($logPath);
-        if (!$realLogPath || strpos($realLogPath, $realLogsDir) !== 0) {
+        // Security: Verify the file is inside the logs directory (prevent directory traversal)
+        $resolvedPath = realpath($logPath);
+        $resolvedDir = realpath($logsDir);
+        if (!$resolvedPath || !$resolvedDir || strpos($resolvedPath, $resolvedDir) !== 0) {
             $response->getBody()->write('Invalid file path');
             return $response->withStatus(400);
         }
 
-        $content = file_get_contents($realLogPath);
+        $content = file_get_contents($resolvedPath);
         
         // Parse log lines and return as JSON array
         // Split by newline and filter empty lines, then reindex array for proper JSON output
@@ -102,8 +124,53 @@ $app->group('/api/system/logs', function (RouteCollectorProxy $group): void {
         return $response->withHeader('Content-Type', 'application/json');
     });
 
+    // Download log file
+    $group->get('/{filename}/download', function (Request $request, Response $response, array $args) use ($getLogsDir): Response {
+        $filename = $args['filename'] ?? '';
+
+        // Security: Check for path traversal
+        if (strpos($filename, '..') !== false) {
+            return $response->withStatus(400);
+        }
+
+        // Security: Validate filename - must end with .log and contain only safe characters
+        if (!preg_match('/^[a-zA-Z0-9\-_\.]+\.log$/', $filename)) {
+            return $response->withStatus(400);
+        }
+
+        $logsDir = $getLogsDir();
+        if (!is_dir($logsDir) || !is_readable($logsDir)) {
+            return $response->withStatus(500);
+        }
+
+        $logPath = $logsDir . '/' . $filename;
+
+        // Check if file exists and is readable
+        if (!file_exists($logPath) || !is_readable($logPath)) {
+            return $response->withStatus(404);
+        }
+
+        // Security: Verify the file is inside the logs directory (prevent directory traversal)
+        $resolvedPath = realpath($logPath);
+        $resolvedDir = realpath($logsDir);
+        if (!$resolvedPath || !$resolvedDir || strpos($resolvedPath, $resolvedDir) !== 0) {
+            return $response->withStatus(400);
+        }
+
+        $content = file_get_contents($resolvedPath);
+
+        // Set headers before writing body to avoid middleware or streaming layers
+        $response = $response
+            ->withHeader('Content-Type', 'text/plain')
+            ->withHeader('Content-Disposition', 'attachment; filename="' . $filename . '"')
+            ->withHeader('Content-Length', (string)strlen($content));
+
+        $response->getBody()->write($content);
+        return $response;
+    });
+
     // Delete log file
-    $group->delete('/{filename}', function (Request $request, Response $response, array $args): Response {
+    $group->delete('/{filename}', function (Request $request, Response $response, array $args) use ($getLogsDir): Response {
         $filename = $args['filename'] ?? '';
 
         // Security: Check for path traversal first
@@ -118,29 +185,29 @@ $app->group('/api/system/logs', function (RouteCollectorProxy $group): void {
             return $response->withStatus(400);
         }
 
-        $logPath = __DIR__ . '/../../../../logs/' . $filename;
-
-        // Security: Prevent path traversal with realpath check
-        $realLogsDir = realpath(__DIR__ . '/../../../../logs/');
-        if (!$realLogsDir) {
-            $response->getBody()->write('Logs directory not found');
+        $logsDir = $getLogsDir();
+        if (!is_dir($logsDir) || !is_writable($logsDir)) {
+            $response->getBody()->write('Logs directory not writable');
             return $response->withStatus(500);
         }
 
-        // Check if file exists first
+        $logPath = $logsDir . '/' . $filename;
+
+        // Check if file exists
         if (!file_exists($logPath)) {
             $response->getBody()->write('Log file not found');
             return $response->withStatus(404);
         }
 
-        // Now check realpath for existing files only
-        $realLogPath = realpath($logPath);
-        if (!$realLogPath || strpos($realLogPath, $realLogsDir) !== 0) {
+        // Security: Verify the file is inside the logs directory (prevent directory traversal)
+        $resolvedPath = realpath($logPath);
+        $resolvedDir = realpath($logsDir);
+        if (!$resolvedPath || !$resolvedDir || strpos($resolvedPath, $resolvedDir) !== 0) {
             $response->getBody()->write('Invalid file path');
             return $response->withStatus(400);
         }
 
-        if (unlink($realLogPath)) {
+        if (unlink($resolvedPath)) {
             $response->getBody()->write(json_encode(['success' => true]));
             return $response->withHeader('Content-Type', 'application/json');
         } else {

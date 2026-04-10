@@ -1,0 +1,96 @@
+# FrankenPHP Dockerfile for ChurchCRM
+#
+# FrankenPHP bundles Caddy and PHP in a single binary, so no separate
+# web server container is needed. Use this image with the Caddyfile in
+# docker/frankenphp/Caddyfile.
+#
+# Build:
+#   docker build -f Dockerfile.churchcrm-frankenphp -t churchcrm/crm:frankenphp .
+#
+# Required PHP extensions for ChurchCRM:
+#   bcmath, curl, exif, gd, gettext, iconv, intl, mbstring, mysqli,
+#   opcache, pdo_mysql, sodium, xml, zip
+
+FROM dunglas/frankenphp:1-php8.4 AS base
+LABEL maintainer="ChurchCRM"
+
+# Expose HTTP (HTTPS/HTTP2 can be enabled via Caddyfile)
+EXPOSE 80
+
+# Install system dependencies required by PHP extensions
+RUN apt-get update && \
+    apt-get install -y \
+        gettext \
+        locales \
+        locales-all \
+        libcurl4-openssl-dev \
+        libfreetype6-dev \
+        libicu-dev \
+        libjpeg-dev \
+        libonig-dev \
+        libpng-dev \
+        libxml2-dev \
+        libzip-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install PHP extensions using the install-php-extensions helper bundled
+# with the FrankenPHP image (handles all build/configure steps automatically)
+RUN install-php-extensions \
+    bcmath \
+    curl \
+    exif \
+    gd \
+    gettext \
+    iconv \
+    intl \
+    mbstring \
+    mysqli \
+    opcache \
+    pdo_mysql \
+    sodium \
+    xml \
+    zip
+
+# Configure PHP settings
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
+    sed -i 's/^upload_max_filesize.*$/upload_max_filesize = 2M/g' $PHP_INI_DIR/php.ini && \
+    sed -i 's/^post_max_size.*$/post_max_size = 2G/g' $PHP_INI_DIR/php.ini && \
+    sed -i 's/^memory_limit.*$/memory_limit = 256M/g' $PHP_INI_DIR/php.ini && \
+    sed -i 's/^max_execution_time.*$/max_execution_time = 120/g' $PHP_INI_DIR/php.ini
+
+# Copy the Caddyfile that routes ChurchCRM's Slim sub-applications correctly
+COPY ./frankenphp/Caddyfile /etc/caddy/Caddyfile
+
+
+# Production stage - minimal runtime
+FROM base AS prod
+
+
+# Dev stage - includes build tools for local development inside the container
+FROM base AS dev
+
+# Install development tools
+RUN apt-get update && \
+    apt-get install -y \
+        git \
+        make \
+        python3 \
+        unzip \
+        curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Xdebug for step-debugging
+RUN install-php-extensions xdebug
+
+# Install Composer
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
+    php composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
+    rm composer-setup.php
+
+# Install NVM + Node.js (needed to run npm run deploy inside the container)
+RUN curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh -o /opt/node-install.sh && \
+    chmod a+x /opt/node-install.sh && \
+    /opt/node-install.sh && \
+    rm /opt/node-install.sh
+
+RUN /bin/bash -c "source /root/.nvm/nvm.sh && nvm install 24 && npm install -g node-gyp"

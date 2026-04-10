@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
@@ -17,41 +17,47 @@ $iPropID = InputUtils::legacyFilterInput($_GET['PropID'], 'int');
 $sField = InputUtils::legacyFilterInput($_GET['Field']);
 $sAction = InputUtils::legacyFilterInput($_GET['Action']);
 
+// Validate field name to prevent DDL injection (column names follow pattern c1, c2, etc.)
+if ($sField !== '' && !preg_match('/^c\d+$/', $sField)) {
+    RedirectUtils::redirect('GroupPropsFormEditor.php?GroupID=' . $iGroupID);
+    exit;
+}
+
 // Get the group information
 $group = GroupQuery::create()->findOneById($iGroupID);
 
 // Abort if user tries to load with group having no special properties.
 if (!$group->hasSpecialProps()) {
-    RedirectUtils::redirect('GroupView.php?GroupID=' . $iGroupID);
+    RedirectUtils::redirect('groups/view/' . $iGroupID);
 }
 
 switch ($sAction) {
     case 'up':
-        $sSQL = "UPDATE groupprop_master SET prop_ID = '" . $iPropID . "' WHERE grp_ID = '" . $iGroupID . "' AND prop_ID = '" . ($iPropID - 1) . "'";
+        $sSQL ="UPDATE groupprop_master SET prop_ID = '" . $iPropID ."' WHERE grp_ID = '" . $iGroupID ."' AND prop_ID = '" . ($iPropID - 1) ."'";
         RunQuery($sSQL);
-        $sSQL = "UPDATE groupprop_master SET prop_ID = '" . ($iPropID - 1) . "' WHERE grp_ID = '" . $iGroupID . "' AND prop_Field = '" . $sField . "'";
+        $sSQL ="UPDATE groupprop_master SET prop_ID = '" . ($iPropID - 1) ."' WHERE grp_ID = '" . $iGroupID ."' AND prop_Field = '" . $sField ."'";
         RunQuery($sSQL);
         break;
     case 'down':
-        $sSQL = "UPDATE groupprop_master SET prop_ID = '" . $iPropID . "' WHERE grp_ID = '" . $iGroupID . "' AND prop_ID = '" . ($iPropID + 1) . "'";
+        $sSQL ="UPDATE groupprop_master SET prop_ID = '" . $iPropID ."' WHERE grp_ID = '" . $iGroupID ."' AND prop_ID = '" . ($iPropID + 1) ."'";
         RunQuery($sSQL);
-        $sSQL = "UPDATE groupprop_master SET prop_ID = '" . ($iPropID + 1) . "' WHERE grp_ID = '" . $iGroupID . "' AND prop_Field = '" . $sField . "'";
+        $sSQL ="UPDATE groupprop_master SET prop_ID = '" . ($iPropID + 1) ."' WHERE grp_ID = '" . $iGroupID ."' AND prop_Field = '" . $sField ."'";
         RunQuery($sSQL);
         break;
     case 'delete':
         // Check if this field is a custom list type.  If so, the list needs to be deleted from list_lst.
-        $sSQL = "SELECT type_ID,prop_Special FROM groupprop_master WHERE grp_ID = '" . $iGroupID . "' AND prop_Field = '" . $sField . "'";
+        $sSQL ="SELECT type_ID,prop_Special FROM groupprop_master WHERE grp_ID = '" . $iGroupID ."' AND prop_Field = '" . $sField ."'";
         $rsTemp = RunQuery($sSQL);
         $aTemp = mysqli_fetch_array($rsTemp);
-        if ($aTemp[0] == 12) {
-            $sSQL = "DELETE FROM list_lst WHERE lst_ID = $aTemp[1]";
+        if ((int)$aTemp[0] === 12) {
+            $sSQL ="DELETE FROM list_lst WHERE lst_ID = $aTemp[1]";
             RunQuery($sSQL);
         }
 
         $sSQL = 'ALTER TABLE `groupprop_' . $iGroupID . '` DROP `' . $sField . '` ;';
         RunQuery($sSQL);
 
-        $sSQL = "DELETE FROM groupprop_master WHERE grp_ID = '" . $iGroupID . "' AND prop_ID = '" . $iPropID . "'";
+        $sSQL ="DELETE FROM groupprop_master WHERE grp_ID = '" . $iGroupID ."' AND prop_ID = '" . $iPropID ."'";
         RunQuery($sSQL);
 
         $sSQL = 'SELECT *    FROM groupprop_master WHERE grp_ID = ' . $iGroupID;
@@ -59,15 +65,15 @@ switch ($sAction) {
         $numRows = mysqli_num_rows($rsPropList);
 
         // Shift the remaining rows up by one, unless we've just deleted the only row
-        if ($numRows != 0) {
+        if ($numRows !== 0) {
             for ($reorderRow = $iPropID + 1; $reorderRow <= $numRows + 1; $reorderRow++) {
-                $sSQL = "UPDATE groupprop_master SET prop_ID = '" . ($reorderRow - 1) . "' WHERE grp_ID = '" . $iGroupID . "' AND prop_ID = '" . $reorderRow . "'";
+                $sSQL ="UPDATE groupprop_master SET prop_ID = '" . ($reorderRow - 1) ."' WHERE grp_ID = '" . $iGroupID ."' AND prop_ID = '" . $reorderRow ."'";
                 RunQuery($sSQL);
             }
         }
         break;
     default:
-        RedirectUtils::redirect('GroupView.php?GroupID=' . $iGroupID);
+        RedirectUtils::redirect('groups/view/' . $iGroupID);
         break;
 }
 

@@ -3,10 +3,11 @@
 namespace ChurchCRM\Reports;
 
 require_once __DIR__ . '/../Include/Config.php';
-require_once __DIR__ . '/../Include/Functions.php';
+require_once __DIR__ . '/../Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -25,7 +26,7 @@ if (!$iFYID) {
 $_SESSION['idefaultFY'] = $iFYID;
 
 // Get the list of funds
-$sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun WHERE fun_Active = 'true' ORDER BY fun_Active, fun_Name";
+$sSQL ="SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun WHERE fun_Active = 'true' ORDER BY fun_Active, fun_Name";
 $rsFunds = RunQuery($sSQL);
 
 $overpaid = [];
@@ -62,12 +63,12 @@ if (!empty($_POST['funds'])) {
     }
     if ($count === 1) {
         if ($fund[0]) {
-            $sSQL .= " AND plg_fundID='$fund[0]' ";
+            $sSQL .=" AND plg_fundID='$fund[0]'";
         }
     } else {
-        $sSQL .= " AND (plg_fundID ='$fund[0]'";
+        $sSQL .=" AND (plg_fundID ='$fund[0]'";
         for ($i = 1; $i < $count; $i++) {
-            $sSQL .= " OR plg_fundID='$fund[$i]'";
+            $sSQL .=" OR plg_fundID='$fund[$i]'";
         }
         $sSQL .= ') ';
     }
@@ -200,7 +201,7 @@ if ($output === 'pdf') {
     $curY += 2 * SystemConfig::getValue('incrementY');
 
     $blurb = SystemConfig::getValue('sPledgeSummary1') . ' ';
-    $blurb .= MakeFYString($iFYID) . ' ';
+    $blurb .= FinancialService::formatFiscalYear($iFYID) . ' ';
     $blurb .= SystemConfig::getValue('sPledgeSummary2') . ' ' . date('Y-m-d') . '.';
     $pdf->writeAt($nameX, $curY, $blurb);
 

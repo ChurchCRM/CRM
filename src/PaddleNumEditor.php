@@ -1,18 +1,20 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 $iPaddleNumID = InputUtils::legacyFilterInputArr($_GET, 'PaddleNumID', 'int');
 $linkBack = RedirectUtils::getLinkBackFromRequest('v2/dashboard');
 
 if ($iPaddleNumID > 0) {
-    $sSQL = "SELECT * FROM paddlenum_pn WHERE pn_ID = '$iPaddleNumID'";
+    $sSQL ="SELECT * FROM paddlenum_pn WHERE pn_ID = '$iPaddleNumID'";
     $rsPaddleNum = RunQuery($sSQL);
     $thePaddleNum = mysqli_fetch_array($rsPaddleNum);
     $iCurrentFundraiser = $thePaddleNum['pn_fr_ID'];
@@ -20,7 +22,7 @@ if ($iPaddleNumID > 0) {
     $iCurrentFundraiser = $_SESSION['iCurrentFundraiser'];
 }
 
-if ($iCurrentFundraiser == '') {
+if ($iCurrentFundraiser === '') {
     Bootstrapper::systemFailure('No active Fundraiser', 'System Error');
 }
 
@@ -32,9 +34,10 @@ if ($iCurrentFundraiser) {
 }
 
 // SQL to get multibuy items
-$sMultibuyItemsSQL = "SELECT di_ID, di_title FROM donateditem_di WHERE di_multibuy='1' AND di_FR_ID=" . $iCurrentFundraiser;
+$sMultibuyItemsSQL ="SELECT di_ID, di_title FROM donateditem_di WHERE di_multibuy='1' AND di_FR_ID=" . $iCurrentFundraiser;
 
 $sPageTitle = gettext('Buyer Number Editor');
+$sPageSubtitle = gettext('Assign and manage fundraiser buyer numbers');
 
 // Is this the second pass?
 if (isset($_POST['PaddleNumSubmit']) || isset($_POST['PaddleNumSubmitAndAdd']) || isset($_POST['GenerateStatement'])) {
@@ -101,11 +104,11 @@ if (isset($_POST['PaddleNumSubmit']) || isset($_POST['PaddleNumSubmitAndAdd']) |
     if (strlen($iPaddleNumID) > 0) {
         //Editing....
         //Get all the data on this record
-        $sSQL = "SELECT pn_ID, pn_fr_ID, pn_Num, pn_per_ID,
+        $sSQL ="SELECT pn_ID, pn_fr_ID, pn_Num, pn_per_ID,
                            a.per_FirstName as buyerFirstName, a.per_LastName as buyerLastName
              FROM paddlenum_pn
              LEFT JOIN person_per a ON pn_per_ID=a.per_ID
-             WHERE pn_ID = '" . $iPaddleNumID . "'";
+             WHERE pn_ID = '" . $iPaddleNumID ."'";
         $rsPaddleNum = RunQuery($sSQL);
         extract(mysqli_fetch_array($rsPaddleNum));
 
@@ -126,92 +129,73 @@ if (isset($_POST['PaddleNumSubmit']) || isset($_POST['PaddleNumSubmitAndAdd']) |
 //Get People for the drop-down
 $sPeopleSQL = 'SELECT per_ID, per_FirstName, per_LastName, fam_Address1, fam_City, fam_State FROM person_per JOIN family_fam on per_fam_id=fam_id ORDER BY per_LastName, per_FirstName';
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Fundraiser'), '/FindFundRaiser.php'],
+    [gettext('Buyer Number')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
-<div class="card card-body">
+<div class="card">
+  <div class="card-body">
     <form method="post" action="PaddleNumEditor.php?<?= 'CurrentFundraiser=' . $iCurrentFundraiser . '&PaddleNumID=' . $iPaddleNumID . '&linkBack=' . $linkBack ?>" name="PaddleNumEditor">
-        <div class="table-responsive">
-            <table class="table mx-auto">
-                <tr>
-                    <td class="text-center">
-                        <input type="submit" class="btn btn-secondary" value="<?= gettext('Save') ?>" name="PaddleNumSubmit">
-                        <input type="submit" class="btn btn-secondary" value="<?= gettext('Generate Statement') ?>" name="GenerateStatement">
-                        <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
-                            echo '<input type="submit" class="btn btn-secondary" value="' . gettext('Save and Add') . "\" name=\"PaddleNumSubmitAndAdd\">\n";
-                        } ?>
-                        <input type="button" class="btn btn-secondary" value="<?= gettext('Back') ?>" name="PaddleNumCancel" onclick="document.location='<?= RedirectUtils::escapeRedirectUrl($linkBack, 'v2/dashboard') ?>';">
-                    </td>
-                </tr>
 
-                <tr>
-                    <td>
-                        <table width="100%" cellspacing="0" cellpadding="4">
-                            <tr>
-                                <td width="50%" class="align-top" align="left">
-                                    <table cellpadding="3">
-                                        <tr>
-                                            <td class="LabelColumn"><?= gettext('Number') ?>:</td>
-                                            <td class="TextColumn"><input type="text" name="Num" id="Num" value="<?= $iNum ?>"></td>
-                                        </tr>
+      <div class="d-flex gap-2 mb-4">
+        <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PaddleNumSubmit">
+        <input type="submit" class="btn btn-secondary" value="<?= gettext('Generate Statement') ?>" name="GenerateStatement">
+        <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) : ?>
+          <input type="submit" class="btn btn-secondary" value="<?= gettext('Save and Add') ?>" name="PaddleNumSubmitAndAdd">
+        <?php endif; ?>
+        <input type="button" class="btn btn-secondary" value="<?= gettext('Back') ?>" name="PaddleNumCancel" onclick="document.location='<?= RedirectUtils::escapeRedirectUrl($linkBack, 'v2/dashboard') ?>';">
+      </div>
 
-                                        <tr>
-                                            <td class="LabelColumn"><?= gettext('Buyer') ?>:
-                                            </td>
-                                            <td class="TextColumn">
-                                                <select name="PerID">
-                                                    <option value="0" selected><?= gettext('Unassigned') ?></option>
-                                                    <?php
-                                                    $rsPeople = RunQuery($sPeopleSQL);
-                                                    while ($aRow = mysqli_fetch_array($rsPeople)) {
-                                                        extract($aRow);
-                                                        echo '<option value="' . (int)$per_ID . '"';
-                                                        if ($iPerID == $per_ID) {
-                                                            echo ' selected';
-                                                        }
-                                                        echo '>' . InputUtils::escapeHTML($per_LastName) . ', ' . InputUtils::escapeHTML($per_FirstName);
-                                                        echo ' ' . InputUtils::escapeHTML(FormatAddressLine($fam_Address1, $fam_City, $fam_State));
-                                                    }
-                                                    ?>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label class="form-label" for="Num"><?= gettext('Number') ?>:</label>
+            <input type="text" class="form-control" name="Num" id="Num" value="<?= $iNum ?>">
+          </div>
 
-                                                </select>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-
-                                <td width="50%" class="align-top text-center">
-                                    <table cellpadding="3">
-                                        <?php
-                                        $rsMBItems = RunQuery($sMultibuyItemsSQL);
-                                        while ($aRow = mysqli_fetch_array($rsMBItems)) {
-                                            extract($aRow);
-
-                                            $sqlNumBought = 'SELECT mb_count from multibuy_mb WHERE mb_per_ID=' . $iPerID . ' AND mb_item_ID=' . $di_ID;
-                                            $rsNumBought = RunQuery($sqlNumBought);
-                                            $numBoughtRow = mysqli_fetch_array($rsNumBought);
-                                            if ($numBoughtRow) {
-                                                extract($numBoughtRow);
-                                            } else {
-                                                $mb_count = 0;
-                                            } ?>
-                                            <tr>
-                                                <td class="LabelColumn"><?= InputUtils::escapeHTML($di_title) ?></td>
-                                                <td class="TextColumn"><input type="text" name="MBItem<?= (int)$di_ID ?>" id="MBItem<?= (int)$di_ID ?>" value="<?= (int)$mb_count ?>"></td>
-                                            </tr>
-                                            <?php
-                                        }
-                                        ?>
-
-                                    </table>
-                                </td>
-                            </tr>
-
-                        </table>
-                </tr>
-            </table>
+          <div class="mb-3">
+            <label class="form-label" for="PerID"><?= gettext('Buyer') ?>:</label>
+            <select class="form-select" name="PerID" id="PerID">
+              <option value="0" selected><?= gettext('Unassigned') ?></option>
+              <?php
+              $rsPeople = RunQuery($sPeopleSQL);
+              while ($aRow = mysqli_fetch_array($rsPeople)) {
+                  extract($aRow);
+                  echo '<option value="' . (int)$per_ID . '"';
+                  if ($iPerID === $per_ID) {
+                      echo ' selected';
+                  }
+                  echo '>' . InputUtils::escapeHTML($per_LastName) . ', ' . InputUtils::escapeHTML($per_FirstName);
+                  echo ' ' . InputUtils::escapeHTML(MiscUtils::formatAddressLine($fam_Address1, $fam_City, $fam_State));
+              }
+              ?>
+            </select>
+          </div>
         </div>
+
+        <div class="col-md-6">
+          <?php
+          $rsMBItems = RunQuery($sMultibuyItemsSQL);
+          while ($aRow = mysqli_fetch_array($rsMBItems)) {
+              extract($aRow);
+              $sqlNumBought = 'SELECT mb_count from multibuy_mb WHERE mb_per_ID=' . $iPerID . ' AND mb_item_ID=' . $di_ID;
+              $rsNumBought = RunQuery($sqlNumBought);
+              $numBoughtRow = mysqli_fetch_array($rsNumBought);
+              $mb_count = $numBoughtRow ? $numBoughtRow['mb_count'] : 0;
+              ?>
+            <div class="mb-3">
+              <label class="form-label" for="MBItem<?= (int)$di_ID ?>"><?= InputUtils::escapeHTML($di_title) ?></label>
+              <input type="text" class="form-control" name="MBItem<?= (int)$di_ID ?>" id="MBItem<?= (int)$di_ID ?>" value="<?= (int)$mb_count ?>">
+            </div>
+          <?php } ?>
+        </div>
+      </div>
+
     </form>
+  </div>
 </div>
 <?php
 require_once __DIR__ . '/Include/Footer.php';

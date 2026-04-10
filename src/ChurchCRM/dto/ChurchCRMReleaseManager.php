@@ -10,7 +10,6 @@ use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\UpgradeService;
 use ChurchCRM\Utils\ExecutionTime;
 use ChurchCRM\Utils\LoggerUtils;
-use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\VersionUtils;
 use Github\Client;
 
@@ -111,9 +110,9 @@ class ChurchCRMReleaseManager
     public static function checkForUpdates(): void
     {
         $logger = LoggerUtils::getAppLogger();
-        $logger->info('=== checkForUpdates() CALLED ===');
+        $logger->debug('checkForUpdates() called');
         $_SESSION['ChurchCRMReleases'] = self::populateReleases();
-        $logger->info('=== checkForUpdates() COMPLETE - ' . count($_SESSION['ChurchCRMReleases']) . ' releases cached ===');
+        $logger->debug('checkForUpdates() complete - ' . count($_SESSION['ChurchCRMReleases']) . ' releases cached');
     }
 
     public static function isReleaseCurrent(ChurchCRMRelease $Release): bool
@@ -187,24 +186,24 @@ class ChurchCRMReleaseManager
         $rs = array_values($_SESSION['ChurchCRMReleases']);
         $nextStepRelease = self::getReleaseNextPatch($rs, $currentRelease);
         if ($nextStepRelease !== null) {
-            $logger->info('=== UPDATE FOUND (PATCH) === Next: ' . $nextStepRelease);
+            $logger->info('Update found (patch): next release is ' . $nextStepRelease);
             return $nextStepRelease;
         }
         $nextStepRelease = self::getReleaseNextMinor($rs, $currentRelease);
         if ($nextStepRelease !== null) {
-            $logger->info('=== UPDATE FOUND (MINOR) === Next: ' . $nextStepRelease);
+            $logger->info('Update found (minor): next release is ' . $nextStepRelease);
             return $nextStepRelease;
         }
         $nextStepRelease = self::getReleaseNextMajor($rs, $currentRelease);
         if ($nextStepRelease !== null) {
-            $logger->info('=== UPDATE FOUND (MAJOR) === Next: ' . $nextStepRelease);
+            $logger->info('Update found (major): next release is ' . $nextStepRelease);
             return $nextStepRelease;
         }
 
         if (null === $nextStepRelease) {
             // Check if current version is at or ahead of all available releases (e.g., development version)
             if (!empty($rs) && $currentRelease->compareTo($rs[0]) >= 0) {
-                $logger->info('*** Current version ' . $currentRelease . ' is at or ahead of highest available release ' . $rs[0] . '. No upgrade available.');
+                $logger->debug('Current version ' . $currentRelease . ' is at or ahead of highest available release ' . $rs[0] . '. No upgrade available.');
                 return null;
             }
             $logger->warning('Could not identify a suitable upgrade target release.  Current software version: ' . $currentRelease . '.  Highest available release: ' . (!empty($rs) ? $rs[0] : 'None'));
@@ -368,7 +367,7 @@ class ChurchCRMReleaseManager
 
             echo \json_encode([
                 'code'    => 500,
-                'message' => 'Maximum execution time threshold exceeded: ' . ini_get('max_execution_time') . '.  This ChurchCRM installation may now be in an unstable state.  Please review the documentation at https://github.com/ChurchCRM/CRM/wiki/Recovering-from-a-failed-update',
+                'message' => 'Maximum execution time threshold exceeded: ' . ini_get('max_execution_time') . '.  This ChurchCRM installation may now be in an unstable state.  Please review the Documentation at https://docs.churchcrm.io/administration/troubleshooting',
             ], JSON_THROW_ON_ERROR);
         }
     }
@@ -579,9 +578,6 @@ class ChurchCRMReleaseManager
                 $logger->info('Attempting automatic database upgrade post code-deploy');
                 UpgradeService::upgradeDatabaseVersion();
                 $logger->info('Automatic database upgrade completed successfully');
-                
-                // Clear integrity check cache after upgrade
-                AppIntegrityService::clearIntegrityCache();
                 
                 // After successful database upgrade, clean up orphaned files
                 $logger->info('Beginning automatic orphaned file cleanup');

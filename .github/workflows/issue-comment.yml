@@ -22,6 +22,7 @@ permissions:
 
 jobs:
   comment-on-issue:
+    timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -82,6 +83,12 @@ jobs:
             // STEP 2: Extract issue content for classification
             // =========================================================
             const issue = context.payload.issue || {};
+            // Skip auto-comments for issues opened by the repository owner/bot (DawoudIO)
+            const author = (issue.user && issue.user.login) ? issue.user.login.toLowerCase() : '';
+            if (author === 'dawoudio') {
+              console.log('Skipping auto-comment: issue opened by DawoudIO');
+              return;
+            }
             const title = (issue.title || '');
             const body = (issue.body || '');
             const titleLower = title.toLowerCase();

@@ -124,6 +124,6 @@ class GoogleAnalyticsPlugin extends AbstractPlugin
             return '';
         }
 
-        return "gtag('event', {$eventNameJs}, {$paramsJson});";
+        return"gtag('event', {$eventNameJs}, {$paramsJson});";
     }
 }

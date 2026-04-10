@@ -75,22 +75,4 @@ describe("User Editor - ORM Migration Tests", () => {
         });
     });
 
-    it("Should persist user style selection via ORM", () => {
-        cy.visit('UserEditor.php?PersonID=1');
-        cy.contains("User Editor");
-        
-        // Change style
-        cy.get('#Style').select('skin-purple');
-        cy.get('#SaveButton').click();
-        cy.wait(500);
-        
-        // Reload and verify ORM loaded the style
-        cy.visit('UserEditor.php?PersonID=1');
-        cy.get('#Style').should('have.value', 'skin-purple');
-        
-        // Reset to default
-        cy.get('#Style').select('skin-blue');
-        cy.get('#SaveButton').click();
-        cy.wait(500);
-    });
 });

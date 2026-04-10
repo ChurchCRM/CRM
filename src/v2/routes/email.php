@@ -1,6 +1,9 @@
 <?php
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -9,7 +12,7 @@ use Slim\Views\PhpRenderer;
 $app->group('/email', function (RouteCollectorProxy $group): void {
     $group->get('/dashboard', 'getEmailDashboardMVC');
     $group->get('/duplicate', 'getDuplicateEmailsMVC');
-    $group->get('/missing', 'getFamiliesWithoutEmailsMVC');
+    $group->get('/missing', 'getPeopleWithoutEmailsMVC');
     $group->get('', 'getEmailDashboardMVC');
     $group->get('/', 'getEmailDashboardMVC');
 });
@@ -20,7 +23,20 @@ function getEmailDashboardMVC(Request $request, Response $response, array $args)
 
     $pageArgs = [
         'sRootPath'  => SystemURLs::getRootPath(),
-        'sPageTitle' => gettext('eMail Dashboard'),
+        'sPageTitle' => gettext('Email Dashboard'),
+        'sPageSubtitle' => gettext('Manage email tools and SMTP configuration'),
+        'aBreadcrumbs' => PageHeader::breadcrumbs([
+            [gettext('Communication')],
+            [gettext('Email')],
+        ]),
+        'sSettingsCollapseId' => 'emailSettings',
+        'sPageHeaderButtons' => PageHeader::buttons([
+            ['label' => gettext('Debug'), 'url' => '/admin/system/debug/email', 'icon' => 'fa-stethoscope', 'adminOnly' => true],
+            ['label' => gettext('Email Settings'), 'collapse' => '#emailSettings', 'icon' => 'fa-sliders', 'adminOnly' => true],
+        ]),
+        'bEmailEnabled' => SystemConfig::getBooleanValue('bEnabledEmail'),
+        'bSmtpConfigured' => SystemConfig::hasValidMailServerSettings(),
+        'bMailchimpConfigured' => PluginManager::getPlugin('mailchimp')?->isConfigured() ?? false,
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);
@@ -31,7 +47,20 @@ function getDuplicateEmailsMVC(Request $request, Response $response, array $args
     return renderPage($response, 'templates/email/', 'duplicate.php', _('Duplicate Emails'));
 }
 
-function getFamiliesWithoutEmailsMVC(Request $request, Response $response, array $args): Response
+function getPeopleWithoutEmailsMVC(Request $request, Response $response, array $args): Response
 {
-    return renderPage($response, 'templates/email/', 'without.php', _('Families Without Emails'));
+    $renderer = new PhpRenderer('templates/email/');
+
+    $pageArgs = [
+        'sRootPath'    => SystemURLs::getRootPath(),
+        'sPageTitle'   => gettext('People Without Emails'),
+        'sPageSubtitle' => gettext('People with no personal or work email on record'),
+        'aBreadcrumbs' => PageHeader::breadcrumbs([
+            [gettext('Communication')],
+            [gettext('Email'), '/v2/email/dashboard'],
+            [gettext('People Without Emails')],
+        ]),
+    ];
+
+    return $renderer->render($response, 'without.php', $pageArgs);
 }

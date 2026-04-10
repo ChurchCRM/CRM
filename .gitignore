@@ -12,8 +12,8 @@ vendor
 node_modules
 temp
 
-# Locale build artifacts
-locale/terms/base
+# Locale build artifacts (all intermediate build output in one place)
+locale/.work
 
 # Uploaded Images
 src/Images/Family/*
@@ -45,4 +45,8 @@ cypress/videos
 cypress/downloads
 cypress.config.ts
 cypress.env.json
+
+# DDEV — Composer credentials (not covered by .ddev/.gitignore)
+# See https://ddev.readthedocs.io/en/stable/users/extend/in-container-configuration/
+.ddev/**/auth.json
 

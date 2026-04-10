@@ -39,70 +39,6 @@
   cursor: pointer;
 }
 
-/* Text decoration utilities (Bootstrap 4 doesn't have these) */
-.text-decoration-none {
-  text-decoration: none;
-}
-
-/* Float-right deprecated in Bootstrap 5, but kept for legacy support */
-.float-right {
-  float: right;
-}
-
-/* ============================================
-   CUSTOM COMPONENT STYLES
-   ============================================ */
-
-/* Profile-related styles */
-.profile-user-img {
-  display: inline-block;
-}
-
-.person-thumbnail {
-  width: 40px;
-  height: 40px;
-  display: inline-block;
-}
-
-/* Registration form styles */
-.register-box-margin {
-  margin: 72px auto 0;
-}
-
-.register-box-600 {
-  width: 600px;
-}
-
-.register-box-75pct {
-  width: 75%;
-}
-
-.register-logo-margin {
-  margin: 72px auto 0;
-}
-
-.register-box-flex {
-  width: 100%;
-  margin-top: 5px;
-}
-
-/* Textarea and canvas custom heights */
-.textarea-120px {
-  height: 120px;
-}
-
-.canvas-250px {
-  height: 250px;
-}
-
-.canvas-250px-donut {
-  height: 250px;
-}
-
-.canvas-flex {
-  height: 250px;
-}
-
 /* ============================================
    CUSTOM TYPOGRAPHY & SPACING
    ============================================ */
@@ -112,7 +48,7 @@
   line-height: 1.2;
 }
 
-/* Line-height utilities (Bootstrap 4 doesn't include lh-* utilities) */
+/* Line-height override: BS5 lh-lg uses 2.0 — keep as-is for consistency */
 .lh-lg {
   line-height: 2;
 }
@@ -121,9 +57,46 @@
    DEPRECATED/LEGACY CLASSES (Backward Compatibility)
    ============================================ */
 
-/* Used in password change forms for inline validation errors */
+/* Used in password change forms for inline validation errors.
+   Consider migrating to BS5 .text-danger in templates. */
 .form-field-error {
-  color: red;
+  color: var(--tblr-danger, #d63939);
+}
+
+/* ============================================
+   PRINT UTILITIES
+   ============================================ */
+
+/* Hide all interactive elements when printing */
+@media print {
+  button.btn,
+  a.btn,
+  input.btn,
+  .dropdown,
+  .modal,
+  .fab-container,
+  input,
+  select,
+  textarea,
+  .form-control,
+  .form-select,
+  .dataTables_filter,
+  .dataTables_length,
+  .ts-wrapper {
+    display: none !important;
+  }
+
+  /* Hide tab navigation pills — content is shown inline below */
+  .nav-pills,
+  .nav-tabs {
+    display: none !important;
+  }
+
+  /* Show all tab panes when printing so no content is hidden */
+  .tab-pane {
+    display: block !important;
+    opacity: 1 !important;
+  }
 }
 
 /* Hide view photo button when there is no uploaded photo or gravatar */

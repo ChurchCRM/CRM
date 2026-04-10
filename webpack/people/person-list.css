@@ -1,0 +1,9 @@
+/* People-list filter: collapse the TomSelect search input when empty (input_autogrow companion) */
+.ts-wrapper.has-items .ts-control > input {
+  min-width: 0;
+  width: 0;
+}
+.ts-wrapper.has-items.focus .ts-control > input {
+  min-width: 2rem;
+  width: auto;
+}

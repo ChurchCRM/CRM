@@ -1,17 +1,21 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOption;
+use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 // Security: user must be allowed to edit records to use this page.
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageGroupsEnabled(), 'ManageGroups');
+
+$aPropTypes = CustomFieldUtils::getPropTypes();
 
 // Initialize logger for error tracking
 $logger = LoggerUtils::getAppLogger();
@@ -25,18 +29,23 @@ $rsGroupInfo = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsGroupInfo));
 
 // Abort if user tries to load with group having no special properties.
-if ($grp_hasSpecialProps == false) {
-    RedirectUtils::redirect('GroupView.php?GroupID=' . $iGroupID);
+if ((int)$grp_hasSpecialProps === 0) {
+    RedirectUtils::redirect('groups/view/' . $iGroupID);
 }
 
 $sPageTitle = gettext('Group-Specific Properties Form Editor') . ':' . '  ' . $grp_Name;
+$sPageSubtitle = gettext('Define group-specific properties for members');
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Groups'), '/groups/dashboard'],
+    [$grp_Name, '/groups/view/' . $iGroupID],
+    [gettext('Properties Form')],
+]);
 
 require_once __DIR__ . '/Include/Header.php'; ?>
 
-<div class="card card-body">
-    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
         function confirmDeleteField(fieldName, propId, fieldId) {
-            var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + ' "' + fieldName + '"?';
+            var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + '"' + fieldName + '"?';
             msg += '<br><br><strong>' + <?= json_encode(gettext('Warning:')) ?> + '</strong> ';
             msg += <?= json_encode(gettext('By deleting this field, you will irrevocably lose all group member data assigned for this field!')) ?>;
             bootbox.confirm({
@@ -54,6 +63,11 @@ require_once __DIR__ . '/Include/Header.php'; ?>
             });
             return false;
         }
+
+        $(document).on('click', '.js-delete-field', function () {
+            var btn = $(this);
+            confirmDeleteField(btn.data('field-name'), btn.data('prop-id'), btn.data('field-id'));
+        });
     </script>
 
     <?php
@@ -98,7 +112,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
             if (isset($_POST[$iPropID . 'special'])) {
                 $aSpecialFields[$iPropID] = InputUtils::legacyFilterInput($_POST[$iPropID . 'special'], 'int');
 
-                if ($aSpecialFields[$iPropID] == 0) {
+                if ($aSpecialFields[$iPropID] === 0) {
                     $aSpecialErrors[$iPropID] = true;
                     $bErrorFlag = true;
                 } else {
@@ -122,12 +136,12 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                     $temp = 'false';
                 }
 
-                $sSQL = "UPDATE groupprop_master
-                    SET `prop_Name` = '" . $aNameFields[$iPropID] . "',
-                        `prop_Description` = '" . $aDescFields[$iPropID] . "',
-                        `prop_Special` = " . $aSpecialFields[$iPropID] . ",
-                        `prop_PersonDisplay` = '" . $temp . "'
-                    WHERE `grp_ID` = '" . $iGroupID . "' AND `prop_ID` = '" . $iPropID . "';";
+                $sSQL ="UPDATE groupprop_master
+                    SET `prop_Name` = '" . $aNameFields[$iPropID] ."',
+                        `prop_Description` = '" . $aDescFields[$iPropID] ."',
+                        `prop_Special` =" . $aSpecialFields[$iPropID] .",
+                        `prop_PersonDisplay` = '" . $temp ."'
+                    WHERE `grp_ID` = '" . $iGroupID ."' AND `prop_ID` = '" . $iPropID ."';";
 
                 RunQuery($sSQL);
             }
@@ -184,15 +198,15 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                             ->setOptionName(gettext('Default Option'));
                         $listOption->save();
 
-                        $newSpecial = "'$newListID'";
+                        $newSpecial ="'$newListID'";
                     } else {
                         $newSpecial = 'NULL';
                     }
 
                     // Insert into the master table
-                    $sSQL = "INSERT INTO `groupprop_master`
+                    $sSQL ="INSERT INTO `groupprop_master`
                             ( `grp_ID` , `prop_ID` , `prop_Field` , `prop_Name` , `prop_Description` , `type_ID` , `prop_Special` )
-                            VALUES ('" . $iGroupID . "', '" . $newRowNum . "', 'c" . $newFieldNum . "', '" . $newFieldName . "', '" . $newFieldDesc . "', '" . $newFieldType . "', $newSpecial);";
+                            VALUES ('" . $iGroupID ."', '" . $newRowNum ."', 'c" . $newFieldNum ."', '" . $newFieldName ."', '" . $newFieldDesc ."', '" . $newFieldType ."', $newSpecial);";
                     RunQuery($sSQL);
 
                     // Insert into the group-specific properties table
@@ -200,7 +214,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
 
                     switch ($newFieldType) {
                         case 1:
-                            $sSQL .= "ENUM('false', 'true')";
+                            $sSQL .="ENUM('false', 'true')";
                             break;
                         case 2:
                             $sSQL .= 'DATE';
@@ -218,7 +232,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                             $sSQL .= 'YEAR';
                             break;
                         case 7:
-                            $sSQL .= "ENUM('winter', 'spring', 'summer', 'fall')";
+                            $sSQL .="ENUM('winter', 'spring', 'summer', 'fall')";
                             break;
                         case 8:
                             $sSQL .= 'INT';
@@ -279,7 +293,8 @@ require_once __DIR__ . '/Include/Header.php'; ?>
 
     <form method="post" action="GroupPropsFormEditor.php?GroupID=<?= $iGroupID ?>" name="GroupPropFormEditor">
         <div class="card mb-4">
-            <div class="card-header bg-success text-white">
+            <div class="card-status-top bg-success"></div>
+            <div class="card-header">
                 <h5 class="mb-0">
                     <i class="fa-solid fa-plus"></i>
                     <?= gettext('Add New') . ' ' . gettext('Field') ?>
@@ -289,7 +304,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                 <div class="row">
                     <div class="col-md-3">
                         <label for="newFieldType" class="form-label"><?= gettext('Type') ?>:</label>
-                        <select id="newFieldType" name="newFieldType" class="form-control">
+                        <select id="newFieldType" name="newFieldType" class="form-select">
                             <?php
                             for ($iOptionID = 1; $iOptionID <= count($aPropTypes); $iOptionID++) {
                                 echo '<option value="' . InputUtils::escapeAttribute($iOptionID) . '">' . InputUtils::escapeHTML($aPropTypes[$iOptionID]) . '</option>';
@@ -317,7 +332,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                         <input type="text" id="newFieldDesc" class="form-control" name="newFieldDesc" maxlength="60">
                     </div>
                     <div class="col-md-1 d-flex align-items-end">
-                        <button type="submit" class="btn btn-success btn-block" name="AddField">
+                        <button type="submit" class="btn btn-success w-100" name="AddField">
                             <i class="fa-solid fa-plus"></i>
                             <?= gettext('Add') ?>
                         </button>
@@ -327,19 +342,18 @@ require_once __DIR__ . '/Include/Header.php'; ?>
         </div>
 
         <?php
-        if ($numRows == 0) {
+        if ($numRows === 0) {
         ?>
             <div class="alert alert-info" role="alert">
-                <i class="fa-solid fa-info-circle"></i>
+                <i class="fa-solid fa-circle-info"></i>
                 <?= gettext('No properties have been added yet') ?>
             </div>
         <?php
         } else {
         ?>
-            <div class="alert alert-warning" role="alert">
-                <i class="fa-solid fa-exclamation-triangle"></i>
-                <strong><?= gettext('Warning:') ?></strong>
-                <?= gettext("Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!") ?>
+            <div class="alert alert-info" role="alert">
+                <i class="fa-solid fa-circle-info me-1"></i>
+                <?= gettext('Name changes require saving. Reorder and delete actions in the action menu take effect immediately.') ?>
             </div>
             <?php
             if ($bErrorFlag) {
@@ -352,23 +366,23 @@ require_once __DIR__ . '/Include/Header.php'; ?>
             <?php
             } ?>
             <div class="card">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header d-flex align-items-center">
                     <h5 class="mb-0">
-                        <i class="fa-solid fa-list"></i>
+                        <i class="fa-solid fa-list me-2"></i>
                         <?= gettext('Existing Group Properties') ?>
                     </h5>
+                    <span class="badge bg-info text-white ms-auto"><?= $numRows ?> <?= gettext('properties') ?></span>
                 </div>
-                <div class="card-body">
-                    <div class="table-responsive">
+                <div class="card-body" style="overflow: visible;">
                         <table class="table table-hover table-sm">
-                            <thead class="table-light">
+                            <thead>
                                 <tr>
                                     <th><?= gettext('Type') ?></th>
                                     <th><?= gettext('Name') ?></th>
                                     <th><?= gettext('Description') ?></th>
                                     <th><?= gettext('Special option') ?></th>
                                     <th class="text-center"><?= gettext('Show in') ?><br><?= gettext('Person View') ?></th>
-                                    <th><?= gettext('Actions') ?></th>
+                                    <th class="no-export"><?= gettext('Actions') ?></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -379,7 +393,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                         ?>
                         <tr>
                             <td>
-                                <span class="badge badge-primary"><?= InputUtils::escapeHTML($aPropTypes[$aTypeFields[$row]]) ?></span>
+                                <span class="badge bg-light text-dark"><?= InputUtils::escapeHTML($aPropTypes[$aTypeFields[$row]]) ?></span>
                             </td>
                             <td>
                                 <input type="text" name="<?= $row ?>name" value="<?= InputUtils::escapeAttribute($aNameFields[$row]) ?>" class="form-control form-control-sm" maxlength="40">
@@ -395,7 +409,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                 <?php
 
                                 if ($aTypeFields[$row] == 9) {
-                                    echo '<select name="' . $row . 'special" class="form-control form-control-sm">';
+                                    echo '<select name="' . $row . 'special" class="form-select form-select-sm">';
                                     echo '<option value="0" selected>' . gettext('Select a group') . '</option>';
 
                                     $sSQL = 'SELECT grp_ID,grp_Name FROM group_grp ORDER BY grp_Name';
@@ -424,27 +438,30 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                 } ?>
                             </td>
                             <td class="text-center">
-                                <input type="checkbox" name="<?= $row ?>show" value="1" <?php if ($aPersonDisplayFields[$row]) {
+                                <input class="form-check-input" type="checkbox" name="<?= $row ?>show" value="1" <?php if ($aPersonDisplayFields[$row]) {
                                     echo ' checked';
                                 } ?>>
                             </td>
                             <td>
-                                <div class="btn-group btn-group-sm" role="group">
-                                    <?php
-                                    $fieldNameJs = json_encode($aNameFields[$row]);
-                                    $fieldIdJs = json_encode($aFieldFields[$row]);
-                                    ?>
-                                    <button type="button" class="btn btn-sm btn-danger" onclick="confirmDeleteField(<?= $fieldNameJs ?>, <?= $row ?>, <?= $fieldIdJs ?>)">
-                                        <i class="fa-solid fa-trash"></i>
-                                        <?= gettext('Delete') ?>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                        <i class="ti ti-dots-vertical"></i>
                                     </button>
-                                    <?php
-                                    if ($row != 1) {
-                                        echo '<a href="GroupPropsFormRowOps.php?GroupID=' . $iGroupID . '&PropID=' . $row . '&Field=' . InputUtils::escapeAttribute($aFieldFields[$row]) . '&Action=up" class="btn btn-outline-secondary" title="' . gettext('Move up') . '"><i class="fa-solid fa-arrow-up"></i></a>';
-                                    }
-                                    if ($row < $numRows) {
-                                        echo '<a href="GroupPropsFormRowOps.php?GroupID=' . $iGroupID . '&PropID=' . $row . '&Field=' . InputUtils::escapeAttribute($aFieldFields[$row]) . '&Action=down" class="btn btn-outline-secondary" title="' . gettext('Move down') . '"><i class="fa-solid fa-arrow-down"></i></a>';
-                                    } ?>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <button type="button" class="dropdown-item text-danger js-delete-field"
+                                            data-field-name="<?= InputUtils::escapeAttribute($aNameFields[$row]) ?>"
+                                            data-prop-id="<?= $row ?>"
+                                            data-field-id="<?= InputUtils::escapeAttribute($aFieldFields[$row]) ?>">
+                                            <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                        </button>
+                                        <?php
+                                        if ($row != 1) {
+                                            echo '<a href="GroupPropsFormRowOps.php?GroupID=' . $iGroupID . '&PropID=' . $row . '&Field=' . InputUtils::escapeAttribute($aFieldFields[$row]) . '&Action=up" class="dropdown-item"><i class="ti ti-arrow-up me-2"></i>' . gettext('Move up') . '</a>';
+                                        }
+                                        if ($row < $numRows) {
+                                            echo '<a href="GroupPropsFormRowOps.php?GroupID=' . $iGroupID . '&PropID=' . $row . '&Field=' . InputUtils::escapeAttribute($aFieldFields[$row]) . '&Action=down" class="dropdown-item"><i class="ti ti-arrow-down me-2"></i>' . gettext('Move down') . '</a>';
+                                        } ?>
+                                    </div>
                                 </div>
                             </td>
                         </tr>
@@ -453,18 +470,16 @@ require_once __DIR__ . '/Include/Header.php'; ?>
 
                             </tbody>
                         </table>
-                    </div>
                 </div>
             </div>
             <div class="d-flex justify-content-center my-3">
                 <button type="submit" class="btn btn-primary" name="SaveChanges">
-                    <i class="fa-solid fa-save"></i>
+                    <i class="fa-solid fa-floppy-disk"></i>
                     <?= gettext('Save Changes') ?>
                 </button>
             </div>
         <?php
         } ?>
     </form>
-</div>
 <?php
 require_once __DIR__ . '/Include/Footer.php';

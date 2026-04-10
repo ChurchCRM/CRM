@@ -1,200 +1,224 @@
 <?php
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 ?>
 
-<!-- Small boxes (Stat box) -->
-<div class="row">
-    <div class="col-lg-2 col-4">
-        <!-- small box -->
-        <div class="small-box bg-olive">
-            <div class="inner">
-                <h3 id="familyCountDashboard">
-                    <?= $dashboardCounts["families"] ?>
-                </h3>
-                <p>
-                    <?= gettext('Families') ?>
-                </p>
-            </div>
-            <div class="icon">
-                <i class="fa-solid fa-user-friends"></i>
-            </div>
-            <a href="<?= SystemURLs::getRootPath() ?>/v2/family" class="small-box-footer">
-                <?= gettext('See all Families') ?> <i class="fa-solid fa-arrow-circle-right"></i>
-            </a>
-        </div>
-    </div><!-- ./col -->
-    <div class="col-lg-2 col-4">
-        <!-- small box -->
-        <div class="small-box bg-green">
-            <div class="inner">
-                <h3 id="peopleStatsDashboard">
-                    <?= $dashboardCounts["People"] ?>
-                </h3>
-                <p>
-                    <?= gettext('People') ?>
-                </p>
-            </div>
-            <div class="icon">
-                <i class="fa-solid fa-user"></i>
-            </div>
-            <a href="<?= SystemURLs::getRootPath() ?>/v2/people" class="small-box-footer">
-                <?= gettext('See All People') ?> <i class="fa-solid fa-arrow-circle-right"></i>
-            </a>
-        </div>
-    </div><!-- ./col -->
-    <div class="col-lg-2 col-4">
-        <!-- small box -->
-        <div class="small-box bg-red">
-            <div class="inner">
-                <h3 id="groupsCountDashboard">
-                    <?= $dashboardCounts["Groups"] ?>
-                </h3>
-                <p>
-                    <?= gettext('Groups') ?>
-                </p>
-            </div>
-            <div class="icon">
-                <i class="fa-solid fa-users"></i>
-            </div>
-            <a href="<?= SystemURLs::getRootPath() ?>/GroupList.php" class="small-box-footer">
-                <?= gettext('More info') ?>  <i class="fa-solid fa-arrow-circle-right"></i>
-            </a>
-        </div>
-    </div><!-- ./col -->
-    <?php if ($sundaySchoolEnabled) {
-        ?>
-        <div class="col-lg-2 col-4">
-            <!-- small box -->
-            <div class="small-box bg-orange">
-                <div class="inner">
-                    <h3 id="groupStatsSundaySchool">
-                        <?= $dashboardCounts["SundaySchool"] ?>
-                    </h3>
-                    <p>
-                        <?= gettext('Sunday School Classes') ?>
-                    </p>
+<!-- Stat Cards Row -->
+<div class="row row-cards mb-3 g-2">
+    <div class="col-6 col-md-4 col-lg">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-secondary text-white avatar rounded-circle">
+                            <i class="fa-solid fa-people-roof icon"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="fw-medium" id="familyCountDashboard"><?= $dashboardCounts["families"] ?></div>
+                        <div class="text-muted"><?= gettext('Families') ?></div>
+                    </div>
                 </div>
-                <div class="icon">
-                    <i class="fa-solid fa-child"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-md-4 col-lg">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-success text-white avatar rounded-circle">
+                            <i class="fa-solid fa-people-group icon"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="fw-medium" id="peopleStatsDashboard"><?= $dashboardCounts["People"] ?></div>
+                        <div class="text-muted"><?= gettext('People') ?></div>
+                    </div>
                 </div>
-                <a href="<?= SystemURLs::getRootPath() ?>/sundayschool/SundaySchoolDashboard.php" class="small-box-footer">
-                    <?= gettext('More info') ?> <i class="fa-solid fa-arrow-circle-right"></i>
-                </a>
-            </div>
-        </div><!-- ./col -->
-        <?php
-    }
-    if ($eventsEnabled) {
-        ?>
-    <div class="col-lg-2 col-4">
-        <!-- small box -->
-        <div class="small-box bg-yellow">
-            <div class="inner">
-                <h3>
-                    <?= $dashboardCounts["events"] ?>
-                </h3>
-                <p>
-                    <?= gettext('Attendees Checked In') ?>
-                </p>
-            </div>
-            <div class="icon">
-                <i class="fa-regular fa-calendar-check"></i>
-            </div>
-            <a href="<?= SystemURLs::getRootPath() ?>/ListEvents.php" class="small-box-footer">
-                <?= gettext('More info') ?>  <i class="fa-solid fa-arrow-circle-right"></i>
-            </a>
-        </div>
-    </div><!-- ./col -->
-        <?php
-    } ?>
-</div><!-- /.row -->
-
-<div class="row">
-    <div class="card col-md-6" id="birthdayCard">
-        <div class="card-body">
-            <h3><i class="fa-solid fa-cake-candles mr-2"></i><?= gettext('Birthdays') ?></h3>
-            <p class="text-muted small mb-2"><?= gettext('Next 7 days and past 7 days') ?></p>
-            <table class="table table-striped table-hover" width="100%" id="PersonBirthdayDashboardItem"></table>
-        </div>
-    </div>
-    <div class="card col-md-6" id="anniversaryCard">
-        <div class="card-body">
-            <h3><i class="fa-solid fa-heart mr-2"></i><?= gettext('Anniversaries') ?></h3>
-            <p class="text-muted small mb-2"><?= gettext('Next 7 days and past 7 days') ?></p>
-            <table class="table table-striped table-hover" width="100%" id="FamiliesWithAnniversariesDashboardItem"></table>
-        </div>
-    </div>
-</div>
-
-<?php
-if ($depositEnabled) { // If the user has Finance permissions, then let's display the deposit line chart
-    ?>
-    <div class="card card-info" id="depositChartRow">
-        <div class="card-header">
-            <h3 class="card-title"><i class="fa-solid fa-circle-dollar-to-slot"></i> <?= gettext('Deposit Tracking') ?></h3>
-            <div class="card-tools float-right">
-                <div id="deposit-graph" class="chart-legend"></div>
             </div>
         </div>
-        <div class="card-body" style="height: 200px">
-            <canvas id="deposit-lineGraph" style="height:125px; width:100%"></canvas>
+    </div>
+    <div class="col-6 col-md-4 col-lg">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-primary text-white avatar rounded-circle">
+                            <i class="fa-solid fa-users icon"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="fw-medium" id="groupsCountDashboard"><?= $dashboardCounts["Groups"] ?></div>
+                        <div class="text-muted"><?= gettext('Groups') ?></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <?php
-}  //END IF block for Finance permissions to include HTML for Deposit Chart
-?>
-
-<div class="card">
-    <div class="card-header">
-        <div class="card-title"><h4><?= gettext('People') ?></h4></div>
+    <div class="col-6 col-md-4 col-lg">
+        <div class="card card-sm<?= $sundaySchoolEnabled ? '' : ' opacity-50' ?>">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-warning text-white avatar rounded-circle">
+                            <i class="fa-solid fa-child icon"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <?php if ($sundaySchoolEnabled) { ?>
+                            <div class="fw-medium" id="groupStatsSundaySchool"><?= $dashboardCounts["SundaySchool"] ?></div>
+                            <div class="text-muted"><?= gettext('Sunday School') ?></div>
+                        <?php } else { ?>
+                            <div class="fw-medium text-muted"><?= gettext('No Sunday School') ?></div>
+                            <div class="text-muted small"><?= gettext('Disabled in settings') ?></div>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="card-header p-0 pt-1 border-bottom-0">
-        <ul class="nav nav-tabs" id="people-tabs" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" id="latest-fam-tab" data-toggle="tab" href="#latest-fam-pane" role="tab" aria-controls="latest-fam-pane" aria-selected="true">
-                    <i class="fa-solid fa-user-plus mr-1"></i><?= gettext('Latest Families') ?>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="updated-fam-tab" data-toggle="tab" href="#updated-fam-pane" role="tab" aria-controls="updated-fam-pane" aria-selected="false">
-                    <i class="fa-solid fa-pen mr-1"></i><?= gettext('Updated Families') ?>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="latest-ppl-tab" data-toggle="tab" href="#latest-ppl-pane" role="tab" aria-controls="latest-ppl-pane" aria-selected="false">
-                    <i class="fa-solid fa-user-plus mr-1"></i><?= gettext('Latest People') ?>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="updated-ppl-tab" data-toggle="tab" href="#updated-ppl-pane" role="tab" aria-controls="updated-ppl-pane" aria-selected="false">
-                    <i class="fa-solid fa-pen mr-1"></i><?= gettext('Updated People') ?>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div class="card-body p-0">
-        <div class="tab-content" id="people-tabs-content">
-            <div class="tab-pane fade show active" id="latest-fam-pane" role="tabpanel" aria-labelledby="latest-fam-tab">
-                <table class="table table-striped table-hover mb-0" width="100%" id="latestFamiliesDashboardItem"></table>
-            </div>
-            <div class="tab-pane fade" id="updated-fam-pane" role="tabpanel" aria-labelledby="updated-fam-tab">
-                <table class="table table-striped table-hover mb-0" width="100%" id="updatedFamiliesDashboardItem"></table>
-            </div>
-            <div class="tab-pane fade" id="latest-ppl-pane" role="tabpanel" aria-labelledby="latest-ppl-tab">
-                <table class="table table-striped table-hover mb-0" width="100%" id="latestPersonDashboardItem"></table>
-            </div>
-            <div class="tab-pane fade" id="updated-ppl-pane" role="tabpanel" aria-labelledby="updated-ppl-tab">
-                <table class="table table-striped table-hover mb-0" width="100%" id="updatedPersonDashboardItem"></table>
+    <div class="col-6 col-md-4 col-lg">
+        <div class="card card-sm<?= $eventsEnabled ? '' : ' opacity-50' ?>">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-info text-white avatar rounded-circle">
+                            <i class="fa-regular fa-calendar-check icon"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <?php if ($eventsEnabled) { ?>
+                            <div class="fw-medium"><?= $dashboardCounts["events"] ?></div>
+                            <div class="text-muted"><?= gettext('Check-ins') ?></div>
+                        <?php } else { ?>
+                            <div class="fw-medium text-muted"><?= gettext('No Check-ins') ?></div>
+                            <div class="text-muted small"><?= gettext('Disabled in settings') ?></div>
+                        <?php } ?>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<script src="<?= SystemURLs::assetVersioned('/skin/js/MainDashboard.js') ?>"></script>
+<?php if ($eventsEnabled) { ?>
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="card" id="todayEventsCard">
+            <div class="card-header d-flex align-items-center">
+                <h3 class="card-title"><i class="fa-solid fa-calendar-day me-2"></i><?= gettext("Today's Events") ?></h3>
+                <div class="ms-auto">
+                    <a href="<?= SystemURLs::getRootPath() ?>/event/checkin" class="btn btn-sm btn-outline-primary">
+                        <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Check-in') ?>
+                    </a>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-vcenter table-hover card-table mb-0" width="100%" id="todayEventsDashboardItem"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<?php } ?>
+
+<div class="row">
+    <!-- People card — primary content (2/3 width) -->
+    <div class="col-lg-8">
+        <div class="card mb-3">
+            <div class="card-header">
+                <div class="card-title">
+                    <i class="ti ti-users me-2 text-muted"></i><?= gettext('People') ?>
+                </div>
+                <div class="card-options ms-auto">
+                    <ul class="nav nav-tabs card-header-tabs" id="people-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="latest-fam-tab" data-bs-toggle="tab" href="#latest-fam-pane" role="tab" aria-controls="latest-fam-pane" aria-selected="true">
+                                <i class="ti ti-home-plus me-1"></i><span class="d-none d-xl-inline"><?= gettext('Latest Families') ?></span><span class="d-xl-none"><?= gettext('New') ?></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="updated-fam-tab" data-bs-toggle="tab" href="#updated-fam-pane" role="tab" aria-controls="updated-fam-pane" aria-selected="false">
+                                <i class="ti ti-home-edit me-1"></i><span class="d-none d-xl-inline"><?= gettext('Updated Families') ?></span><span class="d-xl-none"><?= gettext('Updated') ?></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="latest-ppl-tab" data-bs-toggle="tab" href="#latest-ppl-pane" role="tab" aria-controls="latest-ppl-pane" aria-selected="false">
+                                <i class="ti ti-user-plus me-1"></i><span class="d-none d-xl-inline"><?= gettext('Latest People') ?></span><span class="d-xl-none"><?= gettext('New') ?></span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="updated-ppl-tab" data-bs-toggle="tab" href="#updated-ppl-pane" role="tab" aria-controls="updated-ppl-pane" aria-selected="false">
+                                <i class="ti ti-user-edit me-1"></i><span class="d-none d-xl-inline"><?= gettext('Updated People') ?></span><span class="d-xl-none"><?= gettext('Updated') ?></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <div class="tab-content" id="people-tabs-content">
+                    <div class="tab-pane fade show active" id="latest-fam-pane" role="tabpanel" aria-labelledby="latest-fam-tab">
+                        <table class="table table-vcenter table-hover card-table mb-0" width="100%" id="latestFamiliesDashboardItem"></table>
+                    </div>
+                    <div class="tab-pane fade" id="updated-fam-pane" role="tabpanel" aria-labelledby="updated-fam-tab">
+                        <table class="table table-vcenter table-hover card-table mb-0" width="100%" id="updatedFamiliesDashboardItem"></table>
+                    </div>
+                    <div class="tab-pane fade" id="latest-ppl-pane" role="tabpanel" aria-labelledby="latest-ppl-tab">
+                        <table class="table table-vcenter table-hover card-table mb-0" width="100%" id="latestPersonDashboardItem"></table>
+                    </div>
+                    <div class="tab-pane fade" id="updated-ppl-pane" role="tabpanel" aria-labelledby="updated-ppl-tab">
+                        <table class="table table-vcenter table-hover card-table mb-0" width="100%" id="updatedPersonDashboardItem"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Birthdays & Anniversaries — sidebar (1/3 width) -->
+    <div class="col-lg-4">
+        <div class="card mb-3" id="birthdayCard">
+            <div class="card-header d-flex align-items-center">
+                <h3 class="card-title"><i class="fa-solid fa-cake-candles me-2"></i><?= gettext('Birthdays') ?></h3>
+            </div>
+            <div class="card-body p-0">
+                <p class="text-muted small px-3 pt-3 mb-2"><?= gettext('Past & next 7 days') ?></p>
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0" width="100%" id="PersonBirthdayDashboardItem"></table>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3" id="anniversaryCard">
+            <div class="card-header d-flex align-items-center">
+                <h3 class="card-title"><i class="fa-solid fa-heart me-2"></i><?= gettext('Anniversaries') ?></h3>
+            </div>
+            <div class="card-body p-0">
+                <p class="text-muted small px-3 pt-3 mb-2"><?= gettext('Past & next 7 days') ?></p>
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0" width="100%" id="FamiliesWithAnniversariesDashboardItem"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php if ($depositEnabled) { ?>
+<div class="row">
+    <div class="col-12">
+        <div class="card mb-3" id="depositChartRow">
+            <div class="card-header d-flex align-items-center">
+                <h3 class="card-title"><i class="fa-solid fa-circle-dollar-to-slot me-2"></i> <?= gettext('Deposit Tracking') ?></h3>
+            </div>
+            <div class="card-body">
+                <div id="deposit-lineGraph" style="min-height: 300px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php } ?>
+
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/root-dashboard.min.js') ?>"></script>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

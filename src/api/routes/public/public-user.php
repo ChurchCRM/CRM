@@ -102,7 +102,7 @@ function passwordResetRequest(Request $request, Response $response, array $args)
     $user = UserQuery::create()->findOneByUserName($userName);
     if (empty($user) || empty($user->getEmail())) {
         // Don't reveal whether user exists (security best practice)
-        $logger->info('Password reset requested for non-existent user: ' . $userName);
+        $logger->warning('Password reset requested for non-existent user: ' . $userName);
         return SlimUtils::renderJSON($response, ['success' => true]);
     }
 

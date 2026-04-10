@@ -3,6 +3,7 @@
 namespace ChurchCRM\Utils;
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Service\FinancialService;
 
 class FiscalYearUtils
 {
@@ -22,7 +23,7 @@ class FiscalYearUtils
     {
         $yearNow = (int) date('Y');
         $monthNow = (int) date('m');
-        $fyMonth = (int) SystemConfig::getValue('iFYMonth');
+        $fyMonth = SystemConfig::getIntValue('iFYMonth');
         
         $fyid = $yearNow - 1996;
         if ($monthNow >= $fyMonth && $fyMonth > 1) {
@@ -30,5 +31,35 @@ class FiscalYearUtils
         }
 
         return $fyid;
+    }
+
+    /**
+     * Renders an HTML <select> dropdown for fiscal year selection.
+     * Migrated from PrintFYIDSelect() in Functions.php.
+     */
+    public static function renderYearSelect(string $selectName, ?int $iFYID = null): void
+    {
+        echo sprintf('<select class="form-select" name="%s">', $selectName);
+
+        $hasSelected = false;
+        $selectableOptions = [];
+        for ($fy = 1; $fy < self::getCurrentFiscalYearId() + 2; $fy++) {
+            $selectedTag = '';
+            if ($iFYID === $fy) {
+                $hasSelected = true;
+                $selectedTag = ' selected';
+            }
+
+            $selectableOptions[] = sprintf('<option value="%s"', $fy) . $selectedTag . '>' . FinancialService::formatFiscalYear((int) $fy) . '</option>';
+        }
+
+        $selectableOptions = [
+            '<option disabled value="0"' . (!$hasSelected ? ' selected' : '') . '>' . gettext('Select Fiscal Year') . '</option>',
+            ...$selectableOptions
+        ];
+
+        echo implode('', $selectableOptions);
+
+        echo '</select>';
     }
 }

@@ -7,9 +7,12 @@ use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\FamilyCustomQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
+use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\view\PageHeader;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -62,6 +65,12 @@ function listFamilies(Request $request, Response $response, array $args): Respon
         $filterState = InputUtils::legacyFilterInput($queryParams['State']);
     }
 
+    // Geocoding status filter: 'unverified' = has address but no lat/lon
+    $filterGeocoded = '';
+    if (!empty($queryParams['geocoded'])) {
+        $filterGeocoded = InputUtils::legacyFilterInput($queryParams['geocoded']);
+    }
+
     // Build the base query and apply filters
     $familiesQuery = FamilyQuery::create()->orderByName();
 
@@ -87,13 +96,28 @@ function listFamilies(Request $request, Response $response, array $args): Respon
         $sMode = $sMode . ' - ' . $filterState;
     }
 
+    if ($filterGeocoded === 'unverified') {
+        // Has a street address entered but latitude/longitude are not set
+        // Matches hasLatitudeAndLongitude(): consider unverified when either coordinate is missing
+        $familiesQuery->filterByAddress1('', Criteria::NOT_EQUAL);
+        $familiesQuery->where('(family_fam.fam_Latitude IS NULL OR family_fam.fam_Latitude = 0) OR (family_fam.fam_Longitude IS NULL OR family_fam.fam_Longitude = 0)');
+        $sMode = $sMode . ' - ' . gettext('Unverified Addresses');
+    }
+
     $families = $familiesQuery->find();
     $pageArgs = [
         'sMode' => $sMode,
         'sRootPath' => SystemURLs::getRootPath(),
+        'sPageTitle' => gettext('Families'),
+        'sPageSubtitle' => gettext('Browse and search all families in your congregation'),
+        'aBreadcrumbs' => PageHeader::breadcrumbs([
+            [gettext('People'), '/people/dashboard'],
+            [gettext('Families')],
+        ]),
         'families' => $families,
         'filterCity' => $filterCity,
         'filterState' => $filterState,
+        'filterGeocoded' => $filterGeocoded,
         'familyActiveStatus' => $familyActiveStatus,
     ];
 
@@ -152,10 +176,18 @@ function viewFamily(Request $request, Response $response, array $args): Response
 
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
+        'sPageTitle' => gettext('Family') . ': ' . InputUtils::escapeHTML($family->getName()),
+        'sPageSubtitle' => gettext('View family details, members, and timeline'),
+        'aBreadcrumbs' => PageHeader::breadcrumbs([
+            [gettext('People'), '/people/dashboard'],
+            [gettext('Families'), '/v2/family'],
+            [InputUtils::escapeHTML($family->getName())],
+        ]),
         'family' => $family,
         'familyTimeline' => $timelineService->getForFamily($family->getId()),
         'allFamilyProperties' => $allFamilyProperties,
         'familyCustom' => $familyCustom,
+        'currentFY' => FinancialService::formatFiscalYear(FiscalYearUtils::getCurrentFiscalYearId()),
     ];
 
     return $renderer->render($response, 'family-view.php', $pageArgs);

@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
@@ -12,6 +12,7 @@ use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 $mode = InputUtils::legacyFilterInput($_GET['mode']);
 
@@ -48,6 +49,7 @@ switch ($mode) {
         $adjplusname = gettext('Family Role');
         $adjplusnameplural = gettext('Family Roles');
         $sPageTitle = gettext('Family Roles Editor');
+        $sPageSubtitle = gettext('Manage classification lists, roles, and group types');
         $listID = 2;
         $embedded = false;
         break;
@@ -87,7 +89,7 @@ switch ($mode) {
         $rsTemp = RunQuery($sSQL);
 
         // Validate that this list ID is really for a group roles list. (for security)
-        if (mysqli_num_rows($rsTemp) == 0) {
+        if (mysqli_num_rows($rsTemp) === 0) {
             RedirectUtils::redirect('v2/dashboard');
             break;
         }
@@ -104,11 +106,11 @@ switch ($mode) {
         $listID = InputUtils::legacyFilterInput($_GET['ListID'], 'int');
         $embedded = true;
 
-        $sSQL = "SELECT '' FROM person_custom_master WHERE type_ID = 12 AND custom_Special = " . $listID;
+        $sSQL ="SELECT '' FROM person_custom_master WHERE type_ID = 12 AND custom_Special =" . $listID;
         $rsTemp = RunQuery($sSQL);
 
         // Validate that this is a valid person-custom field custom list
-        if (mysqli_num_rows($rsTemp) == 0) {
+        if (mysqli_num_rows($rsTemp) === 0) {
             RedirectUtils::redirect('v2/dashboard');
             break;
         }
@@ -122,11 +124,11 @@ switch ($mode) {
         $listID = InputUtils::legacyFilterInput($_GET['ListID'], 'int');
         $embedded = true;
 
-        $sSQL = "SELECT '' FROM groupprop_master WHERE type_ID = 12 AND prop_Special = " . $listID;
+        $sSQL ="SELECT '' FROM groupprop_master WHERE type_ID = 12 AND prop_Special =" . $listID;
         $rsTemp = RunQuery($sSQL);
 
         // Validate that this is a valid group-specific-property field custom list
-        if (mysqli_num_rows($rsTemp) == 0) {
+        if (mysqli_num_rows($rsTemp) === 0) {
             RedirectUtils::redirect('v2/dashboard');
             break;
         }
@@ -140,11 +142,11 @@ switch ($mode) {
         $listID = InputUtils::legacyFilterInput($_GET['ListID'], 'int');
         $embedded = true;
 
-        $sSQL = "SELECT '' FROM family_custom_master WHERE type_ID = 12 AND fam_custom_Special = " . $listID;
+        $sSQL ="SELECT '' FROM family_custom_master WHERE type_ID = 12 AND fam_custom_Special =" . $listID;
         $rsTemp = RunQuery($sSQL);
 
         // Validate that this is a valid family_custom field custom list
-        if (mysqli_num_rows($rsTemp) == 0) {
+        if (mysqli_num_rows($rsTemp) === 0) {
             RedirectUtils::redirect('v2/dashboard');
             break;
         }
@@ -165,19 +167,19 @@ if (isset($_POST['AddField'])) {
         $iNewNameError = 1;
     } else {
         // Check for a duplicate option name
-        $sSQL = "SELECT '' FROM list_lst WHERE lst_ID = $listID AND lst_OptionName = '" . $newFieldName . "'";
+        $sSQL ="SELECT '' FROM list_lst WHERE lst_ID = $listID AND lst_OptionName = '" . $newFieldName ."'";
         $rsCount = RunQuery($sSQL);
         if (mysqli_num_rows($rsCount) > 0) {
             $iNewNameError = 2;
         } else {
             // Get count of the options
-            $sSQL = "SELECT '' FROM list_lst WHERE lst_ID = $listID";
+            $sSQL ="SELECT '' FROM list_lst WHERE lst_ID = $listID";
             $rsTemp = RunQuery($sSQL);
             $numRows = mysqli_num_rows($rsTemp);
             $newOptionSequence = $numRows + 1;
 
             // Get the new OptionID
-            $sSQL = "SELECT MAX(lst_OptionID) FROM list_lst WHERE lst_ID = $listID";
+            $sSQL ="SELECT MAX(lst_OptionID) FROM list_lst WHERE lst_ID = $listID";
             $rsTemp = RunQuery($sSQL);
             $aTemp = mysqli_fetch_array($rsTemp);
             $newOptionID = $aTemp[0] + 1;
@@ -201,7 +203,7 @@ $bDuplicateFound = false;
 
 // Get the original list of options..
 //ADDITION - get Sequence Also
-$sSQL = "SELECT lst_OptionName, lst_OptionID, lst_OptionSequence FROM list_lst WHERE lst_ID=$listID ORDER BY lst_OptionSequence";
+$sSQL ="SELECT lst_OptionName, lst_OptionID, lst_OptionSequence FROM list_lst WHERE lst_ID=$listID ORDER BY lst_OptionSequence";
 $rsList = RunQuery($sSQL);
 $numRows = mysqli_num_rows($rsList);
 
@@ -229,7 +231,7 @@ if (isset($_POST['SaveChanges'])) {
         } elseif ($row < $numRows) {
             $aNameErrors[$row] = 0;
             for ($rowcmp = $row + 1; $rowcmp <= $numRows; $rowcmp++) {
-                if ($aNameFields[$row] == $aNameFields[$rowcmp]) {
+                if ($aNameFields[$row] === $aNameFields[$rowcmp]) {
                     $bErrorFlag = true;
                     $bDuplicateFound = true;
                     $aNameErrors[$row] = 2;
@@ -245,7 +247,7 @@ if (isset($_POST['SaveChanges'])) {
     if (!$bErrorFlag) {
         for ($row = 1; $row <= $numRows; $row++) {
             // Update the type's name if it has changed from what was previously stored
-            if ($aOldNameFields[$row] != $aNameFields[$row]) {
+            if ($aOldNameFields[$row] !== $aNameFields[$row]) {
                 // Sanitize input to prevent XSS stored in role names
                 $sanitizedName = InputUtils::sanitizeText($aNameFields[$row]);
                 // Use Propel ORM to update the option name
@@ -263,7 +265,7 @@ if (isset($_POST['SaveChanges'])) {
 
 // Get data for the form as it now exists..
 
-$sSQL = "SELECT lst_OptionName, lst_OptionID, lst_OptionSequence FROM list_lst WHERE lst_ID = $listID ORDER BY lst_OptionSequence";
+$sSQL ="SELECT lst_OptionName, lst_OptionID, lst_OptionSequence FROM list_lst WHERE lst_ID = $listID ORDER BY lst_OptionSequence";
 $rsRows = RunQuery($sSQL);
 $numRows = mysqli_num_rows($rsRows);
 
@@ -286,14 +288,18 @@ for ($row = 1; $row <= $numRows; $row++) {
 if ($embedded) {
     require_once __DIR__ . '/Include/Header-Minimal.php';
 } else {    // in portuguese, this doesn't work because adjectives come after nouns
-    //$sPageTitle = $adj . ' ' . $noun . "s ".gettext("Editor");
+    //$sPageTitle = $adj . ' ' . $noun ."s".gettext("Editor");
+    $aBreadcrumbs = PageHeader::breadcrumbs([
+        [gettext('Admin'), '/admin/'],
+        [gettext('Options')],
+    ]);
     require_once __DIR__ . '/Include/Header.php';
 }
 
 ?>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     function confirmDelete(itemName, deleteUrl) {
-        var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + ' "' + itemName + '"?';
+        var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + '"' + itemName + '"?';
         msg += '<br><br><strong>' + <?= json_encode(gettext('Warning:')) ?> + '</strong> ';
         msg += <?= json_encode(gettext('This will remove it from all people currently assigned to it.')) ?>;
         bootbox.confirm({
@@ -348,9 +354,11 @@ if ($embedded) {
     <?php endif; ?>
 </script>
 
-<div class="card">
-    <div class="card-body">
-        <form method="post" action="OptionManager.php?<?= "mode=$mode&ListID=$listID" ?>" name="OptionManager">
+<?php if (!$embedded): ?>
+<p class="text-muted mb-3"><?= sprintf(gettext('Manage %s options'), $adjplusnameplural) ?></p>
+<?php endif; ?>
+
+<form method="post" action="OptionManager.php?<?="mode=$mode&ListID=$listID" ?>" name="OptionManager">
 
             <?php
 
@@ -372,7 +380,8 @@ if ($embedded) {
             ?>
 
             <div class="card mb-4">
-                <div class="card-header bg-success text-white">
+                <div class="card-status-top bg-success"></div>
+                <div class="card-header">
                     <h5 class="mb-0">
                         <i class="fa-solid fa-plus"></i>
                         <?= gettext('Add New') . ' ' . $adjplusname ?>
@@ -386,7 +395,7 @@ if ($embedded) {
                             <?php
                             if ($iNewNameError > 0) {
                                 echo '<small class="text-danger d-block mt-1"><i class="fa-solid fa-circle-exclamation"></i> ';
-                                if ($iNewNameError == 1) {
+                                if ($iNewNameError === 1) {
                                     echo gettext('You must enter a name');
                                 } else {
                                     echo gettext('A ') . $noun . gettext(' by that name already exists.');
@@ -406,31 +415,31 @@ if ($embedded) {
             </div>
 
             <div class="card mt-4">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header d-flex align-items-center">
                     <h5 class="mb-0">
-                        <i class="fa-solid fa-list"></i>
+                        <i class="fa-solid fa-list me-2"></i>
                         <?= gettext('Existing') . ' ' . $adjplusnameplural ?>
                     </h5>
+                    <span class="badge bg-info text-white ms-auto"><?= $numRows ?> <?= gettext('options') ?></span>
                 </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-hover table-sm mb-0">
-                            <thead class="table-light">
-                                <tr>
-                                    <th style="width: 80px;"><?= gettext('Order') ?></th>
-                                    <th><?= gettext('Name') ?></th>
-                                    <?php
-                                    if ($mode == 'grproles') {
-                                        echo '<th style="width: 120px;">' . gettext('Default') . '</th>';
-                                    }
-                                    if ($mode === 'classes') {
-                                        echo '<th style="width: 100px;">' . gettext('Inactive') . '</th>';
-                                    }
-                                    ?>
-                                    <th class="text-center" style="width: 200px;"><?= gettext('Actions') ?></th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                <div class="card-body" style="overflow: visible;">
+                    <table class="table table-hover table-sm mb-0">
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;"><?= gettext('Order') ?></th>
+                                <th><?= gettext('Name') ?></th>
+                                <?php
+                                if ($mode === 'grproles') {
+                                    echo '<th style="width: 120px;">' . gettext('Default') . '</th>';
+                                }
+                                if ($mode === 'classes') {
+                                    echo '<th style="width: 100px;">' . gettext('Inactive') . '</th>';
+                                }
+                                ?>
+                                <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
                 <?php
                 $aInactiveClassificationIds = explode(',', SystemConfig::getValue('sInactiveClassification'));
@@ -444,10 +453,10 @@ if ($embedded) {
                 ?>
                         <tr>
                             <td>
-                                <span class="badge badge-secondary">
+                                <span class="badge bg-light text-dark">
                                     <?php
-                                    if ($mode == 'grproles' && $aIDs[$row] == $iDefaultRole) {
-                                        echo '<span class="badge badge-info">' . gettext('Default') . '</span> ';
+                                    if ($mode === 'grproles' && $aIDs[$row] === $iDefaultRole) {
+                                        echo '<span class="badge bg-info">' . gettext('Default') . '</span> ';
                                     }
                                     echo $row;
                                     ?>
@@ -457,64 +466,70 @@ if ($embedded) {
                                 <input class="form-control form-control-sm" type="text" name="<?= $row . 'name' ?>" value="<?= InputUtils::escapeAttribute($aNameFields[$row]) ?>" maxlength="40">
                                 <?php
 
-                                if ($aNameErrors[$row] == 1) {
+                                if ($aNameErrors[$row] === 1) {
                                     echo '<small class="text-danger d-block mt-1">' . gettext('You must enter a name') . '</small>';
-                                } elseif ($aNameErrors[$row] == 2) {
+                                } elseif ($aNameErrors[$row] === 2) {
                                     echo '<small class="text-danger d-block mt-1">' . gettext('Duplicate name found.') . '</small>';
                                 } ?>
                             </td>
                             <?php
-                            if ($mode == 'grproles') {
+                            if ($mode === 'grproles') {
                                 echo '<td><button type="button" class="btn btn-sm btn-outline-primary" onclick="document.location=\'OptionManagerRowOps.php?mode=' . InputUtils::escapeAttribute($mode) . '&ListID=' . InputUtils::escapeAttribute($listID) . '&ID=' . InputUtils::escapeAttribute($aIDs[$row]) . '&Action=makedefault\';">' . gettext('Make Default') . '</button></td>';
                             }
                             if ($mode === 'classes') {
                                 echo '<td>';
-                                $check = in_array($aIDs[$row], $aInactiveClasses) ? "checked" : "";
+                                $check = in_array($aIDs[$row], $aInactiveClasses) ?"checked" :"";
                                 echo '<div class="form-check"><input id="inactive' . InputUtils::escapeAttribute($aIDs[$row]) . '" type="checkbox" class="form-check-input" onclick="$.get(\'OptionManagerRowOps.php?mode=' . InputUtils::escapeAttribute($mode) . '&Order=' . InputUtils::escapeAttribute($aSeqs[$row]) . '&ListID=' . InputUtils::escapeAttribute($listID) . '&ID=' . InputUtils::escapeAttribute($aIDs[$row]) . '&Action=Inactive\')" ' . $check . '><label class="form-check-label" for="inactive' . InputUtils::escapeAttribute($aIDs[$row]) . '">' . gettext('Inactive') . '</label></div>';
                                 echo '</td>';
                             }
                             ?>
-                            <td>
-                                <div class="btn-group btn-group-sm" role="group">
-                                    <?php
-                                    if ($numRows > 0) {
-                                        $deleteUrl = 'OptionManagerRowOps.php?mode=' . urlencode($mode) . '&Order=' . urlencode($aSeqs[$row]) . '&ListID=' . urlencode($listID) . '&ID=' . urlencode($aIDs[$row]) . '&Action=delete';
-                                        $itemNameJs = InputUtils::escapeAttribute(json_encode($aNameFields[$row]));
-                                        $deleteUrlJs = InputUtils::escapeAttribute(json_encode($deleteUrl));
-                                        echo '<button type="button" class="btn btn-danger" onclick="confirmDelete(' . $itemNameJs . ', ' . $deleteUrlJs . ')"><i class="fa-solid fa-trash"></i> ' . gettext('Delete') . '</button>';
-                                    }
-                                    if ($row != 1) {
-                                        echo '<a href="OptionManagerRowOps.php?mode=' . InputUtils::escapeAttribute($mode) . '&Order=' . InputUtils::escapeAttribute($aSeqs[$row]) . '&ListID=' . InputUtils::escapeAttribute($listID) . '&ID=' . InputUtils::escapeAttribute($aIDs[$row]) . '&Action=up" class="btn btn-outline-secondary" title="' . gettext('Move up') . '"><i class="fa-solid fa-arrow-up"></i></a>';
-                                    }
-                                    if ($row < $numRows) {
-                                        echo '<a href="OptionManagerRowOps.php?mode=' . InputUtils::escapeAttribute($mode) . '&Order=' . InputUtils::escapeAttribute($aSeqs[$row]) . '&ListID=' . InputUtils::escapeAttribute($listID) . '&ID=' . InputUtils::escapeAttribute($aIDs[$row]) . '&Action=down" class="btn btn-outline-secondary" title="' . gettext('Move down') . '"><i class="fa-solid fa-arrow-down"></i></a>';
-                                    }
-                                    ?>
+                            <td class="w-1">
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                        <i class="ti ti-dots-vertical"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <?php
+                                        if ($row !== 1) {
+                                            echo '<a class="dropdown-item" href="OptionManagerRowOps.php?mode=' . InputUtils::escapeAttribute($mode) . '&Order=' . InputUtils::escapeAttribute($aSeqs[$row]) . '&ListID=' . InputUtils::escapeAttribute($listID) . '&ID=' . InputUtils::escapeAttribute($aIDs[$row]) . '&Action=up"><i class="ti ti-arrow-up me-2"></i>' . gettext('Move up') . '</a>';
+                                        }
+                                        if ($row < $numRows) {
+                                            echo '<a class="dropdown-item" href="OptionManagerRowOps.php?mode=' . InputUtils::escapeAttribute($mode) . '&Order=' . InputUtils::escapeAttribute($aSeqs[$row]) . '&ListID=' . InputUtils::escapeAttribute($listID) . '&ID=' . InputUtils::escapeAttribute($aIDs[$row]) . '&Action=down"><i class="ti ti-arrow-down me-2"></i>' . gettext('Move down') . '</a>';
+                                        }
+                                        if ($numRows > 0) {
+                                            $deleteUrl = 'OptionManagerRowOps.php?mode=' . urlencode($mode) . '&Order=' . urlencode($aSeqs[$row]) . '&ListID=' . urlencode($listID) . '&ID=' . urlencode($aIDs[$row]) . '&Action=delete';
+                                            $itemNameJs = InputUtils::escapeAttribute(json_encode($aNameFields[$row]));
+                                            $deleteUrlJs = InputUtils::escapeAttribute(json_encode($deleteUrl));
+                                            echo '<div class="dropdown-divider"></div>';
+                                            echo '<button type="button" class="dropdown-item text-danger" onclick="confirmDelete(' . $itemNameJs . ', ' . $deleteUrlJs . ')"><i class="ti ti-trash me-2"></i>' . gettext('Delete') . '</button>';
+                                        }
+                                        ?>
+                                    </div>
                                 </div>
                             </td>
                         </tr>
                     <?php
                     } ?>
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
 
     <div class="d-flex mt-3 justify-content-center">
-        <button type="submit" class="btn btn-primary mr-2" name="SaveChanges">
-            <i class="fa-solid fa-save"></i>
+        <button type="submit" class="btn btn-primary me-2" name="SaveChanges">
+            <i class="fa-solid fa-floppy-disk"></i>
             <?= gettext('Save Changes') ?>
         </button>
 
-                <?php if ($mode == 'groupcustom' || $mode == 'custom' || $mode == 'famcustom') {
+                <?php if ($mode === 'groupcustom' || $mode === 'custom' || $mode === 'famcustom') {
                 ?>
                     <button type="button" class="btn btn-secondary" name="Exit" onclick="javascript:window.close();">
                         <i class="fa-solid fa-ban"></i>
                         <?= gettext('Exit') ?>
                     </button>
                 <?php
-                } elseif ($mode != 'grproles') {
+                } elseif ($mode !== 'grproles') {
                 ?>
                     <button type="button" class="btn btn-secondary" name="Exit" onclick="javascript:document.location='v2/dashboard';">
                         <i class="fa-solid fa-ban"></i>
@@ -524,7 +539,6 @@ if ($embedded) {
                 } ?>
             </div>
     </div>
-</div>
 </form>
 <?php
 if ($embedded) {

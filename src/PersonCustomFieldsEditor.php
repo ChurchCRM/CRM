@@ -1,25 +1,32 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\Utils\CSRFUtils;
+use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 // Security: user must be administrator to use this page
 AuthenticationManager::redirectHomeIfNotAdmin();
 
+$aPropTypes = CustomFieldUtils::getPropTypes();
+
 $sPageTitle = gettext('Custom Person Fields Editor');
+$sPageSubtitle = gettext('Define custom fields to collect additional person data');
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('People'), '/people/dashboard'],
+    [gettext('Custom Person Fields')],
+]);
 
 require_once __DIR__ . '/Include/Header.php'; ?>
 
-<div class="card card-body">
-    <?php
+<?php
 
     $bErrorFlag = false;
     $bNewNameError = false;
@@ -61,7 +68,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
             if (isset($_POST[$iFieldID . 'special'])) {
                 $aSpecialFields[$iFieldID] = InputUtils::legacyFilterInput($_POST[$iFieldID . 'special'], 'int');
 
-                if ($aSpecialFields[$iFieldID] == 0) {
+                if ($aSpecialFields[$iFieldID] === 0) {
                     $aSpecialErrors[$iFieldID] = true;
                     $bErrorFlag = true;
                 } else {
@@ -81,7 +88,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                     $customField
                         ->setName($aNameFields[$iFieldID])
                         ->setSpecial($aSpecialFields[$iFieldID])
-                        ->setFieldSec((int)$aFieldSecurity[$iFieldID])
+                        ->setFieldSecurity((int)$aFieldSecurity[$iFieldID])
                         ->save();
                 }
             }
@@ -115,8 +122,8 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                     $fields = mysqli_query($cnInfoCentral, 'SHOW COLUMNS FROM person_custom');
                     $last = mysqli_num_rows($fields) - 1;
 
-                    // Set the new field number based on the highest existing.  Chop off the "c" at the beginning of the old one's name.
-                    // The "c#" naming scheme is necessary because MySQL 3.23 doesn't allow numeric-only field (table column) names.
+                    // Set the new field number based on the highest existing.  Chop off the"c" at the beginning of the old one's name.
+                    // The"c#" naming scheme is necessary because MySQL 3.23 doesn't allow numeric-only field (table column) names.
                     $fields = mysqli_query($cnInfoCentral, 'SELECT * FROM person_custom');
                     $fieldInfo = mysqli_fetch_field_direct($fields, $last);
                     $newFieldNum = (int) mb_substr($fieldInfo->name, 1) + 1;
@@ -141,16 +148,16 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                             ->setOptionName(gettext('Default Option'));
                         $listOption->save();
 
-                        $newSpecial = "'$newListID'";
+                        $newSpecial ="'$newListID'";
                     } else {
                         $newSpecial = 'NULL';
                     }
 
                     // Insert into the master table
                     $newOrderID = $last + 1;
-                    $sSQL = "INSERT INTO person_custom_master
+                    $sSQL ="INSERT INTO person_custom_master
                         (custom_Order , custom_Field , custom_Name ,  custom_Special , custom_FieldSec, type_ID)
-                        VALUES ('" . $newOrderID . "', 'c" . $newFieldNum . "', '" . $newFieldName . "', " . $newSpecial . ", '" . $newFieldSec . "', '" . $newFieldType . "');";
+                        VALUES ('" . $newOrderID ."', 'c" . $newFieldNum ."', '" . $newFieldName ."'," . $newSpecial .", '" . $newFieldSec ."', '" . $newFieldType ."');";
                     RunQuery($sSQL);
 
                     // Insert into the custom fields table
@@ -158,7 +165,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
 
                     switch ($newFieldType) {
                         case 1:
-                            $sSQL .= "ENUM('false', 'true')";
+                            $sSQL .="ENUM('false', 'true')";
                             break;
                         case 2:
                             $sSQL .= 'DATE';
@@ -176,7 +183,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                             $sSQL .= 'YEAR';
                             break;
                         case 7:
-                            $sSQL .= "ENUM('winter', 'spring', 'summer', 'fall')";
+                            $sSQL .="ENUM('winter', 'spring', 'summer', 'fall')";
                             break;
                         case 8:
                             $sSQL .= 'INT';
@@ -233,18 +240,18 @@ require_once __DIR__ . '/Include/Header.php'; ?>
     }
     function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
     {
-        $sOptList = '<select name="' . $fld_name . '" class="form-control form-control-sm">';
+        $sOptList = '<select name="' . $fld_name . '" class="form-select form-select-sm">';
         $grp_Count = count($aSecGrp);
 
         for ($i = 0; $i < $grp_Count; $i++) {
             $aAryRow = $aSecGrp[$i];
             //extract($aAryRow);
             $sOptList .= '<option value="' . $aAryRow['lst_OptionID'] . '"';
-            //        echo "lst_OptionName:".$aAryRow['lst_OptionName']."<br>";
+            //        echo"lst_OptionName:".$aAryRow['lst_OptionName']."<br>";
             if ($aAryRow['lst_OptionName'] == $currOpt) {
                 $sOptList .= ' selected';
             }
-            $sOptList .= '>' . $aAryRow['lst_OptionName'] . "</option>\n";
+            $sOptList .= '>' . $aAryRow['lst_OptionName'] ."</option>\n";
         }
         $sOptList .= '</select>';
 
@@ -255,7 +262,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
     ?>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         function confirmDeleteField(fieldName, fieldId) {
-            var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + ' "' + fieldName + '"?';
+            var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + '"' + fieldName + '"?';
             msg += '<br><br><strong>' + <?= json_encode(gettext('Warning:')) ?> + '</strong> ';
             msg += <?= json_encode(gettext('By deleting this field, you will irrevocably lose all person data assigned for this field!')) ?>;
             bootbox.confirm({
@@ -298,6 +305,11 @@ require_once __DIR__ . '/Include/Header.php'; ?>
             return false;
         }
 
+        $(document).on('click', '.js-delete-field', function () {
+            var btn = $(this);
+            confirmDeleteField(btn.data('field-name'), btn.data('field-id'));
+        });
+
         <?php if (isset($_GET['deleted']) && $_GET['deleted'] === '1'): ?>
         $(document).ready(function() {
             window.CRM.notify(
@@ -310,7 +322,8 @@ require_once __DIR__ . '/Include/Header.php'; ?>
 
     <form method="post" action="PersonCustomFieldsEditor.php" name="PersonCustomFieldsEditor">
         <div class="card mb-4">
-            <div class="card-header bg-success text-white">
+            <div class="card-status-top bg-success"></div>
+            <div class="card-header">
                 <h5 class="mb-0">
                     <i class="fa-solid fa-plus"></i>
                     <?= gettext('Add New') . ' ' . gettext('Field') ?>
@@ -320,7 +333,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                 <div class="row">
                     <div class="col-md-3">
                         <label for="newFieldType" class="form-label"><?= gettext('Type') ?>:</label>
-                        <select id="newFieldType" name="newFieldType" class="form-control">
+                        <select id="newFieldType" name="newFieldType" class="form-select">
                             <?php
                             for ($iOptionID = 1; $iOptionID <= count($aPropTypes); $iOptionID++) {
                                 echo '<option value="' . InputUtils::escapeAttribute($iOptionID) . '">' . InputUtils::escapeHTML($aPropTypes[$iOptionID]) . '</option>';
@@ -357,19 +370,18 @@ require_once __DIR__ . '/Include/Header.php'; ?>
         </div>
 
         <?php
-        if ($numRows == 0) {
+        if ($numRows === 0) {
         ?>
             <div class="alert alert-info" role="alert">
-                <i class="fa-solid fa-info-circle"></i>
+                <i class="fa-solid fa-circle-info"></i>
                 <?= gettext('No custom person fields have been added yet') ?>
             </div>
         <?php
         } else {
         ?>
-            <div class="alert alert-warning" role="alert">
-                <i class="fa-solid fa-exclamation-triangle"></i>
-                <strong><?= gettext('Warning:') ?></strong>
-                <?= gettext("Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!") ?>
+            <div class="alert alert-info" role="alert">
+                <i class="fa-solid fa-circle-info me-1"></i>
+                <?= gettext('Name changes require saving. Reorder and delete actions in the action menu take effect immediately.') ?>
             </div>
             <?php
             if ($bErrorFlag) {
@@ -382,22 +394,22 @@ require_once __DIR__ . '/Include/Header.php'; ?>
             <?php
             } ?>
             <div class="card">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header d-flex align-items-center">
                     <h5 class="mb-0">
-                        <i class="fa-solid fa-list"></i>
+                        <i class="fa-solid fa-list me-2"></i>
                         <?= gettext('Existing Custom Person Fields') ?>
                     </h5>
+                    <span class="badge bg-info text-white ms-auto"><?= $numRows ?> <?= gettext('fields') ?></span>
                 </div>
-                <div class="card-body">
-                    <div class="table-responsive">
+                <div class="card-body" style="overflow: visible;">
                         <table class="table table-hover table-sm">
-                            <thead class="table-light">
+                            <thead>
                                 <tr>
                                     <th><?= gettext('Type') ?></th>
                                     <th><?= gettext('Name') ?></th>
                                     <th><?= gettext('Special option') ?></th>
                                     <th><?= gettext('Security Option') ?></th>
-                                    <th><?= gettext('Actions') ?></th>
+                                    <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -408,7 +420,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                         ?>
                         <tr>
                             <td>
-                                <span class="badge badge-primary"><?= InputUtils::escapeHTML($aPropTypes[$aTypeFields[$row]]) ?></span>
+                                <span class="badge bg-light text-dark"><?= InputUtils::escapeHTML($aPropTypes[$aTypeFields[$row]]) ?></span>
                             </td>
                             <td>
                                 <input type="text" name="<?= $row ?>name" value="<?= InputUtils::escapeAttribute($aNameFields[$row]) ?>" class="form-control form-control-sm" maxlength="40">
@@ -420,7 +432,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                             <td>
                                 <?php
                                 if ($aTypeFields[$row] == 9) {
-                                    echo '<select name="' . $row . 'special" class="form-control form-control-sm">';
+                                    echo '<select name="' . $row . 'special" class="form-select form-select-sm">';
                                     echo '<option value="0" selected>' . gettext('Select a group') . '</option>';
 
                                     $sSQL = 'SELECT grp_ID,grp_Name FROM group_grp ORDER BY grp_Name';
@@ -455,23 +467,29 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                     echo GetSecurityList($aSecurityGrp, $row . 'FieldSec');
                                 } ?>
                             </td>
-                            <td>
-                                <div class="btn-group btn-group-sm" role="group">
-                                    <?php
-                                    $fieldNameJs = htmlspecialchars(json_encode($aNameFields[$row]), ENT_QUOTES, 'UTF-8');
-                                    $fieldIdJs = htmlspecialchars(json_encode($aFieldFields[$row]), ENT_QUOTES, 'UTF-8');
-                                    ?>
-                                    <button type="button" class="btn btn-sm btn-danger" onclick="confirmDeleteField(<?= $fieldNameJs ?>, <?= $fieldIdJs ?>)">
-                                        <i class="fa-solid fa-trash"></i>
-                                        <?= gettext('Delete') ?>
+                            <td class="w-1">
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                        <i class="ti ti-dots-vertical"></i>
                                     </button>
-                                    <?php
-                                    if ($row != 1) {
-                                        echo '<a href="PersonCustomFieldsRowOps.php?OrderID=' . $row . '&Field=' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '&Action=up" class="btn btn-outline-secondary" title="' . gettext('Move up') . '"><i class="fa-solid fa-arrow-up"></i></a>';
-                                    }
-                                    if ($row < $numRows) {
-                                        echo '<a href="PersonCustomFieldsRowOps.php?OrderID=' . $row . '&Field=' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '&Action=down" class="btn btn-outline-secondary" title="' . gettext('Move down') . '"><i class="fa-solid fa-arrow-down"></i></a>';
-                                    } ?>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <?php
+                                        if ($row != 1) {
+                                            echo '<a class="dropdown-item" href="PersonCustomFieldsRowOps.php?OrderID=' . $row . '&Field=' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '&Action=up"><i class="ti ti-arrow-up me-2"></i>' . gettext('Move up') . '</a>';
+                                        }
+                                        if ($row < $numRows) {
+                                            echo '<a class="dropdown-item" href="PersonCustomFieldsRowOps.php?OrderID=' . $row . '&Field=' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '&Action=down"><i class="ti ti-arrow-down me-2"></i>' . gettext('Move down') . '</a>';
+                                        }
+                                        if ($row != 1 || $row < $numRows) {
+                                            echo '<div class="dropdown-divider"></div>';
+                                        }
+                                        ?>
+                                        <button type="button" class="dropdown-item text-danger js-delete-field"
+                                            data-field-name="<?= InputUtils::escapeAttribute($aNameFields[$row]) ?>"
+                                            data-field-id="<?= InputUtils::escapeAttribute($aFieldFields[$row]) ?>">
+                                            <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                        </button>
+                                    </div>
                                 </div>
                             </td>
                         </tr>
@@ -480,19 +498,16 @@ require_once __DIR__ . '/Include/Header.php'; ?>
 
                             </tbody>
                         </table>
-                    </div>
                 </div>
             </div>
             <div class="d-flex justify-content-center my-3">
                 <button type="submit" class="btn btn-primary" name="SaveChanges">
-                    <i class="fa-solid fa-save"></i>
+                    <i class="fa-solid fa-floppy-disk"></i>
                     <?= gettext('Save Changes') ?>
                 </button>
             </div>
         <?php
         } ?>
     </form>
-
-</div>
 <?php
 require_once __DIR__ . '/Include/Footer.php';

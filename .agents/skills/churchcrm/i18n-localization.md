@@ -107,6 +107,31 @@ echo strftime('%B %d, %Y', $timestamp);  // Not localized
 
 ---
 
+## i18next Load Order — Always Use $(document).ready() <!-- learned: 2026-03-07 -->
+
+`i18next` is loaded by `Footer.php` at the **end** of the page. Any inline `<script>` block that calls `i18next.t()` before the footer runs will throw `ReferenceError: i18next is not defined`.
+
+**Always wrap i18next calls in `$(document).ready()`:**
+
+```javascript
+// ✅ CORRECT — deferred until Footer.php has loaded i18next
+$(document).ready(function() {
+    window.CRM.settingsPanel.init({
+        title: i18next.t('Map Settings'),
+        // ...
+    });
+});
+
+// ❌ WRONG — i18next not yet loaded at script parse time
+window.CRM.settingsPanel.init({
+    title: i18next.t('Map Settings'),  // ReferenceError!
+});
+```
+
+This applies to all inline scripts in PHP templates that use `i18next.t()`. Webpack entry points are unaffected (they use `DOMContentLoaded`).
+
+---
+
 ## Adding New UI Terms
 
 ### Workflow
@@ -439,6 +464,68 @@ echo gettext("User's Name");   // Better
 echo gettext('Hello, ' . $name);  // $name won't translate
 ```
 
+### Punctuation & Colon Placement <!-- learned: 2026-03-15 -->
+
+**Rule: Move colons OUTSIDE gettext() calls.** Colons are UI punctuation, not translatable content. Translators should not include punctuation.
+
+**Pattern:**
+```php
+// ❌ WRONG - Colon inside translation
+echo gettext('Birth Date:');
+echo gettext('Type:');
+echo gettext('File Name:');
+
+// ✅ CORRECT - Colon outside translation
+echo gettext('Birth Date') . ':';
+echo gettext('Type') . ':';
+echo gettext('File Name') . ':';
+```
+
+**With spaces after colon (label separator):**
+```php
+// ❌ WRONG
+echo gettext('Label: ');
+
+// ✅ CORRECT
+echo gettext('Label') . ': ';
+```
+
+**In sentence-ending colons (introducing a list):**
+```php
+// ❌ WRONG
+echo gettext('Please select from the following:');
+
+// ✅ CORRECT
+echo gettext('Please select from the following') . ':';
+```
+
+**In HTML attributes or templates:**
+```php
+// ✅ CORRECT - Inline concatenation
+<?= gettext('Birth Date') . ':' ?>
+
+// ✅ CORRECT - Attribute context
+<label><?= gettext('Type') . ':' ?></label>
+
+// ✅ CORRECT - More readable format (if wrapping is needed)
+echo '<label>'
+    . gettext('Type')
+    . ':</label>';
+```
+
+**Update messages.po when making this change:**
+```gettext
+# BEFORE
+msgid "Birth Date:"
+msgstr ""
+
+# AFTER
+msgid "Birth Date"
+msgstr ""
+```
+
+The msgid key must match what's passed to gettext() in PHP code.
+
 ### Plural Forms
 
 ```php
@@ -695,6 +782,219 @@ Refer to existing translations in `locale/locales/[LANGUAGE].json` for consisten
 
 ---
 
+## RTL (Right-to-Left) Locale Support <!-- learned: 2026-03-28 -->
+
+Arabic (`ar`) and Hebrew (`he`) locales have `"isRTL": true` in `locales.json`. The rendering pipeline honours this flag automatically.
+
+### How it works
+
+| Layer | What happens |
+|-------|-------------|
+| `LocaleInfo::isRTL()` | Reads `localeConfig['isRTL']` from the loaded locale |
+| `Header.php` | Emits `<html dir="rtl">` and sets `window.CRM.isRTL = true` |
+| `Header-Minimal.php` | Same — call `Bootstrapper::getCurrentLocale()` then use `$localeInfo->isRTL()` |
+| `Header-Short.php` | Same — needed for PrintView RTL support |
+| `HeaderNotLoggedIn.php` | Same — login page is also RTL-aware |
+| `Header-HTML-Scripts.php` | Loads `churchcrm-rtl.min.css` instead of `churchcrm.min.css` |
+
+### Adding a new RTL locale
+
+When `locale-add.js` creates a new locale, it now defaults `isRTL: false`. For Arabic/Hebrew, manually set `"isRTL": true` in `locales.json` after creation.
+
+### Using RTL in JavaScript
+
+```javascript
+// Check direction in JS
+if (window.CRM.isRTL) {
+    // flip any LTR-specific logic (e.g. swipe direction, chart axis)
+}
+```
+
+### Critical: all headers must initialize `$localeInfo`
+
+Every PHP header file that includes `Header-HTML-Scripts.php` **must** initialise `$localeInfo` before the include. If it doesn't, the RTL CSS will not load and the `<html dir>` attribute will be missing.
+
+```php
+// ✅ Required in any header that includes Header-HTML-Scripts.php
+use ChurchCRM\Bootstrapper;
+$localeInfo = Bootstrapper::getCurrentLocale();
+```
+
+---
+
+## POEditor Download/Upload Workflow <!-- learned: 2026-04-03 -->
+
+### Extracting and Uploading New Terms
+
+When adding new UI terms:
+
+```bash
+# 1. Extract all translatable strings (PHP, JS, DB)
+npm run locale:build
+# Output: locale/messages.po (master template)
+
+# 2. Upload messages.po to POEditor web dashboard
+# - Go to https://poeditor.com → ChurchCRM project
+# - Click "Import" or "Upload"
+# - Select locale/messages.po
+# - Choose "Override existing terms" (updates outdated terms)
+# - Confirm upload
+
+# 3. Download translations back to sync with POEditor
+npm run locale:download
+# Output: src/locale/i18n/*.json (all language files)
+# Also generates: locale/terms/missing/[LANGUAGE]/*.json (untranslated batches)
+
+# 4. Translate missing terms via POEditor or AI
+# (See "AI-Assisted Translation Instructions" section)
+
+# 5. Download again to get all translations
+npm run locale:download
+
+# 6. Commit
+git add src/locale/i18n/
+git commit -m "locale: download updated translations from POEditor"
+```
+
+### HTML Entity Corruption in Downloaded Translations <!-- learned: 2026-04-03 -->
+
+**Issue:** POEditor's web interface sometimes encodes apostrophes as HTML entities (`&#39;`) when translations are copy-pasted from HTML contexts. When downloaded, these appear as literal `&#39;` strings in JSON files, breaking UI text display.
+
+**Example of corrupted translations:**
+```json
+{
+  "Church Event Editor": "Gestionnaire d&#39;événement de l&#39;église",
+  "Email is Not Valid": "L&#39;adresse email n'est pas valide",
+  "Sunday School Dashboard": "Tableau de bord de l&#39;école du dimanche"
+}
+```
+
+**Root cause:** Translators or POEditor's import process copy text from web pages (which encode apostrophes as `&#39;`) without stripping HTML encoding before pasting into JSON.
+
+**Fix:** After downloading, replace all `&#39;` with plain apostrophes across all locale files:
+
+```bash
+# 1. Replace HTML entities in all locale files
+for file in src/locale/i18n/*.json; do
+  sed -i '' 's/&#39;/'\''/g' "$file"
+done
+
+# 2. Verify no remaining entities
+grep -r "&#39;" src/locale/i18n/
+
+# 3. Upload cleaned files back to POEditor
+# - This prevents re-downloading the broken versions
+# - Keeps POEditor as source of truth for future translators
+```
+
+**Prevention:** 
+1. After each `npm run locale:download`, audit for `&#39;` in locale files
+2. If found, apply the fix above and **upload corrected files back to POEditor**
+3. Train translators to use POEditor's interface directly (not copy-paste from external sources)
+4. Set up a pre-commit hook to catch `&#39;` before they reach the repo
+
+**Checking for the issue:**
+```bash
+# Count occurrences per locale
+for file in src/locale/i18n/*.json; do
+  count=$(grep -c "&#39;" "$file" 2>/dev/null || echo 0)
+  if [ "$count" -gt 0 ]; then
+    echo "$(basename $file): $count occurrences"
+  fi
+done
+```
+
+---
+
+## AI-Assisted Bulk Translation: Agent Patterns <!-- learned: 2026-04-09 -->
+
+When running bulk locale translation via AI sub-agents (e.g. the `locale-translate` skill), the following patterns were learned from empirical sessions:
+
+### ✅ What Works: One Locale Per Sub-Agent
+
+**Assign exactly ONE locale (2 files) to each sub-agent.** This is the only reliably completing pattern.
+
+```
+✅ agent-1: translate de (de-1.json + de-2.json)
+✅ agent-2: translate ru (ru-1.json + ru-2.json)
+✅ agent-3: translate ja (ja-1.json + ja-2.json)
+... (all launched in parallel)
+```
+
+**Why it works:** Each agent reads 2 files, translates ~190 terms, and applies 2 `--apply` calls — a total of ~4–6 operations well within token/time budget.
+
+### ❌ What Fails: Multiple Locales Per Sub-Agent
+
+**Do NOT assign 2+ locales per agent.** This pattern causes timeout/failure on nearly every locale beyond the first.
+
+```
+❌ agent-1: translate de + ja   → reads 4 files, translates 380 terms, times out
+❌ agent-1: translate sw + am   → reads 4 files, both incomplete
+```
+
+**Why it fails:** Reading 4 files + translating 380+ terms + applying 4 `--apply` calls exhausts the agent's context/time budget. The agent typically finishes reading but runs out of time before applying.
+
+### ✅ Commit Immediately After Each Batch
+
+**Always call `report_progress` to commit and push after each batch of agents completes.** Translations applied locally are lost on session termination if not committed.
+
+```
+❌ WRONG: Translate 20 locales, then call report_progress once → session expires, all work lost
+✅ RIGHT: Translate 10 locales, call report_progress → push → translate next 10 → call report_progress
+```
+
+### Translation Conventions for All Locales
+
+These rules must be stated explicitly in every agent prompt:
+
+- Preserve `%d`, `%s`, `%1$s` format specifiers exactly  
+- Preserve brand names: ChurchCRM, Vonage, MailChimp, GitHub, OpenLP, Nextcloud, Azure, Gravatar, WebDAV, POEditor, ownCloud  
+- Leave intentionally empty strings as `""`: `N/A`, `name@example.com`, `SHA1 Hash`, `BCC`  
+- For plural objects `{"one": "", "other": ""}`: provide both forms  
+- Country names (e.g., "Australia", "Canada") stay in English (value = key) — mark these in `locale/terms/english-ok.json` rather than translating  
+
+### Locale Church Vocabulary Reference
+
+| Locale | Members | Groups | Giving | Kiosk |
+|--------|---------|--------|--------|-------|
+| es/es-MX/es-AR/es-CO/es-SV | Miembros | Ministerios | Ofrendas | Quiosco |
+| pt/pt-br | Membros | Ministérios | Ofertas | Quiosque |
+| fr | Membres | Ministères | Offrandes | Borne interactive |
+| de | Gemeindemitglieder | Dienste | Gaben/Spenden | Kiosk |
+| ru | Прихожане | Служения | Пожертвования | Киоск |
+| zh-CN | 会众 | 事工部门 | 奉献 | 签到台 |
+| zh-TW | 會眾 | 事工部門 | 奉獻 | 簽到台 |
+| ja | 信徒 | ミニストリー | 献金 | チェックインキオスク |
+| ko | 교인 | 사역 | 헌금 | 출석 키오스크 |
+| ar | المؤمنين | الخدمات | العطاء | كشك |
+| hi | सदस्य | मंत्रालय | दान/अर्पण | चेक-इन कियोस्क |
+| id | Jemaat | Pelayanan | Persembahan | Kios |
+| sw | Wanachama wa Kanisa | Huduma | Sadaka/Matoleo | Kiosk |
+| am | አባላት | አገልግሎቶች | ስጦታ | ኪዮስክ |
+| vi | Giáo đoàn | Các bộ phận | Dâng hiến | Quầy điểm danh |
+| nl | Gemeenteleden | Bedieningen | Gaven/Giften | Kiosk |
+| pl | Parafianie | Posługi | Ofiary/Datki | Kiosk |
+| uk | Парафіяни | Служіння | Пожертвування | Кіоск |
+| el | Ενορίτες | Λειτουργίες | Προσφορές | Περίπτερο |
+| sv | Församlingsmedlemmar | Tjänster | Gåvor | Kiosk |
+| ro | Enoriași | Slujiri | Ofrande | Chioșc |
+| cs | Farníci/Členové | Služby | Příspěvky/Dary | Kiosek |
+| hu | Gyülekezeti tagok | Szolgálatok | Adományok | Kiosk |
+| he | מאמינים | שירותים | תרומות | קיוסק |
+| nb | Menighetsmedlemmer | Tjenester | Gaver | Kiosk |
+| fi | Seurakuntalaiset | Palvelut | Lahjoitukset | Kioski |
+| et | Koguduse liikmed | Teenistused | Annetused | Kioski |
+| af | Gemeentelede | Bedieninge | Gawes/Offergawes | Kiosk |
+| sq | Besimtarët | Shërbesat | Kontributet | Kiosk |
+| fil | Mga Miyembro ng Simbahan | Mga Ministeryo | Mga Handog | Kiosk |
+| ml | സഭാ അംഗങ്ങൾ | ശുശ്രൂഷകൾ | കാഴ്ചദ്രവ്യം | കിയോസ്ക് |
+| ta | சபை உறுப்பினர்கள் | ஊழியங்கள் | காணிக்கை | வருகை மையம் |
+| te | సంఘ సభ్యులు | పరిచర్యలు | కానుకలు | హాజరు కేంద్రం |
+| th | สมาชิกคริสตจักร | พันธกิจ | การถวาย | คีออสก์ |
+| tr | Cemaat üyeleri | Hizmetler | Bağışlar | Kiosk |
+
+---
+
 ## Related Skills
 
 - [Git Workflow](./git-workflow.md) - Locale rebuild in pre-commit checklist
@@ -703,4 +1003,4 @@ Refer to existing translations in `locale/locales/[LANGUAGE].json` for consisten
 
 ---
 
-Last updated: March 1, 2026
+Last updated: April 9, 2026

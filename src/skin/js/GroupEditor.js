@@ -73,9 +73,9 @@ function initializeGroupEditor() {
     })
       .done((data) => {
         if (data.groupType === i18next.t("Sunday School")) {
-          window.location.href = `${window.CRM.root}/sundayschool/SundaySchoolDashboard.php`;
+          window.location.href = `${window.CRM.root}/groups/sundayschool/dashboard`;
         } else {
-          window.location.href = `${window.CRM.root}/GroupList.php`;
+          window.location.href = `${window.CRM.root}/groups/dashboard`;
         }
       })
       .fail((xhr, status, error) => {
@@ -267,7 +267,7 @@ function initializeGroupEditor() {
         data: null,
         render: (data, type, full, meta) => {
           if (full.lst_OptionID == defaultRoleID) {
-            return `<strong><i class="fa-solid fa-check"></i>${i18next.t("Default")}</strong>`;
+            return `<strong><i class="fa-solid fa-check me-1"></i>${i18next.t("Default")}</strong>`;
           } else {
             return `<button type="button" id="defaultRole-${full.lst_OptionID}" class="btn btn-success defaultRole">${i18next.t("Default")}</button>`;
           }

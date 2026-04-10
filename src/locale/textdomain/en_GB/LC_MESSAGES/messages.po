@@ -62,19 +62,10 @@ msgstr "Mobile Phone"
 msgid "Cell"
 msgstr "Mobile"
 
-#: 
-msgid "Church Zip"
-msgstr "Church Post Code"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Zip Code"
 msgstr "Post Code"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Enter any part of the following: Name, City, Post Code, Home Phone, Email, or Work Email."
 
 #: 
 msgid "Foreground Color"

@@ -1,13 +1,19 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 require_once __DIR__ . '/Include/LabelFunctions.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 $sPageTitle = gettext('Letters and Mailing Labels');
+$sPageSubtitle = gettext('Generate mailing labels and form letters');
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Data & Reports'), '/QueryList.php'],
+    [gettext('Letters and Labels')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 // Is this the second pass?
@@ -16,7 +22,7 @@ if (isset($_POST['SubmitNewsLetter']) || isset($_POST['SubmitConfirmReport']) ||
     $sFontInfo = $_POST['labelfont'];
     $sFontSize = $_POST['labelfontsize'];
     $bRecipientNamingMethod = $_POST['recipientnamingmethod'];
-    $sLabelInfo = '&labelfont=' . urlencode($sFontInfo) . '&labelfontsize=' . $sFontSize . "&recipientnamingmethod=" . $bRecipientNamingMethod;
+    $sLabelInfo = '&labelfont=' . urlencode($sFontInfo) . '&labelfontsize=' . $sFontSize ."&recipientnamingmethod=" . $bRecipientNamingMethod;
 
     if (isset($_POST['SubmitNewsLetter'])) {
         RedirectUtils::redirect('Reports/NewsLetterLabels.php?labeltype=' . $sLabelFormat . $sLabelInfo);
@@ -30,7 +36,7 @@ if (isset($_POST['SubmitNewsLetter']) || isset($_POST['SubmitConfirmReport']) ||
 <div class="row">
   <div class="col-lg-12">
     <div class="card">
-      <div class="card-header">
+      <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><?= gettext('People Reports')?></h3>
       </div>
       <div class="card-body">
@@ -44,9 +50,9 @@ FontSelect('labelfont');
 FontSizeSelect('labelfontsize');
 ?>
             <tr>
-              <td class="LabelColumn"><?= gettext("Recipient Naming Method")?>:</td>
-              <td class="TextColumn">
-                <select name="recipientnamingmethod">
+              <td class="text-secondary"><?= gettext("Recipient Naming Method")?>:</td>
+              <td>
+                <select name="recipientnamingmethod" class="form-select">
                   <option value="salutationutility"><?= gettext("Salutation Utility") ?></option>
                   <option value="familyname"><?= gettext("Family Name") ?></option>
                 </select>

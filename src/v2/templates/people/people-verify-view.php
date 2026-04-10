@@ -7,52 +7,40 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
 <div class="card">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><?= gettext('Functions') ?></h3>
     </div>
     <div class="card-body">
-        <a href="<?= SystemURLs::getRootPath()?>/Reports/ConfirmReport.php" class="btn btn-app bg-danger">
-            <i class="fa-solid fa-file-pdf fa-3x"></i><br>
-            <?= gettext('Download family letters') ?>
-        </a>
-        <button type="button" class="btn btn-app bg-primary" id="verifyEmail">
-            <i class="fa-solid fa-envelope fa-3x"></i><br>
-            <?= gettext('Send family email') ?>
-        </button>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-lg-12">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title"><?= _("Self Verify") ?></h3>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                <table id="families-complete" class="table table-striped table-bordered data-table">
-                    <tbody></tbody>
-                </table>
-                </div>
-            </div>
+        <div class="btn-group" role="group">
+            <a href="<?= SystemURLs::getRootPath()?>/Reports/ConfirmReport.php" class="btn btn-outline-danger" title="<?= gettext('Generate and download confirmation letters') ?>">
+                <i class="fa-solid fa-file-pdf me-2"></i><?= gettext('Letters') ?>
+            </a>
+            <button type="button" class="btn btn-outline-primary" id="verifyEmail" title="<?= gettext('Send email to families') ?>">
+                <i class="fa-solid fa-envelope me-2"></i><?= gettext('Email Families') ?>
+            </button>
         </div>
     </div>
 </div>
 
-<div class="row">
-    <div class="col-lg-12">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title"><?= _("Pending Self Verify") ?></h3>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                <table id="families-pending" class="table table-striped table-bordered data-table">
-                    <tbody></tbody>
-                </table>
-                </div>
-            </div>
-        </div>
+<div class="card">
+    <div class="card-header d-flex align-items-center">
+        <h3 class="card-title"><?= _("Self Verify") ?></h3>
+    </div>
+    <div class="table-responsive">
+        <table id="families-complete" class="table table-vcenter table-hover card-table">
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header d-flex align-items-center">
+        <h3 class="card-title"><?= _("Pending Self Verify") ?></h3>
+    </div>
+    <div class="table-responsive">
+        <table id="families-pending" class="table table-vcenter table-hover card-table">
+            <tbody></tbody>
+        </table>
     </div>
 </div>
 
@@ -73,7 +61,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 },
                 callback: function(result) {
                     if (result) {
-                        window.location= window.CRM.root + "/Reports/ConfirmReportEmail.php";
+                        window.location= window.CRM.root +"/Reports/ConfirmReportEmail.php";
                     }
                 }
             });
@@ -81,7 +69,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
         var dataTableConfig = {
             ajax: {
-                url: window.CRM.root + "/api/families/self-verify",
+                url: window.CRM.root +"/api/families/self-verify",
                 dataSrc: 'families'
             },
 
@@ -118,14 +106,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     }
                 }
             ],
-            order: [[2, "desc"]]
+            order: [[2,"desc"]]
         }
         $.extend(dataTableConfig, window.CRM.plugin.dataTable);
         $("#families-complete").DataTable(dataTableConfig);
 
           dataTableConfig = {
             ajax: {
-                url: window.CRM.root + "/api/families/pending-self-verify",
+                url: window.CRM.root +"/api/families/pending-self-verify",
                 dataSrc: 'families'
             },
 
@@ -156,7 +144,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     }
                 }
             ],
-            order: [[0, "asc"]]
+            order: [[0,"asc"]]
         }
 
           $.extend(dataTableConfig, window.CRM.plugin.dataTable);

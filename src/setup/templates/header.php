@@ -27,6 +27,6 @@
     <script nonce="<?= $nonce ?>">
         // Initialize window.CRM for setup script
         window.CRM = {
-            root: "<?= $rootPath ?>"
+            root:"<?= $rootPath ?>"
         };
     </script>

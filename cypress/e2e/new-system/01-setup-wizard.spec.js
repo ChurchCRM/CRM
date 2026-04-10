@@ -28,6 +28,9 @@ describe('01 - Setup Wizard', () => {
         password: 'changeme'
     };
 
+    // New password set during the forced change step
+    const newAdminPassword = Cypress.env('admin.new.password') || 'AdminP@ss1234!';
+
     describe('Fresh Installation', () => {
         it('should display the setup wizard on first visit', () => {
             cy.visit('/');
@@ -72,7 +75,7 @@ describe('01 - Setup Wizard', () => {
             cy.get('#advanced-settings-collapse').should('not.have.class', 'show');
             
             // Click to expand advanced settings
-            cy.get('[data-target="#advanced-settings-collapse"]').click();
+            cy.get('[data-bs-target="#advanced-settings-collapse"]').click();
             
             // URL and Root Path fields should be visible after expanding
             cy.get('#advanced-settings-collapse').should('have.class', 'show');
@@ -121,44 +124,119 @@ describe('01 - Setup Wizard', () => {
         });
     });
 
-    describe('First Admin Login', () => {
-        it('should login with default admin credentials', () => {
+    describe('Password Change', () => {
+        it('should redirect to forced password change on first admin login', () => {
             cy.visit('/login');
-            
-            // Enter default admin credentials
             cy.get('input[name=User]').type(adminCredentials.username);
             cy.get('input[name=Password]').type(adminCredentials.password + '{enter}');
-            
+
+            // NeedPasswordChange=true on fresh install → forced change page
+            cy.url({ timeout: 15000 }).should('include', '/changepassword');
+            cy.get('.login-wrapper').should('be.visible');
+            cy.contains('Password Change Required').should('be.visible');
+        });
+
+        it('should complete forced password change and redirect to church-info', () => {
+            cy.visit('/login');
+            cy.get('input[name=User]').type(adminCredentials.username);
+            cy.get('input[name=Password]').type(adminCredentials.password + '{enter}');
+
+            cy.url({ timeout: 15000 }).should('include', '/changepassword');
+
+            cy.get('#OldPassword').type(adminCredentials.password);
+            cy.get('#NewPassword1').type(newAdminPassword);
+            cy.get('#NewPassword2').type(newAdminPassword);
+            cy.get('button[type=submit]').click();
+
+            // ChurchInfoRequiredMiddleware redirects admin to church-info when sChurchName is empty
+            cy.url({ timeout: 15000 }).should('include', '/admin/system/church-info');
+
+            // Store new password in Cypress env so 02-demo-import.spec.js can read it
+            cy.then(() => { Cypress.env('newSystemAdminPassword', newAdminPassword); });
+        });
+    });
+
+    describe('Church Info Setup', () => {
+        it('should redirect to church-info after login when church name is not set', () => {
+            cy.visit('/login');
+            cy.get('input[name=User]').type(adminCredentials.username);
+            cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
+
+            cy.url({ timeout: 15000 }).should('include', '/admin/system/church-info');
+            cy.contains('Church Information').should('be.visible');
+        });
+
+        it('should fill and save church information to complete first-run setup', () => {
+            cy.visit('/login');
+            cy.get('input[name=User]').type(adminCredentials.username);
+            cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
+
+            cy.url({ timeout: 15000 }).should('include', '/admin/system/church-info');
+
+            // Wait for page to fully load — country defaults to US and populates state dropdown
+            cy.get('#sChurchCountry', { timeout: 10000 }).siblings('.ts-wrapper').should('exist');
+
+
+            // Fill required fields (single-page layout, no tabs)
+            cy.get('#sChurchName').clear().type('Test Community Church');
+            cy.get('#sChurchPhone').clear().type('(555) 123-4567');
+            cy.get('#sChurchEmail').clear().type('info@testchurch.org');
+            cy.get('#sChurchAddress').clear().type('123 Main Street');
+            cy.get('#sChurchCity').clear().type('Springfield');
+
+            // Country defaults to US — wait for state dropdown then select state
+            cy.get('#sChurchState', { timeout: 10000 }).siblings('.ts-wrapper').should('exist');
+            cy.tomSelectByValue('#sChurchState', 'IL');
+            cy.get('#sChurchState').should('have.value', 'IL');
+
+            cy.get('#sChurchZip').clear().type('62701');
+
+            // Submit the form
+            cy.wait(500);
+            cy.get('#church-info-form').submit();
+
+            // Should remain on church-info and show success notification
+            cy.url({ timeout: 10000 }).should('include', 'church-info');
+            cy.contains('Church information saved successfully', { timeout: 10000 }).should('be.visible');
+        });
+    });
+
+    describe('First Admin Login', () => {
+        // By this point the password has been changed to newAdminPassword and
+        // church info has been saved, so normal login lands on the dashboard.
+
+        it('should login with new password and reach the dashboard', () => {
+            cy.visit('/login');
+            cy.get('input[name=User]').type(adminCredentials.username);
+            cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
+
             // Should redirect away from login
             cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
-            
+
             // Should be on some page (dashboard or admin)
             cy.get('body').should('exist');
         });
 
-        it('should show admin dashboard or home after first login', () => {
+        it('should show admin dashboard after church info is configured', () => {
             cy.visit('/login');
             cy.get('input[name=User]').type(adminCredentials.username);
-            cy.get('input[name=Password]').type(adminCredentials.password + '{enter}');
+            cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
             cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
-            
-            // Fresh system should show admin dashboard (no people yet)
-            // The system may redirect to admin or v2/dashboard
-            // If the admin was created with NeedPasswordChange=true, may land on forced change-password page
+
             cy.url().then((url) => {
                 cy.log('Redirected to: ' + url);
-                // Verify we're logged in and not on login page.
-                // Accept either the full dashboard layout or the forced change-password minimal layout (.login-box).
-                cy.get('.main-sidebar, .wrapper, .content-wrapper, .login-box').should('exist');
+                // Church info is now saved so the middleware no longer redirects;
+                // expect the Tabler page layout.
+                cy.get('.page, .page-wrapper, .navbar').should('exist');
             });
         });
 
         it('should verify system is empty (no people/families)', () => {
             cy.visit('/login');
             cy.get('input[name=User]').type(adminCredentials.username);
-            cy.get('input[name=Password]').type(adminCredentials.password + '{enter}');
+            cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
             cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
-            
+
             // Check people API - should return mostly empty (only admin user)
             cy.request({
                 method: 'GET',
@@ -171,6 +249,23 @@ describe('01 - Setup Wizard', () => {
                     expect(response.body.people.length).to.be.lessThan(3);
                 }
             });
+        });
+
+        it('should reset admin password back to changeme for subsequent specs', () => {
+            // Cypress.env() does not persist across spec files, so specs 02-04
+            // cannot know the password set here. Reset to the default 'changeme'
+            // so all downstream specs can login with the well-known credentials.
+            cy.visit('/login');
+            cy.get('input[name=User]').type(adminCredentials.username);
+            cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
+            cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
+
+            cy.visit('/v2/user/current/changepassword');
+            cy.get('#OldPassword').type(newAdminPassword);
+            cy.get('#NewPassword1').type(adminCredentials.password);
+            cy.get('#NewPassword2').type(adminCredentials.password);
+            cy.get('input[type=submit]').click();
+            cy.contains('Password Change Successful', { timeout: 10000 }).should('be.visible');
         });
     });
 });

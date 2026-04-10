@@ -23,10 +23,32 @@ class UpgradeService
     {
         $logger = LoggerUtils::getAppLogger();
         
-        // Clear Composer's version cache before checking versions
-        // This is critical after code deployment to ensure we read the new version
-        if (function_exists('opcache_reset')) {
+        // Invalidate OPcache for the Composer-generated version files so subsequent requests
+        // (including other FPM workers) read the newly-deployed version data from disk.
+        // opcache_reset() only affects the current worker; opcache_invalidate() targets
+        // specific files and forces recompilation across the cache.
+        if (function_exists('opcache_invalidate')) {
+            $docRoot = SystemURLs::getDocumentRoot();
+            $composerVersionFiles = [
+                $docRoot . '/vendor/composer/InstalledVersions.php',
+                $docRoot . '/vendor/composer/installed.php',
+                $docRoot . '/vendor/autoload.php',
+            ];
+            foreach ($composerVersionFiles as $file) {
+                if (file_exists($file)) {
+                    opcache_invalidate($file, true);
+                }
+            }
+        } elseif (function_exists('opcache_reset')) {
             opcache_reset();
+        }
+        
+        // Reset VersionUtils in-process static cache so this request also picks up the new version.
+        // Guard with method_exists: during an in-place upgrade the old class definition may still
+        // be loaded in memory (resetCache() was added in 7.0.3), so calling it unconditionally
+        // would fatal on upgrades from any release that predates the method.
+        if (method_exists(VersionUtils::class, 'resetCache')) {
+            VersionUtils::resetCache();
         }
         
         $db_version = VersionUtils::getDBVersion();
@@ -105,12 +127,18 @@ class UpgradeService
             // always rebuild the views
             SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_views.sql', $connection);
 
-            // Mark session to avoid immediate redirect loop while bootstrapper re-reads DB version
+            // Mark session to avoid immediate redirect loop while bootstrapper re-reads DB version.
+            // Also clear update-notification session variables so the notification disappears
+            // immediately after upgrade without requiring the user to log out and back in.
             if (session_status() !== PHP_SESSION_ACTIVE) {
                 @session_start();
             }
             try {
                 $_SESSION['dbUpgradeJustRan'] = true;
+                $_SESSION['systemUpdateAvailable'] = false;
+                $_SESSION['systemUpdateVersion'] = null;
+                $_SESSION['systemLatestVersion'] = null;
+                unset($_SESSION['ChurchCRMReleases']);
             } catch (\Exception $e) {
                 // ignore session write failures - not critical
             }

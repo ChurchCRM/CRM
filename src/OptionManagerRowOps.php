@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
@@ -41,6 +41,7 @@ switch ($mode) {
 }
 
 // Set appropriate table and field names for the editor mode
+$deleteCleanupTable = null;
 switch ($mode) {
     case 'famroles':
         $deleteCleanupTable = 'person_per';
@@ -64,9 +65,9 @@ switch ($mode) {
         $listID = InputUtils::legacyFilterInput($_GET['ListID'], 'int');
 
         // Validate that this list ID is really for a group roles list. (for security)
-        $sSQL = "SELECT '' FROM group_grp WHERE grp_RoleListID = " . $listID;
+        $sSQL ="SELECT '' FROM group_grp WHERE grp_RoleListID =" . $listID;
         $rsTemp = RunQuery($sSQL);
-        if (mysqli_num_rows($rsTemp) == 0) {
+        if (mysqli_num_rows($rsTemp) === 0) {
             RedirectUtils::redirect('v2/dashboard');
             break;
         }
@@ -81,17 +82,17 @@ switch ($mode) {
 switch ($sAction) {
     // Move a field up:  Swap the OptionSequence (ordering) of the selected row and the one above it
     case 'up':
-        $sSQL = "UPDATE list_lst SET lst_OptionSequence = '" . $iOrder . "' WHERE lst_ID = $listID AND lst_OptionSequence = '" . ($iOrder - 1) . "'";
+        $sSQL ="UPDATE list_lst SET lst_OptionSequence = '" . $iOrder ."' WHERE lst_ID = $listID AND lst_OptionSequence = '" . ($iOrder - 1) ."'";
         RunQuery($sSQL);
-        $sSQL = "UPDATE list_lst SET lst_OptionSequence = '" . ($iOrder - 1) . "' WHERE lst_ID = $listID AND lst_OptionID = '" . $iID . "'";
+        $sSQL ="UPDATE list_lst SET lst_OptionSequence = '" . ($iOrder - 1) ."' WHERE lst_ID = $listID AND lst_OptionID = '" . $iID ."'";
         RunQuery($sSQL);
         break;
 
         // Move a field down:  Swap the OptionSequence (ordering) of the selected row and the one below it
     case 'down':
-        $sSQL = "UPDATE list_lst SET lst_OptionSequence = '" . $iOrder . "' WHERE lst_ID = $listID AND lst_OptionSequence = '" . ($iOrder + 1) . "'";
+        $sSQL ="UPDATE list_lst SET lst_OptionSequence = '" . $iOrder ."' WHERE lst_ID = $listID AND lst_OptionSequence = '" . ($iOrder + 1) ."'";
         RunQuery($sSQL);
-        $sSQL = "UPDATE list_lst SET lst_OptionSequence = '" . ($iOrder + 1) . "' WHERE lst_ID = $listID AND lst_OptionID = '" . $iID . "'";
+        $sSQL ="UPDATE list_lst SET lst_OptionSequence = '" . ($iOrder + 1) ."' WHERE lst_ID = $listID AND lst_OptionID = '" . $iID ."'";
         RunQuery($sSQL);
         break;
 
@@ -105,18 +106,18 @@ switch ($sAction) {
             }
         }
         
-        $sSQL = "SELECT '' FROM list_lst WHERE lst_ID = $listID";
+        $sSQL ="SELECT '' FROM list_lst WHERE lst_ID = $listID";
         $rsPropList = RunQuery($sSQL);
         $numRows = mysqli_num_rows($rsPropList);
 
         // Make sure we never delete the only option
         if ($numRows > 1) {
-            $sSQL = "DELETE FROM list_lst WHERE lst_ID = $listID AND lst_OptionSequence = '" . $iOrder . "'";
+            $sSQL ="DELETE FROM list_lst WHERE lst_ID = $listID AND lst_OptionSequence = '" . $iOrder ."'";
             RunQuery($sSQL);
 
             // Shift the remaining rows up by one
             for ($reorderRow = $iOrder + 1; $reorderRow <= $numRows + 1; $reorderRow++) {
-                $sSQL = "UPDATE list_lst SET lst_OptionSequence = '" . ($reorderRow - 1) . "' WHERE lst_ID = $listID AND lst_OptionSequence = '" . $reorderRow . "'";
+                $sSQL ="UPDATE list_lst SET lst_OptionSequence = '" . ($reorderRow - 1) ."' WHERE lst_ID = $listID AND lst_OptionSequence = '" . $reorderRow ."'";
                 RunQuery($sSQL);
             }
 
@@ -124,21 +125,21 @@ switch ($sAction) {
             // Next, if any group members were using the deleted role, reset their role to the group default.
             if ($mode === 'grproles') {
                 // Reset if default role was just removed.
-                $sSQL = "UPDATE group_grp SET grp_DefaultRole = 1 WHERE grp_RoleListID = $listID AND grp_DefaultRole = $iID";
+                $sSQL ="UPDATE group_grp SET grp_DefaultRole = 1 WHERE grp_RoleListID = $listID AND grp_DefaultRole = $iID";
                 RunQuery($sSQL);
 
                 // Get the current default role and Group ID (so we can update the p2g2r table)
                 // This seems backwards, but grp_RoleListID is unique, having a 1-1 relationship with grp_ID.
-                $sSQL = "SELECT grp_ID,grp_DefaultRole FROM group_grp WHERE grp_RoleListID = $listID";
+                $sSQL ="SELECT grp_ID,grp_DefaultRole FROM group_grp WHERE grp_RoleListID = $listID";
                 $rsTemp = RunQuery($sSQL);
                 $aTemp = mysqli_fetch_array($rsTemp);
 
-                $sSQL = "UPDATE person2group2role_p2g2r SET p2g2r_rle_ID = $aTemp[1] WHERE p2g2r_grp_ID = $aTemp[0] AND p2g2r_rle_ID = $iID";
+                $sSQL ="UPDATE person2group2role_p2g2r SET p2g2r_rle_ID = $aTemp[1] WHERE p2g2r_grp_ID = $aTemp[0] AND p2g2r_rle_ID = $iID";
                 RunQuery($sSQL);
             } else {
                 // Otherwise, for other types of assignees having a deleted option, reset them to default of 0 (undefined).
-                if ($deleteCleanupTable != 0) {
-                    $sSQL = "UPDATE $deleteCleanupTable SET $deleteCleanupColumn = $deleteCleanupResetTo WHERE $deleteCleanupColumn = " . $iID;
+                if ($deleteCleanupTable !== null) {
+                    $sSQL ="UPDATE $deleteCleanupTable SET $deleteCleanupColumn = $deleteCleanupResetTo WHERE $deleteCleanupColumn =" . $iID;
                     RunQuery($sSQL);
                 }
             }
@@ -147,7 +148,7 @@ switch ($sAction) {
 
         // Currently this is used solely for group roles
     case 'makedefault':
-        $sSQL = "UPDATE group_grp SET grp_DefaultRole = $iID WHERE grp_RoleListID = $listID";
+        $sSQL ="UPDATE group_grp SET grp_DefaultRole = $iID WHERE grp_RoleListID = $listID";
         RunQuery($sSQL);
         break;
 
@@ -176,7 +177,7 @@ switch ($sAction) {
 }
 
 // Reload the option manager page
-$redirectParams = "mode=$mode&ListID=$listID";
+$redirectParams ="mode=$mode&ListID=$listID";
 if ($sAction === 'delete') {
     $redirectParams .= '&deleted=1';
 }

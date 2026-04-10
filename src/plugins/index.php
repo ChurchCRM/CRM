@@ -18,11 +18,13 @@ require_once __DIR__ . '/../Include/LoadConfigs.php';
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
+use ChurchCRM\Slim\Middleware\ChurchInfoRequiredMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Factory\AppFactory;
@@ -51,7 +53,7 @@ $app->group('/api', function (RouteCollectorProxy $group): void {
 
 // Public plugin status endpoint - no admin required
 // Used by PersonView.js/FamilyView.js to check if MailChimp tab should be shown
-$app->get('/status/{pluginId}', function (Request $request, \Psr\Http\Message\ResponseInterface $response, array $args) {
+$app->get('/status/{pluginId}', function (Request $request, Response $response, array $args) {
     $pluginId = $args['pluginId'];
     $plugin = PluginManager::getPlugin($pluginId);
 
@@ -74,7 +76,6 @@ $app->addRoutingMiddleware();
 // Error middleware - use config-driven display (false in production)
 $displayErrors = \ChurchCRM\dto\SystemConfig::debugEnabled();
 $errorMiddleware = $app->addErrorMiddleware($displayErrors, true, true);
-SlimUtils::setupErrorLogger($errorMiddleware);
 
 // Custom error handler for HTML pages
 $errorMiddleware->setDefaultErrorHandler(function (
@@ -104,10 +105,12 @@ $errorMiddleware->setDefaultErrorHandler(function (
     return SlimUtils::renderErrorJSON($response, gettext('An error occurred processing the plugin request'), [], 500, $exception, $request);
 });
 
-// Auth middleware (LIFO - added last, runs first)
-// Note: AdminRoleAuthMiddleware is applied to specific route groups above, not globally
-// Order: Version added first (runs last), Auth second, CORS last (runs first)
+// CRITICAL: Middleware order matters in Slim 4 (LIFO - Last In, First Out)
+// Middleware are added in reverse execution order: added last runs first.
+// Execution order: CorsMiddleware → AuthMiddleware → ChurchInfoRequiredMiddleware → VersionMiddleware
+// Note: AdminRoleAuthMiddleware is applied to specific route groups above, not in this global stack.
 $app->add(VersionMiddleware::class);
+$app->add(new ChurchInfoRequiredMiddleware());
 $app->add(AuthMiddleware::class);
 $app->add(new CorsMiddleware());
 

@@ -3,17 +3,19 @@
 namespace ChurchCRM\Reports;
 
 require_once __DIR__ . '/../Include/Config.php';
-require_once __DIR__ . '/../Include/Functions.php';
+require_once __DIR__ . '/../Include/PageInit.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\verify\FamilyVerificationEmail;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 class EmailPdfConfirmReport extends ChurchInfoReport
@@ -48,12 +50,12 @@ class EmailPdfConfirmReport extends ChurchInfoReport
         $curY += 2 * SystemConfig::getValue('incrementY');
         $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirm4'));
 
-        if (SystemConfig::getValue('sConfirm5') != '') {
+        if (SystemConfig::getValue('sConfirm5') !== '') {
             $curY += 2 * SystemConfig::getValue('incrementY');
             $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirm5'));
             $curY += 2 * SystemConfig::getValue('incrementY');
         }
-        if (SystemConfig::getValue('sConfirm6') != '') {
+        if (SystemConfig::getValue('sConfirm6') !== '') {
             $curY += 2 * SystemConfig::getValue('incrementY');
             $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirm6'));
         }
@@ -136,32 +138,32 @@ foreach ($families as $family) {
     $pdf->SetFont('Times', 'B', 10);
     $pdf->writeAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('Family Name'));
     $pdf->SetFont('Times', '', 10);
-    $pdf->writeAtCell($dataCol, $curY, $dataWid, $fam_Name);
+    $pdf->writeAtCell($dataCol, $curY, $dataWid, (string) $fam_Name);
     $curY += SystemConfig::getValue('incrementY');
     $pdf->SetFont('Times', 'B', 10);
     $pdf->writeAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('Address') . ' 1');
     $pdf->SetFont('Times', '', 10);
-    $pdf->writeAtCell($dataCol, $curY, $dataWid, $fam_Address1);
+    $pdf->writeAtCell($dataCol, $curY, $dataWid, (string) $fam_Address1);
     $curY += SystemConfig::getValue('incrementY');
     $pdf->SetFont('Times', 'B', 10);
     $pdf->writeAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('Address') . ' 2');
     $pdf->SetFont('Times', '', 10);
-    $pdf->writeAtCell($dataCol, $curY, $dataWid, $fam_Address2);
+    $pdf->writeAtCell($dataCol, $curY, $dataWid, (string) $fam_Address2);
     $curY += SystemConfig::getValue('incrementY');
     $pdf->SetFont('Times', 'B', 10);
     $pdf->writeAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('City, State, Zip'));
     $pdf->SetFont('Times', '', 10);
-    $pdf->writeAtCell($dataCol, $curY, $dataWid, $fam_City . ', ' . $fam_State . '  ' . $fam_Zip);
+    $pdf->writeAtCell($dataCol, $curY, $dataWid, (string) $fam_City . ', ' . (string) $fam_State . '  ' . (string) $fam_Zip);
     $curY += SystemConfig::getValue('incrementY');
     $pdf->SetFont('Times', 'B', 10);
     $pdf->writeAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('Home Phone'));
     $pdf->SetFont('Times', '', 10);
-    $pdf->writeAtCell($dataCol, $curY, $dataWid, $fam_HomePhone);
+    $pdf->writeAtCell($dataCol, $curY, $dataWid, (string) $fam_HomePhone);
     $curY += SystemConfig::getValue('incrementY');
     $pdf->SetFont('Times', 'B', 10);
     $pdf->writeAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('Send Newsletter'));
     $pdf->SetFont('Times', '', 10);
-    $pdf->writeAtCell($dataCol, $curY, $dataWid, $fam_SendNewsLetter);
+    $pdf->writeAtCell($dataCol, $curY, $dataWid, (string) $fam_SendNewsLetter);
     $curY += SystemConfig::getValue('incrementY');
 
     // Missing the following information from the Family record:
@@ -171,13 +173,13 @@ foreach ($families as $family) {
     $pdf->SetFont('Times', 'B', 10);
     $pdf->writeAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('Anniversary Date'));
     $pdf->SetFont('Times', '', 10);
-    $pdf->writeAtCell($dataCol, $curY, $dataWid, FormatDate($fam_WeddingDate));
+    $pdf->writeAtCell($dataCol, $curY, $dataWid, DateTimeUtils::formatDate($fam_WeddingDate));
     $curY += SystemConfig::getValue('incrementY');
 
     $pdf->SetFont('Times', 'B', 10);
     $pdf->writeAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('Family Email'));
     $pdf->SetFont('Times', '', 10);
-    $pdf->writeAtCell($dataCol, $curY, $dataWid, $fam_Email);
+    $pdf->writeAtCell($dataCol, $curY, $dataWid, (string) $fam_Email);
 
     $curY += SystemConfig::getValue('incrementY');
     $curY += SystemConfig::getValue('incrementY');
@@ -244,7 +246,7 @@ foreach ($families as $family) {
         $genderStr = ($member->getGender() == 1 ? 'M' : 'F');
         $pdf->writeAtCell($XGender, $curY, $XRole - $XGender, $genderStr);
         $pdf->writeAtCell($XRole, $curY, $XEmail - $XRole, $sFamRole);
-        $pdf->writeAtCell($XEmail, $curY, $XBirthday - $XEmail, $member->getEmail());
+        $pdf->writeAtCell($XEmail, $curY, $XBirthday - $XEmail, (string) $member->getEmail());
         
         if ($member->getBirthYear()) {
             $birthdayStr = $member->getBirthMonth() . '/' . $member->getBirthDay() . '/' . $member->getBirthYear();
@@ -252,12 +254,12 @@ foreach ($families as $family) {
             $birthdayStr = '';
         }
         $pdf->writeAtCell($XBirthday, $curY, $XCellPhone - $XBirthday, $birthdayStr);
-        $pdf->writeAtCell($XCellPhone, $curY, $XClassification - $XCellPhone, $member->getCellPhone());
+        $pdf->writeAtCell($XCellPhone, $curY, $XClassification - $XCellPhone, (string) $member->getCellPhone());
         $pdf->writeAtCell($XClassification, $curY, $XRight - $XClassification, $sClassName);
         $curY += SystemConfig::getValue('incrementY');
         // Missing the following information for the personal record: ? Is this the place to put this data ?
         // Work Phone
-        $pdf->writeAtCell($XWorkPhone, $curY, $XRight - $XWorkPhone, gettext('Work Phone') . ': ' . $member->getWorkPhone());
+        $pdf->writeAtCell($XWorkPhone, $curY, $XRight - $XWorkPhone, gettext('Work Phone') . ': ' . (string) $member->getWorkPhone());
         $curY += SystemConfig::getValue('incrementY');
         $curY += SystemConfig::getValue('incrementY');
 
@@ -272,17 +274,27 @@ foreach ($families as $family) {
       // Calculations (without groups) show 84 mm is needed.
       // For the Letter size of 279 mm, this says that curY can be no bigger than 195 mm.
       // Leaving 12 mm for a bottom margin yields 183 mm.
+            // Fetch all custom data for this person once to avoid N+1 queries
+            $aAllCustomData = [];
+            try {
+                $sSQL = 'SELECT * FROM person_custom WHERE per_ID = ' . (int) $iPersonID;
+                $rsAllCustomData = RunQuery($sSQL);
+                if ($rsAllCustomData && mysqli_num_rows($rsAllCustomData) > 0) {
+                    $aAllCustomData = mysqli_fetch_array($rsAllCustomData, MYSQLI_ASSOC);
+                }
+            } catch (Exception $e) {
+                // Custom data not available
+                $aAllCustomData = [];
+            }
+
             $numWide = 0; // starting value for columns
             foreach ($customFields as $field) {
                 $currentFieldData = '';
-                // Try to access custom field data from the member object
-                $fieldPropertyName = $field->getId();
-                try {
-                    $methodName = 'get' . ucfirst($fieldPropertyName);
-                    $currentFieldData = trim($member->$methodName() ?? '');
-                } catch (Exception $e) {
-                    // Custom field getter does not exist or threw an exception
-                    $currentFieldData = '';
+                // Access pre-fetched custom field data
+                $fieldColumnName = $field->getId();
+                // Validate column name to prevent SQL injection via identifiers
+                if (preg_match('/^c\d+$/', (string) $fieldColumnName)) {
+                    $currentFieldData = trim((string) ($aAllCustomData[$fieldColumnName] ?? ''));
                 }
 
                 $OutStr = $field->getName() . ' : ' . $currentFieldData . '    ';
@@ -296,7 +308,7 @@ foreach ($families as $family) {
                 }
                 $numWide += 1; // increment the number of columns done
                 $xInc += (2 * $xSize); // Increment the X position by about 1/2 page width
-                if (($numWide % 2) == 0) { // 2 columns
+                if (($numWide % 2) === 0) { // 2 columns
                     $xInc = $XName; // Reset margin
                     $curY += SystemConfig::getValue('incrementY');
                 }
@@ -332,7 +344,11 @@ foreach ($families as $family) {
                 if ($group) {
                     $roleName = '';
                     if ($groupRole->getRoleId()) {
-                        $roleObj = $groupRole->getListOption();
+                        // Look up role name using group's role list ID
+                        $roleObj = ListOptionQuery::create()
+                            ->filterById($group->getRoleListId())
+                            ->filterByOptionId($groupRole->getRoleId())
+                            ->findOne();
                         if ($roleObj) {
                             $roleName = $roleObj->getOptionName();
                         }
@@ -346,7 +362,7 @@ foreach ($families as $family) {
         }
     }
 
-    if ($curY > 183) { // This insures the trailer information fits continuously on the page (3 inches of "footer"
+    if ($curY > 183) { // This insures the trailer information fits continuously on the page (3 inches of"footer"
         $curY = $pdf->startLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
     }
     $pdf->finishPage($curY);

@@ -32,7 +32,7 @@ class SQLUtils
             }
 
             // 1. ignore empty string and comment row
-            if (trim($row) == '' || preg_match('/^\s*(#|--\s)/sUi', $row)) {
+            if (trim($row) === '' || preg_match('/^\s*(#|--\s)/sUi', $row)) {
                 continue;
             }
 
@@ -84,7 +84,7 @@ class SQLUtils
             } else {
                 $sql = '';
             }
-            if (trim($sql) == '') {
+            if (trim($sql) === '') {
                 return $sql;
             }
         }

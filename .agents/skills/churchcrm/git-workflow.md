@@ -75,7 +75,7 @@ git checkout -b fix/issue-1234-description
 
 **✅ CORRECT:**
 ```
-Fix issue #7698: Replace Bootstrap 5 classes with BS4 utilities
+Fix issue #7698: Migrate dropdown to Tabler action menu pattern
 Add email validation to contact signup form
 Fix null pointer exception in payment processing
 Refactor user authorization checks for clarity
@@ -96,11 +96,11 @@ Fix/issue/7698/replace bootstrap classes                # Wrong format, not impe
 For complex changes, use multi-line format:
 
 ```
-Fix issue #7698: Replace Bootstrap 5 classes with BS4
+Fix issue #7698: Migrate dropdown to Tabler action menu pattern
 
-Bootstrap 4.6.2 is required by AdminLTE v3.2.0. Removed incompatible
-Bootstrap 5 utilities like w-100, gap-*, d-grid, fw-*, fs-*. Updated
-form classes to use Bootstrap 4 equivalents (e.g., w-100 → w-100).
+Updated dropdown triggers to use btn-ghost-secondary + ti-dots-vertical.
+Replaced dropdown-menu-right with dropdown-menu-end. Removed aria-haspopup
+and inline styles. Fixed overflow clipping in table-responsive containers.
 
 Files changed:
 - src/admin/views/*.php (3 files)
@@ -158,7 +158,7 @@ PR descriptions must follow a structured format in the GitHub UI:
 Brief overview of what this PR accomplishes (2-3 sentences).
 
 ## Changes
-- Replaced deprecated Bootstrap 5 classes with Bootstrap 4.6.2 equivalents
+- Migrated dropdowns to Tabler action menu pattern (btn-ghost-secondary, ti icons)
 - Updated form styling in 3 admin pages
 - Fixed responsive grid breakpoints for mobile devices
 - Added tests for form validation on small screens
@@ -190,6 +190,32 @@ Fixes #7698
 - **Files Changed** - List of modified files
 - **Testing** - How to verify, test commands
 - **Related Issues** - Links to related issues/PRs
+
+### Keeping PR Descriptions Up to Date <!-- learned: 2026-03-29 -->
+
+After the initial PR is created, **update the PR description whenever the scope of changes evolves** — e.g., after addressing review comments that add/remove files or features, or after merging master resolves conflicts that affect the stated changes.
+
+Use `gh pr edit` to update in place:
+
+```bash
+gh pr edit 1234 --body "$(cat <<'EOF'
+## Summary
+...updated summary...
+
+## Changes
+- Original change
+- New change added during review
+
+## Why
+...
+
+## Testing
+...
+EOF
+)"
+```
+
+**Rule:** The description must always accurately reflect *what the PR actually contains* at the time of review — not just what it contained when first opened. A reviewer reading the description should not be surprised by the diff.
 
 ### Keeping Branches Up to Date
 
@@ -236,7 +262,7 @@ Before marking PR ready for review, ensure:
 
 ### Code Quality
 - [ ] PHP syntax validation passed (`npm run build:php`)
-- [ ] No linting errors (`npm run lint`)
+- [ ] **Biome lint passed (`npm run lint`) — also enforced by `.githooks/pre-push`**
 - [ ] Code follows project standards (read nearby files)
 
 ### Database & ORM
@@ -262,9 +288,9 @@ Before marking PR ready for review, ensure:
 
 ### Frontend & UI
 - [ ] Deprecated HTML attributes replaced with CSS
-- [ ] Bootstrap 4.6.2 classes (NOT Bootstrap 5)
-  - ✅ Correct: `col-md-6`, `w-100`, `d-flex`, `mt-3`
-  - ❌ Wrong: `w-full`, `gap-4`, `d-grid`, `fw-bold`, `fs-5`
+- [ ] Tabler + Bootstrap 5 classes used (NOT Bootstrap 4 / AdminLTE)
+  - ✅ Correct: `col-md-6`, `w-100`, `d-flex`, `mt-3`, `fw-bold`, `gap-4`, `btn-ghost-secondary`
+  - ❌ Wrong: `form-group`, `badge-success`, `ml-*`, `mr-*`, `btn-outline-secondary` for action menus
 - [ ] All UI text wrapped with `i18next.t()` (JS) or `gettext()` (PHP)
 - [ ] No `alert()` calls - use `window.CRM.notify()` instead
 
@@ -317,20 +343,85 @@ Before marking PR ready for review, ensure:
 
 ## Agent-Specific Behaviors
 
+### Deleting a File <!-- learned: 2026-03-15 -->
+
+Before deleting any file, always search these locations for references:
+
+```bash
+# 1. Source code references (links, requires, includes, route registrations)
+grep -r "FileName.php" src/ --include="*.php" --include="*.js" --include="*.ts" -l
+
+# 2. Cypress / test specs
+grep -r "FileName" cypress/ -l
+
+# 3. Docs site
+grep -r "FileName" /path/to/docs.churchcrm.io -l
+
+# 4. Wiki
+grep -r "FileName" /path/to/wiki -l
+```
+
+Remove every reference found before (or as part of) the deletion commit:
+- **Templates / views** — remove buttons, links, menu items
+- **Test specs** — remove the `it()` block that visits/tests the page
+- **Docs & wiki** — remove or update any page that describes the feature
+
+❌ Don't delete the file and leave dead links, broken tests, or stale docs behind.
+
+---
+
 ### Mandatory Pre-Commit Sequence <!-- learned: 2026-03-03 -->
 
 **NEVER commit or push without completing ALL steps in order.**
 
 ```
 1. Make the changes
-2. npm run lint          ← Biome lint (catches what CI catches)
-3. npm run build         ← TypeScript + PHP syntax + Biome format
+2. npm run lint                ← Biome lint (catches what CI catches)
+3. Build — use fastest option:
+   - JS/CSS only  → npm run build:webpack   (fast)
+   - PHP only     → npm run build:php
+   - Mixed/all    → npm run build
 4. Fix any errors
-5. git diff              ← Show the full diff to the user
-6. Ask for approval      ← "Build passed. Please review. Shall I commit?"
-7. Wait for explicit yes ← "yes" / "lgtm" / "commit it" / "go ahead"
+5. git diff                    ← Show the full diff to the user
+6. Ask for approval            ← "Build passed. Please review. Shall I commit?"
+7. Wait for explicit yes       ← "yes" / "lgtm" / "commit it" / "go ahead"
 8. git add → git commit → git push
 ```
+
+### Mandatory Pre-Push Biome Check <!-- learned: 2026-04-09 -->
+
+**Biome lint MUST pass before any `git push`.** This is enforced two ways
+so neither humans nor agents can ship code that fails CI lint:
+
+1. **Git hook** — `.githooks/pre-push` runs `npm run lint` automatically.
+   The hooks path is wired up by the `prepare` script in `package.json`
+   (`git config core.hooksPath .githooks`), so `npm install` enables it
+   for every clone. The hook is a no-op inside CI (`$CI` / `$GITHUB_ACTIONS`)
+   because the lint job runs there as a separate step.
+
+2. **Agent checklist** — agents must run `npm run lint` themselves before
+   even *asking* for push approval. Do not rely on the hook to catch
+   failures; surface them in the conversation so the user sees them.
+
+**Bypass policy:**
+
+```bash
+# ❌ NEVER (silent bypass — hides failing lint from reviewer)
+git push --no-verify
+
+# ✅ Only acceptable when:
+#    - The user explicitly authorizes it for an emergency hot-fix, AND
+#    - The PR description calls out exactly which rule was bypassed and why
+git push --no-verify   # bypassing lint per user approval — see PR body
+```
+
+If `npm run lint` ever times out or fails for an unrelated reason
+(e.g. missing `node_modules`), fix the root cause — never paper over
+it by removing the hook or bypassing.
+
+**Why this is hardcoded:** Lint failures used to land on master because
+contributors pushed before CI feedback arrived. The pre-push hook closes
+that loop locally so feedback is instant and the master branch stays green.
 
 **Examples:**
 
@@ -439,11 +530,39 @@ $users = UserQuery::create()
 ### Example 4: Bootstrap Classes
 
 ```bash
-# ❌ WRONG - Bootstrap 5 classes
-<div class="w-full gap-4 d-grid fw-bold fs-5">
+# ❌ WRONG - Bootstrap 4 / AdminLTE classes
+<div class="w-100 pr-2 d-flex font-weight-bold ml-2">
 
-# ✅ CORRECT - Bootstrap 4.6.2 classes
-<div class="w-100 pr-2 d-flex font-weight-bold" style="font-size: 1.25rem;">
+# ✅ CORRECT - Tabler + Bootstrap 5 classes
+<div class="w-100 ps-2 d-flex fw-bold ms-2">
+```
+
+---
+
+## Branch Consolidation — Merging Multiple Feature Branches <!-- learned: 2026-04-07 -->
+
+When consolidating multiple feature branches into one:
+
+1. **Audit each branch** before merging:
+   - `git log master..branch --oneline` — identify unique commits per branch
+   - `git diff master...branch --name-only` — find overlapping files
+   - `git branch --merged master` — identify already-merged branches (safe to delete)
+
+2. **Merge in order of increasing conflict risk** (clean merges first)
+
+3. **Conflict resolution patterns:**
+   - Modify/delete conflicts where the file was refactored away in master — accept the deletion
+   - Import conflicts from merges — keep all imports from both sides
+   - Overlapping edits to the same file — manually review and combine intent from both branches
+
+```bash
+# Example: consolidating branch-a and branch-b into branch-combined
+git checkout -b branch-combined master
+git merge branch-a            # clean merge first
+git merge branch-b            # higher-conflict merge second
+# Resolve any conflicts, then:
+git add <resolved-files>
+git commit -m "Merge branch-b into branch-combined"
 ```
 
 ---

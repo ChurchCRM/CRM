@@ -22,13 +22,12 @@ $basePath = SlimUtils::getBasePath('/session');
 $app = AppFactory::create();
 $app->setBasePath($basePath);
 
-// Add Slim error middleware for proper error handling and logging
-$errorMiddleware = $app->addErrorMiddleware(true, true, true);
-SlimUtils::setupErrorLogger($errorMiddleware);
-SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
-
 $app->addBodyParsingMiddleware();
 $app->addRoutingMiddleware();
+
+// Error middleware must be added AFTER routing (Slim 4 LIFO: last added = first executed)
+$errorMiddleware = $app->addErrorMiddleware(true, true, true);
+SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
 $app->add(new VersionMiddleware());
 
@@ -76,26 +75,24 @@ function endSession(Request $request, Response $response, array $args): Response
 function beginSession(Request $request, Response $response, array $args): Response
 {
     $queryParams = $request->getQueryParams();
-    $redirectPath = isset($queryParams['location']) ? urldecode($queryParams['location']) : null;
-    
+
     // Check for explicit username in query params (e.g., from password reset)
     $rawUserName = $queryParams['username'] ?? $request->getServerParams()['username'] ?? '';
     $prefilledUserName = InputUtils::sanitizeText($rawUserName);
-    
+
     $pageArgs = [
         'sRootPath'            => SystemURLs::getRootPath(),
-        'localAuthNextStepURL' => AuthenticationManager::getSessionBeginURL($redirectPath),
+        'localAuthNextStepURL' => AuthenticationManager::getSessionBeginURL(),
         'forgotPasswordURL'    => AuthenticationManager::getForgotPasswordURL(),
         'prefilledUserName'    => $prefilledUserName,
     ];
 
     if ($request->getMethod() === 'POST') {
         $loginRequestBody = $request->getParsedBody();
-        
+
         $userPassRequest = new LocalUsernamePasswordRequest(
             $loginRequestBody['User'],
-            $loginRequestBody['Password'],
-            $redirectPath
+            $loginRequestBody['Password']
         );
         $authenticationResult = AuthenticationManager::authenticate($userPassRequest);
         $pageArgs['sErrorText'] = $authenticationResult->message;

@@ -18,7 +18,7 @@ Structured development skills live in `.agents/skills/`. **Always consult the re
 | New API endpoint | `api-development.md` → `service-layer.md` → `slim-4-best-practices.md` → `security-best-practices.md` |
 | Migrate legacy page | `routing-architecture.md` → `admin-mvc-migration.md` → `frontend-development.md` |
 | Database / ORM work | `database-operations.md` → `db-schema-migration.md` |
-| UI / frontend changes | `bootstrap-adminlte.md` → `frontend-development.md` → `webpack-typescript.md` |
+| UI / frontend changes | `responsive-design-guidelines.md` → `bootstrap-5-migration.md` → `frontend-development.md` → `webpack-typescript.md` |
 | i18n / translations | `i18n-localization.md` → `frontend-development.md` |
 | Security issue | `security-best-practices.md` → `authorization-security.md` |
 | Plugin work | `plugin-system.md` → `plugin-development.md` |
@@ -47,7 +47,7 @@ Update the relevant skill file immediately when you:
 
 - A class, utility, or helper you had to search for (others will too)
 - A constraint you violated and had to fix (e.g., wrong Bootstrap class, missing cast)
-- An edge case in Propel ORM, Slim 4, or AdminLTE not in existing docs
+- An edge case in Propel ORM, Slim 4, or Tabler/Bootstrap 5 not in existing docs
 - A build/test step that's easy to forget
 - A new module, route group, or architectural pattern added to the codebase
 
@@ -154,7 +154,7 @@ When fixing a failed test:
 
 - `cypress-testing.md` — API patterns, session setup, data handling
 - `database-operations.md` — ORM query patterns
-- `webpack-typescript.md` — React/component patterns
+- `webpack-typescript.md` — JS/TS module patterns
 - `code-standards.md` — General best practices
 
 **Remember: Skills get documented the moment you learn something. Never defer skill updates.**
@@ -169,7 +169,10 @@ When fixing a failed test:
 
 1. Make the changes
 2. **Run `npm run lint`** — catches Biome lint errors before CI does
-3. **Run `npm run build`** — full build: PHP syntax + TypeScript compilation + Biome format
+3. **Build** — use the fastest build that covers your changes:
+   - JS/CSS only → `npm run build:webpack` (fast)
+   - PHP only → `npm run build:php`
+   - Everything → `npm run build` (full: PHP + webpack + Biome format)
 4. Fix any errors reported by steps 2–3 before continuing
 5. Run `git diff` and show the full output to the user
 6. Ask: *"Build and lint passed. Please review the changes above. Shall I commit?"*
@@ -178,13 +181,31 @@ When fixing a failed test:
 
 ### What each command validates
 
-| Command | Validates |
-|---------|-----------|
-| `npm run lint` | Biome lint rules — type safety, hook deps, correctness (`react/`) |
-| `npm run build` | TypeScript types (webpack), PHP syntax, Biome format |
+| Command | Validates | When to use |
+|---------|-----------|-------------|
+| `npm run lint` | Biome lint rules — type safety, hook deps, correctness | Always |
+| `npm run build:webpack` | TypeScript + JS bundle compilation only | JS/CSS changes only |
+| `npm run build:php` | PHP syntax validation only | PHP-only changes |
+| `npm run build` | Everything: webpack + PHP + Biome format | Mixed changes or pre-commit |
 
 ### No exceptions
 
 - Do not skip build/lint even for "small" or "obvious" fixes
 - Do not commit even when the user says "fix it" — build + review first
 - Silence or follow-up questions from the user are NOT approval to commit
+
+### Pre-push enforcement (Biome lint)
+
+**Biome lint must pass before any `git push`.** This is enforced both ways:
+
+- **Git hook**: `.githooks/pre-push` runs `npm run lint` automatically. The
+  hook is wired up by the `prepare` script in `package.json` (sets
+  `core.hooksPath=.githooks`), so `npm install` enables it for every clone.
+  The hook is a no-op in CI (`$CI`/`$GITHUB_ACTIONS`).
+- **Agent rule**: agents must run `npm run lint` themselves *before* asking
+  for push approval — never rely on the hook to surface failures. Show the
+  output in the conversation.
+
+**Never use `git push --no-verify`** unless the user explicitly authorizes
+it for an emergency hot-fix AND the PR description names the rule that was
+bypassed and why. See [`git-workflow.md → Mandatory Pre-Push Biome Check`](.agents/skills/churchcrm/git-workflow.md).

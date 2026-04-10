@@ -2,250 +2,205 @@
  * System Settings Panel - Reusable component for displaying/editing SystemConfig settings
  *
  * Usage:
- * 1. Include the CSS: <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/system-settings-panel.min.css">
- * 2. Include the JS: <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/system-settings-panel.min.js"></script>
+ * 1. Include the CSS bundle, for example:
+ *    <link rel="stylesheet" href="/skin/v2/system-settings-panel.min.css">
+ * 2. Include the JS bundle, for example:
+ *    <script src="/skin/v2/system-settings-panel.min.js"></script>
+ * (When rendering server-side you may prepend the application's root path.)
  * 3. Add container: <div id="settingsPanel"></div>
- * 4. Initialize:
+ * 4. Initialize (labels/types/choices are provided by the caller, not the component):
  *    window.CRM.settingsPanel.init({
  *        container: '#settingsPanel',
  *        title: 'Financial Settings',
  *        icon: 'fa-solid fa-sliders',
- *        settings: ['iFYMonth', 'bEnableNonDeductible', 'iChecksPerDepositForm'],
+ *        settings: [
+ *            { name: 'iFYMonth', type: 'choice', label: 'Fiscal Year Month', choices: [...] },
+ *            { name: 'bEnableNonDeductible', type: 'boolean', label: 'Non-deductible' }
+ *        ],
  *        onSave: function() { window.location.reload(); }
  *    });
  */
 
 import "../src/skin/scss/system-settings-panel.scss";
 
-(function () {
-  "use strict";
-
+(() => {
   // Setting type definitions with rendering and value extraction
   const SettingTypes = {
     boolean: {
-      render: function (setting, value) {
-        const checked = value === "1" || value === "true" || value === true;
+      render: (setting, value) => {
+        const isOn = value === "1" || value === "true" || value === true;
         return `
                     <div class="col-md-6 col-lg-4 mb-3">
-                        <div class="custom-control custom-switch mt-2">
-                            <input type="checkbox" class="custom-control-input setting-input" 
-                                   id="${setting.name}" name="${setting.name}"
-                                   data-type="boolean"
-                                   ${checked ? "checked" : ""}>
-                            <label class="custom-control-label" for="${setting.name}">
-                                ${setting.label}
+                        <div class="form-label small fw-bold mb-1">
+                            ${escapeHtml(resolve(setting.label))}
+                            ${setting.tooltip ? `<i class="fa-solid fa-circle-question text-muted ms-1" data-bs-toggle="tooltip" data-placement="top" title="${escapeHtml(resolve(setting.tooltip))}"></i>` : ""}
+                        </div>
+                        <div class="form-selectgroup form-selectgroup-pills">
+                            <label class="form-selectgroup-item">
+                                <input type="radio" class="form-selectgroup-input setting-input"
+                                       name="${setting.name}" value="1"
+                                       data-type="boolean"
+                                       ${isOn ? "checked" : ""}>
+                                <span class="form-selectgroup-label">
+                                    <i class="fa-solid fa-check me-1"></i>${t("Yes")}
+                                </span>
                             </label>
-                            ${setting.tooltip ? `<small class="form-text text-muted d-block">${setting.tooltip}</small>` : ""}
+                            <label class="form-selectgroup-item">
+                                <input type="radio" class="form-selectgroup-input setting-input"
+                                       name="${setting.name}" value="0"
+                                       data-type="boolean"
+                                       ${!isOn ? "checked" : ""}>
+                                <span class="form-selectgroup-label">
+                                    <i class="fa-solid fa-xmark me-1"></i>${t("No")}
+                                </span>
+                            </label>
                         </div>
                     </div>
                 `;
       },
-      getValue: function (el) {
+      getValue: (el) => {
+        // Radio inputs: only the checked one returns a value; unchecked returns null (skipped in save)
+        if (el.type === "radio") return el.checked ? el.value : null;
         return el.checked ? "1" : "0";
       },
     },
     number: {
-      render: function (setting, value) {
-        return `
+      render: (setting, value) => `
                     <div class="col-md-6 col-lg-4 mb-3">
-                        <label for="${setting.name}" class="form-label small font-weight-bold mb-1">
-                            ${setting.label}
-                            ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-info ml-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
+                        <label for="${setting.name}" class="form-label small fw-bold mb-1">
+                            ${escapeHtml(resolve(setting.label))}
+                            ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-info ms-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
                         </label>
-                        <input type="number" class="form-control setting-input" 
+                        <input type="number" class="form-control setting-input"
                                id="${setting.name}" name="${setting.name}"
                                data-type="number"
-                               value="${value || ""}" 
+                               value="${value || ""}"
                                ${setting.min !== undefined ? `min="${setting.min}"` : ""}
                                ${setting.max !== undefined ? `max="${setting.max}"` : ""}>
-                        ${setting.tooltip ? `<small class="form-text text-muted">${setting.tooltip}</small>` : ""}
+                        ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
                     </div>
-                `;
-      },
-      getValue: function (el) {
-        return el.value;
-      },
+                `,
+      getValue: (el) => el.value,
     },
     text: {
-      render: function (setting, value) {
-        return `
+      render: (setting, value) => `
                     <div class="col-md-6 col-lg-4 mb-3">
-                        <label for="${setting.name}" class="form-label small font-weight-bold mb-1">
-                            ${setting.label}
-                            ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-info ml-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
+                        <label for="${setting.name}" class="form-label small fw-bold mb-1">
+                            ${escapeHtml(resolve(setting.label))}
+                            ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-info ms-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
                         </label>
-                        <input type="text" class="form-control setting-input" 
+                        <input type="text" class="form-control setting-input"
                                id="${setting.name}" name="${setting.name}"
                                data-type="text"
                                value="${escapeHtml(value || "")}"
                                ${setting.placeholder ? `placeholder="${setting.placeholder}"` : ""}>
-                        ${setting.tooltip ? `<small class="form-text text-muted">${setting.tooltip}</small>` : ""}
+                        ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
                     </div>
-                `;
-      },
-      getValue: function (el) {
-        return el.value;
-      },
+                `,
+      getValue: (el) => el.value,
     },
     choice: {
-      render: function (setting, value) {
+      render: (setting, value) => {
         let optionsHtml = "";
         if (setting.choices) {
-          setting.choices.forEach(function (choice) {
+          setting.choices.forEach((choice) => {
             const optValue = typeof choice === "object" ? choice.value : choice;
             const optLabel = typeof choice === "object" ? choice.label : choice;
             const selected = String(value) === String(optValue) ? "selected" : "";
-            optionsHtml += `<option value="${escapeHtml(optValue)}" ${selected}>${escapeHtml(optLabel)}</option>`;
+            optionsHtml += `<option value="${escapeHtml(optValue)}" ${selected}>${escapeHtml(resolve(optLabel))}</option>`;
           });
         }
         return `
                     <div class="col-md-6 col-lg-4 mb-3">
-                        <label for="${setting.name}" class="form-label small font-weight-bold mb-1">
-                            ${setting.label}
-                            ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-info ml-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
+                        <label for="${setting.name}" class="form-label small fw-bold mb-1">
+                            ${escapeHtml(resolve(setting.label))}
+                            ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-muted ms-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
                         </label>
-                        <select class="form-control setting-input" 
+                        <select class="form-select setting-input"
                                 id="${setting.name}" name="${setting.name}"
                                 data-type="choice">
                             ${optionsHtml}
                         </select>
-                        ${setting.tooltip ? `<small class="form-text text-muted">${setting.tooltip}</small>` : ""}
+                        ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
                     </div>
                 `;
       },
-      getValue: function (el) {
-        return el.value;
+      getValue: (el) => el.value,
+    },
+    // Password fields never fetch or display the current value.
+    // Leave blank to keep the existing value; type a new value to change it.
+    // Set setting.generate = true to add a "Generate" button that fills the field.
+    password: {
+      render: (setting) => {
+        const generateBtn = setting.generate
+          ? `<button type="button" class="btn btn-outline-secondary btn-sm generate-password-btn" data-target="${setting.name}">
+               <i class="fa-solid fa-key me-1"></i>${t("Generate")}
+             </button>`
+          : "";
+        return `
+            <div class="col-md-6 col-lg-4 mb-3">
+              <label for="${setting.name}" class="form-label small fw-bold mb-1">
+                ${escapeHtml(resolve(setting.label))}
+              </label>
+              <div class="input-group">
+                <input type="password" class="form-control setting-input"
+                     id="${setting.name}" name="${setting.name}"
+                     data-type="password"
+                     autocomplete="new-password"
+                     placeholder="${t("Leave blank to keep existing")}">
+                ${generateBtn}
+              </div>
+              ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
+            </div>
+          `;
+      },
+      getValue: (el) => {
+        // Return null for empty passwords so they are skipped in the bulk save
+        return el.value || null;
       },
     },
-    password: {
-      render: function (setting, value) {
-        return `
-                    <div class="col-md-6 col-lg-4 mb-3">
-                        <label for="${setting.name}" class="form-label small font-weight-bold mb-1">
-                            ${setting.label}
-                        </label>
-                        <input type="password" class="form-control setting-input" 
-                               id="${setting.name}" name="${setting.name}"
-                               data-type="password"
-                               value="${value || ""}"
-                               autocomplete="new-password">
-                        ${setting.tooltip ? `<small class="form-text text-muted">${setting.tooltip}</small>` : ""}
-                    </div>
-                `;
-      },
-      getValue: function (el) {
-        return el.value;
-      },
+    ajax: {
+      render: (setting) => `
+            <div class="col-md-6 col-lg-4 mb-3">
+              <label for="${setting.name}" class="form-label small fw-bold mb-1">
+                ${escapeHtml(resolve(setting.label))}
+              </label>
+              <select class="form-select setting-input"
+                      id="${setting.name}" name="${setting.name}"
+                      data-type="ajax"
+                      data-ajax-url="${escapeHtml(setting.ajaxUrl || "")}">
+                <option value="">${t("Unassigned")}</option>
+              </select>
+              ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
+            </div>
+          `,
+      getValue: (el) => el.value,
     },
   };
 
-  // Escape HTML to prevent XSS
+  // Escape HTML for safe use in both text content and attribute values (title="...", value="...")
   function escapeHtml(str) {
     if (!str) return "";
     const div = document.createElement("div");
     div.textContent = str;
-    return div.innerHTML;
+    return div.innerHTML.replace(/"/g, "&quot;").replace(/'/g, "&#39;");
   }
 
-  // Month choices helper
-  function getMonthChoices() {
-    return [
-      { value: "1", label: window.i18next ? i18next.t("January") : "January" },
-      { value: "2", label: window.i18next ? i18next.t("February") : "February" },
-      { value: "3", label: window.i18next ? i18next.t("March") : "March" },
-      { value: "4", label: window.i18next ? i18next.t("April") : "April" },
-      { value: "5", label: window.i18next ? i18next.t("May") : "May" },
-      { value: "6", label: window.i18next ? i18next.t("June") : "June" },
-      { value: "7", label: window.i18next ? i18next.t("July") : "July" },
-      { value: "8", label: window.i18next ? i18next.t("August") : "August" },
-      { value: "9", label: window.i18next ? i18next.t("September") : "September" },
-      { value: "10", label: window.i18next ? i18next.t("October") : "October" },
-      { value: "11", label: window.i18next ? i18next.t("November") : "November" },
-      { value: "12", label: window.i18next ? i18next.t("December") : "December" },
-    ];
+  // Translate a key at call-time. Falls back to the raw key if i18next is not
+  // yet initialised — so labels always show something meaningful.
+  function t(key) {
+    if (!key) return key;
+    if (window.i18next) {
+      const translated = i18next.t(key);
+      return translated !== undefined ? translated : key;
+    }
+    return key;
   }
 
-  // Pre-defined setting configurations (from SystemConfig)
-  const SettingDefinitions = {
-    // Financial Settings
-    iFYMonth: {
-      type: "choice",
-      label: "First month of the fiscal year",
-      choices: getMonthChoices,
-    },
-    sDepositSlipType: {
-      type: "choice",
-      label: "Deposit ticket type",
-      tooltip: "QBDT - QuickBooks Deposit Ticket",
-      choices: [{ value: "QBDT", label: "QBDT (QuickBooks)" }],
-    },
-    iChecksPerDepositForm: {
-      type: "number",
-      label: "Number of checks for Deposit Slip Report",
-      min: 1,
-      max: 100,
-    },
-    bDisplayBillCounts: {
-      type: "boolean",
-      label: "Display bill counts on deposit slip",
-    },
-    bUseScannedChecks: {
-      type: "boolean",
-      label: "Enable use of scanned checks",
-    },
-    bEnableNonDeductible: {
-      type: "boolean",
-      label: "Enable non-deductible payments",
-    },
-    bUseDonationEnvelopes: {
-      type: "boolean",
-      label: "Enable use of donation envelopes",
-    },
-    aFinanceQueries: {
-      type: "text",
-      label: "Finance permission query IDs",
-      tooltip: "Comma-separated query IDs requiring finance permissions",
-      placeholder: "30,31,32",
-    },
-    // Church Information
-    sChurchName: {
-      type: "text",
-      label: "Church Name",
-    },
-    sChurchAddress: {
-      type: "text",
-      label: "Church Address",
-    },
-    sChurchCity: {
-      type: "text",
-      label: "Church City",
-    },
-    sChurchState: {
-      type: "text",
-      label: "Church State",
-    },
-    sChurchZip: {
-      type: "text",
-      label: "Church Zip",
-    },
-    sChurchPhone: {
-      type: "text",
-      label: "Church Phone",
-    },
-    sChurchEmail: {
-      type: "text",
-      label: "Church Email",
-    },
-    // Report Settings
-    sTaxSigner: {
-      type: "text",
-      label: "Tax Report signer",
-    },
-    sReminderSigner: {
-      type: "text",
-      label: "Pledge Reminder Signer",
-    },
-  };
+  // Safely resolve a setting label or tooltip, returning "" for falsy values.
+  function resolve(value) {
+    return value || "";
+  }
 
   // Settings Panel Class
   class SettingsPanel {
@@ -265,7 +220,7 @@ import "../src/skin/scss/system-settings-panel.scss";
      * @param {Array} options.settings - Array of setting names or setting config objects
      * @param {Function} options.onSave - Callback after successful save
      * @param {boolean} options.showAllSettingsLink - Show link to System Settings page
-     * @param {string} options.headerClass - CSS class for header (default: bg-info)
+     * @param {string} options.headerClass - CSS class for header (default: bg-primary-lt)
      */
     init(options) {
       this.options = Object.assign(
@@ -277,7 +232,9 @@ import "../src/skin/scss/system-settings-panel.scss";
           settings: [],
           onSave: null,
           showAllSettingsLink: true,
-          headerClass: "bg-info",
+          allSettingsUrl: "/SystemSettings.php",
+          configApiPath: "/admin/api/system/config",
+          headerClass: "bg-primary-lt",
         },
         options,
       );
@@ -288,64 +245,142 @@ import "../src/skin/scss/system-settings-panel.scss";
         return;
       }
 
-      this.loadSettings();
+      // Defer rendering until translations are loaded so that i18next.t() calls
+      // in component-own strings (Yes/No/Save) return translated values.
+      // If locale infrastructure is not present, init immediately.
+      if (!window.CRM || !window.i18next || window.CRM.localesLoaded) {
+        this._doInit();
+      } else {
+        window.addEventListener("CRM.localesReady", () => this._doInit(), { once: true });
+      }
     }
 
-    // Load current setting values from API
-    loadSettings() {
-      const self = this;
-      const settingNames = this.options.settings.map((s) => (typeof s === "string" ? s : s.name));
+    _doInit() {
+      // Render the panel structure so the collapse container is not empty
+      // when the user opens it. Values are fetched from the API afterwards
+      // without replacing innerHTML (no animation interruption).
+      this.render();
+      this.bindEvents();
+      this.initialized = true;
+      this.fetchAndApplyValues();
+    }
 
-      // Fetch all setting values
-      const promises = settingNames.map((name) => {
-        return fetch(window.CRM.root + "/admin/api/system/config/" + name)
+    // Fetch current values from API and update each input individually
+    fetchAndApplyValues() {
+      // Password fields never show their current value
+      const settingsToFetch = this.options.settings.filter((s) => {
+        const cfg = this.getSettingConfig(s);
+        return cfg.type !== "password";
+      });
+
+      settingsToFetch.forEach((s) => {
+        const name = typeof s === "string" ? s : s.name;
+        const cfg = this.getSettingConfig(s);
+
+        fetch(window.CRM.root + this.options.configApiPath + "/" + name)
           .then((response) => response.json())
           .then((data) => {
-            self.settingValues[name] = data.value;
+            // For ajax selects, load options from the remote URL first
+            if (cfg.type === "ajax" && cfg.ajaxUrl) {
+              this.loadAjaxOptions(name, cfg.ajaxUrl, data.value);
+            } else {
+              this.applyValue(name, data.value);
+            }
           })
-          .catch((err) => {
+          .catch(() => {
             console.warn("Could not load setting:", name);
-            self.settingValues[name] = "";
           });
-      });
-
-      Promise.all(promises).then(() => {
-        self.render();
-        self.bindEvents();
-        self.initialized = true;
       });
     }
 
-    // Render the panel HTML
+    // Load options for an ajax-type select from a remote URL, then set the value
+    loadAjaxOptions(name, url, currentValue) {
+      const select = this.container.querySelector('select[name="' + name + '"]');
+      if (!select) return;
+
+      fetch(window.CRM.root + url)
+        .then((response) => response.json())
+        .then((options) => {
+          options.forEach((opt) => {
+            const option = document.createElement("option");
+            option.value = opt.id;
+            option.textContent = opt.value;
+            if (String(opt.id) === String(currentValue)) {
+              option.selected = true;
+            }
+            select.appendChild(option);
+          });
+        })
+        .catch(() => {
+          console.warn("Could not load ajax options for:", name);
+        });
+    }
+
+    // Update a single input (or radio group) without re-rendering the whole panel
+    applyValue(name, value) {
+      const inputs = this.container.querySelectorAll('[name="' + name + '"]');
+      if (inputs.length === 0) return;
+
+      if (inputs.length > 1) {
+        // Radio group (boolean pills): check the radio whose value matches
+        const normalized = value === "1" || value === true || value === "true" ? "1" : "0";
+        inputs.forEach((input) => {
+          input.checked = input.value === normalized;
+        });
+        return;
+      }
+
+      const input = inputs[0];
+      if (input.dataset.type === "boolean") {
+        input.checked = value === "1" || value === "true" || value === true;
+      } else {
+        input.value = value != null ? value : "";
+      }
+    }
+
+    // Render the panel HTML (inputs start with empty/unchecked values;
+    // fetchAndApplyValues() fills them in after the API responds)
     render() {
       let settingsHtml = "";
 
       this.options.settings.forEach((setting) => {
-        const settingName = typeof setting === "string" ? setting : setting.name;
         const settingConfig = this.getSettingConfig(setting);
-        const value = this.settingValues[settingName];
 
         const renderer = SettingTypes[settingConfig.type];
         if (renderer) {
-          // Handle dynamic choices (functions)
-          if (typeof settingConfig.choices === "function") {
-            settingConfig.choices = settingConfig.choices();
-          }
-          settingsHtml += renderer.render(settingConfig, value);
+          settingsHtml += renderer.render(settingConfig, "");
         }
       });
 
-      const t = window.i18next ? i18next.t.bind(i18next) : (s) => s;
+      // Presets bar
+      let presetsHtml = "";
+      if (this.options.presets && this.options.presets.length > 0) {
+        const presetButtons = this.options.presets
+          .map(
+            (p, i) =>
+              `<button type="button" class="btn btn-sm btn-outline-primary preset-btn" data-preset-index="${i}">
+                ${p.icon ? `<i class="${p.icon} me-1"></i>` : ""}${escapeHtml(p.label)}
+              </button>`,
+          )
+          .join("");
+        presetsHtml = `
+          <div class="mb-3">
+            <small class="text-muted fw-bold d-block mb-1">${t("Quick Setup")}:</small>
+            <div class="btn-list">${presetButtons}</div>
+          </div>
+          <hr class="my-3">`;
+      }
 
       const html = `
-                <div class="card settings-panel-card border-info">
-                    <div class="card-header ${this.options.headerClass} text-white py-2">
+                <div class="card settings-panel-card">
+                    <div class="card-header ${this.options.headerClass} py-2">
                         <h6 class="mb-0">
-                            <i class="${this.options.icon}"></i> ${this.options.title}
+                            <i class="${this.options.icon} me-1"></i>${resolve(this.options.title)}
                         </h6>
                     </div>
                     <div class="card-body">
                         <form id="settingsPanelForm">
+                            ${presetsHtml}
                             <div class="row">
                                 ${settingsHtml}
                             </div>
@@ -354,14 +389,14 @@ import "../src/skin/scss/system-settings-panel.scss";
                                 ${
                                   this.options.showAllSettingsLink
                                     ? `
-                                <a href="${window.CRM.root}/SystemSettings.php" class="btn btn-outline-secondary btn-sm">
-                                    <i class="fa-solid fa-external-link-alt mr-1"></i> ${t("All System Settings")}
+                                <a href="${window.CRM.root}${this.options.allSettingsUrl}" class="btn btn-outline-secondary btn-sm">
+                                    <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> ${t("All System Settings")}
                                 </a>
                                 `
                                     : "<div></div>"
                                 }
                                 <button type="button" id="settingsPanelSaveBtn" class="btn btn-primary">
-                                    <i class="fa-solid fa-save mr-1"></i> ${t("Save Settings")}
+                                    <i class="fa-solid fa-save me-1"></i> ${t("Save Settings")}
                                 </button>
                             </div>
                         </form>
@@ -372,91 +407,127 @@ import "../src/skin/scss/system-settings-panel.scss";
       this.container.innerHTML = html;
     }
 
-    // Get merged setting configuration
+    // Get merged setting configuration from the caller-supplied object.
+    // Falls back to { type: "text", label: name } when no config is provided.
     getSettingConfig(setting) {
       const name = typeof setting === "string" ? setting : setting.name;
-      const baseConfig = SettingDefinitions[name] || { type: "text", label: name };
       const customConfig = typeof setting === "object" ? setting : {};
-
-      return Object.assign({ name: name }, baseConfig, customConfig);
+      return Object.assign({ name: name, type: "text", label: name }, customConfig);
     }
 
     // Bind event handlers
     bindEvents() {
-      const self = this;
+      // Initialize Bootstrap tooltips on help icons
+      if (window.$ && $.fn.tooltip) {
+        $(this.container).find('[data-bs-toggle="tooltip"]').tooltip();
+      }
+
       const saveBtn = this.container.querySelector("#settingsPanelSaveBtn");
 
       if (saveBtn) {
-        saveBtn.addEventListener("click", function () {
-          self.save();
+        saveBtn.addEventListener("click", () => {
+          this.save();
         });
       }
+
+      // Generate button for password fields — fills the input with a random key
+      this.container.querySelectorAll(".generate-password-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const input = document.getElementById(btn.dataset.target);
+          if (input) {
+            input.value = SettingsPanel.generateSecretHex();
+          }
+        });
+      });
+
+      // Preset buttons — fill form fields with predefined values
+      this.container.querySelectorAll(".preset-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const idx = parseInt(btn.dataset.presetIndex, 10);
+          const preset = this.options.presets && this.options.presets[idx];
+          if (!preset || !preset.values) return;
+          Object.keys(preset.values).forEach((key) => {
+            this.applyValue(key, preset.values[key]);
+          });
+          if (window.CRM && window.CRM.notify) {
+            window.CRM.notify(t("Applied preset") + ": " + preset.label + ". " + t("Click Save to apply."), {
+              type: "info",
+              delay: 3000,
+            });
+          }
+        });
+      });
 
       // Toggle button handling
       if (this.options.toggleButton) {
         const toggleBtn = document.querySelector(this.options.toggleButton);
         if (toggleBtn) {
-          toggleBtn.addEventListener("click", function () {
-            $(self.container).collapse("toggle");
+          toggleBtn.addEventListener("click", () => {
+            $(this.container).collapse("toggle");
           });
         }
       }
     }
 
+    // Generate a secure random hex string of 32 bytes (64 hex chars)
+    static generateSecretHex() {
+      const array = new Uint8Array(32);
+      window.crypto.getRandomValues(array);
+      return Array.from(array)
+        .map((b) => ("00" + b.toString(16)).slice(-2))
+        .join("");
+    }
+
     // Save all settings
     save() {
-      const self = this;
       const saveBtn = this.container.querySelector("#settingsPanelSaveBtn");
       const originalHtml = saveBtn.innerHTML;
-      const t = window.i18next ? i18next.t.bind(i18next) : (s) => s;
 
       // Disable button and show loading
       saveBtn.disabled = true;
-      saveBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-1"></i> ' + t("Saving...");
+      saveBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-1"></i> ' + t("Saving...");
 
-      // Collect all setting values
+      // Collect all setting values (empty passwords return null from getValue and are skipped)
       const settings = {};
-      this.container.querySelectorAll(".setting-input").forEach(function (input) {
+      this.container.querySelectorAll(".setting-input").forEach((input) => {
         const type = input.dataset.type;
         const renderer = SettingTypes[type];
         if (renderer) {
-          settings[input.name] = renderer.getValue(input);
+          const val = renderer.getValue(input);
+          if (val !== null) {
+            settings[input.name] = val;
+          }
         }
       });
 
       // Save each setting
-      const promises = Object.keys(settings).map(function (key) {
-        return fetch(window.CRM.root + "/admin/api/system/config/" + key, {
+      const promises = Object.keys(settings).map((key) =>
+        fetch(window.CRM.root + this.options.configApiPath + "/" + key, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ value: settings[key] }),
-        });
-      });
+        }),
+      );
 
       Promise.all(promises)
-        .then(function () {
+        .then(() => {
           if (window.CRM && window.CRM.notify) {
             window.CRM.notify(t("Settings saved successfully"), { type: "success", delay: 2000 });
           }
 
-          if (typeof self.options.onSave === "function") {
-            self.options.onSave();
+          if (typeof this.options.onSave === "function") {
+            this.options.onSave();
           }
         })
-        .catch(function (error) {
+        .catch((error) => {
           if (window.CRM && window.CRM.notify) {
             window.CRM.notify(t("Failed to save settings"), { type: "error", delay: 5000 });
           }
           saveBtn.disabled = false;
           saveBtn.innerHTML = originalHtml;
         });
-    }
-
-    // Add a custom setting definition
-    static addSettingDefinition(name, config) {
-      SettingDefinitions[name] = config;
     }
 
     // Add a custom setting type renderer

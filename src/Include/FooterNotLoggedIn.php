@@ -2,31 +2,35 @@
 
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Service\SystemService;
 
 ?>
-    <div class="text-center" style="background-color: white; padding-top: 5px; padding-bottom: 5px; position: fixed; bottom: 0; width: 100%">
-      <strong><?= gettext('Copyright') ?> &copy; <?= SystemService::getCopyrightDate() ?> <a href="https://churchcrm.io" target="_blank" rel="noopener noreferrer"><b>Church</b>CRM</a>.</strong> <?= gettext('All rights reserved')?>.
-      <div class="mt-1">
-        <a href="https://www.facebook.com/getChurchCRM" target="_blank" rel="noopener noreferrer">Facebook <i class="fa-brands fa-facebook"></i></a>
-        &nbsp;|&nbsp;
-        <a href="https://www.instagram.com/getchurchcrm/" target="_blank" rel="noopener noreferrer">Instagram <i class="fa-brands fa-instagram"></i></a>
-        &nbsp;|&nbsp;
-        <a href="https://x.com/getChurchCRM" target="_blank" rel="noopener noreferrer">X <i class="fa-brands fa-x-twitter"></i></a>
-        &nbsp;|&nbsp;
-        <a href="https://www.linkedin.com/company/getchurchcrm/" target="_blank" rel="noopener noreferrer">LinkedIn <i class="fa-brands fa-linkedin"></i></a>
-        &nbsp;|&nbsp;
-        <a href="https://www.youtube.com/@getChurchCRM" target="_blank" rel="noopener noreferrer">YouTube <i class="fa-brands fa-youtube"></i></a>
-      </div>
-    </div>
 
-  <script src="<?= SystemURLs::assetVersioned('/skin/external/select2/select2.full.min.js') ?>"></script>
-
-  <!-- Bootstrap 3.3.5 -->
-  <script src="<?= SystemURLs::assetVersioned('/skin/external/bootstrap/js/bootstrap.min.js') ?>"></script>
-
-  <!-- AdminLTE App -->
-  <script src="<?= SystemURLs::assetVersioned('/skin/external/adminlte/adminlte.min.js') ?>"></script>
+<div class="auth-footer">
+  <div>
+    <strong><?= gettext('Copyright') ?> &copy; <?= SystemService::getCopyrightDate() ?> 
+    <a href="https://churchcrm.io" target="_blank" rel="noopener noreferrer"><b>Church</b>CRM</a></strong>. 
+    <?= gettext('All rights reserved') ?>.
+  </div>
+  <div class="auth-footer-social">
+    <a href="https://www.facebook.com/getChurchCRM" target="_blank" rel="noopener noreferrer" title="Facebook">
+      <i class="fa-brands fa-facebook"></i>
+    </a>
+    <a href="https://www.instagram.com/getchurchcrm/" target="_blank" rel="noopener noreferrer" title="Instagram">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+    <a href="https://x.com/getChurchCRM" target="_blank" rel="noopener noreferrer" title="X">
+      <i class="fa-brands fa-x-twitter"></i>
+    </a>
+    <a href="https://www.linkedin.com/company/getchurchcrm/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+      <i class="fa-brands fa-linkedin"></i>
+    </a>
+    <a href="https://www.youtube.com/@getChurchCRM" target="_blank" rel="noopener noreferrer" title="YouTube">
+      <i class="fa-brands fa-youtube"></i>
+    </a>
+  </div>
+</div>
 
   <!-- InputMask -->
   <script src="<?= SystemURLs::assetVersioned('/skin/external/inputmask/jquery.inputmask.min.js') ?>"></script>
@@ -48,12 +52,6 @@ use ChurchCRM\Service\SystemService;
         }
     })();
   </script>
-  <?php
-
-    //If this is a first-run setup, do not include google analytics code.
-    if ($_SERVER['SCRIPT_NAME'] != '/setup/index.php') {
-        include_once('analyticstracking.php');
-    }
-    ?>
+  <?= PluginManager::getPluginFooterContent() ?>
 </body>
 </html>

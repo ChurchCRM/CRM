@@ -7,6 +7,11 @@ window.jQuery = $;
 const bootstrap = require("bootstrap");
 window.bootstrap = bootstrap;
 
+// Helper: get or create a Bootstrap 5 Modal instance
+function getModal(id) {
+  return bootstrap.Modal.getOrCreateInstance(document.getElementById(id));
+}
+
 const i18next = require("i18next");
 window.i18next = i18next;
 
@@ -19,9 +24,7 @@ window.moment = moment;
 const Stepper = require("bs-stepper");
 window.Stepper = Stepper;
 
-(function () {
-  "use strict";
-
+(() => {
   // Get root path from global CRM config and ensure it's properly formatted
   let rootPath = window.CRM && window.CRM.root ? window.CRM.root : "";
 
@@ -71,7 +74,7 @@ window.Stepper = Stepper;
   };
 
   let setupStepper;
-  let validators = {};
+  const validators = {};
 
   function skipCheck() {
     $("#prerequisites-war").hide();
@@ -118,7 +121,7 @@ window.Stepper = Stepper;
     if (state.checksComplete) {
       let allPassed = true;
       for (const key in state.prerequisites) {
-        if (Object.prototype.hasOwnProperty.call(state.prerequisites, key)) {
+        if (Object.hasOwn(state.prerequisites, key)) {
           if (state.prerequisites[key] !== true) {
             allPassed = false;
             break;
@@ -253,7 +256,7 @@ window.Stepper = Stepper;
       .html('<i class="fa-solid fa-file-circle-exclamation mr-2"></i>Files with issues');
     const list = $("<ul>").addClass("integrity-files-list");
 
-    items.forEach(function (fileName) {
+    items.forEach((fileName) => {
       list.append($("<li>").text(fileName));
     });
 
@@ -295,7 +298,7 @@ window.Stepper = Stepper;
     const $table = $(config.table);
     $table.empty();
 
-    orphanedItems.forEach(function (fileName) {
+    orphanedItems.forEach((fileName) => {
       const $row = $("<tr>").append($("<td>").addClass("text-danger").text(fileName));
       $table.append($row);
     });
@@ -368,7 +371,7 @@ window.Stepper = Stepper;
       url: "./SystemIntegrityCheck",
       method: "GET",
     })
-      .done(function (data) {
+      .done((data) => {
         const status = data && typeof data === "object" && data.status ? String(data.status).toLowerCase() : "";
         const satisfied = status === "success";
         const statusInfo = satisfied ? statusConfig.true : statusConfig.false;
@@ -398,7 +401,7 @@ window.Stepper = Stepper;
         updatePrerequisitesUI();
         updateGroupStatus(groupKey);
       })
-      .fail(function () {
+      .fail(() => {
         const resultRow = $("<tr>", {
           id: rowId,
         })
@@ -423,7 +426,7 @@ window.Stepper = Stepper;
     state.prerequisitesStatus = false;
     state.checksComplete = false;
 
-    Object.keys(GROUP_CONFIG).forEach(function (key) {
+    Object.keys(GROUP_CONFIG).forEach((key) => {
       const config = GROUP_CONFIG[key];
       $(config.table).empty();
       $(config.status).html('<i class="fa-solid fa-spinner fa-spin text-muted"></i>');
@@ -434,13 +437,13 @@ window.Stepper = Stepper;
       method: "GET",
       contentType: "application/json",
     })
-      .done(function (data) {
-        $.each(data, function (index, prerequisite) {
+      .done((data) => {
+        $.each(data, (index, prerequisite) => {
           renderPrerequisite(prerequisite, "php");
         });
         checkFilesystem();
       })
-      .fail(function () {
+      .fail(() => {
         renderPrerequisite(
           {
             Name: "Unable to load PHP prerequisite checks",
@@ -458,13 +461,13 @@ window.Stepper = Stepper;
       method: "GET",
       contentType: "application/json",
     })
-      .done(function (data) {
-        $.each(data, function (index, prerequisite) {
+      .done((data) => {
+        $.each(data, (index, prerequisite) => {
           renderPrerequisite(prerequisite, "filesystem");
         });
         checkLocales();
       })
-      .fail(function () {
+      .fail(() => {
         renderPrerequisite(
           {
             Name: "Unable to verify filesystem permissions",
@@ -482,11 +485,11 @@ window.Stepper = Stepper;
       method: "GET",
       contentType: "application/json",
     })
-      .done(function (data) {
+      .done((data) => {
         renderLocaleInfo(data);
         checkIntegrity();
       })
-      .fail(function () {
+      .fail(() => {
         renderLocaleInfoError();
         checkIntegrity();
       });
@@ -528,10 +531,10 @@ window.Stepper = Stepper;
 
       // Create table body
       const $tbody = $("<tbody>");
-      locales.forEach(function (locale) {
+      locales.forEach((locale) => {
         const statusBadge = locale.systemAvailable
-          ? `<span class="badge badge-success"><i class="fa-solid fa-check mr-1"></i>Available</span>`
-          : `<span class="badge badge-secondary"><i class="fa-solid fa-times mr-1"></i>Not Available</span>`;
+          ? `<span class="badge bg-success text-white"><i class="fa-solid fa-check me-1"></i>Available</span>`
+          : `<span class="badge bg-secondary text-white"><i class="fa-solid fa-times me-1"></i>Not Available</span>`;
 
         const $row = $("<tr>")
           .append(
@@ -591,7 +594,7 @@ window.Stepper = Stepper;
     let hasFields = false;
 
     // Process all input fields and build validation rules
-    stepElement.querySelectorAll("input, select, textarea").forEach(function (field) {
+    stepElement.querySelectorAll("input, select, textarea").forEach((field) => {
       if (!field.id || !field.name) return;
 
       const errorContainer = field.parentElement.querySelector(".invalid-feedback");
@@ -722,7 +725,7 @@ window.Stepper = Stepper;
     }
 
     // Show the setup modal
-    $("#setupModal").modal("show");
+    getModal("setupModal").show();
 
     $.ajax({
       url: rootPath + "/setup/",
@@ -730,13 +733,13 @@ window.Stepper = Stepper;
       data: JSON.stringify(formData),
       contentType: "application/json",
     })
-      .done(function (response) {
+      .done((response) => {
         // Check if response contains errors (backend bug workaround)
         if (response && response.errors) {
           // Treat as failure
-          $("#setup-progress").hide();
-          $("#setup-error").show();
-          $("#setup-footer").show();
+          $("#setup-progress").addClass("d-none");
+          $("#setup-error").removeClass("d-none");
+          $("#setup-footer").removeClass("d-none");
 
           let errorMessage = "<ul class='mb-0'>";
           for (const [field, error] of Object.entries(response.errors)) {
@@ -748,35 +751,35 @@ window.Stepper = Stepper;
           $("#continue-to-login")
             .text("Close")
             .off("click")
-            .on("click", function () {
-              $("#setupModal").modal("hide");
-              setTimeout(function () {
-                $("#setup-progress").show();
-                $("#setup-success").hide();
-                $("#setup-error").hide();
-                $("#setup-footer").hide();
+            .on("click", () => {
+              bootstrap.Modal.getInstance(document.getElementById("setupModal"))?.hide();
+              setTimeout(() => {
+                $("#setup-progress").removeClass("d-none");
+                $("#setup-success").addClass("d-none");
+                $("#setup-error").addClass("d-none");
+                $("#setup-footer").addClass("d-none");
               }, 500);
             });
           return;
         }
 
         // Hide progress, show success
-        $("#setup-progress").hide();
-        $("#setup-success").show();
-        $("#setup-footer").show();
+        $("#setup-progress").addClass("d-none");
+        $("#setup-success").removeClass("d-none");
+        $("#setup-footer").removeClass("d-none");
 
         // Handle Continue to Login button
         $("#continue-to-login")
           .off("click")
-          .on("click", function () {
+          .on("click", () => {
             location.replace(rootPath + "/");
           });
       })
-      .fail(function (xhr) {
+      .fail((xhr) => {
         // Hide progress, show error
-        $("#setup-progress").hide();
-        $("#setup-error").show();
-        $("#setup-footer").show();
+        $("#setup-progress").addClass("d-none");
+        $("#setup-error").removeClass("d-none");
+        $("#setup-footer").removeClass("d-none");
 
         // Parse error message
         let errorMessage = "An unknown error occurred.";
@@ -798,14 +801,14 @@ window.Stepper = Stepper;
         $("#continue-to-login")
           .text("Close")
           .off("click")
-          .on("click", function () {
-            $("#setupModal").modal("hide");
+          .on("click", () => {
+            bootstrap.Modal.getInstance(document.getElementById("setupModal"))?.hide();
             // Reset modal state for next attempt
-            setTimeout(function () {
-              $("#setup-progress").show();
-              $("#setup-success").hide();
-              $("#setup-error").hide();
-              $("#setup-footer").hide();
+            setTimeout(() => {
+              $("#setup-progress").removeClass("d-none");
+              $("#setup-success").addClass("d-none");
+              $("#setup-error").addClass("d-none");
+              $("#setup-footer").addClass("d-none");
             }, 500);
           });
       });
@@ -814,15 +817,45 @@ window.Stepper = Stepper;
   // Note: skipCheck is intentionally NOT exposed globally to prevent accidental calls
   // It should only be called via the Force Install confirmation flow
 
-  document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("setup-form");
     const stepperElement = document.getElementById("setup-stepper");
 
     // Prevent form submission (we handle it via AJAX)
-    form.addEventListener("submit", function (event) {
+    form.addEventListener("submit", (event) => {
       event.preventDefault();
       return false;
     });
+
+    // Real-time password matching validation
+    const passwordField = document.getElementById("DB_PASSWORD");
+    const confirmPasswordField = document.getElementById("DB_PASSWORD_CONFIRM");
+    const submitButton = document.getElementById("submit-setup");
+
+    function validatePasswordMatch() {
+      const password = passwordField.value;
+      const confirmPassword = confirmPasswordField.value;
+      const mismatch = password && confirmPassword && password !== confirmPassword;
+
+      // Update visual feedback on confirm password field
+      if (mismatch) {
+        confirmPasswordField.classList.add("is-invalid");
+        confirmPasswordField.classList.remove("is-valid");
+      } else if (confirmPassword) {
+        confirmPasswordField.classList.remove("is-invalid");
+        confirmPasswordField.classList.add("is-valid");
+      } else {
+        confirmPasswordField.classList.remove("is-invalid", "is-valid");
+      }
+
+      return !mismatch;
+    }
+
+    // Add listeners for real-time validation
+    if (passwordField && confirmPasswordField) {
+      passwordField.addEventListener("input", validatePasswordMatch);
+      confirmPasswordField.addEventListener("input", validatePasswordMatch);
+    }
 
     setupStepper = new Stepper(stepperElement, {
       linear: true,
@@ -841,7 +874,7 @@ window.Stepper = Stepper;
     validators["step-database"] = initializeStepValidation("step-database");
 
     // Custom navigation logic with validation
-    stepperElement.addEventListener("show.bs-stepper", function (event) {
+    stepperElement.addEventListener("show.bs-stepper", (event) => {
       const currentStep = event.detail.from;
       const nextStep = event.detail.to;
 
@@ -862,7 +895,7 @@ window.Stepper = Stepper;
     });
 
     // Update UI when steps are shown (after navigation completes)
-    stepperElement.addEventListener("shown.bs-stepper", function (event) {
+    stepperElement.addEventListener("shown.bs-stepper", (event) => {
       const shownStep = event.detail.to;
 
       // If returning to prerequisites step, update UI
@@ -873,12 +906,12 @@ window.Stepper = Stepper;
     });
 
     // Handle finish button
-    document.getElementById("submit-setup").addEventListener("click", function (event) {
+    document.getElementById("submit-setup").addEventListener("click", (event) => {
       event.preventDefault(); // Prevent any default behavior
 
       // Validate database step before submission
       if (validators["step-database"]) {
-        validators["step-database"].revalidate().then(function (isValid) {
+        validators["step-database"].revalidate().then((isValid) => {
           if (isValid) {
             submitSetupData();
           } else {
@@ -894,14 +927,14 @@ window.Stepper = Stepper;
     });
 
     // Handle prerequisites Next button
-    document.getElementById("prerequisites-next-btn").addEventListener("click", function () {
+    document.getElementById("prerequisites-next-btn").addEventListener("click", () => {
       if (setupStepper) {
         setupStepper.next();
       }
     });
 
     // Handle database step Previous button
-    document.getElementById("database-prev-btn").addEventListener("click", function () {
+    document.getElementById("database-prev-btn").addEventListener("click", () => {
       if (setupStepper) {
         setupStepper.previous();
       }
@@ -910,21 +943,21 @@ window.Stepper = Stepper;
     // Handle Force Install button click - show confirmation modal
     const forceBtn = document.getElementById("prerequisites-force-btn");
     if (forceBtn) {
-      forceBtn.addEventListener("click", function (e) {
+      forceBtn.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
-        $("#forceInstallModal").modal("show");
+        getModal("forceInstallModal").show();
       });
     }
 
     // Handle Force Install confirmation
     const confirmBtn = document.getElementById("confirm-force-install");
     if (confirmBtn) {
-      confirmBtn.addEventListener("click", function (e) {
+      confirmBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        $("#forceInstallModal").modal("hide");
+        bootstrap.Modal.getInstance(document.getElementById("forceInstallModal"))?.hide();
         // Wait for modal to hide before proceeding
-        setTimeout(function () {
+        setTimeout(() => {
           skipCheck();
         }, 300);
       });

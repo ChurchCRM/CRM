@@ -180,11 +180,11 @@ class Family extends BaseFamily implements PhotoInterface
         }
         foreach ($this->getPeopleSorted() as $person) {
             $email = $person->getEmail();
-            if ($email != null) {
+            if ($email !== null) {
                 $emails[] = $email;
             }
             $email = $person->getWorkEmail();
-            if ($email != null) {
+            if ($email !== null) {
                 $emails[] = $email;
             }
         }
@@ -336,6 +336,15 @@ class Family extends BaseFamily implements PhotoInterface
     public function hasLatitudeAndLongitude(): bool
     {
         return !empty($this->getLatitude()) && !empty($this->getLongitude());
+    }
+
+    /**
+     * Returns true when the family has a street address entered (Address1 is non-empty).
+     * Used to distinguish "no address" from "unverified address" (has address but no geocode).
+     */
+    public function hasAddress(): bool
+    {
+        return !empty(trim($this->getAddress1() ?? ''));
     }
 
     /**

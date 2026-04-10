@@ -2,7 +2,7 @@
 
 echo <<<'EOD'
 <div class="card">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><?= gettext('Generate Labels') ?></h3>
     </div>
     <div class="card-body">
@@ -13,16 +13,16 @@ LabelGroupSelect('groupbymode');
 
 echo '  <tr><td>' . gettext('Bulk Mail Presort') . '</td>';
 echo '  <td>';
-echo '  <input name="bulkmailpresort" type="checkbox" onclick="codename()"';
+echo '  <input class="form-check-input" name="bulkmailpresort" type="checkbox" onclick="codename()"';
 echo '  id="BulkMailPresort" value="1" ';
 if (array_key_exists('buildmailpresort', $_COOKIE) && $_COOKIE['bulkmailpresort']) {
     echo 'checked';
 }
-echo '  ><br></td></tr>';
+echo '  ></td></tr>';
 
 echo '  <tr><td>' . gettext('Quiet Presort') . '</td>';
 echo '  <td>';
-echo '  <input ';
+echo '  <input class="form-check-input" ';
 if (array_key_exists('buildmailpresort', $_COOKIE) && !$_COOKIE['bulkmailpresort']) {
     echo 'disabled ';
 }   // This would be better with $_SESSION variable
@@ -32,7 +32,7 @@ echo '  id="QuietBulkMail" value="1" ';
 if (array_key_exists('bulkmailquiet', $_COOKIE) && $_COOKIE['bulkmailquiet'] && array_key_exists('buildmailpresort', $_COOKIE) && $_COOKIE['bulkmailpresort']) {
     echo 'checked';
 }
-echo '  ><br></td></tr>';
+echo '  ></td></tr>';
 
 ToParentsOfCheckBox('toparents');
 LabelSelect('labeltype');

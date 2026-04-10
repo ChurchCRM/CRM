@@ -4,13 +4,17 @@ Run the full localization pipeline before a release: regenerate missing terms, t
 
 ## Steps
 
-### Step 1 — Regenerate missing terms
+### Step 1 — Generate missing-term batches (via main downloader)
 
 ```bash
-npm run locale:missing
+# Full run (all locales):
+npm run locale:download
+
+# Single-locale only (e.g. French):
+node locale/scripts/poeditor-downloader.js --locale fr
 ```
 
-This compares `locale/messages.json` against all installed `src/locale/i18n/*.json` files and writes fresh empty batch files to `locale/terms/missing/{locale}/`.
+The downloader now writes missing-term batch files to `locale/terms/missing/{locale}/` when appropriate.
 
 ### Step 2 — Preview what needs translation
 
@@ -35,6 +39,35 @@ To translate a single locale instead:
 /locale-translate --locale <poEditorCode>
 ```
 
+### Step 3.5 — Commit + Push + Upload after EVERY locale (MANDATORY) <!-- learned: 2026-04-09 -->
+
+**⛔ NON-NEGOTIABLE: After EVERY locale, immediately commit → push → upload to POEditor.**
+
+```bash
+# After each locale is translated and applied:
+git add locale/terms/missing/<CODE>/ locale/terms/english-ok.json
+git commit -m "locale: translate <CODE> (<LANGUAGE>, <N> terms)"
+git push origin $(git branch --show-current)
+node locale/scripts/poeditor-upload-missing.js --locale <CODE> --yes
+```
+
+**Never batch multiple locales into one commit. Never skip the push. Never skip the upload.**
+
+After the upload script refreshes the local batch files (removes accepted terms), commit those too:
+```bash
+git add locale/terms/missing/<CODE>/
+git commit -m "locale: update missing terms for <CODE> after POEditor upload"
+git push origin $(git branch --show-current)
+```
+
+**Why all four steps?**
+- **Commit translations** = save point (protects against session crash)
+- **Push** = remote backup (protects against machine crash)
+- **Upload + download** = POEditor backup + local files reflect actual remaining work
+- **Commit refreshed files** = branch stays in sync with POEditor state
+
+We have lost hours of translated work because agents translated 20+ locales without committing or pushing. This rule exists to prevent that from ever happening again.
+
 ### Step 4 — Verify
 
 ```bash
@@ -53,9 +86,19 @@ Share that file (or its contents) with your translation team before or alongside
 - Format specifiers (`%d`, `%s`) preserved
 - Natural-sounding UI labels
 
-### Step 6 — Upload to POEditor
+### Step 6 — Upload to POEditor (already done per-locale)
 
-Upload the filled batch files from `locale/terms/missing/` to POEditor. POEditor is the source of truth for all translations.
+If Step 3.5 was followed correctly, all translated locales are already uploaded to POEditor. Verify with:
+
+```bash
+# Check if any locales still need upload (should show 0 or only empty locales)
+node locale/scripts/poeditor-upload-missing.js --dry-run
+```
+
+If any were missed (e.g., upload failed during translation), upload them now:
+```bash
+npm run locale:upload:missing -- --yes
+```
 
 After contributors have reviewed and approved translations in POEditor:
 

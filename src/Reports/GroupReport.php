@@ -1,11 +1,14 @@
 <?php
 
 require_once __DIR__ . '/../Include/Config.php';
-require_once __DIR__ . '/../Include/Functions.php';
+require_once __DIR__ . '/../Include/PageInit.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PdfGroupDirectory;
+use ChurchCRM\dto\Cart;
+use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\MiscUtils;
 
 $bOnlyCartMembers = $_POST['OnlyCart'];
 $iGroupID = InputUtils::legacyFilterInput($_POST['GroupID'], 'int');
@@ -24,13 +27,17 @@ $aRow = mysqli_fetch_array($rsGroupName);
 $sGroupName = $aRow[0];
 $iRoleListID = $aRow[1];
 
-// Get the selected role name
+// Get the selected role name for the PDF header
 if ($iRoleID > 0) {
     $sSQL = 'SELECT lst_OptionName FROM list_lst WHERE lst_ID = ' . $iRoleListID . ' AND lst_OptionID = ' . $iRoleID;
     $rsTemp = RunQuery($sSQL);
     $aRow = mysqli_fetch_array($rsTemp);
     $sRoleName = $aRow[0];
-} elseif (isset($_POST['GroupRoleEnable'])) {
+}
+
+// Always fetch all role names when Group Role field is enabled — needed for per-person display
+// regardless of whether a specific role filter is active
+if (isset($_POST['GroupRoleEnable'])) {
     $sSQL = 'SELECT lst_OptionName,lst_OptionID FROM list_lst WHERE lst_ID = ' . $iRoleListID;
     $rsTemp = RunQuery($sSQL);
 
@@ -61,7 +68,7 @@ if ($iRoleID > 0) {
 }
 
 if ($bOnlyCartMembers && count($_SESSION['aPeopleCart']) > 0) {
-    $sSQL .= ' AND person_per.per_ID IN (' . convertCartToString($_SESSION['aPeopleCart']) . ')';
+    $sSQL .= ' AND person_per.per_ID IN (' . Cart::getCartIdString() . ')';
 }
 
 $sSQL .= ' ORDER BY per_LastName';
@@ -71,7 +78,7 @@ $rsRecords = RunQuery($sSQL);
 while ($aRow = mysqli_fetch_array($rsRecords)) {
     $OutStr = '';
 
-    $pdf->sFamily = FormatFullName($aRow['per_Title'], $aRow['per_FirstName'], $aRow['per_MiddleName'], $aRow['per_LastName'], $aRow['per_Suffix'], 3);
+    $pdf->sFamily = MiscUtils::formatFullName($aRow['per_Title'], $aRow['per_FirstName'], $aRow['per_MiddleName'], $aRow['per_LastName'], $aRow['per_Suffix'], 3);
 
     // Use person data only - each person must enter their own information
     $sAddress1 = $aRow['per_Address1'] ?? '';
@@ -85,49 +92,71 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
     $sEmail = $aRow['per_Email'] ?? '';
 
     if (isset($_POST['GroupRoleEnable'])) {
-        $OutStr = gettext('Role') . ': ' . $aRoleNames[$aRow['p2g2r_rle_ID']] . "\n";
+        $OutStr = gettext('Role') . ': ' . $aRoleNames[$aRow['p2g2r_rle_ID']] ."\n";
     }
 
     if (isset($_POST['AddressEnable'])) {
         if (strlen($sAddress1)) {
-            $OutStr .= $sAddress1 . "\n";
+            $OutStr .= $sAddress1 ."\n";
         }
         if (strlen($sAddress2)) {
-            $OutStr .= $sAddress2 . "\n";
+            $OutStr .= $sAddress2 ."\n";
         }
         if (strlen($sCity)) {
-            $OutStr .= $sCity . ', ' . $sState . ' ' . $sZip . "\n";
+            $OutStr .= $sCity . ', ' . $sState . ' ' . $sZip ."\n";
         }
     }
 
     if (isset($_POST['HomePhoneEnable']) && strlen($sHomePhone)) {
         $TempStr = $sHomePhone;
-        $OutStr .= '  ' . gettext('Phone') . ': ' . $TempStr . "\n";
+        $OutStr .= '  ' . gettext('Phone') . ': ' . $TempStr ."\n";
     }
 
     if (isset($_POST['WorkPhoneEnable']) && strlen($sWorkPhone)) {
         $TempStr = $sWorkPhone;
-        $OutStr .= '  ' . gettext('Work') . ': ' . $TempStr . "\n";
+        $OutStr .= '  ' . gettext('Work') . ': ' . $TempStr ."\n";
     }
 
     if (isset($_POST['CellPhoneEnable']) && strlen($sCellPhone)) {
         $TempStr = $sCellPhone;
-        $OutStr .= '  ' . gettext('Cell') . ': ' . $TempStr . "\n";
+        $OutStr .= '  ' . gettext('Cell') . ': ' . $TempStr ."\n";
     }
 
     if (isset($_POST['EmailEnable']) && strlen($sEmail)) {
-        $OutStr .= '  ' . gettext('Email') . ': ' . $sEmail . "\n";
+        $OutStr .= '  ' . gettext('Email') . ': ' . $sEmail ."\n";
     }
 
     if (isset($_POST['OtherEmailEnable']) && strlen($aRow['per_WorkEmail'])) {
-        $OutStr .= '  ' . gettext('Other Email') . ': ' . $aRow['per_WorkEmail'] .= "\n";
+        $OutStr .= '  ' . gettext('Other Email') . ': ' . $aRow['per_WorkEmail'] .="\n";
+    }
+
+    if (isset($_POST['BirthdayEnable'])) {
+        $month = (int) ($aRow['per_BirthMonth'] ?? 0);
+        $day   = (int) ($aRow['per_BirthDay']   ?? 0);
+        $year  = (int) ($aRow['per_BirthYear']  ?? 0);
+        if ($month > 0 && $day > 0) {
+            $bday = date('F j', mktime(0, 0, 0, $month, $day));
+            if ($year > 0) {
+                $bday .= ', ' . $year;
+            }
+            $OutStr .= '  ' . gettext('Birthday') . ': ' . $bday . "\n";
+        }
+    }
+
+    if (isset($_POST['GenderEnable'])) {
+        $gender = (int) ($aRow['per_Gender'] ?? 0);
+        if ($gender === 1) {
+            $OutStr .= '  ' . gettext('Gender') . ': ' . gettext('Male') . "\n";
+        } elseif ($gender === 2) {
+            $OutStr .= '  ' . gettext('Gender') . ': ' . gettext('Female') . "\n";
+        }
     }
 
     if ($bHasProps) {
         while ($aPropRow = mysqli_fetch_array($rsProps)) {
             if (isset($_POST[$aPropRow['prop_Field'] . 'enable'])) {
                 $currentData = trim($aRow[$aPropRow['prop_Field']]);
-                $OutStr .= $aPropRow['prop_Name'] . ': ' . displayCustomField($aPropRow['type_ID'], $currentData, $aPropRow['prop_Special']) . "\n";
+                $OutStr .= $aPropRow['prop_Name'] . ': ' . CustomFieldUtils::display($aPropRow['type_ID'], $currentData, $aPropRow['prop_Special']) ."\n";
             }
         }
         mysqli_data_seek($rsProps, 0);
@@ -136,7 +165,7 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
     // Count the number of lines in the output string
     $numlines = 1;
     $offset = 0;
-    while ($result = strpos($OutStr, "\n", $offset)) {
+    while ($result = strpos($OutStr,"\n", $offset)) {
         $offset = $result + 1;
         $numlines++;
     }

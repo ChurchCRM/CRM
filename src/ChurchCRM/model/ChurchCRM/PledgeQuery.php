@@ -88,21 +88,20 @@ class PledgeQuery extends BasePledgeQuery
         $this->filterByPledgeOrPayment('Payment');
 
         // Apply date filtering based on selected datetype
-        // CRITICAL: Use innerJoinWithDeposit (INNER JOIN) when filtering by deposit date
-        // This ensures deposits exist and date filtering works correctly (matches 5.22.0 SQL behavior)
         if ($datetype === 'Deposit') {
-            // Inner join with deposit and filter by deposit date
-            $this->innerJoinWithDeposit();
+            // Filter by deposit date using a single useDepositQuery() block.
+            // IMPORTANT: Do NOT call innerJoinWithDeposit() before useDepositQuery() —
+            // useDepositQuery() overwrites any prior join registered under the same key,
+            // causing conditions from separate useDepositQuery() calls to reference stale
+            // aliases that no longer match the generated SQL (returning no rows).
+            $depositQuery = $this->useDepositQuery(null, Criteria::INNER_JOIN);
             if (!empty($dateStart)) {
-                $this->useDepositQuery()
-                    ->filterByDate($dateStart, Criteria::GREATER_EQUAL)
-                    ->endUse();
+                $depositQuery->filterByDate($dateStart, Criteria::GREATER_EQUAL);
             }
             if (!empty($dateEnd)) {
-                $this->useDepositQuery()
-                    ->filterByDate($dateEnd, Criteria::LESS_EQUAL)
-                    ->endUse();
+                $depositQuery->filterByDate($dateEnd, Criteria::LESS_EQUAL);
             }
+            $depositQuery->endUse();
         } else {
             // Filter by payment date
             if (!empty($dateStart)) {

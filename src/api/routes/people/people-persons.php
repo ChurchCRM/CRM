@@ -1,6 +1,5 @@
 <?php
 
-use ChurchCRM\dto\MenuEventsCount;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
@@ -19,6 +18,56 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
     $group->get('/roles', 'getAllRolesAPI');
     $group->get('/roles/', 'getAllRolesAPI');
     $group->get('/duplicate/emails', 'getEmailDupesAPI');
+
+    /**
+     * @OA\Get(
+     *     path="/persons/email/without",
+     *     summary="Get people with no personal or work email on record",
+     *     tags={"People"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Response(response=200, description="People without any email address",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="count", type="integer"),
+     *             @OA\Property(property="persons", type="array", @OA\Items(type="object"))
+     *         )
+     *     )
+     * )
+     */
+    $group->get('/email/without', function (Request $request, Response $response, array $args): Response {
+        // Pre-load list options to avoid N+1 queries
+        $roleOptions = ListOptionQuery::create()->filterById(2)->find()->toKeyValue('OptionId', 'OptionName');
+        $classificationOptions = ListOptionQuery::create()->filterById(1)->find()->toKeyValue('OptionId', 'OptionName');
+
+        $persons = PersonQuery::create()
+            ->leftJoinWithFamily()
+            ->where('(per_Email IS NULL OR per_Email = "") AND (per_WorkEmail IS NULL OR per_WorkEmail = "")')
+            ->where('Family.DateDeactivated IS NULL')
+            ->find();
+
+        $result = [];
+        foreach ($persons as $person) {
+            $family = $person->getFamily();
+            $numericAge = $person->getNumericAge();
+            $age = ($numericAge !== false) ? $numericAge : null;
+            $fmrId = $person->getFmrId();
+            $clsId = $person->getClsId();
+            $roleName = $roleOptions[$fmrId] ?? 'Unassigned';
+            $isChild = (stripos($roleName, 'child') !== false) || ($age !== null && $age < 18);
+
+            $result[] = [
+                'Id'             => $person->getId(),
+                'FullName'       => $person->getFullName(),
+                'FamilyId'       => $family ? $family->getId() : null,
+                'FamilyName'     => $family ? $family->getName() : '',
+                'FamilyRole'     => $roleName,
+                'Classification' => $classificationOptions[$clsId] ?? 'Unassigned',
+                'Age'            => $age,
+                'IsChild'        => $isChild,
+            ];
+        }
+
+        return SlimUtils::renderJSON($response, ['count' => count($result), 'persons' => $result]);
+    });
 
     $group->get('/latest', 'getLatestPersons');
     $group->get('/updated', 'getUpdatedPersons');
@@ -269,8 +318,8 @@ function getUpdatedPersons(Request $request, Response $response, array $args): R
 function getPersonsWithBirthdays(Request $request, Response $response, array $args): Response
 {
     // Get birthdays for 14-day range: 7 days before to 7 days after today
-    // Use configured timezone to ensure correct "today" calculation
-    $today = DateTimeUtils::getToday();
+    // Use start of today (midnight) to ensure day-boundary comparisons are accurate
+    $today = DateTimeUtils::getStartOfToday();
     $dates = [];
     
     for ($i = -7; $i <= 7; $i++) {
@@ -339,10 +388,25 @@ function getPersonsWithBirthdays(Request $request, Response $response, array $ar
         }
         
         $formattedPerson['DaysUntil'] = $diff;
-        
+
         // Get age (respects hideAge setting)
+        // Age is the localized long string ("66 years old" / "6 months old"),
+        // kept for back-compat. NumericAge + AgeUnit are the machine-readable
+        // pair the dashboard uses for compact, plural-aware rendering — they
+        // correctly handle infants (months) and singular/plural in any locale.
         $formattedPerson['Age'] = $person->getAge();
-        
+        $birthDateForAge = $person->getBirthDate();
+        if ($birthDateForAge instanceof \DateTimeImmutable && !$person->hideAge()) {
+            $ageDiff = (new \DateTimeImmutable('today'))->diff($birthDateForAge);
+            if ($ageDiff->y < 1) {
+                $formattedPerson['NumericAge'] = $ageDiff->m;
+                $formattedPerson['AgeUnit']    = 'month';
+            } else {
+                $formattedPerson['NumericAge'] = $ageDiff->y;
+                $formattedPerson['AgeUnit']    = 'year';
+            }
+        }
+
         // Birthday date for display
         if ($person->getBirthDate()) {
             $formattedPerson['Birthday'] = date_format(

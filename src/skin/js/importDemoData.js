@@ -132,7 +132,6 @@
             accent-color: #27ae60;
           }
           .demo-import-options .form-check-label {
-            user-select: none;
             cursor: pointer;
             margin-bottom: 0;
             font-size: 15px;
@@ -258,6 +257,8 @@
           </div>
         </div>
       `);
+      // Ensure Bootstrap utility class is applied to labels in the injected overlay
+      $("#demoImportConfirmOverlay .form-check-label").addClass("user-select-none");
     }
   }
 
@@ -406,14 +407,14 @@
     var warningHtml =
       '<div id="demoImportWarning" class="alert alert-danger mb-4" style="border-left: 4px solid #dc3545; padding: 16px;">' +
       '<div style="font-weight: 600; font-size: 15px; margin-bottom: 8px; color: #721c24;">' +
-      '<i class="fa fa-exclamation-circle mr-2"></i>' +
+      '<i class="fa fa-circle-exclamation mr-2"></i>' +
       i18next.t("Import failed") +
       "</div>" +
       '<div style="font-size: 14px; color: #495057; margin-bottom: 12px; line-height: 1.5;">' +
       (errorMessage || i18next.t("Unknown error")) +
       "</div>" +
       '<div style="font-size: 13px; color: #856404; background: #fff3cd; padding: 10px 12px; border-radius: 4px; border: 1px solid #ffeeba;">' +
-      '<i class="fa fa-info-circle mr-1"></i>' +
+      '<i class="fa fa-circle-info mr-1"></i>' +
       i18next.t("Force Import will retry and may create duplicate data.") +
       "</div></div>";
     $(".demo-import-options").before(warningHtml);
@@ -421,7 +422,7 @@
     $("#demoImportConfirmBtn")
       .removeClass("btn-success")
       .addClass("btn-danger")
-      .html('<i class="fa fa-exclamation-triangle mr-2"></i>' + i18next.t("Force Import"));
+      .html('<i class="fa fa-triangle-exclamation mr-2"></i>' + i18next.t("Force Import"));
   }
 
   function resetImportButton() {

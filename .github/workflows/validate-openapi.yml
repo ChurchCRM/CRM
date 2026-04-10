@@ -18,14 +18,18 @@ on:
       - 'src/kiosk/routes/api/**'
       - 'src/plugins/routes/api/**'
 
+permissions:
+  contents: read
+
 jobs:
   validate:
     name: Generate and validate OpenAPI specs
+    timeout-minutes: 15
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout CRM
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup PHP 8.4
         uses: shivammathur/setup-php@v2
@@ -34,7 +38,7 @@ jobs:
           extensions: mbstring, pdo, zip
 
       - name: Cache Composer packages
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: src/vendor
           key: composer-dev-${{ hashFiles('src/composer.lock') }}
@@ -50,7 +54,7 @@ jobs:
         run: cd src && composer run openapi-private
 
       - name: Upload generated specs as artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: openapi-specs-${{ github.run_id }}
           path: openapi/*.yaml

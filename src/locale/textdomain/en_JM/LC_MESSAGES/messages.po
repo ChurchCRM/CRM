@@ -21,12 +21,3 @@ msgstr "City, Parish, Zip"
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr "Default Parish - Must be 2-letter abbreviation!"
 
-#: 
-msgid "Church State"
-msgstr "Church Parish"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Enter any part of the following: Name, City, Parish, Zip, Home Phone, Email, or Work Email."
-

@@ -27,58 +27,76 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <!-- Status Overview -->
 <div class="row">
     <div class="col-lg-4 col-md-6">
-        <div class="small-box <?= $status['configured'] ? 'bg-success' : 'bg-warning' ?>">
-            <div class="inner">
-                <h3><?= $status['configured'] ? gettext('Configured') : gettext('Not Configured') ?></h3>
-                <p><?= gettext('WebDAV Connection') ?></p>
-            </div>
-            <div class="icon">
-                <i class="fa-solid fa-<?= $status['configured'] ? 'check-circle' : 'exclamation-triangle' ?>"></i>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4 col-md-6">
-        <div class="small-box <?= $status['autoBackupEnabled'] ? 'bg-info' : 'bg-secondary' ?>">
-            <div class="inner">
-                <h3><?= $status['autoBackupEnabled'] ? $status['autoInterval'] . 'h' : gettext('Disabled') ?></h3>
-                <p><?= gettext('Auto-Backup Interval') ?></p>
-            </div>
-            <div class="icon">
-                <i class="fa-solid fa-clock"></i>
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="<?= $status['configured'] ? 'bg-success' : 'bg-warning' ?> text-white avatar rounded-circle">
+                            <i class="fa-solid fa-<?= $status['configured'] ? 'check-circle' : 'exclamation-triangle' ?>"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="h3 m-0"><?= $status['configured'] ? gettext('Configured') : gettext('Not Configured') ?></div>
+                        <div class="text-muted"><?= gettext('WebDAV Connection') ?></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div class="col-lg-4 col-md-6">
-        <div class="small-box bg-primary">
-            <div class="inner">
-                <h3><?= !empty($status['lastBackup']) ? $status['lastBackup'] : gettext('Never') ?></h3>
-                <p><?= gettext('Last Backup') ?></p>
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="<?= $status['autoBackupEnabled'] ? 'bg-info' : 'bg-secondary' ?> text-white avatar rounded-circle">
+                            <i class="fa-solid fa-clock"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="h3 m-0"><?= $status['autoBackupEnabled'] ? $status['autoInterval'] . 'h' : gettext('Disabled') ?></div>
+                        <div class="text-muted"><?= gettext('Auto-Backup Interval') ?></div>
+                    </div>
+                </div>
             </div>
-            <div class="icon">
-                <i class="fa-solid fa-history"></i>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-primary text-white avatar rounded-circle">
+                            <i class="fa-solid fa-history"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="h3 m-0"><?= !empty($status['lastBackup']) ? $status['lastBackup'] : gettext('Never') ?></div>
+                        <div class="text-muted"><?= gettext('Last Backup') ?></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 <!-- Configuration Card -->
-<div class="card card-primary">
-    <div class="card-header">
-        <h3 class="card-title"><i class="fa-solid fa-cog mr-2"></i><?= gettext('WebDAV Configuration') ?></h3>
+<div class="card">
+    <div class="card-header d-flex align-items-center">
+        <h3 class="card-title"><i class="fa-solid fa-cog me-2"></i><?= gettext('WebDAV Configuration') ?></h3>
     </div>
     <div class="card-body">
         <div class="callout callout-info">
-            <h5><i class="fa-solid fa-info-circle mr-1"></i><?= gettext('About WebDAV Backups') ?></h5>
+            <h5><i class="fa-solid fa-circle-info me-1"></i><?= gettext('About WebDAV Backups') ?></h5>
             <p class="mb-0">
                 <?= gettext('Configure this plugin to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services like Nextcloud, ownCloud, or any WebDAV server. Backups are encrypted during transfer using HTTPS.') ?>
             </p>
         </div>
 
         <p class="text-muted">
-            <i class="fa-solid fa-arrow-right mr-1"></i>
+            <i class="fa-solid fa-arrow-right me-1"></i>
             <?= gettext('Configure these settings in the') ?>
             <a href="<?= SystemURLs::getRootPath() ?>/plugins/management/external-backup">
-                <?= gettext('Plugin Management') ?> <i class="fa-solid fa-external-link-alt fa-xs"></i>
+                <?= gettext('Plugin Management') ?> <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
             </a>
         </p>
 
@@ -126,21 +144,21 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 
 <!-- Test Connection Card -->
-<div class="card card-secondary">
-    <div class="card-header">
-        <h3 class="card-title"><i class="fa-solid fa-plug mr-2"></i><?= gettext('Test Connection') ?></h3>
+<div class="card-secondary">
+    <div class="card-header d-flex align-items-center">
+        <h3 class="card-title"><i class="fa-solid fa-plug me-2"></i><?= gettext('Test Connection') ?></h3>
     </div>
     <div class="card-body">
         <?php if ($isConfigured): ?>
             <p><?= gettext('Click the button below to test your WebDAV connection settings.') ?></p>
             <button type="button" class="btn btn-info" id="testConnection">
-                <i class="fa-solid fa-check-circle mr-1"></i><?= gettext('Test WebDAV Connection') ?>
+                <i class="fa-solid fa-circle-check me-1"></i><?= gettext('Test WebDAV Connection') ?>
             </button>
             <div id="testResult" class="mt-3"></div>
         <?php else: ?>
             <div class="callout callout-warning mb-0">
                 <p class="mb-0">
-                    <i class="fa-solid fa-exclamation-triangle mr-1"></i>
+                    <i class="fa-solid fa-triangle-exclamation me-1"></i>
                     <?= gettext('Please configure the WebDAV settings before testing the connection.') ?>
                 </p>
             </div>
@@ -149,38 +167,38 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 
 <!-- Manual Backup Card -->
-<div class="card card-success">
-    <div class="card-header">
-        <h3 class="card-title"><i class="fa-solid fa-cloud-upload-alt mr-2"></i><?= gettext('Manual Backup') ?></h3>
+<div class="card border-top border-success border-3">
+    <div class="card-header d-flex align-items-center">
+        <h3 class="card-title"><i class="fa-solid fa-cloud-upload-alt me-2"></i><?= gettext('Manual Backup') ?></h3>
     </div>
     <div class="card-body">
         <?php if ($isConfigured): ?>
             <p><?= gettext('Create a backup now and upload it to your WebDAV server.') ?></p>
-            <div class="form-group">
+            <div class="mb-3">
                 <label><?= gettext('Backup Type') ?></label>
-                <div class="custom-control custom-radio">
-                    <input type="radio" id="backupType2" name="backupType" value="2" class="custom-control-input" checked>
-                    <label class="custom-control-label" for="backupType2">
-                        <i class="fa-solid fa-file-code mr-1"></i><?= gettext('Database Only') ?>
-                        <span class="badge badge-secondary">.sql</span>
+                <div class="form-check">
+                    <input type="radio" id="backupType2" name="backupType" value="2" class="form-check-input" checked>
+                    <label class="form-check-label" for="backupType2">
+                        <i class="fa-solid fa-file-code me-1"></i><?= gettext('Database Only') ?>
+                        <span class="badge bg-light text-dark">.sql</span>
                     </label>
                 </div>
-                <div class="custom-control custom-radio">
-                    <input type="radio" id="backupType3" name="backupType" value="3" class="custom-control-input">
-                    <label class="custom-control-label" for="backupType3">
-                        <i class="fa-solid fa-file-archive mr-1"></i><?= gettext('Full Backup') ?>
-                        <span class="badge badge-secondary">.tar.gz</span>
+                <div class="form-check">
+                    <input type="radio" id="backupType3" name="backupType" value="3" class="form-check-input">
+                    <label class="form-check-label" for="backupType3">
+                        <i class="fa-solid fa-file-archive me-1"></i><?= gettext('Full Backup') ?>
+                        <span class="badge bg-light text-dark">.tar.gz</span>
                     </label>
                 </div>
             </div>
             <button type="button" class="btn btn-success" id="doRemoteBackup">
-                <i class="fa-solid fa-cloud-upload-alt mr-1"></i><?= gettext('Backup to WebDAV Now') ?>
+                <i class="fa-solid fa-cloud-upload-alt me-1"></i><?= gettext('Backup to WebDAV Now') ?>
             </button>
             <div id="backupResult" class="mt-3"></div>
         <?php else: ?>
             <div class="callout callout-warning mb-0">
                 <p class="mb-0">
-                    <i class="fa-solid fa-exclamation-triangle mr-1"></i>
+                    <i class="fa-solid fa-triangle-exclamation me-1"></i>
                     <?= gettext('Please configure the WebDAV settings before creating a remote backup.') ?>
                 </p>
             </div>
@@ -195,7 +213,7 @@ $(document).ready(function() {
         var $btn = $(this);
         var originalText = $btn.html();
         
-        $btn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin mr-1"></i>' + i18next.t('Testing...'));
+        $btn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin me-1"></i>' + i18next.t('Testing...'));
         $('#testResult').html('');
         
         fetch(window.CRM.root + '/plugins/external-backup/api/test', {
@@ -208,14 +226,14 @@ $(document).ready(function() {
             var icon = data.success ? 'check-circle' : 'times-circle';
             $('#testResult').html(
                 '<div class="alert ' + alertClass + '">' +
-                '<i class="fa-solid fa-' + icon + ' mr-1"></i>' + data.message +
+                '<i class="fa-solid fa-' + icon + ' me-1"></i>' + data.message +
                 '</div>'
             );
         })
         .catch(function() {
             $('#testResult').html(
                 '<div class="alert alert-danger">' +
-                '<i class="fa-solid fa-times-circle mr-1"></i>' + i18next.t('Connection test failed') +
+                '<i class="fa-solid fa-circle-xmark me-1"></i>' + i18next.t('Connection test failed') +
                 '</div>'
             );
         })
@@ -230,9 +248,9 @@ $(document).ready(function() {
         var originalText = $btn.html();
         var backupType = $('input[name=backupType]:checked').val();
         
-        $btn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin mr-1"></i>' + i18next.t('Backing up...'));
+        $btn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin me-1"></i>' + i18next.t('Backing up...'));
         $('#backupResult').html(
-            '<div class="text-info"><i class="fa-solid fa-spinner fa-spin mr-1"></i>' + 
+            '<div class="text-info"><i class="fa-solid fa-spinner fa-spin me-1"></i>' + 
             i18next.t('Creating and uploading backup. This may take several minutes...') + 
             '</div>'
         );
@@ -248,7 +266,7 @@ $(document).ready(function() {
             var icon = data.success ? 'check-circle' : 'times-circle';
             $('#backupResult').html(
                 '<div class="alert ' + alertClass + '">' +
-                '<i class="fa-solid fa-' + icon + ' mr-1"></i>' + data.message +
+                '<i class="fa-solid fa-' + icon + ' me-1"></i>' + data.message +
                 '</div>'
             );
             if (data.success) {
@@ -258,7 +276,7 @@ $(document).ready(function() {
         .catch(function() {
             $('#backupResult').html(
                 '<div class="alert alert-danger">' +
-                '<i class="fa-solid fa-times-circle mr-1"></i>' + i18next.t('Backup failed') +
+                '<i class="fa-solid fa-circle-xmark me-1"></i>' + i18next.t('Backup failed') +
                 '</div>'
             );
         })

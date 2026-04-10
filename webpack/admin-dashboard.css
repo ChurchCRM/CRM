@@ -82,3 +82,9 @@
 .btn-group .btn {
   border-radius: 0.25rem;
 }
+
+/* Setup progress checklist */
+
+.setup-progress-card .list-group-item:last-child {
+  border-bottom: 0;
+}

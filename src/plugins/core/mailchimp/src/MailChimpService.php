@@ -187,9 +187,9 @@ class MailChimpService
                 return true;
             }
 
-            LoggerUtils::getAppLogger()->warning("Failed to subscribe {$person->getEmail()}: " . $this->client->getLastError());
+            LoggerUtils::getAppLogger()->warning("Failed to subscribe {$person->getEmail()}:" . $this->client->getLastError());
         } catch (\Throwable $e) {
-            LoggerUtils::getAppLogger()->error("Exception subscribing {$person->getEmail()}: " . $e->getMessage());
+            LoggerUtils::getAppLogger()->error("Exception subscribing {$person->getEmail()}:" . $e->getMessage());
         }
 
         return false;
@@ -215,7 +215,7 @@ class MailChimpService
                 return true;
             }
         } catch (\Throwable $e) {
-            LoggerUtils::getAppLogger()->error("Exception unsubscribing $email: " . $e->getMessage());
+            LoggerUtils::getAppLogger()->error("Exception unsubscribing $email:" . $e->getMessage());
         }
 
         return false;
@@ -275,7 +275,7 @@ class MailChimpService
             foreach ($lists as &$list) {
                 $list['members'] = [];
                 $listMembers = $this->client->get(
-                    "lists/{$list['id']}/members",
+"lists/{$list['id']}/members",
                     [
                         'count' => $list['stats']['member_count'] ?? 100,
                         'fields' => 'members.id,members.email_address,members.status,members.merge_fields',

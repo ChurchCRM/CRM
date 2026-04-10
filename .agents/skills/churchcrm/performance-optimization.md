@@ -166,13 +166,9 @@ foreach ($items as $item) {
 ChurchCRM uses Webpack entry points for code splitting:
 
 ```javascript
-// webpack/calendar.entry.js - separates calendar code from main bundle
-import '../../react/calendar-event-editor';
-module.exports = {};
-
-// webpack/dashboard.entry.js - dashboard-specific code
-import '../../react/components/DashboardWidgets';
-module.exports = {};
+// webpack/calendar-event-editor.js - separates calendar code from main bundle
+// webpack/two-factor-enrollment.js - 2FA wizard in its own bundle
+// webpack/root-dashboard.js - dashboard-specific code
 ```
 
 **Benefits:**
@@ -182,7 +178,7 @@ module.exports = {};
 
 ### ✅ Pattern: CSS Tree-Shaking
 
-Bootstrap 4.6.2 CSS is included selectively:
+Bootstrap 5 / Tabler CSS is included selectively:
 
 ```css
 /* Only include used Bootstrap components */

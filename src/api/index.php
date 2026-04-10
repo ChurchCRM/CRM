@@ -16,14 +16,12 @@ $basePath = SlimUtils::getBasePath('/api');
 $app = AppFactory::create();
 $app->setBasePath($basePath);
 
-// Add Slim error middleware for proper error handling
-$errorMiddleware = $app->addErrorMiddleware(true, true, true);
-SlimUtils::setupErrorLogger($errorMiddleware);
-SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
-
-// Add CORS middleware for browser API access
 $app->addBodyParsingMiddleware();
 $app->addRoutingMiddleware();
+
+// Error middleware must be added AFTER routing (Slim 4 LIFO: last added = first executed)
+$errorMiddleware = $app->addErrorMiddleware(true, true, true);
+SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
 $app->add(new CorsMiddleware());
 $app->add(AuthMiddleware::class);
@@ -37,15 +35,16 @@ require __DIR__ . '/routes/finance/finance-payments.php';
 require __DIR__ . '/routes/people/people-family.php';
 require __DIR__ . '/routes/people/people-families.php';
 require __DIR__ . '/routes/people/people-groups.php';
+require __DIR__ . '/routes/people/groups-properties.php';
 require __DIR__ . '/routes/people/people-person.php';
 require __DIR__ . '/routes/people/people-persons.php';
 require __DIR__ . '/routes/people/people-properties.php';
+require __DIR__ . '/routes/people/notes.php';
 require __DIR__ . '/routes/public/public.php';
 require __DIR__ . '/routes/public/public-data.php';
 require __DIR__ . '/routes/public/public-calendar.php';
 require __DIR__ . '/routes/public/public-user.php';
 require __DIR__ . '/routes/public/public-register.php';
-require __DIR__ . '/routes/system/system.php';
 require __DIR__ . '/routes/system/system-custom-fields.php';
 require __DIR__ . '/routes/system/system-database.php';
 require __DIR__ . '/routes/system/system-debug.php';

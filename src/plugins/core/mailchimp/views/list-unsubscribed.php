@@ -16,7 +16,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <li class="breadcrumb-item active" aria-current="page"><?= gettext('Not Subscribed') ?></li>
             </ol>
         </nav>
-        <div class="btn-group btn-group-sm ml-2">
+        <div class="btn-group btn-group-sm ms-2">
             <a href="https://login.mailchimp.com/" target="_blank" class="btn btn-outline-warning" title="<?= gettext('Open MailChimp') ?>">
                 <i class="fa-brands fa-mailchimp fa-fw"></i>
             </a>
@@ -29,25 +29,24 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <div class="row">
     <div class="col-12">
-        <div class="card card-outline card-primary">
-            <div class="card-header">
+        <div class="card">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title">
-                    <i class="fa-solid fa-user-plus mr-2"></i><?= gettext('CRM Members Not Subscribed') ?>
+                    <i class="fa-solid fa-user-plus me-2"></i><?= gettext('CRM Members Not Subscribed') ?>
                 </h3>
-                <div class="card-tools">
-                    <span class="badge badge-primary" id="count-badge">
+                <div class="card-tools ms-auto">
+                    <span class="badge bg-primary" id="count-badge">
                         <i class="fa-solid fa-spinner fa-spin"></i>
                     </span>
                 </div>
             </div>
-            <div class="card-body">
-                <p class="text-muted mb-3">
-                    <i class="fa-solid fa-info-circle mr-1"></i>
+            <div class="card-body p-0">
+                <p class="text-muted mb-3 px-3 pt-3">
+                    <i class="fa-solid fa-circle-info me-1"></i>
                     <?= gettext('These people exist in ChurchCRM with email addresses but are not subscribed to this MailChimp audience. Consider inviting them to subscribe.') ?>
                 </p>
-                <div class="table-responsive">
-                    <table id="unsubscribedTable" class="table table-striped table-hover data-table" style="width:100%">
-                        <thead class="thead-light">
+                    <table id="unsubscribedTable" class="table table-vcenter table-hover card-table">
+                        <thead>
                             <tr>
                                 <th><?= gettext('Name') ?></th>
                                 <th><?= gettext('Email Addresses') ?></th>
@@ -55,11 +54,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </thead>
                         <tbody></tbody>
                     </table>
-                </div>
             </div>
             <div class="card-footer">
                 <a href="<?= SystemURLs::getRootPath() ?>/plugins/mailchimp/dashboard" class="btn btn-secondary">
-                    <i class="fa-solid fa-arrow-left mr-1"></i><?= gettext('Back to Dashboard') ?>
+                    <i class="fa-solid fa-arrow-left me-1"></i><?= gettext('Back to Dashboard') ?>
                 </a>
             </div>
         </div>
@@ -69,7 +67,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     // Helper to escape HTML and prevent XSS
     function escapeHtml(text) {
-        if (text == null) return '';
+        if (text === null || text === undefined) return '';
         var div = document.createElement('div');
         div.textContent = text;
         return div.innerHTML;
@@ -78,10 +76,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     function initializeUnsubscribedTable() {
         var dataTableConfig = {
             ajax: {
-                url: window.CRM.root + "/plugins/mailchimp/api/list/<?= $listId ?>/not-subscribed",
+                url: window.CRM.root +"/plugins/mailchimp/api/list/<?= $listId ?>/not-subscribed",
                 dataSrc: function(json) {
                     var count = json.data.members ? json.data.members.length : 0;
-                    $("#count-badge").text(count + " " + i18next.t("people"));
+                    $("#count-badge").text(count +"" + i18next.t("people"));
                     return json.data.members || [];
                 }
             },
@@ -94,7 +92,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     render: function (data, type, row) {
                         // row.id is from CRM (integer), safe to use directly
                         return '<a href="' + window.CRM.root + '/PersonView.php?PersonID=' + parseInt(row.id, 10) + '" class="text-primary">' +
-                            '<i class="fa-solid fa-user mr-2"></i>' + escapeHtml(data) + '</a>';
+                            '<i class="fa-solid fa-user me-2"></i>' + escapeHtml(data) + '</a>';
                     },
                     searchable: true
                 },
@@ -105,8 +103,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         if (!data || data.length === 0) return '<span class="text-muted">' + i18next.t('No email') + '</span>';
                         return data.map(function(email) {
                             var escaped = escapeHtml(email);
-                            return '<a href="mailto:' + encodeURIComponent(email) + '" class="badge badge-light mr-1">' +
-                                '<i class="fa-solid fa-envelope mr-1"></i>' + escaped + '</a>';
+                            return '<a href="mailto:' + encodeURIComponent(email) + '" class="badge bg-light text-dark me-1" target="_blank" rel="noopener noreferrer">' +
+                                '<i class="fa-solid fa-envelope me-1"></i>' + escaped + '</a>';
                         }).join(' ');
                     }
                 }

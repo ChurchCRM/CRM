@@ -190,6 +190,34 @@ class User extends BaseUser
         return $this->isAdmin() || $this->isEnabledSecurity('bAddEvent');
     }
 
+    /**
+     * Whether the Events module is enabled system-wide via SystemConfig.
+     * Pure system check — no per-user permission gate.
+     */
+    public static function isEventsEnabled(): bool
+    {
+        return SystemConfig::getBooleanValue('bEnabledEvents');
+    }
+
+    /**
+     * Whether this user can manage events: events module is enabled
+     * AND user has the AddEvent permission. Use this for buttons,
+     * routes, and UI gates that should hide when either condition fails.
+     */
+    public function canManageEvents(): bool
+    {
+        return self::isEventsEnabled() && $this->isAddEvent();
+    }
+
+    /**
+     * Whether this user can view events: events module is enabled.
+     * Anyone with login access can view events, so no per-user gate.
+     */
+    public function canViewEvents(): bool
+    {
+        return self::isEventsEnabled();
+    }
+
     public function isEmailEnabled(): bool
     {
         return $this->isAdmin() || $this->isEnabledSecurity('bEmailMailto');
@@ -383,12 +411,12 @@ class User extends BaseUser
 
     public function isShowPledges(): bool
     {
-        return $this->getSettingValue(UserSetting::FINANCE_SHOW_PLEDGES) == 'true';
+        return $this->getSettingValue(UserSetting::FINANCE_SHOW_PLEDGES) === 'true';
     }
 
     public function isShowPayments(): bool
     {
-        return $this->getSettingValue(UserSetting::FINANCE_SHOW_PAYMENTS) == 'true';
+        return $this->getSettingValue(UserSetting::FINANCE_SHOW_PAYMENTS) === 'true';
     }
 
     public function getShowSince()

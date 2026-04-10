@@ -17,26 +17,14 @@ describe('02 - Demo Data Import', () => {
         password: 'changeme'
     };
 
-    // Helper function to login, handling forced password-change redirect on first login
+    // Helper function to login.
+    // Spec 01 resets the admin password back to 'changeme' before finishing,
+    // so we can always use the default credentials here.
     const loginAsAdmin = () => {
-        const password = Cypress.env('newSystemAdminPassword') || adminCredentials.password;
         cy.visit('/login');
         cy.get('input[name=User]').type(adminCredentials.username);
-        cy.get('input[name=Password]').type(password + '{enter}');
+        cy.get('input[name=Password]').type(adminCredentials.password + '{enter}');
         cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
-
-        // Fresh-install admin has NeedPasswordChange=true; complete the forced form if needed
-        cy.url().then((url) => {
-            if (url.includes('/changepassword')) {
-                const newPassword = 'Cypress@01!';
-                cy.get('#OldPassword').type(password);
-                cy.get('#NewPassword1').type(newPassword);
-                cy.get('#NewPassword2').type(newPassword);
-                cy.get('button[type=submit]').click();
-                cy.contains('Password Changed', { timeout: 10000 }).should('be.visible');
-                Cypress.env('newSystemAdminPassword', newPassword);
-            }
-        });
     };
 
     describe('Import Demo Data via Admin UI', () => {
@@ -46,21 +34,22 @@ describe('02 - Demo Data Import', () => {
 
         it('should navigate to admin dashboard', () => {
             cy.visit('/admin/');
-            
+
             // Should see admin dashboard
             cy.contains('Admin Dashboard').should('be.visible');
-            
-            // Should see Demo Data card
-            cy.contains('Demo Data').should('be.visible');
+
+            // Should see Quick Start section (demo data moved to /admin/get-started)
+            cy.contains('Quick Start').should('be.visible');
         });
 
         it('should click Import Demo Data button and see confirmation', () => {
-            cy.visit('/admin/');
-            
+            // Demo data import is on the Get Started page
+            cy.visit('/admin/get-started');
+
             // Wait for page to fully load
             cy.get('#importDemoDataV2', { timeout: 10000 }).should('be.visible');
-            
-            // Click the Import Demo Data button
+
+            // Click the Import Demo Data card
             cy.get('#importDemoDataV2').click();
             
             // Should see confirmation overlay
@@ -75,9 +64,10 @@ describe('02 - Demo Data Import', () => {
         });
 
         it('should successfully import demo data', () => {
-            cy.visit('/admin/');
-            
-            // Click Import Demo Data button
+            // Demo data import is on the Get Started page
+            cy.visit('/admin/get-started');
+
+            // Click Import Demo Data card
             cy.get('#importDemoDataV2', { timeout: 10000 }).click();
             
             // Wait for confirmation overlay
@@ -241,22 +231,28 @@ describe('02 - Demo Data Import', () => {
             cy.contains('Finance Dashboard').should('be.visible');
         });
 
-        it('should reset admin password back to changeme for subsequent tests', () => {
-            // Tests 03-04 expect 'changeme' as the default password
-            // Change password from 'Cypress@01!' back to 'changeme'
-            cy.visit('/v2/user/current/changepassword');
+    });
 
-            const currentPassword = 'Cypress@01!';
-            const newPassword = 'changeme';
+    describe('Disable Google Analytics Plugin', () => {
+        beforeEach(() => {
+            loginAsAdmin();
+        });
 
-            // Fill in change password form
-            cy.get('#OldPassword').type(currentPassword);
-            cy.get('#NewPassword1').type(newPassword);
-            cy.get('#NewPassword2').type(newPassword);
-            cy.get('input[type=submit]').click();
+        it('should disable the Google Analytics plugin from plugin management', () => {
+            // Disable via API directly — avoids flaky jQuery click-handler timing
+            cy.request({
+                method: 'POST',
+                url: '/plugins/api/plugins/google-analytics/disable',
+                timeout: 30000
+            }).then((response) => {
+                expect(response.status).to.be.oneOf([200, 204]);
+            });
 
-            // Should show success message
-            cy.contains('Password Change Successful', { timeout: 10000 }).should('be.visible');
+            // Verify the plugin shows as disabled on the management page
+            cy.visit('/plugins/management');
+            cy.get('.card[data-plugin-id="google-analytics"]', { timeout: 10000 })
+                .find('.badge')
+                .should('contain', 'Disabled');
         });
     });
 });

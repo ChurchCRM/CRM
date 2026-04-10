@@ -3,13 +3,12 @@
 namespace ChurchCRM\Reports;
 
 require_once __DIR__ . '/../Include/Config.php';
-require_once __DIR__ . '/../Include/Functions.php';
+require_once __DIR__ . '/../Include/PageInit.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Base\FundRaiser;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\Utils\InputUtils;
-use Monolog\Logger;
 
 if (!isset($_GET['CurrentFundraiser'])) {
     throw new \InvalidArgumentException('Missing required CurrentFundraiser parameter');
@@ -39,10 +38,10 @@ class PdfFRCatalogReport extends ChurchInfoReport
         parent::addPage($orientation, $size, $rotation);
 
         $this->SetFont('Times', 'B', 16);
-        $this->Write(8, $this->fundraiser->getTitle() . "\n");
+        $this->Write(8, $this->fundraiser->getTitle() ."\n");
         $this->curY += 8;
 
-        $this->Write(8, $this->fundraiser->getDescription() . "\n\n");
+        $this->Write(8, $this->fundraiser->getDescription() ."\n\n");
         $this->curY += 8;
 
         $this->SetFont('Times', '', 12);
@@ -71,19 +70,19 @@ while ($oneItem = mysqli_fetch_array($rsItems)) {
 
     $newIdFirstChar = mb_substr($di_item, 0, 1);
     $maxYNewPage = 220;
-    if ($di_picture != '') {
+    if ($di_picture !== '') {
         $maxYNewPage = 120;
     }
-    if ($pdf->GetY() > $maxYNewPage || ($idFirstChar != '' && $idFirstChar != $newIdFirstChar)) {
+    if ($pdf->GetY() > $maxYNewPage || ($idFirstChar !== '' && $idFirstChar !== $newIdFirstChar)) {
         $pdf->addPage();
     }
     $idFirstChar = $newIdFirstChar;
 
     $pdf->SetFont('Times', 'B', 12);
     $pdf->Write(6, $di_item . ': ');
-    $pdf->Write(6, stripslashes($di_title) . "\n");
+    $pdf->Write(6, stripslashes($di_title) ."\n");
 
-    if ($di_picture != '') {
+    if ($di_picture !== '') {
         $s = getimagesize($di_picture);
         $h = (100.0 / $s[0]) * $s[1];
         $pdf->Image($di_picture, $pdf->GetX(), $pdf->GetY(), 100.0, $h);
@@ -91,17 +90,17 @@ while ($oneItem = mysqli_fetch_array($rsItems)) {
     }
 
     $pdf->SetFont('Times', '', 12);
-    $pdf->Write(6, stripslashes($di_description) . "\n");
+    $pdf->Write(6, stripslashes($di_description) ."\n");
     if ($di_minimum > 0) {
         $pdf->Write(6, gettext('Minimum bid ') . '$' . $di_minimum . '.  ');
     }
     if ($di_estprice > 0) {
         $pdf->Write(6, gettext('Estimated value ') . '$' . $di_estprice . '.  ');
     }
-    if ($per_LastName != '') {
-        $pdf->Write(6, gettext('Donated by ') . $per_FirstName . ' ' . $per_LastName . ".\n");
+    if ($per_LastName !== '') {
+        $pdf->Write(6, gettext('Donated by ') . $per_FirstName . ' ' . $per_LastName .".\n");
     }
-    $pdf->Write(6, "\n");
+    $pdf->Write(6,"\n");
 }
 
 if (SystemConfig::getIntValue('iPDFOutputType') === 1) {

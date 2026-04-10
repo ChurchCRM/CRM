@@ -11,7 +11,7 @@ class DropdownManager {
    * @param {Object} options - Configuration options
    * @param {string} options.userSelected - Pre-selected country value
    * @param {string} options.systemDefault - Default country from system config
-   * @param {boolean} options.initSelect2 - Whether to initialize select2 (default: true)
+   * @param {boolean} options.initTomSelect - Whether to initialize TomSelect (default: true)
    * @param {boolean} options.cascadeState - Whether to cascade to state select on change (default: false)
    * @param {Function} options.onCountryChange - Callback when country changes
    */
@@ -22,7 +22,7 @@ class DropdownManager {
     const defaults = {
       userSelected: countrySelect.data("user-selected") || "",
       systemDefault: countrySelect.data("system-default") || "",
-      initSelect2: true,
+      initTomSelect: true,
       cascadeState: !!stateSelectId,
       onCountryChange: null,
     };
@@ -51,8 +51,11 @@ class DropdownManager {
       // Trigger change to cascade to state if needed
       countrySelect.change();
 
-      if (config.initSelect2) {
-        countrySelect.select2();
+      if (config.initTomSelect) {
+        const el = countrySelect[0];
+        if (el && !el.tomselect) {
+          new TomSelect(el);
+        }
       }
     });
 
@@ -62,7 +65,7 @@ class DropdownManager {
         DropdownManager.initializeState(stateSelectId, this.value.toLowerCase(), {
           userSelected: $(`#${stateSelectId}`).data("user-selected") || "",
           systemDefault: $(`#${stateSelectId}`).data("system-default") || "",
-          initSelect2: true,
+          initTomSelect: true,
           stateTextboxId: config.stateTextboxId,
           stateOptionDivId: config.stateOptionDivId,
           stateInputDivId: config.stateInputDivId,
@@ -82,7 +85,7 @@ class DropdownManager {
    * @param {Object} options - Configuration options
    * @param {string} options.userSelected - Pre-selected state value
    * @param {string} options.systemDefault - Default state from system config
-   * @param {boolean} options.initSelect2 - Whether to initialize select2 (default: true)
+   * @param {boolean} options.initTomSelect - Whether to initialize TomSelect (default: true)
    * @param {string} options.stateTextboxId - Optional ID of textbox fallback for countries without states
    * @param {string} options.stateOptionDivId - Optional ID of div to show/hide for state dropdown
    * @param {string} options.stateInputDivId - Optional ID of div to show/hide for state textbox
@@ -94,13 +97,19 @@ class DropdownManager {
     const defaults = {
       userSelected: stateSelect.data("user-selected") || "",
       systemDefault: stateSelect.data("system-default") || "",
-      initSelect2: true,
+      initTomSelect: true,
       stateTextboxId: null,
       stateOptionDivId: null,
       stateInputDivId: null,
     };
 
     const config = { ...defaults, ...options };
+
+    // Destroy existing TomSelect if present
+    const el = stateSelect[0];
+    if (el && el.tomselect) {
+      el.tomselect.destroy();
+    }
 
     // Fetch and populate states
     $.ajax({
@@ -126,8 +135,11 @@ class DropdownManager {
 
           stateSelect.change();
 
-          if (config.initSelect2) {
-            stateSelect.select2();
+          if (config.initTomSelect) {
+            const stateEl = stateSelect[0];
+            if (stateEl && !stateEl.tomselect) {
+              new TomSelect(stateEl);
+            }
           }
 
           // Show state dropdown, hide textbox fallback
@@ -176,7 +188,7 @@ class DropdownManager {
     this.initializeCountry(countrySelectId, stateSelectId, {
       userSelected: options.userSelected || $(`#${countrySelectId}`).data("user-selected") || "",
       systemDefault: options.systemDefault || $(`#${countrySelectId}`).data("system-default") || "",
-      initSelect2: true,
+      initTomSelect: true,
       cascadeState: true,
       ...options,
     });
@@ -223,7 +235,10 @@ class DropdownManager {
       });
 
       countrySelect.change();
-      countrySelect.select2();
+      const el = countrySelect[0];
+      if (el && !el.tomselect) {
+        new TomSelect(el);
+      }
     });
 
     // Handle country change
@@ -249,7 +264,7 @@ class DropdownManager {
           });
 
           stateContainer.html($select);
-          $select.select2();
+          new TomSelect($select[0]);
         } else {
           // Country has no states - show text input
           const $input = $(

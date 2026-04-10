@@ -10,6 +10,7 @@ use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Service\PersonService;
+use ChurchCRM\view\PageHeader;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -87,10 +88,16 @@ function viewDashboard(Request $request, Response $response, array $args): Respo
     $dashboardCounts['Groups'] = GroupQuery::create()
         ->count();
 
+    // Count only attendances that are checked-in and not checked-out
+    // and that are linked to an existing, active event. This prevents
+    // orphaned or invalid event_attend rows (for example event_id=0)
+    // from inflating the dashboard number.
     $dashboardCounts['events'] = EventAttendQuery::create()
         ->filterByCheckinDate(null, Criteria::NOT_EQUAL)
         ->filterByCheckoutDate(null, Criteria::EQUAL)
-        ->find()
+        ->useEventQuery()
+            ->filterByInActive(0)
+        ->endUse()
         ->count();
 
     // Data quality checks for people
@@ -105,6 +112,12 @@ function viewDashboard(Request $request, Response $response, array $args): Respo
     $pageArgs = [
         'sRootPath'                       => SystemURLs::getRootPath(),
         'sPageTitle'                      => gettext('Welcome to') . ' ' . ChurchMetaData::getChurchName(),
+        'aBreadcrumbs'                    => PageHeader::breadcrumbs([
+            [gettext('Dashboard')],
+        ]),
+        'sPageHeaderButtons'              => PageHeader::buttons([
+            ['label' => gettext('Admin Dashboard'), 'url' => '/admin/', 'icon' => 'fa-screwdriver-wrench'],
+        ]),
         'dashboardCounts'                 => $dashboardCounts,
         'sundaySchoolEnabled'             => SystemConfig::getBooleanValue('bEnabledSundaySchool'),
         'depositEnabled'                  => AuthenticationManager::getCurrentUser()->isFinanceEnabled(),

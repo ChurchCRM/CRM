@@ -3,9 +3,10 @@
 namespace ChurchCRM\Reports;
 
 require_once __DIR__ . '/../Include/Config.php';
-require_once __DIR__ . '/../Include/Functions.php';
+require_once __DIR__ . '/../Include/PageInit.php';
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 
@@ -42,7 +43,7 @@ $curY = $topY;
 $pdf->writeAt(
     SystemConfig::getValue('leftX'),
     $curY,
-    gettext('Voting Members') . ' ' . MakeFYString($iFYID)
+    gettext('Voting Members') . ' ' . FinancialService::formatFiscalYear($iFYID)
 );
 $curY += 10;
 
@@ -66,7 +67,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 
         // Get payments only
         $sSQL = 'SELECT COUNT(plg_plgID) AS count FROM pledge_plg
-            WHERE plg_FamID = ' . $fam_ID . " AND plg_PledgeOrPayment = 'Payment' AND
+            WHERE plg_FamID = ' . $fam_ID ." AND plg_PledgeOrPayment = 'Payment' AND
                  plg_date >= '$startdate' AND plg_date < '$enddate'";
         $rsPledges = RunQuery($sSQL);
         [$count] = mysqli_fetch_row($rsPledges);
@@ -75,14 +76,14 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         }
     }
 
-    if (($iRequireDonationYears == 0) || $donation === 'yes') {
+    if (($iRequireDonationYears === 0) || $donation === 'yes') {
         $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_Name);
 
         //Get the family members for this family
         $sSQL = 'SELECT per_FirstName, per_LastName, cls.lst_OptionName AS sClassName
                 FROM person_per
                 INNER JOIN list_lst cls ON per_cls_ID = cls.lst_OptionID AND cls.lst_ID = 1
-                WHERE per_fam_ID = ' . $fam_ID . " AND cls.lst_OptionName='" . gettext('Member') . "'";
+                WHERE per_fam_ID = ' . $fam_ID ." AND cls.lst_OptionName='" . gettext('Member') ."'";
 
         $rsFamilyMembers = RunQuery($sSQL);
 

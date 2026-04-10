@@ -220,3 +220,128 @@ public function getUserSettingsConfig(): array
 **Service Container:** `src/ChurchCRM/ServiceContainerBuilder.php`
 **Logger:** `src/ChurchCRM/Utils/LoggerUtils.php`
 **Config:** `src/ChurchCRM/dto/SystemConfig.php`
+
+## Auto-Triggering Service Methods from Model Saves <!-- learned: 2026-03-08 -->
+
+For business logic that should automatically trigger when a model is saved (e.g., auto-geocoding on address change),
+hook into the save handler in the page that modifies the model. This keeps services clean and prevents duplicate logic.
+
+**Pattern:**
+1. Service method checks if action is needed (e.g., address was modified but no coordinates exist)
+2. Page/handler checks column modifications using `$model->isColumnModified(TableMap::COL_NAME)`
+3. Instantiate and call service after model is saved
+
+**Example: Auto-Geocode Family on Address Save**
+
+```php
+// Service: FamilyService->autoGeocodeFamily()
+public function autoGeocodeFamily(Family $family): bool
+{
+    $street = trim($family->getAddress1() ?? '');
+    if (empty($street)) {
+        $this->logger->debug('autoGeocodeFamily: skipping empty address');
+        return true;
+    }
+
+    try {
+        $coords = GeoUtils::getLatLong(
+            $street,
+            $family->getCity(),
+            $family->getState(),
+            $family->getZip()
+        );
+
+        if ((float)$coords['Latitude'] === 0.0 && (float)$coords['Longitude'] === 0.0) {
+            $this->logger->warning('autoGeocodeFamily: Could not geocode address');
+            return false;
+        }
+
+        $family->setLatitude((float)$coords['Latitude']);
+        $family->setLongitude((float)$coords['Longitude']);
+        $family->save();
+
+        $this->logger->info('autoGeocodeFamily: Geocoded successfully');
+        return true;
+    } catch (\Throwable $e) {
+        $this->logger->warning('autoGeocodeFamily error: ' . $e->getMessage());
+        return false;
+    }
+}
+
+// Handler: FamilyEditor.php
+use ChurchCRM\Service\FamilyService;
+
+$family->save();
+$family->reload();
+
+// Auto-geocode if address was modified but no coordinates exist
+if (
+    ($family->isColumnModified(FamilyTableMap::COL_FAM_ADDRESS1)
+        || $family->isColumnModified(FamilyTableMap::COL_FAM_CITY)
+        || $family->isColumnModified(FamilyTableMap::COL_FAM_STATE)
+        || $family->isColumnModified(FamilyTableMap::COL_FAM_ZIP))
+    && empty($family->getLatitude())
+) {
+    $familyService = new FamilyService();
+    $familyService->autoGeocodeFamily($family);
+}
+```
+
+**Guidelines:**
+- Service method should be idempotent (safe to call multiple times)
+- Always log what happened (success/failure/skipped)
+- Don't break the main transaction if the side-effect fails
+- Use logger->debug for parameter values, ->info for success, ->warning for expected failures
+
+## Time String Concatenation Hazards <!-- learned: 2026-04-09 -->
+
+When building DB datetime strings by concatenating a date with a user-supplied time, **never blindly append `:00`** to add seconds — the input may already include seconds. `EventService::createRepeatEvents()` was producing invalid timestamps like `2026-04-09 09:00:00:00` when the form passed `09:00:00` instead of `09:00`.
+
+Normalize the input to a known shape before concatenation:
+
+```php
+private static function normalizeTime(string $time): string
+{
+    $parsed = \DateTimeImmutable::createFromFormat('H:i:s', $time)
+        ?: \DateTimeImmutable::createFromFormat('H:i', $time);
+    if ($parsed === false) {
+        return '09:00:00';
+    }
+    return $parsed->format('H:i:s');
+}
+
+// Caller — never ' . $time . ':00'
+$startTime = self::normalizeTime($data['startTime'] ?? '09:00');
+$eventStart = $occurrenceDate->format('Y-m-d') . ' ' . $startTime;
+```
+
+## Wrap Naked `new \DateTime($input)` in try/catch <!-- learned: 2026-04-09 -->
+
+`new \DateTime($userString)` throws when the string is malformed, and the uncaught exception bubbles to a 500 instead of a proper 400. In a service method that throws `\InvalidArgumentException` for validation failures, wrap raw `DateTime` construction so the API layer gets a clean validation error:
+
+```php
+try {
+    $rangeStart = new \DateTime($data['rangeStart'] ?? '');
+    $rangeEnd = new \DateTime($data['rangeEnd'] ?? '');
+} catch (\Throwable $e) {
+    throw new \InvalidArgumentException(gettext('Invalid date format for rangeStart or rangeEnd'));
+}
+```
+
+For stricter validation at the route level (before reaching the service), use `\DateTimeImmutable::createFromFormat('!Y-m-d', $input)` and check the round-trip — `DateTime` constructor accepts loose formats like `2026-13-99` and rolls them over silently.
+
+## Cap Bulk-Generation Loops <!-- learned: 2026-04-09 -->
+
+Any service method that generates rows from a date range needs an upper bound to stop a wide range from creating thousands of rows in one request. `createRepeatEvents()` could otherwise generate `weekly × 10 years × 52 = 520` rows per call.
+
+```php
+public const MAX_REPEAT_OCCURRENCES = 366;
+
+if (count($occurrenceDates) > self::MAX_REPEAT_OCCURRENCES) {
+    throw new \InvalidArgumentException(sprintf(
+        gettext('Too many occurrences (%d) — narrow the date range. Maximum allowed: %d'),
+        count($occurrenceDates),
+        self::MAX_REPEAT_OCCURRENCES
+    ));
+}
+```

@@ -4,6 +4,7 @@
 require_once __DIR__ . '/vendor/autoload.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -17,8 +18,8 @@ try {
     // System cannot determine PHP requirements - fail loudly with clear error
     http_response_code(500);
     header('Content-Type: text/plain; charset=utf-8');
-    echo "Critical System Error: " . $e->getMessage() . "\n\n";
-    echo "Please contact your system administrator or check your ChurchCRM installation.";
+    echo"Critical System Error:" . $e->getMessage() ."\n\n";
+    echo"Please contact your system administrator or check your ChurchCRM installation.";
     exit(1);
 }
 
@@ -44,17 +45,25 @@ mb_internal_encoding('UTF-8');
 $shortName = str_replace(SystemURLs::getRootPath() . '/', '', $_SERVER['REQUEST_URI']);
 $fileName = MiscUtils::dashesToCamelCase($shortName, true) . '.php';
 
-if (!empty($_GET['location'])) {
-    $_SESSION['location'] = $_GET['location'];
-}
-
 // First, ensure that the user is authenticated.
 AuthenticationManager::ensureAuthentication();
+
+// On a fresh install (sChurchName empty), redirect admin users to complete setup.
+if (empty(SystemConfig::getValue('sChurchName'))) {
+    try {
+        $currentUser = AuthenticationManager::getCurrentUser();
+        if ($currentUser->isAdmin()) {
+            RedirectUtils::redirect('admin/system/church-info');
+        }
+    } catch (\Throwable) {
+        // Not logged in or session error — ensureAuthentication() above handles it
+    }
+}
 
 if (strtolower($shortName) === 'index.php' || strtolower($fileName) === 'index.php') {
     // Index.php -> v2/dashboard
     RedirectUtils::redirect('v2/dashboard');
-} elseif (file_exists($shortName)) {
+} elseif (is_file($shortName)) {
     // Try actual path
     require $shortName;
 } elseif (file_exists($fileName)) {

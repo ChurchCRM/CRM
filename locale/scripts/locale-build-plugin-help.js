@@ -25,9 +25,12 @@ class PluginHelpExtractor {
     constructor() {
         this.projectRoot = config.projectRoot;
         this.pluginsDir = path.join(this.projectRoot, 'src/plugins');
-        this.tempDir = path.join(config.temp.root, 'churchcrm-locale-plugin-help');
+        this.tempDir = config.temp.pluginHelp;
         this.outputFile = path.join(this.tempDir, 'plugin-help-terms.po');
-        this.terms = new Set();
+        // Map<text, string[]> — keyed by text so the same string from multiple
+        // plugins is deduplicated (duplicate msgids cause msgcat fatal errors).
+        // All contexts are collected so translators see every usage.
+        this.terms = new Map();
     }
 
     /**
@@ -89,9 +92,16 @@ class PluginHelpExtractor {
 
         // Normalize whitespace but preserve newlines for multiline content
         const normalized = text.trim();
-        
+
+        // Deduplicate by text — the same string appearing across multiple plugins
+        // must only produce one msgid entry, or msgcat will report fatal errors.
+        // All contexts are collected so translators see every plugin that uses the term.
         if (normalized.length > 0) {
-            this.terms.add(JSON.stringify({ text: normalized, context }));
+            if (!this.terms.has(normalized)) {
+                this.terms.set(normalized, [context]);
+            } else if (context) {
+                this.terms.get(normalized).push(context);
+            }
         }
     }
 
@@ -163,23 +173,23 @@ msgstr ""
 `;
 
         const entries = [];
-        
-        for (const termJson of this.terms) {
-            const { text, context } = JSON.parse(termJson);
-            
+
+        for (const [text, contexts] of this.terms) {
             let entry = '';
-            
-            // Add context as a comment
-            if (context) {
-                entry += `#. ${context}\n`;
+
+            // Add all contexts as comments
+            for (const ctx of contexts) {
+                if (ctx) {
+                    entry += `#. ${ctx}\n`;
+                }
             }
-            
+
             // Handle multiline strings
             const escaped = this.escapePOString(text);
-            
+
             entry += `msgid "${escaped}"\n`;
             entry += `msgstr ""\n`;
-            
+
             entries.push(entry);
         }
 
@@ -204,8 +214,6 @@ msgstr ""
             console.log(this.tempDir);
             return;
         }
-
-        this.log('🔌', 'Extracting plugin help terms...');
 
         this.ensureTempDir();
 

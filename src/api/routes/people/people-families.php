@@ -232,8 +232,8 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
 function getFamiliesWithAnniversaries(Request $request, Response $response, array $args): Response
 {
     // Get anniversaries for 14-day range: 7 days before to 7 days after today
-    // Use configured timezone to ensure correct "today" calculation
-    $today = DateTimeUtils::getToday();
+    // Use start of today (midnight) for consistent day-boundary calculations
+    $today = DateTimeUtils::getStartOfToday();
     $conditions = [];
 
     for ($i = -7; $i <= 7; $i++) {

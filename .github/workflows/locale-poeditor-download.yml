@@ -30,7 +30,10 @@ concurrency:
 
 jobs:
   download:
+    timeout-minutes: 30
     runs-on: ubuntu-latest
+    env:
+      POEDITOR_TOKEN: ${{ secrets.POEDITOR_TOKEN }}
     steps:
     - name: Checkout repository
       uses: actions/checkout@v6
@@ -61,7 +64,7 @@ jobs:
 
     - name: Get package version
       id: package-version
-      uses: martinbeentjes/npm-get-version-action@v1.3.1
+      run: echo "current-version=$(node -p 'require("./package.json").version')" >> $GITHUB_OUTPUT
 
     - name: Get current date
       id: date
@@ -81,7 +84,6 @@ jobs:
         npm install grunt-cli --save-dev
 
     - name: Check POEditor Token
-      if: inputs.operation_mode != 'audit-only'
       run: |
         if [ -z "${{ secrets.POEDITOR_TOKEN }}" ]; then
           echo "❌ POEDITOR_TOKEN secret is not set"
@@ -92,8 +94,6 @@ jobs:
 
     - name: Download locales from POEditor
       if: inputs.operation_mode != 'audit-only'
-      env:
-        POEDITOR_TOKEN: ${{ secrets.POEDITOR_TOKEN }}
       run: |
         set -e  # Exit on any command failure
         echo "🌍 Downloading locales from POEditor..."
@@ -225,29 +225,7 @@ jobs:
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
 
-    - name: Generate missing terms for all locales
-      if: inputs.operation_mode != 'audit-only'
-      run: |
-        echo "📋 Generating missing translation terms for all locales..."
-        npm run locale:missing
-        echo "✅ Missing terms files generated"
-
-    - name: Commit missing terms for POEditor
-      if: inputs.operation_mode != 'audit-only'
-      run: |
-        if [ -d "locale/missing-terms" ] && [ -n "$(find locale/missing-terms -name 'poeditor-*.json' -type f 2>/dev/null)" ]; then
-          echo "📝 Committing missing terms files..."
-          git add locale/missing-terms/poeditor-*.json
-          # Check if there are staged changes to commit
-          if ! git diff --cached --quiet; then
-            git commit -m "📊 Missing translation terms: Updated for all locales from master list"
-            echo "✅ Missing terms files committed"
-          else
-            echo "ℹ️  No new missing terms to commit"
-          fi
-        else
-          echo "ℹ️  No missing terms files generated"
-        fi
+    # Missing-term generation/commit handled inside the main downloader; separate steps removed
 
     - name: Create Pull Request
       if: inputs.operation_mode != 'audit-only' && (steps.changes.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch')
@@ -279,11 +257,11 @@ jobs:
           **What's included:**
           - Updated translation files from POEditor
           - Generated locale JSON files
-          - 📊 Missing terms for all locales (in `locale/missing-terms/poeditor-*.json`)
+          - 📊 Missing terms for all locales (in `locale/terms/missing/`)
           - Locale audit results
           
           **Missing Terms Reports:**
-          For each incomplete locale, a `poeditor-{locale}.json` file contains all missing/untranslated terms from the master English list. These can be imported into POEditor to help translators complete the translations.
+          For each incomplete locale, batch files under `locale/terms/missing/{locale}/` contain all untranslated terms downloaded directly from POEditor. These can be used with `/locale-translate` or uploaded directly to POEditor.
           
           This PR was automatically created by the POEditor workflow.
           

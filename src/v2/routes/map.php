@@ -4,6 +4,9 @@ use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\Classification;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -33,30 +36,76 @@ function getMapView(Request $request, Response $response, array $args): Response
         '#6c757d', // 9  grey
     ];
 
-    $classifications = Classification::getAll();
-    $legendItems     = [
-        ['id' => 0, 'label' => gettext('Unassigned'), 'color' => $markerColors[0]],
-    ];
-    foreach ($classifications as $cls) {
-        $legendItems[] = [
-            'id'    => $cls->getOptionId(),
-            'label' => $cls->getOptionName(),
-            'color' => $markerColors[$cls->getOptionId() % count($markerColors)],
+    // Build legend — role-based when a group is specified, classification-based otherwise
+    $legendType  = 'classifications';
+    $groupName   = null;
+    $legendTitle = gettext('Legend');
+
+    if ($groupId !== null && $groupId > 0) {
+        $group = GroupQuery::create()->findPk($groupId);
+        if ($group !== null) {
+            $groupName   = $group->getName();
+            $legendType  = 'roles';
+            $legendTitle = gettext('Member Roles');
+            $legendItems = [];
+            $i = 0;
+            foreach (ListOptionQuery::create()->filterById($group->getRoleListId())->orderByOptionSequence()->find() as $role) {
+                $legendItems[] = [
+                    'id'    => (int) $role->getOptionId(),
+                    'label' => $role->getOptionName(),
+                    'color' => $markerColors[$i % count($markerColors)],
+                ];
+                $i++;
+            }
+        }
+    }
+
+    if ($legendType === 'classifications') {
+        $classifications = Classification::getAll();
+        $legendItems     = [
+            ['id' => 0, 'label' => gettext('Unassigned'), 'color' => $markerColors[0]],
         ];
+        foreach ($classifications as $cls) {
+            $legendItems[] = [
+                'id'    => $cls->getOptionId(),
+                'label' => $cls->getOptionName(),
+                'color' => $markerColors[$cls->getOptionId() % count($markerColors)],
+            ];
+        }
     }
 
     $renderer = new PhpRenderer('templates/map/');
 
     $pageArgs = [
-        'sRootPath'  => SystemURLs::getRootPath(),
-        'sPageTitle' => gettext('Congregation Map'),
-        'mapConfig'  => [
+        'sRootPath'          => SystemURLs::getRootPath(),
+        'sPageTitle'         => $groupName !== null ? gettext('Group Map') : gettext('Congregation Map'),
+        'sPageSubtitle'      => $groupName !== null
+            ? sprintf(gettext('Showing members of: %s'), $groupName)
+            : gettext('View all families on an interactive map'),
+        'aBreadcrumbs'       => $groupName !== null
+            ? PageHeader::breadcrumbs([
+                [gettext('Groups'), '/groups/dashboard'],
+                [gettext('Map')],
+            ])
+            : PageHeader::breadcrumbs([
+                [gettext('People'), '/people/dashboard'],
+                [gettext('Map')],
+            ]),
+        'sSettingsCollapseId' => 'mapAdminSettings',
+        'sPageHeaderButtons' => PageHeader::buttons([
+            ['label' => gettext('Family Geographic'), 'url' => '/GeoPage.php', 'icon' => 'fa-globe', 'adminOnly' => false],
+            ['label' => gettext('Map Settings'), 'collapse' => '#mapAdminSettings', 'icon' => 'fa-sliders', 'adminOnly' => true],
+        ]),
+        'mapConfig'        => [
             'churchLat'    => (float) ChurchMetaData::getChurchLatitude(),
             'churchLng'    => (float) ChurchMetaData::getChurchLongitude(),
             'churchName'   => ChurchMetaData::getChurchName(),
             'hasLocation'  => ChurchMetaData::getChurchLatitude() !== '',
-            'zoom'         => max(1, (int) SystemConfig::getValue('iMapZoom') ?: 10),
+            'zoom'         => max(1, SystemConfig::getIntValue('iMapZoom') ?: 10),
             'groupId'      => $groupId,
+            'groupName'    => $groupName,
+            'legendType'   => $legendType,
+            'legendTitle'  => $legendTitle,
             'apiUrl'       => SystemURLs::getRootPath() . '/api/map/families',
             'legendItems'  => $legendItems,
             'markerColors' => $markerColors,

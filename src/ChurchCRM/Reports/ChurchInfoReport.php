@@ -90,30 +90,30 @@ class ChurchInfoReport extends FPDF
             $dateY = 25;
             $this->writeAt($dateX, $dateY, date(SystemConfig::getValue('sDateFormatLong')));
             $curY = 20;
-            $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchName'));
+            $this->writeAt(SystemConfig::getValue('leftX'), $curY, (string) SystemConfig::getValue('sChurchName'));
             $curY += SystemConfig::getValue('incrementY');
-            $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchAddress'));
+            $this->writeAt(SystemConfig::getValue('leftX'), $curY, (string) SystemConfig::getValue('sChurchAddress'));
             $curY += SystemConfig::getValue('incrementY');
-            $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchCity') . ', ' . SystemConfig::getValue('sChurchState') . '  ' . SystemConfig::getValue('sChurchZip'));
+            $this->writeAt(SystemConfig::getValue('leftX'), $curY, (string) SystemConfig::getValue('sChurchCity') . ', ' . (string) SystemConfig::getValue('sChurchState') . '  ' . (string) SystemConfig::getValue('sChurchZip'));
             $curY += SystemConfig::getValue('incrementY');
             $curY += SystemConfig::getValue('incrementY'); // Skip another line before the phone/email
-            $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchPhone') . '  ' . SystemConfig::getValue('sChurchEmail'));
+            $this->writeAt(SystemConfig::getValue('leftX'), $curY, (string) SystemConfig::getValue('sChurchPhone') . '  ' . (string) SystemConfig::getValue('sChurchEmail'));
             $curY += 25; // mm to move to the second window
         }
         $this->writeAt(SystemConfig::getValue('leftX'), $curY, $this->makeSalutation($fam_ID));
         $curY += SystemConfig::getValue('incrementY');
-        if ($fam_Address1 != '') {
-            $this->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_Address1);
+        if ($fam_Address1 !== null && $fam_Address1 !== '') {
+            $this->writeAt(SystemConfig::getValue('leftX'), $curY, (string) $fam_Address1);
             $curY += SystemConfig::getValue('incrementY');
         }
-        if ($fam_Address2 != '') {
-            $this->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_Address2);
+        if ($fam_Address2 !== null && $fam_Address2 !== '') {
+            $this->writeAt(SystemConfig::getValue('leftX'), $curY, (string) $fam_Address2);
             $curY += SystemConfig::getValue('incrementY');
         }
         $this->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_City . ', ' . $fam_State . '  ' . $fam_Zip);
         $curY += SystemConfig::getValue('incrementY');
-        if ($fam_Country != '' && $fam_Country != SystemConfig::getValue('sDefaultCountry')) {
-            $this->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_Country);
+        if ($fam_Country !== null && $fam_Country !== '' && $fam_Country !== SystemConfig::getValue('sDefaultCountry')) {
+            $this->writeAt(SystemConfig::getValue('leftX'), $curY, (string) $fam_Country);
             $curY += SystemConfig::getValue('incrementY');
         } // mm to get away from the second window
 

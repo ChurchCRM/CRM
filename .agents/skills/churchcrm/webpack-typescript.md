@@ -4,12 +4,12 @@
 ChurchCRM uses Webpack to bundle frontend JavaScript/TypeScript and CSS. This skill covers entry points, API utilities, type safety, and best practices for building modern webpack modules.
 
 **Verified versions in this repo (package.json):**
-- `react` 19.2.4
-- `react-dom` 19.2.4
 - `typescript` 5.9.3
-- `webpack` 5.105.2
-- `webpack-cli` 6.0.1
+- `webpack` 5.105.4
+- `webpack-cli` 7.0.2
 - `ts-loader` 9.5.4
+
+> **Note:** React was removed in 7.2.0. All interactive UI uses vanilla JS + Bootstrap 5.
 
 ---
 
@@ -87,6 +87,25 @@ const response = await fetchAPI('person/123/photo', {
 | `fetchAdminAPI(path, options)` | Admin API fetch variant | `Promise<Response>` |
 | `fetchAdminAPIJSON<T>(path, options)` | Admin API JSON variant | `Promise<T>` |
 
+## Skin Bundle Architecture (LTR + RTL) <!-- learned: 2026-03-28 -->
+
+The main CSS/JS bundles are split into three files:
+
+| File | Purpose |
+|------|---------|
+| `webpack/skin-core-css.js` | **CSS only** — all shared component CSS (icons, DataTables, TomSelect, etc.) except Tabler core |
+| `webpack/skin-core.js` | **JS only** — jQuery, ApexCharts, Tabler JS, TomSelect bridge, Quill, etc. Imports `skin-core-css` |
+| `webpack/skin-main.js` | LTR entry — imports `tabler.min.css` then `skin-core` |
+| `webpack/skin-rtl.js` | RTL entry — imports `tabler.rtl.min.css` then `skin-core-css` (**no JS**) |
+
+This structure ensures `churchcrm-rtl.min.js` is webpack-runtime-only (~2 KB) and not a full duplicate of `churchcrm.min.js`. RTL pages load `churchcrm.min.js` for JS and `churchcrm-rtl.min.css` for styles.
+
+**When adding a shared CSS dependency** → add to `skin-core-css.js`.
+**When adding a shared JS dependency** → add to `skin-core.js`.
+**Never add JS imports to `skin-rtl.js`** — it is intentionally CSS-only.
+
+---
+
 ## Entry Point Patterns
 
 ### Basic JavaScript Entry Point
@@ -153,60 +172,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 ```
 
-### React Component with TypeScript
+### avatar-loader.ts Click Class Injection <!-- learned: 2026-03-30 -->
 
-```typescript
-// webpack/admin-dashboard-app.tsx
-import React, { useState, useEffect } from 'react';
-import { createRoot } from 'react-dom/client';
-import { fetchAPIJSON } from './api-utils';
-
-interface User {
-    id: number;
-    name: string;
-    email: string;
-}
-
-const AdminDashboard: React.FC = () => {
-    const [users, setUsers] = useState<User[]>([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const loadUsers = async () => {
-            try {
-                const data = await fetchAPIJSON<User[]>('users');
-                setUsers(data);
-            } catch (error) {
-                console.error('Failed to load users:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
-        
-        loadUsers();
-    }, []);
-
-    if (loading) return <div>Loading...</div>;
-    
-    return (
-        <div>
-            <h1>Dashboard</h1>
-            <ul>
-                {users.map(user => (
-                    <li key={user.id}>{user.name} ({user.email})</li>
-                ))}
-            </ul>
-        </div>
-    );
-};
-
-// Mount app
-const container = document.getElementById('admin-dashboard-app');
-if (container) {
-    const root = createRoot(container);
-    root.render(<AdminDashboard />);
-}
-```
+`avatar-loader.ts` is the single source of truth for making avatars clickable.
+In `loadUploadedPhoto.onload`, it adds `.view-person-photo` / `.view-family-photo`
+plus `data-person-id` / `data-family-id` — but only after confirming the photo
+loaded successfully. It skips images inside `#uploadImageButton` / `#uploadImageTrigger`
+(profile upload buttons). **Do not add these classes in PHP templates** — avatar-loader
+handles it. See `frontend-development.md` → "Avatar Click-to-View Lightbox" for full rules.
 
 ## CSS Organization
 
@@ -225,7 +198,7 @@ import './my-feature.css';  // In webpack/my-feature.ts
 ```javascript
 entry: {
     'skin/v2/my-feature': './webpack/my-feature.js',  // → src/skin/v2/my-feature.js
-    'skin/v2/my-component-app': './webpack/my-component-app.tsx',
+    'skin/v2/my-component-app': './webpack/my-component-app.ts',
 }
 ```
 
@@ -371,55 +344,48 @@ entry: {
 
 ## Biome Lint — Suppression Comments <!-- learned: 2026-03-03 -->
 
-This project uses **Biome** (not ESLint) for TypeScript/React linting. ESLint suppression comments are silently ignored by Biome.
-
-### ❌ WRONG — ESLint comment does nothing in this repo
-```ts
-// eslint-disable-next-line react-hooks/exhaustive-deps
-useEffect(() => { ... }, []);
-```
+This project uses **Biome** (not ESLint) for TypeScript/JS linting. ESLint suppression comments are silently ignored by Biome.
 
 ### ✅ CORRECT — Biome suppression syntax
-```ts
-// biome-ignore lint/correctness/useExhaustiveDependencies: <reason>
-useEffect(() => { ... }, []);
+```js
+// biome-ignore lint/suspicious/noExplicitAny: <reason>
+const root = (window as any).CRM?.root;
 ```
 
 ### Common rules to suppress
 
 | Rule | When |
 |------|------|
-| `lint/correctness/useExhaustiveDependencies` | `useEffect` / `useCallback` with intentional empty or partial deps |
 | `lint/suspicious/noExplicitAny` | Legitimate `any` in interop/legacy code |
 | `lint/style/noNonNullAssertion` | When null is structurally impossible |
-
-### React `useEffect` mount-once pattern (Quill, charts, D3, etc.)
-
-When initializing a third-party DOM library that must only run once:
-
-```ts
-// Keep a ref to the latest callback so the handler never goes stale
-const onChangeRef = useRef(onChange);
-useEffect(() => {
-  onChangeRef.current = onChange;
-}, [onChange]);
-
-// biome-ignore lint/correctness/useExhaustiveDependencies: initialized once on mount; re-running would create duplicate DOM nodes. name/placeholder are mount-time constants; onChange uses onChangeRef; value is synced by a separate effect.
-useEffect(() => {
-  // ... initialize library ...
-}, []);
-
-// Sync controlled value changes without re-initializing
-useEffect(() => {
-  if (instanceRef.current) {
-    instanceRef.current.root.innerHTML = value ?? "";
-  }
-}, [value]);
-```
-
-**Why `[]`?** Libraries like Quill append DOM nodes into a container. Re-running the effect without destroying the old instance first creates duplicate toolbars/canvases. The guard `if (instanceRef.current) return;` only partially mitigates this.
+| `lint/complexity/useOptionalChain` | When optional chaining changes semantics |
 
 ---
+
+## JS vs TypeScript: When to Use Each <!-- learned: 2026-03-15 -->
+
+Use **TypeScript** (`.ts`) when:
+- Making API calls (use `api-utils.ts` typed helpers)
+- Working with custom typed interfaces or response shapes
+
+Use **plain JavaScript** (`.js`) when:
+- The entry is primarily jQuery plugin initialization (DataTables, Select2, etc.)
+- The file is a thin DOM-ready event-handler wrapper with no API calls
+- The module renders HTML via template literals (no type benefit)
+
+**Why:** `datatables.net` augments the jQuery `JQuery<T>` interface via side-effect import. This requires either:
+- `import 'datatables.net'` (would bundle DataTables, wasting ~200 KB since it's loaded globally)
+- Adding `"datatables.net"` to tsconfig `types` array (untested — may conflict)
+
+Existing JS-only entries: `admin-dashboard.js`, `backup.js`, `restore.js`, `church-info.js`.
+
+```javascript
+// webpack/groups-sundayschool-dashboard.js — jQuery-heavy, plain JS
+document.addEventListener("DOMContentLoaded", () => {
+  $(".data-table").DataTable(window.CRM.plugin.dataTable);
+  // ...
+});
+```
 
 ## Related Knowledge
 - **API Utilities**: See webpack/api-utils.ts source

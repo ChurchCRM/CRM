@@ -11,14 +11,22 @@ on:
       - 'src/kiosk/routes/api/**'
       - 'src/plugins/routes/api/**'
 
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-openapi-specs
+  cancel-in-progress: false
+
 jobs:
   generate-and-publish:
     name: Generate specs and trigger docs rebuild
+    timeout-minutes: 15
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout CRM
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup PHP 8.4
         uses: shivammathur/setup-php@v2
@@ -27,7 +35,7 @@ jobs:
           extensions: mbstring, pdo, zip
 
       - name: Cache Composer packages
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: src/vendor
           key: composer-${{ hashFiles('src/composer.lock') }}
@@ -36,6 +44,9 @@ jobs:
       - name: Install Composer dependencies
         run: cd src && composer install --no-interaction --prefer-dist
 
+      - name: Pull latest before generating
+        run: git pull --rebase origin master
+
       - name: Generate Public API spec
         run: cd src && composer run openapi-public
 
@@ -43,17 +54,11 @@ jobs:
         run: cd src && composer run openapi-private
 
       - name: Commit updated specs
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: 'chore: update OpenAPI specs [skip ci]'
           file_pattern: 'openapi/*.yaml'
           commit_user_name: 'github-actions[bot]'
           commit_user_email: 'github-actions[bot]@users.noreply.github.com'
 
-      - name: Trigger docs.churchcrm.io rebuild
-        uses: peter-evans/repository-dispatch@v3
-        with:
-          token: ${{ secrets.DOCS_DEPLOY_TOKEN }}
-          repository: ChurchCRM/docs.churchcrm.io
-          event-type: openapi-updated
-          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+      # Removed automatic dispatch to docs repo; docs site will rebuild on schedule.

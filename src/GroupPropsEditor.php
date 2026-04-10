@@ -1,12 +1,15 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 // Security: user must be allowed to edit records to use this page.
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(), 'EditRecords');
@@ -15,6 +18,7 @@ AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser
 $logger = LoggerUtils::getAppLogger();
 
 $sPageTitle = gettext('Group Member Properties Editor');
+$sPageSubtitle = gettext('Edit custom properties for a group member');
 
 // Get the Group and Person IDs from the querystring
 $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
@@ -57,7 +61,7 @@ if (isset($_POST['GroupPropSubmit'])) {
 
         $currentFieldData = InputUtils::legacyFilterInput($_POST[$prop_Field]);
 
-        $bErrorFlag |= !validateCustomField($type_ID, $currentFieldData, $prop_Field, $aPropErrors);
+        $bErrorFlag |= !CustomFieldUtils::validate($type_ID, $currentFieldData, $prop_Field, $aPropErrors);
 
         // assign processed value locally to $aPersonProps so we can use it to generate the form later
         $aPersonProps[$prop_Field] = $currentFieldData;
@@ -71,9 +75,9 @@ if (isset($_POST['GroupPropSubmit'])) {
 
         while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQLI_BOTH)) {
             extract($rowPropList);
-            $currentFieldData = trim($aPersonProps[$prop_Field]);
+            $currentFieldData = trim((string) ($aPersonProps[$prop_Field] ?? ''));
 
-            sqlCustomField($sSQL, $type_ID, $currentFieldData, $prop_Field, $sPhoneCountry);
+            CustomFieldUtils::buildSql($sSQL, $type_ID, $currentFieldData, $prop_Field, $sPhoneCountry);
         }
 
         // chop off the last 2 characters (comma and space) added in the last while loop iteration.
@@ -98,13 +102,13 @@ if (isset($_POST['GroupPropSubmit'])) {
 } else {
     // First Pass
     // Verify that the groupprop_X table exists
-    $checkTableSQL = 'SHOW TABLES LIKE "groupprop_' . $iGroupID . '"';
+    $checkTableSQL = 'SHOW TABLES LIKE"groupprop_' . $iGroupID . '"';
     $tableCheckResult = RunQuery($checkTableSQL);
     
     if (mysqli_num_rows($tableCheckResult) === 0) {
         // Table does not exist - create it with initial per_ID column
         $createTableSQL = 'CREATE TABLE IF NOT EXISTS groupprop_' . $iGroupID . ' (
-            per_ID mediumint(8) unsigned NOT NULL default "0",
+            per_ID mediumint(8) unsigned NOT NULL default"0",
             PRIMARY KEY (per_ID),
             UNIQUE KEY per_ID (per_ID)
         ) ENGINE=InnoDB';
@@ -135,13 +139,17 @@ if (isset($_POST['GroupPropSubmit'])) {
     $aPersonProps = mysqli_fetch_array($rsPersonProps, MYSQLI_BOTH);
 }
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Groups'), '/groups/dashboard'],
+    [$grp_Name, '/groups/view/' . $iGroupID],
+    [gettext('Member Properties')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 if (mysqli_num_rows($rsPropList) === 0) {
 ?>
     <form>
-        <h3><?= gettext('This group currently has no properties!  You can add them in the Group Editor.') ?></h3>
-        <BR>
+        <p class="text-muted"><?= gettext('This group currently has no properties!  You can add them in the Group Editor.') ?></p>
         <input type="button" class="btn btn-secondary" value="<?= gettext('Return to Person Record') ?>" Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?= $iPersonID ?>';">
     </form>
 <?php
@@ -149,7 +157,7 @@ if (mysqli_num_rows($rsPropList) === 0) {
 ?>
 
     <div class="card">
-        <div class="card-header">
+        <div class="card-header d-flex align-items-center">
             <h3 class="card-title"><?= gettext('Editing') ?> <i> <?= $grp_Name ?> </i> <?= gettext('data for member') ?> <i> <?= $per_FirstName . ' ' . $per_LastName ?> </i></h3>
         </div>
         <div class="card-body">
@@ -167,13 +175,13 @@ if (mysqli_num_rows($rsPropList) === 0) {
                             <td><?= InputUtils::escapeHTML($prop_Name) ?>: </td>
                             <td>
                                 <?php
-                                $currentFieldData = trim($aPersonProps[$prop_Field]);
+                                $currentFieldData = trim((string) ($aPersonProps[$prop_Field] ?? ''));
 
                                 if ($type_ID == 11) {
                                     $prop_Special = null;
                                 }  // ugh.. an argument with special cases!
 
-                                formCustomField($type_ID, $prop_Field, $currentFieldData, $prop_Special, !isset($_POST['GroupPropSubmit']));
+                                CustomFieldUtils::renderForm($type_ID, $prop_Field, $currentFieldData, $prop_Special, !isset($_POST['GroupPropSubmit']));
 
                                 if (array_key_exists($prop_Field, $aPropErrors)) {
                                     echo '<span class="text-error">' . InputUtils::escapeHTML($aPropErrors[$prop_Field]) . '</span>';
@@ -184,11 +192,11 @@ if (mysqli_num_rows($rsPropList) === 0) {
                     <?php
                     } ?>
                     <tr>
-                        <td class="text-center" colspan="3">
-                            <br><br>
-                            <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" Name="GroupPropSubmit">
-                            &nbsp;
-                            <input type="button" class="btn btn-secondary" value="<?= gettext('Cancel') ?>" Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?= $iPersonID ?>';">
+                        <td colspan="3" class="pt-3">
+                            <div class="d-flex gap-2">
+                                <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" Name="GroupPropSubmit">
+                                <input type="button" class="btn btn-secondary" value="<?= gettext('Cancel') ?>" Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?= $iPersonID ?>';">
+                            </div>
                         </td>
                     </tr>
                 </table>
@@ -198,7 +206,7 @@ if (mysqli_num_rows($rsPropList) === 0) {
 <?php
 }
 ?>
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
     // Initialize all phone mask toggles for custom fields (guarded)
     document.addEventListener('DOMContentLoaded', function() {
         if (window.CRM && window.CRM.formUtils && typeof window.CRM.formUtils.initializeAllPhoneMaskToggles === 'function') {

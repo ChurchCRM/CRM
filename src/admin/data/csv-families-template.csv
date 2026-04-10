@@ -1,0 +1,8 @@
+FamilyID,Title,FirstName,MiddleName,LastName,Suffix,Gender,Envelope,Address1,Address2,City,State,Zip,Country,HomePhone,WorkPhone,MobilePhone,Email,WorkEmail,BirthDate,MembershipDate,WeddingDate,Classification,FamilyRole,PersonCustom:CustomField1,FamilyCustom:CustomField1
+1001,Mr,John,,Smith,,Male,100,123 Church St,,Springfield,IL,62704,USA,555-1234,,555-8765,john.smith@example.com,,1980-05-12,2020-01-01,2010-06-15,Member,Head of Household,MemberValue,Family1Value
+1001,Mrs,Jane,,Smith,,Female,100,123 Church St,,Springfield,IL,62704,USA,555-4321,,555-5678,jane.smith@example.com,,1982-08-20,2020-01-01,2010-06-15,Member,Spouse,MemberValue,Family1Value
+1001,Miss,Emily,,Smith,,Female,100,123 Church St,,Springfield,IL,62704,USA,555-0000,,555-0001,emily.smith@example.com,,2010-03-05,2020-01-01,2010-06-15,Member,Child,MemberValue,Family1Value
+1002,Mr,Robert,,Johnson,,Male,200,456 Main Rd,,Shelbyville,IL,61500,USA,555-2222,,555-2223,robert.johnson@example.com,,1975-11-01,2018-09-01,2002-07-20,Member,Head of Household,MemberValue,Family2Value
+1002,Mrs,Linda,,Johnson,,Female,200,456 Main Rd,,Shelbyville,IL,61500,USA,555-3333,,555-3334,linda.johnson@example.com,,1976-04-15,2018-09-01,2002-07-20,Member,Spouse,MemberValue,Family2Value
+1002,Master,Tommy,,Johnson,,Male,200,456 Main Rd,,Shelbyville,IL,61500,USA,555-4444,,555-4445,tommy.johnson@example.com,,2012-10-10,2018-09-01,2002-07-20,Member,Child,MemberValue,Family2Value
+ ,Ms,Alice,,Walker,,Female,0,789 Solo Ave,,Capital City,IL,62999,USA,555-7777,,555-7778,alice.walker@example.com,,1990-02-02,2021-05-01,,Member,,SingleMember,

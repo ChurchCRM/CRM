@@ -177,4 +177,204 @@ class DateTimeUtils
 
         return $date->format($format);
     }
+
+    /**
+     * Return the number of days in a given month/year.
+     *
+     * Use this instead of `cal_days_in_month()` — the PHP calendar extension
+     * is not enabled in all environments (notably the Docker test image).
+     *
+     * @param int $month The month (1-12)
+     * @param int $year  The year (e.g., 2026)
+     *
+     * @return int Number of days in the month (28-31)
+     */
+    public static function getDaysInMonth(int $month, int $year): int
+    {
+        return (int) date('t', mktime(0, 0, 0, $month, 1, $year));
+    }
+
+    /**
+     * Returns the system datetime format converted to Moment.js syntax,
+     * JSON-encoded and ready for embedding in a JavaScript literal.
+     *
+     * Example output: "MM/DD/YYYY h:mm a"
+     */
+    public static function getDateTimeFormatForJs(): string
+    {
+        static $phpToMoment = [
+            'd' => 'DD',   'D' => 'ddd',  'j' => 'D',    'l' => 'dddd',
+            'N' => 'E',    'S' => 'o',    'w' => 'e',    'z' => 'DDD',
+            'W' => 'W',    'F' => 'MMMM', 'm' => 'MM',   'M' => 'MMM',
+            'n' => 'M',    't' => '',     'L' => '',     'o' => 'YYYY',
+            'Y' => 'YYYY', 'y' => 'YY',   'a' => 'a',    'A' => 'A',
+            'B' => '',     'g' => 'h',    'G' => 'H',    'h' => 'hh',
+            'H' => 'HH',   'i' => 'mm',   's' => 'ss',   'u' => 'SSS',
+            'I' => '',     'O' => '',     'P' => '',     'T' => '',
+            'Z' => '',     'c' => '',     'r' => '',     'U' => 'X',
+        ];
+
+        return json_encode(strtr(SystemConfig::getValue('sDateTimeFormat'), $phpToMoment), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR);
+    }
+
+    /**
+     * Converts a date string to the system-configured date picker format.
+     * Migrated from change_date_for_place_holder() in Functions.php.
+     */
+    public static function formatForDatePicker(?string $string = null): string
+    {
+        $string ??= '';
+        $timestamp = strtotime($string);
+
+        if ($timestamp !== false) {
+            return date(SystemConfig::getValue("sDatePickerFormat"), $timestamp);
+        }
+
+        return '';
+    }
+
+    /**
+     * Formats a MySQL DateTime or DateTime object for display using the system date format.
+     * Migrated from FormatDate() in Functions.php.
+     */
+    public static function formatDate($dDate, bool $bWithTime = false): string
+    {
+        if ($dDate === '' || $dDate === '0000-00-00 00:00:00' || $dDate === '0000-00-00' || $dDate === null) {
+            return '';
+        }
+
+        try {
+            if ($dDate instanceof \DateTime || $dDate instanceof \DateTimeInterface) {
+                $dateObj = $dDate;
+            } else {
+                $dateObj = new \DateTime($dDate);
+            }
+        } catch (\Exception $e) {
+            return '';
+        }
+
+        $dateFormat = SystemConfig::getValue("sDateFormatLong");
+        $dateFormat = str_replace("d", "d", $dateFormat);
+        $dateFormat = str_replace("m", "F", $dateFormat);
+        $dateFormat = str_replace("Y", "Y", $dateFormat);
+        $dateFormat = str_replace("/", " ", $dateFormat);
+        $dateFormat = str_replace("-", " ", $dateFormat);
+
+        if ($bWithTime) {
+            return $dateObj->format($dateFormat . ' g:i A');
+        }
+
+        return $dateObj->format($dateFormat);
+    }
+
+    /**
+     * Assembles and validates year/month/day components into YYYY-MM-DD format.
+     * Helper for parseAndValidate(). Migrated from assembleYearMonthDay() in Functions.php.
+     */
+    private static function assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut = 'future')
+    {
+        if (strlen($sYear) === 2) {
+            $thisYear = date('Y');
+            $twoDigit = mb_substr($thisYear, 2, 2);
+            if ($sYear == $twoDigit) {
+                $sYear = mb_substr($thisYear, 0, 4);
+            } elseif ($pasfut == 'future') {
+                if ($sYear > $twoDigit) {
+                    $sYear = mb_substr($thisYear, 0, 2) . $sYear;
+                } else {
+                    $sNextCentury = $thisYear + 100;
+                    $sYear = mb_substr($sNextCentury, 0, 2) . $sYear;
+                }
+            } else {
+                if ($sYear < $twoDigit) {
+                    $sYear = mb_substr($thisYear, 0, 2) . $sYear;
+                } else {
+                    $sLastCentury = $thisYear - 100;
+                    $sYear = mb_substr($sLastCentury, 0, 2) . $sYear;
+                }
+            }
+        }
+        if (strlen($sYear) !== 4) {
+            return false;
+        }
+
+        if (strlen($sMonth) === 1) {
+            $sMonth = '0' . $sMonth;
+        }
+        if (strlen($sMonth) !== 2) {
+            return false;
+        }
+
+        if (strlen($sDay) === 1) {
+            $sDay = '0' . $sDay;
+        }
+        if (strlen($sDay) !== 2) {
+            return false;
+        }
+
+        $sScanString = $sYear . '-' . $sMonth . '-' . $sDay;
+        [$iYear, $iMonth, $iDay] = sscanf($sScanString, '%04d-%02d-%02d');
+
+        if (checkdate($iMonth, $iDay, $iYear)) {
+            return $sScanString;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Parses a human-entered date string into YYYY-MM-DD format.
+     * Supports US (M/D/Y), European (D/M/Y), and ISO (Y-M-D) formats.
+     * Migrated from parseAndValidateDate() in Functions.php.
+     *
+     * @return string|false YYYY-MM-DD on success, false on invalid input
+     */
+    public static function parseAndValidate($data, $locale = 'US', $pasfut = 'future')
+    {
+        if (mb_substr_count($data, '-') === 2) {
+            $iFirstDelimiter = strpos($data, '-');
+            $iSecondDelimiter = strpos($data, '-', $iFirstDelimiter + 1);
+
+            $sYear = mb_substr($data, 0, $iFirstDelimiter);
+            $sMonth = mb_substr($data, $iFirstDelimiter + 1, $iSecondDelimiter - $iFirstDelimiter - 1);
+            $sDay = mb_substr($data, $iSecondDelimiter + 1);
+
+            return self::assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut);
+        } elseif ((mb_substr_count($data, '/') == 2) && ($locale == 'US')) {
+            $iFirstDelimiter = strpos($data, '/');
+            $iSecondDelimiter = strpos($data, '/', $iFirstDelimiter + 1);
+
+            $sMonth = mb_substr($data, 0, $iFirstDelimiter);
+            $sDay = mb_substr($data, $iFirstDelimiter + 1, $iSecondDelimiter - $iFirstDelimiter - 1);
+            $sYear = mb_substr($data, $iSecondDelimiter + 1);
+
+            return self::assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut);
+        } elseif (mb_substr_count($data, '/') == 2) {
+            $iFirstDelimiter = strpos($data, '/');
+            $iSecondDelimiter = strpos($data, '/', $iFirstDelimiter + 1);
+
+            $sDay = mb_substr($data, 0, $iFirstDelimiter);
+            $sMonth = mb_substr($data, $iFirstDelimiter + 1, $iSecondDelimiter - $iFirstDelimiter - 1);
+            $sYear = mb_substr($data, $iSecondDelimiter + 1);
+
+            return self::assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut);
+        }
+
+        $timeStamp = strtotime($data);
+        if ($timeStamp === false || $timeStamp <= 0) {
+            return false;
+        }
+
+        $dateString = date('Y-m-d', $timeStamp);
+
+        if (strlen($dateString) !== 10) {
+            return false;
+        }
+
+        if ($dateString > '1970-01-01' && $dateString < '2038-01-19') {
+            return $dateString;
+        }
+
+        return false;
+    }
 }

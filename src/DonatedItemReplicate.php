@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
@@ -13,7 +13,7 @@ $iCount = InputUtils::legacyFilterInputArr($_GET, 'Count', 'int');
 
 $sLetter = 'a';
 
-$sSQL = "SELECT di_item FROM donateditem_di WHERE di_ID=$iDonatedItemID";
+$sSQL ="SELECT di_item FROM donateditem_di WHERE di_ID=$iDonatedItemID";
 $rsItem = RunQuery($sSQL);
 $row = mysqli_fetch_array($rsItem);
 $startItem = $row[0];
@@ -28,10 +28,10 @@ $letterNum = ord('a');
 
 for ($i = 0; $i < $iCount; $i++) {
     $sSQL = 'INSERT INTO donateditem_di (di_item,di_FR_ID,di_donor_ID,di_multibuy,di_title,di_description,di_sellprice,di_estprice,di_minimum,di_materialvalue,di_EnteredBy,di_EnteredDate,di_picture)';
-    $sSQL .= "SELECT '" . $startItem . chr($letterNum) . "',di_FR_ID,di_donor_ID,di_multibuy,di_title,di_description,di_sellprice,di_estprice,di_minimum,di_materialvalue,";
-    $sSQL .= AuthenticationManager::getCurrentUser()->getId() . ",'" . date('YmdHis') . "',";
+    $sSQL .="SELECT '" . $startItem . chr($letterNum) ."',di_FR_ID,di_donor_ID,di_multibuy,di_title,di_description,di_sellprice,di_estprice,di_minimum,di_materialvalue,";
+    $sSQL .= AuthenticationManager::getCurrentUser()->getId() .",'" . date('YmdHis') ."',";
     $sSQL .= 'di_picture';
-    $sSQL .= " FROM donateditem_di WHERE di_ID=$iDonatedItemID";
+    $sSQL .=" FROM donateditem_di WHERE di_ID=$iDonatedItemID";
     $ret = RunQuery($sSQL);
     $letterNum += 1;
 }

@@ -1,0 +1,125 @@
+name: Security Discord Notifications
+
+# Post to Discord #security channel when:
+#   1. An issue is labeled "security"  (automatic)
+#   2. A maintainer manually dispatches this workflow for a security advisory
+#
+# NOTE: GitHub does not expose repository_advisory as an Actions workflow
+#       trigger (it is a webhook-only event). Use workflow_dispatch to post
+#       advisory alerts manually from the Actions tab.
+#
+# REQUIRED SECRET: DISCORD_SECURITY_WEBHOOK
+#   Settings → Secrets and variables → Actions
+
+on:
+  issues:
+    types: [labeled]
+  workflow_dispatch:
+    inputs:
+      ghsa_id:
+        description: "GHSA ID (e.g. GHSA-xxxx-xxxx-xxxx)"
+        required: true
+      summary:
+        description: "Advisory summary"
+        required: true
+      severity:
+        description: "Severity"
+        required: false
+        default: unknown
+        type: choice
+        options: [critical, high, medium, low, unknown]
+      advisory_url:
+        description: "Advisory URL (leave blank for default)"
+        required: false
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    name: Post to Discord
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: github.event_name == 'workflow_dispatch' || github.event.label.name == 'security'
+
+    steps:
+      # -----------------------------------------------------------------------
+      # Advisory notification (manual dispatch)
+      # -----------------------------------------------------------------------
+      - name: Notify Discord — security advisory
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_SECURITY_WEBHOOK }}
+          GHSA_ID:  ${{ inputs.ghsa_id }}
+          SUMMARY:  ${{ inputs.summary }}
+          SEVERITY: ${{ inputs.severity }}
+          HTML_URL: ${{ inputs.advisory_url }}
+        run: |
+          case "${SEVERITY,,}" in
+            critical) SEV_EMOJI="🔴" ;;
+            high)     SEV_EMOJI="🟠" ;;
+            medium)   SEV_EMOJI="🟡" ;;
+            low)      SEV_EMOJI="🟢" ;;
+            *)        SEV_EMOJI="⚪" ;;
+          esac
+
+          jq -n \
+            --arg title       "🔒 Security Advisory: ${GHSA_ID}" \
+            --arg description "$SUMMARY" \
+            --arg url         "${HTML_URL:-https://github.com/ChurchCRM/CRM/security/advisories}" \
+            --argjson color   16711680 \
+            --arg sev_name    "Severity" \
+            --arg sev_val     "${SEV_EMOJI} ${SEVERITY^}" \
+          '{
+            allowed_mentions: { parse: [] },
+            embeds: [{
+              title:       $title,
+              description: $description,
+              color:       $color,
+              url:         $url,
+              fields: [
+                { name: $sev_name, value: $sev_val, inline: true }
+              ],
+              footer: { text: "ChurchCRM Security · github.com/ChurchCRM/CRM/security/advisories" }
+            }]
+          }' | curl -sf -X POST "$DISCORD_WEBHOOK" \
+                  -H "Content-Type: application/json" \
+                  -d @-
+
+      # -----------------------------------------------------------------------
+      # Issue labeled "security"
+      # -----------------------------------------------------------------------
+      - name: Notify Discord — issue labeled security
+        if: github.event_name == 'issues'
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_SECURITY_WEBHOOK }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE:  ${{ github.event.issue.title }}
+          ISSUE_URL:    ${{ github.event.issue.html_url }}
+          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+          LABEL_BY:     ${{ github.event.sender.login }}
+        run: |
+          jq -n \
+            --arg title       "🏷️ Issue #${ISSUE_NUMBER} tagged [security]" \
+            --arg description "$ISSUE_TITLE" \
+            --arg url         "$ISSUE_URL" \
+            --arg author_name "Opened by" \
+            --arg author_val  "$ISSUE_AUTHOR" \
+            --arg label_name  "Labeled by" \
+            --arg label_val   "$LABEL_BY" \
+          '{
+            allowed_mentions: { parse: [] },
+            embeds: [{
+              title:       $title,
+              description: $description,
+              color:       16744272,
+              url:         $url,
+              fields: [
+                { name: $author_name, value: $author_val, inline: true },
+                { name: $label_name,  value: $label_val,  inline: true }
+              ],
+              footer: { text: "ChurchCRM Security · Report privately: github.com/ChurchCRM/CRM/security/advisories/new" }
+            }]
+          }' | curl -sf -X POST "$DISCORD_WEBHOOK" \
+                  -H "Content-Type: application/json" \
+                  -d @-

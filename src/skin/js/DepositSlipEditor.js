@@ -99,7 +99,7 @@ function initPaymentTable() {
         return (
           '<a class="btn btn-sm btn-info" href="PledgeDetails.php?PledgeID=' +
           data +
-          '"><i class="fa-solid fa-info-circle"></i> Details</a>'
+          '"><i class="fa-solid fa-circle-info"></i>Details</a>'
         );
       },
     });
@@ -187,10 +187,9 @@ function initDepositSlipEditor() {
     // Hide the clear button
     $(this).hide();
 
-    // Reset chart colors if available
+    // Reset chart highlight by clearing the dimmed colors
     if (window.fundChartInstance) {
-      window.fundChartInstance.data.datasets[0].backgroundColor = window.originalFundColors;
-      window.fundChartInstance.update();
+      window.fundChartInstance.updateOptions({ colors: undefined });
     }
   });
 
@@ -244,7 +243,7 @@ function initDepositSlipEditor() {
     // Show loading indicator
     var submitBtn = $(this).find('button[type="submit"]');
     var originalText = submitBtn.html();
-    submitBtn.prop("disabled", true).html('<i class="fa-solid fa-spinner fa-spin"></i> ' + i18next.t("Saving..."));
+    submitBtn.prop("disabled", true).html('<i class="fa-solid fa-spinner fa-spin"></i>' + i18next.t("Saving..."));
 
     var formData = {
       depositDate: $("#DepositDate").val(),
@@ -293,12 +292,12 @@ function initDepositSlipEditor() {
       // This row is already open - close it
       row.child.hide();
       tr.removeClass("shown");
-      $(this).html('<i class="fa-solid fa-plus-circle"></i>');
+      $(this).html('<i class="fa-solid fa-circle-plus"></i>');
     } else {
       // Open this row
       row.child(format(row.data())).show();
       tr.addClass("shown");
-      $(this).html('<i class="fa-solid fa-minus-circle"></i>');
+      $(this).html('<i class="fa-solid fa-circle-minus"></i>');
     }
   });
 
@@ -321,12 +320,12 @@ function initDepositSlipEditor() {
 
     if (selectedRows > 0) {
       deleteBtn
-        .html('<i class="fa-solid fa-trash-can"></i> ' + i18next.t("Delete") + " (" + selectedRows + ")")
+        .html('<i class="fa-solid fa-trash-can"></i>' + i18next.t("Delete") + " (" + selectedRows + ")")
         .removeClass("btn-outline-danger")
         .addClass("btn-danger");
     } else {
       deleteBtn
-        .html('<i class="fa-solid fa-trash-can"></i> ' + i18next.t("Delete"))
+        .html('<i class="fa-solid fa-trash-can"></i>' + i18next.t("Delete"))
         .removeClass("btn-danger")
         .addClass("btn-outline-danger");
     }
@@ -359,7 +358,7 @@ function initDepositSlipEditor() {
           className: "btn-secondary",
         },
         confirm: {
-          label: '<i class="fa-solid fa-trash-can"></i> ' + i18next.t("Delete"),
+          label: '<i class="fa-solid fa-trash-can"></i>' + i18next.t("Delete"),
           className: "btn-danger",
         },
       },
@@ -392,119 +391,125 @@ function initDepositSlipEditor() {
   });
 }
 
-function initCharts(
-  pledgeLabels,
-  pledgeChartData,
-  pledgeBackgroundColor,
-  fundLabels,
-  fundChartData,
-  fundBackgroundColor,
-) {
+function initCharts(pledgeLabels, pledgeChartData, fundLabels, fundChartData) {
   // Funds Chart: Dynamic height based on number of funds
   // Minimum 120px for 1 fund, +40px for each additional fund
-  var fundHeight = Math.max(120, fundLabels.length * 40);
+  var fundHeight = Math.max(250, fundLabels.length * 40);
 
-  // Set canvas height
-  document.getElementById("fund-bar").style.height = fundHeight + "px";
-
-  var barOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    indexAxis: "y",
-    plugins: {
-      legend: {
-        display: false,
+  // Funds Bar Chart using ApexCharts
+  var fundChartOptions = {
+    chart: {
+      type: "bar",
+      height: fundHeight,
+      toolbar: {
+        show: false,
       },
-      tooltip: {
-        callbacks: {
-          label: function (context) {
-            return "$" + context.parsed.x.toFixed(2);
-          },
+      events: {
+        click: function (event, chartContext, opts) {
+          if (opts.dataPointIndex !== undefined) {
+            var index = opts.dataPointIndex;
+            var fundName = fundLabels[index];
+
+            // Filter the DataTable by the clicked fund
+            dataT.search(fundName).draw();
+
+            // Show clear filter button
+            $("#clearFundFilter").fadeIn();
+
+            // Scroll to table
+            document.getElementById("paymentsTable").scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+
+            // Highlight the chart bar
+            highlightChartBar(fundChartInstance, index);
+          }
         },
       },
     },
-    scales: {
-      x: {
-        beginAtZero: true,
-        ticks: {
-          callback: function (value) {
-            return "$" + value.toLocaleString();
-          },
-        },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+        barHeight: "70%",
+        borderRadius: 4,
+        distributed: true,
       },
+    },
+    series: [
+      {
+        name: i18next.t("Amount"),
+        data: fundChartData,
+      },
+    ],
+    // Use ApexCharts default color palette (distributed: true assigns one per bar)
+    xaxis: {
+      categories: fundLabels,
+      tickFormatter: function (value) {
+        return (
+          "$" +
+          parseFloat(value).toLocaleString("en-US", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          })
+        );
+      },
+    },
+    yaxis: {
+      tickFormatter: function (value) {
+        return value;
+      },
+    },
+    tooltip: {
       y: {
-        ticks: {
-          font: {
-            size: 11,
-          },
+        formatter: function (value) {
+          return "$" + parseFloat(value).toFixed(2);
         },
       },
     },
-    onClick: function (event, activeElements) {
-      if (activeElements.length > 0) {
-        var index = activeElements[0].index;
-        var fundName = fundLabels[index];
-
-        // Filter the DataTable by the clicked fund
-        dataT.search(fundName).draw();
-
-        // Show clear filter button
-        $("#clearFundFilter").fadeIn();
-
-        // Scroll to table
-        document.getElementById("paymentsTable").scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-
-        // Highlight the chart bar
-        highlightChartBar(fundChart, index);
-      }
-    },
-    onHover: function (event, activeElements) {
-      event.native.target.style.cursor = activeElements.length > 0 ? "pointer" : "default";
+    states: {
+      hover: {
+        filter: {
+          type: "none",
+        },
+      },
     },
   };
 
-  // Funds Bar Chart
-  var ctx = document.getElementById("fund-bar").getContext("2d");
-  var fundChart = new Chart(ctx, {
-    type: "bar",
-    data: {
-      labels: fundLabels,
-      datasets: [
-        {
-          label: i18next.t("Amount"),
-          data: fundChartData,
-          backgroundColor: fundBackgroundColor,
-          borderRadius: 4,
-          hoverBackgroundColor: fundBackgroundColor.map(function (color) {
-            // Darken the color on hover
-            return color.replace(")", ", 0.8)").replace("rgb", "rgba");
-          }),
-        },
-      ],
-    },
-    options: barOptions,
-  });
-
-  // Store chart reference and original colors globally
-  window.fundChartInstance = fundChart;
-  window.originalFundColors = fundBackgroundColor.slice(); // Clone array
+  var fundChartElement = document.getElementById("fund-bar");
+  if (fundChartElement) {
+    window.fundChartInstance = new window.ApexCharts(fundChartElement, fundChartOptions);
+    window.fundChartInstance.render();
+  }
 }
 
 // Helper function to highlight selected chart bar
 function highlightChartBar(chart, index) {
-  var originalColors = chart.data.datasets[0].backgroundColor;
+  if (!chart) return;
+
+  var originalColors = chart.w.globals.colors.slice();
+
   var newColors = originalColors.map(function (color, i) {
-    return i === index ? color : color.replace(")", ", 0.3)").replace("rgb", "rgba");
+    if (i === index) {
+      return color;
+    }
+    // Convert hex to rgba with 0.3 opacity for dimming
+    var hex = color.replace("#", "");
+    var r = parseInt(hex.substring(0, 2), 16);
+    var g = parseInt(hex.substring(2, 4), 16);
+    var b = parseInt(hex.substring(4, 6), 16);
+    return "rgba(" + r + "," + g + "," + b + ", 0.3)";
   });
-  chart.data.datasets[0].backgroundColor = newColors;
-  chart.update();
+
+  // Update the chart with new colors
+  chart.updateOptions({
+    colors: newColors,
+  });
 
   // Reset colors after 3 seconds
   setTimeout(function () {
-    chart.data.datasets[0].backgroundColor = originalColors;
-    chart.update();
+    chart.updateOptions({
+      colors: originalColors,
+    });
   }, 3000);
 }

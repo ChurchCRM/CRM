@@ -16,5 +16,8 @@
   "sChurchEmail": "demo@churchcrm.io",
   "sTaxSigner": "Elder Joe Smith",
   "sReminderSigner": "Elder Joe Smith",
-  "sConfirmSigner": "Elder Joe Smith"
+  "sConfirmSigner": "Elder Joe Smith",
+  "plugin.google-analytics.trackingId": "G-JD5J0825V8",
+  "plugin.google-analytics.enabled": "1",
+  "bEnabledEmail": "0"
 }

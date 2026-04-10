@@ -1,11 +1,12 @@
 <?php
 
 require_once __DIR__ . '/../Include/Config.php';
-require_once __DIR__ . '/../Include/Functions.php';
+require_once __DIR__ . '/../Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PdfDirectory;
+use ChurchCRM\dto\Cart;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
@@ -15,7 +16,7 @@ AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser
 
 // Get and filter the classifications selected
 $aClasses = [];
-if (array_key_exists('sDirClassifications', $_POST) && $_POST['sDirClassifications'] != '') {
+if (array_key_exists('sDirClassifications', $_POST) && $_POST['sDirClassifications'] !== '') {
     foreach ($_POST['sDirClassifications'] as $Cls) {
         $aClasses[] = InputUtils::legacyFilterInput($Cls, 'int');
     }
@@ -135,7 +136,7 @@ if ($bExcludeInactive) {
 }
 
 if (array_key_exists('cartdir', $_POST)) {
-    $sWhereExt .= 'AND per_ID IN (' . convertCartToString($_SESSION['aPeopleCart']) . ')';
+    $sWhereExt .= 'AND per_ID IN (' . Cart::getCartIdString() . ')';
 }
 
 $mysqlinfo = mysqli_get_server_info($cnInfoCentral);
@@ -149,7 +150,7 @@ if (count($mysqltmp) > 1) {
 if ($mysqlversion >= 4) {
     // This query is similar to that of the CSV export with family roll-up.
     // Here we want to gather all unique families, and those that are not attached to a family.
-    $sSQL = "(SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID = 0 $sWhereExt $sClassQualifier )
+    $sSQL ="(SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID = 0 $sWhereExt $sClassQualifier )
         UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier  GROUP BY per_fam_ID HAVING memberCount = 1)
         UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier  GROUP BY per_fam_ID HAVING memberCount > 1)
         ORDER BY SortMe";
@@ -157,11 +158,11 @@ if ($mysqlversion >= 4) {
     // If UNION not supported use this query with temporary table.  Prior to version 3.22 no IF EXISTS statement.
     $sSQL = 'DROP TABLE IF EXISTS tmp;';
     $rsRecords = mysqli_query($cnInfoCentral, $sSQL) || exit(mysqli_error($cnInfoCentral));
-    $sSQL = "CREATE TABLE tmp TYPE = InnoDB SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID = 0 $sWhereExt $sClassQualifier ;";
+    $sSQL ="CREATE TABLE tmp TYPE = InnoDB SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID = 0 $sWhereExt $sClassQualifier ;";
     $rsRecords = mysqli_query($cnInfoCentral, $sSQL) || exit(mysqli_error($cnInfoCentral));
-    $sSQL = "INSERT INTO tmp SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier GROUP BY per_fam_ID HAVING memberCount = 1;";
+    $sSQL ="INSERT INTO tmp SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier GROUP BY per_fam_ID HAVING memberCount = 1;";
     $rsRecords = mysqli_query($cnInfoCentral, $sSQL) || exit(mysqli_error($cnInfoCentral));
-    $sSQL = "INSERT INTO tmp SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier GROUP BY per_fam_ID HAVING memberCount > 1;";
+    $sSQL ="INSERT INTO tmp SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier GROUP BY per_fam_ID HAVING memberCount > 1;";
     $rsRecords = mysqli_query($cnInfoCentral, $sSQL) || exit(mysqli_error($cnInfoCentral));
     $sSQL = 'SELECT DISTINCT * FROM tmp ORDER BY SortMe';
 } else {
@@ -193,8 +194,8 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
         $bNoRecordName = true;
 
         // Find the Head of Household
-        $sSQL = "SELECT * FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID
-            WHERE per_fam_ID = " . $iFamilyID . "
+        $sSQL ="SELECT * FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID
+            WHERE per_fam_ID =" . $iFamilyID ."
             AND per_fmr_ID in ($sDirRoleHeads) $sWhereExt $sClassQualifier $sGroupBy";
         $rsPerson = RunQuery($sSQL);
 
@@ -205,8 +206,8 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
         }
 
         // Find the Spouse of Household
-        $sSQL = "SELECT * FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID
-            WHERE per_fam_ID = " . $iFamilyID . "
+        $sSQL ="SELECT * FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID
+            WHERE per_fam_ID =" . $iFamilyID ."
             AND per_fmr_ID in ($sDirRoleSpouses) $sWhereExt $sClassQualifier $sGroupBy";
         $rsPerson = RunQuery($sSQL);
 
@@ -222,8 +223,8 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
         }
 
         // Find the other members of a family
-        $sSQL = "SELECT * FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID
-            WHERE per_fam_ID = " . $iFamilyID . " AND !(per_fmr_ID in ($sDirRoleHeads))
+        $sSQL ="SELECT * FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID
+            WHERE per_fam_ID =" . $iFamilyID ." AND !(per_fmr_ID in ($sDirRoleHeads))
             AND !(per_fmr_ID in ($sDirRoleSpouses))  $sWhereExt $sClassQualifier $sGroupBy ORDER BY per_BirthYear,per_FirstName";
         $rsPerson = RunQuery($sSQL);
 
@@ -267,28 +268,28 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
             if (strlen($sAddress2)) {
                 $OutStr .= '   ' . $sAddress2;
             }
-            $OutStr .= "\n";
+            $OutStr .="\n";
             if (strlen($sCity)) {
-                $OutStr .= $sCity . ', ' . $sState . ' ' . $sZip . "\n";
+                $OutStr .= $sCity . ', ' . $sState . ' ' . $sZip ."\n";
             }
         }
         if (($bDirFamilyPhone || $bDirPersonalPhone) && strlen($sHomePhone)) {
             $TempStr = $sHomePhone;
-            $OutStr .= '   ' . gettext('Phone') . ': ' . $TempStr . "\n";
+            $OutStr .= '   ' . gettext('Phone') . ': ' . $TempStr ."\n";
         }
         if (($bDirFamilyWork || $bDirPersonalWork) && strlen($sWorkPhone)) {
             $TempStr = $sWorkPhone;
-            $OutStr .= '   ' . gettext('Work') . ': ' . $TempStr . "\n";
+            $OutStr .= '   ' . gettext('Work') . ': ' . $TempStr ."\n";
         }
         if (($bDirFamilyCell || $bDirPersonalCell) && strlen($sCellPhone)) {
             $TempStr = $sCellPhone;
-            $OutStr .= '   ' . gettext('Cell') . ': ' . $TempStr . "\n";
+            $OutStr .= '   ' . gettext('Cell') . ': ' . $TempStr ."\n";
         }
         if (($bDirFamilyEmail || $bDirPersonalEmail) && strlen($sEmail)) {
-            $OutStr .= '   ' . gettext('Email') . ': ' . $sEmail . "\n";
+            $OutStr .= '   ' . gettext('Email') . ': ' . $sEmail ."\n";
         }
         if ($bDirPersonalWorkEmail && strlen($per_WorkEmail)) {
-            $OutStr .= '   ' . gettext('Work/Other Email') . ': ' . $per_WorkEmail .= "\n";
+            $OutStr .= '   ' . gettext('Work/Other Email') . ': ' . $per_WorkEmail .="\n";
         }
 
         // Custom Fields

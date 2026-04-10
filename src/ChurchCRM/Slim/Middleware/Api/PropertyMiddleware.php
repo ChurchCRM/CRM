@@ -3,44 +3,33 @@
 namespace ChurchCRM\Slim\Middleware\Api;
 
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
-use ChurchCRM\Slim\SlimUtils;
-use ChurchCRM\Utils\LoggerUtils;
 
-use Laminas\Diactoros\Response;
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
-use Psr\Http\Server\MiddlewareInterface;
-use Psr\Http\Message\ResponseInterface;
-
-class PropertyMiddleware implements MiddlewareInterface
+class PropertyMiddleware extends AbstractEntityMiddleware
 {
-    protected string $type;
+    public function __construct(private readonly string $type) {}
 
-    public function __construct(string $type)
+    protected function getRouteParamName(): string
     {
-        $this->type = $type;
+        return 'propertyId';
     }
 
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    protected function getAttributeName(): string
     {
-        $propertyId = SlimUtils::getRouteArgument($request, 'propertyId');
-        $response = new Response();
-        if (empty(trim($propertyId))) {
-            return $response->withStatus(412, gettext('Missing') . ' PropertyId');
+        return 'property';
+    }
+
+    protected function loadEntity(string $id): mixed
+    {
+        $property = PropertyQuery::create()->findPk($id);
+        if ($property !== null && $property->getPropertyType()->getPrtClass() !== $this->type) {
+            return null;
         }
 
-        $property = PropertyQuery::create()->findPk($propertyId);
+        return $property;
+    }
 
-        if (empty($property)) {
-            LoggerUtils::getAppLogger()->debug('Pro Type is ' . $property->getPropertyType()->getPrtClass() . ' Looking for ' . $this->type);
-
-            return $response->withStatus(412, 'PropertyId : ' . $propertyId . ' ' . gettext('not found'));
-        } elseif ($property->getPropertyType()->getPrtClass() != $this->type) {
-            return $response->withStatus(500, 'PropertyId : ' . $propertyId . ' ' . gettext(' has a type mismatch'));
-        }
-
-        $request = $request->withAttribute('property', $property);
-
-        return $handler->handle($request);
+    protected function getNotFoundMessage(): string
+    {
+        return gettext('Property not found');
     }
 }

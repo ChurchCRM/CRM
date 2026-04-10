@@ -101,7 +101,7 @@ src/admin/
 │       ├── users.php       # User management APIs
 │       └── [feature-api].php
 ├── views/
-│   ├── dashboard.php       # AdminLTE dashboard page
+│   ├── dashboard.php       # Tabler dashboard page
 │   ├── settings.php        # Settings/configuration panel
 │   ├── users.php           # User list/management
 │   ├── backup.php          # Backup & restore
@@ -201,6 +201,34 @@ $app->group('/admin/api/users', require __DIR__ . '/routes/api/users.php')
 
 ---
 
+## V2 Template Conventions <!-- learned: 2026-03-25 -->
+
+V2 pages live in `src/v2/templates/` and are rendered by `Slim\Views\PhpRenderer`. Inside a template, `$this` is the PhpRenderer instance.
+
+### Do NOT use `$this->fetch()` for sub-templates
+
+`PhpRenderer::fetch()` can render sub-templates, but **do not use this pattern**. Inline all content directly in the main template file. Sub-template splitting adds indirection without benefit — every other v2 template inlines its content, and the cart page was the last holdout (fixed 2026-03-25).
+
+### Required page variables
+
+Every v2 route **must** pass these to the renderer:
+
+```php
+$pageArgs = [
+    'sRootPath'     => SystemURLs::getRootPath(),
+    'sPageTitle'    => gettext('Page Title'),
+    'sPageSubtitle' => gettext('Short description'),
+    'aBreadcrumbs'  => PageHeader::breadcrumbs([
+        [gettext('Parent'), '/parent/path'],
+        [gettext('Current Page')],
+    ]),
+];
+```
+
+Omitting `aBreadcrumbs` or `sPageSubtitle` results in a page with no navigation context. See `tabler-components.md` → "Unified Page Header" for full reference.
+
+---
+
 ## Finance Module (`/finance/*`)
 
 ### Location & Structure
@@ -223,26 +251,21 @@ src/finance/
 ### Patterns
 
 **Entry Point (index.php):**
+
+All MVC modules now use `MvcAppFactory` — see [`slim-4-best-practices.md`](./slim-4-best-practices.md) for middleware ordering rules.
+
 ```php
 <?php
 // src/finance/index.php
-use Slim\Factory\AppFactory;
-use Slim\Views\PhpRenderer;
+use ChurchCRM\Slim\MvcAppFactory;
 
-$app = AppFactory::create();
-$container = $app->getContainer();
-
-// Register services
-$container->set('FinanceService', new FinanceService());
-
-// Add middleware
-$app->addBodyParsingMiddleware();
-$app->addRoutingMiddleware();
-$app->add(new FinanceRoleAuthMiddleware());
+$app = MvcAppFactory::create('/finance', [
+    'roleMiddleware' => FinanceRoleAuthMiddleware::class,
+]);
 
 // Load routes
-$app->group('', require __DIR__ . '/routes/dashboard.php');
-$app->group('', require __DIR__ . '/routes/reports.php');
+require __DIR__ . '/routes/dashboard.php';
+require __DIR__ . '/routes/reports.php';
 
 $app->run();
 ```
@@ -357,6 +380,62 @@ $financeMenu->addItem(
 
 ---
 
+## Event MVC Module (`/event/*`) <!-- learned: 2026-04-07, updated 2026-04-09 -->
+
+The `/event` MVC module follows the same pattern as `/admin` and `/finance`:
+
+| Component | Location |
+|-----------|----------|
+| Entry point | `src/event/index.php` using `MvcAppFactory::create('/event', [...])` |
+| Module-level middleware | `ViewEventsRoleAuthMiddleware` (gates the entire `/event/*` namespace) |
+| Per-route write middleware | `AddEventsRoleAuthMiddleware` added explicitly to mutating routes |
+| Routes | `src/event/routes/*.php` (one file per resource) |
+| Views | `src/event/views/*.php` rendered via PhpRenderer |
+| `.htaccess` | Blocks direct PHP access and routes through Slim |
+
+**Why split View vs Add at the middleware level**: Read-only pages in the module (`/event/dashboard`, `/event/calendars`, `/event/checkin`, `/event/view/{id}`) must be reachable by users with View-only events permission. Write routes (`POST /event/editor`, `POST /event/types/*`, `POST /event/repeat-editor`) explicitly add `->add(new AddEventsRoleAuthMiddleware())` for the elevated permission. Putting `AddEventsRoleAuthMiddleware` at the module level was the original mistake — it 403'd menu items for view-only users.
+
+```
+src/event/
+├── index.php              # MvcAppFactory::create('/event', [
+│                          #     'roleMiddleware' => ViewEventsRoleAuthMiddleware::class
+│                          # ])
+├── .htaccess              # Blocks direct PHP, routes through Slim
+├── routes/
+│   ├── event.php          # /event/cart-to-event
+│   ├── checkin.php        # /event/checkin[/{eventId}]
+│   ├── repeat-editor.php  # /event/repeat-editor[/{typeId}]
+│   ├── calendar.php       # /event/calendars
+│   ├── list-events.php    # /event/dashboard
+│   ├── types.php          # /event/types[/{id}]
+│   ├── editor.php         # /event/editor[/{id}]
+│   ├── view.php           # /event/view/{id}
+│   └── audit.php          # /event/audit
+└── views/
+    └── [feature].php      # Tabler-rendered views
+```
+
+### Route File Naming & Organization — One File per Resource <!-- learned: 2026-04-08 -->
+
+For modules with many legacy pages (the `/event` migration had ~10), split routes by
+logical resource rather than cramming everything into one `event.php`:
+
+- One route file per page/feature in `src/event/routes/` (e.g., `event-types.php`,
+  `event-attendance.php`, `event-checkin.php`)
+- Matching view file of the same base name in `src/event/views/`
+- Register each route file in `src/event/index.php`:
+  ```php
+  require __DIR__ . '/routes/event-types.php';
+  require __DIR__ . '/routes/event-attendance.php';
+  require __DIR__ . '/routes/event-checkin.php';
+  ```
+- Small per-route helper functions can be defined at the top of the route file — do
+  not create a dedicated service class for one-off helpers that only serve that page.
+
+This keeps each file under ~300 lines and makes it obvious which route handles which view.
+
+---
+
 ## Deprecated Locations (DO NOT USE)
 
 | Path | Status | Reason |
@@ -436,7 +515,7 @@ cy.url().should('include', 'access-denied');
 **Related Skills:**
 - [Slim 4 Best Practices](./slim-4-best-practices.md) - Routing foundation
 - [PHP Best Practices](./php-best-practices.md) - Service layer patterns
-- [Bootstrap & AdminLTE](./bootstrap-adminlte.md) - Admin page UI
+- [Tabler Components](./tabler-components.md) - Admin page UI
 
 ---
 

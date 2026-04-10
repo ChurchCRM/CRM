@@ -6,17 +6,35 @@
  */
 
 import type {
-  ClassMember,
-  PersonApiData,
   ActiveClassMembersResponse,
+  AjaxOptions,
+  ClassMember,
+  FamilyMember,
+  FamilyMembersResponse,
   HeartbeatResponse,
   KioskAssignment,
-  AjaxOptions,
   KioskJSOM,
+  PersonApiData,
 } from "./types";
 
 // Declare moment as global (loaded via CDN in header)
 declare const moment: typeof import("moment");
+
+// Declare i18next as global (loaded via skin-core.js)
+declare const i18next: { t(key: string, options?: Record<string, unknown>): string };
+
+// Declare bootstrap on window (set by skin-core.js via @tabler/core)
+declare global {
+  interface Window {
+    bootstrap: {
+      Modal: {
+        getOrCreateInstance(el: Element): { show(): void; hide(): void };
+        getInstance(el: Element): { show(): void; hide(): void } | null;
+        new (el: Element, options?: Record<string, unknown>): { show(): void; hide(): void };
+      };
+    };
+  }
+}
 
 // Helper to access window.CRM safely
 function getCRM(): any {
@@ -26,10 +44,14 @@ function getCRM(): any {
 // Module-level state (avoids global window.CRM pollution)
 const kioskState = {
   notificationsEnabled: false,
+  checkinByEnabled: false,
   kioskAssignmentId: undefined as KioskAssignment | undefined,
   kioskEventLoop: undefined as ReturnType<typeof setInterval> | undefined,
   countdownInterval: undefined as ReturnType<typeof setInterval> | undefined,
 };
+
+// Pending callback for the "Check-in By" modal
+let pendingCheckinByCallback: ((checkedByPersonId: number | null) => void) | null = null;
 
 /**
  * HTML escape helper to prevent XSS
@@ -47,7 +69,7 @@ function escapeHtml(text: string | null | undefined): string {
 function APIRequest(options: AjaxOptions): JQuery.jqXHR {
   const ajaxOptions: JQuery.AjaxSettings = {
     method: options.method || "GET",
-    url: getCRM().root + "/kiosk/device/" + options.path,
+    url: `${getCRM().root}/kiosk/device/${options.path}`,
     dataType: "json",
     contentType: "application/json",
     data: options.data,
@@ -59,21 +81,21 @@ function APIRequest(options: AjaxOptions): JQuery.jqXHR {
  * Get photo URL for a person
  */
 function getPhotoUrl(personId: number): string {
-  return getCRM().root + "/kiosk/device/activeClassMember/" + personId + "/photo";
+  return `${getCRM().root}/kiosk/device/activeClassMember/${personId}/photo`;
 }
 
 /**
  * Render a class member card in the appropriate section
  */
 function renderClassMember(classMember: ClassMember): void {
-  const existingDiv = $("#personId-" + classMember.personId);
+  const existingDiv = $(`#personId-${classMember.personId}`);
   if (existingDiv.length > 0) {
     // Card already exists - update data attributes in case familyId or other data changed
     existingDiv.data("familyId", classMember.familyId || null);
   } else {
     // Create member row
     const memberRow = $("<div>", {
-      id: "personId-" + classMember.personId,
+      id: `personId-${classMember.personId}`,
       class: "kiosk-member",
       "data-familyId": classMember.familyId || null,
     });
@@ -101,7 +123,7 @@ function renderClassMember(classMember: ClassMember): void {
       avatarDiv.append(
         $("<i>", {
           class: iconClass,
-          style: "font-size: 24px; color: " + iconColor + ";",
+          style: `font-size: 24px; color: ${iconColor};`,
         }),
       );
     }
@@ -128,7 +150,7 @@ function renderClassMember(classMember: ClassMember): void {
       infoDiv.append(
         $("<div>", {
           class: "kiosk-member-age",
-          text: classMember.age + " yrs",
+          text: `${classMember.age} yrs`,
         }),
       );
     }
@@ -145,7 +167,7 @@ function renderClassMember(classMember: ClassMember): void {
     actionsDiv.append(checkinBtn);
 
     // Only show alert button for checked-in students when notifications are enabled AND they have a family
-    if (classMember.status == 1 && kioskState.notificationsEnabled && classMember.familyId !== null) {
+    if (classMember.status === 1 && kioskState.notificationsEnabled && classMember.familyId !== null) {
       const alertBtn = $("<button>", {
         class: "kiosk-btn kiosk-btn-alert parentAlertButton",
         "data-personid": classMember.personId,
@@ -157,7 +179,7 @@ function renderClassMember(classMember: ClassMember): void {
     memberRow.append(avatarDiv).append(infoDiv).append(actionsDiv);
 
     // Add to appropriate section based on status
-    if (classMember.status == 1) {
+    if (classMember.status === 1) {
       $("#checkedInList").append(memberRow);
     } else {
       $("#notCheckedInList").append(memberRow);
@@ -165,7 +187,7 @@ function renderClassMember(classMember: ClassMember): void {
   }
 
   // Update visual state
-  if (classMember.status == 1) {
+  if (classMember.status === 1) {
     setCheckedIn(classMember.personId);
   } else {
     setCheckedOut(classMember.personId);
@@ -306,7 +328,7 @@ function renderBirthdayCard(person: ClassMember, monthNames: string[], cardType:
   infoDiv.append($("<div>", { class: "birthday-name", text: person.firstName }));
 
   const birthMonthIndex = person.birthMonth ?? 0;
-  let dateText = monthNames[birthMonthIndex] + " " + person.birthDay;
+  let dateText = `${monthNames[birthMonthIndex]} ${person.birthDay}`;
   let dateClass = "birthday-date";
   if (isToday) {
     dateText = "🎉 Today!";
@@ -318,7 +340,7 @@ function renderBirthdayCard(person: ClassMember, monthNames: string[], cardType:
   // Age badge (if age is available and it's upcoming/today)
   if (person.age !== null && (cardType === "upcoming" || isToday)) {
     const turningAge = isToday ? person.age : person.age + 1;
-    card.append($("<span>", { class: "birthday-age-badge", text: "Turning " + turningAge }));
+    card.append($("<span>", { class: "birthday-age-badge", text: `Turning ${turningAge}` }));
   }
 
   return card;
@@ -332,7 +354,7 @@ function updateActiveClassMembers(): void {
     path: "activeClassMembers",
   })
     .done((data: ActiveClassMembersResponse) => {
-      if (!data || !data.People || data.People.length === 0) {
+      if (!data?.People || data.People.length === 0) {
         // No members found - show helpful debug info
         $("#classMemberContainer").html(renderNoMembersMessage());
         return;
@@ -358,7 +380,7 @@ function updateActiveClassMembers(): void {
 
       data.People.forEach((d: PersonApiData) => {
         const memberData: ClassMember = {
-          displayName: d.FirstName + " " + d.LastName,
+          displayName: `${d.FirstName} ${d.LastName}`,
           firstName: d.FirstName,
           classRole: d.RoleName,
           personId: d.Id,
@@ -392,7 +414,7 @@ function updateActiveClassMembers(): void {
     .fail((xhr: JQuery.jqXHR) => {
       // API error - show debug info
       let errorMessage = "Unable to load class members";
-      if (xhr.responseJSON && xhr.responseJSON.message) {
+      if (xhr.responseJSON?.message) {
         errorMessage = xhr.responseJSON.message;
       } else if (xhr.status === 500) {
         errorMessage = "Server error - the event may not be linked to a group";
@@ -456,7 +478,7 @@ function renderErrorMessage(message: string, statusCode?: number): string {
     '<p class="text-muted">' +
     escapeHtml(message) +
     "</p>" +
-    (statusCode ? '<p class="small text-muted">HTTP Status: ' + escapeHtml(String(statusCode)) + "</p>" : "") +
+    (statusCode ? `<p class="small text-muted">HTTP Status: ${escapeHtml(String(statusCode))}</p>` : "") +
     '<div class="kiosk-instructions">' +
     '<h5><i class="fas fa-lightbulb mr-2"></i>Troubleshooting</h5>' +
     "<ul>" +
@@ -525,7 +547,7 @@ function heartbeat(): void {
 
     if (data.Accepted) {
       const Assignment = parseAssignment(data.Assignment);
-      if (Assignment && Assignment.AssignmentType == 1) {
+      if (Assignment && Assignment.AssignmentType === 1) {
         const eventStart = moment(Assignment.Event.Start);
         const eventEnd = moment(Assignment.Event.End);
         const now = moment();
@@ -760,10 +782,27 @@ function renderStatusCard(
  * Check in a person
  */
 function checkInPerson(personId: number): void {
+  if (kioskState.checkinByEnabled) {
+    const $personDiv = $("#personId-" + personId);
+    const personName = $personDiv.find(".kiosk-member-name").text().trim() || "this person";
+    showCheckinByModal(personId, "checkin", personName);
+  } else {
+    performCheckin(personId, null);
+  }
+}
+
+/**
+ * Perform the actual check-in API call
+ */
+function performCheckin(personId: number, checkedInById: number | null): void {
+  const payload: { PersonId: number; CheckedInById?: number } = { PersonId: personId };
+  if (checkedInById !== null) {
+    payload.CheckedInById = checkedInById;
+  }
   APIRequest({
     path: "checkin",
     method: "POST",
-    data: JSON.stringify({ PersonId: personId }),
+    data: JSON.stringify(payload),
   }).done(() => {
     setCheckedIn(personId);
   });
@@ -773,13 +812,136 @@ function checkInPerson(personId: number): void {
  * Check out a person
  */
 function checkOutPerson(personId: number): void {
+  if (kioskState.checkinByEnabled) {
+    const $personDiv = $("#personId-" + personId);
+    const personName = $personDiv.find(".kiosk-member-name").text().trim() || "this person";
+    showCheckinByModal(personId, "checkout", personName);
+  } else {
+    performCheckout(personId, null);
+  }
+}
+
+/**
+ * Perform the actual check-out API call
+ */
+function performCheckout(personId: number, checkedOutById: number | null): void {
+  const payload: { PersonId: number; CheckedOutById?: number } = { PersonId: personId };
+  if (checkedOutById !== null) {
+    payload.CheckedOutById = checkedOutById;
+  }
   APIRequest({
     path: "checkout",
     method: "POST",
-    data: JSON.stringify({ PersonId: personId }),
+    data: JSON.stringify(payload),
   }).done(() => {
     setCheckedOut(personId);
   });
+}
+
+/**
+ * Enable or disable the "Check-in By" feature
+ */
+function setCheckinByEnabled(enabled: boolean): void {
+  kioskState.checkinByEnabled = enabled;
+}
+
+/**
+ * Render family member selection buttons for the "Check-in By" modal
+ */
+function renderFamilyMemberOptions(members: FamilyMember[]): string {
+  let html = '<div class="checkin-by-members">';
+  for (const member of members) {
+    const photoHtml = member.hasPhoto
+      ? '<img src="' + getPhotoUrl(member.Id) + '" alt="' + escapeHtml(member.FirstName) + '" class="checkin-by-photo">'
+      : '<i class="fa-solid fa-user fa-2x"></i>';
+    html +=
+      '<button type="button" class="checkin-by-member-btn checkinByMemberBtn" data-memberid="' +
+      member.Id +
+      '">' +
+      photoHtml +
+      '<span class="checkin-by-name">' +
+      escapeHtml(member.FirstName + " " + member.LastName) +
+      "</span>" +
+      "</button>";
+  }
+  html += "</div>";
+  return html;
+}
+
+/**
+ * Show the "Check-in By" modal for selecting who is checking a person in/out
+ */
+function showCheckinByModal(personId: number, action: "checkin" | "checkout", personName: string): void {
+  const isCheckin = action === "checkin";
+  const title = isCheckin
+    ? i18next.t("Who is bringing in {{name}}?", { name: personName })
+    : i18next.t("Who is picking up {{name}}?", { name: personName });
+
+  // Set modal title
+  $("#checkinByModalTitle").text(title);
+
+  // Show loading state
+  $("#checkinByModalBody").html(
+    `<div class="text-center py-4"><i class="fa-solid fa-spinner fa-spin fa-2x text-primary"></i><p class="mt-2 text-muted">${i18next.t("Loading family members...")}</p></div>`,
+  );
+
+  // Store the callback to invoke after selection
+  pendingCheckinByCallback = (checkedByPersonId) => {
+    if (action === "checkin") {
+      performCheckin(personId, checkedByPersonId);
+    } else {
+      performCheckout(personId, checkedByPersonId);
+    }
+  };
+
+  // Show modal
+  window.bootstrap.Modal.getOrCreateInstance(document.getElementById("checkinByModal")!).show();
+
+  // Fetch family members
+  APIRequest({
+    path: "activeClassMember/" + personId + "/family",
+  })
+    .done((data: FamilyMembersResponse) => {
+      // Guard against unexpected API responses (defensive check for empty/malformed members array)
+      if (!data.members || data.members.length === 0) {
+        // No family members found — close modal and proceed without a checker
+        window.bootstrap.Modal.getOrCreateInstance(document.getElementById("checkinByModal")!).hide();
+        const cb = pendingCheckinByCallback;
+        pendingCheckinByCallback = null;
+        if (cb) {
+          cb(null);
+        }
+        return;
+      }
+      $("#checkinByModalBody").html(renderFamilyMemberOptions(data.members));
+    })
+    .fail(() => {
+      // On API failure close modal and proceed without a checker
+      window.bootstrap.Modal.getOrCreateInstance(document.getElementById("checkinByModal")!).hide();
+      const cb = pendingCheckinByCallback;
+      pendingCheckinByCallback = null;
+      if (cb) {
+        cb(null);
+      }
+    });
+}
+
+/**
+ * Resolve the "Check-in By" modal with the selected person (or null for skip)
+ */
+function resolveCheckinByModal(checkedByPersonId: number | null): void {
+  if (pendingCheckinByCallback) {
+    const cb = pendingCheckinByCallback;
+    pendingCheckinByCallback = null;
+    cb(checkedByPersonId);
+  }
+}
+
+/**
+ * Cancel the "Check-in By" modal without performing a check-in/out
+ */
+function cancelCheckinByModal(): void {
+  pendingCheckinByCallback = null;
 }
 
 /**
@@ -882,7 +1044,7 @@ function checkOutAll(): void {
  * Set a person as checked out in the UI
  */
 function setCheckedOut(personId: number): void {
-  const $personDiv = $("#personId-" + personId);
+  const $personDiv = $(`#personId-${personId}`);
   const $personDivButton = $personDiv.find(".checkoutButton");
 
   // Update button - icon only
@@ -908,7 +1070,7 @@ function setCheckedOut(personId: number): void {
  * Set a person as checked in in the UI
  */
 function setCheckedIn(personId: number): void {
-  const $personDiv = $("#personId-" + personId);
+  const $personDiv = $(`#personId-${personId}`);
   const $personDivButton = $personDiv.find(".checkinButton");
 
   // Update button - icon only
@@ -953,7 +1115,7 @@ function setCheckedIn(personId: number): void {
  */
 function triggerNotification(personId: number): void {
   // Get the student's name for feedback
-  const $personDiv = $("#personId-" + personId);
+  const $personDiv = $(`#personId-${personId}`);
   const studentName = $personDiv.find(".kiosk-member-name").text().trim() || "Student";
 
   // GUARD: Verify person has a family before sending alert (should not be reachable if UI guard works)
@@ -977,10 +1139,10 @@ function triggerNotification(personId: number): void {
     .done(() => {
       // Show success notification
       if (typeof getCRM().notify === "function") {
-        getCRM().notify("Parent alert sent for " + studentName, { type: "success", delay: 4000 });
+        getCRM().notify(`Parent alert sent for ${studentName}`, { type: "success", delay: 4000 });
       } else {
         // Fallback for kiosk view without full CRM.notify
-        showKioskNotification("Parent alert sent for " + studentName, "success");
+        showKioskNotification(`Parent alert sent for ${studentName}`, "success");
       }
       // Reset button after short delay
       setTimeout(() => {
@@ -1006,7 +1168,7 @@ function triggerNotification(personId: number): void {
  */
 function showKioskNotification(message: string, type: string): void {
   const $notification = $("<div>", {
-    class: "kiosk-notification kiosk-notification-" + type,
+    class: `kiosk-notification kiosk-notification-${type}`,
     text: message,
   });
   $("body").append($notification);
@@ -1097,6 +1259,9 @@ export const kiosk: KioskJSOM = {
   get notificationsEnabled() {
     return kioskState.notificationsEnabled;
   },
+  get checkinByEnabled() {
+    return kioskState.checkinByEnabled;
+  },
   escapeHtml,
   APIRequest,
   getPhotoUrl,
@@ -1125,6 +1290,9 @@ export const kiosk: KioskJSOM = {
   displayPersonInfo,
   startEventLoop,
   stopEventLoop,
+  setCheckinByEnabled,
+  resolveCheckinByModal,
+  cancelCheckinByModal,
 };
 
 // Attach to window.CRM.kiosk for global access (for external use)

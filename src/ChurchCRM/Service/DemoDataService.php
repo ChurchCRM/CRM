@@ -18,8 +18,6 @@ use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\FileSystemUtils;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use DateTime;
 use Exception;
 use JsonException;
@@ -348,6 +346,9 @@ class DemoDataService
                         }
                         $person->setEmail($m['email'] ?? null);
                         $person->setHomePhone($m['phone'] ?? null);
+                        if (!empty($m['hideAge'])) {
+                            $person->setFlags(1); // Per Person::hideAge(): flag value 1 = hide age
+                        }
                         if (!empty($m['createdAt'])) {
                             try { $person->setDateEntered(new DateTime($m['createdAt'])); } catch (Exception $e) {}
                         }
@@ -434,6 +435,72 @@ class DemoDataService
             }
         }
         
+        // Process individuals (people without families)
+        $individuals = $json['individuals'] ?? [];
+        $logger->info('Starting individuals import', ['total_individuals' => count($individuals)]);
+        foreach ($individuals as $m) {
+            try {
+                $person = new Person();
+                $person->setFirstName($m['firstName'] ?? null);
+                $person->setLastName($m['lastName'] ?? null);
+                $person->setMiddleName($m['middleName'] ?? null);
+                if (!empty($m['birthYear']) && !empty($m['birthMonth']) && !empty($m['birthDay'])) {
+                    $person->setBirthYear((int)$m['birthYear']);
+                    $person->setBirthMonth((int)$m['birthMonth']);
+                    $person->setBirthDay((int)$m['birthDay']);
+                }
+                if (!empty($m['gender'])) {
+                    $person->setGender(strtolower($m['gender']) === 'male' ? 1 : (strtolower($m['gender']) === 'female' ? 2 : 0));
+                }
+                if (!empty($m['classification']) && isset($classificationMap[$m['classification']])) {
+                    $person->setClsId($classificationMap[$m['classification']]);
+                }
+                if (!empty($m['familyRole'])) {
+                    $person->setFmrId((int)$m['familyRole']);
+                }
+                $person->setEmail($m['email'] ?? null);
+                $person->setHomePhone($m['phone'] ?? null);
+                if (!empty($m['hideAge'])) {
+                    $person->setFlags(1); // Per Person::hideAge(): flag value 1 = hide age
+                }
+                if (!empty($m['createdAt'])) {
+                    try { $person->setDateEntered(new DateTime($m['createdAt'])); } catch (Exception $e) {}
+                }
+                $person->save();
+                $this->personMap[$person->getId()] = $person;
+                $this->importResult['imported']['people']++;
+
+                $pnotes = $m['notes'] ?? [];
+                foreach ($pnotes as $pn) {
+                    try {
+                        $note = new Note();
+                        $note->setPerId($person->getId());
+                        $note->setType($pn['type'] ?? null);
+                        $note->setText($pn['text'] ?? null);
+                        if (!empty($pn['date'])) {
+                            try { $note->setDateEntered(new DateTime($pn['date'])); } catch (Exception $e) {}
+                        }
+                        $note->setPrivate(!empty($pn['private']) ? 1 : 0);
+                        $note->save();
+                        $this->importResult['imported']['notes']++;
+                    } catch (Exception $e) {
+                        $this->addWarning("Individual note import failed: {$e->getMessage()}", ['exception' => $e->getMessage()]);
+                    }
+                }
+
+                $logger->info('Individual imported', [
+                    'name' => $person->getFirstName() . ' ' . $person->getLastName(),
+                    'person_id' => $person->getId()
+                ]);
+            } catch (Exception $e) {
+                $name = ($m['firstName'] ?? '') . ' ' . ($m['lastName'] ?? '');
+                $this->addWarning("Individual '{$name}' import failed: {$e->getMessage()}", [
+                    'name' => $name,
+                    'error' => $e->getMessage()
+                ]);
+            }
+        }
+
         // Build email -> personId map from imported people
         foreach ($this->personMap as $pid => $personObj) {
             try {
@@ -1037,7 +1104,7 @@ class DemoDataService
      */
     private function computeFiscalYearId(int $year, int $month): int
     {
-        $fyMonth = (int) SystemConfig::getValue('iFYMonth');
+        $fyMonth = SystemConfig::getIntValue('iFYMonth');
         $fyId    = $year - 1996;
         if ($month >= $fyMonth && $fyMonth > 1) {
             $fyId += 1;

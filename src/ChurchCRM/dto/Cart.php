@@ -3,8 +3,6 @@
 namespace ChurchCRM\dto;
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\model\ChurchCRM\Group;
-use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
@@ -154,20 +152,14 @@ class Cart
         return count($_SESSION['aPeopleCart']);
     }
 
-    public static function convertCartToString($aCartArray): string
+    /**
+     * Returns the current cart person IDs as a comma-separated string.
+     */
+    public static function getCartIdString(): string
     {
-        // Implode the array
-        $sCartString = implode(',', $aCartArray);
+        self::checkCart();
 
-        // Make sure the comma is chopped off the end
-        if (mb_substr($sCartString, strlen($sCartString) - 1, 1) == ',') {
-            $sCartString = mb_substr($sCartString, 0, strlen($sCartString) - 1);
-        }
-
-        // Make sure there are no duplicate commas
-        $sCartString = str_replace(',,', '', $sCartString);
-
-        return $sCartString;
+        return implode(',', array_filter($_SESSION['aPeopleCart']));
     }
 
     public static function countFamilies()

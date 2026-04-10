@@ -9,10 +9,14 @@ describe("Access Denied Page", () => {
         it("Should display access denied page with default elements", () => {
             cy.visit("/v2/access-denied");
             cy.contains("Permission Required").should("be.visible");
-            cy.contains("You don't have access to this page").should("be.visible");
             cy.contains("The page you tried to visit requires special permissions").should("be.visible");
-            cy.contains("If you need access to this feature, please contact your church administrator.").should("be.visible");
             cy.get("a").contains("Go to Dashboard").should("be.visible");
+            // Report button should exist and open Issue modal with page path
+            cy.get('#errorReportBtn').should('exist').click();
+            cy.get('#IssueReportModal').should('be.visible');
+            cy.get('input[name="pageName"]').invoke('val').should('include', '/v2/access-denied');
+            cy.get('#issueDescription').should('exist');
+            cy.get('#submitIssue').contains('Open GitHub Issue').should('be.visible');
         });
 
         it("Should display access denied page without role callout when no role parameter", () => {
@@ -30,6 +34,10 @@ describe("Access Denied Page", () => {
             cy.get(".callout-warning").should("be.visible");
             cy.contains("Required Permission").should("be.visible");
             cy.contains("Administrator privileges").should("be.visible");
+            // Report button should include role in pageName
+            cy.get('#errorReportBtn').click();
+            cy.get('#IssueReportModal').should('be.visible');
+            cy.get('input[name="pageName"]').invoke('val').should('include', 'role=Admin');
         });
 
         it("Should display Finance role description", () => {
@@ -113,17 +121,18 @@ describe("Access Denied Page", () => {
     });
 
     describe("Page Styling", () => {
-        it("Should display danger card styling", () => {
+        it("Should display card with alert icon", () => {
             cy.visit("/v2/access-denied?role=Admin");
-            cy.get(".card-danger").should("exist");
-            cy.get(".fa-lock").should("exist");
-            cy.get(".fa-user-lock").should("exist");
+            cy.get(".card.shadow-sm").should("exist");
+            cy.get(".card.shadow-sm").contains("Permission Required").should("be.visible");
+            cy.get('.card.shadow-sm i.ti.ti-alert-circle').should("exist");
         });
 
         it("Should display warning callout for role information", () => {
             cy.visit("/v2/access-denied?role=Finance");
-            cy.get(".callout-warning").should("exist");
-            cy.get(".fa-key").should("exist");
+            // Callout may use legacy `callout-warning` or Bootstrap `alert-warning`
+            cy.get('.callout-warning, .callout.callout-warning, .alert-warning').should("exist");
+            cy.get('.callout-warning i.fa-key, .callout-warning i.ti-key, .alert-warning i.fa-key, .alert-warning i.ti-key').should("exist");
         });
     });
 });

@@ -1,14 +1,17 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 // Security: User must have Delete records permission
 // Otherwise, re-direct them to the main menu.
@@ -39,9 +42,9 @@ $DonationMessage = '';
 // Move Donations from 1 family to another
 if (AuthenticationManager::getCurrentUser()->isFinanceEnabled() && isset($_GET['MoveDonations']) && $iFamilyID && $iDonationFamilyID && $iFamilyID != $iDonationFamilyID) {
     $today = date('Y-m-d');
-    $sSQL = "UPDATE pledge_plg SET plg_FamID='$iDonationFamilyID',
+    $sSQL ="UPDATE pledge_plg SET plg_FamID='$iDonationFamilyID',
         plg_DateLastEdited ='$today', plg_EditedBy='" . AuthenticationManager::getCurrentUser()->getId()
-        . "' WHERE plg_FamID='$iFamilyID'";
+        ."' WHERE plg_FamID='$iFamilyID'";
     RunQuery($sSQL);
 
             $DonationMessage = '<p><b><span class="text-error">' . gettext('All donations from this family have been moved to another family.') . '</span></b></p>';
@@ -58,11 +61,11 @@ if (isset($_GET['Confirmed'])) {
     RunQuery($sSQL);
 
     // Delete Family pledges
-    $sSQL = "DELETE FROM pledge_plg WHERE plg_PledgeOrPayment = 'Pledge' AND plg_FamID = " . $iFamilyID;
+    $sSQL ="DELETE FROM pledge_plg WHERE plg_PledgeOrPayment = 'Pledge' AND plg_FamID =" . $iFamilyID;
     RunQuery($sSQL);
 
     // Remove family property data
-    $sSQL = "SELECT pro_ID FROM property_pro WHERE pro_Class='f'";
+    $sSQL ="SELECT pro_ID FROM property_pro WHERE pro_Class='f'";
     $rsProps = RunQuery($sSQL);
 
     while ($aRow = mysqli_fetch_row($rsProps)) {
@@ -102,6 +105,9 @@ $sSQL = 'SELECT * FROM family_fam WHERE fam_ID = ' . $iFamilyID;
 $rsFamily = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsFamily));
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Delete Confirmation')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
@@ -110,7 +116,7 @@ require_once __DIR__ . '/Include/Header.php';
         <?php
         // Delete Family Confirmation
         // See if this family has any donations
-        $sSQL = "SELECT plg_plgID FROM pledge_plg WHERE plg_PledgeOrPayment = 'Payment' AND plg_FamID = " . $iFamilyID;
+        $sSQL ="SELECT plg_plgID FROM pledge_plg WHERE plg_PledgeOrPayment = 'Payment' AND plg_FamID =" . $iFamilyID;
         $rsDonations = RunQuery($sSQL);
         $bIsDonor = (mysqli_num_rows($rsDonations) > 0);
 
@@ -123,11 +129,11 @@ require_once __DIR__ . '/Include/Header.php';
             // Select another family to move donations to.
             echo '<p class="lead">' . gettext('WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family.') . '</p>';
             echo '<form name=SelectFamily method=get action=SelectDelete.php>';
-            echo '<div class="card card-body">';
-            echo '<div class="card-header"><strong>' . gettext('Family Name') . ':' . " $fam_Name</strong></div>";
+            echo '<div class="card-body">';
+            echo '<div class="card-header"><strong>' . gettext('Family Name') . ':' ." $fam_Name</strong></div>";
             echo '<p>' . gettext('Please select another family with whom to associate these donations:');
             echo '<br><b>' . gettext('WARNING: This action can not be undone and may have legal implications!') . '</b></p>';
-            echo "<input name=FamilyID value=$iFamilyID type=hidden>";
+            echo"<input name=FamilyID value=$iFamilyID type=hidden>";
             echo '<select name=DonationFamilyID><option value=0 selected>' . gettext('Unassigned') . '</option>';
 
             //Get Families for the drop-down
@@ -135,7 +141,7 @@ require_once __DIR__ . '/Include/Header.php';
             $rsFamilies = RunQuery($sSQL);
             // Build Criteria for Head of Household
 
-            $head_criteria = ' per_fmr_ID = ' . SystemConfig::getValue('sDirRoleHead') ? SystemConfig::getValue('sDirRoleHead') : '1';
+            $head_criteria = ' per_fmr_ID = ' . (SystemConfig::getValue('sDirRoleHead') ?: '1');
             // If more than one role assigned to Head of Household, add OR
             $head_criteria = str_replace(',', ' OR per_fmr_ID = ', $head_criteria);
             // Add Spouse to criteria
@@ -166,11 +172,11 @@ require_once __DIR__ . '/Include/Header.php';
                 if ($fam_ID == $iFamilyID) {
                     echo ' -- ' . gettext('CURRENT FAMILY WITH DONATIONS');
                 } else {
-                    echo ' ' . InputUtils::escapeHTML(FormatAddressLine($fam_Address1, $fam_City, $fam_State));
+                    echo ' ' . InputUtils::escapeHTML(MiscUtils::formatAddressLine($fam_Address1, $fam_City, $fam_State));
                 }
             }
             echo '</select><br><br>';
-            echo '<input type="submit" class="btn btn-secondary mr-2" name="CancelFamily" value="' . gettext('Cancel and Return to Family View') . '">';
+            echo '<input type="submit" class="btn btn-secondary me-2" name="CancelFamily" value="' . gettext('Cancel and Return to Family View') . '">';
             echo '<input type="submit" class="btn btn-primary" name="MoveDonations" value="' . gettext('Move Donations to Selected Family') . '">';
             echo '</div></form>';
 
@@ -185,7 +191,7 @@ require_once __DIR__ . '/Include/Header.php';
                  LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
                  WHERE plg_famID = ' . $iFamilyID . ' ORDER BY pledge_plg.plg_date';
             $rsPledges = RunQuery($sSQL); ?>
-            <table class="table table-striped w-100">
+            <table class="table w-100">
                 <tr class="TableHeader">
                     <td><?= gettext('Type') ?></td>
                     <td><?= gettext('Fund') ?></td>
@@ -218,7 +224,7 @@ require_once __DIR__ . '/Include/Header.php';
                     <tr>
                         <td><?= InputUtils::escapeHTML($plg_PledgeOrPayment) ?>&nbsp;</td>
                         <td><?= InputUtils::escapeHTML($fundName) ?>&nbsp;</td>
-                        <td><?= MakeFYString($plg_FYID ? (int) $plg_FYID : null) ?>&nbsp;</td>
+                        <td><?= $plg_FYID ? FinancialService::formatFiscalYear((int) $plg_FYID) : '' ?>&nbsp;</td>
                         <td><?= InputUtils::escapeHTML($plg_date) ?>&nbsp;</td>
                         <td><?= InputUtils::escapeHTML($plg_amount) ?>&nbsp;</td>
                         <td><?= InputUtils::escapeHTML($plg_schedule) ?>&nbsp;</td>
@@ -233,7 +239,7 @@ require_once __DIR__ . '/Include/Header.php';
             } else {
                 // No Donations from family.  Normal delete confirmation
                 echo $DonationMessage;
-                echo "<div class='alert alert-warning'><b>" . gettext('Please confirm deletion of this family record:') . '</b><br/>';
+                echo"<div class='alert alert-warning'><b>" . gettext('Please confirm deletion of this family record:') . '</b><br/>';
                 echo gettext('Note: This will also delete all Notes associated with this Family record.');
                 echo gettext('(this action cannot be undone)') . '</div>';
                 echo '<div>';
@@ -250,9 +256,9 @@ require_once __DIR__ . '/Include/Header.php';
                     RunQuery($sSQL);
                 }
                 echo '</ul></div>';
-                echo "<p id=\"deleteFamilyOnlyBtn\" class=\"text-center\"><a class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&FamilyID=" . $iFamilyID . '">' . gettext('Delete Family Record ONLY') . '</a> ';
-                echo "<a id=\"deleteFamilyAndMembersBtn\" class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&Members=Yes&FamilyID=" . $iFamilyID . '">' . gettext('Delete Family Record AND Family Members') . '</a> ';
-                echo "<a class='btn btn-secondary ml-2' href=\"v2/family/" . $iFamilyID . '">' . gettext('No, cancel this deletion') . '</a></p>';
+                echo"<p id=\"deleteFamilyOnlyBtn\" class=\"text-center\"><a class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&FamilyID=" . $iFamilyID . '">' . gettext('Delete Family Record ONLY') . '</a> ';
+                echo"<a id=\"deleteFamilyAndMembersBtn\" class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&Members=Yes&FamilyID=" . $iFamilyID . '">' . gettext('Delete Family Record AND Family Members') . '</a> ';
+                echo"<a class='btn btn-secondary ms-2' href=\"v2/family/" . $iFamilyID . '">' . gettext('No, cancel this deletion') . '</a></p>';
             }
             ?>
     </div>

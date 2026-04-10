@@ -11,7 +11,7 @@ use ChurchCRM\Utils\MiscUtils;
  * API Documentation: https://gitlab.com/openlp/openlp/-/tree/master/openlp/core/api/versions/v2
  *
  * Note: OpenLP removed API v1 in January 2026. This class uses the current v2 API
- * which requires JSON body with {"text": "message"} format.
+ * which requires JSON body with {"text":"message"} format.
  */
 class OpenLPNotification
 {
@@ -57,8 +57,8 @@ class OpenLPNotification
             'http' => [
                 'method'  => 'POST',
                 'timeout' => 5,
-                'header'  => "Content-Type: application/json\r\n" .
-                             "Accept: application/json\r\n",
+                'header'  =>"Content-Type: application/json\r\n" .
+"Accept: application/json\r\n",
                 'content' => $payload,
             ],
         ];
@@ -75,7 +75,7 @@ class OpenLPNotification
 
         // Add Basic Auth if credentials are configured
         if (!empty($this->username)) {
-            $headers['http']['header'] .= 'Authorization: ' . $this->getAuthorizationHeader() . "\r\n";
+            $headers['http']['header'] .= 'Authorization: ' . $this->getAuthorizationHeader() ."\r\n";
         }
 
         $context = stream_context_create($headers);

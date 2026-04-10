@@ -129,7 +129,7 @@ node scripts/startNewRelease.js <new-version>
 
 - [Development Guide](https://github.com/ChurchCRM/CRM/wiki/Development) - Full development setup
 - [npm Scripts Reference](https://github.com/ChurchCRM/CRM/wiki/Development#key-npm-scripts) - All available npm commands
-- [Contributing Guide](https://github.com/ChurchCRM/CRM/wiki/Contributing) - How to contribute
+- [Documentation](https://docs.churchcrm.io/contributing) - How to contribute
 - [Testing Guide](https://github.com/ChurchCRM/CRM/wiki/Testing) - Cypress testing documentation
 
 ---

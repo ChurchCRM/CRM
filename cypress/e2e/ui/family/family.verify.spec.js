@@ -29,9 +29,10 @@ describe("Family Verification Page", () => {
     it("Should allow filling update information", function() {
         cy.visit(this.verifyUrl);
         cy.get("#confirmVerifyBtn").click();
+        cy.get("#confirm-Verify").should("be.visible");
         cy.get("#UpdateNeeded").click();
-        // Type short text and verify textarea is functional
-        cy.get("#confirm-info-data").should("be.visible").type("Update needed");
+        // Click textarea first to ensure focus after modal animation settles
+        cy.get("#confirm-info-data").should("be.visible").click().type("Update needed");
         cy.get("#confirm-info-data").invoke("val").should("include", "Update");
     });
 

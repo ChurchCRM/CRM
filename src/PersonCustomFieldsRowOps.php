@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\CSRFUtils;
@@ -18,21 +18,37 @@ $iOrderID = InputUtils::legacyFilterInput($_GET['OrderID'] ?? $_POST['OrderID'] 
 $sField = InputUtils::legacyFilterInput($_GET['Field'] ?? $_POST['Field'] ?? '');
 $sAction = $_GET['Action'] ?? $_POST['Action'] ?? '';
 
+$iOrderID = (int)$iOrderID;
+
+// Validate field name to prevent DDL injection (column names follow pattern c1, c2, etc.)
+if ($sField !== '' && !preg_match('/^c\d+$/', $sField)) {
+    RedirectUtils::redirect('PersonCustomFieldsEditor.php');
+    exit;
+}
+
 switch ($sAction) {
     // Move a field up:  Swap the custom_Order (ordering) of the selected row and the one above it
     case 'up':
-        $sSQL = "UPDATE person_custom_master SET custom_Order = '" . $iOrderID . "' WHERE custom_Order = '" . ($iOrderID - 1) . "'";
-        RunQuery($sSQL);
-        $sSQL = "UPDATE person_custom_master SET custom_Order = '" . ($iOrderID - 1) . "' WHERE custom_Field = '" . $sField . "'";
-        RunQuery($sSQL);
+        $neighbor = PersonCustomMasterQuery::create()->filterByOrder($iOrderID - 1)->findOne();
+        if ($neighbor !== null) {
+            $neighbor->setOrder($iOrderID)->save();
+        }
+        $current = PersonCustomMasterQuery::create()->filterById($sField)->findOne();
+        if ($current !== null) {
+            $current->setOrder($iOrderID - 1)->save();
+        }
         break;
 
         // Move a field down:  Swap the custom_Order (ordering) of the selected row and the one below it
     case 'down':
-        $sSQL = "UPDATE person_custom_master SET custom_Order = '" . $iOrderID . "' WHERE custom_Order = '" . ($iOrderID + 1) . "'";
-        RunQuery($sSQL);
-        $sSQL = "UPDATE person_custom_master SET custom_Order = '" . ($iOrderID + 1) . "' WHERE custom_Field = '" . $sField . "'";
-        RunQuery($sSQL);
+        $neighbor = PersonCustomMasterQuery::create()->filterByOrder($iOrderID + 1)->findOne();
+        if ($neighbor !== null) {
+            $neighbor->setOrder($iOrderID)->save();
+        }
+        $current = PersonCustomMasterQuery::create()->filterById($sField)->findOne();
+        if ($current !== null) {
+            $current->setOrder($iOrderID + 1)->save();
+        }
         break;
 
         // Delete a field from the form
@@ -59,7 +75,7 @@ switch ($sAction) {
         $iOrderID = (int)$customField->getOrder();
 
         // Check if this field is a custom list type (type_ID = 12).  If so, delete the list from list_lst
-        if ($customField->getTypeId() == 12) {
+        if ($customField->getTypeId() === 12) {
             $listOption = ListOptionQuery::create()
                 ->findOneById((int)$customField->getSpecial());
             if ($listOption !== null) {
@@ -80,7 +96,7 @@ switch ($sAction) {
         $numRows = count($remainingFields);
 
         // Shift the remaining rows up by one, unless we've just deleted the only row
-        if ($numRows != 0) {
+        if ($numRows !== 0) {
             for ($reorderRow = $iOrderID + 1; $reorderRow <= $numRows + 1; $reorderRow++) {
                 $fieldToReorder = PersonCustomMasterQuery::create()
                     ->filterByOrder($reorderRow)

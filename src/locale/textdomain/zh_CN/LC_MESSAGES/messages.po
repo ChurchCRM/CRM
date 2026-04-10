@@ -234,19 +234,6 @@ msgid "Create File"
 msgstr "创建文件"
 
 #: 
-msgid "No file selected for upload."
-msgstr "没有选择上传的文件。"
-
-#: 
-#, fuzzy
-msgid "Total number of rows in the CSV file"
-msgstr "CSV文件中的行的总数"
-
-#: 
-msgid "Ignore this Field"
-msgstr "忽略这个字段"
-
-#: 
 msgid "Title"
 msgstr "标题"
 
@@ -258,10 +245,6 @@ msgstr "后缀"
 #: 
 msgid "Gender"
 msgstr "性别"
-
-#: 
-msgid "Donation Envelope"
-msgstr "捐款信封"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -288,67 +271,14 @@ msgstr "出生日期"
 msgid "Wedding Date"
 msgstr "婚礼日期"
 
-#: 
-msgid "Ignore first CSV row (to exclude a header)"
-msgstr "忽略第一个的CSV行（排除的头）"
-
-#: 
-msgid "Make Family records based on last name and address"
-msgstr "让家人记录的基础上的名称和地址"
-
-#: 
-msgid "Patriarch"
-msgstr "家长"
-
-#: 
-msgid "Matriarch"
-msgstr "女族长"
-
-#: 
-msgid "Family Type: used with Make Family records... option above"
-msgstr "家庭型：用于使家庭记录...上面的选项"
-
-#: 
-msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
-msgstr "注：分离器（破折号等）或缺乏无所谓"
-
-#: 
-msgid "Default country if none specified otherwise"
-msgstr "默认情况下，如果没有国家另有规定"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Classification"
 msgstr "分类"
 
 #: 
-msgid "Perform Import"
-msgstr "执行导入"
-
-#: 
-msgid "ERROR: the uploaded CSV file no longer exists!"
-msgstr "错误：上传的CSV文件不再存在！"
-
-#: 
-msgid "Upload CSV File"
-msgstr "上传CSV文件"
-
-#: 
-msgid "Data import successful."
-msgstr "数据导入成功。"
-
-#: 
-#, fuzzy
-msgid "people were imported"
-msgstr "人进口"
-
-#: 
 msgid "Add Cart to Event"
 msgstr "加入购物车事件"
-
-#: 
-msgid "OR"
-msgstr "或"
 
 #: 
 msgid "Your cart is empty!"
@@ -423,10 +353,6 @@ msgid "Add to Group"
 msgstr "添加到组"
 
 #: 
-msgid "View Your Cart"
-msgstr "查看你的购物车"
-
-#: 
 msgid "You have no items in your cart."
 msgstr "您有您的购物车中没有商品。"
 
@@ -449,22 +375,6 @@ msgstr "清空购物车家庭"
 #: 
 msgid "Map Cart"
 msgstr "地图购物车"
-
-#: 
-msgid "Name Tags"
-msgstr "名称标签"
-
-#: 
-msgid "Email Cart"
-msgstr "电子邮件的购物车"
-
-#: 
-msgid "Email (BCC)"
-msgstr "电子邮件（BCC）"
-
-#: 
-msgid "Create Directory From Cart"
-msgstr "创建目录从购物车中"
 
 #: 
 msgid "Bulk Mail Presort"
@@ -496,20 +406,8 @@ msgid "No"
 msgstr "没有"
 
 #: 
-msgid "Developer Chat"
-msgstr "开发者聊天"
-
-#: 
-msgid "Event Checkin"
-msgstr "事件入住"
-
-#: 
 msgid "Select Event"
 msgstr "选择事件"
-
-#: 
-msgid "CheckOut"
-msgstr "离店"
 
 #: 
 msgid "Checked In Time"
@@ -770,10 +668,6 @@ msgid "Church Event Editor"
 msgstr "教会事件编辑器"
 
 #: 
-msgid "Edit Event Types"
-msgstr "编辑事件类型"
-
-#: 
 msgid "Edit Event Type"
 msgstr "编辑事件类型"
 
@@ -823,11 +717,6 @@ msgstr "基金"
 msgid "Bank"
 msgstr "银行"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Month"
-msgstr "月"
-
 #: 
 msgid "Year"
 msgstr "年"
@@ -849,20 +738,8 @@ msgid "Create a new Event"
 msgstr "建立新活动"
 
 #: 
-msgid " errors. Please see below"
-msgstr "错误。请参考下面"
-
-#: 
 msgid "Select your event type"
 msgstr "选择您的活动类型"
-
-#: 
-msgid "You must pick an event type."
-msgstr "你必须选择事件类型"
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "没有记录考勤计数"
 
 #: 
 #, fuzzy
@@ -1090,10 +967,6 @@ msgid "Pledges and Payments"
 msgstr "认捐和实付"
 
 #: 
-msgid "No property assignments."
-msgstr "没有财产的分配。"
-
-#: 
 msgid "Value"
 msgstr "值"
 
@@ -1119,14 +992,6 @@ msgid "Updated By"
 msgstr "更新人"
 
 #: 
-msgid "Show Pledges"
-msgstr "显示服务承诺"
-
-#: 
-msgid "Show Payments"
-msgstr "显示支付"
-
-#: 
 msgid "Since"
 msgstr "从"
 
@@ -1135,16 +1000,8 @@ msgid "Update"
 msgstr "更新"
 
 #: 
-msgid "Pledge or Payment"
-msgstr "质押或付款"
-
-#: 
 msgid "Date"
 msgstr "日期"
-
-#: 
-msgid "NonDeductible"
-msgstr "不得扣除"
 
 #: 
 msgid "Schedule"
@@ -1359,11 +1216,6 @@ msgstr "中等详细信息"
 #: 
 msgid "Summary Data"
 msgstr "摘要数据"
-
-#: 
-#, fuzzy
-msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)"
-msgstr "投票成员必须在这幺多年内捐过款（0到不要求捐款）"
 
 #: 
 msgid "CSV"
@@ -1655,73 +1507,12 @@ msgid "Person View"
 msgstr "人称视角"
 
 #: 
-msgid "Group reports"
-msgstr "小组的报告"
-
-#: 
-#, fuzzy
-msgid "Select the group you would like to report"
-msgstr "选择该组，您想向大家报告"
-
-#: 
-msgid "No Role Selected"
-msgstr "无角色选取"
-
-#: 
-#, fuzzy
-msgid "Only cart people?"
-msgstr "只有车的人吗？"
-
-#: 
-#, fuzzy
-msgid "Report Model"
-msgstr "报表模型"
-
-#: 
-msgid "Report for group and role selected"
-msgstr "报告组和角色的选择"
-
-#: 
-msgid "Report for any role in group selected"
-msgstr "选择任何角色组的报告"
-
-#: 
-msgid "Select which information you want to include"
-msgstr "选择你想要的信息，包括"
-
-#: 
-#, fuzzy
-msgid "Standard Info"
-msgstr "标准信息"
-
-#: 
 msgid "Other Email"
 msgstr "其他电子邮件"
 
 #: 
-msgid "GroupRole"
-msgstr "GroupRole"
-
-#: 
-#, fuzzy
-msgid "Group-Specific Property Fields"
-msgstr "特定的属性字段"
-
-#: 
-msgid "Undefined"
-msgstr "未定义"
-
-#: 
 msgid "Group View"
 msgstr "组视图"
-
-#: 
-msgid "Edit this Group"
-msgstr "编辑本集团"
-
-#: 
-msgid "Delete this Group"
-msgstr "删除该组"
 
 #: 
 msgid "Confirm Delete Group"
@@ -1745,23 +1536,6 @@ msgid "Please select target group for members"
 msgstr "请为会员选择目标群组"
 
 #: 
-msgid "Add Group Members to Cart"
-msgstr "购物车中添加组成员"
-
-#: 
-msgid "Map this group"
-msgstr "这是根据组"
-
-#: 
-msgid "Email Group"
-msgstr "电子邮件组"
-
-#: 
-#, fuzzy
-msgid "Total Members"
-msgstr "总会员人数"
-
-#: 
 #, fuzzy
 msgid "Default Role"
 msgstr "默认角色"
@@ -1770,41 +1544,6 @@ msgstr "默认角色"
 #, fuzzy
 msgid "Group-Specific Properties"
 msgstr "组特定的属性"
-
-#: 
-msgid "Disabled for this group."
-msgstr "这组停用。"
-
-#: 
-#, fuzzy
-msgid "Assigned Properties"
-msgstr "指定的属性"
-
-#: 
-#, fuzzy
-msgid "Group Members"
-msgstr "小组成员"
-
-#: 
-msgid "Remove Selected Members from group"
-msgstr "从群组中移除已选择的会员"
-
-#: 
-msgid "Add Selected Members to Cart"
-msgstr "添加已选取的会员至购物车"
-
-#: 
-msgid "Add Selected Members to Group"
-msgstr "添加已选取的会员至群组"
-
-#: 
-msgid "Move Selected Members to Group"
-msgstr "将已选择的会员移动到群组"
-
-#: 
-#, fuzzy
-msgid "Add Group Member"
-msgstr "添加群组成员"
 
 #: 
 msgid "Letters and Mailing Labels"
@@ -1819,24 +1558,12 @@ msgid "Confirm data labels"
 msgstr "确认数据标签"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "列出所有教会活动"
-
-#: 
-msgid "Start Date/Time"
-msgstr "开始日期/时间"
-
-#: 
 msgid "Invalid login or password"
 msgstr "无效的登录名或密码"
 
 #: 
 msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
 msgstr "太多次失败登录您的帐户已被锁定。请与管理员联系。"
-
-#: 
-msgid "Please Login"
-msgstr "请登录"
 
 #: 
 msgid "Email/Username"
@@ -1901,20 +1628,12 @@ msgid "Email All"
 msgstr "电邮所有人"
 
 #: 
-msgid "Email All (BCC)"
-msgstr "电邮所有人（密送）"
-
-#: 
 msgid "Family Roles"
 msgstr "家庭各式"
 
 #: 
 msgid "Family Geographic"
 msgstr "家庭地理位置"
-
-#: 
-msgid "Update All Family Coordinates"
-msgstr "更新所有家庭坐标"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -1925,36 +1644,12 @@ msgid "Families"
 msgstr "家庭"
 
 #: 
-msgid "See all Families"
-msgstr "查看所有家庭"
-
-#: 
 msgid "People"
 msgstr "人"
 
 #: 
-msgid "See All People"
-msgstr "查看所有人员"
-
-#: 
 msgid "Sunday School Kids"
 msgstr "主日学校的孩子"
-
-#: 
-msgid "More info"
-msgstr "更多资料"
-
-#: 
-msgid "Reports on groups and roles"
-msgstr "报告组和角色"
-
-#: 
-msgid "Report on group and roles selected (it may be a multi-page PDF)."
-msgstr "报告组和角色选择（它可能是一个多页的PDF）。"
-
-#: 
-msgid "Generate letters and mailing labels."
-msgstr "生成信函和邮寄标签。"
 
 #: 
 msgid "Role / Gender"
@@ -1963,10 +1658,6 @@ msgstr "角式/性别"
 #: 
 msgid "Count"
 msgstr "计数器"
-
-#: 
-msgid "People Classification"
-msgstr "人员分类"
 
 #: 
 msgid "Gender Demographics"
@@ -2156,32 +1847,12 @@ msgid "Not assigned"
 msgstr "未分配"
 
 #: 
-msgid "Printable Page"
-msgstr "可打印页"
-
-#: 
-msgid "Edit \"Why Came\" Notes"
-msgstr "编辑“注意事项来了”"
-
-#: 
-msgid "Delete this Record"
-msgstr "删除这条记录"
-
-#: 
 msgid "Make User"
 msgstr "使用户"
 
 #: 
 msgid "Edit User"
 msgstr "编辑用户"
-
-#: 
-msgid "List Members"
-msgstr "人员清单"
-
-#: 
-msgid "No group assignments."
-msgstr "组分配。"
 
 #: 
 msgid "Change Role"
@@ -2194,10 +1865,6 @@ msgstr "更新属性"
 #: 
 msgid "Assign New Group"
 msgstr "指派新群组"
-
-#: 
-msgid "No volunteer opportunity assignments."
-msgstr "没有志愿者的机会分配。"
 
 #: 
 #, fuzzy
@@ -2231,10 +1898,6 @@ msgstr "更多的项目将适合。"
 #: 
 msgid "Deposit closed"
 msgstr "存款已关闭"
-
-#: 
-msgid "Find family->"
-msgstr "寻找家庭>"
 
 #: 
 msgid "Payment Schedule"
@@ -2289,47 +1952,16 @@ msgid "Non-deductible amount"
 msgstr "不可税前抵扣的金额"
 
 #: 
-msgid "Printable View"
-msgstr "打印查看"
-
-#: 
 msgid "Age"
 msgstr "年龄"
-
-#: 
-#, fuzzy
-msgid "Assigned Groups"
-msgstr "分配组"
 
 #: 
 msgid "Group Name"
 msgstr "组名"
 
 #: 
-#, fuzzy
-msgid "Entered"
-msgstr "输入"
-
-#: 
 msgid "by"
 msgstr "通过"
-
-#: 
-msgid "Property successfully assigned."
-msgstr "成功分配属性。"
-
-#: 
-msgid " Property Assignment"
-msgstr "财产分配"
-
-#: 
-#, fuzzy
-msgid "Assigning"
-msgstr "分配"
-
-#: 
-msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
-msgstr "删除这个属性，这个属性也会删除所有作业的任何人来说，家庭，集团录得。"
 
 #: 
 msgid "No, cancel this deletion"
@@ -2359,11 +1991,6 @@ msgstr "输入提示值将允许自由价值的关联。"
 #: 
 msgid "Property List"
 msgstr "属性列表"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Property"
-msgstr "财产"
 
 #: 
 msgid "Prompt"
@@ -2396,66 +2023,12 @@ msgid "Properties"
 msgstr "属性"
 
 #: 
-msgid " Property Unassignment"
-msgstr "物业取消分配"
-
-#: 
-msgid "Please confirm removal of this property from this"
-msgstr "请确认删除此属性"
-
-#: 
-#, fuzzy
-msgid "Unassigning"
-msgstr "取消分配"
-
-#: 
-msgid "Yes, unassign this Property"
-msgstr "是的，取消指定此属性"
-
-#: 
-msgid "No, retain this assignment"
-msgstr "不，保留这项任务"
-
-#: 
 msgid "Query Listing"
 msgstr "查询上市"
 
 #: 
-msgid "Free-Text Query"
-msgstr "自由文本查询"
-
-#: 
-msgid "Export Results to CSV file"
-msgstr "结果导出到CSV文件"
-
-#: 
-msgid "Execute SQL"
-msgstr "执行SQL"
-
-#: 
-#, fuzzy
-msgid "An error occurred"
-msgstr "发生错误"
-
-#: 
 msgid " record(s) returned"
 msgstr "返回记录（S）"
-
-#: 
-msgid "Add Results To Cart"
-msgstr "将结果添加到购物车"
-
-#: 
-msgid "Intersect Results With Cart"
-msgstr "相交结果随着车"
-
-#: 
-msgid "Remove Results From Cart"
-msgstr "从购物车中删除结果"
-
-#: 
-msgid "Return to Query Menu"
-msgstr "返回查询菜单"
 
 #: 
 msgid "Query View"
@@ -2575,10 +2148,6 @@ msgid "Default User Settings"
 msgstr "默认用户设置"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value.<BR>"
-msgstr "真设置权限给新用户的能力，改变他们的当前值。 <BR>"
-
-#: 
 msgid "Permission"
 msgstr "允许"
 
@@ -2596,10 +2165,6 @@ msgid "Calendar Year"
 msgstr "日历年份"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "更新经纬度"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "用户删除确认书，"
 
@@ -2611,15 +2176,6 @@ msgstr "请确认删除的用户状态"
 #: 
 msgid "User Editor"
 msgstr "用户编辑器"
-
-#: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "注：更改将不会生效，直到下一次登录。"
-
-#: 
-#, fuzzy
-msgid "Person to Make User"
-msgstr "人，使用户"
 
 #: 
 #, fuzzy
@@ -2672,38 +2228,13 @@ msgid "Edit Self"
 msgstr "编辑自"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "（编辑自己的家庭。）"
-
-#: 
 #, fuzzy
 msgid "Admin"
 msgstr "管理员："
 
 #: 
-msgid "(Grants all privileges.)"
-msgstr "（授予所有权限）。"
-
-#: 
-#, fuzzy
-msgid "Style"
-msgstr "风格"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "设置Permission True以使该用户能够更改其当前值。"
-
-#: 
-msgid "User Settings"
-msgstr "用户设置"
-
-#: 
 msgid "Last Login"
 msgstr "最后登录"
-
-#: 
-msgid "Total Logins"
-msgstr "总计登录"
 
 #: 
 msgid "Failed Logins"
@@ -2782,10 +2313,6 @@ msgid "How did you learn of the church?"
 msgstr "你是怎么学习的教会吗？"
 
 #: 
-msgid "eMail Dashboard"
-msgstr "电子邮件仪表板"
-
-#: 
 msgid "Version"
 msgstr "Version"
 
@@ -2834,10 +2361,6 @@ msgid "Custom Drop-Down List"
 msgstr "自定义下拉列表"
 
 #: 
-msgid "Thank you for registering your ChurchCRM installation."
-msgstr "谢谢您登记安装ChurchRam"
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF已成功通过邮件发送给家庭成员。"
 
@@ -2852,18 +2375,6 @@ msgstr "集团已成功添加到购物车。"
 #: 
 msgid "Group successfully removed from the Cart."
 msgstr "集团成功地从车中取出。"
-
-#: 
-msgid "Profile Image successfully removed."
-msgstr "图片资料已成功移除。"
-
-#: 
-msgid "Profile Image successfully updated."
-msgstr "图片资料已成功更新。"
-
-#: 
-msgid "Profile Image upload Error."
-msgstr "图片资料上传失败"
 
 #: 
 msgid "Selected record successfully removed from the Cart."
@@ -2946,14 +2457,7 @@ msgstr "API调用出现错误"
 msgid "Error text"
 msgstr "文本错误"
 
-#: 
-msgid "Issue Report!"
-msgstr "释放报告！"
-
-#: 
-msgid "No personally identifiable information will be submitted unless you purposefully include it."
-msgstr "除非您有意包含，否则不会提交任何个人身份信息。"
-
+#. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
 msgstr "仪表板"
@@ -3179,20 +2683,8 @@ msgid "Sunday School"
 msgstr "主日学校"
 
 #: 
-msgid "Sunday School Class Functions"
-msgstr "主日学校课程功能"
-
-#: 
 msgid "Teachers"
 msgstr "教士"
-
-#: 
-msgid "Send Message"
-msgstr "发送信息"
-
-#: 
-msgid "Quick Status"
-msgstr "快速状态"
 
 #: 
 msgid "Birthdays by Month"
@@ -3211,58 +2703,6 @@ msgid "Home Address"
 msgstr "家庭住址"
 
 #: 
-msgid "Dad Name"
-msgstr "父亲名称"
-
-#: 
-msgid "Dad Mobile"
-msgstr "父亲手机"
-
-#: 
-msgid "Dad Email"
-msgstr "父亲邮箱"
-
-#: 
-msgid "Mom Name"
-msgstr "母亲名称"
-
-#: 
-msgid "Mom Mobile"
-msgstr "母亲手机"
-
-#: 
-msgid "Mom Email"
-msgstr "目前邮件"
-
-#: 
-msgid "Compose New Message"
-msgstr "撰写新信息"
-
-#: 
-msgid "Kids Emails"
-msgstr "孩子邮箱"
-
-#: 
-msgid "Parents Emails"
-msgstr "父母邮箱"
-
-#: 
-msgid "Teachers Emails"
-msgstr "教士邮箱"
-
-#: 
-msgid "Attachment"
-msgstr "附件"
-
-#: 
-msgid "Max. 32MB"
-msgstr "最大32MB"
-
-#: 
-msgid "Discard"
-msgstr "放弃"
-
-#: 
 msgid "Sunday School Dashboard"
 msgstr "主日学校仪表板"
 
@@ -3275,14 +2715,6 @@ msgid "Sunday School Reports"
 msgstr "主日学报告"
 
 #: 
-msgid "Generate class lists and attendance sheets"
-msgstr "生成类清单和考勤表"
-
-#: 
-msgid "Export All Classes, Kids, and Parent to CSV file"
-msgstr "将所有课室，子项和父项导出到CSV文件"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "学生不在主日课程"
 
@@ -3293,15 +2725,6 @@ msgstr "必须选择至少一组类列表或出勤表。"
 #: 
 msgid "Report Details"
 msgstr "报告详情"
-
-#: 
-#, fuzzy
-msgid "To select multiple hold CTL"
-msgstr "要选择多个保持CTL"
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "多组情况下，组之间有分页符"
 
 #: 
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
@@ -3417,10 +2840,6 @@ msgid "Church Information"
 msgstr "教会信息"
 
 #: 
-msgid "Email Setup"
-msgstr "电子邮件设置"
-
-#: 
 msgid "Map Settings"
 msgstr "地图设置"
 
@@ -3441,10 +2860,6 @@ msgid "Edit JSON Settings"
 msgstr "编辑JSON设置"
 
 #: 
-msgid "Default Value"
-msgstr "默认值"
-
-#: 
 msgid "False"
 msgstr "否"
 
@@ -3457,24 +2872,12 @@ msgid "Edit Settings"
 msgstr "编辑设置"
 
 #: 
-msgid "Full Path:"
-msgstr "完整路径："
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "备份完成，准备下载。"
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "备份已下载，已删除服务器上的副本"
 
 #: 
 msgid "Functions"
 msgstr "功能"
-
-#: 
-msgid "Export to CSV"
-msgstr "导出到CSV"
 
 #: 
 msgid "Add"
@@ -3493,16 +2896,8 @@ msgid "Self Registration"
 msgstr "自助登记"
 
 #: 
-msgid "No coordinates found"
-msgstr "找不到坐标"
-
-#: 
 msgid "Anonymous"
 msgstr "匿名"
-
-#: 
-msgid "Registration Complete"
-msgstr "注册完成"
 
 #: 
 msgid "Add All Classes"
@@ -3531,15 +2926,6 @@ msgstr "清除所有资金"
 #: 
 msgid "Deposit Comment"
 msgstr "存款注释"
-
-#: 
-msgid "Your previous session timed out.  Please login again."
-msgstr "您上次会话已超时。请再次登录。"
-
-#: 
-#, fuzzy
-msgid "Register a New Family"
-msgstr "注册新家庭"
 
 #: 
 msgid "Signature definition file signature failed validation"
@@ -3578,10 +2964,6 @@ msgid "Reports"
 msgstr "报告"
 
 #: 
-msgid "File Name:"
-msgstr "文件名："
-
-#: 
 msgid "family"
 msgstr "家庭"
 
@@ -3589,14 +2971,6 @@ msgstr "家庭"
 #, fuzzy
 msgid "Date Entered"
 msgstr "输入日期"
-
-#: 
-msgid "CSV Import"
-msgstr "CSV导入"
-
-#: 
-msgid "There were "
-msgstr "曾有"
 
 #: 
 msgid "Inactive"
@@ -3611,16 +2985,8 @@ msgid "Filter by Fund"
 msgstr "按基金删选"
 
 #: 
-msgid "Estimated value"
-msgstr "估计的价值"
-
-#: 
 msgid "Disable Group Specific Properties"
 msgstr "禁用群组特定的属性"
-
-#: 
-msgid "Text Group"
-msgstr "文字组"
 
 #: 
 msgid "Group Properties"
@@ -3650,10 +3016,6 @@ msgstr "总共$"
 #, fuzzy
 msgid "with this property..."
 msgstr "有这个属性.."
-
-#: 
-msgid "Church Email"
-msgstr "教会电邮"
 
 #: 
 #, fuzzy
@@ -3698,10 +3060,6 @@ msgid "SMTP Server Address (mail.server.com:25)"
 msgstr "SMTP服务器地址（mail.server.com:25）"
 
 #: 
-msgid "Does your SMTP server require auththentication (username/password)?"
-msgstr "您的SMTP服务器是否需要身份验证（用户名/密码）？"
-
-#: 
 msgid "SMTP Username"
 msgstr "SMTP用户名"
 
@@ -3718,14 +3076,6 @@ msgid "First month of the fiscal year"
 msgstr "财政年度的第一个月"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "教堂的纬度，用于居中谷歌地图"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "教堂的经度，用于居中谷歌地图"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "设置为true(是)以禁用在Person Editor(人员编辑)中输入Friend Date。设置为false(否)以启用在Person Editor(人员编辑)中输入Friend Date。"
 
@@ -3738,20 +3088,8 @@ msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to
 msgstr "设置为true(是)以禁用在家庭编辑器中输入结婚日期。设置为false(否)以启用在族编辑器中输入结婚日期。"
 
 #: 
-msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
-msgstr "设置为true(是)以禁用在家庭编辑器中输入纬度和经度。设置为false(否)以启用在家庭编辑器中输入纬度和经度。查询仍然执行，只是没有显示。"
-
-#: 
-msgid "Set true to enable use of donation envelopes"
-msgstr "设置为true(是)以允许使用捐赠信封"
-
-#: 
 msgid "Number of checks for Deposit Slip Report"
 msgstr "存款单报告的支票数量"
-
-#: 
-msgid "Set true to enable use of scanned checks"
-msgstr "设置为true(是)以启用扫描检查"
 
 #: 
 msgid "Unit used to measure distance, miles or km."
@@ -3762,32 +3100,12 @@ msgid "Enable non-deductible payments"
 msgstr "启用不可抵扣的付款"
 
 #: 
-msgid "Set true to enable family self registration."
-msgstr "设置为true(是)以启用家庭自助注册。"
-
-#: 
 msgid "Left Margin (1 = 1/100th inch)"
 msgstr "左边距（1 = 1/100英寸）"
 
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "线厚度（1 = 1/100英寸"
-
-#: 
-msgid "Church City"
-msgstr "教会城市"
-
-#: 
-msgid "Church State"
-msgstr "教会州"
-
-#: 
-msgid "Church Zip"
-msgstr "教会邮编"
-
-#: 
-msgid "Church Phone"
-msgstr "教会电话"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -3842,14 +3160,6 @@ msgid "QuickBooks Deposit Ticket Settings"
 msgstr "QuickBooks存款票设置"
 
 #: 
-msgid "List Groups"
-msgstr "清单组"
-
-#: 
-msgid "List Church Events"
-msgstr "列出教会活动"
-
-#: 
 msgid "Add Church Event"
 msgstr "增加教会活动"
 
@@ -3872,10 +3182,6 @@ msgstr "存款报告"
 #: 
 msgid "Edit Deposit Slip"
 msgstr "编辑存款单"
-
-#: 
-msgid "View All Fundraisers"
-msgstr "查看所有筹款人"
 
 #: 
 msgid "Create New Fundraiser"
@@ -3902,10 +3208,6 @@ msgid "Query Menu"
 msgstr "查询菜单"
 
 #: 
-msgid "CSV Export Records"
-msgstr "CSV汇出记录"
-
-#: 
 msgid "Family Properties"
 msgstr "家庭财产"
 
@@ -3918,325 +3220,15 @@ msgstr "财产类型"
 msgid "Zip Code"
 msgstr "邮政编码"
 
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "WorkEmail"
-msgstr "工作电邮"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Regular Attender"
-msgstr "常规与会者"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Guest"
-msgstr "客人"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender"
-msgstr "非与会者"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender (staff)"
-msgstr "非与会者(员工)"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Minimum Age"
-msgstr "最低年龄"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Maximum Age"
-msgstr "最高年龄"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Beginning Date"
-msgstr "开始日期"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Ending Date"
-msgstr "结束日期"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Search"
-msgstr "搜索"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Field"
 msgstr "领域"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Volunteer opportunities"
-msgstr "志愿者机会"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Months"
-msgstr "月"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First Fiscal Year"
-msgstr "第一财年"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second Fiscal Year"
-msgstr "第二财年"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Custom field"
-msgstr "自定义字段"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Field value"
-msgstr "字段值"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The minimum age for which you want records returned."
-msgstr "你想要返回的记录的最小年龄。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The maximum age for which you want records returned."
-msgstr "你想要返回的记录的最高年龄。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The desired gender to search the database for."
-msgstr "搜索数据库所需的性别。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired family role."
-msgstr "选择所需的家庭角色。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The gender for which you would like records returned."
-msgstr "返回您想要记录的性别。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The property for which you would like person records returned."
-msgstr "返回您想要记录的人员。"
-
-#. Context: queryparameters_qrp
-#: 
-#, fuzzy
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
-msgstr "请选择开始日期以计算每个成员的总贡献（即YYYY-MM-DD）。注意：您只能选择含捐赠的日期。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
-msgstr "请输入最后一个日期来计算每个成员的总贡献（即YYYY-MM-DD）。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "输入以下任意栏：姓名，城市，州，邮编，家庭电话，电子邮件或工作电子邮件。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select field to search for."
-msgstr "选择要搜索的字段。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The birthday month for which you would like records returned."
-msgstr "返回您想要记录的生日月份。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The sunday school class for which you would like records returned."
-msgstr "返回您想要记录的主日学校课程。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The membership anniversary month for which you would like records returned."
-msgstr "返回您想要记录的会员周年的月份。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose a volunteer opportunity"
-msgstr "选择志愿者机会"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Number of months since becoming a friend"
-msgstr "自成为朋友以来的月数"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First fiscal year for comparison"
-msgstr "比较第一个财政年度"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second fiscal year for comparison"
-msgstr "比较第二个财政年度"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Pledged this year"
-msgstr "今年的承诺"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "but not this year"
-msgstr "但不是今年"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Member, Regular Attender, etc."
-msgstr "会员，常规参加者等"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First volunteer opportunity choice"
-msgstr "第一个志愿者机会选择"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second volunteer opportunity choice"
-msgstr "第二个志愿者机会选择"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose customer person field"
-msgstr "选择客户人员字段"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Match custom field to this value"
-msgstr "将自定义字段与此值匹配"
-
-#. Context: query_qry
-#: 
-msgid "Person by Property"
-msgstr "按财产划分的人员"
-
 #. Context: query_qry
 #: 
 msgid "Birthdays"
 msgstr "生日"
-
-#. Context: query_qry
-#: 
-msgid "Membership anniversaries"
-msgstr "会员纪念日"
-
-#. Context: query_qry
-#: 
-msgid "Volunteers"
-msgstr "志愿者"
-
-#. Context: query_qry
-#: 
-msgid "Recent friends"
-msgstr "最近的朋友"
-
-#. Context: query_qry
-#: 
-msgid "Pledge comparison"
-msgstr "比较承诺"
-
-#. Context: query_qry
-#: 
-msgid "Missing pledges"
-msgstr "遗失承诺"
-
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "定制搜索"
-
-#. Context: query_qry
-#: 
-msgid "Returns person records which are assigned the given property."
-msgstr "返回分配制定属性的人员记录。"
-
-#. Context: query_qry
-#: 
-msgid "People with birthdays in a particular month"
-msgstr "在特定月份生日的人"
-
-#. Context: query_qry
-#: 
-msgid "Members who joined in a particular month"
-msgstr "在特定月份加入的会员"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "为特定的机会寻找志愿者"
-
-#. Context: query_qry
-#: 
-msgid "Friends who signed up in previous months"
-msgstr "在前几个月注册的朋友"
-
-#. Context: query_qry
-#: 
-msgid "Compare pledges between two fiscal years"
-msgstr "比较两个财政年度之间的承诺"
-
-#. Context: query_qry
-#: 
-msgid "Find people who pledged one year but not another"
-msgstr "寻找承诺一年但不承诺一年的人"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for who match two specific opportunity codes"
-msgstr "寻找符合两个特定机会代码的志愿者"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "查找具有自定义字段值的人员"
-
-#: 
-msgid "Last Edited"
-msgstr "最后编辑"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to send email via mailto: links"
-msgstr "用户通过 邮件到：链接 发送电子邮件的权限"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "用于分隔 邮件到：链接 的电子邮件的分隔符"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "用户创建目录的权限"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "用户导出CSV文件的权限"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "Allow user to add new event"
-msgstr "允许用户添加新活动"
 
 #: 
 msgid "Weekly on"
@@ -4345,10 +3337,6 @@ msgstr "是不允许的"
 #: 
 msgid "Name for New"
 msgstr "新名称"
-
-#: 
-msgid "Imported"
-msgstr "已汇入"
 
 #: 
 msgid "Created via Family"
@@ -5682,10 +4670,6 @@ msgid "Family Verification"
 msgstr "验证家庭"
 
 #: 
-msgid "Work Email"
-msgstr "工作电邮"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "申请家庭信息验证"
 
@@ -5844,10 +4828,6 @@ msgid "families"
 msgstr "家庭"
 
 #: 
-msgid "Deposit ticket type.  QBDT - Quickbooks"
-msgstr "存款票类型。 QBDT - Quickbooks"
-
-#: 
 msgid "Financial Settings"
 msgstr "财务设置"
 
@@ -5939,22 +4919,6 @@ msgid "Select event"
 msgstr "选择活动"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "此人已经对本事件签到"
-
-#: 
-msgid "CheckOut Person"
-msgstr "签退人员"
-
-#: 
-msgid "Delete Checkin in Entry"
-msgstr "删除条目中的签到"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "成人结帐人"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "电子邮件/报告中姓名前的文字"
 
@@ -5999,16 +4963,8 @@ msgid "Status"
 msgstr "状态"
 
 #: 
-msgid "Email export"
-msgstr "邮件导出"
-
-#: 
 msgid "Include"
 msgstr "包括"
-
-#: 
-msgid "Exclude"
-msgstr "排除"
 
 #: 
 msgid "View Cart"
@@ -6107,44 +5063,12 @@ msgid "system user login reset"
 msgstr "系统用户登录重置"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "没有（Geo）地理信息的家庭"
-
-#: 
 msgid "Notification for"
 msgstr "通知"
 
 #: 
-msgid "DEBUG"
-msgstr "DEBUG"
-
-#: 
-msgid "INFO"
-msgstr "信息"
-
-#: 
-msgid "NOTICE"
-msgstr "通知"
-
-#: 
-msgid "WARNING"
-msgstr "警告"
-
-#: 
 msgid "ERROR"
 msgstr "错误"
-
-#: 
-msgid "CRITICAL"
-msgstr "危急"
-
-#: 
-msgid "ALERT"
-msgstr "警报"
-
-#: 
-msgid "EMERGENCY"
-msgstr "紧急事件"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -6228,28 +5152,8 @@ msgid "Report an issue"
 msgstr "报告问题"
 
 #: 
-msgid "Enable New Kiosk Registration"
-msgstr "启用新的Kiosk Manager注册"
-
-#: 
 msgid "Active Kiosks"
 msgstr "激活Kiosk"
-
-#: 
-msgid "I forgot my password"
-msgstr "我忘记了我的密码"
-
-#: 
-msgid "Attendees Checked In"
-msgstr "与会者签到"
-
-#: 
-msgid "Text Cart"
-msgstr "Text Cart"
-
-#: 
-msgid "Your Church's Website"
-msgstr "您教会的网站"
 
 #: 
 msgid "Self Verification"
@@ -6292,26 +5196,6 @@ msgid "Sequence"
 msgstr "序号"
 
 #: 
-msgid "Checking Cart Status"
-msgstr "检查购物车状态"
-
-#: 
-msgid "All members of this group are in the cart"
-msgstr "该群组的所有成员都在购物车中"
-
-#: 
-msgid "Remove all"
-msgstr "移除所有"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "并非该群组的所有成员都在购物车中"
-
-#: 
-msgid "Are you sure you want to remove the selected group members?"
-msgstr "您确定要删除所选的群组成员吗？"
-
-#: 
 msgid "Do you want to delete this person?  This cannot be undone."
 msgstr "你想删除此人吗？这不能被撤消。"
 
@@ -6340,14 +5224,6 @@ msgstr "阿拉伯语 - 埃及"
 #: 
 msgid "Thai"
 msgstr "泰语"
-
-#: 
-msgid "Self Register"
-msgstr "自助登记"
-
-#: 
-msgid "List families that were created via self registration."
-msgstr "列出自助注册创建的家庭清单。"
 
 #: 
 msgid "Pending Self Verify"
@@ -6406,10 +5282,6 @@ msgstr "\n"
 #: 
 msgid "Sunday School group can't be modified, only in this two cases :"
 msgstr "主日学校小组不能修改，仅在这两种情况下："
-
-#: 
-msgid "You can create/delete sunday school group. "
-msgstr "你可以创建/删除主日学校组。"
 
 #: 
 msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
@@ -6532,10 +5404,6 @@ msgid "Add Students"
 msgstr "添加学生"
 
 #: 
-msgid "Edit this Class"
-msgstr "编辑此课程"
-
-#: 
 msgid "OK"
 msgstr "确认"
 
@@ -6550,10 +5418,6 @@ msgstr "角色选择提示需要GroupID"
 #: 
 msgid "Select Group and Role"
 msgstr "选择组和角色"
-
-#: 
-msgid "Are you sure you want to remove this person's membership from"
-msgstr "您确定要从中删除此人的会员资格吗？"
 
 #: 
 msgid "All Members"
@@ -6596,18 +5460,6 @@ msgid "Group Role"
 msgstr "群组角色"
 
 #: 
-msgid "Members from group"
-msgstr "小组成员"
-
-#: 
-msgid "Members to another group"
-msgstr "成员到另一组"
-
-#: 
-msgid "Members to cart"
-msgstr "添加至购物车"
-
-#: 
 msgid "OR Create a Group and add the CART in ONE ACTION"
 msgstr "或创建一个组并在一个动作中添加购物车"
 
@@ -6617,24 +5469,12 @@ msgstr "建立群组＋新增购物车\n"
 ""
 
 #: 
-msgid "Move Event"
-msgstr "移动事件"
-
-#: 
-msgid "Resize Event"
-msgstr "调整事件大小"
-
-#: 
 msgid "Profile"
 msgstr "轮廓"
 
 #: 
 msgid "Sign out"
 msgstr "登出"
-
-#: 
-msgid "Sermon Text"
-msgstr "布道文字"
 
 #: 
 msgid "Change Settings"
@@ -6674,18 +5514,6 @@ msgid "Field where last Confession is stored, must be a date type"
 msgstr "Confession最后字段的存储，必须是一个数据类型"
 
 #: 
-msgid "Require that this ChurchCRM Database is accessed over HTTPS"
-msgstr "要求通过HTTPS访问此ChurchCRM数据库"
-
-#: 
-msgid "People Setup"
-msgstr "人员设置"
-
-#: 
-msgid "Church Services"
-msgstr "教堂服务"
-
-#: 
 msgid "People Reports"
 msgstr "人员报告"
 
@@ -6694,32 +5522,12 @@ msgid "People Dashboard"
 msgstr "人员仪表板"
 
 #: 
-msgid "People Functions"
-msgstr "人员功能"
-
-#: 
 msgid "People Directory"
 msgstr "人员目录"
 
 #: 
-msgid "Printable directory of all people, grouped by family where assigned"
-msgstr "所有人员的打印目录，按分配的家庭分组"
-
-#: 
-msgid "of People"
-msgstr "的人"
-
-#: 
 msgid "System Upgrade"
 msgstr "系统升级"
-
-#: 
-msgid "Upgrade Required"
-msgstr "要求升级"
-
-#: 
-msgid "Help & Manual"
-msgstr "帮助&手册"
 
 #: 
 msgid "Contributing"
@@ -6732,10 +5540,6 @@ msgstr "如果由中继服务器提供，则自动启用SMTP加密。"
 #: 
 msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "将加密系统设置为使用 - ssl（不建议使用）或tls"
-
-#: 
-msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
-msgstr "仪表板服务动态异步刷新间隔，默认为60秒"
 
 #: 
 msgid "Generate Deposit Slip for Selected Rows (PDF)"
@@ -6758,14 +5562,6 @@ msgid "Not Found"
 msgstr "找不到"
 
 #: 
-msgid "Oops!"
-msgstr "哎吔！"
-
-#: 
-msgid "Meanwhile, you may"
-msgstr "同时，你可以"
-
-#: 
 msgid "User must be an Admin"
 msgstr "使用者必需是管理员"
 
@@ -6784,14 +5580,6 @@ msgstr "从群组中删除"
 #: 
 msgid "Added to group"
 msgstr "增加至群组"
-
-#: 
-msgid "We could not find the person(s) you were looking for."
-msgstr "我们找不到您要找的人。"
-
-#: 
-msgid "return to People Dashboard"
-msgstr "返回人员仪表盘"
 
 #: 
 msgid "SMTP Host is not setup, please visit the settings page"
@@ -6827,14 +5615,6 @@ msgid "View User"
 msgstr "查看用户"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "请求无效：缺少日历ID"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "找不到：未知的日历ID"
-
-#: 
 #, fuzzy
 msgid "not found or user without an email"
 msgstr "没有找到或没有电子邮件的用户"
@@ -6864,28 +5644,12 @@ msgid "Are you sure you want to move"
 msgstr "您是否肯定想移走"
 
 #: 
-msgid "from"
-msgstr "由"
-
-#: 
-msgid "to"
-msgstr "至"
-
-#: 
-msgid "Are you sure you want to change the end time for "
-msgstr "您是否想更变结束时间于␣"
-
-#: 
 msgid "Access Token"
 msgstr "访问令牌"
 
 #: 
 msgid "New Access Token"
 msgstr "新的访问令牌"
-
-#: 
-msgid "Delete Access Token"
-msgstr "删除访问令牌"
 
 #: 
 msgid "ICS URL"
@@ -6916,49 +5680,20 @@ msgid "New Calendar"
 msgstr "新日历"
 
 #: 
-#, fuzzy
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "已禁用bEnableExternalCalendarAPI，但某些日历具有访问令牌"
-
-#: 
-msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
-msgstr "对于要共享的日历，除了具有特定访问令牌的日历之外，还必须启用bEnableExternalCalendarAPI设置"
-
-#: 
 msgid "Links"
 msgstr "连接"
-
-#: 
-msgid "Enable Sunday School left menu."
-msgstr "启用主日学校左侧菜单。"
 
 #: 
 msgid "Enable Finance menu"
 msgstr "启用财务菜单"
 
 #: 
-msgid "Enable Events menu."
-msgstr "启用事件菜单"
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "启用筹款人菜单"
 
 #: 
-msgid "Enable Email menu."
-msgstr "启用邮件菜单"
-
-#: 
-msgid "Enabled Features"
-msgstr "启用功能"
-
-#: 
 msgid "Validation Error"
 msgstr "验证错误"
-
-#: 
-msgid "Email Functions"
-msgstr "电邮功能"
 
 #: 
 msgid "Debug"
@@ -7005,10 +5740,6 @@ msgid "invalid calendar pinning"
 msgstr "无效的日历pinning"
 
 #: 
-msgid "invalid group id"
-msgstr "无效的组ID"
-
-#: 
 msgid "invalid status value"
 msgstr "无效的状态值"
 
@@ -7019,10 +5750,6 @@ msgstr "无效的汇出值"
 #: 
 msgid "Invalid User/Password"
 msgstr "无效的用户/密码"
-
-#: 
-msgid "Find Duplicate Emails"
-msgstr "查找重复的电子邮件"
 
 #: 
 msgid "Duplicate Emails"
@@ -7120,10 +5847,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "您将添加无评论的新存款"
 
 #: 
-msgid "Families Without Emails"
-msgstr "没有电子邮件的家庭"
-
-#: 
 msgid "Record"
 msgstr "记录"
 
@@ -7148,26 +5871,6 @@ msgstr "重点"
 msgid "Unfocus"
 msgstr "散焦"
 
-#: 
-msgid "Warning: Signature mismatch"
-msgstr "警告：签名不匹配"
-
-#: 
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "自上次安装以来，某些ChurchCRM系统文件可能已被修改。"
-
-#: 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "通过将文件恢复为正式版本，此升级将完全破坏对以下文件的所有自定义设置。"
-
-#: 
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "如果您希望保留对这些文件的更改，请在进行此升级之前对这些文件进行手动备份，然后在升级完成后手动还原文件。"
-
-#: 
-msgid "Integrity Check Details:"
-msgstr "完整性检查详细信息："
-
 #. Context: locales
 #: 
 msgid "Estonian"
@@ -7176,14 +5879,6 @@ msgstr "爱沙尼亚语"
 #: 
 msgid "Error decoding signature definition file"
 msgstr "解码签名定义文件时出错"
-
-#: 
-msgid "Age Histogram"
-msgstr "年龄直方图"
-
-#: 
-msgid "Missing event id"
-msgstr "缺少事件ID"
 
 #: 
 msgid "Event not found"
@@ -7220,25 +5915,12 @@ msgstr "PDF处理模式。\n"
 "2 =在当前浏览器窗口中打开"
 
 #: 
-#, fuzzy
-msgid "Press CTRL + C to copy all group members' phone numbers"
-msgstr "按CTRL + C复制所有组成员的电话号码"
-
-#: 
 msgid "Verify People"
 msgstr "验证人员"
 
 #: 
 msgid "People Verify Dashboard"
 msgstr "人们验证仪表板"
-
-#: 
-msgid "Download family letters"
-msgstr "下载家庭信"
-
-#: 
-msgid "Send family email"
-msgstr "发送家庭电子邮件"
 
 #: 
 msgid "Verification recorded"
@@ -7271,10 +5953,6 @@ msgstr "验证网址"
 #: 
 msgid "Unexpected Person Id"
 msgstr "意外的人ID"
-
-#: 
-msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
-msgstr "允许在GitHub上标记为``预发布''的系统升级版本发布"
 
 #: 
 msgid "Search Calendar Events"
@@ -7314,10 +5992,6 @@ msgstr "数据库重置功能"
 msgid "Reset Database"
 msgstr "重置数据库"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "这将重置系统数据，并以新安装的方式重新启动系统。"
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -7328,36 +6002,12 @@ msgid "Holiday"
 msgstr "假期"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "允许用户自行注册2因子身份验证"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "要求用户自行注册2要素身份验证"
-
-#: 
-msgid "ChurchCRM"
-msgstr "教会客户关系管理"
-
-#: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "指定要在身份验证器应用程序中显示的应用程序名称"
 
 #: 
 msgid "Review"
 msgstr "审查"
-
-#: 
-msgid "Thank you for registering your family"
-msgstr "感谢您为家人注册"
-
-#: 
-msgid "Register another family!"
-msgstr "注册另一个家庭！"
-
-#: 
-msgid "Done, show me the homepage!"
-msgstr "完成，给我看主页！"
 
 #: 
 msgid "User authenticated via API Key: "
@@ -7376,36 +6026,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "姓，名，中间名"
 
 #: 
-msgid "Two Factor Status"
-msgstr "两要素状态"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "请确认为此用户禁用2因子验证"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "不支持的两因素身份验证配置"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "无法开始两因素身份验证注册"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "两因素身份验证要求ChurchCRM管理员配置一些参数"
-
-#: 
-msgid "System configuration "
-msgstr "系统配置 "
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "必须设置为“ true”"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "用于地址编码的Google Maps API密钥"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -7482,28 +6104,12 @@ msgid "open rate"
 msgstr "开放率"
 
 #: 
-msgid "Login Info"
-msgstr "登录信息"
-
-#: 
-msgid "Login Count"
-msgstr "登录数"
-
-#: 
-msgid "Failed Login"
-msgstr "登录失败"
-
-#: 
 msgid "Permissions"
 msgstr "权限"
 
 #: 
 msgid "Manage Notes"
 msgstr "管理笔记"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "生成新的API密钥失败"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -7555,10 +6161,6 @@ msgid "Afrikaans"
 msgstr "南非语"
 
 #: 
-msgid " has a type mismatch"
-msgstr " 类型不匹配"
-
-#: 
 msgid "Loading"
 msgstr "载入中"
 
@@ -7579,14 +6181,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "今天的结婚周年纪念日"
 
 #: 
-msgid "Api Key"
-msgstr "api键"
-
-#: 
-msgid "Regen API Key"
-msgstr "再生API密钥"
-
-#: 
 msgid "View Family Page"
 msgstr "查看家庭页面"
 
@@ -7601,46 +6195,6 @@ msgstr "核实"
 #: 
 msgid "Family has no emails to use"
 msgstr "家庭没有电子邮件可以使用"
-
-#: 
-msgid "Boxed Layout"
-msgstr "盒装版式"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "激活盒装版式"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "切换边栏"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "切换左侧边栏的状态（打开或折叠）"
-
-#: 
-msgid "Tables Settings"
-msgstr "表格设定"
-
-#: 
-msgid "Page length"
-msgstr "页长"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "更改初始页面长度（每页的行数）"
-
-#: 
-msgid "User Interface"
-msgstr "用户界面"
-
-#: 
-msgid "Locale"
-msgstr "区域设置"
-
-#: 
-msgid "Override system locale"
-msgstr "覆盖系统区域设置"
 
 #: 
 msgid "Deleted"
@@ -7689,14 +6243,6 @@ msgid "Ukrainian"
 msgstr "乌克兰语"
 
 #: 
-msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
-msgstr "当您点击“提交到 GitHub”时，您将被定向到 GitHub 问题页面，并预填您的系统信息。"
-
-#: 
-msgid "Submit to GitHub"
-msgstr "提交到 GitHub"
-
-#: 
 msgid "Change role"
 msgstr "更改角色"
 
@@ -7715,10 +6261,6 @@ msgstr "存款 ID"
 #: 
 msgid "Deposit Total"
 msgstr "存款总额"
-
-#: 
-msgid "Group Cart Status"
-msgstr "团体购物车状态"
 
 #: 
 msgid "If that doesn't work, copy and paste the following link in your browser"
@@ -7762,16 +6304,6 @@ msgstr "属性"
 #: 
 msgid "Default Zip"
 msgstr "默认邮编"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "信用卡支付人员"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "配置为通过信用卡支付的人员。"
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -7843,32 +6375,8 @@ msgid "Enter note text here..."
 msgstr "在此处输入笔记文本..."
 
 #: 
-msgid "No notes have been added for this person."
-msgstr "尚未为此人添加笔记。"
-
-#: 
 msgid "Note"
 msgstr "笔记"
-
-#: 
-msgid "Log Settings"
-msgstr "日志设置"
-
-#: 
-msgid "Log Level:"
-msgstr "日志级别："
-
-#: 
-msgid "Save Log Level"
-msgstr "保存日志级别"
-
-#: 
-msgid "View application logs. Click on a log file to view its contents."
-msgstr "查看应用程序日志。点击日志文件查看其内容。"
-
-#: 
-msgid "Delete All Logs"
-msgstr "删除所有日志"
 
 #: 
 msgid "No log files found."
@@ -7913,10 +6421,6 @@ msgstr "显示行数："
 #: 
 msgid "Loading log file..."
 msgstr "正在加载日志文件..."
-
-#: 
-msgid "No notes have been added for this family."
-msgstr "尚未为此家庭添加笔记。"
 
 #: 
 msgid "A Calendar access token has been generated and saved."
@@ -8143,10 +6647,6 @@ msgid "Events Today"
 msgstr "今日活动"
 
 #: 
-msgid "Sunday School Overview"
-msgstr "主日学概览"
-
-#: 
 msgid "Add Family Member"
 msgstr "添加家庭成员"
 
@@ -8159,14 +6659,6 @@ msgid "City is required"
 msgstr "城市是必填项"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "数据库服务器端口是必填项（例如：3306）"
-
-#: 
-msgid "Database username is required"
-msgstr "数据库用户名是必填项"
-
-#: 
 msgid "Email Address"
 msgstr "电子邮件地址"
 
@@ -8177,10 +6669,6 @@ msgstr "电子邮件地址"
 #: 
 msgid "Enter family name"
 msgstr "输入家庭姓氏"
-
-#: 
-msgid "Family Information"
-msgstr "家庭信息"
 
 #: 
 msgid "Family name is required"
@@ -8213,10 +6701,6 @@ msgstr "家庭电话号码"
 #: 
 msgid "Invalid format"
 msgstr "格式无效"
-
-#: 
-msgid "Join our community by registering your family"
-msgstr "通过注册您的家庭加入我们的社区"
 
 #: 
 msgid "Last name"
@@ -8271,10 +6755,6 @@ msgid "Please add at least one family member."
 msgstr "请至少添加一名家庭成员。"
 
 #: 
-msgid "Please correct the validation errors before continuing."
-msgstr "请在继续之前纠正验证错误。"
-
-#: 
 msgid "Please enter a valid URL"
 msgstr "请输入有效的 URL"
 
@@ -8299,20 +6779,12 @@ msgid "Please fill in all required fields correctly."
 msgstr "请正确填写所有必填字段。"
 
 #: 
-msgid "Please review all information carefully before submitting. You can go back to make changes if needed."
-msgstr "请在提交前仔细检查所有信息。如果需要，您可以返回进行更改。"
-
-#: 
 msgid "Previous"
 msgstr "上一步"
 
 #: 
 msgid "Registration Error"
 msgstr "注册错误"
-
-#: 
-msgid "Review & Submit"
-msgstr "检查并提交"
 
 #: 
 msgid "Role in Family"
@@ -8339,22 +6811,6 @@ msgid "A new password has been generated and sent to your email address."
 msgstr "新密码已生成并发送至您的电子邮件地址。"
 
 #: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "有新版本的 ChurchCRM 可供安装。"
-
-#: 
-msgid "Actual Hash"
-msgstr "实际哈希"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "所有升级前检查均已通过。您可以继续升级。"
-
-#: 
-msgid "Allow Pre-release Upgrades"
-msgstr "允许预发布版本升级"
-
-#: 
 msgid "Apply Update Now"
 msgstr "立即应用更新"
 
@@ -8375,48 +6831,16 @@ msgid "Backup Skipped"
 msgstr "备份已跳过"
 
 #: 
-msgid "Check GitHub for the latest release information"
-msgstr "在 GitHub 上查看最新的发布信息"
-
-#: 
 msgid "Complete"
 msgstr "完成"
-
-#: 
-msgid "Continue to Backup"
-msgstr "继续备份"
-
-#: 
-msgid "Continue to Download & Apply"
-msgstr "继续下载并应用"
 
 #: 
 msgid "Create Backup"
 msgstr "创建备份"
 
 #: 
-msgid "Create a backup of your database before applying the update."
-msgstr "在应用更新之前，为您的数据库创建备份。"
-
-#: 
-msgid "Current Version:"
-msgstr "当前版本："
-
-#: 
-msgid "Database Backup"
-msgstr "数据库备份"
-
-#: 
 msgid "Download & Apply"
 msgstr "下载并应用"
-
-#: 
-msgid "Download and Apply System Update"
-msgstr "下载并应用系统更新"
-
-#: 
-msgid "Download the latest release and apply it to your ChurchCRM installation."
-msgstr "下载最新版本并应用到您的 ChurchCRM 安装中。"
 
 #: 
 msgid "Downloaded"
@@ -8431,10 +6855,6 @@ msgid "Enter your login name and we will email you a link to reset your password
 msgstr "输入您的登录名，我们将通过电子邮件向您发送重置密码的链接。"
 
 #: 
-msgid "Expected Hash"
-msgstr "预期哈希"
-
-#: 
 msgid "Failed to create backup."
 msgstr "创建备份失败。"
 
@@ -8447,32 +6867,12 @@ msgid "Failed to refresh upgrade information from GitHub."
 msgstr "无法从 GitHub 刷新升级信息。"
 
 #: 
-msgid "Failed to refresh upgrade information. Please try again."
-msgstr "刷新升级信息失败。请重试。"
-
-#: 
-msgid "Failed to save setting. Please try again."
-msgstr "保存设置失败。请重试。"
-
-#: 
 msgid "File Name"
 msgstr "文件名"
 
 #: 
-msgid "Files Missing"
-msgstr "文件丢失"
-
-#: 
-msgid "Files Modified"
-msgstr "文件已修改"
-
-#: 
 msgid "Go to Login"
 msgstr "前往登录"
-
-#: 
-msgid "I Understand - Continue"
-msgstr "我明白 - 继续"
 
 #: 
 msgid "Language updated to"
@@ -8503,22 +6903,6 @@ msgid "Please do not close this window or refresh the page."
 msgstr "请不要关闭此窗口或刷新页面。"
 
 #: 
-msgid "Pre-Upgrade Tasks Complete"
-msgstr "升级前任务已完成"
-
-#: 
-msgid "Pre-Upgrade Warnings"
-msgstr "升级前警告"
-
-#: 
-msgid "Refresh from GitHub"
-msgstr "从 GitHub 刷新"
-
-#: 
-msgid "Release Notes:"
-msgstr "发布说明："
-
-#: 
 msgid "Request Password Reset"
 msgstr "请求重置密码"
 
@@ -8527,28 +6911,12 @@ msgid "Retry Download"
 msgstr "重试下载"
 
 #: 
-msgid "SHA1 Hash:"
-msgstr "SHA1 哈希："
-
-#: 
 msgid "Send Reset Email"
 msgstr "发送重置邮件"
 
 #: 
-msgid "Setting saved. Reloading page..."
-msgstr "设置已保存。正在重新加载页面..."
-
-#: 
 msgid "Setting updated successfully"
 msgstr "设置更新成功"
-
-#: 
-msgid "Skip Backup"
-msgstr "跳过备份"
-
-#: 
-msgid "System Up to Date"
-msgstr "系统已是最新"
 
 #: 
 msgid "System Upgrade Wizard"
@@ -8561,14 +6929,6 @@ msgstr "系统升级成功完成！"
 #: 
 msgid "This may take several minutes."
 msgstr "这可能需要几分钟。"
-
-#: 
-msgid "Update Available!"
-msgstr "有可用更新！"
-
-#: 
-msgid "Update Package Details"
-msgstr "更新包详情"
 
 #: 
 msgid "Update package downloaded successfully."
@@ -8595,28 +6955,12 @@ msgid "Upgrade information refreshed. Reloading page..."
 msgstr "升级信息已刷新。正在重新加载页面..."
 
 #: 
-msgid "Version Information"
-msgstr "版本信息"
-
-#: 
 msgid "Warnings"
 msgstr "警告"
 
 #: 
-msgid "We were unable to process your password reset request. Please try requesting a new password reset link."
-msgstr "我们无法处理您的密码重置请求。请尝试请求新的密码重置链接。"
-
-#: 
-msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
-msgstr "您选择了跳过备份。强烈建议在继续升级之前进行备份。"
-
-#: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
 msgstr "您的 ChurchCRM 安装已成功升级。"
-
-#: 
-msgid "Your ChurchCRM installation is running the latest version."
-msgstr "您的 ChurchCRM 安装正在运行最新版本。"
 
 #: 
 msgid "2-50 characters"
@@ -8635,10 +6979,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "之前的报告未返回任何记录。请调整您的过滤器或日期范围，然后重试。"
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "请输入菜单名称（2-50 个字符）"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "请输入以 http:// 或 https:// 开头的有效 URL"
 
@@ -8647,28 +6987,12 @@ msgid "All system file signatures match the expected values."
 msgstr "所有系统文件签名均符合预期值。"
 
 #: 
-msgid "Files with issues"
-msgstr "有问题的文件"
-
-#: 
-msgid "Integrity check failed"
-msgstr "完整性检查失败"
-
-#: 
-msgid "Integrity check passed"
-msgstr "完整性检查通过"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "签名定义文件存在但不可读。检查文件权限。"
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "位于 %s 的签名定义文件丢失。请运行打包任务或部署官方版本以重新生成签名。"
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "无法联系完整性端点。请检查 Web 服务器错误日志。"
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -8940,10 +7264,6 @@ msgid "All Types"
 msgstr "所有类型"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "您确定要删除此签到记录吗？"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "考勤统计类别"
 
@@ -8980,16 +7300,8 @@ msgid "Clear"
 msgstr "清除"
 
 #: 
-msgid "Create"
-msgstr "创建"
-
-#: 
 msgid "Create New Event"
 msgstr "创建新活动"
-
-#: 
-msgid "Create an event type to get started."
-msgstr "创建一个活动类型以开始。"
 
 #: 
 msgid "Current DB Version"
@@ -8998,10 +7310,6 @@ msgstr "当前数据库版本"
 #: 
 msgid "Current Software Version"
 msgstr "当前软件版本"
-
-#: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "数据库升级成功完成。正在重定向到仪表板..."
 
 #: 
 msgid "Date & Time"
@@ -9016,18 +7324,6 @@ msgid "Delete Event"
 msgstr "删除活动"
 
 #: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "删除活动也将删除所有考勤统计。删除此活动吗？"
-
-#: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "删除此活动类型不会删除现有活动。确定吗？"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "删除此活动也将删除所有考勤记录。确定吗？"
-
-#: 
 msgid "Edit Event"
 msgstr "编辑活动"
 
@@ -9039,6 +7335,7 @@ msgstr "正在编辑活动"
 msgid "Enter event title..."
 msgstr "输入活动标题..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "活动"
@@ -9052,10 +7349,6 @@ msgid "Event Types"
 msgstr "活动类型"
 
 #: 
-msgid "Filter Events"
-msgstr "活动筛选"
-
-#: 
 msgid "Filter by Event Type"
 msgstr "按活动类型筛选"
 
@@ -9066,10 +7359,6 @@ msgstr "按类型筛选"
 #: 
 msgid "Head Count"
 msgstr "人数统计"
-
-#: 
-msgid "Listing Events of Type"
-msgstr "列出此类型的活动："
 
 #: 
 msgid "Manage Check-ins"
@@ -9098,10 +7387,6 @@ msgstr "无（一次性活动）"
 #: 
 msgid "Optional - Add sermon notes or additional event details"
 msgstr "可选 - 添加讲道笔记或额外的活动详情"
-
-#: 
-msgid "Optional - leave blank if not tracking"
-msgstr "可选 - 如果不跟踪则留空"
 
 #: 
 msgid "Optional notes about attendance..."
@@ -9136,10 +7421,6 @@ msgid "Search by name or email..."
 msgstr "按姓名或电子邮件搜索..."
 
 #: 
-msgid "Search for adult..."
-msgstr "搜索成年人..."
-
-#: 
 msgid "Search for supervisor..."
 msgstr "搜索主管..."
 
@@ -9164,14 +7445,6 @@ msgid "Unclassified"
 msgstr "未分类"
 
 #: 
-msgid "Upgrade database now"
-msgstr "立即升级数据库"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "您的 ChurchCRM 安装需要升级数据库以匹配已安装的软件版本。此操作将应用架构和数据迁移。在继续之前，请确保您已有最近的备份。"
-
-#: 
 msgid "added to this event"
 msgstr "已添加到此活动"
 
@@ -9189,16 +7462,8 @@ msgid_plural "people"
 msgstr[0] "个人"
 
 #: 
-msgid "✓ CheckOut"
-msgstr "✓ 签退"
-
-#: 
 msgid "%d Orphaned Files Detected"
 msgstr "检测到 %d 个孤立文件"
-
-#: 
-msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
-msgstr "%d 个文件已被修改或丢失。使用强制重新安装以恢复官方版本。"
 
 #: 
 msgid "%d files have failed integrity validation."
@@ -9211,10 +7476,6 @@ msgstr "%d 个文件将被永久删除。"
 #: 
 msgid "%d orphaned files were detected on your server."
 msgstr "在您的服务器上检测到 %d 个孤立文件。"
-
-#: 
-msgid "(refresh from GitHub)"
-msgstr "（从 GitHub 刷新）"
 
 #: 
 msgid "Access Denied"
@@ -9231,14 +7492,6 @@ msgstr "添加记录权限"
 #: 
 msgid "Administrator privileges"
 msgstr "管理员权限"
-
-#: 
-msgid "All Files Verified"
-msgstr "所有文件已验证"
-
-#: 
-msgid "All system files match their expected signatures."
-msgstr "所有系统文件均符合预期签名。"
 
 #: 
 msgid "Application Integrity"
@@ -9293,10 +7546,6 @@ msgid "Backup in progress, please wait..."
 msgstr "正在备份中，请稍候..."
 
 #: 
-msgid "Backup to External Storage"
-msgstr "备份至外部存储"
-
-#: 
 msgid "CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data."
 msgstr "注意：还原备份将完全擦除现有数据库，并将其替换为备份数据。"
 
@@ -9307,10 +7556,6 @@ msgstr "关闭并刷新"
 #: 
 msgid "Confirm Deletion"
 msgstr "确认删除"
-
-#: 
-msgid "Create a backup first"
-msgstr "请先创建备份"
 
 #: 
 msgid "Create directory permission"
@@ -9365,14 +7610,6 @@ msgid "Exports database structure and data. Smaller file size."
 msgstr "导出数据库结构和数据。文件体积较小。"
 
 #: 
-msgid "File Integrity Check"
-msgstr "文件完整性检查"
-
-#: 
-msgid "File Integrity Issues Detected"
-msgstr "检测到文件完整性问题"
-
-#: 
 msgid "File Path"
 msgstr "文件路径"
 
@@ -9413,10 +7650,6 @@ msgid "Group management access"
 msgstr "群组管理权限"
 
 #: 
-msgid "If you need access to this feature, please contact your church administrator."
-msgstr "如果您需要使用此功能，请联系您的教会管理员。"
-
-#: 
 msgid "If you upload a backup from ChurchInfo or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema."
 msgstr "如果您从 ChurchInfo 或旧版本的 ChurchCRM 上传备份，它将自动升级到当前的数据库架构。"
 
@@ -9433,16 +7666,8 @@ msgid "Keep one copy in a fire-proof safe on-site and another off-site."
 msgstr "在现场保留一份防火保险箱副本，另一份保留在异地。"
 
 #: 
-msgid "Latest GitHub Version:"
-msgstr "最新的 GitHub 版本："
-
-#: 
 msgid "Loading..."
 msgstr "加载中..."
-
-#: 
-msgid "Make a backup at least once a week unless you have automated backups."
-msgstr "除非您有自动备份，否则请至少每周创建一次备份。"
 
 #: 
 msgid "Manage Orphaned Files"
@@ -9451,14 +7676,6 @@ msgstr "管理孤立文件"
 #: 
 msgid "Menu options access"
 msgstr "菜单选项权限"
-
-#: 
-msgid "Missing Files"
-msgstr "缺失文件"
-
-#: 
-msgid "Modified Files"
-msgstr "修改过的文件"
 
 #: 
 msgid "Multiple Copies"
@@ -9499,22 +7716,6 @@ msgstr "请检查备份文件并再试一次。"
 #: 
 msgid "Please select a backup file to restore"
 msgstr "请选择要还原的备份文件"
-
-#: 
-msgid "Re-download and re-apply the current version to restore all files to their official state"
-msgstr "重新下载并重新应用当前版本，以将所有文件恢复到官方状态"
-
-#: 
-msgid "Ready to create a backup. Select your options above and click a backup button."
-msgstr "准备创建备份。请在上方选择您的选项并点击备份按钮。"
-
-#: 
-msgid "Ready to restore. Select a backup file and click Restore Database."
-msgstr "准备还原。请选择一个备份文件并点击还原数据库。"
-
-#: 
-msgid "Recommendation: Review and delete these files before or after the upgrade."
-msgstr "建议：在升级前或升级后检查并删除这些文件。"
 
 #: 
 msgid "Redirecting in"
@@ -9561,20 +7762,12 @@ msgid "Security Recommendation"
 msgstr "安全建议"
 
 #: 
-msgid "Security Warning: Orphaned Files Detected"
-msgstr "安全警告：检测到孤立文件"
-
-#: 
 msgid "Select Backup File"
 msgstr "选择备份文件"
 
 #: 
 msgid "Supported formats:"
 msgstr "支持的格式："
-
-#: 
-msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
-msgstr "以下文件存在于服务器上，但不属于官方 ChurchCRM 发布版本。这些可能是旧版本的遗留，可能会带来安全风险。"
 
 #: 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -9589,10 +7782,6 @@ msgid "These files were likely part of an older ChurchCRM version and were not c
 msgstr "这些文件可能是旧版 ChurchCRM 的一部分，在之前的升级中未被清理。删除它们将提高您的系统安全性。"
 
 #: 
-msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
-msgstr "这些文件可能是旧版 ChurchCRM 的一部分，在之前的升级中未被清理。它们可能包含带有安全漏洞的过时代码。"
-
-#: 
 msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
 msgstr "此操作无法撤销。如果需要，请确保您有当前数据的备份。"
 
@@ -9603,14 +7792,6 @@ msgstr "对于大型数据库，这可能需要几分钟时间。"
 #: 
 msgid "This may take several minutes for large databases. Do not close this page."
 msgstr "对于大型数据库，这可能需要几分钟时间。请勿关闭此页面。"
-
-#: 
-msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
-msgstr "这将重新下载并重新应用当前版本。这可以修复损坏或被修改的文件。是否继续？"
-
-#: 
-msgid "Upgrade Summary"
-msgstr "升级摘要"
 
 #: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
@@ -9631,10 +7812,6 @@ msgstr "用户必须具有菜单选项权限"
 #: 
 msgid "What are Orphaned Files?"
 msgstr "什么是孤立文件？"
-
-#: 
-msgid "You don't have access to this page"
-msgstr "您没有访问此页面的权限"
 
 #: 
 msgid "You will be logged out and redirected to the login page."
@@ -9733,14 +7910,6 @@ msgid "Church Membership"
 msgstr "教会成员身份"
 
 #: 
-msgid "Church name is set to default value"
-msgstr "教会名称已设置为默认值"
-
-#: 
-msgid "Classes and enrollments"
-msgstr "班级与注册"
-
-#: 
 msgid "Clean Up Files"
 msgstr "清理文件"
 
@@ -9763,14 +7932,6 @@ msgstr "已关闭对比总计"
 #: 
 msgid "Coming soon"
 msgstr "即将推出"
-
-#: 
-msgid "Complete these essential setup tasks to get ChurchCRM running smoothly:"
-msgstr "完成这些必要的设置任务，让 ChurchCRM 顺畅运行："
-
-#: 
-msgid "Complete these in any order. Use Demo Data to explore with sample records."
-msgstr "可以按任何顺序完成。使用演示数据来探索示例记录。"
 
 #: 
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
@@ -9835,10 +7996,6 @@ msgstr "日"
 #: 
 msgid "Dec"
 msgstr "十二月"
-
-#: 
-msgid "Demo Data"
-msgstr "演示数据"
 
 #: 
 msgid "Deposit Navigation"
@@ -9937,10 +8094,6 @@ msgid "Generate"
 msgstr "生成"
 
 #: 
-msgid "Generate Reports"
-msgstr "生成报告"
-
-#: 
 msgid "Generate Tax Statements"
 msgstr "生成税务声明"
 
@@ -9965,14 +8118,6 @@ msgid "Generate reports for tax statements, pledge tracking, and financial analy
 msgstr "生成税务声明、认献追踪和财务分析报告。"
 
 #: 
-msgid "Giving funds and categories"
-msgstr "奉献基金与类别"
-
-#: 
-msgid "HTTPS Not Configured"
-msgstr "HTTPS 未配置"
-
-#: 
 msgid "ID"
 msgstr "编号"
 
@@ -9983,18 +8128,6 @@ msgstr "识别在特定日期范围内未进行任何捐赠的成员。"
 #: 
 msgid "Import failed"
 msgstr "导入失败"
-
-#: 
-msgid "Import from CSV files"
-msgstr "从 CSV 文件导入"
-
-#: 
-msgid "Import sample families, people, and groups to explore ChurchCRM with realistic data."
-msgstr "导入示例家庭、人员和群组，以真实数据探索 ChurchCRM。"
-
-#: 
-msgid "Install TLS/SSL certificate for better security"
-msgstr "安装 TLS/SSL 证书以提高安全性"
 
 #: 
 msgid "Jan"
@@ -10011,10 +8144,6 @@ msgstr "七月"
 #: 
 msgid "Jun"
 msgstr "六月"
-
-#: 
-msgid "Latest Note"
-msgstr "最新笔记"
 
 #: 
 msgid "Let's get your system set up and ready to use"
@@ -10037,20 +8166,12 @@ msgid "Manage Funds"
 msgstr "管理基金"
 
 #: 
-msgid "Manage Users"
-msgstr "管理用户"
-
-#: 
 msgid "Mar"
 msgstr "三月"
 
 #: 
 msgid "Membership Reports"
 msgstr "成员报告"
-
-#: 
-msgid "Missing Secret Keys"
-msgstr "缺失密钥"
 
 #: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
@@ -10075,10 +8196,6 @@ msgstr "新付款"
 #: 
 msgid "New Pledge"
 msgstr "新认献"
-
-#: 
-msgid "Next 7 days and past 7 days"
-msgstr "未来 7 天和过去 7 天"
 
 #: 
 msgid "No Active Deposit"
@@ -10111,14 +8228,6 @@ msgstr "开启"
 #: 
 msgid "Open Deposits:"
 msgstr "开启中的存款："
-
-#: 
-msgid "Organization, timezone, email"
-msgstr "机构、时区、电子邮件"
-
-#: 
-msgid "Organizational structure"
-msgstr "组织结构"
 
 #: 
 msgid "Orphaned Files:"
@@ -10185,16 +8294,8 @@ msgid "Review Donation Funds"
 msgstr "审查捐款基金"
 
 #: 
-msgid "SMTP server settings are not configured"
-msgstr "SMTP 服务器设置未配置"
-
-#: 
 msgid "Save and Add New Family"
 msgstr "保存并添加家庭"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "Config.php 中缺失密钥"
 
 #: 
 msgid "Sep"
@@ -10211,10 +8312,6 @@ msgstr "设置"
 #: 
 msgid "Settings saved successfully"
 msgstr "设置保存成功"
-
-#: 
-msgid "Setup Tasks:"
-msgstr "设置任务："
 
 #: 
 msgid "Social Media"
@@ -10293,20 +8390,12 @@ msgid "Unmet Prerequisites"
 msgstr "未满足的先决条件"
 
 #: 
-msgid "Update Church Name"
-msgstr "更新教会名称"
-
-#: 
 msgid "Upgrade"
 msgstr "升级"
 
 #: 
 msgid "Use classification and family filters to generate reports for specific groups of donors."
 msgstr "使用分类和家庭过滤器为特定的捐助者群体生成报告。"
-
-#: 
-msgid "User accounts and roles"
-msgstr "用户帐户与角色"
 
 #: 
 msgid "User must be an Admin or have Finance permission"
@@ -10325,10 +8414,6 @@ msgid "Version:"
 msgstr "版本："
 
 #: 
-msgid "Welcome to ChurchCRM"
-msgstr "欢迎来到 ChurchCRM"
-
-#: 
 msgid "YTD Payments"
 msgstr "今年以来付款"
 
@@ -10343,10 +8428,6 @@ msgstr "您可以现在创建家庭成员，也可以稍后添加。所有条目
 #: 
 msgid "Your fiscal year starts in month"
 msgstr "您的财政年度开始月份为"
-
-#: 
-msgid "Zip / Postal Code"
-msgstr "邮政编码"
 
 #: 
 msgid "ZipArchive extension required for upgrades"
@@ -10389,16 +8470,8 @@ msgid "years"
 msgstr "年"
 
 #: 
-msgid "yes"
-msgstr "是"
-
-#: 
 msgid "(Enter state/province for countries without predefined states)"
 msgstr "（为没有预定义州/省的国家输入州/省）"
-
-#: 
-msgid "Available"
-msgstr "可用"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -10473,24 +8546,12 @@ msgid "Location & Contact Information"
 msgstr "地点与联系信息"
 
 #: 
-msgid "Navigate to your ChurchCRM installation directory"
-msgstr "导航至您的 ChurchCRM 安装目录"
-
-#: 
 msgid "New to"
 msgstr "新加入"
 
 #: 
 msgid "No locales configured"
 msgstr "未配置语言环境"
-
-#: 
-msgid "Not Available"
-msgstr "不可用"
-
-#: 
-msgid "Open this file in a text editor:"
-msgstr "在文本编辑器中打开此文件："
 
 #: 
 msgid "Register Now"
@@ -10505,24 +8566,12 @@ msgid "Save the file and refresh this page"
 msgstr "保存文件并刷新此页面"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "设置为 true 可在个人编辑器中禁用无隶属关系人员的个人地址输入。设置为 false 可启用无家庭分配人员的地址输入。"
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "以 <strong>http://</strong> 或 <strong>https://</strong> 开始"
 
 #: 
-msgid "Subdirectory installation:"
-msgstr "子目录安装："
-
-#: 
 msgid "System Locale Support"
 msgstr "系统语言环境支持"
-
-#: 
-msgid "System Support"
-msgstr "系统支持"
 
 #: 
 msgid "URL does not contain a valid hostname"
@@ -10543,18 +8592,6 @@ msgstr "URL 必须以结尾斜杠 (/) 结束"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL 必须以 http:// 或 https:// 开始"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "无法检测系统语言环境"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "无法确定可用语言环境"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "无法加载语言环境信息"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10597,10 +8634,6 @@ msgid "Assign Opportunities"
 msgstr "分配机会"
 
 #: 
-msgid "Assign Property"
-msgstr "分配属性"
-
-#: 
 msgid "Choose a property..."
 msgstr "选择一个属性..."
 
@@ -10625,10 +8658,6 @@ msgid "Copied!"
 msgstr "已复制！"
 
 #: 
-msgid "Edit Role"
-msgstr "编辑角色"
-
-#: 
 msgid "Edited"
 msgstr "已编辑"
 
@@ -10641,16 +8670,8 @@ msgid "Failed to copy URL"
 msgstr "复制 URL 失败"
 
 #: 
-msgid "ID:"
-msgstr "编号："
-
-#: 
 msgid "Newsletter"
 msgstr "通讯报"
-
-#: 
-msgid "No assigned family"
-msgstr "未分配家庭"
 
 #: 
 msgid "Open in New Tab"
@@ -10679,10 +8700,6 @@ msgstr "移除属性"
 #: 
 msgid "Select Opportunities"
 msgstr "选择机会"
-
-#: 
-msgid "Select Property"
-msgstr "选择属性"
 
 #: 
 msgid "Share this URL with family members to verify their information"
@@ -10773,10 +8790,6 @@ msgid "Remote backup failed"
 msgstr "远程备份失败"
 
 #: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "WebDAV 备份配置不正确。请确保已设置终端点、用户名和密码"
-
-#: 
 msgid "2FA Enabled"
 msgstr "已启用双重身份验证 (2FA)"
 
@@ -10833,10 +8846,6 @@ msgid "Person(s) removed from cart"
 msgstr "人员已从清单中移除"
 
 #: 
-msgid "Quick Settings"
-msgstr "快速设置"
-
-#: 
 msgid "Reset Failed Logins"
 msgstr "重置失败的登录次数"
 
@@ -10853,28 +8862,12 @@ msgid "Set Inactive"
 msgstr "设为非活动"
 
 #: 
-msgid "Show"
-msgstr "显示"
-
-#: 
-msgid "Showing"
-msgstr "正在显示"
-
-#: 
 msgid "Total Users"
 msgstr "总用户数"
 
 #: 
-msgid "User Management"
-msgstr "用户管理"
-
-#: 
 msgid "View Details"
 msgstr "查看详情"
-
-#: 
-msgid "entries"
-msgstr "条目"
 
 #: 
 msgid "of"
@@ -10905,10 +8898,6 @@ msgid "Validation pending"
 msgstr "等待验证"
 
 #: 
-msgid "must be configured with an encryption key"
-msgstr "必须配置加密密钥"
-
-#: 
 msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d 人已加入清单。"
@@ -10928,16 +8917,8 @@ msgid "A "
 msgstr "一个 "
 
 #: 
-msgid "ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'."
-msgstr "新增、删除和排序更改是立即生效的。名称和描述更改必须通过点击“保存更改”来保存。"
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "您确定要删除吗"
-
-#: 
-msgid "Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
-msgstr "箭头和删除按钮立即生效。如果您在使用向上、向下、删除或“新增”按钮之前不“保存更改”，则字段名称更改将丢失！"
 
 #: 
 msgid "By deleting this field, you will irrevocably lose all family data assigned for this field!"
@@ -11028,10 +9009,6 @@ msgid "Property Type"
 msgstr "属性类型"
 
 #: 
-msgid "Property to Delete"
-msgstr "要删除的属性"
-
-#: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "有人被分配到此志愿服务机会。删除将取消分配："
 
@@ -11050,10 +9027,6 @@ msgstr "警告："
 #: 
 msgid "Yes, delete this Opportunity"
 msgstr "是，删除此机会"
-
-#: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "用户必须具备财务权限才能使用的查询"
 
 #: 
 msgid "Fund(s)"
@@ -11150,10 +9123,6 @@ msgstr "更新角色失败。请重试。"
 #: 
 msgid "Family Pledges"
 msgstr "家庭认捐"
-
-#: 
-msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
-msgstr "如果在使用删除或'添加新项' 按钮之前不点击'保存更改'，字段更改将丢失！"
 
 #: 
 msgid "Filter by Class"
@@ -11253,18 +9222,6 @@ msgid "All Classifications"
 msgstr "所有分类"
 
 #: 
-msgid "No people found matching your criteria."
-msgstr "未找到符合您条件的人员。"
-
-#: 
-msgid "Off"
-msgstr "关闭"
-
-#: 
-msgid "On"
-msgstr "开启"
-
-#: 
 msgid "Photo Directory"
 msgstr "照片目录"
 
@@ -11273,40 +9230,12 @@ msgid "Reset Filters"
 msgstr "重置筛选"
 
 #: 
-msgid "Show only people with photos"
-msgstr "只显示有照片的人"
-
-#: 
-msgid "Checkout All"
-msgstr "全部签出"
-
-#: 
 msgid "Expected"
 msgstr "预期"
 
 #: 
 msgid "Failed to delete kiosk"
 msgstr "删除自助终端失败"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "按财年的家庭承诺"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "查找已注册学生"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "财年。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "已注册学生群组"
 
 #: 
 msgid "Here"
@@ -11360,16 +9289,6 @@ msgstr "接送请求"
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "请尽快前往教室。"
 
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "所选财年每个基金按家庭名称的承诺摘要"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "已注册学生"
-
 #: 
 msgid "The teacher sent this alert at"
 msgstr "老师在以下时间发送了此警报"
@@ -11393,10 +9312,6 @@ msgstr "即将到来的生日"
 #: 
 msgid "Waiting to Check In"
 msgstr "等待签到"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "启用后，新的自助终端设备可以在30秒内完成注册。"
 
 #: 
 msgid "Your child"
@@ -11728,10 +9643,6 @@ msgid "Done"
 msgstr "完成"
 
 #: 
-msgid "E.164 format, e.g., +14155551234"
-msgstr "E.164格式，例如 +14155551234"
-
-#: 
 msgid "Each plugin requires a"
 msgstr "每个插件需要一个"
 
@@ -11760,10 +9671,6 @@ msgid "Enable Two-Factor Authentication"
 msgstr "启用两步验证"
 
 #: 
-msgid "Enable the External Backup plugin for WebDAV cloud storage."
-msgstr "启用外部备份插件以使用WebDAV云存储。"
-
-#: 
 msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
 msgstr "仅对具有自签名SSL证书的本地网络服务器启用此选项。将禁用证书验证。"
 
@@ -11790,10 +9697,6 @@ msgstr "外部备份 (WebDAV)"
 #: 
 msgid "External Backup Settings"
 msgstr "外部备份设置"
-
-#: 
-msgid "External Backup plugin is enabled but not configured."
-msgstr "外部备份插件已启用，但未配置。"
 
 #: 
 msgid "External Backup plugin is not configured. Please configure WebDAV settings in the plugin."
@@ -11830,10 +9733,6 @@ msgstr "列出插件失败"
 #: 
 msgid "Failed to reset settings"
 msgstr "重置设置失败"
-
-#: 
-msgid "Failed to send SMS"
-msgstr "发送短信失败"
 
 #: 
 msgid "Family Status"
@@ -11975,6 +9874,7 @@ msgstr "管理链接"
 msgid "Manage Two-Factor Authentication"
 msgstr "管理两步验证"
 
+#. plugin:external-backup:section:3:title
 #: 
 msgid "Manual Backup"
 msgstr "手动备份"
@@ -12060,10 +9960,6 @@ msgid "Optional - only required if OpenLP authentication is enabled"
 msgstr "可选 - 仅在启用OpenLP验证时需要"
 
 #: 
-msgid "Phone number and message required"
-msgstr "电话号码和消息为必填项"
-
-#: 
 msgid "Please configure endpoint, username, and password first."
 msgstr "请先配置端点、用户名和密码。"
 
@@ -12136,20 +10032,12 @@ msgid "Print"
 msgstr "打印"
 
 #: 
-msgid "Recipients and message required"
-msgstr "收件人和消息为必填项"
-
-#: 
 msgid "Recovery Codes"
 msgstr "恢复码"
 
 #: 
 msgid "Remote backup failed. Check server logs for details."
 msgstr "远程备份失败。请查看服务器日志了解详情。"
-
-#: 
-msgid "SMS sent"
-msgstr "短信已发送"
 
 #: 
 msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
@@ -12206,10 +10094,6 @@ msgstr "测试连接"
 #: 
 msgid "Test WebDAV Connection"
 msgstr "测试WebDAV连接"
-
-#: 
-msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "启用此插件时，这些链接将出现在导航侧边栏的「链接」菜单中。"
 
 #: 
 msgid "These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp."
@@ -12380,10 +10264,6 @@ msgid "Congregation Map"
 msgstr "会众地图"
 
 #: 
-msgid "Congregation Map — Setup Required"
-msgstr "会众地图 — 需要设置"
-
-#: 
 msgid "Connected to MailChimp! Account: %s (%d subscribers)"
 msgstr "已连接到MailChimp！账户：%s（%d个订阅者）"
 
@@ -12416,10 +10296,6 @@ msgid "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
 msgstr "请包含国家代码，例如 +14155551234（美国）或 +447911123456（英国）"
 
 #: 
-msgid "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
-msgstr "无效的发件人号码：\"%s\"。请包含国家代码，例如 +14155551234（美国）或 +447911123456（英国）。"
-
-#: 
 msgid "Invalid API credentials. Please verify your API Key and API Secret."
 msgstr "API凭据无效。请验证您的API密钥和API私钥。"
 
@@ -12438,14 +10314,6 @@ msgstr "服务器URL格式无效。"
 #: 
 msgid "MailChimp connection failed."
 msgstr "MailChimp连接失败。"
-
-#: 
-msgid "Map Zoom Level"
-msgstr "地图缩放级别"
-
-#: 
-msgid "Missing families? Update coordinates to include them on the map."
-msgstr "缺少家庭？请更新坐标以将其包含在地图上。"
 
 #: 
 msgid "Missing required settings: %s"
@@ -12506,4 +10374,5203 @@ msgstr "如果删除此类型，您还将删除所有使用它的属性，并失
 #: 
 msgid "Move Donations to Selected Family"
 msgstr "将奉献移至所选家庭"
+
+#: 
+msgid "Calendar not found"
+msgstr "日历未找到"
+
+#: 
+msgid "Continue to Dashboard"
+msgstr "继续到仪表板"
+
+#: 
+msgid "Current Password"
+msgstr "当前密码"
+
+#: 
+msgid "Deposit not found"
+msgstr "奉献记录未找到"
+
+#: 
+msgid "Group not found"
+msgstr "小组未找到"
+
+#: 
+msgid "Invalid JSON provided for configuration"
+msgstr "为配置提供的JSON无效"
+
+#: 
+msgid "Password Change Required"
+msgstr "需要更改密码"
+
+#: 
+msgid "Password Change Successful"
+msgstr "密码更改成功"
+
+#: 
+msgid "Password Changed"
+msgstr "密码已更改"
+
+#: 
+msgid "Passwords must be at least"
+msgstr "密码长度至少为"
+
+#: 
+msgid "Property not found"
+msgstr "属性未找到"
+
+#: 
+msgid "Set New Password"
+msgstr "设置新密码"
+
+#: 
+msgid "The password for %s has been updated."
+msgstr "%s的密码已更新。"
+
+#: 
+msgid "Unable to re-encode JSON for configuration"
+msgstr "无法为配置重新编码JSON"
+
+#: 
+msgid "User not found"
+msgstr "用户未找到"
+
+#: 
+msgid "You must set a new password before continuing."
+msgstr "继续之前您必须设置新密码。"
+
+#: 
+msgid "Your password has been updated successfully."
+msgstr "您的密码已成功更新。"
+
+#: 
+msgid "selected family has no coordinates"
+msgstr "所选家庭没有坐标"
+
+#: 
+msgid "2FA"
+msgstr "双重验证"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "留空以保留现有内容"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "要求所有用户注册双重身份验证"
+
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "保存街道地址后，此处将显示地图。坐标自动检测 — 无需手动输入。"
+
+#: 
+msgid "Active Groups"
+msgstr "活跃小组"
+
+#: 
+msgid "Add New Group"
+msgstr "添加新小组"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "使用地址自动检测坐标"
+
+#: 
+msgid "Church name is required."
+msgstr "教会名称为必填项。"
+
+#: 
+msgid "City is required."
+msgstr "城市为必填项。"
+
+#: 
+msgid "Clear filter"
+msgstr "清除筛选"
+
+#: 
+msgid "Configuration item not found"
+msgstr "未找到配置项"
+
+#: 
+msgid "Country is required."
+msgstr "国家为必填项。"
+
+#: 
+msgid "Discord Chat"
+msgstr "Discord 聊天"
+
+#: 
+msgid "Display Preview"
+msgstr "显示预览"
+
+#: 
+msgid "Email address is required."
+msgstr "电子邮件地址为必填项。"
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "该家庭没有可进行地理编码的街道地址"
+
+#: 
+msgid "Father"
+msgstr "父亲"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "地理编码坐标："
+
+#: 
+msgid "Geocoding failed"
+msgstr "地理编码失败"
+
+#: 
+msgid "Geocoding successful"
+msgstr "地理编码成功"
+
+#: 
+msgid "Inactive Groups"
+msgstr "非活跃小组"
+
+#: 
+msgid "Language & Localization"
+msgstr "语言和本地化"
+
+#: 
+msgid "Map"
+msgstr "地图"
+
+#: 
+msgid "Mother"
+msgstr "母亲"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "可选。您的教会网站网址。"
+
+#: 
+msgid "Parents/Guardians"
+msgstr "家长/监护人"
+
+#: 
+msgid "Phone number is required."
+msgstr "电话号码为必填项。"
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "刷新坐标"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "必填。用于所有报告和通讯。"
+
+#: 
+msgid "Save Church Information"
+msgstr "保存教会信息"
+
+#: 
+msgid "Search or select..."
+msgstr "搜索或选择..."
+
+#: 
+msgid "State is required."
+msgstr "省/自治区为必填项。"
+
+#: 
+msgid "Street Address"
+msgstr "街道地址"
+
+#: 
+msgid "Street address is required."
+msgstr "街道地址为必填项。"
+
+#: 
+msgid "Student Information"
+msgstr "学生信息"
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "您的教会信息将在报告和目录中如此显示。"
+
+#: 
+msgid "Time Zone"
+msgstr "时区"
+
+#: 
+msgid "Total Groups"
+msgstr "小组总数"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "每次保存时自动更新。"
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "用于安排活动和报告时间。"
+
+#: 
+msgid "View Profile"
+msgstr "查看个人资料"
+
+#: 
+msgid "Website"
+msgstr "网站"
+
+#: 
+msgid "ZIP code is required."
+msgstr "邮政编码为必填项。"
+
+#: 
+msgid "— Select Country —"
+msgstr "— 选择国家 —"
+
+#: 
+msgid "— Select State —"
+msgstr "— 选择省/自治区 —"
+
+#: 
+msgid "Address Status"
+msgstr "地址状态"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "已输入地址但尚未设置坐标"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "地址已进行地理编码（坐标已存储）"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "尝试自动升级数据库但失败。请检查服务器日志或联系您的系统管理员。"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "尝试自动升级数据库但失败。请查看下面的错误并联系您的系统管理员。"
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "数据库升级失败"
+
+#: 
+msgid "Geocoded"
+msgstr "已地理编码"
+
+#: 
+msgid "Installed Software Version"
+msgstr "已安装软件版本"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "请将ChurchCRM升级到版本"
+
+#: 
+msgid "Software Update Required"
+msgstr "需要软件更新"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "主日学已禁用"
+
+#: 
+msgid "Unverified"
+msgstr "未验证"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "未验证地址"
+
+#: 
+msgid "Version Mismatch"
+msgstr "版本不匹配"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "您的数据库版本比已安装的软件更新。这通常意味着软件被回滚到了旧版本。请升级ChurchCRM以匹配您的数据库。"
+
+#: 
+msgid "or later to continue."
+msgstr "或更高版本以继续。"
+
+#: 
+msgid "\"Why Came\" Notes"
+msgstr "\"为什么来\" 笔记"
+
+#: 
+msgid "%d result for \"%s\""
+msgid_plural "%d results for \"%s\""
+msgstr[0] "%d 个 \"%s\" 的结果"
+
+#: 
+msgid "(optional — leave blank to include all roles)"
+msgstr "（可选 — 留空以包括所有角色）"
+
+#: 
+msgid "A family represents a household. It holds the shared address and home phone number for all family members living together."
+msgstr "一个家族代表一个家庭。它保存了所有住在一起的家庭成员的共享地址和住宅电话号码。"
+
+#: 
+msgid "A household. Stores the shared mailing address and home phone."
+msgstr "一个家庭。存储共享邮寄地址和家庭电话。"
+
+#: 
+msgid "A person does not need to belong to a family, but assigning one makes address management much easier."
+msgstr "一个人不需要属于一个家族，但是分配一个可以使地址管理更加容易。"
+
+#: 
+msgid "About"
+msgstr "关于"
+
+#: 
+msgid "Accepted format: .csv"
+msgstr "接受的格式：.csv"
+
+#: 
+msgid "Account Recovery"
+msgstr "账户恢复"
+
+#: 
+msgid "Add Family"
+msgstr "添加家族"
+
+#: 
+msgid "Add First Family"
+msgstr "添加第一个家族"
+
+#: 
+msgid "Add Member"
+msgstr "添加成员"
+
+#: 
+msgid "Add New Class"
+msgstr "添加新课程"
+
+#: 
+msgid "Add Note"
+msgstr "添加笔记"
+
+#: 
+msgid "Add People to the Family"
+msgstr "将人员添加到家族"
+
+#: 
+msgid "Add Person"
+msgstr "添加人员"
+
+#: 
+msgid "Add Students to Cart"
+msgstr "将学生添加到列表"
+
+#: 
+msgid "Add Teachers to Cart"
+msgstr "将教师添加到列表"
+
+#: 
+msgid "Add User"
+msgstr "添加用户"
+
+#: 
+msgid "Add Your Data"
+msgstr "添加您的数据"
+
+#: 
+msgid "Add Your First Family"
+msgstr "添加您的第一个家族"
+
+#: 
+msgid "Add Your First Property"
+msgstr "添加您的第一个属性"
+
+#: 
+msgid "Add a Person"
+msgstr "添加人员"
+
+#: 
+msgid "Add a new pledge"
+msgstr "添加新的承诺"
+
+#: 
+msgid "Add a payment to current deposit"
+msgstr "向当前存款添加付款"
+
+#: 
+msgid "Add all cart items to a group"
+msgstr "将所有列表项目添加到组"
+
+#: 
+msgid "Add all to Cart"
+msgstr "全部添加到列表"
+
+#: 
+msgid "Add cart items to a family"
+msgstr "将列表项目添加到家族"
+
+#: 
+msgid "Add everyone in your household — adults and children alike."
+msgstr "添加您家中的每个人 — 成人和儿童。"
+
+#: 
+msgid "Add families and individuals one by one directly in ChurchCRM. Great for smaller congregations or topping up imported data."
+msgstr "直接在 ChurchCRM 中逐个添加家族和个人。非常适合较小的会众或补充导入的数据。"
+
+#: 
+msgid "Add first family"
+msgstr "添加第一个家族"
+
+#: 
+msgid "Add or edit individual person records"
+msgstr "添加或编辑个人记录"
+
+#: 
+msgid "Add or edit items donated for fundraising events"
+msgstr "添加或编辑为筹款活动捐赠的物品"
+
+#: 
+msgid "Add or edit notes for people and families"
+msgstr "为人员和家族添加或编辑笔记"
+
+#: 
+msgid "Add staff and volunteers"
+msgstr "添加员工和志愿者"
+
+#: 
+msgid "Add staff or volunteers as system users"
+msgstr "将员工或志愿者添加为系统用户"
+
+#: 
+msgid "Administrator"
+msgstr "管理员"
+
+#: 
+msgid "Age Distribution"
+msgstr "年龄分布"
+
+#: 
+msgid "All Roles"
+msgstr "所有角色"
+
+#: 
+msgid "All Time"
+msgstr "始终"
+
+#: 
+msgid "All roles"
+msgstr "所有角色"
+
+#: 
+msgid "Almost there — review your details"
+msgstr "几乎完成 — 检查您的详细信息"
+
+#: 
+msgid "Also runs automatically via WebDAV based on your configured interval."
+msgstr "也会根据您配置的时间间隔通过 WebDAV 自动运行。"
+
+#: 
+msgid "An Error Occurred"
+msgstr "发生错误"
+
+#: 
+msgid "An individual church member. Stores name, birthday, personal email, and mobile."
+msgstr "教会的个人成员。存储名称、生日、个人电子邮件和手机。"
+
+#: 
+msgid "An unexpected error occurred while processing your request. Please contact your administrator for assistance."
+msgstr "处理您的请求时发生意外错误。请联系您的管理员寻求帮助。"
+
+#: 
+msgid "An unexpected error occurred."
+msgstr "发生意外错误。"
+
+#: 
+msgid "Applied preset"
+msgstr "应用的预设"
+
+#: 
+msgid "Are you sure you want to delete this deposit?"
+msgstr "您确定要删除此存款吗？"
+
+#: 
+msgid "Are you sure you want to delete this fundraiser?"
+msgstr "您确定要删除此筹款活动吗？"
+
+#: 
+msgid "Are you sure you want to remove"
+msgstr "您确定要删除"
+
+#: 
+msgid "Assign and manage donation envelope numbers"
+msgstr "分配和管理捐赠信封号码"
+
+#: 
+msgid "Assign and manage fundraiser buyer numbers"
+msgstr "分配和管理筹款活动买家号码"
+
+#: 
+msgid "Assign cart items to a family record"
+msgstr "将列表项目分配给家族记录"
+
+#: 
+msgid "Assign cart items to a group"
+msgstr "将列表项目分配给组"
+
+#: 
+msgid "Assign cart items to an event"
+msgstr "将列表项目分配给事件"
+
+#: 
+msgid "Assign to a Group"
+msgstr "分配给组"
+
+#: 
+msgid "Authentication Code"
+msgstr "身份验证代码"
+
+#: 
+msgid "Auto-mapped"
+msgstr "自动映射"
+
+#: 
+msgid "BCC All"
+msgstr "全部密送"
+
+#: 
+msgid "Back to Admin Dashboard"
+msgstr "返回管理仪表板"
+
+#: 
+msgid "Back to Get Started"
+msgstr "返回入门"
+
+#: 
+msgid "Back to Home"
+msgstr "返回主页"
+
+#: 
+msgid "Backs up to WebDAV cloud storage automatically on a configurable interval."
+msgstr "根据可配置的时间间隔自动备份到 WebDAV 云存储。"
+
+#: 
+msgid "Backup to External Storage Now"
+msgstr "立即备份到外部存储"
+
+#: 
+msgid "Browse all available plugins"
+msgstr "浏览所有可用的插件"
+
+#: 
+msgid "Browse all people in your congregation with filtering and search"
+msgstr "浏览您会众中的所有人员，支持过滤和搜索"
+
+#: 
+msgid "Browse all plugins"
+msgstr "浏览所有插件"
+
+#: 
+msgid "Browse and search all families in your congregation"
+msgstr "浏览并搜索您会众中的所有家族"
+
+#: 
+msgid "Browse and search fundraiser campaigns"
+msgstr "浏览并搜索筹款活动"
+
+#: 
+msgid "Browse photos of congregation members"
+msgstr "浏览会众成员的照片"
+
+#: 
+msgid "Buyer Number"
+msgstr "买家号码"
+
+#: 
+msgid "Buyers"
+msgstr "买家"
+
+#: 
+msgid "CSV Column"
+msgstr "CSV 列"
+
+#: 
+msgid "CSV template not found"
+msgstr "未找到 CSV 模板"
+
+#: 
+msgid "Call"
+msgstr "致电"
+
+#: 
+msgid "Cart Functions"
+msgstr "列表函数"
+
+#: 
+msgid "Change Family Role"
+msgstr "更改家族角色"
+
+#: 
+msgid "Check Out"
+msgstr "签出"
+
+#: 
+msgid "Check Out Person"
+msgstr "签出人员"
+
+#: 
+msgid "Check for updates and upgrade your ChurchCRM installation"
+msgstr "检查更新并升级您的 ChurchCRM 安装"
+
+#: 
+msgid "Check in attendees for church events and activities"
+msgstr "为教会事件和活动签入参与者"
+
+#: 
+msgid "Check in to an event"
+msgstr "签入活动"
+
+#: 
+msgid "Check-ins"
+msgstr "签入"
+
+#: 
+msgid "Children"
+msgstr "儿童"
+
+#: 
+msgid "Choose how you'd like to populate your database. You can always use a different method later."
+msgstr "选择您想要如何填充数据库。您始终可以稍后使用不同的方法。"
+
+#: 
+msgid "Church Info"
+msgstr "教会信息"
+
+#: 
+msgid "Clear all"
+msgstr "清除所有"
+
+#: 
+msgid "Clear all data and start fresh"
+msgstr "清除所有数据并重新开始"
+
+#: 
+msgid "Clear all items from cart"
+msgstr "清除列表中的所有项目"
+
+#: 
+msgid "Click Save to apply."
+msgstr "单击保存进行应用。"
+
+#: 
+msgid "Click to upload photo"
+msgstr "单击上传照片"
+
+#: 
+msgid "Clicking \"Open GitHub Issue\" will open a new tab with your system info pre-filled. No personally identifiable information will be included unless you add it."
+msgstr "单击\"开启 GitHub 问题\"将打开一个新选项卡，其中预先填充了您的系统信息。除非您添加，否则不会包含个人身份信息。"
+
+#: 
+msgid "Column was automatically matched to a ChurchCRM field."
+msgstr "列自动匹配到 ChurchCRM 字段。"
+
+#: 
+msgid "Community Management Platform"
+msgstr "社区管理平台"
+
+#: 
+msgid "Compatible with Excel, Google Sheets, or any CSV export."
+msgstr "与 Excel、Google Sheets 或任何 CSV 导出兼容。"
+
+#: 
+msgid "Complete these in any order to get ChurchCRM ready for your congregation."
+msgstr "以任何顺序完成这些操作，为您的会众准备好 ChurchCRM。"
+
+#: 
+msgid "Confession"
+msgstr "忏悔"
+
+#: 
+msgid "Configure global system settings and preferences"
+msgstr "配置全局系统设置和偏好设置"
+
+#: 
+msgid "Configure group settings, roles, and properties"
+msgstr "配置组设置、角色和属性"
+
+#: 
+msgid "Confirm your new password"
+msgstr "确认您的新密码"
+
+#: 
+msgid "Connect an SMTP server so ChurchCRM can send emails"
+msgstr "连接 SMTP 服务器以便 ChurchCRM 可以发送电子邮件"
+
+#: 
+msgid "Connect with others"
+msgstr "与他人联系"
+
+#: 
+msgid "Contact us"
+msgstr "联系我们"
+
+#: 
+msgid "Convert individual records into family units"
+msgstr "将个人记录转换为家族单位"
+
+#: 
+msgid "Convert to Family"
+msgstr "转换为家族"
+
+#: 
+msgid "Copied"
+msgstr "已复制"
+
+#: 
+msgid "Copy Members to Group"
+msgstr "将成员复制到组"
+
+#: 
+msgid "Copy to Group"
+msgstr "复制到组"
+
+#: 
+msgid "Create a backup of your church database"
+msgstr "创建教会数据库的备份"
+
+#: 
+msgid "Create a manual backup at least once a week, or enable the External Backup plugin for automatic WebDAV backups on a schedule."
+msgstr "至少每周创建一次手动备份，或启用外部备份插件以按计划自动备份到 WebDAV。"
+
+#: 
+msgid "Create a new deposit"
+msgstr "创建新存款"
+
+#: 
+msgid "Create and edit family information and relationships"
+msgstr "创建和编辑家族信息和关系"
+
+#: 
+msgid "Create and manage church events and activities"
+msgstr "创建和管理教会事件和活动"
+
+#: 
+msgid "Create or edit property type categories"
+msgstr "创建或编辑属性类型类别"
+
+#: 
+msgid "Create or edit volunteer positions"
+msgstr "创建或编辑志愿者职位"
+
+#: 
+msgid "Current person"
+msgstr "当前人员"
+
+#: 
+msgid "Data & Reports"
+msgstr "数据和报告"
+
+#: 
+msgid "Database Reset"
+msgstr "数据库重置"
+
+#: 
+msgid "Default / Notes"
+msgstr "默认/笔记"
+
+#: 
+msgid "Define custom fields to collect additional family data"
+msgstr "定义自定义字段以收集其他家族数据"
+
+#: 
+msgid "Define custom fields to collect additional person data"
+msgstr "定义自定义字段以收集其他人员数据"
+
+#: 
+msgid "Define custom properties for tracking data"
+msgstr "定义用于跟踪数据的自定义属性"
+
+#: 
+msgid "Define custom properties that can be assigned to"
+msgstr "定义可以分配给的自定义属性"
+
+#: 
+msgid "Define group-specific properties for members"
+msgstr "为成员定义组特定的属性"
+
+#: 
+msgid "Delete All"
+msgstr "删除全部"
+
+#: 
+msgid "Delete Check-in Entry"
+msgstr "删除签入条目"
+
+#: 
+msgid "Delete Family"
+msgstr "删除家族"
+
+#: 
+msgid "Delete Group"
+msgstr "删除组"
+
+#: 
+msgid "Delete Person"
+msgstr "删除人员"
+
+#: 
+msgid "Delete Pledge"
+msgstr "删除承诺"
+
+#: 
+msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
+msgstr "删除此属性也将从任何人员、家族或组记录中删除其所有分配。"
+
+#: 
+msgid "Deposit Value"
+msgstr "存款价值"
+
+#: 
+msgid "Describe the issue"
+msgstr "描述问题"
+
+#: 
+msgid "Directions"
+msgstr "方向"
+
+#: 
+msgid "Directory Reports"
+msgstr "目录报告"
+
+#: 
+msgid "Disabled in settings"
+msgstr "在设置中禁用"
+
+#: 
+msgid "Donated Item"
+msgstr "捐赠物品"
+
+#: 
+msgid "Donations and giving records are tracked at the family level. If you plan to record giving for an individual who lives alone, create a single-person family for them."
+msgstr "捐赠和奉献记录在家族级别进行跟踪。如果您计划为独自生活的个人记录奉献，请为他们创建单人家族。"
+
+#: 
+msgid "Download"
+msgstr "下载"
+
+#: 
+msgid "Download CSV Template"
+msgstr "下载 CSV 模板"
+
+#: 
+msgid "Download the template to see the expected column format."
+msgstr "下载模板以查看预期的列格式。"
+
+#: 
+msgid "Drag and drop your CSV file here"
+msgstr "在此拖放您的 CSV 文件"
+
+#: 
+msgid "Duplicates"
+msgstr "重复项"
+
+#: 
+msgid "Each person can have their own email and mobile number."
+msgstr "每个人可以拥有自己的电子邮件和手机号码。"
+
+#: 
+msgid "Each row is one person. Members of the same family share a FamilyID."
+msgstr "每一行是一个人。同一家族的成员共享一个 FamilyID。"
+
+#: 
+msgid "Easy registration"
+msgstr "简单注册"
+
+#: 
+msgid "Edit Class"
+msgstr "编辑课程"
+
+#: 
+msgid "Edit Form"
+msgstr "编辑表单"
+
+#: 
+msgid "Edit Member Properties Form"
+msgstr "编辑成员属性表单"
+
+#: 
+msgid "Edit Property"
+msgstr "编辑属性"
+
+#: 
+msgid "Edit custom properties for a group member"
+msgstr "编辑小组成员的自定义属性"
+
+#: 
+msgid "Email BCC"
+msgstr "邮件密送"
+
+#: 
+msgid "Email Families"
+msgstr "发送邮件给家庭"
+
+#: 
+msgid "Email Settings"
+msgstr "邮件设置"
+
+#: 
+msgid "Email Tools"
+msgstr "邮件工具"
+
+#: 
+msgid "Email cart items"
+msgstr "发送邮件给选择列表中的人员"
+
+#: 
+msgid "Email with hidden recipients"
+msgstr "以隐藏收件人方式发送邮件"
+
+#: 
+msgid "Empty"
+msgstr "空"
+
+#: 
+msgid "Enable HTTPS"
+msgstr "启用 HTTPS"
+
+#: 
+msgid "Enable Plugins"
+msgstr "启用插件"
+
+#: 
+msgid "Enable the MailChimp plugin to sync contacts"
+msgstr "启用 MailChimp 插件以同步联系人"
+
+#: 
+msgid "Enrolled"
+msgstr "已登记"
+
+#: 
+msgid "Enter Data Manually"
+msgstr "手动输入数据"
+
+#: 
+msgid "Enter a search term"
+msgstr "输入搜索词"
+
+#: 
+msgid "Enter the 6-digit code from your authenticator app to complete login"
+msgstr "输入身份验证器应用中的6位数字代码以完成登录"
+
+#: 
+msgid "Enter your current password"
+msgstr "输入您当前的密码"
+
+#: 
+msgid "Enter your login name"
+msgstr "输入您的登录名"
+
+#: 
+msgid "Enter your new password"
+msgstr "输入您的新密码"
+
+#: 
+msgid "Enter your password"
+msgstr "输入您的密码"
+
+#: 
+msgid "Est. Value"
+msgstr "预估价值"
+
+#: 
+msgid "Exclude from Email Export"
+msgstr "从邮件导出中排除"
+
+#: 
+msgid "Excluded"
+msgstr "已排除"
+
+#: 
+msgid "Expand"
+msgstr "展开"
+
+#: 
+msgid "Explore with Demo Data"
+msgstr "使用演示数据探索"
+
+#: 
+msgid "Export data to CSV format for external applications"
+msgstr "将数据导出为 CSV 格式供外部应用使用"
+
+#: 
+msgid "Extend ChurchCRM with MailChimp, backups, and more"
+msgstr "使用 MailChimp、备份等功能扩展 ChurchCRM"
+
+#: 
+msgid "FY %s"
+msgstr "财年 %s"
+
+#: 
+msgid "Failed to add members to cart. Please try again."
+msgstr "添加成员到选择列表失败，请重试。"
+
+#: 
+msgid "Failed to delete class. Please try again."
+msgstr "删除班级失败，请重试。"
+
+#: 
+msgid "Failed to delete group. Please try again."
+msgstr "删除小组失败，请重试。"
+
+#: 
+msgid "Failed to remove from class. Please try again."
+msgstr "从班级中移除失败，请重试。"
+
+#: 
+msgid "Families share an address and phone number."
+msgstr "家庭成员共享地址和电话号码。"
+
+#: 
+msgid "Family List"
+msgstr "家庭列表"
+
+#: 
+msgid "Family Pledge Summary"
+msgstr "家庭奉献承诺摘要"
+
+#: 
+msgid "Family Profile"
+msgstr "家庭档案"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
+msgstr "家庭角色（户主、配偶、子女等）有助于整理您的记录。"
+
+#: 
+msgid "Family vs Person"
+msgstr "家庭与个人"
+
+#: 
+msgid "Fields to Include"
+msgstr "包含的字段"
+
+#: 
+msgid "File upload error"
+msgstr "文件上传错误"
+
+#: 
+msgid "Follow these two steps to add your church members quickly and correctly."
+msgstr "按照以下两个步骤快速正确地添加您的教会会众。"
+
+#: 
+msgid "Forgot password?"
+msgstr "忘记密码？"
+
+#: 
+msgid "Format"
+msgstr "格式"
+
+#: 
+msgid "Full Group View"
+msgstr "完整小组视图"
+
+#: 
+msgid "Generate and download confirmation letters"
+msgstr "生成并下载确认信函"
+
+#: 
+msgid "Generate annual giving statements for tax purposes"
+msgstr "生成年度奉献报表以供报税使用"
+
+#: 
+msgid "Generate directory listings and printed materials"
+msgstr "生成通讯录和打印材料"
+
+#: 
+msgid "Generate financial reports"
+msgstr "生成财务报告"
+
+#: 
+msgid "Generate financial statements and giving reports"
+msgstr "生成财务报表和奉献报告"
+
+#: 
+msgid "Generate letters and mailing labels"
+msgstr "生成信函和邮寄标签"
+
+#: 
+msgid "Generate mailing labels and form letters"
+msgstr "生成邮寄标签和格式信函"
+
+#: 
+msgid "Generate phone directory"
+msgstr "生成电话通讯录"
+
+#: 
+msgid "Generate pledge reminder letters"
+msgstr "生成奉献承诺提醒信函"
+
+#: 
+msgid "Generate reports on group membership and activities"
+msgstr "生成小组成员和活动报告"
+
+#: 
+msgid "Generate tax statement documents for donors"
+msgstr "为奉献者生成税务报表文件"
+
+#: 
+msgid "Geographic Utilities"
+msgstr "地理工具"
+
+#: 
+msgid "Get Your Data Into ChurchCRM"
+msgstr "将您的数据导入 ChurchCRM"
+
+#: 
+msgid "Go to homepage"
+msgstr "前往主页"
+
+#: 
+msgid "Great choice! Here's how to add your church members."
+msgstr "很好的选择！以下是添加教会会众的方法。"
+
+#: 
+msgid "Group Map"
+msgstr "小组地图"
+
+#: 
+msgid "Group Reports"
+msgstr "小组报告"
+
+#: 
+msgid "Group deleted successfully."
+msgstr "小组已成功删除。"
+
+#: 
+msgid "Have Existing Data?"
+msgstr "已有数据？"
+
+#: 
+msgid "If you have many records in a spreadsheet, the CSV import may be faster than entering data manually."
+msgstr "如果您的电子表格中有大量记录，CSV 导入可能比手动输入数据更快。"
+
+#: 
+msgid "Ignored"
+msgstr "已忽略"
+
+#: 
+msgid "Import Another File"
+msgstr "导入另一个文件"
+
+#: 
+msgid "Import CSV"
+msgstr "导入 CSV"
+
+#: 
+msgid "Import Complete"
+msgstr "导入完成"
+
+#: 
+msgid "Import contacts from your MailChimp audiences"
+msgstr "从您的 MailChimp 受众中导入联系人"
+
+#: 
+msgid "Import failed. Please try again."
+msgstr "导入失败，请重试。"
+
+#: 
+msgid "Import failed: "
+msgstr "导入失败："
+
+#: 
+msgid "Import from CSV"
+msgstr "从 CSV 导入"
+
+#: 
+msgid "Import from Spreadsheet"
+msgstr "从电子表格导入"
+
+#: 
+msgid "Import from a Spreadsheet"
+msgstr "从电子表格导入"
+
+#: 
+msgid "Import, restore, or enter manually"
+msgstr "导入、恢复或手动输入"
+
+#: 
+msgid "Import, restore, or manually enter your congregation"
+msgstr "导入、恢复或手动输入您的会众数据"
+
+#: 
+msgid "Importing..."
+msgstr "正在导入..."
+
+#: 
+msgid "Include in Email Export"
+msgstr "包含在邮件导出中"
+
+#: 
+msgid "Included"
+msgstr "已包含"
+
+#: 
+msgid "Install a TLS/SSL certificate for secure connections"
+msgstr "安装 TLS/SSL 证书以实现安全连接"
+
+#: 
+msgid "Invalid import request"
+msgstr "无效的导入请求"
+
+#: 
+msgid "Invalid\"From Number\":\"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "无效的\"发送号码\"：\"%s\"。请包含国家代码，例如 +14155551234（美国）或 +447911123456（英国）。"
+
+#: 
+msgid "Invite Your Team"
+msgstr "邀请您的团队"
+
+#: 
+msgid "Join our community and stay connected with"
+msgstr "加入我们的社区并保持联系"
+
+#: 
+msgid "Jump to any setup step:"
+msgstr "跳转到任意设置步骤："
+
+#: 
+msgid "Key People"
+msgstr "关键人员"
+
+#: 
+msgid "Kiosk"
+msgstr "信息亭"
+
+#: 
+msgid "Kiosk Enabled"
+msgstr "自助终端已启用"
+
+#: 
+msgid "Let's restore your previous ChurchCRM data."
+msgstr "让我们恢复您之前的 ChurchCRM 数据。"
+
+#: 
+msgid "Letters"
+msgstr "信函"
+
+#: 
+msgid "Letters & Mailing Labels"
+msgstr "信函和邮寄标签"
+
+#: 
+msgid "Letters and Labels"
+msgstr "信函和标签"
+
+#: 
+msgid "List families created via self registration"
+msgstr "列出通过自助注册创建的家庭"
+
+#: 
+msgid "Load demo data"
+msgstr "加载演示数据"
+
+#: 
+msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
+msgstr "加载示例家庭、人员、小组和奉献记录。这是在提交真实数据之前学习 ChurchCRM 最安全的方式。"
+
+#: 
+msgid "Log Files"
+msgstr "日志文件"
+
+#: 
+msgid "Log Level"
+msgstr "日志级别"
+
+#: 
+msgid "Login to your account"
+msgstr "登录您的账户"
+
+#: 
+msgid "MailChimp, backups, and more"
+msgstr "MailChimp、备份等"
+
+#: 
+msgid "Manage %s options"
+msgstr "管理 %s 选项"
+
+#: 
+msgid "Manage Envelopes"
+msgstr "管理奉献信封"
+
+#: 
+msgid "Manage Sunday school classes, teachers, and student attendance"
+msgstr "管理主日学班级、教师和学生出席"
+
+#: 
+msgid "Manage classification lists, roles, and group types"
+msgstr "管理分类列表、角色和小组类型"
+
+#: 
+msgid "Manage donation funds for financial tracking"
+msgstr "管理捐献基金以进行财务跟踪"
+
+#: 
+msgid "Manage donations, pledges, and financial records"
+msgstr "管理奉献、奉献承诺和财务记录"
+
+#: 
+msgid "Manage email tools and SMTP configuration"
+msgstr "管理邮件工具和 SMTP 配置"
+
+#: 
+msgid "Manage event names and categories"
+msgstr "管理活动名称和分类"
+
+#: 
+msgid "Manage event type categories"
+msgstr "管理活动类型分类"
+
+#: 
+msgid "Manage families, people, and demographic information"
+msgstr "管理家庭、人员和人口统计信息"
+
+#: 
+msgid "Manage people in your cart"
+msgstr "管理选择列表中的人员"
+
+#: 
+msgid "Manage person, family, and group property types"
+msgstr "管理个人、家庭和小组属性类型"
+
+#: 
+msgid "Manage properties from the"
+msgstr "从以下位置管理属性"
+
+#: 
+msgid "Manage system users, permissions, and two-factor authentication settings"
+msgstr "管理系统用户、权限和两步验证设置"
+
+#: 
+msgid "Manage user account details and permissions"
+msgstr "管理用户账户详情和权限"
+
+#: 
+msgid "Manage volunteer opportunities and assign members"
+msgstr "管理志愿服务机会并分配成员"
+
+#: 
+msgid "Manage your personal preferences and account settings"
+msgstr "管理您的个人偏好和账户设置"
+
+#: 
+msgid "Manual"
+msgstr "手动"
+
+#: 
+msgid "Map cart items"
+msgstr "在地图上显示选择列表中的人员"
+
+#: 
+msgid "Map to Field"
+msgstr "映射到字段"
+
+#: 
+msgid "Material"
+msgstr "材料"
+
+#: 
+msgid "Member Properties"
+msgstr "成员属性"
+
+#: 
+msgid "Member Roles"
+msgstr "成员角色"
+
+#: 
+msgid "Members added to cart."
+msgstr "成员已添加到选择列表。"
+
+#: 
+msgid "Memberships"
+msgstr "成员关系"
+
+#: 
+msgid "Minimum"
+msgstr "最小值"
+
+#: 
+msgid "Modify family roles for group members"
+msgstr "修改小组成员的家庭角色"
+
+#: 
+msgid "Move Members"
+msgstr "移动成员"
+
+#: 
+msgid "Move Members to Group"
+msgstr "移动成员到小组"
+
+#: 
+msgid "Move to Group"
+msgstr "移动到小组"
+
+#: 
+msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
+msgstr "正在从现有的 ChurchCRM 或 ChurchInfo 安装迁移？上传您的备份文件，我们将自动恢复您的数据。"
+
+#: 
+msgid "My Settings"
+msgstr "我的设置"
+
+#: 
+msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
+msgstr "名称更改需要保存。操作菜单中的重新排序和删除操作会立即生效。"
+
+#: 
+msgid "Name, address, contact details"
+msgstr "姓名、地址、联系方式"
+
+#: 
+msgid "Need help?"
+msgstr "需要帮助？"
+
+#: 
+msgid "New"
+msgstr "新建"
+
+#: 
+msgid "New Family"
+msgstr "新建家庭"
+
+#: 
+msgid "New Group"
+msgstr "新建小组"
+
+#: 
+msgid "New Person"
+msgstr "新建人员"
+
+#: 
+msgid "No Anniversaries"
+msgstr "无纪念日"
+
+#: 
+msgid "No Birthdays"
+msgstr "无生日"
+
+#: 
+msgid "No Check-ins"
+msgstr "无签到"
+
+#: 
+msgid "No Deposit Tracking"
+msgstr "无奉献存款跟踪"
+
+#: 
+msgid "No Deposits"
+msgstr "无存款"
+
+#: 
+msgid "No anniversaries in the past or next 7 days"
+msgstr "过去和未来7天内没有纪念日"
+
+#: 
+msgid "No birthdays in the past or next 7 days"
+msgstr "过去和未来7天内没有生日"
+
+#: 
+msgid "No deposit data available yet"
+msgstr "暂无奉献存款数据"
+
+#: 
+msgid "No description set."
+msgstr "未设置描述。"
+
+#: 
+msgid "No email address on file"
+msgstr "无电子邮件地址记录"
+
+#: 
+msgid "No events linked to this class."
+msgstr "此班级没有关联的活动。"
+
+#: 
+msgid "No file uploaded"
+msgstr "未上传文件"
+
+#: 
+msgid "No group assignments yet."
+msgstr "尚无小组分配。"
+
+#: 
+msgid "No match found — select a field or leave as Ignore."
+msgstr "未找到匹配项——请选择一个字段或保持忽略。"
+
+#: 
+msgid "No matches for \"%s\". Try a different search term."
+msgstr "未找到与\"%s\"匹配的结果。请尝试其他搜索词。"
+
+#: 
+msgid "No member properties defined."
+msgstr "未定义成员属性。"
+
+#: 
+msgid "No members found for this role."
+msgstr "未找到此角色的成员。"
+
+#: 
+msgid "No people found"
+msgstr "未找到人员"
+
+#: 
+msgid "No people match your current filters."
+msgstr "没有人员匹配当前的筛选条件。"
+
+#: 
+msgid "No phone number on file"
+msgstr "无电话号码记录"
+
+#: 
+msgid "No properties assigned."
+msgstr "未分配属性。"
+
+#: 
+msgid "No properties defined yet"
+msgstr "尚未定义属性"
+
+#: 
+msgid "No results found"
+msgstr "未找到结果"
+
+#: 
+msgid "No timeline events yet."
+msgstr "暂无时间线事件。"
+
+#: 
+msgid "No volunteer opportunity assignments yet."
+msgstr "尚无志愿服务分配。"
+
+#: 
+msgid "Not ready yet?"
+msgstr "还没准备好？"
+
+#: 
+msgid "Once you have a family, add each household member as a person. Assign them a family role (e.g. Head of Household, Spouse, Child)."
+msgstr "创建家庭后，将每个家庭成员添加为个人。为他们分配家庭角色（如户主、配偶、子女）。"
+
+#: 
+msgid "Once you submit, our team will receive your registration and reach out to personally welcome your family. If anything looks wrong, use the Previous button to go back and make changes."
+msgstr "提交后，我们的团队将收到您的注册信息，并亲自联系欢迎您的家庭。如有任何问题，请使用上一步按钮返回修改。"
+
+#: 
+msgid "Only .csv files are accepted"
+msgstr "仅接受 .csv 文件"
+
+#: 
+msgid "Open GitHub Issue"
+msgstr "打开 GitHub 问题"
+
+#: 
+msgid "Open user menu"
+msgstr "打开用户菜单"
+
+#: 
+msgid "Options"
+msgstr "选项"
+
+#: 
+msgid "Other Members"
+msgstr "其他成员"
+
+#. plugin:custom-links:section:0:title
+#. plugin:external-backup:section:0:title
+#: 
+msgid "Overview"
+msgstr "概览"
+
+#: 
+msgid "Password Recovery"
+msgstr "密码恢复"
+
+#: 
+msgid "Past & next 7 days"
+msgstr "过去和未来7天"
+
+#: 
+msgid "People List"
+msgstr "人员列表"
+
+#: 
+msgid "People by Classification"
+msgstr "按分类查看人员"
+
+#: 
+msgid "Person removed from class."
+msgstr "人员已从班级中移除。"
+
+#: 
+msgid "Photo"
+msgstr "照片"
+
+#: 
+msgid "Photos only"
+msgstr "仅照片"
+
+#: 
+msgid "Pick a path to get started"
+msgstr "选择一种方式开始"
+
+#: 
+msgid "Please check everything looks right before submitting."
+msgstr "提交前请确认所有信息无误。"
+
+#: 
+msgid "Please map at least one column before importing"
+msgstr "导入前请至少映射一列"
+
+#: 
+msgid "Please select a CSV file"
+msgstr "请选择一个 CSV 文件"
+
+#: 
+msgid "Please try requesting a new password reset link or contact support if you continue to experience issues."
+msgstr "请尝试请求新的密码重置链接，如果问题持续请联系支持人员。"
+
+#: 
+msgid "Pledges"
+msgstr "奉献承诺"
+
+#: 
+msgid "Plugin enabled but not configured. Once set up, backups run automatically to WebDAV on your configured interval."
+msgstr "插件已启用但未配置。配置完成后，备份将按您设定的时间间隔自动运行到 WebDAV。"
+
+#: 
+msgid "Press ? to focus search"
+msgstr "按 ? 聚焦搜索框"
+
+#: 
+msgid "Prev"
+msgstr "上一页"
+
+#: 
+msgid "Print name tags"
+msgstr "打印姓名标签"
+
+#: 
+msgid "Printable directory of all people, grouped by family"
+msgstr "可打印的人员通讯录，按家庭分组"
+
+#: 
+msgid "Properties Form"
+msgstr "属性表单"
+
+#: 
+msgid "Property assignment not found."
+msgstr "未找到属性分配。"
+
+#: 
+msgid "Property deleted successfully."
+msgstr "属性已成功删除。"
+
+#: 
+msgid "Property not found."
+msgstr "未找到属性。"
+
+#: 
+msgid "Quick Setup"
+msgstr "快速设置"
+
+#: 
+msgid "Quick Tips"
+msgstr "快速提示"
+
+#: 
+msgid "Ready to back up"
+msgstr "准备备份"
+
+#: 
+msgid "Ready to restore"
+msgstr "准备恢复"
+
+#: 
+msgid "Recommended Order"
+msgstr "建议顺序"
+
+#: 
+msgid "Record multiple fundraiser drawing winners at once"
+msgstr "一次记录多个募捐抽奖获奖者"
+
+#: 
+msgid "Record new pledges and payments"
+msgstr "记录新的奉献承诺和奉献款"
+
+#: 
+msgid "Record why attendees visited your church"
+msgstr "记录来访者来教会的原因"
+
+#: 
+msgid "Register Your Family"
+msgstr "注册您的家庭"
+
+#: 
+msgid "Register another family"
+msgstr "注册另一个家庭"
+
+#: 
+msgid "Remove all from Cart"
+msgstr "从选择列表中移除全部"
+
+#: 
+msgid "Remove from Class"
+msgstr "从班级中移除"
+
+#: 
+msgid "Report an Issue"
+msgstr "报告问题"
+
+#: 
+msgid "Restore a Backup"
+msgstr "恢复备份"
+
+#: 
+msgid "Restore backup"
+msgstr "恢复备份"
+
+#: 
+msgid "Restore your church database from a backup file"
+msgstr "从备份文件恢复您的教会数据库"
+
+#: 
+msgid "Return to Dashboard"
+msgstr "返回仪表板"
+
+#: 
+msgid "Return to Families"
+msgstr "返回家庭列表"
+
+#: 
+msgid "Return to Groups"
+msgstr "返回小组列表"
+
+#: 
+msgid "Return to People"
+msgstr "返回人员列表"
+
+#: 
+msgid "Review and clean up files not associated with any record"
+msgstr "审查并清理未关联任何记录的文件"
+
+#: 
+msgid "Role not found."
+msgstr "未找到角色。"
+
+#: 
+msgid "Roles"
+msgstr "角色"
+
+#: 
+msgid "Run"
+msgstr "运行"
+
+#: 
+msgid "SMTP server for sending emails"
+msgstr "用于发送邮件的 SMTP 服务器"
+
+#: 
+msgid "Sample Data"
+msgstr "示例数据"
+
+#: 
+msgid "Search Results"
+msgstr "搜索结果"
+
+#: 
+msgid "Search across people, families, groups, addresses, and more."
+msgstr "搜索人员、家庭、小组、地址等。"
+
+#: 
+msgid "Search and view deposit slip records"
+msgstr "搜索和查看奉献存款单记录"
+
+#: 
+msgid "Search groups..."
+msgstr "搜索小组..."
+
+#: 
+msgid "Search people, families, groups…"
+msgstr "搜索人员、家庭、小组…"
+
+#: 
+msgid "Security First"
+msgstr "安全第一"
+
+#: 
+msgid "Select Fields"
+msgstr "选择字段"
+
+#: 
+msgid "Select Fields to Include"
+msgstr "选择要包含的字段"
+
+#: 
+msgid "Select a backup file and click Restore Database."
+msgstr "选择备份文件并点击恢复数据库。"
+
+#: 
+msgid "Select your options above and click a backup button."
+msgstr "在上方选择选项并点击备份按钮。"
+
+#: 
+msgid "Self Registration Report"
+msgstr "自助注册报告"
+
+#: 
+msgid "Send email to families"
+msgstr "发送邮件给家庭"
+
+#: 
+msgid "Server Error"
+msgstr "服务器错误"
+
+#: 
+msgid "Server returned an unexpected response. Please try again."
+msgstr "服务器返回了意外响应，请重试。"
+
+#: 
+msgid "Set Permission True to give new users the ability to change their current value."
+msgstr "将权限设为\"是\"以允许新用户更改其当前值。"
+
+#: 
+msgid "Set an admin user email so you can reset passwords and receive notifications"
+msgstr "设置管理员邮箱以便重置密码和接收通知"
+
+#: 
+msgid "Set default preferences for new user accounts"
+msgstr "设置新用户账户的默认偏好"
+
+#: 
+msgid "Set up"
+msgstr "设置"
+
+#: 
+msgid "Set up a new fundraiser campaign or event"
+msgstr "设置新的募捐活动"
+
+#: 
+msgid "Set your church name, address, and contact details"
+msgstr "设置您的教会名称、地址和联系方式"
+
+#: 
+msgid "Set your church name, address, and contact email"
+msgstr "设置您的教会名称、地址和联系邮箱"
+
+#: 
+msgid "Setup Progress"
+msgstr "设置进度"
+
+#: 
+msgid "Setup Required"
+msgstr "需要设置"
+
+#: 
+msgid "Share"
+msgstr "分享"
+
+#: 
+msgid "Showing members of: %s"
+msgstr "显示 %s 的成员"
+
+#: 
+msgid "Sign in"
+msgstr "登录"
+
+#: 
+msgid "Since this is a fresh installation, restoring will simply load your backup data."
+msgstr "由于这是全新安装，恢复操作将直接加载您的备份数据。"
+
+#: 
+msgid "Skip — go to Admin Dashboard"
+msgstr "跳过——前往管理仪表板"
+
+#: 
+msgid "Start Fresh"
+msgstr "全新开始"
+
+#: 
+msgid "Start Over"
+msgstr "重新开始"
+
+#: 
+msgid "Stay informed"
+msgstr "保持关注"
+
+#: 
+msgid "Step 1 — Upload CSV File"
+msgstr "步骤 1 ——上传 CSV 文件"
+
+#: 
+msgid "Step 2 — Map Columns"
+msgstr "步骤 2 ——映射列"
+
+#: 
+msgid "Submitting..."
+msgstr "正在提交..."
+
+#: 
+msgid "Supports backups from ChurchCRM and ChurchInfo."
+msgstr "支持来自 ChurchCRM 和 ChurchInfo 的备份。"
+
+#: 
+msgid "System diagnostic information and configuration"
+msgstr "系统诊断信息和配置"
+
+#: 
+msgid "Tags"
+msgstr "标签"
+
+#: 
+msgid "Tax Statements"
+msgstr "税务报表"
+
+#: 
+msgid "Teacher"
+msgstr "教师"
+
+#: 
+msgid "Technical Details"
+msgstr "技术详情"
+
+#: 
+msgid "Tell us about your family"
+msgstr "告诉我们关于您的家庭"
+
+#: 
+msgid "The property could not be removed."
+msgstr "无法移除该属性。"
+
+#: 
+msgid "The property is successfully removed."
+msgstr "属性已成功移除。"
+
+#: 
+msgid "To Family"
+msgstr "到家庭"
+
+#: 
+msgid "To Group"
+msgstr "到小组"
+
+#: 
+msgid "Toggle navigation"
+msgstr "切换导航"
+
+#: 
+msgid "Total Size"
+msgstr "总大小"
+
+#: 
+msgid "Track family pledges and fund contributions by fiscal year"
+msgstr "按财年跟踪家庭奉献承诺和基金捐献"
+
+#: 
+msgid "Transaction Details"
+msgstr "交易详情"
+
+#: 
+msgid "Unmapped"
+msgstr "未映射"
+
+#: 
+msgid "Update Admin Contact"
+msgstr "更新管理员联系方式"
+
+#: 
+msgid "Upload CSV"
+msgstr "上传 CSV"
+
+#: 
+msgid "Upload a CSV file to import families and people into ChurchCRM."
+msgstr "上传 CSV 文件将家庭和人员导入 ChurchCRM。"
+
+#: 
+msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
+msgstr "上传来自 Excel、Google Sheets 或之前教会管理系统的 CSV 文件，并将列映射到 ChurchCRM 字段。"
+
+#: 
+msgid "Upload failed."
+msgstr "上传失败。"
+
+#: 
+msgid "Upload failed. Please check the file and try again."
+msgstr "上传失败。请检查文件后重试。"
+
+#: 
+msgid "Upload session expired. Please upload the file again."
+msgstr "上传会话已过期。请重新上传文件。"
+
+#: 
+msgid "Uploading, please wait..."
+msgstr "正在上传，请稍候..."
+
+#: 
+msgid "Users"
+msgstr "用户"
+
+#: 
+msgid "Verify Info"
+msgstr "验证信息"
+
+#: 
+msgid "Verify your identity"
+msgstr "验证您的身份"
+
+#: 
+msgid "View Family"
+msgstr "查看家庭"
+
+#: 
+msgid "View People"
+msgstr "查看人员"
+
+#: 
+msgid "View all families on an interactive map"
+msgstr "在交互式地图上查看所有家庭"
+
+#: 
+msgid "View all results"
+msgstr "查看所有结果"
+
+#: 
+msgid "View and manage all groups in your congregation"
+msgstr "查看和管理教会中的所有小组"
+
+#: 
+msgid "View and manage deposit slip payments"
+msgstr "查看和管理奉献存款单"
+
+#: 
+msgid "View and manage family location data"
+msgstr "查看和管理家庭位置数据"
+
+#: 
+msgid "View and manage system log files for debugging"
+msgstr "查看和管理系统日志文件以进行调试"
+
+#: 
+msgid "View and run saved database queries"
+msgstr "查看和运行已保存的数据库查询"
+
+#: 
+msgid "View buyer numbers and paddle assignments"
+msgstr "查看买家编号和竞拍牌分配"
+
+#: 
+msgid "View class roster, teacher assignments, and contact information"
+msgstr "查看班级名册、教师分配和联系信息"
+
+#: 
+msgid "View family details, members, and timeline"
+msgstr "查看家庭详情、成员和时间线"
+
+#: 
+msgid "View family pledge summaries and fund allocations"
+msgstr "查看家庭奉献承诺摘要和基金分配"
+
+#: 
+msgid "View group members, roles, and properties"
+msgstr "查看小组成员、角色和属性"
+
+#: 
+msgid "View pledge dashboard"
+msgstr "查看奉献承诺仪表板"
+
+#: 
+msgid "View query results"
+msgstr "查看查询结果"
+
+#: 
+msgid "View transaction details for a pledge payment"
+msgstr "查看奉献承诺付款的交易详情"
+
+#: 
+msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
+msgstr "有投票权的成员必须在近几年内有过奉献（0 表示不要求奉献）"
+
+#: 
+msgid "We could not find the family you were looking for."
+msgstr "我们找不到您要查找的家庭。"
+
+#: 
+msgid "We could not find the group you were looking for."
+msgstr "我们找不到您要查找的小组。"
+
+#: 
+msgid "We could not find the person you were looking for."
+msgstr "我们找不到您要查找的人员。"
+
+#: 
+msgid "We could not find the record you were looking for."
+msgstr "我们找不到您要查找的记录。"
+
+#: 
+msgid "We were unable to process your password reset request."
+msgstr "我们无法处理您的密码重置请求。"
+
+#: 
+msgid "We'll use this to keep in touch and send church updates."
+msgstr "我们将使用此信息与您保持联系并发送教会动态。"
+
+#: 
+msgid "We're so glad you're here! Register your family in just 3 easy steps."
+msgstr "很高兴您的到来！只需3个简单步骤即可注册您的家庭。"
+
+#: 
+msgid "We're so glad your family has joined us!"
+msgstr "很高兴您的家庭加入了我们！"
+
+#: 
+msgid "Welcome Back!"
+msgstr "欢迎回来！"
+
+#: 
+msgid "Welcome back! Please enter your details to continue"
+msgstr "欢迎回来！请输入您的信息以继续"
+
+#: 
+msgid "Welcome to the Family!"
+msgstr "欢迎加入大家庭！"
+
+#: 
+msgid "What happens next?"
+msgstr "接下来会怎样？"
+
+#: 
+msgid "What went wrong? What did you expect to happen?"
+msgstr "出了什么问题？您期望的结果是什么？"
+
+#: 
+msgid "Who is in your family?"
+msgstr "您家庭中有哪些成员？"
+
+#: 
+msgid "Why Came"
+msgstr "来访原因"
+
+#: 
+msgid "Yes, delete"
+msgstr "是，删除"
+
+#: 
+msgid "You can always import more data later via CSV."
+msgstr "您以后随时可以通过 CSV 导入更多数据。"
+
+#: 
+msgid "You can create/delete sunday school group."
+msgstr "您可以创建/删除主日学小组。"
+
+#: 
+msgid "You do not have finance permissions to view deposits."
+msgstr "您没有查看奉献存款的财务权限。"
+
+#: 
+msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
+msgstr "您的备份数据已加载。您将被重定向使用之前的凭据登录。"
+
+#: 
+msgid "Your backup will be automatically upgraded to the latest database schema if needed."
+msgstr "如有需要，您的备份将自动升级到最新的数据库架构。"
+
+#: 
+msgid "Your previous session timed out. Please login again."
+msgstr "您的上一次会话已超时。请重新登录。"
+
+#: 
+msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "您的注册已收到。我们的团队将尽快与您联系，亲自欢迎您。"
+
+#: 
+msgid "all members"
+msgstr "所有成员"
+
+#: 
+msgid "complete"
+msgstr "完成"
+
+#: 
+msgid "fields"
+msgstr "字段"
+
+#: 
+msgid "from this class?"
+msgstr "从此班级？"
+
+#: 
+msgid "from this group?"
+msgstr "从此小组？"
+
+#: 
+msgid "full group view"
+msgstr "完整小组视图"
+
+#: 
+msgid "funds"
+msgstr "基金"
+
+#: 
+msgid "members"
+msgstr "成员"
+
+#: 
+msgid "opportunities"
+msgstr "服务机会"
+
+#: 
+msgid "options"
+msgstr "选项"
+
+#: 
+msgid "or connect an external service"
+msgstr "或连接外部服务"
+
+#: 
+msgid "our church"
+msgstr "我们的教会"
+
+#: 
+msgid "page"
+msgstr "页"
+
+#: 
+msgid "properties"
+msgstr "属性"
+
+#: 
+msgid "to another group?"
+msgstr "到另一个小组？"
+
+#: 
+msgid "— Ignore —"
+msgstr "— 忽略 —"
+
+#: 
+msgid "— Select a group —"
+msgstr "— 选择小组 —"
+
+#: 
+msgid "— Select type (optional) —"
+msgstr "— 选择类型（可选）—"
+
+#: 
+msgid "Accept the device, then assign it to an event to begin check-in."
+msgstr "接受设备后，将其分配到活动以开始签到。"
+
+#: 
+msgid "Activate"
+msgstr "激活"
+
+#: 
+msgid "Active Events"
+msgstr "进行中的活动"
+
+#: 
+msgid "Add Event"
+msgstr "添加活动"
+
+#: 
+msgid "Adults"
+msgstr "成人"
+
+#: 
+msgid "Affected Files"
+msgstr "受影响的文件"
+
+#: 
+msgid "All Checks Passed"
+msgstr "所有检查已通过"
+
+#: 
+msgid "Applying..."
+msgstr "正在应用..."
+
+#: 
+msgid "Assigned Kiosk"
+msgstr "已分配的自助终端"
+
+#: 
+msgid "Attendance"
+msgstr "出席"
+
+#: 
+msgid "Back up modified files before upgrading if you want to keep your changes."
+msgstr "如果您想保留更改，请在升级前备份已修改的文件。"
+
+#: 
+msgid "Backup Complete"
+msgstr "备份完成"
+
+#: 
+msgid "Class / Group"
+msgstr "班级 / 小组"
+
+#: 
+msgid "Class List Export"
+msgstr "班级列表导出"
+
+#: 
+msgid "Click the registration toggle above to open a 30-second registration window."
+msgstr "点击上方的注册开关以打开30秒注册窗口。"
+
+#: 
+msgid "Continue"
+msgstr "继续"
+
+#: 
+msgid "Create First Event"
+msgstr "创建第一个活动"
+
+#: 
+msgid "Create a database backup before applying the update. This is strongly recommended."
+msgstr "在应用更新前创建数据库备份。强烈建议执行此操作。"
+
+#: 
+msgid "Creating Backup..."
+msgstr "正在创建备份..."
+
+#: 
+msgid "Download Backup & Continue"
+msgstr "下载备份并继续"
+
+#: 
+msgid "Download the latest release and apply it to your installation."
+msgstr "下载最新版本并应用到您的安装。"
+
+#: 
+msgid "Enable new kiosk registration"
+msgstr "启用新自助终端注册"
+
+#: 
+msgid "Events Dashboard"
+msgstr "活动仪表板"
+
+#: 
+msgid "Events This Year"
+msgstr "今年活动"
+
+#: 
+msgid "Everyone"
+msgstr "所有人"
+
+#: 
+msgid "Failed to delete note"
+msgstr "删除备注失败"
+
+#: 
+msgid "Files not part of the official release were found on your server."
+msgstr "在您的服务器上发现了不属于官方发布版本的文件。"
+
+#: 
+msgid "Force Re-install?"
+msgstr "强制重新安装？"
+
+#: 
+msgid "Full Path"
+msgstr "完整路径"
+
+#: 
+msgid "Generate class lists, attendance sheets, and photo books"
+msgstr "生成班级列表、签到表和照片册"
+
+#: 
+msgid "Installed"
+msgstr "已安装"
+
+#: 
+msgid "It is strongly recommended to have a backup before proceeding."
+msgstr "强烈建议在继续之前进行备份。"
+
+#: 
+msgid "Kiosk Registration"
+msgstr "自助终端注册"
+
+#: 
+msgid "Latest"
+msgstr "最新"
+
+#: 
+msgid "Latest version unknown"
+msgstr "最新版本未知"
+
+#: 
+msgid "Manage Event Types"
+msgstr "管理活动类型"
+
+#: 
+msgid "Modified files will be reverted to the official version."
+msgstr "已修改的文件将恢复为官方版本。"
+
+#: 
+msgid "Multiple groups will have a Page Break between Groups"
+msgstr "多个小组之间将有分页符"
+
+#: 
+msgid "New Members & Greeting"
+msgstr "新成员与欢迎"
+
+#: 
+msgid "No Events Found"
+msgstr "未找到活动"
+
+#: 
+msgid "No events found for %s."
+msgstr "未找到 %s 的活动。"
+
+#: 
+msgid "No issues found. You may proceed with the upgrade."
+msgstr "未发现问题。您可以继续升级。"
+
+#: 
+msgid "Note not found"
+msgstr "未找到备注"
+
+#: 
+msgid "Note text is required"
+msgstr "备注内容为必填项"
+
+#: 
+msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
+msgstr "在自助终端设备（平板电脑、笔记本电脑等）上，打开浏览器并访问："
+
+#: 
+msgid "Only the note author or an admin may delete this note"
+msgstr "只有备注作者或管理员才能删除此备注"
+
+#: 
+msgid "Only the note author or an admin may edit this note"
+msgstr "只有备注作者或管理员才能编辑此备注"
+
+#: 
+msgid "Overview of church events, attendance, and activity"
+msgstr "教会活动、出席和动态概览"
+
+#: 
+msgid "People Without Emails"
+msgstr "无电子邮件的人员"
+
+#: 
+msgid "People with no personal or work email on record"
+msgstr "没有个人或工作邮箱记录的人员"
+
+#: 
+msgid "Pre-flight"
+msgstr "预检"
+
+#: 
+msgid "Re-install"
+msgstr "重新安装"
+
+#: 
+msgid "Refresh"
+msgstr "刷新"
+
+#: 
+msgid "Register and manage kiosk devices for event check-in"
+msgstr "注册和管理用于活动签到的自助终端设备"
+
+#: 
+msgid "Review & Delete"
+msgstr "审查并删除"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 哈希"
+
+#: 
+msgid "Setup Instructions"
+msgstr "设置说明"
+
+#: 
+msgid "Signature Mismatch"
+msgstr "签名不匹配"
+
+#: 
+msgid "Skip, Continue Without Backup"
+msgstr "跳过，不备份继续"
+
+#: 
+msgid "The device will register itself and appear in the table below as \"Pending\"."
+msgstr "设备将自动注册并以\"待处理\"状态显示在下方表格中。"
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "启用此插件后，这些链接将出现在导航侧栏的\"链接\"菜单中。"
+
+#: 
+msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
+msgstr "这将重新下载并重新应用当前版本。它可以修复损坏或修改过的文件。"
+
+#: 
+msgid "To set up a kiosk device, follow these steps:"
+msgstr "要设置自助终端设备，请按照以下步骤操作："
+
+#: 
+msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
+msgstr "切换下方的开关以打开30秒窗口供新自助终端设备注册。"
+
+#: 
+msgid "Total Check-ins"
+msgstr "签到总数"
+
+#: 
+msgid "Try selecting a different event type or year."
+msgstr "请尝试选择不同的活动类型或年份。"
+
+#: 
+msgid "Up to Date"
+msgstr "已是最新"
+
+#: 
+msgid "Upcoming Sunday School Events"
+msgstr "即将到来的主日学活动"
+
+#: 
+msgid "Update Available"
+msgstr "有可用更新"
+
+#: 
+msgid "User must have Notes permission"
+msgstr "用户必须拥有备注权限"
+
+#: 
+msgid "Address Defaults"
+msgstr "地址默认值"
+
+#: 
+msgid "All Day"
+msgstr "整天"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Allow user to add new event"
+msgstr "允许用户添加新事件"
+
+#: 
+msgid "Are you sure you want to continue?"
+msgstr "您确定要继续吗?"
+
+#: 
+msgid "Are you sure you want to delete this event?"
+msgstr "您确定要删除此事件吗?"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Beginning Date"
+msgstr "开始日期"
+
+#: 
+msgid "Calendar Settings"
+msgstr "日历设置"
+
+#: 
+msgid "Calendars"
+msgstr "日历"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose a volunteer opportunity"
+msgstr "选择志愿者机会"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose customer person field"
+msgstr "选择人员字段"
+
+#: 
+msgid "Church Identity"
+msgstr "教会身份"
+
+#: 
+msgid "Church information saved successfully"
+msgstr "教会信息保存成功"
+
+#: 
+msgid "Church name is required. Please fill in the Church Identity section above."
+msgstr "教会名称是必需的。请填写上面的教会身份部分。"
+
+#: 
+msgid "ChurchCRM can send emails directly."
+msgstr "ChurchCRM可以直接发送电子邮件。"
+
+#: 
+msgid "Clipboard API not available. Please copy the URL manually."
+msgstr "剪贴板API不可用。请手动复制URL。"
+
+#: 
+msgid "Communication"
+msgstr "沟通"
+
+#. Context: query_qry
+#: 
+msgid "Compare pledges between two fiscal years"
+msgstr "比较两个财年之间的承诺"
+
+#: 
+msgid "Configure SMTP in the settings below to send emails from the system."
+msgstr "在下面的设置中配置SMTP以从系统发送电子邮件。"
+
+#: 
+msgid "Configure Vonage"
+msgstr "配置Vonage"
+
+#: 
+msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
+msgstr "连接Mailchimp以同步新闻通讯和活动的电子邮件列表。"
+
+#: 
+msgid "Copied to clipboard"
+msgstr "已复制到剪贴板"
+
+#: 
+msgid "Copy All Emails"
+msgstr "复制所有电子邮件"
+
+#: 
+msgid "Copy All Numbers"
+msgstr "复制所有数字"
+
+#: 
+msgid "Copy from church address"
+msgstr "从教会地址复制"
+
+#: 
+msgid "Copy to clipboard"
+msgstr "复制到剪贴板"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Custom field"
+msgstr "自定义字段"
+
+#. Context: query_qry
+#: 
+msgid "CustomSearch"
+msgstr "自定义搜索"
+
+#: 
+msgid "Default Country"
+msgstr "默认国家"
+
+#: 
+msgid "Default State"
+msgstr "默认状态"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Delimiter to separate emails in mailto: links"
+msgstr "在mailto:链接中分隔电子邮件的分隔符"
+
+#: 
+msgid "Distance Unit"
+msgstr "距离单位"
+
+#: 
+msgid "Duration"
+msgstr "期间"
+
+#: 
+msgid "Email Dashboard"
+msgstr "电子邮件仪表板"
+
+#: 
+msgid "Email Integrations"
+msgstr "电子邮件集成"
+
+#: 
+msgid "Email addresses copied to clipboard"
+msgstr "电子邮件地址已复制到剪贴板"
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
+msgstr "电子邮件功能当前已禁用。在启用电子邮件之前,以下功能将无法工作:"
+
+#: 
+msgid "Email is Disabled"
+msgstr "电子邮件被禁用"
+
+#: 
+msgid "Email links in group and people views"
+msgstr "小组和人员视图中的电子邮件链接"
+
+#: 
+msgid "Email lists are synced with Mailchimp."
+msgstr "电子邮件列表与Mailchimp同步。"
+
+#: 
+msgid "Enable email in the settings panel below, then configure your SMTP server."
+msgstr "在下面的设置面板中启用电子邮件,然后配置SMTP服务器。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Ending Date"
+msgstr "结束日期"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "输入以下任何部分:姓名、城市、州、邮编、家庭电话、电子邮件或工作电子邮件。"
+
+#: 
+msgid "External Calendar API Disabled"
+msgstr "外部日历API已禁用"
+
+#: 
+msgid "Failed to retrieve data"
+msgstr "检索数据失败"
+
+#: 
+msgid "Failed to retrieve email addresses"
+msgstr "检索电子邮件地址失败"
+
+#: 
+msgid "Failed to retrieve phone numbers"
+msgstr "检索电话号码失败"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Field value"
+msgstr "字段值"
+
+#. Context: query_qry
+#: 
+msgid "Find people who pledged one year but not another"
+msgstr "找出有志在某一年但不是另一年的人"
+
+#. Context: query_qry
+#: 
+msgid "Find people with a custom field value"
+msgstr "找出具有自定义字段值的人"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for a particular opportunity"
+msgstr "为特定机会寻找志愿者"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for who match two specific opportunity codes"
+msgstr "为符合两个特定机会代码的志愿者提供支持"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First Fiscal Year"
+msgstr "第一个财政年度"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First fiscal year for comparison"
+msgstr "用于比较的第一个财政年度"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First volunteer opportunity choice"
+msgstr "第一个志愿者机会选择"
+
+#. Context: query_qry
+#: 
+msgid "Friends who signed up in previous months"
+msgstr "在前几个月注册的朋友"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Guest"
+msgstr "访客"
+
+#: 
+msgid "Kiosk check-in email notifications"
+msgstr "信息亭签到电子邮件通知"
+
+#: 
+msgid "Mailchimp Connected"
+msgstr "Mailchimp 已连接"
+
+#: 
+msgid "Mailchimp Not Configured"
+msgstr "Mailchimp 未配置"
+
+#: 
+msgid "Manage SMS/text messaging tools and settings"
+msgstr "管理短信/文字消息工具和设置"
+
+#: 
+msgid "Manage events, birthdays, and anniversaries"
+msgstr "管理活动、生日和周年纪念"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Match custom field to this value"
+msgstr "将自定义字段匹配到此值"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Maximum Age"
+msgstr "最大年龄"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Member, Regular Attender, etc."
+msgstr "成员、经常参加者等"
+
+#. Context: query_qry
+#: 
+msgid "Members who joined in a particular month"
+msgstr "在特定月份加入的成员"
+
+#. Context: query_qry
+#: 
+msgid "Membership anniversaries"
+msgstr "会员周年纪念"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Minimum Age"
+msgstr "最小年龄"
+
+#. Context: query_qry
+#: 
+msgid "Missing pledges"
+msgstr "缺少的奉献承诺"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Month"
+msgstr "月份"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Months"
+msgstr "月份"
+
+#: 
+msgid "My Calendars"
+msgstr "我的日历"
+
+#: 
+msgid "New member notification emails"
+msgstr "新成员通知电子邮件"
+
+#: 
+msgid "No cell phone on file"
+msgstr "文件中没有手机"
+
+#: 
+msgid "No email addresses available"
+msgstr "没有可用的电子邮件地址"
+
+#: 
+msgid "No phone numbers available"
+msgstr "没有可用的电话号码"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender"
+msgstr "非出席者"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender (staff)"
+msgstr "非出席者（工作人员）"
+
+#: 
+msgid "Not Classified"
+msgstr "未分类"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Number of months since becoming a friend"
+msgstr "成为朋友以来的月数"
+
+#: 
+msgid "Parents"
+msgstr "父母"
+
+#: 
+msgid "Password reset emails — users cannot recover their accounts"
+msgstr "密码重置电子邮件 — 用户无法恢复其帐户"
+
+#: 
+msgid "People Settings"
+msgstr "人员设置"
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays in a particular month"
+msgstr "在特定月份有生日的人"
+
+#. Context: query_qry
+#: 
+msgid "Person by Property"
+msgstr "按属性的人员"
+
+#: 
+msgid "Person property used to exclude members from SMS/text lists"
+msgstr "用于将成员从短信/文本列表中排除的人员属性"
+
+#: 
+msgid "Person property used to exclude members from email lists"
+msgstr "用于将成员从电子邮件列表中排除的人员属性"
+
+#: 
+msgid "Phone numbers copied to clipboard"
+msgstr "电话号码已复制到剪贴板"
+
+#: 
+msgid "Phone numbers copied — paste into your messaging app"
+msgstr "电话号码已复制 — 粘贴到您的消息应用中"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
+msgstr "请输入最后日期以计算每个成员的总贡献（即 YYYY-MM-DD）。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
+msgstr "请选择起始日期以计算每个成员的总贡献（即 YYYY-MM-DD）。注意：您只能选择包含捐款的日期。"
+
+#. Context: query_qry
+#: 
+msgid "Pledge comparison"
+msgstr "奉献承诺比较"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Pledged this year"
+msgstr "今年承诺奉献"
+
+#: 
+msgid "Press CTRL + C to copy"
+msgstr "按 CTRL + C 复制"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Property"
+msgstr "属性"
+
+#: 
+msgid "Public calendar"
+msgstr "公共日历"
+
+#. Context: query_qry
+#: 
+msgid "Recent friends"
+msgstr "最近的朋友"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Regular Attender"
+msgstr "经常参加者"
+
+#. Context: query_qry
+#: 
+msgid "Returns person records which are assigned the given property."
+msgstr "返回分配给给定属性的人员记录。"
+
+#: 
+msgid "SMS Integration"
+msgstr "短信集成"
+
+#: 
+msgid "SMS messages can be sent directly from ChurchCRM via the Vonage API."
+msgstr "可以通过 Vonage API 从 ChurchCRM 直接发送短信。"
+
+#: 
+msgid "SMTP Configured"
+msgstr "SMTP 已配置"
+
+#: 
+msgid "SMTP Not Configured"
+msgstr "SMTP 未配置"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Search"
+msgstr "搜索"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second Fiscal Year"
+msgstr "第二个财政年度"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second fiscal year for comparison"
+msgstr "用于比较的第二个财政年度"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second volunteer opportunity choice"
+msgstr "第二个志愿者机会选择"
+
+#: 
+msgid "Select calendars..."
+msgstr "选择日历..."
+
+#: 
+msgid "Select event type..."
+msgstr "选择活动类型..."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select field to search for."
+msgstr "选择要搜索的字段。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired family role."
+msgstr "选择所需的家庭角色。"
+
+#: 
+msgid "Send text message"
+msgstr "发送文本消息"
+
+#: 
+msgid "Some calendars have access tokens, but external calendar sharing is currently disabled. Enable it via Calendar Settings to allow external apps to subscribe to your calendars."
+msgstr "某些日历具有访问令牌，但外部日历共享当前已禁用。通过日历设置启用它，以允许外部应用订阅您的日历。"
+
+#: 
+msgid "System Calendars"
+msgstr "系统日历"
+
+#: 
+msgid "System language for the church."
+msgstr "教会的系统语言。"
+
+#: 
+msgid "Text All"
+msgstr "全部文本"
+
+#: 
+msgid "Text Dashboard"
+msgstr "文本仪表板"
+
+#: 
+msgid "Text Settings"
+msgstr "文本设置"
+
+#: 
+msgid "Text Tools"
+msgstr "文本工具"
+
+#: 
+msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
+msgstr "文本消息操作可从组和主日学班级视图中获得。使用\"文本\"下拉菜单复制电话号码或向组成员发送短信。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The birthday month for which you would like records returned."
+msgstr "您想要返回记录的生日月份。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The desired gender to search the database for."
+msgstr "您想要搜索的所需性别。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The gender for which you would like records returned."
+msgstr "您想要返回记录的性别。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The maximum age for which you want records returned."
+msgstr "您想要返回记录的最大年龄。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The membership anniversary month for which you would like records returned."
+msgstr "您想要返回记录的会员周年月份。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The minimum age for which you want records returned."
+msgstr "您想要返回记录的最小年龄。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The property for which you would like person records returned."
+msgstr "您想要返回人员记录的属性。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The sunday school class for which you would like records returned."
+msgstr "您想要返回记录的主日学班级。"
+
+#: 
+msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
+msgstr "创建新家庭时，这些值会预先填充。留空以要求手动输入。"
+
+#: 
+msgid "Time"
+msgstr "时间"
+
+#: 
+msgid "Timed"
+msgstr "定时"
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the URL manually."
+msgstr "无法复制到剪贴板。请手动复制 URL。"
+
+#: 
+msgid "Unit used to measure distance."
+msgstr "用于测量距离的单位。"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to create directories"
+msgstr "用户权限以创建目录"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to send email via mailto: links"
+msgstr "用户权限通过 mailto: 链接发送电子邮件"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Volunteer opportunities"
+msgstr "志愿者机会"
+
+#. Context: query_qry
+#: 
+msgid "Volunteers"
+msgstr "志愿者"
+
+#: 
+msgid "Vonage SMS Connected"
+msgstr "Vonage 短信已连接"
+
+#: 
+msgid "Vonage SMS Not Configured"
+msgstr "Vonage 短信未配置"
+
+#: 
+msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
+msgstr "没有 Vonage，文本操作将打开您设备的原生短信应用或将电话号码复制到剪贴板。"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "WorkEmail"
+msgstr "工作电子邮件"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "but not this year"
+msgstr "但今年不是"
+
+#: 
+msgid "e.g. Sunday Service"
+msgstr "例如主日崇拜"
+
+#: 
+msgid "member"
+msgstr "成员"
+
+#. plugin:mailchimp:section:1:content
+#: 
+msgid "- **Dashboard**: View all your MailChimp lists with subscriber statistics\n"
+"- **List Maintenance**: Identify people in MailChimp but not in CRM, and vice versa\n"
+"- **Contact Integration**: View MailChimp subscription status on Person and Family pages\n"
+"- **Automatic Sync**: Hooks into person/family updates to keep MailChimp in sync"
+msgstr "- **仪表板**：查看所有MailChimp列表及订阅者统计信息\n"
+"- **列表维护**：识别在MailChimp中但不在CRM中的联系人，反之亦然\n"
+"- **联系人集成**：在成员和家庭页面查看MailChimp订阅状态\n"
+"- **自动同步**：与成员/家庭更新挂钩，保持MailChimp同步"
+
+#. plugin:vonage:section:1:content
+#: 
+msgid "1. Create a Vonage account at https://dashboard.nexmo.com/sign-up (new accounts include free trial credit)\n"
+"2. Find your API Key and API Secret on the Vonage Dashboard homepage\n"
+"3. Go to Numbers > Buy Numbers and purchase a number with SMS capability\n"
+"4. Note the number in E.164 format (e.g., +14155551234)\n"
+"5. In ChurchCRM, enable the Vonage SMS plugin and enter your credentials"
+msgstr "1. 在 https://dashboard.nexmo.com/sign-up 创建Vonage账户（新账户包含免费试用额度）\n"
+"2. 在Vonage仪表板首页找到您的API密钥和API密码\n"
+"3. 前往号码 > 购买号码，购买具有短信功能的号码\n"
+"4. 以E.164格式记录号码（例如 +14155551234）\n"
+"5. 在ChurchCRM中启用Vonage SMS插件并输入您的凭据"
+
+#. plugin:google-analytics:section:0:content
+#: 
+msgid "1. Go to Google Analytics (analytics.google.com)\n"
+"2. Create a property or select an existing one\n"
+"3. Go to Admin → Data Streams → Web\n"
+"4. Copy the Measurement ID (starts with G-)"
+msgstr "1. 前往Google Analytics（analytics.google.com）\n"
+"2. 创建媒体资源或选择现有资源\n"
+"3. 前往管理 → 数据流 → 网站\n"
+"4. 复制衡量ID（以G-开头）"
+
+#. plugin:openlp:section:2:content
+#: 
+msgid "1. Install OpenLP 3.0 or later on your presentation computer\n"
+"2. Enable the Remote plugin in OpenLP (Settings → Configure OpenLP → Plugins)\n"
+"3. Enable the Alerts plugin in OpenLP for alert display support\n"
+"4. Note the IP address of the OpenLP computer\n"
+"5. Enter the server URL in the format: http://IP_ADDRESS:4316\n"
+"6. If you've configured authentication in OpenLP, enter the username and password"
+msgstr "1. 在演示计算机上安装OpenLP 3.0或更高版本\n"
+"2. 在OpenLP中启用Remote插件（设置 → 配置OpenLP → 插件）\n"
+"3. 在OpenLP中启用警报插件以支持警报显示\n"
+"4. 记录运行OpenLP的计算机IP地址\n"
+"5. 以以下格式输入服务器URL：http://IP_ADDRESS:4316\n"
+"6. 如果您在OpenLP中配置了身份验证，请输入用户名和密码"
+
+#. plugin:mailchimp:section:2:content
+#: 
+msgid "Access the MailChimp Dashboard from the Email menu. The dashboard shows:\n"
+"\n"
+"- Member count for each list\n"
+"- Campaign statistics\n"
+"- Unsubscribe counts\n"
+"- List maintenance tools"
+msgstr "从邮件菜单访问MailChimp仪表板。仪表板显示：\n"
+"\n"
+"- 每个列表的成员数量\n"
+"- 营销活动统计信息\n"
+"- 退订数量\n"
+"- 列表维护工具"
+
+#. plugin:custom-links:section:1:title
+#: 
+msgid "Adding Links"
+msgstr "添加链接"
+
+#. plugin:custom-links:section:2:content
+#: 
+msgid "All configured links are shown in a table. You can:\n"
+"- View the link name and URL\n"
+"- Click the URL to test it opens correctly\n"
+"- Delete links you no longer need\n"
+"\n"
+"Links appear in the order they were added in the navigation menu."
+msgstr "所有已配置的链接显示在表格中。您可以：\n"
+"- 查看链接名称和URL\n"
+"- 点击URL测试是否能正确打开\n"
+"- 删除不再需要的链接\n"
+"\n"
+"链接按添加顺序显示在导航菜单中。"
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "允许预发布版本升级"
+
+#: 
+msgid "Allow recording of non-tax-deductible payments in the finance module"
+msgstr "允许在财务模块中记录不可抵税的付款"
+
+#: 
+msgid "Allow scanned check images to be attached to deposit records"
+msgstr "允许将扫描的支票图像附加到存款记录"
+
+#: 
+msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
+msgstr "允许系统升级到GitHub上标记为「预发布」的版本"
+
+#: 
+msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
+msgstr "允许通过公共HTML、ICS和JSON URL未经身份验证访问日历事件。与外部应用共享日历时需要此设置。"
+
+#: 
+msgid "Allow visitors to create their own family record via the self-registration page"
+msgstr "允许访客通过自助注册页面创建自己的家庭记录"
+
+#: 
+msgid "Allow visitors to self-register as new families."
+msgstr "允许访客自助注册为新家庭。"
+
+#. plugin:external-backup:section:5:content
+#: 
+msgid "Any WebDAV-compatible service works with this plugin:\n"
+"\n"
+"- Nextcloud (recommended)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (with WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx with WebDAV module\n"
+"\n"
+"Note: Some services require app-specific passwords for WebDAV access."
+msgstr "任何WebDAV兼容的服务都可以与此插件配合使用：\n"
+"\n"
+"- Nextcloud（推荐）\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com（使用WebDAV）\n"
+"- Apache mod_dav\n"
+"- 带WebDAV模块的nginx\n"
+"\n"
+"注意：某些服务需要应用专用密码才能访问WebDAV。"
+
+#. plugin:openlp:section:4:title
+#: 
+msgid "Authentication"
+msgstr "身份验证"
+
+#. plugin:openlp:section:4:content
+#: 
+msgid "Authentication is required for API v2 if you've enabled it in OpenLP's Remote plugin settings. The plugin uses HTTP Basic Authentication. Most local network setups don't require authentication, but it's recommended for security."
+msgstr "如果您在OpenLP的Remote插件设置中启用了身份验证，则API v2需要身份验证。该插件使用HTTP基本身份验证。大多数本地网络设置不需要身份验证，但建议出于安全考虑启用。"
+
+#: 
+msgid "Auto TLS"
+msgstr "自动TLS"
+
+#. plugin:external-backup:section:2:title
+#: 
+msgid "Auto-Backup"
+msgstr "自动备份"
+
+#: 
+msgid "BCC All Mail To"
+msgstr "抄送所有邮件至"
+
+#. plugin:external-backup:section:4:content
+#: 
+msgid "Before relying on external backups, test your connection:\n"
+"1. Go to Plugins > External Backup\n"
+"2. Click 'Test WebDAV Connection'\n"
+"3. Verify you see a success message\n"
+"\n"
+"Common issues:\n"
+"- 401/403 errors: Check username and password\n"
+"- Connection timeout: Verify the endpoint URL is correct\n"
+"- Certificate errors: Ensure the WebDAV server has a valid SSL certificate"
+msgstr "在依赖外部备份之前，请测试您的连接：\n"
+"1. 前往插件 > 外部备份\n"
+"2. 点击「测试WebDAV连接」\n"
+"3. 验证是否看到成功消息\n"
+"\n"
+"常见问题：\n"
+"- 401/403错误：检查用户名和密码\n"
+"- 连接超时：验证端点URL是否正确\n"
+"- 证书错误：确保WebDAV服务器具有有效的SSL证书"
+
+#. plugin:gravatar:section:1:content
+#: 
+msgid "Choose what appears when no Gravatar exists:\n"
+"• Mystery Person - Gray silhouette outline\n"
+"• Identicon - Geometric pattern based on email\n"
+"• MonsterID - Unique generated monster face\n"
+"• Wavatar - Abstract generated face\n"
+"• Retro - 8-bit arcade-style pixel art\n"
+"• RoboHash - Unique generated robot\n"
+"• Blank - Transparent (falls back to initials)"
+msgstr "选择当Gravatar不存在时显示的内容：\n"
+"• Mystery Person - 灰色剪影轮廓\n"
+"• Identicon - 基于电子邮件的几何图案\n"
+"• MonsterID - 独特生成的怪物脸\n"
+"• Wavatar - 抽象生成的脸\n"
+"• Retro - 8位街机风格像素艺术\n"
+"• RoboHash - 独特生成的机器人\n"
+"• Blank - 透明（回退到首字母）"
+
+#: 
+msgid "Comma-separated query IDs that require finance permissions to view"
+msgstr "需要财务权限才能查看的查询ID（用逗号分隔）"
+
+#. plugin:custom-links:section:4:content
+#: 
+msgid "Common uses for custom links:\n"
+"- Church website\n"
+"- Online giving portal\n"
+"- Volunteer signup forms\n"
+"- Denomination resources\n"
+"- Partner organization sites\n"
+"- Cloud storage folders\n"
+"- Event registration pages"
+msgstr "自定义链接的常见用途：\n"
+"- 教会网站\n"
+"- 在线奉献门户\n"
+"- 志愿者报名表单\n"
+"- 宗派资源\n"
+"- 合作机构网站\n"
+"- 云存储文件夹\n"
+"- 活动报名页面"
+
+#. plugin:external-backup:section:1:title
+#: 
+msgid "Configuration"
+msgstr "配置"
+
+#: 
+msgid "Continent"
+msgstr "洲"
+
+#. plugin:vonage:section:6:title
+#: 
+msgid "Costs"
+msgstr "费用"
+
+#. plugin:openlp:section:0:title
+#. plugin:vonage:section:0:title
+#: 
+msgid "Current Usage"
+msgstr "当前使用情况"
+
+#. plugin:gravatar:section:1:title
+#: 
+msgid "Default Image Styles"
+msgstr "默认图像样式"
+
+#: 
+msgid "Default Map View"
+msgstr "默认地图视图"
+
+#: 
+msgid "Deposit ticket type"
+msgstr "存款单类型"
+
+#: 
+msgid "Do Not Email Property"
+msgstr "不发送电子邮件属性"
+
+#: 
+msgid "Do Not SMS Property"
+msgstr "不发送短信属性"
+
+#. plugin:openlp:link:3:label
+#: 
+msgid "Download OpenLP"
+msgstr "下载OpenLP"
+
+#. plugin:vonage:link:3:label
+#: 
+msgid "E.164 Phone Number Format"
+msgstr "E.164电话号码格式"
+
+#: 
+msgid "Enable Email"
+msgstr "启用电子邮件"
+
+#: 
+msgid "Enable Events Menu"
+msgstr "启用活动菜单"
+
+#: 
+msgid "Enable External Calendar API"
+msgstr "启用外部日历API"
+
+#: 
+msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
+msgstr "启用从ChurchCRM发送电子邮件。重置密码、通知和电子邮件链接需要此设置。"
+
+#: 
+msgid "Enable if your SMTP server requires a username and password"
+msgstr "如果您的SMTP服务器需要用户名和密码，请启用此选项"
+
+#: 
+msgid "Enable or disable the Sunday School module and sidebar menu."
+msgstr "启用或禁用主日学模块和侧边栏菜单。"
+
+#: 
+msgid "Enable the use of numbered donation envelopes for tracking contributions"
+msgstr "启用编号奉献信封以跟踪贡献"
+
+#: 
+msgid "Enable use of donation envelopes"
+msgstr "启用奉献信封"
+
+#: 
+msgid "Enable use of scanned checks"
+msgstr "启用扫描支票"
+
+#. plugin:mailchimp:section:1:title
+#: 
+msgid "Features"
+msgstr "功能"
+
+#: 
+msgid "Finance permission query IDs"
+msgstr "财务权限查询ID"
+
+#: 
+msgid "Find family"
+msgstr "查找家庭"
+
+#. plugin:openlp:section:3:title
+#: 
+msgid "Finding Your Server URL"
+msgstr "查找服务器URL"
+
+#. plugin:custom-links:section:3:content
+#: 
+msgid "For security:\n"
+"- Only administrators can add or remove links\n"
+"- The 'Manage Links' option only appears for administrators\n"
+"- Links must use http:// or https:// protocols\n"
+"- HTML tags are not allowed in names or URLs\n"
+"- All input is validated and sanitized"
+msgstr "为了安全：\n"
+"- 只有管理员可以添加或删除链接\n"
+"- 「管理链接」选项只对管理员显示\n"
+"- 链接必须使用http://或https://协议\n"
+"- 名称或URL中不允许使用HTML标签\n"
+"- 所有输入均经过验证和清理"
+
+#. plugin:google-analytics:link:1:label
+#: 
+msgid "GA4 Setup Guide"
+msgstr "GA4设置指南"
+
+#. plugin:mailchimp:section:0:title
+#: 
+msgid "Getting Started"
+msgstr "快速入门"
+
+#. plugin:google-analytics:section:0:title
+#: 
+msgid "Getting Your GA4 Measurement ID"
+msgstr "获取GA4衡量ID"
+
+#. plugin:google-analytics:summary
+#: 
+msgid "Google Analytics 4 (GA4) tracks how users interact with ChurchCRM, providing insights into page views, user engagement, and feature usage."
+msgstr "Google Analytics 4 (GA4) 跟踪用户如何与ChurchCRM互动，提供页面浏览量、用户参与度和功能使用情况的洞察。"
+
+#. plugin:google-analytics:link:0:label
+#: 
+msgid "Google Analytics Help"
+msgstr "Google Analytics帮助"
+
+#. plugin:google-analytics:section:2:content
+#: 
+msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
+msgstr "Google Analytics收集匿名使用数据。ChurchCRM记录中的个人信息不会发送给Google。建议在教会的数据政策中添加隐私声明。"
+
+#. plugin:gravatar:summary
+#: 
+msgid "Gravatar (Globally Recognized Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM."
+msgstr "Gravatar（全球公认头像）为ChurchCRM中没有上传照片的成员显示来自gravatar.com的个人资料照片。"
+
+#. plugin:gravatar:link:1:label
+#: 
+msgid "Gravatar Image Options"
+msgstr "Gravatar图像选项"
+
+#. plugin:gravatar:link:0:label
+#: 
+msgid "Gravatar Website"
+msgstr "Gravatar网站"
+
+#. plugin:gravatar:section:2:content
+#: 
+msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
+msgstr "Gravatar通过将电子邮件地址转换为哈希值（MD5）来工作。实际电子邮件地址永远不会发送到Gravatar服务器——只使用哈希值来查找图像。"
+
+#: 
+msgid "Hide Latitude/Longitude"
+msgstr "隐藏经纬度"
+
+#: 
+msgid "Hide Person Address"
+msgstr "隐藏成员地址"
+
+#. plugin:gravatar:section:0:title
+#. plugin:openlp:section:1:title
+#: 
+msgid "How it works"
+msgstr "工作原理"
+
+#: 
+msgid "How many checks to print per deposit slip page"
+msgstr "每页存款单打印多少张支票"
+
+#. plugin:vonage:section:3:content
+#: 
+msgid "If SMS messages aren't being sent:\n"
+"1. Verify API Key and Secret are correct (no extra spaces)\n"
+"2. Check that the From Number is a valid Vonage number you own\n"
+"3. Ensure recipient phone numbers include country code\n"
+"4. Check your Vonage account balance\n"
+"5. Review the Vonage Dashboard > SMS > Logs for delivery status"
+msgstr "如果短信未发送：\n"
+"1. 验证API密钥和密码是否正确（无多余空格）\n"
+"2. 检查发件号码是否为您拥有的有效Vonage号码\n"
+"3. 确保收件人电话号码包含国家/地区代码\n"
+"4. 检查您的Vonage账户余额\n"
+"5. 查看Vonage仪表板 > 短信 > 日志了解发送状态"
+
+#. plugin:openlp:section:5:content
+#: 
+msgid "If alerts aren't appearing:\n"
+"1. Verify OpenLP is running and the Remote plugin is active\n"
+"2. Ensure the Alerts plugin is enabled in OpenLP\n"
+"3. Check that the server URL is correct (try accessing it in a browser)\n"
+"4. Verify firewall settings allow connections on port 4316\n"
+"5. If using authentication, verify credentials are correct"
+msgstr "如果警报未显示：\n"
+"1. 验证OpenLP是否正在运行且Remote插件已激活\n"
+"2. 确保OpenLP中的警报插件已启用\n"
+"3. 检查服务器URL是否正确（尝试在浏览器中访问）\n"
+"4. 验证防火墙设置允许端口4316上的连接\n"
+"5. 如果使用身份验证，请验证凭据是否正确"
+
+#. plugin:vonage:section:5:content
+#: 
+msgid "If messages are sent but not received:\n"
+"1. Check Vonage Dashboard > SMS > Logs for delivery status\n"
+"2. Verify the recipient number is correct and can receive SMS\n"
+"3. Some carriers may block messages from unknown numbers\n"
+"4. Check if the destination country has SMS restrictions"
+msgstr "如果消息已发送但未收到：\n"
+"1. 检查Vonage仪表板 > 短信 > 日志了解发送状态\n"
+"2. 验证收件人号码是否正确且可以接收短信\n"
+"3. 某些运营商可能会屏蔽来自未知号码的消息\n"
+"4. 检查目标国家/地区是否对短信有限制"
+
+#. plugin:vonage:section:4:content
+#: 
+msgid "If you receive invalid sender ID errors:\n"
+"1. Use a phone number you've purchased from Vonage\n"
+"2. Format the number in E.164 format (+14155551234)\n"
+"3. Note: Alphanumeric sender IDs may be restricted in some countries"
+msgstr "如果收到无效发件人ID错误：\n"
+"1. 使用您从Vonage购买的电话号码\n"
+"2. 将号码格式设置为E.164格式（+14155551234）\n"
+"3. 注意：字母数字发件人ID在某些国家/地区可能受到限制"
+
+#. plugin:external-backup:section:6:content
+#: 
+msgid "Important security notes:\n"
+"\n"
+"1. Always use HTTPS endpoints to encrypt backups in transit\n"
+"2. Use app-specific passwords when available (Nextcloud, ownCloud)\n"
+"3. Store backups in a folder with restricted access\n"
+"4. Periodically download and verify your backups are valid\n"
+"5. Consider encrypting sensitive backups with external tools before uploading"
+msgstr "重要安全注意事项：\n"
+"\n"
+"1. 始终使用HTTPS端点加密传输中的备份\n"
+"2. 可用时使用应用专用密码（Nextcloud、ownCloud）\n"
+"3. 将备份存储在访问受限的文件夹中\n"
+"4. 定期下载并验证备份是否有效\n"
+"5. 考虑在上传前使用外部工具加密敏感备份"
+
+#: 
+msgid "Initial zoom level when opening the map"
+msgstr "打开地图时的初始缩放级别"
+
+#: 
+msgid "Learn more"
+msgstr "了解更多"
+
+#: 
+msgid "Log Settings"
+msgstr "日志设置"
+
+#. plugin:mailchimp:summary
+#: 
+msgid "MailChimp Integration enables synchronization between ChurchCRM contacts and your MailChimp email marketing lists."
+msgstr "MailChimp集成允许ChurchCRM联系人与MailChimp电子邮件营销列表之间进行同步。"
+
+#. plugin:custom-links:section:2:title
+#: 
+msgid "Managing Links"
+msgstr "管理链接"
+
+#: 
+msgid "Neighborhood"
+msgstr "社区"
+
+#. plugin:openlp:link:2:label
+#: 
+msgid "OpenLP API v2 Source"
+msgstr "OpenLP API v2来源"
+
+#. plugin:openlp:link:1:label
+#: 
+msgid "OpenLP Documentation"
+msgstr "OpenLP文档"
+
+#. plugin:openlp:link:0:label
+#: 
+msgid "OpenLP Website"
+msgstr "OpenLP网站"
+
+#. plugin:openlp:summary
+#: 
+msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
+msgstr "OpenLP是为教会设计的免费开源演示软件。此插件允许ChurchCRM直接向OpenLP显示器发送通知和警报。"
+
+#. plugin:mailchimp:section:3:title
+#: 
+msgid "Person/Family Integration"
+msgstr "成员/家庭集成"
+
+#. plugin:vonage:section:2:title
+#: 
+msgid "Phone Number Format"
+msgstr "电话号码格式"
+
+#. plugin:vonage:section:2:content
+#: 
+msgid "Phone numbers should be in E.164 format: country code + number. Examples:\n"
+"- US: +14155551234\n"
+"- UK: +447700900123\n"
+"- Australia: +61412345678\n"
+"\n"
+"Recipient phone numbers in ChurchCRM member profiles should include the country code for SMS to work correctly."
+msgstr "电话号码应采用E.164格式：国家/地区代码 + 号码。示例：\n"
+"- 美国：+14155551234\n"
+"- 英国：+447700900123\n"
+"- 澳大利亚：+61412345678\n"
+"\n"
+"ChurchCRM成员资料中的收件人电话号码应包含国家/地区代码，以确保短信正常发送。"
+
+#. plugin:mailchimp:section:4:title
+#: 
+msgid "Privacy & Compliance"
+msgstr "隐私与合规"
+
+#. plugin:google-analytics:section:2:title
+#: 
+msgid "Privacy Considerations"
+msgstr "隐私注意事项"
+
+#. plugin:gravatar:section:2:title
+#: 
+msgid "Privacy Note"
+msgstr "隐私声明"
+
+#: 
+msgid "Quick Settings"
+msgstr "快速设置"
+
+#: 
+msgid "SMTP Authentication"
+msgstr "SMTP身份验证"
+
+#: 
+msgid "SMTP Timeout"
+msgstr "SMTP超时"
+
+#. plugin:custom-links:section:3:title
+#: 
+msgid "Security"
+msgstr "安全性"
+
+#. plugin:external-backup:section:6:title
+#: 
+msgid "Security Considerations"
+msgstr "安全注意事项"
+
+#. plugin:openlp:section:2:title
+#. plugin:vonage:section:1:title
+#: 
+msgid "Setup"
+msgstr "设置"
+
+#: 
+msgid "Show a breakdown of bill denominations on the deposit slip report"
+msgstr "在存款单报告中显示票面金额明细"
+
+#: 
+msgid "Show or hide the Events menu in the main navigation."
+msgstr "在主导航中显示或隐藏活动菜单。"
+
+#: 
+msgid "Show or hide the Events section in the main navigation menu"
+msgstr "在主导航菜单中显示或隐藏活动部分"
+
+#: 
+msgid "Show or hide the Sunday School module in the sidebar navigation"
+msgstr "在侧边栏导航中显示或隐藏主日学模块"
+
+#: 
+msgid "Street"
+msgstr "街道"
+
+#: 
+msgid "Sunday School Module"
+msgstr "主日学模块"
+
+#. plugin:external-backup:section:5:title
+#: 
+msgid "Supported Services"
+msgstr "支持的服务"
+
+#. plugin:external-backup:section:4:title
+#: 
+msgid "Testing Connection"
+msgstr "测试连接"
+
+#. plugin:custom-links:section:0:content
+#: 
+msgid "The Custom Menu Links plugin allows administrators to add external links to the navigation menu. When enabled, a 'Links' menu appears in the sidebar containing all configured links."
+msgstr "自定义菜单链接插件允许管理员向导航菜单添加外部链接。启用后，侧边栏中会出现包含所有已配置链接的「链接」菜单。"
+
+#. plugin:external-backup:section:0:content
+#: 
+msgid "The External Backup plugin allows you to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services. This includes popular services like Nextcloud, ownCloud, or any server supporting WebDAV protocol."
+msgstr "外部备份插件允许您自动将ChurchCRM数据库备份到兼容WebDAV的云存储服务。包括Nextcloud、ownCloud等流行服务或任何支持WebDAV协议的服务器。"
+
+#. plugin:openlp:section:3:content
+#: 
+msgid "The default OpenLP port is 4316. Your server URL will typically be: http://192.168.x.x:4316 where 192.168.x.x is the IP address of the computer running OpenLP. You can find this in OpenLP under Tools → Open Service Manager."
+msgstr "默认OpenLP端口为4316。您的服务器URL通常为：http://192.168.x.x:4316，其中192.168.x.x是运行OpenLP的计算机IP地址。您可以在OpenLP的工具 → 打开服务管理器中找到此信息。"
+
+#: 
+msgid "The month that starts your organization's fiscal year"
+msgstr "组织财年开始的月份"
+
+#. plugin:vonage:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an SMS can be sent to notify parents or guardians."
+msgstr "此插件目前用于信息亭签到通知。当孩子通过信息亭系统签到主日学班级时，可以发送短信通知家长或监护人。"
+
+#. plugin:openlp:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an alert can be sent to the OpenLP projector display to notify parents or volunteers."
+msgstr "此插件目前用于信息亭签到通知。当孩子通过信息亭系统签到主日学班级时，可以向OpenLP投影仪显示器发送警报以通知家长或志愿者。"
+
+#. plugin:mailchimp:section:4:content
+#: 
+msgid "This plugin transmits email addresses to MailChimp servers. Ensure you have appropriate consent from your members before syncing their information to third-party services like MailChimp."
+msgstr "此插件将电子邮件地址传输到MailChimp服务器。在将成员信息同步到MailChimp等第三方服务之前，请确保获得成员的适当同意。"
+
+#. plugin:custom-links:section:1:content
+#: 
+msgid "To add a new link:\n"
+"1. Go to the Links menu in the sidebar and click 'Manage Links'\n"
+"2. Enter a display name (2-50 characters)\n"
+"3. Enter the full URL (must start with http:// or https://)\n"
+"4. Click 'Add Link'\n"
+"\n"
+"The link will immediately appear in the Links menu."
+msgstr "添加新链接：\n"
+"1. 前往侧边栏中的链接菜单，点击「管理链接」\n"
+"2. 输入显示名称（2-50个字符）\n"
+"3. 输入完整URL（必须以http://或https://开头）\n"
+"4. 点击「添加链接」\n"
+"\n"
+"链接将立即出现在链接菜单中。"
+
+#. plugin:external-backup:section:1:content
+#: 
+msgid "To configure external backups:\n"
+"1. Go to Admin > Plugins and find 'External Backup (WebDAV)'\n"
+"2. Click the settings icon to expand the configuration panel\n"
+"3. Enter your WebDAV endpoint URL (e.g., https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Enter your username and password\n"
+"5. Optionally set an auto-backup interval in hours\n"
+"6. Save your settings"
+msgstr "配置外部备份：\n"
+"1. 前往管理 > 插件，找到「外部备份（WebDAV）」\n"
+"2. 点击设置图标展开配置面板\n"
+"3. 输入WebDAV端点URL（例如 https://cloud.example.com/remote.php/dav/files/username/backups/）\n"
+"4. 输入用户名和密码\n"
+"5. 可选择以小时为单位设置自动备份间隔\n"
+"6. 保存设置"
+
+#. plugin:mailchimp:section:0:content
+#: 
+msgid "To use MailChimp Integration, you need a MailChimp account and an API key.\n"
+"\n"
+"1. Log in to your MailChimp account\n"
+"2. Go to Account > Extras > API Keys\n"
+"3. Create a new API key or copy an existing one\n"
+"4. Enter the API key in the plugin settings"
+msgstr "要使用MailChimp集成，您需要MailChimp账户和API密钥。\n"
+"\n"
+"1. 登录您的MailChimp账户\n"
+"2. 前往账户 > 附加功能 > API密钥\n"
+"3. 创建新的API密钥或复制现有密钥\n"
+"4. 在插件设置中输入API密钥"
+
+#. plugin:openlp:section:5:title
+#: 
+msgid "Troubleshooting"
+msgstr "故障排除"
+
+#. plugin:vonage:section:4:title
+#: 
+msgid "Troubleshooting - Invalid Sender ID"
+msgstr "故障排除 - 无效发件人ID"
+
+#. plugin:vonage:section:5:title
+#: 
+msgid "Troubleshooting - Messages Not Delivered"
+msgstr "故障排除 - 消息未送达"
+
+#. plugin:vonage:section:3:title
+#: 
+msgid "Troubleshooting - SMS Not Sending"
+msgstr "故障排除 - 短信未发送"
+
+#: 
+msgid "Upgrade Settings"
+msgstr "升级设置"
+
+#. plugin:custom-links:section:4:title
+#: 
+msgid "Use Cases"
+msgstr "使用场景"
+
+#. plugin:vonage:link:0:label
+#: 
+msgid "Vonage Dashboard"
+msgstr "Vonage仪表板"
+
+#. plugin:vonage:link:2:label
+#: 
+msgid "Vonage Pricing"
+msgstr "Vonage定价"
+
+#. plugin:vonage:link:1:label
+#: 
+msgid "Vonage SMS API Documentation"
+msgstr "Vonage短信API文档"
+
+#. plugin:vonage:summary
+#: 
+msgid "Vonage SMS enables text message notifications for ChurchCRM using the Vonage API (formerly Nexmo). Send SMS alerts to parents when their child checks in via the kiosk system."
+msgstr "Vonage SMS使用Vonage API（前称Nexmo）为ChurchCRM提供短信通知功能。当孩子通过信息亭系统签到时，向家长发送短信提醒。"
+
+#. plugin:vonage:section:6:content
+#: 
+msgid "Vonage charges per SMS sent. Pricing varies by destination country. See the Vonage pricing page for current rates. New accounts receive free trial credit for testing."
+msgstr "Vonage按发送的每条短信收费。价格因目标国家/地区而异。请访问Vonage定价页面了解当前费率。新账户可获得免费试用额度用于测试。"
+
+#. plugin:google-analytics:section:1:title
+#: 
+msgid "What Gets Tracked"
+msgstr "跟踪哪些内容"
+
+#. plugin:mailchimp:section:3:content
+#: 
+msgid "When MailChimp is configured, a 'MailChimp' tab appears on Person view pages showing:\n"
+"\n"
+"- Email subscription status across all lists\n"
+"- Which lists the person is subscribed to\n"
+"- Subscription statistics"
+msgstr "配置MailChimp后，成员查看页面上会出现「MailChimp」选项卡，显示：\n"
+"\n"
+"- 所有列表的电子邮件订阅状态\n"
+"- 该成员订阅了哪些列表\n"
+"- 订阅统计信息"
+
+#. plugin:gravatar:section:0:content
+#: 
+msgid "When a member doesn't have an uploaded photo, ChurchCRM checks if they have a Gravatar associated with their email address. If a Gravatar exists, it displays that image. If not, the configured default image style is used."
+msgstr "当成员没有上传照片时，ChurchCRM会检查其电子邮件地址是否关联了Gravatar。如果存在Gravatar，则显示该图像；否则使用配置的默认图像样式。"
+
+#. plugin:external-backup:section:2:content
+#: 
+msgid "When auto-backup is enabled (interval > 0 hours), ChurchCRM will automatically create and upload a full database backup at the specified interval. The backup runs as part of normal page loads, so the system must have regular user activity to trigger backups.\n"
+"\n"
+"Recommended intervals:\n"
+"- Daily backup: 24 hours\n"
+"- Twice daily: 12 hours\n"
+"- Weekly: 168 hours"
+msgstr "启用自动备份（间隔 > 0小时）后，ChurchCRM将按指定间隔自动创建并上传完整数据库备份。备份作为正常页面加载的一部分运行，因此系统必须有定期用户活动才能触发备份。\n"
+"\n"
+"推荐间隔：\n"
+"- 每日备份：24小时\n"
+"- 每天两次：12小时\n"
+"- 每周：168小时"
+
+#. plugin:openlp:section:1:content
+#: 
+msgid "When enabled and configured, ChurchCRM sends alert messages to your OpenLP server using the API v2 endpoint (POST /api/v2/plugins/alerts). These alerts appear as overlay notifications on your projected display."
+msgstr "启用并配置后，ChurchCRM使用API v2端点（POST /api/v2/plugins/alerts）向OpenLP服务器发送警报消息。这些警报以覆盖通知的形式出现在投影显示器上。"
+
+#: 
+msgid "When enabled, hides the address field for people not assigned to a family"
+msgstr "启用后，隐藏未分配到家庭的成员的地址字段"
+
+#: 
+msgid "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background."
+msgstr "启用后，在家庭编辑器中隐藏纬度/经度字段。地理编码仍在后台运行。"
+
+#. plugin:external-backup:section:3:content
+#: 
+msgid "You can also trigger a manual backup at any time:\n"
+"1. Go to the External Backup settings page (Plugins > External Backup)\n"
+"2. Select backup type (Database Only or Full Backup)\n"
+"3. Click 'Backup to WebDAV Now'\n"
+"\n"
+"Database Only backups are smaller and faster. Full backups include uploaded photos."
+msgstr "您也可以随时触发手动备份：\n"
+"1. 前往外部备份设置页面（插件 > 外部备份）\n"
+"2. 选择备份类型（仅数据库或完整备份）\n"
+"3. 点击「立即备份到WebDAV」\n"
+"\n"
+"仅数据库备份更小更快。完整备份包括上传的照片。"
+
+#. plugin:google-analytics:section:1:content
+#: 
+msgid "• Page views and navigation patterns\n"
+"• Session duration and engagement\n"
+"• User demographics (if enabled in GA4)\n"
+"• Device and browser information"
+msgstr "• 页面浏览量和导航模式\n"
+"• 会话时长和参与度\n"
+"• 用户人口统计（如果在GA4中启用）\n"
+"• 设备和浏览器信息"
+
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "文件大小超过服务器限制 %s"
+
+#: 
+msgid "Missing image data in request"
+msgstr "请求中缺少图片数据"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "查找未出席活动的会众"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "缺席人员"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "选择所需活动"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "按小组、分类和角色进行高级筛选"
+
+#: 
+msgid "All congregation members included"
+msgstr "包含所有会众成员"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ChMeetings 导出成功"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "ChMeetings 兼容的列格式"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "联系信息、家庭角色和重要日期"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "创建教会数据库的完整备份。下载仅含数据库的 SQL 文件，或包含已上传照片的完整压缩包。"
+
+#: 
+msgid "Database Backup"
+msgstr "数据库备份"
+
+#: 
+msgid "Export"
+msgstr "导出"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "将会众数据导出为 CSV 格式。选择要包含的字段，并按分类、小组、性别等条件进行筛选。"
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "按 ChMeetings 所需格式导出所有人员信息，便于将会众数据同步至 ChMeetings 平台。"
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "将教会数据导出为多种格式"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "通过插件进行外部（WebDAV）备份"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "ChMeetings CSV 导出失败"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "家庭或个人记录布局"
+
+#: 
+msgid "Flexible field selection"
+msgstr "灵活的字段选择"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "前往数据库备份"
+
+#: 
+msgid "Open CSV Export"
+msgstr "打开 CSV 导出"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "从系统备份页面恢复"
+
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "系统有可用更新。请升级您的安装。"
+
+#: 
+msgid "API Access"
+msgstr "API 访问"
+
+#: 
+msgid "API Key"
+msgstr "API 密钥"
+
+#: 
+msgid "API key regenerated"
+msgstr "API 密钥已重新生成"
+
+#: 
+msgid "Account"
+msgstr "账户"
+
+#: 
+msgid "Advanced Settings"
+msgstr "高级设置"
+
+#: 
+msgid "An error occurred."
+msgstr "发生错误。"
+
+#: 
+msgid "Appearance"
+msgstr "外观"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "返回财务仪表板"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "返回事工仪表板"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "返回成员仪表板"
+
+#: 
+msgid "Blue"
+msgstr "蓝色"
+
+#: 
+msgid "Change Photo"
+msgstr "更改照片"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "更改将在下次登录后生效。"
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "选择浅色或深色主题"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "ChurchCRM 的翻译由社区在 POEditor 上管理。您可以通过以下方式提供帮助："
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "自定义应用程序的外观与感觉"
+
+#: 
+msgid "Cyan"
+msgstr "青色"
+
+#: 
+msgid "Dark"
+msgstr "深色"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "仅数据库（.sql）或完整存档（.tar.gz）"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "数据表中默认显示的行数。在下次页面加载时生效。"
+
+#: 
+msgid "Edit own family only"
+msgstr "仅编辑自己的家庭信息"
+
+#: 
+msgid "Enter text here..."
+msgstr "请在此输入文字..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "取消登记失败。请重试。"
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "删除活动失败。请重试。"
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "禁用双重认证失败。请重试。"
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "生成二维码失败。请重试。"
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "加载日历数据失败。请重试。"
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "加载活动失败。请重试。"
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "加载恢复码失败。请刷新页面。"
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "保存活动失败。请重试。"
+
+#: 
+msgid "Failed to save setting"
+msgstr "保存设置失败"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "菲律宾语 - 菲律宾"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "修正您语言中不正确或不自然的翻译"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "发现翻译错误？"
+
+#: 
+msgid "Grants all privileges"
+msgstr "授予所有权限"
+
+#: 
+msgid "Green"
+msgstr "绿色"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "帮助改善翻译"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "如果您发现乱码、HTML 实体以文字形式出现，或翻译导致页面布局问题，请在 GitHub 上报告，以便为所有人修复。"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "在请求中使用 x-api-key 标头包含您的 API 密钥："
+
+#: 
+msgid "Indigo"
+msgstr "靛蓝色"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "JSON 值无效——设置未保存。请更正后重试。"
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "加入 POEditor 上的翻译项目"
+
+#: 
+msgid "Language and regional settings"
+msgstr "语言和区域设置"
+
+#: 
+msgid "Light"
+msgstr "浅色"
+
+#: 
+msgid "Lime"
+msgstr "柠檬绿"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "马拉雅拉姆语 - 印度"
+
+#: 
+msgid "Manage 2FA"
+msgstr "管理双重认证"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "管理其他偏好设置，例如邮件分隔符和显示选项"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "管理用于外部集成的 API 密钥"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "方法不允许"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "翻译缺失或不正确？"
+
+#: 
+msgid "My Account"
+msgstr "我的账户"
+
+#: 
+msgid "Orange"
+msgstr "橙色"
+
+#: 
+msgid "Override the system default locale"
+msgstr "覆盖系统默认语言区域"
+
+#: 
+msgid "Page Not Found"
+msgstr "页面未找到"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "当前语言的字符串翻译百分比"
+
+#: 
+msgid "Pink"
+msgstr "粉红色"
+
+#: 
+msgid "Primary Color"
+msgstr "主题颜色"
+
+#: 
+msgid "Profile and security"
+msgstr "个人资料与安全"
+
+#: 
+msgid "Purple"
+msgstr "紫色"
+
+#: 
+msgid "Red"
+msgstr "红色"
+
+#: 
+msgid "Regenerate"
+msgstr "重新生成"
+
+#: 
+msgid "Rows per page"
+msgstr "每页行数"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "将权限设为「是」，以允许该用户自行更改此设置。"
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "设置用于按钮、链接和活动元素的强调色"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "为现有翻译建议更好的措辞"
+
+#: 
+msgid "System Update Available"
+msgstr "系统更新可用"
+
+#: 
+msgid "Tables"
+msgstr "表格"
+
+#: 
+msgid "Teal"
+msgstr "蓝绿色"
+
+#: 
+msgid "Theme Mode"
+msgstr "主题模式"
+
+#: 
+msgid "Toggle search"
+msgstr "切换搜索"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "翻译缺失字符串以提高覆盖率"
+
+#: 
+msgid "Translation Progress"
+msgstr "翻译进度"
+
+#: 
+msgid "Usage"
+msgstr "使用方法"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "使用此密钥验证 API 请求。重新生成将使当前密钥失效。"
+
+#: 
+msgid "User Config"
+msgstr "用户配置"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "验证失败。请重试。"
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "版本 %s 已可用。请升级您的安装。"
+
+#: 
+msgid "View All"
+msgstr "查看全部"
+
+#: 
+msgid "Yellow"
+msgstr "黄色"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "您当前的访问级别（只读）"
+
+#: 
+msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
+msgstr "（例如：会众、访客、儿童），义工可在此记录人数。"
+
+#: 
+msgid "1. Sunday School Class"
+msgstr "1. 主日学班级"
+
+#: 
+msgid "2. Event Type"
+msgstr "2. 活动类型"
+
+#: 
+msgid "3. Event"
+msgstr "3. 活动"
+
+#: 
+msgid "4. Kiosk"
+msgstr "4. 签到台"
+
+#: 
+msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
+msgstr "班级是类型为\"Sunday School\"的事工部门，包含学生和老师（带角色的会众）。"
+
+#: 
+msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
+msgstr "关联部门将此活动与班级或事工名册绑定。活动分配到签到台后，签到台会拉取部门成员并显示为点击签到列表。主日学班级请在此关联班级部门，义工即可通过平板为学生签到。"
+
+#: 
+msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr "特定的活动场次（例如\"幼儿班 — 4月12日\"），继承类型的默认设置，并通过受众关联班级部门。义工以此记录出席情况。"
+
+#: 
+msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr "分配给某一活动的平板（签到台）。签到台拉取活动关联部门的名册并显示点击签到。若未关联部门，签到台将没有名册可显示。"
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "添加现场访客"
+
+#: 
+msgid "Add categories on the Event Type page"
+msgstr "在活动类型页面添加分类"
+
+#: 
+msgid "Add people to your cart first, then come back to check them in to an event."
+msgstr "请先将人员加入选择，再返回此处为其签到活动。"
+
+#: 
+msgid "All clear!"
+msgstr "一切正常！"
+
+#: 
+msgid "All events and attendance records"
+msgstr "所有活动及出席记录"
+
+#: 
+msgid "All financial data (pledges, payments, deposits)"
+msgstr "所有财务数据（财务承诺、奉献、存款）"
+
+#: 
+msgid "All groups, roles, and memberships"
+msgstr "所有事工部门、角色及成员关系"
+
+#: 
+msgid "All people and family records"
+msgstr "所有人员及家庭记录"
+
+#: 
+msgid "All system settings and custom fields"
+msgstr "所有系统设置及自定义字段"
+
+#: 
+msgid "All uploaded photos and documents"
+msgstr "所有已上传的照片和文件"
+
+#: 
+msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
+msgstr "活动类型是模板，包含名称、默认开始时间、重复规则和出席计数分类，可选择关联一个班级部门作为默认受众。"
+
+#: 
+msgid "Attendance record deleted."
+msgstr "出席记录已删除。"
+
+#: 
+msgid "Audit"
+msgstr "审计"
+
+#: 
+msgid "Audit Events"
+msgstr "审计活动"
+
+#: 
+msgid "Auto-totalled from counts at right"
+msgstr "自动汇总右侧计数"
+
+#: 
+msgid "Back to Events"
+msgstr "返回活动"
+
+#: 
+msgid "Back to Events Dashboard"
+msgstr "返回活动仪表板"
+
+#: 
+msgid "Backup failed. You can still proceed with the reset, but your data will be lost."
+msgstr "备份失败。您仍可继续重置，但数据将丢失。"
+
+#: 
+msgid "Backup ready!"
+msgstr "备份已就绪！"
+
+#: 
+msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
+msgstr "重置前，强烈建议您下载当前数据的备份，这是保留数据的唯一机会。"
+
+#: 
+msgid "Bulk-create a series of recurring events"
+msgstr "批量创建一系列重复活动"
+
+#: 
+msgid "By"
+msgstr "操作者"
+
+#: 
+msgid "Cannot check in to an inactive event. Activate the event first."
+msgstr "无法签到到未激活的活动，请先激活该活动。"
+
+#: 
+msgid "Change"
+msgstr "更改"
+
+#: 
+msgid "Check In All"
+msgstr "全部签到"
+
+#: 
+msgid "Check In Family"
+msgstr "家庭签到"
+
+#: 
+msgid "Check Out All"
+msgstr "全部签出"
+
+#: 
+msgid "Check in all %d family members to a single event."
+msgstr "将全部 %d 位家庭成员签到同一活动。"
+
+#: 
+msgid "Check out"
+msgstr "签出"
+
+#: 
+msgid "Check-in By"
+msgstr "签到操作者"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "签到失败，请重试。"
+
+#: 
+msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
+msgstr "未激活的活动禁止签到，请在活动仪表板中激活活动以启用签到。"
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "签出失败，请重试。"
+
+#: 
+msgid "Checked in to event: %s"
+msgstr "已签到活动：%s"
+
+#: 
+msgid "Checked out from event: %s"
+msgstr "已从活动签出：%s"
+
+#: 
+msgid "Close All Stuck Events"
+msgstr "关闭所有卡住的活动"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "确认签出"
+
+#: 
+msgid "Create Repeat Events"
+msgstr "创建重复活动"
+
+#: 
+msgid "Create Today's Event"
+msgstr "创建今日活动"
+
+#: 
+msgid "Create a new event type with recurrence and attendance settings"
+msgstr "创建带有重复规则和出席设置的新活动类型"
+
+#: 
+msgid "Create one now"
+msgstr "立即创建"
+
+#: 
+msgid "Create today's class event and link it to this class for kiosk check-in"
+msgstr "创建今日班级活动并关联到此班级以供签到台使用"
+
+#: 
+msgid "Creating backup..."
+msgstr "正在创建备份…"
+
+#: 
+msgid "Creating..."
+msgstr "正在创建…"
+
+#: 
+msgid "Database + uploaded photos (larger)"
+msgstr "数据库 + 已上传照片（体积较大）"
+
+#: 
+msgid "Database dump only (.sql)"
+msgstr "仅数据库转储（.sql）"
+
+#: 
+msgid "Date Range"
+msgstr "日期范围"
+
+#: 
+msgid "Date range cannot exceed 1 year"
+msgstr "日期范围不能超过1年"
+
+#: 
+msgid "Deactivate"
+msgstr "停用"
+
+#: 
+msgid "Delete Event Type"
+msgstr "删除活动类型"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "删除出席记录？"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "删除以下人员的签到记录："
+
+#: 
+msgid "Delete this event?"
+msgstr "删除此活动？"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "删除活动将同时删除所有出席计数，此操作不可撤销。"
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "删除此活动类型不会删除已有活动，确认删除吗？"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "删除此活动将同时删除所有出席记录，此操作不可撤销。"
+
+#: 
+msgid "Destructive Operation"
+msgstr "危险操作"
+
+#: 
+msgid "Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field."
+msgstr "编辑分类名称后点击保存，或使用垃圾桶图标删除。通过底部字段添加新行。"
+
+#: 
+msgid "End Time"
+msgstr "结束时间"
+
+#: 
+msgid "End time must be after start time."
+msgstr "结束时间必须晚于开始时间。"
+
+#: 
+msgid "Ended"
+msgstr "已结束"
+
+#: 
+msgid "Ends"
+msgstr "结束"
+
+#: 
+msgid "Event Audit"
+msgstr "活动审计"
+
+#: 
+msgid "Event Check-in"
+msgstr "活动签到"
+
+#: 
+msgid "Event Details"
+msgstr "活动详情"
+
+#: 
+msgid "Event Template"
+msgstr "活动模板"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "活动已存在，正在跳转到签到页面…"
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "活动已创建，正在跳转到签到页面…"
+
+#: 
+msgid "Event end date/time must be on or after the start date/time."
+msgstr "活动结束日期/时间必须等于或晚于开始日期/时间。"
+
+#: 
+msgid "Event title is required."
+msgstr "活动标题为必填项。"
+
+#: 
+msgid "Event type ID is required"
+msgstr "活动类型ID为必填项"
+
+#: 
+msgid "Event type ID or group ID is required"
+msgstr "活动类型ID或部门ID为必填项"
+
+#: 
+msgid "Event type has no date configured for yearly recurrence"
+msgstr "活动类型未配置年度重复日期"
+
+#: 
+msgid "Event type has no day-of-week configured for weekly recurrence"
+msgstr "活动类型未配置每周重复的星期几"
+
+#: 
+msgid "Event type has no recurrence pattern configured"
+msgstr "活动类型未配置重复规则"
+
+#: 
+msgid "Event type has no valid day-of-month configured for monthly recurrence"
+msgstr "活动类型未配置有效的每月重复日期"
+
+#: 
+msgid "Events will be created for every matching occurrence within this date range."
+msgstr "将在此日期范围内为每个匹配的场次创建活动。"
+
+#: 
+msgid "Every month on the"
+msgstr "每月的"
+
+#: 
+msgid "Every week on"
+msgstr "每周的"
+
+#: 
+msgid "Every year on"
+msgstr "每年的"
+
+#: 
+msgid "Everyone is checked in!"
+msgstr "所有人均已签到！"
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "创建班级失败，请重试。"
+
+#: 
+msgid "Failed to create event."
+msgstr "创建活动失败。"
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "创建活动失败，请重试。"
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "删除失败，请重试。"
+
+#: 
+msgid "Fastest workflow:"
+msgstr "最快流程："
+
+#: 
+msgid "Find past events that are still active or have un-checked-out attendees"
+msgstr "查找仍处于激活状态或有未签出参与者的历史活动"
+
+#: 
+msgid "Format: MM-DD (e.g. 04-12 for April 12)"
+msgstr "格式：MM-DD（例如 04-12 表示4月12日）"
+
+#: 
+msgid "Group Roster"
+msgstr "部门名册"
+
+#: 
+msgid "Hide Advanced Options"
+msgstr "隐藏高级选项"
+
+#: 
+msgid "How Sunday School + Events + Kiosks fit together"
+msgstr "主日学、活动与签到台如何协同工作"
+
+#: 
+msgid "Invalid date for %s — expected YYYY-MM-DD"
+msgstr "%s 的日期无效，期望格式为 YYYY-MM-DD"
+
+#: 
+msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr "rangeStart 或 rangeEnd 的日期格式无效"
+
+#: 
+msgid "Invalid date format."
+msgstr "日期格式无效。"
+
+#: 
+msgid "Invalid date; expected format YYYY-MM-DD"
+msgstr "日期无效；期望格式为 YYYY-MM-DD"
+
+#: 
+msgid "Invalid event type ID"
+msgstr "活动类型ID无效"
+
+#: 
+msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
+msgstr "年度重复格式无效；期望格式为 MM-DD（例如 04-12）"
+
+#: 
+msgid "Just now"
+msgstr "刚刚"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "留空则签出时不记录监督员。"
+
+#: 
+msgid "Link events to a group for Kiosk check-in functionality."
+msgstr "将活动关联到部门以启用签到台签到功能。"
+
+#: 
+msgid "Linked Groups"
+msgstr "关联部门"
+
+#: 
+msgid "Looking for stuck events..."
+msgstr "正在查找卡住的活动…"
+
+#: 
+msgid "Manage event names, recurrence patterns, and attendance counts"
+msgstr "管理活动名称、重复规则和出席计数"
+
+#: 
+msgid "Missing required field: %s"
+msgstr "缺少必填字段：%s"
+
+#: 
+msgid "No Events Today"
+msgstr "今日无活动"
+
+#: 
+msgid "No Group"
+msgstr "无部门"
+
+#: 
+msgid "No active assignment"
+msgstr "无活动分配"
+
+#: 
+msgid "No active events found."
+msgstr "未找到活动中的活动。"
+
+#: 
+msgid "No attendance count categories defined for this event type yet."
+msgstr "此活动类型尚未定义出席计数分类。"
+
+#: 
+msgid "No one has been checked in to this event yet."
+msgstr "尚无人签到此活动。"
+
+#: 
+msgid "No past events are still marked Active."
+msgstr "没有历史活动仍标记为激活状态。"
+
+#: 
+msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr "打开班级 → 点击\"创建今日活动\" — 活动即创建并一次性关联到班级，然后跳转到签到页面，可供签到台或现场签到使用。"
+
+#: 
+msgid "Optional Settings"
+msgstr "可选设置"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "可选 — 记录为此人办理签出的人（例如接孩子的家长）。"
+
+#: 
+msgid "Person checked out."
+msgstr "人员已签出。"
+
+#: 
+msgid "Person is not checked in"
+msgstr "该人员未签到"
+
+#: 
+msgid "Person not in active class roster"
+msgstr "该人员不在活动班级名册中"
+
+#: 
+msgid "Pin to Calendars"
+msgstr "固定到日历"
+
+#: 
+msgid "Please select a person to check in."
+msgstr "请选择要签到的人员。"
+
+#: 
+msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
+msgstr "根据此活动类型预填 — 对于重复类型，日期为此类型最后一次活动后的下一场次，时间与类型默认开始时间一致。"
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "范围结束日期必须等于或晚于范围开始日期。"
+
+#: 
+msgid "Range end must be a valid YYYY-MM-DD date."
+msgstr "范围结束日期必须是有效的 YYYY-MM-DD 格式。"
+
+#: 
+msgid "Range start must be a valid YYYY-MM-DD date."
+msgstr "范围开始日期必须是有效的 YYYY-MM-DD 格式。"
+
+#: 
+msgid "Range start must be before range end"
+msgstr "范围开始日期必须早于范围结束日期"
+
+#: 
+msgid "Range start must be before range end."
+msgstr "范围开始日期必须早于范围结束日期。"
+
+#: 
+msgid "RangeEnd must be on or after RangeStart"
+msgstr "RangeEnd 必须等于或晚于 RangeStart"
+
+#: 
+msgid "Recommended"
+msgstr "推荐"
+
+#: 
+msgid "Required for Kiosk"
+msgstr "签到台必填"
+
+#: 
+msgid "Resetting will permanently delete:"
+msgstr "重置将永久删除："
+
+#: 
+msgid "SQL Only"
+msgstr "仅SQL"
+
+#: 
+msgid "Save Time"
+msgstr "节省时间"
+
+#: 
+msgid "Save changes to this category name"
+msgstr "保存此分类名称的更改"
+
+#: 
+msgid "Select an event type…"
+msgstr "选择活动类型…"
+
+#: 
+msgid "Select start and end date/time."
+msgstr "选择开始和结束日期/时间。"
+
+#: 
+msgid "Show More Options"
+msgstr "显示更多选项"
+
+#: 
+msgid "Skip"
+msgstr "跳过"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "跳过并签出"
+
+#: 
+msgid "Start Check-in"
+msgstr "开始签到"
+
+#: 
+msgid "Starts"
+msgstr "开始"
+
+#: 
+msgid "Step 1: Create a Backup"
+msgstr "第一步：创建备份"
+
+#: 
+msgid "Step 2: Reset Database"
+msgstr "第二步：重置数据库"
+
+#: 
+msgid "Still Checked In"
+msgstr "仍在签到中"
+
+#: 
+msgid "Stuck Events"
+msgstr "卡住的活动"
+
+#: 
+msgid "Take Attendance"
+msgstr "记录出席"
+
+#: 
+msgid "The Events module is disabled"
+msgstr "活动模块已禁用"
+
+#: 
+msgid "The same start and end time will be used for all generated events."
+msgstr "所有生成的活动将使用相同的开始和结束时间。"
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "今日没有安排活动"
+
+#: 
+msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
+msgstr "这些是人数统计分类 — 义工在活动结束后填写，以便仪表板按类型细分出席情况（例如会众与访客的数量）。这与签到页面上的个人签到是独立的。"
+
+#: 
+msgid "This event is inactive."
+msgstr "此活动未激活。"
+
+#: 
+msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr "此页面允许您永久清除 ChurchCRM 数据库中的所有数据，此操作不可撤销。"
+
+#: 
+msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
+msgstr "此报告列出所有结束日期已过但仍标记为激活的活动。常见原因：义工忘记点击签出、签到台断网，或活动创建后被废弃。旧活动也会显示在此。仍在签到中一列显示是否有人未签出。关闭活动时，所有人将以当前时间签出，活动标记为未激活。"
+
+#: 
+msgid "This title will be used for all generated events."
+msgstr "所有生成的活动将使用此标题。"
+
+#: 
+msgid "Today's Events"
+msgstr "今日活动"
+
+#: 
+msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
+msgstr "场次过多（%d）— 请缩小日期范围。最大允许数量：%d"
+
+#: 
+msgid "Type RESET to confirm"
+msgstr "输入 RESET 以确认"
+
+#: 
+msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
+msgstr "使用上方按钮一键创建今日活动，活动将自动关联到此班级，签到台即可拉取名册。"
+
+#: 
+msgid "Use this form to bulk-create a series of recurring events. Each event is created individually and can be edited or deleted independently after creation."
+msgstr "使用此表单批量创建一系列重复活动。每个活动独立创建，创建后可单独编辑或删除。"
+
+#: 
+msgid "Used as the default start time when creating events of this type."
+msgstr "创建此类型活动时作为默认开始时间。"
+
+#: 
+msgid "User must have Add Event permission and the Events module must be enabled"
+msgstr "用户必须具有添加活动权限且活动模块已启用"
+
+#: 
+msgid "Valid startDate and endDate are required"
+msgstr "需要有效的 startDate 和 endDate"
+
+#: 
+msgid "View Event"
+msgstr "查看活动"
+
+#: 
+msgid "What are these for?"
+msgstr "这些有什么用？"
+
+#: 
+msgid "What does this find?"
+msgstr "这个功能查找什么？"
+
+#: 
+msgid "What is this for?"
+msgstr "这有什么用？"
+
+#: 
+msgid "Who is bringing them in?"
+msgstr "谁带他们进来？"
+
+#: 
+msgid "You must select a valid recurrence pattern."
+msgstr "您必须选择有效的重复规则。"
+
+#: 
+msgid "You must select an event type."
+msgstr "您必须选择活动类型。"
+
+#: 
+msgid "You must specify a date range."
+msgstr "您必须指定日期范围。"
+
+#: 
+msgid "checked in"
+msgstr "已签到"
+
+#: 
+msgid "e.g., Sunday Worship Service"
+msgstr "例如：主日崇拜"
+
+#: 
+msgid "endDate must be after startDate"
+msgstr "endDate 必须晚于 startDate"
+
+#: 
+msgid "eventIds must be a non-empty array"
+msgstr "eventIds 必须是非空数组"
+
+#: 
+msgid "invalid recurrence type"
+msgstr "无效的重复类型"
+
+#: 
+msgid "personIds must be a non-empty array"
+msgstr "personIds 必须是非空数组"
+
+#: 
+msgid "to enable the reset button"
+msgstr "以启用重置按钮"
 
