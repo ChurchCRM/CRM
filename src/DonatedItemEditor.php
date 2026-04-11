@@ -8,7 +8,6 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\DonatedItem;
 use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
-use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;

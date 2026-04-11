@@ -25,7 +25,6 @@ AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser
 
 $iFamilyID = 0;
 $iDonationFamilyID = 0;
-$sMode = 'family';
 
 if (!empty($_GET['FamilyID'])) {
     $iFamilyID = InputUtils::legacyFilterInput($_GET['FamilyID'], 'int');
@@ -33,10 +32,6 @@ if (!empty($_GET['FamilyID'])) {
 
 if (!empty($_GET['DonationFamilyID'])) {
     $iDonationFamilyID = InputUtils::legacyFilterInput($_GET['DonationFamilyID'], 'int');
-}
-
-if (!empty($_GET['mode'])) {
-    $sMode = $_GET['mode'];
 }
 
 if (isset($_GET['CancelFamily'])) {
@@ -210,7 +205,7 @@ require_once __DIR__ . '/Include/Header.php';
                  FROM pledge_plg
                  LEFT JOIN person_per a ON plg_EditedBy = a.per_ID
                  LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
-                 WHERE plg_famID = ' . $iFamilyID . ' ORDER BY pledge_plg.plg_date';
+                 WHERE plg_famID = ' . (int) $iFamilyID . ' ORDER BY pledge_plg.plg_date';
             $rsPledges = RunQuery($sSQL); ?>
             <table class="table w-100">
                 <tr class="TableHeader">
