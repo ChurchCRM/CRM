@@ -45,11 +45,11 @@ describe("XSS: Search dropdown escaping", () => {
         cy.wait("@searchXSS");
 
         // Verify no script elements were injected into the dropdown
-        cy.get("#searchDropdown").should("exist");
-        cy.get("#searchDropdown script").should("not.exist");
-        cy.get("#searchDropdown img").should("not.exist");
+        cy.get("#globalSearchDropdown").should("exist");
+        cy.get("#globalSearchDropdown script").should("not.exist");
+        cy.get("#globalSearchDropdown img").should("not.exist");
 
         // The escaped text should appear as literal text, not rendered HTML
-        cy.get("#searchDropdown").should("contain.text", "<img");
+        cy.get("#globalSearchDropdown").should("contain.text", "<img");
     });
 });
