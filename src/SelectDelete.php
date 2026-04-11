@@ -8,6 +8,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -25,7 +26,9 @@ if (!empty($_GET['FamilyID'])) {
     $iFamilyID = InputUtils::legacyFilterInput($_GET['FamilyID'], 'int');
 }
 
-if (!empty($_GET['DonationFamilyID'])) {
+if (!empty($_POST['DonationFamilyID'])) {
+    $iDonationFamilyID = InputUtils::legacyFilterInput($_POST['DonationFamilyID'], 'int');
+} elseif (!empty($_GET['DonationFamilyID'])) {
     $iDonationFamilyID = InputUtils::legacyFilterInput($_GET['DonationFamilyID'], 'int');
 }
 
@@ -33,72 +36,14 @@ if (!empty($_GET['mode'])) {
     $sMode = $_GET['mode'];
 }
 
-if (isset($_GET['CancelFamily'])) {
+if (isset($_GET['CancelFamily']) || isset($_POST['CancelFamily'])) {
     RedirectUtils::redirect("v2/family/$iFamilyID");
 }
 
 $DonationMessage = '';
 
-// Move Donations from 1 family to another
-if (AuthenticationManager::getCurrentUser()->isFinanceEnabled() && isset($_GET['MoveDonations']) && $iFamilyID && $iDonationFamilyID && $iFamilyID != $iDonationFamilyID) {
-    $today = date('Y-m-d');
-    $sSQL ="UPDATE pledge_plg SET plg_FamID='$iDonationFamilyID',
-        plg_DateLastEdited ='$today', plg_EditedBy='" . AuthenticationManager::getCurrentUser()->getId()
-        ."' WHERE plg_FamID='$iFamilyID'";
-    RunQuery($sSQL);
-
-            $DonationMessage = '<p><b><span class="text-error">' . gettext('All donations from this family have been moved to another family.') . '</span></b></p>';
-}
-
 //Set the Page Title
 $sPageTitle = gettext('Delete Confirmation') . ': ' . gettext('Family');
-
-//Do we have deletion confirmation?
-if (isset($_GET['Confirmed'])) {
-    // Delete Family
-    // Delete all associated Notes associated with this Family record
-    $sSQL = 'DELETE FROM note_nte WHERE nte_fam_ID = ' . $iFamilyID;
-    RunQuery($sSQL);
-
-    // Delete Family pledges
-    $sSQL ="DELETE FROM pledge_plg WHERE plg_PledgeOrPayment = 'Pledge' AND plg_FamID =" . $iFamilyID;
-    RunQuery($sSQL);
-
-    // Remove family property data
-    $sSQL ="SELECT pro_ID FROM property_pro WHERE pro_Class='f'";
-    $rsProps = RunQuery($sSQL);
-
-    while ($aRow = mysqli_fetch_row($rsProps)) {
-        $sSQL = 'DELETE FROM record2property_r2p WHERE r2p_pro_ID = ' . $aRow[0] . ' AND r2p_record_ID = ' . $iFamilyID;
-        RunQuery($sSQL);
-    }
-
-    if (isset($_GET['Members'])) {
-        // Delete all persons that were in this family
-        PersonQuery::create()->filterByFamId($iFamilyID)->find()->delete();
-    } else {
-        // Reset previous members' family ID to 0 (undefined)
-        $sSQL = 'UPDATE person_per SET per_fam_ID = 0 WHERE per_fam_ID = ' . $iFamilyID;
-        RunQuery($sSQL);
-    }
-
-    // Delete the specified Family record
-    $sSQL = 'DELETE FROM family_fam WHERE fam_ID = ' . $iFamilyID;
-    RunQuery($sSQL);
-
-    // Remove custom field data
-    $sSQL = 'DELETE FROM family_custom WHERE fam_ID = ' . $iFamilyID;
-    RunQuery($sSQL);
-
-    // Delete the photo files, if they exist
-    $photoFile = 'Images/Family/' . $iFamilyID . '.png';
-    if (file_exists($photoFile)) {
-        unlink($photoFile);
-    }
-
-    // Redirect back to the family listing
-    RedirectUtils::redirect(SystemURLs::getRootPath() . '/v2/family');
-}
 
 //Get the family record in question
 $sSQL = 'SELECT * FROM family_fam WHERE fam_ID = ' . $iFamilyID;
@@ -128,12 +73,12 @@ require_once __DIR__ . '/Include/Header.php';
             // Donations from Family. Current user authorized for Finance.
             // Select another family to move donations to.
             echo '<p class="lead">' . gettext('WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family.') . '</p>';
-            echo '<form name=SelectFamily method=get action=SelectDelete.php>';
+            echo '<form name="SelectFamily" method="post" action="SelectDelete.php?FamilyID=' . (int)$iFamilyID . '" id="moveDonationsForm">';
             echo '<div class="card-body">';
             echo '<div class="card-header"><strong>' . gettext('Family Name') . ':' ." $fam_Name</strong></div>";
             echo '<p>' . gettext('Please select another family with whom to associate these donations:');
             echo '<br><b>' . gettext('WARNING: This action can not be undone and may have legal implications!') . '</b></p>';
-            echo"<input name=FamilyID value=$iFamilyID type=hidden>";
+            echo '<input name="FamilyID" value="' . (int)$iFamilyID . '" type="hidden">';
             echo '<select name=DonationFamilyID><option value=0 selected>' . gettext('Unassigned') . '</option>';
 
             //Get Families for the drop-down
@@ -176,9 +121,36 @@ require_once __DIR__ . '/Include/Header.php';
                 }
             }
             echo '</select><br><br>';
-            echo '<input type="submit" class="btn btn-secondary me-2" name="CancelFamily" value="' . gettext('Cancel and Return to Family View') . '">';
-            echo '<input type="submit" class="btn btn-primary" name="MoveDonations" value="' . gettext('Move Donations to Selected Family') . '">';
+            echo '<a href="v2/family/' . (int)$iFamilyID . '" class="btn btn-secondary me-2">' . gettext('Cancel and Return to Family View') . '</a>';
+            echo '<button type="button" class="btn btn-primary" id="moveDonationsBtn" onclick="moveDonations()">' . gettext('Move Donations to Selected Family') . '</button>';
             echo '</div></form>';
+            ?>
+            <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+            function moveDonations() {
+                var targetFamilyId = document.querySelector('select[name=DonationFamilyID]').value;
+                if (!targetFamilyId || targetFamilyId == '0') {
+                    bootbox.alert(<?= json_encode(gettext('Please select a target family.')) ?>);
+                    return;
+                }
+                fetch(window.CRM.root + '/api/family/<?= (int)$iFamilyID ?>/donations/move', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'x-api-key': window.CRM.apiKey },
+                    body: JSON.stringify({ targetFamilyId: parseInt(targetFamilyId) })
+                })
+                .then(function(r) { return r.json(); })
+                .then(function(data) {
+                    if (data.success) {
+                        window.location.reload();
+                    } else {
+                        bootbox.alert(data.message || <?= json_encode(gettext('Failed to move donations.')) ?>);
+                    }
+                })
+                .catch(function() {
+                    bootbox.alert(<?= json_encode(gettext('An error occurred while moving donations.')) ?>);
+                });
+            }
+            </script>
+            <?php
 
             // Show payments connected with family
             // -----------------------------------
@@ -256,9 +228,33 @@ require_once __DIR__ . '/Include/Header.php';
                     RunQuery($sSQL);
                 }
                 echo '</ul></div>';
-                echo"<p id=\"deleteFamilyOnlyBtn\" class=\"text-center\"><a class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&FamilyID=" . $iFamilyID . '">' . gettext('Delete Family Record ONLY') . '</a> ';
-                echo"<a id=\"deleteFamilyAndMembersBtn\" class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&Members=Yes&FamilyID=" . $iFamilyID . '">' . gettext('Delete Family Record AND Family Members') . '</a> ';
-                echo"<a class='btn btn-secondary ms-2' href=\"v2/family/" . $iFamilyID . '">' . gettext('No, cancel this deletion') . '</a></p>';
+                echo '<div class="text-center">';
+                echo '<button id="deleteFamilyOnlyBtn" class="btn btn-danger" onclick="deleteFamily(' . (int)$iFamilyID . ', false)">' . gettext('Delete Family Record ONLY') . '</button> ';
+                echo '<button id="deleteFamilyAndMembersBtn" class="btn btn-danger" onclick="deleteFamily(' . (int)$iFamilyID . ', true)">' . gettext('Delete Family Record AND Family Members') . '</button> ';
+                echo '<a class="btn btn-secondary ms-2" href="v2/family/' . (int)$iFamilyID . '">' . gettext('No, cancel this deletion') . '</a>';
+                echo '</div>';
+                ?>
+                <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+                function deleteFamily(familyId, deleteMembers) {
+                    var url = window.CRM.root + '/api/family/' + familyId + (deleteMembers ? '?deleteMembers=true' : '');
+                    fetch(url, {
+                        method: 'DELETE',
+                        headers: { 'x-api-key': window.CRM.apiKey }
+                    })
+                    .then(function(r) { return r.json(); })
+                    .then(function(data) {
+                        if (data.success) {
+                            window.location.href = window.CRM.root + '/v2/family';
+                        } else {
+                            bootbox.alert(data.message || <?= json_encode(gettext('Delete failed')) ?>);
+                        }
+                    })
+                    .catch(function() {
+                        bootbox.alert(<?= json_encode(gettext('An error occurred while deleting the family.')) ?>);
+                    });
+                }
+                </script>
+                <?php
             }
             ?>
     </div>
