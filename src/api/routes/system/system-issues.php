@@ -47,7 +47,7 @@ $app->post('/issues', function (Request $request, Response $response, array $arg
         'Platform Information | ' . php_uname($mode = 'a') . "\r\n" .
         'PHP Version | ' . phpversion() . "\r\n" .
         'SQL Version | ' . SystemService::getDBServerVersion() . "\r\n" .
-        'ChurchCRM Version |' . $_SESSION['sSoftwareInstalledVersion'] . "\r\n" .
+        'ChurchCRM Version |' . ($_SESSION['sSoftwareInstalledVersion'] ?? 'unknown') . "\r\n" .
         'Reporting Browser |' . $_SERVER['HTTP_USER_AGENT'] . "\r\n" .
         'Prerequisite Status |' . SystemService::getPrerequisiteStatus() . "\r\n";
 
