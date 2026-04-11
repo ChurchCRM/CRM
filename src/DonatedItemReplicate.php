@@ -4,6 +4,7 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -13,10 +14,8 @@ $iCount = InputUtils::legacyFilterInputArr($_GET, 'Count', 'int');
 
 $sLetter = 'a';
 
-$sSQL ="SELECT di_item FROM donateditem_di WHERE di_ID=$iDonatedItemID";
-$rsItem = RunQuery($sSQL);
-$row = mysqli_fetch_array($rsItem);
-$startItem = $row[0];
+$donatedItem = DonatedItemQuery::create()->findPk((int) $iDonatedItemID);
+$startItem = $donatedItem->getItem();
 
 if (strlen($startItem) === 2) { // replicated items will sort better if they have a two-digit number
     $letter = mb_substr($startItem, 0, 1);

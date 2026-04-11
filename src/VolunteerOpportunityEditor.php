@@ -4,6 +4,8 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOpportunity;
 use ChurchCRM\model\ChurchCRM\VolunteerOpportunityQuery;
 use ChurchCRM\Utils\CSRFUtils;
@@ -51,10 +53,10 @@ if ($sAction === 'delete' && $iOpp > 0) {
     // Otherwise, redirect to the main menu
     AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled(), 'DeleteRecords');
 
-    $sSQL ="SELECT * FROM `volunteeropportunity_vol` WHERE `vol_ID` = '" . $iOpp ."'";
-    $rsOpps = RunQuery($sSQL);
-    $aRow = mysqli_fetch_array($rsOpps);
-    extract($aRow);
+    $opp = VolunteerOpportunityQuery::create()->findPk((int) $iOpp);
+    $vol_Order = $opp->getOrder();
+    $vol_Name = $opp->getName();
+    $vol_Description = $opp->getDescription();
 
     $sPageTitle = gettext('Delete Confirmation') . ': ' . gettext('Volunteer Opportunity');
     require_once __DIR__ . '/Include/Header.php';
@@ -87,22 +89,25 @@ if ($sAction === 'delete' && $iOpp > 0) {
                             </tr>
                         </table>
                         <?php
-                        $sSQL = 'SELECT `per_FirstName`, `per_LastName` FROM `person_per` ';
-                        $sSQL .= 'LEFT JOIN `person2volunteeropp_p2vo` ';
-                        $sSQL .= 'ON `p2vo_per_ID`=`per_ID` ';
-                        $sSQL .="WHERE `p2vo_vol_ID` = '" . $iOpp ."'";
-                        $sSQL .= 'ORDER BY `per_LastName`, `per_FirstName` ';
-                        $rsPeople = RunQuery($sSQL);
-                        $numRows = mysqli_num_rows($rsPeople);
-                        if ($numRows > 0) {
-                            echo"<div class='alert alert-warning mt-3' role='alert'><i class='fa-solid fa-circle-exclamation'></i> <strong>" . gettext('Warning') ."!</strong>" . gettext('There are people assigned to this Volunteer Opportunity. Deletion will unassign:') ."</div>";
-                            echo"<div class='ms-3 mb-3'>";
-                            for ($i = 0; $i < $numRows; $i++) {
-                                $aRow = mysqli_fetch_array($rsPeople);
-                                extract($aRow);
-                                echo"<div><i class='fa-solid fa-person'></i>" . InputUtils::escapeHTML($per_FirstName) ."" . InputUtils::escapeHTML($per_LastName) ."</div>";
+                        $assignments = PersonVolunteerOpportunityQuery::create()
+                            ->filterByVolunteerOpportunityId((int) $iOpp)
+                            ->find();
+                        $assignedPersonIds = [];
+                        foreach ($assignments as $assignment) {
+                            $assignedPersonIds[] = $assignment->getPersonId();
+                        }
+                        if (!empty($assignedPersonIds)) {
+                            $assignedPeople = PersonQuery::create()
+                                ->filterById($assignedPersonIds)
+                                ->orderByLastName()
+                                ->orderByFirstName()
+                                ->find();
+                            echo "<div class='alert alert-warning mt-3' role='alert'><i class='fa-solid fa-circle-exclamation'></i> <strong>" . gettext('Warning') . "!</strong>" . gettext('There are people assigned to this Volunteer Opportunity. Deletion will unassign:') . "</div>";
+                            echo "<div class='ms-3 mb-3'>";
+                            foreach ($assignedPeople as $person) {
+                                echo "<div><i class='fa-solid fa-person'></i>" . InputUtils::escapeHTML($person->getFirstName()) . " " . InputUtils::escapeHTML($person->getLastName()) . "</div>";
                             }
-                            echo"</div>";
+                            echo "</div>";
                         }
                         ?>
                         <div class="d-flex justify-content-center mt-4">
@@ -143,17 +148,23 @@ if ($sAction === 'ConfDelete' && $iOpp > 0) {
     }
 
     // get the order value for the record being deleted
-    $sSQL ="SELECT vol_Order from volunteeropportunity_vol WHERE vol_ID='$iOpp'";
-    $rsOrder = RunQuery($sSQL);
-    $aRow = mysqli_fetch_array($rsOrder);
-    $orderVal = $aRow[0];
-    $sSQL ="DELETE FROM `volunteeropportunity_vol` WHERE `vol_ID` = '" . $iOpp ."'";
-    RunQuery($sSQL);
-    $sSQL ="DELETE FROM `person2volunteeropp_p2vo` WHERE `p2vo_vol_ID` = '" . $iOpp ."'";
-    RunQuery($sSQL);
+    $oppToDelete = VolunteerOpportunityQuery::create()->findPk((int) $iOpp);
+    $orderVal = $oppToDelete->getOrder();
+
+    // delete the opportunity and its person assignments
+    $oppToDelete->delete();
+    PersonVolunteerOpportunityQuery::create()
+        ->filterByVolunteerOpportunityId((int) $iOpp)
+        ->delete();
+
     // pull back all the vol_Order fields that are higher than the one just deleted
-    $sSQL ="UPDATE volunteeropportunity_vol SET vol_Order=vol_Order-1 WHERE vol_Order>=$orderVal";
-    RunQuery($sSQL);
+    $higherOpps = VolunteerOpportunityQuery::create()
+        ->filterByOrder($orderVal, \Propel\Runtime\ActiveQuery\Criteria::GREATER_EQUAL)
+        ->find();
+    foreach ($higherOpps as $higherOpp) {
+        $higherOpp->setOrder($higherOpp->getOrder() - 1);
+        $higherOpp->save();
+    }
 }
 
 if ($iRowNum === 0) {
@@ -170,39 +181,32 @@ if ($iRowNum === 0) {
     // If we find a '0' add it to the end of the list by changing it to
     // MAX(vol_Order)+1.
 
-    $sSQL ="SELECT `vol_ID` FROM `volunteeropportunity_vol` WHERE vol_Order = '0'";
-    $sSQL .= 'ORDER BY `vol_ID`';
-    $rsOrder = RunQuery($sSQL);
-    $numRows = mysqli_num_rows($rsOrder);
-    if ($numRows) {
-        $sSQL = 'SELECT MAX(`vol_Order`) AS `Max_vol_Order` FROM `volunteeropportunity_vol`';
-        $rsMax = RunQuery($sSQL);
-        $aRow = mysqli_fetch_array($rsMax);
-        extract($aRow);
-        for ($row = 1; $row <= $numRows; $row++) {
-            $aRow = mysqli_fetch_array($rsOrder);
-            extract($aRow);
-            $num_vol_Order = $Max_vol_Order + $row;
-            $volunteerOpp = VolunteerOpportunityQuery::create()->findOneById($vol_ID);
-            $volunteerOpp->setOrder($num_vol_Order);
-            $volunteerOpp->save();
+    $zeroOrderOpps = VolunteerOpportunityQuery::create()
+        ->filterByOrder(0)
+        ->orderById()
+        ->find();
+    if ($zeroOrderOpps->count() > 0) {
+        $maxOrder = VolunteerOpportunityQuery::create()
+            ->orderByOrder(\Propel\Runtime\ActiveQuery\Criteria::DESC)
+            ->findOne();
+        $maxOrderVal = $maxOrder ? $maxOrder->getOrder() : 0;
+        $rowNum = 1;
+        foreach ($zeroOrderOpps as $zeroOpp) {
+            $zeroOpp->setOrder($maxOrderVal + $rowNum);
+            $zeroOpp->save();
+            $rowNum++;
         }
     }
 
     // Data integrity check #2
     // re-order the vol_Order field just in case there is a missing number(s)
-    $sSQL = 'SELECT * FROM `volunteeropportunity_vol` ORDER by `vol_Order`';
-    $rsOpps = RunQuery($sSQL);
-    $numRows = mysqli_num_rows($rsOpps);
+    $allOpps = VolunteerOpportunityQuery::create()->orderByOrder()->find();
 
     $orderCounter = 1;
-    for ($row = 1; $row <= $numRows; $row++) {
-        $aRow = mysqli_fetch_array($rsOpps);
-        extract($aRow);
-        if ($orderCounter !== (int)$vol_Order) {
-            $volunteerOpp = VolunteerOpportunityQuery::create()->findOneById($vol_ID);
-            $volunteerOpp->setOrder($orderCounter);
-            $volunteerOpp->save();
+    foreach ($allOpps as $volOpp) {
+        if ($orderCounter !== (int) $volOpp->getOrder()) {
+            $volOpp->setOrder($orderCounter);
+            $volOpp->save();
         }
         ++$orderCounter;
     }
@@ -224,10 +228,10 @@ require_once __DIR__ . '/Include/Header.php';
 
 // Does the user want to save changes to text fields?
 if (isset($_POST['SaveChanges'])) {
-    $sSQL = 'SELECT * FROM `volunteeropportunity_vol`';
-    $rsOpps = RunQuery($sSQL);
-    $numRows = mysqli_num_rows($rsOpps);
+    $allVolOpps = VolunteerOpportunityQuery::create()->orderByOrder()->find();
+    $numRows = $allVolOpps->count();
 
+    $oppIndex = 0;
     for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++) {
         $nameName = $iFieldID . 'name';
         $descName = $iFieldID . 'desc';
@@ -243,8 +247,10 @@ if (isset($_POST['SaveChanges'])) {
 
             $aDescFields[$iFieldID] = InputUtils::legacyFilterInput($_POST[$descName]);
 
-            $aRow = mysqli_fetch_array($rsOpps);
-            $aIDFields[$iFieldID] = $aRow[0];
+            if (isset($allVolOpps[$oppIndex])) {
+                $aIDFields[$iFieldID] = $allVolOpps[$oppIndex]->getId();
+            }
+            $oppIndex++;
         }
     }
 
@@ -267,10 +273,7 @@ if (isset($_POST['SaveChanges'])) {
         if (strlen($newFieldName) === 0) {
             $bNewNameError = true;
         } else { // Insert into table
-            // There must be an easier way to get the number of rows in order to generate the last order number.
-            $sSQL = 'SELECT * FROM `volunteeropportunity_vol`';
-            $rsOpps = RunQuery($sSQL);
-            $numRows = mysqli_num_rows($rsOpps);
+            $numRows = VolunteerOpportunityQuery::create()->count();
             $newOrder = $numRows + 1;
 
             $volunteerOpp = new VolunteerOpportunity();
@@ -284,19 +287,15 @@ if (isset($_POST['SaveChanges'])) {
         }
     }
     // Get data for the form as it now exists
-    $sSQL = 'SELECT * FROM `volunteeropportunity_vol`';
-
-    $rsOpps = RunQuery($sSQL);
-    $numRows = mysqli_num_rows($rsOpps);
+    $formOpps = VolunteerOpportunityQuery::create()->orderByOrder()->find();
+    $numRows = $formOpps->count();
 
     // Create arrays of Volunteer Opportunities
-    for ($row = 1; $row <= $numRows; $row++) {
-        $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
-        extract($aRow);
-        $rowIndex = $vol_Order; // Is this dangerous? The vol_Order field had better be correct.
-        $aIDFields[$rowIndex] = $vol_ID;
-        $aNameFields[$rowIndex] = $vol_Name;
-        $aDescFields[$rowIndex] = $vol_Description;
+    foreach ($formOpps as $volOpp) {
+        $rowIndex = $volOpp->getOrder();
+        $aIDFields[$rowIndex] = $volOpp->getId();
+        $aNameFields[$rowIndex] = $volOpp->getName();
+        $aDescFields[$rowIndex] = $volOpp->getDescription();
     }
 }
 
