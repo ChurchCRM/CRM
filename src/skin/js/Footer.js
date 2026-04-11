@@ -83,7 +83,14 @@ function initializeApp() {
         (group.children || []).forEach((item) => {
           var idx = currentItems.length;
           currentItems.push(item);
-          html += '<a href="' + window.CRM.escapeHtml(item.uri) + '" class="dropdown-item" data-idx="' + idx + '">' + window.CRM.escapeHtml(item.text) + "</a>";
+          html +=
+            '<a href="' +
+            window.CRM.escapeHtml(item.uri) +
+            '" class="dropdown-item" data-idx="' +
+            idx +
+            '">' +
+            window.CRM.escapeHtml(item.text) +
+            "</a>";
         });
       });
 
