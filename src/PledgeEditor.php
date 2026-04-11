@@ -720,7 +720,7 @@ require_once __DIR__ . '/Include/Header.php';
                                         <?php
                                     } ?>
                                     <td>
-                                        <input type="text" size=40 name="<?= $fun_id ?>_Comment" id="<?= $fun_id ?>_Comment" value="<?= $sComment[$fun_id] ?>">
+                                        <input type="text" size=40 name="<?= $fun_id ?>_Comment" id="<?= $fun_id ?>_Comment" value="<?= InputUtils::escapeAttribute($sComment[$fun_id]) ?>">
                                     </td>
                                 </tr>
                                 <?php
