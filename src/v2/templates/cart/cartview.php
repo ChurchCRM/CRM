@@ -93,7 +93,7 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
                       <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
                     </a>
                     <?php if ($Person->getFamId()) { ?>
-                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $Person->getFamId() ?>">
+                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/people/family/<?= $Person->getFamId() ?>">
                       <i class="ti ti-users me-2"></i><?= gettext('View Family') ?>
                     </a>
                     <?php } ?>
