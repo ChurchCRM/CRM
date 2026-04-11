@@ -335,11 +335,16 @@ function NewCalendar(Request $request, Response $response, $args): Response
 {
     $input = $request->getParsedBody();
 
-    // Validate color fields to prevent stored XSS (only allow valid CSS hex colors)
-    $colorPattern = '/^#[0-9a-fA-F]{3,6}$/';
-    $fgColor = $input['ForegroundColor'] ?? '#000000';
-    $bgColor = $input['BackgroundColor'] ?? '#ffffff';
-    if (!preg_match($colorPattern, $fgColor) || !preg_match($colorPattern, $bgColor)) {
+    // Validate required color fields
+    if (!isset($input['ForegroundColor']) || !isset($input['BackgroundColor'])) {
+        return SlimUtils::renderErrorJSON($response, gettext('ForegroundColor and BackgroundColor are required.'), [], 400);
+    }
+
+    // Validate color format to prevent stored XSS (only allow valid CSS hex colors: #RGB or #RRGGBB)
+    $colorPattern = '/^#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/';
+    $fgColor = $input['ForegroundColor'];
+    $bgColor = $input['BackgroundColor'];
+    if (!is_string($fgColor) || !is_string($bgColor) || !preg_match($colorPattern, $fgColor) || !preg_match($colorPattern, $bgColor)) {
         return SlimUtils::renderErrorJSON($response, gettext('Invalid color format. Use hex colors like #FF0000.'), [], 400);
     }
 

@@ -20,8 +20,8 @@ $app->addBodyParsingMiddleware();
 $app->addRoutingMiddleware();
 
 // Error middleware must be added AFTER routing (Slim 4 LIFO: last added = first executed)
-// displayErrorDetails=false in production to avoid leaking stack traces and file paths
-$errorMiddleware = $app->addErrorMiddleware(false, true, true);
+// displayErrorDetails driven by config: true in debug mode, false in production
+$errorMiddleware = $app->addErrorMiddleware(\ChurchCRM\dto\SystemConfig::debugEnabled(), true, true);
 SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
 $app->add(new CorsMiddleware());

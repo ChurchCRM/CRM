@@ -104,6 +104,10 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
         }
     };
 
+    if (empty($familyMetadata['Name'])) {
+        return SlimUtils::renderJSON($response, ['error' => gettext('Family name is required')], 400);
+    }
+
     $family = new Family();
     $family->setName($familyMetadata['Name']);
     $family->setAddress1($familyMetadata['Address1'] ?? '');
@@ -130,7 +134,7 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
 
     $familyMembers = [];
 
-    if (!isset($familyMetadata['people']) || !is_array($familyMetadata['people'])) {
+    if (!isset($familyMetadata['people']) || !is_array($familyMetadata['people']) || count($familyMetadata['people']) === 0) {
         return SlimUtils::renderJSON($response, ['error' => gettext('At least one family member is required')], 400);
     }
 
@@ -146,7 +150,7 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
         $person->setCellPhone($personMetaData['cellPhone'] ?? '');
         $person->setHomePhone($personMetaData['homePhone'] ?? '');
         $person->setWorkPhone($personMetaData['workPhone'] ?? '');
-        $person->setFlags(($personMetaData['hideAge'] ?? false) ? '1' : 0);
+        $person->setFlags(($personMetaData['hideAge'] ?? false) ? 1 : 0);
 
         $birthday = $personMetaData['birthday'] ?? '';
 
