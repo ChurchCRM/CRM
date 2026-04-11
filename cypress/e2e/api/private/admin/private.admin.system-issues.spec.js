@@ -39,7 +39,7 @@ describe("API System Issues", () => {
     });
 
     it("Issues endpoint works for standard (non-admin) users", () => {
-        cy.makePrivateStandardAPICall(
+        cy.makePrivateUserAPICall(
             "POST",
             "/api/issues",
             {
