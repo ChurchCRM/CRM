@@ -33,13 +33,13 @@ function initializeFamilyView() {
     path: `family/${window.CRM.currentFamily}/nav`,
   }).then(function (data) {
     if (data?.PreFamilyId) {
-      $("#lastFamily").attr("href", `${window.CRM.root}/v2/family/${data.PreFamilyId}`);
+      $("#lastFamily").attr("href", `${window.CRM.root}/people/family/${data.PreFamilyId}`);
     } else {
       $("#lastFamily").addClass("disabled").attr("aria-disabled", "true").removeAttr("href");
     }
 
     if (data?.NextFamilyId) {
-      $("#nextFamily").attr("href", `${window.CRM.root}/v2/family/${data.NextFamilyId}`);
+      $("#nextFamily").attr("href", `${window.CRM.root}/people/family/${data.NextFamilyId}`);
     } else {
       $("#nextFamily").addClass("disabled").attr("aria-disabled", "true").removeAttr("href");
     }
@@ -177,7 +177,7 @@ function initializeFamilyView() {
           data: "GroupKey",
           className: "all no-export",
           render: function (data, type, row) {
-            let linkBack = "v2/family/" + window.CRM.currentFamily;
+            let linkBack = "people/family/" + window.CRM.currentFamily;
             let editUrl = window.CRM.root + "/PledgeEditor.php?GroupKey=" + row.GroupKey + "&amp;linkBack=" + linkBack;
             let deleteUrl =
               window.CRM.root + "/PledgeDelete.php?GroupKey=" + row.GroupKey + "&amp;linkBack=" + linkBack;
@@ -393,7 +393,7 @@ function initializeFamilyView() {
             path: `family/${window.CRM.currentFamily}/activate/${!window.CRM.currentActive}`,
           }).then(function (data) {
             if (data.success) {
-              window.location.href = `${window.CRM.root}/v2/family/${window.CRM.currentFamily}`;
+              window.location.href = `${window.CRM.root}/people/family/${window.CRM.currentFamily}`;
             }
           });
         }

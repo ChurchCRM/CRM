@@ -144,7 +144,7 @@ describe('02 - Demo Data Import', () => {
         });
 
         it('should show people listing with demo data', () => {
-            cy.visit('/v2/people');
+            cy.visit('/people/list');
 
             // Should see the people listing
             cy.contains('People').should('be.visible');

@@ -110,7 +110,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
         $_SESSION['sGlobalMessage'] = sprintf(ngettext('%d Person successfully added to selected Family.', '%d People successfully added to selected Family.', $iCount), $iCount);
         $_SESSION['sGlobalMessageClass'] = 'success';
 
-        RedirectUtils::redirect('v2/family/' . $iFamilyID . '&Action=EmptyCart');
+        RedirectUtils::redirect('people/family/' . $iFamilyID . '&Action=EmptyCart');
     }
 }
 

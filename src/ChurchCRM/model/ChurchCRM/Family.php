@@ -62,7 +62,7 @@ class Family extends BaseFamily implements PhotoInterface
 
     public function getViewURI(): string
     {
-        return SystemURLs::getRootPath() . '/v2/family/' . $this->getId();
+        return SystemURLs::getRootPath() . '/people/family/' . $this->getId();
     }
 
     public function getWeddingDay()
@@ -389,7 +389,7 @@ class Family extends BaseFamily implements PhotoInterface
         return [
             'Id'          => $this->getId(),
             'displayName' => $this->getFamilyString(SystemConfig::getBooleanValue('bSearchIncludeFamilyHOH')),
-            'uri'         => SystemURLs::getRootPath() . '/v2/family/' . $this->getId(),
+            'uri'         => SystemURLs::getRootPath() . '/people/family/' . $this->getId(),
         ];
     }
 

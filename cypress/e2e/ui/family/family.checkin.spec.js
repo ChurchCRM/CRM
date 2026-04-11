@@ -10,7 +10,7 @@
 describe("Family Check-In Button (#6838)", () => {
     beforeEach(() => {
         cy.setupAdminSession();
-        cy.visit("v2/family/1");
+        cy.visit("people/family/1");
     });
 
     it("should display the Check In Family button when events are enabled", () => {

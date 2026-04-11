@@ -171,7 +171,7 @@ class MenuItem
         }
 
         // Menu item has NO query params - only match if current URL also has no query params
-        // This prevents "/v2/family" from matching "/v2/family?mode=inactive"
+        // This prevents "/people/family" from matching "/v2/family?mode=inactive"
         return empty($currentQuery);
     }
 }

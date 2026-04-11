@@ -5,9 +5,9 @@ describe("People classification filters", () => {
 
     it("applies the Classification URL filter on initial load", () => {
         // Load with a classification filter in the URL (regression for #8208)
-        cy.visit("v2/people?Classification=1&familyActiveStatus=all");
+        cy.visit("people/list?Classification=1&familyActiveStatus=all");
 
-        cy.url().should("include", "/v2/people?Classification=1");
+        cy.url().should("include", "/people/list?Classification=1");
 
         // TomSelect should show the selected classification in the control
         cy.get(".filter-Classification")
@@ -20,7 +20,7 @@ describe("People classification filters", () => {
     });
 
     it("applies Classification query filter on initial load", () => {
-        cy.visit("v2/people?Classification=1&familyActiveStatus=all");
+        cy.visit("people/list?Classification=1&familyActiveStatus=all");
 
         cy.url().should("include", "Classification=1");
         cy.get(".filter-Classification")

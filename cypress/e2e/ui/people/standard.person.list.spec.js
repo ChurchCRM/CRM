@@ -17,11 +17,11 @@ describe("Standard People", () => {
         cy.get('#errorReportBtn').click();
         cy.get('#IssueReportModal').should('be.visible');
         // pageName input should contain the not-found URL
-        cy.get('input[name="pageName"]').invoke('val').should('include', '/v2/person/not-found');
+        cy.get('input[name="pageName"]').invoke('val').should('include', '/people/person/not-found');
     });
 
     it("Listing all persons", () => {
-        cy.visit("v2/people");
+        cy.visit("people/list");
 
         // Wait for DataTable to initialize
         cy.get("#members tbody tr", { timeout: 10000 }).should("have.length.greaterThan", 0);
@@ -40,7 +40,7 @@ describe("Standard People", () => {
     });
 
     it("Listing all persons with gender url filter", () => {
-        cy.visit("v2/people?Gender=0");
+        cy.visit("people/list?Gender=0");
 
         // Wait for DataTable to initialize
         cy.get("#members tbody tr", { timeout: 10000 }).should("have.length.greaterThan", 0);
@@ -59,7 +59,7 @@ describe("Standard People", () => {
     });
 
     it("Multiple filter combinations", () => {
-        cy.visit("v2/people");
+        cy.visit("people/list");
 
         // Wait for DataTable and TomSelect to initialize
         cy.get("#members tbody tr", { timeout: 10000 }).should("have.length.greaterThan", 0);

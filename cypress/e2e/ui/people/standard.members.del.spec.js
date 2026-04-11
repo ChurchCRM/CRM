@@ -35,7 +35,7 @@ describe("Standard Family", () => {
         cy.get('select[name="Classification1"]').select("1", { force: true });
         cy.get('button[name="FamilySubmit"]').click();
 
-        cy.location("pathname").should("include", "/v2/family/").then((pathname) => {
+        cy.location("pathname").should("include", "/people/family/").then((pathname) => {
             const familyId = pathname.split("/").pop();
 
             // Open Actions dropdown, then click Delete
@@ -43,9 +43,9 @@ describe("Standard Family", () => {
             cy.get("#deleteFamilyBtn").first().click();
             cy.url().should("contain", "SelectDelete.php");
             cy.get("#deleteFamilyAndMembersBtn").first().click();
-            cy.url().should("contain", "v2/family");
+            cy.url().should("contain", "people/family");
 
-            cy.visit(`v2/family/${familyId}`);
+            cy.visit(`people/family/${familyId}`);
             cy.contains("Family not found");
         });
     });
