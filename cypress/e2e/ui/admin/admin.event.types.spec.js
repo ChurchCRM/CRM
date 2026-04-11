@@ -48,8 +48,13 @@ describe("Event Types Management", () => {
       200,
     );
 
-    // cy.request resets PHP sessions — must re-login before cy.visit
-    cy.setupAdminSession();
+    // cy.request resets PHP sessions — clearCookies + direct login
+    cy.clearCookies();
+    cy.visit("/session/begin");
+    cy.get("input[name=User]").type(Cypress.env("admin.username"));
+    cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
+    cy.url().should("not.include", "/session/begin");
+
     cy.visit("event/types");
     // The "Church Service" type should have a badge with a count
     cy.get(".table tbody tr").first().within(() => {
@@ -58,8 +63,7 @@ describe("Event Types Management", () => {
   });
 
   it("should block deletion of event types that have events", () => {
-    // Attempt to delete event type 1 (Church Service) which has events
-    // Use makePrivateAdminAPICall to keep auth, then re-login for UI
+    // Ensure an event exists for type 1
     cy.makePrivateAdminAPICall(
       "POST",
       "/api/events/quick-create",
@@ -67,10 +71,14 @@ describe("Event Types Management", () => {
       200,
     );
 
-    // Re-login before UI visit (cy.request resets PHP sessions)
-    cy.setupAdminSession();
+    // cy.request resets PHP sessions — clearCookies + direct login
+    cy.clearCookies();
+    cy.visit("/session/begin");
+    cy.get("input[name=User]").type(Cypress.env("admin.username"));
+    cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
+    cy.url().should("not.include", "/session/begin");
+
     cy.visit("event/types/1");
-    // The delete button should exist but be disabled or show warning when events exist
     cy.get(".delete-type-btn").should("exist").should("have.attr", "data-event-count");
   });
 
