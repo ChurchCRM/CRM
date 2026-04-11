@@ -1,7 +1,13 @@
 {
+  "%d result for \"%s\"": {
+    "other": "\"%s\" の %d 件の結果"
+  },
+  "BCC": "",
   "N/A": "",
   "name@example.com": "",
-  "Missing image data in request": "",
-  "File size exceeds the server limit of %s": "",
-  "BCC": ""
+  "%d repeat event created successfully.": {
+    "other": "%d 件の繰り返しイベントが正常に作成されました。"
+  },
+  "e.g., -74.0060": "例：-74.0060",
+  "e.g., 40.7128": "例：40.7128"
 }

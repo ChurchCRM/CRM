@@ -279,10 +279,6 @@ msgid "Add Cart to Event"
 msgstr "Add kosárba a rendezvény"
 
 #: 
-msgid "OR"
-msgstr "VAGY"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Az Ön kosara üres!"
 
@@ -406,10 +402,6 @@ msgstr "Igen"
 #: 
 msgid "No"
 msgstr "Nincs"
-
-#: 
-msgid "Event Checkin"
-msgstr "Event Checkin"
 
 #: 
 msgid "Select Event"
@@ -673,10 +665,6 @@ msgid "Church Event Editor"
 msgstr "Church Esemény szerkesztő"
 
 #: 
-msgid "Edit Event Types"
-msgstr "Szerkesztése Esemény típusok"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Szerkesztése Esemény típusa"
 
@@ -746,20 +734,8 @@ msgid "Create a new Event"
 msgstr "Új esemény létrehozása"
 
 #: 
-msgid " errors. Please see below"
-msgstr "hibák. Kérjük, olvassa el az alábbi"
-
-#: 
 msgid "Select your event type"
 msgstr "Válassza ki az esemény típusát"
-
-#: 
-msgid "You must pick an event type."
-msgstr "Választania kell egy eseménytípust."
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "Nem számít Részvétel rögzített"
 
 #: 
 #, fuzzy
@@ -2194,15 +2170,6 @@ msgid "User Editor"
 msgstr "Felhasználó szerkesztő"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Megjegyzés: A változások nem lépnek életbe, amíg a következő bejelentkezéskor."
-
-#: 
-#, fuzzy
-msgid "Person to Make User"
-msgstr "Személy készítsünk User"
-
-#: 
 #, fuzzy
 msgid "User"
 msgstr "Felhasználó"
@@ -2252,25 +2219,8 @@ msgid "Edit Self"
 msgstr "Szerkesztés Self"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Szerkesztés saját családja csak.)"
-
-#: 
 msgid "Admin"
 msgstr "Adminisztrátor"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Ad minden jogosultságokat.)"
-
-#: 
-#, fuzzy
-msgid "Style"
-msgstr "Stílus"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Állítsa az engedélyt Igazra, hogy a felhasználó módosíthassa az aktuális értéket."
 
 #: 
 msgid "Last Login"
@@ -3012,10 +2962,6 @@ msgid "Date Entered"
 msgstr "Rögzítés dátuma"
 
 #: 
-msgid "There were "
-msgstr "Volt összesen "
-
-#: 
 msgid "Inactive"
 msgstr "Inaktív"
 
@@ -3246,10 +3192,6 @@ msgstr "Adatok/Jelentések"
 #: 
 msgid "Query Menu"
 msgstr "Lekérdezés menü"
-
-#: 
-msgid "CSV Export Records"
-msgstr "CSV export rekordok"
 
 #: 
 msgid "Family Properties"
@@ -4958,14 +4900,6 @@ msgid "Select event"
 msgstr "Válasszon eseményt"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "A személy már bejelentkezett erre az eseményre"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "Felnőtt, aki kijelentkezteti a személyt"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Név előtti szöveg e-mailekben/jelentésekben"
 
@@ -5521,10 +5455,6 @@ msgid "Sign out"
 msgstr "Kijelentkezés"
 
 #: 
-msgid "Sermon Text"
-msgstr "Prédikáció szövege"
-
-#: 
 msgid "Change Settings"
 msgstr "Beállítások módosítása"
 
@@ -6036,10 +5966,6 @@ msgstr "Adatbázis visszaállítási funkciók"
 msgid "Reset Database"
 msgstr "Adatbázis visszaállítása"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "Ez visszaállítja a rendszer adatait, és új telepítésként indítja újra a rendszert."
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6151,28 +6077,12 @@ msgid "open rate"
 msgstr "megnyitási arány"
 
 #: 
-msgid "Login Info"
-msgstr "Bejelentkezési adatok"
-
-#: 
-msgid "Login Count"
-msgstr "Bejelentkezések száma"
-
-#: 
-msgid "Failed Login"
-msgstr "Sikertelen bejelentkezés"
-
-#: 
 msgid "Permissions"
 msgstr "Jogosultságok"
 
 #: 
 msgid "Manage Notes"
 msgstr "Jegyzetek kezelése"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Az új API-kulcs létrehozása sikertelen"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6244,14 +6154,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "A mai házassági évfordulók"
 
 #: 
-msgid "Api Key"
-msgstr "API kulcs"
-
-#: 
-msgid "Regen API Key"
-msgstr "API kulcs újragenerálása"
-
-#: 
 msgid "View Family Page"
 msgstr "Család oldal megtekintése"
 
@@ -6266,46 +6168,6 @@ msgstr "Ellenőrzés"
 #: 
 msgid "Family has no emails to use"
 msgstr "A család nem rendelkezik e-mailekhez"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Doboz elrendezés"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Az doboz elrendezés aktiválása"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Oldalsáv váltása"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Az oldalsáv állapotának váltása (nyitott vagy összecsukott)"
-
-#: 
-msgid "Tables Settings"
-msgstr "Táblázatok beállítások"
-
-#: 
-msgid "Page length"
-msgstr "Oldal hossza"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Az oldal kezdeti hosszának módosítása (sorok száma oldalanként)"
-
-#: 
-msgid "User Interface"
-msgstr "Felhasználói felület"
-
-#: 
-msgid "Locale"
-msgstr "Terület"
-
-#: 
-msgid "Override system locale"
-msgstr "Rendszer-terület felülbírálása"
 
 #: 
 msgid "Deleted"
@@ -7376,10 +7238,6 @@ msgid "All Types"
 msgstr "Az Összes Típus"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "Biztosan törölni szeretné ezt az érkezési nyilvántartást?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "Részvételi Szám Kategóriák"
 
@@ -7420,10 +7278,6 @@ msgid "Create New Event"
 msgstr "Új Esemény Létrehozása"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "Az első lépéshez hozzon létre egy eseménytípust."
-
-#: 
 msgid "Current DB Version"
 msgstr "Jelenlegi Adatbázis Verzió"
 
@@ -7442,14 +7296,6 @@ msgstr "Alapértelmezett Kezdési Idő"
 #: 
 msgid "Delete Event"
 msgstr "Esemény Törlése"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "Az esemény törlése az összes részvételi számlálást is törli. Törli ezt az eseményt?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "Az esemény törlése az összes részvételi nyilvántartást is törli. Biztos vagy ebben?"
 
 #: 
 msgid "Edit Event"
@@ -7517,10 +7363,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "Opcionális - Adjon hozzá prédikációs megjegyzéseket vagy további esemény részleteket"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "Opcionális - hagyja üresen, ha nem követi nyomon"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "Opcionális megjegyzések a részvételről..."
 
@@ -7553,24 +7395,12 @@ msgid "Search by name or email..."
 msgstr "Keresés név vagy e-mail alapján..."
 
 #: 
-msgid "Search for adult..."
-msgstr "Keresés felnőtt alapján..."
-
-#: 
 msgid "Search for supervisor..."
 msgstr "Keresés felügyelő alapján..."
 
 #: 
 msgid "Select Event for Check-In"
 msgstr "Válasszon Eseményt az Érkezési Nyilvántartáshoz"
-
-#: 
-msgid "Select start and end date/time"
-msgstr "Válassza ki a kezdési és befejezési dátumot/időpontot"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "Válassza ki az eseményt a kocsiba helyezett tagok érkezési nyilvántartásához"
 
 #: 
 msgid "Sermon / Event Text"
@@ -7937,10 +7767,6 @@ msgstr "Külső eszközök (GPG, 7-Zip) segítségével titkosítsa a biztonság
 #: 
 msgid "User authentication"
 msgstr "Felhasználói Hitelesítés"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "A felhasználónak AddEvent engedéllyel kell rendelkeznie"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8463,10 +8289,6 @@ msgid "State (Other)"
 msgstr "Állam/Megye (Egyéb)"
 
 #: 
-msgid "Status:"
-msgstr "Állapot:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "A vállalások és befizetések összefoglalója alaponként a pénzügyi évre vonatkozóan."
 
@@ -8517,10 +8339,6 @@ msgstr "Összes befizetés:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Vállalások és fizetési folyamatok követése kampányokhoz és a pénzügyi év költségvetéséhez."
-
-#: 
-msgid "Type:"
-msgstr "Típus:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8947,10 +8765,6 @@ msgid "Disable 2FA"
 msgstr "2FA letiltása"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "Minden személyi adat exportálása ChMeetings formátumba külső rendszerekbe történő importáláshoz."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "Exportálás ChMeetings CSV-be"
 
@@ -9205,10 +9019,6 @@ msgid "Add Your First Property Type"
 msgstr "Adja Hozzá az Első Tulajdonságtípusát"
 
 #: 
-msgid "Auto-calculated from counts above"
-msgstr "Automatikusan számítva a fenti számokból"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "A mező törlésével visszavonhatatlanul elveszíti az ehhez a mezőhöz rendelt összes csoporttag adatot!"
 
@@ -9397,10 +9207,6 @@ msgstr "Kiosk regisztráció letiltva"
 #: 
 msgid "Kiosk not found"
 msgstr "A kiosk nem található"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "Csatolja ezt az eseményt egy csoporthoz a kiosk bejelentkezési funkcióhoz. A csoport tagjai megjelennek a kioskon."
 
 #: 
 msgid "Linked Group"
@@ -10602,10 +10408,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "Kötelezze az összes felhasználót a kétfaktoros hitelesítés aktiválására"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "A térkép megjelenik, amint mentésre kerül egy cím. A koordináták automatikusan felismerésre kerülnek — nincs szükség kézi bevitelre."
-
-#: 
 msgid "Active Groups"
 msgstr "Aktív csoportok"
 
@@ -10656,10 +10458,6 @@ msgstr "A családnak nincs utcacíme a geokódoláshoz"
 #: 
 msgid "Father"
 msgstr "Apa"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "Geokódolt koordináták:"
 
 #: 
 msgid "Geocoding failed"
@@ -10740,10 +10538,6 @@ msgstr "Időzóna"
 #: 
 msgid "Total Groups"
 msgstr "Összes csoport"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "Minden mentéskor automatikusan frissül."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10928,14 +10722,6 @@ msgid "Add a Person"
 msgstr "Személy hozzáadása"
 
 #: 
-msgid "Add a new pledge"
-msgstr "Új felajánlás hozzáadása"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "Befizetés hozzáadása az aktuális letéthez"
-
-#: 
 msgid "Add all cart items to a group"
 msgstr "A lista összes elemének hozzáadása egy csoporthoz"
 
@@ -11072,10 +10858,6 @@ msgid "Auto-mapped"
 msgstr "Automatikusan hozzárendelve"
 
 #: 
-msgid "BCC"
-msgstr "Titkos másolat"
-
-#: 
 msgid "BCC All"
 msgstr "Titkos másolat mindenkinek"
 
@@ -11154,10 +10936,6 @@ msgstr "Családi szerep módosítása"
 #: 
 msgid "Check Out"
 msgstr "Kijelentkeztetés"
-
-#: 
-msgid "Check Out Person"
-msgstr "Személy kijelentkeztetése"
 
 #: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
@@ -11284,10 +11062,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "Készítsen kézi biztonsági mentést legalább hetente egyszer, vagy engedélyezze a Külső biztonsági mentés bővítményt az automatikus WebDAV mentésekhez ütemezetten."
 
 #: 
-msgid "Create a new deposit"
-msgstr "Új letét létrehozása"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "Családi adatok és kapcsolatok létrehozása és szerkesztése"
 
@@ -11342,10 +11116,6 @@ msgstr "Csoportspecifikus tulajdonságok meghatározása tagok számára"
 #: 
 msgid "Delete All"
 msgstr "Összes törlése"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "Bejelentkezési bejegyzés törlése"
 
 #: 
 msgid "Delete Family"
@@ -11628,10 +11398,6 @@ msgid "Generate directory listings and printed materials"
 msgstr "Címtárlisták és nyomtatott anyagok készítése"
 
 #: 
-msgid "Generate financial reports"
-msgstr "Pénzügyi jelentések készítése"
-
-#: 
 msgid "Generate financial statements and giving reports"
 msgstr "Pénzügyi kimutatások és adománykimutatások készítése"
 
@@ -11864,14 +11630,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "E-mail eszközök és SMTP konfiguráció kezelése"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "Eseménynevek és kategóriák kezelése"
-
-#: 
-msgid "Manage event type categories"
-msgstr "Eseménytípus-kategóriák kezelése"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Családok, személyek és demográfiai adatok kezelése"
 
@@ -12002,10 +11760,6 @@ msgstr "Nincsenek születésnapok"
 #: 
 msgid "No Check-ins"
 msgstr "Nincsenek bejelentkezések"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "Nincs letétkövetés"
 
 #: 
 msgid "No Deposits"
@@ -12760,10 +12514,6 @@ msgstr "alapok"
 #: 
 msgid "members"
 msgstr "tagok"
-
-#: 
-msgid "name@example.com"
-msgstr "nev@pelda.hu"
 
 #: 
 msgid "opportunities"
@@ -13719,23 +13469,153 @@ msgstr "például vasárnapi istentisztelet"
 msgid "member"
 msgstr "tag"
 
+#. plugin:mailchimp:section:1:content
+#: 
+msgid "- **Dashboard**: View all your MailChimp lists with subscriber statistics\n"
+"- **List Maintenance**: Identify people in MailChimp but not in CRM, and vice versa\n"
+"- **Contact Integration**: View MailChimp subscription status on Person and Family pages\n"
+"- **Automatic Sync**: Hooks into person/family updates to keep MailChimp in sync"
+msgstr "- **Irányítópult**: Tekintse meg az összes MailChimp listáját feliratkozói statisztikákkal\n"
+"- **Listakarbantartás**: Azonosítsa a MailChimpben szereplő, de a CRM-ben nem található személyeket, és fordítva\n"
+"- **Kapcsolatintegráció**: Tekintse meg a MailChimp feliratkozási állapotát a Személy és Család oldalakon\n"
+"- **Automatikus szinkronizálás**: Kapcsolódik a személy/család frissítésekhez a MailChimp naprakészen tartása érdekében"
+
+#. plugin:vonage:section:1:content
+#: 
+msgid "1. Create a Vonage account at https://dashboard.nexmo.com/sign-up (new accounts include free trial credit)\n"
+"2. Find your API Key and API Secret on the Vonage Dashboard homepage\n"
+"3. Go to Numbers > Buy Numbers and purchase a number with SMS capability\n"
+"4. Note the number in E.164 format (e.g., +14155551234)\n"
+"5. In ChurchCRM, enable the Vonage SMS plugin and enter your credentials"
+msgstr "1. Hozzon létre egy Vonage fiókot a https://dashboard.nexmo.com/sign-up oldalon (az új fiókok ingyenes próbaegyenleget tartalmaznak)\n"
+"2. Keresse meg az API-kulcsát és az API-titkát a Vonage irányítópultjának főoldalán\n"
+"3. Lépjen a Numbers > Buy Numbers menüpontba, és vásároljon SMS-képes számot\n"
+"4. Jegyezze fel a számot E.164 formátumban (pl. +14155551234)\n"
+"5. A ChurchCRM-ben engedélyezze a Vonage SMS bővítményt, és adja meg a hitelesítő adatait"
+
+#. plugin:google-analytics:section:0:content
+#: 
+msgid "1. Go to Google Analytics (analytics.google.com)\n"
+"2. Create a property or select an existing one\n"
+"3. Go to Admin → Data Streams → Web\n"
+"4. Copy the Measurement ID (starts with G-)"
+msgstr "1. Lépjen a Google Analytics oldalára (analytics.google.com)\n"
+"2. Hozzon létre egy tulajdont, vagy válasszon ki egy meglévőt\n"
+"3. Lépjen az Admin → Adatfolyamok → Web menüpontra\n"
+"4. Másolja ki a mérési azonosítót (G-vel kezdődik)"
+
+#. plugin:openlp:section:2:content
+#: 
+msgid "1. Install OpenLP 3.0 or later on your presentation computer\n"
+"2. Enable the Remote plugin in OpenLP (Settings → Configure OpenLP → Plugins)\n"
+"3. Enable the Alerts plugin in OpenLP for alert display support\n"
+"4. Note the IP address of the OpenLP computer\n"
+"5. Enter the server URL in the format: http://IP_ADDRESS:4316\n"
+"6. If you've configured authentication in OpenLP, enter the username and password"
+msgstr "1. Telepítse az OpenLP 3.0 vagy újabb verzióját a prezentációs számítógépre\n"
+"2. Engedélyezze a Távoli bővítményt az OpenLP-ben (Beállítások → Az OpenLP konfigurálása → Bővítmények)\n"
+"3. Engedélyezze a Riasztások bővítményt az OpenLP-ben a riasztások megjelenítéséhez\n"
+"4. Jegyezze fel az OpenLP-t futtató számítógép IP-címét\n"
+"5. Adja meg a kiszolgáló URL-jét a következő formátumban: http://IP_CÍM:4316\n"
+"6. Ha hitelesítést állított be az OpenLP-ben, adja meg a felhasználónevet és a jelszót"
+
+#. plugin:mailchimp:section:2:content
+#: 
+msgid "Access the MailChimp Dashboard from the Email menu. The dashboard shows:\n"
+"\n"
+"- Member count for each list\n"
+"- Campaign statistics\n"
+"- Unsubscribe counts\n"
+"- List maintenance tools"
+msgstr "Az E-mail menüből érheti el a MailChimp irányítópultját. Az irányítópult megjeleníti:\n"
+"\n"
+"- Tagok számát listánként\n"
+"- Kampánystatisztikákat\n"
+"- Leiratkozások számát\n"
+"- Listakarbantartó eszközöket"
+
 #. plugin:custom-links:section:1:title
 #: 
 msgid "Adding Links"
 msgstr "Hivatkozások hozzáadása"
+
+#. plugin:custom-links:section:2:content
+#: 
+msgid "All configured links are shown in a table. You can:\n"
+"- View the link name and URL\n"
+"- Click the URL to test it opens correctly\n"
+"- Delete links you no longer need\n"
+"\n"
+"Links appear in the order they were added in the navigation menu."
+msgstr "Az összes konfigurált hivatkozás egy táblázatban jelenik meg. Lehetőségei:\n"
+"- Megtekintheti a hivatkozás nevét és URL-jét\n"
+"- Kattintson az URL-re, hogy ellenőrizze, helyesen nyílik-e meg\n"
+"- Törölheti a már nem szükséges hivatkozásokat\n"
+"\n"
+"A hivatkozások a hozzáadásuk sorrendjében jelennek meg a navigációs menüben."
 
 #: 
 msgid "Allow Pre-release Upgrades"
 msgstr "Előzetes kiadású frissítések engedélyezése"
 
 #: 
+msgid "Allow recording of non-tax-deductible payments in the finance module"
+msgstr "Nem adóból levonható befizetések rögzítésének engedélyezése a pénzügyi modulban"
+
+#: 
+msgid "Allow scanned check images to be attached to deposit records"
+msgstr "Beolvasott csekképek csatolásának engedélyezése a befizetési nyilvántartásokhoz"
+
+#: 
+msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
+msgstr "Rendszerfrissítések engedélyezése a GitHub-on 'előzetes kiadásként' megjelölt verziókra"
+
+#: 
+msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
+msgstr "Hitelesítés nélküli hozzáférés engedélyezése naptári eseményekhez nyilvános HTML-, ICS- és JSON-URL-eken keresztül. Külső alkalmazásokkal való naptármegosztáshoz szükséges."
+
+#: 
+msgid "Allow visitors to create their own family record via the self-registration page"
+msgstr "Látogatók számára engedélyezze saját család nyilvántartásának létrehozását az önregisztrációs oldalon"
+
+#: 
 msgid "Allow visitors to self-register as new families."
 msgstr "Engedje meg a látogatóknak, hogy új családként regisztráljanak."
+
+#. plugin:external-backup:section:5:content
+#: 
+msgid "Any WebDAV-compatible service works with this plugin:\n"
+"\n"
+"- Nextcloud (recommended)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (with WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx with WebDAV module\n"
+"\n"
+"Note: Some services require app-specific passwords for WebDAV access."
+msgstr "Bármely WebDAV-kompatibilis szolgáltatás működik ezzel a bővítménnyel:\n"
+"\n"
+"- Nextcloud (ajánlott)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (WebDAV-val)\n"
+"- Apache mod_dav\n"
+"- nginx WebDAV modullal\n"
+"\n"
+"Megjegyzés: Egyes szolgáltatások alkalmazásspecifikus jelszavakat igényelnek a WebDAV-hozzáféréshez."
 
 #. plugin:openlp:section:4:title
 #: 
 msgid "Authentication"
 msgstr "Hitelesítés"
+
+#. plugin:openlp:section:4:content
+#: 
+msgid "Authentication is required for API v2 if you've enabled it in OpenLP's Remote plugin settings. The plugin uses HTTP Basic Authentication. Most local network setups don't require authentication, but it's recommended for security."
+msgstr "Az API v2-höz hitelesítés szükséges, ha engedélyezte azt az OpenLP Távoli bővítményének beállításaiban. A bővítmény HTTP alapszintű hitelesítést használ. A legtöbb helyi hálózati beállítás nem igényel hitelesítést, de biztonsági szempontból ajánlott."
 
 #: 
 msgid "Auto TLS"
@@ -13750,6 +13630,69 @@ msgstr "Automatikus biztonsági mentés"
 msgid "BCC All Mail To"
 msgstr "BCC minden levél ide"
 
+#. plugin:external-backup:section:4:content
+#: 
+msgid "Before relying on external backups, test your connection:\n"
+"1. Go to Plugins > External Backup\n"
+"2. Click 'Test WebDAV Connection'\n"
+"3. Verify you see a success message\n"
+"\n"
+"Common issues:\n"
+"- 401/403 errors: Check username and password\n"
+"- Connection timeout: Verify the endpoint URL is correct\n"
+"- Certificate errors: Ensure the WebDAV server has a valid SSL certificate"
+msgstr "Mielőtt a külső mentésekre támaszkodna, tesztelje a kapcsolatot:\n"
+"1. Lépjen a Bővítmények > Külső mentés menüpontra\n"
+"2. Kattintson a 'WebDAV-kapcsolat tesztelése' gombra\n"
+"3. Ellenőrizze, hogy megjelenik-e a sikeres üzenet\n"
+"\n"
+"Gyakori problémák:\n"
+"- 401/403 hibák: Ellenőrizze a felhasználónevet és jelszót\n"
+"- Kapcsolat időtúllépés: Ellenőrizze, hogy a végpont URL-je helyes-e\n"
+"- Tanúsítványhibák: Győződjön meg arról, hogy a WebDAV-kiszolgálónak érvényes SSL-tanúsítványa van"
+
+#. plugin:gravatar:section:1:content
+#: 
+msgid "Choose what appears when no Gravatar exists:\n"
+"• Mystery Person - Gray silhouette outline\n"
+"• Identicon - Geometric pattern based on email\n"
+"• MonsterID - Unique generated monster face\n"
+"• Wavatar - Abstract generated face\n"
+"• Retro - 8-bit arcade-style pixel art\n"
+"• RoboHash - Unique generated robot\n"
+"• Blank - Transparent (falls back to initials)"
+msgstr "Válassza ki, mi jelenjen meg, ha nem létezik Gravatar:\n"
+"• Titokzatos személy – Szürke sziluettkontúr\n"
+"• Identicon – E-mail alapú geometriai minta\n"
+"• MonsterID – Egyedi generált szörcarc\n"
+"• Wavatar – Absztrakt generált arc\n"
+"• Retro – 8 bites arkádjáték stílusú pixel art\n"
+"• RoboHash – Egyedi generált robot\n"
+"• Üres – Átlátszó (monogram jelenik meg helyette)"
+
+#: 
+msgid "Comma-separated query IDs that require finance permissions to view"
+msgstr "Vesszővel elválasztott lekérdezési azonosítók, amelyek megtekintéséhez pénzügyi jogosultságok szükségesek"
+
+#. plugin:custom-links:section:4:content
+#: 
+msgid "Common uses for custom links:\n"
+"- Church website\n"
+"- Online giving portal\n"
+"- Volunteer signup forms\n"
+"- Denomination resources\n"
+"- Partner organization sites\n"
+"- Cloud storage folders\n"
+"- Event registration pages"
+msgstr "Egyéni hivatkozások gyakori felhasználási területei:\n"
+"- Gyülekezet weboldala\n"
+"- Online adományozási portál\n"
+"- Önkéntes jelentkezési lapok\n"
+"- Egyházi forrásanyagok\n"
+"- Partnerszervezetek oldalai\n"
+"- Felhőalapú tárolási mappák\n"
+"- Eseményregisztrációs oldalak"
+
 #. plugin:external-backup:section:1:title
 #: 
 msgid "Configuration"
@@ -13763,11 +13706,6 @@ msgstr "Kontinens"
 #: 
 msgid "Costs"
 msgstr "Költségek"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Hitelkártyás személyek"
 
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
@@ -13819,17 +13757,28 @@ msgid "Enable External Calendar API"
 msgstr "Külső naptár API engedélyezése"
 
 #: 
+msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
+msgstr "E-mail küldésének engedélyezése a ChurchCRM-ből. Szükséges a jelszó-visszaállításhoz, értesítésekhez és e-mail hivatkozásokhoz."
+
+#: 
+msgid "Enable if your SMTP server requires a username and password"
+msgstr "Engedélyezze, ha az SMTP-kiszolgáló felhasználónevet és jelszót igényel"
+
+#: 
+msgid "Enable or disable the Sunday School module and sidebar menu."
+msgstr "A Hittanóra modul és az oldalsávban lévő menü engedélyezése vagy letiltása."
+
+#: 
+msgid "Enable the use of numbered donation envelopes for tracking contributions"
+msgstr "Számozott adományborítékok használatának engedélyezése az adományok nyomon követéséhez"
+
+#: 
 msgid "Enable use of donation envelopes"
 msgstr "Adományborítékok használatának engedélyezése"
 
 #: 
 msgid "Enable use of scanned checks"
 msgstr "Szkennelt csekkek használatának engedélyezése"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Családi ígérvény pénzügyi év szerint"
 
 #. plugin:mailchimp:section:1:title
 #: 
@@ -13840,11 +13789,6 @@ msgstr "Funkciók"
 msgid "Finance permission query IDs"
 msgstr "Pénzügyi jogosultsági lekérdezési azonosítók"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Regisztrált tanulók keresése"
-
 #: 
 msgid "Find family"
 msgstr "Család keresése"
@@ -13854,10 +13798,20 @@ msgstr "Család keresése"
 msgid "Finding Your Server URL"
 msgstr "A szerver URL-jének megkeresése"
 
-#. Context: queryparameters_qrp
+#. plugin:custom-links:section:3:content
 #: 
-msgid "Fiscal Year."
-msgstr "Pénzügyi év."
+msgid "For security:\n"
+"- Only administrators can add or remove links\n"
+"- The 'Manage Links' option only appears for administrators\n"
+"- Links must use http:// or https:// protocols\n"
+"- HTML tags are not allowed in names or URLs\n"
+"- All input is validated and sanitized"
+msgstr "Biztonsági szempontból:\n"
+"- Csak rendszergazdák adhatnak hozzá vagy távolíthatnak el hivatkozásokat\n"
+"- A 'Hivatkozások kezelése' lehetőség csak rendszergazdák számára jelenik meg\n"
+"- A hivatkozásoknak http:// vagy https:// protokollt kell használniuk\n"
+"- HTML-tagek nem engedélyezettek nevekben vagy URL-ekben\n"
+"- Minden beviteli adat ellenőrzésre és tisztításra kerül"
 
 #. plugin:google-analytics:link:1:label
 #: 
@@ -13874,10 +13828,25 @@ msgstr "Első lépések"
 msgid "Getting Your GA4 Measurement ID"
 msgstr "GA4 mérési azonosító megszerzése"
 
+#. plugin:google-analytics:summary
+#: 
+msgid "Google Analytics 4 (GA4) tracks how users interact with ChurchCRM, providing insights into page views, user engagement, and feature usage."
+msgstr "A Google Analytics 4 (GA4) nyomon követi, hogyan lépnek kapcsolatba a felhasználók a ChurchCRM-mel, betekintést nyújtva az oldalmegtekintésekbe, a felhasználói elköteleződésbe és a funkciók használatába."
+
 #. plugin:google-analytics:link:0:label
 #: 
 msgid "Google Analytics Help"
 msgstr "Google Analytics súgó"
+
+#. plugin:google-analytics:section:2:content
+#: 
+msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
+msgstr "A Google Analytics anonimizált használati adatokat gyűjt. A ChurchCRM nyilvántartásaiból nem kerül személyes adat a Google-hoz. Fontolja meg adatvédelmi tájékoztató hozzáadását gyülekezete adatkezelési szabályzatához."
+
+#. plugin:gravatar:summary
+#: 
+msgid "Gravatar (Globally Recognized Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM."
+msgstr "A Gravatar (Globally Recognized Avatar) a gravatar.com-ról jeleníti meg a profilképeket azon tagok esetén, akiknek nincs feltöltött fényképük a ChurchCRM-ben."
 
 #. plugin:gravatar:link:1:label
 #: 
@@ -13889,10 +13858,10 @@ msgstr "Gravatar képbeállítások"
 msgid "Gravatar Website"
 msgstr "Gravatar weboldal"
 
-#. Context: queryparameters_qrp
+#. plugin:gravatar:section:2:content
 #: 
-msgid "Group of registered students"
-msgstr "Regisztrált tanulók csoportja"
+msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
+msgstr "A Gravatar úgy működik, hogy az e-mail-címeket hash értékké (MD5) alakítja. A tényleges e-mail-cím soha nem kerül a Gravatar szervereire – a képkereséshez csak a hash értéket használja."
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -13912,6 +13881,77 @@ msgstr "Hogyan működik"
 msgid "How many checks to print per deposit slip page"
 msgstr "Hány csekket kell nyomtatni betéti bizonylat oldalanként"
 
+#. plugin:vonage:section:3:content
+#: 
+msgid "If SMS messages aren't being sent:\n"
+"1. Verify API Key and Secret are correct (no extra spaces)\n"
+"2. Check that the From Number is a valid Vonage number you own\n"
+"3. Ensure recipient phone numbers include country code\n"
+"4. Check your Vonage account balance\n"
+"5. Review the Vonage Dashboard > SMS > Logs for delivery status"
+msgstr "Ha az SMS-üzenetek nem kerülnek elküldésre:\n"
+"1. Ellenőrizze, hogy az API-kulcs és a titkos kulcs helyes-e (nincsenek extra szóközök)\n"
+"2. Ellenőrizze, hogy a feladói szám egy érvényes, az Ön tulajdonában lévő Vonage-szám\n"
+"3. Győződjön meg arról, hogy a fogadók telefonszámai tartalmazzák az országkódot\n"
+"4. Ellenőrizze a Vonage-fiók egyenlegét\n"
+"5. Tekintse meg a Vonage irányítópult > SMS > Naplók részt a kézbesítési állapot ellenőrzéséhez"
+
+#. plugin:openlp:section:5:content
+#: 
+msgid "If alerts aren't appearing:\n"
+"1. Verify OpenLP is running and the Remote plugin is active\n"
+"2. Ensure the Alerts plugin is enabled in OpenLP\n"
+"3. Check that the server URL is correct (try accessing it in a browser)\n"
+"4. Verify firewall settings allow connections on port 4316\n"
+"5. If using authentication, verify credentials are correct"
+msgstr "Ha a riasztások nem jelennek meg:\n"
+"1. Ellenőrizze, hogy az OpenLP fut-e, és a Távoli bővítmény aktív-e\n"
+"2. Győződjön meg arról, hogy a Riasztások bővítmény engedélyezve van az OpenLP-ben\n"
+"3. Ellenőrizze, hogy a kiszolgáló URL-je helyes-e (próbálja megnyitni böngészőben)\n"
+"4. Győződjön meg arról, hogy a tűzfal beállításai engedélyezik a kapcsolatokat a 4316-os porton\n"
+"5. Ha hitelesítést használ, ellenőrizze a hitelesítő adatok helyességét"
+
+#. plugin:vonage:section:5:content
+#: 
+msgid "If messages are sent but not received:\n"
+"1. Check Vonage Dashboard > SMS > Logs for delivery status\n"
+"2. Verify the recipient number is correct and can receive SMS\n"
+"3. Some carriers may block messages from unknown numbers\n"
+"4. Check if the destination country has SMS restrictions"
+msgstr "Ha az üzenetek elküldésre kerülnek, de nem érkeznek meg:\n"
+"1. Ellenőrizze a Vonage irányítópult > SMS > Naplók részt a kézbesítési állapot ellenőrzéséhez\n"
+"2. Ellenőrizze, hogy a fogadó száma helyes, és képes fogadni SMS-t\n"
+"3. Egyes szolgáltatók blokkolhatják az ismeretlen számokról érkező üzeneteket\n"
+"4. Ellenőrizze, hogy a célországban vannak-e SMS-korlátozások"
+
+#. plugin:vonage:section:4:content
+#: 
+msgid "If you receive invalid sender ID errors:\n"
+"1. Use a phone number you've purchased from Vonage\n"
+"2. Format the number in E.164 format (+14155551234)\n"
+"3. Note: Alphanumeric sender IDs may be restricted in some countries"
+msgstr "Ha érvénytelen feladói azonosítóval kapcsolatos hibákat kap:\n"
+"1. Használjon a Vonage-tól vásárolt telefonszámot\n"
+"2. Formázza a számot E.164 formátumban (+14155551234)\n"
+"3. Megjegyzés: Az alfanumerikus feladói azonosítók egyes országokban korlátozottak lehetnek"
+
+#. plugin:external-backup:section:6:content
+#: 
+msgid "Important security notes:\n"
+"\n"
+"1. Always use HTTPS endpoints to encrypt backups in transit\n"
+"2. Use app-specific passwords when available (Nextcloud, ownCloud)\n"
+"3. Store backups in a folder with restricted access\n"
+"4. Periodically download and verify your backups are valid\n"
+"5. Consider encrypting sensitive backups with external tools before uploading"
+msgstr "Fontos biztonsági megjegyzések:\n"
+"\n"
+"1. Mindig HTTPS-végpontokat használjon a mentések titkosításához az átvitel során\n"
+"2. Használjon alkalmazásspecifikus jelszavakat, ha elérhetők (Nextcloud, ownCloud)\n"
+"3. Tároljon biztonsági mentéseket korlátozott hozzáférésű mappában\n"
+"4. Rendszeresen töltse le és ellenőrizze, hogy a mentések érvényesek-e\n"
+"5. Fontolja meg az érzékeny mentések titkosítását külső eszközökkel feltöltés előtt"
+
 #: 
 msgid "Initial zoom level when opening the map"
 msgstr "Kezdeti nagyítási szint a térkép megnyitásakor"
@@ -13923,6 +13963,11 @@ msgstr "Tudjon meg többet"
 #: 
 msgid "Log Settings"
 msgstr "Napló beállítások"
+
+#. plugin:mailchimp:summary
+#: 
+msgid "MailChimp Integration enables synchronization between ChurchCRM contacts and your MailChimp email marketing lists."
+msgstr "A MailChimp-integráció lehetővé teszi a ChurchCRM-névjegyek és a MailChimp e-mail marketing listák szinkronizálását."
 
 #. plugin:custom-links:section:2:title
 #: 
@@ -13948,10 +13993,10 @@ msgstr "OpenLP dokumentáció"
 msgid "OpenLP Website"
 msgstr "OpenLP weboldal"
 
-#. Context: query_qry
+#. plugin:openlp:summary
 #: 
-msgid "People who are configured to pay by credit card."
-msgstr "Hitelkártyás fizetésre beállított személyek."
+msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
+msgstr "Az OpenLP egy ingyenes, nyílt forráskódú prezentációs szoftver, amelyet gyülekezetek számára terveztek. Ez a bővítmény lehetővé teszi, hogy a ChurchCRM értesítéseket és riasztásokat küldjön közvetlenül az OpenLP kijelzőjére."
 
 #. plugin:mailchimp:section:3:title
 #: 
@@ -13962,6 +14007,21 @@ msgstr "Személy/Család integráció"
 #: 
 msgid "Phone Number Format"
 msgstr "Telefonszám-formátum"
+
+#. plugin:vonage:section:2:content
+#: 
+msgid "Phone numbers should be in E.164 format: country code + number. Examples:\n"
+"- US: +14155551234\n"
+"- UK: +447700900123\n"
+"- Australia: +61412345678\n"
+"\n"
+"Recipient phone numbers in ChurchCRM member profiles should include the country code for SMS to work correctly."
+msgstr "A telefonszámokat E.164 formátumban kell megadni: országkód + szám. Példák:\n"
+"- USA: +14155551234\n"
+"- UK: +447700900123\n"
+"- Ausztrália: +61412345678\n"
+"\n"
+"A ChurchCRM-tagprofilokban lévő fogadói telefonszámoknak tartalmazniuk kell az országkódot az SMS helyes működéséhez."
 
 #. plugin:mailchimp:section:4:title
 #: 
@@ -13981,11 +14041,6 @@ msgstr "Adatvédelmi megjegyzés"
 #: 
 msgid "Quick Settings"
 msgstr "Gyorsbeállítások"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Regisztrált tanulók"
 
 #: 
 msgid "SMTP Authentication"
@@ -14012,6 +14067,22 @@ msgid "Setup"
 msgstr "Beállítás"
 
 #: 
+msgid "Show a breakdown of bill denominations on the deposit slip report"
+msgstr "Bankjegycímlet-bontás megjelenítése a befizetési szelvény jelentésben"
+
+#: 
+msgid "Show or hide the Events menu in the main navigation."
+msgstr "Az Események menü megjelenítése vagy elrejtése a fő navigációban."
+
+#: 
+msgid "Show or hide the Events section in the main navigation menu"
+msgstr "Az Események szakasz megjelenítése vagy elrejtése a fő navigációs menüben"
+
+#: 
+msgid "Show or hide the Sunday School module in the sidebar navigation"
+msgstr "A Hittanóra modul megjelenítése vagy elrejtése az oldalsáv navigációjában"
+
+#: 
 msgid "Street"
 msgstr "Utca"
 
@@ -14028,6 +14099,89 @@ msgstr "Támogatott szolgáltatások"
 #: 
 msgid "Testing Connection"
 msgstr "Kapcsolat tesztelése"
+
+#. plugin:custom-links:section:0:content
+#: 
+msgid "The Custom Menu Links plugin allows administrators to add external links to the navigation menu. When enabled, a 'Links' menu appears in the sidebar containing all configured links."
+msgstr "Az Egyéni menühivatkozások bővítmény lehetővé teszi a rendszergazdák számára, hogy külső hivatkozásokat adjanak a navigációs menühöz. Ha engedélyezve van, egy 'Hivatkozások' menü jelenik meg az oldalsávban, amely tartalmazza az összes konfigurált hivatkozást."
+
+#. plugin:external-backup:section:0:content
+#: 
+msgid "The External Backup plugin allows you to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services. This includes popular services like Nextcloud, ownCloud, or any server supporting WebDAV protocol."
+msgstr "A Külső mentés bővítmény lehetővé teszi a ChurchCRM-adatbázis automatikus biztonsági mentését WebDAV-kompatibilis felhőalapú tárolási szolgáltatásokba. Ez magában foglalja az olyan népszerű szolgáltatásokat, mint a Nextcloud, az ownCloud, vagy bármely WebDAV-protokollt támogató kiszolgáló."
+
+#. plugin:openlp:section:3:content
+#: 
+msgid "The default OpenLP port is 4316. Your server URL will typically be: http://192.168.x.x:4316 where 192.168.x.x is the IP address of the computer running OpenLP. You can find this in OpenLP under Tools → Open Service Manager."
+msgstr "Az OpenLP alapértelmezett portja 4316. A kiszolgáló URL-je általában: http://192.168.x.x:4316, ahol a 192.168.x.x az OpenLP-t futtató számítógép IP-címe. Ezt az OpenLP-ben az Eszközök → Szolgáltatáskezelő megnyitása menüpontban találja."
+
+#: 
+msgid "The month that starts your organization's fiscal year"
+msgstr "A szervezet pénzügyi évét kezdő hónap"
+
+#. plugin:vonage:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an SMS can be sent to notify parents or guardians."
+msgstr "Ez a bővítmény jelenleg a kioszkos bejelentkezési értesítésekhez használatos. Amikor egy gyermeket bejelentkeztetnek egy hittanórai csoportba a kioszkrendszeren keresztül, SMS küldhető a szülők vagy gondviselők értesítéséhez."
+
+#. plugin:openlp:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an alert can be sent to the OpenLP projector display to notify parents or volunteers."
+msgstr "Ez a bővítmény jelenleg a kioszkos bejelentkezési értesítésekhez használatos. Amikor egy gyermeket bejelentkeztetnek egy hittanórai csoportba a kioszkrendszeren keresztül, riasztás küldhető az OpenLP kivetítő kijelzőjére a szülők vagy önkéntesek értesítéséhez."
+
+#. plugin:mailchimp:section:4:content
+#: 
+msgid "This plugin transmits email addresses to MailChimp servers. Ensure you have appropriate consent from your members before syncing their information to third-party services like MailChimp."
+msgstr "Ez a bővítmény e-mail-címeket továbbít a MailChimp szervereire. Győződjön meg arról, hogy megfelelő hozzájárulással rendelkezik tagjaitól, mielőtt adataikat szinkronizálja harmadik féltől származó szolgáltatásokkal, mint a MailChimp."
+
+#. plugin:custom-links:section:1:content
+#: 
+msgid "To add a new link:\n"
+"1. Go to the Links menu in the sidebar and click 'Manage Links'\n"
+"2. Enter a display name (2-50 characters)\n"
+"3. Enter the full URL (must start with http:// or https://)\n"
+"4. Click 'Add Link'\n"
+"\n"
+"The link will immediately appear in the Links menu."
+msgstr "Új hivatkozás hozzáadásához:\n"
+"1. Lépjen az oldalsávban lévő Hivatkozások menübe, és kattintson a 'Hivatkozások kezelése' lehetőségre\n"
+"2. Adjon meg egy megjelenítési nevet (2-50 karakter)\n"
+"3. Adja meg a teljes URL-t (http:// vagy https:// előtaggal kell kezdődnie)\n"
+"4. Kattintson a 'Hivatkozás hozzáadása' gombra\n"
+"\n"
+"A hivatkozás azonnal megjelenik a Hivatkozások menüben."
+
+#. plugin:external-backup:section:1:content
+#: 
+msgid "To configure external backups:\n"
+"1. Go to Admin > Plugins and find 'External Backup (WebDAV)'\n"
+"2. Click the settings icon to expand the configuration panel\n"
+"3. Enter your WebDAV endpoint URL (e.g., https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Enter your username and password\n"
+"5. Optionally set an auto-backup interval in hours\n"
+"6. Save your settings"
+msgstr "A külső mentések konfigurálásához:\n"
+"1. Lépjen az Admin > Bővítmények menüpontra, és keresse meg a 'Külső mentés (WebDAV)' elemet\n"
+"2. Kattintson a beállítások ikonra a konfigurációs panel kibontásához\n"
+"3. Adja meg a WebDAV-végpont URL-jét (pl. https://cloud.example.com/remote.php/dav/files/felhasznalonev/backups/)\n"
+"4. Adja meg a felhasználónevet és a jelszót\n"
+"5. Igény esetén állítson be automatikus mentési időközt órákban\n"
+"6. Mentse el a beállításokat"
+
+#. plugin:mailchimp:section:0:content
+#: 
+msgid "To use MailChimp Integration, you need a MailChimp account and an API key.\n"
+"\n"
+"1. Log in to your MailChimp account\n"
+"2. Go to Account > Extras > API Keys\n"
+"3. Create a new API key or copy an existing one\n"
+"4. Enter the API key in the plugin settings"
+msgstr "A MailChimp-integráció használatához MailChimp-fiókra és API-kulcsra van szükség.\n"
+"\n"
+"1. Jelentkezzen be MailChimp-fiókjába\n"
+"2. Lépjen a Fiók > Extrák > API-kulcsok menüpontra\n"
+"3. Hozzon létre egy új API-kulcsot, vagy másoljon ki egy meglévőt\n"
+"4. Adja meg az API-kulcsot a bővítmény beállításaiban"
 
 #. plugin:openlp:section:5:title
 #: 
@@ -14058,11 +14212,6 @@ msgstr "Frissítési beállítások"
 msgid "Use Cases"
 msgstr "Felhasználási esetek"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Felhasználói jogosultság CSV-fájlok exportálásához"
-
 #. plugin:vonage:link:0:label
 #: 
 msgid "Vonage Dashboard"
@@ -14078,8 +14227,515 @@ msgstr "Vonage árazás"
 msgid "Vonage SMS API Documentation"
 msgstr "Vonage SMS API dokumentáció"
 
+#. plugin:vonage:summary
+#: 
+msgid "Vonage SMS enables text message notifications for ChurchCRM using the Vonage API (formerly Nexmo). Send SMS alerts to parents when their child checks in via the kiosk system."
+msgstr "A Vonage SMS szöveges üzenet értesítéseket tesz lehetővé a ChurchCRM számára a Vonage API (korábban Nexmo) segítségével. SMS-riasztásokat küldhet a szülőknek, amikor gyermekük bejelentkezik a kioszkrendszeren."
+
+#. plugin:vonage:section:6:content
+#: 
+msgid "Vonage charges per SMS sent. Pricing varies by destination country. See the Vonage pricing page for current rates. New accounts receive free trial credit for testing."
+msgstr "A Vonage SMS-enként számít fel díjat. Az árak a célország szerint változnak. Az aktuális díjszabásért lásd a Vonage árképzési oldalát. Az új fiókok ingyenes próbaegyenleget kapnak a teszteléshez."
+
 #. plugin:google-analytics:section:1:title
 #: 
 msgid "What Gets Tracked"
 msgstr "Mi kerül nyomon követésre"
+
+#. plugin:mailchimp:section:3:content
+#: 
+msgid "When MailChimp is configured, a 'MailChimp' tab appears on Person view pages showing:\n"
+"\n"
+"- Email subscription status across all lists\n"
+"- Which lists the person is subscribed to\n"
+"- Subscription statistics"
+msgstr "Ha a MailChimp konfigurálva van, egy 'MailChimp' fül jelenik meg a Személy megtekintési oldalakon, amely megmutatja:\n"
+"\n"
+"- E-mail feliratkozási állapotot az összes listán\n"
+"- Melyik listákra iratkozott fel az illető\n"
+"- Feliratkozási statisztikákat"
+
+#. plugin:gravatar:section:0:content
+#: 
+msgid "When a member doesn't have an uploaded photo, ChurchCRM checks if they have a Gravatar associated with their email address. If a Gravatar exists, it displays that image. If not, the configured default image style is used."
+msgstr "Ha egy tagnak nincs feltöltött fényképe, a ChurchCRM ellenőrzi, hogy rendelkezik-e e-mail-címéhez kapcsolt Gravatar-ral. Ha van Gravatar, azt jeleníti meg. Ha nem, a beállított alapértelmezett képstílus kerül alkalmazásra."
+
+#. plugin:external-backup:section:2:content
+#: 
+msgid "When auto-backup is enabled (interval > 0 hours), ChurchCRM will automatically create and upload a full database backup at the specified interval. The backup runs as part of normal page loads, so the system must have regular user activity to trigger backups.\n"
+"\n"
+"Recommended intervals:\n"
+"- Daily backup: 24 hours\n"
+"- Twice daily: 12 hours\n"
+"- Weekly: 168 hours"
+msgstr "Ha az automatikus mentés engedélyezve van (időköz > 0 óra), a ChurchCRM a megadott időközönként automatikusan létrehozza és feltölti a teljes adatbázismentést. A mentés a normál oldalbetöltések részeként fut, ezért a rendszernek rendszeres felhasználói aktivitásra van szüksége a mentések elindításához.\n"
+"\n"
+"Ajánlott időközök:\n"
+"- Napi mentés: 24 óra\n"
+"- Naponta kétszer: 12 óra\n"
+"- Hetente: 168 óra"
+
+#. plugin:openlp:section:1:content
+#: 
+msgid "When enabled and configured, ChurchCRM sends alert messages to your OpenLP server using the API v2 endpoint (POST /api/v2/plugins/alerts). These alerts appear as overlay notifications on your projected display."
+msgstr "Ha engedélyezve és konfigurálva van, a ChurchCRM riasztási üzeneteket küld az OpenLP-kiszolgálóra az API v2 végpont (POST /api/v2/plugins/alerts) segítségével. Ezek a riasztások átfedéses értesítésként jelennek meg a kivetített kijelzőn."
+
+#: 
+msgid "When enabled, hides the address field for people not assigned to a family"
+msgstr "Ha engedélyezve van, elrejti a cím mezőt a családhoz nem rendelt személyek esetén"
+
+#: 
+msgid "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background."
+msgstr "Ha engedélyezve van, elrejti a szélességi/hosszúsági fok mezőket a Család szerkesztőben. A geokódolás a háttérben továbbra is fut."
+
+#. plugin:external-backup:section:3:content
+#: 
+msgid "You can also trigger a manual backup at any time:\n"
+"1. Go to the External Backup settings page (Plugins > External Backup)\n"
+"2. Select backup type (Database Only or Full Backup)\n"
+"3. Click 'Backup to WebDAV Now'\n"
+"\n"
+"Database Only backups are smaller and faster. Full backups include uploaded photos."
+msgstr "Manuális mentést bármikor indíthat:\n"
+"1. Lépjen a Külső mentés beállítások oldalára (Bővítmények > Külső mentés)\n"
+"2. Válassza ki a mentés típusát (Csak adatbázis vagy Teljes mentés)\n"
+"3. Kattintson a 'Mentés WebDAV-ra most' gombra\n"
+"\n"
+"A csak adatbázis-mentések kisebb méretűek és gyorsabbak. A teljes mentések tartalmazzák a feltöltött fényképeket is."
+
+#. plugin:google-analytics:section:1:content
+#: 
+msgid "• Page views and navigation patterns\n"
+"• Session duration and engagement\n"
+"• User demographics (if enabled in GA4)\n"
+"• Device and browser information"
+msgstr "• Oldalmegtekintések és navigációs minták\n"
+"• Munkamenet-hossz és elköteleződés\n"
+"• Felhasználói demográfiai adatok (ha engedélyezve van a GA4-ben)\n"
+"• Eszköz- és böngészőinformációk"
+
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "A fájlméret meghaladja a kiszolgáló %s korlátját"
+
+#: 
+msgid "Missing image data in request"
+msgstr "Hiányzó képadatok a kérésben"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Azok keresése, akik nem vettek részt egy eseményen"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Hiányzó személyek"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Válassza ki a kívánt eseményt"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Speciális szűrés csoport, besorolás és szerep szerint"
+
+#: 
+msgid "All congregation members included"
+msgstr "Az összes gyülekezeti tag belefoglalva"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "A ChMeetings exportálás sikeresen befejeződött"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "ChMeetings-kompatibilis oszlopformátum"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Kapcsolattartási adatok, családi szerepek és kulcsdátumok"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Készítsen teljes biztonsági másolatot az egyházi adatbázisáról. Töltsön le csak az adatbázist tartalmazó SQL-fájlt, vagy egy teljes archívumot a feltöltött fényképekkel együtt."
+
+#: 
+msgid "Database Backup"
+msgstr "Adatbázis biztonsági mentés"
+
+#: 
+msgid "Export"
+msgstr "Exportálás"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Exportálja a gyülekezeti adatokat CSV formátumba. Válassza ki, mely mezőket tartalmazza, és szűrjön besorolás, csoport, nem és egyéb szempontok szerint."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Exportálja az összes személyt a ChMeetings által elvárt formátumban, így könnyen szinkronizálhatja a gyülekezeti adatait a ChMeetings platformmal."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Exportálja az egyházi adatait különböző formátumokba"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Külső (WebDAV) biztonsági mentés bővítményen keresztül"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Nem sikerült exportálni a ChMeetings CSV-t"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Családi vagy egyéni rekord elrendezés"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Rugalmas mezőkiválasztás"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Ugrás az adatbázis biztonsági mentéshez"
+
+#: 
+msgid "Open CSV Export"
+msgstr "CSV exportálás megnyitása"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Visszaállítás a Rendszer biztonsági mentés oldalról"
+
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "Rendszerfrissítés érhető el. Kérjük, frissítse a telepítést."
+
+#: 
+msgid "API Access"
+msgstr "API-hozzáférés"
+
+#: 
+msgid "API Key"
+msgstr "API-kulcs"
+
+#: 
+msgid "API key regenerated"
+msgstr "API-kulcs újragenerálva"
+
+#: 
+msgid "Account"
+msgstr "Fiók"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Speciális beállítások"
+
+#: 
+msgid "An error occurred."
+msgstr "Hiba történt."
+
+#: 
+msgid "Appearance"
+msgstr "Megjelenés"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Vissza a Pénzügy vezérlőpulthoz"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Vissza a Csoportok vezérlőpulthoz"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Vissza a Személyek vezérlőpulthoz"
+
+#: 
+msgid "Blue"
+msgstr "Kék"
+
+#: 
+msgid "Change Photo"
+msgstr "Fotó módosítása"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "A módosítások a következő bejelentkezésig nem lépnek életbe."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Válasszon világos vagy sötét színséma között"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "A ChurchCRM fordításait a közösség kezeli a POEditor-on. Segíthet a következőképpen:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Szabja testre az alkalmazás megjelenését és működését"
+
+#: 
+msgid "Cyan"
+msgstr "Ciánkék"
+
+#: 
+msgid "Dark"
+msgstr "Sötét"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Csak adatbázis (.sql) vagy teljes archívum (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Az adattáblákban megjelenített alapértelmezett sorok száma. A következő oldalletöltéskor lép életbe."
+
+#: 
+msgid "Edit own family only"
+msgstr "Csak saját család szerkesztése"
+
+#: 
+msgid "Enter text here..."
+msgstr "Írjon szöveget ide..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Az iratkozás lemondása sikertelen. Kérjük, próbálja újra."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Az esemény törlése sikertelen. Kérjük, próbálja újra."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "A kétlépéses hitelesítés letiltása sikertelen. Kérjük, próbálja újra."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "A QR-kód generálása sikertelen. Kérjük, próbálja újra."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "A naptáradatok betöltése sikertelen. Kérjük, próbálja újra."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Az esemény betöltése sikertelen. Kérjük, próbálja újra."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "A helyreállítási kódok betöltése sikertelen. Kérjük, frissítse az oldalt."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Az esemény mentése sikertelen. Kérjük, próbálja újra."
+
+#: 
+msgid "Failed to save setting"
+msgstr "A beállítás mentése sikertelen"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Filippínó - Fülöp-szigetek"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Helytelen vagy ügyetlen fordítások javítása az Ön nyelvén"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "Hibát talált a fordításokban?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Minden jogosultságot megad"
+
+#: 
+msgid "Green"
+msgstr "Zöld"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Segítsen a fordítások javításában"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "Ha olvashatatlan karaktereket, szövegként megjelenő HTML-entitásokat, vagy az oldal elrendezését megrontó fordításokat észlel, kérjük, jelezze a problémát a GitHub-on, hogy mindenki számára javítható legyen."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "Adja meg az API-kulcsát a kérésekben az x-api-key fejléc használatával:"
+
+#: 
+msgid "Indigo"
+msgstr "Indigókék"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Érvénytelen JSON-érték – a beállítás nem lett mentve. Kérjük, javítsa ki, és próbálja újra."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "Csatlakozzon a fordítási projekthez a POEditor-on"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Nyelvi és regionális beállítások"
+
+#: 
+msgid "Light"
+msgstr "Világos"
+
+#: 
+msgid "Lime"
+msgstr "Limezöld"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "Malajálam - India"
+
+#: 
+msgid "Manage 2FA"
+msgstr "Kétlépéses hitelesítés kezelése"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "Kezelje a további beállításokat, például az e-mail elválasztókat és a megjelenítési opciókat"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Kezelje az API-kulcsát a külső integrációkhoz"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "A metódus nem engedélyezett"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "Hiányzó vagy helytelen fordítások?"
+
+#: 
+msgid "My Account"
+msgstr "Saját fiók"
+
+#: 
+msgid "Orange"
+msgstr "Narancssárga"
+
+#: 
+msgid "Override the system default locale"
+msgstr "Felülbírálja a rendszer alapértelmezett területi beállítását"
+
+#: 
+msgid "Page Not Found"
+msgstr "Az oldal nem található"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "A jelenlegi nyelvéhez lefordított szövegek százalékaránya"
+
+#: 
+msgid "Pink"
+msgstr "Rózsaszín"
+
+#: 
+msgid "Primary Color"
+msgstr "Elsődleges szín"
+
+#: 
+msgid "Profile and security"
+msgstr "Profil és biztonság"
+
+#: 
+msgid "Purple"
+msgstr "Lila"
+
+#: 
+msgid "Red"
+msgstr "Piros"
+
+#: 
+msgid "Regenerate"
+msgstr "Újragenerálás"
+
+#: 
+msgid "Rows per page"
+msgstr "Sorok oldalanként"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Állítsa az engedélyt Igaz értékre, hogy a felhasználó maga módosíthassa a beállítást."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Állítsa be a gomboknál, hivatkozásoknál és aktív elemknél használt kiemelési színt"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Jobb megfogalmazás javaslata a meglévő fordításokhoz"
+
+#: 
+msgid "System Update Available"
+msgstr "Rendszerfrissítés elérhető"
+
+#: 
+msgid "Tables"
+msgstr "Táblázatok"
+
+#: 
+msgid "Teal"
+msgstr "Pávakék"
+
+#: 
+msgid "Theme Mode"
+msgstr "Téma mód"
+
+#: 
+msgid "Toggle search"
+msgstr "Keresés be-/kikapcsolása"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Hiányzó szövegek lefordítása a lefedettség javítása érdekében"
+
+#: 
+msgid "Translation Progress"
+msgstr "Fordítási előrehaladás"
+
+#: 
+msgid "Usage"
+msgstr "Használat"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "Használja ezt a kulcsot az API-kérések hitelesítéséhez. Az újragenerálás érvényteleníti az aktuális kulcsot."
+
+#: 
+msgid "User Config"
+msgstr "Felhasználói konfiguráció"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Az ellenőrzés sikertelen. Kérjük, próbálja újra."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "A(z) %s verzió elérhető. Kérjük, frissítse a telepítést."
+
+#: 
+msgid "View All"
+msgstr "Összes megtekintése"
+
+#: 
+msgid "Yellow"
+msgstr "Sárga"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "Jelenlegi hozzáférési szintjei (csak olvasható)"
 

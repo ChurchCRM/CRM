@@ -1,61 +1,60 @@
 name: Security Discord Notifications
 
-# =============================================================================
-# PURPOSE: Post to Discord #security channel when:
-#   1. A repository security advisory is created, published, resolved, etc.
-#   2. An issue is labeled with the "security" label
+# Post to Discord #security channel when:
+#   1. An issue is labeled "security"  (automatic)
+#   2. A maintainer manually dispatches this workflow for a security advisory
+#
+# NOTE: GitHub does not expose repository_advisory as an Actions workflow
+#       trigger (it is a webhook-only event). Use workflow_dispatch to post
+#       advisory alerts manually from the Actions tab.
 #
 # REQUIRED SECRET: DISCORD_SECURITY_WEBHOOK
-#   Set in: Settings → Secrets and variables → Actions
-#   Value: Discord webhook URL for the #security channel
-# =============================================================================
+#   Settings → Secrets and variables → Actions
 
 on:
-  repository_advisory:
-    types: [reported, published, updated, resolved, dismissed, withdrawn]
   issues:
     types: [labeled]
+  workflow_dispatch:
+    inputs:
+      ghsa_id:
+        description: "GHSA ID (e.g. GHSA-xxxx-xxxx-xxxx)"
+        required: true
+      summary:
+        description: "Advisory summary"
+        required: true
+      severity:
+        description: "Severity"
+        required: false
+        default: unknown
+        type: choice
+        options: [critical, high, medium, low, unknown]
+      advisory_url:
+        description: "Advisory URL (leave blank for default)"
+        required: false
 
 permissions:
   contents: read
 
 jobs:
-  notify-discord:
+  notify:
+    name: Post to Discord
     runs-on: ubuntu-latest
     timeout-minutes: 5
-
-    # Skip issue events unless the triggering label is "security"
-    if: >
-      github.event_name == 'repository_advisory' ||
-      (github.event_name == 'issues' && github.event.label.name == 'security')
+    if: github.event_name == 'workflow_dispatch' || github.event.label.name == 'security'
 
     steps:
       # -----------------------------------------------------------------------
-      # Security advisory notification
+      # Advisory notification (manual dispatch)
       # -----------------------------------------------------------------------
       - name: Notify Discord — security advisory
-        if: github.event_name == 'repository_advisory'
+        if: github.event_name == 'workflow_dispatch'
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_SECURITY_WEBHOOK }}
-          GHSA_ID:    ${{ github.event.repository_advisory.ghsa_id }}
-          SUMMARY:    ${{ github.event.repository_advisory.summary }}
-          HTML_URL:   ${{ github.event.repository_advisory.html_url }}
-          SEVERITY:   ${{ github.event.repository_advisory.severity }}
-          ACTION:     ${{ github.event.action }}
+          GHSA_ID:  ${{ inputs.ghsa_id }}
+          SUMMARY:  ${{ inputs.summary }}
+          SEVERITY: ${{ inputs.severity }}
+          HTML_URL: ${{ inputs.advisory_url }}
         run: |
-          # Map action → human label and embed colour
-          case "$ACTION" in
-            reported)   LABEL="Reported";   COLOR=16744272 ;;  # orange
-            published)  LABEL="Published";  COLOR=16711680 ;;  # red
-            updated)    LABEL="Updated";    COLOR=3447003  ;;  # blue
-            resolved)   LABEL="Resolved";   COLOR=3066993  ;;  # green
-            dismissed)  LABEL="Dismissed";  COLOR=8421504  ;;  # grey
-            withdrawn)  LABEL="Withdrawn";  COLOR=8421504  ;;  # grey
-            reopened)   LABEL="Reopened";   COLOR=16744272 ;;  # orange
-            *)          LABEL="$ACTION";    COLOR=3447003  ;;
-          esac
-
-          # Severity → emoji
           case "${SEVERITY,,}" in
             critical) SEV_EMOJI="🔴" ;;
             high)     SEV_EMOJI="🟠" ;;
@@ -64,18 +63,13 @@ jobs:
             *)        SEV_EMOJI="⚪" ;;
           esac
 
-          TITLE="🔒 Advisory ${LABEL}: ${GHSA_ID}"
-          DESCRIPTION="${SUMMARY}"
-
           jq -n \
-            --arg title       "$TITLE" \
-            --arg description "$DESCRIPTION" \
-            --arg url         "$HTML_URL" \
-            --argjson color   "$COLOR" \
+            --arg title       "🔒 Security Advisory: ${GHSA_ID}" \
+            --arg description "$SUMMARY" \
+            --arg url         "${HTML_URL:-https://github.com/ChurchCRM/CRM/security/advisories}" \
+            --argjson color   16711680 \
             --arg sev_name    "Severity" \
             --arg sev_val     "${SEV_EMOJI} ${SEVERITY^}" \
-            --arg status_name "Status" \
-            --arg status_val  "$LABEL" \
           '{
             allowed_mentions: { parse: [] },
             embeds: [{
@@ -84,8 +78,7 @@ jobs:
               color:       $color,
               url:         $url,
               fields: [
-                { name: $sev_name,    value: $sev_val,    inline: true },
-                { name: $status_name, value: $status_val, inline: true }
+                { name: $sev_name, value: $sev_val, inline: true }
               ],
               footer: { text: "ChurchCRM Security · github.com/ChurchCRM/CRM/security/advisories" }
             }]
@@ -94,7 +87,7 @@ jobs:
                   -d @-
 
       # -----------------------------------------------------------------------
-      # Issue labeled "security" notification
+      # Issue labeled "security"
       # -----------------------------------------------------------------------
       - name: Notify Discord — issue labeled security
         if: github.event_name == 'issues'
@@ -106,12 +99,9 @@ jobs:
           ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
           LABEL_BY:     ${{ github.event.sender.login }}
         run: |
-          TITLE="🏷️ Issue #${ISSUE_NUMBER} tagged [security]"
-          DESCRIPTION="${ISSUE_TITLE}"
-
           jq -n \
-            --arg title       "$TITLE" \
-            --arg description "$DESCRIPTION" \
+            --arg title       "🏷️ Issue #${ISSUE_NUMBER} tagged [security]" \
+            --arg description "$ISSUE_TITLE" \
             --arg url         "$ISSUE_URL" \
             --arg author_name "Opened by" \
             --arg author_val  "$ISSUE_AUTHOR" \
@@ -128,7 +118,7 @@ jobs:
                 { name: $author_name, value: $author_val, inline: true },
                 { name: $label_name,  value: $label_val,  inline: true }
               ],
-              footer: { text: "ChurchCRM Security · To report privately: github.com/ChurchCRM/CRM/security/advisories/new" }
+              footer: { text: "ChurchCRM Security · Report privately: github.com/ChurchCRM/CRM/security/advisories/new" }
             }]
           }' | curl -sf -X POST "$DISCORD_WEBHOOK" \
                   -H "Content-Type: application/json" \

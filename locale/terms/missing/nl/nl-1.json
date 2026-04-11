@@ -1,4 +1,15 @@
 {
-  "File size exceeds the server limit of %s": "",
-  "Missing image data in request": ""
+  "Continent": "Continent",
+  "Vonage Dashboard": "Vonage Dashboard",
+  "BCC": "",
+  "N/A": "",
+  "name@example.com": "",
+  "Account": "Account",
+  "Azure": "Azure",
+  "Indigo": "Indigo",
+  "Malayalam - India": "Malayalam - India",
+  "4. Kiosk": "4. Kiosk",
+  "Audit": "Audit",
+  "e.g., -74.0060": "bijv., -74.0060",
+  "e.g., 40.7128": "bijv., 40.7128"
 }

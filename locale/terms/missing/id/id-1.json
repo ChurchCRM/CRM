@@ -1,6 +1,13 @@
 {
+  "%d result for \"%s\"": {
+    "other": "%d hasil untuk \"%s\""
+  },
+  "BCC": "",
   "N/A": "",
-  "Missing image data in request": "",
-  "File size exceeds the server limit of %s": "",
-  "BCC": ""
+  "name@example.com": "",
+  "%d repeat event created successfully.": {
+    "other": "%d acara berulang berhasil dibuat."
+  },
+  "e.g., -74.0060": "mis., -74.0060",
+  "e.g., 40.7128": "mis., 40.7128"
 }

@@ -266,12 +266,12 @@ $bOkToEdit = (
                 $familyHasCoords = !empty($fam_ID) && $famLat !== 0.0 && $famLng !== 0.0;
                 if ($familyHasCoords) {
                     $personMapConfig = ['lat' => $famLat, 'lng' => $famLng];
-                } elseif ($fam_ID === '' && !empty($per_Address1) && !SystemConfig::getValue('bHidePersonAddress')) {
+                } elseif ($fam_ID === '' && !empty($per_Address1) && !SystemConfig::getBooleanValue('bHidePersonAddress')) {
                     $personMapConfig = ['address' => $plaintextMailingAddress];
                 }
                 ?>
                 <!-- Personal Information -->
-                <?php if ($dBirthDate || (!SystemConfig::getValue('bHideFriendDate') && $per_FriendDate !== '')) : ?>
+                <?php if ($dBirthDate || (!SystemConfig::getBooleanValue('bHideFriendDate') && $per_FriendDate !== '')) : ?>
                 <div class="mb-3">
                     <h6 class="text-muted mb-2"><i class="fa-solid fa-user me-1"></i><?= gettext('Personal') ?></h6>
                     <ul class="list-unstyled ms-3">
@@ -284,7 +284,7 @@ $bOkToEdit = (
                             <?php endif; ?>
                         </li>
                         <?php endif; ?>
-                        <?php if (!SystemConfig::getValue('bHideFriendDate') && $per_FriendDate !== '') : ?>
+                        <?php if (!SystemConfig::getBooleanValue('bHideFriendDate') && $per_FriendDate !== '') : ?>
                         <li class="mb-2">
                             <i class="fa-solid fa-handshake me-2 text-muted"></i>
                             <?= gettext('Friend Date') ?>: <?= DateTimeUtils::formatDate($per_FriendDate, false) ?>
@@ -813,7 +813,7 @@ $bOkToEdit = (
                                                         <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-sliders me-2"></i><?= gettext('Update Properties') ?></a>
                                                     <?php } ?>
                                                     <div class="dropdown-divider"></div>
-                                                    <button class="dropdown-item text-danger groupRemove" data-groupid="<?= $grp_ID ?>" data-groupname="<?= $grp_Name ?>"><i class="fa-solid fa-trash-can me-2"></i><?= gettext('Remove') ?></button>
+                                                    <button class="dropdown-item text-danger groupRemove" data-groupid="<?= $grp_ID ?>" data-groupname="<?= InputUtils::escapeAttribute($grp_Name) ?>"><i class="fa-solid fa-trash-can me-2"></i><?= gettext('Remove') ?></button>
                                                 </div>
                                             </div>
                                             <?php } ?>

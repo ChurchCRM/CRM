@@ -1,6 +1,10 @@
 {
-  "N/A": "",
-  "name@example.com": "",
-  "Missing image data in request": "",
-  "File size exceeds the server limit of %s": ""
+  "%d result for \"%s\"": {
+    "other": "「%s」的 %d 個結果"
+  },
+  "%d repeat event created successfully.": {
+    "other": "已成功建立 %d 個重複活動。"
+  },
+  "e.g., -74.0060": "例如，-74.0060",
+  "e.g., 40.7128": "例如，40.7128"
 }

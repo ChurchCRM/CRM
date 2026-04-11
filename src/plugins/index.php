@@ -76,7 +76,6 @@ $app->addRoutingMiddleware();
 // Error middleware - use config-driven display (false in production)
 $displayErrors = \ChurchCRM\dto\SystemConfig::debugEnabled();
 $errorMiddleware = $app->addErrorMiddleware($displayErrors, true, true);
-SlimUtils::setupErrorLogger($errorMiddleware);
 
 // Custom error handler for HTML pages
 $errorMiddleware->setDefaultErrorHandler(function (

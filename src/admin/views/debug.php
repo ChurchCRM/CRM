@@ -271,7 +271,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                 <table class="table table-sm">
                     <tr>
                         <td><?= gettext('SMTP Host') ?></td>
-                        <td><?= SystemConfig::getValue("sSMTPHost") ?: gettext('Not configured') ?></td>
+                        <td><?= SystemConfig::getValueForHtml("sSMTPHost") ?: gettext('Not configured') ?></td>
                     </tr>
                     <tr>
                         <td><?= gettext('Valid Settings') ?></td>

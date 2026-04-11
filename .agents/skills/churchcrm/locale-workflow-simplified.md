@@ -26,38 +26,43 @@ Use the `/locale-translate` skill to translate all missing terms for a locale or
 /locale-translate --all
 ```
 
-**Workflow:**
-- Claude reads untranslated terms from `locale/terms/missing/{locale}/` batch files
-- Applies church-appropriate vocabulary per locale denomination
-- Commits immediately after each locale (one commit per locale, never batched)
-- Example commit: `locale: translate fr (French - France, 154 terms)`
+**Workflow (MANDATORY sequence for each locale):** <!-- learned: 2026-04-09 -->
+1. Claude reads untranslated terms from `locale/terms/missing/{locale}/` batch files
+2. Applies church-appropriate vocabulary per locale denomination
+3. **Commits immediately** — one commit per locale, never batched
+4. **Pushes immediately** — work is on remote, safe from session timeout
+5. **Uploads to POEditor immediately** — `node locale/scripts/poeditor-upload-missing.js --locale <CODE> --yes`
+6. Example commit: `locale: translate fr (French - France, 154 terms)`
 
-**Key principle:** Each locale gets its own commit as a safe save point. If interrupted mid-`--all`, simply resume from the next locale.
+**Key principle:** Each locale gets commit + push + upload before the next locale starts. If interrupted mid-`--all`, all completed locales are safe on remote AND in POEditor.
 
 ---
 
-## Phase 2: Upload to POEditor
+## Phase 2: Upload to POEditor (now integrated into Phase 1) <!-- learned: 2026-04-09 -->
 
-After all translations are complete and committed, upload to POEditor:
+**Upload now happens per-locale during Phase 1.** Each locale is uploaded immediately after its commit+push. This eliminates the separate upload phase and prevents data loss.
 
+The upload command used per-locale:
 ```bash
-npm run locale:upload:missing
+node locale/scripts/poeditor-upload-missing.js --locale <CODE> --yes
+```
+
+**If any uploads were missed** (e.g., upload failed during translation), run a catch-up:
+```bash
+npm run locale:upload:missing -- --yes
 ```
 
 **Upload script behavior:**
 - Discovers all locale folders in `locale/terms/missing/`
-- Validates each locale:
-  - Splits terms into: valid translations, suspect (identical to key), empty
-  - Shows sample of translations for review
-  - Skips suspect and empty terms
-- **Prompts for confirmation** per locale (or use `--yes` to auto-approve)
-- **Uploads to POEditor** with metadata (parsing & update counts)
-- **Does NOT download** — that now happens via GH Action
+- Validates each locale: valid translations, suspect (identical to key), empty
+- Skips suspect and empty terms
+- Uploads to POEditor with metadata (parsing & update counts)
 
 **Flags:**
-- `--locale es,fr,de` — Translate specific locales (comma-separated)
-- `--yes` or `-y` — Skip confirmation prompts
+- `--locale es,fr,de` — Upload specific locales (comma-separated)
+- `--yes` or `-y` — Skip confirmation prompts (MANDATORY for agent use)
 - `--dry-run` — Show what would be uploaded without sending
+- After upload, the script refreshes local missing-term files (removes terms that POEditor accepted)
 
 **Next steps:**
 - Share translations with your POEditor translation team
@@ -86,31 +91,28 @@ The `locale-release` GitHub Action automatically handles the download phase:
 
 ---
 
-## Example Workflow: 7.1.0 Release
+## Example Workflow: 7.1.0 Release <!-- learned: 2026-04-09 -->
 
 ```bash
-# 1. Translate all missing terms
+# 1. Translate all missing terms (each locale: translate → commit → push → upload)
 /locale-translate --all
-# → Multiple commits like "locale: translate fr (French, 154 terms)"
+# → Per-locale commits: "locale: translate fr (French, 154 terms)"
+# → Per-locale POEditor uploads: automatic via --yes
+# → All work is on remote branch AND in POEditor
 
-# 2. Push to origin
-git push
+# 2. Verify all uploads reached POEditor
+node locale/scripts/poeditor-upload-missing.js --dry-run
 
 # 3. Notify POEditor team
 # (share church vocabulary rules from .agents/skills/churchcrm/locale-ai-translation.md)
 
-# 4. Upload to POEditor
-npm run locale:upload:missing --yes
-# → Validates, shows samples, uploads
-# → Output: "Done — 1234 term(s) uploaded"
-
-# 5. Wait for POEditor approval
+# 4. Wait for POEditor approval
 # (team reviews and translates)
 
-# 6. GitHub Action downloads (automatic)
+# 5. GitHub Action downloads (automatic)
 # → Creates PR with src/locale/i18n/ updates
 
-# 7. Review and merge PR
+# 6. Review and merge PR
 gh pr view
 gh pr merge <pr-number>
 ```

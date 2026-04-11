@@ -6,21 +6,28 @@ describe("Admin Event", () => {
         cy.setupAdminSession();
     });
 
-    it("Create New Event Type", () => {
-        cy.visit("EventNames.php");
-        cy.contains("Edit Event Types");
+    it("Event Types page loads", () => {
+        cy.visit("event/types");
+        cy.contains("Event Types");
         cy.contains("Add Event Type");
     });
 
+    it("Add new event type form loads", () => {
+        cy.visit("event/types/new");
+        cy.contains("Add New");
+        cy.get("#newEvtName").should("exist");
+        cy.get('input[name="newEvtTypeRecur"]').should("have.length.at.least", 4);
+    });
+
     it("Events Dashboard", () => {
-        cy.visit("ListEvents.php");
+        cy.visit("event/dashboard");
         cy.contains("Events Dashboard");
         cy.contains("Event Type");
         cy.contains("Add Event");
     });
 
     it("Create New Event", () => {
-        cy.visit("EventEditor.php");
+        cy.visit("event/editor");
         cy.contains("Church Event Editor");
         cy.contains("Create a new Event");
     });

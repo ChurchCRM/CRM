@@ -48,7 +48,7 @@ jobs:
       - name: Format check (biome)
         run: npx biome format .
       - name: Lint check (biome)
-        run: npx biome check react/
+        run: npx biome check webpack/
 
   format-fix:
     name: Apply format fixes
@@ -74,8 +74,16 @@ jobs:
       - name: Apply Biome format
         run: npx biome format --write .
       - name: Apply Biome lint fixes
-        run: npx biome check --write react/
+        run: npx biome check --write webpack/
       - name: Commit format changes
-        uses: stefanzweifel/git-auto-commit-action@v7
-        with:
-          commit_message: "style: apply Biome format and lint fixes"
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No formatting changes to commit"
+          else
+            git commit -m "style: apply Biome format and lint fixes"
+            # Try to push to the PR branch; if it fails (branch missing or protected), warn but don't fail the job
+            git push origin "HEAD:${{ github.head_ref }}" || true
+          fi

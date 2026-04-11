@@ -2,26 +2,16 @@
 
 require_once __DIR__ . '/../Include/LoadConfigs.php';
 
-use ChurchCRM\Slim\Middleware\AuthMiddleware;
-use ChurchCRM\Slim\Middleware\ChurchInfoRequiredMiddleware;
-use ChurchCRM\Slim\Middleware\CorsMiddleware;
-use ChurchCRM\Slim\Middleware\VersionMiddleware;
+use ChurchCRM\Slim\MvcAppFactory;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
-use ChurchCRM\Slim\SlimUtils;
-use ChurchCRM\Utils\LoggerUtils;
-use ChurchCRM\dto\SystemURLs;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Exception\HttpNotFoundException;
-use Slim\Factory\AppFactory;
-use Slim\Views\PhpRenderer;
 
-// base path for admin
-$basePath = SlimUtils::getBasePath('/admin');
+$app = MvcAppFactory::create('/admin', [
+    'dashboardUrl' => '/admin/',
+    'dashboardText' => gettext('Back to Admin Dashboard'),
+    'roleMiddleware' => AdminRoleAuthMiddleware::class,
+]);
 
-$app = AppFactory::create();
-$app->setBasePath($basePath);
-
-// Register routes FIRST before middleware
+// Register routes
 require __DIR__ . '/routes/dashboard.php';
 require __DIR__ . '/routes/get-started.php';
 require __DIR__ . '/routes/api/demo.php';
@@ -33,57 +23,7 @@ require __DIR__ . '/routes/api/upgrade.php';
 require __DIR__ . '/routes/api/user-admin.php';
 require __DIR__ . '/routes/api/import.php';
 require __DIR__ . '/routes/import.php';
+require __DIR__ . '/routes/export.php';
 require __DIR__ . '/routes/system.php';
-
-// Body parsing and routing middleware
-$app->addBodyParsingMiddleware();
-$app->addRoutingMiddleware();
-
-// Error middleware - must be added BEFORE other middleware (LIFO execution order)
-$errorMiddleware = $app->addErrorMiddleware(true, true, true);
-SlimUtils::setupErrorLogger($errorMiddleware);
-
-// Custom error handler for HTML pages
-$errorMiddleware->setDefaultErrorHandler(function (
-    Request $request,
-    Throwable $exception,
-    bool $displayErrorDetails,
-    bool $logErrors,
-    bool $logErrorDetails
-) use ($app) {
-    $logger = LoggerUtils::getAppLogger();
-    
-    if ($exception instanceof HttpNotFoundException) {
-        $logger->info('Admin 404 redirect', ['path' => $request->getUri()->getPath()]);
-        $response = $app->getResponseFactory()->createResponse(302);
-        return $response->withHeader('Location', SystemURLs::getRootPath() . '/');
-    }
-    
-    $logger->error('Admin error', [
-        'exception' => $exception::class,
-        'message' => $exception->getMessage(),
-        'file' => $exception->getFile(),
-        'line' => $exception->getLine(),
-        'trace' => $exception->getTraceAsString()
-    ]);
-    
-    // Render error page using PHP template
-    $renderer = new PhpRenderer(__DIR__ . '/views/');
-    $response = $app->getResponseFactory()->createResponse(500);
-    
-    return $renderer->render($response, 'error.php', [
-        'errorDetails' => [
-            'message' => SlimUtils::sanitizeErrorMessage($exception),
-            'displayErrorDetails' => $displayErrorDetails
-        ]
-    ]);
-});
-
-// Auth middleware (LIFO - added last, runs first)
-$app->add(new CorsMiddleware());
-$app->add(AdminRoleAuthMiddleware::class);
-$app->add(new ChurchInfoRequiredMiddleware());
-$app->add(AuthMiddleware::class);
-$app->add(VersionMiddleware::class);
 
 $app->run();

@@ -3,8 +3,14 @@
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Utils\InputUtils;
 
 require_once __DIR__ . '/Header-Security.php';
+
+// Initialize plugin system so active plugins (e.g. GA4) can inject head content
+$pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
+PluginManager::init($pluginsPath);
 
 $localeInfo = Bootstrapper::getCurrentLocale(); // always returns a LocaleInfo object
 ?>
@@ -28,23 +34,10 @@ $localeInfo = Bootstrapper::getCurrentLocale(); // always returns a LocaleInfo o
 
     <title>ChurchCRM: <?= $sPageTitle ?></title>
 
-    <style>
-      html, body {
-        height: 100%;
-      }
-
-      body {
-        display: flex;
-        flex-direction: column;
-      }
-
-      body > *:not(.auth-footer) {
-        flex: 1;
-      }
-    </style>
+    <?= PluginManager::getPluginHeadContent() ?>
 
 </head>
-<body class="antialiased page-auth">
+<body class="antialiased <?= InputUtils::escapeAttribute($sBodyClass ?? 'page-auth') ?>">
 
   <script nonce="<?= SystemURLs::getCSPNonce() ?>"  >
     // Initialize window.CRM if not already created by webpack bundles
@@ -55,6 +48,6 @@ $localeInfo = Bootstrapper::getCurrentLocale(); // always returns a LocaleInfo o
     // Extend window.CRM with server-side configuration (preserving existing properties like notify)
     Object.assign(window.CRM, {
       root:"<?= SystemURLs::getRootPath() ?>",
-      churchWebSite:"<?= SystemConfig::getValue('sChurchWebSite') ?>"
+      churchWebSite:<?= SystemConfig::getValueForJs('sChurchWebSite') ?>
     });
   </script>

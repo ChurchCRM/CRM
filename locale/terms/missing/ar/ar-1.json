@@ -1,7 +1,8 @@
 {
-  "N/A": "",
   "SHA1 Hash": "",
+  "BCC": "",
+  "N/A": "",
   "name@example.com": "",
-  "Missing image data in request": "",
-  "File size exceeds the server limit of %s": ""
+  "e.g., -74.0060": "مثلاً، -74.0060",
+  "e.g., 40.7128": "مثلاً، 40.7128"
 }

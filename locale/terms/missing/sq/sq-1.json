@@ -1,5 +1,7 @@
 {
+  "BCC": "",
   "N/A": "",
-  "File size exceeds the server limit of %s": "",
-  "Missing image data in request": ""
+  "name@example.com": "",
+  "e.g., -74.0060": "p.sh., -74.0060",
+  "e.g., 40.7128": "p.sh., 40.7128"
 }

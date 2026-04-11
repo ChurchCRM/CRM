@@ -179,6 +179,45 @@ class DateTimeUtils
     }
 
     /**
+     * Return the number of days in a given month/year.
+     *
+     * Use this instead of `cal_days_in_month()` — the PHP calendar extension
+     * is not enabled in all environments (notably the Docker test image).
+     *
+     * @param int $month The month (1-12)
+     * @param int $year  The year (e.g., 2026)
+     *
+     * @return int Number of days in the month (28-31)
+     */
+    public static function getDaysInMonth(int $month, int $year): int
+    {
+        return (int) date('t', mktime(0, 0, 0, $month, 1, $year));
+    }
+
+    /**
+     * Returns the system datetime format converted to Moment.js syntax,
+     * JSON-encoded and ready for embedding in a JavaScript literal.
+     *
+     * Example output: "MM/DD/YYYY h:mm a"
+     */
+    public static function getDateTimeFormatForJs(): string
+    {
+        static $phpToMoment = [
+            'd' => 'DD',   'D' => 'ddd',  'j' => 'D',    'l' => 'dddd',
+            'N' => 'E',    'S' => 'o',    'w' => 'e',    'z' => 'DDD',
+            'W' => 'W',    'F' => 'MMMM', 'm' => 'MM',   'M' => 'MMM',
+            'n' => 'M',    't' => '',     'L' => '',     'o' => 'YYYY',
+            'Y' => 'YYYY', 'y' => 'YY',   'a' => 'a',    'A' => 'A',
+            'B' => '',     'g' => 'h',    'G' => 'H',    'h' => 'hh',
+            'H' => 'HH',   'i' => 'mm',   's' => 'ss',   'u' => 'SSS',
+            'I' => '',     'O' => '',     'P' => '',     'T' => '',
+            'Z' => '',     'c' => '',     'r' => '',     'U' => 'X',
+        ];
+
+        return json_encode(strtr(SystemConfig::getValue('sDateTimeFormat'), $phpToMoment), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR);
+    }
+
+    /**
      * Converts a date string to the system-configured date picker format.
      * Migrated from change_date_for_place_holder() in Functions.php.
      */

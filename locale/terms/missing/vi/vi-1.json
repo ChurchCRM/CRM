@@ -1,7 +1,13 @@
 {
+  "%d result for \"%s\"": {
+    "other": "%d kết quả cho \"%s\""
+  },
+  "BCC": "",
   "N/A": "",
   "name@example.com": "",
-  "Missing image data in request": "",
-  "File size exceeds the server limit of %s": "",
-  "BCC": ""
+  "%d repeat event created successfully.": {
+    "other": "Đã tạo thành công %d sự kiện lặp lại."
+  },
+  "e.g., -74.0060": "vd., -74.0060",
+  "e.g., 40.7128": "vd., 40.7128"
 }

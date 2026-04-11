@@ -190,6 +190,34 @@ class User extends BaseUser
         return $this->isAdmin() || $this->isEnabledSecurity('bAddEvent');
     }
 
+    /**
+     * Whether the Events module is enabled system-wide via SystemConfig.
+     * Pure system check — no per-user permission gate.
+     */
+    public static function isEventsEnabled(): bool
+    {
+        return SystemConfig::getBooleanValue('bEnabledEvents');
+    }
+
+    /**
+     * Whether this user can manage events: events module is enabled
+     * AND user has the AddEvent permission. Use this for buttons,
+     * routes, and UI gates that should hide when either condition fails.
+     */
+    public function canManageEvents(): bool
+    {
+        return self::isEventsEnabled() && $this->isAddEvent();
+    }
+
+    /**
+     * Whether this user can view events: events module is enabled.
+     * Anyone with login access can view events, so no per-user gate.
+     */
+    public function canViewEvents(): bool
+    {
+        return self::isEventsEnabled();
+    }
+
     public function isEmailEnabled(): bool
     {
         return $this->isAdmin() || $this->isEnabledSecurity('bEmailMailto');

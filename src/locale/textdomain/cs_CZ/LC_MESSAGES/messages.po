@@ -268,10 +268,6 @@ msgid "Add Cart to Event"
 msgstr "Přidat košík do události"
 
 #: 
-msgid "OR"
-msgstr "NEBO"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Váš košík je prázdný!"
 
@@ -392,10 +388,6 @@ msgstr "Ano"
 #: 
 msgid "No"
 msgstr "Ne"
-
-#: 
-msgid "Event Checkin"
-msgstr "Přihlašování na událost"
 
 #: 
 msgid "Select Event"
@@ -651,10 +643,6 @@ msgid "Church Event Editor"
 msgstr "Editor sborových událostí"
 
 #: 
-msgid "Edit Event Types"
-msgstr "Upravit typy událostí"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Upravit typ události"
 
@@ -724,20 +712,8 @@ msgid "Create a new Event"
 msgstr "Vytvořit novou událost"
 
 #: 
-msgid " errors. Please see below"
-msgstr " chyb. Viz níže"
-
-#: 
 msgid "Select your event type"
 msgstr "Vyberte typ události"
-
-#: 
-msgid "You must pick an event type."
-msgstr "Musíte vybrat typ události"
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "Žádné zaznamenané počty účastníků"
 
 #: 
 msgid "Event Status"
@@ -2147,14 +2123,6 @@ msgid "User Editor"
 msgstr "Editor uživatelů"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Poznámka: Změny se projeví při dalším přihlášení."
-
-#: 
-msgid "Person to Make User"
-msgstr "Osoba, která se má stát uživatelem"
-
-#: 
 msgid "User"
 msgstr "Uživatel"
 
@@ -2195,24 +2163,8 @@ msgid "Edit Self"
 msgstr "Upravovat sám sebe"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Upravovat pouze svou rodinu.)"
-
-#: 
 msgid "Admin"
 msgstr "Správce"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Udělit všechna práva.)"
-
-#: 
-msgid "Style"
-msgstr "Styl"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Nastavte oprávnění na True, abyste tomuto uživateli umožnili změnit jejich aktuální hodnotu."
 
 #: 
 msgid "Last Login"
@@ -2937,10 +2889,6 @@ msgid "Date Entered"
 msgstr "Zadané datum"
 
 #: 
-msgid "There were "
-msgstr "Bylo tam "
-
-#: 
 msgid "Inactive"
 msgstr "Neaktivní"
 
@@ -3171,10 +3119,6 @@ msgstr "Data/Sestavy"
 #: 
 msgid "Query Menu"
 msgstr "Nabídka dotazů"
-
-#: 
-msgid "CSV Export Records"
-msgstr "Export do CSV"
 
 #: 
 msgid "Family Properties"
@@ -4885,14 +4829,6 @@ msgid "Select event"
 msgstr "Vyberte událost"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "Osoba již byla pro tuto událost odhlášena"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "Dospělá odbavující osoba"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Text před jménem v e-mailech/výkazech"
 
@@ -5448,10 +5384,6 @@ msgid "Sign out"
 msgstr "Odhlásit se"
 
 #: 
-msgid "Sermon Text"
-msgstr "Text kázání"
-
-#: 
 msgid "Change Settings"
 msgstr "Změnit nastavení"
 
@@ -5965,10 +5897,6 @@ msgstr "Funkce obnovení databáze"
 msgid "Reset Database"
 msgstr "Vymazat databázi"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "Tímto se obnoví systémová data a systém se restartuje jako nová instalace."
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6080,28 +6008,12 @@ msgid "open rate"
 msgstr "míra otevření"
 
 #: 
-msgid "Login Info"
-msgstr "Info o přihlášení"
-
-#: 
-msgid "Login Count"
-msgstr "Počet přihlášení"
-
-#: 
-msgid "Failed Login"
-msgstr "Neúspěšné přihlášení"
-
-#: 
 msgid "Permissions"
 msgstr "Oprávnění"
 
 #: 
 msgid "Manage Notes"
 msgstr "Spravovat poznámky"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Nepodařilo se vygenerovat nový klíč API"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6173,14 +6085,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Dnešní výročí svatby"
 
 #: 
-msgid "Api Key"
-msgstr "Klíč API"
-
-#: 
-msgid "Regen API Key"
-msgstr "Znovu generovat klíč API"
-
-#: 
 msgid "View Family Page"
 msgstr "Zobrazit stránku rodiny"
 
@@ -6195,46 +6099,6 @@ msgstr "Ověřit"
 #: 
 msgid "Family has no emails to use"
 msgstr "Rodina nemá zadán e-mail"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Čtvercové rozhraní"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Aktivovat čtvercové rozhraní"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Přepnout boční panel"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Přepnout stav bočního panelu (otevřený nebo skrytý)"
-
-#: 
-msgid "Tables Settings"
-msgstr "Nastavení tabulek"
-
-#: 
-msgid "Page length"
-msgstr "Délka stránky"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Změna výchozí délky stránky (počtu řádků na stránku)"
-
-#: 
-msgid "User Interface"
-msgstr "Uživatelské rozhraní"
-
-#: 
-msgid "Locale"
-msgstr "Locale"
-
-#: 
-msgid "Override system locale"
-msgstr "Potlačení systémového nastavení locale"
 
 #: 
 msgid "Deleted"
@@ -7306,10 +7170,6 @@ msgid "All Types"
 msgstr "Všechny typy"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "Opravdu chcete smazat tento záznam o přihlášení?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "Kategorie počítání docházky"
 
@@ -7350,10 +7210,6 @@ msgid "Create New Event"
 msgstr "Vytvořit novou akci"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "Vytvořte typ události a můžete začít."
-
-#: 
 msgid "Current DB Version"
 msgstr "Aktuální verze databáze"
 
@@ -7372,14 +7228,6 @@ msgstr "Výchozí čas zahájení"
 #: 
 msgid "Delete Event"
 msgstr "Smazat událost"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "Smazáním události se smažou také všechny počty účastníků. Chcete tuto událost smazat?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "Smazáním této události se smažou také všechny záznamy o účasti. Opravdu chcete pokračovat?"
 
 #: 
 msgid "Edit Event"
@@ -7447,10 +7295,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "Volitelné – Přidejte poznámky o kázání nebo další podrobnosti o události"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "Volitelné - pokud nesledujete, nechte prázdné"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "Volitelné poznámky k docházce..."
 
@@ -7483,24 +7327,12 @@ msgid "Search by name or email..."
 msgstr "Hledat podle jména nebo e-mailu..."
 
 #: 
-msgid "Search for adult..."
-msgstr "Hledat dospělého..."
-
-#: 
 msgid "Search for supervisor..."
 msgstr "Hledat nadřízeného..."
 
 #: 
 msgid "Select Event for Check-In"
 msgstr "Vyberte akci pro check-in"
-
-#: 
-msgid "Select start and end date/time"
-msgstr "Vyberte počáteční a koncový datum/čas"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "Vyberte událost, kterou chcete zkontrolovat ve svém košíku členů"
 
 #: 
 msgid "Sermon / Event Text"
@@ -7868,10 +7700,6 @@ msgstr "Před uložením mimo pracoviště zašifrujte zálohy pomocí externíc
 #: 
 msgid "User authentication"
 msgstr "Ověření uživatele"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "Uživatel musí mít oprávnění Add Event"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8394,10 +8222,6 @@ msgid "State (Other)"
 msgstr "Stát (Jiný)"
 
 #: 
-msgid "Status:"
-msgstr "Stav:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Souhrn závazků a plateb podle fondů za daný fiskální rok."
 
@@ -8448,10 +8272,6 @@ msgstr "Celkové vklady:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Sledovat sliby a průběh plateb pro kampaně a rozpočtování fiskálního roku."
-
-#: 
-msgid "Type:"
-msgstr "Typ:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8878,10 +8698,6 @@ msgid "Disable 2FA"
 msgstr "Zakázat 2FA"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "Exportujte všechna data o osobách ve formátu ChMeetings pro import do externích systémů."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "Exportovat do ChMeetings CSV"
 
@@ -9139,10 +8955,6 @@ msgid "Add Your First Property Type"
 msgstr "Přidejte svůj první typ vlastnosti"
 
 #: 
-msgid "Auto-calculated from counts above"
-msgstr "Automaticky vypočítáno z výše uvedených počtů"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Smazáním tohoto pole nevratně ztratíte všechna data členů skupiny přiřazená k tomuto poli!"
 
@@ -9332,10 +9144,6 @@ msgstr "Registrace kiosku je zakázána"
 #: 
 msgid "Kiosk not found"
 msgstr "Kiosek nebyl nalezen"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "Propojte tuto událost se skupinou pro funkci check-in na kiosku. Členové skupiny se zobrazí na kiosku."
 
 #: 
 msgid "Linked Group"
@@ -10538,10 +10346,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "Vyžadovat, aby se všichni uživatelé přihlásili k dvoufaktorovému ověřování"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "Mapa se zobrazí, jakmile bude uložena adresa. Souřadnice jsou detekovány automaticky — ruční zadávání není potřeba."
-
-#: 
 msgid "Active Groups"
 msgstr "Aktivní skupiny"
 
@@ -10592,10 +10396,6 @@ msgstr "Rodina nemá adresu pro geokódování"
 #: 
 msgid "Father"
 msgstr "Otec"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "Geokódované souřadnice:"
 
 #: 
 msgid "Geocoding failed"
@@ -10676,10 +10476,6 @@ msgstr "Časové pásmo"
 #: 
 msgid "Total Groups"
 msgstr "Skupin celkem"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "Aktualizováno automaticky při každém uložení."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10865,14 +10661,6 @@ msgid "Add a Person"
 msgstr "Přidat osobu"
 
 #: 
-msgid "Add a new pledge"
-msgstr "Přidat nový závazek"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "Přidat platbu k aktuální sbírce"
-
-#: 
 msgid "Add all cart items to a group"
 msgstr "Přidat všechny položky výběru do skupiny"
 
@@ -11009,10 +10797,6 @@ msgid "Auto-mapped"
 msgstr "Automaticky přiřazeno"
 
 #: 
-msgid "BCC"
-msgstr "Skrytá kopie"
-
-#: 
 msgid "BCC All"
 msgstr "Skrytá kopie všem"
 
@@ -11091,10 +10875,6 @@ msgstr "Změnit rodinnou roli"
 #: 
 msgid "Check Out"
 msgstr "Odhlásit"
-
-#: 
-msgid "Check Out Person"
-msgstr "Odhlásit osobu"
 
 #: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
@@ -11221,10 +11001,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "Vytvořte ruční zálohu alespoň jednou týdně, nebo povolte plugin pro externí zálohy pro automatické WebDAV zálohy podle plánu."
 
 #: 
-msgid "Create a new deposit"
-msgstr "Vytvořit novou sbírku"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "Vytvářet a upravovat rodinné informace a vztahy"
 
@@ -11279,10 +11055,6 @@ msgstr "Definovat vlastnosti specifické pro skupinu členů"
 #: 
 msgid "Delete All"
 msgstr "Smazat vše"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "Smazat záznam registrace"
 
 #: 
 msgid "Delete Family"
@@ -11565,10 +11337,6 @@ msgid "Generate directory listings and printed materials"
 msgstr "Generovat seznamy adresáře a tištěné materiály"
 
 #: 
-msgid "Generate financial reports"
-msgstr "Generovat finanční sestavy"
-
-#: 
 msgid "Generate financial statements and giving reports"
 msgstr "Generovat finanční výkazy a přehledy darů"
 
@@ -11801,14 +11569,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "Spravovat nástroje pro e-mail a konfiguraci SMTP"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "Spravovat názvy událostí a kategorie"
-
-#: 
-msgid "Manage event type categories"
-msgstr "Spravovat kategorie typů událostí"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Spravovat rodiny, osoby a demografické údaje"
 
@@ -11939,10 +11699,6 @@ msgstr "Žádné narozeniny"
 #: 
 msgid "No Check-ins"
 msgstr "Žádné registrace účasti"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "Žádné sledování sbírek"
 
 #: 
 msgid "No Deposits"
@@ -12697,10 +12453,6 @@ msgstr "fondy"
 #: 
 msgid "members"
 msgstr "členové"
-
-#: 
-msgid "name@example.com"
-msgstr "jmeno@priklad.cz"
 
 #: 
 msgid "opportunities"
@@ -13656,23 +13408,153 @@ msgstr "např. Nedělní služba"
 msgid "member"
 msgstr "člen"
 
+#. plugin:mailchimp:section:1:content
+#: 
+msgid "- **Dashboard**: View all your MailChimp lists with subscriber statistics\n"
+"- **List Maintenance**: Identify people in MailChimp but not in CRM, and vice versa\n"
+"- **Contact Integration**: View MailChimp subscription status on Person and Family pages\n"
+"- **Automatic Sync**: Hooks into person/family updates to keep MailChimp in sync"
+msgstr "- **Přehled**: Zobrazit všechny vaše seznamy MailChimp se statistikami odběratelů\n"
+"- **Správa seznamů**: Identifikovat osoby v MailChimp, ale ne v CRM, a naopak\n"
+"- **Integrace kontaktů**: Zobrazit stav odběru MailChimp na stránkách osoby a rodiny\n"
+"- **Automatická synchronizace**: Propojení s aktualizacemi osob/rodin pro udržování MailChimp v synchronizaci"
+
+#. plugin:vonage:section:1:content
+#: 
+msgid "1. Create a Vonage account at https://dashboard.nexmo.com/sign-up (new accounts include free trial credit)\n"
+"2. Find your API Key and API Secret on the Vonage Dashboard homepage\n"
+"3. Go to Numbers > Buy Numbers and purchase a number with SMS capability\n"
+"4. Note the number in E.164 format (e.g., +14155551234)\n"
+"5. In ChurchCRM, enable the Vonage SMS plugin and enter your credentials"
+msgstr "1. Vytvořte účet Vonage na https://dashboard.nexmo.com/sign-up (nové účty zahrnují bezplatný zkušební kredit)\n"
+"2. Najděte svůj klíč API a tajný klíč API na domovské stránce řídicího panelu Vonage\n"
+"3. Přejděte na Čísla > Koupit čísla a zakupte číslo s možností SMS\n"
+"4. Poznamenejte si číslo ve formátu E.164 (např. +420123456789)\n"
+"5. V ChurchCRM aktivujte plugin Vonage SMS a zadejte své přihlašovací údaje"
+
+#. plugin:google-analytics:section:0:content
+#: 
+msgid "1. Go to Google Analytics (analytics.google.com)\n"
+"2. Create a property or select an existing one\n"
+"3. Go to Admin → Data Streams → Web\n"
+"4. Copy the Measurement ID (starts with G-)"
+msgstr "1. Přejděte na Google Analytics (analytics.google.com)\n"
+"2. Vytvořte vlastnost nebo vyberte stávající\n"
+"3. Přejděte na Správce → Datové toky → Web\n"
+"4. Zkopírujte ID měření (začíná G-)"
+
+#. plugin:openlp:section:2:content
+#: 
+msgid "1. Install OpenLP 3.0 or later on your presentation computer\n"
+"2. Enable the Remote plugin in OpenLP (Settings → Configure OpenLP → Plugins)\n"
+"3. Enable the Alerts plugin in OpenLP for alert display support\n"
+"4. Note the IP address of the OpenLP computer\n"
+"5. Enter the server URL in the format: http://IP_ADDRESS:4316\n"
+"6. If you've configured authentication in OpenLP, enter the username and password"
+msgstr "1. Nainstalujte OpenLP 3.0 nebo novější na váš prezentační počítač\n"
+"2. Aktivujte plugin Remote v OpenLP (Nastavení → Konfigurovat OpenLP → Pluginy)\n"
+"3. Aktivujte plugin Upozornění v OpenLP pro podporu zobrazení upozornění\n"
+"4. Poznamenejte si IP adresu počítače s OpenLP\n"
+"5. Zadejte adresu URL serveru ve formátu: http://IP_ADRESA:4316\n"
+"6. Pokud jste v OpenLP nakonfigurovali ověřování, zadejte uživatelské jméno a heslo"
+
+#. plugin:mailchimp:section:2:content
+#: 
+msgid "Access the MailChimp Dashboard from the Email menu. The dashboard shows:\n"
+"\n"
+"- Member count for each list\n"
+"- Campaign statistics\n"
+"- Unsubscribe counts\n"
+"- List maintenance tools"
+msgstr "Přístup k řídicímu panelu MailChimp z nabídky E-mail. Řídicí panel zobrazuje:\n"
+"\n"
+"- Počet členů pro každý seznam\n"
+"- Statistiky kampaní\n"
+"- Počty odhlášení\n"
+"- Nástroje pro správu seznamů"
+
 #. plugin:custom-links:section:1:title
 #: 
 msgid "Adding Links"
 msgstr "Přidávání odkazů"
+
+#. plugin:custom-links:section:2:content
+#: 
+msgid "All configured links are shown in a table. You can:\n"
+"- View the link name and URL\n"
+"- Click the URL to test it opens correctly\n"
+"- Delete links you no longer need\n"
+"\n"
+"Links appear in the order they were added in the navigation menu."
+msgstr "Všechny nakonfigurované odkazy jsou zobrazeny v tabulce. Můžete:\n"
+"- Zobrazit název odkazu a URL\n"
+"- Kliknout na URL a ověřit, že se správně otevírá\n"
+"- Odstranit odkazy, které již nepotřebujete\n"
+"\n"
+"Odkazy se zobrazují v pořadí, ve kterém byly přidány do navigační nabídky."
 
 #: 
 msgid "Allow Pre-release Upgrades"
 msgstr "Povolit předběžné aktualizace"
 
 #: 
+msgid "Allow recording of non-tax-deductible payments in the finance module"
+msgstr "Umožnit zaznamenávání daňově neuznatelných plateb ve finančním modulu"
+
+#: 
+msgid "Allow scanned check images to be attached to deposit records"
+msgstr "Umožnit připojení naskenovaných obrázků šeků k záznamům vkladů"
+
+#: 
+msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
+msgstr "Umožnit aktualizace systému na verze označené jako 'předběžné vydání' na GitHubu"
+
+#: 
+msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
+msgstr "Umožnit neověřený přístup ke kalendářovým událostem prostřednictvím veřejných URL adres ve formátu HTML, ICS a JSON. Vyžadováno pro sdílení kalendářů s externími aplikacemi."
+
+#: 
+msgid "Allow visitors to create their own family record via the self-registration page"
+msgstr "Umožnit návštěvníkům vytvořit vlastní rodinný záznam prostřednictvím stránky pro vlastní registraci"
+
+#: 
 msgid "Allow visitors to self-register as new families."
 msgstr "Povolte návštěvníkům registrovat se jako nové rodiny."
+
+#. plugin:external-backup:section:5:content
+#: 
+msgid "Any WebDAV-compatible service works with this plugin:\n"
+"\n"
+"- Nextcloud (recommended)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (with WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx with WebDAV module\n"
+"\n"
+"Note: Some services require app-specific passwords for WebDAV access."
+msgstr "S tímto pluginem funguje libovolná služba kompatibilní s WebDAV:\n"
+"\n"
+"- Nextcloud (doporučeno)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (s WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx s modulem WebDAV\n"
+"\n"
+"Poznámka: Některé služby vyžadují pro přístup přes WebDAV hesla specifická pro aplikaci."
 
 #. plugin:openlp:section:4:title
 #: 
 msgid "Authentication"
 msgstr "Ověřování"
+
+#. plugin:openlp:section:4:content
+#: 
+msgid "Authentication is required for API v2 if you've enabled it in OpenLP's Remote plugin settings. The plugin uses HTTP Basic Authentication. Most local network setups don't require authentication, but it's recommended for security."
+msgstr "Ověřování je vyžadováno pro API v2, pokud jste jej aktivovali v nastavení pluginu Remote v OpenLP. Plugin používá HTTP Basic Authentication. Většina nastavení lokální sítě nevyžaduje ověřování, ale z bezpečnostních důvodů je doporučeno."
 
 #: 
 msgid "Auto TLS"
@@ -13687,6 +13569,69 @@ msgstr "Automatická záloha"
 msgid "BCC All Mail To"
 msgstr "Skrytá kopie všech zpráv na"
 
+#. plugin:external-backup:section:4:content
+#: 
+msgid "Before relying on external backups, test your connection:\n"
+"1. Go to Plugins > External Backup\n"
+"2. Click 'Test WebDAV Connection'\n"
+"3. Verify you see a success message\n"
+"\n"
+"Common issues:\n"
+"- 401/403 errors: Check username and password\n"
+"- Connection timeout: Verify the endpoint URL is correct\n"
+"- Certificate errors: Ensure the WebDAV server has a valid SSL certificate"
+msgstr "Před spoléháním na externí zálohy otestujte připojení:\n"
+"1. Přejděte na Pluginy > Externí záloha\n"
+"2. Klikněte na 'Otestovat připojení WebDAV'\n"
+"3. Ověřte, že se zobrazí zpráva o úspěchu\n"
+"\n"
+"Časté problémy:\n"
+"- Chyby 401/403: Zkontrolujte uživatelské jméno a heslo\n"
+"- Časový limit připojení: Ověřte správnost adresy URL koncového bodu\n"
+"- Chyby certifikátu: Ujistěte se, že server WebDAV má platný certifikát SSL"
+
+#. plugin:gravatar:section:1:content
+#: 
+msgid "Choose what appears when no Gravatar exists:\n"
+"• Mystery Person - Gray silhouette outline\n"
+"• Identicon - Geometric pattern based on email\n"
+"• MonsterID - Unique generated monster face\n"
+"• Wavatar - Abstract generated face\n"
+"• Retro - 8-bit arcade-style pixel art\n"
+"• RoboHash - Unique generated robot\n"
+"• Blank - Transparent (falls back to initials)"
+msgstr "Zvolte, co se zobrazí, pokud Gravatar neexistuje:\n"
+"• Mystery Person – šedý obrys siluety\n"
+"• Identicon – geometrický vzor na základě e-mailu\n"
+"• MonsterID – jedinečně vygenerovaný obličej monstra\n"
+"• Wavatar – abstraktně vygenerovaný obličej\n"
+"• Retro – pixelová grafika ve stylu 8-bit arcade\n"
+"• RoboHash – jedinečně vygenerovaný robot\n"
+"• Blank – průhledný (nahrazen iniciálami)"
+
+#: 
+msgid "Comma-separated query IDs that require finance permissions to view"
+msgstr "ID dotazů oddělená čárkami, která vyžadují finanční oprávnění k zobrazení"
+
+#. plugin:custom-links:section:4:content
+#: 
+msgid "Common uses for custom links:\n"
+"- Church website\n"
+"- Online giving portal\n"
+"- Volunteer signup forms\n"
+"- Denomination resources\n"
+"- Partner organization sites\n"
+"- Cloud storage folders\n"
+"- Event registration pages"
+msgstr "Běžné použití vlastních odkazů:\n"
+"- Webové stránky církve\n"
+"- Portál pro online dary\n"
+"- Formuláře pro přihlášení dobrovolníků\n"
+"- Zdroje denominace\n"
+"- Stránky partnerských organizací\n"
+"- Složky cloudového úložiště\n"
+"- Stránky pro registraci na události"
+
 #. plugin:external-backup:section:1:title
 #: 
 msgid "Configuration"
@@ -13700,11 +13645,6 @@ msgstr "Kontinent"
 #: 
 msgid "Costs"
 msgstr "Náklady"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Lidé s kreditní kartou"
 
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
@@ -13756,17 +13696,28 @@ msgid "Enable External Calendar API"
 msgstr "Povolit externí API kalendáře"
 
 #: 
+msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
+msgstr "Povolit odesílání e-mailů z ChurchCRM. Vyžadováno pro obnovu hesla, oznámení a e-mailové odkazy."
+
+#: 
+msgid "Enable if your SMTP server requires a username and password"
+msgstr "Aktivujte, pokud váš SMTP server vyžaduje uživatelské jméno a heslo"
+
+#: 
+msgid "Enable or disable the Sunday School module and sidebar menu."
+msgstr "Povolit nebo zakázat modul nedělní školy a boční nabídku."
+
+#: 
+msgid "Enable the use of numbered donation envelopes for tracking contributions"
+msgstr "Povolit používání číslovaných obálek pro dary ke sledování příspěvků"
+
+#: 
 msgid "Enable use of donation envelopes"
 msgstr "Povolit použití obálek darů"
 
 #: 
 msgid "Enable use of scanned checks"
 msgstr "Povolit použití skenovaných šeků"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Závazek rodiny podle fiskálního roku"
 
 #. plugin:mailchimp:section:1:title
 #: 
@@ -13777,11 +13728,6 @@ msgstr "Funkce"
 msgid "Finance permission query IDs"
 msgstr "ID dotazů pro finanční oprávnění"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Najít registrované studenty"
-
 #: 
 msgid "Find family"
 msgstr "Najít rodinu"
@@ -13791,10 +13737,20 @@ msgstr "Najít rodinu"
 msgid "Finding Your Server URL"
 msgstr "Nalezení URL vašeho serveru"
 
-#. Context: queryparameters_qrp
+#. plugin:custom-links:section:3:content
 #: 
-msgid "Fiscal Year."
-msgstr "Fiskální rok."
+msgid "For security:\n"
+"- Only administrators can add or remove links\n"
+"- The 'Manage Links' option only appears for administrators\n"
+"- Links must use http:// or https:// protocols\n"
+"- HTML tags are not allowed in names or URLs\n"
+"- All input is validated and sanitized"
+msgstr "Z bezpečnostních důvodů:\n"
+"- Pouze správci mohou přidávat nebo odebírat odkazy\n"
+"- Možnost 'Spravovat odkazy' se zobrazuje pouze správcům\n"
+"- Odkazy musí používat protokol http:// nebo https://\n"
+"- HTML značky nejsou v názvech ani URL povoleny\n"
+"- Veškerý vstup je ověřen a ošetřen"
 
 #. plugin:google-analytics:link:1:label
 #: 
@@ -13811,10 +13767,25 @@ msgstr "Začínáme"
 msgid "Getting Your GA4 Measurement ID"
 msgstr "Získání měřicího ID GA4"
 
+#. plugin:google-analytics:summary
+#: 
+msgid "Google Analytics 4 (GA4) tracks how users interact with ChurchCRM, providing insights into page views, user engagement, and feature usage."
+msgstr "Google Analytics 4 (GA4) sleduje, jak uživatelé pracují s ChurchCRM, a poskytuje přehled o zobrazení stránek, zapojení uživatelů a využívání funkcí."
+
 #. plugin:google-analytics:link:0:label
 #: 
 msgid "Google Analytics Help"
 msgstr "Nápověda Google Analytics"
+
+#. plugin:google-analytics:section:2:content
+#: 
+msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
+msgstr "Google Analytics shromažďuje anonymizovaná data o používání. Do Google nejsou odesílány žádné osobní informace ze záznamů ChurchCRM. Zvažte přidání oznámení o ochraně soukromí do zásad ochrany dat vaší církve."
+
+#. plugin:gravatar:summary
+#: 
+msgid "Gravatar (Globally Recognized Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM."
+msgstr "Gravatar (globálně uznávaný avatar) zobrazuje profilové fotografie z gravatar.com pro členy, kteří nemají v ChurchCRM nahraté vlastní fotografie."
 
 #. plugin:gravatar:link:1:label
 #: 
@@ -13826,10 +13797,10 @@ msgstr "Možnosti obrázku Gravatar"
 msgid "Gravatar Website"
 msgstr "Web Gravatar"
 
-#. Context: queryparameters_qrp
+#. plugin:gravatar:section:2:content
 #: 
-msgid "Group of registered students"
-msgstr "Skupina registrovaných studentů"
+msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
+msgstr "Gravatar funguje tak, že převádí e-mailové adresy na hash (MD5). Skutečná e-mailová adresa není nikdy odeslána na servery Gravatar – k vyhledání obrázku se používá pouze hash."
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -13849,6 +13820,77 @@ msgstr "Jak to funguje"
 msgid "How many checks to print per deposit slip page"
 msgstr "Kolik šeků vytisknout na stránce vkladového dokladu"
 
+#. plugin:vonage:section:3:content
+#: 
+msgid "If SMS messages aren't being sent:\n"
+"1. Verify API Key and Secret are correct (no extra spaces)\n"
+"2. Check that the From Number is a valid Vonage number you own\n"
+"3. Ensure recipient phone numbers include country code\n"
+"4. Check your Vonage account balance\n"
+"5. Review the Vonage Dashboard > SMS > Logs for delivery status"
+msgstr "Pokud SMS zprávy nejsou odesílány:\n"
+"1. Ověřte, že klíč API a tajný klíč jsou správné (bez mezer navíc)\n"
+"2. Zkontrolujte, že odesílací číslo je platné číslo Vonage, které vlastníte\n"
+"3. Ujistěte se, že telefonní čísla příjemců obsahují mezinárodní předvolbu\n"
+"4. Zkontrolujte zůstatek na účtu Vonage\n"
+"5. Zkontrolujte stav doručení v Řídicí panel Vonage > SMS > Protokoly"
+
+#. plugin:openlp:section:5:content
+#: 
+msgid "If alerts aren't appearing:\n"
+"1. Verify OpenLP is running and the Remote plugin is active\n"
+"2. Ensure the Alerts plugin is enabled in OpenLP\n"
+"3. Check that the server URL is correct (try accessing it in a browser)\n"
+"4. Verify firewall settings allow connections on port 4316\n"
+"5. If using authentication, verify credentials are correct"
+msgstr "Pokud se upozornění nezobrazují:\n"
+"1. Ověřte, že OpenLP běží a plugin Remote je aktivní\n"
+"2. Ujistěte se, že plugin Upozornění je v OpenLP aktivován\n"
+"3. Zkontrolujte, zda je adresa URL serveru správná (zkuste ji otevřít v prohlížeči)\n"
+"4. Ověřte, zda nastavení brány firewall povoluje připojení na portu 4316\n"
+"5. Pokud používáte ověřování, ověřte správnost přihlašovacích údajů"
+
+#. plugin:vonage:section:5:content
+#: 
+msgid "If messages are sent but not received:\n"
+"1. Check Vonage Dashboard > SMS > Logs for delivery status\n"
+"2. Verify the recipient number is correct and can receive SMS\n"
+"3. Some carriers may block messages from unknown numbers\n"
+"4. Check if the destination country has SMS restrictions"
+msgstr "Pokud jsou zprávy odeslány, ale nepřijaty:\n"
+"1. Zkontrolujte stav doručení v Řídicí panel Vonage > SMS > Protokoly\n"
+"2. Ověřte, že číslo příjemce je správné a může přijímat SMS\n"
+"3. Někteří operátoři mohou blokovat zprávy z neznámých čísel\n"
+"4. Zkontrolujte, zda cílová země nemá omezení pro SMS"
+
+#. plugin:vonage:section:4:content
+#: 
+msgid "If you receive invalid sender ID errors:\n"
+"1. Use a phone number you've purchased from Vonage\n"
+"2. Format the number in E.164 format (+14155551234)\n"
+"3. Note: Alphanumeric sender IDs may be restricted in some countries"
+msgstr "Pokud obdržíte chyby neplatného ID odesílatele:\n"
+"1. Použijte telefonní číslo zakoupené od Vonage\n"
+"2. Zadejte číslo ve formátu E.164 (+420123456789)\n"
+"3. Poznámka: Alfanumerická ID odesílatele mohou být v některých zemích omezena"
+
+#. plugin:external-backup:section:6:content
+#: 
+msgid "Important security notes:\n"
+"\n"
+"1. Always use HTTPS endpoints to encrypt backups in transit\n"
+"2. Use app-specific passwords when available (Nextcloud, ownCloud)\n"
+"3. Store backups in a folder with restricted access\n"
+"4. Periodically download and verify your backups are valid\n"
+"5. Consider encrypting sensitive backups with external tools before uploading"
+msgstr "Důležité bezpečnostní poznámky:\n"
+"\n"
+"1. Vždy používejte HTTPS koncové body pro šifrování záloh při přenosu\n"
+"2. Používejte hesla specifická pro aplikaci, jsou-li k dispozici (Nextcloud, ownCloud)\n"
+"3. Ukládejte zálohy do složky s omezeným přístupem\n"
+"4. Pravidelně stahujte zálohy a ověřujte jejich platnost\n"
+"5. Zvažte šifrování citlivých záloh externími nástroji před nahráním"
+
 #: 
 msgid "Initial zoom level when opening the map"
 msgstr "Počáteční úroveň přiblížení při otevření mapy"
@@ -13860,6 +13902,11 @@ msgstr "Zjistit více"
 #: 
 msgid "Log Settings"
 msgstr "Nastavení protokolů"
+
+#. plugin:mailchimp:summary
+#: 
+msgid "MailChimp Integration enables synchronization between ChurchCRM contacts and your MailChimp email marketing lists."
+msgstr "Integrace MailChimp umožňuje synchronizaci mezi kontakty ChurchCRM a vašimi e-mailingovými seznamy MailChimp."
 
 #. plugin:custom-links:section:2:title
 #: 
@@ -13885,10 +13932,10 @@ msgstr "Dokumentace OpenLP"
 msgid "OpenLP Website"
 msgstr "Web OpenLP"
 
-#. Context: query_qry
+#. plugin:openlp:summary
 #: 
-msgid "People who are configured to pay by credit card."
-msgstr "Lidé nakonfigurovaní k platbě kreditní kartou."
+msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
+msgstr "OpenLP je bezplatný open-source prezentační software určený pro církve. Tento plugin umožňuje ChurchCRM odesílat oznámení a upozornění přímo na váš OpenLP displej."
 
 #. plugin:mailchimp:section:3:title
 #: 
@@ -13899,6 +13946,21 @@ msgstr "Integrace osoby/rodiny"
 #: 
 msgid "Phone Number Format"
 msgstr "Formát telefonního čísla"
+
+#. plugin:vonage:section:2:content
+#: 
+msgid "Phone numbers should be in E.164 format: country code + number. Examples:\n"
+"- US: +14155551234\n"
+"- UK: +447700900123\n"
+"- Australia: +61412345678\n"
+"\n"
+"Recipient phone numbers in ChurchCRM member profiles should include the country code for SMS to work correctly."
+msgstr "Telefonní čísla by měla být ve formátu E.164: mezinárodní předvolba + číslo. Příklady:\n"
+"- ČR: +420123456789\n"
+"- SK: +421123456789\n"
+"- USA: +14155551234\n"
+"\n"
+"Telefonní čísla příjemců v profilech členů ChurchCRM by měla obsahovat mezinárodní předvolbu, aby SMS fungovaly správně."
 
 #. plugin:mailchimp:section:4:title
 #: 
@@ -13918,11 +13980,6 @@ msgstr "Poznámka k ochraně soukromí"
 #: 
 msgid "Quick Settings"
 msgstr "Rychlá nastavení"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Registrovaní studenti"
 
 #: 
 msgid "SMTP Authentication"
@@ -13949,6 +14006,22 @@ msgid "Setup"
 msgstr "Nastavení"
 
 #: 
+msgid "Show a breakdown of bill denominations on the deposit slip report"
+msgstr "Zobrazit přehled nominálních hodnot bankovek v přehledu vkladového dokladu"
+
+#: 
+msgid "Show or hide the Events menu in the main navigation."
+msgstr "Zobrazit nebo skrýt nabídku Události v hlavní navigaci."
+
+#: 
+msgid "Show or hide the Events section in the main navigation menu"
+msgstr "Zobrazit nebo skrýt sekci Události v hlavní navigační nabídce"
+
+#: 
+msgid "Show or hide the Sunday School module in the sidebar navigation"
+msgstr "Zobrazit nebo skrýt modul nedělní školy v boční navigaci"
+
+#: 
 msgid "Street"
 msgstr "Ulice"
 
@@ -13965,6 +14038,89 @@ msgstr "Podporované služby"
 #: 
 msgid "Testing Connection"
 msgstr "Testování připojení"
+
+#. plugin:custom-links:section:0:content
+#: 
+msgid "The Custom Menu Links plugin allows administrators to add external links to the navigation menu. When enabled, a 'Links' menu appears in the sidebar containing all configured links."
+msgstr "Plugin Vlastní odkazy nabídky umožňuje správcům přidávat externí odkazy do navigační nabídky. Po aktivaci se v postranním panelu zobrazí nabídka 'Odkazy' obsahující všechny nakonfigurované odkazy."
+
+#. plugin:external-backup:section:0:content
+#: 
+msgid "The External Backup plugin allows you to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services. This includes popular services like Nextcloud, ownCloud, or any server supporting WebDAV protocol."
+msgstr "Plugin Externí záloha umožňuje automaticky zálohovat databázi ChurchCRM do cloudových úložišť kompatibilních s WebDAV. To zahrnuje oblíbené služby jako Nextcloud, ownCloud nebo jakýkoli server podporující protokol WebDAV."
+
+#. plugin:openlp:section:3:content
+#: 
+msgid "The default OpenLP port is 4316. Your server URL will typically be: http://192.168.x.x:4316 where 192.168.x.x is the IP address of the computer running OpenLP. You can find this in OpenLP under Tools → Open Service Manager."
+msgstr "Výchozí port OpenLP je 4316. Adresa URL serveru bude obvykle: http://192.168.x.x:4316, kde 192.168.x.x je IP adresa počítače, na kterém běží OpenLP. Tuto adresu najdete v OpenLP v části Nástroje → Správce služeb."
+
+#: 
+msgid "The month that starts your organization's fiscal year"
+msgstr "Měsíc, ve kterém začíná fiskální rok vaší organizace"
+
+#. plugin:vonage:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an SMS can be sent to notify parents or guardians."
+msgstr "Tento plugin se aktuálně používá pro oznámení přihlášení přes kiosek. Když se dítě přihlásí do hodiny nedělní školy prostřednictvím kiosku, lze rodičům nebo zákonným zástupcům odeslat SMS zprávu."
+
+#. plugin:openlp:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an alert can be sent to the OpenLP projector display to notify parents or volunteers."
+msgstr "Tento plugin se aktuálně používá pro oznámení přihlášení přes kiosek. Když se dítě přihlásí do hodiny nedělní školy prostřednictvím kiosku, lze na projektor OpenLP odeslat upozornění k informování rodičů nebo dobrovolníků."
+
+#. plugin:mailchimp:section:4:content
+#: 
+msgid "This plugin transmits email addresses to MailChimp servers. Ensure you have appropriate consent from your members before syncing their information to third-party services like MailChimp."
+msgstr "Tento plugin odesílá e-mailové adresy na servery MailChimp. Před synchronizací informací vašich členů se službami třetích stran, jako je MailChimp, se ujistěte, že máte příslušný souhlas."
+
+#. plugin:custom-links:section:1:content
+#: 
+msgid "To add a new link:\n"
+"1. Go to the Links menu in the sidebar and click 'Manage Links'\n"
+"2. Enter a display name (2-50 characters)\n"
+"3. Enter the full URL (must start with http:// or https://)\n"
+"4. Click 'Add Link'\n"
+"\n"
+"The link will immediately appear in the Links menu."
+msgstr "Přidání nového odkazu:\n"
+"1. Přejděte do nabídky Odkazy v postranním panelu a klikněte na 'Spravovat odkazy'\n"
+"2. Zadejte zobrazovaný název (2–50 znaků)\n"
+"3. Zadejte úplnou URL adresu (musí začínat http:// nebo https://)\n"
+"4. Klikněte na 'Přidat odkaz'\n"
+"\n"
+"Odkaz se okamžitě zobrazí v nabídce Odkazy."
+
+#. plugin:external-backup:section:1:content
+#: 
+msgid "To configure external backups:\n"
+"1. Go to Admin > Plugins and find 'External Backup (WebDAV)'\n"
+"2. Click the settings icon to expand the configuration panel\n"
+"3. Enter your WebDAV endpoint URL (e.g., https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Enter your username and password\n"
+"5. Optionally set an auto-backup interval in hours\n"
+"6. Save your settings"
+msgstr "Konfigurace externích záloh:\n"
+"1. Přejděte na Správce > Pluginy a najděte 'Externí záloha (WebDAV)'\n"
+"2. Klikněte na ikonu nastavení pro rozbalení konfiguračního panelu\n"
+"3. Zadejte adresu URL koncového bodu WebDAV (např. https://cloud.example.com/remote.php/dav/files/uzivatel/zalohy/)\n"
+"4. Zadejte uživatelské jméno a heslo\n"
+"5. Volitelně nastavte interval automatického zálohování v hodinách\n"
+"6. Uložte nastavení"
+
+#. plugin:mailchimp:section:0:content
+#: 
+msgid "To use MailChimp Integration, you need a MailChimp account and an API key.\n"
+"\n"
+"1. Log in to your MailChimp account\n"
+"2. Go to Account > Extras > API Keys\n"
+"3. Create a new API key or copy an existing one\n"
+"4. Enter the API key in the plugin settings"
+msgstr "Pro použití integrace MailChimp potřebujete účet MailChimp a klíč API.\n"
+"\n"
+"1. Přihlaste se ke svému účtu MailChimp\n"
+"2. Přejděte na Účet > Doplňky > Klíče API\n"
+"3. Vytvořte nový klíč API nebo zkopírujte stávající\n"
+"4. Zadejte klíč API do nastavení pluginu"
 
 #. plugin:openlp:section:5:title
 #: 
@@ -13995,10 +14151,10 @@ msgstr "Nastavení aktualizací"
 msgid "Use Cases"
 msgstr "Případy použití"
 
-#. Context: userconfig_ucfg
+#. plugin:vonage:link:0:label
 #: 
-msgid "User permission to export CSV files"
-msgstr "Oprávnění uživatele k exportu souborů CSV"
+msgid "Vonage Dashboard"
+msgstr "Řídicí panel Vonage"
 
 #. plugin:vonage:link:2:label
 #: 
@@ -14010,8 +14166,1318 @@ msgstr "Ceny Vonage"
 msgid "Vonage SMS API Documentation"
 msgstr "Dokumentace Vonage SMS API"
 
+#. plugin:vonage:summary
+#: 
+msgid "Vonage SMS enables text message notifications for ChurchCRM using the Vonage API (formerly Nexmo). Send SMS alerts to parents when their child checks in via the kiosk system."
+msgstr "Vonage SMS umožňuje odesílání textových oznámení pro ChurchCRM pomocí rozhraní Vonage API (dříve Nexmo). Odesílejte SMS upozornění rodičům, když se jejich dítě přihlásí prostřednictvím kiosku."
+
+#. plugin:vonage:section:6:content
+#: 
+msgid "Vonage charges per SMS sent. Pricing varies by destination country. See the Vonage pricing page for current rates. New accounts receive free trial credit for testing."
+msgstr "Vonage účtuje poplatek za každou odeslanou SMS. Ceny se liší podle cílové země. Aktuální ceny naleznete na stránce Vonage s cenami. Nové účty obdrží bezplatný zkušební kredit pro testování."
+
 #. plugin:google-analytics:section:1:title
 #: 
 msgid "What Gets Tracked"
 msgstr "Co se sleduje"
+
+#. plugin:mailchimp:section:3:content
+#: 
+msgid "When MailChimp is configured, a 'MailChimp' tab appears on Person view pages showing:\n"
+"\n"
+"- Email subscription status across all lists\n"
+"- Which lists the person is subscribed to\n"
+"- Subscription statistics"
+msgstr "Když je MailChimp nakonfigurován, zobrazí se na stránkách zobrazení osoby záložka 'MailChimp' s informacemi:\n"
+"\n"
+"- Stav odběru e-mailu ve všech seznamech\n"
+"- Které seznamy osoba odebírá\n"
+"- Statistiky odběrů"
+
+#. plugin:gravatar:section:0:content
+#: 
+msgid "When a member doesn't have an uploaded photo, ChurchCRM checks if they have a Gravatar associated with their email address. If a Gravatar exists, it displays that image. If not, the configured default image style is used."
+msgstr "Pokud člen nemá nahranou vlastní fotografii, ChurchCRM zkontroluje, zda má Gravatar přidružený k jeho e-mailové adrese. Pokud Gravatar existuje, zobrazí tento obrázek. Pokud ne, použije se nakonfigurovaný výchozí styl obrázku."
+
+#. plugin:external-backup:section:2:content
+#: 
+msgid "When auto-backup is enabled (interval > 0 hours), ChurchCRM will automatically create and upload a full database backup at the specified interval. The backup runs as part of normal page loads, so the system must have regular user activity to trigger backups.\n"
+"\n"
+"Recommended intervals:\n"
+"- Daily backup: 24 hours\n"
+"- Twice daily: 12 hours\n"
+"- Weekly: 168 hours"
+msgstr "Když je automatické zálohování aktivováno (interval > 0 hodin), ChurchCRM automaticky vytvoří a nahraje úplnou zálohu databáze v zadaném intervalu. Zálohování probíhá jako součást normálního načítání stránek, takže systém musí mít pravidelnou aktivitu uživatelů, aby zálohu spustil.\n"
+"\n"
+"Doporučené intervaly:\n"
+"- Denní záloha: 24 hodin\n"
+"- Dvakrát denně: 12 hodin\n"
+"- Týdenní: 168 hodin"
+
+#. plugin:openlp:section:1:content
+#: 
+msgid "When enabled and configured, ChurchCRM sends alert messages to your OpenLP server using the API v2 endpoint (POST /api/v2/plugins/alerts). These alerts appear as overlay notifications on your projected display."
+msgstr "Po aktivaci a konfiguraci odesílá ChurchCRM zprávy upozornění na váš server OpenLP pomocí koncového bodu API v2 (POST /api/v2/plugins/alerts). Tato upozornění se zobrazují jako překryvná oznámení na vašem promítaném displeji."
+
+#: 
+msgid "When enabled, hides the address field for people not assigned to a family"
+msgstr "Po aktivaci skryje pole adresy pro osoby nepřiřazené k rodině"
+
+#: 
+msgid "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background."
+msgstr "Po aktivaci skryje pole zeměpisné šířky/délky v editoru rodiny. Geokódování stále probíhá na pozadí."
+
+#. plugin:external-backup:section:3:content
+#: 
+msgid "You can also trigger a manual backup at any time:\n"
+"1. Go to the External Backup settings page (Plugins > External Backup)\n"
+"2. Select backup type (Database Only or Full Backup)\n"
+"3. Click 'Backup to WebDAV Now'\n"
+"\n"
+"Database Only backups are smaller and faster. Full backups include uploaded photos."
+msgstr "Ruční zálohu můžete spustit také kdykoli:\n"
+"1. Přejděte na stránku nastavení Externí zálohy (Pluginy > Externí záloha)\n"
+"2. Vyberte typ zálohy (Pouze databáze nebo Úplná záloha)\n"
+"3. Klikněte na 'Zálohovat do WebDAV nyní'\n"
+"\n"
+"Zálohy pouze databáze jsou menší a rychlejší. Úplné zálohy zahrnují nahrané fotografie."
+
+#. plugin:google-analytics:section:1:content
+#: 
+msgid "• Page views and navigation patterns\n"
+"• Session duration and engagement\n"
+"• User demographics (if enabled in GA4)\n"
+"• Device and browser information"
+msgstr "• Zobrazení stránek a vzory navigace\n"
+"• Délka relace a zapojení\n"
+"• Demografické údaje uživatelů (pokud je aktivováno v GA4)\n"
+"• Informace o zařízení a prohlížeči"
+
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "Velikost souboru překračuje limit serveru %s"
+
+#: 
+msgid "Missing image data in request"
+msgstr "V požadavku chybí data obrázku"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Najít osoby, které se nezúčastnily události"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Chybějící osoby"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Vyberte požadovanou událost"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Pokročilé filtrování podle skupiny, klasifikace a role"
+
+#: 
+msgid "All congregation members included"
+msgstr "Zahrnuti všichni farníci"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "Export do ChMeetings byl úspěšně dokončen"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "Formát sloupců kompatibilní s ChMeetings"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Kontaktní informace, rodinné role a klíčová data"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Vytvořte úplnou zálohu databáze vaší farnosti. Stáhněte soubor SQL pouze s databází nebo kompletní archiv včetně nahraných fotografií."
+
+#: 
+msgid "Database Backup"
+msgstr "Záloha databáze"
+
+#: 
+msgid "Export"
+msgstr "Exportovat"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Exportujte data farníků do formátu CSV. Vyberte, která pole zahrnout, a filtrujte podle klasifikace, skupiny, pohlaví a dalších kritérií."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Exportujte všechny farníky ve formátu očekávaném platformou ChMeetings, což usnadňuje synchronizaci dat farnosti s platformou ChMeetings."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Exportujte data vaší farnosti do různých formátů"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Externí záloha (WebDAV) prostřednictvím zásuvného modulu"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Export CSV pro ChMeetings se nezdařil"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Rozložení záznamu rodiny nebo jednotlivce"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Flexibilní výběr polí"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Přejít na zálohu databáze"
+
+#: 
+msgid "Open CSV Export"
+msgstr "Otevřít export CSV"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Obnovit ze stránky Systémová záloha"
+
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "Je dostupná aktualizace systému. Aktualizujte svou instalaci."
+
+#: 
+msgid "API Access"
+msgstr "Přístup k API"
+
+#: 
+msgid "API Key"
+msgstr "Klíč API"
+
+#: 
+msgid "API key regenerated"
+msgstr "Klíč API byl obnoven"
+
+#: 
+msgid "Account"
+msgstr "Účet"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Pokročilá nastavení"
+
+#: 
+msgid "An error occurred."
+msgstr "Došlo k chybě."
+
+#: 
+msgid "Appearance"
+msgstr "Vzhled"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Zpět na přehled financí"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Zpět na přehled skupin"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Zpět na přehled farníků"
+
+#: 
+msgid "Blue"
+msgstr "Modrá"
+
+#: 
+msgid "Change Photo"
+msgstr "Změnit fotku"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "Změny se projeví až po příštím přihlášení."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Vyberte mezi světlým a tmavým barevným schématem"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "Překlady ChurchCRM jsou spravovány komunitou na POEditor. Můžete pomoci:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Přizpůsobte vzhled a dojem aplikace"
+
+#: 
+msgid "Cyan"
+msgstr "Azurová"
+
+#: 
+msgid "Dark"
+msgstr "Tmavý"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Pouze databáze (.sql) nebo úplný archiv (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Výchozí počet řádků zobrazených v datových tabulkách. Projeví se při příštím načtení stránky."
+
+#: 
+msgid "Edit own family only"
+msgstr "Upravovat pouze vlastní rodinu"
+
+#: 
+msgid "Enter text here..."
+msgstr "Zadejte text zde..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Nepodařilo se zrušit registraci. Zkuste to prosím znovu."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Nepodařilo se smazat událost. Zkuste to prosím znovu."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "Nepodařilo se deaktivovat dvoufaktorové ověření. Zkuste to prosím znovu."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "Nepodařilo se vygenerovat QR kód. Zkuste to prosím znovu."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "Nepodařilo se načíst data kalendáře. Zkuste to prosím znovu."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Nepodařilo se načíst událost. Zkuste to prosím znovu."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "Nepodařilo se načíst obnovovací kódy. Obnovte prosím stránku."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Nepodařilo se uložit událost. Zkuste to prosím znovu."
+
+#: 
+msgid "Failed to save setting"
+msgstr "Nepodařilo se uložit nastavení"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Filipínština – Filipíny"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Opravování nesprávných nebo neobratných překladů ve vašem jazyce"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "Našli jste chybu v překladech?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Uděluje všechna oprávnění"
+
+#: 
+msgid "Green"
+msgstr "Zelená"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Pomozte zlepšit překlady"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "Pokud zaznamenáte poškozené znaky, HTML entity zobrazené jako text nebo překlady narušující rozložení stránky, nahlaste problém na GitHub, aby mohl být opraven pro všechny."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "Zahrňte svůj klíč API do požadavků pomocí hlavičky x-api-key:"
+
+#: 
+msgid "Indigo"
+msgstr "Indigová"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Neplatná hodnota JSON — nastavení nebylo uloženo. Opravte ji prosím a zkuste to znovu."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "Připojte se k projektu překladu na POEditor"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Jazyková a regionální nastavení"
+
+#: 
+msgid "Light"
+msgstr "Světlý"
+
+#: 
+msgid "Lime"
+msgstr "Limetková"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "Malajálamština – Indie"
+
+#: 
+msgid "Manage 2FA"
+msgstr "Správa dvoufaktorového ověření"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "Spravujte další předvolby, jako jsou oddělovače e-mailů a možnosti zobrazení"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Spravujte svůj klíč API pro externí integrace"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "Metoda není povolena"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "Chybějící nebo nesprávné překlady?"
+
+#: 
+msgid "My Account"
+msgstr "Můj účet"
+
+#: 
+msgid "Orange"
+msgstr "Oranžová"
+
+#: 
+msgid "Override the system default locale"
+msgstr "Přepsat výchozí jazyk systému"
+
+#: 
+msgid "Page Not Found"
+msgstr "Stránka nenalezena"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "Procento přeložených řetězců pro váš aktuální jazyk"
+
+#: 
+msgid "Pink"
+msgstr "Růžová"
+
+#: 
+msgid "Primary Color"
+msgstr "Primární barva"
+
+#: 
+msgid "Profile and security"
+msgstr "Profil a zabezpečení"
+
+#: 
+msgid "Purple"
+msgstr "Fialová"
+
+#: 
+msgid "Red"
+msgstr "Červená"
+
+#: 
+msgid "Regenerate"
+msgstr "Obnovit"
+
+#: 
+msgid "Rows per page"
+msgstr "Řádků na stránku"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Nastavte oprávnění na Pravda, aby mohl tento uživatel sám změnit toto nastavení."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Nastavte barvu zvýraznění pro tlačítka, odkazy a aktivní prvky"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Navrhování lepšího znění stávajících překladů"
+
+#: 
+msgid "System Update Available"
+msgstr "Je dostupná aktualizace systému"
+
+#: 
+msgid "Tables"
+msgstr "Tabulky"
+
+#: 
+msgid "Teal"
+msgstr "Modrozelená"
+
+#: 
+msgid "Theme Mode"
+msgstr "Režim motivu"
+
+#: 
+msgid "Toggle search"
+msgstr "Přepnout vyhledávání"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Překlad chybějících řetězců pro zlepšení pokrytí"
+
+#: 
+msgid "Translation Progress"
+msgstr "Průběh překladu"
+
+#: 
+msgid "Usage"
+msgstr "Použití"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "Použijte tento klíč k ověřování požadavků API. Obnova klíče zneplatní aktuální klíč."
+
+#: 
+msgid "User Config"
+msgstr "Konfigurace uživatele"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Ověření selhalo. Zkuste to prosím znovu."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "Je dostupná verze %s. Aktualizujte svou instalaci."
+
+#: 
+msgid "View All"
+msgstr "Zobrazit vše"
+
+#: 
+msgid "Yellow"
+msgstr "Žlutá"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "Vaše aktuální úrovně přístupu (pouze pro čtení)"
+
+#: 
+msgid "%d repeat event created successfully."
+msgid_plural "%d repeat events created successfully."
+msgstr[0] "Byla úspěšně vytvořena %d opakující se událost."
+msgstr[1] "Byly úspěšně vytvořeny %d opakující se události."
+msgstr[2] "Bylo úspěšně vytvořeno %d opakujících se událostí."
+
+#: 
+msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
+msgstr "(např. Farníci, Návštěvníci, Děti), aby dobrovolníci mohli zde zaznamenat počty přítomných."
+
+#: 
+msgid "1. Sunday School Class"
+msgstr "1. Třída nedělní školy"
+
+#: 
+msgid "2. Event Type"
+msgstr "2. Typ události"
+
+#: 
+msgid "3. Event"
+msgstr "3. Událost"
+
+#: 
+msgid "4. Kiosk"
+msgstr "4. Kiosek"
+
+#: 
+msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
+msgstr "Třída je Skupina s typem \"Nedělní škola\". Obsahuje žáky a učitele (členy s rolemi)."
+
+#: 
+msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
+msgstr "Propojená skupina váže tuto událost ke třídě nebo seznamu farní služby. Když je událost přiřazena ke kiosku, kiosek načte členy skupiny a zobrazí je jako seznam pro přihlášení klepnutím. Pro třídy nedělní školy zde propojte skupinu třídy, aby dobrovolníci mohli přihlašovat žáky z tabletu."
+
+#: 
+msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr "Konkrétní výskyt (např. \"Předškolní — 12. dubna\"). Dědí výchozí nastavení z typu a je propojena se skupinou třídy prostřednictvím publika. Na tuto událost dobrovolníci zaznamenávají docházku."
+
+#: 
+msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr "Tablet přiřazený k jedné události. Kiosek načte seznam propojené skupiny události a zobrazí přihlášení klepnutím. Bez propojené skupiny nemá kiosek žádný seznam k zobrazení."
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "Přidat příchozího / Návštěvníka"
+
+#: 
+msgid "Add categories on the Event Type page"
+msgstr "Přidat kategorie na stránce Typ události"
+
+#: 
+msgid "Add people to your cart first, then come back to check them in to an event."
+msgstr "Nejprve přidejte osoby do košíku, poté se vraťte a přihlaste je k události."
+
+#: 
+msgid "All clear!"
+msgstr "Vše v pořádku!"
+
+#: 
+msgid "All events and attendance records"
+msgstr "Všechny události a záznamy o docházce"
+
+#: 
+msgid "All financial data (pledges, payments, deposits)"
+msgstr "Všechna finanční data (sliby, platby, vklady)"
+
+#: 
+msgid "All groups, roles, and memberships"
+msgstr "Všechny skupiny, role a členství"
+
+#: 
+msgid "All people and family records"
+msgstr "Všechny záznamy o osobách a rodinách"
+
+#: 
+msgid "All system settings and custom fields"
+msgstr "Veškerá nastavení systému a vlastní pole"
+
+#: 
+msgid "All uploaded photos and documents"
+msgstr "Všechny nahrané fotografie a dokumenty"
+
+#: 
+msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
+msgstr "Typ události je šablona — název, výchozí čas zahájení, opakování, kategorie počtu přítomných. Volitelně propojena s jednou skupinou třídy jako výchozím publikem."
+
+#: 
+msgid "Attendance record deleted."
+msgstr "Záznam o docházce byl smazán."
+
+#: 
+msgid "Audit Events"
+msgstr "Auditní události"
+
+#: 
+msgid "Auto-totalled from counts at right"
+msgstr "Automaticky sečteno z počtů napravo"
+
+#: 
+msgid "Back to Events"
+msgstr "Zpět na Události"
+
+#: 
+msgid "Back to Events Dashboard"
+msgstr "Zpět na přehled událostí"
+
+#: 
+msgid "Backup failed. You can still proceed with the reset, but your data will be lost."
+msgstr "Záloha selhala. Stále můžete pokračovat s resetem, ale vaše data budou ztracena."
+
+#: 
+msgid "Backup ready!"
+msgstr "Záloha je připravena!"
+
+#: 
+msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
+msgstr "Před resetem důrazně doporučujeme stáhnout zálohu vašich aktuálních dat. Toto je vaše jediná příležitost je zachovat."
+
+#: 
+msgid "Bulk-create a series of recurring events"
+msgstr "Hromadně vytvořit sérii opakujících se událostí"
+
+#: 
+msgid "By"
+msgstr "Autor"
+
+#: 
+msgid "Cannot check in to an inactive event. Activate the event first."
+msgstr "Nelze se přihlásit k neaktivní události. Nejprve událost aktivujte."
+
+#: 
+msgid "Change"
+msgstr "Změnit"
+
+#: 
+msgid "Check In All"
+msgstr "Přihlásit všechny"
+
+#: 
+msgid "Check In Family"
+msgstr "Přihlásit rodinu"
+
+#: 
+msgid "Check Out All"
+msgstr "Odhlásit všechny"
+
+#: 
+msgid "Check in all %d family members to a single event."
+msgstr "Přihlásit všechny %d členy rodiny k jedné události."
+
+#: 
+msgid "Check out"
+msgstr "Odhlásit"
+
+#: 
+msgid "Check-in By"
+msgstr "Přihlášení od"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "Přihlášení selhalo. Zkuste to prosím znovu."
+
+#: 
+msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
+msgstr "Přihlašování je zakázáno pro neaktivní události. Aktivujte událost z přehledu událostí, abyste povolili přihlašování."
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "Odhlášení selhalo. Zkuste to prosím znovu."
+
+#: 
+msgid "Checked in to event: %s"
+msgstr "Přihlášen k události: %s"
+
+#: 
+msgid "Checked out from event: %s"
+msgstr "Odhlášen z události: %s"
+
+#: 
+msgid "Close All Stuck Events"
+msgstr "Uzavřít všechny zaseklé události"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "Potvrdit odhlášení"
+
+#: 
+msgid "Create Repeat Events"
+msgstr "Vytvořit opakující se události"
+
+#: 
+msgid "Create Today's Event"
+msgstr "Vytvořit dnešní událost"
+
+#: 
+msgid "Create a new event type with recurrence and attendance settings"
+msgstr "Vytvořit nový typ události s nastavením opakování a docházky"
+
+#: 
+msgid "Create one now"
+msgstr "Vytvořit nyní"
+
+#: 
+msgid "Create today's class event and link it to this class for kiosk check-in"
+msgstr "Vytvořit dnešní událost třídy a propojit ji s touto třídou pro přihlašování na kiosku"
+
+#: 
+msgid "Creating backup..."
+msgstr "Vytváření zálohy..."
+
+#: 
+msgid "Creating..."
+msgstr "Vytváření..."
+
+#: 
+msgid "Database + uploaded photos (larger)"
+msgstr "Databáze + nahrané fotografie (větší)"
+
+#: 
+msgid "Database dump only (.sql)"
+msgstr "Pouze výpis databáze (.sql)"
+
+#: 
+msgid "Date Range"
+msgstr "Rozsah dat"
+
+#: 
+msgid "Date range cannot exceed 1 year"
+msgstr "Rozsah dat nesmí překročit 1 rok"
+
+#: 
+msgid "Deactivate"
+msgstr "Deaktivovat"
+
+#: 
+msgid "Delete Event Type"
+msgstr "Smazat typ události"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "Smazat záznam o docházce?"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "Smazat záznam o přihlášení pro"
+
+#: 
+msgid "Delete this event?"
+msgstr "Smazat tuto událost?"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "Smazáním události se také smažou všechny záznamy docházky. Tuto akci nelze vrátit zpět."
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "Smazáním tohoto typu události se NESMAŽOU existující události. Jste si jisti?"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "Smazáním této události se také smažou všechny záznamy o docházce. Tuto akci nelze vrátit zpět."
+
+#: 
+msgid "Destructive Operation"
+msgstr "Destruktivní operace"
+
+#: 
+msgid "Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field."
+msgstr "Upravte název kategorie a klikněte na Uložit, nebo použijte ikonu koše pro odebrání. Nové řádky se přidávají přes spodní pole."
+
+#: 
+msgid "End Time"
+msgstr "Čas ukončení"
+
+#: 
+msgid "End time must be after start time."
+msgstr "Čas ukončení musí být po čase zahájení."
+
+#: 
+msgid "Ended"
+msgstr "Ukončeno"
+
+#: 
+msgid "Ends"
+msgstr "Končí"
+
+#: 
+msgid "Event Audit"
+msgstr "Audit událostí"
+
+#: 
+msgid "Event Check-in"
+msgstr "Přihlašování na událost"
+
+#: 
+msgid "Event Details"
+msgstr "Podrobnosti události"
+
+#: 
+msgid "Event Template"
+msgstr "Šablona události"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "Událost již existuje. Přesměrování na přihlašování..."
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "Událost byla vytvořena. Přesměrování na přihlašování..."
+
+#: 
+msgid "Event end date/time must be on or after the start date/time."
+msgstr "Datum/čas ukončení události musí být stejné nebo po datu/čase zahájení."
+
+#: 
+msgid "Event title is required."
+msgstr "Název události je povinný."
+
+#: 
+msgid "Event type ID is required"
+msgstr "ID typu události je povinné"
+
+#: 
+msgid "Event type ID or group ID is required"
+msgstr "ID typu události nebo ID skupiny je povinné"
+
+#: 
+msgid "Event type has no date configured for yearly recurrence"
+msgstr "Typ události nemá nakonfigurované datum pro roční opakování"
+
+#: 
+msgid "Event type has no day-of-week configured for weekly recurrence"
+msgstr "Typ události nemá nakonfigurovaný den v týdnu pro týdenní opakování"
+
+#: 
+msgid "Event type has no recurrence pattern configured"
+msgstr "Typ události nemá nakonfigurovaný vzor opakování"
+
+#: 
+msgid "Event type has no valid day-of-month configured for monthly recurrence"
+msgstr "Typ události nemá nakonfigurovaný platný den v měsíci pro měsíční opakování"
+
+#: 
+msgid "Events will be created for every matching occurrence within this date range."
+msgstr "Události budou vytvořeny pro každý odpovídající výskyt v tomto rozsahu dat."
+
+#: 
+msgid "Every month on the"
+msgstr "Každý měsíc"
+
+#: 
+msgid "Every week on"
+msgstr "Každý týden"
+
+#: 
+msgid "Every year on"
+msgstr "Každý rok"
+
+#: 
+msgid "Everyone is checked in!"
+msgstr "Všichni jsou přihlášeni!"
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "Nepodařilo se vytvořit třídu. Zkuste to prosím znovu."
+
+#: 
+msgid "Failed to create event."
+msgstr "Nepodařilo se vytvořit událost."
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "Nepodařilo se vytvořit událost. Zkuste to prosím znovu."
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "Nepodařilo se smazat. Zkuste to prosím znovu."
+
+#: 
+msgid "Fastest workflow:"
+msgstr "Nejrychlejší postup:"
+
+#: 
+msgid "Find past events that are still active or have un-checked-out attendees"
+msgstr "Najít minulé události, které jsou stále aktivní nebo mají neodhlášené účastníky"
+
+#: 
+msgid "Format: MM-DD (e.g. 04-12 for April 12)"
+msgstr "Formát: MM-DD (např. 04-12 pro 12. dubna)"
+
+#: 
+msgid "Group Roster"
+msgstr "Seznam skupiny"
+
+#: 
+msgid "Hide Advanced Options"
+msgstr "Skrýt pokročilé možnosti"
+
+#: 
+msgid "How Sunday School + Events + Kiosks fit together"
+msgstr "Jak spolu fungují Nedělní škola + Události + Kiosky"
+
+#: 
+msgid "Invalid date for %s — expected YYYY-MM-DD"
+msgstr "Neplatné datum pro %s — očekáváno RRRR-MM-DD"
+
+#: 
+msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr "Neplatný formát data pro rangeStart nebo rangeEnd"
+
+#: 
+msgid "Invalid date format."
+msgstr "Neplatný formát data."
+
+#: 
+msgid "Invalid date; expected format YYYY-MM-DD"
+msgstr "Neplatné datum; očekávaný formát RRRR-MM-DD"
+
+#: 
+msgid "Invalid event type ID"
+msgstr "Neplatné ID typu události"
+
+#: 
+msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
+msgstr "Neplatný formát ročního opakování; očekáváno MM-DD (např. 04-12)"
+
+#: 
+msgid "Just now"
+msgstr "Právě teď"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "Ponechte prázdné pro odhlášení bez zaznamenání dozorující osoby."
+
+#: 
+msgid "Link events to a group for Kiosk check-in functionality."
+msgstr "Propojte události se skupinou pro funkci přihlašování na kiosku."
+
+#: 
+msgid "Linked Groups"
+msgstr "Propojené skupiny"
+
+#: 
+msgid "Looking for stuck events..."
+msgstr "Hledám zaseklé události..."
+
+#: 
+msgid "Manage event names, recurrence patterns, and attendance counts"
+msgstr "Spravovat názvy událostí, vzory opakování a počty docházky"
+
+#: 
+msgid "Missing required field: %s"
+msgstr "Chybí povinné pole: %s"
+
+#: 
+msgid "No Events Today"
+msgstr "Dnes žádné události"
+
+#: 
+msgid "No Group"
+msgstr "Žádná skupina"
+
+#: 
+msgid "No active assignment"
+msgstr "Žádné aktivní přiřazení"
+
+#: 
+msgid "No active events found."
+msgstr "Nebyly nalezeny žádné aktivní události."
+
+#: 
+msgid "No attendance count categories defined for this event type yet."
+msgstr "Pro tento typ události dosud nejsou definovány žádné kategorie počtu docházky."
+
+#: 
+msgid "No one has been checked in to this event yet."
+msgstr "K této události se ještě nikdo nepřihlásil."
+
+#: 
+msgid "No past events are still marked Active."
+msgstr "Žádné minulé události nejsou stále označeny jako Aktivní."
+
+#: 
+msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr "Otevřete třídu → klikněte na \"Vytvořit dnešní událost\" — událost se vytvoří a propojí se třídou najednou, poté se ocitnete na stránce přihlašování připravené pro kiosek nebo osobní docházku."
+
+#: 
+msgid "Optional Settings"
+msgstr "Volitelná nastavení"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "Volitelné — zaznamenejte, kdo tuto osobu odhlašuje (např. rodič vyzvedávající dítě)."
+
+#: 
+msgid "Person checked out."
+msgstr "Osoba byla odhlášena."
+
+#: 
+msgid "Person is not checked in"
+msgstr "Osoba není přihlášena"
+
+#: 
+msgid "Person not in active class roster"
+msgstr "Osoba není v aktivním seznamu třídy"
+
+#: 
+msgid "Pin to Calendars"
+msgstr "Připnout do kalendářů"
+
+#: 
+msgid "Please select a person to check in."
+msgstr "Vyberte prosím osobu k přihlášení."
+
+#: 
+msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
+msgstr "Předvyplněno na základě tohoto typu události — pro opakující se typy je datum dalším výskytem po poslední události tohoto typu a čas odpovídá výchozímu času zahájení typu."
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "Koncové datum rozsahu musí být stejné nebo po počátečním datu rozsahu."
+
+#: 
+msgid "Range end must be a valid YYYY-MM-DD date."
+msgstr "Konec rozsahu musí být platné datum ve formátu RRRR-MM-DD."
+
+#: 
+msgid "Range start must be a valid YYYY-MM-DD date."
+msgstr "Začátek rozsahu musí být platné datum ve formátu RRRR-MM-DD."
+
+#: 
+msgid "Range start must be before range end"
+msgstr "Začátek rozsahu musí být před koncem rozsahu"
+
+#: 
+msgid "Range start must be before range end."
+msgstr "Začátek rozsahu musí být před koncem rozsahu."
+
+#: 
+msgid "RangeEnd must be on or after RangeStart"
+msgstr "RangeEnd musí být stejné nebo po RangeStart"
+
+#: 
+msgid "Recommended"
+msgstr "Doporučeno"
+
+#: 
+msgid "Required for Kiosk"
+msgstr "Povinné pro kiosek"
+
+#: 
+msgid "Resetting will permanently delete:"
+msgstr "Reset trvale smaže:"
+
+#: 
+msgid "SQL Only"
+msgstr "Pouze SQL"
+
+#: 
+msgid "Save Time"
+msgstr "Ušetřit čas"
+
+#: 
+msgid "Save changes to this category name"
+msgstr "Uložit změny tohoto názvu kategorie"
+
+#: 
+msgid "Select an event type…"
+msgstr "Vyberte typ události…"
+
+#: 
+msgid "Select start and end date/time."
+msgstr "Vyberte datum/čas zahájení a ukončení."
+
+#: 
+msgid "Show More Options"
+msgstr "Zobrazit více možností"
+
+#: 
+msgid "Skip"
+msgstr "Přeskočit"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "Přeskočit a odhlásit"
+
+#: 
+msgid "Start Check-in"
+msgstr "Zahájit přihlašování"
+
+#: 
+msgid "Starts"
+msgstr "Začíná"
+
+#: 
+msgid "Step 1: Create a Backup"
+msgstr "Krok 1: Vytvořit zálohu"
+
+#: 
+msgid "Step 2: Reset Database"
+msgstr "Krok 2: Obnovit databázi"
+
+#: 
+msgid "Still Checked In"
+msgstr "Stále přihlášen"
+
+#: 
+msgid "Stuck Events"
+msgstr "Zaseklé události"
+
+#: 
+msgid "Take Attendance"
+msgstr "Zaznamenat docházku"
+
+#: 
+msgid "The Events module is disabled"
+msgstr "Modul Události je zakázán"
+
+#: 
+msgid "The same start and end time will be used for all generated events."
+msgstr "Stejný čas zahájení a ukončení bude použit pro všechny vygenerované události."
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "Na dnešek nejsou naplánované žádné události"
+
+#: 
+msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
+msgstr "Jedná se o skupiny počtů — dobrovolníci je vyplňují po události, aby přehled mohl rozdělit docházku (např. kolik farníků vs. návštěvníků). Jsou odděleny od individuálního přihlašování na stránce přihlašování."
+
+#: 
+msgid "This event is inactive."
+msgstr "Tato událost je neaktivní."
+
+#: 
+msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr "Tato stránka umožňuje trvale vymazat všechna data v databázi ChurchCRM. Tuto akci nelze vrátit zpět."
+
+#: 
+msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
+msgstr "Tato zpráva uvádí všechny události, jejichž datum ukončení uplynulo, ale jsou stále označeny jako Aktivní. Běžné příčiny: dobrovolník zapomněl klepnout na 'Odhlásit', kiosek ztratil připojení nebo byla událost vytvořena a opuštěna. Zde se také zobrazují staré události (z minulých let), které nebyly nikdy deaktivovány. Sloupec 'Stále přihlášen' ukazuje, zda někdo zůstal uprostřed přihlašování. Uzavřením události z této zprávy se všichni odhlásí (s použitím aktuálního času) a událost se označí jako Neaktivní."
+
+#: 
+msgid "This title will be used for all generated events."
+msgstr "Tento název bude použit pro všechny vygenerované události."
+
+#: 
+msgid "Today's Events"
+msgstr "Dnešní události"
+
+#: 
+msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
+msgstr "Příliš mnoho výskytů (%d) — zúžte rozsah dat. Maximální povolený počet: %d"
+
+#: 
+msgid "Type RESET to confirm"
+msgstr "Napište RESET pro potvrzení"
+
+#: 
+msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
+msgstr "Použijte tlačítko výše k vytvoření dnešní události jedním kliknutím. Bude automaticky propojena s touto třídou, aby kiosek mohl načíst seznam."
+
+#: 
+msgid "Use this form to bulk-create a series of recurring events. Each event is created individually and can be edited or deleted independently after creation."
+msgstr "Použijte tento formulář k hromadnému vytvoření série opakujících se událostí. Každá událost se vytváří samostatně a po vytvoření ji lze nezávisle upravit nebo smazat."
+
+#: 
+msgid "Used as the default start time when creating events of this type."
+msgstr "Používá se jako výchozí čas zahájení při vytváření událostí tohoto typu."
+
+#: 
+msgid "User must have Add Event permission and the Events module must be enabled"
+msgstr "Uživatel musí mít oprávnění Přidat událost a modul Události musí být povolen"
+
+#: 
+msgid "Valid startDate and endDate are required"
+msgstr "Jsou vyžadovány platné startDate a endDate"
+
+#: 
+msgid "View Event"
+msgstr "Zobrazit událost"
+
+#: 
+msgid "What are these for?"
+msgstr "K čemu slouží?"
+
+#: 
+msgid "What does this find?"
+msgstr "Co toto najde?"
+
+#: 
+msgid "What is this for?"
+msgstr "K čemu to slouží?"
+
+#: 
+msgid "Who is bringing them in?"
+msgstr "Kdo je přivádí?"
+
+#: 
+msgid "You must select a valid recurrence pattern."
+msgstr "Musíte vybrat platný vzor opakování."
+
+#: 
+msgid "You must select an event type."
+msgstr "Musíte vybrat typ události."
+
+#: 
+msgid "You must specify a date range."
+msgstr "Musíte zadat rozsah dat."
+
+#: 
+msgid "checked in"
+msgstr "přihlášen"
+
+#: 
+msgid "e.g., Sunday Worship Service"
+msgstr "např. Nedělní bohoslužba"
+
+#: 
+msgid "endDate must be after startDate"
+msgstr "endDate musí být po startDate"
+
+#: 
+msgid "eventIds must be a non-empty array"
+msgstr "eventIds musí být neprázdné pole"
+
+#: 
+msgid "invalid recurrence type"
+msgstr "neplatný typ opakování"
+
+#: 
+msgid "personIds must be a non-empty array"
+msgstr "personIds musí být neprázdné pole"
+
+#: 
+msgid "to enable the reset button"
+msgstr "pro aktivaci tlačítka resetovat"
+
+#: 
+msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
+msgstr "Mapa se zobrazí zde, jakmile budou souřadnice uloženy — buď automaticky zjištěny z vaší adresy, nebo zadány ručně výše."
+
+#: 
+msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr "Zeměpisná šířka i délka musí být zadány společně (nebo obě ponechány prázdné pro automatické zjišťování)."
+
+#: 
+msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr "Informace o farnosti byly uloženy, ale adresu se nepodařilo automaticky najít. Zadejte prosím zeměpisnou šířku a délku ručně pod Souřadnicemi mapy."
+
+#: 
+msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
+msgstr "Souřadnice jsou automaticky zjišťovány z vaší adresy při uložení (přes OpenStreetMap). Můžete je také zadat ručně níže — ruční hodnoty mají vždy přednost před automatickým zjišťováním. Ponechte obě prázdné, aby systém provedl geokódování z adresy."
+
+#: 
+msgid "Latitude must be a number between -90 and 90."
+msgstr "Zeměpisná šířka musí být číslo mezi -90 a 90."
+
+#: 
+msgid "Longitude must be a number between -180 and 180."
+msgstr "Zeměpisná délka musí být číslo mezi -180 a 180."
+
+#: 
+msgid "Map Coordinates"
+msgstr "Souřadnice mapy"
+
+#: 
+msgid "Please select a group."
+msgstr "Vyberte prosím skupinu."
+
+#: 
+msgid "Please select a role."
+msgstr "Vyberte prosím roli."
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "Vyberte prosím skupinu i roli."
+
+#: 
+msgid "Range: -180 to 180."
+msgstr "Rozsah: -180 až 180."
+
+#: 
+msgid "Range: -90 to 90."
+msgstr "Rozsah: -90 až 90."
+
+#: 
+msgid "mo"
+msgstr "měs."
+
+#: 
+msgid "mos"
+msgstr "měs."
+
+#: 
+msgid "yr"
+msgstr "r."
+
+#: 
+msgid "yrs"
+msgstr "let"
 

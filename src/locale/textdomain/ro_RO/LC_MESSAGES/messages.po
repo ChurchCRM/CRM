@@ -281,10 +281,6 @@ msgid "Add Cart to Event"
 msgstr "Adauga in cos la eveniment"
 
 #: 
-msgid "OR"
-msgstr "SAU"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Cosul dvs. este gol!"
 
@@ -408,10 +404,6 @@ msgstr "Da"
 #: 
 msgid "No"
 msgstr "Nu"
-
-#: 
-msgid "Event Checkin"
-msgstr "Evenimentul Checkin"
 
 #: 
 msgid "Select Event"
@@ -676,10 +668,6 @@ msgid "Church Event Editor"
 msgstr "Editor de evenimente bisericești"
 
 #: 
-msgid "Edit Event Types"
-msgstr "Editare Tipuri de evenimente"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Editare tip de eveniment"
 
@@ -750,20 +738,8 @@ msgid "Create a new Event"
 msgstr "Crează eveniment nou"
 
 #: 
-msgid " errors. Please see below"
-msgstr "erori. Vă rugăm să consultați mai jos"
-
-#: 
 msgid "Select your event type"
 msgstr "Selectează tip eveniment"
-
-#: 
-msgid "You must pick an event type."
-msgstr "Trebuie să alegi un tip de eveniment"
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "Nu a fost înregistrat niciun număr de prezență"
 
 #: 
 #, fuzzy
@@ -2201,15 +2177,6 @@ msgid "User Editor"
 msgstr "Utilizator Editor"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Notă: Modificările nu vor avea efect până la următoarea conectare."
-
-#: 
-#, fuzzy
-msgid "Person to Make User"
-msgstr "Persoana pentru a face Utilizator"
-
-#: 
 #, fuzzy
 msgid "User"
 msgstr "Utilizator"
@@ -2259,25 +2226,8 @@ msgid "Edit Self"
 msgstr "Editare Auto"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Editare propria familie numai.)"
-
-#: 
 msgid "Admin"
 msgstr "Administrator"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Granturi toate privilegiile.)"
-
-#: 
-#, fuzzy
-msgid "Style"
-msgstr "Stil"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Alege permisiuni DA pentru a permite acestui utilizatori să schimbe valoarea curentă"
 
 #: 
 msgid "Last Login"
@@ -3018,10 +2968,6 @@ msgid "Date Entered"
 msgstr "Dată activare"
 
 #: 
-msgid "There were "
-msgstr "Au fost"
-
-#: 
 msgid "Inactive"
 msgstr "Inactiv"
 
@@ -3255,10 +3201,6 @@ msgstr "Dată/Rapoarte"
 #: 
 msgid "Query Menu"
 msgstr "Meniu întrebări"
-
-#: 
-msgid "CSV Export Records"
-msgstr "Înregistrări eport CSV"
 
 #: 
 msgid "Family Properties"
@@ -4973,14 +4915,6 @@ msgid "Select event"
 msgstr "Selectează eveniment"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "Persoana a fost deja înregistrată pentru acest eveniment"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "Persoană pentru check-out pentru adulți"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Text înainte de nume în email-uri/rapoarte"
 
@@ -5537,10 +5471,6 @@ msgid "Sign out"
 msgstr "Ieșire"
 
 #: 
-msgid "Sermon Text"
-msgstr "Textul predicii"
-
-#: 
 msgid "Change Settings"
 msgstr "Schimbă setările"
 
@@ -6056,10 +5986,6 @@ msgstr "Funcții de resetare a Bazei de Date"
 msgid "Reset Database"
 msgstr "Resetare bază de date"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "Aceasta va reseta datele sistemului și va reporni sistemul ca o instalare nouă"
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6171,28 +6097,12 @@ msgid "open rate"
 msgstr "Rata de deschidere"
 
 #: 
-msgid "Login Info"
-msgstr "Informații autentificare"
-
-#: 
-msgid "Login Count"
-msgstr "Număr de autentificări"
-
-#: 
-msgid "Failed Login"
-msgstr "Autentificare eșuată"
-
-#: 
 msgid "Permissions"
 msgstr "Permisiuni"
 
 #: 
 msgid "Manage Notes"
 msgstr "Administrați notițele"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Generarea unei noi chei API a eșuat"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6264,14 +6174,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Aniversările de nuntă de astăzi"
 
 #: 
-msgid "Api Key"
-msgstr "Cheia API"
-
-#: 
-msgid "Regen API Key"
-msgstr "Regenerați Cheia API"
-
-#: 
 msgid "View Family Page"
 msgstr "Vizualizați pagina familiei"
 
@@ -6286,46 +6188,6 @@ msgstr "Verifică"
 #: 
 msgid "Family has no emails to use"
 msgstr "Familia nu are adrese de email de utilizat"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Aspect cu casetă"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Activați aspectul cu casetă"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Comutați starea panoului lateral"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Comutați starea panoului lateral stânga (deschis sau pliat)"
-
-#: 
-msgid "Tables Settings"
-msgstr "Setări Tabele"
-
-#: 
-msgid "Page length"
-msgstr "Lungimea paginii"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Schimbați lungimea paginii inițiale (numărul de rânduri per pagină)"
-
-#: 
-msgid "User Interface"
-msgstr "Interfață de Utilizator"
-
-#: 
-msgid "Locale"
-msgstr "Localizare"
-
-#: 
-msgid "Override system locale"
-msgstr "Suprascrieți localizarea sistemului"
 
 #: 
 msgid "Deleted"
@@ -7397,10 +7259,6 @@ msgid "All Types"
 msgstr "Toate tipurile"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "Sigur doriți să ștergeți această înregistrare de check-in?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "Categorii numărare prezență"
 
@@ -7441,10 +7299,6 @@ msgid "Create New Event"
 msgstr "Creează eveniment nou"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "Creați un tip de eveniment pentru a începe."
-
-#: 
 msgid "Current DB Version"
 msgstr "Versiune actuală BD"
 
@@ -7463,14 +7317,6 @@ msgstr "Ora de start implicită"
 #: 
 msgid "Delete Event"
 msgstr "Șterge evenimentul"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "Ștergerea unui eveniment va șterge și toate numărătorile de prezență. Ștergeți acest eveniment?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "Ștergerea acestui eveniment va șterge și toate înregistrările de prezență. Sigur doriți să continuați?"
 
 #: 
 msgid "Edit Event"
@@ -7538,10 +7384,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "Opțional - Adăugați note despre predică sau detalii suplimentare despre eveniment"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "Opțional - lăsați gol dacă nu monitorizați"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "Note opționale despre prezență..."
 
@@ -7574,24 +7416,12 @@ msgid "Search by name or email..."
 msgstr "Căutare după nume sau e-mail..."
 
 #: 
-msgid "Search for adult..."
-msgstr "Caută adult..."
-
-#: 
 msgid "Search for supervisor..."
 msgstr "Caută supraveghetor..."
 
 #: 
 msgid "Select Event for Check-In"
 msgstr "Selectați evenimentul pentru Check-In"
-
-#: 
-msgid "Select start and end date/time"
-msgstr "Selectați data/ora de început și de sfârșit"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "Selectați evenimentul pentru a face check-in membrilor din coș"
 
 #: 
 msgid "Sermon / Event Text"
@@ -7959,10 +7789,6 @@ msgstr "Utilizați instrumente externe (GPG, 7-Zip) pentru a cripta backup-urile
 #: 
 msgid "User authentication"
 msgstr "Autentificare utilizator"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "Utilizatorul trebuie să aibă permisiunea Adăugare eveniment"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8485,10 +8311,6 @@ msgid "State (Other)"
 msgstr "Județ/Provincie (Altele)"
 
 #: 
-msgid "Status:"
-msgstr "Stare:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Rezumatul angajamentelor vs plăți pe fond pentru anul fiscal."
 
@@ -8539,10 +8361,6 @@ msgstr "Total depozite:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Urmăriți angajamentele și progresul plăților pentru campanii și bugetarea anului fiscal."
-
-#: 
-msgid "Type:"
-msgstr "Tip:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8969,10 +8787,6 @@ msgid "Disable 2FA"
 msgstr "Dezactivează 2FA"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "Exportați toate datele persoanelor în format ChMeetings pentru importul în sisteme externe."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "Export în ChMeetings CSV"
 
@@ -9230,10 +9044,6 @@ msgid "Add Your First Property Type"
 msgstr "Adăugați Primul Dvs. Tip de Proprietate"
 
 #: 
-msgid "Auto-calculated from counts above"
-msgstr "Calculat automat din numărătorile de mai sus"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Prin ștergerea acestui câmp, veți pierde irevocabil toate datele membrilor grupului atribuite acestui câmp!"
 
@@ -9423,10 +9233,6 @@ msgstr "Înregistrare Chioșc Dezactivată"
 #: 
 msgid "Kiosk not found"
 msgstr "Chioșc negăsit"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "Asociați acest eveniment cu un grup pentru funcționalitatea de check-in la chioșc. Membrii grupului vor apărea pe chioșc."
 
 #: 
 msgid "Linked Group"
@@ -10629,10 +10435,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "Solicitați tuturor utilizatorilor să se înscrie pentru autentificarea în doi factori"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "O hartă va apărea aici după ce se salvează o adresă. Coordonatele sunt detectate automat — nu este necesară introducerea manuală."
-
-#: 
 msgid "Active Groups"
 msgstr "Grupuri active"
 
@@ -10683,10 +10485,6 @@ msgstr "Familia nu are o adresă pentru geocodificare"
 #: 
 msgid "Father"
 msgstr "Tată"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "Coordonate geocodificate:"
 
 #: 
 msgid "Geocoding failed"
@@ -10767,10 +10565,6 @@ msgstr "Fus orar"
 #: 
 msgid "Total Groups"
 msgstr "Total grupuri"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "Actualizat automat la fiecare salvare."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10954,14 +10748,6 @@ msgstr "Adaugă prima ta proprietate"
 #: 
 msgid "Add a Person"
 msgstr "Adaugă o persoană"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Adaugă un angajament financiar nou"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "Adaugă o plată la oferta curentă"
 
 #: 
 msgid "Add all cart items to a group"
@@ -11176,10 +10962,6 @@ msgid "Check Out"
 msgstr "Ieșire"
 
 #: 
-msgid "Check Out Person"
-msgstr "Ieșire persoană"
-
-#: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
 msgstr "Verificați actualizările și actualizați instalarea ChurchCRM"
 
@@ -11304,10 +11086,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "Creați o copie de siguranță manuală cel puțin o dată pe săptămână sau activați pluginul de copie de siguranță externă pentru copii WebDAV automate programate."
 
 #: 
-msgid "Create a new deposit"
-msgstr "Creați o ofertă nouă"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "Creați și editați informații despre familii și relații"
 
@@ -11362,10 +11140,6 @@ msgstr "Definiți proprietăți specifice grupului pentru membri"
 #: 
 msgid "Delete All"
 msgstr "Șterge tot"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "Șterge înregistrarea de prezență"
 
 #: 
 msgid "Delete Family"
@@ -11644,10 +11418,6 @@ msgid "Generate directory listings and printed materials"
 msgstr "Generați liste de director și materiale tipărite"
 
 #: 
-msgid "Generate financial reports"
-msgstr "Generați rapoarte financiare"
-
-#: 
 msgid "Generate financial statements and giving reports"
 msgstr "Generați situații financiare și rapoarte de contribuții"
 
@@ -11880,14 +11650,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "Gestionează instrumentele de e-mail și configurația SMTP"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "Gestionează numele evenimentelor și categoriile"
-
-#: 
-msgid "Manage event type categories"
-msgstr "Gestionează categoriile tipurilor de evenimente"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Gestionează familiile, persoanele și informațiile demografice"
 
@@ -12010,10 +11772,6 @@ msgstr "Fără zile de naștere"
 #: 
 msgid "No Check-ins"
 msgstr "Fără înregistrări de prezență"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "Fără urmărire oferte"
 
 #: 
 msgid "No Deposits"
@@ -12768,10 +12526,6 @@ msgstr "fonduri"
 #: 
 msgid "members"
 msgstr "membri"
-
-#: 
-msgid "name@example.com"
-msgstr "nume@exemplu.ro"
 
 #: 
 msgid "opportunities"
@@ -13727,23 +13481,153 @@ msgstr "de exemplu, Serviciul de duminică"
 msgid "member"
 msgstr "membru"
 
+#. plugin:mailchimp:section:1:content
+#: 
+msgid "- **Dashboard**: View all your MailChimp lists with subscriber statistics\n"
+"- **List Maintenance**: Identify people in MailChimp but not in CRM, and vice versa\n"
+"- **Contact Integration**: View MailChimp subscription status on Person and Family pages\n"
+"- **Automatic Sync**: Hooks into person/family updates to keep MailChimp in sync"
+msgstr "- **Panou de control**: Vizualizați toate listele MailChimp cu statistici privind abonații\n"
+"- **Întreținere liste**: Identificați persoanele din MailChimp care nu se află în CRM și invers\n"
+"- **Integrare contacte**: Vizualizați starea abonamentului MailChimp pe paginile Persoană și Familie\n"
+"- **Sincronizare automată**: Se conectează la actualizările persoanei/familiei pentru a menține MailChimp sincronizat"
+
+#. plugin:vonage:section:1:content
+#: 
+msgid "1. Create a Vonage account at https://dashboard.nexmo.com/sign-up (new accounts include free trial credit)\n"
+"2. Find your API Key and API Secret on the Vonage Dashboard homepage\n"
+"3. Go to Numbers > Buy Numbers and purchase a number with SMS capability\n"
+"4. Note the number in E.164 format (e.g., +14155551234)\n"
+"5. In ChurchCRM, enable the Vonage SMS plugin and enter your credentials"
+msgstr "1. Creați un cont Vonage la https://dashboard.nexmo.com/sign-up (conturile noi includ credit de probă gratuit)\n"
+"2. Găsiți cheia API și secretul API pe pagina principală a tabloului de bord Vonage\n"
+"3. Accesați Numere > Cumpărați numere și achiziționați un număr cu capacitate SMS\n"
+"4. Notați numărul în format E.164 (ex.: +14155551234)\n"
+"5. În ChurchCRM, activați pluginul Vonage SMS și introduceți credențialele"
+
+#. plugin:google-analytics:section:0:content
+#: 
+msgid "1. Go to Google Analytics (analytics.google.com)\n"
+"2. Create a property or select an existing one\n"
+"3. Go to Admin → Data Streams → Web\n"
+"4. Copy the Measurement ID (starts with G-)"
+msgstr "1. Accesați Google Analytics (analytics.google.com)\n"
+"2. Creați o proprietate sau selectați una existentă\n"
+"3. Accesați Admin → Fluxuri de date → Web\n"
+"4. Copiați ID-ul de măsurare (începe cu G-)"
+
+#. plugin:openlp:section:2:content
+#: 
+msgid "1. Install OpenLP 3.0 or later on your presentation computer\n"
+"2. Enable the Remote plugin in OpenLP (Settings → Configure OpenLP → Plugins)\n"
+"3. Enable the Alerts plugin in OpenLP for alert display support\n"
+"4. Note the IP address of the OpenLP computer\n"
+"5. Enter the server URL in the format: http://IP_ADDRESS:4316\n"
+"6. If you've configured authentication in OpenLP, enter the username and password"
+msgstr "1. Instalați OpenLP 3.0 sau o versiune ulterioară pe calculatorul de prezentare\n"
+"2. Activați pluginul Remote în OpenLP (Setări → Configurare OpenLP → Pluginuri)\n"
+"3. Activați pluginul Alerts în OpenLP pentru suportul afișării alertelor\n"
+"4. Notați adresa IP a calculatorului OpenLP\n"
+"5. Introduceți URL-ul serverului în formatul: http://ADRESA_IP:4316\n"
+"6. Dacă ați configurat autentificarea în OpenLP, introduceți numele de utilizator și parola"
+
+#. plugin:mailchimp:section:2:content
+#: 
+msgid "Access the MailChimp Dashboard from the Email menu. The dashboard shows:\n"
+"\n"
+"- Member count for each list\n"
+"- Campaign statistics\n"
+"- Unsubscribe counts\n"
+"- List maintenance tools"
+msgstr "Accesați tabloul de bord MailChimp din meniul E-mail. Tabloul de bord afișează:\n"
+"\n"
+"- Numărul de membri pentru fiecare listă\n"
+"- Statistici de campanie\n"
+"- Numărul de dezabonări\n"
+"- Instrumente de întreținere a listelor"
+
 #. plugin:custom-links:section:1:title
 #: 
 msgid "Adding Links"
 msgstr "Adăugare linkuri"
+
+#. plugin:custom-links:section:2:content
+#: 
+msgid "All configured links are shown in a table. You can:\n"
+"- View the link name and URL\n"
+"- Click the URL to test it opens correctly\n"
+"- Delete links you no longer need\n"
+"\n"
+"Links appear in the order they were added in the navigation menu."
+msgstr "Toate linkurile configurate sunt afișate într-un tabel. Puteți:\n"
+"- Vizualiza numele și URL-ul linkului\n"
+"- Faceți clic pe URL pentru a testa dacă se deschide corect\n"
+"- Șterge linkurile de care nu mai aveți nevoie\n"
+"\n"
+"Linkurile apar în ordinea în care au fost adăugate în meniul de navigare."
 
 #: 
 msgid "Allow Pre-release Upgrades"
 msgstr "Permite actualizări pre-lansare"
 
 #: 
+msgid "Allow recording of non-tax-deductible payments in the finance module"
+msgstr "Permiteți înregistrarea plăților nedeductibile fiscal în modulul financiar"
+
+#: 
+msgid "Allow scanned check images to be attached to deposit records"
+msgstr "Permiteți atașarea imaginilor scanate ale cecurilor la înregistrările de depozit"
+
+#: 
+msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
+msgstr "Permiteți actualizările sistemului la versiunile marcate ca 'pre release' pe GitHub"
+
+#: 
+msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
+msgstr "Permiteți accesul neautentificat la evenimentele calendarului prin URL-uri HTML, ICS și JSON publice. Necesar pentru partajarea calendarelor cu aplicații externe."
+
+#: 
+msgid "Allow visitors to create their own family record via the self-registration page"
+msgstr "Permiteți vizitatorilor să creeze propria înregistrare de familie prin pagina de auto-înregistrare"
+
+#: 
 msgid "Allow visitors to self-register as new families."
 msgstr "Permite vizitatorilor să se auto-înregistreze ca familii noi."
+
+#. plugin:external-backup:section:5:content
+#: 
+msgid "Any WebDAV-compatible service works with this plugin:\n"
+"\n"
+"- Nextcloud (recommended)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (with WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx with WebDAV module\n"
+"\n"
+"Note: Some services require app-specific passwords for WebDAV access."
+msgstr "Orice serviciu compatibil cu WebDAV funcționează cu acest plugin:\n"
+"\n"
+"- Nextcloud (recomandat)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (cu WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx cu modulul WebDAV\n"
+"\n"
+"Notă: Unele servicii necesită parole specifice aplicației pentru accesul WebDAV."
 
 #. plugin:openlp:section:4:title
 #: 
 msgid "Authentication"
 msgstr "Autentificare"
+
+#. plugin:openlp:section:4:content
+#: 
+msgid "Authentication is required for API v2 if you've enabled it in OpenLP's Remote plugin settings. The plugin uses HTTP Basic Authentication. Most local network setups don't require authentication, but it's recommended for security."
+msgstr "Autentificarea este necesară pentru API v2 dacă ați activat-o în setările pluginului Remote din OpenLP. Pluginul utilizează Autentificarea HTTP de bază. Majoritatea configurațiilor de rețea locală nu necesită autentificare, dar este recomandată pentru securitate."
 
 #: 
 msgid "Auto TLS"
@@ -13758,6 +13642,69 @@ msgstr "Backup automat"
 msgid "BCC All Mail To"
 msgstr "BCC pentru toate e-mailurile la"
 
+#. plugin:external-backup:section:4:content
+#: 
+msgid "Before relying on external backups, test your connection:\n"
+"1. Go to Plugins > External Backup\n"
+"2. Click 'Test WebDAV Connection'\n"
+"3. Verify you see a success message\n"
+"\n"
+"Common issues:\n"
+"- 401/403 errors: Check username and password\n"
+"- Connection timeout: Verify the endpoint URL is correct\n"
+"- Certificate errors: Ensure the WebDAV server has a valid SSL certificate"
+msgstr "Înainte de a vă baza pe copiile de rezervă externe, testați conexiunea:\n"
+"1. Accesați Pluginuri > Copie de rezervă externă\n"
+"2. Faceți clic pe 'Testare conexiune WebDAV'\n"
+"3. Verificați că vedeți un mesaj de succes\n"
+"\n"
+"Probleme frecvente:\n"
+"- Erori 401/403: Verificați numele de utilizator și parola\n"
+"- Expirarea conexiunii: Verificați că URL-ul endpoint-ului este corect\n"
+"- Erori de certificat: Asigurați-vă că serverul WebDAV are un certificat SSL valid"
+
+#. plugin:gravatar:section:1:content
+#: 
+msgid "Choose what appears when no Gravatar exists:\n"
+"• Mystery Person - Gray silhouette outline\n"
+"• Identicon - Geometric pattern based on email\n"
+"• MonsterID - Unique generated monster face\n"
+"• Wavatar - Abstract generated face\n"
+"• Retro - 8-bit arcade-style pixel art\n"
+"• RoboHash - Unique generated robot\n"
+"• Blank - Transparent (falls back to initials)"
+msgstr "Alegeți ce apare când nu există Gravatar:\n"
+"• Mystery Person - Siluetă gri\n"
+"• Identicon - Model geometric bazat pe e-mail\n"
+"• MonsterID - Față de monstru generată unic\n"
+"• Wavatar - Față abstractă generată\n"
+"• Retro - Pixelart în stil arcade 8-bit\n"
+"• RoboHash - Robot generat unic\n"
+"• Blank - Transparent (implicit inițiale)"
+
+#: 
+msgid "Comma-separated query IDs that require finance permissions to view"
+msgstr "ID-uri de interogare separate prin virgulă care necesită permisiuni financiare pentru vizualizare"
+
+#. plugin:custom-links:section:4:content
+#: 
+msgid "Common uses for custom links:\n"
+"- Church website\n"
+"- Online giving portal\n"
+"- Volunteer signup forms\n"
+"- Denomination resources\n"
+"- Partner organization sites\n"
+"- Cloud storage folders\n"
+"- Event registration pages"
+msgstr "Utilizări frecvente pentru linkuri personalizate:\n"
+"- Site-ul parohiei\n"
+"- Portal de oferande online\n"
+"- Formulare de înregistrare voluntari\n"
+"- Resurse ale eparhiei\n"
+"- Site-uri ale organizațiilor partenere\n"
+"- Dosare de stocare în cloud\n"
+"- Pagini de înregistrare la evenimente"
+
 #. plugin:external-backup:section:1:title
 #: 
 msgid "Configuration"
@@ -13767,11 +13714,6 @@ msgstr "Configurare"
 #: 
 msgid "Costs"
 msgstr "Costuri"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Persoane cu card de credit"
 
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
@@ -13823,17 +13765,28 @@ msgid "Enable External Calendar API"
 msgstr "Activează API calendar extern"
 
 #: 
+msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
+msgstr "Activați trimiterea de e-mailuri din ChurchCRM. Necesar pentru resetarea parolei, notificări și linkuri prin e-mail."
+
+#: 
+msgid "Enable if your SMTP server requires a username and password"
+msgstr "Activați dacă serverul SMTP necesită un nume de utilizator și o parolă"
+
+#: 
+msgid "Enable or disable the Sunday School module and sidebar menu."
+msgstr "Activați sau dezactivați modulul Școala duminicală și meniul lateral."
+
+#: 
+msgid "Enable the use of numbered donation envelopes for tracking contributions"
+msgstr "Activați utilizarea plicurilor de donații numerotate pentru urmărirea contribuțiilor"
+
+#: 
 msgid "Enable use of donation envelopes"
 msgstr "Activează utilizarea plicurilor de donații"
 
 #: 
 msgid "Enable use of scanned checks"
 msgstr "Activează utilizarea cecurilor scanate"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Angajament familial pe an fiscal"
 
 #. plugin:mailchimp:section:1:title
 #: 
@@ -13844,11 +13797,6 @@ msgstr "Funcționalități"
 msgid "Finance permission query IDs"
 msgstr "ID-uri interogări permisiuni finanțe"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Găsește elevi înregistrați"
-
 #: 
 msgid "Find family"
 msgstr "Găsește familie"
@@ -13858,10 +13806,20 @@ msgstr "Găsește familie"
 msgid "Finding Your Server URL"
 msgstr "Găsirea URL-ului serverului dvs."
 
-#. Context: queryparameters_qrp
+#. plugin:custom-links:section:3:content
 #: 
-msgid "Fiscal Year."
-msgstr "An fiscal."
+msgid "For security:\n"
+"- Only administrators can add or remove links\n"
+"- The 'Manage Links' option only appears for administrators\n"
+"- Links must use http:// or https:// protocols\n"
+"- HTML tags are not allowed in names or URLs\n"
+"- All input is validated and sanitized"
+msgstr "Pentru securitate:\n"
+"- Doar administratorii pot adăuga sau elimina linkuri\n"
+"- Opțiunea 'Gestionare linkuri' apare doar pentru administratori\n"
+"- Linkurile trebuie să utilizeze protocoalele http:// sau https://\n"
+"- Etichetele HTML nu sunt permise în nume sau URL-uri\n"
+"- Toate intrările sunt validate și sanitizate"
 
 #. plugin:google-analytics:link:1:label
 #: 
@@ -13878,10 +13836,25 @@ msgstr "Noțiuni de bază"
 msgid "Getting Your GA4 Measurement ID"
 msgstr "Obținerea ID-ului de măsurare GA4"
 
+#. plugin:google-analytics:summary
+#: 
+msgid "Google Analytics 4 (GA4) tracks how users interact with ChurchCRM, providing insights into page views, user engagement, and feature usage."
+msgstr "Google Analytics 4 (GA4) urmărește modul în care utilizatorii interacționează cu ChurchCRM, oferind informații despre vizualizările de pagini, angajamentul utilizatorilor și utilizarea funcțiilor."
+
 #. plugin:google-analytics:link:0:label
 #: 
 msgid "Google Analytics Help"
 msgstr "Ajutor Google Analytics"
+
+#. plugin:google-analytics:section:2:content
+#: 
+msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
+msgstr "Google Analytics colectează date anonimizate despre utilizare. Nicio informație personală din înregistrările ChurchCRM nu este trimisă către Google. Luați în considerare adăugarea unui aviz de confidențialitate în politica de date a parohiei dvs."
+
+#. plugin:gravatar:summary
+#: 
+msgid "Gravatar (Globally Recognized Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM."
+msgstr "Gravatar (Avatar Recunoscut Global) afișează fotografii de profil de pe gravatar.com pentru membrii comunității care nu au fotografii încărcate în ChurchCRM."
 
 #. plugin:gravatar:link:1:label
 #: 
@@ -13893,10 +13866,10 @@ msgstr "Opțiuni imagine Gravatar"
 msgid "Gravatar Website"
 msgstr "Site web Gravatar"
 
-#. Context: queryparameters_qrp
+#. plugin:gravatar:section:2:content
 #: 
-msgid "Group of registered students"
-msgstr "Grup de elevi înregistrați"
+msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
+msgstr "Gravatar funcționează prin convertirea adreselor de e-mail într-un hash (MD5). Adresa de e-mail reală nu este niciodată trimisă serverelor Gravatar - doar hash-ul este utilizat pentru căutarea imaginii."
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -13916,6 +13889,77 @@ msgstr "Cum funcționează"
 msgid "How many checks to print per deposit slip page"
 msgstr "Câte cecuri se imprimă pe pagina bonului de depozit"
 
+#. plugin:vonage:section:3:content
+#: 
+msgid "If SMS messages aren't being sent:\n"
+"1. Verify API Key and Secret are correct (no extra spaces)\n"
+"2. Check that the From Number is a valid Vonage number you own\n"
+"3. Ensure recipient phone numbers include country code\n"
+"4. Check your Vonage account balance\n"
+"5. Review the Vonage Dashboard > SMS > Logs for delivery status"
+msgstr "Dacă mesajele SMS nu sunt trimise:\n"
+"1. Verificați că cheia API și secretul sunt corecte (fără spații suplimentare)\n"
+"2. Verificați că numărul expeditorului este un număr Vonage valid pe care îl dețineți\n"
+"3. Asigurați-vă că numerele de telefon ale destinatarilor includ codul de țară\n"
+"4. Verificați soldul contului Vonage\n"
+"5. Consultați Vonage Dashboard > SMS > Jurnale pentru starea livrării"
+
+#. plugin:openlp:section:5:content
+#: 
+msgid "If alerts aren't appearing:\n"
+"1. Verify OpenLP is running and the Remote plugin is active\n"
+"2. Ensure the Alerts plugin is enabled in OpenLP\n"
+"3. Check that the server URL is correct (try accessing it in a browser)\n"
+"4. Verify firewall settings allow connections on port 4316\n"
+"5. If using authentication, verify credentials are correct"
+msgstr "Dacă alertele nu apar:\n"
+"1. Verificați că OpenLP funcționează și pluginul Remote este activ\n"
+"2. Asigurați-vă că pluginul Alerts este activat în OpenLP\n"
+"3. Verificați că URL-ul serverului este corect (încercați să îl accesați într-un browser)\n"
+"4. Verificați că setările firewall-ului permit conexiunile pe portul 4316\n"
+"5. Dacă utilizați autentificarea, verificați că credențialele sunt corecte"
+
+#. plugin:vonage:section:5:content
+#: 
+msgid "If messages are sent but not received:\n"
+"1. Check Vonage Dashboard > SMS > Logs for delivery status\n"
+"2. Verify the recipient number is correct and can receive SMS\n"
+"3. Some carriers may block messages from unknown numbers\n"
+"4. Check if the destination country has SMS restrictions"
+msgstr "Dacă mesajele sunt trimise dar nu sunt primite:\n"
+"1. Verificați Vonage Dashboard > SMS > Jurnale pentru starea livrării\n"
+"2. Verificați că numărul destinatarului este corect și poate primi SMS\n"
+"3. Unii operatori pot bloca mesajele de la numere necunoscute\n"
+"4. Verificați dacă țara de destinație are restricții SMS"
+
+#. plugin:vonage:section:4:content
+#: 
+msgid "If you receive invalid sender ID errors:\n"
+"1. Use a phone number you've purchased from Vonage\n"
+"2. Format the number in E.164 format (+14155551234)\n"
+"3. Note: Alphanumeric sender IDs may be restricted in some countries"
+msgstr "Dacă primiți erori de ID expeditor invalid:\n"
+"1. Utilizați un număr de telefon achiziționat de la Vonage\n"
+"2. Formatați numărul în format E.164 (+14155551234)\n"
+"3. Notă: ID-urile alfanumerice ale expeditorului pot fi restricționate în unele țări"
+
+#. plugin:external-backup:section:6:content
+#: 
+msgid "Important security notes:\n"
+"\n"
+"1. Always use HTTPS endpoints to encrypt backups in transit\n"
+"2. Use app-specific passwords when available (Nextcloud, ownCloud)\n"
+"3. Store backups in a folder with restricted access\n"
+"4. Periodically download and verify your backups are valid\n"
+"5. Consider encrypting sensitive backups with external tools before uploading"
+msgstr "Note importante de securitate:\n"
+"\n"
+"1. Utilizați întotdeauna endpoint-uri HTTPS pentru a cripta copiile de rezervă în tranzit\n"
+"2. Utilizați parole specifice aplicației când sunt disponibile (Nextcloud, ownCloud)\n"
+"3. Stocați copiile de rezervă într-un folder cu acces restricționat\n"
+"4. Descărcați și verificați periodic că copiile de rezervă sunt valide\n"
+"5. Luați în considerare criptarea copiilor de rezervă sensibile cu instrumente externe înainte de încărcare"
+
 #: 
 msgid "Initial zoom level when opening the map"
 msgstr "Nivel de zoom inițial la deschiderea hărții"
@@ -13927,6 +13971,11 @@ msgstr "Află mai multe"
 #: 
 msgid "Log Settings"
 msgstr "Setări jurnal"
+
+#. plugin:mailchimp:summary
+#: 
+msgid "MailChimp Integration enables synchronization between ChurchCRM contacts and your MailChimp email marketing lists."
+msgstr "Integrarea MailChimp permite sincronizarea între contactele ChurchCRM și listele dvs. de marketing prin e-mail MailChimp."
 
 #. plugin:custom-links:section:2:title
 #: 
@@ -13952,10 +14001,10 @@ msgstr "Documentație OpenLP"
 msgid "OpenLP Website"
 msgstr "Site web OpenLP"
 
-#. Context: query_qry
+#. plugin:openlp:summary
 #: 
-msgid "People who are configured to pay by credit card."
-msgstr "Persoane configurate să plătească cu cardul de credit."
+msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
+msgstr "OpenLP este un software de prezentare gratuit și open-source conceput pentru parohii. Acest plugin permite ChurchCRM să trimită notificări și alerte direct pe ecranul OpenLP."
 
 #. plugin:mailchimp:section:3:title
 #: 
@@ -13966,6 +14015,21 @@ msgstr "Integrare persoană/familie"
 #: 
 msgid "Phone Number Format"
 msgstr "Format număr de telefon"
+
+#. plugin:vonage:section:2:content
+#: 
+msgid "Phone numbers should be in E.164 format: country code + number. Examples:\n"
+"- US: +14155551234\n"
+"- UK: +447700900123\n"
+"- Australia: +61412345678\n"
+"\n"
+"Recipient phone numbers in ChurchCRM member profiles should include the country code for SMS to work correctly."
+msgstr "Numerele de telefon trebuie să fie în format E.164: cod de țară + număr. Exemple:\n"
+"- SUA: +14155551234\n"
+"- UK: +447700900123\n"
+"- Australia: +61412345678\n"
+"\n"
+"Numerele de telefon ale destinatarilor din profilurile membrilor comunității ChurchCRM trebuie să includă codul de țară pentru ca SMS-ul să funcționeze corect."
 
 #. plugin:mailchimp:section:4:title
 #: 
@@ -13985,11 +14049,6 @@ msgstr "Notă de confidențialitate"
 #: 
 msgid "Quick Settings"
 msgstr "Setări rapide"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Elevi înregistrați"
 
 #: 
 msgid "SMTP Authentication"
@@ -14016,6 +14075,22 @@ msgid "Setup"
 msgstr "Configurare"
 
 #: 
+msgid "Show a breakdown of bill denominations on the deposit slip report"
+msgstr "Afișați o defalcare a denominațiilor bancnotelor în raportul foii de depozit"
+
+#: 
+msgid "Show or hide the Events menu in the main navigation."
+msgstr "Afișați sau ascundeți meniul Evenimente în navigarea principală."
+
+#: 
+msgid "Show or hide the Events section in the main navigation menu"
+msgstr "Afișați sau ascundeți secțiunea Evenimente în meniul de navigare principal"
+
+#: 
+msgid "Show or hide the Sunday School module in the sidebar navigation"
+msgstr "Afișați sau ascundeți modulul Școala duminicală în navigarea laterală"
+
+#: 
 msgid "Street"
 msgstr "Stradă"
 
@@ -14032,6 +14107,89 @@ msgstr "Servicii suportate"
 #: 
 msgid "Testing Connection"
 msgstr "Testare conexiune"
+
+#. plugin:custom-links:section:0:content
+#: 
+msgid "The Custom Menu Links plugin allows administrators to add external links to the navigation menu. When enabled, a 'Links' menu appears in the sidebar containing all configured links."
+msgstr "Pluginul Linkuri personalizate de meniu permite administratorilor să adauge linkuri externe în meniul de navigare. Când este activat, un meniu 'Linkuri' apare în bara laterală conținând toate linkurile configurate."
+
+#. plugin:external-backup:section:0:content
+#: 
+msgid "The External Backup plugin allows you to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services. This includes popular services like Nextcloud, ownCloud, or any server supporting WebDAV protocol."
+msgstr "Pluginul Copie de rezervă externă vă permite să faceți automat copii de rezervă ale bazei de date ChurchCRM în servicii de stocare cloud compatibile cu WebDAV. Aceasta include servicii populare precum Nextcloud, ownCloud sau orice server care suportă protocolul WebDAV."
+
+#. plugin:openlp:section:3:content
+#: 
+msgid "The default OpenLP port is 4316. Your server URL will typically be: http://192.168.x.x:4316 where 192.168.x.x is the IP address of the computer running OpenLP. You can find this in OpenLP under Tools → Open Service Manager."
+msgstr "Portul implicit OpenLP este 4316. URL-ul serverului dvs. va fi de obicei: http://192.168.x.x:4316 unde 192.168.x.x este adresa IP a calculatorului care rulează OpenLP. Puteți găsi aceasta în OpenLP sub Instrumente → Deschidere Manager servicii."
+
+#: 
+msgid "The month that starts your organization's fiscal year"
+msgstr "Luna care marchează începutul anului fiscal al organizației dvs."
+
+#. plugin:vonage:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an SMS can be sent to notify parents or guardians."
+msgstr "Acest plugin este utilizat în prezent pentru notificări de check-in la chioșc. Când un copil se înregistrează la o clasă de Școală duminicală prin sistemul de chioșc, un SMS poate fi trimis pentru a notifica părinții sau tutorii."
+
+#. plugin:openlp:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an alert can be sent to the OpenLP projector display to notify parents or volunteers."
+msgstr "Acest plugin este utilizat în prezent pentru notificări de check-in la chioșc. Când un copil se înregistrează la o clasă de Școală duminicală prin sistemul de chioșc, o alertă poate fi trimisă pe ecranul proiectorului OpenLP pentru a notifica părinții sau voluntarii."
+
+#. plugin:mailchimp:section:4:content
+#: 
+msgid "This plugin transmits email addresses to MailChimp servers. Ensure you have appropriate consent from your members before syncing their information to third-party services like MailChimp."
+msgstr "Acest plugin transmite adrese de e-mail către serverele MailChimp. Asigurați-vă că aveți consimțământul adecvat de la membrii comunității înainte de a sincroniza informațiile lor cu servicii terțe precum MailChimp."
+
+#. plugin:custom-links:section:1:content
+#: 
+msgid "To add a new link:\n"
+"1. Go to the Links menu in the sidebar and click 'Manage Links'\n"
+"2. Enter a display name (2-50 characters)\n"
+"3. Enter the full URL (must start with http:// or https://)\n"
+"4. Click 'Add Link'\n"
+"\n"
+"The link will immediately appear in the Links menu."
+msgstr "Pentru a adăuga un link nou:\n"
+"1. Accesați meniul Linkuri din bara laterală și faceți clic pe 'Gestionare linkuri'\n"
+"2. Introduceți un nume de afișare (2-50 de caractere)\n"
+"3. Introduceți URL-ul complet (trebuie să înceapă cu http:// sau https://)\n"
+"4. Faceți clic pe 'Adăugare link'\n"
+"\n"
+"Linkul va apărea imediat în meniul Linkuri."
+
+#. plugin:external-backup:section:1:content
+#: 
+msgid "To configure external backups:\n"
+"1. Go to Admin > Plugins and find 'External Backup (WebDAV)'\n"
+"2. Click the settings icon to expand the configuration panel\n"
+"3. Enter your WebDAV endpoint URL (e.g., https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Enter your username and password\n"
+"5. Optionally set an auto-backup interval in hours\n"
+"6. Save your settings"
+msgstr "Pentru a configura copiile de rezervă externe:\n"
+"1. Accesați Admin > Pluginuri și găsiți 'Copie de rezervă externă (WebDAV)'\n"
+"2. Faceți clic pe pictograma de setări pentru a extinde panoul de configurare\n"
+"3. Introduceți URL-ul endpoint-ului WebDAV (ex.: https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Introduceți numele de utilizator și parola\n"
+"5. Opțional, setați un interval de copii de rezervă automate în ore\n"
+"6. Salvați setările"
+
+#. plugin:mailchimp:section:0:content
+#: 
+msgid "To use MailChimp Integration, you need a MailChimp account and an API key.\n"
+"\n"
+"1. Log in to your MailChimp account\n"
+"2. Go to Account > Extras > API Keys\n"
+"3. Create a new API key or copy an existing one\n"
+"4. Enter the API key in the plugin settings"
+msgstr "Pentru a utiliza Integrarea MailChimp, aveți nevoie de un cont MailChimp și de o cheie API.\n"
+"\n"
+"1. Conectați-vă la contul MailChimp\n"
+"2. Accesați Cont > Extra > Chei API\n"
+"3. Creați o nouă cheie API sau copiați una existentă\n"
+"4. Introduceți cheia API în setările pluginului"
 
 #. plugin:openlp:section:5:title
 #: 
@@ -14062,11 +14220,6 @@ msgstr "Setări actualizare"
 msgid "Use Cases"
 msgstr "Cazuri de utilizare"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Permisiune utilizator pentru exportul fișierelor CSV"
-
 #. plugin:vonage:link:0:label
 #: 
 msgid "Vonage Dashboard"
@@ -14082,8 +14235,507 @@ msgstr "Prețuri Vonage"
 msgid "Vonage SMS API Documentation"
 msgstr "Documentație Vonage SMS API"
 
+#. plugin:vonage:summary
+#: 
+msgid "Vonage SMS enables text message notifications for ChurchCRM using the Vonage API (formerly Nexmo). Send SMS alerts to parents when their child checks in via the kiosk system."
+msgstr "Vonage SMS activează notificările prin mesaje text pentru ChurchCRM folosind API-ul Vonage (fostul Nexmo). Trimiteți alerte SMS părinților când copilul lor se înregistrează prin sistemul de chioșc."
+
+#. plugin:vonage:section:6:content
+#: 
+msgid "Vonage charges per SMS sent. Pricing varies by destination country. See the Vonage pricing page for current rates. New accounts receive free trial credit for testing."
+msgstr "Vonage percepe taxe per SMS trimis. Prețurile variază în funcție de țara de destinație. Consultați pagina de prețuri Vonage pentru tarifele actuale. Conturile noi primesc credit de probă gratuit pentru testare."
+
 #. plugin:google-analytics:section:1:title
 #: 
 msgid "What Gets Tracked"
 msgstr "Ce este urmărit"
+
+#. plugin:mailchimp:section:3:content
+#: 
+msgid "When MailChimp is configured, a 'MailChimp' tab appears on Person view pages showing:\n"
+"\n"
+"- Email subscription status across all lists\n"
+"- Which lists the person is subscribed to\n"
+"- Subscription statistics"
+msgstr "Când MailChimp este configurat, un tab 'MailChimp' apare pe paginile de vizualizare a persoanei, afișând:\n"
+"\n"
+"- Starea abonamentului la e-mail în toate listele\n"
+"- La ce liste este abonată persoana\n"
+"- Statistici de abonament"
+
+#. plugin:gravatar:section:0:content
+#: 
+msgid "When a member doesn't have an uploaded photo, ChurchCRM checks if they have a Gravatar associated with their email address. If a Gravatar exists, it displays that image. If not, the configured default image style is used."
+msgstr "Când un membru al comunității nu are o fotografie încărcată, ChurchCRM verifică dacă are un Gravatar asociat adresei sale de e-mail. Dacă există un Gravatar, acea imagine este afișată. În caz contrar, se utilizează stilul de imagine implicit configurat."
+
+#. plugin:external-backup:section:2:content
+#: 
+msgid "When auto-backup is enabled (interval > 0 hours), ChurchCRM will automatically create and upload a full database backup at the specified interval. The backup runs as part of normal page loads, so the system must have regular user activity to trigger backups.\n"
+"\n"
+"Recommended intervals:\n"
+"- Daily backup: 24 hours\n"
+"- Twice daily: 12 hours\n"
+"- Weekly: 168 hours"
+msgstr "Când copia de rezervă automată este activată (interval > 0 ore), ChurchCRM va crea și încărca automat o copie de rezervă completă a bazei de date la intervalul specificat. Copia de rezervă rulează ca parte a încărcărilor normale de pagini, astfel că sistemul trebuie să aibă activitate regulată de utilizatori pentru a declanșa copiile de rezervă.\n"
+"\n"
+"Intervale recomandate:\n"
+"- Copie de rezervă zilnică: 24 de ore\n"
+"- De două ori pe zi: 12 ore\n"
+"- Săptămânal: 168 de ore"
+
+#. plugin:openlp:section:1:content
+#: 
+msgid "When enabled and configured, ChurchCRM sends alert messages to your OpenLP server using the API v2 endpoint (POST /api/v2/plugins/alerts). These alerts appear as overlay notifications on your projected display."
+msgstr "Când este activat și configurat, ChurchCRM trimite mesaje de alertă serverului OpenLP utilizând endpoint-ul API v2 (POST /api/v2/plugins/alerts). Aceste alerte apar ca notificări suprapuse pe ecranul proiectat."
+
+#: 
+msgid "When enabled, hides the address field for people not assigned to a family"
+msgstr "Când este activat, ascunde câmpul de adresă pentru persoanele neasignate unei familii"
+
+#: 
+msgid "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background."
+msgstr "Când este activat, ascunde câmpurile de latitudine/longitudine în Editorul de familie. Geocodificarea rulează în continuare în fundal."
+
+#. plugin:external-backup:section:3:content
+#: 
+msgid "You can also trigger a manual backup at any time:\n"
+"1. Go to the External Backup settings page (Plugins > External Backup)\n"
+"2. Select backup type (Database Only or Full Backup)\n"
+"3. Click 'Backup to WebDAV Now'\n"
+"\n"
+"Database Only backups are smaller and faster. Full backups include uploaded photos."
+msgstr "Puteți, de asemenea, să declanșați o copie de rezervă manuală oricând:\n"
+"1. Accesați pagina de setări Copie de rezervă externă (Pluginuri > Copie de rezervă externă)\n"
+"2. Selectați tipul de copie de rezervă (Doar baza de date sau Copie completă)\n"
+"3. Faceți clic pe 'Backup WebDAV acum'\n"
+"\n"
+"Copiile de rezervă doar pentru baza de date sunt mai mici și mai rapide. Copiile complete includ fotografiile încărcate."
+
+#. plugin:google-analytics:section:1:content
+#: 
+msgid "• Page views and navigation patterns\n"
+"• Session duration and engagement\n"
+"• User demographics (if enabled in GA4)\n"
+"• Device and browser information"
+msgstr "• Vizualizări de pagini și modele de navigare\n"
+"• Durata sesiunii și angajamentul\n"
+"• Datele demografice ale utilizatorilor (dacă sunt activate în GA4)\n"
+"• Informații despre dispozitiv și browser"
+
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "Dimensiunea fișierului depășește limita serverului de %s"
+
+#: 
+msgid "Missing image data in request"
+msgstr "Date imagine lipsă în cerere"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Găsiți persoane care nu au participat la un eveniment"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Persoane absente"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Selectați evenimentul dorit"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Filtrare avansată după grup, clasificare și rol"
+
+#: 
+msgid "All congregation members included"
+msgstr "Toți enoriașii sunt incluși"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "Exportul ChMeetings a fost finalizat cu succes"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "Format de coloane compatibil cu ChMeetings"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Informații de contact, roluri familiale și date importante"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Creați o copie de rezervă completă a bazei de date a bisericii. Descărcați un fișier SQL cu baza de date sau o arhivă completă care include fotografiile încărcate."
+
+#: 
+msgid "Database Backup"
+msgstr "Copie de rezervă a bazei de date"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Exportați datele enoriașilor în format CSV. Alegeți câmpurile de inclus și filtrați după clasificare, grup, gen și altele."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Exportați toți enoriașii în formatul așteptat de ChMeetings, facilitând sincronizarea datelor parohiei cu platforma ChMeetings."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Exportați datele bisericii în diverse formate"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Copie de rezervă externă (WebDAV) prin plugin"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Exportul CSV ChMeetings a eșuat"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Structură de înregistrare familială sau individuală"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Selecție flexibilă a câmpurilor"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Mergeți la Copia de rezervă a bazei de date"
+
+#: 
+msgid "Open CSV Export"
+msgstr "Deschideți Exportul CSV"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Restaurați din pagina de Copie de rezervă a sistemului"
+
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "O actualizare de sistem este disponibilă. Vă rugăm să actualizați instalarea."
+
+#: 
+msgid "API Access"
+msgstr "Acces API"
+
+#: 
+msgid "API Key"
+msgstr "Cheie API"
+
+#: 
+msgid "API key regenerated"
+msgstr "Cheia API a fost regenerată"
+
+#: 
+msgid "Account"
+msgstr "Cont"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Setări avansate"
+
+#: 
+msgid "An error occurred."
+msgstr "A apărut o eroare."
+
+#: 
+msgid "Appearance"
+msgstr "Aspect"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Înapoi la panoul financiar"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Înapoi la panoul grupurilor"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Înapoi la panoul enoriașilor"
+
+#: 
+msgid "Blue"
+msgstr "Albastru"
+
+#: 
+msgid "Change Photo"
+msgstr "Schimbă fotografia"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "Modificările nu vor intra în vigoare până la următoarea autentificare."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Alegeți între schema de culori deschisă și cea întunecată"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "Traducerile ChurchCRM sunt gestionate de comunitate pe POEditor. Puteți contribui:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Personalizați aspectul și comportamentul aplicației"
+
+#: 
+msgid "Cyan"
+msgstr "Azuriu"
+
+#: 
+msgid "Dark"
+msgstr "Întunecat"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Doar baza de date (.sql) sau arhivă completă (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Numărul implicit de rânduri afișate în tabelele de date. Intră în vigoare la următoarea încărcare a paginii."
+
+#: 
+msgid "Edit own family only"
+msgstr "Editați doar propria familie"
+
+#: 
+msgid "Enter text here..."
+msgstr "Introduceți textul aici..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Anularea înscrierii a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Ștergerea evenimentului a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "Dezactivarea autentificării în doi pași a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "Generarea codului QR a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "Încărcarea datelor calendarului a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Încărcarea evenimentului a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "Încărcarea codurilor de recuperare a eșuat. Vă rugăm să reîmprospătați pagina."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Salvarea evenimentului a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Failed to save setting"
+msgstr "Salvarea setării a eșuat"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Filipineză - Filipine"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Corectarea traducerilor incorecte sau necorespunzătoare în limba dvs."
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "Ați găsit o eroare în traduceri?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Acordă toate privilegiile"
+
+#: 
+msgid "Green"
+msgstr "Verde"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Ajutați la îmbunătățirea traducerilor"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "Dacă observați caractere corupte, entități HTML afișate ca text sau traduceri care strică aspectul paginii, vă rugăm să raportați problema pe GitHub pentru a fi corectată pentru toată lumea."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "Includeți cheia API în cereri folosind antetul x-api-key:"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Valoare JSON invalidă — setarea nu a fost salvată. Vă rugăm să o corectați și să încercați din nou."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "Alăturați-vă proiectului de traducere pe POEditor"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Setări de limbă și regionale"
+
+#: 
+msgid "Light"
+msgstr "Deschis"
+
+#: 
+msgid "Lime"
+msgstr "Galben-verde"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "Malayalamă - India"
+
+#: 
+msgid "Manage 2FA"
+msgstr "Gestionați 2FA"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "Gestionați preferințe suplimentare, cum ar fi delimitatorii de e-mail și opțiunile de afișare"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Gestionați cheia API pentru integrări externe"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "Metodă nepermisă"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "Traduceri lipsă sau incorecte?"
+
+#: 
+msgid "My Account"
+msgstr "Contul meu"
+
+#: 
+msgid "Orange"
+msgstr "Portocaliu"
+
+#: 
+msgid "Override the system default locale"
+msgstr "Suprascrieți localizarea implicită a sistemului"
+
+#: 
+msgid "Page Not Found"
+msgstr "Pagina nu a fost găsită"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "Procentajul șirurilor traduse pentru limba dvs. curentă"
+
+#: 
+msgid "Pink"
+msgstr "Roz"
+
+#: 
+msgid "Primary Color"
+msgstr "Culoare principală"
+
+#: 
+msgid "Profile and security"
+msgstr "Profil și securitate"
+
+#: 
+msgid "Purple"
+msgstr "Violet"
+
+#: 
+msgid "Red"
+msgstr "Roșu"
+
+#: 
+msgid "Regenerate"
+msgstr "Regenerare"
+
+#: 
+msgid "Rows per page"
+msgstr "Rânduri pe pagină"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Setați Permisiunea la Adevărat pentru a permite acestui utilizator să modifice setarea singur."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Setați culoarea de accent utilizată pentru butoane, linkuri și elemente active"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Sugerarea unor formulări mai bune pentru traducerile existente"
+
+#: 
+msgid "System Update Available"
+msgstr "Actualizare de sistem disponibilă"
+
+#: 
+msgid "Tables"
+msgstr "Tabele"
+
+#: 
+msgid "Teal"
+msgstr "Verde-albăstrui"
+
+#: 
+msgid "Theme Mode"
+msgstr "Modul temei"
+
+#: 
+msgid "Toggle search"
+msgstr "Activați/dezactivați căutarea"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Traducerea șirurilor lipsă pentru a îmbunătăți acoperirea"
+
+#: 
+msgid "Translation Progress"
+msgstr "Progresul traducerii"
+
+#: 
+msgid "Usage"
+msgstr "Utilizare"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "Utilizați această cheie pentru a autentifica cererile API. Regenerarea va invalida cheia curentă."
+
+#: 
+msgid "User Config"
+msgstr "Configurare utilizator"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Verificarea a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "Versiunea %s este disponibilă. Vă rugăm să actualizați instalarea."
+
+#: 
+msgid "View All"
+msgstr "Vizualizați toate"
+
+#: 
+msgid "Yellow"
+msgstr "Galben"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "Nivelurile dvs. actuale de acces (doar citire)"
 

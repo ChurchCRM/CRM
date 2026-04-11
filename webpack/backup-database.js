@@ -3,14 +3,14 @@
  * Handles the database backup workflow
  */
 
-$(document).ready(function () {
+$(document).ready(() => {
   // Bind backup button handlers
-  $("#doBackup").on("click", function (event) {
+  $("#doBackup").on("click", (event) => {
     event.preventDefault();
     doBackup(false);
   });
 
-  $("#doRemoteBackup").on("click", function (event) {
+  $("#doRemoteBackup").on("click", (event) => {
     event.preventDefault();
     doBackup(true);
   });
@@ -63,13 +63,13 @@ function doBackup(isRemote) {
     path: endpointURL,
     data: JSON.stringify(formData),
   })
-    .done(function (data) {
+    .done((data) => {
       setStatus("complete");
       if (isRemote) {
         $("#statusCompleteMessage").text(i18next.t("Backup generated and copied to remote server"));
       } else {
         $("#statusCompleteMessage").text(i18next.t("Backup complete! Click below to download."));
-        var downloadButton =
+        const downloadButton =
           '<button class="btn btn-success btn-lg" id="downloadbutton" onclick="window.BackupDatabase.downloadBackup(\'' +
           data.BackupDownloadFileName +
           "')\">" +
@@ -79,7 +79,7 @@ function doBackup(isRemote) {
         $("#resultFiles").html(downloadButton);
       }
     })
-    .fail(function () {
+    .fail(() => {
       setStatus("error");
     });
 }

@@ -11,7 +11,7 @@ use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\view\MenuRenderer;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Service\NotificationService;
-use ChurchCRM\Utils\PHPToMomentJSConverter;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 
 $localeInfo = Bootstrapper::getCurrentLocale();
@@ -25,11 +25,22 @@ require_once __DIR__ . '/Header-Security.php';
 $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
 PluginManager::init($pluginsPath);
 
+// Resolve theme attributes from user settings
+$_themeUser = AuthenticationManager::getCurrentUser();
+$_themeAttrs = '';
+$_themeStyle = $_themeUser->getSettingValue('ui.style');
+if ($_themeStyle === 'dark') {
+    $_themeAttrs .= ' data-bs-theme="dark"';
+}
+$_themePrimary = $_themeUser->getSettingValue('ui.theme.primary');
+if ($_themePrimary !== '') {
+    $_themeAttrs .= ' data-bs-theme-primary="' . InputUtils::escapeAttribute($_themePrimary) . '"';
+}
 // Top level menu index counter
 $MenuFirst = 1;
 ?>
 <!DOCTYPE html>
-<html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?>>
+<html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?><?= $_themeAttrs ?>>
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -99,13 +110,13 @@ $MenuFirst = 1;
           systemLocale:"<?= $localeInfo->getSystemLocale() ?>",
           locale:"<?= $localeInfo->getLocale() ?>",
           shortLocale:"<?= $localeInfo->getShortLocale() ?>",
-          timeZone:"<?= SystemConfig::getValue('sTimeZone') ?>",
+          timeZone:<?= SystemConfig::getValueForJs('sTimeZone') ?>,
           maxUploadSize:"<?= SystemService::getMaxUploadFileSize(true) ?>",
           maxUploadSizeBytes:"<?= SystemService::getMaxUploadFileSize(false) ?>",
-          datePickerformat:"<?= SystemConfig::getValue('sDatePickerPlaceHolder') ?>",
-          churchWebSite:"<?= SystemConfig::getValue('sChurchWebSite') ?>",
+          datePickerformat:<?= SystemConfig::getValueForJs('sDatePickerPlaceHolder') ?>,
+          churchWebSite:<?= SystemConfig::getValueForJs('sChurchWebSite') ?>,
           systemConfigs: {
-            sDateTimeFormat:"<?= PHPToMomentJSConverter::convertFormatString(SystemConfig::getValue('sDateTimeFormat'))?>",
+            sDateTimeFormat:<?= DateTimeUtils::getDateTimeFormatForJs() ?>,
           },
           comm: {
             smtpConfigured: <?= json_encode(SystemConfig::hasValidMailServerSettings()) ?>,
@@ -170,10 +181,10 @@ $MenuFirst = 1;
               aria-label="<?= gettext('Toggle navigation') ?>">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="navbar-brand navbar-brand-autodark py-2">
+      <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="navbar-brand py-2">
         <img src="<?= SystemURLs::getRootPath() ?>/Images/CRM_50x50.png"
-             alt="<?= htmlspecialchars(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
-             class="navbar-brand-image"
+             alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
+             class="navbar-brand-image rounded"
              style="height: 42px; width: auto;">
         <span class="navbar-brand-text ps-2 fs-4 fw-bold">
           <?= ChurchMetaData::getChurchName() ?: 'ChurchCRM' ?>
@@ -199,8 +210,10 @@ $MenuFirst = 1;
     <div class="container-xl">
 
       <button class="navbar-toggler" type="button"
-              data-bs-toggle="collapse" data-bs-target="#navbar-menu">
-        <span class="navbar-toggler-icon"></span>
+              data-bs-toggle="collapse" data-bs-target="#navbar-menu"
+              aria-controls="navbar-menu" aria-expanded="false"
+              aria-label="<?= gettext('Toggle search') ?>">
+        <i class="ti ti-search"></i>
       </button>
 
       <!-- Right-side nav items -->
@@ -443,39 +456,32 @@ $MenuFirst = 1;
     <div class="page-body">
       <div class="container-xl">
 <?php
-// Render system notifications as dismissible alerts
-if (NotificationService::isUpdateRequired()) {
-    NotificationService::updateNotifications();
-}
+// Hydrate registry from session-cached remote notifications (no HTTP calls)
+NotificationService::loadSessionNotifications();
+
+// Render all active notifications as dismissible alerts
 foreach (NotificationService::getNotifications() as $notification) {
-    $notifId = $notification->id ?? '';
-    $notifType = $notification->type ?? 'info';
-    $notifIcon = $notification->icon ?? 'info-circle';
-    $notifTitle = $notification->title ?? '';
-    $notifMsg = $notification->message ?? '';
-    $notifLink = $notification->link ?? '';
-    $notifDismissKey = $notifId !== '' ? 'notification.dismissed.' . $notifId : '';
 ?>
-      <div class="alert alert-<?= InputUtils::escapeHTML($notifType) ?> alert-dismissible"
+      <div class="alert alert-<?= InputUtils::escapeHTML($notification->getType()) ?> alert-dismissible"
            role="alert"
-           <?= $notifId ? 'data-notification-id="' . InputUtils::escapeAttribute($notifId) . '"' : '' ?>
-           <?= $notifDismissKey ? 'data-dismiss-key="' . InputUtils::escapeAttribute($notifDismissKey) . '"' : '' ?>>
+           <?= $notification->getId() ? 'data-notification-id="' . InputUtils::escapeAttribute($notification->getId()) . '"' : '' ?>
+           <?= $notification->getDismissSettingKey() ? 'data-dismiss-key="' . InputUtils::escapeAttribute($notification->getDismissSettingKey()) . '"' : '' ?>>
         <div class="d-flex">
-          <div><i class="ti ti-<?= InputUtils::escapeHTML($notifIcon) ?> me-2"></i></div>
+          <div><i class="ti ti-<?= InputUtils::escapeHTML($notification->getIcon()) ?> me-2"></i></div>
           <div>
-            <strong><?= InputUtils::escapeHTML($notifTitle) ?></strong>
-            <?php if ($notifMsg): ?>
-              <div class="text-secondary"><?= InputUtils::escapeHTML($notifMsg) ?></div>
+            <strong><?= InputUtils::escapeHTML($notification->getTitle()) ?></strong>
+            <?php if ($notification->getMessage()): ?>
+              <div class="text-secondary"><?= InputUtils::escapeHTML($notification->getMessage()) ?></div>
             <?php endif; ?>
-            <?php if ($notifLink): ?>
-              <a href="<?= InputUtils::escapeAttribute($notifLink) ?>" class="alert-link">
+            <?php if ($notification->getUrl()): ?>
+              <a href="<?= InputUtils::escapeAttribute($notification->getUrl()) ?>" class="alert-link">
                 <?= gettext('Learn more') ?>
               </a>
             <?php endif; ?>
           </div>
         </div>
-        <?php if ($notifDismissKey): ?>
-          <button type="button" class="btn-close js-dismiss-notification" aria-label="<?= gettext('Dismiss') ?>"></button>
+        <?php if ($notification->getDismissSettingKey()): ?>
+          <button type="button" class="btn-close js-dismiss-notification" data-bs-dismiss="alert" aria-label="<?= gettext('Dismiss') ?>"></button>
         <?php endif; ?>
       </div>
 <?php } ?>

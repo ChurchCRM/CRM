@@ -268,10 +268,6 @@ msgid "Add Cart to Event"
 msgstr "Lisää tapahtuma koriin"
 
 #: 
-msgid "OR"
-msgstr "TAI"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Sinun korisi on tyhjä!"
 
@@ -392,10 +388,6 @@ msgstr "Kyllä"
 #: 
 msgid "No"
 msgstr "Ei"
-
-#: 
-msgid "Event Checkin"
-msgstr "Tapahtumaan sisäänkirjautuminen"
 
 #: 
 msgid "Select Event"
@@ -651,10 +643,6 @@ msgid "Church Event Editor"
 msgstr "Kirkon tapahtumien muokkaus"
 
 #: 
-msgid "Edit Event Types"
-msgstr "Muokkaa tapahtumatyyppejä"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Muokkaa tapahtumatyyppiä"
 
@@ -724,20 +712,8 @@ msgid "Create a new Event"
 msgstr "Luo uusi tapahtuma"
 
 #: 
-msgid " errors. Please see below"
-msgstr " virhettä. Katso alta"
-
-#: 
 msgid "Select your event type"
 msgstr "Valitse tapahtumatyyppi"
-
-#: 
-msgid "You must pick an event type."
-msgstr "Sinun on valittava tapahtumatyyppi."
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "Osallistujamääriä ei ole kirjattu"
 
 #: 
 msgid "Event Status"
@@ -2133,14 +2109,6 @@ msgid "User Editor"
 msgstr "Käyttäjien muokkaus"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Huom: Muutokset tulevat voimaan vasta seuraavalla kirjautumisella."
-
-#: 
-msgid "Person to Make User"
-msgstr "Henkilö, josta luodaan käyttäjä"
-
-#: 
 msgid "User"
 msgstr "Käyttäjä"
 
@@ -2181,24 +2149,8 @@ msgid "Edit Self"
 msgstr "Muokkaa itseään"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Muokkaa vain omaa perhettään.)"
-
-#: 
 msgid "Admin"
 msgstr "Ylläpitäjä"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Myöntää kaikki oikeudet.)"
-
-#: 
-msgid "Style"
-msgstr "Tyyli"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Aseta luvaksi 'Tosi', jotta käyttäjä voi muuttaa nykyistä arvoaan."
 
 #: 
 msgid "Last Login"
@@ -2918,10 +2870,6 @@ msgid "Date Entered"
 msgstr "Tallennuspäivä"
 
 #: 
-msgid "There were "
-msgstr "Siellä oli "
-
-#: 
 msgid "Inactive"
 msgstr "Epäaktiivinen"
 
@@ -3152,10 +3100,6 @@ msgstr "Tiedot/Raportit"
 #: 
 msgid "Query Menu"
 msgstr "Kyselyvalikko"
-
-#: 
-msgid "CSV Export Records"
-msgstr "Vie tietueet CSV-muotoon"
 
 #: 
 msgid "Family Properties"
@@ -4864,14 +4808,6 @@ msgid "Select event"
 msgstr "Valitse tapahtuma"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "Henkilö on jo kirjattu sisään tähän tapahtumaan"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "Aikuinen, joka kirjaa henkilön ulos"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Teksti ennen nimeä sähköposteissa/raporteissa"
 
@@ -5427,10 +5363,6 @@ msgid "Sign out"
 msgstr "Kirjaudu ulos"
 
 #: 
-msgid "Sermon Text"
-msgstr "Saarnan teksti"
-
-#: 
 msgid "Change Settings"
 msgstr "Muuta asetuksia"
 
@@ -5937,10 +5869,6 @@ msgstr "Tietokannan nollaustoiminnot"
 msgid "Reset Database"
 msgstr "Nollaa tietokanta"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "Tämä nollaa järjestelmän tiedot ja käynnistää järjestelmän uudelleen puhtaana asennuksena."
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6052,28 +5980,12 @@ msgid "open rate"
 msgstr "avausprosentti"
 
 #: 
-msgid "Login Info"
-msgstr "Kirjautumistiedot"
-
-#: 
-msgid "Login Count"
-msgstr "Kirjautumiskerrat"
-
-#: 
-msgid "Failed Login"
-msgstr "Epäonnistunut kirjautuminen"
-
-#: 
 msgid "Permissions"
 msgstr "Käyttöoikeudet"
 
 #: 
 msgid "Manage Notes"
 msgstr "Hallitse muistiinpanoja"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Uuden API-avaimen luominen epäonnistui"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6145,14 +6057,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Tämän päivän hääpäivät"
 
 #: 
-msgid "Api Key"
-msgstr "API-avain"
-
-#: 
-msgid "Regen API Key"
-msgstr "Luo API-avain uudelleen"
-
-#: 
 msgid "View Family Page"
 msgstr "Näytä perhesivu"
 
@@ -6167,46 +6071,6 @@ msgstr "Vahvista"
 #: 
 msgid "Family has no emails to use"
 msgstr "Perheellä ei ole sähköpostiosoitteita käytettäväksi"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Laatikkomuotoinen asettelu"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Ota laatikkomuotoinen asettelu käyttöön"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Pienennä/laajenna sivupalkki"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Vaihda vasemman sivupalkin tilaa"
-
-#: 
-msgid "Tables Settings"
-msgstr "Taulukoiden asetukset"
-
-#: 
-msgid "Page length"
-msgstr "Sivun pituus"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Muuta sivulla näytettävien rivien määrää"
-
-#: 
-msgid "User Interface"
-msgstr "Käyttöliittymä"
-
-#: 
-msgid "Locale"
-msgstr "Kielialue"
-
-#: 
-msgid "Override system locale"
-msgstr "Ohita järjestelmän kieliasetus"
 
 #: 
 msgid "Deleted"
@@ -7277,10 +7141,6 @@ msgid "All Types"
 msgstr "Kaikki tyypit"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "Haluatko varmasti poistaa tämän sisäänkirjautumistiedon?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "Läsnäoloseurannan kategoriat"
 
@@ -7321,10 +7181,6 @@ msgid "Create New Event"
 msgstr "Luo uusi tapahtuma"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "Luo tapahtumatyyppi aloittaaksesi."
-
-#: 
 msgid "Current DB Version"
 msgstr "Nykyinen tietokantaversio"
 
@@ -7343,14 +7199,6 @@ msgstr "Oletusalkamisaika"
 #: 
 msgid "Delete Event"
 msgstr "Poista tapahtuma"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "Tapahtuman poistaminen poistaa myös kaikki osallistumisen laskurit. Poistetaanko tapahtuma?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "Tapahtuman poistaminen poistaa myös kaikki osallistumisen tietueet. Oletko varma?"
 
 #: 
 msgid "Edit Event"
@@ -7418,10 +7266,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "Valinnainen - Lisää saarnakatsaus tai muita tapahtumatietoja"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "Valinnainen - jätä tyhjäksi, jos et seurata"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "Valinnaisia muistiinpanoja osallistumisesta..."
 
@@ -7454,24 +7298,12 @@ msgid "Search by name or email..."
 msgstr "Hae nimen tai sähköpostin mukaan..."
 
 #: 
-msgid "Search for adult..."
-msgstr "Hae aikuista..."
-
-#: 
 msgid "Search for supervisor..."
 msgstr "Hae valvojaa..."
 
 #: 
 msgid "Select Event for Check-In"
 msgstr "Valitse tapahtuma sisäänkirjausta varten"
-
-#: 
-msgid "Select start and end date/time"
-msgstr "Valitse alkamis- ja päättymispäivämäärä/-aika"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "Valitse tapahtuma ostoskorisi jäsenten sisäänkirjaamista varten"
 
 #: 
 msgid "Sermon / Event Text"
@@ -7838,10 +7670,6 @@ msgstr "Käytä ulkoisia työkaluja (GPG, 7-Zip) varmuuskopioiden salaamiseen en
 #: 
 msgid "User authentication"
 msgstr "Käyttäjän todennus"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "Käyttäjällä on oltava Lisää tapahtuma -käyttöoikeus"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8364,10 +8192,6 @@ msgid "State (Other)"
 msgstr "Osavaltio/Maakunta (Muu)"
 
 #: 
-msgid "Status:"
-msgstr "Tila:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Yhteenveto sitoumuksista vs. maksut rahastoittain tilikaudelta."
 
@@ -8418,10 +8242,6 @@ msgstr "Talletukset yhteensä:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Seuraa sitoumuksia ja maksujen edistymistä kampanjoissa ja tilikauden budjetoinnissa."
-
-#: 
-msgid "Type:"
-msgstr "Tyyppi:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8848,10 +8668,6 @@ msgid "Disable 2FA"
 msgstr "Poista 2FA käytöstä"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "Vie kaikki henkilötiedot ChMeetings-muodossa ulkoisten järjestelmien tuontia varten."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "Vie ChMeetings CSV:ksi"
 
@@ -9106,10 +8922,6 @@ msgid "Add Your First Property Type"
 msgstr "Lisää Ensimmäinen Ominaisuustyyppisi"
 
 #: 
-msgid "Auto-calculated from counts above"
-msgstr "Laskettu automaattisesti yllä olevista luvuista"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Poistamalla tämän kentän menetät peruuttamattomasti kaikki tälle kentälle määritetyt ryhmän jäsentiedot!"
 
@@ -9298,10 +9110,6 @@ msgstr "Kioskirekisteröinti poistettu käytöstä"
 #: 
 msgid "Kiosk not found"
 msgstr "Kioskia ei löydy"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "Linkitä tämä tapahtuma ryhmään kioski-sisäänkirjautumistoimintoa varten. Ryhmän jäsenet näkyvät kioskilla."
 
 #: 
 msgid "Linked Group"
@@ -10503,10 +10311,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "Edellytä kaikkien käyttäjien rekisteröitymistä kaksivaiheiseen todennukseen"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "Kartta näkyy tässä, kun katuosoite on tallennettu. Koordinaatit havaitaan automaattisesti — manuaalista syöttöä ei tarvita."
-
-#: 
 msgid "Active Groups"
 msgstr "Aktiiviset ryhmät"
 
@@ -10557,10 +10361,6 @@ msgstr "Perheellä ei ole katuosoitetta geokoodausta varten"
 #: 
 msgid "Father"
 msgstr "Isä"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "Geokoodatut koordinaatit:"
 
 #: 
 msgid "Geocoding failed"
@@ -10641,10 +10441,6 @@ msgstr "Aikavyöhyke"
 #: 
 msgid "Total Groups"
 msgstr "Ryhmiä yhteensä"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "Päivitetään automaattisesti jokaisen tallennuksen yhteydessä."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10829,14 +10625,6 @@ msgid "Add a Person"
 msgstr "Lisää henkilö"
 
 #: 
-msgid "Add a new pledge"
-msgstr "Lisää uusi lupaus"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "Lisää maksu nykyiseen kolehtikeräykseen"
-
-#: 
 msgid "Add all cart items to a group"
 msgstr "Lisää kaikki valinnan kohteet ryhmään"
 
@@ -10973,10 +10761,6 @@ msgid "Auto-mapped"
 msgstr "Automaattisesti yhdistetty"
 
 #: 
-msgid "BCC"
-msgstr "Piilokopio"
-
-#: 
 msgid "BCC All"
 msgstr "Piilokopio kaikille"
 
@@ -11055,10 +10839,6 @@ msgstr "Vaihda perherooli"
 #: 
 msgid "Check Out"
 msgstr "Kirjaa ulos"
-
-#: 
-msgid "Check Out Person"
-msgstr "Kirjaa henkilö ulos"
 
 #: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
@@ -11185,10 +10965,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "Luo manuaalinen varmuuskopio vähintään kerran viikossa tai ota käyttöön ulkoinen varmuuskopiointilisäosa automaattisiin WebDAV-varmuuskopioihin aikataulun mukaan."
 
 #: 
-msgid "Create a new deposit"
-msgstr "Luo uusi kolehtikeräys"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "Luo ja muokkaa perhetietoja ja -suhteita"
 
@@ -11243,10 +11019,6 @@ msgstr "Määritä ryhmäkohtaiset ominaisuudet jäsenille"
 #: 
 msgid "Delete All"
 msgstr "Poista kaikki"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "Poista kirjautumismerkintä"
 
 #: 
 msgid "Delete Family"
@@ -11529,10 +11301,6 @@ msgid "Generate directory listings and printed materials"
 msgstr "Luo hakemistoluettelot ja painetut materiaalit"
 
 #: 
-msgid "Generate financial reports"
-msgstr "Luo talousraportit"
-
-#: 
 msgid "Generate financial statements and giving reports"
 msgstr "Luo tilinpäätökset ja lahjoitusraportit"
 
@@ -11765,14 +11533,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "Hallitse sähköpostityökaluja ja SMTP-asetuksia"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "Hallitse tapahtumien nimiä ja kategorioita"
-
-#: 
-msgid "Manage event type categories"
-msgstr "Hallitse tapahtumatyyppien kategorioita"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Hallitse perheitä, henkilöitä ja väestötietoja"
 
@@ -11903,10 +11663,6 @@ msgstr "Ei syntymäpäiviä"
 #: 
 msgid "No Check-ins"
 msgstr "Ei kirjautumisia"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "Ei kolehtikeräysten seurantaa"
 
 #: 
 msgid "No Deposits"
@@ -12661,10 +12417,6 @@ msgstr "rahastot"
 #: 
 msgid "members"
 msgstr "jäsenet"
-
-#: 
-msgid "name@example.com"
-msgstr "nimi@esimerkki.fi"
 
 #: 
 msgid "opportunities"
@@ -13620,23 +13372,153 @@ msgstr "esim. sunnuntain jumalanpalvelus"
 msgid "member"
 msgstr "jäsen"
 
+#. plugin:mailchimp:section:1:content
+#: 
+msgid "- **Dashboard**: View all your MailChimp lists with subscriber statistics\n"
+"- **List Maintenance**: Identify people in MailChimp but not in CRM, and vice versa\n"
+"- **Contact Integration**: View MailChimp subscription status on Person and Family pages\n"
+"- **Automatic Sync**: Hooks into person/family updates to keep MailChimp in sync"
+msgstr "- **Kojelauta**: Näytä kaikki MailChimp-listasi tilaajatilastoineen\n"
+"- **Listahuolto**: Tunnista henkilöt, jotka ovat MailChimpissä mutta ei CRM:ssä, ja päinvastoin\n"
+"- **Yhteystietojen integrointi**: Näytä MailChimp-tilausstatus Henkilö- ja Perhesivuilla\n"
+"- **Automaattinen synkronointi**: Liittyy henkilö-/perhepäivityksiin pitämään MailChimpin ajan tasalla"
+
+#. plugin:vonage:section:1:content
+#: 
+msgid "1. Create a Vonage account at https://dashboard.nexmo.com/sign-up (new accounts include free trial credit)\n"
+"2. Find your API Key and API Secret on the Vonage Dashboard homepage\n"
+"3. Go to Numbers > Buy Numbers and purchase a number with SMS capability\n"
+"4. Note the number in E.164 format (e.g., +14155551234)\n"
+"5. In ChurchCRM, enable the Vonage SMS plugin and enter your credentials"
+msgstr "1. Luo Vonage-tili osoitteessa https://dashboard.nexmo.com/sign-up (uudet tilit sisältävät ilmaista kokeilukrediitiä)\n"
+"2. Löydä API-avaimesi ja API-salaisuutesi Vonage-kojelaudan etusivulta\n"
+"3. Siirry kohtaan Numbers > Buy Numbers ja osta numero, jolla on SMS-ominaisuus\n"
+"4. Kirjaa numero E.164-muodossa (esim. +14155551234)\n"
+"5. Ota ChurchCRM:ssä käyttöön Vonage SMS -lisäosa ja syötä tunnistetietosi"
+
+#. plugin:google-analytics:section:0:content
+#: 
+msgid "1. Go to Google Analytics (analytics.google.com)\n"
+"2. Create a property or select an existing one\n"
+"3. Go to Admin → Data Streams → Web\n"
+"4. Copy the Measurement ID (starts with G-)"
+msgstr "1. Siirry Google Analyticsiin (analytics.google.com)\n"
+"2. Luo uusi tili tai valitse olemassa oleva\n"
+"3. Siirry kohtaan Hallinta → Datavirrat → Web\n"
+"4. Kopioi mittaustunnus (alkaa G-kirjaimella)"
+
+#. plugin:openlp:section:2:content
+#: 
+msgid "1. Install OpenLP 3.0 or later on your presentation computer\n"
+"2. Enable the Remote plugin in OpenLP (Settings → Configure OpenLP → Plugins)\n"
+"3. Enable the Alerts plugin in OpenLP for alert display support\n"
+"4. Note the IP address of the OpenLP computer\n"
+"5. Enter the server URL in the format: http://IP_ADDRESS:4316\n"
+"6. If you've configured authentication in OpenLP, enter the username and password"
+msgstr "1. Asenna OpenLP 3.0 tai uudempi esityskoneellesi\n"
+"2. Ota Remote-lisäosa käyttöön OpenLP:ssä (Asetukset → Määritä OpenLP → Lisäosat)\n"
+"3. Ota Alerts-lisäosa käyttöön OpenLP:ssä ilmoitusnäyttöä varten\n"
+"4. Kirjaa OpenLP-tietokoneen IP-osoite\n"
+"5. Syötä palvelimen URL-osoite muodossa: http://IP_OSOITE:4316\n"
+"6. Jos olet määrittänyt todennuksen OpenLP:ssä, syötä käyttäjätunnus ja salasana"
+
+#. plugin:mailchimp:section:2:content
+#: 
+msgid "Access the MailChimp Dashboard from the Email menu. The dashboard shows:\n"
+"\n"
+"- Member count for each list\n"
+"- Campaign statistics\n"
+"- Unsubscribe counts\n"
+"- List maintenance tools"
+msgstr "Avaa MailChimp-kojelauta Sähköposti-valikosta. Kojelauta näyttää:\n"
+"\n"
+"- Jäsenmäärä kullakin listalla\n"
+"- Kampanjastatistiikat\n"
+"- Tilauksen peruutusmäärät\n"
+"- Listahuoltotyökalut"
+
 #. plugin:custom-links:section:1:title
 #: 
 msgid "Adding Links"
 msgstr "Linkkien lisääminen"
+
+#. plugin:custom-links:section:2:content
+#: 
+msgid "All configured links are shown in a table. You can:\n"
+"- View the link name and URL\n"
+"- Click the URL to test it opens correctly\n"
+"- Delete links you no longer need\n"
+"\n"
+"Links appear in the order they were added in the navigation menu."
+msgstr "Kaikki määritetyt linkit näytetään taulukossa. Voit:\n"
+"- Tarkastella linkin nimeä ja URL-osoitetta\n"
+"- Napsauttaa URL-osoitetta testataksesi, että se avautuu oikein\n"
+"- Poistaa linkkejä, joita et enää tarvitse\n"
+"\n"
+"Linkit näkyvät navigointivalikossa lisäysjärjestyksessä."
 
 #: 
 msgid "Allow Pre-release Upgrades"
 msgstr "Salli ennakkojulkaisupäivitykset"
 
 #: 
+msgid "Allow recording of non-tax-deductible payments in the finance module"
+msgstr "Salli ei-verovähennyskelpoisten maksujen kirjaaminen taloushallintamoduulissa"
+
+#: 
+msgid "Allow scanned check images to be attached to deposit records"
+msgstr "Salli skannattujen sekkikuvien liittäminen talletustietueisiin"
+
+#: 
+msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
+msgstr "Salli järjestelmäpäivitykset GitHub:ssa 'pre release' -merkityiksi julkaisuihin"
+
+#: 
+msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
+msgstr "Salli todentamaton pääsy kalenteritapahtumiin julkisten HTML-, ICS- ja JSON-URL-osoitteiden kautta. Vaaditaan kalenterien jakamiseen ulkoisten sovellusten kanssa."
+
+#: 
+msgid "Allow visitors to create their own family record via the self-registration page"
+msgstr "Salli vierailijoiden luoda oma perherekisterinsä itsensä rekisteröitymissivun kautta"
+
+#: 
 msgid "Allow visitors to self-register as new families."
 msgstr "Salli vierailijoiden rekisteröityä uusina perheenä."
+
+#. plugin:external-backup:section:5:content
+#: 
+msgid "Any WebDAV-compatible service works with this plugin:\n"
+"\n"
+"- Nextcloud (recommended)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (with WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx with WebDAV module\n"
+"\n"
+"Note: Some services require app-specific passwords for WebDAV access."
+msgstr "Mikä tahansa WebDAV-yhteensopiva palvelu toimii tämän lisäosan kanssa:\n"
+"\n"
+"- Nextcloud (suositeltava)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (WebDAV-tuella)\n"
+"- Apache mod_dav\n"
+"- nginx WebDAV-moduulilla\n"
+"\n"
+"Huom.: Jotkin palvelut vaativat sovelluskohtaisia salasanoja WebDAV-käyttöä varten."
 
 #. plugin:openlp:section:4:title
 #: 
 msgid "Authentication"
 msgstr "Todennus"
+
+#. plugin:openlp:section:4:content
+#: 
+msgid "Authentication is required for API v2 if you've enabled it in OpenLP's Remote plugin settings. The plugin uses HTTP Basic Authentication. Most local network setups don't require authentication, but it's recommended for security."
+msgstr "Todennus vaaditaan API v2:lle, jos olet ottanut sen käyttöön OpenLP:n Remote-lisäosan asetuksissa. Lisäosa käyttää HTTP Basic -todennusta. Useimmat paikallisverkkoasetukset eivät vaadi todennusta, mutta se on suositeltavaa tietoturvan kannalta."
 
 #: 
 msgid "Auto TLS"
@@ -13651,6 +13533,69 @@ msgstr "Automaattinen varmuuskopio"
 msgid "BCC All Mail To"
 msgstr "Piilokopio kaikki sähköpostit osoitteeseen"
 
+#. plugin:external-backup:section:4:content
+#: 
+msgid "Before relying on external backups, test your connection:\n"
+"1. Go to Plugins > External Backup\n"
+"2. Click 'Test WebDAV Connection'\n"
+"3. Verify you see a success message\n"
+"\n"
+"Common issues:\n"
+"- 401/403 errors: Check username and password\n"
+"- Connection timeout: Verify the endpoint URL is correct\n"
+"- Certificate errors: Ensure the WebDAV server has a valid SSL certificate"
+msgstr "Ennen kuin luotat ulkoisiin varmuuskopioihin, testaa yhteytesi:\n"
+"1. Siirry kohtaan Lisäosat > Ulkoinen varmuuskopiointi\n"
+"2. Napsauta 'Testaa WebDAV-yhteys'\n"
+"3. Varmista, että näet onnistumisviestin\n"
+"\n"
+"Yleiset ongelmat:\n"
+"- 401/403-virheet: Tarkista käyttäjätunnus ja salasana\n"
+"- Yhteysaikakatkaisu: Tarkista, että päätepisteen URL-osoite on oikein\n"
+"- Varmennevirheet: Varmista, että WebDAV-palvelimella on voimassa oleva SSL-varmenne"
+
+#. plugin:gravatar:section:1:content
+#: 
+msgid "Choose what appears when no Gravatar exists:\n"
+"• Mystery Person - Gray silhouette outline\n"
+"• Identicon - Geometric pattern based on email\n"
+"• MonsterID - Unique generated monster face\n"
+"• Wavatar - Abstract generated face\n"
+"• Retro - 8-bit arcade-style pixel art\n"
+"• RoboHash - Unique generated robot\n"
+"• Blank - Transparent (falls back to initials)"
+msgstr "Valitse, mitä näytetään, kun Gravatar-kuvaa ei ole:\n"
+"• Mystery Person – Harmaa siluettiääriviiva\n"
+"• Identicon – Sähköpostiosoitteeseen perustuva geometrinen kuvio\n"
+"• MonsterID – Yksilöllinen generoitu hirviökasvot\n"
+"• Wavatar – Abstrakti generoitu kasvot\n"
+"• Retro – 8-bittinen arcade-tyylinen pikselitaide\n"
+"• RoboHash – Yksilöllinen generoitu robotti\n"
+"• Blank – Läpinäkyvä (palautuu nimikirjaimiin)"
+
+#: 
+msgid "Comma-separated query IDs that require finance permissions to view"
+msgstr "Pilkuilla erotetut kyselytunnukset, joiden katseleminen vaatii taloushallintaoikeudet"
+
+#. plugin:custom-links:section:4:content
+#: 
+msgid "Common uses for custom links:\n"
+"- Church website\n"
+"- Online giving portal\n"
+"- Volunteer signup forms\n"
+"- Denomination resources\n"
+"- Partner organization sites\n"
+"- Cloud storage folders\n"
+"- Event registration pages"
+msgstr "Yleisiä mukautettujen linkkien käyttötarkoituksia:\n"
+"- Seurakunnan verkkosivusto\n"
+"- Verkkolahjoitusportaali\n"
+"- Vapaaehtoisilmoittautumislomakkeet\n"
+"- Kirkkokuntaresurssit\n"
+"- Kumppaniorganisaatioiden sivustot\n"
+"- Pilvitallennuskansiot\n"
+"- Tapahtumarekisteröintisivut"
+
 #. plugin:external-backup:section:1:title
 #: 
 msgid "Configuration"
@@ -13664,11 +13609,6 @@ msgstr "Manner"
 #: 
 msgid "Costs"
 msgstr "Kustannukset"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Luottokorttihenkilöt"
 
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
@@ -13720,17 +13660,28 @@ msgid "Enable External Calendar API"
 msgstr "Ota ulkoinen kalenterin API käyttöön"
 
 #: 
+msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
+msgstr "Ota sähköpostin lähetys käyttöön ChurchCRM:stä. Vaaditaan salasanan palautukseen, ilmoituksiin ja sähköpostilinkkeihin."
+
+#: 
+msgid "Enable if your SMTP server requires a username and password"
+msgstr "Ota käyttöön, jos SMTP-palvelimesi vaatii käyttäjätunnuksen ja salasanan"
+
+#: 
+msgid "Enable or disable the Sunday School module and sidebar menu."
+msgstr "Ota käyttöön tai poista käytöstä Pyhäkoulu-moduuli ja sivupalkin valikko."
+
+#: 
+msgid "Enable the use of numbered donation envelopes for tracking contributions"
+msgstr "Ota käyttöön numeroitujen lahjoituskirjekuorien käyttö lahjoitusten seurantaan"
+
+#: 
 msgid "Enable use of donation envelopes"
 msgstr "Ota lahjakuorten käyttö käyttöön"
 
 #: 
 msgid "Enable use of scanned checks"
 msgstr "Ota skannattujen shekkien käyttö käyttöön"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Perheen lupaus tilivuoden mukaan"
 
 #. plugin:mailchimp:section:1:title
 #: 
@@ -13741,11 +13692,6 @@ msgstr "Ominaisuudet"
 msgid "Finance permission query IDs"
 msgstr "Taloushallinnon lupa-kyselyjen tunnukset"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Etsi rekisteröityjä oppilaita"
-
 #: 
 msgid "Find family"
 msgstr "Etsi perhe"
@@ -13755,10 +13701,20 @@ msgstr "Etsi perhe"
 msgid "Finding Your Server URL"
 msgstr "Palvelimen URL:n löytäminen"
 
-#. Context: queryparameters_qrp
+#. plugin:custom-links:section:3:content
 #: 
-msgid "Fiscal Year."
-msgstr "Tilivuosi."
+msgid "For security:\n"
+"- Only administrators can add or remove links\n"
+"- The 'Manage Links' option only appears for administrators\n"
+"- Links must use http:// or https:// protocols\n"
+"- HTML tags are not allowed in names or URLs\n"
+"- All input is validated and sanitized"
+msgstr "Tietoturvan vuoksi:\n"
+"- Vain järjestelmänvalvojat voivat lisätä tai poistaa linkkejä\n"
+"- 'Hallinnoi linkkejä' -vaihtoehto näkyy vain järjestelmänvalvojille\n"
+"- Linkeissä on käytettävä http://- tai https://-protokollia\n"
+"- HTML-tagit eivät ole sallittuja nimissä tai URL-osoitteissa\n"
+"- Kaikki syötteet tarkistetaan ja puhdistetaan"
 
 #. plugin:google-analytics:link:1:label
 #: 
@@ -13775,10 +13731,25 @@ msgstr "Aloittaminen"
 msgid "Getting Your GA4 Measurement ID"
 msgstr "GA4-mittaustunnuksen hankkiminen"
 
+#. plugin:google-analytics:summary
+#: 
+msgid "Google Analytics 4 (GA4) tracks how users interact with ChurchCRM, providing insights into page views, user engagement, and feature usage."
+msgstr "Google Analytics 4 (GA4) seuraa, miten käyttäjät ovat vuorovaikutuksessa ChurchCRM:n kanssa, tarjoten tietoa sivukatseluista, käyttäjien sitoutumisesta ja ominaisuuksien käytöstä."
+
 #. plugin:google-analytics:link:0:label
 #: 
 msgid "Google Analytics Help"
 msgstr "Google Analytics -ohje"
+
+#. plugin:google-analytics:section:2:content
+#: 
+msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
+msgstr "Google Analytics kerää anonymisoitua käyttödataa. Mitään henkilökohtaisia tietoja ChurchCRM-tietueista ei lähetetä Googlelle. Harkitse tietosuojailmoituksen lisäämistä seurakuntasi tietosuojakäytäntöön."
+
+#. plugin:gravatar:summary
+#: 
+msgid "Gravatar (Globally Recognized Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM."
+msgstr "Gravatar (Globally Recognized Avatar) näyttää gravatar.com-profiilikuvat jäsenille, joilla ei ole ladattuja valokuvia ChurchCRM:ssä."
 
 #. plugin:gravatar:link:1:label
 #: 
@@ -13790,10 +13761,10 @@ msgstr "Gravatar-kuvavaihtoehdot"
 msgid "Gravatar Website"
 msgstr "Gravatar-verkkosivusto"
 
-#. Context: queryparameters_qrp
+#. plugin:gravatar:section:2:content
 #: 
-msgid "Group of registered students"
-msgstr "Rekisteröityjen oppilaiden ryhmä"
+msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
+msgstr "Gravatar toimii muuntamalla sähköpostiosoitteet tiivisteeksi (MD5). Varsinaista sähköpostiosoitetta ei koskaan lähetetä Gravatarin palvelimille – vain tiivistettä käytetään kuvan hakemiseen."
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -13813,6 +13784,77 @@ msgstr "Kuinka se toimii"
 msgid "How many checks to print per deposit slip page"
 msgstr "Kuinka monta shekkiä tulostetaan talletuskuittisivulle"
 
+#. plugin:vonage:section:3:content
+#: 
+msgid "If SMS messages aren't being sent:\n"
+"1. Verify API Key and Secret are correct (no extra spaces)\n"
+"2. Check that the From Number is a valid Vonage number you own\n"
+"3. Ensure recipient phone numbers include country code\n"
+"4. Check your Vonage account balance\n"
+"5. Review the Vonage Dashboard > SMS > Logs for delivery status"
+msgstr "Jos SMS-viestejä ei lähetetä:\n"
+"1. Varmista, että API-avain ja salaisuus ovat oikein (ei ylimääräisiä välilyöntejä)\n"
+"2. Tarkista, että lähettäjänumero on kelvollinen Vonage-numero, jonka omistat\n"
+"3. Varmista, että vastaanottajan puhelinnumerot sisältävät maasuunnan\n"
+"4. Tarkista Vonage-tilisi saldo\n"
+"5. Tarkista Vonage-kojelauta > SMS > Lokit toimitustilalle"
+
+#. plugin:openlp:section:5:content
+#: 
+msgid "If alerts aren't appearing:\n"
+"1. Verify OpenLP is running and the Remote plugin is active\n"
+"2. Ensure the Alerts plugin is enabled in OpenLP\n"
+"3. Check that the server URL is correct (try accessing it in a browser)\n"
+"4. Verify firewall settings allow connections on port 4316\n"
+"5. If using authentication, verify credentials are correct"
+msgstr "Jos ilmoitukset eivät näy:\n"
+"1. Varmista, että OpenLP on käynnissä ja Remote-lisäosa on aktiivinen\n"
+"2. Varmista, että Alerts-lisäosa on otettu käyttöön OpenLP:ssä\n"
+"3. Tarkista, että palvelimen URL-osoite on oikein (yritä avata se selaimessa)\n"
+"4. Varmista, että palomuurin asetukset sallivat yhteydet porttiin 4316\n"
+"5. Jos käytät todennusta, varmista, että tunnistetiedot ovat oikein"
+
+#. plugin:vonage:section:5:content
+#: 
+msgid "If messages are sent but not received:\n"
+"1. Check Vonage Dashboard > SMS > Logs for delivery status\n"
+"2. Verify the recipient number is correct and can receive SMS\n"
+"3. Some carriers may block messages from unknown numbers\n"
+"4. Check if the destination country has SMS restrictions"
+msgstr "Jos viestit lähetetään mutta niitä ei vastaanoteta:\n"
+"1. Tarkista Vonage-kojelauta > SMS > Lokit toimitustilalle\n"
+"2. Varmista, että vastaanottajan numero on oikein ja pystyy vastaanottamaan SMS-viestejä\n"
+"3. Jotkut operaattorit saattavat estää viestejä tuntemattomista numeroista\n"
+"4. Tarkista, onko kohdemaassa SMS-rajoituksia"
+
+#. plugin:vonage:section:4:content
+#: 
+msgid "If you receive invalid sender ID errors:\n"
+"1. Use a phone number you've purchased from Vonage\n"
+"2. Format the number in E.164 format (+14155551234)\n"
+"3. Note: Alphanumeric sender IDs may be restricted in some countries"
+msgstr "Jos saat virheellisen lähettäjätunnuksen virheitä:\n"
+"1. Käytä Vonagelta ostemaasi puhelinnumeroa\n"
+"2. Muotoile numero E.164-muodossa (+14155551234)\n"
+"3. Huom.: Aakkosnumeeriset lähettäjätunnukset saattavat olla rajoitettuja joissakin maissa"
+
+#. plugin:external-backup:section:6:content
+#: 
+msgid "Important security notes:\n"
+"\n"
+"1. Always use HTTPS endpoints to encrypt backups in transit\n"
+"2. Use app-specific passwords when available (Nextcloud, ownCloud)\n"
+"3. Store backups in a folder with restricted access\n"
+"4. Periodically download and verify your backups are valid\n"
+"5. Consider encrypting sensitive backups with external tools before uploading"
+msgstr "Tärkeitä tietoturvahuomioita:\n"
+"\n"
+"1. Käytä aina HTTPS-päätepisteitä varmuuskopioiden salaamiseen siirron aikana\n"
+"2. Käytä sovelluskohtaisia salasanoja, kun ne ovat saatavilla (Nextcloud, ownCloud)\n"
+"3. Tallenna varmuuskopiot kansioon, johon pääsy on rajoitettu\n"
+"4. Lataa ja tarkista varmuuskopiot säännöllisesti niiden kelpoisuuden varmistamiseksi\n"
+"5. Harkitse arkaluonteisten varmuuskopioiden salaamista ulkoisilla työkaluilla ennen lataamista"
+
 #: 
 msgid "Initial zoom level when opening the map"
 msgstr "Alkuperäinen zoomaustaso karttaa avattaessa"
@@ -13824,6 +13866,11 @@ msgstr "Lue lisää"
 #: 
 msgid "Log Settings"
 msgstr "Lokiasetukset"
+
+#. plugin:mailchimp:summary
+#: 
+msgid "MailChimp Integration enables synchronization between ChurchCRM contacts and your MailChimp email marketing lists."
+msgstr "MailChimp-integrointi mahdollistaa synkronoinnin ChurchCRM-yhteystietojen ja MailChimp-sähköpostimarkkinointilistojesi välillä."
 
 #. plugin:custom-links:section:2:title
 #: 
@@ -13849,10 +13896,10 @@ msgstr "OpenLP-dokumentaatio"
 msgid "OpenLP Website"
 msgstr "OpenLP-verkkosivusto"
 
-#. Context: query_qry
+#. plugin:openlp:summary
 #: 
-msgid "People who are configured to pay by credit card."
-msgstr "Henkilöt, jotka on määritetty maksamaan luottokortilla."
+msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
+msgstr "OpenLP on ilmainen, avoimen lähdekoodin esitysohjelmisto, joka on suunniteltu seurakunnille. Tämä lisäosa mahdollistaa ilmoitusten ja hälytysten lähettämisen suoraan ChurchCRM:stä OpenLP-näytöllesi."
 
 #. plugin:mailchimp:section:3:title
 #: 
@@ -13863,6 +13910,21 @@ msgstr "Henkilö/perhe-integraatio"
 #: 
 msgid "Phone Number Format"
 msgstr "Puhelinnumeromuoto"
+
+#. plugin:vonage:section:2:content
+#: 
+msgid "Phone numbers should be in E.164 format: country code + number. Examples:\n"
+"- US: +14155551234\n"
+"- UK: +447700900123\n"
+"- Australia: +61412345678\n"
+"\n"
+"Recipient phone numbers in ChurchCRM member profiles should include the country code for SMS to work correctly."
+msgstr "Puhelinnumeroiden tulee olla E.164-muodossa: maasuunta + numero. Esimerkkejä:\n"
+"- USA: +14155551234\n"
+"- UK: +447700900123\n"
+"- Australia: +61412345678\n"
+"\n"
+"Vastaanottajien puhelinnumeroiden ChurchCRM-jäsenprofiileissa tulee sisältää maasuunta, jotta SMS toimii oikein."
 
 #. plugin:mailchimp:section:4:title
 #: 
@@ -13882,11 +13944,6 @@ msgstr "Tietosuojahuomio"
 #: 
 msgid "Quick Settings"
 msgstr "Pika-asetukset"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Rekisteröityneet oppilaat"
 
 #: 
 msgid "SMTP Authentication"
@@ -13913,6 +13970,22 @@ msgid "Setup"
 msgstr "Asennus"
 
 #: 
+msgid "Show a breakdown of bill denominations on the deposit slip report"
+msgstr "Näytä setelidenominaatioerittely talletustositeraportissa"
+
+#: 
+msgid "Show or hide the Events menu in the main navigation."
+msgstr "Näytä tai piilota Tapahtumat-valikko päänavigaatiossa."
+
+#: 
+msgid "Show or hide the Events section in the main navigation menu"
+msgstr "Näytä tai piilota Tapahtumat-osio päänavigointivalikossa"
+
+#: 
+msgid "Show or hide the Sunday School module in the sidebar navigation"
+msgstr "Näytä tai piilota Pyhäkoulu-moduuli sivupalkin navigaatiossa"
+
+#: 
 msgid "Street"
 msgstr "Katu"
 
@@ -13929,6 +14002,89 @@ msgstr "Tuetut palvelut"
 #: 
 msgid "Testing Connection"
 msgstr "Yhteyden testaus"
+
+#. plugin:custom-links:section:0:content
+#: 
+msgid "The Custom Menu Links plugin allows administrators to add external links to the navigation menu. When enabled, a 'Links' menu appears in the sidebar containing all configured links."
+msgstr "Mukautetut valikkоlinkit -lisäosa mahdollistaa järjestelmänvalvojien lisätä ulkoisia linkkejä navigointivalikkoon. Kun se on otettu käyttöön, sivupalkkiin ilmestyy 'Linkit'-valikko, joka sisältää kaikki määritetyt linkit."
+
+#. plugin:external-backup:section:0:content
+#: 
+msgid "The External Backup plugin allows you to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services. This includes popular services like Nextcloud, ownCloud, or any server supporting WebDAV protocol."
+msgstr "Ulkoinen varmuuskopiointi -lisäosa mahdollistaa ChurchCRM-tietokannan automaattisen varmuuskopioinnin WebDAV-yhteensopiviin pilvitallennuspalveluihin. Tämä sisältää suositut palvelut kuten Nextcloud, ownCloud tai mikä tahansa WebDAV-protokollaa tukeva palvelin."
+
+#. plugin:openlp:section:3:content
+#: 
+msgid "The default OpenLP port is 4316. Your server URL will typically be: http://192.168.x.x:4316 where 192.168.x.x is the IP address of the computer running OpenLP. You can find this in OpenLP under Tools → Open Service Manager."
+msgstr "OpenLP:n oletusportti on 4316. Palvelimesi URL-osoite on yleensä: http://192.168.x.x:4316, jossa 192.168.x.x on OpenLP:tä ajavan tietokoneen IP-osoite. Löydät tämän OpenLP:ssä kohdasta Työkalut → Avaa palvelunhallinta."
+
+#: 
+msgid "The month that starts your organization's fiscal year"
+msgstr "Kuukausi, jona organisaatiosi tilikausi alkaa"
+
+#. plugin:vonage:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an SMS can be sent to notify parents or guardians."
+msgstr "Tätä lisäosaa käytetään tällä hetkellä kioskikirjautumisilmoituksiin. Kun lapsi kirjautuu pyhäkouluun kioskijärjestelmän kautta, SMS voidaan lähettää vanhempien tai huoltajien tiedottamiseksi."
+
+#. plugin:openlp:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an alert can be sent to the OpenLP projector display to notify parents or volunteers."
+msgstr "Tätä lisäosaa käytetään tällä hetkellä kioskikirjautumisilmoituksiin. Kun lapsi kirjautuu pyhäkouluun kioskijärjestelmän kautta, ilmoitus voidaan lähettää OpenLP-projektorinäytölle vanhempien tai vapaaehtoisten tiedottamiseksi."
+
+#. plugin:mailchimp:section:4:content
+#: 
+msgid "This plugin transmits email addresses to MailChimp servers. Ensure you have appropriate consent from your members before syncing their information to third-party services like MailChimp."
+msgstr "Tämä lisäosa lähettää sähköpostiosoitteet MailChimp-palvelimille. Varmista, että sinulla on asianmukainen suostumus jäseniltäsi ennen heidän tietojensa synkronointia kolmansien osapuolien palveluihin, kuten MailChimpiin."
+
+#. plugin:custom-links:section:1:content
+#: 
+msgid "To add a new link:\n"
+"1. Go to the Links menu in the sidebar and click 'Manage Links'\n"
+"2. Enter a display name (2-50 characters)\n"
+"3. Enter the full URL (must start with http:// or https://)\n"
+"4. Click 'Add Link'\n"
+"\n"
+"The link will immediately appear in the Links menu."
+msgstr "Lisätäksesi uuden linkin:\n"
+"1. Siirry sivupalkin Linkit-valikkoon ja napsauta 'Hallinnoi linkkejä'\n"
+"2. Syötä näyttönimi (2–50 merkkiä)\n"
+"3. Syötä koko URL-osoite (täytyy alkaa http://- tai https://-alkuisella)\n"
+"4. Napsauta 'Lisää linkki'\n"
+"\n"
+"Linkki ilmestyy välittömästi Linkit-valikkoon."
+
+#. plugin:external-backup:section:1:content
+#: 
+msgid "To configure external backups:\n"
+"1. Go to Admin > Plugins and find 'External Backup (WebDAV)'\n"
+"2. Click the settings icon to expand the configuration panel\n"
+"3. Enter your WebDAV endpoint URL (e.g., https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Enter your username and password\n"
+"5. Optionally set an auto-backup interval in hours\n"
+"6. Save your settings"
+msgstr "Ulkoisten varmuuskopioiden määrittäminen:\n"
+"1. Siirry kohtaan Hallinta > Lisäosat ja etsi 'Ulkoinen varmuuskopiointi (WebDAV)'\n"
+"2. Napsauta asetuskuvaketta laajentaaksesi määrityspaneelin\n"
+"3. Syötä WebDAV-päätepisteen URL-osoite (esim. https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Syötä käyttäjätunnuksesi ja salasanasi\n"
+"5. Aseta halutessasi automaattisen varmuuskopioinnin aikaväli tunteina\n"
+"6. Tallenna asetuksesi"
+
+#. plugin:mailchimp:section:0:content
+#: 
+msgid "To use MailChimp Integration, you need a MailChimp account and an API key.\n"
+"\n"
+"1. Log in to your MailChimp account\n"
+"2. Go to Account > Extras > API Keys\n"
+"3. Create a new API key or copy an existing one\n"
+"4. Enter the API key in the plugin settings"
+msgstr "MailChimp-integraation käyttämiseen tarvitset MailChimp-tilin ja API-avaimen.\n"
+"\n"
+"1. Kirjaudu MailChimp-tilillesi\n"
+"2. Siirry kohtaan Tili > Lisät > API-avaimet\n"
+"3. Luo uusi API-avain tai kopioi olemassa oleva\n"
+"4. Syötä API-avain lisäosan asetuksiin"
 
 #. plugin:openlp:section:5:title
 #: 
@@ -13959,10 +14115,10 @@ msgstr "Päivitysasetukset"
 msgid "Use Cases"
 msgstr "Käyttötapaukset"
 
-#. Context: userconfig_ucfg
+#. plugin:vonage:link:0:label
 #: 
-msgid "User permission to export CSV files"
-msgstr "Käyttäjän oikeus viedä CSV-tiedostoja"
+msgid "Vonage Dashboard"
+msgstr "Vonage-kojelauta"
 
 #. plugin:vonage:link:2:label
 #: 
@@ -13974,8 +14130,1321 @@ msgstr "Vonage-hinnoittelu"
 msgid "Vonage SMS API Documentation"
 msgstr "Vonage SMS API -dokumentaatio"
 
+#. plugin:vonage:summary
+#: 
+msgid "Vonage SMS enables text message notifications for ChurchCRM using the Vonage API (formerly Nexmo). Send SMS alerts to parents when their child checks in via the kiosk system."
+msgstr "Vonage SMS mahdollistaa tekstiviestiilmoitukset ChurchCRM:lle Vonage API:n (aiemmin Nexmo) avulla. Lähetä SMS-hälytyksiä vanhemmille, kun heidän lapsensa kirjautuu kioskijärjestelmän kautta."
+
+#. plugin:vonage:section:6:content
+#: 
+msgid "Vonage charges per SMS sent. Pricing varies by destination country. See the Vonage pricing page for current rates. New accounts receive free trial credit for testing."
+msgstr "Vonage veloittaa lähetetyistä SMS-viesteistä. Hinnoittelu vaihtelee kohdemaittain. Katso ajankohtaiset hinnat Vonagen hintasivulta. Uudet tilit saavat ilmaista kokeilukrediitiä testausta varten."
+
 #. plugin:google-analytics:section:1:title
 #: 
 msgid "What Gets Tracked"
 msgstr "Mitä seurataan"
+
+#. plugin:mailchimp:section:3:content
+#: 
+msgid "When MailChimp is configured, a 'MailChimp' tab appears on Person view pages showing:\n"
+"\n"
+"- Email subscription status across all lists\n"
+"- Which lists the person is subscribed to\n"
+"- Subscription statistics"
+msgstr "Kun MailChimp on määritetty, 'MailChimp'-välilehti ilmestyy Henkilö-näkymäsivuille ja näyttää:\n"
+"\n"
+"- Sähköpostitilausstatus kaikilla listoilla\n"
+"- Mihin listoihin henkilö on tilannut\n"
+"- Tilausstatistiikat"
+
+#. plugin:gravatar:section:0:content
+#: 
+msgid "When a member doesn't have an uploaded photo, ChurchCRM checks if they have a Gravatar associated with their email address. If a Gravatar exists, it displays that image. If not, the configured default image style is used."
+msgstr "Kun jäsenellä ei ole ladattua valokuvaa, ChurchCRM tarkistaa, onko hänellä Gravatar sähköpostiosoitteeseensa liitettynä. Jos Gravatar on olemassa, se näyttää kyseisen kuvan. Jos ei, käytetään määritettyä oletuskuvatyyliä."
+
+#. plugin:external-backup:section:2:content
+#: 
+msgid "When auto-backup is enabled (interval > 0 hours), ChurchCRM will automatically create and upload a full database backup at the specified interval. The backup runs as part of normal page loads, so the system must have regular user activity to trigger backups.\n"
+"\n"
+"Recommended intervals:\n"
+"- Daily backup: 24 hours\n"
+"- Twice daily: 12 hours\n"
+"- Weekly: 168 hours"
+msgstr "Kun automaattinen varmuuskopiointi on käytössä (aikaväli > 0 tuntia), ChurchCRM luo ja lataa automaattisesti täydellisen tietokantavarmuuskopion määritetyin väliajoin. Varmuuskopiointi tapahtuu osana normaalia sivujen lataamista, joten järjestelmässä täytyy olla säännöllistä käyttäjätoimintaa varmuuskopioinnin käynnistämiseksi.\n"
+"\n"
+"Suositellut aikavälit:\n"
+"- Päivittäinen varmuuskopiointi: 24 tuntia\n"
+"- Kahdesti päivässä: 12 tuntia\n"
+"- Viikoittain: 168 tuntia"
+
+#. plugin:openlp:section:1:content
+#: 
+msgid "When enabled and configured, ChurchCRM sends alert messages to your OpenLP server using the API v2 endpoint (POST /api/v2/plugins/alerts). These alerts appear as overlay notifications on your projected display."
+msgstr "Kun käytössä ja määritetty, ChurchCRM lähettää hälytysilmoituksia OpenLP-palvelimellesi API v2 -päätepisteellä (POST /api/v2/plugins/alerts). Nämä hälytykset näkyvät päällekkäisinä ilmoituksina projisoidulla näytöllä."
+
+#: 
+msgid "When enabled, hides the address field for people not assigned to a family"
+msgstr "Kun käytössä, piilottaa osoitekentän henkilöiltä, joita ei ole liitetty perheeseen"
+
+#: 
+msgid "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background."
+msgstr "Kun käytössä, piilottaa leveys-/pituusasteekentät Perheeditorissa. Geokoodaus toimii edelleen taustalla."
+
+#. plugin:external-backup:section:3:content
+#: 
+msgid "You can also trigger a manual backup at any time:\n"
+"1. Go to the External Backup settings page (Plugins > External Backup)\n"
+"2. Select backup type (Database Only or Full Backup)\n"
+"3. Click 'Backup to WebDAV Now'\n"
+"\n"
+"Database Only backups are smaller and faster. Full backups include uploaded photos."
+msgstr "Voit myös käynnistää manuaalisen varmuuskopioinnin milloin tahansa:\n"
+"1. Siirry Ulkoinen varmuuskopiointi -asetussivulle (Lisäosat > Ulkoinen varmuuskopiointi)\n"
+"2. Valitse varmuuskopiointityyppi (Vain tietokanta tai Täydellinen varmuuskopiointi)\n"
+"3. Napsauta 'Varmuuskopioi WebDAV:iin nyt'\n"
+"\n"
+"Vain tietokanta -varmuuskopiot ovat pienempiä ja nopeampia. Täydelliset varmuuskopiot sisältävät ladatut valokuvat."
+
+#. plugin:google-analytics:section:1:content
+#: 
+msgid "• Page views and navigation patterns\n"
+"• Session duration and engagement\n"
+"• User demographics (if enabled in GA4)\n"
+"• Device and browser information"
+msgstr "• Sivukatselut ja navigointimallit\n"
+"• Istunnon kesto ja sitoutuminen\n"
+"• Käyttäjädemografia (jos GA4:ssä käytössä)\n"
+"• Laite- ja selaintiedot"
+
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "Tiedostokoko ylittää palvelimen rajan %s"
+
+#: 
+msgid "Missing image data in request"
+msgstr "Kuvadata puuttuu pyynnöstä"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Etsi henkilöitä, jotka eivät osallistuneet tapahtumaan"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Puuttuvat henkilöt"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Valitse haluttu tapahtuma"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Edistynyt suodatus ryhmän, luokituksen ja roolin mukaan"
+
+#: 
+msgid "All congregation members included"
+msgstr "Kaikki seurakuntalaiset mukana"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ChMeetings-vienti onnistui"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "ChMeetings-yhteensopiva sarakemuoto"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Yhteystiedot, perheen roolit ja tärkeät päivämäärät"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Luo täydellinen varmuuskopio seurakunnan tietokannasta. Lataa pelkkä tietokanta SQL-tiedostona tai täydellinen arkisto sisältäen ladatut kuvat."
+
+#: 
+msgid "Database Backup"
+msgstr "Tietokannan varmuuskopiointi"
+
+#: 
+msgid "Export"
+msgstr "Vie"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Vie seurakunnan tiedot CSV-muotoon. Valitse sisällytettävät kentät ja suodata luokituksen, ryhmän, sukupuolen ja muiden perusteella."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Vie kaikki henkilöt ChMeetings-alustalle sopivassa muodossa, jolloin seurakuntatietojen synkronointi ChMeetings-alustalle on helppoa."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Vie seurakunnan tiedot eri muotoihin"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Ulkoinen (WebDAV) varmuuskopio liitännäisen kautta"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "ChMeetings CSV -vienti epäonnistui"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Perhe- tai henkilökohtainen tietuerakenne"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Joustava kenttävalinta"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Siirry tietokannan varmuuskopiointiin"
+
+#: 
+msgid "Open CSV Export"
+msgstr "Avaa CSV-vienti"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Palauta järjestelmän varmuuskopiointisivulta"
+
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "Järjestelmäpäivitys on saatavilla. Päivitä asennuksesi."
+
+#: 
+msgid "API Access"
+msgstr "API-käyttöoikeus"
+
+#: 
+msgid "API Key"
+msgstr "API-avain"
+
+#: 
+msgid "API key regenerated"
+msgstr "API-avain uudelleenluotu"
+
+#: 
+msgid "Account"
+msgstr "Tili"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Lisäasetukset"
+
+#: 
+msgid "An error occurred."
+msgstr "Tapahtui virhe."
+
+#: 
+msgid "Appearance"
+msgstr "Ulkoasu"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Takaisin talouden hallintapaneeliin"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Takaisin ryhmien hallintapaneeliin"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Takaisin henkilöiden hallintapaneeliin"
+
+#: 
+msgid "Blue"
+msgstr "Sininen"
+
+#: 
+msgid "Change Photo"
+msgstr "Vaihda kuva"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "Muutokset tulevat voimaan vasta seuraavalla kirjautumiskerralla."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Valitse vaalea tai tumma väriteema"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "ChurchCRM-käännöksiä hallinnoidaan yhteisön toimesta POEditorissa. Voit auttaa:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Mukauta sovelluksen ulkoasua"
+
+#: 
+msgid "Cyan"
+msgstr "Syaani"
+
+#: 
+msgid "Dark"
+msgstr "Tumma"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Pelkkä tietokanta (.sql) tai täydellinen arkisto (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Oletusmäärä rivejä tietotauluissa. Tulee voimaan seuraavalla sivun latauksella."
+
+#: 
+msgid "Edit own family only"
+msgstr "Muokkaa vain omaa perhettä"
+
+#: 
+msgid "Enter text here..."
+msgstr "Kirjoita teksti tähän..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Ilmoittautumisen peruuttaminen epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Tapahtuman poistaminen epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "Kaksivaiheisen todennuksen poistaminen käytöstä epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "QR-koodin luominen epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "Kalenteritietojen lataaminen epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Tapahtuman lataaminen epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "Palautuskoodien lataaminen epäonnistui. Päivitä sivu."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Tapahtuman tallentaminen epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Failed to save setting"
+msgstr "Asetuksen tallentaminen epäonnistui"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Filipino - Filippiinit"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Virheellisten tai kömpelöiden käännösten korjaaminen omalla kielelläsi"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "Löysitkö virheen käännöksissä?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Myöntää kaikki käyttöoikeudet"
+
+#: 
+msgid "Green"
+msgstr "Vihreä"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Auta parantamaan käännöksiä"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "Jos huomaat vääristyneitä merkkejä, HTML-entiteettejä tekstinä tai käännöksiä, jotka rikkovat sivun asettelun, ilmoita asiasta GitHubissa, jotta se voidaan korjata kaikille."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "Sisällytä API-avaimesi pyyntöihin x-api-key-otsakkeella:"
+
+#: 
+msgid "Indigo"
+msgstr "Indigonsininen"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Virheellinen JSON-arvo — asetusta ei tallennettu. Korjaa se ja yritä uudelleen."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "Liity käännösprojektiin POEditorissa"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Kieli- ja aluekohtaiset asetukset"
+
+#: 
+msgid "Light"
+msgstr "Vaalea"
+
+#: 
+msgid "Lime"
+msgstr "Limetinvihreä"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "Malayalam - Intia"
+
+#: 
+msgid "Manage 2FA"
+msgstr "Hallinnoi kaksivaiheista todennusta"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "Hallinnoi lisäasetuksia, kuten sähköpostin erottimet ja näyttöasetukset"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Hallinnoi API-avaintasi ulkoisia integraatioita varten"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "Menetelmä ei ole sallittu"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "Puuttuuko tai onko käännöksissä virheitä?"
+
+#: 
+msgid "My Account"
+msgstr "Oma tili"
+
+#: 
+msgid "Orange"
+msgstr "Oranssi"
+
+#: 
+msgid "Override the system default locale"
+msgstr "Ohita järjestelmän oletuskielialue"
+
+#: 
+msgid "Page Not Found"
+msgstr "Sivua ei löydy"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "Käännettyjen merkkijonojen prosenttiosuus nykyiselle kielellesi"
+
+#: 
+msgid "Pink"
+msgstr "Vaaleanpunainen"
+
+#: 
+msgid "Primary Color"
+msgstr "Pääväri"
+
+#: 
+msgid "Profile and security"
+msgstr "Profiili ja tietoturva"
+
+#: 
+msgid "Purple"
+msgstr "Violetti"
+
+#: 
+msgid "Red"
+msgstr "Punainen"
+
+#: 
+msgid "Regenerate"
+msgstr "Luo uudelleen"
+
+#: 
+msgid "Rows per page"
+msgstr "Rivejä sivulla"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Aseta oikeus arvoon Tosi salliaksesi tämän käyttäjän muuttaa asetuksen itse."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Aseta korostusväri, jota käytetään painikkeissa, linkeissä ja aktiivisissa elementeissä"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Paremman sanamuodon ehdottaminen olemassa oleville käännöksille"
+
+#: 
+msgid "System Update Available"
+msgstr "Järjestelmäpäivitys saatavilla"
+
+#: 
+msgid "Tables"
+msgstr "Taulukot"
+
+#: 
+msgid "Teal"
+msgstr "Sinivihreä"
+
+#: 
+msgid "Theme Mode"
+msgstr "Teematila"
+
+#: 
+msgid "Toggle search"
+msgstr "Vaihda hakua"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Puuttuvien merkkijonojen kääntäminen kattavuuden parantamiseksi"
+
+#: 
+msgid "Translation Progress"
+msgstr "Käännösten edistyminen"
+
+#: 
+msgid "Usage"
+msgstr "Käyttö"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "Käytä tätä avainta API-pyyntöjen todentamiseen. Uudelleenluominen mitätöi nykyisen avaimen."
+
+#: 
+msgid "User Config"
+msgstr "Käyttäjän asetukset"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Vahvistus epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "Versio %s on saatavilla. Päivitä asennuksesi."
+
+#: 
+msgid "View All"
+msgstr "Näytä kaikki"
+
+#: 
+msgid "Yellow"
+msgstr "Keltainen"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "Nykyiset käyttöoikeutesi (vain luku)"
+
+#: 
+msgid "%d repeat event created successfully."
+msgid_plural "%d repeat events created successfully."
+msgstr[0] "%d toistuva tapahtuma luotu onnistuneesti."
+msgstr[1] "%d toistuvaa tapahtumaa luotu onnistuneesti."
+
+#: 
+msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
+msgstr "(esim. Seurakuntalaiset, Vierailijat, Lapset), jotta vapaaehtoiset voivat kirjata osallistujamäärät tähän."
+
+#: 
+msgid "1. Sunday School Class"
+msgstr "1. Pyhäkouluryhmä"
+
+#: 
+msgid "2. Event Type"
+msgstr "2. Tapahtumatyyppi"
+
+#: 
+msgid "3. Event"
+msgstr "3. Tapahtuma"
+
+#: 
+msgid "4. Kiosk"
+msgstr "4. Kioski"
+
+#: 
+msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
+msgstr "Luokka on ryhmä, jonka tyyppi on \"Pyhäkoulu\". Se sisältää oppilaat ja opettajat (jäsenet rooleilla)."
+
+#: 
+msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
+msgstr "Linkitetty ryhmä yhdistää tämän tapahtuman luokkaan tai palvelulistaan. Kun tapahtuma on määritetty kioskille, kioski hakee ryhmän jäsenet ja näyttää ne napauttamalla kirjattavana listana. Pyhäkouluryhmille linkitä luokkaryhmä tähän, jotta vapaaehtoiset voivat kirjata oppilaita sisään tabletilta."
+
+#: 
+msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr "Tietty tapahtumakerta (esim. \"Esikoulu — 12. huhtik.\"). Perii oletusarvot tyypiltä ja on linkitetty luokkaryhmään yleisön kautta. Tähän vapaaehtoiset kirjaavat läsnäolon."
+
+#: 
+msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr "Tabletti, joka on määritetty yhdelle tapahtumalle. Kioski hakee tapahtuman linkitetyn ryhmän listan ja näyttää napauttamalla kirjattavan näkymän. Ilman linkitettyä ryhmää kioskilla ei ole listaa näytettäväksi."
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "Lisää kävijä / vierailija"
+
+#: 
+msgid "Add categories on the Event Type page"
+msgstr "Lisää kategorioita Tapahtumatyyppi-sivulla"
+
+#: 
+msgid "Add people to your cart first, then come back to check them in to an event."
+msgstr "Lisää ensin henkilöitä koriin, sitten palaa kirjaamaan heidät tapahtumaan."
+
+#: 
+msgid "All clear!"
+msgstr "Kaikki kunnossa!"
+
+#: 
+msgid "All events and attendance records"
+msgstr "Kaikki tapahtumat ja läsnäolotiedot"
+
+#: 
+msgid "All financial data (pledges, payments, deposits)"
+msgstr "Kaikki taloudelliset tiedot (sitoumukset, maksut, talletukset)"
+
+#: 
+msgid "All groups, roles, and memberships"
+msgstr "Kaikki ryhmät, roolit ja jäsenyydet"
+
+#: 
+msgid "All people and family records"
+msgstr "Kaikki henkilö- ja perhetiedot"
+
+#: 
+msgid "All system settings and custom fields"
+msgstr "Kaikki järjestelmäasetukset ja mukautetut kentät"
+
+#: 
+msgid "All uploaded photos and documents"
+msgstr "Kaikki ladatut valokuvat ja asiakirjat"
+
+#: 
+msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
+msgstr "Tapahtumatyyppi on malli — nimi, oletusalkamisaika, toistuvuus, osallistumislaskurikategoriat. Valinnaisesti linkitetty yhteen luokkaryhmään oletusyleisönä."
+
+#: 
+msgid "Attendance record deleted."
+msgstr "Läsnäolotietue poistettu."
+
+#: 
+msgid "Audit"
+msgstr "Tarkastusloki"
+
+#: 
+msgid "Audit Events"
+msgstr "Tapahtumatarkastus"
+
+#: 
+msgid "Auto-totalled from counts at right"
+msgstr "Lasketaan automaattisesti oikealla olevista luvuista"
+
+#: 
+msgid "Back to Events"
+msgstr "Takaisin tapahtumiin"
+
+#: 
+msgid "Back to Events Dashboard"
+msgstr "Takaisin tapahtumanäkymään"
+
+#: 
+msgid "Backup failed. You can still proceed with the reset, but your data will be lost."
+msgstr "Varmuuskopiointi epäonnistui. Voit silti jatkaa nollaamista, mutta tietosi häviävät."
+
+#: 
+msgid "Backup ready!"
+msgstr "Varmuuskopio valmis!"
+
+#: 
+msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
+msgstr "Ennen nollaamista suosittelemme vahvasti lataamaan varmuuskopion nykyisistä tiedoistasi. Tämä on ainoa mahdollisuutesi säilyttää ne."
+
+#: 
+msgid "Bulk-create a series of recurring events"
+msgstr "Luo useita toistuvia tapahtumia kerralla"
+
+#: 
+msgid "By"
+msgstr "Tekijä"
+
+#: 
+msgid "Cannot check in to an inactive event. Activate the event first."
+msgstr "Ei voida kirjata sisään passiiviseen tapahtumaan. Aktivoi tapahtuma ensin."
+
+#: 
+msgid "Change"
+msgstr "Muuta"
+
+#: 
+msgid "Check In All"
+msgstr "Kirjaa kaikki sisään"
+
+#: 
+msgid "Check In Family"
+msgstr "Kirjaa perhe sisään"
+
+#: 
+msgid "Check Out All"
+msgstr "Kirjaa kaikki ulos"
+
+#: 
+msgid "Check in all %d family members to a single event."
+msgstr "Kirjaa kaikki %d perheenjäsentä sisään yhteen tapahtumaan."
+
+#: 
+msgid "Check out"
+msgstr "Kirjaa ulos"
+
+#: 
+msgid "Check-in By"
+msgstr "Kirjaaja"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "Sisäänkirjaus epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
+msgstr "Sisäänkirjaus on poistettu käytöstä passiivisille tapahtumille. Aktivoi tapahtuma tapahtumanäkymästä ottaaksesi sisäänkirjauksen käyttöön."
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "Uloskirjaus epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Checked in to event: %s"
+msgstr "Kirjattu sisään tapahtumaan: %s"
+
+#: 
+msgid "Checked out from event: %s"
+msgstr "Kirjattu ulos tapahtumasta: %s"
+
+#: 
+msgid "Close All Stuck Events"
+msgstr "Sulje kaikki jumissa olevat tapahtumat"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "Vahvista uloskirjaus"
+
+#: 
+msgid "Create Repeat Events"
+msgstr "Luo toistuvat tapahtumat"
+
+#: 
+msgid "Create Today's Event"
+msgstr "Luo tämän päivän tapahtuma"
+
+#: 
+msgid "Create a new event type with recurrence and attendance settings"
+msgstr "Luo uusi tapahtumatyyppi toistuvuus- ja läsnäoloasetuksilla"
+
+#: 
+msgid "Create one now"
+msgstr "Luo nyt"
+
+#: 
+msgid "Create today's class event and link it to this class for kiosk check-in"
+msgstr "Luo tämän päivän luokkatilaisuus ja linkitä se tähän luokkaan kioskin sisäänkirjausta varten"
+
+#: 
+msgid "Creating backup..."
+msgstr "Luodaan varmuuskopiota..."
+
+#: 
+msgid "Creating..."
+msgstr "Luodaan..."
+
+#: 
+msgid "Database + uploaded photos (larger)"
+msgstr "Tietokanta + ladatut valokuvat (suurempi)"
+
+#: 
+msgid "Database dump only (.sql)"
+msgstr "Vain tietokannan vedos (.sql)"
+
+#: 
+msgid "Date Range"
+msgstr "Aikaväli"
+
+#: 
+msgid "Date range cannot exceed 1 year"
+msgstr "Aikaväli ei voi ylittää yhtä vuotta"
+
+#: 
+msgid "Deactivate"
+msgstr "Deaktivoi"
+
+#: 
+msgid "Delete Event Type"
+msgstr "Poista tapahtumatyyppi"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "Poistetaanko läsnäolotietue?"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "Poista sisäänkirjauksen tietue kohteelle"
+
+#: 
+msgid "Delete this event?"
+msgstr "Poistetaanko tämä tapahtuma?"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "Tapahtuman poistaminen poistaa myös kaikki läsnäololaskurit. Tätä ei voi peruuttaa."
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "Tämän tapahtumatyypin poistaminen EI poista olemassa olevia tapahtumia. Oletko varma?"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "Tämän tapahtuman poistaminen poistaa myös kaikki läsnäolotietueet. Tätä ei voi peruuttaa."
+
+#: 
+msgid "Destructive Operation"
+msgstr "Tuhoava toiminto"
+
+#: 
+msgid "Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field."
+msgstr "Muokkaa kategorian nimeä ja napsauta Tallenna, tai käytä roskakori-kuvaketta poistamiseen. Uudet rivit lisätään alhaalla olevan kentän kautta."
+
+#: 
+msgid "End Time"
+msgstr "Lopetusaika"
+
+#: 
+msgid "End time must be after start time."
+msgstr "Lopetusajan on oltava alkamisajan jälkeen."
+
+#: 
+msgid "Ended"
+msgstr "Päättynyt"
+
+#: 
+msgid "Ends"
+msgstr "Päättyy"
+
+#: 
+msgid "Event Audit"
+msgstr "Tapahtuman tarkastus"
+
+#: 
+msgid "Event Check-in"
+msgstr "Tapahtuman sisäänkirjaus"
+
+#: 
+msgid "Event Details"
+msgstr "Tapahtuman tiedot"
+
+#: 
+msgid "Event Template"
+msgstr "Tapahtumamalli"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "Tapahtuma on jo olemassa. Siirrytään sisäänkirjaukseen..."
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "Tapahtuma luotu. Siirrytään sisäänkirjaukseen..."
+
+#: 
+msgid "Event end date/time must be on or after the start date/time."
+msgstr "Tapahtuman päättymispäivä/-aika on oltava alkamispäivän/-ajan jälkeen tai samana ajankohtana."
+
+#: 
+msgid "Event title is required."
+msgstr "Tapahtuman otsikko on pakollinen."
+
+#: 
+msgid "Event type ID is required"
+msgstr "Tapahtumatyypin tunnus on pakollinen"
+
+#: 
+msgid "Event type ID or group ID is required"
+msgstr "Tapahtumatyypin tunnus tai ryhmätunnus on pakollinen"
+
+#: 
+msgid "Event type has no date configured for yearly recurrence"
+msgstr "Tapahtumatyypillä ei ole päivämäärää määritetty vuosittaiselle toistuvuudelle"
+
+#: 
+msgid "Event type has no day-of-week configured for weekly recurrence"
+msgstr "Tapahtumatyypillä ei ole viikonpäivää määritetty viikoittaiselle toistuvuudelle"
+
+#: 
+msgid "Event type has no recurrence pattern configured"
+msgstr "Tapahtumatyypillä ei ole toistuvuusmallia määritetty"
+
+#: 
+msgid "Event type has no valid day-of-month configured for monthly recurrence"
+msgstr "Tapahtumatyypillä ei ole kelvollista kuukauden päivää määritetty kuukausittaiselle toistuvuudelle"
+
+#: 
+msgid "Events will be created for every matching occurrence within this date range."
+msgstr "Tapahtumat luodaan jokaista tähän aikaväliin sopivaa kertaa varten."
+
+#: 
+msgid "Every month on the"
+msgstr "Joka kuukausi"
+
+#: 
+msgid "Every week on"
+msgstr "Joka viikko"
+
+#: 
+msgid "Every year on"
+msgstr "Joka vuosi"
+
+#: 
+msgid "Everyone is checked in!"
+msgstr "Kaikki on kirjattu sisään!"
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "Luokan luominen epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Failed to create event."
+msgstr "Tapahtuman luominen epäonnistui."
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "Tapahtuman luominen epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "Poistaminen epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Fastest workflow:"
+msgstr "Nopein työnkulku:"
+
+#: 
+msgid "Find past events that are still active or have un-checked-out attendees"
+msgstr "Etsi menneitä tapahtumia, jotka ovat vielä aktiivisia tai joissa on uloskiriaamattomia osallistujia"
+
+#: 
+msgid "Format: MM-DD (e.g. 04-12 for April 12)"
+msgstr "Muoto: KK-PP (esim. 04-12 huhtikuun 12. päivälle)"
+
+#: 
+msgid "Group Roster"
+msgstr "Ryhmälista"
+
+#: 
+msgid "Hide Advanced Options"
+msgstr "Piilota lisäasetukset"
+
+#: 
+msgid "How Sunday School + Events + Kiosks fit together"
+msgstr "Kuinka pyhäkoulu, tapahtumat ja kioskitoiminnot liittyvät yhteen"
+
+#: 
+msgid "Invalid date for %s — expected YYYY-MM-DD"
+msgstr "Virheellinen päivämäärä kohteelle %s — odotetaan muotoa VVVV-KK-PP"
+
+#: 
+msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr "Virheellinen päivämäärämuoto rangeStart- tai rangeEnd-kentässä"
+
+#: 
+msgid "Invalid date format."
+msgstr "Virheellinen päivämäärämuoto."
+
+#: 
+msgid "Invalid date; expected format YYYY-MM-DD"
+msgstr "Virheellinen päivämäärä; odotetaan muotoa VVVV-KK-PP"
+
+#: 
+msgid "Invalid event type ID"
+msgstr "Virheellinen tapahtumatyypin tunnus"
+
+#: 
+msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
+msgstr "Virheellinen vuosittaisen toistuvuuden muoto; odotetaan KK-PP (esim. 04-12)"
+
+#: 
+msgid "Just now"
+msgstr "Juuri nyt"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "Jätä tyhjäksi kirjataksesi ulos ilman valvojan tietoja."
+
+#: 
+msgid "Link events to a group for Kiosk check-in functionality."
+msgstr "Linkitä tapahtumat ryhmään kioskin sisäänkirjaustoiminnallisuutta varten."
+
+#: 
+msgid "Linked Groups"
+msgstr "Linkitetyt ryhmät"
+
+#: 
+msgid "Looking for stuck events..."
+msgstr "Etsitään jumissa olevia tapahtumia..."
+
+#: 
+msgid "Manage event names, recurrence patterns, and attendance counts"
+msgstr "Hallinnoi tapahtumien nimiä, toistuvuusmalleja ja läsnäololaskureita"
+
+#: 
+msgid "Missing required field: %s"
+msgstr "Pakollinen kenttä puuttuu: %s"
+
+#: 
+msgid "No Events Today"
+msgstr "Ei tapahtumia tänään"
+
+#: 
+msgid "No Group"
+msgstr "Ei ryhmää"
+
+#: 
+msgid "No active assignment"
+msgstr "Ei aktiivista tehtävää"
+
+#: 
+msgid "No active events found."
+msgstr "Aktiivisia tapahtumia ei löydy."
+
+#: 
+msgid "No attendance count categories defined for this event type yet."
+msgstr "Tälle tapahtumatyypille ei ole vielä määritetty läsnäololaskurikategorioita."
+
+#: 
+msgid "No one has been checked in to this event yet."
+msgstr "Ketään ei ole vielä kirjattu sisään tähän tapahtumaan."
+
+#: 
+msgid "No past events are still marked Active."
+msgstr "Yhtään mennyttä tapahtumaa ei ole enää merkitty aktiiviseksi."
+
+#: 
+msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr "Avaa luokka → napsauta \"Luo tämän päivän tapahtuma\" — tapahtuma luodaan ja linkitetään luokkaan yhdellä kertaa, jonka jälkeen siirryt sisäänkirjaussivulle, joka on valmis kioskin tai kävijöiden kirjaamiseen."
+
+#: 
+msgid "Optional Settings"
+msgstr "Valinnaiset asetukset"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "Valinnainen — kirjaa kuka kirjaa tämän henkilön ulos (esim. vanhempi hakemassa lasta)."
+
+#: 
+msgid "Person checked out."
+msgstr "Henkilö kirjattu ulos."
+
+#: 
+msgid "Person is not checked in"
+msgstr "Henkilöä ei ole kirjattu sisään"
+
+#: 
+msgid "Person not in active class roster"
+msgstr "Henkilö ei ole aktiivisella luokkalistalla"
+
+#: 
+msgid "Pin to Calendars"
+msgstr "Kiinnitä kalentereihin"
+
+#: 
+msgid "Please select a person to check in."
+msgstr "Valitse kirjattava henkilö."
+
+#: 
+msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
+msgstr "Esitäytetty tämän tapahtumatyypin perusteella — toistuvilla tyypeillä päivämäärä on seuraava kerta tämän tyypin viimeisen tapahtuman jälkeen, ja aika vastaa tyypin oletusalkamisaikaa."
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "Aikavälin päättymispäivän on oltava alkamispäivän jälkeen tai samana päivänä."
+
+#: 
+msgid "Range end must be a valid YYYY-MM-DD date."
+msgstr "Aikavälin päättymispäivän on oltava kelvollinen VVVV-KK-PP-päivämäärä."
+
+#: 
+msgid "Range start must be a valid YYYY-MM-DD date."
+msgstr "Aikavälin alkamispäivän on oltava kelvollinen VVVV-KK-PP-päivämäärä."
+
+#: 
+msgid "Range start must be before range end"
+msgstr "Aikavälin alkamispäivän on oltava ennen päättymispäivää"
+
+#: 
+msgid "Range start must be before range end."
+msgstr "Aikavälin alkamispäivän on oltava ennen päättymispäivää."
+
+#: 
+msgid "RangeEnd must be on or after RangeStart"
+msgstr "RangeEnd-arvon on oltava RangeStart-arvon jälkeen tai samana päivänä"
+
+#: 
+msgid "Recommended"
+msgstr "Suositeltu"
+
+#: 
+msgid "Required for Kiosk"
+msgstr "Vaaditaan kioskille"
+
+#: 
+msgid "Resetting will permanently delete:"
+msgstr "Nollaaminen poistaa pysyvästi:"
+
+#: 
+msgid "SQL Only"
+msgstr "Vain SQL"
+
+#: 
+msgid "Save Time"
+msgstr "Säästä aikaa"
+
+#: 
+msgid "Save changes to this category name"
+msgstr "Tallenna muutokset tähän kategorian nimeen"
+
+#: 
+msgid "Select an event type…"
+msgstr "Valitse tapahtumatyyppi…"
+
+#: 
+msgid "Select start and end date/time."
+msgstr "Valitse alkamis- ja päättymispäivä/-aika."
+
+#: 
+msgid "Show More Options"
+msgstr "Näytä lisää vaihtoehtoja"
+
+#: 
+msgid "Skip"
+msgstr "Ohita"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "Ohita ja kirjaa ulos"
+
+#: 
+msgid "Start Check-in"
+msgstr "Aloita sisäänkirjaus"
+
+#: 
+msgid "Starts"
+msgstr "Alkaa"
+
+#: 
+msgid "Step 1: Create a Backup"
+msgstr "Vaihe 1: Luo varmuuskopio"
+
+#: 
+msgid "Step 2: Reset Database"
+msgstr "Vaihe 2: Nollaa tietokanta"
+
+#: 
+msgid "Still Checked In"
+msgstr "Vielä kirjattu sisään"
+
+#: 
+msgid "Stuck Events"
+msgstr "Jumissa olevat tapahtumat"
+
+#: 
+msgid "Take Attendance"
+msgstr "Kirjaa läsnäolo"
+
+#: 
+msgid "The Events module is disabled"
+msgstr "Tapahtumamooduuli on poistettu käytöstä"
+
+#: 
+msgid "The same start and end time will be used for all generated events."
+msgstr "Samaa alku- ja päättymisaikaa käytetään kaikille luotaville tapahtumille."
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "Tänään ei ole aikataulutettuja tapahtumia"
+
+#: 
+msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
+msgstr "Nämä ovat osallistujamäärälaskureita — vapaaehtoiset täyttävät ne tapahtuman jälkeen, jotta hallintapaneeli voi eritellä läsnäolon (esim. kuinka monta seurakuntalaisista vs. vierailijoista). Ne ovat erillisiä sisäänkirjaussivun yksilöllisistä sisäänkirjauksista."
+
+#: 
+msgid "This event is inactive."
+msgstr "Tämä tapahtuma on passiivinen."
+
+#: 
+msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr "Tämä sivu mahdollistaa kaikkien ChurchCRM-tietokannan tietojen pysyvän poistamisen. Tätä toimintoa ei voi peruuttaa."
+
+#: 
+msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
+msgstr "Tämä raportti listaa kaikki tapahtumat, joiden päättymispäivä on mennyt mutta jotka on vielä merkitty aktiivisiksi. Yleisiä syitä: vapaaehtoinen unohti napauttaa 'Kirjaa ulos', kioski menetti yhteyden tai tapahtuma luotiin ja hylättiin. Myös vanhat tapahtumat (vuosien takaa), joita ei koskaan deaktivoitu, näkyvät täällä. 'Vielä kirjattu sisään' -sarake näyttää, onko joku jäänyt kesken sisäänkirjauksen. Tapahtuman sulkeminen tästä raportista kirjaa kaikki ulos (käyttäen nykyistä aikaa) ja merkitsee tapahtuman passiiviseksi."
+
+#: 
+msgid "This title will be used for all generated events."
+msgstr "Tätä otsikkoa käytetään kaikille luotaville tapahtumille."
+
+#: 
+msgid "Today's Events"
+msgstr "Tämän päivän tapahtumat"
+
+#: 
+msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
+msgstr "Liian monta kertaa (%d) — supista aikaväliä. Suurin sallittu: %d"
+
+#: 
+msgid "Type RESET to confirm"
+msgstr "Kirjoita RESET vahvistaaksesi"
+
+#: 
+msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
+msgstr "Käytä yllä olevaa painiketta luodaksesi tämän päivän tapahtuman yhdellä napsautuksella. Se linkitetään automaattisesti tähän luokkaan, jotta kioski voi hakea listan."
+
+#: 
+msgid "Use this form to bulk-create a series of recurring events. Each event is created individually and can be edited or deleted independently after creation."
+msgstr "Käytä tätä lomaketta luodaksesi useita toistuvia tapahtumia kerralla. Jokainen tapahtuma luodaan erikseen ja sitä voidaan muokata tai poistaa itsenäisesti luomisen jälkeen."
+
+#: 
+msgid "Used as the default start time when creating events of this type."
+msgstr "Käytetään oletusalkamisaikana luotaessa tämän tyypin tapahtumia."
+
+#: 
+msgid "User must have Add Event permission and the Events module must be enabled"
+msgstr "Käyttäjällä on oltava Lisää tapahtuma -oikeus ja Tapahtumamooduuli on oltava käytössä"
+
+#: 
+msgid "Valid startDate and endDate are required"
+msgstr "Kelvolliset startDate ja endDate ovat pakollisia"
+
+#: 
+msgid "View Event"
+msgstr "Näytä tapahtuma"
+
+#: 
+msgid "What are these for?"
+msgstr "Mitä varten nämä ovat?"
+
+#: 
+msgid "What does this find?"
+msgstr "Mitä tämä etsii?"
+
+#: 
+msgid "What is this for?"
+msgstr "Mihin tämä on tarkoitettu?"
+
+#: 
+msgid "Who is bringing them in?"
+msgstr "Kuka tuo heidät sisään?"
+
+#: 
+msgid "You must select a valid recurrence pattern."
+msgstr "Sinun on valittava kelvollinen toistuvuusmalli."
+
+#: 
+msgid "You must select an event type."
+msgstr "Sinun on valittava tapahtumatyyppi."
+
+#: 
+msgid "You must specify a date range."
+msgstr "Sinun on määritettävä aikaväli."
+
+#: 
+msgid "checked in"
+msgstr "kirjattu sisään"
+
+#: 
+msgid "e.g., Sunday Worship Service"
+msgstr "esim. Sunnuntain jumalanpalvelus"
+
+#: 
+msgid "endDate must be after startDate"
+msgstr "endDate-arvon on oltava startDate-arvon jälkeen"
+
+#: 
+msgid "eventIds must be a non-empty array"
+msgstr "eventIds-arvon on oltava ei-tyhjä taulukko"
+
+#: 
+msgid "invalid recurrence type"
+msgstr "virheellinen toistuvuustyyppi"
+
+#: 
+msgid "personIds must be a non-empty array"
+msgstr "personIds-arvon on oltava ei-tyhjä taulukko"
+
+#: 
+msgid "to enable the reset button"
+msgstr "aktivoidaksesi nollauspainikkeen"
+
+#: 
+msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
+msgstr "Kartta ilmestyy tähän, kun koordinaatit on tallennettu — joko automaattisesti osoitteestasi tunnistettuna tai manuaalisesti yllä syötettynä."
+
+#: 
+msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr "Sekä leveysaste että pituusaste on annettava yhdessä (tai molemmat jätetään tyhjiksi automaattista tunnistusta varten)."
+
+#: 
+msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr "Seurakunnan tiedot tallennettu, mutta osoitetta ei voitu paikallistaa automaattisesti. Syötä leveysaste ja pituusaste manuaalisesti Karttakoordinaatit-kohdassa."
+
+#: 
+msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
+msgstr "Koordinaatit tunnistetaan automaattisesti osoitteestasi tallennettaessa (OpenStreetMapin kautta). Voit myös syöttää ne manuaalisesti alla — manuaaliset arvot ohittavat aina automaattisen tunnistuksen. Jätä molemmat tyhjiksi, jotta järjestelmä voi geokoodata osoitteesta."
+
+#: 
+msgid "Latitude must be a number between -90 and 90."
+msgstr "Leveysasteen on oltava luku välillä -90 ja 90."
+
+#: 
+msgid "Longitude must be a number between -180 and 180."
+msgstr "Pituusasteen on oltava luku välillä -180 ja 180."
+
+#: 
+msgid "Map Coordinates"
+msgstr "Karttakoordinaatit"
+
+#: 
+msgid "Please select a group."
+msgstr "Valitse ryhmä."
+
+#: 
+msgid "Please select a role."
+msgstr "Valitse rooli."
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "Valitse sekä ryhmä että rooli."
+
+#: 
+msgid "Range: -180 to 180."
+msgstr "Alue: -180–180."
+
+#: 
+msgid "Range: -90 to 90."
+msgstr "Alue: -90–90."
+
+#: 
+msgid "mo"
+msgstr "kk"
+
+#: 
+msgid "mos"
+msgstr "kk"
+
+#: 
+msgid "yr"
+msgstr "v."
+
+#: 
+msgid "yrs"
+msgstr "v."
 

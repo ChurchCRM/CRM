@@ -243,12 +243,12 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
           foreach ($titleFields as $key => $label) : ?>
             <div class="col-md-6">
               <label class="form-label" for="<?= $key ?>"><?= $label ?></label>
-              <input type="text" class="form-control" name="<?= $key ?>" id="<?= $key ?>" value="<?= SystemConfig::getValue($key) ?>">
+              <input type="text" class="form-control" name="<?= $key ?>" id="<?= $key ?>" value="<?= SystemConfig::getValueForAttr($key) ?>">
             </div>
           <?php endforeach; ?>
           <div class="col-12">
             <label class="form-label" for="sDirectoryDisclaimer"><?= gettext('Disclaimer') ?></label>
-            <textarea class="form-control" name="sDirectoryDisclaimer" id="sDirectoryDisclaimer" rows="4"><?= SystemConfig::getValue('sDirectoryDisclaimer1') . ' ' . SystemConfig::getValue('sDirectoryDisclaimer2') ?></textarea>
+            <textarea class="form-control" name="sDirectoryDisclaimer" id="sDirectoryDisclaimer" rows="4"><?= SystemConfig::getValueForHtml('sDirectoryDisclaimer1') . ' ' . SystemConfig::getValueForHtml('sDirectoryDisclaimer2') ?></textarea>
           </div>
         </div>
       </div>

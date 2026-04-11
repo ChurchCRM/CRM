@@ -64,10 +64,10 @@ require_once __DIR__ . '/Include/Header.php';
                 ?>
                 <tr>
                     <td>
-                        <input type="checkbox" name="Chk<?= (int)$pn_ID . '"';
+                        <input class="form-check-input" type="checkbox" name="Chk<?= (int)$pn_ID . '"';
                         if (isset($_GET['SelectAll'])) {
                             echo ' checked="yes"';
-                        } ?>></input>
+                        } ?>>
             </td>
             <td>
                 <?= '<a href="PaddleNumEditor.php?PaddleNumID=' . (int)$pn_ID . '&linkBack=PaddleNumList.php"> ' . (int)$pn_Num ."</a>\n" ?>

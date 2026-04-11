@@ -282,10 +282,6 @@ msgid "Add Cart to Event"
 msgstr "Legg Cart til Event"
 
 #: 
-msgid "OR"
-msgstr "ELLER"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Handlekurven er tom!"
 
@@ -409,10 +405,6 @@ msgstr "Ja"
 #: 
 msgid "No"
 msgstr "Ingen"
-
-#: 
-msgid "Event Checkin"
-msgstr "Hendelse Checkin"
 
 #: 
 msgid "Select Event"
@@ -677,10 +669,6 @@ msgid "Church Event Editor"
 msgstr "Kirke begivenhet Editor"
 
 #: 
-msgid "Edit Event Types"
-msgstr "Redigere hendelsestyper"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Redigere Hendelsestype"
 
@@ -751,20 +739,8 @@ msgid "Create a new Event"
 msgstr "Oprett nytt arrangement"
 
 #: 
-msgid " errors. Please see below"
-msgstr "feil. Vennligst se nedenfor"
-
-#: 
 msgid "Select your event type"
 msgstr "Velg arrangement type"
-
-#: 
-msgid "You must pick an event type."
-msgstr "Du må velge en arrangements type"
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "Ingen Tilskuere teller opp"
 
 #: 
 #, fuzzy
@@ -2227,15 +2203,6 @@ msgid "User Editor"
 msgstr "Bruker Editor"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Merk: Endringer vil ikke tre i kraft før neste pålogging."
-
-#: 
-#, fuzzy
-msgid "Person to Make User"
-msgstr "Person til å gjøre Bruker"
-
-#: 
 #, fuzzy
 msgid "User"
 msgstr "Bruker"
@@ -2285,25 +2252,8 @@ msgid "Edit Self"
 msgstr "Rediger deg selv"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Rediger egen familie bare.)"
-
-#: 
 msgid "Admin"
 msgstr "Admin"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Grants alle privilegier.)"
-
-#: 
-#, fuzzy
-msgid "Style"
-msgstr "Stil"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Sett tillatelse til 'Sann' for å gi denne brukeren muligheten til å endre sin gjeldende verdi."
 
 #: 
 msgid "Last Login"
@@ -3048,10 +2998,6 @@ msgid "Date Entered"
 msgstr "Dato lagt inn"
 
 #: 
-msgid "There were "
-msgstr "Det var "
-
-#: 
 msgid "Inactive"
 msgstr "Inaktiv"
 
@@ -3282,10 +3228,6 @@ msgstr "Data/Rapporter"
 #: 
 msgid "Query Menu"
 msgstr "Spørringsmeny"
-
-#: 
-msgid "CSV Export Records"
-msgstr "CSV-eksport av poster"
 
 #: 
 msgid "Family Properties"
@@ -4994,14 +4936,6 @@ msgid "Select event"
 msgstr "Velg hendelse"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "Personen er allerede sjekket inn på denne hendelsen"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "Voksen som sjekker ut person"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Tekst før navn i e-poster/rapporter"
 
@@ -5557,10 +5491,6 @@ msgid "Sign out"
 msgstr "Logg ut"
 
 #: 
-msgid "Sermon Text"
-msgstr "Prekentekst"
-
-#: 
 msgid "Change Settings"
 msgstr "Endre innstillinger"
 
@@ -6067,10 +5997,6 @@ msgstr "Funksjoner for tilbakestilling av database"
 msgid "Reset Database"
 msgstr "Tilbakestill database"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "Dette vil tilbakestille systemdataene og starte systemet på nytt som en ny installasjon."
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6182,28 +6108,12 @@ msgid "open rate"
 msgstr "åpningsrate"
 
 #: 
-msgid "Login Info"
-msgstr "Innloggingsinformasjon"
-
-#: 
-msgid "Login Count"
-msgstr "Antall pålogginger"
-
-#: 
-msgid "Failed Login"
-msgstr "Mislykket pålogging"
-
-#: 
 msgid "Permissions"
 msgstr "Tillatelser"
 
 #: 
 msgid "Manage Notes"
 msgstr "Administrer notater"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Kunne ikke generere ny API-nøkkel"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6275,14 +6185,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Bryllupsdager i dag"
 
 #: 
-msgid "Api Key"
-msgstr "API-nøkkel"
-
-#: 
-msgid "Regen API Key"
-msgstr "Regenerer API-nøkkel"
-
-#: 
 msgid "View Family Page"
 msgstr "Vis familieside"
 
@@ -6297,46 +6199,6 @@ msgstr "Verifiser"
 #: 
 msgid "Family has no emails to use"
 msgstr "Familien har ingen e-postadresser"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Boksoppsett"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Aktiver boksoppsett"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Veksle sidefelt"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Endre sidestolpens tilstand (åpen eller sammenslått)"
-
-#: 
-msgid "Tables Settings"
-msgstr "Tabellinnstillinger"
-
-#: 
-msgid "Page length"
-msgstr "Sidelengde"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Endre den opprinnelige sidelengden (antall rader per side)"
-
-#: 
-msgid "User Interface"
-msgstr "Brukergrensesnitt"
-
-#: 
-msgid "Locale"
-msgstr "Lokale"
-
-#: 
-msgid "Override system locale"
-msgstr "Overstyr systemlokale"
 
 #: 
 msgid "Deleted"
@@ -7407,10 +7269,6 @@ msgid "All Types"
 msgstr "Alle typer"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "Er du sikker på at du vil slette denne innsjekkingsposten?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "Kategorier for oppmøtetelling"
 
@@ -7451,10 +7309,6 @@ msgid "Create New Event"
 msgstr "Opprett ny hendelse"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "Opprett en hendelsestype for å komme i gang."
-
-#: 
 msgid "Current DB Version"
 msgstr "Nåværende databaseversjon"
 
@@ -7473,14 +7327,6 @@ msgstr "Standard starttid"
 #: 
 msgid "Delete Event"
 msgstr "Slett hendelse"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "Sletting av en hendelse vil også slette alle oppmøtetall. Slette denne hendelsen?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "Sletting av denne hendelsen vil også slette alle oppmøteregistreringer. Er du sikker?"
 
 #: 
 msgid "Edit Event"
@@ -7548,10 +7394,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "Valgfritt - Legg til notater fra preken eller andre detaljer"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "Valgfritt - la stå tomt hvis det ikke spores"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "Valgfrie notater om oppmøte..."
 
@@ -7584,24 +7426,12 @@ msgid "Search by name or email..."
 msgstr "Søk etter navn eller e-post..."
 
 #: 
-msgid "Search for adult..."
-msgstr "Søk etter voksen..."
-
-#: 
 msgid "Search for supervisor..."
 msgstr "Søk etter veileder..."
 
 #: 
 msgid "Select Event for Check-In"
 msgstr "Velg hendelse for innsjekk"
-
-#: 
-msgid "Select start and end date/time"
-msgstr "Velg start- og sluttdato/tid"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "Velg hendelsen for å sjekke inn medlemmene i handlekurven"
 
 #: 
 msgid "Sermon / Event Text"
@@ -7968,10 +7798,6 @@ msgstr "Bruk eksterne verktøy (GPG, 7-Zip) for å kryptere sikkerhetskopier fø
 #: 
 msgid "User authentication"
 msgstr "Brukerautentisering"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "Bruker må ha tillatelse til å legge til hendelser"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8494,10 +8320,6 @@ msgid "State (Other)"
 msgstr "Fylke (Annet)"
 
 #: 
-msgid "Status:"
-msgstr "Status:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Sammendrag av løfter mot betalinger per fond for regnskapsåret."
 
@@ -8548,10 +8370,6 @@ msgstr "Totalt antall innskudd:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Spor løfter og betalingsfremdrift for kampanjer og budsjettering for regnskapsår."
-
-#: 
-msgid "Type:"
-msgstr "Type:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8978,10 +8796,6 @@ msgid "Disable 2FA"
 msgstr "Deaktiver 2FA"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "Eksporter alle persondata i ChMeetings-format for import til eksterne systemer."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "Eksporter til ChMeetings CSV"
 
@@ -9236,10 +9050,6 @@ msgid "Add Your First Property Type"
 msgstr "Legg til din første Egenskapstype"
 
 #: 
-msgid "Auto-calculated from counts above"
-msgstr "Automatisk beregnet fra tellinger ovenfor"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Ved å slette dette feltet vil du ugjenkallelig miste alle gruppemedlemsdata tildelt dette feltet!"
 
@@ -9428,10 +9238,6 @@ msgstr "Kioskregistrering deaktivert"
 #: 
 msgid "Kiosk not found"
 msgstr "Kiosk ikke funnet"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "Koble dette arrangementet til en gruppe for kiosk-innsjekkfunksjonalitet. Gruppemedlemmene vil vises på kiosken."
 
 #: 
 msgid "Linked Group"
@@ -10633,10 +10439,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "Krev at alle brukere registrerer seg for tofaktorautentisering"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "Et kart vil vises her når en gateadresse er lagret. Koordinater oppdages automatisk — ingen manuell inntasting kreves."
-
-#: 
 msgid "Active Groups"
 msgstr "Aktive grupper"
 
@@ -10687,10 +10489,6 @@ msgstr "Familien har ingen gateadresse for geokoding"
 #: 
 msgid "Father"
 msgstr "Far"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "Geokodede koordinater:"
 
 #: 
 msgid "Geocoding failed"
@@ -10771,10 +10569,6 @@ msgstr "Tidssone"
 #: 
 msgid "Total Groups"
 msgstr "Totalt grupper"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "Oppdateres automatisk ved hver lagring."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10957,14 +10751,6 @@ msgstr "Legg til din første egenskap"
 #: 
 msgid "Add a Person"
 msgstr "Legg til en person"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Legg til et nytt giverløfte"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "Legg til en innbetaling til gjeldende kollektinnskudd"
 
 #: 
 msgid "Add all cart items to a group"
@@ -11179,10 +10965,6 @@ msgid "Check Out"
 msgstr "Sjekk ut"
 
 #: 
-msgid "Check Out Person"
-msgstr "Sjekk ut person"
-
-#: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
 msgstr "Se etter oppdateringer og oppgrader ChurchCRM-installasjonen din"
 
@@ -11307,10 +11089,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "Opprett en manuell sikkerhetskopi minst en gang i uken, eller aktiver tillegget for ekstern sikkerhetskopiering for automatiske WebDAV-sikkerhetskopier etter en tidsplan."
 
 #: 
-msgid "Create a new deposit"
-msgstr "Opprett et nytt kollektinnskudd"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "Opprett og rediger familieinformasjon og relasjoner"
 
@@ -11365,10 +11143,6 @@ msgstr "Definer gruppespesifikke egenskaper for medlemmer"
 #: 
 msgid "Delete All"
 msgstr "Slett alle"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "Slett oppmøteregistrering"
 
 #: 
 msgid "Delete Family"
@@ -11647,10 +11421,6 @@ msgid "Generate directory listings and printed materials"
 msgstr "Generer katalogoppføringer og trykt materiale"
 
 #: 
-msgid "Generate financial reports"
-msgstr "Generer økonomiske rapporter"
-
-#: 
 msgid "Generate financial statements and giving reports"
 msgstr "Generer økonomiske oversikter og gaverapporter"
 
@@ -11879,14 +11649,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "Administrer e-postverktøy og SMTP-konfigurasjon"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "Administrer arrangementsnavn og kategorier"
-
-#: 
-msgid "Manage event type categories"
-msgstr "Administrer arrangementstype-kategorier"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Administrer familier, personer og demografisk informasjon"
 
@@ -12013,10 +11775,6 @@ msgstr "Ingen fødselsdager"
 #: 
 msgid "No Check-ins"
 msgstr "Ingen oppmøteregistreringer"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "Ingen kollektsporing"
 
 #: 
 msgid "No Deposits"
@@ -12771,10 +12529,6 @@ msgstr "fond"
 #: 
 msgid "members"
 msgstr "medlemmer"
-
-#: 
-msgid "name@example.com"
-msgstr "navn@eksempel.no"
 
 #: 
 msgid "opportunities"
@@ -13730,23 +13484,153 @@ msgstr "f.eks. gudstjeneste på søndag"
 msgid "member"
 msgstr "medlem"
 
+#. plugin:mailchimp:section:1:content
+#: 
+msgid "- **Dashboard**: View all your MailChimp lists with subscriber statistics\n"
+"- **List Maintenance**: Identify people in MailChimp but not in CRM, and vice versa\n"
+"- **Contact Integration**: View MailChimp subscription status on Person and Family pages\n"
+"- **Automatic Sync**: Hooks into person/family updates to keep MailChimp in sync"
+msgstr "- **Dashboard**: Se alle MailChimp-listene dine med abonnentstatistikk\n"
+"- **Listevedlikehold**: Identifiser personer i MailChimp som ikke finnes i CRM, og omvendt\n"
+"- **Kontaktintegrasjon**: Vis MailChimp-abonnementstatus på person- og familiesider\n"
+"- **Automatisk synkronisering**: Kobles til person-/familieoppdateringer for å holde MailChimp synkronisert"
+
+#. plugin:vonage:section:1:content
+#: 
+msgid "1. Create a Vonage account at https://dashboard.nexmo.com/sign-up (new accounts include free trial credit)\n"
+"2. Find your API Key and API Secret on the Vonage Dashboard homepage\n"
+"3. Go to Numbers > Buy Numbers and purchase a number with SMS capability\n"
+"4. Note the number in E.164 format (e.g., +14155551234)\n"
+"5. In ChurchCRM, enable the Vonage SMS plugin and enter your credentials"
+msgstr "1. Opprett en Vonage-konto på https://dashboard.nexmo.com/sign-up (nye kontoer inkluderer gratis prøvekreditt)\n"
+"2. Finn din API-nøkkel og API-hemmelighet på Vonage Dashboard-hjemmesiden\n"
+"3. Gå til Numre > Kjøp numre og kjøp et nummer med SMS-funksjonalitet\n"
+"4. Noter nummeret i E.164-format (f.eks. +14155551234)\n"
+"5. I ChurchCRM, aktiver Vonage SMS-plugin og skriv inn legitimasjonen din"
+
+#. plugin:google-analytics:section:0:content
+#: 
+msgid "1. Go to Google Analytics (analytics.google.com)\n"
+"2. Create a property or select an existing one\n"
+"3. Go to Admin → Data Streams → Web\n"
+"4. Copy the Measurement ID (starts with G-)"
+msgstr "1. Gå til Google Analytics (analytics.google.com)\n"
+"2. Opprett en eiendom eller velg en eksisterende\n"
+"3. Gå til Administrator → Datastrømmer → Web\n"
+"4. Kopier målings-ID-en (starter med G-)"
+
+#. plugin:openlp:section:2:content
+#: 
+msgid "1. Install OpenLP 3.0 or later on your presentation computer\n"
+"2. Enable the Remote plugin in OpenLP (Settings → Configure OpenLP → Plugins)\n"
+"3. Enable the Alerts plugin in OpenLP for alert display support\n"
+"4. Note the IP address of the OpenLP computer\n"
+"5. Enter the server URL in the format: http://IP_ADDRESS:4316\n"
+"6. If you've configured authentication in OpenLP, enter the username and password"
+msgstr "1. Installer OpenLP 3.0 eller nyere på presentasjonsdatamaskinen\n"
+"2. Aktiver eksterntilgang-plugin i OpenLP (Innstillinger → Konfigurer OpenLP → Plugins)\n"
+"3. Aktiver Varsler-plugin i OpenLP for støtte for varselvisning\n"
+"4. Noter IP-adressen til OpenLP-datamaskinen\n"
+"5. Skriv inn server-URL-en i formatet: http://IP_ADRESSE:4316\n"
+"6. Hvis du har konfigurert autentisering i OpenLP, skriv inn brukernavn og passord"
+
+#. plugin:mailchimp:section:2:content
+#: 
+msgid "Access the MailChimp Dashboard from the Email menu. The dashboard shows:\n"
+"\n"
+"- Member count for each list\n"
+"- Campaign statistics\n"
+"- Unsubscribe counts\n"
+"- List maintenance tools"
+msgstr "Åpne MailChimp Dashboard fra E-post-menyen. Dashboardet viser:\n"
+"\n"
+"- Antall medlemmer for hver liste\n"
+"- Kampanjestatistikk\n"
+"- Antall avmeldinger\n"
+"- Verktøy for listevedlikehold"
+
 #. plugin:custom-links:section:1:title
 #: 
 msgid "Adding Links"
 msgstr "Legge til lenker"
+
+#. plugin:custom-links:section:2:content
+#: 
+msgid "All configured links are shown in a table. You can:\n"
+"- View the link name and URL\n"
+"- Click the URL to test it opens correctly\n"
+"- Delete links you no longer need\n"
+"\n"
+"Links appear in the order they were added in the navigation menu."
+msgstr "Alle konfigurerte lenker vises i en tabell. Du kan:\n"
+"- Se lenkenavnet og URL-en\n"
+"- Klikke på URL-en for å teste at den åpnes korrekt\n"
+"- Slette lenker du ikke lenger trenger\n"
+"\n"
+"Lenker vises i den rekkefølgen de ble lagt til i navigasjonsmenyen."
 
 #: 
 msgid "Allow Pre-release Upgrades"
 msgstr "Tillat forhåndsversjonsoppgraderinger"
 
 #: 
+msgid "Allow recording of non-tax-deductible payments in the finance module"
+msgstr "Tillat registrering av ikke-fradragsberettigede betalinger i finansmodulen"
+
+#: 
+msgid "Allow scanned check images to be attached to deposit records"
+msgstr "Tillat at skannede sjekkbilder legges ved innskuddsregistreringer"
+
+#: 
+msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
+msgstr "Tillat systemoppgraderinger til utgivelser merket som 'pre release' på GitHub"
+
+#: 
+msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
+msgstr "Tillat uautentisert tilgang til kalenderhendelser via offentlige HTML-, ICS- og JSON-URL-er. Nødvendig for deling av kalendere med eksterne apper."
+
+#: 
+msgid "Allow visitors to create their own family record via the self-registration page"
+msgstr "Tillat besøkende å opprette sin egen familiepost via siden for selvregistrering"
+
+#: 
 msgid "Allow visitors to self-register as new families."
 msgstr "Tillat besøkende å registrere seg som nye familier."
+
+#. plugin:external-backup:section:5:content
+#: 
+msgid "Any WebDAV-compatible service works with this plugin:\n"
+"\n"
+"- Nextcloud (recommended)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (with WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx with WebDAV module\n"
+"\n"
+"Note: Some services require app-specific passwords for WebDAV access."
+msgstr "Alle WebDAV-kompatible tjenester fungerer med denne plugin:\n"
+"\n"
+"- Nextcloud (anbefalt)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (med WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx med WebDAV-modul\n"
+"\n"
+"Merk: Noen tjenester krever appspesifikke passord for WebDAV-tilgang."
 
 #. plugin:openlp:section:4:title
 #: 
 msgid "Authentication"
 msgstr "Autentisering"
+
+#. plugin:openlp:section:4:content
+#: 
+msgid "Authentication is required for API v2 if you've enabled it in OpenLP's Remote plugin settings. The plugin uses HTTP Basic Authentication. Most local network setups don't require authentication, but it's recommended for security."
+msgstr "Autentisering er nødvendig for API v2 hvis du har aktivert det i OpenLPs eksterntilgang-plugin-innstillinger. Plugin-en bruker HTTP Basic Authentication. De fleste lokale nettverksoppsett krever ikke autentisering, men det anbefales av sikkerhetshensyn."
 
 #: 
 msgid "Auto TLS"
@@ -13761,6 +13645,69 @@ msgstr "Automatisk sikkerhetskopiering"
 msgid "BCC All Mail To"
 msgstr "BCC all post til"
 
+#. plugin:external-backup:section:4:content
+#: 
+msgid "Before relying on external backups, test your connection:\n"
+"1. Go to Plugins > External Backup\n"
+"2. Click 'Test WebDAV Connection'\n"
+"3. Verify you see a success message\n"
+"\n"
+"Common issues:\n"
+"- 401/403 errors: Check username and password\n"
+"- Connection timeout: Verify the endpoint URL is correct\n"
+"- Certificate errors: Ensure the WebDAV server has a valid SSL certificate"
+msgstr "Før du stoler på eksterne sikkerhetskopier, test tilkoblingen:\n"
+"1. Gå til Plugins > Ekstern sikkerhetskopiering\n"
+"2. Klikk på 'Test WebDAV-tilkobling'\n"
+"3. Bekreft at du ser en suksessmelding\n"
+"\n"
+"Vanlige problemer:\n"
+"- 401/403-feil: Kontroller brukernavn og passord\n"
+"- Tilkoblingstidsavbrudd: Verifiser at endpoint-URL-en er korrekt\n"
+"- Sertifikatfeil: Sørg for at WebDAV-serveren har et gyldig SSL-sertifikat"
+
+#. plugin:gravatar:section:1:content
+#: 
+msgid "Choose what appears when no Gravatar exists:\n"
+"• Mystery Person - Gray silhouette outline\n"
+"• Identicon - Geometric pattern based on email\n"
+"• MonsterID - Unique generated monster face\n"
+"• Wavatar - Abstract generated face\n"
+"• Retro - 8-bit arcade-style pixel art\n"
+"• RoboHash - Unique generated robot\n"
+"• Blank - Transparent (falls back to initials)"
+msgstr "Velg hva som vises når ingen Gravatar finnes:\n"
+"• Mystery Person - Grå silhuettoversikt\n"
+"• Identicon - Geometrisk mønster basert på e-post\n"
+"• MonsterID - Unikt generert monsterfjes\n"
+"• Wavatar - Abstrakt generert ansikt\n"
+"• Retro - 8-bits pikseltegning i arkadestil\n"
+"• RoboHash - Unik generert robot\n"
+"• Blank - Gjennomsiktig (faller tilbake til initialer)"
+
+#: 
+msgid "Comma-separated query IDs that require finance permissions to view"
+msgstr "Kommaseparerte spørre-ID-er som krever finanstillatelser for å se"
+
+#. plugin:custom-links:section:4:content
+#: 
+msgid "Common uses for custom links:\n"
+"- Church website\n"
+"- Online giving portal\n"
+"- Volunteer signup forms\n"
+"- Denomination resources\n"
+"- Partner organization sites\n"
+"- Cloud storage folders\n"
+"- Event registration pages"
+msgstr "Vanlige bruksområder for egendefinerte lenker:\n"
+"- Kirkens nettsted\n"
+"- Nettbasert gaveportal\n"
+"- Påmeldingsskjemaer for frivillige\n"
+"- Ressurser fra kirkesamfunnet\n"
+"- Partnerorganisasjoners nettsider\n"
+"- Skylagringsmapper\n"
+"- Påmeldingssider for arrangementer"
+
 #. plugin:external-backup:section:1:title
 #: 
 msgid "Configuration"
@@ -13774,11 +13721,6 @@ msgstr "Kontinent"
 #: 
 msgid "Costs"
 msgstr "Kostnader"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Kredittkortpersoner"
 
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
@@ -13830,17 +13772,28 @@ msgid "Enable External Calendar API"
 msgstr "Aktiver ekstern kalender-API"
 
 #: 
+msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
+msgstr "Aktiver e-postutsending fra ChurchCRM. Nødvendig for tilbakestilling av passord, varsler og e-postlenker."
+
+#: 
+msgid "Enable if your SMTP server requires a username and password"
+msgstr "Aktiver hvis SMTP-serveren din krever brukernavn og passord"
+
+#: 
+msgid "Enable or disable the Sunday School module and sidebar menu."
+msgstr "Aktiver eller deaktiver søndagsskolemodullen og sidemenyen."
+
+#: 
+msgid "Enable the use of numbered donation envelopes for tracking contributions"
+msgstr "Aktiver bruk av nummererte gavekuverter for sporing av bidrag"
+
+#: 
 msgid "Enable use of donation envelopes"
 msgstr "Aktiver bruk av gavekuverter"
 
 #: 
 msgid "Enable use of scanned checks"
 msgstr "Aktiver bruk av skannede sjekker"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Familieløfte etter regnskapsår"
 
 #. plugin:mailchimp:section:1:title
 #: 
@@ -13851,11 +13804,6 @@ msgstr "Funksjoner"
 msgid "Finance permission query IDs"
 msgstr "Finansieringstillatelse spørre-ID-er"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Finn registrerte studenter"
-
 #: 
 msgid "Find family"
 msgstr "Finn familie"
@@ -13865,10 +13813,20 @@ msgstr "Finn familie"
 msgid "Finding Your Server URL"
 msgstr "Finne server-URL-en din"
 
-#. Context: queryparameters_qrp
+#. plugin:custom-links:section:3:content
 #: 
-msgid "Fiscal Year."
-msgstr "Regnskapsår."
+msgid "For security:\n"
+"- Only administrators can add or remove links\n"
+"- The 'Manage Links' option only appears for administrators\n"
+"- Links must use http:// or https:// protocols\n"
+"- HTML tags are not allowed in names or URLs\n"
+"- All input is validated and sanitized"
+msgstr "For sikkerhet:\n"
+"- Bare administratorer kan legge til eller fjerne lenker\n"
+"- Alternativet 'Administrer lenker' vises bare for administratorer\n"
+"- Lenker må bruke http:// eller https:// protokoller\n"
+"- HTML-koder er ikke tillatt i navn eller URL-er\n"
+"- All inndata valideres og renses"
 
 #. plugin:google-analytics:link:1:label
 #: 
@@ -13885,10 +13843,25 @@ msgstr "Komme i gang"
 msgid "Getting Your GA4 Measurement ID"
 msgstr "Hente GA4 målings-ID"
 
+#. plugin:google-analytics:summary
+#: 
+msgid "Google Analytics 4 (GA4) tracks how users interact with ChurchCRM, providing insights into page views, user engagement, and feature usage."
+msgstr "Google Analytics 4 (GA4) sporer hvordan brukere samhandler med ChurchCRM, og gir innsikt i sidevisninger, brukerengasjement og funksjonsbruk."
+
 #. plugin:google-analytics:link:0:label
 #: 
 msgid "Google Analytics Help"
 msgstr "Google Analytics-hjelp"
+
+#. plugin:google-analytics:section:2:content
+#: 
+msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
+msgstr "Google Analytics samler inn anonymiserte bruksdata. Ingen personlig informasjon fra ChurchCRM-poster sendes til Google. Vurder å legge til et personvernvarsel i kirkens datapolicy."
+
+#. plugin:gravatar:summary
+#: 
+msgid "Gravatar (Globally Recognized Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM."
+msgstr "Gravatar (Globally Recognized Avatar) viser profilbilder fra gravatar.com for medlemmer som ikke har lastet opp bilder i ChurchCRM."
 
 #. plugin:gravatar:link:1:label
 #: 
@@ -13900,10 +13873,10 @@ msgstr "Gravatar bildealternativer"
 msgid "Gravatar Website"
 msgstr "Gravatar nettsted"
 
-#. Context: queryparameters_qrp
+#. plugin:gravatar:section:2:content
 #: 
-msgid "Group of registered students"
-msgstr "Gruppe av registrerte studenter"
+msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
+msgstr "Gravatar fungerer ved å konvertere e-postadresser til en hash (MD5). Den faktiske e-postadressen sendes aldri til Gravatars servere – kun hashen brukes til å slå opp bildet."
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -13923,6 +13896,77 @@ msgstr "Slik fungerer det"
 msgid "How many checks to print per deposit slip page"
 msgstr "Hvor mange sjekker som skal skrives ut per innskuddskvitteringsside"
 
+#. plugin:vonage:section:3:content
+#: 
+msgid "If SMS messages aren't being sent:\n"
+"1. Verify API Key and Secret are correct (no extra spaces)\n"
+"2. Check that the From Number is a valid Vonage number you own\n"
+"3. Ensure recipient phone numbers include country code\n"
+"4. Check your Vonage account balance\n"
+"5. Review the Vonage Dashboard > SMS > Logs for delivery status"
+msgstr "Hvis SMS-meldinger ikke sendes:\n"
+"1. Verifiser at API-nøkkel og hemmelighet er korrekte (ingen ekstra mellomrom)\n"
+"2. Kontroller at Fra-nummeret er et gyldig Vonage-nummer du eier\n"
+"3. Sørg for at mottakerens telefonnumre inkluderer landkode\n"
+"4. Kontroller Vonage-kontosaldoen din\n"
+"5. Se gjennom Vonage Dashboard > SMS > Logger for leveringsstatus"
+
+#. plugin:openlp:section:5:content
+#: 
+msgid "If alerts aren't appearing:\n"
+"1. Verify OpenLP is running and the Remote plugin is active\n"
+"2. Ensure the Alerts plugin is enabled in OpenLP\n"
+"3. Check that the server URL is correct (try accessing it in a browser)\n"
+"4. Verify firewall settings allow connections on port 4316\n"
+"5. If using authentication, verify credentials are correct"
+msgstr "Hvis varsler ikke vises:\n"
+"1. Verifiser at OpenLP kjører og at eksterntilgang-plugin er aktiv\n"
+"2. Sørg for at Varsler-plugin er aktivert i OpenLP\n"
+"3. Kontroller at server-URL-en er korrekt (prøv å åpne den i en nettleser)\n"
+"4. Verifiser at brannmurinnstillingene tillater tilkoblinger på port 4316\n"
+"5. Hvis du bruker autentisering, verifiser at legitimasjonen er korrekt"
+
+#. plugin:vonage:section:5:content
+#: 
+msgid "If messages are sent but not received:\n"
+"1. Check Vonage Dashboard > SMS > Logs for delivery status\n"
+"2. Verify the recipient number is correct and can receive SMS\n"
+"3. Some carriers may block messages from unknown numbers\n"
+"4. Check if the destination country has SMS restrictions"
+msgstr "Hvis meldinger sendes men ikke mottas:\n"
+"1. Kontroller Vonage Dashboard > SMS > Logger for leveringsstatus\n"
+"2. Verifiser at mottakernummeret er korrekt og kan motta SMS\n"
+"3. Noen operatører kan blokkere meldinger fra ukjente numre\n"
+"4. Kontroller om destinasjonslandet har SMS-restriksjoner"
+
+#. plugin:vonage:section:4:content
+#: 
+msgid "If you receive invalid sender ID errors:\n"
+"1. Use a phone number you've purchased from Vonage\n"
+"2. Format the number in E.164 format (+14155551234)\n"
+"3. Note: Alphanumeric sender IDs may be restricted in some countries"
+msgstr "Hvis du mottar feil med ugyldig avsender-ID:\n"
+"1. Bruk et telefonnummer du har kjøpt fra Vonage\n"
+"2. Formater nummeret i E.164-format (+14155551234)\n"
+"3. Merk: Alfanumeriske avsender-ID-er kan være begrenset i noen land"
+
+#. plugin:external-backup:section:6:content
+#: 
+msgid "Important security notes:\n"
+"\n"
+"1. Always use HTTPS endpoints to encrypt backups in transit\n"
+"2. Use app-specific passwords when available (Nextcloud, ownCloud)\n"
+"3. Store backups in a folder with restricted access\n"
+"4. Periodically download and verify your backups are valid\n"
+"5. Consider encrypting sensitive backups with external tools before uploading"
+msgstr "Viktige sikkerhetsmerkader:\n"
+"\n"
+"1. Bruk alltid HTTPS-endepunkter for å kryptere sikkerhetskopier under overføring\n"
+"2. Bruk appspesifikke passord når tilgjengelig (Nextcloud, ownCloud)\n"
+"3. Lagre sikkerhetskopier i en mappe med begrenset tilgang\n"
+"4. Last ned og verifiser at sikkerhetskopiene dine er gyldige regelmessig\n"
+"5. Vurder å kryptere sensitive sikkerhetskopier med eksterne verktøy før opplasting"
+
 #: 
 msgid "Initial zoom level when opening the map"
 msgstr "Innledende zoomnivå ved åpning av kartet"
@@ -13934,6 +13978,11 @@ msgstr "Finn ut mer"
 #: 
 msgid "Log Settings"
 msgstr "Logginnstillinger"
+
+#. plugin:mailchimp:summary
+#: 
+msgid "MailChimp Integration enables synchronization between ChurchCRM contacts and your MailChimp email marketing lists."
+msgstr "MailChimp-integrasjon muliggjør synkronisering mellom ChurchCRM-kontakter og dine MailChimp-e-postmarkedsføringslister."
 
 #. plugin:custom-links:section:2:title
 #: 
@@ -13959,10 +14008,10 @@ msgstr "OpenLP dokumentasjon"
 msgid "OpenLP Website"
 msgstr "OpenLP nettsted"
 
-#. Context: query_qry
+#. plugin:openlp:summary
 #: 
-msgid "People who are configured to pay by credit card."
-msgstr "Personer som er konfigurert til å betale med kredittkort."
+msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
+msgstr "OpenLP er gratis presentasjonsverktøy med åpen kildekode designet for kirker. Denne plugin-en lar ChurchCRM sende varsler og meldinger direkte til OpenLP-skjermen."
 
 #. plugin:mailchimp:section:3:title
 #: 
@@ -13973,6 +14022,21 @@ msgstr "Person/familie-integrasjon"
 #: 
 msgid "Phone Number Format"
 msgstr "Telefonnummerformat"
+
+#. plugin:vonage:section:2:content
+#: 
+msgid "Phone numbers should be in E.164 format: country code + number. Examples:\n"
+"- US: +14155551234\n"
+"- UK: +447700900123\n"
+"- Australia: +61412345678\n"
+"\n"
+"Recipient phone numbers in ChurchCRM member profiles should include the country code for SMS to work correctly."
+msgstr "Telefonnumre bør være i E.164-format: landkode + nummer. Eksempler:\n"
+"- USA: +14155551234\n"
+"- Storbritannia: +447700900123\n"
+"- Australia: +61412345678\n"
+"\n"
+"Mottakerens telefonnumre i ChurchCRM-medlemsprofiler bør inkludere landkode for at SMS skal fungere korrekt."
 
 #. plugin:mailchimp:section:4:title
 #: 
@@ -13992,11 +14056,6 @@ msgstr "Personvernmerknad"
 #: 
 msgid "Quick Settings"
 msgstr "Hurtiginnstillinger"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Registrerte studenter"
 
 #: 
 msgid "SMTP Authentication"
@@ -14023,6 +14082,22 @@ msgid "Setup"
 msgstr "Oppsett"
 
 #: 
+msgid "Show a breakdown of bill denominations on the deposit slip report"
+msgstr "Vis en oversikt over seddelpålydende på innbetalingsslipprapporten"
+
+#: 
+msgid "Show or hide the Events menu in the main navigation."
+msgstr "Vis eller skjul Arrangementer-menyen i hovednavigasjonen."
+
+#: 
+msgid "Show or hide the Events section in the main navigation menu"
+msgstr "Vis eller skjul Arrangementer-delen i hovednavigasjonsmenyen"
+
+#: 
+msgid "Show or hide the Sunday School module in the sidebar navigation"
+msgstr "Vis eller skjul søndagsskolemodullen i sidenavigasjonen"
+
+#: 
 msgid "Street"
 msgstr "Gate"
 
@@ -14039,6 +14114,89 @@ msgstr "Støttede tjenester"
 #: 
 msgid "Testing Connection"
 msgstr "Teste tilkobling"
+
+#. plugin:custom-links:section:0:content
+#: 
+msgid "The Custom Menu Links plugin allows administrators to add external links to the navigation menu. When enabled, a 'Links' menu appears in the sidebar containing all configured links."
+msgstr "Plugin-en for tilpassede menylenker lar administratorer legge til eksterne lenker i navigasjonsmenyen. Når aktivert, vises en 'Lenker'-meny i sidefeltet med alle konfigurerte lenker."
+
+#. plugin:external-backup:section:0:content
+#: 
+msgid "The External Backup plugin allows you to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services. This includes popular services like Nextcloud, ownCloud, or any server supporting WebDAV protocol."
+msgstr "Plugin-en for ekstern sikkerhetskopiering lar deg automatisk sikkerhetskopiere ChurchCRM-databasen til WebDAV-kompatible skylagringstjenester. Dette inkluderer populære tjenester som Nextcloud, ownCloud eller enhver server som støtter WebDAV-protokollen."
+
+#. plugin:openlp:section:3:content
+#: 
+msgid "The default OpenLP port is 4316. Your server URL will typically be: http://192.168.x.x:4316 where 192.168.x.x is the IP address of the computer running OpenLP. You can find this in OpenLP under Tools → Open Service Manager."
+msgstr "Standard OpenLP-port er 4316. Server-URL-en din vil vanligvis være: http://192.168.x.x:4316 der 192.168.x.x er IP-adressen til datamaskinen som kjører OpenLP. Du finner dette i OpenLP under Verktøy → Åpne tjenesteleder."
+
+#: 
+msgid "The month that starts your organization's fiscal year"
+msgstr "Måneden som starter organisasjonens regnskapsår"
+
+#. plugin:vonage:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an SMS can be sent to notify parents or guardians."
+msgstr "Denne plugin-en brukes for øyeblikket til kiosk-innsjekkingsvarsler. Når et barn sjekkes inn i en søndagsskoleklasse via kiosksystemet, kan en SMS sendes for å varsle foreldre eller foresatte."
+
+#. plugin:openlp:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an alert can be sent to the OpenLP projector display to notify parents or volunteers."
+msgstr "Denne plugin-en brukes for øyeblikket til kiosk-innsjekkingsvarsler. Når et barn sjekkes inn i en søndagsskoleklasse via kiosksystemet, kan et varsel sendes til OpenLP-projektorskjermen for å varsle foreldre eller frivillige."
+
+#. plugin:mailchimp:section:4:content
+#: 
+msgid "This plugin transmits email addresses to MailChimp servers. Ensure you have appropriate consent from your members before syncing their information to third-party services like MailChimp."
+msgstr "Denne plugin-en sender e-postadresser til MailChimps servere. Sørg for at du har passende samtykke fra dine medlemmer før du synkroniserer informasjonen deres til tredjepartstjenester som MailChimp."
+
+#. plugin:custom-links:section:1:content
+#: 
+msgid "To add a new link:\n"
+"1. Go to the Links menu in the sidebar and click 'Manage Links'\n"
+"2. Enter a display name (2-50 characters)\n"
+"3. Enter the full URL (must start with http:// or https://)\n"
+"4. Click 'Add Link'\n"
+"\n"
+"The link will immediately appear in the Links menu."
+msgstr "For å legge til en ny lenke:\n"
+"1. Gå til Lenker-menyen i sidefeltet og klikk på 'Administrer lenker'\n"
+"2. Skriv inn et visningsnavn (2-50 tegn)\n"
+"3. Skriv inn den fullstendige URL-en (må starte med http:// eller https://)\n"
+"4. Klikk på 'Legg til lenke'\n"
+"\n"
+"Lenken vil umiddelbart vises i Lenker-menyen."
+
+#. plugin:external-backup:section:1:content
+#: 
+msgid "To configure external backups:\n"
+"1. Go to Admin > Plugins and find 'External Backup (WebDAV)'\n"
+"2. Click the settings icon to expand the configuration panel\n"
+"3. Enter your WebDAV endpoint URL (e.g., https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Enter your username and password\n"
+"5. Optionally set an auto-backup interval in hours\n"
+"6. Save your settings"
+msgstr "For å konfigurere eksterne sikkerhetskopier:\n"
+"1. Gå til Administrator > Plugins og finn 'Ekstern sikkerhetskopiering (WebDAV)'\n"
+"2. Klikk på innstillingsikonet for å utvide konfigurasjonstabellen\n"
+"3. Skriv inn WebDAV-endepunkt-URL-en (f.eks. https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Skriv inn brukernavn og passord\n"
+"5. Angi eventuelt et automatisk sikkerhetskopieringsintervall i timer\n"
+"6. Lagre innstillingene dine"
+
+#. plugin:mailchimp:section:0:content
+#: 
+msgid "To use MailChimp Integration, you need a MailChimp account and an API key.\n"
+"\n"
+"1. Log in to your MailChimp account\n"
+"2. Go to Account > Extras > API Keys\n"
+"3. Create a new API key or copy an existing one\n"
+"4. Enter the API key in the plugin settings"
+msgstr "For å bruke MailChimp-integrasjon trenger du en MailChimp-konto og en API-nøkkel.\n"
+"\n"
+"1. Logg inn på din MailChimp-konto\n"
+"2. Gå til Konto > Ekstra > API-nøkler\n"
+"3. Opprett en ny API-nøkkel eller kopier en eksisterende\n"
+"4. Skriv inn API-nøkkelen i plugin-innstillingene"
 
 #. plugin:openlp:section:5:title
 #: 
@@ -14069,11 +14227,6 @@ msgstr "Oppgraderingsinnstillinger"
 msgid "Use Cases"
 msgstr "Brukstilfeller"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Brukertillatelse til å eksportere CSV-filer"
-
 #. plugin:vonage:link:2:label
 #: 
 msgid "Vonage Pricing"
@@ -14084,8 +14237,498 @@ msgstr "Vonage priser"
 msgid "Vonage SMS API Documentation"
 msgstr "Vonage SMS API dokumentasjon"
 
+#. plugin:vonage:summary
+#: 
+msgid "Vonage SMS enables text message notifications for ChurchCRM using the Vonage API (formerly Nexmo). Send SMS alerts to parents when their child checks in via the kiosk system."
+msgstr "Vonage SMS muliggjør tekstmeldingsvarsler for ChurchCRM ved hjelp av Vonage API (tidligere Nexmo). Send SMS-varsler til foreldre når barnet deres sjekker inn via kiosksystemet."
+
+#. plugin:vonage:section:6:content
+#: 
+msgid "Vonage charges per SMS sent. Pricing varies by destination country. See the Vonage pricing page for current rates. New accounts receive free trial credit for testing."
+msgstr "Vonage tar betalt per sendte SMS. Priser varierer etter destinasjonsland. Se Vonages prisside for gjeldende satser. Nye kontoer mottar gratis prøvekreditt for testing."
+
 #. plugin:google-analytics:section:1:title
 #: 
 msgid "What Gets Tracked"
 msgstr "Hva spores"
+
+#. plugin:mailchimp:section:3:content
+#: 
+msgid "When MailChimp is configured, a 'MailChimp' tab appears on Person view pages showing:\n"
+"\n"
+"- Email subscription status across all lists\n"
+"- Which lists the person is subscribed to\n"
+"- Subscription statistics"
+msgstr "Når MailChimp er konfigurert, vises en 'MailChimp'-fane på personvisningssider som viser:\n"
+"\n"
+"- E-postabonnementstatus på tvers av alle lister\n"
+"- Hvilke lister personen er abonnert på\n"
+"- Abonnementsstatistikk"
+
+#. plugin:gravatar:section:0:content
+#: 
+msgid "When a member doesn't have an uploaded photo, ChurchCRM checks if they have a Gravatar associated with their email address. If a Gravatar exists, it displays that image. If not, the configured default image style is used."
+msgstr "Når et medlem ikke har et opplastet bilde, sjekker ChurchCRM om de har en Gravatar knyttet til e-postadressen sin. Hvis en Gravatar finnes, vises det bildet. Hvis ikke, brukes den konfigurerte standardbildestilen."
+
+#. plugin:external-backup:section:2:content
+#: 
+msgid "When auto-backup is enabled (interval > 0 hours), ChurchCRM will automatically create and upload a full database backup at the specified interval. The backup runs as part of normal page loads, so the system must have regular user activity to trigger backups.\n"
+"\n"
+"Recommended intervals:\n"
+"- Daily backup: 24 hours\n"
+"- Twice daily: 12 hours\n"
+"- Weekly: 168 hours"
+msgstr "Når automatisk sikkerhetskopiering er aktivert (intervall > 0 timer), vil ChurchCRM automatisk opprette og laste opp en fullstendig databasesikkerhetskopiering ved det angitte intervallet. Sikkerhetskopiering kjøres som en del av normale sideinnlastinger, så systemet må ha regelmessig brukeraktivitet for å utløse sikkerhetskopier.\n"
+"\n"
+"Anbefalte intervaller:\n"
+"- Daglig sikkerhetskopiering: 24 timer\n"
+"- To ganger daglig: 12 timer\n"
+"- Ukentlig: 168 timer"
+
+#. plugin:openlp:section:1:content
+#: 
+msgid "When enabled and configured, ChurchCRM sends alert messages to your OpenLP server using the API v2 endpoint (POST /api/v2/plugins/alerts). These alerts appear as overlay notifications on your projected display."
+msgstr "Når aktivert og konfigurert, sender ChurchCRM varselmeldinger til OpenLP-serveren din ved hjelp av API v2-endepunktet (POST /api/v2/plugins/alerts). Disse varslene vises som overlegg-varsler på den projiserte skjermen."
+
+#: 
+msgid "When enabled, hides the address field for people not assigned to a family"
+msgstr "Når aktivert, skjules adressefeltet for personer som ikke er tilknyttet en familie"
+
+#: 
+msgid "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background."
+msgstr "Når aktivert, skjules breddegrad-/lengdegradsfeltene i familieeditoren. Geokoding kjøres fortsatt i bakgrunnen."
+
+#. plugin:external-backup:section:3:content
+#: 
+msgid "You can also trigger a manual backup at any time:\n"
+"1. Go to the External Backup settings page (Plugins > External Backup)\n"
+"2. Select backup type (Database Only or Full Backup)\n"
+"3. Click 'Backup to WebDAV Now'\n"
+"\n"
+"Database Only backups are smaller and faster. Full backups include uploaded photos."
+msgstr "Du kan også utløse en manuell sikkerhetskopiering når som helst:\n"
+"1. Gå til siden for innstillinger for ekstern sikkerhetskopiering (Plugins > Ekstern sikkerhetskopiering)\n"
+"2. Velg sikkerhetskopieringstype (Kun database eller Full sikkerhetskopiering)\n"
+"3. Klikk på 'Sikkerhetskopier til WebDAV nå'\n"
+"\n"
+"Kun database-sikkerhetskopier er mindre og raskere. Fullstendige sikkerhetskopier inkluderer opplastede bilder."
+
+#. plugin:google-analytics:section:1:content
+#: 
+msgid "• Page views and navigation patterns\n"
+"• Session duration and engagement\n"
+"• User demographics (if enabled in GA4)\n"
+"• Device and browser information"
+msgstr "• Sidevisninger og navigasjonsmønstre\n"
+"• Sesjonsvarighet og engasjement\n"
+"• Brukerdemografi (hvis aktivert i GA4)\n"
+"• Enhets- og nettleserinformasjon"
+
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "Filstørrelsen overskrider servergrensen på %s"
+
+#: 
+msgid "Missing image data in request"
+msgstr "Manglende bildedata i forespørselen"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Finn personer som ikke deltok på et arrangement"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Manglende personer"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Velg ønsket arrangement"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Avansert filtrering etter gruppe, klassifikasjon og rolle"
+
+#: 
+msgid "All congregation members included"
+msgstr "Alle menighetsmedlemmer inkludert"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ChMeetings-eksport fullført"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "ChMeetings-kompatibelt kolonneformat"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Kontaktinformasjon, familieroller og viktige datoer"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Opprett en fullstendig sikkerhetskopi av kirkens database. Last ned en database-kun SQL-fil eller et komplett arkiv inkludert opplastede bilder."
+
+#: 
+msgid "Database Backup"
+msgstr "Databasesikkerhetskopi"
+
+#: 
+msgid "Export"
+msgstr "Eksporter"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Eksporter menighetsdata til CSV-format. Velg hvilke felt som skal inkluderes og filtrer etter klassifikasjon, gruppe, kjønn og mer."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Eksporter alle personer i formatet forventet av ChMeetings, noe som gjør det enkelt å synkronisere menighetsdata med ChMeetings-plattformen."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Eksporter kirkens data til ulike formater"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Ekstern (WebDAV) sikkerhetskopi via plugin"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Kunne ikke eksportere ChMeetings CSV"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Familie- eller individuell postoppsett"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Fleksibelt feltvalg"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Gå til databasesikkerhetskopi"
+
+#: 
+msgid "Open CSV Export"
+msgstr "Åpne CSV-eksport"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Gjenopprett fra systemsikkerhetskopi-siden"
+
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "En systemoppdatering er tilgjengelig. Vennligst oppgrader installasjonen din."
+
+#: 
+msgid "API Access"
+msgstr "API-tilgang"
+
+#: 
+msgid "API Key"
+msgstr "API-nøkkel"
+
+#: 
+msgid "API key regenerated"
+msgstr "API-nøkkel regenerert"
+
+#: 
+msgid "Account"
+msgstr "Konto"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Avanserte innstillinger"
+
+#: 
+msgid "An error occurred."
+msgstr "Det oppstod en feil."
+
+#: 
+msgid "Appearance"
+msgstr "Utseende"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Tilbake til finansoversikt"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Tilbake til gruppeoversikt"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Tilbake til personeroversikt"
+
+#: 
+msgid "Blue"
+msgstr "Blå"
+
+#: 
+msgid "Change Photo"
+msgstr "Endre bilde"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "Endringer trer ikke i kraft før neste innlogging."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Velg mellom lyst og mørkt fargetema"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "ChurchCRM-oversettelser administreres av fellesskapet på POEditor. Du kan hjelpe ved å:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Tilpass utseendet og opplevelsen av applikasjonen"
+
+#: 
+msgid "Dark"
+msgstr "Mørk"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Kun database (.sql) eller fullstendig arkiv (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Standard antall rader vist i datatabeller. Trer i kraft ved neste sideinnlasting."
+
+#: 
+msgid "Edit own family only"
+msgstr "Rediger kun egen familie"
+
+#: 
+msgid "Enter text here..."
+msgstr "Skriv inn tekst her..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Kunne ikke avbryte påmeldingen. Vennligst prøv igjen."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Kunne ikke slette arrangementet. Vennligst prøv igjen."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "Kunne ikke deaktivere tofaktorautentisering. Vennligst prøv igjen."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "Kunne ikke generere QR-kode. Vennligst prøv igjen."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "Kunne ikke laste inn kalenderdata. Vennligst prøv igjen."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Kunne ikke laste inn arrangementet. Vennligst prøv igjen."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "Kunne ikke laste inn gjenopprettingskoder. Vennligst oppdater siden."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Kunne ikke lagre arrangementet. Vennligst prøv igjen."
+
+#: 
+msgid "Failed to save setting"
+msgstr "Kunne ikke lagre innstilling"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Filipinsk - Filippinene"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Rette feilaktige eller klønete oversettelser på ditt språk"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "Fant en feil med oversettelser?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Gir alle rettigheter"
+
+#: 
+msgid "Green"
+msgstr "Grønn"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Hjelp til å forbedre oversettelser"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "Hvis du legger merke til forvrengte tegn, HTML-enheter som vises som tekst, eller oversettelser som ødelegger sideoppsettet, vennligst rapporter problemet på GitHub slik at det kan rettes for alle."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "Inkluder API-nøkkelen din i forespørsler ved hjelp av x-api-key-hodet:"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Ugyldig JSON-verdi — innstillingen ble ikke lagret. Vennligst korriger den og prøv igjen."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "Bli med i oversettelsesprosjektet på POEditor"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Språk- og regionsinnstillinger"
+
+#: 
+msgid "Light"
+msgstr "Lys"
+
+#: 
+msgid "Manage 2FA"
+msgstr "Administrer 2FA"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "Administrer tilleggsinnstillinger som e-postdelimitere og visningsalternativer"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Administrer API-nøkkelen din for eksterne integrasjoner"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "Metode ikke tillatt"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "Manglende eller feilaktige oversettelser?"
+
+#: 
+msgid "My Account"
+msgstr "Min konto"
+
+#: 
+msgid "Orange"
+msgstr "Oransje"
+
+#: 
+msgid "Override the system default locale"
+msgstr "Overstyr systemets standardspråk"
+
+#: 
+msgid "Page Not Found"
+msgstr "Side ikke funnet"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "Prosentandel av strenger oversatt for ditt nåværende språk"
+
+#: 
+msgid "Pink"
+msgstr "Rosa"
+
+#: 
+msgid "Primary Color"
+msgstr "Primærfarge"
+
+#: 
+msgid "Profile and security"
+msgstr "Profil og sikkerhet"
+
+#: 
+msgid "Purple"
+msgstr "Lilla"
+
+#: 
+msgid "Red"
+msgstr "Rød"
+
+#: 
+msgid "Regenerate"
+msgstr "Regenerer"
+
+#: 
+msgid "Rows per page"
+msgstr "Rader per side"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Sett tillatelse til Sann for å tillate denne brukeren å endre innstillingen selv."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Angi aksentsfargen brukt for knapper, lenker og aktive elementer"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Foreslå bedre formuleringer for eksisterende oversettelser"
+
+#: 
+msgid "System Update Available"
+msgstr "Systemoppdatering tilgjengelig"
+
+#: 
+msgid "Tables"
+msgstr "Tabeller"
+
+#: 
+msgid "Teal"
+msgstr "Blågrønn"
+
+#: 
+msgid "Theme Mode"
+msgstr "Temainnstilling"
+
+#: 
+msgid "Toggle search"
+msgstr "Slå av/på søk"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Oversette manglende strenger for å forbedre dekning"
+
+#: 
+msgid "Translation Progress"
+msgstr "Oversettelsesframgang"
+
+#: 
+msgid "Usage"
+msgstr "Bruk"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "Bruk denne nøkkelen til å autentisere API-forespørsler. Regenerering vil ugyldiggjøre den gjeldende nøkkelen."
+
+#: 
+msgid "User Config"
+msgstr "Brukerkonfigurasjon"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Verifisering mislyktes. Vennligst prøv igjen."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "Versjon %s er tilgjengelig. Vennligst oppgrader installasjonen din."
+
+#: 
+msgid "View All"
+msgstr "Vis alle"
+
+#: 
+msgid "Yellow"
+msgstr "Gul"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "Dine nåværende tilgangsnivåer (skrivebeskyttet)"
 

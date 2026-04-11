@@ -266,10 +266,6 @@ msgid "Add Cart to Event"
 msgstr "Voeg werkbestand toe aan activiteit"
 
 #: 
-msgid "OR"
-msgstr "OF"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Uw werkbestand is leeg."
 
@@ -389,10 +385,6 @@ msgstr "Ja"
 #: 
 msgid "No"
 msgstr "Nee"
-
-#: 
-msgid "Event Checkin"
-msgstr "Mutaties per activiteit"
 
 #: 
 msgid "Select Event"
@@ -644,10 +636,6 @@ msgid "Church Event Editor"
 msgstr "Activiteiten"
 
 #: 
-msgid "Edit Event Types"
-msgstr "Hoofdactiviteiten"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Hoofdactiviteiten"
 
@@ -717,20 +705,8 @@ msgid "Create a new Event"
 msgstr "Nieuwe activiteit"
 
 #: 
-msgid " errors. Please see below"
-msgstr "fouten. Zie hieronder"
-
-#: 
 msgid "Select your event type"
 msgstr "Selecteer hoofdactiviteit"
-
-#: 
-msgid "You must pick an event type."
-msgstr "Selectie hoofdactiviteit is verplicht"
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "Geen opkomst tellingen opgenomen"
 
 #: 
 msgid "Event Status"
@@ -2126,14 +2102,6 @@ msgid "User Editor"
 msgstr "Gebruikers"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Let op: Wijzigingen worden pas effectief na opnieuw inloggen."
-
-#: 
-msgid "Person to Make User"
-msgstr "Persoon die Gebruiker wordt"
-
-#: 
 msgid "User"
 msgstr "Gebruiker"
 
@@ -2174,24 +2142,8 @@ msgid "Edit Self"
 msgstr "Bewerk Eigen Gegevens"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Bewerk alleen uw eigen gezin)"
-
-#: 
 msgid "Admin"
 msgstr "Instellingen"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Geeft alle rechten.)"
-
-#: 
-msgid "Style"
-msgstr "Stijl"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Geef deze gebruiker de mogelijkheid te geven om zijn huidige gegevens te wijzigen."
 
 #: 
 msgid "Last Login"
@@ -2913,10 +2865,6 @@ msgid "Date Entered"
 msgstr "Datum opgevoerd"
 
 #: 
-msgid "There were "
-msgstr "Daar waren"
-
-#: 
 msgid "Inactive"
 msgstr "Niet actieve"
 
@@ -3148,10 +3096,6 @@ msgstr "Data & prints"
 #: 
 msgid "Query Menu"
 msgstr "Rapporten"
-
-#: 
-msgid "CSV Export Records"
-msgstr "CSV Export Records"
 
 #: 
 msgid "Family Properties"
@@ -4860,14 +4804,6 @@ msgid "Select event"
 msgstr "Selecteer activiteit"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "De persoon is al voor deze activiteit toegevoegd"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "Volwassen persoon die uitcheckt"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Tekst voor naam in e-mails/rapporten"
 
@@ -5423,10 +5359,6 @@ msgid "Sign out"
 msgstr "Uitloggen"
 
 #: 
-msgid "Sermon Text"
-msgstr "Tekst"
-
-#: 
 msgid "Change Settings"
 msgstr "Instellingen"
 
@@ -5938,10 +5870,6 @@ msgstr "Functies voor het resetten van de database"
 msgid "Reset Database"
 msgstr "Database resetten"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "Hierdoor worden de systeemgegevens gereset en wordt het systeem opnieuw opgestart als een nieuwe installatie."
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6053,28 +5981,12 @@ msgid "open rate"
 msgstr "open ratio"
 
 #: 
-msgid "Login Info"
-msgstr "Login Info"
-
-#: 
-msgid "Login Count"
-msgstr "Aantal aanmeldingen"
-
-#: 
-msgid "Failed Login"
-msgstr "Inloggen mislukt"
-
-#: 
 msgid "Permissions"
 msgstr "Rechten"
 
 #: 
 msgid "Manage Notes"
 msgstr "Notities beheren"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Kan geen nieuwe API-sleutel genereren"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6146,14 +6058,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Huwelijksjubilea van vandaag"
 
 #: 
-msgid "Api Key"
-msgstr "API sleutel"
-
-#: 
-msgid "Regen API Key"
-msgstr "Genereer API Key opnieuw"
-
-#: 
 msgid "View Family Page"
 msgstr "Familiepagina bekijken"
 
@@ -6168,46 +6072,6 @@ msgstr "Verifiëren"
 #: 
 msgid "Family has no emails to use"
 msgstr "Familie heeft geen e-mails om te gebruiken"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Layout blokken"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Activeer de blokken layout"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Schakel zijbalk in"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "De status van de linkerzijbalk wisselen (openen of samenvouwen)"
-
-#: 
-msgid "Tables Settings"
-msgstr "Tabellen Instellingen"
-
-#: 
-msgid "Page length"
-msgstr "Paginalengte"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Wijzig de initiële paginalengte (aantal rijen per pagina)"
-
-#: 
-msgid "User Interface"
-msgstr "Gebruikersomgeving"
-
-#: 
-msgid "Locale"
-msgstr "lokaal"
-
-#: 
-msgid "Override system locale"
-msgstr "Lokale instelling van systeem overschrijven"
 
 #: 
 msgid "Deleted"
@@ -7279,10 +7143,6 @@ msgid "All Types"
 msgstr "Alle typen"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "Weet u zeker dat u dit incheckverslag wilt verwijderen?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "Aanwezigheidstellincategorieën"
 
@@ -7323,10 +7183,6 @@ msgid "Create New Event"
 msgstr "Nieuw Evenement Maken"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "Maak een evenementtype om te beginnen."
-
-#: 
 msgid "Current DB Version"
 msgstr "Huidige Databaseversie"
 
@@ -7345,14 +7201,6 @@ msgstr "Standaard Starttijd"
 #: 
 msgid "Delete Event"
 msgstr "Evenement Verwijderen"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "Het verwijderen van een evenement verwijdert ook alle aanwezigheidstellingen. Dit evenement verwijderen?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "Het verwijderen van dit evenement verwijdert ook alle aanwezigheidsrecords. Weet je het zeker?"
 
 #: 
 msgid "Edit Event"
@@ -7420,10 +7268,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "Optioneel - Voeg preeknotities of aanvullende evenementdetails toe"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "Optioneel - laat leeg als je niet bijhoudt"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "Optionele notities over aanwezigheid..."
 
@@ -7456,24 +7300,12 @@ msgid "Search by name or email..."
 msgstr "Zoeken op naam of e-mail..."
 
 #: 
-msgid "Search for adult..."
-msgstr "Zoeken naar volwassene..."
-
-#: 
 msgid "Search for supervisor..."
 msgstr "Zoeken naar toezichthouder..."
 
 #: 
 msgid "Select Event for Check-In"
 msgstr "Selecteer Evenement voor Inchecken"
-
-#: 
-msgid "Select start and end date/time"
-msgstr "Selecteer start- en einddatum/tijd"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "Selecteer het evenement om uw winkelwagenbezoekers in te checken"
 
 #: 
 msgid "Sermon / Event Text"
@@ -7840,10 +7672,6 @@ msgstr "Gebruik externe tools (GPG, 7-Zip) om back-ups te versleutelen voordat u
 #: 
 msgid "User authentication"
 msgstr "Gebruikersverificatie"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "Gebruiker moet toestemming voor Evenement Toevoegen hebben"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8366,10 +8194,6 @@ msgid "State (Other)"
 msgstr "Staat (Ander)"
 
 #: 
-msgid "Status:"
-msgstr "Status:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Samenvatting van toezeggingen versus betalingen per fonds voor het fiscale jaar."
 
@@ -8420,10 +8244,6 @@ msgstr "Totale Stortingen:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Volg toezeggingen en betalingsvoortgang voor campagnes en budgettering van fiscale jaren."
-
-#: 
-msgid "Type:"
-msgstr "Type:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8850,10 +8670,6 @@ msgid "Disable 2FA"
 msgstr "2FA Uitschakelen"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "Exporteer alle persoongegevens in ChMeetings-indeling voor import in externe systemen."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "Exporteer naar ChMeetings CSV"
 
@@ -9108,10 +8924,6 @@ msgid "Add Your First Property Type"
 msgstr "Voeg Uw Eerste Eigenschapstype Toe"
 
 #: 
-msgid "Auto-calculated from counts above"
-msgstr "Automatisch berekend uit bovenstaande tellingen"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Door dit veld te verwijderen, verliest u onherroepelijk alle groepslidgegevens die aan dit veld zijn toegewezen!"
 
@@ -9300,10 +9112,6 @@ msgstr "Kiosk registratie uitgeschakeld"
 #: 
 msgid "Kiosk not found"
 msgstr "Kiosk niet gevonden"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "Koppel dit evenement aan een groep voor kiosk check-in functionaliteit. De groepsleden worden weergegeven op de kiosk."
 
 #: 
 msgid "Linked Group"
@@ -10505,10 +10313,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "Vereis dat alle gebruikers zich inschrijven voor tweefactorauthenticatie"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "Een kaart verschijnt hier zodra een straatadres is opgeslagen. Coördinaten worden automatisch gedetecteerd — geen handmatige invoer vereist."
-
-#: 
 msgid "Active Groups"
 msgstr "Actieve groepen"
 
@@ -10559,10 +10363,6 @@ msgstr "Familie heeft geen straatadres om te geocoderen"
 #: 
 msgid "Father"
 msgstr "Vader"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "Gegeocodeerde coördinaten:"
 
 #: 
 msgid "Geocoding failed"
@@ -10643,10 +10443,6 @@ msgstr "Tijdzone"
 #: 
 msgid "Total Groups"
 msgstr "Totaal groepen"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "Automatisch bijgewerkt bij elke opslag."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10831,14 +10627,6 @@ msgid "Add a Person"
 msgstr "Een persoon toevoegen"
 
 #: 
-msgid "Add a new pledge"
-msgstr "Een nieuwe toezegging toevoegen"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "Een betaling toevoegen aan de huidige storting"
-
-#: 
 msgid "Add all cart items to a group"
 msgstr "Alle winkelwagenartikelen aan een groep toevoegen"
 
@@ -10975,10 +10763,6 @@ msgid "Auto-mapped"
 msgstr "Automatisch toegewezen"
 
 #: 
-msgid "BCC"
-msgstr "BCC"
-
-#: 
 msgid "BCC All"
 msgstr "BCC aan allen"
 
@@ -11057,10 +10841,6 @@ msgstr "Gezinsrol wijzigen"
 #: 
 msgid "Check Out"
 msgstr "Uitchecken"
-
-#: 
-msgid "Check Out Person"
-msgstr "Persoon uitchecken"
 
 #: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
@@ -11187,10 +10967,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "Maak minimaal eens per week een handmatige back-up of schakel de plug-in Externe back-up in voor automatische WebDAV-back-ups op een schema."
 
 #: 
-msgid "Create a new deposit"
-msgstr "Nieuwe storting aanmaken"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "Gezinsinformatie en relaties aanmaken en bewerken"
 
@@ -11245,10 +11021,6 @@ msgstr "Groepsspecifieke eigenschappen voor leden definiëren"
 #: 
 msgid "Delete All"
 msgstr "Alles verwijderen"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "Incheckregistratie verwijderen"
 
 #: 
 msgid "Delete Family"
@@ -11531,10 +11303,6 @@ msgid "Generate directory listings and printed materials"
 msgstr "Ledenlijsten en drukwerk genereren"
 
 #: 
-msgid "Generate financial reports"
-msgstr "Financiële rapporten genereren"
-
-#: 
 msgid "Generate financial statements and giving reports"
 msgstr "Financiële overzichten en giftenrapporten genereren"
 
@@ -11767,14 +11535,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "E-mailhulpmiddelen en SMTP-configuratie beheren"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "Evenementnamen en categorieën beheren"
-
-#: 
-msgid "Manage event type categories"
-msgstr "Evenementtypecategorieën beheren"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Gezinnen, personen en demografische informatie beheren"
 
@@ -11905,10 +11665,6 @@ msgstr "Geen verjaardagen"
 #: 
 msgid "No Check-ins"
 msgstr "Geen incheckregistraties"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "Geen stortingsopvolging"
 
 #: 
 msgid "No Deposits"
@@ -12665,10 +12421,6 @@ msgid "members"
 msgstr "leden"
 
 #: 
-msgid "name@example.com"
-msgstr "naam@voorbeeld.nl"
-
-#: 
 msgid "opportunities"
 msgstr "mogelijkheden"
 
@@ -13302,10 +13054,6 @@ msgid "My Calendars"
 msgstr "Mijn agenda's"
 
 #: 
-msgid "N/A"
-msgstr "NVT"
-
-#: 
 msgid "New member notification emails"
 msgstr "E-mailmeldingen voor nieuwe leden"
 
@@ -13860,11 +13608,6 @@ msgstr "Configuratie"
 msgid "Costs"
 msgstr "Kosten"
 
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Personen die per creditcard betalen"
-
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
 #: 
@@ -13938,11 +13681,6 @@ msgstr "Gebruik van offertantenveloppen inschakelen"
 msgid "Enable use of scanned checks"
 msgstr "Gebruik van gescande cheques inschakelen"
 
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Gezinstoezegging per fiscaal jaar"
-
 #. plugin:mailchimp:section:1:title
 #: 
 msgid "Features"
@@ -13952,11 +13690,6 @@ msgstr "Functies"
 msgid "Finance permission query IDs"
 msgstr "Query-ID's voor financiële machtigingen"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Geregistreerde leerlingen zoeken"
-
 #: 
 msgid "Find family"
 msgstr "Gezin zoeken"
@@ -13965,11 +13698,6 @@ msgstr "Gezin zoeken"
 #: 
 msgid "Finding Your Server URL"
 msgstr "Uw server-URL vinden"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Fiscaal jaar."
 
 #. plugin:custom-links:section:3:content
 #: 
@@ -14035,11 +13763,6 @@ msgstr "Gravatar website"
 #: 
 msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
 msgstr "Gravatar werkt door e-mailadressen om te zetten in een hash (MD5). Het daadwerkelijke e-mailadres wordt nooit naar de servers van Gravatar verzonden — alleen de hash wordt gebruikt om de afbeelding op te zoeken."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Groep geregistreerde leerlingen"
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -14176,11 +13899,6 @@ msgstr "OpenLP website"
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
 msgstr "OpenLP is gratis, open-source presentatiesoftware ontworpen voor kerken. Met deze plugin kan ChurchCRM meldingen en waarschuwingen rechtstreeks naar uw OpenLP-scherm sturen."
 
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Personen die zijn ingesteld om per creditcard te betalen."
-
 #. plugin:mailchimp:section:3:title
 #: 
 msgid "Person/Family Integration"
@@ -14206,11 +13924,6 @@ msgstr "Telefoonnummers moeten in E.164-formaat zijn: landcode + nummer. Voorbee
 "\n"
 "De telefoonnummers van ontvangers in ChurchCRM-profielen van gemeenteleden moeten de landcode bevatten om SMS correct te laten werken."
 
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Toezeggingsoverzicht per gezinsnaam voor elk fonds voor het geselecteerde fiscale jaar"
-
 #. plugin:mailchimp:section:4:title
 #: 
 msgid "Privacy & Compliance"
@@ -14229,11 +13942,6 @@ msgstr "Privacyopmerking"
 #: 
 msgid "Quick Settings"
 msgstr "Snelle instellingen"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Geregistreerde leerlingen"
 
 #: 
 msgid "SMTP Authentication"
@@ -14405,11 +14113,6 @@ msgstr "Upgrade-instellingen"
 msgid "Use Cases"
 msgstr "Gebruiksscenario's"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Gebruikersmachtiging voor het exporteren van CSV-bestanden"
-
 #. plugin:vonage:link:2:label
 #: 
 msgid "Vonage Pricing"
@@ -14506,4 +14209,1214 @@ msgstr "• Paginaweergaven en navigatiepatronen\n"
 "• Sessieduur en betrokkenheid\n"
 "• Gebruikersdemografie (indien ingeschakeld in GA4)\n"
 "• Apparaat- en browserinformatie"
+
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "Bestandsgrootte overschrijdt de serverlimiet van %s"
+
+#: 
+msgid "Missing image data in request"
+msgstr "Ontbrekende afbeeldingsgegevens in het verzoek"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Zoek personen die niet aanwezig waren bij een evenement"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Ontbrekende personen"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Selecteer het gewenste evenement"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Geavanceerd filteren op groep, classificatie en rol"
+
+#: 
+msgid "All congregation members included"
+msgstr "Alle gemeenteleden inbegrepen"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ChMeetings-export succesvol voltooid"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "ChMeetings-compatibel kolomformaat"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Contactgegevens, familierollen en belangrijke datums"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Maak een volledige back-up van uw kerkdatabase. Download een SQL-bestand met alleen de database of een volledig archief inclusief geüploade foto's."
+
+#: 
+msgid "Database Backup"
+msgstr "Database back-up"
+
+#: 
+msgid "Export"
+msgstr "Exporteren"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Exporteer gemeentegegevens naar CSV-formaat. Kies welke velden u wilt opnemen en filter op classificatie, groep, geslacht en meer."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Exporteer alle personen in het formaat dat door ChMeetings wordt verwacht, zodat u uw gemeentegegevens eenvoudig kunt synchroniseren met het ChMeetings-platform."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Exporteer uw kerkgegevens naar verschillende formaten"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Externe (WebDAV) back-up via plug-in"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Exporteren van ChMeetings CSV mislukt"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Familie- of individueel recordopmaak"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Flexibele veldselectie"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Ga naar Database back-up"
+
+#: 
+msgid "Open CSV Export"
+msgstr "Open CSV-export"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Herstellen via de systeemback-uppagina"
+
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "Er is een systeemupdate beschikbaar. Werk uw installatie bij."
+
+#: 
+msgid "API Access"
+msgstr "API-toegang"
+
+#: 
+msgid "API Key"
+msgstr "API-sleutel"
+
+#: 
+msgid "API key regenerated"
+msgstr "API-sleutel opnieuw gegenereerd"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Geavanceerde instellingen"
+
+#: 
+msgid "An error occurred."
+msgstr "Er is een fout opgetreden."
+
+#: 
+msgid "Appearance"
+msgstr "Weergave"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Terug naar financieel overzicht"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Terug naar groepenoverzicht"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Terug naar personenoverzicht"
+
+#: 
+msgid "Blue"
+msgstr "Blauw"
+
+#: 
+msgid "Change Photo"
+msgstr "Foto wijzigen"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "Wijzigingen worden pas van kracht bij de volgende aanmelding."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Kies tussen licht en donker kleurenschema"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "ChurchCRM-vertalingen worden beheerd door de community op POEditor. U kunt helpen door:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Pas het uiterlijk van de applicatie aan"
+
+#: 
+msgid "Cyan"
+msgstr "Cyaan"
+
+#: 
+msgid "Dark"
+msgstr "Donker"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Alleen database (.sql) of volledig archief (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Standaard aantal rijen weergegeven in datatabellen. Van kracht bij het laden van de volgende pagina."
+
+#: 
+msgid "Edit own family only"
+msgstr "Alleen eigen gezin bewerken"
+
+#: 
+msgid "Enter text here..."
+msgstr "Voer hier tekst in..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Annuleren van inschrijving mislukt. Probeer het opnieuw."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Verwijderen van evenement mislukt. Probeer het opnieuw."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "Uitschakelen van tweefactorauthenticatie mislukt. Probeer het opnieuw."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "Genereren van QR-code mislukt. Probeer het opnieuw."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "Laden van kalendergegevens mislukt. Probeer het opnieuw."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Laden van evenement mislukt. Probeer het opnieuw."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "Laden van herstelcodes mislukt. Vernieuw de pagina."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Opslaan van evenement mislukt. Probeer het opnieuw."
+
+#: 
+msgid "Failed to save setting"
+msgstr "Instelling opslaan mislukt"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Filipijns - Filipijnen"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Onjuiste of onhandige vertalingen in uw taal corrigeren"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "Een fout gevonden in de vertalingen?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Verleent alle rechten"
+
+#: 
+msgid "Green"
+msgstr "Groen"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Help vertalingen te verbeteren"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "Als u verminkte tekens, HTML-entiteiten als tekst of vertalingen die de pagina-indeling verstoren opmerkt, meld het probleem dan op GitHub zodat het voor iedereen kan worden opgelost."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "Neem uw API-sleutel op in verzoeken via de x-api-key header:"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Ongeldige JSON-waarde — instelling is niet opgeslagen. Corrigeer het en probeer het opnieuw."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "Doe mee aan het vertaalproject op POEditor"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Taal- en regionale instellingen"
+
+#: 
+msgid "Light"
+msgstr "Licht"
+
+#: 
+msgid "Lime"
+msgstr "Limoengroen"
+
+#: 
+msgid "Manage 2FA"
+msgstr "Tweefactorauthenticatie beheren"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "Aanvullende voorkeuren beheren zoals e-mailscheidingstekens en weergaveopties"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Beheer uw API-sleutel voor externe integraties"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "Methode niet toegestaan"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "Ontbrekende of onjuiste vertalingen?"
+
+#: 
+msgid "My Account"
+msgstr "Mijn account"
+
+#: 
+msgid "Orange"
+msgstr "Oranje"
+
+#: 
+msgid "Override the system default locale"
+msgstr "Standaardlocale van het systeem overschrijven"
+
+#: 
+msgid "Page Not Found"
+msgstr "Pagina niet gevonden"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "Percentage vertaalde teksten voor uw huidige taal"
+
+#: 
+msgid "Pink"
+msgstr "Roze"
+
+#: 
+msgid "Primary Color"
+msgstr "Primaire kleur"
+
+#: 
+msgid "Profile and security"
+msgstr "Profiel en beveiliging"
+
+#: 
+msgid "Purple"
+msgstr "Paars"
+
+#: 
+msgid "Red"
+msgstr "Rood"
+
+#: 
+msgid "Regenerate"
+msgstr "Opnieuw genereren"
+
+#: 
+msgid "Rows per page"
+msgstr "Rijen per pagina"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Stel toestemming in op Waar om deze gebruiker de instelling zelf te laten wijzigen."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Stel de accentkleur in voor knoppen, links en actieve elementen"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Betere formuleringen voorstellen voor bestaande vertalingen"
+
+#: 
+msgid "System Update Available"
+msgstr "Systeemupdate beschikbaar"
+
+#: 
+msgid "Tables"
+msgstr "Tabellen"
+
+#: 
+msgid "Teal"
+msgstr "Petrol"
+
+#: 
+msgid "Theme Mode"
+msgstr "Thema-modus"
+
+#: 
+msgid "Toggle search"
+msgstr "Zoeken in-/uitschakelen"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Ontbrekende teksten vertalen om dekking te verbeteren"
+
+#: 
+msgid "Translation Progress"
+msgstr "Voortgang van vertalingen"
+
+#: 
+msgid "Usage"
+msgstr "Gebruik"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "Gebruik deze sleutel om API-verzoeken te verifiëren. Opnieuw genereren maakt de huidige sleutel ongeldig."
+
+#: 
+msgid "User Config"
+msgstr "Gebruikersconfiguratie"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Verificatie mislukt. Probeer het opnieuw."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "Versie %s is beschikbaar. Werk uw installatie bij."
+
+#: 
+msgid "View All"
+msgstr "Alles weergeven"
+
+#: 
+msgid "Yellow"
+msgstr "Geel"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "Uw huidige toegangsniveaus (alleen-lezen)"
+
+#: 
+msgid "%d repeat event created successfully."
+msgid_plural "%d repeat events created successfully."
+msgstr[0] "%d terugkerend evenement succesvol aangemaakt."
+msgstr[1] "%d terugkerende evenementen succesvol aangemaakt."
+
+#: 
+msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
+msgstr "(bijv. Gemeenteleden, Bezoekers, Kinderen) zodat vrijwilligers hier tellingen kunnen invoeren."
+
+#: 
+msgid "1. Sunday School Class"
+msgstr "1. Zondagsschoolklas"
+
+#: 
+msgid "2. Event Type"
+msgstr "2. Evenementtype"
+
+#: 
+msgid "3. Event"
+msgstr "3. Evenement"
+
+#: 
+msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
+msgstr "Een klas is een Groep van het type \"Zondagsschool\". Het bevat de leerlingen en leraren (leden met rollen)."
+
+#: 
+msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
+msgstr "Een gekoppelde groep verbindt dit evenement met een klas of bediening. Wanneer het evenement aan een kiosk is toegewezen, haalt de kiosk de groepsleden op en toont hen als aanmeldlijst. Koppel voor zondagsschoolklassen de klasgroep hier zodat vrijwilligers leerlingen via een tablet kunnen inchecken."
+
+#: 
+msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr "Een specifieke gebeurtenis (bijv. \"Kleutergroep — 12 apr\"). Erft standaardinstellingen van het type en is via het publiek gekoppeld aan de klasgroep. Dit is waartegen vrijwilligers aanwezigheid registreren."
+
+#: 
+msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr "Een tablet toegewezen aan één evenement. De kiosk haalt de gekoppelde groepslijst van het evenement op en toont het aanmeldscherm. Zonder een gekoppelde groep heeft de kiosk geen lijst om te tonen."
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "Inloper / Bezoeker toevoegen"
+
+#: 
+msgid "Add categories on the Event Type page"
+msgstr "Voeg categorieën toe op de pagina Evenementtype"
+
+#: 
+msgid "Add people to your cart first, then come back to check them in to an event."
+msgstr "Voeg eerst personen toe aan uw selectie en kom dan terug om hen in te checken bij een evenement."
+
+#: 
+msgid "All clear!"
+msgstr "Alles in orde!"
+
+#: 
+msgid "All events and attendance records"
+msgstr "Alle evenementen en aanwezigheidsregistraties"
+
+#: 
+msgid "All financial data (pledges, payments, deposits)"
+msgstr "Alle financiële gegevens (toezeggingen, betalingen, stortingen)"
+
+#: 
+msgid "All groups, roles, and memberships"
+msgstr "Alle groepen, rollen en lidmaatschappen"
+
+#: 
+msgid "All people and family records"
+msgstr "Alle persoons- en gezinsgegevens"
+
+#: 
+msgid "All system settings and custom fields"
+msgstr "Alle systeeminstellingen en aangepaste velden"
+
+#: 
+msgid "All uploaded photos and documents"
+msgstr "Alle geüploade foto's en documenten"
+
+#: 
+msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
+msgstr "Een Evenementtype is een sjabloon — naam, standaard begintijd, herhaling, categorieën voor aanwezigheidstelling. Optioneel gekoppeld aan één klasgroep als standaard publiek."
+
+#: 
+msgid "Attendance record deleted."
+msgstr "Aanwezigheidsregistratie verwijderd."
+
+#: 
+msgid "Audit Events"
+msgstr "Audit Evenementen"
+
+#: 
+msgid "Auto-totalled from counts at right"
+msgstr "Automatisch opgeteld van tellingen rechts"
+
+#: 
+msgid "Back to Events"
+msgstr "Terug naar Evenementen"
+
+#: 
+msgid "Back to Events Dashboard"
+msgstr "Terug naar Evenementenoverzicht"
+
+#: 
+msgid "Backup failed. You can still proceed with the reset, but your data will be lost."
+msgstr "Back-up mislukt. U kunt nog steeds doorgaan met de reset, maar uw gegevens gaan verloren."
+
+#: 
+msgid "Backup ready!"
+msgstr "Back-up gereed!"
+
+#: 
+msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
+msgstr "Vóór het resetten raden wij sterk aan een back-up van uw huidige gegevens te downloaden. Dit is uw enige kans om deze te bewaren."
+
+#: 
+msgid "Bulk-create a series of recurring events"
+msgstr "Meerdere terugkerende evenementen tegelijk aanmaken"
+
+#: 
+msgid "By"
+msgstr "Door"
+
+#: 
+msgid "Cannot check in to an inactive event. Activate the event first."
+msgstr "Inchecken bij een inactief evenement is niet mogelijk. Activeer het evenement eerst."
+
+#: 
+msgid "Change"
+msgstr "Wijzigen"
+
+#: 
+msgid "Check In All"
+msgstr "Allen inchecken"
+
+#: 
+msgid "Check In Family"
+msgstr "Gezin inchecken"
+
+#: 
+msgid "Check Out All"
+msgstr "Allen uitchecken"
+
+#: 
+msgid "Check in all %d family members to a single event."
+msgstr "Alle %d gezinsleden inchecken bij één evenement."
+
+#: 
+msgid "Check out"
+msgstr "Uitchecken"
+
+#: 
+msgid "Check-in By"
+msgstr "Ingecheckt door"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "Inchecken mislukt. Probeer opnieuw."
+
+#: 
+msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
+msgstr "Inchecken is uitgeschakeld voor inactieve evenementen. Activeer het evenement vanuit het Evenementenoverzicht om inchecken in te schakelen."
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "Uitchecken mislukt. Probeer opnieuw."
+
+#: 
+msgid "Checked in to event: %s"
+msgstr "Ingecheckt bij evenement: %s"
+
+#: 
+msgid "Checked out from event: %s"
+msgstr "Uitgecheckt van evenement: %s"
+
+#: 
+msgid "Close All Stuck Events"
+msgstr "Alle vastgelopen evenementen sluiten"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "Uitchecken bevestigen"
+
+#: 
+msgid "Create Repeat Events"
+msgstr "Terugkerende evenementen aanmaken"
+
+#: 
+msgid "Create Today's Event"
+msgstr "Evenement van vandaag aanmaken"
+
+#: 
+msgid "Create a new event type with recurrence and attendance settings"
+msgstr "Een nieuw evenementtype aanmaken met herhalings- en aanwezigheidsinstellingen"
+
+#: 
+msgid "Create one now"
+msgstr "Nu één aanmaken"
+
+#: 
+msgid "Create today's class event and link it to this class for kiosk check-in"
+msgstr "Maak het evenement van vandaag aan en koppel het aan deze klas voor kiosk-inchecken"
+
+#: 
+msgid "Creating backup..."
+msgstr "Back-up aanmaken..."
+
+#: 
+msgid "Creating..."
+msgstr "Aanmaken..."
+
+#: 
+msgid "Database + uploaded photos (larger)"
+msgstr "Database + geüploade foto's (groter)"
+
+#: 
+msgid "Database dump only (.sql)"
+msgstr "Alleen database-dump (.sql)"
+
+#: 
+msgid "Date Range"
+msgstr "Datumbereik"
+
+#: 
+msgid "Date range cannot exceed 1 year"
+msgstr "Datumbereik mag niet meer dan 1 jaar bedragen"
+
+#: 
+msgid "Deactivate"
+msgstr "Deactiveren"
+
+#: 
+msgid "Delete Event Type"
+msgstr "Evenementtype verwijderen"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "Aanwezigheidsregistratie verwijderen?"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "Check-in registratie verwijderen voor"
+
+#: 
+msgid "Delete this event?"
+msgstr "Dit evenement verwijderen?"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "Het verwijderen van een evenement verwijdert ook alle aanwezigheidstellingen. Dit kan niet ongedaan worden gemaakt."
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "Het verwijderen van dit evenementtype verwijdert GEEN bestaande evenementen. Weet u het zeker?"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "Het verwijderen van dit evenement verwijdert ook alle aanwezigheidsregistraties. Dit kan niet ongedaan worden gemaakt."
+
+#: 
+msgid "Destructive Operation"
+msgstr "Destructieve bewerking"
+
+#: 
+msgid "Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field."
+msgstr "Bewerk een categorienaam en klik op Opslaan, of gebruik het prullenbakpictogram om te verwijderen. Nieuwe rijen worden toegevoegd via het veld onderaan."
+
+#: 
+msgid "End Time"
+msgstr "Eindtijd"
+
+#: 
+msgid "End time must be after start time."
+msgstr "Eindtijd moet na begintijd liggen."
+
+#: 
+msgid "Ended"
+msgstr "Beëindigd"
+
+#: 
+msgid "Ends"
+msgstr "Eindigt"
+
+#: 
+msgid "Event Audit"
+msgstr "Evenement Audit"
+
+#: 
+msgid "Event Check-in"
+msgstr "Evenement Inchecken"
+
+#: 
+msgid "Event Details"
+msgstr "Evenementdetails"
+
+#: 
+msgid "Event Template"
+msgstr "Evenementsjabloon"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "Evenement bestaat al. Doorsturen naar inchecken..."
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "Evenement aangemaakt. Doorsturen naar inchecken..."
+
+#: 
+msgid "Event end date/time must be on or after the start date/time."
+msgstr "Einddatum/-tijd van het evenement moet op of na de begindatum/-tijd liggen."
+
+#: 
+msgid "Event title is required."
+msgstr "Evenementtitel is verplicht."
+
+#: 
+msgid "Event type ID is required"
+msgstr "Evenementtype-ID is verplicht"
+
+#: 
+msgid "Event type ID or group ID is required"
+msgstr "Evenementtype-ID of groeps-ID is verplicht"
+
+#: 
+msgid "Event type has no date configured for yearly recurrence"
+msgstr "Evenementtype heeft geen datum ingesteld voor jaarlijkse herhaling"
+
+#: 
+msgid "Event type has no day-of-week configured for weekly recurrence"
+msgstr "Evenementtype heeft geen weekdag ingesteld voor wekelijkse herhaling"
+
+#: 
+msgid "Event type has no recurrence pattern configured"
+msgstr "Evenementtype heeft geen herhalingspatroon ingesteld"
+
+#: 
+msgid "Event type has no valid day-of-month configured for monthly recurrence"
+msgstr "Evenementtype heeft geen geldige dag van de maand ingesteld voor maandelijkse herhaling"
+
+#: 
+msgid "Events will be created for every matching occurrence within this date range."
+msgstr "Evenementen worden aangemaakt voor elke overeenkomende gebeurtenis binnen dit datumbereik."
+
+#: 
+msgid "Every month on the"
+msgstr "Elke maand op de"
+
+#: 
+msgid "Every week on"
+msgstr "Elke week op"
+
+#: 
+msgid "Every year on"
+msgstr "Elk jaar op"
+
+#: 
+msgid "Everyone is checked in!"
+msgstr "Iedereen is ingecheckt!"
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "Aanmaken van klas mislukt. Probeer opnieuw."
+
+#: 
+msgid "Failed to create event."
+msgstr "Aanmaken van evenement mislukt."
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "Aanmaken van evenement mislukt. Probeer opnieuw."
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "Verwijderen mislukt. Probeer opnieuw."
+
+#: 
+msgid "Fastest workflow:"
+msgstr "Snelste werkwijze:"
+
+#: 
+msgid "Find past events that are still active or have un-checked-out attendees"
+msgstr "Zoek oude evenementen die nog actief zijn of deelnemers hebben die niet zijn uitgecheckt"
+
+#: 
+msgid "Format: MM-DD (e.g. 04-12 for April 12)"
+msgstr "Formaat: MM-DD (bijv. 04-12 voor 12 april)"
+
+#: 
+msgid "Group Roster"
+msgstr "Groepslijst"
+
+#: 
+msgid "Hide Advanced Options"
+msgstr "Geavanceerde opties verbergen"
+
+#: 
+msgid "How Sunday School + Events + Kiosks fit together"
+msgstr "Hoe Zondagsschool + Evenementen + Kiosken samenwerken"
+
+#: 
+msgid "Invalid date for %s — expected YYYY-MM-DD"
+msgstr "Ongeldige datum voor %s — verwacht YYYY-MM-DD"
+
+#: 
+msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr "Ongeldig datumformaat voor rangeStart of rangeEnd"
+
+#: 
+msgid "Invalid date format."
+msgstr "Ongeldig datumformaat."
+
+#: 
+msgid "Invalid date; expected format YYYY-MM-DD"
+msgstr "Ongeldige datum; verwacht formaat YYYY-MM-DD"
+
+#: 
+msgid "Invalid event type ID"
+msgstr "Ongeldig evenementtype-ID"
+
+#: 
+msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
+msgstr "Ongeldig jaarlijks herhalingsformaat; verwacht MM-DD (bijv. 04-12)"
+
+#: 
+msgid "Just now"
+msgstr "Zojuist"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "Laat leeg om uit te checken zonder de begeleider te registreren."
+
+#: 
+msgid "Link events to a group for Kiosk check-in functionality."
+msgstr "Koppel evenementen aan een groep voor kiosk-inchecken."
+
+#: 
+msgid "Linked Groups"
+msgstr "Gekoppelde groepen"
+
+#: 
+msgid "Looking for stuck events..."
+msgstr "Zoeken naar vastgelopen evenementen..."
+
+#: 
+msgid "Manage event names, recurrence patterns, and attendance counts"
+msgstr "Beheer evenementnamen, herhalingspatronen en aanwezigheidstellingen"
+
+#: 
+msgid "Missing required field: %s"
+msgstr "Verplicht veld ontbreekt: %s"
+
+#: 
+msgid "No Events Today"
+msgstr "Geen evenementen vandaag"
+
+#: 
+msgid "No Group"
+msgstr "Geen groep"
+
+#: 
+msgid "No active assignment"
+msgstr "Geen actieve toewijzing"
+
+#: 
+msgid "No active events found."
+msgstr "Geen actieve evenementen gevonden."
+
+#: 
+msgid "No attendance count categories defined for this event type yet."
+msgstr "Er zijn nog geen categorieën voor aanwezigheidstelling gedefinieerd voor dit evenementtype."
+
+#: 
+msgid "No one has been checked in to this event yet."
+msgstr "Er is nog niemand ingecheckt bij dit evenement."
+
+#: 
+msgid "No past events are still marked Active."
+msgstr "Geen eerdere evenementen zijn nog als Actief gemarkeerd."
+
+#: 
+msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr "Open een klas → klik op \"Evenement van vandaag aanmaken\" — het evenement wordt aangemaakt en in één keer aan de klas gekoppeld, waarna u op de incheckpagina terecht komt klaar voor kiosk of inloper aanwezigheid."
+
+#: 
+msgid "Optional Settings"
+msgstr "Optionele instellingen"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "Optioneel — registreer wie deze persoon uitcheckt (bijv. een ouder die een kind ophaalt)."
+
+#: 
+msgid "Person checked out."
+msgstr "Persoon uitgecheckt."
+
+#: 
+msgid "Person is not checked in"
+msgstr "Persoon is niet ingecheckt"
+
+#: 
+msgid "Person not in active class roster"
+msgstr "Persoon staat niet op de actieve klaslijst"
+
+#: 
+msgid "Pin to Calendars"
+msgstr "Vastmaken aan kalenders"
+
+#: 
+msgid "Please select a person to check in."
+msgstr "Selecteer een persoon om in te checken."
+
+#: 
+msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
+msgstr "Vooraf ingevuld op basis van dit evenementtype — voor terugkerende typen is de datum de eerstvolgende keer na het laatste evenement van dit type, en de tijd komt overeen met de standaard begintijd van het type."
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "Einddatum van het bereik moet op of na de begindatum liggen."
+
+#: 
+msgid "Range end must be a valid YYYY-MM-DD date."
+msgstr "Einddatum van het bereik moet een geldige YYYY-MM-DD datum zijn."
+
+#: 
+msgid "Range start must be a valid YYYY-MM-DD date."
+msgstr "Begindatum van het bereik moet een geldige YYYY-MM-DD datum zijn."
+
+#: 
+msgid "Range start must be before range end"
+msgstr "Begindatum van het bereik moet voor de einddatum liggen"
+
+#: 
+msgid "Range start must be before range end."
+msgstr "Begindatum van het bereik moet voor de einddatum liggen."
+
+#: 
+msgid "RangeEnd must be on or after RangeStart"
+msgstr "RangeEnd moet op of na RangeStart liggen"
+
+#: 
+msgid "Recommended"
+msgstr "Aanbevolen"
+
+#: 
+msgid "Required for Kiosk"
+msgstr "Vereist voor kiosk"
+
+#: 
+msgid "Resetting will permanently delete:"
+msgstr "Resetten zal permanent verwijderen:"
+
+#: 
+msgid "SQL Only"
+msgstr "Alleen SQL"
+
+#: 
+msgid "Save Time"
+msgstr "Tijd besparen"
+
+#: 
+msgid "Save changes to this category name"
+msgstr "Wijzigingen in deze categorienaam opslaan"
+
+#: 
+msgid "Select an event type…"
+msgstr "Selecteer een evenementtype…"
+
+#: 
+msgid "Select start and end date/time."
+msgstr "Selecteer begin- en einddatum/-tijd."
+
+#: 
+msgid "Show More Options"
+msgstr "Meer opties tonen"
+
+#: 
+msgid "Skip"
+msgstr "Overslaan"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "Overslaan en uitchecken"
+
+#: 
+msgid "Start Check-in"
+msgstr "Inchecken starten"
+
+#: 
+msgid "Starts"
+msgstr "Begint"
+
+#: 
+msgid "Step 1: Create a Backup"
+msgstr "Stap 1: Een back-up maken"
+
+#: 
+msgid "Step 2: Reset Database"
+msgstr "Stap 2: Database resetten"
+
+#: 
+msgid "Still Checked In"
+msgstr "Nog ingecheckt"
+
+#: 
+msgid "Stuck Events"
+msgstr "Vastgelopen evenementen"
+
+#: 
+msgid "Take Attendance"
+msgstr "Aanwezigheid registreren"
+
+#: 
+msgid "The Events module is disabled"
+msgstr "De Evenementenmodule is uitgeschakeld"
+
+#: 
+msgid "The same start and end time will be used for all generated events."
+msgstr "Dezelfde begin- en eindtijd wordt gebruikt voor alle gegenereerde evenementen."
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "Er zijn geen evenementen gepland voor vandaag"
+
+#: 
+msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
+msgstr "Dit zijn tellingscategorieën — vrijwilligers vullen deze in na het evenement zodat het dashboard de aanwezigheid kan uitsplitsen (bijv. hoeveel gemeenteleden versus bezoekers). Ze staan los van individuele incheck-acties op de Incheckpagina."
+
+#: 
+msgid "This event is inactive."
+msgstr "Dit evenement is inactief."
+
+#: 
+msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr "Via deze pagina kunt u alle gegevens in de ChurchCRM-database permanent wissen. Deze actie kan niet ongedaan worden gemaakt."
+
+#: 
+msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
+msgstr "Dit rapport geeft een overzicht van alle evenementen waarvan de einddatum verstreken is maar die nog als Actief zijn gemarkeerd. Veelvoorkomende oorzaken: een vrijwilliger vergat 'Uitchecken' te tikken, een kiosk verloor verbinding, of het evenement werd aangemaakt en verlaten. Oude evenementen (jaren geleden) die nooit zijn gedeactiveerd verschijnen hier ook. De kolom 'Nog ingecheckt' geeft aan of er iemand midden in het inchecken is achtergebleven. Het sluiten van een evenement via dit rapport checkt iedereen uit (met de huidige tijd) en markeert het evenement als Inactief."
+
+#: 
+msgid "This title will be used for all generated events."
+msgstr "Deze titel wordt gebruikt voor alle gegenereerde evenementen."
+
+#: 
+msgid "Today's Events"
+msgstr "Evenementen van vandaag"
+
+#: 
+msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
+msgstr "Te veel voorkomens (%d) — verklein het datumbereik. Maximum toegestaan: %d"
+
+#: 
+msgid "Type RESET to confirm"
+msgstr "Typ RESET om te bevestigen"
+
+#: 
+msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
+msgstr "Gebruik de knop hierboven om het evenement van vandaag met één klik aan te maken. Het wordt automatisch aan deze klas gekoppeld zodat een kiosk de lijst kan ophalen."
+
+#: 
+msgid "Use this form to bulk-create a series of recurring events. Each event is created individually and can be edited or deleted independently after creation."
+msgstr "Gebruik dit formulier om meerdere terugkerende evenementen tegelijk aan te maken. Elk evenement wordt afzonderlijk aangemaakt en kan na aanmaak onafhankelijk worden bewerkt of verwijderd."
+
+#: 
+msgid "Used as the default start time when creating events of this type."
+msgstr "Gebruikt als standaard begintijd bij het aanmaken van evenementen van dit type."
+
+#: 
+msgid "User must have Add Event permission and the Events module must be enabled"
+msgstr "De gebruiker moet de machtiging Evenement toevoegen hebben en de Evenementenmodule moet zijn ingeschakeld"
+
+#: 
+msgid "Valid startDate and endDate are required"
+msgstr "Geldige startDatum en eindDatum zijn verplicht"
+
+#: 
+msgid "View Event"
+msgstr "Evenement bekijken"
+
+#: 
+msgid "What are these for?"
+msgstr "Waarvoor dienen deze?"
+
+#: 
+msgid "What does this find?"
+msgstr "Wat vindt dit?"
+
+#: 
+msgid "What is this for?"
+msgstr "Waarvoor dient dit?"
+
+#: 
+msgid "Who is bringing them in?"
+msgstr "Wie brengt hen binnen?"
+
+#: 
+msgid "You must select a valid recurrence pattern."
+msgstr "U moet een geldig herhalingspatroon selecteren."
+
+#: 
+msgid "You must select an event type."
+msgstr "U moet een evenementtype selecteren."
+
+#: 
+msgid "You must specify a date range."
+msgstr "U moet een datumbereik opgeven."
+
+#: 
+msgid "checked in"
+msgstr "ingecheckt"
+
+#: 
+msgid "e.g., Sunday Worship Service"
+msgstr "bijv. Zondagse Kerkdienst"
+
+#: 
+msgid "endDate must be after startDate"
+msgstr "eindDatum moet na startDatum liggen"
+
+#: 
+msgid "eventIds must be a non-empty array"
+msgstr "eventIds moet een niet-lege array zijn"
+
+#: 
+msgid "invalid recurrence type"
+msgstr "ongeldig herhalingstype"
+
+#: 
+msgid "personIds must be a non-empty array"
+msgstr "personIds moet een niet-lege array zijn"
+
+#: 
+msgid "to enable the reset button"
+msgstr "om de resetknop te activeren"
+
+#: 
+msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
+msgstr "Een kaart verschijnt hier zodra coördinaten zijn opgeslagen — automatisch gedetecteerd uit uw adres of handmatig ingevoerd hierboven."
+
+#: 
+msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr "Zowel breedtegraad als lengtegraad moeten samen worden opgegeven (of beide leeg laten voor automatische detectie)."
+
+#: 
+msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr "Kerkgegevens opgeslagen, maar het adres kon niet automatisch worden gevonden. Voer de breedtegraad en lengtegraad handmatig in onder Kaartcoördinaten."
+
+#: 
+msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
+msgstr "Coördinaten worden automatisch gedetecteerd uit uw adres bij opslaan (via OpenStreetMap). U kunt ze ook handmatig invoeren hieronder — handmatige waarden hebben altijd voorrang boven automatische detectie. Laat beide leeg om het systeem te laten geocoderen op basis van het adres."
+
+#: 
+msgid "Latitude must be a number between -90 and 90."
+msgstr "Breedtegraad moet een getal zijn tussen -90 en 90."
+
+#: 
+msgid "Longitude must be a number between -180 and 180."
+msgstr "Lengtegraad moet een getal zijn tussen -180 en 180."
+
+#: 
+msgid "Map Coordinates"
+msgstr "Kaartcoördinaten"
+
+#: 
+msgid "Please select a group."
+msgstr "Selecteer een groep."
+
+#: 
+msgid "Please select a role."
+msgstr "Selecteer een rol."
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "Selecteer zowel een groep als een rol."
+
+#: 
+msgid "Range: -180 to 180."
+msgstr "Bereik: -180 tot 180."
+
+#: 
+msgid "Range: -90 to 90."
+msgstr "Bereik: -90 tot 90."
+
+#: 
+msgid "mo"
+msgstr "mnd."
+
+#: 
+msgid "mos"
+msgstr "mnd."
+
+#: 
+msgid "yr"
+msgstr "jr."
+
+#: 
+msgid "yrs"
+msgstr "jr."
 

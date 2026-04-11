@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         show: false,
       },
       events: {
-        click: function (event, chartContext, opts) {
+        click: (event, chartContext, opts) => {
           if (opts.dataPointIndex !== undefined) {
             applyBirthdayFilter(barLabels[opts.dataPointIndex]);
           }
@@ -124,5 +124,53 @@ document.addEventListener("DOMContentLoaded", () => {
           });
       },
     });
+  });
+
+  // ─── Quick Create Today's Event button ───────────────────────────────
+  // One-click creates a Sunday School event for today, auto-linking the
+  // current class group so a Kiosk can pull the roster. Backed by
+  // POST /api/events/quick-create which is idempotent (returns existing
+  // event if one already exists for the same type+date).
+  $(document).on("click", "#quickCreateTodaysEventBtn", function () {
+    const $btn = $(this);
+    const groupId = parseInt($btn.data("group-id"), 10);
+    if (!groupId) return;
+
+    $btn
+      .prop("disabled", true)
+      .html('<span class="spinner-border spinner-border-sm me-1"></span>' + i18next.t("Creating..."));
+
+    window.CRM.APIRequest({
+      method: "POST",
+      path: "events/quick-create",
+      data: JSON.stringify({ groupId: groupId }),
+    })
+      .done((resp) => {
+        const eventId = resp && resp.eventId;
+        const wasCreated = resp && resp.created;
+        if (!eventId) {
+          window.CRM.notify(i18next.t("Failed to create event. Please try again."), {
+            type: "danger",
+            delay: 5000,
+          });
+          $btn.prop("disabled", false).html('<i class="ti ti-plus me-1"></i>' + i18next.t("Create Today's Event"));
+          return;
+        }
+        window.CRM.notify(
+          wasCreated
+            ? i18next.t("Event created. Redirecting to check-in...")
+            : i18next.t("Event already exists. Redirecting to check-in..."),
+          { type: "success", delay: 2500 },
+        );
+        // Land directly on the check-in page so the volunteer can take attendance
+        setTimeout(() => {
+          window.location.href = `${window.CRM.root}/event/checkin/${eventId}`;
+        }, 600);
+      })
+      .fail((jqXHR) => {
+        const msg = (jqXHR.responseJSON && jqXHR.responseJSON.message) || i18next.t("Failed to create event.");
+        window.CRM.notify(msg, { type: "danger", delay: 5000 });
+        $btn.prop("disabled", false).html('<i class="ti ti-plus me-1"></i>' + i18next.t("Create Today's Event"));
+      });
   });
 });

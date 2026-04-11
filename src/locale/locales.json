@@ -175,6 +175,18 @@
     "momentLocale": "et",
     "isRTL": false
   },
+  "Filipino - Philippines": {
+    "poEditor": "fil",
+    "locale": "tl_PH",
+    "languageCode": "tl",
+    "countryCode": "PH",
+    "dataTables": "fil",
+    "fullCalendar": true,
+    "fullCalendarLocale": "fil",
+    "datePicker": true,
+    "momentLocale": "tl-ph",
+    "isRTL": false
+  },
   "Finnish": {
     "poEditor": "fi",
     "locale": "fi_FI",
@@ -297,6 +309,17 @@
     "momentLocale": "ko",
     "isRTL": false
   },
+  "Malayalam - India": {
+    "poEditor": "ml",
+    "locale": "ml_IN",
+    "languageCode": "ml",
+    "countryCode": "IN",
+    "dataTables": "ml",
+    "fullCalendar": true,
+    "fullCalendarLocale": "ml",
+    "datePicker": true,
+    "isRTL": false
+  },
   "Norwegian": {
     "poEditor": "nb",
     "locale": "nb_NO",
@@ -376,29 +399,6 @@
     "momentLocale": "sv",
     "isRTL": false
   },
-  "Spanish - Spain": {
-    "poEditor": "es",
-    "locale": "es_ES",
-    "languageCode": "es",
-    "countryCode": "ES",
-    "dataTables": "es-ES",
-    "fullCalendar": true,
-    "datePicker": true,
-    "momentLocale": "es",
-    "base": true,
-    "isRTL": false
-  },
-  "Spanish - Mexico": {
-    "poEditor": "es-MX",
-    "locale": "es_MX",
-    "languageCode": "es",
-    "countryCode": "MX",
-    "dataTables": "es-ES",
-    "fullCalendar": true,
-    "datePicker": true,
-    "momentLocale": "es",
-    "isRTL": false
-  },
   "Spanish - Argentina": {
     "poEditor": "es-AR",
     "locale": "es_AR",
@@ -430,6 +430,29 @@
     "fullCalendar": true,
     "datePicker": true,
     "momentLocale": "es",
+    "isRTL": false
+  },
+  "Spanish - Mexico": {
+    "poEditor": "es-MX",
+    "locale": "es_MX",
+    "languageCode": "es",
+    "countryCode": "MX",
+    "dataTables": "es-ES",
+    "fullCalendar": true,
+    "datePicker": true,
+    "momentLocale": "es",
+    "isRTL": false
+  },
+  "Spanish - Spain": {
+    "poEditor": "es",
+    "locale": "es_ES",
+    "languageCode": "es",
+    "countryCode": "ES",
+    "dataTables": "es-ES",
+    "fullCalendar": true,
+    "datePicker": true,
+    "momentLocale": "es",
+    "base": true,
     "isRTL": false
   },
   "Swahili": {

@@ -1,7 +1,13 @@
 {
+  "%d result for \"%s\"": {
+    "other": "\"%s\"에 대한 %d개의 결과"
+  },
+  "BCC": "",
   "N/A": "",
   "name@example.com": "",
-  "Missing image data in request": "",
-  "File size exceeds the server limit of %s": "",
-  "BCC": ""
+  "%d repeat event created successfully.": {
+    "other": "%d개의 반복 이벤트가 성공적으로 생성되었습니다."
+  },
+  "e.g., -74.0060": "예: -74.0060",
+  "e.g., 40.7128": "예: 40.7128"
 }

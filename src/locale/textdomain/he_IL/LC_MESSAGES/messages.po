@@ -268,10 +268,6 @@ msgid "Add Cart to Event"
 msgstr "הוסף סל לאירוע"
 
 #: 
-msgid "OR"
-msgstr "או"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "הסל שלך ריק!"
 
@@ -392,10 +388,6 @@ msgstr "כן"
 #: 
 msgid "No"
 msgstr "לא"
-
-#: 
-msgid "Event Checkin"
-msgstr "כניסה לאירוע"
 
 #: 
 msgid "Select Event"
@@ -651,10 +643,6 @@ msgid "Church Event Editor"
 msgstr "עורך אירועי מוסד"
 
 #: 
-msgid "Edit Event Types"
-msgstr "ערוך סוגי אירועים"
-
-#: 
 msgid "Edit Event Type"
 msgstr "ערוך סוג אירוע"
 
@@ -724,20 +712,8 @@ msgid "Create a new Event"
 msgstr "צור אירוע חדש"
 
 #: 
-msgid " errors. Please see below"
-msgstr " שגיאות. אנא ראה מטה"
-
-#: 
 msgid "Select your event type"
 msgstr "בחר את סוג האירוע"
-
-#: 
-msgid "You must pick an event type."
-msgstr "עליך לבחור סוג אירוע"
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "לא נרשמה נוכחות"
 
 #: 
 msgid "Event Status"
@@ -2147,14 +2123,6 @@ msgid "User Editor"
 msgstr "עורך משתמשים"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "הערה: השינויים יכנסו לתוקף בכניסה הבאה למערכת"
-
-#: 
-msgid "Person to Make User"
-msgstr "אדם להפוך למשתמש"
-
-#: 
 msgid "User"
 msgstr "משתמש"
 
@@ -2195,24 +2163,8 @@ msgid "Edit Self"
 msgstr "ערוך את עצמך"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(ערוך משפחה עצמית בלבד)"
-
-#: 
 msgid "Admin"
 msgstr "מנהל"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(מעניק את כל ההרשאות)"
-
-#: 
-msgid "Style"
-msgstr "סגנון"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "הגדר הרשאה כ'אמת' כדי לאפשר למשתמש זה לשנות את הערך הנוכחי שלו."
 
 #: 
 msgid "Last Login"
@@ -2937,10 +2889,6 @@ msgid "Date Entered"
 msgstr "תאריך הכניסה:"
 
 #: 
-msgid "There were "
-msgstr "היו "
-
-#: 
 msgid "Inactive"
 msgstr "לא פעיל"
 
@@ -3172,10 +3120,6 @@ msgstr "נתונים/דוחות"
 #: 
 msgid "Query Menu"
 msgstr "תפריט שאילתות"
-
-#: 
-msgid "CSV Export Records"
-msgstr "רשומות ייצוא CSV"
 
 #: 
 msgid "Family Properties"
@@ -4892,14 +4836,6 @@ msgid "Select event"
 msgstr "בחר אירוע"
 
 #: 
-msgid "Person has been already checked in for this event"
-msgstr "האדם כבר נרשם לאירוע זה"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "מבוגר רושם יציאה"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "טקסט לפני השם באימיילים/דוחות"
 
@@ -5455,10 +5391,6 @@ msgid "Sign out"
 msgstr "יציאה"
 
 #: 
-msgid "Sermon Text"
-msgstr "טקסט דרשה"
-
-#: 
 msgid "Change Settings"
 msgstr "שינוי הגדרות"
 
@@ -5974,10 +5906,6 @@ msgstr "פונקציות לאיתחול מסד נתונים"
 msgid "Reset Database"
 msgstr "אתחל בסיס נתונים"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "פעולה זו תאפס את נתוני המערכת ותפעיל מחדש את המערכת כהתקנה חדשה."
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6089,28 +6017,12 @@ msgid "open rate"
 msgstr "שיעור פתיחה"
 
 #: 
-msgid "Login Info"
-msgstr "פרטי התחברות"
-
-#: 
-msgid "Login Count"
-msgstr "מספר התחברויות"
-
-#: 
-msgid "Failed Login"
-msgstr "כניסה נכשלה"
-
-#: 
 msgid "Permissions"
 msgstr "הרשאות"
 
 #: 
 msgid "Manage Notes"
 msgstr "נהל הערות"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "נכשלה יצירת מפתח API חדש"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6182,14 +6094,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "יום השנה לנישואים היום"
 
 #: 
-msgid "Api Key"
-msgstr "מפתח API"
-
-#: 
-msgid "Regen API Key"
-msgstr "יצירה מחדש של מפתח API"
-
-#: 
 msgid "View Family Page"
 msgstr "צפה בדף משפחה"
 
@@ -6204,46 +6108,6 @@ msgstr "אמת"
 #: 
 msgid "Family has no emails to use"
 msgstr "אין כתובת דוא\"ל לשימוש"
-
-#: 
-msgid "Boxed Layout"
-msgstr "פריסה בקופסה"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "הפעל את הפריסה המסומנת"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "הפעלה/כיבוי סרגל צד"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "החלף את מצב סרגל הצד השמאלי (פתוח או מכווץ)"
-
-#: 
-msgid "Tables Settings"
-msgstr "הגדרות של טבלאות"
-
-#: 
-msgid "Page length"
-msgstr "אורך העמוד"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "שינוי מספר השורות בעמוד"
-
-#: 
-msgid "User Interface"
-msgstr "ממשק משתמש"
-
-#: 
-msgid "Locale"
-msgstr "מקום"
-
-#: 
-msgid "Override system locale"
-msgstr "החלפת מיקום מערכת"
 
 #: 
 msgid "Deleted"
@@ -7314,10 +7178,6 @@ msgid "All Types"
 msgstr "כל הסוגים"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "האם אתה בטוח שברצונך למחוק רשומת צ'ק-אין זו?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "קטגוריות ספירת נוכחות"
 
@@ -7358,10 +7218,6 @@ msgid "Create New Event"
 msgstr "צור אירוע חדש"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "צור סוג אירוע כדי להתחיל."
-
-#: 
 msgid "Current DB Version"
 msgstr "גרסת מסד נתונים נוכחית"
 
@@ -7380,14 +7236,6 @@ msgstr "שעת התחלה כברירת מחדל"
 #: 
 msgid "Delete Event"
 msgstr "מחק אירוע"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "מחיקת אירוע תמחוק גם את כל ספירות הנוכחות. למחוק אירוע זה?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "מחיקת אירוע זה תמחוק גם את כל רישומי הנוכחות. האם את/ה בטוח/ה?"
 
 #: 
 msgid "Edit Event"
@@ -7455,10 +7303,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "אופציונלי - הוסף הערות דרשה או פרטי אירוע נוספים"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "אופציונלי - השאר ריק אם אין מעקב"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "הערות אופציונליות לגבי הנוכחות..."
 
@@ -7491,24 +7335,12 @@ msgid "Search by name or email..."
 msgstr "חפש לפי שם או אימייל..."
 
 #: 
-msgid "Search for adult..."
-msgstr "חפש מבוגר..."
-
-#: 
 msgid "Search for supervisor..."
 msgstr "חפש מפקח/אחראי..."
 
 #: 
 msgid "Select Event for Check-In"
 msgstr "בחר אירוע לרישום כניסה (Check-In)"
-
-#: 
-msgid "Select start and end date/time"
-msgstr "בחר תאריך ושעה להתחלה וסיום"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "בחר את האירוע לרישום כניסה עבור החברים שבסל"
 
 #: 
 msgid "Sermon / Event Text"
@@ -7875,10 +7707,6 @@ msgstr "השתמש בכלים חיצוניים להצפנת גיבויים לפ�
 #: 
 msgid "User authentication"
 msgstr "אימות משתמש"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "המשתמש חייב להיות בעל הרשאת הוספת אירוע"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8401,10 +8229,6 @@ msgid "State (Other)"
 msgstr "מדינה/אזור (אחר)"
 
 #: 
-msgid "Status:"
-msgstr "סטטוס:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "סיכום התחייבויות מול תשלומים לפי קרן לשנת הכספים."
 
@@ -8455,10 +8279,6 @@ msgstr "סה\"כ הפקדות:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "עקוב אחר התחייבויות ותשלומים לקמפיינים ותקציב."
-
-#: 
-msgid "Type:"
-msgstr "סוג:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8885,10 +8705,6 @@ msgid "Disable 2FA"
 msgstr "בטל אימות דו-שלבי"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "ייצא נתוני אנשים בפורמט ChMeetings."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "ייצא ל-CSV של ChMeetings"
 
@@ -9143,10 +8959,6 @@ msgid "Add Your First Property Type"
 msgstr "הוסף את סוג המאפיין הראשון שלך"
 
 #: 
-msgid "Auto-calculated from counts above"
-msgstr "מחושב אוטומטית מהספירות למעלה"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "מחיקת שדה זה תגרום לאובדן בלתי הפיך של כל נתוני חברי הקבוצה שהוקצו לשדה זה!"
 
@@ -9335,10 +9147,6 @@ msgstr "רישום הקיוסק מושבת"
 #: 
 msgid "Kiosk not found"
 msgstr "הקיוסק לא נמצא"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "קשר אירוע זה לקבוצה לצורך פונקציית צ'ק-אין בקיוסק. חברי הקבוצה יופיעו בקיוסק."
 
 #: 
 msgid "Linked Group"
@@ -10540,10 +10348,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "דרוש מכל המשתמשים להירשם לאימות דו-שלבי"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "מפה תופיע כאן לאחר שתישמר כתובת. הקואורדינטות מזוהות אוטומטית — אין צורך בהזנה ידנית."
-
-#: 
 msgid "Active Groups"
 msgstr "קבוצות פעילות"
 
@@ -10594,10 +10398,6 @@ msgstr "למשפחה אין כתובת לגיאוקידוד"
 #: 
 msgid "Father"
 msgstr "אב"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "קואורדינטות מגיאוקודות:"
 
 #: 
 msgid "Geocoding failed"
@@ -10678,10 +10478,6 @@ msgstr "אזור זמן"
 #: 
 msgid "Total Groups"
 msgstr "סה\"כ קבוצות"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "מתעדכן אוטומטית בכל שמירה."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10864,14 +10660,6 @@ msgstr "הוסיפו את המאפיין הראשון שלכם"
 #: 
 msgid "Add a Person"
 msgstr "הוספת אדם"
-
-#: 
-msgid "Add a new pledge"
-msgstr "הוספת התחייבות כספית חדשה"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "הוספת תשלום להפקדת תרומות נוכחית"
 
 #: 
 msgid "Add all cart items to a group"
@@ -11090,10 +10878,6 @@ msgid "Check Out"
 msgstr "יציאה"
 
 #: 
-msgid "Check Out Person"
-msgstr "יציאת אדם"
-
-#: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
 msgstr "בדיקת עדכונים ושדרוג התקנת ChurchCRM"
 
@@ -11218,10 +11002,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "צרו גיבוי ידני לפחות פעם בשבוע, או הפעילו את תוסף הגיבוי החיצוני לגיבויי WebDAV אוטומטיים על פי לוח זמנים."
 
 #: 
-msgid "Create a new deposit"
-msgstr "יצירת הפקדת תרומות חדשה"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "יצירה ועריכה של מידע משפחתי ויחסים"
 
@@ -11276,10 +11056,6 @@ msgstr "הגדרת מאפיינים ייחודיים לקבוצה עבור חב�
 #: 
 msgid "Delete All"
 msgstr "מחיקת הכל"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "מחיקת רשומת נוכחות"
 
 #: 
 msgid "Delete Family"
@@ -11562,10 +11338,6 @@ msgid "Generate directory listings and printed materials"
 msgstr "יצירת רשימות מדריך וחומרים מודפסים"
 
 #: 
-msgid "Generate financial reports"
-msgstr "יצירת דוחות כספיים"
-
-#: 
 msgid "Generate financial statements and giving reports"
 msgstr "יצירת דוחות כספיים ודוחות תרומות"
 
@@ -11798,14 +11570,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "ניהול כלי דוא\"ל והגדרות SMTP"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "ניהול שמות אירועים וקטגוריות"
-
-#: 
-msgid "Manage event type categories"
-msgstr "ניהול קטגוריות סוגי אירועים"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "ניהול משפחות, אנשים ומידע דמוגרפי"
 
@@ -11936,10 +11700,6 @@ msgstr "אין ימי הולדת"
 #: 
 msgid "No Check-ins"
 msgstr "אין רישומי נוכחות"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "אין מעקב הפקדות"
 
 #: 
 msgid "No Deposits"
@@ -13645,23 +13405,153 @@ msgstr "לדוגמה שירות ראשון"
 msgid "member"
 msgstr "חבר"
 
+#. plugin:mailchimp:section:1:content
+#: 
+msgid "- **Dashboard**: View all your MailChimp lists with subscriber statistics\n"
+"- **List Maintenance**: Identify people in MailChimp but not in CRM, and vice versa\n"
+"- **Contact Integration**: View MailChimp subscription status on Person and Family pages\n"
+"- **Automatic Sync**: Hooks into person/family updates to keep MailChimp in sync"
+msgstr "- **לוח בקרה**: צפה בכל רשימות MailChimp שלך עם סטטיסטיקות מנויים\n"
+"- **תחזוקת רשימה**: זהה אנשים ב-MailChimp שאינם ב-CRM, ולהיפך\n"
+"- **שילוב אנשי קשר**: צפה בסטטוס המנוי ל-MailChimp בדפי אנשים ומשפחות\n"
+"- **סנכרון אוטומטי**: מתחבר לעדכוני אנשים/משפחות כדי לשמור על MailChimp מסונכרן"
+
+#. plugin:vonage:section:1:content
+#: 
+msgid "1. Create a Vonage account at https://dashboard.nexmo.com/sign-up (new accounts include free trial credit)\n"
+"2. Find your API Key and API Secret on the Vonage Dashboard homepage\n"
+"3. Go to Numbers > Buy Numbers and purchase a number with SMS capability\n"
+"4. Note the number in E.164 format (e.g., +14155551234)\n"
+"5. In ChurchCRM, enable the Vonage SMS plugin and enter your credentials"
+msgstr "1. צור חשבון Vonage בכתובת https://dashboard.nexmo.com/sign-up (חשבונות חדשים כוללים קרדיט ניסיון חינם)\n"
+"2. מצא את מפתח ה-API וה-API Secret בדף הבית של Vonage Dashboard\n"
+"3. עבור אל Numbers > Buy Numbers ורכוש מספר עם יכולת SMS\n"
+"4. שים לב למספר בפורמט E.164 (לדוגמה, +14155551234)\n"
+"5. ב-ChurchCRM, אפשר את תוסף ה-SMS של Vonage והזן את פרטי הגישה שלך"
+
+#. plugin:google-analytics:section:0:content
+#: 
+msgid "1. Go to Google Analytics (analytics.google.com)\n"
+"2. Create a property or select an existing one\n"
+"3. Go to Admin → Data Streams → Web\n"
+"4. Copy the Measurement ID (starts with G-)"
+msgstr "1. עבור אל Google Analytics (analytics.google.com)\n"
+"2. צור נכס או בחר נכס קיים\n"
+"3. עבור אל Admin → Data Streams → Web\n"
+"4. העתק את מזהה המדידה (מתחיל ב-G-)"
+
+#. plugin:openlp:section:2:content
+#: 
+msgid "1. Install OpenLP 3.0 or later on your presentation computer\n"
+"2. Enable the Remote plugin in OpenLP (Settings → Configure OpenLP → Plugins)\n"
+"3. Enable the Alerts plugin in OpenLP for alert display support\n"
+"4. Note the IP address of the OpenLP computer\n"
+"5. Enter the server URL in the format: http://IP_ADDRESS:4316\n"
+"6. If you've configured authentication in OpenLP, enter the username and password"
+msgstr "1. התקן את OpenLP 3.0 ואילך על מחשב המצגת שלך\n"
+"2. אפשר את תוסף Remote ב-OpenLP (Settings → Configure OpenLP → Plugins)\n"
+"3. אפשר את תוסף Alerts ב-OpenLP לתמיכה בהצגת התראות\n"
+"4. שים לב לכתובת ה-IP של מחשב ה-OpenLP\n"
+"5. הזן את כתובת ה-URL של השרת בפורמט: http://IP_ADDRESS:4316\n"
+"6. אם הגדרת אימות ב-OpenLP, הזן את שם המשתמש והסיסמה"
+
+#. plugin:mailchimp:section:2:content
+#: 
+msgid "Access the MailChimp Dashboard from the Email menu. The dashboard shows:\n"
+"\n"
+"- Member count for each list\n"
+"- Campaign statistics\n"
+"- Unsubscribe counts\n"
+"- List maintenance tools"
+msgstr "גש ללוח הבקרה של MailChimp מתפריט הדוא\"ל. לוח הבקרה מציג:\n"
+"\n"
+"- מספר חברים בכל רשימה\n"
+"- סטטיסטיקות קמפיינים\n"
+"- ספירת ביטולי מנוי\n"
+"- כלי תחזוקת רשימה"
+
 #. plugin:custom-links:section:1:title
 #: 
 msgid "Adding Links"
 msgstr "הוספת קישורים"
+
+#. plugin:custom-links:section:2:content
+#: 
+msgid "All configured links are shown in a table. You can:\n"
+"- View the link name and URL\n"
+"- Click the URL to test it opens correctly\n"
+"- Delete links you no longer need\n"
+"\n"
+"Links appear in the order they were added in the navigation menu."
+msgstr "כל הקישורים המוגדרים מוצגים בטבלה. ניתן:\n"
+"- לצפות בשם הקישור וה-URL\n"
+"- ללחוץ על ה-URL כדי לבדוק שהוא נפתח כראוי\n"
+"- למחוק קישורים שאינם נחוצים עוד\n"
+"\n"
+"הקישורים מופיעים לפי סדר הוספתם בתפריט הניווט."
 
 #: 
 msgid "Allow Pre-release Upgrades"
 msgstr "אפשר שדרוגי גרסה מקדימה"
 
 #: 
+msgid "Allow recording of non-tax-deductible payments in the finance module"
+msgstr "אפשר רישום תשלומים שאינם ניתנים לניכוי ממס במודול הכספים"
+
+#: 
+msgid "Allow scanned check images to be attached to deposit records"
+msgstr "אפשר צירוף תמונות שיקים סרוקים לרשומות הפקדה"
+
+#: 
+msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
+msgstr "אפשר שדרוגי מערכת לגרסאות המסומנות כ-'pre release' ב-GitHub"
+
+#: 
+msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
+msgstr "אפשר גישה לא מאומתת לאירועי לוח שנה באמצעות כתובות HTML, ICS ו-JSON ציבוריות. נדרש לשיתוף לוחות שנה עם אפליקציות חיצוניות."
+
+#: 
+msgid "Allow visitors to create their own family record via the self-registration page"
+msgstr "אפשר למבקרים ליצור רשומת משפחה משלהם דרך דף ההרשמה העצמי"
+
+#: 
 msgid "Allow visitors to self-register as new families."
 msgstr "אפשר למבקרים להירשם בעצמם כמשפחות חדשות."
+
+#. plugin:external-backup:section:5:content
+#: 
+msgid "Any WebDAV-compatible service works with this plugin:\n"
+"\n"
+"- Nextcloud (recommended)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (with WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx with WebDAV module\n"
+"\n"
+"Note: Some services require app-specific passwords for WebDAV access."
+msgstr "כל שירות תואם WebDAV עובד עם תוסף זה:\n"
+"\n"
+"- Nextcloud (מומלץ)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (עם WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx עם מודול WebDAV\n"
+"\n"
+"הערה: חלק מהשירותים דורשים סיסמאות ייחודיות לאפליקציה עבור גישת WebDAV."
 
 #. plugin:openlp:section:4:title
 #: 
 msgid "Authentication"
 msgstr "אימות"
+
+#. plugin:openlp:section:4:content
+#: 
+msgid "Authentication is required for API v2 if you've enabled it in OpenLP's Remote plugin settings. The plugin uses HTTP Basic Authentication. Most local network setups don't require authentication, but it's recommended for security."
+msgstr "נדרש אימות עבור API v2 אם הפעלת אותו בהגדרות תוסף Remote של OpenLP. התוסף משתמש ב-HTTP Basic Authentication. רוב הגדרות הרשת המקומית אינן דורשות אימות, אך מומלץ לאבטחה."
 
 #: 
 msgid "Auto TLS"
@@ -13676,6 +13566,69 @@ msgstr "גיבוי אוטומטי"
 msgid "BCC All Mail To"
 msgstr "העתק נסתר לכל הדואר ל"
 
+#. plugin:external-backup:section:4:content
+#: 
+msgid "Before relying on external backups, test your connection:\n"
+"1. Go to Plugins > External Backup\n"
+"2. Click 'Test WebDAV Connection'\n"
+"3. Verify you see a success message\n"
+"\n"
+"Common issues:\n"
+"- 401/403 errors: Check username and password\n"
+"- Connection timeout: Verify the endpoint URL is correct\n"
+"- Certificate errors: Ensure the WebDAV server has a valid SSL certificate"
+msgstr "לפני הסתמכות על גיבויים חיצוניים, בדוק את החיבור:\n"
+"1. עבור אל Plugins > External Backup\n"
+"2. לחץ על 'Test WebDAV Connection'\n"
+"3. ודא שמוצגת הודעת הצלחה\n"
+"\n"
+"בעיות נפוצות:\n"
+"- שגיאות 401/403: בדוק שם משתמש וסיסמה\n"
+"- פסק זמן בחיבור: ודא שכתובת ה-URL של נקודת הקצה נכונה\n"
+"- שגיאות אישור: ודא שלשרת ה-WebDAV יש אישור SSL תקף"
+
+#. plugin:gravatar:section:1:content
+#: 
+msgid "Choose what appears when no Gravatar exists:\n"
+"• Mystery Person - Gray silhouette outline\n"
+"• Identicon - Geometric pattern based on email\n"
+"• MonsterID - Unique generated monster face\n"
+"• Wavatar - Abstract generated face\n"
+"• Retro - 8-bit arcade-style pixel art\n"
+"• RoboHash - Unique generated robot\n"
+"• Blank - Transparent (falls back to initials)"
+msgstr "בחר מה מוצג כאשר לא קיים Gravatar:\n"
+"• Mystery Person - קו מתאר דמות אפורה\n"
+"• Identicon - דפוס גיאומטרי מבוסס דוא\"ל\n"
+"• MonsterID - פרצוף מפלצת ייחודי שנוצר אוטומטית\n"
+"• Wavatar - פרצוף מופשט שנוצר אוטומטית\n"
+"• Retro - פיקסל ארט בסגנון arcade 8-bit\n"
+"• RoboHash - רובוט ייחודי שנוצר אוטומטית\n"
+"• Blank - שקוף (חוזר לאותיות ראשוניות)"
+
+#: 
+msgid "Comma-separated query IDs that require finance permissions to view"
+msgstr "מזהי שאילתות מופרדים בפסיקים הדורשים הרשאות כספים לצפייה"
+
+#. plugin:custom-links:section:4:content
+#: 
+msgid "Common uses for custom links:\n"
+"- Church website\n"
+"- Online giving portal\n"
+"- Volunteer signup forms\n"
+"- Denomination resources\n"
+"- Partner organization sites\n"
+"- Cloud storage folders\n"
+"- Event registration pages"
+msgstr "שימושים נפוצים לקישורים מותאמים אישית:\n"
+"- אתר הכנסייה\n"
+"- פורטל תרומות מקוון\n"
+"- טפסי הרשמה למתנדבים\n"
+"- משאבי עדה\n"
+"- אתרי ארגוני שותפים\n"
+"- תיקיות אחסון ענן\n"
+"- דפי הרשמה לאירועים"
+
 #. plugin:external-backup:section:1:title
 #: 
 msgid "Configuration"
@@ -13689,11 +13642,6 @@ msgstr "יבשת"
 #: 
 msgid "Costs"
 msgstr "עלויות"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "אנשים עם כרטיס אשראי"
 
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
@@ -13745,17 +13693,28 @@ msgid "Enable External Calendar API"
 msgstr "אפשר API לוח שנה חיצוני"
 
 #: 
+msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
+msgstr "אפשר שליחת דוא\"ל מ-ChurchCRM. נדרש לאיפוס סיסמה, התראות וקישורי דוא\"ל."
+
+#: 
+msgid "Enable if your SMTP server requires a username and password"
+msgstr "אפשר אם שרת ה-SMTP שלך דורש שם משתמש וסיסמה"
+
+#: 
+msgid "Enable or disable the Sunday School module and sidebar menu."
+msgstr "אפשר או השבת את מודול בית הספר לשבת ותפריט הסרגל הצדי."
+
+#: 
+msgid "Enable the use of numbered donation envelopes for tracking contributions"
+msgstr "אפשר שימוש במעטפות תרומה ממוספרות למעקב אחר תרומות"
+
+#: 
 msgid "Enable use of donation envelopes"
 msgstr "אפשר שימוש במעטפות תרומות"
 
 #: 
 msgid "Enable use of scanned checks"
 msgstr "אפשר שימוש בצ'קים סרוקים"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "התחייבות משפחתית לפי שנת כספים"
 
 #. plugin:mailchimp:section:1:title
 #: 
@@ -13766,11 +13725,6 @@ msgstr "תכונות"
 msgid "Finance permission query IDs"
 msgstr "מזהי שאילתת הרשאת כספים"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "מצא תלמידים רשומים"
-
 #: 
 msgid "Find family"
 msgstr "מצא משפחה"
@@ -13780,10 +13734,20 @@ msgstr "מצא משפחה"
 msgid "Finding Your Server URL"
 msgstr "מציאת כתובת URL של השרת שלך"
 
-#. Context: queryparameters_qrp
+#. plugin:custom-links:section:3:content
 #: 
-msgid "Fiscal Year."
-msgstr "שנת כספים."
+msgid "For security:\n"
+"- Only administrators can add or remove links\n"
+"- The 'Manage Links' option only appears for administrators\n"
+"- Links must use http:// or https:// protocols\n"
+"- HTML tags are not allowed in names or URLs\n"
+"- All input is validated and sanitized"
+msgstr "לאבטחה:\n"
+"- רק מנהלים יכולים להוסיף או להסיר קישורים\n"
+"- האפשרות 'Manage Links' מופיעה רק למנהלים\n"
+"- קישורים חייבים להשתמש בפרוטוקולים http:// או https://\n"
+"- תגיות HTML אינן מותרות בשמות או כתובות URL\n"
+"- כל הקלט מאומת ומטוהר"
 
 #. plugin:google-analytics:link:1:label
 #: 
@@ -13800,10 +13764,25 @@ msgstr "תחילת עבודה"
 msgid "Getting Your GA4 Measurement ID"
 msgstr "קבלת מזהה המדידה של GA4"
 
+#. plugin:google-analytics:summary
+#: 
+msgid "Google Analytics 4 (GA4) tracks how users interact with ChurchCRM, providing insights into page views, user engagement, and feature usage."
+msgstr "Google Analytics 4 (GA4) עוקב אחר אופן האינטראקציה של משתמשים עם ChurchCRM, ומספק תובנות על צפיות בדפים, מעורבות משתמשים ושימוש בתכונות."
+
 #. plugin:google-analytics:link:0:label
 #: 
 msgid "Google Analytics Help"
 msgstr "עזרה ב-Google Analytics"
+
+#. plugin:google-analytics:section:2:content
+#: 
+msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
+msgstr "Google Analytics אוסף נתוני שימוש מאנונימיים. לא נשלח מידע אישי מרשומות ChurchCRM ל-Google. שקול להוסיף הודעת פרטיות למדיניות הנתונים של הכנסייה שלך."
+
+#. plugin:gravatar:summary
+#: 
+msgid "Gravatar (Globally Recognized Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM."
+msgstr "Gravatar (Globally Recognized Avatar) מציג תמונות פרופיל מ-gravatar.com עבור חברים שאין להם תמונות שהועלו ב-ChurchCRM."
 
 #. plugin:gravatar:link:1:label
 #: 
@@ -13815,10 +13794,10 @@ msgstr "אפשרויות תמונת Gravatar"
 msgid "Gravatar Website"
 msgstr "אתר Gravatar"
 
-#. Context: queryparameters_qrp
+#. plugin:gravatar:section:2:content
 #: 
-msgid "Group of registered students"
-msgstr "קבוצת תלמידים רשומים"
+msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
+msgstr "Gravatar פועל על ידי המרת כתובות דוא\"ל לגיבוב (MD5). כתובת הדוא\"ל בפועל אינה נשלחת לשרתי Gravatar - רק הגיבוב משמש לחיפוש התמונה."
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -13838,6 +13817,77 @@ msgstr "כיצד זה עובד"
 msgid "How many checks to print per deposit slip page"
 msgstr "כמה צ'קים להדפיס בכל עמוד שובר הפקדה"
 
+#. plugin:vonage:section:3:content
+#: 
+msgid "If SMS messages aren't being sent:\n"
+"1. Verify API Key and Secret are correct (no extra spaces)\n"
+"2. Check that the From Number is a valid Vonage number you own\n"
+"3. Ensure recipient phone numbers include country code\n"
+"4. Check your Vonage account balance\n"
+"5. Review the Vonage Dashboard > SMS > Logs for delivery status"
+msgstr "אם הודעות SMS אינן נשלחות:\n"
+"1. ודא שמפתח ה-API והסוד נכונים (אין רווחים נוספים)\n"
+"2. ודא שמספר השולח הוא מספר Vonage תקף שבבעלותך\n"
+"3. ודא שמספרי הטלפון של הנמענים כוללים קוד מדינה\n"
+"4. בדוק את יתרת חשבון ה-Vonage שלך\n"
+"5. בדוק ב-Vonage Dashboard > SMS > Logs את סטטוס המסירה"
+
+#. plugin:openlp:section:5:content
+#: 
+msgid "If alerts aren't appearing:\n"
+"1. Verify OpenLP is running and the Remote plugin is active\n"
+"2. Ensure the Alerts plugin is enabled in OpenLP\n"
+"3. Check that the server URL is correct (try accessing it in a browser)\n"
+"4. Verify firewall settings allow connections on port 4316\n"
+"5. If using authentication, verify credentials are correct"
+msgstr "אם התראות אינן מופיעות:\n"
+"1. ודא ש-OpenLP פועל ותוסף ה-Remote פעיל\n"
+"2. ודא שתוסף ה-Alerts מופעל ב-OpenLP\n"
+"3. בדוק שכתובת ה-URL של השרת נכונה (נסה לגשת אליה בדפדפן)\n"
+"4. ודא שהגדרות חומת האש מאפשרות חיבורים ביציאה 4316\n"
+"5. אם משתמשים באימות, ודא שהפרטים נכונים"
+
+#. plugin:vonage:section:5:content
+#: 
+msgid "If messages are sent but not received:\n"
+"1. Check Vonage Dashboard > SMS > Logs for delivery status\n"
+"2. Verify the recipient number is correct and can receive SMS\n"
+"3. Some carriers may block messages from unknown numbers\n"
+"4. Check if the destination country has SMS restrictions"
+msgstr "אם ההודעות נשלחות אך לא מתקבלות:\n"
+"1. בדוק ב-Vonage Dashboard > SMS > Logs את סטטוס המסירה\n"
+"2. ודא שמספר הנמען נכון ויכול לקבל SMS\n"
+"3. חלק מהספקים עשויים לחסום הודעות ממספרים לא מוכרים\n"
+"4. בדוק אם קיימות הגבלות SMS במדינת היעד"
+
+#. plugin:vonage:section:4:content
+#: 
+msgid "If you receive invalid sender ID errors:\n"
+"1. Use a phone number you've purchased from Vonage\n"
+"2. Format the number in E.164 format (+14155551234)\n"
+"3. Note: Alphanumeric sender IDs may be restricted in some countries"
+msgstr "אם מתקבלות שגיאות מזהה שולח לא תקין:\n"
+"1. השתמש במספר טלפון שרכשת מ-Vonage\n"
+"2. פרמט את המספר בפורמט E.164 (+14155551234)\n"
+"3. שים לב: מזהי שולח אלפאנומריים עשויים להיות מוגבלים במדינות מסוימות"
+
+#. plugin:external-backup:section:6:content
+#: 
+msgid "Important security notes:\n"
+"\n"
+"1. Always use HTTPS endpoints to encrypt backups in transit\n"
+"2. Use app-specific passwords when available (Nextcloud, ownCloud)\n"
+"3. Store backups in a folder with restricted access\n"
+"4. Periodically download and verify your backups are valid\n"
+"5. Consider encrypting sensitive backups with external tools before uploading"
+msgstr "הערות אבטחה חשובות:\n"
+"\n"
+"1. השתמש תמיד בנקודות קצה HTTPS להצפנת גיבויים במעבר\n"
+"2. השתמש בסיסמאות ייחודיות לאפליקציה כאשר זמינות (Nextcloud, ownCloud)\n"
+"3. שמור גיבויים בתיקייה עם גישה מוגבלת\n"
+"4. הורד מעת לעת וודא שהגיבויים תקינים\n"
+"5. שקול הצפנת גיבויים רגישים עם כלים חיצוניים לפני ההעלאה"
+
 #: 
 msgid "Initial zoom level when opening the map"
 msgstr "רמת הזום הראשונית בעת פתיחת המפה"
@@ -13849,6 +13899,11 @@ msgstr "למד עוד"
 #: 
 msgid "Log Settings"
 msgstr "הגדרות יומן"
+
+#. plugin:mailchimp:summary
+#: 
+msgid "MailChimp Integration enables synchronization between ChurchCRM contacts and your MailChimp email marketing lists."
+msgstr "שילוב MailChimp מאפשר סנכרון בין אנשי קשר ב-ChurchCRM לרשימות שיווק הדוא\"ל שלך ב-MailChimp."
 
 #. plugin:custom-links:section:2:title
 #: 
@@ -13874,10 +13929,10 @@ msgstr "תיעוד OpenLP"
 msgid "OpenLP Website"
 msgstr "אתר OpenLP"
 
-#. Context: query_qry
+#. plugin:openlp:summary
 #: 
-msgid "People who are configured to pay by credit card."
-msgstr "אנשים שהוגדרו לשלם בכרטיס אשראי."
+msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
+msgstr "OpenLP היא תוכנת מצגות חינמית ופתוחה שתוכננה לכנסיות. תוסף זה מאפשר ל-ChurchCRM לשלוח התראות ישירות לתצוגת ה-OpenLP שלך."
 
 #. plugin:mailchimp:section:3:title
 #: 
@@ -13888,6 +13943,21 @@ msgstr "אינטגרציה אדם/משפחה"
 #: 
 msgid "Phone Number Format"
 msgstr "פורמט מספר טלפון"
+
+#. plugin:vonage:section:2:content
+#: 
+msgid "Phone numbers should be in E.164 format: country code + number. Examples:\n"
+"- US: +14155551234\n"
+"- UK: +447700900123\n"
+"- Australia: +61412345678\n"
+"\n"
+"Recipient phone numbers in ChurchCRM member profiles should include the country code for SMS to work correctly."
+msgstr "מספרי טלפון צריכים להיות בפורמט E.164: קוד מדינה + מספר. דוגמאות:\n"
+"- ארה\"ב: +14155551234\n"
+"- בריטניה: +447700900123\n"
+"- אוסטרליה: +61412345678\n"
+"\n"
+"מספרי הטלפון בפרופילי חברי ChurchCRM צריכים לכלול את קוד המדינה כדי ש-SMS יפעל כראוי."
 
 #. plugin:mailchimp:section:4:title
 #: 
@@ -13907,11 +13977,6 @@ msgstr "הערת פרטיות"
 #: 
 msgid "Quick Settings"
 msgstr "הגדרות מהירות"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "תלמידים רשומים"
 
 #: 
 msgid "SMTP Authentication"
@@ -13938,6 +14003,22 @@ msgid "Setup"
 msgstr "הגדרה"
 
 #: 
+msgid "Show a breakdown of bill denominations on the deposit slip report"
+msgstr "הצג פירוט של כינויי שטרות בדוח פתק ההפקדה"
+
+#: 
+msgid "Show or hide the Events menu in the main navigation."
+msgstr "הצג או הסתר את תפריט האירועים בניווט הראשי."
+
+#: 
+msgid "Show or hide the Events section in the main navigation menu"
+msgstr "הצג או הסתר את קטע האירועים בתפריט הניווט הראשי"
+
+#: 
+msgid "Show or hide the Sunday School module in the sidebar navigation"
+msgstr "הצג או הסתר את מודול בית הספר לשבת בניווט הסרגל הצדי"
+
+#: 
 msgid "Street"
 msgstr "רחוב"
 
@@ -13954,6 +14035,89 @@ msgstr "שירותים נתמכים"
 #: 
 msgid "Testing Connection"
 msgstr "בדיקת חיבור"
+
+#. plugin:custom-links:section:0:content
+#: 
+msgid "The Custom Menu Links plugin allows administrators to add external links to the navigation menu. When enabled, a 'Links' menu appears in the sidebar containing all configured links."
+msgstr "תוסף Custom Menu Links מאפשר למנהלים להוסיף קישורים חיצוניים לתפריט הניווט. כאשר מופעל, תפריט 'Links' מופיע בסרגל הצדי המכיל את כל הקישורים המוגדרים."
+
+#. plugin:external-backup:section:0:content
+#: 
+msgid "The External Backup plugin allows you to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services. This includes popular services like Nextcloud, ownCloud, or any server supporting WebDAV protocol."
+msgstr "תוסף External Backup מאפשר לך לגבות אוטומטית את מסד הנתונים של ChurchCRM לשירותי אחסון ענן תואמי WebDAV. כולל שירותים פופולריים כגון Nextcloud, ownCloud, או כל שרת התומך בפרוטוקול WebDAV."
+
+#. plugin:openlp:section:3:content
+#: 
+msgid "The default OpenLP port is 4316. Your server URL will typically be: http://192.168.x.x:4316 where 192.168.x.x is the IP address of the computer running OpenLP. You can find this in OpenLP under Tools → Open Service Manager."
+msgstr "יציאת ה-OpenLP המוגדרת כברירת מחדל היא 4316. כתובת ה-URL של השרת שלך תהיה בדרך כלל: http://192.168.x.x:4316 כאשר 192.168.x.x היא כתובת ה-IP של המחשב המריץ את OpenLP. ניתן למצוא זאת ב-OpenLP תחת Tools → Open Service Manager."
+
+#: 
+msgid "The month that starts your organization's fiscal year"
+msgstr "החודש שבו מתחילה שנת הכספים של הארגון שלך"
+
+#. plugin:vonage:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an SMS can be sent to notify parents or guardians."
+msgstr "תוסף זה משמש כרגע להתראות צ'ק-אין ב-Kiosk. כאשר ילד נרשם לכיתת בית הספר לשבת דרך מערכת ה-kiosk, ניתן לשלוח SMS להודיע להורים או לאפוטרופוסים."
+
+#. plugin:openlp:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an alert can be sent to the OpenLP projector display to notify parents or volunteers."
+msgstr "תוסף זה משמש כרגע להתראות צ'ק-אין ב-Kiosk. כאשר ילד נרשם לכיתת בית הספר לשבת דרך מערכת ה-kiosk, ניתן לשלוח התראה לתצוגת המקרן OpenLP כדי להודיע להורים או למתנדבים."
+
+#. plugin:mailchimp:section:4:content
+#: 
+msgid "This plugin transmits email addresses to MailChimp servers. Ensure you have appropriate consent from your members before syncing their information to third-party services like MailChimp."
+msgstr "תוסף זה מעביר כתובות דוא\"ל לשרתי MailChimp. ודא שיש לך הסכמה מתאימה מחברי הקהילה שלך לפני סנכרון המידע שלהם לשירותי צד שלישי כגון MailChimp."
+
+#. plugin:custom-links:section:1:content
+#: 
+msgid "To add a new link:\n"
+"1. Go to the Links menu in the sidebar and click 'Manage Links'\n"
+"2. Enter a display name (2-50 characters)\n"
+"3. Enter the full URL (must start with http:// or https://)\n"
+"4. Click 'Add Link'\n"
+"\n"
+"The link will immediately appear in the Links menu."
+msgstr "להוספת קישור חדש:\n"
+"1. עבור לתפריט Links בסרגל הצדי ולחץ על 'Manage Links'\n"
+"2. הזן שם תצוגה (2-50 תווים)\n"
+"3. הזן את ה-URL המלא (חייב להתחיל ב-http:// או https://)\n"
+"4. לחץ על 'Add Link'\n"
+"\n"
+"הקישור יופיע מיד בתפריט Links."
+
+#. plugin:external-backup:section:1:content
+#: 
+msgid "To configure external backups:\n"
+"1. Go to Admin > Plugins and find 'External Backup (WebDAV)'\n"
+"2. Click the settings icon to expand the configuration panel\n"
+"3. Enter your WebDAV endpoint URL (e.g., https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Enter your username and password\n"
+"5. Optionally set an auto-backup interval in hours\n"
+"6. Save your settings"
+msgstr "להגדרת גיבויים חיצוניים:\n"
+"1. עבור אל Admin > Plugins ומצא את 'External Backup (WebDAV)'\n"
+"2. לחץ על סמל ההגדרות להרחבת לוח התצורה\n"
+"3. הזן את כתובת ה-URL של נקודת הקצה WebDAV (לדוגמה, https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. הזן את שם המשתמש והסיסמה שלך\n"
+"5. הגדר אופציונלית מרווח גיבוי אוטומטי בשעות\n"
+"6. שמור את ההגדרות שלך"
+
+#. plugin:mailchimp:section:0:content
+#: 
+msgid "To use MailChimp Integration, you need a MailChimp account and an API key.\n"
+"\n"
+"1. Log in to your MailChimp account\n"
+"2. Go to Account > Extras > API Keys\n"
+"3. Create a new API key or copy an existing one\n"
+"4. Enter the API key in the plugin settings"
+msgstr "לשימוש בשילוב MailChimp, נדרש חשבון MailChimp ומפתח API.\n"
+"\n"
+"1. התחבר לחשבון ה-MailChimp שלך\n"
+"2. עבור אל Account > Extras > API Keys\n"
+"3. צור מפתח API חדש או העתק קיים\n"
+"4. הזן את מפתח ה-API בהגדרות התוסף"
 
 #. plugin:openlp:section:5:title
 #: 
@@ -13984,11 +14148,6 @@ msgstr "הגדרות שדרוג"
 msgid "Use Cases"
 msgstr "מקרי שימוש"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "הרשאת משתמש לייצוא קבצי CSV"
-
 #. plugin:vonage:link:0:label
 #: 
 msgid "Vonage Dashboard"
@@ -14004,8 +14163,1325 @@ msgstr "תמחור Vonage"
 msgid "Vonage SMS API Documentation"
 msgstr "תיעוד Vonage SMS API"
 
+#. plugin:vonage:summary
+#: 
+msgid "Vonage SMS enables text message notifications for ChurchCRM using the Vonage API (formerly Nexmo). Send SMS alerts to parents when their child checks in via the kiosk system."
+msgstr "Vonage SMS מאפשר התראות הודעות טקסט עבור ChurchCRM באמצעות Vonage API (לשעבר Nexmo). שלח התראות SMS להורים כאשר ילדם נרשם דרך מערכת ה-kiosk."
+
+#. plugin:vonage:section:6:content
+#: 
+msgid "Vonage charges per SMS sent. Pricing varies by destination country. See the Vonage pricing page for current rates. New accounts receive free trial credit for testing."
+msgstr "Vonage גובה תשלום עבור כל SMS שנשלח. התמחור משתנה לפי מדינת היעד. ראה את דף התמחור של Vonage לתעריפים הנוכחיים. חשבונות חדשים מקבלים קרדיט ניסיון חינם לבדיקה."
+
 #. plugin:google-analytics:section:1:title
 #: 
 msgid "What Gets Tracked"
 msgstr "מה נעקב"
+
+#. plugin:mailchimp:section:3:content
+#: 
+msgid "When MailChimp is configured, a 'MailChimp' tab appears on Person view pages showing:\n"
+"\n"
+"- Email subscription status across all lists\n"
+"- Which lists the person is subscribed to\n"
+"- Subscription statistics"
+msgstr "כאשר MailChimp מוגדר, לשונית 'MailChimp' מופיעה בדפי צפייה באנשים ומציגה:\n"
+"\n"
+"- סטטוס מנוי דוא\"ל בכל הרשימות\n"
+"- לאיזו רשימות האדם מנוי\n"
+"- סטטיסטיקות מנוי"
+
+#. plugin:gravatar:section:0:content
+#: 
+msgid "When a member doesn't have an uploaded photo, ChurchCRM checks if they have a Gravatar associated with their email address. If a Gravatar exists, it displays that image. If not, the configured default image style is used."
+msgstr "כאשר לחבר אין תמונה שהועלתה, ChurchCRM בודק אם יש לו Gravatar המשויך לכתובת הדוא\"ל שלו. אם קיים Gravatar, הוא מציג את התמונה הזו. אם לא, נעשה שימוש בסגנון התמונה המוגדר כברירת מחדל."
+
+#. plugin:external-backup:section:2:content
+#: 
+msgid "When auto-backup is enabled (interval > 0 hours), ChurchCRM will automatically create and upload a full database backup at the specified interval. The backup runs as part of normal page loads, so the system must have regular user activity to trigger backups.\n"
+"\n"
+"Recommended intervals:\n"
+"- Daily backup: 24 hours\n"
+"- Twice daily: 12 hours\n"
+"- Weekly: 168 hours"
+msgstr "כאשר גיבוי אוטומטי מופעל (מרווח > 0 שעות), ChurchCRM ייצור ויעלה אוטומטית גיבוי מסד נתונים מלא במרווח הזמן שצוין. הגיבוי מתבצע כחלק מטעינות דפים רגילות, לכן המערכת חייבת לקבל פעילות משתמש סדירה כדי להפעיל גיבויים.\n"
+"\n"
+"מרווחים מומלצים:\n"
+"- גיבוי יומי: 24 שעות\n"
+"- פעמיים ביום: 12 שעות\n"
+"- שבועי: 168 שעות"
+
+#. plugin:openlp:section:1:content
+#: 
+msgid "When enabled and configured, ChurchCRM sends alert messages to your OpenLP server using the API v2 endpoint (POST /api/v2/plugins/alerts). These alerts appear as overlay notifications on your projected display."
+msgstr "כאשר מופעל ומוגדר, ChurchCRM שולח הודעות התראה לשרת OpenLP שלך באמצעות נקודת הקצה API v2 (POST /api/v2/plugins/alerts). התראות אלה מופיעות כהתראות שכבת-על בתצוגה המוקרנת שלך."
+
+#: 
+msgid "When enabled, hides the address field for people not assigned to a family"
+msgstr "כאשר מופעל, מסתיר את שדה הכתובת עבור אנשים שאינם משויכים למשפחה"
+
+#: 
+msgid "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background."
+msgstr "כאשר מופעל, מסתיר את שדות קו הרוחב/קו האורך בעורך המשפחה. קידוד גיאוגרפי עדיין פועל ברקע."
+
+#. plugin:external-backup:section:3:content
+#: 
+msgid "You can also trigger a manual backup at any time:\n"
+"1. Go to the External Backup settings page (Plugins > External Backup)\n"
+"2. Select backup type (Database Only or Full Backup)\n"
+"3. Click 'Backup to WebDAV Now'\n"
+"\n"
+"Database Only backups are smaller and faster. Full backups include uploaded photos."
+msgstr "ניתן גם להפעיל גיבוי ידני בכל עת:\n"
+"1. עבור לדף הגדרות External Backup (Plugins > External Backup)\n"
+"2. בחר סוג גיבוי (Database Only או Full Backup)\n"
+"3. לחץ על 'Backup to WebDAV Now'\n"
+"\n"
+"גיבויי Database Only קטנים ומהירים יותר. גיבויים מלאים כוללים תמונות שהועלו."
+
+#. plugin:google-analytics:section:1:content
+#: 
+msgid "• Page views and navigation patterns\n"
+"• Session duration and engagement\n"
+"• User demographics (if enabled in GA4)\n"
+"• Device and browser information"
+msgstr "• צפיות בדפים ודפוסי ניווט\n"
+"• משך סשן ומעורבות\n"
+"• דמוגרפיה של משתמשים (אם מופעל ב-GA4)\n"
+"• מידע על מכשיר ודפדפן"
+
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "גודל הקובץ חורג ממגבלת השרת של %s"
+
+#: 
+msgid "Missing image data in request"
+msgstr "נתוני תמונה חסרים בבקשה"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "מצא אנשים שלא השתתפו באירוע"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "אנשים חסרים"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "בחר את האירוע הרצוי"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "סינון מתקדם לפי קבוצה, סיווג ותפקיד"
+
+#: 
+msgid "All congregation members included"
+msgstr "כל חברי הקהילה כלולים"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ייצוא ChMeetings הושלם בהצלחה"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "פורמט עמודות תואם ChMeetings"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "פרטי קשר, תפקידים משפחתיים ותאריכים מרכזיים"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "צור גיבוי מלא של מסד הנתונים של הקהילה. הורד קובץ SQL של מסד הנתונים בלבד, או ארכיון מלא הכולל תמונות שהועלו."
+
+#: 
+msgid "Database Backup"
+msgstr "גיבוי מסד נתונים"
+
+#: 
+msgid "Export"
+msgstr "ייצוא"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "ייצא נתוני קהילה לפורמט CSV. בחר אילו שדות לכלול וסנן לפי סיווג, קבוצה, מגדר ועוד."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "ייצא את כל האנשים בפורמט הנדרש על ידי ChMeetings, מה שמאפשר סנכרון קל של נתוני הקהילה עם פלטפורמת ChMeetings."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "ייצא את נתוני הקהילה לפורמטים שונים"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "גיבוי חיצוני (WebDAV) באמצעות תוסף"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "ייצוא CSV ל-ChMeetings נכשל"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "פריסת רשומה משפחתית או אישית"
+
+#: 
+msgid "Flexible field selection"
+msgstr "בחירת שדות גמישה"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "עבור לגיבוי מסד נתונים"
+
+#: 
+msgid "Open CSV Export"
+msgstr "פתח ייצוא CSV"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "שחזר מדף גיבוי המערכת"
+
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "עדכון מערכת זמין. אנא שדרג את ההתקנה שלך."
+
+#: 
+msgid "API Access"
+msgstr "גישת API"
+
+#: 
+msgid "API Key"
+msgstr "מפתח API"
+
+#: 
+msgid "API key regenerated"
+msgstr "מפתח API נוצר מחדש"
+
+#: 
+msgid "Account"
+msgstr "חשבון"
+
+#: 
+msgid "Advanced Settings"
+msgstr "הגדרות מתקדמות"
+
+#: 
+msgid "An error occurred."
+msgstr "אירעה שגיאה."
+
+#: 
+msgid "Appearance"
+msgstr "מראה"
+
+#: 
+msgid "Azure"
+msgstr "אז׳ור"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "חזרה ללוח הבקרה הפיננסי"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "חזרה ללוח הבקרה של קבוצות"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "חזרה ללוח הבקרה של אנשים"
+
+#: 
+msgid "Blue"
+msgstr "כחול"
+
+#: 
+msgid "Change Photo"
+msgstr "שנה תמונה"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "השינויים ייכנסו לתוקף בכניסה הבאה."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "בחר בין ערכת צבעים בהירה לכהה"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "תרגומי ChurchCRM מנוהלים על ידי הקהילה ב-POEditor. תוכל לעזור על ידי:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "התאם אישית את מראה היישום ותחושתו"
+
+#: 
+msgid "Cyan"
+msgstr "ציאן"
+
+#: 
+msgid "Dark"
+msgstr "כהה"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "בסיס נתונים בלבד (.sql) או ארכיון מלא (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "מספר השורות המוצגות כברירת מחדל בטבלאות נתונים. ייכנס לתוקף בטעינת הדף הבאה."
+
+#: 
+msgid "Edit own family only"
+msgstr "עריכת המשפחה שלי בלבד"
+
+#: 
+msgid "Enter text here..."
+msgstr "הכנס טקסט כאן..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "ביטול ההרשמה נכשל. אנא נסה שוב."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "מחיקת האירוע נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "השבתת אימות דו-שלבי נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "יצירת קוד QR נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "טעינת נתוני לוח השנה נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "טעינת האירוע נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "טעינת קודי השחזור נכשלה. אנא רענן את הדף."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "שמירת האירוע נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Failed to save setting"
+msgstr "שמירת ההגדרה נכשלה"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "פיליפינית - פיליפינים"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "תיקון תרגומים שגויים או מסורבלים בשפתך"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "מצאת באג בתרגומים?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "מעניק את כל ההרשאות"
+
+#: 
+msgid "Green"
+msgstr "ירוק"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "עזור לשפר תרגומים"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "אם אתה מבחין בתווים מקולקלים, ישויות HTML המופיעות כטקסט, או תרגומים הפוגעים בפריסת הדף, אנא דווח על הבעיה ב-GitHub כדי שניתן יהיה לתקנה עבור כולם."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "כלול את מפתח ה-API שלך בבקשות באמצעות כותרת x-api-key:"
+
+#: 
+msgid "Indigo"
+msgstr "אינדיגו"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "ערך JSON לא תקין — ההגדרה לא נשמרה. אנא תקן ונסה שוב."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "הצטרף לפרויקט התרגום ב-POEditor"
+
+#: 
+msgid "Language and regional settings"
+msgstr "הגדרות שפה ואזור"
+
+#: 
+msgid "Light"
+msgstr "בהיר"
+
+#: 
+msgid "Lime"
+msgstr "ליים"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "מלאיאלאם - הודו"
+
+#: 
+msgid "Manage 2FA"
+msgstr "נהל אימות דו-שלבי"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "נהל העדפות נוספות כגון מפרידי דואר אלקטרוני ואפשרויות תצוגה"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "נהל את מפתח ה-API שלך לאינטגרציות חיצוניות"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "שיטה אינה מורשית"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "תרגומים חסרים או שגויים?"
+
+#: 
+msgid "My Account"
+msgstr "החשבון שלי"
+
+#: 
+msgid "Orange"
+msgstr "כתום"
+
+#: 
+msgid "Override the system default locale"
+msgstr "עקוף את שפת ברירת המחדל של המערכת"
+
+#: 
+msgid "Page Not Found"
+msgstr "הדף לא נמצא"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "אחוז המחרוזות המתורגמות לשפה הנוכחית שלך"
+
+#: 
+msgid "Pink"
+msgstr "ורוד"
+
+#: 
+msgid "Primary Color"
+msgstr "צבע ראשי"
+
+#: 
+msgid "Profile and security"
+msgstr "פרופיל ואבטחה"
+
+#: 
+msgid "Purple"
+msgstr "סגול"
+
+#: 
+msgid "Red"
+msgstr "אדום"
+
+#: 
+msgid "Regenerate"
+msgstr "צור מחדש"
+
+#: 
+msgid "Rows per page"
+msgstr "שורות לדף"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "הגדר הרשאה לאמת כדי לאפשר למשתמש זה לשנות את ההגדרה בעצמו."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "הגדר את צבע ההדגשה המשמש לכפתורים, קישורים ואלמנטים פעילים"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "הצעת ניסוח טוב יותר לתרגומים קיימים"
+
+#: 
+msgid "System Update Available"
+msgstr "עדכון מערכת זמין"
+
+#: 
+msgid "Tables"
+msgstr "טבלאות"
+
+#: 
+msgid "Teal"
+msgstr "טיל"
+
+#: 
+msgid "Theme Mode"
+msgstr "מצב ערכת נושא"
+
+#: 
+msgid "Toggle search"
+msgstr "הפעל/כבה חיפוש"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "תרגום מחרוזות חסרות לשיפור הכיסוי"
+
+#: 
+msgid "Translation Progress"
+msgstr "התקדמות תרגום"
+
+#: 
+msgid "Usage"
+msgstr "שימוש"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "השתמש במפתח זה לאימות בקשות API. יצירה מחדש תבטל את המפתח הנוכחי."
+
+#: 
+msgid "User Config"
+msgstr "הגדרות משתמש"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "האימות נכשל. אנא נסה שוב."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "גרסה %s זמינה. אנא שדרג את ההתקנה שלך."
+
+#: 
+msgid "View All"
+msgstr "הצג הכל"
+
+#: 
+msgid "Yellow"
+msgstr "צהוב"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "רמות הגישה הנוכחיות שלך (לקריאה בלבד)"
+
+#: 
+msgid "%d repeat event created successfully."
+msgid_plural "%d repeat events created successfully."
+msgstr[0] "אירוע חוזר אחד נוצר בהצלחה."
+msgstr[1] "%d אירועים חוזרים נוצרו בהצלחה."
+
+#: 
+msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
+msgstr "(לדוג׳ חברים, אורחים, ילדים) כדי שמתנדבים יוכלו לרשום ספירות כאן."
+
+#: 
+msgid "1. Sunday School Class"
+msgstr "1. כיתת בית ספר ראשון לשבוע"
+
+#: 
+msgid "2. Event Type"
+msgstr "2. סוג אירוע"
+
+#: 
+msgid "3. Event"
+msgstr "3. אירוע"
+
+#: 
+msgid "4. Kiosk"
+msgstr "4. קיוסק"
+
+#: 
+msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
+msgstr "כיתה היא קבוצה מסוג \"בית ספר ראשון לשבוע\". היא מכילה תלמידים ומורים (חברים עם תפקידים)."
+
+#: 
+msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
+msgstr "קבוצה מקושרת מחברת אירוע זה לכיתה או לרשימת שירות. כשהאירוע מוקצה לקיוסק, הקיוסק שולף את חברי הקבוצה ומציג אותם כרשימת כניסה בנגיעה. לכיתות בית ספר ראשון לשבוע, קשר את קבוצת הכיתה כאן כדי שמתנדבים יוכלו לבצע צ׳ק-אין לתלמידים מטאבלט."
+
+#: 
+msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr "מופע ספציפי (לדוג׳ \"גן ילדים — 12 באפריל\"). יורש ברירות מחדל מהסוג ומקושר לקבוצת הכיתה דרך הקהל. זה מה שמתנדבים מסמנים נוכחות כנגדו."
+
+#: 
+msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr "טאבלט המוקצה לאירוע אחד. הקיוסק שולף את רשימת הקבוצה המקושרת לאירוע ומציג כניסה בנגיעה. ללא קבוצה מקושרת אין לקיוסק רשימה להציג."
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "הוסף אורח/מבקר"
+
+#: 
+msgid "Add categories on the Event Type page"
+msgstr "הוסף קטגוריות בדף סוג האירוע"
+
+#: 
+msgid "Add people to your cart first, then come back to check them in to an event."
+msgstr "הוסף אנשים לעגלה תחילה, ולאחר מכן חזור לבצע צ׳ק-אין לאירוע."
+
+#: 
+msgid "All clear!"
+msgstr "הכל תקין!"
+
+#: 
+msgid "All events and attendance records"
+msgstr "כל האירועים ורשומות הנוכחות"
+
+#: 
+msgid "All financial data (pledges, payments, deposits)"
+msgstr "כל הנתונים הפיננסיים (התחייבויות, תשלומים, הפקדות)"
+
+#: 
+msgid "All groups, roles, and memberships"
+msgstr "כל הקבוצות, התפקידים והחברויות"
+
+#: 
+msgid "All people and family records"
+msgstr "כל רשומות האנשים והמשפחות"
+
+#: 
+msgid "All system settings and custom fields"
+msgstr "כל הגדרות המערכת והשדות המותאמים"
+
+#: 
+msgid "All uploaded photos and documents"
+msgstr "כל התמונות והמסמכים שהועלו"
+
+#: 
+msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
+msgstr "סוג אירוע הוא תבנית — שם, שעת התחלה ברירת מחדל, חזרתיות, קטגוריות ספירת נוכחות. ניתן לקשר אותו לקבוצת כיתה אחת כקהל ברירת מחדל."
+
+#: 
+msgid "Attendance record deleted."
+msgstr "רשומת נוכחות נמחקה."
+
+#: 
+msgid "Audit"
+msgstr "ביקורת"
+
+#: 
+msgid "Audit Events"
+msgstr "אירועי ביקורת"
+
+#: 
+msgid "Auto-totalled from counts at right"
+msgstr "סכום אוטומטי מהספירות בצד ימין"
+
+#: 
+msgid "Back to Events"
+msgstr "חזרה לאירועים"
+
+#: 
+msgid "Back to Events Dashboard"
+msgstr "חזרה ללוח האירועים"
+
+#: 
+msgid "Backup failed. You can still proceed with the reset, but your data will be lost."
+msgstr "הגיבוי נכשל. ניתן להמשיך עם האיפוס, אך הנתונים יאבדו."
+
+#: 
+msgid "Backup ready!"
+msgstr "הגיבוי מוכן!"
+
+#: 
+msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
+msgstr "לפני האיפוס, מומלץ מאוד להוריד גיבוי של הנתונים הנוכחיים. זו ההזדמנות היחידה לשמר אותם."
+
+#: 
+msgid "Bulk-create a series of recurring events"
+msgstr "צור בכמות סדרה של אירועים חוזרים"
+
+#: 
+msgid "By"
+msgstr "על ידי"
+
+#: 
+msgid "Cannot check in to an inactive event. Activate the event first."
+msgstr "לא ניתן לבצע צ׳ק-אין לאירוע לא פעיל. הפעל את האירוע תחילה."
+
+#: 
+msgid "Change"
+msgstr "שנה"
+
+#: 
+msgid "Check In All"
+msgstr "כניסה לכולם"
+
+#: 
+msgid "Check In Family"
+msgstr "כניסה למשפחה"
+
+#: 
+msgid "Check Out All"
+msgstr "יציאה לכולם"
+
+#: 
+msgid "Check in all %d family members to a single event."
+msgstr "בצע צ׳ק-אין לכל %d חברי המשפחה לאירוע אחד."
+
+#: 
+msgid "Check out"
+msgstr "יציאה"
+
+#: 
+msgid "Check-in By"
+msgstr "כניסה על ידי"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "הצ׳ק-אין נכשל. אנא נסה שוב."
+
+#: 
+msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
+msgstr "הצ׳ק-אין מושבת עבור אירועים לא פעילים. הפעל את האירוע מלוח האירועים כדי לאפשר צ׳ק-אין."
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "הצ׳ק-אאוט נכשל. אנא נסה שוב."
+
+#: 
+msgid "Checked in to event: %s"
+msgstr "בוצע צ׳ק-אין לאירוע: %s"
+
+#: 
+msgid "Checked out from event: %s"
+msgstr "בוצע צ׳ק-אאוט מאירוע: %s"
+
+#: 
+msgid "Close All Stuck Events"
+msgstr "סגור את כל האירועים התקועים"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "אשר יציאה"
+
+#: 
+msgid "Create Repeat Events"
+msgstr "צור אירועים חוזרים"
+
+#: 
+msgid "Create Today's Event"
+msgstr "צור את אירוע היום"
+
+#: 
+msgid "Create a new event type with recurrence and attendance settings"
+msgstr "צור סוג אירוע חדש עם הגדרות חזרתיות ונוכחות"
+
+#: 
+msgid "Create one now"
+msgstr "צור עכשיו"
+
+#: 
+msgid "Create today's class event and link it to this class for kiosk check-in"
+msgstr "צור את אירוע הכיתה של היום וקשר אותו לכיתה זו לצ׳ק-אין בקיוסק"
+
+#: 
+msgid "Creating backup..."
+msgstr "יוצר גיבוי..."
+
+#: 
+msgid "Creating..."
+msgstr "יוצר..."
+
+#: 
+msgid "Database + uploaded photos (larger)"
+msgstr "מסד נתונים + תמונות שהועלו (גדול יותר)"
+
+#: 
+msgid "Database dump only (.sql)"
+msgstr "ייצוא מסד נתונים בלבד (.sql)"
+
+#: 
+msgid "Date Range"
+msgstr "טווח תאריכים"
+
+#: 
+msgid "Date range cannot exceed 1 year"
+msgstr "טווח התאריכים אינו יכול לעלות על שנה אחת"
+
+#: 
+msgid "Deactivate"
+msgstr "השבת"
+
+#: 
+msgid "Delete Event Type"
+msgstr "מחק סוג אירוע"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "למחוק רשומת נוכחות?"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "מחק רשומת כניסה עבור"
+
+#: 
+msgid "Delete this event?"
+msgstr "למחוק אירוע זה?"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "מחיקת אירוע תמחק גם את כל ספירות הנוכחות. לא ניתן לבטל פעולה זו."
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "מחיקת סוג אירוע זה לא תמחק אירועים קיימים. האם אתה בטוח?"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "מחיקת אירוע זה תמחק גם את כל רשומות הנוכחות. לא ניתן לבטל פעולה זו."
+
+#: 
+msgid "Destructive Operation"
+msgstr "פעולה הרסנית"
+
+#: 
+msgid "Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field."
+msgstr "ערוך שם קטגוריה ולחץ שמור, או השתמש בסמל הפח להסרה. שורות חדשות מתווספות דרך השדה בתחתית."
+
+#: 
+msgid "End Time"
+msgstr "שעת סיום"
+
+#: 
+msgid "End time must be after start time."
+msgstr "שעת הסיום חייבת להיות אחרי שעת ההתחלה."
+
+#: 
+msgid "Ended"
+msgstr "הסתיים"
+
+#: 
+msgid "Ends"
+msgstr "מסתיים"
+
+#: 
+msgid "Event Audit"
+msgstr "ביקורת אירוע"
+
+#: 
+msgid "Event Check-in"
+msgstr "צ׳ק-אין לאירוע"
+
+#: 
+msgid "Event Details"
+msgstr "פרטי אירוע"
+
+#: 
+msgid "Event Template"
+msgstr "תבנית אירוע"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "האירוע כבר קיים. מנתב לצ׳ק-אין..."
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "האירוע נוצר. מנתב לצ׳ק-אין..."
+
+#: 
+msgid "Event end date/time must be on or after the start date/time."
+msgstr "תאריך/שעת סיום האירוע חייבים להיות ביום ההתחלה או אחריו."
+
+#: 
+msgid "Event title is required."
+msgstr "כותרת האירוע נדרשת."
+
+#: 
+msgid "Event type ID is required"
+msgstr "נדרש מזהה סוג אירוע"
+
+#: 
+msgid "Event type ID or group ID is required"
+msgstr "נדרש מזהה סוג אירוע או מזהה קבוצה"
+
+#: 
+msgid "Event type has no date configured for yearly recurrence"
+msgstr "לסוג האירוע אין תאריך מוגדר לחזרה שנתית"
+
+#: 
+msgid "Event type has no day-of-week configured for weekly recurrence"
+msgstr "לסוג האירוע אין יום בשבוע מוגדר לחזרה שבועית"
+
+#: 
+msgid "Event type has no recurrence pattern configured"
+msgstr "לסוג האירוע אין תבנית חזרתיות מוגדרת"
+
+#: 
+msgid "Event type has no valid day-of-month configured for monthly recurrence"
+msgstr "לסוג האירוע אין יום חודשי תקין מוגדר לחזרה חודשית"
+
+#: 
+msgid "Events will be created for every matching occurrence within this date range."
+msgstr "אירועים ייווצרו לכל מופע תואם בטווח תאריכים זה."
+
+#: 
+msgid "Every month on the"
+msgstr "כל חודש ב-"
+
+#: 
+msgid "Every week on"
+msgstr "כל שבוע ב-"
+
+#: 
+msgid "Every year on"
+msgstr "כל שנה ב-"
+
+#: 
+msgid "Everyone is checked in!"
+msgstr "כולם עשו צ׳ק-אין!"
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "יצירת הכיתה נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Failed to create event."
+msgstr "יצירת האירוע נכשלה."
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "יצירת האירוע נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "המחיקה נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Fastest workflow:"
+msgstr "זרימת העבודה המהירה ביותר:"
+
+#: 
+msgid "Find past events that are still active or have un-checked-out attendees"
+msgstr "מצא אירועים עבר שעדיין פעילים או שיש להם משתתפים שלא עשו צ׳ק-אאוט"
+
+#: 
+msgid "Format: MM-DD (e.g. 04-12 for April 12)"
+msgstr "פורמט: MM-DD (לדוג׳ 04-12 לאפריל 12)"
+
+#: 
+msgid "Group Roster"
+msgstr "רשימת קבוצה"
+
+#: 
+msgid "Hide Advanced Options"
+msgstr "הסתר אפשרויות מתקדמות"
+
+#: 
+msgid "How Sunday School + Events + Kiosks fit together"
+msgstr "כיצד בית ספר ראשון לשבוע + אירועים + קיוסקים עובדים יחד"
+
+#: 
+msgid "Invalid date for %s — expected YYYY-MM-DD"
+msgstr "תאריך לא תקין עבור %s — נדרש YYYY-MM-DD"
+
+#: 
+msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr "פורמט תאריך לא תקין עבור rangeStart או rangeEnd"
+
+#: 
+msgid "Invalid date format."
+msgstr "פורמט תאריך לא תקין."
+
+#: 
+msgid "Invalid date; expected format YYYY-MM-DD"
+msgstr "תאריך לא תקין; פורמט נדרש YYYY-MM-DD"
+
+#: 
+msgid "Invalid event type ID"
+msgstr "מזהה סוג אירוע לא תקין"
+
+#: 
+msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
+msgstr "פורמט חזרה שנתית לא תקין; נדרש MM-DD (לדוג׳ 04-12)"
+
+#: 
+msgid "Just now"
+msgstr "הרגע"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "השאר ריק לצ׳ק-אאוט ללא רישום המפקח."
+
+#: 
+msgid "Link events to a group for Kiosk check-in functionality."
+msgstr "קשר אירועים לקבוצה לצורך פונקציית צ׳ק-אין בקיוסק."
+
+#: 
+msgid "Linked Groups"
+msgstr "קבוצות מקושרות"
+
+#: 
+msgid "Looking for stuck events..."
+msgstr "מחפש אירועים תקועים..."
+
+#: 
+msgid "Manage event names, recurrence patterns, and attendance counts"
+msgstr "נהל שמות אירועים, תבניות חזרתיות וספירות נוכחות"
+
+#: 
+msgid "Missing required field: %s"
+msgstr "שדה חובה חסר: %s"
+
+#: 
+msgid "No Events Today"
+msgstr "אין אירועים היום"
+
+#: 
+msgid "No Group"
+msgstr "אין קבוצה"
+
+#: 
+msgid "No active assignment"
+msgstr "אין הקצאה פעילה"
+
+#: 
+msgid "No active events found."
+msgstr "לא נמצאו אירועים פעילים."
+
+#: 
+msgid "No attendance count categories defined for this event type yet."
+msgstr "טרם הוגדרו קטגוריות ספירת נוכחות לסוג אירוע זה."
+
+#: 
+msgid "No one has been checked in to this event yet."
+msgstr "טרם בוצע צ׳ק-אין לאף אחד לאירוע זה."
+
+#: 
+msgid "No past events are still marked Active."
+msgstr "אין אירועים עבר המסומנים עדיין כפעילים."
+
+#: 
+msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr "פתח כיתה ← לחץ \"צור את אירוע היום\" — האירוע נוצר ומקושר לכיתה בפעולה אחת, ואז מגיעים לדף הצ׳ק-אין מוכן לקיוסק או לנוכחות ספונטנית."
+
+#: 
+msgid "Optional Settings"
+msgstr "הגדרות אופציונליות"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "אופציונלי — רשום מי מוציא את האדם (לדוג׳ הורה שאוסף ילד)."
+
+#: 
+msgid "Person checked out."
+msgstr "האדם עשה צ׳ק-אאוט."
+
+#: 
+msgid "Person is not checked in"
+msgstr "האדם אינו מחובר"
+
+#: 
+msgid "Person not in active class roster"
+msgstr "האדם אינו ברשימת הכיתה הפעילה"
+
+#: 
+msgid "Pin to Calendars"
+msgstr "נעץ ביומנים"
+
+#: 
+msgid "Please select a person to check in."
+msgstr "אנא בחר אדם לצ׳ק-אין."
+
+#: 
+msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
+msgstr "מולא מראש לפי סוג אירוע זה — לסוגים חוזרים, התאריך הוא המופע הבא אחרי האירוע האחרון מסוג זה, והשעה תואמת לשעת ההתחלה הדיפולטית של הסוג."
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "תאריך סיום הטווח חייב להיות ביום ההתחלה או אחריו."
+
+#: 
+msgid "Range end must be a valid YYYY-MM-DD date."
+msgstr "סיום הטווח חייב להיות תאריך תקין בפורמט YYYY-MM-DD."
+
+#: 
+msgid "Range start must be a valid YYYY-MM-DD date."
+msgstr "תחילת הטווח חייבת להיות תאריך תקין בפורמט YYYY-MM-DD."
+
+#: 
+msgid "Range start must be before range end"
+msgstr "תחילת הטווח חייבת להיות לפני סיומו"
+
+#: 
+msgid "Range start must be before range end."
+msgstr "תחילת הטווח חייבת להיות לפני סיומו."
+
+#: 
+msgid "RangeEnd must be on or after RangeStart"
+msgstr "RangeEnd חייב להיות ב-RangeStart או אחריו"
+
+#: 
+msgid "Recommended"
+msgstr "מומלץ"
+
+#: 
+msgid "Required for Kiosk"
+msgstr "נדרש לקיוסק"
+
+#: 
+msgid "Resetting will permanently delete:"
+msgstr "האיפוס ימחק לצמיתות:"
+
+#: 
+msgid "SQL Only"
+msgstr "SQL בלבד"
+
+#: 
+msgid "Save Time"
+msgstr "חסוך זמן"
+
+#: 
+msgid "Save changes to this category name"
+msgstr "שמור שינויים לשם קטגוריה זו"
+
+#: 
+msgid "Select an event type…"
+msgstr "בחר סוג אירוע..."
+
+#: 
+msgid "Select start and end date/time."
+msgstr "בחר תאריך/שעת התחלה וסיום."
+
+#: 
+msgid "Show More Options"
+msgstr "הצג אפשרויות נוספות"
+
+#: 
+msgid "Skip"
+msgstr "דלג"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "דלג וצא"
+
+#: 
+msgid "Start Check-in"
+msgstr "התחל צ׳ק-אין"
+
+#: 
+msgid "Starts"
+msgstr "מתחיל"
+
+#: 
+msgid "Step 1: Create a Backup"
+msgstr "שלב 1: צור גיבוי"
+
+#: 
+msgid "Step 2: Reset Database"
+msgstr "שלב 2: אפס מסד נתונים"
+
+#: 
+msgid "Still Checked In"
+msgstr "עדיין מחובר"
+
+#: 
+msgid "Stuck Events"
+msgstr "אירועים תקועים"
+
+#: 
+msgid "Take Attendance"
+msgstr "קח נוכחות"
+
+#: 
+msgid "The Events module is disabled"
+msgstr "מודול האירועים מושבת"
+
+#: 
+msgid "The same start and end time will be used for all generated events."
+msgstr "אותן שעות התחלה וסיום ישמשו לכל האירועים שייווצרו."
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "אין אירועים מתוכננים להיום"
+
+#: 
+msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
+msgstr "אלו קטגוריות ספירת ראשים — מתנדבים ממלאים אותן לאחר האירוע כדי שהלוח יוכל לפרק את הנוכחות (לדוג׳ כמה חברים לעומת אורחים). הן נפרדות מצ׳ק-אין אישי בדף הצ׳ק-אין."
+
+#: 
+msgid "This event is inactive."
+msgstr "אירוע זה אינו פעיל."
+
+#: 
+msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr "דף זה מאפשר למחוק לצמיתות את כל הנתונים במסד הנתונים של ChurchCRM. לא ניתן לבטל פעולה זו."
+
+#: 
+msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
+msgstr "דוח זה מפרט כל אירוע שתאריך סיומו עבר אך עדיין מסומן כפעיל. סיבות נפוצות: מתנדב שכח ללחוץ על ׳יציאה׳, קיוסק איבד קישוריות, או שהאירוע נוצר ונזנח. אירועים ישנים שלא הושבתו גם מופיעים כאן. עמודת ׳עדיין מחובר׳ מציגה האם מישהו נשאר באמצע צ׳ק-אין. סגירת אירוע מדוח זה מוציאה את כולם (בשעה הנוכחית) ומסמנת את האירוע כלא פעיל."
+
+#: 
+msgid "This title will be used for all generated events."
+msgstr "כותרת זו תשמש לכל האירועים שייווצרו."
+
+#: 
+msgid "Today's Events"
+msgstr "אירועי היום"
+
+#: 
+msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
+msgstr "יותר מדי מופעים (%d) — צמצם את טווח התאריכים. המקסימום המותר: %d"
+
+#: 
+msgid "Type RESET to confirm"
+msgstr "הקלד RESET לאישור"
+
+#: 
+msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
+msgstr "השתמש בכפתור למעלה כדי ליצור את אירוע היום בלחיצה אחת. הוא יקושר אוטומטית לכיתה זו כדי שקיוסק יוכל לשלוף את הרשימה."
+
+#: 
+msgid "Use this form to bulk-create a series of recurring events. Each event is created individually and can be edited or deleted independently after creation."
+msgstr "השתמש בטופס זה ליצירה בכמות של סדרת אירועים חוזרים. כל אירוע נוצר בנפרד וניתן לעריכה או מחיקה עצמאית לאחר היצירה."
+
+#: 
+msgid "Used as the default start time when creating events of this type."
+msgstr "משמש כשעת התחלה ברירת מחדל בעת יצירת אירועים מסוג זה."
+
+#: 
+msgid "User must have Add Event permission and the Events module must be enabled"
+msgstr "למשתמש חייבת להיות הרשאת הוספת אירוע ומודול האירועים חייב להיות מופעל"
+
+#: 
+msgid "Valid startDate and endDate are required"
+msgstr "נדרשים startDate ו-endDate תקינים"
+
+#: 
+msgid "View Event"
+msgstr "הצג אירוע"
+
+#: 
+msgid "What are these for?"
+msgstr "למה אלו משמשים?"
+
+#: 
+msgid "What does this find?"
+msgstr "מה זה מוצא?"
+
+#: 
+msgid "What is this for?"
+msgstr "למה זה משמש?"
+
+#: 
+msgid "Who is bringing them in?"
+msgstr "מי מביא אותם?"
+
+#: 
+msgid "You must select a valid recurrence pattern."
+msgstr "עליך לבחור תבנית חזרתיות תקינה."
+
+#: 
+msgid "You must select an event type."
+msgstr "עליך לבחור סוג אירוע."
+
+#: 
+msgid "You must specify a date range."
+msgstr "עליך לציין טווח תאריכים."
+
+#: 
+msgid "checked in"
+msgstr "בוצע צ׳ק-אין"
+
+#: 
+msgid "e.g., Sunday Worship Service"
+msgstr "לדוג׳ תפילת שבת"
+
+#: 
+msgid "endDate must be after startDate"
+msgstr "endDate חייב להיות אחרי startDate"
+
+#: 
+msgid "eventIds must be a non-empty array"
+msgstr "eventIds חייב להיות מערך לא ריק"
+
+#: 
+msgid "invalid recurrence type"
+msgstr "סוג חזרתיות לא תקין"
+
+#: 
+msgid "personIds must be a non-empty array"
+msgstr "personIds חייב להיות מערך לא ריק"
+
+#: 
+msgid "to enable the reset button"
+msgstr "כדי להפעיל את כפתור האיפוס"
+
+#: 
+msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
+msgstr "מפה תופיע כאן לאחר שמירת הקואורדינטות — זוהו אוטומטית מהכתובת או הוזנו ידנית למעלה."
+
+#: 
+msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr "יש לספק גם קו רוחב וגם קו אורך יחד (או להשאיר שניהם ריקים לזיהוי אוטומטי)."
+
+#: 
+msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr "מידע הקהילה נשמר, אך לא ניתן לאתר את הכתובת אוטומטית. אנא הזן קו רוחב ואורך ידנית תחת קואורדינטות מפה."
+
+#: 
+msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
+msgstr "קואורדינטות מזוהות אוטומטית מהכתובת בשמירה (דרך OpenStreetMap). ניתן גם להזין אותן ידנית למטה — ערכים ידניים תמיד גוברים על זיהוי אוטומטי. השאר שניהם ריקים כדי לאפשר למערכת לקודד גיאוגרפית מהכתובת."
+
+#: 
+msgid "Latitude must be a number between -90 and 90."
+msgstr "קו הרוחב חייב להיות מספר בין -90 ל-90."
+
+#: 
+msgid "Longitude must be a number between -180 and 180."
+msgstr "קו האורך חייב להיות מספר בין -180 ל-180."
+
+#: 
+msgid "Map Coordinates"
+msgstr "קואורדינטות מפה"
+
+#: 
+msgid "Please select a group."
+msgstr "אנא בחר קבוצה."
+
+#: 
+msgid "Please select a role."
+msgstr "אנא בחר תפקיד."
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "אנא בחר גם קבוצה וגם תפקיד."
+
+#: 
+msgid "Range: -180 to 180."
+msgstr "טווח: -180 עד 180."
+
+#: 
+msgid "Range: -90 to 90."
+msgstr "טווח: -90 עד 90."
+
+#: 
+msgid "mo"
+msgstr "חוד׳"
+
+#: 
+msgid "mos"
+msgstr "חוד׳"
+
+#: 
+msgid "yr"
+msgstr "שנ׳"
+
+#: 
+msgid "yrs"
+msgstr "שנ׳"
 

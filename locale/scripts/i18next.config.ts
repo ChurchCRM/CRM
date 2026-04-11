@@ -5,8 +5,7 @@ export default defineConfig({
   extract: {
     input: [
       'src/skin/js/*.js',
-      'webpack/*.js',
-      'react/**/*.tsx'
+      'webpack/*.js'
     ],
     output: 'locale/.work/locales/{{language}}/{{namespace}}.json',
     defaultNS: 'translation',

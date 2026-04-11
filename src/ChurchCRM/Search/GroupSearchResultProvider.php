@@ -34,7 +34,7 @@ class GroupSearchResultProvider extends BaseSearchResultProvider
         try {
             $groups = GroupQuery::create()
                 ->filterByName("%$SearchQuery%", Criteria::LIKE)
-                ->limit(SystemConfig::getValue('bSearchIncludeGroupsMax'))
+                ->limit(SystemConfig::getIntValue('bSearchIncludeGroupsMax'))
                 ->find();
             if ($groups->count() > 0) {
                 $id++;

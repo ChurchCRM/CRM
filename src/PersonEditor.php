@@ -604,13 +604,13 @@ require_once __DIR__ . '/Include/Header.php';
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="mb-3 col-md-2">
+                <div class="mb-3 col-12 col-sm-6 col-md-2">
                     <label for="Title"><?= gettext('Title') ?>:</label>
                     <input type="text" name="Title" id="Title"
                            value="<?= InputUtils::escapeAttribute(stripslashes($sTitle)) ?>"
                            class="form-control" placeholder="<?= gettext('Mr., Mrs., Dr.') ?>">
                 </div>
-                <div class="mb-3 col-md-3">
+                <div class="mb-3 col-12 col-sm-6 col-md-3">
                     <label for="FirstName"><?= gettext('First Name') ?>:</label>
                     <input type="text" name="FirstName" id="FirstName"
                            value="<?= InputUtils::escapeAttribute(stripslashes($sFirstName)) ?>"
@@ -619,7 +619,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <span class="text-danger small"><?= $sFirstNameError ?></span>
                     <?php } ?>
                 </div>
-                <div class="mb-3 col-md-2">
+                <div class="mb-3 col-12 col-sm-6 col-md-2">
                     <label for="MiddleName"><?= gettext('Middle') ?>:</label>
                     <input type="text" name="MiddleName" id="MiddleName"
                            value="<?= InputUtils::escapeAttribute(stripslashes($sMiddleName)) ?>"
@@ -628,7 +628,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <span class="text-danger small"><?= $sMiddleNameError ?></span>
                     <?php } ?>
                 </div>
-                <div class="mb-3 col-md-3">
+                <div class="mb-3 col-12 col-sm-6 col-md-3">
                     <label for="LastName"><?= gettext('Last Name') ?>:</label>
                     <input type="text" name="LastName" id="LastName"
                            value="<?= InputUtils::escapeAttribute(stripslashes($sLastName)) ?>"
@@ -637,13 +637,13 @@ require_once __DIR__ . '/Include/Header.php';
                         <span class="text-danger small"><?= $sLastNameError ?></span>
                     <?php } ?>
                 </div>
-                <div class="mb-3 col-md-1">
+                <div class="mb-3 col-6 col-sm-4 col-md-1">
                     <label for="Suffix"><?= gettext('Suffix') ?>:</label>
                     <input type="text" name="Suffix" id="Suffix"
                            value="<?= InputUtils::escapeAttribute(stripslashes($sSuffix)) ?>"
                            placeholder="<?= gettext('Jr., Sr.') ?>" class="form-control">
                 </div>
-                <div class="mb-3 col-md-1">
+                <div class="mb-3 col-6 col-sm-4 col-md-1">
                     <label for="Gender"><?= gettext('Gender') ?>:</label>
                     <select id="Gender" name="Gender" class="form-select">
                         <option value="0">-</option>
@@ -662,7 +662,7 @@ require_once __DIR__ . '/Include/Header.php';
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="mb-3 col-md-2">
+                <div class="mb-3 col-12 col-sm-6 col-md-2">
                     <label for="BirthMonth"><?= gettext('Birth Month') ?>:</label>
                     <select id="BirthMonth" name="BirthMonth" class="form-select">
                         <option value="0" <?= $iBirthMonth === 0 ? 'selected' : '' ?>>-</option>
@@ -680,7 +680,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <option value="12" <?= $iBirthMonth === 12 ? 'selected' : '' ?>><?= gettext('Dec') ?></option>
                     </select>
                 </div>
-                <div class="mb-3 col-md-1">
+                <div class="mb-3 col-6 col-sm-4 col-md-1">
                     <label for="BirthDay"><?= gettext('Day') ?>:</label>
                     <select id="BirthDay" name="BirthDay" class="form-select">
                         <option value="0">-</option>
@@ -690,7 +690,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <?php } ?>
                     </select>
                 </div>
-                <div class="mb-3 col-md-1">
+                <div class="mb-3 col-6 col-sm-4 col-md-1">
                     <label for="BirthYear"><?= gettext('Year') ?>:</label>
                     <input type="text" id="BirthYear" name="BirthYear" value="<?= $iBirthYear ?>"
                            maxlength="4" placeholder="YYYY" class="form-control">
@@ -701,14 +701,13 @@ require_once __DIR__ . '/Include/Header.php';
                         <span class="text-danger small"><?= $sBirthDateError ?></span>
                     <?php } ?>
                 </div>
-                <div class="mb-3 col-md-1">
+                <div class="mb-3 col-6 col-sm-4 col-md-1">
                     <label for="HideAge"><?= gettext('Hide Age') ?></label>
                     <div class="form-check mt-2">
                         <input type="checkbox" class="form-check-input" id="HideAge" name="HideAge" value="1" <?= $bHideAge ? 'checked' : '' ?>>
-                        <label class="form-check-label" for="HideAge">&nbsp;</label>
                     </div>
                 </div>
-                <div class="mb-3 col-md-4">
+                <div class="mb-3 col-12 col-sm-6 col-md-4">
                     <label for="familyId"><?= gettext('Family') ?>:</label>
                     <select name="Family" id="familyId" class="form-select">
                         <option value="0" selected><?= gettext('Unassigned') ?></option>
@@ -725,7 +724,7 @@ require_once __DIR__ . '/Include/Header.php';
                         } ?>
                     </select>
                 </div>
-                <div class="mb-3 col-md-3">
+                <div class="mb-3 col-12 col-sm-6 col-md-3">
                     <label for="FamilyRole"><?= gettext('Family Role') ?>:</label>
                     <select name="FamilyRole" id="FamilyRole" class="form-select">
                         <option value="0"><?= gettext('Unassigned') ?></option>
@@ -745,14 +744,14 @@ require_once __DIR__ . '/Include/Header.php';
     </div>
 
     <!-- Card 2: Address -->
-    <?php if (!SystemConfig::getValue('bHidePersonAddress') && $iFamily === 0) { /* Only show address for unaffiliated persons - General Settings */ ?>
+    <?php if (!SystemConfig::getBooleanValue('bHidePersonAddress') && $iFamily === 0) { /* Only show address for unaffiliated persons - General Settings */ ?>
     <div class="card clearfix">
         <div class="card-header d-flex align-items-center">
             <h3 class="card-title"><?= gettext('Address') ?></h3>
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="mb-3 col-md-6">
+                <div class="mb-3 col-12 col-md-6">
                     <label for="Address1">
                         <?= $bFamilyAddress1 ? '<span class="text-danger">' : '' ?>
                         <?= gettext('Address') ?> 1:
@@ -765,7 +764,7 @@ require_once __DIR__ . '/Include/Header.php';
                                maxlength="250" class="form-control">
                     </div>
                 </div>
-                <div class="mb-3 col-md-6">
+                <div class="mb-3 col-12 col-md-6">
                     <label for="Address2">
                         <?= $bFamilyAddress2 ? '<span class="text-danger">' : '' ?>
                         <?= gettext('Address') ?> 2:
@@ -777,7 +776,7 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
             </div>
             <div class="row">
-                <div class="mb-3 col-md-4">
+                <div class="mb-3 col-12 col-sm-6 col-md-4">
                     <label for="City">
                         <?= $bFamilyCity ? '<span class="text-danger">' : '' ?>
                         <?= gettext('City') ?>:
@@ -787,7 +786,7 @@ require_once __DIR__ . '/Include/Header.php';
                            value="<?= InputUtils::escapeAttribute(stripslashes($sCity)) ?>"
                            class="form-control">
                 </div>
-                <div id="stateOptionDiv" class="mb-3 col-md-3">
+                <div id="stateOptionDiv" class="mb-3 col-12 col-sm-6 col-md-3">
                     <label for="State">
                         <?= $bFamilyState ? '<span class="text-danger">' : '' ?>
                         <?= gettext('State') ?>:
@@ -796,13 +795,13 @@ require_once __DIR__ . '/Include/Header.php';
                     <select id="State" name="State" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sState) ?>" data-system-default="<?= InputUtils::escapeAttribute(SystemConfig::getValue('sDefaultState')) ?>">
                     </select>
                 </div>
-                <div id="stateInputDiv" class="mb-3 col-md-3 d-none">
+                <div id="stateInputDiv" class="mb-3 col-12 col-sm-6 col-md-3 d-none">
                     <label for="StateTextbox"><?= gettext('State (Other)') ?>:</label>
                     <input type="text" name="StateTextbox" id="StateTextbox"
                            value="<?= InputUtils::escapeAttribute(stripslashes($sState)) ?>"
                            maxlength="30" class="form-control">
                 </div>
-                <div class="mb-3 col-md-2">
+                <div class="mb-3 col-12 col-sm-6 col-md-2">
                     <label for="Zip">
                         <?= $bFamilyZip ? '<span class="text-danger">' : '' ?>
                         <?= gettext('Zip Code') ?>:
@@ -813,7 +812,7 @@ require_once __DIR__ . '/Include/Header.php';
                            value="<?= InputUtils::escapeAttribute(stripslashes($sZip)) ?>"
                            maxlength="10">
                 </div>
-                <div class="mb-3 col-md-3">
+                <div class="mb-3 col-12 col-sm-6 col-md-3">
                     <label for="Country">
                         <?= $bFamilyCountry ? '<span class="text-danger">' : '' ?>
                         <?= gettext('Country') ?>:
@@ -843,7 +842,7 @@ require_once __DIR__ . '/Include/Header.php';
         <div class="card-body">
             <div class="row">
                 <!-- Phones Column -->
-                <div class="col-md-6">
+                <div class="col-12 col-md-6">
                     <div class="mb-3">
                         <label for="HomePhone">
                             <?php
@@ -860,12 +859,10 @@ require_once __DIR__ . '/Include/Header.php';
                                    value="<?= InputUtils::escapeAttribute(stripslashes($sHomePhone)) ?>"
                                    maxlength="30" class="form-control"
                                    data-phone-mask='{"mask":"<?= InputUtils::escapeAttribute(SystemConfig::getValue('sPhoneFormat')) ?>"}'>
-                            <div class="input-group-text">
-                                <div class="form-check mb-0">
-                                    <input type="checkbox" class="form-check-input" id="NoFormat_HomePhone" name="NoFormat_HomePhone" value="1" <?= $bNoFormat_HomePhone ? 'checked' : '' ?>>
-                                    <label class="form-check-label" for="NoFormat_HomePhone"><?= gettext('No format') ?></label>
-                                </div>
-                            </div>
+                            <span class="input-group-text gap-2">
+                                <input class="form-check-input mt-0" type="checkbox" id="NoFormat_HomePhone" name="NoFormat_HomePhone" value="1" <?= $bNoFormat_HomePhone ? 'checked' : '' ?>>
+                                <label class="form-check-label" for="NoFormat_HomePhone"><?= gettext('No format') ?></label>
+                            </span>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -884,12 +881,10 @@ require_once __DIR__ . '/Include/Header.php';
                                    value="<?= InputUtils::escapeAttribute(stripslashes($sCellPhone)) ?>"
                                    maxlength="30" class="form-control"
                                    data-phone-mask='{"mask":"<?= InputUtils::escapeAttribute(SystemConfig::getValue('sPhoneFormatCell')) ?>"}'>
-                            <div class="input-group-text">
-                                <div class="form-check mb-0">
-                                    <input type="checkbox" class="form-check-input" id="NoFormat_CellPhone" name="NoFormat_CellPhone" value="1" <?= $bNoFormat_CellPhone ? 'checked' : '' ?>>
-                                    <label class="form-check-label" for="NoFormat_CellPhone"><?= gettext('No format') ?></label>
-                                </div>
-                            </div>
+                            <span class="input-group-text gap-2">
+                                <input class="form-check-input mt-0" type="checkbox" id="NoFormat_CellPhone" name="NoFormat_CellPhone" value="1" <?= $bNoFormat_CellPhone ? 'checked' : '' ?>>
+                                <label class="form-check-label" for="NoFormat_CellPhone"><?= gettext('No format') ?></label>
+                            </span>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -908,18 +903,16 @@ require_once __DIR__ . '/Include/Header.php';
                                    value="<?= InputUtils::escapeAttribute(stripslashes($sWorkPhone)) ?>"
                                    maxlength="30" class="form-control"
                                    data-phone-mask='{"mask":"<?= InputUtils::escapeAttribute(SystemConfig::getValue('sPhoneFormatWithExt')) ?>"}'>
-                            <div class="input-group-text">
-                                <div class="form-check mb-0">
-                                    <input type="checkbox" class="form-check-input" id="NoFormat_WorkPhone" name="NoFormat_WorkPhone" value="1" <?= $bNoFormat_WorkPhone ? 'checked' : '' ?>>
-                                    <label class="form-check-label" for="NoFormat_WorkPhone"><?= gettext('No format') ?></label>
-                                </div>
-                            </div>
+                            <span class="input-group-text gap-2">
+                                <input class="form-check-input mt-0" type="checkbox" id="NoFormat_WorkPhone" name="NoFormat_WorkPhone" value="1" <?= $bNoFormat_WorkPhone ? 'checked' : '' ?>>
+                                <label class="form-check-label" for="NoFormat_WorkPhone"><?= gettext('No format') ?></label>
+                            </span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Emails Column -->
-                <div class="col-md-6">
+                <div class="col-12 col-md-6">
                     <div class="mb-3">
                         <label for="Email">
                             <?php
@@ -964,7 +957,7 @@ require_once __DIR__ . '/Include/Header.php';
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="mb-3 col-md-4">
+                <div class="mb-3 col-12 col-sm-6 col-md-4">
                     <label for="Facebook">Facebook:</label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-brands fa-facebook"></i></span>
@@ -976,7 +969,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <span class="text-danger small"><?= $sFacebookError ?></span>
                     <?php } ?>
                 </div>
-                <div class="mb-3 col-md-4">
+                <div class="mb-3 col-12 col-sm-6 col-md-4">
                     <label for="Twitter">X:</label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-brands fa-x-twitter"></i></span>
@@ -988,7 +981,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <span class="text-danger small"><?= $sTwitterError ?></span>
                     <?php } ?>
                 </div>
-                <div class="mb-3 col-md-4">
+                <div class="mb-3 col-12 col-sm-6 col-md-4">
                     <label for="LinkedIn">LinkedIn:</label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-brands fa-linkedin"></i></span>
@@ -1011,7 +1004,7 @@ require_once __DIR__ . '/Include/Header.php';
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="mb-3 col-md-3">
+                <div class="mb-3 col-12 col-sm-6 col-md-3">
                     <label for="Classification"><?= gettext('Classification') ?>:</label>
                     <select id="Classification" name="Classification" class="form-select">
                         <option value="0"><?= gettext('Unassigned') ?></option>
@@ -1027,26 +1020,26 @@ require_once __DIR__ . '/Include/Header.php';
                         ?>
                     </select>
                 </div>
-                <div class="mb-3 col-md-3">
+                <div class="mb-3 col-12 col-sm-6 col-md-3">
                     <label for="MembershipDate"><?= gettext('Membership Date') ?>:</label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-solid fa-calendar"></i></span>
                         <input type="text" name="MembershipDate" id="MembershipDate" class="form-control date-picker"
                                value="<?= DateTimeUtils::formatForDatePicker($dMembershipDate) ?>" maxlength="10"
-                               placeholder="<?= SystemConfig::getValue("sDatePickerFormat") ?>">
+                               placeholder="<?= SystemConfig::getValueForAttr("sDatePickerFormat") ?>">
                     </div>
                     <?php if ($sMembershipDateError) { ?>
                         <span class="text-danger small"><?= $sMembershipDateError ?></span>
                     <?php } ?>
                 </div>
                 <?php if (!SystemConfig::getBooleanValue('bHideFriendDate')) { ?>
-                <div class="mb-3 col-md-3">
+                <div class="mb-3 col-12 col-sm-6 col-md-3">
                     <label for="FriendDate"><?= gettext('Friend Date') ?>:</label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-solid fa-handshake"></i></span>
                         <input type="text" name="FriendDate" id="FriendDate" class="form-control date-picker"
                                value="<?= DateTimeUtils::formatForDatePicker($dFriendDate) ?>" maxlength="10"
-                               placeholder="<?= SystemConfig::getValue("sDatePickerFormat") ?>">
+                               placeholder="<?= SystemConfig::getValueForAttr("sDatePickerFormat") ?>">
                     </div>
                     <?php if ($sFriendDateError) { ?>
                         <span class="text-danger small"><?= $sFriendDateError ?></span>
@@ -1068,7 +1061,7 @@ require_once __DIR__ . '/Include/Header.php';
                     while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
                         extract($rowCustomField);
                         if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$custom_FieldSec])) {
-                            echo '<div class="row"><div class="mb-3 col-md-6"><label for="' . $custom_Field . '">' . $custom_Name . '</label>';
+                            echo '<div class="row"><div class="mb-3 col-12 col-md-6"><label for="' . $custom_Field . '">' . $custom_Name . '</label>';
 
                             if (array_key_exists($custom_Field, $aCustomData)) {
                                 $currentFieldData = trim($aCustomData[$custom_Field]);
