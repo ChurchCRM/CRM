@@ -14,7 +14,7 @@ describe("Admin User Password", () => {
         cy.contains("Amanda Black");
         cy.get("#NewPassword1").type("new-user-password");
         cy.get("#NewPassword2").type("new-user-password");
-        cy.get("form").submit();
+        cy.get("#NewPassword1").closest("form").submit();
         cy.url().should("contain", "admin/system/user/99/changePassword");
         cy.contains("Password Change Successful");
     });
