@@ -4,6 +4,7 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
@@ -24,11 +25,9 @@ if (isset($_POST['Back'])) {
     RedirectUtils::redirect($linkBack);
 }
 
-$sSQL = 'SELECT * FROM pledge_plg WHERE plg_plgID = ' . $iPledgeID;
-$rsPledgeRec = RunQuery($sSQL);
-extract(mysqli_fetch_array($rsPledgeRec));
+$pledge = PledgeQuery::create()->findPk((int) $iPledgeID);
 
-$sSQL = 'SELECT * FROM result_res WHERE res_ID=' . $plg_aut_ResultID;
+$sSQL = 'SELECT * FROM result_res WHERE res_ID=' . (int) $pledge->getAutResultId();
 $rsResultRec = RunQuery($sSQL);
 
 $aBreadcrumbs = PageHeader::breadcrumbs([

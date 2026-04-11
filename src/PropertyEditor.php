@@ -6,6 +6,7 @@ require_once __DIR__ . '/Include/PageInit.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\Property;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
+use ChurchCRM\model\ChurchCRM\PropertyTypeQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
@@ -99,15 +100,13 @@ if (isset($_POST['Submit'])) {
 } else {
     if ($iPropertyID !== 0) {
         // Get the data on this property
-        $sSQL = 'SELECT * FROM property_pro WHERE pro_ID = ' . $iPropertyID;
-        $rsProperty = mysqli_fetch_array(RunQuery($sSQL));
-        extract($rsProperty);
+        $property = PropertyQuery::create()->findPk((int) $iPropertyID);
 
         // Assign values locally
-        $sName = $pro_Name;
-        $sDescription = $pro_Description;
-        $iType = $pro_prt_ID;
-        $sPrompt = $pro_Prompt;
+        $sName = $property->getProName();
+        $sDescription = $property->getProDescription();
+        $iType = $property->getProPrtId();
+        $sPrompt = $property->getProPrompt();
     } else {
         $sName = '';
         $sDescription = '';
@@ -117,8 +116,10 @@ if (isset($_POST['Submit'])) {
 }
 
 // Get the Property Types
-$sSQL ="SELECT * FROM propertytype_prt WHERE prt_Class = '" . $sType ."' ORDER BY prt_Name";
-$rsPropertyTypes = RunQuery($sSQL);
+$propertyTypes = PropertyTypeQuery::create()
+    ->filterByPrtClass($sType)
+    ->orderByPrtName()
+    ->find();
 
 $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('Properties')],
@@ -144,14 +145,12 @@ require_once __DIR__ . '/Include/Header.php';
                             <select class="form-select" name="Class">
                                 <option value=""><?= gettext('Select Property Type') ?></option>
                                 <?php
-                                while ($aRow = mysqli_fetch_array($rsPropertyTypes)) {
-                                    extract($aRow);
-
-                                    echo '<option value="' . InputUtils::escapeAttribute($prt_ID) . '"';
-                                    if ($iType == $prt_ID) {
+                                foreach ($propertyTypes as $propType) {
+                                    echo '<option value="' . InputUtils::escapeAttribute($propType->getPrtId()) . '"';
+                                    if ($iType == $propType->getPrtId()) {
                                         echo ' selected';
                                     }
-                                    echo '>' . InputUtils::escapeHTML($prt_Name) . '</option>';
+                                    echo '>' . InputUtils::escapeHTML($propType->getPrtName()) . '</option>';
                                 }
                                 ?>
                             </select>

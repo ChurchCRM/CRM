@@ -29,63 +29,36 @@ echo '<div class="card-body"><pre class="pre-compact">';
 
 $curUserId = AuthenticationManager::getCurrentUser()->getId();
 
-// find the family ID so we can associate to person record
-$sSQL = 'SELECT MAX(fam_ID) AS iFamilyID FROM family_fam';
-$rsLastEntry = RunQuery($sSQL);
-extract(mysqli_fetch_array($rsLastEntry));
-
 // Get list of people that are not assigned to a family
-$sSQL ="SELECT * FROM person_per WHERE per_fam_ID='0' ORDER BY per_LastName, per_FirstName";
-$rsList = RunQuery($sSQL);
-while ($aRow = mysqli_fetch_array($rsList)) {
-    extract($aRow);
+$unassignedPersons = PersonQuery::create()
+    ->filterByFamId(0)
+    ->orderByLastName()
+    ->orderByFirstName()
+    ->find();
 
+foreach ($unassignedPersons as $person) {
     echo '<br><br><br>';
     echo '*****************************************';
 
-    $per_LastName = mysqli_real_escape_string($cnInfoCentral, $per_LastName);
-    $per_Address1 = mysqli_real_escape_string($cnInfoCentral, $per_Address1);
-    $per_Address2 = mysqli_real_escape_string($cnInfoCentral, $per_Address2);
-    $per_City = mysqli_real_escape_string($cnInfoCentral, $per_City);
-    $per_State = mysqli_real_escape_string($cnInfoCentral, $per_State);
-    $per_Zip = mysqli_real_escape_string($cnInfoCentral, $per_Zip);
-    $per_Country = mysqli_real_escape_string($cnInfoCentral, $per_Country);
-    $per_HomePhone = mysqli_real_escape_string($cnInfoCentral, $per_HomePhone);
-
     $family = new Family();
     $family
-        ->setName($per_LastName)
-        ->setAddress1($per_Address1)
-        ->setAddress2($per_Address2)
-        ->setCity($per_City)
-        ->setState($per_State)
-        ->setZip($per_Zip)
-        ->setCountry($per_Country)
-        ->setHomePhone($per_HomePhone)
-        ->setDateEntered(new DateTimeImmutable())
+        ->setName($person->getLastName())
+        ->setAddress1($person->getAddress1())
+        ->setAddress2($person->getAddress2())
+        ->setCity($person->getCity())
+        ->setState($person->getState())
+        ->setZip($person->getZip())
+        ->setCountry($person->getCountry())
+        ->setHomePhone($person->getHomePhone())
+        ->setDateEntered(new \DateTimeImmutable())
         ->setEnteredBy($curUserId);
     $family->save();
 
-    echo '<br>' . $sSQL;
-    // RunQuery to add family record
-    RunQuery($sSQL);
-    $iFamilyID++; // increment family ID
-
-    //Get the key back
-    $sSQL = 'SELECT MAX(fam_ID) AS iNewFamilyID FROM family_fam';
-    $rsLastEntry = RunQuery($sSQL);
-    extract(mysqli_fetch_array($rsLastEntry));
-
-    if ($iNewFamilyID != $iFamilyID) {
-        echo '<br><br>Error with family ID';
-
-        break;
-    }
+    $iFamilyID = $family->getId();
 
     echo '<br><br>';
 
-    // Now update person record
-    $person = PersonQuery::create()->findOneById($per_ID);
+    // Now update person record — move to new family and clear address fields
     $person
         ->setFamId($iFamilyID)
         ->setAddress1(null)
@@ -100,8 +73,8 @@ while ($aRow = mysqli_fetch_array($rsList)) {
     $person->save();
 
     echo '<br><br><br>';
-    echo InputUtils::escapeHTML($per_FirstName) . ' ' . InputUtils::escapeHTML($per_LastName) . ' (per_ID = ' . (int)$per_ID . ') is now part of the ';
-    echo InputUtils::escapeHTML($per_LastName) . ' Family (fam_ID = ' . (int)$iFamilyID . ')<br>';
+    echo InputUtils::escapeHTML($person->getFirstName()) . ' ' . InputUtils::escapeHTML($person->getLastName()) . ' (per_ID = ' . (int) $person->getId() . ') is now part of the ';
+    echo InputUtils::escapeHTML($person->getLastName()) . ' Family (fam_ID = ' . (int) $iFamilyID . ')<br>';
     echo '*****************************************';
 
     if (!$bDoAll) {
