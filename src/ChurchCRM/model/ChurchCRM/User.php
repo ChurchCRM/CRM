@@ -90,6 +90,25 @@ class User extends BaseUser
     }
 
     /**
+     * Check if the user ONLY has EditSelf permission and no other functional permissions.
+     * These users need to be redirected to a self-service flow (e.g. family verify)
+     * rather than the full admin interface.
+     *
+     * @see https://github.com/ChurchCRM/CRM/issues/8617
+     */
+    public function isEditSelfOnly(): bool
+    {
+        return $this->isEditSelf()
+            && !$this->isAdmin()
+            && !$this->isAddRecordsEnabled()
+            && !$this->isEditRecordsEnabled()
+            && !$this->isDeleteRecordsEnabled()
+            && !$this->isMenuOptionsEnabled()
+            && !$this->isManageGroupsEnabled()
+            && !$this->isFinanceEnabled();
+    }
+
+    /**
      * Check if the user can edit a specific person's record.
      * Combines role-based (EditRecords) and object-level (EditSelf + family/own) authorization.
      *
