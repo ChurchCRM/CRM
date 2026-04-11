@@ -6,6 +6,13 @@
     "Kiosk",
     "Minimum"
   ],
+  "cs": [
+    "Audit",
+    "Azure"
+  ],
+  "el": [
+    "Azure"
+  ],
   "es": [
     "Azure",
     "Malayalam - India",
@@ -35,6 +42,12 @@
     "Malayalam - India",
     "Manual",
     "Material"
+  ],
+  "et": [
+    "Audit"
+  ],
+  "fi": [
+    "Azure"
   ],
   "fil": [
     "2FA",
@@ -431,6 +444,16 @@
   ],
   "ko": [
     "Azure"
+  ],
+  "nl": [
+    "4. Kiosk",
+    "Account",
+    "Audit",
+    "Azure",
+    "Continent",
+    "Indigo",
+    "Malayalam - India",
+    "Vonage Dashboard"
   ],
   "pt": [
     "Azure",
