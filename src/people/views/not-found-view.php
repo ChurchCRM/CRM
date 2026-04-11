@@ -15,7 +15,7 @@ if ($lowerType === 'person' || $lowerType === 'people') {
     $message = sprintf('%s %s %s', gettext('We could not find the person you were looking for.'), strtoupper($memberType ?? 'PERSON'), htmlspecialchars($id ?? ''));
     $code = 404;
 } elseif ($lowerType === 'family' || $lowerType === 'families') {
-    $returnUrl = SystemURLs::getRootPath() . '/v2/families';
+    $returnUrl = SystemURLs::getRootPath() . '/people/family';
     $returnText = gettext('Return to Families');
     $title = gettext('Family not found');
     $message = gettext('We could not find the family you were looking for.');
@@ -27,7 +27,7 @@ if ($lowerType === 'person' || $lowerType === 'people') {
     $message = gettext('We could not find the group you were looking for.');
     $code = 404;
 } else {
-    $returnUrl = SystemURLs::getRootPath() . '/v2/dashboard';
+    $returnUrl = SystemURLs::getRootPath() . '/people/dashboard';
     $returnText = gettext('Return to Dashboard');
     $title = gettext('Not Found');
     $message = gettext('We could not find the record you were looking for.');
