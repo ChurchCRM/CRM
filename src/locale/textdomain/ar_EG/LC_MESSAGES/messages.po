@@ -15460,3 +15460,67 @@ msgstr "يجب أن تكون personIds مصفوفة غير فارغة"
 msgid "to enable the reset button"
 msgstr "لتمكين زر إعادة الضبط"
 
+#: 
+msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
+msgstr "ستظهر الخريطة هنا بمجرد حفظ الإحداثيات — إما عن طريق الاكتشاف التلقائي من عنوانك أو إدخالها يدويًا أعلاه."
+
+#: 
+msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr "يجب إدخال خط العرض وخط الطول معًا (أو تركهما فارغَيْن للاكتشاف التلقائي)."
+
+#: 
+msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr "تم حفظ معلومات الكنيسة، ولكن تعذّر تحديد موقع العنوان تلقائيًا. يرجى إدخال خط العرض وخط الطول يدويًا تحت إحداثيات الخريطة."
+
+#: 
+msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
+msgstr "يتم الاكتشاف التلقائي للإحداثيات من عنوانك عند الحفظ (عبر OpenStreetMap). يمكنك أيضًا إدخالها يدويًا أدناه — تُقدَّم القيم اليدوية دائمًا على الاكتشاف التلقائي. اترك الحقلين فارغَيْن للسماح للنظام بتحديد موقعك الجغرافي من العنوان."
+
+#: 
+msgid "Latitude must be a number between -90 and 90."
+msgstr "يجب أن يكون خط العرض رقمًا بين -90 و90."
+
+#: 
+msgid "Longitude must be a number between -180 and 180."
+msgstr "يجب أن يكون خط الطول رقمًا بين -180 و180."
+
+#: 
+msgid "Map Coordinates"
+msgstr "إحداثيات الخريطة"
+
+#: 
+msgid "Please select a group."
+msgstr "يرجى تحديد خدمة."
+
+#: 
+msgid "Please select a role."
+msgstr "يرجى تحديد دور."
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "يرجى تحديد خدمة ودور."
+
+#: 
+msgid "Range: -180 to 180."
+msgstr "النطاق: -180 إلى 180."
+
+#: 
+msgid "Range: -90 to 90."
+msgstr "النطاق: -90 إلى 90."
+
+#: 
+msgid "mo"
+msgstr "شهر"
+
+#: 
+msgid "mos"
+msgstr "أشهر"
+
+#: 
+msgid "yr"
+msgstr "سنة"
+
+#: 
+msgid "yrs"
+msgstr "سنوات"
+

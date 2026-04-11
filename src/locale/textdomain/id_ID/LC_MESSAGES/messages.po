@@ -15402,3 +15402,67 @@ msgstr "personIds harus berupa larik yang tidak kosong"
 msgid "to enable the reset button"
 msgstr "untuk mengaktifkan tombol atur ulang"
 
+#: 
+msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
+msgstr "Peta akan muncul di sini setelah koordinat disimpan — baik terdeteksi otomatis dari alamat Anda atau dimasukkan secara manual di atas."
+
+#: 
+msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr "Lintang dan bujur harus diberikan bersama (atau keduanya dibiarkan kosong untuk deteksi otomatis)."
+
+#: 
+msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr "Informasi gereja tersimpan, tetapi alamat tidak dapat dilokasi secara otomatis. Silakan masukkan lintang dan bujur secara manual di bawah Koordinat Peta."
+
+#: 
+msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
+msgstr "Koordinat terdeteksi otomatis dari alamat Anda saat disimpan (melalui OpenStreetMap). Anda juga dapat memasukkannya secara manual di bawah — nilai manual selalu lebih diutamakan daripada deteksi otomatis. Biarkan keduanya kosong agar sistem melakukan geokode dari alamat."
+
+#: 
+msgid "Latitude must be a number between -90 and 90."
+msgstr "Lintang harus berupa angka antara -90 dan 90."
+
+#: 
+msgid "Longitude must be a number between -180 and 180."
+msgstr "Bujur harus berupa angka antara -180 dan 180."
+
+#: 
+msgid "Map Coordinates"
+msgstr "Koordinat Peta"
+
+#: 
+msgid "Please select a group."
+msgstr "Silakan pilih pelayanan."
+
+#: 
+msgid "Please select a role."
+msgstr "Silakan pilih peran."
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "Silakan pilih pelayanan dan peran."
+
+#: 
+msgid "Range: -180 to 180."
+msgstr "Rentang: -180 hingga 180."
+
+#: 
+msgid "Range: -90 to 90."
+msgstr "Rentang: -90 hingga 90."
+
+#: 
+msgid "mo"
+msgstr "bl."
+
+#: 
+msgid "mos"
+msgstr "bl."
+
+#: 
+msgid "yr"
+msgstr "th."
+
+#: 
+msgid "yrs"
+msgstr "th."
+

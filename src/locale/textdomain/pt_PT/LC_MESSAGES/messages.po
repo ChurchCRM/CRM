@@ -15585,3 +15585,67 @@ msgstr "personIds deve ser um array não vazio"
 msgid "to enable the reset button"
 msgstr "para ativar o botão de reinício"
 
+#: 
+msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
+msgstr "Um mapa aparecerá aqui assim que as coordenadas forem guardadas — detetadas automaticamente a partir do seu endereço ou introduzidas manualmente acima."
+
+#: 
+msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr "A latitude e a longitude devem ser fornecidas em conjunto (ou ambas deixadas em branco para deteção automática)."
+
+#: 
+msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr "Informações da paróquia guardadas, mas o endereço não pôde ser localizado automaticamente. Por favor, introduza a latitude e a longitude manualmente em Coordenadas do Mapa."
+
+#: 
+msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
+msgstr "As coordenadas são detetadas automaticamente a partir do seu endereço ao guardar (via OpenStreetMap). Também pode introduzi-las manualmente abaixo — os valores manuais têm sempre prioridade sobre a deteção automática. Deixe ambos em branco para permitir que o sistema geocodifique a partir do endereço."
+
+#: 
+msgid "Latitude must be a number between -90 and 90."
+msgstr "A latitude deve ser um número entre -90 e 90."
+
+#: 
+msgid "Longitude must be a number between -180 and 180."
+msgstr "A longitude deve ser um número entre -180 e 180."
+
+#: 
+msgid "Map Coordinates"
+msgstr "Coordenadas do Mapa"
+
+#: 
+msgid "Please select a group."
+msgstr "Por favor, selecione um ministério."
+
+#: 
+msgid "Please select a role."
+msgstr "Por favor, selecione uma função."
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "Por favor, selecione um ministério e uma função."
+
+#: 
+msgid "Range: -180 to 180."
+msgstr "Intervalo: -180 a 180."
+
+#: 
+msgid "Range: -90 to 90."
+msgstr "Intervalo: -90 a 90."
+
+#: 
+msgid "mo"
+msgstr "mês"
+
+#: 
+msgid "mos"
+msgstr "meses"
+
+#: 
+msgid "yr"
+msgstr "ano"
+
+#: 
+msgid "yrs"
+msgstr "anos"
+

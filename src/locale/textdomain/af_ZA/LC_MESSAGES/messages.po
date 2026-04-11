@@ -15429,3 +15429,67 @@ msgstr "personIds moet ʼn nie-leë skikking wees"
 msgid "to enable the reset button"
 msgstr "om die herinstelknoppie te aktiveer"
 
+#: 
+msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
+msgstr "'n Kaart sal hier verskyn sodra koördinate gestoor is — óf outomaties vanuit u adres bespeur, óf handmatig hierbo ingevoer."
+
+#: 
+msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr "Breedtegraad en lengtegraad moet saam verskaf word (of albei leeg gelaat word vir outomatiese bespeur)."
+
+#: 
+msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr "Gemeenteinligting gestoor, maar die adres kon nie outomaties gevind word nie. Voer asseblief die breedtegraad en lengtegraad handmatig in onder Kaartkoördinate."
+
+#: 
+msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
+msgstr "Koördinate word outomaties vanuit u adres bespeur tydens stoor (via OpenStreetMap). U kan dit ook handmatig hieronder invoer — handmatige waardes het altyd voorkeur bo outomatiese bespeur. Laat albei leeg om die stelsel toe te laat om die adres te geokodeer."
+
+#: 
+msgid "Latitude must be a number between -90 and 90."
+msgstr "Breedtegraad moet 'n getal tussen -90 en 90 wees."
+
+#: 
+msgid "Longitude must be a number between -180 and 180."
+msgstr "Lengtegraad moet 'n getal tussen -180 en 180 wees."
+
+#: 
+msgid "Map Coordinates"
+msgstr "Kaartkoördinate"
+
+#: 
+msgid "Please select a group."
+msgstr "Kies asseblief 'n bediening."
+
+#: 
+msgid "Please select a role."
+msgstr "Kies asseblief 'n rol."
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "Kies asseblief beide 'n bediening en 'n rol."
+
+#: 
+msgid "Range: -180 to 180."
+msgstr "Reeks: -180 tot 180."
+
+#: 
+msgid "Range: -90 to 90."
+msgstr "Reeks: -90 tot 90."
+
+#: 
+msgid "mo"
+msgstr "md."
+
+#: 
+msgid "mos"
+msgstr "mde."
+
+#: 
+msgid "yr"
+msgstr "jr."
+
+#: 
+msgid "yrs"
+msgstr "jre."
+

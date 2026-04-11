@@ -14378,6 +14378,10 @@ msgid "Appearance"
 msgstr "מראה"
 
 #: 
+msgid "Azure"
+msgstr "אז׳ור"
+
+#: 
 msgid "Back to Finance Dashboard"
 msgstr "חזרה ללוח הבקרה הפיננסי"
 
@@ -14674,4 +14678,810 @@ msgstr "צהוב"
 #: 
 msgid "Your current access levels (read-only)"
 msgstr "רמות הגישה הנוכחיות שלך (לקריאה בלבד)"
+
+#: 
+msgid "%d repeat event created successfully."
+msgid_plural "%d repeat events created successfully."
+msgstr[0] "אירוע חוזר אחד נוצר בהצלחה."
+msgstr[1] "%d אירועים חוזרים נוצרו בהצלחה."
+
+#: 
+msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
+msgstr "(לדוג׳ חברים, אורחים, ילדים) כדי שמתנדבים יוכלו לרשום ספירות כאן."
+
+#: 
+msgid "1. Sunday School Class"
+msgstr "1. כיתת בית ספר ראשון לשבוע"
+
+#: 
+msgid "2. Event Type"
+msgstr "2. סוג אירוע"
+
+#: 
+msgid "3. Event"
+msgstr "3. אירוע"
+
+#: 
+msgid "4. Kiosk"
+msgstr "4. קיוסק"
+
+#: 
+msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
+msgstr "כיתה היא קבוצה מסוג \"בית ספר ראשון לשבוע\". היא מכילה תלמידים ומורים (חברים עם תפקידים)."
+
+#: 
+msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
+msgstr "קבוצה מקושרת מחברת אירוע זה לכיתה או לרשימת שירות. כשהאירוע מוקצה לקיוסק, הקיוסק שולף את חברי הקבוצה ומציג אותם כרשימת כניסה בנגיעה. לכיתות בית ספר ראשון לשבוע, קשר את קבוצת הכיתה כאן כדי שמתנדבים יוכלו לבצע צ׳ק-אין לתלמידים מטאבלט."
+
+#: 
+msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr "מופע ספציפי (לדוג׳ \"גן ילדים — 12 באפריל\"). יורש ברירות מחדל מהסוג ומקושר לקבוצת הכיתה דרך הקהל. זה מה שמתנדבים מסמנים נוכחות כנגדו."
+
+#: 
+msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr "טאבלט המוקצה לאירוע אחד. הקיוסק שולף את רשימת הקבוצה המקושרת לאירוע ומציג כניסה בנגיעה. ללא קבוצה מקושרת אין לקיוסק רשימה להציג."
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "הוסף אורח/מבקר"
+
+#: 
+msgid "Add categories on the Event Type page"
+msgstr "הוסף קטגוריות בדף סוג האירוע"
+
+#: 
+msgid "Add people to your cart first, then come back to check them in to an event."
+msgstr "הוסף אנשים לעגלה תחילה, ולאחר מכן חזור לבצע צ׳ק-אין לאירוע."
+
+#: 
+msgid "All clear!"
+msgstr "הכל תקין!"
+
+#: 
+msgid "All events and attendance records"
+msgstr "כל האירועים ורשומות הנוכחות"
+
+#: 
+msgid "All financial data (pledges, payments, deposits)"
+msgstr "כל הנתונים הפיננסיים (התחייבויות, תשלומים, הפקדות)"
+
+#: 
+msgid "All groups, roles, and memberships"
+msgstr "כל הקבוצות, התפקידים והחברויות"
+
+#: 
+msgid "All people and family records"
+msgstr "כל רשומות האנשים והמשפחות"
+
+#: 
+msgid "All system settings and custom fields"
+msgstr "כל הגדרות המערכת והשדות המותאמים"
+
+#: 
+msgid "All uploaded photos and documents"
+msgstr "כל התמונות והמסמכים שהועלו"
+
+#: 
+msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
+msgstr "סוג אירוע הוא תבנית — שם, שעת התחלה ברירת מחדל, חזרתיות, קטגוריות ספירת נוכחות. ניתן לקשר אותו לקבוצת כיתה אחת כקהל ברירת מחדל."
+
+#: 
+msgid "Attendance record deleted."
+msgstr "רשומת נוכחות נמחקה."
+
+#: 
+msgid "Audit"
+msgstr "ביקורת"
+
+#: 
+msgid "Audit Events"
+msgstr "אירועי ביקורת"
+
+#: 
+msgid "Auto-totalled from counts at right"
+msgstr "סכום אוטומטי מהספירות בצד ימין"
+
+#: 
+msgid "Back to Events"
+msgstr "חזרה לאירועים"
+
+#: 
+msgid "Back to Events Dashboard"
+msgstr "חזרה ללוח האירועים"
+
+#: 
+msgid "Backup failed. You can still proceed with the reset, but your data will be lost."
+msgstr "הגיבוי נכשל. ניתן להמשיך עם האיפוס, אך הנתונים יאבדו."
+
+#: 
+msgid "Backup ready!"
+msgstr "הגיבוי מוכן!"
+
+#: 
+msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
+msgstr "לפני האיפוס, מומלץ מאוד להוריד גיבוי של הנתונים הנוכחיים. זו ההזדמנות היחידה לשמר אותם."
+
+#: 
+msgid "Bulk-create a series of recurring events"
+msgstr "צור בכמות סדרה של אירועים חוזרים"
+
+#: 
+msgid "By"
+msgstr "על ידי"
+
+#: 
+msgid "Cannot check in to an inactive event. Activate the event first."
+msgstr "לא ניתן לבצע צ׳ק-אין לאירוע לא פעיל. הפעל את האירוע תחילה."
+
+#: 
+msgid "Change"
+msgstr "שנה"
+
+#: 
+msgid "Check In All"
+msgstr "כניסה לכולם"
+
+#: 
+msgid "Check In Family"
+msgstr "כניסה למשפחה"
+
+#: 
+msgid "Check Out All"
+msgstr "יציאה לכולם"
+
+#: 
+msgid "Check in all %d family members to a single event."
+msgstr "בצע צ׳ק-אין לכל %d חברי המשפחה לאירוע אחד."
+
+#: 
+msgid "Check out"
+msgstr "יציאה"
+
+#: 
+msgid "Check-in By"
+msgstr "כניסה על ידי"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "הצ׳ק-אין נכשל. אנא נסה שוב."
+
+#: 
+msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
+msgstr "הצ׳ק-אין מושבת עבור אירועים לא פעילים. הפעל את האירוע מלוח האירועים כדי לאפשר צ׳ק-אין."
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "הצ׳ק-אאוט נכשל. אנא נסה שוב."
+
+#: 
+msgid "Checked in to event: %s"
+msgstr "בוצע צ׳ק-אין לאירוע: %s"
+
+#: 
+msgid "Checked out from event: %s"
+msgstr "בוצע צ׳ק-אאוט מאירוע: %s"
+
+#: 
+msgid "Close All Stuck Events"
+msgstr "סגור את כל האירועים התקועים"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "אשר יציאה"
+
+#: 
+msgid "Create Repeat Events"
+msgstr "צור אירועים חוזרים"
+
+#: 
+msgid "Create Today's Event"
+msgstr "צור את אירוע היום"
+
+#: 
+msgid "Create a new event type with recurrence and attendance settings"
+msgstr "צור סוג אירוע חדש עם הגדרות חזרתיות ונוכחות"
+
+#: 
+msgid "Create one now"
+msgstr "צור עכשיו"
+
+#: 
+msgid "Create today's class event and link it to this class for kiosk check-in"
+msgstr "צור את אירוע הכיתה של היום וקשר אותו לכיתה זו לצ׳ק-אין בקיוסק"
+
+#: 
+msgid "Creating backup..."
+msgstr "יוצר גיבוי..."
+
+#: 
+msgid "Creating..."
+msgstr "יוצר..."
+
+#: 
+msgid "Database + uploaded photos (larger)"
+msgstr "מסד נתונים + תמונות שהועלו (גדול יותר)"
+
+#: 
+msgid "Database dump only (.sql)"
+msgstr "ייצוא מסד נתונים בלבד (.sql)"
+
+#: 
+msgid "Date Range"
+msgstr "טווח תאריכים"
+
+#: 
+msgid "Date range cannot exceed 1 year"
+msgstr "טווח התאריכים אינו יכול לעלות על שנה אחת"
+
+#: 
+msgid "Deactivate"
+msgstr "השבת"
+
+#: 
+msgid "Delete Event Type"
+msgstr "מחק סוג אירוע"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "למחוק רשומת נוכחות?"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "מחק רשומת כניסה עבור"
+
+#: 
+msgid "Delete this event?"
+msgstr "למחוק אירוע זה?"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "מחיקת אירוע תמחק גם את כל ספירות הנוכחות. לא ניתן לבטל פעולה זו."
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "מחיקת סוג אירוע זה לא תמחק אירועים קיימים. האם אתה בטוח?"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "מחיקת אירוע זה תמחק גם את כל רשומות הנוכחות. לא ניתן לבטל פעולה זו."
+
+#: 
+msgid "Destructive Operation"
+msgstr "פעולה הרסנית"
+
+#: 
+msgid "Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field."
+msgstr "ערוך שם קטגוריה ולחץ שמור, או השתמש בסמל הפח להסרה. שורות חדשות מתווספות דרך השדה בתחתית."
+
+#: 
+msgid "End Time"
+msgstr "שעת סיום"
+
+#: 
+msgid "End time must be after start time."
+msgstr "שעת הסיום חייבת להיות אחרי שעת ההתחלה."
+
+#: 
+msgid "Ended"
+msgstr "הסתיים"
+
+#: 
+msgid "Ends"
+msgstr "מסתיים"
+
+#: 
+msgid "Event Audit"
+msgstr "ביקורת אירוע"
+
+#: 
+msgid "Event Check-in"
+msgstr "צ׳ק-אין לאירוע"
+
+#: 
+msgid "Event Details"
+msgstr "פרטי אירוע"
+
+#: 
+msgid "Event Template"
+msgstr "תבנית אירוע"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "האירוע כבר קיים. מנתב לצ׳ק-אין..."
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "האירוע נוצר. מנתב לצ׳ק-אין..."
+
+#: 
+msgid "Event end date/time must be on or after the start date/time."
+msgstr "תאריך/שעת סיום האירוע חייבים להיות ביום ההתחלה או אחריו."
+
+#: 
+msgid "Event title is required."
+msgstr "כותרת האירוע נדרשת."
+
+#: 
+msgid "Event type ID is required"
+msgstr "נדרש מזהה סוג אירוע"
+
+#: 
+msgid "Event type ID or group ID is required"
+msgstr "נדרש מזהה סוג אירוע או מזהה קבוצה"
+
+#: 
+msgid "Event type has no date configured for yearly recurrence"
+msgstr "לסוג האירוע אין תאריך מוגדר לחזרה שנתית"
+
+#: 
+msgid "Event type has no day-of-week configured for weekly recurrence"
+msgstr "לסוג האירוע אין יום בשבוע מוגדר לחזרה שבועית"
+
+#: 
+msgid "Event type has no recurrence pattern configured"
+msgstr "לסוג האירוע אין תבנית חזרתיות מוגדרת"
+
+#: 
+msgid "Event type has no valid day-of-month configured for monthly recurrence"
+msgstr "לסוג האירוע אין יום חודשי תקין מוגדר לחזרה חודשית"
+
+#: 
+msgid "Events will be created for every matching occurrence within this date range."
+msgstr "אירועים ייווצרו לכל מופע תואם בטווח תאריכים זה."
+
+#: 
+msgid "Every month on the"
+msgstr "כל חודש ב-"
+
+#: 
+msgid "Every week on"
+msgstr "כל שבוע ב-"
+
+#: 
+msgid "Every year on"
+msgstr "כל שנה ב-"
+
+#: 
+msgid "Everyone is checked in!"
+msgstr "כולם עשו צ׳ק-אין!"
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "יצירת הכיתה נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Failed to create event."
+msgstr "יצירת האירוע נכשלה."
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "יצירת האירוע נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "המחיקה נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Fastest workflow:"
+msgstr "זרימת העבודה המהירה ביותר:"
+
+#: 
+msgid "Find past events that are still active or have un-checked-out attendees"
+msgstr "מצא אירועים עבר שעדיין פעילים או שיש להם משתתפים שלא עשו צ׳ק-אאוט"
+
+#: 
+msgid "Format: MM-DD (e.g. 04-12 for April 12)"
+msgstr "פורמט: MM-DD (לדוג׳ 04-12 לאפריל 12)"
+
+#: 
+msgid "Group Roster"
+msgstr "רשימת קבוצה"
+
+#: 
+msgid "Hide Advanced Options"
+msgstr "הסתר אפשרויות מתקדמות"
+
+#: 
+msgid "How Sunday School + Events + Kiosks fit together"
+msgstr "כיצד בית ספר ראשון לשבוע + אירועים + קיוסקים עובדים יחד"
+
+#: 
+msgid "Invalid date for %s — expected YYYY-MM-DD"
+msgstr "תאריך לא תקין עבור %s — נדרש YYYY-MM-DD"
+
+#: 
+msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr "פורמט תאריך לא תקין עבור rangeStart או rangeEnd"
+
+#: 
+msgid "Invalid date format."
+msgstr "פורמט תאריך לא תקין."
+
+#: 
+msgid "Invalid date; expected format YYYY-MM-DD"
+msgstr "תאריך לא תקין; פורמט נדרש YYYY-MM-DD"
+
+#: 
+msgid "Invalid event type ID"
+msgstr "מזהה סוג אירוע לא תקין"
+
+#: 
+msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
+msgstr "פורמט חזרה שנתית לא תקין; נדרש MM-DD (לדוג׳ 04-12)"
+
+#: 
+msgid "Just now"
+msgstr "הרגע"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "השאר ריק לצ׳ק-אאוט ללא רישום המפקח."
+
+#: 
+msgid "Link events to a group for Kiosk check-in functionality."
+msgstr "קשר אירועים לקבוצה לצורך פונקציית צ׳ק-אין בקיוסק."
+
+#: 
+msgid "Linked Groups"
+msgstr "קבוצות מקושרות"
+
+#: 
+msgid "Looking for stuck events..."
+msgstr "מחפש אירועים תקועים..."
+
+#: 
+msgid "Manage event names, recurrence patterns, and attendance counts"
+msgstr "נהל שמות אירועים, תבניות חזרתיות וספירות נוכחות"
+
+#: 
+msgid "Missing required field: %s"
+msgstr "שדה חובה חסר: %s"
+
+#: 
+msgid "No Events Today"
+msgstr "אין אירועים היום"
+
+#: 
+msgid "No Group"
+msgstr "אין קבוצה"
+
+#: 
+msgid "No active assignment"
+msgstr "אין הקצאה פעילה"
+
+#: 
+msgid "No active events found."
+msgstr "לא נמצאו אירועים פעילים."
+
+#: 
+msgid "No attendance count categories defined for this event type yet."
+msgstr "טרם הוגדרו קטגוריות ספירת נוכחות לסוג אירוע זה."
+
+#: 
+msgid "No one has been checked in to this event yet."
+msgstr "טרם בוצע צ׳ק-אין לאף אחד לאירוע זה."
+
+#: 
+msgid "No past events are still marked Active."
+msgstr "אין אירועים עבר המסומנים עדיין כפעילים."
+
+#: 
+msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr "פתח כיתה ← לחץ \"צור את אירוע היום\" — האירוע נוצר ומקושר לכיתה בפעולה אחת, ואז מגיעים לדף הצ׳ק-אין מוכן לקיוסק או לנוכחות ספונטנית."
+
+#: 
+msgid "Optional Settings"
+msgstr "הגדרות אופציונליות"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "אופציונלי — רשום מי מוציא את האדם (לדוג׳ הורה שאוסף ילד)."
+
+#: 
+msgid "Person checked out."
+msgstr "האדם עשה צ׳ק-אאוט."
+
+#: 
+msgid "Person is not checked in"
+msgstr "האדם אינו מחובר"
+
+#: 
+msgid "Person not in active class roster"
+msgstr "האדם אינו ברשימת הכיתה הפעילה"
+
+#: 
+msgid "Pin to Calendars"
+msgstr "נעץ ביומנים"
+
+#: 
+msgid "Please select a person to check in."
+msgstr "אנא בחר אדם לצ׳ק-אין."
+
+#: 
+msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
+msgstr "מולא מראש לפי סוג אירוע זה — לסוגים חוזרים, התאריך הוא המופע הבא אחרי האירוע האחרון מסוג זה, והשעה תואמת לשעת ההתחלה הדיפולטית של הסוג."
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "תאריך סיום הטווח חייב להיות ביום ההתחלה או אחריו."
+
+#: 
+msgid "Range end must be a valid YYYY-MM-DD date."
+msgstr "סיום הטווח חייב להיות תאריך תקין בפורמט YYYY-MM-DD."
+
+#: 
+msgid "Range start must be a valid YYYY-MM-DD date."
+msgstr "תחילת הטווח חייבת להיות תאריך תקין בפורמט YYYY-MM-DD."
+
+#: 
+msgid "Range start must be before range end"
+msgstr "תחילת הטווח חייבת להיות לפני סיומו"
+
+#: 
+msgid "Range start must be before range end."
+msgstr "תחילת הטווח חייבת להיות לפני סיומו."
+
+#: 
+msgid "RangeEnd must be on or after RangeStart"
+msgstr "RangeEnd חייב להיות ב-RangeStart או אחריו"
+
+#: 
+msgid "Recommended"
+msgstr "מומלץ"
+
+#: 
+msgid "Required for Kiosk"
+msgstr "נדרש לקיוסק"
+
+#: 
+msgid "Resetting will permanently delete:"
+msgstr "האיפוס ימחק לצמיתות:"
+
+#: 
+msgid "SQL Only"
+msgstr "SQL בלבד"
+
+#: 
+msgid "Save Time"
+msgstr "חסוך זמן"
+
+#: 
+msgid "Save changes to this category name"
+msgstr "שמור שינויים לשם קטגוריה זו"
+
+#: 
+msgid "Select an event type…"
+msgstr "בחר סוג אירוע..."
+
+#: 
+msgid "Select start and end date/time."
+msgstr "בחר תאריך/שעת התחלה וסיום."
+
+#: 
+msgid "Show More Options"
+msgstr "הצג אפשרויות נוספות"
+
+#: 
+msgid "Skip"
+msgstr "דלג"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "דלג וצא"
+
+#: 
+msgid "Start Check-in"
+msgstr "התחל צ׳ק-אין"
+
+#: 
+msgid "Starts"
+msgstr "מתחיל"
+
+#: 
+msgid "Step 1: Create a Backup"
+msgstr "שלב 1: צור גיבוי"
+
+#: 
+msgid "Step 2: Reset Database"
+msgstr "שלב 2: אפס מסד נתונים"
+
+#: 
+msgid "Still Checked In"
+msgstr "עדיין מחובר"
+
+#: 
+msgid "Stuck Events"
+msgstr "אירועים תקועים"
+
+#: 
+msgid "Take Attendance"
+msgstr "קח נוכחות"
+
+#: 
+msgid "The Events module is disabled"
+msgstr "מודול האירועים מושבת"
+
+#: 
+msgid "The same start and end time will be used for all generated events."
+msgstr "אותן שעות התחלה וסיום ישמשו לכל האירועים שייווצרו."
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "אין אירועים מתוכננים להיום"
+
+#: 
+msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
+msgstr "אלו קטגוריות ספירת ראשים — מתנדבים ממלאים אותן לאחר האירוע כדי שהלוח יוכל לפרק את הנוכחות (לדוג׳ כמה חברים לעומת אורחים). הן נפרדות מצ׳ק-אין אישי בדף הצ׳ק-אין."
+
+#: 
+msgid "This event is inactive."
+msgstr "אירוע זה אינו פעיל."
+
+#: 
+msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr "דף זה מאפשר למחוק לצמיתות את כל הנתונים במסד הנתונים של ChurchCRM. לא ניתן לבטל פעולה זו."
+
+#: 
+msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
+msgstr "דוח זה מפרט כל אירוע שתאריך סיומו עבר אך עדיין מסומן כפעיל. סיבות נפוצות: מתנדב שכח ללחוץ על ׳יציאה׳, קיוסק איבד קישוריות, או שהאירוע נוצר ונזנח. אירועים ישנים שלא הושבתו גם מופיעים כאן. עמודת ׳עדיין מחובר׳ מציגה האם מישהו נשאר באמצע צ׳ק-אין. סגירת אירוע מדוח זה מוציאה את כולם (בשעה הנוכחית) ומסמנת את האירוע כלא פעיל."
+
+#: 
+msgid "This title will be used for all generated events."
+msgstr "כותרת זו תשמש לכל האירועים שייווצרו."
+
+#: 
+msgid "Today's Events"
+msgstr "אירועי היום"
+
+#: 
+msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
+msgstr "יותר מדי מופעים (%d) — צמצם את טווח התאריכים. המקסימום המותר: %d"
+
+#: 
+msgid "Type RESET to confirm"
+msgstr "הקלד RESET לאישור"
+
+#: 
+msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
+msgstr "השתמש בכפתור למעלה כדי ליצור את אירוע היום בלחיצה אחת. הוא יקושר אוטומטית לכיתה זו כדי שקיוסק יוכל לשלוף את הרשימה."
+
+#: 
+msgid "Use this form to bulk-create a series of recurring events. Each event is created individually and can be edited or deleted independently after creation."
+msgstr "השתמש בטופס זה ליצירה בכמות של סדרת אירועים חוזרים. כל אירוע נוצר בנפרד וניתן לעריכה או מחיקה עצמאית לאחר היצירה."
+
+#: 
+msgid "Used as the default start time when creating events of this type."
+msgstr "משמש כשעת התחלה ברירת מחדל בעת יצירת אירועים מסוג זה."
+
+#: 
+msgid "User must have Add Event permission and the Events module must be enabled"
+msgstr "למשתמש חייבת להיות הרשאת הוספת אירוע ומודול האירועים חייב להיות מופעל"
+
+#: 
+msgid "Valid startDate and endDate are required"
+msgstr "נדרשים startDate ו-endDate תקינים"
+
+#: 
+msgid "View Event"
+msgstr "הצג אירוע"
+
+#: 
+msgid "What are these for?"
+msgstr "למה אלו משמשים?"
+
+#: 
+msgid "What does this find?"
+msgstr "מה זה מוצא?"
+
+#: 
+msgid "What is this for?"
+msgstr "למה זה משמש?"
+
+#: 
+msgid "Who is bringing them in?"
+msgstr "מי מביא אותם?"
+
+#: 
+msgid "You must select a valid recurrence pattern."
+msgstr "עליך לבחור תבנית חזרתיות תקינה."
+
+#: 
+msgid "You must select an event type."
+msgstr "עליך לבחור סוג אירוע."
+
+#: 
+msgid "You must specify a date range."
+msgstr "עליך לציין טווח תאריכים."
+
+#: 
+msgid "checked in"
+msgstr "בוצע צ׳ק-אין"
+
+#: 
+msgid "e.g., Sunday Worship Service"
+msgstr "לדוג׳ תפילת שבת"
+
+#: 
+msgid "endDate must be after startDate"
+msgstr "endDate חייב להיות אחרי startDate"
+
+#: 
+msgid "eventIds must be a non-empty array"
+msgstr "eventIds חייב להיות מערך לא ריק"
+
+#: 
+msgid "invalid recurrence type"
+msgstr "סוג חזרתיות לא תקין"
+
+#: 
+msgid "personIds must be a non-empty array"
+msgstr "personIds חייב להיות מערך לא ריק"
+
+#: 
+msgid "to enable the reset button"
+msgstr "כדי להפעיל את כפתור האיפוס"
+
+#: 
+msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
+msgstr "מפה תופיע כאן לאחר שמירת הקואורדינטות — זוהו אוטומטית מהכתובת או הוזנו ידנית למעלה."
+
+#: 
+msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr "יש לספק גם קו רוחב וגם קו אורך יחד (או להשאיר שניהם ריקים לזיהוי אוטומטי)."
+
+#: 
+msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr "מידע הקהילה נשמר, אך לא ניתן לאתר את הכתובת אוטומטית. אנא הזן קו רוחב ואורך ידנית תחת קואורדינטות מפה."
+
+#: 
+msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
+msgstr "קואורדינטות מזוהות אוטומטית מהכתובת בשמירה (דרך OpenStreetMap). ניתן גם להזין אותן ידנית למטה — ערכים ידניים תמיד גוברים על זיהוי אוטומטי. השאר שניהם ריקים כדי לאפשר למערכת לקודד גיאוגרפית מהכתובת."
+
+#: 
+msgid "Latitude must be a number between -90 and 90."
+msgstr "קו הרוחב חייב להיות מספר בין -90 ל-90."
+
+#: 
+msgid "Longitude must be a number between -180 and 180."
+msgstr "קו האורך חייב להיות מספר בין -180 ל-180."
+
+#: 
+msgid "Map Coordinates"
+msgstr "קואורדינטות מפה"
+
+#: 
+msgid "Please select a group."
+msgstr "אנא בחר קבוצה."
+
+#: 
+msgid "Please select a role."
+msgstr "אנא בחר תפקיד."
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "אנא בחר גם קבוצה וגם תפקיד."
+
+#: 
+msgid "Range: -180 to 180."
+msgstr "טווח: -180 עד 180."
+
+#: 
+msgid "Range: -90 to 90."
+msgstr "טווח: -90 עד 90."
+
+#: 
+msgid "mo"
+msgstr "חוד׳"
+
+#: 
+msgid "mos"
+msgstr "חוד׳"
+
+#: 
+msgid "yr"
+msgstr "שנ׳"
+
+#: 
+msgid "yrs"
+msgstr "שנ׳"
 

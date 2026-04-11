@@ -14305,6 +14305,10 @@ msgid "Database Backup"
 msgstr "Záloha databáze"
 
 #: 
+msgid "Export"
+msgstr "Exportovat"
+
+#: 
 msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
 msgstr "Exportujte data farníků do formátu CSV. Vyberte, která pole zahrnout, a filtrujte podle klasifikace, skupiny, pohlaví a dalších kritérií."
 
@@ -14673,4 +14677,807 @@ msgstr "Žlutá"
 #: 
 msgid "Your current access levels (read-only)"
 msgstr "Vaše aktuální úrovně přístupu (pouze pro čtení)"
+
+#: 
+msgid "%d repeat event created successfully."
+msgid_plural "%d repeat events created successfully."
+msgstr[0] "Byla úspěšně vytvořena %d opakující se událost."
+msgstr[1] "Byly úspěšně vytvořeny %d opakující se události."
+msgstr[2] "Bylo úspěšně vytvořeno %d opakujících se událostí."
+
+#: 
+msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
+msgstr "(např. Farníci, Návštěvníci, Děti), aby dobrovolníci mohli zde zaznamenat počty přítomných."
+
+#: 
+msgid "1. Sunday School Class"
+msgstr "1. Třída nedělní školy"
+
+#: 
+msgid "2. Event Type"
+msgstr "2. Typ události"
+
+#: 
+msgid "3. Event"
+msgstr "3. Událost"
+
+#: 
+msgid "4. Kiosk"
+msgstr "4. Kiosek"
+
+#: 
+msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
+msgstr "Třída je Skupina s typem \"Nedělní škola\". Obsahuje žáky a učitele (členy s rolemi)."
+
+#: 
+msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
+msgstr "Propojená skupina váže tuto událost ke třídě nebo seznamu farní služby. Když je událost přiřazena ke kiosku, kiosek načte členy skupiny a zobrazí je jako seznam pro přihlášení klepnutím. Pro třídy nedělní školy zde propojte skupinu třídy, aby dobrovolníci mohli přihlašovat žáky z tabletu."
+
+#: 
+msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr "Konkrétní výskyt (např. \"Předškolní — 12. dubna\"). Dědí výchozí nastavení z typu a je propojena se skupinou třídy prostřednictvím publika. Na tuto událost dobrovolníci zaznamenávají docházku."
+
+#: 
+msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr "Tablet přiřazený k jedné události. Kiosek načte seznam propojené skupiny události a zobrazí přihlášení klepnutím. Bez propojené skupiny nemá kiosek žádný seznam k zobrazení."
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "Přidat příchozího / Návštěvníka"
+
+#: 
+msgid "Add categories on the Event Type page"
+msgstr "Přidat kategorie na stránce Typ události"
+
+#: 
+msgid "Add people to your cart first, then come back to check them in to an event."
+msgstr "Nejprve přidejte osoby do košíku, poté se vraťte a přihlaste je k události."
+
+#: 
+msgid "All clear!"
+msgstr "Vše v pořádku!"
+
+#: 
+msgid "All events and attendance records"
+msgstr "Všechny události a záznamy o docházce"
+
+#: 
+msgid "All financial data (pledges, payments, deposits)"
+msgstr "Všechna finanční data (sliby, platby, vklady)"
+
+#: 
+msgid "All groups, roles, and memberships"
+msgstr "Všechny skupiny, role a členství"
+
+#: 
+msgid "All people and family records"
+msgstr "Všechny záznamy o osobách a rodinách"
+
+#: 
+msgid "All system settings and custom fields"
+msgstr "Veškerá nastavení systému a vlastní pole"
+
+#: 
+msgid "All uploaded photos and documents"
+msgstr "Všechny nahrané fotografie a dokumenty"
+
+#: 
+msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
+msgstr "Typ události je šablona — název, výchozí čas zahájení, opakování, kategorie počtu přítomných. Volitelně propojena s jednou skupinou třídy jako výchozím publikem."
+
+#: 
+msgid "Attendance record deleted."
+msgstr "Záznam o docházce byl smazán."
+
+#: 
+msgid "Audit Events"
+msgstr "Auditní události"
+
+#: 
+msgid "Auto-totalled from counts at right"
+msgstr "Automaticky sečteno z počtů napravo"
+
+#: 
+msgid "Back to Events"
+msgstr "Zpět na Události"
+
+#: 
+msgid "Back to Events Dashboard"
+msgstr "Zpět na přehled událostí"
+
+#: 
+msgid "Backup failed. You can still proceed with the reset, but your data will be lost."
+msgstr "Záloha selhala. Stále můžete pokračovat s resetem, ale vaše data budou ztracena."
+
+#: 
+msgid "Backup ready!"
+msgstr "Záloha je připravena!"
+
+#: 
+msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
+msgstr "Před resetem důrazně doporučujeme stáhnout zálohu vašich aktuálních dat. Toto je vaše jediná příležitost je zachovat."
+
+#: 
+msgid "Bulk-create a series of recurring events"
+msgstr "Hromadně vytvořit sérii opakujících se událostí"
+
+#: 
+msgid "By"
+msgstr "Autor"
+
+#: 
+msgid "Cannot check in to an inactive event. Activate the event first."
+msgstr "Nelze se přihlásit k neaktivní události. Nejprve událost aktivujte."
+
+#: 
+msgid "Change"
+msgstr "Změnit"
+
+#: 
+msgid "Check In All"
+msgstr "Přihlásit všechny"
+
+#: 
+msgid "Check In Family"
+msgstr "Přihlásit rodinu"
+
+#: 
+msgid "Check Out All"
+msgstr "Odhlásit všechny"
+
+#: 
+msgid "Check in all %d family members to a single event."
+msgstr "Přihlásit všechny %d členy rodiny k jedné události."
+
+#: 
+msgid "Check out"
+msgstr "Odhlásit"
+
+#: 
+msgid "Check-in By"
+msgstr "Přihlášení od"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "Přihlášení selhalo. Zkuste to prosím znovu."
+
+#: 
+msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
+msgstr "Přihlašování je zakázáno pro neaktivní události. Aktivujte událost z přehledu událostí, abyste povolili přihlašování."
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "Odhlášení selhalo. Zkuste to prosím znovu."
+
+#: 
+msgid "Checked in to event: %s"
+msgstr "Přihlášen k události: %s"
+
+#: 
+msgid "Checked out from event: %s"
+msgstr "Odhlášen z události: %s"
+
+#: 
+msgid "Close All Stuck Events"
+msgstr "Uzavřít všechny zaseklé události"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "Potvrdit odhlášení"
+
+#: 
+msgid "Create Repeat Events"
+msgstr "Vytvořit opakující se události"
+
+#: 
+msgid "Create Today's Event"
+msgstr "Vytvořit dnešní událost"
+
+#: 
+msgid "Create a new event type with recurrence and attendance settings"
+msgstr "Vytvořit nový typ události s nastavením opakování a docházky"
+
+#: 
+msgid "Create one now"
+msgstr "Vytvořit nyní"
+
+#: 
+msgid "Create today's class event and link it to this class for kiosk check-in"
+msgstr "Vytvořit dnešní událost třídy a propojit ji s touto třídou pro přihlašování na kiosku"
+
+#: 
+msgid "Creating backup..."
+msgstr "Vytváření zálohy..."
+
+#: 
+msgid "Creating..."
+msgstr "Vytváření..."
+
+#: 
+msgid "Database + uploaded photos (larger)"
+msgstr "Databáze + nahrané fotografie (větší)"
+
+#: 
+msgid "Database dump only (.sql)"
+msgstr "Pouze výpis databáze (.sql)"
+
+#: 
+msgid "Date Range"
+msgstr "Rozsah dat"
+
+#: 
+msgid "Date range cannot exceed 1 year"
+msgstr "Rozsah dat nesmí překročit 1 rok"
+
+#: 
+msgid "Deactivate"
+msgstr "Deaktivovat"
+
+#: 
+msgid "Delete Event Type"
+msgstr "Smazat typ události"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "Smazat záznam o docházce?"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "Smazat záznam o přihlášení pro"
+
+#: 
+msgid "Delete this event?"
+msgstr "Smazat tuto událost?"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "Smazáním události se také smažou všechny záznamy docházky. Tuto akci nelze vrátit zpět."
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "Smazáním tohoto typu události se NESMAŽOU existující události. Jste si jisti?"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "Smazáním této události se také smažou všechny záznamy o docházce. Tuto akci nelze vrátit zpět."
+
+#: 
+msgid "Destructive Operation"
+msgstr "Destruktivní operace"
+
+#: 
+msgid "Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field."
+msgstr "Upravte název kategorie a klikněte na Uložit, nebo použijte ikonu koše pro odebrání. Nové řádky se přidávají přes spodní pole."
+
+#: 
+msgid "End Time"
+msgstr "Čas ukončení"
+
+#: 
+msgid "End time must be after start time."
+msgstr "Čas ukončení musí být po čase zahájení."
+
+#: 
+msgid "Ended"
+msgstr "Ukončeno"
+
+#: 
+msgid "Ends"
+msgstr "Končí"
+
+#: 
+msgid "Event Audit"
+msgstr "Audit událostí"
+
+#: 
+msgid "Event Check-in"
+msgstr "Přihlašování na událost"
+
+#: 
+msgid "Event Details"
+msgstr "Podrobnosti události"
+
+#: 
+msgid "Event Template"
+msgstr "Šablona události"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "Událost již existuje. Přesměrování na přihlašování..."
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "Událost byla vytvořena. Přesměrování na přihlašování..."
+
+#: 
+msgid "Event end date/time must be on or after the start date/time."
+msgstr "Datum/čas ukončení události musí být stejné nebo po datu/čase zahájení."
+
+#: 
+msgid "Event title is required."
+msgstr "Název události je povinný."
+
+#: 
+msgid "Event type ID is required"
+msgstr "ID typu události je povinné"
+
+#: 
+msgid "Event type ID or group ID is required"
+msgstr "ID typu události nebo ID skupiny je povinné"
+
+#: 
+msgid "Event type has no date configured for yearly recurrence"
+msgstr "Typ události nemá nakonfigurované datum pro roční opakování"
+
+#: 
+msgid "Event type has no day-of-week configured for weekly recurrence"
+msgstr "Typ události nemá nakonfigurovaný den v týdnu pro týdenní opakování"
+
+#: 
+msgid "Event type has no recurrence pattern configured"
+msgstr "Typ události nemá nakonfigurovaný vzor opakování"
+
+#: 
+msgid "Event type has no valid day-of-month configured for monthly recurrence"
+msgstr "Typ události nemá nakonfigurovaný platný den v měsíci pro měsíční opakování"
+
+#: 
+msgid "Events will be created for every matching occurrence within this date range."
+msgstr "Události budou vytvořeny pro každý odpovídající výskyt v tomto rozsahu dat."
+
+#: 
+msgid "Every month on the"
+msgstr "Každý měsíc"
+
+#: 
+msgid "Every week on"
+msgstr "Každý týden"
+
+#: 
+msgid "Every year on"
+msgstr "Každý rok"
+
+#: 
+msgid "Everyone is checked in!"
+msgstr "Všichni jsou přihlášeni!"
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "Nepodařilo se vytvořit třídu. Zkuste to prosím znovu."
+
+#: 
+msgid "Failed to create event."
+msgstr "Nepodařilo se vytvořit událost."
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "Nepodařilo se vytvořit událost. Zkuste to prosím znovu."
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "Nepodařilo se smazat. Zkuste to prosím znovu."
+
+#: 
+msgid "Fastest workflow:"
+msgstr "Nejrychlejší postup:"
+
+#: 
+msgid "Find past events that are still active or have un-checked-out attendees"
+msgstr "Najít minulé události, které jsou stále aktivní nebo mají neodhlášené účastníky"
+
+#: 
+msgid "Format: MM-DD (e.g. 04-12 for April 12)"
+msgstr "Formát: MM-DD (např. 04-12 pro 12. dubna)"
+
+#: 
+msgid "Group Roster"
+msgstr "Seznam skupiny"
+
+#: 
+msgid "Hide Advanced Options"
+msgstr "Skrýt pokročilé možnosti"
+
+#: 
+msgid "How Sunday School + Events + Kiosks fit together"
+msgstr "Jak spolu fungují Nedělní škola + Události + Kiosky"
+
+#: 
+msgid "Invalid date for %s — expected YYYY-MM-DD"
+msgstr "Neplatné datum pro %s — očekáváno RRRR-MM-DD"
+
+#: 
+msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr "Neplatný formát data pro rangeStart nebo rangeEnd"
+
+#: 
+msgid "Invalid date format."
+msgstr "Neplatný formát data."
+
+#: 
+msgid "Invalid date; expected format YYYY-MM-DD"
+msgstr "Neplatné datum; očekávaný formát RRRR-MM-DD"
+
+#: 
+msgid "Invalid event type ID"
+msgstr "Neplatné ID typu události"
+
+#: 
+msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
+msgstr "Neplatný formát ročního opakování; očekáváno MM-DD (např. 04-12)"
+
+#: 
+msgid "Just now"
+msgstr "Právě teď"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "Ponechte prázdné pro odhlášení bez zaznamenání dozorující osoby."
+
+#: 
+msgid "Link events to a group for Kiosk check-in functionality."
+msgstr "Propojte události se skupinou pro funkci přihlašování na kiosku."
+
+#: 
+msgid "Linked Groups"
+msgstr "Propojené skupiny"
+
+#: 
+msgid "Looking for stuck events..."
+msgstr "Hledám zaseklé události..."
+
+#: 
+msgid "Manage event names, recurrence patterns, and attendance counts"
+msgstr "Spravovat názvy událostí, vzory opakování a počty docházky"
+
+#: 
+msgid "Missing required field: %s"
+msgstr "Chybí povinné pole: %s"
+
+#: 
+msgid "No Events Today"
+msgstr "Dnes žádné události"
+
+#: 
+msgid "No Group"
+msgstr "Žádná skupina"
+
+#: 
+msgid "No active assignment"
+msgstr "Žádné aktivní přiřazení"
+
+#: 
+msgid "No active events found."
+msgstr "Nebyly nalezeny žádné aktivní události."
+
+#: 
+msgid "No attendance count categories defined for this event type yet."
+msgstr "Pro tento typ události dosud nejsou definovány žádné kategorie počtu docházky."
+
+#: 
+msgid "No one has been checked in to this event yet."
+msgstr "K této události se ještě nikdo nepřihlásil."
+
+#: 
+msgid "No past events are still marked Active."
+msgstr "Žádné minulé události nejsou stále označeny jako Aktivní."
+
+#: 
+msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr "Otevřete třídu → klikněte na \"Vytvořit dnešní událost\" — událost se vytvoří a propojí se třídou najednou, poté se ocitnete na stránce přihlašování připravené pro kiosek nebo osobní docházku."
+
+#: 
+msgid "Optional Settings"
+msgstr "Volitelná nastavení"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "Volitelné — zaznamenejte, kdo tuto osobu odhlašuje (např. rodič vyzvedávající dítě)."
+
+#: 
+msgid "Person checked out."
+msgstr "Osoba byla odhlášena."
+
+#: 
+msgid "Person is not checked in"
+msgstr "Osoba není přihlášena"
+
+#: 
+msgid "Person not in active class roster"
+msgstr "Osoba není v aktivním seznamu třídy"
+
+#: 
+msgid "Pin to Calendars"
+msgstr "Připnout do kalendářů"
+
+#: 
+msgid "Please select a person to check in."
+msgstr "Vyberte prosím osobu k přihlášení."
+
+#: 
+msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
+msgstr "Předvyplněno na základě tohoto typu události — pro opakující se typy je datum dalším výskytem po poslední události tohoto typu a čas odpovídá výchozímu času zahájení typu."
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "Koncové datum rozsahu musí být stejné nebo po počátečním datu rozsahu."
+
+#: 
+msgid "Range end must be a valid YYYY-MM-DD date."
+msgstr "Konec rozsahu musí být platné datum ve formátu RRRR-MM-DD."
+
+#: 
+msgid "Range start must be a valid YYYY-MM-DD date."
+msgstr "Začátek rozsahu musí být platné datum ve formátu RRRR-MM-DD."
+
+#: 
+msgid "Range start must be before range end"
+msgstr "Začátek rozsahu musí být před koncem rozsahu"
+
+#: 
+msgid "Range start must be before range end."
+msgstr "Začátek rozsahu musí být před koncem rozsahu."
+
+#: 
+msgid "RangeEnd must be on or after RangeStart"
+msgstr "RangeEnd musí být stejné nebo po RangeStart"
+
+#: 
+msgid "Recommended"
+msgstr "Doporučeno"
+
+#: 
+msgid "Required for Kiosk"
+msgstr "Povinné pro kiosek"
+
+#: 
+msgid "Resetting will permanently delete:"
+msgstr "Reset trvale smaže:"
+
+#: 
+msgid "SQL Only"
+msgstr "Pouze SQL"
+
+#: 
+msgid "Save Time"
+msgstr "Ušetřit čas"
+
+#: 
+msgid "Save changes to this category name"
+msgstr "Uložit změny tohoto názvu kategorie"
+
+#: 
+msgid "Select an event type…"
+msgstr "Vyberte typ události…"
+
+#: 
+msgid "Select start and end date/time."
+msgstr "Vyberte datum/čas zahájení a ukončení."
+
+#: 
+msgid "Show More Options"
+msgstr "Zobrazit více možností"
+
+#: 
+msgid "Skip"
+msgstr "Přeskočit"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "Přeskočit a odhlásit"
+
+#: 
+msgid "Start Check-in"
+msgstr "Zahájit přihlašování"
+
+#: 
+msgid "Starts"
+msgstr "Začíná"
+
+#: 
+msgid "Step 1: Create a Backup"
+msgstr "Krok 1: Vytvořit zálohu"
+
+#: 
+msgid "Step 2: Reset Database"
+msgstr "Krok 2: Obnovit databázi"
+
+#: 
+msgid "Still Checked In"
+msgstr "Stále přihlášen"
+
+#: 
+msgid "Stuck Events"
+msgstr "Zaseklé události"
+
+#: 
+msgid "Take Attendance"
+msgstr "Zaznamenat docházku"
+
+#: 
+msgid "The Events module is disabled"
+msgstr "Modul Události je zakázán"
+
+#: 
+msgid "The same start and end time will be used for all generated events."
+msgstr "Stejný čas zahájení a ukončení bude použit pro všechny vygenerované události."
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "Na dnešek nejsou naplánované žádné události"
+
+#: 
+msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
+msgstr "Jedná se o skupiny počtů — dobrovolníci je vyplňují po události, aby přehled mohl rozdělit docházku (např. kolik farníků vs. návštěvníků). Jsou odděleny od individuálního přihlašování na stránce přihlašování."
+
+#: 
+msgid "This event is inactive."
+msgstr "Tato událost je neaktivní."
+
+#: 
+msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr "Tato stránka umožňuje trvale vymazat všechna data v databázi ChurchCRM. Tuto akci nelze vrátit zpět."
+
+#: 
+msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
+msgstr "Tato zpráva uvádí všechny události, jejichž datum ukončení uplynulo, ale jsou stále označeny jako Aktivní. Běžné příčiny: dobrovolník zapomněl klepnout na 'Odhlásit', kiosek ztratil připojení nebo byla událost vytvořena a opuštěna. Zde se také zobrazují staré události (z minulých let), které nebyly nikdy deaktivovány. Sloupec 'Stále přihlášen' ukazuje, zda někdo zůstal uprostřed přihlašování. Uzavřením události z této zprávy se všichni odhlásí (s použitím aktuálního času) a událost se označí jako Neaktivní."
+
+#: 
+msgid "This title will be used for all generated events."
+msgstr "Tento název bude použit pro všechny vygenerované události."
+
+#: 
+msgid "Today's Events"
+msgstr "Dnešní události"
+
+#: 
+msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
+msgstr "Příliš mnoho výskytů (%d) — zúžte rozsah dat. Maximální povolený počet: %d"
+
+#: 
+msgid "Type RESET to confirm"
+msgstr "Napište RESET pro potvrzení"
+
+#: 
+msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
+msgstr "Použijte tlačítko výše k vytvoření dnešní události jedním kliknutím. Bude automaticky propojena s touto třídou, aby kiosek mohl načíst seznam."
+
+#: 
+msgid "Use this form to bulk-create a series of recurring events. Each event is created individually and can be edited or deleted independently after creation."
+msgstr "Použijte tento formulář k hromadnému vytvoření série opakujících se událostí. Každá událost se vytváří samostatně a po vytvoření ji lze nezávisle upravit nebo smazat."
+
+#: 
+msgid "Used as the default start time when creating events of this type."
+msgstr "Používá se jako výchozí čas zahájení při vytváření událostí tohoto typu."
+
+#: 
+msgid "User must have Add Event permission and the Events module must be enabled"
+msgstr "Uživatel musí mít oprávnění Přidat událost a modul Události musí být povolen"
+
+#: 
+msgid "Valid startDate and endDate are required"
+msgstr "Jsou vyžadovány platné startDate a endDate"
+
+#: 
+msgid "View Event"
+msgstr "Zobrazit událost"
+
+#: 
+msgid "What are these for?"
+msgstr "K čemu slouží?"
+
+#: 
+msgid "What does this find?"
+msgstr "Co toto najde?"
+
+#: 
+msgid "What is this for?"
+msgstr "K čemu to slouží?"
+
+#: 
+msgid "Who is bringing them in?"
+msgstr "Kdo je přivádí?"
+
+#: 
+msgid "You must select a valid recurrence pattern."
+msgstr "Musíte vybrat platný vzor opakování."
+
+#: 
+msgid "You must select an event type."
+msgstr "Musíte vybrat typ události."
+
+#: 
+msgid "You must specify a date range."
+msgstr "Musíte zadat rozsah dat."
+
+#: 
+msgid "checked in"
+msgstr "přihlášen"
+
+#: 
+msgid "e.g., Sunday Worship Service"
+msgstr "např. Nedělní bohoslužba"
+
+#: 
+msgid "endDate must be after startDate"
+msgstr "endDate musí být po startDate"
+
+#: 
+msgid "eventIds must be a non-empty array"
+msgstr "eventIds musí být neprázdné pole"
+
+#: 
+msgid "invalid recurrence type"
+msgstr "neplatný typ opakování"
+
+#: 
+msgid "personIds must be a non-empty array"
+msgstr "personIds musí být neprázdné pole"
+
+#: 
+msgid "to enable the reset button"
+msgstr "pro aktivaci tlačítka resetovat"
+
+#: 
+msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
+msgstr "Mapa se zobrazí zde, jakmile budou souřadnice uloženy — buď automaticky zjištěny z vaší adresy, nebo zadány ručně výše."
+
+#: 
+msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr "Zeměpisná šířka i délka musí být zadány společně (nebo obě ponechány prázdné pro automatické zjišťování)."
+
+#: 
+msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr "Informace o farnosti byly uloženy, ale adresu se nepodařilo automaticky najít. Zadejte prosím zeměpisnou šířku a délku ručně pod Souřadnicemi mapy."
+
+#: 
+msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
+msgstr "Souřadnice jsou automaticky zjišťovány z vaší adresy při uložení (přes OpenStreetMap). Můžete je také zadat ručně níže — ruční hodnoty mají vždy přednost před automatickým zjišťováním. Ponechte obě prázdné, aby systém provedl geokódování z adresy."
+
+#: 
+msgid "Latitude must be a number between -90 and 90."
+msgstr "Zeměpisná šířka musí být číslo mezi -90 a 90."
+
+#: 
+msgid "Longitude must be a number between -180 and 180."
+msgstr "Zeměpisná délka musí být číslo mezi -180 a 180."
+
+#: 
+msgid "Map Coordinates"
+msgstr "Souřadnice mapy"
+
+#: 
+msgid "Please select a group."
+msgstr "Vyberte prosím skupinu."
+
+#: 
+msgid "Please select a role."
+msgstr "Vyberte prosím roli."
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "Vyberte prosím skupinu i roli."
+
+#: 
+msgid "Range: -180 to 180."
+msgstr "Rozsah: -180 až 180."
+
+#: 
+msgid "Range: -90 to 90."
+msgstr "Rozsah: -90 až 90."
+
+#: 
+msgid "mo"
+msgstr "měs."
+
+#: 
+msgid "mos"
+msgstr "měs."
+
+#: 
+msgid "yr"
+msgstr "r."
+
+#: 
+msgid "yrs"
+msgstr "let"
 

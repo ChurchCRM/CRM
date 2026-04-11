@@ -15393,3 +15393,67 @@ msgstr "personIds एक गैर-रिक्त सरणी होनी च
 msgid "to enable the reset button"
 msgstr "रीसेट बटन सक्षम करने के लिए"
 
+#: 
+msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
+msgstr "निर्देशांक सहेजे जाने के बाद यहाँ एक मानचित्र दिखाई देगा — या तो आपके पते से स्वतः पहचाना गया या ऊपर मैन्युअल रूप से दर्ज किया गया।"
+
+#: 
+msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr "अक्षांश और देशांतर दोनों को एक साथ प्रदान किया जाना चाहिए (या स्वचालित पहचान के लिए दोनों को रिक्त छोड़ें)।"
+
+#: 
+msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr "कलीसिया की जानकारी सहेजी गई, लेकिन पता स्वतः नहीं मिल सका। कृपया मानचित्र निर्देशांक के अंतर्गत अक्षांश और देशांतर मैन्युअल रूप से दर्ज करें।"
+
+#: 
+msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
+msgstr "सहेजते समय आपके पते से निर्देशांक स्वतः पहचाने जाते हैं (OpenStreetMap के माध्यम से)। आप उन्हें नीचे मैन्युअल रूप से भी दर्ज कर सकते हैं — मैन्युअल मान हमेशा स्वतः पहचान से प्राथमिकता लेते हैं। पते से जियोकोड करने के लिए दोनों को रिक्त छोड़ें।"
+
+#: 
+msgid "Latitude must be a number between -90 and 90."
+msgstr "अक्षांश -90 और 90 के बीच एक संख्या होनी चाहिए।"
+
+#: 
+msgid "Longitude must be a number between -180 and 180."
+msgstr "देशांतर -180 और 180 के बीच एक संख्या होनी चाहिए।"
+
+#: 
+msgid "Map Coordinates"
+msgstr "मानचित्र निर्देशांक"
+
+#: 
+msgid "Please select a group."
+msgstr "कृपया एक समूह चुनें।"
+
+#: 
+msgid "Please select a role."
+msgstr "कृपया एक भूमिका चुनें।"
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "कृपया एक समूह और एक भूमिका दोनों चुनें।"
+
+#: 
+msgid "Range: -180 to 180."
+msgstr "सीमा: -180 से 180।"
+
+#: 
+msgid "Range: -90 to 90."
+msgstr "सीमा: -90 से 90।"
+
+#: 
+msgid "mo"
+msgstr "माह"
+
+#: 
+msgid "mos"
+msgstr "माह"
+
+#: 
+msgid "yr"
+msgstr "वर्ष"
+
+#: 
+msgid "yrs"
+msgstr "वर्ष"
+

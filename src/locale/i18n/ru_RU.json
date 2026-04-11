@@ -3708,5 +3708,21 @@
     "eventIds must be a non-empty array": "eventIds должен быть непустым массивом",
     "invalid recurrence type": "недопустимый тип повторения",
     "personIds must be a non-empty array": "personIds должен быть непустым массивом",
-    "to enable the reset button": "для активации кнопки сброса"
+    "to enable the reset button": "для активации кнопки сброса",
+    "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above.": "Карта появится здесь после сохранения координат — автоматически определённых по вашему адресу или введённых вручную выше.",
+    "Both latitude and longitude must be provided together (or both left blank for automatic detection).": "Широта и долгота должны быть указаны вместе (или оба поля оставлены пустыми для автоматического определения).",
+    "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates.": "Информация о приходе сохранена, но адрес не удалось определить автоматически. Введите широту и долготу вручную в разделе «Координаты на карте».",
+    "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address.": "Координаты автоматически определяются по вашему адресу при сохранении (через OpenStreetMap). Вы также можете ввести их вручную ниже — введённые вручную значения всегда имеют приоритет над автоматическим определением. Оставьте оба поля пустыми, чтобы система определила координаты по адресу.",
+    "Latitude must be a number between -90 and 90.": "Широта должна быть числом от -90 до 90.",
+    "Longitude must be a number between -180 and 180.": "Долгота должна быть числом от -180 до 180.",
+    "Map Coordinates": "Координаты на карте",
+    "Please select a group.": "Пожалуйста, выберите служение.",
+    "Please select a role.": "Пожалуйста, выберите роль.",
+    "Please select both a group and a role.": "Пожалуйста, выберите служение и роль.",
+    "Range: -180 to 180.": "Диапазон: от -180 до 180.",
+    "Range: -90 to 90.": "Диапазон: от -90 до 90.",
+    "mo": "мес.",
+    "mos": "мес.",
+    "yr": "г.",
+    "yrs": "лет"
 }

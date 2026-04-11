@@ -14394,6 +14394,10 @@ msgid "Appearance"
 msgstr "መልክ"
 
 #: 
+msgid "Azure"
+msgstr "አዙር"
+
+#: 
 msgid "Back to Finance Dashboard"
 msgstr "ወደ ፋይናንስ ዳሽቦርድ ተመለስ"
 
@@ -14690,4 +14694,810 @@ msgstr "ቢጫ"
 #: 
 msgid "Your current access levels (read-only)"
 msgstr "የአሁን የመዳረሻ ደረጃዎችዎ (ለማንበብ ብቻ)"
+
+#: 
+msgid "%d repeat event created successfully."
+msgid_plural "%d repeat events created successfully."
+msgstr[0] "%d ተደጋጋሚ ዝግጅት በተሳካ ሁኔታ ተፈጥሯል።"
+msgstr[1] "%d ተደጋጋሚ ዝግጅቶች በተሳካ ሁኔታ ተፈጥረዋል።"
+
+#: 
+msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
+msgstr "(ለምሳሌ አባላት፣ ጎብኚዎች፣ ልጆች) በጎ ፈቃደኞች እዚህ ቆጠራ ሊያስገቡ ይችላሉ።"
+
+#: 
+msgid "1. Sunday School Class"
+msgstr "1. የሰንበት ትምህርት ቤት ክፍል"
+
+#: 
+msgid "2. Event Type"
+msgstr "2. የዝግጅት ዓይነት"
+
+#: 
+msgid "3. Event"
+msgstr "3. ዝግጅት"
+
+#: 
+msgid "4. Kiosk"
+msgstr "4. ኪዮስክ"
+
+#: 
+msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
+msgstr "ክፍል ዓይነቱ \"የሰንበት ትምህርት ቤት\" የሆነ ቡድን ነው። ተማሪዎቹንና አስተማሪዎቹን (ሚና ያላቸው አባላት) ይይዛል።"
+
+#: 
+msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
+msgstr "የተያያዘ ቡድን ይህን ዝግጅት ከክፍል ወይም ከአገልግሎት ዝርዝር ጋር ያገናኛል። ዝግጅቱ ለኪዮስክ ሲመደብ ኪዮስኩ የቡድን አባላትን ወስዶ እንደ ምዝገባ ዝርዝር ያሳያቸዋል። ለሰንበት ትምህርት ቤት ክፍሎች፣ ልጆቹን ከጡባዊ ለማስመዝገብ የክፍሉ ቡድን እዚህ ያስሩ።"
+
+#: 
+msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr "ልዩ ክስተት (ለምሳሌ \"ቅድመ ትምህርት ቤት — ሚያዝያ 12\")። ነባሪ ዋጋዎቹን ከዓይነቱ ይወርሳል እናም ከተደራሲው በኩል ከክፍሉ ቡድን ጋር ይያያዛል። በጎ ፈቃደኞች ቀጠሮ የሚወስዱት ለዚህ ነው።"
+
+#: 
+msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr "ለአንድ ዝግጅት የተመደበ ጡባዊ። ኪዮስኩ የዝግጅቱን የተያያዘ ቡድን ዝርዝር ወስዶ ምዝገባ ያሳያል። ያለ ተያያዥ ቡድን ኪዮስኩ ምንም ዝርዝር ሊያሳይ አይችልም።"
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "ያልተቀደሙ / ጎብኚ ጨምር"
+
+#: 
+msgid "Add categories on the Event Type page"
+msgstr "ምድቦችን በዝግጅት ዓይነት ገጽ ላይ ጨምር"
+
+#: 
+msgid "Add people to your cart first, then come back to check them in to an event."
+msgstr "መጀመሪያ ሰዎችን ወደ ቅርጫትህ ጨምር፣ ከዚያ ወደዚህ ተመልሰህ ወደ ዝግጅቱ ምዝጋባቸው።"
+
+#: 
+msgid "All clear!"
+msgstr "ሁሉም ጥሩ ነው!"
+
+#: 
+msgid "All events and attendance records"
+msgstr "ሁሉም ዝግጅቶችና የቀጠሮ መዝገቦች"
+
+#: 
+msgid "All financial data (pledges, payments, deposits)"
+msgstr "ሁሉም የፋይናንስ ውሂብ (ቃለ ምሎ፣ ክፍያዎች፣ ተቀማጭ)"
+
+#: 
+msgid "All groups, roles, and memberships"
+msgstr "ሁሉም ቡድኖች፣ ሚናዎችና አባልነቶች"
+
+#: 
+msgid "All people and family records"
+msgstr "ሁሉም ሰዎችና የቤተሰብ መዝገቦች"
+
+#: 
+msgid "All system settings and custom fields"
+msgstr "ሁሉም የስርዓት ቅንብሮችና ልዩ መስኮች"
+
+#: 
+msgid "All uploaded photos and documents"
+msgstr "ሁሉም የተጫኑ ፎቶዎችና ሰነዶች"
+
+#: 
+msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
+msgstr "የዝግጅት ዓይነት አብነት ነው — ስም፣ ነባሪ የጅምሪ ጊዜ፣ ድግግሞሽ፣ የቀጠሮ ቆጠራ ምድቦች። በምርጫ ከአንድ ክፍል ቡድን ጋር ተደርጎ ነባሪ ተደራሲ ሊሆን ይችላል።"
+
+#: 
+msgid "Attendance record deleted."
+msgstr "የቀጠሮ መዝገብ ተሰርዟል።"
+
+#: 
+msgid "Audit"
+msgstr "ኦዲት"
+
+#: 
+msgid "Audit Events"
+msgstr "የኦዲት ዝግጅቶች"
+
+#: 
+msgid "Auto-totalled from counts at right"
+msgstr "ከቀኝ ቆጠራዎች ራሱ ድምር"
+
+#: 
+msgid "Back to Events"
+msgstr "ወደ ዝግጅቶች ተመለስ"
+
+#: 
+msgid "Back to Events Dashboard"
+msgstr "ወደ ዝግጅቶች ዳሽቦርድ ተመለስ"
+
+#: 
+msgid "Backup failed. You can still proceed with the reset, but your data will be lost."
+msgstr "መጠባበቂያ አልተሳካም። አሁንም ዳግም ማስጀመሩን መቀጠል ይችላሉ፣ ግን ውሂብዎ ይጠፋል።"
+
+#: 
+msgid "Backup ready!"
+msgstr "መጠባበቂያ ዝግጁ ነው!"
+
+#: 
+msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
+msgstr "ዳግም ከማስጀመርዎ በፊት የአሁኑን ውሂብዎ ማስቀመጫ ማውረድ እጅግ እንመክርዎታለን። ይህ ብቸኛ ዕድልዎ ነው።"
+
+#: 
+msgid "Bulk-create a series of recurring events"
+msgstr "ተደጋጋሚ ዝግጅቶች ተከታታይ በጅምላ ፍጠር"
+
+#: 
+msgid "By"
+msgstr "በ"
+
+#: 
+msgid "Cannot check in to an inactive event. Activate the event first."
+msgstr "ወደ ንቁ ያልሆነ ዝግጅት ማስመዝገብ አይቻልም። መጀመሪያ ዝግጅቱን አንቃ።"
+
+#: 
+msgid "Change"
+msgstr "ቀይር"
+
+#: 
+msgid "Check In All"
+msgstr "ሁሉንም ምዝገብ"
+
+#: 
+msgid "Check In Family"
+msgstr "ቤተሰብን ምዝገብ"
+
+#: 
+msgid "Check Out All"
+msgstr "ሁሉንም አስወጣ"
+
+#: 
+msgid "Check in all %d family members to a single event."
+msgstr "ሁሉም %d የቤተሰብ አባላትን ወደ አንድ ዝግጅት ምዝገብ።"
+
+#: 
+msgid "Check out"
+msgstr "ወጣ"
+
+#: 
+msgid "Check-in By"
+msgstr "ያስመዘገበ"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "ምዝገባ አልተሳካም። እባክዎ እንደገና ሞክሩ።"
+
+#: 
+msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
+msgstr "ምዝገባ ለንቁ ያልሆኑ ዝግጅቶች ተሰናክሏል። ምዝገባን ለማንቃት ዝግጅቱን ከዝግጅቶች ዳሽቦርድ አንቃ።"
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "መውጣት አልተሳካም። እባክዎ እንደገና ሞክሩ።"
+
+#: 
+msgid "Checked in to event: %s"
+msgstr "ወደ ዝግጅቱ ተመዝግቧል: %s"
+
+#: 
+msgid "Checked out from event: %s"
+msgstr "ከዝግጅቱ ወጥቷል: %s"
+
+#: 
+msgid "Close All Stuck Events"
+msgstr "ሁሉንም የቆሙ ዝግጅቶች ዝጋ"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "መውጣት አረጋግጥ"
+
+#: 
+msgid "Create Repeat Events"
+msgstr "ተደጋጋሚ ዝግጅቶች ፍጠር"
+
+#: 
+msgid "Create Today's Event"
+msgstr "የዛሬ ዝግጅት ፍጠር"
+
+#: 
+msgid "Create a new event type with recurrence and attendance settings"
+msgstr "ከድግግሞሽና ቀጠሮ ቅንብሮች ጋር አዲስ የዝግጅት ዓይነት ፍጠር"
+
+#: 
+msgid "Create one now"
+msgstr "አሁን አንዱን ፍጠር"
+
+#: 
+msgid "Create today's class event and link it to this class for kiosk check-in"
+msgstr "የዛሬ ክፍል ዝግጅት ፍጠርና ለኪዮስክ ምዝገባ ከዚህ ክፍል ጋር ያስሩ"
+
+#: 
+msgid "Creating backup..."
+msgstr "መጠባበቂያ እየተፈጠረ..."
+
+#: 
+msgid "Creating..."
+msgstr "እየተፈጠረ..."
+
+#: 
+msgid "Database + uploaded photos (larger)"
+msgstr "ዳታቤዝ + የተጫኑ ፎቶዎች (ትልቅ)"
+
+#: 
+msgid "Database dump only (.sql)"
+msgstr "ዳታቤዝ ብቻ (.sql)"
+
+#: 
+msgid "Date Range"
+msgstr "የቀን ክልል"
+
+#: 
+msgid "Date range cannot exceed 1 year"
+msgstr "የቀን ክልል ከ1 ዓመት መብለጥ አይችልም"
+
+#: 
+msgid "Deactivate"
+msgstr "አስቆም"
+
+#: 
+msgid "Delete Event Type"
+msgstr "የዝግጅት ዓይነት ሰርዝ"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "የቀጠሮ መዝገብ ይሰረዝ?"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "ምዝገባ መዝገብ ሰርዝ ለ"
+
+#: 
+msgid "Delete this event?"
+msgstr "ይህ ዝግጅት ይሰረዝ?"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "ዝግጅቱን ማጥፋት ሁሉም የቀጠሮ ቆጠራዎችን ያጠፋል። ይህ መልስ ሊሰጠው አይችልም።"
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "ይህን የዝግጅት ዓይነት ማጥፋት ያሉ ዝግጅቶችን አይሰርዛቸውም። እርግጠኛ ነዎት?"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "ይህን ዝግጅት ማጥፋት ሁሉም የቀጠሮ መዝገቦችን ያጠፋል። ይህ መልስ ሊሰጠው አይችልም።"
+
+#: 
+msgid "Destructive Operation"
+msgstr "አጥፊ ተግባር"
+
+#: 
+msgid "Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field."
+msgstr "ምድብ ስም ቀይርና አስቀምጥ ጫን፣ ወይም ለማስወገድ ቆሻሻ ምልክቱን ተጠቀም። አዲስ ረድፎች ከታቹ መስክ ተጨምሮ ይጨምራሉ።"
+
+#: 
+msgid "End Time"
+msgstr "ማብቂያ ጊዜ"
+
+#: 
+msgid "End time must be after start time."
+msgstr "ማብቂያ ጊዜ ከጅምሪ ጊዜ በኋላ መሆን አለበት።"
+
+#: 
+msgid "Ended"
+msgstr "ተጠናቋል"
+
+#: 
+msgid "Ends"
+msgstr "ያበቃል"
+
+#: 
+msgid "Event Audit"
+msgstr "የዝግጅት ኦዲት"
+
+#: 
+msgid "Event Check-in"
+msgstr "የዝግጅት ምዝገባ"
+
+#: 
+msgid "Event Details"
+msgstr "የዝግጅት ዝርዝር"
+
+#: 
+msgid "Event Template"
+msgstr "የዝግጅት አብነት"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "ዝግጅቱ አስቀድሞ አለ። ወደ ምዝገባ እየተዛወረ..."
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "ዝግጅቱ ተፈጥሯል። ወደ ምዝገባ እየተዛወረ..."
+
+#: 
+msgid "Event end date/time must be on or after the start date/time."
+msgstr "የዝግጅቱ ማብቂያ ቀን/ጊዜ ከጅምሪ ቀን/ጊዜ በኋላ ወይም ተመሳሳይ መሆን አለበት።"
+
+#: 
+msgid "Event title is required."
+msgstr "የዝግጅቱ ርዕስ ያስፈልጋል።"
+
+#: 
+msgid "Event type ID is required"
+msgstr "የዝግጅት ዓይነት መለያ ያስፈልጋል"
+
+#: 
+msgid "Event type ID or group ID is required"
+msgstr "የዝግጅት ዓይነት መለያ ወይም የቡድን መለያ ያስፈልጋል"
+
+#: 
+msgid "Event type has no date configured for yearly recurrence"
+msgstr "የዝግጅት ዓይነቱ ለዓመታዊ ድግግሞሽ ቀን አልተቀናጀም"
+
+#: 
+msgid "Event type has no day-of-week configured for weekly recurrence"
+msgstr "የዝግጅት ዓይነቱ ለሳምንታዊ ድግግሞሽ የሳምንት ቀን አልተቀናጀም"
+
+#: 
+msgid "Event type has no recurrence pattern configured"
+msgstr "የዝግጅት ዓይነቱ ምንም የድግግሞሽ ቅርጸ አልተቀናጀም"
+
+#: 
+msgid "Event type has no valid day-of-month configured for monthly recurrence"
+msgstr "የዝግጅት ዓይነቱ ለወርሃዊ ድግግሞሽ ትክክለኛ የወሩ ቀን አልተቀናጀም"
+
+#: 
+msgid "Events will be created for every matching occurrence within this date range."
+msgstr "በዚህ የቀን ክልል ውስጥ ለሚዛመዱ ሁሉ ዝግጅቶች ይፈጠራሉ።"
+
+#: 
+msgid "Every month on the"
+msgstr "በሁሉ ወር ቁጥር"
+
+#: 
+msgid "Every week on"
+msgstr "ሁሉ ሳምንት"
+
+#: 
+msgid "Every year on"
+msgstr "ሁሉ ዓመት"
+
+#: 
+msgid "Everyone is checked in!"
+msgstr "ሁሉም ተመዝግቧል!"
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "ክፍልን መፍጠር አልተሳካም። እባክዎ እንደገና ሞክሩ።"
+
+#: 
+msgid "Failed to create event."
+msgstr "ዝግጅቱን መፍጠር አልተሳካም።"
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "ዝግጅቱን መፍጠር አልተሳካም። እባክዎ እንደገና ሞክሩ።"
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "ማጥፋት አልተሳካም። እባክዎ እንደገና ሞክሩ።"
+
+#: 
+msgid "Fastest workflow:"
+msgstr "ፈጣኑ አሠራር:"
+
+#: 
+msgid "Find past events that are still active or have un-checked-out attendees"
+msgstr "አሁንም ንቁ ወይም ያልወጡ ተሳታፊዎች ያሏቸው ያለፉ ዝግጅቶች ፈልግ"
+
+#: 
+msgid "Format: MM-DD (e.g. 04-12 for April 12)"
+msgstr "ቅርጸ: ወር-ቀን (ለምሳሌ 04-12 ለሚያዝያ 12)"
+
+#: 
+msgid "Group Roster"
+msgstr "የቡድን ዝርዝር"
+
+#: 
+msgid "Hide Advanced Options"
+msgstr "የተዋቀሩ አማራጮችን ደብቅ"
+
+#: 
+msgid "How Sunday School + Events + Kiosks fit together"
+msgstr "ሰንበት ትምህርት ቤት + ዝግጅቶች + ኪዮስኮች እንዴት አብረው ይሰሩ"
+
+#: 
+msgid "Invalid date for %s — expected YYYY-MM-DD"
+msgstr "ለ %s ወቅታዊ ቀን አይደለም — ሚጠበቀው YYYY-MM-DD"
+
+#: 
+msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr "ለ rangeStart ወይም rangeEnd የቀን ቅርጸ ትክክለኛ አይደለም"
+
+#: 
+msgid "Invalid date format."
+msgstr "ትክክለኛ ያልሆነ የቀን ቅርጸ።"
+
+#: 
+msgid "Invalid date; expected format YYYY-MM-DD"
+msgstr "ትክክለኛ ያልሆነ ቀን; ሚጠበቀው ቅርጸ YYYY-MM-DD"
+
+#: 
+msgid "Invalid event type ID"
+msgstr "ትክክለኛ ያልሆነ የዝግጅት ዓይነት መለያ"
+
+#: 
+msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
+msgstr "ትክክለኛ ያልሆነ ዓመታዊ ድግግሞሽ ቅርጸ; ሚጠበቀው MM-DD (ለምሳሌ 04-12)"
+
+#: 
+msgid "Just now"
+msgstr "አሁን"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "ተቆጣጣሪ ሳይመዘገብ ለመውጣት ባዶ ያቆዩ።"
+
+#: 
+msgid "Link events to a group for Kiosk check-in functionality."
+msgstr "ዝግጅቶችን ለኪዮስክ ምዝገባ ተግባር ከቡድን ጋር አስሩ።"
+
+#: 
+msgid "Linked Groups"
+msgstr "የተያያዙ ቡድኖች"
+
+#: 
+msgid "Looking for stuck events..."
+msgstr "የቆሙ ዝግጅቶችን እየፈለጉ..."
+
+#: 
+msgid "Manage event names, recurrence patterns, and attendance counts"
+msgstr "የዝግጅት ስሞችን፣ የድግግሞሽ ቅርጾችን፣ እና የቀጠሮ ቆጠራዎችን አስተዳድር"
+
+#: 
+msgid "Missing required field: %s"
+msgstr "የሚጠለቅ መስክ ጎደለ: %s"
+
+#: 
+msgid "No Events Today"
+msgstr "ዛሬ ዝግጅቶች የሉም"
+
+#: 
+msgid "No Group"
+msgstr "ቡድን የለም"
+
+#: 
+msgid "No active assignment"
+msgstr "ምንም ንቁ ምደባ የለም"
+
+#: 
+msgid "No active events found."
+msgstr "ምንም ንቁ ዝግጅቶች አልተገኙም።"
+
+#: 
+msgid "No attendance count categories defined for this event type yet."
+msgstr "ለዚህ የዝግጅት ዓይነት ምንም የቀጠሮ ቆጠራ ምድቦች ገና አልተወሰኑም።"
+
+#: 
+msgid "No one has been checked in to this event yet."
+msgstr "ወደዚህ ዝግጅት ምንም ሰው ገና አልተመዘገበም።"
+
+#: 
+msgid "No past events are still marked Active."
+msgstr "ምንም ያለፉ ዝግጅቶች አሁንም ንቁ ምልክት ያላቸው የሉም።"
+
+#: 
+msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr "ክፍልን ክፈት → \"የዛሬ ዝግጅት ፍጠር\" የሚለውን ጫን — ዝግጅቱ ተፈጥሮ ወዲያው ከክፍሉ ጋር ይያያዛል፣ ከዚያ ለኪዮስክ ወይም ያልተቀደሙ ምዝገባ ዝግጁ ወደ ምዝገባ ገጽ ይደርሳሉ።"
+
+#: 
+msgid "Optional Settings"
+msgstr "አማራጭ ቅንብሮች"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "አማራጭ — ይህን ሰው የሚያስወጣ ማን እንደሆነ ምዝገብ (ለምሳሌ ልጁን/ሷን ሊወስድ/ልትወስደው የመጣ/ች ወላጅ)።"
+
+#: 
+msgid "Person checked out."
+msgstr "ሰው ወጥቷል።"
+
+#: 
+msgid "Person is not checked in"
+msgstr "ሰው አልተመዘገበም"
+
+#: 
+msgid "Person not in active class roster"
+msgstr "ሰው በንቁ ክፍል ዝርዝር ውስጥ የለም"
+
+#: 
+msgid "Pin to Calendars"
+msgstr "ወደ ቀን አቆጣጠሮች አስቀምጥ"
+
+#: 
+msgid "Please select a person to check in."
+msgstr "እባክዎ ለምዝገባ ሰው ይምረጡ።"
+
+#: 
+msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
+msgstr "ከዚህ የዝግጅት ዓይነት መሠረት አስቀድሞ ተሞልቷል — ለድጋፋዊ ዓይነቶች ቀኑ ከዚህ ዓይነት የመጨረሻ ዝግጅት በኋላ ቀጣዩ ክስተት ነው፣ ጊዜውም ከዓይነቱ ነባሪ ጅምሪ ጊዜ ጋር ይዛመዳል።"
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "የክልሉ ማብቂያ ቀን ከጅምሪ ቀን በኋላ ወይም ተመሳሳይ መሆን አለበት።"
+
+#: 
+msgid "Range end must be a valid YYYY-MM-DD date."
+msgstr "የክልሉ ማብቂያ ትክክለኛ YYYY-MM-DD ቀን መሆን አለበት።"
+
+#: 
+msgid "Range start must be a valid YYYY-MM-DD date."
+msgstr "የክልሉ ጅምሪ ትክክለኛ YYYY-MM-DD ቀን መሆን አለበት።"
+
+#: 
+msgid "Range start must be before range end"
+msgstr "የክልሉ ጅምሪ ከክልሉ ማብቂያ በፊት መሆን አለበት"
+
+#: 
+msgid "Range start must be before range end."
+msgstr "የክልሉ ጅምሪ ከክልሉ ማብቂያ በፊት መሆን አለበት።"
+
+#: 
+msgid "RangeEnd must be on or after RangeStart"
+msgstr "RangeEnd ከ RangeStart በኋላ ወይም ተመሳሳይ መሆን አለበት"
+
+#: 
+msgid "Recommended"
+msgstr "የሚመከር"
+
+#: 
+msgid "Required for Kiosk"
+msgstr "ለኪዮስክ ያስፈልጋል"
+
+#: 
+msgid "Resetting will permanently delete:"
+msgstr "ዳግም ማስጀመር በቋሚነት ያጠፋል:"
+
+#: 
+msgid "SQL Only"
+msgstr "SQL ብቻ"
+
+#: 
+msgid "Save Time"
+msgstr "ጊዜ ቆጥብ"
+
+#: 
+msgid "Save changes to this category name"
+msgstr "ለዚህ ምድብ ስም ለውጦቹን አስቀምጥ"
+
+#: 
+msgid "Select an event type…"
+msgstr "የዝግጅት ዓይነት ምረጥ…"
+
+#: 
+msgid "Select start and end date/time."
+msgstr "ጅምሪና ማብቂያ ቀን/ጊዜ ምረጥ።"
+
+#: 
+msgid "Show More Options"
+msgstr "ተጨማሪ አማራጮችን አሳይ"
+
+#: 
+msgid "Skip"
+msgstr "ዝለል"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "ዝለልና ወጣ"
+
+#: 
+msgid "Start Check-in"
+msgstr "ምዝገባ ጀምር"
+
+#: 
+msgid "Starts"
+msgstr "ይጀምራል"
+
+#: 
+msgid "Step 1: Create a Backup"
+msgstr "ደረጃ 1: መጠባበቂያ ፍጠር"
+
+#: 
+msgid "Step 2: Reset Database"
+msgstr "ደረጃ 2: ዳታቤዝ ዳግም አስጀምር"
+
+#: 
+msgid "Still Checked In"
+msgstr "አሁንም ተመዝግቦ"
+
+#: 
+msgid "Stuck Events"
+msgstr "የቆሙ ዝግጅቶች"
+
+#: 
+msgid "Take Attendance"
+msgstr "ቀጠሮ ያዝ"
+
+#: 
+msgid "The Events module is disabled"
+msgstr "የዝግጅቶች ሞዱል ተሰናክሏል"
+
+#: 
+msgid "The same start and end time will be used for all generated events."
+msgstr "ለሁሉም የተፈጠሩ ዝግጅቶች ተመሳሳይ ጅምሪ እና ማብቂያ ጊዜ ይጠቀማሉ።"
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "ለዛሬ ምንም ዝግጅቶች አልተቀለሱም"
+
+#: 
+msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
+msgstr "እነዚህ የቆጠራ ምድቦች ናቸው — በጎ ፈቃደኞች ዝግጅቱ ካለቀ በኋላ ይሞሉዋቸዋል ዳሽቦርዱ ቀጠሮን ሊከፋፍለው ይችል ዘንድ (ለምሳሌ ስንት አባላት vs. ጎብኚዎች)። ከምዝገባ ገጽ የግለሰቦች ምዝገባ ምልክቶች ይለያዩ።"
+
+#: 
+msgid "This event is inactive."
+msgstr "ይህ ዝግጅት ንቁ አይደለም።"
+
+#: 
+msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr "ይህ ገጽ በ ChurchCRM ዳታቤዝ ውስጥ ሁሉም ውሂብ በቋሚነት እንዲጠፋ ያስችልዎታል። ይህ ተግባር መልስ ሊሰጠው አይችልም።"
+
+#: 
+msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
+msgstr "ይህ ሪፖርት ማብቂያ ቀናቸው ያለፋቸው ግን አሁንም ንቁ ምልክት ያላቸው ሁሉም ዝግጅቶችን ይዘርዝራል። የተለመዱ ምክንያቶች: አንድ በጎ ፈቃደኛ 'ወጣ' ለማጫን ረሳ፣ ኪዮስክ ግንኙነቱ ተቋረጠ፣ ወይም ዝግጅቱ ተፈጥሮ ተትቷል። ሂደቱ ምንጊዜም ያልሰናከሉ ያረጁ ዝግጅቶች (ዓመታት ያለፋቸው) እዚህ ይታያሉ። 'አሁንም ተመዝግቦ' አምድ ምዝገባ ሒደት ውስጥ ያለ ሰው ምልክት ያሳያል። ዝግጅቱን ከዚህ ሪፖርት ከዘጋ (አሁን ያለውን ጊዜ ተጠቅሞ) ሁሉም ያወጣቸዋል እና ዝግጅቱን ንቁ ያልሆነ ምልክት ያደርጋል።"
+
+#: 
+msgid "This title will be used for all generated events."
+msgstr "ይህ ርዕስ ለሁሉም ለተፈጠሩ ዝግጅቶች ይጠቀማል።"
+
+#: 
+msgid "Today's Events"
+msgstr "የዛሬ ዝግጅቶች"
+
+#: 
+msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
+msgstr "ብዙ ክስተቶች (%d) — የቀን ክልሉን ጥብ አድርግ። ከፍተኛው ፈቅዶ: %d"
+
+#: 
+msgid "Type RESET to confirm"
+msgstr "ለማረጋገጥ RESET ብሎ ጻፍ"
+
+#: 
+msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
+msgstr "የዛሬ ዝግጅት ለመፍጠር ከላይ ያለውን ቁልፍ ተጠቀም። ኪዮስክ ዝርዝሩን ሊጎትት ወደዚህ ክፍል ራሱ ይያያዛል።"
+
+#: 
+msgid "Use this form to bulk-create a series of recurring events. Each event is created individually and can be edited or deleted independently after creation."
+msgstr "ተደጋጋሚ ዝግጅቶች ተከታታይ ለመፍጠር ይህን ቅጽ ተጠቀም። ዝግጅቱ እያንዳንዱ ብቻ ብቻ ተፈጥሮ ከፈጠረ በኋላ ለብቻ ሊቀየር ወይም ሊሰረዝ ይችላል።"
+
+#: 
+msgid "Used as the default start time when creating events of this type."
+msgstr "ከዚህ ዓይነት ዝግጅቶች ሲፈጠሩ ነባሪ ጅምሪ ጊዜ ሆኖ ያገለግላል።"
+
+#: 
+msgid "User must have Add Event permission and the Events module must be enabled"
+msgstr "ተጠቃሚው ዝግጅት ማከል ፈቃድ ሊኖረው ይገባል እና የዝግጅቶች ሞዱል ንቁ መሆን አለበት"
+
+#: 
+msgid "Valid startDate and endDate are required"
+msgstr "ትክክለኛ startDate እና endDate ያስፈልጋሉ"
+
+#: 
+msgid "View Event"
+msgstr "ዝግጅት ይመልከቱ"
+
+#: 
+msgid "What are these for?"
+msgstr "እነዚህ ለምን ናቸው?"
+
+#: 
+msgid "What does this find?"
+msgstr "ይህ ምን ያግኛል?"
+
+#: 
+msgid "What is this for?"
+msgstr "ይህ ለምን ነው?"
+
+#: 
+msgid "Who is bringing them in?"
+msgstr "ማን ያስገባቸዋል?"
+
+#: 
+msgid "You must select a valid recurrence pattern."
+msgstr "ትክክለኛ የድግግሞሽ ቅርጸ መምረጥ አለቦት።"
+
+#: 
+msgid "You must select an event type."
+msgstr "የዝግጅት ዓይነት መምረጥ አለቦት።"
+
+#: 
+msgid "You must specify a date range."
+msgstr "የቀን ክልል መወሰን አለቦት።"
+
+#: 
+msgid "checked in"
+msgstr "ተመዝግቧል"
+
+#: 
+msgid "e.g., Sunday Worship Service"
+msgstr "ለምሳሌ፡ የሰንበት አምልኮ አገልግሎት"
+
+#: 
+msgid "endDate must be after startDate"
+msgstr "endDate ከ startDate በኋላ መሆን አለበት"
+
+#: 
+msgid "eventIds must be a non-empty array"
+msgstr "eventIds ባዶ ያልሆነ ድርድር መሆን አለበት"
+
+#: 
+msgid "invalid recurrence type"
+msgstr "ትክክለኛ ያልሆነ ድግግሞሽ ዓይነት"
+
+#: 
+msgid "personIds must be a non-empty array"
+msgstr "personIds ባዶ ያልሆነ ድርድር መሆን አለበት"
+
+#: 
+msgid "to enable the reset button"
+msgstr "ዳግም ማስጀምሪ ቁልፍን ለማንቃት"
+
+#: 
+msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
+msgstr "ካርታ እዚህ ይታያል አንዴ መጋጠሚያዎቹ ሲቀመጡ — ከአድራሻዎ ራሱ ወይም ከላይ ጊዜ ሰጥተው ሲያስገቡ።"
+
+#: 
+msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr "ኬክሮስና ኬንትሮስ ሁለቱም አብረው መሰጠት አለባቸው (ወይም ሁለቱም ለራሱ ኮዲንግ ባዶ ቢቀሩ)።"
+
+#: 
+msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr "የቤተ ክርስቲያን መረጃ ተቀምጧል፣ ግን አድራሻው ራሱ ሊገኝ አልቻለም። እባክዎ ኬክሮስ እና ኬንትሮስ ከካርታ መጋጠሚያዎች ስር ጊዜ ሰጥተው ያስገቡ።"
+
+#: 
+msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
+msgstr "መጋጠሚያዎቹ ሲቀመጡ ከአድራሻዎ ራሱ ይወሰናሉ (በ OpenStreetMap አማካኝነት)። ከዚህ ስር ጊዜ ሰጥተው ማስገባትም ይችላሉ — ጊዜ ሰጥቶ ያስገቡ ዋጋዎች ሁሌ ቅድሚያ ይሰጣቸዋል። ስርዓቱ ከአድራሻ ጂኦኮድ እንዲያደርግ ሁለቱንም ባዶ ያቆዩ።"
+
+#: 
+msgid "Latitude must be a number between -90 and 90."
+msgstr "ኬክሮስ ከ-90 እስከ 90 ያለ ቁጥር መሆን አለበት።"
+
+#: 
+msgid "Longitude must be a number between -180 and 180."
+msgstr "ኬንትሮስ ከ-180 እስከ 180 ያለ ቁጥር መሆን አለበት።"
+
+#: 
+msgid "Map Coordinates"
+msgstr "የካርታ መጋጠሚያዎች"
+
+#: 
+msgid "Please select a group."
+msgstr "እባክዎ ቡድን ይምረጡ።"
+
+#: 
+msgid "Please select a role."
+msgstr "እባክዎ ሚና ይምረጡ።"
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "እባክዎ ቡድን እና ሚና ሁለቱንም ይምረጡ።"
+
+#: 
+msgid "Range: -180 to 180."
+msgstr "ክልል: -180 እስከ 180።"
+
+#: 
+msgid "Range: -90 to 90."
+msgstr "ክልል: -90 እስከ 90።"
+
+#: 
+msgid "mo"
+msgstr "ወር"
+
+#: 
+msgid "mos"
+msgstr "ወሮች"
+
+#: 
+msgid "yr"
+msgstr "ዓ."
+
+#: 
+msgid "yrs"
+msgstr "ዓ.ም"
 
