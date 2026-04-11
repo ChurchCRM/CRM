@@ -3752,6 +3752,8 @@ paths:
           description: 'Updated membership object'
         '403':
           description: 'ManageGroupRole role required'
+        '404':
+          description: 'Membership not found'
       security:
         -
           ApiKeyAuth: []
@@ -3791,6 +3793,8 @@ paths:
           description: 'Role updated successfully'
         '403':
           description: 'ManageGroupRole role required'
+        '404':
+          description: 'Group role not found'
         '500':
           description: 'Failed to update role'
       security:
@@ -4740,29 +4744,6 @@ paths:
                 properties:
                   issueBody: { type: string }
                 type: object
-      security:
-        -
-          ApiKeyAuth: []
-  /locale/database/terms:
-    get:
-      tags:
-        - System
-      summary: 'Get all translatable terms stored in the database (Admin role required)'
-      description: 'Returns distinct tooltip strings, query parameter options, report names/descriptions, and query parameter names/descriptions for i18n extraction.'
-      operationId: 039f967a16c76a56ac2a2042f40158be
-      responses:
-        '200':
-          description: 'Array of translatable term strings'
-          content:
-            application/json:
-              schema:
-                properties:
-                  terms: { type: array, items: { type: string } }
-                type: object
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'Admin role required'
       security:
         -
           ApiKeyAuth: []
