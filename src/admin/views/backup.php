@@ -55,7 +55,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="ti ti-database me-2"></i><?= gettext('Create Backup') ?></h3>
     </div>
-    <form method="post" action="<?= SystemURLs::getRootPath() ?>/api/database/backup" id="BackupDatabase">
+    <form method="post" action="<?= SystemURLs::getRootPath() ?>/admin/api/database/backup" id="BackupDatabase">
         <div class="card-body">
             <!-- Backup Type Selection -->
             <div class="mb-3">

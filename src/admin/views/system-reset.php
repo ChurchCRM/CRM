@@ -157,7 +157,7 @@ $(document).ready(function () {
             $("#backupComplete, #backupError").addClass("d-none");
             $("#doBackup").prop("disabled", true);
 
-            window.CRM.APIRequest({
+            window.CRM.AdminAPIRequest({
                 method: "POST",
                 path: "database/backup",
                 data: JSON.stringify({ BackupType: type })
@@ -181,7 +181,7 @@ $(document).ready(function () {
 
         $("#downloadBackup").on("click", function () {
             var filename = $(this).data("filename");
-            window.location = window.CRM.root + "/api/database/download/" + filename;
+            window.location = window.CRM.root + "/admin/api/database/download/" + filename;
             $(this).prop("disabled", true).removeClass("btn-success").addClass("btn-secondary");
             $("#backupCompleteMessage").text(i18next.t("Backup downloaded."));
         });

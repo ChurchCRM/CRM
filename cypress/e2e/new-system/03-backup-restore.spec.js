@@ -63,7 +63,7 @@ describe('03 - Backup and Restore', () => {
             // Create backup via API
             cy.request({
                 method: 'POST',
-                url: '/api/database/backup',
+                url: '/admin/api/database/backup',
                 body: { BackupType: 2 }, // 2 = SQL only
                 timeout: 60000
             }).then((response) => {
@@ -77,7 +77,7 @@ describe('03 - Backup and Restore', () => {
                 // Verify download endpoint works
                 cy.request({
                     method: 'GET',
-                    url: '/api/database/download/' + backupFile,
+                    url: '/admin/api/database/download/' + backupFile,
                     encoding: 'binary',
                     timeout: 30000
                 }).then((downloadResponse) => {
@@ -217,7 +217,7 @@ describe('03 - Backup and Restore', () => {
             // Create a fresh backup to test restore
             cy.request({
                 method: 'POST',
-                url: '/api/database/backup',
+                url: '/admin/api/database/backup',
                 body: { BackupType: 2 },
                 timeout: 60000
             }).then((response) => {
@@ -242,7 +242,7 @@ describe('03 - Backup and Restore', () => {
             // Verify we can download the backup we created
             cy.request({
                 method: 'GET',
-                url: '/api/database/download/' + savedBackup,
+                url: '/admin/api/database/download/' + savedBackup,
                 encoding: 'binary',
             }).then((downloadResponse) => {
                 expect(downloadResponse.status).to.equal(200);
