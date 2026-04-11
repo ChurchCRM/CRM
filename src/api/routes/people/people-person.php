@@ -8,6 +8,7 @@ use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\ViewRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -232,7 +233,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         Cart::addPerson($args['personId']);
         return SlimUtils::renderSuccessJSON($response);
     });
-})->add(new PersonMiddleware());
+})->add(new PersonMiddleware())->add(new ViewRecordsRoleAuthMiddleware());
 
 /**
  * @OA\Post(
