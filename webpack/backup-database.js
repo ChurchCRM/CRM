@@ -58,7 +58,7 @@ function doBackup(isRemote) {
   setStatus("running");
   $("#resultFiles").empty();
 
-  window.CRM.APIRequest({
+  window.CRM.AdminAPIRequest({
     method: "POST",
     path: endpointURL,
     data: JSON.stringify(formData),
@@ -89,7 +89,7 @@ function doBackup(isRemote) {
  * @param {string} filename - The backup filename to download
  */
 function downloadBackup(filename) {
-  window.location = window.CRM.root + "/api/database/download/" + filename;
+  window.location = `${window.CRM.root}/admin/api/database/download/${filename}`;
   $("#statusCompleteMessage").text(i18next.t("Backup downloaded. Server copy removed."));
   $("#downloadbutton").prop("disabled", true).removeClass("btn-success").addClass("btn-secondary");
 }

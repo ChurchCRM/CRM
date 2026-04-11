@@ -116,7 +116,7 @@ function handleRestoreSubmit($form) {
 
   // Validate file size if browser supports FileReader
   if (window.FileReader && file.size > window.CRM.maxUploadSizeBytes) {
-    window.CRM.DisplayErrorMessage("/api/database/restore", {
+    window.CRM.DisplayErrorMessage("/admin/api/database/restore", {
       message:
         i18next.t("The selected file exceeds this servers maximum upload size of") + ": " + window.CRM.maxUploadSize,
     });
@@ -127,7 +127,7 @@ function handleRestoreSubmit($form) {
   setRestoreStatus("running");
 
   $.ajax({
-    url: window.CRM.root + "/api/database/restore",
+    url: `${window.CRM.root}/admin/api/database/restore`,
     type: "POST",
     data: formData,
     cache: false,
