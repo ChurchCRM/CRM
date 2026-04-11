@@ -48,7 +48,7 @@ $app->post('/issues', function (Request $request, Response $response, array $arg
         'PHP Version | ' . phpversion() . "\r\n" .
         'SQL Version | ' . SystemService::getDBServerVersion() . "\r\n" .
         'ChurchCRM Version |' . ($_SESSION['sSoftwareInstalledVersion'] ?? 'unknown') . "\r\n" .
-        'Reporting Browser |' . $_SERVER['HTTP_USER_AGENT'] . "\r\n" .
+        'Reporting Browser |' . ($_SERVER['HTTP_USER_AGENT'] ?? 'API') . "\r\n" .
         'Prerequisite Status |' . SystemService::getPrerequisiteStatus() . "\r\n";
 
     return SlimUtils::renderJSON($response, ['issueBody' => $issueDescription]);
