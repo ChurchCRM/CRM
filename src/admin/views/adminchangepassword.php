@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\CSRFUtils;
+use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
@@ -13,7 +14,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card-body text-center">
                 <i class="fa-solid fa-check-circle fa-3x text-success mb-3"></i>
                 <h3><?= gettext('Password Change Successful') ?></h3>
-                <p><?= gettext('Password successfully changed for') ?>: <?= $user->getFullName() ?></p>
+                <p><?= gettext('Password successfully changed for') ?>: <?= InputUtils::escapeHTML($user->getFullName()) ?></p>
                 <a href="<?= SystemURLs::getRootPath() ?>/admin/system/users" class="btn btn-primary mt-2">
                     <?= gettext('Back to Users') ?>
                 </a>
@@ -38,9 +39,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="mb-3">
                         <label for="NewPassword2"><?= gettext('Confirm New Password') ?>:</label>
                         <input type="password" name="NewPassword2" id="NewPassword2" class="form-control" value="">
-                        <?php if (!empty($sNewPasswordError)) : ?>
-                            <span class="form-field-error"><?= $sNewPasswordError ?></span>
-                        <?php endif; ?>
+                        <span id="NewPasswordError" class="form-field-error"><?= $sNewPasswordError ?? '' ?></span>
                     </div>
                 </div>
                 <div class="card-footer">

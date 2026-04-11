@@ -14,6 +14,7 @@ use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
 use ChurchCRM\Utils\GeoUtils;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\VersionUtils;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -567,7 +568,7 @@ function adminChangeUserPassword(Request $request, Response $response, array $ar
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
         'user' => $user,
-        'sPageTitle' => gettext('Change Password') . ': ' . $user->getFullName(),
+        'sPageTitle' => gettext('Change Password') . ': ' . InputUtils::escapeHTML($user->getFullName()),
         'aBreadcrumbs' => PageHeader::breadcrumbs([
             [gettext('Admin'), '/admin/'],
             [gettext('System Users'), '/admin/system/users'],

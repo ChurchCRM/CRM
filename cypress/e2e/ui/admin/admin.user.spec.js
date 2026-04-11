@@ -22,7 +22,8 @@ describe("Admin User Password", () => {
     it("Non-admin user denied access to change password page", () => {
         cy.setupStandardSession();
         cy.visit({ url: "admin/system/user/99/changePassword", failOnStatusCode: false });
-        // Admin app redirects non-admins — should not see the password form
+        // AdminRoleAuthMiddleware redirects non-admins to access-denied page
+        cy.url().should("include", "access-denied");
         cy.get("#NewPassword1").should("not.exist");
     });
 
