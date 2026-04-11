@@ -933,10 +933,13 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      * )
      */
     $group->post('/{groupID:[0-9]+}/userRole/{userID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
-        $groupID = $args['groupID'];
-        $userID = $args['userID'];
-        $roleID = $request->getParsedBody()['roleID'];
+        $groupID = (int) $args['groupID'];
+        $userID = (int) $args['userID'];
+        $roleID = (int) ($request->getParsedBody()['roleID'] ?? 0);
         $membership = Person2group2roleP2g2rQuery::create()->filterByGroupId($groupID)->filterByPersonId($userID)->findOne();
+        if ($membership === null) {
+            throw new \Exception(gettext('Membership not found'), 404);
+        }
         $membership->setRoleId($roleID);
         $membership->save();
         return SlimUtils::renderJSON($response, $membership->toArray());
@@ -963,17 +966,23 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      */
     $group->post('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         try {
-            $roleID = $args['roleID'];
+            $roleID = (int) $args['roleID'];
             $input = $request->getParsedBody();
             $group = $request->getAttribute('group');
             if (isset($input['groupRoleName'])) {
                 $groupRole = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();
+                if ($groupRole === null) {
+                    throw new \Exception(gettext('Group role not found'), 404);
+                }
                 $groupRole->setOptionName($input['groupRoleName']);
                 $groupRole->save();
 
                 return SlimUtils::renderJSON($response, $groupRole->toArray());
             } elseif (isset($input['groupRoleOrder'])) {
                 $groupRole = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();
+                if ($groupRole === null) {
+                    throw new \Exception(gettext('Group role not found'), 404);
+                }
                 $groupRole->setOptionSequence($input['groupRoleOrder']);
                 $groupRole->save();
 
@@ -1116,7 +1125,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $flag = $args['value'];
         if ($flag === 'true' || $flag === 'false') {
             $group = $request->getAttribute('group');
-            $group->setActive($flag);
+            $group->setActive(filter_var($flag, FILTER_VALIDATE_BOOLEAN));
             $group->save();
             return SlimUtils::renderSuccessJSON($response);
         } else {
@@ -1140,7 +1149,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $flag = $args['value'];
         if ($flag === 'true' || $flag === 'false') {
             $group = $request->getAttribute('group');
-            $group->setIncludeInEmailExport($flag);
+            $group->setIncludeInEmailExport(filter_var($flag, FILTER_VALIDATE_BOOLEAN));
             $group->save();
             return SlimUtils::renderSuccessJSON($response);
         } else {

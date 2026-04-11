@@ -27,7 +27,11 @@ class FinancialService
     public function deletePayment(string $groupKey): void
     {
         AuthService::requireUserGroupMembership('bFinance');
-        PledgeQuery::create()->findOneByGroupKey($groupKey)->delete();
+        $pledge = PledgeQuery::create()->findOneByGroupKey($groupKey);
+        if ($pledge === null) {
+            throw new \Exception('Payment not found', 404);
+        }
+        $pledge->delete();
     }
 
     public function getPayments(?string $depID = null): array
@@ -65,7 +69,7 @@ class FinancialService
             $newRow['PledgeOrPayment'] = $row->getPledgeOrPayment();
             $newRow['Date'] = $row->getDate('Y-m-d');
             $newRow['DateLastEdited'] = $row->getDateLastEdited('Y-m-d');
-            $newRow['EditedBy'] = $row->getPerson()->getFullName();
+            $newRow['EditedBy'] = $row->getPerson() ? $row->getPerson()->getFullName() : '';
             $newRow['Fund'] = $row->getPledgeName();
             $rows[] = $newRow;
         }
@@ -84,7 +88,7 @@ class FinancialService
         if (!$routeAndAccount) {
             throw new \Exception('error in locating family');
         }
-        $family = FamilyQuery::create()->findOneByScanCheck($routeAndAccount);
+        $family = FamilyQuery::create()->filterByScanCheck($routeAndAccount)->findOne();
         $iCheckNo = $micrObj->findCheckNo($tScanString);
 
         return [
@@ -108,8 +112,11 @@ class FinancialService
             $deposit->save();
             if ($depositClosed && ($depositType === 'CreditCard' || $depositType === 'BankDraft')) {
                 // Delete any failed transactions on this deposit slip now that it is closing
-                $q = 'DELETE FROM pledge_plg WHERE plg_depID = ' . $iDepositSlipID . ' AND plg_PledgeOrPayment="Payment" AND plg_aut_Cleared=0';
-                FunctionsUtils::runQuery($q);
+                PledgeQuery::create()
+                    ->filterByDepId((int) $iDepositSlipID)
+                    ->filterByPledgeOrPayment('Payment')
+                    ->filterByAutCleared(0)
+                    ->delete();
             }
         } else {
             $deposit = new Deposit();
@@ -129,14 +136,15 @@ class FinancialService
     public function getDepositTotal($id, $type = null)
     {
         AuthService::requireUserGroupMembership('bFinance');
-        $sqlClause = '';
+        $query = PledgeQuery::create()
+            ->filterByDepId((int) $id)
+            ->filterByPledgeOrPayment('Payment');
         if ($type) {
-            $sqlClause = "AND plg_method = '" . $type . "'";
+            $query->filterByMethod($type);
         }
-        // Get deposit total
-        $sSQL = "SELECT SUM(plg_amount) AS deposit_total FROM pledge_plg WHERE plg_depID = '$id' AND plg_PledgeOrPayment = 'Payment' " . $sqlClause;
-        $rsDepositTotal = FunctionsUtils::runQuery($sSQL);
-        [$deposit_total] = mysqli_fetch_row($rsDepositTotal);
+        $query->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'deposit_total')
+            ->select(['deposit_total']);
+        $deposit_total = $query->findOne();
 
         return $deposit_total;
     }
@@ -194,12 +202,11 @@ class FinancialService
     public function locateFamilyCheck(string $checkNumber, string $fam_ID)
     {
         AuthService::requireUserGroupMembership('bFinance');
-        $sSQL = 'SELECT count(plg_FamID) from pledge_plg
-                 WHERE plg_CheckNo = ' . $checkNumber . ' AND
-                 plg_FamID = ' . $fam_ID;
-        $rCount = FunctionsUtils::runQuery($sSQL);
 
-        return mysqli_fetch_array($rCount)[0];
+        return PledgeQuery::create()
+            ->filterByCheckNo($checkNumber)
+            ->filterByFamId((int) $fam_ID)
+            ->count();
     }
 
     public function validateChecks(object $payment): void
@@ -227,15 +234,16 @@ class FinancialService
         if (empty($payment->cashDenominations)) {
             return;
         }
+        global $cnInfoCentral;
         $currencyDenoms = json_decode($payment->cashDenominations, null, 512, JSON_THROW_ON_ERROR);
         foreach ($currencyDenoms as $cdom) {
             if (empty($payment->DepositID) || empty($cdom->currencyID) || empty($cdom->Count)) {
                 continue;
             }
+            $escapedGroupKey = mysqli_real_escape_string($cnInfoCentral, $groupKey);
             $sSQL = "INSERT INTO pledge_denominations_pdem (pdem_plg_GroupKey, plg_depID, pdem_denominationID, pdem_denominationQuantity)
-      VALUES ('" . $groupKey . "','" . $payment->DepositID . "','" . $cdom->currencyID . "','" . $cdom->Count . "')";
+      VALUES ('" . $escapedGroupKey . "','" . (int) $payment->DepositID . "','" . (int) $cdom->currencyID . "','" . (int) $cdom->Count . "')";
             FunctionsUtils::runQuery($sSQL);
-            unset($sSQL);
         }
     }
 
@@ -315,25 +323,24 @@ class FinancialService
     {
         AuthService::requireUserGroupMembership('bFinance');
         $total = 0;
-        $sSQL = 'SELECT plg_plgID, plg_FamID, plg_date, plg_fundID, plg_amount, plg_NonDeductible,plg_comment, plg_FYID, plg_method, plg_EditedBy from pledge_plg where plg_GroupKey="' . $GroupKey . '"';
-        $rsKeys = FunctionsUtils::runQuery($sSQL);
+        $pledges = PledgeQuery::create()->filterByGroupKey($GroupKey)->find();
         $payment = new \stdClass();
         $payment->funds = [];
-        while ($aRow = mysqli_fetch_array($rsKeys)) {
-            extract($aRow);
-            $family = FamilyQuery::create()->findOneById($plg_FamID);
-            $payment->Family = $family->getFamilyString();
-            $payment->Date = $plg_date;
-            $payment->FYID = $plg_FYID;
-            $payment->iMethod = $plg_method;
-            $fund['FundID'] = $plg_fundID;
-            $fund['Amount'] = $plg_amount;
-            $fund['NonDeductible'] = $plg_NonDeductible;
-            $fund['Comment'] = $plg_comment;
+        foreach ($pledges as $row) {
+            $family = FamilyQuery::create()->findOneById($row->getFamId());
+            $payment->Family = $family?->getFamilyString() ?? '';
+            $payment->Date = $row->getDate('Y-m-d');
+            $payment->FYID = $row->getFyId();
+            $payment->iMethod = $row->getMethod();
+            $fund = [];
+            $fund['FundID'] = $row->getFundId();
+            $fund['Amount'] = $row->getAmount();
+            $fund['NonDeductible'] = $row->getNondeductible();
+            $fund['Comment'] = $row->getComment();
             $payment->funds[] = $fund;
-            $total += $plg_amount;
-            $onePlgID = $aRow['plg_plgID'];
-            $oneFundID = $aRow['plg_fundID'];
+            $total += $row->getAmount();
+            $onePlgID = $row->getId();
+            $oneFundID = $row->getFundId();
             $iOriginalSelectedFund = $oneFundID; // remember the original fund in case we switch to splitting
             $fund2PlgIds[$oneFundID] = $onePlgID;
         }
@@ -378,10 +385,9 @@ class FinancialService
     public function getCurrencyTypeOnDeposit(string $currencyID, string $depositID)
     {
         // Get the list of Currency denominations
-        $sSQL = 'select sum(pdem_denominationQuantity) from pledge_denominations_pdem
-                 where  plg_depID = ' . $depositID . '
-                 AND
-                 pdem_denominationID = ' . $currencyID;
+        $sSQL = 'SELECT SUM(pdem_denominationQuantity) FROM pledge_denominations_pdem
+                 WHERE plg_depID = ' . (int) $depositID . '
+                 AND pdem_denominationID = ' . (int) $currencyID;
         $rscurrencyDenomination = FunctionsUtils::runQuery($sSQL);
 
         return mysqli_fetch_array($rscurrencyDenomination)[0];

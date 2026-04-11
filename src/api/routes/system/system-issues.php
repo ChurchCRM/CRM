@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -52,4 +53,4 @@ $app->post('/issues', function (Request $request, Response $response, array $arg
         'Prerequisite Status |' . SystemService::getPrerequisiteStatus() . "\r\n";
 
     return SlimUtils::renderJSON($response, ['issueBody' => $issueDescription]);
-});
+})->add(AdminRoleAuthMiddleware::class);

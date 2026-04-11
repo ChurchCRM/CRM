@@ -156,9 +156,11 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
 
         if (!empty($birthday)) {
             $birthdayDate = DateTime::createFromFormat('m/d/Y', $birthday);
-            $person->setBirthDay($birthdayDate->format('d'));
-            $person->setBirthMonth($birthdayDate->format('m'));
-            $person->setBirthYear($birthdayDate->format('Y'));
+            if ($birthdayDate !== false) {
+                $person->setBirthDay($birthdayDate->format('d'));
+                $person->setBirthMonth($birthdayDate->format('m'));
+                $person->setBirthYear($birthdayDate->format('Y'));
+            }
         }
 
         if (!$person->validate()) {
