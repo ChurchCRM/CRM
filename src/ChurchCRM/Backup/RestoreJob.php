@@ -129,27 +129,31 @@ class RestoreJob extends JobBase
         LoggerUtils::getAppLogger()->debug('Extracting ' . $this->RestoreFile . ' to ' . $extractDir);
         $phar->extractTo($extractDir);
         LoggerUtils::getAppLogger()->debug('Finished extraction');
-        $sqlFile = $extractDir . '/ChurchCRM-Database.sql';
-        if (file_exists($sqlFile)) {
-            $this->restoreSQLBackup($sqlFile);
 
-            // Security: Validate extracted images before copying to live webroot
-            $imagesDir = $extractDir . '/Images';
-            if (is_dir($imagesDir)) {
-                $this->validateExtractedImages($imagesDir);
+        try {
+            $sqlFile = $extractDir . '/ChurchCRM-Database.sql';
+            if (file_exists($sqlFile)) {
+                $this->restoreSQLBackup($sqlFile);
+
+                // Security: Validate extracted images before copying to live webroot
+                $imagesDir = $extractDir . '/Images';
+                if (is_dir($imagesDir)) {
+                    $this->validateExtractedImages($imagesDir);
+                }
+
+                LoggerUtils::getAppLogger()->debug('Removing images from live instance');
+                FileSystemUtils::recursiveRemoveDirectory(SystemURLs::getDocumentRoot() . '/Images');
+                LoggerUtils::getAppLogger()->debug('Removal complete; Copying restored images to live instance');
+                FileSystemUtils::recursiveCopyDirectory($extractDir . '/Images/', SystemURLs::getImagesRoot());
+                LoggerUtils::getAppLogger()->debug('Finished copying images');
+            } else {
+                throw new Exception(gettext('Backup archive does not contain a database') . ': ' . $this->RestoreFile);
             }
-
-            LoggerUtils::getAppLogger()->debug('Removing images from live instance');
-            FileSystemUtils::recursiveRemoveDirectory(SystemURLs::getDocumentRoot() . '/Images');
-            LoggerUtils::getAppLogger()->debug('Removal complete; Copying restored images to live instance');
-            FileSystemUtils::recursiveCopyDirectory($extractDir . '/Images/', SystemURLs::getImagesRoot());
-            LoggerUtils::getAppLogger()->debug('Finished copying images');
-        } else {
-            throw new Exception(gettext('Backup archive does not contain a database') . ': ' . $this->RestoreFile);
+        } finally {
+            // Always clean up extraction directory, even on validation failure
+            FileSystemUtils::recursiveRemoveDirectory($extractDir, false);
+            LoggerUtils::getAppLogger()->debug('Cleaned up extraction directory');
         }
-        
-        // Clean up extraction directory
-        FileSystemUtils::recursiveRemoveDirectory($extractDir, false);
         LoggerUtils::getAppLogger()->debug('Finished restoring full archive');
     }
 
@@ -163,13 +167,13 @@ class RestoreJob extends JobBase
      */
     private function validateExtractedImages(string $dir): void
     {
+        // Aligned with Photo.php allowed types — no SVG (XSS risk) or BMP
         $allowedMimeTypes = [
             'image/jpeg',
+            'image/jpg',
             'image/png',
             'image/gif',
             'image/webp',
-            'image/bmp',
-            'image/svg+xml',
         ];
 
         // Executable extensions that must never be copied to the webroot
@@ -179,6 +183,9 @@ class RestoreJob extends JobBase
             new \RecursiveDirectoryIterator($dir, \FilesystemIterator::SKIP_DOTS),
             \RecursiveIteratorIterator::LEAVES_ONLY
         );
+
+        // Create finfo instance once outside loop
+        $finfo = new \finfo(FILEINFO_MIME_TYPE);
 
         foreach ($iterator as $file) {
             if (!$file->isFile()) {
@@ -194,12 +201,14 @@ class RestoreJob extends JobBase
                 throw new Exception('Restore aborted: backup archive contains a potentially dangerous file (' . $file->getFilename() . '). This may indicate a compromised backup.');
             }
 
-            // Check MIME type for all other files — remove non-images silently
-            $finfo = new \finfo(FILEINFO_MIME_TYPE);
+            // Check MIME type for all other files — remove non-images
             $mimeType = $finfo->file($filePath);
             if (!\in_array($mimeType, $allowedMimeTypes, true)) {
-                LoggerUtils::getAppLogger()->warning('Restore: removed non-image file from backup: ' . $filePath . ' (MIME: ' . $mimeType . ')');
-                unlink($filePath);
+                LoggerUtils::getAppLogger()->warning('Restore: removing non-image file from backup: ' . $filePath . ' (MIME: ' . $mimeType . ')');
+                if (!unlink($filePath)) {
+                    // Cannot remove non-image file — abort to prevent it reaching the webroot
+                    throw new Exception('Restore aborted: could not remove non-image file from backup (' . $file->getFilename() . '). Check file permissions.');
+                }
             }
         }
 
