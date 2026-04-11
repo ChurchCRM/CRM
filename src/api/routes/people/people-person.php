@@ -8,7 +8,6 @@ use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
-use ChurchCRM\Slim\Middleware\Request\Auth\ViewRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -208,11 +207,11 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     @OA\Response(response=404, description="Person not found")
      * )
      */
-    // Get person by ID
+    // Get person by ID (requires EditRecords — prevents IDOR)
     $group->get('', function (Request $request, Response $response, array $args): Response {
         $person = $request->getAttribute('person');
         return SlimUtils::renderStringJSON($response, $person->exportTo('JSON'));
-    });
+    })->add(new EditRecordsRoleAuthMiddleware());
 
     // Delete person
     $group->delete('', function (Request $request, Response $response, array $args): Response {
@@ -233,7 +232,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         Cart::addPerson($args['personId']);
         return SlimUtils::renderSuccessJSON($response);
     });
-})->add(new PersonMiddleware())->add(new ViewRecordsRoleAuthMiddleware());
+})->add(new PersonMiddleware());
 
 /**
  * @OA\Post(
