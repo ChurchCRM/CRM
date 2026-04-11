@@ -2,17 +2,13 @@
 
 describe("XSS: Search dropdown escaping", () => {
     before(() => {
-        cy.loginAsAdmin();
+        cy.setupAdminSession();
     });
 
     it("Search results escape HTML in person names", () => {
-        // Visit dashboard and interact with search
         cy.visit("/");
-        cy.get("#navbar-search-input").should("exist");
+        cy.get("#globalSearch").should("exist");
 
-        // Type a search term and verify the dropdown uses escapeHtml
-        // We can't easily inject XSS data without DB access, but we CAN verify
-        // that the search JS uses window.CRM.escapeHtml by checking the source
         cy.window().then((win) => {
             // Verify the escapeHtml utility exists on the CRM object
             expect(win.CRM).to.have.property("escapeHtml");
@@ -24,5 +20,36 @@ describe("XSS: Search dropdown escaping", () => {
             expect(escaped).to.not.contain("<script>");
             expect(escaped).to.contain("&lt;script&gt;");
         });
+    });
+
+    it("Search dropdown renders escaped content from API", () => {
+        cy.visit("/");
+
+        // Intercept search API and inject XSS payload
+        cy.intercept("GET", "**/api/search/**", {
+            statusCode: 200,
+            body: [
+                {
+                    text: "Persons (1)",
+                    children: [
+                        {
+                            text: '<img src=x onerror=alert(1)>',
+                            uri: '/test?a="><script>alert(2)</script>',
+                        },
+                    ],
+                },
+            ],
+        }).as("searchXSS");
+
+        cy.get("#globalSearch").type("test");
+        cy.wait("@searchXSS");
+
+        // Verify no script elements were injected into the dropdown
+        cy.get("#searchDropdown").should("exist");
+        cy.get("#searchDropdown script").should("not.exist");
+        cy.get("#searchDropdown img").should("not.exist");
+
+        // The escaped text should appear as literal text, not rendered HTML
+        cy.get("#searchDropdown").should("contain.text", "<img");
     });
 });
