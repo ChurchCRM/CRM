@@ -101,11 +101,33 @@ if (isset($_POST['FundRaiserSubmit'])) {
         $sDescription = $fundraiser->getDescription();
 
 
+        // Use addAscendingOrderByColumn with raw SQL to preserve natural sort
+        // (e.g., A2 before A10) matching the original ORDER BY
         $donatedItems = DonatedItemQuery::create()
             ->filterByFrId((int) $iFundRaiserID)
-            ->orderByMultibuy()
-            ->orderByItem()
+            ->addAscendingOrderByColumn('di_multibuy')
+            ->addAscendingOrderByColumn('SUBSTR(di_item,1,1)')
+            ->addAscendingOrderByColumn('cast(SUBSTR(di_item,2) as unsigned integer)')
+            ->addAscendingOrderByColumn('SUBSTR(di_item,4)')
             ->find();
+
+        // Preload all referenced person IDs to avoid N+1 queries
+        $personIds = [];
+        foreach ($donatedItems as $item) {
+            if ($item->getDonorId()) {
+                $personIds[] = (int) $item->getDonorId();
+            }
+            if ($item->getBuyerId()) {
+                $personIds[] = (int) $item->getBuyerId();
+            }
+        }
+        $personMap = [];
+        if (!empty($personIds)) {
+            $persons = PersonQuery::create()->findPks(array_unique($personIds));
+            foreach ($persons as $person) {
+                $personMap[$person->getId()] = $person;
+            }
+        }
         $_SESSION['iCurrentFundraiser'] = $iFundRaiserID;        // Probably redundant
 
     } else {
@@ -205,8 +227,8 @@ require_once __DIR__ . '/Include/Header.php';
         if ($donatedItems !== null && $donatedItems->count() > 0) {
             foreach ($donatedItems as $item) {
                 $itemName = $item->getItem() ?: '~';
-                $donor = $item->getDonorId() ? PersonQuery::create()->findPk((int) $item->getDonorId()) : null;
-                $buyer = $item->getBuyerId() ? PersonQuery::create()->findPk((int) $item->getBuyerId()) : null;
+                $donor = $item->getDonorId() ? ($personMap[(int) $item->getDonorId()] ?? null) : null;
+                $buyer = $item->getBuyerId() ? ($personMap[(int) $item->getBuyerId()] ?? null) : null;
                 $donorFirstName = $donor ? $donor->getFirstName() : '';
                 $donorLastName = $donor ? $donor->getLastName() : '';
                 $buyerFirstName = $buyer ? $buyer->getFirstName() : '';
