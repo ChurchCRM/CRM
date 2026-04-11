@@ -119,6 +119,9 @@ if (isset($_GET['Confirmed'])) {
 
 //Get the family record in question
 $family = FamilyQuery::create()->findPk((int) $iFamilyID);
+if ($family === null) {
+    RedirectUtils::redirect(SystemURLs::getRootPath() . '/v2/family');
+}
 $fam_Name = $family->getName();
 
 $aBreadcrumbs = PageHeader::breadcrumbs([

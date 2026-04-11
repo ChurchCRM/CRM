@@ -12,6 +12,7 @@ use ChurchCRM\view\PageHeader;
 // Security
 AuthenticationManager::redirectHomeIfNotAdmin();
 
+$bDoAll = false;
 if (($_GET['all'] ?? '') === 'true') {
     $bDoAll = true;
 }

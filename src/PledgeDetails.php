@@ -26,6 +26,9 @@ if (isset($_POST['Back'])) {
 }
 
 $pledge = PledgeQuery::create()->findPk((int) $iPledgeID);
+if ($pledge === null) {
+    RedirectUtils::redirect($linkBack);
+}
 
 $sSQL = 'SELECT * FROM result_res WHERE res_ID=' . (int) $pledge->getAutResultId();
 $rsResultRec = RunQuery($sSQL);

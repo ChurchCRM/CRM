@@ -101,6 +101,9 @@ if (isset($_POST['Submit'])) {
     if ($iPropertyID !== 0) {
         // Get the data on this property
         $property = PropertyQuery::create()->findPk((int) $iPropertyID);
+        if ($property === null) {
+            RedirectUtils::redirect('PropertyList.php?Type=' . $sType);
+        }
 
         // Assign values locally
         $sName = $property->getProName();

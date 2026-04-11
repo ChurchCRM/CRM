@@ -121,6 +121,9 @@ if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'
         //Editing....
         //Get all the data on this record
         $donatedItemRecord = DonatedItemQuery::create()->findPk((int) $iDonatedItemID);
+        if ($donatedItemRecord === null) {
+            RedirectUtils::redirect($linkBack);
+        }
 
         $sItem = $donatedItemRecord->getItem();
         $bMultibuy = $donatedItemRecord->getMultibuy();

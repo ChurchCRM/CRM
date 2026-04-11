@@ -15,6 +15,9 @@ $iCount = InputUtils::legacyFilterInputArr($_GET, 'Count', 'int');
 $sLetter = 'a';
 
 $donatedItem = DonatedItemQuery::create()->findPk((int) $iDonatedItemID);
+if ($donatedItem === null) {
+    RedirectUtils::redirect("FundRaiserEditor.php?FundRaiserID=$iFundRaiserID");
+}
 $startItem = $donatedItem->getItem();
 
 if (strlen($startItem) === 2) { // replicated items will sort better if they have a two-digit number

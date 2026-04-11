@@ -10,6 +10,7 @@ use ChurchCRM\model\ChurchCRM\VolunteerOpportunity;
 use ChurchCRM\model\ChurchCRM\VolunteerOpportunityQuery;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 
 // Security: User must have proper permission
@@ -54,6 +55,9 @@ if ($sAction === 'delete' && $iOpp > 0) {
     AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled(), 'DeleteRecords');
 
     $opp = VolunteerOpportunityQuery::create()->findPk((int) $iOpp);
+    if ($opp === null) {
+        RedirectUtils::redirect('VolunteerOpportunityEditor.php');
+    }
     $vol_Order = $opp->getOrder();
     $vol_Name = $opp->getName();
     $vol_Description = $opp->getDescription();
@@ -149,6 +153,9 @@ if ($sAction === 'ConfDelete' && $iOpp > 0) {
 
     // get the order value for the record being deleted
     $oppToDelete = VolunteerOpportunityQuery::create()->findPk((int) $iOpp);
+    if ($oppToDelete === null) {
+        RedirectUtils::redirect('VolunteerOpportunityEditor.php');
+    }
     $orderVal = $oppToDelete->getOrder();
 
     // delete the opportunity and its person assignments
