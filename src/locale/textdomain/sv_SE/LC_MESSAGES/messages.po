@@ -14769,3 +14769,813 @@ msgstr "Gul"
 msgid "Your current access levels (read-only)"
 msgstr "Dina nuvarande åtkomstnivåer (skrivskyddad)"
 
+#: 
+msgid "%d repeat event created successfully."
+msgid_plural "%d repeat events created successfully."
+msgstr[0] "%d återkommande händelse skapades."
+msgstr[1] "%d återkommande händelser skapades."
+
+#: 
+msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
+msgstr "(t.ex. Medlemmar, Besökare, Barn) så att volontärer kan registrera antal närvaro här."
+
+#: 
+msgid "1. Sunday School Class"
+msgstr "1. Söndagsskoleklass"
+
+#: 
+msgid "2. Event Type"
+msgstr "2. Händelsetyp"
+
+#: 
+msgid "3. Event"
+msgstr "3. Händelse"
+
+#: 
+msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
+msgstr "En klass är en Grupp med typen \"Söndagsskola\". Den innehåller elever och lärare (medlemmar med roller)."
+
+#: 
+msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
+msgstr "En länkad grupp kopplar denna händelse till en klass eller tjänsts deltagarlista. När händelsen tilldelas en kiosk hämtar kiosken gruppmedlemmarna och visar dem som en tryck-för-incheckning-lista. För söndagsskoleklasser, länka klassgruppen här så att volontärer kan checka in elever från en surfplatta."
+
+#: 
+msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr "Ett specifikt tillfälle (t.ex. \"Förskola — 12 apr\"). Ärver standardinställningar från typen och är kopplat till klassgruppen via publiken. Det är mot detta som volontärer registrerar närvaro."
+
+#: 
+msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr "En surfplatta tilldelad en händelse. Kiosken hämtar händelsens länkade grupplista och visar tryck-för-incheckning. Utan en länkad grupp har kiosken ingen lista att visa."
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "Lägg till inkommande / besökare"
+
+#: 
+msgid "Add categories on the Event Type page"
+msgstr "Lägg till kategorier på sidan Händelsetyp"
+
+#: 
+msgid "Add people to your cart first, then come back to check them in to an event."
+msgstr "Lägg till personer i ditt urval först, kom sedan tillbaka för att checka in dem till en händelse."
+
+#: 
+msgid "All clear!"
+msgstr "Allt klart!"
+
+#: 
+msgid "All events and attendance records"
+msgstr "Alla händelser och nährvaroposter"
+
+#: 
+msgid "All financial data (pledges, payments, deposits)"
+msgstr "All ekonomisk data (löften, betalningar, insättningar)"
+
+#: 
+msgid "All groups, roles, and memberships"
+msgstr "Alla grupper, roller och medlemskap"
+
+#: 
+msgid "All people and family records"
+msgstr "Alla person- och familjeposter"
+
+#: 
+msgid "All system settings and custom fields"
+msgstr "Alla systeminställningar och anpassade fält"
+
+#: 
+msgid "All uploaded photos and documents"
+msgstr "Alla uppladdade foton och dokument"
+
+#: 
+msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
+msgstr "En händelsetyp är en mall — namn, standard starttid, upprepning, kategorier för nährvaroräkning. Kan valfritt länkas till en klassgrupp som standardpublik."
+
+#: 
+msgid "Attendance record deleted."
+msgstr "Nährvaropost borttagen."
+
+#: 
+msgid "Audit"
+msgstr "Granskning"
+
+#: 
+msgid "Audit Events"
+msgstr "Händelsegranskning"
+
+#: 
+msgid "Auto-totalled from counts at right"
+msgstr "Summeras automatiskt från räkningarna till höger"
+
+#: 
+msgid "Back to Events"
+msgstr "Tillbaka till händelser"
+
+#: 
+msgid "Back to Events Dashboard"
+msgstr "Tillbaka till händelseöversikten"
+
+#: 
+msgid "Backup failed. You can still proceed with the reset, but your data will be lost."
+msgstr "Säkerhetskopiering misslyckades. Du kan fortfarande fortsätta med återställningen, men dina data går förlorade."
+
+#: 
+msgid "Backup ready!"
+msgstr "Säkerhetskopia klar!"
+
+#: 
+msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
+msgstr "Innan du återställer rekommenderar vi starkt att du laddar ner en säkerhetskopia av dina nuvarande data. Det här är din enda chans att bevara dem."
+
+#: 
+msgid "Bulk-create a series of recurring events"
+msgstr "Skapa en serie återkommande händelser i bulk"
+
+#: 
+msgid "By"
+msgstr "Av"
+
+#: 
+msgid "Cannot check in to an inactive event. Activate the event first."
+msgstr "Kan inte checka in till en inaktiv händelse. Aktivera händelsen först."
+
+#: 
+msgid "Change"
+msgstr "Ändra"
+
+#: 
+msgid "Check In All"
+msgstr "Checka in alla"
+
+#: 
+msgid "Check In Family"
+msgstr "Checka in familjen"
+
+#: 
+msgid "Check Out All"
+msgstr "Checka ut alla"
+
+#: 
+msgid "Check in all %d family members to a single event."
+msgstr "Checka in alla %d familjemedlemmar till en enda händelse."
+
+#: 
+msgid "Check out"
+msgstr "Checka ut"
+
+#: 
+msgid "Check-in By"
+msgstr "Incheckad av"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "Incheckning misslyckades. Försök igen."
+
+#: 
+msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
+msgstr "Incheckning är inaktiverad för inaktiva händelser. Aktivera händelsen från händelseöversikten för att aktivera incheckning."
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "Utcheckning misslyckades. Försök igen."
+
+#: 
+msgid "Checked in to event: %s"
+msgstr "Incheckad till händelse: %s"
+
+#: 
+msgid "Checked out from event: %s"
+msgstr "Utcheckad från händelse: %s"
+
+#: 
+msgid "Close All Stuck Events"
+msgstr "Stäng alla fastnade händelser"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "Bekräfta utcheckning"
+
+#: 
+msgid "Create Repeat Events"
+msgstr "Skapa återkommande händelser"
+
+#: 
+msgid "Create Today's Event"
+msgstr "Skapa dagens händelse"
+
+#: 
+msgid "Create a new event type with recurrence and attendance settings"
+msgstr "Skapa en ny händelsetyp med upprepnings- och nährvaroinställningar"
+
+#: 
+msgid "Create one now"
+msgstr "Skapa en nu"
+
+#: 
+msgid "Create today's class event and link it to this class for kiosk check-in"
+msgstr "Skapa dagens klasshändelse och länka den till denna klass för kiosk-incheckning"
+
+#: 
+msgid "Creating backup..."
+msgstr "Skapar säkerhetskopia..."
+
+#: 
+msgid "Creating..."
+msgstr "Skapar..."
+
+#: 
+msgid "Database + uploaded photos (larger)"
+msgstr "Databas + uppladdade foton (större)"
+
+#: 
+msgid "Database dump only (.sql)"
+msgstr "Enbart databasdump (.sql)"
+
+#: 
+msgid "Date Range"
+msgstr "Datumintervall"
+
+#: 
+msgid "Date range cannot exceed 1 year"
+msgstr "Datumintervallet får inte överstiga 1 år"
+
+#: 
+msgid "Deactivate"
+msgstr "Inaktivera"
+
+#: 
+msgid "Delete Event Type"
+msgstr "Ta bort händelsetyp"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "Ta bort nährvaropost?"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "Ta bort incheckningspost för"
+
+#: 
+msgid "Delete this event?"
+msgstr "Ta bort denna händelse?"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "Om du tar bort en händelse tas även all nährvaroräkning bort. Detta kan inte ångras."
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "Om du tar bort denna händelsetyp tas INTE befintliga händelser bort. Är du säker?"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "Om du tar bort denna händelse tas även alla nährvaroposter bort. Detta kan inte ångras."
+
+#: 
+msgid "Destructive Operation"
+msgstr "Destruktiv åtgärd"
+
+#: 
+msgid "Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field."
+msgstr "Redigera ett kategorinamn och klicka på Spara, eller använd soptunneikonen för att ta bort. Nya rader läggs till via fältet längst ned."
+
+#: 
+msgid "End Time"
+msgstr "Sluttid"
+
+#: 
+msgid "End time must be after start time."
+msgstr "Sluttiden måste vara efter starttiden."
+
+#: 
+msgid "Ended"
+msgstr "Avslutad"
+
+#: 
+msgid "Ends"
+msgstr "Slutar"
+
+#: 
+msgid "Event Audit"
+msgstr "Händelsegranskning"
+
+#: 
+msgid "Event Check-in"
+msgstr "Händelseincheckning"
+
+#: 
+msgid "Event Details"
+msgstr "Händelsedetaljer"
+
+#: 
+msgid "Event Template"
+msgstr "Händelsemall"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "Händelsen finns redan. Omdirigerar till incheckning..."
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "Händelsen skapades. Omdirigerar till incheckning..."
+
+#: 
+msgid "Event end date/time must be on or after the start date/time."
+msgstr "Händelsens slutdatum/-tid måste vara på eller efter startdatum/-tid."
+
+#: 
+msgid "Event title is required."
+msgstr "Händelsetitel krävs."
+
+#: 
+msgid "Event type ID is required"
+msgstr "Händelsetyp-ID krävs"
+
+#: 
+msgid "Event type ID or group ID is required"
+msgstr "Händelsetyp-ID eller grupp-ID krävs"
+
+#: 
+msgid "Event type has no date configured for yearly recurrence"
+msgstr "Händelsetypen har inget datum konfigurerat för årlig upprepning"
+
+#: 
+msgid "Event type has no day-of-week configured for weekly recurrence"
+msgstr "Händelsetypen har ingen veckodag konfigurerad för veckovis upprepning"
+
+#: 
+msgid "Event type has no recurrence pattern configured"
+msgstr "Händelsetypen har inget upprepningsmönster konfigurerat"
+
+#: 
+msgid "Event type has no valid day-of-month configured for monthly recurrence"
+msgstr "Händelsetypen har ingen giltig månadsdag konfigurerad för månadsvis upprepning"
+
+#: 
+msgid "Events will be created for every matching occurrence within this date range."
+msgstr "Händelser skapas för varje matchande tillfälle inom detta datumintervall."
+
+#: 
+msgid "Every month on the"
+msgstr "Varje månad den"
+
+#: 
+msgid "Every week on"
+msgstr "Varje vecka på"
+
+#: 
+msgid "Every year on"
+msgstr "Varje år den"
+
+#: 
+msgid "Everyone is checked in!"
+msgstr "Alla är incheckade!"
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "Det gick inte att skapa klassen. Försök igen."
+
+#: 
+msgid "Failed to create event."
+msgstr "Det gick inte att skapa händelsen."
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "Det gick inte att skapa händelsen. Försök igen."
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "Det gick inte att ta bort. Försök igen."
+
+#: 
+msgid "Fastest workflow:"
+msgstr "Snabbaste arbetsflödet:"
+
+#: 
+msgid "Find past events that are still active or have un-checked-out attendees"
+msgstr "Hitta tidigare händelser som fortfarande är aktiva eller har deltagare som inte checkats ut"
+
+#: 
+msgid "Format: MM-DD (e.g. 04-12 for April 12)"
+msgstr "Format: MM-DD (t.ex. 04-12 för 12 april)"
+
+#: 
+msgid "Group Roster"
+msgstr "Grupplista"
+
+#: 
+msgid "Hide Advanced Options"
+msgstr "Dölj avancerade alternativ"
+
+#: 
+msgid "How Sunday School + Events + Kiosks fit together"
+msgstr "Hur söndagsskola + händelser + kiosker hör ihop"
+
+#: 
+msgid "Invalid date for %s — expected YYYY-MM-DD"
+msgstr "Ogiltigt datum för %s — förväntat YYYY-MM-DD"
+
+#: 
+msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr "Ogiltigt datumformat för rangeStart eller rangeEnd"
+
+#: 
+msgid "Invalid date format."
+msgstr "Ogiltigt datumformat."
+
+#: 
+msgid "Invalid date; expected format YYYY-MM-DD"
+msgstr "Ogiltigt datum; förväntat format YYYY-MM-DD"
+
+#: 
+msgid "Invalid event type ID"
+msgstr "Ogiltigt händelsetyp-ID"
+
+#: 
+msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
+msgstr "Ogiltigt format för årlig upprepning; förväntat MM-DD (t.ex. 04-12)"
+
+#: 
+msgid "Just now"
+msgstr "Just nu"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "Lämna tomt för att checka ut utan att registrera ansvarig."
+
+#: 
+msgid "Link events to a group for Kiosk check-in functionality."
+msgstr "Länka händelser till en grupp för kioskens incheckningsfunktion."
+
+#: 
+msgid "Linked Groups"
+msgstr "Länkade grupper"
+
+#: 
+msgid "Looking for stuck events..."
+msgstr "Letar efter fastnade händelser..."
+
+#: 
+msgid "Manage event names, recurrence patterns, and attendance counts"
+msgstr "Hantera händelsenamn, upprepningsmönster och nährvaroräkning"
+
+#: 
+msgid "Missing required field: %s"
+msgstr "Obligatoriskt fält saknas: %s"
+
+#: 
+msgid "No Events Today"
+msgstr "Inga händelser idag"
+
+#: 
+msgid "No Group"
+msgstr "Ingen grupp"
+
+#: 
+msgid "No active assignment"
+msgstr "Ingen aktiv tilldelning"
+
+#: 
+msgid "No active events found."
+msgstr "Inga aktiva händelser hittades."
+
+#: 
+msgid "No attendance count categories defined for this event type yet."
+msgstr "Inga nährvaroräkningskategorier har definierats för denna händelsetyp ännu."
+
+#: 
+msgid "No one has been checked in to this event yet."
+msgstr "Ingen har checkats in till denna händelse ännu."
+
+#: 
+msgid "No past events are still marked Active."
+msgstr "Inga tidigare händelser är fortfarande markerade som aktiva."
+
+#: 
+msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr "Öppna en klass → klicka på \"Skapa dagens händelse\" — händelsen skapas och länkas till klassen i ett steg, sedan hamnar du på incheckningssidan redo för kiosk eller inkommande närvaro."
+
+#: 
+msgid "Optional Settings"
+msgstr "Valfria inställningar"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "Valfritt — registrera vem som checkar ut denna person (t.ex. en förälder som hämtar ett barn)."
+
+#: 
+msgid "Person checked out."
+msgstr "Person utcheckad."
+
+#: 
+msgid "Person is not checked in"
+msgstr "Person är inte incheckad"
+
+#: 
+msgid "Person not in active class roster"
+msgstr "Person finns inte i aktiv klasslista"
+
+#: 
+msgid "Pin to Calendars"
+msgstr "Fäst i kalendrar"
+
+#: 
+msgid "Please select a person to check in."
+msgstr "Välj en person att checka in."
+
+#: 
+msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
+msgstr "Förifyllt baserat på denna händelsetyp — för återkommande typer är datumet nästa tillfälle efter den senaste händelsen av denna typ, och tiden matchar typens standard starttid."
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "Intervallets slutdatum måste vara på eller efter intervallets startdatum."
+
+#: 
+msgid "Range end must be a valid YYYY-MM-DD date."
+msgstr "Intervallets slut måste vara ett giltigt YYYY-MM-DD datum."
+
+#: 
+msgid "Range start must be a valid YYYY-MM-DD date."
+msgstr "Intervallets start måste vara ett giltigt YYYY-MM-DD datum."
+
+#: 
+msgid "Range start must be before range end"
+msgstr "Intervallets start måste vara före intervallets slut"
+
+#: 
+msgid "Range start must be before range end."
+msgstr "Intervallets start måste vara före intervallets slut."
+
+#: 
+msgid "RangeEnd must be on or after RangeStart"
+msgstr "RangeEnd måste vara på eller efter RangeStart"
+
+#: 
+msgid "Recommended"
+msgstr "Rekommenderas"
+
+#: 
+msgid "Required for Kiosk"
+msgstr "Krävs för kiosk"
+
+#: 
+msgid "Resetting will permanently delete:"
+msgstr "Återställning kommer permanent att ta bort:"
+
+#: 
+msgid "SQL Only"
+msgstr "Enbart SQL"
+
+#: 
+msgid "Save Time"
+msgstr "Spara tid"
+
+#: 
+msgid "Save changes to this category name"
+msgstr "Spara ändringar av detta kategorinamn"
+
+#: 
+msgid "Select an event type…"
+msgstr "Välj en händelsetyp…"
+
+#: 
+msgid "Select start and end date/time."
+msgstr "Välj start- och slutdatum/-tid."
+
+#: 
+msgid "Show More Options"
+msgstr "Visa fler alternativ"
+
+#: 
+msgid "Skip"
+msgstr "Hoppa över"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "Hoppa över och checka ut"
+
+#: 
+msgid "Start Check-in"
+msgstr "Starta incheckning"
+
+#: 
+msgid "Starts"
+msgstr "Börjar"
+
+#: 
+msgid "Step 1: Create a Backup"
+msgstr "Steg 1: Skapa en säkerhetskopia"
+
+#: 
+msgid "Step 2: Reset Database"
+msgstr "Steg 2: Återställ databas"
+
+#: 
+msgid "Still Checked In"
+msgstr "Fortfarande incheckad"
+
+#: 
+msgid "Stuck Events"
+msgstr "Fastnade händelser"
+
+#: 
+msgid "Take Attendance"
+msgstr "Registrera närvaro"
+
+#: 
+msgid "The Events module is disabled"
+msgstr "Händelsemodulen är inaktiverad"
+
+#: 
+msgid "The same start and end time will be used for all generated events."
+msgstr "Samma start- och sluttid används för alla genererade händelser."
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "Det finns inga händelser schemalagda för idag"
+
+#: 
+msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
+msgstr "Det här är räkningskategorier — volontärer fyller i dem efter händelsen så att instrumentpanelen kan dela upp närvaron (t.ex. hur många medlemmar jämfört med besökare). De är separata från individuella incheckningar på incheckningssidan."
+
+#: 
+msgid "This event is inactive."
+msgstr "Denna händelse är inaktiv."
+
+#: 
+msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr "Denna sida låter dig permanent radera all data i ChurchCRM-databasen. Denna åtgärd kan inte ångras."
+
+#: 
+msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
+msgstr "Denna rapport listar alla händelser vars slutdatum har passerat men som fortfarande är markerade som aktiva. Vanliga orsaker: en volontär glömde att trycka på 'Checka ut', en kiosk tappade anslutningen, eller händelsen skapades och övergavs. Gamla händelser (år tillbaka) som aldrig inaktiverades visas också här. Kolumnen 'Fortfarande incheckad' visar om någon lämnades mitt i incheckningen. Att stänga en händelse från denna rapport checkar ut alla (med aktuell tid) och markerar händelsen som inaktiv."
+
+#: 
+msgid "This title will be used for all generated events."
+msgstr "Denna titel används för alla genererade händelser."
+
+#: 
+msgid "Today's Events"
+msgstr "Dagens händelser"
+
+#: 
+msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
+msgstr "För många tillfällen (%d) — minska datumintervallet. Maximalt tillåtet: %d"
+
+#: 
+msgid "Type RESET to confirm"
+msgstr "Skriv RESET för att bekräfta"
+
+#: 
+msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
+msgstr "Använd knappen ovan för att skapa dagens händelse med ett klick. Den länkas automatiskt till denna klass så att en kiosk kan hämta listan."
+
+#: 
+msgid "Use this form to bulk-create a series of recurring events. Each event is created individually and can be edited or deleted independently after creation."
+msgstr "Använd detta formulär för att massskapa en serie återkommande händelser. Varje händelse skapas individuellt och kan redigeras eller tas bort oberoende efter skapandet."
+
+#: 
+msgid "Used as the default start time when creating events of this type."
+msgstr "Används som standard starttid vid skapande av händelser av denna typ."
+
+#: 
+msgid "User must have Add Event permission and the Events module must be enabled"
+msgstr "Användaren måste ha behörighet att lägga till händelser och händelsemodulen måste vara aktiverad"
+
+#: 
+msgid "Valid startDate and endDate are required"
+msgstr "Giltiga startDate och endDate krävs"
+
+#: 
+msgid "View Event"
+msgstr "Visa händelse"
+
+#: 
+msgid "What are these for?"
+msgstr "Vad används dessa till?"
+
+#: 
+msgid "What does this find?"
+msgstr "Vad hittar detta?"
+
+#: 
+msgid "What is this for?"
+msgstr "Vad används detta till?"
+
+#: 
+msgid "Who is bringing them in?"
+msgstr "Vem tar med dem in?"
+
+#: 
+msgid "You must select a valid recurrence pattern."
+msgstr "Du måste välja ett giltigt upprepningsmönster."
+
+#: 
+msgid "You must select an event type."
+msgstr "Du måste välja en händelsetyp."
+
+#: 
+msgid "You must specify a date range."
+msgstr "Du måste ange ett datumintervall."
+
+#: 
+msgid "checked in"
+msgstr "incheckad"
+
+#: 
+msgid "e.g., Sunday Worship Service"
+msgstr "t.ex. Söndagsgudstjänst"
+
+#: 
+msgid "endDate must be after startDate"
+msgstr "endDate måste vara efter startDate"
+
+#: 
+msgid "eventIds must be a non-empty array"
+msgstr "eventIds måste vara en icke-tom array"
+
+#: 
+msgid "invalid recurrence type"
+msgstr "ogiltig upprepningstyp"
+
+#: 
+msgid "personIds must be a non-empty array"
+msgstr "personIds måste vara en icke-tom array"
+
+#: 
+msgid "to enable the reset button"
+msgstr "för att aktivera återställningsknappen"
+
+#: 
+msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
+msgstr "En karta visas här när koordinaterna är sparade — antingen automatiskt detekterade från din adress eller manuellt angivna ovan."
+
+#: 
+msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr "Både latitud och longitud måste anges tillsammans (eller lämnas tomma för automatisk detektering)."
+
+#: 
+msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr "Kyrkinformation sparad, men adressen kunde inte lokaliseras automatiskt. Ange latitud och longitud manuellt under Kartkoordinater."
+
+#: 
+msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
+msgstr "Koordinater detekteras automatiskt från din adress vid sparande (via OpenStreetMap). Du kan också ange dem manuellt nedan — manuella värden har alltid företräde framför automatisk detektering. Lämna båda tomma för att låta systemet geokoda från adressen."
+
+#: 
+msgid "Latitude must be a number between -90 and 90."
+msgstr "Latitud måste vara ett tal mellan -90 och 90."
+
+#: 
+msgid "Longitude must be a number between -180 and 180."
+msgstr "Longitud måste vara ett tal mellan -180 och 180."
+
+#: 
+msgid "Map Coordinates"
+msgstr "Kartkoordinater"
+
+#: 
+msgid "Please select a group."
+msgstr "Välj en grupp."
+
+#: 
+msgid "Please select a role."
+msgstr "Välj en roll."
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "Välj både en grupp och en roll."
+
+#: 
+msgid "Range: -180 to 180."
+msgstr "Intervall: -180 till 180."
+
+#: 
+msgid "Range: -90 to 90."
+msgstr "Intervall: -90 till 90."
+
+#: 
+msgid "e.g., -74.0060"
+msgstr "t.ex. -74.0060"
+
+#: 
+msgid "e.g., 40.7128"
+msgstr "t.ex. 40.7128"
+
+#: 
+msgid "mo"
+msgstr "mån"
+
+#: 
+msgid "mos"
+msgstr "mån"
+
+#: 
+msgid "yr"
+msgstr "år"
+
+#: 
+msgid "yrs"
+msgstr "år"
+

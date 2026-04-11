@@ -14345,6 +14345,10 @@ msgid "Appearance"
 msgstr "Ulkoasu"
 
 #: 
+msgid "Azure"
+msgstr "Azure"
+
+#: 
 msgid "Back to Finance Dashboard"
 msgstr "Takaisin talouden hallintapaneeliin"
 
@@ -15431,6 +15435,14 @@ msgstr "Alue: -180–180."
 #: 
 msgid "Range: -90 to 90."
 msgstr "Alue: -90–90."
+
+#: 
+msgid "e.g., -74.0060"
+msgstr "esim., -74.0060"
+
+#: 
+msgid "e.g., 40.7128"
+msgstr "esim., 40.7128"
 
 #: 
 msgid "mo"

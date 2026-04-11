@@ -11488,6 +11488,10 @@ msgid "Key People"
 msgstr "Watu Muhimu"
 
 #: 
+msgid "Kiosk"
+msgstr "Kioski"
+
+#: 
 msgid "Kiosk Enabled"
 msgstr "Kiosk Imewezeshwa"
 
@@ -14524,6 +14528,11 @@ msgstr "Nyepesi"
 msgid "Lime"
 msgstr "Rangi ya Limao"
 
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "Kimalayalam - India"
+
 #: 
 msgid "Manage 2FA"
 msgstr "Simamia 2FA"
@@ -14663,4 +14672,818 @@ msgstr "Njano"
 #: 
 msgid "Your current access levels (read-only)"
 msgstr "Viwango vyako vya ufikiaji vya sasa (kusoma tu)"
+
+#: 
+msgid "%d repeat event created successfully."
+msgid_plural "%d repeat events created successfully."
+msgstr[0] "Tukio %d la kurudia limeundwa kwa mafanikio."
+msgstr[1] "Matukio %d ya kurudia yameundwa kwa mafanikio."
+
+#: 
+msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
+msgstr "(mf. Waumini, Wageni, Watoto) ili wafanyakazi wa kujitolea waweze kurekodi hesabu za watu hapa."
+
+#: 
+msgid "1. Sunday School Class"
+msgstr "1. Darasa la Shule ya Jumapili"
+
+#: 
+msgid "2. Event Type"
+msgstr "2. Aina ya Tukio"
+
+#: 
+msgid "3. Event"
+msgstr "3. Tukio"
+
+#: 
+msgid "4. Kiosk"
+msgstr "4. Kioski"
+
+#: 
+msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
+msgstr "Darasa ni Kikundi chenye aina ya \"Shule ya Jumapili\". Lina wanafunzi na walimu (wanakikundi wenye majukumu)."
+
+#: 
+msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
+msgstr "Kikundi kilichounganishwa kinaunganisha tukio hili na darasa au orodha ya huduma. Wakati tukio linapopewa Kioski, kioski hupata wanakikundi na kuwaonyesha kama orodha ya kugusa-kuingia. Kwa madarasa ya Shule ya Jumapili, unganisha kikundi cha darasa hapa ili wafanyakazi wa kujitolea waweze kuingiza wanafunzi kutoka kwenye kompyuta kibao."
+
+#: 
+msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr "Tukio maalum (mf. \"Shule ya Awali — Apr 12\"). Linarithi mipangilio kutoka aina na linaunganishwa na kikundi cha darasa kupitia hadhira. Hili ndilo wafanyakazi wa kujitolea wanalopiga mahudhurio."
+
+#: 
+msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr "Kompyuta kibao iliyopewa tukio moja. Kioski hupata orodha ya kikundi kilichounganishwa na tukio na kuonyesha kugusa-kuingia. Bila kikundi kilichounganishwa kioski hakina orodha ya kuonyesha."
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "Ongeza Mgeni wa Kutembea / Mtembeaji"
+
+#: 
+msgid "Add categories on the Event Type page"
+msgstr "Ongeza makundi kwenye ukurasa wa Aina ya Tukio"
+
+#: 
+msgid "Add people to your cart first, then come back to check them in to an event."
+msgstr "Ongeza watu kwenye uteuzi wako kwanza, kisha rudi kuwaingizia kwenye tukio."
+
+#: 
+msgid "All clear!"
+msgstr "Hakuna tatizo!"
+
+#: 
+msgid "All events and attendance records"
+msgstr "Matukio yote na rekodi za mahudhurio"
+
+#: 
+msgid "All financial data (pledges, payments, deposits)"
+msgstr "Data zote za kifedha (ahadi za kifedha, malipo, amana)"
+
+#: 
+msgid "All groups, roles, and memberships"
+msgstr "Vikundi vyote, majukumu, na uanachama"
+
+#: 
+msgid "All people and family records"
+msgstr "Rekodi zote za watu na familia"
+
+#: 
+msgid "All system settings and custom fields"
+msgstr "Mipangilio yote ya mfumo na sehemu maalum"
+
+#: 
+msgid "All uploaded photos and documents"
+msgstr "Picha na nyaraka zote zilizopakiwa"
+
+#: 
+msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
+msgstr "Aina ya Tukio ni kiolezo — jina, wakati wa kuanza wa chaguo-msingi, kurudia, makundi ya hesabu za mahudhurio. Kwa hiari inaunganishwa na kikundi kimoja cha darasa kama hadhira yake ya chaguo-msingi."
+
+#: 
+msgid "Attendance record deleted."
+msgstr "Rekodi ya mahudhurio imefutwa."
+
+#: 
+msgid "Audit"
+msgstr "Ukaguzi"
+
+#: 
+msgid "Audit Events"
+msgstr "Ukaguzi wa Matukio"
+
+#: 
+msgid "Auto-totalled from counts at right"
+msgstr "Jumla imeundwa kiotomatiki kutoka hesabu upande wa kulia"
+
+#: 
+msgid "Back to Events"
+msgstr "Rudi Matukioni"
+
+#: 
+msgid "Back to Events Dashboard"
+msgstr "Rudi kwenye Dashibodi ya Matukio"
+
+#: 
+msgid "Backup failed. You can still proceed with the reset, but your data will be lost."
+msgstr "Nakala rudufu imeshindwa. Unaweza kuendelea na kuanzisha upya, lakini data yako itapotea."
+
+#: 
+msgid "Backup ready!"
+msgstr "Nakala rudufu iko tayari!"
+
+#: 
+msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
+msgstr "Kabla ya kuanzisha upya, tunapendekeza sana kupakua nakala rudufu ya data yako ya sasa. Hii ndiyo nafasi yako pekee ya kuihifadhi."
+
+#: 
+msgid "Bulk-create a series of recurring events"
+msgstr "Unda mfululizo wa matukio ya kurudia kwa pamoja"
+
+#: 
+msgid "By"
+msgstr "Na"
+
+#: 
+msgid "Cannot check in to an inactive event. Activate the event first."
+msgstr "Haiwezekani kuingia kwenye tukio lisilo na shughuli. Amilisha tukio kwanza."
+
+#: 
+msgid "Change"
+msgstr "Badilisha"
+
+#: 
+msgid "Check In All"
+msgstr "Ingiza Wote"
+
+#: 
+msgid "Check In Family"
+msgstr "Ingiza Familia"
+
+#: 
+msgid "Check Out All"
+msgstr "Toa Wote"
+
+#: 
+msgid "Check in all %d family members to a single event."
+msgstr "Ingiza wanafamilia wote %d kwenye tukio moja."
+
+#: 
+msgid "Check out"
+msgstr "Toka"
+
+#: 
+msgid "Check-in By"
+msgstr "Kuingiwa Na"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "Kuingia kumeshindwa. Tafadhali jaribu tena."
+
+#: 
+msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
+msgstr "Kuingia kumezimwa kwa matukio yasiyoamilika. Amilisha tukio kutoka kwenye Dashibodi ya Matukio kuwezesha kuingia."
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "Kutoka kumeshindwa. Tafadhali jaribu tena."
+
+#: 
+msgid "Checked in to event: %s"
+msgstr "Ameingia kwenye tukio: %s"
+
+#: 
+msgid "Checked out from event: %s"
+msgstr "Ametoka kwenye tukio: %s"
+
+#: 
+msgid "Close All Stuck Events"
+msgstr "Funga Matukio Yote Yaliyokwama"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "Thibitisha Kutoka"
+
+#: 
+msgid "Create Repeat Events"
+msgstr "Unda Matukio ya Kurudia"
+
+#: 
+msgid "Create Today's Event"
+msgstr "Unda Tukio la Leo"
+
+#: 
+msgid "Create a new event type with recurrence and attendance settings"
+msgstr "Unda aina mpya ya tukio na mipangilio ya kurudia na mahudhurio"
+
+#: 
+msgid "Create one now"
+msgstr "Unda moja sasa"
+
+#: 
+msgid "Create today's class event and link it to this class for kiosk check-in"
+msgstr "Unda tukio la darasa la leo na uliunganishe na darasa hili kwa kuingia kwenye kioski"
+
+#: 
+msgid "Creating backup..."
+msgstr "Inaunda nakala rudufu..."
+
+#: 
+msgid "Creating..."
+msgstr "Inaunda..."
+
+#: 
+msgid "Database + uploaded photos (larger)"
+msgstr "Hifadhidata + picha zilizopakiwa (kubwa zaidi)"
+
+#: 
+msgid "Database dump only (.sql)"
+msgstr "Nakala ya hifadhidata peke yake (.sql)"
+
+#: 
+msgid "Date Range"
+msgstr "Kipindi cha Tarehe"
+
+#: 
+msgid "Date range cannot exceed 1 year"
+msgstr "Kipindi cha tarehe haiwezi kuzidi mwaka 1"
+
+#: 
+msgid "Deactivate"
+msgstr "Lemaza"
+
+#: 
+msgid "Delete Event Type"
+msgstr "Futa Aina ya Tukio"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "Futa rekodi ya mahudhurio?"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "Futa rekodi ya kuingia kwa"
+
+#: 
+msgid "Delete this event?"
+msgstr "Futa tukio hili?"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "Kufuta tukio pia kutafuta hesabu zote za mahudhurio. Hii haiwezi kutendwa upya."
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "Kufuta aina hii ya tukio HAITAFUTA matukio yaliyopo. Una uhakika?"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "Kufuta tukio hili pia kutafuta rekodi zote za mahudhurio. Hii haiwezi kutendwa upya."
+
+#: 
+msgid "Destructive Operation"
+msgstr "Operesheni ya Uharibifu"
+
+#: 
+msgid "Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field."
+msgstr "Hariri jina la kundi na ubonyeze Hifadhi, au tumia ikoni ya takataka kuondoa. Safu mpya zinaongezwa kupitia sehemu ya chini."
+
+#: 
+msgid "End Time"
+msgstr "Wakati wa Mwisho"
+
+#: 
+msgid "End time must be after start time."
+msgstr "Wakati wa mwisho lazima uwe baada ya wakati wa kuanza."
+
+#: 
+msgid "Ended"
+msgstr "Imeisha"
+
+#: 
+msgid "Ends"
+msgstr "Inaisha"
+
+#: 
+msgid "Event Audit"
+msgstr "Ukaguzi wa Tukio"
+
+#: 
+msgid "Event Check-in"
+msgstr "Kuingia Kwenye Tukio"
+
+#: 
+msgid "Event Details"
+msgstr "Maelezo ya Tukio"
+
+#: 
+msgid "Event Template"
+msgstr "Kiolezo cha Tukio"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "Tukio lipo tayari. Inakuelekeza kwenye kuingia..."
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "Tukio limeundwa. Inakuelekeza kwenye kuingia..."
+
+#: 
+msgid "Event end date/time must be on or after the start date/time."
+msgstr "Tarehe/wakati wa mwisho wa tukio lazima uwe sawa na au baada ya tarehe/wakati wa kuanza."
+
+#: 
+msgid "Event title is required."
+msgstr "Kichwa cha tukio kinahitajika."
+
+#: 
+msgid "Event type ID is required"
+msgstr "Kitambulisho cha aina ya tukio kinahitajika"
+
+#: 
+msgid "Event type ID or group ID is required"
+msgstr "Kitambulisho cha aina ya tukio au kikundi kinahitajika"
+
+#: 
+msgid "Event type has no date configured for yearly recurrence"
+msgstr "Aina ya tukio haina tarehe iliyowekwa kwa kurudia kila mwaka"
+
+#: 
+msgid "Event type has no day-of-week configured for weekly recurrence"
+msgstr "Aina ya tukio haina siku ya wiki iliyowekwa kwa kurudia kila wiki"
+
+#: 
+msgid "Event type has no recurrence pattern configured"
+msgstr "Aina ya tukio haina mpangilio wa kurudia uliowekwa"
+
+#: 
+msgid "Event type has no valid day-of-month configured for monthly recurrence"
+msgstr "Aina ya tukio haina siku halali ya mwezi iliyowekwa kwa kurudia kila mwezi"
+
+#: 
+msgid "Events will be created for every matching occurrence within this date range."
+msgstr "Matukio yataundwa kwa kila tukio linalolingana ndani ya kipindi hiki cha tarehe."
+
+#: 
+msgid "Every month on the"
+msgstr "Kila mwezi siku ya"
+
+#: 
+msgid "Every week on"
+msgstr "Kila wiki siku ya"
+
+#: 
+msgid "Every year on"
+msgstr "Kila mwaka tarehe"
+
+#: 
+msgid "Everyone is checked in!"
+msgstr "Kila mtu ameingia!"
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "Imeshindwa kuunda darasa. Tafadhali jaribu tena."
+
+#: 
+msgid "Failed to create event."
+msgstr "Imeshindwa kuunda tukio."
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "Imeshindwa kuunda tukio. Tafadhali jaribu tena."
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "Imeshindwa kufuta. Tafadhali jaribu tena."
+
+#: 
+msgid "Fastest workflow:"
+msgstr "Mtiririko wa kazi wa haraka:"
+
+#: 
+msgid "Find past events that are still active or have un-checked-out attendees"
+msgstr "Tafuta matukio ya zamani ambayo bado yanaamilika au yana washiriki ambao hawajaondoka"
+
+#: 
+msgid "Format: MM-DD (e.g. 04-12 for April 12)"
+msgstr "Muundo: MM-DD (mf. 04-12 kwa Aprili 12)"
+
+#: 
+msgid "Group Roster"
+msgstr "Orodha ya Kikundi"
+
+#: 
+msgid "Hide Advanced Options"
+msgstr "Ficha Chaguzi za Hali ya Juu"
+
+#: 
+msgid "How Sunday School + Events + Kiosks fit together"
+msgstr "Jinsi Shule ya Jumapili + Matukio + Vioski unavyofanya kazi pamoja"
+
+#: 
+msgid "Invalid date for %s — expected YYYY-MM-DD"
+msgstr "Tarehe batili kwa %s — inatarajiwa YYYY-MM-DD"
+
+#: 
+msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr "Muundo batili wa tarehe kwa rangeStart au rangeEnd"
+
+#: 
+msgid "Invalid date format."
+msgstr "Muundo batili wa tarehe."
+
+#: 
+msgid "Invalid date; expected format YYYY-MM-DD"
+msgstr "Tarehe batili; muundo unaotarajiwa YYYY-MM-DD"
+
+#: 
+msgid "Invalid event type ID"
+msgstr "Kitambulisho batili cha aina ya tukio"
+
+#: 
+msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
+msgstr "Muundo batili wa kurudia kila mwaka; inatarajiwa MM-DD (mf. 04-12)"
+
+#: 
+msgid "Just now"
+msgstr "Sasa hivi"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "Acha wazi kutoka bila kurekodi msimamizi."
+
+#: 
+msgid "Link events to a group for Kiosk check-in functionality."
+msgstr "Unganisha matukio na kikundi kwa kazi ya kuingia kwenye kioski."
+
+#: 
+msgid "Linked Groups"
+msgstr "Vikundi Vilivyounganishwa"
+
+#: 
+msgid "Looking for stuck events..."
+msgstr "Inatafuta matukio yaliyokwama..."
+
+#: 
+msgid "Manage event names, recurrence patterns, and attendance counts"
+msgstr "Simamia majina ya matukio, mipangilio ya kurudia, na hesabu za mahudhurio"
+
+#: 
+msgid "Missing required field: %s"
+msgstr "Sehemu inayohitajika imekosekana: %s"
+
+#: 
+msgid "No Events Today"
+msgstr "Hakuna Matukio Leo"
+
+#: 
+msgid "No Group"
+msgstr "Hakuna Kikundi"
+
+#: 
+msgid "No active assignment"
+msgstr "Hakuna ugawaji unaofanya kazi"
+
+#: 
+msgid "No active events found."
+msgstr "Hakuna matukio yanayofanya kazi yaliyopatikana."
+
+#: 
+msgid "No attendance count categories defined for this event type yet."
+msgstr "Hakuna makundi ya hesabu za mahudhurio yaliyowekwa kwa aina hii ya tukio bado."
+
+#: 
+msgid "No one has been checked in to this event yet."
+msgstr "Hakuna mtu aliyeingia kwenye tukio hili bado."
+
+#: 
+msgid "No past events are still marked Active."
+msgstr "Hakuna matukio ya zamani ambayo bado yamewekwa alama ya Kuamilika."
+
+#: 
+msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr "Fungua darasa → bonyeza \"Unda Tukio la Leo\" — tukio linaundwa na linaunganishwa na darasa kwa hatua moja, kisha unafika kwenye ukurasa wa kuingia ulio tayari kwa kioski au mahudhurio ya kutembea."
+
+#: 
+msgid "Optional Settings"
+msgstr "Mipangilio ya Hiari"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "Hiari — rekodi ni nani anayemtoa mtu huyu (mf. mzazi anayemchukua mtoto)."
+
+#: 
+msgid "Person checked out."
+msgstr "Mtu ametoka."
+
+#: 
+msgid "Person is not checked in"
+msgstr "Mtu hajaingizwa"
+
+#: 
+msgid "Person not in active class roster"
+msgstr "Mtu hayupo kwenye orodha ya darasa inayofanya kazi"
+
+#: 
+msgid "Pin to Calendars"
+msgstr "Weka kwenye Kalenda"
+
+#: 
+msgid "Please select a person to check in."
+msgstr "Tafadhali chagua mtu wa kuingiza."
+
+#: 
+msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
+msgstr "Imejazwa awali kulingana na aina hii ya tukio — kwa aina zinazokurudia, tarehe ni tukio lijalo baada ya tukio la mwisho la aina hii, na wakati unalingana na wakati wa kuanza wa chaguo-msingi wa aina."
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "Tarehe ya mwisho wa kipindi lazima iwe sawa na au baada ya tarehe ya mwanzo wa kipindi."
+
+#: 
+msgid "Range end must be a valid YYYY-MM-DD date."
+msgstr "Mwisho wa kipindi lazima uwe tarehe halali ya YYYY-MM-DD."
+
+#: 
+msgid "Range start must be a valid YYYY-MM-DD date."
+msgstr "Mwanzo wa kipindi lazima uwe tarehe halali ya YYYY-MM-DD."
+
+#: 
+msgid "Range start must be before range end"
+msgstr "Mwanzo wa kipindi lazima uwe kabla ya mwisho wake"
+
+#: 
+msgid "Range start must be before range end."
+msgstr "Mwanzo wa kipindi lazima uwe kabla ya mwisho wake."
+
+#: 
+msgid "RangeEnd must be on or after RangeStart"
+msgstr "RangeEnd lazima iwe sawa na au baada ya RangeStart"
+
+#: 
+msgid "Recommended"
+msgstr "Inayopendekezwa"
+
+#: 
+msgid "Required for Kiosk"
+msgstr "Inahitajika kwa Kioski"
+
+#: 
+msgid "Resetting will permanently delete:"
+msgstr "Kuanzisha upya kutafuta kabisa:"
+
+#: 
+msgid "SQL Only"
+msgstr "SQL Peke Yake"
+
+#: 
+msgid "Save Time"
+msgstr "Okoa Muda"
+
+#: 
+msgid "Save changes to this category name"
+msgstr "Hifadhi mabadiliko ya jina hili la kundi"
+
+#: 
+msgid "Select an event type…"
+msgstr "Chagua aina ya tukio…"
+
+#: 
+msgid "Select start and end date/time."
+msgstr "Chagua tarehe/wakati wa kuanza na mwisho."
+
+#: 
+msgid "Show More Options"
+msgstr "Onyesha Chaguzi Zaidi"
+
+#: 
+msgid "Skip"
+msgstr "Ruka"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "Ruka na Kutoka"
+
+#: 
+msgid "Start Check-in"
+msgstr "Anza Kuingia"
+
+#: 
+msgid "Starts"
+msgstr "Inaanza"
+
+#: 
+msgid "Step 1: Create a Backup"
+msgstr "Hatua ya 1: Unda Nakala Rudufu"
+
+#: 
+msgid "Step 2: Reset Database"
+msgstr "Hatua ya 2: Weka Upya Hifadhidata"
+
+#: 
+msgid "Still Checked In"
+msgstr "Bado Ameingia"
+
+#: 
+msgid "Stuck Events"
+msgstr "Matukio Yaliyokwama"
+
+#: 
+msgid "Take Attendance"
+msgstr "Piga Mahudhurio"
+
+#: 
+msgid "The Events module is disabled"
+msgstr "Moduli ya Matukio imezimwa"
+
+#: 
+msgid "The same start and end time will be used for all generated events."
+msgstr "Wakati sawa wa kuanza na mwisho utatumika kwa matukio yote yaliyoundwa."
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "Hakuna matukio yaliyopangwa kwa leo"
+
+#: 
+msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
+msgstr "Hizi ni makundi ya hesabu za watu — wafanyakazi wa kujitolea hujaza baada ya tukio ili dashibodi iweze kugawanya mahudhurio (mf. waumini wangapi dhidi ya wageni). Zimetengwa na kuingia kwa mtu mmoja mmoja kwenye ukurasa wa Kuingia."
+
+#: 
+msgid "This event is inactive."
+msgstr "Tukio hili halina shughuli."
+
+#: 
+msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr "Ukurasa huu unakuruhusu kufuta kabisa data zote katika hifadhidata ya ChurchCRM. Kitendo hiki haiwezi kutendwa upya."
+
+#: 
+msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
+msgstr "Ripoti hii inaonyesha kila tukio ambalo tarehe yake ya mwisho imepita lakini bado limewekwa alama ya Kuamilika. Sababu za kawaida: mfanyakazi wa kujitolea alisahau kubonyeza 'Toka', kioski kilipoteza muunganiko, au tukio liliundwa na kuachwa. Matukio ya zamani (miaka iliyopita) ambayo hayakuwahi kuzimwa pia yanaonekana hapa. Safu ya 'Bado Ameingia' inaonyesha kama mtu yeyote alibaki katikati ya kuingia. Kufunga tukio kutoka kwenye ripoti hii kutoa kila mtu (kwa kutumia wakati wa sasa) na kuweka tukio kama Lisilo na Shughuli."
+
+#: 
+msgid "This title will be used for all generated events."
+msgstr "Kichwa hiki kitatumika kwa matukio yote yaliyoundwa."
+
+#: 
+msgid "Today's Events"
+msgstr "Matukio ya Leo"
+
+#: 
+msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
+msgstr "Matukio mengi sana (%d) — punguza kipindi cha tarehe. Kiwango cha juu kinachoruhusiwa: %d"
+
+#: 
+msgid "Type RESET to confirm"
+msgstr "Andika RESET kuthibitisha"
+
+#: 
+msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
+msgstr "Tumia kitufe hapo juu kuunda tukio la leo kwa kubonyeza mara moja. Litaunganishwa kiotomatiki na darasa hili ili Kioski iweze kupata orodha."
+
+#: 
+msgid "Use this form to bulk-create a series of recurring events. Each event is created individually and can be edited or deleted independently after creation."
+msgstr "Tumia fomu hii kuunda mfululizo wa matukio ya kurudia kwa pamoja. Kila tukio linaundwa kibinafsi na linaweza kuhaririwa au kufutwa kwa uhuru baada ya kuundwa."
+
+#: 
+msgid "Used as the default start time when creating events of this type."
+msgstr "Inatumika kama wakati wa kuanza wa chaguo-msingi wakati wa kuunda matukio ya aina hii."
+
+#: 
+msgid "User must have Add Event permission and the Events module must be enabled"
+msgstr "Mtumiaji lazima awe na ruhusa ya Kuongeza Tukio na moduli ya Matukio lazima iwe imewezeshwa"
+
+#: 
+msgid "Valid startDate and endDate are required"
+msgstr "startDate na endDate halali zinahitajika"
+
+#: 
+msgid "View Event"
+msgstr "Tazama Tukio"
+
+#: 
+msgid "What are these for?"
+msgstr "Hizi ni kwa nini?"
+
+#: 
+msgid "What does this find?"
+msgstr "Hii inatafuta nini?"
+
+#: 
+msgid "What is this for?"
+msgstr "Hii ni kwa nini?"
+
+#: 
+msgid "Who is bringing them in?"
+msgstr "Ni nani anayewaleta?"
+
+#: 
+msgid "You must select a valid recurrence pattern."
+msgstr "Lazima uchague mpangilio halali wa kurudia."
+
+#: 
+msgid "You must select an event type."
+msgstr "Lazima uchague aina ya tukio."
+
+#: 
+msgid "You must specify a date range."
+msgstr "Lazima ubainishe kipindi cha tarehe."
+
+#: 
+msgid "checked in"
+msgstr "ameingia"
+
+#: 
+msgid "e.g., Sunday Worship Service"
+msgstr "mf., Ibada ya Jumapili"
+
+#: 
+msgid "endDate must be after startDate"
+msgstr "endDate lazima iwe baada ya startDate"
+
+#: 
+msgid "eventIds must be a non-empty array"
+msgstr "eventIds lazima iwe safu isiyokuwa tupu"
+
+#: 
+msgid "invalid recurrence type"
+msgstr "aina batili ya kurudia"
+
+#: 
+msgid "personIds must be a non-empty array"
+msgstr "personIds lazima iwe safu isiyokuwa tupu"
+
+#: 
+msgid "to enable the reset button"
+msgstr "kuwezesha kitufe cha kuanzisha upya"
+
+#: 
+msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
+msgstr "Ramani itaonekana hapa mara tu kuratibu zimehifadhiwa — zikigunduliwa kiotomatiki kutoka kwa anwani yako au zilizoingizwa kwa mkono hapo juu."
+
+#: 
+msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr "Latitudo na longitudo lazima zitolewe pamoja (au zote ziachwe wazi kwa ugunduzi wa kiotomatiki)."
+
+#: 
+msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr "Taarifa za kanisa zimehifadhiwa, lakini anwani haikuweza kupatikana kiotomatiki. Tafadhali ingiza latitudo na longitudo kwa mkono chini ya Kuratibu za Ramani."
+
+#: 
+msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
+msgstr "Kuratibu zinagunduliwa kiotomatiki kutoka kwa anwani yako ukihifadhi (kupitia OpenStreetMap). Unaweza pia kuziingiza kwa mkono hapa chini — maadili ya mkono daima yana kipaumbele juu ya ugunduzi wa kiotomatiki. Acha zote wazi ili mfumo uweze kupata jiografia kutoka anwanini."
+
+#: 
+msgid "Latitude must be a number between -90 and 90."
+msgstr "Latitudo lazima iwe nambari kati ya -90 na 90."
+
+#: 
+msgid "Longitude must be a number between -180 and 180."
+msgstr "Longitudo lazima iwe nambari kati ya -180 na 180."
+
+#: 
+msgid "Map Coordinates"
+msgstr "Kuratibu za Ramani"
+
+#: 
+msgid "Please select a group."
+msgstr "Tafadhali chagua kikundi."
+
+#: 
+msgid "Please select a role."
+msgstr "Tafadhali chagua jukumu."
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "Tafadhali chagua kikundi na jukumu."
+
+#: 
+msgid "Range: -180 to 180."
+msgstr "Kiwango: -180 hadi 180."
+
+#: 
+msgid "Range: -90 to 90."
+msgstr "Kiwango: -90 hadi 90."
+
+#: 
+msgid "e.g., -74.0060"
+msgstr "mf., -74.0060"
+
+#: 
+msgid "e.g., 40.7128"
+msgstr "mf., 40.7128"
+
+#: 
+msgid "mo"
+msgstr "mwz"
+
+#: 
+msgid "mos"
+msgstr "mz"
+
+#: 
+msgid "yr"
+msgstr "mwk"
+
+#: 
+msgid "yrs"
+msgstr "mk"
 

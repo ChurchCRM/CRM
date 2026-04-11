@@ -14642,3 +14642,811 @@ msgstr "สีเหลือง"
 msgid "Your current access levels (read-only)"
 msgstr "ระดับการเข้าถึงปัจจุบันของคุณ (อ่านอย่างเดียว)"
 
+#: 
+msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
+msgstr "(เช่น สมาชิก ผู้เยี่ยมชม เด็ก) เพื่อให้อาสาสมัครบันทึกจำนวนผู้เข้าร่วมได้ที่นี่"
+
+#: 
+msgid "1. Sunday School Class"
+msgstr "1. ชั้นเรียนโรงเรียนอาทิตย์"
+
+#: 
+msgid "2. Event Type"
+msgstr "2. ประเภทกิจกรรม"
+
+#: 
+msgid "3. Event"
+msgstr "3. กิจกรรม"
+
+#: 
+msgid "4. Kiosk"
+msgstr "4. คีออสก์"
+
+#: 
+msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
+msgstr "ชั้นเรียนคือกลุ่มที่มีประเภท \"โรงเรียนอาทิตย์\" ซึ่งประกอบด้วยนักเรียนและครู (สมาชิกที่มีบทบาท)"
+
+#: 
+msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
+msgstr "กลุ่มที่เชื่อมโยงจะผูกกิจกรรมนี้กับชั้นเรียนหรือรายชื่อการรับใช้ เมื่อกิจกรรมถูกกำหนดให้กับคีออสก์ คีออสก์จะดึงรายชื่อสมาชิกในกลุ่มและแสดงเป็นรายการแตะเพื่อลงทะเบียน สำหรับชั้นเรียนโรงเรียนอาทิตย์ ให้เชื่อมโยงกลุ่มชั้นเรียนที่นี่เพื่อให้อาสาสมัครลงทะเบียนนักเรียนจากแท็บเล็ตได้"
+
+#: 
+msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr "การเกิดขึ้นเฉพาะ (เช่น \"อนุบาล — 12 เม.ย.\") รับค่าเริ่มต้นจากประเภทและเชื่อมโยงกับกลุ่มชั้นเรียนผ่านกลุ่มเป้าหมาย นี่คือสิ่งที่อาสาสมัครใช้บันทึกการเข้าร่วม"
+
+#: 
+msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr "แท็บเล็ตที่กำหนดให้กับกิจกรรมหนึ่ง คีออสก์จะดึงรายชื่อกลุ่มที่เชื่อมโยงของกิจกรรมและแสดงการแตะเพื่อลงทะเบียน หากไม่มีกลุ่มที่เชื่อมโยง คีออสก์จะไม่มีรายชื่อให้แสดง"
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "เพิ่มผู้เข้าร่วมโดยตรง / ผู้เยี่ยมชม"
+
+#: 
+msgid "Add categories on the Event Type page"
+msgstr "เพิ่มหมวดหมู่ในหน้าประเภทกิจกรรม"
+
+#: 
+msgid "Add people to your cart first, then come back to check them in to an event."
+msgstr "เพิ่มรายชื่อบุคคลในรายการที่เลือกก่อน จากนั้นกลับมาลงทะเบียนเข้าร่วมกิจกรรม"
+
+#: 
+msgid "All clear!"
+msgstr "เรียบร้อย!"
+
+#: 
+msgid "All events and attendance records"
+msgstr "กิจกรรมทั้งหมดและบันทึกการเข้าร่วม"
+
+#: 
+msgid "All financial data (pledges, payments, deposits)"
+msgstr "ข้อมูลทางการเงินทั้งหมด (คำมั่นสัญญาทางการเงิน การชำระเงิน เงินฝาก)"
+
+#: 
+msgid "All groups, roles, and memberships"
+msgstr "กลุ่ม บทบาท และการเป็นสมาชิกทั้งหมด"
+
+#: 
+msgid "All people and family records"
+msgstr "บันทึกบุคคลและครอบครัวทั้งหมด"
+
+#: 
+msgid "All system settings and custom fields"
+msgstr "การตั้งค่าระบบและฟิลด์ที่กำหนดเองทั้งหมด"
+
+#: 
+msgid "All uploaded photos and documents"
+msgstr "รูปภาพและเอกสารที่อัพโหลดทั้งหมด"
+
+#: 
+msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
+msgstr "ประเภทกิจกรรมคือเทมเพลต — ชื่อ เวลาเริ่มต้นเริ่มต้น การเกิดซ้ำ หมวดหมู่จำนวนผู้เข้าร่วม ซึ่งสามารถเชื่อมโยงกับกลุ่มชั้นเรียนหนึ่งเป็นกลุ่มเป้าหมายเริ่มต้น"
+
+#: 
+msgid "Attendance record deleted."
+msgstr "ลบบันทึกการเข้าร่วมแล้ว"
+
+#: 
+msgid "Audit"
+msgstr "ตรวจสอบ"
+
+#: 
+msgid "Audit Events"
+msgstr "ตรวจสอบกิจกรรม"
+
+#: 
+msgid "Auto-totalled from counts at right"
+msgstr "รวมยอดอัตโนมัติจากจำนวนทางขวา"
+
+#: 
+msgid "Back to Events"
+msgstr "กลับไปยังกิจกรรม"
+
+#: 
+msgid "Back to Events Dashboard"
+msgstr "กลับไปยังแดชบอร์ดกิจกรรม"
+
+#: 
+msgid "Backup failed. You can still proceed with the reset, but your data will be lost."
+msgstr "การสำรองข้อมูลล้มเหลว คุณยังสามารถดำเนินการรีเซ็ตต่อได้ แต่ข้อมูลของคุณจะสูญหาย"
+
+#: 
+msgid "Backup ready!"
+msgstr "พร้อมสำรองข้อมูลแล้ว!"
+
+#: 
+msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
+msgstr "ก่อนการรีเซ็ต เราขอแนะนำอย่างยิ่งให้ดาวน์โหลดสำรองข้อมูลปัจจุบันของคุณ นี่เป็นโอกาสเดียวของคุณในการรักษาข้อมูลไว้"
+
+#: 
+msgid "Bulk-create a series of recurring events"
+msgstr "สร้างชุดกิจกรรมที่เกิดซ้ำพร้อมกันหลายรายการ"
+
+#: 
+msgid "By"
+msgstr "โดย"
+
+#: 
+msgid "Cannot check in to an inactive event. Activate the event first."
+msgstr "ไม่สามารถลงทะเบียนเข้าร่วมกิจกรรมที่ไม่ได้ใช้งาน กรุณาเปิดใช้งานกิจกรรมก่อน"
+
+#: 
+msgid "Change"
+msgstr "เปลี่ยน"
+
+#: 
+msgid "Check In All"
+msgstr "ลงทะเบียนทั้งหมด"
+
+#: 
+msgid "Check In Family"
+msgstr "ลงทะเบียนครอบครัว"
+
+#: 
+msgid "Check Out All"
+msgstr "ลงทะเบียนออกทั้งหมด"
+
+#: 
+msgid "Check in all %d family members to a single event."
+msgstr "ลงทะเบียนสมาชิกในครอบครัวทั้ง %d คนเข้าร่วมกิจกรรมเดียว"
+
+#: 
+msgid "Check out"
+msgstr "ลงทะเบียนออก"
+
+#: 
+msgid "Check-in By"
+msgstr "ลงทะเบียนโดย"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "การลงทะเบียนล้มเหลว กรุณาลองอีกครั้ง"
+
+#: 
+msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
+msgstr "การลงทะเบียนถูกปิดใช้งานสำหรับกิจกรรมที่ไม่ได้ใช้งาน เปิดใช้งานกิจกรรมจากแดชบอร์ดกิจกรรมเพื่อเปิดการลงทะเบียน"
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "การลงทะเบียนออกล้มเหลว กรุณาลองอีกครั้ง"
+
+#: 
+msgid "Checked in to event: %s"
+msgstr "ลงทะเบียนเข้าร่วมกิจกรรม: %s"
+
+#: 
+msgid "Checked out from event: %s"
+msgstr "ลงทะเบียนออกจากกิจกรรม: %s"
+
+#: 
+msgid "Close All Stuck Events"
+msgstr "ปิดกิจกรรมที่ค้างทั้งหมด"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "ยืนยันการลงทะเบียนออก"
+
+#: 
+msgid "Create Repeat Events"
+msgstr "สร้างกิจกรรมที่เกิดซ้ำ"
+
+#: 
+msgid "Create Today's Event"
+msgstr "สร้างกิจกรรมวันนี้"
+
+#: 
+msgid "Create a new event type with recurrence and attendance settings"
+msgstr "สร้างประเภทกิจกรรมใหม่พร้อมการตั้งค่าการเกิดซ้ำและการเข้าร่วม"
+
+#: 
+msgid "Create one now"
+msgstr "สร้างใหม่ตอนนี้"
+
+#: 
+msgid "Create today's class event and link it to this class for kiosk check-in"
+msgstr "สร้างกิจกรรมชั้นเรียนวันนี้และเชื่อมโยงกับชั้นเรียนนี้สำหรับการลงทะเบียนคีออสก์"
+
+#: 
+msgid "Creating backup..."
+msgstr "กำลังสร้างสำรองข้อมูล..."
+
+#: 
+msgid "Creating..."
+msgstr "กำลังสร้าง..."
+
+#: 
+msgid "Database + uploaded photos (larger)"
+msgstr "ฐานข้อมูล + รูปภาพที่อัพโหลด (ขนาดใหญ่กว่า)"
+
+#: 
+msgid "Database dump only (.sql)"
+msgstr "ดัมพ์ฐานข้อมูลเท่านั้น (.sql)"
+
+#: 
+msgid "Date Range"
+msgstr "ช่วงวันที่"
+
+#: 
+msgid "Date range cannot exceed 1 year"
+msgstr "ช่วงวันที่ต้องไม่เกิน 1 ปี"
+
+#: 
+msgid "Deactivate"
+msgstr "ปิดใช้งาน"
+
+#: 
+msgid "Delete Event Type"
+msgstr "ลบประเภทกิจกรรม"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "ลบบันทึกการเข้าร่วม?"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "ลบบันทึกการลงทะเบียนสำหรับ"
+
+#: 
+msgid "Delete this event?"
+msgstr "ลบกิจกรรมนี้?"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "การลบกิจกรรมจะลบจำนวนการเข้าร่วมทั้งหมดด้วย การดำเนินการนี้ไม่สามารถยกเลิกได้"
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "การลบประเภทกิจกรรมนี้จะไม่ลบกิจกรรมที่มีอยู่ คุณแน่ใจหรือไม่?"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "การลบกิจกรรมนี้จะลบบันทึกการเข้าร่วมทั้งหมดด้วย การดำเนินการนี้ไม่สามารถยกเลิกได้"
+
+#: 
+msgid "Destructive Operation"
+msgstr "การดำเนินการที่อันตราย"
+
+#: 
+msgid "Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field."
+msgstr "แก้ไขชื่อหมวดหมู่และคลิกบันทึก หรือใช้ไอคอนถังขยะเพื่อลบ แถวใหม่จะถูกเพิ่มผ่านฟิลด์ด้านล่าง"
+
+#: 
+msgid "End Time"
+msgstr "เวลาสิ้นสุด"
+
+#: 
+msgid "End time must be after start time."
+msgstr "เวลาสิ้นสุดต้องอยู่หลังเวลาเริ่มต้น"
+
+#: 
+msgid "Ended"
+msgstr "สิ้นสุดแล้ว"
+
+#: 
+msgid "Ends"
+msgstr "สิ้นสุด"
+
+#: 
+msgid "Event Audit"
+msgstr "การตรวจสอบกิจกรรม"
+
+#: 
+msgid "Event Check-in"
+msgstr "การลงทะเบียนกิจกรรม"
+
+#: 
+msgid "Event Details"
+msgstr "รายละเอียดกิจกรรม"
+
+#: 
+msgid "Event Template"
+msgstr "เทมเพลตกิจกรรม"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "กิจกรรมมีอยู่แล้ว กำลังเปลี่ยนเส้นทางไปยังหน้าลงทะเบียน..."
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "สร้างกิจกรรมแล้ว กำลังเปลี่ยนเส้นทางไปยังหน้าลงทะเบียน..."
+
+#: 
+msgid "Event end date/time must be on or after the start date/time."
+msgstr "วันที่/เวลาสิ้นสุดกิจกรรมต้องอยู่ในหรือหลังวันที่/เวลาเริ่มต้น"
+
+#: 
+msgid "Event title is required."
+msgstr "ต้องระบุชื่อกิจกรรม"
+
+#: 
+msgid "Event type ID is required"
+msgstr "ต้องระบุรหัสประเภทกิจกรรม"
+
+#: 
+msgid "Event type ID or group ID is required"
+msgstr "ต้องระบุรหัสประเภทกิจกรรมหรือรหัสกลุ่ม"
+
+#: 
+msgid "Event type has no date configured for yearly recurrence"
+msgstr "ประเภทกิจกรรมไม่มีวันที่กำหนดสำหรับการเกิดซ้ำรายปี"
+
+#: 
+msgid "Event type has no day-of-week configured for weekly recurrence"
+msgstr "ประเภทกิจกรรมไม่มีวันในสัปดาห์ที่กำหนดสำหรับการเกิดซ้ำรายสัปดาห์"
+
+#: 
+msgid "Event type has no recurrence pattern configured"
+msgstr "ประเภทกิจกรรมไม่มีรูปแบบการเกิดซ้ำที่กำหนด"
+
+#: 
+msgid "Event type has no valid day-of-month configured for monthly recurrence"
+msgstr "ประเภทกิจกรรมไม่มีวันในเดือนที่ถูกต้องที่กำหนดสำหรับการเกิดซ้ำรายเดือน"
+
+#: 
+msgid "Events will be created for every matching occurrence within this date range."
+msgstr "จะสร้างกิจกรรมสำหรับทุกครั้งที่ตรงกันภายในช่วงวันที่นี้"
+
+#: 
+msgid "Every month on the"
+msgstr "ทุกเดือนในวันที่"
+
+#: 
+msgid "Every week on"
+msgstr "ทุกสัปดาห์ใน"
+
+#: 
+msgid "Every year on"
+msgstr "ทุกปีใน"
+
+#: 
+msgid "Everyone is checked in!"
+msgstr "ทุกคนลงทะเบียนแล้ว!"
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "สร้างชั้นเรียนล้มเหลว กรุณาลองอีกครั้ง"
+
+#: 
+msgid "Failed to create event."
+msgstr "สร้างกิจกรรมล้มเหลว"
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "สร้างกิจกรรมล้มเหลว กรุณาลองอีกครั้ง"
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "การลบล้มเหลว กรุณาลองอีกครั้ง"
+
+#: 
+msgid "Fastest workflow:"
+msgstr "ขั้นตอนที่รวดเร็วที่สุด:"
+
+#: 
+msgid "Find past events that are still active or have un-checked-out attendees"
+msgstr "ค้นหากิจกรรมที่ผ่านมาที่ยังคงใช้งานอยู่หรือมีผู้เข้าร่วมที่ยังไม่ได้ลงทะเบียนออก"
+
+#: 
+msgid "Format: MM-DD (e.g. 04-12 for April 12)"
+msgstr "รูปแบบ: MM-DD (เช่น 04-12 สำหรับ 12 เมษายน)"
+
+#: 
+msgid "Group Roster"
+msgstr "รายชื่อกลุ่ม"
+
+#: 
+msgid "Hide Advanced Options"
+msgstr "ซ่อนตัวเลือกขั้นสูง"
+
+#: 
+msgid "How Sunday School + Events + Kiosks fit together"
+msgstr "วิธีที่โรงเรียนอาทิตย์ + กิจกรรม + คีออสก์ทำงานร่วมกัน"
+
+#: 
+msgid "Invalid date for %s — expected YYYY-MM-DD"
+msgstr "วันที่ไม่ถูกต้องสำหรับ %s — คาดหวังรูปแบบ YYYY-MM-DD"
+
+#: 
+msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr "รูปแบบวันที่ไม่ถูกต้องสำหรับ rangeStart หรือ rangeEnd"
+
+#: 
+msgid "Invalid date format."
+msgstr "รูปแบบวันที่ไม่ถูกต้อง"
+
+#: 
+msgid "Invalid date; expected format YYYY-MM-DD"
+msgstr "วันที่ไม่ถูกต้อง รูปแบบที่คาดหวัง YYYY-MM-DD"
+
+#: 
+msgid "Invalid event type ID"
+msgstr "รหัสประเภทกิจกรรมไม่ถูกต้อง"
+
+#: 
+msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
+msgstr "รูปแบบการเกิดซ้ำรายปีไม่ถูกต้อง คาดหวัง MM-DD (เช่น 04-12)"
+
+#: 
+msgid "Just now"
+msgstr "เมื่อกี้นี้"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "เว้นว่างไว้เพื่อลงทะเบียนออกโดยไม่บันทึกผู้ดูแล"
+
+#: 
+msgid "Link events to a group for Kiosk check-in functionality."
+msgstr "เชื่อมโยงกิจกรรมกับกลุ่มสำหรับฟังก์ชันการลงทะเบียนคีออสก์"
+
+#: 
+msgid "Linked Groups"
+msgstr "กลุ่มที่เชื่อมโยง"
+
+#: 
+msgid "Looking for stuck events..."
+msgstr "กำลังค้นหากิจกรรมที่ค้าง..."
+
+#: 
+msgid "Manage event names, recurrence patterns, and attendance counts"
+msgstr "จัดการชื่อกิจกรรม รูปแบบการเกิดซ้ำ และจำนวนผู้เข้าร่วม"
+
+#: 
+msgid "Missing required field: %s"
+msgstr "ขาดฟิลด์ที่จำเป็น: %s"
+
+#: 
+msgid "No Events Today"
+msgstr "ไม่มีกิจกรรมวันนี้"
+
+#: 
+msgid "No Group"
+msgstr "ไม่มีกลุ่ม"
+
+#: 
+msgid "No active assignment"
+msgstr "ไม่มีการกำหนดที่ใช้งานอยู่"
+
+#: 
+msgid "No active events found."
+msgstr "ไม่พบกิจกรรมที่ใช้งานอยู่"
+
+#: 
+msgid "No attendance count categories defined for this event type yet."
+msgstr "ยังไม่มีหมวดหมู่จำนวนผู้เข้าร่วมที่กำหนดสำหรับประเภทกิจกรรมนี้"
+
+#: 
+msgid "No one has been checked in to this event yet."
+msgstr "ยังไม่มีใครลงทะเบียนเข้าร่วมกิจกรรมนี้"
+
+#: 
+msgid "No past events are still marked Active."
+msgstr "ไม่มีกิจกรรมที่ผ่านมาที่ยังคงถูกทำเครื่องหมายว่าใช้งานอยู่"
+
+#: 
+msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr "เปิดชั้นเรียน → คลิก \"สร้างกิจกรรมวันนี้\" — กิจกรรมจะถูกสร้างและเชื่อมโยงกับชั้นเรียนในครั้งเดียว จากนั้นคุณจะไปถึงหน้าลงทะเบียนที่พร้อมสำหรับคีออสก์หรือการเข้าร่วมโดยตรง"
+
+#: 
+msgid "Optional Settings"
+msgstr "การตั้งค่าเสริม"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "ไม่บังคับ — บันทึกว่าใครกำลังลงทะเบียนออกให้บุคคลนี้ (เช่น ผู้ปกครองรับเด็ก)"
+
+#: 
+msgid "Person checked out."
+msgstr "บุคคลลงทะเบียนออกแล้ว"
+
+#: 
+msgid "Person is not checked in"
+msgstr "บุคคลไม่ได้ลงทะเบียนเข้าร่วม"
+
+#: 
+msgid "Person not in active class roster"
+msgstr "บุคคลไม่อยู่ในรายชื่อชั้นเรียนที่ใช้งานอยู่"
+
+#: 
+msgid "Pin to Calendars"
+msgstr "ปักหมุดไปยังปฏิทิน"
+
+#: 
+msgid "Please select a person to check in."
+msgstr "กรุณาเลือกบุคคลเพื่อลงทะเบียน"
+
+#: 
+msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
+msgstr "กรอกล่วงหน้าตามประเภทกิจกรรมนี้ — สำหรับประเภทที่เกิดซ้ำ วันที่คือครั้งถัดไปหลังจากกิจกรรมล่าสุดของประเภทนี้ และเวลาตรงกับเวลาเริ่มต้นเริ่มต้นของประเภท"
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "วันที่สิ้นสุดช่วงต้องอยู่ในหรือหลังวันที่เริ่มต้นช่วง"
+
+#: 
+msgid "Range end must be a valid YYYY-MM-DD date."
+msgstr "วันที่สิ้นสุดช่วงต้องเป็นวันที่ YYYY-MM-DD ที่ถูกต้อง"
+
+#: 
+msgid "Range start must be a valid YYYY-MM-DD date."
+msgstr "วันที่เริ่มต้นช่วงต้องเป็นวันที่ YYYY-MM-DD ที่ถูกต้อง"
+
+#: 
+msgid "Range start must be before range end"
+msgstr "วันที่เริ่มต้นช่วงต้องอยู่ก่อนวันที่สิ้นสุดช่วง"
+
+#: 
+msgid "Range start must be before range end."
+msgstr "วันที่เริ่มต้นช่วงต้องอยู่ก่อนวันที่สิ้นสุดช่วง"
+
+#: 
+msgid "RangeEnd must be on or after RangeStart"
+msgstr "RangeEnd ต้องอยู่ในหรือหลัง RangeStart"
+
+#: 
+msgid "Recommended"
+msgstr "แนะนำ"
+
+#: 
+msgid "Required for Kiosk"
+msgstr "จำเป็นสำหรับคีออสก์"
+
+#: 
+msgid "Resetting will permanently delete:"
+msgstr "การรีเซ็ตจะลบอย่างถาวร:"
+
+#: 
+msgid "SQL Only"
+msgstr "เฉพาะ SQL"
+
+#: 
+msgid "Save Time"
+msgstr "ประหยัดเวลา"
+
+#: 
+msgid "Save changes to this category name"
+msgstr "บันทึกการเปลี่ยนแปลงชื่อหมวดหมู่นี้"
+
+#: 
+msgid "Select an event type…"
+msgstr "เลือกประเภทกิจกรรม…"
+
+#: 
+msgid "Select start and end date/time."
+msgstr "เลือกวันที่/เวลาเริ่มต้นและสิ้นสุด"
+
+#: 
+msgid "Show More Options"
+msgstr "แสดงตัวเลือกเพิ่มเติม"
+
+#: 
+msgid "Skip"
+msgstr "ข้าม"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "ข้ามและลงทะเบียนออก"
+
+#: 
+msgid "Start Check-in"
+msgstr "เริ่มการลงทะเบียน"
+
+#: 
+msgid "Starts"
+msgstr "เริ่มต้น"
+
+#: 
+msgid "Step 1: Create a Backup"
+msgstr "ขั้นตอนที่ 1: สร้างสำรองข้อมูล"
+
+#: 
+msgid "Step 2: Reset Database"
+msgstr "ขั้นตอนที่ 2: รีเซ็ตฐานข้อมูล"
+
+#: 
+msgid "Still Checked In"
+msgstr "ยังคงลงทะเบียนอยู่"
+
+#: 
+msgid "Stuck Events"
+msgstr "กิจกรรมที่ค้าง"
+
+#: 
+msgid "Take Attendance"
+msgstr "บันทึกการเข้าร่วม"
+
+#: 
+msgid "The Events module is disabled"
+msgstr "โมดูลกิจกรรมถูกปิดใช้งาน"
+
+#: 
+msgid "The same start and end time will be used for all generated events."
+msgstr "เวลาเริ่มต้นและสิ้นสุดเดียวกันจะถูกใช้สำหรับกิจกรรมทั้งหมดที่สร้างขึ้น"
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "ไม่มีกิจกรรมที่กำหนดไว้สำหรับวันนี้"
+
+#: 
+msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
+msgstr "นี่คือกลุ่มจำนวนผู้เข้าร่วม — อาสาสมัครกรอกข้อมูลหลังกิจกรรมเพื่อให้แดชบอร์ดสามารถแสดงรายละเอียดการเข้าร่วม (เช่น จำนวนสมาชิกเทียบกับผู้เยี่ยมชม) ข้อมูลเหล่านี้แยกจากการลงทะเบียนรายบุคคลในหน้าลงทะเบียน"
+
+#: 
+msgid "This event is inactive."
+msgstr "กิจกรรมนี้ไม่ได้ใช้งาน"
+
+#: 
+msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr "หน้านี้ช่วยให้คุณลบข้อมูลทั้งหมดในฐานข้อมูล ChurchCRM อย่างถาวร การดำเนินการนี้ไม่สามารถยกเลิกได้"
+
+#: 
+msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
+msgstr "รายงานนี้แสดงกิจกรรมทุกรายการที่วันที่สิ้นสุดผ่านไปแล้วแต่ยังคงถูกทำเครื่องหมายว่าใช้งานอยู่ สาเหตุทั่วไป: อาสาสมัครลืมกด 'ลงทะเบียนออก' คีออสก์สูญเสียการเชื่อมต่อ หรือกิจกรรมถูกสร้างแล้วถูกทิ้ง กิจกรรมเก่า (หลายปีที่ผ่านมา) ที่ไม่เคยถูกปิดใช้งานก็จะแสดงที่นี่ด้วย คอลัมน์ 'ยังคงลงทะเบียนอยู่' แสดงว่ามีใครถูกทิ้งไว้กลางการลงทะเบียนหรือไม่ การปิดกิจกรรมจากรายงานนี้จะลงทะเบียนออกทุกคน (โดยใช้เวลาปัจจุบัน) และทำเครื่องหมายกิจกรรมว่าไม่ใช้งาน"
+
+#: 
+msgid "This title will be used for all generated events."
+msgstr "ชื่อนี้จะถูกใช้สำหรับกิจกรรมทั้งหมดที่สร้างขึ้น"
+
+#: 
+msgid "Today's Events"
+msgstr "กิจกรรมวันนี้"
+
+#: 
+msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
+msgstr "มีการเกิดขึ้นมากเกินไป (%d) — กรุณาย่อช่วงวันที่ จำนวนสูงสุดที่อนุญาต: %d"
+
+#: 
+msgid "Type RESET to confirm"
+msgstr "พิมพ์ RESET เพื่อยืนยัน"
+
+#: 
+msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
+msgstr "ใช้ปุ่มด้านบนเพื่อสร้างกิจกรรมวันนี้ในคลิกเดียว กิจกรรมจะถูกเชื่อมโยงอัตโนมัติกับชั้นเรียนนี้เพื่อให้คีออสก์ดึงรายชื่อได้"
+
+#: 
+msgid "Use this form to bulk-create a series of recurring events. Each event is created individually and can be edited or deleted independently after creation."
+msgstr "ใช้แบบฟอร์มนี้เพื่อสร้างชุดกิจกรรมที่เกิดซ้ำพร้อมกันหลายรายการ กิจกรรมแต่ละรายการจะถูกสร้างแยกกันและสามารถแก้ไขหรือลบได้อย่างอิสระหลังการสร้าง"
+
+#: 
+msgid "Used as the default start time when creating events of this type."
+msgstr "ใช้เป็นเวลาเริ่มต้นเริ่มต้นเมื่อสร้างกิจกรรมประเภทนี้"
+
+#: 
+msgid "User must have Add Event permission and the Events module must be enabled"
+msgstr "ผู้ใช้ต้องมีสิทธิ์เพิ่มกิจกรรมและต้องเปิดใช้งานโมดูลกิจกรรม"
+
+#: 
+msgid "Valid startDate and endDate are required"
+msgstr "ต้องระบุ startDate และ endDate ที่ถูกต้อง"
+
+#: 
+msgid "View Event"
+msgstr "ดูกิจกรรม"
+
+#: 
+msgid "What are these for?"
+msgstr "สิ่งเหล่านี้มีไว้สำหรับอะไร?"
+
+#: 
+msgid "What does this find?"
+msgstr "สิ่งนี้ค้นหาอะไร?"
+
+#: 
+msgid "What is this for?"
+msgstr "สิ่งนี้มีไว้สำหรับอะไร?"
+
+#: 
+msgid "Who is bringing them in?"
+msgstr "ใครนำพวกเขาเข้ามา?"
+
+#: 
+msgid "You must select a valid recurrence pattern."
+msgstr "คุณต้องเลือกรูปแบบการเกิดซ้ำที่ถูกต้อง"
+
+#: 
+msgid "You must select an event type."
+msgstr "คุณต้องเลือกประเภทกิจกรรม"
+
+#: 
+msgid "You must specify a date range."
+msgstr "คุณต้องระบุช่วงวันที่"
+
+#: 
+msgid "checked in"
+msgstr "ลงทะเบียนแล้ว"
+
+#: 
+msgid "e.g., Sunday Worship Service"
+msgstr "เช่น นมัสการวันอาทิตย์"
+
+#: 
+msgid "endDate must be after startDate"
+msgstr "endDate ต้องอยู่หลัง startDate"
+
+#: 
+msgid "eventIds must be a non-empty array"
+msgstr "eventIds ต้องเป็นอาร์เรย์ที่ไม่ว่างเปล่า"
+
+#: 
+msgid "invalid recurrence type"
+msgstr "ประเภทการเกิดซ้ำไม่ถูกต้อง"
+
+#: 
+msgid "personIds must be a non-empty array"
+msgstr "personIds ต้องเป็นอาร์เรย์ที่ไม่ว่างเปล่า"
+
+#: 
+msgid "to enable the reset button"
+msgstr "เพื่อเปิดใช้งานปุ่มรีเซ็ต"
+
+#: 
+msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
+msgstr "แผนที่จะแสดงที่นี่เมื่อบันทึกพิกัดแล้ว — ไม่ว่าจะตรวจจับอัตโนมัติจากที่อยู่หรือกรอกด้วยตนเองด้านบน"
+
+#: 
+msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr "ต้องระบุทั้งละติจูดและลองจิจูดพร้อมกัน (หรือเว้นว่างทั้งคู่สำหรับการตรวจจับอัตโนมัติ)"
+
+#: 
+msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr "บันทึกข้อมูลคริสตจักรแล้ว แต่ไม่สามารถค้นหาที่อยู่อัตโนมัติได้ กรุณากรอกละติจูดและลองจิจูดด้วยตนเองในส่วนพิกัดแผนที่"
+
+#: 
+msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
+msgstr "พิกัดจะถูกตรวจจับอัตโนมัติจากที่อยู่เมื่อบันทึก (ผ่าน OpenStreetMap) คุณยังสามารถกรอกด้วยตนเองด้านล่าง — ค่าที่กรอกด้วยตนเองจะมีความสำคัญกว่าการตรวจจับอัตโนมัติเสมอ เว้นว่างทั้งคู่เพื่อให้ระบบค้นหาพิกัดจากที่อยู่"
+
+#: 
+msgid "Latitude must be a number between -90 and 90."
+msgstr "ละติจูดต้องเป็นตัวเลขระหว่าง -90 ถึง 90"
+
+#: 
+msgid "Longitude must be a number between -180 and 180."
+msgstr "ลองจิจูดต้องเป็นตัวเลขระหว่าง -180 ถึง 180"
+
+#: 
+msgid "Map Coordinates"
+msgstr "พิกัดแผนที่"
+
+#: 
+msgid "Please select a group."
+msgstr "กรุณาเลือกกลุ่ม"
+
+#: 
+msgid "Please select a role."
+msgstr "กรุณาเลือกบทบาท"
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "กรุณาเลือกทั้งกลุ่มและบทบาท"
+
+#: 
+msgid "Range: -180 to 180."
+msgstr "ช่วง: -180 ถึง 180"
+
+#: 
+msgid "Range: -90 to 90."
+msgstr "ช่วง: -90 ถึง 90"
+
+#: 
+msgid "e.g., -74.0060"
+msgstr "เช่น -74.0060"
+
+#: 
+msgid "e.g., 40.7128"
+msgstr "เช่น 40.7128"
+
+#: 
+msgid "mo"
+msgstr "เดือน"
+
+#: 
+msgid "mos"
+msgstr "เดือน"
+
+#: 
+msgid "yr"
+msgstr "ปี"
+
+#: 
+msgid "yrs"
+msgstr "ปี"
+

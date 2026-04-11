@@ -15414,6 +15414,14 @@ msgid "Range: -90 to 90."
 msgstr "範囲：-90〜90"
 
 #: 
+msgid "e.g., -74.0060"
+msgstr "例：-74.0060"
+
+#: 
+msgid "e.g., 40.7128"
+msgstr "例：40.7128"
+
+#: 
 msgid "mo"
 msgstr "ヶ月"
 

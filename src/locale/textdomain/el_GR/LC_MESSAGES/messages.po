@@ -14382,6 +14382,10 @@ msgid "Appearance"
 msgstr "Εμφάνιση"
 
 #: 
+msgid "Azure"
+msgstr "Azure"
+
+#: 
 msgid "Back to Finance Dashboard"
 msgstr "Επιστροφή στον Πίνακα Οικονομικών"
 
@@ -15468,6 +15472,14 @@ msgstr "Εύρος: -180 έως 180."
 #: 
 msgid "Range: -90 to 90."
 msgstr "Εύρος: -90 έως 90."
+
+#: 
+msgid "e.g., -74.0060"
+msgstr "π.χ., -74.0060"
+
+#: 
+msgid "e.g., 40.7128"
+msgstr "π.χ., 40.7128"
 
 #: 
 msgid "mo"

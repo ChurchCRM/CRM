@@ -14648,3 +14648,817 @@ msgstr "పసుపు రంగు"
 msgid "Your current access levels (read-only)"
 msgstr "మీ ప్రస్తుత యాక్సెస్ స్థాయిలు (చదవడం మాత్రమే)"
 
+#: 
+msgid "%d repeat event created successfully."
+msgid_plural "%d repeat events created successfully."
+msgstr[0] "%d పునరావృత కార్యక్రమం విజయవంతంగా సృష్టించబడింది."
+msgstr[1] "%d పునరావృత కార్యక్రమాలు విజయవంతంగా సృష్టించబడ్డాయి."
+
+#: 
+msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
+msgstr "(ఉదా. సభ్యులు, సందర్శకులు, పిల్లలు) వంటివి — స్వచ్ఛంద సేవకులు ఇక్కడ సంఖ్యలు నమోదు చేయవచ్చు."
+
+#: 
+msgid "1. Sunday School Class"
+msgstr "1. సండే స్కూల్ తరగతి"
+
+#: 
+msgid "2. Event Type"
+msgstr "2. కార్యక్రమ రకం"
+
+#: 
+msgid "3. Event"
+msgstr "3. కార్యక్రమం"
+
+#: 
+msgid "4. Kiosk"
+msgstr "4. కియోస్క్"
+
+#: 
+msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
+msgstr "తరగతి అనేది \"సండే స్కూల్\" రకంతో ఉన్న ఒక గుంపు. ఇందులో విద్యార్థులు మరియు ఉపాధ్యాయులు (పాత్రలతో సభ్యులు) ఉంటారు."
+
+#: 
+msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
+msgstr "లింక్ చేయబడిన గుంపు ఈ కార్యక్రమాన్ని తరగతి లేదా పరిచర్య జాబితాకు అనుసంధానిస్తుంది. కార్యక్రమాన్ని కియోస్క్‌కు కేటాయించినప్పుడు, కియోస్క్ గుంపు సభ్యులను లాగి వారిని ట్యాప్-చేసి హాజరు నమోదు చేసే జాబితాగా చూపిస్తుంది. సండే స్కూల్ తరగతులకు, స్వచ్ఛంద సేవకులు టాబ్లెట్ నుండి విద్యార్థులను చెక్-ఇన్ చేయడానికి తరగతి గుంపును ఇక్కడ లింక్ చేయండి."
+
+#: 
+msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr "ఒక నిర్దిష్ట సంఘటన (ఉదా. \"ప్రీస్కూల్ — ఏప్రిల్ 12\"). రకం నుండి డిఫాల్ట్ విలువలను స్వీకరిస్తుంది మరియు ప్రేక్షకుల ద్వారా తరగతి గుంపుతో అనుసంధానించబడుతుంది. స్వచ్ఛంద సేవకులు దీని ద్వారా హాజరు నమోదు చేస్తారు."
+
+#: 
+msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr "ఒక కార్యక్రమానికి కేటాయించిన ట్యాబ్లెట్. కియోస్క్ కార్యక్రమానికి లింక్ చేయబడిన గుంపు జాబితాను లాగి ట్యాప్-చేసి హాజరు నమోదు చేసే విధంగా చూపిస్తుంది. లింక్ చేయబడిన గుంపు లేకుండా కియోస్క్‌కు చూపించడానికి జాబితా ఉండదు."
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "వాక్-ఇన్ / సందర్శకుడిని జోడించు"
+
+#: 
+msgid "Add categories on the Event Type page"
+msgstr "కార్యక్రమ రకం పేజీలో వర్గాలను జోడించు"
+
+#: 
+msgid "Add people to your cart first, then come back to check them in to an event."
+msgstr "మొదట మీ ఎంపికకు వ్యక్తులను జోడించి, తర్వాత వారిని కార్యక్రమంలో చెక్-ఇన్ చేయడానికి తిరిగి రండి."
+
+#: 
+msgid "All clear!"
+msgstr "అన్నీ సరే!"
+
+#: 
+msgid "All events and attendance records"
+msgstr "అన్ని కార్యక్రమాలు మరియు హాజరు నమోదులు"
+
+#: 
+msgid "All financial data (pledges, payments, deposits)"
+msgstr "అన్ని ఆర్థిక డేటా (వాగ్దానాలు, చెల్లింపులు, డిపాజిట్లు)"
+
+#: 
+msgid "All groups, roles, and memberships"
+msgstr "అన్ని గుంపులు, పాత్రలు మరియు సభ్యత్వాలు"
+
+#: 
+msgid "All people and family records"
+msgstr "అన్ని వ్యక్తులు మరియు కుటుంబ నమోదులు"
+
+#: 
+msgid "All system settings and custom fields"
+msgstr "అన్ని సిస్టమ్ సెట్టింగులు మరియు అనుకూల ఫీల్డ్‌లు"
+
+#: 
+msgid "All uploaded photos and documents"
+msgstr "అన్ని అప్‌లోడ్ చేయబడిన ఫోటోలు మరియు పత్రాలు"
+
+#: 
+msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
+msgstr "కార్యక్రమ రకం అనేది ఒక టెంప్లేట్ — పేరు, డిఫాల్ట్ ప్రారంభ సమయం, పునరావృతం, హాజరు సంఖ్య వర్గాలు. ఐచ్ఛికంగా దాని డిఫాల్ట్ ప్రేక్షకులుగా ఒక తరగతి గుంపుతో లింక్ చేయబడుతుంది."
+
+#: 
+msgid "Attendance record deleted."
+msgstr "హాజరు నమోదు తొలగించబడింది."
+
+#: 
+msgid "Audit"
+msgstr "ఆడిట్"
+
+#: 
+msgid "Audit Events"
+msgstr "ఆడిట్ కార్యక్రమాలు"
+
+#: 
+msgid "Auto-totalled from counts at right"
+msgstr "కుడివైపు సంఖ్యల నుండి స్వయంచాలకంగా మొత్తం లెక్కించబడింది"
+
+#: 
+msgid "Back to Events"
+msgstr "కార్యక్రమాలకు తిరిగి వెళ్ళు"
+
+#: 
+msgid "Back to Events Dashboard"
+msgstr "కార్యక్రమాల డాష్‌బోర్డ్‌కు తిరిగి వెళ్ళు"
+
+#: 
+msgid "Backup failed. You can still proceed with the reset, but your data will be lost."
+msgstr "బ్యాకప్ విఫలమైంది. మీరు రీసెట్‌తో కొనసాగవచ్చు, కానీ మీ డేటా పోతుంది."
+
+#: 
+msgid "Backup ready!"
+msgstr "బ్యాకప్ సిద్ధంగా ఉంది!"
+
+#: 
+msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
+msgstr "రీసెట్ చేయడానికి ముందు, మీ ప్రస్తుత డేటాను బ్యాకప్ డౌన్‌లోడ్ చేయమని మేము గట్టిగా సూచిస్తున్నాము. దీన్ని భద్రపరచుకునేందుకు మీకు ఇదే ఒకే అవకాశం."
+
+#: 
+msgid "Bulk-create a series of recurring events"
+msgstr "పునరావృత కార్యక్రమాల శ్రేణిని ఒకేసారి సృష్టించు"
+
+#: 
+msgid "By"
+msgstr "ద్వారా"
+
+#: 
+msgid "Cannot check in to an inactive event. Activate the event first."
+msgstr "నిష్క్రియ కార్యక్రమంలో చెక్-ఇన్ చేయలేరు. మొదట కార్యక్రమాన్ని సక్రియం చేయండి."
+
+#: 
+msgid "Change"
+msgstr "మార్చు"
+
+#: 
+msgid "Check In All"
+msgstr "అందరినీ చెక్-ఇన్ చేయి"
+
+#: 
+msgid "Check In Family"
+msgstr "కుటుంబాన్ని చెక్-ఇన్ చేయి"
+
+#: 
+msgid "Check Out All"
+msgstr "అందరినీ చెక్-అవుట్ చేయి"
+
+#: 
+msgid "Check in all %d family members to a single event."
+msgstr "ఒకే కార్యక్రమంలో %d కుటుంబ సభ్యుడిని చెక్-ఇన్ చేయి."
+
+#: 
+msgid "Check out"
+msgstr "చెక్-అవుట్"
+
+#: 
+msgid "Check-in By"
+msgstr "చెక్-ఇన్ చేసినవారు"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "చెక్-ఇన్ విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
+msgstr "నిష్క్రియ కార్యక్రమాలకు చెక్-ఇన్ నిలిపివేయబడింది. చెక్-ఇన్ ప్రారంభించడానికి కార్యక్రమాల డాష్‌బోర్డ్ నుండి కార్యక్రమాన్ని సక్రియం చేయండి."
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "చెక్-అవుట్ విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Checked in to event: %s"
+msgstr "కార్యక్రమంలో చెక్-ఇన్ అయ్యారు: %s"
+
+#: 
+msgid "Checked out from event: %s"
+msgstr "కార్యక్రమం నుండి చెక్-అవుట్ అయ్యారు: %s"
+
+#: 
+msgid "Close All Stuck Events"
+msgstr "అన్ని నిలిచిన కార్యక్రమాలను మూసివేయి"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "చెక్-అవుట్ నిర్ధారించు"
+
+#: 
+msgid "Create Repeat Events"
+msgstr "పునరావృత కార్యక్రమాలు సృష్టించు"
+
+#: 
+msgid "Create Today's Event"
+msgstr "నేటి కార్యక్రమాన్ని సృష్టించు"
+
+#: 
+msgid "Create a new event type with recurrence and attendance settings"
+msgstr "పునరావృతం మరియు హాజరు సెట్టింగులతో కొత్త కార్యక్రమ రకాన్ని సృష్టించు"
+
+#: 
+msgid "Create one now"
+msgstr "ఇప్పుడు ఒకటి సృష్టించు"
+
+#: 
+msgid "Create today's class event and link it to this class for kiosk check-in"
+msgstr "నేటి తరగతి కార్యక్రమాన్ని సృష్టించి కియోస్క్ చెక్-ఇన్ కోసం ఈ తరగతికి లింక్ చేయి"
+
+#: 
+msgid "Creating backup..."
+msgstr "బ్యాకప్ సృష్టిస్తున్నాము..."
+
+#: 
+msgid "Creating..."
+msgstr "సృష్టిస్తున్నాము..."
+
+#: 
+msgid "Database + uploaded photos (larger)"
+msgstr "డేటాబేస్ + అప్‌లోడ్ చేయబడిన ఫోటోలు (పెద్దది)"
+
+#: 
+msgid "Database dump only (.sql)"
+msgstr "డేటాబేస్ డంప్ మాత్రమే (.sql)"
+
+#: 
+msgid "Date Range"
+msgstr "తేదీ పరిధి"
+
+#: 
+msgid "Date range cannot exceed 1 year"
+msgstr "తేదీ పరిధి 1 సంవత్సరం మించకూడదు"
+
+#: 
+msgid "Deactivate"
+msgstr "నిష్క్రియం చేయి"
+
+#: 
+msgid "Delete Event Type"
+msgstr "కార్యక్రమ రకాన్ని తొలగించు"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "హాజరు నమోదును తొలగించాలా?"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "చెక్-ఇన్ నమోదును తొలగించు"
+
+#: 
+msgid "Delete this event?"
+msgstr "ఈ కార్యక్రమాన్ని తొలగించాలా?"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "కార్యక్రమాన్ని తొలగించడం వలన అన్ని హాజరు సంఖ్యలు కూడా తొలగించబడతాయి. ఇది రద్దు చేయలేరు."
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "ఈ కార్యక్రమ రకాన్ని తొలగించడం ద్వారా ఇప్పటికే ఉన్న కార్యక్రమాలు తొలగించబడవు. మీరు నిశ్చయంగా ఉన్నారా?"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "ఈ కార్యక్రమాన్ని తొలగించడం వలన అన్ని హాజరు నమోదులు కూడా తొలగించబడతాయి. ఇది రద్దు చేయలేరు."
+
+#: 
+msgid "Destructive Operation"
+msgstr "నాశనకరమైన చర్య"
+
+#: 
+msgid "Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field."
+msgstr "వర్గం పేరు సవరించి సేవ్ నొక్కండి, లేదా తొలగించడానికి చెత్తబుట్ట చిహ్నాన్ని ఉపయోగించండి. కొత్త వరుసలు దిగువ ఫీల్డ్ ద్వారా జోడించబడతాయి."
+
+#: 
+msgid "End Time"
+msgstr "ముగింపు సమయం"
+
+#: 
+msgid "End time must be after start time."
+msgstr "ముగింపు సమయం ప్రారంభ సమయం తర్వాత ఉండాలి."
+
+#: 
+msgid "Ended"
+msgstr "ముగిసింది"
+
+#: 
+msgid "Ends"
+msgstr "ముగుస్తుంది"
+
+#: 
+msgid "Event Audit"
+msgstr "కార్యక్రమ ఆడిట్"
+
+#: 
+msgid "Event Check-in"
+msgstr "కార్యక్రమ చెక్-ఇన్"
+
+#: 
+msgid "Event Details"
+msgstr "కార్యక్రమ వివరాలు"
+
+#: 
+msgid "Event Template"
+msgstr "కార్యక్రమ టెంప్లేట్"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "కార్యక్రమం ఇప్పటికే ఉంది. చెక్-ఇన్‌కు దారి మళ్ళిస్తున్నాము..."
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "కార్యక్రమం సృష్టించబడింది. చెక్-ఇన్‌కు దారి మళ్ళిస్తున్నాము..."
+
+#: 
+msgid "Event end date/time must be on or after the start date/time."
+msgstr "కార్యక్రమ ముగింపు తేదీ/సమయం ప్రారంభ తేదీ/సమయం తర్వాత లేదా అదే రోజు ఉండాలి."
+
+#: 
+msgid "Event title is required."
+msgstr "కార్యక్రమ శీర్షిక అవసరం."
+
+#: 
+msgid "Event type ID is required"
+msgstr "కార్యక్రమ రకం ID అవసరం"
+
+#: 
+msgid "Event type ID or group ID is required"
+msgstr "కార్యక్రమ రకం ID లేదా గుంపు ID అవసరం"
+
+#: 
+msgid "Event type has no date configured for yearly recurrence"
+msgstr "సంవత్సరిక పునరావృతానికి కార్యక్రమ రకంలో తేదీ కాన్ఫిగర్ చేయబడలేదు"
+
+#: 
+msgid "Event type has no day-of-week configured for weekly recurrence"
+msgstr "వారపు పునరావృతానికి కార్యక్రమ రకంలో వారం రోజు కాన్ఫిగర్ చేయబడలేదు"
+
+#: 
+msgid "Event type has no recurrence pattern configured"
+msgstr "కార్యక్రమ రకంలో పునరావృత నమూనా కాన్ఫిగర్ చేయబడలేదు"
+
+#: 
+msgid "Event type has no valid day-of-month configured for monthly recurrence"
+msgstr "నెలవారీ పునరావృతానికి కార్యక్రమ రకంలో చెల్లుబాటు అయ్యే నెల రోజు కాన్ఫిగర్ చేయబడలేదు"
+
+#: 
+msgid "Events will be created for every matching occurrence within this date range."
+msgstr "ఈ తేదీ పరిధిలో ప్రతి సరిపోలే సంఘటనకు కార్యక్రమాలు సృష్టించబడతాయి."
+
+#: 
+msgid "Every month on the"
+msgstr "ప్రతి నెలలో"
+
+#: 
+msgid "Every week on"
+msgstr "ప్రతి వారం"
+
+#: 
+msgid "Every year on"
+msgstr "ప్రతి సంవత్సరం"
+
+#: 
+msgid "Everyone is checked in!"
+msgstr "అందరూ చెక్-ఇన్ అయ్యారు!"
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "తరగతి సృష్టించడం విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Failed to create event."
+msgstr "కార్యక్రమం సృష్టించడం విఫలమైంది."
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "కార్యక్రమం సృష్టించడం విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "తొలగించడం విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Fastest workflow:"
+msgstr "వేగవంతమైన పని విధానం:"
+
+#: 
+msgid "Find past events that are still active or have un-checked-out attendees"
+msgstr "ఇంకా సక్రియంగా ఉన్న లేదా చెక్-అవుట్ కాని హాజరైనవారున్న గత కార్యక్రమాలను కనుగొనండి"
+
+#: 
+msgid "Format: MM-DD (e.g. 04-12 for April 12)"
+msgstr "ఆకృతి: MM-DD (ఉదా. ఏప్రిల్ 12కు 04-12)"
+
+#: 
+msgid "Group Roster"
+msgstr "గుంపు జాబితా"
+
+#: 
+msgid "Hide Advanced Options"
+msgstr "అధునాతన ఎంపికలను దాచు"
+
+#: 
+msgid "How Sunday School + Events + Kiosks fit together"
+msgstr "సండే స్కూల్ + కార్యక్రమాలు + కియోస్క్‌లు ఎలా కలిసి పనిచేస్తాయి"
+
+#: 
+msgid "Invalid date for %s — expected YYYY-MM-DD"
+msgstr "%s కోసం చెల్లని తేదీ — YYYY-MM-DD రూపంలో ఉండాలి"
+
+#: 
+msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr "rangeStart లేదా rangeEnd కోసం చెల్లని తేదీ ఆకృతి"
+
+#: 
+msgid "Invalid date format."
+msgstr "చెల్లని తేదీ ఆకృతి."
+
+#: 
+msgid "Invalid date; expected format YYYY-MM-DD"
+msgstr "చెల్లని తేదీ; YYYY-MM-DD ఆకృతి అవసరం"
+
+#: 
+msgid "Invalid event type ID"
+msgstr "చెల్లని కార్యక్రమ రకం ID"
+
+#: 
+msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
+msgstr "చెల్లని సంవత్సరిక పునరావృత ఆకృతి; MM-DD రూపంలో ఉండాలి (ఉదా. 04-12)"
+
+#: 
+msgid "Just now"
+msgstr "ఇప్పుడే"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "పర్యవేక్షకుడిని నమోదు చేయకుండా చెక్-అవుట్ చేయడానికి ఖాళీగా వదలండి."
+
+#: 
+msgid "Link events to a group for Kiosk check-in functionality."
+msgstr "కియోస్క్ చెక్-ఇన్ కార్యాచరణ కోసం కార్యక్రమాలను గుంపుతో లింక్ చేయండి."
+
+#: 
+msgid "Linked Groups"
+msgstr "లింక్ చేయబడిన గుంపులు"
+
+#: 
+msgid "Looking for stuck events..."
+msgstr "నిలిచిన కార్యక్రమాల కోసం చూస్తున్నాము..."
+
+#: 
+msgid "Manage event names, recurrence patterns, and attendance counts"
+msgstr "కార్యక్రమ పేర్లు, పునరావృత నమూనాలు మరియు హాజరు సంఖ్యలను నిర్వహించండి"
+
+#: 
+msgid "Missing required field: %s"
+msgstr "అవసరమైన ఫీల్డ్ లేదు: %s"
+
+#: 
+msgid "No Events Today"
+msgstr "నేడు కార్యక్రమాలు లేవు"
+
+#: 
+msgid "No Group"
+msgstr "గుంపు లేదు"
+
+#: 
+msgid "No active assignment"
+msgstr "సక్రియ కేటాయింపు లేదు"
+
+#: 
+msgid "No active events found."
+msgstr "సక్రియ కార్యక్రమాలు కనుగొనబడలేదు."
+
+#: 
+msgid "No attendance count categories defined for this event type yet."
+msgstr "ఈ కార్యక్రమ రకానికి ఇంకా హాజరు సంఖ్య వర్గాలు నిర్వచించబడలేదు."
+
+#: 
+msgid "No one has been checked in to this event yet."
+msgstr "ఈ కార్యక్రమంలో ఇంకా ఎవరూ చెక్-ఇన్ కాలేదు."
+
+#: 
+msgid "No past events are still marked Active."
+msgstr "గత కార్యక్రమాలేవీ ఇంకా సక్రియంగా గుర్తు పెట్టబడలేదు."
+
+#: 
+msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr "తరగతిని తెరవండి → \"నేటి కార్యక్రమాన్ని సృష్టించు\" నొక్కండి — కార్యక్రమం సృష్టించబడి ఒకే చర్యలో తరగతికి లింక్ అవుతుంది, తర్వాత మీరు కియోస్క్ లేదా వాక్-ఇన్ హాజరు కోసం సిద్ధంగా ఉన్న చెక్-ఇన్ పేజీకి చేరతారు."
+
+#: 
+msgid "Optional Settings"
+msgstr "ఐచ్ఛిక సెట్టింగులు"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "ఐచ్ఛికం — ఈ వ్యక్తిని చెక్-అవుట్ చేస్తున్నవారిని నమోదు చేయండి (ఉదా. పిల్లలను తీసుకెళ్ళే తల్లిదండ్రి)."
+
+#: 
+msgid "Person checked out."
+msgstr "వ్యక్తి చెక్-అవుట్ అయ్యారు."
+
+#: 
+msgid "Person is not checked in"
+msgstr "వ్యక్తి చెక్-ఇన్ కాలేదు"
+
+#: 
+msgid "Person not in active class roster"
+msgstr "వ్యక్తి సక్రియ తరగతి జాబితాలో లేరు"
+
+#: 
+msgid "Pin to Calendars"
+msgstr "క్యాలెండర్లకు పిన్ చేయి"
+
+#: 
+msgid "Please select a person to check in."
+msgstr "చెక్-ఇన్ చేయడానికి ఒక వ్యక్తిని ఎంచుకోండి."
+
+#: 
+msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
+msgstr "ఈ కార్యక్రమ రకం ఆధారంగా ముందే నింపబడింది — పునరావృత రకాలకు, తేదీ ఈ రకానికి చివరి కార్యక్రమం తర్వాత తర్వాతి సంఘటన, మరియు సమయం రకపు డిఫాల్ట్ ప్రారంభ సమయంతో సరిపోతుంది."
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "పరిధి ముగింపు తేదీ పరిధి ప్రారంభ తేదీ తర్వాత లేదా అదే రోజు ఉండాలి."
+
+#: 
+msgid "Range end must be a valid YYYY-MM-DD date."
+msgstr "పరిధి ముగింపు చెల్లుబాటు అయ్యే YYYY-MM-DD తేదీ అయి ఉండాలి."
+
+#: 
+msgid "Range start must be a valid YYYY-MM-DD date."
+msgstr "పరిధి ప్రారంభం చెల్లుబాటు అయ్యే YYYY-MM-DD తేదీ అయి ఉండాలి."
+
+#: 
+msgid "Range start must be before range end"
+msgstr "పరిధి ప్రారంభం పరిధి ముగింపు కంటే ముందు ఉండాలి"
+
+#: 
+msgid "Range start must be before range end."
+msgstr "పరిధి ప్రారంభం పరిధి ముగింపు కంటే ముందు ఉండాలి."
+
+#: 
+msgid "RangeEnd must be on or after RangeStart"
+msgstr "RangeEnd, RangeStart తర్వాత లేదా అదే రోజు ఉండాలి"
+
+#: 
+msgid "Recommended"
+msgstr "సూచించబడింది"
+
+#: 
+msgid "Required for Kiosk"
+msgstr "కియోస్క్ కోసం అవసరం"
+
+#: 
+msgid "Resetting will permanently delete:"
+msgstr "రీసెట్ చేయడం శాశ్వతంగా తొలగిస్తుంది:"
+
+#: 
+msgid "SQL Only"
+msgstr "SQL మాత్రమే"
+
+#: 
+msgid "Save Time"
+msgstr "సమయాన్ని ఆదా చేయండి"
+
+#: 
+msgid "Save changes to this category name"
+msgstr "ఈ వర్గం పేరుకు చేసిన మార్పులను సేవ్ చేయి"
+
+#: 
+msgid "Select an event type…"
+msgstr "ఒక కార్యక్రమ రకాన్ని ఎంచుకోండి…"
+
+#: 
+msgid "Select start and end date/time."
+msgstr "ప్రారంభ మరియు ముగింపు తేదీ/సమయాన్ని ఎంచుకోండి."
+
+#: 
+msgid "Show More Options"
+msgstr "మరిన్ని ఎంపికలను చూపించు"
+
+#: 
+msgid "Skip"
+msgstr "దాటవేయి"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "దాటవేసి చెక్-అవుట్ చేయి"
+
+#: 
+msgid "Start Check-in"
+msgstr "చెక్-ఇన్ ప్రారంభించు"
+
+#: 
+msgid "Starts"
+msgstr "ప్రారంభమవుతుంది"
+
+#: 
+msgid "Step 1: Create a Backup"
+msgstr "దశ 1: బ్యాకప్ సృష్టించు"
+
+#: 
+msgid "Step 2: Reset Database"
+msgstr "దశ 2: డేటాబేస్ రీసెట్ చేయి"
+
+#: 
+msgid "Still Checked In"
+msgstr "ఇంకా చెక్-ఇన్‌లో ఉన్నారు"
+
+#: 
+msgid "Stuck Events"
+msgstr "నిలిచిన కార్యక్రమాలు"
+
+#: 
+msgid "Take Attendance"
+msgstr "హాజరు నమోదు చేయి"
+
+#: 
+msgid "The Events module is disabled"
+msgstr "కార్యక్రమాల మాడ్యూల్ నిలిపివేయబడింది"
+
+#: 
+msgid "The same start and end time will be used for all generated events."
+msgstr "అన్ని సృష్టించబడిన కార్యక్రమాలకు ఒకే ప్రారంభ మరియు ముగింపు సమయం ఉపయోగించబడుతుంది."
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "నేడు ఏ కార్యక్రమాలూ షెడ్యూల్ చేయబడలేదు"
+
+#: 
+msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
+msgstr "ఇవి తలసంఖ్య బకెట్లు — స్వచ్ఛంద సేవకులు కార్యక్రమం తర్వాత వాటిని నింపుతారు, తద్వారా డాష్‌బోర్డ్ హాజరును విభజించగలుగుతుంది (ఉదా. ఎంతమంది సభ్యులు vs సందర్శకులు). ఇవి చెక్-ఇన్ పేజీలో వ్యక్తిగత చెక్-ఇన్‌ల నుండి వేరుగా ఉంటాయి."
+
+#: 
+msgid "This event is inactive."
+msgstr "ఈ కార్యక్రమం నిష్క్రియంగా ఉంది."
+
+#: 
+msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr "ఈ పేజీ ChurchCRM డేటాబేస్‌లోని అన్ని డేటాను శాశ్వతంగా తొలగించడానికి మిమ్మల్ని అనుమతిస్తుంది. ఈ చర్య రద్దు చేయలేరు."
+
+#: 
+msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
+msgstr "ఈ నివేదిక ముగింపు తేదీ గడిచిపోయినా ఇంకా సక్రియంగా గుర్తించబడిన ప్రతి కార్యక్రమాన్ని జాబితా చేస్తుంది. సాధారణ కారణాలు: స్వచ్ఛంద సేవకుడు 'చెక్-అవుట్' నొక్కడం మరచిపోయారు, కియోస్క్ కనెక్టివిటీ కోల్పోయింది, లేదా కార్యక్రమం సృష్టించి వదిలివేయబడింది. నిష్క్రియం చేయబడని పాత కార్యక్రమాలు కూడా ఇక్కడ కనిపిస్తాయి. 'ఇంకా చెక్-ఇన్‌లో ఉన్నారు' నిలువు వరుస చెక్-ఇన్ మధ్యలో ఎవరైనా ఉన్నారా అని చూపిస్తుంది. ఈ నివేదిక నుండి కార్యక్రమాన్ని మూసివేయడం అందరినీ చెక్-అవుట్ చేసి కార్యక్రమాన్ని నిష్క్రియంగా గుర్తిస్తుంది."
+
+#: 
+msgid "This title will be used for all generated events."
+msgstr "ఈ శీర్షిక అన్ని సృష్టించబడిన కార్యక్రమాలకు ఉపయోగించబడుతుంది."
+
+#: 
+msgid "Today's Events"
+msgstr "నేటి కార్యక్రమాలు"
+
+#: 
+msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
+msgstr "చాలా ఎక్కువ సంఘటనలు (%d) — తేదీ పరిధిని తగ్గించండి. గరిష్ట అనుమతి: %d"
+
+#: 
+msgid "Type RESET to confirm"
+msgstr "నిర్ధారించడానికి RESET అని టైప్ చేయండి"
+
+#: 
+msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
+msgstr "ఒక్క క్లిక్‌తో నేటి కార్యక్రమాన్ని సృష్టించడానికి పైన ఉన్న బటన్ ఉపయోగించండి. ఇది ఈ తరగతికి స్వయంచాలకంగా లింక్ అవుతుంది కాబట్టి కియోస్క్ జాబితాను లాగగలుగుతుంది."
+
+#: 
+msgid "Use this form to bulk-create a series of recurring events. Each event is created individually and can be edited or deleted independently after creation."
+msgstr "పునరావృత కార్యక్రమాల శ్రేణిని ఒకేసారి సృష్టించడానికి ఈ ఫారమ్ ఉపయోగించండి. ప్రతి కార్యక్రమం వ్యక్తిగతంగా సృష్టించబడుతుంది మరియు సృష్టించిన తర్వాత స్వతంత్రంగా సవరించవచ్చు లేదా తొలగించవచ్చు."
+
+#: 
+msgid "Used as the default start time when creating events of this type."
+msgstr "ఈ రకపు కార్యక్రమాలు సృష్టించేటప్పుడు డిఫాల్ట్ ప్రారంభ సమయంగా ఉపయోగించబడుతుంది."
+
+#: 
+msgid "User must have Add Event permission and the Events module must be enabled"
+msgstr "వినియోగదారునికి కార్యక్రమం జోడించే అనుమతి ఉండాలి మరియు కార్యక్రమాల మాడ్యూల్ ప్రారంభించబడి ఉండాలి"
+
+#: 
+msgid "Valid startDate and endDate are required"
+msgstr "చెల్లుబాటు అయ్యే startDate మరియు endDate అవసరం"
+
+#: 
+msgid "View Event"
+msgstr "కార్యక్రమం చూడు"
+
+#: 
+msgid "What are these for?"
+msgstr "ఇవి దేని కోసం?"
+
+#: 
+msgid "What does this find?"
+msgstr "ఇది ఏమి కనుగొంటుంది?"
+
+#: 
+msgid "What is this for?"
+msgstr "ఇది దేని కోసం?"
+
+#: 
+msgid "Who is bringing them in?"
+msgstr "వారిని తీసుకొస్తున్నది ఎవరు?"
+
+#: 
+msgid "You must select a valid recurrence pattern."
+msgstr "మీరు చెల్లుబాటు అయ్యే పునరావృత నమూనాను ఎంచుకోవాలి."
+
+#: 
+msgid "You must select an event type."
+msgstr "మీరు ఒక కార్యక్రమ రకాన్ని ఎంచుకోవాలి."
+
+#: 
+msgid "You must specify a date range."
+msgstr "మీరు తేదీ పరిధిని పేర్కొనాలి."
+
+#: 
+msgid "checked in"
+msgstr "చెక్-ఇన్ అయ్యారు"
+
+#: 
+msgid "e.g., Sunday Worship Service"
+msgstr "ఉదా., ఆదివారం ఆరాధన సేవ"
+
+#: 
+msgid "endDate must be after startDate"
+msgstr "endDate, startDate తర్వాత ఉండాలి"
+
+#: 
+msgid "eventIds must be a non-empty array"
+msgstr "eventIds ఖాళీ కాని శ్రేణి అయి ఉండాలి"
+
+#: 
+msgid "invalid recurrence type"
+msgstr "చెల్లని పునరావృత రకం"
+
+#: 
+msgid "personIds must be a non-empty array"
+msgstr "personIds ఖాళీ కాని శ్రేణి అయి ఉండాలి"
+
+#: 
+msgid "to enable the reset button"
+msgstr "రీసెట్ బటన్ ప్రారంభించడానికి"
+
+#: 
+msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
+msgstr "నిర్దేశాంకాలు సేవ్ చేయబడిన తర్వాత ఇక్కడ మ్యాప్ కనిపిస్తుంది — మీ చిరునామా నుండి స్వయంచాలకంగా గుర్తించబడినా లేదా పైన మానవీయంగా నమోదు చేయబడినా."
+
+#: 
+msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr "అక్షాంశం మరియు రేఖాంశం రెండూ కలిసి అందించాలి (లేదా స్వయంచాలక గుర్తింపు కోసం రెండూ ఖాళీగా వదలాలి)."
+
+#: 
+msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr "చర్చి సమాచారం సేవ్ చేయబడింది, కానీ చిరునామాను స్వయంచాలకంగా గుర్తించలేకపోయాము. దయచేసి మ్యాప్ నిర్దేశాంకాల కింద అక్షాంశం మరియు రేఖాంశాన్ని మానవీయంగా నమోదు చేయండి."
+
+#: 
+msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
+msgstr "నిర్దేశాంకాలు సేవ్ చేసేటప్పుడు మీ చిరునామా నుండి స్వయంచాలకంగా గుర్తించబడతాయి (OpenStreetMap ద్వారా). మీరు వాటిని క్రింద మానవీయంగా కూడా నమోదు చేయవచ్చు — మానవీయ విలువలు ఎల్లప్పుడూ స్వయంచాలక గుర్తింపుకు ప్రాధాన్యత ఇస్తాయి. సిస్టమ్ చిరునామా నుండి జియోకోడ్ చేయడానికి రెండింటినీ ఖాళీగా వదలండి."
+
+#: 
+msgid "Latitude must be a number between -90 and 90."
+msgstr "అక్షాంశం -90 మరియు 90 మధ్య సంఖ్య అయి ఉండాలి."
+
+#: 
+msgid "Longitude must be a number between -180 and 180."
+msgstr "రేఖాంశం -180 మరియు 180 మధ్య సంఖ్య అయి ఉండాలి."
+
+#: 
+msgid "Map Coordinates"
+msgstr "మ్యాప్ నిర్దేశాంకాలు"
+
+#: 
+msgid "Please select a group."
+msgstr "దయచేసి ఒక గుంపును ఎంచుకోండి."
+
+#: 
+msgid "Please select a role."
+msgstr "దయచేసి ఒక పాత్రను ఎంచుకోండి."
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "దయచేసి ఒక గుంపు మరియు పాత్ర రెండింటినీ ఎంచుకోండి."
+
+#: 
+msgid "Range: -180 to 180."
+msgstr "పరిధి: -180 నుండి 180."
+
+#: 
+msgid "Range: -90 to 90."
+msgstr "పరిధి: -90 నుండి 90."
+
+#: 
+msgid "e.g., -74.0060"
+msgstr "ఉదా., -74.0060"
+
+#: 
+msgid "e.g., 40.7128"
+msgstr "ఉదా., 40.7128"
+
+#: 
+msgid "mo"
+msgstr "నె"
+
+#: 
+msgid "mos"
+msgstr "నెలలు"
+
+#: 
+msgid "yr"
+msgstr "స."
+
+#: 
+msgid "yrs"
+msgstr "సం."
+

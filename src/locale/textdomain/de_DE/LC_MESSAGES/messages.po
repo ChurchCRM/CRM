@@ -15575,6 +15575,14 @@ msgid "Range: -90 to 90."
 msgstr "Bereich: -90 bis 90."
 
 #: 
+msgid "e.g., -74.0060"
+msgstr "z.B. -74.0060"
+
+#: 
+msgid "e.g., 40.7128"
+msgstr "z.B. 40.7128"
+
+#: 
 msgid "mo"
 msgstr "Mo."
 

@@ -15462,6 +15462,14 @@ msgid "Range: -90 to 90."
 msgstr "Phạm vi: -90 đến 90."
 
 #: 
+msgid "e.g., -74.0060"
+msgstr "vd., -74.0060"
+
+#: 
+msgid "e.g., 40.7128"
+msgstr "vd., 40.7128"
+
+#: 
 msgid "mo"
 msgstr "tháng"
 

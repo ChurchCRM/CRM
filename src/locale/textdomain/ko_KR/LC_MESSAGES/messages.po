@@ -15450,6 +15450,14 @@ msgid "Range: -90 to 90."
 msgstr "범위: -90 ~ 90"
 
 #: 
+msgid "e.g., -74.0060"
+msgstr "예: -74.0060"
+
+#: 
+msgid "e.g., 40.7128"
+msgstr "예: 40.7128"
+
+#: 
 msgid "mo"
 msgstr "개월"
 
