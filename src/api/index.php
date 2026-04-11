@@ -46,7 +46,6 @@ require __DIR__ . '/routes/public/public-calendar.php';
 require __DIR__ . '/routes/public/public-user.php';
 require __DIR__ . '/routes/public/public-register.php';
 require __DIR__ . '/routes/system/system-custom-fields.php';
-require __DIR__ . '/routes/system/system-debug.php';
 require __DIR__ . '/routes/system/system-issues.php';
 require __DIR__ . '/routes/system/system-locale.php';
 require __DIR__ . '/routes/cart.php';
