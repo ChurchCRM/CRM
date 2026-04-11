@@ -15442,6 +15442,14 @@ msgid "Range: -90 to 90."
 msgstr "सीमा: -90 से 90।"
 
 #: 
+msgid "e.g., -74.0060"
+msgstr "उदा., -74.0060"
+
+#: 
+msgid "e.g., 40.7128"
+msgstr "उदा., 40.7128"
+
+#: 
 msgid "mo"
 msgstr "माह"
 

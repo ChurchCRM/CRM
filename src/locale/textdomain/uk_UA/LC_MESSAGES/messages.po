@@ -14699,3 +14699,819 @@ msgstr "Жовтий"
 msgid "Your current access levels (read-only)"
 msgstr "Ваші поточні рівні доступу (лише для читання)"
 
+#: 
+msgid "%d repeat event created successfully."
+msgid_plural "%d repeat events created successfully."
+msgstr[0] "%d повторювана подія успішно створена."
+msgstr[1] "%d повторювані події успішно створено."
+msgstr[2] "%d повторюваних подій успішно створено."
+msgstr[3] "%d повторюваних подій успішно створено."
+
+#: 
+msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
+msgstr "(наприклад, Парафіяни, Відвідувачі, Діти), щоб волонтери могли фіксувати кількість людей тут."
+
+#: 
+msgid "1. Sunday School Class"
+msgstr "1. Клас недільної школи"
+
+#: 
+msgid "2. Event Type"
+msgstr "2. Тип події"
+
+#: 
+msgid "3. Event"
+msgstr "3. Подія"
+
+#: 
+msgid "4. Kiosk"
+msgstr "4. Кіоск"
+
+#: 
+msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
+msgstr "Клас — це Група типу «Недільна школа». Вона містить учнів та вчителів (учасників з ролями)."
+
+#: 
+msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
+msgstr "Пов'язана група прив'язує цю подію до класу або реєстру служіння. Коли подія призначається кіоску, кіоск завантажує учасників групи та відображає їх у вигляді списку для відмітки присутності. Для класів недільної школи вкажіть тут групу класу, щоб волонтери могли відмічати учнів із планшета."
+
+#: 
+msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr "Конкретне проведення (наприклад, «Дошкільна — 12 квіт.»). Успадковує налаштування від типу та пов'язується з групою класу через аудиторію. Саме до цього проведення волонтери відмічають відвідуваність."
+
+#: 
+msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr "Планшет, призначений одній події. Кіоск завантажує реєстр пов'язаної групи події та відображає список для відмітки. Без пов'язаної групи кіоску нема що відображати."
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "Додати відвідувача"
+
+#: 
+msgid "Add categories on the Event Type page"
+msgstr "Додайте категорії на сторінці Типу події"
+
+#: 
+msgid "Add people to your cart first, then come back to check them in to an event."
+msgstr "Спочатку додайте людей до вибору, а потім поверніться, щоб відмітити їх на події."
+
+#: 
+msgid "All clear!"
+msgstr "Все гаразд!"
+
+#: 
+msgid "All events and attendance records"
+msgstr "Усі події та записи відвідуваності"
+
+#: 
+msgid "All financial data (pledges, payments, deposits)"
+msgstr "Усі фінансові дані (фінансові зобов'язання, платежі, депозити)"
+
+#: 
+msgid "All groups, roles, and memberships"
+msgstr "Усі групи, ролі та членства"
+
+#: 
+msgid "All people and family records"
+msgstr "Усі записи про парафіян та сім'ї"
+
+#: 
+msgid "All system settings and custom fields"
+msgstr "Усі системні налаштування та настроювані поля"
+
+#: 
+msgid "All uploaded photos and documents"
+msgstr "Усі завантажені фото та документи"
+
+#: 
+msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
+msgstr "Тип події — це шаблон: назва, час початку за замовчуванням, повторення, категорії підрахунку відвідуваності. Необов'язково пов'язується з однією групою класу як аудиторією за замовчуванням."
+
+#: 
+msgid "Attendance record deleted."
+msgstr "Запис відвідуваності видалено."
+
+#: 
+msgid "Audit"
+msgstr "Аудит"
+
+#: 
+msgid "Audit Events"
+msgstr "Аудит подій"
+
+#: 
+msgid "Auto-totalled from counts at right"
+msgstr "Сума автоматично підраховується з показників праворуч"
+
+#: 
+msgid "Back to Events"
+msgstr "Назад до подій"
+
+#: 
+msgid "Back to Events Dashboard"
+msgstr "Назад до панелі подій"
+
+#: 
+msgid "Backup failed. You can still proceed with the reset, but your data will be lost."
+msgstr "Резервне копіювання не вдалося. Ви все одно можете продовжити скидання, але ваші дані будуть втрачені."
+
+#: 
+msgid "Backup ready!"
+msgstr "Резервна копія готова!"
+
+#: 
+msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
+msgstr "Перед скиданням наполегливо рекомендуємо завантажити резервну копію поточних даних. Це ваш єдиний шанс їх зберегти."
+
+#: 
+msgid "Bulk-create a series of recurring events"
+msgstr "Масове створення серії повторюваних подій"
+
+#: 
+msgid "By"
+msgstr "Ким"
+
+#: 
+msgid "Cannot check in to an inactive event. Activate the event first."
+msgstr "Не можна відмітити присутність на неактивній події. Спочатку активуйте подію."
+
+#: 
+msgid "Change"
+msgstr "Змінити"
+
+#: 
+msgid "Check In All"
+msgstr "Відмітити всіх"
+
+#: 
+msgid "Check In Family"
+msgstr "Відмітити сім'ю"
+
+#: 
+msgid "Check Out All"
+msgstr "Зняти відмітку з усіх"
+
+#: 
+msgid "Check in all %d family members to a single event."
+msgstr "Відмітити %d члена сім'ї на одній події."
+
+#: 
+msgid "Check out"
+msgstr "Зняти відмітку"
+
+#: 
+msgid "Check-in By"
+msgstr "Відмічено ким"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "Відмітка не вдалася. Спробуйте ще раз."
+
+#: 
+msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
+msgstr "Відмітку вимкнено для неактивних подій. Активуйте подію з панелі подій, щоб увімкнути відмітку."
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "Зняття відмітки не вдалося. Спробуйте ще раз."
+
+#: 
+msgid "Checked in to event: %s"
+msgstr "Відмічено на події: %s"
+
+#: 
+msgid "Checked out from event: %s"
+msgstr "Знято відмітку з події: %s"
+
+#: 
+msgid "Close All Stuck Events"
+msgstr "Закрити всі застряглі події"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "Підтвердити зняття відмітки"
+
+#: 
+msgid "Create Repeat Events"
+msgstr "Створити повторювані події"
+
+#: 
+msgid "Create Today's Event"
+msgstr "Створити сьогоднішню подію"
+
+#: 
+msgid "Create a new event type with recurrence and attendance settings"
+msgstr "Створити новий тип події з параметрами повторення та відвідуваності"
+
+#: 
+msgid "Create one now"
+msgstr "Створити зараз"
+
+#: 
+msgid "Create today's class event and link it to this class for kiosk check-in"
+msgstr "Створити сьогоднішню подію класу та пов'язати її з цим класом для реєстрації на кіоску"
+
+#: 
+msgid "Creating backup..."
+msgstr "Створення резервної копії..."
+
+#: 
+msgid "Creating..."
+msgstr "Створення..."
+
+#: 
+msgid "Database + uploaded photos (larger)"
+msgstr "База даних + завантажені фото (більший розмір)"
+
+#: 
+msgid "Database dump only (.sql)"
+msgstr "Лише дамп бази даних (.sql)"
+
+#: 
+msgid "Date Range"
+msgstr "Діапазон дат"
+
+#: 
+msgid "Date range cannot exceed 1 year"
+msgstr "Діапазон дат не може перевищувати 1 рік"
+
+#: 
+msgid "Deactivate"
+msgstr "Деактивувати"
+
+#: 
+msgid "Delete Event Type"
+msgstr "Видалити тип події"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "Видалити запис відвідуваності?"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "Видалити запис відмітки для"
+
+#: 
+msgid "Delete this event?"
+msgstr "Видалити цю подію?"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "Видалення події також видалить усі підрахунки відвідуваності. Цю дію неможливо скасувати."
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "Видалення цього типу події НЕ видалить наявні події. Ви впевнені?"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "Видалення цієї події також видалить усі записи відвідуваності. Цю дію неможливо скасувати."
+
+#: 
+msgid "Destructive Operation"
+msgstr "Деструктивна операція"
+
+#: 
+msgid "Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field."
+msgstr "Відредагуйте назву категорії та натисніть «Зберегти», або скористайтеся іконкою кошика для видалення. Нові рядки додаються через нижнє поле."
+
+#: 
+msgid "End Time"
+msgstr "Час завершення"
+
+#: 
+msgid "End time must be after start time."
+msgstr "Час завершення має бути після часу початку."
+
+#: 
+msgid "Ended"
+msgstr "Завершено"
+
+#: 
+msgid "Ends"
+msgstr "Завершується"
+
+#: 
+msgid "Event Audit"
+msgstr "Аудит подій"
+
+#: 
+msgid "Event Check-in"
+msgstr "Реєстрація на подію"
+
+#: 
+msgid "Event Details"
+msgstr "Деталі події"
+
+#: 
+msgid "Event Template"
+msgstr "Шаблон події"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "Подія вже існує. Перенаправлення на реєстрацію..."
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "Подію створено. Перенаправлення на реєстрацію..."
+
+#: 
+msgid "Event end date/time must be on or after the start date/time."
+msgstr "Дата/час завершення події має бути не раніше дати/часу початку."
+
+#: 
+msgid "Event title is required."
+msgstr "Назва події є обов'язковою."
+
+#: 
+msgid "Event type ID is required"
+msgstr "Ідентифікатор типу події є обов'язковим"
+
+#: 
+msgid "Event type ID or group ID is required"
+msgstr "Ідентифікатор типу події або групи є обов'язковим"
+
+#: 
+msgid "Event type has no date configured for yearly recurrence"
+msgstr "Для типу події не налаштовано дату щорічного повторення"
+
+#: 
+msgid "Event type has no day-of-week configured for weekly recurrence"
+msgstr "Для типу події не налаштовано день тижня для щотижневого повторення"
+
+#: 
+msgid "Event type has no recurrence pattern configured"
+msgstr "Для типу події не налаштовано шаблон повторення"
+
+#: 
+msgid "Event type has no valid day-of-month configured for monthly recurrence"
+msgstr "Для типу події не налаштовано дійсний день місяця для щомісячного повторення"
+
+#: 
+msgid "Events will be created for every matching occurrence within this date range."
+msgstr "Події будуть створені для кожного відповідного проведення в межах цього діапазону дат."
+
+#: 
+msgid "Every month on the"
+msgstr "Щомісяця"
+
+#: 
+msgid "Every week on"
+msgstr "Щотижня у"
+
+#: 
+msgid "Every year on"
+msgstr "Щороку"
+
+#: 
+msgid "Everyone is checked in!"
+msgstr "Всі відмічені!"
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "Не вдалося створити клас. Спробуйте ще раз."
+
+#: 
+msgid "Failed to create event."
+msgstr "Не вдалося створити подію."
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "Не вдалося створити подію. Спробуйте ще раз."
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "Не вдалося видалити. Спробуйте ще раз."
+
+#: 
+msgid "Fastest workflow:"
+msgstr "Найшвидший спосіб:"
+
+#: 
+msgid "Find past events that are still active or have un-checked-out attendees"
+msgstr "Знайти минулі події, які ще активні або мають учасників без знятої відмітки"
+
+#: 
+msgid "Format: MM-DD (e.g. 04-12 for April 12)"
+msgstr "Формат: ММ-ДД (наприклад, 04-12 для 12 квітня)"
+
+#: 
+msgid "Group Roster"
+msgstr "Реєстр групи"
+
+#: 
+msgid "Hide Advanced Options"
+msgstr "Приховати розширені параметри"
+
+#: 
+msgid "How Sunday School + Events + Kiosks fit together"
+msgstr "Як взаємодіють Недільна школа, події та кіоски"
+
+#: 
+msgid "Invalid date for %s — expected YYYY-MM-DD"
+msgstr "Недійсна дата для %s — очікується РРРР-ММ-ДД"
+
+#: 
+msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr "Недійсний формат дати для rangeStart або rangeEnd"
+
+#: 
+msgid "Invalid date format."
+msgstr "Недійсний формат дати."
+
+#: 
+msgid "Invalid date; expected format YYYY-MM-DD"
+msgstr "Недійсна дата; очікуваний формат РРРР-ММ-ДД"
+
+#: 
+msgid "Invalid event type ID"
+msgstr "Недійсний ідентифікатор типу події"
+
+#: 
+msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
+msgstr "Недійсний формат щорічного повторення; очікується ММ-ДД (наприклад, 04-12)"
+
+#: 
+msgid "Just now"
+msgstr "Щойно"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "Залиште порожнім, щоб зняти відмітку без запису наглядача."
+
+#: 
+msgid "Link events to a group for Kiosk check-in functionality."
+msgstr "Пов'яжіть події з групою для функції реєстрації на кіоску."
+
+#: 
+msgid "Linked Groups"
+msgstr "Пов'язані групи"
+
+#: 
+msgid "Looking for stuck events..."
+msgstr "Пошук застряглих подій..."
+
+#: 
+msgid "Manage event names, recurrence patterns, and attendance counts"
+msgstr "Управляйте назвами подій, шаблонами повторення та підрахунком відвідуваності"
+
+#: 
+msgid "Missing required field: %s"
+msgstr "Відсутнє обов'язкове поле: %s"
+
+#: 
+msgid "No Events Today"
+msgstr "Сьогодні немає подій"
+
+#: 
+msgid "No Group"
+msgstr "Без групи"
+
+#: 
+msgid "No active assignment"
+msgstr "Немає активного призначення"
+
+#: 
+msgid "No active events found."
+msgstr "Активних подій не знайдено."
+
+#: 
+msgid "No attendance count categories defined for this event type yet."
+msgstr "Для цього типу події ще не визначено категорії підрахунку відвідуваності."
+
+#: 
+msgid "No one has been checked in to this event yet."
+msgstr "Ще ніхто не відмічений на цій події."
+
+#: 
+msgid "No past events are still marked Active."
+msgstr "Немає минулих подій, позначених як Активні."
+
+#: 
+msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr "Відкрийте клас → натисніть «Створити сьогоднішню подію» — подія буде створена й пов'язана з класом одразу, після чого ви перейдете на сторінку реєстрації, готову для кіоску або самостійного відвідування."
+
+#: 
+msgid "Optional Settings"
+msgstr "Додаткові параметри"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "Необов'язково — вкажіть, хто знімає відмітку з цієї особи (наприклад, батько, який забирає дитину)."
+
+#: 
+msgid "Person checked out."
+msgstr "Відмітку з особи знято."
+
+#: 
+msgid "Person is not checked in"
+msgstr "Особа не відмічена"
+
+#: 
+msgid "Person not in active class roster"
+msgstr "Особа не в активному реєстрі класу"
+
+#: 
+msgid "Pin to Calendars"
+msgstr "Закріпити в календарях"
+
+#: 
+msgid "Please select a person to check in."
+msgstr "Будь ласка, виберіть особу для відмітки."
+
+#: 
+msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
+msgstr "Попередньо заповнено на основі цього типу події — для повторюваних типів дата є наступним проведенням після останньої події цього типу, а час відповідає часу початку за замовчуванням."
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "Кінцева дата діапазону має бути не раніше початкової дати діапазону."
+
+#: 
+msgid "Range end must be a valid YYYY-MM-DD date."
+msgstr "Кінцева дата діапазону має бути дійсною датою у форматі РРРР-ММ-ДД."
+
+#: 
+msgid "Range start must be a valid YYYY-MM-DD date."
+msgstr "Початкова дата діапазону має бути дійсною датою у форматі РРРР-ММ-ДД."
+
+#: 
+msgid "Range start must be before range end"
+msgstr "Початкова дата діапазону має бути раніше кінцевої"
+
+#: 
+msgid "Range start must be before range end."
+msgstr "Початкова дата діапазону має бути раніше кінцевої."
+
+#: 
+msgid "RangeEnd must be on or after RangeStart"
+msgstr "RangeEnd має бути не раніше RangeStart"
+
+#: 
+msgid "Recommended"
+msgstr "Рекомендовано"
+
+#: 
+msgid "Required for Kiosk"
+msgstr "Обов'язково для кіоску"
+
+#: 
+msgid "Resetting will permanently delete:"
+msgstr "Скидання назавжди видалить:"
+
+#: 
+msgid "SQL Only"
+msgstr "Лише SQL"
+
+#: 
+msgid "Save Time"
+msgstr "Зекономити час"
+
+#: 
+msgid "Save changes to this category name"
+msgstr "Зберегти зміни назви цієї категорії"
+
+#: 
+msgid "Select an event type…"
+msgstr "Виберіть тип події…"
+
+#: 
+msgid "Select start and end date/time."
+msgstr "Виберіть дату/час початку та завершення."
+
+#: 
+msgid "Show More Options"
+msgstr "Показати більше параметрів"
+
+#: 
+msgid "Skip"
+msgstr "Пропустити"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "Пропустити та зняти відмітку"
+
+#: 
+msgid "Start Check-in"
+msgstr "Розпочати реєстрацію"
+
+#: 
+msgid "Starts"
+msgstr "Починається"
+
+#: 
+msgid "Step 1: Create a Backup"
+msgstr "Крок 1: Створіть резервну копію"
+
+#: 
+msgid "Step 2: Reset Database"
+msgstr "Крок 2: Скидання бази даних"
+
+#: 
+msgid "Still Checked In"
+msgstr "Залишаються відміченими"
+
+#: 
+msgid "Stuck Events"
+msgstr "Застряглі події"
+
+#: 
+msgid "Take Attendance"
+msgstr "Відмітити відвідуваність"
+
+#: 
+msgid "The Events module is disabled"
+msgstr "Модуль подій вимкнено"
+
+#: 
+msgid "The same start and end time will be used for all generated events."
+msgstr "Однаковий час початку та завершення буде використовуватися для всіх створених подій."
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "На сьогодні не заплановано жодних подій"
+
+#: 
+msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
+msgstr "Це категорії підрахунку — волонтери заповнюють їх після події, щоб панель управління могла розбити відвідуваність (наприклад, скільки парафіян та скільки відвідувачів). Вони окремі від індивідуальних відміток на сторінці реєстрації."
+
+#: 
+msgid "This event is inactive."
+msgstr "Ця подія неактивна."
+
+#: 
+msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr "Ця сторінка дозволяє назавжди видалити всі дані з бази даних ChurchCRM. Цю дію неможливо скасувати."
+
+#: 
+msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
+msgstr "Цей звіт відображає всі події, дата завершення яких минула, але які досі позначені як Активні. Поширені причини: волонтер забув натиснути «Зняти відмітку», кіоск втратив зв'язок, або подія була створена й покинута. Старі події (кількарічної давності), які так і не були деактивовані, також відображаються тут. Стовпець «Залишаються відміченими» показує, чи були особи залишені в процесі реєстрації. Закриття події з цього звіту знімає відмітки з усіх (використовуючи поточний час) та позначає подію як Неактивну."
+
+#: 
+msgid "This title will be used for all generated events."
+msgstr "Ця назва буде використовуватися для всіх створених подій."
+
+#: 
+msgid "Today's Events"
+msgstr "Сьогоднішні події"
+
+#: 
+msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
+msgstr "Забагато повторень (%d) — звузьте діапазон дат. Максимально дозволено: %d"
+
+#: 
+msgid "Type RESET to confirm"
+msgstr "Введіть RESET для підтвердження"
+
+#: 
+msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
+msgstr "Використайте кнопку вище, щоб створити сьогоднішню подію одним натисканням. Вона буде автоматично пов'язана з цим класом, щоб кіоск міг завантажити реєстр."
+
+#: 
+msgid "Use this form to bulk-create a series of recurring events. Each event is created individually and can be edited or deleted independently after creation."
+msgstr "Використайте цю форму для масового створення серії повторюваних подій. Кожна подія створюється окремо і може бути відредагована або видалена незалежно після створення."
+
+#: 
+msgid "Used as the default start time when creating events of this type."
+msgstr "Використовується як час початку за замовчуванням при створенні подій цього типу."
+
+#: 
+msgid "User must have Add Event permission and the Events module must be enabled"
+msgstr "Користувач повинен мати дозвіл на додавання події, а модуль подій має бути увімкнено"
+
+#: 
+msgid "Valid startDate and endDate are required"
+msgstr "Необхідні дійсні startDate та endDate"
+
+#: 
+msgid "View Event"
+msgstr "Переглянути подію"
+
+#: 
+msgid "What are these for?"
+msgstr "Для чого вони?"
+
+#: 
+msgid "What does this find?"
+msgstr "Що це знаходить?"
+
+#: 
+msgid "What is this for?"
+msgstr "Для чого це?"
+
+#: 
+msgid "Who is bringing them in?"
+msgstr "Хто їх приводить?"
+
+#: 
+msgid "You must select a valid recurrence pattern."
+msgstr "Необхідно вибрати дійсний шаблон повторення."
+
+#: 
+msgid "You must select an event type."
+msgstr "Необхідно вибрати тип події."
+
+#: 
+msgid "You must specify a date range."
+msgstr "Необхідно вказати діапазон дат."
+
+#: 
+msgid "checked in"
+msgstr "відмічений"
+
+#: 
+msgid "e.g., Sunday Worship Service"
+msgstr "наприклад, Недільне богослужіння"
+
+#: 
+msgid "endDate must be after startDate"
+msgstr "endDate має бути після startDate"
+
+#: 
+msgid "eventIds must be a non-empty array"
+msgstr "eventIds має бути непорожнім масивом"
+
+#: 
+msgid "invalid recurrence type"
+msgstr "недійсний тип повторення"
+
+#: 
+msgid "personIds must be a non-empty array"
+msgstr "personIds має бути непорожнім масивом"
+
+#: 
+msgid "to enable the reset button"
+msgstr "щоб увімкнути кнопку скидання"
+
+#: 
+msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
+msgstr "Карта з'явиться тут після збереження координат — автоматично визначених з вашої адреси або введених вручну вище."
+
+#: 
+msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr "Широта та довгота мають бути вказані разом (або обидва поля залишені порожніми для автоматичного визначення)."
+
+#: 
+msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr "Інформацію про церкву збережено, але адресу не вдалося визначити автоматично. Будь ласка, введіть широту та довготу вручну в розділі «Координати карти»."
+
+#: 
+msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
+msgstr "Координати автоматично визначаються з вашої адреси при збереженні (через OpenStreetMap). Ви також можете ввести їх вручну нижче — ручні значення завжди мають пріоритет над автоматичним визначенням. Залиште обидва поля порожніми, щоб система визначила координати за адресою."
+
+#: 
+msgid "Latitude must be a number between -90 and 90."
+msgstr "Широта має бути числом від -90 до 90."
+
+#: 
+msgid "Longitude must be a number between -180 and 180."
+msgstr "Довгота має бути числом від -180 до 180."
+
+#: 
+msgid "Map Coordinates"
+msgstr "Координати карти"
+
+#: 
+msgid "Please select a group."
+msgstr "Будь ласка, виберіть групу."
+
+#: 
+msgid "Please select a role."
+msgstr "Будь ласка, виберіть роль."
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "Будь ласка, виберіть групу та роль."
+
+#: 
+msgid "Range: -180 to 180."
+msgstr "Діапазон: від -180 до 180."
+
+#: 
+msgid "Range: -90 to 90."
+msgstr "Діапазон: від -90 до 90."
+
+#: 
+msgid "e.g., -74.0060"
+msgstr "наприклад, -74.0060"
+
+#: 
+msgid "e.g., 40.7128"
+msgstr "наприклад, 40.7128"
+
+#: 
+msgid "mo"
+msgstr "міс."
+
+#: 
+msgid "mos"
+msgstr "міс."
+
+#: 
+msgid "yr"
+msgstr "рік"
+
+#: 
+msgid "yrs"
+msgstr "рр."
+

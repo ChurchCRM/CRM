@@ -15516,6 +15516,14 @@ msgid "Range: -90 to 90."
 msgstr "Rango: -90 a 90."
 
 #: 
+msgid "e.g., -74.0060"
+msgstr "p. ej., -74.0060"
+
+#: 
+msgid "e.g., 40.7128"
+msgstr "p. ej., 40.7128"
+
+#: 
 msgid "mo"
 msgstr "mes"
 

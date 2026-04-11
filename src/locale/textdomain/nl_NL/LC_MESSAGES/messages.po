@@ -13603,6 +13603,10 @@ msgstr "Veelgebruikte doelen voor aangepaste koppelingen:\n"
 msgid "Configuration"
 msgstr "Configuratie"
 
+#: 
+msgid "Continent"
+msgstr "Continent"
+
 #. plugin:vonage:section:6:title
 #: 
 msgid "Costs"
@@ -14113,6 +14117,11 @@ msgstr "Upgrade-instellingen"
 msgid "Use Cases"
 msgstr "Gebruiksscenario's"
 
+#. plugin:vonage:link:0:label
+#: 
+msgid "Vonage Dashboard"
+msgstr "Vonage Dashboard"
+
 #. plugin:vonage:link:2:label
 #: 
 msgid "Vonage Pricing"
@@ -14322,6 +14331,10 @@ msgid "API key regenerated"
 msgstr "API-sleutel opnieuw gegenereerd"
 
 #: 
+msgid "Account"
+msgstr "Account"
+
+#: 
 msgid "Advanced Settings"
 msgstr "Geavanceerde instellingen"
 
@@ -14332,6 +14345,10 @@ msgstr "Er is een fout opgetreden."
 #: 
 msgid "Appearance"
 msgstr "Weergave"
+
+#: 
+msgid "Azure"
+msgstr "Azure"
 
 #: 
 msgid "Back to Finance Dashboard"
@@ -14463,6 +14480,10 @@ msgid "Include your API key in requests using the x-api-key header:"
 msgstr "Neem uw API-sleutel op in verzoeken via de x-api-key header:"
 
 #: 
+msgid "Indigo"
+msgstr "Indigo"
+
+#: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "Ongeldige JSON-waarde — instelling is niet opgeslagen. Corrigeer het en probeer het opnieuw."
 
@@ -14481,6 +14502,11 @@ msgstr "Licht"
 #: 
 msgid "Lime"
 msgstr "Limoengroen"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "Malayalam - India"
 
 #: 
 msgid "Manage 2FA"
@@ -14645,6 +14671,10 @@ msgid "3. Event"
 msgstr "3. Evenement"
 
 #: 
+msgid "4. Kiosk"
+msgstr "4. Kiosk"
+
+#: 
 msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
 msgstr "Een klas is een Groep van het type \"Zondagsschool\". Het bevat de leerlingen en leraren (leden met rollen)."
 
@@ -14707,6 +14737,10 @@ msgstr "Een Evenementtype is een sjabloon — naam, standaard begintijd, herhali
 #: 
 msgid "Attendance record deleted."
 msgstr "Aanwezigheidsregistratie verwijderd."
+
+#: 
+msgid "Audit"
+msgstr "Audit"
 
 #: 
 msgid "Audit Events"
@@ -15403,6 +15437,14 @@ msgstr "Bereik: -180 tot 180."
 #: 
 msgid "Range: -90 to 90."
 msgstr "Bereik: -90 tot 90."
+
+#: 
+msgid "e.g., -74.0060"
+msgstr "bijv., -74.0060"
+
+#: 
+msgid "e.g., 40.7128"
+msgstr "bijv., 40.7128"
 
 #: 
 msgid "mo"

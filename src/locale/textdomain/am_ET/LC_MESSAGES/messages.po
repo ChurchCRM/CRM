@@ -15486,6 +15486,14 @@ msgid "Range: -90 to 90."
 msgstr "ክልል: -90 እስከ 90።"
 
 #: 
+msgid "e.g., -74.0060"
+msgstr "ለምሳሌ፣ -74.0060"
+
+#: 
+msgid "e.g., 40.7128"
+msgstr "ለምሳሌ፣ 40.7128"
+
+#: 
 msgid "mo"
 msgstr "ወር"
 

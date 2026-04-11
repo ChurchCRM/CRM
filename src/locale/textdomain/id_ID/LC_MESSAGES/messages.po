@@ -15451,6 +15451,14 @@ msgid "Range: -90 to 90."
 msgstr "Rentang: -90 hingga 90."
 
 #: 
+msgid "e.g., -74.0060"
+msgstr "mis., -74.0060"
+
+#: 
+msgid "e.g., 40.7128"
+msgstr "mis., 40.7128"
+
+#: 
 msgid "mo"
 msgstr "bl."
 

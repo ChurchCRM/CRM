@@ -15470,6 +15470,14 @@ msgid "Range: -90 to 90."
 msgstr "טווח: -90 עד 90."
 
 #: 
+msgid "e.g., -74.0060"
+msgstr "לדוגמה, -74.0060"
+
+#: 
+msgid "e.g., 40.7128"
+msgstr "לדוגמה, 40.7128"
+
+#: 
 msgid "mo"
 msgstr "חוד׳"
 
