@@ -6,13 +6,9 @@ require_once __DIR__ . '/Include/PageInit.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\model\ChurchCRM\FamilyCustomQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
-use ChurchCRM\model\ChurchCRM\NoteQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
-use ChurchCRM\model\ChurchCRM\PropertyQuery;
-use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
@@ -40,74 +36,11 @@ if (isset($_GET['CancelFamily'])) {
 
 $DonationMessage = '';
 
-// Move Donations from 1 family to another
-if (AuthenticationManager::getCurrentUser()->isFinanceEnabled() && isset($_GET['MoveDonations']) && $iFamilyID && $iDonationFamilyID && $iFamilyID != $iDonationFamilyID) {
-    PledgeQuery::create()
-        ->filterByFamId((int) $iFamilyID)
-        ->update([
-            'FamId' => (int) $iDonationFamilyID,
-            'DateLastEdited' => date('Y-m-d'),
-            'EditedBy' => AuthenticationManager::getCurrentUser()->getId(),
-        ]);
-
-            $DonationMessage = '<p><b><span class="text-error">' . gettext('All donations from this family have been moved to another family.') . '</span></b></p>';
-}
-
 //Set the Page Title
 $sPageTitle = gettext('Delete Confirmation') . ': ' . gettext('Family');
 
-//Do we have deletion confirmation?
-if (isset($_GET['Confirmed'])) {
-    $iFamilyIDInt = (int) $iFamilyID;
-
-    // Delete Family
-    // Delete all associated Notes associated with this Family record
-    NoteQuery::create()->filterByFamId($iFamilyIDInt)->delete();
-
-    // Delete Family pledges
-    PledgeQuery::create()
-        ->filterByPledgeOrPayment('Pledge')
-        ->filterByFamId($iFamilyIDInt)
-        ->delete();
-
-    // Remove family property data
-    $familyPropertyIds = PropertyQuery::create()
-        ->filterByProClass('f')
-        ->select(['ProId'])
-        ->find()
-        ->toArray();
-    if (!empty($familyPropertyIds)) {
-        RecordPropertyQuery::create()
-            ->filterByPropertyId($familyPropertyIds)
-            ->filterByRecordId($iFamilyIDInt)
-            ->delete();
-    }
-
-    if (isset($_GET['Members'])) {
-        // Delete all persons that were in this family
-        PersonQuery::create()->filterByFamId($iFamilyIDInt)->find()->delete();
-    } else {
-        // Reset previous members' family ID to 0 (undefined)
-        PersonQuery::create()
-            ->filterByFamId($iFamilyIDInt)
-            ->update(['FamId' => 0]);
-    }
-
-    // Delete the specified Family record
-    FamilyQuery::create()->findPk($iFamilyIDInt)?->delete();
-
-    // Remove custom field data
-    FamilyCustomQuery::create()->filterByFamId($iFamilyIDInt)->delete();
-
-    // Delete the photo files, if they exist
-    $photoFile = 'Images/Family/' . $iFamilyID . '.png';
-    if (file_exists($photoFile)) {
-        unlink($photoFile);
-    }
-
-    // Redirect back to the family listing
-    RedirectUtils::redirect(SystemURLs::getRootPath() . '/people/family');
-}
+// Delete and MoveDonations are now handled by API endpoints:
+// DELETE /api/family/{familyId} and POST /api/family/{familyId}/donations/move
 
 //Get the family record in question
 $family = FamilyQuery::create()->findPk((int) $iFamilyID);
@@ -189,9 +122,33 @@ require_once __DIR__ . '/Include/Header.php';
                 }
             }
             echo '</select><br><br>';
-            echo '<input type="submit" class="btn btn-secondary me-2" name="CancelFamily" value="' . gettext('Cancel and Return to Family View') . '">';
-            echo '<input type="submit" class="btn btn-primary" name="MoveDonations" value="' . gettext('Move Donations to Selected Family') . '">';
+            echo '<a href="people/family/' . (int)$iFamilyID . '" class="btn btn-secondary me-2">' . gettext('Cancel and Return to Family View') . '</a>';
+            echo '<button type="button" class="btn btn-primary" onclick="moveDonations()">' . gettext('Move Donations to Selected Family') . '</button>';
             echo '</div></form>';
+            ?>
+            <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+            function moveDonations() {
+                var targetFamilyId = document.querySelector('select[name=DonationFamilyID]').value;
+                if (!targetFamilyId || targetFamilyId == '0') {
+                    bootbox.alert(<?= json_encode(gettext('Please select a target family.'), JSON_HEX_TAG | JSON_HEX_AMP) ?>);
+                    return;
+                }
+                fetch(window.CRM.root + '/api/family/<?= (int)$iFamilyID ?>/donations/move', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ targetFamilyId: parseInt(targetFamilyId) })
+                })
+                .then(function(r) { return r.json(); })
+                .then(function(data) {
+                    if (data.success) { window.location.reload(); }
+                    else { bootbox.alert(data.message || <?= json_encode(gettext('Failed to move donations.'), JSON_HEX_TAG | JSON_HEX_AMP) ?>); }
+                })
+                .catch(function() {
+                    bootbox.alert(<?= json_encode(gettext('An error occurred while moving donations.'), JSON_HEX_TAG | JSON_HEX_AMP) ?>);
+                });
+            }
+            </script>
+            <?php
 
             // Show payments connected with family
             // -----------------------------------
@@ -266,9 +223,30 @@ require_once __DIR__ . '/Include/Header.php';
                     echo '<li>' . InputUtils::escapeHTML($person->getFirstName()) . ' ' . InputUtils::escapeHTML($person->getLastName()) . '</li>';
                 }
                 echo '</ul></div>';
-                echo"<p id=\"deleteFamilyOnlyBtn\" class=\"text-center\"><a class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&FamilyID=" . $iFamilyID . '">' . gettext('Delete Family Record ONLY') . '</a> ';
-                echo"<a id=\"deleteFamilyAndMembersBtn\" class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&Members=Yes&FamilyID=" . $iFamilyID . '">' . gettext('Delete Family Record AND Family Members') . '</a> ';
-                echo"<a class='btn btn-secondary ms-2' href=\"people/family/" . $iFamilyID . '">' . gettext('No, cancel this deletion') . '</a></p>';
+                echo '<div class="text-center">';
+                echo '<button id="deleteFamilyOnlyBtn" class="btn btn-danger" onclick="deleteFamily(' . (int)$iFamilyID . ', false)">' . gettext('Delete Family Record ONLY') . '</button> ';
+                echo '<button id="deleteFamilyAndMembersBtn" class="btn btn-danger" onclick="deleteFamily(' . (int)$iFamilyID . ', true)">' . gettext('Delete Family Record AND Family Members') . '</button> ';
+                echo '<a class="btn btn-secondary ms-2" href="people/family/' . (int)$iFamilyID . '">' . gettext('No, cancel this deletion') . '</a>';
+                echo '</div>';
+                ?>
+                <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+                function deleteFamily(familyId, deleteMembers) {
+                    var url = window.CRM.root + '/api/family/' + familyId + (deleteMembers ? '?deleteMembers=true' : '');
+                    fetch(url, { method: 'DELETE' })
+                    .then(function(r) { return r.json(); })
+                    .then(function(data) {
+                        if (data.success) {
+                            window.location.href = window.CRM.root + '/people/family';
+                        } else {
+                            bootbox.alert(data.message || <?= json_encode(gettext('Delete failed'), JSON_HEX_TAG | JSON_HEX_AMP) ?>);
+                        }
+                    })
+                    .catch(function() {
+                        bootbox.alert(<?= json_encode(gettext('An error occurred while deleting the family.'), JSON_HEX_TAG | JSON_HEX_AMP) ?>);
+                    });
+                }
+                </script>
+                <?php
             }
             ?>
     </div>
