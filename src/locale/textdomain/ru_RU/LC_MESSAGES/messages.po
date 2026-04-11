@@ -15567,6 +15567,14 @@ msgid "Range: -90 to 90."
 msgstr "Диапазон: от -90 до 90."
 
 #: 
+msgid "e.g., -74.0060"
+msgstr "напр., -74.0060"
+
+#: 
+msgid "e.g., 40.7128"
+msgstr "напр., 40.7128"
+
+#: 
 msgid "mo"
 msgstr "мес."
 

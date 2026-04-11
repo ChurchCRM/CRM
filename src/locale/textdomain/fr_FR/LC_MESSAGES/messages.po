@@ -15487,6 +15487,14 @@ msgid "Range: -90 to 90."
 msgstr "Plage : -90 à 90."
 
 #: 
+msgid "e.g., -74.0060"
+msgstr "ex. : -74.0060"
+
+#: 
+msgid "e.g., 40.7128"
+msgstr "ex. : 40.7128"
+
+#: 
 msgid "mo"
 msgstr "mois"
 

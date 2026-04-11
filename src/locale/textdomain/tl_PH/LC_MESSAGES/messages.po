@@ -15427,6 +15427,14 @@ msgid "Range: -90 to 90."
 msgstr "Saklaw: -90 hanggang 90."
 
 #: 
+msgid "e.g., -74.0060"
+msgstr "hal., -74.0060"
+
+#: 
+msgid "e.g., 40.7128"
+msgstr "hal., 40.7128"
+
+#: 
 msgid "mo"
 msgstr "buwan"
 

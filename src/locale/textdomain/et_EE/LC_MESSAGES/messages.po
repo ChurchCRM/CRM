@@ -14713,8 +14713,16 @@ msgid "4. Kiosk"
 msgstr "4. Kioskk"
 
 #: 
+msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
+msgstr "Klass on grupp tüübiga \"Pühapäevakool\". See sisaldab õpilasi ja õpetajaid (liikmeid rollidega)."
+
+#: 
 msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
 msgstr "Seotud rühm seob selle sündmuse klassi või teenistuse nimekirjaga. Kui sündmus on määratud kioskile, laadib kioskk rühma liikmed ja kuvab need registreerimise loendina. Pühapäevakooli klasside puhul seoge siia klassi rühm, et vabatahtlikud saaksid õpilasi tahvelarvutist registreerida."
+
+#: 
+msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr "Konkreetne toimumine (nt \"Lasteaed — 12. apr\"). Pärib vaikeväärtused tüübist ja on seotud klassigrupiga auditooriumi kaudu. Selle põhjal märgivad vabatahtlikud kohalolekut."
 
 #: 
 msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
@@ -14767,6 +14775,10 @@ msgstr "Sündmuse tüüp on mall — nimi, vaikimisi algusaeg, korduvus, kohalol
 #: 
 msgid "Attendance record deleted."
 msgstr "Kohaloleku kirje kustutatud."
+
+#: 
+msgid "Audit"
+msgstr "Audit"
 
 #: 
 msgid "Audit Events"
@@ -15463,6 +15475,14 @@ msgstr "Vahemik: -180 kuni 180."
 #: 
 msgid "Range: -90 to 90."
 msgstr "Vahemik: -90 kuni 90."
+
+#: 
+msgid "e.g., -74.0060"
+msgstr "nt., -74.0060"
+
+#: 
+msgid "e.g., 40.7128"
+msgstr "nt., 40.7128"
 
 #: 
 msgid "mo"

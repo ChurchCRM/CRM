@@ -15634,6 +15634,14 @@ msgid "Range: -90 to 90."
 msgstr "Intervalo: -90 a 90."
 
 #: 
+msgid "e.g., -74.0060"
+msgstr "ex.: -74.0060"
+
+#: 
+msgid "e.g., 40.7128"
+msgstr "ex.: 40.7128"
+
+#: 
 msgid "mo"
 msgstr "mês"
 

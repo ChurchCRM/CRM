@@ -15478,6 +15478,14 @@ msgid "Range: -90 to 90."
 msgstr "Reeks: -90 tot 90."
 
 #: 
+msgid "e.g., -74.0060"
+msgstr "bv., -74.0060"
+
+#: 
+msgid "e.g., 40.7128"
+msgstr "bv., 40.7128"
+
+#: 
 msgid "mo"
 msgstr "md."
 

@@ -1,10 +1,5 @@
 {
   "BCC": "",
   "N/A": "",
-  "name@example.com": "",
-  "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles).": "",
-  "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against.": "",
-  "Audit": "",
-  "e.g., -74.0060": "",
-  "e.g., 40.7128": ""
+  "name@example.com": ""
 }

@@ -15490,6 +15490,14 @@ msgid "Range: -90 to 90."
 msgstr "Aralık: -90 ile 90."
 
 #: 
+msgid "e.g., -74.0060"
+msgstr "örn., -74.0060"
+
+#: 
+msgid "e.g., 40.7128"
+msgstr "örn., 40.7128"
+
+#: 
 msgid "mo"
 msgstr "ay"
 
