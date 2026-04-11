@@ -91,7 +91,7 @@ class NewPersonOrFamilyEmail extends BaseEmail
     protected function getFullURL(): string
     {
         if ($this->relatedObject instanceof Family) {
-            return SystemURLs::getURL() . '/v2/family/' . $this->relatedObject->getId();
+            return SystemURLs::getURL() . '/people/family/' . $this->relatedObject->getId();
         } elseif ($this->relatedObject instanceof Person) {
             return SystemURLs::getURL() . '/PersonView.php?PersonID=' . $this->relatedObject->getId();
         }

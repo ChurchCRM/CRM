@@ -508,35 +508,6 @@ function setEventTime(Request $request, Response $response, array $args): Respon
     return SlimUtils::renderSuccessJSON($response);
 }
 
-function unusedSetEventAttendance(): void
-{
-    if ($input->Total > 0 || $input->Visitors || $input->Members) {
-        $eventCount = new EventCounts();
-        $eventCount->setEvtcntEventid($event->getID());
-        $eventCount->setEvtcntCountid(1);
-        $eventCount->setEvtcntCountname('Total');
-        $eventCount->setEvtcntCountcount($input->Total);
-        $eventCount->setEvtcntNotes($input->EventCountNotes);
-        $eventCount->save();
-
-        $eventCount = new EventCounts();
-        $eventCount->setEvtcntEventid($event->getID());
-        $eventCount->setEvtcntCountid(2);
-        $eventCount->setEvtcntCountname('Members');
-        $eventCount->setEvtcntCountcount($input->Members);
-        $eventCount->setEvtcntNotes($input->EventCountNotes);
-        $eventCount->save();
-
-        $eventCount = new EventCounts();
-        $eventCount->setEvtcntEventid($event->getID());
-        $eventCount->setEvtcntCountid(3);
-        $eventCount->setEvtcntCountname('Visitors');
-        $eventCount->setEvtcntCountcount($input->Visitors);
-        $eventCount->setEvtcntNotes($input->EventCountNotes);
-        $eventCount->save();
-    }
-}
-
 /**
  * @OA\Delete(
  *     path="/events/{id}",

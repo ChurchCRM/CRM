@@ -109,7 +109,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
     <div class="card-footer">
-        <a href="<?= SystemURLs::getRootPath() ?>/v2/people" class="btn btn-success">
+        <a href="<?= SystemURLs::getRootPath() ?>/people/list" class="btn btn-success">
             <i class="fa-solid fa-people-group me-2"></i><?= gettext('View People') ?>
         </a>
         <button class="btn btn-outline-secondary ms-2" id="restart-import-summary">

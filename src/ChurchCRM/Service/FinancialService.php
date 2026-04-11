@@ -84,17 +84,15 @@ class FinancialService
         if (!$routeAndAccount) {
             throw new \Exception('error in locating family');
         }
-        $sSQL = 'SELECT fam_ID, fam_Name FROM family_fam WHERE fam_scanCheck="' . $routeAndAccount . '"';
-        $rsFam = FunctionsUtils::runQuery($sSQL);
-        $row = mysqli_fetch_array($rsFam);
+        $family = FamilyQuery::create()->findOneByScanCheck($routeAndAccount);
         $iCheckNo = $micrObj->findCheckNo($tScanString);
 
         return [
             'ScanString'      => $tScanString,
             'RouteAndAccount' => $routeAndAccount,
             'CheckNumber'     => $iCheckNo,
-            'fam_ID'          => $row['fam_ID'],
-            'fam_Name'        => $row['fam_Name'],
+            'fam_ID'          => $family?->getId(),
+            'fam_Name'        => $family?->getName(),
         ];
     }
 

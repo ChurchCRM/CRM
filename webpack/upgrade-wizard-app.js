@@ -128,7 +128,7 @@ function setupBackupStep() {
       .prop("disabled", true)
       .html(`<span class="spinner-border spinner-border-sm me-1"></span>${i18next.t("Creating Backup...")}`);
 
-    window.CRM.APIRequest({
+    window.CRM.AdminAPIRequest({
       method: "POST",
       path: "database/backup",
       data: JSON.stringify({
@@ -383,7 +383,7 @@ function setupApplyStep() {
  * @param {string} filename - The backup filename to download
  */
 function downloadBackup(filename) {
-  window.location = window.CRM.root + "/api/database/download/" + filename;
+  window.location = `${window.CRM.root}/admin/api/database/download/${filename}`;
   $("#backupStatus").html(`<div class="alert alert-info">
         <i class="fa-solid fa-info-circle me-2"></i>${i18next.t("Backup Downloaded, Copy on server removed")}
     </div>`);

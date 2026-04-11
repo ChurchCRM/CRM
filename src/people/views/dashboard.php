@@ -97,13 +97,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <a href="<?= $sRootPath ?>/FamilyEditor.php" class="btn btn-secondary">
                     <i class="fa-solid fa-house-user me-1"></i><?= gettext('Add Family') ?>
                 </a>
-                <a href="<?= $sRootPath ?>/v2/people" class="btn btn-outline-secondary">
+                <a href="<?= $sRootPath ?>/people/list" class="btn btn-outline-secondary">
                     <i class="fa-solid fa-list me-1"></i><?= gettext('People List') ?>
                 </a>
-                <a href="<?= $sRootPath ?>/v2/family" class="btn btn-outline-secondary">
+                <a href="<?= $sRootPath ?>/people/family" class="btn btn-outline-secondary">
                     <i class="fa-solid fa-home me-1"></i><?= gettext('Family List') ?>
                 </a>
-                <a href="<?= $sRootPath ?>/v2/people/verify" class="btn btn-outline-info">
+                <a href="<?= $sRootPath ?>/people/verify" class="btn btn-outline-info">
                     <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Verify People') ?>
                 </a>
                 <?php if ($sEmailLink && $canEmail):
@@ -177,7 +177,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 ?>
                                 <tr>
                                     <td class="text-nowrap">
-                                        <a href="<?= $sRootPath ?>/v2/people?Classification=<?= $classificationStats[$key]['id'] ?>">
+                                        <a href="<?= $sRootPath ?>/people/list?Classification=<?= $classificationStats[$key]['id'] ?>">
                                             <?= gettext($key) ?>
                                         </a>
                                     </td>
@@ -223,7 +223,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 ?>
                                 <tr>
                                     <td class="text-nowrap">
-                                        <a href="<?= $sRootPath ?>/v2/people?Gender=<?= $genderId ?>&FamilyRole=<?= $roleId ?>">
+                                        <a href="<?= $sRootPath ?>/people/list?Gender=<?= $genderId ?>&FamilyRole=<?= $roleId ?>">
                                             <?= $key ?>
                                         </a>
                                     </td>

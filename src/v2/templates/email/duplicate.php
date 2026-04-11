@@ -52,7 +52,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     render: function ( data, type, row ){
                         var render ="<ul class='mb-0'>";
                         $.each( data, function( key, value ) {
-                            render +="<li><a href='"+ window.CRM.root +"/v2/family/" +value.id +"' target='family' />"+ value.name +"</a></li>";
+                            render +="<li><a href='"+ window.CRM.root +"/people/family/" +value.id +"' target='family' />"+ value.name +"</a></li>";
                         });
                         render +="</ul>"
                         return render;

@@ -384,13 +384,13 @@ foreach ($families as $family) {
             $familiesEmailed = $familiesEmailed + 1;
         } else {
             LoggerUtils::getAppLogger()->error($mail->getError());
-            RedirectUtils::redirect(SystemURLs::getRootPath() . '/v2/people/verify?EmailsError=true');
+            RedirectUtils::redirect(SystemURLs::getRootPath() . '/people/verify?EmailsError=true');
         }
     }
 }
 
 if ($_GET['familyId']) {
-    RedirectUtils::redirect('v2/family/' . $_GET['familyId'] . '?PDFEmailed=' . $familiesEmailed);
+    RedirectUtils::redirect('people/family/' . $_GET['familyId'] . '?PDFEmailed=' . $familiesEmailed);
 } else {
-    RedirectUtils::redirect(SystemURLs::getRootPath() . '/v2/people/verify?AllPDFsEmailed=' . $familiesEmailed);
+    RedirectUtils::redirect(SystemURLs::getRootPath() . '/people/verify?AllPDFsEmailed=' . $familiesEmailed);
 }

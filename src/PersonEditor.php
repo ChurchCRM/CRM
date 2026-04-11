@@ -1103,7 +1103,7 @@ require_once __DIR__ . '/Include/Header.php';
             <i class="fa-solid fa-xmark me-2"></i><?= gettext('Cancel') ?>
         </a>
         <?php } else { ?>
-        <a href="v2/people" class="btn btn-secondary">
+        <a href="people/list" class="btn btn-secondary">
             <i class="fa-solid fa-xmark me-2"></i><?= gettext('Cancel') ?>
         </a>
         <?php } ?>

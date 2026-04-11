@@ -4,6 +4,9 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\PropertyQuery;
+use ChurchCRM\model\ChurchCRM\PropertyTypeQuery;
+use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -17,25 +20,29 @@ $iPropertyTypeID = InputUtils::legacyFilterInput($_GET['PropertyTypeID'], 'int')
 
 // Do we have deletion confirmation?
 if (isset($_GET['Confirmed'])) {
-    $sSQL = 'DELETE FROM propertytype_prt WHERE prt_ID = ' . $iPropertyTypeID;
-    RunQuery($sSQL);
+    $iPropertyTypeID = (int) $iPropertyTypeID;
 
-    $sSQL = 'SELECT pro_ID FROM property_pro WHERE pro_prt_ID = ' . $iPropertyTypeID;
-    $result = RunQuery($sSQL);
-    while ($aRow = mysqli_fetch_array($result)) {
-        $sSQL = 'DELETE FROM record2property_r2p WHERE r2p_pro_ID = ' . $aRow['pro_ID'];
-        RunQuery($sSQL);
+    // Delete record-property mappings for all properties of this type
+    $propertyIds = PropertyQuery::create()
+        ->filterByProPrtId($iPropertyTypeID)
+        ->select(['ProId'])
+        ->find()
+        ->toArray();
+    if (!empty($propertyIds)) {
+        RecordPropertyQuery::create()->filterByPropertyId($propertyIds)->delete();
     }
 
-    $sSQL = 'DELETE FROM property_pro WHERE pro_prt_ID = ' . $iPropertyTypeID;
-    RunQuery($sSQL);
+    // Delete properties of this type
+    PropertyQuery::create()->filterByProPrtId($iPropertyTypeID)->delete();
+
+    // Delete the property type itself
+    PropertyTypeQuery::create()->findPk($iPropertyTypeID)?->delete();
 
     RedirectUtils::redirect('PropertyTypeList.php');
 }
 
-$sSQL = 'SELECT * FROM propertytype_prt WHERE prt_ID = ' . $iPropertyTypeID;
-$rsProperty = RunQuery($sSQL);
-extract(mysqli_fetch_array($rsProperty));
+$propertyType = PropertyTypeQuery::create()->findPk((int) $iPropertyTypeID);
+$prt_Name = $propertyType?->getPrtName() ?? '';
 $sType = '';
 
 require_once __DIR__ . '/Include/Header.php';

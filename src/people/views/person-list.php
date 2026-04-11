@@ -132,15 +132,15 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             <?php
             $issues = [];
             if ($genderDataCheckCount > 0) {
-                $issues[] = '<a href="' . SystemURLs::getRootPath() . '/v2/people?Gender=0" class="alert-link">' .
+                $issues[] = '<a href="' . SystemURLs::getRootPath() . '/people/list?Gender=0" class="alert-link">' .
                             sprintf(gettext('%d missing gender'), $genderDataCheckCount) . '</a>';
             }
             if ($roleDataCheckCount > 0) {
-                $issues[] = '<a href="' . SystemURLs::getRootPath() . '/v2/people?FamilyRole=0" class="alert-link">' .
+                $issues[] = '<a href="' . SystemURLs::getRootPath() . '/people/list?FamilyRole=0" class="alert-link">' .
                             sprintf(gettext('%d missing role'), $roleDataCheckCount) . '</a>';
             }
             if ($classificationDataCheckCount > 0) {
-                $issues[] = '<a href="' . SystemURLs::getRootPath() . '/v2/people?Classification=0" class="alert-link">' .
+                $issues[] = '<a href="' . SystemURLs::getRootPath() . '/people/list?Classification=0" class="alert-link">' .
                             sprintf(gettext('%d missing classification'), $classificationDataCheckCount) . '</a>';
             }
             echo implode(' · ', $issues);
@@ -295,7 +295,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         
                         // Make family name clickable to family view
                         if ($column->displayFunction === 'getFamilyName') {
-                            $familyLink = '<a href="' . SystemURLs::getRootPath() . '/v2/family/' . $person->getFamId() . '">' . InputUtils::escapeHTML($columnData) . '</a>';
+                            $familyLink = '<a href="' . SystemURLs::getRootPath() . '/people/family/' . $person->getFamId() . '">' . InputUtils::escapeHTML($columnData) . '</a>';
                             // Check if family is inactive using Family::isActive()
                             $family = $person->getFamily();
                             if ($family && !$family->isActive()) {
@@ -414,7 +414,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                                 <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
                             </a>
                             <?php if ($person->getFamId()): ?>
-                            <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $person->getFamId() ?>">
+                            <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/people/family/<?= $person->getFamId() ?>">
                                 <i class="ti ti-users me-2"></i><?= gettext('View Family') ?>
                             </a>
                             <?php endif; ?>
@@ -660,10 +660,10 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             GroupList: <?= json_encode($GroupList, JSON_THROW_ON_ERROR) ?>,
             ClassificationList: <?= json_encode($ClassificationList, JSON_THROW_ON_ERROR) ?>,
             FamilyStatusList: <?= json_encode([gettext('Active'), gettext('Inactive')], JSON_THROW_ON_ERROR) ?>,
-            filterByGender: <?= json_encode($filterByGender, JSON_THROW_ON_ERROR) ?>,
-            filterByClsId: <?= json_encode($filterByClsOptionId, JSON_THROW_ON_ERROR) ?>,
-            filterByFmrId: <?= json_encode($filterByFmrOptionId, JSON_THROW_ON_ERROR) ?>,
-            familyActiveStatus: <?= json_encode($familyActiveStatus, JSON_THROW_ON_ERROR) ?>
+            filterByGender: <?= json_encode($filterByGender, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>,
+            filterByClsId: <?= json_encode($filterByClsOptionId, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>,
+            filterByFmrId: <?= json_encode($filterByFmrOptionId, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>,
+            familyActiveStatus: <?= json_encode($familyActiveStatus, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>
         };
         if (window.initializePeopleListFromServer) {
             window.initializePeopleListFromServer(serverVars);

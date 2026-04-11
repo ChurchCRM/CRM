@@ -409,7 +409,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         //Which submit button did they press?
         if (isset($_POST['FamilySubmit'])) {
             //Send to the view of this person
-            RedirectUtils::redirect("v2/family/$iFamilyID");
+            RedirectUtils::redirect("people/family/$iFamilyID");
         } else {
             //Reload to editor to add another record
             RedirectUtils::redirect('FamilyEditor.php');
@@ -541,7 +541,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
 $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('People'), '/people/dashboard'],
-    [gettext('Families'), '/v2/family'],
+    [gettext('Families'), '/people/family'],
     [($iFamilyID > 0) ? gettext('Edit Family') : gettext('New Family')],
 ]);
 require_once __DIR__ . '/Include/Header.php';
@@ -943,11 +943,11 @@ require_once __DIR__ . '/Include/Header.php';
                         <?php } ?>
                         <!-- Tertiary action: Cancel (gray) -->
                         <?php if ($iFamilyID > 0) { ?>
-                        <a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $iFamilyID ?>" class="btn btn-secondary">
+                        <a href="<?= SystemURLs::getRootPath() ?>/people/family/<?= $iFamilyID ?>" class="btn btn-secondary">
                             <i class="fa-solid fa-xmark me-2"></i><?= gettext('Cancel') ?>
                         </a>
                         <?php } else { ?>
-                        <a href="<?= SystemURLs::getRootPath() ?>/v2/family" class="btn btn-secondary">
+                        <a href="<?= SystemURLs::getRootPath() ?>/people/family" class="btn btn-secondary">
                             <i class="fa-solid fa-xmark me-2"></i><?= gettext('Cancel') ?>
                         </a>
                         <?php } ?>

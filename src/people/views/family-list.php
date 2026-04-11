@@ -13,7 +13,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <h3 class="card-title"><i class="fa-solid fa-filter"></i> <?= gettext('Filters') ?></h3>
     </div>
     <div class="card-body">
-        <form id="family-filters" method="get" action="<?= SystemURLs::getRootPath() ?>/v2/family/">
+        <form id="family-filters" method="get" action="<?= SystemURLs::getRootPath() ?>/people/family/">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="mb-3">
@@ -129,7 +129,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <i class="ti ti-dots-vertical"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $family->getId() ?>">
+                                <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/people/family/<?= $family->getId() ?>">
                                     <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
                                 </a>
                                 <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $family->getId() ?>">

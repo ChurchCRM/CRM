@@ -72,7 +72,7 @@ describe("Standard Cart", () => {
     it("Cart Add and Remove Family", () => {
         cy.visit("v2/cart");
         cy.contains("You have no items in your cart");
-        cy.visit("v2/family/6");
+        cy.visit("people/family/6");
         
         // Wait for cart to be ready before clicking
         waitForCartReady();

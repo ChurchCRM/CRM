@@ -80,11 +80,11 @@ describe("API Private Map", () => {
             );
         });
 
-        it("profileUrl points to /v2/family/{id}", () => {
+        it("profileUrl points to /people/family/{id}", () => {
             cy.makePrivateAdminAPICall("GET", "/api/map/families", null, 200).then(
                 (response) => {
                     response.body.forEach((item) => {
-                        expect(item.profileUrl).to.include("/v2/family/" + item.id);
+                        expect(item.profileUrl).to.include("/people/family/" + item.id);
                     });
                 },
             );

@@ -305,7 +305,7 @@ if ($bCanManageGroups) {
                                             <a class="dropdown-item" href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>"><i class="ti ti-eye me-2"></i><?= gettext('View') ?></a>
                                             <a class="dropdown-item" href="<?= $sRootPath ?>/PersonEditor.php?PersonID=<?= $child['kidId'] ?>"><i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?></a>
                                             <?php if ($child['fam_id']): ?>
-                                            <a class="dropdown-item" href="<?= $sRootPath ?>/v2/family/<?= (int) $child['fam_id'] ?>"><i class="ti ti-users me-2"></i><?= gettext('View Family') ?></a>
+                                            <a class="dropdown-item" href="<?= $sRootPath ?>/people/family/<?= (int) $child['fam_id'] ?>"><i class="ti ti-users me-2"></i><?= gettext('View Family') ?></a>
                                             <?php endif; ?>
                                             <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#studentModal-<?= $child['kidId'] ?>"><i class="ti ti-info-circle me-2"></i><?= gettext('Details') ?></button>
                                             <div class="dropdown-divider"></div>

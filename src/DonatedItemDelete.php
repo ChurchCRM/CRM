@@ -3,6 +3,7 @@
 require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
+use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -11,6 +12,8 @@ $linkBack = RedirectUtils::getLinkBackFromRequest('FindFundRaiser.php');
 
 $iFundRaiserID = $_SESSION['iCurrentFundraiser'];
 
-$sSQL ="DELETE FROM donateditem_di WHERE di_id=$iDonatedItemID AND di_fr_id=$iFundRaiserID";
-RunQuery($sSQL);
+DonatedItemQuery::create()
+    ->filterById((int) $iDonatedItemID)
+    ->filterByFrId((int) $iFundRaiserID)
+    ->delete();
 RedirectUtils::redirect($linkBack);

@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\DonatedItem;
 use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
+use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -17,16 +18,12 @@ $linkBack = RedirectUtils::getLinkBackFromRequest('v2/dashboard');
 $iCurrentFundraiser = InputUtils::filterInt(InputUtils::legacyFilterInputArr($_GET, 'CurrentFundraiser'));
 
 if ($iDonatedItemID > 0) {
-    $sSQL ="SELECT * FROM donateditem_di WHERE di_ID = '$iDonatedItemID'";
-    $rsDonatedItem = RunQuery($sSQL);
-    $theDonatedItem = mysqli_fetch_array($rsDonatedItem);
-    $iCurrentFundraiser = $theDonatedItem['di_FR_ID'];
+    $existingItem = DonatedItemQuery::create()->findPk((int) $iDonatedItemID);
+    $iCurrentFundraiser = $existingItem?->getFrId();
 }
 
 if ($iCurrentFundraiser) {
-    $sSQL = 'SELECT * from fundraiser_fr WHERE fr_ID = ' . $iCurrentFundraiser;
-    $rsDeposit = RunQuery($sSQL);
-    extract(mysqli_fetch_array($rsDeposit));
+    $fundraiser = FundRaiserQuery::create()->findPk((int) $iCurrentFundraiser);
     $_SESSION['iCurrentFundraiser'] = $iCurrentFundraiser;
 } else {
     $iCurrentFundraiser = $_SESSION['iCurrentFundraiser'];
@@ -99,11 +96,9 @@ if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'
         $bGetKeyBack = false;
     }
 
-    // If this is a new DonatedItem or deposit, get the key back
+    // If this is a new DonatedItem, get the key back from the saved object
     if ($bGetKeyBack) {
-        $sSQL = 'SELECT MAX(di_ID) AS iDonatedItemID FROM donateditem_di';
-        $rsDonatedItemID = RunQuery($sSQL);
-        extract(mysqli_fetch_array($rsDonatedItemID));
+        $iDonatedItemID = $donatedItem->getId();
     }
 
     if (isset($_POST['DonatedItemSubmit'])) {
@@ -124,30 +119,22 @@ if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'
     if ($iDonatedItemID > 0) {
         //Editing....
         //Get all the data on this record
+        $donatedItemRecord = DonatedItemQuery::create()->findPk((int) $iDonatedItemID);
+        if ($donatedItemRecord === null) {
+            RedirectUtils::redirect($linkBack);
+        }
 
-        $sSQL ="SELECT di_ID, di_Item, di_multibuy, di_donor_ID, di_buyer_ID,
-                           a.per_FirstName as donorFirstName, a.per_LastName as donorLastName,
-                           b.per_FirstName as buyerFirstName, b.per_LastName as buyerLastName,
-                           di_title, di_description, di_sellprice, di_estprice, di_materialvalue,
-                           di_minimum, di_picture
-             FROM donateditem_di
-             LEFT JOIN person_per a ON di_donor_ID=a.per_ID
-             LEFT JOIN person_per b ON di_buyer_ID=b.per_ID
-             WHERE di_ID = '" . $iDonatedItemID ."'";
-        $rsDonatedItem = RunQuery($sSQL);
-        extract(mysqli_fetch_array($rsDonatedItem));
-
-        $sItem = $di_Item;
-        $bMultibuy = $di_multibuy;
-        $iDonor = $di_donor_ID;
-        $iBuyer = $di_buyer_ID;
-        $sTitle = $di_title;
-        $sDescription = $di_description;
-        $nSellPrice = $di_sellprice;
-        $nEstPrice = $di_estprice;
-        $nMaterialValue = $di_materialvalue;
-        $nMinimumPrice = $di_minimum;
-        $sPictureURL = $di_picture;
+        $sItem = $donatedItemRecord->getItem();
+        $bMultibuy = $donatedItemRecord->getMultibuy();
+        $iDonor = $donatedItemRecord->getDonorId();
+        $iBuyer = $donatedItemRecord->getBuyerId();
+        $sTitle = $donatedItemRecord->getTitle();
+        $sDescription = $donatedItemRecord->getDescription();
+        $nSellPrice = $donatedItemRecord->getSellprice();
+        $nEstPrice = $donatedItemRecord->getEstprice();
+        $nMaterialValue = $donatedItemRecord->getMaterialValue();
+        $nMinimumPrice = $donatedItemRecord->getMinimum();
+        $sPictureURL = $donatedItemRecord->getPicture();
     } else {
         //Adding....
         //Set defaults
