@@ -49,7 +49,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
         function reorderFormProp(propId, direction) {
             fetch(window.CRM.root + '/api/groups/' + groupId + '/formprops/' + propId + '/order', {
                 method: 'PUT',
-                headers: { 'Content-Type': 'application/json', 'x-api-key': window.CRM.apiKey },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ direction: direction })
             })
             .then(function(r) { return r.json(); })
@@ -79,7 +79,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                     if (result) {
                         fetch(window.CRM.root + '/api/groups/' + groupId + '/formprops/' + propId, {
                             method: 'DELETE',
-                            headers: { 'Content-Type': 'application/json', 'x-api-key': window.CRM.apiKey },
+                            headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({ field: fieldId })
                         })
                         .then(function(r) { return r.json(); })
