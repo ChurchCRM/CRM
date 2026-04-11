@@ -7,8 +7,11 @@ use ChurchCRM\Utils\LoggerUtils;
 use Exception;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Exception\HttpBadRequestException;
+use Slim\Exception\HttpForbiddenException;
 use Slim\Exception\HttpMethodNotAllowedException;
 use Slim\Exception\HttpNotFoundException;
+use Slim\Exception\HttpUnauthorizedException;
 use Slim\Interfaces\RouteInterface;
 use Slim\Psr7\Response as Psr7Response;
 use Slim\Routing\RouteContext;
@@ -173,7 +176,7 @@ class SlimUtils
                 'user_agent' => $request->getHeaderLine('User-Agent')
             ];
             $logger->error('Uncaught exception: ' . $exception->getMessage(), $requestContext);
-            
+
             $response = new Psr7Response();
 
             // Determine appropriate HTTP status code based on exception type
@@ -182,6 +185,12 @@ class SlimUtils
                 $statusCode = 404;
             } elseif ($exception instanceof HttpMethodNotAllowedException) {
                 $statusCode = 405;
+            } elseif ($exception instanceof HttpUnauthorizedException) {
+                $statusCode = 401;
+            } elseif ($exception instanceof HttpForbiddenException) {
+                $statusCode = 403;
+            } elseif ($exception instanceof HttpBadRequestException) {
+                $statusCode = 400;
             }
 
             // Sanitize error message to prevent credential disclosure
