@@ -34,6 +34,6 @@ if ($lowerType === 'person' || $lowerType === 'people') {
     $code = 404;
 }
 
-require __DIR__ . '/error-page.php';
+require SystemURLs::getDocumentRoot() . '/v2/templates/common/error-page.php';
 
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
