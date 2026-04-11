@@ -42,14 +42,13 @@ $DonationMessage = '';
 
 // Move Donations from 1 family to another
 if (AuthenticationManager::getCurrentUser()->isFinanceEnabled() && isset($_GET['MoveDonations']) && $iFamilyID && $iDonationFamilyID && $iFamilyID != $iDonationFamilyID) {
-    $pledges = PledgeQuery::create()->filterByFamId((int) $iFamilyID)->find();
-    foreach ($pledges as $pledge) {
-        $pledge
-            ->setFamId((int) $iDonationFamilyID)
-            ->setDateLastEdited(date('Y-m-d'))
-            ->setEditedBy(AuthenticationManager::getCurrentUser()->getId());
-        $pledge->save();
-    }
+    PledgeQuery::create()
+        ->filterByFamId((int) $iFamilyID)
+        ->update([
+            'FamId' => (int) $iDonationFamilyID,
+            'DateLastEdited' => date('Y-m-d'),
+            'EditedBy' => AuthenticationManager::getCurrentUser()->getId(),
+        ]);
 
             $DonationMessage = '<p><b><span class="text-error">' . gettext('All donations from this family have been moved to another family.') . '</span></b></p>';
 }
@@ -89,11 +88,9 @@ if (isset($_GET['Confirmed'])) {
         PersonQuery::create()->filterByFamId($iFamilyIDInt)->find()->delete();
     } else {
         // Reset previous members' family ID to 0 (undefined)
-        $members = PersonQuery::create()->filterByFamId($iFamilyIDInt)->find();
-        foreach ($members as $member) {
-            $member->setFamId(0);
-            $member->save();
-        }
+        PersonQuery::create()
+            ->filterByFamId($iFamilyIDInt)
+            ->update(['FamId' => 0]);
     }
 
     // Delete the specified Family record
