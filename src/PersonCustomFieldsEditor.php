@@ -453,7 +453,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                         echo '<small class="text-danger d-block mt-1">' . gettext('You must select a group.') . '</small>';
                                     }
                                 } elseif ($aTypeFields[$row] == 12) {
-                                    echo '<a href="javascript:void(0)" onclick="window.open(\'OptionManager.php?mode=custom&ListID=' . htmlspecialchars($aSpecialFields[$row], ENT_QUOTES, 'UTF-8') . '\',\'ListOptions\',\'toolbar=no,status=no,width=400,height=500\')">' . gettext('Edit List Options') . '</a>';
+                                    echo '<a href="' . SystemURLs::getRootPath() . '/admin/system/options?mode=custom&ListID=' . htmlspecialchars($aSpecialFields[$row], ENT_QUOTES, 'UTF-8') . '" target="_blank">' . gettext('Edit List Options') . '</a>';
                                 } else {
                                     echo '&nbsp;';
                                 } ?>
