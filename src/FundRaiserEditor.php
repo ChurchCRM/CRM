@@ -4,8 +4,10 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
 use ChurchCRM\model\ChurchCRM\FundRaiser;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -99,22 +101,18 @@ if (isset($_POST['FundRaiserSubmit'])) {
         $sDescription = $fundraiser->getDescription();
 
 
-        $sSQL ="SELECT di_ID, di_Item, di_multibuy,
-        a.per_FirstName as donorFirstName, a.per_LastName as donorLastName,
-        b.per_FirstName as buyerFirstName, b.per_LastName as buyerLastName,
-        di_title, di_sellprice, di_estprice, di_materialvalue, di_minimum
-        FROM donateditem_di
-        LEFT JOIN person_per a ON di_donor_ID=a.per_ID
-        LEFT JOIN person_per b ON di_buyer_ID=b.per_ID
-        WHERE di_FR_ID = '" . $iFundRaiserID ."' ORDER BY di_multibuy,SUBSTR(di_item,1,1),cast(SUBSTR(di_item,2) as unsigned integer),SUBSTR(di_item,4)";
-        $rsDonatedItems = RunQuery($sSQL);
+        $donatedItems = DonatedItemQuery::create()
+            ->filterByFrId((int) $iFundRaiserID)
+            ->orderByMultibuy()
+            ->orderByItem()
+            ->find();
         $_SESSION['iCurrentFundraiser'] = $iFundRaiserID;        // Probably redundant
 
     } else {
         $dDate = date_create('now');    // Set default date to today
         $sTitle = '';
         $sDescription = '';
-        $rsDonatedItems = 0;
+        $donatedItems = null;
     }
 }
 
@@ -204,42 +202,44 @@ require_once __DIR__ . '/Include/Header.php';
         <tbody>
         <?php
         //Loop through all donated items
-        if ($rsDonatedItems instanceof \mysqli_result) {
-            while ($aRow = mysqli_fetch_array($rsDonatedItems)) {
-                extract($aRow);
-
-                if ($di_Item === '') {
-                    $di_Item = '~';
-                }
+        if ($donatedItems !== null && $donatedItems->count() > 0) {
+            foreach ($donatedItems as $item) {
+                $itemName = $item->getItem() ?: '~';
+                $donor = $item->getDonorId() ? PersonQuery::create()->findPk((int) $item->getDonorId()) : null;
+                $buyer = $item->getBuyerId() ? PersonQuery::create()->findPk((int) $item->getBuyerId()) : null;
+                $donorFirstName = $donor ? $donor->getFirstName() : '';
+                $donorLastName = $donor ? $donor->getLastName() : '';
+                $buyerFirstName = $buyer ? $buyer->getFirstName() : '';
+                $buyerLastName = $buyer ? $buyer->getLastName() : '';
 
                 ?>
                 <tr>
-                    <td><?= InputUtils::escapeHTML($di_Item) ?></td>
-                    <td><?= $di_multibuy ? '<span class="badge bg-info">X</span>' : '' ?></td>
+                    <td><?= InputUtils::escapeHTML($itemName) ?></td>
+                    <td><?= $item->getMultibuy() ? '<span class="badge bg-info">X</span>' : '' ?></td>
                     <td><?= InputUtils::escapeHTML($donorFirstName) . ' ' . InputUtils::escapeHTML($donorLastName) ?></td>
                     <td>
-                        <?php if ($di_multibuy) {
+                        <?php if ($item->getMultibuy()) {
                             echo '<span class="text-muted">' . gettext('Multiple') . '</span>';
                         } else {
                             echo InputUtils::escapeHTML($buyerFirstName) . ' ' . InputUtils::escapeHTML($buyerLastName);
                         } ?>
                     </td>
-                    <td><?= InputUtils::escapeHTML($di_title) ?></td>
-                    <td class="text-end"><?= InputUtils::escapeHTML($di_sellprice) ?></td>
-                    <td class="text-end"><?= InputUtils::escapeHTML($di_estprice) ?></td>
-                    <td class="text-end"><?= InputUtils::escapeHTML($di_materialvalue) ?></td>
-                    <td class="text-end"><?= InputUtils::escapeHTML($di_minimum) ?></td>
+                    <td><?= InputUtils::escapeHTML($item->getTitle()) ?></td>
+                    <td class="text-end"><?= InputUtils::escapeHTML($item->getSellprice()) ?></td>
+                    <td class="text-end"><?= InputUtils::escapeHTML($item->getEstprice()) ?></td>
+                    <td class="text-end"><?= InputUtils::escapeHTML($item->getMaterialValue()) ?></td>
+                    <td class="text-end"><?= InputUtils::escapeHTML($item->getMinimum()) ?></td>
                     <td class="w-1">
                         <div class="dropdown">
                             <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                 <i class="ti ti-dots-vertical"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="DonatedItemEditor.php?DonatedItemID=<?= (int)$di_ID ?>&linkBack=FundRaiserEditor.php?FundRaiserID=<?= (int)$iFundRaiserID ?>">
+                                <a class="dropdown-item" href="DonatedItemEditor.php?DonatedItemID=<?= (int) $item->getId() ?>&linkBack=FundRaiserEditor.php?FundRaiserID=<?= (int)$iFundRaiserID ?>">
                                     <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item text-danger" href="DonatedItemDelete.php?DonatedItemID=<?= (int)$di_ID ?>&linkBack=FundRaiserEditor.php?FundRaiserID=<?= (int)$iFundRaiserID ?>">
+                                <a class="dropdown-item text-danger" href="DonatedItemDelete.php?DonatedItemID=<?= (int) $item->getId() ?>&linkBack=FundRaiserEditor.php?FundRaiserID=<?= (int)$iFundRaiserID ?>">
                                     <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
                                 </a>
                             </div>
@@ -247,7 +247,7 @@ require_once __DIR__ . '/Include/Header.php';
                     </td>
                 </tr>
                 <?php
-            } // while
+            } // foreach
         } // if
         ?>
         </tbody>
