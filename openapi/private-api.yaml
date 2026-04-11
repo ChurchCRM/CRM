@@ -3051,6 +3051,35 @@ paths:
       security:
         -
           ApiKeyAuth: []
+    delete:
+      tags:
+        - Families
+      summary: 'Delete a family record and optionally its members (DeleteRecord role required)'
+      parameters:
+        -
+          name: familyId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: deleteMembers
+          in: query
+          description: 'If true, also delete all family members. If false, members are unlinked from the family.'
+          required: false
+          schema:
+            type: boolean
+            default: false
+      responses:
+        '200':
+          description: 'Family deleted'
+        '403':
+          description: 'DeleteRecord role required or family has donations'
+        '404':
+          description: 'Family not found'
+      security:
+        -
+          ApiKeyAuth: []
   '/family/{familyId}/geolocation':
     get:
       tags:
@@ -3218,6 +3247,40 @@ paths:
                 type: object
         '400':
           description: 'Family has no street address to geocode'
+      security:
+        -
+          ApiKeyAuth: []
+  '/family/{familyId}/donations/move':
+    post:
+      tags:
+        - Families
+      summary: 'Move all donations from this family to another (Finance role required)'
+      parameters:
+        -
+          name: familyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - targetFamilyId
+              properties:
+                targetFamilyId:
+                  description: 'Family ID to move donations to'
+                  type: integer
+              type: object
+      responses:
+        '200':
+          description: 'Donations moved'
+        '400':
+          description: 'Invalid target family'
+        '403':
+          description: 'Finance role required'
       security:
         -
           ApiKeyAuth: []
