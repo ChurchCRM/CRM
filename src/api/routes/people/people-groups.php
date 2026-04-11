@@ -23,6 +23,7 @@ use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\CsvExporter;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 
 /**
@@ -929,7 +930,8 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *         @OA\JsonContent(@OA\Property(property="roleID", type="integer"))
      *     ),
      *     @OA\Response(response=200, description="Updated membership object"),
-     *     @OA\Response(response=403, description="ManageGroupRole role required")
+     *     @OA\Response(response=403, description="ManageGroupRole role required"),
+     *     @OA\Response(response=404, description="Membership not found")
      * )
      */
     $group->post('/{groupID:[0-9]+}/userRole/{userID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
@@ -938,7 +940,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $roleID = (int) ($request->getParsedBody()['roleID'] ?? 0);
         $membership = Person2group2roleP2g2rQuery::create()->filterByGroupId($groupID)->filterByPersonId($userID)->findOne();
         if ($membership === null) {
-            throw new \Exception(gettext('Membership not found'), 404);
+            throw new HttpNotFoundException($request, gettext('Membership not found'));
         }
         $membership->setRoleId($roleID);
         $membership->save();
@@ -961,6 +963,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *     ),
      *     @OA\Response(response=200, description="Role updated successfully"),
      *     @OA\Response(response=403, description="ManageGroupRole role required"),
+     *     @OA\Response(response=404, description="Group role not found"),
      *     @OA\Response(response=500, description="Failed to update role")
      * )
      */
@@ -972,7 +975,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             if (isset($input['groupRoleName'])) {
                 $groupRole = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();
                 if ($groupRole === null) {
-                    throw new \Exception(gettext('Group role not found'), 404);
+                    throw new HttpNotFoundException($request, gettext('Group role not found'));
                 }
                 $groupRole->setOptionName($input['groupRoleName']);
                 $groupRole->save();
@@ -981,7 +984,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             } elseif (isset($input['groupRoleOrder'])) {
                 $groupRole = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();
                 if ($groupRole === null) {
-                    throw new \Exception(gettext('Group role not found'), 404);
+                    throw new HttpNotFoundException($request, gettext('Group role not found'));
                 }
                 $groupRole->setOptionSequence($input['groupRoleOrder']);
                 $groupRole->save();

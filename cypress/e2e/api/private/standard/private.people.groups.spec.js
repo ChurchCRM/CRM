@@ -275,22 +275,22 @@ describe("API Private Group Operations", () => {
             });
         });
 
-        it("Returns error when updating role for non-member", () => {
+        it("Returns 404 when updating role for non-member", () => {
             // Person 999999 is not a member of group 1
             cy.makePrivateAdminAPICall(
                 "POST",
                 `/api/groups/${groupID}/userRole/999999`,
                 { roleID: 1 },
-                500,
+                404,
             );
         });
 
-        it("Returns error when updating non-existent role", () => {
+        it("Returns 404 when updating non-existent role", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 `/api/groups/${groupID}/roles/999999`,
                 { groupRoleName: "Ghost Role" },
-                500,
+                404,
             );
         });
 

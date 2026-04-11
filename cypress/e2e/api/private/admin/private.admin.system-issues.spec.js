@@ -15,8 +15,8 @@ describe("API System Issues", () => {
             },
             failOnStatusCode: false,
         }).then((resp) => {
-            // Should not be 200 — requires authentication
-            expect(resp.status).to.not.eq(200);
+            // Should return 401 — requires authentication
+            expect(resp.status).to.eq(401);
         });
     });
 

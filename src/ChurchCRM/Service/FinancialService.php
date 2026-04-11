@@ -29,7 +29,7 @@ class FinancialService
         AuthService::requireUserGroupMembership('bFinance');
         $pledge = PledgeQuery::create()->findOneByGroupKey($groupKey);
         if ($pledge === null) {
-            throw new \Exception('Payment not found', 404);
+            return;
         }
         $pledge->delete();
     }
