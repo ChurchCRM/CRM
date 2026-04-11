@@ -20,7 +20,8 @@ $app->addBodyParsingMiddleware();
 $app->addRoutingMiddleware();
 
 // Error middleware must be added AFTER routing (Slim 4 LIFO: last added = first executed)
-$errorMiddleware = $app->addErrorMiddleware(true, true, true);
+// displayErrorDetails=false in production to avoid leaking stack traces and file paths
+$errorMiddleware = $app->addErrorMiddleware(false, true, true);
 SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
 $app->add(new CorsMiddleware());
