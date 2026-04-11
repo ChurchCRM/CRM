@@ -1,10 +1,5 @@
 {
   "BCC": "",
   "N/A": "",
-  "name@example.com": "",
-  "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles).": "Klass on grupp tüübiga \"Pühapäevakool\". See sisaldab õpilasi ja õpetajaid (liikmeid rollidega).",
-  "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against.": "Konkreetne toimumine (nt \"Lasteaed — 12. apr\"). Pärib vaikeväärtused tüübist ja on seotud klassigrupiga auditooriumi kaudu. Selle põhjal märgivad vabatahtlikud kohalolekut.",
-  "Audit": "Audit",
-  "e.g., -74.0060": "nt., -74.0060",
-  "e.g., 40.7128": "nt., 40.7128"
+  "name@example.com": ""
 }
