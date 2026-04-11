@@ -159,7 +159,7 @@ describe("Avatar Click Behavior", () => {
     const familyId = 1;
 
     it("clicking family profile photo opens Uppy upload dialog", () => {
-      cy.visit(`v2/family/${familyId}`);
+      cy.visit(`people/family/${familyId}`);
 
       cy.get("#uploadImageTrigger", { timeout: 10000 }).should("exist");
       cy.window().its("CRM.photoUploader", { timeout: 10000 }).should("exist");
@@ -173,14 +173,14 @@ describe("Avatar Click Behavior", () => {
     });
 
     it("family profile photo does NOT have lightbox click class", () => {
-      cy.visit(`v2/family/${familyId}`);
+      cy.visit(`people/family/${familyId}`);
 
       cy.get("#uploadImageTrigger img.loaded", { timeout: 10000 }).should("exist");
       cy.get("#uploadImageTrigger img").should("not.have.class", "view-family-photo");
     });
 
     it("member with photo gets clickable avatar via avatar-loader", () => {
-      cy.visit(`v2/family/${familyId}`);
+      cy.visit(`people/family/${familyId}`);
 
       cy.get("table img.loaded", { timeout: 10000 }).then(($imgs) => {
         const clickable = $imgs.filter(".view-person-photo");
@@ -202,7 +202,7 @@ describe("Avatar Click Behavior", () => {
     });
 
     it("member with only initials does NOT open lightbox", () => {
-      cy.visit(`v2/family/${familyId}`);
+      cy.visit(`people/family/${familyId}`);
 
       cy.get("table img.loaded", { timeout: 10000 }).should("exist");
 

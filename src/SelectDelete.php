@@ -34,7 +34,7 @@ if (!empty($_GET['mode'])) {
 }
 
 if (isset($_GET['CancelFamily'])) {
-    RedirectUtils::redirect("v2/family/$iFamilyID");
+    RedirectUtils::redirect("people/family/$iFamilyID");
 }
 
 $DonationMessage = '';
@@ -97,7 +97,7 @@ if (isset($_GET['Confirmed'])) {
     }
 
     // Redirect back to the family listing
-    RedirectUtils::redirect(SystemURLs::getRootPath() . '/v2/family');
+    RedirectUtils::redirect(SystemURLs::getRootPath() . '/people/family');
 }
 
 //Get the family record in question
@@ -123,7 +123,7 @@ require_once __DIR__ . '/Include/Header.php';
         if ($bIsDonor && !AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
             // Donations from Family. Current user not authorized for Finance
             echo '<p class="lead">' . gettext('Sorry, there are records of donations from this family. This family may not be deleted.') . '<br><br>';
-            echo '<a href="v2/family/' . $iFamilyID . '">' . gettext('Return to Family View') . '</a></p>';
+            echo '<a href="people/family/' . $iFamilyID . '">' . gettext('Return to Family View') . '</a></p>';
         } elseif ($bIsDonor && AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
             // Donations from Family. Current user authorized for Finance.
             // Select another family to move donations to.
@@ -258,7 +258,7 @@ require_once __DIR__ . '/Include/Header.php';
                 echo '</ul></div>';
                 echo"<p id=\"deleteFamilyOnlyBtn\" class=\"text-center\"><a class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&FamilyID=" . $iFamilyID . '">' . gettext('Delete Family Record ONLY') . '</a> ';
                 echo"<a id=\"deleteFamilyAndMembersBtn\" class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&Members=Yes&FamilyID=" . $iFamilyID . '">' . gettext('Delete Family Record AND Family Members') . '</a> ';
-                echo"<a class='btn btn-secondary ms-2' href=\"v2/family/" . $iFamilyID . '">' . gettext('No, cancel this deletion') . '</a></p>';
+                echo"<a class='btn btn-secondary ms-2' href=\"people/family/" . $iFamilyID . '">' . gettext('No, cancel this deletion') . '</a></p>';
             }
             ?>
     </div>

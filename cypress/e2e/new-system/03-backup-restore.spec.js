@@ -194,7 +194,7 @@ describe('03 - Backup and Restore', () => {
         });
 
         it('should navigate to people page and see data', () => {
-            cy.visit('/v2/people');
+            cy.visit('/people/list');
             
             // Should see people listing
             cy.contains('People').should('be.visible');

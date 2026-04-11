@@ -242,7 +242,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
                                 </a>
                                 <?php if ($att['familyId']): ?>
-                                <a class="dropdown-item" href="<?= $sRootPath ?>/v2/family/<?= $att['familyId'] ?>">
+                                <a class="dropdown-item" href="<?= $sRootPath ?>/people/family/<?= $att['familyId'] ?>">
                                     <i class="ti ti-users me-2"></i><?= gettext('View Family') ?>
                                 </a>
                                 <?php endif; ?>

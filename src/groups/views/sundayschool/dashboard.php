@@ -349,7 +349,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
                                     </a>
                                     <?php if ($famId): ?>
-                                    <a class="dropdown-item" href="<?= $sRootPath ?>/v2/family/<?= $famId ?>">
+                                    <a class="dropdown-item" href="<?= $sRootPath ?>/people/family/<?= $famId ?>">
                                         <i class="ti ti-users me-2"></i><?= gettext('View Family') ?>
                                     </a>
                                     <?php endif; ?>
