@@ -30,7 +30,8 @@ $app->group('/public/user', function (RouteCollectorProxy $group): void {
  *         @OA\JsonContent(
  *             required={"userName","password"},
  *             @OA\Property(property="userName", type="string", example="admin"),
- *             @OA\Property(property="password", type="string", format="password", example="secret")
+ *             @OA\Property(property="password", type="string", format="password", example="secret"),
+ *             @OA\Property(property="otp", type="string", description="One-time password or recovery code for 2FA (required when 202 is returned)", example="123456")
  *         )
  *     ),
  *     @OA\Response(
@@ -65,14 +66,15 @@ function userLogin(Request $request, Response $response, array $args): Response
     $user = UserQuery::create()->findOneByUserName($body['userName']);
     if ($user === null) {
         // Return same error as wrong password to prevent username enumeration
-        $logger->warning('API login attempt for non-existent user: ' . $body['userName']);
+        $logger->warning('API login attempt for non-existent user', ['username' => $body['userName']]);
         throw new HttpUnauthorizedException($request, $genericError);
     }
 
     // Check account lockout before attempting password validation
+    // Use same generic error to prevent username enumeration via locked-account message
     if ($user->isLocked()) {
-        $logger->warning('API login attempt for locked account: ' . $user->getUserName());
-        throw new HttpUnauthorizedException($request, gettext('Too many failed logins: your account has been locked. Please contact an administrator.'));
+        $logger->warning('API login attempt for locked account', ['username' => $user->getUserName()]);
+        throw new HttpUnauthorizedException($request, $genericError);
     }
 
     $password = $body['password'] ?? '';
@@ -83,34 +85,42 @@ function userLogin(Request $request, Response $response, array $args): Response
 
         // Send locked email if account just became locked
         if ($user->isLocked() && !empty($user->getEmail())) {
-            $logger->warning('API login: too many failed attempts, account locked: ' . $user->getUserName());
+            $logger->warning('API login: account locked after too many failures', ['username' => $user->getUserName()]);
             $lockedEmail = new LockedEmail($user);
             $lockedEmail->send();
         }
 
-        $logger->warning('API login: invalid password for user: ' . $user->getUserName());
+        $logger->warning('API login: invalid password', ['username' => $user->getUserName()]);
         throw new HttpUnauthorizedException($request, $genericError);
     }
 
-    // Password is valid — reset failed login counter
-    $user->setFailedLogins(0);
-    $user->save();
-
-    // Check 2FA enrollment
+    // Check 2FA enrollment BEFORE resetting failed logins (only reset on full auth)
     if ($user->is2FactorAuthEnabled()) {
         $otp = $body['otp'] ?? null;
 
         if (empty($otp)) {
-            // No OTP provided — tell client to prompt for it
+            // No OTP provided — tell client to prompt for it (don't reset failed logins yet)
             return SlimUtils::renderJSON($response, ['requiresOTP' => true], 202);
         }
 
         // Validate OTP or recovery code
-        if (!$user->isTwoFACodeValid($otp) && !$user->isTwoFaRecoveryCodeValid($otp)) {
-            $logger->warning('API login: invalid 2FA code for user: ' . $user->getUserName());
-            throw new HttpUnauthorizedException($request, gettext('Invalid verification code'));
+        $otpValid = $user->isTwoFACodeValid($otp);
+        $recoveryValid = !$otpValid && $user->isTwoFaRecoveryCodeValid($otp);
+
+        if (!$otpValid && !$recoveryValid) {
+            $logger->warning('API login: invalid 2FA code', ['username' => $user->getUserName()]);
+            throw new HttpUnauthorizedException($request, $genericError);
+        }
+
+        // Persist consumed recovery code if one was used
+        if ($recoveryValid) {
+            $user->save();
         }
     }
+
+    // Full authentication complete — reset failed login counter
+    $user->setFailedLogins(0);
+    $user->save();
 
     return SlimUtils::renderJSON($response, ['apiKey' => $user->getApiKey()]);
 }
