@@ -419,7 +419,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         /** @var Family $family */
         $family = $request->getAttribute('family');
         $familyId = $family->getId();
-        $deleteMembers = ($request->getQueryParams()['deleteMembers'] ?? 'false') === 'true';
+        $deleteMembers = filter_var($request->getQueryParams()['deleteMembers'] ?? 'false', FILTER_VALIDATE_BOOLEAN);
 
         // Check for donations — cannot delete a family with payment records unless finance-authorized
         $pledgeCount = \ChurchCRM\model\ChurchCRM\PledgeQuery::create()
@@ -468,19 +468,16 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
             }
         }
 
+        // Remove custom field data via ORM
+        \ChurchCRM\model\ChurchCRM\FamilyCustomQuery::create()
+            ->filterByFamId($familyId)
+            ->delete();
+
+        // Delete photo before deleting the record (needs the ID)
+        $family->deletePhoto();
+
         // Delete the family record itself
         $family->delete();
-
-        // Remove custom field data
-        \ChurchCRM\Utils\FunctionsUtils::runQuery(
-            'DELETE FROM family_custom WHERE fam_ID = ' . (int) $familyId
-        );
-
-        // Delete photo if it exists
-        $photoFile = 'Images/Family/' . $familyId . '.png';
-        if (file_exists($photoFile)) {
-            unlink($photoFile);
-        }
 
         return SlimUtils::renderJSON($response, ['success' => true]);
     })->add(DeleteRecordRoleAuthMiddleware::class);
