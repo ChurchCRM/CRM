@@ -6,12 +6,12 @@ describe("Admin People", () => {
     });
 
     it("Person Classifications Editor", () => {
-        cy.visit("OptionManager.php?mode=classes");
+        cy.visit("admin/system/options?mode=classes");
         cy.contains("Person Classifications Editor");
     });
 
     it("Family Roles Editor", () => {
-        cy.visit("OptionManager.php?mode=famroles");
+        cy.visit("admin/system/options?mode=famroles");
         cy.contains("Family Roles Editor");
     });
 

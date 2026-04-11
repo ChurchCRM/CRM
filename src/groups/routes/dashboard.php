@@ -44,7 +44,7 @@ $app->get('/dashboard', function (Request $request, Response $response) {
         'sPageHeaderButtons' => PageHeader::buttons(array_filter([
             ['label' => gettext('Group Reports'), 'url' => '/groups/reports', 'icon' => 'fa-file-lines'],
             ['label' => gettext('Group Properties'), 'url' => '/PropertyList.php?Type=g', 'icon' => 'fa-list'],
-            ['label' => gettext('Group Types'), 'url' => '/OptionManager.php?mode=grptypes', 'icon' => 'fa-tags'],
+            ['label' => gettext('Group Types'), 'url' => '/admin/system/options?mode=grptypes', 'icon' => 'fa-tags'],
             $isAdmin ? ['label' => gettext('Group Settings'), 'collapse' => '#groupSettings', 'icon' => 'fa-sliders', 'adminOnly' => true] : null,
         ])),
         'sSettingsCollapseId' => $isAdmin ? 'groupSettings' : null,
