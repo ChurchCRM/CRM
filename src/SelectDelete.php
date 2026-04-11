@@ -6,7 +6,13 @@ require_once __DIR__ . '/Include/PageInit.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\FamilyCustomQuery;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\NoteQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\PledgeQuery;
+use ChurchCRM\model\ChurchCRM\PropertyQuery;
+use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
@@ -19,7 +25,6 @@ AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser
 
 $iFamilyID = 0;
 $iDonationFamilyID = 0;
-$sMode = 'family';
 
 if (!empty($_GET['FamilyID'])) {
     $iFamilyID = InputUtils::legacyFilterInput($_GET['FamilyID'], 'int');
@@ -27,10 +32,6 @@ if (!empty($_GET['FamilyID'])) {
 
 if (!empty($_GET['DonationFamilyID'])) {
     $iDonationFamilyID = InputUtils::legacyFilterInput($_GET['DonationFamilyID'], 'int');
-}
-
-if (!empty($_GET['mode'])) {
-    $sMode = $_GET['mode'];
 }
 
 if (isset($_GET['CancelFamily'])) {
@@ -41,11 +42,13 @@ $DonationMessage = '';
 
 // Move Donations from 1 family to another
 if (AuthenticationManager::getCurrentUser()->isFinanceEnabled() && isset($_GET['MoveDonations']) && $iFamilyID && $iDonationFamilyID && $iFamilyID != $iDonationFamilyID) {
-    $today = date('Y-m-d');
-    $sSQL ="UPDATE pledge_plg SET plg_FamID='$iDonationFamilyID',
-        plg_DateLastEdited ='$today', plg_EditedBy='" . AuthenticationManager::getCurrentUser()->getId()
-        ."' WHERE plg_FamID='$iFamilyID'";
-    RunQuery($sSQL);
+    PledgeQuery::create()
+        ->filterByFamId((int) $iFamilyID)
+        ->update([
+            'FamId' => (int) $iDonationFamilyID,
+            'DateLastEdited' => date('Y-m-d'),
+            'EditedBy' => AuthenticationManager::getCurrentUser()->getId(),
+        ]);
 
             $DonationMessage = '<p><b><span class="text-error">' . gettext('All donations from this family have been moved to another family.') . '</span></b></p>';
 }
@@ -55,40 +58,46 @@ $sPageTitle = gettext('Delete Confirmation') . ': ' . gettext('Family');
 
 //Do we have deletion confirmation?
 if (isset($_GET['Confirmed'])) {
+    $iFamilyIDInt = (int) $iFamilyID;
+
     // Delete Family
     // Delete all associated Notes associated with this Family record
-    $sSQL = 'DELETE FROM note_nte WHERE nte_fam_ID = ' . $iFamilyID;
-    RunQuery($sSQL);
+    NoteQuery::create()->filterByFamId($iFamilyIDInt)->delete();
 
     // Delete Family pledges
-    $sSQL ="DELETE FROM pledge_plg WHERE plg_PledgeOrPayment = 'Pledge' AND plg_FamID =" . $iFamilyID;
-    RunQuery($sSQL);
+    PledgeQuery::create()
+        ->filterByPledgeOrPayment('Pledge')
+        ->filterByFamId($iFamilyIDInt)
+        ->delete();
 
     // Remove family property data
-    $sSQL ="SELECT pro_ID FROM property_pro WHERE pro_Class='f'";
-    $rsProps = RunQuery($sSQL);
-
-    while ($aRow = mysqli_fetch_row($rsProps)) {
-        $sSQL = 'DELETE FROM record2property_r2p WHERE r2p_pro_ID = ' . $aRow[0] . ' AND r2p_record_ID = ' . $iFamilyID;
-        RunQuery($sSQL);
+    $familyPropertyIds = PropertyQuery::create()
+        ->filterByProClass('f')
+        ->select(['ProId'])
+        ->find()
+        ->toArray();
+    if (!empty($familyPropertyIds)) {
+        RecordPropertyQuery::create()
+            ->filterByPropertyId($familyPropertyIds)
+            ->filterByRecordId($iFamilyIDInt)
+            ->delete();
     }
 
     if (isset($_GET['Members'])) {
         // Delete all persons that were in this family
-        PersonQuery::create()->filterByFamId($iFamilyID)->find()->delete();
+        PersonQuery::create()->filterByFamId($iFamilyIDInt)->find()->delete();
     } else {
         // Reset previous members' family ID to 0 (undefined)
-        $sSQL = 'UPDATE person_per SET per_fam_ID = 0 WHERE per_fam_ID = ' . $iFamilyID;
-        RunQuery($sSQL);
+        PersonQuery::create()
+            ->filterByFamId($iFamilyIDInt)
+            ->update(['FamId' => 0]);
     }
 
     // Delete the specified Family record
-    $sSQL = 'DELETE FROM family_fam WHERE fam_ID = ' . $iFamilyID;
-    RunQuery($sSQL);
+    FamilyQuery::create()->findPk($iFamilyIDInt)?->delete();
 
     // Remove custom field data
-    $sSQL = 'DELETE FROM family_custom WHERE fam_ID = ' . $iFamilyID;
-    RunQuery($sSQL);
+    FamilyCustomQuery::create()->filterByFamId($iFamilyIDInt)->delete();
 
     // Delete the photo files, if they exist
     $photoFile = 'Images/Family/' . $iFamilyID . '.png';
@@ -101,9 +110,11 @@ if (isset($_GET['Confirmed'])) {
 }
 
 //Get the family record in question
-$sSQL = 'SELECT * FROM family_fam WHERE fam_ID = ' . $iFamilyID;
-$rsFamily = RunQuery($sSQL);
-extract(mysqli_fetch_array($rsFamily));
+$family = FamilyQuery::create()->findPk((int) $iFamilyID);
+if ($family === null) {
+    RedirectUtils::redirect(SystemURLs::getRootPath() . '/v2/family');
+}
+$fam_Name = $family->getName();
 
 $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('Delete Confirmation')],
@@ -116,9 +127,10 @@ require_once __DIR__ . '/Include/Header.php';
         <?php
         // Delete Family Confirmation
         // See if this family has any donations
-        $sSQL ="SELECT plg_plgID FROM pledge_plg WHERE plg_PledgeOrPayment = 'Payment' AND plg_FamID =" . $iFamilyID;
-        $rsDonations = RunQuery($sSQL);
-        $bIsDonor = (mysqli_num_rows($rsDonations) > 0);
+        $bIsDonor = PledgeQuery::create()
+            ->filterByPledgeOrPayment('Payment')
+            ->filterByFamId((int) $iFamilyID)
+            ->exists();
 
         if ($bIsDonor && !AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
             // Donations from Family. Current user not authorized for Finance
@@ -137,42 +149,43 @@ require_once __DIR__ . '/Include/Header.php';
             echo '<select name=DonationFamilyID><option value=0 selected>' . gettext('Unassigned') . '</option>';
 
             //Get Families for the drop-down
-            $sSQL = 'SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam ORDER BY fam_Name';
-            $rsFamilies = RunQuery($sSQL);
-            // Build Criteria for Head of Household
+            $families = FamilyQuery::create()->orderByName()->find();
 
-            $head_criteria = ' per_fmr_ID = ' . (SystemConfig::getValue('sDirRoleHead') ?: '1');
-            // If more than one role assigned to Head of Household, add OR
-            $head_criteria = str_replace(',', ' OR per_fmr_ID = ', $head_criteria);
-            // Add Spouse to criteria
+            // Build list of Head of Household roles
+            $headRoles = array_map('intval', explode(',', SystemConfig::getValue('sDirRoleHead') ?: '1'));
             if (intval(SystemConfig::getValue('sDirRoleSpouse')) > 0) {
-                $head_criteria .= ' OR per_fmr_ID = ' . SystemConfig::getValue('sDirRoleSpouse');
+                $headRoles[] = intval(SystemConfig::getValue('sDirRoleSpouse'));
             }
             // Build array of Head of Households and Spouses with fam_ID as the key
-            $sSQL = 'SELECT per_FirstName, per_fam_ID FROM person_per WHERE per_fam_ID > 0 AND (' . $head_criteria . ') ORDER BY per_fam_ID';
-            $rs_head = RunQuery($sSQL);
-            $aHead = '';
-            while (list($head_firstname, $head_famid) = mysqli_fetch_row($rs_head)) {
-                if ($head_firstname && $aHead[$head_famid]) {
-                    $aHead[$head_famid] .= ' & ' . $head_firstname;
-                } elseif ($head_firstname) {
-                    $aHead[$head_famid] = $head_firstname;
+            $heads = PersonQuery::create()
+                ->filterByFamId(0, \Propel\Runtime\ActiveQuery\Criteria::GREATER_THAN)
+                ->filterByFmrId($headRoles)
+                ->orderByFamId()
+                ->find();
+            $aHead = [];
+            foreach ($heads as $head) {
+                $headFamId = $head->getFamId();
+                $firstName = $head->getFirstName();
+                if ($firstName && isset($aHead[$headFamId])) {
+                    $aHead[$headFamId] .= ' & ' . $firstName;
+                } elseif ($firstName) {
+                    $aHead[$headFamId] = $firstName;
                 }
             }
-            while ($aRow = mysqli_fetch_array($rsFamilies)) {
-                extract($aRow);
-                echo '<option value="' . (int)$fam_ID . '"';
-                if ($fam_ID == $iFamilyID) {
+            foreach ($families as $fam) {
+                $famId = $fam->getId();
+                echo '<option value="' . (int) $famId . '"';
+                if ($famId == $iFamilyID) {
                     echo ' selected';
                 }
-                echo '>' . InputUtils::escapeHTML($fam_Name);
-                if ($aHead[$fam_ID]) {
-                    echo ', ' . InputUtils::escapeHTML($aHead[$fam_ID]);
+                echo '>' . InputUtils::escapeHTML($fam->getName());
+                if (isset($aHead[$famId])) {
+                    echo ', ' . InputUtils::escapeHTML($aHead[$famId]);
                 }
-                if ($fam_ID == $iFamilyID) {
+                if ($famId == $iFamilyID) {
                     echo ' -- ' . gettext('CURRENT FAMILY WITH DONATIONS');
                 } else {
-                    echo ' ' . InputUtils::escapeHTML(MiscUtils::formatAddressLine($fam_Address1, $fam_City, $fam_State));
+                    echo ' ' . InputUtils::escapeHTML(MiscUtils::formatAddressLine($fam->getAddress1(), $fam->getCity(), $fam->getState()));
                 }
             }
             echo '</select><br><br>';
@@ -189,7 +202,7 @@ require_once __DIR__ . '/Include/Header.php';
                  FROM pledge_plg
                  LEFT JOIN person_per a ON plg_EditedBy = a.per_ID
                  LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
-                 WHERE plg_famID = ' . $iFamilyID . ' ORDER BY pledge_plg.plg_date';
+                 WHERE plg_famID = ' . (int) $iFamilyID . ' ORDER BY pledge_plg.plg_date';
             $rsPledges = RunQuery($sSQL); ?>
             <table class="table w-100">
                 <tr class="TableHeader">
@@ -248,12 +261,9 @@ require_once __DIR__ . '/Include/Header.php';
                 echo '</div><br/>';
                 echo '<div><strong>' . gettext('Family Members:') . '</strong><ul>';
                 //List Family Members
-                $sSQL = 'SELECT * FROM person_per WHERE per_fam_ID = ' . (int)$iFamilyID;
-                $rsPerson = RunQuery($sSQL);
-                while ($aRow = mysqli_fetch_array($rsPerson)) {
-                    extract($aRow);
-                    echo '<li>' . InputUtils::escapeHTML($per_FirstName) . ' ' . InputUtils::escapeHTML($per_LastName) . '</li>';
-                    RunQuery($sSQL);
+                $familyMembers = PersonQuery::create()->filterByFamId((int) $iFamilyID)->find();
+                foreach ($familyMembers as $person) {
+                    echo '<li>' . InputUtils::escapeHTML($person->getFirstName()) . ' ' . InputUtils::escapeHTML($person->getLastName()) . '</li>';
                 }
                 echo '</ul></div>';
                 echo"<p id=\"deleteFamilyOnlyBtn\" class=\"text-center\"><a class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&FamilyID=" . $iFamilyID . '">' . gettext('Delete Family Record ONLY') . '</a> ';
