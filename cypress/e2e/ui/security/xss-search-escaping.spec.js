@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe("XSS: Search dropdown escaping", () => {
-    before(() => {
+    beforeEach(() => {
         cy.setupAdminSession();
     });
 
