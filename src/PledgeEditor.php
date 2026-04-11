@@ -13,6 +13,7 @@ use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Pledge;
+use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -83,16 +84,17 @@ if (array_key_exists('FamilyID', $_GET)) {
 $fund2PlgIds = []; // this will be the array cross-referencing funds to existing plg_plgid's
 
 if ($sGroupKey) {
-    $sSQL = "SELECT plg_plgID, plg_fundID, plg_EditedBy from pledge_plg where plg_GroupKey='$sGroupKey'";
-    $rsKeys = RunQuery($sSQL);
-    while ($aRow = mysqli_fetch_array($rsKeys)) {
-        $onePlgID = $aRow['plg_plgID'];
-        $oneFundID = $aRow['plg_fundID'];
+    $pledgesByKey = PledgeQuery::create()
+        ->filterByGroupKey($sGroupKey)
+        ->find();
+    foreach ($pledgesByKey as $pledgeRow) {
+        $onePlgID = $pledgeRow->getId();
+        $oneFundID = $pledgeRow->getFundId();
         $iOriginalSelectedFund = $oneFundID; // remember the original fund in case we switch to splitting
         $fund2PlgIds[$oneFundID] = $onePlgID;
 
         // Security: User must have Finance permission or be the one who entered this record originally
-        if (!(AuthenticationManager::getCurrentUser()->isFinanceEnabled() || AuthenticationManager::getCurrentUser()->getId() == $aRow['plg_EditedBy'])) {
+        if (!(AuthenticationManager::getCurrentUser()->isFinanceEnabled() || AuthenticationManager::getCurrentUser()->getId() === $pledgeRow->getEditedBy())) {
             RedirectUtils::redirect('v2/dashboard');
         }
     }
@@ -314,12 +316,25 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
             }
             unset($sSQL);
             if ($fund2PlgIds && array_key_exists($fun_id, $fund2PlgIds)) {
-                if ($nAmount[$fun_id] > 0) {
-                    $editedBy = AuthenticationManager::getCurrentUser()->getId();
-                    $sSQL = "UPDATE pledge_plg SET plg_famID = '$iFamily', plg_FYID = '$iFYID', plg_date = '$dDate', plg_amount = '{$nAmount[$fun_id]}', plg_schedule = '$iSchedule', plg_method = '$iMethod', plg_comment = '{$sComment[$fun_id]}'";
-                    $sSQL .= ", plg_DateLastEdited = '" . date('YmdHis') . "', plg_EditedBy = $editedBy, plg_CheckNo = '$iCheckNo', plg_scanString = '$tScanString', plg_aut_ID='$iAutID', plg_NonDeductible='{$nNonDeductible[$fun_id]}' WHERE plg_plgID='{$fund2PlgIds[$fun_id]}'";
-                } else { // delete that record
-                    $sSQL = "DELETE FROM pledge_plg WHERE plg_plgID = {$fund2PlgIds[$fun_id]}";
+                $existingPledge = PledgeQuery::create()->findPk((int) $fund2PlgIds[$fun_id]);
+                if ($nAmount[$fun_id] > 0 && $existingPledge !== null) {
+                    $existingPledge
+                        ->setFamId((int) $iFamily)
+                        ->setFyId((int) $iFYID)
+                        ->setDate($dDate)
+                        ->setAmount($nAmount[$fun_id])
+                        ->setSchedule($iSchedule)
+                        ->setMethod($iMethod)
+                        ->setComment($sComment[$fun_id])
+                        ->setDateLastEdited(date('YmdHis'))
+                        ->setEditedBy(AuthenticationManager::getCurrentUser()->getId())
+                        ->setCheckNo($iCheckNo)
+                        ->setScanString($tScanString)
+                        ->setAutId($iAutID)
+                        ->setNondeductible($nNonDeductible[$fun_id])
+                        ->save();
+                } elseif ($existingPledge !== null) { // delete that record
+                    $existingPledge->delete();
                 }
             } elseif ($nAmount[$fun_id] > 0) {
                 if ($iMethod != 'CHECK') {
