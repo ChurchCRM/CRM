@@ -13,6 +13,7 @@ use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\VersionUtils;
