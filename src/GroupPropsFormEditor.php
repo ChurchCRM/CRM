@@ -46,7 +46,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         var groupId = <?= (int) $iGroupID ?>;
 
-        function reorderFormProp(propId, field, direction) {
+        function reorderFormProp(propId, direction) {
             fetch(window.CRM.root + '/api/groups/' + groupId + '/formprops/' + propId + '/order', {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json', 'x-api-key': window.CRM.apiKey },
@@ -57,6 +57,12 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                 if (data.success) { window.location.reload(); }
             });
         }
+
+        $(document).on('click', '.js-reorder-field', function (e) {
+            e.preventDefault();
+            var btn = $(this);
+            reorderFormProp(btn.data('prop-id'), btn.data('direction'));
+        });
 
         function confirmDeleteField(fieldName, propId, fieldId) {
             var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + '"' + window.CRM.escapeHtml(fieldName) + '"?';
@@ -478,10 +484,10 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                         </button>
                                         <?php
                                         if ($row != 1) {
-                                            echo '<a href="#" onclick="reorderFormProp(' . $row . ', \'' . InputUtils::escapeAttribute($aFieldFields[$row]) . '\', \'up\'); return false;" class="dropdown-item"><i class="ti ti-arrow-up me-2"></i>' . gettext('Move up') . '</a>';
+                                            echo '<a href="#" class="dropdown-item js-reorder-field" data-prop-id="' . $row . '" data-direction="up"><i class="ti ti-arrow-up me-2"></i>' . gettext('Move up') . '</a>';
                                         }
                                         if ($row < $numRows) {
-                                            echo '<a href="#" onclick="reorderFormProp(' . $row . ', \'' . InputUtils::escapeAttribute($aFieldFields[$row]) . '\', \'down\'); return false;" class="dropdown-item"><i class="ti ti-arrow-down me-2"></i>' . gettext('Move down') . '</a>';
+                                            echo '<a href="#" class="dropdown-item js-reorder-field" data-prop-id="' . $row . '" data-direction="down"><i class="ti ti-arrow-down me-2"></i>' . gettext('Move down') . '</a>';
                                         } ?>
                                     </div>
                                 </div>
