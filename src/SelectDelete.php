@@ -132,7 +132,7 @@ require_once __DIR__ . '/Include/Header.php';
                 }
                 fetch(window.CRM.root + '/api/family/<?= (int)$iFamilyID ?>/donations/move', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'x-api-key': window.CRM.apiKey },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ targetFamilyId: parseInt(targetFamilyId) })
                 })
                 .then(function(r) { return r.json(); })
@@ -237,7 +237,7 @@ require_once __DIR__ . '/Include/Header.php';
                     var url = window.CRM.root + '/api/family/' + familyId + (deleteMembers ? '?deleteMembers=true' : '');
                     fetch(url, {
                         method: 'DELETE',
-                        headers: { 'x-api-key': window.CRM.apiKey }
+                        headers: {}
                     })
                     .then(function(r) { return r.json(); })
                     .then(function(data) {
