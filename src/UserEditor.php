@@ -12,6 +12,7 @@ use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserConfig;
 use ChurchCRM\model\ChurchCRM\UserConfigQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -50,6 +51,13 @@ if (isset($_POST['NewUser'])) {
 
 // Has the form been submitted?
 if (isset($_POST['save']) && $iPersonID > 0) {
+    // Security: CSRF token validation (GHSA-3xq9-c86x-cwpp)
+    if (!CSRFUtils::verifyRequest($_POST, 'user_editor')) {
+        // Preserve add-vs-edit context — NewUser is "true"/"false" string from form
+        $idParam = ($NewUser ?? 'false') === 'true' ? 'NewPersonID' : 'PersonID';
+        RedirectUtils::redirect('UserEditor.php?' . $idParam . '=' . $iPersonID . '&ErrorText=Invalid+security+token.+Please+try+again.');
+    }
+
     // Assign all variables locally
     $sAction = $_POST['Action'];
 
@@ -329,6 +337,7 @@ require_once __DIR__ . '/Include/Header.php';
 
 ?>
 <form method="post" action="UserEditor.php">
+<?= CSRFUtils::getTokenInputField('user_editor') ?>
 <input type="hidden" name="Action" value="<?= $sAction ?>">
 <input type="hidden" name="NewUser" value="<?= $vNewUser ?>">
 
