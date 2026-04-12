@@ -15473,3 +15473,111 @@ msgstr "yıl"
 msgid "yrs"
 msgstr "yıl"
 
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "Aile silinirken bir hata oluştu."
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "Bağışlar taşınırken bir hata oluştu."
+
+#: 
+msgid "At least one family member is required"
+msgstr "En az bir aile üyesi gereklidir"
+
+#: 
+msgid "Back to Users"
+msgstr "Kullanıcılara Geri Dön"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "Bağış kaydı olan bir aile silinemez. Finans yöneticisiyle iletişime geçin."
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "Özellik bu yönde taşınamaz"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "Aile Bilgilerini Onayla"
+
+#: 
+msgid "Delete failed"
+msgstr "Silme başarısız oldu"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "Yön \"yukarı\" veya \"aşağı\" olmalıdır"
+
+#: 
+msgid "Failed to move donations."
+msgstr "Bağışlar taşınamadı."
+
+#: 
+msgid "Finance permission required"
+msgstr "Finans izni gereklidir"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "Ön plan rengi ve arka plan rengi gereklidir."
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "Grup bulunamadı veya özel özellikleri yok"
+
+#: 
+msgid "Group role not found"
+msgstr "Grup rolü bulunamadı"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "Geçersiz renk biçimi. #FF0000 gibi onaltılık renk kodları kullanın."
+
+#: 
+msgid "Invalid field identifier"
+msgstr "Geçersiz alan tanımlayıcısı"
+
+#: 
+msgid "Invalid target family"
+msgstr "Geçersiz hedef aile"
+
+#: 
+msgid "Log Out"
+msgstr "Çıkış Yap"
+
+#: 
+msgid "Membership not found"
+msgstr "Üyelik bulunamadı"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "Şifre başarıyla değiştirildi:"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "Lütfen aşağıdaki aile bilgilerinizi inceleyin ve onaylayın ya da değişiklik talep edin."
+
+#: 
+msgid "Please select a target family."
+msgstr "Lütfen bir hedef aile seçin."
+
+#: 
+msgid "Target family not found"
+msgstr "Hedef aile bulunamadı"
+
+#: 
+msgid "Verify Family Info"
+msgstr "Aile Bilgilerini Doğrula"
+
+#: 
+msgid "Welcome"
+msgstr "Hoş Geldiniz"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "Aşağıdaki bağlantıyı kullanarak aile bilgilerinizi inceleyebilir ve doğrulayabilirsiniz. Ek erişim gerekiyorsa, kilise yöneticinizle iletişime geçin."
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "Bu kişiyi görüntüleme izniniz yok"
+

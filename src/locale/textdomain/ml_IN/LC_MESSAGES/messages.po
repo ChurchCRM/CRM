@@ -15422,3 +15422,111 @@ msgstr "വർ"
 msgid "yrs"
 msgstr "വർഷ"
 
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "കുടുംബം ഇല്ലാതാക്കുന്നതിൽ പിഴവ് സംഭവിച്ചു."
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "സംഭാവനകൾ മാറ്റുന്നതിൽ പിഴവ് സംഭവിച്ചു."
+
+#: 
+msgid "At least one family member is required"
+msgstr "കുറഞ്ഞത് ഒരു കുടുംബാംഗമെങ്കിലും ആവശ്യമാണ്"
+
+#: 
+msgid "Back to Users"
+msgstr "ഉപയോക്താക്കളിലേക്ക് തിരികെ"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "സംഭാവനാ രേഖകളുള്ള ഒരു കുടുംബത്തെ ഇല്ലാതാക്കാൻ കഴിയില്ല. ഒരു ഫിനാൻസ് അഡ്മിനിസ്ട്രേറ്ററെ ബന്ധപ്പെടുക."
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "ആ ദിശയിൽ പ്രോപ്പർട്ടി നീക്കാൻ കഴിയില്ല"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "കുടുംബ വിവരം സ്ഥിരീകരിക്കുക"
+
+#: 
+msgid "Delete failed"
+msgstr "ഇല്ലാതാക്കൽ പരാജയപ്പെട്ടു"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "ദിശ \"മുകളിലേക്ക്\" അല്ലെങ്കിൽ \"താഴേക്ക്\" ആയിരിക്കണം"
+
+#: 
+msgid "Failed to move donations."
+msgstr "സംഭാവനകൾ മാറ്റുന്നതിൽ പരാജയപ്പെട്ടു."
+
+#: 
+msgid "Finance permission required"
+msgstr "ഫിനാൻസ് അനുമതി ആവശ്യമാണ്"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "ഫോർഗ്രൗണ്ട് കളറും ബാക്ക്ഗ്രൗണ്ട് കളറും ആവശ്യമാണ്."
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "ഗ്രൂപ്പ് കണ്ടെത്തിയില്ല അല്ലെങ്കിൽ പ്രത്യേക ഗുണങ്ങളൊന്നുമില്ല"
+
+#: 
+msgid "Group role not found"
+msgstr "ഗ്രൂപ്പ് റോൾ കണ്ടെത്തിയില്ല"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "അസാധുവായ നിറ ഫോർമാറ്റ്. #FF0000 പോലുള്ള ഹെക്സ് നിറങ്ങൾ ഉപയോഗിക്കുക."
+
+#: 
+msgid "Invalid field identifier"
+msgstr "അസാധുവായ ഫീൽഡ് ഐഡന്റിഫയർ"
+
+#: 
+msgid "Invalid target family"
+msgstr "അസാധുവായ ലക്ഷ്യ കുടുംബം"
+
+#: 
+msgid "Log Out"
+msgstr "പുറത്തുകടക്കുക"
+
+#: 
+msgid "Membership not found"
+msgstr "അംഗത്വം കണ്ടെത്തിയില്ല"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "പാസ്‌വേഡ് വിജയകരമായി മാറ്റി"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "ദയവായി താഴെയുള്ള നിങ്ങളുടെ കുടുംബ വിവരം അവലോകനം ചെയ്ത് സ്ഥിരീകരിക്കുക അല്ലെങ്കിൽ മാറ്റങ്ങൾ അഭ്യർത്ഥിക്കുക."
+
+#: 
+msgid "Please select a target family."
+msgstr "ദയവായി ഒരു ലക്ഷ്യ കുടുംബം തിരഞ്ഞെടുക്കുക."
+
+#: 
+msgid "Target family not found"
+msgstr "ലക്ഷ്യ കുടുംബം കണ്ടെത്തിയില്ല"
+
+#: 
+msgid "Verify Family Info"
+msgstr "കുടുംബ വിവരം സ്ഥിരീകരിക്കുക"
+
+#: 
+msgid "Welcome"
+msgstr "സ്വാഗതം"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "താഴെയുള്ള ലിങ്ക് ഉപയോഗിച്ച് നിങ്ങളുടെ കുടുംബ വിവരം അവലോകനം ചെയ്യുകയും സ്ഥിരീകരിക്കുകയും ചെയ്യാം. അധിക ആക്‌സസ് ആവശ്യമെങ്കിൽ, നിങ്ങളുടെ പള്ളി അഡ്മിനിസ്ട്രേറ്ററെ ബന്ധപ്പെടുക."
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "ഈ വ്യക്തിയെ കാണാൻ നിങ്ങൾക്ക് അനുമതിയില്ല"
+

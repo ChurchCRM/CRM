@@ -15468,3 +15468,111 @@ msgstr "a."
 msgid "yrs"
 msgstr "a."
 
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "Pere kustutamisel ilmnes viga."
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "Annetuste teisaldamisel ilmnes viga."
+
+#: 
+msgid "At least one family member is required"
+msgstr "Vähemalt üks pereliige on nõutav"
+
+#: 
+msgid "Back to Users"
+msgstr "Tagasi kasutajate juurde"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "Ei saa kustutada peret, millel on annetuste andmed. Võtke ühendust rahandusadministraatoriga."
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "Ei saa omadust selles suunas teisaldada"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "Kinnita pere andmed"
+
+#: 
+msgid "Delete failed"
+msgstr "Kustutamine ebaõnnestus"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "Suund peab olema \"üles\" või \"alla\""
+
+#: 
+msgid "Failed to move donations."
+msgstr "Annetuste teisaldamine ebaõnnestus."
+
+#: 
+msgid "Finance permission required"
+msgstr "Vajalik rahanduse luba"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "ForegroundColor ja BackgroundColor on kohustuslikud."
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "Gruppi ei leitud või sellel puuduvad erilised omadused"
+
+#: 
+msgid "Group role not found"
+msgstr "Grupi rolli ei leitud"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "Kehtetu värvivorming. Kasutage hex-värve nagu #FF0000."
+
+#: 
+msgid "Invalid field identifier"
+msgstr "Kehtetu välja identifikaator"
+
+#: 
+msgid "Invalid target family"
+msgstr "Kehtetu sihpere"
+
+#: 
+msgid "Log Out"
+msgstr "Logi välja"
+
+#: 
+msgid "Membership not found"
+msgstr "Liikmesust ei leitud"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "Parool edukalt muudetud kasutajale"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "Palun vaadake allpool oma pere andmed üle ning kinnitage või taotlege muudatusi."
+
+#: 
+msgid "Please select a target family."
+msgstr "Palun valige sihpere."
+
+#: 
+msgid "Target family not found"
+msgstr "Sihperet ei leitud"
+
+#: 
+msgid "Verify Family Info"
+msgstr "Kontrolli pere andmeid"
+
+#: 
+msgid "Welcome"
+msgstr "Tere tulemast"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "Saate oma pere andmeid vaadata ja kinnitada alloleva lingi kaudu. Kui vajate täiendavat juurdepääsu, võtke palun ühendust oma kiriku administraatoriga."
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "Teil puudub luba seda isikut vaadata"
+

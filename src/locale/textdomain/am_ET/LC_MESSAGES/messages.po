@@ -15477,3 +15477,111 @@ msgstr "ዓ."
 msgid "yrs"
 msgstr "ዓ.ም"
 
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "ቤተሰቡን ሲሰርዙ ስህተት ተከስቷል።"
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "ስጦታዎችን ሲያንቀሳቅሱ ስህተት ተከስቷል።"
+
+#: 
+msgid "At least one family member is required"
+msgstr "ቢያንስ አንድ የቤተሰብ አባል ያስፈልጋል"
+
+#: 
+msgid "Back to Users"
+msgstr "ወደ ተጠቃሚዎች ተመለስ"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "የስጦታ መዝገቦች ያሉት ቤተሰብ ሊሰረዝ አይችልም። የፋይናንስ አስተዳዳሪን ያናግሩ።"
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "ንብረቱን ወደዚያ አቅጣጫ ማንቀሳቀስ አይቻልም"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "የቤተሰብ መረጃ ያረጋግጡ"
+
+#: 
+msgid "Delete failed"
+msgstr "መሰረዝ አልተሳካም"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "አቅጣጫ \"ወደ ላይ\" ወይም \"ወደ ታች\" መሆን አለበት"
+
+#: 
+msgid "Failed to move donations."
+msgstr "ስጦታዎችን ማንቀሳቀስ አልተሳካም።"
+
+#: 
+msgid "Finance permission required"
+msgstr "የፋይናንስ ፈቃድ ያስፈልጋል"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "የፊት ቀለም እና የጀርባ ቀለም ያስፈልጋሉ።"
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "ቡድኑ አልተገኘም ወይም ልዩ ባህሪያት የሉትም"
+
+#: 
+msgid "Group role not found"
+msgstr "የቡድን ሚና አልተገኘም"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "ልክ ያልሆነ የቀለም ቅርጸት። እንደ #FF0000 ያሉ ሄክስ ቀለሞችን ይጠቀሙ።"
+
+#: 
+msgid "Invalid field identifier"
+msgstr "ልክ ያልሆነ የመስክ መለያ"
+
+#: 
+msgid "Invalid target family"
+msgstr "ልክ ያልሆነ ዒላማ ቤተሰብ"
+
+#: 
+msgid "Log Out"
+msgstr "ውጣ"
+
+#: 
+msgid "Membership not found"
+msgstr "አባልነት አልተገኘም"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "ለ የይለፍ ቃል በተሳካ ሁኔታ ተቀይሯል"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "ከዚህ በታች ያለውን የቤተሰብ መረጃዎን ይከልሱ እና ያረጋግጡ ወይም ለውጦችን ይጠይቁ።"
+
+#: 
+msgid "Please select a target family."
+msgstr "ዒላማ ቤተሰብ ይምረጡ።"
+
+#: 
+msgid "Target family not found"
+msgstr "ዒላማ ቤተሰቡ አልተገኘም"
+
+#: 
+msgid "Verify Family Info"
+msgstr "የቤተሰብ መረጃ ያረጋግጡ"
+
+#: 
+msgid "Welcome"
+msgstr "እንኳን ደህና መጡ"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "ከዚህ በታች ያለውን ሊንክ በመጠቀም የቤተሰብ መረጃዎን መከለስ እና ማረጋገጥ ይችላሉ። ተጨማሪ መዳረሻ ካስፈለጎ፣ የቤተክርስቲያን አስተዳዳሪዎን ያናግሩ።"
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "ይህን ሰው ለማየት ፈቃድ የለዎትም"
+

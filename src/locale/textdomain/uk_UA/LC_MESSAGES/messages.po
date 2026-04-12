@@ -12720,6 +12720,10 @@ msgid "Review & Delete"
 msgstr "Перегляд та видалення"
 
 #: 
+msgid "SHA1 Hash"
+msgstr "SHA1 Хеш"
+
+#: 
 msgid "Setup Instructions"
 msgstr "Інструкції з налаштування"
 
@@ -15486,4 +15490,112 @@ msgstr "рік"
 #: 
 msgid "yrs"
 msgstr "рр."
+
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "Під час видалення сімʼї сталася помилка."
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "Під час переміщення пожертвувань сталася помилка."
+
+#: 
+msgid "At least one family member is required"
+msgstr "Необхідний щонайменше один член сімʼї"
+
+#: 
+msgid "Back to Users"
+msgstr "Назад до користувачів"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "Неможливо видалити сімʼю із записами про пожертвування. Зверніться до фінансового адміністратора."
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "Неможливо перемістити властивість у цьому напрямку"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "Підтвердити інформацію про сімʼю"
+
+#: 
+msgid "Delete failed"
+msgstr "Помилка видалення"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "Напрямок повинен бути \"вгору\" або \"вниз\""
+
+#: 
+msgid "Failed to move donations."
+msgstr "Не вдалося перемістити пожертвування."
+
+#: 
+msgid "Finance permission required"
+msgstr "Необхідний дозвіл фінансів"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "Потрібні колір переднього плану та колір фону."
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "Групу не знайдено або вона не має спеціальних властивостей"
+
+#: 
+msgid "Group role not found"
+msgstr "Роль групи не знайдена"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "Недійсний формат кольору. Використовуйте шістнадцяткові кольори, наприклад #FF0000."
+
+#: 
+msgid "Invalid field identifier"
+msgstr "Недійсний ідентифікатор поля"
+
+#: 
+msgid "Invalid target family"
+msgstr "Недійсна цільова сімʼя"
+
+#: 
+msgid "Log Out"
+msgstr "Вийти"
+
+#: 
+msgid "Membership not found"
+msgstr "Членство не знайдено"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "Пароль успішно змінено для"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "Будь ласка, перегляньте інформацію про вашу сімʼю нижче та підтвердіть або запросіть зміни."
+
+#: 
+msgid "Please select a target family."
+msgstr "Будь ласка, оберіть цільову сімʼю."
+
+#: 
+msgid "Target family not found"
+msgstr "Цільову сімʼю не знайдено"
+
+#: 
+msgid "Verify Family Info"
+msgstr "Перевірити інформацію про сімʼю"
+
+#: 
+msgid "Welcome"
+msgstr "Ласкаво просимо"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "Ви можете переглянути та перевірити інформацію про вашу сімʼю за посиланням нижче. Якщо вам потрібен додатковий доступ, зверніться до адміністратора вашої парафії."
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "У вас немає дозволу на перегляд цієї особи"
 

@@ -15470,3 +15470,111 @@ msgstr "an"
 msgid "yrs"
 msgstr "ans"
 
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "Une erreur s'est produite lors de la suppression de la famille."
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "Une erreur s'est produite lors du déplacement des dons."
+
+#: 
+msgid "At least one family member is required"
+msgstr "Au moins un membre de la famille est requis"
+
+#: 
+msgid "Back to Users"
+msgstr "Retour aux utilisateurs"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "Impossible de supprimer une famille avec des enregistrements de dons. Contactez un administrateur financier."
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "Impossible de déplacer la propriété dans cette direction"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "Confirmer les informations de la famille"
+
+#: 
+msgid "Delete failed"
+msgstr "Échec de la suppression"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "La direction doit être \"haut\" ou \"bas\""
+
+#: 
+msgid "Failed to move donations."
+msgstr "Échec du déplacement des dons."
+
+#: 
+msgid "Finance permission required"
+msgstr "Permission financière requise"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "La couleur de premier plan et la couleur d'arrière-plan sont requises."
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "Groupe introuvable ou sans propriétés spéciales"
+
+#: 
+msgid "Group role not found"
+msgstr "Rôle de groupe introuvable"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "Format de couleur invalide. Utilisez des couleurs hexadécimales comme #FF0000."
+
+#: 
+msgid "Invalid field identifier"
+msgstr "Identifiant de champ invalide"
+
+#: 
+msgid "Invalid target family"
+msgstr "Famille cible invalide"
+
+#: 
+msgid "Log Out"
+msgstr "Se déconnecter"
+
+#: 
+msgid "Membership not found"
+msgstr "Adhésion introuvable"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "Mot de passe modifié avec succès pour"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "Veuillez vérifier les informations de votre famille ci-dessous et confirmer ou demander des modifications."
+
+#: 
+msgid "Please select a target family."
+msgstr "Veuillez sélectionner une famille cible."
+
+#: 
+msgid "Target family not found"
+msgstr "Famille cible introuvable"
+
+#: 
+msgid "Verify Family Info"
+msgstr "Vérifier les informations de la famille"
+
+#: 
+msgid "Welcome"
+msgstr "Bienvenue"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "Vous pouvez consulter et vérifier les informations de votre famille en utilisant le lien ci-dessous. Si vous avez besoin d'un accès supplémentaire, veuillez contacter votre administrateur d'église."
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "Vous n'avez pas la permission de consulter cette personne"
+

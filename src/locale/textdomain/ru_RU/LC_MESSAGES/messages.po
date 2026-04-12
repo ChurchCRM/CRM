@@ -15558,3 +15558,111 @@ msgstr "г."
 msgid "yrs"
 msgstr "лет"
 
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "При удалении семьи произошла ошибка."
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "При перемещении пожертвований произошла ошибка."
+
+#: 
+msgid "At least one family member is required"
+msgstr "Требуется хотя бы один член семьи"
+
+#: 
+msgid "Back to Users"
+msgstr "Назад к пользователям"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "Невозможно удалить семью с записями о пожертвованиях. Обратитесь к администратору финансов."
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "Невозможно переместить поле в этом направлении"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "Подтвердить сведения о семье"
+
+#: 
+msgid "Delete failed"
+msgstr "Удаление не выполнено"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "Направление должно быть «вверх» или «вниз»"
+
+#: 
+msgid "Failed to move donations."
+msgstr "Не удалось переместить пожертвования."
+
+#: 
+msgid "Finance permission required"
+msgstr "Требуется разрешение на доступ к финансам"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "Цвет текста и цвет фона обязательны."
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "Группа не найдена или не имеет особых свойств"
+
+#: 
+msgid "Group role not found"
+msgstr "Роль группы не найдена"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "Неверный формат цвета. Используйте шестнадцатеричные цвета, например #FF0000."
+
+#: 
+msgid "Invalid field identifier"
+msgstr "Недопустимый идентификатор поля"
+
+#: 
+msgid "Invalid target family"
+msgstr "Недопустимая целевая семья"
+
+#: 
+msgid "Log Out"
+msgstr "Выйти"
+
+#: 
+msgid "Membership not found"
+msgstr "Членство не найдено"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "Пароль успешно изменён для"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "Пожалуйста, ознакомьтесь со сведениями о вашей семье ниже и подтвердите их или запросите изменения."
+
+#: 
+msgid "Please select a target family."
+msgstr "Пожалуйста, выберите целевую семью."
+
+#: 
+msgid "Target family not found"
+msgstr "Целевая семья не найдена"
+
+#: 
+msgid "Verify Family Info"
+msgstr "Проверить сведения о семье"
+
+#: 
+msgid "Welcome"
+msgstr "Добро пожаловать"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "Вы можете ознакомиться со сведениями о вашей семье и проверить их по ссылке ниже. Если вам нужен дополнительный доступ, обратитесь к администратору вашего прихода."
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "У вас нет разрешения на просмотр этого человека"
+

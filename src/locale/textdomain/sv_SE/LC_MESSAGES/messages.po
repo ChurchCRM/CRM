@@ -15580,3 +15580,111 @@ msgstr "år"
 msgid "yrs"
 msgstr "år"
 
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "Ett fel uppstod när familjen skulle tas bort."
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "Ett fel uppstod när gåvorna skulle flyttas."
+
+#: 
+msgid "At least one family member is required"
+msgstr "Minst en familjemedlem krävs"
+
+#: 
+msgid "Back to Users"
+msgstr "Tillbaka till användare"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "Det går inte att ta bort en familj med gåvoregister. Kontakta en ekonomiadministratör."
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "Det går inte att flytta egenskapen i den riktningen"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "Bekräfta familjeinformation"
+
+#: 
+msgid "Delete failed"
+msgstr "Borttagning misslyckades"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "Riktningen måste vara \"upp\" eller \"ned\""
+
+#: 
+msgid "Failed to move donations."
+msgstr "Det gick inte att flytta gåvorna."
+
+#: 
+msgid "Finance permission required"
+msgstr "Ekonomibehörighet krävs"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "Förgrundsfärg och bakgrundsfärg krävs."
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "Gruppen hittades inte eller har inga speciella egenskaper"
+
+#: 
+msgid "Group role not found"
+msgstr "Grupprollen hittades inte"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "Ogiltigt färgformat. Använd hexfärger som #FF0000."
+
+#: 
+msgid "Invalid field identifier"
+msgstr "Ogiltig fältidentifierare"
+
+#: 
+msgid "Invalid target family"
+msgstr "Ogiltig målfamilj"
+
+#: 
+msgid "Log Out"
+msgstr "Logga ut"
+
+#: 
+msgid "Membership not found"
+msgstr "Medlemskapet hittades inte"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "Lösenordet har ändrats för"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "Granska din familjeinformation nedan och bekräfta eller begär ändringar."
+
+#: 
+msgid "Please select a target family."
+msgstr "Välj en målfamilj."
+
+#: 
+msgid "Target family not found"
+msgstr "Målfamiljen hittades inte"
+
+#: 
+msgid "Verify Family Info"
+msgstr "Verifiera familjeinformation"
+
+#: 
+msgid "Welcome"
+msgstr "Välkommen"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "Du kan granska och verifiera din familjeinformation via länken nedan. Om du behöver ytterligare åtkomst, kontakta din kyrkoförvaltare."
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "Du har inte behörighet att visa den här personen"
+
