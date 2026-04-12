@@ -2022,10 +2022,6 @@ msgid "Restore Database"
 msgstr "استعادة قاعدة البيانات"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "تم نقل جميع التبرعات من هذه العائلة إلى أسرة أخرى."
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "يرجى تأكيد حذف"
 
@@ -4750,10 +4746,6 @@ msgstr "إعدادات المالية"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "وقد طلب اسم التكوين غير صالح"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "وقد طلب معرف التكوين غير صالح"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8549,10 +8541,6 @@ msgstr "اختر فرصا..."
 
 #: 
 msgid "Confirm Family Information"
-msgstr "تأكيد معلومات العائلة"
-
-#: 
-msgid "Confirm family information"
 msgstr "تأكيد معلومات العائلة"
 
 #: 

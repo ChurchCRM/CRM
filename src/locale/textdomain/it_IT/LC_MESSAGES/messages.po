@@ -2031,10 +2031,6 @@ msgid "Restore Database"
 msgstr "Ripristina database"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Tutte le donazioni di questa famiglia sono stati spostati in un'altra famiglia."
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "Per favore conferma la cancellazione di"
 
@@ -4772,10 +4768,6 @@ msgstr "Impostazioni finanziarie"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "È stato richiesto un nome di configurazione non valido"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "È stato richiesto un ID di configurazione non valido"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8563,10 +8555,6 @@ msgstr "Scegli le opportunità..."
 #: 
 msgid "Confirm Family Information"
 msgstr "Conferma Informazioni Famiglia"
-
-#: 
-msgid "Confirm family information"
-msgstr "Conferma le informazioni della famiglia"
 
 #: 
 msgid "Contact & Personal Info"
@@ -14370,6 +14358,10 @@ msgid "API key regenerated"
 msgstr "Chiave API rigenerata"
 
 #: 
+msgid "Account"
+msgstr "Account"
+
+#: 
 msgid "Advanced Settings"
 msgstr "Impostazioni avanzate"
 
@@ -14380,6 +14372,10 @@ msgstr "Si è verificato un errore."
 #: 
 msgid "Appearance"
 msgstr "Aspetto"
+
+#: 
+msgid "Azure"
+msgstr "Azure"
 
 #: 
 msgid "Back to Finance Dashboard"
@@ -14533,6 +14529,11 @@ msgstr "Chiaro"
 #: 
 msgid "Lime"
 msgstr "Verde lime"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "Malayalam - India"
 
 #: 
 msgid "Manage 2FA"
@@ -14763,6 +14764,10 @@ msgstr "Un Tipo di Evento è un modello — nome, orario di inizio predefinito, 
 #: 
 msgid "Attendance record deleted."
 msgstr "Registro delle presenze eliminato."
+
+#: 
+msgid "Audit"
+msgstr "Audit"
 
 #: 
 msgid "Audit Events"

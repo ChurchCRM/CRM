@@ -2024,10 +2024,6 @@ msgid "Restore Database"
 msgstr "Herstel databasis"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Alle skenkings van hierdie gesin is na 'n ander gesin verskuif."
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "Bevestig die verwydering van"
 
@@ -4752,10 +4748,6 @@ msgstr "Finansiële instellings"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "'N Ongeldige opsetnaam is versoek"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "'N Ongeldige konfigurasie-ID is versoek"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8543,10 +8535,6 @@ msgstr "Kies geleenthede..."
 #: 
 msgid "Confirm Family Information"
 msgstr "Bevestig Familie Inligting"
-
-#: 
-msgid "Confirm family information"
-msgstr "Bevestig familie inligting"
 
 #: 
 msgid "Contact & Personal Info"

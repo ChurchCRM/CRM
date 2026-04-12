@@ -2002,10 +2002,6 @@ msgid "Restore Database"
 msgstr "I-restore ang Database"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Lahat ng mga donasyon mula sa pamilyang ito ay inilipat na sa ibang pamilya."
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "Pakikumpirma ang pagbubura ng"
 
@@ -2829,6 +2825,10 @@ msgstr "Isa o higit pang mga file ay nabigong ma-validate ang pirma"
 #: 
 msgid "item"
 msgstr "aytem"
+
+#: 
+msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
+msgstr "-----------------------------------------------------------------------------------------------------------------------------------------------"
 
 #: 
 msgid "Buyer # "
@@ -4715,10 +4715,6 @@ msgstr "Mga Setting ng Pananalapi"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "Isang hindi wastong pangalan ng configuration ay hiniling"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "Isang hindi wastong id ng configuration ay hiniling"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8496,10 +8492,6 @@ msgstr "Pumili ng mga pagkakataon..."
 #: 
 msgid "Confirm Family Information"
 msgstr "Kumpirmahin ang Impormasyon ng Pamilya"
-
-#: 
-msgid "Confirm family information"
-msgstr "Kumpirmahin ang impormasyon ng pamilya"
 
 #: 
 msgid "Contact & Personal Info"

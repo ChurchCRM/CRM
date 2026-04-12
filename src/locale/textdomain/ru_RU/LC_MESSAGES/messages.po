@@ -2072,10 +2072,6 @@ msgid "Restore Database"
 msgstr "Восстановить базу данных"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Все пожертвования от этой семьи были перемещены в другой семье."
-
-#: 
 #, fuzzy
 msgid "Please confirm deletion of"
 msgstr "Пожалуйста, подтвердите удаление"
@@ -4828,10 +4824,6 @@ msgstr "Финансовые настройки"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "Запрошено недопустимое имя конфигурации"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "Запрошен недопустимый идентификатор конфигурации"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8617,10 +8609,6 @@ msgstr "Выберите возможности..."
 
 #: 
 msgid "Confirm Family Information"
-msgstr "Подтвердить информацию о семье"
-
-#: 
-msgid "Confirm family information"
 msgstr "Подтвердить информацию о семье"
 
 #: 

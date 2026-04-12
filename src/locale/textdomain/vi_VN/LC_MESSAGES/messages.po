@@ -2036,10 +2036,6 @@ msgid "Restore Database"
 msgstr "Khôi phục dữ liệu"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Tất cả tiền dâng hiến của gia đình này đã được chuyển sang gia đình khác"
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "Vui lòng xác nhận xóa"
 
@@ -4764,10 +4760,6 @@ msgstr "Tài chính"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "Tên cấu hình không hợp lệ đã được yêu cầu"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "Id cấu hình không hợp lệ đã được yêu cầu"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8543,10 +8535,6 @@ msgstr "Chọn cơ hội..."
 
 #: 
 msgid "Confirm Family Information"
-msgstr "Xác nhận thông tin gia đình"
-
-#: 
-msgid "Confirm family information"
 msgstr "Xác nhận thông tin gia đình"
 
 #: 
