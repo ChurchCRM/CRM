@@ -1,9 +1,9 @@
 {
   "%d result for \"%s\"": {
-    "other": ""
+    "other": "「%s」の検索結果 %d 件"
   },
   "name@example.com": "",
   "%d repeat event created successfully.": {
-    "other": ""
+    "other": "%d 件の繰り返しイベントが正常に作成されました。"
   }
 }

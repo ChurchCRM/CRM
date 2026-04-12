@@ -1,9 +1,9 @@
 {
   "%d result for \"%s\"": {
-    "other": ""
+    "other": "\"%s\"에 대한 검색 결과 %d 건"
   },
   "name@example.com": "",
   "%d repeat event created successfully.": {
-    "other": ""
+    "other": "%d 개의 반복 이벤트가 성공적으로 생성되었습니다."
   }
 }

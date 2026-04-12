@@ -1,9 +1,9 @@
 {
   "%d result for \"%s\"": {
-    "other": ""
+    "other": "%d hasil untuk \"%s\""
   },
   "name@example.com": "",
   "%d repeat event created successfully.": {
-    "other": ""
+    "other": "%d acara berulang berhasil dibuat."
   }
 }
