@@ -50,6 +50,14 @@ class AuthMiddleware implements MiddlewareInterface
                 $logger->debug('API key authentication successful', [
                     'path' => $request->getUri()->getPath()
                 ]);
+
+                // Block EditSelf-only users from API access (GHSA-5w59-32c8-933v)
+                $apiUser = AuthenticationManager::getCurrentUser();
+                if ($apiUser->isEditSelfOnly()) {
+                    $response = new Response();
+                    $response->getBody()->write(json_encode(['error' => 'Account has limited permissions. Contact an administrator.']));
+                    return $response->withStatus(403)->withHeader('Content-Type', 'application/json');
+                }
             } elseif (AuthenticationManager::validateUserSessionIsActive(!$this->isPath($request, 'background'))) {
                 // validate the user session; however, do not update tLastOperation if the requested path is "/background"
                 // since /background operations do not connotate user activity.
