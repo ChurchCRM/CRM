@@ -271,9 +271,12 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                 <button type="button" class="btn btn-success" id="onlineVerifyBtn">
                     <i class="fa-solid fa-paper-plane me-2"></i><?= gettext("Submit Verification") ?>
                 </button>
-                <a href="<?= ChurchMetaData::getChurchWebSite() ?>" id="onlineVerifySiteBtn" class="btn btn-primary" target="_blank">
+                <?php $churchWebsite = ChurchMetaData::getChurchWebSite(); ?>
+                <?php if (!empty($churchWebsite)): ?>
+                <a href="<?= htmlspecialchars($churchWebsite) ?>" id="onlineVerifySiteBtn" class="btn btn-primary d-none" target="_blank">
                     <i class="fa-solid fa-globe me-2"></i><?= gettext("Visit Our Website") ?>
                 </a>
+                <?php endif; ?>
             </div>
         </div>
     </div>
