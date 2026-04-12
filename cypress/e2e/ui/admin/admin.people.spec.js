@@ -20,7 +20,8 @@ describe("Admin People", () => {
 
         it("displays existing classification names (Member)", () => {
             cy.visit("admin/system/options?mode=classes");
-            cy.get("#optionsTable tbody").should("contain", "Member");
+            // Names render as input values, not text content
+            cy.get('#optionsTable tbody input.option-name-input[value="Member"]').should("exist");
         });
 
         it("can add a new classification", () => {
@@ -30,8 +31,8 @@ describe("Admin People", () => {
             cy.get("#newOptionName").type(newName);
             cy.get("#addOptionBtn").click();
 
-            // Page should reload with the new option
-            cy.get("#optionsTable tbody", { timeout: 10000 }).should("contain", newName);
+            // Page reloads with the new option (rendered as input value)
+            cy.get(`#optionsTable tbody input.option-name-input[value="${newName}"]`, { timeout: 10000 }).should("exist");
         });
 
         it("rejects empty name on add", () => {
@@ -62,8 +63,8 @@ describe("Admin People", () => {
 
         it("shows Head of Household and Spouse roles", () => {
             cy.visit("admin/system/options?mode=famroles");
-            cy.get("#optionsTable tbody").should("contain", "Head of Household");
-            cy.get("#optionsTable tbody").should("contain", "Spouse");
+            cy.get('#optionsTable tbody input.option-name-input[value="Head of Household"]').should("exist");
+            cy.get('#optionsTable tbody input.option-name-input[value="Spouse"]').should("exist");
         });
 
         it("does NOT show the Inactive column", () => {
@@ -78,7 +79,7 @@ describe("Admin People", () => {
             cy.get("#newOptionName").type(newRole);
             cy.get("#addOptionBtn").click();
 
-            cy.get("#optionsTable tbody", { timeout: 10000 }).should("contain", newRole);
+            cy.get(`#optionsTable tbody input.option-name-input[value="${newRole}"]`, { timeout: 10000 }).should("exist");
         });
     });
 
