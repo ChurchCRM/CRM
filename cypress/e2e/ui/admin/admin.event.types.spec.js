@@ -78,8 +78,13 @@ describe("Event Types Management", () => {
     cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
     cy.url().should("not.include", "session/begin");
 
-    cy.visit("event/types/1");
-    cy.get(".delete-type-btn").should("exist").should("have.attr", "data-event-count");
+    // .delete-type-btn lives on the list page, not the edit page
+    cy.visit("event/types");
+    cy.get(".delete-type-btn").first().should("have.attr", "data-event-count");
+    // Confirm the count attribute is > 0 since we just created an event
+    cy.get(".delete-type-btn").first().invoke("attr", "data-event-count").then((count) => {
+      expect(parseInt(count)).to.be.greaterThan(0);
+    });
   });
 
   it("should pass data-event-count attribute on delete button", () => {
