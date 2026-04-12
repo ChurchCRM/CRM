@@ -13,7 +13,7 @@ describe("Limited Access User", () => {
 
     it("Login redirects to /external/limited-access", () => {
         cy.clearCookies();
-        cy.visit("/session/begin");
+        cy.visit("session/begin");
         cy.get("input[name=User]").type(limitedUser);
         cy.get("input[name=Password]").type(limitedPassword + "{enter}");
 
@@ -24,7 +24,7 @@ describe("Limited Access User", () => {
 
     it("Shows Verify Family Info button and Log Out button", () => {
         cy.clearCookies();
-        cy.visit("/session/begin");
+        cy.visit("session/begin");
         cy.get("input[name=User]").type(limitedUser);
         cy.get("input[name=Password]").type(limitedPassword + "{enter}");
 
@@ -35,20 +35,20 @@ describe("Limited Access User", () => {
 
     it("Verify Family Info link goes to /external/verify/{token}", () => {
         cy.clearCookies();
-        cy.visit("/session/begin");
+        cy.visit("session/begin");
         cy.get("input[name=User]").type(limitedUser);
         cy.get("input[name=Password]").type(limitedPassword + "{enter}");
 
         cy.url({ timeout: 10000 }).should("include", "/external/limited-access");
         cy.contains("Verify Family Info").click();
         cy.url({ timeout: 10000 }).should("include", "/external/verify/");
-        // Verify page should show the family name (Hernandez — person 4, family 2)
-        cy.get("body", { timeout: 10000 }).should("contain.text", "Hernandez");
+        // Verify page should show the family name (Campbell — person 4, family 1)
+        cy.get("body", { timeout: 10000 }).should("contain.text", "Campbell");
     });
 
     it("Log Out returns to login page", () => {
         cy.clearCookies();
-        cy.visit("/session/begin");
+        cy.visit("session/begin");
         cy.get("input[name=User]").type(limitedUser);
         cy.get("input[name=Password]").type(limitedPassword + "{enter}");
 
@@ -59,14 +59,14 @@ describe("Limited Access User", () => {
 
     it("Direct visit to /v2/dashboard redirects to limited-access", () => {
         cy.clearCookies();
-        cy.visit("/session/begin");
+        cy.visit("session/begin");
         cy.get("input[name=User]").type(limitedUser);
         cy.get("input[name=Password]").type(limitedPassword + "{enter}");
 
         cy.url({ timeout: 10000 }).should("include", "/external/limited-access");
 
         // Try to access an admin page directly
-        cy.visit("/v2/dashboard", { failOnStatusCode: false });
+        cy.visit("v2/dashboard", { failOnStatusCode: false });
         cy.url().should("include", "/external/limited-access");
     });
 
