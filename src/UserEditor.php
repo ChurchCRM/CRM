@@ -53,7 +53,9 @@ if (isset($_POST['NewUser'])) {
 if (isset($_POST['save']) && $iPersonID > 0) {
     // Security: CSRF token validation (GHSA-3xq9-c86x-cwpp)
     if (!CSRFUtils::verifyRequest($_POST, 'user_editor')) {
-        RedirectUtils::redirect('UserEditor.php?PersonID=' . $iPersonID . '&ErrorText=Invalid+security+token.+Please+try+again.');
+        // Preserve add-vs-edit context — NewUser is "true"/"false" string from form
+        $idParam = ($NewUser ?? 'false') === 'true' ? 'NewPersonID' : 'PersonID';
+        RedirectUtils::redirect('UserEditor.php?' . $idParam . '=' . $iPersonID . '&ErrorText=Invalid+security+token.+Please+try+again.');
     }
 
     // Assign all variables locally
