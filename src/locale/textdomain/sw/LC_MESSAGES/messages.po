@@ -2023,10 +2023,6 @@ msgid "Restore Database"
 msgstr "Rejesha Hifadhidata"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Michango yote kutoka kwa familia hii imehamishiwa kwa familia nyingine."
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "Tafadhali thibitisha kufutwa kwa"
 
@@ -4748,10 +4744,6 @@ msgstr "Mipangilio ya Fedha"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "Jina batili la usanidi limeombwa"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "Kitambulisho batili cha usanidi kimeombwa"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8537,10 +8529,6 @@ msgstr "Chagua fursa..."
 #: 
 msgid "Confirm Family Information"
 msgstr "Thibitisha Taarifa za Familia"
-
-#: 
-msgid "Confirm family information"
-msgstr "Thibitisha taarifa za familia"
 
 #: 
 msgid "Contact & Personal Info"
@@ -14360,6 +14348,10 @@ msgid "Appearance"
 msgstr "Mwonekano"
 
 #: 
+msgid "Azure"
+msgstr "Azure"
+
+#: 
 msgid "Back to Finance Dashboard"
 msgstr "Rudi kwenye Dashibodi ya Fedha"
 
@@ -14487,6 +14479,10 @@ msgstr "Ikiwa unaona herufi zilizopotoka, vipengele vya HTML vinavyoonekana kama
 #: 
 msgid "Include your API key in requests using the x-api-key header:"
 msgstr "Jumuisha ufunguo wako wa API katika maombi kwa kutumia kichwa cha x-api-key:"
+
+#: 
+msgid "Indigo"
+msgstr "Indigo"
 
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."

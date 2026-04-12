@@ -2023,10 +2023,6 @@ msgid "Restore Database"
 msgstr "שחזר מסד נתונים"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "כל התרומות ממשפחה זו הועברו למשפחה אחרת."
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "אנא אשר את מחיקת"
 
@@ -4751,10 +4747,6 @@ msgstr "הגדרות כספים"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "התבקש שם תצורה לא חוקי"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr " התבקש מזהה תצורה לא חוקי"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8539,10 +8531,6 @@ msgstr "בחר הזדמנויות..."
 #: 
 msgid "Confirm Family Information"
 msgstr "אשר פרטי משפחה"
-
-#: 
-msgid "Confirm family information"
-msgstr "אישור פרטי משפחה"
 
 #: 
 msgid "Contact & Personal Info"

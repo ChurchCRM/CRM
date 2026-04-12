@@ -2024,10 +2024,6 @@ msgid "Restore Database"
 msgstr "Відновити базу даних"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Усі пожертви від цієї родини були передані іншій родині."
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "Будь ласка, підтвердьте видалення"
 
@@ -4752,10 +4748,6 @@ msgstr "Фінансові налаштування"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "Запитано недійсне ім’я конфігурації"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "Запрошено недійсний ідентифікатор конфігурації"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8550,10 +8542,6 @@ msgstr "Виберіть можливості..."
 
 #: 
 msgid "Confirm Family Information"
-msgstr "Підтвердити інформацію про сім'ю"
-
-#: 
-msgid "Confirm family information"
 msgstr "Підтвердити інформацію про сім'ю"
 
 #: 
@@ -14380,6 +14368,10 @@ msgstr "Сталася помилка."
 #: 
 msgid "Appearance"
 msgstr "Зовнішній вигляд"
+
+#: 
+msgid "Azure"
+msgstr "Azure"
 
 #: 
 msgid "Back to Finance Dashboard"

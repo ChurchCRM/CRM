@@ -2023,10 +2023,6 @@ msgid "Restore Database"
 msgstr "데이터베이스 복원"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "이 가족의 헌금은 모두 다른 가족으로 이전되었습니다."
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "삭제할지 확인하세요:"
 
@@ -4748,10 +4744,6 @@ msgstr "재정 설정"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "잘못된 설정 이름이 요청되었습니다"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "잘못된 설정 ID가 요청되었습니다"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8531,10 +8523,6 @@ msgstr "기회를 선택하세요..."
 
 #: 
 msgid "Confirm Family Information"
-msgstr "가족 정보 확인"
-
-#: 
-msgid "Confirm family information"
 msgstr "가족 정보 확인"
 
 #: 

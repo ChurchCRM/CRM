@@ -1,9 +1,36 @@
 {
   "%d result for \"%s\"": {
-    "other": "「%s」の検索結果 %d 件"
+    "other": ""
   },
   "name@example.com": "",
   "%d repeat event created successfully.": {
-    "other": "%d 件の繰り返しイベントが正常に作成されました。"
-  }
+    "other": ""
+  },
+  "An error occurred while deleting the family.": "",
+  "An error occurred while moving donations.": "",
+  "At least one family member is required": "",
+  "Back to Users": "",
+  "Cannot delete a family with donation records. Contact a finance administrator.": "",
+  "Cannot move property in that direction": "",
+  "Confirm Family Info": "",
+  "Delete failed": "",
+  "Direction must be \"up\" or \"down\"": "",
+  "Failed to move donations.": "",
+  "Finance permission required": "",
+  "ForegroundColor and BackgroundColor are required.": "",
+  "Group not found or has no special properties": "",
+  "Group role not found": "",
+  "Invalid color format. Use hex colors like #FF0000.": "",
+  "Invalid field identifier": "",
+  "Invalid target family": "",
+  "Log Out": "",
+  "Membership not found": "",
+  "Password successfully changed for": "",
+  "Please review your family information below and confirm or request changes.": "",
+  "Please select a target family.": "",
+  "Target family not found": "",
+  "Verify Family Info": "",
+  "Welcome": "",
+  "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator.": "",
+  "You do not have permission to view this person": ""
 }

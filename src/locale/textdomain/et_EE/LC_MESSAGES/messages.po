@@ -2024,10 +2024,6 @@ msgid "Restore Database"
 msgstr "Taasta andmebaas"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Kõik selle pere annetused on viidud teise perekonda."
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "Kinnitage saidi kustutamine"
 
@@ -4751,10 +4747,6 @@ msgstr "Finantsseaded"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "Taotleti vale konfiguratsiooni nime"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "Taotleti sobimatut konfiguratsiooni ID-d"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8541,10 +8533,6 @@ msgstr "Valige võimalused..."
 
 #: 
 msgid "Confirm Family Information"
-msgstr "Kinnita perekonna teave"
-
-#: 
-msgid "Confirm family information"
 msgstr "Kinnita perekonna teave"
 
 #: 

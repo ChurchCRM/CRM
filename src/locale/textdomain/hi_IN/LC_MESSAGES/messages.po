@@ -2005,10 +2005,6 @@ msgid "Restore Database"
 msgstr "डेटाबेस पुनर्स्थापित करें"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "इस परिवार के सभी दान दूसरे परिवार में स्थानांतरित कर दिए गए हैं।"
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "कृपया विलोपन की पुष्टि करें"
 
@@ -4722,10 +4718,6 @@ msgstr "वित्तीय सेटिंग"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "एक अमान्य कॉन्फ़िगरेशन नाम का अनुरोध किया गया है"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "एक अमान्य कॉन्फ़िगरेशन आईडी का अनुरोध किया गया है"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8499,10 +8491,6 @@ msgstr "अवसर चुनें..."
 #: 
 msgid "Confirm Family Information"
 msgstr "पारिवारिक जानकारी की पुष्टि करें"
-
-#: 
-msgid "Confirm family information"
-msgstr "परिवार की जानकारी की पुष्टि करें"
 
 #: 
 msgid "Contact & Personal Info"

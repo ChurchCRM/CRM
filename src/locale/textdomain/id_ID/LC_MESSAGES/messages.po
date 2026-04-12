@@ -2025,10 +2025,6 @@ msgid "Restore Database"
 msgstr "Pulihkan Database"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Semua sumbangan dari keluarga ini telah dipindahkan ke keluarga lain."
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "Harap konfirmasi penghapusan"
 
@@ -4753,10 +4749,6 @@ msgstr "Pengaturan Keuangan"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "Nama konfigurasi yang tidak valid telah diminta"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "ID konfigurasi yang tidak valid telah diminta"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8533,10 +8525,6 @@ msgstr "Pilih bidang pelayanan..."
 #: 
 msgid "Confirm Family Information"
 msgstr "Konfirmasi Informasi Keluarga"
-
-#: 
-msgid "Confirm family information"
-msgstr "Konfirmasi informasi keluarga"
 
 #: 
 msgid "Contact & Personal Info"

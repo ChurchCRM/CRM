@@ -2023,10 +2023,6 @@ msgid "Restore Database"
 msgstr "Obnovit databázi"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Všechny příspěvky od této rodiny byly přesunuty do jiné rodiny."
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "Potvrďte smazání"
 
@@ -4745,10 +4741,6 @@ msgstr "Nastavení financí"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "Byl vyžádán neplatný název konfigurace"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "Bylo vyžádáno neplatné konfigurační ID"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8531,10 +8523,6 @@ msgstr "Vyberte příležitosti..."
 
 #: 
 msgid "Confirm Family Information"
-msgstr "Potvrďte informace o rodině"
-
-#: 
-msgid "Confirm family information"
 msgstr "Potvrďte informace o rodině"
 
 #: 

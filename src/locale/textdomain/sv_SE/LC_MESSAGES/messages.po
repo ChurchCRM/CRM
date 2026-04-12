@@ -2100,10 +2100,6 @@ msgid "Restore Database"
 msgstr "Återställ databasen"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Alla bidrag från denna familj flytades till en annan familj"
-
-#: 
 #, fuzzy
 msgid "Please confirm deletion of"
 msgstr "Bekräfta att du vill radera"
@@ -4863,10 +4859,6 @@ msgstr "Ekonomiska inställningar"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "Ett ogiltigt konfigurationsnamn har begärts"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "Ett ogiltigt konfigurations-id har begärts"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8656,10 +8648,6 @@ msgid "Confirm Family Information"
 msgstr "Bekräfta familjeinformation"
 
 #: 
-msgid "Confirm family information"
-msgstr "Bekräfta familjeinformation"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Kontakt & Personlig info"
 
@@ -11433,6 +11421,10 @@ msgid "Forgot password?"
 msgstr "Glömt lösenord?"
 
 #: 
+msgid "Format"
+msgstr "Format"
+
+#: 
 msgid "Full Group View"
 msgstr "Fullständig gruppvy"
 
@@ -11723,6 +11715,10 @@ msgstr "Visa urvalets poster på kartan"
 #: 
 msgid "Map to Field"
 msgstr "Mappa till fält"
+
+#: 
+msgid "Material"
+msgstr "Material"
 
 #: 
 msgid "Member Properties"
@@ -14247,6 +14243,11 @@ msgstr "Uppgraderingsinställningar"
 msgid "Use Cases"
 msgstr "Användningsfall"
 
+#. plugin:vonage:link:0:label
+#: 
+msgid "Vonage Dashboard"
+msgstr "Vonage Dashboard"
+
 #. plugin:vonage:link:2:label
 #: 
 msgid "Vonage Pricing"
@@ -14464,6 +14465,10 @@ msgid "Appearance"
 msgstr "Utseende"
 
 #: 
+msgid "Azure"
+msgstr "Azure"
+
+#: 
 msgid "Back to Finance Dashboard"
 msgstr "Tillbaka till ekonomiöversikt"
 
@@ -14498,6 +14503,10 @@ msgstr "ChurchCRM-översättningar hanteras av gemenskapen på POEditor. Du kan 
 #: 
 msgid "Customize the look and feel of the application"
 msgstr "Anpassa utseendet och känslan i programmet"
+
+#: 
+msgid "Cyan"
+msgstr "Cyan"
 
 #: 
 msgid "Dark"
@@ -14589,6 +14598,10 @@ msgid "Include your API key in requests using the x-api-key header:"
 msgstr "Inkludera din API-nyckel i förfrågningar med hjälp av x-api-key-headern:"
 
 #: 
+msgid "Indigo"
+msgstr "Indigo"
+
+#: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "Ogiltigt JSON-värde – inställningen sparades inte. Vänligen korrigera det och försök igen."
 
@@ -14636,6 +14649,10 @@ msgstr "Saknade eller felaktiga översättningar?"
 #: 
 msgid "My Account"
 msgstr "Mitt konto"
+
+#: 
+msgid "Orange"
+msgstr "Orange"
 
 #: 
 msgid "Override the system default locale"
@@ -14770,6 +14787,10 @@ msgstr "2. Händelsetyp"
 #: 
 msgid "3. Event"
 msgstr "3. Händelse"
+
+#: 
+msgid "4. Kiosk"
+msgstr "4. Kiosk"
 
 #: 
 msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."

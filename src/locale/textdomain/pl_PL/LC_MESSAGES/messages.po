@@ -2073,10 +2073,6 @@ msgid "Restore Database"
 msgstr "Przywróć Bazę Danych"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Wszystkie datki od tej rodziny zostały przeniesione do innej rodziny."
-
-#: 
 #, fuzzy
 msgid "Please confirm deletion of"
 msgstr "Proszę powierdzić USUNIĘCIE"
@@ -4827,10 +4823,6 @@ msgstr "Ustawienia finansowe"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "Zażądano nieprawidłowej nazwy konfiguracji"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "Zażądano nieprawidłowego identyfikatora konfiguracji"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8620,10 +8612,6 @@ msgid "Confirm Family Information"
 msgstr "Potwierdź dane rodziny"
 
 #: 
-msgid "Confirm family information"
-msgstr "Potwierdź dane rodziny"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Kontakt i dane osobowe"
 
@@ -10791,6 +10779,10 @@ msgid "Add staff or volunteers as system users"
 msgstr "Dodaj pracowników lub wolontariuszy jako użytkowników systemu"
 
 #: 
+msgid "Administrator"
+msgstr "Administrator"
+
+#: 
 msgid "Age Distribution"
 msgstr "Rozkład wiekowy"
 
@@ -11399,6 +11391,10 @@ msgid "Forgot password?"
 msgstr "Zapomniałeś hasła?"
 
 #: 
+msgid "Format"
+msgstr "Format"
+
+#: 
 msgid "Full Group View"
 msgstr "Pełny widok grupy"
 
@@ -11567,6 +11563,10 @@ msgid "Key People"
 msgstr "Kluczowe osoby"
 
 #: 
+msgid "Kiosk"
+msgstr "Kiosk"
+
+#: 
 msgid "Kiosk Enabled"
 msgstr "Kiosk włączony"
 
@@ -11705,6 +11705,10 @@ msgstr "Członkowie dodani do listy."
 #: 
 msgid "Memberships"
 msgstr "Członkostwa"
+
+#: 
+msgid "Minimum"
+msgstr "Minimum"
 
 #: 
 msgid "Modify family roles for group members"
@@ -14431,6 +14435,10 @@ msgid "Appearance"
 msgstr "Wygląd"
 
 #: 
+msgid "Azure"
+msgstr "Azure"
+
+#: 
 msgid "Back to Finance Dashboard"
 msgstr "Powrót do pulpitu ofiar"
 
@@ -14750,6 +14758,10 @@ msgstr "2. Typ wydarzenia"
 #: 
 msgid "3. Event"
 msgstr "3. Wydarzenie"
+
+#: 
+msgid "4. Kiosk"
+msgstr "4. Kiosk"
 
 #: 
 msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."

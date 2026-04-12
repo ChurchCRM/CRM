@@ -2002,10 +2002,6 @@ msgid "Restore Database"
 msgstr "Restaurar base de datos"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Las donaciónes de esta familia has sido movidas a otra familia"
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "Por favor confirme la eliminación de"
 
@@ -4719,10 +4715,6 @@ msgstr "Ajustes Financieros"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "Un nombre ajuste inválido ha sido solicitado."
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "Un id de configuración ha sido solicitado."
 
 #: 
 msgid "Profile Image uploaded"
@@ -8500,10 +8492,6 @@ msgstr "Elija oportunidades..."
 
 #: 
 msgid "Confirm Family Information"
-msgstr "Confirmar información de la familia"
-
-#: 
-msgid "Confirm family information"
 msgstr "Confirmar información de la familia"
 
 #: 

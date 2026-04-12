@@ -2014,10 +2014,6 @@ msgid "Restore Database"
 msgstr "డేటాబేస్ పునరుద్ధరించు"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "ఈ కుటుంబం నుండి అన్ని విరాళాలు మరొక కుటుంబానికి తరలించబడ్డాయి."
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "దయచేసి తొలగింపును నిర్ధారించండి"
 
@@ -4731,10 +4727,6 @@ msgstr "ఆర్థిక సెట్టింగ్‌లు"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "చెల్లని కాన్ఫిగరేషన్ పేరు అభ్యర్థించబడింది"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "చెల్లని కాన్ఫిగరేషన్ ID అభ్యర్థించబడింది"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8511,10 +8503,6 @@ msgstr "అవకాశాలను ఎంచుకోండి..."
 
 #: 
 msgid "Confirm Family Information"
-msgstr "కుటుంబ సమాచారాన్ని నిర్ధారించండి"
-
-#: 
-msgid "Confirm family information"
 msgstr "కుటుంబ సమాచారాన్ని నిర్ధారించండి"
 
 #: 
@@ -14329,6 +14317,10 @@ msgstr "లోపం సంభవించింది."
 #: 
 msgid "Appearance"
 msgstr "రూపం"
+
+#: 
+msgid "Azure"
+msgstr "Azure"
 
 #: 
 msgid "Back to Finance Dashboard"

@@ -2085,10 +2085,6 @@ msgid "Restore Database"
 msgstr "Datenbank wiederherstellen"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Alle Spenden dieser Familie wurden einer anderen Familie zugeordnet."
-
-#: 
 #, fuzzy
 msgid "Please confirm deletion of"
 msgstr "Bestätige das Löschen von"
@@ -4849,10 +4845,6 @@ msgstr "Finanz-Einstellungen"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "Es wurde ein ungültiger Konfigurationsname angefordert"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "Es wurde eine ungültige Konfigurations-ID angefordert"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8639,10 +8631,6 @@ msgstr "Wählen Sie Chancen..."
 
 #: 
 msgid "Confirm Family Information"
-msgstr "Familieninformation bestätigen"
-
-#: 
-msgid "Confirm family information"
 msgstr "Familieninformation bestätigen"
 
 #: 
