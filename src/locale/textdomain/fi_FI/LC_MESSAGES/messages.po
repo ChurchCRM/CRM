@@ -2009,10 +2009,6 @@ msgid "Restore Database"
 msgstr "Palauta tietokanta"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Kaikki tämän perheen lahjoitukset on siirretty toiselle perheelle."
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "Vahvista poisto"
 
@@ -4726,10 +4722,6 @@ msgstr "Talousasetukset"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "Pyydetty virheellinen asetuksen nimi"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "Pyydetty virheellinen asetuksen tunniste"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8501,10 +8493,6 @@ msgstr "Valitse mahdollisuudet..."
 
 #: 
 msgid "Confirm Family Information"
-msgstr "Vahvista perheen tiedot"
-
-#: 
-msgid "Confirm family information"
 msgstr "Vahvista perheen tiedot"
 
 #: 

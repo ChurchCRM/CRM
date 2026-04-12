@@ -2024,10 +2024,6 @@ msgid "Restore Database"
 msgstr "Veritabanını geri yükle"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Bu aileden gelen tüm bağışlar başka bir aileye taşındı."
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "Lütfen silinmesini onaylayın"
 
@@ -4752,10 +4748,6 @@ msgstr "Finansal Ayarlar"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "Geçersiz bir yapılandırma adı istendi"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "Geçersiz bir yapılandırma kimliği istendi"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8543,10 +8535,6 @@ msgstr "Fırsatları seçin..."
 #: 
 msgid "Confirm Family Information"
 msgstr "Aile Bilgilerini Onayla"
-
-#: 
-msgid "Confirm family information"
-msgstr "Aile bilgilerini onayla"
 
 #: 
 msgid "Contact & Personal Info"

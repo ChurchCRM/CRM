@@ -2014,10 +2014,6 @@ msgid "Restore Database"
 msgstr "กู้คืนฐานข้อมูล"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "การบริจาคทั้งหมดจากครอบครัวนี้ถูกย้ายไปยังครอบครัวอื่นแล้ว"
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "กรุณายืนยันการลบ"
 
@@ -4731,10 +4727,6 @@ msgstr "การตั้งค่าการเงิน"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "มีการร้องขอชื่อการกำหนดค่าที่ไม่ถูกต้อง"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "มีการร้องขอ ID การกำหนดค่าที่ไม่ถูกต้อง"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8507,10 +8499,6 @@ msgstr "เลือกโอกาส..."
 
 #: 
 msgid "Confirm Family Information"
-msgstr "ยืนยันข้อมูลครอบครัว"
-
-#: 
-msgid "Confirm family information"
 msgstr "ยืนยันข้อมูลครอบครัว"
 
 #: 
@@ -14323,6 +14311,10 @@ msgstr "เกิดข้อผิดพลาด"
 #: 
 msgid "Appearance"
 msgstr "ลักษณะที่ปรากฏ"
+
+#: 
+msgid "Azure"
+msgstr "Azure"
 
 #: 
 msgid "Back to Finance Dashboard"

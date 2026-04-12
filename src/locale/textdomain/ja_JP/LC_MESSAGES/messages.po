@@ -2002,10 +2002,6 @@ msgid "Restore Database"
 msgstr "データベースの復元"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "この世帯からのすべての寄付は別の世帯に移動されました。"
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "削除の確認:"
 
@@ -4719,10 +4715,6 @@ msgstr "財務設定"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "無効な構成名がリクエストされました"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "無効な構成IDがリクエストされました"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8495,10 +8487,6 @@ msgstr "機会を選択..."
 
 #: 
 msgid "Confirm Family Information"
-msgstr "家族情報を確認"
-
-#: 
-msgid "Confirm family information"
 msgstr "家族情報を確認"
 
 #: 

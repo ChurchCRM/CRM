@@ -2025,10 +2025,6 @@ msgid "Restore Database"
 msgstr "Rikthe bazën e të dhënave"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Të gjitha donacionet nga kjo familje janë zhvendosur në një familje tjetër."
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "Ju lutemi konfirmoni fshirjen e"
 
@@ -4749,10 +4745,6 @@ msgstr "Cilësimet Financiare"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "Është kërkuar një emër konfigurimi i pavlefshëm"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "Është kërkuar një id konfigurimi i pavlefshëm"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8529,10 +8521,6 @@ msgstr "Zgjidhni mundësitë..."
 
 #: 
 msgid "Confirm Family Information"
-msgstr "Konfirmo informacionin e familjes"
-
-#: 
-msgid "Confirm family information"
 msgstr "Konfirmo informacionin e familjes"
 
 #: 

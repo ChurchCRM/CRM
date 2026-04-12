@@ -2067,10 +2067,6 @@ msgid "Restore Database"
 msgstr "Adatbázis visszaállítása"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Minden adományt ennek a családnak már átkerült egy másik család."
-
-#: 
 #, fuzzy
 msgid "Please confirm deletion of"
 msgstr "Kérjük, erősítse meg törlését"
@@ -4818,10 +4814,6 @@ msgstr "Pénzügyi beállítások"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "Érvénytelen konfigurációs név lett lekérve"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "Érvénytelen konfigurációs azonosító lett lekérve"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8598,10 +8590,6 @@ msgstr "Válasszon lehetőségeket..."
 
 #: 
 msgid "Confirm Family Information"
-msgstr "Családi információk megerősítése"
-
-#: 
-msgid "Confirm family information"
 msgstr "Családi információk megerősítése"
 
 #: 
@@ -14420,6 +14408,10 @@ msgstr "Hiba történt."
 #: 
 msgid "Appearance"
 msgstr "Megjelenés"
+
+#: 
+msgid "Azure"
+msgstr "Azure"
 
 #: 
 msgid "Back to Finance Dashboard"

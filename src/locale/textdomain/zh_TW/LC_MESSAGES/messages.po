@@ -2080,10 +2080,6 @@ msgid "Restore Database"
 msgstr "還原資料庫"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "從這個家庭的所有捐款已被移動到另一個家庭。"
-
-#: 
 #, fuzzy
 msgid "Please confirm deletion of"
 msgstr "請確認刪除"
@@ -4856,10 +4852,6 @@ msgstr "財務設置"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "提交了一個無效的配置名稱請求"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "提交了一個無效的配置id請求"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8727,10 +8719,6 @@ msgstr "選擇機會..."
 
 #: 
 msgid "Confirm Family Information"
-msgstr "確認家庭資訊"
-
-#: 
-msgid "Confirm family information"
 msgstr "確認家庭資訊"
 
 #: 

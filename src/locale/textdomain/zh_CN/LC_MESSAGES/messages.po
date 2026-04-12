@@ -2075,10 +2075,6 @@ msgid "Restore Database"
 msgstr "还原数据库"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "从这个家庭的所有捐款已被移动到另一个家庭。"
-
-#: 
 #, fuzzy
 msgid "Please confirm deletion of"
 msgstr "请确认删除"
@@ -4834,10 +4830,6 @@ msgstr "财务设置"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "提交了一个无效的配置名称请求"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "提交了一个无效的配置id请求"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8623,10 +8615,6 @@ msgstr "选择机会..."
 
 #: 
 msgid "Confirm Family Information"
-msgstr "确认家庭信息"
-
-#: 
-msgid "Confirm family information"
 msgstr "确认家庭信息"
 
 #: 

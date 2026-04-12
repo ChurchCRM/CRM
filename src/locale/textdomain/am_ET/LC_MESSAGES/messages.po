@@ -2023,10 +2023,6 @@ msgid "Restore Database"
 msgstr "መረጃውን ወደቀደመው መልስ"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "ሁሉም የዚህ ቤተሰብ ልገሳ ወደ ሌላ ቤተሰብ ተወስዷል።"
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "እባክዎ ስረዛውን ያረጋግጡ"
 
@@ -4752,10 +4748,6 @@ msgstr "የፋይናንስ ቅንብሮች"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "ልክ ያልሆነ የውቅር ስም ተጠይቋል"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "ልክ ያልሆነ የውቅር መታወቂያ ተጠይቋል"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8550,10 +8542,6 @@ msgstr "ዕድሎችን ይምረጡ..."
 
 #: 
 msgid "Confirm Family Information"
-msgstr "የቤተሰብ መረጃን ያረጋግጡ"
-
-#: 
-msgid "Confirm family information"
 msgstr "የቤተሰብ መረጃን ያረጋግጡ"
 
 #: 

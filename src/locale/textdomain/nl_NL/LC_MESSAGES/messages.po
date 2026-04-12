@@ -2002,10 +2002,6 @@ msgid "Restore Database"
 msgstr "Herstel de database"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Alle donaties van deze familie zijn verplaatst naar een andere familie."
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "Bevestig verwijderen"
 
@@ -4722,10 +4718,6 @@ msgstr "Financiële instellingen"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "Er is een ongeldige configuratienaam aangevraagd"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "Er is een ongeldig configuratie-ID aangevraagd"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8504,10 +8496,6 @@ msgstr "Kies mogelijkheden..."
 #: 
 msgid "Confirm Family Information"
 msgstr "Bevestig Familiegegevens"
-
-#: 
-msgid "Confirm family information"
-msgstr "Bevestig familiegegevens"
 
 #: 
 msgid "Contact & Personal Info"

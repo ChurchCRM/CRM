@@ -2024,10 +2024,6 @@ msgid "Restore Database"
 msgstr "Επαναφορά βάσης δεδομένων"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Όλες οι δωρεές από αυτήν την οικογένεια έχουν μεταφερθεί σε άλλη οικογένεια."
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "Επιβεβαιώστε τη διαγραφή του"
 
@@ -4752,10 +4748,6 @@ msgstr "Οικονομικές Ρυθμίσεις"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "Ζητήθηκε ένα μη έγκυρο όνομα διαμόρφωσης"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "Ζητήθηκε μη έγκυρο αναγνωριστικό διαμόρφωσης"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8543,10 +8535,6 @@ msgstr "Επιλέξτε ευκαιρίες..."
 #: 
 msgid "Confirm Family Information"
 msgstr "Επιβεβαίωση στοιχείων οικογένειας"
-
-#: 
-msgid "Confirm family information"
-msgstr "Επιβεβαιώστε τα στοιχεία της οικογένειας"
 
 #: 
 msgid "Contact & Personal Info"
