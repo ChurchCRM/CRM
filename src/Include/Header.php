@@ -106,6 +106,7 @@ $MenuFirst = 1;
           lang:"<?= $localeInfo->getLanguageCode() ?>",
           isRTL:<?= $localeInfo->isRTL() ? 'true' : 'false' ?>,
           userId:"<?= AuthenticationManager::getCurrentUser()->getId() ?>",
+          userName:<?= json_encode(AuthenticationManager::getCurrentUser()->getPerson()?->getFullName() ?? '') ?>,
           version:"<?= $_SESSION['sSoftwareInstalledVersion'] ?? 'unknown' ?>",
           systemLocale:"<?= $localeInfo->getSystemLocale() ?>",
           locale:"<?= $localeInfo->getLocale() ?>",

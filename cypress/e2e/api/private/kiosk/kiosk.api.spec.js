@@ -314,3 +314,76 @@ describe("Kiosk API - Access Control", () => {
         });
     });
 });
+
+describe("Kiosk Device Endpoint - Acceptance Enforcement", () => {
+    let createdKioskId = null;
+
+    before(() => {
+        // Register a new unaccepted kiosk device via the proper flow
+        cy.setupAdminSession();
+
+        // Snapshot existing IDs
+        cy.request({ method: "GET", url: "/kiosk/api/devices" }).then((before) => {
+            const existingIds = new Set((before.body.KioskDevices || []).map((k) => k.Id));
+
+            // Open registration window
+            cy.request({ method: "POST", url: "/kiosk/api/allowRegistration" });
+
+            // Register as a new device — cy.visit sets the cookie properly
+            cy.clearCookies();
+            cy.visit("/kiosk/", { failOnStatusCode: false });
+
+            // Re-login as admin to find the new device
+            cy.clearCookies();
+            cy.setupAdminSession({ forceLogin: true });
+            cy.request({ method: "GET", url: "/kiosk/api/devices" }).then((after) => {
+                const newDevice = (after.body.KioskDevices || []).find((k) => !existingIds.has(k.Id));
+                if (newDevice) {
+                    createdKioskId = newDevice.Id;
+                }
+            });
+        });
+    });
+
+    after(() => {
+        if (createdKioskId) {
+            cy.setupAdminSession({ forceLogin: true });
+            cy.request({
+                method: "DELETE",
+                url: `/kiosk/api/devices/${createdKioskId}`,
+                failOnStatusCode: false,
+            });
+        }
+    });
+
+    it("newly registered kiosk should not be accepted", () => {
+        expect(createdKioskId, "kiosk was created").to.not.be.null;
+        cy.setupAdminSession();
+        cy.request({ method: "GET", url: "/kiosk/api/devices" }).then((response) => {
+            const kiosk = (response.body.KioskDevices || []).find((k) => k.Id === createdKioskId);
+            expect(kiosk).to.not.be.undefined;
+            expect(kiosk.Accepted).to.equal(false);
+        });
+    });
+
+    it("unaccepted kiosk device endpoints should deny access", () => {
+        // Use the kiosk cookie by visiting the kiosk page first, then
+        // verify device endpoints return 401/403 (not 200/500)
+        cy.setupAdminSession();
+        cy.request({ method: "POST", url: "/kiosk/api/allowRegistration" });
+        cy.clearCookies();
+        cy.visit("/kiosk/", { failOnStatusCode: false });
+
+        // Now we have a kioskCookie — try to hit checkin endpoint
+        cy.request({
+            method: "POST",
+            url: "/kiosk/device/checkin",
+            body: { PersonId: 1 },
+            failOnStatusCode: false,
+        }).then((response) => {
+            // Should be 403 (not accepted) rather than 200 (allowed) or 500 (crash)
+            expect(response.status).to.not.equal(200);
+            expect(response.status).to.not.equal(500);
+        });
+    });
+});

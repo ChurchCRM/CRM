@@ -19,6 +19,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <th><?= gettext('Recurrence') ?></th>
               <th><?= gettext('Start Time') ?></th>
               <th><?= gettext('Attendance Counts') ?></th>
+              <th class="text-center"><?= gettext('Events') ?></th>
               <th class="text-center"><?= gettext('Status') ?></th>
               <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
             </tr>
@@ -38,6 +39,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <?= InputUtils::escapeHTML($r['countList']) ?>
                   <?php else: ?>
                     <span class="text-muted">—</span>
+                  <?php endif; ?>
+                </td>
+                <td class="text-center">
+                  <?php if ($r['eventCount'] > 0): ?>
+                    <span class="badge bg-blue-lt"><?= $r['eventCount'] ?></span>
+                  <?php else: ?>
+                    <span class="text-muted">0</span>
                   <?php endif; ?>
                 </td>
                 <td class="text-center">
@@ -65,7 +73,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                       <div class="dropdown-divider"></div>
                       <button type="button" class="dropdown-item text-danger delete-type-btn"
                               data-type-id="<?= $r['id'] ?>"
-                              data-type-name="<?= InputUtils::escapeAttribute($r['name']) ?>">
+                              data-type-name="<?= InputUtils::escapeAttribute($r['name']) ?>"
+                              data-event-count="<?= $r['eventCount'] ?>">
                         <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
                       </button>
                     </div>

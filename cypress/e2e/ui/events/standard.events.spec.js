@@ -81,6 +81,12 @@ describe("Standard User - Event Check-in", () => {
         cy.get("#checkinBtn").should("exist");
     });
 
+    it("'Assign to me' button exists for check-in supervisor field", () => {
+        cy.visit(`event/checkin/${testEventId}`);
+        cy.get("#assignMeCheckin").should("exist");
+        cy.get("#assignMeCheckin").should("have.attr", "title", "Assign to me");
+    });
+
     /**
      * Regression test for the "Please select a person to check in" bug.
      *

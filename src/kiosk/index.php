@@ -42,7 +42,12 @@ if (!$isAdminRoute) {
                 $Kiosk->save();
             } else {
                 // Window closed - clear cookie and show registration disabled page
-                setcookie('kioskCookie', '', ['expires' => time() - 3600]);
+                setcookie('kioskCookie', '', [
+                    'expires'  => time() - 3600,
+                    'path'     => SystemURLs::getRootPath() . '/kiosk/',
+                    'httponly'  => true,
+                    'samesite' => 'Lax',
+                ]);
                 http_response_code(401);
                 $sRootPath = SystemURLs::getRootPath();
                 require __DIR__ . '/templates/registration-closed.php';
@@ -51,8 +56,13 @@ if (!$isAdminRoute) {
         }
     } elseif ($windowOpen) {
         // No cookie and registration window is open - create new kiosk
-        $guid = uniqid();
-        setcookie('kioskCookie', $guid, ['expires' => 2_147_483_647]);
+        $guid = bin2hex(random_bytes(32));
+        setcookie('kioskCookie', $guid, [
+            'expires'  => time() + (90 * 24 * 60 * 60), // 90 days
+            'path'     => SystemURLs::getRootPath() . '/kiosk/',
+            'httponly'  => true,
+            'samesite' => 'Lax',
+        ]);
         // Populate $_COOKIE for current request since setcookie() doesn't
         $_COOKIE['kioskCookie'] = $guid;
         $Kiosk = new KioskDevice();

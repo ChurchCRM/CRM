@@ -514,6 +514,12 @@ if ($bCanManageGroups) {
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title m-0"><i class="ti ti-calendar me-1"></i> <?= gettext('Events') ?></h3>
                 <span class="badge bg-primary-lt text-primary ms-2"><?= count($groupEvents) ?></span>
+                <?php if ($todayEvent !== null): ?>
+                <a href="<?= $sRootPath ?>/event/checkin/<?= (int) $todayEvent->getId() ?>"
+                   class="btn btn-sm btn-success ms-auto">
+                    <i class="ti ti-clipboard-check me-1"></i><?= gettext('Take Attendance') ?>
+                </a>
+                <?php else: ?>
                 <button
                     type="button"
                     class="btn btn-sm btn-primary ms-auto"
@@ -522,7 +528,26 @@ if ($bCanManageGroups) {
                     title="<?= gettext("Create today's class event and link it to this class for kiosk check-in") ?>">
                     <i class="ti ti-plus me-1"></i><?= gettext("Create Today's Event") ?>
                 </button>
+                <?php endif; ?>
             </div>
+
+            <?php if ($todayEvent !== null): ?>
+            <!-- Today's event banner -->
+            <div class="card-body py-2 border-bottom bg-success-lt">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                        <i class="ti ti-calendar-check me-1 text-success"></i>
+                        <strong><?= InputUtils::escapeHTML($todayEvent->getTitle()) ?></strong>
+                        <span class="text-muted ms-2"><?= $todayEvent->getStart() ? $todayEvent->getStart()->format('g:i A') : '' ?></span>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="badge bg-success"><?= $todayEventAttendance ?> <?= gettext('checked in') ?></span>
+                        <span class="text-muted small"><?= gettext('of') ?> <?= $totalStudents ?></span>
+                    </div>
+                </div>
+            </div>
+            <?php endif; ?>
+
             <?php if (count($groupEvents) === 0): ?>
             <div class="card-body text-center text-muted py-4">
                 <i class="ti ti-calendar-off mb-2 d-block" style="font-size: 2rem;"></i>
@@ -539,8 +564,9 @@ if ($bCanManageGroups) {
                     $startDate = $evt->getStart() ? $evt->getStart()->format('M j, Y') : '';
                     $startTime = $evt->getStart() ? $evt->getStart()->format('g:i A') : '';
                     $eventId   = (int) $evt->getId();
+                    $isToday   = $todayEvent !== null && $eventId === (int) $todayEvent->getId();
                 ?>
-                <div class="list-group-item">
+                <div class="list-group-item<?= $isToday ? ' bg-success-lt' : '' ?>">
                     <div class="d-flex align-items-center gap-2">
                         <div class="me-auto">
                             <a href="<?= $sRootPath ?>/event/view/<?= $eventId ?>" class="fw-bold text-reset">

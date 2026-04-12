@@ -17,7 +17,7 @@ use Slim\Views\PhpRenderer;
 $app->get('/view/{id}', function (Request $request, Response $response, array $args) {
     $eventId = (int) $args['id'];
 
-    $event = EventQuery::create()->joinWithEventType()->findOneById($eventId);
+    $event = EventQuery::create()->leftJoinWithEventType()->findOneById($eventId);
     if ($event === null) {
         LoggerUtils::getAppLogger()->warning('Event not found in view route: ' . $eventId);
 

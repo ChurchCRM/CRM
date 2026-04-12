@@ -77,6 +77,7 @@ $app->get('/checkin[/{eventId}]', function (Request $request, Response $response
                     'fullName'       => $person->getFullName(),
                     'familyId'       => $person->getFamId(),
                     'checkinDate'    => $att->getCheckinDate() ? date_format($att->getCheckinDate(), SystemConfig::getValue('sDateTimeFormat')) : null,
+                    'checkinId'      => $att->getCheckinId() ? (int) $att->getCheckinId() : null,
                     'checkinBy'      => $checkinByName,
                     'checkoutDate'   => $att->getCheckoutDate() ? date_format($att->getCheckoutDate(), SystemConfig::getValue('sDateTimeFormat')) : null,
                     'checkoutBy'     => $checkoutByName,

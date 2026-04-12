@@ -193,7 +193,7 @@ $app->get('/editor[/{id}]', function (Request $request, Response $response, arra
 
     if ($eventId > 0) {
         // Edit mode
-        $event = EventQuery::create()->joinWithEventType()->findOneById($eventId);
+        $event = EventQuery::create()->leftJoinWithEventType()->findOneById($eventId);
         if ($event === null) {
             LoggerUtils::getAppLogger()->warning('Event not found: ' . $eventId);
 

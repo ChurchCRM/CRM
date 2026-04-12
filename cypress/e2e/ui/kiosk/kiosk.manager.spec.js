@@ -9,8 +9,8 @@ describe("Kiosk Manager", () => {
         it("should display the Kiosk Manager page", () => {
             cy.visit("kiosk/admin");
             cy.contains("Kiosk Manager");
-            cy.contains("Enable new kiosk registration");
-            cy.contains("Active Kiosks");
+            cy.contains("Register New Device");
+            cy.contains("Kiosk Devices");
         });
 
         it("should display the kiosk registration toggle", () => {
@@ -28,8 +28,16 @@ describe("Kiosk Manager", () => {
         it("should have correct table columns", () => {
             cy.visit("kiosk/admin");
             cy.get("#KioskTable").should("exist");
-            // Wait for DataTable headers to load
-            cy.get("#KioskTable thead th").should("have.length.at.least", 5);
+            // Wait for DataTable headers to load — columns: Status, Kiosk Name, Assignment, Actions
+            cy.get("#KioskTable thead th").should("have.length.at.least", 4);
+        });
+
+        it("should display dashboard stat cards when kiosks exist", () => {
+            cy.visit("kiosk/admin");
+            // Stat cards are populated via JS after table loads; they hide when no kiosks
+            cy.get("#KioskTable_wrapper", { timeout: 10000 }).should("exist");
+            // Check the stat card container exists in DOM (may be hidden if no kiosks)
+            cy.get("#kioskStats").should("exist");
         });
     });
 
