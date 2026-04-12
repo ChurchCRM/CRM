@@ -12320,10 +12320,6 @@ msgid "View group members, roles, and properties"
 msgstr "Grup üyelerini, rolleri ve özellikleri görüntüle"
 
 #: 
-msgid "View pledge dashboard"
-msgstr "Bağış taahhüdü panelini görüntüle"
-
-#: 
 msgid "View query results"
 msgstr "Sorgu sonuçlarını görüntüle"
 
@@ -12406,10 +12402,6 @@ msgstr "Daha sonra CSV aracılığıyla her zaman daha fazla veri aktarabilirsin
 #: 
 msgid "You can create/delete sunday school group."
 msgstr "Pazar okulu grubu oluşturabilir/silebilirsiniz."
-
-#: 
-msgid "You do not have finance permissions to view deposits."
-msgstr "Bağış kayıtlarını görüntülemek için mali izniniz yok."
 
 #: 
 msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
@@ -12795,10 +12787,6 @@ msgstr "Kullanıcının yeni etkinlik eklemesine izin ver"
 #: 
 msgid "Are you sure you want to continue?"
 msgstr "Devam etmek istediğinizden emin misiniz?"
-
-#: 
-msgid "Are you sure you want to delete this event?"
-msgstr "Bu etkinliği silmek istediğinizden emin misiniz?"
 
 #. Context: queryparameters_qrp
 #: 
@@ -14266,10 +14254,6 @@ msgstr "Dosya boyutu sunucunun %s sınırını aşıyor"
 msgid "Missing image data in request"
 msgstr "İstekte görüntü verisi eksik"
 
-#: 
-msgid "BCC"
-msgstr "Gizli (BCC)"
-
 #. Context: query_qry
 #: 
 msgid "Find people who didn't attend an event"
@@ -14279,10 +14263,6 @@ msgstr "Bir etkinliğe katılmayan kişileri bul"
 #: 
 msgid "Missing people"
 msgstr "Eksik kişiler"
-
-#: 
-msgid "N/A"
-msgstr "Uygulanamaz"
 
 #. Context: queryparameters_qrp
 #: 
@@ -14300,10 +14280,6 @@ msgstr "Grup, sınıflandırma ve role göre gelişmiş filtreleme"
 #: 
 msgid "All congregation members included"
 msgstr "Tüm cemaat üyeleri dahil"
-
-#: 
-msgid "ChMeetings export completed successfully"
-msgstr "ChMeetings dışa aktarma başarıyla tamamlandı"
 
 #: 
 msgid "ChMeetings-compatible column format"
@@ -14340,10 +14316,6 @@ msgstr "Kilise verilerinizi çeşitli biçimlere aktarın"
 #: 
 msgid "External (WebDAV) backup via plugin"
 msgstr "Eklenti aracılığıyla harici (WebDAV) yedekleme"
-
-#: 
-msgid "Failed to export ChMeetings CSV"
-msgstr "ChMeetings CSV dışa aktarma başarısız oldu"
 
 #: 
 msgid "Family or individual record layout"

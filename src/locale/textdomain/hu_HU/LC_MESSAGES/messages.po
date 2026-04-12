@@ -12376,10 +12376,6 @@ msgid "View group members, roles, and properties"
 msgstr "Csoporttagok, szerepek és tulajdonságok megtekintése"
 
 #: 
-msgid "View pledge dashboard"
-msgstr "Felajánlás vezérlőpult megtekintése"
-
-#: 
 msgid "View query results"
 msgstr "Lekérdezési eredmények megtekintése"
 
@@ -12462,10 +12458,6 @@ msgstr "Később bármikor importálhat további adatokat CSV-n keresztül."
 #: 
 msgid "You can create/delete sunday school group."
 msgstr "Létrehozhat/törölhet vasárnapi iskolai csoportot."
-
-#: 
-msgid "You do not have finance permissions to view deposits."
-msgstr "Nincs pénzügyi jogosultsága a letétek megtekintéséhez."
 
 #: 
 msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
@@ -12851,10 +12843,6 @@ msgstr "Engedélyezze a felhasználónak új esemény hozzáadást"
 #: 
 msgid "Are you sure you want to continue?"
 msgstr "Biztosan szeretné folytatni?"
-
-#: 
-msgid "Are you sure you want to delete this event?"
-msgstr "Biztosan szeretné törölni ezt az eseményt?"
 
 #. Context: queryparameters_qrp
 #: 
@@ -14346,10 +14334,6 @@ msgid "All congregation members included"
 msgstr "Az összes gyülekezeti tag belefoglalva"
 
 #: 
-msgid "ChMeetings export completed successfully"
-msgstr "A ChMeetings exportálás sikeresen befejeződött"
-
-#: 
 msgid "ChMeetings-compatible column format"
 msgstr "ChMeetings-kompatibilis oszlopformátum"
 
@@ -14384,10 +14368,6 @@ msgstr "Exportálja az egyházi adatait különböző formátumokba"
 #: 
 msgid "External (WebDAV) backup via plugin"
 msgstr "Külső (WebDAV) biztonsági mentés bővítményen keresztül"
-
-#: 
-msgid "Failed to export ChMeetings CSV"
-msgstr "Nem sikerült exportálni a ChMeetings CSV-t"
 
 #: 
 msgid "Family or individual record layout"

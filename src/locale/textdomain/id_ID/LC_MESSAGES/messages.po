@@ -12299,10 +12299,6 @@ msgid "View group members, roles, and properties"
 msgstr "Lihat anggota grup, peran, dan properti"
 
 #: 
-msgid "View pledge dashboard"
-msgstr "Lihat dasbor janji persembahan"
-
-#: 
 msgid "View query results"
 msgstr "Lihat hasil kueri"
 
@@ -12385,10 +12381,6 @@ msgstr "Anda selalu bisa mengimpor lebih banyak data nanti melalui CSV."
 #: 
 msgid "You can create/delete sunday school group."
 msgstr "Anda dapat membuat/menghapus grup sekolah Minggu."
-
-#: 
-msgid "You do not have finance permissions to view deposits."
-msgstr "Anda tidak memiliki izin keuangan untuk melihat setoran."
 
 #: 
 msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
@@ -12774,10 +12766,6 @@ msgstr "Izinkan pengguna menambahkan acara baru"
 #: 
 msgid "Are you sure you want to continue?"
 msgstr "Apakah Anda yakin ingin melanjutkan?"
-
-#: 
-msgid "Are you sure you want to delete this event?"
-msgstr "Apakah Anda yakin ingin menghapus acara ini?"
 
 #. Context: queryparameters_qrp
 #: 
@@ -14269,10 +14257,6 @@ msgid "All congregation members included"
 msgstr "Semua jemaat disertakan"
 
 #: 
-msgid "ChMeetings export completed successfully"
-msgstr "Ekspor ChMeetings berhasil diselesaikan"
-
-#: 
 msgid "ChMeetings-compatible column format"
 msgstr "Format kolom yang kompatibel dengan ChMeetings"
 
@@ -14307,10 +14291,6 @@ msgstr "Ekspor data gereja Anda ke berbagai format"
 #: 
 msgid "External (WebDAV) backup via plugin"
 msgstr "Cadangan eksternal (WebDAV) melalui plugin"
-
-#: 
-msgid "Failed to export ChMeetings CSV"
-msgstr "Gagal mengekspor CSV ChMeetings"
 
 #: 
 msgid "Family or individual record layout"
