@@ -432,6 +432,20 @@ cy.intercept("GET", "/api/people/properties/definition/*").as("getDef");
 
 **Note:** This does NOT apply to `cy.visit()` or `cy.request()` — those use `baseUrl` from config and handle the prefix automatically. Only `cy.intercept()` needs the `**` glob because it matches against the full request URL.
 
+## Editable Table Cells: Names Render in Input Values <!-- learned: 2026-04-12 -->
+
+When a table renders option/option names in `<input>` elements (like the OptionManager and many Tabler tables with inline editing), `cy.contains("Member")` does NOT find the value — `cy.contains` searches text content, not input value attributes.
+
+```javascript
+// ❌ WRONG — searches text content, won't find value attributes
+cy.get("#optionsTable tbody").should("contain", "Member");
+
+// ✅ CORRECT — query the input by its value attribute
+cy.get('#optionsTable tbody input.option-name-input[value="Member"]').should("exist");
+```
+
+This applies to any test that asserts data in a table where cells use `<input value="...">` for inline editing.
+
 ## Preventing Flaky Tests (Timing & State) <!-- learned: 2026-04-07 -->
 
 Flaky tests almost always come from one of four root causes. Each has a mandatory fix pattern.
