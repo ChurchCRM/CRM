@@ -3,12 +3,11 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\model\ChurchCRM\TokenQuery;
-use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\RedirectUtils;
+
 
 $personService = new PersonService();
 $systemService = new SystemService();
@@ -17,38 +16,10 @@ $systemService = new SystemService();
 if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
     AuthenticationManager::ensureAuthentication();
 
-    // Block users with no admin permissions — redirect to family verify or show limited access
-    // See https://github.com/ChurchCRM/CRM/issues/8617
+    // Block users with no admin permissions (GHSA-5w59-32c8-933v / #8617)
     $currentUser = AuthenticationManager::getCurrentUser();
     if ($currentUser->hasNoAdminPermissions()) {
-        $person = $currentUser->getPerson();
-        $familyId = $person ? $person->getFamId() : 0;
-        if ($familyId > 0) {
-            // Generate or reuse a family verify token and redirect
-            $existingToken = TokenQuery::create()
-                ->filterByType('verifyFamily')
-                ->filterByReferenceId($familyId)
-                ->findOne();
-            if ($existingToken === null || !$existingToken->isValid()) {
-                $token = new Token();
-                $token->build('verifyFamily', $familyId);
-                $token->save();
-                $tokenStr = $token->getToken();
-            } else {
-                $tokenStr = $existingToken->getToken();
-            }
-            RedirectUtils::redirect(SystemURLs::getRootPath() . '/external/verify/' . $tokenStr);
-        } else {
-            // No family — show a static limited-access message
-            header('Content-Type: text/html; charset=UTF-8');
-            echo '<!DOCTYPE html><html><head><title>' . gettext('Limited Access') . '</title></head><body>';
-            echo '<div style="max-width:500px;margin:80px auto;text-align:center;font-family:sans-serif">';
-            echo '<h2>' . gettext('Limited Access') . '</h2>';
-            echo '<p>' . gettext('Your account has limited permissions. Please contact an administrator for access.') . '</p>';
-            echo '<a href="' . SystemURLs::getRootPath() . '/session/end">' . gettext('Log out') . '</a>';
-            echo '</div></body></html>';
-            exit;
-        }
+        RedirectUtils::redirect(SystemURLs::getRootPath() . '/external/limited-access');
     }
 }
 

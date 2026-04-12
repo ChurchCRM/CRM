@@ -66,19 +66,8 @@ class AuthMiddleware implements MiddlewareInterface
                 $sessionUser = AuthenticationManager::getCurrentUser();
                 if ($sessionUser->hasNoAdminPermissions()) {
                     if ($this->isBrowserRequest($request)) {
-                        // Redirect to family verify page or show limited access message
-                        $person = $sessionUser->getPerson();
-                        $familyId = $person ? $person->getFamId() : 0;
-                        if ($familyId > 0) {
-                            $token = new \ChurchCRM\model\ChurchCRM\Token();
-                            $token->build('verifyFamily', $familyId);
-                            $token->save();
-                            $rootPath = \ChurchCRM\dto\SystemURLs::getRootPath();
-                            return (new Response())->withStatus(302)->withHeader('Location', $rootPath . '/external/verify/' . $token->getToken());
-                        }
-                        // No family — end session and redirect to login
-                        $rootPath = \ChurchCRM\dto\SystemURLs::getRootPath();
-                        return (new Response())->withStatus(302)->withHeader('Location', $rootPath . '/session/end');
+                        $rootPath = SystemURLs::getRootPath();
+                        return (new Response())->withStatus(302)->withHeader('Location', $rootPath . '/external/limited-access');
                     }
                     // API request — return 403
                     $response = new Response();
@@ -150,4 +139,5 @@ class AuthMiddleware implements MiddlewareInterface
 
         return $response->withStatus(302)->withHeader('Location', $redirectUrl);
     }
+
 }
