@@ -45,7 +45,7 @@ function reorderGroupFormProp(Request $request, Response $response, array $args)
     $iPropID = (int) $args['propId'];
 
     $group = GroupQuery::create()->findPk($iGroupID);
-    if ($group === null || !$group->hasSpecialProps()) {
+    if ($group === null || !$group->getHasSpecialProps()) {
         throw new HttpNotFoundException($request, gettext('Group not found or has no special properties'));
     }
 
@@ -113,7 +113,7 @@ function deleteGroupFormProp(Request $request, Response $response, array $args):
     $iPropID = (int) $args['propId'];
 
     $group = GroupQuery::create()->findPk($iGroupID);
-    if ($group === null || !$group->hasSpecialProps()) {
+    if ($group === null || !$group->getHasSpecialProps()) {
         throw new HttpNotFoundException($request, gettext('Group not found or has no special properties'));
     }
 
