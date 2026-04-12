@@ -18,6 +18,19 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
 <?php endif; ?>
 
 <div class="container-fluid py-4">
+    <!-- Navigation Bar for logged-in limited users -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="mb-0">
+                <i class="fa-solid fa-clipboard-check me-2 text-primary"></i><?= gettext('Family Verification') ?>
+            </h2>
+            <p class="text-muted mb-0"><?= gettext('Please review your family information below and confirm or request changes.') ?></p>
+        </div>
+        <a href="<?= SystemURLs::getRootPath() ?>/session/end" class="btn btn-outline-secondary">
+            <i class="fa-solid fa-right-from-bracket me-1"></i><?= gettext('Log Out') ?>
+        </a>
+    </div>
+
     <!-- Header Section -->
     <div class="card shadow-sm mb-4">
         <div class="card-body">
@@ -195,12 +208,13 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
     </div>
 </div>
 
-<!-- Floating Action Buttons -->
-<div class="fab-container">
-    <button type="button" class="fa-brands fab-success" id="confirmVerifyBtn" data-bs-toggle="modal" data-bs-target="#confirm-Verify" title="<?= gettext('Confirm family information') ?>">
-        <i class="fa-solid fa-check"></i>
-        <span class="fab-label"><?= gettext('Confirm') ?></span>
-    </button>
+<!-- Action Bar -->
+<div class="container-fluid mb-4">
+    <div class="d-flex justify-content-center gap-2">
+        <button type="button" class="btn btn-success btn-lg" id="confirmVerifyBtn" data-bs-toggle="modal" data-bs-target="#confirm-Verify">
+            <i class="fa-solid fa-clipboard-check me-2"></i><?= gettext('Confirm Family Info') ?>
+        </button>
+    </div>
 </div>
 
 <!-- Verification Modal -->
@@ -257,7 +271,8 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                 <button type="button" class="btn btn-success" id="onlineVerifyBtn">
                     <i class="fa-solid fa-paper-plane me-2"></i><?= gettext("Submit Verification") ?>
                 </button>
-                <a href="<?= ChurchMetaData::getChurchWebSite() ?>" id="onlineVerifySiteBtn" class="btn btn-primary" target="_blank">
+                <?php $churchWebsite = ChurchMetaData::getChurchWebSite(); ?>
+                <a href="<?= !empty($churchWebsite) ? htmlspecialchars($churchWebsite) : '#' ?>" id="onlineVerifySiteBtn" class="btn btn-primary d-none" target="_blank">
                     <i class="fa-solid fa-globe me-2"></i><?= gettext("Visit Our Website") ?>
                 </a>
             </div>
