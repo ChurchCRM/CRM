@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-11 23:00+0000\n"
+"POT-Creation-Date: 2026-04-12 04:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1620,6 +1620,9 @@ msgstr ""
 msgid "Cannot execute query."
 msgstr ""
 
+msgid "Cannot move property in that direction"
+msgstr ""
+
 msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
 msgstr ""
 
@@ -2200,6 +2203,9 @@ msgstr ""
 msgid "Confirm Enable Group Specific Properties"
 msgstr ""
 
+msgid "Confirm Family Info"
+msgstr ""
+
 msgid "Confirm Family Information"
 msgstr ""
 
@@ -2213,9 +2219,6 @@ msgid "Confirm Volunteer Opportunity Deletion"
 msgstr ""
 
 msgid "Confirm data labels"
-msgstr ""
-
-msgid "Confirm family information"
 msgstr ""
 
 msgid "Confirm with a code from your authenticator app"
@@ -3057,6 +3060,9 @@ msgid "Direct me"
 msgstr ""
 
 msgid "Direction"
+msgstr ""
+
+msgid "Direction must be \"up\" or \"down\""
 msgstr ""
 
 msgid "Directions"
@@ -5024,6 +5030,9 @@ msgstr ""
 msgid "Group not found"
 msgstr ""
 
+msgid "Group not found or has no special properties"
+msgstr ""
+
 msgid "Group removed from cart"
 msgstr ""
 
@@ -5537,6 +5546,9 @@ msgstr ""
 msgid "Invalid event type ID"
 msgstr ""
 
+msgid "Invalid field identifier"
+msgstr ""
+
 msgid "Invalid fields or selections."
 msgstr ""
 
@@ -6001,6 +6013,9 @@ msgid "Log Files"
 msgstr ""
 
 msgid "Log Level"
+msgstr ""
+
+msgid "Log Out"
 msgstr ""
 
 msgid "Log Settings"
@@ -7882,6 +7897,9 @@ msgid "Please map at least one column before importing"
 msgstr ""
 
 msgid "Please proceed to the classroom as soon as possible."
+msgstr ""
+
+msgid "Please review your family information below and confirm or request changes."
 msgstr ""
 
 msgid "Please select a CSV file"
@@ -10721,6 +10739,9 @@ msgstr ""
 msgid "Verify Code"
 msgstr ""
 
+msgid "Verify Family Info"
+msgstr ""
+
 msgid "Verify Info"
 msgstr ""
 
@@ -11023,6 +11044,9 @@ msgstr ""
 msgid "Weekly on"
 msgstr ""
 
+msgid "Welcome"
+msgstr ""
+
 msgid "Welcome Back!"
 msgstr ""
 
@@ -11218,6 +11242,12 @@ msgid "You can now use your authenticator app to sign in. Each code is valid for
 msgstr ""
 
 msgid "You can reset your ChurchCRM password by clicking this link"
+msgstr ""
+
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr ""
+
+msgid "You do not have permission to view this person"
 msgstr ""
 
 msgid "You have no items in your cart."
