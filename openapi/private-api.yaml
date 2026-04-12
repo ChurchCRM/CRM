@@ -2353,6 +2353,93 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  '/groups/{groupId}/formprops/{propId}/order':
+    put:
+      tags:
+        - Groups
+      summary: 'Move a group form property up or down (ManageGroup role required)'
+      operationId: 8a8e78e3c4f88690086b415444b0d8c7
+      parameters:
+        -
+          name: groupId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: propId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - direction
+              properties:
+                direction:
+                  type: string
+                  enum: [up, down]
+              type: object
+      responses:
+        '200':
+          description: 'Property reordered'
+        '400':
+          description: 'Invalid direction or field'
+        '403':
+          description: 'ManageGroup role required'
+        '404':
+          description: 'Group not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/groups/{groupId}/formprops/{propId}':
+    delete:
+      tags:
+        - Groups
+      summary: 'Delete a group form property and its column (ManageGroup role required)'
+      operationId: 16b593c2e835f499d44b27709e1d57d8
+      parameters:
+        -
+          name: groupId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: propId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - field
+              properties:
+                field:
+                  description: 'Column field name (e.g. c1, c2)'
+                  type: string
+                  example: c1
+              type: object
+      responses:
+        '200':
+          description: 'Property deleted'
+        '400':
+          description: 'Invalid field name'
+        '403':
+          description: 'ManageGroup role required'
+        '404':
+          description: 'Group not found'
+      security:
+        -
+          ApiKeyAuth: []
   /groups/properties:
     get:
       tags:
