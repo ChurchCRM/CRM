@@ -9,13 +9,22 @@ describe("Admin User Password", () => {
     });
 
     it("Admin Change password", () => {
-        cy.visit("v2/user/99/changePassword");
-        cy.contains("Change Password: Amanda Black");
+        cy.visit("admin/system/user/99/changePassword");
+        cy.contains("Change Password");
+        cy.contains("Amanda Black");
         cy.get("#NewPassword1").type("new-user-password");
         cy.get("#NewPassword2").type("new-user-password");
-        cy.get("form:nth-child(2)").submit();
-        cy.url().should("contain", "v2/user/99/changePassword");
+        cy.get("#NewPassword1").closest("form").submit();
+        cy.url().should("contain", "admin/system/user/99/changePassword");
         cy.contains("Password Change Successful");
+    });
+
+    it("Non-admin user denied access to change password page", () => {
+        cy.setupStandardSession();
+        cy.visit({ url: "admin/system/user/99/changePassword", failOnStatusCode: false });
+        // AdminRoleAuthMiddleware redirects non-admins to access-denied page
+        cy.url().should("include", "access-denied");
+        cy.get("#NewPassword1").should("not.exist");
     });
 
 

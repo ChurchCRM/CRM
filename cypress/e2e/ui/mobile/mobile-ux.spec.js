@@ -164,7 +164,7 @@ describe("Mobile UX — Authenticated Pages", () => {
     });
 
     it("family view stacks columns on mobile", () => {
-        cy.visit("/v2/family/1");
+        cy.visit("/people/family/1");
         // Both main and sidebar columns should be visible (stacked on mobile)
         cy.get(".col-12.col-lg-8").should("be.visible");
         cy.get(".col-12.col-lg-4").should("be.visible");

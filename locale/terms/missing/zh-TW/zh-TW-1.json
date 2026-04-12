@@ -1,8 +1,35 @@
 {
   "%d result for \"%s\"": {
-    "other": ""
+    "other": "%d 個「%s」的搜尋結果"
   },
   "%d repeat event created successfully.": {
-    "other": ""
-  }
+    "other": "成功建立了 %d 個重複事件。"
+  },
+  "An error occurred while deleting the family.": "刪除家庭時發生錯誤。",
+  "An error occurred while moving donations.": "移動奉獻記錄時發生錯誤。",
+  "At least one family member is required": "至少需要一名家庭成員",
+  "Back to Users": "返回使用者列表",
+  "Cannot delete a family with donation records. Contact a finance administrator.": "無法刪除有奉獻記錄的家庭。請聯絡財務管理員。",
+  "Cannot move property in that direction": "無法向該方向移動屬性",
+  "Confirm Family Info": "確認家庭資訊",
+  "Delete failed": "刪除失敗",
+  "Direction must be \"up\" or \"down\"": "方向必須是\"上\"或\"下\"",
+  "Failed to move donations.": "移動奉獻記錄失敗。",
+  "Finance permission required": "需要財務權限",
+  "ForegroundColor and BackgroundColor are required.": "前景色和背景色為必填項。",
+  "Group not found or has no special properties": "找不到群組或群組沒有特殊屬性",
+  "Group role not found": "找不到群組角色",
+  "Invalid color format. Use hex colors like #FF0000.": "顏色格式無效。請使用十六進位顏色，如 #FF0000。",
+  "Invalid field identifier": "無效的欄位識別碼",
+  "Invalid target family": "無效的目標家庭",
+  "Log Out": "登出",
+  "Membership not found": "找不到會籍",
+  "Password successfully changed for": "密碼已成功變更：",
+  "Please review your family information below and confirm or request changes.": "請查看以下家庭資訊，並確認或申請變更。",
+  "Please select a target family.": "請選擇目標家庭。",
+  "Target family not found": "找不到目標家庭",
+  "Verify Family Info": "驗證家庭資訊",
+  "Welcome": "歡迎",
+  "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator.": "您可以使用以下連結查看和驗證您的家庭資訊。如需更多存取權限，請聯絡您的教會管理員。",
+  "You do not have permission to view this person": "您沒有權限查看此人"
 }

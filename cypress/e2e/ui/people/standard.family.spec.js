@@ -4,13 +4,13 @@ describe("Standard Family", () => {
     beforeEach(() => cy.setupStandardSession());
 
     it("View invalid Family", () => {
-        cy.visit("v2/family/9999");
+        cy.visit("people/family/9999");
         cy.location("pathname").should("include", "family/not-found");
         cy.contains("Family not found");
     });
 
     it("Print button triggers window.print", () => {
-        cy.visit("v2/family/1");
+        cy.visit("people/family/1");
 
         cy.window().then((win) => {
             cy.stub(win, "print").as("printStub");
@@ -64,7 +64,7 @@ describe("Standard Family", () => {
         cy.get('button[name="FamilySubmit"]').click();
 
         // Should redirect to family view page
-        cy.location("pathname").should("include", "/v2/family/");
+        cy.location("pathname").should("include", "/people/family/");
         // Page subtitle shows Family Profile
         cy.contains("Family Profile");
         // Family members table should show all members
@@ -87,7 +87,7 @@ describe("Standard Family", () => {
         // Click FAB save button (on FamilyEditor page)
         cy.get('button[name="FamilySubmit"]').click();
 
-        cy.location("pathname").should("include", "/v2/family/");
+        cy.location("pathname").should("include", "/people/family/");
         cy.get('body').should('not.contain', 'mike@example.com');
         cy.get('body').should('not.contain', `${weddingMonth}/${weddingDay}/${weddingYear}`);
     });

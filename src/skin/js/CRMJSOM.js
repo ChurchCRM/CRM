@@ -506,7 +506,7 @@ window.CRM.renderPersonActionMenu = function (personId, personName, options) {
   var familyItem = familyId
     ? '<a class="dropdown-item" href="' +
       root +
-      "/v2/family/" +
+      "/people/family/" +
       familyId +
       '">' +
       '<i class="ti ti-users me-2"></i>' +
@@ -590,7 +590,7 @@ window.CRM.renderFamilyActionMenu = function (familyId, _familyName, options) {
     '<div class="dropdown-menu dropdown-menu-end">' +
     '<a class="dropdown-item" href="' +
     root +
-    "/v2/family/" +
+    "/people/family/" +
     familyId +
     '">' +
     '<i class="ti ti-eye me-2"></i>' +

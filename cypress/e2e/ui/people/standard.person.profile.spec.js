@@ -12,7 +12,7 @@ describe("Person Profile", () => {
         cy.get(".breadcrumb").within(() => {
             cy.contains("People");
             // Family name should be a link in breadcrumbs
-            cy.get("a[href*='/v2/family/']").should("exist");
+            cy.get("a[href*='/people/family/']").should("exist");
         });
     });
 

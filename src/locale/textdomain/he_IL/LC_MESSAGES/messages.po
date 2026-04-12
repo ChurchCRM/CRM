@@ -2023,10 +2023,6 @@ msgid "Restore Database"
 msgstr "שחזר מסד נתונים"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "כל התרומות ממשפחה זו הועברו למשפחה אחרת."
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "אנא אשר את מחיקת"
 
@@ -4751,10 +4747,6 @@ msgstr "הגדרות כספים"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "התבקש שם תצורה לא חוקי"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr " התבקש מזהה תצורה לא חוקי"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8541,10 +8533,6 @@ msgid "Confirm Family Information"
 msgstr "אשר פרטי משפחה"
 
 #: 
-msgid "Confirm family information"
-msgstr "אישור פרטי משפחה"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "פרטי קשר ומידע אישי"
 
@@ -12316,10 +12304,6 @@ msgid "View group members, roles, and properties"
 msgstr "צפייה בחברי קבוצה, תפקידים ומאפיינים"
 
 #: 
-msgid "View pledge dashboard"
-msgstr "צפייה בלוח הבקרה של התחייבויות כספיות"
-
-#: 
 msgid "View query results"
 msgstr "צפייה בתוצאות שאילתה"
 
@@ -12402,10 +12386,6 @@ msgstr "תמיד תוכלו לייבא נתונים נוספים מאוחר יו
 #: 
 msgid "You can create/delete sunday school group."
 msgstr "תוכלו ליצור/למחוק קבוצת בית ספר ליום ראשון."
-
-#: 
-msgid "You do not have finance permissions to view deposits."
-msgstr "אין לכם הרשאות כספיות לצפייה בהפקדות."
 
 #: 
 msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
@@ -12787,10 +12767,6 @@ msgstr "אפשר למשתמש להוסיף אירוע חדש"
 #: 
 msgid "Are you sure you want to continue?"
 msgstr "האם אתה בטוח שאתה רוצה להמשיך?"
-
-#: 
-msgid "Are you sure you want to delete this event?"
-msgstr "האם אתה בטוח שברצונך למחוק את אירוע זה?"
 
 #. Context: queryparameters_qrp
 #: 
@@ -14282,10 +14258,6 @@ msgid "All congregation members included"
 msgstr "כל חברי הקהילה כלולים"
 
 #: 
-msgid "ChMeetings export completed successfully"
-msgstr "ייצוא ChMeetings הושלם בהצלחה"
-
-#: 
 msgid "ChMeetings-compatible column format"
 msgstr "פורמט עמודות תואם ChMeetings"
 
@@ -14320,10 +14292,6 @@ msgstr "ייצא את נתוני הקהילה לפורמטים שונים"
 #: 
 msgid "External (WebDAV) backup via plugin"
 msgstr "גיבוי חיצוני (WebDAV) באמצעות תוסף"
-
-#: 
-msgid "Failed to export ChMeetings CSV"
-msgstr "ייצוא CSV ל-ChMeetings נכשל"
 
 #: 
 msgid "Family or individual record layout"

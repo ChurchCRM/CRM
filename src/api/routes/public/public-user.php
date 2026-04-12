@@ -8,7 +8,6 @@ use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpBadRequestException;
-use Slim\Exception\HttpNotFoundException;
 use Slim\Exception\HttpUnauthorizedException;
 use Slim\Routing\RouteCollectorProxy;
 
@@ -40,20 +39,19 @@ $app->group('/public/user', function (RouteCollectorProxy $group): void {
  *             @OA\Property(property="apiKey", type="string", example="abc123xyz")
  *         )
  *     ),
- *     @OA\Response(response=401, description="Invalid username or password"),
- *     @OA\Response(response=404, description="User not found")
+ *     @OA\Response(response=401, description="Invalid username or password")
  * )
  */
 function userLogin(Request $request, Response $response, array $args): Response
 {
     $body = json_decode($request->getBody(), true, 512, JSON_THROW_ON_ERROR);
     if (empty($body['userName'])) {
-        throw new HttpNotFoundException($request);
+        throw new HttpUnauthorizedException($request, gettext('Invalid User/Password'));
     }
 
     $user = UserQuery::create()->findOneByUserName($body['userName']);
     if (empty($user)) {
-        throw new HttpNotFoundException($request);
+        throw new HttpUnauthorizedException($request, gettext('Invalid User/Password'));
     }
 
     $password = $body['password'];

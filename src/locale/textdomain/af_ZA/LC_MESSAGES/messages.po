@@ -2024,10 +2024,6 @@ msgid "Restore Database"
 msgstr "Herstel databasis"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Alle skenkings van hierdie gesin is na 'n ander gesin verskuif."
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "Bevestig die verwydering van"
 
@@ -4752,10 +4748,6 @@ msgstr "Finansiële instellings"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "'N Ongeldige opsetnaam is versoek"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "'N Ongeldige konfigurasie-ID is versoek"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8545,10 +8537,6 @@ msgid "Confirm Family Information"
 msgstr "Bevestig Familie Inligting"
 
 #: 
-msgid "Confirm family information"
-msgstr "Bevestig familie inligting"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Kontak & Persoonlike Info"
 
@@ -12320,10 +12308,6 @@ msgid "View group members, roles, and properties"
 msgstr "Bekyk groeplede, rolle, en eienskappe"
 
 #: 
-msgid "View pledge dashboard"
-msgstr "Bekyk toeseggings-kontroleskerm"
-
-#: 
 msgid "View query results"
 msgstr "Kyk navraag-resultate"
 
@@ -12406,10 +12390,6 @@ msgstr "U kan altyd later meer gegewens invoer via CSV."
 #: 
 msgid "You can create/delete sunday school group."
 msgstr "U kan sondag-skool ministerie skep/verwyder."
-
-#: 
-msgid "You do not have finance permissions to view deposits."
-msgstr "U het nie finansiële toestemmings om insamelings te bekyk nie."
 
 #: 
 msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
@@ -12795,10 +12775,6 @@ msgstr "Laat gebruiker toe om nuwe geleentheid by te voeg"
 #: 
 msgid "Are you sure you want to continue?"
 msgstr "Is jy seker jy wil voortgaan?"
-
-#: 
-msgid "Are you sure you want to delete this event?"
-msgstr "Is jy seker jy wil hierdie geleentheid uitwis?"
 
 #. Context: queryparameters_qrp
 #: 
@@ -14290,10 +14266,6 @@ msgid "All congregation members included"
 msgstr "Alle gemeentelede ingesluit"
 
 #: 
-msgid "ChMeetings export completed successfully"
-msgstr "ChMeetings-uitvoer suksesvol voltooi"
-
-#: 
 msgid "ChMeetings-compatible column format"
 msgstr "ChMeetings-versoenbare kolomformaat"
 
@@ -14328,10 +14300,6 @@ msgstr "Voer u kerkdata uit na verskeie formate"
 #: 
 msgid "External (WebDAV) backup via plugin"
 msgstr "Eksterne (WebDAV) rugsteun via inprop"
-
-#: 
-msgid "Failed to export ChMeetings CSV"
-msgstr "Kon nie ChMeetings CSV uitvoer nie"
 
 #: 
 msgid "Family or individual record layout"

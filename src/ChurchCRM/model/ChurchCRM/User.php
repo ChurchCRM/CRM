@@ -90,6 +90,28 @@ class User extends BaseUser
     }
 
     /**
+     * Check if the user lacks all functional admin permissions.
+     * Users with no permissions (or only EditSelf) cannot use the admin interface
+     * and should be redirected to a self-service flow or blocked.
+     *
+     * @see https://github.com/ChurchCRM/CRM/issues/8617
+     */
+    public function hasNoAdminPermissions(): bool
+    {
+        if ($this->isAdmin()) {
+            return false;
+        }
+
+        return !$this->isAddRecords()
+            && !$this->isEditRecords()
+            && !$this->isDeleteRecords()
+            && !$this->isMenuOptions()
+            && !$this->isManageGroups()
+            && !$this->isFinance()
+            && !$this->isNotes();
+    }
+
+    /**
      * Check if the user can edit a specific person's record.
      * Combines role-based (EditRecords) and object-level (EditSelf + family/own) authorization.
      *

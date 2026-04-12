@@ -2014,10 +2014,6 @@ msgid "Restore Database"
 msgstr "กู้คืนฐานข้อมูล"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "การบริจาคทั้งหมดจากครอบครัวนี้ถูกย้ายไปยังครอบครัวอื่นแล้ว"
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "กรุณายืนยันการลบ"
 
@@ -4731,10 +4727,6 @@ msgstr "การตั้งค่าการเงิน"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "มีการร้องขอชื่อการกำหนดค่าที่ไม่ถูกต้อง"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "มีการร้องขอ ID การกำหนดค่าที่ไม่ถูกต้อง"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8510,10 +8502,6 @@ msgid "Confirm Family Information"
 msgstr "ยืนยันข้อมูลครอบครัว"
 
 #: 
-msgid "Confirm family information"
-msgstr "ยืนยันข้อมูลครอบครัว"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "ติดต่อและข้อมูลส่วนตัว"
 
@@ -12279,10 +12267,6 @@ msgid "View group members, roles, and properties"
 msgstr "ดูสมาชิกกลุ่ม บทบาท และคุณสมบัติ"
 
 #: 
-msgid "View pledge dashboard"
-msgstr "ดูแผงควบคุมคำปฏิญาณถวาย"
-
-#: 
 msgid "View query results"
 msgstr "ดูผลลัพธ์คิวรี"
 
@@ -12365,10 +12349,6 @@ msgstr "คุณสามารถนำเข้าข้อมูลเพิ
 #: 
 msgid "You can create/delete sunday school group."
 msgstr "คุณสามารถสร้าง/ลบกลุ่มโรงเรียนวันอาทิตย์ได้"
-
-#: 
-msgid "You do not have finance permissions to view deposits."
-msgstr "คุณไม่มีสิทธิ์ทางการเงินในการดูรายการรับถวาย"
 
 #: 
 msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
@@ -12754,10 +12734,6 @@ msgstr "อนุญาตให้ผู้ใช้เพิ่มเหตุ
 #: 
 msgid "Are you sure you want to continue?"
 msgstr "คุณแน่ใจหรือว่าต้องการดำเนินการต่อ?"
-
-#: 
-msgid "Are you sure you want to delete this event?"
-msgstr "คุณแน่ใจหรือว่าต้องการลบเหตุการณ์นี้?"
 
 #. Context: queryparameters_qrp
 #: 
@@ -14249,10 +14225,6 @@ msgid "All congregation members included"
 msgstr "รวมสมาชิกคริสตจักรทั้งหมด"
 
 #: 
-msgid "ChMeetings export completed successfully"
-msgstr "ส่งออกข้อมูล ChMeetings สำเร็จแล้ว"
-
-#: 
 msgid "ChMeetings-compatible column format"
 msgstr "รูปแบบคอลัมน์ที่เข้ากันได้กับ ChMeetings"
 
@@ -14287,10 +14259,6 @@ msgstr "ส่งออกข้อมูลคริสตจักรของ
 #: 
 msgid "External (WebDAV) backup via plugin"
 msgstr "การสำรองข้อมูลภายนอก (WebDAV) ผ่านปลั๊กอิน"
-
-#: 
-msgid "Failed to export ChMeetings CSV"
-msgstr "ไม่สามารถส่งออกข้อมูล ChMeetings CSV"
 
 #: 
 msgid "Family or individual record layout"
@@ -14343,6 +14311,10 @@ msgstr "เกิดข้อผิดพลาด"
 #: 
 msgid "Appearance"
 msgstr "ลักษณะที่ปรากฏ"
+
+#: 
+msgid "Azure"
+msgstr "Azure"
 
 #: 
 msgid "Back to Finance Dashboard"

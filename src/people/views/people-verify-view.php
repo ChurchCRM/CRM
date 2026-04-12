@@ -81,7 +81,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     data: 'Family.Id',
                     searchable: false,
                     render: function (data, type, full, meta) {
-                        return '<a href=' + window.CRM.root + '/v2/family/' + data + '>' + data + '</a>';
+                        return '<a href=' + window.CRM.root + '/people/family/' + data + '>' + data + '</a>';
                     }
                 },
                 {
@@ -125,7 +125,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     data: 'FamilyId',
                     searchable: false,
                     render: function (data, type, full, meta) {
-                        return '<a href=' + window.CRM.root + '/v2/family/' + data + '>' + data + '</a>';
+                        return '<a href=' + window.CRM.root + '/people/family/' + data + '>' + data + '</a>';
                     }
                 },
                 {

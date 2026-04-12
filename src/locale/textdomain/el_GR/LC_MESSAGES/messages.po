@@ -2024,10 +2024,6 @@ msgid "Restore Database"
 msgstr "Επαναφορά βάσης δεδομένων"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Όλες οι δωρεές από αυτήν την οικογένεια έχουν μεταφερθεί σε άλλη οικογένεια."
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "Επιβεβαιώστε τη διαγραφή του"
 
@@ -4752,10 +4748,6 @@ msgstr "Οικονομικές Ρυθμίσεις"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "Ζητήθηκε ένα μη έγκυρο όνομα διαμόρφωσης"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "Ζητήθηκε μη έγκυρο αναγνωριστικό διαμόρφωσης"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8545,10 +8537,6 @@ msgid "Confirm Family Information"
 msgstr "Επιβεβαίωση στοιχείων οικογένειας"
 
 #: 
-msgid "Confirm family information"
-msgstr "Επιβεβαιώστε τα στοιχεία της οικογένειας"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Στοιχεία επικοινωνίας & προσωπικά στοιχεία"
 
@@ -12320,10 +12308,6 @@ msgid "View group members, roles, and properties"
 msgstr "Προβολή μελών ομάδας, ρόλων και ιδιοτήτων"
 
 #: 
-msgid "View pledge dashboard"
-msgstr "Προβολή πίνακα ελέγχου οικονομικών δεσμεύσεων"
-
-#: 
 msgid "View query results"
 msgstr "Προβολή αποτελεσμάτων ερωτήματος"
 
@@ -12406,10 +12390,6 @@ msgstr "Μπορείτε πάντα να εισαγάγετε περισσότε
 #: 
 msgid "You can create/delete sunday school group."
 msgstr "Μπορείτε να δημιουργήσετε/διαγράψετε ομάδα Κατηχητικού."
-
-#: 
-msgid "You do not have finance permissions to view deposits."
-msgstr "Δεν έχετε οικονομικά δικαιώματα για προβολή καταθέσεων."
 
 #: 
 msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
@@ -12791,10 +12771,6 @@ msgstr "Να επιτρέψει στο χρήστη να προσθέσει νέ
 #: 
 msgid "Are you sure you want to continue?"
 msgstr "Είστε σίγουροι ότι θέλετε να συνεχίσετε;"
-
-#: 
-msgid "Are you sure you want to delete this event?"
-msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το γεγονός;"
 
 #. Context: queryparameters_qrp
 #: 
@@ -14286,10 +14262,6 @@ msgid "All congregation members included"
 msgstr "Περιλαμβάνονται όλα τα μέλη του εκκλησιάσματος"
 
 #: 
-msgid "ChMeetings export completed successfully"
-msgstr "Η εξαγωγή στο ChMeetings ολοκληρώθηκε επιτυχώς"
-
-#: 
 msgid "ChMeetings-compatible column format"
 msgstr "Μορφή στηλών συμβατή με ChMeetings"
 
@@ -14324,10 +14296,6 @@ msgstr "Εξαγωγή εκκλησιαστικών δεδομένων σε δι
 #: 
 msgid "External (WebDAV) backup via plugin"
 msgstr "Εξωτερικό αντίγραφο ασφαλείας (WebDAV) μέσω πρόσθετου"
-
-#: 
-msgid "Failed to export ChMeetings CSV"
-msgstr "Αποτυχία εξαγωγής CSV για ChMeetings"
 
 #: 
 msgid "Family or individual record layout"

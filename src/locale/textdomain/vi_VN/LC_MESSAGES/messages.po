@@ -2036,10 +2036,6 @@ msgid "Restore Database"
 msgstr "Khôi phục dữ liệu"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Tất cả tiền dâng hiến của gia đình này đã được chuyển sang gia đình khác"
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "Vui lòng xác nhận xóa"
 
@@ -4764,10 +4760,6 @@ msgstr "Tài chính"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "Tên cấu hình không hợp lệ đã được yêu cầu"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "Id cấu hình không hợp lệ đã được yêu cầu"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8546,10 +8538,6 @@ msgid "Confirm Family Information"
 msgstr "Xác nhận thông tin gia đình"
 
 #: 
-msgid "Confirm family information"
-msgstr "Xác nhận thông tin gia đình"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Thông tin liên hệ & cá nhân"
 
@@ -12310,10 +12298,6 @@ msgid "View group members, roles, and properties"
 msgstr "Xem thanh vien nhom, vai tro va thuoc tinh"
 
 #: 
-msgid "View pledge dashboard"
-msgstr "Xem bang dieu khien cam ket dang hien"
-
-#: 
 msgid "View query results"
 msgstr "Xem ket qua truy van"
 
@@ -12396,10 +12380,6 @@ msgstr "Ban luon co the nhap them du lieu sau qua CSV."
 #: 
 msgid "You can create/delete sunday school group."
 msgstr "Ban co the tao/xoa nhom giao ly."
-
-#: 
-msgid "You do not have finance permissions to view deposits."
-msgstr "Ban khong co quyen tai chinh de xem cac dot thu hien."
 
 #: 
 msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
@@ -12785,10 +12765,6 @@ msgstr "Cho phép người dùng thêm sự kiện mới"
 #: 
 msgid "Are you sure you want to continue?"
 msgstr "Bạn có chắc chắn muốn tiếp tục không?"
-
-#: 
-msgid "Are you sure you want to delete this event?"
-msgstr "Bạn có chắc chắn muốn xóa sự kiện này không?"
 
 #. Context: queryparameters_qrp
 #: 
@@ -14280,10 +14256,6 @@ msgid "All congregation members included"
 msgstr "Bao gồm tất cả thành viên giáo đoàn"
 
 #: 
-msgid "ChMeetings export completed successfully"
-msgstr "Xuất ChMeetings hoàn tất thành công"
-
-#: 
 msgid "ChMeetings-compatible column format"
 msgstr "Định dạng cột tương thích với ChMeetings"
 
@@ -14318,10 +14290,6 @@ msgstr "Xuất dữ liệu nhà thờ của bạn sang nhiều định dạng kh
 #: 
 msgid "External (WebDAV) backup via plugin"
 msgstr "Sao lưu ngoài (WebDAV) qua plugin"
-
-#: 
-msgid "Failed to export ChMeetings CSV"
-msgstr "Xuất CSV ChMeetings thất bại"
 
 #: 
 msgid "Family or individual record layout"

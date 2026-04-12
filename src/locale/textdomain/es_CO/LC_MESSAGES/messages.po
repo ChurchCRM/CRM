@@ -2004,10 +2004,6 @@ msgid "Restore Database"
 msgstr "Restaurar base de datos"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Las donaciónes de esta familia has sido movidas a otra familia"
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "Por favor confirme la eliminación de"
 
@@ -4721,10 +4717,6 @@ msgstr "Ajustes Financieros"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "Un nombre ajuste inválido ha sido solicitado."
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "Un id de configuración ha sido solicitado."
 
 #: 
 msgid "Profile Image uploaded"
@@ -8509,10 +8501,6 @@ msgid "Confirm Family Information"
 msgstr "Confirmar información de la familia"
 
 #: 
-msgid "Confirm family information"
-msgstr "Confirmar información de la familia"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Información de contacto y personal"
 
@@ -12290,10 +12278,6 @@ msgid "View group members, roles, and properties"
 msgstr "Ver los miembros del grupo, los roles y las propiedades"
 
 #: 
-msgid "View pledge dashboard"
-msgstr "Ver panel de compromisos de donación"
-
-#: 
 msgid "View query results"
 msgstr "Ver resultados de la consulta"
 
@@ -12376,10 +12360,6 @@ msgstr "Siempre puede importar más datos posteriormente mediante CSV."
 #: 
 msgid "You can create/delete sunday school group."
 msgstr "Puede crear o eliminar grupos de catequesis."
-
-#: 
-msgid "You do not have finance permissions to view deposits."
-msgstr "No tiene permisos de finanzas para ver los depósitos."
 
 #: 
 msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
@@ -12765,10 +12745,6 @@ msgstr "Permitir al usuario agregar un nuevo evento"
 #: 
 msgid "Are you sure you want to continue?"
 msgstr "¿Estás seguro de que quieres continuar?"
-
-#: 
-msgid "Are you sure you want to delete this event?"
-msgstr "¿Estás seguro de que quieres eliminar este evento?"
 
 #. Context: queryparameters_qrp
 #: 
@@ -14236,10 +14212,6 @@ msgstr "El tamaño del archivo supera el límite del servidor de %s"
 msgid "Missing image data in request"
 msgstr "Faltan datos de imagen en la solicitud"
 
-#: 
-msgid "BCC"
-msgstr "CCO"
-
 #. Context: query_qry
 #: 
 msgid "Find people who didn't attend an event"
@@ -14249,10 +14221,6 @@ msgstr "Buscar personas que no asistieron a un evento"
 #: 
 msgid "Missing people"
 msgstr "Personas ausentes"
-
-#: 
-msgid "N/A"
-msgstr "N/D"
 
 #. Context: queryparameters_qrp
 #: 
@@ -14270,10 +14238,6 @@ msgstr "Filtrado avanzado por grupo, clasificación y rol"
 #: 
 msgid "All congregation members included"
 msgstr "Todos los feligreses de la congregación incluidos"
-
-#: 
-msgid "ChMeetings export completed successfully"
-msgstr "Exportación de ChMeetings completada exitosamente"
 
 #: 
 msgid "ChMeetings-compatible column format"
@@ -14310,10 +14274,6 @@ msgstr "Exporte los datos de su parroquia a varios formatos"
 #: 
 msgid "External (WebDAV) backup via plugin"
 msgstr "Copia de seguridad externa (WebDAV) mediante complemento"
-
-#: 
-msgid "Failed to export ChMeetings CSV"
-msgstr "Error al exportar el CSV de ChMeetings"
 
 #: 
 msgid "Family or individual record layout"

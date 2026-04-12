@@ -22,30 +22,30 @@ describe("Standard Family Activation", () => {
     });
 
     it("Family activation flow", () => {
-        cy.visit("v2/family");
+        cy.visit("people/family");
         cy.contains("Family Listing");
 
-        cy.visit("v2/family?mode=inactive");
+        cy.visit("people/family?mode=inactive");
         cy.contains("Lewis").should("not.exist");
 
-        cy.visit("v2/family/3");
+        cy.visit("people/family/3");
         cy.contains("This Family is Inactive").should("not.be.visible");
         cy.get("#family-actions-dropdown").click();
         cy.get("#activateDeactivate").click();
         cy.get(".bootbox-accept").should("be.visible").click();
         cy.wait("@updateToInActive");
 
-        cy.visit("v2/family?mode=inactive");
+        cy.visit("people/family?mode=inactive");
         cy.contains("Lewis");
 
-        cy.visit("v2/family/3");
+        cy.visit("people/family/3");
         cy.contains("This Family is Inactive").should("be.visible");
         cy.get("#family-actions-dropdown").click();
         cy.get("#activateDeactivate").click();
         cy.get(".bootbox-accept").should("be.visible").click();
         cy.wait("@updateToActive");
 
-        cy.visit("v2/family?mode=inactive");
+        cy.visit("people/family?mode=inactive");
         cy.contains("Lewis").should("not.exist");
     });
 });

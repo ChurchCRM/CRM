@@ -82,7 +82,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
             <!-- Reset -->
             <div class="col-auto">
-                <a href="<?= $sRootPath ?>/v2/people/photos" class="btn btn-outline-secondary">
+                <a href="<?= $sRootPath ?>/people/photos" class="btn btn-outline-secondary">
                     <i class="ti ti-refresh"></i>
                     <span class="d-none d-sm-inline ms-1"><?= gettext('Reset') ?></span>
                 </a>
@@ -91,7 +91,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
         <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         (function () {
-            var base = '<?= $sRootPath ?>/v2/people/photos';
+            var base = <?= json_encode($sRootPath . '/people/photos', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
 
             function applyFilters() {
                 var cls       = document.getElementById('classification-select').value;
@@ -122,7 +122,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <?= gettext('No people match your current filters.') ?>
                 </p>
                 <div class="empty-action">
-                    <a href="<?= $sRootPath ?>/v2/people/photos" class="btn btn-primary">
+                    <a href="<?= $sRootPath ?>/people/photos" class="btn btn-primary">
                         <i class="ti ti-refresh me-1"></i><?= gettext('Reset Filters') ?>
                     </a>
                 </div>
@@ -232,7 +232,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         $paginationParams['classification'] = $classificationFilter;
                     }
                     $queryString = http_build_query($paginationParams);
-                    $baseUrl = $sRootPath . '/v2/people/photos' . ($queryString ? '?' . $queryString . '&' : '?');
+                    $baseUrl = $sRootPath . '/people/photos' . ($queryString ? '?' . $queryString . '&' : '?');
                     ?>
                     <ul class="pagination justify-content-center">
                         <li class="page-item <?= $currentPage <= 1 ? 'disabled' : '' ?>">

@@ -1,5 +1,5 @@
 /**
- * Leaflet map initialisation for the family detail view (/v2/family/:id).
+ * Leaflet map initialisation for the family detail view (/people/family/:id).
  *
  * PHP injects window.CRM.familyMapConfig = { lat, lng } when the family
  * has stored geocoded coordinates. Leaflet is loaded as a global from

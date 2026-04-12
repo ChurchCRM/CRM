@@ -28,15 +28,12 @@ $app->group('/family', function (RouteCollectorProxy $group): void {
 
 function listFamilies(Request $request, Response $response, array $args): Response
 {
-    $renderer = new PhpRenderer('templates/people/');
+    $renderer = new PhpRenderer(__DIR__ . '/../views/');
     $sMode = 'Active';
 
-    // Read filters from query parameters (support both legacy $_GET and PSR-7)
     $queryParams = $request->getQueryParams();
 
-    // Family active status - support `familyActiveStatus=active|inactive|all` or `active=1|0`
     $familyActiveStatus = 'active';
-    // Backwards compatibility: support legacy `mode` query param (e.g., ?mode=inactive)
     if (!empty($queryParams['mode'])) {
         $modeVal = strtolower(InputUtils::legacyFilterInput($queryParams['mode']));
         if ($modeVal === 'inactive') {
@@ -50,11 +47,9 @@ function listFamilies(Request $request, Response $response, array $args): Respon
     if (isset($queryParams['familyActiveStatus'])) {
         $familyActiveStatus = strtolower(InputUtils::legacyFilterInput($queryParams['familyActiveStatus']));
     } elseif (isset($queryParams['active'])) {
-        // backward compatible: active=1 -> active, active=0 -> inactive
         $familyActiveStatus = ($queryParams['active'] === '0' || $queryParams['active'] === 'false') ? 'inactive' : 'active';
     }
 
-    // City / State filters (optional free-text)
     $filterCity = '';
     if (!empty($queryParams['City'])) {
         $filterCity = InputUtils::legacyFilterInput($queryParams['City']);
@@ -65,13 +60,11 @@ function listFamilies(Request $request, Response $response, array $args): Respon
         $filterState = InputUtils::legacyFilterInput($queryParams['State']);
     }
 
-    // Geocoding status filter: 'unverified' = has address but no lat/lon
     $filterGeocoded = '';
     if (!empty($queryParams['geocoded'])) {
         $filterGeocoded = InputUtils::legacyFilterInput($queryParams['geocoded']);
     }
 
-    // Build the base query and apply filters
     $familiesQuery = FamilyQuery::create()->orderByName();
 
     if ($familyActiveStatus === 'active') {
@@ -81,12 +74,10 @@ function listFamilies(Request $request, Response $response, array $args): Respon
         $familiesQuery->filterByDateDeactivated(null, Criteria::ISNOTNULL);
         $sMode = 'Inactive';
     } else {
-        // 'all' - no active/inactive filtering
         $sMode = 'All';
     }
 
     if ($filterCity !== '') {
-        // use LIKE for partial matches
         $familiesQuery->filterByCity('%' . $filterCity . '%', Criteria::LIKE);
         $sMode = $sMode . ' - ' . $filterCity;
     }
@@ -97,8 +88,6 @@ function listFamilies(Request $request, Response $response, array $args): Respon
     }
 
     if ($filterGeocoded === 'unverified') {
-        // Has a street address entered but latitude/longitude are not set
-        // Matches hasLatitudeAndLongitude(): consider unverified when either coordinate is missing
         $familiesQuery->filterByAddress1('', Criteria::NOT_EQUAL);
         $familiesQuery->where('(family_fam.fam_Latitude IS NULL OR family_fam.fam_Latitude = 0) OR (family_fam.fam_Longitude IS NULL OR family_fam.fam_Longitude = 0)');
         $sMode = $sMode . ' - ' . gettext('Unverified Addresses');
@@ -126,7 +115,7 @@ function listFamilies(Request $request, Response $response, array $args): Respon
 
 function viewFamilyNotFound(Request $request, Response $response, array $args): Response
 {
-    $renderer = new PhpRenderer('templates/common/');
+    $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
@@ -139,13 +128,13 @@ function viewFamilyNotFound(Request $request, Response $response, array $args): 
 
 function viewFamily(Request $request, Response $response, array $args): Response
 {
-    $renderer = new PhpRenderer('templates/people/');
+    $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
     $familyId = (int)$args['id'];
     $family = FamilyQuery::create()->findPk($familyId);
 
     if (empty($family)) {
-        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/family/not-found?id=' . $familyId);
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/family/not-found?id=' . $familyId);
     }
 
     $timelineService = new TimelineService();
@@ -154,7 +143,6 @@ function viewFamily(Request $request, Response $response, array $args): Response
 
     $allFamilyCustomFields = FamilyCustomMasterQuery::create()->find();
 
-    // get family with all the extra columns created
     $rawQry = FamilyCustomQuery::create();
     foreach ($allFamilyCustomFields as $customfield) {
         $rawQry->withColumn($customfield->getField());
@@ -180,7 +168,7 @@ function viewFamily(Request $request, Response $response, array $args): Response
         'sPageSubtitle' => gettext('View family details, members, and timeline'),
         'aBreadcrumbs' => PageHeader::breadcrumbs([
             [gettext('People'), '/people/dashboard'],
-            [gettext('Families'), '/v2/family'],
+            [gettext('Families'), '/people/family'],
             [InputUtils::escapeHTML($family->getName())],
         ]),
         'family' => $family,

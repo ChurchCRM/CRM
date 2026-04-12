@@ -1,9 +1,33 @@
 {
-  "BCC": "",
-  "N/A": "",
   "name@example.com": "",
-  "Azure": "",
   "%d repeat event created successfully.": {
-    "other": ""
-  }
+    "other": "สร้างกิจกรรมซ้ำ %d รายการสำเร็จแล้ว"
+  },
+  "An error occurred while deleting the family.": "เกิดข้อผิดพลาดขณะลบครอบครัว",
+  "An error occurred while moving donations.": "เกิดข้อผิดพลาดขณะย้ายการบริจาค",
+  "At least one family member is required": "ต้องมีสมาชิกครอบครัวอย่างน้อยหนึ่งคน",
+  "Back to Users": "กลับไปยังผู้ใช้",
+  "Cannot delete a family with donation records. Contact a finance administrator.": "ไม่สามารถลบครอบครัวที่มีบันทึกการบริจาคได้ โปรดติดต่อผู้ดูแลระบบการเงิน",
+  "Cannot move property in that direction": "ไม่สามารถย้ายคุณสมบัตินั้นในทิศทางนั้นได้",
+  "Confirm Family Info": "ยืนยันข้อมูลครอบครัว",
+  "Delete failed": "การลบล้มเหลว",
+  "Direction must be \"up\" or \"down\"": "ทิศทางต้องเป็น \"ขึ้น\" หรือ \"ลง\"",
+  "Failed to move donations.": "ไม่สามารถย้ายการบริจาคได้",
+  "Finance permission required": "ต้องการสิทธิ์ทางการเงิน",
+  "ForegroundColor and BackgroundColor are required.": "ต้องระบุสีพื้นหน้าและสีพื้นหลัง",
+  "Group not found or has no special properties": "ไม่พบกลุ่มหรือไม่มีคุณสมบัติพิเศษ",
+  "Group role not found": "ไม่พบบทบาทของกลุ่ม",
+  "Invalid color format. Use hex colors like #FF0000.": "รูปแบบสีไม่ถูกต้อง ใช้สี hex เช่น #FF0000",
+  "Invalid field identifier": "ตัวระบุฟิลด์ไม่ถูกต้อง",
+  "Invalid target family": "ครอบครัวเป้าหมายไม่ถูกต้อง",
+  "Log Out": "ออกจากระบบ",
+  "Membership not found": "ไม่พบการเป็นสมาชิก",
+  "Password successfully changed for": "เปลี่ยนรหัสผ่านสำเร็จสำหรับ",
+  "Please review your family information below and confirm or request changes.": "โปรดตรวจสอบข้อมูลครอบครัวของคุณด้านล่างและยืนยันหรือขอเปลี่ยนแปลง",
+  "Please select a target family.": "โปรดเลือกครอบครัวเป้าหมาย",
+  "Target family not found": "ไม่พบครอบครัวเป้าหมาย",
+  "Verify Family Info": "ตรวจสอบข้อมูลครอบครัว",
+  "Welcome": "ยินดีต้อนรับ",
+  "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator.": "คุณสามารถตรวจสอบและยืนยันข้อมูลครอบครัวของคุณโดยใช้ลิงก์ด้านล่าง หากต้องการการเข้าถึงเพิ่มเติม โปรดติดต่อผู้ดูแลระบบคริสตจักรของคุณ",
+  "You do not have permission to view this person": "คุณไม่มีสิทธิ์ดูข้อมูลของบุคคลนี้"
 }

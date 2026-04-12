@@ -2074,10 +2074,6 @@ msgid "Restore Database"
 msgstr "Restaurează bază de date"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Toate donațiile din această familie au fost mutate la o altă familie."
-
-#: 
 #, fuzzy
 msgid "Please confirm deletion of"
 msgstr "Vă rugăm să confirmați ștergerea"
@@ -4830,10 +4826,6 @@ msgstr "Setări financiare"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "A fost solicitat un nume de configurare nevalid"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "A fost solicitat un id de configurare nevalid"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8623,10 +8615,6 @@ msgid "Confirm Family Information"
 msgstr "Confirmare informații familie"
 
 #: 
-msgid "Confirm family information"
-msgstr "Confirmați informațiile familiei"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Informații de contact și personale"
 
@@ -10794,6 +10782,10 @@ msgid "Add staff or volunteers as system users"
 msgstr "Adaugă personal sau voluntari ca utilizatori de sistem"
 
 #: 
+msgid "Administrator"
+msgstr "Administrator"
+
+#: 
 msgid "Age Distribution"
 msgstr "Distribuție pe vârste"
 
@@ -11402,6 +11394,10 @@ msgid "Forgot password?"
 msgstr "Ați uitat parola?"
 
 #: 
+msgid "Format"
+msgstr "Format"
+
+#: 
 msgid "Full Group View"
 msgstr "Vizualizare completă a grupului"
 
@@ -11682,12 +11678,20 @@ msgid "Manage your personal preferences and account settings"
 msgstr "Gestionează preferințele personale și setările contului"
 
 #: 
+msgid "Manual"
+msgstr "Manual"
+
+#: 
 msgid "Map cart items"
 msgstr "Afișează selecția pe hartă"
 
 #: 
 msgid "Map to Field"
 msgstr "Mapează la câmp"
+
+#: 
+msgid "Material"
+msgstr "Material"
 
 #: 
 msgid "Member Properties"
@@ -12388,10 +12392,6 @@ msgid "View group members, roles, and properties"
 msgstr "Vizualizați membrii grupului, rolurile și proprietățile"
 
 #: 
-msgid "View pledge dashboard"
-msgstr "Vizualizează panoul de angajamente"
-
-#: 
 msgid "View query results"
 msgstr "Vizualizează rezultatele interogării"
 
@@ -12474,10 +12474,6 @@ msgstr "Puteți importa oricând mai multe date ulterior prin CSV."
 #: 
 msgid "You can create/delete sunday school group."
 msgstr "Puteți crea/șterge grupuri de școală duminicală."
-
-#: 
-msgid "You do not have finance permissions to view deposits."
-msgstr "Nu aveți permisiuni financiare pentru a vizualiza ofertele."
 
 #: 
 msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
@@ -12863,10 +12859,6 @@ msgstr "Permiteți utilizatorului să adauge un nou eveniment"
 #: 
 msgid "Are you sure you want to continue?"
 msgstr "Sunteti sigur ca doriti sa continuati?"
-
-#: 
-msgid "Are you sure you want to delete this event?"
-msgstr "Sunteti sigur ca doriti sa stergeti acest eveniment?"
 
 #. Context: queryparameters_qrp
 #: 
@@ -13710,6 +13702,10 @@ msgstr "Utilizări frecvente pentru linkuri personalizate:\n"
 msgid "Configuration"
 msgstr "Configurare"
 
+#: 
+msgid "Continent"
+msgstr "Continent"
+
 #. plugin:vonage:section:6:title
 #: 
 msgid "Costs"
@@ -14354,10 +14350,6 @@ msgid "All congregation members included"
 msgstr "Toți enoriașii sunt incluși"
 
 #: 
-msgid "ChMeetings export completed successfully"
-msgstr "Exportul ChMeetings a fost finalizat cu succes"
-
-#: 
 msgid "ChMeetings-compatible column format"
 msgstr "Format de coloane compatibil cu ChMeetings"
 
@@ -14374,6 +14366,10 @@ msgid "Database Backup"
 msgstr "Copie de rezervă a bazei de date"
 
 #: 
+msgid "Export"
+msgstr "Export"
+
+#: 
 msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
 msgstr "Exportați datele enoriașilor în format CSV. Alegeți câmpurile de inclus și filtrați după clasificare, grup, gen și altele."
 
@@ -14388,10 +14384,6 @@ msgstr "Exportați datele bisericii în diverse formate"
 #: 
 msgid "External (WebDAV) backup via plugin"
 msgstr "Copie de rezervă externă (WebDAV) prin plugin"
-
-#: 
-msgid "Failed to export ChMeetings CSV"
-msgstr "Exportul CSV ChMeetings a eșuat"
 
 #: 
 msgid "Family or individual record layout"
@@ -14444,6 +14436,10 @@ msgstr "A apărut o eroare."
 #: 
 msgid "Appearance"
 msgstr "Aspect"
+
+#: 
+msgid "Azure"
+msgstr "Azure"
 
 #: 
 msgid "Back to Finance Dashboard"
@@ -14573,6 +14569,10 @@ msgstr "Dacă observați caractere corupte, entități HTML afișate ca text sau
 #: 
 msgid "Include your API key in requests using the x-api-key header:"
 msgstr "Includeți cheia API în cereri folosind antetul x-api-key:"
+
+#: 
+msgid "Indigo"
+msgstr "Indigo"
 
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
@@ -14829,6 +14829,10 @@ msgstr "Un Tip de Eveniment este un șablon — denumire, oră de începere impl
 #: 
 msgid "Attendance record deleted."
 msgstr "Înregistrarea prezenței a fost ștearsă."
+
+#: 
+msgid "Audit"
+msgstr "Audit"
 
 #: 
 msgid "Audit Events"

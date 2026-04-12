@@ -95,7 +95,7 @@ export function initializeMainDashboard() {
           photoIcon +
           ' <a href="' +
           window.CRM.root +
-          "/v2/family/" +
+          "/people/family/" +
           row.FamilyId +
           '"><strong>' +
           row.Name +
@@ -356,7 +356,7 @@ export function initializeMainDashboard() {
             photoIcon +
             '<div class="min-w-0 flex-grow-1"><a class="text-break" href="' +
             window.CRM.root +
-            "/v2/family/" +
+            "/people/family/" +
             row.FamilyId +
             '"><strong>' +
             data +
@@ -489,7 +489,7 @@ export function initializeMainDashboard() {
             "</span>";
         }
         return (
-          '<a href="' + window.CRM.root + "/v2/family/" + row.FamilyId + '">' + row.FamilyName + "</a>" + statusHtml
+          '<a href="' + window.CRM.root + "/people/family/" + row.FamilyId + '">' + row.FamilyName + "</a>" + statusHtml
         );
       },
     },

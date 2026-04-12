@@ -60,7 +60,7 @@ use ChurchCRM\dto\SystemURLs;
                     data: 'Id',
                     searchable: false,
                     render: function (data, type, full, meta) {
-                        return '<a href="' + window.CRM.root + '/v2/family/' + encodeURIComponent(data) + '">' + data + '</a>';
+                        return '<a href="' + window.CRM.root + '/people/family/' + encodeURIComponent(data) + '">' + data + '</a>';
                     }
                 },
                 {

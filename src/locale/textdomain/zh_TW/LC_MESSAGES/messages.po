@@ -2080,10 +2080,6 @@ msgid "Restore Database"
 msgstr "還原資料庫"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "從這個家庭的所有捐款已被移動到另一個家庭。"
-
-#: 
 #, fuzzy
 msgid "Please confirm deletion of"
 msgstr "請確認刪除"
@@ -4856,10 +4852,6 @@ msgstr "財務設置"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "提交了一個無效的配置名稱請求"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "提交了一個無效的配置id請求"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8730,10 +8722,6 @@ msgid "Confirm Family Information"
 msgstr "確認家庭資訊"
 
 #: 
-msgid "Confirm family information"
-msgstr "確認家庭資訊"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "聯絡與個人資訊"
 
@@ -12494,10 +12482,6 @@ msgid "View group members, roles, and properties"
 msgstr "檢視小組成員、角色和屬性"
 
 #: 
-msgid "View pledge dashboard"
-msgstr "檢視奉獻承諾儀表板"
-
-#: 
 msgid "View query results"
 msgstr "檢視查詢結果"
 
@@ -12580,10 +12564,6 @@ msgstr "您之後隨時可以透過 CSV 匯入更多資料。"
 #: 
 msgid "You can create/delete sunday school group."
 msgstr "您可以建立/刪除主日學小組。"
-
-#: 
-msgid "You do not have finance permissions to view deposits."
-msgstr "您沒有檢視奉獻存款的財務權限。"
 
 #: 
 msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
@@ -12969,10 +12949,6 @@ msgstr "允許使用者新增事件"
 #: 
 msgid "Are you sure you want to continue?"
 msgstr "您確定要繼續嗎?"
-
-#: 
-msgid "Are you sure you want to delete this event?"
-msgstr "您確定要刪除此事件嗎?"
 
 #. Context: queryparameters_qrp
 #: 
@@ -14440,10 +14416,6 @@ msgstr "檔案大小超過伺服器限制 %s"
 msgid "Missing image data in request"
 msgstr "請求中缺少圖片資料"
 
-#: 
-msgid "BCC"
-msgstr "密件副本"
-
 #. Context: query_qry
 #: 
 msgid "Find people who didn't attend an event"
@@ -14453,10 +14425,6 @@ msgstr "尋找未參加活動的人員"
 #: 
 msgid "Missing people"
 msgstr "缺席人員"
-
-#: 
-msgid "N/A"
-msgstr "不適用"
 
 #. Context: queryparameters_qrp
 #: 
@@ -14474,10 +14442,6 @@ msgstr "依小組、分類及角色進行進階篩選"
 #: 
 msgid "All congregation members included"
 msgstr "包含所有會眾"
-
-#: 
-msgid "ChMeetings export completed successfully"
-msgstr "ChMeetings 匯出成功完成"
 
 #: 
 msgid "ChMeetings-compatible column format"
@@ -14514,10 +14478,6 @@ msgstr "將您的教會資料匯出為多種格式"
 #: 
 msgid "External (WebDAV) backup via plugin"
 msgstr "透過外掛程式進行外部（WebDAV）備份"
-
-#: 
-msgid "Failed to export ChMeetings CSV"
-msgstr "匯出 ChMeetings CSV 失敗"
 
 #: 
 msgid "Family or individual record layout"

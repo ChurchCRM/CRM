@@ -2098,10 +2098,6 @@ msgid "Restore Database"
 msgstr "Gjenopprett Database"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Alle donasjoner fra denne familien har blitt flyttet til en annen familie."
-
-#: 
 #, fuzzy
 msgid "Please confirm deletion of"
 msgstr "Vennligst bekreft sletting av"
@@ -4854,10 +4850,6 @@ msgstr "Økonomiske innstillinger"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "Et ugyldig konfigurasjonsnavn ble forespurt"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "En ugyldig konfigurasjons-ID ble forespurt"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8632,10 +8624,6 @@ msgid "Confirm Family Information"
 msgstr "Bekreft familieinformasjon"
 
 #: 
-msgid "Confirm family information"
-msgstr "Bekreft familieinformasjon"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Kontakt- og personinfo"
 
@@ -10797,6 +10785,10 @@ msgid "Add staff or volunteers as system users"
 msgstr "Legg til ansatte eller frivillige som systembrukere"
 
 #: 
+msgid "Administrator"
+msgstr "Administrator"
+
+#: 
 msgid "Age Distribution"
 msgstr "Aldersfordeling"
 
@@ -11405,6 +11397,10 @@ msgid "Forgot password?"
 msgstr "Glemt passord?"
 
 #: 
+msgid "Format"
+msgstr "Format"
+
+#: 
 msgid "Full Group View"
 msgstr "Fullstendig gruppevisning"
 
@@ -11573,6 +11569,10 @@ msgid "Key People"
 msgstr "Nøkkelpersoner"
 
 #: 
+msgid "Kiosk"
+msgstr "Kiosk"
+
+#: 
 msgid "Kiosk Enabled"
 msgstr "Kiosk aktivert"
 
@@ -11711,6 +11711,10 @@ msgstr "Medlemmer lagt til i utvalget."
 #: 
 msgid "Memberships"
 msgstr "Medlemskap"
+
+#: 
+msgid "Minimum"
+msgstr "Minimum"
 
 #: 
 msgid "Modify family roles for group members"
@@ -12391,10 +12395,6 @@ msgid "View group members, roles, and properties"
 msgstr "Vis gruppemedlemmer, roller og egenskaper"
 
 #: 
-msgid "View pledge dashboard"
-msgstr "Vis giverløfteoversikt"
-
-#: 
 msgid "View query results"
 msgstr "Vis spørringsresultater"
 
@@ -12477,10 +12477,6 @@ msgstr "Du kan alltid importere mer data senere via CSV."
 #: 
 msgid "You can create/delete sunday school group."
 msgstr "Du kan opprette/slette søndagsskolegrupper."
-
-#: 
-msgid "You do not have finance permissions to view deposits."
-msgstr "Du har ikke økonomitillatelser til å se kollektinnskudd."
 
 #: 
 msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
@@ -12866,10 +12862,6 @@ msgstr "Tillat bruker å legge til ny hendelse"
 #: 
 msgid "Are you sure you want to continue?"
 msgstr "Er du sikker på at du vil fortsette?"
-
-#: 
-msgid "Are you sure you want to delete this event?"
-msgstr "Er du sikker på at du vil slette denne hendelsen?"
 
 #. Context: queryparameters_qrp
 #: 
@@ -14227,6 +14219,11 @@ msgstr "Oppgraderingsinnstillinger"
 msgid "Use Cases"
 msgstr "Brukstilfeller"
 
+#. plugin:vonage:link:0:label
+#: 
+msgid "Vonage Dashboard"
+msgstr "Vonage Dashboard"
+
 #. plugin:vonage:link:2:label
 #: 
 msgid "Vonage Pricing"
@@ -14356,10 +14353,6 @@ msgid "All congregation members included"
 msgstr "Alle menighetsmedlemmer inkludert"
 
 #: 
-msgid "ChMeetings export completed successfully"
-msgstr "ChMeetings-eksport fullført"
-
-#: 
 msgid "ChMeetings-compatible column format"
 msgstr "ChMeetings-kompatibelt kolonneformat"
 
@@ -14394,10 +14387,6 @@ msgstr "Eksporter kirkens data til ulike formater"
 #: 
 msgid "External (WebDAV) backup via plugin"
 msgstr "Ekstern (WebDAV) sikkerhetskopi via plugin"
-
-#: 
-msgid "Failed to export ChMeetings CSV"
-msgstr "Kunne ikke eksportere ChMeetings CSV"
 
 #: 
 msgid "Family or individual record layout"
@@ -14452,6 +14441,10 @@ msgid "Appearance"
 msgstr "Utseende"
 
 #: 
+msgid "Azure"
+msgstr "Azure"
+
+#: 
 msgid "Back to Finance Dashboard"
 msgstr "Tilbake til finansoversikt"
 
@@ -14486,6 +14479,10 @@ msgstr "ChurchCRM-oversettelser administreres av fellesskapet på POEditor. Du k
 #: 
 msgid "Customize the look and feel of the application"
 msgstr "Tilpass utseendet og opplevelsen av applikasjonen"
+
+#: 
+msgid "Cyan"
+msgstr "Cyan"
 
 #: 
 msgid "Dark"
@@ -14577,6 +14574,10 @@ msgid "Include your API key in requests using the x-api-key header:"
 msgstr "Inkluder API-nøkkelen din i forespørsler ved hjelp av x-api-key-hodet:"
 
 #: 
+msgid "Indigo"
+msgstr "Indigo"
+
+#: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "Ugyldig JSON-verdi — innstillingen ble ikke lagret. Vennligst korriger den og prøv igjen."
 
@@ -14591,6 +14592,15 @@ msgstr "Språk- og regionsinnstillinger"
 #: 
 msgid "Light"
 msgstr "Lys"
+
+#: 
+msgid "Lime"
+msgstr "Lime"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "Malayalam - India"
 
 #: 
 msgid "Manage 2FA"
@@ -14753,6 +14763,10 @@ msgstr "2. Arrangementstype"
 #: 
 msgid "3. Event"
 msgstr "3. Arrangement"
+
+#: 
+msgid "4. Kiosk"
+msgstr "4. Kiosk"
 
 #: 
 msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."

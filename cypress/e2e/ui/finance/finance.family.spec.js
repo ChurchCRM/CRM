@@ -6,7 +6,7 @@ describe("Finance Family", () => {
     });
 
     it("View a Family with Pledges and Payments section", () => {
-        cy.visit("v2/family/1");
+        cy.visit("people/family/1");
         // Page title is family name, subtitle has "Family Profile"
         cy.contains("Campbell");
         cy.contains("Family Profile");
@@ -37,7 +37,7 @@ describe("Finance Family", () => {
     });
 
     it("View another Family with finance data", () => {
-        cy.visit("v2/family/20");
+        cy.visit("people/family/20");
         cy.contains("Black");
         cy.contains("Family Profile");
 

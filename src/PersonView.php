@@ -25,7 +25,7 @@ $iPersonID = InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
 $person = PersonQuery::create()->findPk($iPersonID);
 
 if (empty($person)) {
-    RedirectUtils::redirect('v2/person/not-found?id=' . $iPersonID);
+    RedirectUtils::redirect('people/person/not-found?id=' . $iPersonID);
 }
 
 // GHSA-fcw7-mmfh-7vjm: Prevent IDOR - verify user has permission to view this person
@@ -38,7 +38,7 @@ $sPageTitle = InputUtils::escapeHTML($person->getFullName());
 $sPageSubtitle = gettext('Person Profile') . ' — ID: ' . $person->getId();
 $breadcrumbItems = [[gettext('People'), '/people/dashboard']];
 if ($person->getFamId() !== '' && $person->getFamily() !== null) {
-    $breadcrumbItems[] = [InputUtils::escapeHTML($person->getFamily()->getName()), '/v2/family/' . $person->getFamId()];
+    $breadcrumbItems[] = [InputUtils::escapeHTML($person->getFamily()->getName()), '/people/family/' . $person->getFamId()];
 }
 $breadcrumbItems[] = [InputUtils::escapeHTML($person->getFirstName() . ' ' . $person->getLastName())];
 $aBreadcrumbs = PageHeader::breadcrumbs($breadcrumbItems);
@@ -576,7 +576,7 @@ $bOkToEdit = (
                     <?php if ($bOkToEdit) { ?>
                     <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $fam_ID ?>" class="btn btn-sm btn-ghost-secondary" title="<?= gettext('Edit Family') ?>"><i class="fa-solid fa-pen"></i></a>
                     <?php } ?>
-                    <a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $person->getFamId() ?>" class="btn btn-sm btn-ghost-primary"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?= gettext('View') ?></a>
+                    <a href="<?= SystemURLs::getRootPath() ?>/people/family/<?= $person->getFamId() ?>" class="btn btn-sm btn-ghost-primary"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?= gettext('View') ?></a>
                 </div>
             </div>
             <div style="overflow: visible;">

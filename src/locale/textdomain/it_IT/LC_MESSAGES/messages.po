@@ -2031,10 +2031,6 @@ msgid "Restore Database"
 msgstr "Ripristina database"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Tutte le donazioni di questa famiglia sono stati spostati in un'altra famiglia."
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "Per favore conferma la cancellazione di"
 
@@ -4772,10 +4768,6 @@ msgstr "Impostazioni finanziarie"
 #: 
 msgid "An invalid configuration name has been requested"
 msgstr "È stato richiesto un nome di configurazione non valido"
-
-#: 
-msgid "An invalid configuration id has been requested"
-msgstr "È stato richiesto un ID di configurazione non valido"
 
 #: 
 msgid "Profile Image uploaded"
@@ -8565,10 +8557,6 @@ msgid "Confirm Family Information"
 msgstr "Conferma Informazioni Famiglia"
 
 #: 
-msgid "Confirm family information"
-msgstr "Conferma le informazioni della famiglia"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Contatto e Informazioni Personali"
 
@@ -12340,10 +12328,6 @@ msgid "View group members, roles, and properties"
 msgstr "Visualizza i fedeli del gruppo, i ruoli e le proprietà"
 
 #: 
-msgid "View pledge dashboard"
-msgstr "Visualizza dashboard impegni finanziari"
-
-#: 
 msgid "View query results"
 msgstr "Visualizza risultati query"
 
@@ -12426,10 +12410,6 @@ msgstr "Puoi sempre importare altri dati in seguito tramite CSV."
 #: 
 msgid "You can create/delete sunday school group."
 msgstr "Puoi creare/eliminare un gruppo di catechismo."
-
-#: 
-msgid "You do not have finance permissions to view deposits."
-msgstr "Non hai i permessi finanziari per visualizzare i depositi."
 
 #: 
 msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
@@ -12815,10 +12795,6 @@ msgstr "Consenti all'utente di aggiungere un nuovo evento"
 #: 
 msgid "Are you sure you want to continue?"
 msgstr "Sei sicuro di voler continuare?"
-
-#: 
-msgid "Are you sure you want to delete this event?"
-msgstr "Sei sicuro di voler eliminare questo evento?"
 
 #. Context: queryparameters_qrp
 #: 
@@ -14310,10 +14286,6 @@ msgid "All congregation members included"
 msgstr "Tutti i membri della congregazione inclusi"
 
 #: 
-msgid "ChMeetings export completed successfully"
-msgstr "Esportazione ChMeetings completata con successo"
-
-#: 
 msgid "ChMeetings-compatible column format"
 msgstr "Formato colonne compatibile con ChMeetings"
 
@@ -14348,10 +14320,6 @@ msgstr "Esporta i dati della tua parrocchia in vari formati"
 #: 
 msgid "External (WebDAV) backup via plugin"
 msgstr "Backup esterno (WebDAV) tramite plugin"
-
-#: 
-msgid "Failed to export ChMeetings CSV"
-msgstr "Esportazione CSV ChMeetings non riuscita"
 
 #: 
 msgid "Family or individual record layout"
@@ -14390,6 +14358,10 @@ msgid "API key regenerated"
 msgstr "Chiave API rigenerata"
 
 #: 
+msgid "Account"
+msgstr "Account"
+
+#: 
 msgid "Advanced Settings"
 msgstr "Impostazioni avanzate"
 
@@ -14400,6 +14372,10 @@ msgstr "Si è verificato un errore."
 #: 
 msgid "Appearance"
 msgstr "Aspetto"
+
+#: 
+msgid "Azure"
+msgstr "Azure"
 
 #: 
 msgid "Back to Finance Dashboard"
@@ -14553,6 +14529,11 @@ msgstr "Chiaro"
 #: 
 msgid "Lime"
 msgstr "Verde lime"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "Malayalam - India"
 
 #: 
 msgid "Manage 2FA"
@@ -14783,6 +14764,10 @@ msgstr "Un Tipo di Evento è un modello — nome, orario di inizio predefinito, 
 #: 
 msgid "Attendance record deleted."
 msgstr "Registro delle presenze eliminato."
+
+#: 
+msgid "Audit"
+msgstr "Audit"
 
 #: 
 msgid "Audit Events"

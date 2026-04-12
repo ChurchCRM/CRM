@@ -13,7 +13,7 @@ describe("People List & Carts", () => {
         });
 
         // Go to people list
-        cy.visit("v2/people");
+        cy.visit("people/list");
 
         // Verify table has rows before proceeding
         cy.get("#members tbody tr", { timeout: 10000 }).should("have.length.greaterThan", 0);

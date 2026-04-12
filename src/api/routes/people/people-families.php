@@ -85,7 +85,7 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
             if (empty($family->getEmail())) {
                 $hasEmail = false;
                 foreach ($family->getPeopleSorted() as $person) {
-                    if (!empty($person->getEmail() || !empty($person->getWorkEmail()))) {
+                    if (!empty($person->getEmail()) || !empty($person->getWorkEmail())) {
                         $hasEmail = true;
                         break;
                     }

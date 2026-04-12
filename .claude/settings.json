@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/gdawoud/Development/ChurchCRM/docs.churchcrm.io/**)",
+      "Read(//Users/gdawoud/Development/ChurchCRM/**)",
+      "Bash(sips -g pixelWidth -g pixelHeight /Users/gdawoud/Development/ChurchCRM/marketing/images/brand/logos/logo-icon.png /Users/gdawoud/Development/ChurchCRM/marketing/images/brand/logos/logo-large.png)",
+      "Bash(mv Gemini_Generated_Image_aqmfkraqmfkraqmf.png hero-desktop-family-page.png)",
+      "Bash(mv Gemini_Generated_Image_10c18m10c18m10c1.png hero-multidevice-everything.png)",
+      "Bash(mv Gemini_Generated_Image_gbqurfgbqurfgbqu.png hero-multidevice-know-family.png)",
+      "Bash(mv Gemini_Generated_Image_o34yvco34yvco34y.png hero-multidevice-know-family-alt.png)",
+      "Bash(mv Gemini_Generated_Image_rzdpnrzdpnrzdpnr.png lifestyle-pastor-at-desk.png)"
+    ]
+  }
+}

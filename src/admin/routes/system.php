@@ -1,14 +1,20 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
 use ChurchCRM\data\Countries;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\TestEmail;
+use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Service\AppIntegrityService;
+use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
+use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
 use ChurchCRM\Utils\GeoUtils;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\VersionUtils;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -59,6 +65,10 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         
         return $renderer->render($response, 'users.php', $pageArgs);
     });
+
+    // Admin change user password (GET shows form, POST processes it)
+    $group->get('/user/{id}/changePassword', 'adminChangeUserPassword');
+    $group->post('/user/{id}/changePassword', 'adminChangeUserPassword')->add(new CSRFMiddleware('admin_change_password'));
 
     // Restore Database page
     $group->get('/restore', function (Request $request, Response $response): Response {
@@ -536,3 +546,49 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
     ]));
 
 });
+
+function adminChangeUserPassword(Request $request, Response $response, array $args): Response
+{
+    $renderer = new PhpRenderer(__DIR__ . '/../views/');
+    $userId = (int) $args['id'];
+    $curUser = AuthenticationManager::getCurrentUser();
+
+    $user = UserQuery::create()->findPk($userId);
+
+    if (empty($user)) {
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/user/not-found?id=' . $args['id']);
+    }
+
+    if ($user->equals($curUser)) {
+        // Don't allow the current user (if admin) to set their new password
+        // make the user go through the "self-service" password change procedure
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/user/current/changepassword');
+    }
+
+    $pageArgs = [
+        'sRootPath' => SystemURLs::getRootPath(),
+        'user' => $user,
+        'sPageTitle' => gettext('Change Password') . ': ' . InputUtils::escapeHTML($user->getFullName()),
+        'aBreadcrumbs' => PageHeader::breadcrumbs([
+            [gettext('Admin'), '/admin/'],
+            [gettext('System Users'), '/admin/system/users'],
+            [gettext('Change Password')],
+        ]),
+    ];
+
+    if ($request->getMethod() === 'POST') {
+        $loginRequestBody = $request->getParsedBody();
+
+        try {
+            $user->adminSetUserPassword($loginRequestBody['NewPassword1']);
+
+            $pageArgs['sPasswordChangeSuccess'] = true;
+
+            return $renderer->render($response, 'adminchangepassword.php', $pageArgs);
+        } catch (PasswordChangeException $pwChangeExc) {
+            $pageArgs['s' . $pwChangeExc->AffectedPassword . 'PasswordError'] = $pwChangeExc->getMessage();
+        }
+    }
+
+    return $renderer->render($response, 'adminchangepassword.php', $pageArgs);
+}

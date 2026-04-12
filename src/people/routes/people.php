@@ -14,23 +14,23 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
-// entity can be a person, family, or business
-$app->group('/people', function (RouteCollectorProxy $group): void {
-    $group->get('/verify', 'viewPeopleVerify');
-    $group->get('/photos', 'viewPeoplePhotoGallery');
+$app->group('/list', function (RouteCollectorProxy $group): void {
     $group->get('/', 'listPeople');
     $group->get('', 'listPeople');
 });
 
+$app->get('/verify', 'viewPeopleVerify');
+$app->get('/photos', 'viewPeoplePhotoGallery');
+
 function viewPeopleVerify(Request $request, Response $response, array $args): Response
 {
-    $renderer = new PhpRenderer('templates/people/');
+    $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
     ];
 
-    if ($request->getQueryParams()['EmailsError']) {
+    if ($request->getQueryParams()['EmailsError'] ?? false) {
         $errorArgs = [
             'sGlobalMessage' => gettext('Error sending email(s)') . ' - ' . gettext('Please check logs for more information'),
             'sGlobalMessageClass' => 'danger'
@@ -38,7 +38,7 @@ function viewPeopleVerify(Request $request, Response $response, array $args): Re
         $pageArgs = array_merge($pageArgs, $errorArgs);
     }
 
-    $queryParam = $request->getQueryParams()['AllPDFsEmailed'];
+    $queryParam = $request->getQueryParams()['AllPDFsEmailed'] ?? null;
     if ($queryParam) {
         $headerArgs = ['sGlobalMessage' => sprintf(gettext('PDFs successfully emailed to %s families.'), $queryParam),
             'sGlobalMessageClass'       => 'success'];
@@ -50,31 +50,23 @@ function viewPeopleVerify(Request $request, Response $response, array $args): Re
 
 function listPeople(Request $request, Response $response, array $args): Response
 {
-    $renderer = new PhpRenderer('templates/people/');
+    $renderer = new PhpRenderer(__DIR__ . '/../views/');
     // Filter received user input as needed
-    // Classification
-    // Gender
-    // FamilyRole
-
     $members = PersonQuery::create();
-    // set default sMode
     $sMode = 'Person';
-    // by default show only active families
     $familyActiveStatus = 'active';
-    if ($_GET['familyActiveStatus'] === 'inactive') {
+    if (($_GET['familyActiveStatus'] ?? '') === 'inactive') {
         $familyActiveStatus = 'inactive';
-    } elseif ($_GET['familyActiveStatus'] === 'all') {
+    } elseif (($_GET['familyActiveStatus'] ?? '') === 'all') {
         $familyActiveStatus = 'all';
     }
 
     $sInactiveClassificationIds = SystemConfig::getValue('sInactiveClassification');
 
     if ($sInactiveClassificationIds === '') {
-        //works the same if group doesn't exist and keeps queries tidier
         $sInactiveClassificationIds = '-1';
     }
 
-    //parsing the string and reconstruct it back should be enough to mitigate the sql injection vector in here.
     $aInactiveClassificationIds = explode(',', $sInactiveClassificationIds);
     $aInactiveClasses = array_filter($aInactiveClassificationIds, fn ($k): bool => is_numeric($k));
 
@@ -82,12 +74,7 @@ function listPeople(Request $request, Response $response, array $args): Response
         LoggerUtils::getAppLogger()->warning('Encountered invalid configuration(s) for sInactiveClassification, please fix this');
     }
 
-    $sInactiveClasses = implode(',', $aInactiveClasses);
-
-    // Always retrieve all families - filtering will be done client-side by the Family Status filter
-    // Family Status column will show Active or Inactive, allowing client-side filtering like other filters
     $members->leftJoinFamily();
-
     $members->find();
 
     $filterByClsId = '';
@@ -141,8 +128,6 @@ function listPeople(Request $request, Response $response, array $args): Response
         }
     }
 
-    // Family status is computed on-demand in templates via Family::isActive()
-
     $pageArgs = [
         'sMode'                           => $sMode,
         'sRootPath'                       => SystemURLs::getRootPath(),
@@ -159,36 +144,26 @@ function listPeople(Request $request, Response $response, array $args): Response
         'filterByFmrOptionId'             => $filterByFmrOptionId,
         'filterByGender'                  => $filterByGender,
         'familyActiveStatus'              => $familyActiveStatus,
-        // no precomputed familyStatusMap: templates will call Family::isActive()
     ];
 
     return $renderer->render($response, 'person-list.php', $pageArgs);
 }
 
-/**
- * Photo Gallery view - displays medium-sized photos of all people with names.
- * Feature request: https://github.com/ChurchCRM/CRM/issues/7899
- */
 function viewPeoplePhotoGallery(Request $request, Response $response, array $args): Response
 {
-    $renderer = new PhpRenderer('templates/people/');
+    $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
-    // Get query parameters for filtering
     $queryParams = $request->getQueryParams();
-    // Default to photos-only; explicitly pass photosOnly=0 to show all
     $showOnlyWithPhotos = !array_key_exists('photosOnly', $queryParams) || $queryParams['photosOnly'] !== '0';
-    // -1 is a sentinel for "Unassigned" (cls_id IS NULL); null means no filter
     $classificationRaw    = $queryParams['classification'] ?? '';
     $filterUnassigned     = ($classificationRaw === '-1');
     $classificationFilter = (!$filterUnassigned && $classificationRaw !== '') ? InputUtils::filterInt($classificationRaw) : null;
 
-    // Get classification list for filter dropdown
     $classifications = ListOptionQuery::create()
         ->filterById(1)
         ->orderByOptionSequence()
         ->find();
 
-    // Get inactive classification IDs from config
     $sInactiveClassificationIds = SystemConfig::getValue('sInactiveClassification');
     $aInactiveClasses = [];
     if ($sInactiveClassificationIds !== '') {
@@ -196,33 +171,25 @@ function viewPeoplePhotoGallery(Request $request, Response $response, array $arg
         $aInactiveClasses = array_filter($aInactiveClassificationIds, fn ($k): bool => is_numeric($k));
     }
 
-    // Pagination parameters
     $page           = isset($queryParams['page']) ? max(1, InputUtils::filterInt($queryParams['page'])) : 1;
     $allowedLimits  = [20, 50, 100];
     $requestedLimit = isset($queryParams['perPage']) ? (int)$queryParams['perPage'] : 50;
-    // 0 = show all; otherwise clamp to allowed values
     $limit          = ($requestedLimit === 0) ? 0 : (in_array($requestedLimit, $allowedLimits, true) ? $requestedLimit : 50);
 
-    // Build base query
     $peopleQuery = PersonQuery::create()
         ->orderByLastName()
         ->orderByFirstName();
 
-    // Exclude inactive classifications by default
     if (!empty($aInactiveClasses)) {
         $peopleQuery->filterByClsId($aInactiveClasses, Criteria::NOT_IN);
     }
 
-    // Apply classification filter
     if ($filterUnassigned) {
-        // Unassigned = cls_id = 0 (default) OR NULL
         $peopleQuery->where('Person.ClsId IS NULL OR Person.ClsId = 0');
     } elseif ($classificationFilter !== null) {
         $peopleQuery->filterByClsId($classificationFilter);
     }
 
-    // When filtering by photos, photo availability is filesystem-based (not in DB),
-    // so we must fetch all people, filter, then paginate in PHP.
     if ($showOnlyWithPhotos) {
         $allPeople     = $peopleQuery->find();
         $allPeopleData = [];
@@ -246,7 +213,6 @@ function viewPeoplePhotoGallery(Request $request, Response $response, array $arg
         }
     }
 
-    // Build a quick id→name map for use in the template
     $classificationMap = [];
     foreach ($classifications as $cls) {
         $classificationMap[$cls->getOptionId()] = $cls->getOptionName();

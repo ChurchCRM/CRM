@@ -56,7 +56,7 @@ $otherPeople = $family->getOtherPeople();
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.currentFamily = <?= $family->getId() ?>;
-    window.CRM.currentFamilyName = <?= json_encode($family->getName()) ?>;
+    window.CRM.currentFamilyName = <?= json_encode($family->getName(), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>;
     window.CRM.currentActive = <?= $family->isActive() ?"true" :"false" ?>;
     window.CRM.currentFamilyView = 2;
     window.CRM.familyEmail ="<?= InputUtils::escapeAttribute($family->getEmail() ?? '') ?>";
@@ -110,10 +110,10 @@ $otherPeople = $family->getOtherPeople();
                     <i class="fa-solid fa-circle-dollar-to-slot me-1"></i><?= gettext("Finance") ?>
                 </button>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&PledgeOrPayment=Pledge">
+                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=people/family/<?= $family->getId() ?>&PledgeOrPayment=Pledge">
                         <i class="fa-solid fa-hand-holding-dollar me-2"></i><?= gettext('Add Pledge') ?>
                     </a>
-                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&PledgeOrPayment=Payment">
+                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=people/family/<?= $family->getId() ?>&PledgeOrPayment=Payment">
                         <i class="fa-solid fa-money-bill-wave me-2"></i><?= gettext('Add Payment') ?>
                     </a>
                 </div>
@@ -392,7 +392,7 @@ $otherPeople = $family->getOtherPeople();
     <div class="col-12 col-lg-4">
         <!-- Family Navigation -->
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <a href="<?= SystemURLs::getRootPath()?>/v2/family" class="btn btn-outline-secondary btn-sm">
+            <a href="<?= SystemURLs::getRootPath()?>/people/family" class="btn btn-outline-secondary btn-sm">
                 <i class="fa-solid fa-arrow-left me-1"></i><?= gettext('Back to Families'); ?>
             </a>
             <div class="btn-group" role="group" aria-label="<?= gettext('Family Navigation'); ?>">

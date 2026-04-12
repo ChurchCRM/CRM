@@ -13,7 +13,7 @@ $app->group('/person', function (RouteCollectorProxy $group): void {
 
 function viewPersonNotFound(Request $request, Response $response, array $args): Response
 {
-    $renderer = new PhpRenderer('templates/common/');
+    $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
     $pageArgs = [
         'sRootPath'  => SystemURLs::getRootPath(),

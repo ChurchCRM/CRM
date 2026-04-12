@@ -78,12 +78,19 @@ function initializeApp() {
           '<i class="ti ' +
           icon +
           ' me-1"></i> ' +
-          group.text +
+          window.CRM.escapeHtml(group.text) +
           "</div>";
         (group.children || []).forEach((item) => {
           var idx = currentItems.length;
           currentItems.push(item);
-          html += '<a href="' + item.uri + '" class="dropdown-item" data-idx="' + idx + '">' + item.text + "</a>";
+          html +=
+            '<a href="' +
+            window.CRM.escapeHtml(item.uri) +
+            '" class="dropdown-item" data-idx="' +
+            idx +
+            '">' +
+            window.CRM.escapeHtml(item.text) +
+            "</a>";
         });
       });
 
