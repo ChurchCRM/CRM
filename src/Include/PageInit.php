@@ -17,10 +17,10 @@ $systemService = new SystemService();
 if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
     AuthenticationManager::ensureAuthentication();
 
-    // Block EditSelf-only users — redirect to family verify or show limited access page
+    // Block users with no admin permissions — redirect to family verify or show limited access
     // See https://github.com/ChurchCRM/CRM/issues/8617
     $currentUser = AuthenticationManager::getCurrentUser();
-    if ($currentUser->isEditSelfOnly()) {
+    if ($currentUser->hasNoAdminPermissions()) {
         $person = $currentUser->getPerson();
         $familyId = $person ? $person->getFamId() : 0;
         if ($familyId > 0) {

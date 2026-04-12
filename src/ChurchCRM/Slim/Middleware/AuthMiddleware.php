@@ -51,9 +51,9 @@ class AuthMiddleware implements MiddlewareInterface
                     'path' => $request->getUri()->getPath()
                 ]);
 
-                // Block EditSelf-only users from API access (GHSA-5w59-32c8-933v)
+                // Block users with no admin permissions from API access (GHSA-5w59-32c8-933v)
                 $apiUser = AuthenticationManager::getCurrentUser();
-                if ($apiUser->isEditSelfOnly()) {
+                if ($apiUser->hasNoAdminPermissions()) {
                     $response = new Response();
                     $response->getBody()->write(json_encode(['error' => 'Account has limited permissions. Contact an administrator.']));
                     return $response->withStatus(403)->withHeader('Content-Type', 'application/json');
@@ -61,6 +61,30 @@ class AuthMiddleware implements MiddlewareInterface
             } elseif (AuthenticationManager::validateUserSessionIsActive(!$this->isPath($request, 'background'))) {
                 // validate the user session; however, do not update tLastOperation if the requested path is "/background"
                 // since /background operations do not connotate user activity.
+
+                // Block users with no admin permissions from MVC/API access (GHSA-5w59-32c8-933v)
+                $sessionUser = AuthenticationManager::getCurrentUser();
+                if ($sessionUser->hasNoAdminPermissions()) {
+                    if ($this->isBrowserRequest($request)) {
+                        // Redirect to family verify page or show limited access message
+                        $person = $sessionUser->getPerson();
+                        $familyId = $person ? $person->getFamId() : 0;
+                        if ($familyId > 0) {
+                            $token = new \ChurchCRM\model\ChurchCRM\Token();
+                            $token->build('verifyFamily', $familyId);
+                            $token->save();
+                            $rootPath = \ChurchCRM\dto\SystemURLs::getRootPath();
+                            return (new Response())->withStatus(302)->withHeader('Location', $rootPath . '/external/verify/' . $token->getToken());
+                        }
+                        // No family — end session and redirect to login
+                        $rootPath = \ChurchCRM\dto\SystemURLs::getRootPath();
+                        return (new Response())->withStatus(302)->withHeader('Location', $rootPath . '/session/end');
+                    }
+                    // API request — return 403
+                    $response = new Response();
+                    $response->getBody()->write(json_encode(['error' => 'Account has limited permissions. Contact an administrator.']));
+                    return $response->withStatus(403)->withHeader('Content-Type', 'application/json');
+                }
 
                 // User with an active browser session is still authenticated.
                 // For browser requests (non-background), enforce any required redirect steps (e.g. forced password change).
