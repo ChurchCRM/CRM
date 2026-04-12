@@ -83,6 +83,20 @@ describe("Event Types Management", () => {
   });
 
   it("should pass data-event-count attribute on delete button", () => {
+    // Ensure event exists so the button renders with a count
+    cy.makePrivateAdminAPICall(
+      "POST",
+      "/api/events/quick-create",
+      { eventTypeId: 1 },
+      200,
+    );
+
+    cy.clearCookies();
+    cy.visit("/session/begin");
+    cy.get("input[name=User]").type(Cypress.env("admin.username"));
+    cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
+    cy.url().should("not.include", "/session/begin");
+
     cy.visit("event/types");
     cy.get(".delete-type-btn").first().should("have.attr", "data-event-count");
   });
