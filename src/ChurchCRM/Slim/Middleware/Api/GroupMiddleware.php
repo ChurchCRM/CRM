@@ -18,7 +18,7 @@ class GroupMiddleware extends AbstractEntityMiddleware
 
     protected function loadEntity(string $id): mixed
     {
-        return GroupQuery::create()->findPk($id);
+        return GroupQuery::create()->findPk((int) $id);
     }
 
     protected function getNotFoundMessage(): string

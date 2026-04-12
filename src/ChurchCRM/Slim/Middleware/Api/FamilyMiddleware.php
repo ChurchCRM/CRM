@@ -18,7 +18,7 @@ class FamilyMiddleware extends AbstractEntityMiddleware
 
     protected function loadEntity(string $id): mixed
     {
-        return FamilyQuery::create()->findPk($id);
+        return FamilyQuery::create()->findPk((int) $id);
     }
 
     protected function getNotFoundMessage(): string

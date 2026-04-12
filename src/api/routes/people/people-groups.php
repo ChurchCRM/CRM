@@ -23,6 +23,7 @@ use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\CsvExporter;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 
 /**
@@ -929,14 +930,18 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *         @OA\JsonContent(@OA\Property(property="roleID", type="integer"))
      *     ),
      *     @OA\Response(response=200, description="Updated membership object"),
-     *     @OA\Response(response=403, description="ManageGroupRole role required")
+     *     @OA\Response(response=403, description="ManageGroupRole role required"),
+     *     @OA\Response(response=404, description="Membership not found")
      * )
      */
     $group->post('/{groupID:[0-9]+}/userRole/{userID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
-        $groupID = $args['groupID'];
-        $userID = $args['userID'];
-        $roleID = $request->getParsedBody()['roleID'];
+        $groupID = (int) $args['groupID'];
+        $userID = (int) $args['userID'];
+        $roleID = (int) ($request->getParsedBody()['roleID'] ?? 0);
         $membership = Person2group2roleP2g2rQuery::create()->filterByGroupId($groupID)->filterByPersonId($userID)->findOne();
+        if ($membership === null) {
+            throw new HttpNotFoundException($request, gettext('Membership not found'));
+        }
         $membership->setRoleId($roleID);
         $membership->save();
         return SlimUtils::renderJSON($response, $membership->toArray());
@@ -958,22 +963,29 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *     ),
      *     @OA\Response(response=200, description="Role updated successfully"),
      *     @OA\Response(response=403, description="ManageGroupRole role required"),
+     *     @OA\Response(response=404, description="Group role not found"),
      *     @OA\Response(response=500, description="Failed to update role")
      * )
      */
     $group->post('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         try {
-            $roleID = $args['roleID'];
+            $roleID = (int) $args['roleID'];
             $input = $request->getParsedBody();
             $group = $request->getAttribute('group');
             if (isset($input['groupRoleName'])) {
                 $groupRole = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();
+                if ($groupRole === null) {
+                    throw new HttpNotFoundException($request, gettext('Group role not found'));
+                }
                 $groupRole->setOptionName($input['groupRoleName']);
                 $groupRole->save();
 
                 return SlimUtils::renderJSON($response, $groupRole->toArray());
             } elseif (isset($input['groupRoleOrder'])) {
                 $groupRole = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();
+                if ($groupRole === null) {
+                    throw new HttpNotFoundException($request, gettext('Group role not found'));
+                }
                 $groupRole->setOptionSequence($input['groupRoleOrder']);
                 $groupRole->save();
 
@@ -1116,7 +1128,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $flag = $args['value'];
         if ($flag === 'true' || $flag === 'false') {
             $group = $request->getAttribute('group');
-            $group->setActive($flag);
+            $group->setActive(filter_var($flag, FILTER_VALIDATE_BOOLEAN));
             $group->save();
             return SlimUtils::renderSuccessJSON($response);
         } else {
@@ -1140,7 +1152,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $flag = $args['value'];
         if ($flag === 'true' || $flag === 'false') {
             $group = $request->getAttribute('group');
-            $group->setIncludeInEmailExport($flag);
+            $group->setIncludeInEmailExport(filter_var($flag, FILTER_VALIDATE_BOOLEAN));
             $group->save();
             return SlimUtils::renderSuccessJSON($response);
         } else {

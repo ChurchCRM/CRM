@@ -42,8 +42,12 @@ describe("Standard Family", () => {
             cy.get("#family-actions-dropdown").first().click();
             cy.get("#deleteFamilyBtn").first().click();
             cy.url().should("contain", "SelectDelete.php");
+
+            // Intercept the API delete call so we can wait for it
+            cy.intercept("DELETE", `**/api/family/${familyId}*`).as("deleteFamily");
             cy.get("#deleteFamilyAndMembersBtn").first().click();
-            cy.url().should("contain", "people/family");
+            cy.wait("@deleteFamily").its("response.statusCode").should("eq", 200);
+            cy.url({ timeout: 10000 }).should("contain", "people/family");
 
             cy.visit(`people/family/${familyId}`);
             cy.contains("Family not found");
