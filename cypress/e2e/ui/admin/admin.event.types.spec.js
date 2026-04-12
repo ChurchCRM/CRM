@@ -50,10 +50,10 @@ describe("Event Types Management", () => {
 
     // cy.request resets PHP sessions — clearCookies + direct login
     cy.clearCookies();
-    cy.visit("/session/begin");
+    cy.visit("session/begin");
     cy.get("input[name=User]").type(Cypress.env("admin.username"));
     cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
-    cy.url().should("not.include", "/session/begin");
+    cy.url().should("not.include", "session/begin");
 
     cy.visit("event/types");
     // The "Church Service" type should have a badge with a count
@@ -73,10 +73,10 @@ describe("Event Types Management", () => {
 
     // cy.request resets PHP sessions — clearCookies + direct login
     cy.clearCookies();
-    cy.visit("/session/begin");
+    cy.visit("session/begin");
     cy.get("input[name=User]").type(Cypress.env("admin.username"));
     cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
-    cy.url().should("not.include", "/session/begin");
+    cy.url().should("not.include", "session/begin");
 
     cy.visit("event/types/1");
     cy.get(".delete-type-btn").should("exist").should("have.attr", "data-event-count");
@@ -92,10 +92,10 @@ describe("Event Types Management", () => {
     );
 
     cy.clearCookies();
-    cy.visit("/session/begin");
+    cy.visit("session/begin");
     cy.get("input[name=User]").type(Cypress.env("admin.username"));
     cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
-    cy.url().should("not.include", "/session/begin");
+    cy.url().should("not.include", "session/begin");
 
     cy.visit("event/types");
     cy.get(".delete-type-btn").first().should("have.attr", "data-event-count");

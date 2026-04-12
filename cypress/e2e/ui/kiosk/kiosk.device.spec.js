@@ -113,13 +113,13 @@ describe("Kiosk Device UI", () => {
                 url: "/kiosk/api/allowRegistration",
             });
 
-            // Register a new device
+            // Register a new device — use cy.visit() so the browser stores
+            // the path-scoped kioskCookie correctly
             cy.clearCookies();
-            cy.request({
-                method: "GET",
-                url: "/kiosk/",
-                failOnStatusCode: false,
-            });
+            cy.visit("/kiosk/", { failOnStatusCode: false });
+
+            // Wait for the kiosk device page to render (confirms registration)
+            cy.get("#noEvent", { timeout: 15000 }).should("exist");
 
             // Re-login as admin and find the new device
             cy.clearCookies();
