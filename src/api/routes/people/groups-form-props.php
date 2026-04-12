@@ -77,11 +77,18 @@ function reorderGroupFormProp(Request $request, Response $response, array $args)
         throw new HttpBadRequestException($request, gettext('Cannot move property in that direction'));
     }
 
-    // Swap prop_ID values: set swap row to current ID, then current row to swap ID
-    $swapProp->setPropId($iPropID);
-    $swapProp->save();
-    $currentProp->setPropId($swapPropID);
-    $currentProp->save();
+    // Swap prop_ID values via raw SQL — groupprop_master has no PRIMARY KEY,
+    // so Propel ORM save() cannot identify which row to UPDATE.
+    // Use a temporary value (-1) to avoid collisions during the swap.
+    FunctionsUtils::runQuery(
+        'UPDATE `groupprop_master` SET `prop_ID` = -1 WHERE `grp_ID` = ' . $iGroupID . ' AND `prop_ID` = ' . $swapPropID
+    );
+    FunctionsUtils::runQuery(
+        'UPDATE `groupprop_master` SET `prop_ID` = ' . $swapPropID . ' WHERE `grp_ID` = ' . $iGroupID . ' AND `prop_ID` = ' . $iPropID
+    );
+    FunctionsUtils::runQuery(
+        'UPDATE `groupprop_master` SET `prop_ID` = ' . $iPropID . ' WHERE `grp_ID` = ' . $iGroupID . ' AND `prop_ID` = -1'
+    );
 
     return SlimUtils::renderJSON($response, ['success' => true]);
 }
@@ -147,10 +154,13 @@ function deleteGroupFormProp(Request $request, Response $response, array $args):
     $sSQL = 'ALTER TABLE `groupprop_' . $iGroupID . '` DROP `' . $sField . '`';
     FunctionsUtils::runQuery($sSQL);
 
-    // Delete the property definition row
-    $prop->delete();
+    // Delete the property definition row via raw SQL — groupprop_master has
+    // no PRIMARY KEY so Propel ORM delete() cannot identify the row.
+    FunctionsUtils::runQuery(
+        'DELETE FROM `groupprop_master` WHERE `grp_ID` = ' . $iGroupID . ' AND `prop_ID` = ' . $iPropID
+    );
 
-    // Re-number remaining properties to keep sequential IDs
+    // Re-number remaining properties to keep sequential IDs (raw SQL — same reason)
     $remainingProps = GroupPropMasterQuery::create()
         ->filterByGrpId($iGroupID)
         ->orderByPropId()
@@ -158,9 +168,11 @@ function deleteGroupFormProp(Request $request, Response $response, array $args):
 
     $newId = 1;
     foreach ($remainingProps as $remaining) {
-        if ($remaining->getPropId() !== $newId) {
-            $remaining->setPropId($newId);
-            $remaining->save();
+        if ((int) $remaining->getPropId() !== $newId) {
+            FunctionsUtils::runQuery(
+                'UPDATE `groupprop_master` SET `prop_ID` = ' . $newId
+                . ' WHERE `grp_ID` = ' . $iGroupID . ' AND `prop_ID` = ' . (int) $remaining->getPropId()
+            );
         }
         $newId++;
     }
