@@ -12319,10 +12319,6 @@ msgid "View group members, roles, and properties"
 msgstr "Vaadake grupi liikmeid, rolle ja omadusi"
 
 #: 
-msgid "View pledge dashboard"
-msgstr "Vaata lubaduste juhtpaneeli"
-
-#: 
 msgid "View query results"
 msgstr "Vaata päringu tulemusi"
 
@@ -12405,10 +12401,6 @@ msgstr "Saate alati hiljem CSV kaudu rohkem andmeid importida."
 #: 
 msgid "You can create/delete sunday school group."
 msgstr "Saate luua/kustutada pühapäevakooli gruppi."
-
-#: 
-msgid "You do not have finance permissions to view deposits."
-msgstr "Teil puuduvad finantsõigused korjanduste vaatamiseks."
 
 #: 
 msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
@@ -12794,10 +12786,6 @@ msgstr "Luba kasutajal lisada uus sündmus"
 #: 
 msgid "Are you sure you want to continue?"
 msgstr "Kas olete kindel, et soovite jätkata?"
-
-#: 
-msgid "Are you sure you want to delete this event?"
-msgstr "Kas olete kindel, et soovite selle sündmuse kustutada?"
 
 #. Context: queryparameters_qrp
 #: 
@@ -14289,10 +14277,6 @@ msgid "All congregation members included"
 msgstr "Kõik koguduse liikmed on kaasatud"
 
 #: 
-msgid "ChMeetings export completed successfully"
-msgstr "ChMeetings eksport lõpetati edukalt"
-
-#: 
 msgid "ChMeetings-compatible column format"
 msgstr "ChMeetings-ühilduv veeruvorming"
 
@@ -14327,10 +14311,6 @@ msgstr "Eksportige oma koguduse andmed erinevatesse vormingutesse"
 #: 
 msgid "External (WebDAV) backup via plugin"
 msgstr "Väline (WebDAV) varukoopia pistikprogrammi kaudu"
-
-#: 
-msgid "Failed to export ChMeetings CSV"
-msgstr "ChMeetings CSV eksport ebaõnnestus"
 
 #: 
 msgid "Family or individual record layout"

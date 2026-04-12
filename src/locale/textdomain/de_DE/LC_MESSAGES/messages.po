@@ -12417,10 +12417,6 @@ msgid "View group members, roles, and properties"
 msgstr "Gruppenmitglieder, Rollen und Eigenschaften anzeigen"
 
 #: 
-msgid "View pledge dashboard"
-msgstr "Spendenversprechen-Dashboard anzeigen"
-
-#: 
 msgid "View query results"
 msgstr "Abfrageergebnisse anzeigen"
 
@@ -12503,10 +12499,6 @@ msgstr "Sie können jederzeit weitere Daten später über CSV importieren."
 #: 
 msgid "You can create/delete sunday school group."
 msgstr "Sie können Sonntagsschulgruppen erstellen/löschen."
-
-#: 
-msgid "You do not have finance permissions to view deposits."
-msgstr "Sie haben keine Finanzberechtigungen, um Einlagen anzuzeigen."
 
 #: 
 msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
@@ -12892,10 +12884,6 @@ msgstr "Benutzer darf ein neues Ereignis hinzufügen"
 #: 
 msgid "Are you sure you want to continue?"
 msgstr "Möchten Sie wirklich fortfahren?"
-
-#: 
-msgid "Are you sure you want to delete this event?"
-msgstr "Möchten Sie dieses Ereignis wirklich löschen?"
 
 #. Context: queryparameters_qrp
 #: 
@@ -14387,10 +14375,6 @@ msgid "All congregation members included"
 msgstr "Alle Gemeindeglieder einbezogen"
 
 #: 
-msgid "ChMeetings export completed successfully"
-msgstr "ChMeetings-Export erfolgreich abgeschlossen"
-
-#: 
 msgid "ChMeetings-compatible column format"
 msgstr "ChMeetings-kompatibles Spaltenformat"
 
@@ -14425,10 +14409,6 @@ msgstr "Kirchendaten in verschiedene Formate exportieren"
 #: 
 msgid "External (WebDAV) backup via plugin"
 msgstr "Externe Sicherung (WebDAV) über Plugin"
-
-#: 
-msgid "Failed to export ChMeetings CSV"
-msgstr "ChMeetings-CSV-Export fehlgeschlagen"
 
 #: 
 msgid "Family or individual record layout"
