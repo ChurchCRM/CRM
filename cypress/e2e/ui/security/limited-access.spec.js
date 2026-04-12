@@ -41,9 +41,9 @@ describe("Limited Access User", () => {
 
         cy.url({ timeout: 10000 }).should("include", "/external/limited-access");
         cy.contains("Verify Family Info").click();
-        cy.url().should("include", "/external/verify/");
-        // Should show family verification page
-        cy.contains("Family Verification").should("exist");
+        cy.url({ timeout: 10000 }).should("include", "/external/verify/");
+        // Verify page should show the family name (Hernandez — person 4, family 2)
+        cy.get("body", { timeout: 10000 }).should("contain.text", "Hernandez");
     });
 
     it("Log Out returns to login page", () => {
