@@ -37,6 +37,7 @@ require __DIR__ . '/routes/people/people-family.php';
 require __DIR__ . '/routes/people/people-families.php';
 require __DIR__ . '/routes/people/people-groups.php';
 require __DIR__ . '/routes/people/groups-properties.php';
+require __DIR__ . '/routes/people/groups-form-props.php';
 require __DIR__ . '/routes/people/people-person.php';
 require __DIR__ . '/routes/people/people-persons.php';
 require __DIR__ . '/routes/people/people-properties.php';
