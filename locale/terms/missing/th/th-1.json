@@ -1,7 +1,7 @@
 {
   "name@example.com": "",
-  "Azure": "",
+  "Azure": "Azure",
   "%d repeat event created successfully.": {
-    "other": ""
+    "other": "สร้าง %d รายการกิจกรรมซ้ำสำเร็จแล้ว"
   }
 }

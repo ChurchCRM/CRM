@@ -1,14 +1,14 @@
 {
-  "Administrator": "",
-  "Format": "",
-  "Kiosk": "",
-  "Minimum": "",
-  "Vonage Dashboard": "",
+  "Administrator": "Administrator",
+  "Format": "Format",
+  "Kiosk": "Kiosk",
+  "Minimum": "Minimum",
+  "Vonage Dashboard": "Vonage Dashboard",
   "name@example.com": "",
-  "Azure": "",
-  "Cyan": "",
-  "Indigo": "",
-  "Lime": "",
-  "Malayalam - India": "",
-  "4. Kiosk": ""
+  "Azure": "Azure",
+  "Cyan": "Cyan",
+  "Indigo": "Indigo",
+  "Lime": "Lime",
+  "Malayalam - India": "Malayalam - India",
+  "4. Kiosk": "4. Kiosk"
 }

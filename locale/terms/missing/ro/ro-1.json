@@ -1,12 +1,12 @@
 {
-  "Administrator": "",
-  "Format": "",
-  "Manual": "",
-  "Material": "",
-  "Continent": "",
+  "Administrator": "Administrator",
+  "Format": "Format",
+  "Manual": "Manual",
+  "Material": "Material",
+  "Continent": "Continent",
   "name@example.com": "",
-  "Export": "",
-  "Azure": "",
-  "Indigo": "",
-  "Audit": ""
+  "Export": "Export",
+  "Azure": "Azure",
+  "Indigo": "Indigo",
+  "Audit": "Audit"
 }
