@@ -15469,3 +15469,111 @@ msgstr "jr."
 msgid "yrs"
 msgstr "jre."
 
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "'n Fout het voorgekom tydens die verwydering van die gesin."
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "'n Fout het voorgekom tydens die skuif van skenkings."
+
+#: 
+msgid "At least one family member is required"
+msgstr "Ten minste een gesinslid word benodig"
+
+#: 
+msgid "Back to Users"
+msgstr "Terug na Gebruikers"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "Kan nie 'n gesin met skenkingsrekords verwyder nie. Kontak 'n finansiële administrateur."
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "Kan nie eienskap in daardie rigting skuif nie"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "Bevestig Gesinsinligting"
+
+#: 
+msgid "Delete failed"
+msgstr "Verwydering misluk"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "Rigting moet \"op\" of \"af\" wees"
+
+#: 
+msgid "Failed to move donations."
+msgstr "Het misluk om skenkings te skuif."
+
+#: 
+msgid "Finance permission required"
+msgstr "Finansiële toestemming benodig"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "Voorgrondkleur en Agtergrondkleur word benodig."
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "Groep nie gevind nie of het geen spesiale eienskappe nie"
+
+#: 
+msgid "Group role not found"
+msgstr "Groeprol nie gevind nie"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "Ongeldige kleurformaat. Gebruik hekskleure soos #FF0000."
+
+#: 
+msgid "Invalid field identifier"
+msgstr "Ongeldige veld-identifiseerder"
+
+#: 
+msgid "Invalid target family"
+msgstr "Ongeldige teikengesin"
+
+#: 
+msgid "Log Out"
+msgstr "Teken Uit"
+
+#: 
+msgid "Membership not found"
+msgstr "Lidmaatskap nie gevind nie"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "Wagwoord suksesvol verander vir"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "Hersien asseblief u gesinsinligting hieronder en bevestig of versoek veranderinge."
+
+#: 
+msgid "Please select a target family."
+msgstr "Kies asseblief 'n teikengesin."
+
+#: 
+msgid "Target family not found"
+msgstr "Teikengesin nie gevind nie"
+
+#: 
+msgid "Verify Family Info"
+msgstr "Verifieer Gesinsinligting"
+
+#: 
+msgid "Welcome"
+msgstr "Welkom"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "U kan u gesinsinligting hersien en verifieer deur die skakel hieronder te gebruik. As u bykomende toegang benodig, kontak asseblief u kerkladministrateur."
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "U het nie toestemming om hierdie persoon te sien nie"
+

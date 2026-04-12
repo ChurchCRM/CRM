@@ -15430,3 +15430,111 @@ msgstr "jr."
 msgid "yrs"
 msgstr "jr."
 
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "Er is een fout opgetreden bij het verwijderen van de familie."
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "Er is een fout opgetreden bij het verplaatsen van donaties."
+
+#: 
+msgid "At least one family member is required"
+msgstr "Ten minste één familielid is vereist"
+
+#: 
+msgid "Back to Users"
+msgstr "Terug naar gebruikers"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "Een familie met donatieregistraties kan niet worden verwijderd. Neem contact op met een financieel beheerder."
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "Eigenschap kan niet in die richting worden verplaatst"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "Familiegegevens bevestigen"
+
+#: 
+msgid "Delete failed"
+msgstr "Verwijderen mislukt"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "Richting moet \"omhoog\" of \"omlaag\" zijn"
+
+#: 
+msgid "Failed to move donations."
+msgstr "Verplaatsen van donaties mislukt."
+
+#: 
+msgid "Finance permission required"
+msgstr "Financiële machtiging vereist"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "Voorgrondkleur en achtergrondkleur zijn vereist."
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "Groep niet gevonden of heeft geen speciale eigenschappen"
+
+#: 
+msgid "Group role not found"
+msgstr "Groepsrol niet gevonden"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "Ongeldig kleurformaat. Gebruik hexadecimale kleuren zoals #FF0000."
+
+#: 
+msgid "Invalid field identifier"
+msgstr "Ongeldige veldidentificatie"
+
+#: 
+msgid "Invalid target family"
+msgstr "Ongeldige doelfamilie"
+
+#: 
+msgid "Log Out"
+msgstr "Uitloggen"
+
+#: 
+msgid "Membership not found"
+msgstr "Lidmaatschap niet gevonden"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "Wachtwoord succesvol gewijzigd voor"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "Controleer uw familiegegevens hieronder en bevestig of vraag wijzigingen aan."
+
+#: 
+msgid "Please select a target family."
+msgstr "Selecteer een doelfamilie."
+
+#: 
+msgid "Target family not found"
+msgstr "Doelfamilie niet gevonden"
+
+#: 
+msgid "Verify Family Info"
+msgstr "Familiegegevens verifiëren"
+
+#: 
+msgid "Welcome"
+msgstr "Welkom"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "U kunt uw familiegegevens controleren en verifiëren via de onderstaande link. Als u aanvullende toegang nodig heeft, neem dan contact op met uw kerkbeheerder."
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "U heeft geen toestemming om deze persoon te bekijken"
+

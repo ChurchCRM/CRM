@@ -15441,3 +15441,111 @@ msgstr "년"
 msgid "yrs"
 msgstr "년"
 
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "가족을 삭제하는 중 오류가 발생했습니다."
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "헌금을 이동하는 중 오류가 발생했습니다."
+
+#: 
+msgid "At least one family member is required"
+msgstr "최소 한 명의 가족 구성원이 필요합니다"
+
+#: 
+msgid "Back to Users"
+msgstr "사용자 목록으로 돌아가기"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "헌금 기록이 있는 가족은 삭제할 수 없습니다. 재정 담당자에게 문의하세요."
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "해당 방향으로 속성을 이동할 수 없습니다"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "가족 정보 확인"
+
+#: 
+msgid "Delete failed"
+msgstr "삭제 실패"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "방향은 \"위\" 또는 \"아래\"여야 합니다"
+
+#: 
+msgid "Failed to move donations."
+msgstr "헌금 이동에 실패했습니다."
+
+#: 
+msgid "Finance permission required"
+msgstr "재정 권한이 필요합니다"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "전경색과 배경색은 필수입니다."
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "그룹을 찾을 수 없거나 특수 속성이 없습니다"
+
+#: 
+msgid "Group role not found"
+msgstr "그룹 역할을 찾을 수 없습니다"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "잘못된 색상 형식입니다. #FF0000과 같은 16진수 색상을 사용하세요."
+
+#: 
+msgid "Invalid field identifier"
+msgstr "잘못된 필드 식별자"
+
+#: 
+msgid "Invalid target family"
+msgstr "잘못된 대상 가족"
+
+#: 
+msgid "Log Out"
+msgstr "로그아웃"
+
+#: 
+msgid "Membership not found"
+msgstr "회원 정보를 찾을 수 없습니다"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "비밀번호가 성공적으로 변경되었습니다:"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "아래 가족 정보를 검토하고 확인하거나 변경을 요청하세요."
+
+#: 
+msgid "Please select a target family."
+msgstr "대상 가족을 선택하세요."
+
+#: 
+msgid "Target family not found"
+msgstr "대상 가족을 찾을 수 없습니다"
+
+#: 
+msgid "Verify Family Info"
+msgstr "가족 정보 검증"
+
+#: 
+msgid "Welcome"
+msgstr "환영합니다"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "아래 링크를 사용하여 가족 정보를 검토하고 확인할 수 있습니다. 추가 접근이 필요한 경우 교회 관리자에게 문의하세요."
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "이 사람을 볼 수 있는 권한이 없습니다"
+

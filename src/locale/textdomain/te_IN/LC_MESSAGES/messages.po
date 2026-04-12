@@ -12669,6 +12669,10 @@ msgid "Review & Delete"
 msgstr "సమీక్షించి తొలగించండి"
 
 #: 
+msgid "SHA1 Hash"
+msgstr "SHA1 హాష్"
+
+#: 
 msgid "Setup Instructions"
 msgstr "సెటప్ సూచనలు"
 
@@ -15433,4 +15437,112 @@ msgstr "స."
 #: 
 msgid "yrs"
 msgstr "సం."
+
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "కుటుంబాన్ని తొలగించేటప్పుడు లోపం సంభవించింది."
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "విరాళాలను తరలించేటప్పుడు లోపం సంభవించింది."
+
+#: 
+msgid "At least one family member is required"
+msgstr "కనీసం ఒక కుటుంబ సభ్యుడు అవసరం"
+
+#: 
+msgid "Back to Users"
+msgstr "వినియోగదారులకు తిరిగి వెళ్ళు"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "విరాళాల రికార్డులతో కుటుంబాన్ని తొలగించలేరు. ఆర్థిక నిర్వాహకులను సంప్రదించండి."
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "ఆ దిశలో ఆస్తిని తరలించలేరు"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "కుటుంబ సమాచారాన్ని నిర్ధారించండి"
+
+#: 
+msgid "Delete failed"
+msgstr "తొలగింపు విఫలమైంది"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "దిశ \"up\" లేదా \"down\" అయి ఉండాలి"
+
+#: 
+msgid "Failed to move donations."
+msgstr "విరాళాలను తరలించడం విఫలమైంది."
+
+#: 
+msgid "Finance permission required"
+msgstr "ఆర్థిక అనుమతి అవసరం"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "ForegroundColor మరియు BackgroundColor అవసరం."
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "గ్రూప్ కనుగొనబడలేదు లేదా ప్రత్యేక లక్షణాలు లేవు"
+
+#: 
+msgid "Group role not found"
+msgstr "గ్రూప్ పాత్ర కనుగొనబడలేదు"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "చెల్లని రంగు ఆకృతి. #FF0000 వంటి హెక్స్ రంగులను ఉపయోగించండి."
+
+#: 
+msgid "Invalid field identifier"
+msgstr "చెల్లని ఫీల్డ్ గుర్తింపు"
+
+#: 
+msgid "Invalid target family"
+msgstr "చెల్లని లక్ష్య కుటుంబం"
+
+#: 
+msgid "Log Out"
+msgstr "లాగ్ అవుట్"
+
+#: 
+msgid "Membership not found"
+msgstr "సభ్యత్వం కనుగొనబడలేదు"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "కోసం పాస్‌వర్డ్ విజయవంతంగా మార్చబడింది"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "దయచేసి క్రింద మీ కుటుంబ సమాచారాన్ని సమీక్షించి నిర్ధారించండి లేదా మార్పులు అభ్యర్థించండి."
+
+#: 
+msgid "Please select a target family."
+msgstr "దయచేసి లక్ష్య కుటుంబాన్ని ఎంచుకోండి."
+
+#: 
+msgid "Target family not found"
+msgstr "లక్ష్య కుటుంబం కనుగొనబడలేదు"
+
+#: 
+msgid "Verify Family Info"
+msgstr "కుటుంబ సమాచారాన్ని ధృవీకరించండి"
+
+#: 
+msgid "Welcome"
+msgstr "స్వాగతం"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "మీరు క్రింది లింక్ ఉపయోగించి మీ కుటుంబ సమాచారాన్ని సమీక్షించి ధృవీకరించవచ్చు. మీకు అదనపు యాక్సెస్ అవసరమైతే, దయచేసి మీ చర్చి నిర్వాహకులను సంప్రదించండి."
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "ఈ వ్యక్తిని చూడటానికి మీకు అనుమతి లేదు"
 

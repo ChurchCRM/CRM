@@ -15554,3 +15554,111 @@ msgstr "an"
 msgid "yrs"
 msgstr "ani"
 
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "A apărut o eroare la ștergerea familiei."
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "A apărut o eroare la mutarea donațiilor."
+
+#: 
+msgid "At least one family member is required"
+msgstr "Este necesar cel puțin un membru al familiei"
+
+#: 
+msgid "Back to Users"
+msgstr "Înapoi la utilizatori"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "Nu se poate șterge o familie cu înregistrări de donații. Contactați un administrator financiar."
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "Nu se poate muta proprietatea în acea direcție"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "Confirmați informațiile despre familie"
+
+#: 
+msgid "Delete failed"
+msgstr "Ștergerea a eșuat"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "Direcția trebuie să fie \"sus\" sau \"jos\""
+
+#: 
+msgid "Failed to move donations."
+msgstr "Mutarea donațiilor a eșuat."
+
+#: 
+msgid "Finance permission required"
+msgstr "Permisiune financiară necesară"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "ForegroundColor și BackgroundColor sunt obligatorii."
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "Grupul nu a fost găsit sau nu are proprietăți speciale"
+
+#: 
+msgid "Group role not found"
+msgstr "Rolul grupului nu a fost găsit"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "Format de culoare invalid. Utilizați culori hex ca #FF0000."
+
+#: 
+msgid "Invalid field identifier"
+msgstr "Identificator de câmp invalid"
+
+#: 
+msgid "Invalid target family"
+msgstr "Familie țintă invalidă"
+
+#: 
+msgid "Log Out"
+msgstr "Deconectare"
+
+#: 
+msgid "Membership not found"
+msgstr "Apartenența nu a fost găsită"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "Parola a fost schimbată cu succes pentru"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "Vă rugăm să revizuiți informațiile despre familie de mai jos și să confirmați sau să solicitați modificări."
+
+#: 
+msgid "Please select a target family."
+msgstr "Vă rugăm selectați o familie țintă."
+
+#: 
+msgid "Target family not found"
+msgstr "Familia țintă nu a fost găsită"
+
+#: 
+msgid "Verify Family Info"
+msgstr "Verificați informațiile despre familie"
+
+#: 
+msgid "Welcome"
+msgstr "Bine ați venit"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "Puteți revizui și verifica informațiile despre familia dvs. folosind linkul de mai jos. Dacă aveți nevoie de acces suplimentar, contactați administratorul bisericii dvs."
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "Nu aveți permisiunea de a vizualiza această persoană"
+

@@ -15442,3 +15442,111 @@ msgstr "th."
 msgid "yrs"
 msgstr "th."
 
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "Terjadi kesalahan saat menghapus keluarga."
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "Terjadi kesalahan saat memindahkan donasi."
+
+#: 
+msgid "At least one family member is required"
+msgstr "Minimal satu anggota keluarga diperlukan"
+
+#: 
+msgid "Back to Users"
+msgstr "Kembali ke Pengguna"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "Tidak dapat menghapus keluarga yang memiliki catatan donasi. Hubungi administrator keuangan."
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "Tidak dapat memindahkan properti ke arah tersebut"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "Konfirmasi Informasi Keluarga"
+
+#: 
+msgid "Delete failed"
+msgstr "Penghapusan gagal"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "Arah harus \"atas\" atau \"bawah\""
+
+#: 
+msgid "Failed to move donations."
+msgstr "Gagal memindahkan donasi."
+
+#: 
+msgid "Finance permission required"
+msgstr "Izin keuangan diperlukan"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "ForegroundColor dan BackgroundColor diperlukan."
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "Grup tidak ditemukan atau tidak memiliki properti khusus"
+
+#: 
+msgid "Group role not found"
+msgstr "Peran grup tidak ditemukan"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "Format warna tidak valid. Gunakan warna hex seperti #FF0000."
+
+#: 
+msgid "Invalid field identifier"
+msgstr "Pengenal bidang tidak valid"
+
+#: 
+msgid "Invalid target family"
+msgstr "Keluarga target tidak valid"
+
+#: 
+msgid "Log Out"
+msgstr "Keluar"
+
+#: 
+msgid "Membership not found"
+msgstr "Keanggotaan tidak ditemukan"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "Kata sandi berhasil diubah untuk"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "Silakan tinjau informasi keluarga Anda di bawah ini dan konfirmasi atau minta perubahan."
+
+#: 
+msgid "Please select a target family."
+msgstr "Silakan pilih keluarga target."
+
+#: 
+msgid "Target family not found"
+msgstr "Keluarga target tidak ditemukan"
+
+#: 
+msgid "Verify Family Info"
+msgstr "Verifikasi Informasi Keluarga"
+
+#: 
+msgid "Welcome"
+msgstr "Selamat Datang"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "Anda dapat meninjau dan memverifikasi informasi keluarga Anda menggunakan tautan di bawah ini. Jika Anda memerlukan akses tambahan, silakan hubungi administrator gereja Anda."
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "Anda tidak memiliki izin untuk melihat orang ini"
+

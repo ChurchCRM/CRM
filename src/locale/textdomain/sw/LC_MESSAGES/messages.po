@@ -15463,3 +15463,111 @@ msgstr "mwk"
 msgid "yrs"
 msgstr "mk"
 
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "Hitilafu ilitokea wakati wa kufuta familia."
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "Hitilafu ilitokea wakati wa kuhamisha michango."
+
+#: 
+msgid "At least one family member is required"
+msgstr "Angalau mwanafamilia mmoja anahitajika"
+
+#: 
+msgid "Back to Users"
+msgstr "Rudi kwa Watumiaji"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "Haiwezekani kufuta familia yenye kumbukumbu za michango. Wasiliana na msimamizi wa fedha."
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "Haiwezekani kuhamisha mali katika mwelekeo huo"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "Thibitisha Taarifa za Familia"
+
+#: 
+msgid "Delete failed"
+msgstr "Kufuta kumeshindwa"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "Mwelekeo lazima uwe \"juu\" au \"chini\""
+
+#: 
+msgid "Failed to move donations."
+msgstr "Imeshindwa kuhamisha michango."
+
+#: 
+msgid "Finance permission required"
+msgstr "Ruhusa ya fedha inahitajika"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "Rangi ya mbele na rangi ya nyuma zinahitajika."
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "Kikundi hakipatikani au hakina sifa maalum"
+
+#: 
+msgid "Group role not found"
+msgstr "Jukumu la kikundi halipatikani"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "Muundo wa rangi si sahihi. Tumia rangi za hex kama #FF0000."
+
+#: 
+msgid "Invalid field identifier"
+msgstr "Kitambulisho cha sehemu si sahihi"
+
+#: 
+msgid "Invalid target family"
+msgstr "Familia lengwa si sahihi"
+
+#: 
+msgid "Log Out"
+msgstr "Toka"
+
+#: 
+msgid "Membership not found"
+msgstr "Uanachama haukupatikana"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "Nywila imebadilishwa kwa mafanikio kwa"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "Tafadhali kagua taarifa za familia yako hapa chini na uthibitishe au omba mabadiliko."
+
+#: 
+msgid "Please select a target family."
+msgstr "Tafadhali chagua familia lengwa."
+
+#: 
+msgid "Target family not found"
+msgstr "Familia lengwa haikupatikana"
+
+#: 
+msgid "Verify Family Info"
+msgstr "Hakikisha Taarifa za Familia"
+
+#: 
+msgid "Welcome"
+msgstr "Karibu"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "Unaweza kukagua na kuthibitisha taarifa za familia yako kwa kutumia kiungo hapa chini. Ikiwa unahitaji ufikiaji zaidi, tafadhali wasiliana na msimamizi wa kanisa lako."
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "Huna ruhusa ya kuona mtu huyu"
+

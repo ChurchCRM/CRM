@@ -12696,6 +12696,10 @@ msgid "Review & Delete"
 msgstr "סקירה ומחיקה"
 
 #: 
+msgid "SHA1 Hash"
+msgstr "גיבוב SHA1"
+
+#: 
 msgid "Setup Instructions"
 msgstr "הוראות הגדרה"
 
@@ -15460,4 +15464,112 @@ msgstr "שנ׳"
 #: 
 msgid "yrs"
 msgstr "שנ׳"
+
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "אירעה שגיאה בעת מחיקת המשפחה."
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "אירעה שגיאה בעת העברת התרומות."
+
+#: 
+msgid "At least one family member is required"
+msgstr "נדרש לפחות חבר משפחה אחד"
+
+#: 
+msgid "Back to Users"
+msgstr "חזרה למשתמשים"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "לא ניתן למחוק משפחה עם רשומות תרומות. פנה אל מנהל הכספים."
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "לא ניתן להזיז מאפיין בכיוון זה"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "אשר מידע משפחתי"
+
+#: 
+msgid "Delete failed"
+msgstr "המחיקה נכשלה"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "הכיוון חייב להיות \"למעלה\" או \"למטה\""
+
+#: 
+msgid "Failed to move donations."
+msgstr "העברת התרומות נכשלה."
+
+#: 
+msgid "Finance permission required"
+msgstr "נדרשת הרשאת כספים"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "צבע קדמי וצבע רקע נדרשים."
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "הקבוצה לא נמצאה או שאין לה מאפיינים מיוחדים"
+
+#: 
+msgid "Group role not found"
+msgstr "תפקיד הקבוצה לא נמצא"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "פורמט צבע לא חוקי. השתמש בצבעי הקס כמו #FF0000."
+
+#: 
+msgid "Invalid field identifier"
+msgstr "מזהה שדה לא חוקי"
+
+#: 
+msgid "Invalid target family"
+msgstr "משפחת יעד לא חוקית"
+
+#: 
+msgid "Log Out"
+msgstr "התנתק"
+
+#: 
+msgid "Membership not found"
+msgstr "חברות לא נמצאה"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "הסיסמה שונתה בהצלחה עבור"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "אנא סקור את פרטי משפחתך למטה ואשר או בקש שינויים."
+
+#: 
+msgid "Please select a target family."
+msgstr "אנא בחר משפחת יעד."
+
+#: 
+msgid "Target family not found"
+msgstr "משפחת היעד לא נמצאה"
+
+#: 
+msgid "Verify Family Info"
+msgstr "אמת מידע משפחתי"
+
+#: 
+msgid "Welcome"
+msgstr "ברוך הבא"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "באפשרותך לסקור ולאמת את פרטי משפחתך באמצעות הקישור למטה. אם אתה זקוק לגישה נוספת, אנא פנה אל מנהל הקהילה שלך."
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "אין לך הרשאה לצפות בפרטי אדם זה"
 

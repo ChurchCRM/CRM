@@ -15422,3 +15422,111 @@ msgstr "ปี"
 msgid "yrs"
 msgstr "ปี"
 
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "เกิดข้อผิดพลาดขณะลบครอบครัว"
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "เกิดข้อผิดพลาดขณะย้ายการบริจาค"
+
+#: 
+msgid "At least one family member is required"
+msgstr "ต้องมีสมาชิกครอบครัวอย่างน้อยหนึ่งคน"
+
+#: 
+msgid "Back to Users"
+msgstr "กลับไปยังผู้ใช้"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "ไม่สามารถลบครอบครัวที่มีบันทึกการบริจาคได้ โปรดติดต่อผู้ดูแลระบบการเงิน"
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "ไม่สามารถย้ายคุณสมบัตินั้นในทิศทางนั้นได้"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "ยืนยันข้อมูลครอบครัว"
+
+#: 
+msgid "Delete failed"
+msgstr "การลบล้มเหลว"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "ทิศทางต้องเป็น \"ขึ้น\" หรือ \"ลง\""
+
+#: 
+msgid "Failed to move donations."
+msgstr "ไม่สามารถย้ายการบริจาคได้"
+
+#: 
+msgid "Finance permission required"
+msgstr "ต้องการสิทธิ์ทางการเงิน"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "ต้องระบุสีพื้นหน้าและสีพื้นหลัง"
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "ไม่พบกลุ่มหรือไม่มีคุณสมบัติพิเศษ"
+
+#: 
+msgid "Group role not found"
+msgstr "ไม่พบบทบาทของกลุ่ม"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "รูปแบบสีไม่ถูกต้อง ใช้สี hex เช่น #FF0000"
+
+#: 
+msgid "Invalid field identifier"
+msgstr "ตัวระบุฟิลด์ไม่ถูกต้อง"
+
+#: 
+msgid "Invalid target family"
+msgstr "ครอบครัวเป้าหมายไม่ถูกต้อง"
+
+#: 
+msgid "Log Out"
+msgstr "ออกจากระบบ"
+
+#: 
+msgid "Membership not found"
+msgstr "ไม่พบการเป็นสมาชิก"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "เปลี่ยนรหัสผ่านสำเร็จสำหรับ"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "โปรดตรวจสอบข้อมูลครอบครัวของคุณด้านล่างและยืนยันหรือขอเปลี่ยนแปลง"
+
+#: 
+msgid "Please select a target family."
+msgstr "โปรดเลือกครอบครัวเป้าหมาย"
+
+#: 
+msgid "Target family not found"
+msgstr "ไม่พบครอบครัวเป้าหมาย"
+
+#: 
+msgid "Verify Family Info"
+msgstr "ตรวจสอบข้อมูลครอบครัว"
+
+#: 
+msgid "Welcome"
+msgstr "ยินดีต้อนรับ"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "คุณสามารถตรวจสอบและยืนยันข้อมูลครอบครัวของคุณโดยใช้ลิงก์ด้านล่าง หากต้องการการเข้าถึงเพิ่มเติม โปรดติดต่อผู้ดูแลระบบคริสตจักรของคุณ"
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "คุณไม่มีสิทธิ์ดูข้อมูลของบุคคลนี้"
+
