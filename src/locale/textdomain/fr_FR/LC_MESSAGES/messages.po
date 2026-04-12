@@ -12317,10 +12317,6 @@ msgid "View group members, roles, and properties"
 msgstr "Voir les fidèles du groupe, les rôles et les propriétés"
 
 #: 
-msgid "View pledge dashboard"
-msgstr "Voir le tableau de bord des engagements financiers"
-
-#: 
 msgid "View query results"
 msgstr "Voir les résultats de la requête"
 
@@ -12403,10 +12399,6 @@ msgstr "Vous pouvez toujours importer d'autres données ultérieurement via CSV.
 #: 
 msgid "You can create/delete sunday school group."
 msgstr "Vous pouvez créer/supprimer un groupe de catéchisme."
-
-#: 
-msgid "You do not have finance permissions to view deposits."
-msgstr "Vous n'avez pas les autorisations financières pour consulter les dépôts."
 
 #: 
 msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
@@ -12792,10 +12784,6 @@ msgstr "Permettre à l'utilisateur d'ajouter un nouvel événement"
 #: 
 msgid "Are you sure you want to continue?"
 msgstr "Êtes-vous sûr de vouloir continuer ?"
-
-#: 
-msgid "Are you sure you want to delete this event?"
-msgstr "Êtes-vous sûr de vouloir supprimer cet événement ?"
 
 #. Context: queryparameters_qrp
 #: 
@@ -14263,10 +14251,6 @@ msgstr "La taille du fichier dépasse la limite du serveur de %s"
 msgid "Missing image data in request"
 msgstr "Données d'image manquantes dans la requête"
 
-#: 
-msgid "BCC"
-msgstr "CCI"
-
 #. Context: query_qry
 #: 
 msgid "Find people who didn't attend an event"
@@ -14276,10 +14260,6 @@ msgstr "Trouver les personnes n'ayant pas participé à un événement"
 #: 
 msgid "Missing people"
 msgstr "Personnes manquantes"
-
-#: 
-msgid "N/A"
-msgstr "S/O"
 
 #. Context: queryparameters_qrp
 #: 
@@ -14297,10 +14277,6 @@ msgstr "Filtrage avancé par groupe, classification et rôle"
 #: 
 msgid "All congregation members included"
 msgstr "Tous les membres de la congrégation inclus"
-
-#: 
-msgid "ChMeetings export completed successfully"
-msgstr "Exportation ChMeetings effectuée avec succès"
 
 #: 
 msgid "ChMeetings-compatible column format"
@@ -14337,10 +14313,6 @@ msgstr "Exportez les données de votre paroisse dans différents formats"
 #: 
 msgid "External (WebDAV) backup via plugin"
 msgstr "Sauvegarde externe (WebDAV) via plugin"
-
-#: 
-msgid "Failed to export ChMeetings CSV"
-msgstr "Échec de l'exportation du CSV ChMeetings"
 
 #: 
 msgid "Family or individual record layout"

@@ -1,11 +1,9 @@
 {
-  "Administrator": "",
-  "Format": "",
-  "Kiosk": "",
-  "Minimum": "",
-  "BCC": "",
-  "N/A": "",
+  "Administrator": "Administrator",
+  "Format": "Format",
+  "Kiosk": "Kiosk",
+  "Minimum": "Minimum",
   "name@example.com": "",
-  "Azure": "",
-  "4. Kiosk": ""
+  "Azure": "Azure",
+  "4. Kiosk": "4. Kiosk"
 }

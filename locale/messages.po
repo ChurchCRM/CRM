@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-10 03:12+0000\n"
+"POT-Creation-Date: 2026-04-12 04:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -719,9 +719,6 @@ msgstr ""
 msgid "All deposits within date range"
 msgstr ""
 
-msgid "All donations from this family have been moved to another family."
-msgstr ""
-
 msgid "All events and attendance records"
 msgstr ""
 
@@ -839,6 +836,12 @@ msgstr ""
 msgid "An error occurred processing the plugin request"
 msgstr ""
 
+msgid "An error occurred while deleting the family."
+msgstr ""
+
+msgid "An error occurred while moving donations."
+msgstr ""
+
 msgid "An error occurred."
 msgstr ""
 
@@ -846,9 +849,6 @@ msgid "An error occurred. Please contact your system administrator."
 msgstr ""
 
 msgid "An individual church member. Stores name, birthday, personal email, and mobile."
-msgstr ""
-
-msgid "An invalid configuration id has been requested"
 msgstr ""
 
 msgid "An invalid configuration name has been requested"
@@ -1047,6 +1047,9 @@ msgstr ""
 msgid "Assigned Kiosk"
 msgstr ""
 
+msgid "At least one family member is required"
+msgstr ""
+
 msgid "At least one fund must have a non-zero amount."
 msgstr ""
 
@@ -1198,6 +1201,9 @@ msgid "Back to Menu"
 msgstr ""
 
 msgid "Back to People Dashboard"
+msgstr ""
+
+msgid "Back to Users"
 msgstr ""
 
 msgid "Back to login"
@@ -1608,7 +1614,13 @@ msgstr ""
 msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
 msgstr ""
 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr ""
+
 msgid "Cannot execute query."
+msgstr ""
+
+msgid "Cannot move property in that direction"
 msgstr ""
 
 msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
@@ -2191,6 +2203,9 @@ msgstr ""
 msgid "Confirm Enable Group Specific Properties"
 msgstr ""
 
+msgid "Confirm Family Info"
+msgstr ""
+
 msgid "Confirm Family Information"
 msgstr ""
 
@@ -2204,9 +2219,6 @@ msgid "Confirm Volunteer Opportunity Deletion"
 msgstr ""
 
 msgid "Confirm data labels"
-msgstr ""
-
-msgid "Confirm family information"
 msgstr ""
 
 msgid "Confirm with a code from your authenticator app"
@@ -2896,6 +2908,9 @@ msgstr ""
 msgid "Delete check-in record for"
 msgstr ""
 
+msgid "Delete failed"
+msgstr ""
+
 msgid "Delete records permission"
 msgstr ""
 
@@ -3045,6 +3060,9 @@ msgid "Direct me"
 msgstr ""
 
 msgid "Direction"
+msgstr ""
+
+msgid "Direction must be \"up\" or \"down\""
 msgstr ""
 
 msgid "Directions"
@@ -4104,6 +4122,9 @@ msgstr ""
 msgid "Failed to load recovery codes. Please refresh the page."
 msgstr ""
 
+msgid "Failed to move donations."
+msgstr ""
+
 msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
 msgstr ""
 
@@ -4450,6 +4471,9 @@ msgstr ""
 msgid "Finance permission query IDs"
 msgstr ""
 
+msgid "Finance permission required"
+msgstr ""
+
 msgid "Financial Reports"
 msgstr ""
 
@@ -4592,6 +4616,9 @@ msgid "Force re-install initiated. Please backup your database before applying."
 msgstr ""
 
 msgid "Foreground Color"
+msgstr ""
+
+msgid "ForegroundColor and BackgroundColor are required."
 msgstr ""
 
 msgid "Forgot password?"
@@ -5003,10 +5030,16 @@ msgstr ""
 msgid "Group not found"
 msgstr ""
 
+msgid "Group not found or has no special properties"
+msgstr ""
+
 msgid "Group removed from cart"
 msgstr ""
 
 msgid "Group role name changes are saved as soon as the box loses focus"
+msgstr ""
+
+msgid "Group role not found"
 msgstr ""
 
 msgid "Group successfully added to the Cart."
@@ -5482,6 +5515,9 @@ msgstr ""
 msgid "Invalid code. Please try again."
 msgstr ""
 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr ""
+
 msgid "Invalid country name supplied"
 msgstr ""
 
@@ -5510,6 +5546,9 @@ msgstr ""
 msgid "Invalid event type ID"
 msgstr ""
 
+msgid "Invalid field identifier"
+msgstr ""
+
 msgid "Invalid fields or selections."
 msgstr ""
 
@@ -5535,6 +5574,9 @@ msgid "Invalid server URL format."
 msgstr ""
 
 msgid "Invalid status"
+msgstr ""
+
+msgid "Invalid target family"
 msgstr ""
 
 msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
@@ -5973,6 +6015,9 @@ msgstr ""
 msgid "Log Level"
 msgstr ""
 
+msgid "Log Out"
+msgstr ""
+
 msgid "Log Settings"
 msgstr ""
 
@@ -6358,6 +6403,9 @@ msgstr ""
 
 #. Context: query_qry
 msgid "Membership anniversaries"
+msgstr ""
+
+msgid "Membership not found"
 msgstr ""
 
 msgid "Memberships"
@@ -7449,6 +7497,9 @@ msgstr ""
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr ""
 
+msgid "Password successfully changed for"
+msgstr ""
+
 msgid "Passwords do not match"
 msgstr ""
 
@@ -7848,6 +7899,9 @@ msgstr ""
 msgid "Please proceed to the classroom as soon as possible."
 msgstr ""
 
+msgid "Please review your family information below and confirm or request changes."
+msgstr ""
+
 msgid "Please select a CSV file"
 msgstr ""
 
@@ -7867,6 +7921,9 @@ msgid "Please select a person to check in."
 msgstr ""
 
 msgid "Please select a role."
+msgstr ""
+
+msgid "Please select a target family."
 msgstr ""
 
 msgid "Please select another family with whom to associate these donations:"
@@ -9598,6 +9655,9 @@ msgstr ""
 msgid "Tanzania"
 msgstr ""
 
+msgid "Target family not found"
+msgstr ""
+
 msgid "Tax & Giving Reports"
 msgstr ""
 
@@ -10679,6 +10739,9 @@ msgstr ""
 msgid "Verify Code"
 msgstr ""
 
+msgid "Verify Family Info"
+msgstr ""
+
 msgid "Verify Info"
 msgstr ""
 
@@ -10981,6 +11044,9 @@ msgstr ""
 msgid "Weekly on"
 msgstr ""
 
+msgid "Welcome"
+msgstr ""
+
 msgid "Welcome Back!"
 msgstr ""
 
@@ -11176,6 +11242,12 @@ msgid "You can now use your authenticator app to sign in. Each code is valid for
 msgstr ""
 
 msgid "You can reset your ChurchCRM password by clicking this link"
+msgstr ""
+
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr ""
+
+msgid "You do not have permission to view this person"
 msgstr ""
 
 msgid "You have no items in your cart."

@@ -12314,10 +12314,6 @@ msgid "View group members, roles, and properties"
 msgstr "Tazama washiriki wa kikundi, majukumu, na sifa"
 
 #: 
-msgid "View pledge dashboard"
-msgstr "Tazama dashibodi ya ahadi za sadaka"
-
-#: 
 msgid "View query results"
 msgstr "Tazama matokeo ya hoja"
 
@@ -12400,10 +12396,6 @@ msgstr "Unaweza kuingiza data zaidi baadaye kupitia CSV."
 #: 
 msgid "You can create/delete sunday school group."
 msgstr "Unaweza kuunda/kufuta kikundi cha Shule ya Jumapili."
-
-#: 
-msgid "You do not have finance permissions to view deposits."
-msgstr "Huna ruhusa za fedha kuona amana."
 
 #: 
 msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
@@ -12789,10 +12781,6 @@ msgstr "Ruhusu mtumiaji kuongeza tukio jipya"
 #: 
 msgid "Are you sure you want to continue?"
 msgstr "Je, una uhakika unataka kuendelea?"
-
-#: 
-msgid "Are you sure you want to delete this event?"
-msgstr "Je, una uhakika unataka kufuta tukio hili?"
 
 #. Context: queryparameters_qrp
 #: 
@@ -14284,10 +14272,6 @@ msgid "All congregation members included"
 msgstr "Waumini wote wa kanisa wamejumuishwa"
 
 #: 
-msgid "ChMeetings export completed successfully"
-msgstr "Uhamishaji wa ChMeetings umekamilika kwa mafanikio"
-
-#: 
 msgid "ChMeetings-compatible column format"
 msgstr "Muundo wa safu wima unaooana na ChMeetings"
 
@@ -14322,10 +14306,6 @@ msgstr "Hamisha data ya kanisa lako kwenda miundo mbalimbali"
 #: 
 msgid "External (WebDAV) backup via plugin"
 msgstr "Nakala ya nje (WebDAV) kupitia programu-jalizi"
-
-#: 
-msgid "Failed to export ChMeetings CSV"
-msgstr "Imeshindwa kuhamisha CSV ya ChMeetings"
 
 #: 
 msgid "Family or individual record layout"

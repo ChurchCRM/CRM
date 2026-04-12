@@ -12423,10 +12423,6 @@ msgid "View group members, roles, and properties"
 msgstr "Visa gruppmedlemmar, roller och egenskaper"
 
 #: 
-msgid "View pledge dashboard"
-msgstr "Visa instrumentpanel för givarlöften"
-
-#: 
 msgid "View query results"
 msgstr "Visa frågeresultat"
 
@@ -12509,10 +12505,6 @@ msgstr "Du kan alltid importera mer data senare via CSV."
 #: 
 msgid "You can create/delete sunday school group."
 msgstr "Du kan skapa/ta bort söndagsskolgrupp."
-
-#: 
-msgid "You do not have finance permissions to view deposits."
-msgstr "Du har inte ekonomibehörighet för att visa kollektinsamlingar."
 
 #: 
 msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
@@ -12898,10 +12890,6 @@ msgstr "Almmuhit geavaheaddji oasalastit ođđa dás"
 #: 
 msgid "Are you sure you want to continue?"
 msgstr "Jus it dohko ceavvi go jatkat?"
-
-#: 
-msgid "Are you sure you want to delete this event?"
-msgstr "Jus it dohko ceavvi go vahkkat dás?"
 
 #. Context: queryparameters_qrp
 #: 
@@ -14388,10 +14376,6 @@ msgid "All congregation members included"
 msgstr "Alla församlingsmedlemmar inkluderade"
 
 #: 
-msgid "ChMeetings export completed successfully"
-msgstr "ChMeetings-export slutförd"
-
-#: 
 msgid "ChMeetings-compatible column format"
 msgstr "ChMeetings-kompatibelt kolumnformat"
 
@@ -14426,10 +14410,6 @@ msgstr "Exportera din kyrkdata till olika format"
 #: 
 msgid "External (WebDAV) backup via plugin"
 msgstr "Extern säkerhetskopiering (WebDAV) via insticksprogram"
-
-#: 
-msgid "Failed to export ChMeetings CSV"
-msgstr "Misslyckades med att exportera ChMeetings CSV"
 
 #: 
 msgid "Family or individual record layout"

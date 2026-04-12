@@ -90,22 +90,25 @@ class User extends BaseUser
     }
 
     /**
-     * Check if the user ONLY has EditSelf permission and no other functional permissions.
-     * These users need to be redirected to a self-service flow (e.g. family verify)
-     * rather than the full admin interface.
+     * Check if the user lacks all functional admin permissions.
+     * Users with no permissions (or only EditSelf) cannot use the admin interface
+     * and should be redirected to a self-service flow or blocked.
      *
      * @see https://github.com/ChurchCRM/CRM/issues/8617
      */
-    public function isEditSelfOnly(): bool
+    public function hasNoAdminPermissions(): bool
     {
-        return $this->isEditSelf()
-            && !$this->isAdmin()
-            && !$this->isAddRecordsEnabled()
-            && !$this->isEditRecordsEnabled()
-            && !$this->isDeleteRecordsEnabled()
-            && !$this->isMenuOptionsEnabled()
-            && !$this->isManageGroupsEnabled()
-            && !$this->isFinanceEnabled();
+        if ($this->isAdmin()) {
+            return false;
+        }
+
+        return !$this->isAddRecords()
+            && !$this->isEditRecords()
+            && !$this->isDeleteRecords()
+            && !$this->isMenuOptions()
+            && !$this->isManageGroups()
+            && !$this->isFinance()
+            && !$this->isNotes();
     }
 
     /**

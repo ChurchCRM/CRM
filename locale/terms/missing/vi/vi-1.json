@@ -1,11 +1,9 @@
 {
   "%d result for \"%s\"": {
-    "other": ""
+    "other": "%d kết quả cho \"%s\""
   },
-  "BCC": "",
-  "N/A": "",
   "name@example.com": "",
   "%d repeat event created successfully.": {
-    "other": ""
+    "other": "Đã tạo thành công %d sự kiện lặp."
   }
 }

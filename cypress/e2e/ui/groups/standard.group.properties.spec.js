@@ -412,6 +412,9 @@ describe("UI: GroupPropsFormEditor Delete button (CSP regression #8520)", () => 
     });
 
     it("confirming Delete navigates away and field is removed", () => {
+        // Intercept the API delete call so we can wait for it
+        cy.intercept("DELETE", `**/api/groups/${groupID}/formprops/*`).as("deleteFormProp");
+
         cy.get(`.js-delete-field[data-field-name="${fieldName}"]`)
             .closest(".dropdown")
             .find("[data-bs-toggle='dropdown']")
@@ -421,8 +424,11 @@ describe("UI: GroupPropsFormEditor Delete button (CSP regression #8520)", () => 
 
         cy.get(".bootbox-accept").should("be.visible").click();
 
-        // GroupPropsFormEditor redirects via window.location.href after confirm
+        // Wait for the API call, then the page reload
+        cy.wait("@deleteFormProp").its("response.statusCode").should("eq", 200);
+
+        // After reload, the field should be gone
         cy.url().should("include", "GroupPropsFormEditor.php");
-        cy.get(`input[value="${fieldName}"]`).should("not.exist");
+        cy.get(`input[value="${fieldName}"]`, { timeout: 10000 }).should("not.exist");
     });
 });

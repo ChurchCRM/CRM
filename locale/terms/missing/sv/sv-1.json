@@ -1,13 +1,11 @@
 {
-  "Format": "",
-  "Material": "",
-  "Vonage Dashboard": "",
-  "BCC": "",
-  "N/A": "",
+  "Format": "Format",
+  "Material": "Material",
+  "Vonage Dashboard": "Vonage Dashboard",
   "name@example.com": "",
-  "Azure": "",
-  "Cyan": "",
-  "Indigo": "",
-  "Orange": "",
-  "4. Kiosk": ""
+  "Azure": "Azure",
+  "Cyan": "Cyan",
+  "Indigo": "Indigo",
+  "Orange": "Orange",
+  "4. Kiosk": "4. Kiosk"
 }

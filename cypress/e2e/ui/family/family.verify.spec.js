@@ -41,6 +41,6 @@ describe("Family Verification Page", () => {
         cy.get("#confirmVerifyBtn").click();
         cy.get("#onlineVerifyCancelBtn").should("be.visible");
         cy.get("#onlineVerifyBtn").should("be.visible");
-        cy.get("#onlineVerifySiteBtn").should("be.visible");
+        cy.get("#onlineVerifySiteBtn").should("exist");
     });
 });

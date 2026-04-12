@@ -12273,10 +12273,6 @@ msgid "View group members, roles, and properties"
 msgstr "Tingnan ang mga miyembro ng grupo, mga papel, at mga katangian"
 
 #: 
-msgid "View pledge dashboard"
-msgstr "Tingnan ang dashboard ng pangako"
-
-#: 
 msgid "View query results"
 msgstr "Tingnan ang mga resulta ng query"
 
@@ -12359,10 +12355,6 @@ msgstr "Maaari kang palaging mag-import ng higit pang datos sa ibang pagkakataon
 #: 
 msgid "You can create/delete sunday school group."
 msgstr "Maaari kang lumikha/magbura ng grupo ng paaralan ng linggo."
-
-#: 
-msgid "You do not have finance permissions to view deposits."
-msgstr "Wala kang mga pahintulot sa pananalapi para tingnan ang mga deposito."
 
 #: 
 msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
@@ -12744,10 +12736,6 @@ msgstr "Payagan ang user na magdagdag ng bagong kaganapan"
 #: 
 msgid "Are you sure you want to continue?"
 msgstr "Sigurado ka bang gusto mong magpatuloy?"
-
-#: 
-msgid "Are you sure you want to delete this event?"
-msgstr "Sigurado ka bang gusto mong burahin ang kaganapang ito?"
 
 #. Context: queryparameters_qrp
 #: 
@@ -14239,10 +14227,6 @@ msgid "All congregation members included"
 msgstr "Lahat ng miyembro ng kongregasyon ay kasama"
 
 #: 
-msgid "ChMeetings export completed successfully"
-msgstr "Matagumpay na natapos ang pag-export ng ChMeetings"
-
-#: 
 msgid "ChMeetings-compatible column format"
 msgstr "Format ng kolumna na katugma sa ChMeetings"
 
@@ -14277,10 +14261,6 @@ msgstr "I-export ang datos ng inyong simbahan sa iba't ibang format"
 #: 
 msgid "External (WebDAV) backup via plugin"
 msgstr "External (WebDAV) backup sa pamamagitan ng plugin"
-
-#: 
-msgid "Failed to export ChMeetings CSV"
-msgstr "Nabigo ang pag-export ng ChMeetings CSV"
 
 #: 
 msgid "Family or individual record layout"
