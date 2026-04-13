@@ -47,7 +47,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
           <form method="post" name="TwoFAForm" action="<?= SystemURLs::getRootPath()?>/session/two-factor?recovery">
             <div class="mb-3">
               <label for="TwoFACode"><?= gettext('Recovery Code') ?></label>
-              <input type="text" id="TwoFACode" name="TwoFACode" placeholder="xxxxx-xxxxx" maxlength="20" autocomplete="off" required autofocus>
+              <input type="text" id="TwoFACode" name="TwoFACode" placeholder="xxxxxxxx-xxxxxxxx" maxlength="20" autocomplete="off" required autofocus>
             </div>
 
             <button type="submit" class="btn-sign-in">
@@ -57,6 +57,10 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
 
           <div class="back-link">
             <a href="<?= SystemURLs::getRootPath() ?>/session/two-factor"><?= gettext('Use authenticator app instead') ?></a>
+          </div>
+
+          <div class="back-link">
+            <a href="<?= SystemURLs::getRootPath() ?>/session/begin"><?= gettext('Use a different account') ?></a>
           </div>
 
         <?php else : ?>
