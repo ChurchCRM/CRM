@@ -688,7 +688,7 @@ jobs:
     needs: [test-root, test-subdir, test-new-system, test-new-system-subdir]
     timeout-minutes: 15
     permissions:
-      contents: read
+      contents: write
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -736,6 +736,24 @@ jobs:
         path: temp/ChurchCRM-*.zip
         retention-days: 90
         if-no-files-found: error
+
+    # On master pushes, attach the zip directly to a GitHub Release so it is
+    # downloadable as-is — GitHub Actions artifacts always wrap uploads in an
+    # extra zip, which forces a double-unzip before the file can be used.
+    # The release is created as a draft so it can be reviewed before publishing.
+    - name: Upload to GitHub Release
+      if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        tag="v${{ steps.package-version.outputs.current-version }}"
+        if ! gh release view "$tag" >/dev/null 2>&1; then
+          gh release create "$tag" \
+            --title "ChurchCRM ${{ steps.package-version.outputs.current-version }}" \
+            --generate-notes \
+            --draft
+        fi
+        gh release upload "$tag" temp/ChurchCRM-*.zip --clobber
 
     - name: Build summary
       if: always()
