@@ -32,18 +32,8 @@ describe("Kiosk Device UI", () => {
         }
     });
 
-    it("should show registration disabled when window is closed", () => {
-        // Clear any existing kiosk cookie so we hit the no-cookie + window-closed path
-        cy.clearCookies();
-        cy.request({
-            method: "GET",
-            url: "/kiosk/",
-            failOnStatusCode: false,
-        }).then((response) => {
-            expect(response.status).to.equal(401);
-            expect(response.body).to.contain("Kiosk Registration Disabled");
-        });
-    });
+    // NOTE: the pure-API "registration disabled when window is closed" check
+    // lives in cypress/e2e/api/private/kiosk/kiosk.api.spec.js.
 
     it("should register a new kiosk and show Awaiting Acceptance", () => {
         cy.setupAdminSession();

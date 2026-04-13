@@ -1,4 +1,6 @@
-describe('PHP Error Page - Unauthenticated Access', () => {
+/// <reference types="cypress" />
+
+describe('API Public PHP Error Page', () => {
   /**
    * Test the PHP version error page
    * This tests direct access to php-error.php without authentication

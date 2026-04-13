@@ -243,6 +243,33 @@ describe("Kiosk Device Registration and Visibility (Regression)", () => {
     });
 });
 
+describe("Kiosk Registration Window - Disabled State", () => {
+    beforeEach(() => {
+        // Explicitly close the registration window so the test doesn't depend
+        // on ambient DB state from a previous spec.
+        cy.setupAdminSession();
+        cy.request({
+            method: "POST",
+            url: "/admin/api/system/config/sKioskVisibilityTimestamp",
+            body: { value: "2000-01-01 00:00:00" },
+        });
+    });
+
+    it("GET /kiosk/ returns 401 + 'Kiosk Registration Disabled' when window is closed and no cookie is set", () => {
+        // Clear any existing kiosk/admin cookies so we hit the
+        // no-cookie + window-closed path
+        cy.clearCookies();
+        cy.request({
+            method: "GET",
+            url: "/kiosk/",
+            failOnStatusCode: false,
+        }).then((response) => {
+            expect(response.status).to.equal(401);
+            expect(response.body).to.contain("Kiosk Registration Disabled");
+        });
+    });
+});
+
 describe("Kiosk API - Access Control", () => {
     describe("Standard User Access", () => {
         beforeEach(() => {
