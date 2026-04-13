@@ -355,7 +355,9 @@ function bindEvents() {
   const copyBtn = document.getElementById("copyCodesBtn");
   if (copyBtn) {
     copyBtn.addEventListener("click", () => {
-      const text = state.TwoFARecoveryCodes.map((c, i) => `${String(i + 1).padStart(2, "0")}. ${formatRecoveryCode(c)}`).join("\n");
+      const text = state.TwoFARecoveryCodes.map(
+        (c, i) => `${String(i + 1).padStart(2, "0")}. ${formatRecoveryCode(c)}`,
+      ).join("\n");
       navigator.clipboard.writeText(text).then(() => {
         copyBtn.innerHTML = `<i class="fa-solid fa-check me-1"></i>${t("Copied!")}`;
         setTimeout(() => {
@@ -369,7 +371,9 @@ function bindEvents() {
   const downloadBtn = document.getElementById("downloadCodesBtn");
   if (downloadBtn) {
     downloadBtn.addEventListener("click", () => {
-      const text = state.TwoFARecoveryCodes.map((c, i) => `${String(i + 1).padStart(2, "0")}. ${formatRecoveryCode(c)}`).join("\n");
+      const text = state.TwoFARecoveryCodes.map(
+        (c, i) => `${String(i + 1).padStart(2, "0")}. ${formatRecoveryCode(c)}`,
+      ).join("\n");
       const blob = new Blob([text], { type: "text/plain" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");

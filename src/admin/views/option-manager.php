@@ -41,7 +41,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <i class="fa-solid fa-list me-2"></i>
             <?= gettext('Existing Options') ?>
         </h5>
-        <span class="badge bg-info text-white ms-auto" id="optionCount"><?= $optionRows->count() ?></span>
+        <span class="badge bg-primary text-white ms-auto" id="optionCount"><?= $optionRows->count() ?></span>
     </div>
     <div class="card-body" style="overflow: visible;">
         <table class="table table-hover table-sm mb-0" id="optionsTable">
@@ -202,7 +202,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
             bootbox.confirm({
                 title: i18next.t('Delete Confirmation'),
-                message: i18next.t('Are you sure you want to delete') + ' "' + name + '"?',
+                message: i18next.t('Are you sure you want to delete') + ' "' + window.CRM.escapeHtml(name) + '"?',
                 buttons: {
                     cancel: { label: i18next.t('Cancel'), className: 'btn-secondary' },
                     confirm: { label: i18next.t('Delete'), className: 'btn-danger' }
