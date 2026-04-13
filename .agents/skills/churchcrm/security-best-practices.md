@@ -264,6 +264,40 @@ $userId = $_GET['userId'];  // Could be "1 OR 1=1"
 
 ## Authorization & Access Control
 
+### Block Users With No Admin Permissions <!-- learned: 2026-04-12 -->
+
+Users with `EditSelf=1` and **all other permissions at 0** can log in but have no functional admin access. They must NOT see the full admin UI — instead they should be redirected to a limited-access page.
+
+Use `User::hasNoAdminPermissions()` to detect this state. The check fires in two places:
+
+1. **`PageInit.php`** — for legacy `*.php` pages
+2. **`AuthMiddleware`** — for MVC routes (`/people/`, `/admin/`, `/v2/`) and API endpoints
+
+```php
+// In PageInit.php — runs for legacy pages
+if (AuthenticationManager::getCurrentUser()->hasNoAdminPermissions()) {
+    RedirectUtils::redirect(SystemURLs::getRootPath() . '/external/limited-access');
+}
+
+// In AuthMiddleware (session branch) — runs for MVC pages
+if ($sessionUser->hasNoAdminPermissions()) {
+    if ($this->isBrowserRequest($request)) {
+        return (new Response())->withStatus(302)->withHeader('Location', $rootPath . '/external/limited-access');
+    }
+    return $response->withStatus(403)->withHeader('Content-Type', 'application/json');
+}
+```
+
+The `/external/limited-access` page is in the external module (no auth required) and shows:
+- A "Verify Family Info" button (generates time-limited token bound to user's family)
+- A "Log Out" button
+
+**Reference**: GHSA-5w59-32c8-933v / PR #8616 / Issue #237
+
+### MVC vs Legacy Auth Enforcement Points <!-- learned: 2026-04-12 -->
+
+Permission checks must run in BOTH `AuthMiddleware` (MVC + API) AND `PageInit.php` (legacy). Adding a check in only one leaves a hole — the MVC modules `/people/`, `/admin/`, `/v2/`, `/event/`, `/groups/`, `/finance/` all use `AuthMiddleware`, while legacy `*.php` files in `src/` go through `PageInit.php`.
+
 ### Object-Level Authorization
 
 Check if user can edit SPECIFIC person:

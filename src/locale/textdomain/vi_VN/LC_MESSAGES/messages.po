@@ -15453,3 +15453,111 @@ msgstr "năm"
 msgid "yrs"
 msgstr "năm"
 
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "Đã xảy ra lỗi khi xóa gia đình."
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "Đã xảy ra lỗi khi di chuyển các khoản dâng hiến."
+
+#: 
+msgid "At least one family member is required"
+msgstr "Cần có ít nhất một thành viên gia đình"
+
+#: 
+msgid "Back to Users"
+msgstr "Quay lại Người dùng"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "Không thể xóa gia đình có hồ sơ dâng hiến. Liên hệ quản trị viên tài chính."
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "Không thể di chuyển thuộc tính theo hướng đó"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "Xác nhận Thông tin Gia đình"
+
+#: 
+msgid "Delete failed"
+msgstr "Xóa thất bại"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "Hướng phải là \"lên\" hoặc \"xuống\""
+
+#: 
+msgid "Failed to move donations."
+msgstr "Không thể di chuyển các khoản dâng hiến."
+
+#: 
+msgid "Finance permission required"
+msgstr "Cần quyền tài chính"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "Cần có màu nền trước và màu nền sau."
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "Không tìm thấy nhóm hoặc nhóm không có thuộc tính đặc biệt"
+
+#: 
+msgid "Group role not found"
+msgstr "Không tìm thấy vai trò nhóm"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "Định dạng màu không hợp lệ. Sử dụng màu hex như #FF0000."
+
+#: 
+msgid "Invalid field identifier"
+msgstr "Mã định danh trường không hợp lệ"
+
+#: 
+msgid "Invalid target family"
+msgstr "Gia đình đích không hợp lệ"
+
+#: 
+msgid "Log Out"
+msgstr "Đăng xuất"
+
+#: 
+msgid "Membership not found"
+msgstr "Không tìm thấy tư cách thành viên"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "Mật khẩu đã được thay đổi thành công cho"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "Vui lòng xem lại thông tin gia đình của bạn bên dưới và xác nhận hoặc yêu cầu thay đổi."
+
+#: 
+msgid "Please select a target family."
+msgstr "Vui lòng chọn một gia đình đích."
+
+#: 
+msgid "Target family not found"
+msgstr "Không tìm thấy gia đình đích"
+
+#: 
+msgid "Verify Family Info"
+msgstr "Xác minh Thông tin Gia đình"
+
+#: 
+msgid "Welcome"
+msgstr "Chào mừng"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "Bạn có thể xem lại và xác minh thông tin gia đình của mình bằng liên kết bên dưới. Nếu bạn cần thêm quyền truy cập, vui lòng liên hệ với quản trị viên giáo xứ của bạn."
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "Bạn không có quyền xem người này"
+

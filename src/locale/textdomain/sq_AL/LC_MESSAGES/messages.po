@@ -15456,3 +15456,111 @@ msgstr "vj."
 msgid "yrs"
 msgstr "vje."
 
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "Ndodhi një gabim gjatë fshirjes së familjes."
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "Ndodhi një gabim gjatë transferimit të donacioneve."
+
+#: 
+msgid "At least one family member is required"
+msgstr "Kërkohet të paktën një anëtar familje"
+
+#: 
+msgid "Back to Users"
+msgstr "Kthehu te Përdoruesit"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "Nuk mund të fshihet një familje me rekorde donacionesh. Kontaktoni një administrator financiar."
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "Nuk mund të lëvizet prona në atë drejtim"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "Konfirmo Informacionin e Familjes"
+
+#: 
+msgid "Delete failed"
+msgstr "Fshirja dështoi"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "Drejtimi duhet të jetë \"lart\" ose \"poshtë\""
+
+#: 
+msgid "Failed to move donations."
+msgstr "Dështoi transferimi i donacioneve."
+
+#: 
+msgid "Finance permission required"
+msgstr "Kërkohet leja financiare"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "ForegroundColor dhe BackgroundColor janë të detyrueshme."
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "Grupi nuk u gjet ose nuk ka veti speciale"
+
+#: 
+msgid "Group role not found"
+msgstr "Roli i grupit nuk u gjet"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "Format ngjyre i pavlefshëm. Përdorni ngjyra hex si #FF0000."
+
+#: 
+msgid "Invalid field identifier"
+msgstr "Identifikues fushe i pavlefshëm"
+
+#: 
+msgid "Invalid target family"
+msgstr "Familje cak e pavlefshme"
+
+#: 
+msgid "Log Out"
+msgstr "Dilni"
+
+#: 
+msgid "Membership not found"
+msgstr "Anëtarësia nuk u gjet"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "Fjalëkalimi u ndryshua me sukses për"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "Ju lutemi shqyrtoni informacionin e familjes suaj më poshtë dhe konfirmoni ose kërkoni ndryshime."
+
+#: 
+msgid "Please select a target family."
+msgstr "Ju lutemi zgjidhni një familje cak."
+
+#: 
+msgid "Target family not found"
+msgstr "Familja cak nuk u gjet"
+
+#: 
+msgid "Verify Family Info"
+msgstr "Verifiko Informacionin e Familjes"
+
+#: 
+msgid "Welcome"
+msgstr "Mirësevini"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "Mund të shqyrtoni dhe verifikoni informacionin e familjes suaj duke përdorur lidhjen më poshtë. Nëse keni nevojë për akses shtesë, ju lutemi kontaktoni administratorin e kishës suaj."
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "Nuk keni leje të shihni këtë person"
+

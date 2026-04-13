@@ -15465,3 +15465,111 @@ msgstr "r."
 msgid "yrs"
 msgstr "let"
 
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "Při odstraňování rodiny došlo k chybě."
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "Při přesouvání darů došlo k chybě."
+
+#: 
+msgid "At least one family member is required"
+msgstr "Je vyžadován alespoň jeden člen rodiny"
+
+#: 
+msgid "Back to Users"
+msgstr "Zpět na uživatele"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "Nelze odstranit rodinu se záznamy darů. Kontaktujte správce financí."
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "Nelze přesunout vlastnost tímto směrem"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "Potvrdit informace o rodině"
+
+#: 
+msgid "Delete failed"
+msgstr "Odstranění se nezdařilo"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "Směr musí být \"nahoru\" nebo \"dolů\""
+
+#: 
+msgid "Failed to move donations."
+msgstr "Nepodařilo se přesunout dary."
+
+#: 
+msgid "Finance permission required"
+msgstr "Vyžadováno finanční oprávnění"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "ForegroundColor a BackgroundColor jsou povinné."
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "Skupina nebyla nalezena nebo nemá žádné speciální vlastnosti"
+
+#: 
+msgid "Group role not found"
+msgstr "Role skupiny nebyla nalezena"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "Neplatný formát barvy. Použijte hexadecimální barvy jako #FF0000."
+
+#: 
+msgid "Invalid field identifier"
+msgstr "Neplatný identifikátor pole"
+
+#: 
+msgid "Invalid target family"
+msgstr "Neplatná cílová rodina"
+
+#: 
+msgid "Log Out"
+msgstr "Odhlásit se"
+
+#: 
+msgid "Membership not found"
+msgstr "Členství nebylo nalezeno"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "Heslo bylo úspěšně změněno pro"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "Zkontrolujte prosím níže uvedené informace o rodině a potvrďte nebo vyžádejte změny."
+
+#: 
+msgid "Please select a target family."
+msgstr "Vyberte prosím cílovou rodinu."
+
+#: 
+msgid "Target family not found"
+msgstr "Cílová rodina nebyla nalezena"
+
+#: 
+msgid "Verify Family Info"
+msgstr "Ověřit informace o rodině"
+
+#: 
+msgid "Welcome"
+msgstr "Vítejte"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "Níže uvedeným odkazem můžete zkontrolovat a ověřit informace o své rodině. Pokud potřebujete další přístup, kontaktujte prosím správce vaší církve."
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "Nemáte oprávnění zobrazit tuto osobu"
+

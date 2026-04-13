@@ -15500,3 +15500,111 @@ msgstr "سنة"
 msgid "yrs"
 msgstr "سنوات"
 
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "حدث خطأ أثناء حذف الأسرة."
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "حدث خطأ أثناء نقل التبرعات."
+
+#: 
+msgid "At least one family member is required"
+msgstr "مطلوب عضو واحد على الأقل في الأسرة"
+
+#: 
+msgid "Back to Users"
+msgstr "العودة إلى المستخدمين"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "لا يمكن حذف أسرة لها سجلات تبرعات. اتصل بمسؤول الشؤون المالية."
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "لا يمكن نقل الخاصية في هذا الاتجاه"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "تأكيد معلومات الأسرة"
+
+#: 
+msgid "Delete failed"
+msgstr "فشل الحذف"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "يجب أن يكون الاتجاه \"لأعلى\" أو \"لأسفل\""
+
+#: 
+msgid "Failed to move donations."
+msgstr "فشل نقل التبرعات."
+
+#: 
+msgid "Finance permission required"
+msgstr "مطلوب إذن مالي"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "لون المقدمة ولون الخلفية مطلوبان."
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "لم يتم العثور على المجموعة أو ليس لها خصائص خاصة"
+
+#: 
+msgid "Group role not found"
+msgstr "لم يتم العثور على دور المجموعة"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "تنسيق اللون غير صالح. استخدم ألوان هيكس مثل #FF0000."
+
+#: 
+msgid "Invalid field identifier"
+msgstr "معرّف الحقل غير صالح"
+
+#: 
+msgid "Invalid target family"
+msgstr "الأسرة المستهدفة غير صالحة"
+
+#: 
+msgid "Log Out"
+msgstr "تسجيل الخروج"
+
+#: 
+msgid "Membership not found"
+msgstr "لم يتم العثور على العضوية"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "تم تغيير كلمة المرور بنجاح لـ"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "يرجى مراجعة معلومات أسرتك أدناه وتأكيدها أو طلب التغييرات."
+
+#: 
+msgid "Please select a target family."
+msgstr "يرجى اختيار أسرة مستهدفة."
+
+#: 
+msgid "Target family not found"
+msgstr "لم يتم العثور على الأسرة المستهدفة"
+
+#: 
+msgid "Verify Family Info"
+msgstr "التحقق من معلومات الأسرة"
+
+#: 
+msgid "Welcome"
+msgstr "مرحباً"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "يمكنك مراجعة والتحقق من معلومات أسرتك باستخدام الرابط أدناه. إذا كنت بحاجة إلى وصول إضافي، يرجى التواصل مع مسؤول كنيستك."
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "ليس لديك إذن لعرض هذا الشخص"
+

@@ -15551,3 +15551,111 @@ msgstr "rok"
 msgid "yrs"
 msgstr "lata"
 
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "Wystąpił błąd podczas usuwania rodziny."
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "Wystąpił błąd podczas przenoszenia datków."
+
+#: 
+msgid "At least one family member is required"
+msgstr "Wymagany jest co najmniej jeden członek rodziny"
+
+#: 
+msgid "Back to Users"
+msgstr "Powrót do użytkowników"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "Nie można usunąć rodziny z zapisami datków. Skontaktuj się z administratorem finansowym."
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "Nie można przenieść właściwości w tym kierunku"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "Potwierdź dane rodziny"
+
+#: 
+msgid "Delete failed"
+msgstr "Usuwanie nie powiodło się"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "Kierunek musi być \"w górę\" lub \"w dół\""
+
+#: 
+msgid "Failed to move donations."
+msgstr "Przenoszenie datków nie powiodło się."
+
+#: 
+msgid "Finance permission required"
+msgstr "Wymagane uprawnienie finansowe"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "Kolor tekstu i kolor tła są wymagane."
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "Grupa nie została znaleziona lub nie ma specjalnych właściwości"
+
+#: 
+msgid "Group role not found"
+msgstr "Rola grupy nie została znaleziona"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "Nieprawidłowy format koloru. Używaj kolorów hex, takich jak #FF0000."
+
+#: 
+msgid "Invalid field identifier"
+msgstr "Nieprawidłowy identyfikator pola"
+
+#: 
+msgid "Invalid target family"
+msgstr "Nieprawidłowa rodzina docelowa"
+
+#: 
+msgid "Log Out"
+msgstr "Wyloguj"
+
+#: 
+msgid "Membership not found"
+msgstr "Nie znaleziono członkostwa"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "Hasło zostało pomyślnie zmienione dla"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "Sprawdź poniżej dane swojej rodziny i potwierdź je lub poproś o zmiany."
+
+#: 
+msgid "Please select a target family."
+msgstr "Wybierz rodzinę docelową."
+
+#: 
+msgid "Target family not found"
+msgstr "Rodzina docelowa nie została znaleziona"
+
+#: 
+msgid "Verify Family Info"
+msgstr "Zweryfikuj dane rodziny"
+
+#: 
+msgid "Welcome"
+msgstr "Witamy"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "Możesz przejrzeć i zweryfikować dane swojej rodziny, korzystając z poniższego łącza. Jeśli potrzebujesz dodatkowego dostępu, skontaktuj się z administratorem swojej parafii."
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "Nie masz uprawnień do wyświetlania tej osoby"
+

@@ -12700,6 +12700,10 @@ msgid "Review & Delete"
 msgstr "Επισκόπηση & διαγραφή"
 
 #: 
+msgid "SHA1 Hash"
+msgstr "Κατακερματισμός SHA1"
+
+#: 
 msgid "Setup Instructions"
 msgstr "Οδηγίες ρύθμισης"
 
@@ -15464,4 +15468,112 @@ msgstr "έτ."
 #: 
 msgid "yrs"
 msgstr "έτη"
+
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "Παρουσιάστηκε σφάλμα κατά τη διαγραφή της οικογένειας."
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "Παρουσιάστηκε σφάλμα κατά τη μετακίνηση των δωρεών."
+
+#: 
+msgid "At least one family member is required"
+msgstr "Απαιτείται τουλάχιστον ένα μέλος οικογένειας"
+
+#: 
+msgid "Back to Users"
+msgstr "Επιστροφή στους Χρήστες"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "Δεν είναι δυνατή η διαγραφή οικογένειας με εγγραφές δωρεών. Επικοινωνήστε με έναν διαχειριστή οικονομικών."
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "Δεν είναι δυνατή η μετακίνηση της ιδιότητας σε αυτή την κατεύθυνση"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "Επιβεβαίωση Στοιχείων Οικογένειας"
+
+#: 
+msgid "Delete failed"
+msgstr "Η διαγραφή απέτυχε"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "Η κατεύθυνση πρέπει να είναι \"up\" ή \"down\""
+
+#: 
+msgid "Failed to move donations."
+msgstr "Αποτυχία μετακίνησης δωρεών."
+
+#: 
+msgid "Finance permission required"
+msgstr "Απαιτείται άδεια οικονομικών"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "Απαιτούνται ForegroundColor και BackgroundColor."
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "Η ομάδα δεν βρέθηκε ή δεν έχει ειδικές ιδιότητες"
+
+#: 
+msgid "Group role not found"
+msgstr "Ο ρόλος ομάδας δεν βρέθηκε"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "Μη έγκυρη μορφή χρώματος. Χρησιμοποιήστε χρώματα hex όπως #FF0000."
+
+#: 
+msgid "Invalid field identifier"
+msgstr "Μη έγκυρο αναγνωριστικό πεδίου"
+
+#: 
+msgid "Invalid target family"
+msgstr "Μη έγκυρη οικογένεια στόχος"
+
+#: 
+msgid "Log Out"
+msgstr "Αποσύνδεση"
+
+#: 
+msgid "Membership not found"
+msgstr "Η συνδρομή δεν βρέθηκε"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "Ο κωδικός πρόσβασης άλλαξε επιτυχώς για"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "Παρακαλώ ελέγξτε τις πληροφορίες οικογένειάς σας παρακάτω και επιβεβαιώστε ή ζητήστε αλλαγές."
+
+#: 
+msgid "Please select a target family."
+msgstr "Παρακαλώ επιλέξτε οικογένεια στόχο."
+
+#: 
+msgid "Target family not found"
+msgstr "Η οικογένεια στόχος δεν βρέθηκε"
+
+#: 
+msgid "Verify Family Info"
+msgstr "Επαλήθευση Στοιχείων Οικογένειας"
+
+#: 
+msgid "Welcome"
+msgstr "Καλωσορίσατε"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "Μπορείτε να ελέγξετε και να επαληθεύσετε τις πληροφορίες οικογένειάς σας χρησιμοποιώντας τον παρακάτω σύνδεσμο. Εάν χρειάζεστε πρόσθετη πρόσβαση, παρακαλώ επικοινωνήστε με τον διαχειριστή της εκκλησίας σας."
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "Δεν έχετε άδεια να δείτε αυτό το άτομο"
 

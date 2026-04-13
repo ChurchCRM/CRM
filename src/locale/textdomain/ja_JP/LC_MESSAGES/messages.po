@@ -15405,3 +15405,111 @@ msgstr "年"
 msgid "yrs"
 msgstr "年"
 
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "家族の削除中にエラーが発生しました。"
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "献金の移動中にエラーが発生しました。"
+
+#: 
+msgid "At least one family member is required"
+msgstr "少なくとも1人の家族メンバーが必要です"
+
+#: 
+msgid "Back to Users"
+msgstr "ユーザー一覧に戻る"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "献金記録のある家族は削除できません。財務管理者にお問い合わせください。"
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "その方向にプロパティを移動できません"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "家族情報を確認"
+
+#: 
+msgid "Delete failed"
+msgstr "削除に失敗しました"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "方向は \"up\" または \"down\" でなければなりません"
+
+#: 
+msgid "Failed to move donations."
+msgstr "献金の移動に失敗しました。"
+
+#: 
+msgid "Finance permission required"
+msgstr "財務権限が必要です"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "前景色と背景色は必須です。"
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "グループが見つからないか、特別なプロパティがありません"
+
+#: 
+msgid "Group role not found"
+msgstr "グループロールが見つかりません"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "無効な色の形式です。#FF0000 のような16進数カラーを使用してください。"
+
+#: 
+msgid "Invalid field identifier"
+msgstr "無効なフィールド識別子です"
+
+#: 
+msgid "Invalid target family"
+msgstr "無効なターゲット家族です"
+
+#: 
+msgid "Log Out"
+msgstr "ログアウト"
+
+#: 
+msgid "Membership not found"
+msgstr "メンバーシップが見つかりません"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "パスワードが正常に変更されました："
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "以下の家族情報を確認し、確定するか変更を申請してください。"
+
+#: 
+msgid "Please select a target family."
+msgstr "ターゲット家族を選択してください。"
+
+#: 
+msgid "Target family not found"
+msgstr "ターゲット家族が見つかりません"
+
+#: 
+msgid "Verify Family Info"
+msgstr "家族情報を検証"
+
+#: 
+msgid "Welcome"
+msgstr "ようこそ"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "以下のリンクを使用して、家族情報を確認・検証できます。追加のアクセスが必要な場合は、教会の管理者にお問い合わせください。"
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "この人を閲覧する権限がありません"
+

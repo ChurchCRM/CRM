@@ -15641,3 +15641,111 @@ msgstr "年"
 msgid "yrs"
 msgstr "年"
 
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "刪除家庭時發生錯誤。"
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "移動奉獻記錄時發生錯誤。"
+
+#: 
+msgid "At least one family member is required"
+msgstr "至少需要一名家庭成員"
+
+#: 
+msgid "Back to Users"
+msgstr "返回使用者列表"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "無法刪除有奉獻記錄的家庭。請聯絡財務管理員。"
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "無法向該方向移動屬性"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "確認家庭資訊"
+
+#: 
+msgid "Delete failed"
+msgstr "刪除失敗"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "方向必須是\"上\"或\"下\""
+
+#: 
+msgid "Failed to move donations."
+msgstr "移動奉獻記錄失敗。"
+
+#: 
+msgid "Finance permission required"
+msgstr "需要財務權限"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "前景色和背景色為必填項。"
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "找不到群組或群組沒有特殊屬性"
+
+#: 
+msgid "Group role not found"
+msgstr "找不到群組角色"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "顏色格式無效。請使用十六進位顏色，如 #FF0000。"
+
+#: 
+msgid "Invalid field identifier"
+msgstr "無效的欄位識別碼"
+
+#: 
+msgid "Invalid target family"
+msgstr "無效的目標家庭"
+
+#: 
+msgid "Log Out"
+msgstr "登出"
+
+#: 
+msgid "Membership not found"
+msgstr "找不到會籍"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "密碼已成功變更："
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "請查看以下家庭資訊，並確認或申請變更。"
+
+#: 
+msgid "Please select a target family."
+msgstr "請選擇目標家庭。"
+
+#: 
+msgid "Target family not found"
+msgstr "找不到目標家庭"
+
+#: 
+msgid "Verify Family Info"
+msgstr "驗證家庭資訊"
+
+#: 
+msgid "Welcome"
+msgstr "歡迎"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "您可以使用以下連結查看和驗證您的家庭資訊。如需更多存取權限，請聯絡您的教會管理員。"
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "您沒有權限查看此人"
+

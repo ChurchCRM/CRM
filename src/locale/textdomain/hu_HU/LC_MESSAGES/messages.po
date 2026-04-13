@@ -15525,3 +15525,111 @@ msgstr "év"
 msgid "yrs"
 msgstr "év"
 
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "Hiba történt a család törlésekor."
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "Hiba történt az adományok áthelyezésekor."
+
+#: 
+msgid "At least one family member is required"
+msgstr "Legalább egy családtag szükséges"
+
+#: 
+msgid "Back to Users"
+msgstr "Vissza a felhasználókhoz"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "Nem törölhető olyan család, amelyhez adományok vannak rögzítve. Lépjen kapcsolatba a pénzügyi adminisztrátorral."
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "Nem lehet a tulajdonságot abba az irányba mozgatni"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "Családi adatok megerősítése"
+
+#: 
+msgid "Delete failed"
+msgstr "Törlés sikertelen"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "Az iránynak \"fel\" vagy \"le\" kell lennie"
+
+#: 
+msgid "Failed to move donations."
+msgstr "Az adományok áthelyezése sikertelen volt."
+
+#: 
+msgid "Finance permission required"
+msgstr "Pénzügyi jogosultság szükséges"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "ForegroundColor és BackgroundColor megadása kötelező."
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "A csoport nem található, vagy nincs különleges tulajdonsága"
+
+#: 
+msgid "Group role not found"
+msgstr "A csoport szerepköre nem található"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "Érvénytelen színformátum. Használjon hex színeket, például #FF0000."
+
+#: 
+msgid "Invalid field identifier"
+msgstr "Érvénytelen mezőazonosító"
+
+#: 
+msgid "Invalid target family"
+msgstr "Érvénytelen célcsalád"
+
+#: 
+msgid "Log Out"
+msgstr "Kijelentkezés"
+
+#: 
+msgid "Membership not found"
+msgstr "A tagság nem található"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "A jelszó sikeresen megváltozott a következő felhasználónál:"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "Kérjük, tekintse át az alábbi családi adatait, és erősítse meg, vagy kérjen módosítást."
+
+#: 
+msgid "Please select a target family."
+msgstr "Kérjük, válasszon célcsaládot."
+
+#: 
+msgid "Target family not found"
+msgstr "A célcsalád nem található"
+
+#: 
+msgid "Verify Family Info"
+msgstr "Családi adatok ellenőrzése"
+
+#: 
+msgid "Welcome"
+msgstr "Üdvözöljük"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "Az alábbi hivatkozással áttekintheti és megerősítheti családi adatait. Ha további hozzáférésre van szüksége, kérjük, lépjen kapcsolatba az egyháza adminisztrátorával."
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "Nincs jogosultsága megtekinteni ezt a személyt"
+

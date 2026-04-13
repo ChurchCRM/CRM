@@ -15422,3 +15422,111 @@ msgstr "taon"
 msgid "yrs"
 msgstr "taon"
 
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "Nagkaroon ng error habang tinatanggal ang pamilya."
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "Nagkaroon ng error habang inililipat ang mga donasyon."
+
+#: 
+msgid "At least one family member is required"
+msgstr "Kailangan ng hindi bababa sa isang miyembro ng pamilya"
+
+#: 
+msgid "Back to Users"
+msgstr "Bumalik sa mga Gumagamit"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "Hindi maaaring tanggalin ang pamilyang may mga rekord ng donasyon. Makipag-ugnayan sa administrador ng pananalapi."
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "Hindi maililipat ang property sa direksyong iyon"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "Kumpirmahin ang Impormasyon ng Pamilya"
+
+#: 
+msgid "Delete failed"
+msgstr "Nabigo ang pagtanggal"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "Ang direksyon ay dapat na \"up\" o \"down\""
+
+#: 
+msgid "Failed to move donations."
+msgstr "Nabigo ang paglipat ng mga donasyon."
+
+#: 
+msgid "Finance permission required"
+msgstr "Kailangan ng pahintulot sa pananalapi"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "Ang ForegroundColor at BackgroundColor ay kinakailangan."
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "Hindi nahanap ang grupo o wala itong espesyal na katangian"
+
+#: 
+msgid "Group role not found"
+msgstr "Hindi nahanap ang papel ng grupo"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "Maling format ng kulay. Gumamit ng hex na kulay tulad ng #FF0000."
+
+#: 
+msgid "Invalid field identifier"
+msgstr "Maling identifier ng field"
+
+#: 
+msgid "Invalid target family"
+msgstr "Maling target na pamilya"
+
+#: 
+msgid "Log Out"
+msgstr "Mag-sign Out"
+
+#: 
+msgid "Membership not found"
+msgstr "Hindi nahanap ang membership"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "Matagumpay na nabago ang password para sa"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "Mangyaring suriin ang inyong impormasyon ng pamilya sa ibaba at kumpirmahin o humiling ng mga pagbabago."
+
+#: 
+msgid "Please select a target family."
+msgstr "Mangyaring pumili ng target na pamilya."
+
+#: 
+msgid "Target family not found"
+msgstr "Hindi nahanap ang target na pamilya"
+
+#: 
+msgid "Verify Family Info"
+msgstr "I-verify ang Impormasyon ng Pamilya"
+
+#: 
+msgid "Welcome"
+msgstr "Maligayang pagdating"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "Maaari ninyong suriin at i-verify ang inyong impormasyon ng pamilya gamit ang link sa ibaba. Kung kailangan ninyo ng karagdagang access, mangyaring makipag-ugnayan sa inyong administrador ng simbahan."
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "Wala kang pahintulot na tingnan ang taong ito"
+

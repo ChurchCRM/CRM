@@ -15428,3 +15428,111 @@ msgstr "v."
 msgid "yrs"
 msgstr "v."
 
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "Perheen poistamisessa tapahtui virhe."
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "Lahjoitusten siirtämisessä tapahtui virhe."
+
+#: 
+msgid "At least one family member is required"
+msgstr "Vähintään yksi perheenjäsen vaaditaan"
+
+#: 
+msgid "Back to Users"
+msgstr "Takaisin käyttäjiin"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "Lahjoitustietoja sisältävää perhettä ei voi poistaa. Ota yhteyttä taloushallinnon ylläpitäjään."
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "Ominaisuutta ei voi siirtää kyseiseen suuntaan"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "Vahvista perhetiedot"
+
+#: 
+msgid "Delete failed"
+msgstr "Poisto epäonnistui"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "Suunnan täytyy olla \"ylös\" tai \"alas\""
+
+#: 
+msgid "Failed to move donations."
+msgstr "Lahjoitusten siirtäminen epäonnistui."
+
+#: 
+msgid "Finance permission required"
+msgstr "Taloushallinnon oikeudet vaaditaan"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "ForegroundColor ja BackgroundColor ovat pakollisia."
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "Ryhmää ei löydy tai sillä ei ole erityisominaisuuksia"
+
+#: 
+msgid "Group role not found"
+msgstr "Ryhmän roolia ei löydy"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "Virheellinen värimuoto. Käytä hex-värejä kuten #FF0000."
+
+#: 
+msgid "Invalid field identifier"
+msgstr "Virheellinen kenttätunniste"
+
+#: 
+msgid "Invalid target family"
+msgstr "Virheellinen kohdeperhe"
+
+#: 
+msgid "Log Out"
+msgstr "Kirjaudu ulos"
+
+#: 
+msgid "Membership not found"
+msgstr "Jäsenyyttä ei löydy"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "Salasana vaihdettu onnistuneesti käyttäjälle"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "Tarkasta alla olevat perhetietosi ja vahvista tai pyydä muutoksia."
+
+#: 
+msgid "Please select a target family."
+msgstr "Valitse kohdeperhe."
+
+#: 
+msgid "Target family not found"
+msgstr "Kohdeperhettä ei löydy"
+
+#: 
+msgid "Verify Family Info"
+msgstr "Vahvista perhetiedot"
+
+#: 
+msgid "Welcome"
+msgstr "Tervetuloa"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "Voit tarkastaa ja vahvistaa perhetietosi alla olevan linkin kautta. Jos tarvitset lisää käyttöoikeuksia, ota yhteyttä seurakuntasi ylläpitäjään."
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "Sinulla ei ole oikeutta tarkastella tätä henkilöä"
+

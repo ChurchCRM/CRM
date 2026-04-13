@@ -15425,3 +15425,111 @@ msgstr "वर्ष"
 msgid "yrs"
 msgstr "वर्ष"
 
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "परिवार को हटाते समय एक त्रुटि हुई।"
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "दान स्थानांतरित करते समय एक त्रुटि हुई।"
+
+#: 
+msgid "At least one family member is required"
+msgstr "कम से कम एक परिवार के सदस्य की आवश्यकता है"
+
+#: 
+msgid "Back to Users"
+msgstr "उपयोगकर्ताओं पर वापस जाएं"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "दान रिकॉर्ड वाले परिवार को हटाया नहीं जा सकता। वित्त प्रशासक से संपर्क करें।"
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "उस दिशा में संपत्ति नहीं ले जाई जा सकती"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "परिवार की जानकारी की पुष्टि करें"
+
+#: 
+msgid "Delete failed"
+msgstr "हटाना विफल रहा"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "दिशा \"ऊपर\" या \"नीचे\" होनी चाहिए"
+
+#: 
+msgid "Failed to move donations."
+msgstr "दान स्थानांतरित करने में विफल रहा।"
+
+#: 
+msgid "Finance permission required"
+msgstr "वित्त अनुमति आवश्यक है"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "ForegroundColor और BackgroundColor आवश्यक हैं।"
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "समूह नहीं मिला या उसमें कोई विशेष गुण नहीं है"
+
+#: 
+msgid "Group role not found"
+msgstr "समूह भूमिका नहीं मिली"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "अमान्य रंग प्रारूप। #FF0000 जैसे हेक्स रंगों का उपयोग करें।"
+
+#: 
+msgid "Invalid field identifier"
+msgstr "अमान्य फ़ील्ड पहचानकर्ता"
+
+#: 
+msgid "Invalid target family"
+msgstr "अमान्य लक्षित परिवार"
+
+#: 
+msgid "Log Out"
+msgstr "लॉग आउट"
+
+#: 
+msgid "Membership not found"
+msgstr "सदस्यता नहीं मिली"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "के लिए पासवर्ड सफलतापूर्वक बदल दिया गया"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "कृपया नीचे अपनी पारिवारिक जानकारी की समीक्षा करें और पुष्टि करें या परिवर्तन का अनुरोध करें।"
+
+#: 
+msgid "Please select a target family."
+msgstr "कृपया एक लक्षित परिवार चुनें।"
+
+#: 
+msgid "Target family not found"
+msgstr "लक्षित परिवार नहीं मिला"
+
+#: 
+msgid "Verify Family Info"
+msgstr "परिवार की जानकारी सत्यापित करें"
+
+#: 
+msgid "Welcome"
+msgstr "स्वागत है"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "आप नीचे दिए गए लिंक का उपयोग करके अपनी पारिवारिक जानकारी की समीक्षा और सत्यापन कर सकते हैं। यदि आपको अतिरिक्त पहुंच की आवश्यकता है, तो कृपया अपने चर्च प्रशासक से संपर्क करें।"
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "आपको इस व्यक्ति को देखने की अनुमति नहीं है"
+

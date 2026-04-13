@@ -15433,3 +15433,111 @@ msgstr "año"
 msgid "yrs"
 msgstr "años"
 
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "Se produjo un error al eliminar la familia."
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "Se produjo un error al mover las donaciones."
+
+#: 
+msgid "At least one family member is required"
+msgstr "Se requiere al menos un miembro de la familia"
+
+#: 
+msgid "Back to Users"
+msgstr "Volver a Usuarios"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "No se puede eliminar una familia con registros de donaciones. Contactá a un administrador de finanzas."
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "No se puede mover la propiedad en esa dirección"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "Confirmar información familiar"
+
+#: 
+msgid "Delete failed"
+msgstr "Error al eliminar"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "La dirección debe ser \"arriba\" o \"abajo\""
+
+#: 
+msgid "Failed to move donations."
+msgstr "Error al mover las donaciones."
+
+#: 
+msgid "Finance permission required"
+msgstr "Se requiere permiso de finanzas"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "Se requieren ForegroundColor y BackgroundColor."
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "Grupo no encontrado o sin propiedades especiales"
+
+#: 
+msgid "Group role not found"
+msgstr "Rol de grupo no encontrado"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "Formato de color inválido. Usá colores hexadecimales como #FF0000."
+
+#: 
+msgid "Invalid field identifier"
+msgstr "Identificador de campo inválido"
+
+#: 
+msgid "Invalid target family"
+msgstr "Familia destino inválida"
+
+#: 
+msgid "Log Out"
+msgstr "Cerrar sesión"
+
+#: 
+msgid "Membership not found"
+msgstr "Membresía no encontrada"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "Contraseña cambiada exitosamente para"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "Por favor revisá tu información familiar a continuación y confirmá o solicitá cambios."
+
+#: 
+msgid "Please select a target family."
+msgstr "Por favor seleccioná una familia destino."
+
+#: 
+msgid "Target family not found"
+msgstr "Familia destino no encontrada"
+
+#: 
+msgid "Verify Family Info"
+msgstr "Verificar información familiar"
+
+#: 
+msgid "Welcome"
+msgstr "Bienvenido"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "Podés revisar y verificar tu información familiar usando el enlace a continuación. Si necesitás acceso adicional, por favor contactá al administrador de tu iglesia."
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "No tenés permiso para ver a esta persona"
+
