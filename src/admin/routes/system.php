@@ -75,7 +75,9 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
     $group->get('/options', function (Request $request, Response $response): Response {
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
         $queryParams = $request->getQueryParams();
-        $mode = InputUtils::legacyFilterInput($queryParams['mode'] ?? '');
+        // Mode is a simple string — use sanitizeText (no SQL context needed).
+        // Avoid legacyFilterInput which depends on the $cnInfoCentral global.
+        $mode = InputUtils::sanitizeText((string) ($queryParams['mode'] ?? ''));
 
         $customListId = (int) ($queryParams['ListID'] ?? 0);
 
