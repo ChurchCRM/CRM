@@ -517,6 +517,7 @@ class User extends BaseUser
         // and store as an encrypted, comma-separated list
         $recoveryCodes = [];
         for ($i = 0; $i < 12; $i++) {
+            // random_bytes(5) yields 10 hex characters; split into two 5-char segments for XXXXX-XXXXX format
             $hex = bin2hex(random_bytes(5));
             $recoveryCodes[$i] = substr($hex, 0, 5) . '-' . substr($hex, 5, 5);
         }
