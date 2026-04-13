@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-12 16:23+0000\n"
+"POT-Creation-Date: 2026-04-13 19:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,9 +31,6 @@ msgid " Deposit #"
 msgstr ""
 
 msgid " Italic"
-msgstr ""
-
-msgid " by that name already exists."
 msgstr ""
 
 msgid " characters long"
@@ -226,9 +223,6 @@ msgid "4. Kiosk"
 msgstr ""
 
 msgid "A"
-msgstr ""
-
-msgid "A "
 msgstr ""
 
 msgid "A Calendar access token has been generated and saved."
@@ -846,6 +840,9 @@ msgid "An individual church member. Stores name, birthday, personal email, and m
 msgstr ""
 
 msgid "An invalid configuration name has been requested"
+msgstr ""
+
+msgid "An option with that name already exists"
 msgstr ""
 
 msgid "An unexpected error occurred while processing your request. Please contact your administrator for assistance."
@@ -1626,6 +1623,9 @@ msgstr ""
 msgid "Cannot delete a family with donation records. Contact a finance administrator."
 msgstr ""
 
+msgid "Cannot delete the only remaining option"
+msgstr ""
+
 #, php-format
 msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
 msgstr ""
@@ -2034,6 +2034,9 @@ msgid "Clicking \"Open GitHub Issue\" will open a new tab with your system info 
 msgstr ""
 
 msgid "Clipboard API not available. Please copy the URL manually."
+msgstr ""
+
+msgid "Clipboard not available. Please use the Download button to save your codes."
 msgstr ""
 
 #. Context: countries
@@ -2598,16 +2601,13 @@ msgstr ""
 msgid "Custom Fields"
 msgstr ""
 
-msgid "Custom List Option"
-msgstr ""
-
-msgid "Custom List Options"
-msgstr ""
-
 msgid "Custom List Options Editor"
 msgstr ""
 
 msgid "Custom Menu Links"
+msgstr ""
+
+msgid "Custom Option"
 msgstr ""
 
 msgid "Custom Person Fields"
@@ -3247,9 +3247,6 @@ msgstr ""
 msgid "Duplicate Emails"
 msgstr ""
 
-msgid "Duplicate name found."
-msgstr ""
-
 msgid "Duplicates"
 msgstr ""
 
@@ -3663,6 +3660,12 @@ msgstr ""
 msgid "Enter note text here..."
 msgstr ""
 
+msgid "Enter one of your backup recovery codes"
+msgstr ""
+
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr ""
+
 msgid "Enter sermon notes or event text..."
 msgstr ""
 
@@ -3741,12 +3744,6 @@ msgid "Error sending email(s)"
 msgstr ""
 
 msgid "Error text"
-msgstr ""
-
-msgid "Error:"
-msgstr ""
-
-msgid "Error: Duplicate"
 msgstr ""
 
 msgid "Error: Invalid Editor ID!"
@@ -3888,9 +3885,6 @@ msgstr ""
 msgid "Execute Query"
 msgstr ""
 
-msgid "Existing"
-msgstr ""
-
 msgid "Existing Custom Family Fields"
 msgstr ""
 
@@ -3901,6 +3895,9 @@ msgid "Existing Donation Funds"
 msgstr ""
 
 msgid "Existing Group Properties"
+msgstr ""
+
+msgid "Existing Options"
 msgstr ""
 
 msgid "Existing Volunteer Opportunities"
@@ -4221,12 +4218,6 @@ msgid "Family Cell Phone"
 msgstr ""
 
 msgid "Family Custom Fields"
-msgstr ""
-
-msgid "Family Custom List Option"
-msgstr ""
-
-msgid "Family Custom List Options"
 msgstr ""
 
 msgid "Family Custom List Options Editor"
@@ -5037,6 +5028,9 @@ msgstr ""
 msgid "Group not found"
 msgstr ""
 
+msgid "Group not found for this role list"
+msgstr ""
+
 msgid "Group not found or has no special properties"
 msgstr ""
 
@@ -5384,6 +5378,9 @@ msgstr ""
 msgid "Inactive Groups"
 msgstr ""
 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr ""
+
 msgid "Include"
 msgstr ""
 
@@ -5628,9 +5625,6 @@ msgid "Italy (Italia)"
 msgstr ""
 
 msgid "Item"
-msgstr ""
-
-msgid "Item deleted successfully"
 msgstr ""
 
 #. Context: countries
@@ -6200,9 +6194,6 @@ msgstr ""
 msgid "Manage additional preferences like email delimiters and display options"
 msgstr ""
 
-msgid "Manage classification lists, roles, and group types"
-msgstr ""
-
 msgid "Manage donation funds for financial tracking"
 msgstr ""
 
@@ -6694,9 +6685,6 @@ msgid "Name & Identity"
 msgstr ""
 
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
-msgstr ""
-
-msgid "Name for New"
 msgstr ""
 
 msgid "Name, address, contact details"
@@ -7309,7 +7297,10 @@ msgstr ""
 msgid "Opportunity"
 msgstr ""
 
-msgid "Option"
+msgid "Option name is required"
+msgstr ""
+
+msgid "Option not found"
 msgstr ""
 
 msgid "Optional - Add sermon notes or additional event details"
@@ -7334,9 +7325,6 @@ msgid "Optional — record who is checking this person out (e.g. a parent pickin
 msgstr ""
 
 msgid "Optional. URL for your church website."
-msgstr ""
-
-msgid "Options"
 msgstr ""
 
 msgid "Orange"
@@ -7623,12 +7611,6 @@ msgid "Person Classifications Editor"
 msgstr ""
 
 msgid "Person Custom Fields"
-msgstr ""
-
-msgid "Person Custom List Option"
-msgstr ""
-
-msgid "Person Custom List Options"
 msgstr ""
 
 msgid "Person Custom List Options Editor"
@@ -8317,6 +8299,9 @@ msgstr ""
 msgid "Records to export"
 msgstr ""
 
+msgid "Recovery Code"
+msgstr ""
+
 msgid "Recovery Codes"
 msgstr ""
 
@@ -8894,9 +8879,6 @@ msgid "Security First"
 msgstr ""
 
 msgid "Security Group"
-msgstr ""
-
-msgid "Security Groups"
 msgstr ""
 
 msgid "Security Groups Editor"
@@ -10023,9 +10005,6 @@ msgstr ""
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr ""
 
-msgid "This will remove it from all people currently assigned to it."
-msgstr ""
-
 msgid "This will replace any previously enrolled 2FA methods"
 msgstr ""
 
@@ -10365,6 +10344,9 @@ msgstr ""
 msgid "Unable to copy to clipboard. Please copy the URL manually."
 msgstr ""
 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr ""
+
 msgid "Unable to display map: church address has not been geocoded yet."
 msgstr ""
 
@@ -10556,13 +10538,22 @@ msgstr ""
 msgid "Use Ctrl Key to select multiple"
 msgstr ""
 
+msgid "Use Recovery Code"
+msgstr ""
+
 msgid "Use Title Page"
 msgstr ""
 
 msgid "Use a different account"
 msgstr ""
 
+msgid "Use a recovery code instead"
+msgstr ""
+
 msgid "Use address/contact data from"
+msgstr ""
+
+msgid "Use authenticator app instead"
 msgstr ""
 
 msgid "Use classification and family filters to generate reports for specific groups of donors."
@@ -11458,9 +11449,6 @@ msgstr ""
 msgid "and"
 msgstr ""
 
-msgid "are not allowed."
-msgstr ""
-
 msgid "assigned"
 msgstr ""
 
@@ -11655,9 +11643,6 @@ msgid "opportunities"
 msgstr ""
 
 msgid "optional"
-msgstr ""
-
-msgid "options"
 msgstr ""
 
 msgid "or click to browse"
