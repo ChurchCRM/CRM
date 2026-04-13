@@ -214,10 +214,10 @@ function renderSuccess() {
                 <button type="button" class="btn btn-outline-secondary" id="printCodesBtn">
                   <i class="fa-solid fa-print me-1"></i>${t("Print")}
                 </button>
-                <button type="button" class="btn btn-outline-secondary" id="copyCodesBtn">
+                <button type="button" class="btn btn-outline-secondary" id="copyCodesBtn" ${state.TwoFARecoveryCodes.length === 0 ? "disabled" : ""}>
                   <i class="fa-solid fa-copy me-1"></i>${t("Copy")}
                 </button>
-                <button type="button" class="btn btn-outline-secondary" id="downloadCodesBtn">
+                <button type="button" class="btn btn-outline-secondary" id="downloadCodesBtn" ${state.TwoFARecoveryCodes.length === 0 ? "disabled" : ""}>
                   <i class="fa-solid fa-download me-1"></i>${t("Download")}
                 </button>
               </div>
@@ -348,12 +348,42 @@ function bindEvents() {
   if (copyBtn) {
     copyBtn.addEventListener("click", () => {
       const text = state.TwoFARecoveryCodes.map((c, i) => `${String(i + 1).padStart(2, "0")}. ${c}`).join("\n");
-      navigator.clipboard.writeText(text).then(() => {
+      const showCopied = () => {
         copyBtn.innerHTML = `<i class="fa-solid fa-check me-1"></i>${t("Copied!")}`;
         setTimeout(() => {
           copyBtn.innerHTML = `<i class="fa-solid fa-copy me-1"></i>${t("Copy")}`;
         }, 2000);
-      });
+      };
+      if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+        navigator.clipboard
+          .writeText(text)
+          .then(showCopied)
+          .catch(() => {
+            // Fallback for permission denied
+            const ta = document.createElement("textarea");
+            ta.value = text;
+            ta.setAttribute("readonly", "");
+            ta.style.position = "absolute";
+            ta.style.left = "-9999px";
+            document.body.appendChild(ta);
+            try {
+              ta.select();
+              document.execCommand("copy");
+              document.body.removeChild(ta);
+              showCopied();
+            } catch (_e) {
+              document.body.removeChild(ta);
+              if (typeof bootbox !== "undefined") {
+                bootbox.alert(t("Unable to copy to clipboard. Please copy the codes manually."));
+              }
+            }
+          });
+      } else {
+        // Non-secure context — clipboard API unavailable
+        if (typeof bootbox !== "undefined") {
+          bootbox.alert(t("Clipboard not available. Please use the Download button to save your codes."));
+        }
+      }
     });
   }
 
