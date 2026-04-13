@@ -73,12 +73,13 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 
 ## Plugins
 
-| Skill | When to Use |
-|-------|------------|
-| [Plugin System](./plugin-system.md) | Plugin architecture, hooks, PluginManager |
-| [Plugin Development](./plugin-development.md) | Creating/modifying plugins |
-| [Plugin Migration](./plugin-migration.md) | Migrating plugins to new structure |
-| [Plugin Security Scan](./plugin-security-scan.md) | **Required** review checklist before approving any community plugin for URL install |
+| Skill | Audience | When to Use |
+|-------|----------|------------|
+| [Plugin System](./plugin-system.md) | All | Runtime architecture — PluginManager, hooks, install flow, plugin-local localization loader |
+| [Plugin Development](./plugin-development.md) | Plugin authors | Building a plugin end-to-end. **Start here, and read the security-scan preamble at the top before writing code.** Covers allowed/forbidden capabilities, hooks, sandboxed config, and plugin-local translations. |
+| [Plugin Migration](./plugin-migration.md) | Plugin authors | Checklist when bumping a plugin to a new core version — manifest, community install flow, localization migration |
+| [Plugin Security Scan](./plugin-security-scan.md) | ChurchCRM maintainers | **Required** review checklist before approving a community plugin for `src/plugins/approved-plugins.json`. Covers intake, static analysis, risk classification, and the 2026 plugin standards reference. |
+| [Plugin Compliance (Admin Audit)](./plugin-compliance.md) | Site admins | Monthly/quarterly scans of already-installed community plugins. Read the approved list, verify on-disk state, re-run the orphan scan, respond to revoked plugins. |
 
 ## Testing
 

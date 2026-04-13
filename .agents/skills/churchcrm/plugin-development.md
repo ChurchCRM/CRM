@@ -215,6 +215,95 @@ $app->group('/my-plugin/api', function (RouteCollectorProxy $group) use ($plugin
 });
 ```
 
+## What a Plugin Can and Cannot Do <!-- learned: 2026-04-13 -->
+
+This section is the quick-reference contract every ChurchCRM plugin is
+held to. The capability tags match `ApprovedPluginRegistry::KNOWN_PERMISSIONS`
+— if you do something on this list, you must declare the corresponding
+tag in the approved registry entry. If you want to do something not on
+this list, open an issue before shipping.
+
+### ✅ Allowed (declare the matching tag)
+
+| What the plugin does | Tag to declare |
+|----------------------|----------------|
+| Read its own config (`plugin.{id}.*`) via `$this->getConfigValue()` | *(no tag needed — sandboxed)* |
+| Write its own config via `$this->setConfigValue()` | *(no tag needed — sandboxed)* |
+| Call outbound HTTPS APIs | `network.outbound` |
+| Expose new HTTP routes via `routes/routes.php` | `network.inbound` |
+| Read rows via Propel queries (e.g. `PersonQuery::create()->find()`) | `db.read` |
+| Write rows via Propel (`->save()`, `doUpdate`, `doDelete`) | `db.write` |
+| Store an API key or secret in its own config | `secrets.store` |
+| Inject HTML/JS/CSS into core pages via `getHeadContent()` / `getFooterContent()` | `ui.inject` |
+| Register a cron handler on `Hooks::CRON_RUN` | `cron` |
+| Subscribe to `PERSON_*` or `FAMILY_*` hooks | `hooks.person` / `hooks.family` |
+| Subscribe to `DONATION_*` or `DEPOSIT_*` hooks | `hooks.financial` |
+| Subscribe to `EMAIL_*` hooks | `hooks.email` |
+| Send email through ChurchCRM's mailer | `email.send` |
+| Send SMS through a configured gateway | `sms.send` |
+| Ship plugin-local translations | *(no tag needed — see Localization section)* |
+| Read/write files **inside your own plugin directory** | *(no tag needed — staging only, nothing user-facing)* |
+
+### ❌ Forbidden
+
+These are not reviewer preferences — `PluginInstaller` and the runtime
+reject every item on this list. The plugin simply will not install or
+run if it violates any of them.
+
+- **Writing any PHP file outside your own plugin directory.** No
+  self-updaters, no core patches, no `/tmp` shell helpers, no
+  `file_put_contents()` outside `{pluginDir}`.
+- **Reading another plugin's config** or tampering with
+  `plugin.{other}.enabled`. The `AbstractPlugin` config helpers are
+  scoped to your plugin id and cannot reach other keys.
+- **Modifying the `messages` gettext domain** or submitting strings to
+  the core `locale/messages.po`. Community plugins are out of scope
+  for POeditor — use `dgettext('{pluginId}', ...)` and ship `.mo` /
+  `.json` inside the plugin directory (see the Localization section).
+- **Shipping `.phar`, `.phtml`, `.pht`, `.sh`, `.bat`, `.cmd`, `.exe`,
+  `.so`, `.dll`** or any binary that isn't a documented image/font
+  asset. `PluginInstaller::assertAllowedExtension()` rejects these.
+- **Shipping symlinks, hidden files (except `.editorconfig` /
+  `.gitattributes`), or entries containing `..` / absolute paths.**
+  `PluginInstaller::assertSafeZipEntry()` rejects these.
+- **Calling `eval()`, `create_function()`, `assert()` with string
+  arguments, `preg_replace(..., '/e')`, `include $userInput`,
+  `passthru`, `shell_exec`, `proc_open`, `system`, `pcntl_exec`,
+  `extract($_POST)`, `parse_str($_POST)`, or `unserialize` on any
+  attacker-reachable input.** These are the sinks `plugin-security-scan.md`
+  greps for, and every hit must have a documented reason or the
+  plugin is rejected.
+- **Running `base64_decode(...)` on a bundled blob at runtime** to
+  reconstitute code. If you need to hide a string, you are doing
+  something we do not want to approve.
+- **Bypassing the route middleware stack.** Every plugin route inherits
+  `AuthMiddleware`, `ChurchInfoRequiredMiddleware`, and
+  `VersionMiddleware` from the plugins entry point. Do not try to
+  mount raw PHP files under `src/plugins/community/{id}/` and call
+  them directly — the installer allows them on disk but they are not
+  reachable through the router.
+- **Storing secrets anywhere other than `plugin.{id}.{key}` SystemConfig
+  entries.** No env files, no JSON in the plugin directory, no
+  hardcoded constants. Password-type settings are masked in the admin
+  UI automatically.
+- **Exposing unauthenticated write routes.** Plugin routes that mutate
+  state must honour ChurchCRM's auth middleware. Public GET endpoints
+  are fine for status/webhooks; public POST endpoints are not.
+
+### When in doubt
+
+1. Re-read [`plugin-security-scan.md`](./plugin-security-scan.md) — that
+   is the checklist every plugin is reviewed against.
+2. Run the ripgrep static-analysis commands from section 3 of that
+   skill against your own plugin **before** opening a PR. It is much
+   faster to delete questionable code now than to argue about it in
+   review.
+3. If the behaviour you need isn't on the allowed list, open an issue
+   on the CRM repo describing the use case. New capability tags are
+   added by PR, not by convention.
+
+---
+
 ## Plugin Config Access (Sandboxed)
 
 Plugins can only access their own config keys (prefixed with `plugin.{id}.`):
