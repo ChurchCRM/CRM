@@ -63,18 +63,24 @@ we recommend running every quarter.
 
 ## For plugin developers
 
-If you want to **build** a plugin, start in the ChurchCRM repository's
-skill files rather than here — they have the canonical technical
-details:
+If you want to **build** a community plugin, start in the ChurchCRM
+repository's skill files rather than here — they have the canonical
+technical details:
 
+- [`plugin-create.md`](https://github.com/ChurchCRM/CRM/blob/main/.agents/skills/churchcrm/plugin-create.md)
+  — the community plugin quickstart: scaffold, code, run the security
+  scan against your own tree, build a reproducible zip, and open the
+  `approved-plugins.json` pull request.
 - [`plugin-development.md`](https://github.com/ChurchCRM/CRM/blob/main/.agents/skills/churchcrm/plugin-development.md)
-  — build a plugin end-to-end, including the allowed/forbidden
+  — the technical reference, including the full allowed/forbidden
   capability contract.
 - [`plugin-security-scan.md`](https://github.com/ChurchCRM/CRM/blob/main/.agents/skills/churchcrm/plugin-security-scan.md)
   — the review checklist every approved community plugin must pass
   before it enters the registry.
-- [`plugin-migration.md`](https://github.com/ChurchCRM/CRM/blob/main/.agents/skills/churchcrm/plugin-migration.md)
-  — what to update when you bump your plugin to a new core version.
+
+> **Note:** ChurchCRM has a separate `plugin-migration.md` skill, but
+> it applies **only** to the core plugins shipped in
+> `src/plugins/core/`. Community plugin authors do not use it.
 
 Once your plugin is tagged and hosted at an immutable HTTPS URL with a
 reproducible SHA-256, open a pull request against

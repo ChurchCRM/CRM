@@ -109,8 +109,12 @@ Every entry in `approved-plugins.json` declares:
 
 ## Creating a plugin
 
-See [`.agents/skills/churchcrm/plugin-development.md`](../../.agents/skills/churchcrm/plugin-development.md)
-for the full walkthrough. High-level steps:
+Community plugin authors follow
+[`.agents/skills/churchcrm/plugin-create.md`](../../.agents/skills/churchcrm/plugin-create.md)
+— that is the scaffold → code → security-scan → zip → approved-list
+submission flow. The technical reference lives in
+[`.agents/skills/churchcrm/plugin-development.md`](../../.agents/skills/churchcrm/plugin-development.md).
+High-level steps:
 
 1. Create `src/plugins/{core|community}/{your-id}/plugin.json` with
    `type`, `mainClass`, settings, hooks, and optional routes.
@@ -222,8 +226,9 @@ For plugin development help, visit:
 
 Plugin-specific skill files:
 
-- [Plugin System](../../.agents/skills/churchcrm/plugin-system.md)
-- [Plugin Development](../../.agents/skills/churchcrm/plugin-development.md)
-- [Plugin Migration](../../.agents/skills/churchcrm/plugin-migration.md)
-- [Plugin Security Scan (maintainers)](../../.agents/skills/churchcrm/plugin-security-scan.md)
-- [Plugin Compliance (admins)](../../.agents/skills/churchcrm/plugin-compliance.md)
+- [Plugin System](../../.agents/skills/churchcrm/plugin-system.md) — runtime architecture
+- [Plugin Development](../../.agents/skills/churchcrm/plugin-development.md) — build an end-to-end plugin (allowed/forbidden contract)
+- [Plugin Create — Community quickstart](../../.agents/skills/churchcrm/plugin-create.md) — scaffold a community plugin and submit it to the approved list
+- [Plugin Migration — Core plugins only](../../.agents/skills/churchcrm/plugin-migration.md) — update `src/plugins/core/*` when a core API changes
+- [Plugin Security Scan (maintainers)](../../.agents/skills/churchcrm/plugin-security-scan.md) — review checklist before approval
+- [Plugin Compliance (site admins)](../../.agents/skills/churchcrm/plugin-compliance.md) — on-server audit

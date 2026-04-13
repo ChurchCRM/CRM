@@ -1,108 +1,140 @@
 ---
-title: "Plugin Migration Guidelines"
-intent: "Checklist for plugin authors migrating to new ChurchCRM route, API, installer, or localization conventions"
-tags: ["plugins","migration","compatibility","localization","security"]
-prereqs: ["plugin-development.md","plugin-security-scan.md","api-compatibility-and-deprecation.md"]
+title: "Core Plugin Migration Guidelines"
+intent: "Checklist for updating the core plugins shipped in src/plugins/core/ when core ChurchCRM APIs, routes, or conventions change"
+tags: ["plugins","migration","core","compatibility"]
+prereqs: ["plugin-system.md","api-compatibility-and-deprecation.md"]
 complexity: "intermediate"
 ---
 
-# Plugin Migration Guidelines
+# Core Plugin Migration Guidelines <!-- learned: 2026-04-13 -->
 
-Checklist and patterns for plugin authors when core routes, APIs, or
-conventions change. Run through every section on every core version bump.
+> **Scope — core plugins only.** This skill covers the plugins shipped
+> in `src/plugins/core/` (mailchimp, vonage, gravatar, openlp,
+> google-analytics, external-backup, custom-links) and any future
+> plugin maintained in this repository. **Community plugins do not
+> use this document** — they live at `src/plugins/community/`, are
+> installed through the URL installer, and have their own create
+> workflow in [`plugin-create.md`](./plugin-create.md).
 
----
-
-## 1. Manifest & Routes
-
-- Update `plugin.json` if new entry points, hooks, or settings are added.
-- Avoid hardcoded route paths; read `SystemURLs::getRootPath()` and
-  compose from there.
-- When core provides a shim for a deprecated route, prefer calling the
-  new official service method rather than keeping the old route alive.
-- Plugin route files must return JSON from `/plugins/{id}/api/...` and
-  HTML from `/plugins/{id}/...`. The core entry point only loads routes
-  for active plugins, so you never need your own enable check.
+Use this checklist whenever a core ChurchCRM change lands that
+affects the contract core plugins depend on — a `PluginInterface`
+method gains a parameter, a `Hooks::` constant is renamed, a
+middleware moves, a `SystemConfig` key is deprecated, or a route file
+is relocated.
 
 ---
 
-## 2. Community Install Flow <!-- learned: 2026-04-13 -->
+## 1. Triggering events
 
-Plugins installed by end users now go through the URL-based installer.
-If your plugin is community-distributed, check every item below before
-publishing a new release:
+Run through this skill when any of the following happens in the core
+repository:
 
-- **Immutable release URL.** The `downloadUrl` in
-  `src/plugins/approved-plugins.json` must point at a tagged release
-  artifact with a reproducible SHA-256 — never a `main` tarball.
-- **Single top-level directory.** The zip must contain exactly one
-  top-level directory whose name equals your `id`. `PluginInstaller`
-  rejects anything else.
-- **No disallowed files.** Strip `.phar`, `.phtml`, `.sh`, `.exe`,
-  `.so`, `.dll`, symlinks, `.git/`, and binary blobs you can't explain.
-- **Manifest matches registry.** Your `plugin.json` `id`, `version`,
-  and `type: "community"` must match the approved registry entry
-  exactly — the installer cross-checks every field.
-- **Risk level.** Every registry entry declares `risk` and `riskSummary`.
-  If your release changes what the plugin does (new outbound calls,
-  new hook subscriptions), re-run
-  [`plugin-security-scan.md`](./plugin-security-scan.md) and bump the
-  risk level if the rubric says so. **Re-reviews are required on every
-  version bump** — a patch release still gets scanned fresh.
+- `src/ChurchCRM/Plugin/PluginInterface.php` gains, renames, or drops
+  a method.
+- `src/ChurchCRM/Plugin/AbstractPlugin.php` changes default behaviour
+  for a method a core plugin relies on.
+- `src/ChurchCRM/Plugin/Hooks.php` adds, renames, or removes a hook
+  constant that a core plugin listens on.
+- A core route a plugin called (`/api/...`, `/admin/api/...`) moves or
+  changes its response shape.
+- A `SystemConfig` key a core plugin reads is renamed or deleted.
+- A middleware (Auth, Admin, ChurchInfoRequired, Version, Cors) is
+  added to or removed from a route group the plugin touches.
+- The `plugin.json` schema gains a new required field.
 
 ---
 
-## 3. Localization Migration <!-- learned: 2026-04-13 -->
+## 2. Per-plugin checklist
 
-If your plugin shipped translations through the old POeditor-merged
-workflow, move them into the plugin directory:
+For **every** directory under `src/plugins/core/`:
 
-- Move `.mo` files to `{plugin}/locale/textdomain/{locale}/LC_MESSAGES/{pluginId}.mo`.
-- Move `.json` i18next files to `{plugin}/locale/i18n/{locale}.json`
-  as flat `key => string` maps (nested objects are dropped).
-- Replace every `gettext('...')` / `_('...')` call in plugin PHP with
-  `dgettext('{pluginId}', '...')` so strings resolve from your plugin
-  textdomain, not the core `messages` domain.
-- Replace every `i18next.t('key')` in plugin JS with either a direct
-  lookup in `window.CRM.plugins['{pluginId}'].i18n[key]` or a scoped
-  i18next namespace via `addResourceBundle`. See
-  [`plugin-development.md → Plugin Localization`](./plugin-development.md#plugin-localization-independent-of-poeditor).
-- Update your `xgettext` extraction command to use
-  `--keyword=dgettext:2` so plugin strings end up in your own `.po`
-  file.
-
-**Do not** submit strings to the core `locale/messages.po` or
-`locale/i18n/*.json` — community plugins never enter POeditor.
-
----
-
-## 4. Compatibility
-
-- Document every breaking change in your plugin's own release notes.
-- Include a migration snippet in your plugin README showing the old
-  call vs the new call.
-- Run your plugin against a staging CRM with the new routes and with
-  `PluginManager::reset()` + `init()` between installs so you are
-  certain the new manifest is actually loaded.
+- [ ] Update `plugin.json` if any new manifest field is required.
+- [ ] Update the plugin class to match the new `PluginInterface`
+      signature. `AbstractPlugin` usually absorbs the change, but
+      double-check methods the plugin overrides.
+- [ ] Replace any removed or renamed hook constants with the new
+      ones. Grep each plugin for the old constant name.
+- [ ] Replace hardcoded route paths with
+      `SystemURLs::getRootPath()`-relative URLs.
+- [ ] If the plugin reads a renamed `SystemConfig` key, read the new
+      one and leave a one-line comment pointing at the migration SQL
+      file.
+- [ ] Rerun the core plugin's test button via
+      `POST /plugins/api/plugins/{id}/test` to confirm the plugin
+      still boots after the change.
+- [ ] Update `help.json` if UI labels moved, so admins get accurate
+      inline documentation.
 
 ---
 
-## 5. Security Parity
+## 3. Schema migrations for plugin config
 
-- Plugin route middleware must enforce the same auth checks as the
-  core route it replaces — if you migrated a route that required admin
-  role, your plugin route still requires admin role.
-- Plugin config access is sandboxed to `plugin.{id}.*` keys; never
-  read or write other plugins' config.
-- Re-run [`plugin-security-scan.md`](./plugin-security-scan.md) before
-  updating the approved registry entry for a new version.
+Core plugins store their config in the `config_cfg` table with
+`plugin.{id}.*` keys (seeded in `src/mysql/upgrade/7.0.0.sql`,
+lines 12–46). When a core plugin gains, renames, or drops a setting:
+
+- Add a new `INSERT INTO config_cfg ... ON DUPLICATE KEY UPDATE ...`
+  block in the next numbered upgrade script.
+- If you are **renaming** a key, copy the old value into the new key
+  first and **only then** delete the old row, so existing installs do
+  not lose their configuration.
+- If you are **removing** a key, also remove it from
+  `plugin.json`'s `settings` array.
+- Do not try to do this rename from PHP at boot — upgrade SQL is the
+  only supported path.
+
+Mirror the `7.0.0.sql` migration pattern: seed defaults first, copy
+legacy keys into the new names, then delete the legacy rows.
+
+---
+
+## 4. Routes-file migration
+
+If a core plugin's route file moves (for example, out of `src/` or
+into a different Slim group), also update:
+
+- `plugin.json`'s `routesFile` field.
+- Any `use` imports inside the route file — core services may have
+  new namespaces.
+- The middleware stack: plugin routes inherit
+  `AuthMiddleware + ChurchInfoRequiredMiddleware + VersionMiddleware`
+  from `src/plugins/index.php`. Do **not** add the stack again inside
+  the plugin route file.
+- Any references to `PluginManager::getInstance()` — it does not
+  exist. Use the static methods (`getPlugin`, `isPluginActive`).
+
+---
+
+## 5. Integrity checks
+
+After any core plugin migration:
+
+1. Run `npm run build:php` to regenerate `src/admin/data/signatures.json`
+   and confirm the renamed or moved files show up.
+2. Run the Cypress test that guards the orphan-scan community
+   exclusion so you know the generator didn't accidentally pull in
+   `plugins/community/`:
+   `cypress/e2e/api/private/admin/private.admin.orphaned-files.plugins.spec.js`.
+3. Run `npm run lint` for Biome lint parity with the pre-push hook.
+4. Toggle the plugin off and on via the admin API and confirm the
+   `enablePlugin` / `disablePlugin` round-trip still works.
+
+---
+
+## 6. Release notes
+
+Core plugin migrations that affect user-visible settings must land
+in the changelog for the next release. Write the changelog entry in
+terms of what an admin sees in **Admin → Plugins**, not in terms of
+internal method names.
 
 ---
 
 **Related skills:**
 
-- [Plugin Development](./plugin-development.md) — full build guide
 - [Plugin System](./plugin-system.md) — runtime architecture
-- [Plugin Security Scan](./plugin-security-scan.md) — review checklist
-- [Plugin Compliance (Admin)](./plugin-compliance.md) — admin-side audit
+- [Plugin Development](./plugin-development.md) — building a plugin
+- [Plugin Create (Community)](./plugin-create.md) — the community
+  plugin quickstart and submission flow
 - [API Compatibility & Deprecation](./api-compatibility-and-deprecation.md)
+- [DB Schema Migration](./db-schema-migration.md) — upgrade SQL patterns

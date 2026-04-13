@@ -78,7 +78,8 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 |-------|----------|------------|
 | [Plugin System](./plugin-system.md) | All | Runtime architecture — PluginManager, hooks, install flow, plugin-local localization loader |
 | [Plugin Development](./plugin-development.md) | Plugin authors | Building a plugin end-to-end. **Start here, and read the security-scan preamble at the top before writing code.** Covers allowed/forbidden capabilities, hooks, sandboxed config, and plugin-local translations. |
-| [Plugin Migration](./plugin-migration.md) | Plugin authors | Checklist when bumping a plugin to a new core version — manifest, community install flow, localization migration |
+| [Plugin Create (Community)](./plugin-create.md) | Community plugin authors | Quickstart + submission flow: scaffold a community plugin, run the security scan against your own tree, build a reproducible zip, and open the `approved-plugins.json` PR |
+| [Plugin Migration (Core only)](./plugin-migration.md) | Core plugin maintainers | Checklist when a core API change affects `src/plugins/core/*`. **Not for community plugins** — they follow `plugin-create.md` instead |
 | [Plugin Security Scan](./plugin-security-scan.md) | ChurchCRM maintainers | **Required** review checklist before approving a community plugin for `src/plugins/approved-plugins.json`. Covers intake, static analysis, risk classification, and the 2026 plugin standards reference. |
 | [Plugin Compliance (Admin Audit)](./plugin-compliance.md) | Site admins | Monthly/quarterly scans of already-installed community plugins. Read the approved list, verify on-disk state, re-run the orphan scan, respond to revoked plugins. |
 
@@ -191,7 +192,9 @@ Follow these steps to run Cypress tests locally and generate machine-readable re
 - **New API endpoint**: `api-development.md` → `service-layer.md` → `slim-4-best-practices.md` → `security-best-practices.md` → `cypress-testing.md` → `git-workflow.md`
 - **Migrate legacy page**: `routing-architecture.md` → `admin-mvc-migration.md` → `frontend-development.md` → `database-operations.md` → `git-workflow.md`
 - **Fix security issue**: `security-best-practices.md` → `authorization-security.md` → `php-best-practices.md` → `git-workflow.md`
-- **Add plugin**: `plugin-system.md` → `plugin-development.md` → `api-development.md` → `git-workflow.md`
+- **Add a community plugin**: `plugin-system.md` → `plugin-development.md` → `plugin-create.md` → `plugin-security-scan.md` → `git-workflow.md`
+- **Update a core plugin** (`src/plugins/core/*`): `plugin-system.md` → `plugin-development.md` → `plugin-migration.md` → `git-workflow.md`
+- **Audit installed plugins (admin)**: `plugin-compliance.md`
 - **Optimize queries**: `performance-optimization.md` → `database-operations.md` → `service-layer.md`
 - **Add UI text**: `i18n-localization.md` → `frontend-development.md` → `git-workflow.md`
 - **Render money / currency anywhere**: `currency-localization.md` → `configuration-management.md` → `frontend-development.md` → `git-workflow.md`
