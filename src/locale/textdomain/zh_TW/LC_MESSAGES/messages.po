@@ -5167,10 +5167,6 @@ msgid "Report an issue"
 msgstr "報告問題"
 
 #: 
-msgid "Active Kiosks"
-msgstr "激活Kiosk"
-
-#: 
 msgid "Self Verification"
 msgstr "自助驗證"
 
@@ -12654,10 +12650,6 @@ msgid "— Select type (optional) —"
 msgstr "— 選擇類型（可選）—"
 
 #: 
-msgid "Accept the device, then assign it to an event to begin check-in."
-msgstr "接受裝置後，將其分配到活動以開始簽到。"
-
-#: 
 msgid "Activate"
 msgstr "啟用"
 
@@ -12708,10 +12700,6 @@ msgstr "班級 / 小組"
 #: 
 msgid "Class List Export"
 msgstr "班級列表匯出"
-
-#: 
-msgid "Click the registration toggle above to open a 30-second registration window."
-msgstr "點擊上方的註冊切換開關以開啟30秒註冊視窗。"
 
 #: 
 msgid "Continue"
@@ -12782,10 +12770,6 @@ msgid "It is strongly recommended to have a backup before proceeding."
 msgstr "強烈建議在繼續之前進行備份。"
 
 #: 
-msgid "Kiosk Registration"
-msgstr "自助終端機註冊"
-
-#: 
 msgid "Latest"
 msgstr "最新"
 
@@ -12828,10 +12812,6 @@ msgstr "未找到備註"
 #: 
 msgid "Note text is required"
 msgstr "備註內容為必填項"
-
-#: 
-msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
-msgstr "在自助終端機裝置（平板電腦、筆記型電腦等）上，開啟瀏覽器並前往："
 
 #: 
 msgid "Only the note author or an admin may delete this note"
@@ -12878,10 +12858,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 雜湊"
 
 #: 
-msgid "Setup Instructions"
-msgstr "設定說明"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "簽章不符"
 
@@ -12890,24 +12866,12 @@ msgid "Skip, Continue Without Backup"
 msgstr "跳過，不備份繼續"
 
 #: 
-msgid "The device will register itself and appear in the table below as \"Pending\"."
-msgstr "裝置將自動註冊並以「待處理」狀態顯示在下方表格中。"
-
-#: 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr "啟用此外掛後，這些連結將出現在導覽側欄的「連結」選單中。"
 
 #: 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr "這將重新下載並重新套用目前的版本。它可以修復損壞或修改過的檔案。"
-
-#: 
-msgid "To set up a kiosk device, follow these steps:"
-msgstr "要設定自助終端機裝置，請按照以下步驟操作："
-
-#: 
-msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
-msgstr "切換下方的開關以開啟30秒視窗供新自助終端機裝置註冊。"
 
 #: 
 msgid "Total Check-ins"
@@ -12920,10 +12884,6 @@ msgstr "請嘗試選擇不同的活動類型或年份。"
 #: 
 msgid "Up to Date"
 msgstr "已是最新"
-
-#: 
-msgid "Upcoming Sunday School Events"
-msgstr "即將到來的主日學活動"
 
 #: 
 msgid "Update Available"
@@ -15086,10 +15046,6 @@ msgid "Deleting an event will also delete all attendance counts. This cannot be 
 msgstr "刪除活動將同時刪除所有出席計數，此操作不可撤銷。"
 
 #: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "刪除此活動類型不會刪除已有活動，確認刪除嗎？"
-
-#: 
 msgid "Deleting this event will also delete all attendance records. This cannot be undone."
 msgstr "刪除此活動將同時刪除所有出席記錄，此操作不可撤銷。"
 
@@ -15292,10 +15248,6 @@ msgstr "今日無活動"
 #: 
 msgid "No Group"
 msgstr "無部門"
-
-#: 
-msgid "No active assignment"
-msgstr "無活動分配"
 
 #: 
 msgid "No active events found."

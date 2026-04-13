@@ -5025,10 +5025,6 @@ msgid "Report an issue"
 msgstr "問題を報告"
 
 #: 
-msgid "Active Kiosks"
-msgstr "アクティブなキオスク"
-
-#: 
 msgid "Self Verification"
 msgstr "自己確認"
 
@@ -12422,10 +12418,6 @@ msgid "— Select type (optional) —"
 msgstr "— タイプを選択（任意） —"
 
 #: 
-msgid "Accept the device, then assign it to an event to begin check-in."
-msgstr "デバイスを承認し、イベントに割り当ててチェックインを開始してください。"
-
-#: 
 msgid "Activate"
 msgstr "有効化"
 
@@ -12476,10 +12468,6 @@ msgstr "クラス / グループ"
 #: 
 msgid "Class List Export"
 msgstr "クラスリストのエクスポート"
-
-#: 
-msgid "Click the registration toggle above to open a 30-second registration window."
-msgstr "上の登録トグルをクリックして、30秒の登録ウィンドウを開きます。"
 
 #: 
 msgid "Continue"
@@ -12550,10 +12538,6 @@ msgid "It is strongly recommended to have a backup before proceeding."
 msgstr "続行する前にバックアップを取ることを強くお勧めします。"
 
 #: 
-msgid "Kiosk Registration"
-msgstr "キオスク登録"
-
-#: 
 msgid "Latest"
 msgstr "最新"
 
@@ -12596,10 +12580,6 @@ msgstr "メモが見つかりません"
 #: 
 msgid "Note text is required"
 msgstr "メモのテキストは必須です"
-
-#: 
-msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
-msgstr "キオスクデバイス（タブレット、ノートパソコンなど）でブラウザを開き、次のURLに移動してください:"
 
 #: 
 msgid "Only the note author or an admin may delete this note"
@@ -12646,10 +12626,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1ハッシュ"
 
 #: 
-msgid "Setup Instructions"
-msgstr "セットアップ手順"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "署名の不一致"
 
@@ -12658,24 +12634,12 @@ msgid "Skip, Continue Without Backup"
 msgstr "スキップ、バックアップなしで続行"
 
 #: 
-msgid "The device will register itself and appear in the table below as \"Pending\"."
-msgstr "デバイスは自身を登録し、下のテーブルに「保留中」として表示されます。"
-
-#: 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr "これらのリンクは、このプラグインが有効な場合、ナビゲーションサイドバーの「リンク」メニューに表示されます。"
 
 #: 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr "これは現在のバージョンを再ダウンロードして再適用します。破損または変更されたファイルを修正できます。"
-
-#: 
-msgid "To set up a kiosk device, follow these steps:"
-msgstr "キオスクデバイスをセットアップするには、次の手順に従ってください:"
-
-#: 
-msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
-msgstr "下のスイッチを切り替えて、新しいキオスクデバイスが登録するための30秒のウィンドウを開きます。"
 
 #: 
 msgid "Total Check-ins"
@@ -12688,10 +12652,6 @@ msgstr "別のイベントタイプまたは年を選択してみてください
 #: 
 msgid "Up to Date"
 msgstr "最新の状態"
-
-#: 
-msgid "Upcoming Sunday School Events"
-msgstr "今後の日曜学校イベント"
 
 #: 
 msgid "Update Available"
@@ -14850,10 +14810,6 @@ msgid "Deleting an event will also delete all attendance counts. This cannot be 
 msgstr "イベントを削除すると、すべての出席集計も削除されます。この操作は取り消せません。"
 
 #: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "このイベントタイプを削除しても、既存のイベントは削除されません。本当によろしいですか？"
-
-#: 
 msgid "Deleting this event will also delete all attendance records. This cannot be undone."
 msgstr "このイベントを削除すると、すべての出席記録も削除されます。この操作は取り消せません。"
 
@@ -15056,10 +15012,6 @@ msgstr "本日のイベントはありません"
 #: 
 msgid "No Group"
 msgstr "グループなし"
-
-#: 
-msgid "No active assignment"
-msgstr "アクティブな割り当てなし"
 
 #: 
 msgid "No active events found."

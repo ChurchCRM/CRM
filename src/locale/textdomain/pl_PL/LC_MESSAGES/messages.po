@@ -5134,10 +5134,6 @@ msgid "Report an issue"
 msgstr "Zgłoś problem"
 
 #: 
-msgid "Active Kiosks"
-msgstr "Aktywne kioski"
-
-#: 
 msgid "Self Verification"
 msgstr "Samodzielna weryfikacja"
 
@@ -12561,10 +12557,6 @@ msgid "— Select type (optional) —"
 msgstr "— Wybierz typ (opcjonalne) —"
 
 #: 
-msgid "Accept the device, then assign it to an event to begin check-in."
-msgstr "Zaakceptuj urządzenie, a następnie przypisz je do wydarzenia, aby rozpocząć rejestrację obecności."
-
-#: 
 msgid "Activate"
 msgstr "Aktywuj"
 
@@ -12615,10 +12607,6 @@ msgstr "Klasa / Grupa"
 #: 
 msgid "Class List Export"
 msgstr "Eksport listy klasy"
-
-#: 
-msgid "Click the registration toggle above to open a 30-second registration window."
-msgstr "Kliknij przycisk rejestracji powyżej, aby otworzyć 30-sekundowe okno rejestracji."
 
 #: 
 msgid "Continue"
@@ -12689,10 +12677,6 @@ msgid "It is strongly recommended to have a backup before proceeding."
 msgstr "Zdecydowanie zaleca się posiadanie kopii zapasowej przed kontynuowaniem."
 
 #: 
-msgid "Kiosk Registration"
-msgstr "Rejestracja kiosku"
-
-#: 
 msgid "Latest"
 msgstr "Najnowsza"
 
@@ -12735,10 +12719,6 @@ msgstr "Nie znaleziono notatki"
 #: 
 msgid "Note text is required"
 msgstr "Tekst notatki jest wymagany"
-
-#: 
-msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
-msgstr "Na urządzeniu kiosku (tablet, laptop itp.) otwórz przeglądarkę i przejdź do:"
 
 #: 
 msgid "Only the note author or an admin may delete this note"
@@ -12785,10 +12765,6 @@ msgid "SHA1 Hash"
 msgstr "Hash SHA1"
 
 #: 
-msgid "Setup Instructions"
-msgstr "Instrukcje konfiguracji"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "Niezgodność sygnatury"
 
@@ -12797,24 +12773,12 @@ msgid "Skip, Continue Without Backup"
 msgstr "Pomiń, kontynuuj bez kopii zapasowej"
 
 #: 
-msgid "The device will register itself and appear in the table below as \"Pending\"."
-msgstr "Urządzenie zarejestruje się automatycznie i pojawi się w poniższej tabeli jako \"Oczekujące\"."
-
-#: 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr "Te łącza pojawiają się w menu \"Łącza\" na pasku nawigacji bocznej, gdy ta wtyczka jest włączona."
 
 #: 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr "To ponownie pobierze i zastosuje bieżącą wersję. Może naprawić uszkodzone lub zmodyfikowane pliki."
-
-#: 
-msgid "To set up a kiosk device, follow these steps:"
-msgstr "Aby skonfigurować urządzenie kiosku, wykonaj następujące kroki:"
-
-#: 
-msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
-msgstr "Przełącz przycisk poniżej, aby otworzyć 30-sekundowe okno rejestracji nowych urządzeń kiosku."
 
 #: 
 msgid "Total Check-ins"
@@ -12827,10 +12791,6 @@ msgstr "Spróbuj wybrać inny typ wydarzenia lub rok."
 #: 
 msgid "Up to Date"
 msgstr "Aktualny"
-
-#: 
-msgid "Upcoming Sunday School Events"
-msgstr "Nadchodzące wydarzenia szkoły niedzielnej"
 
 #: 
 msgid "Update Available"
@@ -14996,10 +14956,6 @@ msgid "Deleting an event will also delete all attendance counts. This cannot be 
 msgstr "Usunięcie wydarzenia spowoduje również usunięcie wszystkich liczb obecności. Tej operacji nie można cofnąć."
 
 #: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "Usunięcie tego typu wydarzenia NIE usunie istniejących wydarzeń. Czy na pewno?"
-
-#: 
 msgid "Deleting this event will also delete all attendance records. This cannot be undone."
 msgstr "Usunięcie tego wydarzenia spowoduje również usunięcie wszystkich rekordów obecności. Tej operacji nie można cofnąć."
 
@@ -15202,10 +15158,6 @@ msgstr "Brak wydarzeń dzisiaj"
 #: 
 msgid "No Group"
 msgstr "Brak grupy"
-
-#: 
-msgid "No active assignment"
-msgstr "Brak aktywnego przypisania"
 
 #: 
 msgid "No active events found."

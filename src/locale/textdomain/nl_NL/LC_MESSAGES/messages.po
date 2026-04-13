@@ -5028,10 +5028,6 @@ msgid "Report an issue"
 msgstr "Een probleem melden"
 
 #: 
-msgid "Active Kiosks"
-msgstr "Actieve kiosken"
-
-#: 
 msgid "Self Verification"
 msgstr "Zelfverificatie"
 
@@ -12441,10 +12437,6 @@ msgid "— Select type (optional) —"
 msgstr "— Selecteer type (optioneel) —"
 
 #: 
-msgid "Accept the device, then assign it to an event to begin check-in."
-msgstr "Accepteer het apparaat en wijs het vervolgens toe aan een evenement om het inchecken te starten."
-
-#: 
 msgid "Activate"
 msgstr "Activeren"
 
@@ -12495,10 +12487,6 @@ msgstr "Klas / Groep"
 #: 
 msgid "Class List Export"
 msgstr "Klassenlijst Exporteren"
-
-#: 
-msgid "Click the registration toggle above to open a 30-second registration window."
-msgstr "Klik hierboven op de registratieschakelaar om een registratievenster van 30 seconden te openen."
 
 #: 
 msgid "Continue"
@@ -12569,10 +12557,6 @@ msgid "It is strongly recommended to have a backup before proceeding."
 msgstr "Het wordt sterk aanbevolen om een back-up te maken voordat u verdergaat."
 
 #: 
-msgid "Kiosk Registration"
-msgstr "Kioskregistratie"
-
-#: 
 msgid "Latest"
 msgstr "Nieuwste"
 
@@ -12615,10 +12599,6 @@ msgstr "Notitie niet gevonden"
 #: 
 msgid "Note text is required"
 msgstr "Notitietekst is vereist"
-
-#: 
-msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
-msgstr "Open op het kioskapparaat (tablet, laptop, enz.) een browser en ga naar:"
 
 #: 
 msgid "Only the note author or an admin may delete this note"
@@ -12665,10 +12645,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1-hashwaarde"
 
 #: 
-msgid "Setup Instructions"
-msgstr "Installatie-instructies"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "Handtekening Komt Niet Overeen"
 
@@ -12677,24 +12653,12 @@ msgid "Skip, Continue Without Backup"
 msgstr "Overslaan, Doorgaan Zonder Back-up"
 
 #: 
-msgid "The device will register itself and appear in the table below as \"Pending\"."
-msgstr "Het apparaat registreert zichzelf en verschijnt in de tabel hieronder als \"In afwachting\"."
-
-#: 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr "Deze links verschijnen in het menu \"Links\" in de navigatiebalk wanneer deze plugin is ingeschakeld."
 
 #: 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr "Hiermee wordt de huidige versie opnieuw gedownload en toegepast. Dit kan beschadigde of gewijzigde bestanden herstellen."
-
-#: 
-msgid "To set up a kiosk device, follow these steps:"
-msgstr "Volg deze stappen om een kioskapparaat in te stellen:"
-
-#: 
-msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
-msgstr "Schakel de schakelaar hieronder om een venster van 30 seconden te openen voor de registratie van nieuwe kioskapparaten."
 
 #: 
 msgid "Total Check-ins"
@@ -12707,10 +12671,6 @@ msgstr "Probeer een ander evenementtype of jaar te selecteren."
 #: 
 msgid "Up to Date"
 msgstr "Up-to-date"
-
-#: 
-msgid "Upcoming Sunday School Events"
-msgstr "Aankomende Zondagsschool Evenementen"
 
 #: 
 msgid "Update Available"
@@ -14875,10 +14835,6 @@ msgid "Deleting an event will also delete all attendance counts. This cannot be 
 msgstr "Het verwijderen van een evenement verwijdert ook alle aanwezigheidstellingen. Dit kan niet ongedaan worden gemaakt."
 
 #: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "Het verwijderen van dit evenementtype verwijdert GEEN bestaande evenementen. Weet u het zeker?"
-
-#: 
 msgid "Deleting this event will also delete all attendance records. This cannot be undone."
 msgstr "Het verwijderen van dit evenement verwijdert ook alle aanwezigheidsregistraties. Dit kan niet ongedaan worden gemaakt."
 
@@ -15081,10 +15037,6 @@ msgstr "Geen evenementen vandaag"
 #: 
 msgid "No Group"
 msgstr "Geen groep"
-
-#: 
-msgid "No active assignment"
-msgstr "Geen actieve toewijzing"
 
 #: 
 msgid "No active events found."

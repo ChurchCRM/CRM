@@ -5063,10 +5063,6 @@ msgid "Report an issue"
 msgstr "Laporkan masalah"
 
 #: 
-msgid "Active Kiosks"
-msgstr "Kios aktif"
-
-#: 
 msgid "Self Verification"
 msgstr "Verifikasi diri"
 
@@ -12459,10 +12455,6 @@ msgid "— Select type (optional) —"
 msgstr "— Pilih tipe (opsional) —"
 
 #: 
-msgid "Accept the device, then assign it to an event to begin check-in."
-msgstr "Terima perangkat, lalu tetapkan ke acara untuk memulai check-in."
-
-#: 
 msgid "Activate"
 msgstr "Aktifkan"
 
@@ -12513,10 +12505,6 @@ msgstr "Kelas / Grup"
 #: 
 msgid "Class List Export"
 msgstr "Ekspor Daftar Kelas"
-
-#: 
-msgid "Click the registration toggle above to open a 30-second registration window."
-msgstr "Klik tombol pendaftaran di atas untuk membuka jendela pendaftaran 30 detik."
 
 #: 
 msgid "Continue"
@@ -12587,10 +12575,6 @@ msgid "It is strongly recommended to have a backup before proceeding."
 msgstr "Sangat disarankan untuk memiliki cadangan sebelum melanjutkan."
 
 #: 
-msgid "Kiosk Registration"
-msgstr "Pendaftaran Kios"
-
-#: 
 msgid "Latest"
 msgstr "Terbaru"
 
@@ -12633,10 +12617,6 @@ msgstr "Catatan tidak ditemukan"
 #: 
 msgid "Note text is required"
 msgstr "Teks catatan diperlukan"
-
-#: 
-msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
-msgstr "Di perangkat kios (tablet, laptop, dll.), buka browser dan navigasi ke:"
 
 #: 
 msgid "Only the note author or an admin may delete this note"
@@ -12683,10 +12663,6 @@ msgid "SHA1 Hash"
 msgstr "Hash SHA1"
 
 #: 
-msgid "Setup Instructions"
-msgstr "Petunjuk Pengaturan"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "Ketidakcocokan Tanda Tangan"
 
@@ -12695,24 +12671,12 @@ msgid "Skip, Continue Without Backup"
 msgstr "Lewati, Lanjutkan Tanpa Cadangan"
 
 #: 
-msgid "The device will register itself and appear in the table below as \"Pending\"."
-msgstr "Perangkat akan mendaftarkan diri sendiri dan muncul di tabel di bawah sebagai \"Tertunda\"."
-
-#: 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr "Tautan ini muncul di menu \"Tautan\" di sidebar navigasi saat plugin ini diaktifkan."
 
 #: 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr "Ini akan mengunduh ulang dan menerapkan ulang versi saat ini. Dapat memperbaiki file yang rusak atau dimodifikasi."
-
-#: 
-msgid "To set up a kiosk device, follow these steps:"
-msgstr "Untuk mengatur perangkat kios, ikuti langkah-langkah berikut:"
-
-#: 
-msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
-msgstr "Aktifkan tombol di bawah untuk membuka jendela 30 detik bagi perangkat kios baru untuk mendaftar."
 
 #: 
 msgid "Total Check-ins"
@@ -12725,10 +12689,6 @@ msgstr "Coba pilih tipe acara atau tahun yang berbeda."
 #: 
 msgid "Up to Date"
 msgstr "Terkini"
-
-#: 
-msgid "Upcoming Sunday School Events"
-msgstr "Acara Sekolah Minggu Mendatang"
 
 #: 
 msgid "Update Available"
@@ -14887,10 +14847,6 @@ msgid "Deleting an event will also delete all attendance counts. This cannot be 
 msgstr "Menghapus acara juga akan menghapus semua hitungan kehadiran. Tindakan ini tidak dapat dibatalkan."
 
 #: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "Menghapus jenis acara ini TIDAK akan menghapus acara yang sudah ada. Apakah Anda yakin?"
-
-#: 
 msgid "Deleting this event will also delete all attendance records. This cannot be undone."
 msgstr "Menghapus acara ini juga akan menghapus semua catatan kehadiran. Tindakan ini tidak dapat dibatalkan."
 
@@ -15093,10 +15049,6 @@ msgstr "Tidak Ada Acara Hari Ini"
 #: 
 msgid "No Group"
 msgstr "Tidak Ada Kelompok"
-
-#: 
-msgid "No active assignment"
-msgstr "Tidak ada penugasan aktif"
 
 #: 
 msgid "No active events found."
