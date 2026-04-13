@@ -48,6 +48,7 @@ function processTwoFactorGet(Request $request, Response $response, array $args):
         'sRootPath'    => SystemURLs::getRootPath(),
         'user'         => $curUser,
         'bInvalidCode' => isset($queryParams['invalid']),
+        'bRecoveryMode' => isset($queryParams['recovery']),
     ];
 
     return $renderer->render($response, 'two-factor.php', $pageArgs);
@@ -56,7 +57,9 @@ function processTwoFactorGet(Request $request, Response $response, array $args):
 function processTwoFactorPost(Request $request, Response $response, array $args): void
 {
     $loginRequestBody = $request->getParsedBody();
-    $twoFARequest = new LocalTwoFactorTokenRequest($loginRequestBody['TwoFACode'] ?? '');
+    $queryParams = $request->getQueryParams();
+    $isRecoveryMode = isset($queryParams['recovery']);
+    $twoFARequest = new LocalTwoFactorTokenRequest($loginRequestBody['TwoFACode'] ?? '', $isRecoveryMode);
     // AuthenticationManager::authenticate() calls RedirectUtils::redirect() which exits.
     // On success: redirects to dashboard. On failure: redirects to /session/two-factor?invalid=1
     AuthenticationManager::authenticate($twoFARequest);
