@@ -791,6 +791,43 @@ This is what `/plugins/api/plugins/install` does.
 
 ---
 
+## Plugin-Local Localization <!-- learned: 2026-04-13 -->
+
+Community plugins do not go through POeditor. Each plugin ships its own
+translations inside its directory, and `PluginLocalization`
+(`src/ChurchCRM/Plugin/PluginLocalization.php`) wires them in at boot.
+
+**PHP side.** `PluginManager::loadActivePlugins()` calls
+`PluginLocalization::bindPhpDomains()` after every active plugin has been
+loaded. For each plugin that ships a `locale/textdomain/` directory, it
+calls `bindtextdomain('{pluginId}', …)` — the textdomain name is the
+plugin id, which guarantees isolation from the core `messages` domain and
+from every other plugin. Plugin PHP code must use `dgettext('{pluginId}', 'string')`,
+never plain `gettext()`.
+
+**JS side.** `PluginManager::getPluginsClientConfig()` calls
+`PluginLocalization::collectJsResources($metadata, $currentLocale)` (the
+current locale comes from `Bootstrapper::getCurrentLocale()` with an
+`en_US` fallback). The resulting `[pluginId => [key => value]]` map is
+merged into each plugin's client config under the `i18n` key, so plugin
+frontends can read strings from `window.CRM.plugins.{id}.i18n[key]`
+without requiring any change to `locale-loader.js`.
+
+**Rules enforced by the loader (to stop a plugin wrecking client payload
+or unicode rendering):**
+
+- JSON i18n files over 512 KB are rejected and logged as a warning.
+- Nested JSON objects are dropped — only flat `string => string` maps are
+  accepted.
+- Missing locales fall back to `en_US.json`, then to an empty array.
+- Plugin ids that are not kebab-case, or that collide with the reserved
+  `messages` name, are refused at bind time.
+
+Plugins that do not ship `locale/` are a zero-cost no-op — the loader
+just skips them.
+
+---
+
 **Related Skills:**
 - [Routing & Project Architecture](./routing-architecture.md) - Plugin route patterns
 - [Slim 4 Best Practices](./slim-4-best-practices.md) - Entry point configuration

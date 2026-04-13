@@ -15,6 +15,13 @@ use ChurchCRM\Utils\LoggerUtils;
  *   - version         (semver, must match plugin.json)
  *   - downloadUrl     (HTTPS only)
  *   - sha256          (hex SHA-256 of the zip bytes)
+ *   - risk            ("low" | "medium" | "high" — see plugin-security-scan.md)
+ *   - riskSummary     (one-sentence human-readable summary of the worst-case
+ *                      capability the plugin exercises)
+ *   - permissions     (array of capability tags, e.g. "network.outbound",
+ *                      "db.write", "fs.write", "secrets.store", "ui.inject",
+ *                      "cron", "hooks.person", "hooks.financial"; see the
+ *                      capability inventory in plugin-security-scan.md)
  *   - minimumCRMVersion (optional, enforced on install)
  *   - author          (optional)
  *   - homepage        (optional HTTPS URL)
@@ -30,7 +37,34 @@ class ApprovedPluginRegistry
     public const FILENAME = 'approved-plugins.json';
 
     /** Required keys on every entry. */
-    private const REQUIRED_KEYS = ['id', 'name', 'version', 'downloadUrl', 'sha256'];
+    private const REQUIRED_KEYS = ['id', 'name', 'version', 'downloadUrl', 'sha256', 'risk', 'riskSummary'];
+
+    /** Allowed values for the `risk` field. Ordered low → high for display. */
+    public const RISK_LEVELS = ['low', 'medium', 'high'];
+
+    /**
+     * Capability tags that may appear in the `permissions` array. Review-time
+     * classification is enforced by keeping this list short — anything not in
+     * here must be added to the list in the same PR that uses it, so the
+     * reviewer has to look at plugin-security-scan.md before approving.
+     */
+    public const KNOWN_PERMISSIONS = [
+        'network.outbound',   // plugin makes outbound HTTP(S) calls
+        'network.inbound',    // plugin exposes new HTTP routes
+        'db.read',            // plugin reads from ChurchCRM tables
+        'db.write',           // plugin writes to ChurchCRM tables
+        'fs.read',            // plugin reads from the filesystem outside its own dir
+        'fs.write',           // plugin writes to the filesystem outside its own dir
+        'secrets.store',      // plugin stores credentials / API keys in its config
+        'ui.inject',          // plugin injects HTML/JS/CSS into core pages
+        'cron',               // plugin runs on a schedule
+        'hooks.person',       // plugin listens for PERSON_* hooks (PII reach)
+        'hooks.family',       // plugin listens for FAMILY_* hooks (PII reach)
+        'hooks.financial',    // plugin listens for DONATION_* / DEPOSIT_* hooks
+        'hooks.email',        // plugin listens for EMAIL_* hooks
+        'email.send',         // plugin sends email on behalf of the church
+        'sms.send',           // plugin sends SMS on behalf of the church
+    ];
 
     /** @var array<string, array<string, mixed>>|null */
     private static ?array $cache = null;
@@ -168,6 +202,36 @@ class ApprovedPluginRegistry
             ]);
 
             return false;
+        }
+
+        if (!in_array(strtolower((string) $entry['risk']), self::RISK_LEVELS, true)) {
+            LoggerUtils::getAppLogger()->warning('Approved plugin entry rejected (invalid risk level)', [
+                'entry' => $entry['id'],
+                'risk' => $entry['risk'] ?? null,
+            ]);
+
+            return false;
+        }
+
+        // permissions is optional but, if present, must be an array of known tags.
+        if (isset($entry['permissions'])) {
+            if (!is_array($entry['permissions'])) {
+                LoggerUtils::getAppLogger()->warning('Approved plugin entry rejected (permissions not an array)', [
+                    'entry' => $entry['id'],
+                ]);
+
+                return false;
+            }
+            foreach ($entry['permissions'] as $perm) {
+                if (!is_string($perm) || !in_array($perm, self::KNOWN_PERMISSIONS, true)) {
+                    LoggerUtils::getAppLogger()->warning('Approved plugin entry rejected (unknown permission tag)', [
+                        'entry' => $entry['id'],
+                        'permission' => $perm,
+                    ]);
+
+                    return false;
+                }
+            }
         }
 
         return true;

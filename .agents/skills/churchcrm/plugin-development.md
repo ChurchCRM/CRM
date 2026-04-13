@@ -1,5 +1,20 @@
 # Skill: Plugin Development
 
+> ## ⚠️ Before you write a single line of plugin code — read this <!-- learned: 2026-04-13 -->
+>
+> **Every community plugin must pass [`plugin-security-scan.md`](./plugin-security-scan.md) before it can be approved for the URL installer.** That checklist is not a post-hoc review — it's the spec you are building against. Read it first, then come back here.
+>
+> What it will expect from you, by the time you submit a PR to `src/plugins/approved-plugins.json`:
+>
+> 1. A zip built from a tagged release, hosted at an immutable HTTPS URL, with a SHA-256 you can reproduce.
+> 2. A capability inventory that enumerates every tag from `ApprovedPluginRegistry::KNOWN_PERMISSIONS` the plugin exercises — `network.outbound`, `db.write`, `fs.write`, `secrets.store`, `hooks.person`, `hooks.financial`, etc.
+> 3. A `risk` level (`low` / `medium` / `high`) and a one-sentence `riskSummary` written in plain language. Admins will see this verbatim in the install screen — write the sentence you want them to see.
+> 4. A `plugin.json` whose `id`, `version`, and `type: "community"` match exactly what the registry entry declares.
+> 5. Zero files that would trigger `PluginInstaller::assertSafeZipEntry` or `assertAllowedExtension` — no `.phar`, `.phtml`, `.exe`, `.sh`, symlinks, `..`, or hidden files other than `.editorconfig` / `.gitattributes`.
+> 6. A Vulnerability Disclosure Program (VDP) URL in your plugin homepage or README. The 2026 EU plugin rules require one for commercial plugins and we apply the same bar to community submissions.
+>
+> **Run the scan against your own work before opening the PR.** Nothing is more frustrating than watching a week of development die because a reviewer finds `base64_decode(...)` in your vendor blob. It is *much* cheaper to delete the blob now.
+
 ## Context
 This skill covers creating, managing, and extending ChurchCRM using the WordPress-style plugin architecture.
 
@@ -210,6 +225,124 @@ $apiKey = $this->getConfigValue('apiKey');     // Gets plugin.my-plugin.apiKey
 $enabled = $this->getBooleanConfigValue('enabled');
 $this->setConfigValue('lastSync', date('c'));  // Sets plugin.my-plugin.lastSync
 ```
+
+## Plugin Localization (Independent of POeditor) <!-- learned: 2026-04-13 -->
+
+Community plugins are **never** added to the ChurchCRM POeditor project. If
+your plugin needs translated strings you ship them inside the plugin
+directory and ChurchCRM picks them up automatically.
+
+### Directory layout
+
+```
+plugins/community/my-plugin/
+├── plugin.json
+├── src/
+│   └── MyPluginPlugin.php
+└── locale/
+    ├── textdomain/              # PHP gettext (.mo) files
+    │   ├── en_US/LC_MESSAGES/my-plugin.mo
+    │   ├── de_DE/LC_MESSAGES/my-plugin.mo
+    │   └── es_ES/LC_MESSAGES/my-plugin.mo
+    └── i18n/                    # JavaScript i18next (flat key/value JSON)
+        ├── en_US.json
+        ├── de_DE.json
+        └── es_ES.json
+```
+
+Neither subdirectory is required. Plugins with no translations simply omit
+`locale/` and everything still works.
+
+### PHP strings (gettext)
+
+At boot, `PluginLocalization::bindPhpDomains()` calls
+`bindtextdomain('{your-plugin-id}', '.../locale/textdomain')` for every
+active plugin that ships a textdomain. The domain name matches your plugin
+id, which keeps your strings isolated from the core `messages` domain.
+
+In your plugin code, use `dgettext()` — **do not** call plain `gettext()`
+or `_()`, because those go to the `messages` domain and your strings will
+not be found:
+
+```php
+// ✅ CORRECT — translates from plugin.my-plugin.mo
+echo dgettext('my-plugin', 'Welcome to My Plugin');
+
+// ❌ WRONG — looks up the string in the core messages domain
+echo gettext('Welcome to My Plugin');
+```
+
+Build the `.mo` files with the standard gettext toolchain
+(`xgettext` → `msgfmt`). The `.po` source lives wherever you want inside
+the plugin repo — only the compiled `.mo` needs to ship in the zip.
+
+### JavaScript strings (i18next, no core changes needed)
+
+Ship a flat `key → string` JSON file per locale at
+`locale/i18n/{locale}.json`. The loader:
+
+1. Rejects files larger than 512 KB.
+2. Falls back to `en_US.json` when the user's locale file is missing.
+3. Embeds the resulting map in `window.CRM.plugins.{pluginId}.i18n` via
+   `PluginManager::getPluginsClientConfig()`.
+
+Your plugin JS then reads strings from that object. No changes to
+`locale-loader.js` are required.
+
+```json
+// locale/i18n/de_DE.json
+{
+  "myplugin.welcome": "Willkommen bei My Plugin",
+  "myplugin.save": "Speichern",
+  "myplugin.cancel": "Abbrechen"
+}
+```
+
+```js
+// Inside your plugin's frontend code
+const t = (key) =>
+  window.CRM?.plugins?.["my-plugin"]?.i18n?.[key] ?? key;
+
+document.getElementById("title").textContent = t("myplugin.welcome");
+```
+
+If you already use i18next elsewhere in the page, register the plugin map
+as a namespace once at boot:
+
+```js
+i18next.addResourceBundle(
+  window.CRM.shortLocale,          // e.g. "de_DE"
+  "my-plugin",                     // namespace
+  window.CRM.plugins["my-plugin"].i18n || {},
+  true,                            // deep
+  true                             // overwrite
+);
+
+// Then in your code:
+i18next.t("myplugin.welcome", { ns: "my-plugin" });
+```
+
+### Rules of the road
+
+- **Namespace your keys.** Prefix every JSON key with your plugin id
+  (`myplugin.foo`) so you never collide with another plugin.
+- **Only flat key/value string maps are accepted.** Nested JSON objects
+  are silently dropped by the loader.
+- **Fallback must exist.** Always ship `en_US.json` and an `en_US` .mo so
+  users on unsupported locales see something usable.
+- **Plugins never go through POeditor.** Do not add your strings to the
+  main `locale/messages.po` or open a PR to `locale/i18n/*.json` — those
+  are the core ChurchCRM domain. Your strings live in your plugin.
+- **Audit your extractor.** `xgettext --keyword=dgettext:2` picks up
+  plugin strings; the default settings do not.
+
+### Useful code references
+
+- `src/ChurchCRM/Plugin/PluginLocalization.php` — the loader.
+- `src/ChurchCRM/Plugin/PluginManager.php::loadActivePlugins` — where PHP
+  textdomains are bound.
+- `src/ChurchCRM/Plugin/PluginManager.php::getPluginsClientConfig` — where
+  JS resources are injected into `window.CRM.plugins.{id}.i18n`.
 
 ## Using PluginManager (Static Methods)
 
