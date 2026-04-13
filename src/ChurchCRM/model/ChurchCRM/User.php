@@ -547,12 +547,22 @@ class User extends BaseUser
     {
         // checks for validity of a 2FA recovery code
         // if the specified code was valid, the code is also removed.
-        // Normalize both the input and stored codes: strip hyphens/spaces and compare case-insensitively
-        // so codes work regardless of whether the separator is typed or not.
+        // New-format codes (xxxxxxxx-xxxxxxxx lowercase hex) are compared with normalization:
+        // hyphens/spaces stripped and lowercased, so users can type them either way.
+        // Legacy base64 codes are compared byte-exact to preserve their original entropy
+        // and avoid case-collision edge cases.
+        $newFormatRegex = '/^[a-f0-9]+-?[a-f0-9]+$/i';
+        $inputIsNewFormat = (bool) preg_match($newFormatRegex, $twoFaRecoveryCode);
         $normalizedInput = str_replace(['-', ' '], '', strtolower($twoFaRecoveryCode));
+
         $codes = $this->getDecryptedTwoFactorAuthRecoveryCodes();
         foreach ($codes as $key => $code) {
-            if (str_replace(['-', ' '], '', strtolower($code)) === $normalizedInput) {
+            $storedIsNewFormat = (bool) preg_match($newFormatRegex, $code);
+            $matches = $inputIsNewFormat && $storedIsNewFormat
+                ? str_replace(['-', ' '], '', strtolower($code)) === $normalizedInput
+                : hash_equals($code, $twoFaRecoveryCode);
+
+            if ($matches) {
                 unset($codes[$key]);
                 $recoveryCodesString = implode(',', $codes);
                 $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManagerUtils::getTwoFASecretKey()));
