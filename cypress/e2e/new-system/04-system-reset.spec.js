@@ -33,8 +33,6 @@ describe('04 - System Reset', () => {
         cy.get('input[name=Password]').type(password);
         cy.get('input[name=Password]').type('{enter}');
         cy.url({ timeout: 30000 }).should('not.include', '/session/begin');
-        // Give the session time to establish
-        cy.wait(1000);
 
         // After a DB reset the admin has NeedPasswordChange=true; complete the forced form if needed.
         // The forced form uses button[type=submit] (login-box layout, not card layout).
@@ -65,7 +63,6 @@ describe('04 - System Reset', () => {
                 cy.tomSelectByValue('#sChurchState', 'IL');
                 cy.get('#sChurchState').should('have.value', 'IL');
                 cy.get('#sChurchZip').clear().type('62701');
-                cy.wait(500);
                 cy.get('#church-info-form').submit();
                 cy.url({ timeout: 10000 }).should('include', 'church-info');
             }
