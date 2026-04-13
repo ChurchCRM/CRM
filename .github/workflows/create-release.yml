@@ -26,10 +26,6 @@ on:
         required: false
         type: boolean
         default: true
-      run_id:
-        description: 'Source build run ID (leave blank to use the latest successful master build)'
-        required: false
-        type: string
 
 jobs:
   release:
@@ -38,34 +34,24 @@ jobs:
       contents: write
       actions: read
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-        with:
-          ref: master
-          fetch-depth: 0
-
-      - name: Resolve source build run
+      - name: Resolve latest successful master build
         id: run
         env:
           GH_TOKEN: ${{ github.token }}
-          INPUT_RUN_ID: ${{ inputs.run_id }}
+          GH_REPO: ${{ github.repository }}
         run: |
           set -euo pipefail
-          if [ -n "$INPUT_RUN_ID" ]; then
-            run_id="$INPUT_RUN_ID"
-          else
-            run_id=$(gh run list \
-              --workflow=build-test-package.yml \
-              --branch=master \
-              --event=push \
-              --status=success \
-              --limit=1 \
-              --json databaseId \
-              --jq '.[0].databaseId // empty')
-          fi
+          run_id=$(gh run list \
+            --workflow=build-test-package.yml \
+            --branch=master \
+            --event=push \
+            --status=success \
+            --limit=1 \
+            --json databaseId \
+            --jq '.[0].databaseId // empty')
 
           if [ -z "$run_id" ]; then
-            echo "::error::No successful master build found. Merge to master and wait for a green build, or pass a run_id explicitly."
+            echo "::error::No successful master build found. Merge to master and wait for a green build first."
             exit 1
           fi
 
