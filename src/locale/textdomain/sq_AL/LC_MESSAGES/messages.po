@@ -15516,3 +15516,67 @@ msgstr "Mund të shqyrtoni dhe verifikoni informacionin e familjes suaj duke pë
 msgid "You do not have permission to view this person"
 msgstr "Nuk keni leje të shihni këtë person"
 
+#: 
+msgid "Are you sure you want to delete this event type? This cannot be undone."
+msgstr "Jeni të sigurt që doni të fshini këtë lloj ngjarjeje? Kjo veprim nuk mund të zhbëhet."
+
+#: 
+msgid "Assign to me"
+msgstr "Cakto për mua"
+
+#: 
+msgid "Assigned"
+msgstr "Caktuar"
+
+#: 
+msgid "Assigned event not found"
+msgstr "Ngjarja e caktuar nuk u gjet"
+
+#: 
+msgid "Cannot Delete Event Type"
+msgstr "Nuk mund të fshihet lloji i ngjarjes"
+
+#: 
+msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
+msgstr "Nuk mund të fshihet ky lloj ngjarjeje — %d ngjarje po e përdorin. Çaktivizoni llojin ose ricaktoni ngjarjet fillimisht."
+
+#: 
+msgid "Kiosk Devices"
+msgstr "Pajisjet Kiosk"
+
+#: 
+msgid "Kiosk device has not been accepted by an administrator"
+msgstr "Pajisja kiosk nuk është pranuar nga një administrator"
+
+#: 
+msgid "No active event assignment"
+msgstr "Nuk ka caktim aktiv ngjarjesh"
+
+#: 
+msgid "Opens a 30-second window for devices to register at:"
+msgstr "Hap një dritare 30-sekondëshe për regjistrimin e pajisjeve në:"
+
+#: 
+msgid "Pending"
+msgstr "Në pritje"
+
+#: 
+msgid "Register New Device"
+msgstr "Regjistro pajisje të re"
+
+#: 
+msgid "This event type is used by"
+msgstr "Ky lloj ngjarjeje përdoret nga"
+
+#: 
+msgid "Total Kiosks"
+msgstr "Totali i Kiosk-eve"
+
+#: 
+msgid "Upcoming Events"
+msgstr "Ngjarjet e ardhshme"
+
+#: 
+msgid "event(s). Deactivate the type instead, or reassign the events first."
+msgstr "ngjarje. Çaktivizoni llojin ose ricaktoni ngjarjet fillimisht."
+

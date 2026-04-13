@@ -15482,3 +15482,67 @@ msgstr "Maaari ninyong suriin at i-verify ang inyong impormasyon ng pamilya gami
 msgid "You do not have permission to view this person"
 msgstr "Wala kang pahintulot na tingnan ang taong ito"
 
+#: 
+msgid "Are you sure you want to delete this event type? This cannot be undone."
+msgstr "Sigurado ka bang gusto mong burahin ang uri ng kaganapan na ito? Hindi ito maaaring ibalik."
+
+#: 
+msgid "Assign to me"
+msgstr "Italaga sa akin"
+
+#: 
+msgid "Assigned"
+msgstr "Naitala"
+
+#: 
+msgid "Assigned event not found"
+msgstr "Hindi nahanap ang itinalagang kaganapan"
+
+#: 
+msgid "Cannot Delete Event Type"
+msgstr "Hindi Mabura ang Uri ng Kaganapan"
+
+#: 
+msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
+msgstr "Hindi mabura ang uri ng kaganapan na ito — %d kaganapan ang gumagamit nito. I-deactivate ang uri sa halip, o muling italaga ang mga kaganapan muna."
+
+#: 
+msgid "Kiosk Devices"
+msgstr "Mga Kiosk na Device"
+
+#: 
+msgid "Kiosk device has not been accepted by an administrator"
+msgstr "Ang kiosk device ay hindi pa tinanggap ng isang administrator"
+
+#: 
+msgid "No active event assignment"
+msgstr "Walang aktibong pagtatalaga ng kaganapan"
+
+#: 
+msgid "Opens a 30-second window for devices to register at:"
+msgstr "Nagbubukas ng 30-segundong window para magrehistro ang mga device sa:"
+
+#: 
+msgid "Pending"
+msgstr "Nakabinbin"
+
+#: 
+msgid "Register New Device"
+msgstr "Magrehistro ng Bagong Device"
+
+#: 
+msgid "This event type is used by"
+msgstr "Ang uri ng kaganapan na ito ay ginagamit ng"
+
+#: 
+msgid "Total Kiosks"
+msgstr "Kabuuang Kiosk"
+
+#: 
+msgid "Upcoming Events"
+msgstr "Mga Paparating na Kaganapan"
+
+#: 
+msgid "event(s). Deactivate the type instead, or reassign the events first."
+msgstr "kaganapan. I-deactivate ang uri sa halip, o muling italaga ang mga kaganapan muna."
+

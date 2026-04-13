@@ -15485,3 +15485,71 @@ msgstr "आप नीचे दिए गए लिंक का उपयोग
 msgid "You do not have permission to view this person"
 msgstr "आपको इस व्यक्ति को देखने की अनुमति नहीं है"
 
+#: 
+msgid "Are you sure you want to delete this event type? This cannot be undone."
+msgstr "क्या आप वाकई इस ईवेंट प्रकार को हटाना चाहते हैं? इसे पूर्ववत नहीं किया जा सकता।"
+
+#: 
+msgid "Assign to me"
+msgstr "मुझे सौंपें"
+
+#: 
+msgid "Assigned"
+msgstr "सौंपा गया"
+
+#: 
+msgid "Assigned event not found"
+msgstr "सौंपा गया ईवेंट नहीं मिला"
+
+#: 
+msgid "Cannot Delete Event Type"
+msgstr "ईवेंट प्रकार हटाया नहीं जा सकता"
+
+#: 
+msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
+msgstr "इस ईवेंट प्रकार को हटाया नहीं जा सकता — %d ईवेंट इसका उपयोग कर रहे हैं। इसके बजाय प्रकार को निष्क्रिय करें, या पहले ईवेंट को पुनः सौंपें।"
+
+#: 
+msgid "Kiosk Devices"
+msgstr "कियोस्क उपकरण"
+
+#: 
+msgid "Kiosk device has not been accepted by an administrator"
+msgstr "कियोस्क उपकरण को किसी व्यवस्थापक द्वारा स्वीकार नहीं किया गया है"
+
+#: 
+msgid "No active event assignment"
+msgstr "कोई सक्रिय ईवेंट असाइनमेंट नहीं"
+
+#: 
+msgid "Online"
+msgstr "ऑनलाइन"
+
+#: 
+msgid "Opens a 30-second window for devices to register at:"
+msgstr "उपकरणों को पंजीकृत करने के लिए 30 सेकंड की विंडो खोलता है:"
+
+#: 
+msgid "Pending"
+msgstr "लंबित"
+
+#: 
+msgid "Register New Device"
+msgstr "नया उपकरण पंजीकृत करें"
+
+#: 
+msgid "This event type is used by"
+msgstr "इस ईवेंट प्रकार का उपयोग किया जाता है"
+
+#: 
+msgid "Total Kiosks"
+msgstr "कुल कियोस्क"
+
+#: 
+msgid "Upcoming Events"
+msgstr "आगामी ईवेंट"
+
+#: 
+msgid "event(s). Deactivate the type instead, or reassign the events first."
+msgstr "ईवेंट। इसके बजाय प्रकार को निष्क्रिय करें, या पहले ईवेंट को पुनः सौंपें।"
+

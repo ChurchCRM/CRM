@@ -15530,3 +15530,71 @@ msgstr "Vous pouvez consulter et vérifier les informations de votre famille en 
 msgid "You do not have permission to view this person"
 msgstr "Vous n'avez pas la permission de consulter cette personne"
 
+#: 
+msgid "Are you sure you want to delete this event type? This cannot be undone."
+msgstr "Êtes-vous sûr de vouloir supprimer ce type d'événement ? Cette action est irréversible."
+
+#: 
+msgid "Assign to me"
+msgstr "M'assigner"
+
+#: 
+msgid "Assigned"
+msgstr "Assigné"
+
+#: 
+msgid "Assigned event not found"
+msgstr "Événement assigné introuvable"
+
+#: 
+msgid "Cannot Delete Event Type"
+msgstr "Impossible de supprimer le type d'événement"
+
+#: 
+msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
+msgstr "Impossible de supprimer ce type d'événement — %d événement(s) l'utilise(nt). Désactivez le type ou réaffectez d'abord les événements."
+
+#: 
+msgid "Kiosk Devices"
+msgstr "Appareils kiosque"
+
+#: 
+msgid "Kiosk device has not been accepted by an administrator"
+msgstr "L'appareil kiosque n'a pas été accepté par un administrateur"
+
+#: 
+msgid "No active event assignment"
+msgstr "Aucune affectation d'événement active"
+
+#: 
+msgid "Online"
+msgstr "En ligne"
+
+#: 
+msgid "Opens a 30-second window for devices to register at:"
+msgstr "Ouvre une fenêtre de 30 secondes pour que les appareils s'enregistrent à :"
+
+#: 
+msgid "Pending"
+msgstr "En attente"
+
+#: 
+msgid "Register New Device"
+msgstr "Enregistrer un nouvel appareil"
+
+#: 
+msgid "This event type is used by"
+msgstr "Ce type d'événement est utilisé par"
+
+#: 
+msgid "Total Kiosks"
+msgstr "Total des kiosques"
+
+#: 
+msgid "Upcoming Events"
+msgstr "Événements à venir"
+
+#: 
+msgid "event(s). Deactivate the type instead, or reassign the events first."
+msgstr "événement(s). Désactivez le type ou réaffectez d'abord les événements."
+

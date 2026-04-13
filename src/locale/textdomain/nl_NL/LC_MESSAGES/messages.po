@@ -15490,3 +15490,67 @@ msgstr "U kunt uw familiegegevens controleren en verifiëren via de onderstaande
 msgid "You do not have permission to view this person"
 msgstr "U heeft geen toestemming om deze persoon te bekijken"
 
+#: 
+msgid "Are you sure you want to delete this event type? This cannot be undone."
+msgstr "Weet u zeker dat u dit type evenement wilt verwijderen? Dit kan niet ongedaan worden gemaakt."
+
+#: 
+msgid "Assign to me"
+msgstr "Aan mij toewijzen"
+
+#: 
+msgid "Assigned"
+msgstr "Toegewezen"
+
+#: 
+msgid "Assigned event not found"
+msgstr "Toegewezen evenement niet gevonden"
+
+#: 
+msgid "Cannot Delete Event Type"
+msgstr "Kan type evenement niet verwijderen"
+
+#: 
+msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
+msgstr "Dit type evenement kan niet worden verwijderd — %d evenement(en) maken er gebruik van. Deactiveer het type of wijs de evenementen eerst opnieuw toe."
+
+#: 
+msgid "Kiosk Devices"
+msgstr "Kioskapparaten"
+
+#: 
+msgid "Kiosk device has not been accepted by an administrator"
+msgstr "Kioskapparaat is niet geaccepteerd door een beheerder"
+
+#: 
+msgid "No active event assignment"
+msgstr "Geen actieve evenementtoewijzing"
+
+#: 
+msgid "Opens a 30-second window for devices to register at:"
+msgstr "Opent een venster van 30 seconden voor apparaten om te registreren bij:"
+
+#: 
+msgid "Pending"
+msgstr "In behandeling"
+
+#: 
+msgid "Register New Device"
+msgstr "Nieuw apparaat registreren"
+
+#: 
+msgid "This event type is used by"
+msgstr "Dit type evenement wordt gebruikt door"
+
+#: 
+msgid "Total Kiosks"
+msgstr "Totaal kiosken"
+
+#: 
+msgid "Upcoming Events"
+msgstr "Aanstaande evenementen"
+
+#: 
+msgid "event(s). Deactivate the type instead, or reassign the events first."
+msgstr "evenement(en). Deactiveer het type of wijs de evenementen eerst opnieuw toe."
+

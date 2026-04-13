@@ -15618,3 +15618,71 @@ msgstr "Вы можете ознакомиться со сведениями о 
 msgid "You do not have permission to view this person"
 msgstr "У вас нет разрешения на просмотр этого человека"
 
+#: 
+msgid "Are you sure you want to delete this event type? This cannot be undone."
+msgstr "Вы уверены, что хотите удалить этот тип мероприятия? Это действие нельзя отменить."
+
+#: 
+msgid "Assign to me"
+msgstr "Назначить мне"
+
+#: 
+msgid "Assigned"
+msgstr "Назначено"
+
+#: 
+msgid "Assigned event not found"
+msgstr "Назначенное мероприятие не найдено"
+
+#: 
+msgid "Cannot Delete Event Type"
+msgstr "Невозможно удалить тип мероприятия"
+
+#: 
+msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
+msgstr "Невозможно удалить этот тип мероприятия — %d мероприятий(е) его используют. Деактивируйте тип или сначала переназначьте мероприятия."
+
+#: 
+msgid "Kiosk Devices"
+msgstr "Устройства киоска"
+
+#: 
+msgid "Kiosk device has not been accepted by an administrator"
+msgstr "Устройство киоска не принято администратором"
+
+#: 
+msgid "No active event assignment"
+msgstr "Нет активного назначения мероприятия"
+
+#: 
+msgid "Online"
+msgstr "Онлайн"
+
+#: 
+msgid "Opens a 30-second window for devices to register at:"
+msgstr "Открывает 30-секундное окно для регистрации устройств по адресу:"
+
+#: 
+msgid "Pending"
+msgstr "Ожидает"
+
+#: 
+msgid "Register New Device"
+msgstr "Зарегистрировать новое устройство"
+
+#: 
+msgid "This event type is used by"
+msgstr "Этот тип мероприятия используется"
+
+#: 
+msgid "Total Kiosks"
+msgstr "Всего киосков"
+
+#: 
+msgid "Upcoming Events"
+msgstr "Предстоящие мероприятия"
+
+#: 
+msgid "event(s). Deactivate the type instead, or reassign the events first."
+msgstr "мероприятий(е). Деактивируйте тип или сначала переназначьте мероприятия."
+

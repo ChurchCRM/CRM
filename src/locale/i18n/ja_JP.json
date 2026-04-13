@@ -2556,6 +2556,9 @@
     "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.": "データベースのバージョンがインストール済みソフトウェアより新しいです。これは通常、ソフトウェアが古いバージョンにロールバックされたことを意味します。データベースに合わせてChurchCRMをアップグレードしてください。",
     "or later to continue.": "以降のバージョンが継続には必要です。",
     "\"Why Came\" Notes": "「来会理由」メモ",
+    "%d result for \"%s\"": {
+        "other": "「%s」の検索結果 %d 件"
+    },
     "(optional — leave blank to include all roles)": "（任意 — すべての役割を含める場合は空欄のままにしてください）",
     "A family represents a household. It holds the shared address and home phone number for all family members living together.": "家族は世帯を表します。同居するすべての家族の共通住所と自宅電話番号を保持します。",
     "A household. Stores the shared mailing address and home phone.": "世帯。共通の郵送先住所と自宅電話番号を保存します。",
@@ -3468,6 +3471,9 @@
     "View All": "すべて表示",
     "Yellow": "黄",
     "Your current access levels (read-only)": "現在のアクセスレベル（読み取り専用）",
+    "%d repeat event created successfully.": {
+        "other": "%d 件の繰り返しイベントが正常に作成されました。"
+    },
     "(e.g. Members, Visitors, Children) so volunteers can record headcounts here.": "（例：会員、来訪者、子供）ボランティアがここで人数を記録できます。",
     "1. Sunday School Class": "1. 日曜学校クラス",
     "2. Event Type": "2. イベントタイプ",
@@ -3694,5 +3700,22 @@
     "Verify Family Info": "家族情報を検証",
     "Welcome": "ようこそ",
     "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator.": "以下のリンクを使用して、家族情報を確認・検証できます。追加のアクセスが必要な場合は、教会の管理者にお問い合わせください。",
-    "You do not have permission to view this person": "この人を閲覧する権限がありません"
+    "You do not have permission to view this person": "この人を閲覧する権限がありません",
+    "Are you sure you want to delete this event type? This cannot be undone.": "このイベントタイプを削除してよろしいですか？この操作は元に戻せません。",
+    "Assign to me": "自分に割り当て",
+    "Assigned": "割り当て済み",
+    "Assigned event not found": "割り当てられたイベントが見つかりません",
+    "Cannot Delete Event Type": "イベントタイプを削除できません",
+    "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first.": "このイベントタイプは削除できません — %d 件のイベントが使用しています。代わりにタイプを無効化するか、最初にイベントを再割り当てしてください。",
+    "Kiosk Devices": "キオスク端末",
+    "Kiosk device has not been accepted by an administrator": "キオスク端末は管理者によって承認されていません",
+    "No active event assignment": "有効なイベント割り当てがありません",
+    "Online": "オンライン",
+    "Opens a 30-second window for devices to register at:": "端末が登録するための30秒のウィンドウを開きます：",
+    "Pending": "保留中",
+    "Register New Device": "新しい端末を登録",
+    "This event type is used by": "このイベントタイプは以下で使用されています",
+    "Total Kiosks": "キオスク合計",
+    "Upcoming Events": "今後のイベント",
+    "event(s). Deactivate the type instead, or reassign the events first.": "件のイベント。代わりにタイプを無効化するか、最初にイベントを再割り当てしてください。"
 }

@@ -15525,3 +15525,71 @@ msgstr "באפשרותך לסקור ולאמת את פרטי משפחתך באמ
 msgid "You do not have permission to view this person"
 msgstr "אין לך הרשאה לצפות בפרטי אדם זה"
 
+#: 
+msgid "Are you sure you want to delete this event type? This cannot be undone."
+msgstr "האם אתה בטוח שברצונך למחוק סוג אירוע זה? לא ניתן לבטל פעולה זו."
+
+#: 
+msgid "Assign to me"
+msgstr "הקצה לי"
+
+#: 
+msgid "Assigned"
+msgstr "הוקצה"
+
+#: 
+msgid "Assigned event not found"
+msgstr "האירוע המוקצה לא נמצא"
+
+#: 
+msgid "Cannot Delete Event Type"
+msgstr "לא ניתן למחוק סוג אירוע"
+
+#: 
+msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
+msgstr "לא ניתן למחוק סוג אירוע זה — %d אירוע(ים) משתמשים בו. השבת את הסוג במקום זאת, או הקצה מחדש את האירועים תחילה."
+
+#: 
+msgid "Kiosk Devices"
+msgstr "מכשירי קיוסק"
+
+#: 
+msgid "Kiosk device has not been accepted by an administrator"
+msgstr "מכשיר הקיוסק לא אושר על ידי מנהל מערכת"
+
+#: 
+msgid "No active event assignment"
+msgstr "אין הקצאת אירוע פעילה"
+
+#: 
+msgid "Online"
+msgstr "מקוון"
+
+#: 
+msgid "Opens a 30-second window for devices to register at:"
+msgstr "פותח חלון של 30 שניות לרישום מכשירים ב:"
+
+#: 
+msgid "Pending"
+msgstr "ממתין"
+
+#: 
+msgid "Register New Device"
+msgstr "רשום מכשיר חדש"
+
+#: 
+msgid "This event type is used by"
+msgstr "סוג אירוע זה משמש את"
+
+#: 
+msgid "Total Kiosks"
+msgstr "סה\"כ קיוסקים"
+
+#: 
+msgid "Upcoming Events"
+msgstr "אירועים קרובים"
+
+#: 
+msgid "event(s). Deactivate the type instead, or reassign the events first."
+msgstr "אירוע(ים). השבת את הסוג במקום זאת, או הקצה מחדש את האירועים תחילה."
+

@@ -3733,5 +3733,22 @@
     "Verify Family Info": "Проверить сведения о семье",
     "Welcome": "Добро пожаловать",
     "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator.": "Вы можете ознакомиться со сведениями о вашей семье и проверить их по ссылке ниже. Если вам нужен дополнительный доступ, обратитесь к администратору вашего прихода.",
-    "You do not have permission to view this person": "У вас нет разрешения на просмотр этого человека"
+    "You do not have permission to view this person": "У вас нет разрешения на просмотр этого человека",
+    "Are you sure you want to delete this event type? This cannot be undone.": "Вы уверены, что хотите удалить этот тип мероприятия? Это действие нельзя отменить.",
+    "Assign to me": "Назначить мне",
+    "Assigned": "Назначено",
+    "Assigned event not found": "Назначенное мероприятие не найдено",
+    "Cannot Delete Event Type": "Невозможно удалить тип мероприятия",
+    "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first.": "Невозможно удалить этот тип мероприятия — %d мероприятий(е) его используют. Деактивируйте тип или сначала переназначьте мероприятия.",
+    "Kiosk Devices": "Устройства киоска",
+    "Kiosk device has not been accepted by an administrator": "Устройство киоска не принято администратором",
+    "No active event assignment": "Нет активного назначения мероприятия",
+    "Online": "Онлайн",
+    "Opens a 30-second window for devices to register at:": "Открывает 30-секундное окно для регистрации устройств по адресу:",
+    "Pending": "Ожидает",
+    "Register New Device": "Зарегистрировать новое устройство",
+    "This event type is used by": "Этот тип мероприятия используется",
+    "Total Kiosks": "Всего киосков",
+    "Upcoming Events": "Предстоящие мероприятия",
+    "event(s). Deactivate the type instead, or reassign the events first.": "мероприятий(е). Деактивируйте тип или сначала переназначьте мероприятия."
 }

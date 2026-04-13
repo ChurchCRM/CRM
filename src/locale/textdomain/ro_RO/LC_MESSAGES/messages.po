@@ -15614,3 +15614,67 @@ msgstr "Puteți revizui și verifica informațiile despre familia dvs. folosind 
 msgid "You do not have permission to view this person"
 msgstr "Nu aveți permisiunea de a vizualiza această persoană"
 
+#: 
+msgid "Are you sure you want to delete this event type? This cannot be undone."
+msgstr "Ești sigur că dorești să ștergi acest tip de eveniment? Această acțiune nu poate fi anulată."
+
+#: 
+msgid "Assign to me"
+msgstr "Atribuiți-mi"
+
+#: 
+msgid "Assigned"
+msgstr "Atribuit"
+
+#: 
+msgid "Assigned event not found"
+msgstr "Evenimentul atribuit nu a fost găsit"
+
+#: 
+msgid "Cannot Delete Event Type"
+msgstr "Nu se poate șterge tipul de eveniment"
+
+#: 
+msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
+msgstr "Nu se poate șterge acest tip de eveniment — %d eveniment(e) îl folosesc. Dezactivați tipul sau reatribuiți mai întâi evenimentele."
+
+#: 
+msgid "Kiosk Devices"
+msgstr "Dispozitive kiosk"
+
+#: 
+msgid "Kiosk device has not been accepted by an administrator"
+msgstr "Dispozitivul kiosk nu a fost acceptat de un administrator"
+
+#: 
+msgid "No active event assignment"
+msgstr "Nicio atribuire activă de eveniment"
+
+#: 
+msgid "Opens a 30-second window for devices to register at:"
+msgstr "Deschide o fereastră de 30 de secunde pentru înregistrarea dispozitivelor la:"
+
+#: 
+msgid "Pending"
+msgstr "În așteptare"
+
+#: 
+msgid "Register New Device"
+msgstr "Înregistrați un dispozitiv nou"
+
+#: 
+msgid "This event type is used by"
+msgstr "Acest tip de eveniment este folosit de"
+
+#: 
+msgid "Total Kiosks"
+msgstr "Total chioșcuri"
+
+#: 
+msgid "Upcoming Events"
+msgstr "Evenimente viitoare"
+
+#: 
+msgid "event(s). Deactivate the type instead, or reassign the events first."
+msgstr "eveniment(e). Dezactivați tipul sau reatribuiți mai întâi evenimentele."
+

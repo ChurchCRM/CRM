@@ -2556,6 +2556,9 @@
     "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.": "Versi database Anda lebih baru dari perangkat lunak yang diinstal. Ini biasanya berarti perangkat lunak dikembalikan ke versi yang lebih lama. Silakan upgrade ChurchCRM untuk sesuai dengan database Anda.",
     "or later to continue.": "atau lebih baru untuk melanjutkan.",
     "\"Why Came\" Notes": "Catatan \"Alasan Datang\"",
+    "%d result for \"%s\"": {
+        "other": "%d hasil untuk \"%s\""
+    },
     "(optional — leave blank to include all roles)": "(opsional — biarkan kosong untuk menyertakan semua peran)",
     "A family represents a household. It holds the shared address and home phone number for all family members living together.": "Sebuah keluarga mewakili satu rumah tangga. Menyimpan alamat bersama dan nomor telepon rumah untuk semua anggota keluarga yang tinggal bersama.",
     "A household. Stores the shared mailing address and home phone.": "Sebuah rumah tangga. Menyimpan alamat surat dan telepon rumah bersama.",
@@ -3468,6 +3471,9 @@
     "View All": "Lihat Semua",
     "Yellow": "Kuning",
     "Your current access levels (read-only)": "Tingkat akses Anda saat ini (hanya baca)",
+    "%d repeat event created successfully.": {
+        "other": "%d acara berulang berhasil dibuat."
+    },
     "(e.g. Members, Visitors, Children) so volunteers can record headcounts here.": "(mis. Jemaat, Pengunjung, Anak-anak) sehingga sukarelawan dapat mencatat jumlah kehadiran di sini.",
     "1. Sunday School Class": "1. Kelas Sekolah Minggu",
     "2. Event Type": "2. Jenis Acara",
@@ -3694,5 +3700,21 @@
     "Verify Family Info": "Verifikasi Informasi Keluarga",
     "Welcome": "Selamat Datang",
     "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator.": "Anda dapat meninjau dan memverifikasi informasi keluarga Anda menggunakan tautan di bawah ini. Jika Anda memerlukan akses tambahan, silakan hubungi administrator gereja Anda.",
-    "You do not have permission to view this person": "Anda tidak memiliki izin untuk melihat orang ini"
+    "You do not have permission to view this person": "Anda tidak memiliki izin untuk melihat orang ini",
+    "Are you sure you want to delete this event type? This cannot be undone.": "Apakah Anda yakin ingin menghapus jenis acara ini? Tindakan ini tidak dapat dibatalkan.",
+    "Assign to me": "Tetapkan ke saya",
+    "Assigned": "Ditetapkan",
+    "Assigned event not found": "Acara yang ditetapkan tidak ditemukan",
+    "Cannot Delete Event Type": "Tidak Dapat Menghapus Jenis Acara",
+    "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first.": "Tidak dapat menghapus jenis acara ini — %d acara menggunakannya. Nonaktifkan jenis tersebut atau tetapkan ulang acara terlebih dahulu.",
+    "Kiosk Devices": "Perangkat Kiosk",
+    "Kiosk device has not been accepted by an administrator": "Perangkat kiosk belum diterima oleh administrator",
+    "No active event assignment": "Tidak ada penugasan acara aktif",
+    "Opens a 30-second window for devices to register at:": "Membuka jendela 30 detik untuk perangkat mendaftar di:",
+    "Pending": "Tertunda",
+    "Register New Device": "Daftarkan Perangkat Baru",
+    "This event type is used by": "Jenis acara ini digunakan oleh",
+    "Total Kiosks": "Total Kiosk",
+    "Upcoming Events": "Acara Mendatang",
+    "event(s). Deactivate the type instead, or reassign the events first.": "acara. Nonaktifkan jenis tersebut atau tetapkan ulang acara terlebih dahulu."
 }

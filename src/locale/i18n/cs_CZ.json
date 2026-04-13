@@ -3722,5 +3722,21 @@
     "Verify Family Info": "Ověřit informace o rodině",
     "Welcome": "Vítejte",
     "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator.": "Níže uvedeným odkazem můžete zkontrolovat a ověřit informace o své rodině. Pokud potřebujete další přístup, kontaktujte prosím správce vaší církve.",
-    "You do not have permission to view this person": "Nemáte oprávnění zobrazit tuto osobu"
+    "You do not have permission to view this person": "Nemáte oprávnění zobrazit tuto osobu",
+    "Are you sure you want to delete this event type? This cannot be undone.": "Opravdu chcete smazat tento typ události? Tuto akci nelze vrátit zpět.",
+    "Assign to me": "Přiřadit mně",
+    "Assigned": "Přiřazeno",
+    "Assigned event not found": "Přiřazená událost nebyla nalezena",
+    "Cannot Delete Event Type": "Typ události nelze smazat",
+    "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first.": "Tento typ události nelze smazat — %d událost(í) jej používá. Místo toho deaktivujte typ nebo nejprve přesuňte události.",
+    "Kiosk Devices": "Zařízení kiosku",
+    "Kiosk device has not been accepted by an administrator": "Zařízení kiosku nebylo přijato správcem",
+    "No active event assignment": "Žádné aktivní přiřazení události",
+    "Opens a 30-second window for devices to register at:": "Otevře 30sekundové okno pro registraci zařízení na:",
+    "Pending": "Čekající",
+    "Register New Device": "Registrovat nové zařízení",
+    "This event type is used by": "Tento typ události je používán",
+    "Total Kiosks": "Celkem kiosků",
+    "Upcoming Events": "Nadcházející události",
+    "event(s). Deactivate the type instead, or reassign the events first.": "událost(í). Místo toho deaktivujte typ nebo nejprve přesuňte události."
 }
