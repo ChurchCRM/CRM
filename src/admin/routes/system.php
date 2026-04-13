@@ -7,6 +7,8 @@ use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\TestEmail;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
@@ -69,6 +71,78 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
     // Admin change user password (GET shows form, POST processes it)
     $group->get('/user/{id}/changePassword', 'adminChangeUserPassword');
     $group->post('/user/{id}/changePassword', 'adminChangeUserPassword')->add(new CSRFMiddleware('admin_change_password'));
+
+    // Option Manager page — manage list options (classifications, family roles,
+    // group types, security groups, custom field options, etc.)
+    $group->get('/options', function (Request $request, Response $response): Response {
+        $renderer = new PhpRenderer(__DIR__ . '/../views/');
+        $queryParams = $request->getQueryParams();
+        // Mode is a simple string — use sanitizeText (no SQL context needed).
+        // Avoid legacyFilterInput which depends on the $cnInfoCentral global.
+        $mode = InputUtils::sanitizeText((string) ($queryParams['mode'] ?? ''));
+
+        $customListId = (int) ($queryParams['ListID'] ?? 0);
+
+        // Determine list config based on mode
+        $listConfig = match ($mode) {
+            'famroles' => ['listId' => 2, 'title' => gettext('Family Roles Editor'), 'noun' => gettext('Family Role')],
+            'classes' => ['listId' => 1, 'title' => gettext('Person Classifications Editor'), 'noun' => gettext('Person Classification')],
+            'grptypes' => ['listId' => 3, 'title' => gettext('Group Types Editor'), 'noun' => gettext('Group Type')],
+            'securitygrp' => ['listId' => 5, 'title' => gettext('Security Groups Editor'), 'noun' => gettext('Security Group')],
+            'grproles' => $customListId > 0 && GroupQuery::create()->findOneByRoleListId($customListId) !== null
+                ? ['listId' => $customListId, 'title' => gettext('Group Member Roles Editor'), 'noun' => gettext('Group Member Role')]
+                : null,
+            'custom' => $customListId > 0 && ListOptionQuery::create()->filterById($customListId)->count() > 0
+                ? ['listId' => $customListId, 'title' => gettext('Person Custom List Options Editor'), 'noun' => gettext('Custom Option')]
+                : null,
+            'groupcustom' => $customListId > 0 && ListOptionQuery::create()->filterById($customListId)->count() > 0
+                ? ['listId' => $customListId, 'title' => gettext('Custom List Options Editor'), 'noun' => gettext('Custom Option')]
+                : null,
+            'famcustom' => $customListId > 0 && ListOptionQuery::create()->filterById($customListId)->count() > 0
+                ? ['listId' => $customListId, 'title' => gettext('Family Custom List Options Editor'), 'noun' => gettext('Custom Option')]
+                : null,
+            default => null,
+        };
+
+        if ($listConfig === null) {
+            return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/admin/');
+        }
+
+        // Load options server-side for initial render
+        $optionRows = \ChurchCRM\model\ChurchCRM\ListOptionQuery::create()
+            ->filterById($listConfig['listId'])
+            ->orderByOptionSequence()
+            ->find();
+
+        // For classifications mode, compute which options are marked inactive
+        $inactiveClasses = [];
+        if ($mode === 'classes') {
+            $inactiveRaw = (string) SystemConfig::getValue('sInactiveClassification');
+            if ($inactiveRaw !== '') {
+                $inactiveClasses = array_filter(
+                    explode(',', $inactiveRaw),
+                    fn($k) => is_numeric($k)
+                );
+            }
+        }
+
+        $pageArgs = [
+            'sRootPath' => SystemURLs::getRootPath(),
+            'sPageTitle' => $listConfig['title'],
+            'sPageSubtitle' => sprintf(gettext('Manage %s options'), $listConfig['noun']),
+            'aBreadcrumbs' => PageHeader::breadcrumbs([
+                [gettext('Admin'), '/admin/'],
+                [$listConfig['title']],
+            ]),
+            'mode' => $mode,
+            'listId' => $listConfig['listId'],
+            'noun' => $listConfig['noun'],
+            'optionRows' => $optionRows,
+            'inactiveClasses' => $inactiveClasses,
+        ];
+
+        return $renderer->render($response, 'option-manager.php', $pageArgs);
+    });
 
     // Restore Database page
     $group->get('/restore', function (Request $request, Response $response): Response {

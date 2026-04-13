@@ -292,6 +292,8 @@ class SlimUtils
                 $statusCode = 405;
             } elseif ($exception instanceof \Slim\Exception\HttpForbiddenException) {
                 $statusCode = 403;
+            } elseif ($exception instanceof HttpBadRequestException) {
+                $statusCode = 400;
             }
 
             // Log: info for 4xx, error for 5xx

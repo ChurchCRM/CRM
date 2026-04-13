@@ -460,7 +460,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
                             echo '<small class="text-danger"><br>' . gettext('You must select a group.') . '</small>';
                         }
                     } elseif ($aTypeFields[$row] == 12) {
-                        echo '<a href="javascript:void(0)" class="btn btn-sm btn-outline-primary" onclick="Newwin=window.open(\'OptionManager.php?mode=famcustom&ListID=' . htmlspecialchars($aSpecialFields[$row], ENT_QUOTES, 'UTF-8') . '\',\'Newwin\',\'toolbar=no,status=no,width=400,height=500,scrollbars=1\')">' . gettext('Edit List Options') . '</a>';
+                        echo '<a href="' . SystemURLs::getRootPath() . '/admin/system/options?mode=famcustom&ListID=' . htmlspecialchars($aSpecialFields[$row], ENT_QUOTES, 'UTF-8') . '" target="_blank" class="btn btn-sm btn-outline-primary">' . gettext('Edit List Options') . '</a>';
                     } else {
                         echo '&nbsp;';
                     } ?>
