@@ -5059,10 +5059,6 @@ msgid "Report an issue"
 msgstr "Signaler un problème"
 
 #: 
-msgid "Active Kiosks"
-msgstr "Kiosques actifs"
-
-#: 
 msgid "Self Verification"
 msgstr "Autovérification"
 
@@ -12477,10 +12473,6 @@ msgid "— Select type (optional) —"
 msgstr "— Sélectionner un type (facultatif) —"
 
 #: 
-msgid "Accept the device, then assign it to an event to begin check-in."
-msgstr "Acceptez l'appareil, puis assignez-le à un événement pour commencer l'enregistrement."
-
-#: 
 msgid "Activate"
 msgstr "Activer"
 
@@ -12531,10 +12523,6 @@ msgstr "Classe / Groupe"
 #: 
 msgid "Class List Export"
 msgstr "Export de la Liste de Classe"
-
-#: 
-msgid "Click the registration toggle above to open a 30-second registration window."
-msgstr "Cliquez sur le bouton d'inscription ci-dessus pour ouvrir une fenêtre d'inscription de 30 secondes."
 
 #: 
 msgid "Continue"
@@ -12605,10 +12593,6 @@ msgid "It is strongly recommended to have a backup before proceeding."
 msgstr "Il est fortement recommandé d'avoir une sauvegarde avant de continuer."
 
 #: 
-msgid "Kiosk Registration"
-msgstr "Inscription du Kiosque"
-
-#: 
 msgid "Latest"
 msgstr "Dernière"
 
@@ -12651,10 +12635,6 @@ msgstr "Note non trouvée"
 #: 
 msgid "Note text is required"
 msgstr "Le texte de la note est requis"
-
-#: 
-msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
-msgstr "Sur l'appareil kiosque (tablette, ordinateur portable, etc.), ouvrez un navigateur et accédez à :"
 
 #: 
 msgid "Only the note author or an admin may delete this note"
@@ -12701,10 +12681,6 @@ msgid "SHA1 Hash"
 msgstr "Empreinte SHA1"
 
 #: 
-msgid "Setup Instructions"
-msgstr "Instructions d'Installation"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "Signature Non Concordante"
 
@@ -12713,24 +12689,12 @@ msgid "Skip, Continue Without Backup"
 msgstr "Ignorer, Continuer Sans Sauvegarde"
 
 #: 
-msgid "The device will register itself and appear in the table below as \"Pending\"."
-msgstr "L'appareil s'enregistrera automatiquement et apparaîtra dans le tableau ci-dessous comme « En attente »."
-
-#: 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr "Ces liens apparaissent dans le menu « Liens » de la barre de navigation latérale lorsque cette extension est activée."
 
 #: 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr "Ceci retéléchargera et réappliquera la version actuelle. Cela peut corriger les fichiers corrompus ou modifiés."
-
-#: 
-msgid "To set up a kiosk device, follow these steps:"
-msgstr "Pour configurer un appareil kiosque, suivez ces étapes :"
-
-#: 
-msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
-msgstr "Activez le commutateur ci-dessous pour ouvrir une fenêtre de 30 secondes permettant l'inscription de nouveaux appareils kiosques."
 
 #: 
 msgid "Total Check-ins"
@@ -12743,10 +12707,6 @@ msgstr "Essayez de sélectionner un type d'événement ou une année différente
 #: 
 msgid "Up to Date"
 msgstr "À Jour"
-
-#: 
-msgid "Upcoming Sunday School Events"
-msgstr "Prochains Événements du Catéchisme"
 
 #: 
 msgid "Update Available"
@@ -14915,10 +14875,6 @@ msgid "Deleting an event will also delete all attendance counts. This cannot be 
 msgstr "La suppression d'un événement supprimera également tous les effectifs de présence. Cette action est irréversible."
 
 #: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "La suppression de ce type d'événement ne supprimera PAS les événements existants. Êtes-vous sûr ?"
-
-#: 
 msgid "Deleting this event will also delete all attendance records. This cannot be undone."
 msgstr "La suppression de cet événement supprimera également tous les registres de présence. Cette action est irréversible."
 
@@ -15121,10 +15077,6 @@ msgstr "Aucun événement aujourd'hui"
 #: 
 msgid "No Group"
 msgstr "Aucun groupe"
-
-#: 
-msgid "No active assignment"
-msgstr "Aucune affectation active"
 
 #: 
 msgid "No active events found."
@@ -15577,4 +15529,72 @@ msgstr "Vous pouvez consulter et vérifier les informations de votre famille en 
 #: 
 msgid "You do not have permission to view this person"
 msgstr "Vous n'avez pas la permission de consulter cette personne"
+
+#: 
+msgid "Are you sure you want to delete this event type? This cannot be undone."
+msgstr "Êtes-vous sûr de vouloir supprimer ce type d'événement ? Cette action est irréversible."
+
+#: 
+msgid "Assign to me"
+msgstr "M'assigner"
+
+#: 
+msgid "Assigned"
+msgstr "Assigné"
+
+#: 
+msgid "Assigned event not found"
+msgstr "Événement assigné introuvable"
+
+#: 
+msgid "Cannot Delete Event Type"
+msgstr "Impossible de supprimer le type d'événement"
+
+#: 
+msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
+msgstr "Impossible de supprimer ce type d'événement — %d événement(s) l'utilise(nt). Désactivez le type ou réaffectez d'abord les événements."
+
+#: 
+msgid "Kiosk Devices"
+msgstr "Appareils kiosque"
+
+#: 
+msgid "Kiosk device has not been accepted by an administrator"
+msgstr "L'appareil kiosque n'a pas été accepté par un administrateur"
+
+#: 
+msgid "No active event assignment"
+msgstr "Aucune affectation d'événement active"
+
+#: 
+msgid "Online"
+msgstr "En ligne"
+
+#: 
+msgid "Opens a 30-second window for devices to register at:"
+msgstr "Ouvre une fenêtre de 30 secondes pour que les appareils s'enregistrent à :"
+
+#: 
+msgid "Pending"
+msgstr "En attente"
+
+#: 
+msgid "Register New Device"
+msgstr "Enregistrer un nouvel appareil"
+
+#: 
+msgid "This event type is used by"
+msgstr "Ce type d'événement est utilisé par"
+
+#: 
+msgid "Total Kiosks"
+msgstr "Total des kiosques"
+
+#: 
+msgid "Upcoming Events"
+msgstr "Événements à venir"
+
+#: 
+msgid "event(s). Deactivate the type instead, or reassign the events first."
+msgstr "événement(s). Désactivez le type ou réaffectez d'abord les événements."
 

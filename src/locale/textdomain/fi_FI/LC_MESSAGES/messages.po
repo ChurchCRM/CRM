@@ -5032,10 +5032,6 @@ msgid "Report an issue"
 msgstr "Ilmoita ongelmasta"
 
 #: 
-msgid "Active Kiosks"
-msgstr "Aktiiviset kioskit"
-
-#: 
 msgid "Self Verification"
 msgstr "Itsevahvistus"
 
@@ -12439,10 +12435,6 @@ msgid "— Select type (optional) —"
 msgstr "— Valitse tyyppi (valinnainen) —"
 
 #: 
-msgid "Accept the device, then assign it to an event to begin check-in."
-msgstr "Hyväksy laite ja osoita se tapahtumaan aloittaaksesi kirjautumisen."
-
-#: 
 msgid "Activate"
 msgstr "Aktivoi"
 
@@ -12493,10 +12485,6 @@ msgstr "Luokka / Ryhmä"
 #: 
 msgid "Class List Export"
 msgstr "Luokkaluettelon vienti"
-
-#: 
-msgid "Click the registration toggle above to open a 30-second registration window."
-msgstr "Napsauta yllä olevaa rekisteröintivalitsinta avataksesi 30 sekunnin rekisteröinti-ikkunan."
 
 #: 
 msgid "Continue"
@@ -12567,10 +12555,6 @@ msgid "It is strongly recommended to have a backup before proceeding."
 msgstr "Varmuuskopion ottaminen ennen jatkamista on erittäin suositeltavaa."
 
 #: 
-msgid "Kiosk Registration"
-msgstr "Kioskin rekisteröinti"
-
-#: 
 msgid "Latest"
 msgstr "Uusin"
 
@@ -12613,10 +12597,6 @@ msgstr "Muistiinpanoa ei löytynyt"
 #: 
 msgid "Note text is required"
 msgstr "Muistiinpanon teksti on pakollinen"
-
-#: 
-msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
-msgstr "Kioskilaitteella (tabletti, kannettava tietokone jne.) avaa selain ja siirry osoitteeseen:"
 
 #: 
 msgid "Only the note author or an admin may delete this note"
@@ -12663,10 +12643,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1-sarja"
 
 #: 
-msgid "Setup Instructions"
-msgstr "Asennusohjeet"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "Allekirjoituksen poikkeama"
 
@@ -12675,24 +12651,12 @@ msgid "Skip, Continue Without Backup"
 msgstr "Ohita, jatka ilman varmuuskopiota"
 
 #: 
-msgid "The device will register itself and appear in the table below as \"Pending\"."
-msgstr "Laite rekisteröi itsensä ja ilmestyy alla olevaan taulukkoon tilassa \"Odottaa\"."
-
-#: 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr "Nämä linkit näkyvät navigointisivupalkin \"Linkit\"-valikossa, kun tämä lisäosa on käytössä."
 
 #: 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr "Tämä lataa ja ottaa uudelleen käyttöön nykyisen version. Se voi korjata vioittuneet tai muokatut tiedostot."
-
-#: 
-msgid "To set up a kiosk device, follow these steps:"
-msgstr "Kioskilaitteen asettamiseksi noudata seuraavia ohjeita:"
-
-#: 
-msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
-msgstr "Vaihda alla oleva kytkin avataksesi 30 sekunnin ikkunan uusien kioskilaitteiden rekisteröintiä varten."
 
 #: 
 msgid "Total Check-ins"
@@ -12705,10 +12669,6 @@ msgstr "Kokeile valita eri tapahtumatyyppi tai vuosi."
 #: 
 msgid "Up to Date"
 msgstr "Ajan tasalla"
-
-#: 
-msgid "Upcoming Sunday School Events"
-msgstr "Tulevat pyhäkoulutapahtumat"
 
 #: 
 msgid "Update Available"
@@ -14873,10 +14833,6 @@ msgid "Deleting an event will also delete all attendance counts. This cannot be 
 msgstr "Tapahtuman poistaminen poistaa myös kaikki läsnäololaskurit. Tätä ei voi peruuttaa."
 
 #: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "Tämän tapahtumatyypin poistaminen EI poista olemassa olevia tapahtumia. Oletko varma?"
-
-#: 
 msgid "Deleting this event will also delete all attendance records. This cannot be undone."
 msgstr "Tämän tapahtuman poistaminen poistaa myös kaikki läsnäolotietueet. Tätä ei voi peruuttaa."
 
@@ -15079,10 +15035,6 @@ msgstr "Ei tapahtumia tänään"
 #: 
 msgid "No Group"
 msgstr "Ei ryhmää"
-
-#: 
-msgid "No active assignment"
-msgstr "Ei aktiivista tehtävää"
 
 #: 
 msgid "No active events found."
@@ -15535,4 +15487,68 @@ msgstr "Voit tarkastaa ja vahvistaa perhetietosi alla olevan linkin kautta. Jos 
 #: 
 msgid "You do not have permission to view this person"
 msgstr "Sinulla ei ole oikeutta tarkastella tätä henkilöä"
+
+#: 
+msgid "Are you sure you want to delete this event type? This cannot be undone."
+msgstr "Haluatko varmasti poistaa tämän tapahtumatyypin? Tätä toimintoa ei voi kumota."
+
+#: 
+msgid "Assign to me"
+msgstr "Määritä minulle"
+
+#: 
+msgid "Assigned"
+msgstr "Määritetty"
+
+#: 
+msgid "Assigned event not found"
+msgstr "Määritettyä tapahtumaa ei löydy"
+
+#: 
+msgid "Cannot Delete Event Type"
+msgstr "Tapahtumatyyppiä ei voi poistaa"
+
+#: 
+msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
+msgstr "Tätä tapahtumatyyppiä ei voi poistaa — %d tapahtuma(a) käyttää sitä. Poista tyyppi käytöstä tai määritä tapahtumat uudelleen ensin."
+
+#: 
+msgid "Kiosk Devices"
+msgstr "Kiosklaitteet"
+
+#: 
+msgid "Kiosk device has not been accepted by an administrator"
+msgstr "Kiosklaitetta ei ole hyväksytty järjestelmänvalvojan toimesta"
+
+#: 
+msgid "No active event assignment"
+msgstr "Ei aktiivista tapahtumamääritystä"
+
+#: 
+msgid "Opens a 30-second window for devices to register at:"
+msgstr "Avaa 30 sekunnin ikkunan laitteille rekisteröitymistä varten:"
+
+#: 
+msgid "Pending"
+msgstr "Odottaa"
+
+#: 
+msgid "Register New Device"
+msgstr "Rekisteröi uusi laite"
+
+#: 
+msgid "This event type is used by"
+msgstr "Tätä tapahtumatyyppiä käyttää"
+
+#: 
+msgid "Total Kiosks"
+msgstr "Kioskeja yhteensä"
+
+#: 
+msgid "Upcoming Events"
+msgstr "Tulevat tapahtumat"
+
+#: 
+msgid "event(s). Deactivate the type instead, or reassign the events first."
+msgstr "tapahtuma(a). Poista tyyppi käytöstä tai määritä tapahtumat uudelleen ensin."
 

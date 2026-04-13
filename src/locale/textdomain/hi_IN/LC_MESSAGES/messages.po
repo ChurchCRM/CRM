@@ -5028,10 +5028,6 @@ msgid "Report an issue"
 msgstr "समस्या की रिपोर्ट करें"
 
 #: 
-msgid "Active Kiosks"
-msgstr "सक्रिय कियोस्क"
-
-#: 
 msgid "Self Verification"
 msgstr "स्व-सत्यापन"
 
@@ -12436,10 +12432,6 @@ msgid "— Select type (optional) —"
 msgstr "— प्रकार चुनें (वैकल्पिक) —"
 
 #: 
-msgid "Accept the device, then assign it to an event to begin check-in."
-msgstr "डिवाइस स्वीकार करें, फिर चेक-इन शुरू करने के लिए इसे एक कार्यक्रम में निर्धारित करें।"
-
-#: 
 msgid "Activate"
 msgstr "सक्रिय करें"
 
@@ -12490,10 +12482,6 @@ msgstr "कक्षा / समूह"
 #: 
 msgid "Class List Export"
 msgstr "कक्षा सूची निर्यात"
-
-#: 
-msgid "Click the registration toggle above to open a 30-second registration window."
-msgstr "30-सेकंड का पंजीकरण विंडो खोलने के लिए ऊपर पंजीकरण टॉगल पर क्लिक करें।"
 
 #: 
 msgid "Continue"
@@ -12564,10 +12552,6 @@ msgid "It is strongly recommended to have a backup before proceeding."
 msgstr "आगे बढ़ने से पहले बैकअप लेना अत्यधिक अनुशंसित है।"
 
 #: 
-msgid "Kiosk Registration"
-msgstr "कियोस्क पंजीकरण"
-
-#: 
 msgid "Latest"
 msgstr "नवीनतम"
 
@@ -12610,10 +12594,6 @@ msgstr "नोट नहीं मिला"
 #: 
 msgid "Note text is required"
 msgstr "नोट टेक्स्ट आवश्यक है"
-
-#: 
-msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
-msgstr "कियोस्क डिवाइस (टैबलेट, लैपटॉप, आदि) पर, ब्राउज़र खोलें और यहाँ जाएँ:"
 
 #: 
 msgid "Only the note author or an admin may delete this note"
@@ -12660,10 +12640,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 हैश"
 
 #: 
-msgid "Setup Instructions"
-msgstr "सेटअप निर्देश"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "हस्ताक्षर बेमेल"
 
@@ -12672,24 +12648,12 @@ msgid "Skip, Continue Without Backup"
 msgstr "छोड़ें, बैकअप के बिना जारी रखें"
 
 #: 
-msgid "The device will register itself and appear in the table below as \"Pending\"."
-msgstr "डिवाइस स्वयं पंजीकृत होगा और नीचे तालिका में \"लंबित\" के रूप में दिखाई देगा।"
-
-#: 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr "जब यह प्लगइन सक्षम होता है तो ये लिंक नेविगेशन साइडबार में \"लिंक्स\" मेनू में दिखाई देते हैं।"
 
 #: 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr "यह वर्तमान संस्करण को पुनः डाउनलोड और पुनः लागू करेगा। यह दूषित या संशोधित फ़ाइलों को ठीक कर सकता है।"
-
-#: 
-msgid "To set up a kiosk device, follow these steps:"
-msgstr "कियोस्क डिवाइस सेट अप करने के लिए, इन चरणों का पालन करें:"
-
-#: 
-msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
-msgstr "नए कियोस्क डिवाइस पंजीकृत करने के लिए 30-सेकंड का विंडो खोलने हेतु नीचे स्विच टॉगल करें।"
 
 #: 
 msgid "Total Check-ins"
@@ -12702,10 +12666,6 @@ msgstr "कोई भिन्न कार्यक्रम प्रकार
 #: 
 msgid "Up to Date"
 msgstr "अप टू डेट"
-
-#: 
-msgid "Upcoming Sunday School Events"
-msgstr "आगामी संडे स्कूल कार्यक्रम"
 
 #: 
 msgid "Update Available"
@@ -14870,10 +14830,6 @@ msgid "Deleting an event will also delete all attendance counts. This cannot be 
 msgstr "कार्यक्रम हटाने से सभी उपस्थिति गणनाएँ भी हट जाएंगी। यह क्रिया पूर्ववत नहीं की जा सकती।"
 
 #: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "इस कार्यक्रम प्रकार को हटाने से मौजूदा कार्यक्रम नहीं हटेंगे। क्या आप सुनिश्चित हैं?"
-
-#: 
 msgid "Deleting this event will also delete all attendance records. This cannot be undone."
 msgstr "यह कार्यक्रम हटाने से सभी उपस्थिति अभिलेख भी हट जाएंगे। यह क्रिया पूर्ववत नहीं की जा सकती।"
 
@@ -15076,10 +15032,6 @@ msgstr "आज कोई कार्यक्रम नहीं"
 #: 
 msgid "No Group"
 msgstr "कोई समूह नहीं"
-
-#: 
-msgid "No active assignment"
-msgstr "कोई सक्रिय असाइनमेंट नहीं"
 
 #: 
 msgid "No active events found."
@@ -15532,4 +15484,72 @@ msgstr "आप नीचे दिए गए लिंक का उपयोग
 #: 
 msgid "You do not have permission to view this person"
 msgstr "आपको इस व्यक्ति को देखने की अनुमति नहीं है"
+
+#: 
+msgid "Are you sure you want to delete this event type? This cannot be undone."
+msgstr "क्या आप वाकई इस ईवेंट प्रकार को हटाना चाहते हैं? इसे पूर्ववत नहीं किया जा सकता।"
+
+#: 
+msgid "Assign to me"
+msgstr "मुझे सौंपें"
+
+#: 
+msgid "Assigned"
+msgstr "सौंपा गया"
+
+#: 
+msgid "Assigned event not found"
+msgstr "सौंपा गया ईवेंट नहीं मिला"
+
+#: 
+msgid "Cannot Delete Event Type"
+msgstr "ईवेंट प्रकार हटाया नहीं जा सकता"
+
+#: 
+msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
+msgstr "इस ईवेंट प्रकार को हटाया नहीं जा सकता — %d ईवेंट इसका उपयोग कर रहे हैं। इसके बजाय प्रकार को निष्क्रिय करें, या पहले ईवेंट को पुनः सौंपें।"
+
+#: 
+msgid "Kiosk Devices"
+msgstr "कियोस्क उपकरण"
+
+#: 
+msgid "Kiosk device has not been accepted by an administrator"
+msgstr "कियोस्क उपकरण को किसी व्यवस्थापक द्वारा स्वीकार नहीं किया गया है"
+
+#: 
+msgid "No active event assignment"
+msgstr "कोई सक्रिय ईवेंट असाइनमेंट नहीं"
+
+#: 
+msgid "Online"
+msgstr "ऑनलाइन"
+
+#: 
+msgid "Opens a 30-second window for devices to register at:"
+msgstr "उपकरणों को पंजीकृत करने के लिए 30 सेकंड की विंडो खोलता है:"
+
+#: 
+msgid "Pending"
+msgstr "लंबित"
+
+#: 
+msgid "Register New Device"
+msgstr "नया उपकरण पंजीकृत करें"
+
+#: 
+msgid "This event type is used by"
+msgstr "इस ईवेंट प्रकार का उपयोग किया जाता है"
+
+#: 
+msgid "Total Kiosks"
+msgstr "कुल कियोस्क"
+
+#: 
+msgid "Upcoming Events"
+msgstr "आगामी ईवेंट"
+
+#: 
+msgid "event(s). Deactivate the type instead, or reassign the events first."
+msgstr "ईवेंट। इसके बजाय प्रकार को निष्क्रिय करें, या पहले ईवेंट को पुनः सौंपें।"
 

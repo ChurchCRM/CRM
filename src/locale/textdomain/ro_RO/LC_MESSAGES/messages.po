@@ -5140,10 +5140,6 @@ msgid "Report an issue"
 msgstr "Rapoartează o eroare"
 
 #: 
-msgid "Active Kiosks"
-msgstr "Chioșcuri (Kiosks) active"
-
-#: 
 msgid "Self Verification"
 msgstr "Auto verificare"
 
@@ -12564,10 +12560,6 @@ msgid "— Select type (optional) —"
 msgstr "— Selectați tipul (opțional) —"
 
 #: 
-msgid "Accept the device, then assign it to an event to begin check-in."
-msgstr "Acceptați dispozitivul, apoi atribuiți-l unui eveniment pentru a începe înregistrarea prezenței."
-
-#: 
 msgid "Activate"
 msgstr "Activează"
 
@@ -12618,10 +12610,6 @@ msgstr "Clasă / Grup"
 #: 
 msgid "Class List Export"
 msgstr "Export listă clasă"
-
-#: 
-msgid "Click the registration toggle above to open a 30-second registration window."
-msgstr "Faceți clic pe comutatorul de înregistrare de mai sus pentru a deschide o fereastră de înregistrare de 30 de secunde."
 
 #: 
 msgid "Continue"
@@ -12692,10 +12680,6 @@ msgid "It is strongly recommended to have a backup before proceeding."
 msgstr "Este recomandat insistent să aveți o copie de siguranță înainte de a continua."
 
 #: 
-msgid "Kiosk Registration"
-msgstr "Înregistrare chioșc"
-
-#: 
 msgid "Latest"
 msgstr "Cea mai recentă"
 
@@ -12738,10 +12722,6 @@ msgstr "Nota nu a fost găsită"
 #: 
 msgid "Note text is required"
 msgstr "Textul notei este obligatoriu"
-
-#: 
-msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
-msgstr "Pe dispozitivul chioșc (tabletă, laptop etc.), deschideți un browser și navigați la:"
 
 #: 
 msgid "Only the note author or an admin may delete this note"
@@ -12788,10 +12768,6 @@ msgid "SHA1 Hash"
 msgstr "Hash SHA1"
 
 #: 
-msgid "Setup Instructions"
-msgstr "Instrucțiuni de configurare"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "Nepotrivire semnătură"
 
@@ -12800,24 +12776,12 @@ msgid "Skip, Continue Without Backup"
 msgstr "Omite, continuă fără copie de siguranță"
 
 #: 
-msgid "The device will register itself and appear in the table below as \"Pending\"."
-msgstr "Dispozitivul se va înregistra singur și va apărea în tabelul de mai jos ca \"În așteptare\"."
-
-#: 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr "Aceste linkuri apar în meniul \"Linkuri\" din bara laterală de navigare când acest plugin este activat."
 
 #: 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr "Aceasta va redescărca și reaplica versiunea curentă. Poate repara fișierele corupte sau modificate."
-
-#: 
-msgid "To set up a kiosk device, follow these steps:"
-msgstr "Pentru a configura un dispozitiv chioșc, urmați acești pași:"
-
-#: 
-msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
-msgstr "Comutați butonul de mai jos pentru a deschide o fereastră de 30 de secunde pentru înregistrarea dispozitivelor chioșc noi."
 
 #: 
 msgid "Total Check-ins"
@@ -12830,10 +12794,6 @@ msgstr "Încercați să selectați un alt tip de eveniment sau an."
 #: 
 msgid "Up to Date"
 msgstr "La zi"
-
-#: 
-msgid "Upcoming Sunday School Events"
-msgstr "Evenimente viitoare de școală duminicală"
 
 #: 
 msgid "Update Available"
@@ -14999,10 +14959,6 @@ msgid "Deleting an event will also delete all attendance counts. This cannot be 
 msgstr "Ștergerea unui eveniment va șterge și toate numărătorile de prezență. Această acțiune nu poate fi anulată."
 
 #: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "Ștergerea acestui tip de eveniment NU va șterge evenimentele existente. Sunteți sigur?"
-
-#: 
 msgid "Deleting this event will also delete all attendance records. This cannot be undone."
 msgstr "Ștergerea acestui eveniment va șterge și toate înregistrările de prezență. Această acțiune nu poate fi anulată."
 
@@ -15205,10 +15161,6 @@ msgstr "Nu există evenimente astăzi"
 #: 
 msgid "No Group"
 msgstr "Niciun Grup"
-
-#: 
-msgid "No active assignment"
-msgstr "Nicio atribuire activă"
 
 #: 
 msgid "No active events found."
@@ -15661,4 +15613,68 @@ msgstr "Puteți revizui și verifica informațiile despre familia dvs. folosind 
 #: 
 msgid "You do not have permission to view this person"
 msgstr "Nu aveți permisiunea de a vizualiza această persoană"
+
+#: 
+msgid "Are you sure you want to delete this event type? This cannot be undone."
+msgstr "Ești sigur că dorești să ștergi acest tip de eveniment? Această acțiune nu poate fi anulată."
+
+#: 
+msgid "Assign to me"
+msgstr "Atribuiți-mi"
+
+#: 
+msgid "Assigned"
+msgstr "Atribuit"
+
+#: 
+msgid "Assigned event not found"
+msgstr "Evenimentul atribuit nu a fost găsit"
+
+#: 
+msgid "Cannot Delete Event Type"
+msgstr "Nu se poate șterge tipul de eveniment"
+
+#: 
+msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
+msgstr "Nu se poate șterge acest tip de eveniment — %d eveniment(e) îl folosesc. Dezactivați tipul sau reatribuiți mai întâi evenimentele."
+
+#: 
+msgid "Kiosk Devices"
+msgstr "Dispozitive kiosk"
+
+#: 
+msgid "Kiosk device has not been accepted by an administrator"
+msgstr "Dispozitivul kiosk nu a fost acceptat de un administrator"
+
+#: 
+msgid "No active event assignment"
+msgstr "Nicio atribuire activă de eveniment"
+
+#: 
+msgid "Opens a 30-second window for devices to register at:"
+msgstr "Deschide o fereastră de 30 de secunde pentru înregistrarea dispozitivelor la:"
+
+#: 
+msgid "Pending"
+msgstr "În așteptare"
+
+#: 
+msgid "Register New Device"
+msgstr "Înregistrați un dispozitiv nou"
+
+#: 
+msgid "This event type is used by"
+msgstr "Acest tip de eveniment este folosit de"
+
+#: 
+msgid "Total Kiosks"
+msgstr "Total chioșcuri"
+
+#: 
+msgid "Upcoming Events"
+msgstr "Evenimente viitoare"
+
+#: 
+msgid "event(s). Deactivate the type instead, or reassign the events first."
+msgstr "eveniment(e). Dezactivați tipul sau reatribuiți mai întâi evenimentele."
 

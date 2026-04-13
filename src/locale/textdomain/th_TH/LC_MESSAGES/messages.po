@@ -5037,10 +5037,6 @@ msgid "Report an issue"
 msgstr "รายงานปัญหา"
 
 #: 
-msgid "Active Kiosks"
-msgstr "คีออสก์ที่ใช้งาน"
-
-#: 
 msgid "Self Verification"
 msgstr "การยืนยันตนเอง"
 
@@ -12439,10 +12435,6 @@ msgid "— Select type (optional) —"
 msgstr "— เลือกประเภท (ไม่บังคับ) —"
 
 #: 
-msgid "Accept the device, then assign it to an event to begin check-in."
-msgstr "ยอมรับอุปกรณ์ จากนั้นกำหนดให้กิจกรรมเพื่อเริ่มลงเวลาเข้า"
-
-#: 
 msgid "Activate"
 msgstr "เปิดใช้งาน"
 
@@ -12493,10 +12485,6 @@ msgstr "ชั้นเรียน / กลุ่ม"
 #: 
 msgid "Class List Export"
 msgstr "ส่งออกรายชื่อชั้นเรียน"
-
-#: 
-msgid "Click the registration toggle above to open a 30-second registration window."
-msgstr "คลิกปุ่มสลับการลงทะเบียนด้านบนเพื่อเปิดหน้าต่างลงทะเบียน 30 วินาที"
 
 #: 
 msgid "Continue"
@@ -12567,10 +12555,6 @@ msgid "It is strongly recommended to have a backup before proceeding."
 msgstr "แนะนำอย่างยิ่งให้มีข้อมูลสำรองก่อนดำเนินการ"
 
 #: 
-msgid "Kiosk Registration"
-msgstr "ลงทะเบียนคีออสก์"
-
-#: 
 msgid "Latest"
 msgstr "ล่าสุด"
 
@@ -12613,10 +12597,6 @@ msgstr "ไม่พบบันทึก"
 #: 
 msgid "Note text is required"
 msgstr "ต้องระบุข้อความบันทึก"
-
-#: 
-msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
-msgstr "บนอุปกรณ์คีออสก์ (แท็บเล็ต แล็ปท็อป ฯลฯ) เปิดเบราว์เซอร์และไปที่:"
 
 #: 
 msgid "Only the note author or an admin may delete this note"
@@ -12663,10 +12643,6 @@ msgid "SHA1 Hash"
 msgstr "แฮช SHA1"
 
 #: 
-msgid "Setup Instructions"
-msgstr "คำแนะนำการตั้งค่า"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "ลายเซ็นไม่ตรงกัน"
 
@@ -12675,24 +12651,12 @@ msgid "Skip, Continue Without Backup"
 msgstr "ข้าม ดำเนินการต่อโดยไม่สำรองข้อมูล"
 
 #: 
-msgid "The device will register itself and appear in the table below as \"Pending\"."
-msgstr "อุปกรณ์จะลงทะเบียนตัวเองและปรากฏในตารางด้านล่างเป็น \"รอดำเนินการ\""
-
-#: 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr "ลิงก์เหล่านี้จะปรากฏในเมนู \"ลิงก์\" ในแถบนำทางด้านข้างเมื่อเปิดใช้ปลั๊กอินนี้"
 
 #: 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr "จะดาวน์โหลดและใช้เวอร์ชันปัจจุบันใหม่ สามารถแก้ไขไฟล์ที่เสียหายหรือถูกแก้ไขได้"
-
-#: 
-msgid "To set up a kiosk device, follow these steps:"
-msgstr "เพื่อตั้งค่าอุปกรณ์คีออสก์ ให้ทำตามขั้นตอนเหล่านี้:"
-
-#: 
-msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
-msgstr "สลับสวิตช์ด้านล่างเพื่อเปิดหน้าต่าง 30 วินาทีสำหรับอุปกรณ์คีออสก์ใหม่ลงทะเบียน"
 
 #: 
 msgid "Total Check-ins"
@@ -12705,10 +12669,6 @@ msgstr "ลองเลือกประเภทกิจกรรมหรื
 #: 
 msgid "Up to Date"
 msgstr "เป็นเวอร์ชันล่าสุด"
-
-#: 
-msgid "Upcoming Sunday School Events"
-msgstr "กิจกรรมโรงเรียนวันอาทิตย์ที่จะมาถึง"
 
 #: 
 msgid "Update Available"
@@ -14615,6 +14575,11 @@ msgid "Your current access levels (read-only)"
 msgstr "ระดับการเข้าถึงปัจจุบันของคุณ (อ่านอย่างเดียว)"
 
 #: 
+msgid "%d repeat event created successfully."
+msgid_plural "%d repeat events created successfully."
+msgstr[0] "สร้างกิจกรรมซ้ำ %d รายการสำเร็จแล้ว"
+
+#: 
 msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
 msgstr "(เช่น สมาชิก ผู้เยี่ยมชม เด็ก) เพื่อให้อาสาสมัครบันทึกจำนวนผู้เข้าร่วมได้ที่นี่"
 
@@ -14867,10 +14832,6 @@ msgid "Deleting an event will also delete all attendance counts. This cannot be 
 msgstr "การลบกิจกรรมจะลบจำนวนการเข้าร่วมทั้งหมดด้วย การดำเนินการนี้ไม่สามารถยกเลิกได้"
 
 #: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "การลบประเภทกิจกรรมนี้จะไม่ลบกิจกรรมที่มีอยู่ คุณแน่ใจหรือไม่?"
-
-#: 
 msgid "Deleting this event will also delete all attendance records. This cannot be undone."
 msgstr "การลบกิจกรรมนี้จะลบบันทึกการเข้าร่วมทั้งหมดด้วย การดำเนินการนี้ไม่สามารถยกเลิกได้"
 
@@ -15073,10 +15034,6 @@ msgstr "ไม่มีกิจกรรมวันนี้"
 #: 
 msgid "No Group"
 msgstr "ไม่มีกลุ่ม"
-
-#: 
-msgid "No active assignment"
-msgstr "ไม่มีการกำหนดที่ใช้งานอยู่"
 
 #: 
 msgid "No active events found."
@@ -15529,4 +15486,72 @@ msgstr "คุณสามารถตรวจสอบและยืนยั
 #: 
 msgid "You do not have permission to view this person"
 msgstr "คุณไม่มีสิทธิ์ดูข้อมูลของบุคคลนี้"
+
+#: 
+msgid "Are you sure you want to delete this event type? This cannot be undone."
+msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบประเภทกิจกรรมนี้? การดำเนินการนี้ไม่สามารถยกเลิกได้"
+
+#: 
+msgid "Assign to me"
+msgstr "มอบหมายให้ฉัน"
+
+#: 
+msgid "Assigned"
+msgstr "มอบหมายแล้ว"
+
+#: 
+msgid "Assigned event not found"
+msgstr "ไม่พบกิจกรรมที่มอบหมาย"
+
+#: 
+msgid "Cannot Delete Event Type"
+msgstr "ไม่สามารถลบประเภทกิจกรรมได้"
+
+#: 
+msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
+msgstr "ไม่สามารถลบประเภทกิจกรรมนี้ได้ — %d กิจกรรมกำลังใช้งานอยู่ ให้ปิดใช้งานประเภทแทน หรือมอบหมายกิจกรรมใหม่ก่อน"
+
+#: 
+msgid "Kiosk Devices"
+msgstr "อุปกรณ์คีออสก์"
+
+#: 
+msgid "Kiosk device has not been accepted by an administrator"
+msgstr "อุปกรณ์คีออสก์ยังไม่ได้รับการยอมรับจากผู้ดูแลระบบ"
+
+#: 
+msgid "No active event assignment"
+msgstr "ไม่มีการมอบหมายกิจกรรมที่ใช้งานอยู่"
+
+#: 
+msgid "Online"
+msgstr "ออนไลน์"
+
+#: 
+msgid "Opens a 30-second window for devices to register at:"
+msgstr "เปิดหน้าต่าง 30 วินาทีสำหรับอุปกรณ์ลงทะเบียนที่:"
+
+#: 
+msgid "Pending"
+msgstr "รอดำเนินการ"
+
+#: 
+msgid "Register New Device"
+msgstr "ลงทะเบียนอุปกรณ์ใหม่"
+
+#: 
+msgid "This event type is used by"
+msgstr "ประเภทกิจกรรมนี้ถูกใช้โดย"
+
+#: 
+msgid "Total Kiosks"
+msgstr "คีออสก์ทั้งหมด"
+
+#: 
+msgid "Upcoming Events"
+msgstr "กิจกรรมที่กำลังจะมาถึง"
+
+#: 
+msgid "event(s). Deactivate the type instead, or reassign the events first."
+msgstr "กิจกรรม ให้ปิดใช้งานประเภทแทน หรือมอบหมายกิจกรรมใหม่ก่อน"
 

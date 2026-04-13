@@ -5074,10 +5074,6 @@ msgid "Report an issue"
 msgstr "Báo cáo một vấn đề"
 
 #: 
-msgid "Active Kiosks"
-msgstr "Kiosk đang hoạt động"
-
-#: 
 msgid "Self Verification"
 msgstr "Tự xác minh"
 
@@ -10560,6 +10556,11 @@ msgid "\"Why Came\" Notes"
 msgstr "Ghi chu \"Ly do den\""
 
 #: 
+msgid "%d result for \"%s\""
+msgid_plural "%d results for \"%s\""
+msgstr[0] "%d kết quả cho \"%s\""
+
+#: 
 msgid "(optional — leave blank to include all roles)"
 msgstr "(tuy chon — de trong de bao gom tat ca cac vai tro)"
 
@@ -12470,10 +12471,6 @@ msgid "— Select type (optional) —"
 msgstr "— Chon loai (tuy chon) —"
 
 #: 
-msgid "Accept the device, then assign it to an event to begin check-in."
-msgstr "Chap nhan thiet bi, sau do gan no vao mot su kien de bat dau dang ky vao."
-
-#: 
 msgid "Activate"
 msgstr "Kich hoat"
 
@@ -12524,10 +12521,6 @@ msgstr "Lop / Nhom"
 #: 
 msgid "Class List Export"
 msgstr "Xuat danh sach lop"
-
-#: 
-msgid "Click the registration toggle above to open a 30-second registration window."
-msgstr "Nhan nut chuyen doi dang ky o tren de mo cua so dang ky 30 giay."
 
 #: 
 msgid "Continue"
@@ -12598,10 +12591,6 @@ msgid "It is strongly recommended to have a backup before proceeding."
 msgstr "Khuyen nghi manh me nen co ban sao luu truoc khi tiep tuc."
 
 #: 
-msgid "Kiosk Registration"
-msgstr "Dang ky Kiosk"
-
-#: 
 msgid "Latest"
 msgstr "Moi nhat"
 
@@ -12644,10 +12633,6 @@ msgstr "Khong tim thay ghi chu"
 #: 
 msgid "Note text is required"
 msgstr "Noi dung ghi chu la bat buoc"
-
-#: 
-msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
-msgstr "Tren thiet bi kiosk (may tinh bang, laptop, v.v.), mo trinh duyet va truy cap:"
 
 #: 
 msgid "Only the note author or an admin may delete this note"
@@ -12694,10 +12679,6 @@ msgid "SHA1 Hash"
 msgstr "Ma bam SHA1"
 
 #: 
-msgid "Setup Instructions"
-msgstr "Huong dan cai dat"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "Chu ky khong khop"
 
@@ -12706,24 +12687,12 @@ msgid "Skip, Continue Without Backup"
 msgstr "Bo qua, tiep tuc khong sao luu"
 
 #: 
-msgid "The device will register itself and appear in the table below as \"Pending\"."
-msgstr "Thiet bi se tu dang ky va xuat hien trong bang ben duoi voi trang thai \"Dang cho\"."
-
-#: 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr "Cac lien ket nay xuat hien trong menu \"Lien ket\" o thanh dieu huong ben khi plugin nay duoc bat."
 
 #: 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr "Thao tac nay se tai lai va ap dung lai phien ban hien tai. No co the sua cac tep bi hong hoac da sua doi."
-
-#: 
-msgid "To set up a kiosk device, follow these steps:"
-msgstr "De cai dat thiet bi kiosk, hay lam theo cac buoc sau:"
-
-#: 
-msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
-msgstr "Chuyen doi cong tac ben duoi de mo cua so 30 giay cho thiet bi kiosk moi dang ky."
 
 #: 
 msgid "Total Check-ins"
@@ -12736,10 +12705,6 @@ msgstr "Thu chon loai su kien hoac nam khac."
 #: 
 msgid "Up to Date"
 msgstr "Da cap nhat"
-
-#: 
-msgid "Upcoming Sunday School Events"
-msgstr "Su kien giao ly sap toi"
 
 #: 
 msgid "Update Available"
@@ -14646,6 +14611,11 @@ msgid "Your current access levels (read-only)"
 msgstr "Các cấp độ truy cập hiện tại của bạn (chỉ đọc)"
 
 #: 
+msgid "%d repeat event created successfully."
+msgid_plural "%d repeat events created successfully."
+msgstr[0] "%d sự kiện lặp lại đã được tạo thành công."
+
+#: 
 msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
 msgstr "(ví dụ: Giáo dân, Khách, Trẻ em) để các tình nguyện viên có thể ghi số lượng tại đây."
 
@@ -14898,10 +14868,6 @@ msgid "Deleting an event will also delete all attendance counts. This cannot be 
 msgstr "Xóa sự kiện cũng sẽ xóa tất cả số liệu điểm danh. Không thể hoàn tác."
 
 #: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "Xóa loại sự kiện này sẽ KHÔNG xóa các sự kiện hiện có. Bạn có chắc không?"
-
-#: 
 msgid "Deleting this event will also delete all attendance records. This cannot be undone."
 msgstr "Xóa sự kiện này cũng sẽ xóa tất cả hồ sơ điểm danh. Không thể hoàn tác."
 
@@ -15104,10 +15070,6 @@ msgstr "Không có sự kiện hôm nay"
 #: 
 msgid "No Group"
 msgstr "Không có nhóm"
-
-#: 
-msgid "No active assignment"
-msgstr "Không có phân công nào đang hoạt động"
 
 #: 
 msgid "No active events found."
@@ -15560,4 +15522,72 @@ msgstr "Bạn có thể xem lại và xác minh thông tin gia đình của mìn
 #: 
 msgid "You do not have permission to view this person"
 msgstr "Bạn không có quyền xem người này"
+
+#: 
+msgid "Are you sure you want to delete this event type? This cannot be undone."
+msgstr "Bạn có chắc chắn muốn xóa loại sự kiện này không? Hành động này không thể hoàn tác."
+
+#: 
+msgid "Assign to me"
+msgstr "Giao cho tôi"
+
+#: 
+msgid "Assigned"
+msgstr "Đã giao"
+
+#: 
+msgid "Assigned event not found"
+msgstr "Không tìm thấy sự kiện được giao"
+
+#: 
+msgid "Cannot Delete Event Type"
+msgstr "Không thể xóa loại sự kiện"
+
+#: 
+msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
+msgstr "Không thể xóa loại sự kiện này — %d sự kiện đang sử dụng nó. Hãy vô hiệu hóa loại này hoặc giao lại các sự kiện trước."
+
+#: 
+msgid "Kiosk Devices"
+msgstr "Thiết bị Kiosk"
+
+#: 
+msgid "Kiosk device has not been accepted by an administrator"
+msgstr "Thiết bị kiosk chưa được quản trị viên chấp nhận"
+
+#: 
+msgid "No active event assignment"
+msgstr "Không có phân công sự kiện nào đang hoạt động"
+
+#: 
+msgid "Online"
+msgstr "Trực tuyến"
+
+#: 
+msgid "Opens a 30-second window for devices to register at:"
+msgstr "Mở cửa sổ 30 giây để thiết bị đăng ký tại:"
+
+#: 
+msgid "Pending"
+msgstr "Đang chờ"
+
+#: 
+msgid "Register New Device"
+msgstr "Đăng ký thiết bị mới"
+
+#: 
+msgid "This event type is used by"
+msgstr "Loại sự kiện này được sử dụng bởi"
+
+#: 
+msgid "Total Kiosks"
+msgstr "Tổng số Kiosk"
+
+#: 
+msgid "Upcoming Events"
+msgstr "Sự kiện sắp tới"
+
+#: 
+msgid "event(s). Deactivate the type instead, or reassign the events first."
+msgstr "sự kiện. Hãy vô hiệu hóa loại này hoặc giao lại các sự kiện trước."
 

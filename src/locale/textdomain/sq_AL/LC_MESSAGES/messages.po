@@ -5055,10 +5055,6 @@ msgid "Report an issue"
 msgstr "Raportoni një problem"
 
 #: 
-msgid "Active Kiosks"
-msgstr "Kiosqe aktive"
-
-#: 
 msgid "Self Verification"
 msgstr "Vetë-verifikimi"
 
@@ -12467,10 +12463,6 @@ msgid "— Select type (optional) —"
 msgstr "— Zgjidh llojin (opsionale) —"
 
 #: 
-msgid "Accept the device, then assign it to an event to begin check-in."
-msgstr "Pranoje pajisjen, pastaj caktoje atë në një ngjarje për të filluar regjistrim."
-
-#: 
 msgid "Activate"
 msgstr "Aktivizo"
 
@@ -12521,10 +12513,6 @@ msgstr "Klasa / Grupmesion"
 #: 
 msgid "Class List Export"
 msgstr "Eksporti i Listës të Klasës"
-
-#: 
-msgid "Click the registration toggle above to open a 30-second registration window."
-msgstr "Kliko ndërruesit e regjistrimit më sipër për të hapur një dritare regjistrimi 30-sekond."
 
 #: 
 msgid "Continue"
@@ -12595,10 +12583,6 @@ msgid "It is strongly recommended to have a backup before proceeding."
 msgstr "Rekomandohet fuqishëm të kesh një rezervë përpara se të vazhdosh."
 
 #: 
-msgid "Kiosk Registration"
-msgstr "Regjistrimi i Kiosk"
-
-#: 
 msgid "Latest"
 msgstr "Më i Fundit"
 
@@ -12641,10 +12625,6 @@ msgstr "Shënimi nuk u gjet"
 #: 
 msgid "Note text is required"
 msgstr "Teksti i shënimit është i nevojshëm"
-
-#: 
-msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
-msgstr "Në pajisjen kiosk (tablet, laptop, etj.), hap një shfletues dhe navigo në:"
 
 #: 
 msgid "Only the note author or an admin may delete this note"
@@ -12691,10 +12671,6 @@ msgid "SHA1 Hash"
 msgstr "Hash SHA1"
 
 #: 
-msgid "Setup Instructions"
-msgstr "Instruksionet e Vendosjes"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "Nepërputhje Firme"
 
@@ -12703,24 +12679,12 @@ msgid "Skip, Continue Without Backup"
 msgstr "Përjashtim, Vazhdoje Pa Rezervë"
 
 #: 
-msgid "The device will register itself and appear in the table below as \"Pending\"."
-msgstr "Pajisja do të regjistrojë veten dhe do të shfaqet në tabelën më poshtë si \"Në Pritje\"."
-
-#: 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr "Këto lidhje shfaqen në menunë \"Lidhjet\" në anën e naigimit kur kjo shtojcë është e aktivizuar."
 
 #: 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr "Kjo do të ribëj ngarkim dhe rizbatim të versionit aktual. Mund të rregullojë skedarë të korruptuar ose të ndryshuar."
-
-#: 
-msgid "To set up a kiosk device, follow these steps:"
-msgstr "Për të vendosur pajisjen kiosk, ndiqni këto hapa:"
-
-#: 
-msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
-msgstr "Ndërruso ndërruesit më poshtë për të hapur një dritare 30-sekond për pajisjet e reja të kiosk për regjistrimin."
 
 #: 
 msgid "Total Check-ins"
@@ -12733,10 +12697,6 @@ msgstr "Provo të zgjidhësh një lloj ose vit tjetër ngjarjesh."
 #: 
 msgid "Up to Date"
 msgstr "Përditesuar"
-
-#: 
-msgid "Upcoming Sunday School Events"
-msgstr "Ngjarjet e Ardhshme të Shkollës të Diel"
 
 #: 
 msgid "Update Available"
@@ -14901,10 +14861,6 @@ msgid "Deleting an event will also delete all attendance counts. This cannot be 
 msgstr "Fshirja e një ngjarjeje do të fshijë gjithashtu të gjitha numërimet e pranisë. Kjo nuk mund të zhbëhet."
 
 #: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "Fshirja e këtij lloji ngjarjeje NUK do të fshijë ngjarjet ekzistuese. Jeni të sigurt?"
-
-#: 
 msgid "Deleting this event will also delete all attendance records. This cannot be undone."
 msgstr "Fshirja e kësaj ngjarjeje do të fshijë gjithashtu të gjitha rekordet e pranisë. Kjo nuk mund të zhbëhet."
 
@@ -15107,10 +15063,6 @@ msgstr "Nuk Ka Ngjarje Sot"
 #: 
 msgid "No Group"
 msgstr "Pa Shërbesa"
-
-#: 
-msgid "No active assignment"
-msgstr "Pa caktim aktiv"
 
 #: 
 msgid "No active events found."
@@ -15563,4 +15515,68 @@ msgstr "Mund të shqyrtoni dhe verifikoni informacionin e familjes suaj duke pë
 #: 
 msgid "You do not have permission to view this person"
 msgstr "Nuk keni leje të shihni këtë person"
+
+#: 
+msgid "Are you sure you want to delete this event type? This cannot be undone."
+msgstr "Jeni të sigurt që doni të fshini këtë lloj ngjarjeje? Kjo veprim nuk mund të zhbëhet."
+
+#: 
+msgid "Assign to me"
+msgstr "Cakto për mua"
+
+#: 
+msgid "Assigned"
+msgstr "Caktuar"
+
+#: 
+msgid "Assigned event not found"
+msgstr "Ngjarja e caktuar nuk u gjet"
+
+#: 
+msgid "Cannot Delete Event Type"
+msgstr "Nuk mund të fshihet lloji i ngjarjes"
+
+#: 
+msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
+msgstr "Nuk mund të fshihet ky lloj ngjarjeje — %d ngjarje po e përdorin. Çaktivizoni llojin ose ricaktoni ngjarjet fillimisht."
+
+#: 
+msgid "Kiosk Devices"
+msgstr "Pajisjet Kiosk"
+
+#: 
+msgid "Kiosk device has not been accepted by an administrator"
+msgstr "Pajisja kiosk nuk është pranuar nga një administrator"
+
+#: 
+msgid "No active event assignment"
+msgstr "Nuk ka caktim aktiv ngjarjesh"
+
+#: 
+msgid "Opens a 30-second window for devices to register at:"
+msgstr "Hap një dritare 30-sekondëshe për regjistrimin e pajisjeve në:"
+
+#: 
+msgid "Pending"
+msgstr "Në pritje"
+
+#: 
+msgid "Register New Device"
+msgstr "Regjistro pajisje të re"
+
+#: 
+msgid "This event type is used by"
+msgstr "Ky lloj ngjarjeje përdoret nga"
+
+#: 
+msgid "Total Kiosks"
+msgstr "Totali i Kiosk-eve"
+
+#: 
+msgid "Upcoming Events"
+msgstr "Ngjarjet e ardhshme"
+
+#: 
+msgid "event(s). Deactivate the type instead, or reassign the events first."
+msgstr "ngjarje. Çaktivizoni llojin ose ricaktoni ngjarjet fillimisht."
 

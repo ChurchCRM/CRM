@@ -513,16 +513,13 @@ class User extends BaseUser
 
     public function getNewTwoFARecoveryCodes(): array
     {
-        // Generate 12 recovery codes, each 12 uppercase alphanumeric chars (no 0/O/1/I to avoid confusion).
-        // Stored without dashes; displayed as XXXXXX-XXXXXX by the frontend.
-        $chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+        // generate 12 human-readable recovery codes formatted as xxxxxxxx-xxxxxxxx (lowercase hex, 64 bits of entropy each)
+        // and store as an encrypted, comma-separated list
         $recoveryCodes = [];
         for ($i = 0; $i < 12; $i++) {
-            $code = '';
-            for ($j = 0; $j < 12; $j++) {
-                $code .= $chars[random_int(0, strlen($chars) - 1)];
-            }
-            $recoveryCodes[$i] = $code;
+            // random_bytes(8) yields 16 hex characters; split into two 8-char segments for xxxxxxxx-xxxxxxxx format
+            $hex = bin2hex(random_bytes(8));
+            $recoveryCodes[$i] = substr($hex, 0, 8) . '-' . substr($hex, 8, 8);
         }
         $recoveryCodesString = implode(',', $recoveryCodes);
         $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManagerUtils::getTwoFASecretKey()));
@@ -548,15 +545,27 @@ class User extends BaseUser
 
     public function isTwoFaRecoveryCodeValid(string $twoFaRecoveryCode): bool
     {
-        // Normalize input: strip dashes/spaces and uppercase so users can paste "XXXXXX-XXXXXX" or type it plain.
-        $normalized = strtoupper(str_replace(['-', ' '], '', $twoFaRecoveryCode));
+        // checks for validity of a 2FA recovery code
+        // if the specified code was valid, the code is also removed.
+        // New-format codes (xxxxxxxx-xxxxxxxx lowercase hex) are compared with normalization:
+        // hyphens/spaces stripped and lowercased, so users can type them either way.
+        // Legacy base64 codes are compared byte-exact to preserve their original entropy
+        // and avoid case-collision edge cases.
+        $newFormatRegex = '/^[a-f0-9]+-?[a-f0-9]+$/i';
+        $inputIsNewFormat = (bool) preg_match($newFormatRegex, $twoFaRecoveryCode);
+        $normalizedInput = str_replace(['-', ' '], '', strtolower($twoFaRecoveryCode));
+
         $codes = $this->getDecryptedTwoFactorAuthRecoveryCodes();
         foreach ($codes as $key => $code) {
-            if (hash_equals(strtoupper(str_replace(['-', ' '], '', $code)), $normalized)) {
+            $storedIsNewFormat = (bool) preg_match($newFormatRegex, $code);
+            $matches = $inputIsNewFormat && $storedIsNewFormat
+                ? str_replace(['-', ' '], '', strtolower($code)) === $normalizedInput
+                : hash_equals($code, $twoFaRecoveryCode);
+
+            if ($matches) {
                 unset($codes[$key]);
                 $recoveryCodesString = implode(',', $codes);
                 $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManagerUtils::getTwoFASecretKey()));
-                $this->save();
 
                 return true;
             }
