@@ -720,11 +720,83 @@ $anyActive = array_filter(PluginManager::getAllPlugins(), fn($p) => $p['isActive
 
 ---
 
+## Community Plugin Installation (URL + Approved Registry) <!-- learned: 2026-04-13 -->
+
+`src/plugins/community/` is a runtime directory — it is never part of the
+shipped signatures manifest. Two supporting pieces make installing into it
+safe and reviewable:
+
+1. **`ApprovedPluginRegistry`** (`src/ChurchCRM/Plugin/ApprovedPluginRegistry.php`)
+   loads `src/plugins/approved-plugins.json`, an allowlist of community
+   plugins maintainers have vetted. Every entry must pin:
+
+   - `id` + `version` (must match `plugin.json` inside the zip)
+   - `downloadUrl` (HTTPS only)
+   - `sha256` (64-hex SHA-256 of the zip bytes)
+   - optional: `minimumCRMVersion`, `author`, `homepage`, `reviewedAt`, `notes`
+
+   Adding an entry is a pull request. Run the full checklist in
+   [`plugin-security-scan.md`](./plugin-security-scan.md) before opening it.
+
+2. **`PluginInstaller::installFromUrl($pluginsPath, $downloadUrl)`**
+   (`src/ChurchCRM/Plugin/PluginInstaller.php`) is the only way community
+   plugins are installed at runtime. It enforces, in order:
+
+   - URL must exist in the approved registry (HTTPS, vetted).
+   - Download is bounded (20 MB cap) via cURL with TLS verification.
+   - SHA-256 of the bytes must match the registry before any zip parsing.
+   - `ZipArchive` validation rejects: ZIP Slip, absolute paths, `..`,
+     drive letters, control bytes, multiple top-level directories, >2000
+     entries, >80 MB uncompressed, disallowed extensions (`.phar`, `.sh`,
+     `.exe`, …), and hidden files except `.editorconfig`/`.gitattributes`.
+   - Extracted `plugin.json` must declare the same `id`/`version` as the
+     registry entry and `"type": "community"`.
+   - Destination `community/{id}` must not already exist — installs never
+     overwrite.
+
+   The installer **does not enable** the plugin. Admins still have to
+   click Enable after reviewing.
+
+**Admin API:**
+
+```
+GET  /plugins/api/approved            # list approved entries
+POST /plugins/api/plugins/install     # { "downloadUrl": "https://…" }
+```
+
+Both routes are inside the admin-only group (`AdminRoleAuthMiddleware`).
+
+**Orphan scan exclusion:** `AppIntegrityService::isExcludedFromOrphanDetection`
+now skips `^plugins/community/` so newly installed third-party plugins
+are not reported as orphans. The matching pattern is mirrored in
+`scripts/generate-signatures-node.js`. If you add a new runtime-mutable
+directory under `src/`, update **both** places.
+
+---
+
+## Forcing Rediscovery After Install <!-- learned: 2026-04-13 -->
+
+`PluginManager::init()` is guarded by a static `$initialized` flag. After a
+community plugin zip is extracted in the same request, that flag still
+points at the old discovery list. Call `PluginManager::reset()` followed by
+`PluginManager::init($pluginsPath)` so the new plugin is visible:
+
+```php
+PluginInstaller::installFromUrl($pluginsPath, $downloadUrl);
+PluginManager::reset();
+PluginManager::init($pluginsPath);
+```
+
+This is what `/plugins/api/plugins/install` does.
+
+---
+
 **Related Skills:**
 - [Routing & Project Architecture](./routing-architecture.md) - Plugin route patterns
 - [Slim 4 Best Practices](./slim-4-best-practices.md) - Entry point configuration
 - [Security Best Practices](./security-best-practices.md) - Plugin input validation
+- [Plugin Security Scan](./plugin-security-scan.md) - Required review checklist before approving a community plugin
 
 ---
 
-Last updated: 2026-03-19
+Last updated: 2026-04-13

@@ -1,6 +1,8 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Plugin\ApprovedPluginRegistry;
+use ChurchCRM\Plugin\PluginInstaller;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -412,6 +414,119 @@ $group->post('/plugins/{pluginId}/reset', function (Request $request, Response $
         return SlimUtils::renderErrorJSON(
             $response,
             gettext('Failed to reset settings'),
+            [],
+            500,
+            $e,
+            $request
+        );
+    }
+});
+
+/**
+ * @OA\Get(
+ *     path="/plugins/api/approved",
+ *     operationId="listApprovedPlugins",
+ *     summary="List community plugins approved for URL install",
+ *     description="Returns the entries from src/plugins/approved-plugins.json. Only plugins in this list can be installed by URL.",
+ *     tags={"Plugins"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Response(response=200, description="Approved plugin list"),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="Forbidden — Admin role required")
+ * )
+ */
+$group->get('/approved', function (Request $request, Response $response): Response {
+    try {
+        $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
+        $entries = array_values(ApprovedPluginRegistry::all($pluginsPath));
+
+        return SlimUtils::renderJSON($response, [
+            'success' => true,
+            'data' => $entries,
+        ]);
+    } catch (\Throwable $e) {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            gettext('Failed to load approved plugin list'),
+            [],
+            500,
+            $e,
+            $request
+        );
+    }
+});
+
+/**
+ * @OA\Post(
+ *     path="/plugins/api/plugins/install",
+ *     operationId="installPluginFromUrl",
+ *     summary="Install a community plugin from an approved download URL",
+ *     description="Downloads the zip, verifies its SHA-256 against approved-plugins.json, validates the archive, and extracts it into src/plugins/community/{id}. The plugin is NOT enabled automatically — admins must review and click Enable.",
+ *     tags={"Plugins"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\RequestBody(required=true,
+ *         @OA\JsonContent(type="object",
+ *             @OA\Property(property="downloadUrl", type="string", description="HTTPS URL to the plugin zip. Must match an approved entry exactly.")
+ *         )
+ *     ),
+ *     @OA\Response(response=200, description="Plugin installed (not yet enabled)"),
+ *     @OA\Response(response=400, description="Validation failure (unknown URL, checksum mismatch, unsafe zip)"),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="Forbidden — Admin role required"),
+ *     @OA\Response(response=409, description="Plugin already installed"),
+ *     @OA\Response(response=500, description="Install failed")
+ * )
+ */
+$group->post('/plugins/install', function (Request $request, Response $response): Response {
+    $body = $request->getParsedBody();
+    $downloadUrl = is_array($body) ? (string) ($body['downloadUrl'] ?? '') : '';
+
+    if ($downloadUrl === '') {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            gettext('A downloadUrl is required to install a plugin.'),
+            [],
+            400
+        );
+    }
+
+    $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
+
+    try {
+        $result = PluginInstaller::installFromUrl($pluginsPath, $downloadUrl);
+
+        // Force rediscovery so the new plugin appears in the management UI.
+        PluginManager::reset();
+        PluginManager::init($pluginsPath);
+
+        LoggerUtils::getAppLogger()->info('Community plugin installed via URL', [
+            'plugin' => $result['pluginId'],
+            'version' => $result['version'],
+        ]);
+
+        return SlimUtils::renderJSON($response, [
+            'success' => true,
+            'message' => gettext('Plugin installed. Review it and click Enable to activate.'),
+            'data' => $result,
+        ]);
+    } catch (\RuntimeException $e) {
+        // Expected validation failures — map to 4xx so the UI can show the message.
+        $status = str_contains($e->getMessage(), 'already installed') ? 409 : 400;
+        LoggerUtils::getAppLogger()->warning('Plugin install rejected', [
+            'url' => $downloadUrl,
+            'error' => $e->getMessage(),
+        ]);
+
+        return SlimUtils::renderErrorJSON(
+            $response,
+            $e->getMessage(),
+            [],
+            $status
+        );
+    } catch (\Throwable $e) {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            gettext('Failed to install plugin'),
             [],
             500,
             $e,
