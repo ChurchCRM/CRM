@@ -3722,5 +3722,21 @@
     "Verify Family Info": "Zweryfikuj dane rodziny",
     "Welcome": "Witamy",
     "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator.": "Możesz przejrzeć i zweryfikować dane swojej rodziny, korzystając z poniższego łącza. Jeśli potrzebujesz dodatkowego dostępu, skontaktuj się z administratorem swojej parafii.",
-    "You do not have permission to view this person": "Nie masz uprawnień do wyświetlania tej osoby"
+    "You do not have permission to view this person": "Nie masz uprawnień do wyświetlania tej osoby",
+    "Are you sure you want to delete this event type? This cannot be undone.": "Czy na pewno chcesz usunąć ten typ zdarzenia? Tej operacji nie można cofnąć.",
+    "Assign to me": "Przypisz do mnie",
+    "Assigned": "Przypisano",
+    "Assigned event not found": "Przypisane zdarzenie nie zostało znalezione",
+    "Cannot Delete Event Type": "Nie można usunąć typu zdarzenia",
+    "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first.": "Nie można usunąć tego typu zdarzenia — %d zdarzenie(a) go używają. Dezaktywuj typ lub najpierw przypisz zdarzenia ponownie.",
+    "Kiosk Devices": "Urządzenia kiosku",
+    "Kiosk device has not been accepted by an administrator": "Urządzenie kiosku nie zostało zaakceptowane przez administratora",
+    "No active event assignment": "Brak aktywnego przypisania zdarzenia",
+    "Opens a 30-second window for devices to register at:": "Otwiera 30-sekundowe okno dla urządzeń do rejestracji w:",
+    "Pending": "Oczekujące",
+    "Register New Device": "Zarejestruj nowe urządzenie",
+    "This event type is used by": "Ten typ zdarzenia jest używany przez",
+    "Total Kiosks": "Łączna liczba kiosków",
+    "Upcoming Events": "Nadchodzące zdarzenia",
+    "event(s). Deactivate the type instead, or reassign the events first.": "zdarzenie(a). Dezaktywuj typ lub najpierw przypisz zdarzenia ponownie."
 }

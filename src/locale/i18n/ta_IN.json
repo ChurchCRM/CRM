@@ -3712,5 +3712,22 @@
     "Verify Family Info": "குடும்ப தகவலை சரிபார்க்கவும்",
     "Welcome": "வரவேற்கிறோம்",
     "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator.": "கீழே உள்ள இணைப்பைப் பயன்படுத்தி உங்கள் குடும்ப தகவலை மதிப்பாய்வு செய்து சரிபார்க்கலாம். கூடுதல் அணுகல் தேவைப்பட்டால், உங்கள் திருச்சபை நிர்வாகியை தொடர்பு கொள்ளவும்.",
-    "You do not have permission to view this person": "இந்த நபரை பார்க்க உங்களுக்கு அனுமதி இல்லை"
+    "You do not have permission to view this person": "இந்த நபரை பார்க்க உங்களுக்கு அனுமதி இல்லை",
+    "Are you sure you want to delete this event type? This cannot be undone.": "இந்த நிகழ்வு வகையை நீக்க விரும்புகிறீர்களா? இந்த செயலை மீட்கல் இல்லை.",
+    "Assign to me": "என்னிடம் ஒதுக்கு",
+    "Assigned": "ஒதுக்கப்பட்டது",
+    "Assigned event not found": "ஒதுக்கப்பட்ட நிகழ்வு கண்டுபிடிக்கப்படவில்லை",
+    "Cannot Delete Event Type": "நிகழ்வு வகையை நீக்க முடியாது",
+    "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first.": "இந்த நிகழ்வு வகையை நீக்க முடியாது — %d நிகழ்வு(கள்) இதைப் பயன்படுத்துகின்றன. வகையை செயலிழக்கச் செய்யுங்கள் அல்லது முதலில் நிகழ்வுகளை மீண்டும் ஒதுக்குங்கள்.",
+    "Kiosk Devices": "கியோஸ்க் சாதனங்கள்",
+    "Kiosk device has not been accepted by an administrator": "கியோஸ்க் சாதனம் நிர்வாகியால் ஏற்கப்படவில்லை",
+    "No active event assignment": "செயல்படும் நிகழ்வு ஒதுக்கீடு இல்லை",
+    "Online": "ஆன்லைன்",
+    "Opens a 30-second window for devices to register at:": "சாதனங்கள் பதிவு செய்ய 30 வினாடி சாளரம் திறக்கிறது:",
+    "Pending": "நிலுவையில்",
+    "Register New Device": "புதிய சாதனத்தை பதிவு செய்யுங்கள்",
+    "This event type is used by": "இந்த நிகழ்வு வகை பயன்படுத்தப்படுகிறது",
+    "Total Kiosks": "மொத்த கியோஸ்க்கள்",
+    "Upcoming Events": "வரவிருக்கும் நிகழ்வுகள்",
+    "event(s). Deactivate the type instead, or reassign the events first.": "நிகழ்வு(கள்). வகையை செயலிழக்கச் செய்யுங்கள் அல்லது முதலில் நிகழ்வுகளை மீண்டும் ஒதுக்குங்கள்."
 }

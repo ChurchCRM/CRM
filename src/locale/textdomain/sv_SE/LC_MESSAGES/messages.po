@@ -15640,3 +15640,67 @@ msgstr "Du kan granska och verifiera din familjeinformation via länken nedan. O
 msgid "You do not have permission to view this person"
 msgstr "Du har inte behörighet att visa den här personen"
 
+#: 
+msgid "Are you sure you want to delete this event type? This cannot be undone."
+msgstr "Är du säker på att du vill ta bort den här händelsetypen? Det går inte att ångra."
+
+#: 
+msgid "Assign to me"
+msgstr "Tilldela mig"
+
+#: 
+msgid "Assigned"
+msgstr "Tilldelad"
+
+#: 
+msgid "Assigned event not found"
+msgstr "Tilldelad händelse hittades inte"
+
+#: 
+msgid "Cannot Delete Event Type"
+msgstr "Kan inte ta bort händelsetypen"
+
+#: 
+msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
+msgstr "Den här händelsetypen kan inte tas bort — %d händelse(r) använder den. Inaktivera typen istället eller omtilldela händelserna först."
+
+#: 
+msgid "Kiosk Devices"
+msgstr "Kioskenheter"
+
+#: 
+msgid "Kiosk device has not been accepted by an administrator"
+msgstr "Kioskenheten har inte accepterats av en administratör"
+
+#: 
+msgid "No active event assignment"
+msgstr "Ingen aktiv händelsetilldelning"
+
+#: 
+msgid "Opens a 30-second window for devices to register at:"
+msgstr "Öppnar ett 30-sekunders fönster för enheter att registrera sig på:"
+
+#: 
+msgid "Pending"
+msgstr "Väntande"
+
+#: 
+msgid "Register New Device"
+msgstr "Registrera ny enhet"
+
+#: 
+msgid "This event type is used by"
+msgstr "Den här händelsetypen används av"
+
+#: 
+msgid "Total Kiosks"
+msgstr "Totalt antal kiosker"
+
+#: 
+msgid "Upcoming Events"
+msgstr "Kommande händelser"
+
+#: 
+msgid "event(s). Deactivate the type instead, or reassign the events first."
+msgstr "händelse(r). Inaktivera typen istället eller omtilldela händelserna först."
+

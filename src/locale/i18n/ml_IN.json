@@ -3710,5 +3710,22 @@
     "Verify Family Info": "കുടുംബ വിവരം സ്ഥിരീകരിക്കുക",
     "Welcome": "സ്വാഗതം",
     "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator.": "താഴെയുള്ള ലിങ്ക് ഉപയോഗിച്ച് നിങ്ങളുടെ കുടുംബ വിവരം അവലോകനം ചെയ്യുകയും സ്ഥിരീകരിക്കുകയും ചെയ്യാം. അധിക ആക്‌സസ് ആവശ്യമെങ്കിൽ, നിങ്ങളുടെ പള്ളി അഡ്മിനിസ്ട്രേറ്ററെ ബന്ധപ്പെടുക.",
-    "You do not have permission to view this person": "ഈ വ്യക്തിയെ കാണാൻ നിങ്ങൾക്ക് അനുമതിയില്ല"
+    "You do not have permission to view this person": "ഈ വ്യക്തിയെ കാണാൻ നിങ്ങൾക്ക് അനുമതിയില്ല",
+    "Are you sure you want to delete this event type? This cannot be undone.": "ഈ ഇവന്റ് തരം ഇല്ലാതാക്കണമെന്ന് തീർച്ചയാണോ? ഇത് പഴയപടിയാക്കാൻ കഴിയില്ല.",
+    "Assign to me": "എനിക്ക് നൽകുക",
+    "Assigned": "നൽകപ്പെട്ടു",
+    "Assigned event not found": "നൽകപ്പെട്ട ഇവന്റ് കണ്ടെത്തിയില്ല",
+    "Cannot Delete Event Type": "ഇവന്റ് തരം ഇല്ലാതാക്കാൻ കഴിയില്ല",
+    "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first.": "ഈ ഇവന്റ് തരം ഇല്ലാതാക്കാൻ കഴിയില്ല — %d ഇവന്റ്(കൾ) ഇത് ഉപയോഗിക്കുന്നു. പകരം തരം നിഷ്‌ക്രിയമാക്കുക, അല്ലെങ്കിൽ ആദ്യം ഇവന്റുകൾ പുനർനൽകുക.",
+    "Kiosk Devices": "കിയോസ്ക് ഉപകരണങ്ങൾ",
+    "Kiosk device has not been accepted by an administrator": "കിയോസ്ക് ഉപകരണം ഒരു അഡ്മിനിസ്ട്രേറ്റർ അംഗീകരിച്ചിട്ടില്ല",
+    "No active event assignment": "സജീവ ഇവന്റ് അസൈൻമെന്റ് ഇല്ല",
+    "Online": "ഓൺലൈൻ",
+    "Opens a 30-second window for devices to register at:": "ഉപകരണങ്ങൾ രജിസ്റ്റർ ചെയ്യാൻ 30 സെക്കൻഡ് വിൻഡോ തുറക്കുന്നു:",
+    "Pending": "തീർപ്പാക്കാത്തത്",
+    "Register New Device": "പുതിയ ഉപകരണം രജിസ്റ്റർ ചെയ്യുക",
+    "This event type is used by": "ഈ ഇവന്റ് തരം ഉപയോഗിക്കുന്നത്",
+    "Total Kiosks": "ആകെ കിയോസ്കുകൾ",
+    "Upcoming Events": "വരാനിരിക്കുന്ന ഇവന്റുകൾ",
+    "event(s). Deactivate the type instead, or reassign the events first.": "ഇവന്റ്(കൾ). പകരം തരം നിഷ്‌ക്രിയമാക്കുക, അല്ലെങ്കിൽ ആദ്യം ഇവന്റുകൾ പുനർനൽകുക."
 }

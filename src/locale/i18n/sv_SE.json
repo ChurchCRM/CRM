@@ -3711,5 +3711,21 @@
     "Verify Family Info": "Verifiera familjeinformation",
     "Welcome": "Välkommen",
     "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator.": "Du kan granska och verifiera din familjeinformation via länken nedan. Om du behöver ytterligare åtkomst, kontakta din kyrkoförvaltare.",
-    "You do not have permission to view this person": "Du har inte behörighet att visa den här personen"
+    "You do not have permission to view this person": "Du har inte behörighet att visa den här personen",
+    "Are you sure you want to delete this event type? This cannot be undone.": "Är du säker på att du vill ta bort den här händelsetypen? Det går inte att ångra.",
+    "Assign to me": "Tilldela mig",
+    "Assigned": "Tilldelad",
+    "Assigned event not found": "Tilldelad händelse hittades inte",
+    "Cannot Delete Event Type": "Kan inte ta bort händelsetypen",
+    "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first.": "Den här händelsetypen kan inte tas bort — %d händelse(r) använder den. Inaktivera typen istället eller omtilldela händelserna först.",
+    "Kiosk Devices": "Kioskenheter",
+    "Kiosk device has not been accepted by an administrator": "Kioskenheten har inte accepterats av en administratör",
+    "No active event assignment": "Ingen aktiv händelsetilldelning",
+    "Opens a 30-second window for devices to register at:": "Öppnar ett 30-sekunders fönster för enheter att registrera sig på:",
+    "Pending": "Väntande",
+    "Register New Device": "Registrera ny enhet",
+    "This event type is used by": "Den här händelsetypen används av",
+    "Total Kiosks": "Totalt antal kiosker",
+    "Upcoming Events": "Kommande händelser",
+    "event(s). Deactivate the type instead, or reassign the events first.": "händelse(r). Inaktivera typen istället eller omtilldela händelserna först."
 }

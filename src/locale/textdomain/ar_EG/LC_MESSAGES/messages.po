@@ -15560,3 +15560,71 @@ msgstr "يمكنك مراجعة والتحقق من معلومات أسرتك ب
 msgid "You do not have permission to view this person"
 msgstr "ليس لديك إذن لعرض هذا الشخص"
 
+#: 
+msgid "Are you sure you want to delete this event type? This cannot be undone."
+msgstr "هل أنت متأكد أنك تريد حذف نوع الحدث هذا؟ لا يمكن التراجع عن هذا الإجراء."
+
+#: 
+msgid "Assign to me"
+msgstr "تعيين إليّ"
+
+#: 
+msgid "Assigned"
+msgstr "مُعيَّن"
+
+#: 
+msgid "Assigned event not found"
+msgstr "الحدث المُعيَّن غير موجود"
+
+#: 
+msgid "Cannot Delete Event Type"
+msgstr "لا يمكن حذف نوع الحدث"
+
+#: 
+msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
+msgstr "لا يمكن حذف نوع الحدث هذا — %d حدث(أحداث) يستخدمه. قم بإلغاء تنشيط النوع بدلاً من ذلك، أو أعد تعيين الأحداث أولاً."
+
+#: 
+msgid "Kiosk Devices"
+msgstr "أجهزة الكشك"
+
+#: 
+msgid "Kiosk device has not been accepted by an administrator"
+msgstr "لم يتم قبول جهاز الكشك من قِبل المسؤول"
+
+#: 
+msgid "No active event assignment"
+msgstr "لا يوجد تعيين حدث نشط"
+
+#: 
+msgid "Online"
+msgstr "متصل"
+
+#: 
+msgid "Opens a 30-second window for devices to register at:"
+msgstr "يفتح نافذة مدتها 30 ثانية لتسجيل الأجهزة على:"
+
+#: 
+msgid "Pending"
+msgstr "قيد الانتظار"
+
+#: 
+msgid "Register New Device"
+msgstr "تسجيل جهاز جديد"
+
+#: 
+msgid "This event type is used by"
+msgstr "نوع الحدث هذا مستخدم من قِبل"
+
+#: 
+msgid "Total Kiosks"
+msgstr "إجمالي الكشكات"
+
+#: 
+msgid "Upcoming Events"
+msgstr "الأحداث القادمة"
+
+#: 
+msgid "event(s). Deactivate the type instead, or reassign the events first."
+msgstr "حدث(أحداث). قم بإلغاء تنشيط النوع بدلاً من ذلك، أو أعد تعيين الأحداث أولاً."
+

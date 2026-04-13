@@ -14695,6 +14695,11 @@ msgid "Your current access levels (read-only)"
 msgstr "您当前的访问级别（只读）"
 
 #: 
+msgid "%d repeat event created successfully."
+msgid_plural "%d repeat events created successfully."
+msgstr[0] "%d 个重复事件创建成功。"
+
+#: 
 msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
 msgstr "（例如：会众、访客、儿童），义工可在此记录人数。"
 
@@ -15601,4 +15606,72 @@ msgstr "您可以使用以下链接查看和验证您的家庭信息。如需更
 #: 
 msgid "You do not have permission to view this person"
 msgstr "您没有权限查看此人"
+
+#: 
+msgid "Are you sure you want to delete this event type? This cannot be undone."
+msgstr "您确定要删除此事件类型吗？此操作无法撤销。"
+
+#: 
+msgid "Assign to me"
+msgstr "分配给我"
+
+#: 
+msgid "Assigned"
+msgstr "已分配"
+
+#: 
+msgid "Assigned event not found"
+msgstr "未找到已分配的事件"
+
+#: 
+msgid "Cannot Delete Event Type"
+msgstr "无法删除事件类型"
+
+#: 
+msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
+msgstr "无法删除此事件类型 — %d 个事件正在使用它。请停用此类型，或先重新分配事件。"
+
+#: 
+msgid "Kiosk Devices"
+msgstr "自助终端设备"
+
+#: 
+msgid "Kiosk device has not been accepted by an administrator"
+msgstr "自助终端设备尚未被管理员接受"
+
+#: 
+msgid "No active event assignment"
+msgstr "无活动的事件分配"
+
+#: 
+msgid "Online"
+msgstr "在线"
+
+#: 
+msgid "Opens a 30-second window for devices to register at:"
+msgstr "为设备注册打开一个30秒的窗口："
+
+#: 
+msgid "Pending"
+msgstr "待处理"
+
+#: 
+msgid "Register New Device"
+msgstr "注册新设备"
+
+#: 
+msgid "This event type is used by"
+msgstr "此事件类型被以下使用"
+
+#: 
+msgid "Total Kiosks"
+msgstr "自助终端总数"
+
+#: 
+msgid "Upcoming Events"
+msgstr "即将到来的事件"
+
+#: 
+msgid "event(s). Deactivate the type instead, or reassign the events first."
+msgstr "个事件。请停用此类型，或先重新分配事件。"
 

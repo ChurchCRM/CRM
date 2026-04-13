@@ -15542,3 +15542,71 @@ msgstr "கீழே உள்ள இணைப்பைப் பயன்பட
 msgid "You do not have permission to view this person"
 msgstr "இந்த நபரை பார்க்க உங்களுக்கு அனுமதி இல்லை"
 
+#: 
+msgid "Are you sure you want to delete this event type? This cannot be undone."
+msgstr "இந்த நிகழ்வு வகையை நீக்க விரும்புகிறீர்களா? இந்த செயலை மீட்கல் இல்லை."
+
+#: 
+msgid "Assign to me"
+msgstr "என்னிடம் ஒதுக்கு"
+
+#: 
+msgid "Assigned"
+msgstr "ஒதுக்கப்பட்டது"
+
+#: 
+msgid "Assigned event not found"
+msgstr "ஒதுக்கப்பட்ட நிகழ்வு கண்டுபிடிக்கப்படவில்லை"
+
+#: 
+msgid "Cannot Delete Event Type"
+msgstr "நிகழ்வு வகையை நீக்க முடியாது"
+
+#: 
+msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
+msgstr "இந்த நிகழ்வு வகையை நீக்க முடியாது — %d நிகழ்வு(கள்) இதைப் பயன்படுத்துகின்றன. வகையை செயலிழக்கச் செய்யுங்கள் அல்லது முதலில் நிகழ்வுகளை மீண்டும் ஒதுக்குங்கள்."
+
+#: 
+msgid "Kiosk Devices"
+msgstr "கியோஸ்க் சாதனங்கள்"
+
+#: 
+msgid "Kiosk device has not been accepted by an administrator"
+msgstr "கியோஸ்க் சாதனம் நிர்வாகியால் ஏற்கப்படவில்லை"
+
+#: 
+msgid "No active event assignment"
+msgstr "செயல்படும் நிகழ்வு ஒதுக்கீடு இல்லை"
+
+#: 
+msgid "Online"
+msgstr "ஆன்லைன்"
+
+#: 
+msgid "Opens a 30-second window for devices to register at:"
+msgstr "சாதனங்கள் பதிவு செய்ய 30 வினாடி சாளரம் திறக்கிறது:"
+
+#: 
+msgid "Pending"
+msgstr "நிலுவையில்"
+
+#: 
+msgid "Register New Device"
+msgstr "புதிய சாதனத்தை பதிவு செய்யுங்கள்"
+
+#: 
+msgid "This event type is used by"
+msgstr "இந்த நிகழ்வு வகை பயன்படுத்தப்படுகிறது"
+
+#: 
+msgid "Total Kiosks"
+msgstr "மொத்த கியோஸ்க்கள்"
+
+#: 
+msgid "Upcoming Events"
+msgstr "வரவிருக்கும் நிகழ்வுகள்"
+
+#: 
+msgid "event(s). Deactivate the type instead, or reassign the events first."
+msgstr "நிகழ்வு(கள்). வகையை செயலிழக்கச் செய்யுங்கள் அல்லது முதலில் நிகழ்வுகளை மீண்டும் ஒதுக்குங்கள்."
+

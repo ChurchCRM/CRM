@@ -15611,3 +15611,67 @@ msgstr "Możesz przejrzeć i zweryfikować dane swojej rodziny, korzystając z p
 msgid "You do not have permission to view this person"
 msgstr "Nie masz uprawnień do wyświetlania tej osoby"
 
+#: 
+msgid "Are you sure you want to delete this event type? This cannot be undone."
+msgstr "Czy na pewno chcesz usunąć ten typ zdarzenia? Tej operacji nie można cofnąć."
+
+#: 
+msgid "Assign to me"
+msgstr "Przypisz do mnie"
+
+#: 
+msgid "Assigned"
+msgstr "Przypisano"
+
+#: 
+msgid "Assigned event not found"
+msgstr "Przypisane zdarzenie nie zostało znalezione"
+
+#: 
+msgid "Cannot Delete Event Type"
+msgstr "Nie można usunąć typu zdarzenia"
+
+#: 
+msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
+msgstr "Nie można usunąć tego typu zdarzenia — %d zdarzenie(a) go używają. Dezaktywuj typ lub najpierw przypisz zdarzenia ponownie."
+
+#: 
+msgid "Kiosk Devices"
+msgstr "Urządzenia kiosku"
+
+#: 
+msgid "Kiosk device has not been accepted by an administrator"
+msgstr "Urządzenie kiosku nie zostało zaakceptowane przez administratora"
+
+#: 
+msgid "No active event assignment"
+msgstr "Brak aktywnego przypisania zdarzenia"
+
+#: 
+msgid "Opens a 30-second window for devices to register at:"
+msgstr "Otwiera 30-sekundowe okno dla urządzeń do rejestracji w:"
+
+#: 
+msgid "Pending"
+msgstr "Oczekujące"
+
+#: 
+msgid "Register New Device"
+msgstr "Zarejestruj nowe urządzenie"
+
+#: 
+msgid "This event type is used by"
+msgstr "Ten typ zdarzenia jest używany przez"
+
+#: 
+msgid "Total Kiosks"
+msgstr "Łączna liczba kiosków"
+
+#: 
+msgid "Upcoming Events"
+msgstr "Nadchodzące zdarzenia"
+
+#: 
+msgid "event(s). Deactivate the type instead, or reassign the events first."
+msgstr "zdarzenie(a). Dezaktywuj typ lub najpierw przypisz zdarzenia ponownie."
+

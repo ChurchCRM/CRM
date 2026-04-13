@@ -2556,6 +2556,9 @@
     "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.": "您的資料庫版本比已安裝的軟體更新。這通常意味著軟體被回滾到了舊版本。請升級ChurchCRM以符合您的資料庫。",
     "or later to continue.": "或更高版本以繼續。",
     "\"Why Came\" Notes": "「來訪原因」備註",
+    "%d result for \"%s\"": {
+        "other": "%s 的 %d 個結果"
+    },
     "(optional — leave blank to include all roles)": "（可選——留空以包含所有角色）",
     "A family represents a household. It holds the shared address and home phone number for all family members living together.": "家庭代表一個家戶。它儲存所有同住家庭成員的共用地址和家用電話號碼。",
     "A household. Stores the shared mailing address and home phone.": "一個家戶。儲存共用的郵寄地址和家用電話。",
@@ -3469,6 +3472,9 @@
     "View All": "檢視全部",
     "Yellow": "黃色",
     "Your current access levels (read-only)": "您目前的存取權限（唯讀）",
+    "%d repeat event created successfully.": {
+        "other": "%d 個重複事件建立成功。"
+    },
     "(e.g. Members, Visitors, Children) so volunteers can record headcounts here.": "（例如：會眾、訪客、兒童），義工可在此記錄人數。",
     "1. Sunday School Class": "1. 主日學班級",
     "2. Event Type": "2. 活動類型",
@@ -3695,5 +3701,22 @@
     "Verify Family Info": "驗證家庭資訊",
     "Welcome": "歡迎",
     "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator.": "您可以使用以下連結查看和驗證您的家庭資訊。如需更多存取權限，請聯絡您的教會管理員。",
-    "You do not have permission to view this person": "您沒有權限查看此人"
+    "You do not have permission to view this person": "您沒有權限查看此人",
+    "Are you sure you want to delete this event type? This cannot be undone.": "您確定要刪除此事件類型嗎？此操作無法復原。",
+    "Assign to me": "指派給我",
+    "Assigned": "已指派",
+    "Assigned event not found": "找不到已指派的事件",
+    "Cannot Delete Event Type": "無法刪除事件類型",
+    "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first.": "無法刪除此事件類型 — %d 個事件正在使用它。請停用此類型，或先重新指派事件。",
+    "Kiosk Devices": "自助服務機設備",
+    "Kiosk device has not been accepted by an administrator": "自助服務機設備尚未被管理員接受",
+    "No active event assignment": "無活動的事件指派",
+    "Online": "線上",
+    "Opens a 30-second window for devices to register at:": "為設備注冊開啟一個30秒的視窗：",
+    "Pending": "待處理",
+    "Register New Device": "注冊新設備",
+    "This event type is used by": "此事件類型被以下使用",
+    "Total Kiosks": "自助服務機總數",
+    "Upcoming Events": "即將到來的事件",
+    "event(s). Deactivate the type instead, or reassign the events first.": "個事件。請停用此類型，或先重新指派事件。"
 }

@@ -3711,5 +3711,22 @@
     "Verify Family Info": "Επαλήθευση Στοιχείων Οικογένειας",
     "Welcome": "Καλωσορίσατε",
     "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator.": "Μπορείτε να ελέγξετε και να επαληθεύσετε τις πληροφορίες οικογένειάς σας χρησιμοποιώντας τον παρακάτω σύνδεσμο. Εάν χρειάζεστε πρόσθετη πρόσβαση, παρακαλώ επικοινωνήστε με τον διαχειριστή της εκκλησίας σας.",
-    "You do not have permission to view this person": "Δεν έχετε άδεια να δείτε αυτό το άτομο"
+    "You do not have permission to view this person": "Δεν έχετε άδεια να δείτε αυτό το άτομο",
+    "Are you sure you want to delete this event type? This cannot be undone.": "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτόν τον τύπο συμβάντος; Αυτή η ενέργεια δεν μπορεί να αναιρεθεί.",
+    "Assign to me": "Ανάθεση σε εμένα",
+    "Assigned": "Ανατέθηκε",
+    "Assigned event not found": "Το ανατεθειμένο συμβάν δεν βρέθηκε",
+    "Cannot Delete Event Type": "Δεν είναι δυνατή η διαγραφή τύπου συμβάντος",
+    "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first.": "Δεν είναι δυνατή η διαγραφή αυτού του τύπου συμβάντος — %d συμβάν(τα) το χρησιμοποιούν. Απενεργοποιήστε τον τύπο ή αναθέστε εκ νέου τα συμβάντα πρώτα.",
+    "Kiosk Devices": "Συσκευές Kiosk",
+    "Kiosk device has not been accepted by an administrator": "Η συσκευή kiosk δεν έχει γίνει αποδεκτή από διαχειριστή",
+    "No active event assignment": "Δεν υπάρχει ενεργή ανάθεση συμβάντος",
+    "Online": "Ηλεκτρονικά",
+    "Opens a 30-second window for devices to register at:": "Ανοίγει ένα παράθυρο 30 δευτερολέπτων για εγγραφή συσκευών στη διεύθυνση:",
+    "Pending": "Σε αναμονή",
+    "Register New Device": "Εγγραφή νέας συσκευής",
+    "This event type is used by": "Αυτός ο τύπος συμβάντος χρησιμοποιείται από",
+    "Total Kiosks": "Σύνολο Kiosk",
+    "Upcoming Events": "Προσεχή συμβάντα",
+    "event(s). Deactivate the type instead, or reassign the events first.": "συμβάν(τα). Απενεργοποιήστε τον τύπο ή αναθέστε εκ νέου τα συμβάντα πρώτα."
 }

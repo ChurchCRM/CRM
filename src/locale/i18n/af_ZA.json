@@ -3711,5 +3711,22 @@
     "Verify Family Info": "Verifieer Gesinsinligting",
     "Welcome": "Welkom",
     "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator.": "U kan u gesinsinligting hersien en verifieer deur die skakel hieronder te gebruik. As u bykomende toegang benodig, kontak asseblief u kerkladministrateur.",
-    "You do not have permission to view this person": "U het nie toestemming om hierdie persoon te sien nie"
+    "You do not have permission to view this person": "U het nie toestemming om hierdie persoon te sien nie",
+    "Are you sure you want to delete this event type? This cannot be undone.": "Is jy seker jy wil hierdie tipe geleentheid uitvee? Dit kan nie ongedaan gemaak word nie.",
+    "Assign to me": "Ken aan my toe",
+    "Assigned": "Toegeken",
+    "Assigned event not found": "Toegekende geleentheid nie gevind nie",
+    "Cannot Delete Event Type": "Kan nie die tipe geleentheid uitvee nie",
+    "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first.": "Kan nie hierdie tipe geleentheid uitvee nie — %d geleentheid(e) gebruik dit. Deaktiveer eerder die tipe, of ken die geleenthede eers opnuut toe.",
+    "Kiosk Devices": "Kiosktoestelle",
+    "Kiosk device has not been accepted by an administrator": "Die kiosktoestel is nie deur 'n administrateur aanvaar nie",
+    "No active event assignment": "Geen aktiewe geleentheidstoekenning",
+    "Online": "Aanlyn",
+    "Opens a 30-second window for devices to register at:": "Open 'n 30-sekonde venster vir toestelle om te registreer by:",
+    "Pending": "Hangende",
+    "Register New Device": "Registreer nuwe toestel",
+    "This event type is used by": "Hierdie tipe geleentheid word gebruik deur",
+    "Total Kiosks": "Totale kiosks",
+    "Upcoming Events": "Komende geleenthede",
+    "event(s). Deactivate the type instead, or reassign the events first.": "geleentheid(e). Deaktiveer eerder die tipe, of ken die geleenthede eers opnuut toe."
 }
