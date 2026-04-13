@@ -5060,10 +5060,6 @@ msgid "Report an issue"
 msgstr "بلغ عن خطأ"
 
 #: 
-msgid "Active Kiosks"
-msgstr "أكشاك النشطة"
-
-#: 
 msgid "Self Verification"
 msgstr "التأكيد الذاتي"
 
@@ -12511,10 +12507,6 @@ msgid "— Select type (optional) —"
 msgstr "— اختر النوع (اختياري) —"
 
 #: 
-msgid "Accept the device, then assign it to an event to begin check-in."
-msgstr "قبول الجهاز ثم تعيينها للحدث لبدء تسجيل الوصول."
-
-#: 
 msgid "Activate"
 msgstr "تفعيل"
 
@@ -12565,10 +12557,6 @@ msgstr "الفئة / الجماعة"
 #: 
 msgid "Class List Export"
 msgstr "تصدير قائمة الفئة"
-
-#: 
-msgid "Click the registration toggle above to open a 30-second registration window."
-msgstr "انقر على تبديل التسجيل أعلاه لفتح نافذة تسجيل لمدة 30 ثانية."
 
 #: 
 msgid "Continue"
@@ -12639,10 +12627,6 @@ msgid "It is strongly recommended to have a backup before proceeding."
 msgstr "يُنصح بشدة بالاحتفاظ بنسخة احتياطية قبل المتابعة."
 
 #: 
-msgid "Kiosk Registration"
-msgstr "تسجيل الكشك"
-
-#: 
 msgid "Latest"
 msgstr "الأحدث"
 
@@ -12687,10 +12671,6 @@ msgid "Note text is required"
 msgstr "نص الملاحظة مطلوب"
 
 #: 
-msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
-msgstr "على جهاز الكشك (الجهاز اللوحي أو الكمبيوتر المحمول وما إلى ذلك)، افتح المتصفح وانتقل إلى:"
-
-#: 
 msgid "Only the note author or an admin may delete this note"
 msgstr "فقط مؤلف الملاحظة أو المسؤول يمكن حذف هذه الملاحظة"
 
@@ -12731,10 +12711,6 @@ msgid "Review & Delete"
 msgstr "المراجعة والحذف"
 
 #: 
-msgid "Setup Instructions"
-msgstr "تعليمات الإعداد"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "عدم تطابق التوقيع"
 
@@ -12743,24 +12719,12 @@ msgid "Skip, Continue Without Backup"
 msgstr "تخطي والمتابعة بدون نسخة احتياطية"
 
 #: 
-msgid "The device will register itself and appear in the table below as \"Pending\"."
-msgstr "سيتم تسجيل الجهاز بنفسه وستظهر في الجدول أدناه باسم \"قيد الانتظار\"."
-
-#: 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr "تظهر هذه الروابط في قائمة \"الروابط\" على شريط التنقل الجانبي عند تفعيل هذه الإضافة."
 
 #: 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr "سيؤدي هذا إلى إعادة تحميل وإعادة تطبيق الإصدار الحالي. يمكن أن يصلح الملفات التالفة أو المعدلة."
-
-#: 
-msgid "To set up a kiosk device, follow these steps:"
-msgstr "لإعداد جهاز كشك، اتبع هذه الخطوات:"
-
-#: 
-msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
-msgstr "قم بتبديل المفتاح أدناه لفتح نافذة مدتها 30 ثانية لتسجيل أجهزة الكشك الجديدة."
 
 #: 
 msgid "Total Check-ins"
@@ -12773,10 +12737,6 @@ msgstr "حاول تحديد نوع حدث أو سنة مختلفة."
 #: 
 msgid "Up to Date"
 msgstr "محدث"
-
-#: 
-msgid "Upcoming Sunday School Events"
-msgstr "أحداث مدرسة الأحد القادمة"
 
 #: 
 msgid "Update Available"
@@ -14945,10 +14905,6 @@ msgid "Deleting an event will also delete all attendance counts. This cannot be 
 msgstr "سيؤدي حذف الحدث إلى حذف جميع أعداد الحضور. لا يمكن التراجع عن هذا الإجراء."
 
 #: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "لن يؤدي حذف نوع الحدث هذا إلى حذف الأحداث الموجودة. هل أنت متأكد؟"
-
-#: 
 msgid "Deleting this event will also delete all attendance records. This cannot be undone."
 msgstr "سيؤدي حذف هذا الحدث إلى حذف جميع سجلات الحضور. لا يمكن التراجع عن هذا الإجراء."
 
@@ -15151,10 +15107,6 @@ msgstr "لا توجد أحداث اليوم"
 #: 
 msgid "No Group"
 msgstr "لا توجد مجموعة"
-
-#: 
-msgid "No active assignment"
-msgstr "لا يوجد تعيين نشط"
 
 #: 
 msgid "No active events found."

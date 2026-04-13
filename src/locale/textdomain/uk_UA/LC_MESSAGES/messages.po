@@ -5062,10 +5062,6 @@ msgid "Report an issue"
 msgstr "Повідомте про проблему"
 
 #: 
-msgid "Active Kiosks"
-msgstr "Активні кіоски"
-
-#: 
 msgid "Self Verification"
 msgstr "Самоперевірка"
 
@@ -12500,10 +12496,6 @@ msgid "— Select type (optional) —"
 msgstr "— Виберіть тип (необов'язково) —"
 
 #: 
-msgid "Accept the device, then assign it to an event to begin check-in."
-msgstr "Прийміть пристрій, а потім призначте його подію, щоб почати реєстрацію."
-
-#: 
 msgid "Activate"
 msgstr "Активувати"
 
@@ -12554,10 +12546,6 @@ msgstr "Клас / Група"
 #: 
 msgid "Class List Export"
 msgstr "Експорт списку класу"
-
-#: 
-msgid "Click the registration toggle above to open a 30-second registration window."
-msgstr "Натисніть на перемикач реєстрації вище, щоб відкрити 30-секундне вікно реєстрації."
 
 #: 
 msgid "Continue"
@@ -12628,10 +12616,6 @@ msgid "It is strongly recommended to have a backup before proceeding."
 msgstr "Настійно рекомендується мати резервну копію перед тим, як продовжувати."
 
 #: 
-msgid "Kiosk Registration"
-msgstr "Реєстрація кіоску"
-
-#: 
 msgid "Latest"
 msgstr "Останній"
 
@@ -12674,10 +12658,6 @@ msgstr "Нотатку не знайдено"
 #: 
 msgid "Note text is required"
 msgstr "Текст нотатки є обов'язковим"
-
-#: 
-msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
-msgstr "На пристрої кіоску (планшет, ноутбук тощо) відкрийте браузер і перейдіть на:"
 
 #: 
 msgid "Only the note author or an admin may delete this note"
@@ -12724,10 +12704,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Хеш"
 
 #: 
-msgid "Setup Instructions"
-msgstr "Інструкції з налаштування"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "Невідповідність підпису"
 
@@ -12736,24 +12712,12 @@ msgid "Skip, Continue Without Backup"
 msgstr "Пропустити, продовжити без резервної копії"
 
 #: 
-msgid "The device will register itself and appear in the table below as \"Pending\"."
-msgstr "Пристрій реєструватиметься та з'явиться в таблиці нижче як \"Очікування\"."
-
-#: 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr "Ці посилання з'являються в меню \"Посилання\" на панелі навігації, коли цей плагін увімкнений."
 
 #: 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr "Це буде повторно завантажувати та повторно застосовувати поточну версію. Це може виправити пошкоджені або модифіковані файли."
-
-#: 
-msgid "To set up a kiosk device, follow these steps:"
-msgstr "Щоб встановити пристрій кіоску, виконайте такі кроки:"
-
-#: 
-msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
-msgstr "Перемикніть перемикач нижче, щоб відкрити 30-секундне вікно для реєстрації нових пристроїв кіоску."
 
 #: 
 msgid "Total Check-ins"
@@ -12766,10 +12730,6 @@ msgstr "Спробуйте вибрати інший тип подій або р
 #: 
 msgid "Up to Date"
 msgstr "Актуально"
-
-#: 
-msgid "Upcoming Sunday School Events"
-msgstr "Майбутні події неділяної школи"
 
 #: 
 msgid "Update Available"
@@ -14936,10 +14896,6 @@ msgid "Deleting an event will also delete all attendance counts. This cannot be 
 msgstr "Видалення події також видалить усі підрахунки відвідуваності. Цю дію неможливо скасувати."
 
 #: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "Видалення цього типу події НЕ видалить наявні події. Ви впевнені?"
-
-#: 
 msgid "Deleting this event will also delete all attendance records. This cannot be undone."
 msgstr "Видалення цієї події також видалить усі записи відвідуваності. Цю дію неможливо скасувати."
 
@@ -15142,10 +15098,6 @@ msgstr "Сьогодні немає подій"
 #: 
 msgid "No Group"
 msgstr "Без групи"
-
-#: 
-msgid "No active assignment"
-msgstr "Немає активного призначення"
 
 #: 
 msgid "No active events found."

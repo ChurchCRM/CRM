@@ -5025,10 +5025,6 @@ msgid "Report an issue"
 msgstr "Mag-ulat ng isyu"
 
 #: 
-msgid "Active Kiosks"
-msgstr "Mga Aktibong Kiosk"
-
-#: 
 msgid "Self Verification"
 msgstr "Sariling Verification"
 
@@ -12437,10 +12433,6 @@ msgid "— Select type (optional) —"
 msgstr "— Pumili ng uri (opsyonal) —"
 
 #: 
-msgid "Accept the device, then assign it to an event to begin check-in."
-msgstr "Tanggapin ang device, pagkatapos ay italaga ito sa isang kaganapan para magsimulang mag-check in."
-
-#: 
 msgid "Activate"
 msgstr "I-activate"
 
@@ -12491,10 +12483,6 @@ msgstr "Klase / Grupo"
 #: 
 msgid "Class List Export"
 msgstr "Export ng Listahan ng Klase"
-
-#: 
-msgid "Click the registration toggle above to open a 30-second registration window."
-msgstr "I-click ang toggle ng pagpaparehistro sa itaas para buksan ang isang 30-segundong window ng pagpaparehistro."
 
 #: 
 msgid "Continue"
@@ -12565,10 +12553,6 @@ msgid "It is strongly recommended to have a backup before proceeding."
 msgstr "Mariing inirerekomenda na magkaroon ng backup bago magpatuloy."
 
 #: 
-msgid "Kiosk Registration"
-msgstr "Pagpaparehistro ng Kiosk"
-
-#: 
 msgid "Latest"
 msgstr "Pinakabago"
 
@@ -12613,10 +12597,6 @@ msgid "Note text is required"
 msgstr "Ang teksto ng tala ay kinakailangan"
 
 #: 
-msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
-msgstr "Sa kiosk device (tablet, laptop, atbp.), magbukas ng browser at pumunta sa:"
-
-#: 
 msgid "Only the note author or an admin may delete this note"
 msgstr "Ang may-akda ng tala o isang admin lamang ang maaaring burahin ang talang ito"
 
@@ -12657,10 +12637,6 @@ msgid "Review & Delete"
 msgstr "Suriin at Burahin"
 
 #: 
-msgid "Setup Instructions"
-msgstr "Mga Tagubilin sa Setup"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "Hindi Tugmang Pirma"
 
@@ -12669,24 +12645,12 @@ msgid "Skip, Continue Without Backup"
 msgstr "Laktawan, Magpatuloy Nang Walang Backup"
 
 #: 
-msgid "The device will register itself and appear in the table below as \"Pending\"."
-msgstr "Ang device ay magpaparehistro ng sarili at lalabas sa talahanayan sa ibaba bilang \"Naghihintay\"."
-
-#: 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr "Ang mga link na ito ay lumalabas sa menu ng \"Mga Link\" sa navigation sidebar kapag ang plugin na ito ay pinagana."
 
 #: 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr "Muling dina-download at muli-muling inilalapat ang kasalukuyang bersyon. Maaari nitong ayusin ang mga nasira o nabagong file."
-
-#: 
-msgid "To set up a kiosk device, follow these steps:"
-msgstr "Para i-set up ang isang kiosk device, sundin ang mga hakbang na ito:"
-
-#: 
-msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
-msgstr "I-toggle ang switch sa ibaba para buksan ang isang 30-segundong window para sa mga bagong kiosk device na magrehistro."
 
 #: 
 msgid "Total Check-ins"
@@ -12699,10 +12663,6 @@ msgstr "Subukang pumili ng ibang uri ng kaganapan o taon."
 #: 
 msgid "Up to Date"
 msgstr "Napapanahon"
-
-#: 
-msgid "Upcoming Sunday School Events"
-msgstr "Mga Paparating na Kaganapan ng Paaralan ng Linggo"
 
 #: 
 msgid "Update Available"
@@ -14867,10 +14827,6 @@ msgid "Deleting an event will also delete all attendance counts. This cannot be 
 msgstr "Ang pagtanggal ng isang kaganapan ay magtatanggal din ng lahat ng bilang ng presensya. Hindi ito maaaring ibalik."
 
 #: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "Ang pagtanggal ng uri ng kaganapang ito ay HINDI magtatanggal ng mga kasalukuyang kaganapan. Sigurado ka ba?"
-
-#: 
 msgid "Deleting this event will also delete all attendance records. This cannot be undone."
 msgstr "Ang pagtanggal ng kaganapang ito ay magtatanggal din ng lahat ng talaan ng presensya. Hindi ito maaaring ibalik."
 
@@ -15073,10 +15029,6 @@ msgstr "Walang mga Kaganapan Ngayon"
 #: 
 msgid "No Group"
 msgstr "Walang Grupo"
-
-#: 
-msgid "No active assignment"
-msgstr "Walang aktibong itinalaga"
 
 #: 
 msgid "No active events found."

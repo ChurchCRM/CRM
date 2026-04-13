@@ -5134,10 +5134,6 @@ msgid "Report an issue"
 msgstr "Сообщить о проблеме"
 
 #: 
-msgid "Active Kiosks"
-msgstr "Активные киоски"
-
-#: 
 msgid "Self Verification"
 msgstr "Самостоятельная проверка"
 
@@ -12567,10 +12563,6 @@ msgid "— Select type (optional) —"
 msgstr "— Выберите тип (необязательно) —"
 
 #: 
-msgid "Accept the device, then assign it to an event to begin check-in."
-msgstr "Примите устройство, затем назначьте его на мероприятие для начала регистрации."
-
-#: 
 msgid "Activate"
 msgstr "Активировать"
 
@@ -12621,10 +12613,6 @@ msgstr "Класс / Группа"
 #: 
 msgid "Class List Export"
 msgstr "Экспорт списка класса"
-
-#: 
-msgid "Click the registration toggle above to open a 30-second registration window."
-msgstr "Нажмите переключатель регистрации выше, чтобы открыть 30-секундное окно регистрации."
 
 #: 
 msgid "Continue"
@@ -12695,10 +12683,6 @@ msgid "It is strongly recommended to have a backup before proceeding."
 msgstr "Настоятельно рекомендуется создать резервную копию перед продолжением."
 
 #: 
-msgid "Kiosk Registration"
-msgstr "Регистрация киоска"
-
-#: 
 msgid "Latest"
 msgstr "Последняя"
 
@@ -12741,10 +12725,6 @@ msgstr "Заметка не найдена"
 #: 
 msgid "Note text is required"
 msgstr "Текст заметки обязателен"
-
-#: 
-msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
-msgstr "На устройстве-киоске (планшет, ноутбук и т.д.) откройте браузер и перейдите по адресу:"
 
 #: 
 msgid "Only the note author or an admin may delete this note"
@@ -12791,10 +12771,6 @@ msgid "SHA1 Hash"
 msgstr "Хеш SHA1"
 
 #: 
-msgid "Setup Instructions"
-msgstr "Инструкции по настройке"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "Несоответствие подписи"
 
@@ -12803,24 +12779,12 @@ msgid "Skip, Continue Without Backup"
 msgstr "Пропустить, продолжить без резервной копии"
 
 #: 
-msgid "The device will register itself and appear in the table below as \"Pending\"."
-msgstr "Устройство зарегистрируется автоматически и появится в таблице ниже как «Ожидание»."
-
-#: 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr "Эти ссылки отображаются в меню «Ссылки» на боковой панели навигации, когда этот плагин включён."
 
 #: 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr "Текущая версия будет повторно загружена и применена. Это может исправить повреждённые или изменённые файлы."
-
-#: 
-msgid "To set up a kiosk device, follow these steps:"
-msgstr "Чтобы настроить устройство-киоск, выполните следующие шаги:"
-
-#: 
-msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
-msgstr "Переключите выключатель ниже, чтобы открыть 30-секундное окно для регистрации новых устройств-киосков."
 
 #: 
 msgid "Total Check-ins"
@@ -12833,10 +12797,6 @@ msgstr "Попробуйте выбрать другой тип мероприя
 #: 
 msgid "Up to Date"
 msgstr "Актуальная версия"
-
-#: 
-msgid "Upcoming Sunday School Events"
-msgstr "Предстоящие мероприятия воскресной школы"
 
 #: 
 msgid "Update Available"
@@ -15003,10 +14963,6 @@ msgid "Deleting an event will also delete all attendance counts. This cannot be 
 msgstr "Удаление мероприятия также удалит все данные о посещаемости. Это действие невозможно отменить."
 
 #: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "Удаление этого типа мероприятия НЕ удалит существующие мероприятия. Вы уверены?"
-
-#: 
 msgid "Deleting this event will also delete all attendance records. This cannot be undone."
 msgstr "Удаление мероприятия также удалит все записи о посещаемости. Это действие невозможно отменить."
 
@@ -15209,10 +15165,6 @@ msgstr "Сегодня нет мероприятий"
 #: 
 msgid "No Group"
 msgstr "Без группы"
-
-#: 
-msgid "No active assignment"
-msgstr "Нет активного назначения"
 
 #: 
 msgid "No active events found."

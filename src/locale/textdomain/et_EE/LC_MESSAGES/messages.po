@@ -5061,10 +5061,6 @@ msgid "Report an issue"
 msgstr "Teatage probleemist"
 
 #: 
-msgid "Active Kiosks"
-msgstr "Aktiivsed tööharud"
-
-#: 
 msgid "Self Verification"
 msgstr "Automaatne kinitus"
 
@@ -12479,10 +12475,6 @@ msgid "— Select type (optional) —"
 msgstr "— Valige tüüp (valikuline) —"
 
 #: 
-msgid "Accept the device, then assign it to an event to begin check-in."
-msgstr "Kinnitage seade, seejärel määrake see sündmusele registreerimise alustamiseks."
-
-#: 
 msgid "Activate"
 msgstr "Aktiveeri"
 
@@ -12533,10 +12525,6 @@ msgstr "Klass / Grupp"
 #: 
 msgid "Class List Export"
 msgstr "Klassi nimekirja eksport"
-
-#: 
-msgid "Click the registration toggle above to open a 30-second registration window."
-msgstr "Klõpsake ülalolevat registreerimise lülitit, et avada 30-sekundiline registreerimisaken."
 
 #: 
 msgid "Continue"
@@ -12607,10 +12595,6 @@ msgid "It is strongly recommended to have a backup before proceeding."
 msgstr "Enne jätkamist on tungivalt soovituslik omada varukoopiat."
 
 #: 
-msgid "Kiosk Registration"
-msgstr "Kioskiakna registreerimine"
-
-#: 
 msgid "Latest"
 msgstr "Uusim"
 
@@ -12653,10 +12637,6 @@ msgstr "Märget ei leitud"
 #: 
 msgid "Note text is required"
 msgstr "Märkme tekst on kohustuslik"
-
-#: 
-msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
-msgstr "Kioskiseadmel (tahvelarvuti, sülearvuti jne) avage brauser ja navigeerige aadressile:"
 
 #: 
 msgid "Only the note author or an admin may delete this note"
@@ -12703,10 +12683,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 räsi"
 
 #: 
-msgid "Setup Instructions"
-msgstr "Seadistamise juhised"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "Allkirja mittevastavus"
 
@@ -12715,24 +12691,12 @@ msgid "Skip, Continue Without Backup"
 msgstr "Jäta vahele, jätka ilma varukoopiata"
 
 #: 
-msgid "The device will register itself and appear in the table below as \"Pending\"."
-msgstr "Seade registreerib end ja ilmub allolevasse tabelisse olekuga „Ootel\"."
-
-#: 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr "Need lingid ilmuvad navigeerimisriba menüüsse „Lingid\", kui see plugin on lubatud."
 
 #: 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr "See laadib uuesti alla ja rakendab praeguse versiooni. See võib parandada rikutud või muudetud faile."
-
-#: 
-msgid "To set up a kiosk device, follow these steps:"
-msgstr "Kioskiseadme seadistamiseks järgige neid samme:"
-
-#: 
-msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
-msgstr "Lülitage allolev lüliti, et avada 30-sekundiline aken uute kioskiseadmete registreerimiseks."
 
 #: 
 msgid "Total Check-ins"
@@ -12745,10 +12709,6 @@ msgstr "Proovige valida teist sündmuse tüüpi või aastat."
 #: 
 msgid "Up to Date"
 msgstr "Ajakohane"
-
-#: 
-msgid "Upcoming Sunday School Events"
-msgstr "Tulevased pühapäevakooli sündmused"
 
 #: 
 msgid "Update Available"
@@ -14913,10 +14873,6 @@ msgid "Deleting an event will also delete all attendance counts. This cannot be 
 msgstr "Sündmuse kustutamisel kustutatakse ka kõik kohaloleku loendused. Seda ei saa tagasi võtta."
 
 #: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "Selle sündmuse tüübi kustutamine EI kustuta olemasolevaid sündmusi. Olete kindel?"
-
-#: 
 msgid "Deleting this event will also delete all attendance records. This cannot be undone."
 msgstr "Selle sündmuse kustutamisel kustutatakse ka kõik kohaloleku kirjed. Seda ei saa tagasi võtta."
 
@@ -15119,10 +15075,6 @@ msgstr "Täna pole sündmusi"
 #: 
 msgid "No Group"
 msgstr "Rühm puudub"
-
-#: 
-msgid "No active assignment"
-msgstr "Aktiivne ülesanne puudub"
 
 #: 
 msgid "No active events found."

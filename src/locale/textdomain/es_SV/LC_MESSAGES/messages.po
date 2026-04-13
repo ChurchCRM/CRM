@@ -5025,10 +5025,6 @@ msgid "Report an issue"
 msgstr "Reportar un problema"
 
 #: 
-msgid "Active Kiosks"
-msgstr "Activar Quioscos"
-
-#: 
 msgid "Self Verification"
 msgstr "Autoverificación"
 
@@ -12438,10 +12434,6 @@ msgid "— Select type (optional) —"
 msgstr "— Seleccionar tipo (opcional) —"
 
 #: 
-msgid "Accept the device, then assign it to an event to begin check-in."
-msgstr "Acepte el dispositivo y luego asignelo a un evento para comenzar el registro de asistencia."
-
-#: 
 msgid "Activate"
 msgstr "Activar"
 
@@ -12492,10 +12484,6 @@ msgstr "Clase / Grupo"
 #: 
 msgid "Class List Export"
 msgstr "Exportar lista de clases"
-
-#: 
-msgid "Click the registration toggle above to open a 30-second registration window."
-msgstr "Haga clic en el interruptor de registro de arriba para abrir una ventana de registro de 30 segundos."
 
 #: 
 msgid "Continue"
@@ -12566,10 +12554,6 @@ msgid "It is strongly recommended to have a backup before proceeding."
 msgstr "Se recomienda encarecidamente tener un respaldo antes de continuar."
 
 #: 
-msgid "Kiosk Registration"
-msgstr "Registro de quiosco"
-
-#: 
 msgid "Latest"
 msgstr "Última versión"
 
@@ -12612,10 +12596,6 @@ msgstr "Nota no encontrada"
 #: 
 msgid "Note text is required"
 msgstr "El texto de la nota es obligatorio"
-
-#: 
-msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
-msgstr "En el dispositivo quiosco (tableta, laptop, etc.), abra un navegador y vaya a:"
 
 #: 
 msgid "Only the note author or an admin may delete this note"
@@ -12662,10 +12642,6 @@ msgid "SHA1 Hash"
 msgstr "Hash SHA1"
 
 #: 
-msgid "Setup Instructions"
-msgstr "Instrucciones de configuración"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "Discrepancia de firma"
 
@@ -12674,24 +12650,12 @@ msgid "Skip, Continue Without Backup"
 msgstr "Omitir, continuar sin respaldo"
 
 #: 
-msgid "The device will register itself and appear in the table below as \"Pending\"."
-msgstr "El dispositivo se registrará y aparecerá en la tabla de abajo como \"Pendiente\"."
-
-#: 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr "Estos enlaces aparecen en el menú \"Enlaces\" de la barra lateral de navegación cuando este complemento está habilitado."
 
 #: 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr "Esto volverá a descargar y aplicar la versión actual. Puede reparar archivos dañados o modificados."
-
-#: 
-msgid "To set up a kiosk device, follow these steps:"
-msgstr "Para configurar un dispositivo quiosco, siga estos pasos:"
-
-#: 
-msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
-msgstr "Active el interruptor de abajo para abrir una ventana de 30 segundos para registrar nuevos dispositivos quiosco."
 
 #: 
 msgid "Total Check-ins"
@@ -12704,10 +12668,6 @@ msgstr "Intente seleccionar un tipo de evento o año diferente."
 #: 
 msgid "Up to Date"
 msgstr "Actualizado"
-
-#: 
-msgid "Upcoming Sunday School Events"
-msgstr "Próximos eventos de catequesis"
 
 #: 
 msgid "Update Available"
@@ -14876,10 +14836,6 @@ msgid "Deleting an event will also delete all attendance counts. This cannot be 
 msgstr "Eliminar un evento también eliminará todos los conteos de asistencia. Esta acción no se puede deshacer."
 
 #: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "Eliminar este tipo de evento NO eliminará los eventos existentes. ¿Está seguro?"
-
-#: 
 msgid "Deleting this event will also delete all attendance records. This cannot be undone."
 msgstr "Eliminar este evento también eliminará todos los registros de asistencia. Esta acción no se puede deshacer."
 
@@ -15082,10 +15038,6 @@ msgstr "No hay eventos hoy"
 #: 
 msgid "No Group"
 msgstr "Sin Ministerio"
-
-#: 
-msgid "No active assignment"
-msgstr "Sin asignación activa"
 
 #: 
 msgid "No active events found."

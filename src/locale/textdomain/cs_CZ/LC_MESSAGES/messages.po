@@ -5053,10 +5053,6 @@ msgid "Report an issue"
 msgstr "Nahlásit problém"
 
 #: 
-msgid "Active Kiosks"
-msgstr "Aktivní kiosky"
-
-#: 
 msgid "Self Verification"
 msgstr "Vlastní ověření"
 
@@ -12475,10 +12471,6 @@ msgid "— Select type (optional) —"
 msgstr "— Vyberte typ (nepovinné) —"
 
 #: 
-msgid "Accept the device, then assign it to an event to begin check-in."
-msgstr "Přijměte zařízení a poté ho přiřaďte k události pro zahájení registrace účasti."
-
-#: 
 msgid "Activate"
 msgstr "Aktivovat"
 
@@ -12529,10 +12521,6 @@ msgstr "Třída / Skupina"
 #: 
 msgid "Class List Export"
 msgstr "Export seznamu třídy"
-
-#: 
-msgid "Click the registration toggle above to open a 30-second registration window."
-msgstr "Klikněte na přepínač registrace výše pro otevření 30sekundového registračního okna."
 
 #: 
 msgid "Continue"
@@ -12603,10 +12591,6 @@ msgid "It is strongly recommended to have a backup before proceeding."
 msgstr "Před pokračováním důrazně doporučujeme mít zálohu."
 
 #: 
-msgid "Kiosk Registration"
-msgstr "Registrace kiosku"
-
-#: 
 msgid "Latest"
 msgstr "Nejnovější"
 
@@ -12649,10 +12633,6 @@ msgstr "Poznámka nebyla nalezena"
 #: 
 msgid "Note text is required"
 msgstr "Text poznámky je povinný"
-
-#: 
-msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
-msgstr "Na kioskovém zařízení (tablet, notebook atd.) otevřete prohlížeč a přejděte na:"
 
 #: 
 msgid "Only the note author or an admin may delete this note"
@@ -12699,10 +12679,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 hash"
 
 #: 
-msgid "Setup Instructions"
-msgstr "Pokyny k nastavení"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "Neshoda podpisu"
 
@@ -12711,24 +12687,12 @@ msgid "Skip, Continue Without Backup"
 msgstr "Přeskočit, pokračovat bez zálohy"
 
 #: 
-msgid "The device will register itself and appear in the table below as \"Pending\"."
-msgstr "Zařízení se zaregistruje samo a objeví se v tabulce níže jako „Čekající\"."
-
-#: 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr "Tyto odkazy se zobrazí v nabídce „Odkazy\" v navigačním panelu, když je tento plugin povolen."
 
 #: 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr "Toto znovu stáhne a aplikuje aktuální verzi. Může opravit poškozené nebo upravené soubory."
-
-#: 
-msgid "To set up a kiosk device, follow these steps:"
-msgstr "Pro nastavení kioskového zařízení postupujte podle těchto kroků:"
-
-#: 
-msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
-msgstr "Přepněte přepínač níže pro otevření 30sekundového okna pro registraci nových kioskových zařízení."
 
 #: 
 msgid "Total Check-ins"
@@ -12741,10 +12705,6 @@ msgstr "Zkuste vybrat jiný typ události nebo rok."
 #: 
 msgid "Up to Date"
 msgstr "Aktuální"
-
-#: 
-msgid "Upcoming Sunday School Events"
-msgstr "Nadcházející události nedělní školy"
 
 #: 
 msgid "Update Available"
@@ -14910,10 +14870,6 @@ msgid "Deleting an event will also delete all attendance counts. This cannot be 
 msgstr "Smazáním události se také smažou všechny záznamy docházky. Tuto akci nelze vrátit zpět."
 
 #: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "Smazáním tohoto typu události se NESMAŽOU existující události. Jste si jisti?"
-
-#: 
 msgid "Deleting this event will also delete all attendance records. This cannot be undone."
 msgstr "Smazáním této události se také smažou všechny záznamy o docházce. Tuto akci nelze vrátit zpět."
 
@@ -15116,10 +15072,6 @@ msgstr "Dnes žádné události"
 #: 
 msgid "No Group"
 msgstr "Žádná skupina"
-
-#: 
-msgid "No active assignment"
-msgstr "Žádné aktivní přiřazení"
 
 #: 
 msgid "No active events found."

@@ -5057,10 +5057,6 @@ msgid "Report an issue"
 msgstr "문제 보고"
 
 #: 
-msgid "Active Kiosks"
-msgstr "활성 키오스크"
-
-#: 
 msgid "Self Verification"
 msgstr "자가 확인"
 
@@ -12458,10 +12454,6 @@ msgid "— Select type (optional) —"
 msgstr "— 유형 선택 (선택 사항) —"
 
 #: 
-msgid "Accept the device, then assign it to an event to begin check-in."
-msgstr "장치를 수락한 다음 행사에 배정하여 체크인을 시작하세요."
-
-#: 
 msgid "Activate"
 msgstr "활성화"
 
@@ -12512,10 +12504,6 @@ msgstr "반 / 그룹"
 #: 
 msgid "Class List Export"
 msgstr "반 목록 내보내기"
-
-#: 
-msgid "Click the registration toggle above to open a 30-second registration window."
-msgstr "30초 등록 창을 열려면 위의 등록 토글을 클릭하세요."
 
 #: 
 msgid "Continue"
@@ -12586,10 +12574,6 @@ msgid "It is strongly recommended to have a backup before proceeding."
 msgstr "계속하기 전에 백업을 만드는 것이 강력히 권장됩니다."
 
 #: 
-msgid "Kiosk Registration"
-msgstr "키오스크 등록"
-
-#: 
 msgid "Latest"
 msgstr "최신"
 
@@ -12632,10 +12616,6 @@ msgstr "메모를 찾을 수 없음"
 #: 
 msgid "Note text is required"
 msgstr "메모 텍스트가 필요합니다"
-
-#: 
-msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
-msgstr "키오스크 장치(태블릿, 노트북 등)에서 브라우저를 열고 다음으로 이동하세요:"
 
 #: 
 msgid "Only the note author or an admin may delete this note"
@@ -12682,10 +12662,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 해시"
 
 #: 
-msgid "Setup Instructions"
-msgstr "설정 안내"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "서명 불일치"
 
@@ -12694,24 +12670,12 @@ msgid "Skip, Continue Without Backup"
 msgstr "건너뛰기, 백업 없이 계속"
 
 #: 
-msgid "The device will register itself and appear in the table below as \"Pending\"."
-msgstr "장치가 자체 등록되며 아래 표에 \"대기 중\"으로 표시됩니다."
-
-#: 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr "이 플러그인이 활성화되면 이 링크가 탐색 사이드바의 \"링크\" 메뉴에 표시됩니다."
 
 #: 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr "현재 버전을 다시 다운로드하고 다시 적용합니다. 손상되거나 수정된 파일을 수정할 수 있습니다."
-
-#: 
-msgid "To set up a kiosk device, follow these steps:"
-msgstr "키오스크 장치를 설정하려면 다음 단계를 따르세요:"
-
-#: 
-msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
-msgstr "새 키오스크 장치가 등록할 수 있도록 아래 스위치를 전환하여 30초 창을 여세요."
 
 #: 
 msgid "Total Check-ins"
@@ -12724,10 +12688,6 @@ msgstr "다른 행사 유형이나 연도를 선택해 보세요."
 #: 
 msgid "Up to Date"
 msgstr "최신 상태"
-
-#: 
-msgid "Upcoming Sunday School Events"
-msgstr "다가오는 주일학교 행사"
 
 #: 
 msgid "Update Available"
@@ -14886,10 +14846,6 @@ msgid "Deleting an event will also delete all attendance counts. This cannot be 
 msgstr "이벤트를 삭제하면 모든 출석 집계도 삭제됩니다. 이 작업은 취소할 수 없습니다."
 
 #: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "이 이벤트 유형을 삭제해도 기존 이벤트는 삭제되지 않습니다. 계속하시겠습니까?"
-
-#: 
 msgid "Deleting this event will also delete all attendance records. This cannot be undone."
 msgstr "이 이벤트를 삭제하면 모든 출석 기록도 삭제됩니다. 이 작업은 취소할 수 없습니다."
 
@@ -15092,10 +15048,6 @@ msgstr "오늘 이벤트 없음"
 #: 
 msgid "No Group"
 msgstr "그룹 없음"
-
-#: 
-msgid "No active assignment"
-msgstr "활성 할당 없음"
 
 #: 
 msgid "No active events found."

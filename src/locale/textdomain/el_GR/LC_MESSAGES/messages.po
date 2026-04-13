@@ -5062,10 +5062,6 @@ msgid "Report an issue"
 msgstr "Αναφέρετε ένα πρόβλημα"
 
 #: 
-msgid "Active Kiosks"
-msgstr "Ενεργά Περίπτερα"
-
-#: 
 msgid "Self Verification"
 msgstr "Αυτοεπαλήθευση"
 
@@ -12480,10 +12476,6 @@ msgid "— Select type (optional) —"
 msgstr "— Επιλέξτε τύπο (προαιρετικό) —"
 
 #: 
-msgid "Accept the device, then assign it to an event to begin check-in."
-msgstr "Αποδεχτείτε τη συσκευή και μετά αναθέστε την σε εκδήλωση για να ξεκινήσει η καταγραφή παρουσίας."
-
-#: 
 msgid "Activate"
 msgstr "Ενεργοποίηση"
 
@@ -12534,10 +12526,6 @@ msgstr "Τάξη / Ομάδα"
 #: 
 msgid "Class List Export"
 msgstr "Εξαγωγή λίστας τάξης"
-
-#: 
-msgid "Click the registration toggle above to open a 30-second registration window."
-msgstr "Κάντε κλικ στον διακόπτη εγγραφής παραπάνω για να ανοίξετε παράθυρο εγγραφής 30 δευτερολέπτων."
 
 #: 
 msgid "Continue"
@@ -12608,10 +12596,6 @@ msgid "It is strongly recommended to have a backup before proceeding."
 msgstr "Συνιστάται ιδιαίτερα να έχετε αντίγραφο ασφαλείας πριν συνεχίσετε."
 
 #: 
-msgid "Kiosk Registration"
-msgstr "Εγγραφή κιόσκι"
-
-#: 
 msgid "Latest"
 msgstr "Τελευταία"
 
@@ -12654,10 +12638,6 @@ msgstr "Η σημείωση δεν βρέθηκε"
 #: 
 msgid "Note text is required"
 msgstr "Απαιτείται κείμενο σημείωσης"
-
-#: 
-msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
-msgstr "Στη συσκευή κιόσκι (tablet, φορητός υπολογιστής κ.λπ.), ανοίξτε πρόγραμμα περιήγησης και μεταβείτε στη διεύθυνση:"
 
 #: 
 msgid "Only the note author or an admin may delete this note"
@@ -12704,10 +12684,6 @@ msgid "SHA1 Hash"
 msgstr "Κατακερματισμός SHA1"
 
 #: 
-msgid "Setup Instructions"
-msgstr "Οδηγίες ρύθμισης"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "Αναντιστοιχία υπογραφής"
 
@@ -12716,24 +12692,12 @@ msgid "Skip, Continue Without Backup"
 msgstr "Παράλειψη, συνέχεια χωρίς αντίγραφο ασφαλείας"
 
 #: 
-msgid "The device will register itself and appear in the table below as \"Pending\"."
-msgstr "Η συσκευή θα εγγραφεί αυτόματα και θα εμφανιστεί στον παρακάτω πίνακα ως «Εκκρεμεί»."
-
-#: 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr "Αυτοί οι σύνδεσμοι εμφανίζονται στο μενού «Σύνδεσμοι» στην πλαϊνή γραμμή πλοήγησης όταν αυτό το πρόσθετο είναι ενεργοποιημένο."
 
 #: 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr "Αυτό θα κατεβάσει εκ νέου και θα εφαρμόσει ξανά την τρέχουσα έκδοση. Μπορεί να διορθώσει κατεστραμμένα ή τροποποιημένα αρχεία."
-
-#: 
-msgid "To set up a kiosk device, follow these steps:"
-msgstr "Για να ρυθμίσετε μια συσκευή κιόσκι, ακολουθήστε αυτά τα βήματα:"
-
-#: 
-msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
-msgstr "Ενεργοποιήστε τον διακόπτη παρακάτω για να ανοίξετε παράθυρο 30 δευτερολέπτων για εγγραφή νέων συσκευών κιόσκι."
 
 #: 
 msgid "Total Check-ins"
@@ -12746,10 +12710,6 @@ msgstr "Δοκιμάστε να επιλέξετε διαφορετικό τύπ
 #: 
 msgid "Up to Date"
 msgstr "Ενημερωμένο"
-
-#: 
-msgid "Upcoming Sunday School Events"
-msgstr "Επερχόμενες εκδηλώσεις Κατηχητικού"
 
 #: 
 msgid "Update Available"
@@ -14914,10 +14874,6 @@ msgid "Deleting an event will also delete all attendance counts. This cannot be 
 msgstr "Η διαγραφή μιας εκδήλωσης θα διαγράψει επίσης όλες τις καταμετρήσεις παρουσίας. Αυτή η ενέργεια δεν μπορεί να αναιρεθεί."
 
 #: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "Η διαγραφή αυτού του τύπου εκδήλωσης ΔΕΝ θα διαγράψει τις υπάρχουσες εκδηλώσεις. Είστε σίγουροι;"
-
-#: 
 msgid "Deleting this event will also delete all attendance records. This cannot be undone."
 msgstr "Η διαγραφή αυτής της εκδήλωσης θα διαγράψει επίσης όλες τις εγγραφές παρουσίας. Αυτή η ενέργεια δεν μπορεί να αναιρεθεί."
 
@@ -15120,10 +15076,6 @@ msgstr "Δεν υπάρχουν Εκδηλώσεις Σήμερα"
 #: 
 msgid "No Group"
 msgstr "Χωρίς Διακονία"
-
-#: 
-msgid "No active assignment"
-msgstr "Χωρίς ενεργή ανάθεση"
 
 #: 
 msgid "No active events found."

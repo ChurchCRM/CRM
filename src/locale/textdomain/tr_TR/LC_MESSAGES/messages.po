@@ -5062,10 +5062,6 @@ msgid "Report an issue"
 msgstr "Bir Sorun Bildirin"
 
 #: 
-msgid "Active Kiosks"
-msgstr "Aktif kiosklar"
-
-#: 
 msgid "Self Verification"
 msgstr "Kendini doğrulama"
 
@@ -12480,10 +12476,6 @@ msgid "— Select type (optional) —"
 msgstr "— Tür seçin (isteğe bağlı) —"
 
 #: 
-msgid "Accept the device, then assign it to an event to begin check-in."
-msgstr "Cihazı kabul edin, ardından giriş kaydını başlatmak için bir etkinliğe atayın."
-
-#: 
 msgid "Activate"
 msgstr "Etkinleştir"
 
@@ -12534,10 +12526,6 @@ msgstr "Sınıf / Grup"
 #: 
 msgid "Class List Export"
 msgstr "Sınıf Listesi Dışa Aktarımı"
-
-#: 
-msgid "Click the registration toggle above to open a 30-second registration window."
-msgstr "30 saniyelik bir kayıt penceresi açmak için yukarıdaki kayıt düğmesine tıklayın."
 
 #: 
 msgid "Continue"
@@ -12608,10 +12596,6 @@ msgid "It is strongly recommended to have a backup before proceeding."
 msgstr "Devam etmeden önce bir yedeğinizin olması şiddetle tavsiye edilir."
 
 #: 
-msgid "Kiosk Registration"
-msgstr "Kiosk Kaydı"
-
-#: 
 msgid "Latest"
 msgstr "En Son"
 
@@ -12654,10 +12638,6 @@ msgstr "Not bulunamadı"
 #: 
 msgid "Note text is required"
 msgstr "Not metni gereklidir"
-
-#: 
-msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
-msgstr "Kiosk cihazında (tablet, dizüstü bilgisayar vb.) bir tarayıcı açın ve şuraya gidin:"
 
 #: 
 msgid "Only the note author or an admin may delete this note"
@@ -12704,10 +12684,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 Özeti"
 
 #: 
-msgid "Setup Instructions"
-msgstr "Kurulum Talimatları"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "İmza Uyuşmazlığı"
 
@@ -12716,24 +12692,12 @@ msgid "Skip, Continue Without Backup"
 msgstr "Atla, Yedeksiz Devam Et"
 
 #: 
-msgid "The device will register itself and appear in the table below as \"Pending\"."
-msgstr "Cihaz kendini kaydedecek ve aşağıdaki tabloda \"Beklemede\" olarak görünecektir."
-
-#: 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr "Bu bağlantılar, bu eklenti etkinleştirildiğinde gezinme kenar çubuğundaki \"Bağlantılar\" menüsünde görünür."
 
 #: 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr "Bu, mevcut sürümü yeniden indirecek ve yeniden uygulayacaktır. Bozulmuş veya değiştirilmiş dosyaları düzeltebilir."
-
-#: 
-msgid "To set up a kiosk device, follow these steps:"
-msgstr "Bir kiosk cihazı kurmak için şu adımları izleyin:"
-
-#: 
-msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
-msgstr "Yeni kiosk cihazlarının kaydolması için 30 saniyelik bir pencere açmak üzere aşağıdaki anahtarı değiştirin."
 
 #: 
 msgid "Total Check-ins"
@@ -12746,10 +12710,6 @@ msgstr "Farklı bir etkinlik türü veya yıl seçmeyi deneyin."
 #: 
 msgid "Up to Date"
 msgstr "Güncel"
-
-#: 
-msgid "Upcoming Sunday School Events"
-msgstr "Yaklaşan Pazar Okulu Etkinlikleri"
 
 #: 
 msgid "Update Available"
@@ -14918,10 +14878,6 @@ msgid "Deleting an event will also delete all attendance counts. This cannot be 
 msgstr "Bir etkinliği silmek tüm katılım sayımlarını da siler. Bu işlem geri alınamaz."
 
 #: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "Bu etkinlik türünü silmek mevcut etkinlikleri SİLMEYECEKTİR. Emin misiniz?"
-
-#: 
 msgid "Deleting this event will also delete all attendance records. This cannot be undone."
 msgstr "Bu etkinliği silmek tüm katılım kayıtlarını da siler. Bu işlem geri alınamaz."
 
@@ -15124,10 +15080,6 @@ msgstr "Bugün Etkinlik Yok"
 #: 
 msgid "No Group"
 msgstr "Hizmet Yok"
-
-#: 
-msgid "No active assignment"
-msgstr "Aktif atama yok"
 
 #: 
 msgid "No active events found."
