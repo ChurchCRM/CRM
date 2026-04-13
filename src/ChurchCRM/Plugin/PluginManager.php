@@ -125,6 +125,18 @@ class PluginManager
                 }
             }
         }
+
+        // Bind per-plugin gettext textdomains so plugin PHP code can call
+        // dgettext('{pluginId}', '…') to translate without touching the
+        // core POeditor workflow. Only plugins that actually ship a
+        // locale/textdomain directory are bound.
+        $activeMetadata = [];
+        foreach (self::$loadedPlugins as $pluginId => $_plugin) {
+            if (isset(self::$discoveredPlugins[$pluginId])) {
+                $activeMetadata[$pluginId] = self::$discoveredPlugins[$pluginId];
+            }
+        }
+        PluginLocalization::bindPhpDomains($activeMetadata);
     }
 
     /**
@@ -664,6 +676,31 @@ class PluginManager
                     ['error' => $e->getMessage()]
                 );
             }
+        }
+
+        // Merge in plugin-local i18next resources for the current user
+        // locale. Plugins that do not ship translations contribute nothing.
+        // Resources end up at window.CRM.plugins.{pluginId}.i18n — the
+        // frontend does NOT need any changes to locale-loader.js.
+        try {
+            $localeInfo = \ChurchCRM\Bootstrapper::getCurrentLocale();
+            $currentLocale = $localeInfo->getLocale() ?: 'en_US';
+        } catch (\Throwable $e) {
+            $currentLocale = 'en_US';
+        }
+
+        $activeMetadata = [];
+        foreach (self::$loadedPlugins as $pluginId => $_plugin) {
+            if (isset(self::$discoveredPlugins[$pluginId])) {
+                $activeMetadata[$pluginId] = self::$discoveredPlugins[$pluginId];
+            }
+        }
+        $i18nResources = PluginLocalization::collectJsResources($activeMetadata, $currentLocale);
+        foreach ($i18nResources as $pluginId => $strings) {
+            if (!isset($configs[$pluginId]) || !is_array($configs[$pluginId])) {
+                $configs[$pluginId] = [];
+            }
+            $configs[$pluginId]['i18n'] = $strings;
         }
 
         return $configs;

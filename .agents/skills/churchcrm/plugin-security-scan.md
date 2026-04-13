@@ -134,24 +134,57 @@ Taint analysis must clear on any path that touches `$_GET`, `$_POST`,
 
 ## 4. Permission / capability inventory
 
-Produce a short table for the PR body:
+Produce a table for the PR body. **Every row the plugin exercises must map
+to one of the tags in `ApprovedPluginRegistry::KNOWN_PERMISSIONS`.** If the
+plugin does something not covered by that list, update the list in the same
+PR — do not quietly reclassify the behaviour.
 
-| Capability               | Evidence (file:line) | Notes |
-|--------------------------|----------------------|-------|
-| Filesystem writes        |                      |       |
-| Outbound HTTP(S)         |                      |       |
-| DB writes                |                      |       |
-| Background / cron hooks  |                      |       |
-| UI injection points      |                      |       |
-| Required permissions     |                      |       |
-| Secrets stored in config |                      |       |
+| Capability tag      | Used? | Evidence (file:line) | Notes |
+|---------------------|:-----:|----------------------|-------|
+| `network.outbound`  |       |                      |       |
+| `network.inbound`   |       |                      |       |
+| `db.read`           |       |                      |       |
+| `db.write`          |       |                      |       |
+| `fs.read`           |       |                      |       |
+| `fs.write`          |       |                      |       |
+| `secrets.store`     |       |                      |       |
+| `ui.inject`         |       |                      |       |
+| `cron`              |       |                      |       |
+| `hooks.person`      |       |                      |       |
+| `hooks.family`      |       |                      |       |
+| `hooks.financial`   |       |                      |       |
+| `hooks.email`       |       |                      |       |
+| `email.send`        |       |                      |       |
+| `sms.send`          |       |                      |       |
 
 This matches the WordPress 2026 "declared capabilities" model and the
 upcoming plugin-security validation in WP 7.2. Any capability the plugin
 uses that is not listed in the table is grounds for rejection.
 
-The entry in `approved-plugins.json` should summarise these in the `notes`
-field so end users can see what they're granting before they click Install.
+### 4a. Risk classification rubric
+
+Every approved entry **must** set a `risk` value (`low` | `medium` | `high`)
+and a one-sentence `riskSummary`. The install screen surfaces both to
+admins before they click Install, so write the summary the way you'd want
+to see it on a page you might later regret reading.
+
+| Risk   | Use when the plugin…                                                                                           |
+|--------|----------------------------------------------------------------------------------------------------------------|
+| **low**    | Reads config only, renders UI, optionally calls a single documented outbound endpoint with non-PII data. No DB writes, no filesystem writes outside its own directory, no secrets storage beyond its own plugin config, no hooks that touch PII. Examples: Gravatar, Google Analytics. |
+| **medium** | Exercises any of: `db.write`, `fs.write`, `secrets.store`, `email.send`, `sms.send`, or listens on `hooks.person` / `hooks.family` / `hooks.email` **without** exporting PII off-server. Examples: MailChimp, Vonage. |
+| **high**   | Exercises any of: `network.outbound` **with** PII/financial data, `hooks.financial` + `network.outbound`, `cron` + `fs.write`, plugin exposes `network.inbound` routes that accept unauthenticated requests, or plugin ships binary blobs. High-risk plugins require **two** maintainer reviews before merging. |
+
+**Mandatory uplift:** if the plugin combines `fs.write` *and*
+`network.outbound`, OR combines `hooks.financial` *and* `network.outbound`,
+bump the risk to **high** regardless of how small the diff looks. These
+are the classic exfiltration and supply-chain footguns called out in the
+2026 plugin-security research.
+
+Write the `riskSummary` in plain language. For example:
+
+- `"low"` → "Uses Gravatar's public image API to fetch profile photos. No PII leaves the server."
+- `"medium"` → "Stores a MailChimp API key and POSTs member email + name to api.mailchimp.com on Person create/update hooks."
+- `"high"` → "Subscribes to DONATION_RECEIVED and POSTs donor name, email, and amount to a third-party accounting endpoint."
 
 ---
 
@@ -188,13 +221,26 @@ Only after every section above is green:
      "version": "1.0.0",
      "downloadUrl": "https://example.org/releases/example-plugin-1.0.0.zip",
      "sha256": "<64-hex sha256>",
+     "risk": "medium",
+     "riskSummary": "Stores a MailChimp API key and POSTs member email + name to api.mailchimp.com on Person create/update hooks.",
+     "permissions": [
+       "network.outbound",
+       "secrets.store",
+       "hooks.person",
+       "hooks.family"
+     ],
      "minimumCRMVersion": "7.1.0",
      "author": "Example Author",
      "homepage": "https://example.org/",
      "reviewedAt": "2026-04-13",
-     "notes": "Filesystem: none. Network: POSTs donations to example.org/api. No DB writes outside plugin config."
+     "notes": "Outbound calls only to api.mailchimp.com over HTTPS. API key stored in plugin.example-plugin.apiKey. No DB writes outside plugin config."
    }
    ```
+
+   `risk`, `riskSummary`, `downloadUrl`, `sha256`, `id`, `name`, and
+   `version` are **required**. `permissions` is optional but strongly
+   recommended — `ApprovedPluginRegistry` rejects any entry that uses an
+   unknown capability tag.
 
 2. Open a PR titled `plugins: approve example-plugin@1.0.0`.
 3. Paste the capability table and the static-analysis summary into the PR
