@@ -79,6 +79,7 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 | [Plugin System](./plugin-system.md) | Plugin architecture, hooks, PluginManager |
 | [Plugin Development](./plugin-development.md) | Creating/modifying plugins |
 | [Plugin Migration](./plugin-migration.md) | Migrating plugins to new structure |
+| [Plugin Security Scan](./plugin-security-scan.md) | **Required** review checklist before approving any community plugin for URL install |
 
 ## Testing
 

@@ -1,0 +1,6 @@
+{
+    "_comment": "Registry of community plugins approved by the ChurchCRM maintainers. Only plugins listed here can be installed via the URL-based installer. Every entry must pin a download URL (HTTPS only) and a SHA-256 checksum of the exact zip bytes. See .agents/skills/churchcrm/plugin-security-scan.md for the review checklist each entry must pass before being added.",
+    "schemaVersion": 1,
+    "updatedAt": "2026-04-13",
+    "plugins": []
+}
