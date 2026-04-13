@@ -42,15 +42,19 @@ describe("Admin People", () => {
         });
 
         it("can rename a classification via Save Changes", () => {
+            const originalName = "CypressRenameSource_" + Date.now();
+            const renamedName = "CypressRenamed_" + Date.now();
+
+            // Create a dedicated option so we don't mutate seeded data
             cy.visit("admin/system/options?mode=classes");
+            cy.get("#newOptionName").type(originalName);
+            cy.get("#addOptionBtn").click();
+            cy.get(`#optionsTable tbody input.option-name-input[value="${originalName}"]`, { timeout: 10000 }).should("exist");
 
-            // Rename the last row (likely a test-created one)
-            cy.get("#optionsTable tbody tr").last().within(() => {
-                cy.get(".option-name-input").clear().type("CypressRenamed_" + Date.now());
-            });
-
+            cy.get(`#optionsTable tbody input.option-name-input[value="${originalName}"]`)
+                .clear().type(renamedName);
             cy.get("#saveChangesBtn").click();
-            cy.url().should("contain", "admin/system/options");
+            cy.get(`#optionsTable tbody input.option-name-input[value="${renamedName}"]`, { timeout: 10000 }).should("exist");
         });
     });
 
@@ -128,7 +132,7 @@ describe("Admin People", () => {
             const name = "DeleteMe_" + Date.now();
             cy.makePrivateAdminAPICall("POST", `/admin/api/options/${listId}`, { name }, 200).then((resp) => {
                 const optionId = resp.body.optionId;
-                cy.makePrivateAdminAPICall("DELETE", `/admin/api/options/${listId}/${optionId}?mode=classes`, null, 200);
+                cy.makePrivateAdminAPICall("DELETE", `/admin/api/options/${listId}/${optionId}`, null, 200);
 
                 // Verify it no longer exists
                 cy.makePrivateAdminAPICall("GET", `/admin/api/options/${listId}`, null, 200).then((getResp) => {

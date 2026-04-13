@@ -7,6 +7,8 @@ use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\TestEmail;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
@@ -87,10 +89,18 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'classes' => ['listId' => 1, 'title' => gettext('Person Classifications Editor'), 'noun' => gettext('Person Classification')],
             'grptypes' => ['listId' => 3, 'title' => gettext('Group Types Editor'), 'noun' => gettext('Group Type')],
             'securitygrp' => ['listId' => 5, 'title' => gettext('Security Groups Editor'), 'noun' => gettext('Security Group')],
-            'grproles' => $customListId > 0 ? ['listId' => $customListId, 'title' => gettext('Group Member Roles Editor'), 'noun' => gettext('Group Member Role')] : null,
-            'custom' => $customListId > 0 ? ['listId' => $customListId, 'title' => gettext('Person Custom List Options Editor'), 'noun' => gettext('Custom Option')] : null,
-            'groupcustom' => $customListId > 0 ? ['listId' => $customListId, 'title' => gettext('Custom List Options Editor'), 'noun' => gettext('Custom Option')] : null,
-            'famcustom' => $customListId > 0 ? ['listId' => $customListId, 'title' => gettext('Family Custom List Options Editor'), 'noun' => gettext('Custom Option')] : null,
+            'grproles' => $customListId > 0 && GroupQuery::create()->findOneByRoleListId($customListId) !== null
+                ? ['listId' => $customListId, 'title' => gettext('Group Member Roles Editor'), 'noun' => gettext('Group Member Role')]
+                : null,
+            'custom' => $customListId > 0 && ListOptionQuery::create()->filterById($customListId)->count() > 0
+                ? ['listId' => $customListId, 'title' => gettext('Person Custom List Options Editor'), 'noun' => gettext('Custom Option')]
+                : null,
+            'groupcustom' => $customListId > 0 && ListOptionQuery::create()->filterById($customListId)->count() > 0
+                ? ['listId' => $customListId, 'title' => gettext('Custom List Options Editor'), 'noun' => gettext('Custom Option')]
+                : null,
+            'famcustom' => $customListId > 0 && ListOptionQuery::create()->filterById($customListId)->count() > 0
+                ? ['listId' => $customListId, 'title' => gettext('Family Custom List Options Editor'), 'noun' => gettext('Custom Option')]
+                : null,
             default => null,
         };
 

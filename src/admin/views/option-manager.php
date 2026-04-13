@@ -103,8 +103,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 (function() {
     const listId = <?= (int) $listId ?>;
     const mode = <?= json_encode($mode, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
-    const apiBase = window.CRM.root + '/admin/api/options/' + listId;
-
     // Add new option
     document.getElementById('addOptionBtn').addEventListener('click', function() {
         const nameInput = document.getElementById('newOptionName');

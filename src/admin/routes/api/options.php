@@ -4,12 +4,8 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
-use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
-use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
-use ChurchCRM\model\ChurchCRM\GroupPropMasterQuery;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpBadRequestException;
@@ -40,7 +36,7 @@ $app->group('/api/options', function (RouteCollectorProxy $group): void {
     // Add a new option to a list
     $group->post('/{listId:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         $listId = (int) $args['listId'];
-        $input = $request->getParsedBody();
+        $input = (array) $request->getParsedBody();
 
         $name = InputUtils::sanitizeText($input['name'] ?? '');
         if (empty($name)) {
@@ -83,7 +79,7 @@ $app->group('/api/options', function (RouteCollectorProxy $group): void {
     $group->patch('/{listId:[0-9]+}/{optionId:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         $listId = (int) $args['listId'];
         $optionId = (int) $args['optionId'];
-        $input = $request->getParsedBody();
+        $input = (array) $request->getParsedBody();
 
         $option = ListOptionQuery::create()
             ->filterById($listId)
@@ -152,40 +148,40 @@ $app->group('/api/options', function (RouteCollectorProxy $group): void {
             $opt->save();
         }
 
-        // Handle cleanup for known list types
-        $queryParams = $request->getQueryParams();
-        $mode = $queryParams['mode'] ?? '';
-        switch ($mode) {
-            case 'grproles':
-                // Reset default role if it was the deleted one
-                $group = GroupQuery::create()->findOneByRoleListId($listId);
-                if ($group !== null && $group->getDefaultRole() === $optionId) {
-                    $group->setDefaultRole(1);
-                    $group->save();
-                }
-                // Reset members using deleted role to the group default
-                if ($group !== null) {
-                    $defaultRole = $group->getDefaultRole();
-                    \ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery::create()
-                        ->filterByGroupId($group->getId())
-                        ->filterByRoleId($optionId)
-                        ->update(['RoleId' => $defaultRole]);
-                }
-                break;
-            case 'famroles':
-                \ChurchCRM\model\ChurchCRM\PersonQuery::create()
-                    ->filterByFmrId($optionId)
-                    ->update(['FmrId' => 0]);
-                break;
-            case 'classes':
+        // Derive cleanup from listId server-side — never trust client-supplied mode for this.
+        switch ($listId) {
+            case 1:
+                // Person classifications
                 \ChurchCRM\model\ChurchCRM\PersonQuery::create()
                     ->filterByClsId($optionId)
                     ->update(['ClsId' => 0]);
                 break;
-            case 'grptypes':
-                \ChurchCRM\model\ChurchCRM\GroupQuery::create()
+            case 2:
+                // Family roles
+                \ChurchCRM\model\ChurchCRM\PersonQuery::create()
+                    ->filterByFmrId($optionId)
+                    ->update(['FmrId' => 0]);
+                break;
+            case 3:
+                // Group types
+                GroupQuery::create()
                     ->filterByType($optionId)
                     ->update(['Type' => 0]);
+                break;
+            default:
+                // Dynamic list — check if it is a group role list and reset affected members
+                $roleGroup = GroupQuery::create()->findOneByRoleListId($listId);
+                if ($roleGroup !== null) {
+                    if ((int) $roleGroup->getDefaultRole() === $optionId) {
+                        $roleGroup->setDefaultRole(1);
+                        $roleGroup->save();
+                    }
+                    $defaultRole = (int) $roleGroup->getDefaultRole();
+                    \ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery::create()
+                        ->filterByGroupId($roleGroup->getId())
+                        ->filterByRoleId($optionId)
+                        ->update(['RoleId' => $defaultRole]);
+                }
                 break;
         }
 
@@ -196,7 +192,7 @@ $app->group('/api/options', function (RouteCollectorProxy $group): void {
     $group->post('/{listId:[0-9]+}/{optionId:[0-9]+}/reorder', function (Request $request, Response $response, array $args): Response {
         $listId = (int) $args['listId'];
         $optionId = (int) $args['optionId'];
-        $input = $request->getParsedBody();
+        $input = (array) $request->getParsedBody();
         $direction = $input['direction'] ?? '';
 
         if ($direction !== 'up' && $direction !== 'down') {
@@ -248,14 +244,27 @@ $app->group('/api/options', function (RouteCollectorProxy $group): void {
         return SlimUtils::renderSuccessJSON($response);
     });
 
-    // Toggle inactive classification
+    // Toggle inactive classification (classifications list only — listId 1)
     $group->post('/{listId:[0-9]+}/{optionId:[0-9]+}/inactive', function (Request $request, Response $response, array $args): Response {
+        $listId = (int) $args['listId'];
         $optionId = (int) $args['optionId'];
 
-        $aInactiveClassificationIds = explode(',', SystemConfig::getValue('sInactiveClassification'));
-        $aInactiveClasses = array_filter($aInactiveClassificationIds, fn ($k) => is_numeric($k));
+        if ($listId !== 1) {
+            throw new HttpBadRequestException($request, gettext('Inactive status can only be toggled for the classifications list'));
+        }
 
-        if (in_array($optionId, $aInactiveClasses)) {
+        $option = ListOptionQuery::create()
+            ->filterById($listId)
+            ->filterByOptionId($optionId)
+            ->findOne();
+        if ($option === null) {
+            throw new HttpNotFoundException($request, gettext('Option not found'));
+        }
+
+        $aInactiveClassificationIds = explode(',', SystemConfig::getValue('sInactiveClassification'));
+        $aInactiveClasses = array_map('intval', array_filter($aInactiveClassificationIds, fn ($k) => is_numeric($k)));
+
+        if (in_array($optionId, $aInactiveClasses, true)) {
             $aInactiveClasses = array_values(array_diff($aInactiveClasses, [$optionId]));
         } else {
             $aInactiveClasses[] = $optionId;
