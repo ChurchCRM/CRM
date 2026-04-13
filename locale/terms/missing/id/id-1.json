@@ -1,26 +1,22 @@
 {
-  "%d result for \"%s\"": {
-    "other": ""
-  },
+  "%d result for \"%s\"": "%d hasil untuk \"%s\"",
   "name@example.com": "",
-  "%d repeat event created successfully.": {
-    "other": ""
-  },
-  "Are you sure you want to delete this event type? This cannot be undone.": "",
-  "Assign to me": "",
-  "Assigned": "",
-  "Assigned event not found": "",
-  "Cannot Delete Event Type": "",
-  "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first.": "",
-  "Kiosk Devices": "",
-  "Kiosk device has not been accepted by an administrator": "",
-  "No active event assignment": "",
-  "Online": "",
-  "Opens a 30-second window for devices to register at:": "",
-  "Pending": "",
-  "Register New Device": "",
-  "This event type is used by": "",
-  "Total Kiosks": "",
-  "Upcoming Events": "",
-  "event(s). Deactivate the type instead, or reassign the events first.": ""
+  "%d repeat event created successfully.": "%d acara berulang berhasil dibuat.",
+  "Are you sure you want to delete this event type? This cannot be undone.": "Apakah Anda yakin ingin menghapus jenis acara ini? Tindakan ini tidak dapat dibatalkan.",
+  "Assign to me": "Tetapkan ke saya",
+  "Assigned": "Ditetapkan",
+  "Assigned event not found": "Acara yang ditetapkan tidak ditemukan",
+  "Cannot Delete Event Type": "Tidak Dapat Menghapus Jenis Acara",
+  "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first.": "Tidak dapat menghapus jenis acara ini — %d acara menggunakannya. Nonaktifkan jenis tersebut atau tetapkan ulang acara terlebih dahulu.",
+  "Kiosk Devices": "Perangkat Kiosk",
+  "Kiosk device has not been accepted by an administrator": "Perangkat kiosk belum diterima oleh administrator",
+  "No active event assignment": "Tidak ada penugasan acara aktif",
+  "Online": "Online",
+  "Opens a 30-second window for devices to register at:": "Membuka jendela 30 detik untuk perangkat mendaftar di:",
+  "Pending": "Tertunda",
+  "Register New Device": "Daftarkan Perangkat Baru",
+  "This event type is used by": "Jenis acara ini digunakan oleh",
+  "Total Kiosks": "Total Kiosk",
+  "Upcoming Events": "Acara Mendatang",
+  "event(s). Deactivate the type instead, or reassign the events first.": "acara. Nonaktifkan jenis tersebut atau tetapkan ulang acara terlebih dahulu."
 }

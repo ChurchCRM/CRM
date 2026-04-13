@@ -1,26 +1,22 @@
 {
-  "%d result for \"%s\"": {
-    "other": ""
-  },
+  "%d result for \"%s\"": "%d kết quả cho \"%s\"",
   "name@example.com": "",
-  "%d repeat event created successfully.": {
-    "other": ""
-  },
-  "Are you sure you want to delete this event type? This cannot be undone.": "",
-  "Assign to me": "",
-  "Assigned": "",
-  "Assigned event not found": "",
-  "Cannot Delete Event Type": "",
-  "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first.": "",
-  "Kiosk Devices": "",
-  "Kiosk device has not been accepted by an administrator": "",
-  "No active event assignment": "",
-  "Online": "",
-  "Opens a 30-second window for devices to register at:": "",
-  "Pending": "",
-  "Register New Device": "",
-  "This event type is used by": "",
-  "Total Kiosks": "",
-  "Upcoming Events": "",
-  "event(s). Deactivate the type instead, or reassign the events first.": ""
+  "%d repeat event created successfully.": "%d sự kiện lặp lại đã được tạo thành công.",
+  "Are you sure you want to delete this event type? This cannot be undone.": "Bạn có chắc chắn muốn xóa loại sự kiện này không? Hành động này không thể hoàn tác.",
+  "Assign to me": "Giao cho tôi",
+  "Assigned": "Đã giao",
+  "Assigned event not found": "Không tìm thấy sự kiện được giao",
+  "Cannot Delete Event Type": "Không thể xóa loại sự kiện",
+  "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first.": "Không thể xóa loại sự kiện này — %d sự kiện đang sử dụng nó. Hãy vô hiệu hóa loại này hoặc giao lại các sự kiện trước.",
+  "Kiosk Devices": "Thiết bị Kiosk",
+  "Kiosk device has not been accepted by an administrator": "Thiết bị kiosk chưa được quản trị viên chấp nhận",
+  "No active event assignment": "Không có phân công sự kiện nào đang hoạt động",
+  "Online": "Trực tuyến",
+  "Opens a 30-second window for devices to register at:": "Mở cửa sổ 30 giây để thiết bị đăng ký tại:",
+  "Pending": "Đang chờ",
+  "Register New Device": "Đăng ký thiết bị mới",
+  "This event type is used by": "Loại sự kiện này được sử dụng bởi",
+  "Total Kiosks": "Tổng số Kiosk",
+  "Upcoming Events": "Sự kiện sắp tới",
+  "event(s). Deactivate the type instead, or reassign the events first.": "sự kiện. Hãy vô hiệu hóa loại này hoặc giao lại các sự kiện trước."
 }

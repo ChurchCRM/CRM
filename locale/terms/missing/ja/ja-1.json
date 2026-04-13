@@ -1,26 +1,22 @@
 {
-  "%d result for \"%s\"": {
-    "other": ""
-  },
+  "%d result for \"%s\"": "「%s」の検索結果 %d 件",
   "name@example.com": "",
-  "%d repeat event created successfully.": {
-    "other": ""
-  },
-  "Are you sure you want to delete this event type? This cannot be undone.": "",
-  "Assign to me": "",
-  "Assigned": "",
-  "Assigned event not found": "",
-  "Cannot Delete Event Type": "",
-  "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first.": "",
-  "Kiosk Devices": "",
-  "Kiosk device has not been accepted by an administrator": "",
-  "No active event assignment": "",
-  "Online": "",
-  "Opens a 30-second window for devices to register at:": "",
-  "Pending": "",
-  "Register New Device": "",
-  "This event type is used by": "",
-  "Total Kiosks": "",
-  "Upcoming Events": "",
-  "event(s). Deactivate the type instead, or reassign the events first.": ""
+  "%d repeat event created successfully.": "%d 件の繰り返しイベントが正常に作成されました。",
+  "Are you sure you want to delete this event type? This cannot be undone.": "このイベントタイプを削除してよろしいですか？この操作は元に戻せません。",
+  "Assign to me": "自分に割り当て",
+  "Assigned": "割り当て済み",
+  "Assigned event not found": "割り当てられたイベントが見つかりません",
+  "Cannot Delete Event Type": "イベントタイプを削除できません",
+  "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first.": "このイベントタイプは削除できません — %d 件のイベントが使用しています。代わりにタイプを無効化するか、最初にイベントを再割り当てしてください。",
+  "Kiosk Devices": "キオスク端末",
+  "Kiosk device has not been accepted by an administrator": "キオスク端末は管理者によって承認されていません",
+  "No active event assignment": "有効なイベント割り当てがありません",
+  "Online": "オンライン",
+  "Opens a 30-second window for devices to register at:": "端末が登録するための30秒のウィンドウを開きます：",
+  "Pending": "保留中",
+  "Register New Device": "新しい端末を登録",
+  "This event type is used by": "このイベントタイプは以下で使用されています",
+  "Total Kiosks": "キオスク合計",
+  "Upcoming Events": "今後のイベント",
+  "event(s). Deactivate the type instead, or reassign the events first.": "件のイベント。代わりにタイプを無効化するか、最初にイベントを再割り当てしてください。"
 }
