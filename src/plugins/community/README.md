@@ -52,3 +52,10 @@ Read these three skill files in order:
 1. [`plugin-compliance.md`](../../../.agents/skills/churchcrm/plugin-compliance.md) — admin audit guide: how to read the approved list, check risk, and run monthly/quarterly scans.
 2. [`plugin-security-scan.md`](../../../.agents/skills/churchcrm/plugin-security-scan.md) — the review checklist every approved plugin has passed before reaching the registry.
 3. [`plugin-system.md`](../../../.agents/skills/churchcrm/plugin-system.md) — runtime architecture, so you know what a plugin is allowed to do on your server.
+
+## If you are **writing** a community plugin
+
+Use [`plugin-create.md`](../../../.agents/skills/churchcrm/plugin-create.md) —
+the scaffold → security-scan → zip → approved-list submission flow.
+Do **not** use `plugin-migration.md`; that is for core plugin updates
+only.

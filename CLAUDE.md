@@ -21,7 +21,9 @@ Structured development skills live in `.agents/skills/`. **Always consult the re
 | UI / frontend changes | `responsive-design-guidelines.md` → `bootstrap-5-migration.md` → `frontend-development.md` → `webpack-typescript.md` |
 | i18n / translations | `i18n-localization.md` → `frontend-development.md` |
 | Security issue | `security-best-practices.md` → `authorization-security.md` |
-| Plugin work | `plugin-system.md` → `plugin-development.md` |
+| New community plugin | `plugin-system.md` → `plugin-development.md` → `plugin-create.md` → `plugin-security-scan.md` |
+| Core plugin update (`src/plugins/core/*`) | `plugin-system.md` → `plugin-development.md` → `plugin-migration.md` |
+| Admin-side plugin audit | `plugin-system.md` → `plugin-compliance.md` |
 | Testing | `testing.md` → `cypress-testing.md` |
 | Commit / PR | `git-workflow.md` → `github-interaction.md` |
 | Refactor | `refactor.md` → `service-layer.md` |
