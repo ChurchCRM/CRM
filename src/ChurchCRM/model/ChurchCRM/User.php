@@ -513,13 +513,13 @@ class User extends BaseUser
 
     public function getNewTwoFARecoveryCodes(): array
     {
-        // generate an array of 2FA recovery codes formatted as XXXXX-XXXXX (lowercase hex),
+        // generate 12 human-readable recovery codes formatted as xxxxxxxx-xxxxxxxx (lowercase hex, 64 bits of entropy each)
         // and store as an encrypted, comma-separated list
         $recoveryCodes = [];
         for ($i = 0; $i < 12; $i++) {
-            // random_bytes(5) yields 10 hex characters; split into two 5-char segments for XXXXX-XXXXX format
-            $hex = bin2hex(random_bytes(5));
-            $recoveryCodes[$i] = substr($hex, 0, 5) . '-' . substr($hex, 5, 5);
+            // random_bytes(8) yields 16 hex characters; split into two 8-char segments for xxxxxxxx-xxxxxxxx format
+            $hex = bin2hex(random_bytes(8));
+            $recoveryCodes[$i] = substr($hex, 0, 8) . '-' . substr($hex, 8, 8);
         }
         $recoveryCodesString = implode(',', $recoveryCodes);
         $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManagerUtils::getTwoFASecretKey()));
