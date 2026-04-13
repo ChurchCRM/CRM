@@ -5060,10 +5060,6 @@ msgid "Report an issue"
 msgstr "דווח על בעיה"
 
 #: 
-msgid "Active Kiosks"
-msgstr "קיוסקים פעילים"
-
-#: 
 msgid "Self Verification"
 msgstr "אימות עצמי"
 
@@ -12476,10 +12472,6 @@ msgid "— Select type (optional) —"
 msgstr "— בחרו סוג (אופציונלי) —"
 
 #: 
-msgid "Accept the device, then assign it to an event to begin check-in."
-msgstr "אשרו את המכשיר, ואז שייכו אותו לאירוע כדי להתחיל ברישום נוכחות."
-
-#: 
 msgid "Activate"
 msgstr "הפעלה"
 
@@ -12530,10 +12522,6 @@ msgstr "כיתה / קבוצה"
 #: 
 msgid "Class List Export"
 msgstr "ייצוא רשימת כיתה"
-
-#: 
-msgid "Click the registration toggle above to open a 30-second registration window."
-msgstr "לחצו על מתג ההרשמה למעלה כדי לפתוח חלון הרשמה של 30 שניות."
 
 #: 
 msgid "Continue"
@@ -12604,10 +12592,6 @@ msgid "It is strongly recommended to have a backup before proceeding."
 msgstr "מומלץ מאוד שיהיה לכם גיבוי לפני שתמשיכו."
 
 #: 
-msgid "Kiosk Registration"
-msgstr "רישום קיוסק"
-
-#: 
 msgid "Latest"
 msgstr "אחרון"
 
@@ -12650,10 +12634,6 @@ msgstr "ההערה לא נמצאה"
 #: 
 msgid "Note text is required"
 msgstr "נדרש טקסט הערה"
-
-#: 
-msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
-msgstr "במכשיר הקיוסק (טאבלט, מחשב נייד וכו'), פתחו דפדפן ונווטו אל:"
 
 #: 
 msgid "Only the note author or an admin may delete this note"
@@ -12700,10 +12680,6 @@ msgid "SHA1 Hash"
 msgstr "גיבוב SHA1"
 
 #: 
-msgid "Setup Instructions"
-msgstr "הוראות הגדרה"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "אי-התאמת חתימה"
 
@@ -12712,24 +12688,12 @@ msgid "Skip, Continue Without Backup"
 msgstr "דלגו, המשך ללא גיבוי"
 
 #: 
-msgid "The device will register itself and appear in the table below as \"Pending\"."
-msgstr "המכשיר ירשום את עצמו ויופיע בטבלה למטה כ«ממתין»."
-
-#: 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr "קישורים אלו מופיעים בתפריט «קישורים» בסרגל הצד של הניווט כאשר תוסף זה מופעל."
 
 #: 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr "פעולה זו תוריד מחדש ותחיל שוב את הגרסה הנוכחית. היא יכולה לתקן קבצים פגומים או שהשתנו."
-
-#: 
-msgid "To set up a kiosk device, follow these steps:"
-msgstr "כדי להגדיר מכשיר קיוסק, עקבו אחר שלבים אלה:"
-
-#: 
-msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
-msgstr "הפעילו את המתג למטה כדי לפתוח חלון של 30 שניות לרישום מכשירי קיוסק חדשים."
 
 #: 
 msgid "Total Check-ins"
@@ -12742,10 +12706,6 @@ msgstr "נסו לבחור סוג אירוע או שנה אחרת."
 #: 
 msgid "Up to Date"
 msgstr "מעודכן"
-
-#: 
-msgid "Upcoming Sunday School Events"
-msgstr "אירועי בית ספר ליום ראשון קרובים"
 
 #: 
 msgid "Update Available"
@@ -14910,10 +14870,6 @@ msgid "Deleting an event will also delete all attendance counts. This cannot be 
 msgstr "מחיקת אירוע תמחק גם את כל ספירות הנוכחות. לא ניתן לבטל פעולה זו."
 
 #: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "מחיקת סוג אירוע זה לא תמחק אירועים קיימים. האם אתה בטוח?"
-
-#: 
 msgid "Deleting this event will also delete all attendance records. This cannot be undone."
 msgstr "מחיקת אירוע זה תמחק גם את כל רשומות הנוכחות. לא ניתן לבטל פעולה זו."
 
@@ -15116,10 +15072,6 @@ msgstr "אין אירועים היום"
 #: 
 msgid "No Group"
 msgstr "אין קבוצה"
-
-#: 
-msgid "No active assignment"
-msgstr "אין הקצאה פעילה"
 
 #: 
 msgid "No active events found."

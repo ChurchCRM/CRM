@@ -5173,10 +5173,6 @@ msgid "Report an issue"
 msgstr "Rapportera ett problem"
 
 #: 
-msgid "Active Kiosks"
-msgstr "Aktiva kiosker"
-
-#: 
 msgid "Self Verification"
 msgstr "Självverifiering"
 
@@ -12591,10 +12587,6 @@ msgid "— Select type (optional) —"
 msgstr "— Välj typ (valfritt) —"
 
 #: 
-msgid "Accept the device, then assign it to an event to begin check-in."
-msgstr "Godkänn enheten och tilldela den sedan till ett evenemang för att påbörja registrering."
-
-#: 
 msgid "Activate"
 msgstr "Aktivera"
 
@@ -12645,10 +12637,6 @@ msgstr "Klass / Grupp"
 #: 
 msgid "Class List Export"
 msgstr "Export av klasslista"
-
-#: 
-msgid "Click the registration toggle above to open a 30-second registration window."
-msgstr "Klicka på registreringsväljararen ovan för att öppna ett 30 sekunders registreringsfönster."
 
 #: 
 msgid "Continue"
@@ -12719,10 +12707,6 @@ msgid "It is strongly recommended to have a backup before proceeding."
 msgstr "Det rekommenderas starkt att ha en säkerhetskopia innan du fortsätter."
 
 #: 
-msgid "Kiosk Registration"
-msgstr "Kioskregistrering"
-
-#: 
 msgid "Latest"
 msgstr "Senaste"
 
@@ -12765,10 +12749,6 @@ msgstr "Anteckningen hittades inte"
 #: 
 msgid "Note text is required"
 msgstr "Anteckningstext krävs"
-
-#: 
-msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
-msgstr "På kioskenheten (surfplatta, bärbar dator osv.), öppna en webbläsare och navigera till:"
 
 #: 
 msgid "Only the note author or an admin may delete this note"
@@ -12815,10 +12795,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1-hash"
 
 #: 
-msgid "Setup Instructions"
-msgstr "Installationsinstruktioner"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "Signaturavvikelse"
 
@@ -12827,24 +12803,12 @@ msgid "Skip, Continue Without Backup"
 msgstr "Hoppa över, fortsätt utan säkerhetskopia"
 
 #: 
-msgid "The device will register itself and appear in the table below as \"Pending\"."
-msgstr "Enheten registrerar sig själv och visas i tabellen nedan som \"Väntande\"."
-
-#: 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr "Dessa länkar visas i menyn \"Länkar\" i navigeringssidofältet när detta tillägg är aktiverat."
 
 #: 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr "Detta laddar ner och tillämpar den aktuella versionen på nytt. Det kan åtgärda skadade eller ändrade filer."
-
-#: 
-msgid "To set up a kiosk device, follow these steps:"
-msgstr "För att konfigurera en kioskenhet, följ dessa steg:"
-
-#: 
-msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
-msgstr "Växla omkopplaren nedan för att öppna ett 30 sekunders fönster för nya kioskenheter att registrera sig."
 
 #: 
 msgid "Total Check-ins"
@@ -12857,10 +12821,6 @@ msgstr "Prova att välja en annan evenemangstyp eller ett annat år."
 #: 
 msgid "Up to Date"
 msgstr "Uppdaterad"
-
-#: 
-msgid "Upcoming Sunday School Events"
-msgstr "Kommande söndagsskolevenemang"
 
 #: 
 msgid "Update Available"
@@ -15025,10 +14985,6 @@ msgid "Deleting an event will also delete all attendance counts. This cannot be 
 msgstr "Om du tar bort en händelse tas även all nährvaroräkning bort. Detta kan inte ångras."
 
 #: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "Om du tar bort denna händelsetyp tas INTE befintliga händelser bort. Är du säker?"
-
-#: 
 msgid "Deleting this event will also delete all attendance records. This cannot be undone."
 msgstr "Om du tar bort denna händelse tas även alla nährvaroposter bort. Detta kan inte ångras."
 
@@ -15231,10 +15187,6 @@ msgstr "Inga händelser idag"
 #: 
 msgid "No Group"
 msgstr "Ingen grupp"
-
-#: 
-msgid "No active assignment"
-msgstr "Ingen aktiv tilldelning"
 
 #: 
 msgid "No active events found."

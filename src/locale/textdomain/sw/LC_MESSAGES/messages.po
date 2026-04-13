@@ -5058,10 +5058,6 @@ msgid "Report an issue"
 msgstr "Ripoti suala"
 
 #: 
-msgid "Active Kiosks"
-msgstr "Vibanda Amilifu"
-
-#: 
 msgid "Self Verification"
 msgstr "Kujithibitisha"
 
@@ -12474,10 +12470,6 @@ msgid "— Select type (optional) —"
 msgstr "— Chagua aina (si lazima) —"
 
 #: 
-msgid "Accept the device, then assign it to an event to begin check-in."
-msgstr "Kubali kifaa, kisha kitenga kwa tukio kuanza usajili."
-
-#: 
 msgid "Activate"
 msgstr "Amilisha"
 
@@ -12528,10 +12520,6 @@ msgstr "Darasa / Kikundi"
 #: 
 msgid "Class List Export"
 msgstr "Usafirishaji wa Orodha ya Darasa"
-
-#: 
-msgid "Click the registration toggle above to open a 30-second registration window."
-msgstr "Bofya kitufe cha usajili hapo juu kufungua dirisha la usajili la sekunde 30."
 
 #: 
 msgid "Continue"
@@ -12602,10 +12590,6 @@ msgid "It is strongly recommended to have a backup before proceeding."
 msgstr "Inapendekezwa sana kuwa na nakala kabla ya kuendelea."
 
 #: 
-msgid "Kiosk Registration"
-msgstr "Usajili wa Kiosk"
-
-#: 
 msgid "Latest"
 msgstr "Ya Hivi Karibuni"
 
@@ -12648,10 +12632,6 @@ msgstr "Dokezo halijapatikana"
 #: 
 msgid "Note text is required"
 msgstr "Maandishi ya dokezo yanahitajika"
-
-#: 
-msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
-msgstr "Kwenye kifaa cha kiosk (kompyuta kibao, kompyuta ndogo, n.k.), fungua kivinjari na uende kwenye:"
 
 #: 
 msgid "Only the note author or an admin may delete this note"
@@ -12698,10 +12678,6 @@ msgid "SHA1 Hash"
 msgstr "Alama ya SHA1"
 
 #: 
-msgid "Setup Instructions"
-msgstr "Maelekezo ya Usanidi"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "Saini Hazilingani"
 
@@ -12710,24 +12686,12 @@ msgid "Skip, Continue Without Backup"
 msgstr "Ruka, Endelea Bila Nakala"
 
 #: 
-msgid "The device will register itself and appear in the table below as \"Pending\"."
-msgstr "Kifaa kitajisajili na kuonekana kwenye jedwali hapa chini kama \"Inasubiri\"."
-
-#: 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr "Viungo hivi vinaonekana katika menyu ya \"Viungo\" katika upau wa urambazaji programu-jalizi hii inapowezeshwa."
 
 #: 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr "Hii itapakia upya na kutumia tena toleo la sasa. Inaweza kurekebisha faili zilizoharibiwa au zilizobadilishwa."
-
-#: 
-msgid "To set up a kiosk device, follow these steps:"
-msgstr "Ili kusanidi kifaa cha kiosk, fuata hatua hizi:"
-
-#: 
-msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
-msgstr "Geuza swichi hapa chini kufungua dirisha la sekunde 30 kwa vifaa vipya vya kiosk kusajili."
 
 #: 
 msgid "Total Check-ins"
@@ -12740,10 +12704,6 @@ msgstr "Jaribu kuchagua aina tofauti ya tukio au mwaka."
 #: 
 msgid "Up to Date"
 msgstr "Imesasishwa"
-
-#: 
-msgid "Upcoming Sunday School Events"
-msgstr "Matukio Yanayokuja ya Shule ya Jumapili"
 
 #: 
 msgid "Update Available"
@@ -14908,10 +14868,6 @@ msgid "Deleting an event will also delete all attendance counts. This cannot be 
 msgstr "Kufuta tukio pia kutafuta hesabu zote za mahudhurio. Hii haiwezi kutendwa upya."
 
 #: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "Kufuta aina hii ya tukio HAITAFUTA matukio yaliyopo. Una uhakika?"
-
-#: 
 msgid "Deleting this event will also delete all attendance records. This cannot be undone."
 msgstr "Kufuta tukio hili pia kutafuta rekodi zote za mahudhurio. Hii haiwezi kutendwa upya."
 
@@ -15114,10 +15070,6 @@ msgstr "Hakuna Matukio Leo"
 #: 
 msgid "No Group"
 msgstr "Hakuna Kikundi"
-
-#: 
-msgid "No active assignment"
-msgstr "Hakuna ugawaji unaofanya kazi"
 
 #: 
 msgid "No active events found."

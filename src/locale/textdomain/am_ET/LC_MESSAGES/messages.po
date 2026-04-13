@@ -5062,10 +5062,6 @@ msgid "Report an issue"
 msgstr "ችግርዎን ያሳውቁ"
 
 #: 
-msgid "Active Kiosks"
-msgstr "ንቁ ኪዮስኮች"
-
-#: 
 msgid "Self Verification"
 msgstr "ራስን መገምገም"
 
@@ -12488,10 +12484,6 @@ msgid "— Select type (optional) —"
 msgstr "— ዓይነት ምረጫ (ተንብርካካ) —"
 
 #: 
-msgid "Accept the device, then assign it to an event to begin check-in."
-msgstr "መሳሪያ ይቀበሉ ከዚያ ሁነታ ተመደቡ ግቤት ለጀምር።"
-
-#: 
 msgid "Activate"
 msgstr "ነቅል"
 
@@ -12542,10 +12534,6 @@ msgstr "ክፍል / ቡድን"
 #: 
 msgid "Class List Export"
 msgstr "ክፍል ዝርዝር ላከት"
-
-#: 
-msgid "Click the registration toggle above to open a 30-second registration window."
-msgstr "ሞዲ ተቀይር ዓላይ ይጭቁ ለ 30-ሰከንድ ሞዲ መስኮት ዝርጋ።"
 
 #: 
 msgid "Continue"
@@ -12616,10 +12604,6 @@ msgid "It is strongly recommended to have a backup before proceeding."
 msgstr "ተጠቀጥብ ግዜ ተቀጥሎ ታላቅ ታሪክ ሐሳብ።"
 
 #: 
-msgid "Kiosk Registration"
-msgstr "ኪዮስክ ሞዲ"
-
-#: 
 msgid "Latest"
 msgstr "ሙሉ"
 
@@ -12662,10 +12646,6 @@ msgstr "ማስታወሻ አለም"
 #: 
 msgid "Note text is required"
 msgstr "ማስታወሻ ጽሑፍ ያስፈልግዋል"
-
-#: 
-msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
-msgstr "ኪዮስክ መሳሪያ (ሳጥን ላ ወዘተ) ላይ ሕንፃ ዝርጋ ወደ:"
 
 #: 
 msgid "Only the note author or an admin may delete this note"
@@ -12712,10 +12692,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1 ሃሽ"
 
 #: 
-msgid "Setup Instructions"
-msgstr "ተዋቅሮ ትዕዛዙ"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "ፊት ሊስ"
 
@@ -12724,24 +12700,12 @@ msgid "Skip, Continue Without Backup"
 msgstr "ዝር ተጠቀጥብ ያለ ተቀጥል"
 
 #: 
-msgid "The device will register itself and appear in the table below as \"Pending\"."
-msgstr "መሳሪያ ራስ ተመዝገብ እና ከዚህ ስር በጭነት ውስጥ \"ወደፊት\" ይታያል።"
-
-#: 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr "ይህ ዝር ገጹ ክርክር \"Links\" ምንጫ ውስጥ ይታያል ተራ ስርዓት ነቅል ሲሆን።"
 
 #: 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr "ይህ ድግመ-ዝጁ እና ድግመ-ተግባር ወቅት ስሪት ይሄል። ሕሙም ወይም ተቀይር ፋይሎች መስተንግድ ይችላል።"
-
-#: 
-msgid "To set up a kiosk device, follow these steps:"
-msgstr "ኪዮስክ መሳሪያ ተዋቅር ይህ ደረጃ ይከተሉ:"
-
-#: 
-msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
-msgstr "ከዚህ ስር ተቀይር ዝር ለ 30-ሰከንድ መስኮት ተፈላጊ ኪዮስክ መሳሪያ ተመዝገብ ዝርጋ።"
 
 #: 
 msgid "Total Check-ins"
@@ -12754,10 +12718,6 @@ msgstr "ሌላ ሁነታ ዓይነት ወይም ዓመት ምረጫ ሞክር።
 #: 
 msgid "Up to Date"
 msgstr "ወደ ታዋቅ"
-
-#: 
-msgid "Upcoming Sunday School Events"
-msgstr "ሰብ ሥር ሁነታ ወደፊት"
 
 #: 
 msgid "Update Available"
@@ -14922,10 +14882,6 @@ msgid "Deleting an event will also delete all attendance counts. This cannot be 
 msgstr "ዝግጅቱን ማጥፋት ሁሉም የቀጠሮ ቆጠራዎችን ያጠፋል። ይህ መልስ ሊሰጠው አይችልም።"
 
 #: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "ይህን የዝግጅት ዓይነት ማጥፋት ያሉ ዝግጅቶችን አይሰርዛቸውም። እርግጠኛ ነዎት?"
-
-#: 
 msgid "Deleting this event will also delete all attendance records. This cannot be undone."
 msgstr "ይህን ዝግጅት ማጥፋት ሁሉም የቀጠሮ መዝገቦችን ያጠፋል። ይህ መልስ ሊሰጠው አይችልም።"
 
@@ -15128,10 +15084,6 @@ msgstr "ዛሬ ዝግጅቶች የሉም"
 #: 
 msgid "No Group"
 msgstr "ቡድን የለም"
-
-#: 
-msgid "No active assignment"
-msgstr "ምንም ንቁ ምደባ የለም"
 
 #: 
 msgid "No active events found."
