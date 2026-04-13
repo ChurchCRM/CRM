@@ -54,11 +54,8 @@ describe('MVC Error Pages — HTML (v2)', () => {
   });
 
   describe('v2 404 — unknown route', () => {
-    it('should render a Tabler-styled 404 page with status 404', () => {
-      cy.request({ url: '/v2/this-route-does-not-exist', failOnStatusCode: false })
-        .its('status')
-        .should('equal', 404);
-    });
+    // NOTE: the pure-API 404 status assertion lives in
+    // cypress/e2e/api/private/admin/private.admin.mvc-error-pages.spec.js.
 
     it('should display the 404 code and Page Not Found title', () => {
       cy.visit('/v2/this-route-does-not-exist', { failOnStatusCode: false });
