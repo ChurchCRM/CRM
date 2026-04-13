@@ -566,6 +566,7 @@ class User extends BaseUser
                 unset($codes[$key]);
                 $recoveryCodesString = implode(',', $codes);
                 $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManagerUtils::getTwoFASecretKey()));
+                $this->save();
 
                 return true;
             }
