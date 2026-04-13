@@ -70,6 +70,48 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
     $group->get('/user/{id}/changePassword', 'adminChangeUserPassword');
     $group->post('/user/{id}/changePassword', 'adminChangeUserPassword')->add(new CSRFMiddleware('admin_change_password'));
 
+    // Option Manager page — manage list options (classifications, family roles,
+    // group types, security groups, custom field options, etc.)
+    $group->get('/options', function (Request $request, Response $response): Response {
+        $renderer = new PhpRenderer(__DIR__ . '/../views/');
+        $queryParams = $request->getQueryParams();
+        $mode = InputUtils::legacyFilterInput($queryParams['mode'] ?? '');
+
+        $customListId = (int) ($queryParams['ListID'] ?? 0);
+
+        // Determine list config based on mode
+        $listConfig = match ($mode) {
+            'famroles' => ['listId' => 2, 'title' => gettext('Family Roles Editor'), 'noun' => gettext('Family Role')],
+            'classes' => ['listId' => 1, 'title' => gettext('Person Classifications Editor'), 'noun' => gettext('Person Classification')],
+            'grptypes' => ['listId' => 3, 'title' => gettext('Group Types Editor'), 'noun' => gettext('Group Type')],
+            'securitygrp' => ['listId' => 5, 'title' => gettext('Security Groups Editor'), 'noun' => gettext('Security Group')],
+            'grproles' => $customListId > 0 ? ['listId' => $customListId, 'title' => gettext('Group Member Roles Editor'), 'noun' => gettext('Group Member Role')] : null,
+            'custom' => $customListId > 0 ? ['listId' => $customListId, 'title' => gettext('Person Custom List Options Editor'), 'noun' => gettext('Custom Option')] : null,
+            'groupcustom' => $customListId > 0 ? ['listId' => $customListId, 'title' => gettext('Custom List Options Editor'), 'noun' => gettext('Custom Option')] : null,
+            'famcustom' => $customListId > 0 ? ['listId' => $customListId, 'title' => gettext('Family Custom List Options Editor'), 'noun' => gettext('Custom Option')] : null,
+            default => null,
+        };
+
+        if ($listConfig === null) {
+            return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/admin/');
+        }
+
+        $pageArgs = [
+            'sRootPath' => SystemURLs::getRootPath(),
+            'sPageTitle' => $listConfig['title'],
+            'sPageSubtitle' => sprintf(gettext('Manage %s options'), $listConfig['noun']),
+            'aBreadcrumbs' => PageHeader::breadcrumbs([
+                [gettext('Admin'), '/admin/'],
+                [$listConfig['title']],
+            ]),
+            'mode' => $mode,
+            'listId' => $listConfig['listId'],
+            'noun' => $listConfig['noun'],
+        ];
+
+        return $renderer->render($response, 'option-manager.php', $pageArgs);
+    });
+
     // Restore Database page
     $group->get('/restore', function (Request $request, Response $response): Response {
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
