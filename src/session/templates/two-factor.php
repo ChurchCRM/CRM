@@ -30,9 +30,9 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
           <p><?= gettext('Enter the 6-digit code from your authenticator app to complete login') ?></p>
         </div>
 
-        <div class="alert alert-info">
-          <i class="fa-solid fa-mobile"></i>
-          <div><?= gettext('Enter the 6-digit code from your authenticator app') ?></div>
+        <div class="alert alert-info" id="codeAlert">
+          <i class="fa-solid fa-mobile" id="codeAlertIcon"></i>
+          <div id="codeAlertText"><?= gettext('Enter the 6-digit code from your authenticator app') ?></div>
         </div>
 
         <?php if (isset($bInvalidCode) && $bInvalidCode) { ?>
@@ -44,7 +44,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
 
         <form method="post" name="TwoFAForm" action="<?= SystemURLs::getRootPath()?>/session/two-factor">
           <div class="mb-3">
-            <label for="TwoFACode"><?= gettext('Authentication Code') ?></label>
+            <label for="TwoFACode" id="codeLabel"><?= gettext('Authentication Code') ?></label>
             <input type="text" id="TwoFACode" name="TwoFACode" placeholder="000000" maxlength="6" inputmode="numeric" required autofocus>
           </div>
 
@@ -53,9 +53,46 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
           </button>
         </form>
 
+        <button type="button" class="btn btn-outline-secondary w-100 mt-3" id="toggleRecoveryMode">
+          <i class="fa-solid fa-key me-1"></i><?= gettext('Use a recovery code instead') ?>
+        </button>
+
         <div class="back-link">
           <a href="<?= SystemURLs::getRootPath() ?>/session/begin"><?= gettext('Use a different account') ?></a>
         </div>
+
+        <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+        (function () {
+          var recoveryMode = false;
+          document.getElementById('toggleRecoveryMode').addEventListener('click', function () {
+            recoveryMode = !recoveryMode;
+            var input = document.getElementById('TwoFACode');
+            var label = document.getElementById('codeLabel');
+            var alertIcon = document.getElementById('codeAlertIcon');
+            var alertText = document.getElementById('codeAlertText');
+            if (recoveryMode) {
+              input.placeholder = 'XXXXXX-XXXXXX';
+              input.removeAttribute('maxlength');
+              input.setAttribute('inputmode', 'text');
+              input.value = '';
+              label.textContent = <?= json_encode(gettext('Recovery Code')) ?>;
+              alertIcon.className = 'fa-solid fa-key';
+              alertText.textContent = <?= json_encode(gettext('Enter one of your recovery codes to access your account')) ?>;
+              this.innerHTML = '<i class="fa-solid fa-mobile me-1"></i>' + <?= json_encode(gettext('Use authenticator app instead')) ?>;
+            } else {
+              input.placeholder = '000000';
+              input.setAttribute('maxlength', '6');
+              input.setAttribute('inputmode', 'numeric');
+              input.value = '';
+              label.textContent = <?= json_encode(gettext('Authentication Code')) ?>;
+              alertIcon.className = 'fa-solid fa-mobile';
+              alertText.textContent = <?= json_encode(gettext('Enter the 6-digit code from your authenticator app')) ?>;
+              this.innerHTML = '<i class="fa-solid fa-key me-1"></i>' + <?= json_encode(gettext('Use a recovery code instead')) ?>;
+            }
+            input.focus();
+          });
+        })();
+        </script>
       </div>
     </div>
   </div>

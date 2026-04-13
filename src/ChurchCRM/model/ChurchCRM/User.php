@@ -513,10 +513,16 @@ class User extends BaseUser
 
     public function getNewTwoFARecoveryCodes(): array
     {
-        // generate an array of 2FA recovery codes, and store as an encrypted, comma-separated list
+        // Generate 12 recovery codes, each 12 uppercase alphanumeric chars (no 0/O/1/I to avoid confusion).
+        // Stored without dashes; displayed as XXXXXX-XXXXXX by the frontend.
+        $chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
         $recoveryCodes = [];
         for ($i = 0; $i < 12; $i++) {
-            $recoveryCodes[$i] = base64_encode(random_bytes(10));
+            $code = '';
+            for ($j = 0; $j < 12; $j++) {
+                $code .= $chars[random_int(0, strlen($chars) - 1)];
+            }
+            $recoveryCodes[$i] = $code;
         }
         $recoveryCodesString = implode(',', $recoveryCodes);
         $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManagerUtils::getTwoFASecretKey()));
@@ -542,15 +548,18 @@ class User extends BaseUser
 
     public function isTwoFaRecoveryCodeValid(string $twoFaRecoveryCode): bool
     {
-        // checks for validity of a 2FA recovery code
-        // if the specified code was valid, the code is also removed.
+        // Normalize input: strip dashes/spaces and uppercase so users can paste "XXXXXX-XXXXXX" or type it plain.
+        $normalized = strtoupper(str_replace(['-', ' '], '', $twoFaRecoveryCode));
         $codes = $this->getDecryptedTwoFactorAuthRecoveryCodes();
-        if (($key = array_search($twoFaRecoveryCode, $codes)) !== false) {
-            unset($codes[$key]);
-            $recoveryCodesString = implode(',', $codes);
-            $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManagerUtils::getTwoFASecretKey()));
+        foreach ($codes as $key => $code) {
+            if (hash_equals(strtoupper(str_replace(['-', ' '], '', $code)), $normalized)) {
+                unset($codes[$key]);
+                $recoveryCodesString = implode(',', $codes);
+                $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManagerUtils::getTwoFASecretKey()));
+                $this->save();
 
-            return true;
+                return true;
+            }
         }
 
         return false;

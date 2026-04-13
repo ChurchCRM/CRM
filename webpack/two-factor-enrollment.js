@@ -23,6 +23,14 @@ function escapeHtml(str) {
   return div.innerHTML.replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 }
 
+function formatRecoveryCode(code) {
+  // New format: 12 uppercase alphanumeric chars stored without dash — display as XXXXXX-XXXXXX
+  if (/^[A-Z2-9]{12}$/i.test(code)) {
+    return `${code.slice(0, 6)}-${code.slice(6)}`;
+  }
+  return code; // legacy base64 — show as-is
+}
+
 function notifyError(message) {
   if (window.CRM?.notify) {
     window.CRM.notify(message, { type: "danger" });
@@ -185,7 +193,7 @@ function renderSuccess() {
   if (state.TwoFARecoveryCodes.length) {
     codesHtml = state.TwoFARecoveryCodes.map(
       (code, i) =>
-        `<div><span class="text-muted me-2">${String(i + 1).padStart(2, "0")}.</span><code>${escapeHtml(code)}</code></div>`,
+        `<div><span class="text-muted me-2">${String(i + 1).padStart(2, "0")}.</span><code>${escapeHtml(formatRecoveryCode(code))}</code></div>`,
     ).join("");
   } else {
     codesHtml = `<p class="text-muted text-center mb-0">${t("Loading recovery codes")}...</p>`;
@@ -209,10 +217,18 @@ function renderSuccess() {
             <div style="background-color:#f8f9fa;padding:16px;border-radius:4px;border:1px solid #dee2e6;font-family:monospace;font-size:0.9em;line-height:2">
               ${codesHtml}
             </div>
-            <div class="mt-4 d-flex justify-content-between">
-              <button type="button" class="btn btn-outline-secondary" id="printCodesBtn">
-                <i class="fa-solid fa-print me-1"></i>${t("Print")}
-              </button>
+            <div class="mt-4 d-flex justify-content-between align-items-center flex-wrap gap-2">
+              <div class="d-flex gap-2">
+                <button type="button" class="btn btn-outline-secondary" id="printCodesBtn">
+                  <i class="fa-solid fa-print me-1"></i>${t("Print")}
+                </button>
+                <button type="button" class="btn btn-outline-secondary" id="copyCodesBtn">
+                  <i class="fa-solid fa-copy me-1"></i>${t("Copy")}
+                </button>
+                <button type="button" class="btn btn-outline-secondary" id="downloadCodesBtn">
+                  <i class="fa-solid fa-download me-1"></i>${t("Download")}
+                </button>
+              </div>
               <a href="${CRMRoot}/v2/user/current/manage2fa" class="btn btn-primary">
                 <i class="fa-solid fa-check me-1"></i>${t("Done")}
               </a>
@@ -333,6 +349,35 @@ function bindEvents() {
   const printBtn = document.getElementById("printCodesBtn");
   if (printBtn) {
     printBtn.addEventListener("click", () => window.print());
+  }
+
+  // Success: copy button
+  const copyBtn = document.getElementById("copyCodesBtn");
+  if (copyBtn) {
+    copyBtn.addEventListener("click", () => {
+      const text = state.TwoFARecoveryCodes.map((c, i) => `${String(i + 1).padStart(2, "0")}. ${formatRecoveryCode(c)}`).join("\n");
+      navigator.clipboard.writeText(text).then(() => {
+        copyBtn.innerHTML = `<i class="fa-solid fa-check me-1"></i>${t("Copied!")}`;
+        setTimeout(() => {
+          copyBtn.innerHTML = `<i class="fa-solid fa-copy me-1"></i>${t("Copy")}`;
+        }, 2000);
+      });
+    });
+  }
+
+  // Success: download button
+  const downloadBtn = document.getElementById("downloadCodesBtn");
+  if (downloadBtn) {
+    downloadBtn.addEventListener("click", () => {
+      const text = state.TwoFARecoveryCodes.map((c, i) => `${String(i + 1).padStart(2, "0")}. ${formatRecoveryCode(c)}`).join("\n");
+      const blob = new Blob([text], { type: "text/plain" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "churchcrm-recovery-codes.txt";
+      a.click();
+      URL.revokeObjectURL(url);
+    });
   }
 
   // Status enabled: disable button
