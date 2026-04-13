@@ -304,6 +304,71 @@
   // Track if we're in force import mode
   var forceImportMode = false;
 
+  // Show an upfront warning (before any API call) when the database already
+  // contains user data. The /api/demo/load endpoint only runs on a truly
+  // fresh install, so we preemptively switch into "force import" mode and
+  // tell the user what's about to happen instead of letting them discover
+  // a 403 after clicking through the overlay.
+  function setExistingDataWarning(personCount, familyCount, personListUrl, familyListUrl) {
+    $("#demoImportWarning").remove();
+
+    // Render the counts as links so the user can jump straight to the
+    // people or family list from the warning dialog. Open in a new tab so
+    // they don't lose the import overlay state.
+    function countChip(count, label, url) {
+      var inner = "<strong>" + count + "</strong> " + label;
+      if (url) {
+        return (
+          '<a href="' +
+          url +
+          '" target="_blank" rel="noopener" ' +
+          'style="color: #0d6efd; text-decoration: underline;" ' +
+          'title="' +
+          i18next.t("Open in new tab") +
+          '">' +
+          inner +
+          ' <i class="fa fa-arrow-up-right-from-square fa-xs"></i></a>'
+        );
+      }
+      return inner;
+    }
+
+    var countsLine = "";
+    if (personCount > 0 || familyCount > 0) {
+      countsLine =
+        '<div style="font-size: 13px; color: #495057; margin-bottom: 10px;">' +
+        i18next.t("Current database") +
+        ": " +
+        countChip(personCount, i18next.t("people"), personListUrl) +
+        ", " +
+        countChip(familyCount, i18next.t("families"), familyListUrl) +
+        "</div>";
+    }
+
+    var warningHtml =
+      '<div id="demoImportWarning" class="alert alert-warning mb-4" style="border-left: 4px solid #ffc107; padding: 16px;">' +
+      '<div style="font-weight: 600; font-size: 15px; margin-bottom: 8px; color: #664d03;">' +
+      '<i class="fa fa-triangle-exclamation mr-2"></i>' +
+      i18next.t("Your database already contains data") +
+      "</div>" +
+      '<div style="font-size: 14px; color: #495057; margin-bottom: 10px; line-height: 1.5;">' +
+      i18next.t(
+        "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates.",
+      ) +
+      "</div>" +
+      countsLine +
+      '<div style="font-size: 13px; color: #856404; background: #fff3cd; padding: 10px 12px; border-radius: 4px; border: 1px solid #ffeeba;">' +
+      '<i class="fa fa-circle-info mr-1"></i>' +
+      i18next.t("To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data.") +
+      "</div></div>";
+    $(".demo-import-options").before(warningHtml);
+
+    $("#demoImportConfirmBtn")
+      .removeClass("btn-success")
+      .addClass("btn-warning")
+      .html('<i class="fa fa-triangle-exclamation mr-2"></i>' + i18next.t("Import demo data anyway"));
+  }
+
   function doImport($button, includeFinancial, includeEvents, includeSundaySchool, forceImport) {
     var $status = $("#demoImportStatus");
     var $results = $("#demoImportResults");
@@ -428,7 +493,7 @@
   function resetImportButton() {
     $("#demoImportWarning").remove();
     $("#demoImportConfirmBtn")
-      .removeClass("btn-danger")
+      .removeClass("btn-danger btn-warning")
       .addClass("btn-success")
       .html('<i class="fa fa-users mr-2"></i>' + i18next.t("Import Demo Data"));
   }
@@ -441,6 +506,24 @@
         $btn.off("click").on("click", function (e) {
           e.preventDefault();
           console.log("Import button clicked, showing confirmation overlay");
+
+          // If the rendering page told us the database already has data,
+          // jump straight into force-import mode with an upfront warning
+          // instead of letting the user discover the 403 after clicking.
+          var hasExistingData = $(this).data("has-existing-data") === true || $(this).data("has-existing-data") === "true";
+          ensureConfirmOverlay();
+          if (hasExistingData) {
+            forceImportMode = true;
+            var personCount = parseInt($(this).data("person-count"), 10) || 0;
+            var familyCount = parseInt($(this).data("family-count"), 10) || 0;
+            var personListUrl = $(this).data("person-list-url") || "";
+            var familyListUrl = $(this).data("family-list-url") || "";
+            setExistingDataWarning(personCount, familyCount, personListUrl, familyListUrl);
+          } else {
+            forceImportMode = false;
+            resetImportButton();
+          }
+
           showConfirmOverlay();
         });
       }

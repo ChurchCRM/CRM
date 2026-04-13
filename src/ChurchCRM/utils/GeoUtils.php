@@ -141,6 +141,29 @@ class GeoUtils
         return '';
     }
 
+    /**
+     * Returns an Apple Maps directions deep-link URL.
+     *
+     * Uses the `maps.apple.com` scheme which opens natively in the Maps app
+     * on iOS/macOS and falls back to an Apple Maps web view on other
+     * platforms. Prefers lat/lng when available for an accurate pin; falls
+     * back to the address string. Returns an empty string when no
+     * destination can be determined.
+     *
+     * @see https://developer.apple.com/library/archive/featuredarticles/iPhoneURLScheme_Reference/MapLinks/MapLinks.html
+     */
+    public static function buildAppleMapsDirectionsUrl(string $address = '', float $lat = 0.0, float $lng = 0.0): string
+    {
+        $base = 'https://maps.apple.com/?daddr=';
+        if ($lat !== 0.0 && $lng !== 0.0) {
+            return $base . $lat . ',' . $lng;
+        }
+        if (!empty($address)) {
+            return $base . urlencode($address);
+        }
+        return '';
+    }
+
     public static function drivingDistanceMatrix($address1, $address2): array
     {
         $logger = LoggerUtils::getAppLogger();

@@ -99,11 +99,6 @@ $otherPeople = $family->getOtherPeople();
                 <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add Member') ?>
             </a>
             <?php } ?>
-            <?php if ($showFamilyCheckin && $memberCount > 0) { ?>
-            <button class="btn btn-ghost-success" id="checkInFamilyBtn" data-bs-toggle="modal" data-bs-target="#familyCheckinModal">
-                <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Check In Family') ?>
-            </button>
-            <?php } ?>
             <?php if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
             <div class="dropdown">
                 <button class="btn btn-ghost-warning dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
@@ -124,6 +119,12 @@ $otherPeople = $family->getOtherPeople();
                     <i class="fa-solid fa-ellipsis-vertical me-1"></i><?= gettext("Actions") ?>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
+                    <?php if ($showFamilyCheckin && $memberCount > 0) { ?>
+                    <button type="button" class="dropdown-item text-success fw-semibold" id="checkInFamilyBtn" data-bs-toggle="modal" data-bs-target="#familyCheckinModal">
+                        <i class="fa-solid fa-clipboard-check me-2"></i><?= gettext('Check In Family') ?>
+                    </button>
+                    <div class="dropdown-divider"></div>
+                    <?php } ?>
                     <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#confirm-verify">
                         <i class="fa-solid fa-clipboard-check me-2"></i><?= gettext('Verify Info') ?>
                     </a>
@@ -317,7 +318,7 @@ $otherPeople = $family->getOtherPeople();
         </div>
 
         <!-- Timeline Card -->
-        <div class="card mb-3">
+        <div class="card mb-3 timeline-container" id="family-timeline-container">
             <div class="card-header d-flex align-items-center" role="button" data-bs-toggle="collapse" data-bs-target="#family-timeline-body" aria-expanded="true">
                 <h3 class="card-title m-0"><i class="fa-solid fa-clock-rotate-left me-1"></i> <?= gettext("Timeline") ?></h3>
                 <div class="ms-auto"><i class="fa-solid fa-chevron-down"></i></div>
@@ -330,14 +331,46 @@ $otherPeople = $family->getOtherPeople();
                             <span><?= gettext('No timeline events yet.') ?></span>
                         </div>
                     <?php } else {
-                        $currentYear = ''; ?>
+                        // Count each category so the filter chips can show
+                        // at-a-glance totals. Notes is the focus and is the
+                        // only category enabled by default on long timelines.
+                        $timelineCounts = ['notes' => 0, 'events' => 0, 'system' => 0];
+                        foreach ($familyTimeline as $tlItem) {
+                            $cat = $tlItem['category'] ?? 'notes';
+                            if (isset($timelineCounts[$cat])) {
+                                $timelineCounts[$cat]++;
+                            }
+                        }
+                        ?>
+                        <div class="timeline-filters d-flex flex-wrap align-items-center gap-2 mb-3" role="group" aria-label="<?= gettext('Timeline filters') ?>">
+                            <span class="text-muted small me-1"><i class="fa-solid fa-filter me-1"></i><?= gettext('Show:') ?></span>
+                            <button type="button" class="btn btn-sm btn-primary timeline-filter-chip active" data-filter="notes">
+                                <i class="fa-solid fa-note-sticky me-1"></i><?= gettext('Notes') ?>
+                                <span class="badge bg-white text-primary ms-1"><?= $timelineCounts['notes'] ?></span>
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary timeline-filter-chip" data-filter="events">
+                                <i class="fa-solid fa-calendar-days me-1"></i><?= gettext('Events') ?>
+                                <span class="badge bg-secondary-lt text-secondary ms-1"><?= $timelineCounts['events'] ?></span>
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary timeline-filter-chip" data-filter="system">
+                                <i class="fa-solid fa-gear me-1"></i><?= gettext('System') ?>
+                                <span class="badge bg-secondary-lt text-secondary ms-1"><?= $timelineCounts['system'] ?></span>
+                            </button>
+                            <button type="button" class="btn btn-sm btn-link ms-auto timeline-filter-all" data-filter="all">
+                                <?= gettext('Show all') ?>
+                            </button>
+                        </div>
+                        <div class="timeline-empty-notice alert alert-info" style="display:none;">
+                            <i class="fa-solid fa-circle-info fa-fw me-1"></i><?= gettext('No matching entries for the selected filters.') ?>
+                        </div>
+                        <?php $currentYear = ''; ?>
                         <div class="timeline mt-3">
                             <?php foreach ($familyTimeline as $item) {
                                 if ($currentYear !== $item['year']) {
                                     $currentYear = $item['year']; ?>
-                                    <div class="hr-text"><i class="fa-solid fa-calendar-days"></i> <?= $currentYear ?></div>
+                                    <div class="hr-text timeline-year" data-timeline-year="<?= htmlspecialchars((string)$currentYear) ?>"><i class="fa-solid fa-calendar-days"></i> <?= $currentYear ?></div>
                                 <?php } ?>
-                                <div class="timeline-event">
+                                <div class="timeline-event" data-timeline-category="<?= htmlspecialchars($item['category'] ?? 'notes') ?>" data-timeline-year="<?= htmlspecialchars((string)$item['year']) ?>">
                                     <div class="timeline-event-icon bg-<?= $item['color'] ?>-lt text-<?= $item['color'] ?>">
                                         <i class="fa-solid <?= $item['style'] ?>"></i>
                                     </div>
@@ -447,13 +480,37 @@ $otherPeople = $family->getOtherPeople();
             <div class="card-body">
                 <a href="https://maps.google.com/?q=<?= urlencode($familyAddress) ?>"
                    target="_blank" rel="noopener noreferrer"><?= $familyAddress ?></a>
-                <?php $directionsUrl = $family->getDirectionsUrl(); ?>
+                <?php
+                $directionsUrl = $family->getDirectionsUrl();
+                $appleDirectionsUrl = $family->getAppleMapsDirectionsUrl();
+                ?>
                 <div class="mt-2">
-                    <?php if (!empty($directionsUrl)) : ?>
-                    <a href="<?= $directionsUrl ?>" target="_blank" rel="noopener noreferrer"
-                       class="btn btn-sm btn-outline-primary">
-                        <i class="fa-solid fa-diamond-turn-right me-1"></i><?= gettext('Get Directions') ?>
-                    </a>
+                    <?php if (!empty($directionsUrl) || !empty($appleDirectionsUrl)) : ?>
+                    <div class="btn-group directions-btn-group">
+                        <?php if (!empty($directionsUrl)) : ?>
+                        <a href="<?= $directionsUrl ?>" target="_blank" rel="noopener noreferrer"
+                           class="btn btn-sm btn-outline-primary">
+                            <i class="fa-solid fa-diamond-turn-right me-1"></i><?= gettext('Get Directions') ?>
+                        </a>
+                        <?php endif; ?>
+                        <?php if (!empty($appleDirectionsUrl)) : ?>
+                        <button type="button"
+                                class="btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-split directions-provider-toggle d-none"
+                                data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                            <span class="visually-hidden"><?= gettext('Choose map provider') ?></span>
+                        </button>
+                        <div class="dropdown-menu directions-provider-menu d-none">
+                            <?php if (!empty($directionsUrl)) : ?>
+                            <a class="dropdown-item" href="<?= $directionsUrl ?>" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-brands fa-google me-2"></i><?= gettext('Open in Google Maps') ?>
+                            </a>
+                            <?php endif; ?>
+                            <a class="dropdown-item apple-maps-option" href="<?= $appleDirectionsUrl ?>" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-brands fa-apple me-2"></i><?= gettext('Open in Apple Maps') ?>
+                            </a>
+                        </div>
+                        <?php endif; ?>
+                    </div>
                     <?php endif; ?>
                     <?php if (!$family->hasLatitudeAndLongitude()) : ?>
                     <button type="button" class="btn btn-sm btn-outline-success" id="refresh-coordinates-btn"
@@ -572,10 +629,21 @@ $otherPeople = $family->getOtherPeople();
                     <div id="family-property-list" class="list-group list-group-flush" style="display: none;"></div>
 
                     <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
-                    <div class="mt-3">
-                        <button id="add-family-property" type="button" class="btn btn-sm btn-primary w-100">
-                            <i class="fa-solid fa-check me-1"></i><?= gettext('Assign') ?>
-                        </button>
+                    <!-- Inline assign form — mirrors the Person view property
+                         assignment UX. Populated from the master properties
+                         API response in FamilyView.js once loaded. -->
+                    <div class="mt-3 d-print-none" id="family-property-assign-wrapper" style="display: none;">
+                        <form id="assign-family-property-form" onsubmit="return false;">
+                            <div class="mb-2">
+                                <select name="PropertyId" id="input-family-properties" class="form-select" data-placeholder="<?= gettext('Choose a property...') ?>">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                            <div id="family-prompt-box" class="mb-2"></div>
+                            <button id="assign-family-property-btn" type="button" class="btn btn-sm btn-primary w-100">
+                                <i class="fa-solid fa-check me-1"></i><?= gettext('Assign') ?>
+                            </button>
+                        </form>
                     </div>
                     <?php } ?>
                 </div>
@@ -785,5 +853,111 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
         </div>
     </div>
 </div>
+<script>
+// Timeline category filter — show/hide timeline events based on the
+// active filter chips. Notes are the default active category; events and
+// system entries start hidden so long timelines stay skimmable.
+(function () {
+    function initTimelineFilter(container) {
+        if (!container) { return; }
+        var chips = container.querySelectorAll(".timeline-filter-chip");
+        var allChip = container.querySelector(".timeline-filter-all");
+        var events = container.querySelectorAll(".timeline-event[data-timeline-category]");
+        var years = container.querySelectorAll(".timeline-year");
+        var emptyNotice = container.querySelector(".timeline-empty-notice");
+        if (chips.length === 0 || events.length === 0) { return; }
+
+        var active = new Set(["notes"]);
+
+        function applyFilter() {
+            var showAll = active.has("all");
+            var visibleYears = {};
+            var anyVisible = false;
+            events.forEach(function (el) {
+                var cat = el.getAttribute("data-timeline-category") || "notes";
+                var visible = showAll || active.has(cat);
+                el.style.display = visible ? "" : "none";
+                if (visible) {
+                    anyVisible = true;
+                    var yr = el.getAttribute("data-timeline-year") || "";
+                    visibleYears[yr] = true;
+                }
+            });
+            years.forEach(function (y) {
+                var yr = y.getAttribute("data-timeline-year") || "";
+                y.style.display = visibleYears[yr] ? "" : "none";
+            });
+            if (emptyNotice) {
+                emptyNotice.style.display = anyVisible ? "none" : "";
+            }
+            chips.forEach(function (chip) {
+                var f = chip.getAttribute("data-filter");
+                var on = showAll || active.has(f);
+                chip.classList.toggle("btn-primary", on);
+                chip.classList.toggle("active", on);
+                chip.classList.toggle("btn-outline-secondary", !on);
+            });
+            if (allChip) {
+                allChip.classList.toggle("active", showAll);
+            }
+        }
+
+        chips.forEach(function (chip) {
+            chip.addEventListener("click", function () {
+                var f = chip.getAttribute("data-filter");
+                if (!f) { return; }
+                active.delete("all");
+                if (active.has(f)) {
+                    active.delete(f);
+                } else {
+                    active.add(f);
+                }
+                if (active.size === 0) {
+                    active.add("notes");
+                }
+                applyFilter();
+            });
+        });
+
+        if (allChip) {
+            allChip.addEventListener("click", function () {
+                active = new Set(["all"]);
+                applyFilter();
+            });
+        }
+
+        applyFilter();
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".timeline-container").forEach(initTimelineFilter);
+    });
+})();
+
+// Apple Maps is only offered on iOS devices — the Google Maps URL is the
+// universal default everywhere else. iPadOS 13+ reports as MacIntel, so we
+// check for a touch-capable Mac as a fallback heuristic.
+(function () {
+    function isAppleMobile() {
+        var ua = navigator.userAgent || "";
+        if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+            return true;
+        }
+        if (navigator.platform === "MacIntel" && typeof navigator.maxTouchPoints === "number" && navigator.maxTouchPoints > 1) {
+            return true;
+        }
+        return false;
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+        if (!isAppleMobile()) { return; }
+        document.querySelectorAll(".directions-provider-toggle").forEach(function (el) {
+            el.classList.remove("d-none");
+        });
+        document.querySelectorAll(".directions-provider-menu").forEach(function (el) {
+            el.classList.remove("d-none");
+        });
+    });
+})();
+</script>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

@@ -47,6 +47,7 @@ function initializeFamilyView() {
 
   let masterFamilyProperties = {};
   let selectedFamilyProperties = [];
+  let assignedFamilyValues = {};
   window.CRM.APIRequest({
     path: "people/properties/family",
   }).then(function (masterData) {
@@ -57,10 +58,6 @@ function initializeFamilyView() {
     }).then(function (data) {
       $("#family-property-loading").hide();
 
-      if (masterFamilyProperties.length > data.length) {
-        $("#add-family-property").show();
-      }
-
       if (data.length === 0) {
         $("#family-property-no-data").show();
       } else {
@@ -68,6 +65,7 @@ function initializeFamilyView() {
         $.each(data, function (key, prop) {
           let { id: propId, name: propName, value: propVal, allowEdit, allowDelete } = prop;
           selectedFamilyProperties.push(propId);
+          assignedFamilyValues[propId] = propVal || "";
 
           // GHSA-8r36-fvxj-26qv: Escape property values to prevent XSS
           let safePropName = window.CRM.escapeHtml(propName || "");
@@ -90,29 +88,67 @@ function initializeFamilyView() {
 
         $(".delete-property").on("click", deleteProperty);
       }
+
+      // Populate the inline assign form. Mirrors the Person view UX:
+      // show every definition (assigned entries marked with "(assigned)")
+      // so the user can edit values in place, and expose the property's
+      // prompt + current value as data attributes for the prompt box.
+      let $select = $("#input-family-properties");
+      if ($select.length && Array.isArray(masterFamilyProperties) && masterFamilyProperties.length > 0) {
+        masterFamilyProperties.forEach(function (masterProp) {
+          let propId = masterProp.ProId;
+          let propName = masterProp.ProName || "";
+          let isAssigned = selectedFamilyProperties.includes(propId);
+          let label = isAssigned ? `${propName} (${i18next.t("assigned")})` : propName;
+          let $option = $("<option></option>").attr("value", propId).text(label);
+          if (masterProp.ProPrompt) {
+            $option.attr("data-pro_prompt", masterProp.ProPrompt);
+            $option.attr("data-pro_value", assignedFamilyValues[propId] || "");
+          }
+          $select.append($option);
+        });
+        $("#family-property-assign-wrapper").show();
+      }
     });
   });
 
-  $("#add-family-property").on("click", function () {
-    let inputOptions = masterFamilyProperties
-      .filter((masterProp) => !selectedFamilyProperties.includes(masterProp.ProId))
-      .map(({ ProName: text, ProId: value }) => ({ text, value }));
+  // Mirror the Person view prompt-box behavior: when a property with a
+  // prompt is chosen, reveal a text area pre-filled with any existing
+  // value so it can be edited in place.
+  $("#input-family-properties").on("change", function () {
+    let $promptBox = $("#family-prompt-box");
+    $promptBox.removeClass("mb-3").html("");
+    let $selected = $("#input-family-properties :selected");
+    let promptText = $selected.data("pro_prompt");
+    let promptValue = $selected.data("pro_value");
+    if (promptText) {
+      $promptBox
+        .addClass("mb-3")
+        .append($("<label></label>").text(promptText))
+        .append($('<textarea rows="3" class="form-control" name="PropertyValue"></textarea>').val(promptValue || ""));
+    }
+  });
 
-    bootbox.prompt({
-      title: i18next.t("Assign a New Property"),
-      locale: window.CRM.locale,
-      inputType: "select",
-      inputOptions: inputOptions,
-      callback: function (result) {
-        if (result) {
-          window.CRM.APIRequest({
-            path: `people/properties/family/${window.CRM.currentFamily}/${result}`,
-            method: "POST",
-          }).then(function () {
-            location.reload();
-          });
-        }
-      },
+  $("#assign-family-property-btn").on("click", function () {
+    let propertyId = "";
+    let value = "";
+    let dataToSend = $("#assign-family-property-form").serializeArray();
+    $.each(dataToSend, function (key, field) {
+      if (field.name === "PropertyId") {
+        propertyId = field.value;
+      } else if (field.name === "PropertyValue") {
+        value = field.value;
+      }
+    });
+    if (!propertyId) {
+      return;
+    }
+    window.CRM.APIRequest({
+      method: "POST",
+      path: `people/properties/family/${window.CRM.currentFamily}/${propertyId}`,
+      data: JSON.stringify({ value: value }),
+    }).then(function () {
+      location.reload();
     });
   });
 

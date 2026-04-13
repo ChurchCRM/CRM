@@ -643,9 +643,31 @@ $bOkToEdit = (
                     <div>
                         <i class="fa-solid fa-location-dot me-1 text-muted"></i>
                         <a href="https://maps.google.com/?q=<?= urlencode($plaintextMailingAddress) ?>" target="_blank" rel="noopener noreferrer"><?= $formattedMailingAddress ?></a>
-                        <?php $personDirectionsUrl = $person->getDirectionsUrl(); ?>
-                        <?php if (!empty($personDirectionsUrl)) : ?>
-                            <a href="<?= $personDirectionsUrl ?>" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-ghost-primary ms-2"><i class="fa-solid fa-diamond-turn-right me-1"></i><?= gettext('Directions') ?></a>
+                        <?php
+                        $personDirectionsUrl = $person->getDirectionsUrl();
+                        $personAppleDirectionsUrl = $person->getAppleMapsDirectionsUrl();
+                        ?>
+                        <?php if (!empty($personDirectionsUrl) || !empty($personAppleDirectionsUrl)) : ?>
+                            <div class="btn-group ms-2 directions-btn-group">
+                                <?php if (!empty($personDirectionsUrl)) : ?>
+                                    <a href="<?= $personDirectionsUrl ?>" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-ghost-primary"><i class="fa-solid fa-diamond-turn-right me-1"></i><?= gettext('Directions') ?></a>
+                                <?php endif; ?>
+                                <?php if (!empty($personAppleDirectionsUrl)) : ?>
+                                <button type="button" class="btn btn-sm btn-ghost-primary dropdown-toggle dropdown-toggle-split directions-provider-toggle d-none" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                    <span class="visually-hidden"><?= gettext('Choose map provider') ?></span>
+                                </button>
+                                <div class="dropdown-menu directions-provider-menu d-none">
+                                    <?php if (!empty($personDirectionsUrl)) : ?>
+                                        <a class="dropdown-item" href="<?= $personDirectionsUrl ?>" target="_blank" rel="noopener noreferrer">
+                                            <i class="fa-brands fa-google me-2"></i><?= gettext('Open in Google Maps') ?>
+                                        </a>
+                                    <?php endif; ?>
+                                    <a class="dropdown-item apple-maps-option" href="<?= $personAppleDirectionsUrl ?>" target="_blank" rel="noopener noreferrer">
+                                        <i class="fa-brands fa-apple me-2"></i><?= gettext('Open in Apple Maps') ?>
+                                    </a>
+                                </div>
+                                <?php endif; ?>
+                            </div>
                         <?php endif; ?>
                         <?php if (!empty($fam_ID) && !$familyHasCoords) : ?>
                             <button type="button" class="btn btn-sm btn-ghost-success ms-1" id="refresh-coordinates-btn" data-family-id="<?= $fam_ID ?>" title="<?= gettext('Refresh Coordinates') ?>">
@@ -701,7 +723,7 @@ $bOkToEdit = (
             <div class="card-body">
                 <div class="tab-content">
 
-                    <div class="tab-pane active" id="timeline">
+                    <div class="tab-pane active timeline-container" id="timeline">
                         <?php
                         $personTimeline = $timelineService->getForPerson($iPersonID);
                         if (empty($personTimeline)) { ?>
@@ -710,14 +732,46 @@ $bOkToEdit = (
                                 <span><?= gettext('No timeline events yet.') ?></span>
                             </div>
                         <?php } else {
-                            $currentYear = ''; ?>
+                            // Count each category so the filter chips can show
+                            // at-a-glance totals. Notes is the focus and is the
+                            // only category enabled by default on long timelines.
+                            $timelineCounts = ['notes' => 0, 'events' => 0, 'system' => 0];
+                            foreach ($personTimeline as $tlItem) {
+                                $cat = $tlItem['category'] ?? 'notes';
+                                if (isset($timelineCounts[$cat])) {
+                                    $timelineCounts[$cat]++;
+                                }
+                            }
+                            ?>
+                            <div class="timeline-filters d-flex flex-wrap align-items-center gap-2 mt-3 mb-1" role="group" aria-label="<?= gettext('Timeline filters') ?>">
+                                <span class="text-muted small me-1"><i class="fa-solid fa-filter me-1"></i><?= gettext('Show:') ?></span>
+                                <button type="button" class="btn btn-sm btn-primary timeline-filter-chip active" data-filter="notes">
+                                    <i class="fa-solid fa-note-sticky me-1"></i><?= gettext('Notes') ?>
+                                    <span class="badge bg-white text-primary ms-1"><?= $timelineCounts['notes'] ?></span>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary timeline-filter-chip" data-filter="events">
+                                    <i class="fa-solid fa-calendar-days me-1"></i><?= gettext('Events') ?>
+                                    <span class="badge bg-secondary-lt text-secondary ms-1"><?= $timelineCounts['events'] ?></span>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary timeline-filter-chip" data-filter="system">
+                                    <i class="fa-solid fa-gear me-1"></i><?= gettext('System') ?>
+                                    <span class="badge bg-secondary-lt text-secondary ms-1"><?= $timelineCounts['system'] ?></span>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-link ms-auto timeline-filter-all" data-filter="all">
+                                    <?= gettext('Show all') ?>
+                                </button>
+                            </div>
+                            <div class="timeline-empty-notice alert alert-info" style="display:none;">
+                                <i class="fa-solid fa-circle-info fa-fw me-1"></i><?= gettext('No matching entries for the selected filters.') ?>
+                            </div>
+                            <?php $currentYear = ''; ?>
                             <div class="timeline mt-3">
                                 <?php foreach ($personTimeline as $item) {
                                     if ($currentYear !== $item['year']) {
                                         $currentYear = $item['year']; ?>
-                                        <div class="hr-text"> <i class="fa-solid fa-calendar-days"></i> <?= $currentYear ?></div>
+                                        <div class="hr-text timeline-year" data-timeline-year="<?= htmlspecialchars((string)$currentYear) ?>"> <i class="fa-solid fa-calendar-days"></i> <?= $currentYear ?></div>
                                     <?php } ?>
-                                    <div class="timeline-event">
+                                    <div class="timeline-event" data-timeline-category="<?= htmlspecialchars($item['category'] ?? 'notes') ?>" data-timeline-year="<?= htmlspecialchars((string)$item['year']) ?>">
                                         <div class="timeline-event-icon bg-<?= $item['color'] ?>-lt text-<?= $item['color'] ?>">
                                             <i class="fa-solid <?= $item['style'] ?>"></i>
                                         </div>
@@ -1010,6 +1064,112 @@ $bOkToEdit = (
             });
         </script>
 
+<script>
+// Timeline category filter — show/hide timeline events based on the
+// active filter chips. Notes are the default active category; events and
+// system entries start hidden so long timelines stay skimmable.
+(function () {
+    function initTimelineFilter(container) {
+        if (!container) { return; }
+        var chips = container.querySelectorAll(".timeline-filter-chip");
+        var allChip = container.querySelector(".timeline-filter-all");
+        var events = container.querySelectorAll(".timeline-event[data-timeline-category]");
+        var years = container.querySelectorAll(".timeline-year");
+        var emptyNotice = container.querySelector(".timeline-empty-notice");
+        if (chips.length === 0 || events.length === 0) { return; }
+
+        var active = new Set(["notes"]);
+
+        function applyFilter() {
+            var showAll = active.has("all");
+            var visibleYears = {};
+            var anyVisible = false;
+            events.forEach(function (el) {
+                var cat = el.getAttribute("data-timeline-category") || "notes";
+                var visible = showAll || active.has(cat);
+                el.style.display = visible ? "" : "none";
+                if (visible) {
+                    anyVisible = true;
+                    var yr = el.getAttribute("data-timeline-year") || "";
+                    visibleYears[yr] = true;
+                }
+            });
+            years.forEach(function (y) {
+                var yr = y.getAttribute("data-timeline-year") || "";
+                y.style.display = visibleYears[yr] ? "" : "none";
+            });
+            if (emptyNotice) {
+                emptyNotice.style.display = anyVisible ? "none" : "";
+            }
+            chips.forEach(function (chip) {
+                var f = chip.getAttribute("data-filter");
+                var on = showAll || active.has(f);
+                chip.classList.toggle("btn-primary", on);
+                chip.classList.toggle("active", on);
+                chip.classList.toggle("btn-outline-secondary", !on);
+            });
+            if (allChip) {
+                allChip.classList.toggle("active", showAll);
+            }
+        }
+
+        chips.forEach(function (chip) {
+            chip.addEventListener("click", function () {
+                var f = chip.getAttribute("data-filter");
+                if (!f) { return; }
+                active.delete("all");
+                if (active.has(f)) {
+                    active.delete(f);
+                } else {
+                    active.add(f);
+                }
+                if (active.size === 0) {
+                    active.add("notes");
+                }
+                applyFilter();
+            });
+        });
+
+        if (allChip) {
+            allChip.addEventListener("click", function () {
+                active = new Set(["all"]);
+                applyFilter();
+            });
+        }
+
+        applyFilter();
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".timeline-container").forEach(initTimelineFilter);
+    });
+})();
+
+// Apple Maps is only offered on iOS devices — the Google Maps URL is the
+// universal default everywhere else. iPadOS 13+ reports as MacIntel, so we
+// check for a touch-capable Mac as a fallback heuristic.
+(function () {
+    function isAppleMobile() {
+        var ua = navigator.userAgent || "";
+        if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+            return true;
+        }
+        if (navigator.platform === "MacIntel" && typeof navigator.maxTouchPoints === "number" && navigator.maxTouchPoints > 1) {
+            return true;
+        }
+        return false;
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+        if (!isAppleMobile()) { return; }
+        document.querySelectorAll(".directions-provider-toggle").forEach(function (el) {
+            el.classList.remove("d-none");
+        });
+        document.querySelectorAll(".directions-provider-menu").forEach(function (el) {
+            el.classList.remove("d-none");
+        });
+    });
+})();
+</script>
 
 <?php
 require_once __DIR__ . '/Include/Footer.php';

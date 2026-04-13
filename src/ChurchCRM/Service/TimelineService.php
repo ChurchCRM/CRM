@@ -164,10 +164,40 @@ class TimelineService
         return $item;
     }
 
+    /**
+     * Timeline categories used by the view-level filter chips. Notes are
+     * the high-signal user content; calendar events and automatic system
+     * activity are noisier and hidden by default on long timelines.
+     *
+     * @var array<string, string>
+     */
+    public const TYPE_CATEGORIES = [
+        'cal'         => 'events',
+        'event'       => 'events',
+        'create'      => 'system',
+        'edit'        => 'system',
+        'photo'       => 'system',
+        'group'       => 'system',
+        'verify'      => 'system',
+        'verify-link' => 'system',
+        'verify-URL'  => 'system',
+        'user'        => 'system',
+    ];
+
+    /**
+     * Map a timeline item type to one of the filter-chip categories.
+     * Anything not explicitly mapped is treated as a user note.
+     */
+    public static function categoryForType($type): string
+    {
+        return self::TYPE_CATEGORIES[(string)$type] ?? 'notes';
+    }
+
     public function createTimeLineItem(string $id, $type, string $datetime, $year, $header, $headerLink, $text, $editLink = '', $deleteLink = '')
     {
         $item['slim'] = true;
         $item['type'] = $type;
+        $item['category'] = self::categoryForType($type);
         switch ($type) {
             case 'create':
                 $item['style'] = 'fa-circle-plus';
