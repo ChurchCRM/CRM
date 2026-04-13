@@ -37,12 +37,16 @@ jobs:
     permissions:
       contents: write
       actions: read
+    env:
+      # gh CLI needs to know the repo to query since we don't check out the
+      # working tree — without this, commands like `gh run download` fail with
+      # "fatal: not a git repository".
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
     steps:
       - name: Resolve source build run
         id: run
         env:
-          GH_TOKEN: ${{ github.token }}
-          GH_REPO: ${{ github.repository }}
           INPUT_RUN_ID: ${{ inputs.run_id }}
         run: |
           set -euo pipefail
@@ -77,7 +81,6 @@ jobs:
       - name: Download release artifact
         id: artifact
         env:
-          GH_TOKEN: ${{ github.token }}
           RUN_ID: ${{ steps.run.outputs.run_id }}
         run: |
           set -euo pipefail
@@ -103,7 +106,6 @@ jobs:
       - name: Create or update GitHub Release
         id: release
         env:
-          GH_TOKEN: ${{ github.token }}
           TAG: ${{ inputs.tag }}
           NAME: ${{ inputs.name }}
           TARGET_COMMIT: ${{ steps.run.outputs.commit }}
