@@ -120,7 +120,7 @@
         "tom-select": "^2.5.2"
     },
     "devDependencies": {
-        "@biomejs/biome": "^2.4.8",
+        "@biomejs/biome": "^2.4.11",
         "@types/dompurify": "^3.0.5",
         "@types/jquery": "^3.5.33",
         "archiver": "^7.0.1",
@@ -144,7 +144,7 @@
         "style-loader": "^4.0.0",
         "ts-loader": "^9.5.4",
         "typescript": "^5.9.3",
-        "webpack": "^5.105.4",
+        "webpack": "^5.106.1",
         "webpack-cli": "^7.0.2"
     },
     "overrides": {
