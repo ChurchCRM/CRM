@@ -1,25 +1,9 @@
 <?php
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
-
-// Load options server-side for initial render
-$options = ListOptionQuery::create()
-    ->filterById($listId)
-    ->orderByOptionSequence()
-    ->find();
-
-$inactiveClasses = [];
-if ($mode === 'classes') {
-    $inactiveClasses = array_filter(
-        explode(',', SystemConfig::getValue('sInactiveClassification')),
-        fn($k) => is_numeric($k)
-    );
-}
 ?>
 
 <p class="text-muted mb-3"><?= sprintf(gettext('Manage %s options'), InputUtils::escapeHTML($noun)) ?></p>
@@ -57,7 +41,7 @@ if ($mode === 'classes') {
             <i class="fa-solid fa-list me-2"></i>
             <?= gettext('Existing Options') ?>
         </h5>
-        <span class="badge bg-info text-white ms-auto" id="optionCount"><?= $options->count() ?></span>
+        <span class="badge bg-info text-white ms-auto" id="optionCount"><?= $optionRows->count() ?></span>
     </div>
     <div class="card-body" style="overflow: visible;">
         <table class="table table-hover table-sm mb-0" id="optionsTable">
@@ -72,7 +56,7 @@ if ($mode === 'classes') {
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($options as $idx => $option): ?>
+                <?php foreach ($optionRows as $idx => $option): ?>
                 <tr data-option-id="<?= $option->getOptionId() ?>" data-sequence="<?= $option->getOptionSequence() ?>">
                     <td><span class="badge bg-light text-dark"><?= $option->getOptionSequence() ?></span></td>
                     <td>

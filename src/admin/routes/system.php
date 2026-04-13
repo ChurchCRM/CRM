@@ -96,6 +96,24 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/admin/');
         }
 
+        // Load options server-side for initial render
+        $optionRows = \ChurchCRM\model\ChurchCRM\ListOptionQuery::create()
+            ->filterById($listConfig['listId'])
+            ->orderByOptionSequence()
+            ->find();
+
+        // For classifications mode, compute which options are marked inactive
+        $inactiveClasses = [];
+        if ($mode === 'classes') {
+            $inactiveRaw = (string) SystemConfig::getValue('sInactiveClassification');
+            if ($inactiveRaw !== '') {
+                $inactiveClasses = array_filter(
+                    explode(',', $inactiveRaw),
+                    fn($k) => is_numeric($k)
+                );
+            }
+        }
+
         $pageArgs = [
             'sRootPath' => SystemURLs::getRootPath(),
             'sPageTitle' => $listConfig['title'],
@@ -107,6 +125,8 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'mode' => $mode,
             'listId' => $listConfig['listId'],
             'noun' => $listConfig['noun'],
+            'optionRows' => $optionRows,
+            'inactiveClasses' => $inactiveClasses,
         ];
 
         return $renderer->render($response, 'option-manager.php', $pageArgs);
