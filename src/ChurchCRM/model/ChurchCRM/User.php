@@ -513,10 +513,12 @@ class User extends BaseUser
 
     public function getNewTwoFARecoveryCodes(): array
     {
-        // generate an array of 2FA recovery codes, and store as an encrypted, comma-separated list
+        // generate an array of 2FA recovery codes formatted as XXXXX-XXXXX (lowercase hex),
+        // and store as an encrypted, comma-separated list
         $recoveryCodes = [];
         for ($i = 0; $i < 12; $i++) {
-            $recoveryCodes[$i] = base64_encode(random_bytes(10));
+            $hex = bin2hex(random_bytes(5));
+            $recoveryCodes[$i] = substr($hex, 0, 5) . '-' . substr($hex, 5, 5);
         }
         $recoveryCodesString = implode(',', $recoveryCodes);
         $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManagerUtils::getTwoFASecretKey()));
@@ -544,13 +546,18 @@ class User extends BaseUser
     {
         // checks for validity of a 2FA recovery code
         // if the specified code was valid, the code is also removed.
+        // Normalize both the input and stored codes: strip hyphens/spaces and compare case-insensitively
+        // so codes work regardless of whether the separator is typed or not.
+        $normalizedInput = str_replace(['-', ' '], '', strtolower($twoFaRecoveryCode));
         $codes = $this->getDecryptedTwoFactorAuthRecoveryCodes();
-        if (($key = array_search($twoFaRecoveryCode, $codes)) !== false) {
-            unset($codes[$key]);
-            $recoveryCodesString = implode(',', $codes);
-            $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManagerUtils::getTwoFASecretKey()));
+        foreach ($codes as $key => $code) {
+            if (str_replace(['-', ' '], '', strtolower($code)) === $normalizedInput) {
+                unset($codes[$key]);
+                $recoveryCodesString = implode(',', $codes);
+                $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManagerUtils::getTwoFASecretKey()));
 
-            return true;
+                return true;
+            }
         }
 
         return false;
