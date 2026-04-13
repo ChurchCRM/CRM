@@ -26,6 +26,10 @@ on:
         required: false
         type: boolean
         default: true
+      run_id:
+        description: 'Optional: specific Build, Test and Package run ID to release from. Leave blank for the latest successful master build. To find it: open the run in Actions and copy the number from the URL (e.g. /actions/runs/24362759265 → 24362759265).'
+        required: false
+        type: string
 
 jobs:
   release:
@@ -34,25 +38,31 @@ jobs:
       contents: write
       actions: read
     steps:
-      - name: Resolve latest successful master build
+      - name: Resolve source build run
         id: run
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
+          INPUT_RUN_ID: ${{ inputs.run_id }}
         run: |
           set -euo pipefail
-          run_id=$(gh run list \
-            --workflow=build-test-package.yml \
-            --branch=master \
-            --event=push \
-            --status=success \
-            --limit=1 \
-            --json databaseId \
-            --jq '.[0].databaseId // empty')
-
-          if [ -z "$run_id" ]; then
-            echo "::error::No successful master build found. Merge to master and wait for a green build first."
-            exit 1
+          if [ -n "$INPUT_RUN_ID" ]; then
+            run_id="$INPUT_RUN_ID"
+            echo "Using explicit run_id=$run_id from workflow input."
+          else
+            run_id=$(gh run list \
+              --workflow=build-test-package.yml \
+              --branch=master \
+              --event=push \
+              --status=success \
+              --limit=1 \
+              --json databaseId \
+              --jq '.[0].databaseId // empty')
+            if [ -z "$run_id" ]; then
+              echo "::error::No successful master build found. Merge to master and wait for a green build, or pass a run_id explicitly."
+              exit 1
+            fi
+            echo "Auto-resolved latest successful master build: run_id=$run_id"
           fi
 
           commit=$(gh run view "$run_id" --json headSha --jq .headSha)
