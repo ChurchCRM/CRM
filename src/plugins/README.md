@@ -196,22 +196,41 @@ Plugins are managed from **Admin → Plugins**.
 
 ```
 # Management UI (admin only)
-GET  /plugins/management                    # List + enable/disable page
+GET    /plugins/management                    # List + enable/disable page
 
 # Management API (admin only)
-GET  /plugins/api/plugins                   # List all discovered plugins
-GET  /plugins/api/plugins/{id}              # Plugin details
-POST /plugins/api/plugins/{id}/enable       # Enable
-POST /plugins/api/plugins/{id}/disable      # Disable
-POST /plugins/api/plugins/{id}/settings     # Update settings
-POST /plugins/api/plugins/{id}/test         # Test connection (hasTest: true)
-POST /plugins/api/plugins/{id}/reset        # Clear all plugin settings
-GET  /plugins/api/approved                  # Approved registry for URL installer
-POST /plugins/api/plugins/install           # Install from an approved URL
+GET    /plugins/api/plugins                   # List all discovered plugins
+GET    /plugins/api/plugins/{id}              # Plugin details
+POST   /plugins/api/plugins/{id}/enable       # Enable
+POST   /plugins/api/plugins/{id}/disable      # Disable
+POST   /plugins/api/plugins/{id}/settings     # Update settings
+POST   /plugins/api/plugins/{id}/test         # Test connection (hasTest: true)
+POST   /plugins/api/plugins/{id}/reset        # Clear all plugin settings
+
+# Installation (admin only)
+GET    /plugins/api/approved                  # Approved registry for URL installer
+POST   /plugins/api/plugins/install           # Install from an approved URL
+POST   /plugins/api/plugins/install-url       # Install from an arbitrary URL (UNVERIFIED)
+DELETE /plugins/api/plugins/{id}              # Uninstall (community only) — deletes files + clears config
+DELETE /plugins/api/plugins/{id}/quarantine   # Clear a plugin's quarantine flag
 
 # Public
-GET  /plugins/status/{id}                   # Used by core UI to gate plugin tabs
+GET    /plugins/status/{id}                   # Used by core UI to gate plugin tabs
 ```
+
+The `getAllPlugins()` response now surfaces:
+
+- `verified` + `verificationSource` — `core`, `registry`,
+  `unverified-url`, `unknown`, `revoked`, `registry-drift`
+- `verificationReason` — human-readable explanation
+- `quarantined` + `quarantineReason`
+- `risk` + `riskSummary` + `permissions` (from the approved registry
+  entry; null for core plugins and unverified community ones)
+- `canUninstall` — true for community plugins, false for core
+
+The admin UI renders badges, banners, and delete/clear-quarantine
+buttons based on these fields. See
+`src/plugins/views/management.php`.
 
 ---
 

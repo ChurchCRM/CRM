@@ -1,4 +1,4 @@
-<!-- staged: 2026-04-13 — destined for docs.churchcrm.io wiki/plugins/installing-community-plugins.md -->
+<!-- staged: 2026-04-14 — destined for docs.churchcrm.io wiki/plugins/installing-community-plugins.md -->
 
 # Installing Community Plugins
 
@@ -153,6 +153,82 @@ values and either confirms success or returns the upstream error
 message.
 
 ---
+
+## Installing a plugin that isn't on the approved list
+
+Two buttons live next to the community plugin header: **Browse
+Approved** (the vetted list) and **Install from URL**. Use "Install
+from URL" when:
+
+- You are the plugin's own developer and want to test a build before
+  submitting it to the approved list.
+- You are running a private plugin that will never be published
+  publicly (custom integrations for one parish).
+- You need to run an experimental plugin that isn't ready for
+  allowlisting yet.
+
+The **Install from URL** modal requires three things:
+
+1. **Plugin zip URL** — HTTPS only, ideally an immutable release
+   artifact (GitHub release asset, versioned S3 object).
+2. **SHA-256** — the plugin author must publish this alongside the
+   release. ChurchCRM refuses the install if the downloaded bytes
+   don't match byte-for-byte.
+3. **Plugin id** — must match the top-level directory in the zip
+   and the `id` field in `plugin.json`.
+
+The installer runs the same hardening pipeline as the verified path
+(TLS, 20 MB cap, ZIP Slip checks, extension allowlist, manifest
+cross-check) — the **only** difference is that the URL does not
+have to be on the approved list.
+
+The resulting plugin is flagged as **unverified** everywhere in the
+admin UI. Its card shows a yellow banner, there is no
+risk/permissions panel, and the plugin is clearly distinguished
+from verified plugins on the list. You can still enable it, but you
+accept responsibility for whatever it does.
+
+> **If you install an unverified plugin and the URL later appears
+> in the approved list** (same URL, same SHA-256), the installer
+> silently short-circuits into the verified path on the next
+> install attempt. Your running plugin stays as-is until you
+> reinstall.
+
+## Deleting a community plugin
+
+Click the trash icon on any community plugin card to uninstall it.
+This is the only way to upgrade a community plugin — the installer
+refuses to overwrite an existing directory.
+
+The uninstall flow:
+
+1. Refuses core plugins (they can only be disabled).
+2. Calls the plugin's `deactivate()` and `uninstall()` lifecycle
+   hooks so it can clean up webhooks, scheduled jobs, etc.
+3. Deletes `src/plugins/community/{id}/` from disk.
+4. Clears every `plugin.{id}.*` row from the config table,
+   including any stored credentials.
+
+Nothing in SystemConfig survives an uninstall — re-installing the
+same plugin is a clean-slate install, not an upgrade.
+
+## If a plugin is quarantined
+
+If a plugin throws while loading or booting, ChurchCRM automatically
+**quarantines** it:
+
+- Its card shows a yellow "Quarantined" badge and border.
+- It stops running immediately — even with `enabled=1` it will not
+  load on subsequent requests.
+- The card banner shows the exception message so you can see what
+  went wrong.
+- You cannot re-enable it until you explicitly clear the quarantine.
+
+Typical causes: a missing PHP extension, a syntax error in the
+plugin after an upgrade, or the registry entry being revoked
+upstream. Fix the underlying issue, then click the shield icon on
+the plugin card to clear the quarantine. You will still have to
+click **Enable** afterwards.
 
 ## If something goes wrong
 
