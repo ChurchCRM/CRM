@@ -6,26 +6,47 @@ use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\VersionUtils;
 
 /**
- * Installs a community plugin from a signed zip URL.
+ * Installs, uninstalls, and quarantines community plugins.
  *
- * Security invariants (enforced in order):
- *   1. The caller must be an admin (the route group enforces this).
- *   2. The downloadUrl MUST exist in ApprovedPluginRegistry — we refuse to
- *      install anything that hasn't been vetted by the maintainers.
- *   3. The downloaded bytes MUST match the registry SHA-256 before we touch
- *      ZipArchive (prevents MITM / poisoned mirrors / upstream compromise).
- *   4. The zip MUST only contain path entries under a single top-level
- *      directory, with no absolute paths and no "..". ZIP Slip is rejected.
- *   5. Every entry MUST have a safe extension (no .phar, no symlinks, no
- *      setuid tricks). PHP is allowed; executables and hidden git metadata
- *      are not.
- *   6. The extracted plugin.json MUST declare the same id and version as the
- *      registry entry.
- *   7. The destination directory (src/plugins/community/{id}) MUST NOT
- *      already exist — installs never overwrite. Use uninstall then install.
+ * Two install paths are supported:
  *
- * This class never enables the plugin. Admins still have to click Enable
- * after the zip has been scanned and reviewed.
+ * 1. **Verified install** — {@see installFromUrl()}. The URL must appear
+ *    in ApprovedPluginRegistry. ChurchCRM maintainers have already
+ *    reviewed the zip and pinned its SHA-256. This is the preferred path
+ *    and is what the admin UI exposes by default.
+ *
+ * 2. **Unverified install** — {@see installUnverifiedFromUrl()}. The URL
+ *    does NOT have to be in the registry, but the admin must supply the
+ *    SHA-256 themselves (from the plugin author's release notes or from
+ *    an out-of-band trust channel). This exists so community plugin
+ *    developers can test their own plugins end-to-end and so admins can
+ *    run experimental or bleeding-edge plugins that aren't ready for
+ *    the allowlist yet. Unverified plugins are flagged via
+ *    `plugin.{id}.unverified = "1"` in SystemConfig, which
+ *    PluginManager surfaces on every admin screen.
+ *
+ * Every install — verified or unverified — enforces the same runtime
+ * safety invariants:
+ *
+ *   1. HTTPS only, with bounded (20 MB) download.
+ *   2. SHA-256 of the downloaded bytes must match the supplied digest
+ *      before ZipArchive is touched.
+ *   3. Zip walk rejects ZIP Slip, absolute paths, drive letters, control
+ *      bytes, >2000 entries, >80 MB uncompressed, disallowed extensions
+ *      (`.phar`, `.sh`, `.exe`, `.so`, `.dll`, …), and hidden files
+ *      except `.editorconfig` / `.gitattributes`.
+ *   4. Exactly one top-level directory whose name equals the plugin id.
+ *   5. Extracted plugin.json must declare the same id, and for verified
+ *      installs the same version, as the approved entry.
+ *   6. Destination community/{id} must not already exist — installs
+ *      never overwrite. Use {@see uninstall()} first.
+ *
+ * Uninstall ({@see uninstall()}) removes the plugin directory, clears
+ * `plugin.{id}.*` config keys, and calls the plugin's `uninstall()`
+ * lifecycle hook. It refuses to touch core plugins.
+ *
+ * Neither install path enables the plugin. Admins still have to click
+ * Enable after reviewing the extracted files.
  */
 class PluginInstaller
 {
@@ -143,7 +164,19 @@ class PluginInstaller
                     self::recursiveCopy($stagedDir, $destDir);
                 }
 
-                $logger->info('Community plugin installed', [
+                // Record install provenance so boot-time registry sync can
+                // later detect if this plugin is still approved.
+                self::recordProvenance($pluginId, [
+                    'source' => 'registry',
+                    'downloadUrl' => $downloadUrl,
+                    'sha256' => $expectedSha,
+                    'version' => $expectedVersion,
+                    'installedAt' => date('c'),
+                ]);
+                self::clearUnverifiedFlag($pluginId);
+                self::clearQuarantine($pluginId);
+
+                $logger->info('Community plugin installed (verified)', [
                     'plugin' => $pluginId,
                     'version' => $expectedVersion,
                     'path' => $destDir,
@@ -154,6 +187,7 @@ class PluginInstaller
                     'pluginId' => $pluginId,
                     'version' => $expectedVersion,
                     'path' => 'community/' . $pluginId,
+                    'verified' => true,
                 ];
             } finally {
                 self::recursiveDelete($tmpExtractDir);
@@ -161,6 +195,340 @@ class PluginInstaller
         } finally {
             @unlink($tmpZip);
         }
+    }
+
+    /**
+     * Install a community plugin from an arbitrary HTTPS zip URL,
+     * **without** requiring the URL to be in ApprovedPluginRegistry.
+     *
+     * The admin must supply the expected SHA-256 themselves. Every other
+     * safety invariant (TLS, size cap, zip-slip, extension allowlist,
+     * manifest cross-check, never-overwrite) still applies.
+     *
+     * Use cases:
+     *
+     *   - A community plugin developer iterating on their own plugin,
+     *     installing successive release builds from their own CI.
+     *   - A ChurchCRM admin running an experimental plugin that isn't
+     *     on the approved list yet.
+     *   - A private/internal plugin that will never be submitted to the
+     *     public allowlist (custom integrations for one parish).
+     *
+     * Installed plugins are flagged as unverified in SystemConfig
+     * (`plugin.{id}.unverified = "1"`). PluginManager::getAllPlugins()
+     * surfaces this so the admin UI can render a clear banner. An
+     * unverified plugin can still be enabled by an admin, but the UI
+     * should make it visually distinct from approved plugins.
+     *
+     * @param string $pluginsPath  Absolute path to src/plugins
+     * @param string $downloadUrl  HTTPS URL to the plugin zip
+     * @param string $expectedSha  Hex SHA-256 the caller expects (case-insensitive)
+     * @param string $declaredId   Plugin id the caller says the zip contains.
+     *                             Must match the top-level directory name
+     *                             and plugin.json id.
+     *
+     * @return array{pluginId: string, version: string, path: string, verified: bool}
+     *
+     * @throws \RuntimeException on any validation or IO failure
+     */
+    public static function installUnverifiedFromUrl(
+        string $pluginsPath,
+        string $downloadUrl,
+        string $expectedSha,
+        string $declaredId
+    ): array {
+        $logger = LoggerUtils::getAppLogger();
+        $pluginsPath = rtrim($pluginsPath, '/');
+
+        // Input sanitisation. These are the only values we trust the
+        // caller for, so validate them up front.
+        if (!preg_match('/^[a-z0-9][a-z0-9-]*$/', $declaredId) || $declaredId === 'messages') {
+            throw new \RuntimeException('Invalid plugin id. Must be kebab-case, not reserved.');
+        }
+        $expectedSha = strtolower(trim($expectedSha));
+        if (!preg_match('/^[a-f0-9]{64}$/', $expectedSha)) {
+            throw new \RuntimeException('SHA-256 must be a 64-character hexadecimal string.');
+        }
+
+        // If the admin happens to point us at a URL that IS in the
+        // registry, short-circuit into the verified path so they get
+        // the full risk/permissions display.
+        $registryEntry = ApprovedPluginRegistry::findByDownloadUrl($pluginsPath, $downloadUrl);
+        if ($registryEntry !== null) {
+            $logger->info('Unverified install short-circuited into verified path', [
+                'url' => $downloadUrl,
+                'registryId' => $registryEntry['id'] ?? null,
+            ]);
+
+            return self::installFromUrl($pluginsPath, $downloadUrl);
+        }
+
+        // Never overwrite an existing install.
+        $destDir = $pluginsPath . '/community/' . $declaredId;
+        if (is_dir($destDir)) {
+            throw new \RuntimeException(sprintf(
+                'A plugin is already installed at %s. Uninstall it before reinstalling.',
+                'community/' . $declaredId
+            ));
+        }
+
+        $tmpZip = self::downloadToTempFile($downloadUrl);
+
+        try {
+            $zipBytes = filesize($tmpZip);
+            if ($zipBytes === false || $zipBytes <= 0) {
+                throw new \RuntimeException('Downloaded zip is empty.');
+            }
+            if ($zipBytes > self::MAX_ZIP_BYTES) {
+                throw new \RuntimeException(sprintf(
+                    'Plugin zip is too large (%d bytes, max %d).',
+                    $zipBytes,
+                    self::MAX_ZIP_BYTES
+                ));
+            }
+
+            $actualSha = hash_file('sha256', $tmpZip);
+            if ($actualSha === false || !hash_equals($expectedSha, strtolower($actualSha))) {
+                $logger->warning('Unverified install checksum mismatch', [
+                    'plugin' => $declaredId,
+                    'expected' => $expectedSha,
+                    'actual' => $actualSha,
+                ]);
+                throw new \RuntimeException('Plugin zip checksum does not match the supplied SHA-256. Installation refused.');
+            }
+
+            $tmpExtractDir = self::makeTempDir();
+            try {
+                // Version cross-check is skipped for unverified installs
+                // — the admin has not declared an expected version. Pass
+                // null to extractAndValidate().
+                self::extractAndValidate($tmpZip, $tmpExtractDir, $declaredId, null);
+
+                $stagedDir = $tmpExtractDir . '/' . $declaredId;
+                if (!is_dir($stagedDir)) {
+                    throw new \RuntimeException('Zip did not contain a top-level directory named ' . $declaredId);
+                }
+
+                // Read the installed version for provenance tracking /
+                // UI display. The extractAndValidate() step already
+                // confirmed plugin.json exists and has a matching id.
+                $manifestPath = $stagedDir . '/plugin.json';
+                $manifest = json_decode((string) @file_get_contents($manifestPath), true);
+                $installedVersion = is_array($manifest) ? (string) ($manifest['version'] ?? 'unknown') : 'unknown';
+
+                self::ensureDir(dirname($destDir));
+                if (!@rename($stagedDir, $destDir)) {
+                    self::recursiveCopy($stagedDir, $destDir);
+                }
+
+                self::recordProvenance($declaredId, [
+                    'source' => 'unverified-url',
+                    'downloadUrl' => $downloadUrl,
+                    'sha256' => $expectedSha,
+                    'version' => $installedVersion,
+                    'installedAt' => date('c'),
+                ]);
+                self::setUnverifiedFlag($declaredId);
+                self::clearQuarantine($declaredId);
+
+                $logger->warning('Community plugin installed (UNVERIFIED)', [
+                    'plugin' => $declaredId,
+                    'version' => $installedVersion,
+                    'url' => $downloadUrl,
+                    'path' => $destDir,
+                ]);
+
+                return [
+                    'pluginId' => $declaredId,
+                    'version' => $installedVersion,
+                    'path' => 'community/' . $declaredId,
+                    'verified' => false,
+                ];
+            } finally {
+                self::recursiveDelete($tmpExtractDir);
+            }
+        } finally {
+            @unlink($tmpZip);
+        }
+    }
+
+    /**
+     * Remove a community plugin from disk and from SystemConfig.
+     *
+     * Steps, in order:
+     *   1. Refuse if the plugin id is empty, reserved, or points at a
+     *      core plugin directory. Core plugins are never deleted.
+     *   2. Disable the plugin (calls deactivate() + clears
+     *      plugin.{id}.enabled).
+     *   3. Call the plugin's uninstall() lifecycle hook so it can clean
+     *      up any external state (webhooks it registered with a
+     *      third-party service, for example).
+     *   4. Recursively delete src/plugins/community/{id}.
+     *   5. Clear every plugin.{id}.* key from SystemConfig — this is
+     *      what removes stored credentials, enablement state, and any
+     *      settings the plugin wrote.
+     *
+     * Refuses to touch anything under src/plugins/core/.
+     *
+     * @return array{pluginId: string, removedKeys: list<string>}
+     */
+    public static function uninstall(string $pluginsPath, string $pluginId): array
+    {
+        $logger = LoggerUtils::getAppLogger();
+        $pluginsPath = rtrim($pluginsPath, '/');
+
+        if (!preg_match('/^[a-z0-9][a-z0-9-]*$/', $pluginId)) {
+            throw new \RuntimeException('Invalid plugin id.');
+        }
+
+        // Refuse core plugins.
+        $corePath = $pluginsPath . '/core/' . $pluginId;
+        if (is_dir($corePath)) {
+            throw new \RuntimeException(
+                'Core plugins cannot be uninstalled. Disable them instead.'
+            );
+        }
+
+        $communityPath = $pluginsPath . '/community/' . $pluginId;
+        // It's OK for the directory to be missing — config keys may
+        // still need cleanup if a previous uninstall was interrupted.
+
+        // Call the lifecycle hooks if the plugin can still be loaded.
+        try {
+            $plugin = PluginManager::getPlugin($pluginId);
+            if ($plugin !== null) {
+                try {
+                    $plugin->deactivate();
+                } catch (\Throwable $e) {
+                    $logger->warning('Plugin deactivate() threw during uninstall', [
+                        'plugin' => $pluginId,
+                        'error' => $e->getMessage(),
+                    ]);
+                }
+                try {
+                    $plugin->uninstall();
+                } catch (\Throwable $e) {
+                    $logger->warning('Plugin uninstall() threw; continuing', [
+                        'plugin' => $pluginId,
+                        'error' => $e->getMessage(),
+                    ]);
+                }
+            }
+        } catch (\Throwable $e) {
+            // Plugin load itself failed — still continue with removal.
+            $logger->warning('Could not load plugin during uninstall', [
+                'plugin' => $pluginId,
+                'error' => $e->getMessage(),
+            ]);
+        }
+
+        // Delete on-disk files.
+        if (is_dir($communityPath)) {
+            self::recursiveDelete($communityPath);
+        }
+
+        // Clear all plugin.{id}.* config keys.
+        $removedKeys = self::clearPluginConfig($pluginId);
+
+        $logger->info('Community plugin uninstalled', [
+            'plugin' => $pluginId,
+            'path' => $communityPath,
+            'clearedConfigKeys' => $removedKeys,
+        ]);
+
+        return [
+            'pluginId' => $pluginId,
+            'removedKeys' => $removedKeys,
+        ];
+    }
+
+    /**
+     * Record install provenance in SystemConfig as plugin.{id}.provenance
+     * (stored as a JSON blob). PluginManager uses this at boot to
+     * reconcile installed plugins against the current approved registry.
+     *
+     * @param array<string, scalar|null> $data
+     */
+    private static function recordProvenance(string $pluginId, array $data): void
+    {
+        try {
+            \ChurchCRM\dto\SystemConfig::setValue(
+                "plugin.{$pluginId}.provenance",
+                (string) json_encode($data)
+            );
+        } catch (\Throwable $e) {
+            LoggerUtils::getAppLogger()->warning('Could not record plugin provenance', [
+                'plugin' => $pluginId,
+                'error' => $e->getMessage(),
+            ]);
+        }
+    }
+
+    private static function setUnverifiedFlag(string $pluginId): void
+    {
+        try {
+            \ChurchCRM\dto\SystemConfig::setValue("plugin.{$pluginId}.unverified", '1');
+        } catch (\Throwable $e) {
+            LoggerUtils::getAppLogger()->warning('Could not set unverified flag', [
+                'plugin' => $pluginId,
+                'error' => $e->getMessage(),
+            ]);
+        }
+    }
+
+    private static function clearUnverifiedFlag(string $pluginId): void
+    {
+        try {
+            \ChurchCRM\dto\SystemConfig::setValue("plugin.{$pluginId}.unverified", '0');
+        } catch (\Throwable $e) {
+            // Non-fatal — unverified state is advisory.
+        }
+    }
+
+    private static function clearQuarantine(string $pluginId): void
+    {
+        try {
+            \ChurchCRM\dto\SystemConfig::setValue("plugin.{$pluginId}.quarantined", '');
+            \ChurchCRM\dto\SystemConfig::setValue("plugin.{$pluginId}.quarantineReason", '');
+        } catch (\Throwable $e) {
+            // Non-fatal.
+        }
+    }
+
+    /**
+     * Remove every `plugin.{pluginId}.*` row from SystemConfig.
+     *
+     * We rely on Propel directly here because SystemConfig doesn't
+     * expose a prefix-delete API. This is the one place in the plugin
+     * system that touches config storage without going through
+     * SystemConfig::setValue().
+     *
+     * @return list<string> The keys that were removed.
+     */
+    private static function clearPluginConfig(string $pluginId): array
+    {
+        $prefix = "plugin.{$pluginId}.";
+        $removed = [];
+        try {
+            // config_cfg.cfg_name is exposed as `Name` via Propel
+            // (phpName="Name" in orm/schema.xml). Use filterByName with
+            // Criteria::LIKE for the prefix match.
+            $rows = \ChurchCRM\model\ChurchCRM\ConfigQuery::create()
+                ->filterByName($prefix . '%', \Propel\Runtime\ActiveQuery\Criteria::LIKE)
+                ->find();
+
+            foreach ($rows as $row) {
+                $removed[] = (string) $row->getName();
+                $row->delete();
+            }
+        } catch (\Throwable $e) {
+            LoggerUtils::getAppLogger()->warning('Could not clear plugin config rows', [
+                'plugin' => $pluginId,
+                'error' => $e->getMessage(),
+            ]);
+        }
+
+        return $removed;
     }
 
     /**
@@ -240,7 +608,7 @@ class PluginInstaller
      * Open the zip, enforce structural invariants, and extract to $destRoot.
      * After this method returns, $destRoot/{pluginId}/ contains the payload.
      */
-    private static function extractAndValidate(string $zipPath, string $destRoot, string $pluginId, string $expectedVersion): void
+    private static function extractAndValidate(string $zipPath, string $destRoot, string $pluginId, ?string $expectedVersion): void
     {
         if (!class_exists(\ZipArchive::class)) {
             throw new \RuntimeException('The PHP zip extension is required to install plugins.');
@@ -324,9 +692,12 @@ class PluginInstaller
             throw new \RuntimeException('Plugin manifest must be a JSON object.');
         }
         if (($manifest['id'] ?? null) !== $pluginId) {
-            throw new \RuntimeException('Plugin manifest id does not match approved plugin id.');
+            throw new \RuntimeException('Plugin manifest id does not match declared plugin id.');
         }
-        if (($manifest['version'] ?? null) !== $expectedVersion) {
+        // Version cross-check only applies to verified (registry) installs.
+        // Unverified installs pass null here because the admin has not
+        // committed to a specific version number up front.
+        if ($expectedVersion !== null && ($manifest['version'] ?? null) !== $expectedVersion) {
             throw new \RuntimeException('Plugin manifest version does not match approved version.');
         }
         if (($manifest['type'] ?? 'community') !== 'community') {
