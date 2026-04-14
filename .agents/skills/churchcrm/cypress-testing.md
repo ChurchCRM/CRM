@@ -96,9 +96,18 @@ cy.setupNoFinanceSession();
 
 ### Configuration Location
 
-Credentials live in **two** config files that MUST be kept in sync:
-- `cypress.config.ts` — used for local `npm run test` / `npm run test:open`
-- `docker/cypress.config.ts` — used by the Docker / CI runner
+Credentials live in the Cypress config files under `cypress/configs/` that the
+`npm run test*` scripts pass via `--config-file`:
+
+- `cypress/configs/docker.config.ts` — used by `npm run test`, `test:open`,
+  `test:api`, `test:ui`, and the `test-root` / `test-subdir` CI matrix
+- `cypress/configs/new-system.config.ts` — used by `npm run test:new-system`
+  and the `test-new-system` CI job (has its own `env` block with an admin
+  account because this job boots from a fresh install)
+
+There is **no** root `cypress.config.ts` in this repo — don't add one and
+don't expect Cypress to auto-detect one. Every script passes an explicit
+`--config-file`.
 
 ```typescript
 env: {
@@ -116,20 +125,23 @@ env: {
 }
 ```
 
-> ⚠️ **CRITICAL: keep both configs in sync.** <!-- learned: 2026-04-13 -->
-> Any new test user credential has to be added to **both** `cypress.config.ts`
-> and `docker/cypress.config.ts`. If you update only one, tests will pass
-> locally but fail in CI (or vice-versa), and the failure message — usually
-> `Admin credentials not configured in cypress.config.ts env` thrown from
-> `setupLoginSession` — does not tell you which config file is missing the
-> key. Always grep both files when adding a new `*.username` / `*.password`
-> entry.
+> ⚠️ **CRITICAL: keep shared credentials in sync across configs.** <!-- learned: 2026-04-13 -->
+> If you add a new test user that the `test-new-system` job also needs, the
+> credential has to be added to **both** `cypress/configs/docker.config.ts`
+> and `cypress/configs/new-system.config.ts`. If you update only one,
+> tests will pass in one CI job but fail in the other, and the failure
+> message from `setupLoginSession` — usually
+> `Admin credentials not configured in cypress config env` — does not tell
+> you which config file is missing the key. Always grep both files when
+> adding a new `*.username` / `*.password` entry.
 
 **CRITICAL:**
 - ❌ DO NOT hardcode credentials in test files
 - ❌ DO NOT add commented-out tests or TODO comments
 - ✅ Configuration-driven approach prevents secrets leaking into git
-- ✅ Update `cypress.config.ts` AND `docker/cypress.config.ts` together
+- ✅ Update `cypress/configs/docker.config.ts` AND
+  `cypress/configs/new-system.config.ts` together when the credential is
+  used by both jobs
 
 ### cy.request() API Calls Reset PHP Sessions (CRITICAL) <!-- learned: 2026-03-27 -->
 
@@ -853,7 +865,7 @@ Config files live in `cypress/configs/` (NOT `docker/`):
 - `cypress/configs/new-system.config.ts` — setup wizard / fresh install tests
 - `cypress/configs/base.config.ts` + `_shared.ts` — shared base configuration
 
-**NOTE:** The root `cypress.config.ts` is auto-detected by Cypress, so `--config-file` is only required when using a non-default config (e.g., `cypress/configs/new-system.config.ts`). For standard runs, `npx cypress run --spec "..."` works without `--config-file`.
+**NOTE:** There is **no** root `cypress.config.ts` in this repo. Cypress can still run without `--config-file`, but it will fall back to defaults and will **not** pick up ChurchCRM's required `env` / `baseUrl` / `specPattern` settings. The `npm run test*` scripts already pass `--config-file cypress/configs/docker.config.ts` (or `new-system.config.ts`) — see `package.json`. If you invoke ChurchCRM's Cypress suite yourself, always pass the appropriate config file, e.g. `npx cypress run --config-file cypress/configs/docker.config.ts --spec "..."`.
 
 **CRITICAL: Always install Cypress via `npm install`** <!-- learned: 2026-03-07 -->
 - Never use `npx cypress install` — it can produce a corrupt binary with wrong permissions.
@@ -1153,7 +1165,7 @@ const password = Cypress.env('newSystemAdminPassword');  // ❌ NULL/undefined -
 
 ### ✅ CORRECT - Use stable config source
 ```typescript
-// cypress.config.ts
+// cypress/configs/docker.config.ts
 env: {
     'admin.password': 'changeme',
     'admin.new.password': 'AdminP@ss1234!',  // Define stable password upfront
@@ -1174,7 +1186,7 @@ it('should store password', () => {
     cy.task('setPassword', newPassword);
 });
 
-// cypress.config.ts - register task
+// cypress/configs/docker.config.ts - register task
 on('task', {
     setPassword: (pwd) => {
         require('fs').writeFileSync('.temp/test-pwd', pwd);

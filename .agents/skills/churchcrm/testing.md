@@ -15,7 +15,7 @@ This skill covers writing and running Cypress tests for API endpoints and UI wor
 
 - **API Tests**: `cypress/e2e/api/private/[feature]/[endpoint].spec.js`
 - **UI Tests**: `cypress/e2e/ui/[feature]/`
-- **Configuration**: `cypress.config.ts` (dev) and `docker/cypress.config.ts` (CI)
+- **Configuration**: `cypress/configs/docker.config.ts` (standard runner used by `npm run test` / `test:open` / `test:api` / `test:ui` / the `test-root` + `test-subdir` CI jobs) and `cypress/configs/new-system.config.ts` (setup-wizard / fresh-install runner used by `npm run test:new-system` and the `test-new-system` CI job)
 
 ## Cypress Configuration & Logging
 
@@ -132,7 +132,14 @@ describe('Feature X', () => {
 
 ### Credentials Configuration
 
-Credentials are stored in `cypress.config.ts` and `docker/cypress.config.ts`:
+Credentials live in the Cypress config files under `cypress/configs/` that
+`npm run test*` passes via `--config-file`:
+
+- `cypress/configs/docker.config.ts` — standard CI/dev runner
+- `cypress/configs/new-system.config.ts` — setup-wizard / fresh-install runner
+
+There is **no** root `cypress.config.ts` and no `docker/cypress.config.ts` —
+don't add one; every script passes `--config-file` explicitly.
 
 ```typescript
 env: {
@@ -148,7 +155,9 @@ env: {
 **DO NOT:**
 - ❌ Hardcode credentials in test files
 - ❌ Add commented-out tests or TODO comments - remove them
-- ❌ Add new users without updating both config files
+- ❌ Add new users to only one config — if the user is needed by both
+  runners, add the credential to BOTH `cypress/configs/docker.config.ts`
+  and `cypress/configs/new-system.config.ts`
 
 ### Other Available Commands
 
@@ -382,6 +391,6 @@ Four patterns cause most timing-related flaky failures. Full detail and code exa
 
 **API Tests:** `cypress/e2e/api/`
 **UI Tests:** `cypress/e2e/ui/`
-**Config:** `cypress.config.ts`, `docker/cypress.config.ts`
+**Config:** `cypress/configs/docker.config.ts`, `cypress/configs/new-system.config.ts`
 **Support:** `cypress/support/commands.js`
 **Logs:** `src/logs/`

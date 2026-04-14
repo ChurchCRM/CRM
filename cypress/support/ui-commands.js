@@ -45,10 +45,13 @@ Cypress.Commands.add('setupLoginSession', (sessionName, username, password, opti
 
 /**
  * Sets up a cached admin login session for Cypress UI tests.
- * Reads credentials from cypress.config.ts env configuration.
+ * Reads credentials from the Cypress config env (cypress/configs/docker.config.ts
+ * for the standard CI/dev runner, cypress/configs/new-system.config.ts for
+ * the new-system job). See `.agents/skills/churchcrm/cypress-testing.md`
+ * for the full rationale.
  * Usage in test files:
  *   beforeEach(() => cy.setupAdminSession());
- * 
+ *
  * Note: Uses cy.session() with explicit validation to cache login across test runs.
  * If validation fails, the session is cleared and login is re-attempted.
  */
@@ -56,17 +59,18 @@ Cypress.Commands.add('setupAdminSession', (options = {}) => {
     const username = Cypress.env('admin.username');
     const password = Cypress.env('admin.password');
     if (!username || !password) {
-        throw new Error('Admin credentials not configured in cypress.config.ts env: admin.username and admin.password required');
+        throw new Error('Admin credentials not configured in cypress/configs/docker.config.ts (or cypress/configs/new-system.config.ts) env: admin.username and admin.password required');
     }
     cy.setupLoginSession('admin-session', username, password, options);
 });
 
 /**
  * Sets up a cached standard user login session for Cypress UI tests.
- * Reads credentials from cypress.config.ts env configuration.
+ * Reads credentials from the Cypress config env
+ * (cypress/configs/docker.config.ts for the standard CI/dev runner).
  * Usage in test files:
  *   beforeEach(() => cy.setupStandardSession());
- * 
+ *
  * Note: Uses cy.session() with explicit validation to cache login across test runs.
  * If validation fails, the session is cleared and login is re-attempted.
  */
@@ -74,7 +78,7 @@ Cypress.Commands.add('setupStandardSession', (options = {}) => {
     const username = Cypress.env('standard.username');
     const password = Cypress.env('standard.password');
     if (!username || !password) {
-        throw new Error('Standard user credentials not configured in cypress.config.ts env: standard.username and standard.password required');
+        throw new Error('Standard user credentials not configured in cypress/configs/docker.config.ts env: standard.username and standard.password required');
     }
     cy.setupLoginSession('standard-session', username, password, options);
 });
@@ -82,7 +86,8 @@ Cypress.Commands.add('setupStandardSession', (options = {}) => {
 /**
  * Sets up a cached session for a user WITHOUT finance permissions.
  * Used to test that finance pages correctly deny access to non-finance users.
- * Reads credentials from cypress.config.ts env configuration.
+ * Reads credentials from the Cypress config env
+ * (cypress/configs/docker.config.ts for the standard CI/dev runner).
  * Usage in test files:
  *   beforeEach(() => cy.setupNoFinanceSession());
  */
@@ -90,7 +95,7 @@ Cypress.Commands.add('setupNoFinanceSession', (options = {}) => {
     const username = Cypress.env('nofinance.username');
     const password = Cypress.env('nofinance.password');
     if (!username || !password) {
-        throw new Error('No-finance user credentials not configured in cypress.config.ts env: nofinance.username and nofinance.password required');
+        throw new Error('No-finance user credentials not configured in cypress/configs/docker.config.ts env: nofinance.username and nofinance.password required');
     }
     cy.setupLoginSession('nofinance-session', username, password, options);
 });

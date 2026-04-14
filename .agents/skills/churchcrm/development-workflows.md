@@ -315,7 +315,7 @@ git add -A
 
 - **Build**: `webpack.config.js`, `Gruntfile.js`, `package.json`
 - **Docker**: `docker-compose.yaml`, `docker/docker-compose.*.yaml`
-- **Cypress**: `cypress.config.ts`, `docker/cypress.config.ts`
+- **Cypress**: `cypress/configs/docker.config.ts`, `cypress/configs/new-system.config.ts`, `cypress/configs/base.config.ts`, `cypress/configs/_shared.ts`
 - **PHP**: `composer.json`, `orm/propel.php.dist`
 - **ORM**: `orm/schema.xml`
 
