@@ -208,7 +208,6 @@ describe("Admin - Church Information Page", () => {
         cy.get("#sChurchZip").clear().type("62701");
 
         // Submit form
-        cy.wait(500);
         cy.get("#church-info-form").submit();
 
         // Verify redirect and success
@@ -273,7 +272,6 @@ describe("Admin - Church Information Page", () => {
             cy.get("#iChurchLatitude").clear().type("7.0933301");
             cy.get("#iChurchLongitude").clear().type("125.5818270");
 
-            cy.wait(500);
             cy.get("#church-info-form").submit();
 
             cy.url({ timeout: 10000 }).should("include", "church-info");
@@ -294,7 +292,6 @@ describe("Admin - Church Information Page", () => {
             cy.get("#iChurchLatitude").clear().type("91");
             cy.get("#iChurchLongitude").clear().type("0");
 
-            cy.wait(500);
             cy.get("#church-info-form").submit();
 
             cy.contains("Latitude must be a number between -90 and 90", { timeout: 10000 }).should("be.visible");
@@ -311,7 +308,6 @@ describe("Admin - Church Information Page", () => {
             cy.get("#iChurchLatitude").clear().type("0");
             cy.get("#iChurchLongitude").clear().type("181");
 
-            cy.wait(500);
             cy.get("#church-info-form").submit();
 
             cy.contains("Longitude must be a number between -180 and 180", { timeout: 10000 }).should("be.visible");
@@ -327,7 +323,6 @@ describe("Admin - Church Information Page", () => {
             cy.get("#iChurchLatitude").clear().type("40.7128");
             cy.get("#iChurchLongitude").clear();
 
-            cy.wait(500);
             cy.get("#church-info-form").submit();
 
             cy.contains("Both latitude and longitude must be provided together", { timeout: 10000 }).should("be.visible");
@@ -346,7 +341,6 @@ describe("Admin - Church Information Page", () => {
             cy.get("#iChurchLatitude").clear();
             cy.get("#iChurchLongitude").clear();
 
-            cy.wait(500);
             cy.get("#church-info-form").submit();
 
             cy.url({ timeout: 10000 }).should("include", "church-info");

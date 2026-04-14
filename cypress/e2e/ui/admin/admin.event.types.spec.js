@@ -48,12 +48,10 @@ describe("Event Types Management", () => {
       200,
     );
 
-    // cy.request resets PHP sessions — clearCookies + direct login
-    cy.clearCookies();
-    cy.visit("session/begin");
-    cy.get("input[name=User]").type(Cypress.env("admin.username"));
-    cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
-    cy.url().should("not.include", "session/begin");
+    // cy.request / makePrivateAdminAPICall resets the PHP session; use the
+    // canonical session-cache command with forceLogin to re-establish a
+    // valid admin session instead of hand-rolling a login flow.
+    cy.setupAdminSession({ forceLogin: true });
 
     cy.visit("event/types");
     // The "Church Service" type should have a badge with a count
@@ -71,12 +69,10 @@ describe("Event Types Management", () => {
       200,
     );
 
-    // cy.request resets PHP sessions — clearCookies + direct login
-    cy.clearCookies();
-    cy.visit("session/begin");
-    cy.get("input[name=User]").type(Cypress.env("admin.username"));
-    cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
-    cy.url().should("not.include", "session/begin");
+    // cy.request / makePrivateAdminAPICall resets the PHP session; use the
+    // canonical session-cache command with forceLogin to re-establish a
+    // valid admin session instead of hand-rolling a login flow.
+    cy.setupAdminSession({ forceLogin: true });
 
     // .delete-type-btn lives on the list page, not the edit page
     cy.visit("event/types");
@@ -96,11 +92,10 @@ describe("Event Types Management", () => {
       200,
     );
 
-    cy.clearCookies();
-    cy.visit("session/begin");
-    cy.get("input[name=User]").type(Cypress.env("admin.username"));
-    cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
-    cy.url().should("not.include", "session/begin");
+    // cy.request / makePrivateAdminAPICall resets the PHP session; use the
+    // canonical session-cache command with forceLogin to re-establish a
+    // valid admin session instead of hand-rolling a login flow.
+    cy.setupAdminSession({ forceLogin: true });
 
     cy.visit("event/types");
     cy.get(".delete-type-btn").first().should("have.attr", "data-event-count");

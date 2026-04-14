@@ -123,13 +123,12 @@ describe('03 - Backup and Restore', () => {
             // Should show progress
             cy.get('#statusRunning', { timeout: 10000 }).should('be.visible');
             
-            // Wait for restore to complete - this redirects to login after success
-            // The success modal appears briefly then redirects
+            // Wait for restore to complete - this redirects to login after success.
+            // The success modal appears briefly then the page redirects via a
+            // countdown. cy.url().should() with timeout auto-retries, so no
+            // numeric wait is needed to cover the countdown.
             cy.get('#restoreSuccessModal', { timeout: 120000 }).should('be.visible');
-            
-            // Wait a moment for redirect countdown
-            cy.wait(2000);
-            
+
             // Should eventually redirect to login page
             cy.url({ timeout: 30000 }).should('satisfy', (url) => {
                 return url.includes('/session/begin') || url.includes('/login');
@@ -199,10 +198,10 @@ describe('03 - Backup and Restore', () => {
             // Should see people listing
             cy.contains('People').should('be.visible');
             
-            // Table should have data
+            // Table should have data. DataTables populates via AJAX; the
+            // length assertion auto-retries so no numeric wait is needed.
             cy.get('table', { timeout: 10000 }).should('exist');
-            cy.wait(2000); // Wait for DataTables
-            cy.get('table tbody tr').should('have.length.at.least', 1);
+            cy.get('table tbody tr', { timeout: 10000 }).should('have.length.at.least', 1);
         });
     });
 

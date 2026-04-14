@@ -96,28 +96,40 @@ cy.setupNoFinanceSession();
 
 ### Configuration Location
 
-Credentials stored in `cypress.config.ts` and `docker/cypress.config.ts`:
+Credentials live in **two** config files that MUST be kept in sync:
+- `cypress.config.ts` — used for local `npm run test` / `npm run test:open`
+- `docker/cypress.config.ts` — used by the Docker / CI runner
 
 ```typescript
 env: {
     // Admin account
     'admin.username': 'admin',
     'admin.password': 'changeme',
-    
+
     // Standard user
     'standard.username': 'tony.wade@example.com',
     'standard.password': 'basicjoe',
-    
+
     // User without finance permission
     'nofinance.username': 'judith.matthews@example.com',
     'nofinance.password': 'noMoney$',
 }
 ```
 
+> ⚠️ **CRITICAL: keep both configs in sync.** <!-- learned: 2026-04-13 -->
+> Any new test user credential has to be added to **both** `cypress.config.ts`
+> and `docker/cypress.config.ts`. If you update only one, tests will pass
+> locally but fail in CI (or vice-versa), and the failure message — usually
+> `Admin credentials not configured in cypress.config.ts env` thrown from
+> `setupLoginSession` — does not tell you which config file is missing the
+> key. Always grep both files when adding a new `*.username` / `*.password`
+> entry.
+
 **CRITICAL:**
 - ❌ DO NOT hardcode credentials in test files
 - ❌ DO NOT add commented-out tests or TODO comments
 - ✅ Configuration-driven approach prevents secrets leaking into git
+- ✅ Update `cypress.config.ts` AND `docker/cypress.config.ts` together
 
 ### cy.request() API Calls Reset PHP Sessions (CRITICAL) <!-- learned: 2026-03-27 -->
 
@@ -269,16 +281,21 @@ it("assigns a property and it appears in the list", () => {
     cy.makePrivateAdminAPICall("DELETE", "/api/groups/1/properties/5", null, [200, 404]);
 });
 
-// ✅ CORRECT: beforeEach with API setup + freshAdminLogin()
+// ✅ CORRECT: beforeEach clears stale state AND sets up fresh state
+// (no afterEach — see "State Cleanup: prefer beforeEach" section below).
 describe("Remove property tests", () => {
     beforeEach(() => {
-        cy.makePrivateAdminAPICall("POST", "/api/groups/1/properties/5", {}, [200, 409]);
-        freshAdminLogin(); // login AFTER all API calls
-    });
-
-    afterEach(() => {
-        // cleanup is safe here — runs after UI phase
+        // 1. Clean up any stale state from a previous (possibly failed) run.
+        //    Accept 404 so a fresh DB is also fine.
         cy.makePrivateAdminAPICall("DELETE", "/api/groups/1/properties/5", null, [200, 404]);
+
+        // 2. Create the fixture this test needs. Accept 409 in case a
+        //    concurrent test left a duplicate.
+        cy.makePrivateAdminAPICall("POST", "/api/groups/1/properties/5", {}, [200, 409]);
+
+        // 3. Re-establish session AFTER all API calls — cy.request resets
+        //    PHP session cookies, so this has to be last.
+        freshAdminLogin();
     });
 
     it("shows Remove button", () => {
@@ -371,6 +388,72 @@ cy.contains("h3.card-title", "Properties").should("be.visible");
 // ❌ WRONG — .card-title also matches sidebar nav structure; may find collapsed nav items
 cy.contains(".card-title", "Properties").should("be.visible");
 ```
+
+### State Cleanup: prefer `beforeEach`, not `afterEach` <!-- learned: 2026-04-13 -->
+
+Current Cypress best practice (2024+) is to clean up state at the **start** of the next test, not at the end of the previous one. Reason: `afterEach` does not run if a test crashes mid-way (uncaught exception, lost connection, process kill). Cleanup that only runs in `afterEach` can therefore leave the DB in a bad state that breaks every subsequent test.
+
+```javascript
+// ✅ CORRECT — cleanup and fixture setup both live in beforeEach
+describe("Group property management", () => {
+    beforeEach(() => {
+        // 1. Delete anything a prior run (possibly failed mid-test) left behind.
+        //    Accept 404 so a truly fresh DB also works.
+        cy.makePrivateAdminAPICall("DELETE", "/api/groups/1/properties/5", null, [200, 404]);
+
+        // 2. Re-create the fixture this test needs.
+        cy.makePrivateAdminAPICall("POST", "/api/groups/1/properties/5", {}, [200, 409]);
+
+        // 3. Re-establish session last — cy.request resets PHP session cookies.
+        freshAdminLogin();
+    });
+
+    it("shows Remove button", () => {
+        cy.visit("/groups/view/1");
+        cy.get(".remove-group-property-btn").should("exist");
+    });
+});
+
+// ❌ WRONG — cleanup only runs if the previous test reached the end successfully
+describe("Group property management", () => {
+    beforeEach(() => {
+        cy.makePrivateAdminAPICall("POST", "/api/groups/1/properties/5", {}, [200, 409]);
+        freshAdminLogin();
+    });
+
+    afterEach(() => {
+        // This silently skips when a test crashes, leaving stale state behind.
+        cy.makePrivateAdminAPICall("DELETE", "/api/groups/1/properties/5", null, [200, 404]);
+    });
+});
+```
+
+`afterEach` / `after` are still fine for **non-state** housekeeping (printing debug info, collecting artifacts). Don't use them to reset application state.
+
+### When to use `cy.setupAdminSession({ forceLogin: true })` <!-- learned: 2026-04-13 -->
+
+`setupAdminSession()` uses `cy.session()` to cache the admin login across tests — normally you only pay the login cost once per run. The `{ forceLogin: true }` option generates a **new** unique session name (`admin-session-<timestamp>-<random>`), which bypasses the cache and forces a full re-login.
+
+**Only use `forceLogin: true` when you have invalidated the cached session.** The canonical case is immediately after a `cy.request()` / `cy.makePrivateAdminAPICall()` call, because ChurchCRM's PHP backend rotates the session cookie on every request (see "cy.request() API Calls Reset PHP Sessions" above). If you call `cy.setupAdminSession()` without `forceLogin` at that point, the session-cache validate callback will pass (the CRM cookie *technically* exists) but point at a dead PHP session, and your next `cy.visit(...)` will silently redirect to the login page.
+
+```javascript
+// ✅ CORRECT — re-establish session after API mutation
+it("creates a user via the form", () => {
+    cy.makePrivateAdminAPICall("DELETE", "/admin/api/user/25", null, [200, 404]);
+    cy.setupAdminSession({ forceLogin: true });  // required — API call above invalidated the session
+    cy.visit("UserEditor.php?NewPersonID=25");
+    // ...
+});
+
+// ❌ WRONG — forceLogin with no preceding API call wastes ~3–5 seconds per test
+describe("User listing", () => {
+    beforeEach(() => {
+        cy.setupAdminSession({ forceLogin: true });  // ❌ unnecessary; cache was valid
+    });
+});
+```
+
+**Performance note:** each `forceLogin: true` adds ~3–5 seconds of wall time because it runs the full UI login (`cy.visit('/login')` + type username/password). Don't sprinkle it defensively — the skill doc's "UI Tests Must Not Call APIs After Login" pattern above is the cheaper alternative: do all your API setup **before** the first `setupAdminSession()`, not after.
 
 **`cy.contains()` Must Be Scoped to a Container <!-- learned: 2026-03-27 -->**
 
@@ -604,6 +687,16 @@ cy.get('#form-user-edit').submit();
 - IDs don't change when CSS changes
 - Text-based selectors break with translations
 - Team members know test IDs won't affect styling
+
+#### Note on `data-cy` / `data-test` attributes <!-- learned: 2026-04-13 -->
+
+Cypress's own official best-practices guide recommends `data-cy="..."` (or `data-test="..."`) attributes as the primary testing selector. **ChurchCRM intentionally uses element IDs instead.** The reasoning is:
+
+- ChurchCRM already has stable `id` attributes on every interactive element from its legacy PHP templating, so there is no "no-selector-at-all" problem that `data-cy` exists to solve
+- Adding a second parallel attribute (`id` + `data-cy`) doubles the maintenance cost
+- `id` has the additional win of being usable from ordinary JS (event handlers, URL fragments) — `data-cy` is test-only
+
+New ChurchCRM code should continue to use `id` attributes for test selectors. If you touch a component that lacks an `id` and would otherwise need a brittle CSS selector, add an `id` — not a `data-cy`. This keeps the test-selector story consistent across the project.
 
 ### Complete Workflow Test
 
@@ -1113,6 +1206,45 @@ cy.fixture('users.json').then((users) => {
   cy.request('POST', '/api/admin/users', users[0]);
 });
 ```
+
+### Using Fixtures with `cy.intercept()` for API Response Mocking <!-- learned: 2026-04-13 -->
+
+For UI tests where the **UI's response handling** is what's under test — not the backend — stub the API call with a fixture instead of hitting the real server. The test becomes deterministic, faster, and no longer depends on DB state.
+
+```javascript
+// ✅ Deterministic: test that the people list renders rows from a fixture
+it("renders empty-state when people list is empty", () => {
+    cy.intercept("GET", "**/api/persons*", { fixture: "people/empty.json" }).as("getPeople");
+    cy.setupAdminSession();
+    cy.visit("/people/list");
+    cy.wait("@getPeople");
+    cy.contains("No people to display").should("be.visible");
+});
+
+// ✅ Error path: test that the UI handles a 500 gracefully
+it("shows a friendly error when the people API errors", () => {
+    cy.intercept("GET", "**/api/persons*", { statusCode: 500, body: { error: "boom" } }).as("getPeople");
+    cy.setupAdminSession();
+    cy.visit("/people/list");
+    cy.wait("@getPeople");
+    cy.get(".alert-danger").should("contain", "Unable to load");
+});
+```
+
+**Fixture organization:** store fixture files under `cypress/fixtures/<feature>/<scenario>.json` so each file captures one well-named scenario (e.g. `people/empty.json`, `people/ten-rows.json`, `finance/deposit-with-warnings.json`).
+
+**When to reach for a fixture instead of the real API:**
+- Error paths (4xx, 5xx, malformed payloads) — real failures are hard to reproduce
+- Empty states / boundary data — no need to wipe the DB
+- Large-result-set rendering — avoid seeding thousands of rows
+- Response-shape regression tests — changes to the JSON shape should fail the test
+
+**When to NOT use a fixture:**
+- Integration tests that verify a real end-to-end workflow (create → save → reload)
+- Anything that asserts on business logic computed server-side
+- Contract tests that validate the API's actual response shape against code
+
+Keep fixture files in sync with the real API. If a migration changes the response shape, the fixture and the real response both need updating.
 
 ### Environment & Config
 **Config files:** `cypress/configs/docker.config.ts` (CI/dev standard), `new-system.config.ts` (setup wizard)  

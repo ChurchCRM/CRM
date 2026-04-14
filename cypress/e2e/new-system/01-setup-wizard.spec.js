@@ -192,7 +192,6 @@ describe('01 - Setup Wizard', () => {
             cy.get('#sChurchZip').clear().type('62701');
 
             // Submit the form
-            cy.wait(500);
             cy.get('#church-info-form').submit();
 
             // Should remain on church-info and show success notification
