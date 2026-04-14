@@ -44,24 +44,43 @@ classified `high` and will need two maintainer reviews.
 
 ## 1. Scaffold the plugin directory
 
-Pick a kebab-case id that matches the eventual approved entry.
+Use the scaffolder — it copies the reference plugin from
+[`examples/community-plugin-hello-world/`](../../../examples/community-plugin-hello-world/)
+into `src/plugins/community/{id}/` and rewrites the namespace, id,
+and class name for you:
+
+```bash
+php scripts/create-plugin.php my-plugin --author="Your Name"
+```
+
+Result:
 
 ```
-my-plugin/
+src/plugins/community/my-plugin/
 ├── plugin.json
+├── README.md
 ├── src/
-│   └── MyPluginPlugin.php
-├── routes/
-│   └── routes.php              # optional
-├── views/                      # optional
-├── help.json                   # optional
-└── locale/                     # optional
-    ├── textdomain/{locale}/LC_MESSAGES/my-plugin.mo
-    └── i18n/{locale}.json
+│   └── MyPluginPlugin.php      # extends AbstractPlugin
+└── locale/
+    └── i18n/
+        └── en_US.json          # plugin-local i18next resources
 ```
+
+A full-featured plugin might also add:
+
+- `routes/routes.php` — Slim routes under `/plugins/{id}/...`
+- `views/*.php` — view templates
+- `locale/textdomain/{locale}/LC_MESSAGES/{id}.mo` — compiled
+  gettext (build with `xgettext --keyword=dgettext:2` + `msgfmt`)
+- `help.json` — help content rendered in the settings modal
 
 Keep it minimal. The fewer files you ship, the faster the review and
 the smaller the attack surface.
+
+> **Don't want to use the scaffolder?** You can hand-scaffold — just
+> copy `examples/community-plugin-hello-world/` manually and rename
+> the identifiers. The scaffolder is a convenience, not a
+> requirement.
 
 ---
 
@@ -218,33 +237,58 @@ Full guide: [`plugin-development.md → Plugin Localization`](./plugin-developme
 
 ---
 
-## 6. Run the security scan against your own plugin
+## 6. Run the self-scan against your own plugin
 
-Before you package a release, run the static-analysis pass from
-[`plugin-security-scan.md`](./plugin-security-scan.md) against your
-working tree. At minimum:
+Use `scripts/plugin-scan.php` — it runs the same checklist a
+ChurchCRM maintainer would run during the plugin-security-scan
+review, against your plugin directory on disk:
 
 ```bash
-# Dangerous PHP sinks
-rg -n 'eval\(|assert\(|create_function|preg_replace.*\/e|include[[:space:]]*\$|require[[:space:]]*\$|`.*\$|popen|passthru|shell_exec|proc_open|system\(|pcntl_exec|extract\(\$_|parse_str\(\$_|unserialize\('
-
-# Outbound calls (every hostname must match your riskSummary)
-rg -n 'curl_init|file_get_contents\([\'"]http|fopen\([\'"]http|fsockopen|Guzzle|Symfony\\HttpClient'
-
-# Filesystem reach outside your plugin dir
-rg -n 'file_put_contents|fwrite|unlink|rename|copy|chmod|chown|mkdir|rmdir'
-
-# Obfuscation / bundled payloads
-rg -n 'base64_decode|gzinflate|gzuncompress|str_rot13'
-
-# PHP syntax + static analysis
-find . -name '*.php' -print0 | xargs -0 -n1 php -l
-phpstan analyse --level=6 .
-psalm --taint-analysis --no-cache
+php scripts/plugin-scan.php src/plugins/community/my-plugin
 ```
 
-Every hit needs a justification. If you cannot explain it in one
-sentence, delete it before submitting.
+The scanner reports **errors** (blocking), **warnings** (need
+justification in the PR), and **infos** (capability inventory you
+should copy into the PR body). Exit code 0 means no errors.
+
+For machine-readable output:
+
+```bash
+php scripts/plugin-scan.php --json src/plugins/community/my-plugin | jq
+```
+
+### What the scanner covers
+
+- `plugin.json` exists, parses, has required fields, uses
+  kebab-case id, declares `type: "community"`, and the declared
+  `mainClass` + `routesFile` resolve on disk.
+- Every file has an allowed extension. `.phar`, `.sh`, `.exe`,
+  `.so`, `.dll`, `.phtml`, etc. are rejected.
+- No hidden files other than `.editorconfig` / `.gitattributes`.
+- PHP and JS sources are free of dangerous sinks (`eval`,
+  `shell_exec`, `passthru`, `proc_open`, `system`, `pcntl_exec`,
+  `extract($_POST)`, `parse_str($_POST)`, `preg_replace(.../e)`,
+  `unserialize`, `base64_decode` of bundled blobs).
+- Plugin code uses `dgettext()` for translations, not plain
+  `gettext()` / `_()` — that would hit the core `messages` textdomain.
+- Every outbound hostname is listed so you can confirm each one is
+  named in your `riskSummary` and covered by `network.outbound`.
+- Every literal `file_put_contents()` target is listed so you can
+  confirm writes stay inside the plugin directory.
+
+### Fix every hit before shipping
+
+Every error must be fixed — an error means `PluginInstaller` or the
+maintainer review will reject your plugin. Every warning must be
+justified in the PR body: say why that sink exists and which input
+it receives. If you can't explain it in one sentence, delete it.
+
+### Beyond the scanner
+
+The scanner covers the mechanical parts of the review. For the rest
+— runtime smoke test, dependency graph, VDP, capability inventory —
+follow [`plugin-security-scan.md`](./plugin-security-scan.md)
+sections 5 and 6 by hand.
 
 ---
 

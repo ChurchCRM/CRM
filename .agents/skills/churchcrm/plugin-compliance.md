@@ -204,6 +204,98 @@ unexplained hits are not.
 
 ---
 
+## 3f. Deleting a community plugin from disk <!-- learned: 2026-04-14 -->
+
+Community plugins can now be **uninstalled** from the admin UI. Click
+the trash icon on the plugin card in **Admin → Plugins**, or call the
+API directly:
+
+```bash
+curl -s -X DELETE \
+  -H "x-api-key: $ADMIN_API_KEY" \
+  https://your-crm.example.org/plugins/api/plugins/{id}
+```
+
+The uninstall flow:
+
+1. Refuses to touch core plugins — core plugins can only be disabled.
+2. Calls the plugin's `deactivate()` and `uninstall()` lifecycle
+   hooks so it can tear down external state (webhooks, scheduled
+   jobs the plugin registered).
+3. Recursively deletes `src/plugins/community/{id}/`.
+4. Clears every `plugin.{id}.*` row from SystemConfig (stored
+   credentials, enablement state, plugin-specific settings).
+5. Forces `PluginManager::reset()` so the UI reflects the new state
+   on the next request.
+
+Uninstall never overwrites — it is the **only** way to upgrade a
+community plugin. Reinstalling the same `{id}` refuses if the
+directory already exists; delete first, reinstall after.
+
+## 3g. Quarantine <!-- learned: 2026-04-14 -->
+
+If a plugin throws during load or boot — a missing dependency, a
+syntax error, a `Throwable` from its `boot()` method — the runtime
+automatically puts it into **quarantine**. A quarantined plugin:
+
+- Returns `false` from `isPluginActive()`, even if `enabled` is still
+  `1` in config.
+- Is refused by `enablePlugin()` — the admin has to explicitly clear
+  the quarantine first.
+- Shows a yellow banner on the plugin card with the exception
+  message, so admins can see why it failed.
+
+This stops a single broken plugin from recursing into core error
+handling on every request.
+
+### Clearing a quarantine
+
+Once you've fixed the underlying issue (installed the missing
+dependency, upgraded to a fixed version, reverted a bad config),
+click **Clear Quarantine** (shield icon) on the plugin card, or:
+
+```bash
+curl -s -X DELETE \
+  -H "x-api-key: $ADMIN_API_KEY" \
+  https://your-crm.example.org/plugins/api/plugins/{id}/quarantine
+```
+
+Clearing the quarantine does **not** re-enable the plugin — you
+still have to click Enable. This is deliberate: clearing the flag
+and running the plugin are two separate decisions.
+
+## 3h. Unverified URL install
+
+Community plugin developers (and admins running experimental plugins)
+can install a plugin whose URL is not yet in the approved allowlist.
+Click **Install from URL** on the community panel in Admin → Plugins,
+supply the URL + SHA-256 + plugin id, or call:
+
+```bash
+curl -s -X POST \
+  -H "x-api-key: $ADMIN_API_KEY" \
+  -H "content-type: application/json" \
+  -d '{"downloadUrl":"https://example.org/my-plugin-0.1.0.zip","sha256":"...64hex...","pluginId":"my-plugin"}' \
+  https://your-crm.example.org/plugins/api/plugins/install-url
+```
+
+Every other safety invariant still applies — the plugin is still
+downloaded over HTTPS, checksummed before `ZipArchive` is opened,
+walked for ZIP Slip / disallowed extensions / traversal, and
+cross-checked against its own `plugin.json`. The only thing
+**unverified** install changes is whether the URL is in the
+maintainer-reviewed allowlist.
+
+Unverified plugins are flagged with a yellow banner in the admin UI
+and are refused from any risk/permissions display. They can still
+be enabled, but nothing about their behaviour has been reviewed
+upstream — treat every unverified plugin as a security surface you
+audit yourself.
+
+If you install an unverified plugin and the URL later shows up in
+`approved-plugins.json`, the installer silently short-circuits into
+the verified path so you get the full risk/permissions banner.
+
 ## 4. When a plugin is dropped from the registry
 
 If ChurchCRM maintainers remove a plugin from `approved-plugins.json`
