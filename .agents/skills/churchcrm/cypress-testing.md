@@ -96,9 +96,18 @@ cy.setupNoFinanceSession();
 
 ### Configuration Location
 
-Credentials live in **two** config files that MUST be kept in sync:
-- `cypress.config.ts` — used for local `npm run test` / `npm run test:open`
-- `docker/cypress.config.ts` — used by the Docker / CI runner
+Credentials live in the Cypress config files under `cypress/configs/` that the
+`npm run test*` scripts pass via `--config-file`:
+
+- `cypress/configs/docker.config.ts` — used by `npm run test`, `test:open`,
+  `test:api`, `test:ui`, and the `test-root` / `test-subdir` CI matrix
+- `cypress/configs/new-system.config.ts` — used by `npm run test:new-system`
+  and the `test-new-system` CI job (has its own `env` block with an admin
+  account because this job boots from a fresh install)
+
+There is **no** root `cypress.config.ts` in this repo — don't add one and
+don't expect Cypress to auto-detect one. Every script passes an explicit
+`--config-file`.
 
 ```typescript
 env: {
@@ -116,20 +125,23 @@ env: {
 }
 ```
 
-> ⚠️ **CRITICAL: keep both configs in sync.** <!-- learned: 2026-04-13 -->
-> Any new test user credential has to be added to **both** `cypress.config.ts`
-> and `docker/cypress.config.ts`. If you update only one, tests will pass
-> locally but fail in CI (or vice-versa), and the failure message — usually
-> `Admin credentials not configured in cypress.config.ts env` thrown from
-> `setupLoginSession` — does not tell you which config file is missing the
-> key. Always grep both files when adding a new `*.username` / `*.password`
-> entry.
+> ⚠️ **CRITICAL: keep shared credentials in sync across configs.** <!-- learned: 2026-04-13 -->
+> If you add a new test user that the `test-new-system` job also needs, the
+> credential has to be added to **both** `cypress/configs/docker.config.ts`
+> and `cypress/configs/new-system.config.ts`. If you update only one,
+> tests will pass in one CI job but fail in the other, and the failure
+> message from `setupLoginSession` — usually
+> `Admin credentials not configured in cypress config env` — does not tell
+> you which config file is missing the key. Always grep both files when
+> adding a new `*.username` / `*.password` entry.
 
 **CRITICAL:**
 - ❌ DO NOT hardcode credentials in test files
 - ❌ DO NOT add commented-out tests or TODO comments
 - ✅ Configuration-driven approach prevents secrets leaking into git
-- ✅ Update `cypress.config.ts` AND `docker/cypress.config.ts` together
+- ✅ Update `cypress/configs/docker.config.ts` AND
+  `cypress/configs/new-system.config.ts` together when the credential is
+  used by both jobs
 
 ### cy.request() API Calls Reset PHP Sessions (CRITICAL) <!-- learned: 2026-03-27 -->
 
