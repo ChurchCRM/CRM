@@ -122,6 +122,14 @@ class PluginManager
                         "Failed to load plugin: $pluginId",
                         ['exception' => $e->getMessage()]
                     );
+                    // Any throw from load/boot is grounds for automatic
+                    // quarantine. Better to sideline a single plugin
+                    // than to let it recurse into core error handling
+                    // on every subsequent request.
+                    self::quarantinePlugin(
+                        $pluginId,
+                        'Plugin failed to load: ' . $e->getMessage()
+                    );
                 }
             }
         }
@@ -225,9 +233,15 @@ class PluginManager
      *
      * Checks the SystemConfig key plugin.{pluginId}.enabled
      * Returns false if the config key doesn't exist (graceful degradation).
+     * Also returns false if the plugin is quarantined — quarantined
+     * plugins never run, even if their `enabled` flag is still 1.
      */
     public static function isPluginActive(string $pluginId): bool
     {
+        if (self::isPluginQuarantined($pluginId)) {
+            return false;
+        }
+
         try {
             $enabledKey = "plugin.{$pluginId}.enabled";
             return SystemConfig::getBooleanValue($enabledKey);
@@ -236,6 +250,173 @@ class PluginManager
             // This prevents plugin issues from breaking the main application
             return false;
         }
+    }
+
+    /**
+     * Is a plugin currently quarantined?
+     *
+     * A plugin is quarantined when its load or boot threw, or when the
+     * boot-time registry sync detected that a previously-verified
+     * plugin is no longer in the approved allowlist (revoked upstream).
+     * Quarantine is a hard disable: even if `enabled=1`, a quarantined
+     * plugin does not load, boot, or register routes.
+     */
+    public static function isPluginQuarantined(string $pluginId): bool
+    {
+        try {
+            $reason = SystemConfig::getValue("plugin.{$pluginId}.quarantined");
+
+            return $reason !== '' && $reason !== null && $reason !== '0';
+        } catch (\Throwable $e) {
+            return false;
+        }
+    }
+
+    /**
+     * Quarantine a plugin with a human-readable reason.
+     *
+     * Writes the reason to `plugin.{id}.quarantined`. The reason is
+     * surfaced in `getAllPlugins()` so the admin UI can render a
+     * banner explaining why the plugin is sidelined.
+     *
+     * This also unloads any already-loaded instance so the plugin
+     * immediately stops running in the current request.
+     */
+    public static function quarantinePlugin(string $pluginId, string $reason): void
+    {
+        try {
+            $reason = trim($reason);
+            if ($reason === '') {
+                $reason = 'Plugin was quarantined (no reason recorded).';
+            }
+            SystemConfig::setValue("plugin.{$pluginId}.quarantined", $reason);
+        } catch (\Throwable $e) {
+            LoggerUtils::getAppLogger()->error('Could not record quarantine', [
+                'plugin' => $pluginId,
+                'error' => $e->getMessage(),
+            ]);
+        }
+
+        unset(self::$loadedPlugins[$pluginId]);
+
+        LoggerUtils::getAppLogger()->warning('Plugin quarantined', [
+            'plugin' => $pluginId,
+            'reason' => $reason,
+        ]);
+    }
+
+    /**
+     * Clear a quarantine flag. The admin UI calls this once the
+     * admin has verified the plugin is safe to run again (e.g. after
+     * the upstream author shipped a fix that the maintainers
+     * re-approved).
+     */
+    public static function clearQuarantine(string $pluginId): void
+    {
+        try {
+            SystemConfig::setValue("plugin.{$pluginId}.quarantined", '');
+        } catch (\Throwable $e) {
+            LoggerUtils::getAppLogger()->warning('Could not clear quarantine', [
+                'plugin' => $pluginId,
+                'error' => $e->getMessage(),
+            ]);
+        }
+    }
+
+    /**
+     * Read the stored quarantine reason, or null if the plugin is not
+     * quarantined.
+     */
+    public static function getQuarantineReason(string $pluginId): ?string
+    {
+        if (!self::isPluginQuarantined($pluginId)) {
+            return null;
+        }
+        try {
+            $reason = SystemConfig::getValue("plugin.{$pluginId}.quarantined");
+
+            return is_string($reason) && $reason !== '' ? $reason : null;
+        } catch (\Throwable $e) {
+            return null;
+        }
+    }
+
+    /**
+     * Compute the verification status of a plugin.
+     *
+     * Core plugins are always `verified`. Community plugins are
+     * `verified` iff their recorded provenance matches the current
+     * ApprovedPluginRegistry entry (same URL, same SHA-256). Anything
+     * else (no provenance recorded, provenance is for an unverified
+     * install, or registry entry changed out from under us) is
+     * `unverified`.
+     *
+     * @return array{verified: bool, source: string, reason: string|null}
+     */
+    public static function getVerificationStatus(string $pluginId): array
+    {
+        $metadata = self::$discoveredPlugins[$pluginId] ?? null;
+        if ($metadata !== null && $metadata->getType() === 'core') {
+            return ['verified' => true, 'source' => 'core', 'reason' => null];
+        }
+
+        // Explicit unverified flag takes precedence.
+        try {
+            if (SystemConfig::getValue("plugin.{$pluginId}.unverified") === '1') {
+                return [
+                    'verified' => false,
+                    'source' => 'unverified-url',
+                    'reason' => 'Installed from a URL that is not on the approved plugin list.',
+                ];
+            }
+        } catch (\Throwable $e) {
+            // fall through
+        }
+
+        // Compare recorded provenance against the current registry.
+        try {
+            $provenanceJson = SystemConfig::getValue("plugin.{$pluginId}.provenance");
+        } catch (\Throwable $e) {
+            $provenanceJson = '';
+        }
+
+        if (!is_string($provenanceJson) || $provenanceJson === '') {
+            return [
+                'verified' => false,
+                'source' => 'unknown',
+                'reason' => 'No install provenance recorded — plugin was copied in manually.',
+            ];
+        }
+
+        $provenance = json_decode($provenanceJson, true);
+        if (!is_array($provenance) || ($provenance['source'] ?? null) !== 'registry') {
+            return [
+                'verified' => false,
+                'source' => 'unknown',
+                'reason' => 'Plugin provenance is missing or malformed.',
+            ];
+        }
+
+        $entry = ApprovedPluginRegistry::find(self::$pluginsPath, $pluginId);
+        if ($entry === null) {
+            return [
+                'verified' => false,
+                'source' => 'revoked',
+                'reason' => 'Plugin is no longer on the approved list. It may have been revoked for a security issue.',
+            ];
+        }
+
+        $sameUrl = hash_equals((string) $entry['downloadUrl'], (string) ($provenance['downloadUrl'] ?? ''));
+        $sameSha = hash_equals(strtolower((string) $entry['sha256']), strtolower((string) ($provenance['sha256'] ?? '')));
+        if (!$sameUrl || !$sameSha) {
+            return [
+                'verified' => false,
+                'source' => 'registry-drift',
+                'reason' => 'Installed copy does not match the current approved registry entry. Reinstall to update.',
+            ];
+        }
+
+        return ['verified' => true, 'source' => 'registry', 'reason' => null];
     }
 
     /**
@@ -248,6 +429,15 @@ class PluginManager
         $metadata = self::$discoveredPlugins[$pluginId] ?? null;
         if ($metadata === null) {
             throw new \RuntimeException("Plugin not found: $pluginId");
+        }
+
+        // A quarantined plugin must not be re-enabled until the admin
+        // explicitly clears the quarantine flag. This is the final gate
+        // between a broken/revoked plugin and core code.
+        if (self::isPluginQuarantined($pluginId)) {
+            throw new \RuntimeException(
+                "Plugin '$pluginId' is quarantined: " . (self::getQuarantineReason($pluginId) ?? 'unknown reason')
+            );
         }
 
         // Check dependencies
@@ -382,6 +572,11 @@ class PluginManager
                 $plugin = self::$loadedPlugins[$id] ?? null;
                 $isActive = self::isPluginActive($id);
                 $configError = $plugin?->getConfigurationError();
+                $verification = self::getVerificationStatus($id);
+                $quarantineReason = self::getQuarantineReason($id);
+                $registryEntry = $metadata->getType() === 'community'
+                    ? ApprovedPluginRegistry::find(self::$pluginsPath, $id)
+                    : null;
 
                 $result[] = [
                     'id' => $id,
@@ -399,6 +594,19 @@ class PluginManager
                     'hasTest' => $metadata->hasTest(),
                     'hasError' => $configError !== null,
                     'errorMessage' => $configError,
+                    // Verification + quarantine fields.
+                    'verified' => $verification['verified'],
+                    'verificationSource' => $verification['source'],
+                    'verificationReason' => $verification['reason'],
+                    'quarantined' => $quarantineReason !== null,
+                    'quarantineReason' => $quarantineReason,
+                    // Risk/permissions from the approved registry (null
+                    // for core plugins and unverified community ones).
+                    'risk' => $registryEntry['risk'] ?? null,
+                    'riskSummary' => $registryEntry['riskSummary'] ?? null,
+                    'permissions' => $registryEntry['permissions'] ?? null,
+                    // Admin-only: can this entry be deleted from disk?
+                    'canUninstall' => $metadata->getType() === 'community',
                 ];
             } catch (\Throwable $e) {
                 // Plugin has an error - still show it in the list but mark as errored
@@ -420,6 +628,15 @@ class PluginManager
                     'settingsUrl' => null,
                     'hasError' => true,
                     'errorMessage' => $e->getMessage(),
+                    'verified' => false,
+                    'verificationSource' => 'error',
+                    'verificationReason' => $e->getMessage(),
+                    'quarantined' => false,
+                    'quarantineReason' => null,
+                    'risk' => null,
+                    'riskSummary' => null,
+                    'permissions' => null,
+                    'canUninstall' => ($metadata->getType() ?? 'community') === 'community',
                 ];
             }
         }
