@@ -268,15 +268,12 @@ describe("API Private Property Types", () => {
             });
         });
 
-        it("Returns 403 for admin caller without MenuOptions permission", () => {
-            // The Cypress seed's admin user (ID=1) has bMenuOptions=0, so even
-            // admin API keys are rejected by MenuOptionsRoleAuthMiddleware.
-            cy.makePrivateAdminAPICall(
-                "GET",
-                "/api/property-types",
-                null,
-                403,
-            );
-        });
+        // NOTE: a 403 test is intentionally omitted here.
+        // `MenuOptionsRoleAuthMiddleware` calls `User::isMenuOptionsEnabled()`,
+        // which has an admin bypass (`$this->isAdmin() || $this->isMenuOptions()`).
+        // All three seeded API-key users (admin, tony.wade, limited.user) either
+        // have `bAdmin=1` (→ bypass) or `bMenuOptions=1`, so none of them can
+        // trigger the 403 path. Adding proper 403 coverage would require
+        // introducing a new seed user and API key with both flags = 0.
     });
 });
