@@ -35,6 +35,13 @@ window.CRM.APIRequest = function (options) {
   options.dataType = "json";
   options.url = window.CRM.root + "/api/" + options.path;
   options.contentType = "application/json";
+  // Disable browser caching of GET API responses. Without this, the browser
+  // can serve stale data after the user modifies a related record elsewhere
+  // in the app — e.g. deleting a Family Property in the admin page and then
+  // re-visiting the Family View shows the deleted option in the dropdown
+  // until a hard refresh. jQuery only applies `cache: false` to GET/HEAD, so
+  // setting this unconditionally is safe for POST/PUT/DELETE. See #7165.
+  options.cache = false;
   options.beforeSend = function (jqXHR, settings) {
     jqXHR.url = settings.url;
   };
