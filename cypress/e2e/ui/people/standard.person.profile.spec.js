@@ -73,7 +73,7 @@ describe("Person Profile", () => {
         cy.typeInQuill("NoteText", noteText);
         // Click the submit button (it's an <input type="submit">, not a <button>)
         cy.get('input[type="submit"][name="Submit"]').click();
-        cy.url().should("contain", `PersonView.php?PersonID=${personId}`);
+        cy.url().should("contain", `people/view/${personId}`);
 
         cy.get("#nav-item-timeline").click();
         cy.contains(noteText);

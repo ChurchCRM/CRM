@@ -44,7 +44,7 @@ describe("Volunteer Opportunity Assignment - Issue #7917", () => {
                         });
 
                         // Should not show an error - page should reload successfully
-                        cy.url().should('contain', 'PersonView.php?PersonID=1');
+                        cy.url().should('contain', 'people/view/1');
                         cy.contains('Person Profile');
 
                         // The opportunity should now be assigned (listed in assigned section)
@@ -53,7 +53,7 @@ describe("Volunteer Opportunity Assignment - Issue #7917", () => {
 
                         // Clean up: Remove the assigned opportunity (look for remove button by href)
                         cy.get(`a[href*="RemoveVO=${opportunityId}"]`).first().click();
-                        cy.url().should('contain', 'PersonView.php?PersonID=1');
+                        cy.url().should('contain', 'people/view/1');
                     } else {
                         cy.log('No unassigned volunteer opportunities available to test');
                     }
