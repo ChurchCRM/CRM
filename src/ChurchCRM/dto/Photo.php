@@ -146,6 +146,22 @@ class Photo
     }
 
     /**
+     * Return the last-modified timestamp of the uploaded photo file, or 0 if
+     * no photo exists. Useful as a cache-busting version token for <img src>
+     * so that re-uploading the same file URL produces a fresh browser fetch.
+     * See #8662.
+     */
+    public function getPhotoModifiedTime(): int
+    {
+        if (!$this->hasUploadedPhoto || !$this->photoURI || !is_file($this->photoURI)) {
+            return 0;
+        }
+
+        $mtime = @filemtime($this->photoURI);
+        return $mtime === false ? 0 : $mtime;
+    }
+
+    /**
      * Save an uploaded image from base64 data
      */
     public function setImageFromBase64(string $base64): void
