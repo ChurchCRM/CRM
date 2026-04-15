@@ -4,7 +4,11 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
+use ChurchCRM\model\ChurchCRM\PropertyQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerOpportunityQuery;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Slim\SlimUtils;
@@ -107,13 +111,8 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     $rsPerson   = RunQuery($sSQL);
     $personData = mysqli_fetch_array($rsPerson, MYSQLI_ASSOC);
 
-    // ── Custom fields ────────────────────────────────────────────────────────
-    $sSQL      = 'SELECT person_custom_master.* FROM person_custom_master ORDER BY custom_Order';
-    $rsCustomFieldsMaster = RunQuery($sSQL);
-    $customFieldsMaster   = [];
-    while ($row = mysqli_fetch_array($rsCustomFieldsMaster, MYSQLI_ASSOC)) {
-        $customFieldsMaster[] = $row;
-    }
+    // ── Custom fields master (definitions) ───────────────────────────────────
+    $customFieldsMaster = PersonCustomMasterQuery::create()->orderByOrder()->find();
 
     $sSQL       = 'SELECT * FROM person_custom WHERE per_ID = ' . $iPersonID;
     $rsCustomData = RunQuery($sSQL);
@@ -147,21 +146,22 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     }
 
     // ── Volunteer opportunities ──────────────────────────────────────────────
-    $sSQL = 'SELECT vol_ID, vol_Name, vol_Description FROM volunteeropportunity_vol
-        LEFT JOIN person2volunteeropp_p2vo ON p2vo_vol_ID = vol_ID
-        WHERE person2volunteeropp_p2vo.p2vo_per_ID = ' . $iPersonID . ' ORDER by vol_Order';
-    $rsAssignedVolunteerOpps    = RunQuery($sSQL);
-    $assignedVolunteerOppsData  = [];
-    while ($row = mysqli_fetch_array($rsAssignedVolunteerOpps, MYSQLI_ASSOC)) {
-        $assignedVolunteerOppsData[] = $row;
+    // Get IDs of opportunities assigned to this person (no FK relation in
+    // schema.xml, so a join isn't auto-generated — use a two-step query).
+    $assignedVolOppIds = [];
+    foreach (PersonVolunteerOpportunityQuery::create()->filterByPersonId($iPersonID)->find() as $pvo) {
+        $assignedVolOppIds[] = $pvo->getVolunteerOpportunityId();
     }
+    $assignedVolunteerOppsData = empty($assignedVolOppIds)
+        ? []
+        : VolunteerOpportunityQuery::create()
+            ->filterById($assignedVolOppIds)
+            ->orderByOrder()
+            ->find();
 
-    $sSQL = 'SELECT vol_ID, vol_Name FROM volunteeropportunity_vol ORDER BY vol_Order';
-    $rsVolunteerOpps    = RunQuery($sSQL);
-    $allVolunteerOppsData = [];
-    while ($row = mysqli_fetch_array($rsVolunteerOpps, MYSQLI_ASSOC)) {
-        $allVolunteerOppsData[] = $row;
-    }
+    $allVolunteerOppsData = VolunteerOpportunityQuery::create()
+        ->orderByOrder()
+        ->find();
 
     // ── Assigned properties (raw SQL, for display and edit) ──────────────────
     $sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
@@ -180,12 +180,10 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     $assignedPropertiesOrm = $person->getProperties();
 
     // ── All properties for the assign dropdown ───────────────────────────────
-    $sSQL = "SELECT * FROM property_pro WHERE pro_Class = 'p' ORDER BY pro_Name";
-    $rsAllProperties    = RunQuery($sSQL);
-    $allPropertiesData  = [];
-    while ($row = mysqli_fetch_array($rsAllProperties, MYSQLI_ASSOC)) {
-        $allPropertiesData[] = $row;
-    }
+    $allPropertiesData = PropertyQuery::create()
+        ->filterByProClass('p')
+        ->orderByProName()
+        ->find();
 
     // ── Computed display values ──────────────────────────────────────────────
     $dBirthDate              = $person->getFormattedBirthDate();
