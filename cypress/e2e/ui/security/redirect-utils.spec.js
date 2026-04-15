@@ -163,22 +163,22 @@ describe('RedirectUtils Security - linkBack Parameter', () => {
                         const href = $link.attr('href');
                         const resolved = new URL(href, baseUrl);
                         expect(resolved.host).to.equal(baseHost);
-                        expect(resolved.href).to.match(/(PersonView\.php|\/(v2\/dashboard))/);
+                        expect(resolved.href).to.match(/(PersonView\.php|\/people\/view\/|\/(v2\/dashboard))/);
                     } else if ($button && $button.length) {
                         cy.wrap($button).click({ force: true });
                         cy.location('host').should('eq', baseHost);
-                        cy.location('href').should('match', /(PersonView\.php|\/(v2\/dashboard))/);
+                        cy.location('href').should('match', /(PersonView\.php|\/people\/view\/|\/(v2\/dashboard))/);
                     } else {
                         cy.contains('Cancel').then(($el) => {
                             const href = $el.prop('href') || $el.attr('href');
                             if (href) {
                                 const resolved = new URL(href, baseUrl);
                                 expect(resolved.host).to.equal(baseHost);
-                                expect(resolved.href).to.match(/(PersonView\.php|\/(v2\/dashboard))/);
+                                expect(resolved.href).to.match(/(PersonView\.php|\/people\/view\/|\/(v2\/dashboard))/);
                             } else {
                                 cy.wrap($el).click({ force: true });
                                 cy.location('host').should('eq', baseHost);
-                                cy.location('href').should('match', /(PersonView\.php|\/(v2\/dashboard))/);
+                                cy.location('href').should('match', /(PersonView\.php|\/people\/view\/|\/(v2\/dashboard))/);
                             }
                         });
                     }

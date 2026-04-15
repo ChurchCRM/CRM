@@ -16,19 +16,6 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
 
-// ─── Not-Found page ─────────────────────────────────────────────────────────
-$app->get('/view/not-found', function (Request $request, Response $response): Response {
-    $renderer = new PhpRenderer(SystemURLs::getDocumentRoot() . '/v2/templates/common/');
-
-    $pageArgs = [
-        'sRootPath'  => SystemURLs::getRootPath(),
-        'memberType' => 'Person',
-        'id'         => (int) ($request->getQueryParams()['id'] ?? 0),
-    ];
-
-    return $renderer->render($response->withStatus(404), 'not-found-view.php', $pageArgs);
-});
-
 // ─── POST: assign volunteer opportunities (PRG pattern) ──────────────────────
 $app->post('/view/{personID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
     $iPersonID = (int) $args['personID'];
@@ -36,7 +23,7 @@ $app->post('/view/{personID:[0-9]+}', function (Request $request, Response $resp
 
     $person = PersonQuery::create()->findPk($iPersonID);
     if (empty($person)) {
-        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/view/not-found?id=' . $iPersonID);
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/person/not-found?id=' . $iPersonID);
     }
 
     if (!$currentUser->canEditPerson($iPersonID, $person->getFamId())) {
@@ -64,7 +51,7 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
 
     $person = PersonQuery::create()->findPk($iPersonID);
     if (empty($person)) {
-        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/view/not-found?id=' . $iPersonID);
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/person/not-found?id=' . $iPersonID);
     }
 
     // GHSA-fcw7-mmfh-7vjm: Prevent IDOR - verify user has permission to view this person

@@ -27,5 +27,5 @@ if ($iPersonID > 0) {
     }
     RedirectUtils::redirect('people/view/' . $iPersonID . $queryString);
 } else {
-    RedirectUtils::redirect('people/view/not-found');
+    RedirectUtils::redirect('people/person/not-found');
 }

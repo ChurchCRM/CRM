@@ -12,8 +12,8 @@ describe("Standard Family", () => {
         cy.get("#Classification").select("1");
         cy.get('button[name="PersonSubmit"]').click();
 
-        cy.url().should("contain", "PersonView.php").then((url) => {
-            const personId = new URL(url).searchParams.get("PersonID");
+        cy.location("pathname").should("include", "/people/view/").then((pathname) => {
+            const personId = pathname.split("/").pop();
 
             // Open Actions dropdown, then click Delete (use first() to avoid duplicate IDs)
             cy.get("#person-actions-dropdown").first().click();
