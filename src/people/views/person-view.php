@@ -609,9 +609,10 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                                 <span class="badge bg-secondary-lt text-secondary ms-1"><?= InputUtils::escapeHTML(gettext($roleName)) ?></span>
                                                 <?php
                                                 if ($grp_hasSpecialProps) {
-                                                    $sSQL = 'SELECT groupprop_master.* FROM groupprop_master WHERE grp_ID = ' . $grp_ID . " AND prop_PersonDisplay = 'true' ORDER BY prop_ID";
+                                                    $grp_ID_int = (int)$grp_ID;
+                                                    $sSQL = 'SELECT groupprop_master.* FROM groupprop_master WHERE grp_ID = ' . $grp_ID_int . " AND prop_PersonDisplay = 'true' ORDER BY prop_ID";
                                                     $rsPropList = RunQuery($sSQL);
-                                                    $sSQL = 'SELECT * FROM groupprop_' . $grp_ID . ' WHERE per_ID = ' . $iPersonID;
+                                                    $sSQL = 'SELECT * FROM groupprop_' . $grp_ID_int . ' WHERE per_ID = ' . $iPersonID;
                                                     $rsPersonProps = RunQuery($sSQL);
                                                     $aPersonProps = mysqli_fetch_array($rsPersonProps, MYSQLI_BOTH);
                                                     while ($aProps = mysqli_fetch_array($rsPropList)) {
@@ -639,7 +640,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                                         <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-sliders me-2"></i><?= gettext('Update Properties') ?></a>
                                                     <?php } ?>
                                                     <div class="dropdown-divider"></div>
-                                                    <button class="dropdown-item text-danger groupRemove" data-groupid="<?= $grp_ID ?>" data-groupname="<?= $grp_Name ?>"><i class="fa-solid fa-trash-can me-2"></i><?= gettext('Remove') ?></button>
+                                                    <button class="dropdown-item text-danger groupRemove" data-groupid="<?= (int)$grp_ID ?>" data-groupname="<?= InputUtils::escapeAttribute($grp_Name) ?>"><i class="fa-solid fa-trash-can me-2"></i><?= gettext('Remove') ?></button>
                                                 </div>
                                             </div>
                                             <?php } ?>
