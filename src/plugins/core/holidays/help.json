@@ -1,21 +1,21 @@
 {
-    "summary": "Adds public holidays to the main calendar using the Yasumi data provider. Each configured country becomes its own toggleable system calendar in the calendar sidebar, so users can independently show or hide holidays per country.",
-    "sections": [
-        {
-            "title": "Default behaviour",
-            "content": "When you enable the plugin for the first time it will pre-select the country configured in System Settings (sChurchCountry), provided Yasumi has data for it. You can override this by listing one or more Yasumi country names (e.g. \"USA,Mexico\") in the Countries setting."
-        },
-        {
-            "title": "Filtering categories",
-            "content": "Yasumi tags each holiday with a category: official, observance, bank, seasonal or religious. Leave the Categories setting blank to show every holiday, or list the categories you want (e.g. \"official,religious\")."
-        },
-        {
-            "title": "Showing/hiding individual countries",
-            "content": "Each country produces its own calendar in the sidebar. Use the existing per-calendar toggle to hide a country without changing plugin settings."
-        }
-    ],
-    "links": [
-        { "label": "Yasumi project", "url": "https://github.com/azuyalabs/yasumi" },
-        { "label": "Supported countries", "url": "https://www.yasumi.dev/" }
-    ]
+  "summary": "Adds public holidays to the main calendar using the Yasumi data provider. Each configured country becomes its own toggleable system calendar in the calendar sidebar, so users can independently show or hide holidays per country.",
+  "sections": [
+    {
+      "title": "Default behaviour",
+      "content": "When you enable the plugin for the first time it will pre-select the country configured in System Settings (sChurchCountry), provided Yasumi has data for it. You can override this by listing one or more Yasumi country names (e.g. \"USA,Mexico\") in the Countries setting."
+    },
+    {
+      "title": "Filtering categories",
+      "content": "Yasumi tags each holiday with a category: official, observance, bank, seasonal or religious. Leave the Categories setting blank to show every holiday, or list the categories you want (e.g. \"official,religious\")."
+    },
+    {
+      "title": "Showing/hiding individual countries",
+      "content": "Each country produces its own calendar in the sidebar. Use the existing per-calendar toggle to hide a country without changing plugin settings."
+    }
+  ],
+  "links": [
+    { "label": "Yasumi project", "url": "https://github.com/azuyalabs/yasumi" },
+    { "label": "Supported countries", "url": "https://www.yasumi.dev/" }
+  ]
 }
