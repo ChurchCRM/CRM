@@ -216,10 +216,10 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                 $hasCustomFields = false;
                 $customFieldsHtml = '';
                 foreach ($customFieldsMaster as $Row) {
-                    $custom_Field   = $Row['custom_Field'];
-                    $custom_Name    = $Row['custom_Name'];
-                    $type_ID        = $Row['type_ID'];
-                    $custom_Special = $Row['custom_Special'] ?? null;
+                    $custom_Field   = $Row->getId();
+                    $custom_Name    = $Row->getName();
+                    $type_ID        = $Row->getTypeId();
+                    $custom_Special = $Row->getSpecial();
                     $currentData    = isset($aCustomData[$custom_Field]) ? trim($aCustomData[$custom_Field]) : '';
                     if ($currentData !== '') {
                         $hasCustomFields = true;
@@ -311,9 +311,9 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                         $assignedPropertiesArray[] = $assignedProperty->getPropertyId();
                                     }
                                     foreach ($allPropertiesData as $aRow) {
-                                        $pro_ID     = $aRow['pro_ID'];
-                                        $pro_Name   = $aRow['pro_Name'];
-                                        $pro_Prompt = $aRow['pro_Prompt'] ?? '';
+                                        $pro_ID     = $aRow->getProId();
+                                        $pro_Name   = $aRow->getProName();
+                                        $pro_Prompt = $aRow->getProPrompt() ?? '';
                                         $attributes = "value=\"{$pro_ID}\"";
                                         if (!empty($pro_Prompt)) {
                                             $pro_Value = '';
@@ -674,9 +674,9 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                             echo '<tbody>';
 
                             foreach ($assignedVolunteerOppsData as $aRow) {
-                                $vol_ID          = $aRow['vol_ID'];
-                                $vol_Name        = $aRow['vol_Name'];
-                                $vol_Description = $aRow['vol_Description'];
+                                $vol_ID          = $aRow->getId();
+                                $vol_Name        = $aRow->getName();
+                                $vol_Description = $aRow->getDescription();
                                 echo '<tr>';
                                 echo '<td><strong>' . InputUtils::escapeHTML($vol_Name) . '</strong></td>';
                                 echo '<td>' . InputUtils::escapeHTML($vol_Description) . '</td>';
@@ -711,8 +711,8 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                                 <select id="input-volunteer-opportunities" name="VolunteerOpportunityIDs[]" multiple class="form-select" data-placeholder="<?= gettext('Choose opportunities...') ?>">
                                                     <?php
                                                     foreach ($allVolunteerOppsData as $aRow) {
-                                                        $vol_ID   = $aRow['vol_ID'];
-                                                        $vol_Name = $aRow['vol_Name'];
+                                                        $vol_ID   = $aRow->getId();
+                                                        $vol_Name = $aRow->getName();
                                                         if (strlen(strstr($sAssignedVolunteerOpps, ',' . $vol_ID . ',')) === 0) {
                                                             echo '<option value="' . InputUtils::escapeAttribute($vol_ID) . '">' . InputUtils::escapeHTML($vol_Name) . '</option>';
                                                         }
