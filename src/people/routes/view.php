@@ -187,14 +187,6 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
         $allPropertiesData[] = $row;
     }
 
-    // ── Field Security List ──────────────────────────────────────────────────
-    $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence';
-    $rsSecurityGrp = RunQuery($sSQL);
-    $aSecurityType = [];
-    while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
-        $aSecurityType[$aRow['lst_OptionID']] = $aRow['lst_OptionName'];
-    }
-
     // ── Computed display values ──────────────────────────────────────────────
     $dBirthDate              = $person->getFormattedBirthDate();
     $plaintextMailingAddress = $person->getAddress();
@@ -279,8 +271,6 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
         'assignedPropertiesData'    => $assignedPropertiesData,
         'allPropertiesData'         => $allPropertiesData,
         'assignedPropertiesOrm'     => $assignedPropertiesOrm,
-        // Security types
-        'aSecurityType'          => $aSecurityType,
         // Map & Timeline
         'personMapConfig'        => $personMapConfig,
         'familyHasCoords'        => $familyHasCoords,

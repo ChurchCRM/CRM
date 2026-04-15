@@ -85,7 +85,7 @@ describe("PersonView: Add to group with multiple roles", () => {
         cy.get("#personGroupConfirmBtn").click();
 
         // Page reloads — verify the group now appears in the Groups tab
-        cy.url().should("include", `PersonID=${personId}`);
+        cy.url().should("include", `people/view/${personId}`);
         cy.get("#nav-item-groups").click();
         cy.get("#groups").should("be.visible");
         cy.get("#groups").contains("Angels class").should("be.visible");
@@ -119,7 +119,7 @@ describe("PersonView: Add to group with multiple roles", () => {
         cy.get("#personGroupConfirmBtn").should("not.be.disabled").click();
 
         // Verify group + role appear after reload
-        cy.url().should("include", `PersonID=${personId}`);
+        cy.url().should("include", `people/view/${personId}`);
         cy.get("#nav-item-groups").click();
         cy.get("#groups").should("be.visible");
         cy.get("#groups").contains("Angels class").should("be.visible");
