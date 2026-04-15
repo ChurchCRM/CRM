@@ -86,7 +86,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
           <form method="post" name="TwoFAForm" action="<?= SystemURLs::getRootPath()?>/session/two-factor">
             <div class="mb-3">
               <label for="TwoFACode"><?= gettext('Authentication Code') ?></label>
-              <input type="text" id="TwoFACode" name="TwoFACode" placeholder="000000" maxlength="6" inputmode="numeric" required autofocus>
+              <input type="text" id="TwoFACode" name="TwoFACode" placeholder="000000" maxlength="6" inputmode="numeric" autocomplete="one-time-code" required autofocus>
             </div>
 
             <button type="submit" class="btn-sign-in">
