@@ -1,0 +1,33 @@
+{
+    "id": "holidays",
+    "name": "Holiday Calendars",
+    "description": "Adds public-holiday calendars (powered by Yasumi) to the main calendar. You may show holidays for one or more countries; each country becomes its own toggleable system calendar.",
+    "version": "1.0.0",
+    "author": "ChurchCRM Team",
+    "authorUrl": "https://churchcrm.io",
+    "type": "core",
+    "minimumCRMVersion": "7.0.0",
+    "mainClass": "ChurchCRM\\Plugins\\Holidays\\HolidaysPlugin",
+    "dependencies": [],
+    "settingsUrl": null,
+    "settings": [
+        {
+            "key": "countries",
+            "label": "Countries",
+            "type": "text",
+            "required": false,
+            "help": "Comma-separated list of Yasumi country names (e.g. \"USA,Mexico\"). Leave blank to use the church country from System Settings."
+        },
+        {
+            "key": "categories",
+            "label": "Holiday Categories",
+            "type": "text",
+            "required": false,
+            "help": "Comma-separated Yasumi categories to include (official, observance, bank, seasonal, religious). Leave blank for all."
+        }
+    ],
+    "menuItems": [],
+    "hooks": [
+        "systemcalendars.register"
+    ]
+}
