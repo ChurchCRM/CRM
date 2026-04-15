@@ -6,6 +6,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Plugin\PluginManager;
@@ -71,7 +72,12 @@ class Menu
 
     private static function getCalendarMenu(): MenuItem
     {
-        $calendarMenu = new MenuItem(gettext('Calendar'), 'event/calendars', true, 'fa-calendar');
+        // Gate the top-level Calendar menu on the Events module feature flag.
+        // Without this, the link is always shown — and clicking it when events
+        // are disabled routes through ViewEventsRoleAuthMiddleware and bounces
+        // the user to /v2/access-denied?role=ViewEvents. The Events menu a few
+        // lines down (getEventsMenu) already applies this same gate. See #8667.
+        $calendarMenu = new MenuItem(gettext('Calendar'), 'event/calendars', User::isEventsEnabled(), 'fa-calendar');
         // Anniversaries calendar (ID 1) - black background
         $calendarMenu->addCounter(new MenuCounter('AnniversaryNumber', 'bg-dark', 0, gettext("Today's Wedding Anniversaries")));
         // Birthdays calendar (ID 0) - blue background  
