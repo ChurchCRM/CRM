@@ -9,6 +9,11 @@
  *   GET    /api/property-types/{id}
  *   PUT    /api/property-types/{id}
  *   DELETE /api/property-types/{id}
+ *
+ * NOTE: These routes are gated by MenuOptionsRoleAuthMiddleware.
+ * The Cypress seed's "admin" user (ID 1) has bMenuOptions=0, so happy-path
+ * flows MUST use makePrivateUserAPICall (tony.wade, ID 3, bMenuOptions=1).
+ * The admin key is only used in the 403 negative-path test below.
  */
 describe("API Private Property Types", () => {
     beforeEach(() => {
@@ -17,7 +22,7 @@ describe("API Private Property Types", () => {
 
     describe("GET /api/property-types - List property types", () => {
         it("Returns 200 with propertyTypes array", () => {
-            cy.makePrivateAdminAPICall(
+            cy.makePrivateUserAPICall(
                 "GET",
                 "/api/property-types",
                 null,
@@ -29,7 +34,7 @@ describe("API Private Property Types", () => {
         });
 
         it("Filters by class", () => {
-            cy.makePrivateAdminAPICall(
+            cy.makePrivateUserAPICall(
                 "GET",
                 "/api/property-types?class=p",
                 null,
@@ -42,7 +47,7 @@ describe("API Private Property Types", () => {
         });
 
         it("Rejects invalid class filter with 400", () => {
-            cy.makePrivateAdminAPICall(
+            cy.makePrivateUserAPICall(
                 "GET",
                 "/api/property-types?class=zz",
                 null,
@@ -54,7 +59,7 @@ describe("API Private Property Types", () => {
     describe("POST /api/property-types - Create property type", () => {
         it("Creates a property type and returns 201", () => {
             const name = `Cypress PT ${Date.now()}`;
-            cy.makePrivateAdminAPICall(
+            cy.makePrivateUserAPICall(
                 "POST",
                 "/api/property-types",
                 { class: "p", name, description: "Test description" },
@@ -66,7 +71,7 @@ describe("API Private Property Types", () => {
                 expect(pt.name).to.equal(name);
                 expect(pt.description).to.equal("Test description");
 
-                cy.makePrivateAdminAPICall(
+                cy.makePrivateUserAPICall(
                     "DELETE",
                     `/api/property-types/${pt.id}`,
                     null,
@@ -76,7 +81,7 @@ describe("API Private Property Types", () => {
         });
 
         it("Returns 400 when class is invalid", () => {
-            cy.makePrivateAdminAPICall(
+            cy.makePrivateUserAPICall(
                 "POST",
                 "/api/property-types",
                 { class: "x", name: "bad class" },
@@ -85,7 +90,7 @@ describe("API Private Property Types", () => {
         });
 
         it("Returns 400 when name is empty", () => {
-            cy.makePrivateAdminAPICall(
+            cy.makePrivateUserAPICall(
                 "POST",
                 "/api/property-types",
                 { class: "f", name: "" },
@@ -96,7 +101,7 @@ describe("API Private Property Types", () => {
 
     describe("GET /api/property-types/{id}", () => {
         it("Returns 404 for non-existent property type", () => {
-            cy.makePrivateAdminAPICall(
+            cy.makePrivateUserAPICall(
                 "GET",
                 "/api/property-types/999999",
                 null,
@@ -105,14 +110,14 @@ describe("API Private Property Types", () => {
         });
 
         it("Returns 200 with object for existing property type", () => {
-            cy.makePrivateAdminAPICall(
+            cy.makePrivateUserAPICall(
                 "POST",
                 "/api/property-types",
                 { class: "g", name: `Cypress PT GET ${Date.now()}` },
                 201,
             ).then((createResp) => {
                 const id = createResp.body.propertyType.id;
-                cy.makePrivateAdminAPICall(
+                cy.makePrivateUserAPICall(
                     "GET",
                     `/api/property-types/${id}`,
                     null,
@@ -121,7 +126,7 @@ describe("API Private Property Types", () => {
                     expect(getResp.body.propertyType.id).to.equal(id);
                     expect(getResp.body.propertyType.class).to.equal("g");
                 });
-                cy.makePrivateAdminAPICall(
+                cy.makePrivateUserAPICall(
                     "DELETE",
                     `/api/property-types/${id}`,
                     null,
@@ -133,7 +138,7 @@ describe("API Private Property Types", () => {
 
     describe("PUT /api/property-types/{id}", () => {
         it("Returns 404 for non-existent property type", () => {
-            cy.makePrivateAdminAPICall(
+            cy.makePrivateUserAPICall(
                 "PUT",
                 "/api/property-types/999999",
                 { name: "nope" },
@@ -142,14 +147,14 @@ describe("API Private Property Types", () => {
         });
 
         it("Updates class, name, and description", () => {
-            cy.makePrivateAdminAPICall(
+            cy.makePrivateUserAPICall(
                 "POST",
                 "/api/property-types",
                 { class: "p", name: `Cypress PT PUT ${Date.now()}` },
                 201,
             ).then((createResp) => {
                 const id = createResp.body.propertyType.id;
-                cy.makePrivateAdminAPICall(
+                cy.makePrivateUserAPICall(
                     "PUT",
                     `/api/property-types/${id}`,
                     {
@@ -167,7 +172,7 @@ describe("API Private Property Types", () => {
                         "Updated desc",
                     );
                 });
-                cy.makePrivateAdminAPICall(
+                cy.makePrivateUserAPICall(
                     "DELETE",
                     `/api/property-types/${id}`,
                     null,
@@ -177,20 +182,20 @@ describe("API Private Property Types", () => {
         });
 
         it("Returns 400 when updating to invalid class", () => {
-            cy.makePrivateAdminAPICall(
+            cy.makePrivateUserAPICall(
                 "POST",
                 "/api/property-types",
                 { class: "p", name: `Cypress PT BadClass ${Date.now()}` },
                 201,
             ).then((createResp) => {
                 const id = createResp.body.propertyType.id;
-                cy.makePrivateAdminAPICall(
+                cy.makePrivateUserAPICall(
                     "PUT",
                     `/api/property-types/${id}`,
                     { class: "zz" },
                     400,
                 );
-                cy.makePrivateAdminAPICall(
+                cy.makePrivateUserAPICall(
                     "DELETE",
                     `/api/property-types/${id}`,
                     null,
@@ -202,7 +207,7 @@ describe("API Private Property Types", () => {
 
     describe("DELETE /api/property-types/{id}", () => {
         it("Returns 404 for non-existent property type", () => {
-            cy.makePrivateAdminAPICall(
+            cy.makePrivateUserAPICall(
                 "DELETE",
                 "/api/property-types/999999",
                 null,
@@ -211,14 +216,14 @@ describe("API Private Property Types", () => {
         });
 
         it("Deletes an existing property type", () => {
-            cy.makePrivateAdminAPICall(
+            cy.makePrivateUserAPICall(
                 "POST",
                 "/api/property-types",
                 { class: "p", name: `Cypress PT DEL ${Date.now()}` },
                 201,
             ).then((createResp) => {
                 const id = createResp.body.propertyType.id;
-                cy.makePrivateAdminAPICall(
+                cy.makePrivateUserAPICall(
                     "DELETE",
                     `/api/property-types/${id}`,
                     null,
@@ -226,12 +231,27 @@ describe("API Private Property Types", () => {
                 ).then((delResp) => {
                     expect(delResp.body).to.have.property("success", true);
                 });
-                cy.makePrivateAdminAPICall(
+                cy.makePrivateUserAPICall(
                     "GET",
                     `/api/property-types/${id}`,
                     null,
                     404,
                 );
+            });
+        });
+
+        it("Returns 409 when deleting a property type that is still in use", () => {
+            // Seed data: property types 1/2/3 each have a child property_pro row.
+            // The DELETE route must block with 409 Conflict rather than cascade-delete.
+            cy.makePrivateUserAPICall(
+                "DELETE",
+                "/api/property-types/1",
+                null,
+                409,
+            ).then((resp) => {
+                expect(resp.body).to.have.property("success", false);
+                expect(resp.body).to.have.property("message");
+                expect(resp.body.message).to.match(/in use|still reference/i);
             });
         });
     });
@@ -246,6 +266,17 @@ describe("API Private Property Types", () => {
             }).then((response) => {
                 expect(response.status).to.equal(401);
             });
+        });
+
+        it("Returns 403 for admin caller without MenuOptions permission", () => {
+            // The Cypress seed's admin user (ID=1) has bMenuOptions=0, so even
+            // admin API keys are rejected by MenuOptionsRoleAuthMiddleware.
+            cy.makePrivateAdminAPICall(
+                "GET",
+                "/api/property-types",
+                null,
+                403,
+            );
         });
     });
 });

@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\model\ChurchCRM\PropertyType;
 use ChurchCRM\model\ChurchCRM\PropertyTypeQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\MenuOptionsRoleAuthMiddleware;
@@ -200,15 +201,32 @@ $app->group('/property-types', function (RouteCollectorProxy $group): void {
      *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Deleted"),
      *     @OA\Response(response=404, description="Property type not found"),
+     *     @OA\Response(response=409, description="Property type is still in use by one or more properties"),
      *     @OA\Response(response=401, description="Unauthorized"),
      *     @OA\Response(response=403, description="MenuOptions role required")
      * )
      */
     $group->delete('/{id:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         try {
-            $pt = PropertyTypeQuery::create()->findPk((int) $args['id']);
+            $id = (int) $args['id'];
+            $pt = PropertyTypeQuery::create()->findPk($id);
             if ($pt === null) {
                 return SlimUtils::renderErrorJSON($response, gettext('Property type not found'), [], 404);
+            }
+
+            // Block deletion when any properties still reference this type.
+            // Callers must reassign or delete the dependent properties first.
+            $propertyCount = PropertyQuery::create()->filterByProPrtId($id)->count();
+            if ($propertyCount > 0) {
+                return SlimUtils::renderErrorJSON(
+                    $response,
+                    sprintf(
+                        gettext('Cannot delete property type: %d properties still reference it. Reassign or delete those properties first.'),
+                        $propertyCount
+                    ),
+                    [],
+                    409
+                );
             }
 
             $pt->delete();

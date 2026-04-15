@@ -208,6 +208,13 @@ describe("API Private Volunteer Opportunities", () => {
     });
 
     describe("DELETE /api/volunteer-opportunities/{id}", () => {
+        // TODO: add 409 coverage for "opportunity has person assignments" once
+        // a PersonVolunteerOpportunity REST API exists to seed the dependency.
+        // Seed data has zero rows in both volunteeropportunity_vol and
+        // person2volunteeropp_p2vo, so a 409 test against seed data is not
+        // reliable. The PHP route already blocks via
+        // PersonVolunteerOpportunityQuery::filterByVolunteerOpportunityId()->count().
+
         it("Returns 404 for non-existent opportunity", () => {
             cy.makePrivateAdminAPICall(
                 "DELETE",

@@ -235,6 +235,22 @@ describe("API Private Donation Funds", () => {
             );
         });
 
+        it("Returns 409 when deleting a fund that is still referenced by pledges", () => {
+            // Seed data: fund id=1 ("Pledges") is referenced by rows in pledge_plg.
+            // The DELETE route must block with 409 Conflict — it delegates to
+            // DonationFundService::deleteFund, which throws RuntimeException.
+            cy.makePrivateAdminAPICall(
+                "DELETE",
+                "/api/donation-funds/1",
+                null,
+                409,
+            ).then((resp) => {
+                expect(resp.body).to.have.property("success", false);
+                expect(resp.body).to.have.property("message");
+                expect(resp.body.message).to.match(/pledge/i);
+            });
+        });
+
         it("Deletes an existing fund", () => {
             cy.makePrivateAdminAPICall(
                 "POST",

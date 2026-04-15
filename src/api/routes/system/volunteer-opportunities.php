@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOpportunity;
 use ChurchCRM\model\ChurchCRM\VolunteerOpportunityQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
@@ -208,15 +209,35 @@ $app->group('/volunteer-opportunities', function (RouteCollectorProxy $group): v
      *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Deleted"),
      *     @OA\Response(response=404, description="Volunteer opportunity not found"),
+     *     @OA\Response(response=409, description="Volunteer opportunity is still assigned to one or more people"),
      *     @OA\Response(response=401, description="Unauthorized"),
      *     @OA\Response(response=403, description="Admin role required")
      * )
      */
     $group->delete('/{id:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         try {
-            $opp = VolunteerOpportunityQuery::create()->findPk((int) $args['id']);
+            $id = (int) $args['id'];
+            $opp = VolunteerOpportunityQuery::create()->findPk($id);
             if ($opp === null) {
                 return SlimUtils::renderErrorJSON($response, gettext('Volunteer opportunity not found'), [], 404);
+            }
+
+            // Block deletion when any people are still assigned to this opportunity.
+            // Callers must remove the assignments first rather than silently
+            // cascade-deleting them (which the legacy editor does).
+            $assignmentCount = PersonVolunteerOpportunityQuery::create()
+                ->filterByVolunteerOpportunityId($id)
+                ->count();
+            if ($assignmentCount > 0) {
+                return SlimUtils::renderErrorJSON(
+                    $response,
+                    sprintf(
+                        gettext('Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first.'),
+                        $assignmentCount
+                    ),
+                    [],
+                    409
+                );
             }
 
             $opp->delete();

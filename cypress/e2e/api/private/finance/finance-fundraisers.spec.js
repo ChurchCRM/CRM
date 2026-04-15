@@ -205,6 +205,12 @@ describe("API Private Fundraisers", () => {
     });
 
     describe("DELETE /api/fundraisers/{id} - Delete fundraiser", () => {
+        // TODO: add 409 coverage for "fundraiser has donated items" once a
+        // DonatedItem REST API exists to seed the dependency. Seed data has
+        // fundraiser id=1 but zero donated items, so a 409 test against seed
+        // data is not reliable. The PHP route already blocks via
+        // DonatedItemQuery::filterByFrId()->count().
+
         it("Returns 404 for non-existent fundraiser", () => {
             cy.makePrivateAdminAPICall(
                 "DELETE",

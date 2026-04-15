@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
 use ChurchCRM\model\ChurchCRM\FundRaiser;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
@@ -205,15 +206,33 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
      *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Fundraiser deleted"),
      *     @OA\Response(response=404, description="Fundraiser not found"),
+     *     @OA\Response(response=409, description="Fundraiser still has associated donated items"),
      *     @OA\Response(response=401, description="Unauthorized"),
      *     @OA\Response(response=403, description="Finance role required")
      * )
      */
     $group->delete('/{id:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         try {
-            $fr = FundRaiserQuery::create()->findPk((int) $args['id']);
+            $id = (int) $args['id'];
+            $fr = FundRaiserQuery::create()->findPk($id);
             if ($fr === null) {
                 return SlimUtils::renderErrorJSON($response, gettext('Fundraiser not found'), [], 404);
+            }
+
+            // Block deletion when donated items still reference this fundraiser.
+            // Callers must remove the items first rather than silently orphan
+            // them or cascade-delete auction/raffle history.
+            $itemCount = DonatedItemQuery::create()->filterByFrId($id)->count();
+            if ($itemCount > 0) {
+                return SlimUtils::renderErrorJSON(
+                    $response,
+                    sprintf(
+                        gettext('Cannot delete fundraiser: %d donated items are still associated. Remove the items first.'),
+                        $itemCount
+                    ),
+                    [],
+                    409
+                );
             }
 
             $fr->delete();

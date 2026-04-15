@@ -2,6 +2,7 @@
 
 use ChurchCRM\model\ChurchCRM\DonationFund;
 use ChurchCRM\model\ChurchCRM\DonationFundQuery;
+use ChurchCRM\Service\DonationFundService;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -209,20 +210,32 @@ $app->group('/donation-funds', function (RouteCollectorProxy $group): void {
      *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Deleted"),
      *     @OA\Response(response=404, description="Fund not found"),
+     *     @OA\Response(response=409, description="Fund is still referenced by one or more pledges"),
      *     @OA\Response(response=401, description="Unauthorized"),
      *     @OA\Response(response=403, description="Finance role required")
      * )
      */
     $group->delete('/{id:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         try {
-            $fund = DonationFundQuery::create()->findPk((int) $args['id']);
-            if ($fund === null) {
-                return SlimUtils::renderErrorJSON($response, gettext('Donation fund not found'), [], 404);
-            }
-
-            $fund->delete();
+            $id = (int) $args['id'];
+            // Delegate to DonationFundService::deleteFund which:
+            //   1. Throws InvalidArgumentException when the fund is missing (→ 404)
+            //   2. Throws RuntimeException when associated pledges exist (→ 409)
+            //   3. Full-renumbers remaining funds' fun_Order on success
+            (new DonationFundService())->deleteFund($id);
 
             return SlimUtils::renderSuccessJSON($response);
+        } catch (\InvalidArgumentException $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Donation fund not found'), [], 404);
+        } catch (\RuntimeException $e) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('Cannot delete donation fund: it is still referenced by one or more pledges.'),
+                [],
+                409,
+                $e,
+                $request
+            );
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to delete donation fund'), [], 500, $e, $request);
         }
