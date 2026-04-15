@@ -96,28 +96,52 @@ cy.setupNoFinanceSession();
 
 ### Configuration Location
 
-Credentials stored in `cypress.config.ts` and `docker/cypress.config.ts`:
+Credentials live in the Cypress config files under `cypress/configs/` that the
+`npm run test*` scripts pass via `--config-file`:
+
+- `cypress/configs/docker.config.ts` — used by `npm run test`, `test:open`,
+  `test:api`, `test:ui`, and the `test-root` / `test-subdir` CI matrix
+- `cypress/configs/new-system.config.ts` — used by `npm run test:new-system`
+  and the `test-new-system` CI job (has its own `env` block with an admin
+  account because this job boots from a fresh install)
+
+There is **no** root `cypress.config.ts` in this repo — don't add one and
+don't expect Cypress to auto-detect one. Every script passes an explicit
+`--config-file`.
 
 ```typescript
 env: {
     // Admin account
     'admin.username': 'admin',
     'admin.password': 'changeme',
-    
+
     // Standard user
     'standard.username': 'tony.wade@example.com',
     'standard.password': 'basicjoe',
-    
+
     // User without finance permission
     'nofinance.username': 'judith.matthews@example.com',
     'nofinance.password': 'noMoney$',
 }
 ```
 
+> ⚠️ **CRITICAL: keep shared credentials in sync across configs.** <!-- learned: 2026-04-13 -->
+> If you add a new test user that the `test-new-system` job also needs, the
+> credential has to be added to **both** `cypress/configs/docker.config.ts`
+> and `cypress/configs/new-system.config.ts`. If you update only one,
+> tests will pass in one CI job but fail in the other, and the failure
+> message from `setupLoginSession` — usually
+> `Admin credentials not configured in cypress config env` — does not tell
+> you which config file is missing the key. Always grep both files when
+> adding a new `*.username` / `*.password` entry.
+
 **CRITICAL:**
 - ❌ DO NOT hardcode credentials in test files
 - ❌ DO NOT add commented-out tests or TODO comments
 - ✅ Configuration-driven approach prevents secrets leaking into git
+- ✅ Update `cypress/configs/docker.config.ts` AND
+  `cypress/configs/new-system.config.ts` together when the credential is
+  used by both jobs
 
 ### cy.request() API Calls Reset PHP Sessions (CRITICAL) <!-- learned: 2026-03-27 -->
 
@@ -269,16 +293,21 @@ it("assigns a property and it appears in the list", () => {
     cy.makePrivateAdminAPICall("DELETE", "/api/groups/1/properties/5", null, [200, 404]);
 });
 
-// ✅ CORRECT: beforeEach with API setup + freshAdminLogin()
+// ✅ CORRECT: beforeEach clears stale state AND sets up fresh state
+// (no afterEach — see "State Cleanup: prefer beforeEach" section below).
 describe("Remove property tests", () => {
     beforeEach(() => {
-        cy.makePrivateAdminAPICall("POST", "/api/groups/1/properties/5", {}, [200, 409]);
-        freshAdminLogin(); // login AFTER all API calls
-    });
-
-    afterEach(() => {
-        // cleanup is safe here — runs after UI phase
+        // 1. Clean up any stale state from a previous (possibly failed) run.
+        //    Accept 404 so a fresh DB is also fine.
         cy.makePrivateAdminAPICall("DELETE", "/api/groups/1/properties/5", null, [200, 404]);
+
+        // 2. Create the fixture this test needs. Accept 409 in case a
+        //    concurrent test left a duplicate.
+        cy.makePrivateAdminAPICall("POST", "/api/groups/1/properties/5", {}, [200, 409]);
+
+        // 3. Re-establish session AFTER all API calls — cy.request resets
+        //    PHP session cookies, so this has to be last.
+        freshAdminLogin();
     });
 
     it("shows Remove button", () => {
@@ -372,6 +401,72 @@ cy.contains("h3.card-title", "Properties").should("be.visible");
 cy.contains(".card-title", "Properties").should("be.visible");
 ```
 
+### State Cleanup: prefer `beforeEach`, not `afterEach` <!-- learned: 2026-04-13 -->
+
+Current Cypress best practice (2024+) is to clean up state at the **start** of the next test, not at the end of the previous one. Reason: `afterEach` does not run if a test crashes mid-way (uncaught exception, lost connection, process kill). Cleanup that only runs in `afterEach` can therefore leave the DB in a bad state that breaks every subsequent test.
+
+```javascript
+// ✅ CORRECT — cleanup and fixture setup both live in beforeEach
+describe("Group property management", () => {
+    beforeEach(() => {
+        // 1. Delete anything a prior run (possibly failed mid-test) left behind.
+        //    Accept 404 so a truly fresh DB also works.
+        cy.makePrivateAdminAPICall("DELETE", "/api/groups/1/properties/5", null, [200, 404]);
+
+        // 2. Re-create the fixture this test needs.
+        cy.makePrivateAdminAPICall("POST", "/api/groups/1/properties/5", {}, [200, 409]);
+
+        // 3. Re-establish session last — cy.request resets PHP session cookies.
+        freshAdminLogin();
+    });
+
+    it("shows Remove button", () => {
+        cy.visit("/groups/view/1");
+        cy.get(".remove-group-property-btn").should("exist");
+    });
+});
+
+// ❌ WRONG — cleanup only runs if the previous test reached the end successfully
+describe("Group property management", () => {
+    beforeEach(() => {
+        cy.makePrivateAdminAPICall("POST", "/api/groups/1/properties/5", {}, [200, 409]);
+        freshAdminLogin();
+    });
+
+    afterEach(() => {
+        // This silently skips when a test crashes, leaving stale state behind.
+        cy.makePrivateAdminAPICall("DELETE", "/api/groups/1/properties/5", null, [200, 404]);
+    });
+});
+```
+
+`afterEach` / `after` are still fine for **non-state** housekeeping (printing debug info, collecting artifacts). Don't use them to reset application state.
+
+### When to use `cy.setupAdminSession({ forceLogin: true })` <!-- learned: 2026-04-13 -->
+
+`setupAdminSession()` uses `cy.session()` to cache the admin login across tests — normally you only pay the login cost once per run. The `{ forceLogin: true }` option generates a **new** unique session name (`admin-session-<timestamp>-<random>`), which bypasses the cache and forces a full re-login.
+
+**Only use `forceLogin: true` when you have invalidated the cached session.** The canonical case is immediately after a `cy.request()` / `cy.makePrivateAdminAPICall()` call, because ChurchCRM's PHP backend rotates the session cookie on every request (see "cy.request() API Calls Reset PHP Sessions" above). If you call `cy.setupAdminSession()` without `forceLogin` at that point, the session-cache validate callback will pass (the CRM cookie *technically* exists) but point at a dead PHP session, and your next `cy.visit(...)` will silently redirect to the login page.
+
+```javascript
+// ✅ CORRECT — re-establish session after API mutation
+it("creates a user via the form", () => {
+    cy.makePrivateAdminAPICall("DELETE", "/admin/api/user/25", null, [200, 404]);
+    cy.setupAdminSession({ forceLogin: true });  // required — API call above invalidated the session
+    cy.visit("UserEditor.php?NewPersonID=25");
+    // ...
+});
+
+// ❌ WRONG — forceLogin with no preceding API call wastes ~3–5 seconds per test
+describe("User listing", () => {
+    beforeEach(() => {
+        cy.setupAdminSession({ forceLogin: true });  // ❌ unnecessary; cache was valid
+    });
+});
+```
+
+**Performance note:** each `forceLogin: true` adds ~3–5 seconds of wall time because it runs the full UI login (`cy.visit('/login')` + type username/password). Don't sprinkle it defensively — the skill doc's "UI Tests Must Not Call APIs After Login" pattern above is the cheaper alternative: do all your API setup **before** the first `setupAdminSession()`, not after.
+
 **`cy.contains()` Must Be Scoped to a Container <!-- learned: 2026-03-27 -->**
 
 `cy.contains(text)` without a container scope searches the **entire DOM** — including collapsed Tabler sidebar nav links (`<a.nav-link.flex-fill>` inside `div.collapse`). Even a specific selector like `cy.contains("h3.card-title", text)` can still resolve to a hidden sidebar element.
@@ -432,6 +527,156 @@ cy.intercept("GET", "/api/people/properties/definition/*").as("getDef");
 
 **Note:** This does NOT apply to `cy.visit()` or `cy.request()` — those use `baseUrl` from config and handle the prefix automatically. Only `cy.intercept()` needs the `**` glob because it matches against the full request URL.
 
+## Editable Table Cells: Names Render in Input Values <!-- learned: 2026-04-12 -->
+
+When a table renders option/option names in `<input>` elements (like the OptionManager and many Tabler tables with inline editing), `cy.contains("Member")` does NOT find the value — `cy.contains` searches text content, not input value attributes.
+
+```javascript
+// ❌ WRONG — searches text content, won't find value attributes
+cy.get("#optionsTable tbody").should("contain", "Member");
+
+// ✅ CORRECT — query the input by its value attribute
+cy.get('#optionsTable tbody input.option-name-input[value="Member"]').should("exist");
+```
+
+This applies to any test that asserts data in a table where cells use `<input value="...">` for inline editing.
+
+## Preventing Flaky Tests (Timing & State) <!-- learned: 2026-04-07 -->
+
+Flaky tests almost always come from one of four root causes. Each has a mandatory fix pattern.
+
+---
+
+### 1. `cy.intercept()` Must Be Registered BEFORE the Triggering Action
+
+`cy.intercept()` only captures requests that fire **after** it is registered. If you register it after the action (even a line after), the network call may already be in flight and the alias never resolves — `cy.wait()` hangs until timeout.
+
+**Rule:** Place all `cy.intercept()` calls **before `cy.visit()`**, or at minimum before the element interaction that sends the request.
+
+```javascript
+// ✅ CORRECT — intercept registered before the interaction
+it("Can change table page length", () => {
+    cy.intercept("POST", "**/api/user/*/setting/ui.table.size").as("saveTableSize");
+    cy.visit("/v2/user/3");
+    cy.get('#settingsNav a[href="#tab-appearance"]').click();
+    cy.get("#tablePageLength").select("50");
+    cy.wait("@saveTableSize");
+});
+
+// ❌ WRONG — intercept registered after click; request may have already fired
+it("Can change table page length", () => {
+    cy.visit("/v2/user/3");
+    cy.get('#settingsNav a[href="#tab-appearance"]').click();
+    cy.intercept("POST", "**/api/user/*/setting/ui.table.size").as("saveTableSize"); // too late
+    cy.get("#tablePageLength").select("50");
+    cy.wait("@saveTableSize"); // TIMEOUT — alias was never matched
+});
+```
+
+---
+
+### 2. Always `cy.wait()` for API Calls That Mutate Server State
+
+Any test that changes server state (POST, PUT, PATCH, DELETE) **must** wait for the call to complete before ending. If it doesn't, the mutation may be in-flight when the next test starts, corrupting shared state in the test DB.
+
+This applies even when the test doesn't verify persistence — waiting prevents cross-test state pollution.
+
+```javascript
+// ✅ CORRECT — wait ensures state is committed before test ends
+it("Can toggle dark mode", () => {
+    cy.intercept("POST", "**/api/user/*/setting/ui.style").as("saveStyle");
+    cy.visit("/v2/user/3");
+    cy.get('#settingsNav a[href="#tab-appearance"]').click();
+
+    cy.get("#themeModeDark").check({ force: true });
+    cy.wait("@saveStyle");
+
+    // Reset — also wait so the next test starts with clean state
+    cy.intercept("POST", "**/api/user/*/setting/ui.style").as("resetStyle");
+    cy.get("#themeModeLight").check({ force: true });
+    cy.wait("@resetStyle");
+});
+
+// ❌ WRONG — test ends with an in-flight POST; next test may see stale or dirty state
+it("Can toggle dark mode", () => {
+    cy.visit("/v2/user/3");
+    cy.get('#settingsNav a[href="#tab-appearance"]').click();
+    cy.get("#themeModeDark").check({ force: true }); // fires POST, never awaited
+    cy.get("#themeModeLight").check({ force: true }); // fires POST, never awaited
+});
+```
+
+---
+
+### 3. Selecting the Current Value Does Not Fire a `change` Event
+
+`<select>` elements only emit `change` when the selected option actually changes. If a previous failed run left the element at `"50"` and the test selects `"50"` again, no event fires — so no API call is made — and `cy.wait("@alias")` times out.
+
+**Rule:** Before selecting a new value, always force a known starting value that differs from the target.
+
+```javascript
+// ✅ CORRECT — always select a different baseline first (or reset via API beforehand)
+it("Can change table page length", () => {
+    // Reset to known baseline (10) before the test selects 50
+    cy.intercept("POST", "**/api/user/*/setting/ui.table.size").as("resetSize");
+    cy.visit("/v2/user/3");
+    cy.get('#settingsNav a[href="#tab-appearance"]').click();
+    cy.get("#tablePageLength").then(($sel) => {
+        if ($sel.val() !== "10") {
+            cy.wrap($sel).select("10");
+            cy.wait("@resetSize");
+        }
+    });
+
+    // Now safely select 50 — guaranteed to be a change
+    cy.intercept("POST", "**/api/user/*/setting/ui.table.size").as("saveSize");
+    cy.wrap($sel).select("50");   // ← or re-query #tablePageLength
+    cy.wait("@saveSize");
+});
+
+// ❌ WRONG — if DB already holds "50" from a previous failed run, no change event fires
+it("Can change table page length", () => {
+    cy.intercept("POST", "**/api/user/*/setting/ui.table.size").as("saveTableSize");
+    cy.visit("/v2/user/3");
+    cy.get('#settingsNav a[href="#tab-appearance"]').click();
+    cy.get("#tablePageLength").select("50"); // no-op if already "50"
+    cy.wait("@saveTableSize"); // TIMEOUT
+});
+```
+
+---
+
+### 4. `cy.contains()` Without a Scope Matches Sidebar Nav Text
+
+`cy.contains("Settings")` searches the entire DOM, including Tabler's collapsed sidebar nav links. It resolves on the first match — which may be a hidden nav item, not the page heading — making the assertion unreliable.
+
+**Rule:** Always scope `cy.contains()` to a stable container ID, or use a specific element tag.
+
+```javascript
+// ✅ CORRECT — scoped to the page heading element
+cy.get("h2.page-title").contains("Settings");
+
+// ✅ CORRECT — scoped to a known container
+cy.get("#page-content").contains("Settings");
+
+// ❌ WRONG — may match a sidebar nav link before the heading is rendered
+cy.contains("Settings");
+```
+
+---
+
+### Flakiness Prevention Checklist (for every new test that saves/loads state)
+
+Before marking a test complete, verify:
+
+- [ ] All `cy.intercept()` calls are placed **before** `cy.visit()` or the element interaction
+- [ ] Every state-mutating action (POST/PUT/DELETE) has a matching `cy.wait("@alias")`
+- [ ] Tests that reset a value after the assertion also `cy.wait()` on the reset call
+- [ ] `select()` tests ensure the starting value differs from the target value
+- [ ] `cy.contains()` is scoped to a container, not used globally
+
+---
+
 ## UI Test Best Practices
 
 ### Using Element IDs for Test Selectors
@@ -454,6 +699,16 @@ cy.get('#form-user-edit').submit();
 - IDs don't change when CSS changes
 - Text-based selectors break with translations
 - Team members know test IDs won't affect styling
+
+#### Note on `data-cy` / `data-test` attributes <!-- learned: 2026-04-13 -->
+
+Cypress's own official best-practices guide recommends `data-cy="..."` (or `data-test="..."`) attributes as the primary testing selector. **ChurchCRM intentionally uses element IDs instead.** The reasoning is:
+
+- ChurchCRM already has stable `id` attributes on every interactive element from its legacy PHP templating, so there is no "no-selector-at-all" problem that `data-cy` exists to solve
+- Adding a second parallel attribute (`id` + `data-cy`) doubles the maintenance cost
+- `id` has the additional win of being usable from ordinary JS (event handlers, URL fragments) — `data-cy` is test-only
+
+New ChurchCRM code should continue to use `id` attributes for test selectors. If you touch a component that lacks an `id` and would otherwise need a brittle CSS selector, add an `id` — not a `data-cy`. This keeps the test-selector story consistent across the project.
 
 ### Complete Workflow Test
 
@@ -610,7 +865,7 @@ Config files live in `cypress/configs/` (NOT `docker/`):
 - `cypress/configs/new-system.config.ts` — setup wizard / fresh install tests
 - `cypress/configs/base.config.ts` + `_shared.ts` — shared base configuration
 
-**NOTE:** The root `cypress.config.ts` is auto-detected by Cypress, so `--config-file` is only required when using a non-default config (e.g., `cypress/configs/new-system.config.ts`). For standard runs, `npx cypress run --spec "..."` works without `--config-file`.
+**NOTE:** There is **no** root `cypress.config.ts` in this repo. Cypress can still run without `--config-file`, but it will fall back to defaults and will **not** pick up ChurchCRM's required `env` / `baseUrl` / `specPattern` settings. The `npm run test*` scripts already pass `--config-file cypress/configs/docker.config.ts` (or `new-system.config.ts`) — see `package.json`. If you invoke ChurchCRM's Cypress suite yourself, always pass the appropriate config file, e.g. `npx cypress run --config-file cypress/configs/docker.config.ts --spec "..."`.
 
 **CRITICAL: Always install Cypress via `npm install`** <!-- learned: 2026-03-07 -->
 - Never use `npx cypress install` — it can produce a corrupt binary with wrong permissions.
@@ -641,8 +896,12 @@ npm run test:api -- --spec "cypress/e2e/api/private/admin/private.admin.system.c
 # Setup wizard tests
 npm run test:new-system
 
-# ⚠️ DO NOT use direct npx cypress run — always use the npm scripts above
-# The npm scripts handle config and environment setup correctly
+# Direct single-spec run (headless, default config)
+npx cypress run --spec "cypress/e2e/ui/events/standard.calendar.spec.js" --headless
+
+# ℹ️ Prefer this direct style for quick single-spec validation.
+# The npm scripts (test:ui, test:api) are wrappers that set config/env —
+# for single-spec runs, direct npx with --headless is simpler and equivalent.
 ```
 
 ### Running Tests in Docker (Required Workflow)
@@ -661,8 +920,8 @@ npm run test                          # full suite
 npm run test:ui                       # UI tests only
 npm run test:api                      # API tests only
 
-# 3. Single spec
-npx cypress run --config-file cypress/configs/docker.config.ts --spec "cypress/e2e/ui/user/standard.user.password.spec.js"
+# 3. Single spec (headless)
+npx cypress run --spec "cypress/e2e/ui/user/standard.user.password.spec.js" --headless
 
 # 4. View logs after failures
 npm run docker:test:logs
@@ -842,6 +1101,50 @@ cy.contains('Email').type('test@example.com');  // Wrong element
 cy.get('div.container div.row div.col-md-6 form input[type="email"]');
 ```
 
+### Modal Testing Patterns <!-- learned: 2026-04-06 -->
+
+For dynamically loaded modals (content swapped after API fetch), use specific ID
+selectors and `not.exist` (not `not.be.visible`) since cleanup removes the element:
+
+```javascript
+// ✅ CORRECT — wait for dynamic content, use element IDs
+cy.get("#event-title-input").should("be.visible").type("My Event");
+cy.get("#eventCancelBtn").click();
+cy.get("#eventEditorModal").should("not.exist");  // cleanup removes element
+
+// ❌ WRONG — fragile selector, wrong close assertion
+cy.get(".modal-header input").type("My Event");          // matches ANY input
+cy.get(".modal-footer .btn-secondary").click();           // matches settings panel too
+cy.get("#eventEditorModal").should("not.be.visible");     // element is removed, not hidden
+```
+
+### Tabler Form-Selectgroup (Radio/Checkbox Pills) <!-- learned: 2026-04-06 -->
+
+Tabler hides the actual `<input>` inside `form-selectgroup-item`. Click the parent
+`<label>`, not the input:
+
+```javascript
+// ✅ CORRECT — click the visible label wrapper
+cy.get('input[name="eventDayType"][value="allday"]').parent("label").click();
+
+// ❌ WRONG — input is hidden, check() doesn't reliably fire change event
+cy.get('input[name="eventDayType"][value="allday"]').check({ force: true });
+```
+
+### Don't Assume Initial Form State from FullCalendar <!-- learned: 2026-04-06 -->
+
+FullCalendar's `select` callback may provide non-midnight times depending on the
+view mode. Don't assume the initial all-day/timed state — explicitly set it first:
+
+```javascript
+// ✅ CORRECT — set known state, then verify toggle
+cy.get('input[name="eventDayType"][value="allday"]').parent("label").click();
+cy.get("#eventStartDate").should("have.attr", "type", "date");
+
+// ❌ WRONG — assumes day-click always gives midnight (all-day)
+cy.get("#eventStartDate").should("have.attr", "type", "date"); // may be datetime-local
+```
+
 ## Cross-Spec Environment Variable Persistence <!-- learned: 2026-03-15 -->
 
 **GOTCHA:** `Cypress.env()` mutations in one spec file do NOT reliably persist to other spec files because each spec runs in a fresh browser context.
@@ -862,7 +1165,7 @@ const password = Cypress.env('newSystemAdminPassword');  // ❌ NULL/undefined -
 
 ### ✅ CORRECT - Use stable config source
 ```typescript
-// cypress.config.ts
+// cypress/configs/docker.config.ts
 env: {
     'admin.password': 'changeme',
     'admin.new.password': 'AdminP@ss1234!',  // Define stable password upfront
@@ -883,7 +1186,7 @@ it('should store password', () => {
     cy.task('setPassword', newPassword);
 });
 
-// cypress.config.ts - register task
+// cypress/configs/docker.config.ts - register task
 on('task', {
     setPassword: (pwd) => {
         require('fs').writeFileSync('.temp/test-pwd', pwd);
@@ -915,6 +1218,45 @@ cy.fixture('users.json').then((users) => {
   cy.request('POST', '/api/admin/users', users[0]);
 });
 ```
+
+### Using Fixtures with `cy.intercept()` for API Response Mocking <!-- learned: 2026-04-13 -->
+
+For UI tests where the **UI's response handling** is what's under test — not the backend — stub the API call with a fixture instead of hitting the real server. The test becomes deterministic, faster, and no longer depends on DB state.
+
+```javascript
+// ✅ Deterministic: test that the people list renders rows from a fixture
+it("renders empty-state when people list is empty", () => {
+    cy.intercept("GET", "**/api/persons*", { fixture: "people/empty.json" }).as("getPeople");
+    cy.setupAdminSession();
+    cy.visit("/people/list");
+    cy.wait("@getPeople");
+    cy.contains("No people to display").should("be.visible");
+});
+
+// ✅ Error path: test that the UI handles a 500 gracefully
+it("shows a friendly error when the people API errors", () => {
+    cy.intercept("GET", "**/api/persons*", { statusCode: 500, body: { error: "boom" } }).as("getPeople");
+    cy.setupAdminSession();
+    cy.visit("/people/list");
+    cy.wait("@getPeople");
+    cy.get(".alert-danger").should("contain", "Unable to load");
+});
+```
+
+**Fixture organization:** store fixture files under `cypress/fixtures/<feature>/<scenario>.json` so each file captures one well-named scenario (e.g. `people/empty.json`, `people/ten-rows.json`, `finance/deposit-with-warnings.json`).
+
+**When to reach for a fixture instead of the real API:**
+- Error paths (4xx, 5xx, malformed payloads) — real failures are hard to reproduce
+- Empty states / boundary data — no need to wipe the DB
+- Large-result-set rendering — avoid seeding thousands of rows
+- Response-shape regression tests — changes to the JSON shape should fail the test
+
+**When to NOT use a fixture:**
+- Integration tests that verify a real end-to-end workflow (create → save → reload)
+- Anything that asserts on business logic computed server-side
+- Contract tests that validate the API's actual response shape against code
+
+Keep fixture files in sync with the real API. If a migration changes the response shape, the fixture and the real response both need updating.
 
 ### Environment & Config
 **Config files:** `cypress/configs/docker.config.ts` (CI/dev standard), `new-system.config.ts` (setup wizard)  
@@ -1075,3 +1417,80 @@ cy.get("#latestPersonDashboardItem").then(($table) => {
   }
 });
 ```
+
+### Cypress Cannot Be Run From the Agent's Bash Tool <!-- learned: 2026-04-09 -->
+
+**Don't try.** Cypress fails immediately with `MODULE_NOT_FOUND` and only the trailing two lines of the error stack survive into the captured output (`code: 'MODULE_NOT_FOUND'` / `requireStack: []`). The full electron stack and the actual missing-module path are stripped before reaching stdout.
+
+The root cause: the Bash sandbox corrupts the path the cypress CLI hands to electron. With `DEBUG=cypress:* node node_modules/cypress/bin/cypress run ...` you can see the full spawn args and the entry point becomes:
+
+```
+/Users/.../Cypress.app/Contents/MacOS/Contents/Resources/app/index.js
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+```
+
+Doubled-up `Contents/`. Same command in the user's interactive terminal works fine because the sandbox env (PATH/PWD/argv resolution) differs.
+
+**What to do**: ask the user to run cypress for you, e.g.:
+
+```bash
+npx cypress run --config-file cypress/configs/docker.config.ts \
+  --spec "cypress/e2e/ui/admin/event-types.spec.js" \
+  > src/event-tests-output.txt 2>&1
+```
+
+Then read `src/event-tests-output.txt` for the full result. Do **not** run `npx cypress install` / `cache clear` to try to "fix" it — the project rules forbid touching the binary cache and the issue isn't in the cache anyway.
+
+### Filtering DataTables 2.x via JS API, not Selectors <!-- learned: 2026-04-09 -->
+
+When a test creates a row and then asserts it appears in a DataTable, default 10-row pagination drops the new row off page 1 once enough rows accumulate. `cy.contains()` then can't find it (DataTables removes off-page rows from the DOM in client-side mode).
+
+**Don't** use the legacy `#tableId_filter input[type=search]` selector — DataTables 2.x with the CRM `layout` config (`topStart: 'search'`) doesn't render that element; the search input lives under `div.dt-search`.
+
+**Do** drive the DataTable JS API directly via `cy.window()`. It's selector-independent and works with any layout/version:
+
+```js
+function filterEventTypesTable(query) {
+  cy.window().then((win) => {
+    win.$('#eventTypesTable').DataTable().search(query).draw();
+  });
+}
+
+// usage
+cy.get('#eventTypesTable', { timeout: 10000 }).should('exist'); // wait for init
+filterEventTypesTable(uniqueName);
+cy.get('#eventTypesTable tbody tr').should('have.length', 1).and('contain', uniqueName);
+```
+
+### Never Mix Success and Error Status Codes <!-- learned: 2026-04-07 -->
+
+Each test must assert a **single** specific expected status code (or a tightly scoped set when
+genuine system-state variance exists). Bundling 2xx with 4xx/5xx masks real failures:
+
+```js
+// ❌ WRONG — hides whether route works or fails
+cy.makePrivateAdminAPICall("POST", "/api/payments/", body, [200, 400, 422, 500]);
+
+// ✅ CORRECT — 500 because validateFund throws TypeError (FundSplit is a string)
+cy.makePrivateAdminAPICall("POST", "/api/payments/", body, 500);
+
+// ✅ CORRECT — genuinely ambiguous system-state (kiosk window open vs closed)
+expect(response.status).to.be.oneOf([302, 401]);
+```
+
+### Trailing Slash Required for Slim Group Root Routes <!-- learned: 2026-04-07 -->
+
+`$group->post('/', ...)` inside `$app->group('/payments', ...)` registers `POST /payments/`
+(with trailing slash). Tests calling `/api/payments` (no slash) return **404** now that
+middleware ordering is correctly fixed. Use the trailing slash in test URLs:
+
+```js
+// ❌ WRONG — 404 with correct LIFO middleware order
+cy.makePrivateAdminAPICall("POST", "/api/payments", body, 200);
+
+// ✅ CORRECT
+cy.makePrivateAdminAPICall("POST", "/api/payments/", body, 200);
+```
+
+This also affected GET `/api/deposits` in `FindDepositSlip.js` — check any route defined as
+`$group->get('/', ...)` and ensure callers use the trailing slash.

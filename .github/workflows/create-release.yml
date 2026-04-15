@@ -1,0 +1,177 @@
+name: Create Release
+
+# Manually-triggered release workflow. Takes the zip built by a successful
+# "Build, Test and Package" run on master and publishes it as a GitHub Release
+# with the tag and name you specify. Use this to cut a release (or RC) whenever
+# you're ready — not every master merge is a release.
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Git tag to create, e.g. v8.0.0 or v8.0.0-rc1'
+        required: true
+        type: string
+      name:
+        description: 'Release title, e.g. ChurchCRM 8.0.0 or ChurchCRM 8.0.0 RC1'
+        required: true
+        type: string
+      prerelease:
+        description: 'Mark as pre-release (tick this for RCs / betas)'
+        required: false
+        type: boolean
+        default: false
+      draft:
+        description: 'Create as draft so you can review before publishing'
+        required: false
+        type: boolean
+        default: true
+      run_id:
+        description: 'Optional: specific Build, Test and Package run ID to release from. Leave blank for the latest successful master build. To find it: open the run in Actions and copy the number from the URL (e.g. /actions/runs/24362759265 → 24362759265).'
+        required: false
+        type: string
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: read
+    env:
+      # gh CLI needs to know the repo to query since we don't check out the
+      # working tree — without this, commands like `gh run download` fail with
+      # "fatal: not a git repository".
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - name: Resolve source build run
+        id: run
+        env:
+          INPUT_RUN_ID: ${{ inputs.run_id }}
+        run: |
+          set -euo pipefail
+          if [ -n "$INPUT_RUN_ID" ]; then
+            run_id="$INPUT_RUN_ID"
+            echo "Using explicit run_id=$run_id from workflow input."
+          else
+            run_id=$(gh run list \
+              --workflow=build-test-package.yml \
+              --branch=master \
+              --event=push \
+              --status=success \
+              --limit=1 \
+              --json databaseId \
+              --jq '.[0].databaseId // empty')
+            if [ -z "$run_id" ]; then
+              echo "::error::No successful master build found. Merge to master and wait for a green build, or pass a run_id explicitly."
+              exit 1
+            fi
+            echo "Auto-resolved latest successful master build: run_id=$run_id"
+          fi
+
+          commit=$(gh run view "$run_id" --json headSha --jq .headSha)
+          run_url=$(gh run view "$run_id" --json url --jq .url)
+
+          echo "run_id=$run_id" >> "$GITHUB_OUTPUT"
+          echo "commit=$commit" >> "$GITHUB_OUTPUT"
+          echo "run_url=$run_url" >> "$GITHUB_OUTPUT"
+
+          echo "Releasing from run #$run_id (commit $commit)"
+
+      - name: Download release artifact
+        id: artifact
+        env:
+          RUN_ID: ${{ steps.run.outputs.run_id }}
+        run: |
+          set -euo pipefail
+          mkdir -p release-download
+          # gh run download unwraps the upload-artifact outer zip, so we end up
+          # with the real ChurchCRM-<version>.zip on disk (no double-unzip).
+          gh run download "$RUN_ID" \
+            --pattern 'ChurchCRM-*' \
+            --dir release-download
+
+          zip_path=$(find release-download -type f -name 'ChurchCRM-*.zip' | head -n 1)
+          if [ -z "$zip_path" ]; then
+            echo "::error::No ChurchCRM-*.zip found in artifacts for run $RUN_ID"
+            find release-download -maxdepth 3 -print
+            exit 1
+          fi
+
+          mv "$zip_path" ./
+          zip_name=$(basename "$zip_path")
+          echo "zip_name=$zip_name" >> "$GITHUB_OUTPUT"
+          echo "Found release asset: $zip_name"
+
+      - name: Create or update GitHub Release
+        id: release
+        env:
+          TAG: ${{ inputs.tag }}
+          NAME: ${{ inputs.name }}
+          TARGET_COMMIT: ${{ steps.run.outputs.commit }}
+          ZIP_NAME: ${{ steps.artifact.outputs.zip_name }}
+          IS_DRAFT: ${{ inputs.draft }}
+          IS_PRERELEASE: ${{ inputs.prerelease }}
+        run: |
+          set -euo pipefail
+
+          flags=()
+          if [ "$IS_DRAFT" = "true" ]; then
+            flags+=(--draft=true)
+          else
+            flags+=(--draft=false)
+          fi
+          if [ "$IS_PRERELEASE" = "true" ]; then
+            flags+=(--prerelease=true)
+          else
+            flags+=(--prerelease=false)
+          fi
+
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Release $TAG already exists — updating metadata and re-uploading asset."
+            gh release edit "$TAG" \
+              --title "$NAME" \
+              "${flags[@]}"
+            gh release upload "$TAG" "$ZIP_NAME" --clobber
+          else
+            echo "Creating release $TAG targeting $TARGET_COMMIT."
+            gh release create "$TAG" "$ZIP_NAME" \
+              --title "$NAME" \
+              --target "$TARGET_COMMIT" \
+              --generate-notes \
+              "${flags[@]}"
+          fi
+
+          release_url=$(gh release view "$TAG" --json url --jq .url)
+          echo "release_url=$release_url" >> "$GITHUB_OUTPUT"
+
+      - name: Summary
+        if: always()
+        env:
+          TAG: ${{ inputs.tag }}
+          NAME: ${{ inputs.name }}
+          IS_DRAFT: ${{ inputs.draft }}
+          IS_PRERELEASE: ${{ inputs.prerelease }}
+          RUN_ID: ${{ steps.run.outputs.run_id }}
+          RUN_URL: ${{ steps.run.outputs.run_url }}
+          COMMIT: ${{ steps.run.outputs.commit }}
+          ZIP_NAME: ${{ steps.artifact.outputs.zip_name }}
+          RELEASE_URL: ${{ steps.release.outputs.release_url }}
+        run: |
+          {
+            echo "## Release Summary"
+            echo ""
+            echo "- **Tag:** \`$TAG\`"
+            echo "- **Name:** $NAME"
+            echo "- **Draft:** $IS_DRAFT"
+            echo "- **Pre-release:** $IS_PRERELEASE"
+            echo "- **Source build:** [run #$RUN_ID]($RUN_URL)"
+            echo "- **Commit:** \`$COMMIT\`"
+            if [ -n "${ZIP_NAME:-}" ]; then
+              echo "- **Asset:** \`$ZIP_NAME\`"
+            fi
+            if [ -n "${RELEASE_URL:-}" ]; then
+              echo ""
+              echo "### [Open release page]($RELEASE_URL)"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"

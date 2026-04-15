@@ -10,7 +10,7 @@ use ChurchCRM\dto\SystemURLs;
 <!-- Custom ChurchCRM styles (includes Tabler, DataTables BS5, icons, and bridge overrides) -->
 <?php
 // $localeInfo is always initialised by every including header
-// (Header.php, Header-Minimal.php, Header-Short.php, HeaderNotLoggedIn.php).
+// (Header.php, HeaderNotLoggedIn.php).
 // The isset() guard is a safety net for any direct or future unknown includer.
 ?>
 <?php if (isset($localeInfo) && $localeInfo->isRTL()): ?>

@@ -5,6 +5,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
 $sPageTitle = gettext('Login');
+$sBodyClass = 'page-auth page-login';
 require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
 
 ?>

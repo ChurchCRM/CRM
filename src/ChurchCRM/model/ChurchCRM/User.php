@@ -90,6 +90,28 @@ class User extends BaseUser
     }
 
     /**
+     * Check if the user lacks all functional admin permissions.
+     * Users with no permissions (or only EditSelf) cannot use the admin interface
+     * and should be redirected to a self-service flow or blocked.
+     *
+     * @see https://github.com/ChurchCRM/CRM/issues/8617
+     */
+    public function hasNoAdminPermissions(): bool
+    {
+        if ($this->isAdmin()) {
+            return false;
+        }
+
+        return !$this->isAddRecords()
+            && !$this->isEditRecords()
+            && !$this->isDeleteRecords()
+            && !$this->isMenuOptions()
+            && !$this->isManageGroups()
+            && !$this->isFinance()
+            && !$this->isNotes();
+    }
+
+    /**
      * Check if the user can edit a specific person's record.
      * Combines role-based (EditRecords) and object-level (EditSelf + family/own) authorization.
      *
@@ -188,6 +210,34 @@ class User extends BaseUser
     public function isAddEvent(): bool
     {
         return $this->isAdmin() || $this->isEnabledSecurity('bAddEvent');
+    }
+
+    /**
+     * Whether the Events module is enabled system-wide via SystemConfig.
+     * Pure system check — no per-user permission gate.
+     */
+    public static function isEventsEnabled(): bool
+    {
+        return SystemConfig::getBooleanValue('bEnabledEvents');
+    }
+
+    /**
+     * Whether this user can manage events: events module is enabled
+     * AND user has the AddEvent permission. Use this for buttons,
+     * routes, and UI gates that should hide when either condition fails.
+     */
+    public function canManageEvents(): bool
+    {
+        return self::isEventsEnabled() && $this->isAddEvent();
+    }
+
+    /**
+     * Whether this user can view events: events module is enabled.
+     * Anyone with login access can view events, so no per-user gate.
+     */
+    public function canViewEvents(): bool
+    {
+        return self::isEventsEnabled();
     }
 
     public function isEmailEnabled(): bool
@@ -463,10 +513,13 @@ class User extends BaseUser
 
     public function getNewTwoFARecoveryCodes(): array
     {
-        // generate an array of 2FA recovery codes, and store as an encrypted, comma-separated list
+        // generate 12 human-readable recovery codes formatted as xxxxxxxx-xxxxxxxx (lowercase hex, 64 bits of entropy each)
+        // and store as an encrypted, comma-separated list
         $recoveryCodes = [];
         for ($i = 0; $i < 12; $i++) {
-            $recoveryCodes[$i] = base64_encode(random_bytes(10));
+            // random_bytes(8) yields 16 hex characters; split into two 8-char segments for xxxxxxxx-xxxxxxxx format
+            $hex = bin2hex(random_bytes(8));
+            $recoveryCodes[$i] = substr($hex, 0, 8) . '-' . substr($hex, 8, 8);
         }
         $recoveryCodesString = implode(',', $recoveryCodes);
         $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManagerUtils::getTwoFASecretKey()));
@@ -494,13 +547,29 @@ class User extends BaseUser
     {
         // checks for validity of a 2FA recovery code
         // if the specified code was valid, the code is also removed.
-        $codes = $this->getDecryptedTwoFactorAuthRecoveryCodes();
-        if (($key = array_search($twoFaRecoveryCode, $codes)) !== false) {
-            unset($codes[$key]);
-            $recoveryCodesString = implode(',', $codes);
-            $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManagerUtils::getTwoFASecretKey()));
+        // New-format codes (xxxxxxxx-xxxxxxxx lowercase hex) are compared with normalization:
+        // hyphens/spaces stripped and lowercased, so users can type them either way.
+        // Legacy base64 codes are compared byte-exact to preserve their original entropy
+        // and avoid case-collision edge cases.
+        $newFormatRegex = '/^[a-f0-9]+-?[a-f0-9]+$/i';
+        $inputIsNewFormat = (bool) preg_match($newFormatRegex, $twoFaRecoveryCode);
+        $normalizedInput = str_replace(['-', ' '], '', strtolower($twoFaRecoveryCode));
 
-            return true;
+        $codes = $this->getDecryptedTwoFactorAuthRecoveryCodes();
+        foreach ($codes as $key => $code) {
+            $storedIsNewFormat = (bool) preg_match($newFormatRegex, $code);
+            $matches = $inputIsNewFormat && $storedIsNewFormat
+                ? str_replace(['-', ' '], '', strtolower($code)) === $normalizedInput
+                : hash_equals($code, $twoFaRecoveryCode);
+
+            if ($matches) {
+                unset($codes[$key]);
+                $recoveryCodesString = implode(',', $codes);
+                $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManagerUtils::getTwoFASecretKey()));
+                $this->save();
+
+                return true;
+            }
         }
 
         return false;

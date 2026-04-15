@@ -33,13 +33,13 @@ function initializeFamilyView() {
     path: `family/${window.CRM.currentFamily}/nav`,
   }).then(function (data) {
     if (data?.PreFamilyId) {
-      $("#lastFamily").attr("href", `${window.CRM.root}/v2/family/${data.PreFamilyId}`);
+      $("#lastFamily").attr("href", `${window.CRM.root}/people/family/${data.PreFamilyId}`);
     } else {
       $("#lastFamily").addClass("disabled").attr("aria-disabled", "true").removeAttr("href");
     }
 
     if (data?.NextFamilyId) {
-      $("#nextFamily").attr("href", `${window.CRM.root}/v2/family/${data.NextFamilyId}`);
+      $("#nextFamily").attr("href", `${window.CRM.root}/people/family/${data.NextFamilyId}`);
     } else {
       $("#nextFamily").addClass("disabled").attr("aria-disabled", "true").removeAttr("href");
     }
@@ -177,7 +177,7 @@ function initializeFamilyView() {
           data: "GroupKey",
           className: "all no-export",
           render: function (data, type, row) {
-            let linkBack = "v2/family/" + window.CRM.currentFamily;
+            let linkBack = "people/family/" + window.CRM.currentFamily;
             let editUrl = window.CRM.root + "/PledgeEditor.php?GroupKey=" + row.GroupKey + "&amp;linkBack=" + linkBack;
             let deleteUrl =
               window.CRM.root + "/PledgeDelete.php?GroupKey=" + row.GroupKey + "&amp;linkBack=" + linkBack;
@@ -374,15 +374,8 @@ function initializeFamilyView() {
     window.CRM.showPhotoLightbox("family", window.CRM.currentFamily);
   });
 
-  // Photo viewer click handler for family avatars (person handler is in MemberView.js)
-  $(document).on("click", ".view-family-photo", function (e) {
-    var familyId = $(e.currentTarget).data("family-id");
-    if (window.CRM && window.CRM.showPhotoLightbox) {
-      window.CRM.showPhotoLightbox("family", familyId);
-    }
-    e.preventDefault();
-    e.stopPropagation();
-  });
+  // .view-family-photo / .view-person-photo click handlers are registered
+  // globally in avatar-loader.ts
 
   $("#activateDeactivate").on("click", function () {
     let popupTitle = window.CRM.currentActive ? i18next.t("Confirm Deactivation") : i18next.t("Confirm Activation");
@@ -400,7 +393,7 @@ function initializeFamilyView() {
             path: `family/${window.CRM.currentFamily}/activate/${!window.CRM.currentActive}`,
           }).then(function (data) {
             if (data.success) {
-              window.location.href = `${window.CRM.root}/v2/family/${window.CRM.currentFamily}`;
+              window.location.href = `${window.CRM.root}/people/family/${window.CRM.currentFamily}`;
             }
           });
         }

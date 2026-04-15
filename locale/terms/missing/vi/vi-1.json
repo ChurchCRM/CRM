@@ -1,9 +1,3 @@
 {
-  "%d result for \"%s\"": {
-    "other": ""
-  },
-  "BCC": "",
-  "Email BCC": "",
-  "name@example.com": "",
-  "N/A": ""
+  "name@example.com": ""
 }

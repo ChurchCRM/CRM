@@ -19,6 +19,42 @@ describe("API Public User", () => {
         });
     });
 
+    it("Login with non-existent user returns error", () => {
+        cy.apiRequest({
+            method: "POST",
+            url: "/api/public/user/login",
+            headers: { "content-type": "application/json" },
+            body: { userName: "nonexistent_user_xyz", password: "wrong" },
+            failOnStatusCode: false,
+        }).then((resp) => {
+            expect(resp.status).to.be.oneOf([401, 404]);
+        });
+    });
+
+    it("Login with wrong password returns 401", () => {
+        cy.apiRequest({
+            method: "POST",
+            url: "/api/public/user/login",
+            headers: { "content-type": "application/json" },
+            body: { userName: "admin", password: "wrongpassword" },
+            failOnStatusCode: false,
+        }).then((resp) => {
+            expect(resp.status).to.eq(401);
+        });
+    });
+
+    it("Login with empty userName returns error", () => {
+        cy.apiRequest({
+            method: "POST",
+            url: "/api/public/user/login",
+            headers: { "content-type": "application/json" },
+            body: { userName: "", password: "test" },
+            failOnStatusCode: false,
+        }).then((resp) => {
+            expect(resp.status).to.be.oneOf([401, 404]);
+        });
+    });
+
     describe("Password Reset", () => {
         it("Successful password reset request with valid user", () => {
             cy.apiRequest({

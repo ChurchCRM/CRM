@@ -8,7 +8,6 @@ describe("Family Reg", () => {
         cy.visit("admin/system/church-info");
         cy.get("#sChurchCountry", { timeout: 10000 }).siblings(".ts-wrapper").should("exist");
         cy.get("#sChurchName").clear().type("Main St. Cathedral");
-        cy.wait(500);
         cy.get("#church-info-form").submit();
         cy.url({ timeout: 10000 }).should("include", "church-info");
     });

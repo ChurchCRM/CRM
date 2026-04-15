@@ -82,13 +82,13 @@ if (isset($_POST['SaveChanges'])) {
         for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++) {
             // Use Propel ORM instead of raw SQL to prevent time-based blind SQL injection (GHSA-47q3-c874-mqvp)
             $customField = FamilyCustomMasterQuery::create()
-                ->findOneById($aFieldFields[$iFieldID]);
-            
+                ->findOneByField($aFieldFields[$iFieldID]);
+
             if ($customField !== null) {
                 $customField
                     ->setName($aNameFields[$iFieldID])
-                    ->setSpecial($aSpecialFields[$iFieldID])
-                    ->setFieldSec((int)$aFieldSecurity[$iFieldID])
+                    ->setCustomSpecial($aSpecialFields[$iFieldID])
+                    ->setFieldSecurity((int)$aFieldSecurity[$iFieldID])
                     ->save();
             }
         }
@@ -311,6 +311,11 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
         return false;
     }
 
+    $(document).on('click', '.js-delete-field', function () {
+        var btn = $(this);
+        confirmDeleteField(btn.data('field-name'), btn.data('field-id'));
+    });
+
     <?php if (isset($_GET['deleted']) && $_GET['deleted'] === '1'): ?>
     $(document).ready(function() {
         window.CRM.notify(
@@ -455,7 +460,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
                             echo '<small class="text-danger"><br>' . gettext('You must select a group.') . '</small>';
                         }
                     } elseif ($aTypeFields[$row] == 12) {
-                        echo '<a href="javascript:void(0)" class="btn btn-sm btn-outline-primary" onclick="Newwin=window.open(\'OptionManager.php?mode=famcustom&ListID=' . htmlspecialchars($aSpecialFields[$row], ENT_QUOTES, 'UTF-8') . '\',\'Newwin\',\'toolbar=no,status=no,width=400,height=500,scrollbars=1\')">' . gettext('Edit List Options') . '</a>';
+                        echo '<a href="' . SystemURLs::getRootPath() . '/admin/system/options?mode=famcustom&ListID=' . htmlspecialchars($aSpecialFields[$row], ENT_QUOTES, 'UTF-8') . '" target="_blank" class="btn btn-sm btn-outline-primary">' . gettext('Edit List Options') . '</a>';
                     } else {
                         echo '&nbsp;';
                     } ?>
@@ -470,10 +475,6 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
                         } ?>
                     </td>
                     <td class="w-1">
-                        <?php
-                        $fieldNameJs = htmlspecialchars(json_encode($aNameFields[$row]), ENT_QUOTES, 'UTF-8');
-                        $fieldIdJs = htmlspecialchars(json_encode($aFieldFields[$row]), ENT_QUOTES, 'UTF-8');
-                        ?>
                         <div class="dropdown">
                             <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                 <i class="ti ti-dots-vertical"></i>
@@ -490,7 +491,9 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
                                     echo '<div class="dropdown-divider"></div>';
                                 }
                                 ?>
-                                <button type="button" class="dropdown-item text-danger" onclick="confirmDeleteField(<?= $fieldNameJs ?>, <?= $fieldIdJs ?>)">
+                                <button type="button" class="dropdown-item text-danger js-delete-field"
+                                    data-field-name="<?= InputUtils::escapeAttribute($aNameFields[$row]) ?>"
+                                    data-field-id="<?= InputUtils::escapeAttribute($aFieldFields[$row]) ?>">
                                     <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
                                 </button>
                             </div>

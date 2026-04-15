@@ -8,47 +8,77 @@
 import { kiosk } from "./kiosk-jsom";
 
 // Listen for any click event on the document
-$(document).on("click", function () {
+$(document).on("click", () => {
   // Sadly, we can't enter full screen on load, but we can do
   // it the first time anything is clicked.
   kiosk.enterFullScreen();
 });
 
-$(function () {
+$(() => {
   kiosk.startEventLoop();
+
+  // Initialize "Check-in By" toggle from localStorage
+  const savedCheckinBy = localStorage.getItem("kioskCheckinByEnabled") === "true";
+  $("#checkinByToggle").prop("checked", savedCheckinBy);
+  kiosk.setCheckinByEnabled(savedCheckinBy);
 });
 
-$(document).on("click", ".widget-user-header", function (event) {
+$(document).on("click", ".widget-user-header", (event) => {
   const personId = $(event.currentTarget).data("personid");
   kiosk.displayPersonInfo(personId);
 });
 
-$(document).on("click", ".parentAlertButton", function (event) {
+$(document).on("click", ".parentAlertButton", (event) => {
   const personId = $(event.currentTarget).data("personid");
   kiosk.triggerNotification(personId);
 });
 
-$(document).on("click", ".checkinButton", function (event) {
+$(document).on("click", ".checkinButton", (event) => {
   const personId = $(event.currentTarget).data("personid");
   kiosk.checkInPerson(personId);
 });
 
-$(document).on("click", ".checkoutButton", function (event) {
+$(document).on("click", ".checkoutButton", (event) => {
   const personId = $(event.currentTarget).data("personid");
   kiosk.checkOutPerson(personId);
 });
 
-$(document).on("click", "#refreshBtn", function (event) {
+$(document).on("click", "#refreshBtn", (event) => {
   event.preventDefault();
   kiosk.updateActiveClassMembers();
 });
 
-$(document).on("click", "#alertAllBtn", function (event) {
+$(document).on("click", "#alertAllBtn", (event) => {
   event.preventDefault();
   kiosk.alertAll();
 });
 
-$(document).on("click", "#checkoutAllBtn", function (event) {
+$(document).on("click", "#checkoutAllBtn", (event) => {
   event.preventDefault();
   kiosk.checkOutAll();
+});
+
+// "Check-in By" toggle
+$(document).on("change", "#checkinByToggle", function () {
+  const enabled = ($(this) as JQuery<HTMLInputElement>).is(":checked");
+  localStorage.setItem("kioskCheckinByEnabled", String(enabled));
+  kiosk.setCheckinByEnabled(enabled);
+});
+
+// Family member selected in "Check-in By" modal
+$(document).on("click", ".checkinByMemberBtn", (event) => {
+  const memberId = Number($(event.currentTarget).data("memberid"));
+  window.bootstrap.Modal.getOrCreateInstance(document.getElementById("checkinByModal")!).hide();
+  kiosk.resolveCheckinByModal(Number.isNaN(memberId) || memberId <= 0 ? null : memberId);
+});
+
+// "Skip" button in "Check-in By" modal
+$(document).on("click", "#checkinBySkipBtn", () => {
+  window.bootstrap.Modal.getOrCreateInstance(document.getElementById("checkinByModal")!).hide();
+  kiosk.resolveCheckinByModal(null);
+});
+
+// "Check-in By" modal dismissed without making a selection (X / Escape / backdrop click)
+$(document).on("hidden.bs.modal", "#checkinByModal", () => {
+  kiosk.cancelCheckinByModal();
 });

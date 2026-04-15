@@ -415,7 +415,8 @@ async function downloadLanguage(locale, poEditorLocale, current, total, localeCf
     for (const format of FILE_FORMATS) {
         try {
             await downloadLanguageFormat(locale, poEditorLocale, format);
-            // Delay between format downloads (700ms to reduce rate pressure)
+            // Delay between format downloads — 3 formats/locale = ~2.1s total
+            // POEditor free tier: 100 req/min, so ~1.4s/req average is safe
             await sleep(700);
         } catch (error) {
             console.error(`    ❌ ${format.ext.toUpperCase()}: ${sanitize(error.message)}`);
@@ -451,25 +452,28 @@ async function downloadLanguage(locale, poEditorLocale, current, total, localeCf
 }
 
 /**
- * Parse command-line arguments for locale parameter
+ * Parse command-line arguments for locale parameter.
+ * Returns an array of locale strings, or null (meaning "all locales").
+ * Supports comma-separated values: --locale am,cs,et  or positional: node script.js am,cs,et
  */
 function parseArguments() {
     const args = process.argv.slice(2);
-    let targetLocale = null;
+    let raw = null;
 
     // Handle both formats: node script.js fi  and npm script -- --locale fi
     for (let i = 0; i < args.length; i++) {
         if (args[i] === '--locale' && args[i + 1]) {
-            targetLocale = args[i + 1].toLowerCase();
+            raw = args[i + 1].toLowerCase();
             break;
-        } else if (!args[i].startsWith('-') && !targetLocale) {
+        } else if (!args[i].startsWith('-') && !raw) {
             // First non-flag argument is the locale
-            targetLocale = args[i].toLowerCase();
+            raw = args[i].toLowerCase();
             break;
         }
     }
 
-    return targetLocale;
+    if (!raw) return null;
+    return raw.split(',').map(s => s.trim()).filter(Boolean);
 }
 
 /**
@@ -533,12 +537,18 @@ async function main() {
     let totalToDownload = downloadableLocales.length;
     let localestoProcess = localesConfig;
 
-    // If a specific locale is requested, validate and filter to just that locale
+    // If specific locales are requested, validate and filter to just those
     if (targetLocale) {
-        const [matchKey, matchConfig] = validateLocale(targetLocale);
-        console.log(`🎯 Single locale mode: ${matchConfig.locale}\n`);
-        localestoProcess = { [matchKey]: matchConfig };
-        totalToDownload = 1;
+        localestoProcess = {};
+        for (const code of targetLocale) {
+            const [matchKey, matchConfig] = validateLocale(code);
+            localestoProcess[matchKey] = matchConfig;
+        }
+        totalToDownload = Object.keys(localestoProcess).length;
+        const label = totalToDownload === 1
+            ? `Single locale mode: ${Object.values(localestoProcess)[0].locale}`
+            : `Multi-locale mode: ${Object.values(localestoProcess).map(c => c.locale).join(', ')}`;
+        console.log(`🎯 ${label}\n`);
     }
     
     const localeEntries = Object.entries(localestoProcess);
@@ -563,10 +573,11 @@ async function main() {
             await downloadLanguage(locale, poEditorLocale, localeNum, localeTotal, localeConfig);
             successCount++;
             
-            // Throttle requests to avoid rate limiting (1 second between languages)
-            // We make 3 API calls per language (JSON, PO, MO) + download time
+            // Throttle between languages — 4 API calls/locale (3 formats + missing terms)
+            // POEditor free tier: 100 req/min → ~1.5s/req average is safe
+            // Total per locale: ~2.1s (formats) + export + this gap ≈ 5s → ~12 locales/min
             if (totalAttempts < totalToDownload) {
-                await sleep(1500); // 1.5 seconds between languages to reduce API pressure
+                await sleep(1500);
             }
         } catch (error) {
             console.error(`  ❌ ${sanitize(locale)}: ${sanitize(error.message)}`);

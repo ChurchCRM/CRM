@@ -305,7 +305,7 @@ if ($bCanManageGroups) {
                                             <a class="dropdown-item" href="<?= $sRootPath ?>/people/view/<?= $child['kidId'] ?>"><i class="ti ti-eye me-2"></i><?= gettext('View') ?></a>
                                             <a class="dropdown-item" href="<?= $sRootPath ?>/PersonEditor.php?PersonID=<?= $child['kidId'] ?>"><i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?></a>
                                             <?php if ($child['fam_id']): ?>
-                                            <a class="dropdown-item" href="<?= $sRootPath ?>/v2/family/<?= (int) $child['fam_id'] ?>"><i class="ti ti-users me-2"></i><?= gettext('View Family') ?></a>
+                                            <a class="dropdown-item" href="<?= $sRootPath ?>/people/family/<?= (int) $child['fam_id'] ?>"><i class="ti ti-users me-2"></i><?= gettext('View Family') ?></a>
                                             <?php endif; ?>
                                             <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#studentModal-<?= $child['kidId'] ?>"><i class="ti ti-info-circle me-2"></i><?= gettext('Details') ?></button>
                                             <div class="dropdown-divider"></div>
@@ -512,13 +512,49 @@ if ($bCanManageGroups) {
         <!-- Events Card -->
         <div class="card mb-3">
             <div class="card-header d-flex align-items-center">
-                <h3 class="card-title m-0"><i class="fa-solid fa-calendar-days me-1"></i> <?= gettext('Events') ?></h3>
+                <h3 class="card-title m-0"><i class="ti ti-calendar me-1"></i> <?= gettext('Events') ?></h3>
                 <span class="badge bg-primary-lt text-primary ms-2"><?= count($groupEvents) ?></span>
+                <?php if ($todayEvent !== null): ?>
+                <a href="<?= $sRootPath ?>/event/checkin/<?= (int) $todayEvent->getId() ?>"
+                   class="btn btn-sm btn-success ms-auto">
+                    <i class="ti ti-clipboard-check me-1"></i><?= gettext('Take Attendance') ?>
+                </a>
+                <?php else: ?>
+                <button
+                    type="button"
+                    class="btn btn-sm btn-primary ms-auto"
+                    id="quickCreateTodaysEventBtn"
+                    data-group-id="<?= (int) $iGroupId ?>"
+                    title="<?= gettext("Create today's class event and link it to this class for kiosk check-in") ?>">
+                    <i class="ti ti-plus me-1"></i><?= gettext("Create Today's Event") ?>
+                </button>
+                <?php endif; ?>
             </div>
+
+            <?php if ($todayEvent !== null): ?>
+            <!-- Today's event banner -->
+            <div class="card-body py-2 border-bottom bg-success-lt">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                        <i class="ti ti-calendar-check me-1 text-success"></i>
+                        <strong><?= InputUtils::escapeHTML($todayEvent->getTitle()) ?></strong>
+                        <span class="text-muted ms-2"><?= $todayEvent->getStart() ? $todayEvent->getStart()->format('g:i A') : '' ?></span>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="badge bg-success"><?= $todayEventAttendance ?> <?= gettext('checked in') ?></span>
+                        <span class="text-muted small"><?= gettext('of') ?> <?= $totalStudents ?></span>
+                    </div>
+                </div>
+            </div>
+            <?php endif; ?>
+
             <?php if (count($groupEvents) === 0): ?>
             <div class="card-body text-center text-muted py-4">
-                <i class="fa-solid fa-calendar-xmark fa-2x mb-2 d-block"></i>
-                <?= gettext('No events linked to this class.') ?>
+                <i class="ti ti-calendar-off mb-2 d-block" style="font-size: 2rem;"></i>
+                <p class="mb-2"><?= gettext('No events linked to this class.') ?></p>
+                <p class="small text-muted mb-0">
+                    <?= gettext("Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster.") ?>
+                </p>
             </div>
             <?php else: ?>
             <div class="list-group list-group-flush">
@@ -527,26 +563,42 @@ if ($bCanManageGroups) {
                     $hasKiosk  = isset($kioskEventSet[(int) $evt->getId()]);
                     $startDate = $evt->getStart() ? $evt->getStart()->format('M j, Y') : '';
                     $startTime = $evt->getStart() ? $evt->getStart()->format('g:i A') : '';
+                    $eventId   = (int) $evt->getId();
+                    $isToday   = $todayEvent !== null && $eventId === (int) $todayEvent->getId();
                 ?>
-                <div class="list-group-item">
-                    <div class="d-flex align-items-start">
+                <div class="list-group-item<?= $isToday ? ' bg-success-lt' : '' ?>">
+                    <div class="d-flex align-items-center gap-2">
                         <div class="me-auto">
-                            <div class="fw-bold"><?= InputUtils::escapeHTML($evt->getTitle()) ?></div>
+                            <a href="<?= $sRootPath ?>/event/view/<?= $eventId ?>" class="fw-bold text-reset">
+                                <?= InputUtils::escapeHTML($evt->getTitle()) ?>
+                            </a>
                             <?php if ($startDate): ?>
-                            <span class="text-muted small"><?= InputUtils::escapeHTML($startDate) ?></span>
-                            <span class="text-muted small ms-1"><?= InputUtils::escapeHTML($startTime) ?></span>
+                            <div>
+                                <span class="text-muted small"><?= InputUtils::escapeHTML($startDate) ?></span>
+                                <span class="text-muted small ms-1"><?= InputUtils::escapeHTML($startTime) ?></span>
+                            </div>
                             <?php endif; ?>
                         </div>
-                        <div class="d-flex gap-1 align-items-center">
-                            <?php if ($hasKiosk): ?>
-                            <span class="badge bg-success-lt text-success" title="<?= gettext('Kiosk Enabled') ?>">
-                                <i class="fa-solid fa-tablet-screen-button me-1"></i><?= gettext('Kiosk') ?>
-                            </span>
-                            <?php endif; ?>
-                            <?php if (!$isActive): ?>
-                            <span class="badge bg-danger-lt text-danger"><?= gettext('Inactive') ?></span>
-                            <?php endif; ?>
-                        </div>
+                        <?php if ($hasKiosk): ?>
+                        <span class="badge bg-success-lt text-success" title="<?= gettext('Kiosk Enabled') ?>">
+                            <i class="ti ti-device-ipad me-1"></i><?= gettext('Kiosk') ?>
+                        </span>
+                        <?php endif; ?>
+                        <?php if (!$isActive): ?>
+                        <span class="badge bg-secondary-lt"><?= gettext('Inactive') ?></span>
+                        <?php endif; ?>
+                        <?php if ($isActive): ?>
+                        <a href="<?= $sRootPath ?>/event/checkin/<?= $eventId ?>"
+                           class="btn btn-sm btn-outline-primary"
+                           title="<?= gettext('Take Attendance') ?>">
+                            <i class="ti ti-clipboard-check me-1"></i><?= gettext('Check-in') ?>
+                        </a>
+                        <?php endif; ?>
+                        <a href="<?= $sRootPath ?>/event/editor/<?= $eventId ?>"
+                           class="btn btn-sm btn-ghost-secondary"
+                           title="<?= gettext('Edit Event') ?>">
+                            <i class="ti ti-pencil"></i>
+                        </a>
                     </div>
                 </div>
                 <?php endforeach; ?>
@@ -562,7 +614,6 @@ if ($bCanManageGroups) {
     window.CRM.currentGroupName = <?= json_encode($iGroupName, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
 </script>
 <script src="<?= $sRootPath ?>/skin/js/sundayschool-actions.js?v=<?= filemtime(SystemURLs::getDocumentRoot() . '/skin/js/sundayschool-actions.js') ?>"></script>
-<script src="<?= SystemURLs::assetVersioned('/skin/js/cart-photo-viewer.js') ?>"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/groups-sundayschool-class-view.min.js"></script>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

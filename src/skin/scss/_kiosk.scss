@@ -453,10 +453,6 @@
 // Legacy Kiosk Styles (for backward compatibility)
 // =============================================================================
 
-.widget-user-2 .widget-user-header {
-  padding: 5px;
-}
-
 #eventDetails {
   display: block;
   width: 100%;
@@ -482,11 +478,13 @@
   color: green;
 }
 
-#event {
-  display: none;
-}
-
-#noEvent {
+// Initial hidden state for elements toggled by jQuery .show()/.hide().
+// Do NOT use Bootstrap d-none here — .show() cannot override !important.
+#event,
+#noEvent,
+#alertAllBtn,
+#checkoutAllBtn,
+#birthdayBanner {
   display: none;
 }
 
@@ -560,6 +558,79 @@
   font-size: 3rem;
   font-weight: bold;
   margin: 20px 0;
+}
+
+// =============================================================================
+// Check-in By Toggle
+// =============================================================================
+
+.kiosk-checkin-by-toggle {
+  .form-check-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+  }
+}
+
+// =============================================================================
+// Check-in By Modal — Family Member Selection
+// =============================================================================
+
+.checkin-by-members {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.checkin-by-member-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  min-width: 120px;
+  background: #f8f9fa;
+  border: 2px solid #dee2e6;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+
+  &:hover,
+  &:focus {
+    background: #e3f2fd;
+    border-color: #3c8dbc;
+    outline: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(60, 141, 188, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  .checkin-by-photo {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #dee2e6;
+  }
+
+  .fa-solid {
+    font-size: 2.5rem;
+    color: #6c757d;
+  }
+
+  .checkin-by-name {
+    font-weight: 600;
+    text-align: center;
+    word-break: break-word;
+    max-width: 120px;
+  }
 }
 
 // =============================================================================

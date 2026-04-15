@@ -182,7 +182,7 @@ AdminLTE npm dep removed. No `adminlte.min.js` or `adminlte.min.css` loaded. Bri
 - [x] Install `@tabler/core` + `@tabler/icons-webfont` via npm
 - [x] Add Grunt copy blocks for Tabler assets
 - [x] Run `npm run build:js:legacy` to copy Tabler files
-- [ ] Remove dead npm deps (quill, react-datepicker, react-select, react-bootstrap) — **still in package.json**
+- [x] Remove React ecosystem (react, react-dom, react-bootstrap, react-datepicker, react-select) — **done in 7.2.0**
 - [x] Upgrade DataTables BS4 → BS5 (package.json + Gruntfile + SCSS)
 - [x] Remove AdminLTE from SCSS imports (keep `_tabler-bridge.scss`)
 - [x] Run `npm run build` — verify no errors
@@ -264,7 +264,7 @@ AdminLTE npm dep removed. No `adminlte.min.js` or `adminlte.min.css` loaded. Bri
 - [ ] Replace moment → dayjs (5 files) — `moment@^2.30.1` still installed
 - [ ] Replace notyf → Bootstrap 5 Toast — `notyf@^3.10.0` still installed
 - [ ] Replace bs-stepper → Tabler Steps CSS — `bs-stepper@^1.7.0` still installed
-- [ ] Remove dead deps: `quill`, `react-datepicker`, `react-select`, `react-bootstrap` still in package.json
+- [x] ~~Remove dead deps: react, react-datepicker, react-select, react-bootstrap~~ — **done in 7.2.0**
 
 ### Phase 6: Remaining Pages (NOT STARTED) <!-- verified: 2026-03-22 -->
 

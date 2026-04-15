@@ -16,6 +16,35 @@ use Slim\Views\PhpRenderer;
 
 // Device routes - these are accessed by kiosk devices themselves (not admins)
 // They use kiosk cookie authentication, not user authentication
+
+/**
+ * Validate kiosk device is found, accepted by admin, and has an active assignment
+ * with a linked event. Returns [kiosk, assignment, event] on success or a
+ * Response on failure.
+ *
+ * @return array{0: \ChurchCRM\model\ChurchCRM\KioskDevice, 1: \ChurchCRM\model\ChurchCRM\KioskAssignment, 2: \ChurchCRM\model\ChurchCRM\Event}|Response
+ */
+function requireAcceptedKioskWithEvent(callable $getKiosk, Response $response): array|Response
+{
+    $kiosk = $getKiosk();
+    if ($kiosk === null) {
+        return SlimUtils::renderErrorJSON($response, gettext('Kiosk device not found'), [], 401);
+    }
+    if (!$kiosk->getAccepted()) {
+        return SlimUtils::renderErrorJSON($response, gettext('Kiosk device has not been accepted by an administrator'), [], 403);
+    }
+    $assignment = $kiosk->getActiveAssignment();
+    if ($assignment === null) {
+        return SlimUtils::renderErrorJSON($response, gettext('No active event assignment'), [], 403);
+    }
+    $event = $assignment->getEvent();
+    if ($event === null) {
+        return SlimUtils::renderErrorJSON($response, gettext('Assigned event not found'), [], 404);
+    }
+
+    return [$kiosk, $assignment, $event];
+}
+
 $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromCookie): void {
     $group->get('', function (Request $request, Response $response) {
         $renderer = new PhpRenderer(__DIR__ . '/../templates/kioskDevices/');
@@ -31,6 +60,8 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         return $renderer->render($response, 'sunday-school-class-view.php', $pageObjects);
     });
 
+    // Heartbeat: only requires kiosk to exist (not accepted) so pending
+    // devices can poll for acceptance status
     $group->get('/heartbeat', function (Request $request, Response $response) use ($getKioskFromCookie): Response {
         $kiosk = $getKioskFromCookie();
         if ($kiosk === null) {
@@ -46,12 +77,16 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         if ($personId <= 0) {
             return SlimUtils::renderErrorJSON($response, gettext('Invalid person ID'), [], 400);
         }
-        
-        $kiosk = $getKioskFromCookie();
-        if ($kiosk === null) {
-            return SlimUtils::renderErrorJSON($response, gettext('Kiosk device not found'), [], 401);
+
+        $checkedInById = InputUtils::filterInt($input['CheckedInById'] ?? 0) ?: null;
+
+        $result = requireAcceptedKioskWithEvent($getKioskFromCookie, $response);
+        if ($result instanceof Response) {
+            return $result;
         }
-        $status = $kiosk->getActiveAssignment()->getEvent()->checkInPerson($personId);
+        [, , $event] = $result;
+
+        $status = $event->checkInPerson($personId, $checkedInById);
 
         return SlimUtils::renderJSON($response, $status);
     });
@@ -62,12 +97,16 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         if ($personId <= 0) {
             return SlimUtils::renderErrorJSON($response, gettext('Invalid person ID'), [], 400);
         }
-        
-        $kiosk = $getKioskFromCookie();
-        if ($kiosk === null) {
-            return SlimUtils::renderErrorJSON($response, gettext('Kiosk device not found'), [], 401);
+
+        $checkedOutById = InputUtils::filterInt($input['CheckedOutById'] ?? 0) ?: null;
+
+        $result = requireAcceptedKioskWithEvent($getKioskFromCookie, $response);
+        if ($result instanceof Response) {
+            return $result;
         }
-        $status = $kiosk->getActiveAssignment()->getEvent()->checkOutPerson($personId);
+        [, , $event] = $result;
+
+        $status = $event->checkOutPerson($personId, $checkedOutById);
 
         return SlimUtils::renderJSON($response, $status);
     });
@@ -81,16 +120,16 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
 
         $Person = PersonQuery::create()
                 ->findOneById($personId);
-        
+
         if ($Person === null) {
             return SlimUtils::renderErrorJSON($response, gettext('Person not found'), [], 404);
         }
 
-        $kiosk = $getKioskFromCookie();
-        if ($kiosk === null) {
-            return SlimUtils::renderErrorJSON($response, gettext('Kiosk device not found'), [], 401);
+        $result = requireAcceptedKioskWithEvent($getKioskFromCookie, $response);
+        if ($result instanceof Response) {
+            return $result;
         }
-        $event = $kiosk->getActiveAssignment()->getEvent();
+        [, , $event] = $result;
         
         // Get event/group name for the notification
         $groups = $event->getGroups();
@@ -141,14 +180,13 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
     });
 
     $group->get('/activeClassMembers', function (Request $request, Response $response) use ($getKioskFromCookie): Response {
-        $kiosk = $getKioskFromCookie();
-        if ($kiosk === null) {
-            return SlimUtils::renderErrorJSON($response, gettext('Kiosk device not found'), [], 401);
+        $result = requireAcceptedKioskWithEvent($getKioskFromCookie, $response);
+        if ($result instanceof Response) {
+            return $result;
         }
-        $members = $kiosk->getActiveAssignment()->getActiveGroupMembers();
+        [, $assignment, $event] = $result;
 
-        // Get the group name for context
-        $event = $kiosk->getActiveAssignment()->getEvent();
+        $members = $assignment->getActiveGroupMembers();
         $groups = $event->getGroups();
         $groupName = $groups->count() > 0 ? $groups->getFirst()->getName() : '';
 
@@ -247,20 +285,85 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         ]);
     });
 
-    $group->get('/activeClassMember/{PersonId}/photo', function (Request $request, Response $response, array $args): Response {
-        $photo = new Photo('Person', $args['PersonId']);
+    $group->get('/activeClassMember/{PersonId}/photo', function (Request $request, Response $response, array $args) use ($getKioskFromCookie): Response {
+        $result = requireAcceptedKioskWithEvent($getKioskFromCookie, $response);
+        if ($result instanceof Response) {
+            return $result;
+        }
+        [, $assignment] = $result;
+
+        $personId = InputUtils::filterInt($args['PersonId'] ?? 0);
+        if ($personId <= 0) {
+            return SlimUtils::renderErrorJSON($response, gettext('Invalid person ID'), [], 400);
+        }
+
+        // Verify the person is in the active class roster
+        $rosterIds = array_map('intval', array_column($assignment->getActiveGroupMembers(), 'PersonId'));
+        if (!in_array($personId, $rosterIds, true)) {
+            return SlimUtils::renderErrorJSON($response, gettext('Person not in active class roster'), [], 403);
+        }
+
+        $photo = new Photo('Person', $personId);
 
         $response->getBody()->write($photo->getPhotoBytes());
 
         return $response->withAddedHeader('Content-type', $photo->getPhotoContentType());
     });
 
-    $group->post('/checkoutAll', function (Request $request, Response $response) use ($getKioskFromCookie): Response {
-        $kiosk = $getKioskFromCookie();
-        if ($kiosk === null) {
-            return SlimUtils::renderErrorJSON($response, gettext('Kiosk device not found'), [], 401);
+    $group->get('/activeClassMember/{PersonId}/family', function (Request $request, Response $response, array $args) use ($getKioskFromCookie): Response {
+        $result = requireAcceptedKioskWithEvent($getKioskFromCookie, $response);
+        if ($result instanceof Response) {
+            return $result;
         }
-        $event = $kiosk->getActiveAssignment()->getEvent();
+        [, $assignment] = $result;
+
+        $personId = InputUtils::filterInt($args['PersonId'] ?? 0);
+        if ($personId <= 0) {
+            return SlimUtils::renderErrorJSON($response, gettext('Invalid person ID'), [], 400);
+        }
+
+        // Verify the requested person is actually part of the kiosk's
+        // active class roster — prevents enumeration outside the assigned
+        // group's members.
+        $rosterIds = array_map('intval', array_column($assignment->getActiveGroupMembers(), 'PersonId'));
+        if (!in_array($personId, $rosterIds, true)) {
+            return SlimUtils::renderErrorJSON($response, gettext('Person not in active class roster'), [], 403);
+        }
+
+        $person = PersonQuery::create()->findOneById($personId);
+        if ($person === null) {
+            return SlimUtils::renderErrorJSON($response, gettext('Person not found'), [], 404);
+        }
+
+        $family = $person->getFamily();
+        if ($family === null) {
+            return SlimUtils::renderJSON($response, ['members' => []]);
+        }
+
+        $adults = $family->getAdults();
+        $membersData = [];
+        foreach ($adults as $adult) {
+            if ($adult->getId() === $personId) {
+                continue; // Exclude the person themselves
+            }
+            $photo = new Photo('Person', $adult->getId());
+            $membersData[] = [
+                'Id'        => $adult->getId(),
+                'FirstName' => $adult->getFirstName(),
+                'LastName'  => $adult->getLastName(),
+                'hasPhoto'  => $photo->hasUploadedPhoto(),
+            ];
+        }
+
+        return SlimUtils::renderJSON($response, ['members' => $membersData]);
+    });
+
+    $group->post('/checkoutAll', function (Request $request, Response $response) use ($getKioskFromCookie): Response {
+        $result = requireAcceptedKioskWithEvent($getKioskFromCookie, $response);
+        if ($result instanceof Response) {
+            return $result;
+        }
+        [, , $event] = $result;
         $checkedInPeople = $event->getEventAttends();
         
         $checkedOutCount = 0;

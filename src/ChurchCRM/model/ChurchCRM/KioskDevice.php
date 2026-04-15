@@ -9,9 +9,11 @@ use Propel\Runtime\Connection\ConnectionInterface;
 
 class KioskDevice extends BaseKioskDevice
 {
-    public function getActiveAssignment()
+    public function getActiveAssignment(): ?KioskAssignment
     {
-        return $this->getKioskAssignments()[0];
+        $assignments = $this->getKioskAssignments();
+
+        return $assignments->count() > 0 ? $assignments->getFirst() : null;
     }
 
     public function setAssignment($assignmentType, $eventId): void

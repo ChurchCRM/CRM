@@ -33,7 +33,11 @@ class AuthMiddleware implements MiddlewareInterface
                 ]);
                 $authenticationResult = AuthenticationManager::authenticate(new APITokenAuthenticationRequest($apiKey[0]));
                 if (!$authenticationResult->isAuthenticated) {
-                    AuthenticationManager::endSession(true);
+                    try {
+                        AuthenticationManager::endSession(true);
+                    } catch (\Exception $e) {
+                        $logger->debug('Error ending session during failed API auth', ['exception' => $e]);
+                    }
                     $logger->warning('Invalid API key authentication attempt', [
                         'path' => $request->getUri()->getPath(),
                         'method' => $request->getMethod()
@@ -46,9 +50,30 @@ class AuthMiddleware implements MiddlewareInterface
                 $logger->debug('API key authentication successful', [
                     'path' => $request->getUri()->getPath()
                 ]);
+
+                // Block users with no admin permissions from API access (GHSA-5w59-32c8-933v)
+                $apiUser = AuthenticationManager::getCurrentUser();
+                if ($apiUser->hasNoAdminPermissions()) {
+                    $response = new Response();
+                    $response->getBody()->write(json_encode(['error' => 'Account has limited permissions. Contact an administrator.']));
+                    return $response->withStatus(403)->withHeader('Content-Type', 'application/json');
+                }
             } elseif (AuthenticationManager::validateUserSessionIsActive(!$this->isPath($request, 'background'))) {
                 // validate the user session; however, do not update tLastOperation if the requested path is "/background"
                 // since /background operations do not connotate user activity.
+
+                // Block users with no admin permissions from MVC/API access (GHSA-5w59-32c8-933v)
+                $sessionUser = AuthenticationManager::getCurrentUser();
+                if ($sessionUser->hasNoAdminPermissions()) {
+                    if ($this->isBrowserRequest($request)) {
+                        $rootPath = SystemURLs::getRootPath();
+                        return (new Response())->withStatus(302)->withHeader('Location', $rootPath . '/external/limited-access');
+                    }
+                    // API request — return 403
+                    $response = new Response();
+                    $response->getBody()->write(json_encode(['error' => 'Account has limited permissions. Contact an administrator.']));
+                    return $response->withStatus(403)->withHeader('Content-Type', 'application/json');
+                }
 
                 // User with an active browser session is still authenticated.
                 // For browser requests (non-background), enforce any required redirect steps (e.g. forced password change).
@@ -114,4 +139,5 @@ class AuthMiddleware implements MiddlewareInterface
 
         return $response->withStatus(302)->withHeader('Location', $redirectUrl);
     }
+
 }

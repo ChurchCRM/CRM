@@ -35,6 +35,9 @@ const LocaleConfig = {
     terms: {
         root: path.join(PROJECT_ROOT, 'locale/terms'),
         missing: path.join(PROJECT_ROOT, 'locale/terms/missing'),
+        // Terms where value=key is intentionally correct (proper nouns, brand names, etc.)
+        // Used by poeditor-upload-missing.js to allow uploading English-unchanged terms.
+        englishOk: path.join(PROJECT_ROOT, 'locale/terms/english-ok.json'),
     },
 
     poeditor: {

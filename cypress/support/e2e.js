@@ -24,7 +24,7 @@ import "./api-commands";
 // require('./commands')
 
 // Note: cypress-terminal-report installLogsCollector disabled due to Cypress 15.x compatibility
-// Logging handled by installLogsPrinter in cypress.config.ts
+// Logging handled by installLogsPrinter in cypress/configs/_shared.ts (setupCommonNodeEvents)
 
 // Capture unhandled rejections and errors for terminal reporter
 window.addEventListener('unhandledrejection', (event) => {

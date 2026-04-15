@@ -104,16 +104,20 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
         }
     };
 
+    if (empty($familyMetadata['Name'])) {
+        return SlimUtils::renderJSON($response, ['error' => gettext('Family name is required')], 400);
+    }
+
     $family = new Family();
     $family->setName($familyMetadata['Name']);
-    $family->setAddress1($familyMetadata['Address1']);
-    $family->setAddress2($familyMetadata['Address2']);
-    $family->setCity($familyMetadata['City']);
-    $family->setState($familyMetadata['State']);
-    $family->setCountry($familyMetadata['Country']);
-    $family->setZip($familyMetadata['Zip']);
-    $family->setHomePhone($familyMetadata['HomePhone']);
-    $family->setEmail($familyMetadata['Email']);
+    $family->setAddress1($familyMetadata['Address1'] ?? '');
+    $family->setAddress2($familyMetadata['Address2'] ?? '');
+    $family->setCity($familyMetadata['City'] ?? '');
+    $family->setState($familyMetadata['State'] ?? '');
+    $family->setCountry($familyMetadata['Country'] ?? '');
+    $family->setZip($familyMetadata['Zip'] ?? '');
+    $family->setHomePhone($familyMetadata['HomePhone'] ?? '');
+    $family->setEmail($familyMetadata['Email'] ?? '');
     $family->setEnteredBy(Person::SELF_REGISTER);
     $family->setDateEntered(new DateTime());
 
@@ -130,6 +134,10 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
 
     $familyMembers = [];
 
+    if (!isset($familyMetadata['people']) || !is_array($familyMetadata['people']) || count($familyMetadata['people']) === 0) {
+        return SlimUtils::renderJSON($response, ['error' => gettext('At least one family member is required')], 400);
+    }
+
     foreach ($familyMetadata['people'] as $personMetaData) {
         $person = new Person();
         $person->setEnteredBy(Person::SELF_REGISTER);
@@ -138,19 +146,21 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
         $person->setLastName($personMetaData['lastName']);
         $person->setGender($personMetaData['gender']);
         $person->setFmrId($personMetaData['role']);
-        $person->setEmail($personMetaData['email']);
-        $person->setCellPhone($personMetaData['cellPhone']);
-        $person->setHomePhone($personMetaData['homePhone']);
-        $person->setWorkPhone($personMetaData['workPhone']);
-        $person->setFlags($personMetaData['hideAge'] ? '1' : 0);
+        $person->setEmail($personMetaData['email'] ?? '');
+        $person->setCellPhone($personMetaData['cellPhone'] ?? '');
+        $person->setHomePhone($personMetaData['homePhone'] ?? '');
+        $person->setWorkPhone($personMetaData['workPhone'] ?? '');
+        $person->setFlags(($personMetaData['hideAge'] ?? false) ? 1 : 0);
 
-        $birthday = $personMetaData['birthday'];
+        $birthday = $personMetaData['birthday'] ?? '';
 
         if (!empty($birthday)) {
             $birthdayDate = DateTime::createFromFormat('m/d/Y', $birthday);
-            $person->setBirthDay($birthdayDate->format('d'));
-            $person->setBirthMonth($birthdayDate->format('m'));
-            $person->setBirthYear($birthdayDate->format('Y'));
+            if ($birthdayDate !== false) {
+                $person->setBirthDay($birthdayDate->format('d'));
+                $person->setBirthMonth($birthdayDate->format('m'));
+                $person->setBirthYear($birthdayDate->format('Y'));
+            }
         }
 
         if (!$person->validate()) {

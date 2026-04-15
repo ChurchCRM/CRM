@@ -279,10 +279,6 @@ msgid "Add Cart to Event"
 msgstr "Adicionar Carrinho a um Evento"
 
 #: 
-msgid "OR"
-msgstr "ou"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Seu Carrinho está vazio"
 
@@ -406,10 +402,6 @@ msgstr "Sim"
 #: 
 msgid "No"
 msgstr "Não"
-
-#: 
-msgid "Event Checkin"
-msgstr "Entrada no evento"
 
 #: 
 msgid "Select Event"
@@ -675,10 +667,6 @@ msgid "Church Event Editor"
 msgstr "Editor de Eventos da Igreja"
 
 #: 
-msgid "Edit Event Types"
-msgstr "Editar os tipos de eventos"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Edite o tipo do evento"
 
@@ -749,20 +737,8 @@ msgid "Create a new Event"
 msgstr "Criar um Novo Evento"
 
 #: 
-msgid " errors. Please see below"
-msgstr " erros. Por favor, veja abaixo"
-
-#: 
 msgid "Select your event type"
 msgstr "Selecione o Tipo de Evento"
-
-#: 
-msgid "You must pick an event type."
-msgstr "Você deve escolher um tipo de evento."
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "Não foi registada a contagem dos presentes"
 
 #: 
 #, fuzzy
@@ -2122,10 +2098,6 @@ msgid "Restore Database"
 msgstr "Recuperar Base de Dados"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Todas as doações desta família foram transferidos para outra família."
-
-#: 
 #, fuzzy
 msgid "Please confirm deletion of"
 msgstr "Por favor, confirme a exclusão de"
@@ -2229,15 +2201,6 @@ msgid "User Editor"
 msgstr "Editor de Utilizadores"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Nota: As alterações não terão efeito até próximo logon."
-
-#: 
-#, fuzzy
-msgid "Person to Make User"
-msgstr "Pessoa para tornar utilizador"
-
-#: 
 #, fuzzy
 msgid "User"
 msgstr "Utilizador"
@@ -2288,25 +2251,8 @@ msgid "Edit Self"
 msgstr "Editar"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Edit própria família apenas.)"
-
-#: 
 msgid "Admin"
 msgstr "Configurações"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Concede todos os privilégios.)"
-
-#: 
-#, fuzzy
-msgid "Style"
-msgstr "Estilo"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Definir permissão verdadeira para dar novos utilizadores a capacidade de alterar o seu valor atual."
 
 #: 
 msgid "Last Login"
@@ -3059,11 +3005,6 @@ msgid "Date Entered"
 msgstr "Data de entrada"
 
 #: 
-#, fuzzy
-msgid "There were "
-msgstr "fazem"
-
-#: 
 msgid "Inactive"
 msgstr "Inativo"
 
@@ -3300,10 +3241,6 @@ msgstr "Dados/Relatórios"
 #: 
 msgid "Query Menu"
 msgstr "Menu de consulta"
-
-#: 
-msgid "CSV Export Records"
-msgstr "Exportar Registos em CSV"
 
 #: 
 msgid "Family Properties"
@@ -4954,10 +4891,6 @@ msgid "An invalid configuration name has been requested"
 msgstr "Um nome de configuração inválido foi solicitado"
 
 #: 
-msgid "An invalid configuration id has been requested"
-msgstr "Um ID de configuração inválido foi solicitado"
-
-#: 
 msgid "Profile Image uploaded"
 msgstr "Imagem do Perfil Enviada"
 
@@ -5035,14 +4968,6 @@ msgstr "A propriedade não pôde ser desatribuída."
 #: 
 msgid "Select event"
 msgstr "Selecionar evento"
-
-#: 
-msgid "Person has been already checked in for this event"
-msgstr "A pessoa já fez check-in para este evento"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "Pessoas adultas realizando o check-out"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -5276,10 +5201,6 @@ msgstr "Gestão modo quiosque"
 #: 
 msgid "Report an issue"
 msgstr "Reportar um problema"
-
-#: 
-msgid "Active Kiosks"
-msgstr "Quiosques ativo"
 
 #: 
 msgid "Self Verification"
@@ -5601,10 +5522,6 @@ msgstr "Perfil"
 #: 
 msgid "Sign out"
 msgstr "Sair"
-
-#: 
-msgid "Sermon Text"
-msgstr "Texto:"
 
 #: 
 msgid "Change Settings"
@@ -6124,10 +6041,6 @@ msgstr "Funções de redefinição da base de dados"
 msgid "Reset Database"
 msgstr "Redefinir Base de Dados"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "Redefinirá os dados do sistema e reiniciará o sistema como uma nova instalação"
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6240,28 +6153,12 @@ msgid "open rate"
 msgstr "taxa de abertura"
 
 #: 
-msgid "Login Info"
-msgstr "Informações de login"
-
-#: 
-msgid "Login Count"
-msgstr "Contagem de login"
-
-#: 
-msgid "Failed Login"
-msgstr "Login falhou"
-
-#: 
 msgid "Permissions"
 msgstr "Permissões"
 
 #: 
 msgid "Manage Notes"
 msgstr "Gerenciar anotações"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Falha ao gerar uma nova chave de API"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6333,14 +6230,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Aniversários de casamento de hoje"
 
 #: 
-msgid "Api Key"
-msgstr "Chave de API"
-
-#: 
-msgid "Regen API Key"
-msgstr "Regenerar chave de API"
-
-#: 
 msgid "View Family Page"
 msgstr "Ver página da família"
 
@@ -6355,46 +6244,6 @@ msgstr "Verificar"
 #: 
 msgid "Family has no emails to use"
 msgstr "A família não tem e-mails para usar"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Layout em caixa"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Ativar o layout em caixa"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Alternar barra lateral"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Alternar o estado da barra lateral esquerda (abrir ou recolher)"
-
-#: 
-msgid "Tables Settings"
-msgstr "Configurações de tabelas"
-
-#: 
-msgid "Page length"
-msgstr "Comprimento da página"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Altere o comprimento da página inicial (número de linhas por página)"
-
-#: 
-msgid "User Interface"
-msgstr "Interface do usuário"
-
-#: 
-msgid "Locale"
-msgstr "Localidade"
-
-#: 
-msgid "Override system locale"
-msgstr "Substituir localidade do sistema"
 
 #: 
 msgid "Deleted"
@@ -7465,10 +7314,6 @@ msgid "All Types"
 msgstr "Todos os tipos"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "Tem certeza de que deseja excluir este registro de check-in?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "Categorias de contagem de presença"
 
@@ -7509,10 +7354,6 @@ msgid "Create New Event"
 msgstr "Criar novo evento"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "Crie um tipo de evento para começar."
-
-#: 
 msgid "Current DB Version"
 msgstr "Versão atual do banco de dados"
 
@@ -7531,14 +7372,6 @@ msgstr "Hora de início padrão"
 #: 
 msgid "Delete Event"
 msgstr "Excluir evento"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "Excluir um evento também excluirá todas as contagens de presença. Excluir este evento?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "Excluir este evento também excluirá todos os registros de presença. Tem certeza?"
 
 #: 
 msgid "Edit Event"
@@ -7606,10 +7439,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "Opcional - Adicionar notas de sermão ou detalhes de evento adicionais"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "Opcional - deixe em branco se não acompanhar"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "Anotações opcionais sobre presença..."
 
@@ -7642,24 +7471,12 @@ msgid "Search by name or email..."
 msgstr "Pesquisar por nome ou e-mail..."
 
 #: 
-msgid "Search for adult..."
-msgstr "Procurar adulto..."
-
-#: 
 msgid "Search for supervisor..."
 msgstr "Procurar supervisor..."
 
 #: 
 msgid "Select Event for Check-In"
 msgstr "Selecione evento para check-in"
-
-#: 
-msgid "Select start and end date/time"
-msgstr "Selecione data/hora de início e término"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "Selecione o evento para fazer check-in dos membros do seu carrinho"
 
 #: 
 msgid "Sermon / Event Text"
@@ -8026,10 +7843,6 @@ msgstr "Use ferramentas externas (GPG, 7-Zip) para criptografar backups antes de
 #: 
 msgid "User authentication"
 msgstr "Autenticação do usuário"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "O usuário deve ter permissão de adicionar evento"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8552,10 +8365,6 @@ msgid "State (Other)"
 msgstr "Estado (Outro)"
 
 #: 
-msgid "Status:"
-msgstr "Status:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Resumo de promessas versus pagamentos por fundo para o ano fiscal."
 
@@ -8606,10 +8415,6 @@ msgstr "Total de depósitos:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Rastreie o progresso de promessas e pagamentos para campanhas e orçamentação do ano fiscal."
-
-#: 
-msgid "Type:"
-msgstr "Tipo:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8872,10 +8677,6 @@ msgid "Confirm Family Information"
 msgstr "Confirmar informações da família"
 
 #: 
-msgid "Confirm family information"
-msgstr "Confirmar informações da família"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Informações de contato e pessoal"
 
@@ -9034,10 +8835,6 @@ msgstr "Excluir usuário"
 #: 
 msgid "Disable 2FA"
 msgstr "Desabilitar 2FA"
-
-#: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "Exporte todos os dados de pessoas em formato ChMeetings para importação em sistemas externos."
 
 #: 
 msgid "Export to ChMeetings CSV"
@@ -9294,10 +9091,6 @@ msgid "Add Your First Property Type"
 msgstr "Adicione o Seu Primeiro Tipo de Propriedade"
 
 #: 
-msgid "Auto-calculated from counts above"
-msgstr "Calculado automaticamente a partir das contagens acima"
-
-#: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr "Ao eliminar este campo, perderá irrevogavelmente todos os dados dos membros do grupo atribuídos a este campo!"
 
@@ -9486,10 +9279,6 @@ msgstr "Registo de quiosque desativado"
 #: 
 msgid "Kiosk not found"
 msgstr "Quiosque não encontrado"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "Associe este evento a um grupo para a funcionalidade de check-in no quiosque. Os membros do grupo aparecerão no quiosque."
 
 #: 
 msgid "Linked Group"
@@ -10691,10 +10480,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "Exigir que todos os utilizadores se inscrevam na autenticação de dois fatores"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "Um mapa aparecerá aqui assim que um endereço for guardado. As coordenadas são detetadas automaticamente — não é necessária entrada manual."
-
-#: 
 msgid "Active Groups"
 msgstr "Grupos ativos"
 
@@ -10745,10 +10530,6 @@ msgstr "A família não tem endereço para geocodificação"
 #: 
 msgid "Father"
 msgstr "Pai"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "Coordenadas geocodificadas:"
 
 #: 
 msgid "Geocoding failed"
@@ -10829,10 +10610,6 @@ msgstr "Fuso horário"
 #: 
 msgid "Total Groups"
 msgstr "Total de grupos"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "Atualizado automaticamente a cada gravação."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -11015,14 +10792,6 @@ msgstr "Adicionar a Sua Primeira Propriedade"
 #: 
 msgid "Add a Person"
 msgstr "Adicionar uma Pessoa"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Adicionar uma nova promessa de doação"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "Adicionar um pagamento ao depósito atual"
 
 #: 
 msgid "Add all cart items to a group"
@@ -11241,10 +11010,6 @@ msgid "Check Out"
 msgstr "Registar Saída"
 
 #: 
-msgid "Check Out Person"
-msgstr "Registar Saída de Pessoa"
-
-#: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
 msgstr "Verificar atualizações e atualizar a sua instalação do ChurchCRM"
 
@@ -11369,10 +11134,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "Crie uma cópia de segurança manual pelo menos uma vez por semana, ou ative o plugin de Cópia de Segurança Externa para cópias automáticas via WebDAV segundo um agendamento."
 
 #: 
-msgid "Create a new deposit"
-msgstr "Criar um novo depósito"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "Criar e editar informações e relações familiares"
 
@@ -11427,10 +11188,6 @@ msgstr "Definir propriedades específicas do grupo para os fiéis"
 #: 
 msgid "Delete All"
 msgstr "Eliminar Tudo"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "Eliminar Registo de Entrada"
 
 #: 
 msgid "Delete Family"
@@ -11713,10 +11470,6 @@ msgid "Generate directory listings and printed materials"
 msgstr "Gerar listagens de diretório e materiais impressos"
 
 #: 
-msgid "Generate financial reports"
-msgstr "Gerar relatórios financeiros"
-
-#: 
 msgid "Generate financial statements and giving reports"
 msgstr "Gerar demonstrações financeiras e relatórios de ofertas"
 
@@ -11949,14 +11702,6 @@ msgid "Manage email tools and SMTP configuration"
 msgstr "Gerir ferramentas de e-mail e configuração SMTP"
 
 #: 
-msgid "Manage event names and categories"
-msgstr "Gerir nomes e categorias de eventos"
-
-#: 
-msgid "Manage event type categories"
-msgstr "Gerir categorias de tipos de eventos"
-
-#: 
 msgid "Manage families, people, and demographic information"
 msgstr "Gerir famílias, pessoas e informações demográficas"
 
@@ -11989,12 +11734,20 @@ msgid "Manage your personal preferences and account settings"
 msgstr "Gerir as suas preferências pessoais e definições de conta"
 
 #: 
+msgid "Manual"
+msgstr "Manual"
+
+#: 
 msgid "Map cart items"
 msgstr "Mapear itens do carrinho"
 
 #: 
 msgid "Map to Field"
 msgstr "Mapear para Campo"
+
+#: 
+msgid "Material"
+msgstr "Material"
 
 #: 
 msgid "Member Properties"
@@ -12079,10 +11832,6 @@ msgstr "Sem Aniversários"
 #: 
 msgid "No Check-ins"
 msgstr "Sem Registos de Entrada"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "Sem Rastreio de Depósitos"
 
 #: 
 msgid "No Deposits"
@@ -12699,10 +12448,6 @@ msgid "View group members, roles, and properties"
 msgstr "Ver fiéis do grupo, funções e propriedades"
 
 #: 
-msgid "View pledge dashboard"
-msgstr "Ver painel de promessas de doação"
-
-#: 
 msgid "View query results"
 msgstr "Ver resultados da consulta"
 
@@ -12787,10 +12532,6 @@ msgid "You can create/delete sunday school group."
 msgstr "Pode criar/eliminar grupos de catequese."
 
 #: 
-msgid "You do not have finance permissions to view deposits."
-msgstr "Não tem permissões financeiras para ver os depósitos."
-
-#: 
 msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
 msgstr "Os dados da sua cópia de segurança foram carregados. Será redirecionado para iniciar sessão com as suas credenciais anteriores."
 
@@ -12839,10 +12580,6 @@ msgid "members"
 msgstr "fiéis"
 
 #: 
-msgid "name@example.com"
-msgstr "nome@exemplo.pt"
-
-#: 
 msgid "opportunities"
 msgstr "oportunidades"
 
@@ -12881,10 +12618,6 @@ msgstr "— Selecionar um grupo —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Selecionar tipo (opcional) —"
-
-#: 
-msgid "Accept the device, then assign it to an event to begin check-in."
-msgstr "Aceite o dispositivo e depois atribua-o a um evento para iniciar o registo de presenças."
 
 #: 
 msgid "Activate"
@@ -12937,10 +12670,6 @@ msgstr "Turma / Grupo"
 #: 
 msgid "Class List Export"
 msgstr "Exportar lista de turmas"
-
-#: 
-msgid "Click the registration toggle above to open a 30-second registration window."
-msgstr "Clique no interruptor de registo acima para abrir uma janela de registo de 30 segundos."
 
 #: 
 msgid "Continue"
@@ -13011,10 +12740,6 @@ msgid "It is strongly recommended to have a backup before proceeding."
 msgstr "É altamente recomendado ter uma cópia de segurança antes de prosseguir."
 
 #: 
-msgid "Kiosk Registration"
-msgstr "Registo de quiosque"
-
-#: 
 msgid "Latest"
 msgstr "Mais recente"
 
@@ -13057,10 +12782,6 @@ msgstr "Nota não encontrada"
 #: 
 msgid "Note text is required"
 msgstr "O texto da nota é obrigatório"
-
-#: 
-msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
-msgstr "No dispositivo quiosque (tablet, portátil, etc.), abra um navegador e aceda a:"
 
 #: 
 msgid "Only the note author or an admin may delete this note"
@@ -13107,10 +12828,6 @@ msgid "SHA1 Hash"
 msgstr "Hash SHA1"
 
 #: 
-msgid "Setup Instructions"
-msgstr "Instruções de configuração"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "Discrepância de assinatura"
 
@@ -13119,24 +12836,12 @@ msgid "Skip, Continue Without Backup"
 msgstr "Ignorar, continuar sem cópia de segurança"
 
 #: 
-msgid "The device will register itself and appear in the table below as \"Pending\"."
-msgstr "O dispositivo registar-se-á e aparecerá na tabela abaixo como \"Pendente\"."
-
-#: 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr "Estas ligações aparecem no menu \"Ligações\" na barra lateral de navegação quando este plugin está ativado."
 
 #: 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr "Isto irá transferir novamente e reaplicar a versão atual. Pode corrigir ficheiros corrompidos ou modificados."
-
-#: 
-msgid "To set up a kiosk device, follow these steps:"
-msgstr "Para configurar um dispositivo quiosque, siga estes passos:"
-
-#: 
-msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
-msgstr "Ative o interruptor abaixo para abrir uma janela de 30 segundos para registar novos dispositivos quiosque."
 
 #: 
 msgid "Total Check-ins"
@@ -13149,10 +12854,6 @@ msgstr "Tente selecionar um tipo de evento ou ano diferente."
 #: 
 msgid "Up to Date"
 msgstr "Atualizado"
-
-#: 
-msgid "Upcoming Sunday School Events"
-msgstr "Próximos eventos de catequese"
 
 #: 
 msgid "Update Available"
@@ -13178,10 +12879,6 @@ msgstr "Permitir que o utilizador adicione um novo evento"
 #: 
 msgid "Are you sure you want to continue?"
 msgstr "Tem a certeza de que deseja continuar?"
-
-#: 
-msgid "Are you sure you want to delete this event?"
-msgstr "Tem a certeza de que deseja eliminar este evento?"
 
 #. Context: queryparameters_qrp
 #: 
@@ -14034,11 +13731,6 @@ msgstr "Continente"
 msgid "Costs"
 msgstr "Custos"
 
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Pessoas com Cartão de Crédito"
-
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
 #: 
@@ -14112,11 +13804,6 @@ msgstr "Ativar uso de envelopes de doação"
 msgid "Enable use of scanned checks"
 msgstr "Ativar uso de cheques digitalizados"
 
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Promessa de Família por Ano Fiscal"
-
 #. plugin:mailchimp:section:1:title
 #: 
 msgid "Features"
@@ -14126,11 +13813,6 @@ msgstr "Funcionalidades"
 msgid "Finance permission query IDs"
 msgstr "IDs de consulta de permissão financeira"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Encontrar Alunos Registados"
-
 #: 
 msgid "Find family"
 msgstr "Encontrar Família"
@@ -14139,11 +13821,6 @@ msgstr "Encontrar Família"
 #: 
 msgid "Finding Your Server URL"
 msgstr "Encontrar o URL do Seu Servidor"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Ano Fiscal."
 
 #. plugin:custom-links:section:3:content
 #: 
@@ -14209,11 +13886,6 @@ msgstr "Website Gravatar"
 #: 
 msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
 msgstr "O Gravatar funciona convertendo endereços de email em hash (MD5). O endereço de email real nunca é enviado aos servidores do Gravatar - apenas o hash é utilizado para procurar a imagem."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Grupo de alunos registados"
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -14350,11 +14022,6 @@ msgstr "Website do OpenLP"
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
 msgstr "O OpenLP é um software de apresentação gratuito e de código aberto concebido para igrejas. Este plugin permite ao ChurchCRM enviar notificações e alertas diretamente para o seu ecrã OpenLP."
 
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Pessoas configuradas para pagar com cartão de crédito."
-
 #. plugin:mailchimp:section:3:title
 #: 
 msgid "Person/Family Integration"
@@ -14380,11 +14047,6 @@ msgstr "Os números de telefone devem estar no formato E.164: código do país +
 "\n"
 "Os números de telefone dos destinatários nos perfis de membro do ChurchCRM devem incluir o código do país para que o SMS funcione corretamente."
 
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Resumo de promessas por nome de família para cada fundo do ano fiscal selecionado"
-
 #. plugin:mailchimp:section:4:title
 #: 
 msgid "Privacy & Compliance"
@@ -14403,11 +14065,6 @@ msgstr "Nota de Privacidade"
 #: 
 msgid "Quick Settings"
 msgstr "Definições Rápidas"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Alunos Registados"
 
 #: 
 msgid "SMTP Authentication"
@@ -14579,11 +14236,6 @@ msgstr "Definições de Atualização"
 msgid "Use Cases"
 msgstr "Casos de Uso"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Permissão do utilizador para exportar ficheiros CSV"
-
 #. plugin:vonage:link:0:label
 #: 
 msgid "Vonage Dashboard"
@@ -14693,4 +14345,1399 @@ msgstr "O tamanho do ficheiro excede o limite do servidor de %s"
 #: 
 msgid "Missing image data in request"
 msgstr "Dados de imagem em falta no pedido"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Encontrar pessoas que não participaram num evento"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Pessoas em falta"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Selecionar o evento pretendido"
+
+#: 
+msgid "name@example.com"
+msgstr "nome@exemplo.com"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Filtragem avançada por grupo, classificação e função"
+
+#: 
+msgid "All congregation members included"
+msgstr "Todos os membros da congregação incluídos"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "Formato de colunas compatível com ChMeetings"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Informações de contacto, funções familiares e datas importantes"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Crie uma cópia de segurança completa da base de dados da sua paróquia. Transfira um ficheiro SQL apenas com a base de dados ou um arquivo completo incluindo as fotografias carregadas."
+
+#: 
+msgid "Database Backup"
+msgstr "Cópia de Segurança da Base de Dados"
+
+#: 
+msgid "Export"
+msgstr "Exportar"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Exporte os dados da congregação em formato CSV. Escolha os campos a incluir e filtre por classificação, grupo, género e muito mais."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Exporte todos os fiéis no formato esperado pelo ChMeetings, facilitando a sincronização dos dados da sua congregação com a plataforma ChMeetings."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Exporte os dados da sua paróquia em vários formatos"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Cópia de segurança externa (WebDAV) via plugin"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Disposição de registo familiar ou individual"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Seleção flexível de campos"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Ir para Cópia de Segurança da Base de Dados"
+
+#: 
+msgid "Open CSV Export"
+msgstr "Abrir Exportação CSV"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Restaurar a partir da página de Cópia de Segurança do Sistema"
+
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "Está disponível uma atualização do sistema. Por favor, atualize a sua instalação."
+
+#: 
+msgid "API Access"
+msgstr "Acesso à API"
+
+#: 
+msgid "API Key"
+msgstr "Chave de API"
+
+#: 
+msgid "API key regenerated"
+msgstr "Chave de API regenerada"
+
+#: 
+msgid "Account"
+msgstr "Conta"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Definições Avançadas"
+
+#: 
+msgid "An error occurred."
+msgstr "Ocorreu um erro."
+
+#: 
+msgid "Appearance"
+msgstr "Aparência"
+
+#: 
+msgid "Azure"
+msgstr "Azure"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Voltar ao Painel Financeiro"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Voltar ao Painel de Ministérios"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Voltar ao Painel da Congregação"
+
+#: 
+msgid "Blue"
+msgstr "Azul"
+
+#: 
+msgid "Change Photo"
+msgstr "Alterar Foto"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "As alterações só terão efeito no próximo início de sessão."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Escolha entre o esquema de cores claro e escuro"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "As traduções do ChurchCRM são geridas pela comunidade no POEditor. Pode ajudar:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Personalize a aparência e o comportamento da aplicação"
+
+#: 
+msgid "Cyan"
+msgstr "Ciano"
+
+#: 
+msgid "Dark"
+msgstr "Escuro"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Apenas base de dados (.sql) ou arquivo completo (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Número predefinido de linhas mostradas nas tabelas de dados. Entra em vigor no próximo carregamento de página."
+
+#: 
+msgid "Edit own family only"
+msgstr "Editar apenas a própria família"
+
+#: 
+msgid "Enter text here..."
+msgstr "Introduza texto aqui..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Falha ao cancelar inscrição. Por favor, tente novamente."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Falha ao eliminar evento. Por favor, tente novamente."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "Falha ao desativar a autenticação de dois fatores. Por favor, tente novamente."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "Falha ao gerar código QR. Por favor, tente novamente."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "Falha ao carregar dados do calendário. Por favor, tente novamente."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Falha ao carregar evento. Por favor, tente novamente."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "Falha ao carregar códigos de recuperação. Por favor, atualize a página."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Falha ao guardar evento. Por favor, tente novamente."
+
+#: 
+msgid "Failed to save setting"
+msgstr "Falha ao guardar definição"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Filipino - Filipinas"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Corrigir traduções incorretas ou inadequadas no seu idioma"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "Encontrou um erro nas traduções?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Concede todos os privilégios"
+
+#: 
+msgid "Green"
+msgstr "Verde"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Ajude a Melhorar as Traduções"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "Se notar caracteres ilegíveis, entidades HTML a aparecer como texto, ou traduções que quebram o layout da página, por favor reporte o problema no GitHub para que possa ser corrigido para todos."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "Inclua a sua chave de API nos pedidos utilizando o cabeçalho x-api-key:"
+
+#: 
+msgid "Indigo"
+msgstr "Índigo"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Valor JSON inválido — a definição não foi guardada. Por favor, corrija-a e tente novamente."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "Junte-se ao Projeto de Tradução no POEditor"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Definições de idioma e região"
+
+#: 
+msgid "Light"
+msgstr "Claro"
+
+#: 
+msgid "Lime"
+msgstr "Lima"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "Malaiala - Índia"
+
+#: 
+msgid "Manage 2FA"
+msgstr "Gerir Autenticação de Dois Fatores"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "Gerir preferências adicionais como delimitadores de e-mail e opções de apresentação"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Gerir a sua chave de API para integrações externas"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "Método Não Permitido"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "Traduções em falta ou incorretas?"
+
+#: 
+msgid "My Account"
+msgstr "A Minha Conta"
+
+#: 
+msgid "Orange"
+msgstr "Laranja"
+
+#: 
+msgid "Override the system default locale"
+msgstr "Substituir a localização predefinida do sistema"
+
+#: 
+msgid "Page Not Found"
+msgstr "Página Não Encontrada"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "Percentagem de cadeias traduzidas para o seu idioma atual"
+
+#: 
+msgid "Pink"
+msgstr "Rosa"
+
+#: 
+msgid "Primary Color"
+msgstr "Cor Principal"
+
+#: 
+msgid "Profile and security"
+msgstr "Perfil e segurança"
+
+#: 
+msgid "Purple"
+msgstr "Roxo"
+
+#: 
+msgid "Red"
+msgstr "Vermelho"
+
+#: 
+msgid "Regenerate"
+msgstr "Regenerar"
+
+#: 
+msgid "Rows per page"
+msgstr "Linhas por página"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Defina a Permissão como Verdadeiro para permitir que este utilizador altere a definição por si próprio."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Definir a cor de destaque utilizada em botões, ligações e elementos ativos"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Sugerir uma formulação melhor para as traduções existentes"
+
+#: 
+msgid "System Update Available"
+msgstr "Atualização do Sistema Disponível"
+
+#: 
+msgid "Tables"
+msgstr "Tabelas"
+
+#: 
+msgid "Teal"
+msgstr "Cerceta"
+
+#: 
+msgid "Theme Mode"
+msgstr "Modo de Tema"
+
+#: 
+msgid "Toggle search"
+msgstr "Ativar/desativar pesquisa"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Traduzir cadeias em falta para melhorar a cobertura"
+
+#: 
+msgid "Translation Progress"
+msgstr "Progresso da Tradução"
+
+#: 
+msgid "Usage"
+msgstr "Utilização"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "Utilize esta chave para autenticar pedidos de API. A regeneração invalidará a chave atual."
+
+#: 
+msgid "User Config"
+msgstr "Configuração do Utilizador"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Verificação falhada. Por favor, tente novamente."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "A versão %s está disponível. Por favor, atualize a sua instalação."
+
+#: 
+msgid "View All"
+msgstr "Ver Todos"
+
+#: 
+msgid "Yellow"
+msgstr "Amarelo"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "Os seus níveis de acesso atuais (só de leitura)"
+
+#: 
+msgid "%d repeat event created successfully."
+msgid_plural "%d repeat events created successfully."
+msgstr[0] "%d evento repetido criado com sucesso."
+msgstr[1] "%d eventos repetidos criados com sucesso."
+
+#: 
+msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
+msgstr "(p. ex. Membros, Visitantes, Crianças) para que os voluntários possam registar contagens aqui."
+
+#: 
+msgid "1. Sunday School Class"
+msgstr "1. Turma de Escola Dominical"
+
+#: 
+msgid "2. Event Type"
+msgstr "2. Tipo de Evento"
+
+#: 
+msgid "3. Event"
+msgstr "3. Evento"
+
+#: 
+msgid "4. Kiosk"
+msgstr "4. Quiosque"
+
+#: 
+msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
+msgstr "Uma turma é um Grupo do tipo \"Escola Dominical\". Contém os alunos e os professores (membros com funções)."
+
+#: 
+msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
+msgstr "Um grupo associado liga este evento a uma turma ou lista de ministério. Quando o evento é atribuído a um Quiosque, este obtém os membros do grupo e apresenta-os como uma lista de entrada por toque. Para turmas de Escola Dominical, associe aqui o grupo da turma para que os voluntários possam registar a entrada dos alunos a partir de um tablet."
+
+#: 
+msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr "Uma ocorrência específica (p. ex. \"Pré-escolar — 12 Abr\"). Herda as predefinições do tipo e está associada ao grupo da turma através da audiência. É contra este evento que os voluntários registam as presenças."
+
+#: 
+msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr "Um tablet atribuído a um evento. O quiosque obtém a lista do grupo associado ao evento e apresenta-a para entrada por toque. Sem um grupo associado, o quiosque não tem lista para apresentar."
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "Adicionar Visitante"
+
+#: 
+msgid "Add categories on the Event Type page"
+msgstr "Adicionar categorias na página de Tipo de Evento"
+
+#: 
+msgid "Add people to your cart first, then come back to check them in to an event."
+msgstr "Adicione primeiro pessoas à sua Seleção e volte para registar a entrada num evento."
+
+#: 
+msgid "All clear!"
+msgstr "Tudo limpo!"
+
+#: 
+msgid "All events and attendance records"
+msgstr "Todos os eventos e registos de presença"
+
+#: 
+msgid "All financial data (pledges, payments, deposits)"
+msgstr "Todos os dados financeiros (compromissos financeiros, pagamentos, depósitos)"
+
+#: 
+msgid "All groups, roles, and memberships"
+msgstr "Todos os ministérios, funções e membros"
+
+#: 
+msgid "All people and family records"
+msgstr "Todos os registos de pessoas e famílias"
+
+#: 
+msgid "All system settings and custom fields"
+msgstr "Todas as configurações do sistema e campos personalizados"
+
+#: 
+msgid "All uploaded photos and documents"
+msgstr "Todas as fotos e documentos carregados"
+
+#: 
+msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
+msgstr "Um Tipo de Evento é um modelo — nome, hora de início predefinida, recorrência, categorias de contagem de presenças. Opcionalmente associado a um grupo de turma como audiência predefinida."
+
+#: 
+msgid "Attendance record deleted."
+msgstr "Registo de presença eliminado."
+
+#: 
+msgid "Audit"
+msgstr "Auditoria"
+
+#: 
+msgid "Audit Events"
+msgstr "Auditar Eventos"
+
+#: 
+msgid "Auto-totalled from counts at right"
+msgstr "Total calculado automaticamente a partir das contagens à direita"
+
+#: 
+msgid "Back to Events"
+msgstr "Voltar aos Eventos"
+
+#: 
+msgid "Back to Events Dashboard"
+msgstr "Voltar ao Painel de Eventos"
+
+#: 
+msgid "Backup failed. You can still proceed with the reset, but your data will be lost."
+msgstr "A cópia de segurança falhou. Pode prosseguir com o reinício, mas os seus dados serão perdidos."
+
+#: 
+msgid "Backup ready!"
+msgstr "Cópia de segurança pronta!"
+
+#: 
+msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
+msgstr "Antes de reiniciar, recomendamos vivamente que descarregue uma cópia de segurança dos seus dados atuais. Esta é a sua única oportunidade de os preservar."
+
+#: 
+msgid "Bulk-create a series of recurring events"
+msgstr "Criar em massa uma série de eventos recorrentes"
+
+#: 
+msgid "By"
+msgstr "Por"
+
+#: 
+msgid "Cannot check in to an inactive event. Activate the event first."
+msgstr "Não é possível registar entrada num evento inativo. Ative primeiro o evento."
+
+#: 
+msgid "Change"
+msgstr "Alterar"
+
+#: 
+msgid "Check In All"
+msgstr "Registar Entrada de Todos"
+
+#: 
+msgid "Check In Family"
+msgstr "Registar Entrada da Família"
+
+#: 
+msgid "Check Out All"
+msgstr "Registar Saída de Todos"
+
+#: 
+msgid "Check in all %d family members to a single event."
+msgstr "Registar a entrada de todos os %d membros da família num único evento."
+
+#: 
+msgid "Check out"
+msgstr "Registar saída"
+
+#: 
+msgid "Check-in By"
+msgstr "Entrada Registada Por"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "O registo de entrada falhou. Por favor, tente novamente."
+
+#: 
+msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
+msgstr "O registo de entrada está desativado para eventos inativos. Ative o evento no Painel de Eventos para ativar o registo de entrada."
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "O registo de saída falhou. Por favor, tente novamente."
+
+#: 
+msgid "Checked in to event: %s"
+msgstr "Entrada registada no evento: %s"
+
+#: 
+msgid "Checked out from event: %s"
+msgstr "Saída registada do evento: %s"
+
+#: 
+msgid "Close All Stuck Events"
+msgstr "Fechar Todos os Eventos Bloqueados"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "Confirmar Saída"
+
+#: 
+msgid "Create Repeat Events"
+msgstr "Criar Eventos Repetidos"
+
+#: 
+msgid "Create Today's Event"
+msgstr "Criar o Evento de Hoje"
+
+#: 
+msgid "Create a new event type with recurrence and attendance settings"
+msgstr "Criar um novo tipo de evento com recorrência e definições de presença"
+
+#: 
+msgid "Create one now"
+msgstr "Criar um agora"
+
+#: 
+msgid "Create today's class event and link it to this class for kiosk check-in"
+msgstr "Criar o evento de hoje para esta turma e associá-lo à turma para o registo de entrada no quiosque"
+
+#: 
+msgid "Creating backup..."
+msgstr "A criar cópia de segurança..."
+
+#: 
+msgid "Creating..."
+msgstr "A criar..."
+
+#: 
+msgid "Database + uploaded photos (larger)"
+msgstr "Base de dados + fotos carregadas (maior)"
+
+#: 
+msgid "Database dump only (.sql)"
+msgstr "Apenas exportação da base de dados (.sql)"
+
+#: 
+msgid "Date Range"
+msgstr "Intervalo de Datas"
+
+#: 
+msgid "Date range cannot exceed 1 year"
+msgstr "O intervalo de datas não pode exceder 1 ano"
+
+#: 
+msgid "Deactivate"
+msgstr "Desativar"
+
+#: 
+msgid "Delete Event Type"
+msgstr "Eliminar Tipo de Evento"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "Eliminar registo de presença?"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "Eliminar registo de entrada para"
+
+#: 
+msgid "Delete this event?"
+msgstr "Eliminar este evento?"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "A eliminação de um evento também elimina todas as contagens de presenças. Esta ação não pode ser desfeita."
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "A eliminação deste evento também eliminará todos os registos de presença. Esta ação não pode ser desfeita."
+
+#: 
+msgid "Destructive Operation"
+msgstr "Operação Destrutiva"
+
+#: 
+msgid "Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field."
+msgstr "Edite o nome de uma categoria e clique em Guardar, ou utilize o ícone do lixo para remover. Novas linhas são adicionadas através do campo no fundo."
+
+#: 
+msgid "End Time"
+msgstr "Hora de Fim"
+
+#: 
+msgid "End time must be after start time."
+msgstr "A hora de fim deve ser posterior à hora de início."
+
+#: 
+msgid "Ended"
+msgstr "Terminado"
+
+#: 
+msgid "Ends"
+msgstr "Termina"
+
+#: 
+msgid "Event Audit"
+msgstr "Auditoria de Eventos"
+
+#: 
+msgid "Event Check-in"
+msgstr "Registo de Entrada no Evento"
+
+#: 
+msgid "Event Details"
+msgstr "Detalhes do Evento"
+
+#: 
+msgid "Event Template"
+msgstr "Modelo de Evento"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "O evento já existe. A redirecionar para o registo de entrada..."
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "Evento criado. A redirecionar para o registo de entrada..."
+
+#: 
+msgid "Event end date/time must be on or after the start date/time."
+msgstr "A data/hora de fim do evento deve ser igual ou posterior à data/hora de início."
+
+#: 
+msgid "Event title is required."
+msgstr "O título do evento é obrigatório."
+
+#: 
+msgid "Event type ID is required"
+msgstr "O ID do tipo de evento é obrigatório"
+
+#: 
+msgid "Event type ID or group ID is required"
+msgstr "O ID do tipo de evento ou o ID do grupo é obrigatório"
+
+#: 
+msgid "Event type has no date configured for yearly recurrence"
+msgstr "O tipo de evento não tem data configurada para recorrência anual"
+
+#: 
+msgid "Event type has no day-of-week configured for weekly recurrence"
+msgstr "O tipo de evento não tem dia da semana configurado para recorrência semanal"
+
+#: 
+msgid "Event type has no recurrence pattern configured"
+msgstr "O tipo de evento não tem padrão de recorrência configurado"
+
+#: 
+msgid "Event type has no valid day-of-month configured for monthly recurrence"
+msgstr "O tipo de evento não tem um dia do mês válido configurado para recorrência mensal"
+
+#: 
+msgid "Events will be created for every matching occurrence within this date range."
+msgstr "Os eventos serão criados para cada ocorrência correspondente dentro deste intervalo de datas."
+
+#: 
+msgid "Every month on the"
+msgstr "Todos os meses no dia"
+
+#: 
+msgid "Every week on"
+msgstr "Todas as semanas em"
+
+#: 
+msgid "Every year on"
+msgstr "Todos os anos em"
+
+#: 
+msgid "Everyone is checked in!"
+msgstr "Todos estão registados!"
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "Falha ao criar turma. Por favor, tente novamente."
+
+#: 
+msgid "Failed to create event."
+msgstr "Falha ao criar evento."
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "Falha ao criar evento. Por favor, tente novamente."
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "Falha ao eliminar. Por favor, tente novamente."
+
+#: 
+msgid "Fastest workflow:"
+msgstr "Fluxo de trabalho mais rápido:"
+
+#: 
+msgid "Find past events that are still active or have un-checked-out attendees"
+msgstr "Encontrar eventos passados que ainda estão ativos ou têm participantes que não fizeram saída"
+
+#: 
+msgid "Format: MM-DD (e.g. 04-12 for April 12)"
+msgstr "Formato: MM-DD (p. ex. 04-12 para 12 de Abril)"
+
+#: 
+msgid "Group Roster"
+msgstr "Lista do Grupo"
+
+#: 
+msgid "Hide Advanced Options"
+msgstr "Ocultar Opções Avançadas"
+
+#: 
+msgid "How Sunday School + Events + Kiosks fit together"
+msgstr "Como a Escola Dominical + Eventos + Quiosques se encaixam"
+
+#: 
+msgid "Invalid date for %s — expected YYYY-MM-DD"
+msgstr "Data inválida para %s — esperado YYYY-MM-DD"
+
+#: 
+msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr "Formato de data inválido para rangeStart ou rangeEnd"
+
+#: 
+msgid "Invalid date format."
+msgstr "Formato de data inválido."
+
+#: 
+msgid "Invalid date; expected format YYYY-MM-DD"
+msgstr "Data inválida; formato esperado YYYY-MM-DD"
+
+#: 
+msgid "Invalid event type ID"
+msgstr "ID de tipo de evento inválido"
+
+#: 
+msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
+msgstr "Formato de recorrência anual inválido; esperado MM-DD (p. ex. 04-12)"
+
+#: 
+msgid "Just now"
+msgstr "Agora mesmo"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "Deixe em branco para registar a saída sem gravar o supervisor."
+
+#: 
+msgid "Link events to a group for Kiosk check-in functionality."
+msgstr "Associar eventos a um grupo para a funcionalidade de registo de entrada no Quiosque."
+
+#: 
+msgid "Linked Groups"
+msgstr "Grupos Associados"
+
+#: 
+msgid "Looking for stuck events..."
+msgstr "À procura de eventos bloqueados..."
+
+#: 
+msgid "Manage event names, recurrence patterns, and attendance counts"
+msgstr "Gerir nomes de eventos, padrões de recorrência e contagens de presenças"
+
+#: 
+msgid "Missing required field: %s"
+msgstr "Campo obrigatório em falta: %s"
+
+#: 
+msgid "No Events Today"
+msgstr "Sem Eventos Hoje"
+
+#: 
+msgid "No Group"
+msgstr "Sem Grupo"
+
+#: 
+msgid "No active events found."
+msgstr "Nenhum evento ativo encontrado."
+
+#: 
+msgid "No attendance count categories defined for this event type yet."
+msgstr "Ainda não há categorias de contagem de presenças definidas para este tipo de evento."
+
+#: 
+msgid "No one has been checked in to this event yet."
+msgstr "Ainda ninguém fez registo de entrada neste evento."
+
+#: 
+msgid "No past events are still marked Active."
+msgstr "Nenhum evento passado está ainda marcado como Ativo."
+
+#: 
+msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr "Abra uma turma → clique em \"Criar o Evento de Hoje\" — o evento é criado e associado à turma de uma só vez, e é redirecionado para a página de registo de entrada pronta para quiosque ou presença sem marcação."
+
+#: 
+msgid "Optional Settings"
+msgstr "Definições Opcionais"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "Opcional — registe quem está a fazer a saída desta pessoa (p. ex. um pai ou mãe a levar um filho)."
+
+#: 
+msgid "Person checked out."
+msgstr "Saída da pessoa registada."
+
+#: 
+msgid "Person is not checked in"
+msgstr "A pessoa não está registada"
+
+#: 
+msgid "Person not in active class roster"
+msgstr "Pessoa não está na lista da turma ativa"
+
+#: 
+msgid "Pin to Calendars"
+msgstr "Afixar nos Calendários"
+
+#: 
+msgid "Please select a person to check in."
+msgstr "Por favor, selecione uma pessoa para registar a entrada."
+
+#: 
+msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
+msgstr "Pré-preenchido com base neste tipo de evento — para tipos recorrentes, a data é a próxima ocorrência após o último evento deste tipo, e a hora corresponde à hora de início predefinida do tipo."
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "A data de fim do intervalo deve ser igual ou posterior à data de início."
+
+#: 
+msgid "Range end must be a valid YYYY-MM-DD date."
+msgstr "O fim do intervalo deve ser uma data YYYY-MM-DD válida."
+
+#: 
+msgid "Range start must be a valid YYYY-MM-DD date."
+msgstr "O início do intervalo deve ser uma data YYYY-MM-DD válida."
+
+#: 
+msgid "Range start must be before range end"
+msgstr "O início do intervalo deve ser anterior ao fim"
+
+#: 
+msgid "Range start must be before range end."
+msgstr "O início do intervalo deve ser anterior ao fim."
+
+#: 
+msgid "RangeEnd must be on or after RangeStart"
+msgstr "RangeEnd deve ser igual ou posterior a RangeStart"
+
+#: 
+msgid "Recommended"
+msgstr "Recomendado"
+
+#: 
+msgid "Required for Kiosk"
+msgstr "Obrigatório para Quiosque"
+
+#: 
+msgid "Resetting will permanently delete:"
+msgstr "O reinício eliminará permanentemente:"
+
+#: 
+msgid "SQL Only"
+msgstr "Apenas SQL"
+
+#: 
+msgid "Save Time"
+msgstr "Poupar Tempo"
+
+#: 
+msgid "Save changes to this category name"
+msgstr "Guardar alterações neste nome de categoria"
+
+#: 
+msgid "Select an event type…"
+msgstr "Selecione um tipo de evento…"
+
+#: 
+msgid "Select start and end date/time."
+msgstr "Selecione a data/hora de início e de fim."
+
+#: 
+msgid "Show More Options"
+msgstr "Mostrar Mais Opções"
+
+#: 
+msgid "Skip"
+msgstr "Ignorar"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "Ignorar e Registar Saída"
+
+#: 
+msgid "Start Check-in"
+msgstr "Iniciar Registo de Entrada"
+
+#: 
+msgid "Starts"
+msgstr "Começa"
+
+#: 
+msgid "Step 1: Create a Backup"
+msgstr "Passo 1: Criar uma Cópia de Segurança"
+
+#: 
+msgid "Step 2: Reset Database"
+msgstr "Passo 2: Reiniciar Base de Dados"
+
+#: 
+msgid "Still Checked In"
+msgstr "Ainda com Entrada Registada"
+
+#: 
+msgid "Stuck Events"
+msgstr "Eventos Bloqueados"
+
+#: 
+msgid "Take Attendance"
+msgstr "Registar Presenças"
+
+#: 
+msgid "The Events module is disabled"
+msgstr "O módulo de Eventos está desativado"
+
+#: 
+msgid "The same start and end time will be used for all generated events."
+msgstr "A mesma hora de início e de fim será utilizada para todos os eventos gerados."
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "Não há eventos agendados para hoje"
+
+#: 
+msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
+msgstr "São categorias de contagem — os voluntários preenchem-nas após o evento para que o painel possa detalhar as presenças (p. ex. quantos membros vs. visitantes). São separadas dos registos de entrada individuais na página de Registo de Entrada."
+
+#: 
+msgid "This event is inactive."
+msgstr "Este evento está inativo."
+
+#: 
+msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr "Esta página permite apagar permanentemente todos os dados na base de dados do ChurchCRM. Esta ação não pode ser desfeita."
+
+#: 
+msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
+msgstr "Este relatório lista todos os eventos cuja data de fim já passou mas que ainda estão marcados como Ativos. Causas comuns: um voluntário esqueceu-se de tocar em 'Registar Saída', um quiosque perdeu conectividade, ou o evento foi criado e abandonado. Eventos antigos (de anos passados) que nunca foram desativados também aparecem aqui. A coluna 'Ainda com Entrada Registada' indica se alguém ficou a meio do registo de entrada. Fechar um evento a partir deste relatório regista a saída de todos (usando a hora atual) e marca o evento como Inativo."
+
+#: 
+msgid "This title will be used for all generated events."
+msgstr "Este título será utilizado para todos os eventos gerados."
+
+#: 
+msgid "Today's Events"
+msgstr "Eventos de Hoje"
+
+#: 
+msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
+msgstr "Demasiadas ocorrências (%d) — reduza o intervalo de datas. Máximo permitido: %d"
+
+#: 
+msgid "Type RESET to confirm"
+msgstr "Escreva RESET para confirmar"
+
+#: 
+msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
+msgstr "Utilize o botão acima para criar o evento de hoje com um clique. Será automaticamente associado a esta turma para que um Quiosque possa obter a lista."
+
+#: 
+msgid "Use this form to bulk-create a series of recurring events. Each event is created individually and can be edited or deleted independently after creation."
+msgstr "Utilize este formulário para criar em massa uma série de eventos recorrentes. Cada evento é criado individualmente e pode ser editado ou eliminado de forma independente após a criação."
+
+#: 
+msgid "Used as the default start time when creating events of this type."
+msgstr "Utilizado como hora de início predefinida ao criar eventos deste tipo."
+
+#: 
+msgid "User must have Add Event permission and the Events module must be enabled"
+msgstr "O utilizador deve ter permissão para Adicionar Evento e o módulo de Eventos deve estar ativado"
+
+#: 
+msgid "Valid startDate and endDate are required"
+msgstr "startDate e endDate válidos são obrigatórios"
+
+#: 
+msgid "View Event"
+msgstr "Ver Evento"
+
+#: 
+msgid "What are these for?"
+msgstr "Para que servem?"
+
+#: 
+msgid "What does this find?"
+msgstr "O que é que isto encontra?"
+
+#: 
+msgid "What is this for?"
+msgstr "Para que serve isto?"
+
+#: 
+msgid "Who is bringing them in?"
+msgstr "Quem os está a trazer?"
+
+#: 
+msgid "You must select a valid recurrence pattern."
+msgstr "Deve selecionar um padrão de recorrência válido."
+
+#: 
+msgid "You must select an event type."
+msgstr "Deve selecionar um tipo de evento."
+
+#: 
+msgid "You must specify a date range."
+msgstr "Deve especificar um intervalo de datas."
+
+#: 
+msgid "checked in"
+msgstr "entrada registada"
+
+#: 
+msgid "e.g., Sunday Worship Service"
+msgstr "p. ex., Serviço de Culto Dominical"
+
+#: 
+msgid "endDate must be after startDate"
+msgstr "endDate deve ser posterior a startDate"
+
+#: 
+msgid "eventIds must be a non-empty array"
+msgstr "eventIds deve ser um array não vazio"
+
+#: 
+msgid "invalid recurrence type"
+msgstr "tipo de recorrência inválido"
+
+#: 
+msgid "personIds must be a non-empty array"
+msgstr "personIds deve ser um array não vazio"
+
+#: 
+msgid "to enable the reset button"
+msgstr "para ativar o botão de reinício"
+
+#: 
+msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
+msgstr "Um mapa aparecerá aqui assim que as coordenadas forem guardadas — detetadas automaticamente a partir do seu endereço ou introduzidas manualmente acima."
+
+#: 
+msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr "A latitude e a longitude devem ser fornecidas em conjunto (ou ambas deixadas em branco para deteção automática)."
+
+#: 
+msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr "Informações da paróquia guardadas, mas o endereço não pôde ser localizado automaticamente. Por favor, introduza a latitude e a longitude manualmente em Coordenadas do Mapa."
+
+#: 
+msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
+msgstr "As coordenadas são detetadas automaticamente a partir do seu endereço ao guardar (via OpenStreetMap). Também pode introduzi-las manualmente abaixo — os valores manuais têm sempre prioridade sobre a deteção automática. Deixe ambos em branco para permitir que o sistema geocodifique a partir do endereço."
+
+#: 
+msgid "Latitude must be a number between -90 and 90."
+msgstr "A latitude deve ser um número entre -90 e 90."
+
+#: 
+msgid "Longitude must be a number between -180 and 180."
+msgstr "A longitude deve ser um número entre -180 e 180."
+
+#: 
+msgid "Map Coordinates"
+msgstr "Coordenadas do Mapa"
+
+#: 
+msgid "Please select a group."
+msgstr "Por favor, selecione um ministério."
+
+#: 
+msgid "Please select a role."
+msgstr "Por favor, selecione uma função."
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "Por favor, selecione um ministério e uma função."
+
+#: 
+msgid "Range: -180 to 180."
+msgstr "Intervalo: -180 a 180."
+
+#: 
+msgid "Range: -90 to 90."
+msgstr "Intervalo: -90 a 90."
+
+#: 
+msgid "e.g., -74.0060"
+msgstr "ex.: -74.0060"
+
+#: 
+msgid "e.g., 40.7128"
+msgstr "ex.: 40.7128"
+
+#: 
+msgid "mo"
+msgstr "mês"
+
+#: 
+msgid "mos"
+msgstr "meses"
+
+#: 
+msgid "yr"
+msgstr "ano"
+
+#: 
+msgid "yrs"
+msgstr "anos"
+
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "Ocorreu um erro ao eliminar a família."
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "Ocorreu um erro ao mover as doações."
+
+#: 
+msgid "At least one family member is required"
+msgstr "É necessário pelo menos um membro da família"
+
+#: 
+msgid "Back to Users"
+msgstr "Voltar aos Utilizadores"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "Não é possível eliminar uma família com registos de doações. Contacte um administrador financeiro."
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "Não é possível mover a propriedade nessa direção"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "Confirmar Informações da Família"
+
+#: 
+msgid "Delete failed"
+msgstr "Falha ao eliminar"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "A direção deve ser \"cima\" ou \"baixo\""
+
+#: 
+msgid "Failed to move donations."
+msgstr "Falha ao mover as doações."
+
+#: 
+msgid "Finance permission required"
+msgstr "Permissão financeira necessária"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "A cor de primeiro plano e a cor de fundo são obrigatórias."
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "Grupo não encontrado ou sem propriedades especiais"
+
+#: 
+msgid "Group role not found"
+msgstr "Função de grupo não encontrada"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "Formato de cor inválido. Utilize cores hexadecimais como #FF0000."
+
+#: 
+msgid "Invalid field identifier"
+msgstr "Identificador de campo inválido"
+
+#: 
+msgid "Invalid target family"
+msgstr "Família de destino inválida"
+
+#: 
+msgid "Log Out"
+msgstr "Terminar Sessão"
+
+#: 
+msgid "Membership not found"
+msgstr "Adesão não encontrada"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "Palavra-passe alterada com sucesso para"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "Por favor, reveja as informações da sua família abaixo e confirme ou solicite alterações."
+
+#: 
+msgid "Please select a target family."
+msgstr "Por favor, selecione uma família de destino."
+
+#: 
+msgid "Target family not found"
+msgstr "Família de destino não encontrada"
+
+#: 
+msgid "Verify Family Info"
+msgstr "Verificar Informações da Família"
+
+#: 
+msgid "Welcome"
+msgstr "Bem-vindo"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "Pode rever e verificar as informações da sua família utilizando o link abaixo. Se precisar de acesso adicional, contacte o administrador da sua paróquia."
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "Não tem permissão para ver esta pessoa"
+
+#: 
+msgid "Are you sure you want to delete this event type? This cannot be undone."
+msgstr "Tem a certeza de que pretende eliminar este tipo de evento? Esta ação não pode ser desfeita."
+
+#: 
+msgid "Assign to me"
+msgstr "Atribuir a mim"
+
+#: 
+msgid "Assigned"
+msgstr "Atribuído"
+
+#: 
+msgid "Assigned event not found"
+msgstr "Evento atribuído não encontrado"
+
+#: 
+msgid "Cannot Delete Event Type"
+msgstr "Não é possível eliminar o tipo de evento"
+
+#: 
+msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
+msgstr "Não é possível eliminar este tipo de evento — %d evento(s) estão a utilizá-lo. Desative o tipo ou reatribua os eventos primeiro."
+
+#: 
+msgid "Kiosk Devices"
+msgstr "Dispositivos de quiosque"
+
+#: 
+msgid "Kiosk device has not been accepted by an administrator"
+msgstr "O dispositivo de quiosque não foi aceite por um administrador"
+
+#: 
+msgid "No active event assignment"
+msgstr "Sem atribuição de evento ativa"
+
+#: 
+msgid "Opens a 30-second window for devices to register at:"
+msgstr "Abre uma janela de 30 segundos para que os dispositivos se registem em:"
+
+#: 
+msgid "Pending"
+msgstr "Pendente"
+
+#: 
+msgid "Register New Device"
+msgstr "Registar novo dispositivo"
+
+#: 
+msgid "This event type is used by"
+msgstr "Este tipo de evento é utilizado por"
+
+#: 
+msgid "Total Kiosks"
+msgstr "Total de quiosques"
+
+#: 
+msgid "Upcoming Events"
+msgstr "Próximos eventos"
+
+#: 
+msgid "event(s). Deactivate the type instead, or reassign the events first."
+msgstr "evento(s). Desative o tipo ou reatribua os eventos primeiro."
 

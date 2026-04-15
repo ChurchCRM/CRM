@@ -176,7 +176,8 @@ class LocalAuthentication implements IAuthenticationProvider
             } else {
                 LoggerUtils::getAuthLogger()->info('Invalid 2FA code provided by partially authenticated user', $logCtx);
                 $authenticationResult->isAuthenticated = false;
-                $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/two-factor?invalid=1';
+                $recoveryParam = $AuthenticationRequest->isRecoveryMode ? '&recovery' : '';
+                $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/two-factor?invalid=1' . $recoveryParam;
             }
         }
 

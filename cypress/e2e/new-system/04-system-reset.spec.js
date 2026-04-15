@@ -33,8 +33,6 @@ describe('04 - System Reset', () => {
         cy.get('input[name=Password]').type(password);
         cy.get('input[name=Password]').type('{enter}');
         cy.url({ timeout: 30000 }).should('not.include', '/session/begin');
-        // Give the session time to establish
-        cy.wait(1000);
 
         // After a DB reset the admin has NeedPasswordChange=true; complete the forced form if needed.
         // The forced form uses button[type=submit] (login-box layout, not card layout).
@@ -65,7 +63,6 @@ describe('04 - System Reset', () => {
                 cy.tomSelectByValue('#sChurchState', 'IL');
                 cy.get('#sChurchState').should('have.value', 'IL');
                 cy.get('#sChurchZip').clear().type('62701');
-                cy.wait(500);
                 cy.get('#church-info-form').submit();
                 cy.url({ timeout: 10000 }).should('include', 'church-info');
             }
@@ -73,34 +70,25 @@ describe('04 - System Reset', () => {
     };
 
     describe('Step 10a: Navigate to Reset Page', () => {
-        it('should navigate to system reset page and show bootbox warning', () => {
+        it('should display danger warning and reset card', () => {
             manualLogin();
             cy.visit('/admin/system/reset');
-            
-            // Wait for page to fully load and i18next to initialize
-            // The bootbox appears after CRM.onLocalesReady fires
-            cy.get('.bootbox', { timeout: 30000 }).should('be.visible');
-            
-            // Should show warning about reset
-            cy.contains('Warning').should('be.visible');
+
+            // Danger banner at top — scope to the top warning banner so it
+            // doesn't match hidden backup status alerts also in the DOM.
+            cy.contains('.alert-danger', 'Destructive Operation', { timeout: 15000 })
+                .should('be.visible');
+
+            // Reset button should be disabled until user types RESET
+            cy.get('#resetBtn').should('be.disabled');
         });
 
-        it('should show reset button after typing I AGREE', () => {
+        it('should enable reset button after typing RESET', () => {
             manualLogin();
             cy.visit('/admin/system/reset');
-            
-            // Wait for bootbox prompt
-            cy.get('.bootbox', { timeout: 30000 }).should('be.visible');
-            
-            // Type "I AGREE" in the prompt
-            cy.get('.bootbox input[type="text"]').type('I AGREE');
-            
-            // Click OK button on the bootbox
-            cy.get('.bootbox .btn-danger').click();
-            
-            // Should now see the reset page content (bootbox dismissed)
-            cy.get('#confirm-db', { timeout: 10000 }).should('be.visible');
-            cy.contains('Reset Database').should('be.visible');
+
+            cy.get('#confirmInput', { timeout: 15000 }).type('RESET');
+            cy.get('#resetBtn').should('not.be.disabled');
         });
     });
 

@@ -6,7 +6,7 @@
  * - DatePicker styling overrides for modal z-index and compatibility
  *
  * Bootstrap utilities handle: table layouts (w-100), form validation (text-danger, invisible), field sizing
- * Used in: react/components/Events/, src/skin/js/Calendar.js
+ * Used in: webpack/calendar-event-editor.js, src/skin/js/Calendar.js
  */
 
 /* ================================================
@@ -52,23 +52,8 @@
   margin-left: 15px;
 }
 
-/**
- * React DatePicker Styling Overrides
- *
- * Critical overrides for react-datepicker in modal context:
- * - Z-index: Ensures dropdown appears above Bootstrap modals
- *
- * Note: Core react-datepicker CSS is imported from npm package
- * (webpack/skin-main.js line 22)
- */
-
-.react-datepicker-popper {
-  z-index: 1050 !important;
-}
-
-/* Bootstrap / jQuery datepicker popup (non-react)
-   Ensure the popup appears above fixed headers/sidebars
-   AdminLTE/header z-index can be high; use a larger value here. */
+/* Bootstrap / jQuery datepicker popup
+   Ensure the popup appears above fixed headers/sidebars */
 .datepicker,
 .datepicker.dropdown-menu,
 .bootstrap-datepicker {

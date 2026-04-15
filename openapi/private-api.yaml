@@ -1159,6 +1159,107 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  /events/repeat:
+    post:
+      tags:
+        - Calendar
+      summary: 'Create a series of repeat events'
+      description: 'Generates individual event records for each occurrence of a recurring event within a date range. Each created event is independently editable.'
+      operationId: createRepeatEvents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - Title
+                - Type
+                - StartTime
+                - EndTime
+                - RecurType
+                - RangeStart
+                - RangeEnd
+              properties:
+                Title:
+                  type: string
+                  example: 'Sunday Worship Service'
+                Type:
+                  description: 'Event type ID from GET /events/types'
+                  type: integer
+                  example: 1
+                Desc:
+                  type: string
+                  nullable: true
+                Text:
+                  description: 'Rich text body (HTML allowed)'
+                  type: string
+                  nullable: true
+                StartTime:
+                  description: 'Event start time in HH:MM format'
+                  type: string
+                  example: '09:00'
+                EndTime:
+                  description: 'Event end time in HH:MM format'
+                  type: string
+                  example: '10:30'
+                RecurType:
+                  type: string
+                  enum: [weekly, monthly, yearly]
+                  example: weekly
+                RecurDOW:
+                  description: 'Day of week for weekly recurrence (e.g. Sunday)'
+                  type: string
+                  example: Sunday
+                RecurDOM:
+                  description: 'Day of month (1-31) for monthly recurrence'
+                  type: integer
+                  example: 1
+                RecurDOY:
+                  description: 'Month-day in MM-DD format for yearly recurrence'
+                  type: string
+                  example: 04-12
+                RangeStart:
+                  description: 'First date of the repetition range (inclusive)'
+                  type: string
+                  format: date
+                  example: '2026-01-01'
+                RangeEnd:
+                  description: 'Last date of the repetition range (inclusive)'
+                  type: string
+                  format: date
+                  example: '2026-12-31'
+                PinnedCalendars:
+                  type: array
+                  items: { type: integer }
+                  nullable: true
+                LinkedGroupId:
+                  type: integer
+                  nullable: true
+                Inactive:
+                  type: integer
+                  enum: [0, 1]
+                  nullable: true
+              type: object
+      responses:
+        '200':
+          description: 'Repeat events created'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                  count: { type: integer, example: 52 }
+                  eventIds: { type: array, items: { type: integer } }
+                type: object
+        '400':
+          description: 'Invalid input (bad event type, invalid dates, unknown recurrence type)'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'AddEvents role required'
+      security:
+        -
+          ApiKeyAuth: []
   '/events/{id}/time':
     post:
       tags:
@@ -1206,6 +1307,472 @@ paths:
           description: 'AddEvents role required'
         '404':
           description: 'Event not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/events/{id}/status':
+    post:
+      tags:
+        - Calendar
+      summary: 'Activate or deactivate an event'
+      operationId: setEventStatus
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - active
+              properties:
+                active:
+                  description: 'true to activate, false to deactivate'
+                  type: boolean
+                  example: true
+              type: object
+      responses:
+        '200':
+          description: 'Event status updated'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'AddEvents role required'
+        '404':
+          description: 'Event not found'
+      security:
+        -
+          ApiKeyAuth: []
+  /events/quick-create:
+    post:
+      tags:
+        - Calendar
+      summary: 'Quick-create an event from EventType defaults'
+      description: "Creates an event with minimal input, using EventType defaults for title, time, and group. **At least one of eventTypeId or groupId is required.** If only groupId is provided, the event type is auto-detected from the group's linked EventType. If an event of the same type already exists for the given date, returns the existing event instead."
+      operationId: quickCreateEvent
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                eventTypeId:
+                  description: 'Event type ID. Either eventTypeId OR groupId is required.'
+                  type: integer
+                  example: 5
+                groupId:
+                  description: "Group ID — when provided without eventTypeId, the event type is auto-detected from the group's linked EventType."
+                  type: integer
+                  example: 12
+                date:
+                  description: 'Event date (defaults to today)'
+                  type: string
+                  format: date
+                  example: '2026-04-05'
+              type: object
+      responses:
+        '200':
+          description: 'Event created or existing event found'
+          content:
+            application/json:
+              schema:
+                properties:
+                  eventId: { type: integer, example: 42 }
+                  created: { type: boolean, example: true }
+                  title: { type: string, example: 'Youth Sunday School — Apr 5, 2026' }
+                type: object
+        '400':
+          description: 'Invalid event type ID'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'AddEvents role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /events/today:
+    get:
+      tags:
+        - Calendar
+      summary: "Get today's events with attendance stats"
+      operationId: getTodaysEvents
+      responses:
+        '200':
+          description: "Today's events"
+          content:
+            application/json:
+              schema:
+                properties:
+                  events: { type: array, items: { properties: { id: { type: integer }, title: { type: string }, typeName: { type: string }, start: { type: string, format: date-time }, end: { type: string, format: date-time }, checkedIn: { type: integer }, totalAttendees: { type: integer } }, type: object } }
+                type: object
+        '401':
+          description: Unauthorized
+      security:
+        -
+          ApiKeyAuth: []
+  '/events/{id}/roster':
+    get:
+      tags:
+        - Calendar
+      summary: 'Get group members with attendance status for an event'
+      description: 'Returns all members of groups linked to this event, along with their check-in/check-out status.'
+      operationId: getEventRoster
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Roster with attendance status'
+        '401':
+          description: Unauthorized
+        '404':
+          description: 'Event not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/events/{id}/checkin':
+    post:
+      tags:
+        - Calendar
+      summary: 'Check in a person to an event via AJAX'
+      operationId: checkinPerson
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - personId
+              properties:
+                personId:
+                  type: integer
+                  example: 101
+                checkedInById:
+                  description: 'Person ID of whoever is checking this person in (e.g., parent dropping off child)'
+                  type: integer
+                  example: 55
+                  nullable: true
+              type: object
+      responses:
+        '200':
+          description: 'Person checked in'
+        '400':
+          description: 'Invalid person ID'
+        '401':
+          description: Unauthorized
+        '404':
+          description: 'Event not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/events/{id}/checkout':
+    post:
+      tags:
+        - Calendar
+      summary: 'Check out a person from an event via AJAX'
+      operationId: checkoutPerson
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - personId
+              properties:
+                personId:
+                  type: integer
+                  example: 101
+                checkedOutById:
+                  description: 'Person ID of whoever is checking this person out (e.g., parent picking up child)'
+                  type: integer
+                  example: 55
+                  nullable: true
+              type: object
+      responses:
+        '200':
+          description: 'Person checked out'
+        '400':
+          description: 'Invalid person ID'
+        '401':
+          description: Unauthorized
+        '404':
+          description: 'Event not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/events/{id}/checkin-all':
+    post:
+      tags:
+        - Calendar
+      summary: 'Batch check-in all group members for an event'
+      operationId: checkinAll
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'All members checked in'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean }
+                  checkedIn: { type: integer }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'AddEvents role required'
+        '404':
+          description: 'Event not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/events/{id}/checkout-all':
+    post:
+      tags:
+        - Calendar
+      summary: 'Batch check-out all checked-in people from an event'
+      operationId: checkoutAll
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'All people checked out'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean }
+                  checkedOut: { type: integer }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'AddEvents role required'
+        '404':
+          description: 'Event not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/events/{id}/checkin-people':
+    post:
+      tags:
+        - Calendar
+      summary: 'Batch check-in a list of people for an event'
+      description: "Used by Family View 'Check In Family' (#6838) and any other UI that needs to check in a known set of people. Each ID is processed via Event::checkInPerson() which creates timeline notes and timestamps."
+      operationId: checkinPeople
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - personIds
+              properties:
+                personIds:
+                  type: array
+                  items: { type: integer }
+                  example: [101, 102, 103]
+                checkedInById:
+                  description: 'Person ID of whoever is checking these people in'
+                  type: integer
+                  example: 55
+                  nullable: true
+              type: object
+      responses:
+        '200':
+          description: 'People checked in'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean }
+                  checkedIn: { type: integer }
+                type: object
+        '400':
+          description: 'Invalid input'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'AddEvents role required'
+        '404':
+          description: 'Event not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/events/{id}/attendance/{personId}':
+    delete:
+      tags:
+        - Calendar
+      summary: "Delete a person's attendance record from an event"
+      operationId: deleteAttendance
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Attendance deleted'
+        '404':
+          description: 'Event or attendance record not found'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'AddEvents role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /events/generate-recurring:
+    post:
+      tags:
+        - Calendar
+      summary: "Generate recurring events from an EventType's recurrence settings"
+      description: "Creates multiple events between startDate and endDate based on the EventType's recurrence pattern (weekly, monthly, or yearly). Optionally skips dates where an event of the same type already exists."
+      operationId: generateRecurringEvents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - eventTypeId
+                - startDate
+                - endDate
+              properties:
+                eventTypeId:
+                  type: integer
+                  example: 5
+                startDate:
+                  type: string
+                  format: date
+                  example: '2026-04-05'
+                endDate:
+                  type: string
+                  format: date
+                  example: '2026-06-28'
+                skipExisting:
+                  description: 'Skip dates that already have an event of this type'
+                  type: boolean
+                  example: true
+                pinnedCalendars:
+                  description: 'Calendar IDs to pin generated events to'
+                  type: array
+                  items: { type: integer }
+                  example: [1]
+              type: object
+      responses:
+        '200':
+          description: 'Events generated'
+          content:
+            application/json:
+              schema:
+                properties:
+                  created: { type: integer, example: 12 }
+                  skipped: { type: integer, example: 1 }
+                  events: { type: array, items: { properties: { id: { type: integer }, title: { type: string }, date: { type: string, format: date } }, type: object } }
+                type: object
+        '400':
+          description: 'Invalid input'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'AddEvents role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /events/audit/stuck:
+    get:
+      tags:
+        - Calendar
+      summary: 'List past events that are still marked active'
+      description: 'Returns every event whose end date has passed but which is still marked Active. Each row includes the count of attendees still checked in (no checkout). This is the audit set — anything in this list represents an event that was never properly closed, regardless of whether anyone forgot to check out.'
+      operationId: getStuckEvents
+      responses:
+        '200':
+          description: 'List of stuck events with stats'
+      security:
+        -
+          ApiKeyAuth: []
+  /events/audit/close:
+    post:
+      tags:
+        - Calendar
+      summary: 'Batch close stuck events'
+      description: 'For each event id provided, checks out anyone still checked in and marks the event inactive. Idempotent — events that are already closed/empty are skipped.'
+      operationId: closeStuckEvents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - eventIds
+              properties:
+                eventIds:
+                  type: array
+                  items: { type: integer }
+                  example: [42, 43, 44]
+                checkoutPeople:
+                  description: 'Auto check-out anyone still checked in (defaults to true)'
+                  type: boolean
+                  example: true
+                deactivate:
+                  description: 'Mark the event inactive after closing (defaults to true)'
+                  type: boolean
+                  example: true
+              type: object
+      responses:
+        '200':
+          description: 'Summary of close operation'
       security:
         -
           ApiKeyAuth: []
@@ -1783,6 +2350,93 @@ paths:
       responses:
         '200':
           description: 'Array of neighbor families'
+      security:
+        -
+          ApiKeyAuth: []
+  '/groups/{groupId}/formprops/{propId}/order':
+    put:
+      tags:
+        - Groups
+      summary: 'Move a group form property up or down (ManageGroup role required)'
+      operationId: 8a8e78e3c4f88690086b415444b0d8c7
+      parameters:
+        -
+          name: groupId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: propId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - direction
+              properties:
+                direction:
+                  type: string
+                  enum: [up, down]
+              type: object
+      responses:
+        '200':
+          description: 'Property reordered'
+        '400':
+          description: 'Invalid direction or field'
+        '403':
+          description: 'ManageGroup role required'
+        '404':
+          description: 'Group not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/groups/{groupId}/formprops/{propId}':
+    delete:
+      tags:
+        - Groups
+      summary: 'Delete a group form property and its column (ManageGroup role required)'
+      operationId: 16b593c2e835f499d44b27709e1d57d8
+      parameters:
+        -
+          name: groupId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: propId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - field
+              properties:
+                field:
+                  description: 'Column field name (e.g. c1, c2)'
+                  type: string
+                  example: c1
+              type: object
+      responses:
+        '200':
+          description: 'Property deleted'
+        '400':
+          description: 'Invalid field name'
+        '403':
+          description: 'ManageGroup role required'
+        '404':
+          description: 'Group not found'
       security:
         -
           ApiKeyAuth: []
@@ -2484,6 +3138,35 @@ paths:
       security:
         -
           ApiKeyAuth: []
+    delete:
+      tags:
+        - Families
+      summary: 'Delete a family record and optionally its members (DeleteRecord role required)'
+      parameters:
+        -
+          name: familyId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: deleteMembers
+          in: query
+          description: 'If true, also delete all family members. If false, members are unlinked from the family.'
+          required: false
+          schema:
+            type: boolean
+            default: false
+      responses:
+        '200':
+          description: 'Family deleted'
+        '403':
+          description: 'DeleteRecord role required or family has donations'
+        '404':
+          description: 'Family not found'
+      security:
+        -
+          ApiKeyAuth: []
   '/family/{familyId}/geolocation':
     get:
       tags:
@@ -2651,6 +3334,40 @@ paths:
                 type: object
         '400':
           description: 'Family has no street address to geocode'
+      security:
+        -
+          ApiKeyAuth: []
+  '/family/{familyId}/donations/move':
+    post:
+      tags:
+        - Families
+      summary: 'Move all donations from this family to another (Finance role required)'
+      parameters:
+        -
+          name: familyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - targetFamilyId
+              properties:
+                targetFamilyId:
+                  description: 'Family ID to move donations to'
+                  type: integer
+              type: object
+      responses:
+        '200':
+          description: 'Donations moved'
+        '400':
+          description: 'Invalid target family'
+        '403':
+          description: 'Finance role required'
       security:
         -
           ApiKeyAuth: []
@@ -3122,6 +3839,8 @@ paths:
           description: 'Updated membership object'
         '403':
           description: 'ManageGroupRole role required'
+        '404':
+          description: 'Membership not found'
       security:
         -
           ApiKeyAuth: []
@@ -3161,6 +3880,8 @@ paths:
           description: 'Role updated successfully'
         '403':
           description: 'ManageGroupRole role required'
+        '404':
+          description: 'Group role not found'
         '500':
           description: 'Failed to update role'
       security:
@@ -4078,125 +4799,6 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /database/backup:
-    post:
-      tags:
-        - System
-      summary: 'Create a local database backup (Admin role required)'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              properties:
-                BackupType:
-                  description: 'Backup type identifier'
-                  type: string
-              type: object
-      responses:
-        '200':
-          description: 'Backup job result with file info'
-        '400':
-          description: 'Backup failed'
-        '403':
-          description: 'Admin role required'
-      security:
-        -
-          ApiKeyAuth: []
-  /database/backupRemote:
-    post:
-      tags:
-        - System
-      summary: 'Trigger a remote (WebDAV) backup via the External Backup plugin (Admin role required)'
-      requestBody:
-        content:
-          application/json:
-            schema:
-              properties:
-                BackupType:
-                  description: 'Backup type (defaults to full backup)'
-                  type: integer
-              type: object
-      responses:
-        '200':
-          description: 'Remote backup result'
-          content:
-            application/json:
-              schema:
-                properties:
-                  copyStatus: { type: object }
-                type: object
-        '400':
-          description: 'Plugin not enabled or not configured'
-        '403':
-          description: 'Admin role required'
-        '500':
-          description: 'Remote backup failed'
-      security:
-        -
-          ApiKeyAuth: []
-  /database/restore:
-    post:
-      tags:
-        - System
-      summary: 'Restore the database from a backup file (Admin role required)'
-      responses:
-        '200':
-          description: 'Restore job result'
-        '500':
-          description: 'Database restore failed'
-        '403':
-          description: 'Admin role required'
-      security:
-        -
-          ApiKeyAuth: []
-  '/database/download/{filename}':
-    get:
-      tags:
-        - System
-      summary: 'Download a backup file by name (Admin role required)'
-      parameters:
-        -
-          name: filename
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: 'Backup file download stream'
-        '400':
-          description: 'Download failed'
-        '403':
-          description: 'Admin role required'
-      security:
-        -
-          ApiKeyAuth: []
-  /system/debug/urls:
-    get:
-      tags:
-        - System
-      summary: 'Get internal system URL paths for debugging (Admin role required)'
-      operationId: 9589fd11a6970c70598c60b8553cfe5e
-      responses:
-        '200':
-          description: 'System URL paths'
-          content:
-            application/json:
-              schema:
-                properties:
-                  RootPath: { type: string }
-                  ImagesRoot: { type: string }
-                  DocumentRoot: { type: string }
-                  SupportURL: { type: string }
-                type: object
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'Admin role required'
-      security:
-        -
-          ApiKeyAuth: []
   /issues:
     post:
       tags:
@@ -4228,47 +4830,6 @@ paths:
               schema:
                 properties:
                   issueBody: { type: string }
-                type: object
-      security:
-        -
-          ApiKeyAuth: []
-  /locale/database/terms:
-    get:
-      tags:
-        - System
-      summary: 'Get all translatable terms stored in the database (Admin role required)'
-      description: 'Returns distinct tooltip strings, query parameter options, report names/descriptions, and query parameter names/descriptions for i18n extraction.'
-      operationId: 039f967a16c76a56ac2a2042f40158be
-      responses:
-        '200':
-          description: 'Array of translatable term strings'
-          content:
-            application/json:
-              schema:
-                properties:
-                  terms: { type: array, items: { type: string } }
-                type: object
-        '401':
-          description: Unauthorized
-        '403':
-          description: 'Admin role required'
-      security:
-        -
-          ApiKeyAuth: []
-  /system/notification:
-    get:
-      tags:
-        - System
-      summary: 'Get current UI notifications (update alerts, system messages)'
-      operationId: d67011aae959ed9fd77c417c9bd9bd09
-      responses:
-        '200':
-          description: 'Array of UI notification objects'
-          content:
-            application/json:
-              schema:
-                properties:
-                  notifications: { type: array, items: { properties: { title: { type: string }, icon: { type: string }, type: { type: string }, message: { type: string }, link: { type: string } }, type: object } }
                 type: object
       security:
         -

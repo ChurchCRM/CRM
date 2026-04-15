@@ -18,11 +18,9 @@ CREATE TABLE `version_ver` (
 --
 
 CREATE TABLE `config_cfg` (
-  `cfg_id` int(11) NOT NULL default '0',
   `cfg_name` varchar(50) NOT NULL default '',
   `cfg_value` text,
-  PRIMARY KEY  (`cfg_id`),
-  UNIQUE KEY `cfg_name` (`cfg_name`)
+  PRIMARY KEY (`cfg_name`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 -- `src/mysql/upgrade/6.2.0.sql` to delete the deprecated config row.

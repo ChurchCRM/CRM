@@ -2,9 +2,12 @@
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Cart;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\FunctionsUtils;
+use ChurchCRM\Utils\RedirectUtils;
+
 
 $personService = new PersonService();
 $systemService = new SystemService();
@@ -12,6 +15,12 @@ $systemService = new SystemService();
 // Basic security checks:
 if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
     AuthenticationManager::ensureAuthentication();
+
+    // Block users with no admin permissions (GHSA-5w59-32c8-933v / #8617)
+    $currentUser = AuthenticationManager::getCurrentUser();
+    if ($currentUser->hasNoAdminPermissions()) {
+        RedirectUtils::redirect(SystemURLs::getRootPath() . '/external/limited-access');
+    }
 }
 
 $sGlobalMessageClass = 'success';

@@ -1,12 +1,4 @@
 {
-  "%d result for \"%s\"": {
-    "other": ""
-  },
-  "Administrator": "",
-  "BCC": "",
-  "Email BCC": "",
-  "Format": "",
-  "Manual": "",
-  "Minimum": "",
-  "N/A": ""
+  "name@example.com": "",
+  "Online": ""
 }

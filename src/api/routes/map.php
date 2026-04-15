@@ -139,7 +139,7 @@ function getMapFamilies(Request $request, Response $response, array $args): Resp
                 'latitude'         => (float) $family->getLatitude(),
                 'longitude'        => (float) $family->getLongitude(),
                 'classificationId' => $classificationId,
-                'profileUrl'       => SystemURLs::getRootPath() . '/v2/family/' . $family->getId(),
+                'profileUrl'       => SystemURLs::getRootPath() . '/people/family/' . $family->getId(),
                 'directionsUrl'    => $family->getDirectionsUrl(),
                 'phone'            => $family->getHomePhone() ?? '',
             ];
@@ -227,7 +227,7 @@ function getMapNeighbors(Request $request, Response $response, array $args): Res
             'distance'     => $distance,
             'distanceText' => $distanceText,
             'bearing'      => GeoUtils::latLonBearing($selLat, $selLng, $lat, $lng),
-            'profileUrl'   => SystemURLs::getRootPath() . '/v2/family/' . $fid,
+            'profileUrl'   => SystemURLs::getRootPath() . '/people/family/' . $fid,
         ];
     }
 

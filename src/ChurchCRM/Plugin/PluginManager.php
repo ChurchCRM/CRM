@@ -276,10 +276,16 @@ class PluginManager
     /**
      * Disable a plugin.
      *
-     * @throws \RuntimeException If other plugins depend on this one
+     * @throws \RuntimeException If plugin not found or if other plugins depend on this one
      */
     public static function disablePlugin(string $pluginId): bool
     {
+        // Verify the plugin exists
+        $metadata = self::$discoveredPlugins[$pluginId] ?? null;
+        if ($metadata === null) {
+            throw new \RuntimeException("Plugin not found: $pluginId");
+        }
+
         // Check if other plugins depend on this one
         $dependents = self::getPluginDependents($pluginId);
         if (!empty($dependents)) {

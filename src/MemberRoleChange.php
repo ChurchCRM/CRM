@@ -112,7 +112,7 @@ require_once __DIR__ . '/Include/Header.php'
                     // Loop through all the possible roles
                     foreach ($allRoles as $role) {
                         $sSelected = ($iRoleID == $role->getOptionId()) ? 'selected' : '';
-                        echo '<option value="' . (int)$role->getOptionId() . '" ' . $sSelected . '>' . gettext($role->getOptionName()) . '</option>';
+                        echo '<option value="' . (int)$role->getOptionId() . '" ' . $sSelected . '>' . InputUtils::escapeHTML(gettext($role->getOptionName())) . '</option>';
                     }
                     ?>
                 </select>

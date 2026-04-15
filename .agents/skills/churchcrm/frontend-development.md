@@ -1,7 +1,7 @@
 ---
 title: "Frontend Development"
-intent: "Guidance for frontend work, React/TypeScript, and asset management"
-tags: ["frontend","react","webpack","i18n"]
+intent: "Guidance for frontend work, vanilla JS/TypeScript, and asset management"
+tags: ["frontend","webpack","i18n"]
 prereqs: ["webpack-typescript.md","i18n-localization.md"]
 complexity: "intermediate"
 ---
@@ -14,7 +14,7 @@ This skill covers frontend patterns, UI components, notifications, international
 ## Stack <!-- updated: 2026-03-22 -->
 
 - **Tabler + Bootstrap 5.3.8** — Primary UI framework (migrated from AdminLTE/BS4)
-- **React + TypeScript** — Modern components
+- **Vanilla JS + TypeScript** — Frontend modules (React removed in 7.2.0)
 - **Webpack** — Build system
 - **ApexCharts** — Charting (replaced Chart.js)
 - **i18next** — Frontend internationalization
@@ -24,7 +24,6 @@ This skill covers frontend patterns, UI components, notifications, international
 - `@tabler/icons-webfont` ^3.40.0
 - `bootstrap` ^5.3.8
 - `apexcharts` ^5.10.4
-- `react` ^19.2.4, `react-dom` ^19.2.4
 - `typescript` ^5.9.3
 - `webpack` ^5.105.4
 
@@ -145,7 +144,6 @@ For tables with many potential columns:
 **Asset locations:**
 - **CSS/JS**: `src/skin/v2/` (compiled from Webpack)
 - **Images**: `src/images/`
-- **React components**: `react/`
 - **Webpack entry points**: `webpack/`
 
 ## Notifications (CRITICAL)
@@ -265,6 +263,48 @@ $('#myModal').on('hidden.bs.modal', function() {
     // Modal is now hidden
 });
 ```
+
+### Dynamic Content Modals (Single-Instance Pattern) <!-- learned: 2026-04-06 -->
+
+When building modals with dynamically loaded/swapped content (e.g., loading spinner → form),
+use **one Bootstrap Modal instance** and swap `innerHTML` of header/body/footer. Never
+destroy and recreate the Modal instance — Bootstrap's transition callbacks fire on the
+disposed element (`null.style` TypeError).
+
+```javascript
+// ✅ CORRECT — single modal, content swap
+function createAndShowModal() {
+  container.innerHTML = `<div class="modal fade" id="myModal">...</div>`;
+  modalEl = document.getElementById("myModal");
+  modal = new bootstrap.Modal(modalEl, { backdrop: "static" });
+  modal.show();
+}
+function swapContent(html) {
+  modalEl.querySelector(".modal-body").innerHTML = html;
+}
+
+// ❌ WRONG — dispose + recreate causes transition race
+cleanup();          // dispose() mid-transition
+buildNewModal();    // new Modal instance → TypeError
+```
+
+**Close/dismiss gotcha:** `data-bs-dismiss="modal"` does NOT reliably fire on
+dynamically swapped buttons. Use explicit click handlers:
+
+```javascript
+// ✅ CORRECT — explicit close handler
+function closeModal() {
+  cleanup();   // dispose + remove element from DOM
+  refreshData();
+}
+document.getElementById("cancelBtn").addEventListener("click", closeModal);
+
+// ❌ WRONG — data-bs-dismiss silently fails on swapped content
+<button data-bs-dismiss="modal">Cancel</button>
+```
+
+**Widget cleanup before swap:** Destroy TomSelect/Quill instances BEFORE replacing
+innerHTML, otherwise they hold references to removed DOM nodes.
 
 ## Internationalization (i18n)
 
@@ -472,7 +512,7 @@ For critical settings that users should see at a glance, display the current val
 ```php
 <!-- PHP: Log Level Stat Card (always visible) -->
 <div class="row mb-3">
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-6 col-lg-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -597,6 +637,17 @@ TomSelect hides options with `value=""` (treats them as placeholder/clear state)
 ### TomSelect dropdownParent for Cards <!-- learned: 2026-03-30 -->
 
 When TomSelect is inside a card with `table-responsive` or constrained overflow, dropdowns get clipped. Fix: pass `dropdownParent: 'body'` to TomSelect init and add a `body > .ts-dropdown` SCSS rule in `_tabler-bridge.scss` to preserve Tabler styling.
+
+### Reading TomSelect values: never use jQuery `option:selected` <!-- learned: 2026-04-09 -->
+
+TomSelect does **not** reliably mirror its current selection back onto the underlying `<option selected>` attribute — `$("#mySelect option:selected").val()` may return `undefined` even when the user has clearly picked an item. Always read the value via the TomSelect instance API:
+
+```js
+const el = document.getElementById("targetRoleSelection");
+const value = el.tomselect ? el.tomselect.getValue() : window.jQuery(el).val();
+```
+
+This bit `promptSelection` in `CRMJSOM.js` (issue #8570 — "Cart empty to group" sent `groupID` only because `RoleID` was undefined and `JSON.stringify` silently dropped it, yielding a confusing `Invalid request data` 400). When forwarding select values into a payload, **also validate before sending** — `JSON.stringify({ a: undefined })` becomes `"{}"`, so missing values become silent server-side errors.
 
 ### marked.parse() XSS Prevention <!-- learned: 2026-03-30 -->
 
@@ -823,60 +874,57 @@ Clicking an avatar with an uploaded photo opens a lightbox overlay. **avatar-loa
 2. If `hasPhoto === true`, `loadUploadedPhoto.onload` adds `.view-person-photo` (or `.view-family-photo`) + `data-person-id` (or `data-family-id`) + `cursor: pointer`
 3. Images inside `#uploadImageButton` or `#uploadImageTrigger` are skipped (profile upload buttons)
 4. Initials and failed photo loads never get click classes
-5. Delegated click handlers (`$(document).on("click", ".view-person-photo", ...)`) call `window.CRM.showPhotoLightbox()`
+5. **`avatar-loader.ts` itself registers a single global delegated click handler** for `.view-person-photo` / `.view-family-photo` that calls `window.CRM.showPhotoLightbox()`. Per-page handlers are forbidden — they cause double-lightbox bugs.
 
 **Rules:**
 - Never add `.view-person-photo` / `.view-family-photo` in PHP templates that use avatar-loader
-- Always use `e.preventDefault()` + `e.stopPropagation()` in click handlers (avatars may be inside `<a>` links)
-- Don't register the same delegated handler in two JS files loaded on the same page (causes double lightbox)
-- Dashboard handles its own click classes via `generatePhotoImg()` (sets `src` directly, avatar-loader skips it)
+- **Never register a `.view-person-photo` / `.view-family-photo` click handler in any other file** — `avatar-loader.ts` owns it
+- Dashboard handles its own click classes via `generatePhotoImg()` (sets `src` directly, avatar-loader skips it) but the global handler in avatar-loader still routes the click
 
 **Exception:** Pages that render photos inline (not via avatar-loader) — like `verify-family-info.php` — must check `hasUploadedPhoto()` in PHP before adding click classes.
 
 ---
 
-### Never Use `form-switch` for Functional Toggles in React <!-- learned: 2026-03-31 -->
+### Never Use `form-switch` for Functional Toggles <!-- learned: 2026-03-31 -->
 
-`form-check form-switch` (Bootstrap 5 toggle/pill) must **not** be used when the checkbox functionally changes other form fields (like hiding/showing time pickers). Use a plain `form-check` checkbox instead.
+`form-check form-switch` (Bootstrap 5 toggle/pill) must **not** be used when the checkbox functionally changes other form fields (like hiding/showing time pickers). Use Tabler's `form-selectgroup-pills` pattern instead.
 
-**Why:** The switch style is confusing — it looks like a power toggle, not a data choice. When it drives side-effects (e.g. "All Day" stripping time from DatePicker), users expect a checkbox, not a toggle.
+**Why:** The switch style is confusing — it looks like a power toggle, not a data choice. When it drives side-effects (e.g. "All Day" stripping time), users expect a radio group or checkbox, not a toggle.
 
-```tsx
-// ❌ WRONG — switch style, confusing for functional side-effect toggles
-<div className="form-check form-switch">
-  <input className="form-check-input" type="checkbox" id="allDayToggle" ... />
-  <label className="form-check-label" htmlFor="allDayToggle">All Day</label>
+```html
+<!-- ✅ CORRECT — Tabler selectgroup pills for mutually exclusive options -->
+<div class="form-selectgroup form-selectgroup-pills">
+  <label class="form-selectgroup-item">
+    <input type="radio" name="eventDayType" value="timed" class="form-selectgroup-input" checked>
+    <span class="form-selectgroup-label"><i class="fa-regular fa-clock me-1"></i>Timed</span>
+  </label>
+  <label class="form-selectgroup-item">
+    <input type="radio" name="eventDayType" value="allday" class="form-selectgroup-input">
+    <span class="form-selectgroup-label"><i class="fa-regular fa-sun me-1"></i>All Day</span>
+  </label>
 </div>
-
-// ✅ CORRECT — plain checkbox, inline with the related label
-<label className="form-check mb-0 ms-3" htmlFor="allDayToggle">
-  <input className="form-check-input" type="checkbox" id="allDayToggle" ... />
-  <span className="form-check-label text-muted small">All Day</span>
-</label>
 ```
 
-**Rule:** Reserve `form-switch` for pure settings toggles (enable/disable a feature). Use plain `form-check` for any checkbox that conditionally shows/hides or modifies other fields.
+**Rule:** Reserve `form-switch` for pure settings toggles (enable/disable a feature). Use `form-selectgroup-pills` or plain `form-check` for any control that conditionally shows/hides or modifies other fields.
 
 ---
 
-### React Modal Edit Header Pattern <!-- learned: 2026-03-31 -->
+### Modal Edit Header Pattern <!-- learned: 2026-03-31 -->
 
 When a modal's title is an editable input (create/edit forms), use a borderless underline input with a helper label above — not a plain `form-control` boxed input.
 
-```tsx
-// ✅ CORRECT — breathing room, visual hierarchy, no box border noise
-<Modal.Header closeButton className="pb-0 border-bottom-0">
-  <div className="w-100 me-3 pt-1">
-    <label className="form-label text-muted small mb-1">Event Title</label>
-    <input
-      name="Title"
-      className="form-control form-control-lg fw-bold border-0 border-bottom rounded-0 px-0"
-      style={{ boxShadow: "none" }}
-      placeholder="e.g. Sunday Service"
-    />
+```html
+<!-- ✅ CORRECT — breathing room, visual hierarchy, no box border noise -->
+<div class="modal-header pb-0 border-bottom-0">
+  <div class="w-100 me-3 pt-1">
+    <label class="form-label text-muted small mb-1">Event Title</label>
+    <input name="Title"
+      class="form-control form-control-lg fw-bold border-0 border-bottom rounded-0 px-0"
+      style="box-shadow:none" placeholder="e.g. Sunday Service">
   </div>
-</Modal.Header>
-<Modal.Body className="pt-3" style={{ overflow: "visible" }}>
+  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+<div class="modal-body pt-3" style="overflow:visible">
 ```
 
 **Key classes:** `border-bottom-0` on header removes the divider line; `border-0 border-bottom rounded-0 px-0` on input gives an underline-only field; `pb-0` removes header bottom padding; `pt-3` on body adds breathing room.
@@ -909,7 +957,6 @@ When displaying coloured calendar name badges with user-defined `BackgroundColor
 ## Files
 
 **Compiled Assets:** `src/skin/v2/churchcrm.min.js`, `src/skin/v2/churchcrm.min.css`
-**React Components:** `react/`
 **Webpack Entry Points:** `webpack/`
 **Locale Files:** `locale/messages.json`, `locale/terms/messages.po`
 **Build Config:** `webpack.config.js`, `package.json`

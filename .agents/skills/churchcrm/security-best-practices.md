@@ -201,6 +201,18 @@ $text = InputUtils::sanitizeText($_POST['comment']);
 echo InputUtils::escapeHTML($text);
 ```
 
+### External Links: `rel="noopener noreferrer"` <!-- learned: 2026-04-07 -->
+
+All `target="_blank"` links MUST include `rel="noopener noreferrer"` to prevent reverse-tabnabbing (the opened page can redirect the opener via `window.opener`).
+
+```php
+// ✅ CORRECT
+<a href="https://example.com" target="_blank" rel="noopener noreferrer">Link</a>
+
+// ❌ WRONG — allows tabnabbing
+<a href="https://example.com" target="_blank">Link</a>
+```
+
 ---
 
 ## SQL Injection Prevention
@@ -251,6 +263,40 @@ $userId = $_GET['userId'];  // Could be "1 OR 1=1"
 ---
 
 ## Authorization & Access Control
+
+### Block Users With No Admin Permissions <!-- learned: 2026-04-12 -->
+
+Users with `EditSelf=1` and **all other permissions at 0** can log in but have no functional admin access. They must NOT see the full admin UI — instead they should be redirected to a limited-access page.
+
+Use `User::hasNoAdminPermissions()` to detect this state. The check fires in two places:
+
+1. **`PageInit.php`** — for legacy `*.php` pages
+2. **`AuthMiddleware`** — for MVC routes (`/people/`, `/admin/`, `/v2/`) and API endpoints
+
+```php
+// In PageInit.php — runs for legacy pages
+if (AuthenticationManager::getCurrentUser()->hasNoAdminPermissions()) {
+    RedirectUtils::redirect(SystemURLs::getRootPath() . '/external/limited-access');
+}
+
+// In AuthMiddleware (session branch) — runs for MVC pages
+if ($sessionUser->hasNoAdminPermissions()) {
+    if ($this->isBrowserRequest($request)) {
+        return (new Response())->withStatus(302)->withHeader('Location', $rootPath . '/external/limited-access');
+    }
+    return $response->withStatus(403)->withHeader('Content-Type', 'application/json');
+}
+```
+
+The `/external/limited-access` page is in the external module (no auth required) and shows:
+- A "Verify Family Info" button (generates time-limited token bound to user's family)
+- A "Log Out" button
+
+**Reference**: GHSA-5w59-32c8-933v / PR #8616 / Issue #237
+
+### MVC vs Legacy Auth Enforcement Points <!-- learned: 2026-04-12 -->
+
+Permission checks must run in BOTH `AuthMiddleware` (MVC + API) AND `PageInit.php` (legacy). Adding a check in only one leaves a hole — the MVC modules `/people/`, `/admin/`, `/v2/`, `/event/`, `/groups/`, `/finance/` all use `AuthMiddleware`, while legacy `*.php` files in `src/` go through `PageInit.php`.
 
 ### Object-Level Authorization
 
@@ -744,4 +790,54 @@ $head_criteria = ' per_fmr_ID = ' . (SystemConfig::getValue('sDirRoleHead') ?: '
 
 ---
 
-Last updated: April 3, 2026
+### data-* Attributes Require escapeAttribute() — Not Just escapeHTML() <!-- learned: 2026-04-05 -->
+
+`data-*` HTML attributes are attribute contexts, not body text contexts. Always use
+`InputUtils::escapeAttribute()` for `data-*` values. Using `escapeHTML()` or no escaping
+at all still allows attribute-breakout XSS (e.g. a value containing `"` terminates the
+attribute and injects new ones).
+
+Real-world example: `PersonView.php` line 816 — `data-groupname` was unescaped, fixed
+as part of GHSA-44j4-jjw2-wcr6:
+
+```php
+// ❌ WRONG — unescaped data attribute (XSS via attribute breakout)
+data-groupname="<?= $grp_Name ?>"
+
+// ❌ ALSO WRONG — escapeHTML() is for body text, not attributes
+data-groupname="<?= InputUtils::escapeHTML($grp_Name) ?>"
+
+// ✅ CORRECT — escapeAttribute() for any attribute value, including data-*
+data-groupname="<?= InputUtils::escapeAttribute($grp_Name) ?>"
+```
+
+This applies to ALL `data-*` attributes whether the source is a database field, ORM
+getter, or user-supplied input.
+
+---
+
+### ListOption::getOptionName() Must Be Escaped in HTML Contexts <!-- learned: 2026-04-05 -->
+
+`getOptionName()` returns raw database strings — admin-entered values that can contain
+`<`, `>`, or `"`. Always wrap with `InputUtils::escapeHTML()` when rendering inside
+HTML elements. Affects group roles, family roles, group types, custom field options,
+classifications, and any other ListOption values rendered to the DOM.
+
+```php
+// ❌ WRONG — raw getOptionName() in <option> or <td>
+echo '<option value="' . $role->getOptionId() . '">' . $role->getOptionName() . '</option>';
+
+// ✅ CORRECT — escape before output
+echo '<option value="' . $role->getOptionId() . '">' . InputUtils::escapeHTML($role->getOptionName()) . '</option>';
+
+// ✅ CORRECT — when wrapped in gettext()
+echo InputUtils::escapeHTML(gettext($role->getOptionName()));
+```
+
+Fixed in GHSA-j9gv-26c7-3qrh (CVE-2025-67876) across 6 files: MemberRoleChange.php,
+CartToFamily.php, GroupEditor.php, CartToEvent.php, CustomFieldUtils.php,
+external/templates/registration/family-register.php.
+
+---
+
+Last updated: April 5, 2026

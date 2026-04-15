@@ -4,6 +4,7 @@ use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemURLs;
 
 $sPageTitle = gettext('Login');
+$sBodyClass = 'page-auth page-login';
 require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
 
 ?>
@@ -23,38 +24,86 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
           <p class="login-header-tagline"><?= gettext('Security First') ?></p>
         </div>
 
-        <!-- Form Title -->
-        <div class="login-form-title">
-          <h1><i class="fa-solid fa-shield"></i><?= gettext('Verify your identity') ?></h1>
-          <p><?= gettext('Enter the 6-digit code from your authenticator app to complete login') ?></p>
-        </div>
+        <?php if (isset($bRecoveryMode) && $bRecoveryMode) : ?>
 
-        <div class="alert alert-info">
-          <i class="fa-solid fa-mobile"></i>
-          <div><?= gettext('Enter the 6-digit code from your authenticator app') ?></div>
-        </div>
-
-        <?php if (isset($bInvalidCode) && $bInvalidCode) { ?>
-          <div class="alert alert-danger">
-            <i class="fa-solid fa-circle-exclamation"></i>
-            <div><?= gettext('Invalid code. Please try again.') ?></div>
-          </div>
-        <?php } ?>
-
-        <form method="post" name="TwoFAForm" action="<?= SystemURLs::getRootPath()?>/session/two-factor">
-          <div class="mb-3">
-            <label for="TwoFACode"><?= gettext('Authentication Code') ?></label>
-            <input type="text" id="TwoFACode" name="TwoFACode" placeholder="000000" maxlength="6" inputmode="numeric" required autofocus>
+          <!-- Recovery Code Mode -->
+          <div class="login-form-title">
+            <h1><i class="fa-solid fa-key"></i><?= gettext('Use Recovery Code') ?></h1>
+            <p><?= gettext('Enter one of your backup recovery codes to access your account') ?></p>
           </div>
 
-          <button type="submit" class="btn-sign-in">
-            <i class="fa-solid fa-right-to-bracket"></i><?= gettext('Verify & Sign In') ?>
-          </button>
-        </form>
+          <div class="alert alert-info">
+            <i class="fa-solid fa-key"></i>
+            <div><?= gettext('Enter one of your backup recovery codes') ?></div>
+          </div>
 
-        <div class="back-link">
-          <a href="<?= SystemURLs::getRootPath() ?>/session/begin"><?= gettext('Use a different account') ?></a>
-        </div>
+          <?php if (isset($bInvalidCode) && $bInvalidCode) { ?>
+            <div class="alert alert-danger">
+              <i class="fa-solid fa-circle-exclamation"></i>
+              <div><?= gettext('Invalid code. Please try again.') ?></div>
+            </div>
+          <?php } ?>
+
+          <form method="post" name="TwoFAForm" action="<?= SystemURLs::getRootPath()?>/session/two-factor?recovery">
+            <div class="mb-3">
+              <label for="TwoFACode"><?= gettext('Recovery Code') ?></label>
+              <input type="text" id="TwoFACode" name="TwoFACode" placeholder="xxxxxxxx-xxxxxxxx" maxlength="20" autocomplete="off" required autofocus>
+            </div>
+
+            <button type="submit" class="btn-sign-in">
+              <i class="fa-solid fa-right-to-bracket"></i><?= gettext('Verify & Sign In') ?>
+            </button>
+          </form>
+
+          <div class="back-link">
+            <a href="<?= SystemURLs::getRootPath() ?>/session/two-factor"><?= gettext('Use authenticator app instead') ?></a>
+          </div>
+
+          <div class="back-link">
+            <a href="<?= SystemURLs::getRootPath() ?>/session/begin"><?= gettext('Use a different account') ?></a>
+          </div>
+
+        <?php else : ?>
+
+          <!-- TOTP Code Mode -->
+          <div class="login-form-title">
+            <h1><i class="fa-solid fa-shield"></i><?= gettext('Verify your identity') ?></h1>
+            <p><?= gettext('Enter the 6-digit code from your authenticator app to complete login') ?></p>
+          </div>
+
+          <div class="alert alert-info">
+            <i class="fa-solid fa-mobile"></i>
+            <div><?= gettext('Enter the 6-digit code from your authenticator app') ?></div>
+          </div>
+
+          <?php if (isset($bInvalidCode) && $bInvalidCode) { ?>
+            <div class="alert alert-danger">
+              <i class="fa-solid fa-circle-exclamation"></i>
+              <div><?= gettext('Invalid code. Please try again.') ?></div>
+            </div>
+          <?php } ?>
+
+          <form method="post" name="TwoFAForm" action="<?= SystemURLs::getRootPath()?>/session/two-factor">
+            <div class="mb-3">
+              <label for="TwoFACode"><?= gettext('Authentication Code') ?></label>
+              <input type="text" id="TwoFACode" name="TwoFACode" placeholder="000000" maxlength="6" inputmode="numeric" required autofocus>
+            </div>
+
+            <button type="submit" class="btn-sign-in">
+              <i class="fa-solid fa-right-to-bracket"></i><?= gettext('Verify & Sign In') ?>
+            </button>
+          </form>
+
+          <div class="back-link">
+            <a href="<?= SystemURLs::getRootPath() ?>/session/two-factor?recovery"><?= gettext('Use a recovery code instead') ?></a>
+          </div>
+
+          <div class="back-link">
+            <a href="<?= SystemURLs::getRootPath() ?>/session/begin"><?= gettext('Use a different account') ?></a>
+          </div>
+
+        <?php endif; ?>
+
       </div>
     </div>
   </div>

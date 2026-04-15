@@ -698,7 +698,8 @@
           "birthDay": 26,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "andrew.baker.jpg"
         },
         {
           "title": "Mrs",
@@ -937,7 +938,8 @@
           "birthDay": 8,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "elizabeth.nelson.jpg"
         },
         {
           "title": "Mr",
@@ -961,7 +963,8 @@
           "birthDay": 9,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "paul.nelson.jpg"
         },
         {
           "title": null,
@@ -1215,7 +1218,8 @@
           "birthDay": 19,
           "classification": "Visitor",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "daniel.hernandez.jpg"
         },
         {
           "title": "Mrs",
@@ -1518,7 +1522,8 @@
           "birthDay": 2,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "george.clark.jpg"
         },
         {
           "title": "Mrs",
@@ -1820,7 +1825,8 @@
           "birthDay": 14,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "christopher.rodriguez.jpg"
         },
         {
           "title": null,
@@ -2091,7 +2097,8 @@
           "birthDay": 25,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "kevin.williams.jpg"
         }
       ],
       "notes": [],
@@ -2504,7 +2511,8 @@
           "birthDay": 12,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "ryan.rodriguez.jpg"
         },
         {
           "title": "Mrs",
@@ -2634,7 +2642,8 @@
           "birthDay": 18,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "daniel.rivera.jpg"
         },
         {
           "title": null,
@@ -2860,7 +2869,8 @@
           "birthDay": 1,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "timothy.torres.jpg"
         }
       ],
       "notes": [
@@ -2991,7 +3001,8 @@
           "birthDay": 5,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "betty.harris.jpg"
         }
       ],
       "notes": [
@@ -3434,7 +3445,8 @@
           "birthDay": 22,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "kenneth.campbell.jpg"
         },
         {
           "title": "Mrs",
@@ -3451,7 +3463,8 @@
           "birthDay": 23,
           "classification": "Guest",
           "maidenName": "Campbell",
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "jennifer.campbell.jpg"
         }
       ],
       "notes": [],
@@ -3626,7 +3639,8 @@
           "birthDay": 3,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "matthew.davis.jpg"
         },
         {
           "title": null,
@@ -3904,7 +3918,8 @@
           "birthDay": 14,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "richard.harris.jpg"
         },
         {
           "title": "Mrs",
@@ -3921,7 +3936,8 @@
           "birthDay": 15,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "nancy.harris.jpg"
         }
       ],
       "notes": [],
@@ -3966,7 +3982,8 @@
           "birthDay": 16,
           "classification": "Guest",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "mark.king.jpg"
         },
         {
           "title": "Mrs",
@@ -3983,7 +4000,8 @@
           "birthDay": 17,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "sharon.king.jpg"
         }
       ],
       "notes": [
@@ -4296,7 +4314,8 @@
           "birthDay": 3,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "jennifer.rivera.jpg"
         },
         {
           "title": "Mr",
@@ -4313,7 +4332,8 @@
           "birthDay": 4,
           "classification": "Visitor",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "jeffrey.rivera.jpg"
         },
         {
           "title": null,
@@ -4409,7 +4429,8 @@
           "birthMonth": 2,
           "birthDay": 8,
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "sharon.mitchell.jpg"
         },
         {
           "title": "Mr",
@@ -4426,7 +4447,8 @@
           "birthMonth": 3,
           "birthDay": 9,
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "paul.mitchell.jpg"
         },
         {
           "title": null,
@@ -5060,7 +5082,8 @@
           "birthDay": 9,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "charles.green.jpg"
         },
         {
           "title": null,
@@ -5208,7 +5231,8 @@
           "birthDay": 14,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 1
+          "familyRole": 1,
+          "photo": "joseph.hall.jpg"
         },
         {
           "title": "Mrs",
@@ -5225,7 +5249,8 @@
           "birthDay": 15,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 2
+          "familyRole": 2,
+          "photo": "sarah.hall.jpg"
         },
         {
           "title": null,

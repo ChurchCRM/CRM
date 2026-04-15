@@ -25,8 +25,7 @@ Running tests (recommended)
 
 Quick migration notes
 - Move `cypress/data/` → `cypress/fixtures/` and update usages of `cy.fixture()` accordingly.
-- Consolidate Docker/CI variants under `cypress/configs/` (use `--config-file` to point to them).
-- Remove the legacy `cypress.json` file in favor of `cypress.config.ts` (Cypress v10+).
+- Docker/CI variants already live under `cypress/configs/` — every `npm run test*` script passes `--config-file cypress/configs/<name>.config.ts`. Do NOT add a root `cypress.config.ts`; Cypress is never asked to auto-detect one here.
 
 Best practices
 - Group specs by feature and add tags (e.g., `@smoke`) to allow fast subset runs.

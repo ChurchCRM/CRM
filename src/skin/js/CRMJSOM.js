@@ -243,6 +243,22 @@ window.CRM.groups = {
     };
     let initFunction = function () {};
 
+    // Read a value from a TomSelect-wrapped (or plain) select. TomSelect does
+    // not always mirror its current selection back onto the underlying
+    // <option selected> attribute, so `option:selected` is unreliable here —
+    // always prefer the TomSelect instance API when available. Returns "" if
+    // nothing is selected.
+    const readSelectValue = (id) => {
+      const el = document.getElementById(id);
+      if (!el) return "";
+      if (el.tomselect) {
+        const v = el.tomselect.getValue();
+        return v == null ? "" : String(v);
+      }
+      const jqVal = window.jQuery(el).val();
+      return jqVal == null ? "" : String(jqVal);
+    };
+
     if (selectOptions.Type & window.CRM.groups.selectTypes.Group) {
       options.title = i18next.t("Select Group");
       options.message +=
@@ -251,9 +267,12 @@ window.CRM.groups = {
         ':</span>\
                   <select name="targetGroupSelection" id="targetGroupSelection" class="form-control"></select>';
       options.buttons.confirm.callback = function () {
-        selectionCallback({
-          GroupID: window.jQuery("#targetGroupSelection option:selected").val(),
-        });
+        var groupId = readSelectValue("targetGroupSelection");
+        if (!groupId) {
+          bootbox.alert(i18next.t("Please select a group."));
+          return false;
+        }
+        selectionCallback({ GroupID: groupId });
       };
     }
     if (selectOptions.Type & window.CRM.groups.selectTypes.Role) {
@@ -264,9 +283,12 @@ window.CRM.groups = {
         ':</span>\
                   <select name="targetRoleSelection" id="targetRoleSelection" class="form-control"></select>';
       options.buttons.confirm.callback = function () {
-        selectionCallback({
-          RoleID: window.jQuery("#targetRoleSelection option:selected").val(),
-        });
+        var roleId = readSelectValue("targetRoleSelection");
+        if (!roleId) {
+          bootbox.alert(i18next.t("Please select a role."));
+          return false;
+        }
+        selectionCallback({ RoleID: roleId });
       };
     }
 
@@ -299,11 +321,13 @@ window.CRM.groups = {
     if (selectOptions.Type === (window.CRM.groups.selectTypes.Group | window.CRM.groups.selectTypes.Role)) {
       options.title = i18next.t("Select Group and Role");
       options.buttons.confirm.callback = function () {
-        selection = {
-          RoleID: window.jQuery("#targetRoleSelection option:selected").val(),
-          GroupID: window.jQuery("#targetGroupSelection option:selected").val(),
-        };
-        selectionCallback(selection);
+        var groupId = readSelectValue("targetGroupSelection");
+        var roleId = readSelectValue("targetRoleSelection");
+        if (!groupId || !roleId) {
+          bootbox.alert(i18next.t("Please select both a group and a role."));
+          return false;
+        }
+        selectionCallback({ GroupID: groupId, RoleID: roleId });
       };
     }
     options.message += "</div>";
@@ -482,7 +506,7 @@ window.CRM.renderPersonActionMenu = function (personId, personName, options) {
   var familyItem = familyId
     ? '<a class="dropdown-item" href="' +
       root +
-      "/v2/family/" +
+      "/people/family/" +
       familyId +
       '">' +
       '<i class="ti ti-users me-2"></i>' +
@@ -566,7 +590,7 @@ window.CRM.renderFamilyActionMenu = function (familyId, _familyName, options) {
     '<div class="dropdown-menu dropdown-menu-end">' +
     '<a class="dropdown-item" href="' +
     root +
-    "/v2/family/" +
+    "/people/family/" +
     familyId +
     '">' +
     '<i class="ti ti-eye me-2"></i>' +
@@ -611,6 +635,150 @@ window.CRM.renderFamilyActionMenu = function (familyId, _familyName, options) {
     "</div></div>"
   );
 };
+
+/**
+ * Render a standard event action dropdown menu.
+ * Standard order: View → Edit → Check-in → [divider] → Activate/Deactivate → [divider] → Delete
+ *
+ * @param {number} eventId
+ * @param {string} eventTitle - Used in delete confirmation
+ * @param {Object} [options]
+ * @param {boolean} [options.inactive=false] - Current event status (controls Activate vs Deactivate)
+ * @returns {string} HTML string
+ */
+window.CRM.renderEventActionMenu = function (eventId, eventTitle, options) {
+  options = options || {};
+  var inactive = options.inactive || false;
+  var root = window.CRM.root;
+  var escapedTitle = window.CRM.escapeHtml(eventTitle || "");
+
+  var statusButton = inactive
+    ? '<button type="button" class="dropdown-item activate-event" data-event_id="' +
+      eventId +
+      '">' +
+      '<i class="ti ti-circle-check me-2"></i>' +
+      i18next.t("Activate") +
+      "</button>"
+    : '<button type="button" class="dropdown-item deactivate-event" data-event_id="' +
+      eventId +
+      '">' +
+      '<i class="ti ti-circle-x me-2"></i>' +
+      i18next.t("Deactivate") +
+      "</button>";
+
+  return (
+    '<div class="dropdown">' +
+    '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">' +
+    '<i class="ti ti-dots-vertical"></i>' +
+    "</button>" +
+    '<div class="dropdown-menu dropdown-menu-end">' +
+    '<a class="dropdown-item" href="' +
+    root +
+    "/event/view/" +
+    eventId +
+    '">' +
+    '<i class="ti ti-eye me-2"></i>' +
+    i18next.t("View") +
+    "</a>" +
+    '<a class="dropdown-item" href="' +
+    root +
+    "/event/editor/" +
+    eventId +
+    '">' +
+    '<i class="ti ti-pencil me-2"></i>' +
+    i18next.t("Edit") +
+    "</a>" +
+    '<a class="dropdown-item" href="' +
+    root +
+    "/event/checkin/" +
+    eventId +
+    '">' +
+    '<i class="ti ti-clipboard-check me-2"></i>' +
+    i18next.t("Check-in") +
+    "</a>" +
+    '<div class="dropdown-divider"></div>' +
+    statusButton +
+    '<div class="dropdown-divider"></div>' +
+    '<button type="button" class="dropdown-item text-danger delete-event"' +
+    ' data-event_id="' +
+    eventId +
+    '" data-event_title="' +
+    escapedTitle +
+    '">' +
+    '<i class="ti ti-trash me-2"></i>' +
+    i18next.t("Delete") +
+    "</button>" +
+    "</div></div>"
+  );
+};
+
+// Global delegated handlers for .delete-event / .activate-event / .deactivate-event
+// rendered by renderEventActionMenu in DataTables and PHP templates.
+(function setupEventActionHandlers() {
+  function register() {
+    if (!window.jQuery) return;
+    var $ = window.jQuery;
+
+    $(document).on("click", ".delete-event", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var $btn = $(this);
+      var eventId = $btn.data("event_id");
+      // The data-event_title attribute is already HTML-escaped by
+      // renderEventActionMenu(), so jQuery's .data() returns the escaped form
+      // (e.g. "Sunday &amp; Friends"). Embedding it directly in the bootbox
+      // message HTML preserves the correct rendering — calling escapeHtml()
+      // again would double-escape (e.g. "&amp;amp;").
+      var eventTitle = $btn.data("event_title");
+      bootbox.confirm({
+        title: i18next.t("Delete this event?"),
+        message:
+          i18next.t("Deleting an event will also delete all attendance counts. This cannot be undone.") +
+          " <b>" +
+          String(eventTitle || "") +
+          "</b>",
+        buttons: {
+          cancel: { label: '<i class="ti ti-x"></i>' + i18next.t("Cancel") },
+          confirm: { label: '<i class="ti ti-trash"></i>' + i18next.t("Delete"), className: "btn-danger" },
+        },
+        callback: function (result) {
+          if (result) {
+            window.CRM.APIRequest({ method: "DELETE", path: "events/" + eventId }).done(function () {
+              location.reload();
+            });
+          }
+        },
+      });
+    });
+
+    function setEventStatus(eventId, active) {
+      window.CRM.APIRequest({
+        method: "POST",
+        path: "events/" + eventId + "/status",
+        data: JSON.stringify({ active: active }),
+      }).done(function () {
+        location.reload();
+      });
+    }
+
+    $(document).on("click", ".activate-event", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      setEventStatus($(this).data("event_id"), true);
+    });
+
+    $(document).on("click", ".deactivate-event", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      setEventStatus($(this).data("event_id"), false);
+    });
+  }
+  if (window.CRM && window.CRM.localesLoaded) {
+    register();
+  } else {
+    window.addEventListener("CRM.localesReady", register, { once: true });
+  }
+})();
 
 // Global delegated handler for .delete-person buttons (rendered in DataTables or PHP templates).
 // Set up after locales are ready so i18next.t() is available in the confirmation dialog.

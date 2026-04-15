@@ -44,8 +44,28 @@ $aBreadcrumbs = PageHeader::breadcrumbs([
 require_once __DIR__ . '/Include/Header.php'; ?>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+        var groupId = <?= (int) $iGroupID ?>;
+
+        function reorderFormProp(propId, direction) {
+            fetch(window.CRM.root + '/api/groups/' + groupId + '/formprops/' + propId + '/order', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ direction: direction })
+            })
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                if (data.success) { window.location.reload(); }
+            });
+        }
+
+        $(document).on('click', '.js-reorder-field', function (e) {
+            e.preventDefault();
+            var btn = $(this);
+            reorderFormProp(btn.data('prop-id'), btn.data('direction'));
+        });
+
         function confirmDeleteField(fieldName, propId, fieldId) {
-            var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + '"' + fieldName + '"?';
+            var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + '"' + window.CRM.escapeHtml(fieldName) + '"?';
             msg += '<br><br><strong>' + <?= json_encode(gettext('Warning:')) ?> + '</strong> ';
             msg += <?= json_encode(gettext('By deleting this field, you will irrevocably lose all group member data assigned for this field!')) ?>;
             bootbox.confirm({
@@ -57,12 +77,25 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                 },
                 callback: function(result) {
                     if (result) {
-                        window.location.href = 'GroupPropsFormRowOps.php?GroupID=<?= $iGroupID ?>&PropID=' + propId + '&Field=' + fieldId + '&Action=delete';
+                        fetch(window.CRM.root + '/api/groups/' + groupId + '/formprops/' + propId, {
+                            method: 'DELETE',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ field: fieldId })
+                        })
+                        .then(function(r) { return r.json(); })
+                        .then(function(data) {
+                            if (data.success) { window.location.reload(); }
+                        });
                     }
                 }
             });
             return false;
         }
+
+        $(document).on('click', '.js-delete-field', function () {
+            var btn = $(this);
+            confirmDeleteField(btn.data('field-name'), btn.data('prop-id'), btn.data('field-id'));
+        });
     </script>
 
     <?php
@@ -427,13 +460,13 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                         echo '<small class="text-danger d-block mt-1">' . gettext('You must select a group.') . '</small>';
                                     }
                                 } elseif ($aTypeFields[$row] == 12) {
-                                    echo '<a href="javascript:void(0)" onclick="window.open(\'OptionManager.php?mode=groupcustom&ListID=' . InputUtils::escapeAttribute($aSpecialFields[$row]) . '\',\'ListOptions\',\'toolbar=no,status=no,width=400,height=500\')">' . gettext('Edit List Options') . '</a>';
+                                    echo '<a href="' . SystemURLs::getRootPath() . '/admin/system/options?mode=groupcustom&ListID=' . InputUtils::escapeAttribute($aSpecialFields[$row]) . '" target="_blank">' . gettext('Edit List Options') . '</a>';
                                 } else {
                                     echo '&nbsp;';
                                 } ?>
                             </td>
                             <td class="text-center">
-                                <input type="checkbox" name="<?= $row ?>show" value="1" <?php if ($aPersonDisplayFields[$row]) {
+                                <input class="form-check-input" type="checkbox" name="<?= $row ?>show" value="1" <?php if ($aPersonDisplayFields[$row]) {
                                     echo ' checked';
                                 } ?>>
                             </td>
@@ -443,19 +476,18 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                         <i class="ti ti-dots-vertical"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <?php
-                                        $fieldNameJs = json_encode($aNameFields[$row]);
-                                        $fieldIdJs = json_encode($aFieldFields[$row]);
-                                        ?>
-                                        <button type="button" class="dropdown-item text-danger" onclick="confirmDeleteField(<?= $fieldNameJs ?>, <?= $row ?>, <?= $fieldIdJs ?>)">
+                                        <button type="button" class="dropdown-item text-danger js-delete-field"
+                                            data-field-name="<?= InputUtils::escapeAttribute($aNameFields[$row]) ?>"
+                                            data-prop-id="<?= $row ?>"
+                                            data-field-id="<?= InputUtils::escapeAttribute($aFieldFields[$row]) ?>">
                                             <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
                                         </button>
                                         <?php
                                         if ($row != 1) {
-                                            echo '<a href="GroupPropsFormRowOps.php?GroupID=' . $iGroupID . '&PropID=' . $row . '&Field=' . InputUtils::escapeAttribute($aFieldFields[$row]) . '&Action=up" class="dropdown-item"><i class="ti ti-arrow-up me-2"></i>' . gettext('Move up') . '</a>';
+                                            echo '<a href="#" class="dropdown-item js-reorder-field" data-prop-id="' . $row . '" data-direction="up"><i class="ti ti-arrow-up me-2"></i>' . gettext('Move up') . '</a>';
                                         }
                                         if ($row < $numRows) {
-                                            echo '<a href="GroupPropsFormRowOps.php?GroupID=' . $iGroupID . '&PropID=' . $row . '&Field=' . InputUtils::escapeAttribute($aFieldFields[$row]) . '&Action=down" class="dropdown-item"><i class="ti ti-arrow-down me-2"></i>' . gettext('Move down') . '</a>';
+                                            echo '<a href="#" class="dropdown-item js-reorder-field" data-prop-id="' . $row . '" data-direction="down"><i class="ti ti-arrow-down me-2"></i>' . gettext('Move down') . '</a>';
                                         } ?>
                                     </div>
                                 </div>

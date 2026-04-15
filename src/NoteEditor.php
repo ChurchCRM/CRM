@@ -34,7 +34,7 @@ if (isset($_GET['FamilyID'])) {
 if ($iPersonID > 0) {
     $sBackPage = 'people/view/' . $iPersonID;
 } else {
-    $sBackPage = 'v2/family/' . $iFamilyID;
+    $sBackPage = 'people/family/' . $iFamilyID;
 }
 
 // Has the form been submitted?

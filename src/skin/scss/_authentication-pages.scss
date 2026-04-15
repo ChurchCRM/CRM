@@ -6,13 +6,42 @@
  * Component-specific - no Bootstrap duplicates.
  */
 
-// Background setup with image and overlay — scoped to auth pages only
+// --- Two-Factor Authentication Enrollment (merged from _two-factor-enrollment.scss) ---
+#TwoFAEnrollmentSteps div.col-lg-4 {
+  text-align: center;
+}
+
+#TwoFAEnrollmentSteps div.col-lg-4 i {
+  font-size: 100px;
+}
+
+#TwoFAEnrollmentSteps button.btn-success {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  width: 40%;
+  min-height: 60px;
+}
+
+// Base layout for all non-admin public pages (login, kiosk, external, etc.)
+//
+// Sticky footer pattern: body is a column flex container the height of the
+// viewport. The card containers use `margin: auto` to center themselves in
+// the remaining space, which is the bulletproof flex centering pattern —
+// when content is taller than the viewport, `margin: auto` collapses to 0
+// and the card top-aligns (instead of overflowing above the viewport like
+// `align-items: center` does). The footer's own `margin-top: auto` keeps
+// it pinned to the bottom of the viewport on tall screens.
 body.page-auth {
-  background: url('/Images/login-photo.png') center/cover no-repeat fixed;
   min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+}
+
+// Login background photo + dark overlay — only for login/auth flow pages.
+// Templates that need this must set $sBodyClass = 'page-auth page-login'.
+body.page-login {
+  background: url('/Images/login-photo.png') center/cover no-repeat fixed;
 
   &::before {
     content: '';
@@ -27,10 +56,16 @@ body.page-auth {
 }
 
 // Container and wrapper
+//
+// `margin: auto` is the magic: in a column flex parent (body.page-auth) it
+// centers the container in BOTH axes when there's slack, and collapses to 0
+// when content is taller than the viewport — so the card top stays reachable
+// and the page scrolls normally on short viewports. No `align-items` /
+// `justify-content` gymnastics on the body needed.
 .login-container {
   width: 100%;
   max-width: 420px;
-  margin: 0 auto;
+  margin: auto;
   padding: 20px;
   position: relative;
   z-index: 2;
@@ -214,8 +249,8 @@ body.page-auth {
   }
 }
 
-// Form fields
-.mb-3 {
+// Form fields — scoped to auth pages only to avoid polluting the main app
+body.page-auth .mb-3 {
   margin-bottom: 18px;
 
   label {
@@ -227,7 +262,7 @@ body.page-auth {
     letter-spacing: 0.2px;
   }
 
-  input {
+  > input:not([type="checkbox"]):not([type="radio"]) {
     width: 100%;
     padding: 12px 14px;
     border: 1.5px solid #e0e0e0;
@@ -261,25 +296,8 @@ body.page-auth {
   text-align: center !important;
   font-weight: 300 !important;
   font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Courier New', monospace;
-}
-
-// Form checkbox
-.form-check {
-  display: flex;
-  align-items: center;
-  margin-bottom: 13px;
-
-  input {
-    margin: 0;
-    margin-right: 8px;
-    width: auto;
-  }
-
-  label {
-    margin: 0;
-    font-size: 13px;
-    cursor: pointer;
-  }
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 // Form footer with links
@@ -428,8 +446,8 @@ body.page-auth {
   }
 }
 
-// Alert messages
-.alert {
+// Alert messages — scoped to auth pages only to avoid polluting global .alert
+body.page-auth .alert {
   border-radius: 6px;
   margin-bottom: 20px;
   padding: 12px 16px;
@@ -486,11 +504,11 @@ body.page-auth {
 }
 
 // Forgot password container and card
+// Uses the same `margin: auto` self-centering pattern as .login-container.
 .forgot-password-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
+  max-width: 420px;
+  margin: auto;
   padding: 20px;
   position: relative;
   z-index: 2;
@@ -585,6 +603,7 @@ body.page-auth {
   z-index: 3;
   margin-top: auto;
   padding: 40px 20px 20px;
+  padding-bottom: max(20px, env(safe-area-inset-bottom));
   text-align: center;
   color: rgba(255, 255, 255, 0.8);
   font-size: 13px;
@@ -603,13 +622,18 @@ body.page-auth {
 
 .auth-footer-social {
   margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
 
   a {
-    display: inline-block;
-    margin: 0 8px;
-    width: 32px;
-    height: 32px;
-    line-height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    // 44px minimum touch target per Apple/Google guidelines
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.15);
     transition: all 0.2s;
@@ -621,7 +645,7 @@ body.page-auth {
     }
 
     i {
-      font-size: 14px;
+      font-size: 16px;
     }
   }
 }
@@ -669,8 +693,8 @@ body.page-auth {
   margin: 8px 0;
 }
 
-// Error page styles
-.alert-heading {
+// Error page styles — scoped to auth pages
+body.page-auth .alert-heading {
   font-size: 15px;
   font-weight: 600;
   margin-bottom: 8px;
@@ -679,7 +703,7 @@ body.page-auth {
   gap: 8px;
 }
 
-.alert-buttons {
+body.page-auth .alert-buttons {
   margin-top: 15px;
   display: flex;
   flex-direction: column;
@@ -697,7 +721,8 @@ body.page-auth {
   }
 }
 
-.btn {
+// Button overrides — scoped to auth pages only to avoid polluting global .btn
+body.page-auth .btn {
   padding: 8px 16px;
   border-radius: 6px;
   border: none;
@@ -728,79 +753,120 @@ body.page-auth {
 }
 
 // Responsive design
-@media (max-width: 700px) {
+//
+// Two breakpoint tiers, aligned with `responsive-design-guidelines.md`:
+//
+// 1. **<1200px (Tablet + Mobile)** — the side-by-side split with the
+//    marketing sidebar only fits comfortably on actual laptops/desktops.
+//    Below the 1200px Laptop boundary, stack the columns vertically and
+//    collapse the register sidebar into a slim banner with just the button
+//    (the marketing icon/title/blurb/benefits get hidden — they're filler
+//    that loses impact in a narrow column).
+//
+// 2. **<768px (Mobile only)** — additionally tighten padding, font sizes,
+//    and the logo so the Sign In button stays reachable without scrolling
+//    on iPhone SE-class viewports.
+@media (max-width: 1199.98px) {
+  // Stack the split login wrapper vertically and drop the rigid 520px
+  // min-height that the side-by-side layout uses.
   .login-wrapper-split {
     flex-direction: column !important;
     min-height: auto;
   }
 
+  .login-container-split {
+    max-width: 480px;
+  }
+
+  // After stacking, the register column gets a top border (instead of left
+  // border) and tighter padding — but the full marketing content (icon,
+  // title, blurb, benefits, button) stays visible at every viewport.
   .login-register-column {
     border-left: none;
     border-top: 1px solid #f0f0f0;
-    padding: 35px 30px;
+    padding: 30px 30px;
   }
 
-  .login-form-column {
-    padding: 35px 30px;
-  }
-
-  .login-container-split {
-    max-width: 100%;
+  .btn-register {
+    padding: 11px 14px;
+    font-size: 13px;
   }
 }
 
 @media (max-width: 768px) {
-  .login-form-section {
-    padding: 30px 20px;
+  .login-container,
+  .login-container-split {
+    max-width: 100%;
   }
 
+  // Form column — tighten padding so the form fits without overflow
+  .login-form-column,
+  .login-form-section {
+    padding: 24px 20px;
+  }
+
+  // Header — reduce vertical footprint so the logo + church name don't
+  // dominate the screen on small phones
   .login-form-header {
-    margin: -30px -20px 25px -20px;
-    padding: 25px 20px;
+    margin: -24px -20px 16px -20px;
+    padding: 18px 20px;
+  }
+
+  .login-header-logo img {
+    max-height: 70px;
   }
 
   .login-header-church-name {
-    font-size: 20px;
+    font-size: 18px;
+    margin-bottom: 4px;
   }
 
   .login-header-tagline {
-    font-size: 12px;
+    font-size: 11px;
   }
 
-  .login-form-title h1 {
-    font-size: 18px;
+  // Form title — keep compact, allow it to wrap on one line where possible
+  .login-form-title {
+    margin-bottom: 18px;
 
-    i {
-      font-size: 20px;
+    h1 {
+      font-size: 17px;
+      flex-wrap: wrap;
+
+      i {
+        font-size: 18px;
+      }
+    }
+
+    p {
+      font-size: 12px;
     }
   }
 
-  .login-form-title p {
-    font-size: 13px;
-  }
+  // Inputs — 16px font is required on iOS to prevent auto-zoom on focus
+  body.page-auth .mb-3 {
+    margin-bottom: 14px;
 
-  .mb-3 input {
-    padding: 11px 12px;
-    font-size: 16px; // Larger font to prevent iOS zoom on focus
+    > input:not([type="checkbox"]):not([type="radio"]) {
+      padding: 11px 12px;
+      font-size: 16px;
+    }
   }
 
   .btn-sign-in {
     padding: 13px 14px;
     font-size: 14px;
+    margin-bottom: 12px;
   }
 
-  .btn-register {
-    padding: 12px 14px;
-    font-size: 13px;
-  }
-
-  .login-container {
-    max-width: 100%;
+  // Register column — tighter padding on phone-class viewports
+  .login-register-column {
+    padding: 24px 20px;
   }
 
   .signup-link {
-    margin: 20px -20px -30px -20px;
-    padding: 20px;
+    margin: 16px -20px -24px -20px;
+    padding: 16px 20px;
   }
 
   .forgot-password-card {
@@ -824,28 +890,25 @@ body.page-auth {
     font-size: 13px;
   }
 
-  .alert-buttons {
+  body.page-auth .alert-buttons {
     flex-direction: column;
   }
 
-  .btn {
+  body.page-auth .btn {
     width: 100%;
   }
 
-  .register-icon {
-    font-size: 48px;
-    margin-bottom: 16px;
+  // 2FA code input — reduce size to prevent overflow on narrow screens
+  #TwoFACode {
+    font-size: 1.5em !important;
+    letter-spacing: 0.2em !important;
+    padding: 10px 8px !important;
   }
 
-  .register-title {
-    font-size: 18px;
-  }
-
-  .register-text {
-    font-size: 13px;
-  }
-
-  .register-benefits li {
+  // Footer — reduce top padding on mobile, keep touch targets
+  .auth-footer {
+    padding: 24px 16px 16px;
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
     font-size: 12px;
   }
 }

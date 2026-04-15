@@ -11,29 +11,5 @@ document.addEventListener("DOMContentLoaded", () => {
     window.CRM.onLocalesReady(initializeMainDashboard);
   }
 
-  // Use global jQuery which should be set by skin-main.js
-  const $ = window.$;
-  if (!$) {
-    console.error("jQuery not available - skin-main.js may not have loaded");
-    return;
-  }
-
-  // Photo viewer click handlers
-  $(document).on("click", ".view-person-photo", function (e) {
-    var personId = $(e.currentTarget).data("person-id");
-    if (window.CRM && window.CRM.showPhotoLightbox) {
-      window.CRM.showPhotoLightbox("person", personId);
-    }
-    e.preventDefault();
-    e.stopPropagation();
-  });
-
-  $(document).on("click", ".view-family-photo", function (e) {
-    var familyId = $(e.currentTarget).data("family-id");
-    if (window.CRM && window.CRM.showPhotoLightbox) {
-      window.CRM.showPhotoLightbox("family", familyId);
-    }
-    e.preventDefault();
-    e.stopPropagation();
-  });
+  // Photo viewer click handlers are registered globally in avatar-loader.ts
 });

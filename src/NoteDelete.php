@@ -25,7 +25,7 @@ if ($note->getPerId() > 0) {
     $sReroute = 'people/view/' . $note->getPerId();
 } elseif ($note->getFamId() > 0) {
     // If deleting a note for a family, set the FamilyView page as the redirect
-    $sReroute = 'v2/family/' . $note->getFamId();
+    $sReroute = 'people/family/' . $note->getFamId();
 }
 
 // Do we have confirmation?

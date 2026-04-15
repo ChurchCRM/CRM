@@ -17,7 +17,7 @@ Whether you’re a developer, designer, tester, or simply passionate about impro
 
 ## 🚀 Get Started
 
-If you're new to ChurchCRM, start with our **[Documentation](https://docs.churchcrm.io/manual/)**.
+If you're new to ChurchCRM, start with our **[Documentation](https://docs.churchcrm.io/)**.
 You'll find step-by-step installation instructions, configuration notes, and user guides there.
 
 Quick start: see the "Quick Start" section in the Documentation for a fast setup.

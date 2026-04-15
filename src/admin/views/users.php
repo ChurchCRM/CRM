@@ -20,7 +20,7 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
 <div class="container-fluid">
     <!-- Stat Cards Row -->
 <div class="row mb-3">
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-6 col-lg-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -37,7 +37,7 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-6 col-lg-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -54,7 +54,7 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-6 col-lg-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -71,7 +71,7 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-6 col-lg-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -150,7 +150,7 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
                                             <i class="ti ti-eye me-2"></i><?= gettext('View Details') ?>
                                         </a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $user->getId() ?>/changePassword">
+                                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/admin/system/user/<?= $user->getId() ?>/changePassword">
                                             <i class="ti ti-tool me-2"></i><?= gettext('Change Password') ?>
                                         </a>
                                         <?php if ($user->getId() != AuthenticationManager::getCurrentUser()->getId() && !empty($user->getEmail())) { ?>
