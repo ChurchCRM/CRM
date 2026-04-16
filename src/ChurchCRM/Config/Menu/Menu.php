@@ -6,7 +6,6 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
-use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Plugin\PluginManager;
@@ -36,7 +35,7 @@ class Menu
         $isManageGroups = $currentUser->isManageGroupsEnabled();
         $menus = [
             'Dashboard'    => new MenuItem(gettext('Dashboard'), 'v2/dashboard', true, 'fa-gauge'),
-            'Calendar'     => self::getCalendarMenu(),
+            'Calendar'     => self::getCalendarMenu($currentUser->canViewEvents()),
             'People'       => self::getPeopleMenu($isAdmin, $isMenuOptions, $currentUser->isAddRecordsEnabled()),
             'Groups'       => self::getGroupMenu($isAdmin, $isMenuOptions, $isManageGroups),
             'SundaySchool' => self::getSundaySchoolMenu($isAdmin),
@@ -70,14 +69,15 @@ class Menu
 
     }
 
-    private static function getCalendarMenu(): MenuItem
+    private static function getCalendarMenu(bool $canViewEvents): MenuItem
     {
-        // Gate the top-level Calendar menu on the Events module feature flag.
-        // Without this, the link is always shown — and clicking it when events
-        // are disabled routes through ViewEventsRoleAuthMiddleware and bounces
-        // the user to /v2/access-denied?role=ViewEvents. The Events menu a few
-        // lines down (getEventsMenu) already applies this same gate. See #8667.
-        $calendarMenu = new MenuItem(gettext('Calendar'), 'event/calendars', User::isEventsEnabled(), 'fa-calendar');
+        // Gate the top-level Calendar menu on the current user's canViewEvents()
+        // check. This respects both the system-wide bEnabledEvents flag AND the
+        // admin bypass — admins always see the Calendar even when the module is
+        // disabled so they can re-enable it. Non-admin users see it only when the
+        // module is on. Without this gate the link was always visible, and clicking
+        // it when events are disabled bounced the user to /v2/access-denied. #8667.
+        $calendarMenu = new MenuItem(gettext('Calendar'), 'event/calendars', $canViewEvents, 'fa-calendar');
         // Anniversaries calendar (ID 1) - black background
         $calendarMenu->addCounter(new MenuCounter('AnniversaryNumber', 'bg-dark', 0, gettext("Today's Wedding Anniversaries")));
         // Birthdays calendar (ID 0) - blue background  
