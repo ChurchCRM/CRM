@@ -40,9 +40,9 @@ class Menu
             'Groups'       => self::getGroupMenu($isAdmin, $isMenuOptions, $isManageGroups),
             'SundaySchool' => self::getSundaySchoolMenu($isAdmin),
             'Communication' => self::getCommunicationMenu(),
-            'Events'       => self::getEventsMenu(isAddEventEnabled: $currentUser->isAddEventEnabled()),
+            'Events'       => self::getEventsMenu(isAddEventEnabled: $currentUser->isAddEventEnabled(), canViewEvents: $currentUser->canViewEvents()),
             'Deposits'     => self::getDepositsMenu($isAdmin, $currentUser->isFinanceEnabled()),
-            'Fundraiser'   => self::getFundraisersMenu(),
+            'Fundraiser'   => self::getFundraisersMenu($isAdmin),
             'Reports'      => self::getReportsMenu(),
         ];
         
@@ -181,7 +181,8 @@ class Menu
 
     private static function getSundaySchoolMenu(bool $isAdmin): MenuItem
     {
-        $sundaySchoolMenu = new MenuItem(gettext('Sunday School'), '', SystemConfig::getBooleanValue('bEnabledSundaySchool'), 'fa-school');
+        // Admin bypass: admins always see module menus so they can re-enable them. #8667.
+        $sundaySchoolMenu = new MenuItem(gettext('Sunday School'), '', $isAdmin || SystemConfig::getBooleanValue('bEnabledSundaySchool'), 'fa-school');
         $sundaySchoolMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'groups/sundayschool/dashboard', true, 'fa-gauge'));
         $sundaySchoolMenu->addSubMenu(new MenuItem(gettext('Kiosk Manager'), 'kiosk/admin', $isAdmin, 'fa-desktop'));
         $classes = GroupQuery::create()->filterByType(4)->orderByName()->select(['Id','Name'])->find()->toArray();
@@ -248,9 +249,11 @@ class Menu
         }
     }
 
-    private static function getEventsMenu(bool $isAddEventEnabled): MenuItem
+    private static function getEventsMenu(bool $isAddEventEnabled, bool $canViewEvents): MenuItem
     {
-        $eventsMenu = new MenuItem(gettext('Events'), '', SystemConfig::getBooleanValue('bEnabledEvents'), 'fa-ticket');
+        // Use canViewEvents() (which includes admin bypass) instead of the raw
+        // bEnabledEvents flag, so admins always see the Events menu. See #8667.
+        $eventsMenu = new MenuItem(gettext('Events'), '', $canViewEvents, 'fa-ticket');
         $eventsMenu->addSubMenu(new MenuItem(gettext('Events Dashboard'), 'event/dashboard', true, 'fa-gauge'));
         $eventsMenu->addSubMenu(new MenuItem(gettext('Add Church Event'), 'event/editor', $isAddEventEnabled, 'fa-circle-plus'));
         $eventsMenu->addSubMenu(new MenuItem(gettext('Check-in and Check-out'), 'event/checkin', true, 'fa-user-check'));
@@ -261,7 +264,10 @@ class Menu
 
     private static function getDepositsMenu(bool $isAdmin, bool $isFinanceEnabled): MenuItem
     {
-        $depositsMenu = new MenuItem(gettext('Finance'), '', SystemConfig::getBooleanValue('bEnabledFinance') && $isFinanceEnabled, 'fa-cash-register');
+        // $isFinanceEnabled already includes admin bypass (PR #8681) and checks
+        // bEnabledFinance internally for non-admins, so the raw system config
+        // check is redundant and was blocking admin bypass. See #8667.
+        $depositsMenu = new MenuItem(gettext('Finance'), '', $isFinanceEnabled, 'fa-cash-register');
         $depositsMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'finance/', $isFinanceEnabled, 'fa-gauge'));
         $depositsMenu->addSubMenu(new MenuItem(gettext('View All Deposits'), 'FindDepositSlip.php', $isFinanceEnabled, 'fa-list'));
         $depositsMenu->addSubMenu(new MenuItem(gettext('Deposit Reports'), 'finance/reports', $isFinanceEnabled, 'fa-file-invoice'));
@@ -278,9 +284,10 @@ class Menu
         return $depositsMenu;
     }
 
-    private static function getFundraisersMenu(): MenuItem
+    private static function getFundraisersMenu(bool $isAdmin): MenuItem
     {
-        $fundraiserMenu = new MenuItem(gettext('Fundraiser'), '', SystemConfig::getBooleanValue('bEnabledFundraiser'), 'fa-money-bill-1');
+        // Admin bypass: admins always see module menus so they can re-enable them. #8667.
+        $fundraiserMenu = new MenuItem(gettext('Fundraiser'), '', $isAdmin || SystemConfig::getBooleanValue('bEnabledFundraiser'), 'fa-money-bill-1');
         $fundraiserMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'FindFundRaiser.php', true, 'fa-list'));
         $fundraiserMenu->addSubMenu(new MenuItem(gettext('Create New Fundraiser'), 'FundRaiserEditor.php?FundRaiserID=-1', true, 'fa-circle-plus'));
         $fundraiserMenu->addSubMenu(new MenuItem(gettext('Add Donors to Buyer List'), 'AddDonors.php', true, 'fa-user-plus'));

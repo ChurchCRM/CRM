@@ -1,3 +1,44 @@
+/**
+ * Regression guard: admin users must always see all top-level module menus
+ * (Calendar, Events, Finance, Sunday School, Fundraiser) regardless of whether
+ * the underlying system-wide feature flag is enabled. This prevents the #8667
+ * scenario where an admin disables a module and then can't find the menu to
+ * re-enable it.
+ *
+ * These tests run under the admin session (which cy.setupAdminSession provides)
+ * and verify the sidebar nav contains the expected links.
+ */
+describe("Admin menu visibility — module menus always visible for admin (#8667)", () => {
+    beforeEach(() => {
+        cy.setupAdminSession();
+    });
+
+    it("Admin sidebar should contain Calendar link", () => {
+        cy.visit("v2/dashboard");
+        cy.get(".navbar-nav, .list-unstyled").contains("Calendar").should("exist");
+    });
+
+    it("Admin sidebar should contain Events link", () => {
+        cy.visit("v2/dashboard");
+        cy.get(".navbar-nav, .list-unstyled").contains("Events").should("exist");
+    });
+
+    it("Admin sidebar should contain Finance link", () => {
+        cy.visit("v2/dashboard");
+        cy.get(".navbar-nav, .list-unstyled").contains("Finance").should("exist");
+    });
+
+    it("Admin sidebar should contain Sunday School link", () => {
+        cy.visit("v2/dashboard");
+        cy.get(".navbar-nav, .list-unstyled").contains("Sunday School").should("exist");
+    });
+
+    it("Admin sidebar should contain Fundraiser link", () => {
+        cy.visit("v2/dashboard");
+        cy.get(".navbar-nav, .list-unstyled").contains("Fundraiser").should("exist");
+    });
+});
+
 describe("User Editor - ORM Migration Tests", () => {
     beforeEach(() => {
         cy.setupAdminSession();
