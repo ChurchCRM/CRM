@@ -933,6 +933,7 @@ function adminUserEditorNew(Request $request, Response $response): Response
         $pageArgs['sUser']             = $sUser;
         $pageArgs['sUserName']         = $userName;
         $pageArgs['perms']             = $perms;
+        $pageArgs['modulePerms']       = ['addEvent' => false, 'emailMailto' => false, 'createDirectory' => false];
         $pageArgs['showPersonSelect']  = false;
         $pageArgs['people']            = [];
         $pageArgs['formAction']        = SystemURLs::getRootPath() . '/admin/system/users/new';
@@ -946,11 +947,13 @@ function adminUserEditorNew(Request $request, Response $response): Response
                                              'editRecords' => 0, 'deleteRecords' => 0,
                                              'menuOptions' => 0, 'manageGroups' => 0,
                                              'finance' => 0, 'manageFundraisers' => 0, 'notes' => 0];
+            $pageArgs['modulePerms']      = ['addEvent' => false, 'emailMailto' => false, 'createDirectory' => false];
             return $renderer->render($response, 'user-editor.php', $pageArgs);
         }
 
         try {
             $userService->createUser($personId, $perms, $userName);
+            $userService->saveModulePermissions($personId, $body);
             return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/admin/system/users');
         } catch (\Throwable $e) {
             \ChurchCRM\Utils\LoggerUtils::getAppLogger()->error('createUser failed: ' . $e->getMessage(), [
@@ -997,6 +1000,7 @@ function adminUserEditorNew(Request $request, Response $response): Response
         'menuOptions' => 0, 'manageGroups' => 0,
         'finance' => 0, 'manageFundraisers' => 0, 'notes' => 0,
     ];
+    $pageArgs['modulePerms'] = ['addEvent' => false, 'emailMailto' => false, 'createDirectory' => false];
     $pageArgs['formAction'] = SystemURLs::getRootPath() . '/admin/system/users/new';
     $pageArgs['sErrorText'] = '';
 
@@ -1057,14 +1061,16 @@ function adminUserEditorEdit(Request $request, Response $response, array $args):
         // configRows is initialised to [] here so the template always has the
         // key; getUserConfigRows() is called inside the try so that a DB error
         // during the load is also caught and surfaced via sErrorText.
-        $pageArgs['configRows'] = [];
+        $pageArgs['configRows']   = [];
+        $pageArgs['modulePerms']  = ['addEvent' => false, 'emailMailto' => false, 'createDirectory' => false];
 
         try {
-            $pageArgs['configRows'] = $userService->getUserConfigRows($personId);
+            $pageArgs['configRows']  = $userService->getUserConfigRows($personId);
+            $pageArgs['modulePerms'] = $userService->getModulePermissions($personId);
             $newValue      = (array) ($body['new_value'] ?? []);
             $newPermission = (array) ($body['new_permission'] ?? []);
             $types         = (array) ($body['type'] ?? []);
-            $userService->updateUserWithConfig($personId, $perms, $userName, $newValue, $newPermission, $types);
+            $userService->updateUserWithConfigAndModulePerms($personId, $perms, $userName, $newValue, $newPermission, $types, $body);
             return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/admin/system/users');
         } catch (\Throwable $e) {
             $pageArgs['sErrorText'] = $e->getMessage();
@@ -1086,6 +1092,7 @@ function adminUserEditorEdit(Request $request, Response $response, array $args):
         'manageFundraisers'  => $user->getManageFundraisers(),
         'notes'              => $user->getNotes(),
     ];
+    $pageArgs['modulePerms'] = $userService->getModulePermissions($personId);
     $pageArgs['configRows'] = $userService->getUserConfigRows($personId);
 
     return $renderer->render($response, 'user-editor.php', $pageArgs);

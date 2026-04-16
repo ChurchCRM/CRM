@@ -164,14 +164,18 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
                 ['name' => 'ManageGroups', 'label' => gettext('Manage Groups and Roles'),               'checked' => $perms['manageGroups']],
                 ['name' => 'Finance',            'label' => gettext('Manage Donations and Finance'),  'checked' => $perms['finance']],
                 ['name' => 'ManageFundraisers', 'label' => gettext('Manage Fundraisers'),              'checked' => $perms['manageFundraisers']],
+                ['name' => 'ucfg_AddEvent',        'id' => 'ucfg_AddEvent',        'label' => gettext('Add and Manage Events'),        'checked' => $modulePerms['addEvent']],
+                ['name' => 'ucfg_EmailMailto',     'id' => 'ucfg_EmailMailto',     'label' => gettext('Send Email via Mailto Links'),  'checked' => $modulePerms['emailMailto']],
+                ['name' => 'ucfg_CreateDirectory', 'id' => 'ucfg_CreateDirectory', 'label' => gettext('Create Directories'),           'checked' => $modulePerms['createDirectory']],
             ];
             foreach ($permissions as $perm):
+                $id = $perm['id'] ?? $perm['name'];
             ?>
             <div class="row mb-2 permission-row">
-                <label class="col-sm-5 col-form-label" for="<?= $perm['name'] ?>"><?= $perm['label'] ?></label>
+                <label class="col-sm-5 col-form-label" for="<?= $id ?>"><?= $perm['label'] ?></label>
                 <div class="col-sm-7">
                     <label class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" name="<?= $perm['name'] ?>" id="<?= $perm['name'] ?>" value="1"<?= $perm['checked'] ? ' checked' : '' ?>>
+                        <input class="form-check-input" type="checkbox" name="<?= $perm['name'] ?>" id="<?= $id ?>" value="1"<?= $perm['checked'] ? ' checked' : '' ?>>
                     </label>
                 </div>
             </div>

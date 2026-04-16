@@ -342,6 +342,42 @@ class UserService
     }
 
     /**
+     * Wrapper used by the edit POST handler that saves both the standard
+     * user config rows AND the module-level permission toggles atomically.
+     *
+     * @param int    $personId
+     * @param array  $perms
+     * @param string $userName
+     * @param array  $newValue
+     * @param array  $newPermission
+     * @param array  $types
+     * @param array  $body           Full POST body (for module permission checkboxes)
+     */
+    public function updateUserWithConfigAndModulePerms(
+        int    $personId,
+        array  $perms,
+        string $userName,
+        array  $newValue,
+        array  $newPermission,
+        array  $types,
+        array  $body
+    ): void {
+        $con = \Propel\Runtime\Propel::getWriteConnection('default');
+        $con->beginTransaction();
+        try {
+            $this->updateUser($personId, $perms, $userName);
+            if ($types !== []) {
+                $this->saveUserConfig($personId, $newValue, $newPermission, $types);
+            }
+            $this->saveModulePermissions($personId, $body);
+            $con->commit();
+        } catch (\Throwable $e) {
+            $con->rollBack();
+            throw $e;
+        }
+    }
+
+    /**
      * Update an existing user account.
      *
      * Validates username length and uniqueness (excluding the user being updated),
@@ -392,10 +428,115 @@ class UserService
     }
 
     /**
+     * UserConfig names that are promoted to the main Permissions panel and
+     * must NOT appear in the User Config table below.
+     */
+    private const MODULE_PERM_NAMES = ['bAddEvent', 'bEmailMailto', 'bCreateDirectory'];
+
+    /**
+     * Read the three module-permission toggles (bAddEvent, bEmailMailto,
+     * bCreateDirectory) for the given user from the UserConfig table.
+     *
+     * Admins always get all three as true (isEnabledSecurity returns true for
+     * admin for any perm), but here we read the raw stored value so the
+     * checkbox reflects what is actually in the DB rather than deriving from
+     * the admin flag.
+     *
+     * @param int $personId Person ID of the user
+     * @return array ['addEvent' => bool, 'emailMailto' => bool, 'createDirectory' => bool]
+     */
+    public function getModulePermissions(int $personId): array
+    {
+        $result = [
+            'addEvent'        => false,
+            'emailMailto'     => false,
+            'createDirectory' => false,
+        ];
+
+        $nameMap = [
+            'bAddEvent'        => 'addEvent',
+            'bEmailMailto'     => 'emailMailto',
+            'bCreateDirectory' => 'createDirectory',
+        ];
+
+        foreach (UserConfigQuery::create()
+            ->filterByPeronId($personId)
+            ->filterByName(self::MODULE_PERM_NAMES)
+            ->find() as $uc) {
+            $key = $nameMap[$uc->getName()] ?? null;
+            if ($key !== null) {
+                $result[$key] = ($uc->getPermission() === 'TRUE');
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * Persist the module-level permission toggles from the POST body.
+     *
+     * Looks up the user-specific UserConfig row (or clones from the default
+     * row with per_id=0) and sets the permission column to 'TRUE'/'FALSE'
+     * based on whether the corresponding checkbox was ticked.
+     *
+     * The POST field names match the legacy view: ucfg_AddEvent, ucfg_EmailMailto,
+     * ucfg_CreateDirectory.
+     *
+     * @param int   $personId Person ID of the user
+     * @param array $body     Parsed POST body
+     */
+    public function saveModulePermissions(int $personId, array $body): void
+    {
+        $postMap = [
+            'ucfg_AddEvent'        => 'bAddEvent',
+            'ucfg_EmailMailto'     => 'bEmailMailto',
+            'ucfg_CreateDirectory' => 'bCreateDirectory',
+        ];
+
+        foreach ($postMap as $postKey => $cfgName) {
+            $newPerm = isset($body[$postKey]) ? 'TRUE' : 'FALSE';
+
+            $userConfig = UserConfigQuery::create()
+                ->filterByPeronId($personId)
+                ->filterByName($cfgName)
+                ->findOne();
+
+            if ($userConfig === null) {
+                // Clone from the default row (per_id = 0)
+                $default = UserConfigQuery::create()
+                    ->filterByPeronId(0)
+                    ->filterByName($cfgName)
+                    ->findOne();
+
+                if ($default === null) {
+                    continue; // no default row for this config — skip
+                }
+
+                $userConfig = new UserConfig();
+                $userConfig->setPeronId($personId)
+                    ->setId($default->getId())
+                    ->setName($cfgName)
+                    ->setValue($default->getValue())
+                    ->setType($default->getType())
+                    ->setTooltip($default->getTooltip())
+                    ->setPermission($newPerm)
+                    ->setCat($default->getCat());
+                $userConfig->save();
+            } else {
+                $userConfig->setPermission($newPerm);
+                $userConfig->save();
+            }
+        }
+    }
+
+    /**
      * Get merged default + per-user config rows for the editor view.
      *
      * Returns each default config row (per_id=0) with the user's override values
      * applied where they exist. Replaces the N+1 raw SQL pattern in the legacy editor.
+     *
+     * Rows for bAddEvent, bEmailMailto, and bCreateDirectory are excluded here
+     * because they are promoted to the main Permissions panel (module permissions).
      *
      * Each row in the returned array has keys:
      *   id, name, value, type, tooltip, permission
@@ -419,6 +560,10 @@ class UserService
 
         $rows = [];
         foreach ($defaults as $default) {
+            // Skip rows promoted to the Permissions panel
+            if (in_array($default->getName(), self::MODULE_PERM_NAMES, true)) {
+                continue;
+            }
             $id = $default->getId();
             if (isset($userOverrides[$id])) {
                 $override = $userOverrides[$id];
