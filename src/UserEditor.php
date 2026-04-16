@@ -178,6 +178,25 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                     $user->reload();
 
                     $user->createTimeLineNote("updated");
+
+                    // Save module-level security permissions (stored in userconfig_ucfg).
+                    // These map checkbox names ucfg_AddEvent etc. to ucfg permission values.
+                    $securityMap = [
+                        'ucfg_AddEvent' => 'bAddEvent',
+                        'ucfg_EmailMailto' => 'bEmailMailto',
+                        'ucfg_CreateDirectory' => 'bCreateDirectory',
+                    ];
+                    foreach ($securityMap as $postKey => $cfgName) {
+                        $newPerm = isset($_POST[$postKey]) ? 'TRUE' : 'FALSE';
+                        $ucfg = UserConfigQuery::create()
+                            ->filterByPeronId($iPersonID)
+                            ->filterByName($cfgName)
+                            ->findOne();
+                        if ($ucfg !== null) {
+                            $ucfg->setPermission($newPerm);
+                            $ucfg->save();
+                        }
+                    }
                 } else {
                     // Set the error text for duplicate when currently existing
                     RedirectUtils::redirect('UserEditor.php?PersonID=' . $iPersonID . '&ErrorText=Login already in use, please select a different login!');
@@ -206,6 +225,21 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                 $usr_Notes = $user->getNotes();
                 $usr_Admin = $user->getAdmin();
                 $usr_EditSelf = $user->getEditSelf();
+                // Read module-level security permissions from userconfig_ucfg
+                $usr_AddEvent = $user->isEnabledSecurity('bAddEvent') && !$user->isAdmin();
+                $usr_EmailMailto = $user->isEnabledSecurity('bEmailMailto') && !$user->isAdmin();
+                $usr_CreateDirectory = $user->isEnabledSecurity('bCreateDirectory') && !$user->isAdmin();
+                // For admins, read the raw permission so the checkbox reflects stored state
+                if ($user->isAdmin()) {
+                    foreach ($user->getUserConfigs() as $cfg) {
+                        match ($cfg->getName()) {
+                            'bAddEvent' => $usr_AddEvent = ($cfg->getPermission() === 'TRUE'),
+                            'bEmailMailto' => $usr_EmailMailto = ($cfg->getPermission() === 'TRUE'),
+                            'bCreateDirectory' => $usr_CreateDirectory = ($cfg->getPermission() === 'TRUE'),
+                            default => null,
+                        };
+                    }
+                }
                 $sAction = 'edit';
             }
         } else {
@@ -228,6 +262,9 @@ if (isset($_POST['save']) && $iPersonID > 0) {
             $usr_Notes = 0;
             $usr_Admin = 0;
             $usr_EditSelf = 1;
+            $usr_AddEvent = false;
+            $usr_EmailMailto = false;
+            $usr_CreateDirectory = false;
         }
 
         // New user without person selected yet
@@ -244,6 +281,9 @@ if (isset($_POST['save']) && $iPersonID > 0) {
         $usr_Notes = 0;
         $usr_Admin = 0;
         $usr_EditSelf = 1;
+        $usr_AddEvent = false;
+        $usr_EmailMailto = false;
+        $usr_CreateDirectory = false;
         $sUserName = '';
         $vNewUser = 'true';
 
@@ -414,6 +454,10 @@ require_once __DIR__ . '/Include/Header.php';
             ['name' => 'Finance', 'label' => gettext('Manage Donations and Finance'), 'checked' => $usr_Finance, 'hint' => ''],
             ['name' => 'Notes', 'label' => gettext('View, Add and Edit Notes'), 'checked' => $usr_Notes, 'hint' => ''],
             ['name' => 'EditSelf', 'label' => gettext('Edit Self'), 'checked' => $usr_EditSelf, 'hint' => gettext('Edit own family only')],
+            // Module permissions (stored in userconfig_ucfg, not user_usr)
+            ['name' => 'ucfg_AddEvent', 'label' => gettext('Add and Manage Events'), 'checked' => $usr_AddEvent, 'hint' => ''],
+            ['name' => 'ucfg_EmailMailto', 'label' => gettext('Send Email via Mailto Links'), 'checked' => $usr_EmailMailto, 'hint' => ''],
+            ['name' => 'ucfg_CreateDirectory', 'label' => gettext('Create Directories'), 'checked' => $usr_CreateDirectory, 'hint' => ''],
         ];
         foreach ($permissions as $perm):
         ?>
