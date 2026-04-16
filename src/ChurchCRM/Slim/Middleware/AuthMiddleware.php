@@ -63,8 +63,10 @@ class AuthMiddleware implements MiddlewareInterface
                 // since /background operations do not connotate user activity.
 
                 // Block users with no admin permissions from MVC/API access (GHSA-5w59-32c8-933v)
+                // BUT allow them through if they need to change their password — blocking
+                // the change-password page locks new users out permanently. See #8680.
                 $sessionUser = AuthenticationManager::getCurrentUser();
-                if ($sessionUser->hasNoAdminPermissions()) {
+                if ($sessionUser->hasNoAdminPermissions() && !$this->isPasswordChangePath($request)) {
                     if ($this->isBrowserRequest($request)) {
                         $rootPath = SystemURLs::getRootPath();
                         return (new Response())->withStatus(302)->withHeader('Location', $rootPath . '/external/limited-access');
@@ -104,6 +106,16 @@ class AuthMiddleware implements MiddlewareInterface
         }
 
         return $handler->handle($request);
+    }
+
+    /**
+     * Check whether the current request targets the forced-password-change page.
+     * Users who must change their password on first login should always be able
+     * to reach this page, even if they have no other admin permissions. See #8680.
+     */
+    private function isPasswordChangePath(ServerRequestInterface $request): bool
+    {
+        return str_contains($request->getUri()->getPath(), '/user/current/changepassword');
     }
 
     private function isPath(ServerRequestInterface $request, string $pathPart): bool
