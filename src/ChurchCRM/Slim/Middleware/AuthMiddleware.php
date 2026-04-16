@@ -66,7 +66,7 @@ class AuthMiddleware implements MiddlewareInterface
                 // BUT allow them through if they need to change their password — blocking
                 // the change-password page locks new users out permanently. See #8680.
                 $sessionUser = AuthenticationManager::getCurrentUser();
-                if ($sessionUser->hasNoAdminPermissions() && !$this->isPasswordChangePath($request)) {
+                if ($sessionUser->hasNoAdminPermissions() && !$this->isAuthFlowExemptPath($request)) {
                     if ($this->isBrowserRequest($request)) {
                         $rootPath = SystemURLs::getRootPath();
                         return (new Response())->withStatus(302)->withHeader('Location', $rootPath . '/external/limited-access');
@@ -109,13 +109,24 @@ class AuthMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Check whether the current request targets the forced-password-change page.
-     * Users who must change their password on first login should always be able
-     * to reach this page, even if they have no other admin permissions. See #8680.
+     * Check whether the current request targets a page that must remain
+     * accessible even when the user has no admin permissions. Without these
+     * exemptions, limited-permission users get stuck in a redirect loop
+     * because AuthMiddleware blocks the page the auth system is sending
+     * them to. See #8680.
+     *
+     * Exempt paths:
+     *  - /user/current/changepassword  — forced password change on first login
+     *  - /user/current/manage2fa       — forced 2FA enrollment when bRequire2FA is on
+     *  - /user/current/enroll2fa       — backward-compat alias for manage2fa
      */
-    private function isPasswordChangePath(ServerRequestInterface $request): bool
+    private function isAuthFlowExemptPath(ServerRequestInterface $request): bool
     {
-        return str_contains($request->getUri()->getPath(), '/user/current/changepassword');
+        $path = $request->getUri()->getPath();
+
+        return str_contains($path, '/user/current/changepassword')
+            || str_contains($path, '/user/current/manage2fa')
+            || str_contains($path, '/user/current/enroll2fa');
     }
 
     private function isPath(ServerRequestInterface $request, string $pathPart): bool
