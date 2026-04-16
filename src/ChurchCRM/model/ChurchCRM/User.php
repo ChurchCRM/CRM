@@ -72,11 +72,11 @@ class User extends BaseUser
 
     public function isFinanceEnabled(): bool
     {
-        if (SystemConfig::getBooleanValue('bEnabledFinance')) {
-            return $this->isAdmin() || $this->isFinance();
+        if ($this->isAdmin()) {
+            return true;
         }
 
-        return false;
+        return SystemConfig::getBooleanValue('bEnabledFinance') && $this->isFinance();
     }
 
     public function isNotesEnabled(): bool
@@ -223,21 +223,20 @@ class User extends BaseUser
 
     /**
      * Whether this user can manage events: events module is enabled
-     * AND user has the AddEvent permission. Use this for buttons,
-     * routes, and UI gates that should hide when either condition fails.
+     * AND user has the AddEvent permission. Admins always pass.
      */
     public function canManageEvents(): bool
     {
-        return self::isEventsEnabled() && $this->isAddEvent();
+        return $this->isAdmin() || (self::isEventsEnabled() && $this->isAddEvent());
     }
 
     /**
-     * Whether this user can view events: events module is enabled.
-     * Anyone with login access can view events, so no per-user gate.
+     * Whether this user can view events. Admins always pass; other users
+     * require the Events module to be enabled system-wide.
      */
     public function canViewEvents(): bool
     {
-        return self::isEventsEnabled();
+        return $this->isAdmin() || self::isEventsEnabled();
     }
 
     public function isEmailEnabled(): bool
