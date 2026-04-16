@@ -45,6 +45,22 @@ class User extends BaseUser
         return $this->getPerson()->getFullName();
     }
 
+    // ── Consolidated Permission Checks ─────────────────────────────
+    //
+    // Every permission method follows the same contract:
+    //   1. Admin users ALWAYS return true (admin bypasses everything).
+    //   2. Non-admins need the specific per-user flag (from user_usr
+    //      column or userconfig_ucfg row) AND, for module-gated
+    //      permissions, the system-wide feature flag to be enabled.
+    //
+    // The naming convention is `isXxxEnabled()` for all permissions,
+    // regardless of which storage layer backs the raw flag.
+    //
+    // See #8667, #8458 for the consolidation rationale.
+    // ─────────────────────────────────────────────────────────────────
+
+    // -- Per-user permissions (backed by user_usr columns) --
+
     public function isAddRecordsEnabled(): bool
     {
         return $this->isAdmin() || $this->isAddRecords();
@@ -70,15 +86,6 @@ class User extends BaseUser
         return $this->isAdmin() || $this->isManageGroups();
     }
 
-    public function isFinanceEnabled(): bool
-    {
-        if (SystemConfig::getBooleanValue('bEnabledFinance')) {
-            return $this->isAdmin() || $this->isFinance();
-        }
-
-        return false;
-    }
-
     public function isNotesEnabled(): bool
     {
         return $this->isAdmin() || $this->isNotes();
@@ -87,6 +94,83 @@ class User extends BaseUser
     public function isEditSelfEnabled(): bool
     {
         return $this->isAdmin() || $this->isEditSelf();
+    }
+
+    // -- Module-gated permissions (backed by userconfig_ucfg) --
+    //    These additionally require a system-wide feature flag to be ON
+    //    for non-admin users. Admins bypass the feature flag.
+
+    public function isFinanceEnabled(): bool
+    {
+        return $this->isAdmin() || (SystemConfig::getBooleanValue('bEnabledFinance') && $this->isFinance());
+    }
+
+    public function isAddEventEnabled(): bool
+    {
+        return $this->isAdmin() || $this->isEnabledSecurity('bAddEvent');
+    }
+
+    public function isEmailEnabled(): bool
+    {
+        return $this->isAdmin() || $this->isEnabledSecurity('bEmailMailto');
+    }
+
+    public function isCreateDirectoryEnabled(): bool
+    {
+        return $this->isAdmin() || $this->isEnabledSecurity('bCreateDirectory');
+    }
+
+    // -- Module view/manage permissions (combine feature flag + per-user) --
+
+    public function canViewEvents(): bool
+    {
+        return $this->isAdmin() || self::isEventsEnabled();
+    }
+
+    public function canManageEvents(): bool
+    {
+        return $this->isAdmin() || (self::isEventsEnabled() && $this->isEnabledSecurity('bAddEvent'));
+    }
+
+    /**
+     * Whether the Events module is enabled system-wide via SystemConfig.
+     * Pure system check — no per-user permission gate.
+     */
+    public static function isEventsEnabled(): bool
+    {
+        return SystemConfig::getBooleanValue('bEnabledEvents');
+    }
+
+    // -- Consolidated permission map for API/UI consumption --
+
+    /**
+     * Return a structured map of all permissions for this user.
+     * Useful for the UserEditor UI and the user settings API.
+     * Every value reflects the effective permission (with admin bypass applied).
+     *
+     * @return array<string, bool>
+     */
+    public function getAllPermissions(): array
+    {
+        return [
+            // Core record permissions (user_usr columns)
+            'isAdmin'             => $this->isAdmin(),
+            'addRecords'          => $this->isAddRecordsEnabled(),
+            'editRecords'         => $this->isEditRecordsEnabled(),
+            'deleteRecords'       => $this->isDeleteRecordsEnabled(),
+            'menuOptions'         => $this->isMenuOptionsEnabled(),
+            'manageGroups'        => $this->isManageGroupsEnabled(),
+            'finance'             => $this->isFinanceEnabled(),
+            'notes'               => $this->isNotesEnabled(),
+            'editSelf'            => $this->isEditSelfEnabled(),
+            // Module permissions (userconfig_ucfg rows)
+            'addEvent'            => $this->isAddEventEnabled(),
+            'emailMailto'         => $this->isEmailEnabled(),
+            'createDirectory'     => $this->isCreateDirectoryEnabled(),
+            // Computed module-level gates
+            'canViewEvents'       => $this->canViewEvents(),
+            'canManageEvents'     => $this->canManageEvents(),
+        ];
     }
 
     /**
@@ -202,52 +286,11 @@ class User extends BaseUser
         return str_starts_with($hash, '$2y$') || str_starts_with($hash, '$2b$') || str_starts_with($hash, '$2a$');
     }
 
-    public function isAddEventEnabled(): bool // TODO: Create permission to manag event deletion see https://github.com/ChurchCRM/CRM/issues/4726
-    {
-        return $this->isAddEvent();
-    }
-
+    // isAddEvent() is kept as an alias for isAddEventEnabled() since it's
+    // called by isEnabledSecurity('bAddEvent') checks elsewhere in the codebase
     public function isAddEvent(): bool
     {
-        return $this->isAdmin() || $this->isEnabledSecurity('bAddEvent');
-    }
-
-    /**
-     * Whether the Events module is enabled system-wide via SystemConfig.
-     * Pure system check — no per-user permission gate.
-     */
-    public static function isEventsEnabled(): bool
-    {
-        return SystemConfig::getBooleanValue('bEnabledEvents');
-    }
-
-    /**
-     * Whether this user can manage events: events module is enabled
-     * AND user has the AddEvent permission. Use this for buttons,
-     * routes, and UI gates that should hide when either condition fails.
-     */
-    public function canManageEvents(): bool
-    {
-        return self::isEventsEnabled() && $this->isAddEvent();
-    }
-
-    /**
-     * Whether this user can view events: events module is enabled.
-     * Anyone with login access can view events, so no per-user gate.
-     */
-    public function canViewEvents(): bool
-    {
-        return self::isEventsEnabled();
-    }
-
-    public function isEmailEnabled(): bool
-    {
-        return $this->isAdmin() || $this->isEnabledSecurity('bEmailMailto');
-    }
-
-    public function isCreateDirectoryEnabled(): bool
-    {
-        return $this->isAdmin() || $this->isEnabledSecurity('bCreateDirectory');
+        return $this->isAddEventEnabled();
     }
 
     public function isLocked(): bool
