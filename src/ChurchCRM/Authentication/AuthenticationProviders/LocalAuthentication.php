@@ -228,8 +228,19 @@ class LocalAuthentication implements IAuthenticationProvider
         }
 
         // Next, if this user needs to change password, send to that page
-        // but don't redirect them if they're already on the password change page
-        $IsUserOnPasswordChangePageNow = $_SERVER['REQUEST_URI'] === $this->getPasswordChangeURL();
+        // but don't redirect them if they're already on the password change page.
+        //
+        // NOTE: previously this used strict === against getPasswordChangeURL(),
+        // which is fragile — a trailing slash, a query string, or path
+        // normalization differences between web servers (FrankenPHP in
+        // particular reports REQUEST_URI slightly differently from Apache)
+        // cause the comparison to fail, the user gets redirected to the
+        // password change page, the check fails again, and the browser hits
+        // "too many redirects". See #8405.
+        //
+        // Use str_contains for a tolerant check, matching the pattern used by
+        // the 2FA enrollment branch a few lines below.
+        $IsUserOnPasswordChangePageNow = str_contains($_SERVER['REQUEST_URI'] ?? '', '/v2/user/current/changepassword');
         if ($this->currentUser->getNeedPasswordChange() && !$IsUserOnPasswordChangePageNow) {
             LoggerUtils::getAuthLogger()->info('User needs password change; redirecting to password change', $logCtx);
             $authenticationResult->isAuthenticated = false;
