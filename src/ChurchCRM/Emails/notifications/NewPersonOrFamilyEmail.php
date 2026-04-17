@@ -109,4 +109,9 @@ class NewPersonOrFamilyEmail extends BaseEmail
 
         return '';
     }
+
+    protected function getPreheader(): string
+    {
+        return $this->getSubSubject();
+    }
 }

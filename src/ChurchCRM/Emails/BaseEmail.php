@@ -94,6 +94,7 @@ abstract class BaseEmail
             'confirmSincerely'     => SystemConfig::getValue('sConfirmSincerely'),
             'confirmSigner'        => SystemConfig::getValue('sConfirmSigner'),
             'copyrightDate'        => SystemService::getCopyrightDate(),
+            'preheader'            => $this->getPreheader(),
             'buttonNotWorkingText' => gettext("If that doesn't work, copy and paste the following link in your browser"),
             'emailErrorText'       => gettext("You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."),
             'stopEmailText'        => gettext('To stop receiving these emails, you can email'),
@@ -118,4 +119,9 @@ abstract class BaseEmail
     abstract protected function getFullURL(): string;
 
     abstract protected function getButtonText(): string;
+
+    protected function getPreheader(): string
+    {
+        return SystemConfig::getValue('sEmailPreheader') ?: '';
+    }
 }
