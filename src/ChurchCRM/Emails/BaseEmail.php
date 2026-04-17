@@ -85,6 +85,7 @@ abstract class BaseEmail
     {
         $commonTokens = [
             'toEmails'             => $this->mail->getToAddresses(),
+            'preheader'            => '',
             'churchName'           => ChurchMetaData::getChurchName(),
             'churchAddress'        => ChurchMetaData::getChurchFullAddress(),
             'churchPhone'          => ChurchMetaData::getChurchPhone(),
