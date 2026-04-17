@@ -76,6 +76,23 @@ class ChurchMetaData
         return SystemConfig::getValue('sChurchWebSite');
     }
 
+    /**
+     * Absolute URL of the church logo for use in email templates (and
+     * eventually other external-facing surfaces like letters or reports).
+     * Falls back to the bundled ChurchCRM logo if the admin-configured
+     * value is empty or not a valid http(s) URL — this way external
+     * email clients always see a working image.
+     */
+    public static function getChurchLogoURL(): string
+    {
+        $configured = trim((string) SystemConfig::getValue('sChurchLogoURL'));
+        if ($configured !== '' && filter_var($configured, FILTER_VALIDATE_URL) !== false) {
+            return $configured;
+        }
+
+        return SystemURLs::getURL() . '/Images/logo-churchcrm-350.jpg';
+    }
+
     public static function getChurchLatitude()
     {
         if (empty(SystemConfig::getValue('iChurchLatitude'))) {
