@@ -26,6 +26,12 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
         <p><?= gettext('We were unable to process your password reset request.') ?></p>
       </div>
 
+      <?php if (!empty($message ?? '')): ?>
+      <div class="alert alert-warning" role="alert">
+        <p><?= htmlspecialchars($message) ?></p>
+      </div>
+      <?php endif; ?>
+
       <!-- Error Alert Message -->
       <div class="alert alert-danger" role="alert">
         <p><?= gettext('Please try requesting a new password reset link or contact support if you continue to experience issues.') ?></p>

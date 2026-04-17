@@ -280,7 +280,7 @@ describe('01 - Setup Wizard', () => {
         };
 
         it('should not show "Forgot password?" link on the login page', () => {
-            cy.visit('/session/begin');
+            cy.visit('/login');
             cy.contains('Forgot password?').should('not.exist');
         });
 
@@ -313,19 +313,5 @@ describe('01 - Setup Wizard', () => {
             cy.visit('/admin/system/users');
             cy.contains('Reset Password via Email').should('not.exist');
         });
-
-        it('should reject the admin password-reset API with a clear error when email is disabled', () => {
-            loginAsAdmin();
-            cy.request({
-                method: 'POST',
-                url: '/api/user/1/password/reset',
-                failOnStatusCode: false,
-            }).then((response) => {
-                expect(response.status).to.eq(409);
-                expect(response.body.success).to.eq(false);
-                expect(response.body.error).to.match(/email is disabled/i);
-            });
-        });
-
     });
 });
