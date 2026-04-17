@@ -101,9 +101,13 @@ function userPasswordReset(Request $request, Response $response, array $args)
     $token->save();
     $email = new ResetPasswordTokenEmail($user, $token->getToken());
     if (!$email->send()) {
-        $logger->error($email->getError());
+        // Undelivered token serves no purpose and only widens the exposure
+        // window — drop it so the table doesn't accumulate dead rows.
+        $token->delete();
+        $logger->error('Password reset email failed for user ' . $user->getUserName() . ': ' . $email->getError());
+    } else {
+        $logger->info('Password reset token for ' . $user->getUserName() . ' sent to email address: ' . $user->getEmail());
     }
-    $logger->info('Password reset token for ' . $user->getUserName() . ' sent to email address: ' . $user->getEmail());
 
     return $response->withStatus(200);
 }

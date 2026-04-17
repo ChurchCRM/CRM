@@ -118,8 +118,12 @@ function passwordResetRequest(Request $request, Response $response, array $args)
 
     $email = new ResetPasswordTokenEmail($user, $token->getToken());
     if (!$email->send()) {
+        // The token was saved before the send attempt — if delivery fails the
+        // user never sees the link, so drop the unusable token immediately
+        // instead of letting it sit in the table until expiry.
+        $token->delete();
         $logger->error('Failed to send password reset email for user ' . $user->getUserName() . ': ' . $email->getError());
-        // Still return success to user (don't expose email issues)
+        // Still return success to user (don't expose email issues).
         return SlimUtils::renderJSON($response, ['success' => true]);
     }
 

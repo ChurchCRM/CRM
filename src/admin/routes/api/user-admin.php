@@ -22,7 +22,23 @@ $app->group('/api/user/{userId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="userId", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Password reset and email sent"),
-     *     @OA\Response(response=403, description="Admin role required")
+     *     @OA\Response(response=403, description="Admin role required"),
+     *     @OA\Response(
+     *         response=409,
+     *         description="Email delivery is disabled or SMTP is not configured, so the reset was refused",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="error", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Password was rotated but the email could not be delivered; the user is effectively locked out",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="error", type="string")
+     *         )
+     *     )
      * )
      */
     $group->post('/password/reset', function (Request $request, Response $response, array $args): Response {
@@ -41,9 +57,14 @@ $app->group('/api/user/{userId:[0-9]+}', function (RouteCollectorProxy $group): 
         $user->createTimeLineNote('password-reset');
         $email = new ResetPasswordEmail($user, $password);
         if (!$email->send()) {
-            // User's password has already been rotated but they did not receive
-            // it — escalate so admins can intervene (user is effectively locked out).
+            // Password is already rotated in the DB and the user did not receive
+            // it — they are effectively locked out. Surface a 500 to the admin
+            // UI so it's clear the action failed and manual follow-up is needed.
             LoggerUtils::getAppLogger()->error('Password reset email failed for user ' . $user->getUserName() . ': ' . $email->getError());
+            return SlimUtils::renderJSON(
+                $response->withStatus(500),
+                ['success' => false, 'error' => gettext('Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password.')]
+            );
         }
 
         return SlimUtils::renderSuccessJSON($response);
