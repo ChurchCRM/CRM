@@ -26,13 +26,24 @@ $app->group('/api/user/{userId:[0-9]+}', function (RouteCollectorProxy $group): 
      * )
      */
     $group->post('/password/reset', function (Request $request, Response $response, array $args): Response {
+        if (!SystemConfig::isEmailEnabled()) {
+            // Don't reset if we can't deliver the new credentials — the user
+            // would be locked out. Admin should use "Change Password" instead
+            // or configure email first.
+            return SlimUtils::renderJSON(
+                $response->withStatus(409),
+                ['success' => false, 'error' => gettext('Email is disabled. Configure email before resetting passwords, or use Change Password.')]
+            );
+        }
         $user = $request->getAttribute('user');
         $password = $user->resetPasswordToRandom();
         $user->save();
         $user->createTimeLineNote('password-reset');
         $email = new ResetPasswordEmail($user, $password);
         if (!$email->send()) {
-            LoggerUtils::getAppLogger()->warning($email->getError());
+            // User's password has already been rotated but they did not receive
+            // it — escalate so admins can intervene (user is effectively locked out).
+            LoggerUtils::getAppLogger()->error('Password reset email failed for user ' . $user->getUserName() . ': ' . $email->getError());
         }
 
         return SlimUtils::renderSuccessJSON($response);

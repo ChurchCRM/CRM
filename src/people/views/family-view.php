@@ -762,7 +762,7 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
                         <?php
                     } ?>
             <div class="modal-footer text-center">
-                <?php if (count($familyEmails) > 0 && !empty(SystemConfig::getValue('sSMTPHost'))) {
+                <?php if (count($familyEmails) > 0 && SystemConfig::isEmailEnabled()) {
                     ?>
                     <button type="button" id="onlineVerify"
                             class="btn btn-warning warning"><i

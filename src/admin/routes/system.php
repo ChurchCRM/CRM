@@ -245,7 +245,9 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $renderer = new PhpRenderer(__DIR__ . '/../../v2/templates/email/');
         $message = '';
 
-        if (empty(SystemConfig::getValue('sSMTPHost'))) {
+        if (!SystemConfig::getBooleanValue('bEnabledEmail')) {
+            $message = gettext('Email is disabled. Enable it in the Email Dashboard settings before testing.');
+        } elseif (empty(SystemConfig::getValue('sSMTPHost'))) {
             $message = gettext('SMTP Host is not setup, please visit the settings page');
         } elseif (empty(ChurchMetaData::getChurchEmail())) {
             $message = gettext('Church Email not set, please visit the settings page');

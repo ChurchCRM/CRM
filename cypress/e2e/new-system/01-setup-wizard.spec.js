@@ -267,4 +267,70 @@ describe('01 - Setup Wizard', () => {
             cy.contains('Password Change Successful', { timeout: 10000 }).should('be.visible');
         });
     });
+
+    describe('Email Disabled UI (fresh install has no SMTP)', () => {
+        // In a fresh install, SMTP is unconfigured, so SystemConfig::isEmailEnabled()
+        // returns false. All UI that depends on sending email must hide or warn.
+
+        const loginAsAdmin = () => {
+            cy.visit('/login');
+            cy.get('input[name=User]').type(adminCredentials.username);
+            cy.get('input[name=Password]').type(adminCredentials.password + '{enter}');
+            cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
+        };
+
+        it('should not show "Forgot password?" link on the login page', () => {
+            cy.visit('/session/begin');
+            cy.contains('Forgot password?').should('not.exist');
+        });
+
+        it('should return an email-disabled error when hitting the reset-request route', () => {
+            cy.visit('/session/forgot-password/reset-request', { failOnStatusCode: false });
+            cy.contains('Password reset is unavailable because email is disabled').should('be.visible');
+        });
+
+        it('should return success (for enumeration safety) without minting a token on the public API', () => {
+            cy.request({
+                method: 'POST',
+                url: '/api/public/user/password-reset',
+                body: { userName: 'admin' },
+                failOnStatusCode: false,
+            }).then((response) => {
+                expect(response.status).to.eq(200);
+                expect(response.body).to.have.property('success', true);
+            });
+        });
+
+        it('should show the "Email is disabled" banner on the admin users page', () => {
+            loginAsAdmin();
+            cy.visit('/admin/system/users');
+            cy.contains('Email is disabled').should('be.visible');
+            cy.contains('Set up Email').should('be.visible');
+        });
+
+        it('should hide the "Reset Password via Email" action from user dropdowns', () => {
+            loginAsAdmin();
+            cy.visit('/admin/system/users');
+            cy.contains('Reset Password via Email').should('not.exist');
+        });
+
+        it('should reject the admin password-reset API with a clear error when email is disabled', () => {
+            loginAsAdmin();
+            cy.request({
+                method: 'POST',
+                url: '/api/user/1/password/reset',
+                failOnStatusCode: false,
+            }).then((response) => {
+                expect(response.status).to.eq(409);
+                expect(response.body.success).to.eq(false);
+                expect(response.body.error).to.match(/email is disabled/i);
+            });
+        });
+
+        it('should show the "Email is disabled" banner on the UserEditor page', () => {
+            loginAsAdmin();
+            cy.visit('/UserEditor.php?PersonID=1');
+            cy.contains('Email is disabled').should('be.visible');
+        });
+    });
 });

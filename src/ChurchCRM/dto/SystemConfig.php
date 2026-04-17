@@ -530,6 +530,17 @@ class   SystemConfig
     }
 
     /**
+     * Single source of truth for whether the system can actually send email.
+     * Requires both the admin toggle (bEnabledEmail) and a valid SMTP config.
+     * Callers should use this instead of checking either flag in isolation,
+     * so password-reset / verify / notification UIs can hide consistently.
+     */
+    public static function isEmailEnabled(): bool
+    {
+        return self::getBooleanValue('bEnabledEmail') && self::hasValidMailServerSettings();
+    }
+
+    /**
      * @deprecated Use PluginManager to check Vonage plugin status instead.
      *             Will be removed in a future version.
      */

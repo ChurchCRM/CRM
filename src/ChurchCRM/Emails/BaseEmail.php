@@ -51,11 +51,11 @@ abstract class BaseEmail
 
     public function send(): bool
     {
-        if (SystemConfig::hasValidMailServerSettings()) {
+        if (SystemConfig::isEmailEnabled()) {
             return $this->mail->send();
         }
 
-        return false; // we don't have a valid setting so let us make sure we don't crash.
+        return false; // email disabled or SMTP misconfigured — skip so we don't crash.
     }
 
     public function getError(): string
