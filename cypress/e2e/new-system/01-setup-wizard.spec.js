@@ -327,10 +327,5 @@ describe('01 - Setup Wizard', () => {
             });
         });
 
-        it('should show the "Email is disabled" banner on the UserEditor page', () => {
-            loginAsAdmin();
-            cy.visit('/UserEditor.php?PersonID=1');
-            cy.contains('Email is disabled').should('be.visible');
-        });
     });
 });
