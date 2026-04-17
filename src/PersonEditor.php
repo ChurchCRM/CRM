@@ -7,9 +7,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Emails\notifications\NewPersonOrFamilyEmail;
 use ChurchCRM\model\ChurchCRM\Family;
-use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonCustom;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
@@ -416,33 +414,16 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $person->save();
         $person->reload();
 
-        $note = new Note();
-        $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
-        // If this is a new person, get the key back and insert a blank row into the person_custom table
+        // If this is a new person, get the key back and insert a blank row into the person_custom table.
+        // Timeline notes and notification emails are handled automatically by the Person Propel hooks:
+        // Person::postInsert() for creates, Person::postUpdate() for edits.
         if (!$personAlreadyExist) {
             $iPersonID = $person->getId();
 
             $personCustom = new PersonCustom();
             $personCustom->setPerId($iPersonID);
             $personCustom->save();
-
-            $note->setPerId($iPersonID);
-            $note->setText(gettext('Created'));
-            $note->setType('create');
-
-            if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs"))) {
-                $person = PersonQuery::create()->findOneByID($iPersonID);
-                $NotificationEmail = new NewPersonOrFamilyEmail($person);
-                if (!$NotificationEmail->send()) {
-                    LoggerUtils::getAppLogger()->warning($NotificationEmail->getError());
-                }
-            }
-        } else {
-            $note->setPerId($iPersonID);
-            $note->setText(gettext('Updated'));
-            $note->setType('edit');
         }
-        $note->save();
 
         $photo = new Photo('Person', $iPersonID);
         $photo->refresh();
