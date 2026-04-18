@@ -9,11 +9,13 @@ body:
       value: |
         Thanks for helping us improve ChurchCRM! 💙
 
-        **Need help faster?** Join our Discord: <https://discord.gg/tuWyFzj3Nj>
-        Maintainers and community members hang out there and usually respond quicker than on GitHub.
+        **Every bug belongs in a GitHub issue** — it's how we track work and ship fixes. Please fill out the form below.
 
-        **Tip:** The fastest way to report a bug — and auto-capture system info — is via the in-app reporter:
+        **Tip:** The easiest way to file a bug (auto-captures system info) is the in-app reporter:
         **Support → Report an Issue** inside your ChurchCRM installation.
+
+        **Urgent, or want to chat while you file?** Come into our Discord and ping a maintainer — but please still open the issue here so it doesn't get lost:
+        👉 <https://discord.gg/tuWyFzj3Nj>
 
   - type: checkboxes
     id: preflight
@@ -142,6 +144,6 @@ body:
         ---
 
         📘 **Full diagnostics guide:** <https://docs.churchcrm.io/administration/bug-reporting-and-diagnostics>
-        💬 **Faster help in Discord:** <https://discord.gg/tuWyFzj3Nj>
+        💬 **Urgent or want to discuss?** Join Discord: <https://discord.gg/tuWyFzj3Nj> — but please keep the issue open here so we can track the fix.
 
         Thank you for reporting this! 🙏

@@ -1,6 +1,8 @@
 ## Thanks for the bug report! 🐛
 
-💬 **Need help fast?** Ask in our Discord — often the quickest way to reach maintainers:
+Filing it here is exactly right — GitHub issues are how we track and ship fixes. 🙏
+
+💬 **Urgent, or want to chat while we investigate?** Ping us on Discord — this issue stays the source of truth:
 👉 **<https://discord.gg/tuWyFzj3Nj>**
 
 To help us investigate quickly, please make sure the issue includes:
@@ -46,4 +48,4 @@ Open DevTools → **Console** + **Network** → reproduce → paste any red erro
 
 ---
 
-**Note:** ChurchCRM is maintained by volunteers. Response times on GitHub vary — **Discord is usually faster**. Thanks for your patience! ❤️
+**Note:** ChurchCRM is maintained by volunteers, so GitHub response times can vary. If it's urgent, feel free to nudge us on [Discord](https://discord.gg/tuWyFzj3Nj) — we'll still track and resolve the issue here. Thanks for your patience! ❤️

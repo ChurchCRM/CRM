@@ -9,7 +9,9 @@ body:
       value: |
         Thanks for sharing your idea! 💡
 
-        **Want to discuss it first?** Drop into our Discord — it's often the quickest way to get feedback and gauge community interest:
+        Filing it as a GitHub issue is the right move — that's how we triage, track, and ship. Please fill out the form below.
+
+        **Want to brainstorm or gauge interest first?** Join our Discord for real-time chat, then come back and open this issue so the idea doesn't get lost:
         👉 <https://discord.gg/tuWyFzj3Nj>
 
   - type: textarea
@@ -44,5 +46,5 @@ body:
     attributes:
       value: |
         ---
-        💬 **Discuss in real time:** <https://discord.gg/tuWyFzj3Nj>
+        💬 **Want to discuss in real time?** <https://discord.gg/tuWyFzj3Nj>
         📚 **Documentation:** <https://docs.churchcrm.io>

@@ -1,7 +1,6 @@
 ## Thanks for opening an issue! 🙏
 
-💬 **Need faster help? Join our Discord:**
-👉 **<https://discord.gg/tuWyFzj3Nj>**
+GitHub issues are exactly where this belongs — it's how we track and ship work.
 
 We couldn't auto-detect the issue type. To help us route this correctly, please do one of the following:
 
@@ -34,4 +33,4 @@ We couldn't auto-detect the issue type. To help us route this correctly, please 
 
 ---
 
-**Note:** ChurchCRM is maintained by volunteers. **Discord is usually faster** than GitHub for support. Thanks for your patience! 🙏
+**Note:** ChurchCRM is maintained by volunteers, so GitHub response times can vary. If it's urgent or you'd like to chat, drop into [Discord](https://discord.gg/tuWyFzj3Nj) — we'll still track everything here. Thanks for your patience! 🙏

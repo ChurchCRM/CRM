@@ -7,12 +7,12 @@ body:
   - type: markdown
     attributes:
       value: |
-        👋 **For the fastest answer, ask in Discord:**
+        👋 **Questions belong in GitHub** — they help the next person who searches for the same thing. Please fill in the form below.
+
+        **Want to chat live or have an urgent question?** Ping us on Discord — then still open the issue here so the answer is searchable:
         👉 <https://discord.gg/tuWyFzj3Nj>
 
-        Maintainers and experienced users usually respond within hours. GitHub issues can take longer because ChurchCRM is maintained by volunteers.
-
-        If your question benefits from a persistent, searchable thread, GitHub is fine — fill in the form below.
+        Before opening: please check [the docs](https://docs.churchcrm.io) and [existing discussions](https://github.com/ChurchCRM/CRM/discussions).
 
   - type: textarea
     id: goal
@@ -61,7 +61,7 @@ body:
     attributes:
       value: |
         ---
-        💬 **Fastest help:** <https://discord.gg/tuWyFzj3Nj>
+        💬 **Urgent or want to chat?** <https://discord.gg/tuWyFzj3Nj>
         📘 **Diagnostics guide:** <https://docs.churchcrm.io/administration/bug-reporting-and-diagnostics>
 
         Thanks for asking! 🙏

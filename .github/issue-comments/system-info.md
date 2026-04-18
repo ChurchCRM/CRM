@@ -2,7 +2,7 @@
 
 We can see you've included system diagnostics — very helpful. We'll review this and respond as soon as we can.
 
-💬 **Want a quicker reply?** Drop into our Discord — maintainers often respond there first:
+💬 **Urgent, or want to talk it through live?** Ping us on Discord — this issue stays the source of truth for tracking the fix:
 👉 **<https://discord.gg/tuWyFzj3Nj>**
 
 ---

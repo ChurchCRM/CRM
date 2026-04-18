@@ -1,14 +1,14 @@
 blank_issues_enabled: false
 contact_links:
-  - name: 💬 Discord — Fastest Support
-    url: https://discord.gg/tuWyFzj3Nj
-    about: Chat with maintainers and the community in real time — usually the quickest way to get help
   - name: 🐛 Report Bug via ChurchCRM App (Recommended)
     url: https://docs.churchcrm.io/administration/bug-reporting-and-diagnostics
-    about: Use Support → Report an Issue in your ChurchCRM installation for automatic system info capture
+    about: Use Support → Report an Issue in your ChurchCRM installation for automatic system info capture — it files a GitHub issue for you
   - name: 📚 Documentation
     url: https://docs.churchcrm.io
-    about: Check our documentation for answers to common questions
+    about: Check our documentation for answers to common questions before opening an issue
+  - name: 💬 Discord (Urgent? Want to chat?)
+    url: https://discord.gg/tuWyFzj3Nj
+    about: Join our Discord to chat with maintainers in real time — please still open a GitHub issue so we can track and fix it
   - name: 🗣️ Community Discussions
     url: https://github.com/ChurchCRM/CRM/discussions
     about: Ask questions and discuss ideas with the community
