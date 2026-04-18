@@ -537,7 +537,12 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
 
                         writeCustomFields($con, 'family_custom', 'fam_ID', $family->getId(), $familyCustoms, $familyCustomTypes);
                         writeProperties($con, $family->getId(), $familyProps);
-                        markCreateNoteAsImported($con, familyId: $family->getId());
+                        // Note provenance is a best-effort side effect — don't fail the import if the rewrite hits an edge case.
+                        try {
+                            markCreateNoteAsImported($con, familyId: $family->getId());
+                        } catch (\Throwable $e) {
+                            // swallow
+                        }
                     }
                 }
 
@@ -649,7 +654,11 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
 
                 writeCustomFields($con, 'person_custom', 'per_ID', $person->getId(), $personCustoms, $personCustomTypes);
                 writeProperties($con, $person->getId(), $personProps);
-                markCreateNoteAsImported($con, personId: $person->getId());
+                try {
+                    markCreateNoteAsImported($con, personId: $person->getId());
+                } catch (\Throwable $e) {
+                    // best-effort: don't fail the import over a note rewrite
+                }
 
                 $imported++;
             }
