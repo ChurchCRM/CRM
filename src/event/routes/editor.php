@@ -245,14 +245,9 @@ $app->get('/editor[/{id}]', function (Request $request, Response $response, arra
         ];
     }
 
-    // Determine if linked-group selector should show
-    $showLinkedGroup = false;
-    if ($iTypeID > 0) {
-        $evtTypeObj = EventTypeQuery::create()->findOneById($iTypeID);
-        if ($evtTypeObj !== null && ($evtTypeObj->getGroupId() || $evtTypeObj->isSundaySchool())) {
-            $showLinkedGroup = true;
-        }
-    }
+    // Show the linked-group selector for any event type so users can link any
+    // event to a group for Kiosk check-in, not only Sunday School types.
+    $showLinkedGroup = $iTypeID > 0;
 
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
