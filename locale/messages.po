@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-13 19:29+0000\n"
+"POT-Creation-Date: 2026-04-18 00:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -286,6 +286,9 @@ msgid "About"
 msgstr ""
 
 msgid "About WebDAV Backups"
+msgstr ""
+
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
 msgstr ""
 
 msgid "Accepted format: .csv"
@@ -2798,6 +2801,9 @@ msgstr ""
 msgid "Default Image Styles"
 msgstr ""
 
+msgid "Default Inbox Preview Text"
+msgstr ""
+
 msgid "Default List ID"
 msgstr ""
 
@@ -3455,6 +3461,15 @@ msgid "Email is Disabled"
 msgstr ""
 
 msgid "Email is Not Valid"
+msgstr ""
+
+msgid "Email is disabled"
+msgstr ""
+
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr ""
+
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
 msgstr ""
 
 msgid "Email links in group and people views"
@@ -6792,6 +6807,9 @@ msgstr ""
 msgid "New to"
 msgstr ""
 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr ""
+
 msgid "Newsletter"
 msgstr ""
 
@@ -7321,6 +7339,9 @@ msgstr ""
 msgid "Optional notes about attendance..."
 msgstr ""
 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr ""
+
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
 msgstr ""
 
@@ -7489,16 +7510,25 @@ msgstr ""
 msgid "Password Reset Successful"
 msgstr ""
 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr ""
+
 msgid "Password reset emails — users cannot recover their accounts"
 msgstr ""
 
 msgid "Password reset for"
 msgstr ""
 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr ""
+
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr ""
 
 msgid "Password successfully changed for"
+msgstr ""
+
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
 msgstr ""
 
 msgid "Passwords do not match"
@@ -9125,6 +9155,9 @@ msgstr ""
 msgid "Set up"
 msgstr ""
 
+msgid "Set up Email"
+msgstr ""
+
 msgid "Set up a new fundraiser campaign or event"
 msgstr ""
 
@@ -9699,6 +9732,9 @@ msgstr ""
 msgid "Test Connection"
 msgstr ""
 
+msgid "Test SMTP Email"
+msgstr ""
+
 msgid "Test WebDAV Connection"
 msgstr ""
 
@@ -9928,6 +9964,9 @@ msgid "This field is required"
 msgstr ""
 
 msgid "This group currently has no properties!  You can add them in the Group Editor."
+msgstr ""
+
+msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
 msgstr ""
 
 msgid "This is how your church information will appear on reports and directories."
