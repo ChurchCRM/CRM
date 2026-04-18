@@ -48,6 +48,7 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 | [i18n & Localization](./i18n-localization.md) | Adding UI text, translations |
 | [AI Locale Translation](./locale-ai-translation.md) | Translating missing terms via Claude AI before a release |
 | [Locale Stack Ranking](./locale-stack-ranking.md) | **NEW** — Prioritize translation effort by impact (TIER-1: 53% world pop, TIER-2: 80%, etc.) |
+| [Currency Localization](./currency-localization.md) | **NEW** — Displaying money with configurable symbol / position / separators (PHP, JS, DataTables, Chart.js, CSS, PDFs). Required for any finance-adjacent change. Epic: [#8459](https://github.com/ChurchCRM/CRM/issues/8459) |
 
 ## Tabler Migration (Vision 2026)
 
@@ -191,6 +192,7 @@ Follow these steps to run Cypress tests locally and generate machine-readable re
 - **Add plugin**: `plugin-system.md` → `plugin-development.md` → `api-development.md` → `git-workflow.md`
 - **Optimize queries**: `performance-optimization.md` → `database-operations.md` → `service-layer.md`
 - **Add UI text**: `i18n-localization.md` → `frontend-development.md` → `git-workflow.md`
+- **Render money / currency anywhere**: `currency-localization.md` → `configuration-management.md` → `frontend-development.md` → `git-workflow.md`
 - **Manage security advisory** (publish GHSA, request CVE, notify reporters): `github-interaction.md` (Security Advisory Management section) → `security-best-practices.md`
 - **Write release notes**: `release-notes.md` → `github-interaction.md`
 - **Publish a release**: `release-notes.md` → `social-media-release.md` → `github-interaction.md`
