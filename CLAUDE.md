@@ -138,6 +138,18 @@ After every push to a PR branch, resolve the open review threads that the just-p
 
 Never leave addressed-but-unresolved review threads dangling after a push.
 
+### Feature Adds and Big Refactors Require a Docs Task
+
+Any PR that adds a user-visible feature, renames/moves a route, or materially refactors behavior users interact with MUST be accompanied by a sibling GitHub issue for updating the user docs at [docs.churchcrm.io](https://docs.churchcrm.io).
+
+Before opening the PR:
+
+1. Open (or identify) a `documentation` issue in the same project/milestone as the feature issue, scoped to the user-doc changes needed.
+2. Link the docs issue from the PR description ("Docs: #XXXX").
+3. The feature issue / milestone cannot be closed until the docs issue is also resolved.
+
+Rule of thumb: if a user's workflow, on-screen terminology, CSV format, route URL, or setting changes, a docs issue is required. Internal refactors with no user-visible surface change are exempt.
+
 ---
 
 ## Test Review & Commit Workflow
