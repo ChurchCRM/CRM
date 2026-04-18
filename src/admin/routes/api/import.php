@@ -2,8 +2,13 @@
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\Family;
+use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
+use ChurchCRM\model\ChurchCRM\PropertyQuery;
+use ChurchCRM\model\ChurchCRM\RecordProperty;
+use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
@@ -12,6 +17,40 @@ use Propel\Runtime\Propel;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
+
+// Prefixes used to encode extension-data mappings in the column-mapping payload
+const CSV_PERSON_CUSTOM_PREFIX = 'pcustom_';
+const CSV_FAMILY_CUSTOM_PREFIX = 'fcustom_';
+const CSV_PERSON_PROP_PREFIX   = 'pprop_';
+const CSV_FAMILY_PROP_PREFIX   = 'fprop_';
+
+// Human-readable labels for the built-in Person/Family columns. Keys must match CSV_FIELD_ALIASES.
+const CSV_CORE_FIELD_LABELS = [
+    'FamilyID'       => 'Family ID',
+    'Title'          => 'Title',
+    'FirstName'      => 'First Name',
+    'MiddleName'     => 'Middle Name',
+    'LastName'       => 'Last Name',
+    'Suffix'         => 'Suffix',
+    'Gender'         => 'Gender',
+    'Envelope'       => 'Envelope',
+    'Address1'       => 'Address 1',
+    'Address2'       => 'Address 2',
+    'City'           => 'City',
+    'State'          => 'State',
+    'Zip'            => 'Zip / Postal Code',
+    'Country'        => 'Country',
+    'HomePhone'      => 'Home Phone',
+    'WorkPhone'      => 'Work Phone',
+    'MobilePhone'    => 'Mobile Phone',
+    'Email'          => 'Email',
+    'WorkEmail'      => 'Work Email',
+    'BirthDate'      => 'Birth Date',
+    'MembershipDate' => 'Membership Date',
+    'WeddingDate'    => 'Wedding Date',
+    'Classification' => 'Classification',
+    'FamilyRole'     => 'Family Role',
+];
 
 // Maps ChurchCRM field names to known CSV header aliases (all lowercase)
 const CSV_FIELD_ALIASES = [
@@ -41,7 +80,7 @@ const CSV_FIELD_ALIASES = [
     'FamilyRole'     => ['familyrole', 'family_role', 'family role', 'role', 'household_role', 'household role'],
 ];
 
-function autoMapHeader(string $header): ?string
+function autoMapHeader(string $header, array $extensionFields = []): ?string
 {
     $normalized = strtolower(trim($header));
     foreach (CSV_FIELD_ALIASES as $field => $aliases) {
@@ -49,7 +88,170 @@ function autoMapHeader(string $header): ?string
             return $field;
         }
     }
+    // Fallback: match custom fields / properties by their display name
+    foreach ($extensionFields as $field) {
+        if (strtolower(trim($field['label'])) === $normalized) {
+            return $field['key'];
+        }
+    }
     return null;
+}
+
+/**
+ * Build the full list of mappable target fields: core Person/Family columns,
+ * custom person/family fields, and person/family properties — each tagged
+ * with a human-readable label and a group for <optgroup> rendering.
+ *
+ * @return array<int, array{key: string, label: string, group: string}>
+ */
+function buildCsvImportFieldCatalog(): array
+{
+    $fields = [];
+
+    foreach (CSV_CORE_FIELD_LABELS as $key => $label) {
+        $fields[] = ['key' => $key, 'label' => gettext($label), 'group' => gettext('Person / Family')];
+    }
+
+    foreach (PersonCustomMasterQuery::create()->orderByOrder()->find() as $cf) {
+        $fields[] = [
+            'key'   => CSV_PERSON_CUSTOM_PREFIX . $cf->getId(),
+            'label' => $cf->getName(),
+            'group' => gettext('Person Custom'),
+        ];
+    }
+
+    foreach (FamilyCustomMasterQuery::create()->orderByOrder()->find() as $cf) {
+        $fields[] = [
+            'key'   => CSV_FAMILY_CUSTOM_PREFIX . $cf->getField(),
+            'label' => $cf->getName(),
+            'group' => gettext('Family Custom'),
+        ];
+    }
+
+    foreach (PropertyQuery::create()->filterByProClass('p')->orderByProName()->find() as $prop) {
+        $fields[] = [
+            'key'   => CSV_PERSON_PROP_PREFIX . $prop->getProId(),
+            'label' => $prop->getProName(),
+            'group' => gettext('Person Property'),
+        ];
+    }
+
+    foreach (PropertyQuery::create()->filterByProClass('f')->orderByProName()->find() as $prop) {
+        $fields[] = [
+            'key'   => CSV_FAMILY_PROP_PREFIX . $prop->getProId(),
+            'label' => $prop->getProName(),
+            'group' => gettext('Family Property'),
+        ];
+    }
+
+    return $fields;
+}
+
+/**
+ * REPLACE INTO person_custom/family_custom using parameterized SQL. Column names
+ * are data-driven (c1, c2, ...) so we can't use Propel setters; we validate each
+ * column matches /^c\d+$/ and only accept columns present in $typeMap before
+ * including them in the SQL.
+ *
+ * @param array<string, string> $values  column name (e.g. "c1") => raw CSV value
+ * @param array<string, int>    $typeMap column name => custom field type_ID
+ */
+function writeCustomFields(\Propel\Runtime\Connection\ConnectionInterface $con, string $table, string $pkColumn, int $recordId, array $values, array $typeMap): void
+{
+    if (empty($values)) {
+        return;
+    }
+    $safeColumns = [];
+    $params      = [];
+    foreach ($values as $col => $raw) {
+        if (!preg_match('/^c\d+$/', $col) || !isset($typeMap[$col])) {
+            continue;
+        }
+        $safeColumns[] = '`' . $col . '` = ?';
+        $params[]      = formatCustomFieldValue($typeMap[$col], (string) $raw);
+    }
+    if (empty($safeColumns)) {
+        return;
+    }
+    $sql = sprintf(
+        'REPLACE INTO `%s` SET `%s` = ?, %s',
+        $table,
+        $pkColumn,
+        implode(', ', $safeColumns),
+    );
+    $stmt = $con->prepare($sql);
+    $stmt->execute(array_merge([$recordId], $params));
+}
+
+/**
+ * Assign properties to a person or family via the RecordProperty Propel model.
+ * Skips property IDs that don't match the target class ('p' or 'f') to prevent
+ * a user from mapping a family property onto a person row and vice versa.
+ *
+ * @param array<int, string> $assignments property_pro.pro_ID => value string
+ */
+function writeProperties(int $recordId, array $assignments): void
+{
+    foreach ($assignments as $proId => $value) {
+        $existing = RecordPropertyQuery::create()
+            ->filterByPropertyId($proId)
+            ->filterByRecordId($recordId)
+            ->findOne();
+        if ($existing !== null) {
+            $existing->setPropertyValue((string) $value);
+            $existing->save();
+            continue;
+        }
+        $rp = new RecordProperty();
+        $rp->setPropertyId($proId);
+        $rp->setRecordId($recordId);
+        $rp->setPropertyValue((string) $value);
+        $rp->save();
+    }
+}
+
+/**
+ * Format a raw CSV value for writing into a `person_custom` / `family_custom`
+ * column based on the custom field's type_ID. Returns `null` to clear the value.
+ */
+function formatCustomFieldValue(int $typeId, string $raw)
+{
+    $raw = trim($raw);
+    if ($raw === '') {
+        return null;
+    }
+
+    switch ($typeId) {
+        case 1: // True / False ENUM('false','true')
+            $lower = strtolower($raw);
+            return match ($lower) {
+                'true', 'yes', 'y', '1', 't' => 'true',
+                'false', 'no', 'n', '0', 'f' => 'false',
+                default                      => null,
+            };
+        case 2: // DATE
+            $ts = strtotime($raw);
+            return $ts === false ? null : date('Y-m-d', $ts);
+        case 6: // YEAR
+            return ctype_digit($raw) && strlen($raw) === 4 ? $raw : null;
+        case 7: // ENUM('winter','spring','summer','fall')
+            $lower = strtolower($raw);
+            return in_array($lower, ['winter', 'spring', 'summer', 'fall'], true) ? $lower : null;
+        case 8: // INT
+        case 9: // MEDIUMINT (person-from-group FK)
+        case 12: // TINYINT (custom list option FK)
+            $int = filter_var($raw, FILTER_VALIDATE_INT);
+            return $int === false ? null : (string) $int;
+        case 10: // DECIMAL money
+            $clean = str_replace([',', '$'], '', $raw);
+            return is_numeric($clean) ? $clean : null;
+        case 3: // VARCHAR(50)
+        case 4: // VARCHAR(100)
+        case 5: // TEXT
+        case 11: // Phone VARCHAR(30)
+        default:
+            return $raw;
+    }
 }
 
 $app->group('/api/import', function (RouteCollectorProxy $group): void {
@@ -130,10 +332,14 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
             break;
         }
 
-        // Build auto-mapping suggestions
+        $fieldCatalog = buildCsvImportFieldCatalog();
+
+        // Use custom/property entries (everything past the core columns) as auto-map fallback
+        $extensionFields = array_slice($fieldCatalog, count(CSV_CORE_FIELD_LABELS));
+
         $mappings = [];
         foreach ($headers as $header) {
-            $mappings[$header] = autoMapHeader($header);
+            $mappings[$header] = autoMapHeader($header, $extensionFields);
         }
 
         return SlimUtils::renderJSON($response, [
@@ -141,7 +347,7 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
             'token'    => $token,
             'headers'  => $headers,
             'mappings' => $mappings,
-            'fields'   => array_keys(CSV_FIELD_ALIASES),
+            'fields'   => $fieldCatalog,
             'sample'   => $sample,
         ]);
     });
@@ -203,13 +409,52 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
             $familyRoleMap[strtolower($role->getOptionName())] = $role->getOptionId();
         }
 
+        // Load custom-field type_ID maps once so we can cast values on write.
+        // Keys are the raw column names in `person_custom` / `family_custom` (e.g. "c1", "c2").
+        $personCustomTypes = [];
+        foreach (PersonCustomMasterQuery::create()->find() as $cf) {
+            $personCustomTypes[$cf->getId()] = (int) $cf->getTypeId();
+        }
+        $familyCustomTypes = [];
+        foreach (FamilyCustomMasterQuery::create()->find() as $cf) {
+            $familyCustomTypes[$cf->getField()] = (int) $cf->getTypeId();
+        }
+
         try {
             foreach ($csv->getRecords() as $row) {
-                // Map CSV row to a flat key=>value array using the column mapping
-                $data = [];
+                // Partition the mapping into core / person-custom / family-custom / properties
+                $data           = [];
+                $personCustoms  = [];
+                $familyCustoms  = [];
+                $personProps    = [];
+                $familyProps    = [];
                 foreach ($mapping as $csvHeader => $crmField) {
-                    if (!empty($crmField) && isset($row[$csvHeader])) {
-                        $data[$crmField] = trim($row[$csvHeader]);
+                    if (empty($crmField) || !isset($row[$csvHeader])) {
+                        continue;
+                    }
+                    $value = trim($row[$csvHeader]);
+                    if (str_starts_with($crmField, CSV_PERSON_CUSTOM_PREFIX)) {
+                        $col = substr($crmField, strlen(CSV_PERSON_CUSTOM_PREFIX));
+                        if (preg_match('/^c\d+$/', $col) && isset($personCustomTypes[$col])) {
+                            $personCustoms[$col] = $value;
+                        }
+                    } elseif (str_starts_with($crmField, CSV_FAMILY_CUSTOM_PREFIX)) {
+                        $col = substr($crmField, strlen(CSV_FAMILY_CUSTOM_PREFIX));
+                        if (preg_match('/^c\d+$/', $col) && isset($familyCustomTypes[$col])) {
+                            $familyCustoms[$col] = $value;
+                        }
+                    } elseif (str_starts_with($crmField, CSV_PERSON_PROP_PREFIX)) {
+                        $proId = (int) substr($crmField, strlen(CSV_PERSON_PROP_PREFIX));
+                        if ($proId > 0) {
+                            $personProps[$proId] = $value;
+                        }
+                    } elseif (str_starts_with($crmField, CSV_FAMILY_PROP_PREFIX)) {
+                        $proId = (int) substr($crmField, strlen(CSV_FAMILY_PROP_PREFIX));
+                        if ($proId > 0) {
+                            $familyProps[$proId] = $value;
+                        }
+                    } else {
+                        $data[$crmField] = $value;
                     }
                 }
 
@@ -245,6 +490,9 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                         $family->setEnteredBy(AuthenticationManager::getCurrentUser()->getId());
                         $family->save($con);
                         $familyCache[$csvFamilyId] = $family;
+
+                        writeCustomFields($con, 'family_custom', 'fam_ID', $family->getId(), $familyCustoms, $familyCustomTypes);
+                        writeProperties($family->getId(), $familyProps);
                     }
                 }
 
@@ -348,6 +596,10 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                 $person->setDateEntered(date('YmdHis'));
                 $person->setEnteredBy(AuthenticationManager::getCurrentUser()->getId());
                 $person->save($con);
+
+                writeCustomFields($con, 'person_custom', 'per_ID', $person->getId(), $personCustoms, $personCustomTypes);
+                writeProperties($person->getId(), $personProps);
+
                 $imported++;
             }
 

@@ -120,6 +120,64 @@ describe(
             });
         });
 
+        it("Verify CSV Import sets custom fields and properties", () => {
+            // Fixture headers: "Highest Degree Received" (person custom c3, seed.sql),
+            // "Disabled" (person property pro_ID 1), "Single Parent" (family property pro_ID 2)
+            cy.visit("admin/import/csv");
+            cy.get("#csvFile").selectFile("cypress/fixtures/test_extension_import.csv", { force: true });
+            cy.get("#csv-import-form").submit();
+            cy.get("#mapping-card").should("be.visible");
+
+            // Mapping dropdowns must render <optgroup> entries for each extension category
+            cy.get("#mapping-tbody").within(() => {
+                cy.get("select.mapping-select").first().then(($sel) => {
+                    const groups = Array.from($sel[0].querySelectorAll("optgroup")).map((g) => g.label);
+                    expect(groups).to.include.members([
+                        "Person Custom",
+                        "Person Property",
+                        "Family Property",
+                    ]);
+                });
+            });
+
+            cy.get("#execute-import").click();
+            cy.get("#summary-card").should("be.visible");
+            cy.get("#summary-imported").should("not.have.text", "0");
+
+            cy.request("GET", "/api/search/ExtTest").then((response) => {
+                expect(response.status).to.eq(200);
+                const personsGroup = response.body.find((g) => g.text.startsWith("Persons"));
+                expect(personsGroup).to.exist;
+                expect(personsGroup.children).to.have.length.at.least(2);
+
+                const byFirstName = {};
+                personsGroup.children.forEach((child) => {
+                    const match = child.uri.match(/PersonID=(\d+)/);
+                    if (match) byFirstName[child.text.split(" ")[0]] = match[1];
+                });
+
+                const customAndPropId = byFirstName["customAndProp"];
+                expect(customAndPropId, "customAndProp person imported").to.exist;
+
+                // Person property "Disabled" (pro_ID 1) should be assigned to both imported rows
+                cy.makePrivateAdminAPICall(
+                    "GET",
+                    `/api/people/properties/person/${customAndPropId}`,
+                    null,
+                    200,
+                ).then((propResp) => {
+                    const props = propResp.body;
+                    const disabled = props.find((p) => Number(p.PropertyId ?? p.ProId) === 1);
+                    expect(disabled, "Disabled property assigned to customAndProp").to.exist;
+                });
+
+                // Custom field "Highest Degree Received" (c3) is rendered on the PersonView page.
+                // No dedicated read API exists for person_custom values, so assert via the DOM.
+                cy.visit(`PersonView.php?PersonID=${customAndPropId}`);
+                cy.contains("PhD in Theology").should("exist");
+            });
+        });
+
         it("Verify CSV Import sets Classification and FamilyRole", () => {
             cy.visit("admin/import/csv");
             // Attach the classification fixture (has Classification + FamilyRole columns)

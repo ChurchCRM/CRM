@@ -1,0 +1,3 @@
+FamilyID,LastName,FirstName,Email,Highest Degree Received,Disabled,Single Parent
+200,ExtTest,customAndProp,customAndProp@example.com,PhD in Theology,yes,no
+200,ExtTest,propOnly,propOnly@example.com,,yes,
