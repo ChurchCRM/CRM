@@ -1,23 +1,40 @@
-## Thanks for the question!
+## Thanks for the question! ❓
 
-To help us answer quickly, please include:
+💬 **Fastest answer: ask in Discord** — maintainers and experienced users hang out there:
+👉 **<https://discord.gg/tuWyFzj3Nj>**
 
-- **What you're trying to do**: Your goal or workflow
-- **What you've tried**: Steps or settings you've attempted
-- **Expected behavior**: What you expected to happen
+To help us answer quickly here on GitHub, please make sure to include:
 
-**Need to attach system details?** If you're an admin:
-
-👉 **Admin → System Maintenance → System Logs** (or click the debug icon)
-
-Attach logs or screenshots if helpful. Please redact any private information.
-
-**Screenshots help**: A quick image can clarify your question.
-
-**Advanced users**: If this is a UI flow you can reproduce, the Cypress Recorder helps. Capture the steps and attach an exported spec.
-
-👉 **[Bug Reporting & Diagnostics Guide](https://docs.churchcrm.io/administration/bug-reporting-and-diagnostics)**
+- **What you're trying to do** — your goal or workflow
+- **What you've tried** — steps, settings, or docs you've checked
+- **Expected behavior** — what you thought would happen
 
 ---
 
-**Note:** ChurchCRM is maintained by volunteers. While we try to respond to every question quickly, there may be a delay in our response depending on availability. Thanks for asking! 🙂
+### 📋 If your question involves an error
+
+**1. In-app logs (easiest, admins only)**
+👉 **Admin → System Maintenance → System Logs** — or click the 🐞 debug icon in the footer.
+
+**2. PHP error log (server shell access)**
+- `/var/log/php-fpm/error.log`
+- `/var/log/apache2/error.log`
+- `/var/log/nginx/error.log`
+- or wherever `error_log` points in `php.ini`
+
+**3. Docker**
+```sh
+docker logs <container-name> --tail 200
+```
+
+Please redact any private data before pasting.
+
+---
+
+**Power users:** A [Cypress Recorder](https://docs.cypress.io/) capture helps us reproduce UI flows.
+
+📘 **[Diagnostics Guide](https://docs.churchcrm.io/administration/bug-reporting-and-diagnostics)**
+
+---
+
+**Note:** ChurchCRM is maintained by volunteers. Response times on GitHub vary — **Discord is usually faster**. Thanks for asking! 🙏

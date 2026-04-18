@@ -1,17 +1,37 @@
 ## Thanks for the detailed report! 🙏
 
-We can see you've included system diagnostics, which is super helpful. We'll review this and get back to you as soon as we can.
+We can see you've included system diagnostics — very helpful. We'll review this and respond as soon as we can.
 
-**If you're seeing an error:** Please also share the error logs to help us investigate faster.
+💬 **Want a quicker reply?** Drop into our Discord — maintainers often respond there first:
+👉 **<https://discord.gg/tuWyFzj3Nj>**
 
-**How to collect logs** — If you're an admin:
+---
 
-👉 **Admin → System Maintenance → System Logs** (or click the debug icon in the footer)
+### 🧭 If you saw a server-side error, please add the logs
 
-The logs usually contain the specific error that triggered the issue.
+**1. In-app (easiest, admins only)**
+👉 **Admin → System Maintenance → System Logs** — or click the 🐞 debug icon in the footer.
 
-**Please note:** ChurchCRM is maintained by volunteers. While we try to respond to every issue quickly, there may be a delay in our response depending on availability.
+**2. PHP error log (server shell access)**
+- `/var/log/php-fpm/error.log`
+- `/var/log/apache2/error.log`
+- `/var/log/nginx/error.log`
+- or wherever `error_log` points in your `php.ini`
 
-In the meantime, if you have any additional information (like screenshots or steps to reproduce), feel free to add them to this issue.
+Run `tail -n 200 <path>` right after reproducing the bug.
 
-Thank you for your patience and for helping us improve ChurchCRM! 🙌
+**3. Docker users**
+```sh
+docker logs <container-name> --tail 200
+```
+
+**4. Browser DevTools**
+Open Console + Network tab → reproduce → paste any errors / failed requests.
+
+⚠️ **Please redact private data** (names, emails, API keys) before pasting.
+
+---
+
+**Please note:** ChurchCRM is maintained by volunteers. While we try to respond quickly, there may be a delay. If you add logs, screenshots, or steps to reproduce, it speeds things up a lot.
+
+Thanks for helping us improve ChurchCRM! 🙌
