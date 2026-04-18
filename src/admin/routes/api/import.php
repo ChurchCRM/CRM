@@ -88,7 +88,8 @@ function autoMapHeader(string $header, array $extensionFields = []): ?string
             return $field;
         }
     }
-    // Fallback: match custom fields / properties by their display name
+    // Fallback: case-insensitive exact match of the CSV header against the
+    // display name of a custom field or property.
     foreach ($extensionFields as $field) {
         if (strtolower(trim($field['label'])) === $normalized) {
             return $field['key'];
@@ -148,10 +149,14 @@ function buildCsvImportFieldCatalog(): array
 }
 
 /**
- * REPLACE INTO person_custom/family_custom using parameterized SQL. Column names
+ * Upsert into person_custom/family_custom using parameterized SQL. Column names
  * are data-driven (c1, c2, ...) so we can't use Propel setters; we validate each
  * column matches /^c\d+$/ and only accept columns present in $typeMap before
  * including them in the SQL.
+ *
+ * Uses `INSERT ... ON DUPLICATE KEY UPDATE` (not REPLACE INTO) so that unmapped
+ * custom columns are preserved on re-import — REPLACE would delete+reinsert the
+ * row and reset every other c<N> column to its default.
  *
  * @param array<string, string> $values  column name (e.g. "c1") => raw CSV value
  * @param array<string, int>    $typeMap column name => custom field type_ID
@@ -167,17 +172,21 @@ function writeCustomFields(\Propel\Runtime\Connection\ConnectionInterface $con, 
         if (!preg_match('/^c\d+$/', $col) || !isset($typeMap[$col])) {
             continue;
         }
-        $safeColumns[] = '`' . $col . '` = ?';
+        $safeColumns[] = $col;
         $params[]      = formatCustomFieldValue($typeMap[$col], (string) $raw);
     }
     if (empty($safeColumns)) {
         return;
     }
+    $columnList   = '`' . $pkColumn . '`, ' . implode(', ', array_map(fn ($c) => '`' . $c . '`', $safeColumns));
+    $placeholders = '?' . str_repeat(', ?', count($safeColumns));
+    $updateClause = implode(', ', array_map(fn ($c) => '`' . $c . '` = VALUES(`' . $c . '`)', $safeColumns));
     $sql = sprintf(
-        'REPLACE INTO `%s` SET `%s` = ?, %s',
+        'INSERT INTO `%s` (%s) VALUES (%s) ON DUPLICATE KEY UPDATE %s',
         $table,
-        $pkColumn,
-        implode(', ', $safeColumns),
+        $columnList,
+        $placeholders,
+        $updateClause,
     );
     $stmt = $con->prepare($sql);
     $stmt->execute(array_merge([$recordId], $params));
@@ -185,28 +194,28 @@ function writeCustomFields(\Propel\Runtime\Connection\ConnectionInterface $con, 
 
 /**
  * Assign properties to a person or family via the RecordProperty Propel model.
- * Skips property IDs that don't match the target class ('p' or 'f') to prevent
- * a user from mapping a family property onto a person row and vice versa.
+ * Uses the caller's transaction connection so property rows participate in the
+ * same transaction as the person/family writes in /csv/execute.
  *
  * @param array<int, string> $assignments property_pro.pro_ID => value string
  */
-function writeProperties(int $recordId, array $assignments): void
+function writeProperties(\Propel\Runtime\Connection\ConnectionInterface $con, int $recordId, array $assignments): void
 {
     foreach ($assignments as $proId => $value) {
         $existing = RecordPropertyQuery::create()
             ->filterByPropertyId($proId)
             ->filterByRecordId($recordId)
-            ->findOne();
+            ->findOne($con);
         if ($existing !== null) {
             $existing->setPropertyValue((string) $value);
-            $existing->save();
+            $existing->save($con);
             continue;
         }
         $rp = new RecordProperty();
         $rp->setPropertyId($proId);
         $rp->setRecordId($recordId);
         $rp->setPropertyValue((string) $value);
-        $rp->save();
+        $rp->save($con);
     }
 }
 
@@ -420,6 +429,17 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
             $familyCustomTypes[$cf->getField()] = (int) $cf->getTypeId();
         }
 
+        // Build allow-lists of property IDs per class so a spoofed mapping payload can't
+        // assign a family property to a person or vice versa.
+        $allowedPersonPropIds = [];
+        foreach (PropertyQuery::create()->filterByProClass('p')->find() as $prop) {
+            $allowedPersonPropIds[(int) $prop->getProId()] = true;
+        }
+        $allowedFamilyPropIds = [];
+        foreach (PropertyQuery::create()->filterByProClass('f')->find() as $prop) {
+            $allowedFamilyPropIds[(int) $prop->getProId()] = true;
+        }
+
         try {
             foreach ($csv->getRecords() as $row) {
                 // Partition the mapping into core / person-custom / family-custom / properties
@@ -445,12 +465,12 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                         }
                     } elseif (str_starts_with($crmField, CSV_PERSON_PROP_PREFIX)) {
                         $proId = (int) substr($crmField, strlen(CSV_PERSON_PROP_PREFIX));
-                        if ($proId > 0) {
+                        if ($proId > 0 && isset($allowedPersonPropIds[$proId])) {
                             $personProps[$proId] = $value;
                         }
                     } elseif (str_starts_with($crmField, CSV_FAMILY_PROP_PREFIX)) {
                         $proId = (int) substr($crmField, strlen(CSV_FAMILY_PROP_PREFIX));
-                        if ($proId > 0) {
+                        if ($proId > 0 && isset($allowedFamilyPropIds[$proId])) {
                             $familyProps[$proId] = $value;
                         }
                     } else {
@@ -492,7 +512,7 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                         $familyCache[$csvFamilyId] = $family;
 
                         writeCustomFields($con, 'family_custom', 'fam_ID', $family->getId(), $familyCustoms, $familyCustomTypes);
-                        writeProperties($family->getId(), $familyProps);
+                        writeProperties($con, $family->getId(), $familyProps);
                     }
                 }
 
@@ -539,11 +559,16 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                         $y     = (int) $m[1];
                         $year  = $y > 0 ? $y : null;
                     } elseif (preg_match('/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})$/', $raw, $m)) {
-                        // M/D/YYYY, M-D-YYYY, M/D/YY (e.g. 1/1/2025, 7-4-2001)
-                        $month = (int) $m[1];
-                        $day   = (int) $m[2];
-                        $y     = (int) $m[3];
-                        $year  = $y > 0 ? $y : null;
+                        // M/D/YYYY, M-D-YYYY, M/D/YY (e.g. 1/1/2025, 7-4-2001, 7/4/25)
+                        $month   = (int) $m[1];
+                        $day     = (int) $m[2];
+                        $yearRaw = $m[3];
+                        $y       = (int) $yearRaw;
+                        if (strlen($yearRaw) === 2 && $y > 0) {
+                            // Match PHP's date parsing rules: 00-69 => 2000-2069, 70-99 => 1970-1999
+                            $y += $y >= 70 ? 1900 : 2000;
+                        }
+                        $year = $y > 0 ? $y : null;
                     } elseif (preg_match('/^(\d{1,2})[\/\-](\d{1,2})$/', $raw, $m)) {
                         // M/D or M-D (e.g. 1/1, 7/4, 7-4) — no year
                         $month = (int) $m[1];
@@ -598,7 +623,7 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                 $person->save($con);
 
                 writeCustomFields($con, 'person_custom', 'per_ID', $person->getId(), $personCustoms, $personCustomTypes);
-                writeProperties($person->getId(), $personProps);
+                writeProperties($con, $person->getId(), $personProps);
 
                 $imported++;
             }

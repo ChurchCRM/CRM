@@ -60,63 +60,39 @@ describe(
 
                 // hasBday: YYYY-MM-DD format → year=2001, month=7, day=4
                 const hasBdayId = nameToId["hasBday"];
-                if (hasBdayId) {
-                    cy.makePrivateAdminAPICall(
-                        "GET",
-                        `/api/person/${hasBdayId}`,
-                        null,
-                        200,
-                    ).then((resp) => {
-                        expect(resp.body.BirthMonth).to.eq(7);
-                        expect(resp.body.BirthDay).to.eq(4);
-                        expect(resp.body.BirthYear).to.eq(2001);
-                    });
-                }
+                expect(hasBdayId, "Expected imported person hasBday to exist").to.exist;
+                cy.makePrivateAdminAPICall("GET", `/api/person/${hasBdayId}`, null, 200).then((resp) => {
+                    expect(resp.body.BirthMonth).to.eq(7);
+                    expect(resp.body.BirthDay).to.eq(4);
+                    expect(resp.body.BirthYear).to.eq(2001);
+                });
 
                 // noYrBday: 0000-MM-DD format → month=7, day=4, year should be 0 or null (no year stored)
                 const noYrBdayId = nameToId["noYrBday"];
-                if (noYrBdayId) {
-                    cy.makePrivateAdminAPICall(
-                        "GET",
-                        `/api/person/${noYrBdayId}`,
-                        null,
-                        200,
-                    ).then((resp) => {
-                        expect(resp.body.BirthMonth).to.eq(7);
-                        expect(resp.body.BirthDay).to.eq(4);
-                        expect(resp.body.BirthYear).to.be.oneOf([0, null]);
-                    });
-                }
+                expect(noYrBdayId, "Expected imported person noYrBday to exist").to.exist;
+                cy.makePrivateAdminAPICall("GET", `/api/person/${noYrBdayId}`, null, 200).then((resp) => {
+                    expect(resp.body.BirthMonth).to.eq(7);
+                    expect(resp.body.BirthDay).to.eq(4);
+                    expect(resp.body.BirthYear).to.be.oneOf([0, null]);
+                });
 
                 // slashBday: M/D/YYYY format → year=2001, month=7, day=4
                 const slashBdayId = nameToId["slashBday"];
-                if (slashBdayId) {
-                    cy.makePrivateAdminAPICall(
-                        "GET",
-                        `/api/person/${slashBdayId}`,
-                        null,
-                        200,
-                    ).then((resp) => {
-                        expect(resp.body.BirthMonth).to.eq(7);
-                        expect(resp.body.BirthDay).to.eq(4);
-                        expect(resp.body.BirthYear).to.eq(2001);
-                    });
-                }
+                expect(slashBdayId, "Expected imported person slashBday to exist").to.exist;
+                cy.makePrivateAdminAPICall("GET", `/api/person/${slashBdayId}`, null, 200).then((resp) => {
+                    expect(resp.body.BirthMonth).to.eq(7);
+                    expect(resp.body.BirthDay).to.eq(4);
+                    expect(resp.body.BirthYear).to.eq(2001);
+                });
 
                 // slashNoYrBday: M/D format (no year) → month=7, day=4, year should be 0 or null (no year stored)
                 const slashNoYrBdayId = nameToId["slashNoYrBday"];
-                if (slashNoYrBdayId) {
-                    cy.makePrivateAdminAPICall(
-                        "GET",
-                        `/api/person/${slashNoYrBdayId}`,
-                        null,
-                        200,
-                    ).then((resp) => {
-                        expect(resp.body.BirthMonth).to.eq(7);
-                        expect(resp.body.BirthDay).to.eq(4);
-                        expect(resp.body.BirthYear).to.be.oneOf([0, null]);
-                    });
-                }
+                expect(slashNoYrBdayId, "Expected imported person slashNoYrBday to exist").to.exist;
+                cy.makePrivateAdminAPICall("GET", `/api/person/${slashNoYrBdayId}`, null, 200).then((resp) => {
+                    expect(resp.body.BirthMonth).to.eq(7);
+                    expect(resp.body.BirthDay).to.eq(4);
+                    expect(resp.body.BirthYear).to.be.oneOf([0, null]);
+                });
             });
         });
 
