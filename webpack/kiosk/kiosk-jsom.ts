@@ -78,10 +78,17 @@ function APIRequest(options: AjaxOptions): JQuery.jqXHR {
 }
 
 /**
- * Get photo URL for a person
+ * Get photo URL for a person (class member in the active roster)
  */
 function getPhotoUrl(personId: number): string {
   return `${getCRM().root}/kiosk/device/activeClassMember/${personId}/photo`;
+}
+
+/**
+ * Get photo URL for a family member of a class member
+ */
+function getFamilyMemberPhotoUrl(rosterPersonId: number, familyMemberId: number): string {
+  return `${getCRM().root}/kiosk/device/activeClassMember/${rosterPersonId}/familyMember/${familyMemberId}/photo`;
 }
 
 /**
@@ -848,11 +855,11 @@ function setCheckinByEnabled(enabled: boolean): void {
 /**
  * Render family member selection buttons for the "Check-in By" modal
  */
-function renderFamilyMemberOptions(members: FamilyMember[]): string {
+function renderFamilyMemberOptions(members: FamilyMember[], rosterPersonId: number): string {
   let html = '<div class="checkin-by-members">';
   for (const member of members) {
     const photoHtml = member.hasPhoto
-      ? '<img src="' + getPhotoUrl(member.Id) + '" alt="' + escapeHtml(member.FirstName) + '" class="checkin-by-photo">'
+      ? `<img src="${getFamilyMemberPhotoUrl(rosterPersonId, member.Id)}" alt="${escapeHtml(member.FirstName)}" class="checkin-by-photo">`
       : '<i class="fa-solid fa-user fa-2x"></i>';
     html +=
       '<button type="button" class="checkin-by-member-btn checkinByMemberBtn" data-memberid="' +
@@ -913,7 +920,7 @@ function showCheckinByModal(personId: number, action: "checkin" | "checkout", pe
         }
         return;
       }
-      $("#checkinByModalBody").html(renderFamilyMemberOptions(data.members));
+      $("#checkinByModalBody").html(renderFamilyMemberOptions(data.members, personId));
     })
     .fail(() => {
       // On API failure close modal and proceed without a checker

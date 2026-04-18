@@ -45,6 +45,23 @@ function requireAcceptedKioskWithEvent(callable $getKiosk, Response $response): 
     return [$kiosk, $assignment, $event];
 }
 
+/**
+ * Extract the IDs of all people in the active class roster for a given kiosk
+ * assignment. getActiveGroupMembers() returns a Propel ObjectCollection of
+ * Person objects, so we must iterate and call getId() — array_column() does
+ * not work with Propel ORM objects.
+ *
+ * @return int[]
+ */
+function getActiveRosterIds(\ChurchCRM\model\ChurchCRM\KioskAssignment $assignment): array
+{
+    $rosterIds = [];
+    foreach ($assignment->getActiveGroupMembers() as $member) {
+        $rosterIds[] = $member->getId();
+    }
+    return $rosterIds;
+}
+
 $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromCookie): void {
     $group->get('', function (Request $request, Response $response) {
         $renderer = new PhpRenderer(__DIR__ . '/../templates/kioskDevices/');
@@ -297,17 +314,20 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
             return SlimUtils::renderErrorJSON($response, gettext('Invalid person ID'), [], 400);
         }
 
-        // Verify the person is in the active class roster
-        $rosterIds = array_map('intval', array_column($assignment->getActiveGroupMembers(), 'PersonId'));
+        // Verify the person is in the active class roster.
+        // Note: getActiveGroupMembers() returns a Propel ObjectCollection of Person objects,
+        // so we iterate and call getId() rather than using array_column().
+        $rosterIds = getActiveRosterIds($assignment);
         if (!in_array($personId, $rosterIds, true)) {
             return SlimUtils::renderErrorJSON($response, gettext('Person not in active class roster'), [], 403);
         }
 
         $photo = new Photo('Person', $personId);
+        if (!$photo->hasUploadedPhoto()) {
+            return SlimUtils::renderErrorJSON($response, gettext('No photo found for this person'), [], 404);
+        }
 
-        $response->getBody()->write($photo->getPhotoBytes());
-
-        return $response->withAddedHeader('Content-type', $photo->getPhotoContentType());
+        return SlimUtils::renderPhoto($response, $photo);
     });
 
     $group->get('/activeClassMember/{PersonId}/family', function (Request $request, Response $response, array $args) use ($getKioskFromCookie): Response {
@@ -325,7 +345,9 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         // Verify the requested person is actually part of the kiosk's
         // active class roster — prevents enumeration outside the assigned
         // group's members.
-        $rosterIds = array_map('intval', array_column($assignment->getActiveGroupMembers(), 'PersonId'));
+        // Note: getActiveGroupMembers() returns a Propel ObjectCollection of Person objects,
+        // so we iterate and call getId() rather than using array_column().
+        $rosterIds = getActiveRosterIds($assignment);
         if (!in_array($personId, $rosterIds, true)) {
             return SlimUtils::renderErrorJSON($response, gettext('Person not in active class roster'), [], 403);
         }
@@ -356,6 +378,56 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         }
 
         return SlimUtils::renderJSON($response, ['members' => $membersData]);
+    });
+
+    $group->get('/activeClassMember/{PersonId}/familyMember/{FamilyMemberId}/photo', function (Request $request, Response $response, array $args) use ($getKioskFromCookie): Response {
+        $result = requireAcceptedKioskWithEvent($getKioskFromCookie, $response);
+        if ($result instanceof Response) {
+            return $result;
+        }
+        [, $assignment] = $result;
+
+        $personId = InputUtils::filterInt($args['PersonId'] ?? 0);
+        if ($personId <= 0) {
+            return SlimUtils::renderErrorJSON($response, gettext('Invalid person ID'), [], 400);
+        }
+
+        $familyMemberId = InputUtils::filterInt($args['FamilyMemberId'] ?? 0);
+        if ($familyMemberId <= 0) {
+            return SlimUtils::renderErrorJSON($response, gettext('Invalid family member ID'), [], 400);
+        }
+
+        // Verify the class member (personId) is in the active class roster
+        $rosterIds = getActiveRosterIds($assignment);
+        if (!in_array($personId, $rosterIds, true)) {
+            return SlimUtils::renderErrorJSON($response, gettext('Person not in active class roster'), [], 403);
+        }
+
+        // Verify the family member is an adult in the class member's family
+        $person = PersonQuery::create()->findOneById($personId);
+        if ($person === null) {
+            return SlimUtils::renderErrorJSON($response, gettext('Person not found'), [], 404);
+        }
+
+        $family = $person->getFamily();
+        if ($family === null) {
+            return SlimUtils::renderErrorJSON($response, gettext('Person has no family'), [], 404);
+        }
+
+        $familyAdultIds = [];
+        foreach ($family->getAdults() as $adult) {
+            $familyAdultIds[] = $adult->getId();
+        }
+        if (!in_array($familyMemberId, $familyAdultIds, true)) {
+            return SlimUtils::renderErrorJSON($response, gettext('Family member not found'), [], 403);
+        }
+
+        $photo = new Photo('Person', $familyMemberId);
+        if (!$photo->hasUploadedPhoto()) {
+            return SlimUtils::renderErrorJSON($response, gettext('No photo found for this family member'), [], 404);
+        }
+
+        return SlimUtils::renderPhoto($response, $photo);
     });
 
     $group->post('/checkoutAll', function (Request $request, Response $response) use ($getKioskFromCookie): Response {
