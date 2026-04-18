@@ -4,6 +4,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\NoteQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
@@ -217,6 +218,29 @@ function writeProperties(\Propel\Runtime\Connection\ConnectionInterface $con, in
         $rp->setPropertyValue((string) $value);
         $rp->save($con);
     }
+}
+
+/**
+ * Person::postInsert and Family::postInsert automatically write a timeline note
+ * of type 'create' with text "Created" whenever a new record is saved. Rewrite
+ * that note's text to "Imported from CSV" so the timeline makes the provenance
+ * of imported records explicit, without duplicating the note.
+ */
+function markCreateNoteAsImported(\Propel\Runtime\Connection\ConnectionInterface $con, ?int $personId = null, ?int $familyId = null): void
+{
+    $query = NoteQuery::create()->filterByType('create');
+    if ($personId !== null) {
+        $query->filterByPerId($personId);
+    }
+    if ($familyId !== null) {
+        $query->filterByFamId($familyId);
+    }
+    $note = $query->orderByDateEntered('DESC')->findOne($con);
+    if ($note === null) {
+        return;
+    }
+    $note->setText(gettext('Imported from CSV'));
+    $note->save($con);
 }
 
 /**
@@ -513,6 +537,7 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
 
                         writeCustomFields($con, 'family_custom', 'fam_ID', $family->getId(), $familyCustoms, $familyCustomTypes);
                         writeProperties($con, $family->getId(), $familyProps);
+                        markCreateNoteAsImported($con, familyId: $family->getId());
                     }
                 }
 
@@ -624,6 +649,7 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
 
                 writeCustomFields($con, 'person_custom', 'per_ID', $person->getId(), $personCustoms, $personCustomTypes);
                 writeProperties($con, $person->getId(), $personProps);
+                markCreateNoteAsImported($con, personId: $person->getId());
 
                 $imported++;
             }
