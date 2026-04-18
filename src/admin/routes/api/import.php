@@ -279,11 +279,44 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
 
                 // Birth date
                 if (!empty($data['BirthDate'])) {
-                    $ts = strtotime($data['BirthDate']);
-                    if ($ts !== false) {
-                        $person->setBirthMonth((int) date('n', $ts));
-                        $person->setBirthDay((int) date('j', $ts));
-                        $person->setBirthYear((int) date('Y', $ts));
+                    $raw   = trim($data['BirthDate']);
+                    $month = 0;
+                    $day   = 0;
+                    $year  = null; // null = no year provided
+
+                    if (preg_match('/^(\d{4})-(\d{1,2})-(\d{1,2})$/', $raw, $m)) {
+                        // YYYY-MM-DD or YYYY-M-D (e.g. 2001-07-04, 0000-07-04)
+                        $month = (int) $m[2];
+                        $day   = (int) $m[3];
+                        $y     = (int) $m[1];
+                        $year  = $y > 0 ? $y : null;
+                    } elseif (preg_match('/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})$/', $raw, $m)) {
+                        // M/D/YYYY, M-D-YYYY, M/D/YY (e.g. 1/1/2025, 7-4-2001)
+                        $month = (int) $m[1];
+                        $day   = (int) $m[2];
+                        $y     = (int) $m[3];
+                        $year  = $y > 0 ? $y : null;
+                    } elseif (preg_match('/^(\d{1,2})[\/\-](\d{1,2})$/', $raw, $m)) {
+                        // M/D or M-D (e.g. 1/1, 7/4, 7-4) — no year
+                        $month = (int) $m[1];
+                        $day   = (int) $m[2];
+                        $year  = null;
+                    } else {
+                        // Fallback: try strtotime for unrecognised formats (year assumed present)
+                        $ts = strtotime($raw);
+                        if ($ts !== false) {
+                            $month = (int) date('n', $ts);
+                            $day   = (int) date('j', $ts);
+                            $year  = (int) date('Y', $ts);
+                        }
+                    }
+
+                    if ($month > 0 && $day > 0) {
+                        $person->setBirthMonth($month);
+                        $person->setBirthDay($day);
+                        if ($year !== null) {
+                            $person->setBirthYear($year);
+                        }
                     }
                 }
 

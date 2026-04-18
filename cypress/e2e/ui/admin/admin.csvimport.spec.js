@@ -24,11 +24,99 @@ describe(
             // Summary card should show successful results
             cy.get("#summary-card").should("be.visible");
             cy.get("#summary-imported").should("not.have.text", "0");
-            // Verify at least the 3 members from this import exist (test DB may have prior runs)
+            // Verify at least the 5 members from this import exist (test DB may have prior runs)
             cy.request("GET", "/api/search/ImportTest").then((response) => {
                 expect(response.status).to.eq(200);
                 const personsGroup = response.body.find((g) => g.text.startsWith("Persons"));
-                expect(personsGroup.children.length).to.be.at.least(3);
+                expect(personsGroup.children.length).to.be.at.least(5);
+            });
+        });
+
+        it("Verify CSV Import sets BirthDate correctly for mixed date formats", () => {
+            cy.visit("admin/import/csv");
+            cy.get("#csvFile").selectFile("cypress/fixtures/test_import.csv", { force: true });
+            cy.get("#csv-import-form").submit();
+            cy.get("#mapping-card").should("be.visible");
+            cy.get("#execute-import").click();
+            cy.get("#summary-card").should("be.visible");
+
+            cy.request("GET", "/api/search/ImportTest").then((response) => {
+                expect(response.status).to.eq(200);
+                const personsGroup = response.body.find((g) =>
+                    g.text.startsWith("Persons"),
+                );
+                expect(personsGroup).to.exist;
+
+                // Build a map of first-name → personId from the search results
+                const nameToId = {};
+                personsGroup.children.forEach((child) => {
+                    const match = child.uri.match(/PersonID=(\d+)/);
+                    if (match) {
+                        // child.text is "FirstName LastName"
+                        const firstName = child.text.split(" ")[0];
+                        nameToId[firstName] = match[1];
+                    }
+                });
+
+                // hasBday: YYYY-MM-DD format → year=2001, month=7, day=4
+                const hasBdayId = nameToId["hasBday"];
+                if (hasBdayId) {
+                    cy.makePrivateAdminAPICall(
+                        "GET",
+                        `/api/person/${hasBdayId}`,
+                        null,
+                        200,
+                    ).then((resp) => {
+                        expect(resp.body.BirthMonth).to.eq(7);
+                        expect(resp.body.BirthDay).to.eq(4);
+                        expect(resp.body.BirthYear).to.eq(2001);
+                    });
+                }
+
+                // noYrBday: 0000-MM-DD format → month=7, day=4, year should be 0 or null (no year stored)
+                const noYrBdayId = nameToId["noYrBday"];
+                if (noYrBdayId) {
+                    cy.makePrivateAdminAPICall(
+                        "GET",
+                        `/api/person/${noYrBdayId}`,
+                        null,
+                        200,
+                    ).then((resp) => {
+                        expect(resp.body.BirthMonth).to.eq(7);
+                        expect(resp.body.BirthDay).to.eq(4);
+                        expect(resp.body.BirthYear).to.be.oneOf([0, null]);
+                    });
+                }
+
+                // slashBday: M/D/YYYY format → year=2001, month=7, day=4
+                const slashBdayId = nameToId["slashBday"];
+                if (slashBdayId) {
+                    cy.makePrivateAdminAPICall(
+                        "GET",
+                        `/api/person/${slashBdayId}`,
+                        null,
+                        200,
+                    ).then((resp) => {
+                        expect(resp.body.BirthMonth).to.eq(7);
+                        expect(resp.body.BirthDay).to.eq(4);
+                        expect(resp.body.BirthYear).to.eq(2001);
+                    });
+                }
+
+                // slashNoYrBday: M/D format (no year) → month=7, day=4, year should be 0 or null (no year stored)
+                const slashNoYrBdayId = nameToId["slashNoYrBday"];
+                if (slashNoYrBdayId) {
+                    cy.makePrivateAdminAPICall(
+                        "GET",
+                        `/api/person/${slashNoYrBdayId}`,
+                        null,
+                        200,
+                    ).then((resp) => {
+                        expect(resp.body.BirthMonth).to.eq(7);
+                        expect(resp.body.BirthDay).to.eq(4);
+                        expect(resp.body.BirthYear).to.be.oneOf([0, null]);
+                    });
+                }
             });
         });
 
