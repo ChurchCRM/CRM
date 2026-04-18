@@ -128,6 +128,16 @@ Even if you are confident the changes are correct, even if the user said "fix th
 
 @.agents/skills/churchcrm/git-workflow.md
 
+### Always Resolve PR Comments After Push
+
+After every push to a PR branch, resolve the open review threads that the just-pushed commit addresses.
+
+1. Fetch the PR review threads (`pull_request_read` → `get_review_comments`).
+2. For each thread that the new commit fixes, resolve it via `mcp__github__resolve_review_thread`.
+3. If the MCP tool can't surface the thread node ID (current limitation of `get_review_comments`), fall back to posting a single PR comment listing each addressed thread by URL + the commit SHA that fixed it.
+
+Never leave addressed-but-unresolved review threads dangling after a push.
+
 ---
 
 ## Test Review & Commit Workflow
