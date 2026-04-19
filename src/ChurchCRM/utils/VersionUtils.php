@@ -11,15 +11,22 @@ class VersionUtils
 {
     private const COMPOSER_NAME = 'churchcrm/crm';
     private static ?string $cachedVersion = null;
+    private static bool $forceReload = false;
 
     /**
-     * Reset the in-process static version cache.
-     * Call this after a code upgrade so that the next call to getInstalledVersion()
-     * re-reads from the Composer autoloader with the newly-deployed package data.
+     * Reset the in-process static version cache and force the next
+     * getInstalledVersion() call to re-read from composer.json on disk.
+     *
+     * Composer's InstalledVersions class has its own static cache populated from
+     * vendor/composer/installed.php at request start — after an in-place upgrade
+     * that static still returns the pre-upgrade version, even once the files on
+     * disk are the new release. Calling this signals that the on-disk code has
+     * changed and the next read must skip that stale static.
      */
     public static function resetCache(): void
     {
         self::$cachedVersion = null;
+        self::$forceReload = true;
     }
 
     public static function getInstalledVersion(): string
@@ -29,6 +36,18 @@ class VersionUtils
             return self::$cachedVersion;
         }
 
+        // After resetCache(), bypass Composer\InstalledVersions (its static cache
+        // is stale after an in-place upgrade) and read composer.json fresh from disk.
+        if (self::$forceReload) {
+            self::$forceReload = false;
+            $version = self::readVersionFromComposerJson();
+            if ($version !== null) {
+                self::$cachedVersion = $version;
+                return $version;
+            }
+            // fall through to InstalledVersions if composer.json couldn't be read
+        }
+
         $version = InstalledVersions::getPrettyVersion(self::COMPOSER_NAME);
         if ($version) {
             self::$cachedVersion = $version;
@@ -36,11 +55,18 @@ class VersionUtils
         }
 
         LoggerUtils::getAppLogger()->warning('could not determine version from composer autoloader, falling back to legacy composer.json parsing');
-        $composerFile = file_get_contents(SystemURLs::getDocumentRoot() . '/composer.json');
-        $composerJson = json_decode($composerFile, true, 512, JSON_THROW_ON_ERROR);
-
-        self::$cachedVersion = $composerJson['version'];
+        self::$cachedVersion = self::readVersionFromComposerJson();
         return self::$cachedVersion;
+    }
+
+    private static function readVersionFromComposerJson(): ?string
+    {
+        $composerFile = @file_get_contents(SystemURLs::getDocumentRoot() . '/composer.json');
+        if ($composerFile === false) {
+            return null;
+        }
+        $composerJson = json_decode($composerFile, true, 512, JSON_THROW_ON_ERROR);
+        return $composerJson['version'] ?? null;
     }
 
     public static function getDBVersion()
