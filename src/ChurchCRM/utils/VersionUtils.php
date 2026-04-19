@@ -55,8 +55,13 @@ class VersionUtils
         }
 
         LoggerUtils::getAppLogger()->warning('could not determine version from composer autoloader, falling back to legacy composer.json parsing');
-        self::$cachedVersion = self::readVersionFromComposerJson();
-        return self::$cachedVersion;
+        $version = self::readVersionFromComposerJson();
+        if ($version === null) {
+            throw new \RuntimeException('Unable to determine installed version from Composer metadata or composer.json');
+        }
+
+        self::$cachedVersion = $version;
+        return $version;
     }
 
     private static function readVersionFromComposerJson(): ?string
@@ -65,8 +70,22 @@ class VersionUtils
         if ($composerFile === false) {
             return null;
         }
-        $composerJson = json_decode($composerFile, true, 512, JSON_THROW_ON_ERROR);
-        return $composerJson['version'] ?? null;
+
+        try {
+            $composerJson = json_decode($composerFile, true, 512, JSON_THROW_ON_ERROR);
+        } catch (\JsonException $e) {
+            // composer.json may be partial/invalid mid-deploy; let callers fall back.
+            return null;
+        }
+
+        $version = $composerJson['version'] ?? null;
+        if (!is_string($version)) {
+            return null;
+        }
+
+        $version = trim($version);
+
+        return $version !== '' ? $version : null;
     }
 
     public static function getDBVersion()
