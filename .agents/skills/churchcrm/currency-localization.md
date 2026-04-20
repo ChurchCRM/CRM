@@ -87,16 +87,20 @@ position and separators for you.
 
 ## JS: `window.CRM.currency`
 
-Injected in `src/Include/Header.php` from `CurrencyFormatter::toArray()`.
+Injected in `src/Include/Header.php` from `CurrencyFormatter::toArray()` using
+`json_encode(..., JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR)`
+so that symbols containing `<`, `>`, `&`, `'`, or `"` cannot break the inline
+`<script>` block or enable XSS.
 
 ### API
 
 ```js
-window.CRM.currency.symbol;        // "$"
-window.CRM.currency.position;      // "before" | "after"
-window.CRM.currency.thousand;      // ","
-window.CRM.currency.decimal;       // "."
-window.CRM.currency.format(1234.5) // "$1,234.50"
+window.CRM.currency.symbol;           // "$"
+window.CRM.currency.position;         // "before" | "after"
+window.CRM.currency.thousand;         // ","
+window.CRM.currency.decimal;          // "."
+window.CRM.currency.format(1234.5)    // "$1,234.50"  (2 decimal places by default)
+window.CRM.currency.format(1234.5, 0) // "$1,235"     (optional decimals parameter)
 ```
 
 ### DataTables column render
@@ -127,7 +131,7 @@ options: {
   scales: {
     y: {
       ticks: {
-        callback: (value) => window.CRM.currency.format(value, 0)
+        callback: (value) => window.CRM.currency.format(value)
       }
     }
   },
@@ -148,8 +152,13 @@ there. Always use `window.CRM.currency.format()`.
 
 ## CSS: `--currency-symbol` custom property
 
-Set once on `<html>` in `src/Include/Header.php` from
-`SystemConfig::getValue('sCurrencySymbol')` (JSON-encoded for safety).
+`src/Include/Header.php` sets **two** things on `<html>` from `SystemConfig`:
+
+1. `--currency-symbol` CSS custom property — the raw symbol string.
+2. `data-currency-position` HTML attribute — `"before"` or `"after"`.
+
+This lets pure-CSS rendering pick up the symbol and its position without any
+JS. Both are emitted at the same time as the `window.CRM.currency` injection.
 
 ### `.money` utility
 
@@ -173,13 +182,18 @@ Defined in `src/skin/scss/_utility-classes.scss`:
 ### Use when you control the markup
 
 ```html
-<span class="money">1,234.50</span>
-<!-- Renders: $ 1,234.50 (symbol from CSS var, no PHP/JS needed) -->
+<!-- The inner number MUST already be formatted with the configured
+     thousands/decimal separators (e.g. via CurrencyFormatter::format()
+     or window.CRM.currency.format()). CSS only swaps symbol & position —
+     it does NOT reformat separators. -->
+<span class="money">1.234,50</span>
+<!-- Renders: 1.234,50 € (for "after" position with European separators) -->
 ```
 
 Prefer `CurrencyFormatter::format()` for server-rendered views — use `.money`
-only when the number is already formatted (e.g., a pre-formatted value from
-the API, or static display templates where you want pure-CSS substitution).
+only when the number is already separator-formatted (e.g., a pre-formatted
+value from the API, or static display templates where you want pure-CSS
+symbol substitution).
 
 ---
 
@@ -203,9 +217,11 @@ string without formatting logic.
 ### PHP pattern
 
 ```php
+use ChurchCRM\Slim\Utils\SlimUtils;
+
 $amount = (float) $deposit->getAmount();
 
-return $response->withJson([
+return SlimUtils::renderJSON($response, [
     'amount'           => $amount,
     'amount_formatted' => CurrencyFormatter::format($amount),
 ]);
