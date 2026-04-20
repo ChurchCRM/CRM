@@ -38,6 +38,20 @@ describe("API Calendar - Timezone Round-trip", () => {
         return m ? m[1] : null;
     };
 
+    /**
+     * Extract the UTC offset component from an ISO 8601 string.
+     * Returns "+HH:MM", "-HH:MM", or "Z" — or null if not present.
+     * Verifying this catches the exact regression in #8712: the server
+     * emitting the PHP default zone offset instead of the configured sTimeZone
+     * offset, which shifts wall-clock times in FullCalendar even when
+     * the HH:MM:SS component looks correct.
+     */
+    const offsetOf = (dt) => {
+        if (typeof dt !== "string") return null;
+        const m = dt.match(/(Z|[+-]\d{2}:\d{2})$/);
+        return m ? m[1] : null;
+    };
+
     describe("POST /api/events (explicit Start/End)", () => {
         it("preserves the wall-clock start and end times on read-back", () => {
             const date = "2030-06-15"; // future date, avoids DST boundary noise
@@ -232,16 +246,28 @@ describe("API Calendar - Timezone Round-trip", () => {
                 const mine = events.find((e) => e.title === title);
                 expect(mine, `event "${title}" must appear in the feed`).to.exist;
 
-                // Parse the ISO string the server sent. `new Date(iso)` honors
-                // the offset the server stamped — so if the wall-clock hour
-                // on the resulting Date (in the browser's UTC view, extracted
-                // manually) doesn't match, the offset was wrong on the wire.
-                // We compare the raw string components rather than Date math
-                // so the assertion is independent of the browser TZ.
+                // Assert wall-clock date and time are preserved exactly.
                 expect(dateOf(mine.start)).to.equal(date);
                 expect(timeOf(mine.start)).to.equal("11:15:00");
                 expect(dateOf(mine.end)).to.equal(date);
                 expect(timeOf(mine.end)).to.equal("12:15:00");
+
+                // Also assert the ISO-8601 offset is present. This catches
+                // the #8712 regression where the server emits the PHP default
+                // zone offset (e.g. "+00:00") instead of the configured
+                // sTimeZone offset — which causes FullCalendar to shift
+                // wall-clock times even when HH:MM:SS looks correct.
+                // The offset must be a valid ISO 8601 designator ("Z" or
+                // "+HH:MM" / "-HH:MM") — a missing/null offset means the
+                // server sent a naive datetime string with no zone info.
+                expect(
+                    offsetOf(mine.start),
+                    "start must carry an ISO-8601 offset (not a naive datetime)",
+                ).to.match(/^(Z|[+-]\d{2}:\d{2})$/);
+                expect(
+                    offsetOf(mine.end),
+                    "end must carry an ISO-8601 offset (not a naive datetime)",
+                ).to.match(/^(Z|[+-]\d{2}:\d{2})$/);
             });
         });
     });

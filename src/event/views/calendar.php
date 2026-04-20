@@ -118,16 +118,20 @@ window.CRM.calendarJSArgs = <?= json_encode($calendarJSArgs, JSON_THROW_ON_ERROR
 // Reveal a warning next to the calendar time-zone badge when the browser's
 // resolved time zone doesn't match the server's configured sTimeZone. A
 // mismatch is the common silent cause of "my event shows at the wrong time".
+// Both sides are canonicalized via Intl so that alias pairs like
+// "US/Eastern" vs "America/New_York" or "Etc/UTC" vs "UTC" are treated as
+// equal and do not trigger a false warning.
 (function () {
     var configured = window.CRM.calendarJSArgs && window.CRM.calendarJSArgs.sTimeZone;
     if (!configured) return;
-    var browser;
+    var browser, canonicalConfigured;
     try {
         browser = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        canonicalConfigured = Intl.DateTimeFormat(undefined, { timeZone: configured }).resolvedOptions().timeZone;
     } catch (e) {
         return;
     }
-    if (!browser || browser === configured) return;
+    if (!browser || browser === canonicalConfigured) return;
     document.addEventListener('DOMContentLoaded', function () {
         var browserEl = document.getElementById('calendarTimezoneBrowser');
         var warnEl = document.getElementById('calendarTimezoneWarning');

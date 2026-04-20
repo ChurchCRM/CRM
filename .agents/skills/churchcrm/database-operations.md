@@ -374,9 +374,11 @@ $dt = DateTimeUtils::createDateTime($userInput);
 // ✅ CORRECT — current wall-clock in the church's timezone
 $now = DateTimeUtils::getToday();
 
-// ✅ CORRECT — normalize to configured TZ before ISO-8601 formatting
+// ✅ CORRECT — clone before setTimezone to avoid mutating the ORM object's
+// in-memory DateTime (setTimezone mutates in place; Propel may cache it)
 $tz = DateTimeUtils::getConfiguredTimezone();
-$json = ['start' => $event->getStart()->setTimezone($tz)->format('c')];
+$start = clone $event->getStart();
+$json = ['start' => $start->setTimezone($tz)->format('c')];
 ```
 
 Hotspots to double-check on any calendar/time PR:
