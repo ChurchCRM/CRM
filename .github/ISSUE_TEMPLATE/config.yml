@@ -1,7 +1,7 @@
 blank_issues_enabled: false
 contact_links:
   - name: 🐛 Report Bug via ChurchCRM App (Recommended)
-    url: https://docs.churchcrm.io/administration/bug-reporting-and-diagnostics
+    url: https://docs.churchcrm.io/administration/reporting-issues
     about: Use Support → Report an Issue in your ChurchCRM installation for automatic system info capture — it files a GitHub issue for you
   - name: 📚 Documentation
     url: https://docs.churchcrm.io

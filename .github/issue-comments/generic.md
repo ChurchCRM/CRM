@@ -29,7 +29,7 @@ We couldn't auto-detect the issue type. To help us route this correctly, please 
 **3. Docker:** `docker logs <container-name> --tail 200`
 **4. Browser DevTools:** Console + Network tabs
 
-📘 **[Diagnostics Guide](https://docs.churchcrm.io/administration/bug-reporting-and-diagnostics)**
+📘 **[Diagnostics Guide](https://docs.churchcrm.io/administration/reporting-issues)**
 
 ---
 

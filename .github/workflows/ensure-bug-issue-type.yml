@@ -17,8 +17,9 @@ name: Ensure "Bug" Issue Type
 #      and src/api/routes/system/system-issues.php.
 #
 # If the issue is a bug and its Issue Type isn't already "Bug", we set it via
-# the GraphQL `updateIssueIssueType` mutation. We also ensure the plain `bug`
-# label is present so older tooling keeps working.
+# `PATCH /repos/{owner}/{repo}/issues/{issue_number}` using the `type` field.
+# We also ensure the plain `bug` label is present so older tooling keeps
+# working.
 #
 # REQUIRED: the repository must have an Issue Type named "Bug".
 # Set one up at: Organization / Repository settings → Issue Types.
@@ -47,7 +48,11 @@ jobs:
       github.event.action == 'opened' ||
       github.event.action == 'reopened' ||
       github.event.action == 'edited' ||
-      (github.event.action == 'labeled' && github.event.label.name == 'bug')
+      (github.event.action == 'labeled' && (
+        github.event.label.name == 'bug' ||
+        github.event.label.name == 'type:bug' ||
+        github.event.label.name == 'type: bug'
+      ))
 
     steps:
       - name: Classify issue
@@ -80,7 +85,6 @@ jobs:
             core.setOutput('is_bug',           String(isBug));
             core.setOutput('already_typed',    String(alreadyTypedBug));
             core.setOutput('has_bug_label',    String(hasBugLabel));
-            core.setOutput('issue_node_id',    issue.node_id || '');
             console.log({ isBug, alreadyTypedBug, hasBugLabel, currentType });
 
       - name: Add "bug" label if missing

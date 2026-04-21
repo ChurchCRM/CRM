@@ -44,7 +44,7 @@ Open DevTools → **Console** + **Network** → reproduce → paste any red erro
 
 **Power users:** A [Cypress Recorder](https://docs.cypress.io/) exported spec helps us add a regression test quickly.
 
-📘 **[Bug Reporting & Diagnostics Guide](https://docs.churchcrm.io/administration/bug-reporting-and-diagnostics)**
+📘 **[Bug Reporting & Diagnostics Guide](https://docs.churchcrm.io/administration/reporting-issues)**
 
 ---
 

@@ -35,7 +35,7 @@ Please redact any private data before pasting.
 
 **Power users:** A [Cypress Recorder](https://docs.cypress.io/) capture helps us reproduce UI flows.
 
-📘 **[Diagnostics Guide](https://docs.churchcrm.io/administration/bug-reporting-and-diagnostics)**
+📘 **[Diagnostics Guide](https://docs.churchcrm.io/administration/reporting-issues)**
 
 ---
 
