@@ -216,7 +216,7 @@ $bOkToEdit = (
             <div class="card-body p-0">
                 <div class="d-flex">
                     <!-- Photo (left) — click to upload -->
-                    <div class="flex-shrink-0 position-relative" style="width: 120px; min-height: 120px;">
+                    <div class="flex-shrink-0 position-relative" style="width: 120px; aspect-ratio: 1 / 1;">
                         <a href="#" id="uploadImageButton" class="d-block w-100 h-100" title="<?= $bOkToEdit ? gettext("Click to upload photo") : gettext("View Photo") ?>">
                             <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="w-100 h-100 object-fit-cover" style="border-radius: var(--tblr-border-radius) 0 0 var(--tblr-border-radius);">
                         </a>

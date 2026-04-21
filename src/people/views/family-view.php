@@ -411,7 +411,8 @@ $otherPeople = $family->getOtherPeople();
             <a href="#" id="uploadImageTrigger" class="d-block" title="<?= AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() ? gettext("Click to upload photo") : gettext("View Photo") ?>">
                 <img data-image-entity-type="family"
                      data-image-entity-id="<?= $family->getId() ?>" class="card-img-top"
-                     style="width: 100%; height: 200px; object-fit: contain; background: var(--tblr-bg-surface-secondary);">
+                     alt="<?= InputUtils::escapeHTML(sprintf(gettext('Photo of the %s family'), $family->getName())) ?>"
+                     style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover;">
             </a>
             <div class="card-body p-3">
                 <ul class="list-unstyled mb-0">
