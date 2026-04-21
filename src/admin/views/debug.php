@@ -112,64 +112,103 @@ $hasAnyIssue = $integrityPassed === false
 <!-- Masonry-style layout: cards flow top-to-bottom inside columns so a tall
      expanded card doesn't leave dead space next to collapsed siblings. -->
 <div class="debug-grid">
-    <!-- Installation Configuration - First Card -->
+    <!-- Environment card (App / Server / Database / PHP / Web Server tabs).
+         This used to be 4 separate cards — consolidated so the reference
+         data sits in one place and the Database version isn't duplicated. -->
+    <?php
+    // Pre-compute paths so the repeated copy-button markup stays readable.
+    $envPaths = [
+        gettext('Root Path')    => SystemURLs::getRootPath() ?: '(empty - top level)',
+        gettext('Document Root') => SystemURLs::getDocumentRoot(),
+        gettext('Base URL')     => SystemURLs::getURL(),
+        gettext('Images Root')  => SystemURLs::getImagesRoot(),
+        gettext('DSN')          => Bootstrapper::getDSN(),
+    ];
+    $phpIni = [
+        gettext('Max file upload size') => ini_get('upload_max_filesize'),
+        gettext('Max POST size')        => ini_get('post_max_size'),
+        gettext('PHP Memory Limit')     => ini_get('memory_limit'),
+        gettext('PHP Max Execution Time') => ini_get('max_execution_time') . 's',
+        gettext('SAPI Name')            => php_sapi_name(),
+    ];
+    ?>
     <div class="card">
-            <div class="card-header" id="headingInstallation">
-                <h4 data-bs-toggle="collapse" data-bs-target="#collapseInstallation" aria-expanded="false" aria-controls="collapseInstallation" style="cursor: pointer;">
-                    <i class="fa fa-cubes me-2"></i><?= gettext('ChurchCRM Installation') ?>
-                    <i class="fa fa-chevron-down float-end"></i>
-                </h4>
-            </div>
-            <div id="collapseInstallation" class="collapse" aria-labelledby="headingInstallation">
-                <div class="card-body">
-                <table class="table table-sm">
-                    <tr>
-                        <td><?= gettext('Software Version') ?></td>
-                        <td><?= VersionUtils::getInstalledVersion() ?></td>
-                    </tr>
-                    <tr>
-                        <td><?= gettext('Database Version') ?></td>
-                        <td><?= VersionUtils::getDBVersion() ?></td>
-                    </tr>
-                    <tr>
-                        <td><?= gettext('Root Path') ?></td>
-                        <td>
-                            <code class="text-monospace" style="word-break:break-all; font-size: 0.85rem;"><?= SystemURLs::getRootPath() ?: '(empty - top level)' ?></code>
-                            <button type="button" class="btn btn-sm btn-outline-secondary ms-2 copy-btn" data-copy="<?= SystemURLs::getRootPath() ?: '' ?>"><?= gettext('Copy') ?></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><?= gettext('Document Root') ?></td>
-                        <td>
-                            <code class="text-monospace" style="word-break:break-all; font-size: 0.85rem;"><?= SystemURLs::getDocumentRoot() ?></code>
-                            <button type="button" class="btn btn-sm btn-outline-secondary ms-2 copy-btn" data-copy="<?= SystemURLs::getDocumentRoot() ?>"><?= gettext('Copy') ?></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><?= gettext('Base URL') ?></td>
-                        <td>
-                            <code class="text-monospace" style="word-break:break-all; font-size: 0.85rem;"><?= SystemURLs::getURL() ?></code>
-                            <button type="button" class="btn btn-sm btn-outline-secondary ms-2 copy-btn" data-copy="<?= SystemURLs::getURL() ?>"><?= gettext('Copy') ?></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><?= gettext('Images Root') ?></td>
-                        <td>
-                            <code class="text-monospace" style="word-break:break-all; font-size: 0.85rem;"><?= SystemURLs::getImagesRoot() ?></code>
-                            <button type="button" class="btn btn-sm btn-outline-secondary ms-2 copy-btn" data-copy="<?= SystemURLs::getImagesRoot() ?>"><?= gettext('Copy') ?></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><?= gettext('DSN') ?></td>
-                        <td>
-                            <code class="text-monospace" style="word-break:break-all; font-size: 0.85rem;"><?= Bootstrapper::getDSN() ?></code>
-                            <button type="button" class="btn btn-sm btn-outline-secondary ms-2 copy-btn" data-copy="<?= Bootstrapper::getDSN() ?>"><?= gettext('Copy') ?></button>
-                        </td>
-                    </tr>
-                </table>
+        <div class="card-header" id="headingEnvironment">
+            <h4 data-bs-toggle="collapse" data-bs-target="#collapseEnvironment" aria-expanded="false" aria-controls="collapseEnvironment" style="cursor: pointer;">
+                <i class="fa fa-server me-2"></i><?= gettext('Environment') ?>
+                <i class="fa fa-chevron-down float-end"></i>
+            </h4>
+        </div>
+        <div id="collapseEnvironment" class="collapse" aria-labelledby="headingEnvironment">
+            <div class="card-body">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" id="env-app-tab" data-bs-toggle="tab" href="#env-app" role="tab"><?= gettext('App') ?></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" id="env-server-tab" data-bs-toggle="tab" href="#env-server" role="tab"><?= gettext('Server') ?></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" id="env-db-tab" data-bs-toggle="tab" href="#env-db" role="tab"><?= gettext('Database') ?></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" id="env-php-tab" data-bs-toggle="tab" href="#env-php" role="tab"><?= gettext('PHP') ?></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" id="env-web-tab" data-bs-toggle="tab" href="#env-web" role="tab"><?= gettext('Web Server') ?></a></li>
+                </ul>
+                <div class="tab-content pt-3">
+                    <!-- App -->
+                    <div class="tab-pane fade show active" id="env-app" role="tabpanel">
+                        <table class="table table-sm mb-0">
+                            <tr>
+                                <td><?= gettext('Software Version') ?></td>
+                                <td><?= VersionUtils::getInstalledVersion() ?></td>
+                            </tr>
+                            <?php foreach ($envPaths as $label => $value) { ?>
+                                <tr>
+                                    <td><?= InputUtils::escapeHTML($label) ?></td>
+                                    <td>
+                                        <code class="text-monospace" style="word-break:break-all; font-size: 0.85rem;"><?= InputUtils::escapeHTML((string) $value) ?></code>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary ms-2 copy-btn" data-copy="<?= InputUtils::escapeAttribute((string) $value) ?>"><?= gettext('Copy') ?></button>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </table>
+                    </div>
+                    <!-- Server -->
+                    <div class="tab-pane fade" id="env-server" role="tabpanel">
+                        <table class="table table-sm mb-0">
+                            <tr><td><?= gettext('Hostname') ?></td><td><?= gethostname() ?></td></tr>
+                            <tr><td><?= gettext('IP Address') ?></td><td><?= $_SERVER['SERVER_ADDR'] ?? '' ?></td></tr>
+                            <tr><td><?= gettext('Platform') ?></td><td><?= php_uname() ?></td></tr>
+                            <tr><td><?= gettext('Software') ?></td><td><?= $_SERVER['SERVER_SOFTWARE'] ?? '' ?></td></tr>
+                        </table>
+                    </div>
+                    <!-- Database -->
+                    <div class="tab-pane fade" id="env-db" role="tabpanel">
+                        <table class="table table-sm mb-0">
+                            <tr><td><?= gettext('Schema Version') ?></td><td><?= VersionUtils::getDBVersion() ?></td></tr>
+                            <tr><td><?= gettext('Server Version') ?></td><td><?= SystemService::getDBServerVersion() ?></td></tr>
+                        </table>
+                    </div>
+                    <!-- PHP -->
+                    <div class="tab-pane fade" id="env-php" role="tabpanel">
+                        <table class="table table-sm mb-0">
+                            <tr><td><?= gettext('PHP Version') ?></td><td><?= PHP_VERSION ?></td></tr>
+                            <?php foreach ($phpIni as $label => $value) { ?>
+                                <tr><td><?= InputUtils::escapeHTML($label) ?></td><td><?= InputUtils::escapeHTML((string) $value) ?></td></tr>
+                            <?php } ?>
+                        </table>
+                    </div>
+                    <!-- Web Server -->
+                    <div class="tab-pane fade" id="env-web" role="tabpanel">
+                        <table class="table table-sm mb-0">
+                            <tr><td colspan="2"><strong><?= $_SERVER['SERVER_SOFTWARE'] ?? '' ?></strong></td></tr>
+                            <?php if (function_exists('apache_get_modules')) {
+                                foreach (apache_get_modules() as $module) {
+                                    echo '<tr><td>' . InputUtils::escapeHTML($module) . '</td></tr>';
+                                }
+                            } else { ?>
+                                <tr><td class="text-muted"><?= gettext('Unable to list Web Server modules.') ?></td></tr>
+                            <?php } ?>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
     <!-- Application Integrity Check -->
     <div class="card <?= $integrityPassed ? '' : 'border-warning' ?>">
             <div class="card-status-top <?= $integrityPassed ? 'bg-success' : 'bg-warning' ?>"></div>
@@ -305,70 +344,42 @@ $hasAnyIssue = $integrityPassed === false
                 </div>
             </div>
         </div>
-    <!-- Configuration -->
-    <div class="card">
-            <div class="card-header" id="headingSystemConfig">
-                <h4 data-bs-toggle="collapse" data-bs-target="#collapseSystemConfig" aria-expanded="false" aria-controls="collapseSystemConfig" style="cursor: pointer;">
-                    <i class="fa fa-cogs me-2"></i><?= gettext('System & Configuration') ?>
-                    <i class="fa fa-chevron-down float-end"></i>
-                </h4>
-            </div>
-            <div id="collapseSystemConfig" class="collapse" aria-labelledby="headingSystemConfig">
-                <div class="card-body">
-                <h6 class="text-muted mb-2"><?= gettext('Server Information') ?></h6>
-                <table class="table table-sm mb-3">
-                    <tr>
-                        <td><?= gettext('Hostname') ?></td>
-                        <td><?= gethostname() ?></td>
-                    </tr>
-                    <tr>
-                        <td><?= gettext('IP Address') ?></td>
-                        <td><?= $_SERVER['SERVER_ADDR'] ?></td>
-                    </tr>
-                    <tr>
-                        <td><?= gettext('Platform') ?></td>
-                        <td><?= php_uname() ?></td>
-                    </tr>
-                    <tr>
-                        <td><?= gettext('Software') ?></td>
-                        <td><?= $_SERVER["SERVER_SOFTWARE"] ?></td>
-                    </tr>
-                </table>
-                <hr>
-                <h6 class="text-muted mb-2"><?= gettext('Database Server') ?></h6>
-                <table class="table table-sm mb-3">
-                    <tr>
-                        <td><?= gettext('Version') ?></td>
-                        <td><?= SystemService::getDBServerVersion() ?></td>
-                    </tr>
-                </table>
-                <hr>
-                <h6 class="text-muted mb-2"><?= gettext('Email Configuration') ?></h6>
-                <table class="table table-sm">
-                    <tr>
-                        <td><?= gettext('SMTP Host') ?></td>
-                        <td><?= SystemConfig::getValueForHtml("sSMTPHost") ?: gettext('Not configured') ?></td>
-                    </tr>
-                    <tr>
-                        <td><?= gettext('Valid Settings') ?></td>
-                        <td>
-                            <?php if (SystemConfig::hasValidMailServerSettings()): ?>
-                                <i class="fa fa-check text-success me-2"></i><span class="text-success"><?= gettext('Yes') ?></span>
-                                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug/email" class="btn btn-sm btn-outline-primary ms-2" title="<?= gettext('Email Debug Info') ?>">
-                                    <i class="fa fa-envelope me-1"></i><?= gettext('Debug') ?>
-                                </a>
-                            <?php else: ?>
-                                <i class="fa fa-times text-danger me-2"></i><span class="text-danger"><?= gettext('No') ?></span>
-                                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug/email" class="btn btn-sm btn-outline-danger ms-2" title="<?= gettext('Email Debug Info') ?>">
-                                    <i class="fa fa-envelope me-1"></i><?= gettext('Debug') ?>
-                                </a>
-                            <?php endif; ?>
-                        </td>
-                    </tr>
-                </table>
-                </div>
-            </div>
+    <!-- Email — extracted from the old "System & Configuration" card so the
+         SMTP status is discoverable at a glance and the /admin/system/debug/email
+         page has an inbound entry point. -->
+    <?php $mailOk = SystemConfig::hasValidMailServerSettings(); ?>
+    <div class="card <?= $mailOk ? '' : 'border-warning' ?>">
+        <div class="card-status-top <?= $mailOk ? 'bg-success' : 'bg-warning' ?>"></div>
+        <div class="card-header">
+            <h4 class="mb-0">
+                <i class="fa fa-envelope me-2"></i><?= gettext('Email') ?>
+                <?php if (!$mailOk): ?>
+                    <span class="badge bg-warning text-dark ms-2"><?= gettext('Misconfigured') ?></span>
+                <?php endif; ?>
+            </h4>
         </div>
+        <div class="card-body">
+            <table class="table table-sm mb-3">
+                <tr>
+                    <td><?= gettext('SMTP Host') ?></td>
+                    <td><?= SystemConfig::getValueForHtml('sSMTPHost') ?: gettext('Not configured') ?></td>
+                </tr>
+                <tr>
+                    <td><?= gettext('Valid Settings') ?></td>
+                    <td>
+                        <?php if ($mailOk): ?>
+                            <i class="fa fa-check text-success me-2"></i><span class="text-success"><?= gettext('Yes') ?></span>
+                        <?php else: ?>
+                            <i class="fa fa-times text-danger me-2"></i><span class="text-danger"><?= gettext('No') ?></span>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+            </table>
+            <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug/email" class="btn <?= $mailOk ? 'btn-outline-primary' : 'btn-warning' ?> w-100">
+                <i class="fa fa-envelope me-2"></i><?= gettext('Email Debug') ?>
+            </a>
+        </div>
+    </div>
     <!-- Timezone Information -->
     <div class="card <?= $serverConfigMismatch ? 'border-warning' : '' ?>">
             <div class="card-status-top <?= $serverConfigMismatch ? 'bg-warning' : 'bg-success' ?>"></div>
@@ -435,78 +446,8 @@ $hasAnyIssue = $integrityPassed === false
                 </div>
             </div>
     </div>
-    <div class="card">
-            <div class="card-header" id="headingPHP">
-                <h4 data-bs-toggle="collapse" data-bs-target="#collapsePHP" aria-expanded="false" aria-controls="collapsePHP" style="cursor: pointer;">
-                    <i class="fa fa-code me-2"></i><?= gettext('PHP Configuration') ?>
-                    <i class="fa fa-chevron-down float-end"></i>
-                </h4>
-            </div>
-            <div id="collapsePHP" class="collapse" aria-labelledby="headingPHP">
-                <div class="card-body">
-                <table class="table table-sm">
-                    <tr>
-                        <td>PHP Version</td>
-                        <td><?= PHP_VERSION ?></td>
-                    </tr>
-                    <tr>
-                        <td>Max file upload size</td>
-                        <td><?= ini_get('upload_max_filesize') ?></td>
-                    </tr>
-                    <tr>
-                        <td>Max POST size</td>
-                        <td><?= ini_get('post_max_size') ?></td>
-                    </tr>
-                    <tr>
-                        <td>PHP Memory Limit</td>
-                        <td><?= ini_get('memory_limit') ?></td>
-                    </tr>
-                    <tr>
-                        <td>PHP Max Execution Time</td>
-                        <td><?= ini_get('max_execution_time') ?>s</td>
-                    </tr>
-                    <tr>
-                        <td>SAPI Name</td>
-                        <td><?= php_sapi_name()  ?></td>
-                    </tr>
-                </table>
-                </div>
-            </div>
-        </div>
-    <div class="card">
-            <div class="card-header" id="headingWebServer">
-                <h4 data-bs-toggle="collapse" data-bs-target="#collapseWebServer" aria-expanded="false" aria-controls="collapseWebServer" style="cursor: pointer;">
-                    <i class="fa fa-globe me-2"></i><?= gettext('Web Server') ?>
-                    <i class="fa fa-chevron-down float-end"></i>
-                </h4>
-            </div>
-            <div id="collapseWebServer" class="collapse" aria-labelledby="headingWebServer">
-                <div class="card-body">
-                <table class="table table-sm">
-                    <tr>
-                        <td colspan="2"><strong><?= $_SERVER["SERVER_SOFTWARE"] ?></strong></td>
-                    </tr>
-<?php
-if (function_exists('apache_get_modules')) {
-    foreach (apache_get_modules() as $module) {
-        echo <<<EOD
-<tr>
-    <td>$module</td>
-</tr>
-EOD;
-    }
-} else {
-    echo <<<EOD
-<tr>
-    <td class="text-muted">Unable to list Web Server modules!</td>
-</tr>
-EOD;
-}
-?>
-                </table>
-                </div>
-            </div>
-        </div>
+    <!-- PHP Configuration and Web Server standalone cards were merged into
+         the Environment card's PHP and Web Server tabs above. -->
 </div>
 
 <style nonce="<?= SystemURLs::getCSPNonce() ?>">
