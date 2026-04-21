@@ -7,6 +7,7 @@
 
 import Uppy from "@uppy/core";
 import Dashboard from "@uppy/dashboard";
+import ImageEditor from "@uppy/image-editor";
 import Webcam from "@uppy/webcam";
 
 /**
@@ -65,6 +66,7 @@ export function createPhotoUploader(config) {
       proudlyDisplayPoweredByUppy: false,
       note: `Max file size: ${displayMaxSizeMB}MB`,
       closeModalOnClickOutside: true,
+      autoOpen: "imageEditor",
       locale: {
         strings: {
           dashboardWindowTitle: "Upload Photo",
@@ -82,6 +84,26 @@ export function createPhotoUploader(config) {
         height: { ideal: photoHeight },
       },
       preferredImageMimeType: "image/jpeg",
+    })
+    .use(ImageEditor, {
+      quality: 0.9,
+      cropperOptions: {
+        viewMode: 1,
+        aspectRatio: 1,
+        autoCropArea: 1,
+        responsive: true,
+        croppedCanvasOptions: {},
+      },
+      actions: {
+        revert: true,
+        rotate: true,
+        flip: true,
+        zoomIn: true,
+        zoomOut: true,
+        cropSquare: true,
+        cropWidescreen: false,
+        cropWidescreenVertical: false,
+      },
     });
 
   // Handle all restriction failures (size, type, count) — use Uppy's own message so
