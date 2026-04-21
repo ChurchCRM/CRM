@@ -3,6 +3,7 @@
 use ChurchCRM\dto\Notification;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\KioskAssignment;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Slim\SlimUtils;
@@ -53,7 +54,7 @@ function requireAcceptedKioskWithEvent(callable $getKiosk, Response $response): 
  *
  * @return int[]
  */
-function getActiveRosterIds(\ChurchCRM\model\ChurchCRM\KioskAssignment $assignment): array
+function getActiveRosterIds(KioskAssignment $assignment): array
 {
     $rosterIds = [];
     foreach ($assignment->getActiveGroupMembers() as $member) {
