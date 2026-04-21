@@ -87,7 +87,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                 <h4 class="mb-0">
                     <i class="fa fa-shield-alt me-2"></i><?= gettext('Application Integrity') ?>
                     <?php if (!$integrityPassed): ?>
-                        <span class="badge bg-light text-dark ms-2"><?= $failingCount ?></span>
+                        <span class="badge bg-warning text-dark ms-2"><?= $failingCount ?></span>
                     <?php endif; ?>
                 </h4>
             </div>
@@ -117,7 +117,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
             <div class="card-header">
                 <h4 class="mb-0">
                     <i class="fa fa-triangle-exclamation me-2"></i><?= gettext('Orphaned Files') ?>
-                    <span class="badge bg-light text-dark ms-2"><?= $orphanedCount ?></span>
+                    <span class="badge bg-danger text-white ms-2"><?= $orphanedCount ?></span>
                 </h4>
             </div>
             <div class="card-body">
@@ -323,10 +323,10 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                                 <small class="text-muted d-block"><?= gettext('System Config') ?> (sTimeZone)</small>
                                 <strong class="h6 mb-0"><?= InputUtils::escapeHTML($configuredTimezone ?: gettext('Not set')) ?></strong>
                             </div>
-                            <span class="badge bg-primary"><?= gettext('Baseline') ?></span>
+                            <span class="badge bg-primary-lt text-primary"><?= gettext('Baseline') ?></span>
                         </div>
                     </div>
-                    
+
                     <!-- PHP Active -->
                     <div class="p-3 border-bottom <?= $serverConfigMismatch ? 'bg-warning-light' : '' ?>">
                         <div class="d-flex justify-content-between align-items-center">
@@ -336,8 +336,8 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                                 <small class="text-muted d-block"><?= InputUtils::escapeHTML($currentServerTime->format('Y-m-d H:i:s T')) ?></small>
                             </div>
                             <?php if ($serverConfigMismatch): ?>
-                                <span class="badge bg-warning text-dark" title="<?= gettext('Does not match system config') ?>">
-                                    <i class="fa fa-triangle-exclamation"></i> <?= gettext('Mismatch') ?>
+                                <span class="badge bg-warning-lt text-warning" title="<?= gettext('Does not match system config') ?>">
+                                    <i class="fa fa-triangle-exclamation me-1"></i><?= gettext('Mismatch') ?>
                                 </span>
                             <?php elseif (!empty($configuredTimezone)): ?>
                                 <span class="badge bg-green-lt text-green"><i class="fa fa-check"></i></span>
@@ -489,12 +489,14 @@ EOD;
         var $headerAlert = $('#tz-header-alert');
         
         if (browserMatchesBaseline) {
-            $badge.removeClass('bg-warning bg-secondary').addClass('bg-success')
+            $badge.removeClass('bg-warning-lt text-warning bg-secondary text-white')
+                  .addClass('bg-success-lt text-success')
                   .html('<i class="fa fa-check"></i>');
             $row.removeClass('bg-warning-light');
         } else {
-            $badge.removeClass('bg-success bg-secondary').addClass('bg-warning')
-                  .html('<i class="fa fa-triangle-exclamation"></i> <?= gettext('Mismatch') ?>');
+            $badge.removeClass('bg-success-lt text-success bg-secondary text-white')
+                  .addClass('bg-warning-lt text-warning')
+                  .html('<i class="fa fa-triangle-exclamation me-1"></i><?= gettext('Mismatch') ?>');
             $row.addClass('bg-warning-light');
             // Show alert icon in card header
             $headerAlert.removeClass('d-none');
@@ -546,30 +548,52 @@ EOD;
             }
         });
 
-        // Handle collapse icon toggles
-        $('.card-header h4[data-bs-toggle="collapse"]').on('click', function() {
-            var icon = $(this).find('i.fa');
-            // Small delay to let Bootstrap update aria-expanded
-            setTimeout(function() {
-                var isExpanded = $(this).attr('aria-expanded') === 'true';
-                if (isExpanded) {
-                    icon.removeClass('fa-chevron-down').addClass('fa-chevron-up');
-                } else {
-                    icon.removeClass('fa-chevron-up').addClass('fa-chevron-down');
-                }
-            }.bind(this), 10);
+        // Keep the trailing chevron in sync with each card's collapse state.
+        // Scope the selector to just the chevron element — the old `i.fa`
+        // match was rewriting the leading card icon AND the timezone warning
+        // triangle, producing stray double chevrons.
+        var syncChevron = function(headingEl) {
+            var $heading = $(headingEl);
+            var $icon = $heading.find('i.fa-chevron-down, i.fa-chevron-up');
+            if ($heading.attr('aria-expanded') === 'true') {
+                $icon.removeClass('fa-chevron-down').addClass('fa-chevron-up');
+            } else {
+                $icon.removeClass('fa-chevron-up').addClass('fa-chevron-down');
+            }
+        };
+
+        // Bootstrap updates aria-expanded on the trigger AFTER the click
+        // handler runs, so listen to the collapse events on the pane itself.
+        $('.card .collapse').on('shown.bs.collapse hidden.bs.collapse', function() {
+            var $trigger = $('[data-bs-target="#' + this.id + '"]');
+            $trigger.each(function() { syncChevron(this); });
         });
 
-        // Initialize icons for expanded cards
+        // Initial render — catches any card that starts expanded via the hash.
         $('.card-header h4[data-bs-toggle="collapse"]').each(function() {
-            var icon = $(this).find('i.fa');
-            var isExpanded = $(this).attr('aria-expanded') === 'true';
-            if (isExpanded) {
-                icon.removeClass('fa-chevron-down').addClass('fa-chevron-up');
-            } else {
-                icon.removeClass('fa-chevron-up').addClass('fa-chevron-down');
-            }
+            syncChevron(this);
         });
+
+        // Deep-link support: /admin/system/debug#collapseTimezone should open
+        // the matching section. Bootstrap 5 does not do this out of the box.
+        var openFromHash = function() {
+            if (!window.location.hash) return;
+            var target = document.querySelector(window.location.hash);
+            if (!target || !target.classList.contains('collapse')) return;
+            if (target.classList.contains('show')) return;
+            if (window.bootstrap && bootstrap.Collapse) {
+                bootstrap.Collapse.getOrCreateInstance(target).show();
+            } else {
+                // jQuery fallback
+                $(target).collapse('show');
+            }
+            // Scroll the card into view after expansion animates.
+            setTimeout(function() {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 300);
+        };
+        openFromHash();
+        window.addEventListener('hashchange', openFromHash);
     };
 
     // Initialize page once locales (i18next) are ready, with DOM-ready fallback
