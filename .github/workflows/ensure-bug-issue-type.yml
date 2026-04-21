@@ -57,7 +57,7 @@ jobs:
     steps:
       - name: Classify issue
         id: classify
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const issue = context.payload.issue || {};
@@ -89,7 +89,7 @@ jobs:
 
       - name: Add "bug" label if missing
         if: steps.classify.outputs.is_bug == 'true' && steps.classify.outputs.has_bug_label == 'false'
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             try {
@@ -105,7 +105,7 @@ jobs:
 
       - name: Set Issue Type to "Bug"
         if: steps.classify.outputs.is_bug == 'true' && steps.classify.outputs.already_typed == 'false'
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             // GitHub's typed-issues feature exposes a `type` field on

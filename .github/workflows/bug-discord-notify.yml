@@ -50,7 +50,7 @@ jobs:
     steps:
       - name: Skip if not a bug
         id: classify
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const issue = context.payload.issue || {};
@@ -110,7 +110,7 @@ jobs:
 
       - name: Mark issue as notified
         if: steps.classify.outputs.is_bug == 'true'
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             try {

@@ -31,7 +31,7 @@ jobs:
           fetch-depth: 1  # Shallow clone - only need template files
 
       - name: Comment on bug reports
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const fs = require('fs');
