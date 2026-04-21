@@ -136,9 +136,24 @@ $phpIni = [
     gettext('Session Save Path')     => ini_get('session.save_path') ?: gettext('(PHP default)'),
 ];
 
-// Critical extensions ChurchCRM depends on — surface presence/absence so
-// an admin can see at a glance whether the PHP install is missing one.
-$requiredExtensions = ['pdo_mysql', 'mysqli', 'gd', 'curl', 'mbstring', 'xml', 'json', 'intl', 'zip', 'fileinfo', 'openssl'];
+// Required extensions are the single source of truth: src/composer.json.
+// Hard-coding a list here drifts out of sync (the previous list falsely
+// flagged ext-intl as required — ChurchCRM doesn't use it). Parse the
+// ext-* entries from composer.json instead.
+$requiredExtensions = [];
+$composerFile = SystemURLs::getDocumentRoot() . '/composer.json';
+if (is_file($composerFile)) {
+    $composerData = json_decode((string) file_get_contents($composerFile), true);
+    foreach (($composerData['require'] ?? []) as $pkg => $_version) {
+        if (str_starts_with($pkg, 'ext-')) {
+            // Use the lowercase ext name for extension_loaded() — PHP's
+            // ext names are case-insensitive in practice but lowercased
+            // is the safe canonical form.
+            $requiredExtensions[] = strtolower(substr($pkg, 4));
+        }
+    }
+    sort($requiredExtensions);
+}
 $extensionStatus = [];
 foreach ($requiredExtensions as $ext) {
     $extensionStatus[$ext] = extension_loaded($ext);
