@@ -20,6 +20,10 @@ All code must be compatible with PHP 8.4+ and avoid deprecated patterns.
 - **Explicit nullable parameters**: `?int $param = null` not `int $param = null`
 - **Dynamic properties**: Need attribute `#[\AllowDynamicProperties]`
 - **Date formatting**: Use IntlDateFormatter instead of strftime
+- **Timezone-aware `DateTime` construction**: Never `new \DateTime($string)` — use
+  `ChurchCRM\Utils\DateTimeUtils::createDateTime()` / `::getToday()` so the
+  configured `sTimeZone` is applied. See `database-operations.md` for the full
+  rule (issue #8712). <!-- learned: 2026-04-18 -->
 - **Use imports, never inline fully-qualified class names**: Add `use` statements at top of file
 - **Explicit global namespace**: `\MakeFYString($id)` in namespaced code
 - **Version checks**: `version_compare(phpversion(), '8.4.0', '<')`

@@ -1657,20 +1657,8 @@ msgid "Group"
 msgstr "グループ"
 
 #: 
-msgid "Option"
-msgstr "オプション"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "エラー: 重複"
-
-#: 
 msgid "Default"
 msgstr "デフォルト"
-
-#: 
-msgid "Duplicate name found."
-msgstr "重複した名前が見つかりました。"
 
 #: 
 msgid "Make Default"
@@ -1683,10 +1671,6 @@ msgstr "終了"
 #: 
 msgid "Add New"
 msgstr "新規追加"
-
-#: 
-msgid " by that name already exists."
-msgstr " という名前は既に存在します。"
 
 #: 
 msgid "Buyer Number Editor"
@@ -3162,10 +3146,6 @@ msgid "Security Group"
 msgstr "セキュリティグループ"
 
 #: 
-msgid "Security Groups"
-msgstr "セキュリティグループ"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "セキュリティグループエディタ"
 
@@ -3178,48 +3158,16 @@ msgid "Group Member Roles Editor"
 msgstr "グループメンバーの役割エディタ"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "人物カスタムリストオプション"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "人物カスタムリストオプション"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "人物カスタムリストオプションエディタ"
-
-#: 
-msgid "Custom List Option"
-msgstr "カスタムリストオプション"
-
-#: 
-msgid "Custom List Options"
-msgstr "カスタムリストオプション"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "カスタムリストオプションエディタ"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "家族カスタムリストオプション"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "家族カスタムリストオプション"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "家族カスタムリストオプションエディタ"
-
-#: 
-msgid "are not allowed."
-msgstr "は許可されていません。"
-
-#: 
-msgid "Name for New"
-msgstr "新規の名前"
 
 #: 
 msgid "Created via Family"
@@ -8350,10 +8298,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "<strong>末尾のスラッシュ</strong>（/）で終わる"
 
 #: 
-msgid "Error:"
-msgstr "エラー："
-
-#: 
 msgid "Find the line:"
 msgstr "行を見つける："
 
@@ -8745,10 +8689,6 @@ msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "%d人が選択したグループに正常に追加されました。"
 
 #: 
-msgid "A "
-msgstr "A "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "削除してもよろしいですか"
 
@@ -8777,10 +8717,6 @@ msgid "Delete Confirmation"
 msgstr "削除の確認"
 
 #: 
-msgid "Existing"
-msgstr "既存"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "既存のカスタム世帯フィールド"
 
@@ -8803,10 +8739,6 @@ msgstr "無効な CSRF トークンです"
 #: 
 msgid "Invalid fields or selections."
 msgstr "無効なフィールドまたは選択があります。"
-
-#: 
-msgid "Item deleted successfully"
-msgstr "アイテムが正常に削除されました"
 
 #: 
 msgid "Move down"
@@ -8843,10 +8775,6 @@ msgstr "プロパティタイプ"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "このボランティア機会に割り当てられている人物がいます。削除すると割り当てが解除されます:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "これにより、現在割り当てられているすべての人物から削除されます。"
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11489,10 +11417,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "日曜学校のクラス、教師、生徒の出席を管理"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "分類リスト、役割、グループタイプを管理"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "財務管理用の献金基金を管理"
 
@@ -11743,10 +11667,6 @@ msgstr "GitHub Issueを開く"
 #: 
 msgid "Open user menu"
 msgstr "ユーザーメニューを開く"
-
-#: 
-msgid "Options"
-msgstr "オプション"
 
 #: 
 msgid "Other Members"

@@ -1678,20 +1678,8 @@ msgid "Group"
 msgstr "ቡድን"
 
 #: 
-msgid "Option"
-msgstr "ምርጫዎች"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "ስህተት: ተባዝቱዋል"
-
-#: 
 msgid "Default"
 msgstr "ስለ ነገር"
-
-#: 
-msgid "Duplicate name found."
-msgstr "የተባዛ ስም ተገኝቷል"
 
 #: 
 msgid "Make Default"
@@ -1704,10 +1692,6 @@ msgstr "ውጣ"
 #: 
 msgid "Add New"
 msgstr "አዲስ አስገባ"
-
-#: 
-msgid " by that name already exists."
-msgstr " ተመሳሳይ ስም አለ."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3193,10 +3177,6 @@ msgid "Security Group"
 msgstr "የደህንነት ቡድን"
 
 #: 
-msgid "Security Groups"
-msgstr "የደህንነት ቡድኖች"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "የደህንነት ቡድኖች አርታዒ"
 
@@ -3209,48 +3189,16 @@ msgid "Group Member Roles Editor"
 msgstr "የቡድን አባል ሚናዎች አርታዒ"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "የግለሰብ ብጁ ዝርዝር አማራጭ"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "የግለሰብ ብጁ ዝርዝር አማራጮች"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "የግለሰብ ብጁ ዝርዝር አማራጮች አርታዒ"
-
-#: 
-msgid "Custom List Option"
-msgstr "ብጁ ዝርዝር አማራጭ"
-
-#: 
-msgid "Custom List Options"
-msgstr "ብጁ ዝርዝር አማራጮች"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "ብጁ ዝርዝር አማራጮች አርታዒ"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "የቤተሰብ ብጁ ዝርዝር አማራጭ"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "የቤተሰብ ብጁ ዝርዝር አማራጮች"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "የቤተሰብ ብጁ ዝርዝር አማራጮች አርታዒ"
-
-#: 
-msgid "are not allowed."
-msgstr "አይፈቀዱም።"
-
-#: 
-msgid "Name for New"
-msgstr "ስም ለአዲስ"
 
 #: 
 msgid "Created via Family"
@@ -8405,10 +8353,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "በ <strong>ዝንባሌ ሰረዝ</strong> (/) ያበቃል"
 
 #: 
-msgid "Error:"
-msgstr "ስህተት፡"
-
-#: 
 msgid "Find the line:"
 msgstr "ይህንን መስመር ይፈልጉ፡"
 
@@ -8803,10 +8747,6 @@ msgstr[0] "%d ሰው በተሳካ ሁኔታ ወደ ተመረጠው ቡድን ተ
 msgstr[1] "%d ሰዎች በተሳካ ሁኔታ ወደ ተመረጠው ቡድን ተጨምረዋል።"
 
 #: 
-msgid "A "
-msgstr "አንድ "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "ለመሰረዝ እርግጠኛ ነዎት?"
 
@@ -8835,10 +8775,6 @@ msgid "Delete Confirmation"
 msgstr "የስረዛ ማረጋገጫ"
 
 #: 
-msgid "Existing"
-msgstr "ነባር"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "ነባር የቤተሰብ መረጃ ቦታዎች"
 
@@ -8861,10 +8797,6 @@ msgstr "ልክ ያልሆነ የCSRF ቶከን"
 #: 
 msgid "Invalid fields or selections."
 msgstr "ልክ ያልሆኑ ቦታዎች ወይም ምርጫዎች።"
-
-#: 
-msgid "Item deleted successfully"
-msgstr "እቃው በተሳካ ሁኔታ ተሰርዟል"
 
 #: 
 msgid "Move down"
@@ -8901,10 +8833,6 @@ msgstr "የንብረት/ባህሪ አይነት"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "ለዚህ የበጎ ፈቃደኝነት ዕድል የተመደቡ ሰዎች አሉ። መሰረዝ ምደባቸውን ያቋርጣል፡"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "ይህ አሁን ለተመደቡበት ሰዎች ሁሉ ያስወግደዋል።"
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11550,10 +11478,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "ሰብ ሥር ክፍልና አስተማሪ እና ተማሪ ሐሳብ ይሸፍኑ"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "ሟገ ዝርዝሮች ሚና እና ቡድን ዓይነት ይሸፍኑ"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "ጋብ ገንዘብ ለገንዘብ ሕሙም ይሸፍኑ"
 
@@ -11804,10 +11728,6 @@ msgstr "GitHub ጉዳይ ዝርጋ"
 #: 
 msgid "Open user menu"
 msgstr "ተጠቃሚ ምንጫ ዝርጋ"
-
-#: 
-msgid "Options"
-msgstr "ምረጫ"
 
 #: 
 msgid "Other Members"

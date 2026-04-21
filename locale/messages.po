@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-13 19:29+0000\n"
+"POT-Creation-Date: 2026-04-21 19:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,6 +31,9 @@ msgid " Deposit #"
 msgstr ""
 
 msgid " Italic"
+msgstr ""
+
+msgid " Notification Email Error"
 msgstr ""
 
 msgid " characters long"
@@ -112,6 +115,10 @@ msgid "%d missing role"
 msgstr ""
 
 #, php-format
+msgid "%d modules loaded"
+msgstr ""
+
+#, php-format
 msgid "%d month old"
 msgid_plural "%d months old"
 msgstr[0] ""
@@ -151,7 +158,16 @@ msgstr ""
 msgid "(No assigned family)"
 msgstr ""
 
+msgid "(PHP default)"
+msgstr ""
+
 msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
+msgstr ""
+
+msgid "(none)"
+msgstr ""
+
+msgid "(not set)"
 msgstr ""
 
 msgid "(optional — leave blank to include all roles)"
@@ -286,6 +302,9 @@ msgid "About"
 msgstr ""
 
 msgid "About WebDAV Backups"
+msgstr ""
+
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
 msgstr ""
 
 msgid "Accepted format: .csv"
@@ -688,6 +707,9 @@ msgstr ""
 msgid "All Types"
 msgstr ""
 
+msgid "All checks passing"
+msgstr ""
+
 msgid "All clear!"
 msgstr ""
 
@@ -901,6 +923,9 @@ msgid ""
 "Note: Some services require app-specific passwords for WebDAV access."
 msgstr ""
 
+msgid "App"
+msgstr ""
+
 msgid "Appearance"
 msgstr ""
 
@@ -1011,9 +1036,6 @@ msgstr ""
 msgid "Assign Role"
 msgstr ""
 
-msgid "Assign a New Property"
-msgstr ""
-
 msgid "Assign a New Volunteer Opportunity"
 msgstr ""
 
@@ -1122,6 +1144,9 @@ msgid "Auto-Backup"
 msgstr ""
 
 msgid "Auto-Backup Interval"
+msgstr ""
+
+msgid "Auto-TLS"
 msgstr ""
 
 msgid "Auto-mapped"
@@ -1466,6 +1491,9 @@ msgstr ""
 msgid "Browser language preference detected"
 msgstr ""
 
+msgid "Browser time zone differs:"
+msgstr ""
+
 #. Context: countries
 msgid "Brunei"
 msgstr ""
@@ -1569,6 +1597,9 @@ msgstr ""
 msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
 msgstr ""
 
+msgid "Calendar time zone:"
+msgstr ""
+
 msgid "Calendars"
 msgstr ""
 
@@ -1634,6 +1665,9 @@ msgid "Cannot execute query."
 msgstr ""
 
 msgid "Cannot move property in that direction"
+msgstr ""
+
+msgid "Cannot send test email"
 msgstr ""
 
 msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
@@ -1730,6 +1764,9 @@ msgid "Changes not saved! Please correct and try again!"
 msgstr ""
 
 msgid "Changes will not take effect until next logon."
+msgstr ""
+
+msgid "Charset"
 msgstr ""
 
 msgid "Check"
@@ -1892,7 +1929,7 @@ msgstr ""
 msgid "Church Checking Account Number"
 msgstr ""
 
-msgid "Church Email not set, please visit the settings page"
+msgid "Church Email address is not set — the test email has nowhere to go."
 msgstr ""
 
 msgid "Church Event Editor"
@@ -1919,6 +1956,9 @@ msgstr ""
 msgid "Church Name"
 msgstr ""
 
+msgid "Church email — configured on the"
+msgstr ""
+
 msgid "Church information saved successfully"
 msgstr ""
 
@@ -1934,10 +1974,7 @@ msgstr ""
 msgid "ChurchCRM Central Notifications URL"
 msgstr ""
 
-msgid "ChurchCRM Installation"
-msgstr ""
-
-msgid "ChurchCRM Supported Locales"
+msgid "ChurchCRM Test Email"
 msgstr ""
 
 msgid "ChurchCRM can send emails directly."
@@ -2075,6 +2112,9 @@ msgid "Code incomplete"
 msgstr ""
 
 msgid "Code is invalid"
+msgstr ""
+
+msgid "Collation"
 msgstr ""
 
 #. Context: countries
@@ -2281,6 +2321,9 @@ msgstr ""
 msgid "Connected! Account balance: €%.2f. Ready to send SMS."
 msgstr ""
 
+msgid "Connection"
+msgstr ""
+
 msgid "Connection failed"
 msgstr ""
 
@@ -2297,9 +2340,6 @@ msgid "Contact"
 msgstr ""
 
 msgid "Contact & Personal Info"
-msgstr ""
-
-msgid "Contact Info"
 msgstr ""
 
 msgid "Contact Information"
@@ -2518,9 +2558,6 @@ msgstr ""
 msgid "Created"
 msgstr ""
 
-msgid "Created via Family"
-msgstr ""
-
 msgid "Creating Backup..."
 msgstr ""
 
@@ -2683,6 +2720,9 @@ msgstr ""
 msgid "Data/Reports"
 msgstr ""
 
+msgid "Database"
+msgstr ""
+
 msgid "Database + uploaded photos (larger)"
 msgstr ""
 
@@ -2701,13 +2741,7 @@ msgstr ""
 msgid "Database Restored Successfully!"
 msgstr ""
 
-msgid "Database Server"
-msgstr ""
-
 msgid "Database Upgrade Failed"
-msgstr ""
-
-msgid "Database Version"
 msgstr ""
 
 msgid "Database dump only (.sql)"
@@ -2767,9 +2801,6 @@ msgstr ""
 msgid "Debug"
 msgstr ""
 
-msgid "Debug Email Connection"
-msgstr ""
-
 msgid "Debug Info"
 msgstr ""
 
@@ -2796,6 +2827,9 @@ msgstr ""
 
 #. plugin:gravatar:section:1:title
 msgid "Default Image Styles"
+msgstr ""
+
+msgid "Default Inbox Preview Text"
 msgstr ""
 
 msgid "Default List ID"
@@ -2956,6 +2990,9 @@ msgstr ""
 msgid "Delimiter to separate emails in mailto: links"
 msgstr ""
 
+msgid "Delivery"
+msgstr ""
+
 msgid "Demo data import failed"
 msgstr ""
 
@@ -3111,7 +3148,13 @@ msgstr ""
 msgid "Discord Chat"
 msgstr ""
 
+msgid "Disk (Images Root)"
+msgstr ""
+
 msgid "Dismiss"
+msgstr ""
+
+msgid "Display Errors"
 msgstr ""
 
 msgid "Display Preview"
@@ -3146,9 +3189,6 @@ msgid "Do you want to delete this person?  This cannot be undone."
 msgstr ""
 
 msgid "Do you want to proceed?"
-msgstr ""
-
-msgid "Do you want to remove"
 msgstr ""
 
 msgid "Document Root"
@@ -3409,13 +3449,10 @@ msgstr ""
 msgid "Email BCC"
 msgstr ""
 
-msgid "Email Configuration"
-msgstr ""
-
 msgid "Email Dashboard"
 msgstr ""
 
-msgid "Email Debug Info"
+msgid "Email Debug"
 msgstr ""
 
 msgid "Email Export"
@@ -3455,6 +3492,15 @@ msgid "Email is Disabled"
 msgstr ""
 
 msgid "Email is Not Valid"
+msgstr ""
+
+msgid "Email is disabled"
+msgstr ""
+
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr ""
+
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
 msgstr ""
 
 msgid "Email links in group and people views"
@@ -3714,6 +3760,9 @@ msgstr ""
 msgid "Envelope Number"
 msgstr ""
 
+msgid "Environment"
+msgstr ""
+
 #. Context: countries
 msgid "Equatorial Guinea (Guinea Ecuatorial)"
 msgstr ""
@@ -3723,6 +3772,12 @@ msgid "Eritrea"
 msgstr ""
 
 msgid "Error"
+msgstr ""
+
+msgid "Error Log"
+msgstr ""
+
+msgid "Error Reporting"
 msgstr ""
 
 msgid "Error decoding signature definition file"
@@ -3744,6 +3799,9 @@ msgid "Error sending email(s)"
 msgstr ""
 
 msgid "Error text"
+msgstr ""
+
+msgid "Error:"
 msgstr ""
 
 msgid "Error: Invalid Editor ID!"
@@ -4277,9 +4335,6 @@ msgstr ""
 msgid "Family Properties"
 msgstr ""
 
-msgid "Family Property Unassignment"
-msgstr ""
-
 msgid "Family Registration"
 msgstr ""
 
@@ -4562,6 +4617,9 @@ msgid "FirstName MiddleName LastName"
 msgstr ""
 
 msgid "Fiscal Year"
+msgstr ""
+
+msgid "Fix Settings"
 msgstr ""
 
 msgid "Fixing incorrect or awkward translations in your language"
@@ -5157,6 +5215,9 @@ msgstr ""
 msgid "Hindi - India"
 msgstr ""
 
+msgid "Hit Rate"
+msgstr ""
+
 msgid "Holiday"
 msgstr ""
 
@@ -5185,6 +5246,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Hong Kong (香港)"
+msgstr ""
+
+msgid "Host"
 msgstr ""
 
 msgid "Hostname"
@@ -5270,6 +5334,12 @@ msgid ""
 msgstr ""
 
 msgid "If that doesn't work, copy and paste the following link in your browser"
+msgstr ""
+
+msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
+msgstr ""
+
+msgid "If you can read this message in your inbox, your SMTP configuration is working correctly."
 msgstr ""
 
 msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
@@ -5420,6 +5490,9 @@ msgstr ""
 msgid "Includes database and all uploaded photos. Larger file size."
 msgstr ""
 
+msgid "Incomplete"
+msgstr ""
+
 msgid "Incorrect password supplied for current user"
 msgstr ""
 
@@ -5460,6 +5533,12 @@ msgid "Installed"
 msgstr ""
 
 msgid "Installed Software Version"
+msgstr ""
+
+msgid "Installed on Server"
+msgstr ""
+
+msgid "Integrity"
 msgstr ""
 
 msgid "Internationalization (I18n) support"
@@ -5611,6 +5690,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Israel (‫ישראל‬‎)"
+msgstr ""
+
+msgid "Issues detected"
 msgstr ""
 
 msgid "It is strongly recommended to have a backup before proceeding."
@@ -5977,6 +6059,9 @@ msgstr ""
 msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
 msgstr ""
 
+msgid "Loaded php.ini"
+msgstr ""
+
 msgid "Loading"
 msgstr ""
 
@@ -5992,7 +6077,7 @@ msgstr ""
 msgid "Local development:"
 msgstr ""
 
-msgid "Locale Support"
+msgid "Locale"
 msgstr ""
 
 msgid "Localization"
@@ -6303,6 +6388,15 @@ msgstr ""
 msgid "Mauritius (Moris)"
 msgstr ""
 
+msgid "Max Execution Time"
+msgstr ""
+
+msgid "Max POST Size"
+msgstr ""
+
+msgid "Max Upload Size"
+msgstr ""
+
 #. Context: queryparameters_qrp
 msgid "Maximum Age"
 msgstr ""
@@ -6410,6 +6504,12 @@ msgid "Membership not found"
 msgstr ""
 
 msgid "Memberships"
+msgstr ""
+
+msgid "Memory"
+msgstr ""
+
+msgid "Memory Limit"
 msgstr ""
 
 msgid "Menu Links"
@@ -6746,9 +6846,6 @@ msgstr ""
 msgid "New Family Added"
 msgstr ""
 
-msgid "New Family Notification Email Error"
-msgstr ""
-
 msgid "New Group"
 msgstr ""
 
@@ -6765,9 +6862,6 @@ msgid "New Person"
 msgstr ""
 
 msgid "New Person Added"
-msgstr ""
-
-msgid "New Person Notification Email Error"
 msgstr ""
 
 msgid "New Pledge"
@@ -6790,6 +6884,9 @@ msgid "New member notification emails"
 msgstr ""
 
 msgid "New to"
+msgstr ""
+
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
 msgstr ""
 
 msgid "Newsletter"
@@ -7156,6 +7253,9 @@ msgstr ""
 msgid "November"
 msgstr ""
 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
+msgstr ""
+
 msgid "Number"
 msgstr ""
 
@@ -7181,6 +7281,12 @@ msgstr ""
 msgid "OK"
 msgstr ""
 
+msgid "OPcache"
+msgstr ""
+
+msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
+msgstr ""
+
 msgid "OR Create a Group and add the CART in ONE ACTION"
 msgstr ""
 
@@ -7190,11 +7296,17 @@ msgstr ""
 msgid "October"
 msgstr ""
 
+msgid "Off"
+msgstr ""
+
 msgid "Old Password"
 msgstr ""
 
 #. Context: countries
 msgid "Oman (‫عُمان‬‎)"
+msgstr ""
+
+msgid "On"
 msgstr ""
 
 msgid "Once"
@@ -7266,6 +7378,9 @@ msgstr ""
 msgid "Open in New Tab"
 msgstr ""
 
+msgid "Open the email debug tester"
+msgstr ""
+
 msgid "Open user menu"
 msgstr ""
 
@@ -7319,6 +7434,9 @@ msgid "Optional detailed description of this property type"
 msgstr ""
 
 msgid "Optional notes about attendance..."
+msgstr ""
+
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
 msgstr ""
 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
@@ -7396,13 +7514,19 @@ msgstr ""
 msgid "PDFs successfully emailed to %s families."
 msgstr ""
 
+msgid "PHP"
+msgstr ""
+
 msgid "PHP & Server Requirements"
 msgstr ""
 
 msgid "PHP Active"
 msgstr ""
 
-msgid "PHP Configuration"
+msgid "PHP Version"
+msgstr ""
+
+msgid "PHPMailer SMTP session"
 msgstr ""
 
 msgid "Paddle"
@@ -7489,16 +7613,25 @@ msgstr ""
 msgid "Password Reset Successful"
 msgstr ""
 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr ""
+
 msgid "Password reset emails — users cannot recover their accounts"
 msgstr ""
 
 msgid "Password reset for"
 msgstr ""
 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr ""
+
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr ""
 
 msgid "Password successfully changed for"
+msgstr ""
+
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
 msgstr ""
 
 msgid "Passwords do not match"
@@ -8067,6 +8200,9 @@ msgstr ""
 msgid "Pre-flight"
 msgstr ""
 
+msgid "Prerequisites"
+msgstr ""
+
 msgid "Press ? to focus search"
 msgstr ""
 
@@ -8571,6 +8707,9 @@ msgstr ""
 msgid "Review and clean up files not associated with any record"
 msgstr ""
 
+msgid "Review the SMTP debug log below for the handshake details, then adjust your settings."
+msgstr ""
+
 msgid "Review the files below and delete them to improve security."
 msgstr ""
 
@@ -8643,6 +8782,9 @@ msgstr ""
 msgid "S"
 msgstr ""
 
+msgid "SAPI"
+msgstr ""
+
 msgid "SE"
 msgstr ""
 
@@ -8658,13 +8800,19 @@ msgstr ""
 msgid "SMTP Authentication"
 msgstr ""
 
+msgid "SMTP Configuration"
+msgstr ""
+
 msgid "SMTP Configured"
+msgstr ""
+
+msgid "SMTP Debug Log"
 msgstr ""
 
 msgid "SMTP Host"
 msgstr ""
 
-msgid "SMTP Host is not setup, please visit the settings page"
+msgid "SMTP Host is not configured."
 msgstr ""
 
 msgid "SMTP Not Configured"
@@ -8683,6 +8831,9 @@ msgid "SMTP Timeout"
 msgstr ""
 
 msgid "SMTP Username"
+msgstr ""
+
+msgid "SMTP configuration test — if this arrived, your setup works."
 msgstr ""
 
 msgid "SMTP server for sending emails"
@@ -8798,6 +8949,9 @@ msgid "Scan check"
 msgstr ""
 
 msgid "Schedule"
+msgstr ""
+
+msgid "Schema Version"
 msgstr ""
 
 #. Context: queryparameters_qrp
@@ -9025,10 +9179,16 @@ msgstr ""
 msgid "Sell to everyone"
 msgstr ""
 
+msgid "Send Again"
+msgstr ""
+
 msgid "Send Newsletter"
 msgstr ""
 
 msgid "Send Reset Email"
+msgstr ""
+
+msgid "Send a test message to verify your SMTP configuration"
 msgstr ""
 
 msgid "Send an email notifying users when their account has been deleted"
@@ -9060,19 +9220,28 @@ msgstr ""
 msgid "Sermon / Event Text"
 msgstr ""
 
+msgid "Server"
+msgstr ""
+
 msgid "Server Error"
 msgstr ""
 
-msgid "Server Information"
+msgid "Server URL is required."
 msgstr ""
 
-msgid "Server URL is required."
+msgid "Server Version"
 msgstr ""
 
 msgid "Server error"
 msgstr ""
 
 msgid "Server returned an unexpected response. Please try again."
+msgstr ""
+
+msgid "Session Handler"
+msgstr ""
+
+msgid "Session Save Path"
 msgstr ""
 
 msgid ""
@@ -9125,6 +9294,9 @@ msgstr ""
 msgid "Set up"
 msgstr ""
 
+msgid "Set up Email"
+msgstr ""
+
 msgid "Set up a new fundraiser campaign or event"
 msgstr ""
 
@@ -9141,6 +9313,9 @@ msgid "Setting updated successfully"
 msgstr ""
 
 msgid "Settings"
+msgstr ""
+
+msgid "Settings Valid"
 msgstr ""
 
 msgid "Settings reset successfully"
@@ -9283,9 +9458,6 @@ msgid "Slovenia (Slovenija)"
 msgstr ""
 
 msgid "Social Media"
-msgstr ""
-
-msgid "Software"
 msgstr ""
 
 msgid "Software Update Required"
@@ -9474,6 +9646,9 @@ msgstr ""
 msgid "Students not in a Sunday School Class"
 msgstr ""
 
+msgid "Subject"
+msgstr ""
+
 msgid "Submit Registration"
 msgstr ""
 
@@ -9571,12 +9746,6 @@ msgstr ""
 
 #. Context: countries
 msgid "Syria (‫سوريا‬‎)"
-msgstr ""
-
-msgid "System"
-msgstr ""
-
-msgid "System & Configuration"
 msgstr ""
 
 msgid "System Calendars"
@@ -9696,10 +9865,19 @@ msgstr ""
 msgid "Telugu - India"
 msgstr ""
 
+msgid "Test"
+msgstr ""
+
 msgid "Test Connection"
 msgstr ""
 
 msgid "Test WebDAV Connection"
+msgstr ""
+
+msgid "Test email accepted by SMTP server"
+msgstr ""
+
+msgid "Test email failed to send"
 msgstr ""
 
 #. plugin:external-backup:section:4:title
@@ -9930,6 +10108,9 @@ msgstr ""
 msgid "This group currently has no properties!  You can add them in the Group Editor."
 msgstr ""
 
+msgid "This is a ChurchCRM test email."
+msgstr ""
+
 msgid "This is how your church information will appear on reports and directories."
 msgstr ""
 
@@ -10024,6 +10205,12 @@ msgid "Timed"
 msgstr ""
 
 msgid "Timeline"
+msgstr ""
+
+msgid "Timeout"
+msgstr ""
+
+msgid "Timezone"
 msgstr ""
 
 msgid "Timezone Information"
@@ -10350,6 +10537,9 @@ msgstr ""
 msgid "Unable to display map: church address has not been geocoded yet."
 msgstr ""
 
+msgid "Unable to list web server modules (non-Apache SAPI)."
+msgstr ""
+
 msgid "Unable to load"
 msgstr ""
 
@@ -10455,6 +10645,9 @@ msgstr ""
 msgid "Update Properties"
 msgstr ""
 
+msgid "Update Settings"
+msgstr ""
+
 msgid "Update church address in Settings."
 msgstr ""
 
@@ -10474,9 +10667,6 @@ msgid "Updated Families"
 msgstr ""
 
 msgid "Updated People"
-msgstr ""
-
-msgid "Updated via Family"
 msgstr ""
 
 msgid "Upgrade"
@@ -10650,9 +10840,6 @@ msgid "Uzbekistan (Oʻzbekiston)"
 msgstr ""
 
 msgid "Valid Examples:"
-msgstr ""
-
-msgid "Valid Settings"
 msgstr ""
 
 msgid "Valid startDate and endDate are required"
@@ -10870,6 +11057,9 @@ msgid "View family details, members, and timeline"
 msgstr ""
 
 msgid "View family pledge summaries and fund allocations"
+msgstr ""
+
+msgid "View full photo"
 msgstr ""
 
 msgid "View group members, roles, and properties"
@@ -11474,6 +11664,9 @@ msgstr ""
 msgid "data for member"
 msgstr ""
 
+msgid "date.timezone"
+msgstr ""
+
 msgid "day"
 msgstr ""
 
@@ -11660,6 +11853,9 @@ msgstr ""
 msgid "page"
 msgstr ""
 
+msgid "page."
+msgstr ""
+
 msgid "payment(s)?"
 msgstr ""
 
@@ -11690,9 +11886,6 @@ msgid "personIds must be a non-empty array"
 msgstr ""
 
 msgid "properties"
-msgstr ""
-
-msgid "property"
 msgstr ""
 
 msgid "records"
@@ -11750,6 +11943,9 @@ msgid "to enable the reset button"
 msgstr ""
 
 msgid "total"
+msgstr ""
+
+msgid "user:"
 msgstr ""
 
 msgid "with at least one:"

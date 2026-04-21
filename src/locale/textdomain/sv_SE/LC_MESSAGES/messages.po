@@ -1738,20 +1738,8 @@ msgid "Group"
 msgstr "Grupp"
 
 #: 
-msgid "Option"
-msgstr "Valmöjligheter"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Fel: Inte unik"
-
-#: 
 msgid "Default"
 msgstr "Standard"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Namnet inte unik"
 
 #: 
 msgid "Make Default"
@@ -1764,10 +1752,6 @@ msgstr "Avsluta"
 #: 
 msgid "Add New"
 msgstr "Lägg till ny"
-
-#: 
-msgid " by that name already exists."
-msgstr " med denna namn finns redan."
 
 #: 
 #, fuzzy
@@ -3304,10 +3288,6 @@ msgid "Security Group"
 msgstr "Säkerhetsgrupp"
 
 #: 
-msgid "Security Groups"
-msgstr "Säkerhetsgrupper"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Säkerhetsgrupper Editor"
 
@@ -3320,48 +3300,16 @@ msgid "Group Member Roles Editor"
 msgstr "Gruppmedlem Roller Redaktör"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Alternativ för personanpassad lista"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Personanpassade listalternativ"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Person Custom Listalternativ Editor"
-
-#: 
-msgid "Custom List Option"
-msgstr "Alternativ för anpassad lista"
-
-#: 
-msgid "Custom List Options"
-msgstr "Anpassade listalternativ"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Editor för anpassad lista"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Alternativ för familjens anpassade listor"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Alternativ för familjens anpassade listor"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Family Custom List Alternativ Editor"
-
-#: 
-msgid "are not allowed."
-msgstr "är inte tillåten."
-
-#: 
-msgid "Name for New"
-msgstr "Namn för nytt"
 
 #: 
 msgid "Created via Family"
@@ -8508,10 +8456,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Slutar med ett <strong>avslutande snedstreck</strong> (/)"
 
 #: 
-msgid "Error:"
-msgstr "Fel:"
-
-#: 
 msgid "Find the line:"
 msgstr "Hitta raden:"
 
@@ -8906,10 +8850,6 @@ msgstr[0] "%d person tillagd till vald grupp."
 msgstr[1] "%d personer tillagda till vald grupp."
 
 #: 
-msgid "A "
-msgstr "En/Ett "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Är du säker på att du vill radera"
 
@@ -8938,10 +8878,6 @@ msgid "Delete Confirmation"
 msgstr "Bekräfta radering"
 
 #: 
-msgid "Existing"
-msgstr "Befintlig"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Befintliga anpassade familjefält"
 
@@ -8964,10 +8900,6 @@ msgstr "Ogiltig CSRF-token"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Ogiltiga fält eller val."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Objektet raderades"
 
 #: 
 msgid "Move down"
@@ -9004,10 +8936,6 @@ msgstr "Egenskapstyp"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "Det finns personer tilldelade denna volontärmöjlighet. Radering kommer att ta bort tilldelningen för:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "Detta kommer att ta bort det från alla personer som för närvarande är tilldelade det."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11653,10 +11581,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Hantera söndagsskolans klasser, lärare och elevnärvaro"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Hantera klassificeringslistor, roller och grupptyper"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Hantera gåvofonder för ekonomisk uppföljning"
 
@@ -11907,10 +11831,6 @@ msgstr "Öppna GitHub-ärende"
 #: 
 msgid "Open user menu"
 msgstr "Öppna användarmenyn"
-
-#: 
-msgid "Options"
-msgstr "Alternativ"
 
 #: 
 msgid "Other Members"

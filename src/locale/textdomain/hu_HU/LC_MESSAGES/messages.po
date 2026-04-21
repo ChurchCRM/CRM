@@ -1717,20 +1717,8 @@ msgid "Group"
 msgstr "Csoport"
 
 #: 
-msgid "Option"
-msgstr "Opció"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Hiba: Ismétlődő"
-
-#: 
 msgid "Default"
 msgstr "Alapértelmezett"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Ismétlődő név található."
 
 #: 
 msgid "Make Default"
@@ -1743,10 +1731,6 @@ msgstr "Kijárat"
 #: 
 msgid "Add New"
 msgstr "Új"
-
-#: 
-msgid " by that name already exists."
-msgstr "ezen a néven már létezik."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3261,10 +3245,6 @@ msgid "Security Group"
 msgstr "Biztonsági csoport"
 
 #: 
-msgid "Security Groups"
-msgstr "Biztonsági csoportok"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Biztonsági csoport szerkesztő"
 
@@ -3277,48 +3257,16 @@ msgid "Group Member Roles Editor"
 msgstr "Csoporttag szerepkör szerkesztő"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Személy egyéni lista opció"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Személy egyéni lista opciók"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Személy egyéni lista opció szerkesztő"
-
-#: 
-msgid "Custom List Option"
-msgstr "Egyéni lista opció"
-
-#: 
-msgid "Custom List Options"
-msgstr "Egyéni lista opciók"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Egyéni lista opció szerkesztő"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Család egyéni lista opció"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Család egyéni lista opciók"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Család egyéni lista opció szerkesztő"
-
-#: 
-msgid "are not allowed."
-msgstr "nem engedélyezett."
-
-#: 
-msgid "Name for New"
-msgstr "Új elem neve"
 
 #: 
 msgid "Created via Family"
@@ -8453,10 +8401,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Záró <strong>perjelel</strong> (/) végződik"
 
 #: 
-msgid "Error:"
-msgstr "Hiba:"
-
-#: 
 msgid "Find the line:"
 msgstr "Keresse meg a sort:"
 
@@ -8851,10 +8795,6 @@ msgstr[0] "%d személy sikeresen hozzáadva a kiválasztott csoporthoz."
 msgstr[1] "%d személy sikeresen hozzáadva a kiválasztott csoporthoz."
 
 #: 
-msgid "A "
-msgstr "A "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Biztosan törölni szeretné?"
 
@@ -8883,10 +8823,6 @@ msgid "Delete Confirmation"
 msgstr "Törlés megerősítése"
 
 #: 
-msgid "Existing"
-msgstr "Létező"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Létező egyéni családmezők"
 
@@ -8909,10 +8845,6 @@ msgstr "Érvénytelen CSRF token"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Érvénytelen mezők vagy választások."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Elem sikeresen törölve"
 
 #: 
 msgid "Move down"
@@ -8949,10 +8881,6 @@ msgstr "Tulajdonság típusa"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "Ehhez az önkéntes lehetőséghez személyek vannak rendelve. A törlés megszünteti a hozzárendelést:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "Ez eltávolítja az összes jelenleg hozzárendelt személytől."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11598,10 +11526,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Vasárnapi iskola osztályok, tanítók és tanulói jelenlét kezelése"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Besorolási listák, szerepek és csoporttípusok kezelése"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Adományalapok kezelése pénzügyi nyilvántartáshoz"
 
@@ -11852,10 +11776,6 @@ msgstr "GitHub hiba megnyitása"
 #: 
 msgid "Open user menu"
 msgstr "Felhasználói menü megnyitása"
-
-#: 
-msgid "Options"
-msgstr "Beállítások"
 
 #: 
 msgid "Other Members"
