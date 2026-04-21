@@ -355,10 +355,11 @@ $fmtBytes = static function ($bytes): string {
     </div>
 </div>
 
-<!-- Masonry-style grid: status + quick-check cards flow top-to-bottom in
-     columns so tall expanded cards don't leave dead space beside short
-     collapsed ones. -->
-<div class="debug-grid">
+<!-- Status + quick-check cards arranged in a 2-column responsive grid
+     via Bootstrap. Each card wraps in col-12 col-lg-6 so they stack on
+     narrow viewports and pair up on desktop. -->
+<div class="row g-3 debug-grid">
+    <div class="col-12 col-lg-6">
     <!-- Application Integrity Check -->
     <div class="card <?= $integrityPassed ? '' : 'border-warning' ?>">
             <div class="card-status-top <?= $integrityPassed ? 'bg-success' : 'bg-warning' ?>"></div>
@@ -384,7 +385,9 @@ $fmtBytes = static function ($bytes): string {
             </div>
         </div>
     </div>
+    </div>
     <?php if ($orphanedCount > 0): ?>
+    <div class="col-12 col-lg-6">
     <div class="card border-danger">
         <div class="card-status-top bg-danger"></div>
         <div class="card-header">
@@ -401,7 +404,9 @@ $fmtBytes = static function ($bytes): string {
             </a>
         </div>
     </div>
+    </div>
     <?php endif; ?>
+    <div class="col-12 col-lg-6">
     <div class="card <?= $prereqFailingCount === 0 ? '' : 'border-warning' ?>">
             <div class="card-status-top <?= $prereqFailingCount === 0 ? 'bg-success' : 'bg-warning' ?>"></div>
             <div class="card-header" id="headingPrerequisites">
@@ -443,6 +448,7 @@ $fmtBytes = static function ($bytes): string {
                 </div>
             </div>
         </div>
+    </div>
     <!-- Locale Support moved into the Environment card's Locale tab — the
          actionable "does the system support your chosen locale?" state
          remains as a chip in the top status banner. -->
@@ -450,6 +456,7 @@ $fmtBytes = static function ($bytes): string {
          SMTP status is discoverable at a glance and the /admin/system/debug/email
          page has an inbound entry point. -->
     <?php $mailOk = SystemConfig::hasValidMailServerSettings(); ?>
+    <div class="col-12 col-lg-6">
     <div class="card <?= $mailOk ? '' : 'border-warning' ?>">
         <div class="card-status-top <?= $mailOk ? 'bg-success' : 'bg-warning' ?>"></div>
         <div class="card-header d-flex align-items-center">
@@ -481,7 +488,9 @@ $fmtBytes = static function ($bytes): string {
             </table>
         </div>
     </div>
+    </div>
     <!-- Timezone Information -->
+    <div class="col-12 col-lg-6">
     <div class="card <?= $serverConfigMismatch ? 'border-warning' : '' ?>">
             <div class="card-status-top <?= $serverConfigMismatch ? 'bg-warning' : 'bg-success' ?>"></div>
             <div class="card-header" id="headingTimezone">
@@ -546,6 +555,7 @@ $fmtBytes = static function ($bytes): string {
                     </div>
                 </div>
             </div>
+        </div>
     </div>
     <!-- PHP Configuration and Web Server standalone cards were merged into
          the Environment card's PHP and Web Server tabs above. -->
@@ -556,26 +566,10 @@ $fmtBytes = static function ($bytes): string {
     background-color: rgba(255, 193, 7, 0.1) !important;
 }
 
-/* Debug is a dense admin diagnostic page — break out of the default
-   container-xl (1320px) cap so the masonry grid + Environment tabs can
-   use the full viewport width on wider screens. Scoped to this page via
-   the inline <style> block; other pages keep their default container. */
-.page-body > .container-xl {
-    max-width: 100%;
-}
-
-/* Environment card is full-width at the top (tabs + wide code values
-   like DSN/paths/module lists need real estate). The status-style cards
-   below flow in a CSS Grid with auto-fit min-width so each card gets at
-   least 320px; narrow viewports collapse to one column automatically. */
+/* Environment card sits full-width above the grid — its tabs + wide
+   code values (DSN, paths, Apache module list) need the whole row. */
 .debug-env {
     margin-bottom: 1rem;
-}
-.debug-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1rem;
-    align-items: start; /* don't stretch to match tallest sibling */
 }
 
 /* Deterministic chevron placement on collapsible headers — no floats. */
@@ -726,27 +720,10 @@ $fmtBytes = static function ($bytes): string {
         }
         $('#timezone-summary').html(summaryHtml);
         
+        // Delegate to the shared helper in CRMJSOM.js — no need for a
+        // page-local clipboard implementation.
         $(document).on('click', '.copy-btn', function() {
-            var txt = $(this).data('copy');
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(txt).then(function() {
-                    window.CRM.notify(i18next.t('Copied to clipboard'), { type: 'success', delay: 2000 });
-                }).catch(function() {
-                    window.CRM.notify(i18next.t('Copy failed'), { type: 'error', delay: 3000 });
-                });
-            } else {
-                var ta = document.createElement('textarea');
-                ta.value = txt;
-                document.body.appendChild(ta);
-                ta.select();
-                try {
-                    document.execCommand('copy');
-                    window.CRM.notify(i18next.t('Copied to clipboard'), { type: 'success', delay: 2000 });
-                } catch (e) {
-                    window.CRM.notify(i18next.t('Copy failed'), { type: 'error', delay: 3000 });
-                }
-                document.body.removeChild(ta);
-            }
+            window.CRM.copyToClipboard($(this).data('copy'));
         });
 
         // Keep the trailing chevron in sync with each card's collapse state.
