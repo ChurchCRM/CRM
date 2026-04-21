@@ -136,29 +136,6 @@ $phpIni = [
     gettext('Session Save Path')     => ini_get('session.save_path') ?: gettext('(PHP default)'),
 ];
 
-// Required extensions are the single source of truth: src/composer.json.
-// Hard-coding a list here drifts out of sync (the previous list falsely
-// flagged ext-intl as required — ChurchCRM doesn't use it). Parse the
-// ext-* entries from composer.json instead.
-$requiredExtensions = [];
-$composerFile = SystemURLs::getDocumentRoot() . '/composer.json';
-if (is_file($composerFile)) {
-    $composerData = json_decode((string) file_get_contents($composerFile), true);
-    foreach (($composerData['require'] ?? []) as $pkg => $_version) {
-        if (str_starts_with($pkg, 'ext-')) {
-            // Use the lowercase ext name for extension_loaded() — PHP's
-            // ext names are case-insensitive in practice but lowercased
-            // is the safe canonical form.
-            $requiredExtensions[] = strtolower(substr($pkg, 4));
-        }
-    }
-    sort($requiredExtensions);
-}
-$extensionStatus = [];
-foreach ($requiredExtensions as $ext) {
-    $extensionStatus[$ext] = extension_loaded($ext);
-}
-
 // OPcache — one of the biggest perf wins for a LAMP PHP app.
 $opcacheEnabled = function_exists('opcache_get_status');
 $opcacheStatus = null;
@@ -315,16 +292,6 @@ $fmtBytes = static function ($bytes): string {
                             <p class="text-muted mb-3"><i class="fa fa-info-circle me-1"></i><?= gettext('OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads.') ?></p>
                         <?php endif; ?>
 
-                        <h6 class="text-muted mt-3 mb-2"><?= gettext('Required Extensions') ?></h6>
-                        <div class="d-flex flex-wrap gap-2">
-                            <?php foreach ($extensionStatus as $ext => $loaded): ?>
-                                <?php if ($loaded): ?>
-                                    <span class="badge bg-success-lt text-success"><i class="fa fa-check me-1"></i><?= InputUtils::escapeHTML($ext) ?></span>
-                                <?php else: ?>
-                                    <span class="badge bg-danger text-white"><i class="fa fa-times me-1"></i><?= InputUtils::escapeHTML($ext) ?></span>
-                                <?php endif; ?>
-                            <?php endforeach; ?>
-                        </div>
                     </div>
                     <!-- Web Server -->
                     <div class="tab-pane fade" id="env-web" role="tabpanel">
