@@ -9,14 +9,111 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\VersionUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
-?>
-<?php
+
 $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
+$integrityPassed = $integrityStatus === gettext('Passed');
+$failing = AppIntegrityService::getFilesFailingIntegrityCheck();
+$failingCount = count($failing);
+
+$orphanedFiles = AppIntegrityService::getOrphanedFiles();
+$orphanedCount = count($orphanedFiles);
+
+$localeInfo = AppIntegrityService::getLocaleSetupInfo();
+$localeDetected = $localeInfo['systemLocaleDetected'];
+
+$serverTimezone = date_default_timezone_get();
+$configuredTimezone = SystemConfig::getValue('sTimeZone');
+$currentServerTime = new DateTime('now', new DateTimeZone($serverTimezone));
+$serverConfigMismatch = !empty($configuredTimezone) && $configuredTimezone !== $serverTimezone;
+
+// Count prerequisite failures so we can surface the state in the card header
+// and in the summary banner without the user having to expand the card.
+$appPrereqs = AppIntegrityService::getApplicationPrerequisites();
+$fsPrereqs = AppIntegrityService::getFilesystemPrerequisites();
+$prereqFailingCount = 0;
+foreach (array_merge($appPrereqs, $fsPrereqs) as $p) {
+    if ($p->getStatusText() !== gettext('Passed')) {
+        $prereqFailingCount++;
+    }
+}
+
+// Build the summary banner. Each chip: label, color, count-or-null, anchor to
+// scroll to the matching card. Orphaned files are only included when present.
+$statusChips = [
+    [
+        'label' => gettext('Integrity'),
+        'ok' => $integrityPassed,
+        'count' => $integrityPassed ? null : $failingCount,
+        'target' => null, // Integrity card is always visible, no collapse
+    ],
+    [
+        'label' => gettext('Prerequisites'),
+        'ok' => $prereqFailingCount === 0,
+        'count' => $prereqFailingCount === 0 ? null : $prereqFailingCount,
+        'target' => '#collapsePrerequisites',
+    ],
+    [
+        'label' => gettext('Locale'),
+        'ok' => $localeDetected,
+        'count' => null,
+        'target' => '#collapseLocaleSupport',
+    ],
+    [
+        'label' => gettext('Timezone'),
+        'ok' => !$serverConfigMismatch,
+        'count' => null,
+        'target' => '#collapseTimezone',
+    ],
+];
+if ($orphanedCount > 0) {
+    $statusChips[] = [
+        'label' => gettext('Orphaned Files'),
+        'ok' => false,
+        'count' => $orphanedCount,
+        'target' => null, // Orphaned card is always visible when present
+    ];
+}
+$hasAnyIssue = $integrityPassed === false
+    || $prereqFailingCount > 0
+    || $localeDetected === false
+    || $serverConfigMismatch
+    || $orphanedCount > 0;
 ?>
-<div class="row">
+
+<!-- Status banner: quick-scan summary of every diagnostic on this page. -->
+<div id="debug-status-banner" class="card mb-3 <?= $hasAnyIssue ? 'border-warning' : 'border-success' ?>">
+    <div class="card-body py-2 px-3">
+        <div class="d-flex flex-wrap align-items-center gap-2">
+            <strong id="debug-status-banner-headline" class="me-2">
+                <?php if ($hasAnyIssue): ?>
+                    <i class="fa fa-triangle-exclamation text-warning me-1"></i><?= gettext('Issues detected') ?>
+                <?php else: ?>
+                    <i class="fa fa-circle-check text-success me-1"></i><?= gettext('All checks passing') ?>
+                <?php endif; ?>
+            </strong>
+            <?php foreach ($statusChips as $chip):
+                $chipClass = $chip['ok'] ? 'bg-success-lt text-success' : 'bg-warning-lt text-warning';
+                $chipIcon = $chip['ok'] ? 'fa-check' : 'fa-triangle-exclamation';
+                $chipInner = '<i class="fa ' . $chipIcon . ' me-1"></i>' . InputUtils::escapeHTML($chip['label']);
+                if ($chip['count'] !== null) {
+                    $chipInner .= ' <span class="ms-1">' . (int) $chip['count'] . '</span>';
+                }
+                if (!empty($chip['target'])) {
+                    ?>
+                    <a href="<?= $chip['target'] ?>" class="badge <?= $chipClass ?> text-decoration-none debug-status-chip"><?= $chipInner ?></a>
+                <?php } else { ?>
+                    <span class="badge <?= $chipClass ?>"><?= $chipInner ?></span>
+                <?php }
+            endforeach; ?>
+        </div>
+    </div>
+</div>
+
+<!-- Masonry-style layout: cards flow top-to-bottom inside columns so a tall
+     expanded card doesn't leave dead space next to collapsed siblings. -->
+<div class="debug-grid">
     <!-- Installation Configuration - First Card -->
-    <div class="col-md-4">
-        <div class="card">
+    <div class="card">
             <div class="card-header" id="headingInstallation">
                 <h4 data-bs-toggle="collapse" data-bs-target="#collapseInstallation" aria-expanded="false" aria-controls="collapseInstallation" style="cursor: pointer;">
                     <i class="fa fa-cubes me-2"></i><?= gettext('ChurchCRM Installation') ?>
@@ -73,15 +170,8 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                 </div>
             </div>
         </div>
-    </div>
     <!-- Application Integrity Check -->
-    <?php
-    $failing = AppIntegrityService::getFilesFailingIntegrityCheck();
-    $failingCount = count($failing);
-    $integrityPassed = $integrityStatus === gettext('Passed');
-    ?>
-    <div class="col-md-4">
-        <div class="card <?= $integrityPassed ? '' : 'border-warning' ?>">
+    <div class="card <?= $integrityPassed ? '' : 'border-warning' ?>">
             <div class="card-status-top <?= $integrityPassed ? 'bg-success' : 'bg-warning' ?>"></div>
             <div class="card-header">
                 <h4 class="mb-0">
@@ -105,45 +195,40 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
             </div>
         </div>
     </div>
-    <?php
-    // Check for orphaned files and show a separate card if found
-    $orphanedFiles = AppIntegrityService::getOrphanedFiles();
-    $orphanedCount = count($orphanedFiles);
-    if ($orphanedCount > 0):
-    ?>
-    <div class="col-md-4">
-        <div class="card border-danger">
-            <div class="card-status-top bg-danger"></div>
-            <div class="card-header">
-                <h4 class="mb-0">
-                    <i class="fa fa-triangle-exclamation me-2"></i><?= gettext('Orphaned Files') ?>
-                    <span class="badge bg-danger text-white ms-2"><?= $orphanedCount ?></span>
-                </h4>
-            </div>
-            <div class="card-body">
-                <p><?= sprintf(gettext('%d orphaned files were detected on your server.'), $orphanedCount) ?></p>
-                <p class="text-muted small"><?= gettext('These files are not part of the official release and may pose security risks.') ?></p>
-                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/orphaned-files" class="btn btn-danger w-100">
-                    <i class="fa fa-trash me-2"></i><?= gettext('Manage Orphaned Files') ?>
-                </a>
-            </div>
+    <?php if ($orphanedCount > 0): ?>
+    <div class="card border-danger">
+        <div class="card-status-top bg-danger"></div>
+        <div class="card-header">
+            <h4 class="mb-0">
+                <i class="fa fa-triangle-exclamation me-2"></i><?= gettext('Orphaned Files') ?>
+                <span class="badge bg-danger text-white ms-2"><?= $orphanedCount ?></span>
+            </h4>
+        </div>
+        <div class="card-body">
+            <p><?= sprintf(gettext('%d orphaned files were detected on your server.'), $orphanedCount) ?></p>
+            <p class="text-muted small"><?= gettext('These files are not part of the official release and may pose security risks.') ?></p>
+            <a href="<?= SystemURLs::getRootPath() ?>/admin/system/orphaned-files" class="btn btn-danger w-100">
+                <i class="fa fa-trash me-2"></i><?= gettext('Manage Orphaned Files') ?>
+            </a>
         </div>
     </div>
     <?php endif; ?>
-    <div class="col-md-4">
-        <div class="card">
+    <div class="card <?= $prereqFailingCount === 0 ? '' : 'border-warning' ?>">
+            <div class="card-status-top <?= $prereqFailingCount === 0 ? 'bg-success' : 'bg-warning' ?>"></div>
             <div class="card-header" id="headingPrerequisites">
                 <h4 data-bs-toggle="collapse" data-bs-target="#collapsePrerequisites" aria-expanded="false" aria-controls="collapsePrerequisites" style="cursor: pointer;">
                     <i class="fa fa-circle-check me-2"></i><?= gettext('Application Prerequisites') ?>
+                    <?php if ($prereqFailingCount > 0): ?>
+                        <span class="badge bg-warning text-dark ms-2"><?= $prereqFailingCount ?></span>
+                    <?php endif; ?>
                     <i class="fa fa-chevron-down float-end"></i>
                 </h4>
             </div>
             <div id="collapsePrerequisites" class="collapse" aria-labelledby="collapsePrerequisites">
                 <div class="card-body">
                 <h6 class="text-muted"><?= gettext('PHP & Server Requirements') ?></h6>
-                <?php $appPrereqs = AppIntegrityService::getApplicationPrerequisites(); ?>
                 <table class="table table-sm">
-                    <?php foreach ($appPrereqs as $prerequisite) { 
+                    <?php foreach ($appPrereqs as $prerequisite) {
                         $status = $prerequisite->getStatusText();
                         $isOk = $status === gettext('Passed');
                         $iconClass = $isOk ? 'fa-check text-success' : 'fa-times text-danger';
@@ -155,9 +240,8 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                 </table>
                 <hr>
                 <h6 class="text-muted"><?= gettext('Filesystem Permissions') ?></h6>
-                <?php $fsPrereqs = AppIntegrityService::getFilesystemPrerequisites(); ?>
                 <table class="table table-sm">
-                    <?php foreach ($fsPrereqs as $prerequisite) { 
+                    <?php foreach ($fsPrereqs as $prerequisite) {
                         $status = $prerequisite->getStatusText();
                         $isOk = $status === gettext('Passed');
                         $iconClass = $isOk ? 'fa-check text-success' : 'fa-times text-danger';
@@ -170,14 +254,8 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                 </div>
             </div>
         </div>
-    </div>
     <!-- Locale Support -->
-    <?php 
-    $localeInfo = AppIntegrityService::getLocaleSetupInfo();
-    $localeDetected = $localeInfo['systemLocaleDetected'];
-    ?>
-    <div class="col-md-4">
-        <div class="card <?= $localeDetected ? '' : 'border-warning' ?>">
+    <div class="card <?= $localeDetected ? '' : 'border-warning' ?>">
             <div class="card-status-top <?= $localeDetected ? 'bg-success' : 'bg-warning' ?>"></div>
             <div class="card-header" id="headingLocaleSupport">
                 <h4 data-bs-toggle="collapse" data-bs-target="#collapseLocaleSupport" aria-expanded="false" aria-controls="collapseLocaleSupport" style="cursor: pointer;" class="mb-0">
@@ -227,10 +305,8 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                 </div>
             </div>
         </div>
-    </div>
     <!-- Configuration -->
-    <div class="col-md-4">
-        <div class="card">
+    <div class="card">
             <div class="card-header" id="headingSystemConfig">
                 <h4 data-bs-toggle="collapse" data-bs-target="#collapseSystemConfig" aria-expanded="false" aria-controls="collapseSystemConfig" style="cursor: pointer;">
                     <i class="fa fa-cogs me-2"></i><?= gettext('System & Configuration') ?>
@@ -293,16 +369,9 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                 </div>
             </div>
         </div>
-    </div>
     <!-- Timezone Information -->
-    <?php
-    $serverTimezone = date_default_timezone_get();
-    $configuredTimezone = SystemConfig::getValue('sTimeZone');
-    $currentServerTime = new DateTime('now', new DateTimeZone($serverTimezone));
-    $serverConfigMismatch = !empty($configuredTimezone) && $configuredTimezone !== $serverTimezone;
-    ?>
-    <div class="col-md-4">
-        <div class="card">
+    <div class="card <?= $serverConfigMismatch ? 'border-warning' : '' ?>">
+            <div class="card-status-top <?= $serverConfigMismatch ? 'bg-warning' : 'bg-success' ?>"></div>
             <div class="card-header" id="headingTimezone">
                 <h4 data-bs-toggle="collapse" data-bs-target="#collapseTimezone" aria-expanded="false" aria-controls="collapseTimezone" style="cursor: pointer;">
                     <i class="fa fa-clock me-2"></i><?= gettext('Timezone Information') ?>
@@ -365,10 +434,8 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                     </div>
                 </div>
             </div>
-        </div>
     </div>
-    <div class="col-md-4">
-        <div class="card">
+    <div class="card">
             <div class="card-header" id="headingPHP">
                 <h4 data-bs-toggle="collapse" data-bs-target="#collapsePHP" aria-expanded="false" aria-controls="collapsePHP" style="cursor: pointer;">
                     <i class="fa fa-code me-2"></i><?= gettext('PHP Configuration') ?>
@@ -406,9 +473,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card">
+    <div class="card">
             <div class="card-header" id="headingWebServer">
                 <h4 data-bs-toggle="collapse" data-bs-target="#collapseWebServer" aria-expanded="false" aria-controls="collapseWebServer" style="cursor: pointer;">
                     <i class="fa fa-globe me-2"></i><?= gettext('Web Server') ?>
@@ -442,12 +507,40 @@ EOD;
                 </div>
             </div>
         </div>
-    </div>
 </div>
 
 <style nonce="<?= SystemURLs::getCSPNonce() ?>">
 .bg-warning-light {
     background-color: rgba(255, 193, 7, 0.1) !important;
+}
+
+/* CSS columns (masonry-like) so a tall expanded card doesn't leave dead
+   space beside short collapsed cards the way Bootstrap's row-grid does. */
+.debug-grid {
+    column-gap: 1rem;
+}
+.debug-grid > .card {
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+@media (min-width: 768px) {
+    .debug-grid { column-count: 2; }
+}
+@media (min-width: 1200px) {
+    .debug-grid { column-count: 3; }
+}
+
+/* Status-banner chips — give a little more room than a plain Bootstrap
+   badge so the icon + label + count don't look cramped. */
+.debug-status-chip,
+.card-body .badge.bg-success-lt,
+.card-body .badge.bg-warning-lt {
+    padding: 0.35em 0.6em;
+    font-size: 0.8125rem;
 }
 </style>
 
@@ -488,6 +581,21 @@ EOD;
         var $row = $('#browser-tz-row');
         var $headerAlert = $('#tz-header-alert');
         
+        // The top banner's Timezone chip is server-rendered and can't know
+        // about the browser mismatch until this runs. Sync it now so the
+        // banner state matches the card content.
+        var $timezoneChip = $('.debug-status-chip[href="#collapseTimezone"]');
+        var $bannerHeadline = $('#debug-status-banner-headline');
+        var $banner = $('#debug-status-banner');
+        var setChipState = function($chip, ok) {
+            if (!$chip.length) return;
+            var iconFrom = ok ? 'fa-triangle-exclamation' : 'fa-check';
+            var iconTo = ok ? 'fa-check' : 'fa-triangle-exclamation';
+            $chip.removeClass('bg-success-lt text-success bg-warning-lt text-warning')
+                 .addClass(ok ? 'bg-success-lt text-success' : 'bg-warning-lt text-warning');
+            $chip.find('i.fa').removeClass(iconFrom).addClass(iconTo);
+        };
+
         if (browserMatchesBaseline) {
             $badge.removeClass('bg-warning-lt text-warning bg-secondary text-white')
                   .addClass('bg-success-lt text-success')
@@ -500,6 +608,17 @@ EOD;
             $row.addClass('bg-warning-light');
             // Show alert icon in card header
             $headerAlert.removeClass('d-none');
+            // Update banner: flip the Timezone chip and promote headline if
+            // this is the first issue detected on the page.
+            setChipState($timezoneChip, false);
+            $('#collapseTimezone').closest('.card')
+                .removeClass('border-success')
+                .addClass('border-warning')
+                .find('.card-status-top').removeClass('bg-success').addClass('bg-warning');
+            if ($bannerHeadline.length) {
+                $bannerHeadline.html('<i class="fa fa-triangle-exclamation text-warning me-1"></i><?= gettext('Issues detected') ?>');
+                $banner.removeClass('border-success').addClass('border-warning');
+            }
         }
         
         // Update summary
@@ -594,6 +713,24 @@ EOD;
         };
         openFromHash();
         window.addEventListener('hashchange', openFromHash);
+
+        // Auto-expand any collapsible card that's in a warning/danger state so
+        // the admin doesn't have to click to find the problem. The chips in
+        // the summary banner serve as the quick-scan navigation; expanding
+        // just surfaces the details inline.
+        var autoOpenProblemCards = function() {
+            $('.card .collapse').each(function() {
+                if (this.classList.contains('show')) return;
+                var $card = $(this).closest('.card');
+                if (!$card.hasClass('border-warning') && !$card.hasClass('border-danger')) return;
+                if (window.bootstrap && bootstrap.Collapse) {
+                    bootstrap.Collapse.getOrCreateInstance(this).show();
+                } else {
+                    $(this).collapse('show');
+                }
+            });
+        };
+        autoOpenProblemCards();
     };
 
     // Initialize page once locales (i18next) are ready, with DOM-ready fallback
