@@ -31,12 +31,25 @@ describe("Calendar time-zone indicator", () => {
                 const originalDTF = win.Intl.DateTimeFormat;
                 function DTFStub(...args) {
                     const instance = new originalDTF(...args);
-                    const originalResolved = instance.resolvedOptions.bind(instance);
-                    instance.resolvedOptions = () => {
-                        const opts = originalResolved();
-                        opts.timeZone = fakeBrowserTZ;
-                        return opts;
-                    };
+                    // ONLY override resolvedOptions() for the default
+                    // no-args / no-explicit-timeZone call (the one the
+                    // IIFE uses to fetch the browser zone). When the IIFE
+                    // canonicalizes the configured zone via
+                    // `Intl.DateTimeFormat(undefined, { timeZone: configured })`
+                    // we must let the real implementation return the
+                    // canonical configured zone — otherwise both sides
+                    // end up equal to the fake value and the mismatch
+                    // branch never fires.
+                    const options = args[1] || {};
+                    const explicitTz = options.timeZone;
+                    if (!explicitTz) {
+                        const originalResolved = instance.resolvedOptions.bind(instance);
+                        instance.resolvedOptions = () => {
+                            const opts = originalResolved();
+                            opts.timeZone = fakeBrowserTZ;
+                            return opts;
+                        };
+                    }
                     return instance;
                 }
                 DTFStub.supportedLocalesOf =
