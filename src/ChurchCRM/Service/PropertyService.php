@@ -19,7 +19,9 @@ class PropertyService
     public const CLASS_PERSON = 'p';
 
     /**
-     * RecordProperty rows assigned to the entity, pre-joined with Property + PropertyType.
+     * RecordProperty rows assigned to the entity. Related Property and
+     * PropertyType objects are fetched lazily when accessed via
+     * $rp->getProperty() / $prop->getPropertyType().
      *
      * @param Family|Person $entity
      */

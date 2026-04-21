@@ -426,8 +426,9 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                                 class="photo-view-overlay btn btn-sm position-absolute bottom-0 end-0 m-1 d-none"
                                 data-entity-type="family"
                                 data-entity-id="<?= $family->getId() ?>"
-                                title="<?= gettext('View full photo') ?>">
-                            <i class="fa-solid fa-magnifying-glass" style="color:white; text-shadow: 0 1px 3px rgba(0,0,0,.8);"></i>
+                                title="<?= gettext('View full photo') ?>"
+                                aria-label="<?= gettext('View full photo') ?>">
+                            <i class="fa-solid fa-magnifying-glass" aria-hidden="true" style="color:white; text-shadow: 0 1px 3px rgba(0,0,0,.8);"></i>
                         </button>
                     </div>
                     <!-- Attributes (right) -->
