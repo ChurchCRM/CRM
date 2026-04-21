@@ -35,9 +35,27 @@ $(document).ready(() => {
   });
 
   uppy.on("upload-error", (_file, error, response) => {
-    const msg =
-      response?.body?.message || error.message || i18next.t("Upload failed. Please check the file and try again.");
-    setStatus("error", msg);
+    // Uppy v5 wraps every non-2xx response in a NetworkError whose message is
+    // hardcoded to "This looks like a network error…" regardless of the real
+    // HTTP status. The raw xhr is passed as the third arg, so parse the server
+    // JSON body ourselves to surface messages like "Your CSV has duplicate
+    // column names…" to the user.
+    let msg = null;
+    const responseText = response?.responseText;
+    if (responseText) {
+      try {
+        const parsed = JSON.parse(responseText);
+        if (parsed && typeof parsed.message === "string" && parsed.message.length > 0) {
+          msg = parsed.message;
+        }
+      } catch (_e) {
+        // not JSON — fall through
+      }
+    }
+    if (!msg && error && !error.isNetworkError && typeof error.message === "string") {
+      msg = error.message;
+    }
+    setStatus("error", msg || i18next.t("Upload failed. Please check the file and try again."));
   });
 
   // --- Dropzone ---
