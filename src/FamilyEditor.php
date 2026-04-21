@@ -7,14 +7,13 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Emails\notifications\NewPersonOrFamilyEmail;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Service\FamilyService;
 use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
-use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\PersonCustom;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\DateTimeUtils;
@@ -318,29 +317,13 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                         ->setClsId($aClassification[$iCount]);
                     $person->save();
                     $person->reload();
-                    $dbPersonId = $person->getId();
-                    $note = new Note();
-                    $note->setPerId($dbPersonId);
-                    $note->setText(gettext('Created via Family'));
-                    $note->setType('create');
-                    $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
-                    $note->save();
-                    RunQuery('LOCK TABLES person_custom WRITE');
-                    $sSQL = "INSERT INTO person_custom (per_ID) VALUES ($dbPersonId)";
-                    RunQuery($sSQL);
-                    RunQuery('UNLOCK TABLES');
+                    $personCustom = new PersonCustom();
+                    $personCustom->setPerId($person->getId());
+                    $personCustom->save();
                 }
             }
             $family = FamilyQuery::create()->findPk($iFamilyID);
-            $family->createTimeLineNote('create');
             $family->updateLanLng();
-
-            if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs"))) {
-                $NotificationEmail = new NewPersonOrFamilyEmail($family);
-                if (!$NotificationEmail->send()) {
-                    $logger->warning($NotificationEmail->getError());
-                }
-            }
         } else {
             for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++) {
                 if (strlen($aFirstNames[$iCount]) > 0) {
@@ -352,7 +335,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                     $sLastNameToEnter = strlen($aLastNames[$iCount]) && $aLastNames[$iCount] != $sName
                         ? $aLastNames[$iCount]
                         : $sName;
-                    //RunQuery("LOCK TABLES person_per WRITE, person_custom WRITE");
                     $person = PersonQuery::create()->findOneById($aPersonIDs[$iCount]);
                     $person
                         ->setFirstName($aFirstNames[$iCount])
@@ -363,24 +345,17 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                         ->setFmrId($aRoles[$iCount])
                         ->setBirthMonth($aBirthMonths[$iCount])
                         ->setBirthDay($aBirthDays[$iCount])
-                        ->setClsId($aClassification[$iCount]);
+                        ->setClsId($aClassification[$iCount])
+                        ->setDateLastEdited(date('YmdHis'))
+                        ->setEditedBy(AuthenticationManager::getCurrentUser()->getId());
                     if ($aUpdateBirthYear[$iCount] & 1) {
                         $person->setBirthYear($aBirthYears[$iCount]);
                     }
                     $person->save();
-                    //RunQuery("UNLOCK TABLES");
-
-                    $note = new Note();
-                    $note->setPerId($aPersonIDs[$iCount]);
-                    $note->setText(gettext('Updated via Family'));
-                    $note->setType('edit');
-                    $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
-                    $note->save();
                 }
             }
             $family = FamilyQuery::create()->findPk($iFamilyID);
             $family->updateLanLng();
-            $family->createTimeLineNote('edit');
         }
 
         // Update the custom person fields.

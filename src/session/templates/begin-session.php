@@ -61,7 +61,7 @@ $hasSelfReg = SystemConfig::getBooleanValue('bEnableSelfRegistration');
 
           <div class="form-footer">
             <span></span>
-            <?php if (SystemConfig::getBooleanValue('bEnableLostPassword')) { ?>
+            <?php if (SystemConfig::getBooleanValue('bEnableLostPassword') && SystemConfig::isEmailEnabled()) { ?>
               <a href="<?= htmlspecialchars($forgotPasswordURL) ?>"><?= gettext('Forgot password?') ?></a>
             <?php } ?>
           </div>

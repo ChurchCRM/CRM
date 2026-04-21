@@ -6,6 +6,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\Service\PropertyService;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
@@ -52,6 +53,11 @@ $spousePeople = $family->getSpousePeople();
 $keyPeople = array_merge($headPeople, $spousePeople);
 $childPeople = $family->getChildPeople();
 $otherPeople = $family->getOtherPeople();
+
+$assignedFamilyProperties = PropertyService::getAssigned($family);
+$allFamilyProperties = PropertyService::getAll($family);
+
+$canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled();
 ?>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
@@ -92,11 +98,6 @@ $otherPeople = $family->getOtherPeople();
             <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
             <a class="btn btn-ghost-info" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId() ?>">
                 <i class="fa-solid fa-note-sticky me-1"></i><?= gettext('Add Note') ?>
-            </a>
-            <?php } ?>
-            <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
-            <a class="btn btn-ghost-secondary" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?FamilyID=<?= $family->getId() ?>">
-                <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add Member') ?>
             </a>
             <?php } ?>
             <?php if ($showFamilyCheckin && $memberCount > 0) { ?>
@@ -308,6 +309,11 @@ $otherPeople = $family->getOtherPeople();
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title m-0"><i class="fa-solid fa-people-roof me-1"></i> <?= gettext("Family Members") ?></h3>
                 <span class="badge bg-primary-lt text-primary ms-2"><?= $memberCount ?></span>
+                <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
+                <a class="btn btn-sm btn-outline-primary ms-auto" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?FamilyID=<?= $family->getId() ?>">
+                    <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add Member') ?>
+                </a>
+                <?php } ?>
             </div>
             <div class="card-body">
                 <?php renderMemberTable($keyPeople, gettext("Key People"), 'fa-crown', 'warning'); ?>
@@ -407,25 +413,51 @@ $otherPeople = $family->getOtherPeople();
 
         <!-- Family Photo & Attributes Card -->
         <div class="card mb-3">
-            <!-- Full-width family photo (click to upload) -->
-            <a href="#" id="uploadImageTrigger" class="d-block" title="<?= AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() ? gettext("Click to upload photo") : gettext("View Photo") ?>">
-                <img data-image-entity-type="family"
-                     data-image-entity-id="<?= $family->getId() ?>" class="card-img-top object-fit-cover"
-                     style="max-height: 220px;">
-            </a>
-            <div class="card-body p-3">
-                <ul class="list-unstyled mb-0">
-                    <li class="mb-1">
-                        <i class="fa-solid fa-circle me-2 <?= $family->isActive() ? 'text-success' : 'text-secondary' ?>" style="width: 1rem; text-align: center;"></i><?= $family->isActive() ? gettext('Active') : gettext('Inactive') ?>
-                    </li>
-                    <li class="mb-1"><i class="fa-solid fa-person-half-dress me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= $memberCount ?> <?= $memberCount == 1 ? gettext('Member') : gettext('Members') ?></li>
-                    <?php if ($family->getEnvelope()) { ?>
-                    <li class="mb-1"><i class="fa-solid fa-envelope me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= gettext('Envelope') ?> #<?= $family->getEnvelope() ?></li>
-                    <?php } ?>
-                    <?php if (!SystemConfig::getBooleanValue("bHideWeddingDate") && !empty($family->getWeddingdate())) { ?>
-                    <li class="mb-1"><i class="fa-solid fa-ring me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= $family->getWeddingDate()->format(SystemConfig::getValue("sDateFormatLong")) ?></li>
-                    <?php } ?>
-                </ul>
+            <div class="card-body p-0">
+                <div class="d-flex">
+                    <!-- Photo (left) — click to upload -->
+                    <div class="flex-shrink-0 position-relative" style="width: 160px; aspect-ratio: 1 / 1;">
+                        <a href="#" id="uploadImageTrigger" class="d-block w-100 h-100" title="<?= AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() ? gettext("Click to upload photo") : gettext("View Photo") ?>">
+                            <img data-image-entity-type="family"
+                                 data-image-entity-id="<?= $family->getId() ?>" class="photo-profile w-100 h-100 object-fit-cover"
+                                 style="border-radius: var(--tblr-border-radius) 0 0 var(--tblr-border-radius);">
+                        </a>
+                        <button type="button"
+                                class="photo-view-overlay btn btn-sm position-absolute bottom-0 end-0 m-1 d-none"
+                                data-entity-type="family"
+                                data-entity-id="<?= $family->getId() ?>"
+                                title="<?= gettext('View full photo') ?>"
+                                aria-label="<?= gettext('View full photo') ?>">
+                            <i class="fa-solid fa-magnifying-glass" aria-hidden="true" style="color:white; text-shadow: 0 1px 3px rgba(0,0,0,.8);"></i>
+                        </button>
+                    </div>
+                    <!-- Attributes (right) -->
+                    <div class="p-3 flex-grow-1">
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-1">
+                                <i class="fa-solid fa-circle me-2 <?= $family->isActive() ? 'text-success' : 'text-secondary' ?>" style="width: 1rem; text-align: center;"></i><?= $family->isActive() ? gettext('Active') : gettext('Inactive') ?>
+                            </li>
+                            <li class="mb-1"><i class="fa-solid fa-person-half-dress me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= $memberCount ?> <?= $memberCount == 1 ? gettext('Member') : gettext('Members') ?></li>
+                            <?php if (!empty($family->getHomePhone())) { ?>
+                            <li class="mb-1">
+                                <i class="fa-solid fa-phone me-2 text-muted" style="width: 1rem; text-align: center;"></i><a href="tel:<?= InputUtils::escapeAttribute($family->getHomePhone()) ?>"><?= InputUtils::escapeHTML($family->getHomePhone()) ?></a>
+                            </li>
+                            <?php } ?>
+                            <?php if (!SystemConfig::getBooleanValue("bHideFamilyNewsletter")) { ?>
+                            <li class="mb-1">
+                                <i class="fa-solid fa-newspaper me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= gettext("Newsletter") ?>:
+                                <span class="<?= ($family->isSendNewsletter() ? "text-success" : "text-danger") ?>"><i class="fa-solid fa-<?= ($family->isSendNewsletter() ? "check" : "times") ?>"></i></span>
+                            </li>
+                            <?php } ?>
+                            <?php if ($family->getEnvelope()) { ?>
+                            <li class="mb-1"><i class="fa-solid fa-envelope me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= gettext('Envelope') ?> #<?= $family->getEnvelope() ?></li>
+                            <?php } ?>
+                            <?php if (!SystemConfig::getBooleanValue("bHideWeddingDate") && !empty($family->getWeddingdate())) { ?>
+                            <li class="mb-1"><i class="fa-solid fa-ring me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= $family->getWeddingDate()->format(SystemConfig::getValue("sDateFormatLong")) ?></li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -472,52 +504,31 @@ $otherPeople = $family->getOtherPeople();
             </div>
         </div>
 
-        <!-- Contact Info Card -->
+        <?php if (!empty($family->getEmail())) { ?>
+        <!-- Email Card (with Mailchimp status if plugin enabled) -->
         <div class="card mb-3">
             <div class="card-header d-flex align-items-center">
-                <h3 class="card-title m-0"><i class="fa-solid fa-address-book me-1"></i> <?= gettext("Contact Info") ?></h3>
+                <h3 class="card-title m-0"><i class="fa-solid fa-envelope me-1"></i> <?= gettext("Email") ?></h3>
             </div>
             <div class="card-body">
-                    <ul class="list-unstyled mb-0">
-                        <?php if (!empty($family->getHomePhone())) { ?>
-                            <li class="mb-1">
-                                <i class="fa-solid fa-phone me-2 text-muted" style="width: 1rem; text-align: center;"></i><a href="tel:<?= InputUtils::escapeAttribute($family->getHomePhone()) ?>"><?= InputUtils::escapeHTML($family->getHomePhone()) ?></a>
-                                <button class="btn btn-sm btn-ghost-secondary ms-1 copy-phone-btn" type="button"
-                                        data-phone="<?= InputUtils::escapeAttribute($family->getHomePhone()) ?>"
-                                        title="<?= gettext('Copy to clipboard') ?>">
-                                    <i class="fa-solid fa-copy"></i>
-                                </button>
-                            </li>
-                        <?php }
-                        if (!empty($family->getEmail())) { ?>
-                            <li class="mb-1">
-                                <i class="fa-solid fa-envelope me-2 text-muted" style="width: 1rem; text-align: center;"></i><a href="mailto:<?= InputUtils::escapeAttribute($family->getEmail()) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($family->getEmail()) ?></a>
-                                <button class="btn btn-sm btn-ghost-secondary ms-1 copy-email-btn" type="button"
-                                        data-email="<?= InputUtils::escapeAttribute($family->getEmail()) ?>"
-                                        title="<?= gettext('Copy to clipboard') ?>">
-                                    <i class="fa-solid fa-copy"></i>
-                                </button>
-                            </li>
-                            <!-- MailChimp status - populated by JavaScript if plugin is active -->
-                            <li class="d-none mb-1" id="mailchimp-status-container">
-                                <i class="fa-regular fa-paper-plane me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= gettext("Mailchimp") ?>:
-                                <span id="mailchimp-status">... <?= gettext("loading")?> ...</span>
-                            </li>
-                        <?php }
-                        if (!SystemConfig::getBooleanValue("bHideFamilyNewsletter")) { ?>
-                            <li class="mb-1">
-                                <i class="fa-solid fa-newspaper me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= gettext("Send Newsletter") ?>:
-                                <span class="<?= ($family->isSendNewsletter() ?"text-success" :"text-danger") ?>"><i class="fa-solid fa-<?= ($family->isSendNewsletter() ?"check" :"times") ?>"></i></span>
-                            </li>
-                        <?php }
-                        if (SystemConfig::getValue("bUseDonationEnvelopes")) { ?>
-                            <li class="mb-1">
-                                <i class="fa-solid fa-envelope me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= gettext("Envelope Number") ?>: <?= $family->getEnvelope() ?>
-                            </li>
-                        <?php } ?>
+                <ul class="list-unstyled mb-0">
+                    <li class="mb-1">
+                        <i class="fa-solid fa-envelope me-2 text-muted" style="width: 1rem; text-align: center;"></i><a href="mailto:<?= InputUtils::escapeAttribute($family->getEmail()) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($family->getEmail()) ?></a>
+                        <button class="btn btn-sm btn-ghost-secondary ms-1 copy-email-btn" type="button"
+                                data-email="<?= InputUtils::escapeAttribute($family->getEmail()) ?>"
+                                title="<?= gettext('Copy to clipboard') ?>">
+                            <i class="fa-solid fa-copy"></i>
+                        </button>
+                    </li>
+                    <!-- MailChimp status - populated by JavaScript if plugin is active -->
+                    <li class="d-none mb-1" id="mailchimp-status-container">
+                        <i class="fa-regular fa-paper-plane me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= gettext("Mailchimp") ?>:
+                        <span id="mailchimp-status">... <?= gettext("loading")?> ...</span>
+                    </li>
                 </ul>
             </div>
         </div>
+        <?php } ?>
 
         <?php if (!empty($familyCustom)) { ?>
         <!-- Custom Fields Card (collapsible) -->
@@ -550,35 +561,78 @@ $otherPeople = $family->getOtherPeople();
         </div>
         <?php } ?>
 
-        <!-- Properties Card (collapsible, matching Person page style) -->
+        <!-- Properties Card (inline, matching Person page style) -->
         <div class="card mb-3">
-            <div class="card-header d-flex align-items-center" role="button" data-bs-toggle="collapse" data-bs-target="#family-properties-body" aria-expanded="true">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title m-0"><i class="fa-solid fa-hashtag me-1"></i> <?= gettext("Properties") ?></h3>
-                <div class="ms-auto"><i class="fa-solid fa-chevron-down"></i></div>
             </div>
-            <div class="collapse show" id="family-properties-body">
-                <div class="card-body">
-                    <div id="family-property-loading" class="w-100 text-center">
-                        <i class="btn btn-secondary ajax">
-                            <i class="fa-solid fa-spinner fa-spin"></i><?= gettext("Loading") ?>
-                        </i>
-                    </div>
-
-                    <div id="family-property-no-data" class="text-center text-muted py-3" style="display: none;">
+            <div class="card-body">
+                <?php if (count($assignedFamilyProperties) === 0) : ?>
+                    <div class="text-center text-muted py-3">
                         <i class="fa-solid fa-tags fa-2x mb-2 d-block opacity-50"></i>
                         <p class="mb-0"><?= gettext("No properties assigned.") ?></p>
                     </div>
-
-                    <div id="family-property-list" class="list-group list-group-flush" style="display: none;"></div>
-
-                    <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
-                    <div class="mt-3">
-                        <button id="add-family-property" type="button" class="btn btn-sm btn-primary w-100">
-                            <i class="fa-solid fa-check me-1"></i><?= gettext('Assign') ?>
-                        </button>
+                <?php else : ?>
+                    <div class="list-group list-group-flush">
+                        <?php foreach ($assignedFamilyProperties as $rp) {
+                            $prop = $rp->getProperty();
+                            $propType = $prop->getPropertyType();
+                            $value = $rp->getPropertyValue(); ?>
+                            <div class="list-group-item px-0 d-flex align-items-center">
+                                <div class="me-auto">
+                                    <strong><?= InputUtils::escapeHTML($prop->getProName()) ?></strong>
+                                    <?php if ($propType) { ?>
+                                        <span class="badge bg-secondary-lt text-secondary ms-1"><?= InputUtils::escapeHTML($propType->getPrtName()) ?></span>
+                                    <?php } ?>
+                                    <?php if (!empty($value)) { ?>
+                                        <small class="text-muted d-block"><?= InputUtils::escapeHTML($value) ?></small>
+                                    <?php } ?>
+                                </div>
+                                <?php if ($canEditRecords) { ?>
+                                    <button class="btn btn-sm btn-ghost-danger remove-family-property-btn" data-property_id="<?= (int) $prop->getProId() ?>" title="<?= gettext('Remove') ?>">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                <?php } ?>
+                            </div>
+                        <?php } ?>
                     </div>
-                    <?php } ?>
-                </div>
+                <?php endif; ?>
+
+                <?php if ($canEditRecords && count($allFamilyProperties) > 0) : ?>
+                    <div class="mt-3 d-print-none">
+                        <form method="post" id="assign-family-property-form">
+                            <div class="mb-2">
+                                <select name="PropertyId" id="input-family-properties" class="form-select" data-placeholder="<?= gettext('Choose a property...') ?>">
+                                    <option value=""></option>
+                                    <?php
+                                    $valueByPropId = [];
+                                    foreach ($assignedFamilyProperties as $rp) {
+                                        $valueByPropId[(int) $rp->getProperty()->getProId()] = $rp->getPropertyValue();
+                                    }
+                                    foreach ($allFamilyProperties as $prop) {
+                                        $pid = (int) $prop->getProId();
+                                        $isAssigned = array_key_exists($pid, $valueByPropId);
+                                        $attrs = 'value="' . $pid . '"';
+                                        $prompt = $prop->getProPrompt();
+                                        if (!empty($prompt)) {
+                                            $attrs .= ' data-pro_Prompt="' . InputUtils::escapeAttribute($prompt) . '"';
+                                            $attrs .= ' data-pro_Value="' . InputUtils::escapeAttribute($valueByPropId[$pid] ?? '') . '"';
+                                        }
+                                        $optionText = InputUtils::escapeHTML($prop->getProName());
+                                        if ($isAssigned) {
+                                            $optionText .= ' (' . gettext('assigned') . ')';
+                                        }
+                                        echo "<option {$attrs}>{$optionText}</option>";
+                                    } ?>
+                                </select>
+                            </div>
+                            <div id="family-property-prompt-box" class="mb-2"></div>
+                            <button id="assign-family-property-btn" type="button" class="btn btn-sm btn-primary w-100">
+                                <i class="fa-solid fa-check me-1"></i><?= gettext('Assign') ?>
+                            </button>
+                        </form>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -762,7 +816,7 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
                         <?php
                     } ?>
             <div class="modal-footer text-center">
-                <?php if (count($familyEmails) > 0 && !empty(SystemConfig::getValue('sSMTPHost'))) {
+                <?php if (count($familyEmails) > 0 && SystemConfig::isEmailEnabled()) {
                     ?>
                     <button type="button" id="onlineVerify"
                             class="btn btn-warning warning"><i

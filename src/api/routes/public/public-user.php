@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Emails\users\ResetPasswordTokenEmail;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\UserQuery;
@@ -97,6 +98,13 @@ function passwordResetRequest(Request $request, Response $response, array $args)
         throw new HttpBadRequestException($request, gettext('Login Name is required'));
     }
 
+    if (!SystemConfig::isEmailEnabled()) {
+        // No tokens minted when we can't deliver the reset link. Still returns
+        // success so we don't reveal whether the account exists.
+        $logger->warning('Password reset requested but email is disabled or SMTP is not configured');
+        return SlimUtils::renderJSON($response, ['success' => true]);
+    }
+
     $user = UserQuery::create()->findOneByUserName($userName);
     if (empty($user) || empty($user->getEmail())) {
         // Don't reveal whether user exists (security best practice)
@@ -107,11 +115,15 @@ function passwordResetRequest(Request $request, Response $response, array $args)
     $token = new Token();
     $token->build('password', $user->getId());
     $token->save();
-    
+
     $email = new ResetPasswordTokenEmail($user, $token->getToken());
     if (!$email->send()) {
+        // The token was saved before the send attempt — if delivery fails the
+        // user never sees the link, so drop the unusable token immediately
+        // instead of letting it sit in the table until expiry.
+        $token->delete();
         $logger->error('Failed to send password reset email for user ' . $user->getUserName() . ': ' . $email->getError());
-        // Still return success to user (don't expose email issues)
+        // Still return success to user (don't expose email issues).
         return SlimUtils::renderJSON($response, ['success' => true]);
     }
 

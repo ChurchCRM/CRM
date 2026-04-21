@@ -12,7 +12,13 @@ $isOwnProfile = (AuthenticationManager::getCurrentUser()->getId() === $user->get
 $personId = $user->getPersonId();
 $photo = new Photo('Person', $personId);
 $hasUploadedPhoto = $photo->hasUploadedPhoto();
-$avatarApiUrl = SystemURLs::getRootPath() . '/api/person/' . $personId . '/photo';
+// Append the photo file mtime as a cache-busting version token. The
+// /api/person/{id}/photo endpoint sends a 2-hour public Cache-Control
+// header, so without this the browser shows the stale image after an
+// upload + page reload. See #8662.
+$photoVersion = $photo->getPhotoModifiedTime();
+$avatarApiUrl = SystemURLs::getRootPath() . '/api/person/' . $personId . '/photo'
+    . ($photoVersion > 0 ? ('?v=' . $photoVersion) : '');
 $localeInfo = Bootstrapper::getCurrentLocale();
 
 // Read user settings server-side so controls are pre-populated without JS API calls

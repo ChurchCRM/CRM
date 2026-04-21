@@ -17,7 +17,7 @@ use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
 $app->group('/forgot-password', function (RouteCollectorProxy $group): void {
-    if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
+    if (SystemConfig::getBooleanValue('bEnableLostPassword') && SystemConfig::isEmailEnabled()) {
         $group->get('/reset-request', 'forgotPassword');
         $group->post('/reset-request', 'userPasswordReset');
         $group->get('/set/{token}', function (Request $request, Response $response, array $args): Response {
@@ -62,8 +62,11 @@ $app->group('/forgot-password', function (RouteCollectorProxy $group): void {
     } else {
         $group->get('/{foo:.*}', function (Request $request, Response $response, array $args): Response {
             $renderer = new PhpRenderer('templates');
+            $message = SystemConfig::getBooleanValue('bEnableLostPassword')
+                ? gettext('Password reset is unavailable because email is disabled. Please contact your system administrator.')
+                : gettext('Password reset not available.  Please contact your system administrator');
 
-            return $renderer->render($response, '/error.php', ['message' => gettext('Password reset not available.  Please contact your system administrator')]);
+            return $renderer->render($response, '/error.php', ['message' => $message]);
         });
     }
 });
@@ -98,9 +101,13 @@ function userPasswordReset(Request $request, Response $response, array $args)
     $token->save();
     $email = new ResetPasswordTokenEmail($user, $token->getToken());
     if (!$email->send()) {
-        $logger->error($email->getError());
+        // Undelivered token serves no purpose and only widens the exposure
+        // window — drop it so the table doesn't accumulate dead rows.
+        $token->delete();
+        $logger->error('Password reset email failed for user ' . $user->getUserName() . ': ' . $email->getError());
+    } else {
+        $logger->info('Password reset token for ' . $user->getUserName() . ' sent to email address: ' . $user->getEmail());
     }
-    $logger->info('Password reset token for ' . $user->getUserName() . ' sent to email address: ' . $user->getEmail());
 
     return $response->withStatus(200);
 }

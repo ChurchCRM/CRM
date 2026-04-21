@@ -355,6 +355,24 @@ paths:
           description: 'Password reset and email sent'
         '403':
           description: 'Admin role required'
+        '409':
+          description: 'Email delivery is disabled or SMTP is not configured, so the reset was refused'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  error: { type: string }
+                type: object
+        '500':
+          description: 'Password was rotated but the email could not be delivered; the user is effectively locked out'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: false }
+                  error: { type: string }
+                type: object
       security:
         -
           ApiKeyAuth: []

@@ -28,6 +28,7 @@ class Person extends BasePerson implements PhotoInterface
     public const SELF_REGISTER = -1;
     public const SELF_VERIFY = -2;
     private ?Photo $photo = null;
+    private bool $skipPostUpdateNote = false;
 
     public function getFullName(): string
     {
@@ -143,17 +144,16 @@ class Person extends BasePerson implements PhotoInterface
     public function postInsert(?ConnectionInterface $con = null): void
     {
         $this->createTimeLineNote('create');
-        if (!empty(SystemConfig::getValue('sNewPersonNotificationRecipientIDs'))) {
-            $NotificationEmail = new NewPersonOrFamilyEmail($this);
-            if (!$NotificationEmail->send()) {
-                LoggerUtils::getAppLogger()->warning(gettext('New Person Notification Email Error') . ' :' . $NotificationEmail->getError());
-            }
+
+        // Unaffiliated persons only — Family::postInsert() sends one email per family.
+        if (empty($this->getFamId())) {
+            NewPersonOrFamilyEmail::sendIfConfigured($this);
         }
     }
 
     public function postUpdate(?ConnectionInterface $con = null): void
     {
-        if (!empty($this->getDateLastEdited())) {
+        if (!empty($this->getDateLastEdited()) && !$this->skipPostUpdateNote) {
             $this->createTimeLineNote('edit');
         }
     }
@@ -384,11 +384,15 @@ class Person extends BasePerson implements PhotoInterface
         $this->getPhoto()->setImageFromBase64($base64);
         $note->setPerId($this->getId());
         $note->save();
-        
-        // Update person's last edited date and editor
+
         $this->setDateLastEdited(new \DateTime());
         $this->setEditedBy(AuthenticationManager::getCurrentUser()->getId());
-        $this->save();
+        $this->skipPostUpdateNote = true;
+        try {
+            $this->save();
+        } finally {
+            $this->skipPostUpdateNote = false;
+        }
     }
 
     /**
