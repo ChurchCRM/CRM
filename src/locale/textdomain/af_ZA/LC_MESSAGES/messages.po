@@ -1679,20 +1679,8 @@ msgid "Group"
 msgstr "Groep"
 
 #: 
-msgid "Option"
-msgstr "Opsie"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Fout: dupliseer"
-
-#: 
 msgid "Default"
 msgstr "Verstek"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Duplikaatnaam gevind."
 
 #: 
 msgid "Make Default"
@@ -1705,10 +1693,6 @@ msgstr "Uitgang"
 #: 
 msgid "Add New"
 msgstr "Voeg nuwe"
-
-#: 
-msgid " by that name already exists."
-msgstr " bestaan by daardie naam al."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3193,10 +3177,6 @@ msgid "Security Group"
 msgstr "Veiligheidsgroep"
 
 #: 
-msgid "Security Groups"
-msgstr "Veiligheidsgroepe"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Sekuriteitsgroepredakteur"
 
@@ -3209,48 +3189,16 @@ msgid "Group Member Roles Editor"
 msgstr "Groepredakteurs vir groeplede"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Persoonlike persoonlike lysopsie"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Persoonlike persoonlike lysopsies"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Persoonredakteur vir persoonlike lyslyste"
-
-#: 
-msgid "Custom List Option"
-msgstr "Aangepaste lysopsie"
-
-#: 
-msgid "Custom List Options"
-msgstr "Opsies vir persoonlike lys"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Aangepaste lysopsie-redakteur"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Gesins-persoonlike lysopsie"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Gesinslystelys-opsies"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Gesondheidsopsie-redakteur vir gesinslys"
-
-#: 
-msgid "are not allowed."
-msgstr "word nie toegelaat nie."
-
-#: 
-msgid "Name for New"
-msgstr "Naam vir nuut"
 
 #: 
 msgid "Created via Family"
@@ -8397,10 +8345,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Eindig met 'n <strong>sluipweg</strong> (/)"
 
 #: 
-msgid "Error:"
-msgstr "Fout:"
-
-#: 
 msgid "Find the line:"
 msgstr "Soek die lyn:"
 
@@ -8795,10 +8739,6 @@ msgstr[0] "%d persoon suksesvol by die gekose Groep gevoeg."
 msgstr[1] "%d persone suksesvol by die gekose Groep gevoeg."
 
 #: 
-msgid "A "
-msgstr "A "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Is jy seker dat jy wil uitvee"
 
@@ -8827,10 +8767,6 @@ msgid "Delete Confirmation"
 msgstr "Uitvee Bevestiging"
 
 #: 
-msgid "Existing"
-msgstr "Bestaande"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Bestaande Pasgemaakte Familie Velde"
 
@@ -8853,10 +8789,6 @@ msgstr "Ongeldig CSRF-teken"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Ongeldige velde of keuses."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Item suksesvol verwyder"
 
 #: 
 msgid "Move down"
@@ -8893,10 +8825,6 @@ msgstr "Eiendom Tipe"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "Daar is mense aan hierdie Vrywilliger-geleentheid toegeken. Verwydering sal ontoeken:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "Dit sal dit uit alle mense wat tans daaraan toegeken is, verwyder."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11542,10 +11470,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Bestuur Sondag-skool klasse, onderwysers, en studentbywoning"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Bestuur klassifikasieliste, rolle, en ministerie-tipes"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Bestuur donasie-fondse vir finansiële sporing"
 
@@ -11796,10 +11720,6 @@ msgstr "Open GitHub-Probleem"
 #: 
 msgid "Open user menu"
 msgstr "Open gebruiker-keuselys"
-
-#: 
-msgid "Options"
-msgstr "Opsies"
 
 #: 
 msgid "Other Members"

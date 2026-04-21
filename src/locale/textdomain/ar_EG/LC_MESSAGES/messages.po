@@ -1677,20 +1677,8 @@ msgid "Group"
 msgstr "مجموعة"
 
 #: 
-msgid "Option"
-msgstr "اختيار"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "الخطأ: تكرار"
-
-#: 
 msgid "Default"
 msgstr "الافتراضي"
-
-#: 
-msgid "Duplicate name found."
-msgstr "العثور على اسم مكرر."
 
 #: 
 msgid "Make Default"
@@ -1703,10 +1691,6 @@ msgstr "اغلاق"
 #: 
 msgid "Add New"
 msgstr "اضافة جديد"
-
-#: 
-msgid " by that name already exists."
-msgstr "بهذا الاسم موجود مسبقا."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3191,10 +3175,6 @@ msgid "Security Group"
 msgstr "المجموعة الأمنية"
 
 #: 
-msgid "Security Groups"
-msgstr "المجموعات الأمن"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "محرر المجموعات الأمن"
 
@@ -3207,48 +3187,16 @@ msgid "Group Member Roles Editor"
 msgstr "عضو مجموعة أدوار محرر"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "شخص قائمة مخصص الخيار"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "شخص مخصص خيارات قائمة"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "شخص قائمة مخصصة محرر الخيارات"
-
-#: 
-msgid "Custom List Option"
-msgstr "قائمة مخصصة الخيار"
-
-#: 
-msgid "Custom List Options"
-msgstr "مخصص خيارات قائمة"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "قائمة مخصصة محرر الخيارات"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "عائلة قائمة مخصص الخيار"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "الأسرة مخصص خيارات قائمة"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "عائلة قائمة مخصصة محرر الخيارات"
-
-#: 
-msgid "are not allowed."
-msgstr "ليست مسموحة."
-
-#: 
-msgid "Name for New"
-msgstr "اسم لجديد"
 
 #: 
 msgid "Created via Family"
@@ -8404,10 +8352,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "ينتهي بـ <strong>شرطة زائدة</strong> (/)"
 
 #: 
-msgid "Error:"
-msgstr "خطأ:"
-
-#: 
 msgid "Find the line:"
 msgstr "ابحث عن السطر:"
 
@@ -8814,10 +8758,6 @@ msgstr[4] "تمت إضافة %d شخصاً بنجاح إلى المجموعة ا
 msgstr[5] "تم إضافة %d شخص بنجاح إلى المجموعة المحددة."
 
 #: 
-msgid "A "
-msgstr "أ"
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "هل أنت متأكد من رغبتك في الحذف"
 
@@ -8846,10 +8786,6 @@ msgid "Delete Confirmation"
 msgstr "تأكيد الحذف"
 
 #: 
-msgid "Existing"
-msgstr "موجود"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "حقول الأسرة المخصصة الموجودة"
 
@@ -8872,10 +8808,6 @@ msgstr "رمز CSRF غير صالح"
 #: 
 msgid "Invalid fields or selections."
 msgstr "حقول أو تحديدات غير صالحة."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "تم حذف العنصر بنجاح"
 
 #: 
 msgid "Move down"
@@ -8912,10 +8844,6 @@ msgstr "نوع الخاصية"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "هناك أشخاص مخصصون لهذه فرصة التطوع. سيؤدي الحذف إلى إلغاء التعيين:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "سيؤدي هذا إلى إزالته من جميع الأشخاص المخصصين له حاليا."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11573,10 +11501,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "إدارة فئات مدرسة الأحد والمعلمين وحضور الطلاب"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "إدارة قوائم التصنيفات والأدوار وأنواع المجموعات"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "إدارة صناديق المساهمات لتتبع مالي"
 
@@ -11827,10 +11751,6 @@ msgstr "فتح مشكلة GitHub"
 #: 
 msgid "Open user menu"
 msgstr "فتح قائمة المستخدم"
-
-#: 
-msgid "Options"
-msgstr "خيارات"
 
 #: 
 msgid "Other Members"

@@ -1680,20 +1680,8 @@ msgid "Group"
 msgstr "Kelompok"
 
 #: 
-msgid "Option"
-msgstr "Pilihan"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Kesalahan: Duplikat"
-
-#: 
 msgid "Default"
 msgstr "Default"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Nama duplikat ditemukan."
 
 #: 
 msgid "Make Default"
@@ -1706,10 +1694,6 @@ msgstr "Keluar"
 #: 
 msgid "Add New"
 msgstr "Tambah baru"
-
-#: 
-msgid " by that name already exists."
-msgstr "dengan nama itu sudah ada."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3194,10 +3178,6 @@ msgid "Security Group"
 msgstr "Grup Keamanan"
 
 #: 
-msgid "Security Groups"
-msgstr "Grup Keamanan"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Editor Grup Keamanan"
 
@@ -3210,48 +3190,16 @@ msgid "Group Member Roles Editor"
 msgstr "Editor Peran Anggota Grup"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Opsi Daftar Kustom Orang"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Opsi Daftar Kustom Orang"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Editor Pilihan Daftar Orang Kustom"
-
-#: 
-msgid "Custom List Option"
-msgstr "Opsi Daftar Kustom"
-
-#: 
-msgid "Custom List Options"
-msgstr "Opsi Daftar Kustom"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Editor Opsi Daftar Kustom"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Opsi Daftar Kustom Keluarga"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Opsi Daftar Kustom Keluarga"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Editor Pilihan Daftar Keluarga Kustom"
-
-#: 
-msgid "are not allowed."
-msgstr "tidak diizinkan."
-
-#: 
-msgid "Name for New"
-msgstr "Nama untuk Baru"
 
 #: 
 msgid "Created via Family"
@@ -8387,10 +8335,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Berakhir dengan <strong>garis miring</strong> (/)"
 
 #: 
-msgid "Error:"
-msgstr "Kesalahan:"
-
-#: 
 msgid "Find the line:"
 msgstr "Temukan baris:"
 
@@ -8782,10 +8726,6 @@ msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "%d Orang berhasil ditambahkan ke Grup yang dipilih."
 
 #: 
-msgid "A "
-msgstr "Sebuah "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Apakah Anda yakin ingin menghapus"
 
@@ -8814,10 +8754,6 @@ msgid "Delete Confirmation"
 msgstr "Konfirmasi Penghapusan"
 
 #: 
-msgid "Existing"
-msgstr "Yang Ada"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Kolom Kustom Keluarga Saat Ini"
 
@@ -8840,10 +8776,6 @@ msgstr "Token CSRF tidak valid"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Kolom atau pilihan tidak valid."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Item berhasil dihapus"
 
 #: 
 msgid "Move down"
@@ -8880,10 +8812,6 @@ msgstr "Tipe Properti"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "Ada jemaat di bidang pelayanan ini. Penghapusan akan melepas tugas mereka:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "Ini akan menghapus penugasan dari semua jemaat terkait."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11526,10 +11454,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Kelola kelas sekolah Minggu, guru, dan kehadiran murid"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Kelola daftar klasifikasi, peran, dan tipe grup"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Kelola dana persembahan untuk pelacakan keuangan"
 
@@ -11780,10 +11704,6 @@ msgstr "Buka GitHub Issue"
 #: 
 msgid "Open user menu"
 msgstr "Buka menu pengguna"
-
-#: 
-msgid "Options"
-msgstr "Opsi"
 
 #: 
 msgid "Other Members"

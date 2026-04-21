@@ -1669,20 +1669,8 @@ msgid "Group"
 msgstr "กลุ่ม"
 
 #: 
-msgid "Option"
-msgstr "ตัวเลือก"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "ข้อผิดพลาด: ซ้ำกัน"
-
-#: 
 msgid "Default"
 msgstr "ค่าเริ่มต้น"
-
-#: 
-msgid "Duplicate name found."
-msgstr "พบชื่อซ้ำกัน"
 
 #: 
 msgid "Make Default"
@@ -1695,10 +1683,6 @@ msgstr "ออก"
 #: 
 msgid "Add New"
 msgstr "เพิ่มใหม่"
-
-#: 
-msgid " by that name already exists."
-msgstr " ชื่อนั้นมีอยู่แล้ว"
 
 #: 
 msgid "Buyer Number Editor"
@@ -3174,10 +3158,6 @@ msgid "Security Group"
 msgstr "กลุ่มความปลอดภัย"
 
 #: 
-msgid "Security Groups"
-msgstr "กลุ่มความปลอดภัย"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "ตัวแก้ไขกลุ่มความปลอดภัย"
 
@@ -3190,48 +3170,16 @@ msgid "Group Member Roles Editor"
 msgstr "ตัวแก้ไขบทบาทสมาชิกกลุ่ม"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "ตัวเลือกรายการบุคคลกำหนดเอง"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "ตัวเลือกรายการบุคคลกำหนดเอง"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "ตัวแก้ไขตัวเลือกรายการบุคคลกำหนดเอง"
-
-#: 
-msgid "Custom List Option"
-msgstr "ตัวเลือกรายการกำหนดเอง"
-
-#: 
-msgid "Custom List Options"
-msgstr "ตัวเลือกรายการกำหนดเอง"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "ตัวแก้ไขตัวเลือกรายการกำหนดเอง"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "ตัวเลือกรายการครอบครัวกำหนดเอง"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "ตัวเลือกรายการครอบครัวกำหนดเอง"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "ตัวแก้ไขตัวเลือกรายการครอบครัวกำหนดเอง"
-
-#: 
-msgid "are not allowed."
-msgstr "ไม่อนุญาต"
-
-#: 
-msgid "Name for New"
-msgstr "ชื่อสำหรับใหม่"
 
 #: 
 msgid "Created via Family"
@@ -8362,10 +8310,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "ลงท้ายด้วย <strong>เครื่องหมายทับต่อท้าย</strong> (/)"
 
 #: 
-msgid "Error:"
-msgstr "ข้อผิดพลาด:"
-
-#: 
 msgid "Find the line:"
 msgstr "ค้นหาบรรทัด:"
 
@@ -8757,10 +8701,6 @@ msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "เพิ่ม %d คนไปยังกลุ่มที่เลือกสำเร็จ"
 
 #: 
-msgid "A "
-msgstr "ก"
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบ"
 
@@ -8789,10 +8729,6 @@ msgid "Delete Confirmation"
 msgstr "ยืนยันการลบ"
 
 #: 
-msgid "Existing"
-msgstr "ที่มีอยู่"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "ฟิลด์ครอบครัวกำหนดเองที่มีอยู่"
 
@@ -8815,10 +8751,6 @@ msgstr "โทเค็น CSRF ไม่ถูกต้อง"
 #: 
 msgid "Invalid fields or selections."
 msgstr "ฟิลด์หรือการเลือกไม่ถูกต้อง"
-
-#: 
-msgid "Item deleted successfully"
-msgstr "ลบรายการสำเร็จ"
 
 #: 
 msgid "Move down"
@@ -8855,10 +8787,6 @@ msgstr "ประเภทคุณสมบัติ"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "มีคนที่กำหนดให้กับโอกาสอาสาสมัครนี้ การลบจะยกเลิกการกำหนด:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "การดำเนินการนี้จะลบออกจากคนทั้งหมดที่กำหนดให้ในปัจจุบัน"
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11501,10 +11429,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "จัดการชั้นเรียนวันอาทิตย์ ครูผู้สอน และการเข้าเรียนของนักเรียน"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "จัดการรายการจำแนกประเภท บทบาท และประเภทกลุ่ม"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "จัดการกองทุนถวายสำหรับการติดตามทางการเงิน"
 
@@ -11755,10 +11679,6 @@ msgstr "เปิด GitHub Issue"
 #: 
 msgid "Open user menu"
 msgstr "เปิดเมนูผู้ใช้"
-
-#: 
-msgid "Options"
-msgstr "ตัวเลือก"
 
 #: 
 msgid "Other Members"

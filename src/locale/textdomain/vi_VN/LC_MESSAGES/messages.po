@@ -1691,20 +1691,8 @@ msgid "Group"
 msgstr "Ban/Mục vụ"
 
 #: 
-msgid "Option"
-msgstr "Tùy chọn"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Lỗi: trùng lặp"
-
-#: 
 msgid "Default"
 msgstr "Mặc định"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Đã tìm thấy tên trùng lặp."
 
 #: 
 msgid "Make Default"
@@ -1717,10 +1705,6 @@ msgstr "Thoát khỏi"
 #: 
 msgid "Add New"
 msgstr "Thêm mới"
-
-#: 
-msgid " by that name already exists."
-msgstr "bởi tên đó đã tồn tại."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3205,10 +3189,6 @@ msgid "Security Group"
 msgstr "Nhóm bảo mật"
 
 #: 
-msgid "Security Groups"
-msgstr "Nhóm bảo mật"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Biên tập viên nhóm bảo mật"
 
@@ -3221,48 +3201,16 @@ msgid "Group Member Roles Editor"
 msgstr "Biên tập vai trò thành viên nhóm"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Tùy chọn danh sách tùy chỉnh cá nhân"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Tùy chọn danh sách tùy chỉnh cá nhân"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Người chỉnh sửa tùy chọn danh sách tùy chỉnh"
-
-#: 
-msgid "Custom List Option"
-msgstr "Tùy chọn danh sách tùy chỉnh"
-
-#: 
-msgid "Custom List Options"
-msgstr "Tùy chọn danh sách tùy chỉnh"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Trình chỉnh sửa tùy chọn danh sách tùy chỉnh"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Tùy chọn danh sách tùy chỉnh cho gia đình"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Tùy chọn danh sách tùy chỉnh cho gia đình"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Trình chỉnh sửa tùy chọn danh sách tùy chỉnh dành cho gia đình"
-
-#: 
-msgid "are not allowed."
-msgstr "không được cho phép."
-
-#: 
-msgid "Name for New"
-msgstr "Tên mới cho thuộc tính"
 
 #: 
 msgid "Created via Family"
@@ -8398,10 +8346,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Kết thúc bằng một <strong>dấu gạch chéo</strong> (/)"
 
 #: 
-msgid "Error:"
-msgstr "Lỗi:"
-
-#: 
 msgid "Find the line:"
 msgstr "Tìm dòng:"
 
@@ -8793,10 +8737,6 @@ msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "Đã thêm thành công %d người vào Nhóm được chọn."
 
 #: 
-msgid "A "
-msgstr "Một "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Bạn có chắc chắn muốn xóa"
 
@@ -8825,10 +8765,6 @@ msgid "Delete Confirmation"
 msgstr "Xác nhận xóa"
 
 #: 
-msgid "Existing"
-msgstr "Hiện có"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Các trường gia đình tùy chỉnh hiện có"
 
@@ -8851,10 +8787,6 @@ msgstr "Mã thông báo CSRF không hợp lệ"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Các trường hoặc lựa chọn không hợp lệ."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Mục đã được xóa thành công"
 
 #: 
 msgid "Move down"
@@ -8891,10 +8823,6 @@ msgstr "Loại thuộc tính"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "Có những người được giao cho cơ hội tình nguyện này. Việc xóa sẽ hủy phân công:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "Điều này sẽ xóa nó khỏi tất cả những người hiện đang được gán."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11537,10 +11465,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Quan ly lop giao ly, giao vien va diem danh hoc vien"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Quan ly danh sach phan loai, vai tro va loai nhom"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Quan ly quy dang hien de theo doi tai chinh"
 
@@ -11791,10 +11715,6 @@ msgstr "Mo GitHub Issue"
 #: 
 msgid "Open user menu"
 msgstr "Mo menu nguoi dung"
-
-#: 
-msgid "Options"
-msgstr "Tuy chon"
 
 #: 
 msgid "Other Members"

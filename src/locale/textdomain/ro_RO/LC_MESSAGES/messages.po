@@ -1724,20 +1724,8 @@ msgid "Group"
 msgstr "Grup"
 
 #: 
-msgid "Option"
-msgstr "Opțiune"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Eroare: Duplicate"
-
-#: 
 msgid "Default"
 msgstr "Lipsă"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Duplicat nume de găsit."
 
 #: 
 msgid "Make Default"
@@ -1750,10 +1738,6 @@ msgstr "Ieșire"
 #: 
 msgid "Add New"
 msgstr "Adăugați noi"
-
-#: 
-msgid " by that name already exists."
-msgstr "cu acest nume există deja."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3270,10 +3254,6 @@ msgid "Security Group"
 msgstr "Grup securitate"
 
 #: 
-msgid "Security Groups"
-msgstr "Grupuri securitate"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Editor grupuri securitate"
 
@@ -3286,48 +3266,16 @@ msgid "Group Member Roles Editor"
 msgstr "Editor roluri membri grup"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Opțiune listă personalizată persoană"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Opțiuni listă personalizată persoană"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Editor opțiuni listă personalizată persoană"
-
-#: 
-msgid "Custom List Option"
-msgstr "Opțiune listă personalizată"
-
-#: 
-msgid "Custom List Options"
-msgstr "Opțiuni listă personalizată"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Editor opțiuni listă personalizată"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Opțiune listă personalizată familie"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Opțiuni listă personalizată familie"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Editor de opțiuni de listă personalizată pentru familie"
-
-#: 
-msgid "are not allowed."
-msgstr "nu sunt permise."
-
-#: 
-msgid "Name for New"
-msgstr "Nume pentru nou"
 
 #: 
 msgid "Created via Family"
@@ -8475,10 +8423,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Se termină cu un <strong>slash la sfârșit</strong> (/)"
 
 #: 
-msgid "Error:"
-msgstr "Eroare:"
-
-#: 
 msgid "Find the line:"
 msgstr "Găsiți linia:"
 
@@ -8876,10 +8820,6 @@ msgstr[1] "%d persoane adăugate cu succes la grupul selectat."
 msgstr[2] "%d persoane adăugate cu succes la grupul selectat."
 
 #: 
-msgid "A "
-msgstr "Un/O "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Sigur doriți să ștergeți"
 
@@ -8908,10 +8848,6 @@ msgid "Delete Confirmation"
 msgstr "Confirmare ștergere"
 
 #: 
-msgid "Existing"
-msgstr "Existent"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Câmpuri personalizate de familie existente"
 
@@ -8934,10 +8870,6 @@ msgstr "Token CSRF nevalid"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Câmpuri sau selecții nevalide."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Element șters cu succes"
 
 #: 
 msgid "Move down"
@@ -8974,10 +8906,6 @@ msgstr "Tip proprietate"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "Există persoane atribuite acestei oportunități de voluntariat. Ștergerea le va dezasocia:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "Aceasta o va elimina de la toate persoanele atribuite în prezent."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11626,10 +11554,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Gestionează clasele de școală duminicală, profesorii și prezența elevilor"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Gestionează listele de clasificare, rolurile și tipurile de grupuri"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Gestionează fondurile de ofertă pentru urmărirea financiară"
 
@@ -11880,10 +11804,6 @@ msgstr "Deschide problemă GitHub"
 #: 
 msgid "Open user menu"
 msgstr "Deschide meniul utilizatorului"
-
-#: 
-msgid "Options"
-msgstr "Opțiuni"
 
 #: 
 msgid "Other Members"
