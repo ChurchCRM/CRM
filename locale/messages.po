@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-18 00:47+0000\n"
+"POT-Creation-Date: 2026-04-21 18:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,6 +31,9 @@ msgid " Deposit #"
 msgstr ""
 
 msgid " Italic"
+msgstr ""
+
+msgid " Notification Email Error"
 msgstr ""
 
 msgid " characters long"
@@ -1014,9 +1017,6 @@ msgstr ""
 msgid "Assign Role"
 msgstr ""
 
-msgid "Assign a New Property"
-msgstr ""
-
 msgid "Assign a New Volunteer Opportunity"
 msgstr ""
 
@@ -1469,6 +1469,9 @@ msgstr ""
 msgid "Browser language preference detected"
 msgstr ""
 
+msgid "Browser time zone differs:"
+msgstr ""
+
 #. Context: countries
 msgid "Brunei"
 msgstr ""
@@ -1570,6 +1573,9 @@ msgid "Calendar not found"
 msgstr ""
 
 msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
+msgstr ""
+
+msgid "Calendar time zone:"
 msgstr ""
 
 msgid "Calendars"
@@ -2302,9 +2308,6 @@ msgstr ""
 msgid "Contact & Personal Info"
 msgstr ""
 
-msgid "Contact Info"
-msgstr ""
-
 msgid "Contact Information"
 msgstr ""
 
@@ -2519,9 +2522,6 @@ msgid "Create today's class event and link it to this class for kiosk check-in"
 msgstr ""
 
 msgid "Created"
-msgstr ""
-
-msgid "Created via Family"
 msgstr ""
 
 msgid "Creating Backup..."
@@ -3152,9 +3152,6 @@ msgid "Do you want to delete this person?  This cannot be undone."
 msgstr ""
 
 msgid "Do you want to proceed?"
-msgstr ""
-
-msgid "Do you want to remove"
 msgstr ""
 
 msgid "Document Root"
@@ -4290,9 +4287,6 @@ msgid "Family Profile"
 msgstr ""
 
 msgid "Family Properties"
-msgstr ""
-
-msgid "Family Property Unassignment"
 msgstr ""
 
 msgid "Family Registration"
@@ -6761,9 +6755,6 @@ msgstr ""
 msgid "New Family Added"
 msgstr ""
 
-msgid "New Family Notification Email Error"
-msgstr ""
-
 msgid "New Group"
 msgstr ""
 
@@ -6780,9 +6771,6 @@ msgid "New Person"
 msgstr ""
 
 msgid "New Person Added"
-msgstr ""
-
-msgid "New Person Notification Email Error"
 msgstr ""
 
 msgid "New Pledge"
@@ -10515,9 +10503,6 @@ msgstr ""
 msgid "Updated People"
 msgstr ""
 
-msgid "Updated via Family"
-msgstr ""
-
 msgid "Upgrade"
 msgstr ""
 
@@ -10909,6 +10894,9 @@ msgid "View family details, members, and timeline"
 msgstr ""
 
 msgid "View family pledge summaries and fund allocations"
+msgstr ""
+
+msgid "View full photo"
 msgstr ""
 
 msgid "View group members, roles, and properties"
@@ -11729,9 +11717,6 @@ msgid "personIds must be a non-empty array"
 msgstr ""
 
 msgid "properties"
-msgstr ""
-
-msgid "property"
 msgstr ""
 
 msgid "records"
