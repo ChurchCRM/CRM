@@ -112,21 +112,61 @@ $hasAnyIssue = $integrityPassed === false
 </div>
 
 <?php
-// Pre-compute paths so the repeated copy-button markup stays readable.
+// Environment data — paths (with copy chips), PHP runtime, extensions.
 $envPaths = [
     gettext('Root Path')    => SystemURLs::getRootPath() ?: '(empty - top level)',
     gettext('Document Root') => SystemURLs::getDocumentRoot(),
     gettext('Base URL')     => SystemURLs::getURL(),
     gettext('Images Root')  => SystemURLs::getImagesRoot(),
     gettext('DSN')          => Bootstrapper::getDSN(),
+    gettext('Loaded php.ini') => php_ini_loaded_file() ?: gettext('(none)'),
+    gettext('Error Log')    => ini_get('error_log') ?: gettext('(PHP default)'),
 ];
+
 $phpIni = [
-    gettext('Max file upload size') => ini_get('upload_max_filesize'),
-    gettext('Max POST size')        => ini_get('post_max_size'),
-    gettext('PHP Memory Limit')     => ini_get('memory_limit'),
-    gettext('PHP Max Execution Time') => ini_get('max_execution_time') . 's',
-    gettext('SAPI Name')            => php_sapi_name(),
+    gettext('SAPI')                  => php_sapi_name(),
+    gettext('Memory Limit')          => ini_get('memory_limit'),
+    gettext('Max Execution Time')    => ini_get('max_execution_time') . 's',
+    gettext('Max Upload Size')       => ini_get('upload_max_filesize'),
+    gettext('Max POST Size')         => ini_get('post_max_size'),
+    gettext('date.timezone')         => ini_get('date.timezone') ?: gettext('(not set)'),
+    gettext('Display Errors')        => ini_get('display_errors') ? gettext('On') : gettext('Off'),
+    gettext('Error Reporting')       => (string) ini_get('error_reporting'),
+    gettext('Session Handler')       => ini_get('session.save_handler'),
+    gettext('Session Save Path')     => ini_get('session.save_path') ?: gettext('(PHP default)'),
 ];
+
+// Critical extensions ChurchCRM depends on — surface presence/absence so
+// an admin can see at a glance whether the PHP install is missing one.
+$requiredExtensions = ['pdo_mysql', 'mysqli', 'gd', 'curl', 'mbstring', 'xml', 'json', 'intl', 'zip', 'fileinfo', 'openssl'];
+$extensionStatus = [];
+foreach ($requiredExtensions as $ext) {
+    $extensionStatus[$ext] = extension_loaded($ext);
+}
+
+// OPcache — one of the biggest perf wins for a LAMP PHP app.
+$opcacheEnabled = function_exists('opcache_get_status');
+$opcacheStatus = null;
+if ($opcacheEnabled) {
+    $opcacheStatus = @opcache_get_status(false);
+}
+
+// Disk space on the images directory (photos live there).
+$imagesRoot = SystemURLs::getImagesRoot();
+$diskFree = is_dir($imagesRoot) ? @disk_free_space($imagesRoot) : false;
+$diskTotal = is_dir($imagesRoot) ? @disk_total_space($imagesRoot) : false;
+$fmtBytes = static function ($bytes): string {
+    if (!is_numeric($bytes) || $bytes < 0) {
+        return '?';
+    }
+    $units = ['B', 'KB', 'MB', 'GB', 'TB'];
+    $i = 0;
+    while ($bytes >= 1024 && $i < count($units) - 1) {
+        $bytes /= 1024;
+        $i++;
+    }
+    return sprintf('%.1f %s', $bytes, $units[$i]);
+};
 ?>
 <!-- Environment card: full-width reference data with tabs.
      Sits outside the masonry grid so DSN / paths / Apache modules have
@@ -153,59 +193,140 @@ $phpIni = [
                 <div class="tab-content pt-3">
                     <!-- App -->
                     <div class="tab-pane fade show active" id="env-app" role="tabpanel">
-                        <table class="table table-sm mb-0">
-                            <tr>
-                                <td><?= gettext('Software Version') ?></td>
-                                <td><?= VersionUtils::getInstalledVersion() ?></td>
-                            </tr>
-                            <?php foreach ($envPaths as $label => $value) { ?>
+                        <table class="table table-sm debug-kv mb-0">
+                            <tbody>
                                 <tr>
-                                    <td><?= InputUtils::escapeHTML($label) ?></td>
-                                    <td>
-                                        <code class="text-monospace" style="word-break:break-all; font-size: 0.85rem;"><?= InputUtils::escapeHTML((string) $value) ?></code>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary ms-2 copy-btn" data-copy="<?= InputUtils::escapeAttribute((string) $value) ?>"><?= gettext('Copy') ?></button>
-                                    </td>
+                                    <td><?= gettext('Software Version') ?></td>
+                                    <td><?= VersionUtils::getInstalledVersion() ?></td>
                                 </tr>
-                            <?php } ?>
+                                <?php foreach ($envPaths as $label => $value) {
+                                    $safeValue = InputUtils::escapeHTML((string) $value);
+                                    $copyAttr = InputUtils::escapeAttribute((string) $value);
+                                ?>
+                                    <tr>
+                                        <td><?= InputUtils::escapeHTML($label) ?></td>
+                                        <td>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <code class="debug-code flex-grow-1"><?= $safeValue ?></code>
+                                                <button type="button" class="btn btn-sm btn-ghost-secondary copy-btn" data-copy="<?= $copyAttr ?>" title="<?= gettext('Copy to clipboard') ?>" aria-label="<?= gettext('Copy to clipboard') ?>">
+                                                    <i class="fa-solid fa-copy"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
                         </table>
                     </div>
                     <!-- Server -->
                     <div class="tab-pane fade" id="env-server" role="tabpanel">
-                        <table class="table table-sm mb-0">
-                            <tr><td><?= gettext('Hostname') ?></td><td><?= gethostname() ?></td></tr>
-                            <tr><td><?= gettext('IP Address') ?></td><td><?= $_SERVER['SERVER_ADDR'] ?? '' ?></td></tr>
-                            <tr><td><?= gettext('Platform') ?></td><td><?= php_uname() ?></td></tr>
-                            <tr><td><?= gettext('Software') ?></td><td><?= $_SERVER['SERVER_SOFTWARE'] ?? '' ?></td></tr>
+                        <table class="table table-sm debug-kv mb-0">
+                            <tbody>
+                                <tr><td><?= gettext('Hostname') ?></td><td><?= InputUtils::escapeHTML((string) gethostname()) ?></td></tr>
+                                <tr><td><?= gettext('IP Address') ?></td><td><?= InputUtils::escapeHTML($_SERVER['SERVER_ADDR'] ?? '') ?></td></tr>
+                                <tr><td><?= gettext('Platform') ?></td><td><?= InputUtils::escapeHTML(php_uname()) ?></td></tr>
+                                <tr><td><?= gettext('Web Server') ?></td><td><?= InputUtils::escapeHTML($_SERVER['SERVER_SOFTWARE'] ?? '') ?></td></tr>
+                                <?php if ($diskTotal && $diskFree): ?>
+                                    <?php $usedPct = max(0, min(100, (int) round((($diskTotal - $diskFree) / $diskTotal) * 100))); ?>
+                                    <tr>
+                                        <td><?= gettext('Disk (Images Root)') ?></td>
+                                        <td>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="flex-grow-1"><?= $fmtBytes($diskTotal - $diskFree) ?> <span class="text-muted">/ <?= $fmtBytes($diskTotal) ?></span></span>
+                                                <div class="progress flex-grow-1" style="max-width: 200px; height: 6px;">
+                                                    <div class="progress-bar <?= $usedPct > 90 ? 'bg-danger' : ($usedPct > 75 ? 'bg-warning' : 'bg-success') ?>" style="width: <?= $usedPct ?>%;"></div>
+                                                </div>
+                                                <small class="text-muted"><?= $usedPct ?>%</small>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php endif; ?>
+                            </tbody>
                         </table>
                     </div>
                     <!-- Database -->
                     <div class="tab-pane fade" id="env-db" role="tabpanel">
-                        <table class="table table-sm mb-0">
-                            <tr><td><?= gettext('Schema Version') ?></td><td><?= VersionUtils::getDBVersion() ?></td></tr>
-                            <tr><td><?= gettext('Server Version') ?></td><td><?= SystemService::getDBServerVersion() ?></td></tr>
+                        <table class="table table-sm debug-kv mb-0">
+                            <tbody>
+                                <tr><td><?= gettext('Schema Version') ?></td><td><?= VersionUtils::getDBVersion() ?></td></tr>
+                                <tr><td><?= gettext('Server Version') ?></td><td><?= InputUtils::escapeHTML(SystemService::getDBServerVersion()) ?></td></tr>
+                                <tr><td><?= gettext('Connection') ?></td>
+                                    <td>
+                                        <?php try {
+                                            $row = \Propel\Runtime\Propel::getReadConnection('default')
+                                                ->query("SELECT @@character_set_database AS charset, @@collation_database AS collation")
+                                                ->fetch(\PDO::FETCH_ASSOC);
+                                            $charset = $row['charset'] ?? '?';
+                                            $collation = $row['collation'] ?? '?';
+                                        } catch (\Throwable $e) {
+                                            $charset = $collation = '?';
+                                        }
+                                        ?>
+                                        <?= gettext('Charset') ?>: <code class="debug-code"><?= InputUtils::escapeHTML($charset) ?></code>
+                                        <span class="ms-2"><?= gettext('Collation') ?>: <code class="debug-code"><?= InputUtils::escapeHTML($collation) ?></code></span>
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
                     <!-- PHP -->
                     <div class="tab-pane fade" id="env-php" role="tabpanel">
-                        <table class="table table-sm mb-0">
-                            <tr><td><?= gettext('PHP Version') ?></td><td><?= PHP_VERSION ?></td></tr>
-                            <?php foreach ($phpIni as $label => $value) { ?>
-                                <tr><td><?= InputUtils::escapeHTML($label) ?></td><td><?= InputUtils::escapeHTML((string) $value) ?></td></tr>
-                            <?php } ?>
+                        <table class="table table-sm debug-kv mb-3">
+                            <tbody>
+                                <tr><td><?= gettext('PHP Version') ?></td><td><?= PHP_VERSION ?></td></tr>
+                                <?php foreach ($phpIni as $label => $value) { ?>
+                                    <tr><td><?= InputUtils::escapeHTML($label) ?></td><td><code class="debug-code"><?= InputUtils::escapeHTML((string) $value) ?></code></td></tr>
+                                <?php } ?>
+                            </tbody>
                         </table>
+
+                        <h6 class="text-muted mt-3 mb-2"><?= gettext('OPcache') ?></h6>
+                        <?php if ($opcacheEnabled && $opcacheStatus && !empty($opcacheStatus['opcache_enabled'])):
+                            $hits = $opcacheStatus['opcache_statistics']['hits'] ?? 0;
+                            $misses = $opcacheStatus['opcache_statistics']['misses'] ?? 0;
+                            $hitRate = ($hits + $misses) > 0 ? round($hits / ($hits + $misses) * 100, 1) : 0;
+                            $memUsed = $opcacheStatus['memory_usage']['used_memory'] ?? 0;
+                            $memFree = $opcacheStatus['memory_usage']['free_memory'] ?? 0;
+                            $memTotal = $memUsed + $memFree;
+                        ?>
+                            <table class="table table-sm debug-kv mb-3">
+                                <tbody>
+                                    <tr><td><?= gettext('Status') ?></td><td><span class="badge bg-success-lt text-success"><i class="fa fa-check me-1"></i><?= gettext('Enabled') ?></span></td></tr>
+                                    <tr><td><?= gettext('Hit Rate') ?></td><td><?= $hitRate ?>%</td></tr>
+                                    <tr><td><?= gettext('Memory') ?></td><td><?= $fmtBytes($memUsed) ?> <span class="text-muted">/ <?= $fmtBytes($memTotal) ?></span></td></tr>
+                                </tbody>
+                            </table>
+                        <?php else: ?>
+                            <p class="text-muted mb-3"><i class="fa fa-info-circle me-1"></i><?= gettext('OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads.') ?></p>
+                        <?php endif; ?>
+
+                        <h6 class="text-muted mt-3 mb-2"><?= gettext('Required Extensions') ?></h6>
+                        <div class="d-flex flex-wrap gap-2">
+                            <?php foreach ($extensionStatus as $ext => $loaded): ?>
+                                <?php if ($loaded): ?>
+                                    <span class="badge bg-success-lt text-success"><i class="fa fa-check me-1"></i><?= InputUtils::escapeHTML($ext) ?></span>
+                                <?php else: ?>
+                                    <span class="badge bg-danger text-white"><i class="fa fa-times me-1"></i><?= InputUtils::escapeHTML($ext) ?></span>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
                     <!-- Web Server -->
                     <div class="tab-pane fade" id="env-web" role="tabpanel">
-                        <table class="table table-sm mb-0">
-                            <tr><td colspan="2"><strong><?= $_SERVER['SERVER_SOFTWARE'] ?? '' ?></strong></td></tr>
-                            <?php if (function_exists('apache_get_modules')) {
-                                foreach (apache_get_modules() as $module) {
-                                    echo '<tr><td>' . InputUtils::escapeHTML($module) . '</td></tr>';
-                                }
-                            } else { ?>
-                                <tr><td class="text-muted"><?= gettext('Unable to list Web Server modules.') ?></td></tr>
-                            <?php } ?>
-                        </table>
+                        <p class="mb-2"><strong><?= InputUtils::escapeHTML($_SERVER['SERVER_SOFTWARE'] ?? '') ?></strong></p>
+                        <?php if (function_exists('apache_get_modules')) {
+                            $modules = apache_get_modules();
+                            sort($modules);
+                        ?>
+                            <p class="text-muted small mb-2"><?= sprintf(gettext('%d modules loaded'), count($modules)) ?></p>
+                            <div class="d-flex flex-wrap gap-1" style="max-height: 240px; overflow-y: auto;">
+                                <?php foreach ($modules as $module): ?>
+                                    <span class="badge bg-light text-dark"><?= InputUtils::escapeHTML($module) ?></span>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php } else { ?>
+                            <p class="text-muted mb-0"><?= gettext('Unable to list web server modules (non-Apache SAPI).') ?></p>
+                        <?php } ?>
                     </div>
                     <!-- Locale -->
                     <div class="tab-pane fade" id="env-locale" role="tabpanel">
@@ -349,34 +470,33 @@ $phpIni = [
     <?php $mailOk = SystemConfig::hasValidMailServerSettings(); ?>
     <div class="card <?= $mailOk ? '' : 'border-warning' ?>">
         <div class="card-status-top <?= $mailOk ? 'bg-success' : 'bg-warning' ?>"></div>
-        <div class="card-header">
+        <div class="card-header d-flex align-items-center">
             <h4 class="mb-0">
                 <i class="fa fa-envelope me-2"></i><?= gettext('Email') ?>
-                <?php if (!$mailOk): ?>
-                    <span class="badge bg-warning text-dark ms-2"><?= gettext('Misconfigured') ?></span>
-                <?php endif; ?>
             </h4>
+            <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug/email" class="btn btn-sm <?= $mailOk ? 'btn-outline-secondary' : 'btn-warning' ?> ms-auto" title="<?= gettext('Open the email debug tester') ?>">
+                <i class="fa fa-vial me-1"></i><?= gettext('Test') ?>
+            </a>
         </div>
         <div class="card-body">
-            <table class="table table-sm mb-3">
-                <tr>
-                    <td><?= gettext('SMTP Host') ?></td>
-                    <td><?= SystemConfig::getValueForHtml('sSMTPHost') ?: gettext('Not configured') ?></td>
-                </tr>
-                <tr>
-                    <td><?= gettext('Valid Settings') ?></td>
-                    <td>
-                        <?php if ($mailOk): ?>
-                            <i class="fa fa-check text-success me-2"></i><span class="text-success"><?= gettext('Yes') ?></span>
-                        <?php else: ?>
-                            <i class="fa fa-times text-danger me-2"></i><span class="text-danger"><?= gettext('No') ?></span>
-                        <?php endif; ?>
-                    </td>
-                </tr>
+            <table class="table table-sm debug-kv mb-0">
+                <tbody>
+                    <tr>
+                        <td><?= gettext('SMTP Host') ?></td>
+                        <td><?= SystemConfig::getValueForHtml('sSMTPHost') ?: '<span class="text-muted">' . gettext('Not configured') . '</span>' ?></td>
+                    </tr>
+                    <tr>
+                        <td><?= gettext('Settings Valid') ?></td>
+                        <td>
+                            <?php if ($mailOk): ?>
+                                <span class="badge bg-success-lt text-success"><i class="fa fa-check me-1"></i><?= gettext('Yes') ?></span>
+                            <?php else: ?>
+                                <span class="badge bg-warning-lt text-warning"><i class="fa fa-triangle-exclamation me-1"></i><?= gettext('Incomplete') ?></span>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
-            <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug/email" class="btn <?= $mailOk ? 'btn-outline-primary' : 'btn-warning' ?> w-100">
-                <i class="fa fa-envelope me-2"></i><?= gettext('Email Debug') ?>
-            </a>
         </div>
     </div>
     <!-- Timezone Information -->
@@ -462,49 +582,60 @@ $phpIni = [
     max-width: 100%;
 }
 
-/* Environment has 5 tabs + wide code values (DSN, paths) so it sits in
-   its OWN full-width container. The status/status-lite cards below flow
-   in a CSS-columns masonry grid so a tall expanded card no longer leaves
-   dead space beside collapsed siblings. */
+/* Environment card is full-width at the top (tabs + wide code values
+   like DSN/paths/module lists need real estate). The status-style cards
+   below flow in a CSS Grid with auto-fit min-width so each card gets at
+   least 320px; narrow viewports collapse to one column automatically. */
 .debug-env {
     margin-bottom: 1rem;
 }
 .debug-grid {
-    column-gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1rem;
+    align-items: start; /* don't stretch to match tallest sibling */
 }
-.debug-grid > .card {
-    break-inside: avoid;
-    -webkit-column-break-inside: avoid;
-    page-break-inside: avoid;
-    display: block;
-    margin-bottom: 1rem;
-}
-@media (min-width: 768px) {
-    .debug-grid { column-count: 2; }
-}
-@media (min-width: 1200px) {
-    .debug-grid { column-count: 3; }
-}
-/* Tabs: allow wrap so they don't overflow on narrow viewports, but the
-   Environment card is full-width so 6 tabs should always fit on 1 line
-   at any reasonable desktop width. */
-.debug-env .nav-tabs {
-    flex-wrap: wrap;
-}
-/* Replace unreliable `float-end` chevron positioning inside CSS-columns
-   (float is flaky in column fragments) with flex + margin-auto. */
+
+/* Deterministic chevron placement on collapsible headers — no floats. */
+.debug-env .card-header h4[data-bs-toggle="collapse"],
 .debug-grid .card-header h4[data-bs-toggle="collapse"] {
     display: flex;
     align-items: center;
     margin-bottom: 0;
 }
+.debug-env .card-header h4[data-bs-toggle="collapse"] .fa-chevron-down,
+.debug-env .card-header h4[data-bs-toggle="collapse"] .fa-chevron-up,
 .debug-grid .card-header h4[data-bs-toggle="collapse"] .fa-chevron-down,
 .debug-grid .card-header h4[data-bs-toggle="collapse"] .fa-chevron-up {
     margin-left: auto;
 }
 
-/* Status-banner chips — give a little more room than a plain Bootstrap
-   badge so the icon + label + count don't look cramped. */
+/* Environment tabs wrap on narrow widths. */
+.debug-env .nav-tabs { flex-wrap: wrap; }
+
+/* Key/value reference tables — left column = label, right column = value.
+   Caps the label width so long values get room to breathe. */
+.debug-kv > tbody > tr > td:first-child {
+    width: 220px;
+    color: var(--tblr-secondary);
+    font-weight: 500;
+}
+.debug-kv > tbody > tr > td {
+    vertical-align: middle;
+}
+
+/* Inline code chip used for paths / DSN / values. */
+.debug-code {
+    background: var(--tblr-bg-surface-secondary, #f1f5f9);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-family: var(--tblr-font-monospace, monospace);
+    word-break: break-all;
+}
+
+/* Status-banner chips — roomier than a plain Bootstrap badge so icon +
+   label + count don't look cramped. */
 .debug-status-chip,
 .card-body .badge.bg-success-lt,
 .card-body .badge.bg-warning-lt {
