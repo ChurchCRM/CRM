@@ -7,6 +7,7 @@
 
 import Uppy from "@uppy/core";
 import Dashboard from "@uppy/dashboard";
+import ImageEditor from "@uppy/image-editor";
 import Webcam from "@uppy/webcam";
 
 /**
@@ -65,6 +66,7 @@ export function createPhotoUploader(config) {
       proudlyDisplayPoweredByUppy: false,
       note: `Max file size: ${displayMaxSizeMB}MB`,
       closeModalOnClickOutside: true,
+      autoOpen: "imageEditor",
       locale: {
         strings: {
           dashboardWindowTitle: "Upload Photo",
@@ -82,7 +84,44 @@ export function createPhotoUploader(config) {
         height: { ideal: photoHeight },
       },
       preferredImageMimeType: "image/jpeg",
+    })
+    .use(ImageEditor, {
+      quality: 0.9,
+      cropperOptions: {
+        viewMode: 1,
+        aspectRatio: 1,
+        autoCropArea: 1,
+        responsive: true,
+        croppedCanvasOptions: {},
+      },
+      actions: {
+        revert: true,
+        rotate: true,
+        flip: true,
+        zoomIn: true,
+        zoomOut: true,
+        cropSquare: true,
+        cropWidescreen: false,
+        cropWidescreenVertical: false,
+      },
     });
+
+  // Enforce 1:1 ratio every time the editor opens (including after cancel + re-edit).
+  // resetEditorState() resets plugin state to aspectRatio:'free' on each start, which
+  // causes cropperjs and the UI to fall out of sync. Calling setAspectRatio('1:1') via
+  // rAF (after initCropper runs in componentDidMount) keeps both in sync.
+  uppy.on("file-editor:start", () => {
+    const editor = uppy.getPlugin("ImageEditor");
+    if (!editor) return;
+    const enforce = () => {
+      if (editor.cropper) {
+        editor.setAspectRatio("1:1");
+      } else {
+        requestAnimationFrame(enforce);
+      }
+    };
+    requestAnimationFrame(enforce);
+  });
 
   // Handle all restriction failures (size, type, count) — use Uppy's own message so
   // the persistent alert accurately describes the actual failure reason.
