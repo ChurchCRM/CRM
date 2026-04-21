@@ -375,6 +375,48 @@ if ($startTime instanceof \DateTime) {
 check the Base model's getter signature. Temporal columns accept an optional `$format`
 parameter — pass it to get a string, or handle the `DateTime` object explicitly.
 
+### Timezone-Naive DateTime Construction Is a Critical Bug <!-- learned: 2026-04-18 -->
+
+**Never use `new \DateTime($string)` without a `DateTimeZone` argument in code that
+handles user-facing times** (event start/end, reminders, audit timestamps, token
+expiry, iCal export). Without the zone, PHP falls back to the server's default
+timezone at the moment of construction, which may differ from `sTimeZone` and from
+the client's expectation. Result: times get silently shifted by the configured
+UTC offset (e.g. events entered at 10:00 are displayed as 08:00 for a Europe/Berlin
+install on a UTC server). Tracked in issue #8712.
+
+Use [`DateTimeUtils`](../../../src/ChurchCRM/utils/DateTimeUtils.php):
+
+```php
+use ChurchCRM\Utils\DateTimeUtils;
+
+// ❌ WRONG — uses server default timezone, silently drifts from sTimeZone
+$dt = new \DateTime($userInput);
+$dt->modify('+1 hour');
+
+// ❌ WRONG — 'c' emits the server offset, leaks to JS/ICS consumers
+$json = ['start' => $event->getStart('c')];
+
+// ✅ CORRECT — always zone-aware
+$dt = DateTimeUtils::createDateTime($userInput);
+
+// ✅ CORRECT — current wall-clock in the church's timezone
+$now = DateTimeUtils::getToday();
+
+// ✅ CORRECT — clone before setTimezone to avoid mutating the ORM object's
+// in-memory DateTime (setTimezone mutates in place; Propel may cache it)
+$tz = DateTimeUtils::getConfiguredTimezone();
+$start = clone $event->getStart();
+$json = ['start' => $start->setTimezone($tz)->format('c')];
+```
+
+Hotspots to double-check on any calendar/time PR:
+- `new \DateTime(`/`new \DateTimeImmutable(` with a single string argument
+- `strtotime(...)` feeding `date(...)` or `DateTime::setTimestamp()`
+- `->format('c'|'r'|DateTime::ATOM|DateTime::RFC3339)` on objects loaded from
+  `TIMESTAMP` columns — Propel hydrates these as zone-naive, so the emitted
+  offset is the server's, not the church's.
+
 ### Null Guards on ORM findOne Results <!-- learned: 2026-04-03 -->
 
 `findOneByXxx()` and `findOne()` return `null` when no row matches. Always guard

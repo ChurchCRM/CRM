@@ -6,6 +6,23 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 ?>
 
+<!-- Calendar time-zone indicator. Server-renders the configured sTimeZone;
+     the inline script below compares it to the browser time zone and reveals
+     a warning if they differ, so misconfiguration is visible without opening
+     the admin debug page. -->
+<div class="mb-2 d-flex flex-wrap align-items-center small text-muted" id="calendarTimezoneIndicator">
+    <span class="me-2"><i class="fa fa-clock me-1"></i><?= _('Calendar time zone:') ?></span>
+    <span class="badge bg-secondary-lt" id="calendarTimezoneConfigured"><?= htmlspecialchars($calendarJSArgs['sTimeZone'], ENT_QUOTES, 'UTF-8') ?></span>
+    <span class="badge bg-warning-lt ms-2 d-none" id="calendarTimezoneWarning" role="alert">
+        <i class="fa fa-triangle-exclamation me-1"></i>
+        <span><?= _('Browser time zone differs:') ?></span>
+        <span id="calendarTimezoneBrowser" class="fw-semibold"></span>
+        <?php if ($isAdmin): ?>
+            <a href="<?= htmlspecialchars($sRootPath, ENT_QUOTES, 'UTF-8') ?>/admin/system/debug#collapseTimezone" class="ms-1 text-reset text-decoration-underline"><?= _('Details') ?></a>
+        <?php endif; ?>
+    </span>
+</div>
+
 <div class="alert alert-danger d-none" id="calendarApiWarning">
     <div class="d-flex align-items-center">
         <i class="ti ti-alert-triangle me-2"></i>
@@ -96,7 +113,32 @@ window.CRM.calendarSettingsPanel = <?= json_encode($calendarSettingsPanelConfig,
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 window.CRM = window.CRM || {};
-window.CRM.calendarJSArgs = <?= json_encode($calendarJSArgs, JSON_THROW_ON_ERROR) ?>;
+window.CRM.calendarJSArgs = <?= json_encode($calendarJSArgs, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>;
+
+// Reveal a warning next to the calendar time-zone badge when the browser's
+// resolved time zone doesn't match the server's configured sTimeZone. A
+// mismatch is the common silent cause of "my event shows at the wrong time".
+// Both sides are canonicalized via Intl so that alias pairs like
+// "US/Eastern" vs "America/New_York" or "Etc/UTC" vs "UTC" are treated as
+// equal and do not trigger a false warning.
+(function () {
+    var configured = window.CRM.calendarJSArgs && window.CRM.calendarJSArgs.sTimeZone;
+    if (!configured) return;
+    var browser, canonicalConfigured;
+    try {
+        browser = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        canonicalConfigured = Intl.DateTimeFormat(undefined, { timeZone: configured }).resolvedOptions().timeZone;
+    } catch (e) {
+        return;
+    }
+    if (!browser || browser === canonicalConfigured) return;
+    document.addEventListener('DOMContentLoaded', function () {
+        var browserEl = document.getElementById('calendarTimezoneBrowser');
+        var warnEl = document.getElementById('calendarTimezoneWarning');
+        if (browserEl) browserEl.textContent = browser;
+        if (warnEl) warnEl.classList.remove('d-none');
+    });
+})();
 </script>
 
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/calendar-event-editor.min.js') ?>"></script>

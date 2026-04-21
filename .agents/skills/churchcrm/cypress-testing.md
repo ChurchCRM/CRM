@@ -1494,3 +1494,45 @@ cy.makePrivateAdminAPICall("POST", "/api/payments/", body, 200);
 
 This also affected GET `/api/deposits` in `FindDepositSlip.js` — check any route defined as
 `$group->get('/', ...)` and ensure callers use the trailing slash.
+
+### Stubbing the Browser Timezone for UI Tests <!-- learned: 2026-04-18 -->
+
+UI code that compares the server-configured `sTimeZone` against the browser's
+resolved zone (e.g. the calendar timezone indicator) needs tests that can force
+a mismatch. Stub `Intl.DateTimeFormat` inside `cy.visit({ onBeforeLoad })` so the
+override is in place **before** any inline script runs — late stubs miss the
+first resolve call.
+
+**Gotcha — pass through when caller supplies an explicit `timeZone`:** if the
+production code canonicalizes the configured zone via
+`new Intl.DateTimeFormat(undefined, { timeZone: configured })` (to treat
+`US/Eastern` and `America/New_York` as equal), a blanket override makes
+*both* sides of the comparison equal to the fake zone and the mismatch
+branch never fires. Only override `resolvedOptions()` when the caller
+did NOT supply an explicit `timeZone`.
+
+```js
+cy.visit("event/calendars", {
+    onBeforeLoad(win) {
+        const original = win.Intl.DateTimeFormat;
+        function Stub(...args) {
+            const inst = new original(...args);
+            const explicitTz = (args[1] || {}).timeZone;
+            if (!explicitTz) {
+                // Only patch the "what zone is the browser in?" call.
+                const origResolved = inst.resolvedOptions.bind(inst);
+                inst.resolvedOptions = () => ({ ...origResolved(), timeZone: "Pacific/Kiritimati" });
+            }
+            return inst;
+        }
+        Stub.supportedLocalesOf = original.supportedLocalesOf.bind(original);
+        win.Intl.DateTimeFormat = Stub;
+    },
+});
+```
+
+Wall-clock **round-trip** assertions (write `10:00` → read `10:00`) are the
+cheapest way to catch the #8712 class of bugs without setting up a non-UTC CI
+environment. See `cypress/e2e/api/private/standard/private.calendar.timezone.spec.js`
+for the pattern — extract HH:MM:SS with a regex so the check works for both
+Propel's `Y-m-d H:i:s` output and FullCalendar's ISO 8601 feed.

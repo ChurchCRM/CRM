@@ -280,5 +280,4 @@ If you're migrating from the old integration system:
 ## Questions?
 
 For plugin development help, visit:
-- ChurchCRM Forums: https://forum.churchcrm.io
-- GitHub Discussions: https://github.com/ChurchCRM/CRM/discussions
+- ChurchCRM Chat: https://discord.gg/tuWyFzj3Nj

@@ -1678,20 +1678,8 @@ msgid "Group"
 msgstr "그룹"
 
 #: 
-msgid "Option"
-msgstr "옵션"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "오류: 중복"
-
-#: 
 msgid "Default"
 msgstr "기본값"
-
-#: 
-msgid "Duplicate name found."
-msgstr "중복된 이름이 있습니다."
 
 #: 
 msgid "Make Default"
@@ -1704,10 +1692,6 @@ msgstr "나가기"
 #: 
 msgid "Add New"
 msgstr "새로 추가"
-
-#: 
-msgid " by that name already exists."
-msgstr " 이름이 이미 존재합니다."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3189,10 +3173,6 @@ msgid "Security Group"
 msgstr "보안 그룹"
 
 #: 
-msgid "Security Groups"
-msgstr "보안 그룹 목록"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "보안 그룹 편집"
 
@@ -3205,48 +3185,16 @@ msgid "Group Member Roles Editor"
 msgstr "그룹 구성원 역할 편집"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "개인 사용자 정의 목록 옵션"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "개인 사용자 정의 목록 옵션"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "개인 사용자 정의 목록 옵션 편집"
-
-#: 
-msgid "Custom List Option"
-msgstr "사용자 정의 목록 옵션"
-
-#: 
-msgid "Custom List Options"
-msgstr "사용자 정의 목록 옵션"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "사용자 정의 목록 옵션 편집"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "가족 사용자 정의 목록 옵션"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "가족 사용자 정의 목록 옵션"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "가족 사용자 정의 목록 옵션 편집"
-
-#: 
-msgid "are not allowed."
-msgstr "는 허용되지 않습니다."
-
-#: 
-msgid "Name for New"
-msgstr "새 항목 이름"
 
 #: 
 msgid "Created via Family"
@@ -8386,10 +8334,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "<strong>끝에 슬래시</strong> (/)로 끝남"
 
 #: 
-msgid "Error:"
-msgstr "오류:"
-
-#: 
 msgid "Find the line:"
 msgstr "다음 줄을 찾으세요:"
 
@@ -8781,10 +8725,6 @@ msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "%d명이 선택된 그룹에 성공적으로 추가됨."
 
 #: 
-msgid "A "
-msgstr "하나 "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "정말로 삭제하시겠습니까?"
 
@@ -8813,10 +8753,6 @@ msgid "Delete Confirmation"
 msgstr "삭제 확인"
 
 #: 
-msgid "Existing"
-msgstr "기존"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "기존 사용자 정의 가족 필드"
 
@@ -8839,10 +8775,6 @@ msgstr "유효하지 않은 CSRF 토큰"
 #: 
 msgid "Invalid fields or selections."
 msgstr "유효하지 않은 필드 또는 선택 항목입니다."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "항목이 성공적으로 삭제됨"
 
 #: 
 msgid "Move down"
@@ -8879,10 +8811,6 @@ msgstr "속성 유형"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "이 자원봉사 기회에 할당된 사람들이 있습니다. 삭제하면 할당이 해제됩니다:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "이것은 현재 할당된 모든 사람에게서 제거됩니다."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11525,10 +11453,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "주일학교 반, 교사 및 학생 출석 관리"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "분류 목록, 역할 및 그룹 유형 관리"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "재정 추적을 위한 헌금 기금 관리"
 
@@ -11779,10 +11703,6 @@ msgstr "GitHub 이슈 열기"
 #: 
 msgid "Open user menu"
 msgstr "사용자 메뉴 열기"
-
-#: 
-msgid "Options"
-msgstr "옵션"
 
 #: 
 msgid "Other Members"

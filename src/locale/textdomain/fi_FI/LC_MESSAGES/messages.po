@@ -1664,20 +1664,8 @@ msgid "Group"
 msgstr "Ryhmä"
 
 #: 
-msgid "Option"
-msgstr "Vaihtoehto"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Virhe: Kaksoiskappale"
-
-#: 
 msgid "Default"
 msgstr "Oletus"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Löytyi duplikaatti nimi."
 
 #: 
 msgid "Make Default"
@@ -1690,10 +1678,6 @@ msgstr "Poistu"
 #: 
 msgid "Add New"
 msgstr "Lisää uusi"
-
-#: 
-msgid " by that name already exists."
-msgstr " tällä nimellä on jo olemassa."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3169,10 +3153,6 @@ msgid "Security Group"
 msgstr "Turvallisuusryhmä"
 
 #: 
-msgid "Security Groups"
-msgstr "Turvallisuusryhmät"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Turvallisuusryhmien muokkain"
 
@@ -3185,48 +3165,16 @@ msgid "Group Member Roles Editor"
 msgstr "Ryhmän jäsenen roolien muokkain"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Henkilön mukautettu luetteloasetus"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Henkilön mukautetut luetteloasetukset"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Henkilön mukautettujen luetteloasetusten muokkain"
-
-#: 
-msgid "Custom List Option"
-msgstr "Mukautettu luetteloasetus"
-
-#: 
-msgid "Custom List Options"
-msgstr "Mukautetut luetteloasetukset"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Mukautettujen luetteloasetusten muokkain"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Perheen mukautettu luetteloasetus"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Perheen mukautetut luetteloasetukset"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Perheen mukautettujen luetteloasetusten muokkain"
-
-#: 
-msgid "are not allowed."
-msgstr "ei ole sallittu."
-
-#: 
-msgid "Name for New"
-msgstr "Nimi uudelle"
 
 #: 
 msgid "Created via Family"
@@ -8356,10 +8304,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Päättyy <strong>perässä olevaan vinoviivoihin</strong> (/)"
 
 #: 
-msgid "Error:"
-msgstr "Virhe:"
-
-#: 
 msgid "Find the line:"
 msgstr "Etsi rivi:"
 
@@ -8754,10 +8698,6 @@ msgstr[0] "%d Henkilö lisätty onnistuneesti valittuun Ryhmään."
 msgstr[1] "%d Henkilöä lisätty onnistuneesti valittuun Ryhmään."
 
 #: 
-msgid "A "
-msgstr "A "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Oletko varma, että haluat poistaa"
 
@@ -8786,10 +8726,6 @@ msgid "Delete Confirmation"
 msgstr "Poiston vahvistus"
 
 #: 
-msgid "Existing"
-msgstr "Olemassa oleva"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Olemassa olevat mukautetut perheen kentät"
 
@@ -8812,10 +8748,6 @@ msgstr "Virheellinen CSRF-tunnus"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Virheelliset kentät tai valinnat."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Kohde poistettu onnistuneesti"
 
 #: 
 msgid "Move down"
@@ -8852,10 +8784,6 @@ msgstr "Ominaisuustyyppi"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "Tälle vapaaehtoistyön mahdollisuudelle on määritetty ihmisiä. Poistaminen poistaa määritykset:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "Tämä poistaa sen kaikista sille määritetyistä ihmisistä."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11501,10 +11429,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Hallitse pyhäkoulun luokkia, opettajia ja oppilaiden läsnäoloa"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Hallitse luokitteluluetteloita, rooleja ja ryhmätyyppejä"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Hallitse lahjoitusrahastoja taloudellista seurantaa varten"
 
@@ -11755,10 +11679,6 @@ msgstr "Avaa GitHub-ongelma"
 #: 
 msgid "Open user menu"
 msgstr "Avaa käyttäjävalikko"
-
-#: 
-msgid "Options"
-msgstr "Vaihtoehdot"
 
 #: 
 msgid "Other Members"

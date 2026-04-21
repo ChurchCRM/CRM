@@ -1679,20 +1679,8 @@ msgid "Group"
 msgstr "Grup"
 
 #: 
-msgid "Option"
-msgstr "Alternativë"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Error: Duplicate"
-
-#: 
 msgid "Default"
 msgstr "Parazgjedhur"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Duplicate emrin gjetur."
 
 #: 
 msgid "Make Default"
@@ -1705,10 +1693,6 @@ msgstr "Dalje"
 #: 
 msgid "Add New"
 msgstr "Shto të re"
-
-#: 
-msgid " by that name already exists."
-msgstr " me atë emër ekziston."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3192,10 +3176,6 @@ msgid "Security Group"
 msgstr "Grupi i sigurisë"
 
 #: 
-msgid "Security Groups"
-msgstr "Grupet e sigurisë"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Redaktori i grupeve të sigurisë"
 
@@ -3208,48 +3188,16 @@ msgid "Group Member Roles Editor"
 msgstr "Redaktori i roleve të anëtarëve të grupit"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Opsioni i listës së personalizuar të personit"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Opsionet e listës së personalizuar të personit"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Redaktori i opsioneve të listës së personalizuar të personit"
-
-#: 
-msgid "Custom List Option"
-msgstr "Opsioni i listës së personalizuar"
-
-#: 
-msgid "Custom List Options"
-msgstr "Opsionet e listës së personalizuar"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Redaktori i opsioneve të listës së personalizuar"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Opsioni i listës së personalizuar të familjes"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Opsionet e listës së personalizuar të familjes"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Redaktori i opsioneve të listës së personalizuar të familjes"
-
-#: 
-msgid "are not allowed."
-msgstr "nuk lejohen."
-
-#: 
-msgid "Name for New"
-msgstr "Emri për të renë"
 
 #: 
 msgid "Created via Family"
@@ -8384,10 +8332,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Përfundon me një <strong>pjerret (slash)</strong> (/)"
 
 #: 
-msgid "Error:"
-msgstr "Gabim:"
-
-#: 
 msgid "Find the line:"
 msgstr "Gjeni rreshtin:"
 
@@ -8782,10 +8726,6 @@ msgstr[0] "%d person u shtua me sukses në grupin e zgjedhur."
 msgstr[1] "%d persona u shtuan me sukses në grupin e zgjedhur."
 
 #: 
-msgid "A "
-msgstr "Një "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "A jeni të sigurt që dëshironi të fshini"
 
@@ -8814,10 +8754,6 @@ msgid "Delete Confirmation"
 msgstr "Konfirmimi i fshirjes"
 
 #: 
-msgid "Existing"
-msgstr "Ekzistues"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Fushat e personalizuara ekzistuese të familjes"
 
@@ -8840,10 +8776,6 @@ msgstr "Token CSRF i pavlefshëm"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Fusha ose përzgjedhje të pavlefshme."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Elementi u fshi me sukses"
 
 #: 
 msgid "Move down"
@@ -8880,10 +8812,6 @@ msgstr "Lloji i pronës"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "Ka njerëz të caktuar në këtë mundësi vullnetare. Fshirja do të heqë caktimin për:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "Kjo do ta heqë atë nga të gjithë njerëzit e caktuar aktualisht."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11529,10 +11457,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Administro klasat e shkollës së diel, mësuesit dhe frekuentimin e studentëve"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Administro listat e klasifikimit, rolet dhe llojet e grupmesionit"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Administro fondet e dhuratave për ndjekjen financiare"
 
@@ -11783,10 +11707,6 @@ msgstr "Hapa Problemin GitHub"
 #: 
 msgid "Open user menu"
 msgstr "Hapa menunë e përdoruesit"
-
-#: 
-msgid "Options"
-msgstr "Opsione"
 
 #: 
 msgid "Other Members"

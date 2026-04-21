@@ -36,11 +36,76 @@ Best practices (short)
 - Always run tests locally before pushing.
 - Do not merge without human review and passing CI.
 
+### Write PR descriptions from the branch diff, not the commit log <!-- learned: 2026-04-21 -->
+
+When drafting a PR body, **describe what changed between the branch and
+its merge base** — not the sequence of commits. Commits get rebased,
+squashed, reordered, or absorbed into merges; a description that lists
+"first I did X, then Y, then reverted Y" will be wrong the moment the
+branch is cleaned up, and a reviewer reading the final diff won't
+recognize the story.
+
+Use these commands instead:
+
+```bash
+# Files changed and line counts vs merge base
+git diff --stat $(git merge-base HEAD master)..HEAD
+
+# Full diff vs merge base (pipe to head/less for large branches)
+git diff $(git merge-base HEAD master)..HEAD
+
+# Only the final state of each file (what a reviewer actually sees)
+git diff $(git merge-base HEAD master)..HEAD -- <path>
+```
+
+Structure PR bodies as **was → now** for each affected area, grounded in
+what the final diff shows. Reference commits only as a debugging aid,
+not as narrative structure.
+
+When a branch is stacked on another open PR (e.g. follow-up work on a
+review branch), say so explicitly at the top of the PR body and note
+which commits belong to the base PR so reviewers know the auto-rebase
+will trim them when the base merges.
+
 See also:
 - `git-workflow.md` for branching, commit message format, and the full pre-commit checklist.
 - `gh-cli` skill (local `.agents/skills/gh-cli/SKILL.md` or upstream) for concrete `gh` commands.
 
 If you prefer, I can convert this into a checklist file that the CI or editors can surface (e.g., a JSON checklist or PR template snippet).
+
+---
+
+## Milestone = release that shipped it, not when it was closed <!-- learned: 2026-04-21 -->
+
+When assigning a milestone to a closed issue, use the **first release tag that contains the merge commit** of the closing PR — not the milestone that was "current" on the close date. Issues closed months after the fix shipped belong on the shipped release, so users can cross-reference the changelog for the version they are actually running.
+
+### How to find the shipped release
+
+```bash
+# 1. Find the closing PR (check timeline cross-references or grep the merge log)
+git log --oneline master --grep="#<issue_number>" | head -5
+
+# 2. Find the first non-rc tag that contains the merge commit
+git tag --contains <merge_sha> | grep -v rc | sort -V | head -1
+```
+
+### Moving an issue to the right milestone
+
+```bash
+# Milestone NUMBER (not title). Get the number from:
+#   gh api "repos/{owner}/{repo}/milestones?state=all" --paginate
+gh api --method PATCH "repos/{owner}/{repo}/issues/<n>" -F milestone=<milestone_number>
+```
+
+### Why this matters
+
+- Users who installed 7.1.0 must see the fix in the 7.1.0 release notes — not in 7.4.0 where the GitHub issue happened to be closed weeks later.
+- Squashed / rebased merges: feature-branch commits may not appear on `master` at all. `git tag --contains <feature_sha>` will return empty. Use the **merge commit** (found via `git log --grep=#<pr>` on master) and run `git tag --contains` on that.
+- If the closing PR is still open, leave the milestone on the active development one; only finalize after merge + release.
+
+### Common trap
+
+An issue closed on `2026-04-18` with milestone `7.4.0 (in development)` is almost always wrong when the fix PR was merged weeks or months earlier. Always verify via `git tag --contains`.
 
 ---
 
