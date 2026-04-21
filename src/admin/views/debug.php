@@ -56,7 +56,9 @@ $statusChips = [
         'label' => gettext('Locale'),
         'ok' => $localeDetected,
         'count' => null,
-        'target' => '#collapseLocaleSupport',
+        // Locale now lives inside the Environment card as a tab — the hash
+        // handler opens the card and activates the tab.
+        'target' => '#env-locale',
     ],
     [
         'label' => gettext('Timezone'),
@@ -109,29 +111,28 @@ $hasAnyIssue = $integrityPassed === false
     </div>
 </div>
 
-<!-- Masonry-style layout: cards flow top-to-bottom inside columns so a tall
-     expanded card doesn't leave dead space next to collapsed siblings. -->
-<div class="debug-grid">
-    <!-- Environment card (App / Server / Database / PHP / Web Server tabs).
-         This used to be 4 separate cards — consolidated so the reference
-         data sits in one place and the Database version isn't duplicated. -->
-    <?php
-    // Pre-compute paths so the repeated copy-button markup stays readable.
-    $envPaths = [
-        gettext('Root Path')    => SystemURLs::getRootPath() ?: '(empty - top level)',
-        gettext('Document Root') => SystemURLs::getDocumentRoot(),
-        gettext('Base URL')     => SystemURLs::getURL(),
-        gettext('Images Root')  => SystemURLs::getImagesRoot(),
-        gettext('DSN')          => Bootstrapper::getDSN(),
-    ];
-    $phpIni = [
-        gettext('Max file upload size') => ini_get('upload_max_filesize'),
-        gettext('Max POST size')        => ini_get('post_max_size'),
-        gettext('PHP Memory Limit')     => ini_get('memory_limit'),
-        gettext('PHP Max Execution Time') => ini_get('max_execution_time') . 's',
-        gettext('SAPI Name')            => php_sapi_name(),
-    ];
-    ?>
+<?php
+// Pre-compute paths so the repeated copy-button markup stays readable.
+$envPaths = [
+    gettext('Root Path')    => SystemURLs::getRootPath() ?: '(empty - top level)',
+    gettext('Document Root') => SystemURLs::getDocumentRoot(),
+    gettext('Base URL')     => SystemURLs::getURL(),
+    gettext('Images Root')  => SystemURLs::getImagesRoot(),
+    gettext('DSN')          => Bootstrapper::getDSN(),
+];
+$phpIni = [
+    gettext('Max file upload size') => ini_get('upload_max_filesize'),
+    gettext('Max POST size')        => ini_get('post_max_size'),
+    gettext('PHP Memory Limit')     => ini_get('memory_limit'),
+    gettext('PHP Max Execution Time') => ini_get('max_execution_time') . 's',
+    gettext('SAPI Name')            => php_sapi_name(),
+];
+?>
+<!-- Environment card: full-width reference data with tabs.
+     Sits outside the masonry grid so DSN / paths / Apache modules have
+     room to breathe; status cards (Integrity, Orphaned, etc.) flow in
+     the grid below. -->
+<div class="debug-env">
     <div class="card">
         <div class="card-header" id="headingEnvironment">
             <h4 data-bs-toggle="collapse" data-bs-target="#collapseEnvironment" aria-expanded="false" aria-controls="collapseEnvironment" style="cursor: pointer;">
@@ -147,6 +148,7 @@ $hasAnyIssue = $integrityPassed === false
                     <li class="nav-item" role="presentation"><a class="nav-link" id="env-db-tab" data-bs-toggle="tab" href="#env-db" role="tab"><?= gettext('Database') ?></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" id="env-php-tab" data-bs-toggle="tab" href="#env-php" role="tab"><?= gettext('PHP') ?></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" id="env-web-tab" data-bs-toggle="tab" href="#env-web" role="tab"><?= gettext('Web Server') ?></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" id="env-locale-tab" data-bs-toggle="tab" href="#env-locale" role="tab"><?= gettext('Locale') ?></a></li>
                 </ul>
                 <div class="tab-content pt-3">
                     <!-- App -->
@@ -205,10 +207,55 @@ $hasAnyIssue = $integrityPassed === false
                             <?php } ?>
                         </table>
                     </div>
+                    <!-- Locale -->
+                    <div class="tab-pane fade" id="env-locale" role="tabpanel">
+                        <div class="alert <?= $localeDetected ? 'alert-success' : 'alert-warning' ?> mb-3">
+                            <i class="fa <?= $localeDetected ? 'fa-circle-check' : 'fa-triangle-exclamation' ?> me-2"></i>
+                            <strong><?= gettext('System Locale Support') ?></strong><br>
+                            <small><?= InputUtils::escapeHTML($localeInfo['systemLocaleSupportSummary']) ?></small>
+                        </div>
+                        <table class="table table-sm mb-0">
+                            <thead>
+                                <tr>
+                                    <th><?= gettext('Language') ?></th>
+                                    <th style="text-align: center; width: 100px;"><?= gettext('Installed on Server') ?></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php if (count($localeInfo['supportedLocales']) > 0): ?>
+                                    <?php foreach ($localeInfo['supportedLocales'] as $locale): ?>
+                                        <tr>
+                                            <td>
+                                                <div style="font-weight: 500; font-size: 0.95em;"><?= InputUtils::escapeHTML($locale['name']) ?></div>
+                                                <small class="text-muted" style="font-size: 0.85em;"><?= InputUtils::escapeHTML($locale['locale']) ?></small>
+                                            </td>
+                                            <td style="text-align: center; vertical-align: middle;">
+                                                <?php if ($locale['systemAvailable']): ?>
+                                                    <span class="badge bg-green-lt text-green"><i class="fa fa-check me-1"></i><?= gettext('Yes') ?></span>
+                                                <?php else: ?>
+                                                    <span class="badge bg-light text-dark"><i class="fa fa-times me-1"></i><?= gettext('No') ?></span>
+                                                <?php endif; ?>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <tr>
+                                        <td colspan="2" class="text-muted text-center"><?= gettext('No locales configured') ?></td>
+                                    </tr>
+                                <?php endif; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+<!-- Masonry-style grid: status + quick-check cards flow top-to-bottom in
+     columns so tall expanded cards don't leave dead space beside short
+     collapsed ones. -->
+<div class="debug-grid">
     <!-- Application Integrity Check -->
     <div class="card <?= $integrityPassed ? '' : 'border-warning' ?>">
             <div class="card-status-top <?= $integrityPassed ? 'bg-success' : 'bg-warning' ?>"></div>
@@ -293,57 +340,9 @@ $hasAnyIssue = $integrityPassed === false
                 </div>
             </div>
         </div>
-    <!-- Locale Support -->
-    <div class="card <?= $localeDetected ? '' : 'border-warning' ?>">
-            <div class="card-status-top <?= $localeDetected ? 'bg-success' : 'bg-warning' ?>"></div>
-            <div class="card-header" id="headingLocaleSupport">
-                <h4 data-bs-toggle="collapse" data-bs-target="#collapseLocaleSupport" aria-expanded="false" aria-controls="collapseLocaleSupport" style="cursor: pointer;" class="mb-0">
-                    <i class="fa fa-globe me-2"></i><?= gettext('Locale Support') ?>
-                    <i class="fa fa-chevron-down float-end"></i>
-                </h4>
-            </div>
-            <div id="collapseLocaleSupport" class="collapse" aria-labelledby="headingLocaleSupport">
-            <div class="card-body">
-                <div class="alert <?= $localeInfo['systemLocaleDetected'] ? 'alert-success' : 'alert-warning' ?> mb-3">
-                    <i class="fa <?= $localeInfo['systemLocaleDetected'] ? 'fa-circle-check' : 'fa-triangle-exclamation' ?> me-2"></i>
-                    <strong><?= gettext('System Locale Support') ?></strong><br>
-                    <small><?= InputUtils::escapeHTML($localeInfo['systemLocaleSupportSummary']) ?></small>
-                </div>
-                <h6 class="text-muted mb-3"><i class="fa fa-language me-2"></i><?= gettext('ChurchCRM Supported Locales') ?></h6>
-                <table class="table table-sm mb-0">
-                    <thead>
-                        <tr>
-                            <th><?= gettext('Language') ?></th>
-                            <th style="text-align: center; width: 100px;"><?= gettext('System') ?></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php if (count($localeInfo['supportedLocales']) > 0): ?>
-                            <?php foreach ($localeInfo['supportedLocales'] as $locale): ?>
-                                <tr>
-                                    <td>
-                                        <div style="font-weight: 500; font-size: 0.95em;"><?= InputUtils::escapeHTML($locale['name']) ?></div>
-                                        <small class="text-muted" style="font-size: 0.85em;"><?= InputUtils::escapeHTML($locale['locale']) ?></small>
-                                    </td>
-                                    <td style="text-align: center; vertical-align: middle;">
-                                        <?php if ($locale['systemAvailable']): ?>
-                                            <span class="badge bg-green-lt text-green"><i class="fa fa-check me-1"></i><?= gettext('Yes') ?></span>
-                                        <?php else: ?>
-                                            <span class="badge bg-light text-dark"><i class="fa fa-times me-1"></i><?= gettext('No') ?></span>
-                                        <?php endif; ?>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        <?php else: ?>
-                            <tr>
-                                <td colspan="2" class="text-muted text-center"><?= gettext('No locales configured') ?></td>
-                            </tr>
-                        <?php endif; ?>
-                    </tbody>
-                </table>
-                </div>
-            </div>
-        </div>
+    <!-- Locale Support moved into the Environment card's Locale tab — the
+         actionable "does the system support your chosen locale?" state
+         remains as a chip in the top status banner. -->
     <!-- Email — extracted from the old "System & Configuration" card so the
          SMTP status is discoverable at a glance and the /admin/system/debug/email
          page has an inbound entry point. -->
@@ -455,8 +454,21 @@ $hasAnyIssue = $integrityPassed === false
     background-color: rgba(255, 193, 7, 0.1) !important;
 }
 
-/* CSS columns (masonry-like) so a tall expanded card doesn't leave dead
-   space beside short collapsed cards the way Bootstrap's row-grid does. */
+/* Debug is a dense admin diagnostic page — break out of the default
+   container-xl (1320px) cap so the masonry grid + Environment tabs can
+   use the full viewport width on wider screens. Scoped to this page via
+   the inline <style> block; other pages keep their default container. */
+.page-body > .container-xl {
+    max-width: 100%;
+}
+
+/* Environment has 5 tabs + wide code values (DSN, paths) so it sits in
+   its OWN full-width container. The status/status-lite cards below flow
+   in a CSS-columns masonry grid so a tall expanded card no longer leaves
+   dead space beside collapsed siblings. */
+.debug-env {
+    margin-bottom: 1rem;
+}
 .debug-grid {
     column-gap: 1rem;
 }
@@ -464,8 +476,7 @@ $hasAnyIssue = $integrityPassed === false
     break-inside: avoid;
     -webkit-column-break-inside: avoid;
     page-break-inside: avoid;
-    display: inline-block;
-    width: 100%;
+    display: block;
     margin-bottom: 1rem;
 }
 @media (min-width: 768px) {
@@ -473,6 +484,23 @@ $hasAnyIssue = $integrityPassed === false
 }
 @media (min-width: 1200px) {
     .debug-grid { column-count: 3; }
+}
+/* Tabs: allow wrap so they don't overflow on narrow viewports, but the
+   Environment card is full-width so 6 tabs should always fit on 1 line
+   at any reasonable desktop width. */
+.debug-env .nav-tabs {
+    flex-wrap: wrap;
+}
+/* Replace unreliable `float-end` chevron positioning inside CSS-columns
+   (float is flaky in column fragments) with flex + margin-auto. */
+.debug-grid .card-header h4[data-bs-toggle="collapse"] {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+}
+.debug-grid .card-header h4[data-bs-toggle="collapse"] .fa-chevron-down,
+.debug-grid .card-header h4[data-bs-toggle="collapse"] .fa-chevron-up {
+    margin-left: auto;
 }
 
 /* Status-banner chips — give a little more room than a plain Bootstrap
@@ -639,18 +667,45 @@ $hasAnyIssue = $integrityPassed === false
         var openFromHash = function() {
             if (!window.location.hash) return;
             var target = document.querySelector(window.location.hash);
-            if (!target || !target.classList.contains('collapse')) return;
-            if (target.classList.contains('show')) return;
-            if (window.bootstrap && bootstrap.Collapse) {
-                bootstrap.Collapse.getOrCreateInstance(target).show();
-            } else {
-                // jQuery fallback
-                $(target).collapse('show');
+            if (!target) return;
+
+            // If the hash points at a tab pane inside the Environment card,
+            // open the card first and activate the correct tab.
+            var parentCollapse = target.closest('.collapse');
+            var tabPane = target.classList.contains('tab-pane') ? target : null;
+
+            if (parentCollapse && !parentCollapse.classList.contains('show')) {
+                if (window.bootstrap && bootstrap.Collapse) {
+                    bootstrap.Collapse.getOrCreateInstance(parentCollapse).show();
+                } else {
+                    $(parentCollapse).collapse('show');
+                }
             }
-            // Scroll the card into view after expansion animates.
-            setTimeout(function() {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 300);
+            if (tabPane) {
+                var tabLink = document.querySelector('[href="#' + tabPane.id + '"]');
+                if (tabLink && window.bootstrap && bootstrap.Tab) {
+                    bootstrap.Tab.getOrCreateInstance(tabLink).show();
+                } else if (tabLink) {
+                    $(tabLink).tab('show');
+                }
+            } else if (target.classList.contains('collapse')) {
+                if (target.classList.contains('show')) return;
+                if (window.bootstrap && bootstrap.Collapse) {
+                    bootstrap.Collapse.getOrCreateInstance(target).show();
+                } else {
+                    $(target).collapse('show');
+                }
+            }
+
+            // Scroll the relevant card into view after any expansion animates.
+            var scrollTarget = parentCollapse
+                ? parentCollapse.closest('.card')
+                : (target.classList.contains('collapse') ? target : null);
+            if (scrollTarget) {
+                setTimeout(function() {
+                    scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 300);
+            }
         };
         openFromHash();
         window.addEventListener('hashchange', openFromHash);
