@@ -203,7 +203,8 @@ describe(
         it("Verify CSV Import rejects duplicate column headers with a 400", () => {
             // A user-assembled CSV with two identically named columns would
             // otherwise produce a raw 500 from League\Csv\SyntaxError. The
-            // route must surface it as a 400 with a helpful message.
+            // route must surface it as a 400 with the server-provided message
+            // — not Uppy's hardcoded "looks like a network error" fallback.
             const body = "FamilyID,FirstName,FirstName\n100,foo,bar\n";
             cy.visit("admin/import/csv");
 
@@ -214,9 +215,12 @@ describe(
             cy.get("#csv-import-form").submit();
 
             cy.get("#statusError", { timeout: 10000 }).should("be.visible");
-            cy.get("#errorMessage").should(($el) => {
-                expect($el.text().toLowerCase()).to.match(/duplicate|rename/);
-            });
+            cy.get("#errorMessage")
+                .should("contain.text", "duplicate")
+                .and("contain.text", "Rename");
+            // Must NOT advance past the upload step on a rejected file.
+            cy.get("#mapping-card").should("have.class", "d-none");
+            cy.get("#summary-card").should("have.class", "d-none");
         });
 
         it("Verify CSV Import sets Classification and FamilyRole", () => {
