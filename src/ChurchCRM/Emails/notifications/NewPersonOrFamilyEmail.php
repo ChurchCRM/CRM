@@ -9,11 +9,31 @@ use ChurchCRM\Exceptions\NotImplementedException;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Utils\LoggerUtils;
 
 class NewPersonOrFamilyEmail extends BaseEmail
 {
     /** @var Family|Person|mixed */
     private $relatedObject;
+
+    /**
+     * Send the new-person/family notification if a recipient list is configured.
+     * No-op when sNewPersonNotificationRecipientIDs is empty. Email failures are
+     * logged, not thrown, so a misconfigured SMTP never blocks a save.
+     *
+     * @param Family|Person $relatedObject
+     */
+    public static function sendIfConfigured($relatedObject): void
+    {
+        if (empty(SystemConfig::getValue('sNewPersonNotificationRecipientIDs'))) {
+            return;
+        }
+        $email = new self($relatedObject);
+        if (!$email->send()) {
+            $label = $relatedObject instanceof Family ? 'New Family' : 'New Person';
+            LoggerUtils::getAppLogger()->warning(gettext($label . ' Notification Email Error') . ' :' . $email->getError());
+        }
+    }
 
     /**
      * @param Family|Person|mixed $RelatedObject

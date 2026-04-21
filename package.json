@@ -1,6 +1,6 @@
 {
     "name": "churchcrm",
-    "version": "7.2.1",
+    "version": "7.2.2",
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -87,6 +87,7 @@
         "@tabler/icons-webfont": "^3.41.1",
         "@uppy/core": "^5.2.0",
         "@uppy/dashboard": "^5.1.1",
+        "@uppy/image-editor": "^4.2.0",
         "@uppy/webcam": "^5.1.0",
         "@uppy/xhr-upload": "^5.2.0",
         "apexcharts": "^5.10.4",
@@ -126,7 +127,7 @@
         "archiver": "^7.0.1",
         "css-loader": "^7.1.4",
         "cy-verify-downloads": "^0.3.0",
-        "cypress": "^15.13.1",
+        "cypress": "^15.14.0",
         "cypress-terminal-report": "^7.3.3",
         "datatables.net-plugins": "^2.3.2",
         "dotenv": "^17.3.1",

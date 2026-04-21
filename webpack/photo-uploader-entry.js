@@ -10,11 +10,11 @@
  * (When rendering server-side you may prepend the application's root path.)
  */
 
-// Import Uppy CSS
-// @uppy v5+ requires ./css/ export path instead of ./dist/
+// Import Uppy CSS via each package's ./css/ export alias (v5+ / image-editor v4.2+).
 import "@uppy/core/css/style.min.css";
 import "@uppy/dashboard/css/style.min.css";
 import "@uppy/webcam/css/style.min.css";
+import "@uppy/image-editor/css/style.min.css";
 
 import { createPhotoUploader } from "./photo-uploader.js";
 
