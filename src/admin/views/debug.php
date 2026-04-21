@@ -756,7 +756,10 @@ $fmtBytes = static function ($bytes): string {
         // the matching section. Bootstrap 5 does not do this out of the box.
         var openFromHash = function() {
             if (!window.location.hash) return;
-            var target = document.querySelector(window.location.hash);
+            // getElementById side-steps CSS-selector parsing entirely, so a
+            // pasted URL fragment with invalid selector chars (e.g. ".") won't
+            // throw DOMException and break the rest of the initializer.
+            var target = document.getElementById(window.location.hash.slice(1));
             if (!target) return;
 
             // If the hash points at a tab pane inside the Environment card,

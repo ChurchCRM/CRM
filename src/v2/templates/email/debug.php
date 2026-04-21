@@ -159,16 +159,24 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <!-- Raw PHPMailer SMTPDebug output — collapsed by default since it's verbose.
      Admins only need it when chasing a real failure. -->
 <div class="card mt-3">
-    <div class="card-header" id="headingSmtpDebug">
-        <h4 class="mb-0" data-bs-toggle="collapse" data-bs-target="#collapseSmtpDebug" aria-expanded="<?= $sendResult['success'] ? 'false' : 'true' ?>" aria-controls="collapseSmtpDebug" style="cursor: pointer;">
-            <i class="fa fa-terminal me-2"></i><?= gettext('SMTP Debug Log') ?>
-            <small class="text-muted ms-2"><?= gettext('PHPMailer SMTP session') ?></small>
-            <i class="fa fa-chevron-<?= $sendResult['success'] ? 'down' : 'up' ?> float-end"></i>
-        </h4>
+    <div class="card-header p-0" id="headingSmtpDebug">
+        <button type="button" class="btn btn-link w-100 text-start text-decoration-none text-reset p-3 m-0" data-bs-toggle="collapse" data-bs-target="#collapseSmtpDebug" aria-expanded="<?= $sendResult['success'] ? 'false' : 'true' ?>" aria-controls="collapseSmtpDebug">
+            <span class="h4 mb-0 d-flex align-items-center">
+                <i class="fa fa-terminal me-2"></i><?= gettext('SMTP Debug Log') ?>
+                <small class="text-muted ms-2"><?= gettext('PHPMailer SMTP session') ?></small>
+                <i class="fa fa-chevron-<?= $sendResult['success'] ? 'down' : 'up' ?> ms-auto"></i>
+            </span>
+        </button>
     </div>
     <div id="collapseSmtpDebug" class="collapse <?= $sendResult['success'] ? '' : 'show' ?>" aria-labelledby="headingSmtpDebug">
         <div class="card-body">
-            <div class="debug-smtp-log"><?= $sendResult['debugLog'] /* PHPMailer emits HTML via Debugoutput='html' */ ?></div>
+            <?php
+                // PHPMailer's Debugoutput='html' emits lines joined by <br>. Capture the
+                // visible text only (escaped) and re-introduce line breaks via nl2br so
+                // SMTP-server content can't inject markup or break out of the page.
+                $debugPlain = trim(html_entity_decode(strip_tags((string) $sendResult['debugLog']), ENT_QUOTES | ENT_HTML5, 'UTF-8'));
+            ?>
+            <div class="debug-smtp-log"><?= nl2br(InputUtils::escapeHTML($debugPlain), false) ?></div>
         </div>
     </div>
 </div>

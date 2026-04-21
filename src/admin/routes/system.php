@@ -317,6 +317,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
                 [gettext('Debug')],
             ]),
             'configError'  => $configError,
+            'configErrorFixUrl' => $configErrorFixUrl,
             'smtpSettings' => $smtpSettings,
             'sendResult'   => $sendResult,
             // ?settings=open matches the dashboard tile behavior — opens the
