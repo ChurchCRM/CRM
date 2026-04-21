@@ -113,11 +113,32 @@ jobs:
             const cvePattern = /cve-(\d{4}-\d+)?/i;
             const ghsaPattern = /ghsa-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}/i;
             const hasCVE = cvePattern.test(title) || cvePattern.test(body) || ghsaPattern.test(title) || ghsaPattern.test(body);
-            
+
+            // In-app reporter (src/api/routes/system/system-issues.php) writes a
+            // "Collected Value Title | Data" table — preserved as the system-info marker.
             const hasSystemInfo = bodyLower.includes('collected value title');
-            
-            const isBug = bodyLower.includes('describe the issue');
-            const isQuestion = bodyLower.includes('how can we help');
+
+            // Detect bug reports from any of:
+            //  - legacy in-app reporter body ("**Describe the issue**")
+            //  - new YAML issue form (### What happened?)
+            //  - a "bug" label applied by the form or a maintainer
+            //  - a title starting with "bug:"
+            const labels = (issue.labels || []).map(l => (l && l.name ? l.name.toLowerCase() : ''));
+            const hasBugLabel = labels.includes('bug') || labels.includes('type:bug') || labels.includes('type: bug');
+            const isBug =
+              bodyLower.includes('describe the issue') ||
+              bodyLower.includes('### what happened?') ||
+              hasBugLabel ||
+              titleLower.startsWith('bug:');
+
+            // Detect questions from either the old markdown template, the new YAML form,
+            // or a "question" label.
+            const hasQuestionLabel = labels.includes('question');
+            const isQuestion =
+              bodyLower.includes('how can we help') ||
+              bodyLower.includes('### what are you trying to do?') ||
+              hasQuestionLabel ||
+              titleLower.startsWith('question:');
             
             console.log('Issue Classification Results:');
             console.log('  hasCVE:', hasCVE, '(security vulnerability disclosure)');

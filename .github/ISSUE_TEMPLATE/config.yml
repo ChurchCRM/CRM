@@ -1,11 +1,17 @@
 blank_issues_enabled: false
 contact_links:
   - name: 🐛 Report Bug via ChurchCRM App (Recommended)
-    url: https://github.com/ChurchCRM/CRM/wiki/Reporting-Issues
-    about: Use Support → Report an Issue in your ChurchCRM installation for automatic system info capture
+    url: https://docs.churchcrm.io/administration/reporting-issues
+    about: Use Support → Report an Issue in your ChurchCRM installation for automatic system info capture — it files a GitHub issue for you
   - name: 📚 Documentation
-    url: https://github.com/ChurchCRM/CRM/wiki
-    about: Check our documentation and wiki for answers
-  - name: 💬 Community Discussion
+    url: https://docs.churchcrm.io
+    about: Check our documentation for answers to common questions before opening an issue
+  - name: 💬 Discord (Urgent? Want to chat?)
+    url: https://discord.gg/tuWyFzj3Nj
+    about: Join our Discord to chat with maintainers in real time — please still open a GitHub issue so we can track and fix it
+  - name: 🗣️ Community Discussions
     url: https://github.com/ChurchCRM/CRM/discussions
-    about: Ask questions and discuss with the community
+    about: Ask questions and discuss ideas with the community
+  - name: 🔒 Report a Security Vulnerability (Private)
+    url: https://github.com/ChurchCRM/CRM/security/advisories/new
+    about: Never file security issues publicly — use a private security advisory
