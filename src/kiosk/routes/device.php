@@ -274,7 +274,7 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         $vonagePlugin = PluginManager::getPlugin('vonage');
         $smsEnabled = $vonagePlugin !== null && $vonagePlugin->isEnabled() && $vonagePlugin->isConfigured();
 
-        $notificationsEnabled = SystemConfig::hasValidMailServerSettings() ||
+        $notificationsEnabled = SystemConfig::isEmailEnabled() ||
                                 $smsEnabled ||
                                 $openLpEnabled;
 

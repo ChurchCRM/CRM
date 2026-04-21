@@ -48,4 +48,9 @@ class FamilyVerificationEmail extends BaseEmail
     {
         return gettext('Verify');
     }
+
+    protected function getPreheader(): string
+    {
+        return gettext("Please verify your family's information");
+    }
 }
