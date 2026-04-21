@@ -36,6 +36,37 @@ Best practices (short)
 - Always run tests locally before pushing.
 - Do not merge without human review and passing CI.
 
+### Write PR descriptions from the branch diff, not the commit log <!-- learned: 2026-04-21 -->
+
+When drafting a PR body, **describe what changed between the branch and
+its merge base** — not the sequence of commits. Commits get rebased,
+squashed, reordered, or absorbed into merges; a description that lists
+"first I did X, then Y, then reverted Y" will be wrong the moment the
+branch is cleaned up, and a reviewer reading the final diff won't
+recognize the story.
+
+Use these commands instead:
+
+```bash
+# Files changed and line counts vs merge base
+git diff --stat $(git merge-base HEAD master)..HEAD
+
+# Full diff vs merge base (pipe to head/less for large branches)
+git diff $(git merge-base HEAD master)..HEAD
+
+# Only the final state of each file (what a reviewer actually sees)
+git diff $(git merge-base HEAD master)..HEAD -- <path>
+```
+
+Structure PR bodies as **was → now** for each affected area, grounded in
+what the final diff shows. Reference commits only as a debugging aid,
+not as narrative structure.
+
+When a branch is stacked on another open PR (e.g. follow-up work on a
+review branch), say so explicitly at the top of the PR body and note
+which commits belong to the base PR so reviewers know the auto-rebase
+will trim them when the base merges.
+
 See also:
 - `git-workflow.md` for branching, commit message format, and the full pre-commit checklist.
 - `gh-cli` skill (local `.agents/skills/gh-cli/SKILL.md` or upstream) for concrete `gh` commands.

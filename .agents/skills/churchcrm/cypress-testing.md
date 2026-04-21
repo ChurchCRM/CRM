@@ -1503,14 +1503,26 @@ a mismatch. Stub `Intl.DateTimeFormat` inside `cy.visit({ onBeforeLoad })` so th
 override is in place **before** any inline script runs — late stubs miss the
 first resolve call.
 
+**Gotcha — pass through when caller supplies an explicit `timeZone`:** if the
+production code canonicalizes the configured zone via
+`new Intl.DateTimeFormat(undefined, { timeZone: configured })` (to treat
+`US/Eastern` and `America/New_York` as equal), a blanket override makes
+*both* sides of the comparison equal to the fake zone and the mismatch
+branch never fires. Only override `resolvedOptions()` when the caller
+did NOT supply an explicit `timeZone`.
+
 ```js
 cy.visit("event/calendars", {
     onBeforeLoad(win) {
         const original = win.Intl.DateTimeFormat;
         function Stub(...args) {
             const inst = new original(...args);
-            const origResolved = inst.resolvedOptions.bind(inst);
-            inst.resolvedOptions = () => ({ ...origResolved(), timeZone: "Pacific/Kiritimati" });
+            const explicitTz = (args[1] || {}).timeZone;
+            if (!explicitTz) {
+                // Only patch the "what zone is the browser in?" call.
+                const origResolved = inst.resolvedOptions.bind(inst);
+                inst.resolvedOptions = () => ({ ...origResolved(), timeZone: "Pacific/Kiritimati" });
+            }
             return inst;
         }
         Stub.supportedLocalesOf = original.supportedLocalesOf.bind(original);
