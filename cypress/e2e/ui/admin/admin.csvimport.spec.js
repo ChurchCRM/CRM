@@ -115,6 +115,18 @@ describe(
                     expect(labels).to.include("Family Property");
                 });
 
+            // autoMapHeader() must match custom/property column labels case-insensitively —
+            // verify the dropdown row for each extension header has the right option pre-selected.
+            cy.get('#mapping-tbody select.mapping-select[data-header="Highest Degree Received"]').should(
+                ($sel) => expect($sel.val()).to.match(/^pcustom_c\d+$/),
+            );
+            cy.get('#mapping-tbody select.mapping-select[data-header="Disabled"]').should(
+                ($sel) => expect($sel.val()).to.equal("pprop_1"),
+            );
+            cy.get('#mapping-tbody select.mapping-select[data-header="Single Parent"]').should(
+                ($sel) => expect($sel.val()).to.equal("fprop_2"),
+            );
+
             cy.get("#execute-import").click();
             cy.get("#summary-card", { timeout: 20000 }).should("be.visible");
             cy.get("#summary-imported").should("not.have.text", "0");
@@ -134,19 +146,76 @@ describe(
                 const customAndPropId = byFirstName["customAndProp"];
                 expect(customAndPropId, "customAndProp person imported").to.exist;
 
-                // Person property "Disabled" (pro_ID 1) should be assigned to the imported row
+                // Person property "Disabled" (pro_ID 1) — /api/people/properties/person returns
+                // objects shaped { id, name, value, allowEdit, allowDelete } (see getProperties()).
                 cy.makePrivateAdminAPICall(
                     "GET",
                     `/api/people/properties/person/${customAndPropId}`,
                     null,
                     200,
                 ).then((propResp) => {
-                    const props = propResp.body;
-                    const disabled = props.find(
-                        (p) => Number(p.PropertyId ?? p.ProId) === 1,
-                    );
+                    const disabled = propResp.body.find((p) => Number(p.id) === 1);
                     expect(disabled, "Disabled property assigned to customAndProp").to.exist;
                 });
+
+                // Family property "Single Parent" (pro_ID 2) is attached to the shared FamilyID 200
+                // row. Resolve family via /api/person → Person.FamId, then read family properties.
+                cy.makePrivateAdminAPICall("GET", `/api/person/${customAndPropId}`, null, 200).then(
+                    (personResp) => {
+                        const familyId = personResp.body.FamId;
+                        expect(familyId, "imported person attached to a family").to.be.greaterThan(0);
+                        cy.makePrivateAdminAPICall(
+                            "GET",
+                            `/api/people/properties/family/${familyId}`,
+                            null,
+                            200,
+                        ).then((famPropResp) => {
+                            const singleParent = famPropResp.body.find((p) => Number(p.id) === 2);
+                            expect(singleParent, "Single Parent family property assigned").to.exist;
+                        });
+                    },
+                );
+            });
+        });
+
+        it("Verify CSV Import auto-maps category-suffixed extension column headers", () => {
+            // The /csv/families template writes extension columns as
+            // "{name} ({category})" so custom-field/property sources are
+            // visible in Excel and collisions across buckets can't happen.
+            // The importer must still auto-map the suffixed form back to
+            // the same key that the bare-name form resolves to.
+            cy.visit("admin/import/csv");
+            cy.get("#csvFile").selectFile("cypress/fixtures/test_extension_suffixed_import.csv", { force: true });
+            cy.get("#csv-import-form").submit();
+            cy.get("#mapping-card").should("be.visible");
+
+            cy.get(
+                '#mapping-tbody select.mapping-select[data-header="Highest Degree Received (Person Custom)"]',
+            ).should(($sel) => expect($sel.val()).to.match(/^pcustom_c\d+$/));
+            cy.get(
+                '#mapping-tbody select.mapping-select[data-header="Disabled (Person Property)"]',
+            ).should(($sel) => expect($sel.val()).to.equal("pprop_1"));
+            cy.get(
+                '#mapping-tbody select.mapping-select[data-header="Single Parent (Family Property)"]',
+            ).should(($sel) => expect($sel.val()).to.equal("fprop_2"));
+        });
+
+        it("Verify CSV Import rejects duplicate column headers with a 400", () => {
+            // A user-assembled CSV with two identically named columns would
+            // otherwise produce a raw 500 from League\Csv\SyntaxError. The
+            // route must surface it as a 400 with a helpful message.
+            const body = "FamilyID,FirstName,FirstName\n100,foo,bar\n";
+            cy.visit("admin/import/csv");
+
+            cy.get("#csvFile").selectFile(
+                { contents: Cypress.Buffer.from(body), fileName: "dup.csv", mimeType: "text/csv" },
+                { force: true },
+            );
+            cy.get("#csv-import-form").submit();
+
+            cy.get("#statusError", { timeout: 10000 }).should("be.visible");
+            cy.get("#errorMessage").should(($el) => {
+                expect($el.text().toLowerCase()).to.match(/duplicate|rename/);
             });
         });
 

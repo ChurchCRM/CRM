@@ -12,6 +12,8 @@ use ChurchCRM\model\ChurchCRM\RecordProperty;
 use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\DateTimeUtils;
+use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use League\Csv\Reader;
 use Propel\Runtime\Propel;
@@ -24,6 +26,17 @@ const CSV_PERSON_CUSTOM_PREFIX = 'pcustom_';
 const CSV_FAMILY_CUSTOM_PREFIX = 'fcustom_';
 const CSV_PERSON_PROP_PREFIX   = 'pprop_';
 const CSV_FAMILY_PROP_PREFIX   = 'fprop_';
+
+// Stable English category tags appended to CSV column headers for extension
+// fields, e.g. "Highest Degree Received (Person Custom)". Intentionally NOT
+// translated — the suffix has to parse consistently across locales so a
+// template downloaded in one language still auto-maps in another.
+const CSV_GROUP_TAGS = [
+    'Person Custom'   => 'Person Custom',
+    'Family Custom'   => 'Family Custom',
+    'Person Property' => 'Person Property',
+    'Family Property' => 'Family Property',
+];
 
 // Human-readable labels for the built-in Person/Family columns. Keys must match CSV_FIELD_ALIASES.
 const CSV_CORE_FIELD_LABELS = [
@@ -89,11 +102,22 @@ function autoMapHeader(string $header, array $extensionFields = []): ?string
             return $field;
         }
     }
-    // Fallback: case-insensitive exact match of the CSV header against the
-    // display name of a custom field or property.
+    // Extension fields: match on (a) the bare display name ("Notes") and
+    // (b) the category-suffixed form emitted by the downloaded template
+    // ("Notes (Family Property)"). The suffixed form disambiguates when a
+    // name collides across categories — the bare-name branch below picks
+    // the first match, which is acceptable as long as the template suffix
+    // is preserved on the way back in.
     foreach ($extensionFields as $field) {
-        if (strtolower(trim($field['label'])) === $normalized) {
+        $label = strtolower(trim($field['label']));
+        if ($label === $normalized) {
             return $field['key'];
+        }
+        if (!empty($field['groupTag'])) {
+            $suffixed = strtolower($field['label'] . ' (' . $field['groupTag'] . ')');
+            if ($suffixed === $normalized) {
+                return $field['key'];
+            }
         }
     }
     return null;
@@ -111,42 +135,61 @@ function buildCsvImportFieldCatalog(): array
     $fields = [];
 
     foreach (CSV_CORE_FIELD_LABELS as $key => $label) {
-        $fields[] = ['key' => $key, 'label' => gettext($label), 'group' => gettext('Person / Family')];
+        $fields[] = ['key' => $key, 'label' => gettext($label), 'group' => gettext('Person / Family'), 'groupTag' => ''];
     }
 
     foreach (PersonCustomMasterQuery::create()->orderByOrder()->find() as $cf) {
         $fields[] = [
-            'key'   => CSV_PERSON_CUSTOM_PREFIX . $cf->getId(),
-            'label' => $cf->getName(),
-            'group' => gettext('Person Custom'),
+            'key'      => CSV_PERSON_CUSTOM_PREFIX . $cf->getId(),
+            'label'    => $cf->getName(),
+            'group'    => gettext('Person Custom'),
+            'groupTag' => CSV_GROUP_TAGS['Person Custom'],
         ];
     }
 
     foreach (FamilyCustomMasterQuery::create()->orderByOrder()->find() as $cf) {
         $fields[] = [
-            'key'   => CSV_FAMILY_CUSTOM_PREFIX . $cf->getField(),
-            'label' => $cf->getName(),
-            'group' => gettext('Family Custom'),
+            'key'      => CSV_FAMILY_CUSTOM_PREFIX . $cf->getField(),
+            'label'    => $cf->getName(),
+            'group'    => gettext('Family Custom'),
+            'groupTag' => CSV_GROUP_TAGS['Family Custom'],
         ];
     }
 
     foreach (PropertyQuery::create()->filterByProClass('p')->orderByProName()->find() as $prop) {
         $fields[] = [
-            'key'   => CSV_PERSON_PROP_PREFIX . $prop->getProId(),
-            'label' => $prop->getProName(),
-            'group' => gettext('Person Property'),
+            'key'      => CSV_PERSON_PROP_PREFIX . $prop->getProId(),
+            'label'    => $prop->getProName(),
+            'group'    => gettext('Person Property'),
+            'groupTag' => CSV_GROUP_TAGS['Person Property'],
         ];
     }
 
     foreach (PropertyQuery::create()->filterByProClass('f')->orderByProName()->find() as $prop) {
         $fields[] = [
-            'key'   => CSV_FAMILY_PROP_PREFIX . $prop->getProId(),
-            'label' => $prop->getProName(),
-            'group' => gettext('Family Property'),
+            'key'      => CSV_FAMILY_PROP_PREFIX . $prop->getProId(),
+            'label'    => $prop->getProName(),
+            'group'    => gettext('Family Property'),
+            'groupTag' => CSV_GROUP_TAGS['Family Property'],
         ];
     }
 
     return $fields;
+}
+
+/**
+ * Build the CSV column header for a catalog entry. Core fields keep their
+ * plain label ("First Name"); extension fields get a category suffix so the
+ * source is visible in Excel and column headers remain unique across the
+ * four extension buckets (e.g. a person property and a family property that
+ * happen to share a name won't collide).
+ */
+function csvColumnHeaderFor(array $field): string
+{
+    if (empty($field['groupTag'])) {
+        return $field['label'];
+    }
+    return $field['label'] . ' (' . $field['groupTag'] . ')';
 }
 
 /**
@@ -262,9 +305,14 @@ function formatCustomFieldValue(int $typeId, string $raw)
                 'false', 'no', 'n', '0', 'f' => 'false',
                 default                      => null,
             };
-        case 2: // DATE
-            $ts = strtotime($raw);
-            return $ts === false ? null : date('Y-m-d', $ts);
+        case 2: // DATE — SQL DATE column requires a full year. Partial dates
+            // (bare "7/4") are dropped rather than silently assigned the
+            // current year, which is what strtotime() used to do.
+            $parsed = DateTimeUtils::parsePartialDate($raw);
+            if ($parsed === null || $parsed['month'] === 0 || $parsed['day'] === 0 || $parsed['year'] === null) {
+                return null;
+            }
+            return sprintf('%04d-%02d-%02d', $parsed['year'], $parsed['month'], $parsed['day']);
         case 6: // YEAR
             return ctype_digit($raw) && strlen($raw) === 4 ? $raw : null;
         case 7: // ENUM('winter','spring','summer','fall')
@@ -300,16 +348,55 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
      * )
      */
     $group->get('/csv/families', function (Request $request, Response $response, array $_args): Response {
-        $file = __DIR__ . '/../../data/csv-families-template.csv';
-        if (!file_exists($file)) {
-            return SlimUtils::renderErrorJSON($response, gettext('CSV template not found'), [], 404, null, $request);
+        // Generate the template live from the current catalog. Core columns
+        // keep their plain label ("First Name"); extension columns get a
+        // "(Person Custom)" / "(Family Property)" suffix so the source is
+        // visible in Excel and a person-custom named "Notes" doesn't clash
+        // with a family-property named "Notes" in the final header row. The
+        // importer strips the suffix when auto-mapping (see autoMapHeader).
+        $catalog = buildCsvImportFieldCatalog();
+        $headers = [];
+        $seen    = []; // case-insensitive duplicate guard — worst-case safety net
+        foreach ($catalog as $field) {
+            $header = csvColumnHeaderFor($field);
+            $key    = strtolower($header);
+            $suffix = 2;
+            while (isset($seen[$key])) {
+                $header = csvColumnHeaderFor($field) . ' (' . $suffix . ')';
+                $key    = strtolower($header);
+                $suffix++;
+            }
+            $seen[$key] = true;
+            $headers[]  = $header;
         }
 
-        $contents = file_get_contents($file);
+        // Sample rows keyed by the core field name (FirstName, Address1, …).
+        // We render the full catalog header row but only emit sample values
+        // for core columns — custom-field and property values depend on each
+        // church's configuration, so those cells stay blank as a prompt.
+        $sampleRows = [
+            ['FamilyID' => '1001', 'Title' => 'Mr',   'FirstName' => 'John',  'LastName' => 'Smith',  'Gender' => 'Male',   'Address1' => '123 Church St', 'City' => 'Springfield', 'State' => 'IL', 'Zip' => '62704', 'Country' => 'USA', 'HomePhone' => '555-1234', 'Email' => 'john.smith@example.com',  'BirthDate' => '1980-05-12', 'MembershipDate' => '2020-01-01', 'WeddingDate' => '2010-06-15', 'Classification' => 'Member', 'FamilyRole' => 'Head of Household'],
+            ['FamilyID' => '1001', 'Title' => 'Mrs',  'FirstName' => 'Jane',  'LastName' => 'Smith',  'Gender' => 'Female', 'Address1' => '123 Church St', 'City' => 'Springfield', 'State' => 'IL', 'Zip' => '62704', 'Country' => 'USA', 'HomePhone' => '555-4321', 'Email' => 'jane.smith@example.com',  'BirthDate' => '1982-08-20', 'MembershipDate' => '2020-01-01', 'WeddingDate' => '2010-06-15', 'Classification' => 'Member', 'FamilyRole' => 'Spouse'],
+            ['FamilyID' => '1001', 'Title' => 'Miss', 'FirstName' => 'Emily', 'LastName' => 'Smith',  'Gender' => 'Female', 'Address1' => '123 Church St', 'City' => 'Springfield', 'State' => 'IL', 'Zip' => '62704', 'Country' => 'USA', 'HomePhone' => '555-0000', 'Email' => 'emily.smith@example.com', 'BirthDate' => '2010-03-05', 'MembershipDate' => '2020-01-01',                                     'Classification' => 'Member', 'FamilyRole' => 'Child'],
+            ['FamilyID' => '',     'Title' => 'Ms',   'FirstName' => 'Alice', 'LastName' => 'Walker', 'Gender' => 'Female', 'Address1' => '789 Solo Ave',  'City' => 'Capital City', 'State' => 'IL', 'Zip' => '62999', 'Country' => 'USA', 'HomePhone' => '555-7777', 'Email' => 'alice.walker@example.com', 'BirthDate' => '1990-02-02', 'MembershipDate' => '2021-05-01',                                     'Classification' => 'Member'],
+        ];
+
+        $exporter = new \ChurchCRM\Utils\CsvExporter();
+        $exporter->insertHeaders($headers);
+        foreach ($sampleRows as $sample) {
+            $row = [];
+            foreach ($catalog as $field) {
+                // Core columns are keyed by the CRM field name; extension
+                // fields have no sample value (users fill them per-site).
+                $coreKey = empty($field['groupTag']) ? $field['key'] : null;
+                $row[]   = ($coreKey !== null && isset($sample[$coreKey])) ? $sample[$coreKey] : '';
+            }
+            $exporter->insertRow($row);
+        }
 
         $response = $response->withHeader('Content-Type', 'text/csv');
         $response = $response->withHeader('Content-Disposition', 'attachment; filename="csv-families-template.csv"');
-        $response->getBody()->write($contents);
+        $response->getBody()->write($exporter->getContent());
 
         return $response;
     });
@@ -354,15 +441,42 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
         $upload->moveTo($tmpPath);
         $_SESSION['csv_import_tokens'][$token] = true;
 
-        // Parse headers and grab first data row as sample
-        $csv = Reader::createFromPath($tmpPath, 'r');
-        $csv->setHeaderOffset(0);
-        $headers = $csv->getHeader();
+        // Parse headers and grab first data row as sample. League\Csv throws
+        // SyntaxError when the header row has duplicate column names (common
+        // when a user manually adds columns to the template). Catch it and
+        // return a clean 400 instead of a raw 500.
+        try {
+            $csv = Reader::createFromPath($tmpPath, 'r');
+            $csv->setHeaderOffset(0);
+            $headers = $csv->getHeader();
 
-        $sample = null;
-        foreach ($csv->getRecords() as $record) {
-            $sample = $record;
-            break;
+            $sample = null;
+            foreach ($csv->getRecords() as $record) {
+                $sample = $record;
+                break;
+            }
+        } catch (\League\Csv\SyntaxError $e) {
+            @unlink($tmpPath);
+            unset($_SESSION['csv_import_tokens'][$token]);
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('Your CSV has duplicate column names. Rename the duplicate columns (e.g. add "(2)" to the second one) and upload again.'),
+                ['details' => $e->getMessage()],
+                400,
+                null,
+                $request,
+            );
+        } catch (\League\Csv\Exception $e) {
+            @unlink($tmpPath);
+            unset($_SESSION['csv_import_tokens'][$token]);
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('Could not parse the CSV file. Check that it is a valid comma-separated file with a header row.'),
+                ['details' => $e->getMessage()],
+                400,
+                null,
+                $request,
+            );
         }
 
         $fieldCatalog = buildCsvImportFieldCatalog();
@@ -541,7 +655,10 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                         try {
                             markCreateNoteAsImported($con, familyId: $family->getId());
                         } catch (\Throwable $e) {
-                            // swallow
+                            LoggerUtils::getAppLogger()->warning('CSV import: failed to mark family create-note as imported', [
+                                'familyId' => $family->getId(),
+                                'error'    => $e->getMessage(),
+                            ]);
                         }
                     }
                 }
@@ -575,50 +692,15 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                     });
                 }
 
-                // Birth date
+                // Birth date — see DateTimeUtils::parsePartialDate() for accepted formats.
+                // Year may be null for month-day-only inputs; BirthYear is nullable on Person.
                 if (!empty($data['BirthDate'])) {
-                    $raw   = trim($data['BirthDate']);
-                    $month = 0;
-                    $day   = 0;
-                    $year  = null; // null = no year provided
-
-                    if (preg_match('/^(\d{4})-(\d{1,2})-(\d{1,2})$/', $raw, $m)) {
-                        // YYYY-MM-DD or YYYY-M-D (e.g. 2001-07-04, 0000-07-04)
-                        $month = (int) $m[2];
-                        $day   = (int) $m[3];
-                        $y     = (int) $m[1];
-                        $year  = $y > 0 ? $y : null;
-                    } elseif (preg_match('/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})$/', $raw, $m)) {
-                        // M/D/YYYY, M-D-YYYY, M/D/YY (e.g. 1/1/2025, 7-4-2001, 7/4/25)
-                        $month   = (int) $m[1];
-                        $day     = (int) $m[2];
-                        $yearRaw = $m[3];
-                        $y       = (int) $yearRaw;
-                        if (strlen($yearRaw) === 2 && $y > 0) {
-                            // Match PHP's date parsing rules: 00-69 => 2000-2069, 70-99 => 1970-1999
-                            $y += $y >= 70 ? 1900 : 2000;
-                        }
-                        $year = $y > 0 ? $y : null;
-                    } elseif (preg_match('/^(\d{1,2})[\/\-](\d{1,2})$/', $raw, $m)) {
-                        // M/D or M-D (e.g. 1/1, 7/4, 7-4) — no year
-                        $month = (int) $m[1];
-                        $day   = (int) $m[2];
-                        $year  = null;
-                    } else {
-                        // Fallback: try strtotime for unrecognised formats (year assumed present)
-                        $ts = strtotime($raw);
-                        if ($ts !== false) {
-                            $month = (int) date('n', $ts);
-                            $day   = (int) date('j', $ts);
-                            $year  = (int) date('Y', $ts);
-                        }
-                    }
-
-                    if ($month > 0 && $day > 0) {
-                        $person->setBirthMonth($month);
-                        $person->setBirthDay($day);
-                        if ($year !== null) {
-                            $person->setBirthYear($year);
+                    $parsed = DateTimeUtils::parsePartialDate((string) $data['BirthDate']);
+                    if ($parsed !== null && $parsed['month'] > 0 && $parsed['day'] > 0) {
+                        $person->setBirthMonth($parsed['month']);
+                        $person->setBirthDay($parsed['day']);
+                        if ($parsed['year'] !== null) {
+                            $person->setBirthYear($parsed['year']);
                         }
                     }
                 }
@@ -657,7 +739,10 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                 try {
                     markCreateNoteAsImported($con, personId: $person->getId());
                 } catch (\Throwable $e) {
-                    // best-effort: don't fail the import over a note rewrite
+                    LoggerUtils::getAppLogger()->warning('CSV import: failed to mark person create-note as imported', [
+                        'personId' => $person->getId(),
+                        'error'    => $e->getMessage(),
+                    ]);
                 }
 
                 $imported++;
