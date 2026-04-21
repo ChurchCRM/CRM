@@ -75,6 +75,40 @@ If you prefer, I can convert this into a checklist file that the CI or editors c
 
 ---
 
+## Milestone = release that shipped it, not when it was closed <!-- learned: 2026-04-21 -->
+
+When assigning a milestone to a closed issue, use the **first release tag that contains the merge commit** of the closing PR — not the milestone that was "current" on the close date. Issues closed months after the fix shipped belong on the shipped release, so users can cross-reference the changelog for the version they are actually running.
+
+### How to find the shipped release
+
+```bash
+# 1. Find the closing PR (check timeline cross-references or grep the merge log)
+git log --oneline master --grep="#<issue_number>" | head -5
+
+# 2. Find the first non-rc tag that contains the merge commit
+git tag --contains <merge_sha> | grep -v rc | sort -V | head -1
+```
+
+### Moving an issue to the right milestone
+
+```bash
+# Milestone NUMBER (not title). Get the number from:
+#   gh api "repos/{owner}/{repo}/milestones?state=all" --paginate
+gh api --method PATCH "repos/{owner}/{repo}/issues/<n>" -F milestone=<milestone_number>
+```
+
+### Why this matters
+
+- Users who installed 7.1.0 must see the fix in the 7.1.0 release notes — not in 7.4.0 where the GitHub issue happened to be closed weeks later.
+- Squashed / rebased merges: feature-branch commits may not appear on `master` at all. `git tag --contains <feature_sha>` will return empty. Use the **merge commit** (found via `git log --grep=#<pr>` on master) and run `git tag --contains` on that.
+- If the closing PR is still open, leave the milestone on the active development one; only finalize after merge + release.
+
+### Common trap
+
+An issue closed on `2026-04-18` with milestone `7.4.0 (in development)` is almost always wrong when the fix PR was merged weeks or months earlier. Always verify via `git tag --contains`.
+
+---
+
 ## Security Advisory Management <!-- learned: 2026-04-05 -->
 
 Use `gh api` to manage GitHub Security Advisories (GHSAs). The full lifecycle is:
