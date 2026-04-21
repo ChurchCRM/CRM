@@ -1676,20 +1676,8 @@ msgid "Group"
 msgstr "Groupe"
 
 #: 
-msgid "Option"
-msgstr "Option"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Erreur: double exemplaire"
-
-#: 
 msgid "Default"
 msgstr "Défaut"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Nom double trouvé."
 
 #: 
 msgid "Make Default"
@@ -1702,10 +1690,6 @@ msgstr "Quitter"
 #: 
 msgid "Add New"
 msgstr "Ajouter un nouveau"
-
-#: 
-msgid " by that name already exists."
-msgstr " par ce nom existe déjà."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3190,10 +3174,6 @@ msgid "Security Group"
 msgstr "Groupe de sécurité"
 
 #: 
-msgid "Security Groups"
-msgstr "Groupes de sécurité"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Gestionnaire des Groupes de sécurité"
 
@@ -3206,48 +3186,16 @@ msgid "Group Member Roles Editor"
 msgstr "Gestionnaire des Rôles des Membres du groupe"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Option de Liste de Personne personnalisée"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Options de Liste de Personne personnalisée"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Gestionnaire des Options de Liste de Personne personnalisée"
-
-#: 
-msgid "Custom List Option"
-msgstr "Option de Liste personnalisée"
-
-#: 
-msgid "Custom List Options"
-msgstr "Options de Liste personnalisée"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Gestionnaire d'Options de Liste personnalisée"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Option de Liste familiale personnalisée"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Options de Liste familiale personnalisée"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Gestionnaire des Options de Liste familiale personnalisée"
-
-#: 
-msgid "are not allowed."
-msgstr "ne sont pas autorisés."
-
-#: 
-msgid "Name for New"
-msgstr "Nom pour nouveau"
 
 #: 
 msgid "Created via Family"
@@ -8394,10 +8342,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Se termine par une <strong>barre oblique finale</strong> (/)"
 
 #: 
-msgid "Error:"
-msgstr "Erreur:"
-
-#: 
 msgid "Find the line:"
 msgstr "Trouvez la ligne:"
 
@@ -8792,10 +8736,6 @@ msgstr[0] "%d personne ajoutée avec succès au groupe sélectionné."
 msgstr[1] "%d personnes ajoutées avec succès au groupe sélectionné."
 
 #: 
-msgid "A "
-msgstr "A "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Êtes-vous sûr de vouloir supprimer"
 
@@ -8824,10 +8764,6 @@ msgid "Delete Confirmation"
 msgstr "Confirmer la suppression"
 
 #: 
-msgid "Existing"
-msgstr "Existant"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Champs personnalisés existants de la famille"
 
@@ -8850,10 +8786,6 @@ msgstr "Jeton CSRF invalide"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Champs ou sélections invalides."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Élément supprimé avec succès"
 
 #: 
 msgid "Move down"
@@ -8890,10 +8822,6 @@ msgstr "Type de propriété"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "Il y a des personnes assignées à cette opportunité de bénévolat. La suppression supprimera l'assignation:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "Cela l'supprimera de toutes les personnes actuellement assignées."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11539,10 +11467,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Gérer les classes du catéchisme, les enseignants et l'assiduité des élèves"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Gérer les listes de classification, les rôles et les types de groupes"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Gérer les fonds de dons pour le suivi financier"
 
@@ -11793,10 +11717,6 @@ msgstr "Ouvrir un problème GitHub"
 #: 
 msgid "Open user menu"
 msgstr "Ouvrir le menu utilisateur"
-
-#: 
-msgid "Options"
-msgstr "Options"
 
 #: 
 msgid "Other Members"

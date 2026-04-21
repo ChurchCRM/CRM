@@ -1678,20 +1678,8 @@ msgid "Group"
 msgstr "Skupina"
 
 #: 
-msgid "Option"
-msgstr "Možnost"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Chyba: duplikát"
-
-#: 
 msgid "Default"
 msgstr "Výchozí"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Nalezen duplikátní název."
 
 #: 
 msgid "Make Default"
@@ -1704,10 +1692,6 @@ msgstr "Exit"
 #: 
 msgid "Add New"
 msgstr "Přidat nový"
-
-#: 
-msgid " by that name already exists."
-msgstr "toho názvu už existuje."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3188,10 +3172,6 @@ msgid "Security Group"
 msgstr "Skupina zabezpečení"
 
 #: 
-msgid "Security Groups"
-msgstr "Skupiny zabezpečení"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Editor skupin zabezpečení"
 
@@ -3204,48 +3184,16 @@ msgid "Group Member Roles Editor"
 msgstr "Editor rolí členů skupin"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Možnost Vlastní seznam osob"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Možnosti vlastního seznamu osob"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Editor možností vlastního seznamu osob"
-
-#: 
-msgid "Custom List Option"
-msgstr "Možnost vlastního seznamu"
-
-#: 
-msgid "Custom List Options"
-msgstr "Možnosti vlastního seznamu"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Editor možností vlastního seznamu"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Možnost vlastního seznamu rodiny"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Možnosti vlastního seznamu rodiny"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Editor možností vlastního seznamu rodiny"
-
-#: 
-msgid "are not allowed."
-msgstr "nejsou povoleny."
-
-#: 
-msgid "Name for New"
-msgstr "Název pro nový"
 
 #: 
 msgid "Created via Family"
@@ -8386,10 +8334,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Končí <strong>závěrečným lomítkem</strong> (/)"
 
 #: 
-msgid "Error:"
-msgstr "Chyba:"
-
-#: 
 msgid "Find the line:"
 msgstr "Najít řádek:"
 
@@ -8787,10 +8731,6 @@ msgstr[1] "%d osoby byly úspěšně přidány do vybrané skupiny."
 msgstr[2] "%d osob bylo úspěšně přidáno do vybrané skupiny."
 
 #: 
-msgid "A "
-msgstr "Nějaký "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Opravdu chcete smazat"
 
@@ -8819,10 +8759,6 @@ msgid "Delete Confirmation"
 msgstr "Potvrzení smazaní"
 
 #: 
-msgid "Existing"
-msgstr "Existující"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Existující vlastní pole rodiny"
 
@@ -8845,10 +8781,6 @@ msgstr "Neplatný token CSRF"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Neplatná pole nebo výběry."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Položka byla úspěšně smazána"
 
 #: 
 msgid "Move down"
@@ -8885,10 +8817,6 @@ msgstr "Typ vlastnosti"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "K této dobrovolnické příležitosti jsou přiřazeni lidé. Smazáním se přiřazení zruší:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "Tím se odstraní od všech osob, kterým je v současné době přiřazeno."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11537,10 +11465,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Spravovat třídy nedělní školy, učitele a docházku žáků"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Spravovat klasifikační seznamy, role a typy skupin"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Spravovat fondy darů pro finanční sledování"
 
@@ -11791,10 +11715,6 @@ msgstr "Vytvořit problém na GitHubu"
 #: 
 msgid "Open user menu"
 msgstr "Otevřít nabídku uživatele"
-
-#: 
-msgid "Options"
-msgstr "Možnosti"
 
 #: 
 msgid "Other Members"

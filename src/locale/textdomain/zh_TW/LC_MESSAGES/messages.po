@@ -1729,20 +1729,8 @@ msgid "Group"
 msgstr "組"
 
 #: 
-msgid "Option"
-msgstr "選項"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "錯誤：重複"
-
-#: 
 msgid "Default"
 msgstr "默認"
-
-#: 
-msgid "Duplicate name found."
-msgstr "發現重複的名稱。"
 
 #: 
 msgid "Make Default"
@@ -1755,10 +1743,6 @@ msgstr "出口"
 #: 
 msgid "Add New"
 msgstr "添加新"
-
-#: 
-msgid " by that name already exists."
-msgstr "由該名稱已經存在。"
 
 #: 
 msgid "Buyer Number Editor"
@@ -3294,10 +3278,6 @@ msgid "Security Group"
 msgstr "安全組"
 
 #: 
-msgid "Security Groups"
-msgstr "安全組"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "安全組編輯器"
 
@@ -3310,48 +3290,16 @@ msgid "Group Member Roles Editor"
 msgstr "群組成員角色編輯器"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "人員自定義列表選項"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "人員自定義列表選項"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "人員自定義列表選項編輯器"
-
-#: 
-msgid "Custom List Option"
-msgstr "自定義列表選項"
-
-#: 
-msgid "Custom List Options"
-msgstr "自定義列表選項"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "人員自定義列表選項編輯器"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "家庭自定義列表選項"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "家庭自定義列表選項"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "家庭自定義列表選項編輯器"
-
-#: 
-msgid "are not allowed."
-msgstr "是不允許的"
-
-#: 
-msgid "Name for New"
-msgstr "新名稱"
 
 #: 
 msgid "Created via Family"
@@ -8582,10 +8530,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "以<strong>結尾斜槓</strong> (/) 結束"
 
 #: 
-msgid "Error:"
-msgstr "錯誤："
-
-#: 
 msgid "Find the line:"
 msgstr "找到這一行："
 
@@ -8977,10 +8921,6 @@ msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "%d 人已成功加入選定的群組。"
 
 #: 
-msgid "A "
-msgstr "一個 "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "您確定要刪除嗎"
 
@@ -9009,10 +8949,6 @@ msgid "Delete Confirmation"
 msgstr "刪除確認"
 
 #: 
-msgid "Existing"
-msgstr "現有"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "現有自定義家庭欄位"
 
@@ -9035,10 +8971,6 @@ msgstr "無效的 CSRF 令牌"
 #: 
 msgid "Invalid fields or selections."
 msgstr "無效的欄位或選擇。"
-
-#: 
-msgid "Item deleted successfully"
-msgstr "項目刪除成功"
 
 #: 
 msgid "Move down"
@@ -9075,10 +9007,6 @@ msgstr "屬性類型"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "有人被分配到此志願服務機會。刪除將取消分配："
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "這將從目前分配的所有人員中移除它。"
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11721,10 +11649,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "管理主日學班級、教師和學生出席"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "管理分類列表、角色和小組類型"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "管理奉獻基金以進行財務追蹤"
 
@@ -11975,10 +11899,6 @@ msgstr "開啟 GitHub Issue"
 #: 
 msgid "Open user menu"
 msgstr "開啟使用者選單"
-
-#: 
-msgid "Options"
-msgstr "選項"
 
 #: 
 msgid "Other Members"

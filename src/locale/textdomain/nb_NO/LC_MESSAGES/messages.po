@@ -1736,20 +1736,8 @@ msgid "Group"
 msgstr "Gruppe"
 
 #: 
-msgid "Option"
-msgstr "Alternativet"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Feil: Duplikat"
-
-#: 
 msgid "Default"
 msgstr "Standard"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Duplisere navn funnet."
 
 #: 
 msgid "Make Default"
@@ -1762,10 +1750,6 @@ msgstr "Utgang"
 #: 
 msgid "Add New"
 msgstr "Legg til ny"
-
-#: 
-msgid " by that name already exists."
-msgstr "ved det navnet finnes allerede."
 
 #: 
 #, fuzzy
@@ -3297,10 +3281,6 @@ msgid "Security Group"
 msgstr "Sikkerhetsgruppe"
 
 #: 
-msgid "Security Groups"
-msgstr "Sikkerhetsgrupper"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Redigering av sikkerhetsgrupper"
 
@@ -3313,48 +3293,16 @@ msgid "Group Member Roles Editor"
 msgstr "Redigering av roller for gruppemedlemmer"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Alternativ for egendefinert personliste"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Alternativer for egendefinert personliste"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Redigering av alternativer for egendefinert personliste"
-
-#: 
-msgid "Custom List Option"
-msgstr "Alternativ for egendefinert liste"
-
-#: 
-msgid "Custom List Options"
-msgstr "Alternativer for egendefinert liste"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Redigering av alternativer for egendefinert liste"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Alternativ for egendefinert familieliste"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Alternativer for egendefinert familieliste"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Redigering av alternativer for egendefinert familieliste"
-
-#: 
-msgid "are not allowed."
-msgstr "er ikke tillatt."
-
-#: 
-msgid "Name for New"
-msgstr "Navn på ny"
 
 #: 
 msgid "Created via Family"
@@ -8484,10 +8432,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Ender med en <strong>skråstrek</strong> (/)"
 
 #: 
-msgid "Error:"
-msgstr "Feil:"
-
-#: 
 msgid "Find the line:"
 msgstr "Finn linjen:"
 
@@ -8882,10 +8826,6 @@ msgstr[0] "%d person lagt til i valgt gruppe."
 msgstr[1] "%d personer lagt til i valgt gruppe."
 
 #: 
-msgid "A "
-msgstr "En "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Er du sikker på at du vil slette"
 
@@ -8914,10 +8854,6 @@ msgid "Delete Confirmation"
 msgstr "Bekreftelse på sletting"
 
 #: 
-msgid "Existing"
-msgstr "Eksisterende"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Eksisterende egendefinerte familiefelt"
 
@@ -8940,10 +8876,6 @@ msgstr "Ugyldig CSRF-token"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Ugyldige felt eller valg."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Elementet ble slettet"
 
 #: 
 msgid "Move down"
@@ -8980,10 +8912,6 @@ msgstr "Egenskapstype"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "Det er personer tildelt denne frivillig-muligheten. Sletting vil fjerne tildeling for:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "Dette vil fjerne den fra alle personer den er tildelt for øyeblikket."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11629,10 +11557,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Administrer søndagsskoleklasser, lærere og elevoppmøte"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Administrer klassifiseringslister, roller og gruppetyper"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Administrer gavefond for økonomisk sporing"
 
@@ -11883,10 +11807,6 @@ msgstr "Åpne GitHub-sak"
 #: 
 msgid "Open user menu"
 msgstr "Åpne brukermeny"
-
-#: 
-msgid "Options"
-msgstr "Alternativer"
 
 #: 
 msgid "Other Members"

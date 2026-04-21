@@ -1679,20 +1679,8 @@ msgid "Group"
 msgstr "Grup"
 
 #: 
-msgid "Option"
-msgstr "Seçenek"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Hata: kopya"
-
-#: 
 msgid "Default"
 msgstr "Varsayılan"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Yinelenen isim bulundu."
 
 #: 
 msgid "Make Default"
@@ -1705,10 +1693,6 @@ msgstr "çıkış"
 #: 
 msgid "Add New"
 msgstr "Yeni ekle"
-
-#: 
-msgid " by that name already exists."
-msgstr " Bu isim zaten var."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3193,10 +3177,6 @@ msgid "Security Group"
 msgstr "Güvenlik grubu"
 
 #: 
-msgid "Security Groups"
-msgstr "Güvenlik grupları"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Güvenlik Grupları Editör"
 
@@ -3209,48 +3189,16 @@ msgid "Group Member Roles Editor"
 msgstr "Grup Üyesi Roller Editör"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Kişi Özel Listesi Seçeneği"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Kişi Özel Listesi Seçenekleri"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Kişi Özel Listesi Seçenekleri Düzenleyicisi"
-
-#: 
-msgid "Custom List Option"
-msgstr "Özel Liste seçeneği"
-
-#: 
-msgid "Custom List Options"
-msgstr "Özel Liste Seçenekleri"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Özel Liste Seçenekleri Düzenleyicisi"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Aile Özel Listesi Seçeneği"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Aile Özel Listesi Seçenekleri"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Aile Özel Listesi Seçenekleri Editör"
-
-#: 
-msgid "are not allowed."
-msgstr "izin verilmez."
-
-#: 
-msgid "Name for New"
-msgstr "YENİ İÇİN ADI"
 
 #: 
 msgid "Created via Family"
@@ -8397,10 +8345,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Bir <strong>eğik çizgi</strong> (/) ile biter"
 
 #: 
-msgid "Error:"
-msgstr "Hata:"
-
-#: 
 msgid "Find the line:"
 msgstr "Şu satırı bulun:"
 
@@ -8795,10 +8739,6 @@ msgstr[0] "%d Kişi seçilen Gruba başarıyla eklendi."
 msgstr[1] "%d Kişi seçilen Gruba başarıyla eklendi."
 
 #: 
-msgid "A "
-msgstr "Bir "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Silmek istediğinizden emin misiniz:"
 
@@ -8827,10 +8767,6 @@ msgid "Delete Confirmation"
 msgstr "Silme Onayı"
 
 #: 
-msgid "Existing"
-msgstr "Mevcut"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Mevcut Özel Aile Alanları"
 
@@ -8853,10 +8789,6 @@ msgstr "Geçersiz CSRF belirteci"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Geçersiz alanlar veya seçimler."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Öğe başarıyla silindi"
 
 #: 
 msgid "Move down"
@@ -8893,10 +8825,6 @@ msgstr "Özellik Türü"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "Bu Gönüllü Fırsatına atanmış kişiler var. Silme işlemi şu kişilerin atamasını kaldıracaktır:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "Bu, şu anda ona atanmış olan tüm kişilerden kaldıracaktır."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11542,10 +11470,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Pazar okulu sınıflarını, öğretmenleri ve öğrenci yoklamasını yönet"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Sınıflandırma listelerini, rolleri ve grup türlerini yönet"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Mali takip için bağış fonlarını yönet"
 
@@ -11796,10 +11720,6 @@ msgstr "GitHub Issue Aç"
 #: 
 msgid "Open user menu"
 msgstr "Kullanıcı menüsünü aç"
-
-#: 
-msgid "Options"
-msgstr "Seçenekler"
 
 #: 
 msgid "Other Members"

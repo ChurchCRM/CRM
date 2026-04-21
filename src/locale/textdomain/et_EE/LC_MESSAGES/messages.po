@@ -1679,20 +1679,8 @@ msgid "Group"
 msgstr "Grupp"
 
 #: 
-msgid "Option"
-msgstr "Võimalus"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Viga: duplikaat"
-
-#: 
 msgid "Default"
 msgstr "Vaikimisi"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Leiti duplikaatnimi."
 
 #: 
 msgid "Make Default"
@@ -1705,10 +1693,6 @@ msgstr "Välju"
 #: 
 msgid "Add New"
 msgstr "Lisa uus"
-
-#: 
-msgid " by that name already exists."
-msgstr " selle nime järgi on juba olemas."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3192,10 +3176,6 @@ msgid "Security Group"
 msgstr "Turvagrupp"
 
 #: 
-msgid "Security Groups"
-msgstr "Turvagrupid"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Turvagruppide redaktor"
 
@@ -3208,48 +3188,16 @@ msgid "Group Member Roles Editor"
 msgstr "Grupi liikmete rollide redigeerija"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Isiku kohandatud loendi valik"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Isiku kohandatud loendi valikud"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Isiku kohandatud loendi valikute redaktor"
-
-#: 
-msgid "Custom List Option"
-msgstr "Kohandatud loendi valik"
-
-#: 
-msgid "Custom List Options"
-msgstr "Kohandatud loendi valikud"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Kohandatud loendi valikute redaktor"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Perekonna kohandatud loendi valik"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Perekonna kohandatud loendi valikud"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Perekonna kohandatud loendi valikute redaktor"
-
-#: 
-msgid "are not allowed."
-msgstr "ei ole lubatud."
-
-#: 
-msgid "Name for New"
-msgstr "Uus nimi"
 
 #: 
 msgid "Created via Family"
@@ -8396,10 +8344,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Lõpeb <strong>jälje kaldkriipsuga</strong> (/)"
 
 #: 
-msgid "Error:"
-msgstr "Viga:"
-
-#: 
 msgid "Find the line:"
 msgstr "Leidke rida:"
 
@@ -8794,10 +8738,6 @@ msgstr[0] "%d inimene lisati edukalt valitud rühma."
 msgstr[1] "%d inimest lisati edukalt valitud rühma."
 
 #: 
-msgid "A "
-msgstr "A "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Kas olete kindel, et soovite kustutada"
 
@@ -8826,10 +8766,6 @@ msgid "Delete Confirmation"
 msgstr "Kustutamise kinnitus"
 
 #: 
-msgid "Existing"
-msgstr "Olemasolev"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Olemasolevad kohandatud perekonna väljad"
 
@@ -8852,10 +8788,6 @@ msgstr "Sobimatu CSRF märk"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Sobimatud väljad või valikud."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Üksus on edukalt kustutatud"
 
 #: 
 msgid "Move down"
@@ -8892,10 +8824,6 @@ msgstr "Vara tüüp"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "Sellele vabatahtliku võimalusele on määratud inimesi. Kustutamine jääb määramata:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "See eemaldab selle kõigilt inimestelt, kellele see on praegu määratud."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11541,10 +11469,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Hallake pühapäevakooli klasse, õpetajaid ja õpilaste kohalolekut"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Hallake klassifitseerimisnimekirju, rolle ja grupitüüpe"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Hallake annetuste fonde finantsarvestuse jaoks"
 
@@ -11795,10 +11719,6 @@ msgstr "Ava GitHubi probleem"
 #: 
 msgid "Open user menu"
 msgstr "Ava kasutajamenüü"
-
-#: 
-msgid "Options"
-msgstr "Valikud"
 
 #: 
 msgid "Other Members"

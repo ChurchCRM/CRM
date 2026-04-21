@@ -1678,20 +1678,8 @@ msgid "Group"
 msgstr "קבוצה"
 
 #: 
-msgid "Option"
-msgstr "אפשרות"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "שגיאה: כפילות"
-
-#: 
 msgid "Default"
 msgstr "ברירת מחדל"
-
-#: 
-msgid "Duplicate name found."
-msgstr "נמצא שם כפול."
 
 #: 
 msgid "Make Default"
@@ -1704,10 +1692,6 @@ msgstr "יציאה"
 #: 
 msgid "Add New"
 msgstr "הוסף חדש"
-
-#: 
-msgid " by that name already exists."
-msgstr "עם שם זה כבר קיים."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3189,10 +3173,6 @@ msgid "Security Group"
 msgstr "קבוצת אבטחה"
 
 #: 
-msgid "Security Groups"
-msgstr "קבוצת אבטחה"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "עורך קבוצות אבטחה"
 
@@ -3205,48 +3185,16 @@ msgid "Group Member Roles Editor"
 msgstr "עורך תפקידי חברי קבוצה"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Opsi Daftar Kustom Orang"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Opsi Daftar Kustom Orang"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "עורך אפשרויות רשימה מותאמת אישית של אנשים"
-
-#: 
-msgid "Custom List Option"
-msgstr "אפשרות רשימה מותאמת אישית"
-
-#: 
-msgid "Custom List Options"
-msgstr "אפשרויות רשימה מותאמת אישית"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "עורך אפשרויות רשימה מותאמת אישית"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Opsi Daftar Kustom Keluarga"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Opsi Daftar Kustom Keluarga"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "עורך אפשרויות רשימה מותאמת אישית של משפחות"
-
-#: 
-msgid "are not allowed."
-msgstr "אינם מורשים."
-
-#: 
-msgid "Name for New"
-msgstr "שם עבור חדש"
 
 #: 
 msgid "Created via Family"
@@ -8393,10 +8341,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "מסתיים ב-<strong>לוכסן (/)</strong>"
 
 #: 
-msgid "Error:"
-msgstr "שגיאה:"
-
-#: 
 msgid "Find the line:"
 msgstr "מצא את השורה:"
 
@@ -8791,10 +8735,6 @@ msgstr[0] "אדם %d נוסף בהצלחה לקבוצה הנבחרת."
 msgstr[1] "%d אנשים נוספו בהצלחה לקבוצה הנבחרת."
 
 #: 
-msgid "A "
-msgstr "א "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "האם את/ה בטוח/ה שברצונך למחוק"
 
@@ -8823,10 +8763,6 @@ msgid "Delete Confirmation"
 msgstr "אישור מחיקה"
 
 #: 
-msgid "Existing"
-msgstr "קיים"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "שדות משפחה מותאמים קיימים"
 
@@ -8849,10 +8785,6 @@ msgstr "אסימון CSRF לא תקין"
 #: 
 msgid "Invalid fields or selections."
 msgstr "שדות או בחירות לא תקינים."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "הפריט נמחק בהצלחה"
 
 #: 
 msgid "Move down"
@@ -8889,10 +8821,6 @@ msgstr "סוג מאפיין"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "ישנם אנשים המשויכים להתנדבות זו. המחיקה תסיר שיוך עבור:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "זה יסיר את המאפיין מכל האנשים המשויכים אליו."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11538,10 +11466,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "ניהול כיתות בית ספר ליום ראשון, מורים ונוכחות תלמידים"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "ניהול רשימות סיווג, תפקידים וסוגי קבוצות"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "ניהול קרנות תרומה למעקב כספי"
 
@@ -11792,10 +11716,6 @@ msgstr "פתיחת Issue ב-GitHub"
 #: 
 msgid "Open user menu"
 msgstr "פתיחת תפריט משתמש"
-
-#: 
-msgid "Options"
-msgstr "אפשרויות"
 
 #: 
 msgid "Other Members"

@@ -1678,20 +1678,8 @@ msgid "Group"
 msgstr "Kikundi"
 
 #: 
-msgid "Option"
-msgstr "Chaguo"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Hitilafu: Nakala"
-
-#: 
 msgid "Default"
 msgstr "Chaguomsingi"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Jina la nakala limepatikana."
 
 #: 
 msgid "Make Default"
@@ -1704,10 +1692,6 @@ msgstr "Utgång"
 #: 
 msgid "Add New"
 msgstr "Ongeza Mpya"
-
-#: 
-msgid " by that name already exists."
-msgstr " kwa jina hilo tayari lipo."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3189,10 +3173,6 @@ msgid "Security Group"
 msgstr "Kikundi cha Usalama"
 
 #: 
-msgid "Security Groups"
-msgstr "Vikundi vya Usalama"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Mhariri wa Vikundi vya Usalama"
 
@@ -3205,48 +3185,16 @@ msgid "Group Member Roles Editor"
 msgstr "Mhariri wa Majukumu ya Mwanakikundi"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Chaguo la Orodha Maalum ya Watu"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Chaguzi za Orodha Maalum ya Watu"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Mhariri wa Chaguzi za Orodha Maalum ya Mtu"
-
-#: 
-msgid "Custom List Option"
-msgstr "Chaguo la Orodha Maalum"
-
-#: 
-msgid "Custom List Options"
-msgstr "Chaguzi za Orodha Maalum"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Kihariri Cha Chaguo za Orodha Maalum"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Chaguo la Orodha Maalum ya Familia"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Chaguo za Orodha ya Maalum ya Familia"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Kihariri cha Chaguo za Orodha Maalum ya Familia"
-
-#: 
-msgid "are not allowed."
-msgstr "haziruhusiwi."
-
-#: 
-msgid "Name for New"
-msgstr "Jina la Mpya"
 
 #: 
 msgid "Created via Family"
@@ -8391,10 +8339,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Inaisha na <strong>mkwaju</strong> (/)"
 
 #: 
-msgid "Error:"
-msgstr "Hitilafu:"
-
-#: 
 msgid "Find the line:"
 msgstr "Tafuta mstari:"
 
@@ -8789,10 +8733,6 @@ msgstr[0] "Mtu %d ameongezwa kwa mafanikio kwenye Kikundi kilichochaguliwa."
 msgstr[1] "Watu %d wameongezwa kwa mafanikio kwenye Kikundi kilichochaguliwa."
 
 #: 
-msgid "A "
-msgstr " "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Je, una uhakika unataka kufuta"
 
@@ -8821,10 +8761,6 @@ msgid "Delete Confirmation"
 msgstr "Uthibitisho wa Kufuta"
 
 #: 
-msgid "Existing"
-msgstr "Zilizopo"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Sehemu Maalum za Familia Zilizopo"
 
@@ -8847,10 +8783,6 @@ msgstr "Tokeni ya CSRF si sahihi"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Sehemu au chaguzi si sahihi."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Kitu kimefutwa kwa mafanikio"
 
 #: 
 msgid "Move down"
@@ -8887,10 +8819,6 @@ msgstr "Aina ya Sifa"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "Kuna watu wamepangiwa Fursa hii ya Mjitoleaji. Kufuta kutaondoa upangiwa huo kwa:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "Hii itaiondoa kwa watu wote waliopangiwa kwa sasa."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11536,10 +11464,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Simamia madarasa ya Shule ya Jumapili, walimu, na mahudhurio ya wanafunzi"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Simamia orodha za uainishaji, majukumu, na aina za vikundi"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Simamia mifuko ya sadaka kwa ufuatiliaji wa fedha"
 
@@ -11790,10 +11714,6 @@ msgstr "Fungua Suala la GitHub"
 #: 
 msgid "Open user menu"
 msgstr "Fungua menyu ya mtumiaji"
-
-#: 
-msgid "Options"
-msgstr "Chaguo"
 
 #: 
 msgid "Other Members"

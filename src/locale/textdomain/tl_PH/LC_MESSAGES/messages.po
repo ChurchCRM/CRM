@@ -1657,20 +1657,8 @@ msgid "Group"
 msgstr "Grupo"
 
 #: 
-msgid "Option"
-msgstr "Opsyon"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Error: Duplikado"
-
-#: 
 msgid "Default"
 msgstr "Default"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Nakitang duplicate na pangalan."
 
 #: 
 msgid "Make Default"
@@ -1683,10 +1671,6 @@ msgstr "Lumabas"
 #: 
 msgid "Add New"
 msgstr "Magdagdag ng Bago"
-
-#: 
-msgid " by that name already exists."
-msgstr " na may pangalang iyon ay mayroon na."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3162,10 +3146,6 @@ msgid "Security Group"
 msgstr "Grupo ng Seguridad"
 
 #: 
-msgid "Security Groups"
-msgstr "Mga Grupo ng Seguridad"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Editor ng mga Grupo ng Seguridad"
 
@@ -3178,48 +3158,16 @@ msgid "Group Member Roles Editor"
 msgstr "Editor ng mga Papel ng Miyembro ng Grupo"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Opsyon ng Pasadyang Listahan ng Tao"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Mga Opsyon ng Pasadyang Listahan ng Tao"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Editor ng mga Opsyon ng Pasadyang Listahan ng Tao"
-
-#: 
-msgid "Custom List Option"
-msgstr "Opsyon ng Pasadyang Listahan"
-
-#: 
-msgid "Custom List Options"
-msgstr "Mga Opsyon ng Pasadyang Listahan"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Editor ng mga Opsyon ng Pasadyang Listahan"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Opsyon ng Pasadyang Listahan ng Pamilya"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Mga Opsyon ng Pasadyang Listahan ng Pamilya"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Editor ng mga Opsyon ng Pasadyang Listahan ng Pamilya"
-
-#: 
-msgid "are not allowed."
-msgstr "ay hindi pinapayagan."
-
-#: 
-msgid "Name for New"
-msgstr "Pangalan para sa Bago"
 
 #: 
 msgid "Created via Family"
@@ -8354,10 +8302,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Nagtatapos ng <strong>trailing slash</strong> (/)"
 
 #: 
-msgid "Error:"
-msgstr "Error:"
-
-#: 
 msgid "Find the line:"
 msgstr "Hanapin ang linya:"
 
@@ -8752,10 +8696,6 @@ msgstr[0] "%d Tao ay matagumpay na naidagdag sa napiling Grupo."
 msgstr[1] "%d Tao ay matagumpay na naidagdag sa napiling Grupo."
 
 #: 
-msgid "A "
-msgstr "Isang "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Sigurado ka bang gusto mong burahin"
 
@@ -8784,10 +8724,6 @@ msgid "Delete Confirmation"
 msgstr "Kumpirmasyon ng Pagbubura"
 
 #: 
-msgid "Existing"
-msgstr "Kasalukuyan"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Mga Kasalukuyang Pasadyang Larangan ng Pamilya"
 
@@ -8810,10 +8746,6 @@ msgstr "Hindi wastong CSRF token"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Mga hindi wastong larangan o pagpili."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Matagumpay na nabura ang item"
 
 #: 
 msgid "Move down"
@@ -8850,10 +8782,6 @@ msgstr "Uri ng Katangian"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "May mga taong naitalaga sa Pagkakataon bilang Boluntaryong ito. Ang pagbubura ay mag-aalis ng talaga sa:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "Aalisin nito ito mula sa lahat ng taong kasalukuyang naitalaga dito."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11499,10 +11427,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Pamahalaan ang mga klase ng Paaralan ng Linggo, mga guro, at presensya ng mga estudyante"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Pamahalaan ang mga listahan ng klasipikasyon, mga papel, at mga uri ng grupo"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Pamahalaan ang mga pondong donasyon para sa pagsubaybay ng pananalapi"
 
@@ -11753,10 +11677,6 @@ msgstr "Buksan ang GitHub Issue"
 #: 
 msgid "Open user menu"
 msgstr "Buksan ang menu ng user"
-
-#: 
-msgid "Options"
-msgstr "Mga Opsyon"
 
 #: 
 msgid "Other Members"

@@ -1722,20 +1722,8 @@ msgid "Group"
 msgstr "Группа"
 
 #: 
-msgid "Option"
-msgstr "Опции"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Ошибка: Duplicate"
-
-#: 
 msgid "Default"
 msgstr "По умолчанию"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Скопируйте имя, найденное."
 
 #: 
 msgid "Make Default"
@@ -1748,10 +1736,6 @@ msgstr "Выход"
 #: 
 msgid "Add New"
 msgstr "Создать"
-
-#: 
-msgid " by that name already exists."
-msgstr " с тем, что имя уже существует."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3270,10 +3254,6 @@ msgid "Security Group"
 msgstr "Группа безопасности"
 
 #: 
-msgid "Security Groups"
-msgstr "Группы безопасности"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Редактор групп безопасности"
 
@@ -3286,48 +3266,16 @@ msgid "Group Member Roles Editor"
 msgstr "Редактор ролей участников группы"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Параметр настраиваемого списка лиц"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Параметры настраиваемого списка лиц"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Редактор параметров настраиваемого списка пользователей"
-
-#: 
-msgid "Custom List Option"
-msgstr "Пользовательский вариант списка"
-
-#: 
-msgid "Custom List Options"
-msgstr "Параметры настраиваемого списка"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Редактор настраиваемых параметров списка"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Опция настраиваемого списка семьи"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Опции настраиваемого списка семьи"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Редактор опций настраиваемого списка семьи"
-
-#: 
-msgid "are not allowed."
-msgstr "не допускаются."
-
-#: 
-msgid "Name for New"
-msgstr "Имя для нового"
 
 #: 
 msgid "Created via Family"
@@ -8472,10 +8420,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Заканчивается <strong>слешем</strong> (/)"
 
 #: 
-msgid "Error:"
-msgstr "Ошибка:"
-
-#: 
 msgid "Find the line:"
 msgstr "Найдите строку:"
 
@@ -8876,10 +8820,6 @@ msgstr[2] "%d человек добавлено в группу."
 msgstr[3] "%d человек добавлено в группу."
 
 #: 
-msgid "A "
-msgstr "А "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Вы уверены, что хотите удалить"
 
@@ -8908,10 +8848,6 @@ msgid "Delete Confirmation"
 msgstr "Подтверждение удаления"
 
 #: 
-msgid "Existing"
-msgstr "Существующие"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Существующие поля семей"
 
@@ -8934,10 +8870,6 @@ msgstr "Неверный токен CSRF"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Неверные поля или выбор."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Элемент успешно удален"
 
 #: 
 msgid "Move down"
@@ -8974,10 +8906,6 @@ msgstr "Тип свойства"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "На эту возможность назначены люди. Удаление снимет их:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "Это удалит свойство у всех людей."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11629,10 +11557,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Управление классами воскресной школы, учителями и посещаемостью"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Управление списками классификации, ролями и типами групп"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Управление фондами пожертвований для финансового учёта"
 
@@ -11883,10 +11807,6 @@ msgstr "Открыть вопрос на GitHub"
 #: 
 msgid "Open user menu"
 msgstr "Открыть меню пользователя"
-
-#: 
-msgid "Options"
-msgstr "Параметры"
 
 #: 
 msgid "Other Members"
