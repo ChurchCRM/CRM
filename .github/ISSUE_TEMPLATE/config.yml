@@ -9,9 +9,6 @@ contact_links:
   - name: 💬 Discord (Urgent? Want to chat?)
     url: https://discord.gg/tuWyFzj3Nj
     about: Join our Discord to chat with maintainers in real time — please still open a GitHub issue so we can track and fix it
-  - name: 🗣️ Community Discussions
-    url: https://github.com/ChurchCRM/CRM/discussions
-    about: Ask questions and discuss ideas with the community
   - name: 🔒 Report a Security Vulnerability (Private)
     url: https://github.com/ChurchCRM/CRM/security/advisories/new
     about: Never file security issues publicly — use a private security advisory

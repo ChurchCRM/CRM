@@ -12,7 +12,7 @@ body:
         **Want to chat live or have an urgent question?** Ping us on Discord — then still open the issue here so the answer is searchable:
         👉 <https://discord.gg/tuWyFzj3Nj>
 
-        Before opening: please check [the docs](https://docs.churchcrm.io) and [existing discussions](https://github.com/ChurchCRM/CRM/discussions).
+        Before opening: please check [the docs](https://docs.churchcrm.io).
 
   - type: textarea
     id: goal
