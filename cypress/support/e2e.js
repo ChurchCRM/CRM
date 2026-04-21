@@ -41,8 +41,14 @@ window.addEventListener('unhandledrejection', (event) => {
 // tail is the tell that an Error-like object was stringified into a template
 // literal somewhere in app or third-party JS. The test's real assertions
 // still run; only this specific signature is filtered.
+//
+// TODO(cypress-noise): remove this filter once the source of the
+// "[object Object]" stringification is identified and fixed. See PR #8738.
 Cypress.on('uncaught:exception', (err) => {
-  if (err && /An unknown error has occurred:\s*\[object Object\]/.test(err.message || '')) {
+  // Anchor the match with ^…$ so only the exact signature is swallowed — any
+  // real error that happens to contain this substring still fails the test.
+  const message = (err?.message ?? String(err ?? '')).trim();
+  if (/^An unknown error has occurred:\s*\[object Object\]$/.test(message)) {
     return false;
   }
 });
