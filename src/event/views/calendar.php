@@ -113,7 +113,7 @@ window.CRM.calendarSettingsPanel = <?= json_encode($calendarSettingsPanelConfig,
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 window.CRM = window.CRM || {};
-window.CRM.calendarJSArgs = <?= json_encode($calendarJSArgs, JSON_THROW_ON_ERROR) ?>;
+window.CRM.calendarJSArgs = <?= json_encode($calendarJSArgs, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>;
 
 // Reveal a warning next to the calendar time-zone badge when the browser's
 // resolved time zone doesn't match the server's configured sTimeZone. A
