@@ -106,6 +106,23 @@ export function createPhotoUploader(config) {
       },
     });
 
+  // Enforce 1:1 ratio every time the editor opens (including after cancel + re-edit).
+  // resetEditorState() resets plugin state to aspectRatio:'free' on each start, which
+  // causes cropperjs and the UI to fall out of sync. Calling setAspectRatio('1:1') via
+  // rAF (after initCropper runs in componentDidMount) keeps both in sync.
+  uppy.on("file-editor:start", () => {
+    const editor = uppy.getPlugin("ImageEditor");
+    if (!editor) return;
+    const enforce = () => {
+      if (editor.cropper) {
+        editor.setAspectRatio("1:1");
+      } else {
+        requestAnimationFrame(enforce);
+      }
+    };
+    requestAnimationFrame(enforce);
+  });
+
   // Handle all restriction failures (size, type, count) — use Uppy's own message so
   // the persistent alert accurately describes the actual failure reason.
   uppy.on("restriction-failed", (file, error) => {

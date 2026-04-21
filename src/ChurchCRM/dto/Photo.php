@@ -221,24 +221,28 @@ class Photo
         // Get original dimensions
         $sourceWidth = imagesx($sourceImage);
         $sourceHeight = imagesy($sourceImage);
-        
-        // Create resized image at standard dimensions
-        $resizedImage = imagecreatetruecolor(self::PHOTO_WIDTH, self::PHOTO_HEIGHT);
+
+        // Scale down to fit within PHOTO_WIDTH × PHOTO_HEIGHT, preserving aspect ratio.
+        // Never upscale — images smaller than the max are stored at their natural size.
+        $scale = min(1.0, self::PHOTO_WIDTH / $sourceWidth, self::PHOTO_HEIGHT / $sourceHeight);
+        $destWidth = (int) round($sourceWidth * $scale);
+        $destHeight = (int) round($sourceHeight * $scale);
+
+        $resizedImage = imagecreatetruecolor($destWidth, $destHeight);
         if ($resizedImage === false) {
             throw new \Exception('Failed to create resized image');
         }
-        
+
         // Preserve transparency for PNG/GIF
         imagealphablending($resizedImage, false);
         imagesavealpha($resizedImage, true);
-        
-        // Resize image to standard dimensions
+
         if (!imagecopyresampled(
             $resizedImage,
             $sourceImage,
             0, 0, 0, 0,
-            self::PHOTO_WIDTH,
-            self::PHOTO_HEIGHT,
+            $destWidth,
+            $destHeight,
             $sourceWidth,
             $sourceHeight
         )) {
