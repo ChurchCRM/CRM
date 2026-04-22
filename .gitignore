@@ -51,3 +51,4 @@ cypress.env.json
 .ddev/**/auth.json
 
 .claude/settings.json
+cy.log
