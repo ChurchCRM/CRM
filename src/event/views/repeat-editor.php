@@ -75,6 +75,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <label class="form-label fw-bold"><?= gettext('Event Description') ?></label>
                         <?= getQuillEditorContainer('EventDesc', 'EventDescInput', '', '', 'compact') ?>
                     </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold"><?= gettext('Additional Information') ?></label>
+                        <small class="form-text text-secondary d-block mb-2">
+                            <?= gettext('Optional — sermon notes, materials, or other details copied to every generated event.') ?>
+                        </small>
+                        <?= getQuillEditorContainer('EventText', 'EventTextInput', '', '', 'compact') ?>
+                    </div>
                 </div>
             </div>
 
@@ -251,6 +259,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     (function() {
         <?= getQuillEditorInitScript('EventDesc', 'EventDescInput', gettext("Enter event description..."), false) ?>
+    })();
+
+    (function() {
+        <?= getQuillEditorInitScript('EventText', 'EventTextInput', gettext("Enter sermon notes or event text..."), false) ?>
     })();
 </script>
 
