@@ -229,6 +229,59 @@ describe("Standard Calendar — save (admin-session)", () => {
         });
     });
 
+    /**
+     * Clicking a saved event on the calendar opens the read-only viewer
+     * modal. The viewer must render BOTH Quill bodies — Description and
+     * Additional Information — so volunteers can see sermon notes /
+     * other details without leaving the calendar or clicking Edit.
+     * Drives the viewer via the public showEventForm API so the test
+     * isn't coupled to which month or day the FullCalendar happens to
+     * be rendering at run time.
+     */
+    it("Additional Information is visible in the event viewer overlay", () => {
+        const title = `TextViewTest ${Date.now()}`;
+        const descBody = "Service description body";
+        const textBody = "Sermon notes body for Easter Sunday";
+
+        // Create an event with both Quill bodies populated via the API.
+        const now = new Date();
+        const later = new Date(now.getTime() + 60 * 60 * 1000);
+        cy.request({
+            method: "POST",
+            url: "/api/events",
+            headers: { "Content-Type": "application/json" },
+            body: {
+                Title: title,
+                Type: 1,
+                PinnedCalendars: [1],
+                Start: now.toISOString(),
+                End: later.toISOString(),
+                Desc: `<p>${descBody}</p>`,
+                Text: `<p>${textBody}</p>`,
+            },
+        });
+
+        // Look up the created event id, then pop the viewer via the same
+        // global the FullCalendar event-click handler uses.
+        cy.request("/api/events").then((response) => {
+            const events = response.body.Events || response.body;
+            const arr = Array.isArray(events) ? events : Object.values(events);
+            const match = arr.find((e) => e.Title === title);
+            expect(match, "event should exist").to.exist;
+
+            cy.visit("event/calendars");
+            cy.window().should("have.property", "showEventForm");
+            cy.window().then((win) => win.showEventForm({ id: match.Id }));
+
+            // Viewer shows both bodies without requiring an Edit click.
+            cy.get("#eventEditorModal").should("be.visible");
+            cy.contains("#eventEditorModal", "Description").should("be.visible");
+            cy.contains("#eventEditorModal", descBody).should("be.visible");
+            cy.contains("#eventEditorModal", "Additional Information").should("be.visible");
+            cy.contains("#eventEditorModal", textBody).should("be.visible");
+        });
+    });
+
     it("InActive and LinkedGroupId flow into the POST /api/events payload", () => {
         cy.intercept("POST", "**/api/events").as("createEvent");
 
