@@ -820,10 +820,6 @@ msgid "Family Info"
 msgstr "Informasi keluarga"
 
 #: 
-msgid "Contact Info"
-msgstr "Data Kontak"
-
-#: 
 msgid "Envelope Info"
 msgstr "Keterangan Amplop"
 
@@ -946,10 +942,6 @@ msgstr "nilai"
 #: 
 msgid "Edit Value"
 msgstr "sunting nilai"
-
-#: 
-msgid "Assign a New Property"
-msgstr "Berikan properti baru"
 
 #: 
 msgid "Assign"
@@ -3202,14 +3194,6 @@ msgid "Family Custom List Options Editor"
 msgstr "Editor Pilihan Daftar Keluarga Kustom"
 
 #: 
-msgid "Created via Family"
-msgstr "Dibuat melalui Keluarga"
-
-#: 
-msgid "Updated via Family"
-msgstr "Diperbarui melalui Keluarga"
-
-#: 
 msgid "Family Data Verified"
 msgstr "Data Keluarga Diverifikasi"
 
@@ -5434,14 +5418,6 @@ msgid "Added to group"
 msgstr "Ditambahkan ke grup"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "Host SMTP belum diatur, silakan kunjungi halaman pengaturan"
-
-#: 
-msgid "Debug Email Connection"
-msgstr "Koneksi Email Debug"
-
-#: 
 #, fuzzy
 msgid "This Family is Inactive"
 msgstr "Keluarga Ini Dinonaktifkan"
@@ -5453,14 +5429,6 @@ msgstr "Basis data telah dihapus."
 #: 
 msgid "Anniversaries"
 msgstr "Peringatan"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "Pemberitahuan Email Pemberitahuan Keluarga Baru"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "Pemberitahuan Email Orang Baru Kesalahan"
 
 #: 
 msgid "View User"
@@ -5648,10 +5616,6 @@ msgstr "dinonaktifkan"
 #: 
 msgid "Software Version"
 msgstr "Versi perangkat lunak"
-
-#: 
-msgid "Database Version"
-msgstr "Versi basis data"
 
 #: 
 msgid "Application Prerequisites"
@@ -6010,14 +5974,6 @@ msgid "Loading"
 msgstr "Memuat"
 
 #: 
-msgid "Family Property Unassignment"
-msgstr "Pelepasan Properti Keluarga"
-
-#: 
-msgid "Do you want to remove"
-msgstr "Apa Anda ingin menghapus"
-
-#: 
 msgid "Today's Birthdays"
 msgstr "Ulang Tahun Hari Ini"
 
@@ -6052,10 +6008,6 @@ msgstr "Tanggal lahir tidak sesuai: Tanggal atau bulan kelahiran tidak ditemukan
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Tanggal lahir tidak sesuai: Tanggal dan bulan kelahiran tidak ditemukan."
-
-#: 
-msgid "System"
-msgstr "Sistem"
 
 #. Context: locales
 #: 
@@ -6143,10 +6095,6 @@ msgid "Not Subscribed"
 msgstr "Belum Berlangganan"
 
 #: 
-msgid "property"
-msgstr "properti"
-
-#: 
 msgid "Default Zip"
 msgstr "Kode Pos Standar"
 
@@ -6184,10 +6132,6 @@ msgstr "Satu karakter dari FirstName dan satu karakter dari LastName"
 #: 
 msgid "Two characters from FirstName"
 msgstr "Dua karakter dari FirstName"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "Email Gereja belum diatur, buka halaman pengaturan"
 
 #. Context: locales
 #: 
@@ -6948,10 +6892,6 @@ msgid "Base URL"
 msgstr "URL Dasar"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "Instalasi ChurchCRM"
-
-#: 
 msgid "Copy"
 msgstr "Salin"
 
@@ -6960,24 +6900,12 @@ msgid "DSN"
 msgstr "DSN"
 
 #: 
-msgid "Database Server"
-msgstr "Server Database"
-
-#: 
 msgid "Debug Info"
 msgstr "Info Debug"
 
 #: 
 msgid "Document Root"
 msgstr "Root Dokumen"
-
-#: 
-msgid "Email Configuration"
-msgstr "Konfigurasi Email"
-
-#: 
-msgid "Email Debug Info"
-msgstr "Info Debug Email"
 
 #: 
 msgid "Filesystem Permissions"
@@ -7020,10 +6948,6 @@ msgid "PHP & Server Requirements"
 msgstr "Persyaratan PHP & Server"
 
 #: 
-msgid "PHP Configuration"
-msgstr "Konfigurasi PHP"
-
-#: 
 msgid "Platform"
 msgstr "Platform"
 
@@ -7034,10 +6958,6 @@ msgstr "Path Root"
 #: 
 msgid "SMTP Host"
 msgstr "Host SMTP"
-
-#: 
-msgid "Server Information"
-msgstr "Informasi Server"
 
 #: 
 msgid "Software"
@@ -15495,4 +15415,120 @@ msgstr "Acara Mendatang"
 #: 
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "acara. Nonaktifkan jenis tersebut atau tetapkan ulang acara terlebih dahulu."
+
+#: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "URL http(s) absolut dari logo gereja yang ditampilkan dalam templat email (dan akan digunakan ulang di tempat lain di masa mendatang). Untuk tampilan terbaik di klien email, gunakan gambar banner lebar dengan rasio aspek sekitar 3,5:1 (misalnya 350×100 px), PNG atau JPG, disajikan melalui HTTPS. Biarkan kosong atau masukkan nilai tidak valid untuk kembali ke logo ChurchCRM default."
+
+#: 
+msgid "An option with that name already exists"
+msgstr "Opsi dengan nama tersebut sudah ada"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "Tidak dapat menghapus satu-satunya opsi yang tersisa"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "Papan klip tidak tersedia. Gunakan tombol Unduh untuk menyimpan kode Anda."
+
+#: 
+msgid "Custom Option"
+msgstr "Opsi Kustom"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "Teks Pratinjau Kotak Masuk Default"
+
+#: 
+msgid "Email is disabled"
+msgstr "Email dinonaktifkan"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "Email dinonaktifkan. Konfigurasikan email sebelum mengatur ulang kata sandi, atau gunakan Ubah Kata Sandi."
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "Email dinonaktifkan. Aktifkan di pengaturan Dasbor Email sebelum pengujian."
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "Masukkan salah satu kode pemulihan cadangan Anda"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "Masukkan salah satu kode pemulihan cadangan Anda untuk mengakses akun Anda"
+
+#: 
+msgid "Existing Options"
+msgstr "Opsi yang Ada"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "Pelayanan tidak ditemukan untuk daftar peran ini"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "Status tidak aktif hanya dapat diubah untuk daftar klasifikasi"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "Pengguna baru tidak akan menerima email selamat datang dengan kredensial mereka. Bagikan kata sandi secara manual, atau konfigurasikan email terlebih dahulu."
+
+#: 
+msgid "Option name is required"
+msgstr "Nama opsi diperlukan"
+
+#: 
+msgid "Option not found"
+msgstr "Opsi tidak ditemukan"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "Ringkasan singkat opsional yang ditampilkan sebagai teks pratinjau kotak masuk di samping baris subjek. Biarkan kosong agar klien email menghasilkan secara otomatis dari isi pesan. Jenis email individual (reset kata sandi, anggota jemaat baru, verifikasi) menetapkan preheader mereka sendiri; ini adalah fallback."
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "Email reset kata sandi dan email selamat datang akun baru tidak akan dikirim sampai email dikonfigurasi. Pengguna tidak akan menerima kredensial secara otomatis."
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "Reset kata sandi tidak tersedia karena email dinonaktifkan. Hubungi administrator sistem Anda."
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "Kata sandi telah diatur ulang tetapi email tidak dapat dikirim. Pengguna terkunci — bagikan kata sandi baru secara manual atau gunakan Ubah Kata Sandi."
+
+#: 
+msgid "Recovery Code"
+msgstr "Kode Pemulihan"
+
+#: 
+msgid "Set up Email"
+msgstr "Atur Email"
+
+#: 
+msgid "Test SMTP Email"
+msgstr "Uji Email SMTP"
+
+#: 
+msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
+msgstr "Ini adalah email uji ChurchCRM yang mengonfirmasi bahwa konfigurasi SMTP Anda berfungsi."
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "Tidak dapat menyalin ke papan klip. Harap salin kode secara manual."
+
+#: 
+msgid "Use Recovery Code"
+msgstr "Gunakan Kode Pemulihan"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "Gunakan kode pemulihan sebagai gantinya"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "Gunakan aplikasi autentikator sebagai gantinya"
 

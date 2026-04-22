@@ -813,10 +813,6 @@ msgid "Family Info"
 msgstr "Impormasyon ng Pamilya"
 
 #: 
-msgid "Contact Info"
-msgstr "Impormasyon ng Pakikipag-ugnayan"
-
-#: 
 msgid "Envelope Info"
 msgstr "Impormasyon ng Sobre"
 
@@ -939,10 +935,6 @@ msgstr "Halaga"
 #: 
 msgid "Edit Value"
 msgstr "I-edit ang Halaga"
-
-#: 
-msgid "Assign a New Property"
-msgstr "Italaga ang Bagong Katangian"
 
 #: 
 msgid "Assign"
@@ -3170,14 +3162,6 @@ msgid "Family Custom List Options Editor"
 msgstr "Editor ng mga Opsyon ng Pasadyang Listahan ng Pamilya"
 
 #: 
-msgid "Created via Family"
-msgstr "Nilikha sa pamamagitan ng Pamilya"
-
-#: 
-msgid "Updated via Family"
-msgstr "Na-update sa pamamagitan ng Pamilya"
-
-#: 
 msgid "Family Data Verified"
 msgstr "Na-verify ang Data ng Pamilya"
 
@@ -5396,14 +5380,6 @@ msgid "Added to group"
 msgstr "Naidagdag sa grupo"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "Ang SMTP Host ay hindi na-setup, pakibisita ang pahina ng mga setting"
-
-#: 
-msgid "Debug Email Connection"
-msgstr "I-debug ang Koneksyon ng Email"
-
-#: 
 msgid "This Family is Inactive"
 msgstr "Ang Pamilyang Ito ay Hindi Aktibo"
 
@@ -5414,14 +5390,6 @@ msgstr "Ang database ay nalinis na."
 #: 
 msgid "Anniversaries"
 msgstr "Mga Anibersaryo"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "Error sa Email ng Abiso ng Bagong Pamilya"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "Error sa Email ng Abiso ng Bagong Tao"
 
 #: 
 msgid "View User"
@@ -5606,10 +5574,6 @@ msgstr "ay hindi pinagana"
 #: 
 msgid "Software Version"
 msgstr "Bersyon ng Software"
-
-#: 
-msgid "Database Version"
-msgstr "Bersyon ng Database"
 
 #: 
 msgid "Application Prerequisites"
@@ -5975,14 +5939,6 @@ msgid "Loading"
 msgstr "Naglo-load"
 
 #: 
-msgid "Family Property Unassignment"
-msgstr "Pag-alis ng Katangian ng Pamilya"
-
-#: 
-msgid "Do you want to remove"
-msgstr "Gusto mo bang alisin"
-
-#: 
 msgid "Today's Birthdays"
 msgstr "Mga Kaarawan Ngayon"
 
@@ -6017,10 +5973,6 @@ msgstr "Hindi Wastong Petsa ng Kapanganakan: Nawawalang buwan o araw ng kapangan
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Hindi Wastong Petsa ng Kapanganakan: Nawawalang buwan at araw ng kapanganakan."
-
-#: 
-msgid "System"
-msgstr "Sistema"
 
 #. Context: locales
 #: 
@@ -6108,10 +6060,6 @@ msgid "Not Subscribed"
 msgstr "Hindi Naka-subscribe"
 
 #: 
-msgid "property"
-msgstr "katangian"
-
-#: 
 msgid "Default Zip"
 msgstr "Default na Zip"
 
@@ -6149,10 +6097,6 @@ msgstr "Isang karakter mula sa Pangalan at isang karakter mula sa Apelyido"
 #: 
 msgid "Two characters from FirstName"
 msgstr "Dalawang karakter mula sa Pangalan"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "Hindi nakatakda ang Email ng Simbahan, pakibisita ang pahina ng mga setting"
 
 #. Context: locales
 #: 
@@ -6913,10 +6857,6 @@ msgid "Base URL"
 msgstr "Base URL"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "Pag-install ng ChurchCRM"
-
-#: 
 msgid "Copy"
 msgstr "Kopyahin"
 
@@ -6925,24 +6865,12 @@ msgid "DSN"
 msgstr "DSN"
 
 #: 
-msgid "Database Server"
-msgstr "Server ng Database"
-
-#: 
 msgid "Debug Info"
 msgstr "Impormasyon ng Debug"
 
 #: 
 msgid "Document Root"
 msgstr "Document Root"
-
-#: 
-msgid "Email Configuration"
-msgstr "Konfigurasyong Email"
-
-#: 
-msgid "Email Debug Info"
-msgstr "Impormasyon ng Debug ng Email"
 
 #: 
 msgid "Filesystem Permissions"
@@ -6985,10 +6913,6 @@ msgid "PHP & Server Requirements"
 msgstr "Mga Kinakailangan ng PHP at Server"
 
 #: 
-msgid "PHP Configuration"
-msgstr "Konfigurasyong PHP"
-
-#: 
 msgid "Platform"
 msgstr "Platform"
 
@@ -6999,10 +6923,6 @@ msgstr "Root Path"
 #: 
 msgid "SMTP Host"
 msgstr "SMTP Host"
-
-#: 
-msgid "Server Information"
-msgstr "Impormasyon ng Server"
 
 #: 
 msgid "Software"
@@ -15465,4 +15385,116 @@ msgstr "Mga Paparating na Kaganapan"
 #: 
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "kaganapan. I-deactivate ang uri sa halip, o muling italaga ang mga kaganapan muna."
+
+#: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "Ganap na http(s) URL ng logo ng simbahan na ipinapakita sa mga email template (at gagamitin din sa ibang lugar sa hinaharap). Para sa pinakamainam na pagpapakita sa mga email client, gumamit ng malawak na banner na larawan na may aspect ratio na humigit-kumulang 3.5:1 (hal. 350×100 px), PNG o JPG, na inihain sa pamamagitan ng HTTPS. Mag-iwan ng blangko o maglagay ng hindi wastong halaga upang bumalik sa default na logo ng ChurchCRM."
+
+#: 
+msgid "An option with that name already exists"
+msgstr "May pagpipilian na na may ganoong pangalan"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "Hindi matatanggal ang nag-iisang natitira pang pagpipilian"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "Hindi available ang clipboard. Gamitin ang button na I-download upang i-save ang iyong mga code."
+
+#: 
+msgid "Custom Option"
+msgstr "Pasadyang pagpipilian"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "Default na teksto ng preview ng inbox"
+
+#: 
+msgid "Email is disabled"
+msgstr "Naka-disable ang email"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "Naka-disable ang email. I-configure ang email bago i-reset ang mga password, o gamitin ang Baguhin ang Password."
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "Naka-disable ang email. I-enable ito sa mga setting ng Email Dashboard bago subukan."
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "Ilagay ang isa sa iyong mga backup recovery code"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "Ilagay ang isa sa iyong mga backup recovery code upang ma-access ang iyong account"
+
+#: 
+msgid "Existing Options"
+msgstr "Mga kasalukuyang pagpipilian"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "Hindi nahanap ang grupo para sa listahan ng papel na ito"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "Ang inactive na status ay maaari lamang i-toggle para sa listahan ng mga klasipikasyon"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "Ang mga bagong gumagamit ay hindi makakatanggap ng welcome email na may kanilang mga kredensyal. Ibahagi ang password sa kanila nang manu-mano, o i-configure muna ang email."
+
+#: 
+msgid "Option name is required"
+msgstr "Kinakailangan ang pangalan ng pagpipilian"
+
+#: 
+msgid "Option not found"
+msgstr "Hindi nahanap ang pagpipilian"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "Opsyonal na maikling buod na ipinapakita bilang teksto ng preview ng inbox sa tabi ng linya ng paksa. Mag-iwan ng blangko upang hayaan ang email client na awtomatikong lumikha mula sa katawan. Ang bawat uri ng email (pag-reset ng password, bagong miyembro, pag-verify) ay nagtatakda ng sariling preheader; ito ay isang fallback."
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "Ang mga email sa pag-reset ng password at mga welcome email para sa bagong account ay hindi ipapadala hanggang sa ma-configure ang email. Ang mga gumagamit ay hindi awtomatikong makakatanggap ng mga kredensyal."
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "Hindi available ang pag-reset ng password dahil naka-disable ang email. Makipag-ugnayan sa iyong system administrator."
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "Na-reset ang password ngunit hindi maipadala ang email. Naka-lock out ang gumagamit — ibahagi ang bagong password nang manu-mano o gamitin ang Baguhin ang Password."
+
+#: 
+msgid "Set up Email"
+msgstr "I-set up ang Email"
+
+#: 
+msgid "Test SMTP Email"
+msgstr "Subukan ang SMTP Email"
+
+#: 
+msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
+msgstr "Ito ay isang test email ng ChurchCRM na nagpapatunay na gumagana ang iyong SMTP configuration."
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "Hindi ma-copy sa clipboard. Kopyahin ang mga code nang manu-mano."
+
+#: 
+msgid "Use Recovery Code"
+msgstr "Gumamit ng Recovery Code"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "Gumamit ng recovery code"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "Gumamit ng authenticator app"
 

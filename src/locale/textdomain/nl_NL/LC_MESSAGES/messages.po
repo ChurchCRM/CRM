@@ -813,10 +813,6 @@ msgid "Family Info"
 msgstr "Adresgegevens gezin"
 
 #: 
-msgid "Contact Info"
-msgstr "Contact gegevens"
-
-#: 
 msgid "Envelope Info"
 msgstr "Envelop info"
 
@@ -939,10 +935,6 @@ msgstr "Waarde"
 #: 
 msgid "Edit Value"
 msgstr "Wijzig Waarde"
-
-#: 
-msgid "Assign a New Property"
-msgstr "Kenmerk toevoegen"
 
 #: 
 msgid "Assign"
@@ -3173,14 +3165,6 @@ msgid "Family Custom List Options Editor"
 msgstr "Editor voor aangepaste lijstopties voor gezinnen"
 
 #: 
-msgid "Created via Family"
-msgstr "Gemaakt via Familie"
-
-#: 
-msgid "Updated via Family"
-msgstr "Gewijzigd via gezin"
-
-#: 
 msgid "Family Data Verified"
 msgstr "Gezinsgegevens gecontroleerd"
 
@@ -5399,14 +5383,6 @@ msgid "Added to group"
 msgstr "Aan de groep toegevoegd"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "SMTP Host is niet ingesteld, ga naar de instellingenpagina"
-
-#: 
-msgid "Debug Email Connection"
-msgstr "Info e-mail connectie"
-
-#: 
 msgid "This Family is Inactive"
 msgstr "Dit gezin is gedeactiveerd"
 
@@ -5417,14 +5393,6 @@ msgstr "Deze databank is opgeschoond"
 #: 
 msgid "Anniversaries"
 msgstr "Gedenkdagen"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "E-mailfout met nieuwe gezinsmelding"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "E-mailfout met melding van nieuwe persoon"
 
 #: 
 msgid "View User"
@@ -5609,10 +5577,6 @@ msgstr "Is inactief gemaakt"
 #: 
 msgid "Software Version"
 msgstr "Software versie"
-
-#: 
-msgid "Database Version"
-msgstr "Versie van de database"
 
 #: 
 msgid "Application Prerequisites"
@@ -5978,14 +5942,6 @@ msgid "Loading"
 msgstr "Bezig met laden"
 
 #: 
-msgid "Family Property Unassignment"
-msgstr "Gezinseigendom intrekken"
-
-#: 
-msgid "Do you want to remove"
-msgstr "Wil je het verwijderen?"
-
-#: 
 msgid "Today's Birthdays"
 msgstr "Verjaardagen van vandaag"
 
@@ -6020,10 +5976,6 @@ msgstr "Ongeldige geboortedatum: geboortemaand of -dag ontbreekt."
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Ongeldige geboortedatum: geboortemaand en -dag ontbreken."
-
-#: 
-msgid "System"
-msgstr "Systeem"
 
 #. Context: locales
 #: 
@@ -6111,10 +6063,6 @@ msgid "Not Subscribed"
 msgstr "Niet geabonneerd"
 
 #: 
-msgid "property"
-msgstr "Bezit"
-
-#: 
 msgid "Default Zip"
 msgstr "Standaard Postcode"
 
@@ -6152,10 +6100,6 @@ msgstr "Een letter van de Voornaam en een letter van de Achternaam"
 #: 
 msgid "Two characters from FirstName"
 msgstr "Twee letters van de Voornaam"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "Kerk e-mail is niet ingesteld. Ga naar \"Instellingen\"."
 
 #. Context: locales
 #: 
@@ -6917,10 +6861,6 @@ msgid "Base URL"
 msgstr "Basis-URL"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "ChurchCRM-installatie"
-
-#: 
 msgid "Copy"
 msgstr "Kopiëren"
 
@@ -6929,24 +6869,12 @@ msgid "DSN"
 msgstr "DSN"
 
 #: 
-msgid "Database Server"
-msgstr "Databaseserver"
-
-#: 
 msgid "Debug Info"
 msgstr "Debug-informatie"
 
 #: 
 msgid "Document Root"
 msgstr "Documentroot"
-
-#: 
-msgid "Email Configuration"
-msgstr "E-mailconfiguratie"
-
-#: 
-msgid "Email Debug Info"
-msgstr "E-mail debug-informatie"
 
 #: 
 msgid "Filesystem Permissions"
@@ -6989,10 +6917,6 @@ msgid "PHP & Server Requirements"
 msgstr "PHP- en serververeisten"
 
 #: 
-msgid "PHP Configuration"
-msgstr "PHP-configuratie"
-
-#: 
 msgid "Platform"
 msgstr "Platform"
 
@@ -7003,10 +6927,6 @@ msgstr "Rootpad"
 #: 
 msgid "SMTP Host"
 msgstr "SMTP-host"
-
-#: 
-msgid "Server Information"
-msgstr "Serverinformatie"
 
 #: 
 msgid "Software"
@@ -15473,4 +15393,120 @@ msgstr "Aanstaande evenementen"
 #: 
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "evenement(en). Deactiveer het type of wijs de evenementen eerst opnieuw toe."
+
+#: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "Absolute http(s) URL van het kerklogo dat wordt weergegeven in e-mailsjablonen (en in de toekomst elders hergebruikt). Voor de beste weergave in e-mailclients gebruikt u een brede bannerafbeelding met een verhouding van ongeveer 3,5:1 (bijvoorbeeld 350×100 px), PNG of JPG, geserveerd via HTTPS. Laat leeg of voer een ongeldige waarde in om terug te vallen op het standaard ChurchCRM-logo."
+
+#: 
+msgid "An option with that name already exists"
+msgstr "Er bestaat al een optie met die naam"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "De enige resterende optie kan niet worden verwijderd"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "Klembord niet beschikbaar. Gebruik de downloadknop om uw codes op te slaan."
+
+#: 
+msgid "Custom Option"
+msgstr "Aangepaste optie"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "Standaard voorbeeldtekst voor inbox"
+
+#: 
+msgid "Email is disabled"
+msgstr "E-mail is uitgeschakeld"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "E-mail is uitgeschakeld. Configureer e-mail voordat u wachtwoorden opnieuw instelt, of gebruik Wachtwoord wijzigen."
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "E-mail is uitgeschakeld. Schakel het in via de instellingen van het e-maildashboard voordat u test."
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "Voer een van uw back-upherstelcodes in"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "Voer een van uw back-upherstelcodes in om toegang te krijgen tot uw account"
+
+#: 
+msgid "Existing Options"
+msgstr "Bestaande opties"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "Groep niet gevonden voor deze rollenlijst"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "Inactieve status kan alleen worden gewijzigd voor de classificatielijst"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "Nieuwe gebruikers ontvangen geen welkomstmail met hun inloggegevens. Deel het wachtwoord handmatig met hen of configureer eerst e-mail."
+
+#: 
+msgid "Option name is required"
+msgstr "Optienaam is vereist"
+
+#: 
+msgid "Option not found"
+msgstr "Optie niet gevonden"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "Optionele korte samenvatting weergegeven als inboxvoorbeeldtekst naast de onderwerpregel. Laat leeg om de e-mailclient automatisch uit de hoofdtekst te laten genereren. Per e-mailtype (wachtwoord opnieuw instellen, nieuw lid, verificatie) worden eigen preheaders ingesteld; dit is een terugvaloptie."
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "E-mails voor het opnieuw instellen van wachtwoorden en welkomstmails voor nieuwe accounts worden niet verzonden totdat e-mail is geconfigureerd. Gebruikers ontvangen geen inloggegevens automatisch."
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "Wachtwoord opnieuw instellen is niet beschikbaar omdat e-mail is uitgeschakeld. Neem contact op met uw systeembeheerder."
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "Wachtwoord is opnieuw ingesteld maar de e-mail kon niet worden verzonden. De gebruiker is buitengesloten — deel het nieuwe wachtwoord handmatig of gebruik Wachtwoord wijzigen."
+
+#: 
+msgid "Recovery Code"
+msgstr "Herstelcode"
+
+#: 
+msgid "Set up Email"
+msgstr "E-mail instellen"
+
+#: 
+msgid "Test SMTP Email"
+msgstr "SMTP-e-mail testen"
+
+#: 
+msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
+msgstr "Dit is een ChurchCRM-testmail die bevestigt dat uw SMTP-configuratie werkt."
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "Kan niet naar klembord kopiëren. Kopieer de codes handmatig."
+
+#: 
+msgid "Use Recovery Code"
+msgstr "Herstelcode gebruiken"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "Gebruik in plaats daarvan een herstelcode"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "Gebruik in plaats daarvan een authenticatie-app"
 

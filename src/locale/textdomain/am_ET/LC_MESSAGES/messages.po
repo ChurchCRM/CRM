@@ -819,10 +819,6 @@ msgid "Family Info"
 msgstr "የቤተሰብ መረጃ"
 
 #: 
-msgid "Contact Info"
-msgstr "የመገኛ አድራሻ"
-
-#: 
 msgid "Envelope Info"
 msgstr "የፖስታ መረጃ"
 
@@ -945,10 +941,6 @@ msgstr "ዋጋ"
 #: 
 msgid "Edit Value"
 msgstr "ዋጋ ያስተካክሉ"
-
-#: 
-msgid "Assign a New Property"
-msgstr "አዲስ ንብረት መድብ"
 
 #: 
 msgid "Assign"
@@ -3201,14 +3193,6 @@ msgid "Family Custom List Options Editor"
 msgstr "የቤተሰብ ብጁ ዝርዝር አማራጮች አርታዒ"
 
 #: 
-msgid "Created via Family"
-msgstr "በቤተሰብ በኩል የተፈጠረ"
-
-#: 
-msgid "Updated via Family"
-msgstr "በቤተሰብ በኩል ተዘምኗል"
-
-#: 
 msgid "Family Data Verified"
 msgstr "የቤተሰብ መረጃ ተረጋግጧል"
 
@@ -5433,14 +5417,6 @@ msgid "Added to group"
 msgstr "ወደ ቡድኑ ተጨምሯል"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "የSMTP አስተናጋጅ አልተዋቀረም፣ እባክዎ የቅንብሮች ገጹን ይጎብኙ"
-
-#: 
-msgid "Debug Email Connection"
-msgstr "የኢሜል ግንኙነትን ያርሙ"
-
-#: 
 #, fuzzy
 msgid "This Family is Inactive"
 msgstr "ይህ ቤተሰብ "
@@ -5452,14 +5428,6 @@ msgstr "የመረጃ ቋቱ ተሰርዟል"
 #: 
 msgid "Anniversaries"
 msgstr "ክብረ በዓሎች"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "አዲስ የቤተሰብ ኢሜይል ስህተት ማሳወቂያ"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "የአዲስ ሰው ኢሜይል ስህተት ማሳወቂያ"
 
 #: 
 msgid "View User"
@@ -5648,10 +5616,6 @@ msgstr "አይሰራም "
 #: 
 msgid "Software Version"
 msgstr "የሶፍትዌር ስሪት "
-
-#: 
-msgid "Database Version"
-msgstr "የዉሂብ ጎታ ስሪት "
 
 #: 
 msgid "Application Prerequisites"
@@ -6026,14 +5990,6 @@ msgid "Loading"
 msgstr "በመጫን ላይ"
 
 #: 
-msgid "Family Property Unassignment"
-msgstr "የቤተሰብ ንብረት አለመመደብ"
-
-#: 
-msgid "Do you want to remove"
-msgstr "ማስወገድ ይፈልጋሉ?"
-
-#: 
 msgid "Today's Birthdays"
 msgstr "የዛሬ ልደት"
 
@@ -6068,10 +6024,6 @@ msgstr "ልክ ያልሆነ የልደት ቀን፡ የጠፋ የልደት ወር
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "ልክ ያልሆነ የልደት ቀን፡ የጠፋ የልደት ወር እና ቀን"
-
-#: 
-msgid "System"
-msgstr "ስርዓት"
 
 #. Context: locales
 #: 
@@ -6159,10 +6111,6 @@ msgid "Not Subscribed"
 msgstr "አልተመዘገበም"
 
 #: 
-msgid "property"
-msgstr "ንብረት/ባህሪ"
-
-#: 
 msgid "Default Zip"
 msgstr "መደበኛ የፖስታ ሳጥን ቁጥር"
 
@@ -6200,10 +6148,6 @@ msgstr "አንድ ፊደል ከመጀመሪያ ስም እና አንድ ፊደል
 #: 
 msgid "Two characters from FirstName"
 msgstr "ሁለት ፊደላት ከመጀመሪያ ስም"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "የቤተ ክርስቲያን ኢሜይል አልተዘጋጀም፣ እባክዎን የቅንብሮች ገጹን ይጎብኙ"
 
 #. Context: locales
 #: 
@@ -6964,10 +6908,6 @@ msgid "Base URL"
 msgstr "መነሻ URL"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "የChurchCRM ጭነት"
-
-#: 
 msgid "Copy"
 msgstr "ቅዳ"
 
@@ -6976,24 +6916,12 @@ msgid "DSN"
 msgstr "DSN"
 
 #: 
-msgid "Database Server"
-msgstr "የዳታቤዝ አገልጋይ"
-
-#: 
 msgid "Debug Info"
 msgstr "የችግር መፍቻ መረጃ"
 
 #: 
 msgid "Document Root"
 msgstr "የሰነድ መነሻ"
-
-#: 
-msgid "Email Configuration"
-msgstr "የኢሜይል ውቅር"
-
-#: 
-msgid "Email Debug Info"
-msgstr "የኢሜይል ችግር መፍቻ መረጃ"
 
 #: 
 msgid "Filesystem Permissions"
@@ -7036,10 +6964,6 @@ msgid "PHP & Server Requirements"
 msgstr "የPHP እና አገልጋይ መስፈርቶች"
 
 #: 
-msgid "PHP Configuration"
-msgstr "የPHP ውቅር"
-
-#: 
 msgid "Platform"
 msgstr "ፕላትፎርም"
 
@@ -7050,10 +6974,6 @@ msgstr "መነሻ መንገድ"
 #: 
 msgid "SMTP Host"
 msgstr "SMTP አስተናጋጅ"
-
-#: 
-msgid "Server Information"
-msgstr "የአገልጋይ መረጃ"
 
 #: 
 msgid "Software"
@@ -15524,4 +15444,120 @@ msgstr "መጪ ዝግጅቶች"
 #: 
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "ዝግጅቶች። ይልቁንስ አይነቱን ያቁሙ፣ ወይም መጀመሪያ ዝግጅቶቹን እንደገና ይሰጡ።"
+
+#: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "በኢሜይል ቅጾች ውስጥ የሚታይ የቤተ ክርስቲያን አርማ ፍፁም http(s) URL (እና ወደፊት በሌሎች ቦታዎችም ጥቅም ላይ የሚውል)። በኢሜይል ደንበኞች ውስጥ ለተሻለ ማሳያ፣ HTTPS ላይ የቀረበ ሰፊ ሰሌዳ ምስል ከ3.5:1 ጋር ተቀራራቢ ጥምርታ ያለው (ለምሳሌ 350×100 px)፣ PNG ወይም JPG ይጠቀሙ። ወደ ነባሪ ChurchCRM አርማ ለመመለስ ባዶ ይተው ወይም ልቅ ዋጋ ያስገቡ።"
+
+#: 
+msgid "An option with that name already exists"
+msgstr "በዚያ ስም ያለ አማራጭ አስቀድሞ ይገኛል"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "ብቸኛውን የቀረ አማራጭ መሰረዝ አይቻልም"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "ክሊፕቦርድ አይገኝም። ኮዶቹን ለማስቀመጥ ዝርዝር አውርድ ቁልፍን ይጠቀሙ።"
+
+#: 
+msgid "Custom Option"
+msgstr "ብጁ አማራጭ"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "ነባሪ የገቢ መልዕክት ቅድመ ዕይታ ጽሑፍ"
+
+#: 
+msgid "Email is disabled"
+msgstr "ኢሜይል ተሰናክሏል"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "ኢሜይል ተሰናክሏል። ይለፍ ቃሎችን ከዳግም ማስጀመርዎ በፊት ኢሜይልን ያዋቅሩ፣ ወይም ይለፍ ቃል ቀይር ይጠቀሙ።"
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "ኢሜይል ተሰናክሏል። ከፈተና በፊት በኢሜይል ዳሽቦርድ ቅንብሮች ውስጥ ያብሩት።"
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "ከምትኬ መልሶ ማግኛ ኮዶቾ አንዱን ያስገቡ"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "ወደ መለያዎ ለመድረስ ከምትኬ መልሶ ማግኛ ኮዶቾ አንዱን ያስገቡ"
+
+#: 
+msgid "Existing Options"
+msgstr "ያሉ አማራጮች"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "ለዚህ ሚና ዝርዝር አገልግሎት አልተገኘም"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "ንቁ ያልሆነ ሁኔታ ለምደባ ዝርዝር ብቻ ሊቀያየር ይችላል"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "አዲስ አባላት ምስክርነቶቻቸው ያለ ሁሉ ኢሜይል አይቀበሉም። ይለፍ ቃሉን በእጅ ያጋሩ ወይም መጀመሪያ ኢሜይልን ያዋቅሩ።"
+
+#: 
+msgid "Option name is required"
+msgstr "የአማራጭ ስም ያስፈልጋል"
+
+#: 
+msgid "Option not found"
+msgstr "አማራጩ አልተገኘም"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "በርዕሰ ጉዳዩ መስመር አጠገብ እንደ የገቢ መልዕክት ቅድመ ዕይታ ጽሑፍ የሚታይ አማራጭ አጭር ማጠቃለያ። ኢሜይል ደንበኛው ከይዘቱ ራሱ እንዲፈጥር ለማስቻል ባዶ ይተው። አቋቋሙ ኢሜይል ዓይነቶች (ይለፍ ቃል ዳግም ማስጀመር፣ አዲስ አባል፣ ማረጋገጥ) የራሳቸውን ቅድመ ርዕሰ ጉዳይ ያዘጋጃሉ፤ ይህ ምትኬ ነው።"
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "ኢሜይል ሳይዋቀር የይለፍ ቃል ዳግም ማስጀመሪያ ኢሜይሎች እና አዲስ መለያ እንኳን ደህና መጡ ኢሜይሎች አይላኩም። ተጠቃሚዎች ምስክርነቶቻቸውን ሁሌም አይቀበሉም።"
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "ኢሜይል ስለ ሰናከለ የይለፍ ቃል ዳግም ማስጀመሪያ አይገኝም። እባክዎ ከስርዓት አስተዳዳሪዎ ጋር ይገናኙ።"
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "ይለፍ ቃሉ ዳግም ተጀምሯል ነገር ግን ኢሜይሉ ሊላክ አልቻለም። ተጠቃሚው ተዘግቷል — አዲሱን ይለፍ ቃል በእጅ ያጋሩ ወይም ይለፍ ቃል ቀይር ይጠቀሙ።"
+
+#: 
+msgid "Recovery Code"
+msgstr "የሕዳሴ ኮድ"
+
+#: 
+msgid "Set up Email"
+msgstr "ኢሜይል አዋቅር"
+
+#: 
+msgid "Test SMTP Email"
+msgstr "SMTP ኢሜይልን ሞክር"
+
+#: 
+msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
+msgstr "ይህ SMTP ቅንብርዎ እየሰራ መሆኑን የሚያረጋግጥ የChurchCRM ሙከራ ኢሜይል ነው።"
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "ወደ ክሊፕቦርድ መቅዳት አልተቻለም። ኮዶቹን በእጅ ይቅዱ።"
+
+#: 
+msgid "Use Recovery Code"
+msgstr "የሕዳሴ ኮድ ተጠቀም"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "ምትኩ የሕዳሴ ኮድ ይጠቀሙ"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "ምትኩ የማረጋገጫ መተግበሪያ ይጠቀሙ"
 

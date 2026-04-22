@@ -820,10 +820,6 @@ msgid "Family Info"
 msgstr "Taarifa za familia"
 
 #: 
-msgid "Contact Info"
-msgstr "Mawasiliano"
-
-#: 
 msgid "Envelope Info"
 msgstr "Taarifa ya barua"
 
@@ -946,10 +942,6 @@ msgstr "Thamani"
 #: 
 msgid "Edit Value"
 msgstr "Hariri thamani"
-
-#: 
-msgid "Assign a New Property"
-msgstr "Kagua Mali Mpya"
 
 #: 
 msgid "Assign"
@@ -3197,14 +3189,6 @@ msgid "Family Custom List Options Editor"
 msgstr "Kihariri cha Chaguo za Orodha Maalum ya Familia"
 
 #: 
-msgid "Created via Family"
-msgstr "Imeundwa kupitia Familia"
-
-#: 
-msgid "Updated via Family"
-msgstr "Imesasishwa kupitia Familia"
-
-#: 
 msgid "Family Data Verified"
 msgstr "Data ya Familia Imethibitishwa"
 
@@ -5429,14 +5413,6 @@ msgid "Added to group"
 msgstr "Imeongezwa kwa kikundi"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "Seva pangishi ya SMTP haijasanidiwa, tafadhali tembelea ukurasa wa mipangilio"
-
-#: 
-msgid "Debug Email Connection"
-msgstr "Tatua Muunganisho wa Barua Pepe"
-
-#: 
 #, fuzzy
 msgid "This Family is Inactive"
 msgstr "Familia Hii Imezimwa"
@@ -5448,14 +5424,6 @@ msgstr "Hifadhidata imefutwa."
 #: 
 msgid "Anniversaries"
 msgstr "Maadhimisho ya miaka"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "Hitilafu Mpya ya Barua Pepe ya Arifa ya Familia"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "Hitilafu ya Barua Pepe ya Arifa ya Mtu Mpya"
 
 #: 
 msgid "View User"
@@ -5643,10 +5611,6 @@ msgstr "imezimwa"
 #: 
 msgid "Software Version"
 msgstr "Toleo la Programu"
-
-#: 
-msgid "Database Version"
-msgstr "Toleo la Hifadhidata"
 
 #: 
 msgid "Application Prerequisites"
@@ -6012,14 +5976,6 @@ msgid "Loading"
 msgstr "Inapakia"
 
 #: 
-msgid "Family Property Unassignment"
-msgstr "Uteuzi wa Mali ya Familia"
-
-#: 
-msgid "Do you want to remove"
-msgstr "Je, unataka kuondoa"
-
-#: 
 msgid "Today's Birthdays"
 msgstr "Siku ya Kuzaliwa Leo"
 
@@ -6054,10 +6010,6 @@ msgstr "Tarehe ya Kuzaliwa Batili: Mwezi au siku ya kuzaliwa haipo."
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Tarehe ya Kuzaliwa Batili: Mwezi na siku ya kuzaliwa haipo."
-
-#: 
-msgid "System"
-msgstr "Mfumo"
 
 #. Context: locales
 #: 
@@ -6145,10 +6097,6 @@ msgid "Not Subscribed"
 msgstr "Hujasajiliwa"
 
 #: 
-msgid "property"
-msgstr "mali"
-
-#: 
 msgid "Default Zip"
 msgstr "Zip Chaguomsingi"
 
@@ -6186,10 +6134,6 @@ msgstr "Herufi moja kutoka Jina la Kwanza na herufi moja kutoka Jina la Mwisho"
 #: 
 msgid "Two characters from FirstName"
 msgstr "Herufi mbili kutoka Jina la Kwanza"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "Barua pepe ya Kanisa haijawekwa, tafadhali tembelea ukurasa wa mipangilio"
 
 #. Context: locales
 #: 
@@ -6950,10 +6894,6 @@ msgid "Base URL"
 msgstr "URL ya Msingi"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "Usakinishaji wa ChurchCRM"
-
-#: 
 msgid "Copy"
 msgstr "Nakili"
 
@@ -6962,24 +6902,12 @@ msgid "DSN"
 msgstr "DSN"
 
 #: 
-msgid "Database Server"
-msgstr "Seva ya Hifadhidata"
-
-#: 
 msgid "Debug Info"
 msgstr "Taarifa za Utatuzi"
 
 #: 
 msgid "Document Root"
 msgstr "Mzizi wa Hati"
-
-#: 
-msgid "Email Configuration"
-msgstr "Usanidi wa Barua Pepe"
-
-#: 
-msgid "Email Debug Info"
-msgstr "Taarifa za Utatuzi wa Barua Pepe"
 
 #: 
 msgid "Filesystem Permissions"
@@ -7022,10 +6950,6 @@ msgid "PHP & Server Requirements"
 msgstr "Mahitaji ya PHP na Seva"
 
 #: 
-msgid "PHP Configuration"
-msgstr "Usanidi wa PHP"
-
-#: 
 msgid "Platform"
 msgstr "Jukwaa"
 
@@ -7036,10 +6960,6 @@ msgstr "Njia ya Mzizi"
 #: 
 msgid "SMTP Host"
 msgstr "Seva ya SMTP"
-
-#: 
-msgid "Server Information"
-msgstr "Taarifa za Seva"
 
 #: 
 msgid "Software"
@@ -15510,4 +15430,120 @@ msgstr "Matukio Yanayokuja"
 #: 
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "matukio. Izime aina badala yake, au ugawanye upya matukio kwanza."
+
+#: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "URL kamili ya http(s) ya nembo ya kanisa inayoonyeshwa katika violezo vya barua pepe (na kutumiwa tena mahali pengine siku zijazo). Kwa uonyeshaji bora katika wateja wa barua pepe, tumia picha pana ya bango katika uwiano wa takriban 3.5:1 (kwa mfano 350×100 px), PNG au JPG, inayotolewa kupitia HTTPS. Acha wazi au ingiza thamani batili kurudi kwenye nembo ya ChurchCRM ya kawaida."
+
+#: 
+msgid "An option with that name already exists"
+msgstr "Chaguo lenye jina hilo tayari lipo"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "Haiwezekani kufuta chaguo pekee lililobaki"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "Ubao wa kunakili haupatikani. Tafadhali tumia kitufe cha Pakua kuhifadhi nambari zako."
+
+#: 
+msgid "Custom Option"
+msgstr "Chaguo Maalum"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "Maandishi ya Muhtasari wa Kisanduku cha Barua Pepe"
+
+#: 
+msgid "Email is disabled"
+msgstr "Barua pepe imezimwa"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "Barua pepe imezimwa. Sanidi barua pepe kabla ya kuweka upya nywila, au tumia Badilisha Nywila."
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "Barua pepe imezimwa. Iwezesha katika mipangilio ya Dashibodi ya Barua Pepe kabla ya kujaribu."
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "Ingiza moja ya nambari zako za urejeshaji wa hifadhi nakala"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "Ingiza moja ya nambari zako za urejeshaji wa hifadhi nakala ili kufikia akaunti yako"
+
+#: 
+msgid "Existing Options"
+msgstr "Chaguzi Zilizopo"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "Huduma haikupatikana kwa orodha hii ya majukumu"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "Hali ya kutokuwa hai inaweza kubadilishwa tu kwa orodha ya uainishaji"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "Waumini wapya hawatapokea barua pepe ya karibu na vitambulisho vyao. Shiriki nywila nao kwa mkono, au sanidi barua pepe kwanza."
+
+#: 
+msgid "Option name is required"
+msgstr "Jina la chaguo linahitajika"
+
+#: 
+msgid "Option not found"
+msgstr "Chaguo haikupatikana"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "Muhtasari mfupi wa hiari unaoonyeshwa kama maandishi ya muhtasari wa kisanduku cha barua pepe karibu na mstari wa mada. Acha wazi ili mteja wa barua pepe aunde kiotomatiki kutoka kwa maudhui. Aina za barua pepe za kibinafsi (kuweka upya nywila, mwanachama mpya, uthibitishaji) huweka kichwa chao wenyewe; hii ni mbadala."
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "Barua pepe za kuweka upya nywila na barua pepe za karibu kwa akaunti mpya hazitumwa mpaka barua pepe isanidiwe. Watumiaji hawatapokea vitambulisho vyao kiotomatiki."
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "Kuweka upya nywila hakupatikani kwa sababu barua pepe imezimwa. Tafadhali wasiliana na msimamizi wako wa mfumo."
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "Nywila imewekwa upya lakini barua pepe haikuweza kutumwa. Mtumiaji amefungwa nje — shiriki nywila mpya kwa mkono au tumia Badilisha Nywila."
+
+#: 
+msgid "Recovery Code"
+msgstr "Nambari ya Urejeshaji"
+
+#: 
+msgid "Set up Email"
+msgstr "Sanidi Barua Pepe"
+
+#: 
+msgid "Test SMTP Email"
+msgstr "Jaribu Barua Pepe ya SMTP"
+
+#: 
+msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
+msgstr "Hii ni barua pepe ya majaribio ya ChurchCRM inayothibitisha kwamba mipangilio yako ya SMTP inafanya kazi."
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "Haiwezekani kunakili kwenye ubao wa kunakili. Tafadhali nakili nambari kwa mkono."
+
+#: 
+msgid "Use Recovery Code"
+msgstr "Tumia Nambari ya Urejeshaji"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "Tumia nambari ya urejeshaji badala yake"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "Tumia programu ya uthibitishaji badala yake"
 

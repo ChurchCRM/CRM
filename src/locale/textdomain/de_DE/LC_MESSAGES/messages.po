@@ -850,10 +850,6 @@ msgid "Family Info"
 msgstr "Familieninformation"
 
 #: 
-msgid "Contact Info"
-msgstr "Kontaktinformation"
-
-#: 
 msgid "Envelope Info"
 msgstr "Briefumschlag Informationen"
 
@@ -976,11 +972,6 @@ msgstr "Wert"
 #: 
 msgid "Edit Value"
 msgstr "Wert bearbeiten"
-
-#: 
-#, fuzzy
-msgid "Assign a New Property"
-msgstr "Neue Eigenschaft zuweisen"
 
 #: 
 msgid "Assign"
@@ -3296,14 +3287,6 @@ msgid "Family Custom List Options Editor"
 msgstr "Editor für benutzerdefinierte Familien-Listenoptionen"
 
 #: 
-msgid "Created via Family"
-msgstr "Über Familie erstellt"
-
-#: 
-msgid "Updated via Family"
-msgstr "Über Familie aktualisiert"
-
-#: 
 msgid "Family Data Verified"
 msgstr "Familiendaten überprüft"
 
@@ -5530,14 +5513,6 @@ msgid "Added to group"
 msgstr "Zur Gruppe hinzugefügt"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "SMTP-Host ist nicht eingerichtet, bitte besuchen Sie die Einstellungsseite"
-
-#: 
-msgid "Debug Email Connection"
-msgstr "E-Mail-Verbindung debuggen"
-
-#: 
 #, fuzzy
 msgid "This Family is Inactive"
 msgstr "Diese Familie ist deaktiviert"
@@ -5549,14 +5524,6 @@ msgstr "Die Datenbank wurde gesäubert."
 #: 
 msgid "Anniversaries"
 msgstr "Jahrestage"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "Neuer E-Mail-Fehler bei Familienbenachrichtigung"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "E-Mail-Fehler bei Benachrichtigung einer neuen Person"
 
 #: 
 msgid "View User"
@@ -5744,10 +5711,6 @@ msgstr "ist deaktiviert"
 #: 
 msgid "Software Version"
 msgstr "Software-Version"
-
-#: 
-msgid "Database Version"
-msgstr "Datenbank-Version"
 
 #: 
 msgid "Application Prerequisites"
@@ -6115,14 +6078,6 @@ msgid "Loading"
 msgstr "Lädt"
 
 #: 
-msgid "Family Property Unassignment"
-msgstr "Rückübertragung von Familieneigentum"
-
-#: 
-msgid "Do you want to remove"
-msgstr "Wollen Sie entfernen"
-
-#: 
 msgid "Today's Birthdays"
 msgstr "Heutige Geburtstage"
 
@@ -6157,10 +6112,6 @@ msgstr "Ungültiges Geburtsdatum: Monat oder Tag fehlt."
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Ungültiges Gebursdatum: Monat und Tag fehlen."
-
-#: 
-msgid "System"
-msgstr "System"
 
 #. Context: locales
 #: 
@@ -6248,10 +6199,6 @@ msgid "Not Subscribed"
 msgstr "Nicht abboniert"
 
 #: 
-msgid "property"
-msgstr "Eigenschaft"
-
-#: 
 msgid "Default Zip"
 msgstr "Standard-Postleitzahl"
 
@@ -6289,10 +6236,6 @@ msgstr "Ein Buchstabe vom Vornamen und ein Buchstabe vom Nachnamen"
 #: 
 msgid "Two characters from FirstName"
 msgstr "Zwei Buchstaben vom Vornamen"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "Kirchen-E-Mail nicht eingestellt, bitte besuchen Sie die Einstellungsseite"
 
 #. Context: locales
 #: 
@@ -7053,10 +6996,6 @@ msgid "Base URL"
 msgstr "Basis-URL"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "ChurchCRM-Installation"
-
-#: 
 msgid "Copy"
 msgstr "Kopieren"
 
@@ -7065,24 +7004,12 @@ msgid "DSN"
 msgstr "DSN"
 
 #: 
-msgid "Database Server"
-msgstr "Datenbankserver"
-
-#: 
 msgid "Debug Info"
 msgstr "Debug-Informationen"
 
 #: 
 msgid "Document Root"
 msgstr "Dokumentwurzel"
-
-#: 
-msgid "Email Configuration"
-msgstr "E-Mail-Konfiguration"
-
-#: 
-msgid "Email Debug Info"
-msgstr "E-Mail-Debug-Informationen"
 
 #: 
 msgid "Filesystem Permissions"
@@ -7125,10 +7052,6 @@ msgid "PHP & Server Requirements"
 msgstr "PHP- & Serveranforderungen"
 
 #: 
-msgid "PHP Configuration"
-msgstr "PHP-Konfiguration"
-
-#: 
 msgid "Platform"
 msgstr "Plattform"
 
@@ -7139,10 +7062,6 @@ msgstr "Stammpfad"
 #: 
 msgid "SMTP Host"
 msgstr "SMTP-Host"
-
-#: 
-msgid "Server Information"
-msgstr "Serverinformation"
 
 #: 
 msgid "Software"
@@ -15609,4 +15528,120 @@ msgstr "Bevorstehende Veranstaltungen"
 #: 
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "Veranstaltung(en). Deaktivieren Sie stattdessen den Typ oder weisen Sie die Veranstaltungen zuerst neu zu."
+
+#: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "Absolute http(s)-URL des Kirchenlogos, das in E-Mail-Vorlagen angezeigt wird (und künftig auch an anderen Stellen). Für eine optimale Darstellung in E-Mail-Clients verwenden Sie bitte ein breites Bannerbild im Verhältnis von etwa 3,5:1 (z. B. 350×100 px), PNG oder JPG, bereitgestellt über HTTPS. Leer lassen oder einen ungültigen Wert eingeben, um zum Standard-ChurchCRM-Logo zurückzukehren."
+
+#: 
+msgid "An option with that name already exists"
+msgstr "Eine Option mit diesem Namen existiert bereits"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "Die letzte verbleibende Option kann nicht gelöscht werden"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "Zwischenablage nicht verfügbar. Bitte verwenden Sie die Schaltfläche Herunterladen, um Ihre Codes zu speichern."
+
+#: 
+msgid "Custom Option"
+msgstr "Benutzerdefinierte Option"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "Standard-Posteingangsvorschautext"
+
+#: 
+msgid "Email is disabled"
+msgstr "E-Mail ist deaktiviert"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "E-Mail ist deaktiviert. Bitte konfigurieren Sie die E-Mail-Funktion, bevor Sie Passwörter zurücksetzen, oder verwenden Sie Passwort ändern."
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "E-Mail ist deaktiviert. Bitte aktivieren Sie diese in den E-Mail-Dashboard-Einstellungen, bevor Sie testen."
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "Geben Sie einen Ihrer Backup-Wiederherstellungscodes ein"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "Geben Sie einen Ihrer Backup-Wiederherstellungscodes ein, um auf Ihr Konto zuzugreifen"
+
+#: 
+msgid "Existing Options"
+msgstr "Vorhandene Optionen"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "Dienst für diese Rollenliste nicht gefunden"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "Der Inaktivitätsstatus kann nur für die Klassifikationsliste umgeschaltet werden"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "Neue Gemeindemitglieder erhalten keine Willkommens-E-Mail mit ihren Anmeldedaten. Teilen Sie das Passwort manuell mit oder konfigurieren Sie zunächst die E-Mail-Funktion."
+
+#: 
+msgid "Option name is required"
+msgstr "Optionsname ist erforderlich"
+
+#: 
+msgid "Option not found"
+msgstr "Option nicht gefunden"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "Optionale Kurzzusammenfassung, die als Vorschautext im Posteingang neben der Betreffzeile angezeigt wird. Leer lassen, damit der E-Mail-Client den Text automatisch aus dem Inhalt generiert. Bestimmte E-Mail-Typen (Passwort zurücksetzen, neues Mitglied, Verifizierung) legen ihren eigenen Preheader fest; dies ist ein Fallback."
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "E-Mails zur Passwortzurücksetzung und Willkommens-E-Mails für neue Konten werden erst gesendet, wenn die E-Mail-Funktion konfiguriert ist. Benutzer erhalten ihre Anmeldedaten nicht automatisch."
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "Das Zurücksetzen des Passworts ist nicht möglich, da die E-Mail-Funktion deaktiviert ist. Bitte wenden Sie sich an Ihren Systemadministrator."
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "Das Passwort wurde zurückgesetzt, aber die E-Mail konnte nicht gesendet werden. Der Benutzer ist ausgesperrt — teilen Sie das neue Passwort manuell mit oder verwenden Sie Passwort ändern."
+
+#: 
+msgid "Recovery Code"
+msgstr "Wiederherstellungscode"
+
+#: 
+msgid "Set up Email"
+msgstr "E-Mail einrichten"
+
+#: 
+msgid "Test SMTP Email"
+msgstr "SMTP-E-Mail testen"
+
+#: 
+msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
+msgstr "Dies ist eine ChurchCRM-Test-E-Mail, die bestätigt, dass Ihre SMTP-Konfiguration funktioniert."
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "In die Zwischenablage kopieren nicht möglich. Bitte kopieren Sie die Codes manuell."
+
+#: 
+msgid "Use Recovery Code"
+msgstr "Wiederherstellungscode verwenden"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "Stattdessen einen Wiederherstellungscode verwenden"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "Stattdessen Authentifizierungs-App verwenden"
 
