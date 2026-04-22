@@ -131,6 +131,14 @@ try {
 
 See `Family::setImageFromBase64()` for the canonical example. The flag is a private model property and `postUpdate()` checks it before calling `createTimeLineNote('edit')`.
 
+### Person / Family preDelete Removes the Uploaded Photo from Disk <!-- learned: 2026-04-22 -->
+
+`Person::preDelete()` and `Family::preDelete()` call `$this->getPhoto()->delete()` so the uploaded image file under `src/Images/Person/` or `src/Images/Family/` is removed whenever the record is deleted — on **any** code path, not just the API route. This closes GH #1697 (orphaned image files after family/member delete).
+
+**Do NOT call `deletePhoto()` from inside `preDelete`** — it gates on `AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()` (which can silently skip the unlink for programmatic deletions) and writes a transient `Note` that the rest of `preDelete` deletes a few lines later anyway. Call `$this->getPhoto()->delete()` directly. The public `deletePhoto()` method is for the UI "delete photo only" action (keeps the record, writes an audit note).
+
+**Do NOT explicitly call `$family->deletePhoto()` (or `$person->deletePhoto()`) right before `$family->delete()` (or `$person->delete()`)** in controllers — the `preDelete` hook already handles it, and the explicit pre-call writes an audit `Note` for a record that is about to be deleted (the Family note even got the wrong FK via `setPerId`).
+
 **For bulk creators (importers, migrations, seeders)** that want custom text on the auto-created note: accept the default `"Created"`, or look up the auto-created note after save and mutate its text:
 
 ```php
