@@ -262,6 +262,53 @@ $userId = $_GET['userId'];  // Could be "1 OR 1=1"
 
 ---
 
+## CSRF Protection on State-Changing Pages
+
+### Every POST/delete page must validate a CSRF token <!-- learned: 2026-04-21 -->
+
+Any legacy `*.php` page that performs a DB write (insert/update/delete) MUST validate a CSRF token before acting. Pattern (applied in `UserEditor.php`, `PledgeDelete.php`, `DonatedItemDelete.php`, `PaddleNumDelete.php` — GHSA-3xq9-c86x-cwpp):
+
+```php
+use ChurchCRM\Utils\CSRFUtils;
+
+// In the POST handler — BEFORE any DB write:
+if (!CSRFUtils::verifyRequest($_POST, 'user_editor')) {
+    http_response_code(403);
+    exit(gettext('Invalid security token. Please try again.'));
+}
+
+// In the form HTML:
+<form method="post" action="...">
+    <?= CSRFUtils::getTokenInputField('user_editor') ?>
+    <!-- other inputs -->
+</form>
+```
+
+- Pick a unique `$formId` per form (e.g. `'user_editor'`, `'pledge_delete'`). The ID must match between `getTokenInputField()` and `verifyRequest()`.
+- `getTokenInputField()` auto-renders `<input type="hidden" name="csrf_token" value="...">` with a fresh 64-hex-char token.
+- Tokens are stored in `$_SESSION['csrf_tokens'][$formId]` with a 2-hour TTL.
+- Tokens are NOT consumed by default (allows resubmission on validation error). Pass `$consume = true` to `validateToken()` only if you need one-time use.
+
+### Never delete on GET — always confirmation-page pattern <!-- learned: 2026-04-21 -->
+
+A GET-based delete endpoint (`<a href="Foo.php?id=X">Delete</a>`) is exploitable by any HTML with an `<img>` or `<link>` tag pointing at it — no form submission needed. Convert to a two-step confirmation:
+
+1. **GET** — renders a confirmation `<form method="post">` with the CSRF token and Delete/Cancel buttons.
+2. **POST** — validates the token, then performs the delete and redirects.
+
+The caller's link stays a plain GET (`<a href="FooDelete.php?id=X">`), but the landing page now shows the confirmation form instead of silently deleting. This is what `PledgeDelete.php` already did before the CSRF fix; `DonatedItemDelete.php` and `PaddleNumDelete.php` were migrated to this pattern in the GHSA-3xq9-c86x-cwpp fix.
+
+### Role checks belong on every delete page <!-- learned: 2026-04-21 -->
+
+Delete pages must also enforce the relevant role guards — a CSRF token alone doesn't gate the feature, it only proves the request came from a real logged-in session. Finance-scoped deletes need both:
+
+```php
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled(), 'DeleteRecords');
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
+```
+
+---
+
 ## Authorization & Access Control
 
 ### Block Users With No Admin Permissions <!-- learned: 2026-04-12 -->
@@ -616,6 +663,60 @@ churchWebSite:<?= SystemConfig::getValueForJs('sChurchWebSite') ?>,
 - [src/ChurchCRM/utils/CustomFieldUtils.php](../../../src/ChurchCRM/utils/CustomFieldUtils.php) — `placeholder`, `data-phone-mask`
 - [src/DirectoryReports.php](../../../src/DirectoryReports.php) — form `value=`, textarea content
 - [src/external/templates/registration/family-register.php](../../../src/external/templates/registration/family-register.php) — JS literals, address/phone inputs
+
+### JSON_HEX flags for inline `<script>` JSON <!-- learned: 2026-04-21 -->
+
+When embedding PHP data into a JS literal inside a `<script>` tag, `json_encode()`
+alone does not escape `<`, `>`, `&`, `'`, `"` — a value containing `</script>`
+(or `</SCRIPT`, `--!>`, etc.) can break out of the script context and become
+XSS. Always pass the four HEX flags alongside `JSON_THROW_ON_ERROR`:
+
+```php
+// ❌ WRONG — </script> in the data closes the script tag
+<script>
+window.CRM.calendarArgs = <?= json_encode($args, JSON_THROW_ON_ERROR) ?>;
+</script>
+
+// ✅ CORRECT — hex-encodes </script> and friends
+<script>
+window.CRM.calendarArgs = <?= json_encode(
+    $args,
+    JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR
+) ?>;
+</script>
+```
+
+Grep for lone `json_encode($x, JSON_THROW_ON_ERROR)` inside `<script>` tags when
+reviewing — **every** such call needs the HEX flags. `SystemConfig::getValueForJs()`
+already handles this internally; the HEX flags apply when you call `json_encode()`
+directly on arrays/objects. Example site: [src/event/views/calendar.php](../../../src/event/views/calendar.php).
+
+### Escape captured SMTP / debug output before rendering as HTML <!-- learned: 2026-04-21 -->
+
+PHPMailer's `Debugoutput='html'` and similar debug capture modes emit **untrusted
+server-originated HTML** — server banners, auth exchanges, error text. Dumping the
+captured buffer straight into a page — even an admin-only page — is an XSS vector
+because a remote SMTP server (or any downstream service an attacker controls) owns
+part of the string. Strip tags, escape, then re-introduce line breaks with
+`nl2br()`:
+
+```php
+// ❌ WRONG — raw HTML from the SMTP server
+<div><?= $sendResult['debugLog'] ?></div>
+
+// ✅ CORRECT — strip, decode entities, escape, re-add line breaks
+$plain = trim(html_entity_decode(
+    strip_tags((string) $sendResult['debugLog']),
+    ENT_QUOTES | ENT_HTML5,
+    'UTF-8'
+));
+echo nl2br(InputUtils::escapeHTML($plain), false);
+```
+
+Same pattern applies to any "capture stream, then render" flow: `ob_get_clean()`
+output, cURL verbose logs, library diagnostic dumps. "Admin-only" is not a
+mitigation — an admin viewing a compromised downstream service's output is the
+exact attack surface.
 
 ### sanitizeText() Is Not Sufficient for HTML Attributes <!-- learned: 2026-04-03 -->
 

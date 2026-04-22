@@ -5,6 +5,7 @@ require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
@@ -20,6 +21,12 @@ AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser
 
 // Is this the second pass?
 if (isset($_POST['Delete'])) {
+    // Security: CSRF token validation (GHSA-3xq9-c86x-cwpp)
+    if (!CSRFUtils::verifyRequest($_POST, 'pledge_delete')) {
+        http_response_code(403);
+        exit(gettext('Invalid security token. Please try again.'));
+    }
+
     PledgeQuery::create()->filterByGroupKey($sGroupKey)->delete();
 
     if ($linkBack !== '') {
@@ -39,7 +46,8 @@ require_once __DIR__ . '/Include/Header.php';
 
 <div class="card-body text-center">
     <p class="lead mb-4"><?= gettext('Are you sure you want to permanently delete this pledge record?') ?></p>
-    <form method="post" action="PledgeDelete.php?<?= 'GroupKey=' . $sGroupKey . '&linkBack=' . $linkBack ?>" name="PledgeDelete">
+    <form method="post" action="PledgeDelete.php?<?= 'GroupKey=' . InputUtils::escapeAttribute($sGroupKey) . '&linkBack=' . InputUtils::escapeAttribute($linkBack) ?>" name="PledgeDelete">
+        <?= CSRFUtils::getTokenInputField('pledge_delete') ?>
         <input type="submit" class="btn btn-danger" value="<?= gettext('Delete') ?>" name="Delete">
         <input type="submit" class="btn btn-secondary ms-2" value="<?= gettext('Cancel') ?>" name="Cancel">
     </form>
