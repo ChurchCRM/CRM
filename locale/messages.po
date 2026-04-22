@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-21 19:58+0000\n"
+"POT-Creation-Date: 2026-04-22 01:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -199,6 +199,9 @@ msgid ""
 "5. In ChurchCRM, enable the Vonage SMS plugin and enter your credentials"
 msgstr ""
 
+msgid "1. Download the template"
+msgstr ""
+
 #. plugin:google-analytics:section:0:content
 msgid ""
 "1. Go to Google Analytics (analytics.google.com)\n"
@@ -226,6 +229,9 @@ msgstr ""
 msgid "2. Event Type"
 msgstr ""
 
+msgid "2. Fill in your data"
+msgstr ""
+
 msgid "2FA"
 msgstr ""
 
@@ -233,6 +239,9 @@ msgid "2FA Enabled"
 msgstr ""
 
 msgid "3. Event"
+msgstr ""
+
+msgid "3. Upload and map"
 msgstr ""
 
 msgid "4. Kiosk"
@@ -1434,6 +1443,9 @@ msgstr ""
 msgid "Bolivia"
 msgstr ""
 
+msgid "Boolean properties/fields accept yes / no / true / false / 1 / 0."
+msgstr ""
+
 #. Context: countries
 msgid "Bosnia and Herzegovina (Босна и Херцеговина)"
 msgstr ""
@@ -1568,9 +1580,6 @@ msgid "CSV Export"
 msgstr ""
 
 msgid "CSV Individual Records"
-msgstr ""
-
-msgid "CSV template not found"
 msgstr ""
 
 msgid "CURRENT FAMILY WITH DONATIONS"
@@ -1977,6 +1986,9 @@ msgstr ""
 msgid "ChurchCRM Test Email"
 msgstr ""
 
+msgid "ChurchCRM auto-matches each column by name. Anything it cannot match is marked as Unmapped — pick a field or leave it as Ignore."
+msgstr ""
+
 msgid "ChurchCRM can send emails directly."
 msgstr ""
 
@@ -2172,9 +2184,6 @@ msgid "Compare pledges between two fiscal years"
 msgstr ""
 
 msgid "Comparing timezones..."
-msgstr ""
-
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
 msgstr ""
 
 msgid "Complete"
@@ -2438,6 +2447,9 @@ msgstr ""
 msgid "Could not connect to MailChimp. Please check your API key."
 msgstr ""
 
+msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
+msgstr ""
+
 msgid "Count"
 msgstr ""
 
@@ -2657,6 +2669,12 @@ msgstr ""
 msgid "Custom field"
 msgstr ""
 
+msgid "Custom field columns you have not configured are ignored — nothing is created on the fly."
+msgstr ""
+
+msgid "Custom fields and properties are supported"
+msgstr ""
+
 msgid "Custom message for church greeter email 1, max 255 characters"
 msgstr ""
 
@@ -2784,6 +2802,9 @@ msgid "Date Start"
 msgstr ""
 
 msgid "Date Updated"
+msgstr ""
+
+msgid "Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a month and day with no year."
 msgstr ""
 
 msgid "Date range cannot exceed 1 year"
@@ -3266,9 +3287,6 @@ msgstr ""
 msgid "Download the latest release and apply it to your installation."
 msgstr ""
 
-msgid "Download the template to see the expected column format."
-msgstr ""
-
 msgid "Downloaded"
 msgstr ""
 
@@ -3319,7 +3337,7 @@ msgstr ""
 msgid "Each plugin requires a"
 msgstr ""
 
-msgid "Each row is one person. Members of the same family share a FamilyID."
+msgid "Each row is one person. People in the same family share a FamilyID. Leave columns blank when you have no value for them."
 msgstr ""
 
 msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
@@ -4275,6 +4293,9 @@ msgstr ""
 msgid "Family Cell Phone"
 msgstr ""
 
+msgid "Family Custom"
+msgstr ""
+
 msgid "Family Custom Fields"
 msgstr ""
 
@@ -4333,6 +4354,9 @@ msgid "Family Profile"
 msgstr ""
 
 msgid "Family Properties"
+msgstr ""
+
+msgid "Family Property"
 msgstr ""
 
 msgid "Family Registration"
@@ -4435,6 +4459,9 @@ msgid "Field where Father Of Confession is listed, must be a people of group typ
 msgstr ""
 
 msgid "Field where last Confession is stored, must be a date type"
+msgstr ""
+
+msgid "Fields"
 msgstr ""
 
 msgid "Fields to Include"
@@ -5268,6 +5295,9 @@ msgstr ""
 msgid "How many checks to print per deposit slip page"
 msgstr ""
 
+msgid "How the CSV Import Works"
+msgstr ""
+
 msgid "How to Fix:"
 msgstr ""
 
@@ -5434,6 +5464,9 @@ msgid ""
 msgstr ""
 
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
+msgstr ""
+
+msgid "Imported from CSV"
 msgstr ""
 
 msgid "Importing..."
@@ -7731,6 +7764,9 @@ msgstr ""
 msgid "Person"
 msgstr ""
 
+msgid "Person / Family"
+msgstr ""
+
 msgid "Person Checking In"
 msgstr ""
 
@@ -7741,6 +7777,9 @@ msgid "Person Classifications"
 msgstr ""
 
 msgid "Person Classifications Editor"
+msgstr ""
+
+msgid "Person Custom"
 msgstr ""
 
 msgid "Person Custom Fields"
@@ -7762,6 +7801,9 @@ msgid "Person Profile"
 msgstr ""
 
 msgid "Person Properties"
+msgstr ""
+
+msgid "Person Property"
 msgstr ""
 
 msgid "Person View"
@@ -10039,6 +10081,12 @@ msgstr ""
 msgid "The teacher sent this alert at"
 msgstr ""
 
+msgid "The template already contains every column you can map — the core Person/Family fields plus each custom field and property your site defines."
+msgstr ""
+
+msgid "The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically."
+msgstr ""
+
 msgid "Theme Mode"
 msgstr ""
 
@@ -10696,10 +10744,10 @@ msgstr ""
 msgid "Upload Photo"
 msgstr ""
 
-msgid "Upload a CSV file to import families and people into ChurchCRM."
+msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
 msgstr ""
 
-msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
+msgid "Upload a CSV to create families and people in bulk."
 msgstr ""
 
 msgid "Upload failed."
@@ -11487,6 +11535,9 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr ""
 
 msgid "Your Account was Deleted"
+msgstr ""
+
+msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr ""
 
 msgid "Your Cart is Empty"
