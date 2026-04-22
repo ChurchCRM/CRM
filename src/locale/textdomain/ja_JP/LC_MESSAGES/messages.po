@@ -632,10 +632,6 @@ msgid "Save Changes"
 msgstr "変更内容を保存"
 
 #: 
-msgid "Church Event Editor"
-msgstr "教会イベントエディター"
-
-#: 
 msgid "Edit Event Type"
 msgstr "イベントタイプを編集"
 
@@ -701,20 +697,8 @@ msgid "Create Event"
 msgstr "イベント作成"
 
 #: 
-msgid "Create a new Event"
-msgstr "新しいイベントを作成"
-
-#: 
-msgid "Select your event type"
-msgstr "イベントタイプを選択"
-
-#: 
 msgid "Event Status"
 msgstr "イベント状況"
-
-#: 
-msgid "Return to Events"
-msgstr "イベントに戻る"
 
 #: 
 msgid "Sundays"
@@ -5072,10 +5056,6 @@ msgid "Church Greeter"
 msgstr "教会の挨拶係"
 
 #: 
-msgid "External Calendar API is disabled"
-msgstr "外部カレンダーAPIが無効です"
-
-#: 
 msgid "Special Group Settings : Sunday School Type"
 msgstr "特別グループ設定：日曜学校タイプ"
 
@@ -5498,10 +5478,6 @@ msgstr "ファイルを開くことができません"
 #: 
 msgid "Missing calendar access token"
 msgstr "カレンダーアクセストークンがありません"
-
-#: 
-msgid "Calendar access token not found"
-msgstr "カレンダーアクセストークンが見つかりません"
 
 #: 
 msgid "User must have Delete Records permission"
@@ -6923,20 +6899,8 @@ msgid "SMTP Host"
 msgstr "SMTPホスト"
 
 #: 
-msgid "Software"
-msgstr "ソフトウェア"
-
-#: 
-msgid "System & Configuration"
-msgstr "システムと設定"
-
-#: 
 msgid "Tip:"
 msgstr "ヒント："
-
-#: 
-msgid "Valid Settings"
-msgstr "有効な設定"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -6996,10 +6960,6 @@ msgid "Attendance Count Categories"
 msgstr "出席カウントカテゴリー"
 
 #: 
-msgid "Attendance Notes"
-msgstr "出席メモ"
-
-#: 
 msgid "Change Event"
 msgstr "イベントを変更"
 
@@ -7055,14 +7015,6 @@ msgstr "イベントを削除"
 msgid "Edit Event"
 msgstr "イベントを編集"
 
-#: 
-msgid "Editing Event"
-msgstr "イベントを編集中"
-
-#: 
-msgid "Enter event title..."
-msgstr "イベントタイトルを入力..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7113,14 +7065,6 @@ msgid "None (one-time event)"
 msgstr "なし（一回限りのイベント）"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "オプション - 説教ノートや追加イベント詳細を追加"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "出席に関するオプションのメモ..."
-
-#: 
 msgid "People Checked In"
 msgstr "チェックイン済みの人物"
 
@@ -7155,10 +7099,6 @@ msgstr "監督者を検索..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "チェックイン用のイベントを選択"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "説教/イベントテキスト"
 
 #: 
 msgid "Unclassified"
@@ -8190,10 +8130,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "ベースURLがConfig.phpで設定されていません"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "ChurchCRMサポートされているロケール"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "SSH、FTP、またはホスティングコントロールパネルを介してサーバーに接続します"
 
@@ -8240,10 +8176,6 @@ msgstr "言語"
 #: 
 msgid "Local development:"
 msgstr "ローカル開発："
-
-#: 
-msgid "Locale Support"
-msgstr "ロケールサポート"
 
 #: 
 msgid "Location & Contact Information"
@@ -9060,10 +8992,6 @@ msgstr "アップグレードアーカイブを開けませんでした。ダウ
 #: 
 msgid "Failed to save the downloaded release file. Please check disk space and permissions."
 msgstr "ダウンロードしたリリースファイルの保存に失敗しました。ディスク容量と権限をご確認ください。"
-
-#: 
-msgid "Invalid date format in start parameter"
-msgstr "開始パラメータの日付形式が無効です"
 
 #: 
 msgid "Mismatch"
@@ -10641,10 +10569,6 @@ msgid "CSV Column"
 msgstr "CSV列"
 
 #: 
-msgid "CSV template not found"
-msgstr "CSVテンプレートが見つかりません"
-
-#: 
 msgid "Call"
 msgstr "電話"
 
@@ -10719,10 +10643,6 @@ msgstr "列はChurchCRMフィールドに自動的にマッピングされまし
 #: 
 msgid "Community Management Platform"
 msgstr "コミュニティ管理プラットフォーム"
-
-#: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "Excel、Googleスプレッドシート、または任意のCSVエクスポートに対応。"
 
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."

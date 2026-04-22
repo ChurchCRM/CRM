@@ -639,10 +639,6 @@ msgid "Save Changes"
 msgstr "Зберегти зміни"
 
 #: 
-msgid "Church Event Editor"
-msgstr "Редактор церковних подій"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Редагувати тип події"
 
@@ -708,20 +704,8 @@ msgid "Create Event"
 msgstr "Створити подію"
 
 #: 
-msgid "Create a new Event"
-msgstr "Створити нову подію"
-
-#: 
-msgid "Select your event type"
-msgstr "Виберіть тип події"
-
-#: 
 msgid "Event Status"
 msgstr "Статус подій"
-
-#: 
-msgid "Return to Events"
-msgstr "Повернутися до подій"
 
 #: 
 msgid "Sundays"
@@ -5109,10 +5093,6 @@ msgid "Church Greeter"
 msgstr "Church Greeter"
 
 #: 
-msgid "External Calendar API is disabled"
-msgstr "API зовнішнього календаря вимкнено"
-
-#: 
 msgid "Special Group Settings : Sunday School Type"
 msgstr "Спеціальні налаштування групи: тип недільної школи"
 
@@ -5537,10 +5517,6 @@ msgstr "Не вдається відкрити файл"
 #: 
 msgid "Missing calendar access token"
 msgstr "Відсутній маркер доступу до календаря"
-
-#: 
-msgid "Calendar access token not found"
-msgstr "Маркер доступу до календаря не знайдено"
 
 #: 
 msgid "User must have Delete Records permission"
@@ -6972,20 +6948,8 @@ msgid "SMTP Host"
 msgstr "SMTP-хост"
 
 #: 
-msgid "Software"
-msgstr "Програмне забезпечення"
-
-#: 
-msgid "System & Configuration"
-msgstr "Система та конфігурація"
-
-#: 
 msgid "Tip:"
 msgstr "Порада:"
-
-#: 
-msgid "Valid Settings"
-msgstr "Дійсні налаштування"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7048,10 +7012,6 @@ msgid "Attendance Count Categories"
 msgstr "Категорії підрахунку відвідуваності"
 
 #: 
-msgid "Attendance Notes"
-msgstr "Примітки до відвідуваності"
-
-#: 
 msgid "Change Event"
 msgstr "Змінити подію"
 
@@ -7107,14 +7067,6 @@ msgstr "Видалити подію"
 msgid "Edit Event"
 msgstr "Редагувати подію"
 
-#: 
-msgid "Editing Event"
-msgstr "Редагування події"
-
-#: 
-msgid "Enter event title..."
-msgstr "Введіть назву події..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7165,14 +7117,6 @@ msgid "None (one-time event)"
 msgstr "Немає (одноразова подія)"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "Додатково — додайте нотатки проповіді або додаткові деталі події"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "Додаткові нотатки про відвідуваність..."
-
-#: 
 msgid "People Checked In"
 msgstr "Осіб зареєстровано"
 
@@ -7207,10 +7151,6 @@ msgstr "Пошук керівника/відповідального..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "Виберіть подію для реєстрації"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "Текст проповіді / події"
 
 #: 
 msgid "Unclassified"
@@ -8245,10 +8185,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "Базову URL-адресу не налаштовано в Config.php"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "Підтримувані мови ChurchCRM"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "Підключіться до сервера через SSH, FTP або панель керування"
 
@@ -8295,10 +8231,6 @@ msgstr "Мова"
 #: 
 msgid "Local development:"
 msgstr "Локальна розробка:"
-
-#: 
-msgid "Locale Support"
-msgstr "Підтримка локалізації"
 
 #: 
 msgid "Location & Contact Information"
@@ -9127,10 +9059,6 @@ msgstr "Не вдалося відкрити архів оновлення. За
 #: 
 msgid "Failed to save the downloaded release file. Please check disk space and permissions."
 msgstr "Не вдалося зберегти завантажений файл випуску. Перевірте вільне місце на диску та права доступу."
-
-#: 
-msgid "Invalid date format in start parameter"
-msgstr "Недійсний формат дати в параметрі початку"
 
 #: 
 msgid "Mismatch"
@@ -10714,10 +10642,6 @@ msgid "CSV Column"
 msgstr "Стовпець CSV"
 
 #: 
-msgid "CSV template not found"
-msgstr "Шаблон CSV не знайдено"
-
-#: 
 msgid "Call"
 msgstr "Зателефонуйте"
 
@@ -10792,10 +10716,6 @@ msgstr "Стовпець було автоматично зіставлено з
 #: 
 msgid "Community Management Platform"
 msgstr "Платформа управління громадою"
-
-#: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "Сумісно з Excel, Google Sheets або будь-яким експортом CSV."
 
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."

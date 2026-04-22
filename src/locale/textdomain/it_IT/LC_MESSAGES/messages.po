@@ -640,10 +640,6 @@ msgid "Save Changes"
 msgstr "Salva le modifiche"
 
 #: 
-msgid "Church Event Editor"
-msgstr "Editor Eventi Chiesa"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Modifica il Tipo di Evento"
 
@@ -710,20 +706,8 @@ msgstr "Crea Evento\n"
 ""
 
 #: 
-msgid "Create a new Event"
-msgstr "Crea un nuovo Evento"
-
-#: 
-msgid "Select your event type"
-msgstr "Selezionare il tipo di evento"
-
-#: 
 msgid "Event Status"
 msgstr "Stato degli eventi"
-
-#: 
-msgid "Return to Events"
-msgstr "Torna agli eventi"
 
 #: 
 msgid "Sundays"
@@ -5129,10 +5113,6 @@ msgid "Church Greeter"
 msgstr "Saluto della Chiesa"
 
 #: 
-msgid "External Calendar API is disabled"
-msgstr "L'API del calendario esterno è disabilitata"
-
-#: 
 msgid "Special Group Settings : Sunday School Type"
 msgstr "Impostazioni speciali del gruppo: Tipo di scuola domenicale"
 
@@ -5557,10 +5537,6 @@ msgstr "Impossibile aprire il file"
 #: 
 msgid "Missing calendar access token"
 msgstr "Gettone di accesso al calendario mancante"
-
-#: 
-msgid "Calendar access token not found"
-msgstr "Gettone di accesso al calendario non trovato"
 
 #: 
 msgid "User must have Delete Records permission"
@@ -6988,20 +6964,8 @@ msgid "SMTP Host"
 msgstr "Host SMTP"
 
 #: 
-msgid "Software"
-msgstr "Software"
-
-#: 
-msgid "System & Configuration"
-msgstr "Sistema e Configurazione"
-
-#: 
 msgid "Tip:"
 msgstr "Suggerimento:"
-
-#: 
-msgid "Valid Settings"
-msgstr "Impostazioni Valide"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7062,10 +7026,6 @@ msgid "Attendance Count Categories"
 msgstr "Categorie di Conteggio Presenze"
 
 #: 
-msgid "Attendance Notes"
-msgstr "Note di Presenze"
-
-#: 
 msgid "Change Event"
 msgstr "Cambia Evento"
 
@@ -7121,14 +7081,6 @@ msgstr "Elimina Evento"
 msgid "Edit Event"
 msgstr "Modifica Evento"
 
-#: 
-msgid "Editing Event"
-msgstr "Modifica dell'Evento"
-
-#: 
-msgid "Enter event title..."
-msgstr "Inserisci il titolo dell'evento..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7179,14 +7131,6 @@ msgid "None (one-time event)"
 msgstr "Nessuno (evento una tantum)"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "Opzionale - Aggiungi note del sermone o dettagli aggiuntivi dell'evento"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "Note facoltative sulle presenze..."
-
-#: 
 msgid "People Checked In"
 msgstr "Persone Effettuate il Check-In"
 
@@ -7221,10 +7165,6 @@ msgstr "Cerca supervisore..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "Seleziona Evento per Check-In"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "Sermone / Testo Evento"
 
 #: 
 msgid "Unclassified"
@@ -8257,10 +8197,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "L'URL di base non è configurato in Config.php"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "Locale Supportate da ChurchCRM"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "Connettiti al tuo server tramite SSH, FTP o il tuo pannello di controllo di hosting"
 
@@ -8307,10 +8243,6 @@ msgstr "Lingua"
 #: 
 msgid "Local development:"
 msgstr "Sviluppo locale:"
-
-#: 
-msgid "Locale Support"
-msgstr "Supporto Locale"
 
 #: 
 msgid "Location & Contact Information"
@@ -9131,10 +9063,6 @@ msgstr "Impossibile aprire l'archivio di aggiornamento. Il file scaricato potreb
 #: 
 msgid "Failed to save the downloaded release file. Please check disk space and permissions."
 msgstr "Impossibile salvare il file della versione scaricato. Verificare lo spazio su disco e i permessi."
-
-#: 
-msgid "Invalid date format in start parameter"
-msgstr "Formato data non valido nel parametro di inizio"
 
 #: 
 msgid "Mismatch"
@@ -10714,10 +10642,6 @@ msgid "CSV Column"
 msgstr "Colonna CSV"
 
 #: 
-msgid "CSV template not found"
-msgstr "Modello CSV non trovato"
-
-#: 
 msgid "Call"
 msgstr "Chiama"
 
@@ -10792,10 +10716,6 @@ msgstr "La colonna è stata abbinata automaticamente a un campo ChurchCRM."
 #: 
 msgid "Community Management Platform"
 msgstr "Piattaforma di gestione della comunità"
-
-#: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "Compatibile con Excel, Google Sheets o qualsiasi esportazione CSV."
 
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."

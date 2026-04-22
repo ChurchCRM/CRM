@@ -660,10 +660,6 @@ msgid "Save Changes"
 msgstr "Сохранить изменения"
 
 #: 
-msgid "Church Event Editor"
-msgstr "Редактор Церковных мероприятий"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Редактировать тип мероприятия"
 
@@ -730,21 +726,9 @@ msgid "Create Event"
 msgstr "Создать Мероприятие"
 
 #: 
-msgid "Create a new Event"
-msgstr "Создать новое мероприятие"
-
-#: 
-msgid "Select your event type"
-msgstr "Выберите тип вашего мероприятия"
-
-#: 
 #, fuzzy
 msgid "Event Status"
 msgstr "Статус мероприятия"
-
-#: 
-msgid "Return to Events"
-msgstr "Вернуться к Мероприятиям"
 
 #: 
 msgid "Sundays"
@@ -5180,10 +5164,6 @@ msgid "Church Greeter"
 msgstr "Церковный приветствующий"
 
 #: 
-msgid "External Calendar API is disabled"
-msgstr "Внешнее API календаря отключено"
-
-#: 
 msgid "Special Group Settings : Sunday School Type"
 msgstr "Специальные настройки группы: Тип воскресной школы"
 
@@ -5606,10 +5586,6 @@ msgstr "Не удалось открыть файл"
 #: 
 msgid "Missing calendar access token"
 msgstr "Отсутствует токен доступа к календарю"
-
-#: 
-msgid "Calendar access token not found"
-msgstr "Токен доступа к календарю не найден"
 
 #: 
 msgid "User must have Delete Records permission"
@@ -7038,20 +7014,8 @@ msgid "SMTP Host"
 msgstr "SMTP хост"
 
 #: 
-msgid "Software"
-msgstr "ПО"
-
-#: 
-msgid "System & Configuration"
-msgstr "Система и конфигурация"
-
-#: 
 msgid "Tip:"
 msgstr "Совет:"
-
-#: 
-msgid "Valid Settings"
-msgstr "Валидные настройки"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7114,10 +7078,6 @@ msgid "Attendance Count Categories"
 msgstr "Категории подсчета посещаемости"
 
 #: 
-msgid "Attendance Notes"
-msgstr "Заметки о посещаемости"
-
-#: 
 msgid "Change Event"
 msgstr "Изменить событие"
 
@@ -7173,14 +7133,6 @@ msgstr "Удалить событие"
 msgid "Edit Event"
 msgstr "Редактировать событие"
 
-#: 
-msgid "Editing Event"
-msgstr "Редактирование события"
-
-#: 
-msgid "Enter event title..."
-msgstr "Введите название события..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7231,14 +7183,6 @@ msgid "None (one-time event)"
 msgstr "Нет (разовое событие)"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "Опционально — добавьте заметки или детали"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "Опциональные заметки о посещаемости..."
-
-#: 
 msgid "People Checked In"
 msgstr "Люди, прошедшие регистрацию"
 
@@ -7273,10 +7217,6 @@ msgstr "Поиск ответственного..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "Выберите событие для регистрации"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "Текст проповеди / события"
 
 #: 
 msgid "Unclassified"
@@ -8311,10 +8251,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "Базовый URL не задан в Config.php"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "Поддерживаемые локали ChurchCRM"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "Подключитесь к серверу через SSH или FTP"
 
@@ -8361,10 +8297,6 @@ msgstr "Язык"
 #: 
 msgid "Local development:"
 msgstr "Локальная разработка:"
-
-#: 
-msgid "Locale Support"
-msgstr "Поддержка локалей"
 
 #: 
 msgid "Location & Contact Information"
@@ -9193,10 +9125,6 @@ msgstr "Не удалось открыть архив обновления. За
 #: 
 msgid "Failed to save the downloaded release file. Please check disk space and permissions."
 msgstr "Не удалось сохранить загруженный файл релиза. Проверьте место на диске и права доступа."
-
-#: 
-msgid "Invalid date format in start parameter"
-msgstr "Неверный формат даты в параметре начала"
 
 #: 
 msgid "Mismatch"
@@ -10780,10 +10708,6 @@ msgid "CSV Column"
 msgstr "Столбец CSV"
 
 #: 
-msgid "CSV template not found"
-msgstr "Шаблон CSV не найден"
-
-#: 
 msgid "Call"
 msgstr "Позвонить"
 
@@ -10858,10 +10782,6 @@ msgstr "Столбец был автоматически сопоставлен 
 #: 
 msgid "Community Management Platform"
 msgstr "Платформа управления общиной"
-
-#: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "Совместимо с Excel, Google Sheets или любым экспортом CSV."
 
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."

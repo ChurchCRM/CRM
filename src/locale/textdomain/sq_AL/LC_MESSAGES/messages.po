@@ -639,10 +639,6 @@ msgid "Save Changes"
 msgstr "Ruaj Ndryshimet"
 
 #: 
-msgid "Church Event Editor"
-msgstr "Kisha Event Editor"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Edit Event Type"
 
@@ -708,20 +704,8 @@ msgid "Create Event"
 msgstr "Krijo ngjarje"
 
 #: 
-msgid "Create a new Event"
-msgstr "Krijo një ngjarje të re"
-
-#: 
-msgid "Select your event type"
-msgstr "Zgjidhni llojin e ngjarjes"
-
-#: 
 msgid "Event Status"
 msgstr "Statusi Event"
-
-#: 
-msgid "Return to Events"
-msgstr "Kthehu te ngjarjet"
 
 #: 
 msgid "Sundays"
@@ -5102,10 +5086,6 @@ msgid "Church Greeter"
 msgstr "Pritësi i kishës"
 
 #: 
-msgid "External Calendar API is disabled"
-msgstr "API e kalendarit të jashtëm është çaktivizuar"
-
-#: 
 msgid "Special Group Settings : Sunday School Type"
 msgstr "Cilësimet speciale të grupit: Lloji i shkollës së dielës"
 
@@ -5528,10 +5508,6 @@ msgstr "Nuk mund të hapet skedari"
 #: 
 msgid "Missing calendar access token"
 msgstr "Mungon kodi i aksesit të kalendarit"
-
-#: 
-msgid "Calendar access token not found"
-msgstr "Kodi i aksesit të kalendarit nuk u gjet"
 
 #: 
 msgid "User must have Delete Records permission"
@@ -6955,20 +6931,8 @@ msgid "SMTP Host"
 msgstr "Hosti SMTP"
 
 #: 
-msgid "Software"
-msgstr "Softueri"
-
-#: 
-msgid "System & Configuration"
-msgstr "Sistemi dhe konfigurimi"
-
-#: 
 msgid "Tip:"
 msgstr "Këshillë:"
-
-#: 
-msgid "Valid Settings"
-msgstr "Cilësime të vlefshme"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7029,10 +6993,6 @@ msgid "Attendance Count Categories"
 msgstr "Kategoritë e numërimit të pjesëmarrjes"
 
 #: 
-msgid "Attendance Notes"
-msgstr "Shënimet e pjesëmarrjes"
-
-#: 
 msgid "Change Event"
 msgstr "Ndrysho ngjarjen"
 
@@ -7088,14 +7048,6 @@ msgstr "Fshi ngjarjen"
 msgid "Edit Event"
 msgstr "Redakto ngjarjen"
 
-#: 
-msgid "Editing Event"
-msgstr "Duke redaktuar ngjarjen"
-
-#: 
-msgid "Enter event title..."
-msgstr "Vendosni titullin e ngjarjes..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7146,14 +7098,6 @@ msgid "None (one-time event)"
 msgstr "Asnjë (ngjarje njëherëshe)"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "Opsionale - Shtoni shënime predikimi ose detaje shtesë ngjarjeje"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "Shënime opsionale rreth pjesëmarrjes..."
-
-#: 
 msgid "People Checked In"
 msgstr "Personat e regjistruar"
 
@@ -7188,10 +7132,6 @@ msgstr "Kërko për mbikëqyrës..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "Zgjidhni ngjarjen për regjistrim"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "Teksti i predikimit / ngjarjes"
 
 #: 
 msgid "Unclassified"
@@ -8224,10 +8164,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "URL bazë nuk është konfiguruar në Config.php"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "Gjuhët e mbështetura (Locales) nga ChurchCRM"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "Lidhuni me serverin tuaj nëpërmjet SSH, FTP, ose panelit të kontrollit të hostit"
 
@@ -8274,10 +8210,6 @@ msgstr "Gjuha"
 #: 
 msgid "Local development:"
 msgstr "Zhvillimi lokal:"
-
-#: 
-msgid "Locale Support"
-msgstr "Mbështetja e gjuhës (Locale)"
 
 #: 
 msgid "Location & Contact Information"
@@ -9098,10 +9030,6 @@ msgstr "Dështoi hapja e arkivit të përmirësimit. Skedari i shkarkuar mund t�
 #: 
 msgid "Failed to save the downloaded release file. Please check disk space and permissions."
 msgstr "Dështoi ruajtja e skedarit të versionit të shkarkuar. Ju lutemi kontrolloni hapësirën në disk dhe lejet."
-
-#: 
-msgid "Invalid date format in start parameter"
-msgstr "Format i datës i pavlefshëm në parametrin e fillimit"
 
 #: 
 msgid "Mismatch"
@@ -10681,10 +10609,6 @@ msgid "CSV Column"
 msgstr "Kolona CSV"
 
 #: 
-msgid "CSV template not found"
-msgstr "Shablloni CSV nuk u gjet"
-
-#: 
 msgid "Call"
 msgstr "Thirrje"
 
@@ -10759,10 +10683,6 @@ msgstr "Kolona u përputhja automatikisht me një fushë ChurchCRM."
 #: 
 msgid "Community Management Platform"
 msgstr "Platforma e Administrimit të Komunitetit"
-
-#: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "Kompatibil me Excel, Google Sheets, ose ndonjë eksport CSV."
 
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."

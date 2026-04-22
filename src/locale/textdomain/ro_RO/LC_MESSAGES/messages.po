@@ -664,10 +664,6 @@ msgid "Save Changes"
 msgstr "Salvați modificările"
 
 #: 
-msgid "Church Event Editor"
-msgstr "Editor de evenimente bisericești"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Editare tip de eveniment"
 
@@ -734,21 +730,9 @@ msgid "Create Event"
 msgstr "Crează eveniment"
 
 #: 
-msgid "Create a new Event"
-msgstr "Crează eveniment nou"
-
-#: 
-msgid "Select your event type"
-msgstr "Selectează tip eveniment"
-
-#: 
 #, fuzzy
 msgid "Event Status"
 msgstr "Stare Eveniment"
-
-#: 
-msgid "Return to Events"
-msgstr "Revenire la Evenimente"
 
 #: 
 msgid "Sundays"
@@ -5186,10 +5170,6 @@ msgid "Church Greeter"
 msgstr "Salut biserică"
 
 #: 
-msgid "External Calendar API is disabled"
-msgstr "Api calendar dezactivat"
-
-#: 
 msgid "Special Group Settings : Sunday School Type"
 msgstr "Setări speciale de grup: tipul școlii duminicale"
 
@@ -5614,10 +5594,6 @@ msgstr "Fisierul nu poate fi deschis"
 #: 
 msgid "Missing calendar access token"
 msgstr "Indicativ (token) de acces la calendar lipsește"
-
-#: 
-msgid "Calendar access token not found"
-msgstr "Indicativ (token) de acces la calendar nu a fost găsit"
 
 #: 
 msgid "User must have Delete Records permission"
@@ -7043,20 +7019,8 @@ msgid "SMTP Host"
 msgstr "Gazdă SMTP"
 
 #: 
-msgid "Software"
-msgstr "Software"
-
-#: 
-msgid "System & Configuration"
-msgstr "Sistem și configurare"
-
-#: 
 msgid "Tip:"
 msgstr "Sfat:"
-
-#: 
-msgid "Valid Settings"
-msgstr "Setări valide"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7118,10 +7082,6 @@ msgid "Attendance Count Categories"
 msgstr "Categorii numărare prezență"
 
 #: 
-msgid "Attendance Notes"
-msgstr "Note prezență"
-
-#: 
 msgid "Change Event"
 msgstr "Schimbă evenimentul"
 
@@ -7177,14 +7137,6 @@ msgstr "Șterge evenimentul"
 msgid "Edit Event"
 msgstr "Editează evenimentul"
 
-#: 
-msgid "Editing Event"
-msgstr "Se editează evenimentul"
-
-#: 
-msgid "Enter event title..."
-msgstr "Introduceți titlul evenimentului..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7235,14 +7187,6 @@ msgid "None (one-time event)"
 msgstr "Niciunul (eveniment unic)"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "Opțional - Adăugați note despre predică sau detalii suplimentare despre eveniment"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "Note opționale despre prezență..."
-
-#: 
 msgid "People Checked In"
 msgstr "Persoane care au făcut check-in"
 
@@ -7277,10 +7221,6 @@ msgstr "Caută supraveghetor..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "Selectați evenimentul pentru Check-In"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "Text Predică / Eveniment"
 
 #: 
 msgid "Unclassified"
@@ -8314,10 +8254,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "URL-ul de bază nu este configurat în Config.php"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "Localizări acceptate de ChurchCRM"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "Conectați-vă la server prin SSH, FTP sau panoul de control al găzduirii"
 
@@ -8364,10 +8300,6 @@ msgstr "Limbă"
 #: 
 msgid "Local development:"
 msgstr "Dezvoltare locală:"
-
-#: 
-msgid "Locale Support"
-msgstr "Suport localizare"
 
 #: 
 msgid "Location & Contact Information"
@@ -9192,10 +9124,6 @@ msgstr "Deschiderea arhivei de actualizare a eșuat. Fișierul descărcat poate 
 #: 
 msgid "Failed to save the downloaded release file. Please check disk space and permissions."
 msgstr "Salvarea fișierului de lansare descărcat a eșuat. Verificați spațiul pe disc și permisiunile."
-
-#: 
-msgid "Invalid date format in start parameter"
-msgstr "Format de dată invalid în parametrul de start"
 
 #: 
 msgid "Mismatch"
@@ -10777,10 +10705,6 @@ msgid "CSV Column"
 msgstr "Coloană CSV"
 
 #: 
-msgid "CSV template not found"
-msgstr "Șablonul CSV nu a fost găsit"
-
-#: 
 msgid "Call"
 msgstr "Apelează"
 
@@ -10855,10 +10779,6 @@ msgstr "Coloana a fost mapată automat la un câmp ChurchCRM."
 #: 
 msgid "Community Management Platform"
 msgstr "Platformă de administrare a parohiei"
-
-#: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "Compatibil cu Excel, Google Sheets sau orice export CSV."
 
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."

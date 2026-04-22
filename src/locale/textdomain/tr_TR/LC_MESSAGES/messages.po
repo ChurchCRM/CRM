@@ -639,10 +639,6 @@ msgid "Save Changes"
 msgstr "Değişiklikleri Kaydet"
 
 #: 
-msgid "Church Event Editor"
-msgstr "Kilise Etkinlik Editörü"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Etkinlik Türünü Düzenle"
 
@@ -708,20 +704,8 @@ msgid "Create Event"
 msgstr "Etkinlik oluşturmak"
 
 #: 
-msgid "Create a new Event"
-msgstr "Yeni Bir Etkinlik Oluşturun"
-
-#: 
-msgid "Select your event type"
-msgstr "Etkinlik Türünüzü Seçin"
-
-#: 
 msgid "Event Status"
 msgstr "Olay durumu"
-
-#: 
-msgid "Return to Events"
-msgstr "Etkinliklere Dön"
 
 #: 
 msgid "Sundays"
@@ -5109,10 +5093,6 @@ msgid "Church Greeter"
 msgstr "Kilise Selamcı"
 
 #: 
-msgid "External Calendar API is disabled"
-msgstr "Harici takvim API devre dışı bırakıldı"
-
-#: 
 msgid "Special Group Settings : Sunday School Type"
 msgstr "Özel Grup Ayarları: Pazar Okulu Türü"
 
@@ -5537,10 +5517,6 @@ msgstr "Dosya açılamıyor"
 #: 
 msgid "Missing calendar access token"
 msgstr "Eksik Takvim Erişim Jetonu"
-
-#: 
-msgid "Calendar access token not found"
-msgstr "Takvim erişim jetonu bulunamadı"
 
 #: 
 msgid "User must have Delete Records permission"
@@ -6968,20 +6944,8 @@ msgid "SMTP Host"
 msgstr "SMTP Sunucusu"
 
 #: 
-msgid "Software"
-msgstr "Yazılım"
-
-#: 
-msgid "System & Configuration"
-msgstr "Sistem ve Yapılandırma"
-
-#: 
 msgid "Tip:"
 msgstr "İpucu:"
-
-#: 
-msgid "Valid Settings"
-msgstr "Geçerli Ayarlar"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7042,10 +7006,6 @@ msgid "Attendance Count Categories"
 msgstr "Katılım Sayısı Kategorileri"
 
 #: 
-msgid "Attendance Notes"
-msgstr "Katılım Notları"
-
-#: 
 msgid "Change Event"
 msgstr "Etkinliği Değiştir"
 
@@ -7101,14 +7061,6 @@ msgstr "Etkinliği Sil"
 msgid "Edit Event"
 msgstr "Etkinliği Düzenle"
 
-#: 
-msgid "Editing Event"
-msgstr "Etkinlik Düzenleniyor"
-
-#: 
-msgid "Enter event title..."
-msgstr "Etkinlik başlığı girin..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7159,14 +7111,6 @@ msgid "None (one-time event)"
 msgstr "Hiçbiri (tek seferlik etkinlik)"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "İsteğe bağlı - Vaaz notları veya ek etkinlik detayları ekleyin"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "Katılım hakkında isteğe bağlı notlar..."
-
-#: 
 msgid "People Checked In"
 msgstr "Giriş Yapan Kişiler"
 
@@ -7201,10 +7145,6 @@ msgstr "Gözetmen ara..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "Giriş için Etkinlik Seçin"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "Vaaz / Etkinlik Metni"
 
 #: 
 msgid "Unclassified"
@@ -8237,10 +8177,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "Temel URL, Config.php dosyasında yapılandırılmamış"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "ChurchCRM Desteklenen Yerel Ayarlar"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "Sunucunuza SSH, FTP veya barındırma kontrol paneliniz aracılığıyla bağlanın"
 
@@ -8287,10 +8223,6 @@ msgstr "Dil"
 #: 
 msgid "Local development:"
 msgstr "Yerel geliştirme:"
-
-#: 
-msgid "Locale Support"
-msgstr "Yerel Ayar Desteği"
 
 #: 
 msgid "Location & Contact Information"
@@ -9111,10 +9043,6 @@ msgstr "Yükseltme arşivi açılamadı. İndirilen dosya bozulmuş olabilir."
 #: 
 msgid "Failed to save the downloaded release file. Please check disk space and permissions."
 msgstr "İndirilen sürüm dosyası kaydedilemedi. Lütfen disk alanını ve izinleri kontrol edin."
-
-#: 
-msgid "Invalid date format in start parameter"
-msgstr "Başlangıç parametresinde geçersiz tarih biçimi"
 
 #: 
 msgid "Mismatch"
@@ -10694,10 +10622,6 @@ msgid "CSV Column"
 msgstr "CSV Sütunu"
 
 #: 
-msgid "CSV template not found"
-msgstr "CSV şablonu bulunamadı"
-
-#: 
 msgid "Call"
 msgstr "Ara"
 
@@ -10772,10 +10696,6 @@ msgstr "Sütun otomatik olarak bir ChurchCRM alanıyla eşleştirildi."
 #: 
 msgid "Community Management Platform"
 msgstr "Topluluk Yönetim Platformu"
-
-#: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "Excel, Google Sheets veya herhangi bir CSV dışa aktarımıyla uyumludur."
 
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."

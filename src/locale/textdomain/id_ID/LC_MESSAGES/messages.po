@@ -639,10 +639,6 @@ msgid "Save Changes"
 msgstr "Simpan perubahan"
 
 #: 
-msgid "Church Event Editor"
-msgstr "Sunting Daftar kegiatan gereja"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Ubah jenis kegiatan"
 
@@ -708,20 +704,8 @@ msgid "Create Event"
 msgstr "Ciptakan kegiatan"
 
 #: 
-msgid "Create a new Event"
-msgstr "Ciptakan kegiatan yang baru"
-
-#: 
-msgid "Select your event type"
-msgstr "Pilih tipe dari kegiatan"
-
-#: 
 msgid "Event Status"
 msgstr "Status kegiatan"
-
-#: 
-msgid "Return to Events"
-msgstr "Kembali kepada kegiatan-kegiatan"
 
 #: 
 msgid "Sundays"
@@ -5110,10 +5094,6 @@ msgid "Church Greeter"
 msgstr "Penyapa Gereja"
 
 #: 
-msgid "External Calendar API is disabled"
-msgstr "API Kalender Eksternal dinonaktifkan"
-
-#: 
 msgid "Special Group Settings : Sunday School Type"
 msgstr "Pengaturan Grup Khusus: Jenis Sekolah Minggu"
 
@@ -5538,10 +5518,6 @@ msgstr "Tidak dapat membuka file"
 #: 
 msgid "Missing calendar access token"
 msgstr "Token akses kalender tidak ada"
-
-#: 
-msgid "Calendar access token not found"
-msgstr "Token akses kalender tidak ditemukan"
 
 #: 
 msgid "User must have Delete Records permission"
@@ -6960,20 +6936,8 @@ msgid "SMTP Host"
 msgstr "Host SMTP"
 
 #: 
-msgid "Software"
-msgstr "Perangkat Lunak"
-
-#: 
-msgid "System & Configuration"
-msgstr "Sistem & Konfigurasi"
-
-#: 
 msgid "Tip:"
 msgstr "Tip:"
-
-#: 
-msgid "Valid Settings"
-msgstr "Pengaturan Valid"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7033,10 +6997,6 @@ msgid "Attendance Count Categories"
 msgstr "Kategori Hitung Kehadiran"
 
 #: 
-msgid "Attendance Notes"
-msgstr "Catatan Kehadiran"
-
-#: 
 msgid "Change Event"
 msgstr "Ubah Kegiatan"
 
@@ -7092,14 +7052,6 @@ msgstr "Hapus Kegiatan"
 msgid "Edit Event"
 msgstr "Ubah Kegiatan"
 
-#: 
-msgid "Editing Event"
-msgstr "Mengubah Kegiatan"
-
-#: 
-msgid "Enter event title..."
-msgstr "Masukkan judul kegiatan..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7150,14 +7102,6 @@ msgid "None (one-time event)"
 msgstr "Tidak ada (kegiatan sekali jalan)"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "Opsional - Tambahkan catatan khotbah atau detail kegiatan"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "Catatan opsional tentang kehadiran..."
-
-#: 
 msgid "People Checked In"
 msgstr "Orang yang Hadir"
 
@@ -7192,10 +7136,6 @@ msgstr "Cari pengawas..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "Pilih Kegiatan untuk Presensi"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "Teks Khotbah / Kegiatan"
 
 #: 
 msgid "Unclassified"
@@ -8227,10 +8167,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "URL Dasar belum dikonfigurasi di Config.php"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "Bahasa yang Didukung ChurchCRM"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "Hubungkan ke server via SSH, FTP, atau panel hosting"
 
@@ -8277,10 +8213,6 @@ msgstr "Bahasa"
 #: 
 msgid "Local development:"
 msgstr "Pengembangan lokal:"
-
-#: 
-msgid "Locale Support"
-msgstr "Dukungan Bahasa"
 
 #: 
 msgid "Location & Contact Information"
@@ -9097,10 +9029,6 @@ msgstr "Gagal membuka arsip pembaruan. File yang diunduh mungkin rusak."
 #: 
 msgid "Failed to save the downloaded release file. Please check disk space and permissions."
 msgstr "Gagal menyimpan file rilis yang diunduh. Periksa ruang disk dan izin."
-
-#: 
-msgid "Invalid date format in start parameter"
-msgstr "Format tanggal tidak valid pada parameter awal"
 
 #: 
 msgid "Mismatch"
@@ -10678,10 +10606,6 @@ msgid "CSV Column"
 msgstr "Kolom CSV"
 
 #: 
-msgid "CSV template not found"
-msgstr "Template CSV tidak ditemukan"
-
-#: 
 msgid "Call"
 msgstr "Telepon"
 
@@ -10756,10 +10680,6 @@ msgstr "Kolom secara otomatis dicocokkan dengan field ChurchCRM."
 #: 
 msgid "Community Management Platform"
 msgstr "Platform Manajemen Komunitas"
-
-#: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "Kompatibel dengan Excel, Google Sheets, atau ekspor CSV apa pun."
 
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."

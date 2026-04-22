@@ -639,10 +639,6 @@ msgid "Save Changes"
 msgstr "Hifadhi"
 
 #: 
-msgid "Church Event Editor"
-msgstr "Mhariri wa Tukio la Kanisa"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Badilisha Aina ya Tukio"
 
@@ -708,20 +704,8 @@ msgid "Create Event"
 msgstr "Ongeza tukio"
 
 #: 
-msgid "Create a new Event"
-msgstr "Ongeza tukio"
-
-#: 
-msgid "Select your event type"
-msgstr "Chagua aina ya tukio lako"
-
-#: 
 msgid "Event Status"
 msgstr "Hali ya tukio"
-
-#: 
-msgid "Return to Events"
-msgstr "Rudi kwa Matukio"
 
 #: 
 msgid "Sundays"
@@ -5105,10 +5089,6 @@ msgid "Church Greeter"
 msgstr "Salamu wa Kanisa"
 
 #: 
-msgid "External Calendar API is disabled"
-msgstr "API ya Kalenda ya Nje imezimwa"
-
-#: 
 msgid "Special Group Settings : Sunday School Type"
 msgstr "Mipangilio Maalum ya Kikundi : Aina ya Shule ya Jumapili"
 
@@ -5533,10 +5513,6 @@ msgstr "Imeshindwa kufungua faili"
 #: 
 msgid "Missing calendar access token"
 msgstr "Tokeni ya ufikiaji ya kalenda haipo"
-
-#: 
-msgid "Calendar access token not found"
-msgstr "Tokeni ya ufikiaji wa kalenda haijapatikana"
 
 #: 
 msgid "User must have Delete Records permission"
@@ -6962,20 +6938,8 @@ msgid "SMTP Host"
 msgstr "Seva ya SMTP"
 
 #: 
-msgid "Software"
-msgstr "Programu"
-
-#: 
-msgid "System & Configuration"
-msgstr "Mfumo na Usanidi"
-
-#: 
 msgid "Tip:"
 msgstr "Kidokezo:"
-
-#: 
-msgid "Valid Settings"
-msgstr "Mipangilio Sahihi"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7036,10 +7000,6 @@ msgid "Attendance Count Categories"
 msgstr "Kategoria za Hesabu ya Mahudhurio"
 
 #: 
-msgid "Attendance Notes"
-msgstr "Maelezo ya Mahudhurio"
-
-#: 
 msgid "Change Event"
 msgstr "Badilisha Tukio"
 
@@ -7095,14 +7055,6 @@ msgstr "Futa Tukio"
 msgid "Edit Event"
 msgstr "Hariri Tukio"
 
-#: 
-msgid "Editing Event"
-msgstr "Inahariri Tukio"
-
-#: 
-msgid "Enter event title..."
-msgstr "Ingiza kichwa cha tukio..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7153,14 +7105,6 @@ msgid "None (one-time event)"
 msgstr "Hakuna (tukio la mara moja tu)"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "Hiari - Ongeza muhtasari wa mahubiri au maelezo ya ziada"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "Maelezo ya hiari kuhusu mahudhurio..."
-
-#: 
 msgid "People Checked In"
 msgstr "Watu Waliosajiliwa"
 
@@ -7195,10 +7139,6 @@ msgstr "Tafuta msimamizi..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "Chagua Tukio kwa ajili ya Usajili"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "Andiko la Mahubiri / Tukio"
 
 #: 
 msgid "Unclassified"
@@ -8231,10 +8171,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "URL ya Msingi haijasanidiwa katika Config.php"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "Lugha Zinazotumika na ChurchCRM"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "Unganisha kwenye seva yako kupitia SSH, FTP, au jopo lako la udhibiti wa mwenyeji"
 
@@ -8281,10 +8217,6 @@ msgstr "Lugha"
 #: 
 msgid "Local development:"
 msgstr "Uendelezaji wa ndani (Local):"
-
-#: 
-msgid "Locale Support"
-msgstr "Usaidizi wa Lugha/Eneo"
 
 #: 
 msgid "Location & Contact Information"
@@ -9105,10 +9037,6 @@ msgstr "Imeshindwa kufungua kumbukumbu ya usasisho. Faili lililopakuliwa linawez
 #: 
 msgid "Failed to save the downloaded release file. Please check disk space and permissions."
 msgstr "Imeshindwa kuhifadhi faili la toleo lililopakuliwa. Tafadhali angalia nafasi ya diski na ruhusa."
-
-#: 
-msgid "Invalid date format in start parameter"
-msgstr "Muundo wa tarehe si sahihi katika kigezo cha mwanzo"
 
 #: 
 msgid "Mismatch"
@@ -10688,10 +10616,6 @@ msgid "CSV Column"
 msgstr "Safu ya CSV"
 
 #: 
-msgid "CSV template not found"
-msgstr "Kiolezo cha CSV hakijapatikana"
-
-#: 
 msgid "Call"
 msgstr "Piga Simu"
 
@@ -10766,10 +10690,6 @@ msgstr "Safu ilioanishwa kiotomatiki na sehemu ya ChurchCRM."
 #: 
 msgid "Community Management Platform"
 msgstr "Jukwaa la Usimamizi wa Jumuiya"
-
-#: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "Inaoana na Excel, Google Sheets, au usafirishaji wowote wa CSV."
 
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."

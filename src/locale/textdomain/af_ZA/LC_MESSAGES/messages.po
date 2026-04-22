@@ -639,10 +639,6 @@ msgid "Save Changes"
 msgstr "Stoor veranderinge"
 
 #: 
-msgid "Church Event Editor"
-msgstr "Kerk geleentheid redigeerder. "
-
-#: 
 msgid "Edit Event Type"
 msgstr "Redigeer geleentheidstipe"
 
@@ -708,20 +704,8 @@ msgid "Create Event"
 msgstr "Skep geleentheid"
 
 #: 
-msgid "Create a new Event"
-msgstr "Skep 'n nuwe geleentheid"
-
-#: 
-msgid "Select your event type"
-msgstr "Kies u tipe gebeurtenis"
-
-#: 
 msgid "Event Status"
 msgstr "Gebeurtenisstatus"
-
-#: 
-msgid "Return to Events"
-msgstr "Keer terug na gebeure"
 
 #: 
 msgid "Sundays"
@@ -5109,10 +5093,6 @@ msgid "Church Greeter"
 msgstr "Kerk Greeter"
 
 #: 
-msgid "External Calendar API is disabled"
-msgstr "Eksterne kalender-API is gedeaktiveer"
-
-#: 
 msgid "Special Group Settings : Sunday School Type"
 msgstr "Spesiale groepinstellings: Sondagskooltipe"
 
@@ -5537,10 +5517,6 @@ msgstr "Kan nie lêer oopmaak nie"
 #: 
 msgid "Missing calendar access token"
 msgstr "Kalender-toegangstoken ontbreek"
-
-#: 
-msgid "Calendar access token not found"
-msgstr "Kalender-toegangstoken nie gevind nie"
 
 #: 
 msgid "User must have Delete Records permission"
@@ -6968,20 +6944,8 @@ msgid "SMTP Host"
 msgstr "SMTP Gasheer"
 
 #: 
-msgid "Software"
-msgstr "Sagteware"
-
-#: 
-msgid "System & Configuration"
-msgstr "Stelsel & Konfigurasie"
-
-#: 
 msgid "Tip:"
 msgstr "Wenk:"
-
-#: 
-msgid "Valid Settings"
-msgstr "Geldige Instellings"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7042,10 +7006,6 @@ msgid "Attendance Count Categories"
 msgstr "Bywoning Tel Kategorieë"
 
 #: 
-msgid "Attendance Notes"
-msgstr "Bywoning Notas"
-
-#: 
 msgid "Change Event"
 msgstr "Wysig Gebeuer"
 
@@ -7101,14 +7061,6 @@ msgstr "Vee Gelegentheid Uit"
 msgid "Edit Event"
 msgstr "Redigeer Gelegentheid"
 
-#: 
-msgid "Editing Event"
-msgstr "Redigeer Gelegentheid"
-
-#: 
-msgid "Enter event title..."
-msgstr "Voer gelegentheidstitel in..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7159,14 +7111,6 @@ msgid "None (one-time event)"
 msgstr "Niks (eenmalige gelegentheid)"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "Opsioneel - Voeg prediking notas of bykomende gelegentheidsbesonderhede"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "Opsioneel notas oor bywoning..."
-
-#: 
 msgid "People Checked In"
 msgstr "Mense Ingeskakeld"
 
@@ -7201,10 +7145,6 @@ msgstr "Soek na toesighouer..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "Select Gelegentheid for Check-In"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "Sermon / Gelegentheid Text"
 
 #: 
 msgid "Unclassified"
@@ -8237,10 +8177,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "Basis-URL is nie in Config.php gekonfigureer nie"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "ChurchCRM Ondersteunde Lokale"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "Verbind na jou bediener via SSH, FTP, of jou gasheer beheerven"
 
@@ -8287,10 +8223,6 @@ msgstr "Taal"
 #: 
 msgid "Local development:"
 msgstr "Plaaslike ontwikkeling:"
-
-#: 
-msgid "Locale Support"
-msgstr "Landinstelling Ondersteuning"
 
 #: 
 msgid "Location & Contact Information"
@@ -9111,10 +9043,6 @@ msgstr "Kon nie opgraderingsargief oopmaak nie. Die afgelaaide lêer kan beskadi
 #: 
 msgid "Failed to save the downloaded release file. Please check disk space and permissions."
 msgstr "Kon nie die afgelaaide vrystellingslêer stoor nie. Kyk asseblief skyf-spasie en regte."
-
-#: 
-msgid "Invalid date format in start parameter"
-msgstr "Ongeldige datumformaat in beginparameter"
 
 #: 
 msgid "Mismatch"
@@ -10694,10 +10622,6 @@ msgid "CSV Column"
 msgstr "CSV-Kolom"
 
 #: 
-msgid "CSV template not found"
-msgstr "CSV-sjabloon nie gevind nie"
-
-#: 
 msgid "Call"
 msgstr "Bel"
 
@@ -10772,10 +10696,6 @@ msgstr "Kolom is outomaties ooreengekom met 'n ChurchCRM-veld."
 #: 
 msgid "Community Management Platform"
 msgstr "Gemeenskapbestuursplatform"
-
-#: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "Versoenbaar met Excel, Google Sheets, of enige CSV-uitvoer."
 
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
