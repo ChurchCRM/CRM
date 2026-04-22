@@ -13,6 +13,7 @@ use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use League\Csv\Reader;
@@ -139,6 +140,9 @@ function buildCsvImportFieldCatalog(): array
     }
 
     foreach (PersonCustomMasterQuery::create()->orderByOrder()->find() as $cf) {
+        // PersonCustomMaster::getId() already returns the raw column name
+        // ("c3") — do NOT prepend another 'c'. The writer validates /^c\d+$/
+        // on the suffix and looks up the type map by the same string.
         $fields[] = [
             'key'      => CSV_PERSON_CUSTOM_PREFIX . $cf->getId(),
             'label'    => $cf->getName(),
@@ -178,16 +182,19 @@ function buildCsvImportFieldCatalog(): array
 }
 
 /**
- * Build the CSV column header for a catalog entry. Core fields keep their
- * plain label ("First Name"); extension fields get a category suffix so the
- * source is visible in Excel and column headers remain unique across the
- * four extension buckets (e.g. a person property and a family property that
- * happen to share a name won't collide).
+ * Build the CSV column header for a catalog entry. Core columns emit the
+ * stable machine key ("FamilyID", "FirstName") so a template downloaded in
+ * one locale still auto-maps cleanly in another — localizing the header
+ * would break round-tripping across locales. Extension columns use the
+ * user's own label plus a category suffix so the source is visible in
+ * Excel and headers stay unique across the four extension buckets (a
+ * person property and a family property that happen to share a name won't
+ * collide).
  */
 function csvColumnHeaderFor(array $field): string
 {
     if (empty($field['groupTag'])) {
-        return $field['label'];
+        return $field['key'];
     }
     return $field['label'] . ' (' . $field['groupTag'] . ')';
 }
@@ -241,24 +248,53 @@ function writeCustomFields(\Propel\Runtime\Connection\ConnectionInterface $con, 
  * Uses the caller's transaction connection so property rows participate in the
  * same transaction as the person/family writes in /csv/execute.
  *
- * @param array<int, string> $assignments property_pro.pro_ID => value string
+ * Semantics match the interactive property-assignment routes:
+ *
+ * - Prompt-less properties (pro_Prompt empty): presence-by-boolean. A value
+ *   of yes/true/1/y/t assigns the property with an empty value; no/false/0/
+ *   blank/anything else is treated as "do not assign" (and is a no-op even
+ *   if an existing assignment is present — the CSV importer never unassigns).
+ * - Prompted properties (pro_Prompt set): the CSV value is sanitized with
+ *   InputUtils::sanitizeText() and only assigned when non-empty.
+ *
+ * @param array<int, string>       $assignments property_pro.pro_ID => raw CSV value
+ * @param array<int, string|null>  $promptMap   property_pro.pro_ID => pro_Prompt text (null/empty means promptless)
  */
-function writeProperties(\Propel\Runtime\Connection\ConnectionInterface $con, int $recordId, array $assignments): void
+function writeProperties(\Propel\Runtime\Connection\ConnectionInterface $con, int $recordId, array $assignments, array $promptMap): void
 {
-    foreach ($assignments as $proId => $value) {
+    foreach ($assignments as $proId => $raw) {
+        $prompt = $promptMap[$proId] ?? '';
+        $raw    = trim((string) $raw);
+
+        if ($prompt === '' || $prompt === null) {
+            // Promptless: boolean presence
+            $lower = strtolower($raw);
+            $truthy = in_array($lower, ['yes', 'y', 'true', 't', '1'], true);
+            if (!$truthy) {
+                continue;
+            }
+            $valueToStore = '';
+        } else {
+            // Prompted: sanitized text, skip blanks
+            if ($raw === '') {
+                continue;
+            }
+            $valueToStore = InputUtils::sanitizeText($raw);
+        }
+
         $existing = RecordPropertyQuery::create()
             ->filterByPropertyId($proId)
             ->filterByRecordId($recordId)
             ->findOne($con);
         if ($existing !== null) {
-            $existing->setPropertyValue((string) $value);
+            $existing->setPropertyValue($valueToStore);
             $existing->save($con);
             continue;
         }
         $rp = new RecordProperty();
         $rp->setPropertyId($proId);
         $rp->setRecordId($recordId);
-        $rp->setPropertyValue((string) $value);
+        $rp->setPropertyValue($valueToStore);
         $rp->save($con);
     }
 }
@@ -375,10 +411,11 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
         // for core columns — custom-field and property values depend on each
         // church's configuration, so those cells stay blank as a prompt.
         $sampleRows = [
-            ['FamilyID' => '1001', 'Title' => 'Mr',   'FirstName' => 'John',  'LastName' => 'Smith',  'Gender' => 'Male',   'Address1' => '123 Church St', 'City' => 'Springfield', 'State' => 'IL', 'Zip' => '62704', 'Country' => 'USA', 'HomePhone' => '555-1234', 'Email' => 'john.smith@example.com',  'BirthDate' => '1980-05-12', 'MembershipDate' => '2020-01-01', 'WeddingDate' => '2010-06-15', 'Classification' => 'Member', 'FamilyRole' => 'Head of Household'],
-            ['FamilyID' => '1001', 'Title' => 'Mrs',  'FirstName' => 'Jane',  'LastName' => 'Smith',  'Gender' => 'Female', 'Address1' => '123 Church St', 'City' => 'Springfield', 'State' => 'IL', 'Zip' => '62704', 'Country' => 'USA', 'HomePhone' => '555-4321', 'Email' => 'jane.smith@example.com',  'BirthDate' => '1982-08-20', 'MembershipDate' => '2020-01-01', 'WeddingDate' => '2010-06-15', 'Classification' => 'Member', 'FamilyRole' => 'Spouse'],
-            ['FamilyID' => '1001', 'Title' => 'Miss', 'FirstName' => 'Emily', 'LastName' => 'Smith',  'Gender' => 'Female', 'Address1' => '123 Church St', 'City' => 'Springfield', 'State' => 'IL', 'Zip' => '62704', 'Country' => 'USA', 'HomePhone' => '555-0000', 'Email' => 'emily.smith@example.com', 'BirthDate' => '2010-03-05', 'MembershipDate' => '2020-01-01',                                     'Classification' => 'Member', 'FamilyRole' => 'Child'],
-            ['FamilyID' => '',     'Title' => 'Ms',   'FirstName' => 'Alice', 'LastName' => 'Walker', 'Gender' => 'Female', 'Address1' => '789 Solo Ave',  'City' => 'Capital City', 'State' => 'IL', 'Zip' => '62999', 'Country' => 'USA', 'HomePhone' => '555-7777', 'Email' => 'alice.walker@example.com', 'BirthDate' => '1990-02-02', 'MembershipDate' => '2021-05-01',                                     'Classification' => 'Member'],
+            ['FamilyID' => '1001', 'Title' => 'Mr',   'FirstName' => 'John',  'LastName' => 'Smith',   'Gender' => 'Male',   'Address1' => '123 Church St', 'City' => 'Springfield',  'State' => 'IL', 'Zip' => '62704', 'Country' => 'USA', 'HomePhone' => '555-1234', 'Email' => 'john.smith@example.com',  'BirthDate' => '1980-05-12', 'MembershipDate' => '2020-01-01', 'WeddingDate' => '2010-06-15', 'Classification' => 'Member', 'FamilyRole' => 'Head of Household'],
+            ['FamilyID' => '1001', 'Title' => 'Mrs',  'FirstName' => 'Jane',  'LastName' => 'Smith',   'Gender' => 'Female', 'Address1' => '123 Church St', 'City' => 'Springfield',  'State' => 'IL', 'Zip' => '62704', 'Country' => 'USA', 'HomePhone' => '555-4321', 'Email' => 'jane.smith@example.com',  'BirthDate' => '1982-08-20', 'MembershipDate' => '2020-01-01', 'WeddingDate' => '2010-06-15', 'Classification' => 'Member', 'FamilyRole' => 'Spouse'],
+            ['FamilyID' => '1001', 'Title' => 'Miss', 'FirstName' => 'Emily', 'LastName' => 'Smith',   'Gender' => 'Female', 'Address1' => '123 Church St', 'City' => 'Springfield',  'State' => 'IL', 'Zip' => '62704', 'Country' => 'USA', 'HomePhone' => '555-0000', 'Email' => 'emily.smith@example.com', 'BirthDate' => '2010-03-05', 'MembershipDate' => '2020-01-01',                                     'Classification' => 'Member', 'FamilyRole' => 'Child'],
+            ['FamilyID' => '1002', 'Title' => 'Mr',   'FirstName' => 'Peter', 'LastName' => 'Johnson', 'Gender' => 'Male',   'Address1' => '456 Grace Ave', 'City' => 'Capital City', 'State' => 'IL', 'Zip' => '62999', 'Country' => 'USA', 'HomePhone' => '555-7777', 'Email' => 'peter.johnson@example.com', 'BirthDate' => '1975-11-03', 'MembershipDate' => '2019-03-15', 'WeddingDate' => '2005-09-20', 'Classification' => 'Member', 'FamilyRole' => 'Head of Household'],
+            ['FamilyID' => '',     'Title' => 'Ms',   'FirstName' => 'Alice', 'LastName' => 'Walker',  'Gender' => 'Female', 'Address1' => '789 Solo Ave',  'City' => 'Capital City', 'State' => 'IL', 'Zip' => '62999', 'Country' => 'USA', 'HomePhone' => '555-8888', 'Email' => 'alice.walker@example.com', 'BirthDate' => '1990-02-02', 'MembershipDate' => '2021-05-01',                                     'Classification' => 'Member'],
         ];
 
         $exporter = new \ChurchCRM\Utils\CsvExporter();
@@ -560,6 +597,9 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
         // Keys are the raw column names in `person_custom` / `family_custom` (e.g. "c1", "c2").
         $personCustomTypes = [];
         foreach (PersonCustomMasterQuery::create()->find() as $cf) {
+            // getId() already returns the raw column name ("c3") — do NOT
+            // prepend 'c'. The writer's isset($personCustomTypes[$col])
+            // check must match on "c3", not "cc3".
             $personCustomTypes[$cf->getId()] = (int) $cf->getTypeId();
         }
         $familyCustomTypes = [];
@@ -567,15 +607,18 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
             $familyCustomTypes[$cf->getField()] = (int) $cf->getTypeId();
         }
 
-        // Build allow-lists of property IDs per class so a spoofed mapping payload can't
-        // assign a family property to a person or vice versa.
-        $allowedPersonPropIds = [];
+        // Build allow-lists of property IDs per class (so a spoofed mapping
+        // payload can't assign a family property to a person and vice versa),
+        // keyed by pro_ID with pro_Prompt as the value. The prompt text drives
+        // whether a property is treated as boolean (no prompt) or free-text
+        // (prompted) on write. See writeProperties().
+        $personPropPrompts = [];
         foreach (PropertyQuery::create()->filterByProClass('p')->find() as $prop) {
-            $allowedPersonPropIds[(int) $prop->getProId()] = true;
+            $personPropPrompts[(int) $prop->getProId()] = (string) $prop->getProPrompt();
         }
-        $allowedFamilyPropIds = [];
+        $familyPropPrompts = [];
         foreach (PropertyQuery::create()->filterByProClass('f')->find() as $prop) {
-            $allowedFamilyPropIds[(int) $prop->getProId()] = true;
+            $familyPropPrompts[(int) $prop->getProId()] = (string) $prop->getProPrompt();
         }
 
         try {
@@ -603,12 +646,12 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                         }
                     } elseif (str_starts_with($crmField, CSV_PERSON_PROP_PREFIX)) {
                         $proId = (int) substr($crmField, strlen(CSV_PERSON_PROP_PREFIX));
-                        if ($proId > 0 && isset($allowedPersonPropIds[$proId])) {
+                        if ($proId > 0 && array_key_exists($proId, $personPropPrompts)) {
                             $personProps[$proId] = $value;
                         }
                     } elseif (str_starts_with($crmField, CSV_FAMILY_PROP_PREFIX)) {
                         $proId = (int) substr($crmField, strlen(CSV_FAMILY_PROP_PREFIX));
-                        if ($proId > 0 && isset($allowedFamilyPropIds[$proId])) {
+                        if ($proId > 0 && array_key_exists($proId, $familyPropPrompts)) {
                             $familyProps[$proId] = $value;
                         }
                     } else {
@@ -649,8 +692,6 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                         $family->save($con);
                         $familyCache[$csvFamilyId] = $family;
 
-                        writeCustomFields($con, 'family_custom', 'fam_ID', $family->getId(), $familyCustoms, $familyCustomTypes);
-                        writeProperties($con, $family->getId(), $familyProps);
                         // Note provenance is a best-effort side effect — don't fail the import if the rewrite hits an edge case.
                         try {
                             markCreateNoteAsImported($con, familyId: $family->getId());
@@ -660,6 +701,18 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                                 'error'    => $e->getMessage(),
                             ]);
                         }
+                    }
+
+                    // Apply family custom fields / properties every row (not just on
+                    // family creation) so values that first appear on a later row for
+                    // the same FamilyID aren't silently dropped. writeCustomFields()
+                    // and writeProperties() are both no-ops when the row supplies
+                    // nothing relevant for the family.
+                    if (!empty($familyCustoms)) {
+                        writeCustomFields($con, 'family_custom', 'fam_ID', $family->getId(), $familyCustoms, $familyCustomTypes);
+                    }
+                    if (!empty($familyProps)) {
+                        writeProperties($con, $family->getId(), $familyProps, $familyPropPrompts);
                     }
                 }
 
@@ -735,7 +788,7 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                 $person->save($con);
 
                 writeCustomFields($con, 'person_custom', 'per_ID', $person->getId(), $personCustoms, $personCustomTypes);
-                writeProperties($con, $person->getId(), $personProps);
+                writeProperties($con, $person->getId(), $personProps, $personPropPrompts);
                 try {
                     markCreateNoteAsImported($con, personId: $person->getId());
                 } catch (\Throwable $e) {

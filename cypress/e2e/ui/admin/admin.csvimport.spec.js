@@ -7,8 +7,31 @@ describe(
         },
     },
     () => {
+        // Every test ends with cy.request()/makePrivateAdminAPICall() to verify
+        // imported state, which resets the PHP session on the server. The next
+        // test's cached cy.session() cookie then points at a dead server session
+        // and cy.visit() lands on the login page — "#csvFile never found". The
+        // cy.session() cache (with or without forceLogin) does NOT fix this
+        // because it only restores the client cookie, not the server-side PHP
+        // session. Bypass cy.session() entirely with a direct form login:
+        // clearCookies → POST /session/begin → verify we landed past login.
+        const freshAdminLogin = () => {
+            const username = Cypress.env("admin.username");
+            const password = Cypress.env("admin.password");
+            cy.clearCookies();
+            // Match setupLoginSession's canonical path: /login resolves to the
+            // session/begin form but goes through the front-controller, which
+            // is the path the app's session cookie gets minted on.
+            cy.visit("/login");
+            cy.get("input[name=User]", { timeout: 10000 })
+                .should("be.visible")
+                .type(username);
+            cy.get("input[name=Password]").type(`${password}{enter}`);
+            cy.url().should("not.include", "/session/begin");
+        };
+
         beforeEach(() => {
-            cy.setupAdminSession();
+            freshAdminLogin();
         });
 
         it("Verify CSV Import", () => {
@@ -205,13 +228,12 @@ describe(
             // otherwise produce a raw 500 from League\Csv\SyntaxError. The
             // route must surface it as a 400 with the server-provided message
             // — not Uppy's hardcoded "looks like a network error" fallback.
-            const body = "FamilyID,FirstName,FirstName\n100,foo,bar\n";
+            // Uses a fixture file (not Cypress.Buffer.from inline) because
+            // Uppy's allowedFileTypes check rejects in-memory Buffer uploads
+            // before they reach the server.
             cy.visit("admin/import/csv");
 
-            cy.get("#csvFile").selectFile(
-                { contents: Cypress.Buffer.from(body), fileName: "dup.csv", mimeType: "text/csv" },
-                { force: true },
-            );
+            cy.get("#csvFile").selectFile("cypress/fixtures/test_duplicate_columns.csv", { force: true });
             cy.get("#csv-import-form").submit();
 
             cy.get("#statusError", { timeout: 10000 }).should("be.visible");

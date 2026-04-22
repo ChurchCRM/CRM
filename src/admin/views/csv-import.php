@@ -41,12 +41,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="d-flex">
                 <div><i class="ti ti-bulb fs-3 me-2"></i></div>
                 <div>
-                    <h4 class="alert-title mb-1"><?= gettext('Custom fields & properties are supported') ?></h4>
+                    <h4 class="alert-title mb-1"><?= gettext('Custom fields and properties are supported') ?></h4>
                     <div class="text-secondary">
                         <?= gettext('The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically.') ?>
                         <ul class="mb-0 mt-2">
                             <li><?= gettext('Boolean properties/fields accept yes / no / true / false / 1 / 0.') ?></li>
-                            <li><?= gettext('Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a month & day with no year.') ?></li>
+                            <li><?= gettext('Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a month and day with no year.') ?></li>
                             <li><?= gettext('Custom field columns you have not configured are ignored — nothing is created on the fly.') ?></li>
                         </ul>
                     </div>

@@ -345,10 +345,17 @@ class DateTimeUtils
         if ($raw === '') {
             return null;
         }
+        // Year-less inputs validate month/day against a known leap year so 2/29
+        // round-trips correctly; year-bearing inputs validate against the actual year.
         if (preg_match('/^(\d{4})-(\d{1,2})-(\d{1,2})$/', $raw, $m)) {
             // YYYY-MM-DD or YYYY-M-D (e.g. 2001-07-04, 0000-07-04)
-            $y = (int) $m[1];
-            return ['month' => (int) $m[2], 'day' => (int) $m[3], 'year' => $y > 0 ? $y : null];
+            $y     = (int) $m[1];
+            $month = (int) $m[2];
+            $day   = (int) $m[3];
+            if (!checkdate($month, $day, $y > 0 ? $y : 2000)) {
+                return null;
+            }
+            return ['month' => $month, 'day' => $day, 'year' => $y > 0 ? $y : null];
         }
         if (preg_match('/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})$/', $raw, $m)) {
             // M/D/YYYY, M-D-YYYY, M/D/YY (e.g. 1/1/2025, 7-4-2001, 7/4/25, 7/4/00)
@@ -357,11 +364,21 @@ class DateTimeUtils
                 // Match PHP's strtotime rules: 00-69 => 2000-2069, 70-99 => 1970-1999
                 $y += $y >= 70 ? 1900 : 2000;
             }
-            return ['month' => (int) $m[1], 'day' => (int) $m[2], 'year' => $y > 0 ? $y : null];
+            $month = (int) $m[1];
+            $day   = (int) $m[2];
+            if (!checkdate($month, $day, $y > 0 ? $y : 2000)) {
+                return null;
+            }
+            return ['month' => $month, 'day' => $day, 'year' => $y > 0 ? $y : null];
         }
         if (preg_match('/^(\d{1,2})[\/\-](\d{1,2})$/', $raw, $m)) {
             // M/D or M-D (e.g. 1/1, 7/4, 7-4) — no year
-            return ['month' => (int) $m[1], 'day' => (int) $m[2], 'year' => null];
+            $month = (int) $m[1];
+            $day   = (int) $m[2];
+            if (!checkdate($month, $day, 2000)) {
+                return null;
+            }
+            return ['month' => $month, 'day' => $day, 'year' => null];
         }
         // Last-resort fallback for month-name / ISO datetime / etc. The
         // structural patterns above cover the formats most CSV exporters
