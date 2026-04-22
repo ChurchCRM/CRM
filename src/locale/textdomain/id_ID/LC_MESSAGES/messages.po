@@ -1164,10 +1164,6 @@ msgid "Summary Data"
 msgstr "Data Ringkasan"
 
 #: 
-msgid "CSV"
-msgstr "CSV"
-
-#: 
 msgid "Back"
 msgstr "Kembali"
 
@@ -1291,10 +1287,6 @@ msgstr "Format file data"
 #: 
 msgid "GPS Visualizer"
 msgstr "GPS Visualizer"
-
-#: 
-msgid "Street Atlas USA"
-msgstr "Atlas Jalan USA"
 
 #: 
 #, fuzzy
@@ -2324,18 +2316,6 @@ msgstr "Jumlahnya terlalu besar. Harus antara -2147483648 dan 2147483647"
 #: 
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Jumlah uang terlalu besar. Maksimal $ 999999999,99"
-
-#: 
-msgid " Bold Italic"
-msgstr "Tebal miring"
-
-#: 
-msgid " Italic"
-msgstr "Miring"
-
-#: 
-msgid " Bold"
-msgstr "Mencolok"
 
 #: 
 msgid "Error making API Call to"
@@ -5062,7 +5042,8 @@ msgid "Indonesian - Indonesia"
 msgstr "Indonesia - Indonesia"
 
 #: 
-msgid "records(s) successfully added to selected Group."
+#, fuzzy
+msgid "record(s) successfully added to selected Group."
 msgstr "catatan berhasil ditambahkan ke Grup yang dipilih."
 
 #: 
@@ -5370,7 +5351,8 @@ msgid "Remove All from Cart"
 msgstr "Hapus Semua dari Keranjang"
 
 #: 
-msgid "records(s) successfully deleted from the selected Group."
+#, fuzzy
+msgid "record(s) successfully deleted from the selected Group."
 msgstr "catatan berhasil dihapus dari Grup yang dipilih."
 
 #: 
@@ -5846,10 +5828,6 @@ msgstr "Tidak ada email yang masuk"
 #: 
 msgid "Mailchimp is not active"
 msgstr "Mailchimp tidak aktif"
-
-#: 
-msgid "Mailchimp"
-msgstr "Mailchimp"
 
 #: 
 msgid "Lists"
@@ -6856,7 +6834,8 @@ msgid "Total Payments"
 msgstr "Total Pembayaran"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payments?"
 msgstr "pembayaran"
 
 #: 
@@ -6870,10 +6849,6 @@ msgstr "URL Dasar"
 #: 
 msgid "Copy"
 msgstr "Salin"
-
-#: 
-msgid "DSN"
-msgstr "DSN"
 
 #: 
 msgid "Debug Info"
@@ -7925,10 +7900,6 @@ msgstr "Setoran Terbuka:"
 #: 
 msgid "Orphaned Files:"
 msgstr "File Yatim:"
-
-#: 
-msgid "PDF/CSV"
-msgstr "PDF/CSV"
 
 #: 
 msgid "Payment"
@@ -9492,10 +9463,6 @@ msgid "Loading recovery codes"
 msgstr "Memuat kode pemulihan"
 
 #: 
-msgid "MailChimp"
-msgstr "MailChimp"
-
-#: 
 msgid "MailChimp API Key"
 msgstr "Kunci API MailChimp"
 
@@ -10854,10 +10821,6 @@ msgid "Download CSV Template"
 msgstr "Unduh Template CSV"
 
 #: 
-msgid "Download the template to see the expected column format."
-msgstr "Unduh template untuk melihat format kolom yang diharapkan."
-
-#: 
 msgid "Drag and drop your CSV file here"
 msgstr "Seret dan lepas file CSV Anda di sini"
 
@@ -10868,10 +10831,6 @@ msgstr "Duplikat"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Setiap orang dapat memiliki email dan nomor ponsel sendiri."
-
-#: 
-msgid "Each row is one person. Members of the same family share a FamilyID."
-msgstr "Setiap baris adalah satu orang. Anggota keluarga yang sama berbagi FamilyID."
 
 #: 
 msgid "Easy registration"
@@ -11956,10 +11915,6 @@ msgid "Upload CSV"
 msgstr "Unggah CSV"
 
 #: 
-msgid "Upload a CSV file to import families and people into ChurchCRM."
-msgstr "Unggah file CSV untuk mengimpor keluarga dan orang ke ChurchCRM."
-
-#: 
 msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
 msgstr "Unggah CSV dari Excel, Google Sheets, atau sistem manajemen gereja sebelumnya dan petakan kolom ke field ChurchCRM."
 
@@ -12182,10 +12137,6 @@ msgstr "anggota"
 #: 
 msgid "opportunities"
 msgstr "peluang"
-
-#: 
-msgid "options"
-msgstr "opsi"
 
 #: 
 msgid "or connect an external service"
@@ -12422,10 +12373,6 @@ msgstr "Daftarkan dan kelola perangkat kios untuk check-in acara"
 #: 
 msgid "Review & Delete"
 msgstr "Tinjau & Hapus"
-
-#: 
-msgid "SHA1 Hash"
-msgstr "Hash SHA1"
 
 #: 
 msgid "Signature Mismatch"
@@ -14365,10 +14312,6 @@ msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d acara berulang berhasil dibuat."
 
 #: 
-msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
-msgstr "(mis. Jemaat, Pengunjung, Anak-anak) sehingga sukarelawan dapat mencatat jumlah kehadiran di sini."
-
-#: 
 msgid "1. Sunday School Class"
 msgstr "1. Kelas Sekolah Minggu"
 
@@ -14389,10 +14332,6 @@ msgid "A class is a Group with type \"Sunday School\". It holds the students and
 msgstr "Kelas adalah Kelompok dengan jenis \"Sekolah Minggu\". Kelas berisi murid dan pengajar (anggota dengan peran)."
 
 #: 
-msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
-msgstr "Kelompok yang ditautkan menghubungkan acara ini ke daftar kelas atau pelayanan. Ketika acara ditetapkan ke Kios, kios akan mengambil anggota kelompok dan menampilkannya sebagai daftar ketuk-untuk-absen. Untuk kelas Sekolah Minggu, tautkan kelompok kelas di sini agar sukarelawan dapat mengabsen murid dari tablet."
-
-#: 
 msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
 msgstr "Pertemuan spesifik (mis. \"Pra-Sekolah — 12 Apr\"). Mewarisi pengaturan dari jenis acara dan ditautkan ke kelompok kelas melalui audiens. Ini yang digunakan sukarelawan untuk mencatat kehadiran."
 
@@ -14403,10 +14342,6 @@ msgstr "Tablet yang ditetapkan untuk satu acara. Kios mengambil daftar kelompok 
 #: 
 msgid "Add Walk-in / Visitor"
 msgstr "Tambah Tamu / Pengunjung"
-
-#: 
-msgid "Add categories on the Event Type page"
-msgstr "Tambah kategori di halaman Jenis Acara"
 
 #: 
 msgid "Add people to your cart first, then come back to check them in to an event."
@@ -14455,10 +14390,6 @@ msgstr "Audit"
 #: 
 msgid "Audit Events"
 msgstr "Audit Acara"
-
-#: 
-msgid "Auto-totalled from counts at right"
-msgstr "Dijumlahkan otomatis dari hitungan di kanan"
 
 #: 
 msgid "Back to Events"
@@ -14583,10 +14514,6 @@ msgstr "Database + foto yang diunggah (lebih besar)"
 #: 
 msgid "Database dump only (.sql)"
 msgstr "Ekspor database saja (.sql)"
-
-#: 
-msgid "Date Range"
-msgstr "Rentang Tanggal"
 
 #: 
 msgid "Date range cannot exceed 1 year"
@@ -15451,4 +15378,464 @@ msgstr "Gunakan kode pemulihan sebagai gantinya"
 #: 
 msgid "Use authenticator app instead"
 msgstr "Gunakan aplikasi autentikator sebagai gantinya"
+
+#: 
+msgid " Notification Email Error"
+msgstr " Kesalahan Email Notifikasi"
+
+#: 
+msgid "%d modules loaded"
+msgstr "%d modul dimuat"
+
+#: 
+msgid "(PHP default)"
+msgstr "(Bawaan PHP)"
+
+#: 
+msgid "(none)"
+msgstr "(tidak ada)"
+
+#: 
+msgid "(not set)"
+msgstr "(belum diatur)"
+
+#: 
+msgid "All checks passing"
+msgstr "Semua pemeriksaan berhasil"
+
+#: 
+msgid "App"
+msgstr "Aplikasi"
+
+#: 
+msgid "Browser time zone differs:"
+msgstr "Zona waktu browser berbeda:"
+
+#: 
+msgid "Calendar time zone:"
+msgstr "Zona waktu kalender:"
+
+#: 
+msgid "Cannot send test email"
+msgstr "Tidak dapat mengirim email uji coba"
+
+#: 
+msgid "Charset"
+msgstr "Set Karakter"
+
+#: 
+msgid "Church Email address is not set — the test email has nowhere to go."
+msgstr "Alamat email gereja belum diatur — tidak ada tujuan untuk email uji coba."
+
+#: 
+msgid "Church email — configured on the"
+msgstr "Email gereja — dikonfigurasi di"
+
+#: 
+msgid "ChurchCRM Test Email"
+msgstr "Email Uji Coba ChurchCRM"
+
+#: 
+msgid "Collation"
+msgstr "Kolasi"
+
+#: 
+msgid "Connection"
+msgstr "Koneksi"
+
+#: 
+msgid "Database"
+msgstr "Basis Data"
+
+#: 
+msgid "Delivery"
+msgstr "Pengiriman"
+
+#: 
+msgid "Disk (Images Root)"
+msgstr "Disk (Direktori Gambar)"
+
+#: 
+msgid "Display Errors"
+msgstr "Tampilkan Kesalahan"
+
+#: 
+msgid "Email Debug"
+msgstr "Debug Email"
+
+#: 
+msgid "Environment"
+msgstr "Lingkungan"
+
+#: 
+msgid "Error Log"
+msgstr "Log Kesalahan"
+
+#: 
+msgid "Error Reporting"
+msgstr "Pelaporan Kesalahan"
+
+#: 
+msgid "Error:"
+msgstr "Kesalahan:"
+
+#: 
+msgid "Fix Settings"
+msgstr "Perbaiki Pengaturan"
+
+#: 
+msgid "Hit Rate"
+msgstr "Tingkat Hit"
+
+#: 
+msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
+msgstr "Jika pesan tidak tiba dalam beberapa menit, periksa folder spam/sampah dan log debug SMTP di bawah."
+
+#: 
+msgid "If you can read this message in your inbox, your SMTP configuration is working correctly."
+msgstr "Jika Anda dapat membaca pesan ini di kotak masuk, konfigurasi SMTP Anda berfungsi dengan benar."
+
+#: 
+msgid "Incomplete"
+msgstr "Tidak Lengkap"
+
+#: 
+msgid "Installed on Server"
+msgstr "Terpasang di Server"
+
+#: 
+msgid "Integrity"
+msgstr "Integritas"
+
+#: 
+msgid "Issues detected"
+msgstr "Masalah terdeteksi"
+
+#: 
+msgid "Loaded php.ini"
+msgstr "php.ini yang Dimuat"
+
+#: 
+msgid "Locale"
+msgstr "Lokal"
+
+#: 
+msgid "Max Execution Time"
+msgstr "Waktu Eksekusi Maksimum"
+
+#: 
+msgid "Max POST Size"
+msgstr "Ukuran POST Maksimum"
+
+#: 
+msgid "Max Upload Size"
+msgstr "Ukuran Unggah Maksimum"
+
+#: 
+msgid "Memory"
+msgstr "Memori"
+
+#: 
+msgid "Memory Limit"
+msgstr "Batas Memori"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
+msgstr "Periksa kotak masuk penerima untuk mengonfirmasi pengiriman. Cari subjek:"
+
+#: 
+msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
+msgstr "OPcache tidak diaktifkan. Mengaktifkannya adalah cara berisiko rendah untuk mempercepat pemuatan halaman PHP."
+
+#: 
+msgid "Off"
+msgstr "Nonaktif"
+
+#: 
+msgid "On"
+msgstr "Aktif"
+
+#: 
+msgid "Open the email debug tester"
+msgstr "Buka alat debug email"
+
+#: 
+msgid "PHP Version"
+msgstr "Versi PHP"
+
+#: 
+msgid "PHPMailer SMTP session"
+msgstr "Sesi SMTP PHPMailer"
+
+#: 
+msgid "Prerequisites"
+msgstr "Prasyarat"
+
+#: 
+msgid "Review the SMTP debug log below for the handshake details, then adjust your settings."
+msgstr "Tinjau log debug SMTP di bawah untuk detail koneksi, lalu sesuaikan pengaturan Anda."
+
+#: 
+msgid "SMTP Configuration"
+msgstr "Konfigurasi SMTP"
+
+#: 
+msgid "SMTP Debug Log"
+msgstr "Log Debug SMTP"
+
+#: 
+msgid "SMTP Host is not configured."
+msgstr "Host SMTP belum dikonfigurasi."
+
+#: 
+msgid "SMTP configuration test — if this arrived, your setup works."
+msgstr "Uji konfigurasi SMTP — jika ini berhasil diterima, pengaturan Anda berfungsi."
+
+#: 
+msgid "Schema Version"
+msgstr "Versi Skema"
+
+#: 
+msgid "Send Again"
+msgstr "Kirim Lagi"
+
+#: 
+msgid "Send a test message to verify your SMTP configuration"
+msgstr "Kirim pesan uji coba untuk memverifikasi konfigurasi SMTP Anda"
+
+#: 
+msgid "Server Version"
+msgstr "Versi Server"
+
+#: 
+msgid "Session Handler"
+msgstr "Penangan Sesi"
+
+#: 
+msgid "Session Save Path"
+msgstr "Jalur Simpan Sesi"
+
+#: 
+msgid "Settings Valid"
+msgstr "Pengaturan Valid"
+
+#: 
+msgid "Subject"
+msgstr "Subjek"
+
+#: 
+msgid "Test"
+msgstr "Uji Coba"
+
+#: 
+msgid "Test email accepted by SMTP server"
+msgstr "Email uji coba diterima oleh server SMTP"
+
+#: 
+msgid "Test email failed to send"
+msgstr "Email uji coba gagal dikirim"
+
+#: 
+msgid "This is a ChurchCRM test email."
+msgstr "Ini adalah email uji coba ChurchCRM."
+
+#: 
+msgid "Timeout"
+msgstr "Batas Waktu"
+
+#: 
+msgid "Timezone"
+msgstr "Zona Waktu"
+
+#: 
+msgid "Unable to list web server modules (non-Apache SAPI)."
+msgstr "Tidak dapat mencantumkan modul server web (SAPI non-Apache)."
+
+#: 
+msgid "Update Settings"
+msgstr "Perbarui Pengaturan"
+
+#: 
+msgid "View full photo"
+msgstr "Lihat foto penuh"
+
+#: 
+msgid "page."
+msgstr "halaman."
+
+#: 
+msgid "user:"
+msgstr "pengguna:"
+
+#: 
+msgid "1. Download the template"
+msgstr "1. Unduh templat"
+
+#: 
+msgid "2. Fill in your data"
+msgstr "2. Isi data Anda"
+
+#: 
+msgid "3. Upload and map"
+msgstr "3. Unggah dan petakan"
+
+#: 
+msgid "Add Recurring Event"
+msgstr "Tambah Acara Berulang"
+
+#: 
+msgid "Available after the event is saved."
+msgstr "Tersedia setelah acara disimpan."
+
+#: 
+msgid "Boolean properties/fields accept yes / no / true / false / 1 / 0."
+msgstr "Properti/bidang Boolean menerima yes / no / true / false / 1 / 0."
+
+#: 
+msgid "ChurchCRM auto-matches each column by name. Anything it cannot match is marked as Unmapped — pick a field or leave it as Ignore."
+msgstr "ChurchCRM secara otomatis mencocokkan setiap kolom berdasarkan nama. Kolom yang tidak cocok ditandai sebagai Tidak Dipetakan — pilih bidang atau biarkan sebagai Abaikan."
+
+#: 
+msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
+msgstr "Tidak dapat mengurai file CSV. Pastikan file tersebut adalah file yang dipisahkan koma yang valid dengan baris header."
+
+#: 
+msgid "Custom field columns you have not configured are ignored — nothing is created on the fly."
+msgstr "Kolom bidang kustom yang belum Anda konfigurasikan diabaikan — tidak ada yang dibuat secara otomatis."
+
+#: 
+msgid "Custom fields and properties are supported"
+msgstr "Bidang kustom dan properti didukung"
+
+#: 
+msgid "Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a month and day with no year."
+msgstr "Bidang tanggal menerima format YYYY-MM-DD atau M/D/YYYY. Gunakan 0000-MM-DD atau M/D untuk bulan dan hari tanpa tahun."
+
+#: 
+msgid "Each row is one person. People in the same family share a FamilyID. Leave columns blank when you have no value for them."
+msgstr "Setiap baris adalah satu orang. Orang-orang dalam keluarga yang sama berbagi FamilyID. Kosongkan kolom jika tidak ada nilai untuk kolom tersebut."
+
+#: 
+msgid "Event Timing"
+msgstr "Waktu Acara"
+
+#: 
+msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
+msgstr "Setiap kejadian yang sesuai antara Dari dan Ke akan mendapatkan acaranya sendiri pada waktu Mulai/Selesai yang sama."
+
+#: 
+msgid "External calendar sharing is disabled"
+msgstr "Berbagi kalender eksternal dinonaktifkan"
+
+#: 
+msgid "Failed to load event editor. Please refresh and try again."
+msgstr "Gagal memuat editor acara. Silakan muat ulang dan coba lagi."
+
+#: 
+msgid "Family Custom"
+msgstr "Bidang Kustom Keluarga"
+
+#: 
+msgid "Family Property"
+msgstr "Properti Keluarga"
+
+#: 
+msgid "Fields"
+msgstr "Bidang"
+
+#: 
+msgid "Go to home"
+msgstr "Ke halaman utama"
+
+#: 
+msgid "Hide advanced options"
+msgstr "Sembunyikan opsi lanjutan"
+
+#: 
+msgid "How the CSV Import Works"
+msgstr "Cara Kerja Impor CSV"
+
+#: 
+msgid "Imported from CSV"
+msgstr "Diimpor dari CSV"
+
+#: 
+msgid "Invalid date format"
+msgstr "Format tanggal tidak valid"
+
+#: 
+msgid "Loading event editor…"
+msgstr "Memuat editor acara…"
+
+#: 
+msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
+msgstr "Tidak ada kalender yang dipilih — acara ini akan disimpan tetapi tidak akan muncul di tampilan kalender mana pun."
+
+#: 
+msgid "No group"
+msgstr "Tidak ada kelompok"
+
+#: 
+msgid "Not pinned to any calendar"
+msgstr "Tidak dipasang di kalender mana pun"
+
+#: 
+msgid "Optional — sermon notes, materials, or other details copied to every generated event."
+msgstr "Opsional — catatan khotbah, materi, atau detail lain yang disalin ke setiap acara yang dibuat."
+
+#: 
+msgid "Person / Family"
+msgstr "Jemaat / Keluarga"
+
+#: 
+msgid "Person Custom"
+msgstr "Bidang Kustom Jemaat"
+
+#: 
+msgid "Person Property"
+msgstr "Properti Jemaat"
+
+#: 
+msgid "Show more options"
+msgstr "Tampilkan lebih banyak opsi"
+
+#: 
+msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
+msgstr "Tautan kalender tidak lengkap. Periksa URL tersebut dengan orang yang mengirimkannya kepada Anda."
+
+#: 
+msgid "The church administrator has not enabled external calendar sharing. Please contact them if you believe this is in error."
+msgstr "Administrator gereja belum mengaktifkan berbagi kalender eksternal. Hubungi mereka jika Anda yakin ini adalah kesalahan."
+
+#: 
+msgid "The start or end date in the link could not be understood. Try the base calendar link without date parameters."
+msgstr "Tanggal mulai atau selesai dalam tautan tidak dapat dipahami. Coba tautan kalender dasar tanpa parameter tanggal."
+
+#: 
+msgid "The template already contains every column you can map — the core Person/Family fields plus each custom field and property your site defines."
+msgstr "Templat sudah berisi setiap kolom yang dapat Anda petakan — bidang inti Jemaat/Keluarga beserta setiap bidang kustom dan properti yang ditentukan situs Anda."
+
+#: 
+msgid "The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically."
+msgstr "Templat sudah mencakup kolom untuk setiap bidang kustom Jemaat/Keluarga dan setiap properti yang telah Anda tentukan. Jika Anda menambahkan kolom secara manual, gunakan nama persis dari bidang kustom atau properti sebagai header kolom dan importir akan mencocokkannya secara otomatis."
+
+#: 
+msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
+msgstr "Tautan kalender ini tidak valid atau telah dicabut. Minta tautan terbaru dari gereja."
+
+#: 
+msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
+msgstr "Menghubungkan acara ini ke daftar kelas atau pelayanan — digunakan oleh alur check-in Kiosk."
+
+#: 
+msgid "Upload a CSV to create families and people in bulk."
+msgstr "Unggah CSV untuk membuat keluarga dan jemaat secara massal."
+
+#: 
+msgid "Volunteer-entered headcounts, broken down by category."
+msgstr "Jumlah peserta yang dimasukkan sukarelawan, dikelompokkan berdasarkan kategori."
+
+#: 
+msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
+msgstr "CSV Anda memiliki nama kolom yang duplikat. Ganti nama kolom yang duplikat (mis. tambahkan \"(2)\" pada yang kedua) dan unggah kembali."
 

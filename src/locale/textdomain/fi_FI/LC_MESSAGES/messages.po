@@ -1156,10 +1156,6 @@ msgid "Summary Data"
 msgstr "Yhteenvetotiedot"
 
 #: 
-msgid "CSV"
-msgstr "CSV"
-
-#: 
 msgid "Back"
 msgstr "Takaisin"
 
@@ -1278,10 +1274,6 @@ msgstr "Tiedostomuoto"
 #: 
 msgid "GPS Visualizer"
 msgstr "GPS-visualisoija"
-
-#: 
-msgid "Street Atlas USA"
-msgstr "Street Atlas USA"
 
 #: 
 msgid "Include families in the coordinate file"
@@ -2307,18 +2299,6 @@ msgstr "Numero on liian suuri. Sen on oltava välillä -2147483648 ja 2147483647
 #: 
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Rahamäärä on liian suuri. Maksimi on 999999999,99"
-
-#: 
-msgid " Bold Italic"
-msgstr " Lihavoitu kursivoitu"
-
-#: 
-msgid " Italic"
-msgstr " Kursivoitu"
-
-#: 
-msgid " Bold"
-msgstr " Lihavoitu"
 
 #: 
 msgid "Error making API Call to"
@@ -5031,7 +5011,8 @@ msgid "Indonesian - Indonesia"
 msgstr "Indonesia - Indonesia"
 
 #: 
-msgid "records(s) successfully added to selected Group."
+#, fuzzy
+msgid "record(s) successfully added to selected Group."
 msgstr "tietueet lisätty onnistuneesti valittuun ryhmään."
 
 #: 
@@ -5339,7 +5320,8 @@ msgid "Remove All from Cart"
 msgstr "Poista kaikki korista"
 
 #: 
-msgid "records(s) successfully deleted from the selected Group."
+#, fuzzy
+msgid "record(s) successfully deleted from the selected Group."
 msgstr "tietueet poistettu onnistuneesti valitusta ryhmästä."
 
 #: 
@@ -5813,10 +5795,6 @@ msgstr "Sähköpostia ei annettu"
 #: 
 msgid "Mailchimp is not active"
 msgstr "Mailchimp ei ole aktiivinen"
-
-#: 
-msgid "Mailchimp"
-msgstr "Mailchimp"
 
 #: 
 msgid "Lists"
@@ -6823,7 +6801,8 @@ msgid "Total Payments"
 msgstr "Maksut yhteensä"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payments?"
 msgstr "maksu(t)?"
 
 #: 
@@ -6837,10 +6816,6 @@ msgstr "Perus-URL"
 #: 
 msgid "Copy"
 msgstr "Kopioi"
-
-#: 
-msgid "DSN"
-msgstr "DSN"
 
 #: 
 msgid "Debug Info"
@@ -7894,10 +7869,6 @@ msgstr "Avoimet talletukset:"
 #: 
 msgid "Orphaned Files:"
 msgstr "Orvot tiedostot:"
-
-#: 
-msgid "PDF/CSV"
-msgstr "PDF/CSV"
 
 #: 
 msgid "Payment"
@@ -9466,10 +9437,6 @@ msgid "Loading recovery codes"
 msgstr "Ladataan palautuskoodeja"
 
 #: 
-msgid "MailChimp"
-msgstr "MailChimp"
-
-#: 
 msgid "MailChimp API Key"
 msgstr "MailChimp API-avain"
 
@@ -10829,10 +10796,6 @@ msgid "Download CSV Template"
 msgstr "Lataa CSV-malli"
 
 #: 
-msgid "Download the template to see the expected column format."
-msgstr "Lataa malli nähdäksesi odotetun sarakemuodon."
-
-#: 
 msgid "Drag and drop your CSV file here"
 msgstr "Vedä ja pudota CSV-tiedostosi tähän"
 
@@ -10843,10 +10806,6 @@ msgstr "Kaksoiskappaleet"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Jokaisella henkilöllä voi olla oma sähköposti ja matkapuhelinnumero."
-
-#: 
-msgid "Each row is one person. Members of the same family share a FamilyID."
-msgstr "Jokainen rivi on yksi henkilö. Saman perheen jäsenet jakavat FamilyID:n."
 
 #: 
 msgid "Easy registration"
@@ -11931,10 +11890,6 @@ msgid "Upload CSV"
 msgstr "Lataa CSV"
 
 #: 
-msgid "Upload a CSV file to import families and people into ChurchCRM."
-msgstr "Lataa CSV-tiedosto tuodaksesi perheitä ja henkilöitä ChurchCRM:iin."
-
-#: 
 msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
 msgstr "Lataa CSV Excelistä, Google Sheetsistä tai aiemmasta seurakunnan hallintajärjestelmästäsi ja yhdistä sarakkeet ChurchCRM-kenttiin."
 
@@ -12157,10 +12112,6 @@ msgstr "jäsenet"
 #: 
 msgid "opportunities"
 msgstr "mahdollisuudet"
-
-#: 
-msgid "options"
-msgstr "vaihtoehdot"
 
 #: 
 msgid "or connect an external service"
@@ -12397,10 +12348,6 @@ msgstr "Rekisteröi ja hallitse kioskilaitteita tapahtumien kirjautumista varten
 #: 
 msgid "Review & Delete"
 msgstr "Tarkista ja poista"
-
-#: 
-msgid "SHA1 Hash"
-msgstr "SHA1-sarja"
 
 #: 
 msgid "Signature Mismatch"
@@ -14341,10 +14288,6 @@ msgstr[0] "%d toistuva tapahtuma luotu onnistuneesti."
 msgstr[1] "%d toistuvaa tapahtumaa luotu onnistuneesti."
 
 #: 
-msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
-msgstr "(esim. Seurakuntalaiset, Vierailijat, Lapset), jotta vapaaehtoiset voivat kirjata osallistujamäärät tähän."
-
-#: 
 msgid "1. Sunday School Class"
 msgstr "1. Pyhäkouluryhmä"
 
@@ -14365,10 +14308,6 @@ msgid "A class is a Group with type \"Sunday School\". It holds the students and
 msgstr "Luokka on ryhmä, jonka tyyppi on \"Pyhäkoulu\". Se sisältää oppilaat ja opettajat (jäsenet rooleilla)."
 
 #: 
-msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
-msgstr "Linkitetty ryhmä yhdistää tämän tapahtuman luokkaan tai palvelulistaan. Kun tapahtuma on määritetty kioskille, kioski hakee ryhmän jäsenet ja näyttää ne napauttamalla kirjattavana listana. Pyhäkouluryhmille linkitä luokkaryhmä tähän, jotta vapaaehtoiset voivat kirjata oppilaita sisään tabletilta."
-
-#: 
 msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
 msgstr "Tietty tapahtumakerta (esim. \"Esikoulu — 12. huhtik.\"). Perii oletusarvot tyypiltä ja on linkitetty luokkaryhmään yleisön kautta. Tähän vapaaehtoiset kirjaavat läsnäolon."
 
@@ -14379,10 +14318,6 @@ msgstr "Tabletti, joka on määritetty yhdelle tapahtumalle. Kioski hakee tapaht
 #: 
 msgid "Add Walk-in / Visitor"
 msgstr "Lisää kävijä / vierailija"
-
-#: 
-msgid "Add categories on the Event Type page"
-msgstr "Lisää kategorioita Tapahtumatyyppi-sivulla"
 
 #: 
 msgid "Add people to your cart first, then come back to check them in to an event."
@@ -14431,10 +14366,6 @@ msgstr "Tarkastusloki"
 #: 
 msgid "Audit Events"
 msgstr "Tapahtumatarkastus"
-
-#: 
-msgid "Auto-totalled from counts at right"
-msgstr "Lasketaan automaattisesti oikealla olevista luvuista"
 
 #: 
 msgid "Back to Events"
@@ -14559,10 +14490,6 @@ msgstr "Tietokanta + ladatut valokuvat (suurempi)"
 #: 
 msgid "Database dump only (.sql)"
 msgstr "Vain tietokannan vedos (.sql)"
-
-#: 
-msgid "Date Range"
-msgstr "Aikaväli"
 
 #: 
 msgid "Date range cannot exceed 1 year"
@@ -15285,6 +15212,10 @@ msgid "No active event assignment"
 msgstr "Ei aktiivista tapahtumamääritystä"
 
 #: 
+msgid "Online"
+msgstr "Verkossa"
+
+#: 
 msgid "Opens a 30-second window for devices to register at:"
 msgstr "Avaa 30 sekunnin ikkunan laitteille rekisteröitymistä varten:"
 
@@ -15427,4 +15358,472 @@ msgstr "Käytä palautuskoodia"
 #: 
 msgid "Use authenticator app instead"
 msgstr "Käytä todennussovellusta"
+
+#: 
+msgid " Notification Email Error"
+msgstr " Ilmoitussähköpostivirhe"
+
+#: 
+msgid "%d modules loaded"
+msgstr "%d moduulia ladattu"
+
+#: 
+msgid "(PHP default)"
+msgstr "(PHP oletus)"
+
+#: 
+msgid "(none)"
+msgstr "(ei mitään)"
+
+#: 
+msgid "(not set)"
+msgstr "(ei asetettu)"
+
+#: 
+msgid "All checks passing"
+msgstr "Kaikki tarkistukset läpäisty"
+
+#: 
+msgid "App"
+msgstr "Sovellus"
+
+#: 
+msgid "Browser time zone differs:"
+msgstr "Selaimen aikavyöhyke eroaa:"
+
+#: 
+msgid "Calendar time zone:"
+msgstr "Kalenterin aikavyöhyke:"
+
+#: 
+msgid "Cannot send test email"
+msgstr "Testisähköpostia ei voida lähettää"
+
+#: 
+msgid "Charset"
+msgstr "Merkistö"
+
+#: 
+msgid "Church Email address is not set — the test email has nowhere to go."
+msgstr "Seurakunnan sähköpostiosoitetta ei ole asetettu — testisähköpostilla ei ole kohdetta."
+
+#: 
+msgid "Church email — configured on the"
+msgstr "Seurakunnan sähköposti — määritetty sivulla"
+
+#: 
+msgid "ChurchCRM Test Email"
+msgstr "ChurchCRM-testisähköposti"
+
+#: 
+msgid "Collation"
+msgstr "Lajittelu"
+
+#: 
+msgid "Connection"
+msgstr "Yhteys"
+
+#: 
+msgid "Database"
+msgstr "Tietokanta"
+
+#: 
+msgid "Delivery"
+msgstr "Toimitus"
+
+#: 
+msgid "Disk (Images Root)"
+msgstr "Levy (kuvien juurihakemisto)"
+
+#: 
+msgid "Display Errors"
+msgstr "Näytä virheet"
+
+#: 
+msgid "Email Debug"
+msgstr "Sähköpostin vianetsintä"
+
+#: 
+msgid "Environment"
+msgstr "Ympäristö"
+
+#: 
+msgid "Error Log"
+msgstr "Virheloki"
+
+#: 
+msgid "Error Reporting"
+msgstr "Virheraportit"
+
+#: 
+msgid "Error:"
+msgstr "Virhe:"
+
+#: 
+msgid "Fix Settings"
+msgstr "Korjaa asetukset"
+
+#: 
+msgid "Hit Rate"
+msgstr "Osumataajuus"
+
+#: 
+msgid "Host"
+msgstr "Isäntä"
+
+#: 
+msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
+msgstr "Jos viesti ei saavu muutaman minuutin kuluessa, tarkista roskapostikansio ja alla oleva SMTP-vianetsintäloki."
+
+#: 
+msgid "If you can read this message in your inbox, your SMTP configuration is working correctly."
+msgstr "Jos voit lukea tämän viestin saapuneet-kansiossasi, SMTP-määritykset toimivat oikein."
+
+#: 
+msgid "Incomplete"
+msgstr "Keskeneräinen"
+
+#: 
+msgid "Installed on Server"
+msgstr "Asennettu palvelimelle"
+
+#: 
+msgid "Integrity"
+msgstr "Eheys"
+
+#: 
+msgid "Issues detected"
+msgstr "Ongelmia havaittu"
+
+#: 
+msgid "Loaded php.ini"
+msgstr "Ladattu php.ini"
+
+#: 
+msgid "Locale"
+msgstr "Kielialue"
+
+#: 
+msgid "Max Execution Time"
+msgstr "Enimmäissuoritusaika"
+
+#: 
+msgid "Max POST Size"
+msgstr "POST-pyynnön enimmäiskoko"
+
+#: 
+msgid "Max Upload Size"
+msgstr "Latauksen enimmäiskoko"
+
+#: 
+msgid "Memory"
+msgstr "Muisti"
+
+#: 
+msgid "Memory Limit"
+msgstr "Muistiraja"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
+msgstr "Tarkista nyt vastaanottajan saapuneet-kansio toimituksen vahvistamiseksi. Etsi aihe:"
+
+#: 
+msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
+msgstr "OPcache ei ole käytössä. Sen käyttöönotto on matalariskinen tapa nopeuttaa PHP-sivulatauksia."
+
+#: 
+msgid "Off"
+msgstr "Pois"
+
+#: 
+msgid "On"
+msgstr "Päällä"
+
+#: 
+msgid "Open the email debug tester"
+msgstr "Avaa sähköpostin vianetsintätyökalu"
+
+#: 
+msgid "PHP Version"
+msgstr "PHP-versio"
+
+#: 
+msgid "PHPMailer SMTP session"
+msgstr "PHPMailer SMTP-istunto"
+
+#: 
+msgid "Prerequisites"
+msgstr "Esivaatimukset"
+
+#: 
+msgid "Review the SMTP debug log below for the handshake details, then adjust your settings."
+msgstr "Tarkista alla oleva SMTP-vianetsintäloki kättelytiedoista, ja säädä asetuksiasi."
+
+#: 
+msgid "SMTP Configuration"
+msgstr "SMTP-määritykset"
+
+#: 
+msgid "SMTP Debug Log"
+msgstr "SMTP-vianetsintäloki"
+
+#: 
+msgid "SMTP Host is not configured."
+msgstr "SMTP-isäntää ei ole määritetty."
+
+#: 
+msgid "SMTP configuration test — if this arrived, your setup works."
+msgstr "SMTP-määritysten testi — jos tämä saapui, asetuksesi toimivat."
+
+#: 
+msgid "Schema Version"
+msgstr "Skeemaversio"
+
+#: 
+msgid "Send Again"
+msgstr "Lähetä uudelleen"
+
+#: 
+msgid "Send a test message to verify your SMTP configuration"
+msgstr "Lähetä testiviesti SMTP-määritysten vahvistamiseksi"
+
+#: 
+msgid "Server"
+msgstr "Palvelin"
+
+#: 
+msgid "Server Version"
+msgstr "Palvelimen versio"
+
+#: 
+msgid "Session Handler"
+msgstr "Istunnon käsittelijä"
+
+#: 
+msgid "Session Save Path"
+msgstr "Istunnon tallennuspolku"
+
+#: 
+msgid "Settings Valid"
+msgstr "Asetukset kelvollisia"
+
+#: 
+msgid "Subject"
+msgstr "Aihe"
+
+#: 
+msgid "Test"
+msgstr "Testi"
+
+#: 
+msgid "Test email accepted by SMTP server"
+msgstr "SMTP-palvelin hyväksyi testisähköpostin"
+
+#: 
+msgid "Test email failed to send"
+msgstr "Testisähköpostin lähetys epäonnistui"
+
+#: 
+msgid "This is a ChurchCRM test email."
+msgstr "Tämä on ChurchCRM-testisähköposti."
+
+#: 
+msgid "Timeout"
+msgstr "Aikakatkaisu"
+
+#: 
+msgid "Timezone"
+msgstr "Aikavyöhyke"
+
+#: 
+msgid "Unable to list web server modules (non-Apache SAPI)."
+msgstr "Verkkopalvelimen moduuleja ei voi luetella (ei-Apache SAPI)."
+
+#: 
+msgid "Update Settings"
+msgstr "Päivitä asetukset"
+
+#: 
+msgid "View full photo"
+msgstr "Näytä koko valokuva"
+
+#: 
+msgid "page."
+msgstr "sivu."
+
+#: 
+msgid "user:"
+msgstr "käyttäjä:"
+
+#: 
+msgid "1. Download the template"
+msgstr "1. Lataa malli"
+
+#: 
+msgid "2. Fill in your data"
+msgstr "2. Täytä tietosi"
+
+#: 
+msgid "3. Upload and map"
+msgstr "3. Lataa ja yhdistä"
+
+#: 
+msgid "Add Recurring Event"
+msgstr "Lisää toistuva tapahtuma"
+
+#: 
+msgid "Available after the event is saved."
+msgstr "Saatavilla tapahtuman tallentamisen jälkeen."
+
+#: 
+msgid "Boolean properties/fields accept yes / no / true / false / 1 / 0."
+msgstr "Totuusarvokentät hyväksyvät kyllä / ei / tosi / epätosi / 1 / 0."
+
+#: 
+msgid "ChurchCRM auto-matches each column by name. Anything it cannot match is marked as Unmapped — pick a field or leave it as Ignore."
+msgstr "ChurchCRM yhdistää jokaisen sarakkeen automaattisesti nimen perusteella. Kaikki mitä se ei voi yhdistää on merkitty Yhdistämätön — valitse kenttä tai jätä Ohita-tilaan."
+
+#: 
+msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
+msgstr "CSV-tiedostoa ei voitu jäsentää. Tarkista, että se on kelvollinen pilkuilla eroteltu tiedosto, jossa on otsikkorivi."
+
+#: 
+msgid "Custom field columns you have not configured are ignored — nothing is created on the fly."
+msgstr "Mukautettujen kenttien sarakkeet, joita et ole määrittänyt, ohitetaan — mitään ei luoda lennossa."
+
+#: 
+msgid "Custom fields and properties are supported"
+msgstr "Mukautetut kentät ja ominaisuudet ovat tuettuja"
+
+#: 
+msgid "Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a month and day with no year."
+msgstr "Päivämääräkentät hyväksyvät VVVV-KK-PP tai K/P/VVVV. Käytä 0000-KK-PP tai K/P kuukaudelle ja päivälle ilman vuotta."
+
+#: 
+msgid "Each row is one person. People in the same family share a FamilyID. Leave columns blank when you have no value for them."
+msgstr "Jokainen rivi on yksi henkilö. Saman perheen jäsenet jakavat FamilyID:n. Jätä sarakkeet tyhjiksi, kun sinulla ei ole arvoa niille."
+
+#: 
+msgid "Event Timing"
+msgstr "Tapahtuman ajoitus"
+
+#: 
+msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
+msgstr "Jokainen vastaava esiintymä Alusta Loppuun saa oman tapahtumansa samalla alkamis- ja päättymisajalla."
+
+#: 
+msgid "External calendar sharing is disabled"
+msgstr "Ulkoinen kalenterin jakaminen on poissa käytöstä"
+
+#: 
+msgid "Failed to load event editor. Please refresh and try again."
+msgstr "Tapahtumaeditorin lataaminen epäonnistui. Päivitä sivu ja yritä uudelleen."
+
+#: 
+msgid "Family Custom"
+msgstr "Perhekohtainen mukautettu"
+
+#: 
+msgid "Family Property"
+msgstr "Perheen ominaisuus"
+
+#: 
+msgid "Fields"
+msgstr "Kentät"
+
+#: 
+msgid "Go to home"
+msgstr "Siirry etusivulle"
+
+#: 
+msgid "Hide advanced options"
+msgstr "Piilota lisäasetukset"
+
+#: 
+msgid "How the CSV Import Works"
+msgstr "Kuinka CSV-tuonti toimii"
+
+#: 
+msgid "Imported from CSV"
+msgstr "Tuotu CSV:stä"
+
+#: 
+msgid "Invalid date format"
+msgstr "Virheellinen päivämäärämuoto"
+
+#: 
+msgid "Loading event editor…"
+msgstr "Ladataan tapahtumaeditoria…"
+
+#: 
+msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
+msgstr "Kalenteria ei valittu — tämä tapahtuma tallennetaan, mutta se ei näy missään kalenterinäkymässä."
+
+#: 
+msgid "No group"
+msgstr "Ei ryhmää"
+
+#: 
+msgid "Not pinned to any calendar"
+msgstr "Ei kiinnitetty yhteenkään kalenteriin"
+
+#: 
+msgid "Optional — sermon notes, materials, or other details copied to every generated event."
+msgstr "Valinnainen — saarnanohjeet, materiaalit tai muut tiedot kopioituvat jokaiseen luotuun tapahtumaan."
+
+#: 
+msgid "Person / Family"
+msgstr "Henkilö / Perhe"
+
+#: 
+msgid "Person Custom"
+msgstr "Henkilökohtainen mukautettu"
+
+#: 
+msgid "Person Property"
+msgstr "Henkilön ominaisuus"
+
+#: 
+msgid "Show more options"
+msgstr "Näytä lisää vaihtoehtoja"
+
+#: 
+msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
+msgstr "Kalenteri-linkki on puutteellinen. Tarkista URL henkilöltä, joka lähetti sen sinulle."
+
+#: 
+msgid "The church administrator has not enabled external calendar sharing. Please contact them if you believe this is in error."
+msgstr "Seurakunnan ylläpitäjä ei ole ottanut käyttöön ulkoista kalenterin jakamista. Ota heihin yhteyttä, jos uskot tämän olevan virhe."
+
+#: 
+msgid "The start or end date in the link could not be understood. Try the base calendar link without date parameters."
+msgstr "Linkin alku- tai loppupäivämäärää ei voitu ymmärtää. Kokeile peruskalenterilinkkiä ilman päivämääräparametreja."
+
+#: 
+msgid "The template already contains every column you can map — the core Person/Family fields plus each custom field and property your site defines."
+msgstr "Malli sisältää jo kaikki sarakkeet, jotka voit yhdistää — perus Henkilö/Perhe-kentät sekä kaikki mukautetut kentät ja ominaisuudet, jotka sivustosi määrittelee."
+
+#: 
+msgid "The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically."
+msgstr "Malli sisältää jo sarakkeen jokaiselle Henkilö/Perhe-mukautetulle kentälle ja jokaiselle määrittelemällesi ominaisuudelle. Jos lisäät sarakkeita manuaalisesti, käytä mukautetun kentän tai ominaisuuden tarkkaa nimeä sarakkeen otsikkona, jolloin tuoja yhdistää sen automaattisesti."
+
+#: 
+msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
+msgstr "Tämä kalenteri-linkki on virheellinen tai se on peruutettu. Pyydä seurakunnalta ajantasainen linkki."
+
+#: 
+msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
+msgstr "Sitoo tämän tapahtuman luokan tai palvelun luetteloon — käytetään Kiosk-sisäänkirjautumisvirrassa."
+
+#: 
+msgid "Upload a CSV to create families and people in bulk."
+msgstr "Lataa CSV luodaksesi perheitä ja ihmisiä eräajona."
+
+#: 
+msgid "Volunteer-entered headcounts, broken down by category."
+msgstr "Vapaaehtoisten syöttämät henkilömäärät, jaoteltuna kategorioittain."
+
+#: 
+msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
+msgstr "CSV:ssä on päällekkäisiä sarakkeiden nimiä. Nimeä päällekkäiset sarakkeet uudelleen (esim. lisää \"(2)\" toiseen) ja lataa uudelleen."
 

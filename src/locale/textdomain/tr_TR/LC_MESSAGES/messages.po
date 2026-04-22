@@ -1163,10 +1163,6 @@ msgid "Summary Data"
 msgstr "Özet veriler"
 
 #: 
-msgid "CSV"
-msgstr "CSV"
-
-#: 
 msgid "Back"
 msgstr "Geri"
 
@@ -1290,10 +1286,6 @@ msgstr "Veri Dosyası Biçimi"
 #: 
 msgid "GPS Visualizer"
 msgstr "GPS görselleştiricisi"
-
-#: 
-msgid "Street Atlas USA"
-msgstr "Street Atlas ABD"
 
 #: 
 #, fuzzy
@@ -2323,18 +2315,6 @@ msgstr "Çok büyük. -2147483648 ve 2147483647 arasında olmalıdır"
 #: 
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Para miktarı çok büyük. Maksimum $ 999999999.99"
-
-#: 
-msgid " Bold Italic"
-msgstr " Kalın italik"
-
-#: 
-msgid " Italic"
-msgstr " İtalik"
-
-#: 
-msgid " Bold"
-msgstr " Gözü pek"
 
 #: 
 msgid "Error making API Call to"
@@ -5061,7 +5041,8 @@ msgid "Indonesian - Indonesia"
 msgstr "Endonezya - Endonezya"
 
 #: 
-msgid "records(s) successfully added to selected Group."
+#, fuzzy
+msgid "record(s) successfully added to selected Group."
 msgstr "Kayıtlar seçilen gruba başarıyla eklendi."
 
 #: 
@@ -5369,7 +5350,8 @@ msgid "Remove All from Cart"
 msgstr "Sepetten tüm kaldır"
 
 #: 
-msgid "records(s) successfully deleted from the selected Group."
+#, fuzzy
+msgid "record(s) successfully deleted from the selected Group."
 msgstr "Seçilen gruptan başarıyla silinen kayıtlar."
 
 #: 
@@ -5854,10 +5836,6 @@ msgstr "E -posta geçmedi"
 #: 
 msgid "Mailchimp is not active"
 msgstr "Mailchimp aktif değil"
-
-#: 
-msgid "Mailchimp"
-msgstr "Mailchimp"
 
 #: 
 msgid "Lists"
@@ -6864,7 +6842,8 @@ msgid "Total Payments"
 msgstr "Toplam Ödemeler"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payments?"
 msgstr "ödeme(ler)?"
 
 #: 
@@ -6878,10 +6857,6 @@ msgstr "Temel URL"
 #: 
 msgid "Copy"
 msgstr "Kopyala"
-
-#: 
-msgid "DSN"
-msgstr "DSN"
 
 #: 
 msgid "Debug Info"
@@ -7935,10 +7910,6 @@ msgstr "Açık Para Yatırmalar:"
 #: 
 msgid "Orphaned Files:"
 msgstr "Sahipsiz Dosyalar:"
-
-#: 
-msgid "PDF/CSV"
-msgstr "PDF/CSV"
 
 #: 
 msgid "Payment"
@@ -9507,10 +9478,6 @@ msgid "Loading recovery codes"
 msgstr "Kurtarma kodları yükleniyor"
 
 #: 
-msgid "MailChimp"
-msgstr "MailChimp"
-
-#: 
 msgid "MailChimp API Key"
 msgstr "MailChimp API Anahtarı"
 
@@ -10870,10 +10837,6 @@ msgid "Download CSV Template"
 msgstr "CSV Şablonunu İndir"
 
 #: 
-msgid "Download the template to see the expected column format."
-msgstr "Beklenen sütun biçimini görmek için şablonu indirin."
-
-#: 
 msgid "Drag and drop your CSV file here"
 msgstr "CSV dosyanızı buraya sürükleyip bırakın"
 
@@ -10884,10 +10847,6 @@ msgstr "Yineleneler"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Her kişinin kendi e-posta ve cep telefonu numarası olabilir."
-
-#: 
-msgid "Each row is one person. Members of the same family share a FamilyID."
-msgstr "Her satır bir kişidir. Aynı ailenin üyeleri bir FamilyID paylaşır."
 
 #: 
 msgid "Easy registration"
@@ -11972,10 +11931,6 @@ msgid "Upload CSV"
 msgstr "CSV Yükle"
 
 #: 
-msgid "Upload a CSV file to import families and people into ChurchCRM."
-msgstr "Aileleri ve kişileri ChurchCRM'e aktarmak için bir CSV dosyası yükleyin."
-
-#: 
 msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
 msgstr "Excel, Google Sheets veya önceki kilise yönetim sisteminizden bir CSV yükleyin ve sütunları ChurchCRM alanlarıyla eşleyin."
 
@@ -12198,10 +12153,6 @@ msgstr "üyeler"
 #: 
 msgid "opportunities"
 msgstr "fırsatlar"
-
-#: 
-msgid "options"
-msgstr "seçenekler"
 
 #: 
 msgid "or connect an external service"
@@ -12438,10 +12389,6 @@ msgstr "Etkinlik girişi için kiosk cihazlarını kaydet ve yönet"
 #: 
 msgid "Review & Delete"
 msgstr "İncele ve Sil"
-
-#: 
-msgid "SHA1 Hash"
-msgstr "SHA1 Özeti"
 
 #: 
 msgid "Signature Mismatch"
@@ -13978,10 +13925,6 @@ msgid "Select the desired event"
 msgstr "İstediğiniz etkinliği seçin"
 
 #: 
-msgid "name@example.com"
-msgstr "isim@ornek.com"
-
-#: 
 msgid "Advanced filtering by group, classification, and role"
 msgstr "Grup, sınıflandırma ve role göre gelişmiş filtreleme"
 
@@ -14386,10 +14329,6 @@ msgstr[0] "%d tekrar eden etkinlik başarıyla oluşturuldu."
 msgstr[1] "%d tekrar eden etkinlik başarıyla oluşturuldu."
 
 #: 
-msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
-msgstr "(ör. Üyeler, Ziyaretçiler, Çocuklar) gönüllüler burada katılımcı sayısını kaydedebilir."
-
-#: 
 msgid "1. Sunday School Class"
 msgstr "1. Pazar Okulu Sınıfı"
 
@@ -14410,10 +14349,6 @@ msgid "A class is a Group with type \"Sunday School\". It holds the students and
 msgstr "Sınıf, \"Pazar Okulu\" türünde bir Hizmettir. Öğrencileri ve öğretmenleri (rolleri olan üyeleri) içerir."
 
 #: 
-msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
-msgstr "Bağlı bir hizmet, bu etkinliği bir sınıf veya hizmet listesiyle ilişkilendirir. Etkinlik bir Kiosk'a atandığında, kiosk hizmet üyelerini çeker ve dokunarak giriş yapılabilir liste olarak gösterir. Pazar Okulu sınıfları için, gönüllülerin tabletlerden öğrenci girişini yapabilmesi amacıyla sınıf hizmetini buraya bağlayın."
-
-#: 
 msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
 msgstr "Belirli bir gerçekleşme (ör. \"Anaokulu — 12 Nis\"). Türden varsayılanları devralır ve kitle aracılığıyla sınıf hizmetiyle bağlantılıdır. Gönüllüler bu etkinlik için yoklama alır."
 
@@ -14424,10 +14359,6 @@ msgstr "Bir etkinliğe atanmış tablet. Kiosk, etkinliğin bağlı hizmet liste
 #: 
 msgid "Add Walk-in / Visitor"
 msgstr "Yürüyerek Gelen / Ziyaretçi Ekle"
-
-#: 
-msgid "Add categories on the Event Type page"
-msgstr "Etkinlik Türü sayfasında kategoriler ekleyin"
 
 #: 
 msgid "Add people to your cart first, then come back to check them in to an event."
@@ -14476,10 +14407,6 @@ msgstr "Denetim"
 #: 
 msgid "Audit Events"
 msgstr "Etkinlikleri Denetle"
-
-#: 
-msgid "Auto-totalled from counts at right"
-msgstr "Sağdaki sayımlardan otomatik toplam"
 
 #: 
 msgid "Back to Events"
@@ -14604,10 +14531,6 @@ msgstr "Veritabanı + yüklenen fotoğraflar (daha büyük)"
 #: 
 msgid "Database dump only (.sql)"
 msgstr "Yalnızca veritabanı dökümü (.sql)"
-
-#: 
-msgid "Date Range"
-msgstr "Tarih Aralığı"
 
 #: 
 msgid "Date range cannot exceed 1 year"

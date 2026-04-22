@@ -1,8 +1,12 @@
 {
-  "name@example.com": "",
   "Auto-TLS": "",
   "OPcache": "",
   "PHP": "",
   "SAPI": "",
-  "date.timezone": ""
+  "date.timezone": "",
+  "Are you sure you want to permanently delete this donated item?": "",
+  "Are you sure you want to permanently delete this paddle number?": "",
+  "Delete Donated Item": "",
+  "Delete Paddle Number": "",
+  "Invalid security token. Please try again.": ""
 }
