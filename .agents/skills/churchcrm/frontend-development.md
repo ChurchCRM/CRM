@@ -127,6 +127,37 @@ For tables with many potential columns:
 
 **Example:** Sunday School class view shows (Name, Age, Mobile, Email, Father, Mother) with info icon opening modal for address/parent details.
 
+## DataTables: Always Inherit the User's Page-Length Preference <!-- learned: 2026-04-22 -->
+
+Every user has a **"Rows per page"** preference (Edit Profile → Preferences → Tables). It's stored in the `ui.table.size` user setting and exposed globally as `window.CRM.plugin.dataTable` by [src/Include/Header.php](src/Include/Header.php#L85-L163). Every list-page DataTable MUST merge this global config so the user's choice wins.
+
+**Correct pattern** — put any local defaults *first*, then extend with the global config so `window.CRM.plugin.dataTable.pageLength` overrides them:
+
+```js
+let dataTableConfig = {
+  paging: true,
+  pageLength: 10,        // fallback only — extend overwrites this
+  columnDefs: [...],
+};
+$.extend(dataTableConfig, window.CRM.plugin.dataTable);
+$("#mytable").DataTable(dataTableConfig);
+```
+
+**Anti-pattern** — setting `pageLength` *after* the extend silently ignores the user's preference:
+
+```js
+// ❌ WRONG — locks every user to 25 rows regardless of their setting
+$.extend(dataTableConfig, window.CRM.plugin.dataTable);
+dataTableConfig.pageLength = 25;
+```
+
+**Intentional exceptions** (do NOT copy these for list pages):
+
+- Home dashboard widgets in [MainDashboard.js](src/skin/js/MainDashboard.js#L47-L57) set `paging: false` via `dataTableDashboardDefaults` — compact widgets, not paginated lists.
+- Birthdays / Anniversaries dashboard widgets override back to `pageLength: 5` *after* the extend on purpose (tight widget constraint).
+
+**Quick audit**: `grep -rEn "pageLength" src/ --include="*.js" --include="*.php"` — any `pageLength` line that appears *after* `$.extend(..., window.CRM.plugin.dataTable)` is a bug unless it's a dashboard widget.
+
 ## Asset Paths (SystemURLs)
 
 **ALWAYS use SystemURLs::getRootPath() for asset references:**
@@ -638,6 +669,39 @@ TomSelect hides options with `value=""` (treats them as placeholder/clear state)
 
 When TomSelect is inside a card with `table-responsive` or constrained overflow, dropdowns get clipped. Fix: pass `dropdownParent: 'body'` to TomSelect init and add a `body > .ts-dropdown` SCSS rule in `_tabler-bridge.scss` to preserve Tabler styling.
 
+### Uppy v5 XHRUpload: Parse `response.responseText` to Surface Server Errors <!-- learned: 2026-04-21 -->
+
+Uppy v5 wraps **every** non-2xx HTTP response in a `NetworkError` whose `.message` is **hardcoded** to `"This looks like a network error, the endpoint might be blocked by an internet provider or a firewall."` — regardless of the actual status code or response body. The `getResponseError` option from v3/v4 is **not wired up in v5** (the option name appears in a comment in `@uppy/xhr-upload/lib/index.js` but is never read).
+
+If your endpoint returns a clean JSON 400 like `{ message: "Your CSV has duplicate column names…" }`, the user will still see the useless "network error" banner unless you parse `response.responseText` yourself inside `upload-error`:
+
+```js
+uppy.on("upload-error", (_file, error, response) => {
+  // response (3rd arg) is the raw xhr — read responseText for the JSON body.
+  let msg = null;
+  const responseText = response?.responseText;
+  if (responseText) {
+    try {
+      const parsed = JSON.parse(responseText);
+      if (parsed && typeof parsed.message === "string" && parsed.message.length > 0) {
+        msg = parsed.message;
+      }
+    } catch (_e) {
+      // not JSON — fall through
+    }
+  }
+  // error.isNetworkError is Uppy's hardcoded wrapper — ignore it.
+  if (!msg && error && !error.isNetworkError && typeof error.message === "string") {
+    msg = error.message;
+  }
+  setStatus("error", msg || i18next.t("Upload failed. Please check the file and try again."));
+});
+```
+
+**Do NOT** try the documented `getResponseError` option — it's silently ignored. Confirmed in `node_modules/@uppy/xhr-upload/lib/index.js`: `this.opts.getResponseError` is never read, and `buildResponseError()` wraps 4xx/5xx in `NetworkError` which has a fixed message string.
+
+See `webpack/csv-import.js` for a working example.
+
 ### Reading TomSelect values: never use jQuery `option:selected` <!-- learned: 2026-04-09 -->
 
 TomSelect does **not** reliably mirror its current selection back onto the underlying `<option selected>` attribute — `$("#mySelect option:selected").val()` may return `undefined` even when the user has clearly picked an item. Always read the value via the TomSelect instance API:
@@ -954,9 +1018,297 @@ When displaying coloured calendar name badges with user-defined `BackgroundColor
 
 ---
 
+## Comparing IANA Timezones in JS — Canonicalize Both Sides <!-- learned: 2026-04-22 -->
+
+Never compare a server-supplied timezone string (`sTimeZone`) to
+`Intl.DateTimeFormat().resolvedOptions().timeZone` with `===`. The browser
+returns canonical IANA names (`America/New_York`, `UTC`) but the configured
+value may be an alias (`US/Eastern`, `Etc/UTC`, `US/Pacific`) — all equivalent
+zones, but a strict string compare fires a false "timezone mismatch" warning.
+
+**Rule:** run the configured zone through
+`Intl.DateTimeFormat(undefined, { timeZone: configured }).resolvedOptions().timeZone`
+before comparing. The browser resolves the alias to its canonical form, and both
+sides are then directly comparable. Wrap in `try/catch` — an invalid/unknown
+zone throws `RangeError`.
+
+```js
+// ❌ WRONG — fires false warning for US/Eastern vs America/New_York
+if (browser === configured) { /* show mismatch warning */ }
+
+// ✅ CORRECT — canonicalize configured via Intl, then compare
+let browser, canonicalConfigured;
+try {
+    browser = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    canonicalConfigured = Intl.DateTimeFormat(undefined, { timeZone: configured })
+        .resolvedOptions().timeZone;
+} catch (e) {
+    return; // unknown zone — fail closed, no warning
+}
+if (browser === canonicalConfigured) return; // equivalent zones
+```
+
+See `src/event/views/calendar.php` for the calendar-badge mismatch warning.
+Cypress stubs for this check must **pass through** when the caller supplies
+an explicit `timeZone` option — see `cypress-testing.md` → "Stubbing the
+Browser Timezone for UI Tests" for the stub gotcha.
+
+---
+
+## Collapse triggers must be `<button>`, not `<h4 data-bs-toggle>` <!-- learned: 2026-04-21 -->
+
+Bootstrap 5 lets you put `data-bs-toggle="collapse"` on any element, but
+headings are not keyboard-focusable — keyboard-only users can't expand or
+collapse the section. Use a `<button>` (or add `role="button"`, `tabindex="0"`,
+and Enter/Space key handlers) so the control is reachable.
+
+```html
+<!-- ❌ WRONG — <h4> is not focusable; keyboard users cannot toggle -->
+<div class="card-header">
+    <h4 data-bs-toggle="collapse" data-bs-target="#collapseDebug"
+        aria-expanded="false" aria-controls="collapseDebug"
+        style="cursor: pointer;">
+        <i class="fa fa-terminal me-2"></i> SMTP Debug Log
+    </h4>
+</div>
+
+<!-- ✅ CORRECT — <button> is focusable and gets Enter/Space for free -->
+<div class="card-header p-0">
+    <button type="button"
+            class="btn btn-link w-100 text-start text-decoration-none text-reset p-3 m-0"
+            data-bs-toggle="collapse" data-bs-target="#collapseDebug"
+            aria-expanded="false" aria-controls="collapseDebug">
+        <span class="h4 mb-0 d-flex align-items-center">
+            <i class="fa fa-terminal me-2"></i> SMTP Debug Log
+            <i class="fa fa-chevron-down ms-auto"></i>
+        </span>
+    </button>
+</div>
+```
+
+Keep the `h4 mb-0` typography on the inner `<span>` so visual weight is
+preserved. The card-header's `p-0` + the button's `p-3` keeps the hit target
+filling the whole header, so clicking the icon still toggles.
+
+---
+
+## Safe hash lookup: `getElementById(hash.slice(1))`, not `querySelector(hash)` <!-- learned: 2026-04-21 -->
+
+`document.querySelector(window.location.hash)` parses the hash as a CSS
+selector — any fragment with chars that aren't valid in a selector (pasted
+URLs, `.` inside an id, etc.) throws `DOMException` and kills the rest of
+the page initializer. Use `getElementById` with the leading `#` stripped —
+no selector parsing, never throws:
+
+```js
+// ❌ WRONG — throws DOMException on malformed hashes
+var target = document.querySelector(window.location.hash);
+
+// ✅ CORRECT — always safe; returns null for unknown ids
+if (!window.location.hash) return;
+var target = document.getElementById(window.location.hash.slice(1));
+if (!target) return;
+```
+
+Apply this anywhere a page does deep-link / scroll-to-anchor handling.
+Example site: `src/admin/views/debug.php` (the init code that opens a
+tab-pane or collapse when `location.hash` matches its id).
+
+---
+
 ## Files
 
 **Compiled Assets:** `src/skin/v2/churchcrm.min.js`, `src/skin/v2/churchcrm.min.css`
 **Webpack Entry Points:** `webpack/`
 **Locale Files:** `locale/messages.json`, `locale/terms/messages.po`
 **Build Config:** `webpack.config.js`, `package.json`
+
+### Quill 2 — Toolbar is a Sibling, Not a Child <!-- learned: 2026-04-22 -->
+
+Unlike Quill 1, Quill 2 inserts `.ql-toolbar` as a **previous sibling** of
+the container element, not a child. Three gotchas:
+
+1. **Double-border seam**: toolbar and container each render a full border,
+   showing a 2px seam where they meet. Fix by removing the toolbar's
+   bottom border and squaring the container's top corners so they read as
+   one unified control.
+
+   ```scss
+   .ql-toolbar.ql-snow {
+     border: 1px solid var(--tblr-border-color) !important;
+     border-bottom-width: 0 !important;
+     border-top-left-radius: var(--tblr-border-radius, 4px);
+     border-top-right-radius: var(--tblr-border-radius, 4px);
+   }
+   .quill-editor-container.ql-container {
+     border-top-left-radius: 0;
+     border-top-right-radius: 0;
+   }
+   ```
+
+2. **Double-init guard fails**: `container.querySelector('.ql-toolbar')` in
+   the init function returns `null` because the toolbar isn't a descendant.
+   Check the previous sibling instead: `container.previousElementSibling?.classList.contains('ql-toolbar')`.
+
+3. **Height: 100% stretches to flex parent**: Quill's default
+   `.ql-container { height: 100% }` makes the editor fill any flex-column
+   ancestor, pushing sibling rows off the page. Override in SCSS:
+
+   ```scss
+   .quill-editor-container.ql-container,
+   .ql-container.ql-snow {
+     height: auto !important;
+   }
+   .quill-editor-container {
+     min-height: 200px;
+     max-height: 400px;   // cap even if content overflows — editor scrolls internally
+     overflow: hidden;    // scrollbar lives inside .ql-editor
+   }
+   .quill-editor-container .ql-editor {
+     min-height: inherit;
+     max-height: inherit;
+     overflow-y: auto;
+   }
+   ```
+
+### Quill Container Sizing — `data-editor-size` Attribute <!-- learned: 2026-04-22 -->
+
+The Quill container uses a `data-editor-size` data attribute for
+compact / default / tall sizing instead of inline `style="min-height:..."`.
+`QuillEditorHelper::getQuillEditorContainer()` accepts a named size and
+auto-translates legacy pixel strings (e.g. `"100px"` → `"compact"`) for
+back-compat:
+
+```scss
+.quill-editor-container {
+  min-height: 200px; max-height: 400px;  // default
+  &[data-editor-size="compact"] { min-height: 120px; max-height: 240px; }
+  &[data-editor-size="tall"]    { min-height: 300px; max-height: 520px; }
+}
+```
+
+Call sites ask for `'compact' | 'default' | 'tall'`, never inline px.
+
+### Shared Form Renderer for Modal + Page Surfaces <!-- learned: 2026-04-22 -->
+
+When the same form lives in two surfaces (e.g. a Bootstrap modal AND a
+full-page editor), extract it into a **standalone ES module** that
+exports a renderer returning a controller object. Both surfaces pass a
+container element + callbacks; they own their own chrome (modal header/
+footer vs page header/footer buttons):
+
+```js
+// webpack/event-form.js
+export function renderEventEditor(container, event, calendars, eventTypes, options = {}) {
+  const { titleHost = null, onValidityChange = null, groups = [] } = options;
+  container.innerHTML = fieldsMarkup;
+  // ... wire TomSelect/Quill/datetime/radios — all the same
+  return {
+    getEvent: () => event,
+    validate,
+    destroy: () => { /* tear down TomSelect/Quill */ },
+  };
+}
+```
+
+```js
+// webpack/calendar-event-editor.js — modal caller
+formController = renderEventEditor(modalBody, event, cals, types, {
+  titleHost: modalHeader,
+  groups,
+  onValidityChange: (valid) => { saveBtn.disabled = !valid; },
+});
+
+// webpack/event-editor.js — full-page caller
+const controller = renderEventEditor(mount, event, cals, types, {
+  titleHost: inlineTitleDiv, groups,
+  onValidityChange: (valid) => { if (saveBtn) saveBtn.disabled = !valid; },
+});
+```
+
+The modal wraps it in Bootstrap chrome + `#eventSaveBtn`; the page wraps
+it in a card + redirect-on-success. Net effect: **zero field-set drift
+possible by construction** because there's one renderer. Both save paths
+go to `POST /api/events` via a shared `saveEvent()` helper in the module.
+
+### `titleHost` Option for Header-Embedded Title Input <!-- learned: 2026-04-22 -->
+
+The modal renders the event title as a big bold input inside the
+`.modal-header`, while the full-page renders it inline in the card body.
+Same renderer, two placements: pass an optional `titleHost` element in
+the options; if set, the title markup goes there; if not, it's prepended
+to the container body. Keeps the split cleanly separated.
+
+### New Events Need Default Start/End or Save Stays Disabled <!-- learned: 2026-04-22 -->
+
+The unified event form validates `event.Start != null && event.End != null`.
+The calendar modal gets these pre-filled from the clicked calendar day,
+but the full-page surface has no click context — without a seed, Save
+stays disabled forever:
+
+```js
+// webpack/event-editor.js — page mount
+const defaultStart = new Date();
+defaultStart.setMinutes(0, 0, 0);
+defaultStart.setHours(defaultStart.getHours() + 1);
+const defaultEnd = new Date(defaultStart);
+defaultEnd.setHours(defaultEnd.getHours() + 1);
+const event = { Id: 0, Title: '', Type: 0, PinnedCalendars: [], Start: defaultStart, End: defaultEnd, ... };
+```
+
+Always seed a sensible default time range when bootstrapping a form with
+validation that depends on it.
+
+### PinnedCalendars is Optional — Surface Empty State via Hint <!-- learned: 2026-04-22 -->
+
+The data model allows events without pinned calendars (they just don't
+appear on calendar views — matches legacy editor behaviour). Don't make
+it hard-required in `validate()`; instead surface the empty state with
+a warning hint that auto-shows/hides via TomSelect's change event:
+
+```js
+function updateCalendarsEmptyHint() {
+  const hint = document.getElementById("calendarsEmptyHint");
+  if (!hint) return;
+  const empty = !event.PinnedCalendars || event.PinnedCalendars.length === 0;
+  hint.classList.toggle("d-none", !empty);
+}
+tsCalendars.on("change", () => {
+  event.PinnedCalendars = tsCalendars.getValue().map((v) => parseInt(v, 10));
+  updateCalendarsEmptyHint();
+  fireValidity();
+});
+updateCalendarsEmptyHint(); // initial sync
+```
+
+Hint markup:
+```html
+<div class="form-text text-warning d-none" id="calendarsEmptyHint">
+  <i class="ti ti-info-circle me-1"></i>No calendar selected — this event will be saved but won't appear on any calendar view.
+</div>
+```
+
+### Title Required-Feedback: Don't Flash on Mount <!-- learned: 2026-04-22 -->
+
+Showing "This field is required" immediately on mount for an empty Title
+input is visual noise — the user hasn't had a chance to type yet. Track
+a `titleTouched` flag and only surface the error after the first `input`
+or `blur` event:
+
+```js
+let titleTouched = Boolean(event.Title && event.Title.length > 0);
+titleInput.addEventListener("input", () => {
+  event.Title = titleInput.value;
+  titleTouched = true;
+  fireValidity();
+});
+titleInput.addEventListener("blur", () => {
+  titleTouched = true;
+  updateTitleFeedback();
+});
+function updateTitleFeedback() {
+  // Only show when the user has interacted AND the title is empty.
+  const show = titleTouched && event.Title !== undefined && event.Title.length === 0;
+  titleFb.style.display = show ? "block" : "none";
+}
+```
