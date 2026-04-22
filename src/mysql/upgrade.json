@@ -265,9 +265,7 @@
   },
   "current": {
     "versions": ["7.2.0", "7.2.1"],
-    "scripts": [
-      "/mysql/upgrade/migrate-config-to-json.php"
-    ],
+    "scripts": ["/mysql/upgrade/migrate-config-to-json.php"],
     "dbVersion": "7.2.2"
   }
 }
