@@ -50,3 +50,4 @@ cypress.env.json
 # See https://ddev.readthedocs.io/en/stable/users/extend/in-container-configuration/
 .ddev/**/auth.json
 
+cy.log
