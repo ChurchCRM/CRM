@@ -9,8 +9,12 @@ describe('Repeat Event Editor', () => {
         cy.visit('/event/repeat-editor');
         cy.contains('Create Repeat Events').should('exist');
         cy.contains('Event Template').should('exist');
+        cy.contains('Event Timing').should('exist');
         cy.contains('Recurrence Pattern').should('exist');
-        cy.contains('Date Range').should('exist');
+        // Event Timing card now includes the date range fields that used
+        // to live in a separate "Date Range" card.
+        cy.get('#RangeStart').should('exist');
+        cy.get('#RangeEnd').should('exist');
     });
 
     it('should pre-fill event type when navigating with type ID', () => {
