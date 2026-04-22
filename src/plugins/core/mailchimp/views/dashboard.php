@@ -12,7 +12,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <ol class="breadcrumb mb-0 bg-light">
                 <li class="breadcrumb-item"><a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard"><i class="fa-solid fa-home"></i></a></li>
                 <li class="breadcrumb-item"><a href="<?= SystemURLs::getRootPath() ?>/plugins/management"><?= gettext('Plugins') ?></a></li>
-                <li class="breadcrumb-item active" aria-current="page"><?= gettext('MailChimp') ?></li>
+                <li class="breadcrumb-item active" aria-current="page">Mailchimp</li>
             </ol>
         </nav>
         <div class="btn-group btn-group-sm ms-2">
