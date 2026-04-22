@@ -56,16 +56,38 @@ describe("Event Editor page", () => {
         cy.get("#linkedGroupSelect").should("be.visible");
     });
 
-    it("Save button is disabled until required fields are filled", () => {
+    it("Save button is disabled until title is filled (calendar is optional)", () => {
         visitNewEditorForFirstType();
 
+        // Start/End are pre-filled from the default next-hour seed, and
+        // PinnedCalendars is optional — only Title blocks save.
         cy.get("#event-editor-save").should("be.disabled");
 
         cy.get("#event-title-input").type("Page Validation Test");
-        cy.get("#event-editor-save").should("be.disabled"); // still no calendar pinned
-
-        cy.tomSelectByValue("#pinnedCalendarsSelect", "1");
         cy.get("#event-editor-save").should("not.be.disabled");
+
+        // Empty-calendar hint is visible because nothing is pinned yet.
+        cy.get("#calendarsEmptyHint").should("be.visible");
+    });
+
+    /**
+     * Sibling to the "with calendar" save test — asserts the full-page
+     * surface also lets events be saved without a pinned calendar.
+     */
+    it("saves a new event without a pinned calendar", () => {
+        cy.intercept("POST", "**/api/events").as("createEvent");
+
+        visitNewEditorForFirstType();
+
+        cy.get("#event-title-input").type(`No Calendar Page ${Date.now()}`);
+        cy.get("#calendarsEmptyHint").should("be.visible");
+
+        cy.get("#event-editor-save").click();
+        cy.wait("@createEvent").then((intercepted) => {
+            expect(intercepted.request.body.PinnedCalendars).to.deep.equal([]);
+            expect(intercepted.response.statusCode).to.eq(200);
+        });
+        cy.url().should("include", "/event/dashboard");
     });
 
     it("persists InActive and LinkedGroupId when set in the Advanced section", () => {

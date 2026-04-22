@@ -46,25 +46,24 @@ describe("Standard Calendar", () => {
         cy.get(".ql-toolbar").should("have.length", 2);
     });
 
-    it("Save button is disabled until required fields are filled", () => {
+    it("Save button is disabled until title is filled (calendar is optional)", () => {
         cy.visit("event/calendars");
 
         cy.get(".fc-daygrid-day").first().click();
         cy.get("#event-title-input").should("be.visible");
 
-        // Save button starts disabled (no title, no calendars selected)
+        // Save starts disabled with no title. Start/End are pre-filled from
+        // the calendar-day click, and PinnedCalendars is optional — only the
+        // Title field blocks save.
         cy.get("#eventSaveBtn").should("be.disabled");
 
-        // Type a title — still disabled (no calendar selected)
         cy.get("#event-title-input").type("Validation Test Event");
-        cy.get("#eventSaveBtn").should("be.disabled");
-
-        // Select a calendar — save should now be enabled
-        // (start/end dates are pre-filled from the calendar click)
-        cy.tomSelectByValue("#pinnedCalendarsSelect", "1");
         cy.get("#eventSaveBtn").should("not.be.disabled");
 
-        // Clear the title — should be disabled again
+        // Empty-calendar hint is visible because nothing is pinned yet.
+        cy.get("#calendarsEmptyHint").should("be.visible");
+
+        // Clear the title — save disables again.
         cy.get("#event-title-input").clear();
         cy.get("#eventSaveBtn").should("be.disabled");
     });
@@ -184,7 +183,7 @@ describe("Standard Calendar — save (admin-session)", () => {
      * fetch resolves — verify the save payload now contains a non-zero
      * Type without the user touching the Event Type dropdown.
      */
-    it("New event saves successfully with default Event Type", () => {
+    it("New event saves successfully with a pinned calendar + default Event Type", () => {
         const title = "Default Type Test - " + Cypress._.random(0, 1e6);
         cy.intercept("POST", "**/api/events").as("createEvent");
 
@@ -192,14 +191,40 @@ describe("Standard Calendar — save (admin-session)", () => {
         cy.get(".fc-daygrid-day").first().click();
         cy.get("#event-title-input").should("be.visible").type(title);
 
-        // Pin a calendar (required). Do NOT touch Event Type — we want the
-        // default value to flow through to the payload.
+        // Pin a calendar. Do NOT touch Event Type — we want the default
+        // value to flow through to the payload.
         cy.tomSelectByValue("#pinnedCalendarsSelect", "1");
 
         cy.get("#eventSaveBtn").should("not.be.disabled").click();
 
         cy.wait("@createEvent").then((intercepted) => {
             expect(intercepted.request.body.Type).to.be.a("number").and.to.be.greaterThan(0);
+            expect(intercepted.request.body.PinnedCalendars).to.include(1);
+            expect(intercepted.response.statusCode).to.eq(200);
+        });
+    });
+
+    /**
+     * Pinned Calendars is intentionally optional — events can be saved
+     * without appearing on any calendar view (matches the legacy editor's
+     * long-standing behavior). Asserts the save round-trips and the
+     * payload's PinnedCalendars is an empty array.
+     */
+    it("New event saves without a pinned calendar (empty PinnedCalendars array)", () => {
+        const title = "No Calendar Test - " + Cypress._.random(0, 1e6);
+        cy.intercept("POST", "**/api/events").as("createEvent");
+
+        cy.visit("event/calendars");
+        cy.get(".fc-daygrid-day").first().click();
+        cy.get("#event-title-input").should("be.visible").type(title);
+
+        // Empty-state hint should be visible since no calendar is pinned.
+        cy.get("#calendarsEmptyHint").should("be.visible");
+
+        cy.get("#eventSaveBtn").should("not.be.disabled").click();
+
+        cy.wait("@createEvent").then((intercepted) => {
+            expect(intercepted.request.body.PinnedCalendars).to.deep.equal([]);
             expect(intercepted.response.statusCode).to.eq(200);
         });
     });

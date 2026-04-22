@@ -207,9 +207,11 @@ function renderEditorFields(event, calendars, eventTypes, groups, allDay) {
         <select id="eventTypeSelect" class="form-select">${typeOptions}</select>
       </div>
       <div class="col-md-6">
-        <label class="form-label" for="pinnedCalendarsSelect">${t("Pinned Calendars")}<span class="text-danger ms-1">*</span></label>
+        <label class="form-label" for="pinnedCalendarsSelect">${t("Pinned Calendars")}</label>
         <select id="pinnedCalendarsSelect" class="form-select" multiple>${calOptions}</select>
-        <div class="invalid-feedback" id="calendarsFeedback"><i class="fas fa-exclamation-circle me-1"></i>${t("This field is required")}</div>
+        <div class="form-text text-warning d-none" id="calendarsEmptyHint">
+          <i class="ti ti-info-circle me-1"></i>${t("No calendar selected — this event will be saved but won't appear on any calendar view.")}
+        </div>
       </div>
     </div>
 
@@ -362,15 +364,19 @@ export function renderEventEditor(container, event, calendars, eventTypes, optio
   let titleTouched = Boolean(event.Title && event.Title.length > 0);
 
   // --- validity tracking ---
+  // Pinned Calendars is intentionally NOT part of validate(): the data model
+  // supports events without a pinned calendar (they just don't appear on any
+  // calendar view). The empty state surfaces as a warning hint below the
+  // select, not as a block on save.
   function validate() {
-    return Boolean(
-      event.Title &&
-        event.Title.length > 0 &&
-        event.PinnedCalendars &&
-        event.PinnedCalendars.length > 0 &&
-        event.Start != null &&
-        event.End != null,
-    );
+    return Boolean(event.Title && event.Title.length > 0 && event.Start != null && event.End != null);
+  }
+
+  function updateCalendarsEmptyHint() {
+    const hint = document.getElementById("calendarsEmptyHint");
+    if (!hint) return;
+    const empty = !event.PinnedCalendars || event.PinnedCalendars.length === 0;
+    hint.classList.toggle("d-none", !empty);
   }
 
   function updateTitleFeedback() {
@@ -418,10 +424,12 @@ export function renderEventEditor(container, event, calendars, eventTypes, optio
   });
   tsCalendars.on("change", () => {
     event.PinnedCalendars = tsCalendars.getValue().map((v) => Number.parseInt(v, 10));
+    updateCalendarsEmptyHint();
     fireValidity();
-    const fb = document.getElementById("calendarsFeedback");
-    if (fb) fb.style.display = event.PinnedCalendars.length === 0 ? "block" : "none";
   });
+
+  // Initial hint state reflects whatever the event came in with.
+  updateCalendarsEmptyHint();
 
   // --- Timed / All-Day toggle ---
   const dayTypeRadios = document.querySelectorAll('input[name="eventDayType"]');
