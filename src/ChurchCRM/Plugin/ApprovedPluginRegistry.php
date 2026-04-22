@@ -94,19 +94,28 @@ class ApprovedPluginRegistry
             return [];
         }
 
+        // IO failure or JSON corruption on a registry that exists is
+        // distinct from "registry missing": the file is there but
+        // unreadable or malformed. Throw so callers (admin UI, install
+        // endpoint) can return a 500 instead of silently treating a
+        // corrupt registry as an empty allowlist.
+        $raw = @file_get_contents($registryPath);
+        if ($raw === false) {
+            $message = sprintf('Approved plugin registry exists but could not be read: %s', $registryPath);
+            LoggerUtils::getAppLogger()->error($message);
+            self::$cache = null;
+            self::$cachePath = null;
+            throw new \RuntimeException($message);
+        }
+
         try {
-            $raw = file_get_contents($registryPath);
-            if ($raw === false) {
-                return [];
-            }
             $data = json_decode($raw, true, 512, JSON_THROW_ON_ERROR);
         } catch (\Throwable $e) {
-            LoggerUtils::getAppLogger()->error('Failed to parse approved plugin registry', [
-                'path' => $registryPath,
-                'error' => $e->getMessage(),
-            ]);
-
-            return [];
+            $message = 'Approved plugin registry contains invalid JSON: ' . $e->getMessage();
+            LoggerUtils::getAppLogger()->error($message, ['path' => $registryPath]);
+            self::$cache = null;
+            self::$cachePath = null;
+            throw new \RuntimeException($message, 0, $e);
         }
 
         $entries = $data['plugins'] ?? [];

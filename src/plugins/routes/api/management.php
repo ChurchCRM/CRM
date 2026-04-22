@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Plugin\ApprovedPluginRegistry;
+use ChurchCRM\Plugin\PluginAlreadyInstalledException;
 use ChurchCRM\Plugin\PluginInstaller;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Slim\SlimUtils;
@@ -509,20 +510,24 @@ $group->post('/plugins/install', function (Request $request, Response $response)
             'message' => gettext('Plugin installed. Review it and click Enable to activate.'),
             'data' => $result,
         ]);
+    } catch (PluginAlreadyInstalledException $e) {
+        // Map "already installed" via a typed exception, not a substring
+        // match on the message — wording changes can't silently flip the
+        // status code from 409 to 400 this way.
+        LoggerUtils::getAppLogger()->warning('Plugin install rejected (already installed)', [
+            'url' => $downloadUrl,
+            'error' => $e->getMessage(),
+        ]);
+
+        return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 409);
     } catch (\RuntimeException $e) {
-        // Expected validation failures — map to 4xx so the UI can show the message.
-        $status = str_contains($e->getMessage(), 'already installed') ? 409 : 400;
+        // Expected validation failures — map to 400 so the UI can show the message.
         LoggerUtils::getAppLogger()->warning('Plugin install rejected', [
             'url' => $downloadUrl,
             'error' => $e->getMessage(),
         ]);
 
-        return SlimUtils::renderErrorJSON(
-            $response,
-            $e->getMessage(),
-            [],
-            $status
-        );
+        return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400);
     } catch (\Throwable $e) {
         return SlimUtils::renderErrorJSON(
             $response,
@@ -598,15 +603,10 @@ $group->post('/plugins/install-url', function (Request $request, Response $respo
                 : gettext('Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling.'),
             'data' => $result,
         ]);
+    } catch (PluginAlreadyInstalledException $e) {
+        return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 409);
     } catch (\RuntimeException $e) {
-        $status = str_contains($e->getMessage(), 'already installed') ? 409 : 400;
-
-        return SlimUtils::renderErrorJSON(
-            $response,
-            $e->getMessage(),
-            [],
-            $status
-        );
+        return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400);
     } catch (\Throwable $e) {
         return SlimUtils::renderErrorJSON(
             $response,

@@ -1,4 +1,4 @@
-<!-- staged: 2026-04-13 — destined for docs.churchcrm.io wiki/plugins/README.md -->
+<!-- staged: 2026-04-13 — commit PR#8657 — destined for docs.churchcrm.io wiki/plugins/README.md -->
 
 # Plugins
 

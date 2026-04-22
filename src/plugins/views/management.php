@@ -809,14 +809,14 @@ $(document).ready(function() {
             method: 'DELETE',
             success: function() {
                 window.CRM && window.CRM.notify
-                    ? window.CRM.notify("<?= addslashes(gettext('Plugin uninstalled')) ?>", 'success')
-                    : alert("<?= addslashes(gettext('Plugin uninstalled')) ?>");
+                    ? window.CRM.notify(<?= json_encode(gettext('Plugin uninstalled')) ?>, 'success')
+                    : alert(<?= json_encode(gettext('Plugin uninstalled')) ?>);
                 setTimeout(function() { window.location.reload(); }, 400);
             },
             error: function(xhr) {
                 const msg = (xhr.responseJSON && xhr.responseJSON.message)
                     ? xhr.responseJSON.message
-                    : "<?= addslashes(gettext('Failed to uninstall plugin')) ?>";
+                    : <?= json_encode(gettext('Failed to uninstall plugin')) ?>;
                 alert(msg);
             }
         });
@@ -831,7 +831,7 @@ $(document).ready(function() {
         if (!pluginId) return;
 
         const confirmed = window.confirm(
-            "<?= addslashes(gettext('Clear quarantine for this plugin? Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again.')) ?>"
+            <?= json_encode(gettext('Clear quarantine for this plugin? Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again.')) ?>
         );
         if (!confirmed) return;
 
@@ -842,7 +842,7 @@ $(document).ready(function() {
             error: function(xhr) {
                 const msg = (xhr.responseJSON && xhr.responseJSON.message)
                     ? xhr.responseJSON.message
-                    : "<?= addslashes(gettext('Failed to clear quarantine')) ?>";
+                    : <?= json_encode(gettext('Failed to clear quarantine')) ?>;
                 alert(msg);
             }
         });

@@ -77,9 +77,10 @@ class PluginInstaller
      * @param string $pluginsPath Absolute path to src/plugins
      * @param string $downloadUrl The downloadUrl from the approved registry
      *
-     * @return array{pluginId: string, version: string, path: string}
+     * @return array{pluginId: string, version: string, path: string, verified: bool}
      *
-     * @throws \RuntimeException on any validation or IO failure
+     * @throws PluginAlreadyInstalledException if community/{id} already exists
+     * @throws \RuntimeException               on any other validation or IO failure
      */
     public static function installFromUrl(string $pluginsPath, string $downloadUrl): array
     {
@@ -113,7 +114,7 @@ class PluginInstaller
         // (3) Destination check — never overwrite.
         $destDir = $pluginsPath . '/community/' . $pluginId;
         if (is_dir($destDir)) {
-            throw new \RuntimeException(sprintf(
+            throw new PluginAlreadyInstalledException(sprintf(
                 'A plugin is already installed at %s. Uninstall it before reinstalling.',
                 'community/' . $pluginId
             ));
@@ -159,10 +160,7 @@ class PluginInstaller
                 }
 
                 self::ensureDir(dirname($destDir));
-                if (!@rename($stagedDir, $destDir)) {
-                    // rename() can fail across filesystems; fall back to a copy.
-                    self::recursiveCopy($stagedDir, $destDir);
-                }
+                self::moveStagedToDest($stagedDir, $destDir);
 
                 // Record install provenance so boot-time registry sync can
                 // later detect if this plugin is still approved.
@@ -266,7 +264,7 @@ class PluginInstaller
         // Never overwrite an existing install.
         $destDir = $pluginsPath . '/community/' . $declaredId;
         if (is_dir($destDir)) {
-            throw new \RuntimeException(sprintf(
+            throw new PluginAlreadyInstalledException(sprintf(
                 'A plugin is already installed at %s. Uninstall it before reinstalling.',
                 'community/' . $declaredId
             ));
@@ -317,9 +315,7 @@ class PluginInstaller
                 $installedVersion = is_array($manifest) ? (string) ($manifest['version'] ?? 'unknown') : 'unknown';
 
                 self::ensureDir(dirname($destDir));
-                if (!@rename($stagedDir, $destDir)) {
-                    self::recursiveCopy($stagedDir, $destDir);
-                }
+                self::moveStagedToDest($stagedDir, $destDir);
 
                 self::recordProvenance($declaredId, [
                     'source' => 'unverified-url',
@@ -641,6 +637,16 @@ class PluginInstaller
                     throw new \RuntimeException('Plugin zip uncompressed size exceeds the limit (possible zip bomb).');
                 }
 
+                // Reject symlink entries before extractTo() materialises them.
+                // Unix mode lives in the high 16 bits of external_attr when
+                // the entry was added on a Unix host; 0xA000 == S_IFLNK.
+                if (isset($stat['external_attr'])) {
+                    $unixMode = ((int) $stat['external_attr'] >> 16) & 0xFFFF;
+                    if (($unixMode & 0xF000) === 0xA000) {
+                        throw new \RuntimeException('Zip entry is a symlink: ' . $name);
+                    }
+                }
+
                 self::assertSafeZipEntry($name);
 
                 // Every entry must live under a single top-level directory.
@@ -703,10 +709,18 @@ class PluginInstaller
         if (($manifest['type'] ?? 'community') !== 'community') {
             throw new \RuntimeException('URL-installed plugins must declare type="community".');
         }
+
+        // Defence in depth: even after the per-entry symlink check, walk
+        // the extracted tree and reject any symlinks the kernel created.
+        // A future ZipArchive change or a quirk in a non-Unix-host zip
+        // could otherwise sneak past the in-zip mode check.
+        self::assertNoSymlinksUnder($destRoot . '/' . $pluginId);
     }
 
     /**
-     * Reject path traversal, absolute paths, and Windows-style drive paths.
+     * Reject path traversal, absolute paths, Windows-style drive paths, and
+     * hidden segments (names beginning with `.` other than the documented
+     * documentation files allowed by {@see assertAllowedExtension}).
      */
     private static function assertSafeZipEntry(string $name): void
     {
@@ -723,14 +737,49 @@ class PluginInstaller
         if (preg_match('/^[a-zA-Z]:\//', $normalised)) {
             throw new \RuntimeException('Zip entry uses drive-letter path: ' . $name);
         }
-        foreach (explode('/', $normalised) as $segment) {
+        // Reject `..`, `.`, and hidden directory segments. The leaf-file
+        // hidden-name allowlist (.editorconfig, .gitattributes) is enforced
+        // separately by assertAllowedExtension(); here we only block hidden
+        // *directories* from sneaking through the dir-entry skip path.
+        $segments = explode('/', $normalised);
+        $lastIndex = count($segments) - 1;
+        foreach ($segments as $i => $segment) {
             if ($segment === '..' || $segment === '.') {
                 throw new \RuntimeException('Zip entry contains traversal segment: ' . $name);
+            }
+            // Skip empty trailing segment from "dir/" entries.
+            if ($segment === '') {
+                continue;
+            }
+            // Block hidden directory segments (anything not the leaf name).
+            if ($i !== $lastIndex && $segment[0] === '.') {
+                throw new \RuntimeException('Zip entry contains hidden directory segment: ' . $name);
             }
         }
         // No null bytes, no control characters.
         if (preg_match('/[\x00-\x1F]/', $normalised)) {
             throw new \RuntimeException('Zip entry contains control characters.');
+        }
+    }
+
+    /**
+     * Recursively walk an extracted plugin tree and throw if any entry is
+     * a symlink. Belt-and-braces companion to the in-zip mode check.
+     */
+    private static function assertNoSymlinksUnder(string $root): void
+    {
+        if (!is_dir($root)) {
+            return;
+        }
+        $iter = new \RecursiveIteratorIterator(
+            new \RecursiveDirectoryIterator($root, \FilesystemIterator::SKIP_DOTS),
+            \RecursiveIteratorIterator::SELF_FIRST
+        );
+        foreach ($iter as $item) {
+            /** @var \SplFileInfo $item */
+            if ($item->isLink()) {
+                throw new \RuntimeException('Extracted plugin contains a symlink: ' . $item->getPathname());
+            }
         }
     }
 
@@ -773,6 +822,28 @@ class PluginInstaller
         }
     }
 
+    /**
+     * Move the staged extraction directory into its final community/{id}
+     * location. Tries `rename()` first; if that fails (typically because
+     * the temp dir and the install dir are on different filesystems) falls
+     * back to a recursive copy. If anything throws during the copy fallback
+     * the partial destination is removed so the install remains atomic from
+     * the caller's perspective — a future install attempt won't be blocked
+     * by a half-populated directory and the on-disk state stays clean.
+     */
+    private static function moveStagedToDest(string $stagedDir, string $destDir): void
+    {
+        if (@rename($stagedDir, $destDir)) {
+            return;
+        }
+        try {
+            self::recursiveCopy($stagedDir, $destDir);
+        } catch (\Throwable $e) {
+            self::recursiveDelete($destDir);
+            throw $e;
+        }
+    }
+
     private static function recursiveCopy(string $from, string $to): void
     {
         self::ensureDir($to);
@@ -784,6 +855,12 @@ class PluginInstaller
         foreach ($iter as $item) {
             /** @var \SplFileInfo $item */
             $target = $to . '/' . $iter->getSubPathname();
+            // Refuse to follow symlinks during copy. PHP's copy() resolves
+            // them, which would let a malicious zip read arbitrary files
+            // through the cross-filesystem copy fallback path.
+            if ($item->isLink()) {
+                throw new \RuntimeException('Refusing to copy symlink during install: ' . $item->getPathname());
+            }
             if ($item->isDir()) {
                 self::ensureDir($target);
             } else {

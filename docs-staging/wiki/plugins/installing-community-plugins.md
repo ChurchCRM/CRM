@@ -4,7 +4,7 @@
 
 Community plugins extend ChurchCRM with third-party integrations. Every
 community plugin has been **reviewed by the ChurchCRM maintainers** and
-is listed in a signed allowlist — ChurchCRM refuses to install anything
+is listed in a checksum-pinned allowlist — ChurchCRM refuses to install anything
 that isn't on that list. This page walks you through the install flow
 and explains what each safety check is doing for you.
 
@@ -48,7 +48,7 @@ Each entry shows:
 
 If the risk level or risk summary make you uncomfortable, **don't
 install the plugin**. You can always file a question with the
-maintainers at [forum.churchcrm.io](https://forum.churchcrm.io) first.
+maintainers first.
 
 ---
 
