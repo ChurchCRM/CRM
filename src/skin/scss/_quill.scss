@@ -27,7 +27,7 @@
   // Tabler focus-ring parity with .form-control.
   &:focus-within {
     border-color: var(--tblr-primary, #206bc4);
-    box-shadow: 0 0 0 0.25rem rgba(var(--tblr-primary-rgb, 32 107 196), 0.25);
+    box-shadow: 0 0 0 0.25rem rgba(var(--tblr-primary-rgb, 32, 107, 196), 0.25);
   }
 }
 
