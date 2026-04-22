@@ -103,7 +103,89 @@ function renderTitleFieldInHeader(event) {
     </div>`;
 }
 
-function renderEditorFields(event, calendars, eventTypes, allDay) {
+function renderAdvancedSection(event, groups) {
+  const inactive = Number(event.InActive || 0) === 1;
+  const linkedGroupId = Number(event.LinkedGroupId || 0);
+
+  const groupOptions = groups
+    .map(
+      (g) =>
+        `<option value="${g.groupID ?? g.Id}" ${(g.groupID ?? g.Id) === linkedGroupId ? "selected" : ""}>${escapeHtml(g.name ?? g.Name)}</option>`,
+    )
+    .join("");
+
+  // Attendance Counts rows render only for saved events (event.Id > 0 and the
+  // event has at least one count category recorded). For brand-new events the
+  // section hides with a short note — counts get filled in after the event is
+  // saved, which matches how volunteers actually use this feature anyway.
+  let countsMarkup = "";
+  const hasCounts = Array.isArray(event.AttendanceCounts) && event.AttendanceCounts.length > 0;
+  if (event.Id && hasCounts) {
+    const rows = event.AttendanceCounts.map(
+      (c, idx) => `
+      <div class="col-sm-6 col-md-4 mb-2">
+        <label class="form-label" for="attCount_${idx}">${escapeHtml(c.name)}</label>
+        <input type="number" id="attCount_${idx}" class="form-control attendance-count"
+               data-count-id="${c.id}" data-count-name="${escapeHtml(c.name)}"
+               min="0" value="${Number(c.count) || 0}">
+      </div>`,
+    ).join("");
+    countsMarkup = `
+      <div class="mb-3">
+        <label class="form-label">${t("Attendance Counts")}</label>
+        <div class="row g-2">${rows}</div>
+        <small class="form-text text-secondary">${t("Volunteer-entered headcounts, broken down by category.")}</small>
+      </div>`;
+  } else if (!event.Id) {
+    countsMarkup = `
+      <div class="mb-3">
+        <label class="form-label text-muted">${t("Attendance Counts")}</label>
+        <div class="text-muted small"><i class="ti ti-info-circle me-1"></i>${t("Available after the event is saved.")}</div>
+      </div>`;
+  }
+
+  return `
+    <div class="my-3">
+      <button type="button" class="btn btn-link p-0 text-decoration-none"
+              data-bs-toggle="collapse" data-bs-target="#eventAdvancedFields"
+              aria-expanded="false" aria-controls="eventAdvancedFields">
+        <i class="ti ti-chevron-down me-1" id="eventAdvancedChevron"></i>
+        <span id="eventAdvancedLabel">${t("Show more options")}</span>
+      </button>
+    </div>
+    <div class="collapse" id="eventAdvancedFields">
+      <div class="card card-sm bg-muted-lt border-0 mb-3">
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label">${t("Event Status")}<span class="text-danger ms-1">*</span></label>
+            <div class="form-selectgroup form-selectgroup-pills">
+              <label class="form-selectgroup-item">
+                <input type="radio" name="eventInActive" value="0" class="form-selectgroup-input" ${!inactive ? "checked" : ""}>
+                <span class="form-selectgroup-label"><i class="ti ti-check me-1"></i>${t("Active")}</span>
+              </label>
+              <label class="form-selectgroup-item">
+                <input type="radio" name="eventInActive" value="1" class="form-selectgroup-input" ${inactive ? "checked" : ""}>
+                <span class="form-selectgroup-label"><i class="ti ti-ban me-1"></i>${t("Inactive")}</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="linkedGroupSelect">${t("Linked Group")}</label>
+            <select id="linkedGroupSelect" class="form-select">
+              <option value="0">${t("No group")}</option>
+              ${groupOptions}
+            </select>
+            <small class="form-text text-secondary">${t("Ties this event to a class or ministry roster — used by the Kiosk check-in flow.")}</small>
+          </div>
+
+          ${countsMarkup}
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderEditorFields(event, calendars, eventTypes, groups, allDay) {
   const calOptions = calendars
     .map(
       (c) =>
@@ -164,6 +246,8 @@ function renderEditorFields(event, calendars, eventTypes, allDay) {
       <label class="form-label" for="quill-Text">${t("Additional Information")}</label>
       <div id="quill-Text" class="quill-editor-container" data-editor-size="compact"></div>
     </div>
+
+    ${renderAdvancedSection(event, groups)}
   `;
 }
 
@@ -253,10 +337,10 @@ export function renderEventViewer(container, event, calendars, eventTypes) {
 // ---------------------------------------------------------------------------
 
 export function renderEventEditor(container, event, calendars, eventTypes, options = {}) {
-  const { titleHost = null, onValidityChange = null } = options;
+  const { titleHost = null, onValidityChange = null, groups = [] } = options;
 
   const allDay = isAllDay(event);
-  const fieldsMarkup = renderEditorFields(event, calendars, eventTypes, allDay);
+  const fieldsMarkup = renderEditorFields(event, calendars, eventTypes, groups, allDay);
 
   if (titleHost) {
     titleHost.innerHTML = renderTitleFieldInHeader(event) + (titleHost.dataset.keepSiblings === "true" ? "" : "");
@@ -392,6 +476,52 @@ export function renderEventEditor(container, event, calendars, eventTypes, optio
   if (quillText) {
     quillText.on("text-change", () => {
       event.Text = quillText.root.innerHTML;
+    });
+  }
+
+  // --- Advanced section: Active/Inactive, Linked Group, Attendance Counts ---
+  event.InActive = Number(event.InActive || 0);
+  const inactiveRadios = document.querySelectorAll('input[name="eventInActive"]');
+  for (const radio of inactiveRadios) {
+    radio.addEventListener("change", () => {
+      event.InActive = Number.parseInt(radio.value, 10) || 0;
+    });
+  }
+
+  event.LinkedGroupId = Number(event.LinkedGroupId || 0);
+  const linkedGroupEl = document.getElementById("linkedGroupSelect");
+  if (linkedGroupEl) {
+    linkedGroupEl.addEventListener("change", () => {
+      event.LinkedGroupId = Number.parseInt(linkedGroupEl.value, 10) || 0;
+    });
+  }
+
+  // Attendance counts live on `event.AttendanceCounts[]` — each input
+  // rewrites the matching row by data-count-id when changed.
+  if (!Array.isArray(event.AttendanceCounts)) event.AttendanceCounts = [];
+  const countInputs = document.querySelectorAll(".attendance-count");
+  for (const input of countInputs) {
+    input.addEventListener("input", () => {
+      const countId = Number.parseInt(input.dataset.countId, 10);
+      const row = event.AttendanceCounts.find((r) => Number(r.id) === countId);
+      if (row) row.count = Number.parseInt(input.value, 10) || 0;
+    });
+  }
+
+  // Toggle the chevron + label text when the collapse opens/closes.
+  const advancedCollapse = document.getElementById("eventAdvancedFields");
+  if (advancedCollapse) {
+    advancedCollapse.addEventListener("show.bs.collapse", () => {
+      const chevron = document.getElementById("eventAdvancedChevron");
+      const label = document.getElementById("eventAdvancedLabel");
+      if (chevron) chevron.classList.replace("ti-chevron-down", "ti-chevron-up");
+      if (label) label.textContent = t("Hide advanced options");
+    });
+    advancedCollapse.addEventListener("hide.bs.collapse", () => {
+      const chevron = document.getElementById("eventAdvancedChevron");
+      const label = document.getElementById("eventAdvancedLabel");
+      if (chevron) chevron.classList.replace("ti-chevron-up", "ti-chevron-down");
+      if (label) label.textContent = t("Show more options");
     });
   }
 
