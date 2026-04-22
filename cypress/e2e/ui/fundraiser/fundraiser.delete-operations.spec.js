@@ -6,7 +6,7 @@ describe("Fundraiser Delete Operations", () => {
 
     describe("DonatedItemDelete.php", () => {
         it("renders confirmation form with a CSRF token", () => {
-            cy.visit("DonatedItemDelete.php?DonatedItemID=1&linkBack=FindFundRaiser.php");
+            cy.visit("/DonatedItemDelete.php?DonatedItemID=1&linkBack=FindFundRaiser.php");
             cy.contains("Confirm Delete");
             cy.get('input[name="csrf_token"]').should("have.attr", "value").and("match", /^[a-f0-9]{64}$/);
             cy.get('input[name="Delete"]').should("exist");
@@ -14,7 +14,7 @@ describe("Fundraiser Delete Operations", () => {
         });
 
         it("does not delete on GET", () => {
-            cy.visit("DonatedItemDelete.php?DonatedItemID=1&linkBack=FindFundRaiser.php");
+            cy.visit("/DonatedItemDelete.php?DonatedItemID=1&linkBack=FindFundRaiser.php");
             cy.contains("Confirm Delete");
             cy.url().should("contain", "DonatedItemDelete.php");
         });
@@ -36,7 +36,7 @@ describe("Fundraiser Delete Operations", () => {
 
     describe("PaddleNumDelete.php", () => {
         it("renders confirmation form with a CSRF token", () => {
-            cy.visit("PaddleNumDelete.php?PaddleNumID=1&linkBack=FindFundRaiser.php");
+            cy.visit("/PaddleNumDelete.php?PaddleNumID=1&linkBack=FindFundRaiser.php");
             cy.contains("Confirm Delete");
             cy.get('input[name="csrf_token"]').should("have.attr", "value").and("match", /^[a-f0-9]{64}$/);
             cy.get('input[name="Delete"]').should("exist");
@@ -44,7 +44,7 @@ describe("Fundraiser Delete Operations", () => {
         });
 
         it("does not delete on GET", () => {
-            cy.visit("PaddleNumDelete.php?PaddleNumID=1&linkBack=FindFundRaiser.php");
+            cy.visit("/PaddleNumDelete.php?PaddleNumID=1&linkBack=FindFundRaiser.php");
             cy.contains("Confirm Delete");
             cy.url().should("contain", "PaddleNumDelete.php");
         });
