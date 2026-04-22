@@ -106,6 +106,35 @@ public function preSelect(ConnectionInterface $con): void
 }
 ```
 
+### Person / Family postInsert Auto-Writes a Timeline Note <!-- learned: 2026-04-18 -->
+
+`Person::postInsert()` and `Family::postInsert()` (see `src/ChurchCRM/model/ChurchCRM/Person.php:143` and `Family.php:86`) automatically call `createTimeLineNote('create')`, which writes a `Note` row with:
+
+- `nte_Type = 'create'`
+- `nte_Text = gettext('Created')`
+- `nte_EnteredBy` / `nte_DateEntered` copied from the Person/Family
+- attached via `nte_per_ID` or `nte_fam_ID`
+
+**Consequence for bulk creators (importers, migrations, seeders):** do **not** manually `new Note()` with `type='create'` after saving a Person or Family — you will write a duplicate row. Either accept the default `"Created"` text, or find the auto-created note and mutate its text:
+
+```php
+$person->save($con);  // postInsert hook writes the 'create' note
+
+$note = NoteQuery::create()
+    ->filterByPerId($person->getId())
+    ->filterByType('create')
+    ->orderByDateEntered('DESC')
+    ->findOne($con);
+if ($note !== null) {
+    $note->setText(gettext('Imported from CSV'));
+    $note->save($con);
+}
+```
+
+Note that the legacy `PersonEditor.php` still does a manual `new Note()` after save, which produces two `'create'` notes per new person. Don't copy that pattern.
+
+Same hook also sends a new-person/family notification email when `SystemConfig::sNewPersonNotificationRecipientIDs` is non-empty — relevant if you're writing a bulk importer (each imported person triggers a mail).
+
 ## Propel ORM Method Naming (CRITICAL)
 
 **NEVER guess ORM method names.** Propel uses strict column-to-method mapping. **Always check the Query class documentation comments** to verify exact method names before writing code.
