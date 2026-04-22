@@ -128,6 +128,51 @@ describe("Standard Calendar", () => {
         cy.get(".modal-backdrop").should("not.exist");
     });
 
+    it("TomSelect dropdowns initialize correctly", () => {
+        cy.visit("event/calendars");
+
+        cy.get(".fc-daygrid-day").first().click();
+        cy.get("#event-title-input").should("be.visible");
+
+        // Event type TomSelect should be initialized
+        cy.get("#eventTypeSelect").siblings(".ts-wrapper").should("exist");
+        cy.get("#eventTypeSelect").siblings(".ts-wrapper").find(".ts-control").should("be.visible");
+
+        // Pinned calendars TomSelect should be initialized
+        cy.get("#pinnedCalendarsSelect").siblings(".ts-wrapper").should("exist");
+        cy.get("#pinnedCalendarsSelect").siblings(".ts-wrapper").find(".ts-control").should("be.visible");
+    });
+
+    /**
+     * Advanced section — Active/Inactive, Linked Group, Attendance Counts.
+     * These fields live in a collapse that's closed by default so the
+     * quick-add experience stays minimal. View-only assertion; the save
+     * round-trip lives in the admin-session describe block below.
+     */
+    it("Advanced section starts collapsed and expands on toggle", () => {
+        cy.visit("event/calendars");
+        cy.get(".fc-daygrid-day").first().click();
+        cy.get("#event-title-input").should("be.visible");
+
+        cy.get("#eventAdvancedFields").should("not.have.class", "show");
+        cy.get("#eventAdvancedLabel").should("contain", "Show more options");
+
+        cy.get('[data-bs-target="#eventAdvancedFields"]').click();
+        cy.get("#eventAdvancedFields").should("have.class", "show");
+        cy.get("#eventAdvancedLabel").should("contain", "Hide advanced options");
+        cy.get('input[name="eventInActive"]').should("have.length", 2);
+        cy.get("#linkedGroupSelect").should("be.visible");
+    });
+});
+
+/**
+ * Save-path tests — require AddEvents role (admin). POST /api/events
+ * returns 403 for standard sessions, so these tests must run under an
+ * admin session instead of the standard one used above.
+ */
+describe("Standard Calendar — save (admin-session)", () => {
+    beforeEach(() => cy.setupAdminSession());
+
     /**
      * Regression: new-event payload sent Type:0 (invalid) when the user
      * accepted the default Event Type. No EventType has Id=0, so the
@@ -157,42 +202,6 @@ describe("Standard Calendar", () => {
             expect(intercepted.request.body.Type).to.be.a("number").and.to.be.greaterThan(0);
             expect(intercepted.response.statusCode).to.eq(200);
         });
-    });
-
-    it("TomSelect dropdowns initialize correctly", () => {
-        cy.visit("event/calendars");
-
-        cy.get(".fc-daygrid-day").first().click();
-        cy.get("#event-title-input").should("be.visible");
-
-        // Event type TomSelect should be initialized
-        cy.get("#eventTypeSelect").siblings(".ts-wrapper").should("exist");
-        cy.get("#eventTypeSelect").siblings(".ts-wrapper").find(".ts-control").should("be.visible");
-
-        // Pinned calendars TomSelect should be initialized
-        cy.get("#pinnedCalendarsSelect").siblings(".ts-wrapper").should("exist");
-        cy.get("#pinnedCalendarsSelect").siblings(".ts-wrapper").find(".ts-control").should("be.visible");
-    });
-
-    /**
-     * Advanced section — Active/Inactive, Linked Group, Attendance Counts.
-     * These fields live in a collapse that's closed by default so the
-     * quick-add experience stays minimal; opening it and changing values
-     * must round-trip into the POST /api/events payload.
-     */
-    it("Advanced section starts collapsed and expands on toggle", () => {
-        cy.visit("event/calendars");
-        cy.get(".fc-daygrid-day").first().click();
-        cy.get("#event-title-input").should("be.visible");
-
-        cy.get("#eventAdvancedFields").should("not.have.class", "show");
-        cy.get("#eventAdvancedLabel").should("contain", "Show more options");
-
-        cy.get('[data-bs-target="#eventAdvancedFields"]').click();
-        cy.get("#eventAdvancedFields").should("have.class", "show");
-        cy.get("#eventAdvancedLabel").should("contain", "Hide advanced options");
-        cy.get('input[name="eventInActive"]').should("have.length", 2);
-        cy.get("#linkedGroupSelect").should("be.visible");
     });
 
     it("InActive and LinkedGroupId flow into the POST /api/events payload", () => {
