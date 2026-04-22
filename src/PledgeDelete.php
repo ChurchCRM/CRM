@@ -46,7 +46,7 @@ require_once __DIR__ . '/Include/Header.php';
 
 <div class="card-body text-center">
     <p class="lead mb-4"><?= gettext('Are you sure you want to permanently delete this pledge record?') ?></p>
-    <form method="post" action="PledgeDelete.php?<?= 'GroupKey=' . InputUtils::escapeAttribute($sGroupKey) . '&linkBack=' . InputUtils::escapeAttribute($linkBack) ?>" name="PledgeDelete">
+    <form method="post" action="PledgeDelete.php?GroupKey=<?= urlencode($sGroupKey) ?>&amp;linkBack=<?= urlencode($linkBack) ?>" name="PledgeDelete">
         <?= CSRFUtils::getTokenInputField('pledge_delete') ?>
         <input type="submit" class="btn btn-danger" value="<?= gettext('Delete') ?>" name="Delete">
         <input type="submit" class="btn btn-secondary ms-2" value="<?= gettext('Cancel') ?>" name="Cancel">

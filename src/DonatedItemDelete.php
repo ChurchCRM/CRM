@@ -14,7 +14,11 @@ use ChurchCRM\view\PageHeader;
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled(), 'DeleteRecords');
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
 
-$iDonatedItemID = (int) InputUtils::legacyFilterInput($_REQUEST['DonatedItemID'] ?? 0, 'int');
+// Read the ID from $_POST on the confirmed-delete submit, $_GET when rendering
+// the confirmation page. $_REQUEST depends on request_order and can include
+// cookies — unsafe for destructive operations.
+$idSource = isset($_POST['Delete']) ? $_POST : $_GET;
+$iDonatedItemID = (int) InputUtils::legacyFilterInput($idSource['DonatedItemID'] ?? 0, 'int');
 $linkBack = RedirectUtils::getLinkBackFromRequest('FindFundRaiser.php');
 $iFundRaiserID = (int) ($_SESSION['iCurrentFundraiser'] ?? 0);
 
@@ -48,7 +52,7 @@ require_once __DIR__ . '/Include/Header.php';
 
 <div class="card-body text-center">
     <p class="lead mb-4"><?= gettext('Are you sure you want to permanently delete this donated item?') ?></p>
-    <form method="post" action="DonatedItemDelete.php?DonatedItemID=<?= $iDonatedItemID ?>&amp;linkBack=<?= InputUtils::escapeAttribute($linkBack) ?>" name="DonatedItemDelete">
+    <form method="post" action="DonatedItemDelete.php?DonatedItemID=<?= $iDonatedItemID ?>&amp;linkBack=<?= urlencode($linkBack) ?>" name="DonatedItemDelete">
         <?= CSRFUtils::getTokenInputField('donated_item_delete') ?>
         <input type="hidden" name="DonatedItemID" value="<?= $iDonatedItemID ?>">
         <input type="submit" class="btn btn-danger" value="<?= gettext('Delete') ?>" name="Delete">

@@ -13,7 +13,11 @@ use ChurchCRM\view\PageHeader;
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled(), 'DeleteRecords');
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
 
-$iPaddleNumID = (int) InputUtils::legacyFilterInput($_REQUEST['PaddleNumID'] ?? 0, 'int');
+// Read the ID from $_POST on the confirmed-delete submit, $_GET when rendering
+// the confirmation page. $_REQUEST depends on request_order and can include
+// cookies — unsafe for destructive operations.
+$idSource = isset($_POST['Delete']) ? $_POST : $_GET;
+$iPaddleNumID = (int) InputUtils::legacyFilterInput($idSource['PaddleNumID'] ?? 0, 'int');
 $linkBack = RedirectUtils::getLinkBackFromRequest('FindFundRaiser.php');
 $iFundRaiserID = (int) ($_SESSION['iCurrentFundraiser'] ?? 0);
 
@@ -47,7 +51,7 @@ require_once __DIR__ . '/Include/Header.php';
 
 <div class="card-body text-center">
     <p class="lead mb-4"><?= gettext('Are you sure you want to permanently delete this paddle number?') ?></p>
-    <form method="post" action="PaddleNumDelete.php?PaddleNumID=<?= $iPaddleNumID ?>&amp;linkBack=<?= InputUtils::escapeAttribute($linkBack) ?>" name="PaddleNumDelete">
+    <form method="post" action="PaddleNumDelete.php?PaddleNumID=<?= $iPaddleNumID ?>&amp;linkBack=<?= urlencode($linkBack) ?>" name="PaddleNumDelete">
         <?= CSRFUtils::getTokenInputField('paddle_num_delete') ?>
         <input type="hidden" name="PaddleNumID" value="<?= $iPaddleNumID ?>">
         <input type="submit" class="btn btn-danger" value="<?= gettext('Delete') ?>" name="Delete">

@@ -266,18 +266,27 @@ $userId = $_GET['userId'];  // Could be "1 OR 1=1"
 
 ### Every POST/delete page must validate a CSRF token <!-- learned: 2026-04-21 -->
 
-Any legacy `*.php` page that performs a DB write (insert/update/delete) MUST validate a CSRF token before acting. Pattern (applied in `UserEditor.php`, `PledgeDelete.php`, `DonatedItemDelete.php`, `PaddleNumDelete.php` — GHSA-3xq9-c86x-cwpp):
+Any legacy `*.php` page that performs a DB write (insert/update/delete) MUST validate a CSRF token before acting. The required rule is **validate before any DB write** (GHSA-3xq9-c86x-cwpp). Two failure-response patterns are in use in the codebase — pick whichever fits the page:
 
 ```php
 use ChurchCRM\Utils\CSRFUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
-// In the POST handler — BEFORE any DB write:
-if (!CSRFUtils::verifyRequest($_POST, 'user_editor')) {
+// Pattern A — confirmation / delete pages (PledgeDelete.php, DonatedItemDelete.php,
+// PaddleNumDelete.php). Short-circuit with 403 because there is no form state to
+// preserve.
+if (!CSRFUtils::verifyRequest($_POST, 'pledge_delete')) {
     http_response_code(403);
     exit(gettext('Invalid security token. Please try again.'));
 }
 
-// In the form HTML:
+// Pattern B — long editor forms (UserEditor.php). Redirect back to the editor
+// with an ErrorText so the user's context (which record, add vs edit) is kept.
+if (!CSRFUtils::verifyRequest($_POST, 'user_editor')) {
+    RedirectUtils::redirect('UserEditor.php?PersonID=' . $iPersonID . '&ErrorText=Invalid+security+token.+Please+try+again.');
+}
+
+// In the form HTML (same for both patterns):
 <form method="post" action="...">
     <?= CSRFUtils::getTokenInputField('user_editor') ?>
     <!-- other inputs -->
