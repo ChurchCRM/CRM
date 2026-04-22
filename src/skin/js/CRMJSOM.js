@@ -805,7 +805,7 @@ window.CRM.renderEventActionMenu = function (eventId, eventTitle, options) {
         callback: function (result) {
           if (result) {
             window.CRM.APIRequest({ method: "DELETE", path: "person/" + personId }).done(function () {
-              location.reload();
+              window.location.href = "/people/list";
             });
           }
         },
