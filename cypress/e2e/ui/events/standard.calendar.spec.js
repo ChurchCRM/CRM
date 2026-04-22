@@ -173,4 +173,51 @@ describe("Standard Calendar", () => {
         cy.get("#pinnedCalendarsSelect").siblings(".ts-wrapper").should("exist");
         cy.get("#pinnedCalendarsSelect").siblings(".ts-wrapper").find(".ts-control").should("be.visible");
     });
+
+    /**
+     * Advanced section — Active/Inactive, Linked Group, Attendance Counts.
+     * These fields live in a collapse that's closed by default so the
+     * quick-add experience stays minimal; opening it and changing values
+     * must round-trip into the POST /api/events payload.
+     */
+    it("Advanced section starts collapsed and expands on toggle", () => {
+        cy.visit("event/calendars");
+        cy.get(".fc-daygrid-day").first().click();
+        cy.get("#event-title-input").should("be.visible");
+
+        cy.get("#eventAdvancedFields").should("not.have.class", "show");
+        cy.get("#eventAdvancedLabel").should("contain", "Show more options");
+
+        cy.get('[data-bs-target="#eventAdvancedFields"]').click();
+        cy.get("#eventAdvancedFields").should("have.class", "show");
+        cy.get("#eventAdvancedLabel").should("contain", "Hide advanced options");
+        cy.get('input[name="eventInActive"]').should("have.length", 2);
+        cy.get("#linkedGroupSelect").should("be.visible");
+    });
+
+    it("InActive and LinkedGroupId flow into the POST /api/events payload", () => {
+        cy.intercept("POST", "**/api/events").as("createEvent");
+
+        cy.visit("event/calendars");
+        cy.get(".fc-daygrid-day").first().click();
+        cy.get("#event-title-input").should("be.visible").type(`Modal Advanced ${Date.now()}`);
+        cy.tomSelectByValue("#pinnedCalendarsSelect", "1");
+
+        cy.get('[data-bs-target="#eventAdvancedFields"]').click();
+        cy.get("#eventAdvancedFields").should("have.class", "show");
+        cy.get('input[name="eventInActive"][value="1"]').parent("label").click();
+
+        // Pick the first non-empty group option, if any exist in this install.
+        cy.get("#linkedGroupSelect option").then(($opts) => {
+            const nonEmpty = [...$opts].map((o) => o.value).find((v) => v && v !== "0");
+            if (nonEmpty) cy.get("#linkedGroupSelect").select(nonEmpty);
+        });
+
+        cy.get("#eventSaveBtn").click();
+        cy.wait("@createEvent").then((intercepted) => {
+            expect(intercepted.request.body.InActive).to.eq(1);
+            expect(intercepted.request.body).to.have.property("LinkedGroupId");
+            expect(intercepted.response.statusCode).to.eq(200);
+        });
+    });
 });
