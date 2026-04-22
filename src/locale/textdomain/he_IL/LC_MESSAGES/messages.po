@@ -820,10 +820,6 @@ msgid "Family Info"
 msgstr "פרטי משפחה"
 
 #: 
-msgid "Contact Info"
-msgstr "פרטי התקשרות"
-
-#: 
 msgid "Envelope Info"
 msgstr "פרטי מעטפה"
 
@@ -946,10 +942,6 @@ msgstr "ערך"
 #: 
 msgid "Edit Value"
 msgstr "ערוך ערך"
-
-#: 
-msgid "Assign a New Property"
-msgstr "הקצה נכס חדש"
 
 #: 
 msgid "Assign"
@@ -3197,14 +3189,6 @@ msgid "Family Custom List Options Editor"
 msgstr "עורך אפשרויות רשימה מותאמת אישית של משפחות"
 
 #: 
-msgid "Created via Family"
-msgstr "נוצר דרך משפחה"
-
-#: 
-msgid "Updated via Family"
-msgstr "עודכן דרך משפחה"
-
-#: 
 msgid "Family Data Verified"
 msgstr "נתוני משפחה אומתו"
 
@@ -5431,14 +5415,6 @@ msgid "Added to group"
 msgstr "נוסף לקבוצה"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "מארח ה-SMTP לא הוגדר, אנא בקר בדף ההגדרות"
-
-#: 
-msgid "Debug Email Connection"
-msgstr "ניפוי באגים בחיבור דוא\"ל"
-
-#: 
 #, fuzzy
 msgid "This Family is Inactive"
 msgstr "משפחה זו מושבתת"
@@ -5450,14 +5426,6 @@ msgstr "מסד הנתונים נוקה."
 #: 
 msgid "Anniversaries"
 msgstr "ימי שנה"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "שגיאה בדואר התראה על משפחה חדשה"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "שגיאה בדואר התראה על אדם חדש"
 
 #: 
 msgid "View User"
@@ -5645,10 +5613,6 @@ msgstr "מושבת"
 #: 
 msgid "Software Version"
 msgstr "גרסת תוכנה"
-
-#: 
-msgid "Database Version"
-msgstr "גרסת מסד נתונים"
 
 #: 
 msgid "Application Prerequisites"
@@ -6014,14 +5978,6 @@ msgid "Loading"
 msgstr "טוען"
 
 #: 
-msgid "Family Property Unassignment"
-msgstr "ביטול תכונות משפחה"
-
-#: 
-msgid "Do you want to remove"
-msgstr "האם אתה רוצה להסיר"
-
-#: 
 msgid "Today's Birthdays"
 msgstr "יום הולדת היום"
 
@@ -6056,10 +6012,6 @@ msgstr "תאריך לידה לא תקין: חסר חודש או יום לידה.
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "תאריך לידה לא תקין: חסר חודש ויום לידה."
-
-#: 
-msgid "System"
-msgstr "מערכת"
 
 #. Context: locales
 #: 
@@ -6147,10 +6099,6 @@ msgid "Not Subscribed"
 msgstr "לא רשום/ה"
 
 #: 
-msgid "property"
-msgstr "תכונה"
-
-#: 
 msgid "Default Zip"
 msgstr "מיקוד ברירת מחדל"
 
@@ -6188,10 +6136,6 @@ msgstr "תו אחד מ-FirstName ותו אחד מ-LastName"
 #: 
 msgid "Two characters from FirstName"
 msgstr "שני תווים מ-FirstName"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "דוא\"ל המוסד לא הוגדר, אנא בקר בדף ההגדרות"
 
 #. Context: locales
 #: 
@@ -6952,10 +6896,6 @@ msgid "Base URL"
 msgstr "כתובת URL בסיסית"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "התקנת ChurchCRM"
-
-#: 
 msgid "Copy"
 msgstr "העתק"
 
@@ -6964,24 +6904,12 @@ msgid "DSN"
 msgstr "DSN"
 
 #: 
-msgid "Database Server"
-msgstr "שרת מסד נתונים"
-
-#: 
 msgid "Debug Info"
 msgstr "מידע ניפוי שגיאות"
 
 #: 
 msgid "Document Root"
 msgstr "שורש המסמכים"
-
-#: 
-msgid "Email Configuration"
-msgstr "הגדרות אימייל"
-
-#: 
-msgid "Email Debug Info"
-msgstr "מידע ניפוי שגיאות אימייל"
 
 #: 
 msgid "Filesystem Permissions"
@@ -7024,10 +6952,6 @@ msgid "PHP & Server Requirements"
 msgstr "דרישות PHP ושרת"
 
 #: 
-msgid "PHP Configuration"
-msgstr "הגדרות PHP"
-
-#: 
 msgid "Platform"
 msgstr "פלטפורמה"
 
@@ -7038,10 +6962,6 @@ msgstr "נתיב שורש"
 #: 
 msgid "SMTP Host"
 msgstr "מארח SMTP"
-
-#: 
-msgid "Server Information"
-msgstr "מידע על השרת"
 
 #: 
 msgid "Software"
@@ -15512,4 +15432,120 @@ msgstr "אירועים קרובים"
 #: 
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "אירוע(ים). השבת את הסוג במקום זאת, או הקצה מחדש את האירועים תחילה."
+
+#: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "כתובת URL מוחלטת http(s) של לוגו הקהילה המוצגת בתבניות דואר אלקטרוני (ותשמש במקומות נוספים בעתיד). לתצוגה מיטבית בלקוחות דואר אלקטרוני, השתמשו בתמונת באנר רחבה ביחס גובה-רוחב של כ-3.5:1 (לדוגמה 350×100 פיקסל), PNG או JPG, המוגש דרך HTTPS. השאירו ריק או הזינו ערך לא תקין כדי לחזור ללוגו ברירת המחדל של ChurchCRM."
+
+#: 
+msgid "An option with that name already exists"
+msgstr "כבר קיימת אפשרות בשם זה"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "לא ניתן למחוק את האפשרות היחידה שנותרה"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "הלוח אינו זמין. אנא השתמשו בלחצן ההורדה לשמירת הקודים שלכם."
+
+#: 
+msgid "Custom Option"
+msgstr "אפשרות מותאמת אישית"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "טקסט תצוגה מקדימה ברירת מחדל של תיבת הדואר"
+
+#: 
+msgid "Email is disabled"
+msgstr "הדואר האלקטרוני מושבת"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "הדואר האלקטרוני מושבת. הגדרו דואר אלקטרוני לפני איפוס סיסמאות, או השתמשו בשנה סיסמה."
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "הדואר האלקטרוני מושבת. הפעילו אותו בהגדרות לוח המחוונים של הדואר האלקטרוני לפני הבדיקה."
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "הזינו אחד מקודי השחזור לגיבוי שלכם"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "הזינו אחד מקודי השחזור לגיבוי שלכם כדי לגשת לחשבונכם"
+
+#: 
+msgid "Existing Options"
+msgstr "אפשרויות קיימות"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "הקבוצה לא נמצאה עבור רשימת תפקידים זו"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "ניתן לשנות סטטוס לא פעיל רק עבור רשימת הסיווגים"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "משתמשים חדשים לא יקבלו דואר אלקטרוני של ברוכים הבאים עם פרטי הגישה שלהם. שתפו איתם את הסיסמה באופן ידני, או הגדרו תחילה דואר אלקטרוני."
+
+#: 
+msgid "Option name is required"
+msgstr "שם האפשרות נדרש"
+
+#: 
+msgid "Option not found"
+msgstr "האפשרות לא נמצאה"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "תקציר קצר אופציונלי המוצג כטקסט תצוגה מקדימה לצד שורת הנושא. השאירו ריק כדי לאפשר ללקוח הדואר האלקטרוני ליצור אוטומטית מהגוף. סוגי דואר אלקטרוני (איפוס סיסמה, חבר חדש, אימות) מגדירים כותרת עליונה משלהם; זהו ערך חלופי."
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "דואר אלקטרוני לאיפוס סיסמה ודואר ברוכים הבאים לחשבונות חדשים לא יישלחו עד שהדואר האלקטרוני יוגדר. משתמשים לא יקבלו פרטי גישה אוטומטית."
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "איפוס הסיסמה אינו זמין מכיוון שהדואר האלקטרוני מושבת. אנא פנו למנהל המערכת."
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "הסיסמה אופסה אך לא ניתן היה לשלוח את הדואר האלקטרוני. המשתמש נעול — שתפו את הסיסמה החדשה באופן ידני או השתמשו בשנה סיסמה."
+
+#: 
+msgid "Recovery Code"
+msgstr "קוד שחזור"
+
+#: 
+msgid "Set up Email"
+msgstr "הגדרת דואר אלקטרוני"
+
+#: 
+msgid "Test SMTP Email"
+msgstr "בדיקת דואר אלקטרוני SMTP"
+
+#: 
+msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
+msgstr "זהו דואר אלקטרוני בדיקה של ChurchCRM המאשר שתצורת ה-SMTP שלכם פועלת."
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "לא ניתן להעתיק ללוח. אנא העתיקו את הקודים באופן ידני."
+
+#: 
+msgid "Use Recovery Code"
+msgstr "השתמש בקוד שחזור"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "השתמש בקוד שחזור"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "השתמש באפליקציית אימות"
 

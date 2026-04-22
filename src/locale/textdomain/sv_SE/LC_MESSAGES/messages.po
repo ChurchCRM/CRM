@@ -850,10 +850,6 @@ msgid "Family Info"
 msgstr "Familjinfo"
 
 #: 
-msgid "Contact Info"
-msgstr "Kontaktinformation"
-
-#: 
 msgid "Envelope Info"
 msgstr "Kuvertinfo"
 
@@ -976,11 +972,6 @@ msgstr "Värd"
 #: 
 msgid "Edit Value"
 msgstr "Redigera värd"
-
-#: 
-#, fuzzy
-msgid "Assign a New Property"
-msgstr "Ange en ny egenskap"
 
 #: 
 msgid "Assign"
@@ -3312,14 +3303,6 @@ msgid "Family Custom List Options Editor"
 msgstr "Family Custom List Alternativ Editor"
 
 #: 
-msgid "Created via Family"
-msgstr "Skapad via familjen"
-
-#: 
-msgid "Updated via Family"
-msgstr "Uppdaterad via familjen"
-
-#: 
 msgid "Family Data Verified"
 msgstr "Familjedata bekräftade"
 
@@ -5544,14 +5527,6 @@ msgid "Added to group"
 msgstr "Tillagd i gruppen"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "SMTP-värd är inte inställd, besök inställningssidan"
-
-#: 
-msgid "Debug Email Connection"
-msgstr "Felsöka e-postanslutning"
-
-#: 
 #, fuzzy
 msgid "This Family is Inactive"
 msgstr "Denna familj är deaktiverad"
@@ -5563,14 +5538,6 @@ msgstr "Databasen har rensats."
 #: 
 msgid "Anniversaries"
 msgstr "årsdagar"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "Nytt felmeddelande via e-post"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "Nytt personmeddelande E-postfel"
 
 #: 
 msgid "View User"
@@ -5758,10 +5725,6 @@ msgstr "är ur funktion"
 #: 
 msgid "Software Version"
 msgstr "Mjukvaru-version"
-
-#: 
-msgid "Database Version"
-msgstr "Databasversion"
 
 #: 
 msgid "Application Prerequisites"
@@ -6129,14 +6092,6 @@ msgid "Loading"
 msgstr "Läser in"
 
 #: 
-msgid "Family Property Unassignment"
-msgstr "Familjeegendom av-tilldelning"
-
-#: 
-msgid "Do you want to remove"
-msgstr "Vill du ta bort"
-
-#: 
 msgid "Today's Birthdays"
 msgstr "Dagens födelsedagar"
 
@@ -6171,10 +6126,6 @@ msgstr "Ogiltigt födelsedatum: Saknar födelsemånad eller dag."
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Ogiltigt födelsedatum: Saknar födelsemånad och dag."
-
-#: 
-msgid "System"
-msgstr "System"
 
 #. Context: locales
 #: 
@@ -6262,10 +6213,6 @@ msgid "Not Subscribed"
 msgstr "Inte prenumerant"
 
 #: 
-msgid "property"
-msgstr "egenskap"
-
-#: 
 msgid "Default Zip"
 msgstr "Standardpostnummer"
 
@@ -6303,10 +6250,6 @@ msgstr "Ett tecken från förnamn och ett tecken från efternamn"
 #: 
 msgid "Two characters from FirstName"
 msgstr "Två tecken från förnamn"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "Kyrkans e-post är inte inställd, besök inställningssidan"
 
 #. Context: locales
 #: 
@@ -7067,10 +7010,6 @@ msgid "Base URL"
 msgstr "Bas-URL"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "ChurchCRM-installation"
-
-#: 
 msgid "Copy"
 msgstr "Kopiera"
 
@@ -7079,24 +7018,12 @@ msgid "DSN"
 msgstr "DSN"
 
 #: 
-msgid "Database Server"
-msgstr "Databasserver"
-
-#: 
 msgid "Debug Info"
 msgstr "Felsökningsinfo"
 
 #: 
 msgid "Document Root"
 msgstr "Dokumentrot"
-
-#: 
-msgid "Email Configuration"
-msgstr "E-postkonfiguration"
-
-#: 
-msgid "Email Debug Info"
-msgstr "E-post felsökningsinfo"
 
 #: 
 msgid "Filesystem Permissions"
@@ -7139,10 +7066,6 @@ msgid "PHP & Server Requirements"
 msgstr "PHP & Serverkrav"
 
 #: 
-msgid "PHP Configuration"
-msgstr "PHP-konfiguration"
-
-#: 
 msgid "Platform"
 msgstr "Plattform"
 
@@ -7153,10 +7076,6 @@ msgstr "Rot-sökväg"
 #: 
 msgid "SMTP Host"
 msgstr "SMTP-värd"
-
-#: 
-msgid "Server Information"
-msgstr "Serverinformation"
 
 #: 
 msgid "Software"
@@ -15623,4 +15542,120 @@ msgstr "Kommande händelser"
 #: 
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "händelse(r). Inaktivera typen istället eller omtilldela händelserna först."
+
+#: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "Absolut http(s)-URL för kyrkologo som visas i e-postmallar (och återanvänds på andra ställen i framtiden). För bästa rendering i e-postklienter, använd en bred banneravbildning med ungefär 3,5:1 bildformat (till exempel 350×100 px), PNG eller JPG, serverat via HTTPS. Lämna tomt eller ange ett ogiltigt värde för att falla tillbaka på standardlogotypen för ChurchCRM."
+
+#: 
+msgid "An option with that name already exists"
+msgstr "Det finns redan ett alternativ med det namnet"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "Det går inte att ta bort det enda återstående alternativet"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "Urklipp är inte tillgängligt. Använd knappen Ladda ned för att spara dina koder."
+
+#: 
+msgid "Custom Option"
+msgstr "Anpassat alternativ"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "Standard förhandsgranskningstext för inkorg"
+
+#: 
+msgid "Email is disabled"
+msgstr "E-post är inaktiverad"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "E-post är inaktiverad. Konfigurera e-post innan du återställer lösenord eller använd Ändra lösenord."
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "E-post är inaktiverad. Aktivera det i inställningarna för e-postpanelen innan du testar."
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "Ange en av dina säkerhetskopierade återställningskoder"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "Ange en av dina säkerhetskopierade återställningskoder för att komma åt ditt konto"
+
+#: 
+msgid "Existing Options"
+msgstr "Befintliga alternativ"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "Grupp hittades inte för den här rollistan"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "Inaktiv status kan bara växlas för klassificeringslistan"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "Nya användare kommer inte att få ett välkomstmejl med sina inloggningsuppgifter. Dela lösenordet manuellt med dem eller konfigurera e-post först."
+
+#: 
+msgid "Option name is required"
+msgstr "Alternativnamn krävs"
+
+#: 
+msgid "Option not found"
+msgstr "Alternativ hittades inte"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "Valfri kort sammanfattning som visas som förhandsgranskningstexten i inkorgen bredvid ämnesraden. Lämna tomt för att låta e-postklienten generera automatiskt från brödtexten. Per e-posttyp (lösenordsåterställning, ny medlem, verifiering) anger de sin egen preheader; detta är ett reservalternativ."
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "E-postmeddelanden för återställning av lösenord och välkomstmejl för nya konton skickas inte förrän e-post är konfigurerad. Användare får inte inloggningsuppgifter automatiskt."
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "Lösenordsåterställning är inte tillgänglig eftersom e-post är inaktiverad. Kontakta systemadministratören."
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "Lösenordet återställdes men e-postmeddelandet kunde inte skickas. Användaren är utelåst — dela det nya lösenordet manuellt eller använd Ändra lösenord."
+
+#: 
+msgid "Recovery Code"
+msgstr "Återställningskod"
+
+#: 
+msgid "Set up Email"
+msgstr "Konfigurera e-post"
+
+#: 
+msgid "Test SMTP Email"
+msgstr "Testa SMTP-e-post"
+
+#: 
+msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
+msgstr "Det här är ett ChurchCRM-testmeddelande som bekräftar att din SMTP-konfiguration fungerar."
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "Det gick inte att kopiera till urklipp. Kopiera koderna manuellt."
+
+#: 
+msgid "Use Recovery Code"
+msgstr "Använd återställningskod"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "Använd en återställningskod istället"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "Använd autentiseringsapp istället"
 
