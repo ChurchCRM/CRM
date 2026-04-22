@@ -56,6 +56,25 @@ describe("Event Editor page", () => {
         cy.get("#linkedGroupSelect").should("be.visible");
     });
 
+    /**
+     * Issue #8658 regression: the Linked Group dropdown used to be gated
+     * behind `$showLinkedGroup = $evtType->getGroupId() || isSundaySchool()`,
+     * and the logic was buggy enough that even Sunday School events didn't
+     * show it. The unified editor renders the dropdown unconditionally for
+     * every event type inside the Advanced section, and the select is
+     * populated from /api/groups/ so any group can be linked.
+     */
+    it("Linked Group dropdown is available for every event type (#8658)", () => {
+        visitNewEditorForFirstType();
+        cy.get('[data-bs-target="#eventAdvancedFields"]').click();
+
+        cy.get("#linkedGroupSelect").should("be.visible");
+        // At least the "No group" option plus whatever groups exist in the
+        // seed data — asserts options were populated at all.
+        cy.get("#linkedGroupSelect option").should("have.length.at.least", 1);
+        cy.get('#linkedGroupSelect option[value="0"]').should("exist");
+    });
+
     it("Save button is disabled until title is filled (calendar is optional)", () => {
         visitNewEditorForFirstType();
 
