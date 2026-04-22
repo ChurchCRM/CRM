@@ -1,0 +1,95 @@
+/**
+ * Quill rich-text editor — Tabler/Bootstrap 5 integration.
+ *
+ * Targets the default `snow` theme bundled via webpack/skin-core-css.js.
+ * Replaces Quill's hardcoded #ccc borders with Tabler's --tblr-border-color,
+ * unifies the focus ring with other form controls, standardises container
+ * sizing, and adds RTL + print behaviour.
+ */
+
+.quill-editor-container {
+  border: 1px solid var(--tblr-border-color);
+  border-radius: var(--tblr-border-radius, 4px);
+  background-color: var(--tblr-bg-forms, #fff);
+
+  // Sized layouts. `min-height` gives the editor a baseline; `max-height`
+  // prevents Quill's default `.ql-container { height: 100% }` from letting
+  // the container stretch vertically to match whatever its flex-column
+  // parent resolves to — that was pushing Event Status and date-picker
+  // content out of position on the event editor page.
+  min-height: 200px;
+  max-height: 400px;
+  overflow: hidden;  // scrolling lives inside .ql-editor, not on the frame
+
+  &[data-editor-size="compact"] { min-height: 120px; max-height: 240px; }
+  &[data-editor-size="tall"]    { min-height: 300px; max-height: 520px; }
+
+  // Tabler focus-ring parity with .form-control.
+  &:focus-within {
+    border-color: var(--tblr-primary, #206bc4);
+    box-shadow: 0 0 0 0.25rem rgba(var(--tblr-primary-rgb, 32, 107, 196), 0.25);
+  }
+}
+
+// Quill 2 inserts .ql-toolbar as a SIBLING above the container (not a child),
+// so each rectangle gets its own full border and you see a double seam.
+// Kill the toolbar's bottom border and square the container's top corners
+// so they read as one unified control.
+.ql-toolbar.ql-snow {
+  border: 1px solid var(--tblr-border-color) !important;
+  border-bottom-width: 0 !important;
+  border-top-left-radius: var(--tblr-border-radius, 4px);
+  border-top-right-radius: var(--tblr-border-radius, 4px);
+}
+
+// After Quill initialises, the container div also carries .ql-container.ql-snow.
+// Override Quill's `height: 100%` which otherwise stretches the editor to fill
+// any flex-column ancestor.
+.quill-editor-container.ql-container,
+.ql-container.ql-snow {
+  border-color: var(--tblr-border-color) !important;
+  height: auto !important;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: var(--tblr-border-radius, 4px);
+  border-bottom-right-radius: var(--tblr-border-radius, 4px);
+  font-family: var(--tblr-font-sans-serif);
+}
+
+// The writable surface is what actually scrolls when a user types past the
+// visible area. Give it flex:1 so it fills the bounded container cleanly.
+.quill-editor-container .ql-editor {
+  min-height: inherit;
+  max-height: inherit;
+  overflow-y: auto;
+}
+
+// Match app typography inside the writing surface so Arabic/Hebrew/CJK
+// glyphs fall back to the same stack the rest of the UI uses.
+.ql-editor {
+  font-family: var(--tblr-font-sans-serif);
+  color: var(--tblr-body-color);
+}
+
+// RTL support. The app already sets `<html dir="rtl">` for Arabic/Hebrew/etc.
+// (see src/Include/Header.php). Quill inherits `direction` via CSS, but the
+// toolbar icons look jumbled when mirrored — pin the toolbar LTR so the
+// button order stays predictable, then right-align the editor content.
+[dir="rtl"] {
+  .ql-toolbar.ql-snow { direction: ltr; }
+  .ql-editor          { text-align: right; }
+}
+
+// Hide the toolbar when printing an event/note page — it has no meaning on paper
+// and eats vertical space. The editor surface itself stays visible.
+@media print {
+  .ql-toolbar.ql-snow { display: none !important; }
+  .ql-container.ql-snow {
+    border: none !important;
+    border-radius: 0 !important;
+  }
+  .quill-editor-container {
+    border: none !important;
+    box-shadow: none !important;
+  }
+}

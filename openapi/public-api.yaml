@@ -346,8 +346,6 @@ paths:
                 type: object
         '401':
           description: 'Invalid username or password'
-        '404':
-          description: 'User not found'
   /public/user/password-reset:
     post:
       tags:

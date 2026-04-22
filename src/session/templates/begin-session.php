@@ -5,6 +5,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
 $sPageTitle = gettext('Login');
+$sBodyClass = 'page-auth page-login';
 require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
 
 ?>
@@ -60,7 +61,7 @@ $hasSelfReg = SystemConfig::getBooleanValue('bEnableSelfRegistration');
 
           <div class="form-footer">
             <span></span>
-            <?php if (SystemConfig::getBooleanValue('bEnableLostPassword')) { ?>
+            <?php if (SystemConfig::getBooleanValue('bEnableLostPassword') && SystemConfig::isEmailEnabled()) { ?>
               <a href="<?= htmlspecialchars($forgotPasswordURL) ?>"><?= gettext('Forgot password?') ?></a>
             <?php } ?>
           </div>

@@ -201,6 +201,18 @@ $text = InputUtils::sanitizeText($_POST['comment']);
 echo InputUtils::escapeHTML($text);
 ```
 
+### External Links: `rel="noopener noreferrer"` <!-- learned: 2026-04-07 -->
+
+All `target="_blank"` links MUST include `rel="noopener noreferrer"` to prevent reverse-tabnabbing (the opened page can redirect the opener via `window.opener`).
+
+```php
+// ✅ CORRECT
+<a href="https://example.com" target="_blank" rel="noopener noreferrer">Link</a>
+
+// ❌ WRONG — allows tabnabbing
+<a href="https://example.com" target="_blank">Link</a>
+```
+
 ---
 
 ## SQL Injection Prevention
@@ -250,7 +262,97 @@ $userId = $_GET['userId'];  // Could be "1 OR 1=1"
 
 ---
 
+## CSRF Protection on State-Changing Pages
+
+### Every POST/delete page must validate a CSRF token <!-- learned: 2026-04-21 -->
+
+Any legacy `*.php` page that performs a DB write (insert/update/delete) MUST validate a CSRF token before acting. The required rule is **validate before any DB write** (GHSA-3xq9-c86x-cwpp). Two failure-response patterns are in use in the codebase — pick whichever fits the page:
+
+```php
+use ChurchCRM\Utils\CSRFUtils;
+use ChurchCRM\Utils\RedirectUtils;
+
+// Pattern A — confirmation / delete pages (PledgeDelete.php, DonatedItemDelete.php,
+// PaddleNumDelete.php). Short-circuit with 403 because there is no form state to
+// preserve.
+if (!CSRFUtils::verifyRequest($_POST, 'pledge_delete')) {
+    http_response_code(403);
+    exit(gettext('Invalid security token. Please try again.'));
+}
+
+// Pattern B — long editor forms (UserEditor.php). Redirect back to the editor
+// with an ErrorText so the user's context (which record, add vs edit) is kept.
+if (!CSRFUtils::verifyRequest($_POST, 'user_editor')) {
+    RedirectUtils::redirect('UserEditor.php?PersonID=' . $iPersonID . '&ErrorText=Invalid+security+token.+Please+try+again.');
+}
+
+// In the form HTML (same for both patterns):
+<form method="post" action="...">
+    <?= CSRFUtils::getTokenInputField('user_editor') ?>
+    <!-- other inputs -->
+</form>
+```
+
+- Pick a unique `$formId` per form (e.g. `'user_editor'`, `'pledge_delete'`). The ID must match between `getTokenInputField()` and `verifyRequest()`.
+- `getTokenInputField()` auto-renders `<input type="hidden" name="csrf_token" value="...">` with a fresh 64-hex-char token.
+- Tokens are stored in `$_SESSION['csrf_tokens'][$formId]` with a 2-hour TTL.
+- Tokens are NOT consumed by default (allows resubmission on validation error). Pass `$consume = true` to `validateToken()` only if you need one-time use.
+
+### Never delete on GET — always confirmation-page pattern <!-- learned: 2026-04-21 -->
+
+A GET-based delete endpoint (`<a href="Foo.php?id=X">Delete</a>`) is exploitable by any HTML with an `<img>` or `<link>` tag pointing at it — no form submission needed. Convert to a two-step confirmation:
+
+1. **GET** — renders a confirmation `<form method="post">` with the CSRF token and Delete/Cancel buttons.
+2. **POST** — validates the token, then performs the delete and redirects.
+
+The caller's link stays a plain GET (`<a href="FooDelete.php?id=X">`), but the landing page now shows the confirmation form instead of silently deleting. This is what `PledgeDelete.php` already did before the CSRF fix; `DonatedItemDelete.php` and `PaddleNumDelete.php` were migrated to this pattern in the GHSA-3xq9-c86x-cwpp fix.
+
+### Role checks belong on every delete page <!-- learned: 2026-04-21 -->
+
+Delete pages must also enforce the relevant role guards — a CSRF token alone doesn't gate the feature, it only proves the request came from a real logged-in session. Finance-scoped deletes need both:
+
+```php
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled(), 'DeleteRecords');
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
+```
+
+---
+
 ## Authorization & Access Control
+
+### Block Users With No Admin Permissions <!-- learned: 2026-04-12 -->
+
+Users with `EditSelf=1` and **all other permissions at 0** can log in but have no functional admin access. They must NOT see the full admin UI — instead they should be redirected to a limited-access page.
+
+Use `User::hasNoAdminPermissions()` to detect this state. The check fires in two places:
+
+1. **`PageInit.php`** — for legacy `*.php` pages
+2. **`AuthMiddleware`** — for MVC routes (`/people/`, `/admin/`, `/v2/`) and API endpoints
+
+```php
+// In PageInit.php — runs for legacy pages
+if (AuthenticationManager::getCurrentUser()->hasNoAdminPermissions()) {
+    RedirectUtils::redirect(SystemURLs::getRootPath() . '/external/limited-access');
+}
+
+// In AuthMiddleware (session branch) — runs for MVC pages
+if ($sessionUser->hasNoAdminPermissions()) {
+    if ($this->isBrowserRequest($request)) {
+        return (new Response())->withStatus(302)->withHeader('Location', $rootPath . '/external/limited-access');
+    }
+    return $response->withStatus(403)->withHeader('Content-Type', 'application/json');
+}
+```
+
+The `/external/limited-access` page is in the external module (no auth required) and shows:
+- A "Verify Family Info" button (generates time-limited token bound to user's family)
+- A "Log Out" button
+
+**Reference**: GHSA-5w59-32c8-933v / PR #8616 / Issue #237
+
+### MVC vs Legacy Auth Enforcement Points <!-- learned: 2026-04-12 -->
+
+Permission checks must run in BOTH `AuthMiddleware` (MVC + API) AND `PageInit.php` (legacy). Adding a check in only one leaves a hole — the MVC modules `/people/`, `/admin/`, `/v2/`, `/event/`, `/groups/`, `/finance/` all use `AuthMiddleware`, while legacy `*.php` files in `src/` go through `PageInit.php`.
 
 ### Object-Level Authorization
 
@@ -571,6 +673,60 @@ churchWebSite:<?= SystemConfig::getValueForJs('sChurchWebSite') ?>,
 - [src/DirectoryReports.php](../../../src/DirectoryReports.php) — form `value=`, textarea content
 - [src/external/templates/registration/family-register.php](../../../src/external/templates/registration/family-register.php) — JS literals, address/phone inputs
 
+### JSON_HEX flags for inline `<script>` JSON <!-- learned: 2026-04-21 -->
+
+When embedding PHP data into a JS literal inside a `<script>` tag, `json_encode()`
+alone does not escape `<`, `>`, `&`, `'`, `"` — a value containing `</script>`
+(or `</SCRIPT`, `--!>`, etc.) can break out of the script context and become
+XSS. Always pass the four HEX flags alongside `JSON_THROW_ON_ERROR`:
+
+```php
+// ❌ WRONG — </script> in the data closes the script tag
+<script>
+window.CRM.calendarArgs = <?= json_encode($args, JSON_THROW_ON_ERROR) ?>;
+</script>
+
+// ✅ CORRECT — hex-encodes </script> and friends
+<script>
+window.CRM.calendarArgs = <?= json_encode(
+    $args,
+    JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR
+) ?>;
+</script>
+```
+
+Grep for lone `json_encode($x, JSON_THROW_ON_ERROR)` inside `<script>` tags when
+reviewing — **every** such call needs the HEX flags. `SystemConfig::getValueForJs()`
+already handles this internally; the HEX flags apply when you call `json_encode()`
+directly on arrays/objects. Example site: [src/event/views/calendar.php](../../../src/event/views/calendar.php).
+
+### Escape captured SMTP / debug output before rendering as HTML <!-- learned: 2026-04-21 -->
+
+PHPMailer's `Debugoutput='html'` and similar debug capture modes emit **untrusted
+server-originated HTML** — server banners, auth exchanges, error text. Dumping the
+captured buffer straight into a page — even an admin-only page — is an XSS vector
+because a remote SMTP server (or any downstream service an attacker controls) owns
+part of the string. Strip tags, escape, then re-introduce line breaks with
+`nl2br()`:
+
+```php
+// ❌ WRONG — raw HTML from the SMTP server
+<div><?= $sendResult['debugLog'] ?></div>
+
+// ✅ CORRECT — strip, decode entities, escape, re-add line breaks
+$plain = trim(html_entity_decode(
+    strip_tags((string) $sendResult['debugLog']),
+    ENT_QUOTES | ENT_HTML5,
+    'UTF-8'
+));
+echo nl2br(InputUtils::escapeHTML($plain), false);
+```
+
+Same pattern applies to any "capture stream, then render" flow: `ob_get_clean()`
+output, cURL verbose logs, library diagnostic dumps. "Admin-only" is not a
+mitigation — an admin viewing a compromised downstream service's output is the
+exact attack surface.
+
 ### sanitizeText() Is Not Sufficient for HTML Attributes <!-- learned: 2026-04-03 -->
 
 `InputUtils::sanitizeText()` only calls `strip_tags()` — it does NOT escape HTML
@@ -744,4 +900,54 @@ $head_criteria = ' per_fmr_ID = ' . (SystemConfig::getValue('sDirRoleHead') ?: '
 
 ---
 
-Last updated: April 3, 2026
+### data-* Attributes Require escapeAttribute() — Not Just escapeHTML() <!-- learned: 2026-04-05 -->
+
+`data-*` HTML attributes are attribute contexts, not body text contexts. Always use
+`InputUtils::escapeAttribute()` for `data-*` values. Using `escapeHTML()` or no escaping
+at all still allows attribute-breakout XSS (e.g. a value containing `"` terminates the
+attribute and injects new ones).
+
+Real-world example: `PersonView.php` line 816 — `data-groupname` was unescaped, fixed
+as part of GHSA-44j4-jjw2-wcr6:
+
+```php
+// ❌ WRONG — unescaped data attribute (XSS via attribute breakout)
+data-groupname="<?= $grp_Name ?>"
+
+// ❌ ALSO WRONG — escapeHTML() is for body text, not attributes
+data-groupname="<?= InputUtils::escapeHTML($grp_Name) ?>"
+
+// ✅ CORRECT — escapeAttribute() for any attribute value, including data-*
+data-groupname="<?= InputUtils::escapeAttribute($grp_Name) ?>"
+```
+
+This applies to ALL `data-*` attributes whether the source is a database field, ORM
+getter, or user-supplied input.
+
+---
+
+### ListOption::getOptionName() Must Be Escaped in HTML Contexts <!-- learned: 2026-04-05 -->
+
+`getOptionName()` returns raw database strings — admin-entered values that can contain
+`<`, `>`, or `"`. Always wrap with `InputUtils::escapeHTML()` when rendering inside
+HTML elements. Affects group roles, family roles, group types, custom field options,
+classifications, and any other ListOption values rendered to the DOM.
+
+```php
+// ❌ WRONG — raw getOptionName() in <option> or <td>
+echo '<option value="' . $role->getOptionId() . '">' . $role->getOptionName() . '</option>';
+
+// ✅ CORRECT — escape before output
+echo '<option value="' . $role->getOptionId() . '">' . InputUtils::escapeHTML($role->getOptionName()) . '</option>';
+
+// ✅ CORRECT — when wrapped in gettext()
+echo InputUtils::escapeHTML(gettext($role->getOptionName()));
+```
+
+Fixed in GHSA-j9gv-26c7-3qrh (CVE-2025-67876) across 6 files: MemberRoleChange.php,
+CartToFamily.php, GroupEditor.php, CartToEvent.php, CustomFieldUtils.php,
+external/templates/registration/family-register.php.
+
+---
+
+Last updated: April 5, 2026

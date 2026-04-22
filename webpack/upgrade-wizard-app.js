@@ -25,7 +25,7 @@ let upgradeStepper;
 
 // Ensure AdminAPIRequest is available - fallback to regular APIRequest if not defined
 if (window.CRM && !window.CRM.AdminAPIRequest) {
-  window.CRM.AdminAPIRequest = function (options) {
+  window.CRM.AdminAPIRequest = (options) => {
     // Fallback: if AdminAPIRequest is not defined, assume it's the same as APIRequest
     // The path should already be prefixed with admin/api/
     if (!options.method) {
@@ -35,10 +35,10 @@ if (window.CRM && !window.CRM.AdminAPIRequest) {
     }
     options.url = window.CRM.root + "/admin/api/" + options.path;
     options.contentType = "application/json";
-    options.beforeSend = function (jqXHR, settings) {
+    options.beforeSend = (jqXHR, settings) => {
       jqXHR.url = settings.url;
     };
-    options.error = function (jqXHR, textStatus, errorThrown) {
+    options.error = (jqXHR, textStatus, errorThrown) => {
       if (window.CRM.system && window.CRM.system.handlejQAJAXError) {
         window.CRM.system.handlejQAJAXError(jqXHR, textStatus, errorThrown, options.suppressErrorDialog);
       }
@@ -50,7 +50,7 @@ if (window.CRM && !window.CRM.AdminAPIRequest) {
 /**
  * Initialize the upgrade wizard when DOM is ready
  */
-$(document).ready(function () {
+$(document).ready(() => {
   // Verify AdminAPIRequest is available
   if (!window.CRM || !window.CRM.AdminAPIRequest) {
     console.error("AdminAPIRequest not available - upgrade wizard cannot proceed");
@@ -71,7 +71,7 @@ $(document).ready(function () {
 
   // Listen for step changes — mark completed steps and auto-download on apply step
   const stepElements = document.querySelectorAll("#upgrade-stepper .step");
-  document.querySelector("#upgrade-stepper").addEventListener("show.bs-stepper", function (event) {
+  document.querySelector("#upgrade-stepper").addEventListener("show.bs-stepper", (event) => {
     // Mark all previous steps as completed
     for (let i = 0; i < event.detail.to; i++) {
       stepElements[i].classList.add("completed");
@@ -84,7 +84,7 @@ $(document).ready(function () {
 
     // Auto-download when entering the apply step (index 2)
     if (event.detail.to === 2) {
-      setTimeout(function () {
+      setTimeout(() => {
         autoDownloadUpdate();
       }, 300);
     }
@@ -96,12 +96,12 @@ $(document).ready(function () {
  */
 function setupNavigationHandlers() {
   // Warning step - accept and continue
-  $("#acceptWarnings").click(function () {
+  $("#acceptWarnings").click(() => {
     upgradeStepper.next();
   });
 
   // Backup step navigation
-  $("#backup-next").click(function () {
+  $("#backup-next").click(() => {
     upgradeStepper.next();
   });
 }
@@ -128,14 +128,14 @@ function setupBackupStep() {
       .prop("disabled", true)
       .html(`<span class="spinner-border spinner-border-sm me-1"></span>${i18next.t("Creating Backup...")}`);
 
-    window.CRM.APIRequest({
+    window.CRM.AdminAPIRequest({
       method: "POST",
       path: "database/backup",
       data: JSON.stringify({
         BackupType: 3,
       }),
     })
-      .done(function (data) {
+      .done((data) => {
         $backupStatus.html(`<div class="alert alert-success">
                 <div class="d-flex align-items-center">
                     <i class="fa-solid fa-check-circle fa-lg me-2"></i>
@@ -154,12 +154,12 @@ function setupBackupStep() {
             .prop("disabled", true)
             .html(`<i class="fa-solid fa-check me-1"></i>${i18next.t("Downloaded")}`);
           // Auto-advance to next step after download starts
-          setTimeout(function () {
+          setTimeout(() => {
             upgradeStepper.next();
           }, 1000);
         });
       })
-      .fail(function (xhr, status, error) {
+      .fail((xhr, status, error) => {
         let errorMessage = i18next.t("Failed to create backup.");
 
         if (xhr.responseJSON && xhr.responseJSON.message) {
@@ -200,7 +200,7 @@ function setupBackupStep() {
     $(this).addClass("d-none");
     $("#doBackup").addClass("d-none");
     // Advance to next step after a brief pause for the alert to render
-    setTimeout(function () {
+    setTimeout(() => {
       upgradeStepper.next();
     }, 300);
   });
@@ -236,7 +236,7 @@ function performDownload() {
     method: "GET",
     path: "upgrade/download-latest-release",
   })
-    .done(function (data) {
+    .done((data) => {
       window.CRM.updateFile = data;
 
       $downloadStatus.html(`<div class="alert alert-success">
@@ -253,7 +253,7 @@ function performDownload() {
       // Show apply button after download completes
       $("#applyButtonContainer").removeClass("d-none");
     })
-    .fail(function (xhr, status, error) {
+    .fail((xhr, status, error) => {
       let errorMessage = i18next.t("Failed to download update package.");
 
       if (xhr.responseJSON && xhr.responseJSON.message) {
@@ -317,7 +317,7 @@ function setupApplyStep() {
         sha1: window.CRM.updateFile.sha1,
       }),
     })
-      .done(function (data) {
+      .done((data) => {
         // Hide spinner
         $spinner.removeClass("active");
 
@@ -326,7 +326,7 @@ function setupApplyStep() {
             </div>`);
 
         // Auto-advance to final step and logout after a brief delay
-        setTimeout(function () {
+        setTimeout(() => {
           upgradeStepper.next();
 
           // Log out the user
@@ -337,7 +337,7 @@ function setupApplyStep() {
 
           // Start countdown and redirect to login
           var countdown = 5;
-          var countdownInterval = setInterval(function () {
+          var countdownInterval = setInterval(() => {
             countdown--;
             $("#upgradeRedirectCountdown strong").text(countdown);
 
@@ -348,7 +348,7 @@ function setupApplyStep() {
           }, 1000);
         }, 1000);
       })
-      .fail(function (xhr, status, error) {
+      .fail((xhr, status, error) => {
         // Hide spinner
         $spinner.removeClass("active");
 
@@ -383,7 +383,7 @@ function setupApplyStep() {
  * @param {string} filename - The backup filename to download
  */
 function downloadBackup(filename) {
-  window.location = window.CRM.root + "/api/database/download/" + filename;
+  window.location = `${window.CRM.root}/admin/api/database/download/${filename}`;
   $("#backupStatus").html(`<div class="alert alert-info">
         <i class="fa-solid fa-info-circle me-2"></i>${i18next.t("Backup Downloaded, Copy on server removed")}
     </div>`);
@@ -413,7 +413,7 @@ function setupRefreshButton() {
       method: "POST",
       path: "upgrade/refresh-upgrade-info",
     })
-      .done(function (data) {
+      .done((data) => {
         $spinner.removeClass("active");
         window.CRM.notify(i18next.t("Upgrade information refreshed. Reloading page..."), {
           type: "success",
@@ -421,11 +421,11 @@ function setupRefreshButton() {
         });
 
         // Reload the page after a short delay
-        setTimeout(function () {
+        setTimeout(() => {
           window.location.reload();
         }, 1500);
       })
-      .fail(function (xhr, status, error) {
+      .fail((xhr, status, error) => {
         $spinner.removeClass("active");
         $button.prop("disabled", false);
         $icon.removeClass("fa-circle-notch fa-spin").addClass("fa-sync");
@@ -448,18 +448,18 @@ function setupRefreshButton() {
  */
 function setupForceReinstallButton() {
   // Open modal on button click
-  $("#forceReinstall").click(function () {
+  $("#forceReinstall").click(() => {
     const modal = new bootstrap.Modal(document.getElementById("forceReinstallModal"));
     modal.show();
   });
 
   // Confirm action inside modal
-  $("#confirmForceReinstall").click(function () {
+  $("#confirmForceReinstall").click(() => {
     bootstrap.Modal.getInstance(document.getElementById("forceReinstallModal")).hide();
 
     // Navigate to backup step
     upgradeStepper.to(0);
-    setTimeout(function () {
+    setTimeout(() => {
       upgradeStepper.to(1);
     }, 100);
 

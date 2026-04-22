@@ -6,12 +6,11 @@ This directory contains all localization tools and workflows for ChurchCRM — f
 
 ### I want to...
 
-- **Add a new language**: `node locale/scripts/locale-add.js --name "Korean" --code "ko" --locale "ko_KR" --country "KR"`
+- **Add a new language**: `node locale/locale-add.js --name "Korean" --code "ko" --locale "ko_KR" --country "KR"`
 - **Extract new terms**: `npm run locale:build`
-- **Download translations**: `npm run locale:download` (auto-runs audit when complete)
+- **Download translations**: `npm run locale:download` (generates missing-term batches too)
 - **Check translation status**: `npm run locale:audit`
 - **Translate missing terms with AI**: `/locale-translate --all` (in Claude Code)
-- **Upload AI translations to POEditor**: `npm run locale:upload:missing`
 
 ## 🛠️ Available Commands
 
@@ -19,18 +18,15 @@ This directory contains all localization tools and workflows for ChurchCRM — f
 
 | Command | Purpose |
 |---------|---------|
-| `npm run locale:build` | Extract all translatable terms → `locale/messages.po` |
-| `npm run locale:download` | Download translations from POEditor + generate missing-term batches + run audit |
+| `npm run locale:build` | Extract all translatable terms and generate `messages.po` |
+| `npm run locale:download` | Download translations from POEditor + generate missing-term batches |
 | `npm run locale:audit` | Generate translation completeness report |
 | `npm run locale:translate:list` | List locales with missing terms |
-| `npm run locale:upload:missing` | Upload AI-translated term batches to POEditor |
-| `npm run locale:lint` | Lint locale string usage across source files |
 
 ### Manual scripts:
 
 - `node locale/scripts/poeditor-downloader.js --locale <code>` — Download one locale only
-- `node locale/scripts/locale-add.js` — Add new language support
-- `node locale/scripts/locale-branch-manager.js` — Manage locale translation branches (used by `/locale-translate` skill)
+- `node locale/locale-add.js` — Add new language support
 
 ---
 
@@ -47,18 +43,17 @@ This directory contains all localization tools and workflows for ChurchCRM — f
 1. **Extract**: `npm run locale:build` → Creates `locale/messages.po` with all terms
 2. **Upload**: Upload `messages.po` to POEditor (web dashboard)
 3. **Translate**: Contributors translate in POEditor interface
-4. **Download**: `npm run locale:download` → Gets translations + missing-term batches + audit
+4. **Download**: `npm run locale:download` → Gets translations + missing-term batches
 5. **Fill gaps** (optional): `/locale-translate --all` → AI translation with church vocabulary
-6. **Upload AI translations**: `npm run locale:upload:missing` → Uploads filled batches to POEditor
-7. **Deploy**: Translations are compiled and built into the app
+6. **Deploy**: Translations are compiled and built into the app
 
 ### Missing Terms
 
-The downloader handles both downloads AND missing-term batches (no separate step needed).
+The downloader now handles both downloads AND missing-term batches (no separate step needed).
 
 **Output**: `locale/terms/missing/{poEditorCode}/{code}-N.json`  
 **Batch size**: Up to 150 terms per file  
-**Use**: Process with `/locale-translate`, then upload with `npm run locale:upload:missing`
+**Use**: Upload to POEditor or process with `/locale-translate`
 
 ---
 
@@ -68,28 +63,16 @@ The downloader handles both downloads AND missing-term batches (no separate step
 locale/
 ├── README.md (this file)
 ├── scripts/
-│   ├── locale-config.js          # Centralized path/settings config
-│   ├── poeditor-downloader.js    # Download all translations from POEditor
+│   ├── poeditor-downloader.js    # Main download orchestrator
 │   ├── locale-audit.js           # Translation completeness audit
 │   ├── locale-build.js           # Term extraction coordinator
 │   ├── locale-build-db.js        # Extract database terms
 │   ├── locale-build-static.js    # Extract static data (countries)
-│   ├── locale-build-plugin-help.js # Extract plugin help.json terms
-│   ├── locale-translate.js       # File helper for /locale-translate skill
-│   ├── locale-branch-manager.js  # Git branch management for translation sessions
-│   ├── locale-add.js             # Add new language support
-│   ├── poeditor-upload-missing.js # Upload AI-translated batches to POEditor
-│   └── i18next.config.ts         # i18next-cli extraction config
+│   └── others...
 ├── terms/
-│   └── missing/                  # Untranslated-term batches (committed)
-├── messages.po                   # Master translation template (upload to POEditor)
-├── messages.json                 # Master term list (downloaded from POEditor)
-├── poeditor-audit.md             # Generated completeness report
-└── .work/                        # Build-time temp files (git-ignored, wiped after each build)
-    ├── db-strings/               # DB extraction temp
-    ├── static-strings/           # Static data extraction temp
-    ├── plugin-help/              # Plugin help extraction temp
-    └── locales/en/               # JS/React i18next extraction temp
+│   └── missing/                  # Untranslated-term batches (from downloader)
+├── messages.po                   # Master translation template
+└── poeditor-audit.md             # Generated completeness report
 ```
 
 ---
@@ -117,7 +100,7 @@ Both must be in sync. If some of your UI is in English and some is translated, c
 
 ## 🔧 How Term Extraction Works
 
-The `npm run locale:build` script runs five extraction methods:
+The `npm run locale:build` script runs four extraction methods:
 
 ### 1. Database Terms
 - Queries database for user-defined terms, system data
@@ -129,17 +112,12 @@ The `npm run locale:build` script runs five extraction methods:
 - Pulls from PHP Countries class library
 - Generates 297+ terms (e.g., "China (中国)")
 
-### 3. Plugin Help
-- Scans `src/plugins/core/` and `src/plugins/community/` for `help.json` files
-- Extracts summary, section titles/content, and link labels
-- Deduplicates terms shared across plugins
-
-### 4. PHP Source Code
+### 3. PHP Source Code
 - Scans all PHP files for `gettext()`, `_()`, `ngettext()` calls
 - Uses GNU `xgettext` tool; excludes vendor/
 - Captures 1,800+ terms from application logic
 
-### 5. JavaScript/React
+### 4. JavaScript/React
 - Scans for i18next calls: `t()`, `i18next.t()`
 - Uses `i18next-parser` for `.tsx` and `.js` files
 - Generates 97+ UI element translations
@@ -155,13 +133,13 @@ All sources merged into `locale/messages.po` with **2,292+ terms**, no duplicate
 ### Quickest way:
 
 ```bash
-node locale/scripts/locale-add.js --name "Korean" --code "ko" --locale "ko_KR" --country "KR" --datatables "Korean"
+node locale/locale-add.js --name "Korean" --code "ko" --locale "ko_KR" --country "KR" --datatables "Korean"
 ```
 
 The script will:
 1. Add the language to `src/locale/locales.json`
 2. Create directories for translation files
-3. Generate empty translation files
+3. Set up POEditor integration
 
 ### Verify it worked:
 
@@ -199,9 +177,9 @@ For releases, automate missing-term translation using Claude Code:
 1. Download all new translations: `npm run locale:download`
 2. List locales needing work: `npm run locale:translate:list`
 3. Translate with AI: `/locale-translate --all` (in Claude Code)
-4. Upload to POEditor: `npm run locale:upload:missing`
+4. Upload to POEditor: `git add locale/terms/missing && cp -r ...`
 5. Download approved: `npm run locale:download`
-6. Commit: `git add src/locale/i18n locale/terms/missing && git commit -m "locale: ..."`
+6. Commit: `git add src/locale/i18n && git commit -m "locale: ..."`
 
 Full release guide: [.claude/commands/locale-release.md](../../.claude/commands/locale-release.md)
 

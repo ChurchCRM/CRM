@@ -159,7 +159,15 @@ class AvatarLoader {
     if (img.classList.contains("photo-small")) return 85;
     if (img.classList.contains("photo-medium")) return 100;
     if (img.classList.contains("photo-large")) return 200;
-    if (img.classList.contains("photo-profile")) return 200;
+    if (img.classList.contains("photo-profile")) {
+      // Render at actual displayed size × devicePixelRatio so initials stay crisp
+      // on HiDPI screens and on wide cards (e.g. 300px+ family photo). Cap at 600
+      // to keep the PNG payload reasonable.
+      const rect = img.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      const target = Math.ceil(Math.max(rect.width, rect.height, 120) * dpr);
+      return Math.min(600, target);
+    }
 
     // Default size
     return 100;
@@ -196,7 +204,7 @@ class AvatarLoader {
    */
   private updateViewPhotoButton(img: HTMLImageElement, hasPhoto: boolean): void {
     // Try to find the button - look up to the image-container's parent and search for the button
-    let imageContainer = img.closest(".image-container");
+    const imageContainer = img.closest(".image-container");
     let viewBtn = imageContainer?.querySelector("#view-larger-image-btn") as HTMLElement;
 
     // If not found, try looking in parent containers
@@ -219,6 +227,12 @@ class AvatarLoader {
       }
     }
     // No button found — normal on list/dashboard pages where no view-larger-image button exists
+
+    // Show/hide the inline overlay icon button (inside the photo container)
+    const overlay = img.closest(".position-relative")?.querySelector<HTMLElement>(".photo-view-overlay");
+    if (overlay) {
+      overlay.classList.toggle("d-none", !hasPhoto);
+    }
   }
 
   /**
@@ -463,6 +477,44 @@ class AvatarLoader {
 
 // Create singleton instance
 const avatarLoader = new AvatarLoader();
+
+// Global delegated click handler for avatar lightbox.
+// avatar-loader adds .view-person-photo / .view-family-photo + cursor:pointer
+// to uploaded photos. This handler opens the lightbox when clicked.
+document.addEventListener("click", (e) => {
+  const target = (e.target as HTMLElement).closest<HTMLElement>(".view-person-photo, .view-family-photo");
+  if (!target) return;
+
+  e.preventDefault();
+  e.stopPropagation();
+
+  const showLightbox = (window as any).CRM?.showPhotoLightbox;
+  if (!showLightbox) return;
+
+  if (target.classList.contains("view-person-photo")) {
+    const personId = target.dataset.personId;
+    if (personId) showLightbox("person", parseInt(personId, 10));
+  } else if (target.classList.contains("view-family-photo")) {
+    const familyId = target.dataset.familyId;
+    if (familyId) showLightbox("family", parseInt(familyId, 10));
+  }
+});
+
+// Delegated click handler for the inline overlay magnifying-glass button on profile pages.
+document.addEventListener("click", (e) => {
+  const btn = (e.target as HTMLElement).closest<HTMLElement>(".photo-view-overlay");
+  if (!btn) return;
+
+  e.preventDefault();
+  e.stopPropagation();
+
+  const showLightbox = (window as any).CRM?.showPhotoLightbox;
+  if (!showLightbox) return;
+
+  const type = btn.dataset.entityType;
+  const id = btn.dataset.entityId;
+  if (type && id) showLightbox(type, parseInt(id, 10));
+});
 
 // Auto-initialize when DOM is ready
 if (document.readyState === "loading") {

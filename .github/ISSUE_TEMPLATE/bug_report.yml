@@ -1,0 +1,149 @@
+name: 🐛 Bug report
+description: Report a reproducible bug in ChurchCRM
+title: "Bug: "
+type: Bug
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping us improve ChurchCRM! 💙
+
+        **Every bug belongs in a GitHub issue** — it's how we track work and ship fixes. Please fill out the form below.
+
+        **Tip:** The easiest way to file a bug (auto-captures system info) is the in-app reporter:
+        **Support → Report an Issue** inside your ChurchCRM installation.
+
+        **Urgent, or want to chat while you file?** Come into our Discord and ping a maintainer — but please still open the issue here so it doesn't get lost:
+        👉 <https://discord.gg/tuWyFzj3Nj>
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Pre-submission checks
+      description: Please confirm before opening a bug report.
+      options:
+        - label: I searched [existing issues](https://github.com/ChurchCRM/CRM/issues?q=is%3Aissue) and did not find a duplicate.
+          required: true
+        - label: This is not a security vulnerability (security issues must be reported privately via [Security Advisories](https://github.com/ChurchCRM/CRM/security/advisories/new)).
+          required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear, concise description of the bug.
+      placeholder: When I click "Save" on the Family edit page, I get a 500 error and the changes are lost.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+      placeholder: The family should save and I should be redirected back to the family view.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Numbered steps help us reproduce quickly.
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: ChurchCRM version
+      description: Check the page footer or **Admin → System Settings** in your installation.
+      placeholder: "e.g. 7.1.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: install-type
+    attributes:
+      label: How did you install ChurchCRM?
+      options:
+        - Official ZIP release
+        - Docker
+        - Composer / source checkout
+        - Shared hosting / cPanel
+        - Unknown / other
+    validations:
+      required: true
+
+  - type: input
+    id: php-version
+    attributes:
+      label: PHP version (if known)
+      placeholder: "e.g. 8.3.2"
+
+  - type: input
+    id: db-version
+    attributes:
+      label: Database (MySQL / MariaDB) version (if known)
+      placeholder: "e.g. MariaDB 11.4"
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser (if the bug is in the UI)
+      placeholder: "e.g. Firefox 128 on macOS 14"
+
+  - type: textarea
+    id: server-logs
+    attributes:
+      label: Server-side logs / errors
+      description: |
+        **How to collect server-side error logs** — this speeds up triage enormously:
+
+        **1. In-app (easiest, admins only)**
+        - Navigate to **Admin → System Maintenance → System Logs**
+        - Or click the 🐞 debug icon in the footer
+        - Copy the recent entries that coincide with the bug
+
+        **2. PHP error log (server shell access)**
+        - Common locations:
+          - `/var/log/php-fpm/error.log`
+          - `/var/log/php*-fpm.log`
+          - `/var/log/apache2/error.log`
+          - `/var/log/nginx/error.log`
+          - Or wherever `error_log` points in your `php.ini`
+        - Run `tail -n 200 <log-path>` right after reproducing the bug.
+
+        **3. Docker users**
+        - `docker logs <container-name> --tail 200`
+
+        **4. Browser console / network tab**
+        - Open DevTools → **Console** and **Network** → reproduce the bug → paste any red errors / failed requests.
+
+        ⚠️ **Please redact any private data** (names, emails, API keys) before pasting.
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots / Cypress recording (optional)
+      description: |
+        Images make triage much faster. Drag & drop them here.
+
+        Power users: if this is a reproducible UI workflow, a [Cypress Recorder](https://docs.cypress.io/) exported spec lets us add a regression test immediately.
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+
+        📘 **Full diagnostics guide:** <https://docs.churchcrm.io/administration/reporting-issues>
+        💬 **Urgent or want to discuss?** Join Discord: <https://discord.gg/tuWyFzj3Nj> — but please keep the issue open here so we can track the fix.
+
+        Thank you for reporting this! 🙏

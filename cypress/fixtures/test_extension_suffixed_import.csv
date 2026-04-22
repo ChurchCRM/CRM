@@ -1,0 +1,2 @@
+FamilyID,LastName,FirstName,Email,Highest Degree Received (Person Custom),Disabled (Person Property),Single Parent (Family Property)
+201,ExtSfxTest,suffixTest,suffixTest@example.com,PhD in Theology,yes,no

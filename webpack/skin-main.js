@@ -12,6 +12,7 @@
 
 // Import Tabler CSS (Bootstrap 5 admin UI — LTR variant)
 import "@tabler/core/dist/css/tabler.min.css";
+import "@tabler/core/dist/css/tabler-themes.min.css";
 
 // Import all shared CSS and JS
 import "./skin-core";

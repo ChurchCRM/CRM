@@ -30,6 +30,7 @@ use Propel\Runtime\Map\TableMap;
 class Family extends BaseFamily implements PhotoInterface
 {
     private ?Photo $photo = null;
+    private bool $skipPostUpdateNote = false;
 
     public function getAddress(): string
     {
@@ -62,7 +63,7 @@ class Family extends BaseFamily implements PhotoInterface
 
     public function getViewURI(): string
     {
-        return SystemURLs::getRootPath() . '/v2/family/' . $this->getId();
+        return SystemURLs::getRootPath() . '/people/family/' . $this->getId();
     }
 
     public function getWeddingDay()
@@ -86,17 +87,12 @@ class Family extends BaseFamily implements PhotoInterface
     public function postInsert(ConnectionInterface $con = null): void
     {
         $this->createTimeLineNote('create');
-        if (!empty(SystemConfig::getValue('sNewPersonNotificationRecipientIDs'))) {
-            $NotificationEmail = new NewPersonOrFamilyEmail($this);
-            if (!$NotificationEmail->send()) {
-                LoggerUtils::getAppLogger()->warning(gettext('New Family Notification Email Error') . ' :' . $NotificationEmail->getError());
-            }
-        }
+        NewPersonOrFamilyEmail::sendIfConfigured($this);
     }
 
     public function postUpdate(ConnectionInterface $con = null): void
     {
-        if (!empty($this->getDateLastEdited())) {
+        if (!empty($this->getDateLastEdited()) && !$this->skipPostUpdateNote) {
             $this->createTimeLineNote('edit');
         }
     }
@@ -263,11 +259,15 @@ class Family extends BaseFamily implements PhotoInterface
         $this->getPhoto()->setImageFromBase64($base64);
         $note->setFamId($this->getId());
         $note->save();
-        
-        // Update family's last edited date and editor
+
         $this->setDateLastEdited(new \DateTime());
         $this->setEditedBy(AuthenticationManager::getCurrentUser()->getId());
-        $this->save();
+        $this->skipPostUpdateNote = true;
+        try {
+            $this->save();
+        } finally {
+            $this->skipPostUpdateNote = false;
+        }
     }
 
     public function verify(): void
@@ -389,7 +389,7 @@ class Family extends BaseFamily implements PhotoInterface
         return [
             'Id'          => $this->getId(),
             'displayName' => $this->getFamilyString(SystemConfig::getBooleanValue('bSearchIncludeFamilyHOH')),
-            'uri'         => SystemURLs::getRootPath() . '/v2/family/' . $this->getId(),
+            'uri'         => SystemURLs::getRootPath() . '/people/family/' . $this->getId(),
         ];
     }
 

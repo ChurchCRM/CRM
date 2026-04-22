@@ -20,7 +20,7 @@ class PersonMiddleware extends AbstractEntityMiddleware
 
     protected function loadEntity(string $id): mixed
     {
-        return PersonQuery::create()->findPk($id);
+        return PersonQuery::create()->findPk((int) $id);
     }
 
     protected function getNotFoundMessage(): string

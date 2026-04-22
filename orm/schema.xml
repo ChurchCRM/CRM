@@ -223,16 +223,9 @@
         </vendor>
     </table>
 
-    <table name="config_cfg" idMethod="native" phpName="Config" description="This table contains all non-default configuration parameter names and values">
-        <column name="cfg_id" phpName="Id" type="INTEGER" primaryKey="true" required="true" defaultValue="0"/>
-        <column name="cfg_name" phpName="Name" type="VARCHAR" size="50" required="true" defaultValue=""/>
+    <table name="config_cfg" idMethod="none" phpName="Config" description="This table contains all non-default configuration parameter names and values">
+        <column name="cfg_name" phpName="Name" type="VARCHAR" size="50" primaryKey="true" required="true" defaultValue=""/>
         <column name="cfg_value" phpName="Value" type="LONGVARCHAR"/>
-        <index name="cfg_id">
-            <index-column name="cfg_id"/>
-        </index>
-        <unique name="cfg_name">
-            <unique-column name="cfg_name"/>
-        </unique>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>

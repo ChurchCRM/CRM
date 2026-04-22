@@ -622,10 +622,7 @@ function initializeGroupView() {
   // ------------------------------------------------------------------ //
   // Inline member actions (delegated)
   // ------------------------------------------------------------------ //
-  $(document).on("click", ".view-person-photo", function (e) {
-    window.CRM.showPhotoLightbox("person", $(e.currentTarget).data("person-id"));
-    e.stopPropagation();
-  });
+  // .view-person-photo click handler is registered globally in avatar-loader.ts
 
   // Change role — BS5 modal (not bootbox)
   $(document).on("click", ".changeMembership", function (e) {

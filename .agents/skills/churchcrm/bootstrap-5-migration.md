@@ -594,6 +594,27 @@ Responsive variants follow the same pattern:
 <label class="btn btn-primary" for="btn-check">Toggle</label>
 ```
 
+#### Radio Button Groups (BS4 `btn-group-toggle` Removed) <!-- learned: 2026-04-07 -->
+
+BS4 `btn-group-toggle` with `data-toggle="buttons"` is removed in BS5. Use `btn-check` inputs with associated labels instead:
+
+```html
+<!-- ✅ BS5 radio button group -->
+<div class="btn-group" role="group">
+    <input type="radio" class="btn-check" name="status" id="active" value="0" checked autocomplete="off">
+    <label class="btn btn-outline-success" for="active">Active</label>
+    <input type="radio" class="btn-check" name="status" id="inactive" value="1" autocomplete="off">
+    <label class="btn btn-outline-secondary" for="inactive">Inactive</label>
+</div>
+
+<!-- ❌ BS4 — removed in BS5 -->
+<div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <label class="btn btn-outline-success active">
+        <input type="radio" name="status" value="0" checked> Active
+    </label>
+</div>
+```
+
 ### 3.9 Grid Changes
 
 | Bootstrap 4 | Bootstrap 5 |

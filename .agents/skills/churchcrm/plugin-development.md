@@ -240,29 +240,21 @@ PluginManager::disablePlugin('mailchimp');
 
 ## Slim Entry Point Configuration (plugins/index.php)
 
-Plugin entry points create their own Slim app instance. **Configure error middleware properly:**
+Plugin entry points create their own Slim app instance.
+
+> **Full reference:** [`slim-4-best-practices.md` → Middleware Order](./slim-4-best-practices.md)
+
+**TL;DR:** `addErrorMiddleware()` MUST be called AFTER `addRoutingMiddleware()`. Wrong order → raw 500 on 404s.
 
 ```php
-// ✅ CORRECT - Config-driven error display
-$displayErrors = SystemConfig::debugEnabled();
-$app->addErrorMiddleware($displayErrors, true, true)
-    ->setDefaultErrorHandler(function (Request $request, Throwable $exception) use ($app): Response {
-        $response = $app->getResponseFactory()->createResponse();
-        return SlimUtils::renderErrorJSON(
-            $response, 
-            gettext('An error occurred'), 
-            [], 
-            500, 
-            $exception, 
-            $request
-        );
-    });
-
-// ❌ WRONG - Always exposes error details (security risk in production)
-$app->addErrorMiddleware(true, true, true);  // ❌ Hardcoded true exposes exceptions
-
-// ❌ WRONG - Throws exception which leaks info to client
-throw new HttpNotFoundException($request);  // ❌ Use SlimUtils::renderErrorJSON instead
+// ✅ CORRECT
+$app->addBodyParsingMiddleware();
+$app->addRoutingMiddleware();
+$errorMiddleware = $app->addErrorMiddleware(SystemConfig::debugEnabled(), true, true);
+$errorMiddleware->setDefaultErrorHandler(function (Request $request, Throwable $exception) use ($app): Response {
+    $response = $app->getResponseFactory()->createResponse();
+    return SlimUtils::renderErrorJSON($response, gettext('An error occurred'), [], 500, $exception, $request);
+});
 ```
 
 **Guidelines:**

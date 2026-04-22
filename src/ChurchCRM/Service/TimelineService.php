@@ -52,19 +52,26 @@ class TimelineService
         $eventsByPerson = EventAttendQuery::create()->findByPersonId($personID);
         foreach ($eventsByPerson as $personEvent) {
             $event = $personEvent->getEvent();
-            if ($event !== null) {
-                $item = $this->createTimeLineItem(
-                    $event->getId(),
-                    'cal',
-                    $event->getStart('Y-m-d h:i:s'),
-                    $event->getTitle(),
-                    '',
-                    $event->getDesc(),
-                    '',
-                    ''
-                );
-                $timeline[$item['key']] = $item;
+            if ($event === null) {
+                continue;
             }
+
+            // Strip Quill empty markup ("<p><br /></p>") and any HTML so the
+            // description renders cleanly in the timeline.
+            $descText = trim(strip_tags((string) $event->getDesc()));
+
+            $item = $this->createTimeLineItem(
+                (string) $event->getId(),
+                'cal',
+                $event->getStart('Y-m-d H:i:s') ?: '',
+                $event->getStart('Y') ?: '',
+                $event->getTitle() ?: gettext('Event'),
+                $event->getViewURI(),
+                $descText,
+                '',
+                ''
+            );
+            $timeline[$item['key']] = $item;
         }
 
         return $timeline;
@@ -180,6 +187,10 @@ class TimelineService
                 break;
             case 'cal':
                 $item['style'] = 'fa-calendar';
+                $item['color'] = 'success';
+                break;
+            case 'event':
+                $item['style'] = 'fa-calendar-check';
                 $item['color'] = 'success';
                 break;
             case 'verify':

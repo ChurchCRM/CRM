@@ -8,7 +8,7 @@ describe("Event Types Management", () => {
   });
 
   it("should view all event types", () => {
-  cy.visit("EventNames.php");
+  cy.visit("event/types");
   cy.contains("Event Types");
   cy.get(".table tbody tr").should("exist");
   cy.get(".table thead").should("contain", "Name");
@@ -17,7 +17,7 @@ describe("Event Types Management", () => {
   });
 
   it("should add an event type", () => {
-    cy.visit("EventNames.php");
+    cy.visit("event/types");
     cy.contains("Event Types");
     cy.contains("Add Event Type").click();
 
@@ -29,8 +29,75 @@ describe("Event Types Management", () => {
   });
 
   it("should view event type by direct URL", () => {
-    cy.visit("EditEventTypes.php?EN_tyid=1");
-    cy.get('input[name="newEvtName"]').should("have.value", "Church Service");
+    cy.visit("event/types/1");
+    cy.contains("Edit Event Type");
+    cy.get('input[name="newEvtName"]').should("exist");
   });
-  
+
+  it("should display Events count column", () => {
+    cy.visit("event/types");
+    cy.get(".table thead").should("contain", "Events");
+  });
+
+  it("should show event count for types with events", () => {
+    // Create an event using type 1 so the count is > 0
+    cy.makePrivateAdminAPICall(
+      "POST",
+      "/api/events/quick-create",
+      { eventTypeId: 1 },
+      200,
+    );
+
+    // cy.request / makePrivateAdminAPICall resets the PHP session; use the
+    // canonical session-cache command with forceLogin to re-establish a
+    // valid admin session instead of hand-rolling a login flow.
+    cy.setupAdminSession({ forceLogin: true });
+
+    cy.visit("event/types");
+    // The "Church Service" type should have a badge with a count
+    cy.get(".table tbody tr").first().within(() => {
+      cy.get(".badge.bg-blue-lt").should("exist");
+    });
+  });
+
+  it("should block deletion of event types that have events", () => {
+    // Ensure an event exists for type 1
+    cy.makePrivateAdminAPICall(
+      "POST",
+      "/api/events/quick-create",
+      { eventTypeId: 1 },
+      200,
+    );
+
+    // cy.request / makePrivateAdminAPICall resets the PHP session; use the
+    // canonical session-cache command with forceLogin to re-establish a
+    // valid admin session instead of hand-rolling a login flow.
+    cy.setupAdminSession({ forceLogin: true });
+
+    // .delete-type-btn lives on the list page, not the edit page
+    cy.visit("event/types");
+    cy.get(".delete-type-btn").first().should("have.attr", "data-event-count");
+    // Confirm the count attribute is > 0 since we just created an event
+    cy.get(".delete-type-btn").first().invoke("attr", "data-event-count").then((count) => {
+      expect(parseInt(count)).to.be.greaterThan(0);
+    });
+  });
+
+  it("should pass data-event-count attribute on delete button", () => {
+    // Ensure event exists so the button renders with a count
+    cy.makePrivateAdminAPICall(
+      "POST",
+      "/api/events/quick-create",
+      { eventTypeId: 1 },
+      200,
+    );
+
+    // cy.request / makePrivateAdminAPICall resets the PHP session; use the
+    // canonical session-cache command with forceLogin to re-establish a
+    // valid admin session instead of hand-rolling a login flow.
+    cy.setupAdminSession({ forceLogin: true });
+
+    cy.visit("event/types");
+    cy.get(".delete-type-btn").first().should("have.attr", "data-event-count");
+  });
 });

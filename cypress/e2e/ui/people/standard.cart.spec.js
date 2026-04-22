@@ -72,7 +72,7 @@ describe("Standard Cart", () => {
     it("Cart Add and Remove Family", () => {
         cy.visit("v2/cart");
         cy.contains("You have no items in your cart");
-        cy.visit("v2/family/6");
+        cy.visit("people/family/6");
         
         // Wait for cart to be ready before clicking
         waitForCartReady();
@@ -146,77 +146,6 @@ describe("Standard Cart", () => {
         cy.contains("You have no items in your cart", { timeout: 10000 }).should('be.visible');
     });
 
-    it("Cart API returns correct duplicate information", () => {
-        // Empty cart first
-        cy.request({
-            method: "DELETE",
-            url: "/api/cart/",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({})
-        });
-
-        // Add person via API - should succeed
-        cy.request({
-            method: "POST",
-            url: "/api/cart/",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                Persons: [1]
-            })
-        }).then((response) => {
-            expect(response.status).to.eq(200);
-            expect(response.body).to.have.property("added");
-            expect(response.body).to.have.property("duplicate");
-            expect(response.body.added).to.include(1);
-            expect(response.body.duplicate).to.be.empty;
-        });
-
-        // Try to add same person again - should be duplicate
-        cy.request({
-            method: "POST",
-            url: "/api/cart/",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                Persons: [1]
-            })
-        }).then((response) => {
-            expect(response.status).to.eq(200);
-            expect(response.body).to.have.property("added");
-            expect(response.body).to.have.property("duplicate");
-            expect(response.body.added).to.be.empty;
-            expect(response.body.duplicate).to.include(1);
-        });
-
-        // Add multiple people including one duplicate
-        cy.request({
-            method: "POST",
-            url: "/api/cart/",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                Persons: [1, 2, 3]
-            })
-        }).then((response) => {
-            expect(response.status).to.eq(200);
-            expect(response.body.added).to.include.members([2, 3]);
-            expect(response.body.duplicate).to.include(1);
-        });
-
-        // Clean up
-        cy.request({
-            method: "DELETE",
-            url: "/api/cart/",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({})
-        });
-    });
+    // NOTE: the pure-API "Cart API returns correct duplicate information"
+    // test lives in cypress/e2e/api/private/standard/private.cart.duplicates.spec.js.
 });

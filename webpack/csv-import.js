@@ -5,7 +5,7 @@
 import Uppy from "@uppy/core";
 import XHRUpload from "@uppy/xhr-upload";
 
-$(document).ready(function () {
+$(document).ready(() => {
   const $dropzone = $("#dropzone");
   const $fileInput = $("#csvFile");
   const $fileInfo = $("#fileInfo");
@@ -35,13 +35,31 @@ $(document).ready(function () {
   });
 
   uppy.on("upload-error", (_file, error, response) => {
-    const msg =
-      response?.body?.message || error.message || i18next.t("Upload failed. Please check the file and try again.");
-    setStatus("error", msg);
+    // Uppy v5 wraps every non-2xx response in a NetworkError whose message is
+    // hardcoded to "This looks like a network error…" regardless of the real
+    // HTTP status. The raw xhr is passed as the third arg, so parse the server
+    // JSON body ourselves to surface messages like "Your CSV has duplicate
+    // column names…" to the user.
+    let msg = null;
+    const responseText = response?.responseText;
+    if (responseText) {
+      try {
+        const parsed = JSON.parse(responseText);
+        if (parsed && typeof parsed.message === "string" && parsed.message.length > 0) {
+          msg = parsed.message;
+        }
+      } catch (_e) {
+        // not JSON — fall through
+      }
+    }
+    if (!msg && error && !error.isNetworkError && typeof error.message === "string") {
+      msg = error.message;
+    }
+    setStatus("error", msg || i18next.t("Upload failed. Please check the file and try again."));
   });
 
   // --- Dropzone ---
-  $dropzone.on("click", function (e) {
+  $dropzone.on("click", (e) => {
     if (e.target !== $fileInput[0]) $fileInput[0].click();
   });
   $fileInput.on("click", (e) => e.stopPropagation());
@@ -80,7 +98,7 @@ $(document).ready(function () {
   }
 
   // --- Submit ---
-  $("#csv-import-form").on("submit", function (e) {
+  $("#csv-import-form").on("submit", (e) => {
     e.preventDefault();
     const file = $fileInput[0].files[0];
     if (!file) {
@@ -118,7 +136,7 @@ $(document).ready(function () {
       contentType: "application/json",
       data: JSON.stringify({ token, mapping }),
     })
-      .done(function (data) {
+      .done((data) => {
         $("#mapping-card").addClass("d-none");
         setStatus("idle");
         $("#summary-imported").text(data.imported);
@@ -126,7 +144,7 @@ $(document).ready(function () {
         $("#summary-skipped").text(data.skipped ?? 0);
         $("#summary-card").removeClass("d-none");
       })
-      .fail(function (xhr) {
+      .fail((xhr) => {
         const msg = xhr.responseJSON?.message || i18next.t("Import failed. Please try again.");
         window.CRM.notify(msg, { type: "error", delay: 5000 });
         $btn.prop("disabled", false).html(`<i class="fa-solid fa-file-import mr-2"></i>${i18next.t("Import Data")}`);
@@ -154,6 +172,19 @@ function showMappingStep(token, headers, mappings, fields, sample) {
 
   const $tbody = $("#mapping-tbody").empty();
 
+  // Normalize fields: backend may send either a flat string[] (older) or {key,label,group}[].
+  // Group entries by `group` so we can render <optgroup>s while preserving source order.
+  const normalized = fields.map((f) => (typeof f === "string" ? { key: f, label: f, group: i18next.t("Fields") } : f));
+  const grouped = [];
+  const groupIndex = new Map();
+  normalized.forEach((f) => {
+    if (!groupIndex.has(f.group)) {
+      groupIndex.set(f.group, grouped.length);
+      grouped.push({ group: f.group, items: [] });
+    }
+    grouped[groupIndex.get(f.group)].items.push(f);
+  });
+
   headers.forEach((header) => {
     const mapped = mappings[header] || null;
     const sampleValue = sample ? (sample[header] ?? "") : "";
@@ -164,13 +195,17 @@ function showMappingStep(token, headers, mappings, fields, sample) {
 
     const $select = $('<select class="form-control form-control-sm mapping-select">').attr("data-header", header);
     $select.append($("<option>").val("").text(i18next.t("— Ignore —")));
-    fields.forEach((f) => {
-      $select.append(
-        $("<option>")
-          .val(f)
-          .text(f)
-          .prop("selected", f === mapped),
-      );
+    grouped.forEach(({ group, items }) => {
+      const $group = $("<optgroup>").attr("label", group);
+      items.forEach((f) => {
+        $group.append(
+          $("<option>")
+            .val(f.key)
+            .text(f.label)
+            .prop("selected", f.key === mapped),
+        );
+      });
+      $select.append($group);
     });
 
     const $row = $(`<tr class="${rowClass}">`);
@@ -210,7 +245,7 @@ function formatSize(bytes) {
   const k = 1024;
   const sizes = ["Bytes", "KB", "MB", "GB"];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
+  return parseFloat((bytes / k ** i).toFixed(2)) + " " + sizes[i];
 }
 
 function setStatus(status, errorMessage) {

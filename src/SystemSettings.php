@@ -26,16 +26,16 @@ if (isset($_POST['save'])) {
     reset($type);
 
     while ($current_type = current($type)) {
-        $id = key($type);
+        $name = key($type);
         // Filter Input based on type
         if ($current_type == 'text' || $current_type == 'textarea' || $current_type == 'password') {
-            $value = InputUtils::sanitizeText($new_value[$id]);
+            $value = InputUtils::sanitizeText($new_value[$name]);
         } elseif ($current_type == 'number') {
-            $value = InputUtils::filterFloat($new_value[$id]);
+            $value = InputUtils::filterFloat($new_value[$name]);
         } elseif ($current_type == 'date') {
-            $value = InputUtils::filterDate($new_value[$id]);
+            $value = InputUtils::filterDate($new_value[$name]);
         } elseif ($current_type == 'json') {
-            $raw = $new_value[$id];
+            $raw = $new_value[$name];
             json_decode($raw);
             if (json_last_error() === JSON_ERROR_NONE) {
                 $value = $raw;
@@ -46,11 +46,11 @@ if (isset($_POST['save'])) {
                 exit;
             }
         } elseif ($current_type == 'choice') {
-            $value = InputUtils::sanitizeText($new_value[$id]);
+            $value = InputUtils::sanitizeText($new_value[$name]);
         } elseif ($current_type == 'ajax') {
-            $value = InputUtils::sanitizeText($new_value[$id]);
+            $value = InputUtils::sanitizeText($new_value[$name]);
         } elseif ($current_type == 'boolean') {
-            if ($new_value[$id] != '1') {
+            if ($new_value[$name] != '1') {
                 $value = '';
             } else {
                 $value = '1';
@@ -58,13 +58,13 @@ if (isset($_POST['save'])) {
         }
 
         // If changing the locale, translate the menu options
-        if ($id == 39 && $value != Bootstrapper::getCurrentLocale()->getLocale()) {
+        if ($name === 'sLanguage' && $value != Bootstrapper::getCurrentLocale()->getLocale()) {
             $localeInfo = new LocaleInfo($value, AuthenticationManager::getCurrentUser()->getSetting("ui.locale"));
             setlocale(LC_ALL, $localeInfo->getLocale(), $localeInfo->getLocale() . '.UTF-8', $localeInfo->getLocale() . '.utf8');
             $aLocaleInfo = $localeInfo->getLocaleInfo();
         }
 
-        if ($id == 65 && !(in_array($value, timezone_identifiers_list()))) {
+        if ($name === 'sTimeZone' && !(in_array($value, timezone_identifiers_list()))) {
             $value = date_default_timezone_get();
         }
 
@@ -75,7 +75,7 @@ if (isset($_POST['save'])) {
             continue;
         }
 
-        SystemConfig::setValueById($id, $value);
+        SystemConfig::setValue($name, $value);
         next($type);
     }
     $_SESSION['sGlobalMessage'] = gettext('Setting saved');
@@ -184,11 +184,11 @@ function categoryId(string $category): string {
               <tr>
                 <td class="text-secondary">
                   <?= InputUtils::escapeHTML($setting->getName()) ?>
-                  <input type="hidden" name="type[<?= $setting->getId() ?>]" value="<?= InputUtils::escapeAttribute($setting->getType()) ?>">
+                  <input type="hidden" name="type[<?= $setting->getName() ?>]" value="<?= InputUtils::escapeAttribute($setting->getType()) ?>">
                 </td>
                 <td>
                   <?php if ($setting->getType() === 'choice') : ?>
-                    <select name="new_value[<?= $setting->getId() ?>]" class="form-select choiceSelectBox">
+                    <select name="new_value[<?= $setting->getName() ?>]" class="form-select choiceSelectBox">
                       <?php foreach (json_decode($setting->getData())->Choices as $choice) :
                           if (strpos($choice, ':') === false) {
                               $choiceText = $choice;
@@ -203,34 +203,34 @@ function categoryId(string $category): string {
                     </select>
 
                   <?php elseif ($setting->getType() === 'text') : ?>
-                    <input type="text" maxlength="255" class="form-control" name="new_value[<?= $setting->getId() ?>]" value="<?= InputUtils::escapeAttribute($setting->getValue()) ?>">
+                    <input type="text" maxlength="255" class="form-control" name="new_value[<?= $setting->getName() ?>]" value="<?= InputUtils::escapeAttribute($setting->getValue()) ?>">
 
                   <?php elseif ($setting->getType() === 'password') : ?>
-                    <input type="password" maxlength="255" class="form-control" name="new_value[<?= $setting->getId() ?>]" placeholder="<?= gettext('Leave blank to keep existing password') ?>">
+                    <input type="password" maxlength="255" class="form-control" name="new_value[<?= $setting->getName() ?>]" placeholder="<?= gettext('Leave blank to keep existing password') ?>">
 
                   <?php elseif ($setting->getType() === 'textarea') : ?>
-                    <textarea rows="4" class="form-control" name="new_value[<?= $setting->getId() ?>]"><?= InputUtils::escapeHTML($setting->getValue()) ?></textarea>
+                    <textarea rows="4" class="form-control" name="new_value[<?= $setting->getName() ?>]"><?= InputUtils::escapeHTML($setting->getValue()) ?></textarea>
 
                   <?php elseif ($setting->getType() === 'number' || $setting->getType() === 'date') : ?>
-                    <input type="text" maxlength="15" class="form-control" name="new_value[<?= $setting->getId() ?>]" value="<?= InputUtils::escapeAttribute($setting->getValue()) ?>">
+                    <input type="text" maxlength="15" class="form-control" name="new_value[<?= $setting->getName() ?>]" value="<?= InputUtils::escapeAttribute($setting->getValue()) ?>">
 
                   <?php elseif ($setting->getType() === 'boolean') : ?>
-                    <select name="new_value[<?= $setting->getId() ?>]" class="form-select choiceSelectBox">
+                    <select name="new_value[<?= $setting->getName() ?>]" class="form-select choiceSelectBox">
                       <option value="0" <?= !$setting->getValue() ? 'selected' : '' ?>><?= gettext('False') ?></option>
                       <option value="1" <?= $setting->getValue() ? 'selected' : '' ?>><?= gettext('True') ?></option>
                     </select>
 
                   <?php elseif ($setting->getType() === 'json') : ?>
-                    <input type="hidden" name="new_value[<?= $setting->getId() ?>]" value="<?= InputUtils::escapeAttribute($setting->getValue()) ?>">
+                    <input type="hidden" name="new_value[<?= $setting->getName() ?>]" value="<?= InputUtils::escapeAttribute($setting->getValue()) ?>">
                     <button type="button" class="btn btn-outline-primary btn-sm jsonSettingsEdit"
-                            id="set_value<?= $setting->getId() ?>"
-                            data-cfgid="<?= $setting->getId() ?>">
+                            id="set_value<?= $setting->getName() ?>"
+                            data-cfgid="<?= $setting->getName() ?>">
                       <i class="fa-solid fa-pen-to-square me-1"></i><?= gettext('Edit Settings') ?>
                     </button>
 
                   <?php elseif ($setting->getType() === 'ajax') : ?>
-                    <select id="ajax-<?= $setting->getId() ?>"
-                            name="new_value[<?= $setting->getId() ?>]"
+                    <select id="ajax-<?= $setting->getName() ?>"
+                            name="new_value[<?= $setting->getName() ?>]"
                             data-url="<?= InputUtils::escapeAttribute($setting->getData()) ?>"
                             data-value="<?= InputUtils::escapeAttribute($setting->getValue()) ?>"
                             class="form-select choiceSelectBox">
@@ -301,7 +301,7 @@ function categoryId(string $category): string {
         foreach ($settings as $settingName) {
             $setting = SystemConfig::getConfigItem($settingName);
             if ($setting->getType() === 'ajax') { ?>
-      updateDropDrownFromAjax($('#ajax-<?= $setting->getId() ?>'));
+      updateDropDrownFromAjax($('#ajax-<?= $setting->getName() ?>'));
     <?php   }
         }
     } ?>

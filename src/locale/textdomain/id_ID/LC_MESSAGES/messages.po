@@ -268,10 +268,6 @@ msgid "Add Cart to Event"
 msgstr "Tambahkan cart di Acara"
 
 #: 
-msgid "OR"
-msgstr "Atau"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Cart kosong !"
 
@@ -392,10 +388,6 @@ msgstr "Ya"
 #: 
 msgid "No"
 msgstr "Tidak"
-
-#: 
-msgid "Event Checkin"
-msgstr "Kehadiran di Acara"
 
 #: 
 msgid "Select Event"
@@ -651,10 +643,6 @@ msgid "Church Event Editor"
 msgstr "Sunting Daftar kegiatan gereja"
 
 #: 
-msgid "Edit Event Types"
-msgstr "Ubah jenis kegiatan-kegiatan"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Ubah jenis kegiatan"
 
@@ -724,20 +712,8 @@ msgid "Create a new Event"
 msgstr "Ciptakan kegiatan yang baru"
 
 #: 
-msgid " errors. Please see below"
-msgstr "Error. Lihat ke bawah"
-
-#: 
 msgid "Select your event type"
 msgstr "Pilih tipe dari kegiatan"
-
-#: 
-msgid "You must pick an event type."
-msgstr "Anda harus memilih sebuat tipe kegiatan"
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "Data kehadiran tidak direkam"
 
 #: 
 msgid "Event Status"
@@ -842,10 +818,6 @@ msgstr "Alamat surat elektronik tidak valid"
 #: 
 msgid "Family Info"
 msgstr "Informasi keluarga"
-
-#: 
-msgid "Contact Info"
-msgstr "Data Kontak"
 
 #: 
 msgid "Envelope Info"
@@ -970,10 +942,6 @@ msgstr "nilai"
 #: 
 msgid "Edit Value"
 msgstr "sunting nilai"
-
-#: 
-msgid "Assign a New Property"
-msgstr "Berikan properti baru"
 
 #: 
 msgid "Assign"
@@ -1704,20 +1672,8 @@ msgid "Group"
 msgstr "Kelompok"
 
 #: 
-msgid "Option"
-msgstr "Pilihan"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Kesalahan: Duplikat"
-
-#: 
 msgid "Default"
 msgstr "Default"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Nama duplikat ditemukan."
 
 #: 
 msgid "Make Default"
@@ -1730,10 +1686,6 @@ msgstr "Keluar"
 #: 
 msgid "Add New"
 msgstr "Tambah baru"
-
-#: 
-msgid " by that name already exists."
-msgstr "dengan nama itu sudah ada."
 
 #: 
 msgid "Buyer Number Editor"
@@ -2049,10 +2001,6 @@ msgid "Restore Database"
 msgstr "Pulihkan Database"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Semua sumbangan dari keluarga ini telah dipindahkan ke keluarga lain."
-
-#: 
 msgid "Please confirm deletion of"
 msgstr "Harap konfirmasi penghapusan"
 
@@ -2150,14 +2098,6 @@ msgid "User Editor"
 msgstr "Editor Pengguna"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Catatan: Perubahan tidak akan berlaku hingga masuk berikutnya."
-
-#: 
-msgid "Person to Make User"
-msgstr "Orang untuk Membuat Pengguna"
-
-#: 
 msgid "User"
 msgstr "Pengguna"
 
@@ -2198,24 +2138,8 @@ msgid "Edit Self"
 msgstr "Edit Diri"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Edit keluarga sendiri saja.)"
-
-#: 
 msgid "Admin"
 msgstr "Admin"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Berikan semua hak istimewa.)"
-
-#: 
-msgid "Style"
-msgstr "Gaya"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Tetapkan Izin Benar untuk memberi pengguna ini kemampuan untuk mengubah nilai mereka saat ini."
 
 #: 
 msgid "Last Login"
@@ -2940,10 +2864,6 @@ msgid "Date Entered"
 msgstr "Tanggal masuk"
 
 #: 
-msgid "There were "
-msgstr "Ada "
-
-#: 
 msgid "Inactive"
 msgstr "Non-aktif"
 
@@ -3179,10 +3099,6 @@ msgid "Query Menu"
 msgstr "Menu Permintaan"
 
 #: 
-msgid "CSV Export Records"
-msgstr "Catatan Ekspor CSV"
-
-#: 
 msgid "Family Properties"
 msgstr "Properti Keluarga"
 
@@ -3254,10 +3170,6 @@ msgid "Security Group"
 msgstr "Grup Keamanan"
 
 #: 
-msgid "Security Groups"
-msgstr "Grup Keamanan"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Editor Grup Keamanan"
 
@@ -3270,56 +3182,16 @@ msgid "Group Member Roles Editor"
 msgstr "Editor Peran Anggota Grup"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Opsi Daftar Kustom Orang"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Opsi Daftar Kustom Orang"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Editor Pilihan Daftar Orang Kustom"
-
-#: 
-msgid "Custom List Option"
-msgstr "Opsi Daftar Kustom"
-
-#: 
-msgid "Custom List Options"
-msgstr "Opsi Daftar Kustom"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Editor Opsi Daftar Kustom"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Opsi Daftar Kustom Keluarga"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Opsi Daftar Kustom Keluarga"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Editor Pilihan Daftar Keluarga Kustom"
-
-#: 
-msgid "are not allowed."
-msgstr "tidak diizinkan."
-
-#: 
-msgid "Name for New"
-msgstr "Nama untuk Baru"
-
-#: 
-msgid "Created via Family"
-msgstr "Dibuat melalui Keluarga"
-
-#: 
-msgid "Updated via Family"
-msgstr "Diperbarui melalui Keluarga"
 
 #: 
 msgid "Family Data Verified"
@@ -4811,10 +4683,6 @@ msgid "An invalid configuration name has been requested"
 msgstr "Nama konfigurasi yang tidak valid telah diminta"
 
 #: 
-msgid "An invalid configuration id has been requested"
-msgstr "ID konfigurasi yang tidak valid telah diminta"
-
-#: 
 msgid "Profile Image uploaded"
 msgstr "Gambar Profil diunggah"
 
@@ -4892,14 +4760,6 @@ msgstr "Properti tidak dapat dibatalkan penetapannya."
 #: 
 msgid "Select event"
 msgstr "Pilih acara"
-
-#: 
-msgid "Person has been already checked in for this event"
-msgstr "Orang telah masuk untuk acara ini"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "Orang Dewasa yang Memeriksa"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -5133,10 +4993,6 @@ msgstr "Manajer Kios"
 #: 
 msgid "Report an issue"
 msgstr "Laporkan masalah"
-
-#: 
-msgid "Active Kiosks"
-msgstr "Kios aktif"
 
 #: 
 msgid "Self Verification"
@@ -5458,10 +5314,6 @@ msgid "Sign out"
 msgstr "Keluar"
 
 #: 
-msgid "Sermon Text"
-msgstr "Teks Khotbah"
-
-#: 
 msgid "Change Settings"
 msgstr "Ubah pengaturan"
 
@@ -5566,14 +5418,6 @@ msgid "Added to group"
 msgstr "Ditambahkan ke grup"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "Host SMTP belum diatur, silakan kunjungi halaman pengaturan"
-
-#: 
-msgid "Debug Email Connection"
-msgstr "Koneksi Email Debug"
-
-#: 
 #, fuzzy
 msgid "This Family is Inactive"
 msgstr "Keluarga Ini Dinonaktifkan"
@@ -5585,14 +5429,6 @@ msgstr "Basis data telah dihapus."
 #: 
 msgid "Anniversaries"
 msgstr "Peringatan"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "Pemberitahuan Email Pemberitahuan Keluarga Baru"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "Pemberitahuan Email Orang Baru Kesalahan"
 
 #: 
 msgid "View User"
@@ -5782,10 +5618,6 @@ msgid "Software Version"
 msgstr "Versi perangkat lunak"
 
 #: 
-msgid "Database Version"
-msgstr "Versi basis data"
-
-#: 
 msgid "Application Prerequisites"
 msgstr "Prasyarat Aplikasi"
 
@@ -5969,10 +5801,6 @@ msgstr "Fungsi Reset Database"
 msgid "Reset Database"
 msgstr "Reset Database"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "Ini akan mengatur ulang data sistem dan akan memulai ulang sistem sebagai pemasangan baru."
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6085,28 +5913,12 @@ msgid "open rate"
 msgstr "Buka Kurs"
 
 #: 
-msgid "Login Info"
-msgstr "Info Masuk"
-
-#: 
-msgid "Login Count"
-msgstr "Jumlah Masuk"
-
-#: 
-msgid "Failed Login"
-msgstr "Gagal Masuk"
-
-#: 
 msgid "Permissions"
 msgstr "Izin"
 
 #: 
 msgid "Manage Notes"
 msgstr "Kelola Catatan"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Gagal membuat Kunci API baru"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6162,28 +5974,12 @@ msgid "Loading"
 msgstr "Memuat"
 
 #: 
-msgid "Family Property Unassignment"
-msgstr "Pelepasan Properti Keluarga"
-
-#: 
-msgid "Do you want to remove"
-msgstr "Apa Anda ingin menghapus"
-
-#: 
 msgid "Today's Birthdays"
 msgstr "Ulang Tahun Hari Ini"
 
 #: 
 msgid "Today's Wedding Anniversaries"
 msgstr "Ulang Tahun Pernikahan Hari Ini"
-
-#: 
-msgid "Api Key"
-msgstr "Api Key"
-
-#: 
-msgid "Regen API Key"
-msgstr "Regen API Key"
 
 #: 
 msgid "View Family Page"
@@ -6202,46 +5998,6 @@ msgid "Family has no emails to use"
 msgstr "Keluarga tidak memiliki email"
 
 #: 
-msgid "Boxed Layout"
-msgstr "Tampilan Kotak"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Aktifkan Tampilan Kotak"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Alihkan Sidebar"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Alihkan status sidebar kiri (terbuka atau tertutup)"
-
-#: 
-msgid "Tables Settings"
-msgstr "Pengaturan Tabel"
-
-#: 
-msgid "Page length"
-msgstr "Panjang halaman"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Ubah panjang halaman awal (jumlah baris per halaman)"
-
-#: 
-msgid "User Interface"
-msgstr "Antarmuka Pengguna"
-
-#: 
-msgid "Locale"
-msgstr "Locale"
-
-#: 
-msgid "Override system locale"
-msgstr "Timpa locale sistem"
-
-#: 
 msgid "Deleted"
 msgstr "Terhapus"
 
@@ -6252,10 +6008,6 @@ msgstr "Tanggal lahir tidak sesuai: Tanggal atau bulan kelahiran tidak ditemukan
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Tanggal lahir tidak sesuai: Tanggal dan bulan kelahiran tidak ditemukan."
-
-#: 
-msgid "System"
-msgstr "Sistem"
 
 #. Context: locales
 #: 
@@ -6343,10 +6095,6 @@ msgid "Not Subscribed"
 msgstr "Belum Berlangganan"
 
 #: 
-msgid "property"
-msgstr "properti"
-
-#: 
 msgid "Default Zip"
 msgstr "Kode Pos Standar"
 
@@ -6384,10 +6132,6 @@ msgstr "Satu karakter dari FirstName dan satu karakter dari LastName"
 #: 
 msgid "Two characters from FirstName"
 msgstr "Dua karakter dari FirstName"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "Email Gereja belum diatur, buka halaman pengaturan"
 
 #. Context: locales
 #: 
@@ -7148,10 +6892,6 @@ msgid "Base URL"
 msgstr "URL Dasar"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "Instalasi ChurchCRM"
-
-#: 
 msgid "Copy"
 msgstr "Salin"
 
@@ -7160,24 +6900,12 @@ msgid "DSN"
 msgstr "DSN"
 
 #: 
-msgid "Database Server"
-msgstr "Server Database"
-
-#: 
 msgid "Debug Info"
 msgstr "Info Debug"
 
 #: 
 msgid "Document Root"
 msgstr "Root Dokumen"
-
-#: 
-msgid "Email Configuration"
-msgstr "Konfigurasi Email"
-
-#: 
-msgid "Email Debug Info"
-msgstr "Info Debug Email"
 
 #: 
 msgid "Filesystem Permissions"
@@ -7220,10 +6948,6 @@ msgid "PHP & Server Requirements"
 msgstr "Persyaratan PHP & Server"
 
 #: 
-msgid "PHP Configuration"
-msgstr "Konfigurasi PHP"
-
-#: 
 msgid "Platform"
 msgstr "Platform"
 
@@ -7234,10 +6958,6 @@ msgstr "Path Root"
 #: 
 msgid "SMTP Host"
 msgstr "Host SMTP"
-
-#: 
-msgid "Server Information"
-msgstr "Informasi Server"
 
 #: 
 msgid "Software"
@@ -7309,10 +7029,6 @@ msgid "All Types"
 msgstr "Semua Tipe"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "Apakah Anda yakin ingin menghapus catatan kehadiran ini?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "Kategori Hitung Kehadiran"
 
@@ -7353,10 +7069,6 @@ msgid "Create New Event"
 msgstr "Buat Kegiatan Baru"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "Buat tipe kegiatan untuk memulai."
-
-#: 
 msgid "Current DB Version"
 msgstr "Versi DB Saat Ini"
 
@@ -7375,14 +7087,6 @@ msgstr "Waktu Mulai Standar"
 #: 
 msgid "Delete Event"
 msgstr "Hapus Kegiatan"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "Menghapus kegiatan juga akan menghapus semua hitungan kehadiran. Hapus?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "Menghapus kegiatan ini akan menghapus semua catatan kehadiran. Yakin?"
 
 #: 
 msgid "Edit Event"
@@ -7450,10 +7154,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "Opsional - Tambahkan catatan khotbah atau detail kegiatan"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "Opsional - kosongkan jika tidak dilacak"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "Catatan opsional tentang kehadiran..."
 
@@ -7486,24 +7186,12 @@ msgid "Search by name or email..."
 msgstr "Cari berdasarkan nama atau email..."
 
 #: 
-msgid "Search for adult..."
-msgstr "Cari orang dewasa..."
-
-#: 
 msgid "Search for supervisor..."
 msgstr "Cari pengawas..."
 
 #: 
 msgid "Select Event for Check-In"
 msgstr "Pilih Kegiatan untuk Presensi"
-
-#: 
-msgid "Select start and end date/time"
-msgstr "Pilih tanggal/waktu mulai dan selesai"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "Pilih kegiatan untuk mencatat kehadiran anggota keranjang"
 
 #: 
 msgid "Sermon / Event Text"
@@ -7869,10 +7557,6 @@ msgstr "Gunakan alat eksternal untuk mengenkripsi cadangan sebelum disimpan di l
 #: 
 msgid "User authentication"
 msgstr "Autentikasi pengguna"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "Pengguna harus memiliki izin Tambah Kegiatan"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8395,10 +8079,6 @@ msgid "State (Other)"
 msgstr "Provinsi (Lainnya)"
 
 #: 
-msgid "Status:"
-msgstr "Status:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Ringkasan janji iman vs pembayaran per dana untuk tahun fiskal."
 
@@ -8449,10 +8129,6 @@ msgstr "Total Setoran:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Pantau progres janji iman dan pembayaran untuk kampanye atau anggaran."
-
-#: 
-msgid "Type:"
-msgstr "Tipe:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8577,10 +8253,6 @@ msgstr "Port khusus:"
 #: 
 msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Berakhir dengan <strong>garis miring</strong> (/)"
-
-#: 
-msgid "Error:"
-msgstr "Kesalahan:"
 
 #: 
 msgid "Find the line:"
@@ -8713,10 +8385,6 @@ msgstr "Pilih bidang pelayanan..."
 #: 
 msgid "Confirm Family Information"
 msgstr "Konfirmasi Informasi Keluarga"
-
-#: 
-msgid "Confirm family information"
-msgstr "Konfirmasi informasi keluarga"
 
 #: 
 msgid "Contact & Personal Info"
@@ -8879,10 +8547,6 @@ msgid "Disable 2FA"
 msgstr "Nonaktifkan 2FA"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "Ekspor semua data jemaat ke format ChMeetings."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "Ekspor ke CSV ChMeetings"
 
@@ -8982,10 +8646,6 @@ msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "%d Orang berhasil ditambahkan ke Grup yang dipilih."
 
 #: 
-msgid "A "
-msgstr "Sebuah "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Apakah Anda yakin ingin menghapus"
 
@@ -9014,10 +8674,6 @@ msgid "Delete Confirmation"
 msgstr "Konfirmasi Penghapusan"
 
 #: 
-msgid "Existing"
-msgstr "Yang Ada"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Kolom Kustom Keluarga Saat Ini"
 
@@ -9040,10 +8696,6 @@ msgstr "Token CSRF tidak valid"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Kolom atau pilihan tidak valid."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Item berhasil dihapus"
 
 #: 
 msgid "Move down"
@@ -9080,10 +8732,6 @@ msgstr "Tipe Properti"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "Ada jemaat di bidang pelayanan ini. Penghapusan akan melepas tugas mereka:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "Ini akan menghapus penugasan dari semua jemaat terkait."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -9132,10 +8780,6 @@ msgstr "Tambah Jenis Properti"
 #: 
 msgid "Add Your First Property Type"
 msgstr "Tambahkan Jenis Properti Pertama Anda"
-
-#: 
-msgid "Auto-calculated from counts above"
-msgstr "Dihitung otomatis dari hitungan di atas"
 
 #: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
@@ -9325,10 +8969,6 @@ msgstr "Pendaftaran Kiosk Dinonaktifkan"
 #: 
 msgid "Kiosk not found"
 msgstr "Kiosk tidak ditemukan"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "Hubungkan acara ini ke grup untuk fungsi check-in Kiosk. Anggota grup akan tampil di kiosk."
 
 #: 
 msgid "Linked Group"
@@ -10529,10 +10169,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "Haruskan semua pengguna mendaftar di autentikasi dua faktor"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "Peta akan muncul di sini setelah alamat tersimpan. Koordinat terdeteksi secara otomatis — tidak diperlukan input manual."
-
-#: 
 msgid "Active Groups"
 msgstr "Kelompok Aktif"
 
@@ -10583,10 +10219,6 @@ msgstr "Keluarga tidak memiliki alamat untuk dikodekan secara geografis"
 #: 
 msgid "Father"
 msgstr "Ayah"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "Koordinat tergeokode:"
 
 #: 
 msgid "Geocoding failed"
@@ -10667,10 +10299,6 @@ msgstr "Zona Waktu"
 #: 
 msgid "Total Groups"
 msgstr "Total Kelompok"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "Diperbarui otomatis setiap kali disimpan."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10765,6 +10393,11 @@ msgid "\"Why Came\" Notes"
 msgstr "Catatan \"Alasan Datang\""
 
 #: 
+msgid "%d result for \"%s\""
+msgid_plural "%d results for \"%s\""
+msgstr[0] "%d hasil untuk \"%s\""
+
+#: 
 msgid "(optional — leave blank to include all roles)"
 msgstr "(opsional — biarkan kosong untuk menyertakan semua peran)"
 
@@ -10849,14 +10482,6 @@ msgid "Add a Person"
 msgstr "Tambah Orang"
 
 #: 
-msgid "Add a new pledge"
-msgstr "Tambah janji persembahan baru"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "Tambah pembayaran ke setoran saat ini"
-
-#: 
 msgid "Add all cart items to a group"
 msgstr "Tambah semua item daftar ke grup"
 
@@ -10899,6 +10524,10 @@ msgstr "Tambah staf dan sukarelawan"
 #: 
 msgid "Add staff or volunteers as system users"
 msgstr "Tambah staf atau sukarelawan sebagai pengguna sistem"
+
+#: 
+msgid "Administrator"
+msgstr "Administrator"
 
 #: 
 msgid "Age Distribution"
@@ -11069,10 +10698,6 @@ msgid "Check Out"
 msgstr "Checkout"
 
 #: 
-msgid "Check Out Person"
-msgstr "Check Out Orang"
-
-#: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
 msgstr "Periksa pembaruan dan tingkatkan instalasi ChurchCRM Anda"
 
@@ -11197,10 +10822,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "Buat cadangan manual setidaknya seminggu sekali, atau aktifkan plugin Cadangan Eksternal untuk cadangan WebDAV otomatis sesuai jadwal."
 
 #: 
-msgid "Create a new deposit"
-msgstr "Buat setoran baru"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "Buat dan edit informasi keluarga dan hubungan"
 
@@ -11255,10 +10876,6 @@ msgstr "Tentukan properti khusus grup untuk anggota"
 #: 
 msgid "Delete All"
 msgstr "Hapus Semua"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "Hapus Entri Check-in"
 
 #: 
 msgid "Delete Family"
@@ -11359,6 +10976,10 @@ msgstr "Edit Properti"
 #: 
 msgid "Edit custom properties for a group member"
 msgstr "Edit properti kustom untuk anggota grup"
+
+#: 
+msgid "Email BCC"
+msgstr "Email BCC"
 
 #: 
 msgid "Email Families"
@@ -11517,6 +11138,10 @@ msgid "Forgot password?"
 msgstr "Lupa kata sandi?"
 
 #: 
+msgid "Format"
+msgstr "Format"
+
+#: 
 msgid "Full Group View"
 msgstr "Tampilan Grup Lengkap"
 
@@ -11531,10 +11156,6 @@ msgstr "Buat laporan persembahan tahunan untuk keperluan pajak"
 #: 
 msgid "Generate directory listings and printed materials"
 msgstr "Buat daftar direktori dan materi cetak"
-
-#: 
-msgid "Generate financial reports"
-msgstr "Buat laporan keuangan"
 
 #: 
 msgid "Generate financial statements and giving reports"
@@ -11753,10 +11374,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Kelola kelas sekolah Minggu, guru, dan kehadiran murid"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Kelola daftar klasifikasi, peran, dan tipe grup"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Kelola dana persembahan untuk pelacakan keuangan"
 
@@ -11767,14 +11384,6 @@ msgstr "Kelola persembahan, janji persembahan, dan catatan keuangan"
 #: 
 msgid "Manage email tools and SMTP configuration"
 msgstr "Kelola alat email dan konfigurasi SMTP"
-
-#: 
-msgid "Manage event names and categories"
-msgstr "Kelola nama acara dan kategori"
-
-#: 
-msgid "Manage event type categories"
-msgstr "Kelola kategori tipe acara"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -11809,6 +11418,10 @@ msgid "Manage your personal preferences and account settings"
 msgstr "Kelola preferensi pribadi dan pengaturan akun Anda"
 
 #: 
+msgid "Manual"
+msgstr "Manual"
+
+#: 
 msgid "Map cart items"
 msgstr "Petakan item daftar"
 
@@ -11835,6 +11448,10 @@ msgstr "Anggota ditambahkan ke daftar."
 #: 
 msgid "Memberships"
 msgstr "Keanggotaan"
+
+#: 
+msgid "Minimum"
+msgstr "Minimum"
 
 #: 
 msgid "Modify family roles for group members"
@@ -11899,10 +11516,6 @@ msgstr "Tidak Ada Ulang Tahun"
 #: 
 msgid "No Check-ins"
 msgstr "Tidak Ada Check-in"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "Tidak Ada Pelacakan Setoran"
 
 #: 
 msgid "No Deposits"
@@ -12011,10 +11624,6 @@ msgstr "Buka GitHub Issue"
 #: 
 msgid "Open user menu"
 msgstr "Buka menu pengguna"
-
-#: 
-msgid "Options"
-msgstr "Opsi"
 
 #: 
 msgid "Other Members"
@@ -12519,10 +12128,6 @@ msgid "View group members, roles, and properties"
 msgstr "Lihat anggota grup, peran, dan properti"
 
 #: 
-msgid "View pledge dashboard"
-msgstr "Lihat dasbor janji persembahan"
-
-#: 
 msgid "View query results"
 msgstr "Lihat hasil kueri"
 
@@ -12607,10 +12212,6 @@ msgid "You can create/delete sunday school group."
 msgstr "Anda dapat membuat/menghapus grup sekolah Minggu."
 
 #: 
-msgid "You do not have finance permissions to view deposits."
-msgstr "Anda tidak memiliki izin keuangan untuk melihat setoran."
-
-#: 
 msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
 msgstr "Data cadangan Anda telah dimuat. Anda akan diarahkan untuk masuk dengan kredensial sebelumnya."
 
@@ -12659,10 +12260,6 @@ msgid "members"
 msgstr "anggota"
 
 #: 
-msgid "name@example.com"
-msgstr "nama@contoh.com"
-
-#: 
 msgid "opportunities"
 msgstr "peluang"
 
@@ -12701,10 +12298,6 @@ msgstr "— Pilih grup —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Pilih tipe (opsional) —"
-
-#: 
-msgid "Accept the device, then assign it to an event to begin check-in."
-msgstr "Terima perangkat, lalu tetapkan ke acara untuk memulai check-in."
 
 #: 
 msgid "Activate"
@@ -12757,10 +12350,6 @@ msgstr "Kelas / Grup"
 #: 
 msgid "Class List Export"
 msgstr "Ekspor Daftar Kelas"
-
-#: 
-msgid "Click the registration toggle above to open a 30-second registration window."
-msgstr "Klik tombol pendaftaran di atas untuk membuka jendela pendaftaran 30 detik."
 
 #: 
 msgid "Continue"
@@ -12831,10 +12420,6 @@ msgid "It is strongly recommended to have a backup before proceeding."
 msgstr "Sangat disarankan untuk memiliki cadangan sebelum melanjutkan."
 
 #: 
-msgid "Kiosk Registration"
-msgstr "Pendaftaran Kios"
-
-#: 
 msgid "Latest"
 msgstr "Terbaru"
 
@@ -12877,10 +12462,6 @@ msgstr "Catatan tidak ditemukan"
 #: 
 msgid "Note text is required"
 msgstr "Teks catatan diperlukan"
-
-#: 
-msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
-msgstr "Di perangkat kios (tablet, laptop, dll.), buka browser dan navigasi ke:"
 
 #: 
 msgid "Only the note author or an admin may delete this note"
@@ -12927,10 +12508,6 @@ msgid "SHA1 Hash"
 msgstr "Hash SHA1"
 
 #: 
-msgid "Setup Instructions"
-msgstr "Petunjuk Pengaturan"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "Ketidakcocokan Tanda Tangan"
 
@@ -12939,24 +12516,12 @@ msgid "Skip, Continue Without Backup"
 msgstr "Lewati, Lanjutkan Tanpa Cadangan"
 
 #: 
-msgid "The device will register itself and appear in the table below as \"Pending\"."
-msgstr "Perangkat akan mendaftarkan diri sendiri dan muncul di tabel di bawah sebagai \"Tertunda\"."
-
-#: 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr "Tautan ini muncul di menu \"Tautan\" di sidebar navigasi saat plugin ini diaktifkan."
 
 #: 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr "Ini akan mengunduh ulang dan menerapkan ulang versi saat ini. Dapat memperbaiki file yang rusak atau dimodifikasi."
-
-#: 
-msgid "To set up a kiosk device, follow these steps:"
-msgstr "Untuk mengatur perangkat kios, ikuti langkah-langkah berikut:"
-
-#: 
-msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
-msgstr "Aktifkan tombol di bawah untuk membuka jendela 30 detik bagi perangkat kios baru untuk mendaftar."
 
 #: 
 msgid "Total Check-ins"
@@ -12969,10 +12534,6 @@ msgstr "Coba pilih tipe acara atau tahun yang berbeda."
 #: 
 msgid "Up to Date"
 msgstr "Terkini"
-
-#: 
-msgid "Upcoming Sunday School Events"
-msgstr "Acara Sekolah Minggu Mendatang"
 
 #: 
 msgid "Update Available"
@@ -12998,10 +12559,6 @@ msgstr "Izinkan pengguna menambahkan acara baru"
 #: 
 msgid "Are you sure you want to continue?"
 msgstr "Apakah Anda yakin ingin melanjutkan?"
-
-#: 
-msgid "Are you sure you want to delete this event?"
-msgstr "Apakah Anda yakin ingin menghapus acara ini?"
 
 #. Context: queryparameters_qrp
 #: 
@@ -13854,11 +13411,6 @@ msgstr "Benua"
 msgid "Costs"
 msgstr "Biaya"
 
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Anggota Pembayar Kartu Kredit"
-
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
 #: 
@@ -13932,11 +13484,6 @@ msgstr "Aktifkan penggunaan amplop persembahan"
 msgid "Enable use of scanned checks"
 msgstr "Aktifkan penggunaan cek yang dipindai"
 
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Janji Keluarga per Tahun Fiskal"
-
 #. plugin:mailchimp:section:1:title
 #: 
 msgid "Features"
@@ -13946,11 +13493,6 @@ msgstr "Fitur"
 msgid "Finance permission query IDs"
 msgstr "ID kueri izin keuangan"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Cari siswa terdaftar"
-
 #: 
 msgid "Find family"
 msgstr "Cari keluarga"
@@ -13959,11 +13501,6 @@ msgstr "Cari keluarga"
 #: 
 msgid "Finding Your Server URL"
 msgstr "Menemukan URL Server Anda"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Tahun Fiskal."
 
 #. plugin:custom-links:section:3:content
 #: 
@@ -14029,11 +13566,6 @@ msgstr "Situs Web Gravatar"
 #: 
 msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
 msgstr "Gravatar bekerja dengan mengonversi alamat email menjadi hash (MD5). Alamat email sebenarnya tidak pernah dikirim ke server Gravatar - hanya hash yang digunakan untuk mencari gambar."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Kelompok siswa terdaftar"
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -14170,11 +13702,6 @@ msgstr "Situs Web OpenLP"
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
 msgstr "OpenLP adalah perangkat lunak presentasi gratis dan sumber terbuka yang dirancang untuk gereja. Plugin ini memungkinkan ChurchCRM mengirim notifikasi dan peringatan langsung ke tampilan OpenLP Anda."
 
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Orang yang dikonfigurasi untuk membayar dengan kartu kredit."
-
 #. plugin:mailchimp:section:3:title
 #: 
 msgid "Person/Family Integration"
@@ -14200,11 +13727,6 @@ msgstr "Nomor telepon harus dalam format E.164: kode negara + nomor. Contoh:\n"
 "\n"
 "Nomor telepon penerima dalam profil anggota ChurchCRM harus menyertakan kode negara agar SMS berfungsi dengan benar."
 
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Ringkasan janji berdasarkan nama keluarga untuk setiap dana untuk tahun fiskal yang dipilih"
-
 #. plugin:mailchimp:section:4:title
 #: 
 msgid "Privacy & Compliance"
@@ -14223,11 +13745,6 @@ msgstr "Catatan Privasi"
 #: 
 msgid "Quick Settings"
 msgstr "Pengaturan Cepat"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Siswa terdaftar"
 
 #: 
 msgid "SMTP Authentication"
@@ -14399,11 +13916,6 @@ msgstr "Pengaturan Peningkatan"
 msgid "Use Cases"
 msgstr "Kasus Penggunaan"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Izin pengguna untuk mengekspor file CSV"
-
 #. plugin:vonage:link:0:label
 #: 
 msgid "Vonage Dashboard"
@@ -14513,4 +14025,1510 @@ msgstr "Ukuran file melebihi batas server sebesar %s"
 #: 
 msgid "Missing image data in request"
 msgstr "Data gambar tidak ditemukan dalam permintaan"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Temukan orang yang tidak hadir di suatu acara"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Orang yang tidak hadir"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Pilih acara yang diinginkan"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Filter lanjutan berdasarkan kelompok, klasifikasi, dan peran"
+
+#: 
+msgid "All congregation members included"
+msgstr "Semua jemaat disertakan"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "Format kolom yang kompatibel dengan ChMeetings"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Info kontak, peran keluarga, dan tanggal penting"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Buat cadangan lengkap basis data gereja Anda. Unduh file SQL khusus basis data atau arsip lengkap termasuk foto yang diunggah."
+
+#: 
+msgid "Database Backup"
+msgstr "Cadangan Basis Data"
+
+#: 
+msgid "Export"
+msgstr "Ekspor"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Ekspor data jemaat ke format CSV. Pilih bidang yang akan disertakan dan filter berdasarkan klasifikasi, kelompok, jenis kelamin, dan lainnya."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Ekspor semua jemaat dalam format yang diharapkan oleh ChMeetings, sehingga memudahkan sinkronisasi data jemaat Anda dengan platform ChMeetings."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Ekspor data gereja Anda ke berbagai format"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Cadangan eksternal (WebDAV) melalui plugin"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Tata letak rekaman keluarga atau individu"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Pemilihan bidang yang fleksibel"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Buka Cadangan Basis Data"
+
+#: 
+msgid "Open CSV Export"
+msgstr "Buka Ekspor CSV"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Pulihkan dari halaman Cadangan Sistem"
+
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "Pembaruan sistem tersedia. Silakan perbarui instalasi Anda."
+
+#: 
+msgid "API Access"
+msgstr "Akses API"
+
+#: 
+msgid "API Key"
+msgstr "Kunci API"
+
+#: 
+msgid "API key regenerated"
+msgstr "Kunci API telah diperbarui"
+
+#: 
+msgid "Account"
+msgstr "Akun"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Pengaturan Lanjutan"
+
+#: 
+msgid "An error occurred."
+msgstr "Terjadi kesalahan."
+
+#: 
+msgid "Appearance"
+msgstr "Tampilan"
+
+#: 
+msgid "Azure"
+msgstr "Azure"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Kembali ke Dasbor Keuangan"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Kembali ke Dasbor Kelompok"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Kembali ke Dasbor Jemaat"
+
+#: 
+msgid "Blue"
+msgstr "Biru"
+
+#: 
+msgid "Change Photo"
+msgstr "Ganti Foto"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "Perubahan tidak akan berlaku hingga masuk berikutnya."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Pilih antara skema warna terang dan gelap"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "Terjemahan ChurchCRM dikelola oleh komunitas di POEditor. Anda dapat membantu dengan:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Sesuaikan tampilan dan nuansa aplikasi"
+
+#: 
+msgid "Cyan"
+msgstr "Sian"
+
+#: 
+msgid "Dark"
+msgstr "Gelap"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Hanya basis data (.sql) atau arsip lengkap (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Jumlah baris default yang ditampilkan dalam tabel data. Berlaku pada pemuatan halaman berikutnya."
+
+#: 
+msgid "Edit own family only"
+msgstr "Edit keluarga sendiri saja"
+
+#: 
+msgid "Enter text here..."
+msgstr "Masukkan teks di sini..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Gagal membatalkan pendaftaran. Silakan coba lagi."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Gagal menghapus acara. Silakan coba lagi."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "Gagal menonaktifkan autentikasi dua faktor. Silakan coba lagi."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "Gagal membuat kode QR. Silakan coba lagi."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "Gagal memuat data kalender. Silakan coba lagi."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Gagal memuat acara. Silakan coba lagi."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "Gagal memuat kode pemulihan. Silakan segarkan halaman."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Gagal menyimpan acara. Silakan coba lagi."
+
+#: 
+msgid "Failed to save setting"
+msgstr "Gagal menyimpan pengaturan"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Filipino - Filipina"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Memperbaiki terjemahan yang salah atau canggung dalam bahasa Anda"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "Menemukan bug pada terjemahan?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Memberikan semua hak akses"
+
+#: 
+msgid "Green"
+msgstr "Hijau"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Bantu Tingkatkan Terjemahan"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "Jika Anda menemukan karakter rusak, entitas HTML yang muncul sebagai teks, atau terjemahan yang merusak tata letak halaman, laporkan masalah ini di GitHub agar dapat diperbaiki untuk semua orang."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "Sertakan kunci API Anda dalam permintaan menggunakan header x-api-key:"
+
+#: 
+msgid "Indigo"
+msgstr "Nila"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Nilai JSON tidak valid — pengaturan tidak disimpan. Silakan perbaiki dan coba lagi."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "Bergabunglah dengan Proyek Terjemahan di POEditor"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Pengaturan bahasa dan regional"
+
+#: 
+msgid "Light"
+msgstr "Terang"
+
+#: 
+msgid "Lime"
+msgstr "Hijau Muda"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "Malayalam - India"
+
+#: 
+msgid "Manage 2FA"
+msgstr "Kelola 2FA"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "Kelola preferensi tambahan seperti pembatas email dan opsi tampilan"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Kelola kunci API Anda untuk integrasi eksternal"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "Metode Tidak Diizinkan"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "Terjemahan yang hilang atau salah?"
+
+#: 
+msgid "My Account"
+msgstr "Akun Saya"
+
+#: 
+msgid "Orange"
+msgstr "Oranye"
+
+#: 
+msgid "Override the system default locale"
+msgstr "Timpa pengaturan lokal sistem default"
+
+#: 
+msgid "Page Not Found"
+msgstr "Halaman Tidak Ditemukan"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "Persentase string yang diterjemahkan untuk bahasa Anda saat ini"
+
+#: 
+msgid "Pink"
+msgstr "Merah Muda"
+
+#: 
+msgid "Primary Color"
+msgstr "Warna Utama"
+
+#: 
+msgid "Profile and security"
+msgstr "Profil dan keamanan"
+
+#: 
+msgid "Purple"
+msgstr "Ungu"
+
+#: 
+msgid "Red"
+msgstr "Merah"
+
+#: 
+msgid "Regenerate"
+msgstr "Perbarui"
+
+#: 
+msgid "Rows per page"
+msgstr "Baris per halaman"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Atur Izin ke True untuk memungkinkan pengguna ini mengubah pengaturan sendiri."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Atur warna aksen yang digunakan untuk tombol, tautan, dan elemen aktif"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Menyarankan susunan kata yang lebih baik untuk terjemahan yang ada"
+
+#: 
+msgid "System Update Available"
+msgstr "Pembaruan Sistem Tersedia"
+
+#: 
+msgid "Tables"
+msgstr "Tabel"
+
+#: 
+msgid "Teal"
+msgstr "Hijau Teal"
+
+#: 
+msgid "Theme Mode"
+msgstr "Mode Tema"
+
+#: 
+msgid "Toggle search"
+msgstr "Aktifkan/Nonaktifkan pencarian"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Menerjemahkan string yang hilang untuk meningkatkan cakupan"
+
+#: 
+msgid "Translation Progress"
+msgstr "Progres Terjemahan"
+
+#: 
+msgid "Usage"
+msgstr "Penggunaan"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "Gunakan kunci ini untuk mengautentikasi permintaan API. Memperbarui akan membatalkan kunci saat ini."
+
+#: 
+msgid "User Config"
+msgstr "Konfigurasi Pengguna"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Verifikasi gagal. Silakan coba lagi."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "Versi %s tersedia. Silakan perbarui instalasi Anda."
+
+#: 
+msgid "View All"
+msgstr "Lihat Semua"
+
+#: 
+msgid "Yellow"
+msgstr "Kuning"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "Tingkat akses Anda saat ini (hanya baca)"
+
+#: 
+msgid "%d repeat event created successfully."
+msgid_plural "%d repeat events created successfully."
+msgstr[0] "%d acara berulang berhasil dibuat."
+
+#: 
+msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
+msgstr "(mis. Jemaat, Pengunjung, Anak-anak) sehingga sukarelawan dapat mencatat jumlah kehadiran di sini."
+
+#: 
+msgid "1. Sunday School Class"
+msgstr "1. Kelas Sekolah Minggu"
+
+#: 
+msgid "2. Event Type"
+msgstr "2. Jenis Acara"
+
+#: 
+msgid "3. Event"
+msgstr "3. Acara"
+
+#: 
+msgid "4. Kiosk"
+msgstr "4. Kios"
+
+#: 
+msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
+msgstr "Kelas adalah Kelompok dengan jenis \"Sekolah Minggu\". Kelas berisi murid dan pengajar (anggota dengan peran)."
+
+#: 
+msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
+msgstr "Kelompok yang ditautkan menghubungkan acara ini ke daftar kelas atau pelayanan. Ketika acara ditetapkan ke Kios, kios akan mengambil anggota kelompok dan menampilkannya sebagai daftar ketuk-untuk-absen. Untuk kelas Sekolah Minggu, tautkan kelompok kelas di sini agar sukarelawan dapat mengabsen murid dari tablet."
+
+#: 
+msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr "Pertemuan spesifik (mis. \"Pra-Sekolah — 12 Apr\"). Mewarisi pengaturan dari jenis acara dan ditautkan ke kelompok kelas melalui audiens. Ini yang digunakan sukarelawan untuk mencatat kehadiran."
+
+#: 
+msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr "Tablet yang ditetapkan untuk satu acara. Kios mengambil daftar kelompok yang ditautkan ke acara dan menampilkan ketuk-untuk-absen. Tanpa kelompok yang ditautkan, kios tidak memiliki daftar untuk ditampilkan."
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "Tambah Tamu / Pengunjung"
+
+#: 
+msgid "Add categories on the Event Type page"
+msgstr "Tambah kategori di halaman Jenis Acara"
+
+#: 
+msgid "Add people to your cart first, then come back to check them in to an event."
+msgstr "Tambahkan orang ke seleksi Anda terlebih dahulu, lalu kembali untuk mengabsen mereka ke suatu acara."
+
+#: 
+msgid "All clear!"
+msgstr "Semua bersih!"
+
+#: 
+msgid "All events and attendance records"
+msgstr "Semua acara dan catatan kehadiran"
+
+#: 
+msgid "All financial data (pledges, payments, deposits)"
+msgstr "Semua data keuangan (komitmen keuangan, pembayaran, setoran)"
+
+#: 
+msgid "All groups, roles, and memberships"
+msgstr "Semua pelayanan, peran, dan keanggotaan"
+
+#: 
+msgid "All people and family records"
+msgstr "Semua data jemaat dan keluarga"
+
+#: 
+msgid "All system settings and custom fields"
+msgstr "Semua pengaturan sistem dan bidang kustom"
+
+#: 
+msgid "All uploaded photos and documents"
+msgstr "Semua foto dan dokumen yang diunggah"
+
+#: 
+msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
+msgstr "Jenis Acara adalah templat — nama, waktu mulai default, perulangan, kategori hitungan kehadiran. Secara opsional ditautkan ke satu kelompok kelas sebagai audiens defaultnya."
+
+#: 
+msgid "Attendance record deleted."
+msgstr "Catatan kehadiran dihapus."
+
+#: 
+msgid "Audit"
+msgstr "Audit"
+
+#: 
+msgid "Audit Events"
+msgstr "Audit Acara"
+
+#: 
+msgid "Auto-totalled from counts at right"
+msgstr "Dijumlahkan otomatis dari hitungan di kanan"
+
+#: 
+msgid "Back to Events"
+msgstr "Kembali ke Acara"
+
+#: 
+msgid "Back to Events Dashboard"
+msgstr "Kembali ke Dasbor Acara"
+
+#: 
+msgid "Backup failed. You can still proceed with the reset, but your data will be lost."
+msgstr "Pencadangan gagal. Anda masih dapat melanjutkan pengaturan ulang, tetapi data Anda akan hilang."
+
+#: 
+msgid "Backup ready!"
+msgstr "Cadangan siap!"
+
+#: 
+msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
+msgstr "Sebelum mengatur ulang, kami sangat menyarankan mengunduh cadangan data Anda saat ini. Ini adalah satu-satunya kesempatan Anda untuk menyimpannya."
+
+#: 
+msgid "Bulk-create a series of recurring events"
+msgstr "Buat serangkaian acara berulang secara massal"
+
+#: 
+msgid "By"
+msgstr "Oleh"
+
+#: 
+msgid "Cannot check in to an inactive event. Activate the event first."
+msgstr "Tidak dapat absen ke acara yang tidak aktif. Aktifkan acara terlebih dahulu."
+
+#: 
+msgid "Change"
+msgstr "Ubah"
+
+#: 
+msgid "Check In All"
+msgstr "Absen Semua"
+
+#: 
+msgid "Check In Family"
+msgstr "Absen Keluarga"
+
+#: 
+msgid "Check Out All"
+msgstr "Keluar Semua"
+
+#: 
+msgid "Check in all %d family members to a single event."
+msgstr "Absen semua %d anggota keluarga ke satu acara."
+
+#: 
+msgid "Check out"
+msgstr "Absen Keluar"
+
+#: 
+msgid "Check-in By"
+msgstr "Diabsen Oleh"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "Absen masuk gagal. Silakan coba lagi."
+
+#: 
+msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
+msgstr "Absen masuk dinonaktifkan untuk acara yang tidak aktif. Aktifkan acara dari Dasbor Acara untuk mengaktifkan absen masuk."
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "Absen keluar gagal. Silakan coba lagi."
+
+#: 
+msgid "Checked in to event: %s"
+msgstr "Diabsen masuk ke acara: %s"
+
+#: 
+msgid "Checked out from event: %s"
+msgstr "Diabsen keluar dari acara: %s"
+
+#: 
+msgid "Close All Stuck Events"
+msgstr "Tutup Semua Acara Terhenti"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "Konfirmasi Absen Keluar"
+
+#: 
+msgid "Create Repeat Events"
+msgstr "Buat Acara Berulang"
+
+#: 
+msgid "Create Today's Event"
+msgstr "Buat Acara Hari Ini"
+
+#: 
+msgid "Create a new event type with recurrence and attendance settings"
+msgstr "Buat jenis acara baru dengan pengaturan perulangan dan kehadiran"
+
+#: 
+msgid "Create one now"
+msgstr "Buat sekarang"
+
+#: 
+msgid "Create today's class event and link it to this class for kiosk check-in"
+msgstr "Buat acara kelas hari ini dan tautkan ke kelas ini untuk absen masuk di kios"
+
+#: 
+msgid "Creating backup..."
+msgstr "Membuat cadangan..."
+
+#: 
+msgid "Creating..."
+msgstr "Membuat..."
+
+#: 
+msgid "Database + uploaded photos (larger)"
+msgstr "Database + foto yang diunggah (lebih besar)"
+
+#: 
+msgid "Database dump only (.sql)"
+msgstr "Ekspor database saja (.sql)"
+
+#: 
+msgid "Date Range"
+msgstr "Rentang Tanggal"
+
+#: 
+msgid "Date range cannot exceed 1 year"
+msgstr "Rentang tanggal tidak boleh melebihi 1 tahun"
+
+#: 
+msgid "Deactivate"
+msgstr "Nonaktifkan"
+
+#: 
+msgid "Delete Event Type"
+msgstr "Hapus Jenis Acara"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "Hapus catatan kehadiran?"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "Hapus catatan absen masuk untuk"
+
+#: 
+msgid "Delete this event?"
+msgstr "Hapus acara ini?"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "Menghapus acara juga akan menghapus semua hitungan kehadiran. Tindakan ini tidak dapat dibatalkan."
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "Menghapus acara ini juga akan menghapus semua catatan kehadiran. Tindakan ini tidak dapat dibatalkan."
+
+#: 
+msgid "Destructive Operation"
+msgstr "Operasi Merusak"
+
+#: 
+msgid "Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field."
+msgstr "Edit nama kategori dan klik Simpan, atau gunakan ikon tempat sampah untuk menghapus. Baris baru ditambahkan melalui kolom di bagian bawah."
+
+#: 
+msgid "End Time"
+msgstr "Waktu Selesai"
+
+#: 
+msgid "End time must be after start time."
+msgstr "Waktu selesai harus setelah waktu mulai."
+
+#: 
+msgid "Ended"
+msgstr "Selesai"
+
+#: 
+msgid "Ends"
+msgstr "Berakhir"
+
+#: 
+msgid "Event Audit"
+msgstr "Audit Acara"
+
+#: 
+msgid "Event Check-in"
+msgstr "Absen Masuk Acara"
+
+#: 
+msgid "Event Details"
+msgstr "Detail Acara"
+
+#: 
+msgid "Event Template"
+msgstr "Templat Acara"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "Acara sudah ada. Mengalihkan ke halaman absen masuk..."
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "Acara dibuat. Mengalihkan ke halaman absen masuk..."
+
+#: 
+msgid "Event end date/time must be on or after the start date/time."
+msgstr "Tanggal/waktu berakhir acara harus pada atau setelah tanggal/waktu mulai."
+
+#: 
+msgid "Event title is required."
+msgstr "Judul acara diperlukan."
+
+#: 
+msgid "Event type ID is required"
+msgstr "ID jenis acara diperlukan"
+
+#: 
+msgid "Event type ID or group ID is required"
+msgstr "ID jenis acara atau ID kelompok diperlukan"
+
+#: 
+msgid "Event type has no date configured for yearly recurrence"
+msgstr "Jenis acara tidak memiliki tanggal yang dikonfigurasi untuk perulangan tahunan"
+
+#: 
+msgid "Event type has no day-of-week configured for weekly recurrence"
+msgstr "Jenis acara tidak memiliki hari dalam seminggu yang dikonfigurasi untuk perulangan mingguan"
+
+#: 
+msgid "Event type has no recurrence pattern configured"
+msgstr "Jenis acara tidak memiliki pola perulangan yang dikonfigurasi"
+
+#: 
+msgid "Event type has no valid day-of-month configured for monthly recurrence"
+msgstr "Jenis acara tidak memiliki tanggal dalam bulan yang valid untuk perulangan bulanan"
+
+#: 
+msgid "Events will be created for every matching occurrence within this date range."
+msgstr "Acara akan dibuat untuk setiap pertemuan yang sesuai dalam rentang tanggal ini."
+
+#: 
+msgid "Every month on the"
+msgstr "Setiap bulan pada"
+
+#: 
+msgid "Every week on"
+msgstr "Setiap minggu pada"
+
+#: 
+msgid "Every year on"
+msgstr "Setiap tahun pada"
+
+#: 
+msgid "Everyone is checked in!"
+msgstr "Semua orang sudah absen masuk!"
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "Gagal membuat kelas. Silakan coba lagi."
+
+#: 
+msgid "Failed to create event."
+msgstr "Gagal membuat acara."
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "Gagal membuat acara. Silakan coba lagi."
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "Gagal menghapus. Silakan coba lagi."
+
+#: 
+msgid "Fastest workflow:"
+msgstr "Alur kerja tercepat:"
+
+#: 
+msgid "Find past events that are still active or have un-checked-out attendees"
+msgstr "Temukan acara masa lalu yang masih aktif atau memiliki peserta yang belum absen keluar"
+
+#: 
+msgid "Format: MM-DD (e.g. 04-12 for April 12)"
+msgstr "Format: MM-DD (mis. 04-12 untuk 12 April)"
+
+#: 
+msgid "Group Roster"
+msgstr "Daftar Anggota Pelayanan"
+
+#: 
+msgid "Hide Advanced Options"
+msgstr "Sembunyikan Opsi Lanjutan"
+
+#: 
+msgid "How Sunday School + Events + Kiosks fit together"
+msgstr "Cara Sekolah Minggu + Acara + Kios bekerja bersama"
+
+#: 
+msgid "Invalid date for %s — expected YYYY-MM-DD"
+msgstr "Tanggal tidak valid untuk %s — diharapkan YYYY-MM-DD"
+
+#: 
+msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr "Format tanggal tidak valid untuk rangeStart atau rangeEnd"
+
+#: 
+msgid "Invalid date format."
+msgstr "Format tanggal tidak valid."
+
+#: 
+msgid "Invalid date; expected format YYYY-MM-DD"
+msgstr "Tanggal tidak valid; format yang diharapkan YYYY-MM-DD"
+
+#: 
+msgid "Invalid event type ID"
+msgstr "ID jenis acara tidak valid"
+
+#: 
+msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
+msgstr "Format perulangan tahunan tidak valid; diharapkan MM-DD (mis. 04-12)"
+
+#: 
+msgid "Just now"
+msgstr "Baru saja"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "Biarkan kosong untuk absen keluar tanpa mencatat pengawas."
+
+#: 
+msgid "Link events to a group for Kiosk check-in functionality."
+msgstr "Tautkan acara ke kelompok untuk fungsionalitas absen masuk Kios."
+
+#: 
+msgid "Linked Groups"
+msgstr "Kelompok Tertaut"
+
+#: 
+msgid "Looking for stuck events..."
+msgstr "Mencari acara yang terhenti..."
+
+#: 
+msgid "Manage event names, recurrence patterns, and attendance counts"
+msgstr "Kelola nama acara, pola perulangan, dan hitungan kehadiran"
+
+#: 
+msgid "Missing required field: %s"
+msgstr "Kolom wajib tidak diisi: %s"
+
+#: 
+msgid "No Events Today"
+msgstr "Tidak Ada Acara Hari Ini"
+
+#: 
+msgid "No Group"
+msgstr "Tidak Ada Kelompok"
+
+#: 
+msgid "No active events found."
+msgstr "Tidak ada acara aktif yang ditemukan."
+
+#: 
+msgid "No attendance count categories defined for this event type yet."
+msgstr "Belum ada kategori hitungan kehadiran yang ditentukan untuk jenis acara ini."
+
+#: 
+msgid "No one has been checked in to this event yet."
+msgstr "Belum ada yang absen masuk ke acara ini."
+
+#: 
+msgid "No past events are still marked Active."
+msgstr "Tidak ada acara masa lalu yang masih ditandai Aktif."
+
+#: 
+msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr "Buka kelas → klik \"Buat Acara Hari Ini\" — acara dibuat dan ditautkan ke kelas sekaligus, lalu Anda masuk ke halaman absen masuk yang siap untuk kios atau kehadiran langsung."
+
+#: 
+msgid "Optional Settings"
+msgstr "Pengaturan Opsional"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "Opsional — catat siapa yang mengabsen keluar orang ini (mis. orang tua yang menjemput anak)."
+
+#: 
+msgid "Person checked out."
+msgstr "Orang telah absen keluar."
+
+#: 
+msgid "Person is not checked in"
+msgstr "Orang tidak sedang absen masuk"
+
+#: 
+msgid "Person not in active class roster"
+msgstr "Orang tidak ada dalam daftar kelas aktif"
+
+#: 
+msgid "Pin to Calendars"
+msgstr "Sematkan ke Kalender"
+
+#: 
+msgid "Please select a person to check in."
+msgstr "Silakan pilih seseorang untuk diabsen masuk."
+
+#: 
+msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
+msgstr "Diisi otomatis berdasarkan jenis acara ini — untuk jenis berulang, tanggal adalah pertemuan berikutnya setelah acara terakhir jenis ini, dan waktu sesuai dengan waktu mulai default jenis ini."
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "Tanggal akhir rentang harus pada atau setelah tanggal awal rentang."
+
+#: 
+msgid "Range end must be a valid YYYY-MM-DD date."
+msgstr "Akhir rentang harus berupa tanggal YYYY-MM-DD yang valid."
+
+#: 
+msgid "Range start must be a valid YYYY-MM-DD date."
+msgstr "Awal rentang harus berupa tanggal YYYY-MM-DD yang valid."
+
+#: 
+msgid "Range start must be before range end"
+msgstr "Awal rentang harus sebelum akhir rentang"
+
+#: 
+msgid "Range start must be before range end."
+msgstr "Awal rentang harus sebelum akhir rentang."
+
+#: 
+msgid "RangeEnd must be on or after RangeStart"
+msgstr "RangeEnd harus pada atau setelah RangeStart"
+
+#: 
+msgid "Recommended"
+msgstr "Disarankan"
+
+#: 
+msgid "Required for Kiosk"
+msgstr "Diperlukan untuk Kios"
+
+#: 
+msgid "Resetting will permanently delete:"
+msgstr "Pengaturan ulang akan menghapus secara permanen:"
+
+#: 
+msgid "SQL Only"
+msgstr "SQL Saja"
+
+#: 
+msgid "Save Time"
+msgstr "Hemat Waktu"
+
+#: 
+msgid "Save changes to this category name"
+msgstr "Simpan perubahan nama kategori ini"
+
+#: 
+msgid "Select an event type…"
+msgstr "Pilih jenis acara…"
+
+#: 
+msgid "Select start and end date/time."
+msgstr "Pilih tanggal/waktu mulai dan selesai."
+
+#: 
+msgid "Show More Options"
+msgstr "Tampilkan Lebih Banyak Opsi"
+
+#: 
+msgid "Skip"
+msgstr "Lewati"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "Lewati & Absen Keluar"
+
+#: 
+msgid "Start Check-in"
+msgstr "Mulai Absen Masuk"
+
+#: 
+msgid "Starts"
+msgstr "Dimulai"
+
+#: 
+msgid "Step 1: Create a Backup"
+msgstr "Langkah 1: Buat Cadangan"
+
+#: 
+msgid "Step 2: Reset Database"
+msgstr "Langkah 2: Atur Ulang Database"
+
+#: 
+msgid "Still Checked In"
+msgstr "Masih Absen Masuk"
+
+#: 
+msgid "Stuck Events"
+msgstr "Acara Terhenti"
+
+#: 
+msgid "Take Attendance"
+msgstr "Catat Kehadiran"
+
+#: 
+msgid "The Events module is disabled"
+msgstr "Modul Acara dinonaktifkan"
+
+#: 
+msgid "The same start and end time will be used for all generated events."
+msgstr "Waktu mulai dan selesai yang sama akan digunakan untuk semua acara yang dibuat."
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "Tidak ada acara yang dijadwalkan untuk hari ini"
+
+#: 
+msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
+msgstr "Ini adalah kategori hitungan kehadiran — sukarelawan mengisinya setelah acara agar dasbor dapat merinci kehadiran (mis. berapa banyak jemaat vs. pengunjung). Ini terpisah dari absen masuk individu di halaman Absen Masuk."
+
+#: 
+msgid "This event is inactive."
+msgstr "Acara ini tidak aktif."
+
+#: 
+msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr "Halaman ini memungkinkan Anda menghapus semua data dalam database ChurchCRM secara permanen. Tindakan ini tidak dapat dibatalkan."
+
+#: 
+msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
+msgstr "Laporan ini mencantumkan setiap acara yang tanggal berakhirnya sudah lewat tetapi masih ditandai Aktif. Penyebab umum: sukarelawan lupa mengetuk 'Absen Keluar', kios kehilangan koneksi, atau acara dibuat dan ditinggalkan. Acara lama (bertahun-tahun yang lalu) yang tidak pernah dinonaktifkan juga muncul di sini. Kolom 'Masih Absen Masuk' menunjukkan apakah ada orang yang tertinggal di tengah proses absen masuk. Menutup acara dari laporan ini akan mengabsen keluar semua orang (menggunakan waktu saat ini) dan menandai acara sebagai Tidak Aktif."
+
+#: 
+msgid "This title will be used for all generated events."
+msgstr "Judul ini akan digunakan untuk semua acara yang dibuat."
+
+#: 
+msgid "Today's Events"
+msgstr "Acara Hari Ini"
+
+#: 
+msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
+msgstr "Terlalu banyak pertemuan (%d) — persempit rentang tanggal. Maksimum yang diizinkan: %d"
+
+#: 
+msgid "Type RESET to confirm"
+msgstr "Ketik RESET untuk konfirmasi"
+
+#: 
+msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
+msgstr "Gunakan tombol di atas untuk membuat acara hari ini dengan satu klik. Acara akan otomatis ditautkan ke kelas ini sehingga Kios dapat mengambil daftar anggota."
+
+#: 
+msgid "Use this form to bulk-create a series of recurring events. Each event is created individually and can be edited or deleted independently after creation."
+msgstr "Gunakan formulir ini untuk membuat serangkaian acara berulang secara massal. Setiap acara dibuat secara terpisah dan dapat diedit atau dihapus secara independen setelah dibuat."
+
+#: 
+msgid "Used as the default start time when creating events of this type."
+msgstr "Digunakan sebagai waktu mulai default saat membuat acara jenis ini."
+
+#: 
+msgid "User must have Add Event permission and the Events module must be enabled"
+msgstr "Pengguna harus memiliki izin Tambah Acara dan modul Acara harus diaktifkan"
+
+#: 
+msgid "Valid startDate and endDate are required"
+msgstr "startDate dan endDate yang valid diperlukan"
+
+#: 
+msgid "View Event"
+msgstr "Lihat Acara"
+
+#: 
+msgid "What are these for?"
+msgstr "Untuk apa ini?"
+
+#: 
+msgid "What does this find?"
+msgstr "Apa yang dicari ini?"
+
+#: 
+msgid "What is this for?"
+msgstr "Untuk apa ini?"
+
+#: 
+msgid "Who is bringing them in?"
+msgstr "Siapa yang membawa mereka masuk?"
+
+#: 
+msgid "You must select a valid recurrence pattern."
+msgstr "Anda harus memilih pola perulangan yang valid."
+
+#: 
+msgid "You must select an event type."
+msgstr "Anda harus memilih jenis acara."
+
+#: 
+msgid "You must specify a date range."
+msgstr "Anda harus menentukan rentang tanggal."
+
+#: 
+msgid "checked in"
+msgstr "absen masuk"
+
+#: 
+msgid "e.g., Sunday Worship Service"
+msgstr "mis., Ibadah Minggu"
+
+#: 
+msgid "endDate must be after startDate"
+msgstr "endDate harus setelah startDate"
+
+#: 
+msgid "eventIds must be a non-empty array"
+msgstr "eventIds harus berupa larik yang tidak kosong"
+
+#: 
+msgid "invalid recurrence type"
+msgstr "jenis perulangan tidak valid"
+
+#: 
+msgid "personIds must be a non-empty array"
+msgstr "personIds harus berupa larik yang tidak kosong"
+
+#: 
+msgid "to enable the reset button"
+msgstr "untuk mengaktifkan tombol atur ulang"
+
+#: 
+msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
+msgstr "Peta akan muncul di sini setelah koordinat disimpan — baik terdeteksi otomatis dari alamat Anda atau dimasukkan secara manual di atas."
+
+#: 
+msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr "Lintang dan bujur harus diberikan bersama (atau keduanya dibiarkan kosong untuk deteksi otomatis)."
+
+#: 
+msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr "Informasi gereja tersimpan, tetapi alamat tidak dapat dilokasi secara otomatis. Silakan masukkan lintang dan bujur secara manual di bawah Koordinat Peta."
+
+#: 
+msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
+msgstr "Koordinat terdeteksi otomatis dari alamat Anda saat disimpan (melalui OpenStreetMap). Anda juga dapat memasukkannya secara manual di bawah — nilai manual selalu lebih diutamakan daripada deteksi otomatis. Biarkan keduanya kosong agar sistem melakukan geokode dari alamat."
+
+#: 
+msgid "Latitude must be a number between -90 and 90."
+msgstr "Lintang harus berupa angka antara -90 dan 90."
+
+#: 
+msgid "Longitude must be a number between -180 and 180."
+msgstr "Bujur harus berupa angka antara -180 dan 180."
+
+#: 
+msgid "Map Coordinates"
+msgstr "Koordinat Peta"
+
+#: 
+msgid "Please select a group."
+msgstr "Silakan pilih pelayanan."
+
+#: 
+msgid "Please select a role."
+msgstr "Silakan pilih peran."
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "Silakan pilih pelayanan dan peran."
+
+#: 
+msgid "Range: -180 to 180."
+msgstr "Rentang: -180 hingga 180."
+
+#: 
+msgid "Range: -90 to 90."
+msgstr "Rentang: -90 hingga 90."
+
+#: 
+msgid "e.g., -74.0060"
+msgstr "mis., -74.0060"
+
+#: 
+msgid "e.g., 40.7128"
+msgstr "mis., 40.7128"
+
+#: 
+msgid "mo"
+msgstr "bl."
+
+#: 
+msgid "mos"
+msgstr "bl."
+
+#: 
+msgid "yr"
+msgstr "th."
+
+#: 
+msgid "yrs"
+msgstr "th."
+
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "Terjadi kesalahan saat menghapus keluarga."
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "Terjadi kesalahan saat memindahkan donasi."
+
+#: 
+msgid "At least one family member is required"
+msgstr "Minimal satu anggota keluarga diperlukan"
+
+#: 
+msgid "Back to Users"
+msgstr "Kembali ke Pengguna"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "Tidak dapat menghapus keluarga yang memiliki catatan donasi. Hubungi administrator keuangan."
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "Tidak dapat memindahkan properti ke arah tersebut"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "Konfirmasi Informasi Keluarga"
+
+#: 
+msgid "Delete failed"
+msgstr "Penghapusan gagal"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "Arah harus \"atas\" atau \"bawah\""
+
+#: 
+msgid "Failed to move donations."
+msgstr "Gagal memindahkan donasi."
+
+#: 
+msgid "Finance permission required"
+msgstr "Izin keuangan diperlukan"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "ForegroundColor dan BackgroundColor diperlukan."
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "Grup tidak ditemukan atau tidak memiliki properti khusus"
+
+#: 
+msgid "Group role not found"
+msgstr "Peran grup tidak ditemukan"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "Format warna tidak valid. Gunakan warna hex seperti #FF0000."
+
+#: 
+msgid "Invalid field identifier"
+msgstr "Pengenal bidang tidak valid"
+
+#: 
+msgid "Invalid target family"
+msgstr "Keluarga target tidak valid"
+
+#: 
+msgid "Log Out"
+msgstr "Keluar"
+
+#: 
+msgid "Membership not found"
+msgstr "Keanggotaan tidak ditemukan"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "Kata sandi berhasil diubah untuk"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "Silakan tinjau informasi keluarga Anda di bawah ini dan konfirmasi atau minta perubahan."
+
+#: 
+msgid "Please select a target family."
+msgstr "Silakan pilih keluarga target."
+
+#: 
+msgid "Target family not found"
+msgstr "Keluarga target tidak ditemukan"
+
+#: 
+msgid "Verify Family Info"
+msgstr "Verifikasi Informasi Keluarga"
+
+#: 
+msgid "Welcome"
+msgstr "Selamat Datang"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "Anda dapat meninjau dan memverifikasi informasi keluarga Anda menggunakan tautan di bawah ini. Jika Anda memerlukan akses tambahan, silakan hubungi administrator gereja Anda."
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "Anda tidak memiliki izin untuk melihat orang ini"
+
+#: 
+msgid "Are you sure you want to delete this event type? This cannot be undone."
+msgstr "Apakah Anda yakin ingin menghapus jenis acara ini? Tindakan ini tidak dapat dibatalkan."
+
+#: 
+msgid "Assign to me"
+msgstr "Tetapkan ke saya"
+
+#: 
+msgid "Assigned"
+msgstr "Ditetapkan"
+
+#: 
+msgid "Assigned event not found"
+msgstr "Acara yang ditetapkan tidak ditemukan"
+
+#: 
+msgid "Cannot Delete Event Type"
+msgstr "Tidak Dapat Menghapus Jenis Acara"
+
+#: 
+msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
+msgstr "Tidak dapat menghapus jenis acara ini — %d acara menggunakannya. Nonaktifkan jenis tersebut atau tetapkan ulang acara terlebih dahulu."
+
+#: 
+msgid "Kiosk Devices"
+msgstr "Perangkat Kiosk"
+
+#: 
+msgid "Kiosk device has not been accepted by an administrator"
+msgstr "Perangkat kiosk belum diterima oleh administrator"
+
+#: 
+msgid "No active event assignment"
+msgstr "Tidak ada penugasan acara aktif"
+
+#: 
+msgid "Opens a 30-second window for devices to register at:"
+msgstr "Membuka jendela 30 detik untuk perangkat mendaftar di:"
+
+#: 
+msgid "Pending"
+msgstr "Tertunda"
+
+#: 
+msgid "Register New Device"
+msgstr "Daftarkan Perangkat Baru"
+
+#: 
+msgid "This event type is used by"
+msgstr "Jenis acara ini digunakan oleh"
+
+#: 
+msgid "Total Kiosks"
+msgstr "Total Kiosk"
+
+#: 
+msgid "Upcoming Events"
+msgstr "Acara Mendatang"
+
+#: 
+msgid "event(s). Deactivate the type instead, or reassign the events first."
+msgstr "acara. Nonaktifkan jenis tersebut atau tetapkan ulang acara terlebih dahulu."
+
+#: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "URL http(s) absolut dari logo gereja yang ditampilkan dalam templat email (dan akan digunakan ulang di tempat lain di masa mendatang). Untuk tampilan terbaik di klien email, gunakan gambar banner lebar dengan rasio aspek sekitar 3,5:1 (misalnya 350×100 px), PNG atau JPG, disajikan melalui HTTPS. Biarkan kosong atau masukkan nilai tidak valid untuk kembali ke logo ChurchCRM default."
+
+#: 
+msgid "An option with that name already exists"
+msgstr "Opsi dengan nama tersebut sudah ada"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "Tidak dapat menghapus satu-satunya opsi yang tersisa"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "Papan klip tidak tersedia. Gunakan tombol Unduh untuk menyimpan kode Anda."
+
+#: 
+msgid "Custom Option"
+msgstr "Opsi Kustom"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "Teks Pratinjau Kotak Masuk Default"
+
+#: 
+msgid "Email is disabled"
+msgstr "Email dinonaktifkan"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "Email dinonaktifkan. Konfigurasikan email sebelum mengatur ulang kata sandi, atau gunakan Ubah Kata Sandi."
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "Email dinonaktifkan. Aktifkan di pengaturan Dasbor Email sebelum pengujian."
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "Masukkan salah satu kode pemulihan cadangan Anda"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "Masukkan salah satu kode pemulihan cadangan Anda untuk mengakses akun Anda"
+
+#: 
+msgid "Existing Options"
+msgstr "Opsi yang Ada"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "Pelayanan tidak ditemukan untuk daftar peran ini"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "Status tidak aktif hanya dapat diubah untuk daftar klasifikasi"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "Pengguna baru tidak akan menerima email selamat datang dengan kredensial mereka. Bagikan kata sandi secara manual, atau konfigurasikan email terlebih dahulu."
+
+#: 
+msgid "Option name is required"
+msgstr "Nama opsi diperlukan"
+
+#: 
+msgid "Option not found"
+msgstr "Opsi tidak ditemukan"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "Ringkasan singkat opsional yang ditampilkan sebagai teks pratinjau kotak masuk di samping baris subjek. Biarkan kosong agar klien email menghasilkan secara otomatis dari isi pesan. Jenis email individual (reset kata sandi, anggota jemaat baru, verifikasi) menetapkan preheader mereka sendiri; ini adalah fallback."
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "Email reset kata sandi dan email selamat datang akun baru tidak akan dikirim sampai email dikonfigurasi. Pengguna tidak akan menerima kredensial secara otomatis."
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "Reset kata sandi tidak tersedia karena email dinonaktifkan. Hubungi administrator sistem Anda."
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "Kata sandi telah diatur ulang tetapi email tidak dapat dikirim. Pengguna terkunci — bagikan kata sandi baru secara manual atau gunakan Ubah Kata Sandi."
+
+#: 
+msgid "Recovery Code"
+msgstr "Kode Pemulihan"
+
+#: 
+msgid "Set up Email"
+msgstr "Atur Email"
+
+#: 
+msgid "Test SMTP Email"
+msgstr "Uji Email SMTP"
+
+#: 
+msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
+msgstr "Ini adalah email uji ChurchCRM yang mengonfirmasi bahwa konfigurasi SMTP Anda berfungsi."
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "Tidak dapat menyalin ke papan klip. Harap salin kode secara manual."
+
+#: 
+msgid "Use Recovery Code"
+msgstr "Gunakan Kode Pemulihan"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "Gunakan kode pemulihan sebagai gantinya"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "Gunakan aplikasi autentikator sebagai gantinya"
 

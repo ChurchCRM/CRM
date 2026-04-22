@@ -17,7 +17,7 @@ This skill covers setup, build processes, Docker management, testing workflows, 
 - **Perpl ORM** - Database layer (actively maintained fork of Propel2)
 - **Slim 4** - API routes and modern MVC
 - **Tabler + Bootstrap 5.3.x** - Primary UI framework
-- **React + TypeScript** - Modern frontend components
+- **Vanilla JS + TypeScript** - Frontend modules (no React)
 - **Webpack** - Build system for frontend assets
 - **Cypress** - End-to-end testing
 
@@ -210,7 +210,6 @@ $buttonLabel = gettext('Add New Fund');
 | `src/Include/` | Utility functions, helpers, Config.php |
 | `src/locale/` | i18n/translation strings |
 | `src/skin/v2/` | Compiled CSS/JS from Webpack |
-| `react/` | React TSX components |
 | `webpack/` | Webpack entry points |
 | `cypress/e2e/api/` | API test suites |
 | `cypress/e2e/ui/` | UI test suites |
@@ -316,7 +315,7 @@ git add -A
 
 - **Build**: `webpack.config.js`, `Gruntfile.js`, `package.json`
 - **Docker**: `docker-compose.yaml`, `docker/docker-compose.*.yaml`
-- **Cypress**: `cypress.config.ts`, `docker/cypress.config.ts`
+- **Cypress**: `cypress/configs/docker.config.ts`, `cypress/configs/new-system.config.ts`, `cypress/configs/base.config.ts`, `cypress/configs/_shared.ts`
 - **PHP**: `composer.json`, `orm/propel.php.dist`
 - **ORM**: `orm/schema.xml`
 

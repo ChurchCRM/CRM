@@ -154,7 +154,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                             <tr <?= $isMultiplePledges ? 'style="border-left: 3px solid #007bff;"' : '' ?>>
                                                 <td class="<?= $idx === 0 ? 'fw-bold' : 'text-muted small ps-4' ?>">
                                                     <?php if ($idx === 0): ?>
-                                                        <a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $family['family_id'] ?>">
+                                                        <a href="<?= SystemURLs::getRootPath() ?>/people/family/<?= $family['family_id'] ?>">
                                                             <?= InputUtils::escapeHTML($family['family_name']) ?>
                                                         </a>
                                                     <?php else: ?>

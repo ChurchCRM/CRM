@@ -16,11 +16,25 @@ $rsUsers = $userService->getAllUsers();
 $userStats = $userService->getUserStats();
 $userSettingsConfig = $userService->getUserSettingsConfig();
 
+$bEmailEnabled = SystemConfig::isEmailEnabled();
+
 ?>
 <div class="container-fluid">
+    <?php if (!$bEmailEnabled) { ?>
+    <div class="alert alert-warning d-flex align-items-center" role="alert">
+        <i class="fa-solid fa-triangle-exclamation me-2 fs-3"></i>
+        <div class="flex-grow-1">
+            <strong><?= gettext('Email is disabled') ?></strong>
+            <div class="text-secondary"><?= gettext('Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically.') ?></div>
+        </div>
+        <a href="<?= SystemURLs::getRootPath() ?>/v2/email/dashboard?settings=open" class="btn btn-warning ms-3">
+            <i class="fa-solid fa-envelope me-1"></i><?= gettext('Set up Email') ?>
+        </a>
+    </div>
+    <?php } ?>
     <!-- Stat Cards Row -->
 <div class="row mb-3">
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-6 col-lg-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -37,7 +51,7 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-6 col-lg-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -54,7 +68,7 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-6 col-lg-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -71,7 +85,7 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-lg-3">
+    <div class="col-6 col-lg-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -150,10 +164,10 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
                                             <i class="ti ti-eye me-2"></i><?= gettext('View Details') ?>
                                         </a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $user->getId() ?>/changePassword">
+                                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/admin/system/user/<?= $user->getId() ?>/changePassword">
                                             <i class="ti ti-tool me-2"></i><?= gettext('Change Password') ?>
                                         </a>
-                                        <?php if ($user->getId() != AuthenticationManager::getCurrentUser()->getId() && !empty($user->getEmail())) { ?>
+                                        <?php if ($bEmailEnabled && $user->getId() != AuthenticationManager::getCurrentUser()->getId() && !empty($user->getEmail())) { ?>
                                             <a class="dropdown-item" href="#" onclick="resetUserPassword(<?= $user->getId() ?>, '<?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?>')">
                                                 <i class="ti ti-send me-2"></i><?= gettext('Reset Password via Email') ?>
                                             </a>

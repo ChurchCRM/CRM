@@ -39,33 +39,34 @@ To translate a single locale instead:
 /locale-translate --locale <poEditorCode>
 ```
 
-### Step 3.5 — Commit after every group (MANDATORY) <!-- learned: 2026-03-06 -->
+### Step 3.5 — Commit + Push + Upload after EVERY locale (MANDATORY) <!-- learned: 2026-04-09 -->
 
-**Use `report_progress` after each group of locales is fully applied.** Never accumulate more than one group without committing.
+**⛔ NON-NEGOTIABLE: After EVERY locale, immediately commit → push → upload to POEditor.**
 
-Recommended group boundaries and commit messages:
-
-| Group | Locales | Commit message |
-|-------|---------|----------------|
-| 1 | All small locales (≤ 25 terms, 1 file) | `locale: translate small locales (af, sq, am, …)` |
-| 2 | Medium single-file (26–150 terms, 1 file) | `locale: translate medium single-file locales (it, th, …)` |
-| 3 | Medium two-file (150–200 terms, 2 files) | `locale: translate medium two-file locales (tr, sw, hu, ru)` |
-| 4 | Large two-file (200+ terms, 2 files) | `locale: translate large two-file locales (pt-br, pt, es-SV)` |
-| 5 | Very large three-file (300+ terms, 3 files) | `locale: translate large three-file locales (ro, et, fi, nb, sv, uk, vi)` |
-
-**Why commit often?** Each commit is a save point. If a later group fails or the session is interrupted, all previous work is preserved and the next session can pick up exactly where it left off.
-
-### Preferred: Commit after EVERY single locale <!-- learned: 2026-03-30 -->
-
-The recommended granularity is **one commit per locale** (not one per group):
-
-```
-locale: translate fr (French - France, 495 terms)
-locale: translate it (Italian - Italy, 495 terms)
-locale: translate es (Spanish - Spain, 495 terms)
+```bash
+# After each locale is translated and applied:
+git add locale/terms/missing/<CODE>/ locale/terms/english-ok.json
+git commit -m "locale: translate <CODE> (<LANGUAGE>, <N> terms)"
+git push origin $(git branch --show-current)
+node locale/scripts/poeditor-upload-missing.js --locale <CODE> --yes
 ```
 
-This maximises resume safety — if the session is interrupted mid-way through a group, only the in-progress locale is lost, not the entire group.
+**Never batch multiple locales into one commit. Never skip the push. Never skip the upload.**
+
+After the upload script refreshes the local batch files (removes accepted terms), commit those too:
+```bash
+git add locale/terms/missing/<CODE>/
+git commit -m "locale: update missing terms for <CODE> after POEditor upload"
+git push origin $(git branch --show-current)
+```
+
+**Why all four steps?**
+- **Commit translations** = save point (protects against session crash)
+- **Push** = remote backup (protects against machine crash)
+- **Upload + download** = POEditor backup + local files reflect actual remaining work
+- **Commit refreshed files** = branch stays in sync with POEditor state
+
+We have lost hours of translated work because agents translated 20+ locales without committing or pushing. This rule exists to prevent that from ever happening again.
 
 ### Step 4 — Verify
 
@@ -85,9 +86,19 @@ Share that file (or its contents) with your translation team before or alongside
 - Format specifiers (`%d`, `%s`) preserved
 - Natural-sounding UI labels
 
-### Step 6 — Upload to POEditor
+### Step 6 — Upload to POEditor (already done per-locale)
 
-Upload the filled batch files from `locale/terms/missing/` to POEditor. POEditor is the source of truth for all translations.
+If Step 3.5 was followed correctly, all translated locales are already uploaded to POEditor. Verify with:
+
+```bash
+# Check if any locales still need upload (should show 0 or only empty locales)
+node locale/scripts/poeditor-upload-missing.js --dry-run
+```
+
+If any were missed (e.g., upload failed during translation), upload them now:
+```bash
+npm run locale:upload:missing -- --yes
+```
 
 After contributors have reviewed and approved translations in POEditor:
 

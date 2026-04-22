@@ -42,7 +42,12 @@ if (!$isAdminRoute) {
                 $Kiosk->save();
             } else {
                 // Window closed - clear cookie and show registration disabled page
-                setcookie('kioskCookie', '', ['expires' => time() - 3600]);
+                setcookie('kioskCookie', '', [
+                    'expires'  => time() - 3600,
+                    'path'     => SystemURLs::getRootPath() . '/kiosk/',
+                    'httponly'  => true,
+                    'samesite' => 'Lax',
+                ]);
                 http_response_code(401);
                 $sRootPath = SystemURLs::getRootPath();
                 require __DIR__ . '/templates/registration-closed.php';
@@ -51,8 +56,13 @@ if (!$isAdminRoute) {
         }
     } elseif ($windowOpen) {
         // No cookie and registration window is open - create new kiosk
-        $guid = uniqid();
-        setcookie('kioskCookie', $guid, ['expires' => 2_147_483_647]);
+        $guid = bin2hex(random_bytes(32));
+        setcookie('kioskCookie', $guid, [
+            'expires'  => time() + (90 * 24 * 60 * 60), // 90 days
+            'path'     => SystemURLs::getRootPath() . '/kiosk/',
+            'httponly'  => true,
+            'samesite' => 'Lax',
+        ]);
         // Populate $_COOKIE for current request since setcookie() doesn't
         $_COOKIE['kioskCookie'] = $guid;
         $Kiosk = new KioskDevice();
@@ -78,9 +88,11 @@ $getKioskFromCookie = function () use ($Kiosk): ?KioskDevice {
 $app = AppFactory::create();
 $app->setBasePath($basePath);
 
-// Add Slim error middleware for proper error handling and logging
+$app->addBodyParsingMiddleware();
+$app->addRoutingMiddleware();
+
+// Error middleware must be added AFTER routing (Slim 4 LIFO: last added = first executed)
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
-SlimUtils::setupErrorLogger($errorMiddleware);
 
 // Custom error handler
 $errorMiddleware->setDefaultErrorHandler(function (
@@ -115,9 +127,6 @@ $errorMiddleware->setDefaultErrorHandler(function (
         'error'   => gettext('An unexpected error occurred. Please contact your administrator.'),
     ]);
 });
-
-$app->addBodyParsingMiddleware();
-$app->addRoutingMiddleware();
 
 $app->add(new CorsMiddleware());
 $app->add(VersionMiddleware::class);

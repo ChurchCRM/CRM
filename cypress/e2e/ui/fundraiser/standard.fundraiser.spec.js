@@ -2,7 +2,7 @@
 
 describe("Fund Raiser", () => {
     beforeEach(() => cy.setupStandardSession());
-    
+
     it("View All ", () => {
         cy.visit("FundRaiserEditor.php?FundRaiserID=-1");
         cy.contains("Create New Fund Raiser");
@@ -13,8 +13,8 @@ describe("Fund Raiser", () => {
         cy.contains("Fundraiser Listing");
         cy.contains("2016 Car Wash");
     });
-    
-    
+
+
     it("New Fund Raiser with url param -1 ", () => {
         cy.visit("FundRaiserEditor.php?FundRaiserID=-1");
         cy.contains("Create New Fund Raiser");

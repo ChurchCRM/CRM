@@ -283,10 +283,6 @@ msgid "Add Cart to Event"
 msgstr "Lägg korgen till evenemang"
 
 #: 
-msgid "OR"
-msgstr "ELLER"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Korgen är tom!"
 
@@ -410,10 +406,6 @@ msgstr "Ja"
 #: 
 msgid "No"
 msgstr "Nej"
-
-#: 
-msgid "Event Checkin"
-msgstr "Evenemang inchekning"
 
 #: 
 msgid "Select Event"
@@ -679,10 +671,6 @@ msgid "Church Event Editor"
 msgstr "Kyrkans evenemang redigeringsverktyg"
 
 #: 
-msgid "Edit Event Types"
-msgstr "Redigera evenemangtyper"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Redigera evenemangtyp"
 
@@ -753,20 +741,8 @@ msgid "Create a new Event"
 msgstr "Skapa en ny händelse"
 
 #: 
-msgid " errors. Please see below"
-msgstr "fel. Se nedan"
-
-#: 
 msgid "Select your event type"
 msgstr "Välj din händelsetyp"
-
-#: 
-msgid "You must pick an event type."
-msgstr "Du måste välja en händelsetyp."
-
-#: 
-msgid "No Attendance counts recorded"
-msgstr "Inga deltagare angiven"
 
 #: 
 #, fuzzy
@@ -872,10 +848,6 @@ msgstr "Epost är inte giltig"
 #: 
 msgid "Family Info"
 msgstr "Familjinfo"
-
-#: 
-msgid "Contact Info"
-msgstr "Kontaktinformation"
 
 #: 
 msgid "Envelope Info"
@@ -1000,11 +972,6 @@ msgstr "Värd"
 #: 
 msgid "Edit Value"
 msgstr "Redigera värd"
-
-#: 
-#, fuzzy
-msgid "Assign a New Property"
-msgstr "Ange en ny egenskap"
 
 #: 
 msgid "Assign"
@@ -1762,20 +1729,8 @@ msgid "Group"
 msgstr "Grupp"
 
 #: 
-msgid "Option"
-msgstr "Valmöjligheter"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Fel: Inte unik"
-
-#: 
 msgid "Default"
 msgstr "Standard"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Namnet inte unik"
 
 #: 
 msgid "Make Default"
@@ -1788,10 +1743,6 @@ msgstr "Avsluta"
 #: 
 msgid "Add New"
 msgstr "Lägg till ny"
-
-#: 
-msgid " by that name already exists."
-msgstr " med denna namn finns redan."
 
 #: 
 #, fuzzy
@@ -2124,10 +2075,6 @@ msgid "Restore Database"
 msgstr "Återställ databasen"
 
 #: 
-msgid "All donations from this family have been moved to another family."
-msgstr "Alla bidrag från denna familj flytades till en annan familj"
-
-#: 
 #, fuzzy
 msgid "Please confirm deletion of"
 msgstr "Bekräfta att du vill radera"
@@ -2229,15 +2176,6 @@ msgid "User Editor"
 msgstr "Användare redigeringsverktyg"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "OBS: Ändringar syns efter din nästa inloggning."
-
-#: 
-#, fuzzy
-msgid "Person to Make User"
-msgstr "Person att bli användare"
-
-#: 
 #, fuzzy
 msgid "User"
 msgstr "Användare"
@@ -2288,25 +2226,8 @@ msgid "Edit Self"
 msgstr "Redigera dig själv"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Redigera din egen familj endast.)"
-
-#: 
 msgid "Admin"
 msgstr "Administration"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Tilldela alla privilegier.)"
-
-#: 
-#, fuzzy
-msgid "Style"
-msgstr "Styl"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Ställ tillåtelse sant för att ge den här användaren möjlighet att ändra sitt nuvarande värde."
 
 #: 
 msgid "Last Login"
@@ -3052,10 +2973,6 @@ msgid "Date Entered"
 msgstr "Datum in"
 
 #: 
-msgid "There were "
-msgstr "Det var"
-
-#: 
 msgid "Inactive"
 msgstr "Inaktiv"
 
@@ -3291,10 +3208,6 @@ msgid "Query Menu"
 msgstr "Fråga-meny"
 
 #: 
-msgid "CSV Export Records"
-msgstr "CSV Exportera data"
-
-#: 
 msgid "Family Properties"
 msgstr "Familjegenskaper"
 
@@ -3366,10 +3279,6 @@ msgid "Security Group"
 msgstr "Säkerhetsgrupp"
 
 #: 
-msgid "Security Groups"
-msgstr "Säkerhetsgrupper"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Säkerhetsgrupper Editor"
 
@@ -3382,56 +3291,16 @@ msgid "Group Member Roles Editor"
 msgstr "Gruppmedlem Roller Redaktör"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Alternativ för personanpassad lista"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Personanpassade listalternativ"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Person Custom Listalternativ Editor"
-
-#: 
-msgid "Custom List Option"
-msgstr "Alternativ för anpassad lista"
-
-#: 
-msgid "Custom List Options"
-msgstr "Anpassade listalternativ"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Editor för anpassad lista"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Alternativ för familjens anpassade listor"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Alternativ för familjens anpassade listor"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Family Custom List Alternativ Editor"
-
-#: 
-msgid "are not allowed."
-msgstr "är inte tillåten."
-
-#: 
-msgid "Name for New"
-msgstr "Namn för nytt"
-
-#: 
-msgid "Created via Family"
-msgstr "Skapad via familjen"
-
-#: 
-msgid "Updated via Family"
-msgstr "Uppdaterad via familjen"
 
 #: 
 msgid "Family Data Verified"
@@ -4923,10 +4792,6 @@ msgid "An invalid configuration name has been requested"
 msgstr "Ett ogiltigt konfigurationsnamn har begärts"
 
 #: 
-msgid "An invalid configuration id has been requested"
-msgstr "Ett ogiltigt konfigurations-id har begärts"
-
-#: 
 msgid "Profile Image uploaded"
 msgstr "Profilbild uppladdad"
 
@@ -5004,14 +4869,6 @@ msgstr "Fastigheten kunde inte tilldelas."
 #: 
 msgid "Select event"
 msgstr "Välj händelse"
-
-#: 
-msgid "Person has been already checked in for this event"
-msgstr "Personen har redan checkats in för det här evenemanget"
-
-#: 
-msgid "Adult Checking Out Person"
-msgstr "Vuxen checka ut person"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -5245,10 +5102,6 @@ msgstr "Kiosk redaktör"
 #: 
 msgid "Report an issue"
 msgstr "Rapportera ett problem"
-
-#: 
-msgid "Active Kiosks"
-msgstr "Aktiva kiosker"
 
 #: 
 msgid "Self Verification"
@@ -5570,10 +5423,6 @@ msgid "Sign out"
 msgstr "Logga ut"
 
 #: 
-msgid "Sermon Text"
-msgstr "Predikan text"
-
-#: 
 msgid "Change Settings"
 msgstr "Ändra inställningar"
 
@@ -5678,14 +5527,6 @@ msgid "Added to group"
 msgstr "Tillagd i gruppen"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "SMTP-värd är inte inställd, besök inställningssidan"
-
-#: 
-msgid "Debug Email Connection"
-msgstr "Felsöka e-postanslutning"
-
-#: 
 #, fuzzy
 msgid "This Family is Inactive"
 msgstr "Denna familj är deaktiverad"
@@ -5697,14 +5538,6 @@ msgstr "Databasen har rensats."
 #: 
 msgid "Anniversaries"
 msgstr "årsdagar"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "Nytt felmeddelande via e-post"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "Nytt personmeddelande E-postfel"
 
 #: 
 msgid "View User"
@@ -5892,10 +5725,6 @@ msgstr "är ur funktion"
 #: 
 msgid "Software Version"
 msgstr "Mjukvaru-version"
-
-#: 
-msgid "Database Version"
-msgstr "Databasversion"
 
 #: 
 msgid "Application Prerequisites"
@@ -6090,10 +5919,6 @@ msgstr "Funktioner för återställning av databaser"
 msgid "Reset Database"
 msgstr "Återställ databasen"
 
-#: 
-msgid "This will reset the system data and will restart the system as a new install."
-msgstr "Detta återställer systemdata och startar om systemet som en ny installation."
-
 #. Context: locales
 #: 
 msgid "Portuguese - Portugal"
@@ -6206,28 +6031,12 @@ msgid "open rate"
 msgstr "öppen kostnad"
 
 #: 
-msgid "Login Info"
-msgstr "Inloggningsinfo"
-
-#: 
-msgid "Login Count"
-msgstr "Inloggningsantal"
-
-#: 
-msgid "Failed Login"
-msgstr "Misslyckad inloggning"
-
-#: 
 msgid "Permissions"
 msgstr "Behörigheter"
 
 #: 
 msgid "Manage Notes"
 msgstr "Hantera anteckningar"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Det gick inte att generera en ny API-nyckel"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6283,28 +6092,12 @@ msgid "Loading"
 msgstr "Läser in"
 
 #: 
-msgid "Family Property Unassignment"
-msgstr "Familjeegendom av-tilldelning"
-
-#: 
-msgid "Do you want to remove"
-msgstr "Vill du ta bort"
-
-#: 
 msgid "Today's Birthdays"
 msgstr "Dagens födelsedagar"
 
 #: 
 msgid "Today's Wedding Anniversaries"
 msgstr "Dagens bröllopsdagar"
-
-#: 
-msgid "Api Key"
-msgstr "Api Nyckel"
-
-#: 
-msgid "Regen API Key"
-msgstr "Regen API-nyckel"
 
 #: 
 msgid "View Family Page"
@@ -6323,46 +6116,6 @@ msgid "Family has no emails to use"
 msgstr "Familjen har inga e-postadresser att använda"
 
 #: 
-msgid "Boxed Layout"
-msgstr "Boxad layout"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Aktivera den boxade layouten"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Växla sidofält"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Växla vänster sidofälts läge (öppna eller fäll ihop)"
-
-#: 
-msgid "Tables Settings"
-msgstr "Tabellinställningar"
-
-#: 
-msgid "Page length"
-msgstr "Sidans längd"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Ändra den initiala sidlängden (antal rader per sida)"
-
-#: 
-msgid "User Interface"
-msgstr "Användargränssnitt"
-
-#: 
-msgid "Locale"
-msgstr "Språkinställning"
-
-#: 
-msgid "Override system locale"
-msgstr "Åsidosätt systemets språkinställning"
-
-#: 
 msgid "Deleted"
 msgstr "Raderad"
 
@@ -6373,10 +6126,6 @@ msgstr "Ogiltigt födelsedatum: Saknar födelsemånad eller dag."
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Ogiltigt födelsedatum: Saknar födelsemånad och dag."
-
-#: 
-msgid "System"
-msgstr "System"
 
 #. Context: locales
 #: 
@@ -6464,10 +6213,6 @@ msgid "Not Subscribed"
 msgstr "Inte prenumerant"
 
 #: 
-msgid "property"
-msgstr "egenskap"
-
-#: 
 msgid "Default Zip"
 msgstr "Standardpostnummer"
 
@@ -6505,10 +6250,6 @@ msgstr "Ett tecken från förnamn och ett tecken från efternamn"
 #: 
 msgid "Two characters from FirstName"
 msgstr "Två tecken från förnamn"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "Kyrkans e-post är inte inställd, besök inställningssidan"
 
 #. Context: locales
 #: 
@@ -7269,10 +7010,6 @@ msgid "Base URL"
 msgstr "Bas-URL"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "ChurchCRM-installation"
-
-#: 
 msgid "Copy"
 msgstr "Kopiera"
 
@@ -7281,24 +7018,12 @@ msgid "DSN"
 msgstr "DSN"
 
 #: 
-msgid "Database Server"
-msgstr "Databasserver"
-
-#: 
 msgid "Debug Info"
 msgstr "Felsökningsinfo"
 
 #: 
 msgid "Document Root"
 msgstr "Dokumentrot"
-
-#: 
-msgid "Email Configuration"
-msgstr "E-postkonfiguration"
-
-#: 
-msgid "Email Debug Info"
-msgstr "E-post felsökningsinfo"
 
 #: 
 msgid "Filesystem Permissions"
@@ -7341,10 +7066,6 @@ msgid "PHP & Server Requirements"
 msgstr "PHP & Serverkrav"
 
 #: 
-msgid "PHP Configuration"
-msgstr "PHP-konfiguration"
-
-#: 
 msgid "Platform"
 msgstr "Plattform"
 
@@ -7355,10 +7076,6 @@ msgstr "Rot-sökväg"
 #: 
 msgid "SMTP Host"
 msgstr "SMTP-värd"
-
-#: 
-msgid "Server Information"
-msgstr "Serverinformation"
 
 #: 
 msgid "Software"
@@ -7431,10 +7148,6 @@ msgid "All Types"
 msgstr "Alla typer"
 
 #: 
-msgid "Are you sure you want to delete this check-in record?"
-msgstr "Är du säker på att du vill radera denna incheckningspost?"
-
-#: 
 msgid "Attendance Count Categories"
 msgstr "Kategorier för närvaroräkning"
 
@@ -7475,10 +7188,6 @@ msgid "Create New Event"
 msgstr "Skapa ny händelse"
 
 #: 
-msgid "Create an event type to get started."
-msgstr "Skapa en händelsetyp för att komma igång."
-
-#: 
 msgid "Current DB Version"
 msgstr "Nuvarande DB-version"
 
@@ -7497,14 +7206,6 @@ msgstr "Standardstarttid"
 #: 
 msgid "Delete Event"
 msgstr "Radera händelse"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. Delete this event?"
-msgstr "Att radera en händelse kommer också att radera alla närvaroräkningar. Radera händelsen?"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
-msgstr "Att radera denna händelse kommer också att radera alla närvaroposter. Är du säker?"
 
 #: 
 msgid "Edit Event"
@@ -7572,10 +7273,6 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr "Valfritt - Lägg till predikoanteckningar eller ytterligare händelsedetaljer"
 
 #: 
-msgid "Optional - leave blank if not tracking"
-msgstr "Valfritt - lämna tomt om du inte spårar"
-
-#: 
 msgid "Optional notes about attendance..."
 msgstr "Valfria anteckningar om närvaro..."
 
@@ -7608,24 +7305,12 @@ msgid "Search by name or email..."
 msgstr "Sök efter namn eller e-post..."
 
 #: 
-msgid "Search for adult..."
-msgstr "Sök efter vuxen..."
-
-#: 
 msgid "Search for supervisor..."
 msgstr "Sök efter handledare..."
 
 #: 
 msgid "Select Event for Check-In"
 msgstr "Välj händelse för incheckning"
-
-#: 
-msgid "Select start and end date/time"
-msgstr "Välj start- och slutdatum/tid"
-
-#: 
-msgid "Select the event to check in your cart members"
-msgstr "Välj händelsen för att checka in medlemmarna i din kundvagn"
 
 #: 
 msgid "Sermon / Event Text"
@@ -7992,10 +7677,6 @@ msgstr "Använd externa verktyg (GPG, 7-Zip) för att kryptera säkerhetskopior 
 #: 
 msgid "User authentication"
 msgstr "Användarautentisering"
-
-#: 
-msgid "User must have Add Event permission"
-msgstr "Användaren måste ha behörighet att lägga till händelser"
 
 #: 
 msgid "User must have Menu Options permission"
@@ -8518,10 +8199,6 @@ msgid "State (Other)"
 msgstr "Region (Annat)"
 
 #: 
-msgid "Status:"
-msgstr "Status:"
-
-#: 
 msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr "Sammanfattning av löften kontra betalningar per fond för räkenskapsåret."
 
@@ -8572,10 +8249,6 @@ msgstr "Totala insättningar:"
 #: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Följ löften och betalningsframsteg för kampanjer och budgetering för räkenskapsår."
-
-#: 
-msgid "Type:"
-msgstr "Typ:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -8700,10 +8373,6 @@ msgstr "Anpassad port:"
 #: 
 msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Slutar med ett <strong>avslutande snedstreck</strong> (/)"
-
-#: 
-msgid "Error:"
-msgstr "Fel:"
 
 #: 
 msgid "Find the line:"
@@ -8835,10 +8504,6 @@ msgstr "Välj möjligheter..."
 
 #: 
 msgid "Confirm Family Information"
-msgstr "Bekräfta familjeinformation"
-
-#: 
-msgid "Confirm family information"
 msgstr "Bekräfta familjeinformation"
 
 #: 
@@ -9002,10 +8667,6 @@ msgid "Disable 2FA"
 msgstr "Inaktivera 2FA"
 
 #: 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr "Exportera all persondata i ChMeetings-format för import till externa system."
-
-#: 
 msgid "Export to ChMeetings CSV"
 msgstr "Exportera till ChMeetings CSV"
 
@@ -9108,10 +8769,6 @@ msgstr[0] "%d person tillagd till vald grupp."
 msgstr[1] "%d personer tillagda till vald grupp."
 
 #: 
-msgid "A "
-msgstr "En/Ett "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Är du säker på att du vill radera"
 
@@ -9140,10 +8797,6 @@ msgid "Delete Confirmation"
 msgstr "Bekräfta radering"
 
 #: 
-msgid "Existing"
-msgstr "Befintlig"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Befintliga anpassade familjefält"
 
@@ -9166,10 +8819,6 @@ msgstr "Ogiltig CSRF-token"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Ogiltiga fält eller val."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Objektet raderades"
 
 #: 
 msgid "Move down"
@@ -9206,10 +8855,6 @@ msgstr "Egenskapstyp"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "Det finns personer tilldelade denna volontärmöjlighet. Radering kommer att ta bort tilldelningen för:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "Detta kommer att ta bort det från alla personer som för närvarande är tilldelade det."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -9258,10 +8903,6 @@ msgstr "Lägg till Egenskapstyp"
 #: 
 msgid "Add Your First Property Type"
 msgstr "Lägg till Din Första Egenskapstyp"
-
-#: 
-msgid "Auto-calculated from counts above"
-msgstr "Automatiskt beräknat från räkningarna ovan"
 
 #: 
 msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
@@ -9452,10 +9093,6 @@ msgstr "Kioskregistrering inaktiverad"
 #: 
 msgid "Kiosk not found"
 msgstr "Kiosken hittades inte"
-
-#: 
-msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
-msgstr "Länka detta evenemang till en grupp för kioskens incheckningsfunktion. Gruppmedlemmarna visas på kiosken."
 
 #: 
 msgid "Linked Group"
@@ -10657,10 +10294,6 @@ msgid "Require all users to enroll in two-factor authentication"
 msgstr "Kräv att alla användare registrerar sig för tvåfaktorsautentisering"
 
 #: 
-msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
-msgstr "En karta visas här när en gatuadress sparas. Koordinater detekteras automatiskt — ingen manuell inmatning krävs."
-
-#: 
 msgid "Active Groups"
 msgstr "Aktiva grupper"
 
@@ -10711,10 +10344,6 @@ msgstr "Familjen saknar gatuadress för geokodning"
 #: 
 msgid "Father"
 msgstr "Far"
-
-#: 
-msgid "Geocoded coordinates:"
-msgstr "Geokodade koordinater:"
 
 #: 
 msgid "Geocoding failed"
@@ -10795,10 +10424,6 @@ msgstr "Tidszon"
 #: 
 msgid "Total Groups"
 msgstr "Totalt grupper"
-
-#: 
-msgid "Updated automatically on every save."
-msgstr "Uppdateras automatiskt vid varje sparning."
 
 #: 
 msgid "Used for scheduling events and reporting times."
@@ -10983,14 +10608,6 @@ msgid "Add a Person"
 msgstr "Lägg till en person"
 
 #: 
-msgid "Add a new pledge"
-msgstr "Lägg till ett nytt givarlöfte"
-
-#: 
-msgid "Add a payment to current deposit"
-msgstr "Lägg till en betalning till aktuell kollektinsamling"
-
-#: 
 msgid "Add all cart items to a group"
 msgstr "Lägg till alla urvalets poster i en grupp"
 
@@ -11127,10 +10744,6 @@ msgid "Auto-mapped"
 msgstr "Automatiskt mappat"
 
 #: 
-msgid "BCC"
-msgstr "Hemlig kopia"
-
-#: 
 msgid "BCC All"
 msgstr "Hemlig kopia till alla"
 
@@ -11209,10 +10822,6 @@ msgstr "Ändra familjeroll"
 #: 
 msgid "Check Out"
 msgstr "Checka ut"
-
-#: 
-msgid "Check Out Person"
-msgstr "Checka ut person"
 
 #: 
 msgid "Check for updates and upgrade your ChurchCRM installation"
@@ -11339,10 +10948,6 @@ msgid "Create a manual backup at least once a week, or enable the External Backu
 msgstr "Skapa en manuell säkerhetskopia minst en gång i veckan, eller aktivera tillägget för extern säkerhetskopiering för automatiska WebDAV-säkerhetskopior enligt schema."
 
 #: 
-msgid "Create a new deposit"
-msgstr "Skapa en ny kollektinsamling"
-
-#: 
 msgid "Create and edit family information and relationships"
 msgstr "Skapa och redigera familjeinformation och relationer"
 
@@ -11397,10 +11002,6 @@ msgstr "Definiera gruppspecifika egenskaper för medlemmar"
 #: 
 msgid "Delete All"
 msgstr "Ta bort allt"
-
-#: 
-msgid "Delete Check-in Entry"
-msgstr "Ta bort registreringspost"
 
 #: 
 msgid "Delete Family"
@@ -11663,6 +11264,10 @@ msgid "Forgot password?"
 msgstr "Glömt lösenord?"
 
 #: 
+msgid "Format"
+msgstr "Format"
+
+#: 
 msgid "Full Group View"
 msgstr "Fullständig gruppvy"
 
@@ -11677,10 +11282,6 @@ msgstr "Generera årliga gåvobesked för skatteändamål"
 #: 
 msgid "Generate directory listings and printed materials"
 msgstr "Generera kataloglistor och tryckt material"
-
-#: 
-msgid "Generate financial reports"
-msgstr "Generera ekonomiska rapporter"
 
 #: 
 msgid "Generate financial statements and giving reports"
@@ -11899,10 +11500,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Hantera söndagsskolans klasser, lärare och elevnärvaro"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Hantera klassificeringslistor, roller och grupptyper"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Hantera gåvofonder för ekonomisk uppföljning"
 
@@ -11913,14 +11510,6 @@ msgstr "Hantera gåvor, givarlöften och ekonomiska poster"
 #: 
 msgid "Manage email tools and SMTP configuration"
 msgstr "Hantera e-postverktyg och SMTP-konfiguration"
-
-#: 
-msgid "Manage event names and categories"
-msgstr "Hantera evenemangsnamn och kategorier"
-
-#: 
-msgid "Manage event type categories"
-msgstr "Hantera kategorier för evenemangstyper"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -11965,6 +11554,10 @@ msgstr "Visa urvalets poster på kartan"
 #: 
 msgid "Map to Field"
 msgstr "Mappa till fält"
+
+#: 
+msgid "Material"
+msgstr "Material"
 
 #: 
 msgid "Member Properties"
@@ -12049,10 +11642,6 @@ msgstr "Inga födelsedagar"
 #: 
 msgid "No Check-ins"
 msgstr "Inga registreringar"
-
-#: 
-msgid "No Deposit Tracking"
-msgstr "Ingen kollektspårning"
 
 #: 
 msgid "No Deposits"
@@ -12161,10 +11750,6 @@ msgstr "Öppna GitHub-ärende"
 #: 
 msgid "Open user menu"
 msgstr "Öppna användarmenyn"
-
-#: 
-msgid "Options"
-msgstr "Alternativ"
 
 #: 
 msgid "Other Members"
@@ -12669,10 +12254,6 @@ msgid "View group members, roles, and properties"
 msgstr "Visa gruppmedlemmar, roller och egenskaper"
 
 #: 
-msgid "View pledge dashboard"
-msgstr "Visa instrumentpanel för givarlöften"
-
-#: 
 msgid "View query results"
 msgstr "Visa frågeresultat"
 
@@ -12757,10 +12338,6 @@ msgid "You can create/delete sunday school group."
 msgstr "Du kan skapa/ta bort söndagsskolgrupp."
 
 #: 
-msgid "You do not have finance permissions to view deposits."
-msgstr "Du har inte ekonomibehörighet för att visa kollektinsamlingar."
-
-#: 
 msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
 msgstr "Dina säkerhetskopieringsdata har laddats. Du omdirigeras till att logga in med dina tidigare uppgifter."
 
@@ -12809,10 +12386,6 @@ msgid "members"
 msgstr "medlemmar"
 
 #: 
-msgid "name@example.com"
-msgstr "namn@exempel.se"
-
-#: 
 msgid "opportunities"
 msgstr "möjligheter"
 
@@ -12851,10 +12424,6 @@ msgstr "— Välj en grupp —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Välj typ (valfritt) —"
-
-#: 
-msgid "Accept the device, then assign it to an event to begin check-in."
-msgstr "Godkänn enheten och tilldela den sedan till ett evenemang för att påbörja registrering."
 
 #: 
 msgid "Activate"
@@ -12907,10 +12476,6 @@ msgstr "Klass / Grupp"
 #: 
 msgid "Class List Export"
 msgstr "Export av klasslista"
-
-#: 
-msgid "Click the registration toggle above to open a 30-second registration window."
-msgstr "Klicka på registreringsväljararen ovan för att öppna ett 30 sekunders registreringsfönster."
 
 #: 
 msgid "Continue"
@@ -12981,10 +12546,6 @@ msgid "It is strongly recommended to have a backup before proceeding."
 msgstr "Det rekommenderas starkt att ha en säkerhetskopia innan du fortsätter."
 
 #: 
-msgid "Kiosk Registration"
-msgstr "Kioskregistrering"
-
-#: 
 msgid "Latest"
 msgstr "Senaste"
 
@@ -13027,10 +12588,6 @@ msgstr "Anteckningen hittades inte"
 #: 
 msgid "Note text is required"
 msgstr "Anteckningstext krävs"
-
-#: 
-msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
-msgstr "På kioskenheten (surfplatta, bärbar dator osv.), öppna en webbläsare och navigera till:"
 
 #: 
 msgid "Only the note author or an admin may delete this note"
@@ -13077,10 +12634,6 @@ msgid "SHA1 Hash"
 msgstr "SHA1-hash"
 
 #: 
-msgid "Setup Instructions"
-msgstr "Installationsinstruktioner"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "Signaturavvikelse"
 
@@ -13089,24 +12642,12 @@ msgid "Skip, Continue Without Backup"
 msgstr "Hoppa över, fortsätt utan säkerhetskopia"
 
 #: 
-msgid "The device will register itself and appear in the table below as \"Pending\"."
-msgstr "Enheten registrerar sig själv och visas i tabellen nedan som \"Väntande\"."
-
-#: 
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr "Dessa länkar visas i menyn \"Länkar\" i navigeringssidofältet när detta tillägg är aktiverat."
 
 #: 
 msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr "Detta laddar ner och tillämpar den aktuella versionen på nytt. Det kan åtgärda skadade eller ändrade filer."
-
-#: 
-msgid "To set up a kiosk device, follow these steps:"
-msgstr "För att konfigurera en kioskenhet, följ dessa steg:"
-
-#: 
-msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
-msgstr "Växla omkopplaren nedan för att öppna ett 30 sekunders fönster för nya kioskenheter att registrera sig."
 
 #: 
 msgid "Total Check-ins"
@@ -13119,10 +12660,6 @@ msgstr "Prova att välja en annan evenemangstyp eller ett annat år."
 #: 
 msgid "Up to Date"
 msgstr "Uppdaterad"
-
-#: 
-msgid "Upcoming Sunday School Events"
-msgstr "Kommande söndagsskolevenemang"
 
 #: 
 msgid "Update Available"
@@ -13148,10 +12685,6 @@ msgstr "Almmuhit geavaheaddji oasalastit ođđa dás"
 #: 
 msgid "Are you sure you want to continue?"
 msgstr "Jus it dohko ceavvi go jatkat?"
-
-#: 
-msgid "Are you sure you want to delete this event?"
-msgstr "Jus it dohko ceavvi go vahkkat dás?"
 
 #. Context: queryparameters_qrp
 #: 
@@ -13766,23 +13299,153 @@ msgstr "t.ex. söndagstjänst"
 msgid "member"
 msgstr "medlem"
 
+#. plugin:mailchimp:section:1:content
+#: 
+msgid "- **Dashboard**: View all your MailChimp lists with subscriber statistics\n"
+"- **List Maintenance**: Identify people in MailChimp but not in CRM, and vice versa\n"
+"- **Contact Integration**: View MailChimp subscription status on Person and Family pages\n"
+"- **Automatic Sync**: Hooks into person/family updates to keep MailChimp in sync"
+msgstr "- **Instrumentpanel**: Visa alla dina MailChimp-listor med prenumerantstatistik\n"
+"- **Listunderhåll**: Identifiera personer i MailChimp men inte i CRM, och vice versa\n"
+"- **Kontaktintegration**: Visa MailChimp-prenumerationsstatus på person- och familjesidor\n"
+"- **Automatisk synkronisering**: Kopplas in i person-/familjeoppdateringar för att hålla MailChimp synkroniserat"
+
+#. plugin:vonage:section:1:content
+#: 
+msgid "1. Create a Vonage account at https://dashboard.nexmo.com/sign-up (new accounts include free trial credit)\n"
+"2. Find your API Key and API Secret on the Vonage Dashboard homepage\n"
+"3. Go to Numbers > Buy Numbers and purchase a number with SMS capability\n"
+"4. Note the number in E.164 format (e.g., +14155551234)\n"
+"5. In ChurchCRM, enable the Vonage SMS plugin and enter your credentials"
+msgstr "1. Skapa ett Vonage-konto på https://dashboard.nexmo.com/sign-up (nya konton inkluderar gratis testkrediter)\n"
+"2. Hitta din API-nyckel och API-hemlighet på Vonage Dashboard-startsidan\n"
+"3. Gå till Numbers > Buy Numbers och köp ett nummer med SMS-kapacitet\n"
+"4. Notera numret i E.164-format (t.ex. +14155551234)\n"
+"5. I ChurchCRM, aktivera Vonage SMS-pluginet och ange dina uppgifter"
+
+#. plugin:google-analytics:section:0:content
+#: 
+msgid "1. Go to Google Analytics (analytics.google.com)\n"
+"2. Create a property or select an existing one\n"
+"3. Go to Admin → Data Streams → Web\n"
+"4. Copy the Measurement ID (starts with G-)"
+msgstr "1. Gå till Google Analytics (analytics.google.com)\n"
+"2. Skapa en egenskap eller välj en befintlig\n"
+"3. Gå till Admin → Dataströmmar → Webb\n"
+"4. Kopiera mätnings-ID:t (börjar med G-)"
+
+#. plugin:openlp:section:2:content
+#: 
+msgid "1. Install OpenLP 3.0 or later on your presentation computer\n"
+"2. Enable the Remote plugin in OpenLP (Settings → Configure OpenLP → Plugins)\n"
+"3. Enable the Alerts plugin in OpenLP for alert display support\n"
+"4. Note the IP address of the OpenLP computer\n"
+"5. Enter the server URL in the format: http://IP_ADDRESS:4316\n"
+"6. If you've configured authentication in OpenLP, enter the username and password"
+msgstr "1. Installera OpenLP 3.0 eller senare på din presentationsdator\n"
+"2. Aktivera Remote-pluginet i OpenLP (Inställningar → Konfigurera OpenLP → Plugin-program)\n"
+"3. Aktivera Aviseringar-pluginet i OpenLP för stöd för aviseringsvisning\n"
+"4. Notera IP-adressen för OpenLP-datorn\n"
+"5. Ange server-URL:en i formatet: http://IP_ADDRESS:4316\n"
+"6. Om du har konfigurerat autentisering i OpenLP, ange användarnamn och lösenord"
+
+#. plugin:mailchimp:section:2:content
+#: 
+msgid "Access the MailChimp Dashboard from the Email menu. The dashboard shows:\n"
+"\n"
+"- Member count for each list\n"
+"- Campaign statistics\n"
+"- Unsubscribe counts\n"
+"- List maintenance tools"
+msgstr "Öppna MailChimp-instrumentpanelen från E-post-menyn. Instrumentpanelen visar:\n"
+"\n"
+"- Medlemsantal för varje lista\n"
+"- Kampanjstatistik\n"
+"- Antal avprenumerationer\n"
+"- Listunderhållsverktyg"
+
 #. plugin:custom-links:section:1:title
 #: 
 msgid "Adding Links"
 msgstr "Lägga till länkar"
+
+#. plugin:custom-links:section:2:content
+#: 
+msgid "All configured links are shown in a table. You can:\n"
+"- View the link name and URL\n"
+"- Click the URL to test it opens correctly\n"
+"- Delete links you no longer need\n"
+"\n"
+"Links appear in the order they were added in the navigation menu."
+msgstr "Alla konfigurerade länkar visas i en tabell. Du kan:\n"
+"- Visa länknamnet och URL:en\n"
+"- Klicka på URL:en för att testa att den öppnas korrekt\n"
+"- Ta bort länkar du inte längre behöver\n"
+"\n"
+"Länkar visas i den ordning de lades till i navigeringsmenyn."
 
 #: 
 msgid "Allow Pre-release Upgrades"
 msgstr "Tillåt förhandsuppdateringar"
 
 #: 
+msgid "Allow recording of non-tax-deductible payments in the finance module"
+msgstr "Tillåt registrering av betalningar som inte är skattemässigt avdragsgilla i finansmodulen"
+
+#: 
+msgid "Allow scanned check images to be attached to deposit records"
+msgstr "Tillåt att skannade checkbilder bifogas insättningsposter"
+
+#: 
+msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
+msgstr "Tillåt systemuppdateringar till versioner märkta som 'pre release' på GitHub"
+
+#: 
+msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
+msgstr "Tillåt oautentiserad åtkomst till kalenderhändelser via offentliga HTML-, ICS- och JSON-URL:er. Krävs för att dela kalendrar med externa appar."
+
+#: 
+msgid "Allow visitors to create their own family record via the self-registration page"
+msgstr "Tillåt besökare att skapa sin egen familjepost via självregistreringssidan"
+
+#: 
 msgid "Allow visitors to self-register as new families."
 msgstr "Tillåt besökare att registrera sig som nya familjer."
+
+#. plugin:external-backup:section:5:content
+#: 
+msgid "Any WebDAV-compatible service works with this plugin:\n"
+"\n"
+"- Nextcloud (recommended)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (with WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx with WebDAV module\n"
+"\n"
+"Note: Some services require app-specific passwords for WebDAV access."
+msgstr "Alla WebDAV-kompatibla tjänster fungerar med detta plugin:\n"
+"\n"
+"- Nextcloud (rekommenderas)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (med WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx med WebDAV-modul\n"
+"\n"
+"Obs: Vissa tjänster kräver appspecifika lösenord för WebDAV-åtkomst."
 
 #. plugin:openlp:section:4:title
 #: 
 msgid "Authentication"
 msgstr "Autentisering"
+
+#. plugin:openlp:section:4:content
+#: 
+msgid "Authentication is required for API v2 if you've enabled it in OpenLP's Remote plugin settings. The plugin uses HTTP Basic Authentication. Most local network setups don't require authentication, but it's recommended for security."
+msgstr "Autentisering krävs för API v2 om du har aktiverat det i OpenLP:s Remote plugin-inställningar. Pluginet använder HTTP Basic Authentication. De flesta lokala nätverkskonfigurationer kräver inte autentisering, men det rekommenderas för säkerheten."
 
 #: 
 msgid "Auto TLS"
@@ -13797,6 +13460,69 @@ msgstr "Automatisk säkerhetskopiering"
 msgid "BCC All Mail To"
 msgstr "BCC alla e-post till"
 
+#. plugin:external-backup:section:4:content
+#: 
+msgid "Before relying on external backups, test your connection:\n"
+"1. Go to Plugins > External Backup\n"
+"2. Click 'Test WebDAV Connection'\n"
+"3. Verify you see a success message\n"
+"\n"
+"Common issues:\n"
+"- 401/403 errors: Check username and password\n"
+"- Connection timeout: Verify the endpoint URL is correct\n"
+"- Certificate errors: Ensure the WebDAV server has a valid SSL certificate"
+msgstr "Innan du förlitar dig på externa säkerhetskopior, testa din anslutning:\n"
+"1. Gå till Plugin-program > Extern säkerhetskopia\n"
+"2. Klicka på 'Testa WebDAV-anslutning'\n"
+"3. Verifiera att du ser ett lyckat meddelande\n"
+"\n"
+"Vanliga problem:\n"
+"- 401/403-fel: Kontrollera användarnamn och lösenord\n"
+"- Anslutningstimeout: Verifiera att slutpunktens URL är korrekt\n"
+"- Certifikatfel: Se till att WebDAV-servern har ett giltigt SSL-certifikat"
+
+#. plugin:gravatar:section:1:content
+#: 
+msgid "Choose what appears when no Gravatar exists:\n"
+"• Mystery Person - Gray silhouette outline\n"
+"• Identicon - Geometric pattern based on email\n"
+"• MonsterID - Unique generated monster face\n"
+"• Wavatar - Abstract generated face\n"
+"• Retro - 8-bit arcade-style pixel art\n"
+"• RoboHash - Unique generated robot\n"
+"• Blank - Transparent (falls back to initials)"
+msgstr "Välj vad som visas när ingen Gravatar finns:\n"
+"• Mystery Person - Grå siluettkontur\n"
+"• Identicon - Geometriskt mönster baserat på e-post\n"
+"• MonsterID - Unikt genererat monsterbild\n"
+"• Wavatar - Abstrakt genererat ansikte\n"
+"• Retro - 8-bitars arkadspels-pixelkonst\n"
+"• RoboHash - Unik genererad robot\n"
+"• Blank - Transparent (återgår till initialer)"
+
+#: 
+msgid "Comma-separated query IDs that require finance permissions to view"
+msgstr "Kommaseparerade fråge-ID:n som kräver ekonomibehörighet för att visa"
+
+#. plugin:custom-links:section:4:content
+#: 
+msgid "Common uses for custom links:\n"
+"- Church website\n"
+"- Online giving portal\n"
+"- Volunteer signup forms\n"
+"- Denomination resources\n"
+"- Partner organization sites\n"
+"- Cloud storage folders\n"
+"- Event registration pages"
+msgstr "Vanliga användningar för anpassade länkar:\n"
+"- Kyrkowebbplats\n"
+"- Portal för onlinegåvor\n"
+"- Anmälningsformulär för volontärer\n"
+"- Resurser från kyrkoorganisationen\n"
+"- Partnerorganisationers webbplatser\n"
+"- Molnlagringsmappar\n"
+"- Evenemangsregistreringssidor"
+
 #. plugin:external-backup:section:1:title
 #: 
 msgid "Configuration"
@@ -13810,11 +13536,6 @@ msgstr "Kontinent"
 #: 
 msgid "Costs"
 msgstr "Kostnader"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Kreditkortspersoner"
 
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
@@ -13866,17 +13587,28 @@ msgid "Enable External Calendar API"
 msgstr "Aktivera externt kalender-API"
 
 #: 
+msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
+msgstr "Aktivera e-postutskick från ChurchCRM. Krävs för lösenordsåterställning, aviseringar och e-postlänkar."
+
+#: 
+msgid "Enable if your SMTP server requires a username and password"
+msgstr "Aktivera om din SMTP-server kräver användarnamn och lösenord"
+
+#: 
+msgid "Enable or disable the Sunday School module and sidebar menu."
+msgstr "Aktivera eller inaktivera söndagsskolemodulens och sidofältets meny."
+
+#: 
+msgid "Enable the use of numbered donation envelopes for tracking contributions"
+msgstr "Aktivera användning av numrerade givarekuvert för att spåra bidrag"
+
+#: 
 msgid "Enable use of donation envelopes"
 msgstr "Aktivera användning av gåvokuvert"
 
 #: 
 msgid "Enable use of scanned checks"
 msgstr "Aktivera användning av skannade checkar"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Familjelöfte efter räkenskapsår"
 
 #. plugin:mailchimp:section:1:title
 #: 
@@ -13887,11 +13619,6 @@ msgstr "Funktioner"
 msgid "Finance permission query IDs"
 msgstr "ID för ekonomibehörighetsfrågor"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Hitta registrerade elever"
-
 #: 
 msgid "Find family"
 msgstr "Hitta familj"
@@ -13901,10 +13628,20 @@ msgstr "Hitta familj"
 msgid "Finding Your Server URL"
 msgstr "Hitta din server-URL"
 
-#. Context: queryparameters_qrp
+#. plugin:custom-links:section:3:content
 #: 
-msgid "Fiscal Year."
-msgstr "Räkenskapsår."
+msgid "For security:\n"
+"- Only administrators can add or remove links\n"
+"- The 'Manage Links' option only appears for administrators\n"
+"- Links must use http:// or https:// protocols\n"
+"- HTML tags are not allowed in names or URLs\n"
+"- All input is validated and sanitized"
+msgstr "För säkerheten:\n"
+"- Endast administratörer kan lägga till eller ta bort länkar\n"
+"- Alternativet 'Hantera länkar' visas bara för administratörer\n"
+"- Länkar måste använda http:// eller https://-protokoll\n"
+"- HTML-taggar är inte tillåtna i namn eller URL:er\n"
+"- All inmatning valideras och rensas"
 
 #. plugin:google-analytics:link:1:label
 #: 
@@ -13921,10 +13658,25 @@ msgstr "Komma igång"
 msgid "Getting Your GA4 Measurement ID"
 msgstr "Hämta ditt GA4-mätnings-ID"
 
+#. plugin:google-analytics:summary
+#: 
+msgid "Google Analytics 4 (GA4) tracks how users interact with ChurchCRM, providing insights into page views, user engagement, and feature usage."
+msgstr "Google Analytics 4 (GA4) spårar hur användare interagerar med ChurchCRM och ger insikter om sidvisningar, användarengagemang och funktionsanvändning."
+
 #. plugin:google-analytics:link:0:label
 #: 
 msgid "Google Analytics Help"
 msgstr "Google Analytics hjälp"
+
+#. plugin:google-analytics:section:2:content
+#: 
+msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
+msgstr "Google Analytics samlar in anonymiserade användningsdata. Ingen personlig information från ChurchCRM-poster skickas till Google. Överväg att lägga till en sekretessnotering i din kyrkas datapolicy."
+
+#. plugin:gravatar:summary
+#: 
+msgid "Gravatar (Globally Recognized Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM."
+msgstr "Gravatar (Globally Recognized Avatar) visar profilfoton från gravatar.com för medlemmar som inte har uppladdade foton i ChurchCRM."
 
 #. plugin:gravatar:link:1:label
 #: 
@@ -13936,10 +13688,10 @@ msgstr "Gravatar bildalternativ"
 msgid "Gravatar Website"
 msgstr "Gravatar webbplats"
 
-#. Context: queryparameters_qrp
+#. plugin:gravatar:section:2:content
 #: 
-msgid "Group of registered students"
-msgstr "Grupp av registrerade elever"
+msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
+msgstr "Gravatar fungerar genom att konvertera e-postadresser till en hash (MD5). Den faktiska e-postadressen skickas aldrig till Gravatars servrar – endast hashen används för att slå upp bilden."
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -13959,6 +13711,77 @@ msgstr "Hur det fungerar"
 msgid "How many checks to print per deposit slip page"
 msgstr "Hur många checkar som ska skrivas ut per insättningskvittosida"
 
+#. plugin:vonage:section:3:content
+#: 
+msgid "If SMS messages aren't being sent:\n"
+"1. Verify API Key and Secret are correct (no extra spaces)\n"
+"2. Check that the From Number is a valid Vonage number you own\n"
+"3. Ensure recipient phone numbers include country code\n"
+"4. Check your Vonage account balance\n"
+"5. Review the Vonage Dashboard > SMS > Logs for delivery status"
+msgstr "Om SMS-meddelanden inte skickas:\n"
+"1. Verifiera att API-nyckel och hemlighet är korrekta (inga extra mellanslag)\n"
+"2. Kontrollera att Från-numret är ett giltigt Vonage-nummer du äger\n"
+"3. Se till att mottagarens telefonnummer inkluderar landskod\n"
+"4. Kontrollera ditt Vonage-kontosaldo\n"
+"5. Granska Vonage Dashboard > SMS > Loggar för leveransstatus"
+
+#. plugin:openlp:section:5:content
+#: 
+msgid "If alerts aren't appearing:\n"
+"1. Verify OpenLP is running and the Remote plugin is active\n"
+"2. Ensure the Alerts plugin is enabled in OpenLP\n"
+"3. Check that the server URL is correct (try accessing it in a browser)\n"
+"4. Verify firewall settings allow connections on port 4316\n"
+"5. If using authentication, verify credentials are correct"
+msgstr "Om aviseringar inte visas:\n"
+"1. Verifiera att OpenLP körs och att Remote-pluginet är aktivt\n"
+"2. Se till att Aviseringar-pluginet är aktiverat i OpenLP\n"
+"3. Kontrollera att server-URL:en är korrekt (försök att öppna den i en webbläsare)\n"
+"4. Verifiera att brandväggsinställningarna tillåter anslutningar på port 4316\n"
+"5. Om du använder autentisering, verifiera att inloggningsuppgifterna är korrekta"
+
+#. plugin:vonage:section:5:content
+#: 
+msgid "If messages are sent but not received:\n"
+"1. Check Vonage Dashboard > SMS > Logs for delivery status\n"
+"2. Verify the recipient number is correct and can receive SMS\n"
+"3. Some carriers may block messages from unknown numbers\n"
+"4. Check if the destination country has SMS restrictions"
+msgstr "Om meddelanden skickas men inte tas emot:\n"
+"1. Kontrollera Vonage Dashboard > SMS > Loggar för leveransstatus\n"
+"2. Verifiera att mottagarens nummer är korrekt och kan ta emot SMS\n"
+"3. Vissa operatörer kan blockera meddelanden från okända nummer\n"
+"4. Kontrollera om destinationslandet har SMS-begränsningar"
+
+#. plugin:vonage:section:4:content
+#: 
+msgid "If you receive invalid sender ID errors:\n"
+"1. Use a phone number you've purchased from Vonage\n"
+"2. Format the number in E.164 format (+14155551234)\n"
+"3. Note: Alphanumeric sender IDs may be restricted in some countries"
+msgstr "Om du får felmeddelanden om ogiltigt avsändar-ID:\n"
+"1. Använd ett telefonnummer du har köpt från Vonage\n"
+"2. Formatera numret i E.164-format (+14155551234)\n"
+"3. Obs: Alfanumeriska avsändar-ID:n kan vara begränsade i vissa länder"
+
+#. plugin:external-backup:section:6:content
+#: 
+msgid "Important security notes:\n"
+"\n"
+"1. Always use HTTPS endpoints to encrypt backups in transit\n"
+"2. Use app-specific passwords when available (Nextcloud, ownCloud)\n"
+"3. Store backups in a folder with restricted access\n"
+"4. Periodically download and verify your backups are valid\n"
+"5. Consider encrypting sensitive backups with external tools before uploading"
+msgstr "Viktiga säkerhetsnoteringar:\n"
+"\n"
+"1. Använd alltid HTTPS-slutpunkter för att kryptera säkerhetskopior under överföring\n"
+"2. Använd appspecifika lösenord när det är möjligt (Nextcloud, ownCloud)\n"
+"3. Lagra säkerhetskopior i en mapp med begränsad åtkomst\n"
+"4. Ladda regelbundet ned och verifiera att dina säkerhetskopior är giltiga\n"
+"5. Överväg att kryptera känsliga säkerhetskopior med externa verktyg innan uppladdning"
+
 #: 
 msgid "Initial zoom level when opening the map"
 msgstr "Inledande zoomnivå vid öppning av kartan"
@@ -13970,6 +13793,11 @@ msgstr "Läs mer"
 #: 
 msgid "Log Settings"
 msgstr "Logginställningar"
+
+#. plugin:mailchimp:summary
+#: 
+msgid "MailChimp Integration enables synchronization between ChurchCRM contacts and your MailChimp email marketing lists."
+msgstr "MailChimp-integration möjliggör synkronisering mellan ChurchCRM-kontakter och dina MailChimp-e-postmarknadsföringslistor."
 
 #. plugin:custom-links:section:2:title
 #: 
@@ -13995,10 +13823,10 @@ msgstr "OpenLP dokumentation"
 msgid "OpenLP Website"
 msgstr "OpenLP webbplats"
 
-#. Context: query_qry
+#. plugin:openlp:summary
 #: 
-msgid "People who are configured to pay by credit card."
-msgstr "Personer som är inställda på att betala med kreditkort."
+msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
+msgstr "OpenLP är ett gratis presentationsprogram med öppen källkod utformat för kyrkor. Detta plugin låter ChurchCRM skicka aviseringar och larm direkt till din OpenLP-skärm."
 
 #. plugin:mailchimp:section:3:title
 #: 
@@ -14009,6 +13837,21 @@ msgstr "Person/familjeintegration"
 #: 
 msgid "Phone Number Format"
 msgstr "Telefonnummerformat"
+
+#. plugin:vonage:section:2:content
+#: 
+msgid "Phone numbers should be in E.164 format: country code + number. Examples:\n"
+"- US: +14155551234\n"
+"- UK: +447700900123\n"
+"- Australia: +61412345678\n"
+"\n"
+"Recipient phone numbers in ChurchCRM member profiles should include the country code for SMS to work correctly."
+msgstr "Telefonnummer ska vara i E.164-format: landskod + nummer. Exempel:\n"
+"- USA: +14155551234\n"
+"- UK: +447700900123\n"
+"- Australien: +61412345678\n"
+"\n"
+"Mottagarens telefonnummer i ChurchCRM-medlemsprofiler bör inkludera landskoden för att SMS ska fungera korrekt."
 
 #. plugin:mailchimp:section:4:title
 #: 
@@ -14028,11 +13871,6 @@ msgstr "Integritetsmeddelande"
 #: 
 msgid "Quick Settings"
 msgstr "Snabbinställningar"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Registrerade elever"
 
 #: 
 msgid "SMTP Authentication"
@@ -14059,6 +13897,22 @@ msgid "Setup"
 msgstr "Installation"
 
 #: 
+msgid "Show a breakdown of bill denominations on the deposit slip report"
+msgstr "Visa en uppdelning av sedlar och mynt på insättningssedelsrapporten"
+
+#: 
+msgid "Show or hide the Events menu in the main navigation."
+msgstr "Visa eller dölj händelsemenyn i huvudnavigeringen."
+
+#: 
+msgid "Show or hide the Events section in the main navigation menu"
+msgstr "Visa eller dölj händelseavsnittet i huvudnavigeringsmenyn"
+
+#: 
+msgid "Show or hide the Sunday School module in the sidebar navigation"
+msgstr "Visa eller dölj söndagsskolemodulens i sidofältets navigering"
+
+#: 
 msgid "Street"
 msgstr "Gata"
 
@@ -14075,6 +13929,89 @@ msgstr "Tjänster som stöds"
 #: 
 msgid "Testing Connection"
 msgstr "Testar anslutning"
+
+#. plugin:custom-links:section:0:content
+#: 
+msgid "The Custom Menu Links plugin allows administrators to add external links to the navigation menu. When enabled, a 'Links' menu appears in the sidebar containing all configured links."
+msgstr "Plugin-programmet Anpassade menylänkar låter administratörer lägga till externa länkar i navigeringsmenyn. När det är aktiverat visas en 'Länkar'-meny i sidofältet med alla konfigurerade länkar."
+
+#. plugin:external-backup:section:0:content
+#: 
+msgid "The External Backup plugin allows you to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services. This includes popular services like Nextcloud, ownCloud, or any server supporting WebDAV protocol."
+msgstr "Plugin-programmet Extern säkerhetskopia låter dig automatiskt säkerhetskopiera din ChurchCRM-databas till WebDAV-kompatibla molnlagringstjänster. Detta inkluderar populära tjänster som Nextcloud, ownCloud eller alla servrar som stöder WebDAV-protokollet."
+
+#. plugin:openlp:section:3:content
+#: 
+msgid "The default OpenLP port is 4316. Your server URL will typically be: http://192.168.x.x:4316 where 192.168.x.x is the IP address of the computer running OpenLP. You can find this in OpenLP under Tools → Open Service Manager."
+msgstr "Standard-OpenLP-porten är 4316. Din server-URL kommer vanligtvis att vara: http://192.168.x.x:4316 där 192.168.x.x är IP-adressen på datorn som kör OpenLP. Du hittar detta i OpenLP under Verktyg → Öppna tjänstehanteraren."
+
+#: 
+msgid "The month that starts your organization's fiscal year"
+msgstr "Månaden som startar din organisations räkenskapsår"
+
+#. plugin:vonage:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an SMS can be sent to notify parents or guardians."
+msgstr "Detta plugin används för närvarande för kioskincheckning-aviseringar. När ett barn checkas in i en söndagsskoleklass via kiosksystemet kan ett SMS skickas för att meddela föräldrar eller vårdnadshavare."
+
+#. plugin:openlp:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an alert can be sent to the OpenLP projector display to notify parents or volunteers."
+msgstr "Detta plugin används för närvarande för kioskincheckning-aviseringar. När ett barn checkas in i en söndagsskoleklass via kiosksystemet kan en avisering skickas till OpenLP-projektordisplayen för att meddela föräldrar eller volontärer."
+
+#. plugin:mailchimp:section:4:content
+#: 
+msgid "This plugin transmits email addresses to MailChimp servers. Ensure you have appropriate consent from your members before syncing their information to third-party services like MailChimp."
+msgstr "Detta plugin överför e-postadresser till MailChimps servrar. Se till att du har lämpligt samtycke från dina medlemmar innan du synkroniserar deras information till tredjepartstjänster som MailChimp."
+
+#. plugin:custom-links:section:1:content
+#: 
+msgid "To add a new link:\n"
+"1. Go to the Links menu in the sidebar and click 'Manage Links'\n"
+"2. Enter a display name (2-50 characters)\n"
+"3. Enter the full URL (must start with http:// or https://)\n"
+"4. Click 'Add Link'\n"
+"\n"
+"The link will immediately appear in the Links menu."
+msgstr "Så här lägger du till en ny länk:\n"
+"1. Gå till Länkar-menyn i sidofältet och klicka på 'Hantera länkar'\n"
+"2. Ange ett visningsnamn (2–50 tecken)\n"
+"3. Ange den fullständiga URL:en (måste börja med http:// eller https://)\n"
+"4. Klicka på 'Lägg till länk'\n"
+"\n"
+"Länken visas omedelbart i Länkar-menyn."
+
+#. plugin:external-backup:section:1:content
+#: 
+msgid "To configure external backups:\n"
+"1. Go to Admin > Plugins and find 'External Backup (WebDAV)'\n"
+"2. Click the settings icon to expand the configuration panel\n"
+"3. Enter your WebDAV endpoint URL (e.g., https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Enter your username and password\n"
+"5. Optionally set an auto-backup interval in hours\n"
+"6. Save your settings"
+msgstr "Så här konfigurerar du externa säkerhetskopior:\n"
+"1. Gå till Admin > Plugin-program och hitta 'Extern säkerhetskopia (WebDAV)'\n"
+"2. Klicka på inställningsikonen för att expandera konfigurationspanelen\n"
+"3. Ange din WebDAV-slutpunkts-URL (t.ex. https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Ange ditt användarnamn och lösenord\n"
+"5. Ange eventuellt ett intervall för automatisk säkerhetskopiering i timmar\n"
+"6. Spara dina inställningar"
+
+#. plugin:mailchimp:section:0:content
+#: 
+msgid "To use MailChimp Integration, you need a MailChimp account and an API key.\n"
+"\n"
+"1. Log in to your MailChimp account\n"
+"2. Go to Account > Extras > API Keys\n"
+"3. Create a new API key or copy an existing one\n"
+"4. Enter the API key in the plugin settings"
+msgstr "För att använda MailChimp-integration behöver du ett MailChimp-konto och en API-nyckel.\n"
+"\n"
+"1. Logga in på ditt MailChimp-konto\n"
+"2. Gå till Konto > Extras > API-nycklar\n"
+"3. Skapa en ny API-nyckel eller kopiera en befintlig\n"
+"4. Ange API-nyckeln i plugin-inställningarna"
 
 #. plugin:openlp:section:5:title
 #: 
@@ -14105,10 +14042,10 @@ msgstr "Uppgraderingsinställningar"
 msgid "Use Cases"
 msgstr "Användningsfall"
 
-#. Context: userconfig_ucfg
+#. plugin:vonage:link:0:label
 #: 
-msgid "User permission to export CSV files"
-msgstr "Användarbehörighet för export av CSV-filer"
+msgid "Vonage Dashboard"
+msgstr "Vonage Dashboard"
 
 #. plugin:vonage:link:2:label
 #: 
@@ -14120,8 +14057,1605 @@ msgstr "Vonage priser"
 msgid "Vonage SMS API Documentation"
 msgstr "Vonage SMS API dokumentation"
 
+#. plugin:vonage:summary
+#: 
+msgid "Vonage SMS enables text message notifications for ChurchCRM using the Vonage API (formerly Nexmo). Send SMS alerts to parents when their child checks in via the kiosk system."
+msgstr "Vonage SMS möjliggör SMS-aviseringar för ChurchCRM med hjälp av Vonage API (tidigare Nexmo). Skicka SMS-larm till föräldrar när deras barn checkar in via kiosksystemet."
+
+#. plugin:vonage:section:6:content
+#: 
+msgid "Vonage charges per SMS sent. Pricing varies by destination country. See the Vonage pricing page for current rates. New accounts receive free trial credit for testing."
+msgstr "Vonage debiterar per skickat SMS. Prissättningen varierar beroende på destinationsland. Se Vonages prissida för aktuella priser. Nya konton får gratis testkrediter för testning."
+
 #. plugin:google-analytics:section:1:title
 #: 
 msgid "What Gets Tracked"
 msgstr "Vad spåras"
+
+#. plugin:mailchimp:section:3:content
+#: 
+msgid "When MailChimp is configured, a 'MailChimp' tab appears on Person view pages showing:\n"
+"\n"
+"- Email subscription status across all lists\n"
+"- Which lists the person is subscribed to\n"
+"- Subscription statistics"
+msgstr "När MailChimp är konfigurerat visas en 'MailChimp'-flik på personvisningssidor som visar:\n"
+"\n"
+"- E-postprenumerationsstatus för alla listor\n"
+"- Vilka listor personen prenumererar på\n"
+"- Prenumerationsstatistik"
+
+#. plugin:gravatar:section:0:content
+#: 
+msgid "When a member doesn't have an uploaded photo, ChurchCRM checks if they have a Gravatar associated with their email address. If a Gravatar exists, it displays that image. If not, the configured default image style is used."
+msgstr "När en medlem inte har ett uppladdad foto kontrollerar ChurchCRM om de har en Gravatar kopplad till sin e-postadress. Om en Gravatar finns visas den bilden. Om inte, används den konfigurerade standardbildstilen."
+
+#. plugin:external-backup:section:2:content
+#: 
+msgid "When auto-backup is enabled (interval > 0 hours), ChurchCRM will automatically create and upload a full database backup at the specified interval. The backup runs as part of normal page loads, so the system must have regular user activity to trigger backups.\n"
+"\n"
+"Recommended intervals:\n"
+"- Daily backup: 24 hours\n"
+"- Twice daily: 12 hours\n"
+"- Weekly: 168 hours"
+msgstr "När automatisk säkerhetskopiering är aktiverad (intervall > 0 timmar) kommer ChurchCRM automatiskt att skapa och ladda upp en fullständig databassäkerhetskopia med angivet intervall. Säkerhetskopian körs som en del av normala sidinläsningar, så systemet måste ha regelbunden användaraktivitet för att utlösa säkerhetskopior.\n"
+"\n"
+"Rekommenderade intervall:\n"
+"- Daglig säkerhetskopia: 24 timmar\n"
+"- Två gånger dagligen: 12 timmar\n"
+"- Veckovis: 168 timmar"
+
+#. plugin:openlp:section:1:content
+#: 
+msgid "When enabled and configured, ChurchCRM sends alert messages to your OpenLP server using the API v2 endpoint (POST /api/v2/plugins/alerts). These alerts appear as overlay notifications on your projected display."
+msgstr "När det är aktiverat och konfigurerat skickar ChurchCRM aviseringsmeddelanden till din OpenLP-server med hjälp av API v2-slutpunkten (POST /api/v2/plugins/alerts). Dessa aviseringar visas som överlägg på din projicerade skärm."
+
+#: 
+msgid "When enabled, hides the address field for people not assigned to a family"
+msgstr "När det är aktiverat döljs adressfältet för personer som inte är tilldelade till en familj"
+
+#: 
+msgid "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background."
+msgstr "När det är aktiverat döljs latitud-/longitudfälten i familjeredigeraren. Geokodning körs fortfarande i bakgrunden."
+
+#. plugin:external-backup:section:3:content
+#: 
+msgid "You can also trigger a manual backup at any time:\n"
+"1. Go to the External Backup settings page (Plugins > External Backup)\n"
+"2. Select backup type (Database Only or Full Backup)\n"
+"3. Click 'Backup to WebDAV Now'\n"
+"\n"
+"Database Only backups are smaller and faster. Full backups include uploaded photos."
+msgstr "Du kan också utlösa en manuell säkerhetskopia när som helst:\n"
+"1. Gå till sidan för Extern säkerhetskopia (Plugin-program > Extern säkerhetskopia)\n"
+"2. Välj säkerhetskopieringstyp (Endast databas eller Fullständig säkerhetskopia)\n"
+"3. Klicka på 'Säkerhetskopiera till WebDAV nu'\n"
+"\n"
+"Säkerhetskopior av typen 'Endast databas' är mindre och snabbare. Fullständiga säkerhetskopior inkluderar uppladdade foton."
+
+#. plugin:google-analytics:section:1:content
+#: 
+msgid "• Page views and navigation patterns\n"
+"• Session duration and engagement\n"
+"• User demographics (if enabled in GA4)\n"
+"• Device and browser information"
+msgstr "• Sidvisningar och navigeringsmönster\n"
+"• Sessionlängd och engagemang\n"
+"• Användardemografi (om aktiverat i GA4)\n"
+"• Enhets- och webbläsarinformation"
+
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "Filstorleken överskrider serverns gräns på %s"
+
+#: 
+msgid "Missing image data in request"
+msgstr "Bilddata saknas i begäran"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Hitta personer som inte deltog i ett evenemang"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Saknade personer"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Välj önskat evenemang"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Avancerad filtrering efter grupp, klassificering och roll"
+
+#: 
+msgid "All congregation members included"
+msgstr "Alla församlingsmedlemmar inkluderade"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "ChMeetings-kompatibelt kolumnformat"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Kontaktinformation, familjeroller och viktiga datum"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Skapa en fullständig säkerhetskopia av din kyrkodatabas. Ladda ner en SQL-fil med enbart databasen eller ett komplett arkiv inklusive uppladdade foton."
+
+#: 
+msgid "Database Backup"
+msgstr "Databassäkerhetskopiering"
+
+#: 
+msgid "Export"
+msgstr "Exportera"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Exportera församlingsdata till CSV-format. Välj vilka fält som ska inkluderas och filtrera efter klassificering, grupp, kön med mera."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Exportera alla personer i det format som ChMeetings förväntar sig, vilket gör det enkelt att synkronisera din församlingsdata med ChMeetings-plattformen."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Exportera din kyrkdata till olika format"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Extern säkerhetskopiering (WebDAV) via insticksprogram"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Familje- eller individuell postlayout"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Flexibelt fältval"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Gå till databassäkerhetskopiering"
+
+#: 
+msgid "Open CSV Export"
+msgstr "Öppna CSV-export"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Återställ från sidan för systemsäkerhetskopiering"
+
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "En systemuppdatering är tillgänglig. Vänligen uppgradera din installation."
+
+#: 
+msgid "API Access"
+msgstr "API-åtkomst"
+
+#: 
+msgid "API Key"
+msgstr "API-nyckel"
+
+#: 
+msgid "API key regenerated"
+msgstr "API-nyckel genererades om"
+
+#: 
+msgid "Account"
+msgstr "Konto"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Avancerade inställningar"
+
+#: 
+msgid "An error occurred."
+msgstr "Ett fel uppstod."
+
+#: 
+msgid "Appearance"
+msgstr "Utseende"
+
+#: 
+msgid "Azure"
+msgstr "Azure"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Tillbaka till ekonomiöversikt"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Tillbaka till gruppsöversikt"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Tillbaka till personöversikt"
+
+#: 
+msgid "Blue"
+msgstr "Blå"
+
+#: 
+msgid "Change Photo"
+msgstr "Ändra foto"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "Ändringar träder inte i kraft förrän nästa inloggning."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Välj mellan ljust och mörkt färgschema"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "ChurchCRM-översättningar hanteras av gemenskapen på POEditor. Du kan hjälpa till genom att:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Anpassa utseendet och känslan i programmet"
+
+#: 
+msgid "Cyan"
+msgstr "Cyan"
+
+#: 
+msgid "Dark"
+msgstr "Mörkt"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Endast databas (.sql) eller fullständigt arkiv (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Standardantalet rader som visas i datatabeller. Träder i kraft vid nästa sidinläsning."
+
+#: 
+msgid "Edit own family only"
+msgstr "Redigera endast den egna familjen"
+
+#: 
+msgid "Enter text here..."
+msgstr "Ange text här..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Det gick inte att avbryta registreringen. Försök igen."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Det gick inte att ta bort händelsen. Försök igen."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "Det gick inte att inaktivera tvåfaktorsautentisering. Försök igen."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "Det gick inte att generera QR-kod. Försök igen."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "Det gick inte att läsa in kalenderdata. Försök igen."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Det gick inte att läsa in händelsen. Försök igen."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "Det gick inte att läsa in återställningskoder. Vänligen uppdatera sidan."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Det gick inte att spara händelsen. Försök igen."
+
+#: 
+msgid "Failed to save setting"
+msgstr "Det gick inte att spara inställningen"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Filippinska - Filippinerna"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Korrigera felaktiga eller klumpiga översättningar på ditt språk"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "Hittade du ett fel med översättningarna?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Ger alla behörigheter"
+
+#: 
+msgid "Green"
+msgstr "Grön"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Hjälp till att förbättra översättningar"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "Om du märker förvrängda tecken, HTML-entiteter som visas som text, eller översättningar som bryter sidlayouten, vänligen rapportera problemet på GitHub så att det kan åtgärdas för alla."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "Inkludera din API-nyckel i förfrågningar med hjälp av x-api-key-headern:"
+
+#: 
+msgid "Indigo"
+msgstr "Indigo"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Ogiltigt JSON-värde – inställningen sparades inte. Vänligen korrigera det och försök igen."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "Gå med i översättningsprojektet på POEditor"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Språk- och regioninställningar"
+
+#: 
+msgid "Light"
+msgstr "Ljust"
+
+#: 
+msgid "Lime"
+msgstr "Limegrön"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "Malayalam - Indien"
+
+#: 
+msgid "Manage 2FA"
+msgstr "Hantera 2FA"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "Hantera ytterligare inställningar som e-postavgränsare och visningsalternativ"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Hantera din API-nyckel för externa integrationer"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "Metoden är inte tillåten"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "Saknade eller felaktiga översättningar?"
+
+#: 
+msgid "My Account"
+msgstr "Mitt konto"
+
+#: 
+msgid "Orange"
+msgstr "Orange"
+
+#: 
+msgid "Override the system default locale"
+msgstr "Åsidosätt systemets standardspråk"
+
+#: 
+msgid "Page Not Found"
+msgstr "Sidan hittades inte"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "Procentandel av strängar översatta för ditt nuvarande språk"
+
+#: 
+msgid "Pink"
+msgstr "Rosa"
+
+#: 
+msgid "Primary Color"
+msgstr "Primärfärg"
+
+#: 
+msgid "Profile and security"
+msgstr "Profil och säkerhet"
+
+#: 
+msgid "Purple"
+msgstr "Lila"
+
+#: 
+msgid "Red"
+msgstr "Röd"
+
+#: 
+msgid "Regenerate"
+msgstr "Generera om"
+
+#: 
+msgid "Rows per page"
+msgstr "Rader per sida"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Ange behörighet till Sant för att tillåta denna användare att ändra inställningen själv."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Ange accentfärgen som används för knappar, länkar och aktiva element"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Föreslå bättre formuleringar för befintliga översättningar"
+
+#: 
+msgid "System Update Available"
+msgstr "Systemuppdatering tillgänglig"
+
+#: 
+msgid "Tables"
+msgstr "Tabeller"
+
+#: 
+msgid "Teal"
+msgstr "Blågrön"
+
+#: 
+msgid "Theme Mode"
+msgstr "Temaläge"
+
+#: 
+msgid "Toggle search"
+msgstr "Växla sökning"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Översätta saknade strängar för att förbättra täckningen"
+
+#: 
+msgid "Translation Progress"
+msgstr "Översättningsframsteg"
+
+#: 
+msgid "Usage"
+msgstr "Användning"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "Använd denna nyckel för att autentisera API-förfrågningar. En omgenerering ogiltigförklarar den nuvarande nyckeln."
+
+#: 
+msgid "User Config"
+msgstr "Användarkonfiguration"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Verifieringen misslyckades. Försök igen."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "Version %s är tillgänglig. Vänligen uppgradera din installation."
+
+#: 
+msgid "View All"
+msgstr "Visa alla"
+
+#: 
+msgid "Yellow"
+msgstr "Gul"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "Dina nuvarande åtkomstnivåer (skrivskyddad)"
+
+#: 
+msgid "%d repeat event created successfully."
+msgid_plural "%d repeat events created successfully."
+msgstr[0] "%d återkommande händelse skapades."
+msgstr[1] "%d återkommande händelser skapades."
+
+#: 
+msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
+msgstr "(t.ex. Medlemmar, Besökare, Barn) så att volontärer kan registrera antal närvaro här."
+
+#: 
+msgid "1. Sunday School Class"
+msgstr "1. Söndagsskoleklass"
+
+#: 
+msgid "2. Event Type"
+msgstr "2. Händelsetyp"
+
+#: 
+msgid "3. Event"
+msgstr "3. Händelse"
+
+#: 
+msgid "4. Kiosk"
+msgstr "4. Kiosk"
+
+#: 
+msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
+msgstr "En klass är en Grupp med typen \"Söndagsskola\". Den innehåller elever och lärare (medlemmar med roller)."
+
+#: 
+msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
+msgstr "En länkad grupp kopplar denna händelse till en klass eller tjänsts deltagarlista. När händelsen tilldelas en kiosk hämtar kiosken gruppmedlemmarna och visar dem som en tryck-för-incheckning-lista. För söndagsskoleklasser, länka klassgruppen här så att volontärer kan checka in elever från en surfplatta."
+
+#: 
+msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
+msgstr "Ett specifikt tillfälle (t.ex. \"Förskola — 12 apr\"). Ärver standardinställningar från typen och är kopplat till klassgruppen via publiken. Det är mot detta som volontärer registrerar närvaro."
+
+#: 
+msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr "En surfplatta tilldelad en händelse. Kiosken hämtar händelsens länkade grupplista och visar tryck-för-incheckning. Utan en länkad grupp har kiosken ingen lista att visa."
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "Lägg till inkommande / besökare"
+
+#: 
+msgid "Add categories on the Event Type page"
+msgstr "Lägg till kategorier på sidan Händelsetyp"
+
+#: 
+msgid "Add people to your cart first, then come back to check them in to an event."
+msgstr "Lägg till personer i ditt urval först, kom sedan tillbaka för att checka in dem till en händelse."
+
+#: 
+msgid "All clear!"
+msgstr "Allt klart!"
+
+#: 
+msgid "All events and attendance records"
+msgstr "Alla händelser och nährvaroposter"
+
+#: 
+msgid "All financial data (pledges, payments, deposits)"
+msgstr "All ekonomisk data (löften, betalningar, insättningar)"
+
+#: 
+msgid "All groups, roles, and memberships"
+msgstr "Alla grupper, roller och medlemskap"
+
+#: 
+msgid "All people and family records"
+msgstr "Alla person- och familjeposter"
+
+#: 
+msgid "All system settings and custom fields"
+msgstr "Alla systeminställningar och anpassade fält"
+
+#: 
+msgid "All uploaded photos and documents"
+msgstr "Alla uppladdade foton och dokument"
+
+#: 
+msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
+msgstr "En händelsetyp är en mall — namn, standard starttid, upprepning, kategorier för nährvaroräkning. Kan valfritt länkas till en klassgrupp som standardpublik."
+
+#: 
+msgid "Attendance record deleted."
+msgstr "Nährvaropost borttagen."
+
+#: 
+msgid "Audit"
+msgstr "Granskning"
+
+#: 
+msgid "Audit Events"
+msgstr "Händelsegranskning"
+
+#: 
+msgid "Auto-totalled from counts at right"
+msgstr "Summeras automatiskt från räkningarna till höger"
+
+#: 
+msgid "Back to Events"
+msgstr "Tillbaka till händelser"
+
+#: 
+msgid "Back to Events Dashboard"
+msgstr "Tillbaka till händelseöversikten"
+
+#: 
+msgid "Backup failed. You can still proceed with the reset, but your data will be lost."
+msgstr "Säkerhetskopiering misslyckades. Du kan fortfarande fortsätta med återställningen, men dina data går förlorade."
+
+#: 
+msgid "Backup ready!"
+msgstr "Säkerhetskopia klar!"
+
+#: 
+msgid "Before resetting, we strongly recommend downloading a backup of your current data. This is your only chance to preserve it."
+msgstr "Innan du återställer rekommenderar vi starkt att du laddar ner en säkerhetskopia av dina nuvarande data. Det här är din enda chans att bevara dem."
+
+#: 
+msgid "Bulk-create a series of recurring events"
+msgstr "Skapa en serie återkommande händelser i bulk"
+
+#: 
+msgid "By"
+msgstr "Av"
+
+#: 
+msgid "Cannot check in to an inactive event. Activate the event first."
+msgstr "Kan inte checka in till en inaktiv händelse. Aktivera händelsen först."
+
+#: 
+msgid "Change"
+msgstr "Ändra"
+
+#: 
+msgid "Check In All"
+msgstr "Checka in alla"
+
+#: 
+msgid "Check In Family"
+msgstr "Checka in familjen"
+
+#: 
+msgid "Check Out All"
+msgstr "Checka ut alla"
+
+#: 
+msgid "Check in all %d family members to a single event."
+msgstr "Checka in alla %d familjemedlemmar till en enda händelse."
+
+#: 
+msgid "Check out"
+msgstr "Checka ut"
+
+#: 
+msgid "Check-in By"
+msgstr "Incheckad av"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "Incheckning misslyckades. Försök igen."
+
+#: 
+msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
+msgstr "Incheckning är inaktiverad för inaktiva händelser. Aktivera händelsen från händelseöversikten för att aktivera incheckning."
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "Utcheckning misslyckades. Försök igen."
+
+#: 
+msgid "Checked in to event: %s"
+msgstr "Incheckad till händelse: %s"
+
+#: 
+msgid "Checked out from event: %s"
+msgstr "Utcheckad från händelse: %s"
+
+#: 
+msgid "Close All Stuck Events"
+msgstr "Stäng alla fastnade händelser"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "Bekräfta utcheckning"
+
+#: 
+msgid "Create Repeat Events"
+msgstr "Skapa återkommande händelser"
+
+#: 
+msgid "Create Today's Event"
+msgstr "Skapa dagens händelse"
+
+#: 
+msgid "Create a new event type with recurrence and attendance settings"
+msgstr "Skapa en ny händelsetyp med upprepnings- och nährvaroinställningar"
+
+#: 
+msgid "Create one now"
+msgstr "Skapa en nu"
+
+#: 
+msgid "Create today's class event and link it to this class for kiosk check-in"
+msgstr "Skapa dagens klasshändelse och länka den till denna klass för kiosk-incheckning"
+
+#: 
+msgid "Creating backup..."
+msgstr "Skapar säkerhetskopia..."
+
+#: 
+msgid "Creating..."
+msgstr "Skapar..."
+
+#: 
+msgid "Database + uploaded photos (larger)"
+msgstr "Databas + uppladdade foton (större)"
+
+#: 
+msgid "Database dump only (.sql)"
+msgstr "Enbart databasdump (.sql)"
+
+#: 
+msgid "Date Range"
+msgstr "Datumintervall"
+
+#: 
+msgid "Date range cannot exceed 1 year"
+msgstr "Datumintervallet får inte överstiga 1 år"
+
+#: 
+msgid "Deactivate"
+msgstr "Inaktivera"
+
+#: 
+msgid "Delete Event Type"
+msgstr "Ta bort händelsetyp"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "Ta bort nährvaropost?"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "Ta bort incheckningspost för"
+
+#: 
+msgid "Delete this event?"
+msgstr "Ta bort denna händelse?"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "Om du tar bort en händelse tas även all nährvaroräkning bort. Detta kan inte ångras."
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "Om du tar bort denna händelse tas även alla nährvaroposter bort. Detta kan inte ångras."
+
+#: 
+msgid "Destructive Operation"
+msgstr "Destruktiv åtgärd"
+
+#: 
+msgid "Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field."
+msgstr "Redigera ett kategorinamn och klicka på Spara, eller använd soptunneikonen för att ta bort. Nya rader läggs till via fältet längst ned."
+
+#: 
+msgid "End Time"
+msgstr "Sluttid"
+
+#: 
+msgid "End time must be after start time."
+msgstr "Sluttiden måste vara efter starttiden."
+
+#: 
+msgid "Ended"
+msgstr "Avslutad"
+
+#: 
+msgid "Ends"
+msgstr "Slutar"
+
+#: 
+msgid "Event Audit"
+msgstr "Händelsegranskning"
+
+#: 
+msgid "Event Check-in"
+msgstr "Händelseincheckning"
+
+#: 
+msgid "Event Details"
+msgstr "Händelsedetaljer"
+
+#: 
+msgid "Event Template"
+msgstr "Händelsemall"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "Händelsen finns redan. Omdirigerar till incheckning..."
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "Händelsen skapades. Omdirigerar till incheckning..."
+
+#: 
+msgid "Event end date/time must be on or after the start date/time."
+msgstr "Händelsens slutdatum/-tid måste vara på eller efter startdatum/-tid."
+
+#: 
+msgid "Event title is required."
+msgstr "Händelsetitel krävs."
+
+#: 
+msgid "Event type ID is required"
+msgstr "Händelsetyp-ID krävs"
+
+#: 
+msgid "Event type ID or group ID is required"
+msgstr "Händelsetyp-ID eller grupp-ID krävs"
+
+#: 
+msgid "Event type has no date configured for yearly recurrence"
+msgstr "Händelsetypen har inget datum konfigurerat för årlig upprepning"
+
+#: 
+msgid "Event type has no day-of-week configured for weekly recurrence"
+msgstr "Händelsetypen har ingen veckodag konfigurerad för veckovis upprepning"
+
+#: 
+msgid "Event type has no recurrence pattern configured"
+msgstr "Händelsetypen har inget upprepningsmönster konfigurerat"
+
+#: 
+msgid "Event type has no valid day-of-month configured for monthly recurrence"
+msgstr "Händelsetypen har ingen giltig månadsdag konfigurerad för månadsvis upprepning"
+
+#: 
+msgid "Events will be created for every matching occurrence within this date range."
+msgstr "Händelser skapas för varje matchande tillfälle inom detta datumintervall."
+
+#: 
+msgid "Every month on the"
+msgstr "Varje månad den"
+
+#: 
+msgid "Every week on"
+msgstr "Varje vecka på"
+
+#: 
+msgid "Every year on"
+msgstr "Varje år den"
+
+#: 
+msgid "Everyone is checked in!"
+msgstr "Alla är incheckade!"
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "Det gick inte att skapa klassen. Försök igen."
+
+#: 
+msgid "Failed to create event."
+msgstr "Det gick inte att skapa händelsen."
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "Det gick inte att skapa händelsen. Försök igen."
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "Det gick inte att ta bort. Försök igen."
+
+#: 
+msgid "Fastest workflow:"
+msgstr "Snabbaste arbetsflödet:"
+
+#: 
+msgid "Find past events that are still active or have un-checked-out attendees"
+msgstr "Hitta tidigare händelser som fortfarande är aktiva eller har deltagare som inte checkats ut"
+
+#: 
+msgid "Format: MM-DD (e.g. 04-12 for April 12)"
+msgstr "Format: MM-DD (t.ex. 04-12 för 12 april)"
+
+#: 
+msgid "Group Roster"
+msgstr "Grupplista"
+
+#: 
+msgid "Hide Advanced Options"
+msgstr "Dölj avancerade alternativ"
+
+#: 
+msgid "How Sunday School + Events + Kiosks fit together"
+msgstr "Hur söndagsskola + händelser + kiosker hör ihop"
+
+#: 
+msgid "Invalid date for %s — expected YYYY-MM-DD"
+msgstr "Ogiltigt datum för %s — förväntat YYYY-MM-DD"
+
+#: 
+msgid "Invalid date format for rangeStart or rangeEnd"
+msgstr "Ogiltigt datumformat för rangeStart eller rangeEnd"
+
+#: 
+msgid "Invalid date format."
+msgstr "Ogiltigt datumformat."
+
+#: 
+msgid "Invalid date; expected format YYYY-MM-DD"
+msgstr "Ogiltigt datum; förväntat format YYYY-MM-DD"
+
+#: 
+msgid "Invalid event type ID"
+msgstr "Ogiltigt händelsetyp-ID"
+
+#: 
+msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
+msgstr "Ogiltigt format för årlig upprepning; förväntat MM-DD (t.ex. 04-12)"
+
+#: 
+msgid "Just now"
+msgstr "Just nu"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "Lämna tomt för att checka ut utan att registrera ansvarig."
+
+#: 
+msgid "Link events to a group for Kiosk check-in functionality."
+msgstr "Länka händelser till en grupp för kioskens incheckningsfunktion."
+
+#: 
+msgid "Linked Groups"
+msgstr "Länkade grupper"
+
+#: 
+msgid "Looking for stuck events..."
+msgstr "Letar efter fastnade händelser..."
+
+#: 
+msgid "Manage event names, recurrence patterns, and attendance counts"
+msgstr "Hantera händelsenamn, upprepningsmönster och nährvaroräkning"
+
+#: 
+msgid "Missing required field: %s"
+msgstr "Obligatoriskt fält saknas: %s"
+
+#: 
+msgid "No Events Today"
+msgstr "Inga händelser idag"
+
+#: 
+msgid "No Group"
+msgstr "Ingen grupp"
+
+#: 
+msgid "No active events found."
+msgstr "Inga aktiva händelser hittades."
+
+#: 
+msgid "No attendance count categories defined for this event type yet."
+msgstr "Inga nährvaroräkningskategorier har definierats för denna händelsetyp ännu."
+
+#: 
+msgid "No one has been checked in to this event yet."
+msgstr "Ingen har checkats in till denna händelse ännu."
+
+#: 
+msgid "No past events are still marked Active."
+msgstr "Inga tidigare händelser är fortfarande markerade som aktiva."
+
+#: 
+msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
+msgstr "Öppna en klass → klicka på \"Skapa dagens händelse\" — händelsen skapas och länkas till klassen i ett steg, sedan hamnar du på incheckningssidan redo för kiosk eller inkommande närvaro."
+
+#: 
+msgid "Optional Settings"
+msgstr "Valfria inställningar"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "Valfritt — registrera vem som checkar ut denna person (t.ex. en förälder som hämtar ett barn)."
+
+#: 
+msgid "Person checked out."
+msgstr "Person utcheckad."
+
+#: 
+msgid "Person is not checked in"
+msgstr "Person är inte incheckad"
+
+#: 
+msgid "Person not in active class roster"
+msgstr "Person finns inte i aktiv klasslista"
+
+#: 
+msgid "Pin to Calendars"
+msgstr "Fäst i kalendrar"
+
+#: 
+msgid "Please select a person to check in."
+msgstr "Välj en person att checka in."
+
+#: 
+msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
+msgstr "Förifyllt baserat på denna händelsetyp — för återkommande typer är datumet nästa tillfälle efter den senaste händelsen av denna typ, och tiden matchar typens standard starttid."
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "Intervallets slutdatum måste vara på eller efter intervallets startdatum."
+
+#: 
+msgid "Range end must be a valid YYYY-MM-DD date."
+msgstr "Intervallets slut måste vara ett giltigt YYYY-MM-DD datum."
+
+#: 
+msgid "Range start must be a valid YYYY-MM-DD date."
+msgstr "Intervallets start måste vara ett giltigt YYYY-MM-DD datum."
+
+#: 
+msgid "Range start must be before range end"
+msgstr "Intervallets start måste vara före intervallets slut"
+
+#: 
+msgid "Range start must be before range end."
+msgstr "Intervallets start måste vara före intervallets slut."
+
+#: 
+msgid "RangeEnd must be on or after RangeStart"
+msgstr "RangeEnd måste vara på eller efter RangeStart"
+
+#: 
+msgid "Recommended"
+msgstr "Rekommenderas"
+
+#: 
+msgid "Required for Kiosk"
+msgstr "Krävs för kiosk"
+
+#: 
+msgid "Resetting will permanently delete:"
+msgstr "Återställning kommer permanent att ta bort:"
+
+#: 
+msgid "SQL Only"
+msgstr "Enbart SQL"
+
+#: 
+msgid "Save Time"
+msgstr "Spara tid"
+
+#: 
+msgid "Save changes to this category name"
+msgstr "Spara ändringar av detta kategorinamn"
+
+#: 
+msgid "Select an event type…"
+msgstr "Välj en händelsetyp…"
+
+#: 
+msgid "Select start and end date/time."
+msgstr "Välj start- och slutdatum/-tid."
+
+#: 
+msgid "Show More Options"
+msgstr "Visa fler alternativ"
+
+#: 
+msgid "Skip"
+msgstr "Hoppa över"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "Hoppa över och checka ut"
+
+#: 
+msgid "Start Check-in"
+msgstr "Starta incheckning"
+
+#: 
+msgid "Starts"
+msgstr "Börjar"
+
+#: 
+msgid "Step 1: Create a Backup"
+msgstr "Steg 1: Skapa en säkerhetskopia"
+
+#: 
+msgid "Step 2: Reset Database"
+msgstr "Steg 2: Återställ databas"
+
+#: 
+msgid "Still Checked In"
+msgstr "Fortfarande incheckad"
+
+#: 
+msgid "Stuck Events"
+msgstr "Fastnade händelser"
+
+#: 
+msgid "Take Attendance"
+msgstr "Registrera närvaro"
+
+#: 
+msgid "The Events module is disabled"
+msgstr "Händelsemodulen är inaktiverad"
+
+#: 
+msgid "The same start and end time will be used for all generated events."
+msgstr "Samma start- och sluttid används för alla genererade händelser."
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "Det finns inga händelser schemalagda för idag"
+
+#: 
+msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
+msgstr "Det här är räkningskategorier — volontärer fyller i dem efter händelsen så att instrumentpanelen kan dela upp närvaron (t.ex. hur många medlemmar jämfört med besökare). De är separata från individuella incheckningar på incheckningssidan."
+
+#: 
+msgid "This event is inactive."
+msgstr "Denna händelse är inaktiv."
+
+#: 
+msgid "This page allows you to permanently erase all data in the ChurchCRM database. This action cannot be undone."
+msgstr "Denna sida låter dig permanent radera all data i ChurchCRM-databasen. Denna åtgärd kan inte ångras."
+
+#: 
+msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
+msgstr "Denna rapport listar alla händelser vars slutdatum har passerat men som fortfarande är markerade som aktiva. Vanliga orsaker: en volontär glömde att trycka på 'Checka ut', en kiosk tappade anslutningen, eller händelsen skapades och övergavs. Gamla händelser (år tillbaka) som aldrig inaktiverades visas också här. Kolumnen 'Fortfarande incheckad' visar om någon lämnades mitt i incheckningen. Att stänga en händelse från denna rapport checkar ut alla (med aktuell tid) och markerar händelsen som inaktiv."
+
+#: 
+msgid "This title will be used for all generated events."
+msgstr "Denna titel används för alla genererade händelser."
+
+#: 
+msgid "Today's Events"
+msgstr "Dagens händelser"
+
+#: 
+msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
+msgstr "För många tillfällen (%d) — minska datumintervallet. Maximalt tillåtet: %d"
+
+#: 
+msgid "Type RESET to confirm"
+msgstr "Skriv RESET för att bekräfta"
+
+#: 
+msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
+msgstr "Använd knappen ovan för att skapa dagens händelse med ett klick. Den länkas automatiskt till denna klass så att en kiosk kan hämta listan."
+
+#: 
+msgid "Use this form to bulk-create a series of recurring events. Each event is created individually and can be edited or deleted independently after creation."
+msgstr "Använd detta formulär för att massskapa en serie återkommande händelser. Varje händelse skapas individuellt och kan redigeras eller tas bort oberoende efter skapandet."
+
+#: 
+msgid "Used as the default start time when creating events of this type."
+msgstr "Används som standard starttid vid skapande av händelser av denna typ."
+
+#: 
+msgid "User must have Add Event permission and the Events module must be enabled"
+msgstr "Användaren måste ha behörighet att lägga till händelser och händelsemodulen måste vara aktiverad"
+
+#: 
+msgid "Valid startDate and endDate are required"
+msgstr "Giltiga startDate och endDate krävs"
+
+#: 
+msgid "View Event"
+msgstr "Visa händelse"
+
+#: 
+msgid "What are these for?"
+msgstr "Vad används dessa till?"
+
+#: 
+msgid "What does this find?"
+msgstr "Vad hittar detta?"
+
+#: 
+msgid "What is this for?"
+msgstr "Vad används detta till?"
+
+#: 
+msgid "Who is bringing them in?"
+msgstr "Vem tar med dem in?"
+
+#: 
+msgid "You must select a valid recurrence pattern."
+msgstr "Du måste välja ett giltigt upprepningsmönster."
+
+#: 
+msgid "You must select an event type."
+msgstr "Du måste välja en händelsetyp."
+
+#: 
+msgid "You must specify a date range."
+msgstr "Du måste ange ett datumintervall."
+
+#: 
+msgid "checked in"
+msgstr "incheckad"
+
+#: 
+msgid "e.g., Sunday Worship Service"
+msgstr "t.ex. Söndagsgudstjänst"
+
+#: 
+msgid "endDate must be after startDate"
+msgstr "endDate måste vara efter startDate"
+
+#: 
+msgid "eventIds must be a non-empty array"
+msgstr "eventIds måste vara en icke-tom array"
+
+#: 
+msgid "invalid recurrence type"
+msgstr "ogiltig upprepningstyp"
+
+#: 
+msgid "personIds must be a non-empty array"
+msgstr "personIds måste vara en icke-tom array"
+
+#: 
+msgid "to enable the reset button"
+msgstr "för att aktivera återställningsknappen"
+
+#: 
+msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
+msgstr "En karta visas här när koordinaterna är sparade — antingen automatiskt detekterade från din adress eller manuellt angivna ovan."
+
+#: 
+msgid "Both latitude and longitude must be provided together (or both left blank for automatic detection)."
+msgstr "Både latitud och longitud måste anges tillsammans (eller lämnas tomma för automatisk detektering)."
+
+#: 
+msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr "Kyrkinformation sparad, men adressen kunde inte lokaliseras automatiskt. Ange latitud och longitud manuellt under Kartkoordinater."
+
+#: 
+msgid "Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address."
+msgstr "Koordinater detekteras automatiskt från din adress vid sparande (via OpenStreetMap). Du kan också ange dem manuellt nedan — manuella värden har alltid företräde framför automatisk detektering. Lämna båda tomma för att låta systemet geokoda från adressen."
+
+#: 
+msgid "Latitude must be a number between -90 and 90."
+msgstr "Latitud måste vara ett tal mellan -90 och 90."
+
+#: 
+msgid "Longitude must be a number between -180 and 180."
+msgstr "Longitud måste vara ett tal mellan -180 och 180."
+
+#: 
+msgid "Map Coordinates"
+msgstr "Kartkoordinater"
+
+#: 
+msgid "Please select a group."
+msgstr "Välj en grupp."
+
+#: 
+msgid "Please select a role."
+msgstr "Välj en roll."
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "Välj både en grupp och en roll."
+
+#: 
+msgid "Range: -180 to 180."
+msgstr "Intervall: -180 till 180."
+
+#: 
+msgid "Range: -90 to 90."
+msgstr "Intervall: -90 till 90."
+
+#: 
+msgid "e.g., -74.0060"
+msgstr "t.ex. -74.0060"
+
+#: 
+msgid "e.g., 40.7128"
+msgstr "t.ex. 40.7128"
+
+#: 
+msgid "mo"
+msgstr "mån"
+
+#: 
+msgid "mos"
+msgstr "mån"
+
+#: 
+msgid "yr"
+msgstr "år"
+
+#: 
+msgid "yrs"
+msgstr "år"
+
+#: 
+msgid "An error occurred while deleting the family."
+msgstr "Ett fel uppstod när familjen skulle tas bort."
+
+#: 
+msgid "An error occurred while moving donations."
+msgstr "Ett fel uppstod när gåvorna skulle flyttas."
+
+#: 
+msgid "At least one family member is required"
+msgstr "Minst en familjemedlem krävs"
+
+#: 
+msgid "Back to Users"
+msgstr "Tillbaka till användare"
+
+#: 
+msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr "Det går inte att ta bort en familj med gåvoregister. Kontakta en ekonomiadministratör."
+
+#: 
+msgid "Cannot move property in that direction"
+msgstr "Det går inte att flytta egenskapen i den riktningen"
+
+#: 
+msgid "Confirm Family Info"
+msgstr "Bekräfta familjeinformation"
+
+#: 
+msgid "Delete failed"
+msgstr "Borttagning misslyckades"
+
+#: 
+msgid "Direction must be \"up\" or \"down\""
+msgstr "Riktningen måste vara \"upp\" eller \"ned\""
+
+#: 
+msgid "Failed to move donations."
+msgstr "Det gick inte att flytta gåvorna."
+
+#: 
+msgid "Finance permission required"
+msgstr "Ekonomibehörighet krävs"
+
+#: 
+msgid "ForegroundColor and BackgroundColor are required."
+msgstr "Förgrundsfärg och bakgrundsfärg krävs."
+
+#: 
+msgid "Group not found or has no special properties"
+msgstr "Gruppen hittades inte eller har inga speciella egenskaper"
+
+#: 
+msgid "Group role not found"
+msgstr "Grupprollen hittades inte"
+
+#: 
+msgid "Invalid color format. Use hex colors like #FF0000."
+msgstr "Ogiltigt färgformat. Använd hexfärger som #FF0000."
+
+#: 
+msgid "Invalid field identifier"
+msgstr "Ogiltig fältidentifierare"
+
+#: 
+msgid "Invalid target family"
+msgstr "Ogiltig målfamilj"
+
+#: 
+msgid "Log Out"
+msgstr "Logga ut"
+
+#: 
+msgid "Membership not found"
+msgstr "Medlemskapet hittades inte"
+
+#: 
+msgid "Password successfully changed for"
+msgstr "Lösenordet har ändrats för"
+
+#: 
+msgid "Please review your family information below and confirm or request changes."
+msgstr "Granska din familjeinformation nedan och bekräfta eller begär ändringar."
+
+#: 
+msgid "Please select a target family."
+msgstr "Välj en målfamilj."
+
+#: 
+msgid "Target family not found"
+msgstr "Målfamiljen hittades inte"
+
+#: 
+msgid "Verify Family Info"
+msgstr "Verifiera familjeinformation"
+
+#: 
+msgid "Welcome"
+msgstr "Välkommen"
+
+#: 
+msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
+msgstr "Du kan granska och verifiera din familjeinformation via länken nedan. Om du behöver ytterligare åtkomst, kontakta din kyrkoförvaltare."
+
+#: 
+msgid "You do not have permission to view this person"
+msgstr "Du har inte behörighet att visa den här personen"
+
+#: 
+msgid "Are you sure you want to delete this event type? This cannot be undone."
+msgstr "Är du säker på att du vill ta bort den här händelsetypen? Det går inte att ångra."
+
+#: 
+msgid "Assign to me"
+msgstr "Tilldela mig"
+
+#: 
+msgid "Assigned"
+msgstr "Tilldelad"
+
+#: 
+msgid "Assigned event not found"
+msgstr "Tilldelad händelse hittades inte"
+
+#: 
+msgid "Cannot Delete Event Type"
+msgstr "Kan inte ta bort händelsetypen"
+
+#: 
+msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
+msgstr "Den här händelsetypen kan inte tas bort — %d händelse(r) använder den. Inaktivera typen istället eller omtilldela händelserna först."
+
+#: 
+msgid "Kiosk Devices"
+msgstr "Kioskenheter"
+
+#: 
+msgid "Kiosk device has not been accepted by an administrator"
+msgstr "Kioskenheten har inte accepterats av en administratör"
+
+#: 
+msgid "No active event assignment"
+msgstr "Ingen aktiv händelsetilldelning"
+
+#: 
+msgid "Opens a 30-second window for devices to register at:"
+msgstr "Öppnar ett 30-sekunders fönster för enheter att registrera sig på:"
+
+#: 
+msgid "Pending"
+msgstr "Väntande"
+
+#: 
+msgid "Register New Device"
+msgstr "Registrera ny enhet"
+
+#: 
+msgid "This event type is used by"
+msgstr "Den här händelsetypen används av"
+
+#: 
+msgid "Total Kiosks"
+msgstr "Totalt antal kiosker"
+
+#: 
+msgid "Upcoming Events"
+msgstr "Kommande händelser"
+
+#: 
+msgid "event(s). Deactivate the type instead, or reassign the events first."
+msgstr "händelse(r). Inaktivera typen istället eller omtilldela händelserna först."
+
+#: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "Absolut http(s)-URL för kyrkologo som visas i e-postmallar (och återanvänds på andra ställen i framtiden). För bästa rendering i e-postklienter, använd en bred banneravbildning med ungefär 3,5:1 bildformat (till exempel 350×100 px), PNG eller JPG, serverat via HTTPS. Lämna tomt eller ange ett ogiltigt värde för att falla tillbaka på standardlogotypen för ChurchCRM."
+
+#: 
+msgid "An option with that name already exists"
+msgstr "Det finns redan ett alternativ med det namnet"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "Det går inte att ta bort det enda återstående alternativet"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "Urklipp är inte tillgängligt. Använd knappen Ladda ned för att spara dina koder."
+
+#: 
+msgid "Custom Option"
+msgstr "Anpassat alternativ"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "Standard förhandsgranskningstext för inkorg"
+
+#: 
+msgid "Email is disabled"
+msgstr "E-post är inaktiverad"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "E-post är inaktiverad. Konfigurera e-post innan du återställer lösenord eller använd Ändra lösenord."
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "E-post är inaktiverad. Aktivera det i inställningarna för e-postpanelen innan du testar."
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "Ange en av dina säkerhetskopierade återställningskoder"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "Ange en av dina säkerhetskopierade återställningskoder för att komma åt ditt konto"
+
+#: 
+msgid "Existing Options"
+msgstr "Befintliga alternativ"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "Grupp hittades inte för den här rollistan"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "Inaktiv status kan bara växlas för klassificeringslistan"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "Nya användare kommer inte att få ett välkomstmejl med sina inloggningsuppgifter. Dela lösenordet manuellt med dem eller konfigurera e-post först."
+
+#: 
+msgid "Option name is required"
+msgstr "Alternativnamn krävs"
+
+#: 
+msgid "Option not found"
+msgstr "Alternativ hittades inte"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "Valfri kort sammanfattning som visas som förhandsgranskningstexten i inkorgen bredvid ämnesraden. Lämna tomt för att låta e-postklienten generera automatiskt från brödtexten. Per e-posttyp (lösenordsåterställning, ny medlem, verifiering) anger de sin egen preheader; detta är ett reservalternativ."
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "E-postmeddelanden för återställning av lösenord och välkomstmejl för nya konton skickas inte förrän e-post är konfigurerad. Användare får inte inloggningsuppgifter automatiskt."
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "Lösenordsåterställning är inte tillgänglig eftersom e-post är inaktiverad. Kontakta systemadministratören."
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "Lösenordet återställdes men e-postmeddelandet kunde inte skickas. Användaren är utelåst — dela det nya lösenordet manuellt eller använd Ändra lösenord."
+
+#: 
+msgid "Recovery Code"
+msgstr "Återställningskod"
+
+#: 
+msgid "Set up Email"
+msgstr "Konfigurera e-post"
+
+#: 
+msgid "Test SMTP Email"
+msgstr "Testa SMTP-e-post"
+
+#: 
+msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
+msgstr "Det här är ett ChurchCRM-testmeddelande som bekräftar att din SMTP-konfiguration fungerar."
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "Det gick inte att kopiera till urklipp. Kopiera koderna manuellt."
+
+#: 
+msgid "Use Recovery Code"
+msgstr "Använd återställningskod"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "Använd en återställningskod istället"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "Använd autentiseringsapp istället"
 

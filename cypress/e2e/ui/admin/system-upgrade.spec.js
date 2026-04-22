@@ -141,7 +141,7 @@ describe('System Upgrade Page', () => {
         });
 
         it('should create backup and show download button', () => {
-            cy.intercept('POST', '**/api/database/backup', {
+            cy.intercept('POST', '**/admin/api/database/backup', {
                 statusCode: 200,
                 body: { BackupDownloadFileName: 'ChurchCRM-Backup.sql.gz' }
             }).as('createBackup');
@@ -158,7 +158,7 @@ describe('System Upgrade Page', () => {
         });
 
         it('should handle backup failure', () => {
-            cy.intercept('POST', '**/api/database/backup', {
+            cy.intercept('POST', '**/admin/api/database/backup', {
                 statusCode: 500,
                 body: { message: 'Insufficient disk space' }
             }).as('backupFail');

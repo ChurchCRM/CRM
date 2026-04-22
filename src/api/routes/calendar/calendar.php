@@ -76,7 +76,7 @@ function getSystemCalendars(Request $request, Response $response, array $args): 
  */
 function getSystemCalendarEvents(Request $request, Response $response, array $args): Response
 {
-    $Calendar = SystemCalendars::getCalendarById($args['id']);
+    $Calendar = SystemCalendars::getCalendarById((int) $args['id']);
     if (!$Calendar) {
         throw new HttpNotFoundException($request, 'Calendar ID not found!');
     }
@@ -105,12 +105,15 @@ function getSystemCalendarEvents(Request $request, Response $response, array $ar
  */
 function getSystemCalendarEventById(Request $request, Response $response, array $args): Response
 {
-    $Calendar = SystemCalendars::getCalendarById($args['id']);
+    $Calendar = SystemCalendars::getCalendarById((int) $args['id']);
     if (!$Calendar) {
         throw new HttpNotFoundException($request, 'Calendar ID not found!');
     }
 
-    $event = $Calendar->getEventById($args['eventid']);
+    $event = $Calendar->getEventById((int) $args['eventid']);
+    if ($event === null) {
+        throw new HttpNotFoundException($request, 'Event not found!');
+    }
 
     return SlimUtils::renderJSON($response, $event->toArray());
 }
@@ -331,10 +334,24 @@ function DeleteAccessToken(Request $request, Response $response, array $args): R
 function NewCalendar(Request $request, Response $response, $args): Response
 {
     $input = $request->getParsedBody();
+
+    // Validate required color fields
+    if (!isset($input['ForegroundColor']) || !isset($input['BackgroundColor'])) {
+        return SlimUtils::renderErrorJSON($response, gettext('ForegroundColor and BackgroundColor are required.'), [], 400);
+    }
+
+    // Validate color format to prevent stored XSS (only allow valid CSS hex colors: #RGB or #RRGGBB)
+    $colorPattern = '/^#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/';
+    $fgColor = $input['ForegroundColor'];
+    $bgColor = $input['BackgroundColor'];
+    if (!is_string($fgColor) || !is_string($bgColor) || !preg_match($colorPattern, $fgColor) || !preg_match($colorPattern, $bgColor)) {
+        return SlimUtils::renderErrorJSON($response, gettext('Invalid color format. Use hex colors like #FF0000.'), [], 400);
+    }
+
     $Calendar = new Calendar();
     $Calendar->setName($input['Name']);
-    $Calendar->setForegroundColor($input['ForegroundColor']);
-    $Calendar->setBackgroundColor($input['BackgroundColor']);
+    $Calendar->setForegroundColor($fgColor);
+    $Calendar->setBackgroundColor($bgColor);
     $Calendar->save();
 
     return SlimUtils::renderJSON($response, $Calendar->toArray());

@@ -29,7 +29,7 @@ describe("Family Wedding Date Edit Workflow", () => {
         cy.get('button[name="FamilySubmit"]').click();
 
         // Should redirect to family view page
-        cy.location("pathname").should("include", "/v2/family/");
+        cy.location("pathname").should("include", "/people/family/");
         cy.contains("Family Profile");
 
         // Verify wedding date is NOT displayed
@@ -58,7 +58,7 @@ describe("Family Wedding Date Edit Workflow", () => {
         cy.get('button[name="FamilySubmit"]').click();
 
         // Should be back on family view page
-        cy.location("pathname").should("include", "/v2/family/");
+        cy.location("pathname").should("include", "/people/family/");
         cy.contains("Family Profile");
 
         // Step 4: Verify the wedding date is now displayed
