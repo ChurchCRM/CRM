@@ -128,6 +128,37 @@ describe("Standard Calendar", () => {
         cy.get(".modal-backdrop").should("not.exist");
     });
 
+    /**
+     * Regression: new-event payload sent Type:0 (invalid) when the user
+     * accepted the default Event Type. No EventType has Id=0, so the
+     * initial `event.Type = 0` in showNewEventForm matched nothing; the
+     * rendered <select> had no `selected` option, the browser showed the
+     * first option visually but TomSelect's `change` never fired, so the
+     * payload stayed at 0 and the API returned "invalid event type id".
+     * Fix seeds event.Type with the first EventType.Id after the types
+     * fetch resolves — verify the save payload now contains a non-zero
+     * Type without the user touching the Event Type dropdown.
+     */
+    it("New event saves successfully with default Event Type", () => {
+        const title = "Default Type Test - " + Cypress._.random(0, 1e6);
+        cy.intercept("POST", "**/api/events").as("createEvent");
+
+        cy.visit("event/calendars");
+        cy.get(".fc-daygrid-day").first().click();
+        cy.get("#event-title-input").should("be.visible").type(title);
+
+        // Pin a calendar (required). Do NOT touch Event Type — we want the
+        // default value to flow through to the payload.
+        cy.tomSelectByValue("#pinnedCalendarsSelect", "1");
+
+        cy.get("#eventSaveBtn").should("not.be.disabled").click();
+
+        cy.wait("@createEvent").then((intercepted) => {
+            expect(intercepted.request.body.Type).to.be.a("number").and.to.be.greaterThan(0);
+            expect(intercepted.response.statusCode).to.eq(200);
+        });
+    });
+
     it("TomSelect dropdowns initialize correctly", () => {
         cy.visit("event/calendars");
 

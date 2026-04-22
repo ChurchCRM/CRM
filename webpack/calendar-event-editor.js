@@ -708,6 +708,14 @@ window.showNewEventForm = (info) => {
   Promise.all([fetchJSON(`${CRMRoot}/api/calendars`), fetchJSON(`${CRMRoot}/api/events/types`)])
     .then(([calData, typeData]) => {
       if (thisRequest !== activeRequestId) return;
+      // No EventType has Id=0, so the initial Type:0 matches nothing and the
+      // rendered <select> has no `selected` option — the browser shows the
+      // first option but TomSelect's change never fires, so the payload stays
+      // at 0 and the API rejects it. Seed with the first type's Id so the
+      // visible default and the payload agree.
+      if (!event.Type && typeData.EventTypes.length > 0) {
+        event.Type = typeData.EventTypes[0].Id;
+      }
       showEditContent(event, calData.Calendars, typeData.EventTypes);
     })
     .catch((err) => {
