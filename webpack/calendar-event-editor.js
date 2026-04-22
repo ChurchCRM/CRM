@@ -134,7 +134,7 @@ function showViewContent(event, calendars, eventTypes, groups = []) {
     <button type="button" class="btn-close" id="eventCloseXBtn" aria-label="${t("Close")}"></button>`;
   header.className = "modal-header";
 
-  formController = renderEventViewer(body, event, calendars, eventTypes);
+  formController = renderEventViewer(body, event, calendars, eventTypes, { groups });
   body.className = "modal-body";
   body.removeAttribute("style");
 

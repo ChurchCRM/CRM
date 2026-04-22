@@ -257,12 +257,17 @@ function renderEditorFields(event, calendars, eventTypes, groups, allDay) {
 // Viewer markup
 // ---------------------------------------------------------------------------
 
-function renderViewerMarkup(event, calendars, eventTypes) {
+function renderViewerMarkup(event, calendars, eventTypes, groups = []) {
   const allDay = isAllDay(event);
   const matchedType = eventTypes.find((et) => event.Type != null && event.Type === et.Id);
   const pinnedCals = calendars.filter((c) => event.PinnedCalendars?.includes(c.Id));
   const sanitizedDesc = DOMPurify.sanitize(event.Desc || "");
   const sanitizedText = DOMPurify.sanitize(event.Text || "");
+  const inactive = Number(event.InActive || 0) === 1;
+  const linkedGroupId = Number(event.LinkedGroupId || 0);
+  const matchedGroup = linkedGroupId ? groups.find((g) => Number(g.groupID ?? g.Id) === linkedGroupId) : null;
+  const attendanceCounts = Array.isArray(event.AttendanceCounts) ? event.AttendanceCounts : [];
+  const hasCounts = attendanceCounts.some((c) => Number(c.count) > 0);
 
   let calBadges = "";
   for (const cal of pinnedCals) {
@@ -272,6 +277,13 @@ function renderViewerMarkup(event, calendars, eventTypes) {
   }
 
   let metaRows = "";
+  // Status is always shown — Active/Inactive is a core attribute of the event.
+  metaRows += `<dt class="col-sm-3 text-muted">${t("Status")}</dt>
+    <dd class="col-sm-9">${
+      inactive
+        ? `<span class="badge bg-secondary-lt"><i class="ti ti-ban me-1"></i>${t("Inactive")}</span>`
+        : `<span class="badge bg-green-lt text-green"><i class="ti ti-check me-1"></i>${t("Active")}</span>`
+    }</dd>`;
   if (matchedType) {
     metaRows += `<dt class="col-sm-3 text-muted">${t("Event Type")}</dt>
       <dd class="col-sm-9"><span class="badge bg-blue-lt text-blue">${escapeHtml(matchedType.Name)}</span></dd>`;
@@ -283,6 +295,40 @@ function renderViewerMarkup(event, calendars, eventTypes) {
   if (pinnedCals.length > 0) {
     metaRows += `<dt class="col-sm-3 text-muted">${t("Calendars")}</dt>
       <dd class="col-sm-9"><div class="d-flex flex-wrap gap-2">${calBadges}</div></dd>`;
+  } else if (pinnedCals.length === 0 && calendars.length > 0) {
+    metaRows += `<dt class="col-sm-3 text-muted">${t("Calendars")}</dt>
+      <dd class="col-sm-9"><span class="text-muted small"><i class="ti ti-info-circle me-1"></i>${t("Not pinned to any calendar")}</span></dd>`;
+  }
+  if (matchedGroup) {
+    const groupName = matchedGroup.name ?? matchedGroup.Name;
+    metaRows += `<dt class="col-sm-3 text-muted">${t("Linked Group")}</dt>
+      <dd class="col-sm-9"><span class="badge bg-purple-lt text-purple"><i class="ti ti-users me-1"></i>${escapeHtml(groupName)}</span></dd>`;
+  }
+
+  // Attendance counts render as a compact pill list below the meta rows.
+  // Only categories with a count > 0 appear in the viewer so empty events
+  // aren't noisy; the editor still shows every category for data entry.
+  let countsSection = "";
+  if (hasCounts) {
+    const pills = attendanceCounts
+      .filter((c) => Number(c.count) > 0)
+      .map(
+        (c) =>
+          `<span class="badge bg-azure-lt text-azure me-2 mb-1">
+             <span class="fw-semibold">${Number(c.count)}</span>
+             <span class="ms-1">${escapeHtml(c.name)}</span>
+           </span>`,
+      )
+      .join("");
+    const total = attendanceCounts.reduce((sum, c) => sum + (Number(c.count) || 0), 0);
+    countsSection = `
+      <div class="mb-4">
+        <h4 class="subheader">${t("Attendance Counts")}</h4>
+        <div class="d-flex flex-wrap align-items-center">
+          ${pills}
+          <span class="ms-auto text-muted small">${t("Total")}: <span class="fw-bold">${total}</span></span>
+        </div>
+      </div>`;
   }
 
   return `
@@ -315,6 +361,7 @@ function renderViewerMarkup(event, calendars, eventTypes) {
       </div>
     </div>
     <dl class="row mb-3">${metaRows}</dl>
+    ${countsSection}
     ${sanitizedDesc.trim() ? `<div class="mb-4"><h4 class="subheader">${t("Description")}</h4><div class="prose">${sanitizedDesc}</div></div>` : ""}
     ${sanitizedText.trim() ? `<div class="mb-2"><h4 class="subheader">${t("Additional Information")}</h4><div class="prose">${sanitizedText}</div></div>` : ""}
   `;
@@ -324,8 +371,9 @@ function renderViewerMarkup(event, calendars, eventTypes) {
 // Public: renderEventViewer
 // ---------------------------------------------------------------------------
 
-export function renderEventViewer(container, event, calendars, eventTypes) {
-  container.innerHTML = renderViewerMarkup(event, calendars, eventTypes);
+export function renderEventViewer(container, event, calendars, eventTypes, options = {}) {
+  const { groups = [] } = options;
+  container.innerHTML = renderViewerMarkup(event, calendars, eventTypes, groups);
   return {
     getEvent: () => event,
     destroy: () => {
