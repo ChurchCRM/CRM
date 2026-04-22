@@ -97,10 +97,10 @@ function getMapView(Request $request, Response $response, array $args): Response
             ['label' => gettext('Map Settings'), 'collapse' => '#mapAdminSettings', 'icon' => 'fa-sliders', 'adminOnly' => true],
         ]),
         'mapConfig'        => [
-            'churchLat'    => (float) ChurchMetaData::getChurchLatitude(),
-            'churchLng'    => (float) ChurchMetaData::getChurchLongitude(),
+            'churchLat'    => ChurchMetaData::getChurchLatitude(),
+            'churchLng'    => ChurchMetaData::getChurchLongitude(),
             'churchName'   => ChurchMetaData::getChurchName(),
-            'hasLocation'  => ChurchMetaData::getChurchLatitude() !== '',
+            'hasLocation'  => ChurchMetaData::hasChurchLocation(),
             'zoom'         => max(1, SystemConfig::getIntValue('iMapZoom') ?: 10),
             'groupId'      => $groupId,
             'groupName'    => $groupName,
