@@ -73,7 +73,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
                     <div class="mb-3">
                         <label class="form-label fw-bold"><?= gettext('Event Description') ?></label>
-                        <?= getQuillEditorContainer('EventDesc', 'EventDescInput', '', 'form-control', '80px') ?>
+                        <?= getQuillEditorContainer('EventDesc', 'EventDescInput', '', '', 'compact') ?>
                     </div>
                 </div>
             </div>

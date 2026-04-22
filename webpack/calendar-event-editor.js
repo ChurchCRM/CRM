@@ -313,12 +313,12 @@ function renderEditor(event, calendars, eventTypes, allDay) {
 
     <div class="mb-3">
       <label class="form-label" for="quill-Desc">${t("Description")}</label>
-      <div id="quill-Desc" style="min-height:150px;border:1px solid #ccc;border-radius:4px"></div>
+      <div id="quill-Desc" class="quill-editor-container" data-editor-size="compact"></div>
     </div>
 
     <div class="mb-3">
       <label class="form-label" for="quill-Text">${t("Additional Information")}</label>
-      <div id="quill-Text" style="min-height:150px;border:1px solid #ccc;border-radius:4px"></div>
+      <div id="quill-Text" class="quill-editor-container" data-editor-size="compact"></div>
     </div>
   `;
 }
