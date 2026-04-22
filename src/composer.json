@@ -24,6 +24,7 @@
     "ext-PDO": "*",
     "ext-bcmath": "*",
     "ext-curl": "*",
+    "ext-exif": "*",
     "ext-fileinfo": "*",
     "ext-filter": "*",
     "ext-gd": "*",

@@ -217,8 +217,17 @@ class Photo
         if ($sourceImage === false) {
             throw new \Exception('Failed to create image from uploaded data');
         }
-        
-        // Get original dimensions
+
+        // Auto-rotate JPEGs according to EXIF Orientation so photos taken on
+        // iOS/Android aren't saved sideways. GD otherwise ignores EXIF, and we
+        // re-encode as PNG (which has no orientation tag) so the rotation must
+        // be baked into the pixels here. Non-JPEG formats don't carry EXIF
+        // orientation, so skip them. See issue #2892.
+        if ($mimeType === 'image/jpeg' || $mimeType === 'image/jpg') {
+            $sourceImage = self::applyExifOrientation($sourceImage, $fileData);
+        }
+
+        // Get original dimensions (after any orientation correction)
         $sourceWidth = imagesx($sourceImage);
         $sourceHeight = imagesy($sourceImage);
 
@@ -263,7 +272,80 @@ class Photo
         $this->photoURI = $fileName;
         $this->hasUploadedPhoto = true;
     }
-    
+
+    /**
+     * Apply EXIF Orientation (tags 1–8) to a JPEG's decoded GD image so the
+     * stored pixels match the visually-correct orientation. Returns the
+     * corrected image; if the image is replaced via imagerotate(), the
+     * original resource is destroyed.
+     *
+     * Falls back to the original image when the exif extension is missing,
+     * EXIF data is unreadable, or the Orientation tag is absent/invalid.
+     */
+    private static function applyExifOrientation(\GdImage $image, string $jpegData): \GdImage
+    {
+        if (!function_exists('exif_read_data')) {
+            return $image;
+        }
+
+        // exif_read_data() needs a filename or stream; write to a temp file so
+        // we don't depend on data:// wrapper availability.
+        $tempFile = tempnam(sys_get_temp_dir(), 'ccrm_exif_');
+        if ($tempFile === false) {
+            return $image;
+        }
+
+        try {
+            if (file_put_contents($tempFile, $jpegData) === false) {
+                return $image;
+            }
+            $exif = @exif_read_data($tempFile);
+        } finally {
+            @unlink($tempFile);
+        }
+
+        if ($exif === false || empty($exif['Orientation'])) {
+            return $image;
+        }
+
+        $orientation = (int) $exif['Orientation'];
+        $rotated = null;
+
+        // GD's imagerotate() rotates counter-clockwise.
+        switch ($orientation) {
+            case 2:
+                imageflip($image, IMG_FLIP_HORIZONTAL);
+                break;
+            case 3:
+                $rotated = imagerotate($image, 180, 0);
+                break;
+            case 4:
+                imageflip($image, IMG_FLIP_VERTICAL);
+                break;
+            case 5:
+                imageflip($image, IMG_FLIP_VERTICAL);
+                $rotated = imagerotate($image, -90, 0);
+                break;
+            case 6:
+                $rotated = imagerotate($image, -90, 0);
+                break;
+            case 7:
+                imageflip($image, IMG_FLIP_HORIZONTAL);
+                $rotated = imagerotate($image, -90, 0);
+                break;
+            case 8:
+                $rotated = imagerotate($image, 90, 0);
+                break;
+        }
+
+        if ($rotated instanceof \GdImage) {
+            imagedestroy($image);
+            return $rotated;
+        }
+
+        return $image;
+    }
+
     /**
      * Parse size string (e.g., "8M", "2G") to bytes
      */
