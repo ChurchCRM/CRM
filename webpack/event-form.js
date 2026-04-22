@@ -343,7 +343,7 @@ export function renderEventEditor(container, event, calendars, eventTypes, optio
   const fieldsMarkup = renderEditorFields(event, calendars, eventTypes, groups, allDay);
 
   if (titleHost) {
-    titleHost.innerHTML = renderTitleFieldInHeader(event) + (titleHost.dataset.keepSiblings === "true" ? "" : "");
+    titleHost.innerHTML = renderTitleFieldInHeader(event);
     container.innerHTML = fieldsMarkup;
   } else {
     container.innerHTML = renderTitleFieldInline(event) + fieldsMarkup;
@@ -354,6 +354,12 @@ export function renderEventEditor(container, event, calendars, eventTypes, optio
   let tsCalendars = null;
   let quillDesc = null;
   let quillText = null;
+
+  // Suppress the "title required" message until the user has actually
+  // interacted with the title input (or attempted a save). Showing it on
+  // initial mount for a new event creates visual noise before the user has
+  // had a chance to type anything.
+  let titleTouched = Boolean(event.Title && event.Title.length > 0);
 
   // --- validity tracking ---
   function validate() {
@@ -371,7 +377,8 @@ export function renderEventEditor(container, event, calendars, eventTypes, optio
     const titleInput = document.getElementById("event-title-input");
     const titleFb = document.getElementById("titleFeedback");
     if (!titleInput || !titleFb) return;
-    titleFb.style.display = event.Title !== undefined && event.Title.length === 0 ? "block" : "none";
+    const showError = titleTouched && event.Title !== undefined && event.Title.length === 0;
+    titleFb.style.display = showError ? "block" : "none";
   }
 
   function fireValidity() {
@@ -384,7 +391,12 @@ export function renderEventEditor(container, event, calendars, eventTypes, optio
   if (titleInput) {
     titleInput.addEventListener("input", () => {
       event.Title = titleInput.value;
+      titleTouched = true;
       fireValidity();
+    });
+    titleInput.addEventListener("blur", () => {
+      titleTouched = true;
+      updateTitleFeedback();
     });
   }
 

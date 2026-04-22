@@ -244,13 +244,25 @@ function applyEventExtendedFields(Event $event, array $input): void
     }
 
     if (array_key_exists('AttendanceCounts', $input) && is_array($input['AttendanceCounts'])) {
+        // Whitelist count IDs by the event's type and source the canonical
+        // category name from EventCountName — never trust the client-supplied
+        // `name`. Notes are plain text: strip tags so a rogue payload can't
+        // land raw HTML/script in a field that later shows in the UI.
+        $typeId = (int) $event->getType();
+        $allowedNames = [];
+        foreach (\ChurchCRM\model\ChurchCRM\EventCountNameQuery::create()
+            ->filterByTypeId($typeId)
+            ->find() as $cn) {
+            $allowedNames[(int) $cn->getId()] = (string) $cn->getName();
+        }
+
         foreach ($input['AttendanceCounts'] as $row) {
             if (!is_array($row) || !isset($row['id'])) {
                 continue;
             }
             $countId = (int) $row['id'];
-            if ($countId <= 0) {
-                continue;
+            if ($countId <= 0 || !array_key_exists($countId, $allowedNames)) {
+                continue; // unknown category for this event's type
             }
             $count = EventCountsQuery::create()->findPk([$eventId, $countId]);
             if ($count === null) {
@@ -258,9 +270,9 @@ function applyEventExtendedFields(Event $event, array $input): void
                 $count->setEvtcntEventid($eventId);
                 $count->setEvtcntCountid($countId);
             }
-            $count->setEvtcntCountname((string) ($row['name'] ?? ''));
+            $count->setEvtcntCountname($allowedNames[$countId]);
             $count->setEvtcntCountcount((int) ($row['count'] ?? 0));
-            $count->setEvtcntNotes((string) ($row['notes'] ?? ''));
+            $count->setEvtcntNotes(InputUtils::sanitizeText((string) ($row['notes'] ?? '')));
             $count->save();
         }
     }

@@ -63,19 +63,30 @@ document.addEventListener("DOMContentLoaded", () => {
         [calData, typeData, groups] = results;
       }
 
+      // Pre-fill Start/End for new events to the next whole hour + 1h. The
+      // calendar modal gets these from the day the user clicked; the full-
+      // page surface has no click context, so we seed sensible defaults
+      // here. Without this the save button stays disabled because validate()
+      // requires Start and End to be non-null.
+      const defaultStart = new Date();
+      defaultStart.setMinutes(0, 0, 0);
+      defaultStart.setHours(defaultStart.getHours() + 1);
+      const defaultEnd = new Date(defaultStart);
+      defaultEnd.setHours(defaultEnd.getHours() + 1);
+
       const event = eventData || {
         Id: 0,
         Title: "",
         Type: cfg.typeId || 0,
         PinnedCalendars: [],
-        Start: null,
-        End: null,
+        Start: defaultStart,
+        End: defaultEnd,
         InActive: 0,
         LinkedGroupId: 0,
         AttendanceCounts: [],
       };
-      if (event.Start) event.Start = new Date(event.Start);
-      if (event.End) event.End = new Date(event.End);
+      if (event.Start && !(event.Start instanceof Date)) event.Start = new Date(event.Start);
+      if (event.End && !(event.End instanceof Date)) event.End = new Date(event.End);
 
       // Seed Type for brand-new events: the first available type is the
       // sensible default and ensures the save payload never submits Type:0.

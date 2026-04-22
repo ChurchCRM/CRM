@@ -48,8 +48,11 @@ describe("Event Editor page", () => {
 
         cy.get('[data-bs-target="#eventAdvancedFields"]').click();
         cy.get("#eventAdvancedFields").should("have.class", "show");
-        cy.get('input[name="eventInActive"][value="0"]').should("be.visible");
-        cy.get('input[name="eventInActive"][value="1"]').should("be.visible");
+        // Tabler hides the radio input itself (opacity:0) and shows the
+        // wrapping .form-selectgroup-label instead — assert against the
+        // label, not the input.
+        cy.get('input[name="eventInActive"][value="0"]').parent("label").should("be.visible");
+        cy.get('input[name="eventInActive"][value="1"]').parent("label").should("be.visible");
         cy.get("#linkedGroupSelect").should("be.visible");
     });
 
@@ -103,19 +106,16 @@ describe("Event Editor page", () => {
     });
 
     it("editing an existing event pre-fills Title and Type", () => {
-        // Create an event via API, then visit its editor and verify.
-        cy.request("POST", "/api/calendars").then((calResp) => {
-            // Most installs already have a calendar. Just use the first event
-            // returned from /api/events for this assertion.
-            cy.request("/api/events").then((response) => {
-                const events = response.body.Events || response.body;
-                const eventArray = Array.isArray(events) ? events : Object.values(events);
-                if (eventArray.length === 0) return; // nothing to edit; skip
-                const eventId = eventArray[0].Id;
-                cy.visit(`/event/editor/${eventId}`);
-                cy.get("#event-title-input").should("not.have.value", "");
-                cy.get("#eventTypeSelect option:checked").should("exist");
-            });
+        // Most installs already have a calendar and at least one event from
+        // the seed data. Just use the first event returned from /api/events.
+        cy.request("/api/events").then((response) => {
+            const events = response.body.Events || response.body;
+            const eventArray = Array.isArray(events) ? events : Object.values(events);
+            if (eventArray.length === 0) return; // nothing to edit; skip
+            const eventId = eventArray[0].Id;
+            cy.visit(`/event/editor/${eventId}`);
+            cy.get("#event-title-input").should("not.have.value", "");
+            cy.get("#eventTypeSelect option:checked").should("exist");
         });
     });
 });

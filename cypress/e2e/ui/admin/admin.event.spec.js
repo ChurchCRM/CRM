@@ -28,7 +28,10 @@ describe("Admin Event", () => {
 
     it("Create New Event", () => {
         cy.visit("event/editor");
-        cy.contains("Church Event Editor");
-        cy.contains("Create a new Event");
+        // After the unified-editor rewrite the page title comes from
+        // PageHeader via the "Create Event" breadcrumb and the shared
+        // form renders into #event-editor-mount.
+        cy.contains("Create Event");
+        cy.get("#event-title-input").should("be.visible");
     });
 });
