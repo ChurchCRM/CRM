@@ -121,7 +121,7 @@ function createAndShowModal() {
 // Viewer mode — read-only content swap
 // ---------------------------------------------------------------------------
 
-function showViewContent(event, calendars, eventTypes) {
+function showViewContent(event, calendars, eventTypes, groups = []) {
   if (!modalEl) return;
   destroyForm();
 
@@ -152,7 +152,7 @@ function showViewContent(event, calendars, eventTypes) {
   footer.className = "modal-footer d-flex justify-content-between";
 
   document.getElementById("eventEditBtn").addEventListener("click", () => {
-    showEditContent(event, calendars, eventTypes);
+    showEditContent(event, calendars, eventTypes, groups);
   });
 
   bindCloseHandlers();
@@ -163,7 +163,7 @@ function showViewContent(event, calendars, eventTypes) {
 // Editor mode — form content swap
 // ---------------------------------------------------------------------------
 
-function showEditContent(event, calendars, eventTypes) {
+function showEditContent(event, calendars, eventTypes, groups = []) {
   if (!modalEl) return;
   destroyForm();
 
@@ -195,6 +195,7 @@ function showEditContent(event, calendars, eventTypes) {
 
   formController = renderEventEditor(body, event, calendars, eventTypes, {
     titleHost,
+    groups,
     onValidityChange: (valid) => {
       const saveBtn = document.getElementById("eventSaveBtn");
       if (saveBtn) saveBtn.disabled = !valid;
@@ -311,13 +312,14 @@ window.showEventForm = (eventArg) => {
     fetchJSON(`${CRMRoot}/api/events/${eventArg.id}`),
     fetchJSON(`${CRMRoot}/api/calendars`),
     fetchJSON(`${CRMRoot}/api/events/types`),
+    fetchJSON(`${CRMRoot}/api/groups/`).catch(() => []),
   ])
-    .then(([eventData, calData, typeData]) => {
+    .then(([eventData, calData, typeData, groups]) => {
       if (thisRequest !== activeRequestId) return;
       const event = eventData;
       if (event.Start) event.Start = new Date(event.Start);
       if (event.End) event.End = new Date(event.End);
-      showViewContent(event, calData.Calendars, typeData.EventTypes);
+      showViewContent(event, calData.Calendars, typeData.EventTypes, Array.isArray(groups) ? groups : []);
     })
     .catch((err) => {
       if (thisRequest !== activeRequestId) return;
@@ -341,8 +343,12 @@ window.showNewEventForm = (info) => {
     End: info.end,
   };
 
-  Promise.all([fetchJSON(`${CRMRoot}/api/calendars`), fetchJSON(`${CRMRoot}/api/events/types`)])
-    .then(([calData, typeData]) => {
+  Promise.all([
+    fetchJSON(`${CRMRoot}/api/calendars`),
+    fetchJSON(`${CRMRoot}/api/events/types`),
+    fetchJSON(`${CRMRoot}/api/groups/`).catch(() => []),
+  ])
+    .then(([calData, typeData, groups]) => {
       if (thisRequest !== activeRequestId) return;
       // No EventType has Id=0, so the initial Type:0 matches nothing and the
       // rendered <select> has no `selected` option — the browser shows the
@@ -352,7 +358,7 @@ window.showNewEventForm = (info) => {
       if (!event.Type && typeData.EventTypes.length > 0) {
         event.Type = typeData.EventTypes[0].Id;
       }
-      showEditContent(event, calData.Calendars, typeData.EventTypes);
+      showEditContent(event, calData.Calendars, typeData.EventTypes, Array.isArray(groups) ? groups : []);
     })
     .catch((err) => {
       if (thisRequest !== activeRequestId) return;
