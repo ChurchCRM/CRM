@@ -280,5 +280,64 @@ describe(
                 });
             });
         });
+
+        it("Verify CSV Import applies sDefaultCountry when row Country is missing/blank (issue #4347)", () => {
+            // seed.sql sets sDefaultCountry = 'United States'. Fixture mixes:
+            //  - FamilyID 300 → both rows have blank Country (Family + both Persons fall back to default)
+            //  - FamilyID 301 → first row explicit "Canada" (Family + first Person keep Canada);
+            //                   second row blank (Person falls back to default, Family stays Canada)
+            cy.visit("admin/import/csv");
+            cy.get("#csvFile").selectFile("cypress/fixtures/test_import_country.csv", { force: true });
+            cy.get("#csv-import-form").submit();
+            cy.get("#mapping-card").should("be.visible");
+            cy.get("#execute-import").click();
+            cy.get("#summary-card").should("be.visible");
+            cy.get("#summary-imported").should("not.have.text", "0");
+
+            cy.request("GET", "/api/search/CountryTest").then((response) => {
+                expect(response.status).to.eq(200);
+                const personsGroup = response.body.find((g) => g.text.startsWith("Persons"));
+                expect(personsGroup, "CountryTest persons found").to.exist;
+                expect(personsGroup.children).to.have.length.at.least(4);
+
+                const idByName = {};
+                personsGroup.children.forEach((child) => {
+                    const match = child.uri.match(/PersonID=(\d+)/);
+                    if (match) idByName[child.text.split(" ")[0]] = match[1];
+                });
+
+                const expectations = {
+                    blankFamHead:      "United States",
+                    blankFamChild:     "United States",
+                    explicitCanada:    "Canada",
+                    blankOnCanadaFam:  "United States",
+                };
+
+                Object.entries(expectations).forEach(([firstName, expectedCountry]) => {
+                    const personId = idByName[firstName];
+                    expect(personId, `imported person ${firstName} exists`).to.exist;
+                    cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, 200).then((resp) => {
+                        expect(resp.body.Country, `Person ${firstName} Country`).to.eq(expectedCountry);
+                    });
+                });
+
+                // Family-level: FamilyID 300 had no explicit Country on its creation row → default.
+                //               FamilyID 301's creation row had "Canada" → Canada preserved.
+                cy.makePrivateAdminAPICall("GET", `/api/person/${idByName.blankFamHead}`, null, 200).then((resp) => {
+                    const famId = resp.body.FamId;
+                    expect(famId, "blankFamHead attached to a family").to.be.greaterThan(0);
+                    cy.makePrivateAdminAPICall("GET", `/api/family/${famId}`, null, 200).then((famResp) => {
+                        expect(famResp.body.Country, "Family (blank-Country creation row) Country").to.eq("United States");
+                    });
+                });
+                cy.makePrivateAdminAPICall("GET", `/api/person/${idByName.explicitCanada}`, null, 200).then((resp) => {
+                    const famId = resp.body.FamId;
+                    expect(famId, "explicitCanada attached to a family").to.be.greaterThan(0);
+                    cy.makePrivateAdminAPICall("GET", `/api/family/${famId}`, null, 200).then((famResp) => {
+                        expect(famResp.body.Country, "Family (explicit-Canada creation row) Country").to.eq("Canada");
+                    });
+                });
+            });
+        });
     },
 );
