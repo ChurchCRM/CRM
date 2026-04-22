@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
@@ -621,6 +622,12 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
             $familyPropPrompts[(int) $prop->getProId()] = (string) $prop->getProPrompt();
         }
 
+        // Fallback default country from system settings — matches the interactive
+        // Person/Family editors (PersonEditor.php, FamilyEditor.php) so rows whose
+        // CSV omits a Country aren't silently stored blank and rendered as the
+        // first country in the dropdown (Afghanistan). See issue #4347.
+        $defaultCountry = (string) SystemConfig::getValue('sDefaultCountry');
+
         try {
             foreach ($csv->getRecords() as $row) {
                 // Partition the mapping into core / person-custom / family-custom / properties
@@ -662,6 +669,10 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                 if (empty($data['FirstName']) || empty($data['LastName'])) {
                     $skipped++;
                     continue;
+                }
+
+                if (empty($data['Country']) && $defaultCountry !== '') {
+                    $data['Country'] = $defaultCountry;
                 }
 
                 // Resolve or create Family
