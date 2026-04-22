@@ -3,16 +3,31 @@
  *
  *  filename    : Include/Config.php
  *  website     : https://churchcrm.io
- *  description : global configuration
+ *  description : global configuration bootstrap
+ *
+ *  Install-time values (DB credentials, root path, primary URL) live in
+ *  Include/config-values.json and are validated at read time by
+ *  ChurchCRM\Config\ConfigLoader. This file is a static bootstrap — do not
+ *  edit user data here. To change DB credentials or paths, edit the JSON
+ *  file or re-run the setup wizard after removing Config.php.
+ *
+ *  Security: GHSA-mp2w-4q3r-ppx7 / CVE-2026-39337 — configuration values
+ *  MUST NOT be rendered into this file via string substitution. Doing so
+ *  re-opens the pre-auth RCE class where a quote-breaking DB_PASSWORD
+ *  injected executable PHP.
  *
  ******************************************************************************/
 
-// Database connection constants
-$sSERVERNAME = '||DB_SERVER_NAME||';
-$dbPort = '||DB_SERVER_PORT||';
-$sUSER = '||DB_USER||';
-$sPASSWORD = '||DB_PASSWORD||';
-$sDATABASE = '||DB_NAME||';
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$churchCrmConfigValues = \ChurchCRM\Config\ConfigLoader::load(__DIR__ . '/config-values.json');
+
+// Database connection constants (read from validated JSON — never templated from user input).
+$sSERVERNAME = $churchCrmConfigValues['DB_SERVER_NAME'];
+$dbPort      = $churchCrmConfigValues['DB_SERVER_PORT'];
+$sUSER       = $churchCrmConfigValues['DB_USER'];
+$sPASSWORD   = $churchCrmConfigValues['DB_PASSWORD'];
+$sDATABASE   = $churchCrmConfigValues['DB_NAME'];
 
 // Root path of your ChurchCRM installation ( THIS MUST BE SET CORRECTLY! )
 //
@@ -24,7 +39,7 @@ $sDATABASE = '||DB_NAME||';
 // - the path SHOULD Start with slash, if not ''.
 // - the path SHOULD NOT end with slash.
 // - the path is case sensitive.
-$sRootPath = '||ROOT_PATH||';
+$sRootPath = $churchCrmConfigValues['ROOT_PATH'];
 
 // Set $bLockURL=TRUE to enforce https access by specifying exactly
 // which URL's your users may use to log into ChurchCRM.
@@ -32,7 +47,8 @@ $bLockURL = FALSE;
 
 // URL[0] is the URL that you prefer most users use when they
 // log in.  These are case sensitive.
-$URL[0] = '||URL||';
+$URL    = [];
+$URL[0] = $churchCrmConfigValues['URL'];
 // List as many other URL's as may be needed. Number them sequentially.
 //$URL[1] = 'https://www.mychurch.org/churchcrm/';
 //$URL[2] = 'https://www.mychurch.org:8080/churchcrm/';
@@ -50,6 +66,8 @@ $URL[0] = '||URL||';
 // When using a shared SSL certificate provided by your webhost for https access
 // you may need to add the shared SSL server name as well as your host name to
 // the URL.  See example $URL[4]
+
+unset($churchCrmConfigValues);
 
 // Sets which PHP errors are reported see https://www.php.net/manual/en/errorfunc.constants.php
 error_reporting(E_ERROR);

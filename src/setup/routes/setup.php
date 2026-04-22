@@ -105,25 +105,41 @@ $app->group('/', function (RouteCollectorProxy $group): void {
             return SlimUtils::renderJSON($response->withStatus(400), ['errors' => $errors]);
         }
 
-        // Use sanitized values
-        $dbServerName = sanitize_db_field($setupData['DB_SERVER_NAME']);
-        $dbServerPort = preg_replace('/[^0-9]/', '', $setupData['DB_SERVER_PORT']);
-        $dbName      = sanitize_db_field($setupData['DB_NAME']);
-        $dbUser      = sanitize_db_field($setupData['DB_USER']);
-        $dbPassword  = $setupData['DB_PASSWORD'];
-        $rootPath    = $setupData['ROOT_PATH'];
-        $url         = $setupData['URL'];
+        // Persist values as JSON data (never as PHP code). ConfigLoader
+        // validates every field on read — the wizard does not need to
+        // sanitize here beyond the front-end UX checks above.
+        // See GHSA-mp2w-4q3r-ppx7.
+        $configValues = [
+            'DB_SERVER_NAME' => (string) $setupData['DB_SERVER_NAME'],
+            'DB_SERVER_PORT' => (string) preg_replace('/[^0-9]/', '', $setupData['DB_SERVER_PORT']),
+            'DB_NAME'        => (string) $setupData['DB_NAME'],
+            'DB_USER'        => (string) $setupData['DB_USER'],
+            'DB_PASSWORD'    => (string) $setupData['DB_PASSWORD'],
+            'ROOT_PATH'      => (string) $setupData['ROOT_PATH'],
+            'URL'            => (string) $setupData['URL'],
+        ];
 
-        $template = file_get_contents($docRoot . '/Include/Config.php.example');
-        $template = str_replace('||DB_SERVER_NAME||', $dbServerName, $template);
-        $template = str_replace('||DB_SERVER_PORT||', $dbServerPort, $template);
-        $template = str_replace('||DB_NAME||', $dbName, $template);
-        $template = str_replace('||DB_USER||', $dbUser, $template);
-        $template = str_replace('||DB_PASSWORD||', $dbPassword, $template);
-        $template = str_replace('||ROOT_PATH||', $rootPath, $template);
-        $template = str_replace('||URL||', $url, $template);
+        $valuesFile = $docRoot . '/Include/config-values.json';
+        $json = json_encode($configValues, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR);
 
-        file_put_contents($configFile, $template);
+        // Write the JSON atomically so a crashed write cannot leave a
+        // partial file that ConfigLoader would refuse to parse.
+        $tmpFile = $valuesFile . '.tmp';
+        if (file_put_contents($tmpFile, $json, LOCK_EX) === false) {
+            return SlimUtils::renderJSON($response->withStatus(500), ['error' => 'Failed to write config values file']);
+        }
+        @chmod($tmpFile, 0640);
+        if (!rename($tmpFile, $valuesFile)) {
+            @unlink($tmpFile);
+            return SlimUtils::renderJSON($response->withStatus(500), ['error' => 'Failed to finalize config values file']);
+        }
+
+        // Copy the static Config.php bootstrap into place — verbatim, no
+        // string substitution. The bootstrap calls ConfigLoader::load()
+        // which reads the JSON above.
+        if (!copy($docRoot . '/Include/Config.php.example', $configFile)) {
+            return SlimUtils::renderJSON($response->withStatus(500), ['error' => 'Failed to create Config.php']);
+        }
 
         return $response->withStatus(200);
     };
