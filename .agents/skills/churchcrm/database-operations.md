@@ -603,3 +603,16 @@ EventQuery::create()
 
 Always use full `HH:MM:SS` timestamps on the boundaries — see "Datetime Year-Range Filters"
 above for why a bare `YYYY-MM-DD` max silently drops same-day afternoon records.
+
+### Shared Date Parser — `DateTimeUtils::parsePartialDate()` <!-- learned: 2026-04-21 -->
+
+`src/ChurchCRM/utils/DateTimeUtils.php` contains a static helper for parsing the partial-date formats accepted by CSV imports and person/family edit forms:
+
+```php
+use ChurchCRM\utils\DateTimeUtils;
+
+// Accepts: YYYY-MM-DD, M/D/YYYY, 0000-MM-DD, M/D (month+day, no year)
+$dt = DateTimeUtils::parsePartialDate($rawString); // returns DateTime|null
+```
+
+Returns `null` for blank/unparseable input — always null-guard before calling ORM setters. Use this instead of `new \DateTime($userInput)` anywhere user-supplied date strings are accepted; it handles the year-less `0000-MM-DD` format that standard PHP date functions reject.

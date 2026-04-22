@@ -1810,3 +1810,21 @@ it("rejects POST without a valid CSRF token", () => {
 ```
 
 The 403 assertion exercises the exact code path a CSRF attacker would hit, so it's the regression test that actually proves the fix. Use `cy.setupStandardSession()` (or `cy.setupAdminSession()`) in `beforeEach` so the session cookie is real; the CSRF check runs AFTER the role/auth check.
+
+### In-Memory CSV Files via `Cypress.Buffer` — No Fixture File Needed <!-- learned: 2026-04-21 -->
+
+When testing CSV upload error paths (duplicate headers, malformed content, etc.) you don't need a fixture file — build the CSV string in the test body and pass it via `Cypress.Buffer`:
+
+```js
+it("rejects a CSV with duplicate column headers", () => {
+    const csv = "FirstName,LastName,FirstName\nAlice,Smith,Alice\n";
+    cy.get("#csvFile").selectFile(
+        { contents: Cypress.Buffer.from(csv), fileName: "dup.csv", mimeType: "text/csv" },
+        { force: true },
+    );
+    cy.get("#csv-import-form").submit();
+    cy.contains("duplicate column names", { matchCase: false });
+});
+```
+
+`Cypress.Buffer.from(string)` returns a `Buffer` the same way `Buffer.from()` does in Node — `selectFile` accepts it directly as the `contents` property. This is the right tool for synthetic error-path files; use `cypress/fixtures/` for real data files that are shared across tests.
