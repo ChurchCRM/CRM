@@ -132,7 +132,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <td><code><?= InputUtils::escapeHTML($smtpSettings['secure']) ?></code></td>
                         </tr>
                         <tr>
-                            <td class="text-muted"><?= gettext('Auto-TLS') ?></td>
+                            <td class="text-muted">Auto-TLS</td>
                             <td><?= InputUtils::escapeHTML($smtpSettings['autoTLS']) ?></td>
                         </tr>
                         <tr>
