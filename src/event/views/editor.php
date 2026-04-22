@@ -86,7 +86,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="row mb-3 event-editor-advanced" <?= !$eventExists ? 'style="display:none;"' : '' ?>>
           <label class="col-md-3 col-form-label text-md-end fw-semibold"><?= gettext('Event Description') ?></label>
           <div class="col-md-9">
-            <?= getQuillEditorContainer('EventDesc', 'EventDescInput', $sEventDesc, 'form-control', '100px') ?>
+            <?= getQuillEditorContainer('EventDesc', 'EventDescInput', $sEventDesc, '', 'compact') ?>
           </div>
         </div>
         <div class="row mb-3">
@@ -183,7 +183,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <label class="col-md-3 col-form-label text-md-end fw-semibold"><?= gettext('Sermon / Event Text') ?></label>
           <div class="col-md-9">
             <small class="form-text text-secondary mb-2"><?= gettext('Optional - Add sermon notes or additional event details') ?></small>
-            <?= getQuillEditorContainer('EventText', 'EventTextInput', $sEventText, 'form-control', '200px') ?>
+            <?= getQuillEditorContainer('EventText', 'EventTextInput', $sEventText, '', 'default') ?>
           </div>
         </div>
         <div class="row mb-3 event-editor-advanced" <?= !$eventExists ? 'style="display:none;"' : '' ?>>

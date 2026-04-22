@@ -47,6 +47,7 @@
 @include meta.load-css("scss/kiosk");
 @include meta.load-css("scss/groups");
 @include meta.load-css("scss/finance");
+@include meta.load-css("scss/quill");
 
 // Floating Action Buttons — menu toggle, add person, add family
 @include meta.load-css("scss/fab");
