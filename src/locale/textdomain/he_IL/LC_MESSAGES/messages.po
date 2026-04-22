@@ -1162,10 +1162,6 @@ msgid "Summary Data"
 msgstr "נתוני סיכום"
 
 #: 
-msgid "CSV"
-msgstr "CSV"
-
-#: 
 msgid "Back"
 msgstr "חזור"
 
@@ -1289,10 +1285,6 @@ msgstr "פורמט קובץ נתונים"
 #: 
 msgid "GPS Visualizer"
 msgstr "GPS Visualizer"
-
-#: 
-msgid "Street Atlas USA"
-msgstr "אטלס רחובות ארה\"ב"
 
 #: 
 #, fuzzy
@@ -2321,18 +2313,6 @@ msgstr "המספר גדול מדי. חייב להיות בין -2147483648 ל-21
 #: 
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "סכום הכסף גדול מדי. המקסימום הוא 999,999,999.99$"
-
-#: 
-msgid " Bold Italic"
-msgstr "מודגש נטוי"
-
-#: 
-msgid " Italic"
-msgstr "נטוי"
-
-#: 
-msgid " Bold"
-msgstr "מודגש"
 
 #: 
 msgid "Error making API Call to"
@@ -5059,7 +5039,8 @@ msgid "Indonesian - Indonesia"
 msgstr "Indonesian - Indonesia"
 
 #: 
-msgid "records(s) successfully added to selected Group."
+#, fuzzy
+msgid "record(s) successfully added to selected Group."
 msgstr "הרשומה(ות) נוספה בהצלחה לקבוצה הנבחרת."
 
 #: 
@@ -5367,7 +5348,8 @@ msgid "Remove All from Cart"
 msgstr "הסר הכל מהעגלה"
 
 #: 
-msgid "records(s) successfully deleted from the selected Group."
+#, fuzzy
+msgid "record(s) successfully deleted from the selected Group."
 msgstr "הרשומות נמחקו בהצלחה מהקבוצה הנבחרת."
 
 #: 
@@ -5850,10 +5832,6 @@ msgstr "לא הועברה כתובת דוא\"ל"
 #: 
 msgid "Mailchimp is not active"
 msgstr "Mailchimp אינו פעיל"
-
-#: 
-msgid "Mailchimp"
-msgstr "Mailchimp"
 
 #: 
 msgid "Lists"
@@ -6860,7 +6838,8 @@ msgid "Total Payments"
 msgstr "סה\"כ תשלומים"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payments?"
 msgstr "תשלומים"
 
 #: 
@@ -6874,10 +6853,6 @@ msgstr "כתובת URL בסיסית"
 #: 
 msgid "Copy"
 msgstr "העתק"
-
-#: 
-msgid "DSN"
-msgstr "DSN"
 
 #: 
 msgid "Debug Info"
@@ -7931,10 +7906,6 @@ msgstr "הפקדות פתוחות:"
 #: 
 msgid "Orphaned Files:"
 msgstr "קבצים יתומים:"
-
-#: 
-msgid "PDF/CSV"
-msgstr "PDF/CSV"
 
 #: 
 msgid "Payment"
@@ -9503,10 +9474,6 @@ msgid "Loading recovery codes"
 msgstr "טוען קודי שחזור"
 
 #: 
-msgid "MailChimp"
-msgstr "MailChimp"
-
-#: 
 msgid "MailChimp API Key"
 msgstr "מפתח API של MailChimp"
 
@@ -10866,10 +10833,6 @@ msgid "Download CSV Template"
 msgstr "הורדת תבנית CSV"
 
 #: 
-msgid "Download the template to see the expected column format."
-msgstr "הורידו את התבנית כדי לראות את פורמט העמודות הצפוי."
-
-#: 
 msgid "Drag and drop your CSV file here"
 msgstr "גררו ושחררו את קובץ ה-CSV כאן"
 
@@ -10880,10 +10843,6 @@ msgstr "כפילויות"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "לכל אדם יכולים להיות דוא\"ל ומספר נייד משלו."
-
-#: 
-msgid "Each row is one person. Members of the same family share a FamilyID."
-msgstr "כל שורה היא אדם אחד. בני אותה משפחה חולקים FamilyID."
 
 #: 
 msgid "Easy registration"
@@ -11968,10 +11927,6 @@ msgid "Upload CSV"
 msgstr "העלאת CSV"
 
 #: 
-msgid "Upload a CSV file to import families and people into ChurchCRM."
-msgstr "העלו קובץ CSV לייבוא משפחות ואנשים ל-ChurchCRM."
-
-#: 
 msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
 msgstr "העלו CSV מ-Excel, Google Sheets או ממערכת ניהול הקהילה הקודמת שלכם ומפו עמודות לשדות ChurchCRM."
 
@@ -12194,10 +12149,6 @@ msgstr "חברים"
 #: 
 msgid "opportunities"
 msgstr "הזדמנויות"
-
-#: 
-msgid "options"
-msgstr "אפשרויות"
 
 #: 
 msgid "or connect an external service"
@@ -12434,10 +12385,6 @@ msgstr "רישום וניהול מכשירי קיוסק לרישום נוכחו�
 #: 
 msgid "Review & Delete"
 msgstr "סקירה ומחיקה"
-
-#: 
-msgid "SHA1 Hash"
-msgstr "גיבוב SHA1"
 
 #: 
 msgid "Signature Mismatch"
@@ -14378,10 +14325,6 @@ msgstr[0] "אירוע חוזר אחד נוצר בהצלחה."
 msgstr[1] "%d אירועים חוזרים נוצרו בהצלחה."
 
 #: 
-msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
-msgstr "(לדוג׳ חברים, אורחים, ילדים) כדי שמתנדבים יוכלו לרשום ספירות כאן."
-
-#: 
 msgid "1. Sunday School Class"
 msgstr "1. כיתת בית ספר ראשון לשבוע"
 
@@ -14402,10 +14345,6 @@ msgid "A class is a Group with type \"Sunday School\". It holds the students and
 msgstr "כיתה היא קבוצה מסוג \"בית ספר ראשון לשבוע\". היא מכילה תלמידים ומורים (חברים עם תפקידים)."
 
 #: 
-msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
-msgstr "קבוצה מקושרת מחברת אירוע זה לכיתה או לרשימת שירות. כשהאירוע מוקצה לקיוסק, הקיוסק שולף את חברי הקבוצה ומציג אותם כרשימת כניסה בנגיעה. לכיתות בית ספר ראשון לשבוע, קשר את קבוצת הכיתה כאן כדי שמתנדבים יוכלו לבצע צ׳ק-אין לתלמידים מטאבלט."
-
-#: 
 msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
 msgstr "מופע ספציפי (לדוג׳ \"גן ילדים — 12 באפריל\"). יורש ברירות מחדל מהסוג ומקושר לקבוצת הכיתה דרך הקהל. זה מה שמתנדבים מסמנים נוכחות כנגדו."
 
@@ -14416,10 +14355,6 @@ msgstr "טאבלט המוקצה לאירוע אחד. הקיוסק שולף את 
 #: 
 msgid "Add Walk-in / Visitor"
 msgstr "הוסף אורח/מבקר"
-
-#: 
-msgid "Add categories on the Event Type page"
-msgstr "הוסף קטגוריות בדף סוג האירוע"
 
 #: 
 msgid "Add people to your cart first, then come back to check them in to an event."
@@ -14468,10 +14403,6 @@ msgstr "ביקורת"
 #: 
 msgid "Audit Events"
 msgstr "אירועי ביקורת"
-
-#: 
-msgid "Auto-totalled from counts at right"
-msgstr "סכום אוטומטי מהספירות בצד ימין"
 
 #: 
 msgid "Back to Events"
@@ -14596,10 +14527,6 @@ msgstr "מסד נתונים + תמונות שהועלו (גדול יותר)"
 #: 
 msgid "Database dump only (.sql)"
 msgstr "ייצוא מסד נתונים בלבד (.sql)"
-
-#: 
-msgid "Date Range"
-msgstr "טווח תאריכים"
 
 #: 
 msgid "Date range cannot exceed 1 year"
@@ -15468,4 +15395,472 @@ msgstr "השתמש בקוד שחזור"
 #: 
 msgid "Use authenticator app instead"
 msgstr "השתמש באפליקציית אימות"
+
+#: 
+msgid " Notification Email Error"
+msgstr " שגיאת הודעת דואר אלקטרוני"
+
+#: 
+msgid "%d modules loaded"
+msgstr "%d מודולים נטענו"
+
+#: 
+msgid "(PHP default)"
+msgstr "(ברירת מחדל PHP)"
+
+#: 
+msgid "(none)"
+msgstr "(ללא)"
+
+#: 
+msgid "(not set)"
+msgstr "(לא הוגדר)"
+
+#: 
+msgid "All checks passing"
+msgstr "כל הבדיקות עברו"
+
+#: 
+msgid "App"
+msgstr "יישום"
+
+#: 
+msgid "Browser time zone differs:"
+msgstr "אזור הזמן של הדפדפן שונה:"
+
+#: 
+msgid "Calendar time zone:"
+msgstr "אזור זמן לוח שנה:"
+
+#: 
+msgid "Cannot send test email"
+msgstr "לא ניתן לשלוח דואר בדיקה"
+
+#: 
+msgid "Charset"
+msgstr "ערכת תווים"
+
+#: 
+msgid "Church Email address is not set — the test email has nowhere to go."
+msgstr "כתובת הדואר האלקטרוני של הקהילה אינה מוגדרת — אין לאן לשלוח את דואר הבדיקה."
+
+#: 
+msgid "Church email — configured on the"
+msgstr "דואר הקהילה — מוגדר ב"
+
+#: 
+msgid "ChurchCRM Test Email"
+msgstr "דואר בדיקה ChurchCRM"
+
+#: 
+msgid "Collation"
+msgstr "צירוף"
+
+#: 
+msgid "Connection"
+msgstr "חיבור"
+
+#: 
+msgid "Database"
+msgstr "מסד נתונים"
+
+#: 
+msgid "Delivery"
+msgstr "מסירה"
+
+#: 
+msgid "Disk (Images Root)"
+msgstr "דיסק (תיקיית תמונות ראשית)"
+
+#: 
+msgid "Display Errors"
+msgstr "הצגת שגיאות"
+
+#: 
+msgid "Email Debug"
+msgstr "ניפוי שגיאות דואר אלקטרוני"
+
+#: 
+msgid "Environment"
+msgstr "סביבה"
+
+#: 
+msgid "Error Log"
+msgstr "יומן שגיאות"
+
+#: 
+msgid "Error Reporting"
+msgstr "דיווח שגיאות"
+
+#: 
+msgid "Error:"
+msgstr "שגיאה:"
+
+#: 
+msgid "Fix Settings"
+msgstr "תקן הגדרות"
+
+#: 
+msgid "Hit Rate"
+msgstr "קצב פגיעה"
+
+#: 
+msgid "Host"
+msgstr "שרת מארח"
+
+#: 
+msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
+msgstr "אם ההודעה אינה מגיעה תוך מספר דקות, בדוק את תיקיית הדואר הזבל וביומן ניפוי שגיאות ה-SMTP להלן."
+
+#: 
+msgid "If you can read this message in your inbox, your SMTP configuration is working correctly."
+msgstr "אם תוכל לקרוא הודעה זו בתיבת הדואר שלך, הגדרת ה-SMTP פועלת כראוי."
+
+#: 
+msgid "Incomplete"
+msgstr "לא שלם"
+
+#: 
+msgid "Installed on Server"
+msgstr "מותקן בשרת"
+
+#: 
+msgid "Integrity"
+msgstr "שלמות"
+
+#: 
+msgid "Issues detected"
+msgstr "זוהו בעיות"
+
+#: 
+msgid "Loaded php.ini"
+msgstr "php.ini נטען"
+
+#: 
+msgid "Locale"
+msgstr "מיקום אזורי"
+
+#: 
+msgid "Max Execution Time"
+msgstr "זמן ביצוע מרבי"
+
+#: 
+msgid "Max POST Size"
+msgstr "גודל POST מרבי"
+
+#: 
+msgid "Max Upload Size"
+msgstr "גודל העלאה מרבי"
+
+#: 
+msgid "Memory"
+msgstr "זיכרון"
+
+#: 
+msgid "Memory Limit"
+msgstr "מגבלת זיכרון"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
+msgstr "כעת בדוק את תיבת הדואר של הנמען לאישור מסירה. חפש את הנושא:"
+
+#: 
+msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
+msgstr "OPcache אינו מופעל. הפעלתו היא דרך בסיכון נמוך להאצת טעינת דפי PHP."
+
+#: 
+msgid "Off"
+msgstr "כבוי"
+
+#: 
+msgid "On"
+msgstr "פעיל"
+
+#: 
+msgid "Open the email debug tester"
+msgstr "פתח את בודק ניפוי שגיאות הדואר"
+
+#: 
+msgid "PHP Version"
+msgstr "גרסת PHP"
+
+#: 
+msgid "PHPMailer SMTP session"
+msgstr "סשן SMTP של PHPMailer"
+
+#: 
+msgid "Prerequisites"
+msgstr "דרישות מוקדמות"
+
+#: 
+msgid "Review the SMTP debug log below for the handshake details, then adjust your settings."
+msgstr "בדוק את יומן ניפוי שגיאות ה-SMTP להלן לפרטי לחיצת היד, ולאחר מכן התאם את הגדרותיך."
+
+#: 
+msgid "SMTP Configuration"
+msgstr "הגדרת SMTP"
+
+#: 
+msgid "SMTP Debug Log"
+msgstr "יומן ניפוי שגיאות SMTP"
+
+#: 
+msgid "SMTP Host is not configured."
+msgstr "שרת SMTP אינו מוגדר."
+
+#: 
+msgid "SMTP configuration test — if this arrived, your setup works."
+msgstr "בדיקת הגדרת SMTP — אם הגיע, ההגדרה שלך פועלת."
+
+#: 
+msgid "Schema Version"
+msgstr "גרסת סכמה"
+
+#: 
+msgid "Send Again"
+msgstr "שלח שוב"
+
+#: 
+msgid "Send a test message to verify your SMTP configuration"
+msgstr "שלח הודעת בדיקה לאימות הגדרת ה-SMTP שלך"
+
+#: 
+msgid "Server"
+msgstr "שרת"
+
+#: 
+msgid "Server Version"
+msgstr "גרסת שרת"
+
+#: 
+msgid "Session Handler"
+msgstr "מטפל הפעלה"
+
+#: 
+msgid "Session Save Path"
+msgstr "נתיב שמירת הפעלה"
+
+#: 
+msgid "Settings Valid"
+msgstr "הגדרות תקינות"
+
+#: 
+msgid "Subject"
+msgstr "נושא"
+
+#: 
+msgid "Test"
+msgstr "בדיקה"
+
+#: 
+msgid "Test email accepted by SMTP server"
+msgstr "דואר הבדיקה התקבל על ידי שרת SMTP"
+
+#: 
+msgid "Test email failed to send"
+msgstr "שליחת דואר הבדיקה נכשלה"
+
+#: 
+msgid "This is a ChurchCRM test email."
+msgstr "זהו דואר בדיקה של ChurchCRM."
+
+#: 
+msgid "Timeout"
+msgstr "פסק זמן"
+
+#: 
+msgid "Timezone"
+msgstr "אזור זמן"
+
+#: 
+msgid "Unable to list web server modules (non-Apache SAPI)."
+msgstr "לא ניתן לרשום את מודולי שרת האינטרנט (SAPI שאינו Apache)."
+
+#: 
+msgid "Update Settings"
+msgstr "עדכן הגדרות"
+
+#: 
+msgid "View full photo"
+msgstr "הצג תמונה מלאה"
+
+#: 
+msgid "page."
+msgstr "עמוד."
+
+#: 
+msgid "user:"
+msgstr "משתמש:"
+
+#: 
+msgid "1. Download the template"
+msgstr "1. הורד את התבנית"
+
+#: 
+msgid "2. Fill in your data"
+msgstr "2. מלא את הנתונים שלך"
+
+#: 
+msgid "3. Upload and map"
+msgstr "3. העלה ומפה"
+
+#: 
+msgid "Add Recurring Event"
+msgstr "הוסף אירוע חוזר"
+
+#: 
+msgid "Available after the event is saved."
+msgstr "זמין לאחר שמירת האירוע."
+
+#: 
+msgid "Boolean properties/fields accept yes / no / true / false / 1 / 0."
+msgstr "מאפיינים/שדות בוליאניים מקבלים yes / no / true / false / 1 / 0."
+
+#: 
+msgid "ChurchCRM auto-matches each column by name. Anything it cannot match is marked as Unmapped — pick a field or leave it as Ignore."
+msgstr "ChurchCRM מתאים אוטומטית כל עמודה לפי שם. כל דבר שאינו מתאים מסומן כ'לא ממופה' — בחר שדה או השאר כהתעלם."
+
+#: 
+msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
+msgstr "לא ניתן לנתח את קובץ ה-CSV. בדוק שמדובר בקובץ תקין מופרד בפסיקים עם שורת כותרת."
+
+#: 
+msgid "Custom field columns you have not configured are ignored — nothing is created on the fly."
+msgstr "עמודות שדות מותאמים אישית שלא הגדרת מתעלמות — לא נוצר דבר באופן אוטומטי."
+
+#: 
+msgid "Custom fields and properties are supported"
+msgstr "שדות ומאפיינים מותאמים אישית נתמכים"
+
+#: 
+msgid "Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a month and day with no year."
+msgstr "שדות תאריך מקבלים YYYY-MM-DD או M/D/YYYY. השתמש ב-0000-MM-DD או M/D עבור חודש ויום ללא שנה."
+
+#: 
+msgid "Each row is one person. People in the same family share a FamilyID. Leave columns blank when you have no value for them."
+msgstr "כל שורה היא אדם אחד. בני אותה משפחה חולקים FamilyID. השאר עמודות ריקות כאשר אין לך ערך עבורן."
+
+#: 
+msgid "Event Timing"
+msgstr "תזמון האירוע"
+
+#: 
+msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
+msgstr "כל מופע תואם בין 'מתאריך' ל'עד תאריך' יקבל אירוע משלו באותה שעת התחלה/סיום."
+
+#: 
+msgid "External calendar sharing is disabled"
+msgstr "שיתוף לוח שנה חיצוני מושבת"
+
+#: 
+msgid "Failed to load event editor. Please refresh and try again."
+msgstr "טעינת עורך האירועים נכשלה. אנא רענן ונסה שוב."
+
+#: 
+msgid "Family Custom"
+msgstr "משפחה מותאמת אישית"
+
+#: 
+msgid "Family Property"
+msgstr "מאפיין משפחה"
+
+#: 
+msgid "Fields"
+msgstr "שדות"
+
+#: 
+msgid "Go to home"
+msgstr "עבור לדף הבית"
+
+#: 
+msgid "Hide advanced options"
+msgstr "הסתר אפשרויות מתקדמות"
+
+#: 
+msgid "How the CSV Import Works"
+msgstr "כיצד פועל ייבוא CSV"
+
+#: 
+msgid "Imported from CSV"
+msgstr "יובא מ-CSV"
+
+#: 
+msgid "Invalid date format"
+msgstr "פורמט תאריך לא חוקי"
+
+#: 
+msgid "Loading event editor…"
+msgstr "טוען עורך אירועים…"
+
+#: 
+msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
+msgstr "לא נבחר לוח שנה — אירוע זה יישמר אך לא יופיע בשום תצוגת לוח שנה."
+
+#: 
+msgid "No group"
+msgstr "ללא שירות"
+
+#: 
+msgid "Not pinned to any calendar"
+msgstr "לא מקושר לאף לוח שנה"
+
+#: 
+msgid "Optional — sermon notes, materials, or other details copied to every generated event."
+msgstr "אופציונלי — הערות דרשה, חומרים, או פרטים אחרים שמועתקים לכל אירוע שנוצר."
+
+#: 
+msgid "Person / Family"
+msgstr "אדם / משפחה"
+
+#: 
+msgid "Person Custom"
+msgstr "אדם מותאם אישית"
+
+#: 
+msgid "Person Property"
+msgstr "מאפיין אדם"
+
+#: 
+msgid "Show more options"
+msgstr "הצג אפשרויות נוספות"
+
+#: 
+msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
+msgstr "קישור לוח השנה אינו שלם. אנא בדוק את ה-URL עם האדם שהעביר אותו אליך."
+
+#: 
+msgid "The church administrator has not enabled external calendar sharing. Please contact them if you believe this is in error."
+msgstr "מנהל הקהילה לא הפעיל שיתוף לוח שנה חיצוני. אנא פנה אליהם אם אתה סבור שמדובר בטעות."
+
+#: 
+msgid "The start or end date in the link could not be understood. Try the base calendar link without date parameters."
+msgstr "תאריך ההתחלה או הסיום בקישור לא ניתן להבנה. נסה את קישור לוח השנה הבסיסי ללא פרמטרי תאריך."
+
+#: 
+msgid "The template already contains every column you can map — the core Person/Family fields plus each custom field and property your site defines."
+msgstr "התבנית כבר מכילה כל עמודה שניתן למפות — שדות האדם/משפחה הבסיסיים בתוספת כל שדה מותאם אישית ומאפיין שהאתר שלך מגדיר."
+
+#: 
+msgid "The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically."
+msgstr "התבנית כבר כוללת עמודה לכל שדה מותאם אישית של אדם/משפחה ולכל מאפיין שהגדרת. אם תוסיף עמודות ידנית, פשוט השתמש בשם המדויק של השדה המותאם אישית או המאפיין ככותרת העמודה והיבואן יתאים אותה אוטומטית."
+
+#: 
+msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
+msgstr "קישור לוח השנה אינו תקין או שבוטל. בקש מהקהילה קישור עדכני."
+
+#: 
+msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
+msgstr "קושר אירוע זה לרשימת שירות או כיתה — משמש בתהליך הכניסה של הקיוסק."
+
+#: 
+msgid "Upload a CSV to create families and people in bulk."
+msgstr "העלה CSV ליצירת משפחות ואנשים בכמות."
+
+#: 
+msgid "Volunteer-entered headcounts, broken down by category."
+msgstr "ספירת נוכחים שהוזנה על ידי מתנדב, מחולקת לפי קטגוריה."
+
+#: 
+msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
+msgstr "ל-CSV שלך יש שמות עמודות כפולים. שנה את שמות העמודות הכפולות (לדוגמה, הוסף \"(2)\" לשנייה) והעלה שוב."
 

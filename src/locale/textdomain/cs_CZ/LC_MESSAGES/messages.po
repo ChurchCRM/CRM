@@ -1162,10 +1162,6 @@ msgid "Summary Data"
 msgstr "Souhrn"
 
 #: 
-msgid "CSV"
-msgstr "CSV"
-
-#: 
 msgid "Back"
 msgstr "Zpět"
 
@@ -1289,10 +1285,6 @@ msgstr "Formát datového souboru"
 #: 
 msgid "GPS Visualizer"
 msgstr "Vizualizér GPS"
-
-#: 
-msgid "Street Atlas USA"
-msgstr "Atlas ulic USA"
 
 #: 
 #, fuzzy
@@ -2321,18 +2313,6 @@ msgstr "Číslo příliš velké. Musí být mezi -2147483648 a 2147483647"
 #: 
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Příliš vysoká peněžní částka. Maximum je $999999999.99"
-
-#: 
-msgid " Bold Italic"
-msgstr " Tučně a kurzívou"
-
-#: 
-msgid " Italic"
-msgstr " Kurzíva"
-
-#: 
-msgid " Bold"
-msgstr " Tučně"
 
 #: 
 msgid "Error making API Call to"
@@ -5052,7 +5032,8 @@ msgid "Indonesian - Indonesia"
 msgstr "Indonéština - Indonésie"
 
 #: 
-msgid "records(s) successfully added to selected Group."
+#, fuzzy
+msgid "record(s) successfully added to selected Group."
 msgstr "záznamy úspěšně přidány do vybrané skupiny."
 
 #: 
@@ -5360,7 +5341,8 @@ msgid "Remove All from Cart"
 msgstr "Odebrat všechny z košíku"
 
 #: 
-msgid "records(s) successfully deleted from the selected Group."
+#, fuzzy
+msgid "record(s) successfully deleted from the selected Group."
 msgstr "záznam(y) úspěšně odebrán(y) z vybrané skupiny."
 
 #: 
@@ -5841,10 +5823,6 @@ msgstr "Nebyl předán žádný e-mail"
 #: 
 msgid "Mailchimp is not active"
 msgstr "Mailchimp není aktivní"
-
-#: 
-msgid "Mailchimp"
-msgstr "Mailchimp"
 
 #: 
 msgid "Lists"
@@ -6851,7 +6829,8 @@ msgid "Total Payments"
 msgstr "Celkové platby"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payments?"
 msgstr "platby?"
 
 #: 
@@ -6865,10 +6844,6 @@ msgstr "Základní URL"
 #: 
 msgid "Copy"
 msgstr "Kopírovat"
-
-#: 
-msgid "DSN"
-msgstr "DSN"
 
 #: 
 msgid "Debug Info"
@@ -7924,10 +7899,6 @@ msgstr "Otevřené vklady:"
 #: 
 msgid "Orphaned Files:"
 msgstr "Osamocené soubory:"
-
-#: 
-msgid "PDF/CSV"
-msgstr "PDF/CSV"
 
 #: 
 msgid "Payment"
@@ -9501,10 +9472,6 @@ msgid "Loading recovery codes"
 msgstr "Načítání záložních kódů"
 
 #: 
-msgid "MailChimp"
-msgstr "MailChimp"
-
-#: 
 msgid "MailChimp API Key"
 msgstr "API klíč MailChimp"
 
@@ -10865,10 +10832,6 @@ msgid "Download CSV Template"
 msgstr "Stáhnout šablonu CSV"
 
 #: 
-msgid "Download the template to see the expected column format."
-msgstr "Stáhněte šablonu pro zobrazení očekávaného formátu sloupců."
-
-#: 
 msgid "Drag and drop your CSV file here"
 msgstr "Přetáhněte svůj CSV soubor sem"
 
@@ -10879,10 +10842,6 @@ msgstr "Duplikáty"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Každá osoba může mít svůj vlastní e-mail a mobilní číslo."
-
-#: 
-msgid "Each row is one person. Members of the same family share a FamilyID."
-msgstr "Každý řádek je jedna osoba. Členové stejné rodiny sdílejí FamilyID."
 
 #: 
 msgid "Easy registration"
@@ -11967,10 +11926,6 @@ msgid "Upload CSV"
 msgstr "Nahrát CSV"
 
 #: 
-msgid "Upload a CSV file to import families and people into ChurchCRM."
-msgstr "Nahrajte CSV soubor pro import rodin a osob do ChurchCRM."
-
-#: 
 msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
 msgstr "Nahrajte CSV z Excelu, Google Sheets nebo vašeho předchozího systému správy sboru a přiřaďte sloupce k polím ChurchCRM."
 
@@ -12193,10 +12148,6 @@ msgstr "členové"
 #: 
 msgid "opportunities"
 msgstr "příležitosti"
-
-#: 
-msgid "options"
-msgstr "možnosti"
 
 #: 
 msgid "or connect an external service"
@@ -12433,10 +12384,6 @@ msgstr "Registrovat a spravovat kiosková zařízení pro registraci účasti"
 #: 
 msgid "Review & Delete"
 msgstr "Zkontrolovat a smazat"
-
-#: 
-msgid "SHA1 Hash"
-msgstr "SHA1 hash"
 
 #: 
 msgid "Signature Mismatch"
@@ -14378,10 +14325,6 @@ msgstr[1] "Byly úspěšně vytvořeny %d opakující se události."
 msgstr[2] "Bylo úspěšně vytvořeno %d opakujících se událostí."
 
 #: 
-msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
-msgstr "(např. Farníci, Návštěvníci, Děti), aby dobrovolníci mohli zde zaznamenat počty přítomných."
-
-#: 
 msgid "1. Sunday School Class"
 msgstr "1. Třída nedělní školy"
 
@@ -14402,10 +14345,6 @@ msgid "A class is a Group with type \"Sunday School\". It holds the students and
 msgstr "Třída je Skupina s typem \"Nedělní škola\". Obsahuje žáky a učitele (členy s rolemi)."
 
 #: 
-msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
-msgstr "Propojená skupina váže tuto událost ke třídě nebo seznamu farní služby. Když je událost přiřazena ke kiosku, kiosek načte členy skupiny a zobrazí je jako seznam pro přihlášení klepnutím. Pro třídy nedělní školy zde propojte skupinu třídy, aby dobrovolníci mohli přihlašovat žáky z tabletu."
-
-#: 
 msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
 msgstr "Konkrétní výskyt (např. \"Předškolní — 12. dubna\"). Dědí výchozí nastavení z typu a je propojena se skupinou třídy prostřednictvím publika. Na tuto událost dobrovolníci zaznamenávají docházku."
 
@@ -14416,10 +14355,6 @@ msgstr "Tablet přiřazený k jedné události. Kiosek načte seznam propojené 
 #: 
 msgid "Add Walk-in / Visitor"
 msgstr "Přidat příchozího / Návštěvníka"
-
-#: 
-msgid "Add categories on the Event Type page"
-msgstr "Přidat kategorie na stránce Typ události"
 
 #: 
 msgid "Add people to your cart first, then come back to check them in to an event."
@@ -14468,10 +14403,6 @@ msgstr "Audit"
 #: 
 msgid "Audit Events"
 msgstr "Auditní události"
-
-#: 
-msgid "Auto-totalled from counts at right"
-msgstr "Automaticky sečteno z počtů napravo"
 
 #: 
 msgid "Back to Events"
@@ -14596,10 +14527,6 @@ msgstr "Databáze + nahrané fotografie (větší)"
 #: 
 msgid "Database dump only (.sql)"
 msgstr "Pouze výpis databáze (.sql)"
-
-#: 
-msgid "Date Range"
-msgstr "Rozsah dat"
 
 #: 
 msgid "Date range cannot exceed 1 year"
@@ -15464,4 +15391,464 @@ msgstr "Použít záchranný kód"
 #: 
 msgid "Use authenticator app instead"
 msgstr "Použít aplikaci pro ověřování"
+
+#: 
+msgid " Notification Email Error"
+msgstr " Chyba notifikačního e-mailu"
+
+#: 
+msgid "%d modules loaded"
+msgstr "Načteno %d modulů"
+
+#: 
+msgid "(PHP default)"
+msgstr "(výchozí PHP)"
+
+#: 
+msgid "(none)"
+msgstr "(žádný)"
+
+#: 
+msgid "(not set)"
+msgstr "(nenastaveno)"
+
+#: 
+msgid "All checks passing"
+msgstr "Všechny kontroly proběhly úspěšně"
+
+#: 
+msgid "App"
+msgstr "Aplikace"
+
+#: 
+msgid "Browser time zone differs:"
+msgstr "Časové pásmo prohlížeče se liší:"
+
+#: 
+msgid "Calendar time zone:"
+msgstr "Časové pásmo kalendáře:"
+
+#: 
+msgid "Cannot send test email"
+msgstr "Nelze odeslat testovací e-mail"
+
+#: 
+msgid "Charset"
+msgstr "Znaková sada"
+
+#: 
+msgid "Church Email address is not set — the test email has nowhere to go."
+msgstr "E-mailová adresa kostela není nastavena — testovací e-mail nemá kam jít."
+
+#: 
+msgid "Church email — configured on the"
+msgstr "E-mail kostela — nakonfigurován na"
+
+#: 
+msgid "ChurchCRM Test Email"
+msgstr "Testovací e-mail ChurchCRM"
+
+#: 
+msgid "Collation"
+msgstr "Řazení"
+
+#: 
+msgid "Connection"
+msgstr "Připojení"
+
+#: 
+msgid "Database"
+msgstr "Databáze"
+
+#: 
+msgid "Delivery"
+msgstr "Doručení"
+
+#: 
+msgid "Disk (Images Root)"
+msgstr "Disk (kořenový adresář obrázků)"
+
+#: 
+msgid "Display Errors"
+msgstr "Zobrazit chyby"
+
+#: 
+msgid "Email Debug"
+msgstr "Ladění e-mailu"
+
+#: 
+msgid "Environment"
+msgstr "Prostředí"
+
+#: 
+msgid "Error Log"
+msgstr "Protokol chyb"
+
+#: 
+msgid "Error Reporting"
+msgstr "Hlášení chyb"
+
+#: 
+msgid "Error:"
+msgstr "Chyba:"
+
+#: 
+msgid "Fix Settings"
+msgstr "Opravit nastavení"
+
+#: 
+msgid "Hit Rate"
+msgstr "Míra zásahů"
+
+#: 
+msgid "Host"
+msgstr "Hostitel"
+
+#: 
+msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
+msgstr "Pokud zpráva nedorazí během několika minut, zkontrolujte složku spam/nevyžádaná pošta a níže uvedený protokol ladění SMTP."
+
+#: 
+msgid "If you can read this message in your inbox, your SMTP configuration is working correctly."
+msgstr "Pokud si tuto zprávu můžete přečíst ve své doručené poště, konfigurace SMTP funguje správně."
+
+#: 
+msgid "Incomplete"
+msgstr "Neúplný"
+
+#: 
+msgid "Installed on Server"
+msgstr "Nainstalováno na serveru"
+
+#: 
+msgid "Integrity"
+msgstr "Integrita"
+
+#: 
+msgid "Issues detected"
+msgstr "Zjištěné problémy"
+
+#: 
+msgid "Loaded php.ini"
+msgstr "Načtený php.ini"
+
+#: 
+msgid "Locale"
+msgstr "Lokalizace"
+
+#: 
+msgid "Max Execution Time"
+msgstr "Maximální doba provádění"
+
+#: 
+msgid "Max POST Size"
+msgstr "Maximální velikost POST"
+
+#: 
+msgid "Max Upload Size"
+msgstr "Maximální velikost uploadu"
+
+#: 
+msgid "Memory"
+msgstr "Paměť"
+
+#: 
+msgid "Memory Limit"
+msgstr "Limit paměti"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
+msgstr "Nyní zkontrolujte doručenou poštu příjemce pro potvrzení doručení. Hledejte předmět:"
+
+#: 
+msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
+msgstr "OPcache není povolena. Její povolení je nízkorizikový způsob, jak urychlit načítání stránek PHP."
+
+#: 
+msgid "Off"
+msgstr "Vypnuto"
+
+#: 
+msgid "On"
+msgstr "Zapnuto"
+
+#: 
+msgid "Open the email debug tester"
+msgstr "Otevřít nástroj pro ladění e-mailu"
+
+#: 
+msgid "PHP Version"
+msgstr "Verze PHP"
+
+#: 
+msgid "PHPMailer SMTP session"
+msgstr "SMTP relace PHPMailer"
+
+#: 
+msgid "Prerequisites"
+msgstr "Předpoklady"
+
+#: 
+msgid "Review the SMTP debug log below for the handshake details, then adjust your settings."
+msgstr "Prohlédněte si níže uvedený protokol ladění SMTP pro podrobnosti o handshake a upravte nastavení."
+
+#: 
+msgid "SMTP Configuration"
+msgstr "Konfigurace SMTP"
+
+#: 
+msgid "SMTP Debug Log"
+msgstr "Protokol ladění SMTP"
+
+#: 
+msgid "SMTP Host is not configured."
+msgstr "Hostitel SMTP není nakonfigurován."
+
+#: 
+msgid "SMTP configuration test — if this arrived, your setup works."
+msgstr "Test konfigurace SMTP — pokud toto dorazilo, vaše nastavení funguje."
+
+#: 
+msgid "Schema Version"
+msgstr "Verze schématu"
+
+#: 
+msgid "Send Again"
+msgstr "Odeslat znovu"
+
+#: 
+msgid "Send a test message to verify your SMTP configuration"
+msgstr "Odeslat testovací zprávu pro ověření konfigurace SMTP"
+
+#: 
+msgid "Server Version"
+msgstr "Verze serveru"
+
+#: 
+msgid "Session Handler"
+msgstr "Správce relací"
+
+#: 
+msgid "Session Save Path"
+msgstr "Cesta pro ukládání relací"
+
+#: 
+msgid "Settings Valid"
+msgstr "Nastavení platné"
+
+#: 
+msgid "Subject"
+msgstr "Předmět"
+
+#: 
+msgid "Test email accepted by SMTP server"
+msgstr "Testovací e-mail byl přijat serverem SMTP"
+
+#: 
+msgid "Test email failed to send"
+msgstr "Odeslání testovacího e-mailu se nezdařilo"
+
+#: 
+msgid "This is a ChurchCRM test email."
+msgstr "Toto je testovací e-mail ChurchCRM."
+
+#: 
+msgid "Timeout"
+msgstr "Časový limit"
+
+#: 
+msgid "Timezone"
+msgstr "Časové pásmo"
+
+#: 
+msgid "Unable to list web server modules (non-Apache SAPI)."
+msgstr "Nelze zobrazit seznam modulů webového serveru (non-Apache SAPI)."
+
+#: 
+msgid "Update Settings"
+msgstr "Aktualizovat nastavení"
+
+#: 
+msgid "View full photo"
+msgstr "Zobrazit celou fotografii"
+
+#: 
+msgid "page."
+msgstr "stránce."
+
+#: 
+msgid "user:"
+msgstr "uživatel:"
+
+#: 
+msgid "1. Download the template"
+msgstr "1. Stáhněte šablonu"
+
+#: 
+msgid "2. Fill in your data"
+msgstr "2. Vyplňte svá data"
+
+#: 
+msgid "3. Upload and map"
+msgstr "3. Nahrajte a namapujte"
+
+#: 
+msgid "Add Recurring Event"
+msgstr "Přidat opakující se událost"
+
+#: 
+msgid "Available after the event is saved."
+msgstr "K dispozici po uložení události."
+
+#: 
+msgid "Boolean properties/fields accept yes / no / true / false / 1 / 0."
+msgstr "Logické vlastnosti/pole přijímají yes / no / true / false / 1 / 0."
+
+#: 
+msgid "ChurchCRM auto-matches each column by name. Anything it cannot match is marked as Unmapped — pick a field or leave it as Ignore."
+msgstr "ChurchCRM automaticky přiřazuje každý sloupec podle názvu. Vše, co nelze přiřadit, je označeno jako Nemapováno — vyberte pole nebo ponechte jako Ignorovat."
+
+#: 
+msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
+msgstr "Soubor CSV nelze analyzovat. Zkontrolujte, zda se jedná o platný soubor s hodnotami oddělenými čárkami a řádkem záhlaví."
+
+#: 
+msgid "Custom field columns you have not configured are ignored — nothing is created on the fly."
+msgstr "Sloupce vlastních polí, které jste nenakonfigurovali, jsou ignorovány — nic se automaticky nevytváří."
+
+#: 
+msgid "Custom fields and properties are supported"
+msgstr "Vlastní pole a vlastnosti jsou podporovány"
+
+#: 
+msgid "Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a month and day with no year."
+msgstr "Datová pole přijímají YYYY-MM-DD nebo M/D/YYYY. Použijte 0000-MM-DD nebo M/D pro měsíc a den bez roku."
+
+#: 
+msgid "Each row is one person. People in the same family share a FamilyID. Leave columns blank when you have no value for them."
+msgstr "Každý řádek představuje jednu osobu. Osoby ze stejné rodiny sdílejí FamilyID. Nechte sloupce prázdné, pokud pro ně nemáte hodnotu."
+
+#: 
+msgid "Event Timing"
+msgstr "Načasování události"
+
+#: 
+msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
+msgstr "Každý odpovídající výskyt mezi Od a Do dostane vlastní událost ve stejném čase Začátku/Konce."
+
+#: 
+msgid "External calendar sharing is disabled"
+msgstr "Sdílení externího kalendáře je zakázáno"
+
+#: 
+msgid "Failed to load event editor. Please refresh and try again."
+msgstr "Nepodařilo se načíst editor událostí. Obnovte stránku a zkuste to znovu."
+
+#: 
+msgid "Family Custom"
+msgstr "Vlastní rodina"
+
+#: 
+msgid "Family Property"
+msgstr "Vlastnost rodiny"
+
+#: 
+msgid "Fields"
+msgstr "Pole"
+
+#: 
+msgid "Go to home"
+msgstr "Přejít na domovskou stránku"
+
+#: 
+msgid "Hide advanced options"
+msgstr "Skrýt pokročilé možnosti"
+
+#: 
+msgid "How the CSV Import Works"
+msgstr "Jak funguje import CSV"
+
+#: 
+msgid "Imported from CSV"
+msgstr "Importováno z CSV"
+
+#: 
+msgid "Invalid date format"
+msgstr "Neplatný formát data"
+
+#: 
+msgid "Loading event editor…"
+msgstr "Načítání editoru událostí…"
+
+#: 
+msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
+msgstr "Žádný kalendář není vybrán — tato událost bude uložena, ale nezobrazí se v žádném zobrazení kalendáře."
+
+#: 
+msgid "No group"
+msgstr "Žádná skupina"
+
+#: 
+msgid "Not pinned to any calendar"
+msgstr "Nepřipnuto k žádnému kalendáři"
+
+#: 
+msgid "Optional — sermon notes, materials, or other details copied to every generated event."
+msgstr "Volitelné — poznámky ke kázání, materiály nebo jiné podrobnosti zkopírované do každé vygenerované události."
+
+#: 
+msgid "Person / Family"
+msgstr "Osoba / Rodina"
+
+#: 
+msgid "Person Custom"
+msgstr "Vlastní osoba"
+
+#: 
+msgid "Person Property"
+msgstr "Vlastnost osoby"
+
+#: 
+msgid "Show more options"
+msgstr "Zobrazit více možností"
+
+#: 
+msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
+msgstr "Odkaz na kalendář je neúplný. Zkontrolujte adresu URL s osobou, která vám jej zaslala."
+
+#: 
+msgid "The church administrator has not enabled external calendar sharing. Please contact them if you believe this is in error."
+msgstr "Správce kostela nepovolil sdílení externího kalendáře. Kontaktujte ho, pokud se domníváte, že je to chyba."
+
+#: 
+msgid "The start or end date in the link could not be understood. Try the base calendar link without date parameters."
+msgstr "Počáteční nebo koncové datum v odkazu nelze rozpoznat. Zkuste základní odkaz na kalendář bez parametrů data."
+
+#: 
+msgid "The template already contains every column you can map — the core Person/Family fields plus each custom field and property your site defines."
+msgstr "Šablona již obsahuje všechny sloupce, které lze mapovat — základní pole Osoba/Rodina plus každé vlastní pole a vlastnost definované vaším webem."
+
+#: 
+msgid "The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically."
+msgstr "Šablona již obsahuje sloupec pro každé vlastní pole Osoba/Rodina a pro každou vlastnost, kterou jste definovali. Pokud přidáte sloupce ručně, použijte jako záhlaví přesný název vlastního pole nebo vlastnosti a importér je automaticky přiřadí."
+
+#: 
+msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
+msgstr "Tento odkaz na kalendář je neplatný nebo byl odvolán. Požádejte kostel o aktuální odkaz."
+
+#: 
+msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
+msgstr "Přiřadí tuto událost ke třídě nebo seznamu služby — používáno v procesu přihlašování přes Kiosk."
+
+#: 
+msgid "Upload a CSV to create families and people in bulk."
+msgstr "Nahrajte CSV pro hromadné vytvoření rodin a osob."
+
+#: 
+msgid "Volunteer-entered headcounts, broken down by category."
+msgstr "Počty zadané dobrovolníky, rozdělené podle kategorie."
+
+#: 
+msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
+msgstr "Váš CSV má duplicitní názvy sloupců. Přejmenujte duplicitní sloupce (např. přidejte \"(2)\" k druhému) a nahrajte znovu."
 
