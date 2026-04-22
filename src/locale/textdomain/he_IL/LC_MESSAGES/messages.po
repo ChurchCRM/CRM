@@ -639,10 +639,6 @@ msgid "Save Changes"
 msgstr "שמור שינויים"
 
 #: 
-msgid "Church Event Editor"
-msgstr "עורך אירועי מוסד"
-
-#: 
 msgid "Edit Event Type"
 msgstr "ערוך סוג אירוע"
 
@@ -708,20 +704,8 @@ msgid "Create Event"
 msgstr "צור אירוע"
 
 #: 
-msgid "Create a new Event"
-msgstr "צור אירוע חדש"
-
-#: 
-msgid "Select your event type"
-msgstr "בחר את סוג האירוע"
-
-#: 
 msgid "Event Status"
 msgstr "סטטוס האירוע"
-
-#: 
-msgid "Return to Events"
-msgstr "חזור לאירועים"
 
 #: 
 msgid "Sundays"
@@ -5107,10 +5091,6 @@ msgid "Church Greeter"
 msgstr "מקבל פנים במוסד"
 
 #: 
-msgid "External Calendar API is disabled"
-msgstr "API הלוח שנה החיצוני מושבת"
-
-#: 
 msgid "Special Group Settings : Sunday School Type"
 msgstr "הגדרות קבוצה מיוחדות: סוג בית ספר ראשון"
 
@@ -5535,10 +5515,6 @@ msgstr "לא ניתן לפתוח את הקובץ"
 #: 
 msgid "Missing calendar access token"
 msgstr "חסר אסימון גישה ללוח שנה"
-
-#: 
-msgid "Calendar access token not found"
-msgstr "לא נמצא אסימון גישה ללוח שנה"
 
 #: 
 msgid "User must have Delete Records permission"
@@ -6964,20 +6940,8 @@ msgid "SMTP Host"
 msgstr "מארח SMTP"
 
 #: 
-msgid "Software"
-msgstr "תוכנה"
-
-#: 
-msgid "System & Configuration"
-msgstr "מערכת והגדרות"
-
-#: 
 msgid "Tip:"
 msgstr "טיפ:"
-
-#: 
-msgid "Valid Settings"
-msgstr "הגדרות תקינות"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7038,10 +7002,6 @@ msgid "Attendance Count Categories"
 msgstr "קטגוריות ספירת נוכחות"
 
 #: 
-msgid "Attendance Notes"
-msgstr "הערות נוכחות"
-
-#: 
 msgid "Change Event"
 msgstr "שנה אירוע"
 
@@ -7097,14 +7057,6 @@ msgstr "מחק אירוע"
 msgid "Edit Event"
 msgstr "ערוך אירוע"
 
-#: 
-msgid "Editing Event"
-msgstr "עורך אירוע"
-
-#: 
-msgid "Enter event title..."
-msgstr "הזן כותרת לאירוע..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7155,14 +7107,6 @@ msgid "None (one-time event)"
 msgstr "ללא (אירוע חד פעמי)"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "אופציונלי - הוסף הערות דרשה או פרטי אירוע נוספים"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "הערות אופציונליות לגבי הנוכחות..."
-
-#: 
 msgid "People Checked In"
 msgstr "אנשים שביצעו צ'ק-אין"
 
@@ -7197,10 +7141,6 @@ msgstr "חפש מפקח/אחראי..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "בחר אירוע לרישום כניסה (Check-In)"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "טקסט דרשה / אירוע"
 
 #: 
 msgid "Unclassified"
@@ -8233,10 +8173,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "Base URL אינו מוגדר ב-Config.php"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "שפות נתמכות ב-ChurchCRM"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "התחבר לשרת דרך SSH, FTP או פאנל הניהול"
 
@@ -8283,10 +8219,6 @@ msgstr "שפה"
 #: 
 msgid "Local development:"
 msgstr "פיתוח מקומי:"
-
-#: 
-msgid "Locale Support"
-msgstr "תמיכה בשפה"
 
 #: 
 msgid "Location & Contact Information"
@@ -9107,10 +9039,6 @@ msgstr "פתיחת ארכיון השדרוג נכשלה. הקובץ שהורד �
 #: 
 msgid "Failed to save the downloaded release file. Please check disk space and permissions."
 msgstr "שמירת קובץ הגרסה שהורד נכשלה. אנא בדוק שטח דיסק והרשאות."
-
-#: 
-msgid "Invalid date format in start parameter"
-msgstr "פורמט תאריך לא חוקי בפרמטר ההתחלה"
 
 #: 
 msgid "Mismatch"
@@ -10690,10 +10618,6 @@ msgid "CSV Column"
 msgstr "עמודת CSV"
 
 #: 
-msgid "CSV template not found"
-msgstr "תבנית CSV לא נמצאה"
-
-#: 
 msgid "Call"
 msgstr "שיחה"
 
@@ -10768,10 +10692,6 @@ msgstr "העמודה הותאמה אוטומטית לשדה ChurchCRM."
 #: 
 msgid "Community Management Platform"
 msgstr "פלטפורמת ניהול קהילה"
-
-#: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "תואם ל-Excel, Google Sheets או כל ייצוא CSV."
 
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."

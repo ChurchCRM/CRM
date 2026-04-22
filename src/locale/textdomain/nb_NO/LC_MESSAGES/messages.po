@@ -665,10 +665,6 @@ msgid "Save Changes"
 msgstr "Lagre endringer"
 
 #: 
-msgid "Church Event Editor"
-msgstr "Kirke begivenhet Editor"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Redigere Hendelsestype"
 
@@ -735,21 +731,9 @@ msgid "Create Event"
 msgstr "Lag Arrangement"
 
 #: 
-msgid "Create a new Event"
-msgstr "Oprett nytt arrangement"
-
-#: 
-msgid "Select your event type"
-msgstr "Velg arrangement type"
-
-#: 
 #, fuzzy
 msgid "Event Status"
 msgstr "Hendelse Status"
-
-#: 
-msgid "Return to Events"
-msgstr "Tilbake til Arrangement"
 
 #: 
 msgid "Sundays"
@@ -5206,10 +5190,6 @@ msgid "Church Greeter"
 msgstr "Kirkevert"
 
 #: 
-msgid "External Calendar API is disabled"
-msgstr "Eksternt kalender-API er deaktivert"
-
-#: 
 msgid "Special Group Settings : Sunday School Type"
 msgstr "Spesielle gruppeinnstillinger: Søndagsskole-type"
 
@@ -5632,10 +5612,6 @@ msgstr "Kunne ikke åpne fil"
 #: 
 msgid "Missing calendar access token"
 msgstr "Mangler tilgangstoken for kalender"
-
-#: 
-msgid "Calendar access token not found"
-msgstr "Tilgangstoken for kalender ble ikke funnet"
 
 #: 
 msgid "User must have Delete Records permission"
@@ -7054,20 +7030,8 @@ msgid "SMTP Host"
 msgstr "SMTP-vert"
 
 #: 
-msgid "Software"
-msgstr "Programvare"
-
-#: 
-msgid "System & Configuration"
-msgstr "System og konfigurasjon"
-
-#: 
 msgid "Tip:"
 msgstr "Tips:"
-
-#: 
-msgid "Valid Settings"
-msgstr "Gyldige innstillinger"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7128,10 +7092,6 @@ msgid "Attendance Count Categories"
 msgstr "Kategorier for oppmøtetelling"
 
 #: 
-msgid "Attendance Notes"
-msgstr "Oppmøtenotater"
-
-#: 
 msgid "Change Event"
 msgstr "Endre hendelse"
 
@@ -7187,14 +7147,6 @@ msgstr "Slett hendelse"
 msgid "Edit Event"
 msgstr "Rediger hendelse"
 
-#: 
-msgid "Editing Event"
-msgstr "Redigerer hendelse"
-
-#: 
-msgid "Enter event title..."
-msgstr "Skriv inn tittel på hendelse..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7245,14 +7197,6 @@ msgid "None (one-time event)"
 msgstr "Ingen (engangshendelse)"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "Valgfritt - Legg til notater fra preken eller andre detaljer"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "Valgfrie notater om oppmøte..."
-
-#: 
 msgid "People Checked In"
 msgstr "Personer sjekket inn"
 
@@ -7287,10 +7231,6 @@ msgstr "Søk etter veileder..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "Velg hendelse for innsjekk"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "Tekst for preken / hendelse"
 
 #: 
 msgid "Unclassified"
@@ -8323,10 +8263,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "Base-URL er ikke konfigurert i Config.php"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "Støttede lokaler i ChurchCRM"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "Koble til serveren din via SSH, FTP eller kontrollpanelet hos din leverandør"
 
@@ -8373,10 +8309,6 @@ msgstr "Språk"
 #: 
 msgid "Local development:"
 msgstr "Lokal utvikling:"
-
-#: 
-msgid "Locale Support"
-msgstr "Støtte for lokale"
 
 #: 
 msgid "Location & Contact Information"
@@ -9197,10 +9129,6 @@ msgstr "Kunne ikke åpne oppgraderingsarkivet. Den nedlastede filen kan være sk
 #: 
 msgid "Failed to save the downloaded release file. Please check disk space and permissions."
 msgstr "Kunne ikke lagre den nedlastede utgivelsesfilen. Kontroller diskplass og tillatelser."
-
-#: 
-msgid "Invalid date format in start parameter"
-msgstr "Ugyldig datoformat i startparameter"
 
 #: 
 msgid "Mismatch"
@@ -10780,10 +10708,6 @@ msgid "CSV Column"
 msgstr "CSV-kolonne"
 
 #: 
-msgid "CSV template not found"
-msgstr "CSV-mal ikke funnet"
-
-#: 
 msgid "Call"
 msgstr "Ring"
 
@@ -10858,10 +10782,6 @@ msgstr "Kolonnen ble automatisk tilordnet et ChurchCRM-felt."
 #: 
 msgid "Community Management Platform"
 msgstr "Plattform for menighetsadministrasjon"
-
-#: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "Kompatibel med Excel, Google Sheets eller annen CSV-eksport."
 
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."

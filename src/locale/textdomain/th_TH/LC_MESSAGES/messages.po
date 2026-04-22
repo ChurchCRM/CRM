@@ -644,10 +644,6 @@ msgid "Save Changes"
 msgstr "บันทึกการเปลี่ยนแปลง"
 
 #: 
-msgid "Church Event Editor"
-msgstr "ตัวแก้ไขกิจกรรมคริสตจักร"
-
-#: 
 msgid "Edit Event Type"
 msgstr "แก้ไขประเภทกิจกรรม"
 
@@ -713,20 +709,8 @@ msgid "Create Event"
 msgstr "สร้างกิจกรรม"
 
 #: 
-msgid "Create a new Event"
-msgstr "สร้างกิจกรรมใหม่"
-
-#: 
-msgid "Select your event type"
-msgstr "เลือกประเภทกิจกรรมของคุณ"
-
-#: 
 msgid "Event Status"
 msgstr "สถานะกิจกรรม"
-
-#: 
-msgid "Return to Events"
-msgstr "กลับไปที่กิจกรรม"
 
 #: 
 msgid "Sundays"
@@ -5084,10 +5068,6 @@ msgid "Church Greeter"
 msgstr "ผู้ต้อนรับคริสตจักร"
 
 #: 
-msgid "External Calendar API is disabled"
-msgstr "API ปฏิทินภายนอกถูกปิดใช้งาน"
-
-#: 
 msgid "Special Group Settings : Sunday School Type"
 msgstr "การตั้งค่ากลุ่มพิเศษ: ประเภทโรงเรียนวันอาทิตย์"
 
@@ -5510,10 +5490,6 @@ msgstr "ไม่สามารถเปิดไฟล์"
 #: 
 msgid "Missing calendar access token"
 msgstr "ไม่มีโทเค็นการเข้าถึงปฏิทิน"
-
-#: 
-msgid "Calendar access token not found"
-msgstr "ไม่พบโทเค็นการเข้าถึงปฏิทิน"
 
 #: 
 msgid "User must have Delete Records permission"
@@ -6935,20 +6911,8 @@ msgid "SMTP Host"
 msgstr "โฮสต์ SMTP"
 
 #: 
-msgid "Software"
-msgstr "ซอฟต์แวร์"
-
-#: 
-msgid "System & Configuration"
-msgstr "ระบบและการกำหนดค่า"
-
-#: 
 msgid "Tip:"
 msgstr "เคล็ดลับ:"
-
-#: 
-msgid "Valid Settings"
-msgstr "การตั้งค่าที่ถูกต้อง"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7008,10 +6972,6 @@ msgid "Attendance Count Categories"
 msgstr "หมวดหมู่การนับจำนวนผู้เข้าร่วม"
 
 #: 
-msgid "Attendance Notes"
-msgstr "บันทึกการเข้าร่วม"
-
-#: 
 msgid "Change Event"
 msgstr "เปลี่ยนกิจกรรม"
 
@@ -7067,14 +7027,6 @@ msgstr "ลบกิจกรรม"
 msgid "Edit Event"
 msgstr "แก้ไขกิจกรรม"
 
-#: 
-msgid "Editing Event"
-msgstr "กำลังแก้ไขกิจกรรม"
-
-#: 
-msgid "Enter event title..."
-msgstr "ป้อนชื่อกิจกรรม..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7125,14 +7077,6 @@ msgid "None (one-time event)"
 msgstr "ไม่มี (กิจกรรมครั้งเดียว)"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "ทางเลือก - เพิ่มบันทึกเทศนาหรือรายละเอียดกิจกรรมเพิ่มเติม"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "บันทึกทางเลือกเกี่ยวกับการเข้าร่วม..."
-
-#: 
 msgid "People Checked In"
 msgstr "คนที่เช็คอินแล้ว"
 
@@ -7167,10 +7111,6 @@ msgstr "ค้นหาผู้ดูแล..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "เลือกกิจกรรมสำหรับการเช็คอิน"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "ข้อความเทศนา / กิจกรรม"
 
 #: 
 msgid "Unclassified"
@@ -8202,10 +8142,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "ไม่ได้กำหนดค่า URL หลักใน Config.php"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "ภาษาที่ ChurchCRM รองรับ"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "เชื่อมต่อกับเซิร์ฟเวอร์ของคุณผ่าน SSH, FTP หรือแผงควบคุมโฮสติ้ง"
 
@@ -8252,10 +8188,6 @@ msgstr "ภาษา"
 #: 
 msgid "Local development:"
 msgstr "การพัฒนาในเครื่อง:"
-
-#: 
-msgid "Locale Support"
-msgstr "การสนับสนุนภาษา"
 
 #: 
 msgid "Location & Contact Information"
@@ -9072,10 +9004,6 @@ msgstr "การเปิดไฟล์อาร์ไคฟ์อัปเก
 #: 
 msgid "Failed to save the downloaded release file. Please check disk space and permissions."
 msgstr "การบันทึกไฟล์รีลีสที่ดาวน์โหลดล้มเหลว โปรดตรวจสอบพื้นที่ดิสก์และสิทธิ์"
-
-#: 
-msgid "Invalid date format in start parameter"
-msgstr "รูปแบบวันที่ไม่ถูกต้องในพารามิเตอร์เริ่มต้น"
 
 #: 
 msgid "Mismatch"
@@ -10653,10 +10581,6 @@ msgid "CSV Column"
 msgstr "คอลัมน์ CSV"
 
 #: 
-msgid "CSV template not found"
-msgstr "ไม่พบเทมเพลต CSV"
-
-#: 
 msgid "Call"
 msgstr "โทร"
 
@@ -10731,10 +10655,6 @@ msgstr "คอลัมน์ถูกจับคู่อัตโนมัต
 #: 
 msgid "Community Management Platform"
 msgstr "แพลตฟอร์มบริหารจัดการชุมชน"
-
-#: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "ใช้งานร่วมกับ Excel, Google Sheets หรือไฟล์ CSV ใดก็ได้"
 
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."

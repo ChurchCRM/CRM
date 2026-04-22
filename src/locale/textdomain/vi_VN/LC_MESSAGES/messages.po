@@ -651,10 +651,6 @@ msgid "Save Changes"
 msgstr "Lưu thay đổi"
 
 #: 
-msgid "Church Event Editor"
-msgstr "Chỉnh sửa sự kiện Hội Thánh"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Chỉnh sửa loại sự kiện"
 
@@ -720,20 +716,8 @@ msgid "Create Event"
 msgstr "Tạo sự kiện"
 
 #: 
-msgid "Create a new Event"
-msgstr "Tạo sự kiện mới"
-
-#: 
-msgid "Select your event type"
-msgstr "Lựa chọn loại sự kiện"
-
-#: 
 msgid "Event Status"
 msgstr "Trạng thái sự kiện"
-
-#: 
-msgid "Return to Events"
-msgstr "Quay về sự kiện"
 
 #: 
 msgid "Sundays"
@@ -5121,10 +5105,6 @@ msgid "Church Greeter"
 msgstr "Church Greeter"
 
 #: 
-msgid "External Calendar API is disabled"
-msgstr "API lịch bên ngoài bị tắt"
-
-#: 
 msgid "Special Group Settings : Sunday School Type"
 msgstr "Cài đặt Nhóm Đặc biệt: Loại Trường Chủ nhật"
 
@@ -5549,10 +5529,6 @@ msgstr "Không thể mở tập tin"
 #: 
 msgid "Missing calendar access token"
 msgstr "Thiếu mã thông báo truy cập lịch"
-
-#: 
-msgid "Calendar access token not found"
-msgstr "Không tìm thấy mã thông báo truy cập lịch"
 
 #: 
 msgid "User must have Delete Records permission"
@@ -6971,20 +6947,8 @@ msgid "SMTP Host"
 msgstr "Máy chủ SMTP"
 
 #: 
-msgid "Software"
-msgstr "Phần mềm"
-
-#: 
-msgid "System & Configuration"
-msgstr "Hệ thống & Cấu hình"
-
-#: 
 msgid "Tip:"
 msgstr "Mẹo:"
-
-#: 
-msgid "Valid Settings"
-msgstr "Cài đặt hợp lệ"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7044,10 +7008,6 @@ msgid "Attendance Count Categories"
 msgstr "Các danh mục đếm số người tham dự"
 
 #: 
-msgid "Attendance Notes"
-msgstr "Ghi chú hiện diện"
-
-#: 
 msgid "Change Event"
 msgstr "Thay đổi sự kiện"
 
@@ -7103,14 +7063,6 @@ msgstr "Xóa sự kiện"
 msgid "Edit Event"
 msgstr "Chỉnh sửa sự kiện"
 
-#: 
-msgid "Editing Event"
-msgstr "Đang chỉnh sửa sự kiện"
-
-#: 
-msgid "Enter event title..."
-msgstr "Nhập tiêu đề sự kiện..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7161,14 +7113,6 @@ msgid "None (one-time event)"
 msgstr "Không (sự kiện một lần)"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "Tùy chọn - Thêm ghi chú bài giảng hoặc chi tiết sự kiện bổ sung"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "Ghi chú tùy chọn về việc tham dự..."
-
-#: 
 msgid "People Checked In"
 msgstr "Những người đã điểm danh"
 
@@ -7203,10 +7147,6 @@ msgstr "Tìm người giám sát..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "Chọn sự kiện để điểm danh"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "Nội dung Bài giảng / Sự kiện"
 
 #: 
 msgid "Unclassified"
@@ -8238,10 +8178,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "URL cơ sở chưa được cấu hình trong Config.php"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "Các ngôn ngữ được ChurchCRM hỗ trợ"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "Kết nối với máy chủ của bạn qua SSH, FTP hoặc bảng điều khiển lưu trữ"
 
@@ -8288,10 +8224,6 @@ msgstr "Ngôn ngữ"
 #: 
 msgid "Local development:"
 msgstr "Phát triển cục bộ:"
-
-#: 
-msgid "Locale Support"
-msgstr "Hỗ trợ ngôn ngữ địa phương"
 
 #: 
 msgid "Location & Contact Information"
@@ -9108,10 +9040,6 @@ msgstr "Không thể mở tệp lưu trữ nâng cấp. Tệp đã tải xuống
 #: 
 msgid "Failed to save the downloaded release file. Please check disk space and permissions."
 msgstr "Không thể lưu tệp phát hành đã tải xuống. Vui lòng kiểm tra dung lượng đĩa và quyền."
-
-#: 
-msgid "Invalid date format in start parameter"
-msgstr "Định dạng ngày không hợp lệ trong tham số bắt đầu"
 
 #: 
 msgid "Mismatch"
@@ -10689,10 +10617,6 @@ msgid "CSV Column"
 msgstr "Cot CSV"
 
 #: 
-msgid "CSV template not found"
-msgstr "Khong tim thay mau CSV"
-
-#: 
 msgid "Call"
 msgstr "Goi"
 
@@ -10767,10 +10691,6 @@ msgstr "Cot da duoc tu dong ghep noi voi truong ChurchCRM."
 #: 
 msgid "Community Management Platform"
 msgstr "Nen tang quan ly cong dong"
-
-#: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "Tuong thich voi Excel, Google Sheets hoac bat ky xuat CSV nao."
 
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."

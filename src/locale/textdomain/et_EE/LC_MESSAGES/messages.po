@@ -639,10 +639,6 @@ msgid "Save Changes"
 msgstr "Salvesta muudatused"
 
 #: 
-msgid "Church Event Editor"
-msgstr "Koguduse/kiriku ürituse toimetaja"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Muutke sündmuste tüüpi"
 
@@ -708,20 +704,8 @@ msgid "Create Event"
 msgstr "Loo sündmus"
 
 #: 
-msgid "Create a new Event"
-msgstr "Looge uus sündmus"
-
-#: 
-msgid "Select your event type"
-msgstr "Valige sündmuse tüüp"
-
-#: 
 msgid "Event Status"
 msgstr "Sündmuse olek"
-
-#: 
-msgid "Return to Events"
-msgstr "Tagasi sündmuste juurde"
 
 #: 
 msgid "Sundays"
@@ -5108,10 +5092,6 @@ msgid "Church Greeter"
 msgstr "Koguduse tervitaja"
 
 #: 
-msgid "External Calendar API is disabled"
-msgstr "Väline kalendri API on keelatud"
-
-#: 
 msgid "Special Group Settings : Sunday School Type"
 msgstr "Grupi eriseaded: pühapäevakooli tüüp"
 
@@ -5536,10 +5516,6 @@ msgstr "Faili ei saa avada"
 #: 
 msgid "Missing calendar access token"
 msgstr "Puudub kalendri juurdepääsuluba"
-
-#: 
-msgid "Calendar access token not found"
-msgstr "Kalendri juurdepääsuluba ei leitud"
 
 #: 
 msgid "User must have Delete Records permission"
@@ -6967,20 +6943,8 @@ msgid "SMTP Host"
 msgstr "SMTP host"
 
 #: 
-msgid "Software"
-msgstr "Tarkvara"
-
-#: 
-msgid "System & Configuration"
-msgstr "Süsteem ja konfiguratsioon"
-
-#: 
 msgid "Tip:"
 msgstr "Nõuanne:"
-
-#: 
-msgid "Valid Settings"
-msgstr "Kehtivad sätted"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7041,10 +7005,6 @@ msgid "Attendance Count Categories"
 msgstr "Kohaloleku loendamise kategooriad"
 
 #: 
-msgid "Attendance Notes"
-msgstr "Kohaloleku märkmed"
-
-#: 
 msgid "Change Event"
 msgstr "Muuda sündmust"
 
@@ -7100,14 +7060,6 @@ msgstr "Kustuta sündmus"
 msgid "Edit Event"
 msgstr "Muuda sündmust"
 
-#: 
-msgid "Editing Event"
-msgstr "Sündmuse muutmine"
-
-#: 
-msgid "Enter event title..."
-msgstr "Sisestage sündmuse pealkiri..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7158,14 +7110,6 @@ msgid "None (one-time event)"
 msgstr "Puudub (ühekordselt sündmus)"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "Valikuline - lisage jutluse märkmed või täiendavad sündmuse üksikasjad"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "Valikulised märkmed kohaloleku kohta..."
-
-#: 
 msgid "People Checked In"
 msgstr "Inimesed kontrollis sisse"
 
@@ -7200,10 +7144,6 @@ msgstr "Otsing juhendajale..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "Valige sisse kontrolli sündmus"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "Jutlus / sündmuse tekst"
 
 #: 
 msgid "Unclassified"
@@ -8236,10 +8176,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "Base URL ei ole Config.php-s konfigureeritud"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "ChurchCRM toetatud lokaalsed määrangud"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "Ühendage oma serveriga SSH, FTP või hosting kontrollpaneeli kaudu"
 
@@ -8286,10 +8222,6 @@ msgstr "Keel"
 #: 
 msgid "Local development:"
 msgstr "Kohalik areng:"
-
-#: 
-msgid "Locale Support"
-msgstr "Lokaalse toe tugi"
 
 #: 
 msgid "Location & Contact Information"
@@ -9110,10 +9042,6 @@ msgstr "Uuendusarhiivi avamine ebaõnnestus. Allalaaditud fail võib olla rikutu
 #: 
 msgid "Failed to save the downloaded release file. Please check disk space and permissions."
 msgstr "Allalaaditud väljalasefaili salvestamine ebaõnnestus. Palun kontrollige ketta ruumi ja õigusi."
-
-#: 
-msgid "Invalid date format in start parameter"
-msgstr "Vale kuupäevaformaat algusparameetris"
 
 #: 
 msgid "Mismatch"
@@ -10693,10 +10621,6 @@ msgid "CSV Column"
 msgstr "CSV veerg"
 
 #: 
-msgid "CSV template not found"
-msgstr "CSV malli ei leitud"
-
-#: 
 msgid "Call"
 msgstr "Helista"
 
@@ -10771,10 +10695,6 @@ msgstr "Veerg seostati automaatselt ChurchCRM väljaga."
 #: 
 msgid "Community Management Platform"
 msgstr "Kogukonna haldamise platvorm"
-
-#: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "Ühildub Exceli, Google Sheetsi või mis tahes CSV ekspordiga."
 
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."

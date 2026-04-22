@@ -666,10 +666,6 @@ msgid "Save Changes"
 msgstr "保存更改"
 
 #: 
-msgid "Church Event Editor"
-msgstr "教會活動編輯器"
-
-#: 
 msgid "Edit Event Type"
 msgstr "編輯活動類型"
 
@@ -736,21 +732,9 @@ msgid "Create Event"
 msgstr "建立活動"
 
 #: 
-msgid "Create a new Event"
-msgstr "建立新活動"
-
-#: 
-msgid "Select your event type"
-msgstr "選擇您的活動類型"
-
-#: 
 #, fuzzy
 msgid "Event Status"
 msgstr "活動狀態"
-
-#: 
-msgid "Return to Events"
-msgstr "返回至活動"
 
 #: 
 msgid "Sundays"
@@ -5213,10 +5197,6 @@ msgid "Church Greeter"
 msgstr "教會迎賓員"
 
 #: 
-msgid "External Calendar API is disabled"
-msgstr "外部日曆API已禁用"
-
-#: 
 msgid "Special Group Settings : Sunday School Type"
 msgstr "\n"
 "特定組設置：主日學校類型"
@@ -5647,10 +5627,6 @@ msgstr "無法打開文件"
 #: 
 msgid "Missing calendar access token"
 msgstr "缺少日曆訪問令牌"
-
-#: 
-msgid "Calendar access token not found"
-msgstr "未找到日曆訪問令牌"
 
 #: 
 msgid "User must have Delete Records permission"
@@ -7149,20 +7125,8 @@ msgid "SMTP Host"
 msgstr "SMTP 主機"
 
 #: 
-msgid "Software"
-msgstr "軟體"
-
-#: 
-msgid "System & Configuration"
-msgstr "系統與配置"
-
-#: 
 msgid "Tip:"
 msgstr "提示："
-
-#: 
-msgid "Valid Settings"
-msgstr "有效設定"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7222,10 +7186,6 @@ msgid "Attendance Count Categories"
 msgstr "考勤統計類別"
 
 #: 
-msgid "Attendance Notes"
-msgstr "考勤筆記"
-
-#: 
 msgid "Change Event"
 msgstr "更改活動"
 
@@ -7281,14 +7241,6 @@ msgstr "刪除活動"
 msgid "Edit Event"
 msgstr "編輯活動"
 
-#: 
-msgid "Editing Event"
-msgstr "正在編輯活動"
-
-#: 
-msgid "Enter event title..."
-msgstr "輸入活動標題..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7339,14 +7291,6 @@ msgid "None (one-time event)"
 msgstr "無（一次性活動）"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "可選 - 添加講道筆記或額外的活動詳情"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "有關考勤的可選筆記..."
-
-#: 
 msgid "People Checked In"
 msgstr "已簽到人員"
 
@@ -7381,10 +7325,6 @@ msgstr "搜尋主管..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "選擇簽到活動"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "講道/活動文字"
 
 #: 
 msgid "Unclassified"
@@ -8416,10 +8356,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "Config.php 中未配置基礎 URL"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "ChurchCRM 支援的語言環境"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "通過 SSH、FTP 或您的主機控制台連接到您的伺服器"
 
@@ -8466,10 +8402,6 @@ msgstr "語言"
 #: 
 msgid "Local development:"
 msgstr "本地開發："
-
-#: 
-msgid "Locale Support"
-msgstr "語言環境支援"
 
 #: 
 msgid "Location & Contact Information"
@@ -9286,10 +9218,6 @@ msgstr "無法開啟升級存檔。下載的文件可能已損壞。"
 #: 
 msgid "Failed to save the downloaded release file. Please check disk space and permissions."
 msgstr "儲存下載的發布文件失敗。請檢查磁碟空間和權限。"
-
-#: 
-msgid "Invalid date format in start parameter"
-msgstr "開始參數中的日期格式無效"
 
 #: 
 msgid "Mismatch"
@@ -10867,10 +10795,6 @@ msgid "CSV Column"
 msgstr "CSV 欄位"
 
 #: 
-msgid "CSV template not found"
-msgstr "找不到 CSV 範本"
-
-#: 
 msgid "Call"
 msgstr "致電"
 
@@ -10945,10 +10869,6 @@ msgstr "欄位已自動對應到 ChurchCRM 欄位。"
 #: 
 msgid "Community Management Platform"
 msgstr "社群管理平台"
-
-#: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "相容於 Excel、Google Sheets 或任何 CSV 匯出。"
 
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."

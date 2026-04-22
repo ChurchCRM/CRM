@@ -661,10 +661,6 @@ msgid "Save Changes"
 msgstr "Változtatások mentése"
 
 #: 
-msgid "Church Event Editor"
-msgstr "Church Esemény szerkesztő"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Szerkesztése Esemény típusa"
 
@@ -730,21 +726,9 @@ msgid "Create Event"
 msgstr "Esemény létrehozása"
 
 #: 
-msgid "Create a new Event"
-msgstr "Új esemény létrehozása"
-
-#: 
-msgid "Select your event type"
-msgstr "Válassza ki az esemény típusát"
-
-#: 
 #, fuzzy
 msgid "Event Status"
 msgstr "Event Állapot"
-
-#: 
-msgid "Return to Events"
-msgstr "Vissza az eseményekhez"
 
 #: 
 msgid "Sundays"
@@ -5170,10 +5154,6 @@ msgid "Church Greeter"
 msgstr "Templomi üdvözlő"
 
 #: 
-msgid "External Calendar API is disabled"
-msgstr "Külső naptár API letiltva"
-
-#: 
 msgid "Special Group Settings : Sunday School Type"
 msgstr "Speciális csoportbeállítások: Vasárnapi iskola típus"
 
@@ -5596,10 +5576,6 @@ msgstr "Nem lehet megnyitni a fájlt"
 #: 
 msgid "Missing calendar access token"
 msgstr "Hiányzik a naptár hozzáférési tokenje"
-
-#: 
-msgid "Calendar access token not found"
-msgstr "A naptár hozzáférési tokenja nem található"
 
 #: 
 msgid "User must have Delete Records permission"
@@ -7023,20 +6999,8 @@ msgid "SMTP Host"
 msgstr "SMTP Kiszolgáló"
 
 #: 
-msgid "Software"
-msgstr "Szoftver"
-
-#: 
-msgid "System & Configuration"
-msgstr "Rendszer & Konfiguráció"
-
-#: 
 msgid "Tip:"
 msgstr "Tipp:"
-
-#: 
-msgid "Valid Settings"
-msgstr "Érvényes Beállítások"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7097,10 +7061,6 @@ msgid "Attendance Count Categories"
 msgstr "Részvételi Szám Kategóriák"
 
 #: 
-msgid "Attendance Notes"
-msgstr "Részvételi Megjegyzések"
-
-#: 
 msgid "Change Event"
 msgstr "Esemény Módosítása"
 
@@ -7156,14 +7116,6 @@ msgstr "Esemény Törlése"
 msgid "Edit Event"
 msgstr "Esemény Szerkesztése"
 
-#: 
-msgid "Editing Event"
-msgstr "Esemény Szerkesztése"
-
-#: 
-msgid "Enter event title..."
-msgstr "Írja be az esemény címét..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7214,14 +7166,6 @@ msgid "None (one-time event)"
 msgstr "Nincs (egyszeri esemény)"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "Opcionális - Adjon hozzá prédikációs megjegyzéseket vagy további esemény részleteket"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "Opcionális megjegyzések a részvételről..."
-
-#: 
 msgid "People Checked In"
 msgstr "Érkezési Nyilvántartásban Szereplő Személyek"
 
@@ -7256,10 +7200,6 @@ msgstr "Keresés felügyelő alapján..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "Válasszon Eseményt az Érkezési Nyilvántartáshoz"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "Prédikáció / Eseményszöveg"
 
 #: 
 msgid "Unclassified"
@@ -8292,10 +8232,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "Az alapvető URL nincs konfigurálva a Config.php-ben"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "ChurchCRM Támogatott Területi Beállítások"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "Csatlakozzon kiszolgálójához SSH-n, FTP-n vagy a tárolóhelykezelő panelén keresztül"
 
@@ -8342,10 +8278,6 @@ msgstr "Nyelv"
 #: 
 msgid "Local development:"
 msgstr "Helyi fejlesztés:"
-
-#: 
-msgid "Locale Support"
-msgstr "Helyi Támogatás"
 
 #: 
 msgid "Location & Contact Information"
@@ -9166,10 +9098,6 @@ msgstr "A frissítési archívum megnyitása sikertelen. A letöltött fájl sé
 #: 
 msgid "Failed to save the downloaded release file. Please check disk space and permissions."
 msgstr "A letöltött kiadási fájl mentése sikertelen. Kérem, ellenőrizze a lemezterületet és a jogosultságokat."
-
-#: 
-msgid "Invalid date format in start parameter"
-msgstr "Érvénytelen dátumformátum a kezdési paraméterben"
 
 #: 
 msgid "Mismatch"
@@ -10749,10 +10677,6 @@ msgid "CSV Column"
 msgstr "CSV oszlop"
 
 #: 
-msgid "CSV template not found"
-msgstr "CSV sablon nem található"
-
-#: 
 msgid "Call"
 msgstr "Hívás"
 
@@ -10827,10 +10751,6 @@ msgstr "Az oszlop automatikusan hozzá lett rendelve egy ChurchCRM mezőhöz."
 #: 
 msgid "Community Management Platform"
 msgstr "Közösségkezelő platform"
-
-#: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "Kompatibilis az Excellel, Google Táblázatokkal vagy bármely CSV exporttal."
 
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."

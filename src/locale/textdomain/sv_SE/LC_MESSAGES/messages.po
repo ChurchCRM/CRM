@@ -667,10 +667,6 @@ msgid "Save Changes"
 msgstr "Spara ändringar"
 
 #: 
-msgid "Church Event Editor"
-msgstr "Kyrkans evenemang redigeringsverktyg"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Redigera evenemangtyp"
 
@@ -737,21 +733,9 @@ msgid "Create Event"
 msgstr "Skapa händelse"
 
 #: 
-msgid "Create a new Event"
-msgstr "Skapa en ny händelse"
-
-#: 
-msgid "Select your event type"
-msgstr "Välj din händelsetyp"
-
-#: 
 #, fuzzy
 msgid "Event Status"
 msgstr "Evenemangsstatus"
-
-#: 
-msgid "Return to Events"
-msgstr "Återgå till händelser"
 
 #: 
 msgid "Sundays"
@@ -5219,10 +5203,6 @@ msgid "Church Greeter"
 msgstr "Church Greeter"
 
 #: 
-msgid "External Calendar API is disabled"
-msgstr "Extern kalender-API är inaktiverad"
-
-#: 
 msgid "Special Group Settings : Sunday School Type"
 msgstr "Särskilda gruppinställningar: söndagsskolatyp"
 
@@ -5647,10 +5627,6 @@ msgstr "Kan ej öppna filen"
 #: 
 msgid "Missing calendar access token"
 msgstr "Saknar kalenderåtkomsttoken"
-
-#: 
-msgid "Calendar access token not found"
-msgstr "Kalenderåtkomsttoken hittades inte"
 
 #: 
 msgid "User must have Delete Records permission"
@@ -7078,20 +7054,8 @@ msgid "SMTP Host"
 msgstr "SMTP-värd"
 
 #: 
-msgid "Software"
-msgstr "Programvara"
-
-#: 
-msgid "System & Configuration"
-msgstr "System & Konfiguration"
-
-#: 
 msgid "Tip:"
 msgstr "Tips:"
-
-#: 
-msgid "Valid Settings"
-msgstr "Giltiga inställningar"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7152,10 +7116,6 @@ msgid "Attendance Count Categories"
 msgstr "Kategorier för närvaroräkning"
 
 #: 
-msgid "Attendance Notes"
-msgstr "Närvaroanteckningar"
-
-#: 
 msgid "Change Event"
 msgstr "Ändra händelse"
 
@@ -7211,14 +7171,6 @@ msgstr "Radera händelse"
 msgid "Edit Event"
 msgstr "Redigera händelse"
 
-#: 
-msgid "Editing Event"
-msgstr "Redigerar händelse"
-
-#: 
-msgid "Enter event title..."
-msgstr "Ange händelsetitel..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7269,14 +7221,6 @@ msgid "None (one-time event)"
 msgstr "Ingen (engångshändelse)"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "Valfritt - Lägg till predikoanteckningar eller ytterligare händelsedetaljer"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "Valfria anteckningar om närvaro..."
-
-#: 
 msgid "People Checked In"
 msgstr "Incheckade personer"
 
@@ -7311,10 +7255,6 @@ msgstr "Sök efter handledare..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "Välj händelse för incheckning"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "Prediko- / händelsetext"
 
 #: 
 msgid "Unclassified"
@@ -8347,10 +8287,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "Bas-URL är inte konfigurerad i Config.php"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "Språk som stöds av ChurchCRM"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "Anslut till din server via SSH, FTP eller din värdkontrollpanel"
 
@@ -8397,10 +8333,6 @@ msgstr "Språk"
 #: 
 msgid "Local development:"
 msgstr "Lokal utveckling:"
-
-#: 
-msgid "Locale Support"
-msgstr "Språkstöd"
 
 #: 
 msgid "Location & Contact Information"
@@ -9221,10 +9153,6 @@ msgstr "Det gick inte att öppna uppgraderingsarkivet. Den nedladdade filen kan 
 #: 
 msgid "Failed to save the downloaded release file. Please check disk space and permissions."
 msgstr "Det gick inte att spara den nedladdade versionsfilen. Kontrollera diskutrymme och behörigheter."
-
-#: 
-msgid "Invalid date format in start parameter"
-msgstr "Ogiltigt datumformat i startparameter"
 
 #: 
 msgid "Mismatch"
@@ -10804,10 +10732,6 @@ msgid "CSV Column"
 msgstr "CSV-kolumn"
 
 #: 
-msgid "CSV template not found"
-msgstr "CSV-mall hittades inte"
-
-#: 
 msgid "Call"
 msgstr "Ring"
 
@@ -10882,10 +10806,6 @@ msgstr "Kolumnen matchades automatiskt mot ett ChurchCRM-fält."
 #: 
 msgid "Community Management Platform"
 msgstr "Plattform för gemenskapshantering"
-
-#: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "Kompatibel med Excel, Google Sheets eller valfri CSV-export."
 
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."

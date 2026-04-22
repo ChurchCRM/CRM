@@ -639,10 +639,6 @@ msgid "Save Changes"
 msgstr "Tallenna muutokset"
 
 #: 
-msgid "Church Event Editor"
-msgstr "Kirkon tapahtumien muokkaus"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Muokkaa tapahtumatyyppiä"
 
@@ -708,20 +704,8 @@ msgid "Create Event"
 msgstr "Luo tapahtuma"
 
 #: 
-msgid "Create a new Event"
-msgstr "Luo uusi tapahtuma"
-
-#: 
-msgid "Select your event type"
-msgstr "Valitse tapahtumatyyppi"
-
-#: 
 msgid "Event Status"
 msgstr "Tapahtuman tila"
-
-#: 
-msgid "Return to Events"
-msgstr "Palaa tapahtumiin"
 
 #: 
 msgid "Sundays"
@@ -5079,10 +5063,6 @@ msgid "Church Greeter"
 msgstr "Kirkon vastaanottaja"
 
 #: 
-msgid "External Calendar API is disabled"
-msgstr "Ulkoinen kalenteri-API on poissa käytöstä"
-
-#: 
 msgid "Special Group Settings : Sunday School Type"
 msgstr "Ryhmän erikoisasetukset: Pyhäkoulutyyppi"
 
@@ -5505,10 +5485,6 @@ msgstr "Tiedostoa ei voitu avata"
 #: 
 msgid "Missing calendar access token"
 msgstr "Kalenterin pääsyavain puuttuu"
-
-#: 
-msgid "Calendar access token not found"
-msgstr "Kalenterin pääsyavainta ei löytynyt"
 
 #: 
 msgid "User must have Delete Records permission"
@@ -6927,20 +6903,8 @@ msgid "SMTP Host"
 msgstr "SMTP-isäntä"
 
 #: 
-msgid "Software"
-msgstr "Ohjelmisto"
-
-#: 
-msgid "System & Configuration"
-msgstr "Järjestelmä ja asetukset"
-
-#: 
 msgid "Tip:"
 msgstr "Vinkki:"
-
-#: 
-msgid "Valid Settings"
-msgstr "Kelvolliset asetukset"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7001,10 +6965,6 @@ msgid "Attendance Count Categories"
 msgstr "Läsnäoloseurannan kategoriat"
 
 #: 
-msgid "Attendance Notes"
-msgstr "Läsnäolomerkinnät"
-
-#: 
 msgid "Change Event"
 msgstr "Vaihda tapahtumaa"
 
@@ -7060,14 +7020,6 @@ msgstr "Poista tapahtuma"
 msgid "Edit Event"
 msgstr "Muokkaa tapahtumaa"
 
-#: 
-msgid "Editing Event"
-msgstr "Tapahtuman muokkaaminen"
-
-#: 
-msgid "Enter event title..."
-msgstr "Syötä tapahtuman otsikko..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7118,14 +7070,6 @@ msgid "None (one-time event)"
 msgstr "Ei mitään (kertatapahtuma)"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "Valinnainen - Lisää saarnakatsaus tai muita tapahtumatietoja"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "Valinnaisia muistiinpanoja osallistumisesta..."
-
-#: 
 msgid "People Checked In"
 msgstr "Sisäänkirjautuneet ihmiset"
 
@@ -7160,10 +7104,6 @@ msgstr "Hae valvojaa..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "Valitse tapahtuma sisäänkirjausta varten"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "Saarna / Tapahtuman teksti"
 
 #: 
 msgid "Unclassified"
@@ -8196,10 +8136,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "Base URL ei ole määritetty Config.php:ssä"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "ChurchCRM:n tuetut kieliasetukset"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "Muodosta yhteys palvelimeesi SSH:n, FTP:n tai hosting-ohjauspaneelin kautta"
 
@@ -8246,10 +8182,6 @@ msgstr "Kieli"
 #: 
 msgid "Local development:"
 msgstr "Paikallinen kehitys:"
-
-#: 
-msgid "Locale Support"
-msgstr "Kieliasetuksen tuki"
 
 #: 
 msgid "Location & Contact Information"
@@ -9070,10 +9002,6 @@ msgstr "Päivitysarkiston avaaminen epäonnistui. Ladattu tiedosto saattaa olla 
 #: 
 msgid "Failed to save the downloaded release file. Please check disk space and permissions."
 msgstr "Ladatun julkaisutiedoston tallentaminen epäonnistui. Tarkista levytila ja käyttöoikeudet."
-
-#: 
-msgid "Invalid date format in start parameter"
-msgstr "Virheellinen päivämäärämuoto aloitusparametrissa"
 
 #: 
 msgid "Mismatch"
@@ -10653,10 +10581,6 @@ msgid "CSV Column"
 msgstr "CSV-sarake"
 
 #: 
-msgid "CSV template not found"
-msgstr "CSV-mallia ei löytynyt"
-
-#: 
 msgid "Call"
 msgstr "Soita"
 
@@ -10731,10 +10655,6 @@ msgstr "Sarake yhdistettiin automaattisesti ChurchCRM-kenttään."
 #: 
 msgid "Community Management Platform"
 msgstr "Yhteisön hallinta-alusta"
-
-#: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "Yhteensopiva Excelin, Google Sheetsin tai minkä tahansa CSV-viennin kanssa."
 
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."

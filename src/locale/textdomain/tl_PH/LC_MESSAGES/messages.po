@@ -632,10 +632,6 @@ msgid "Save Changes"
 msgstr "I-save ang mga Pagbabago"
 
 #: 
-msgid "Church Event Editor"
-msgstr "Editor ng Kaganapan ng Simbahan"
-
-#: 
 msgid "Edit Event Type"
 msgstr "I-edit ang Uri ng Kaganapan"
 
@@ -701,20 +697,8 @@ msgid "Create Event"
 msgstr "Lumikha ng Kaganapan"
 
 #: 
-msgid "Create a new Event"
-msgstr "Lumikha ng bagong Kaganapan"
-
-#: 
-msgid "Select your event type"
-msgstr "Piliin ang iyong uri ng kaganapan"
-
-#: 
 msgid "Event Status"
 msgstr "Katayuan ng Kaganapan"
-
-#: 
-msgid "Return to Events"
-msgstr "Bumalik sa mga Kaganapan"
 
 #: 
 msgid "Sundays"
@@ -5072,10 +5056,6 @@ msgid "Church Greeter"
 msgstr "Tagapagtanggap ng Simbahan"
 
 #: 
-msgid "External Calendar API is disabled"
-msgstr "Ang external calendar API ay hindi pinagana"
-
-#: 
 msgid "Special Group Settings : Sunday School Type"
 msgstr "Mga Espesyal na Setting ng Grupo: Uri ng Paaralan ng Linggo"
 
@@ -5498,10 +5478,6 @@ msgstr "Hindi mabuksan ang file"
 #: 
 msgid "Missing calendar access token"
 msgstr "Nawawalang calendar access token"
-
-#: 
-msgid "Calendar access token not found"
-msgstr "Hindi nahanap ang calendar access token"
 
 #: 
 msgid "User must have Delete Records permission"
@@ -6925,20 +6901,8 @@ msgid "SMTP Host"
 msgstr "SMTP Host"
 
 #: 
-msgid "Software"
-msgstr "Software"
-
-#: 
-msgid "System & Configuration"
-msgstr "Sistema at Konfigurasyong"
-
-#: 
 msgid "Tip:"
 msgstr "Tip:"
-
-#: 
-msgid "Valid Settings"
-msgstr "Mga Wastong Setting"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -6999,10 +6963,6 @@ msgid "Attendance Count Categories"
 msgstr "Mga Kategorya ng Bilang ng Presensya"
 
 #: 
-msgid "Attendance Notes"
-msgstr "Mga Tala ng Presensya"
-
-#: 
 msgid "Change Event"
 msgstr "Baguhin ang Kaganapan"
 
@@ -7058,14 +7018,6 @@ msgstr "Burahin ang Kaganapan"
 msgid "Edit Event"
 msgstr "I-edit ang Kaganapan"
 
-#: 
-msgid "Editing Event"
-msgstr "Ine-edit ang Kaganapan"
-
-#: 
-msgid "Enter event title..."
-msgstr "Ipasok ang pamagat ng kaganapan..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7116,14 +7068,6 @@ msgid "None (one-time event)"
 msgstr "Wala (isang beses na kaganapan)"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "Opsyonal - Magdagdag ng mga tala ng sermon o karagdagang detalye ng kaganapan"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "Mga opsyonal na tala tungkol sa presensya..."
-
-#: 
 msgid "People Checked In"
 msgstr "Mga Taong Naka-check In"
 
@@ -7158,10 +7102,6 @@ msgstr "Maghanap ng superbisor..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "Pumili ng Kaganapan para sa Check-In"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "Teksto ng Sermon / Kaganapan"
 
 #: 
 msgid "Unclassified"
@@ -8194,10 +8134,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "Ang Base URL ay hindi na-configure sa Config.php"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "Mga Suportadong Locale ng ChurchCRM"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "Kumonekta sa iyong server sa pamamagitan ng SSH, FTP, o iyong hosting control panel"
 
@@ -8244,10 +8180,6 @@ msgstr "Wika"
 #: 
 msgid "Local development:"
 msgstr "Lokal na pagbuo:"
-
-#: 
-msgid "Locale Support"
-msgstr "Suporta sa Locale"
 
 #: 
 msgid "Location & Contact Information"
@@ -9068,10 +9000,6 @@ msgstr "Nabigo ang pagbubukas ng upgrade archive. Ang na-download na file ay maa
 #: 
 msgid "Failed to save the downloaded release file. Please check disk space and permissions."
 msgstr "Nabigo ang pag-save ng na-download na release file. Pakitingnan ang espasyo ng disk at mga pahintulot."
-
-#: 
-msgid "Invalid date format in start parameter"
-msgstr "Hindi wastong format ng petsa sa start parameter"
 
 #: 
 msgid "Mismatch"
@@ -10651,10 +10579,6 @@ msgid "CSV Column"
 msgstr "Kolumna ng CSV"
 
 #: 
-msgid "CSV template not found"
-msgstr "Hindi nahanap ang template ng CSV"
-
-#: 
 msgid "Call"
 msgstr "Tumawag"
 
@@ -10729,10 +10653,6 @@ msgstr "Ang kolumna ay awtomatikong itinugma sa isang larangan ng ChurchCRM."
 #: 
 msgid "Community Management Platform"
 msgstr "Platform ng Pamamahala ng Komunidad"
-
-#: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "Katugma sa Excel, Google Sheets, o anumang CSV export."
 
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
