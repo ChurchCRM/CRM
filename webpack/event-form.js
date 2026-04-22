@@ -1,0 +1,459 @@
+/**
+ * Event Form — shared renderer and controller for the ChurchCRM event
+ * editor + viewer used from multiple surfaces (calendar modal, full-page
+ * event editor, cart-to-event). Keeps the field set, validation rules,
+ * and widget wiring in one place so the UI stays identical wherever
+ * events are created or edited.
+ *
+ * Public API:
+ *   renderEventEditor(container, event, calendars, eventTypes, options)
+ *   renderEventViewer(container, event, calendars, eventTypes)
+ *   saveEvent(event, apiRoot)  // POSTs to /api/events(/:id); returns a Promise
+ *
+ * Both render functions mutate `event` in place and return a controller
+ * { getEvent, validate, destroy } so callers can plug save / cancel /
+ * delete buttons into their own chrome (modal footer vs. page footer).
+ */
+
+import DOMPurify from "dompurify";
+import { initializeQuillEditor } from "./quill-editor.js";
+
+const t = (key) => (window.i18next ? window.i18next.t(key) : key);
+
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
+
+function escapeHtml(str) {
+  if (!str) return "";
+  const div = document.createElement("div");
+  div.textContent = str;
+  return div.innerHTML.replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+}
+
+/** Parse an input value as a local date. Date-only "YYYY-MM-DD" is parsed
+ *  as local (not UTC) to avoid off-by-one day shifts in non-UTC timezones. */
+function parseInputDate(value) {
+  if (!value) return undefined;
+  const dateOnly = value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (dateOnly) {
+    return new Date(Number(dateOnly[1]), Number(dateOnly[2]) - 1, Number(dateOnly[3]));
+  }
+  return new Date(value);
+}
+
+function formatDateForInput(date, allDay) {
+  if (!date) return "";
+  const d = new Date(date);
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  if (allDay) return `${y}-${m}-${day}`;
+  const h = String(d.getHours()).padStart(2, "0");
+  const mi = String(d.getMinutes()).padStart(2, "0");
+  return `${y}-${m}-${day}T${h}:${mi}`;
+}
+
+function formatDateForDisplay(date, allDay) {
+  if (!date) return "N/A";
+  const d = new Date(date);
+  if (allDay) return d.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
+  return d.toLocaleString(undefined, {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
+
+export function isAllDay(event) {
+  if (!event.Start) return true;
+  const s = new Date(event.Start);
+  if (s.getHours() !== 0 || s.getMinutes() !== 0) return false;
+  if (event.End) {
+    const e = new Date(event.End);
+    if (e.getHours() !== 0 || e.getMinutes() !== 0) return false;
+  }
+  return true;
+}
+
+// ---------------------------------------------------------------------------
+// Editor markup
+// ---------------------------------------------------------------------------
+
+function renderTitleFieldInline(event) {
+  return `
+    <div class="mb-3">
+      <label class="form-label" for="event-title-input">${t("Event Title")}<span class="text-danger ms-1">*</span></label>
+      <input id="event-title-input" name="Title" value="${escapeHtml(event.Title || "")}"
+        placeholder="${t("e.g. Sunday Service")}" class="form-control" required>
+      <div class="invalid-feedback" id="titleFeedback"><i class="fas fa-exclamation-circle me-1"></i>${t("This field is required")}</div>
+    </div>`;
+}
+
+function renderTitleFieldInHeader(event) {
+  return `
+    <div class="w-100 me-3 pt-1">
+      <label class="form-label text-muted small mb-1" for="event-title-input">${t("Event Title")}</label>
+      <input id="event-title-input" name="Title" value="${escapeHtml(event.Title || "")}"
+        placeholder="${t("e.g. Sunday Service")}"
+        class="form-control form-control-lg fw-bold border-0 border-bottom rounded-0 px-0" style="box-shadow:none">
+      <div class="invalid-feedback" id="titleFeedback"><i class="fas fa-exclamation-circle me-1"></i>${t("This field is required")}</div>
+    </div>`;
+}
+
+function renderEditorFields(event, calendars, eventTypes, allDay) {
+  const calOptions = calendars
+    .map(
+      (c) =>
+        `<option value="${c.Id}" ${event.PinnedCalendars?.includes(c.Id) ? "selected" : ""}>${escapeHtml(c.Name)}</option>`,
+    )
+    .join("");
+  const typeOptions = eventTypes
+    .map((et) => `<option value="${et.Id}" ${event.Type === et.Id ? "selected" : ""}>${escapeHtml(et.Name)}</option>`)
+    .join("");
+
+  const inputType = allDay ? "date" : "datetime-local";
+  const startVal = formatDateForInput(event.Start, allDay);
+  const endVal = formatDateForInput(event.End, allDay);
+
+  return `
+    <div class="row g-3 mb-3">
+      <div class="col-md-6">
+        <label class="form-label" for="eventTypeSelect">${t("Event Type")}</label>
+        <select id="eventTypeSelect" class="form-select">${typeOptions}</select>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label" for="pinnedCalendarsSelect">${t("Pinned Calendars")}<span class="text-danger ms-1">*</span></label>
+        <select id="pinnedCalendarsSelect" class="form-select" multiple>${calOptions}</select>
+        <div class="invalid-feedback" id="calendarsFeedback"><i class="fas fa-exclamation-circle me-1"></i>${t("This field is required")}</div>
+      </div>
+    </div>
+
+    <div class="mb-2">
+      <div class="form-selectgroup form-selectgroup-pills">
+        <label class="form-selectgroup-item">
+          <input type="radio" name="eventDayType" value="timed" class="form-selectgroup-input" ${!allDay ? "checked" : ""}>
+          <span class="form-selectgroup-label"><i class="fa-regular fa-clock me-1"></i>${t("Timed")}</span>
+        </label>
+        <label class="form-selectgroup-item">
+          <input type="radio" name="eventDayType" value="allday" class="form-selectgroup-input" ${allDay ? "checked" : ""}>
+          <span class="form-selectgroup-label"><i class="fa-regular fa-sun me-1"></i>${t("All Day")}</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="row g-3 mb-3">
+      <div class="col-md-6">
+        <label class="form-label" for="eventStartDate">${t("Start Date")}<span class="text-danger ms-1">*</span></label>
+        <input type="${inputType}" id="eventStartDate" class="form-control" value="${startVal}" autocomplete="off">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label" for="eventEndDate">${t("End Date")}<span class="text-danger ms-1">*</span></label>
+        <input type="${inputType}" id="eventEndDate" class="form-control" value="${endVal}" autocomplete="off" ${startVal ? `min="${startVal}"` : ""}>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" for="quill-Desc">${t("Description")}</label>
+      <div id="quill-Desc" class="quill-editor-container" data-editor-size="compact"></div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" for="quill-Text">${t("Additional Information")}</label>
+      <div id="quill-Text" class="quill-editor-container" data-editor-size="compact"></div>
+    </div>
+  `;
+}
+
+// ---------------------------------------------------------------------------
+// Viewer markup
+// ---------------------------------------------------------------------------
+
+function renderViewerMarkup(event, calendars, eventTypes) {
+  const allDay = isAllDay(event);
+  const matchedType = eventTypes.find((et) => event.Type != null && event.Type === et.Id);
+  const pinnedCals = calendars.filter((c) => event.PinnedCalendars?.includes(c.Id));
+  const sanitizedDesc = DOMPurify.sanitize(event.Desc || "");
+  const sanitizedText = DOMPurify.sanitize(event.Text || "");
+
+  let calBadges = "";
+  for (const cal of pinnedCals) {
+    calBadges += `<span class="badge border me-1" style="background-color:#${cal.BackgroundColor};color:#${cal.ForegroundColor};border-color:#${cal.BackgroundColor}">
+      <span class="d-inline-block rounded-circle me-1" style="width:8px;height:8px;background-color:#${cal.ForegroundColor};opacity:0.7"></span>
+      ${escapeHtml(cal.Name)}</span>`;
+  }
+
+  let metaRows = "";
+  if (matchedType) {
+    metaRows += `<dt class="col-sm-3 text-muted">${t("Event Type")}</dt>
+      <dd class="col-sm-9"><span class="badge bg-blue-lt text-blue">${escapeHtml(matchedType.Name)}</span></dd>`;
+  }
+  if (allDay) {
+    metaRows += `<dt class="col-sm-3 text-muted">${t("Duration")}</dt>
+      <dd class="col-sm-9"><span class="badge bg-green-lt text-green">${t("All Day")}</span></dd>`;
+  }
+  if (pinnedCals.length > 0) {
+    metaRows += `<dt class="col-sm-3 text-muted">${t("Calendars")}</dt>
+      <dd class="col-sm-9"><div class="d-flex flex-wrap gap-2">${calBadges}</div></dd>`;
+  }
+
+  return `
+    <div class="row g-3 mb-4">
+      <div class="col-md-6">
+        <div class="card card-sm border-0 bg-blue-lt">
+          <div class="card-body py-3">
+            <div class="d-flex align-items-center gap-3">
+              <i class="fa-regular fa-calendar-check fa-xl text-blue flex-shrink-0"></i>
+              <div>
+                <div class="text-blue small fw-medium">${t("Start Date")}</div>
+                <div class="fw-bold">${formatDateForDisplay(event.Start, allDay)}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card card-sm border-0 bg-red-lt">
+          <div class="card-body py-3">
+            <div class="d-flex align-items-center gap-3">
+              <i class="fa-regular fa-calendar-xmark fa-xl text-red flex-shrink-0"></i>
+              <div>
+                <div class="text-red small fw-medium">${t("End Date")}</div>
+                <div class="fw-bold">${formatDateForDisplay(event.End, allDay)}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <dl class="row mb-3">${metaRows}</dl>
+    ${sanitizedDesc.trim() ? `<div class="mb-4"><h4 class="subheader">${t("Description")}</h4><div class="prose">${sanitizedDesc}</div></div>` : ""}
+    ${sanitizedText.trim() ? `<div class="mb-2"><h4 class="subheader">${t("Additional Information")}</h4><div class="prose">${sanitizedText}</div></div>` : ""}
+  `;
+}
+
+// ---------------------------------------------------------------------------
+// Public: renderEventViewer
+// ---------------------------------------------------------------------------
+
+export function renderEventViewer(container, event, calendars, eventTypes) {
+  container.innerHTML = renderViewerMarkup(event, calendars, eventTypes);
+  return {
+    getEvent: () => event,
+    destroy: () => {
+      // Viewer has no stateful widgets to tear down.
+    },
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Public: renderEventEditor
+// ---------------------------------------------------------------------------
+
+export function renderEventEditor(container, event, calendars, eventTypes, options = {}) {
+  const { titleHost = null, onValidityChange = null } = options;
+
+  const allDay = isAllDay(event);
+  const fieldsMarkup = renderEditorFields(event, calendars, eventTypes, allDay);
+
+  if (titleHost) {
+    titleHost.innerHTML = renderTitleFieldInHeader(event) + (titleHost.dataset.keepSiblings === "true" ? "" : "");
+    container.innerHTML = fieldsMarkup;
+  } else {
+    container.innerHTML = renderTitleFieldInline(event) + fieldsMarkup;
+  }
+
+  // --- widget state (captured in closure for teardown) ---
+  let tsEventType = null;
+  let tsCalendars = null;
+  let quillDesc = null;
+  let quillText = null;
+
+  // --- validity tracking ---
+  function validate() {
+    return Boolean(
+      event.Title &&
+        event.Title.length > 0 &&
+        event.PinnedCalendars &&
+        event.PinnedCalendars.length > 0 &&
+        event.Start != null &&
+        event.End != null,
+    );
+  }
+
+  function updateTitleFeedback() {
+    const titleInput = document.getElementById("event-title-input");
+    const titleFb = document.getElementById("titleFeedback");
+    if (!titleInput || !titleFb) return;
+    titleFb.style.display = event.Title !== undefined && event.Title.length === 0 ? "block" : "none";
+  }
+
+  function fireValidity() {
+    updateTitleFeedback();
+    if (onValidityChange) onValidityChange(validate());
+  }
+
+  // --- Title ---
+  const titleInput = document.getElementById("event-title-input");
+  if (titleInput) {
+    titleInput.addEventListener("input", () => {
+      event.Title = titleInput.value;
+      fireValidity();
+    });
+  }
+
+  // --- Event Type (TomSelect) ---
+  const eventTypeEl = document.getElementById("eventTypeSelect");
+  tsEventType = new window.TomSelect(eventTypeEl, {
+    placeholder: t("Select event type..."),
+    allowEmptyOption: true,
+  });
+  tsEventType.on("change", (value) => {
+    event.Type = value ? Number.parseInt(value, 10) : undefined;
+  });
+
+  // --- Pinned Calendars (TomSelect multi) ---
+  const calEl = document.getElementById("pinnedCalendarsSelect");
+  tsCalendars = new window.TomSelect(calEl, {
+    placeholder: t("Select calendars..."),
+    plugins: ["remove_button"],
+  });
+  tsCalendars.on("change", () => {
+    event.PinnedCalendars = tsCalendars.getValue().map((v) => Number.parseInt(v, 10));
+    fireValidity();
+    const fb = document.getElementById("calendarsFeedback");
+    if (fb) fb.style.display = event.PinnedCalendars.length === 0 ? "block" : "none";
+  });
+
+  // --- Timed / All-Day toggle ---
+  const dayTypeRadios = document.querySelectorAll('input[name="eventDayType"]');
+  for (const radio of dayTypeRadios) {
+    radio.addEventListener("change", () => {
+      const nowAllDay = radio.value === "allday";
+      const startInput = document.getElementById("eventStartDate");
+      const endInput = document.getElementById("eventEndDate");
+
+      if (nowAllDay) {
+        const s = event.Start ? new Date(event.Start) : new Date();
+        s.setHours(0, 0, 0, 0);
+        event.Start = s;
+        const e = event.End ? new Date(event.End) : new Date(s);
+        e.setHours(0, 0, 0, 0);
+        event.End = e;
+      } else {
+        const now = new Date();
+        const s = event.Start ? new Date(event.Start) : new Date();
+        s.setHours(now.getHours(), 0, 0, 0);
+        event.Start = s;
+        const e = event.End ? new Date(event.End) : new Date(s);
+        e.setHours(now.getHours() + 1, 0, 0, 0);
+        event.End = e;
+      }
+
+      startInput.type = nowAllDay ? "date" : "datetime-local";
+      endInput.type = nowAllDay ? "date" : "datetime-local";
+      startInput.value = formatDateForInput(event.Start, nowAllDay);
+      endInput.value = formatDateForInput(event.End, nowAllDay);
+      endInput.min = startInput.value || "";
+      fireValidity();
+    });
+  }
+
+  // --- Date inputs ---
+  const startInput = document.getElementById("eventStartDate");
+  const endInput = document.getElementById("eventEndDate");
+  if (startInput) {
+    startInput.addEventListener("change", () => {
+      event.Start = startInput.value ? parseInputDate(startInput.value) : undefined;
+      if (endInput) endInput.min = startInput.value || "";
+      fireValidity();
+    });
+  }
+  if (endInput) {
+    endInput.addEventListener("change", () => {
+      event.End = endInput.value ? parseInputDate(endInput.value) : undefined;
+      fireValidity();
+    });
+  }
+
+  // --- Quill editors ---
+  quillDesc = initializeQuillEditor("#quill-Desc", { placeholder: t("Enter text here...") });
+  if (quillDesc && event.Desc) quillDesc.root.innerHTML = event.Desc;
+  if (quillDesc) {
+    quillDesc.on("text-change", () => {
+      event.Desc = quillDesc.root.innerHTML;
+    });
+  }
+
+  quillText = initializeQuillEditor("#quill-Text", { placeholder: t("Enter text here...") });
+  if (quillText && event.Text) quillText.root.innerHTML = event.Text;
+  if (quillText) {
+    quillText.on("text-change", () => {
+      event.Text = quillText.root.innerHTML;
+    });
+  }
+
+  // Initial validity fire so callers can set the save button's disabled state.
+  fireValidity();
+
+  return {
+    getEvent: () => event,
+    validate,
+    destroy: () => {
+      if (tsEventType) {
+        tsEventType.destroy();
+        tsEventType = null;
+      }
+      if (tsCalendars) {
+        tsCalendars.destroy();
+        tsCalendars = null;
+      }
+      if (window.quillEditors) {
+        delete window.quillEditors["quill-Desc"];
+        delete window.quillEditors["quill-Text"];
+      }
+      quillDesc = null;
+      quillText = null;
+    },
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Public: saveEvent — shared POST to /api/events (new) or /api/events/:id
+// ---------------------------------------------------------------------------
+
+export function saveEvent(event, apiRoot) {
+  const url = `${apiRoot}/api/events${event.Id !== 0 ? `/${event.Id}` : ""}`;
+  const body = JSON.stringify(event, (_key, value) => {
+    if (value instanceof Date) {
+      return window.moment ? window.moment(value).format() : value.toISOString();
+    }
+    return value;
+  });
+  return fetch(url, {
+    credentials: "include",
+    method: "POST",
+    headers: { Accept: "application/json", "Content-Type": "application/json" },
+    body,
+  }).then((r) => {
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    return r;
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Public: deleteEvent — shared DELETE to /api/events/:id
+// ---------------------------------------------------------------------------
+
+export function deleteEvent(eventId, apiRoot) {
+  return fetch(`${apiRoot}/api/events/${eventId}`, {
+    credentials: "include",
+    method: "DELETE",
+    headers: { Accept: "application/json", "Content-Type": "application/json" },
+  }).then((r) => {
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    return r;
+  });
+}
