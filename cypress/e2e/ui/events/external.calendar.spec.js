@@ -16,14 +16,15 @@
  *   - 400 Invalid date format (bad ?start=/?end=)
  */
 
-/** Toggle bEnableExternalCalendarAPI via the admin config API. */
+/** Toggle bEnableExternalCalendarAPI via the admin config API. The
+ *  route is mounted under /admin by src/admin/index.php — NOT /api
+ *  — so the path is `/admin/api/system/config/{configName}`. Requires
+ *  an active admin session cookie. */
 function setExternalCalendarApi(enabled) {
-    // Requires admin. Use force:true to make the cookie writable via Set-Cookie
-    // from /api/system/config/... in case the test runner is mid-visit.
     cy.setupAdminSession();
     cy.request({
         method: "POST",
-        url: "/api/system/config/bEnableExternalCalendarAPI",
+        url: "/admin/api/system/config/bEnableExternalCalendarAPI",
         body: { value: enabled ? "1" : "0" },
         headers: { "Content-Type": "application/json" },
     });
