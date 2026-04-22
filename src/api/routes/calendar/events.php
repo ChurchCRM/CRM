@@ -202,6 +202,22 @@ function getEvent(Request $request, Response $response, $args): Response
             'notes' => (string) $ec->getEvtcntNotes(),
         ];
     }
+    // Fall back to the type's defined count categories when the event has
+    // none saved yet, so the editor can show empty inputs for each
+    // category rather than an empty section.
+    if (empty($counts) && $Event->getType()) {
+        foreach (\ChurchCRM\model\ChurchCRM\EventCountNameQuery::create()
+            ->filterByTypeId((int) $Event->getType())
+            ->orderById()
+            ->find() as $cn) {
+            $counts[] = [
+                'id'    => (int) $cn->getId(),
+                'name'  => $cn->getName(),
+                'count' => 0,
+                'notes' => '',
+            ];
+        }
+    }
     $data['AttendanceCounts'] = $counts;
 
     return SlimUtils::renderJSON($response, $data);
