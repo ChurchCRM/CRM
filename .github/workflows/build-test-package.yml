@@ -688,7 +688,7 @@ jobs:
     needs: [test-root, test-subdir, test-new-system, test-new-system-subdir]
     timeout-minutes: 15
     permissions:
-      contents: read
+      contents: write
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -736,6 +736,28 @@ jobs:
         path: temp/ChurchCRM-*.zip
         retention-days: 90
         if-no-files-found: error
+
+    - name: Upload to GitHub Release
+      if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        tag="${{ steps.package-version.outputs.current-version }}"
+        zip_file=$(ls temp/ChurchCRM-*.zip 2>/dev/null | head -1)
+        if [ -z "$zip_file" ]; then
+          echo "::error::No zip file found in temp/"
+          exit 1
+        fi
+        echo "Uploading $(basename "$zip_file") to release $tag"
+        release_id=$(gh api repos/${{ github.repository }}/releases \
+          --jq '.[] | select(.tag_name=="'"$tag"'") | .id' 2>/dev/null | head -1)
+        if [ -z "$release_id" ]; then
+          gh release create "$tag" \
+            --title "ChurchCRM ${{ steps.package-version.outputs.current-version }}" \
+            --generate-notes \
+            --draft
+        fi
+        gh release upload "$tag" "$zip_file" --clobber
 
     - name: Build summary
       if: always()
