@@ -191,7 +191,7 @@ Visit `http://localhost/` — you will see the setup wizard on first run.
 2. Replace `php-fpm:9000` with your PHP-FPM container hostname/port.
 3. Set `root` to the path where ChurchCRM's `src/` contents are served from.
 4. For a **subdirectory install** (e.g. `http://example.com/churchcrm/`):
-   - Set `$sRootPath = '/churchcrm'` in `Include/Config.php`.
+   - Set `ROOT_PATH` to `"/churchcrm"` in `Include/config-values.json` (or re-run the setup wizard after deleting `Include/Config.php` + `Include/config-values.json`).
    - Prefix all `location` paths in the nginx config with `/churchcrm`.
    - See the commented example at the bottom of `nginx/default.conf`.
 
@@ -261,7 +261,7 @@ Visit `http://localhost/` — you will see the setup wizard on first run.
 1. Copy `frankenphp/Caddyfile` to your deployment.
 2. Update `root` to the path where ChurchCRM's `src/` contents are served from.
 3. For a **subdirectory install** (e.g. `http://example.com/churchcrm/`):
-   - Set `$sRootPath = '/churchcrm'` in `Include/Config.php`.
+   - Set `ROOT_PATH` to `"/churchcrm"` in `Include/config-values.json` (or re-run the setup wizard after deleting `Include/Config.php` + `Include/config-values.json`).
    - Prefix all `handle` paths in the Caddyfile with `/churchcrm`.
    - See the commented example at the bottom of `frankenphp/Caddyfile`.
 4. To enable **automatic HTTPS**, replace `:80` with your domain name (Caddy

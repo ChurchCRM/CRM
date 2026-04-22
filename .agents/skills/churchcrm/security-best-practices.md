@@ -262,6 +262,43 @@ $userId = $_GET['userId'];  // Could be "1 OR 1=1"
 
 ---
 
+## Config & Secrets: Data/Code Separation <!-- learned: 2026-04-22 -->
+
+**Never render user-supplied values into an executable PHP file.** Templating untrusted input into a `.php` file reopens the pre-auth RCE class regardless of how carefully you sanitize at write time — one missed field, one future placeholder, and a quote-breaking payload becomes PHP code (GHSA-mp2w-4q3r-ppx7 / CVE-2026-39337 was exactly this pattern: `$sPASSWORD = '||DB_PASSWORD||';` with a raw password).
+
+**Correct architecture**: values live in data, `Config.php` is a static bootstrap.
+
+```php
+// src/Include/Config.php.example (static — shipped in the repo, copied verbatim on install)
+$values = \ChurchCRM\Config\ConfigLoader::load(__DIR__ . '/config-values.json');
+$sSERVERNAME = $values['DB_SERVER_NAME'];
+$sPASSWORD   = $values['DB_PASSWORD'];
+// ...
+```
+
+```php
+// src/setup/routes/setup.php — POST handler writes data, never code
+file_put_contents($tmp, json_encode($userInput, JSON_THROW_ON_ERROR), LOCK_EX);
+rename($tmp, $valuesFile);          // atomic data write
+copy($examplePath, $configFile);    // verbatim bootstrap — no substitution
+```
+
+```php
+// src/ChurchCRM/Config/ConfigLoader.php — validation happens ON READ
+if (!preg_match('/^[0-9]{1,5}$/', $data['DB_SERVER_PORT'])) {
+    throw new RuntimeException('Invalid DB_SERVER_PORT');
+}
+```
+
+### Rules
+
+- **Write JSON, not PHP.** `json_encode()` quoting is airtight for arbitrary bytes.
+- **Validate at read time, not write time.** The boundary to defend is where data becomes code — which is `Config.php` → `require_once`, not the wizard. The loader rejects malformed fields regardless of how the file got there (attacker with filesystem access, misconfigured migration, hand-edited typo, etc.).
+- **Block web access to the config file.** `src/Include/.htaccess` denies all (matching `src/logs/.htaccess`); `docker/nginx/default.conf` and `docker/frankenphp/Caddyfile` have matching `location ~ ^/Include` deny rules. A JSON secrets file served over HTTP is an instant credential leak.
+- **Upgrade migration for existing installs.** A PHP migration under `src/mysql/upgrade.json:current.scripts` captures the legacy `$GLOBALS` variables, writes JSON, preserves the old file as `Config.php.legacy-backup`, and swaps in the new bootstrap. Idempotent.
+
+---
+
 ## Authorization & Access Control
 
 ### Block Users With No Admin Permissions <!-- learned: 2026-04-12 -->
