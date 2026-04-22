@@ -236,12 +236,12 @@ buttons based on these fields. See
 
 ## Questions?
 
-For plugin development help, visit:
-
-- ChurchCRM Chat: https://discord.gg/tuWyFzj3Nj
-- Forum: https://forum.churchcrm.io
 - Issues: https://github.com/ChurchCRM/CRM/issues
 - Docs: https://docs.churchcrm.io
+
+# For plugin development help, visit:
+
+- ChurchCRM Chat: https://discord.gg/tuWyFzj3Nj
 
 Plugin-specific skill files:
 
