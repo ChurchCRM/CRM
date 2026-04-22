@@ -266,18 +266,30 @@ $userId = $_GET['userId'];  // Could be "1 OR 1=1"
 
 ### Every POST/delete page must validate a CSRF token <!-- learned: 2026-04-21 -->
 
-Any legacy `*.php` page that performs a DB write (insert/update/delete) MUST validate a CSRF token before acting. Pattern (applied in `UserEditor.php`, `PledgeDelete.php`, `DonatedItemDelete.php`, `PaddleNumDelete.php` — GHSA-3xq9-c86x-cwpp):
+Any legacy `*.php` page that performs a DB write (insert/update/delete) MUST validate a CSRF token before acting. The rule is **validate before any DB write**; legacy pages may reject an invalid token using either of two patterns — pick the one that matches the page's existing error-surfacing style. Applied in `UserEditor.php`, `PledgeDelete.php`, `DonatedItemDelete.php`, `PaddleNumDelete.php` (GHSA-3xq9-c86x-cwpp):
 
 ```php
 use ChurchCRM\Utils\CSRFUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
-// In the POST handler — BEFORE any DB write:
-if (!CSRFUtils::verifyRequest($_POST, 'user_editor')) {
+// Pattern A — 403 + exit. Preferred for delete/confirmation pages where there
+// is no persistent form to redirect back to. Used by PledgeDelete.php,
+// DonatedItemDelete.php, PaddleNumDelete.php.
+if (!CSRFUtils::verifyRequest($_POST, 'pledge_delete')) {
     http_response_code(403);
     exit(gettext('Invalid security token. Please try again.'));
 }
 
-// In the form HTML:
+// Pattern B — redirect back with an ErrorText query param. Preferred for
+// editor pages that already render an inline error banner (UserEditor.php).
+if (!CSRFUtils::verifyRequest($_POST, 'user_editor')) {
+    RedirectUtils::redirect(
+        'UserEditor.php?PersonID=' . $iPersonID
+        . '&ErrorText=' . urlencode(gettext('Invalid security token. Please try again.'))
+    );
+}
+
+// In the form HTML (same for both patterns):
 <form method="post" action="...">
     <?= CSRFUtils::getTokenInputField('user_editor') ?>
     <!-- other inputs -->
@@ -305,6 +317,44 @@ Delete pages must also enforce the relevant role guards — a CSRF token alone d
 ```php
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled(), 'DeleteRecords');
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
+```
+
+### Don't use `$_REQUEST` for destructive-action inputs <!-- learned: 2026-04-22 -->
+
+For pages that both render (GET) and perform (POST) a destructive action, read the primary-key / redirect params from the superglobal that matches the current request method, not from `$_REQUEST`. `$_REQUEST`'s contents depend on PHP's `request_order` ini setting and may include `$_COOKIE`, which means an attacker-set cookie could silently influence the ID that gets deleted.
+
+```php
+// ✅ CORRECT — read from $_POST on POST, $_GET on GET
+$isPostAction = isset($_POST['Delete']) || isset($_POST['Cancel']);
+$idSource = $isPostAction ? ($_POST['PaddleNumID'] ?? 0) : ($_GET['PaddleNumID'] ?? 0);
+$iPaddleNumID = (int) InputUtils::legacyFilterInput($idSource, 'int');
+
+// ❌ WRONG — $_REQUEST can resolve to $_COOKIE based on request_order
+$iPaddleNumID = (int) InputUtils::legacyFilterInput($_REQUEST['PaddleNumID'] ?? 0, 'int');
+```
+
+### Pass `linkBack` as a hidden input, not a query-string param on the form action <!-- learned: 2026-04-22 -->
+
+`RedirectUtils::validateRedirectUrl()` intentionally allows `?` and `&` in relative return-URLs (e.g. `FindFundRaiser.php?FundRaiserID=3`). Interpolating such a value into the `action="..."` attribute as a query-string segment corrupts the URL — the browser parses the embedded `&` as a parameter boundary, and outputting raw `&` in an HTML attribute is invalid markup. Always post return-URLs via hidden form inputs and re-validate server-side before redirecting:
+
+```php
+// ✅ CORRECT — post linkBack as a hidden field, revalidate on the server
+// Form:
+<form method="post" action="PaddleNumDelete.php">
+    <?= CSRFUtils::getTokenInputField('paddle_num_delete') ?>
+    <input type="hidden" name="PaddleNumID" value="<?= $iPaddleNumID ?>">
+    <input type="hidden" name="linkBack" value="<?= InputUtils::escapeAttribute($linkBack) ?>">
+    ...
+</form>
+
+// Handler:
+$linkBack = RedirectUtils::validateRedirectUrl(
+    InputUtils::legacyFilterInput($_POST['linkBack'] ?? '', 'string') ?? '',
+    'FindFundRaiser.php'
+);
+
+// ❌ WRONG — `$linkBack` containing `&` truncates; raw `&` in attribute is invalid HTML
+<form action="PaddleNumDelete.php?PaddleNumID=<?= $iPaddleNumID ?>&linkBack=<?= InputUtils::escapeAttribute($linkBack) ?>">
 ```
 
 ---

@@ -13,8 +13,18 @@ use ChurchCRM\view\PageHeader;
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled(), 'DeleteRecords');
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
 
-$iPaddleNumID = (int) InputUtils::legacyFilterInput($_REQUEST['PaddleNumID'] ?? 0, 'int');
-$linkBack = RedirectUtils::getLinkBackFromRequest('FindFundRaiser.php');
+// Read destructive-action inputs from the right superglobal per request method:
+// GET renders the confirmation page, POST performs the delete. Using $_REQUEST
+// would let PHP's request_order/cookies influence a destructive operation.
+$isPostAction = isset($_POST['Delete']) || isset($_POST['Cancel']);
+$paddleNumIDSource = $isPostAction ? ($_POST['PaddleNumID'] ?? 0) : ($_GET['PaddleNumID'] ?? 0);
+$iPaddleNumID = (int) InputUtils::legacyFilterInput($paddleNumIDSource, 'int');
+$linkBack = $isPostAction
+    ? RedirectUtils::validateRedirectUrl(
+        InputUtils::legacyFilterInput($_POST['linkBack'] ?? '', 'string') ?? '',
+        'FindFundRaiser.php'
+    )
+    : RedirectUtils::getLinkBackFromRequest('FindFundRaiser.php');
 $iFundRaiserID = (int) ($_SESSION['iCurrentFundraiser'] ?? 0);
 
 // Confirmed deletion (second pass, POST with CSRF token)
@@ -47,9 +57,10 @@ require_once __DIR__ . '/Include/Header.php';
 
 <div class="card-body text-center">
     <p class="lead mb-4"><?= gettext('Are you sure you want to permanently delete this paddle number?') ?></p>
-    <form method="post" action="PaddleNumDelete.php?PaddleNumID=<?= $iPaddleNumID ?>&amp;linkBack=<?= InputUtils::escapeAttribute($linkBack) ?>" name="PaddleNumDelete">
+    <form method="post" action="PaddleNumDelete.php" name="PaddleNumDelete">
         <?= CSRFUtils::getTokenInputField('paddle_num_delete') ?>
         <input type="hidden" name="PaddleNumID" value="<?= $iPaddleNumID ?>">
+        <input type="hidden" name="linkBack" value="<?= InputUtils::escapeAttribute($linkBack) ?>">
         <input type="submit" class="btn btn-danger" value="<?= gettext('Delete') ?>" name="Delete">
         <input type="submit" class="btn btn-secondary ms-2" value="<?= gettext('Cancel') ?>" name="Cancel">
     </form>
