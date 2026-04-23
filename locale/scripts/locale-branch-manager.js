@@ -47,6 +47,19 @@ function getTodayDate() {
 }
 
 /**
+ * Get current time in HHMMSS format (UTC) — used to guarantee a unique
+ * branch name per invocation so translation sessions never reuse an
+ * existing branch (see /locale-translate docs: "always create a new branch").
+ */
+function getCurrentTime() {
+    const now = new Date();
+    const h = String(now.getUTCHours()).padStart(2, '0');
+    const m = String(now.getUTCMinutes()).padStart(2, '0');
+    const s = String(now.getUTCSeconds()).padStart(2, '0');
+    return `${h}${m}${s}`;
+}
+
+/**
  * Auto-detect version from package.json or release notes
  */
 function getAutoVersion() {
@@ -78,27 +91,35 @@ function getAutoVersion() {
 }
 
 /**
- * Build branch name from version and date
- * Example: locale/7.1.0-2026-04-01
+ * Build branch name from version, date, and time.
+ * A HHMMSS suffix is appended to guarantee each invocation produces a
+ * fresh, unique branch — never reusing a prior day's or prior run's branch.
+ * Example: locale/7.1.0-2026-04-01-174530
  */
 function buildBranchName(version) {
     const date = getTodayDate();
-    return `locale/${version}-${date}`;
+    const time = getCurrentTime();
+    return `locale/${version}-${date}-${time}`;
 }
 
 /**
- * Check if current branch is a locale branch
+ * Check if current branch is a locale branch.
+ * Accepts both the current `locale/{v}-YYYY-MM-DD-HHMMSS` form and the
+ * legacy `locale/{v}-YYYY-MM-DD` form (so existing in-flight branches
+ * still detect correctly during the rollout).
  */
 function isLocaleBranch(branchName) {
-    return /^locale\/[\w.-]+-\d{4}-\d{2}-\d{2}$/.test(branchName);
+    return /^locale\/[\w.-]+-\d{4}-\d{2}-\d{2}(?:-\d{6})?$/.test(branchName);
 }
 
 /**
- * Extract version from locale branch name
- * Example: locale/7.1.0-2026-04-01 → 7.1.0
+ * Extract version from locale branch name.
+ * Handles both the current `locale/{v}-YYYY-MM-DD-HHMMSS` form and the
+ * legacy `locale/{v}-YYYY-MM-DD` form.
+ * Example: locale/7.1.0-2026-04-01-174530 → 7.1.0
  */
 function extractVersionFromBranch(branchName) {
-    const match = branchName.match(/^locale\/([\w.-]+)-\d{4}-\d{2}-\d{2}$/);
+    const match = branchName.match(/^locale\/([\w.-]+)-\d{4}-\d{2}-\d{2}(?:-\d{6})?$/);
     return match ? match[1] : null;
 }
 
@@ -110,16 +131,24 @@ function getCurrentBranch() {
 }
 
 /**
- * Initialize locale translation branch (if not already on one)
- * Auto-detects version if not provided
+ * Initialize locale translation branch.
+ *
+ * Always creates a brand-new branch with a unique timestamp suffix.
+ * We do NOT reuse an existing `locale/*` branch — every translation
+ * session must start on a fresh branch so prior sessions remain
+ * immutable and reviewable. If the current branch is already a
+ * `locale/*` branch (e.g. a resumed session mid-run), we still cut
+ * away to a new one: callers that genuinely want to continue a
+ * branch should `git checkout` it themselves and skip `--init`.
+ *
+ * Auto-detects version from package.json if not provided.
  */
 function initBranch(version) {
     const current = getCurrentBranch();
 
-    // Already on a locale branch?
     if (isLocaleBranch(current)) {
-        console.log(`ℹ️  Already on locale branch: ${current}`);
-        return current;
+        console.log(`ℹ️  Currently on locale branch: ${current}`);
+        console.log(`    --init always creates a NEW branch; branching from current HEAD.`);
     }
 
     // Auto-detect version if not provided
@@ -130,16 +159,16 @@ function initBranch(version) {
 
     const branchName = buildBranchName(version);
 
-    // Branch already exists on remote?
+    // Safety: with a HHMMSS suffix collisions are effectively impossible,
+    // but if one somehow exists on the remote, fail loudly rather than
+    // silently reuse it.
     const existsRemote = run('git', ['ls-remote', '--heads', 'origin', branchName], { allowFail: true });
     if (existsRemote) {
-        console.log(`✅ Checking out existing branch: ${branchName}`);
-        run('git', ['fetch', 'origin', branchName]);
-        run('git', ['checkout', '-b', branchName, `origin/${branchName}`], { allowFail: true });
-        return branchName;
+        console.error(`❌ Branch ${branchName} already exists on remote.`);
+        console.error(`   Refusing to reuse. Re-run in a moment for a new timestamp.`);
+        process.exit(1);
     }
 
-    // Create new branch
     console.log(`🌿 Creating new locale branch: ${branchName}`);
     run('git', ['checkout', '-b', branchName]);
     run('git', ['push', '-u', 'origin', branchName]);
@@ -234,12 +263,13 @@ ChurchCRM Locale Translation Branch Manager
 
 Usage:
   node locale/scripts/locale-branch-manager.js --init [--version <version>]
-    Initialize a new locale translation branch (or checkout existing)
-    Version is auto-detected from package.json if not provided
+    Create a brand-new locale translation branch with a unique timestamp.
+    Never reuses an existing branch — every session gets a fresh one.
+    Version is auto-detected from package.json if not provided.
     Examples:
       --init                          (auto-detect version)
       --init --version 7.1.0          (explicit version)
-    Output: locale/7.1.0-2026-04-01
+    Output: locale/7.1.0-2026-04-01-174530  (YYYY-MM-DD-HHMMSS)
 
   node locale/scripts/locale-branch-manager.js --current
     Get current branch name

@@ -4,23 +4,33 @@ You are translating missing UI terms for the ChurchCRM church management applica
 
 ## CRITICAL RULES — READ BEFORE DOING ANYTHING
 
-1. **Create a branch FIRST** — before translating a single term
+1. **Create a BRAND-NEW branch FIRST** — before translating a single term. Never reuse an existing `locale/*` or `copilot/*` branch, even one from earlier today.
 2. **After EVERY locale:** commit → push → upload to POEditor → commit refreshed files → push
 3. **NEVER accumulate translations without committing** — sessions can timeout at any moment
 4. **If any step fails, STOP and report** — do not continue without saving work
 
-We have lost hours of translated work from agents that skipped these steps. They are non-negotiable.
+We have lost hours of translated work from agents that skipped these steps. They are non-negotiable. Reusing a stale branch also creates review-thread churn and can overwrite reviewer edits from the prior run.
 
 ---
 
-## Step 1: Create Branch
+## Step 1: Create a fresh Branch <!-- updated: 2026-04-22 -->
+
+**Every session starts on a brand-new branch.** Append a UTC timestamp so the name is unique even when run twice the same day:
 
 ```bash
-git checkout -b locale/7.2.0-$(date +%Y-%m-%d)
-git push -u origin locale/7.2.0-$(date +%Y-%m-%d)
+BRANCH="locale/7.2.0-$(date -u +%Y-%m-%d-%H%M%S)"
+git checkout -b "$BRANCH"
+git push -u origin "$BRANCH"
 ```
 
-If already on a `locale/*` branch, skip this step.
+Preferred helper (auto-detects version and appends time suffix):
+
+```bash
+node locale/scripts/locale-branch-manager.js --init
+# Output: locale/<version>-<YYYY-MM-DD>-<HHMMSS>
+```
+
+**Do not reuse the current branch even if it is already a `locale/*` branch.** If you are resuming after a timeout, still cut a new branch — prior sessions' completed locales are already pushed to their own branch and uploaded to POEditor, so nothing is lost.
 
 ---
 
@@ -168,10 +178,23 @@ node locale/scripts/poeditor-upload-missing.js --dry-run
 
 ---
 
-## If Session Times Out
+## If Session Times Out <!-- updated: 2026-04-22 -->
 
-All completed locales are safe (committed, pushed, uploaded to POEditor). To resume:
+All completed locales are safe (committed, pushed, uploaded to POEditor). To resume, **always cut a fresh branch** — never reuse the previous session's branch:
 
-1. Check out the existing branch: `git checkout locale/7.2.0-*`
-2. Run `node locale/scripts/locale-translate.js --list` to see what's left
+1. `node locale/scripts/locale-branch-manager.js --init`  (creates `locale/<version>-<YYYY-MM-DD>-<HHMMSS>`)
+2. `node locale/scripts/locale-translate.js --list` to see what's left
 3. Resume from the next untranslated locale
+
+Prior branches stay as-is for review. Each run producing its own branch makes review + rollback trivial.
+
+---
+
+## Related Skills & Docs
+
+- [`/locale-translate`](./locale-translate.md) — the canonical slash-command form of this workflow; use it when driving from Claude Code directly.
+- [`/locale-release`](./locale-release.md) — release-time wrapper that invokes `/locale-translate`.
+- [`locale-cloud-safe-translation.md`](../../.agents/skills/churchcrm/locale-cloud-safe-translation.md) — branch-manager internals and cloud-resume rationale.
+- [`locale-stack-ranking.md`](../../.agents/skills/churchcrm/locale-stack-ranking.md) — **authoritative** TIER priorities (Step 2 above mirrors this).
+- [`locale-ai-translation.md`](../../.agents/skills/churchcrm/locale-ai-translation.md) — **authoritative** church vocabulary + denomination context (Step 3b above mirrors this).
+- [`i18n-localization.md`](../../.agents/skills/churchcrm/i18n-localization.md) — adding UI terms, `gettext`/`i18next.t` usage, what NOT to wrap.

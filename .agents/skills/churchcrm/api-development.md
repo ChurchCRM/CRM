@@ -515,3 +515,155 @@ $private = !empty($input['private']) ? 1 : 0;
 **OpenAPI info:** `src/api/openapi/openapi-public-info.php`, `src/api/openapi/openapi-private-info.php`
 **Generated specs:** `CRM/openapi/public-api.yaml`, `CRM/openapi/private-api.yaml`
 **Documentation site:** `docs.churchcrm.io/openapi/`, `docs.churchcrm.io/docs/public-api/`, `docs.churchcrm.io/docs/private-api/`
+
+### HTML + JSON Content Negotiation in Middleware <!-- learned: 2026-04-22 -->
+
+Middleware that serves both a browser-facing HTML route and a JSON API
+route under the same auth/validation logic (e.g. `PublicCalendarMiddleware`
+gating both `/external/calendars/{token}` and `/api/public/calendar/{token}/...`)
+should centralise error-response rendering and pick the format by
+**path prefix first, Accept header as fallback** — never return a bare
+`$response->withStatus(403)` with no body, which produces a blank white
+screen for the HTML consumer.
+
+```php
+private function renderError(
+    ServerRequestInterface $request,
+    ResponseInterface $response,
+    int $status,
+    string $title,
+    string $message,
+    string $icon = 'ti-calendar-off',
+): ResponseInterface {
+    if ($this->prefersJson($request)) {
+        return SlimUtils::renderJSON($response, [
+            'error' => $title, 'message' => $message,
+        ], $status);
+    }
+    $renderer = new PhpRenderer(SystemURLs::getDocumentRoot() . '/external/templates/calendar/');
+    return $renderer->render($response->withStatus($status), 'error.php', [
+        'title' => $title, 'message' => $message, 'icon' => $icon,
+    ]);
+}
+
+private function prefersJson(ServerRequestInterface $request): bool
+{
+    $path = $request->getUri()->getPath();
+    if (str_contains($path, '/api/')) return true;
+    $accept = strtolower($request->getHeaderLine('Accept'));
+    return str_contains($accept, 'application/json') && !str_contains($accept, 'text/html');
+}
+```
+
+The HTML branch renders a branded template wrapped in `HeaderNotLoggedIn`
+/ `FooterNotLoggedIn` using `ChurchMetaData::getChurchLogoURL()` so the
+recipient of a shared link sees the church's identity, not a raw 4xx.
+
+### AttendanceCounts Round-trip Security <!-- learned: 2026-04-22 -->
+
+API endpoints that accept nested `AttendanceCounts` arrays (e.g.
+`POST /api/events`, `POST /api/events/:id`) MUST NOT trust client-supplied
+`id`, `name`, or `notes`. The attack surface:
+
+1. `id` — writing counts for arbitrary category IDs not belonging to the
+   event's type, or overwriting unrelated rows.
+2. `name` — tampering with the displayed category label (potential
+   stored XSS if re-rendered unsanitized).
+3. `notes` — injecting raw HTML that renders in reports or dashboards.
+
+Defenses, applied in a shared helper (`applyEventExtendedFields()`):
+
+```php
+// Whitelist countId by EventCountName rows for the event's type.
+$typeId = (int) $event->getType();
+$allowedNames = [];
+foreach (EventCountNameQuery::create()->filterByTypeId($typeId)->find() as $cn) {
+    $allowedNames[(int) $cn->getId()] = (string) $cn->getName();
+}
+
+foreach ($input['AttendanceCounts'] as $row) {
+    $countId = (int) ($row['id'] ?? 0);
+    if ($countId <= 0 || !array_key_exists($countId, $allowedNames)) {
+        continue; // silently drop foreign ids
+    }
+    $count = EventCountsQuery::create()->findPk([$eventId, $countId])
+        ?? (new EventCounts())->setEvtcntEventid($eventId)->setEvtcntCountid($countId);
+    // Canonical name comes from the DB, not the payload.
+    $count->setEvtcntCountname($allowedNames[$countId]);
+    $count->setEvtcntCountcount((int) ($row['count'] ?? 0));
+    // Notes are plain text — strip tags server-side.
+    $count->setEvtcntNotes(InputUtils::sanitizeText((string) ($row['notes'] ?? '')));
+    $count->save();
+}
+```
+
+Apply the same pattern for any other nested "rows belonging to a parent
+entity" API shape.
+
+### API-canonical Field Names, Shared `applyExtendedFields` Helper <!-- learned: 2026-04-22 -->
+
+When unifying legacy form POST handlers into a single API endpoint, keep
+the API's field names canonical (`Title`, `Type`, `Start`, `End`) and
+extract the "extended fields" (InActive / LinkedGroupId / AttendanceCounts
+for events) into a helper that `newXxx()` and `updateXxx()` both call
+**after** saving the main entity. This keeps the two write paths
+idempotent and impossible to drift:
+
+```php
+function newEvent(...) {
+    // ... create, setTitle, setEventType, setCalendars, save
+    applyEventExtendedFields($event, $input);
+    return SlimUtils::renderSuccessJSON($response);
+}
+
+function updateEvent(...) {
+    $Event->fromArray($input); // copies Title/Desc/Start/End/InActive automatically
+    // ... setCalendars, save
+    applyEventExtendedFields($Event, $input);
+    return SlimUtils::renderSuccessJSON($response);
+}
+```
+
+Enrich the `GET /{id}` response to include the extended fields so the UI
+doesn't need extra round-trips — fall back to type defaults when the
+entity has no rows yet (e.g. for Attendance Counts, return the event
+type's `EventCountName` categories with `count: 0`).
+
+### League\Csv `SyntaxError` — Catch for Clean 400 on Duplicate Column Headers <!-- learned: 2026-04-21 -->
+
+`League\Csv\Reader::getHeader()` throws `League\Csv\SyntaxError` when the CSV has duplicate column names. Without a catch this surfaces as an unhandled 500. Always wrap the upload endpoint's header read in a try/catch and return a 400 with a human-readable message:
+
+```php
+use League\Csv\Reader;
+use League\Csv\SyntaxError;
+
+try {
+    $csv = Reader::createFromPath($tmpPath, 'r');
+    $csv->setHeaderOffset(0);
+    $headers = $csv->getHeader(); // throws SyntaxError on duplicates
+} catch (SyntaxError $e) {
+    return SlimUtils::renderErrorJSON($response, 'Your CSV has duplicate column names. Each column header must be unique.', 400);
+}
+```
+
+This is the only checked exception `League\Csv` throws for malformed headers; other parse errors surface as standard `Exception`.
+
+### CSV Template Column Uniqueness — Category-Suffix Pattern <!-- learned: 2026-04-21 -->
+
+When generating a CSV template that includes custom fields and properties from multiple extension buckets (PersonCustom, FamilyCustom, PersonProperty, FamilyProperty), column name collisions are inevitable. Use a `"{name} ({category})"` suffix to keep headers unique and visible in Excel, and fall back to a `(2)`, `(3)` counter for residual duplicates within the same category:
+
+```php
+$seen = [];
+foreach ($fields as &$field) {
+    $candidate = $field['name'] . ' (' . $field['category'] . ')';
+    if (isset($seen[$candidate])) {
+        $seen[$candidate]++;
+        $candidate .= ' (' . $seen[$candidate] . ')';
+    } else {
+        $seen[$candidate] = 1;
+    }
+    $field['header'] = $candidate; // stored in English — NOT gettext()
+}
+```
+
+Store the header in **English only** (never wrapped in `gettext()`). The header must be locale-stable: the same CSV downloaded in French and re-uploaded under English locale must still auto-map correctly. The category suffix (`Person Custom Fields`, `Family Properties`, etc.) lives in the PHP constant, not the translation layer.

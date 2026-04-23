@@ -7,8 +7,10 @@ use ChurchCRM\model\ChurchCRM\Base\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\model\ChurchCRM\EventAudience;
+use ChurchCRM\model\ChurchCRM\EventAudienceQuery;
 use ChurchCRM\model\ChurchCRM\EventAttendQuery;
 use ChurchCRM\model\ChurchCRM\EventCounts;
+use ChurchCRM\model\ChurchCRM\EventCountsQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Map\ListOptionTableMap;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
@@ -175,12 +177,105 @@ function getEventTypes(Request $request, Response $response, array $args): Respo
  */
 function getEvent(Request $request, Response $response, $args): Response
 {
+    /** @var Event $Event */
     $Event = $request->getAttribute('event');
 
     if (empty($Event)) {
         throw new HttpNotFoundException($request);
     }
-    return SlimUtils::renderStringJSON($response, $Event->toJSON());
+
+    // Enrich the default Event JSON with the fields the unified editor UI
+    // needs: first linked group (EventAudience) and attendance counts per
+    // the type's categories. Keeps the UI's fetch payload to one call.
+    $eventId = (int) $Event->getId();
+    $data = json_decode($Event->toJSON(), true) ?: [];
+
+    $audience = EventAudienceQuery::create()->filterByEventId($eventId)->findOne();
+    $data['LinkedGroupId'] = $audience ? (int) $audience->getGroupId() : 0;
+
+    $counts = [];
+    foreach (EventCountsQuery::create()->filterByEvtcntEventid($eventId)->orderByEvtcntCountid()->find() as $ec) {
+        $counts[] = [
+            'id'    => (int) $ec->getEvtcntCountid(),
+            'name'  => $ec->getEvtcntCountname(),
+            'count' => (int) $ec->getEvtcntCountcount(),
+            'notes' => (string) $ec->getEvtcntNotes(),
+        ];
+    }
+    // Fall back to the type's defined count categories when the event has
+    // none saved yet, so the editor can show empty inputs for each
+    // category rather than an empty section.
+    if (empty($counts) && $Event->getType()) {
+        foreach (\ChurchCRM\model\ChurchCRM\EventCountNameQuery::create()
+            ->filterByTypeId((int) $Event->getType())
+            ->orderById()
+            ->find() as $cn) {
+            $counts[] = [
+                'id'    => (int) $cn->getId(),
+                'name'  => $cn->getName(),
+                'count' => 0,
+                'notes' => '',
+            ];
+        }
+    }
+    $data['AttendanceCounts'] = $counts;
+
+    return SlimUtils::renderJSON($response, $data);
+}
+
+/**
+ * Shared helper: apply LinkedGroupId + AttendanceCounts[] from the unified
+ * editor payload to an existing Event row. Idempotent — call after each
+ * newEvent / updateEvent save.
+ */
+function applyEventExtendedFields(Event $event, array $input): void
+{
+    $eventId = (int) $event->getId();
+
+    if (array_key_exists('LinkedGroupId', $input)) {
+        $linkedGroupId = (int) $input['LinkedGroupId'];
+        EventAudienceQuery::create()->filterByEventId($eventId)->delete();
+        if ($linkedGroupId > 0) {
+            $audience = new EventAudience();
+            $audience->setEventId($eventId);
+            $audience->setGroupId($linkedGroupId);
+            $audience->save();
+        }
+    }
+
+    if (array_key_exists('AttendanceCounts', $input) && is_array($input['AttendanceCounts'])) {
+        // Whitelist count IDs by the event's type and source the canonical
+        // category name from EventCountName — never trust the client-supplied
+        // `name`. Notes are plain text: strip tags so a rogue payload can't
+        // land raw HTML/script in a field that later shows in the UI.
+        $typeId = (int) $event->getType();
+        $allowedNames = [];
+        foreach (\ChurchCRM\model\ChurchCRM\EventCountNameQuery::create()
+            ->filterByTypeId($typeId)
+            ->find() as $cn) {
+            $allowedNames[(int) $cn->getId()] = (string) $cn->getName();
+        }
+
+        foreach ($input['AttendanceCounts'] as $row) {
+            if (!is_array($row) || !isset($row['id'])) {
+                continue;
+            }
+            $countId = (int) $row['id'];
+            if ($countId <= 0 || !array_key_exists($countId, $allowedNames)) {
+                continue; // unknown category for this event's type
+            }
+            $count = EventCountsQuery::create()->findPk([$eventId, $countId]);
+            if ($count === null) {
+                $count = new EventCounts();
+                $count->setEvtcntEventid($eventId);
+                $count->setEvtcntCountid($countId);
+            }
+            $count->setEvtcntCountname($allowedNames[$countId]);
+            $count->setEvtcntCountcount((int) ($row['count'] ?? 0));
+            $count->setEvtcntNotes(InputUtils::sanitizeText((string) ($row['notes'] ?? '')));
+            $count->save();
+        }
+    }
 }
 
 /**
@@ -326,8 +421,13 @@ function newEvent(Request $request, Response $response, array $args): Response
     $event->setStart(str_replace('T', ' ', $input['Start']));
     $event->setEnd(str_replace('T', ' ', $input['End']));
     $event->setText($input['Text']);
+    if (array_key_exists('InActive', $input)) {
+        $event->setInActive((int) $input['InActive']);
+    }
     $event->setCalendars($calendars);
     $event->save();
+
+    applyEventExtendedFields($event, $input);
 
     return SlimUtils::renderSuccessJSON($response);
 }
@@ -464,6 +564,9 @@ function updateEvent(Request $request, Response $response, array $args): Respons
     $Event = $request->getAttribute('event');
     $id = $Event->getId();
 
+    // fromArray copies matching property names (Title, Desc, Start, End,
+    // Text, InActive) onto the Event. LinkedGroupId + AttendanceCounts
+    // aren't Event columns; applyEventExtendedFields handles those.
     $Event->fromArray($input);
     $Event->setId($id);
     $PinnedCalendars = CalendarQuery::create()
@@ -472,6 +575,8 @@ function updateEvent(Request $request, Response $response, array $args): Respons
     $Event->setCalendars($PinnedCalendars);
 
     $Event->save();
+
+    applyEventExtendedFields($Event, $input);
 
     return SlimUtils::renderSuccessJSON($response);
 }

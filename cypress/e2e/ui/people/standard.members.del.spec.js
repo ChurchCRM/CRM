@@ -20,7 +20,7 @@ describe("Standard Family", () => {
             cy.get("#deletePersonBtn").first().click();
             // Modal may be covered in headless runs; force the click to ensure deletion
             cy.get(".bootbox-accept").first().click({ force: true });
-            cy.url().should("contain", "v2/dashboard");
+            cy.url({ timeout: 5000 }).should("contain", "people/list");
 
             cy.visit(`PersonView.php?PersonID=${personId}`);
             cy.contains("Person not found");

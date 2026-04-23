@@ -664,10 +664,6 @@ msgid "Save Changes"
 msgstr "Salvați modificările"
 
 #: 
-msgid "Church Event Editor"
-msgstr "Editor de evenimente bisericești"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Editare tip de eveniment"
 
@@ -734,21 +730,9 @@ msgid "Create Event"
 msgstr "Crează eveniment"
 
 #: 
-msgid "Create a new Event"
-msgstr "Crează eveniment nou"
-
-#: 
-msgid "Select your event type"
-msgstr "Selectează tip eveniment"
-
-#: 
 #, fuzzy
 msgid "Event Status"
 msgstr "Stare Eveniment"
-
-#: 
-msgid "Return to Events"
-msgstr "Revenire la Evenimente"
 
 #: 
 msgid "Sundays"
@@ -845,10 +829,6 @@ msgstr "E-mail nu este valid"
 #: 
 msgid "Family Info"
 msgstr "Info Familie"
-
-#: 
-msgid "Contact Info"
-msgstr "Info Contact"
 
 #: 
 msgid "Envelope Info"
@@ -973,11 +953,6 @@ msgstr "Valoare"
 #: 
 msgid "Edit Value"
 msgstr "Editare Valoare"
-
-#: 
-#, fuzzy
-msgid "Assign a New Property"
-msgstr "Atribuie o nouă proprietate"
 
 #: 
 msgid "Assign"
@@ -1217,10 +1192,6 @@ msgid "Summary Data"
 msgstr "Date sumare"
 
 #: 
-msgid "CSV"
-msgstr "CSV"
-
-#: 
 msgid "Back"
 msgstr "Înapoi"
 
@@ -1347,10 +1318,6 @@ msgstr "Formatul fișierului de date"
 #: 
 msgid "GPS Visualizer"
 msgstr "Vizualizator GPS"
-
-#: 
-msgid "Street Atlas USA"
-msgstr "Street Atlas USA"
 
 #: 
 #, fuzzy
@@ -1724,20 +1691,8 @@ msgid "Group"
 msgstr "Grup"
 
 #: 
-msgid "Option"
-msgstr "Opțiune"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Eroare: Duplicate"
-
-#: 
 msgid "Default"
 msgstr "Lipsă"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Duplicat nume de găsit."
 
 #: 
 msgid "Make Default"
@@ -1750,10 +1705,6 @@ msgstr "Ieșire"
 #: 
 msgid "Add New"
 msgstr "Adăugați noi"
-
-#: 
-msgid " by that name already exists."
-msgstr "cu acest nume există deja."
 
 #: 
 msgid "Buyer Number Editor"
@@ -2428,18 +2379,6 @@ msgstr "Număr prea mare. Trebuie să fie între -2147483648 și 2147483647"
 #: 
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Suma de bani prea mare. Maxim este de 999,999,999.99 dolari"
-
-#: 
-msgid " Bold Italic"
-msgstr "Italic Bold"
-
-#: 
-msgid " Italic"
-msgstr "Cursiv"
-
-#: 
-msgid " Bold"
-msgstr "Îndrăzneț"
 
 #: 
 msgid "Error making API Call to"
@@ -3270,10 +3209,6 @@ msgid "Security Group"
 msgstr "Grup securitate"
 
 #: 
-msgid "Security Groups"
-msgstr "Grupuri securitate"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Editor grupuri securitate"
 
@@ -3286,56 +3221,16 @@ msgid "Group Member Roles Editor"
 msgstr "Editor roluri membri grup"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Opțiune listă personalizată persoană"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Opțiuni listă personalizată persoană"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Editor opțiuni listă personalizată persoană"
-
-#: 
-msgid "Custom List Option"
-msgstr "Opțiune listă personalizată"
-
-#: 
-msgid "Custom List Options"
-msgstr "Opțiuni listă personalizată"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Editor opțiuni listă personalizată"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Opțiune listă personalizată familie"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Opțiuni listă personalizată familie"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Editor de opțiuni de listă personalizată pentru familie"
-
-#: 
-msgid "are not allowed."
-msgstr "nu sunt permise."
-
-#: 
-msgid "Name for New"
-msgstr "Nume pentru nou"
-
-#: 
-msgid "Created via Family"
-msgstr "Creat prin Familie"
-
-#: 
-msgid "Updated via Family"
-msgstr "Actualizat prin Familie"
 
 #: 
 msgid "Family Data Verified"
@@ -5223,7 +5118,8 @@ msgid "Indonesian - Indonesia"
 msgstr "Indonezia"
 
 #: 
-msgid "records(s) successfully added to selected Group."
+#, fuzzy
+msgid "record(s) successfully added to selected Group."
 msgstr "înregistrări adăugate cu succes grupului selectat."
 
 #: 
@@ -5253,10 +5149,6 @@ msgstr "Familie nouă adăugată"
 #: 
 msgid "Church Greeter"
 msgstr "Salut biserică"
-
-#: 
-msgid "External Calendar API is disabled"
-msgstr "Api calendar dezactivat"
 
 #: 
 msgid "Special Group Settings : Sunday School Type"
@@ -5535,7 +5427,8 @@ msgid "Remove All from Cart"
 msgstr "Șterge pe toți din coș"
 
 #: 
-msgid "records(s) successfully deleted from the selected Group."
+#, fuzzy
+msgid "record(s) successfully deleted from the selected Group."
 msgstr "înregistrări șterse cu succes din grupul selectat"
 
 #: 
@@ -5563,14 +5456,6 @@ msgid "Added to group"
 msgstr "Adăugat la grup"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "domeniu SMTP nesetat, vizitați pagina de setări"
-
-#: 
-msgid "Debug Email Connection"
-msgstr "Depanare conectare Email"
-
-#: 
 #, fuzzy
 msgid "This Family is Inactive"
 msgstr "Această familie este dezactivată"
@@ -5582,14 +5467,6 @@ msgstr "Baza de date a fost șearsă"
 #: 
 msgid "Anniversaries"
 msgstr "Aniversări"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "Eroare la notificarea prin email a unei familii noi"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "Eroare la notificarea prin email a unei persoane noi"
 
 #: 
 msgid "View User"
@@ -5701,10 +5578,6 @@ msgid "Missing calendar access token"
 msgstr "Indicativ (token) de acces la calendar lipsește"
 
 #: 
-msgid "Calendar access token not found"
-msgstr "Indicativ (token) de acces la calendar nu a fost găsit"
-
-#: 
 msgid "User must have Delete Records permission"
 msgstr "Utilizatorul trebuie să aibă permisiuni pentru ștergerea înregistrărilor"
 
@@ -5777,10 +5650,6 @@ msgstr "este dezactivat"
 #: 
 msgid "Software Version"
 msgstr "Versiune soft"
-
-#: 
-msgid "Database Version"
-msgstr "Versiune bază de date"
 
 #: 
 msgid "Application Prerequisites"
@@ -6044,10 +5913,6 @@ msgid "Mailchimp is not active"
 msgstr "Mailchimp nu este activ"
 
 #: 
-msgid "Mailchimp"
-msgstr "Mailchip"
-
-#: 
 msgid "Lists"
 msgstr "Liste"
 
@@ -6146,14 +6011,6 @@ msgid "Loading"
 msgstr "Se încarcă"
 
 #: 
-msgid "Family Property Unassignment"
-msgstr "Anulare Atribuire Proprietate Familie"
-
-#: 
-msgid "Do you want to remove"
-msgstr "Doriți să ștergeti"
-
-#: 
 msgid "Today's Birthdays"
 msgstr "Ziua de naștere a celor de astăzi"
 
@@ -6188,10 +6045,6 @@ msgstr "Data de naștere invalidă: Lipsesc luna sau ziua nașterii"
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Data de naștere invalidă: Lipsesc luna și ziua nașterii"
-
-#: 
-msgid "System"
-msgstr "Sistem"
 
 #. Context: locales
 #: 
@@ -6279,10 +6132,6 @@ msgid "Not Subscribed"
 msgstr "Nezabonat"
 
 #: 
-msgid "property"
-msgstr "proprietate"
-
-#: 
 msgid "Default Zip"
 msgstr "Cod poștal implicit"
 
@@ -6320,10 +6169,6 @@ msgstr "Un caracter din prenume și un caracter din nume"
 #: 
 msgid "Two characters from FirstName"
 msgstr "Două caractere din prenume"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "E-mailul bisericii nu este setat, vă rugăm să vizitați pagina de setări"
 
 #. Context: locales
 #: 
@@ -7072,7 +6917,8 @@ msgid "Total Payments"
 msgstr "Total plăți"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payments?"
 msgstr "plăți"
 
 #: 
@@ -7084,20 +6930,8 @@ msgid "Base URL"
 msgstr "URL de bază"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "Instalare ChurchCRM"
-
-#: 
 msgid "Copy"
 msgstr "Copiază"
-
-#: 
-msgid "DSN"
-msgstr "DSN"
-
-#: 
-msgid "Database Server"
-msgstr "Server bază de date"
 
 #: 
 msgid "Debug Info"
@@ -7106,14 +6940,6 @@ msgstr "Informații depanare"
 #: 
 msgid "Document Root"
 msgstr "Rădăcina documentului"
-
-#: 
-msgid "Email Configuration"
-msgstr "Configurare e-mail"
-
-#: 
-msgid "Email Debug Info"
-msgstr "Informații depanare e-mail"
 
 #: 
 msgid "Filesystem Permissions"
@@ -7156,10 +6982,6 @@ msgid "PHP & Server Requirements"
 msgstr "Cerințe PHP și server"
 
 #: 
-msgid "PHP Configuration"
-msgstr "Configurare PHP"
-
-#: 
 msgid "Platform"
 msgstr "Platformă"
 
@@ -7172,24 +6994,8 @@ msgid "SMTP Host"
 msgstr "Gazdă SMTP"
 
 #: 
-msgid "Server Information"
-msgstr "Informații server"
-
-#: 
-msgid "Software"
-msgstr "Software"
-
-#: 
-msgid "System & Configuration"
-msgstr "Sistem și configurare"
-
-#: 
 msgid "Tip:"
 msgstr "Sfat:"
-
-#: 
-msgid "Valid Settings"
-msgstr "Setări valide"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7251,10 +7057,6 @@ msgid "Attendance Count Categories"
 msgstr "Categorii numărare prezență"
 
 #: 
-msgid "Attendance Notes"
-msgstr "Note prezență"
-
-#: 
 msgid "Change Event"
 msgstr "Schimbă evenimentul"
 
@@ -7310,14 +7112,6 @@ msgstr "Șterge evenimentul"
 msgid "Edit Event"
 msgstr "Editează evenimentul"
 
-#: 
-msgid "Editing Event"
-msgstr "Se editează evenimentul"
-
-#: 
-msgid "Enter event title..."
-msgstr "Introduceți titlul evenimentului..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7368,14 +7162,6 @@ msgid "None (one-time event)"
 msgstr "Niciunul (eveniment unic)"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "Opțional - Adăugați note despre predică sau detalii suplimentare despre eveniment"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "Note opționale despre prezență..."
-
-#: 
 msgid "People Checked In"
 msgstr "Persoane care au făcut check-in"
 
@@ -7410,10 +7196,6 @@ msgstr "Caută supraveghetor..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "Selectați evenimentul pentru Check-In"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "Text Predică / Eveniment"
 
 #: 
 msgid "Unclassified"
@@ -8207,10 +7989,6 @@ msgid "Orphaned Files:"
 msgstr "Fișiere orfane:"
 
 #: 
-msgid "PDF/CSV"
-msgstr "PDF/CSV"
-
-#: 
 msgid "Payment"
 msgstr "Plată"
 
@@ -8447,10 +8225,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "URL-ul de bază nu este configurat în Config.php"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "Localizări acceptate de ChurchCRM"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "Conectați-vă la server prin SSH, FTP sau panoul de control al găzduirii"
 
@@ -8475,10 +8249,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Se termină cu un <strong>slash la sfârșit</strong> (/)"
 
 #: 
-msgid "Error:"
-msgstr "Eroare:"
-
-#: 
 msgid "Find the line:"
 msgstr "Găsiți linia:"
 
@@ -8501,10 +8271,6 @@ msgstr "Limbă"
 #: 
 msgid "Local development:"
 msgstr "Dezvoltare locală:"
-
-#: 
-msgid "Locale Support"
-msgstr "Suport localizare"
 
 #: 
 msgid "Location & Contact Information"
@@ -8876,10 +8642,6 @@ msgstr[1] "%d persoane adăugate cu succes la grupul selectat."
 msgstr[2] "%d persoane adăugate cu succes la grupul selectat."
 
 #: 
-msgid "A "
-msgstr "Un/O "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Sigur doriți să ștergeți"
 
@@ -8908,10 +8670,6 @@ msgid "Delete Confirmation"
 msgstr "Confirmare ștergere"
 
 #: 
-msgid "Existing"
-msgstr "Existent"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Câmpuri personalizate de familie existente"
 
@@ -8934,10 +8692,6 @@ msgstr "Token CSRF nevalid"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Câmpuri sau selecții nevalide."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Element șters cu succes"
 
 #: 
 msgid "Move down"
@@ -8974,10 +8728,6 @@ msgstr "Tip proprietate"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "Există persoane atribuite acestei oportunități de voluntariat. Ștergerea le va dezasocia:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "Aceasta o va elimina de la toate persoanele atribuite în prezent."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -9345,10 +9095,6 @@ msgstr "Deschiderea arhivei de actualizare a eșuat. Fișierul descărcat poate 
 #: 
 msgid "Failed to save the downloaded release file. Please check disk space and permissions."
 msgstr "Salvarea fișierului de lansare descărcat a eșuat. Verificați spațiul pe disc și permisiunile."
-
-#: 
-msgid "Invalid date format in start parameter"
-msgstr "Format de dată invalid în parametrul de start"
 
 #: 
 msgid "Mismatch"
@@ -9812,10 +9558,6 @@ msgstr "Link negăsit"
 #: 
 msgid "Loading recovery codes"
 msgstr "Se încarcă codurile de recuperare"
-
-#: 
-msgid "MailChimp"
-msgstr "MailChimp"
 
 #: 
 msgid "MailChimp API Key"
@@ -10930,10 +10672,6 @@ msgid "CSV Column"
 msgstr "Coloană CSV"
 
 #: 
-msgid "CSV template not found"
-msgstr "Șablonul CSV nu a fost găsit"
-
-#: 
 msgid "Call"
 msgstr "Apelează"
 
@@ -11008,10 +10746,6 @@ msgstr "Coloana a fost mapată automat la un câmp ChurchCRM."
 #: 
 msgid "Community Management Platform"
 msgstr "Platformă de administrare a parohiei"
-
-#: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "Compatibil cu Excel, Google Sheets sau orice export CSV."
 
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
@@ -11186,10 +10920,6 @@ msgid "Download CSV Template"
 msgstr "Descarcă șablonul CSV"
 
 #: 
-msgid "Download the template to see the expected column format."
-msgstr "Descarcă șablonul pentru a vedea formatul de coloane așteptat."
-
-#: 
 msgid "Drag and drop your CSV file here"
 msgstr "Trageți și plasați fișierul CSV aici"
 
@@ -11200,10 +10930,6 @@ msgstr "Duplicate"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Fiecare persoană poate avea propriul e-mail și număr de mobil."
-
-#: 
-msgid "Each row is one person. Members of the same family share a FamilyID."
-msgstr "Fiecare rând reprezintă o persoană. Membrii aceleiași familii au același FamilyID."
 
 #: 
 msgid "Easy registration"
@@ -11626,10 +11352,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Gestionează clasele de școală duminicală, profesorii și prezența elevilor"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Gestionează listele de clasificare, rolurile și tipurile de grupuri"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Gestionează fondurile de ofertă pentru urmărirea financiară"
 
@@ -11880,10 +11602,6 @@ msgstr "Deschide problemă GitHub"
 #: 
 msgid "Open user menu"
 msgstr "Deschide meniul utilizatorului"
-
-#: 
-msgid "Options"
-msgstr "Opțiuni"
 
 #: 
 msgid "Other Members"
@@ -12296,10 +12014,6 @@ msgid "Upload CSV"
 msgstr "Încarcă CSV"
 
 #: 
-msgid "Upload a CSV file to import families and people into ChurchCRM."
-msgstr "Încărcați un fișier CSV pentru a importa familii și persoane în ChurchCRM."
-
-#: 
 msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
 msgstr "Încărcați un CSV din Excel, Google Sheets sau sistemul anterior de administrare a parohiei și mapați coloanele la câmpurile ChurchCRM."
 
@@ -12522,10 +12236,6 @@ msgstr "membri"
 #: 
 msgid "opportunities"
 msgstr "oportunități"
-
-#: 
-msgid "options"
-msgstr "opțiuni"
 
 #: 
 msgid "or connect an external service"
@@ -12762,10 +12472,6 @@ msgstr "Înregistrați și gestionați dispozitivele chioșc pentru înregistrar
 #: 
 msgid "Review & Delete"
 msgstr "Revizuiește și șterge"
-
-#: 
-msgid "SHA1 Hash"
-msgstr "Hash SHA1"
 
 #: 
 msgid "Signature Mismatch"
@@ -14707,10 +14413,6 @@ msgstr[1] "%d evenimente repetate au fost create cu succes."
 msgstr[2] "%d de evenimente repetate au fost create cu succes."
 
 #: 
-msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
-msgstr "(ex. Credincioși, Vizitatori, Copii) pentru ca voluntarii să poată înregistra numărul de participanți aici."
-
-#: 
 msgid "1. Sunday School Class"
 msgstr "1. Clasă Școala Duminicală"
 
@@ -14731,10 +14433,6 @@ msgid "A class is a Group with type \"Sunday School\". It holds the students and
 msgstr "O clasă este un Grup de tip „Școala Duminicală”. Conține elevi și profesori (membri cu roluri)."
 
 #: 
-msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
-msgstr "Un grup legat asociază acest eveniment cu o clasă sau o listă de slujire. Când evenimentul este atribuit unui chioșc, acesta preia membrii grupului și îi afișează ca o listă de prezență prin atingere. Pentru clasele Școlii Duminicale, legați grupul clasei aici pentru ca voluntarii să poată înregistra prezența elevilor de pe o tabletă."
-
-#: 
 msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
 msgstr "O apariție specifică (ex. „Preșcolari — 12 Apr”). Moștenește valorile implicite din tip și este legată de grupul clasei prin audiență. Aceasta este baza pe care voluntarii înregistrează prezența."
 
@@ -14745,10 +14443,6 @@ msgstr "O tabletă atribuită unui singur eveniment. Chioșcul preia lista grupu
 #: 
 msgid "Add Walk-in / Visitor"
 msgstr "Adaugă vizitator / persoană neînregistrată"
-
-#: 
-msgid "Add categories on the Event Type page"
-msgstr "Adaugă categorii pe pagina Tip Eveniment"
 
 #: 
 msgid "Add people to your cart first, then come back to check them in to an event."
@@ -14797,10 +14491,6 @@ msgstr "Audit"
 #: 
 msgid "Audit Events"
 msgstr "Evenimente Audit"
-
-#: 
-msgid "Auto-totalled from counts at right"
-msgstr "Total calculat automat din numărătorile din dreapta"
 
 #: 
 msgid "Back to Events"
@@ -14927,10 +14617,6 @@ msgid "Database dump only (.sql)"
 msgstr "Doar export bază de date (.sql)"
 
 #: 
-msgid "Date Range"
-msgstr "Interval de date"
-
-#: 
 msgid "Date range cannot exceed 1 year"
 msgstr "Intervalul de date nu poate depăși 1 an"
 
@@ -15011,10 +14697,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "Evenimentul a fost creat. Redirecționare la înregistrarea prezenței..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "Data/ora de sfârșit a evenimentului trebuie să fie la sau după data/ora de începere."
-
-#: 
 msgid "Event title is required."
 msgstr "Titlul evenimentului este obligatoriu."
 
@@ -15041,10 +14723,6 @@ msgstr "Tipul de eveniment nu are un model de recurență configurat"
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "Tipul de eveniment nu are o zi validă din lună configurată pentru recurența lunară"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "Evenimentele vor fi create pentru fiecare apariție corespunzătoare în acest interval de date."
 
 #: 
 msgid "Every month on the"
@@ -15095,10 +14773,6 @@ msgid "Group Roster"
 msgstr "Lista Grupului"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "Ascunde Opțiunile Avansate"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Cum se conectează Școala Duminicală + Evenimente + Chioșcuri"
 
@@ -15109,10 +14783,6 @@ msgstr "Dată invalidă pentru %s — formatul așteptat este YYYY-MM-DD"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Format de dată invalid pentru rangeStart sau rangeEnd"
-
-#: 
-msgid "Invalid date format."
-msgstr "Format de dată invalid."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -15167,10 +14837,6 @@ msgid "No active events found."
 msgstr "Nu s-au găsit evenimente active."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "Nu au fost definite categorii de numărare a prezenței pentru acest tip de eveniment."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "Nicio persoană nu a fost înregistrată la acest eveniment."
 
@@ -15211,10 +14877,6 @@ msgid "Please select a person to check in."
 msgstr "Vă rugăm să selectați o persoană pentru înregistrare."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "Precompletat pe baza acestui tip de eveniment — pentru tipurile recurente, data este următoarea apariție după ultimul eveniment de acest tip, iar ora corespunde orei implicite de începere a tipului."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "Data de sfârșit a intervalului trebuie să fie la sau după data de început a intervalului."
 
@@ -15243,10 +14905,6 @@ msgid "Recommended"
 msgstr "Recomandat"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "Obligatoriu pentru Chioșc"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "Resetarea va șterge permanent:"
 
@@ -15265,14 +14923,6 @@ msgstr "Salvați modificările pentru acest nume de categorie"
 #: 
 msgid "Select an event type…"
 msgstr "Selectați un tip de eveniment…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "Selectați data/ora de început și de sfârșit."
-
-#: 
-msgid "Show More Options"
-msgstr "Afișați mai multe opțiuni"
 
 #: 
 msgid "Skip"
@@ -15315,16 +14965,8 @@ msgid "The Events module is disabled"
 msgstr "Modulul Evenimente este dezactivat"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "Aceeași oră de început și de sfârșit va fi folosită pentru toate evenimentele generate."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "Nu există evenimente programate pentru astăzi"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "Acestea sunt categorii de numărare — voluntarii le completează după eveniment pentru ca tabloul de bord să poată detalia prezența (ex. câți membri față de vizitatori). Sunt separate de înregistrările individuale de pe pagina de prezență."
 
 #: 
 msgid "This event is inactive."
@@ -15379,16 +15021,8 @@ msgid "View Event"
 msgstr "Vizualizați evenimentul"
 
 #: 
-msgid "What are these for?"
-msgstr "La ce servesc acestea?"
-
-#: 
 msgid "What does this find?"
 msgstr "Ce găsește aceasta?"
-
-#: 
-msgid "What is this for?"
-msgstr "La ce servește aceasta?"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15651,6 +15285,10 @@ msgid "No active event assignment"
 msgstr "Nicio atribuire activă de eveniment"
 
 #: 
+msgid "Online"
+msgstr "Online"
+
+#: 
 msgid "Opens a 30-second window for devices to register at:"
 msgstr "Deschide o fereastră de 30 de secunde pentru înregistrarea dispozitivelor la:"
 
@@ -15677,4 +15315,596 @@ msgstr "Evenimente viitoare"
 #: 
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "eveniment(e). Dezactivați tipul sau reatribuiți mai întâi evenimentele."
+
+#: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "URL absolut http(s) al logo-ului bisericii afișat în șabloanele de e-mail (și reutilizat în altă parte în viitor). Pentru cea mai bună redare în clienții de e-mail, utilizați o imagine banner largă cu un raport de aspect de aproximativ 3,5:1 (de exemplu 350×100 px), PNG sau JPG, servit prin HTTPS. Lăsați necompletat sau introduceți o valoare invalidă pentru a reveni la logo-ul implicit ChurchCRM."
+
+#: 
+msgid "An option with that name already exists"
+msgstr "Există deja o opțiune cu acel nume"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "Nu se poate șterge singura opțiune rămasă"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "Clipboard-ul nu este disponibil. Vă rugăm să utilizați butonul Descărcare pentru a salva codurile."
+
+#: 
+msgid "Custom Option"
+msgstr "Opțiune personalizată"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "Text implicit de previzualizare în căsuța de e-mail"
+
+#: 
+msgid "Email is disabled"
+msgstr "E-mailul este dezactivat"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "E-mailul este dezactivat. Configurați e-mailul înainte de a reseta parolele sau utilizați Schimbați parola."
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "E-mailul este dezactivat. Activați-l în setările Tabloului de bord e-mail înainte de testare."
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "Introduceți unul dintre codurile de recuperare de rezervă"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "Introduceți unul dintre codurile de recuperare de rezervă pentru a accesa contul"
+
+#: 
+msgid "Existing Options"
+msgstr "Opțiuni existente"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "Grupul nu a fost găsit pentru această listă de roluri"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "Starea inactivă poate fi modificată numai pentru lista de clasificări"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "Utilizatorii noi nu vor primi un e-mail de bun venit cu datele lor de autentificare. Partajați parola manual sau configurați mai întâi e-mailul."
+
+#: 
+msgid "Option name is required"
+msgstr "Numele opțiunii este obligatoriu"
+
+#: 
+msgid "Option not found"
+msgstr "Opțiunea nu a fost găsită"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "Rezumat scurt opțional afișat ca text de previzualizare în căsuța de e-mail lângă subiect. Lăsați necompletat pentru a permite clientului de e-mail să genereze automat din conținut. Tipurile individuale de e-mail (resetare parolă, membru nou, verificare) au propriul preheader; acesta este un fallback."
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "E-mailurile de resetare a parolei și e-mailurile de bun venit pentru conturi noi nu vor fi trimise până când e-mailul nu este configurat. Utilizatorii nu vor primi credențiale automat."
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "Resetarea parolei nu este disponibilă deoarece e-mailul este dezactivat. Contactați administratorul de sistem."
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "Parola a fost resetată, dar e-mailul nu a putut fi trimis. Utilizatorul este blocat — partajați noua parolă manual sau utilizați Schimbați parola."
+
+#: 
+msgid "Recovery Code"
+msgstr "Cod de recuperare"
+
+#: 
+msgid "Set up Email"
+msgstr "Configurați e-mailul"
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "Imposibil de copiat în clipboard. Copiați codurile manual."
+
+#: 
+msgid "Use Recovery Code"
+msgstr "Utilizați codul de recuperare"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "Utilizați un cod de recuperare"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "Utilizați aplicația de autentificare"
+
+#: 
+msgid "%d modules loaded"
+msgstr "%d module încărcate"
+
+#: 
+msgid "(PHP default)"
+msgstr "(implicit PHP)"
+
+#: 
+msgid "(none)"
+msgstr "(niciunul)"
+
+#: 
+msgid "(not set)"
+msgstr "(nesetat)"
+
+#: 
+msgid "All checks passing"
+msgstr "Toate verificările au trecut"
+
+#: 
+msgid "App"
+msgstr "Aplicație"
+
+#: 
+msgid "Browser time zone differs:"
+msgstr "Fusul orar al browserului diferă:"
+
+#: 
+msgid "Calendar time zone:"
+msgstr "Fusul orar al calendarului:"
+
+#: 
+msgid "Cannot send test email"
+msgstr "Nu se poate trimite e-mailul de test"
+
+#: 
+msgid "Charset"
+msgstr "Set de caractere"
+
+#: 
+msgid "Church Email address is not set — the test email has nowhere to go."
+msgstr "Adresa de e-mail a bisericii nu este setată — e-mailul de test nu are destinatar."
+
+#: 
+msgid "Church email — configured on the"
+msgstr "E-mailul bisericii — configurat pe"
+
+#: 
+msgid "ChurchCRM Test Email"
+msgstr "E-mail test ChurchCRM"
+
+#: 
+msgid "Collation"
+msgstr "Colare"
+
+#: 
+msgid "Connection"
+msgstr "Conexiune"
+
+#: 
+msgid "Database"
+msgstr "Bază de date"
+
+#: 
+msgid "Delivery"
+msgstr "Livrare"
+
+#: 
+msgid "Disk (Images Root)"
+msgstr "Disc (director imagini)"
+
+#: 
+msgid "Display Errors"
+msgstr "Afișare erori"
+
+#: 
+msgid "Email Debug"
+msgstr "Depanare e-mail"
+
+#: 
+msgid "Environment"
+msgstr "Mediu"
+
+#: 
+msgid "Error Log"
+msgstr "Jurnal erori"
+
+#: 
+msgid "Error Reporting"
+msgstr "Raportare erori"
+
+#: 
+msgid "Error:"
+msgstr "Eroare:"
+
+#: 
+msgid "Fix Settings"
+msgstr "Corectați setările"
+
+#: 
+msgid "Hit Rate"
+msgstr "Rată de accesare"
+
+#: 
+msgid "Host"
+msgstr "Gazdă"
+
+#: 
+msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
+msgstr "Dacă mesajul nu sosește în câteva minute, verificați folderul spam/junk și jurnalul de depanare SMTP de mai jos."
+
+#: 
+msgid "If you can read this message in your inbox, your SMTP configuration is working correctly."
+msgstr "Dacă puteți citi acest mesaj în căsuța dvs. de e-mail, configurația SMTP funcționează corect."
+
+#: 
+msgid "Incomplete"
+msgstr "Incomplet"
+
+#: 
+msgid "Installed on Server"
+msgstr "Instalat pe server"
+
+#: 
+msgid "Integrity"
+msgstr "Integritate"
+
+#: 
+msgid "Issues detected"
+msgstr "Probleme detectate"
+
+#: 
+msgid "Loaded php.ini"
+msgstr "php.ini încărcat"
+
+#: 
+msgid "Locale"
+msgstr "Localizare"
+
+#: 
+msgid "Max Execution Time"
+msgstr "Timp maxim de execuție"
+
+#: 
+msgid "Max POST Size"
+msgstr "Dimensiune maximă POST"
+
+#: 
+msgid "Max Upload Size"
+msgstr "Dimensiune maximă upload"
+
+#: 
+msgid "Memory"
+msgstr "Memorie"
+
+#: 
+msgid "Memory Limit"
+msgstr "Limită memorie"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
+msgstr "Verificați acum căsuța destinatarului pentru a confirma livrarea. Căutați subiectul:"
+
+#: 
+msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
+msgstr "OPcache nu este activat. Activarea sa este o metodă cu risc scăzut de a accelera încărcarea paginilor PHP."
+
+#: 
+msgid "Off"
+msgstr "Dezactivat"
+
+#: 
+msgid "On"
+msgstr "Activat"
+
+#: 
+msgid "Open the email debug tester"
+msgstr "Deschideți testerul de depanare e-mail"
+
+#: 
+msgid "PHP Version"
+msgstr "Versiune PHP"
+
+#: 
+msgid "PHPMailer SMTP session"
+msgstr "Sesiune SMTP PHPMailer"
+
+#: 
+msgid "Prerequisites"
+msgstr "Cerințe prealabile"
+
+#: 
+msgid "Review the SMTP debug log below for the handshake details, then adjust your settings."
+msgstr "Examinați jurnalul de depanare SMTP de mai jos pentru detaliile de handshake, apoi ajustați setările."
+
+#: 
+msgid "SMTP Configuration"
+msgstr "Configurare SMTP"
+
+#: 
+msgid "SMTP Debug Log"
+msgstr "Jurnal depanare SMTP"
+
+#: 
+msgid "SMTP Host is not configured."
+msgstr "Gazda SMTP nu este configurată."
+
+#: 
+msgid "SMTP configuration test — if this arrived, your setup works."
+msgstr "Test configurare SMTP — dacă ați primit acest mesaj, configurația funcționează."
+
+#: 
+msgid "Schema Version"
+msgstr "Versiune schemă"
+
+#: 
+msgid "Send Again"
+msgstr "Trimiteți din nou"
+
+#: 
+msgid "Send a test message to verify your SMTP configuration"
+msgstr "Trimiteți un mesaj de test pentru a verifica configurația SMTP"
+
+#: 
+msgid "Server"
+msgstr "Server"
+
+#: 
+msgid "Server Version"
+msgstr "Versiune server"
+
+#: 
+msgid "Session Handler"
+msgstr "Gestionar sesiune"
+
+#: 
+msgid "Session Save Path"
+msgstr "Cale salvare sesiune"
+
+#: 
+msgid "Settings Valid"
+msgstr "Setări valide"
+
+#: 
+msgid "Subject"
+msgstr "Subiect"
+
+#: 
+msgid "Test"
+msgstr "Test"
+
+#: 
+msgid "Test email accepted by SMTP server"
+msgstr "E-mailul de test a fost acceptat de serverul SMTP"
+
+#: 
+msgid "Test email failed to send"
+msgstr "Trimiterea e-mailului de test a eșuat"
+
+#: 
+msgid "This is a ChurchCRM test email."
+msgstr "Acesta este un e-mail de test ChurchCRM."
+
+#: 
+msgid "Timeout"
+msgstr "Expirare conexiune"
+
+#: 
+msgid "Timezone"
+msgstr "Fus orar"
+
+#: 
+msgid "Unable to list web server modules (non-Apache SAPI)."
+msgstr "Nu se pot lista modulele serverului web (SAPI non-Apache)."
+
+#: 
+msgid "Update Settings"
+msgstr "Actualizați setările"
+
+#: 
+msgid "View full photo"
+msgstr "Vizualizați fotografia completă"
+
+#: 
+msgid "page."
+msgstr "pagina."
+
+#: 
+msgid "user:"
+msgstr "utilizator:"
+
+#: 
+msgid "1. Download the template"
+msgstr "1. Descărcați șablonul"
+
+#: 
+msgid "2. Fill in your data"
+msgstr "2. Completați datele"
+
+#: 
+msgid "3. Upload and map"
+msgstr "3. Încărcați și mapați"
+
+#: 
+msgid "Add Recurring Event"
+msgstr "Adăugați eveniment recurent"
+
+#: 
+msgid "Available after the event is saved."
+msgstr "Disponibil după salvarea evenimentului."
+
+#: 
+msgid "Boolean properties/fields accept yes / no / true / false / 1 / 0."
+msgstr "Proprietățile/câmpurile booleane acceptă yes / no / true / false / 1 / 0."
+
+#: 
+msgid "ChurchCRM auto-matches each column by name. Anything it cannot match is marked as Unmapped — pick a field or leave it as Ignore."
+msgstr "ChurchCRM potrivește automat fiecare coloană după nume. Orice coloană nepotrivită este marcată ca Nemapată — alegeți un câmp sau lăsați-o ca Ignorat."
+
+#: 
+msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
+msgstr "Nu s-a putut analiza fișierul CSV. Verificați că este un fișier valid cu valori separate prin virgulă și un rând antet."
+
+#: 
+msgid "Custom field columns you have not configured are ignored — nothing is created on the fly."
+msgstr "Coloanele de câmpuri personalizate neconfigura sunt ignorate — nimic nu este creat automat."
+
+#: 
+msgid "Custom fields and properties are supported"
+msgstr "Câmpurile personalizate și proprietățile sunt acceptate"
+
+#: 
+msgid "Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a month and day with no year."
+msgstr "Câmpurile de dată acceptă YYYY-MM-DD sau M/D/YYYY. Utilizați 0000-MM-DD sau M/D pentru lună și zi fără an."
+
+#: 
+msgid "Each row is one person. People in the same family share a FamilyID. Leave columns blank when you have no value for them."
+msgstr "Fiecare rând reprezintă o persoană. Persoanele din aceeași familie au același FamilyID. Lăsați coloanele goale când nu aveți valori."
+
+#: 
+msgid "Event Timing"
+msgstr "Programare eveniment"
+
+#: 
+msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
+msgstr "Fiecare apariție corespunzătoare între Data de început și Data de final va obține propriul eveniment la aceeași oră."
+
+#: 
+msgid "External calendar sharing is disabled"
+msgstr "Partajarea calendarului extern este dezactivată"
+
+#: 
+msgid "Failed to load event editor. Please refresh and try again."
+msgstr "Nu s-a putut încărca editorul de evenimente. Reîmprospătați pagina și încercați din nou."
+
+#: 
+msgid "Family Custom"
+msgstr "Personalizat familie"
+
+#: 
+msgid "Family Property"
+msgstr "Proprietate familie"
+
+#: 
+msgid "Fields"
+msgstr "Câmpuri"
+
+#: 
+msgid "Go to home"
+msgstr "Mergeți la pagina principală"
+
+#: 
+msgid "Hide advanced options"
+msgstr "Ascundeți opțiunile avansate"
+
+#: 
+msgid "How the CSV Import Works"
+msgstr "Cum funcționează importul CSV"
+
+#: 
+msgid "Imported from CSV"
+msgstr "Importat din CSV"
+
+#: 
+msgid "Invalid date format"
+msgstr "Format dată invalid"
+
+#: 
+msgid "Loading event editor…"
+msgstr "Se încarcă editorul de evenimente…"
+
+#: 
+msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
+msgstr "Niciun calendar selectat — evenimentul va fi salvat, dar nu va apărea în nicio vizualizare a calendarului."
+
+#: 
+msgid "No group"
+msgstr "Niciun grup"
+
+#: 
+msgid "Not pinned to any calendar"
+msgstr "Neataşat niciunui calendar"
+
+#: 
+msgid "Optional — sermon notes, materials, or other details copied to every generated event."
+msgstr "Opțional — note de predică, materiale sau alte detalii copiate la fiecare eveniment generat."
+
+#: 
+msgid "Person / Family"
+msgstr "Persoană / Familie"
+
+#: 
+msgid "Person Custom"
+msgstr "Personalizat persoană"
+
+#: 
+msgid "Person Property"
+msgstr "Proprietate persoană"
+
+#: 
+msgid "Show more options"
+msgstr "Afișați mai multe opțiuni"
+
+#: 
+msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
+msgstr "Linkul calendarului este incomplet. Verificați adresa URL cu persoana care v-a trimis-o."
+
+#: 
+msgid "The church administrator has not enabled external calendar sharing. Please contact them if you believe this is in error."
+msgstr "Administratorul bisericii nu a activat partajarea calendarului extern. Contactați-l dacă credeți că este o eroare."
+
+#: 
+msgid "The start or end date in the link could not be understood. Try the base calendar link without date parameters."
+msgstr "Data de început sau de final din link nu a putut fi înțeleasă. Încercați linkul de bază al calendarului fără parametri de dată."
+
+#: 
+msgid "The template already contains every column you can map — the core Person/Family fields plus each custom field and property your site defines."
+msgstr "Șablonul conține deja toate coloanele pe care le puteți mapa — câmpurile de bază Persoană/Familie plus fiecare câmp personalizat și proprietate definite de site-ul dvs."
+
+#: 
+msgid "The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically."
+msgstr "Șablonul include deja o coloană pentru fiecare câmp personalizat Persoană/Familie și pentru fiecare proprietate definită. Dacă adăugați coloane manual, utilizați exact numele câmpului personalizat sau al proprietății ca antet de coloană și importatorul îl va potrivi automat."
+
+#: 
+msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
+msgstr "Linkul calendarului este invalid sau a fost revocat. Solicitați bisericii un link actual."
+
+#: 
+msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
+msgstr "Asociază acest eveniment cu o clasă sau lista unui minister — utilizat de fluxul de înregistrare la Kiosk."
+
+#: 
+msgid "Upload a CSV to create families and people in bulk."
+msgstr "Încărcați un CSV pentru a crea familii și persoane în masă."
+
+#: 
+msgid "Volunteer-entered headcounts, broken down by category."
+msgstr "Numărători introduse de voluntari, defalcate pe categorii."
+
+#: 
+msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
+msgstr "CSV-ul dvs. are nume de coloane duplicate. Redenumiți coloanele duplicate (de ex. adăugați \"(2)\" la a doua) și încărcați din nou."
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "Sigur doriți să ștergeți permanent acest articol donat?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "Sigur doriți să ștergeți permanent acest număr de paletă?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Șterge articol donat"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Șterge număr de paletă"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Token de securitate invalid. Vă rugăm să încercați din nou."
 

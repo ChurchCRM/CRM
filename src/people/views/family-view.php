@@ -522,7 +522,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                     </li>
                     <!-- MailChimp status - populated by JavaScript if plugin is active -->
                     <li class="d-none mb-1" id="mailchimp-status-container">
-                        <i class="fa-regular fa-paper-plane me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= gettext("Mailchimp") ?>:
+                        <i class="fa-regular fa-paper-plane me-2 text-muted" style="width: 1rem; text-align: center;"></i>Mailchimp:
                         <span id="mailchimp-status">... <?= gettext("loading")?> ...</span>
                     </li>
                 </ul>

@@ -622,6 +622,80 @@ git push origin fix/issue-1234-description --force-with-lease
 
 ---
 
+## Dependabot Workflow <!-- learned: 2026-04-21 -->
+
+The repo uses grouped Dependabot updates configured in [.github/dependabot.yml](../../../.github/dependabot.yml). When reviewing or maintaining these PRs:
+
+### Pinning away from a specific version
+
+When a published release has regressions we don't want, add a scoped `ignore:` under the npm `updates` entry — **never** rely on `@dependabot ignore` PR comments alone. Comments live in Dependabot's internal state and can be lost when the config is rewritten; the YAML is durable.
+
+```yaml
+# .github/dependabot.yml
+- package-ecosystem: "npm"
+  directory: "/"
+  open-pull-requests-limit: 5
+  ignore:
+    # Pinned: quill 2.0.3 has regressions we don't want to pick up.
+    # Remove this entry when a newer 2.x release addresses them.
+    - dependency-name: "quill"
+      versions: ["2.0.3"]    # blocks just 2.0.3 — 2.0.4+ still proposed
+```
+
+Variants: `update-types: ["version-update:semver-patch"]` to block *all* patches of a package, or a bare `dependency-name` with no `versions`/`update-types` to pin the package entirely.
+
+### Detecting deprecated `@types/*` stubs
+
+Many libraries (e.g. `dompurify@3.x`) now ship their own `.d.ts` via the `types`/`exports` fields in their own `package.json`, which makes the `@types/*` companion obsolete. `npm` marks these stubs deprecated in `package-lock.json`:
+
+```jsonc
+"node_modules/@types/dompurify": {
+  "deprecated": "This is a stub types definition. dompurify provides its own type definitions, so you do not need this installed."
+}
+```
+
+**Action on a Dependabot `@types/*` bump:** before merging, grep `package-lock.json` for `"deprecated":` on that entry. If it's a stub, open a follow-up PR that **removes** the stub from `package.json` instead of bumping it. Verify by checking the real package's `node_modules/<pkg>/package.json` for a `types` or `exports.types` field.
+
+### Concurrent Dependabot PR conflicts
+
+Dependabot groups touch overlapping regions of `package.json` / `package-lock.json`, so once one group PR merges, sibling PRs (or follow-up branches cut from the pre-merge master) hit merge conflicts on those two files. Recipe to resolve:
+
+```bash
+git checkout <your-branch>
+git fetch origin master
+git merge origin/master                                 # conflict in package.json / package-lock.json
+git checkout --theirs package.json package-lock.json    # take master's full state
+# Re-apply your surgical edit (e.g. delete a single line)
+npm install --no-audit --no-fund                        # regenerate lockfile cleanly
+git add package.json package-lock.json
+git commit                                              # merge commit
+```
+
+Do not hand-edit the lockfile merge markers — `npm install` is the source of truth. Running `npm run lint` + `npm run build:webpack` after resolution catches any missed constraint conflicts.
+
+### Reviewing grouped `npm-minor-patch` PRs
+
+Grouped bumps lump patch and minor updates into one PR. Scan-review approach:
+
+1. **Sort by risk:** patches ≤ dev-deps < minors < majors. Dev-only deps (in `devDependencies` or used only in `locale/scripts/`, `scripts/`, etc.) are low-risk regardless of semver — they never ship to end users.
+2. **Call out every minor explicitly:** the group label says "minor-patch" but a single minor bump in a UI library (e.g. `tom-select`) can change DOM behavior. Link its release notes in the review.
+3. **Cross-check against MEMORY.md Critical Patterns:** many libraries here have workarounds documented (TomSelect `value=""` bug, `marked.parse()` XSS, etc.). A bump may invalidate or re-validate those workarounds.
+4. **Green CI is the gate:** the UI Cypress suites (`test-root ui`, `test-subdir ui`) exercise TomSelect, DataTables, and calendar-event-editor directly. A fully-green run is sufficient sign-off for grouped patch/minor bumps.
+
+### Dependabot PR state fields
+
+```bash
+gh pr view <n> --json mergeable,mergeStateStatus
+```
+
+- `mergeable: MERGEABLE` — **git** conflicts absent, says nothing about CI.
+- `mergeStateStatus: UNSTABLE` — failing or pending required checks. A re-run may clear it.
+- `mergeStateStatus: CLEAN` — all required checks pass; safe to merge.
+
+Dependabot force-pushes its own branches frequently (rebase/re-resolve). If `git merge origin/master` against a Dependabot branch reports "Already up to date" when you expected conflicts, Dependabot likely just rebased it under you.
+
+---
+
 ## Related Skills
 
 - [Routing & Project Architecture](./routing-architecture.md) - Where to put code
@@ -630,4 +704,4 @@ git push origin fix/issue-1234-description --force-with-lease
 
 ---
 
-Last updated: March 3, 2026
+Last updated: April 21, 2026

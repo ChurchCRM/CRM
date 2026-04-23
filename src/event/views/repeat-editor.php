@@ -73,38 +73,60 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
                     <div class="mb-3">
                         <label class="form-label fw-bold"><?= gettext('Event Description') ?></label>
-                        <?= getQuillEditorContainer('EventDesc', 'EventDescInput', '', 'form-control', '80px') ?>
+                        <?= getQuillEditorContainer('EventDesc', 'EventDescInput', '', '', 'compact') ?>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold"><?= gettext('Additional Information') ?></label>
+                        <small class="form-text text-secondary d-block mb-2">
+                            <?= gettext('Optional — sermon notes, materials, or other details copied to every generated event.') ?>
+                        </small>
+                        <?= getQuillEditorContainer('EventText', 'EventTextInput', '', '', 'compact') ?>
                     </div>
                 </div>
             </div>
 
-            <!-- Time Settings -->
+            <!-- Event Timing — times + date range grouped together because
+                 they describe *when* each generated event occurs. The
+                 recurrence pattern (what days/months to pick) is separate. -->
             <div class="card mb-3">
                 <div class="card-header bg-light">
-                    <h5 class="mb-0"><?= gettext('Time') ?></h5>
+                    <h5 class="mb-0"><?= gettext('Event Timing') ?></h5>
                 </div>
                 <div class="card-body">
-                    <div class="row">
+                    <div class="row g-3">
                         <div class="col-md-3">
-                            <div class="mb-3">
-                                <label for="StartTime" class="form-label fw-bold">
-                                    <span class="text-danger">*</span> <?= gettext('Start Time') ?>
-                                </label>
-                                <input type="time" name="StartTime" id="StartTime" class="form-control"
-                                       value="<?= InputUtils::escapeAttribute($defStartTime) ?>" required>
-                            </div>
+                            <label for="StartTime" class="form-label fw-bold">
+                                <span class="text-danger">*</span> <?= gettext('Start Time') ?>
+                            </label>
+                            <input type="time" name="StartTime" id="StartTime" class="form-control"
+                                   value="<?= InputUtils::escapeAttribute($defStartTime) ?>" required>
                         </div>
                         <div class="col-md-3">
-                            <div class="mb-3">
-                                <label for="EndTime" class="form-label fw-bold">
-                                    <span class="text-danger">*</span> <?= gettext('End Time') ?>
-                                </label>
-                                <input type="time" name="EndTime" id="EndTime" class="form-control"
-                                       value="<?= InputUtils::escapeAttribute($defEndTime) ?>" required>
-                            </div>
+                            <label for="EndTime" class="form-label fw-bold">
+                                <span class="text-danger">*</span> <?= gettext('End Time') ?>
+                            </label>
+                            <input type="time" name="EndTime" id="EndTime" class="form-control"
+                                   value="<?= InputUtils::escapeAttribute($defEndTime) ?>" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="RangeStart" class="form-label fw-bold">
+                                <span class="text-danger">*</span> <?= gettext('From') ?>
+                            </label>
+                            <input type="date" name="RangeStart" id="RangeStart" class="form-control"
+                                   value="<?= InputUtils::escapeAttribute($rangeStart) ?>" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="RangeEnd" class="form-label fw-bold">
+                                <span class="text-danger">*</span> <?= gettext('To') ?>
+                            </label>
+                            <input type="date" name="RangeEnd" id="RangeEnd" class="form-control"
+                                   value="<?= InputUtils::escapeAttribute($rangeEnd) ?>" required>
                         </div>
                     </div>
-                    <small class="form-text text-secondary"><?= gettext('The same start and end time will be used for all generated events.') ?></small>
+                    <small class="form-text text-secondary mt-2 d-block">
+                        <?= gettext('Every matching occurrence between From and To will get its own event at the same Start/End time.') ?>
+                    </small>
                 </div>
             </div>
 
@@ -156,34 +178,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                    pattern="\d{2}-\d{2}" title="<?= gettext('Format: MM-DD (e.g. 04-12 for April 12)') ?>"
                                 <?= ($defRecurType !== 'yearly') ? 'disabled' : '' ?>>
                             <small class="text-secondary ms-2"><?= gettext('Format: MM-DD (e.g. 04-12 for April 12)') ?></small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Date Range -->
-            <div class="card mb-3">
-                <div class="card-header bg-light">
-                    <h5 class="mb-0"><span class="text-danger">*</span> <?= gettext('Date Range') ?></h5>
-                </div>
-                <div class="card-body">
-                    <p class="text-secondary mb-3">
-                        <?= gettext('Events will be created for every matching occurrence within this date range.') ?>
-                    </p>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="mb-3">
-                                <label for="RangeStart" class="form-label fw-bold"><?= gettext('From') ?></label>
-                                <input type="date" name="RangeStart" id="RangeStart" class="form-control"
-                                       value="<?= InputUtils::escapeAttribute($rangeStart) ?>" required>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="mb-3">
-                                <label for="RangeEnd" class="form-label fw-bold"><?= gettext('To') ?></label>
-                                <input type="date" name="RangeEnd" id="RangeEnd" class="form-control"
-                                       value="<?= InputUtils::escapeAttribute($rangeEnd) ?>" required>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -265,6 +259,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     (function() {
         <?= getQuillEditorInitScript('EventDesc', 'EventDescInput', gettext("Enter event description..."), false) ?>
+    })();
+
+    (function() {
+        <?= getQuillEditorInitScript('EventText', 'EventTextInput', gettext("Enter sermon notes or event text..."), false) ?>
     })();
 </script>
 
