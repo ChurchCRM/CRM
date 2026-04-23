@@ -95,8 +95,9 @@ describe("Person Group Interactions", () => {
             cy.get(".bootbox").should("be.visible");
             cy.get(".bootbox").should("contain", "remove");
 
-            // Cancel the removal
+            // Cancel the removal and confirm the bootbox dismisses cleanly
             cy.get(".bootbox .btn-ghost-secondary").click();
+            cy.get(".bootbox").should("not.exist");
         });
     });
 
@@ -122,10 +123,11 @@ describe("Person Group Interactions", () => {
             // TomSelect should be initialized with groups loaded
             cy.get("#personGroupModal .ts-control").should("be.visible");
 
-            // Close modal
+            // Close modal and verify it is no longer visible
             cy.get("#personGroupModal [data-bs-dismiss='modal']")
                 .first()
                 .click();
+            cy.get("#personGroupModal").should("not.be.visible");
         });
     });
 });

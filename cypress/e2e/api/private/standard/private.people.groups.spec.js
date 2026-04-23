@@ -95,7 +95,6 @@ describe("API Private Group Operations", () => {
         });
 
         it("Add new role to group", () => {
-            // Test adding a new role to a group
             const roleNameUnique = "TestRole" + Date.now();
             cy.makePrivateAdminAPICall(
                 "POST",
@@ -103,14 +102,10 @@ describe("API Private Group Operations", () => {
                 {
                     roleName: roleNameUnique,
                 },
-                [200, 500]
+                200
             ).then((resp) => {
-                // These endpoints are known to return 500 due to middleware ordering issue
-                // We're testing that the endpoint exists and can be called
-                if (resp.status === 200) {
-                    expect(resp.body).to.exist;
-                    expect(resp.body).to.have.property("newRole");
-                }
+                expect(resp.body).to.exist;
+                expect(resp.body).to.have.property("newRole");
             });
         });
 
@@ -140,32 +135,29 @@ describe("API Private Group Operations", () => {
         });
 
         it("Delete group role", () => {
-            // Test deleting a role from a group
-            // Using a non-existent role ID to avoid deleting important roles
+            // Using a non-existent role ID; endpoint should respond with 200
+            // (idempotent delete) or 404 (not found) — never a server error.
             cy.makePrivateAdminAPICall(
                 "DELETE",
                 `/api/groups/${groupID}/roles/999`,
                 null,
-                [200, 400, 422, 500]
+                [200, 404]
             );
         });
     });
 
     describe("Group Properties Operations", () => {
         it("Toggle group-specific properties status", () => {
-            // Test setting group-specific property status
             cy.makePrivateAdminAPICall(
                 "POST",
                 `/api/groups/${groupID}/setGroupSpecificPropertyStatus`,
                 {
                     GroupSpecificPropertyStatus: true,
                 },
-                [200, 500]
+                200
             ).then((resp) => {
-                if (resp.status === 200) {
-                    expect(resp.body).to.exist;
-                    expect(resp.body).to.have.property("status");
-                }
+                expect(resp.body).to.exist;
+                expect(resp.body).to.have.property("status");
             });
         });
 
