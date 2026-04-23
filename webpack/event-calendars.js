@@ -52,6 +52,13 @@ window.moveEventModal = {
   handleEventDrop: (info) => {
     const event = info.event;
     const revertFunc = info.revert;
+    // Fixed-date events (birthdays, anniversaries, holidays) have startEditable=false
+    // via per-event `editable: false`. Guard against any path that still fires the
+    // drop handler on them so the move-confirmation modal never appears. See #4835.
+    if (!event.startEditable) {
+      revertFunc();
+      return;
+    }
     const originalStart = info.oldEvent.start ? info.oldEvent.start.toLocaleString() : info.oldEvent.startStr;
     const newStart = event.start ? event.start.toLocaleString() : event.startStr;
     window.moveEventModal.revertFunc = revertFunc;
@@ -67,6 +74,10 @@ window.moveEventModal = {
   handleEventResize: (info) => {
     const event = info.event;
     const revertFunc = info.revert;
+    if (!event.durationEditable) {
+      revertFunc();
+      return;
+    }
     const originalEnd = info.oldEvent.end
       ? info.oldEvent.end.toLocaleString()
       : info.oldEvent.endStr || info.oldEvent.startStr;
