@@ -18,14 +18,12 @@
   ],
   "es": [
     "Azure",
-    "Error:",
     "Malayalam - India",
     "Manual",
     "Material"
   ],
   "es-AR": [
     "Azure",
-    "Error:",
     "Host",
     "Malayalam - India",
     "Manual",
@@ -33,7 +31,6 @@
   ],
   "es-CO": [
     "Azure",
-    "Error:",
     "Host",
     "Malayalam - India",
     "Manual",
@@ -41,7 +38,6 @@
   ],
   "es-MX": [
     "Azure",
-    "Error:",
     "Host",
     "Malayalam - India",
     "Manual",
@@ -49,7 +45,6 @@
   ],
   "es-SV": [
     "Azure",
-    "Error:",
     "Host",
     "Malayalam - India",
     "Manual",
@@ -121,7 +116,6 @@
     "Bulgaria (България)",
     "Burkina Faso",
     "Burundi (Uburundi)",
-    "CSV",
     "Cambodia (កម្ពុជា)",
     "Cameroon (Cameroun)",
     "Canada",
@@ -158,7 +152,6 @@
     "Cyprus (Κύπρος)",
     "Czech Republic (Česká republika)",
     "Côte d’Ivoire",
-    "DSN",
     "Dashboard",
     "Database",
     "Database:",
@@ -188,7 +181,6 @@
     "Error",
     "Error Log",
     "Error Reporting",
-    "Error:",
     "Estonia (Eesti)",
     "Ethiopia",
     "FY %s",
@@ -275,10 +267,8 @@
     "Macau (澳門)",
     "Macedonia (FYROM) (Македонија)",
     "Madagascar (Madagasikara)",
-    "MailChimp",
     "MailChimp API Key",
     "MailChimp Dashboard",
-    "Mailchimp",
     "Malawi",
     "Malayalam - India",
     "Malaysia",
@@ -332,7 +322,6 @@
     "Online",
     "Orange",
     "PDF",
-    "PDF/CSV",
     "PHP Version",
     "PHPMailer SMTP session",
     "Paddle",
@@ -394,7 +383,6 @@
     "Slovakia (Slovensko)",
     "Slovenia (Slovenija)",
     "Social Media",
-    "Software",
     "Solomon Islands",
     "Somalia (Soomaaliya)",
     "South Africa",
@@ -404,7 +392,6 @@
     "Spain (España)",
     "Sri Lanka (ශ්‍රී ලංකාව)",
     "St. Vincent & Grenadines",
-    "Street Atlas USA",
     "Subject",
     "Sudan (‫السودان‬‎)",
     "Suriname",
@@ -463,8 +450,6 @@
     "Zimbabwe",
     "Zip Code",
     "manifest.",
-    "name@example.com",
-    "options",
     "page",
     "s",
     "user:",
@@ -482,12 +467,10 @@
     "Format",
     "Indigo",
     "Minimum",
-    "Options",
     "Orange",
     "Parents",
     "Photo",
     "Test",
-    "options",
     "page"
   ],
   "hi": [],
@@ -561,12 +544,10 @@
     "Email BCC"
   ],
   "zh-CN": [
-    "Azure",
-    "name@example.com"
+    "Azure"
   ],
   "zh-TW": [
-    "Azure",
-    "name@example.com"
+    "Azure"
   ],
   "hu": [
     "Azure",
@@ -592,19 +573,13 @@
     "-----------------------------------------------------------------------------------------------------------------------------------------------",
     "2FA",
     "Azure",
-    "CSV",
     "Charset",
     "Collation",
-    "DSN",
     "HTML URL",
     "ICS URL",
     "ID",
-    "MailChimp",
-    "Mailchimp",
     "OpenLP API v2 Source",
     "PDF",
-    "PDF/CSV",
-    "Street Atlas USA",
     "URL",
     "manifest."
   ],

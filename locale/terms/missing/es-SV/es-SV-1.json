@@ -1,9 +1,4 @@
 {
-  "Error:": "Error:",
-  "Host": "Host",
-  "Are you sure you want to permanently delete this donated item?": "¿Está seguro de que desea eliminar permanentemente este artículo donado?",
-  "Are you sure you want to permanently delete this paddle number?": "¿Está seguro de que desea eliminar permanentemente este número de paleta?",
-  "Delete Donated Item": "Eliminar artículo donado",
-  "Delete Paddle Number": "Eliminar número de paleta",
-  "Invalid security token. Please try again.": "Token de seguridad no válido. Por favor, inténtelo de nuevo."
+  "Error:": "",
+  "Host": ""
 }

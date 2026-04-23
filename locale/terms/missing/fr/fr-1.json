@@ -1,9 +1,3 @@
 {
-  "Test": "Test",
-  "page.": "page.",
-  "Are you sure you want to permanently delete this donated item?": "Êtes-vous sûr de vouloir supprimer définitivement cet article offert ?",
-  "Are you sure you want to permanently delete this paddle number?": "Êtes-vous sûr de vouloir supprimer définitivement ce numéro de palette ?",
-  "Delete Donated Item": "Supprimer l'article offert",
-  "Delete Paddle Number": "Supprimer le numéro de palette",
-  "Invalid security token. Please try again.": "Jeton de sécurité invalide. Veuillez réessayer."
+  "page.": ""
 }
