@@ -26,9 +26,11 @@ $linkBack = $isPostAction
     )
     : RedirectUtils::getLinkBackFromRequest('v2/dashboard');
 
-// Security: User must have Add or Edit Records permission to use this form in those manners
-// Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
+// Security: require both DeleteRecords (general) and Finance (pledges are a
+// finance-scoped resource). Matches DonatedItemDelete / PaddleNumDelete so a
+// user with DeleteRecords but no Finance can't delete pledges via direct URL.
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled(), 'DeleteRecords');
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
 
 // Is this the second pass?
 if (isset($_POST['Delete'])) {
@@ -36,6 +38,14 @@ if (isset($_POST['Delete'])) {
     if (!CSRFUtils::verifyRequest($_POST, 'pledge_delete')) {
         http_response_code(403);
         exit(gettext('Invalid security token. Please try again.'));
+    }
+
+    // Reject empty GroupKey so a submission without an ID can't accidentally
+    // match rows (plg_GroupKey is non-null; filtering on '' would usually be
+    // a no-op but it's still the wrong thing to do — surface it as 400).
+    if ($sGroupKey === '') {
+        http_response_code(400);
+        exit(gettext('Missing pledge identifier.'));
     }
 
     PledgeQuery::create()->filterByGroupKey($sGroupKey)->delete();

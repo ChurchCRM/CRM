@@ -37,8 +37,23 @@ describe("Events Dashboard (MVC)", () => {
     it("should have quick action buttons", () => {
         cy.visit("event/dashboard");
         cy.contains("Add Event").should("exist");
+        cy.contains("Add Recurring Event").should("exist");
         cy.contains("Check-in").should("exist");
         cy.contains("Calendar").should("exist");
+    });
+
+    /**
+     * Issue #8658 comment: users asked for a button to create a Recurring
+     * Event alongside the "Add Event" button — previously only surfaced in
+     * the empty-state message, so volunteers with any existing events
+     * couldn't find it. Asserts the button exists and points at the
+     * repeat-editor route.
+     */
+    it("Add Recurring Event button links to /event/repeat-editor", () => {
+        cy.visit("event/dashboard");
+        cy.contains("a", "Add Recurring Event")
+            .should("have.attr", "href")
+            .and("match", /\/event\/repeat-editor$/);
     });
 
     it("should have event type and year filters", () => {

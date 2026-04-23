@@ -91,6 +91,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <a href="<?= $sRootPath ?>/event/editor" class="btn btn-primary btn-sm">
               <i class="ti ti-plus me-1"></i><?= gettext('Add Event') ?>
             </a>
+            <a href="<?= $sRootPath ?>/event/repeat-editor" class="btn btn-outline-primary btn-sm">
+              <i class="ti ti-repeat me-1"></i><?= gettext('Add Recurring Event') ?>
+            </a>
           <?php endif; ?>
           <a href="<?= $sRootPath ?>/event/checkin" class="btn btn-outline-secondary btn-sm">
             <i class="ti ti-user-check me-1"></i><?= gettext('Check-in') ?>

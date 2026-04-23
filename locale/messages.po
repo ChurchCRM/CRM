@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-22 01:10+0000\n"
+"POT-Creation-Date: 2026-04-22 21:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,19 +21,7 @@ msgstr ""
 msgid "                                        Signature ________________________________________________________________"
 msgstr ""
 
-msgid " Bold"
-msgstr ""
-
-msgid " Bold Italic"
-msgstr ""
-
 msgid " Deposit #"
-msgstr ""
-
-msgid " Italic"
-msgstr ""
-
-msgid " Notification Email Error"
 msgstr ""
 
 msgid " characters long"
@@ -161,9 +149,6 @@ msgstr ""
 msgid "(PHP default)"
 msgstr ""
 
-msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
-msgstr ""
-
 msgid "(none)"
 msgstr ""
 
@@ -266,9 +251,6 @@ msgid "A family represents a household. It holds the shared address and home pho
 msgstr ""
 
 msgid "A household. Stores the shared mailing address and home phone."
-msgstr ""
-
-msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
 msgstr ""
 
 msgid "A map will appear here once coordinates are saved — either auto-detected from your address or entered manually above."
@@ -470,6 +452,9 @@ msgstr ""
 msgid "Add Records"
 msgstr ""
 
+msgid "Add Recurring Event"
+msgstr ""
+
 msgid "Add Results to Cart"
 msgstr ""
 
@@ -516,9 +501,6 @@ msgid "Add any additional notes about this deposit"
 msgstr ""
 
 msgid "Add cart items to a family"
-msgstr ""
-
-msgid "Add categories on the Event Type page"
 msgstr ""
 
 msgid "Add custom external links to the navigation menu."
@@ -1002,6 +984,12 @@ msgstr ""
 msgid "Are you sure you want to move"
 msgstr ""
 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr ""
+
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr ""
+
 msgid "Are you sure you want to permanently delete this pledge record?"
 msgstr ""
 
@@ -1099,9 +1087,6 @@ msgstr ""
 msgid "Attendance Counts"
 msgstr ""
 
-msgid "Attendance Notes"
-msgstr ""
-
 msgid "Attendance record deleted."
 msgstr ""
 
@@ -1155,13 +1140,7 @@ msgstr ""
 msgid "Auto-Backup Interval"
 msgstr ""
 
-msgid "Auto-TLS"
-msgstr ""
-
 msgid "Auto-mapped"
-msgstr ""
-
-msgid "Auto-totalled from counts at right"
 msgstr ""
 
 msgid "Automatically backup your ChurchCRM database to external cloud storage via WebDAV."
@@ -1171,6 +1150,9 @@ msgid "Automatically detect coordinates using address"
 msgstr ""
 
 msgid "Automatically enable SMTP encryption if offered by the relaying server."
+msgstr ""
+
+msgid "Available after the event is saved."
 msgstr ""
 
 msgid "Avg Click Rate"
@@ -1567,9 +1549,6 @@ msgstr ""
 msgid "CRM Members Not Subscribed"
 msgstr ""
 
-msgid "CSV"
-msgstr ""
-
 msgid "CSV Column"
 msgstr ""
 
@@ -1595,9 +1574,6 @@ msgid "Calendar Settings"
 msgstr ""
 
 msgid "Calendar Year"
-msgstr ""
-
-msgid "Calendar access token not found"
 msgstr ""
 
 msgid "Calendar not found"
@@ -1939,9 +1915,6 @@ msgid "Church Checking Account Number"
 msgstr ""
 
 msgid "Church Email address is not set — the test email has nowhere to go."
-msgstr ""
-
-msgid "Church Event Editor"
 msgstr ""
 
 msgid "Church Greeter"
@@ -2525,9 +2498,6 @@ msgstr ""
 msgid "Create a manual backup at least once a week, or enable the External Backup plugin for automatic WebDAV backups on a schedule."
 msgstr ""
 
-msgid "Create a new Event"
-msgstr ""
-
 msgid "Create a new event type with recurrence and attendance settings"
 msgstr ""
 
@@ -2716,9 +2686,6 @@ msgstr ""
 msgid "Côte d’Ivoire"
 msgstr ""
 
-msgid "DSN"
-msgstr ""
-
 msgid "Dark"
 msgstr ""
 
@@ -2793,9 +2760,6 @@ msgid "Date End"
 msgstr ""
 
 msgid "Date Entered"
-msgstr ""
-
-msgid "Date Range"
 msgstr ""
 
 msgid "Date Start"
@@ -2928,6 +2892,9 @@ msgstr ""
 msgid "Delete Confirmation"
 msgstr ""
 
+msgid "Delete Donated Item"
+msgstr ""
+
 msgid "Delete Event"
 msgstr ""
 
@@ -2944,6 +2911,9 @@ msgid "Delete Family Record ONLY"
 msgstr ""
 
 msgid "Delete Group"
+msgstr ""
+
+msgid "Delete Paddle Number"
 msgstr ""
 
 msgid "Delete Person"
@@ -3437,9 +3407,6 @@ msgstr ""
 msgid "Editing"
 msgstr ""
 
-msgid "Editing Event"
-msgstr ""
-
 #. Context: countries
 msgid "Egypt (‫مصر‬‎)"
 msgstr ""
@@ -3709,9 +3676,6 @@ msgstr ""
 msgid "Enter event description..."
 msgstr ""
 
-msgid "Enter event title..."
-msgstr ""
-
 msgid "Enter family name"
 msgstr ""
 
@@ -3874,6 +3838,9 @@ msgstr ""
 msgid "Event Template"
 msgstr ""
 
+msgid "Event Timing"
+msgstr ""
+
 msgid "Event Title"
 msgstr ""
 
@@ -3890,9 +3857,6 @@ msgid "Event already exists. Redirecting to check-in..."
 msgstr ""
 
 msgid "Event created. Redirecting to check-in..."
-msgstr ""
-
-msgid "Event end date/time must be on or after the start date/time."
 msgstr ""
 
 msgid "Event not found"
@@ -3931,7 +3895,7 @@ msgstr ""
 msgid "Events Today"
 msgstr ""
 
-msgid "Events will be created for every matching occurrence within this date range."
+msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
 msgstr ""
 
 msgid "Every month on the"
@@ -4048,7 +4012,7 @@ msgstr ""
 msgid "External Calendar API Disabled"
 msgstr ""
 
-msgid "External Calendar API is disabled"
+msgid "External calendar sharing is disabled"
 msgstr ""
 
 msgid "Extra Students"
@@ -4191,6 +4155,9 @@ msgid "Failed to load calendar data. Please try again."
 msgstr ""
 
 msgid "Failed to load cart status."
+msgstr ""
+
+msgid "Failed to load event editor. Please refresh and try again."
 msgstr ""
 
 msgid "Failed to load event. Please try again."
@@ -4973,6 +4940,9 @@ msgstr ""
 msgid "Go to Login"
 msgstr ""
 
+msgid "Go to home"
+msgstr ""
+
 msgid "Go to homepage"
 msgstr ""
 
@@ -5226,9 +5196,6 @@ msgstr ""
 msgid "Here"
 msgstr ""
 
-msgid "Hide Advanced Options"
-msgstr ""
-
 msgid "Hide Age"
 msgstr ""
 
@@ -5236,6 +5203,9 @@ msgid "Hide Latitude/Longitude"
 msgstr ""
 
 msgid "Hide Person Address"
+msgstr ""
+
+msgid "Hide advanced options"
 msgstr ""
 
 #. Context: locales
@@ -5641,13 +5611,10 @@ msgstr ""
 msgid "Invalid date for %s — expected YYYY-MM-DD"
 msgstr ""
 
+msgid "Invalid date format"
+msgstr ""
+
 msgid "Invalid date format for rangeStart or rangeEnd"
-msgstr ""
-
-msgid "Invalid date format in start parameter"
-msgstr ""
-
-msgid "Invalid date format."
 msgstr ""
 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -5684,6 +5651,9 @@ msgid "Invalid person ID"
 msgstr ""
 
 msgid "Invalid request data"
+msgstr ""
+
+msgid "Invalid security token. Please try again."
 msgstr ""
 
 msgid "Invalid server URL format."
@@ -6098,6 +6068,9 @@ msgstr ""
 msgid "Loading"
 msgstr ""
 
+msgid "Loading event editor…"
+msgstr ""
+
 msgid "Loading log file..."
 msgstr ""
 
@@ -6186,9 +6159,6 @@ msgstr ""
 msgid "Madagascar (Madagasikara)"
 msgstr ""
 
-msgid "MailChimp"
-msgstr ""
-
 msgid "MailChimp API Key"
 msgstr ""
 
@@ -6206,9 +6176,6 @@ msgid "MailChimp is not configured"
 msgstr ""
 
 msgid "MailChimp, backups, and more"
-msgstr ""
-
-msgid "Mailchimp"
 msgstr ""
 
 msgid "Mailchimp Connected"
@@ -7019,13 +6986,13 @@ msgstr ""
 msgid "No anniversaries in the past or next 7 days"
 msgstr ""
 
-msgid "No attendance count categories defined for this event type yet."
-msgstr ""
-
 msgid "No backups recorded"
 msgstr ""
 
 msgid "No birthdays in the past or next 7 days"
+msgstr ""
+
+msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
 msgstr ""
 
 msgid "No cell phone on file"
@@ -7081,6 +7048,9 @@ msgid "No format"
 msgstr ""
 
 msgid "No funds have been added yet"
+msgstr ""
+
+msgid "No group"
 msgstr ""
 
 msgid "No group assignments yet."
@@ -7250,6 +7220,9 @@ msgstr ""
 msgid "Not in CRM"
 msgstr ""
 
+msgid "Not pinned to any calendar"
+msgstr ""
+
 msgid "Not ready yet?"
 msgstr ""
 
@@ -7312,9 +7285,6 @@ msgid "Number too large. Must be between -2147483648 and 2147483647"
 msgstr ""
 
 msgid "OK"
-msgstr ""
-
-msgid "OPcache"
 msgstr ""
 
 msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
@@ -7451,9 +7421,6 @@ msgstr ""
 msgid "Option not found"
 msgstr ""
 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr ""
-
 msgid "Optional - only required if OpenLP authentication is enabled"
 msgstr ""
 
@@ -7466,13 +7433,13 @@ msgstr ""
 msgid "Optional detailed description of this property type"
 msgstr ""
 
-msgid "Optional notes about attendance..."
-msgstr ""
-
 msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
 msgstr ""
 
 msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr ""
+
+msgid "Optional — sermon notes, materials, or other details copied to every generated event."
 msgstr ""
 
 msgid "Optional. URL for your church website."
@@ -7540,14 +7507,8 @@ msgstr ""
 msgid "PDF successfully emailed to family members."
 msgstr ""
 
-msgid "PDF/CSV"
-msgstr ""
-
 #, php-format
 msgid "PDFs successfully emailed to %s families."
-msgstr ""
-
-msgid "PHP"
 msgstr ""
 
 msgid "PHP & Server Requirements"
@@ -8236,9 +8197,6 @@ msgstr ""
 msgid "Portuguese - Portugal"
 msgstr ""
 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr ""
-
 msgid "Pre-flight"
 msgstr ""
 
@@ -8640,9 +8598,6 @@ msgstr ""
 msgid "Required fields"
 msgstr ""
 
-msgid "Required for Kiosk"
-msgstr ""
-
 msgid "Required permission"
 msgstr ""
 
@@ -8713,9 +8668,6 @@ msgid "Return to Dashboard"
 msgstr ""
 
 msgid "Return to Event Types"
-msgstr ""
-
-msgid "Return to Events"
 msgstr ""
 
 msgid "Return to Families"
@@ -8824,13 +8776,7 @@ msgstr ""
 msgid "S"
 msgstr ""
 
-msgid "SAPI"
-msgstr ""
-
 msgid "SE"
-msgstr ""
-
-msgid "SHA1 Hash"
 msgstr ""
 
 msgid "SMS Integration"
@@ -9177,9 +9123,6 @@ msgstr ""
 msgid "Select none"
 msgstr ""
 
-msgid "Select start and end date/time."
-msgstr ""
-
 #. Context: queryparameters_qrp
 msgid "Select the desired event"
 msgstr ""
@@ -9192,9 +9135,6 @@ msgid "Select the group to which you would like to add your cart"
 msgstr ""
 
 msgid "Select the type of record this property applies to"
-msgstr ""
-
-msgid "Select your event type"
 msgstr ""
 
 msgid "Select your options above and click a backup button."
@@ -9257,9 +9197,6 @@ msgstr ""
 
 #. Context: countries
 msgid "Serbia (Србија)"
-msgstr ""
-
-msgid "Sermon / Event Text"
 msgstr ""
 
 msgid "Server"
@@ -9396,9 +9333,6 @@ msgstr ""
 msgid "Show Family Head of House Names"
 msgstr ""
 
-msgid "Show More Options"
-msgstr ""
-
 msgid "Show Neighbors"
 msgstr ""
 
@@ -9406,6 +9340,9 @@ msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr ""
 
 msgid "Show in"
+msgstr ""
+
+msgid "Show more options"
 msgstr ""
 
 msgid "Show neighbors with these classifications"
@@ -9665,9 +9602,6 @@ msgid "Street"
 msgstr ""
 
 msgid "Street Address"
-msgstr ""
-
-msgid "Street Atlas USA"
 msgstr ""
 
 msgid "Street address"
@@ -9988,6 +9922,12 @@ msgstr ""
 msgid "The birthday month for which you would like records returned."
 msgstr ""
 
+msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
+msgstr ""
+
+msgid "The church administrator has not enabled external calendar sharing. Please contact them if you believe this is in error."
+msgstr ""
+
 msgid "The database has been cleared."
 msgstr ""
 
@@ -10068,10 +10008,10 @@ msgstr ""
 msgid "The role is successfully assigned."
 msgstr ""
 
-msgid "The same start and end time will be used for all generated events."
+msgid "The selected file exceeds this servers maximum upload size of"
 msgstr ""
 
-msgid "The selected file exceeds this servers maximum upload size of"
+msgid "The start or end date in the link could not be understood. Try the base calendar link without date parameters."
 msgstr ""
 
 #. Context: queryparameters_qrp
@@ -10097,9 +10037,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr ""
 
 msgid "There was a problem retrieving the requested object"
-msgstr ""
-
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
 msgstr ""
 
 msgid "These are the family role numbers designated as child"
@@ -10142,6 +10079,9 @@ msgid "This action cannot be undone."
 msgstr ""
 
 msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
+msgstr ""
+
+msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
 msgstr ""
 
 msgid "This event is inactive."
@@ -10238,6 +10178,9 @@ msgid "This will replace any previously enrolled 2FA methods"
 msgstr ""
 
 msgid "Thursdays"
+msgstr ""
+
+msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
 msgstr ""
 
 msgid "Time"
@@ -11141,6 +11084,9 @@ msgstr ""
 msgid "Volunteer opportunities"
 msgstr ""
 
+msgid "Volunteer-entered headcounts, broken down by category."
+msgstr ""
+
 #. Context: query_qry
 msgid "Volunteers"
 msgstr ""
@@ -11312,16 +11258,10 @@ msgstr ""
 msgid "What are Orphaned Files?"
 msgstr ""
 
-msgid "What are these for?"
-msgstr ""
-
 msgid "What does this find?"
 msgstr ""
 
 msgid "What happens next?"
-msgstr ""
-
-msgid "What is this for?"
 msgstr ""
 
 msgid "What went wrong? What did you expect to happen?"
@@ -11715,9 +11655,6 @@ msgstr ""
 msgid "data for member"
 msgstr ""
 
-msgid "date.timezone"
-msgstr ""
-
 msgid "day"
 msgstr ""
 
@@ -11859,9 +11796,6 @@ msgstr ""
 msgid "mos"
 msgstr ""
 
-msgid "name@example.com"
-msgstr ""
-
 msgid "needs to be picked up from"
 msgstr ""
 
@@ -11910,7 +11844,7 @@ msgstr ""
 msgid "payment(s)?"
 msgstr ""
 
-msgid "payments(s)?"
+msgid "payments?"
 msgstr ""
 
 msgid "people added to cart"
@@ -11939,13 +11873,13 @@ msgstr ""
 msgid "properties"
 msgstr ""
 
+msgid "record(s) successfully added to selected Group."
+msgstr ""
+
+msgid "record(s) successfully deleted from the selected Group."
+msgstr ""
+
 msgid "records"
-msgstr ""
-
-msgid "records(s) successfully added to selected Group."
-msgstr ""
-
-msgid "records(s) successfully deleted from the selected Group."
 msgstr ""
 
 msgid "s"
