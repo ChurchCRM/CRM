@@ -39,9 +39,18 @@ describe("Timeline filter chips", () => {
         });
 
         it("should hide non-note timeline events by default", () => {
-            // Every visible event under the timeline must be tagged as notes.
-            cy.get("#family-timeline-container .timeline-event:visible").each(($el) => {
-                expect($el.attr("data-timeline-category")).to.equal("notes");
+            // All non-notes events must be hidden after filter init.
+            // Uses .then() to avoid a cy.get() timeout when the family has no notes events.
+            cy.get("#family-timeline-container").then(($container) => {
+                $container.find(".timeline-event").each(function () {
+                    const cat = Cypress.$(this).attr("data-timeline-category");
+                    if (cat !== "notes") {
+                        expect(
+                            Cypress.$(this).is(":visible"),
+                            `event[data-timeline-category="${cat}"] should be hidden`,
+                        ).to.be.false;
+                    }
+                });
             });
         });
 
@@ -72,23 +81,13 @@ describe("Timeline filter chips", () => {
     });
 
     describe("Person profile", () => {
-        // `function()` (not arrow) so `this.skip()` works when the DB has
-        // no people rows to visit.
-        it("should default to Notes-only on the person timeline", function () {
-            // PersonView uses the same .timeline-container class so the
-            // shared init runs on the #timeline tab-pane.
-            cy.request("/api/persons/latest").then((response) => {
-                const people = (response.body && response.body.people) || [];
-                const person = people[0];
-                if (!person) {
-                    this.skip();
-                    return;
-                }
-                const personId = person.id || person.Id;
-                cy.visit(`PersonView.php?PersonID=${personId}`);
-                cy.get("#timeline.timeline-container .timeline-filters").should("exist");
-                cy.get('#timeline .timeline-filter-chip[data-filter="notes"]').should("have.class", "btn-primary");
-            });
+        it("should default to Notes-only on the person timeline", () => {
+            // PersonView uses the same .timeline-container class so the shared
+            // init runs on the #timeline tab-pane. PersonID=2 is seeded in demo
+            // data and always has at least one system timeline event (postInsert hook).
+            cy.visit("PersonView.php?PersonID=2");
+            cy.get("#timeline.timeline-container .timeline-filters").should("exist");
+            cy.get('#timeline .timeline-filter-chip[data-filter="notes"]').should("have.class", "btn-primary");
         });
     });
 });
