@@ -12,7 +12,7 @@ export function initRefreshCoordinatesBtn() {
   const refreshBtn = document.getElementById("refresh-coordinates-btn");
   if (!refreshBtn) return;
 
-  const familyId = parseInt(refreshBtn.dataset.familyId || "0");
+  const familyId = parseInt(refreshBtn.dataset.familyId || "0", 10);
   if (familyId <= 0) return;
 
   const t = window.i18next ? i18next.t.bind(i18next) : (s) => s;
