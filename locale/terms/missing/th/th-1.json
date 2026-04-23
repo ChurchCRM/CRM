@@ -1,13 +1,13 @@
 {
-  "App": "",
-  "Charset": "",
-  "Collation": "",
-  "Database": "",
-  "Hit Rate": "",
-  "Host": "",
-  "Locale": "",
-  "Server": "",
-  "Session Handler": "",
-  "Test": "",
-  "Timeout": ""
+  "App": "App",
+  "Charset": "Charset",
+  "Collation": "Collation",
+  "Database": "Database",
+  "Hit Rate": "Hit Rate",
+  "Host": "Host",
+  "Locale": "Locale",
+  "Server": "Server",
+  "Session Handler": "Session Handler",
+  "Test": "Test",
+  "Timeout": "Timeout"
 }
