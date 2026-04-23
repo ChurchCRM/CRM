@@ -26,8 +26,7 @@ describe('05 - Post-Reset Verification', () => {
     };
 
     // Helper to manually login, handling forced password-change redirect after a DB reset.
-    // Duplicated from 04-system-reset.spec.js — Cypress specs cannot share helpers directly
-    // without a shared module, and this helper is tightly coupled to the new-system flow.
+    // Kept local to this spec because it is tightly coupled to the new-system reset flow.
     const manualLogin = () => {
         cy.clearCookies();
         cy.clearLocalStorage();
@@ -76,9 +75,7 @@ describe('05 - Post-Reset Verification', () => {
             // mismatch occurs and the db-upgrade page is never shown.
             cy.visit('/');
 
-            cy.url({ timeout: 30000 }).should('satisfy', (url) => {
-                return url.includes('/session/begin') || url.includes('/login');
-            });
+            cy.url({ timeout: 30000 }).should('include', '/session/begin');
         });
 
         it('should login with default credentials after reset', () => {
@@ -137,14 +134,12 @@ describe('05 - Post-Reset Verification', () => {
             cy.request({
                 method: 'GET',
                 url: '/api/groups/',
-                timeout: 30000,
-                failOnStatusCode: false
+                timeout: 30000
             }).then((response) => {
-                if (response.status === 200) {
-                    const groups = response.body;
-                    expect(groups.length).to.equal(0);
-                    cy.log('No groups found after reset (as expected)');
-                }
+                expect(response.status).to.equal(200);
+                const groups = response.body;
+                expect(groups.length).to.equal(0);
+                cy.log('No groups found after reset (as expected)');
             });
         });
     });
