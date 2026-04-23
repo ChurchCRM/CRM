@@ -4,6 +4,7 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\PaddlenumPnQuery;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -36,10 +37,10 @@ if (isset($_POST['Delete'])) {
     }
 
     if ($iPaddleNumID > 0 && $iFundRaiserID > 0) {
-        // No Propel-generated model exists for paddlenum_pn; raw SQL is safe
-        // here because both IDs are hard-cast to int before interpolation.
-        $sSQL = 'DELETE FROM paddlenum_pn WHERE pn_id=' . $iPaddleNumID . ' AND pn_fr_id=' . $iFundRaiserID;
-        RunQuery($sSQL);
+        PaddlenumPnQuery::create()
+            ->filterByPnId($iPaddleNumID)
+            ->filterByPnFrId($iFundRaiserID)
+            ->delete();
     }
     RedirectUtils::redirect($linkBack);
 } elseif (isset($_POST['Cancel'])) {
