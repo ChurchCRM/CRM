@@ -135,14 +135,24 @@ describe("API Private Group Operations", () => {
         });
 
         it("Delete group role", () => {
-            // Using a non-existent role ID; endpoint should respond with 200
-            // (idempotent delete) or 404 (not found) — never a server error.
+            // Create a temporary role first so we have a real ID to delete.
+            // Deleting a non-existent role ID against a single-role group throws
+            // "only group" guard → 500. Create-then-delete is the correct pattern.
+            const tempRoleName = "TempRoleToDelete" + Date.now();
             cy.makePrivateAdminAPICall(
-                "DELETE",
-                `/api/groups/${groupID}/roles/999`,
-                null,
-                [200, 404]
-            );
+                "POST",
+                `/api/groups/${groupID}/roles`,
+                { roleName: tempRoleName },
+                200
+            ).then((resp) => {
+                const roleId = resp.body.newRole.roleID;
+                cy.makePrivateAdminAPICall(
+                    "DELETE",
+                    `/api/groups/${groupID}/roles/${roleId}`,
+                    null,
+                    200
+                );
+            });
         });
     });
 
