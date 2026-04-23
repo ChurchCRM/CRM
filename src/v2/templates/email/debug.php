@@ -57,7 +57,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="flex-grow-1">
                     <h4 class="mb-1"><i class="fa fa-circle-xmark text-danger me-2"></i><?= gettext('Test email failed to send') ?></h4>
                     <?php if (!empty($sendResult['error'])): ?>
-                        <p class="mb-2"><strong><?= gettext('Error:') ?></strong> <?= InputUtils::escapeHTML((string) $sendResult['error']) ?></p>
+                        <p class="mb-2"><strong><?= gettext('Error') ?>:</strong> <?= InputUtils::escapeHTML((string) $sendResult['error']) ?></p>
                     <?php endif; ?>
                     <p class="text-muted mb-0"><?= gettext('Review the SMTP debug log below for the handshake details, then adjust your settings.') ?></p>
                 </div>

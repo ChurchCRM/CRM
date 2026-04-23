@@ -14785,10 +14785,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "活動已建立，正在跳轉到簽到頁面…"
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "活動結束日期/時間必須等於或晚於開始日期/時間。"
-
-#: 
 msgid "Event title is required."
 msgstr "活動標題為必填項。"
 
@@ -14815,10 +14811,6 @@ msgstr "活動類型未配置重複規則"
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "活動類型未配置有效的每月重複日期"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "將在此日期範圍內為每個符合的場次建立活動。"
 
 #: 
 msgid "Every month on the"
@@ -14869,10 +14861,6 @@ msgid "Group Roster"
 msgstr "部門名冊"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "隱藏進階選項"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "主日學、活動與簽到台如何協同工作"
 
@@ -14883,10 +14871,6 @@ msgstr "%s 的日期無效，期望格式為 YYYY-MM-DD"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "rangeStart 或 rangeEnd 的日期格式無效"
-
-#: 
-msgid "Invalid date format."
-msgstr "日期格式無效。"
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -14941,10 +14925,6 @@ msgid "No active events found."
 msgstr "未找到進行中的活動。"
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "此活動類型尚未定義出席計數分類。"
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "尚無人簽到此活動。"
 
@@ -14985,10 +14965,6 @@ msgid "Please select a person to check in."
 msgstr "請選擇要簽到的人員。"
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "根據此活動類型預填 — 對於重複類型，日期為此類型最後一次活動後的下一場次，時間與類型預設開始時間一致。"
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "範圍結束日期必須等於或晚於範圍開始日期。"
 
@@ -15017,10 +14993,6 @@ msgid "Recommended"
 msgstr "推薦"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "簽到台必填"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "重置將永久刪除："
 
@@ -15039,14 +15011,6 @@ msgstr "儲存此分類名稱的更改"
 #: 
 msgid "Select an event type…"
 msgstr "選擇活動類型…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "選擇開始和結束日期/時間。"
-
-#: 
-msgid "Show More Options"
-msgstr "顯示更多選項"
 
 #: 
 msgid "Skip"
@@ -15089,16 +15053,8 @@ msgid "The Events module is disabled"
 msgstr "活動模組已停用"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "所有產生的活動將使用相同的開始和結束時間。"
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "今日沒有安排活動"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "這些是人數統計分類 — 義工在活動結束後填寫，以便儀表板按類型細分出席情況（例如會眾與訪客的數量）。這與簽到頁面上的個人簽到是獨立的。"
 
 #: 
 msgid "This event is inactive."
@@ -15153,16 +15109,8 @@ msgid "View Event"
 msgstr "查看活動"
 
 #: 
-msgid "What are these for?"
-msgstr "這些有什麼用？"
-
-#: 
 msgid "What does this find?"
 msgstr "這個功能查找什麼？"
-
-#: 
-msgid "What is this for?"
-msgstr "這有什麼用？"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15549,14 +15497,6 @@ msgid "Set up Email"
 msgstr "設定電子郵件"
 
 #: 
-msgid "Test SMTP Email"
-msgstr "測試 SMTP 電子郵件"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "這是一封 ChurchCRM 測試電子郵件，確認您的 SMTP 設定正常運作。"
-
-#: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."
 msgstr "無法複製到剪貼簿。請手動複製驗證碼。"
 
@@ -15571,10 +15511,6 @@ msgstr "改用恢復碼"
 #: 
 msgid "Use authenticator app instead"
 msgstr "改用驗證應用程式"
-
-#: 
-msgid " Notification Email Error"
-msgstr " 通知電子郵件錯誤"
 
 #: 
 msgid "%d modules loaded"
@@ -15599,10 +15535,6 @@ msgstr "所有檢查通過"
 #: 
 msgid "App"
 msgstr "應用程式"
-
-#: 
-msgid "Auto-TLS"
-msgstr "自動 TLS"
 
 #: 
 msgid "Browser time zone differs:"

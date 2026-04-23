@@ -14571,10 +14571,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "Evento creado. Redirigiendo al registro de entrada..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "La fecha/hora de fin del evento debe ser igual o posterior a la fecha/hora de inicio."
-
-#: 
 msgid "Event title is required."
 msgstr "El título del evento es obligatorio."
 
@@ -14601,10 +14597,6 @@ msgstr "El tipo de evento no tiene patrón de recurrencia configurado"
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "El tipo de evento no tiene un día del mes válido configurado para recurrencia mensual"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "Se crearán eventos para cada ocurrencia coincidente dentro de este rango de fechas."
 
 #: 
 msgid "Every month on the"
@@ -14655,10 +14647,6 @@ msgid "Group Roster"
 msgstr "Lista del Ministerio"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "Ocultar opciones avanzadas"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Cómo encajan la Escuela Dominical + Eventos + Quioscos"
 
@@ -14669,10 +14657,6 @@ msgstr "Fecha inválida para %s — se esperaba AAAA-MM-DD"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Formato de fecha inválido para rangeStart o rangeEnd"
-
-#: 
-msgid "Invalid date format."
-msgstr "Formato de fecha inválido."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -14727,10 +14711,6 @@ msgid "No active events found."
 msgstr "No se encontraron eventos activos."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "Aún no se han definido categorías de conteo de asistencia para este tipo de evento."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "Aún nadie ha registrado entrada a este evento."
 
@@ -14771,10 +14751,6 @@ msgid "Please select a person to check in."
 msgstr "Por favor, seleccione una persona para registrar su entrada."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "Prellenado según este tipo de evento — para tipos recurrentes, la fecha es la próxima ocurrencia después del último evento de este tipo, y la hora coincide con la hora de inicio predeterminada del tipo."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "La fecha de fin del rango debe ser igual o posterior a la fecha de inicio del rango."
 
@@ -14803,10 +14779,6 @@ msgid "Recommended"
 msgstr "Recomendado"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "Requerido para el Quiosco"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "El reinicio eliminará permanentemente:"
 
@@ -14825,14 +14797,6 @@ msgstr "Guardar cambios en este nombre de categoría"
 #: 
 msgid "Select an event type…"
 msgstr "Seleccione un tipo de evento…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "Seleccione la fecha/hora de inicio y fin."
-
-#: 
-msgid "Show More Options"
-msgstr "Mostrar más opciones"
 
 #: 
 msgid "Skip"
@@ -14875,16 +14839,8 @@ msgid "The Events module is disabled"
 msgstr "El módulo de Eventos está deshabilitado"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "La misma hora de inicio y fin se usará para todos los eventos generados."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "No hay eventos programados para hoy"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "Estas son categorías de conteo — los voluntarios las completan después del evento para que el panel pueda desglosar la asistencia (p. ej. cuántos miembros vs. visitantes). Son independientes de los registros individuales en la página de Registro de entrada."
 
 #: 
 msgid "This event is inactive."
@@ -14939,16 +14895,8 @@ msgid "View Event"
 msgstr "Ver evento"
 
 #: 
-msgid "What are these for?"
-msgstr "¿Para qué son estas?"
-
-#: 
 msgid "What does this find?"
 msgstr "¿Qué encuentra esto?"
-
-#: 
-msgid "What is this for?"
-msgstr "¿Para qué es esto?"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15335,14 +15283,6 @@ msgid "Set up Email"
 msgstr "Configurar correo electrónico"
 
 #: 
-msgid "Test SMTP Email"
-msgstr "Probar correo SMTP"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "Este es un correo de prueba de ChurchCRM que confirma que su configuración SMTP está funcionando."
-
-#: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."
 msgstr "No se pudo copiar al portapapeles. Copie los códigos manualmente."
 
@@ -15357,10 +15297,6 @@ msgstr "Usar un código de recuperación en su lugar"
 #: 
 msgid "Use authenticator app instead"
 msgstr "Usar la aplicación de autenticación en su lugar"
-
-#: 
-msgid " Notification Email Error"
-msgstr "Error de notificación por correo electrónico"
 
 #: 
 msgid "%d modules loaded"
@@ -15461,6 +15397,10 @@ msgstr "Corregir configuración"
 #: 
 msgid "Hit Rate"
 msgstr "Tasa de aciertos"
+
+#: 
+msgid "Host"
+msgstr "Host"
 
 #: 
 msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
@@ -15817,4 +15757,24 @@ msgstr "Recuentos de asistentes ingresados por voluntarios, desglosados por cate
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "Su CSV tiene nombres de columna duplicados. Cambie el nombre de las columnas duplicadas (p. ej. agregue \"(2)\" a la segunda) y vuelva a cargar."
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "¿Está seguro de que desea eliminar permanentemente este artículo donado?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "¿Está seguro de que desea eliminar permanentemente este número de paleta?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Eliminar artículo donado"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Eliminar número de paleta"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Token de seguridad no válido. Por favor, inténtelo de nuevo."
 
