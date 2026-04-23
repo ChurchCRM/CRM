@@ -15297,6 +15297,10 @@ msgid "No active event assignment"
 msgstr "Keine aktive Veranstaltungszuweisung"
 
 #: 
+msgid "Online"
+msgstr "Online"
+
+#: 
 msgid "Opens a 30-second window for devices to register at:"
 msgstr "Öffnet ein 30-Sekunden-Fenster für Geräte zur Registrierung bei:"
 
@@ -15453,6 +15457,10 @@ msgid "All checks passing"
 msgstr "Alle Prüfungen bestanden"
 
 #: 
+msgid "App"
+msgstr "App"
+
+#: 
 msgid "Browser time zone differs:"
 msgstr "Browser-Zeitzone weicht ab:"
 
@@ -15531,6 +15539,10 @@ msgstr "Einstellungen korrigieren"
 #: 
 msgid "Hit Rate"
 msgstr "Trefferrate"
+
+#: 
+msgid "Host"
+msgstr "Host"
 
 #: 
 msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
@@ -15649,6 +15661,10 @@ msgid "Send a test message to verify your SMTP configuration"
 msgstr "Senden Sie eine Testnachricht, um Ihre SMTP-Konfiguration zu überprüfen"
 
 #: 
+msgid "Server"
+msgstr "Server"
+
+#: 
 msgid "Server Version"
 msgstr "Server-Version"
 
@@ -15667,6 +15683,10 @@ msgstr "Einstellungen gültig"
 #: 
 msgid "Subject"
 msgstr "Betreff"
+
+#: 
+msgid "Test"
+msgstr "Test"
 
 #: 
 msgid "Test email accepted by SMTP server"
@@ -15879,4 +15899,24 @@ msgstr "Von Freiwilligen eingegebene Personenzählungen, aufgeschlüsselt nach K
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "Ihre CSV-Datei enthält doppelte Spaltennamen. Benennen Sie die doppelten Spalten um (z. B. fügen Sie \"(2)\" zum zweiten hinzu) und laden Sie sie erneut hoch."
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "Sind Sie sicher, dass Sie diesen gespendeten Artikel dauerhaft löschen möchten?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "Sind Sie sicher, dass Sie diese Auktionsnummer dauerhaft löschen möchten?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Gespendeten Artikel löschen"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Auktionsnummer löschen"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Ungültiges Sicherheitstoken. Bitte versuchen Sie es erneut."
 

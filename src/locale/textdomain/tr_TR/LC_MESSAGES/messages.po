@@ -15340,3 +15340,487 @@ msgstr "Kurtarma kodu kullan"
 msgid "Use authenticator app instead"
 msgstr "Kimlik doğrulama uygulaması kullan"
 
+#: 
+msgid "%d modules loaded"
+msgstr "%d modül yüklendi"
+
+#: 
+msgid "(PHP default)"
+msgstr "(PHP varsayılanı)"
+
+#: 
+msgid "(none)"
+msgstr "(yok)"
+
+#: 
+msgid "(not set)"
+msgstr "(ayarlanmadı)"
+
+#: 
+msgid "All checks passing"
+msgstr "Tüm kontroller başarılı"
+
+#: 
+msgid "App"
+msgstr "Uygulama"
+
+#: 
+msgid "Browser time zone differs:"
+msgstr "Tarayıcı saat dilimi farklı:"
+
+#: 
+msgid "Calendar time zone:"
+msgstr "Takvim saat dilimi:"
+
+#: 
+msgid "Cannot send test email"
+msgstr "Test e-postası gönderilemiyor"
+
+#: 
+msgid "Charset"
+msgstr "Karakter Kümesi"
+
+#: 
+msgid "Church Email address is not set — the test email has nowhere to go."
+msgstr "Kilise E-posta adresi ayarlanmamış — test e-postasının gidecek bir yeri yok."
+
+#: 
+msgid "Church email — configured on the"
+msgstr "Kilise e-postası — şurada yapılandırıldı:"
+
+#: 
+msgid "ChurchCRM Test Email"
+msgstr "ChurchCRM Test E-postası"
+
+#: 
+msgid "Collation"
+msgstr "Karşılaştırma (Collation)"
+
+#: 
+msgid "Connection"
+msgstr "Bağlantı"
+
+#: 
+msgid "Database"
+msgstr "Veritabanı"
+
+#: 
+msgid "Delivery"
+msgstr "Teslimat"
+
+#: 
+msgid "Disk (Images Root)"
+msgstr "Disk (Görseller Kök Dizini)"
+
+#: 
+msgid "Display Errors"
+msgstr "Hataları Görüntüle"
+
+#: 
+msgid "Email Debug"
+msgstr "E-posta Hata Ayıklama"
+
+#: 
+msgid "Environment"
+msgstr "Ortam"
+
+#: 
+msgid "Error Log"
+msgstr "Hata Günlüğü"
+
+#: 
+msgid "Error Reporting"
+msgstr "Hata Raporlama"
+
+#: 
+msgid "Error:"
+msgstr "Hata:"
+
+#: 
+msgid "Fix Settings"
+msgstr "Ayarları Düzelt"
+
+#: 
+msgid "Hit Rate"
+msgstr "İsabet Oranı"
+
+#: 
+msgid "Host"
+msgstr "Sunucu Adresi"
+
+#: 
+msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
+msgstr "Mesaj birkaç dakika içinde ulaşmazsa, spam/önemsiz klasörünü ve aşağıdaki SMTP hata ayıklama günlüğünü kontrol edin."
+
+#: 
+msgid "If you can read this message in your inbox, your SMTP configuration is working correctly."
+msgstr "Bu mesajı gelen kutunuzda okuyabiliyorsanız, SMTP yapılandırmanız doğru çalışıyor demektir."
+
+#: 
+msgid "Incomplete"
+msgstr "Tamamlanmamış"
+
+#: 
+msgid "Installed on Server"
+msgstr "Sunucuda Yüklü"
+
+#: 
+msgid "Integrity"
+msgstr "Bütünlük"
+
+#: 
+msgid "Issues detected"
+msgstr "Sorunlar tespit edildi"
+
+#: 
+msgid "Loaded php.ini"
+msgstr "Yüklü php.ini"
+
+#: 
+msgid "Locale"
+msgstr "Yerel Ayar"
+
+#: 
+msgid "Max Execution Time"
+msgstr "Maksimum Yürütme Süresi"
+
+#: 
+msgid "Max POST Size"
+msgstr "Maksimum POST Boyutu"
+
+#: 
+msgid "Max Upload Size"
+msgstr "Maksimum Yükleme Boyutu"
+
+#: 
+msgid "Memory"
+msgstr "Bellek"
+
+#: 
+msgid "Memory Limit"
+msgstr "Bellek Limiti"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
+msgstr "Şimdi teslimatı doğrulamak için alıcının gelen kutusunu kontrol edin. Şu konuyu arayın:"
+
+#: 
+msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
+msgstr "OPcache etkin değil. Etkinleştirmek, PHP sayfa yüklemelerini hızlandırmanın düşük riskli bir yoludur."
+
+#: 
+msgid "Off"
+msgstr "Kapalı"
+
+#: 
+msgid "On"
+msgstr "Açık"
+
+#: 
+msgid "Open the email debug tester"
+msgstr "E-posta hata ayıklama test aracını aç"
+
+#: 
+msgid "PHP Version"
+msgstr "PHP Sürümü"
+
+#: 
+msgid "PHPMailer SMTP session"
+msgstr "PHPMailer SMTP oturumu"
+
+#: 
+msgid "Prerequisites"
+msgstr "Ön Koşullar"
+
+#: 
+msgid "Review the SMTP debug log below for the handshake details, then adjust your settings."
+msgstr "El sıkışma ayrıntıları için aşağıdaki SMTP hata ayıklama günlüğünü inceleyin, ardından ayarlarınızı düzenleyin."
+
+#: 
+msgid "SMTP Configuration"
+msgstr "SMTP Yapılandırması"
+
+#: 
+msgid "SMTP Debug Log"
+msgstr "SMTP Hata Ayıklama Günlüğü"
+
+#: 
+msgid "SMTP Host is not configured."
+msgstr "SMTP Sunucu adresi yapılandırılmamış."
+
+#: 
+msgid "SMTP configuration test — if this arrived, your setup works."
+msgstr "SMTP yapılandırma testi — bu mesaj ulaştıysa, kurulumunuz çalışıyor demektir."
+
+#: 
+msgid "Schema Version"
+msgstr "Şema Sürümü"
+
+#: 
+msgid "Send Again"
+msgstr "Tekrar Gönder"
+
+#: 
+msgid "Send a test message to verify your SMTP configuration"
+msgstr "SMTP yapılandırmanızı doğrulamak için bir test mesajı gönderin"
+
+#: 
+msgid "Server"
+msgstr "Sunucu"
+
+#: 
+msgid "Server Version"
+msgstr "Sunucu Sürümü"
+
+#: 
+msgid "Session Handler"
+msgstr "Oturum İşleyici"
+
+#: 
+msgid "Session Save Path"
+msgstr "Oturum Kayıt Yolu"
+
+#: 
+msgid "Settings Valid"
+msgstr "Ayarlar Geçerli"
+
+#: 
+msgid "Subject"
+msgstr "Konu"
+
+#: 
+msgid "Test"
+msgstr "Test"
+
+#: 
+msgid "Test email accepted by SMTP server"
+msgstr "Test e-postası SMTP sunucusu tarafından kabul edildi"
+
+#: 
+msgid "Test email failed to send"
+msgstr "Test e-postası gönderilemedi"
+
+#: 
+msgid "This is a ChurchCRM test email."
+msgstr "Bu bir ChurchCRM test e-postasıdır."
+
+#: 
+msgid "Timeout"
+msgstr "Zaman Aşımı"
+
+#: 
+msgid "Timezone"
+msgstr "Saat Dilimi"
+
+#: 
+msgid "Unable to list web server modules (non-Apache SAPI)."
+msgstr "Web sunucusu modülleri listelenemiyor (Apache olmayan SAPI)."
+
+#: 
+msgid "Update Settings"
+msgstr "Ayarları Güncelle"
+
+#: 
+msgid "View full photo"
+msgstr "Fotoğrafın tamamını görüntüle"
+
+#: 
+msgid "page."
+msgstr "sayfa."
+
+#: 
+msgid "user:"
+msgstr "kullanıcı:"
+
+#: 
+msgid "1. Download the template"
+msgstr "1. Şablonu indirin"
+
+#: 
+msgid "2. Fill in your data"
+msgstr "2. Verilerinizi doldurun"
+
+#: 
+msgid "3. Upload and map"
+msgstr "3. Yükleyin ve eşleştirin"
+
+#: 
+msgid "Add Recurring Event"
+msgstr "Tekrarlayan Etkinlik Ekle"
+
+#: 
+msgid "Available after the event is saved."
+msgstr "Etkinlik kaydedildikten sonra kullanılabilir."
+
+#: 
+msgid "Boolean properties/fields accept yes / no / true / false / 1 / 0."
+msgstr "Boolean özellikleri/alanları yes / no / true / false / 1 / 0 değerlerini kabul eder."
+
+#: 
+msgid "ChurchCRM auto-matches each column by name. Anything it cannot match is marked as Unmapped — pick a field or leave it as Ignore."
+msgstr "ChurchCRM her sütunu ada göre otomatik olarak eşleştirir. Eşleştiremediği her şey Eşleştirilmemiş olarak işaretlenir — bir alan seçin ya da Yoksay olarak bırakın."
+
+#: 
+msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
+msgstr "CSV dosyası ayrıştırılamadı. Geçerli bir başlık satırına sahip virgülle ayrılmış bir dosya olduğundan emin olun."
+
+#: 
+msgid "Custom field columns you have not configured are ignored — nothing is created on the fly."
+msgstr "Yapılandırmadığınız özel alan sütunları yoksayılır — hiçbir şey anlık olarak oluşturulmaz."
+
+#: 
+msgid "Custom fields and properties are supported"
+msgstr "Özel alanlar ve özellikler desteklenir"
+
+#: 
+msgid "Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a month and day with no year."
+msgstr "Tarih alanları YYYY-MM-DD veya M/D/YYYY biçimini kabul eder. Yıl olmadan ay ve gün için 0000-MM-DD veya M/D kullanın."
+
+#: 
+msgid "Each row is one person. People in the same family share a FamilyID. Leave columns blank when you have no value for them."
+msgstr "Her satır bir kişiyi temsil eder. Aynı aileye mensup kişiler aynı FamilyID'yi paylaşır. Değerinin olmadığı sütunları boş bırakın."
+
+#: 
+msgid "Event Timing"
+msgstr "Etkinlik Zamanlaması"
+
+#: 
+msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
+msgstr "Başlangıç ve Bitiş tarihleri arasındaki her eşleşen tekrar, aynı Başlangıç/Bitiş saatinde kendi etkinliğini oluşturur."
+
+#: 
+msgid "External calendar sharing is disabled"
+msgstr "Dış takvim paylaşımı devre dışı bırakıldı"
+
+#: 
+msgid "Failed to load event editor. Please refresh and try again."
+msgstr "Etkinlik düzenleyici yüklenemedi. Lütfen sayfayı yenileyip tekrar deneyin."
+
+#: 
+msgid "Family Custom"
+msgstr "Aile Özel"
+
+#: 
+msgid "Family Property"
+msgstr "Aile Özelliği"
+
+#: 
+msgid "Fields"
+msgstr "Alanlar"
+
+#: 
+msgid "Go to home"
+msgstr "Ana sayfaya git"
+
+#: 
+msgid "Hide advanced options"
+msgstr "Gelişmiş seçenekleri gizle"
+
+#: 
+msgid "How the CSV Import Works"
+msgstr "CSV İçe Aktarma Nasıl Çalışır"
+
+#: 
+msgid "Imported from CSV"
+msgstr "CSV'den içe aktarıldı"
+
+#: 
+msgid "Invalid date format"
+msgstr "Geçersiz tarih biçimi"
+
+#: 
+msgid "Loading event editor…"
+msgstr "Etkinlik düzenleyici yükleniyor…"
+
+#: 
+msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
+msgstr "Takvim seçilmedi — bu etkinlik kaydedilecek ancak hiçbir takvim görünümünde gözükmeyecektir."
+
+#: 
+msgid "No group"
+msgstr "Hizmet yok"
+
+#: 
+msgid "Not pinned to any calendar"
+msgstr "Hiçbir takvime sabitlenmedi"
+
+#: 
+msgid "Optional — sermon notes, materials, or other details copied to every generated event."
+msgstr "İsteğe bağlı — vaaz notları, materyaller veya oluşturulan her etkinliğe kopyalanan diğer ayrıntılar."
+
+#: 
+msgid "Person / Family"
+msgstr "Kişi / Aile"
+
+#: 
+msgid "Person Custom"
+msgstr "Kişi Özel"
+
+#: 
+msgid "Person Property"
+msgstr "Kişi Özelliği"
+
+#: 
+msgid "Show more options"
+msgstr "Daha fazla seçenek göster"
+
+#: 
+msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
+msgstr "Takvim bağlantısı eksik. Lütfen URL'yi size gönderen kişiyle kontrol edin."
+
+#: 
+msgid "The church administrator has not enabled external calendar sharing. Please contact them if you believe this is in error."
+msgstr "Kilise yöneticisi dış takvim paylaşımını etkinleştirmemiştir. Bunun bir hata olduğunu düşünüyorsanız lütfen kendisiyle iletişime geçin."
+
+#: 
+msgid "The start or end date in the link could not be understood. Try the base calendar link without date parameters."
+msgstr "Bağlantıdaki başlangıç veya bitiş tarihi anlaşılamadı. Tarih parametreleri olmadan temel takvim bağlantısını deneyin."
+
+#: 
+msgid "The template already contains every column you can map — the core Person/Family fields plus each custom field and property your site defines."
+msgstr "Şablon, eşleştirebileceğiniz her sütunu zaten içerir — temel Kişi/Aile alanlarının yanı sıra sitenizin tanımladığı her özel alan ve özellik."
+
+#: 
+msgid "The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically."
+msgstr "Şablon zaten her Kişi/Aile özel alanı ve tanımladığınız her özellik için bir sütun içerir. Sütunları el ile eklerseniz, sütun başlığı olarak özel alanın veya özelliğin tam adını kullanmanız yeterlidir; içe aktarıcı bunu otomatik olarak eşleştirecektir."
+
+#: 
+msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
+msgstr "Bu takvim bağlantısı geçersiz veya iptal edilmiş. Güncel bir bağlantı için kiliseden talep edin."
+
+#: 
+msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
+msgstr "Bu etkinliği bir ders veya hizmet listesine bağlar — Kiosk giriş akışı tarafından kullanılır."
+
+#: 
+msgid "Upload a CSV to create families and people in bulk."
+msgstr "Aileleri ve kişileri toplu olarak oluşturmak için bir CSV yükleyin."
+
+#: 
+msgid "Volunteer-entered headcounts, broken down by category."
+msgstr "Gönüllü tarafından girilen kişi sayıları, kategoriye göre ayrılmıştır."
+
+#: 
+msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
+msgstr "CSV dosyanızda yinelenen sütun adları var. Yinelenen sütunları yeniden adlandırın (örneğin ikincisine \"(2)\" ekleyin) ve tekrar yükleyin."
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "Bu bağışlanan ürünü kalıcı olarak silmek istediğinizden emin misiniz?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "Bu paddle numarasını kalıcı olarak silmek istediğinizden emin misiniz?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Bağışlanan Ürünü Sil"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Paddle Numarasını Sil"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Geçersiz güvenlik tokenı. Lütfen tekrar deneyin."
+

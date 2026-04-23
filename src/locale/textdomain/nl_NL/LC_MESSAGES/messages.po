@@ -15162,6 +15162,10 @@ msgid "No active event assignment"
 msgstr "Geen actieve evenementtoewijzing"
 
 #: 
+msgid "Online"
+msgstr "Online"
+
+#: 
 msgid "Opens a 30-second window for devices to register at:"
 msgstr "Opent een venster van 30 seconden voor apparaten om te registreren bij:"
 
@@ -15318,6 +15322,10 @@ msgid "All checks passing"
 msgstr "Alle controles geslaagd"
 
 #: 
+msgid "App"
+msgstr "App"
+
+#: 
 msgid "Browser time zone differs:"
 msgstr "Browser tijdzone verschilt:"
 
@@ -15352,6 +15360,10 @@ msgstr "Sorteervolgorde"
 #: 
 msgid "Connection"
 msgstr "Verbinding"
+
+#: 
+msgid "Database"
+msgstr "Database"
 
 #: 
 msgid "Delivery"
@@ -15392,6 +15404,10 @@ msgstr "Instellingen herstellen"
 #: 
 msgid "Hit Rate"
 msgstr "Trefferverhouding"
+
+#: 
+msgid "Host"
+msgstr "Host"
 
 #: 
 msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
@@ -15510,6 +15526,10 @@ msgid "Send a test message to verify your SMTP configuration"
 msgstr "Stuur een testbericht om uw SMTP-configuratie te verifiëren"
 
 #: 
+msgid "Server"
+msgstr "Server"
+
+#: 
 msgid "Server Version"
 msgstr "Serverversie"
 
@@ -15528,6 +15548,10 @@ msgstr "Instellingen geldig"
 #: 
 msgid "Subject"
 msgstr "Onderwerp"
+
+#: 
+msgid "Test"
+msgstr "Test"
 
 #: 
 msgid "Test email accepted by SMTP server"
@@ -15740,4 +15764,24 @@ msgstr "Door vrijwilligers ingevoerde aantallen, uitgesplitst per categorie."
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "Uw CSV heeft dubbele kolomnamen. Hernoem de dubbele kolommen (bijv. voeg \"(2)\" toe aan de tweede) en upload opnieuw."
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "Weet u zeker dat u dit gedoneerde artikel permanent wilt verwijderen?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "Weet u zeker dat u dit bodnummer permanent wilt verwijderen?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Gedoneerd artikel verwijderen"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Bodnummer verwijderen"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Ongeldig beveiligingstoken. Probeer het opnieuw."
 

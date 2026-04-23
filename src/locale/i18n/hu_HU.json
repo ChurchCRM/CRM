@@ -3629,6 +3629,7 @@
     "Kiosk Devices": "Kioszkeszközök",
     "Kiosk device has not been accepted by an administrator": "A kioszkeszközt nem fogadta el rendszergazda",
     "No active event assignment": "Nincs aktív esemény-hozzárendelés",
+    "Online": "Online",
     "Opens a 30-second window for devices to register at:": "30 másodperces ablakot nyit az eszközök regisztrálásához:",
     "Pending": "Folyamatban",
     "Register New Device": "Új eszköz regisztrálása",
@@ -3778,5 +3779,10 @@
     "Ties this event to a class or ministry roster — used by the Kiosk check-in flow.": "Ezt az eseményt egy osztályhoz vagy szolgálati névsorhoz köti — a Kiosk bejelentkezési folyamatban használatos.",
     "Upload a CSV to create families and people in bulk.": "Töltsön fel egy CSV-t a családok és személyek tömeges létrehozásához.",
     "Volunteer-entered headcounts, broken down by category.": "Önkéntesek által bevitt fejszámok, kategóriánként lebontva.",
-    "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again.": "A CSV-ben ismétlődő oszlopnevek találhatók. Nevezze át az ismétlődő oszlopokat (pl. adja hozzá a \"(2)\" jelölést a másodikhoz) és töltse fel újra."
+    "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again.": "A CSV-ben ismétlődő oszlopnevek találhatók. Nevezze át az ismétlődő oszlopokat (pl. adja hozzá a \"(2)\" jelölést a másodikhoz) és töltse fel újra.",
+    "Are you sure you want to permanently delete this donated item?": "Biztosan véglegesen törölni szeretné ezt az adományozott tételt?",
+    "Are you sure you want to permanently delete this paddle number?": "Biztosan véglegesen törölni szeretné ezt a licitsorszámot?",
+    "Delete Donated Item": "Adományozott tétel törlése",
+    "Delete Paddle Number": "Licitsorszám törlése",
+    "Invalid security token. Please try again.": "Érvénytelen biztonsági token. Kérjük, próbálja újra."
 }
