@@ -88,15 +88,14 @@ describe('05 - System Post Reset', () => {
             cy.request({
                 method: 'GET', 
                 url: '/api/groups/',
-                timeout: 30000,
-                failOnStatusCode: false
+                timeout: 30000
             }).then((response) => {
-                if (response.status === 200) {
-                    // Groups API returns array directly
-                    const groups = response.body;
-                    expect(groups.length).to.equal(0);
-                    cy.log('No groups found after reset (as expected)');
-                }
+                expect(response.status).to.equal(200);
+
+                // Groups API returns array directly
+                const groups = response.body;
+                expect(groups.length).to.equal(0);
+                cy.log('No groups found after reset (as expected)');
             });
         });
     });
