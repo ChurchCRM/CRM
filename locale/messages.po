@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-22 03:49+0000\n"
+"POT-Creation-Date: 2026-04-22 21:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,19 +21,7 @@ msgstr ""
 msgid "                                        Signature ________________________________________________________________"
 msgstr ""
 
-msgid " Bold"
-msgstr ""
-
-msgid " Bold Italic"
-msgstr ""
-
 msgid " Deposit #"
-msgstr ""
-
-msgid " Italic"
-msgstr ""
-
-msgid " Notification Email Error"
 msgstr ""
 
 msgid " characters long"
@@ -996,6 +984,12 @@ msgstr ""
 msgid "Are you sure you want to move"
 msgstr ""
 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr ""
+
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr ""
+
 msgid "Are you sure you want to permanently delete this pledge record?"
 msgstr ""
 
@@ -1144,9 +1138,6 @@ msgid "Auto-Backup"
 msgstr ""
 
 msgid "Auto-Backup Interval"
-msgstr ""
-
-msgid "Auto-TLS"
 msgstr ""
 
 msgid "Auto-mapped"
@@ -1556,9 +1547,6 @@ msgid "CAUTION: Restoring a backup will completely erase the existing database a
 msgstr ""
 
 msgid "CRM Members Not Subscribed"
-msgstr ""
-
-msgid "CSV"
 msgstr ""
 
 msgid "CSV Column"
@@ -2698,9 +2686,6 @@ msgstr ""
 msgid "Côte d’Ivoire"
 msgstr ""
 
-msgid "DSN"
-msgstr ""
-
 msgid "Dark"
 msgstr ""
 
@@ -2907,6 +2892,9 @@ msgstr ""
 msgid "Delete Confirmation"
 msgstr ""
 
+msgid "Delete Donated Item"
+msgstr ""
+
 msgid "Delete Event"
 msgstr ""
 
@@ -2923,6 +2911,9 @@ msgid "Delete Family Record ONLY"
 msgstr ""
 
 msgid "Delete Group"
+msgstr ""
+
+msgid "Delete Paddle Number"
 msgstr ""
 
 msgid "Delete Person"
@@ -5662,6 +5653,9 @@ msgstr ""
 msgid "Invalid request data"
 msgstr ""
 
+msgid "Invalid security token. Please try again."
+msgstr ""
+
 msgid "Invalid server URL format."
 msgstr ""
 
@@ -6165,9 +6159,6 @@ msgstr ""
 msgid "Madagascar (Madagasikara)"
 msgstr ""
 
-msgid "MailChimp"
-msgstr ""
-
 msgid "MailChimp API Key"
 msgstr ""
 
@@ -6185,9 +6176,6 @@ msgid "MailChimp is not configured"
 msgstr ""
 
 msgid "MailChimp, backups, and more"
-msgstr ""
-
-msgid "Mailchimp"
 msgstr ""
 
 msgid "Mailchimp Connected"
@@ -7299,9 +7287,6 @@ msgstr ""
 msgid "OK"
 msgstr ""
 
-msgid "OPcache"
-msgstr ""
-
 msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
 msgstr ""
 
@@ -7522,14 +7507,8 @@ msgstr ""
 msgid "PDF successfully emailed to family members."
 msgstr ""
 
-msgid "PDF/CSV"
-msgstr ""
-
 #, php-format
 msgid "PDFs successfully emailed to %s families."
-msgstr ""
-
-msgid "PHP"
 msgstr ""
 
 msgid "PHP & Server Requirements"
@@ -8797,13 +8776,7 @@ msgstr ""
 msgid "S"
 msgstr ""
 
-msgid "SAPI"
-msgstr ""
-
 msgid "SE"
-msgstr ""
-
-msgid "SHA1 Hash"
 msgstr ""
 
 msgid "SMS Integration"
@@ -9629,9 +9602,6 @@ msgid "Street"
 msgstr ""
 
 msgid "Street Address"
-msgstr ""
-
-msgid "Street Atlas USA"
 msgstr ""
 
 msgid "Street address"
@@ -11685,9 +11655,6 @@ msgstr ""
 msgid "data for member"
 msgstr ""
 
-msgid "date.timezone"
-msgstr ""
-
 msgid "day"
 msgstr ""
 
@@ -11829,9 +11796,6 @@ msgstr ""
 msgid "mos"
 msgstr ""
 
-msgid "name@example.com"
-msgstr ""
-
 msgid "needs to be picked up from"
 msgstr ""
 
@@ -11880,7 +11844,7 @@ msgstr ""
 msgid "payment(s)?"
 msgstr ""
 
-msgid "payments(s)?"
+msgid "payments?"
 msgstr ""
 
 msgid "people added to cart"
@@ -11909,13 +11873,13 @@ msgstr ""
 msgid "properties"
 msgstr ""
 
+msgid "record(s) successfully added to selected Group."
+msgstr ""
+
+msgid "record(s) successfully deleted from the selected Group."
+msgstr ""
+
 msgid "records"
-msgstr ""
-
-msgid "records(s) successfully added to selected Group."
-msgstr ""
-
-msgid "records(s) successfully deleted from the selected Group."
 msgstr ""
 
 msgid "s"

@@ -31,7 +31,7 @@ class NewPersonOrFamilyEmail extends BaseEmail
         $email = new self($relatedObject);
         if (!$email->send()) {
             $label = $relatedObject instanceof Family ? 'New Family' : 'New Person';
-            LoggerUtils::getAppLogger()->warning(gettext($label . ' Notification Email Error') . ' :' . $email->getError());
+            LoggerUtils::getAppLogger()->warning($label . ' Notification Email Error: ' . $email->getError());
         }
     }
 

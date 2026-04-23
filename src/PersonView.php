@@ -685,7 +685,7 @@ $bOkToEdit = (
                     <!-- Plugin tabs will be dynamically added here by JavaScript -->
                     <li class="nav-item d-none" id="nav-item-mailchimp-container">
                         <a class="nav-link" id="nav-item-mailchimp" href="#mailchimp" data-bs-toggle="tab">
-                            <i class="fa-brands fa-mailchimp me-1"></i><?= gettext('Mailchimp') ?>
+                            <i class="fa-brands fa-mailchimp me-1"></i>Mailchimp
                         </a>
                     </li>
                 </ul>

@@ -665,6 +665,92 @@ cy.contains("Settings");
 
 ---
 
+### 5. Scoped `uncaught:exception` Filter for Cross-Test Noise <!-- learned: 2026-04-21 -->
+
+Unhandled promise rejections from **app JS or third-party libs** — ones we can't grep the source of — can fail *any* test that happens to visit the offending page. Symptom seen in `04-system-reset.spec.js` and observed to fail unrelated `.github/`-only PRs:
+
+```
+An unknown error has occurred: [object Object]
+```
+
+The `[object Object]` tail is the tell that an `Error`-like object was stringified into a template literal somewhere. Cypress treats the rejection as a test failure by default.
+
+**Rule:** when the root cause isn't grep-able in `src/**` or `webpack/**`, add a **tight, signature-matching** filter in `cypress/support/e2e.js` — not a blanket `return false`. Real test failures must still surface.
+
+```javascript
+// cypress/support/e2e.js
+Cypress.on('uncaught:exception', (err) => {
+    if (err && /An unknown error has occurred:\s*\[object Object\]/.test(err.message || '')) {
+        return false;   // filter only this exact signature
+    }
+    // any other uncaught exception still fails the test
+});
+```
+
+**Do NOT** add a project-wide `Cypress.on('uncaught:exception', () => false)` — that masks real regressions. Every filter needs a regex narrow enough that a different error would still fail.
+
+When adding such a filter, include a code-comment with a TODO + PR link so the root cause gets chased later.
+
+See PR [#8738](https://github.com/ChurchCRM/CRM/pull/8738) for the reference implementation.
+
+---
+
+### 6. API-Only Tests Should Skip UI Login <!-- learned: 2026-04-21 -->
+
+If a test *only* asserts against `cy.request()` responses, do **not** also drive the UI login form — doing so exposes the test to any JS error on the login / forced-password-change / church-info flow (which has caught out `04-system-reset.spec.js` more than once).
+
+```javascript
+// ✅ CORRECT — no browser JS executed, no page-init promise rejections
+const apiLogin = () => {
+    cy.clearCookies();
+    cy.request({
+        method: 'POST',
+        url: '/session/begin',
+        form: true,
+        body: { User: 'admin', Password: 'changeme' },
+        followRedirect: false,
+    });
+};
+
+it('should reset the database via API', () => {
+    apiLogin();  // session cookie only
+    cy.request({ method: 'DELETE', url: '/admin/api/database/reset' }).then(/* ... */);
+});
+
+// ❌ WRONG — full UI login just to get a cookie for a pure API call
+it('should reset the database via API', () => {
+    manualLogin();  // visits /login → maybe /changepassword → maybe /admin/system/church-info
+    cy.request({ method: 'DELETE', url: '/admin/api/database/reset' });
+});
+```
+
+UI login is only required when the test actually asserts against page content. For pure API tests, establish the session via API and skip the browser entirely.
+
+---
+
+### 7. Avoid Tautological `cy.url().should('include', ...)` After Form Submit <!-- learned: 2026-04-21 -->
+
+After submitting a form on page `/admin/system/church-info`, asserting `cy.url().should('include', 'church-info')` passes whether the submit succeeded, failed with validation errors, or never navigated at all — the URL substring is already present. The assertion is a no-op and, worse, is not a synchronization barrier, so the next command races any in-flight XHR.
+
+```javascript
+// ❌ WRONG — tautology; passes even if form submission failed silently
+cy.get('#church-info-form').submit();
+cy.url({ timeout: 10000 }).should('include', 'church-info');
+
+// ✅ CORRECT — wait for the actual save to complete via intercept
+cy.intercept('POST', '/admin/system/church-info').as('saveChurchInfo');
+cy.get('#church-info-form').submit();
+cy.wait('@saveChurchInfo').its('response.statusCode').should('be.oneOf', [200, 302]);
+
+// ✅ CORRECT — assert a visible success signal
+cy.get('#church-info-form').submit();
+cy.contains('.alert-success', /saved|updated/i, { timeout: 10000 }).should('be.visible');
+```
+
+Rule of thumb: if the URL substring you are asserting was **already** in the URL before the action, the assertion is not verifying anything.
+
+---
+
 ### Flakiness Prevention Checklist (for every new test that saves/loads state)
 
 Before marking a test complete, verify:
@@ -674,6 +760,8 @@ Before marking a test complete, verify:
 - [ ] Tests that reset a value after the assertion also `cy.wait()` on the reset call
 - [ ] `select()` tests ensure the starting value differs from the target value
 - [ ] `cy.contains()` is scoped to a container, not used globally
+- [ ] API-only tests (those that only assert against `cy.request()`) establish the session via `POST /session/begin` — not UI login
+- [ ] No `cy.url().should('include', ...)` assertions where the substring is already present pre-action (tautology)
 
 ---
 
@@ -1013,6 +1101,33 @@ cy.get("#sChurchState").find("option").should("have.length.greaterThan", 50);
 - [ ] Run tests again — all pass?
 - [ ] Review **both** code AND test changes in git diff
 - [ ] Commit together: code + test updates
+
+### Page Title Renames: Grep ALL spec Files, Not Just the Obvious One <!-- learned: 2026-04-21 -->
+
+When you rename a user-visible string (page title, card header, button
+label), **grep the entire `cypress/e2e` tree** for the old string before
+committing. Sibling spec files that happen to exercise the same route often
+assert the same title and will silently break in CI.
+
+Real example: the admin-debug refactor renamed `/admin/system/debug/email`'s
+page title from "Debug Email Connection" → "Email Debug".
+`admin.email.spec.js` was updated in the same PR, but `admin.debug.spec.js`
+had an `it("View email debug")` that still asserted the old string. The PR
+looked clean; CI failed on the first run.
+
+```bash
+# BEFORE renaming a title / label / card header, always run:
+rg -l "Debug Email Connection" cypress/e2e
+
+# Any spec that matches needs to be updated in the same commit.
+```
+
+**Rule of thumb for pages with variable state:** on pages that render
+different cards depending on environment (config error / success /
+failure), assert on **structural elements present in every state** — e.g.
+the new title plus a card header like "SMTP Configuration" — rather than a
+state-specific message. See `cypress/e2e/ui/admin/admin.email.spec.js` for
+the pattern.
 
 ## Test File Best Practices
 
@@ -1536,3 +1651,237 @@ cheapest way to catch the #8712 class of bugs without setting up a non-UTC CI
 environment. See `cypress/e2e/api/private/standard/private.calendar.timezone.spec.js`
 for the pattern — extract HH:MM:SS with a regex so the check works for both
 Propel's `Y-m-d H:i:s` output and FullCalendar's ISO 8601 feed.
+
+### Also Assert the ISO-8601 Offset for Calendar-Feed Endpoints <!-- learned: 2026-04-22 -->
+
+Wall-clock-only assertions miss a specific flavor of the #8712 regression:
+the feed emits the **correct HH:MM:SS** but stamps it with the **server's
+default offset** (e.g. `+00:00`) instead of the configured `sTimeZone` offset.
+FullCalendar then reinterprets the time against the browser zone and renders
+it shifted by hours — wall-clock looks right, UI is wrong.
+
+For any route that returns ISO 8601 strings (`/api/calendars/{id}/fullcalendar`,
+iCal exports, JSON-LD, etc.), assert both wall-clock AND that an offset is
+present and well-formed:
+
+```js
+const offsetOf = (dt) => {
+    if (typeof dt !== "string") return null;
+    const m = dt.match(/(Z|[+-]\d{2}:\d{2})$/);
+    return m ? m[1] : null;
+};
+
+// wall-clock preserved
+expect(timeOf(mine.start)).to.equal("11:15:00");
+
+// AND offset is present (not a naive datetime)
+expect(
+    offsetOf(mine.start),
+    "start must carry an ISO-8601 offset (not a naive datetime)",
+).to.match(/^(Z|[+-]\d{2}:\d{2})$/);
+```
+
+Don't pin to a specific offset value (e.g. `"+02:00"`) unless the test
+fixture also pins `sTimeZone` — CI may run in any zone. "Offset exists and is
+well-formed" is enough to catch the regression.
+
+### Admin Config Toggle in Tests — path is `/admin/api/system/config/{name}` <!-- learned: 2026-04-22 -->
+
+The `POST /api/system/config/{configName}` route is mounted under the **admin**
+Slim app (`MvcAppFactory::create('/admin', ...)` in `src/admin/index.php`),
+so the full path is `/admin/api/system/config/{configName}` — NOT
+`/api/system/config/...`. Using the wrong path returns 404 and every test
+that depends on the toggle breaks silently.
+
+```js
+function setExternalCalendarApi(enabled) {
+    cy.setupAdminSession();
+    cy.request({
+        method: "POST",
+        url: "/admin/api/system/config/bEnableExternalCalendarAPI",
+        body: { value: enabled ? "1" : "0" },
+        headers: { "Content-Type": "application/json" },
+    });
+}
+```
+
+Always reset the config back to its seed default in an `after()` hook so
+later specs aren't affected. Pattern used in
+`cypress/e2e/ui/events/external.calendar.spec.js`.
+
+### Tabler `.form-selectgroup-input` Visibility — target the label, not the input <!-- learned: 2026-04-22 -->
+
+Tabler pill-style `form-selectgroup` widgets hide the underlying radio
+input with `opacity: 0` and render the visible `.form-selectgroup-label`
+as the clickable surface. `cy.get('input[name="..."]').should("be.visible")`
+fails because the input itself is invisible by design. Assert visibility
+on the wrapping `<label>`, and click the label to change the value.
+
+```js
+// ❌ fails with "opacity: 0"
+cy.get('input[name="eventInActive"][value="1"]').should("be.visible");
+
+// ✅ assert + click the wrapping label
+cy.get('input[name="eventInActive"][value="1"]').parent("label").should("be.visible");
+cy.get('input[name="eventInActive"][value="1"]').parent("label").click();
+```
+
+Same fix applies to `.btn-check` radios — the input has `display: none` and
+the `<label class="btn">` IS the visible widget.
+
+### Save-path Tests on Standard Calendar Need Admin Session <!-- learned: 2026-04-22 -->
+
+`POST /api/events` is gated by `AddEventsRoleAuthMiddleware`. Tests that
+use `cy.setupStandardSession()` in a top-level `beforeEach` get `403`
+when they click the Save button on the event modal. Move the save-path
+tests into their own nested `describe` block with
+`cy.setupAdminSession()`:
+
+```js
+describe("Standard Calendar — save (admin-session)", () => {
+    beforeEach(() => cy.setupAdminSession());
+
+    it("New event saves successfully with default Event Type", () => {
+        // ... fill form, click Save, assert 200
+    });
+});
+```
+
+Keep the view-only rendering tests under the standard session.
+
+### Don't `cy.request("POST", "/api/calendars")` without a Body — Returns 400 <!-- learned: 2026-04-22 -->
+
+`POST /api/calendars` requires `Name`, `ForegroundColor`, `BackgroundColor`
+in the body. Calling it with no body returns 400 and the test fails.
+For fixtures that just need "any calendar exists", use `GET /api/events`
+or `GET /api/calendars` to read existing seed data instead.
+
+```js
+// ❌ 400 Bad Request
+cy.request("POST", "/api/calendars");
+
+// ✅ read seed data
+cy.request("/api/events").then((r) => {
+    const events = r.body.Events || r.body;
+    const arr = Array.isArray(events) ? events : Object.values(events);
+    if (arr.length > 0) cy.visit(`/event/editor/${arr[0].Id}`);
+});
+```
+
+### Driving Modals via Global Functions Beats `.fc-event` Clicks <!-- learned: 2026-04-22 -->
+
+FullCalendar events render at unpredictable positions depending on month/week.
+Clicking `.fc-event` is flaky. The calendar modal exposes
+`window.showEventForm({ id })` and `window.showNewEventForm(info)` globals
+used by FullCalendar's own click handlers — drive the modal directly via
+those globals so tests aren't coupled to which month the calendar is rendering.
+
+```js
+cy.visit("event/calendars");
+cy.window().should("have.property", "showEventForm");
+cy.window().then((win) => win.showEventForm({ id: eventId }));
+cy.get("#eventEditorModal").should("be.visible");
+```
+
+### Asserting CSRF Protection on Legacy PHP Delete Pages <!-- learned: 2026-04-21 -->
+
+When a legacy page is hardened with `CSRFUtils`, add three assertions per page:
+
+1. Confirmation page renders a 64-hex-char `csrf_token` hidden input.
+2. The page does **not** delete on GET (URL still shows the confirm page).
+3. POST with an invalid token returns **HTTP 403**.
+
+```js
+it("renders confirmation form with a CSRF token", () => {
+    cy.visit("FooDelete.php?FooID=1&linkBack=bar");
+    cy.contains("Confirm Delete");
+    cy.get('input[name="csrf_token"]').should("have.attr", "value").and("match", /^[a-f0-9]{64}$/);
+});
+
+it("rejects POST without a valid CSRF token", () => {
+    cy.request({
+        method: "POST",
+        url: "FooDelete.php",
+        form: true,
+        body: { FooID: "1", Delete: "Delete", csrf_token: "bogus" },
+        failOnStatusCode: false,
+    }).its("status").should("eq", 403);
+});
+```
+
+The 403 assertion exercises the exact code path a CSRF attacker would hit, so it's the regression test that actually proves the fix. Use `cy.setupStandardSession()` (or `cy.setupAdminSession()`) in `beforeEach` so the session cookie is real; the CSRF check runs AFTER the role/auth check.
+
+### In-Memory CSV Files via `Cypress.Buffer` — No Fixture File Needed <!-- learned: 2026-04-21 -->
+
+When testing CSV upload error paths (duplicate headers, malformed content, etc.) you don't need a fixture file — build the CSV string in the test body and pass it via `Cypress.Buffer`:
+
+```js
+it("rejects a CSV with duplicate column headers", () => {
+    const csv = "FirstName,LastName,FirstName\nAlice,Smith,Alice\n";
+    cy.get("#csvFile").selectFile(
+        { contents: Cypress.Buffer.from(csv), fileName: "dup.csv", mimeType: "text/csv" },
+        { force: true },
+    );
+    cy.get("#csv-import-form").submit();
+    cy.contains("duplicate column names", { matchCase: false });
+});
+```
+
+`Cypress.Buffer.from(string)` returns a `Buffer` the same way `Buffer.from()` does in Node — `selectFile` accepts it directly as the `contents` property. This is the right tool for synthetic error-path files; use `cypress/fixtures/` for real data files that are shared across tests.
+
+### `cy.request()` for Redirect Tests — 30x Faster Than `cy.visit()` <!-- learned: 2026-04-22 -->
+
+When a test only needs to assert the final URL after a redirect (e.g. `/setup` →
+`session/begin`), use `cy.request()` with `.its("redirectedToUrl")` instead of
+`cy.visit()` + `cy.location()`. `cy.request()` follows redirects without loading
+JS/CSS/images, dropping ~600ms to ~20ms per test.
+
+```js
+// ❌ slow (~600ms) — loads full page
+it("Redirects to session/begin", () => {
+    cy.visit("/setup");
+    cy.location("pathname").should("include", "session/begin");
+});
+
+// ✅ fast (~20ms) — HTTP only, no browser rendering
+it("Redirects to session/begin", () => {
+    cy.request("/setup").its("redirectedToUrl").should("include", "session/begin");
+});
+```
+
+Use this pattern wherever a test's only assertion is on the destination URL.
+Do NOT use it when the test needs to assert page content, DOM elements, or JS state.
+
+### Spec File Startup Overhead — Consolidate Single-Test Files <!-- learned: 2026-04-22 -->
+
+Each Cypress spec file carries ~200–500ms startup overhead (browser context
+creation, `beforeEach` session setup, `cy.visit()` page load). In a CI matrix
+where jobs run specs serially, 11 single-test files add ~3–5 seconds per job.
+
+**Rule:** Avoid creating a new spec file for a single `it()` block.
+Merge it into a related existing spec that shares the same page and session type.
+Good consolidation targets:
+
+- Same `cy.visit()` URL → same spec file
+- Same `beforeEach` session type (`setupStandardSession` / `setupAdminSession`) → same or nearby `describe` block
+- Same admin area (e.g., `/admin/system/debug/*`) → same spec file, separate `it()` blocks
+
+When merging a spec with a different `beforeEach`, add it as a separate `describe`
+block with its own `beforeEach` inside the same file — don't force a common setup.
+
+```js
+// ✅ Two describe blocks in one file — each has its own beforeEach
+describe("Family basic", () => {
+    beforeEach(() => cy.setupStandardSession());
+    it("...", () => { /* ... */ });
+});
+
+describe("Family Activation", () => {
+    beforeEach(() => {
+        cy.intercept(...);
+        cy.makePrivateUserAPICall(...);
+        cy.setupStandardSession({ forceLogin: true });
+    });
+    it("...", () => { /* ... */ });
+});
+```
