@@ -14723,10 +14723,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "Händelsen skapades. Omdirigerar till incheckning..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "Händelsens slutdatum/-tid måste vara på eller efter startdatum/-tid."
-
-#: 
 msgid "Event title is required."
 msgstr "Händelsetitel krävs."
 
@@ -14753,10 +14749,6 @@ msgstr "Händelsetypen har inget upprepningsmönster konfigurerat"
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "Händelsetypen har ingen giltig månadsdag konfigurerad för månadsvis upprepning"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "Händelser skapas för varje matchande tillfälle inom detta datumintervall."
 
 #: 
 msgid "Every month on the"
@@ -14807,10 +14799,6 @@ msgid "Group Roster"
 msgstr "Grupplista"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "Dölj avancerade alternativ"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Hur söndagsskola + händelser + kiosker hör ihop"
 
@@ -14821,10 +14809,6 @@ msgstr "Ogiltigt datum för %s — förväntat YYYY-MM-DD"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Ogiltigt datumformat för rangeStart eller rangeEnd"
-
-#: 
-msgid "Invalid date format."
-msgstr "Ogiltigt datumformat."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -14879,10 +14863,6 @@ msgid "No active events found."
 msgstr "Inga aktiva händelser hittades."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "Inga nährvaroräkningskategorier har definierats för denna händelsetyp ännu."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "Ingen har checkats in till denna händelse ännu."
 
@@ -14923,10 +14903,6 @@ msgid "Please select a person to check in."
 msgstr "Välj en person att checka in."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "Förifyllt baserat på denna händelsetyp — för återkommande typer är datumet nästa tillfälle efter den senaste händelsen av denna typ, och tiden matchar typens standard starttid."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "Intervallets slutdatum måste vara på eller efter intervallets startdatum."
 
@@ -14955,10 +14931,6 @@ msgid "Recommended"
 msgstr "Rekommenderas"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "Krävs för kiosk"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "Återställning kommer permanent att ta bort:"
 
@@ -14977,14 +14949,6 @@ msgstr "Spara ändringar av detta kategorinamn"
 #: 
 msgid "Select an event type…"
 msgstr "Välj en händelsetyp…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "Välj start- och slutdatum/-tid."
-
-#: 
-msgid "Show More Options"
-msgstr "Visa fler alternativ"
 
 #: 
 msgid "Skip"
@@ -15027,16 +14991,8 @@ msgid "The Events module is disabled"
 msgstr "Händelsemodulen är inaktiverad"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "Samma start- och sluttid används för alla genererade händelser."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "Det finns inga händelser schemalagda för idag"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "Det här är räkningskategorier — volontärer fyller i dem efter händelsen så att instrumentpanelen kan dela upp närvaron (t.ex. hur många medlemmar jämfört med besökare). De är separata från individuella incheckningar på incheckningssidan."
 
 #: 
 msgid "This event is inactive."
@@ -15091,16 +15047,8 @@ msgid "View Event"
 msgstr "Visa händelse"
 
 #: 
-msgid "What are these for?"
-msgstr "Vad används dessa till?"
-
-#: 
 msgid "What does this find?"
 msgstr "Vad hittar detta?"
-
-#: 
-msgid "What is this for?"
-msgstr "Vad används detta till?"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15483,14 +15431,6 @@ msgid "Set up Email"
 msgstr "Konfigurera e-post"
 
 #: 
-msgid "Test SMTP Email"
-msgstr "Testa SMTP-e-post"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "Det här är ett ChurchCRM-testmeddelande som bekräftar att din SMTP-konfiguration fungerar."
-
-#: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."
 msgstr "Det gick inte att kopiera till urklipp. Kopiera koderna manuellt."
 
@@ -15505,10 +15445,6 @@ msgstr "Använd en återställningskod istället"
 #: 
 msgid "Use authenticator app instead"
 msgstr "Använd autentiseringsapp istället"
-
-#: 
-msgid " Notification Email Error"
-msgstr " E-postaviseringsfel"
 
 #: 
 msgid "%d modules loaded"

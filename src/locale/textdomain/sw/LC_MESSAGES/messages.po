@@ -14607,10 +14607,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "Tukio limeundwa. Inakuelekeza kwenye kuingia..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "Tarehe/wakati wa mwisho wa tukio lazima uwe sawa na au baada ya tarehe/wakati wa kuanza."
-
-#: 
 msgid "Event title is required."
 msgstr "Kichwa cha tukio kinahitajika."
 
@@ -14637,10 +14633,6 @@ msgstr "Aina ya tukio haina mpangilio wa kurudia uliowekwa"
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "Aina ya tukio haina siku halali ya mwezi iliyowekwa kwa kurudia kila mwezi"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "Matukio yataundwa kwa kila tukio linalolingana ndani ya kipindi hiki cha tarehe."
 
 #: 
 msgid "Every month on the"
@@ -14691,10 +14683,6 @@ msgid "Group Roster"
 msgstr "Orodha ya Kikundi"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "Ficha Chaguzi za Hali ya Juu"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Jinsi Shule ya Jumapili + Matukio + Vioski unavyofanya kazi pamoja"
 
@@ -14705,10 +14693,6 @@ msgstr "Tarehe batili kwa %s — inatarajiwa YYYY-MM-DD"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Muundo batili wa tarehe kwa rangeStart au rangeEnd"
-
-#: 
-msgid "Invalid date format."
-msgstr "Muundo batili wa tarehe."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -14763,10 +14747,6 @@ msgid "No active events found."
 msgstr "Hakuna matukio yanayofanya kazi yaliyopatikana."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "Hakuna makundi ya hesabu za mahudhurio yaliyowekwa kwa aina hii ya tukio bado."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "Hakuna mtu aliyeingia kwenye tukio hili bado."
 
@@ -14807,10 +14787,6 @@ msgid "Please select a person to check in."
 msgstr "Tafadhali chagua mtu wa kuingiza."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "Imejazwa awali kulingana na aina hii ya tukio — kwa aina zinazokurudia, tarehe ni tukio lijalo baada ya tukio la mwisho la aina hii, na wakati unalingana na wakati wa kuanza wa chaguo-msingi wa aina."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "Tarehe ya mwisho wa kipindi lazima iwe sawa na au baada ya tarehe ya mwanzo wa kipindi."
 
@@ -14839,10 +14815,6 @@ msgid "Recommended"
 msgstr "Inayopendekezwa"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "Inahitajika kwa Kioski"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "Kuanzisha upya kutafuta kabisa:"
 
@@ -14861,14 +14833,6 @@ msgstr "Hifadhi mabadiliko ya jina hili la kundi"
 #: 
 msgid "Select an event type…"
 msgstr "Chagua aina ya tukio…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "Chagua tarehe/wakati wa kuanza na mwisho."
-
-#: 
-msgid "Show More Options"
-msgstr "Onyesha Chaguzi Zaidi"
 
 #: 
 msgid "Skip"
@@ -14911,16 +14875,8 @@ msgid "The Events module is disabled"
 msgstr "Moduli ya Matukio imezimwa"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "Wakati sawa wa kuanza na mwisho utatumika kwa matukio yote yaliyoundwa."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "Hakuna matukio yaliyopangwa kwa leo"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "Hizi ni makundi ya hesabu za watu — wafanyakazi wa kujitolea hujaza baada ya tukio ili dashibodi iweze kugawanya mahudhurio (mf. waumini wangapi dhidi ya wageni). Zimetengwa na kuingia kwa mtu mmoja mmoja kwenye ukurasa wa Kuingia."
 
 #: 
 msgid "This event is inactive."
@@ -14975,16 +14931,8 @@ msgid "View Event"
 msgstr "Tazama Tukio"
 
 #: 
-msgid "What are these for?"
-msgstr "Hizi ni kwa nini?"
-
-#: 
 msgid "What does this find?"
 msgstr "Hii inatafuta nini?"
-
-#: 
-msgid "What is this for?"
-msgstr "Hii ni kwa nini?"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15371,14 +15319,6 @@ msgid "Set up Email"
 msgstr "Sanidi Barua Pepe"
 
 #: 
-msgid "Test SMTP Email"
-msgstr "Jaribu Barua Pepe ya SMTP"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "Hii ni barua pepe ya majaribio ya ChurchCRM inayothibitisha kwamba mipangilio yako ya SMTP inafanya kazi."
-
-#: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."
 msgstr "Haiwezekani kunakili kwenye ubao wa kunakili. Tafadhali nakili nambari kwa mkono."
 
@@ -15393,10 +15333,6 @@ msgstr "Tumia nambari ya urejeshaji badala yake"
 #: 
 msgid "Use authenticator app instead"
 msgstr "Tumia programu ya uthibitishaji badala yake"
-
-#: 
-msgid " Notification Email Error"
-msgstr " Hitilafu ya Barua pepe ya Taarifa"
 
 #: 
 msgid "%d modules loaded"
