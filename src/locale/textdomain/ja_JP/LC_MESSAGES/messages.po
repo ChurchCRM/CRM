@@ -14559,10 +14559,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "イベントを作成しました。チェックインページにリダイレクトしています..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "イベントの終了日時は開始日時以降でなければなりません。"
-
-#: 
 msgid "Event title is required."
 msgstr "イベントタイトルは必須です。"
 
@@ -14589,10 +14585,6 @@ msgstr "イベントタイプに繰り返しパターンが設定されていま
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "イベントタイプに月次繰り返しの有効な日付が設定されていません"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "この日付範囲内の一致するすべての発生日にイベントが作成されます。"
 
 #: 
 msgid "Every month on the"
@@ -14643,10 +14635,6 @@ msgid "Group Roster"
 msgstr "グループ名簿"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "詳細オプションを非表示"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "日曜学校・イベント・Kioskの連携方法"
 
@@ -14657,10 +14645,6 @@ msgstr "%s の日付が無効です — YYYY-MM-DD 形式が必要です"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "rangeStart または rangeEnd の日付形式が無効です"
-
-#: 
-msgid "Invalid date format."
-msgstr "日付形式が無効です。"
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -14715,10 +14699,6 @@ msgid "No active events found."
 msgstr "アクティブなイベントが見つかりません。"
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "このイベントタイプにはまだ出席数カテゴリが定義されていません。"
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "このイベントにはまだ誰もチェックインしていません。"
 
@@ -14759,10 +14739,6 @@ msgid "Please select a person to check in."
 msgstr "チェックインする人を選択してください。"
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "このイベントタイプに基づいて事前入力されています。繰り返しタイプの場合、日付はこのタイプの最後のイベント後の次の発生日で、時刻はタイプのデフォルト開始時刻と一致します。"
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "終了日は開始日以降でなければなりません。"
 
@@ -14791,10 +14767,6 @@ msgid "Recommended"
 msgstr "推奨"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "Kioskに必須"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "リセットにより以下が完全に削除されます："
 
@@ -14813,14 +14785,6 @@ msgstr "このカテゴリ名の変更を保存"
 #: 
 msgid "Select an event type…"
 msgstr "イベントタイプを選択..."
-
-#: 
-msgid "Select start and end date/time."
-msgstr "開始と終了の日付/時刻を選択してください。"
-
-#: 
-msgid "Show More Options"
-msgstr "オプションをさらに表示"
 
 #: 
 msgid "Skip"
@@ -14863,16 +14827,8 @@ msgid "The Events module is disabled"
 msgstr "イベントモジュールが無効です"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "生成されるすべてのイベントに同じ開始時刻と終了時刻が使用されます。"
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "本日予定されているイベントはありません"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "これらは人数集計用のバケットです。ボランティアがイベント後に記入することで、ダッシュボードで出席の内訳（例：会員と来訪者の人数）を確認できます。チェックインページの個別チェックインとは別のものです。"
 
 #: 
 msgid "This event is inactive."
@@ -14927,16 +14883,8 @@ msgid "View Event"
 msgstr "イベントを表示"
 
 #: 
-msgid "What are these for?"
-msgstr "これらは何のためですか？"
-
-#: 
 msgid "What does this find?"
 msgstr "これは何を検索しますか？"
-
-#: 
-msgid "What is this for?"
-msgstr "これは何のためですか？"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15323,14 +15271,6 @@ msgid "Set up Email"
 msgstr "メールを設定する"
 
 #: 
-msgid "Test SMTP Email"
-msgstr "SMTP メールのテスト"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "これは SMTP 設定が正常に機能していることを確認する ChurchCRM のテストメールです。"
-
-#: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."
 msgstr "クリップボードにコピーできません。コードを手動でコピーしてください。"
 
@@ -15345,10 +15285,6 @@ msgstr "代わりに回復コードを使用する"
 #: 
 msgid "Use authenticator app instead"
 msgstr "代わりに認証アプリを使用する"
-
-#: 
-msgid " Notification Email Error"
-msgstr " 通知メールエラー"
 
 #: 
 msgid "%d modules loaded"
@@ -15373,10 +15309,6 @@ msgstr "すべてのチェックが合格しています"
 #: 
 msgid "App"
 msgstr "アプリ"
-
-#: 
-msgid "Auto-TLS"
-msgstr "自動TLS"
 
 #: 
 msgid "Browser time zone differs:"
@@ -15517,10 +15449,6 @@ msgstr "メモリ制限"
 #: 
 msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
 msgstr "受取人の受信トレイを確認して、配信をご確認ください。件名:"
-
-#: 
-msgid "OPcache"
-msgstr "OPキャッシュ"
 
 #: 
 msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."

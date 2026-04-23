@@ -14612,10 +14612,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "Sündmus loodud. Suunamine registreerimisele..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "Sündmuse lõppkuupäev/-aeg peab olema alguskuupäevast/-ajast samal ajal või hiljem."
-
-#: 
 msgid "Event title is required."
 msgstr "Sündmuse pealkiri on kohustuslik."
 
@@ -14642,10 +14638,6 @@ msgstr "Sündmuse tüübil puudub korduvuse muster"
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "Sündmuse tüübil puudub igakuise korduvuse kehtiv kuupäev"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "Sündmused luuakse iga sobiva toimumise jaoks selles kuupäevavahemikus."
 
 #: 
 msgid "Every month on the"
@@ -14696,10 +14688,6 @@ msgid "Group Roster"
 msgstr "Rühma nimekiri"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "Peida täpsemad valikud"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Kuidas pühapäevakool + sündmused + kioskid sobivad kokku"
 
@@ -14710,10 +14698,6 @@ msgstr "Vigane kuupäev %s jaoks — oodatakse AAAA-KK-PP"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Vigane kuupäevavorming vahemiku alguse või lõpu jaoks"
-
-#: 
-msgid "Invalid date format."
-msgstr "Vigane kuupäevavorming."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -14768,10 +14752,6 @@ msgid "No active events found."
 msgstr "Aktiivseid sündmusi ei leitud."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "Selle sündmuse tüübi jaoks pole veel kohaloleku loendamise kategooriaid määratletud."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "Keegi pole selle sündmuse jaoks veel registreerunud."
 
@@ -14812,10 +14792,6 @@ msgid "Please select a person to check in."
 msgstr "Palun valige registreerimiseks isik."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "Eeltäidetud selle sündmuse tüübi alusel — korduvate tüüpide puhul on kuupäev järgmine toimumine pärast selle tüübi viimast sündmust ja aeg vastab tüübi vaikimisi algusajale."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "Vahemiku lõppkuupäev peab olema alguskuupäevast samal ajal või hiljem."
 
@@ -14844,10 +14820,6 @@ msgid "Recommended"
 msgstr "Soovitatav"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "Vajalik kioski jaoks"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "Lähtestamine kustutab jäädavalt:"
 
@@ -14866,14 +14838,6 @@ msgstr "Salvesta muutused selle kategooria nimele"
 #: 
 msgid "Select an event type…"
 msgstr "Valige sündmuse tüüp…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "Valige algus- ja lõppkuupäev/-aeg."
-
-#: 
-msgid "Show More Options"
-msgstr "Kuva rohkem valikuid"
 
 #: 
 msgid "Skip"
@@ -14916,16 +14880,8 @@ msgid "The Events module is disabled"
 msgstr "Sündmuste moodul on keelatud"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "Kõigi loodavate sündmuste jaoks kasutatakse sama algus- ja lõpuaega."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "Täna pole ühtegi sündmust planeeritud"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "Need on kohaloleku loendamise kategooriad — vabatahtlikud täidavad need pärast sündmust, et armatuurlaud saaks kohalolekut jaotada (nt mitu liiget vs. külastajat). Need on eraldi registreerimislehe individuaalsetest sisseregistreerimistest."
 
 #: 
 msgid "This event is inactive."
@@ -14980,16 +14936,8 @@ msgid "View Event"
 msgstr "Vaata sündmust"
 
 #: 
-msgid "What are these for?"
-msgstr "Milleks need on?"
-
-#: 
 msgid "What does this find?"
 msgstr "Mida see leiab?"
-
-#: 
-msgid "What is this for?"
-msgstr "Milleks see on?"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15376,14 +15324,6 @@ msgid "Set up Email"
 msgstr "Seadista e-post"
 
 #: 
-msgid "Test SMTP Email"
-msgstr "Testi SMTP e-posti"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "See on ChurchCRM testmeil, mis kinnitab, et teie SMTP konfiguratsioon töötab."
-
-#: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."
 msgstr "Lõikelauale kopeerimine ebaõnnestus. Kopeerige koodid käsitsi."
 
@@ -15398,10 +15338,6 @@ msgstr "Kasuta taastekoodi"
 #: 
 msgid "Use authenticator app instead"
 msgstr "Kasuta autentimisrakendust"
-
-#: 
-msgid " Notification Email Error"
-msgstr " Teavitusmeilisiga viga"
 
 #: 
 msgid "%d modules loaded"

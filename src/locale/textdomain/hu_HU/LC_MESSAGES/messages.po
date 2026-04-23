@@ -14668,10 +14668,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "Az esemény létrehozva. Átirányítás a bejelentkezéshez..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "Az esemény befejezési dátuma/időpontja nem lehet a kezdési dátum/időpont előtt."
-
-#: 
 msgid "Event title is required."
 msgstr "Az esemény neve kötelező."
 
@@ -14698,10 +14694,6 @@ msgstr "Az eseménytípushoz nincs ismétlődési minta beállítva."
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "Az eseménytípushoz nincs érvényes hónap napja beállítva a havi ismétlődéshez."
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "Az eseményeket minden egyező alkalomra létrehozzák ebben a dátumtartományban."
 
 #: 
 msgid "Every month on the"
@@ -14752,10 +14744,6 @@ msgid "Group Roster"
 msgstr "Csoport névsor"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "Speciális beállítások elrejtése"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Hogyan illeszkedik össze a Vasárnapi iskola + Események + Kioszkok"
 
@@ -14766,10 +14754,6 @@ msgstr "Érvénytelen dátum: %s — várt formátum: ÉÉÉÉ-HH-NN"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Érvénytelen dátumformátum a rangeStart vagy rangeEnd mezőhöz"
-
-#: 
-msgid "Invalid date format."
-msgstr "Érvénytelen dátumformátum."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -14824,10 +14808,6 @@ msgid "No active events found."
 msgstr "Nem találhatók aktív események."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "Ehhez az eseménytípushoz még nincs meghatározva jelenléti számláló kategória."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "Még senki sem jelentkezett be erre az eseményre."
 
@@ -14868,10 +14848,6 @@ msgid "Please select a person to check in."
 msgstr "Kérjük, válasszon személyt a bejelentkeztetéshez."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "Az eseménytípus alapján előre kitöltve — ismétlődő típusoknál a dátum az utolsó ilyen típusú esemény utáni következő alkalom, az idő pedig a típus alapértelmezett kezdési idejével egyezik meg."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "A tartomány záró dátumának a kezdő dátummal egyezőnek vagy utána kell lennie."
 
@@ -14900,10 +14876,6 @@ msgid "Recommended"
 msgstr "Ajánlott"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "Kioszk esetén kötelező"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "Az alaphelyzetbe állítás véglegesen törli:"
 
@@ -14922,14 +14894,6 @@ msgstr "Módosítások mentése ennél a kategórianévnél"
 #: 
 msgid "Select an event type…"
 msgstr "Válasszon eseménytípust…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "Válasszon kezdési és befejezési dátumot/időpontot."
-
-#: 
-msgid "Show More Options"
-msgstr "További beállítások megjelenítése"
 
 #: 
 msgid "Skip"
@@ -14972,16 +14936,8 @@ msgid "The Events module is disabled"
 msgstr "Az Események modul le van tiltva"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "Minden generált eseményhez ugyanaz a kezdési és befejezési idő lesz használva."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "Ma nincs tervezett esemény"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "Ezek fejszám-gyűjtők — az önkéntesek az esemény után töltik ki őket, hogy az irányítópult részletezhesse a jelenlétet (pl. hány tag vs. látogató). Ezek különállnak a bejelentkezési oldalon lévő egyéni bejelentkezésektől."
 
 #: 
 msgid "This event is inactive."
@@ -15036,16 +14992,8 @@ msgid "View Event"
 msgstr "Esemény megtekintése"
 
 #: 
-msgid "What are these for?"
-msgstr "Mire valók ezek?"
-
-#: 
 msgid "What does this find?"
 msgstr "Mit talál ez?"
-
-#: 
-msgid "What is this for?"
-msgstr "Mire való ez?"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15428,14 +15376,6 @@ msgid "Set up Email"
 msgstr "E-mail beállítása"
 
 #: 
-msgid "Test SMTP Email"
-msgstr "SMTP e-mail tesztelése"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "Ez egy ChurchCRM teszt e-mail, amely megerősíti, hogy az SMTP konfigurációja működik."
-
-#: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."
 msgstr "Nem lehet a vágólapra másolni. Másolja a kódokat manuálisan."
 
@@ -15450,10 +15390,6 @@ msgstr "Helyreállítási kód használata"
 #: 
 msgid "Use authenticator app instead"
 msgstr "Hitelesítő alkalmazás használata"
-
-#: 
-msgid " Notification Email Error"
-msgstr " Értesítési e-mail hiba"
 
 #: 
 msgid "%d modules loaded"

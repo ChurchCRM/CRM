@@ -14607,10 +14607,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "Sự kiện đã được tạo. Đang chuyển đến trang đăng ký..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "Ngày/giờ kết thúc sự kiện phải bằng hoặc sau ngày/giờ bắt đầu."
-
-#: 
 msgid "Event title is required."
 msgstr "Tiêu đề sự kiện là bắt buộc."
 
@@ -14637,10 +14633,6 @@ msgstr "Loại sự kiện chưa được cấu hình mẫu lặp lại"
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "Loại sự kiện chưa được cấu hình ngày trong tháng hợp lệ cho lặp lại hàng tháng"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "Sự kiện sẽ được tạo cho mỗi lần phù hợp trong phạm vi ngày này."
 
 #: 
 msgid "Every month on the"
@@ -14691,10 +14683,6 @@ msgid "Group Roster"
 msgstr "Danh sách nhóm"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "Ẩn tùy chọn nâng cao"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Cách Giáo lý Chúa nhật + Sự kiện + Kiosk hoạt động cùng nhau"
 
@@ -14705,10 +14693,6 @@ msgstr "Ngày không hợp lệ cho %s — dự kiến YYYY-MM-DD"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Định dạng ngày không hợp lệ cho rangeStart hoặc rangeEnd"
-
-#: 
-msgid "Invalid date format."
-msgstr "Định dạng ngày không hợp lệ."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -14763,10 +14747,6 @@ msgid "No active events found."
 msgstr "Không tìm thấy sự kiện đang hoạt động."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "Chưa có danh mục đếm điểm danh nào được xác định cho loại sự kiện này."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "Chưa có ai đăng ký tham dự sự kiện này."
 
@@ -14807,10 +14787,6 @@ msgid "Please select a person to check in."
 msgstr "Vui lòng chọn một người để đăng ký."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "Được điền tự động dựa trên loại sự kiện này — đối với các loại lặp lại, ngày là lần tiếp theo sau sự kiện cuối cùng của loại này, và thời gian khớp với thời gian bắt đầu mặc định của loại."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "Ngày kết thúc phạm vi phải bằng hoặc sau ngày bắt đầu phạm vi."
 
@@ -14839,10 +14815,6 @@ msgid "Recommended"
 msgstr "Được khuyến nghị"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "Bắt buộc cho Kiosk"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "Đặt lại sẽ xóa vĩnh viễn:"
 
@@ -14861,14 +14833,6 @@ msgstr "Lưu thay đổi cho tên danh mục này"
 #: 
 msgid "Select an event type…"
 msgstr "Chọn loại sự kiện…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "Chọn ngày/giờ bắt đầu và kết thúc."
-
-#: 
-msgid "Show More Options"
-msgstr "Hiển thị thêm tùy chọn"
 
 #: 
 msgid "Skip"
@@ -14911,16 +14875,8 @@ msgid "The Events module is disabled"
 msgstr "Mô-đun Sự kiện bị tắt"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "Thời gian bắt đầu và kết thúc giống nhau sẽ được sử dụng cho tất cả sự kiện được tạo."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "Không có sự kiện nào được lên lịch cho hôm nay"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "Đây là các nhóm đếm số lượng — tình nguyện viên điền vào sau sự kiện để bảng điều khiển có thể phân tích điểm danh (ví dụ: bao nhiêu giáo dân so với khách). Chúng tách biệt với các đăng ký cá nhân trên trang Đăng ký."
 
 #: 
 msgid "This event is inactive."
@@ -14975,16 +14931,8 @@ msgid "View Event"
 msgstr "Xem sự kiện"
 
 #: 
-msgid "What are these for?"
-msgstr "Những thứ này dùng để làm gì?"
-
-#: 
 msgid "What does this find?"
 msgstr "Điều này tìm kiếm gì?"
-
-#: 
-msgid "What is this for?"
-msgstr "Cái này dùng để làm gì?"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15371,14 +15319,6 @@ msgid "Set up Email"
 msgstr "Thiết lập Email"
 
 #: 
-msgid "Test SMTP Email"
-msgstr "Kiểm tra Email SMTP"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "Đây là email kiểm tra của ChurchCRM xác nhận rằng cấu hình SMTP của bạn đang hoạt động."
-
-#: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."
 msgstr "Không thể sao chép vào bộ nhớ tạm. Vui lòng sao chép mã theo cách thủ công."
 
@@ -15393,10 +15333,6 @@ msgstr "Sử dụng mã khôi phục thay thế"
 #: 
 msgid "Use authenticator app instead"
 msgstr "Sử dụng ứng dụng xác thực thay thế"
-
-#: 
-msgid " Notification Email Error"
-msgstr " Lỗi email thông báo"
 
 #: 
 msgid "%d modules loaded"
@@ -15421,10 +15357,6 @@ msgstr "Tất cả kiểm tra đều đạt"
 #: 
 msgid "App"
 msgstr "Ứng dụng"
-
-#: 
-msgid "Auto-TLS"
-msgstr "TLS tự động"
 
 #: 
 msgid "Browser time zone differs:"

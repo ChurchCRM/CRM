@@ -14609,10 +14609,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "האירוע נוצר. מנתב לצ׳ק-אין..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "תאריך/שעת סיום האירוע חייבים להיות ביום ההתחלה או אחריו."
-
-#: 
 msgid "Event title is required."
 msgstr "כותרת האירוע נדרשת."
 
@@ -14639,10 +14635,6 @@ msgstr "לסוג האירוע אין תבנית חזרתיות מוגדרת"
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "לסוג האירוע אין יום חודשי תקין מוגדר לחזרה חודשית"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "אירועים ייווצרו לכל מופע תואם בטווח תאריכים זה."
 
 #: 
 msgid "Every month on the"
@@ -14693,10 +14685,6 @@ msgid "Group Roster"
 msgstr "רשימת קבוצה"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "הסתר אפשרויות מתקדמות"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "כיצד בית ספר ראשון לשבוע + אירועים + קיוסקים עובדים יחד"
 
@@ -14707,10 +14695,6 @@ msgstr "תאריך לא תקין עבור %s — נדרש YYYY-MM-DD"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "פורמט תאריך לא תקין עבור rangeStart או rangeEnd"
-
-#: 
-msgid "Invalid date format."
-msgstr "פורמט תאריך לא תקין."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -14765,10 +14749,6 @@ msgid "No active events found."
 msgstr "לא נמצאו אירועים פעילים."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "טרם הוגדרו קטגוריות ספירת נוכחות לסוג אירוע זה."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "טרם בוצע צ׳ק-אין לאף אחד לאירוע זה."
 
@@ -14809,10 +14789,6 @@ msgid "Please select a person to check in."
 msgstr "אנא בחר אדם לצ׳ק-אין."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "מולא מראש לפי סוג אירוע זה — לסוגים חוזרים, התאריך הוא המופע הבא אחרי האירוע האחרון מסוג זה, והשעה תואמת לשעת ההתחלה הדיפולטית של הסוג."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "תאריך סיום הטווח חייב להיות ביום ההתחלה או אחריו."
 
@@ -14841,10 +14817,6 @@ msgid "Recommended"
 msgstr "מומלץ"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "נדרש לקיוסק"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "האיפוס ימחק לצמיתות:"
 
@@ -14863,14 +14835,6 @@ msgstr "שמור שינויים לשם קטגוריה זו"
 #: 
 msgid "Select an event type…"
 msgstr "בחר סוג אירוע..."
-
-#: 
-msgid "Select start and end date/time."
-msgstr "בחר תאריך/שעת התחלה וסיום."
-
-#: 
-msgid "Show More Options"
-msgstr "הצג אפשרויות נוספות"
 
 #: 
 msgid "Skip"
@@ -14913,16 +14877,8 @@ msgid "The Events module is disabled"
 msgstr "מודול האירועים מושבת"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "אותן שעות התחלה וסיום ישמשו לכל האירועים שייווצרו."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "אין אירועים מתוכננים להיום"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "אלו קטגוריות ספירת ראשים — מתנדבים ממלאים אותן לאחר האירוע כדי שהלוח יוכל לפרק את הנוכחות (לדוג׳ כמה חברים לעומת אורחים). הן נפרדות מצ׳ק-אין אישי בדף הצ׳ק-אין."
 
 #: 
 msgid "This event is inactive."
@@ -14977,16 +14933,8 @@ msgid "View Event"
 msgstr "הצג אירוע"
 
 #: 
-msgid "What are these for?"
-msgstr "למה אלו משמשים?"
-
-#: 
 msgid "What does this find?"
 msgstr "מה זה מוצא?"
-
-#: 
-msgid "What is this for?"
-msgstr "למה זה משמש?"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15373,14 +15321,6 @@ msgid "Set up Email"
 msgstr "הגדרת דואר אלקטרוני"
 
 #: 
-msgid "Test SMTP Email"
-msgstr "בדיקת דואר אלקטרוני SMTP"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "זהו דואר אלקטרוני בדיקה של ChurchCRM המאשר שתצורת ה-SMTP שלכם פועלת."
-
-#: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."
 msgstr "לא ניתן להעתיק ללוח. אנא העתיקו את הקודים באופן ידני."
 
@@ -15395,10 +15335,6 @@ msgstr "השתמש בקוד שחזור"
 #: 
 msgid "Use authenticator app instead"
 msgstr "השתמש באפליקציית אימות"
-
-#: 
-msgid " Notification Email Error"
-msgstr " שגיאת הודעת דואר אלקטרוני"
 
 #: 
 msgid "%d modules loaded"

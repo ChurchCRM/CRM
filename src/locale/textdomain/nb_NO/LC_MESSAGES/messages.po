@@ -14699,10 +14699,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "Arrangement opprettet. Omdirigerer til innsjekking..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "Sluttdato/-tid for arrangement må være lik eller etter startdato/-tid."
-
-#: 
 msgid "Event title is required."
 msgstr "Arrangementstittelen er påkrevd."
 
@@ -14729,10 +14725,6 @@ msgstr "Arrangementstypen har ingen gjentakelsesmønster konfigurert"
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "Arrangementstypen har ingen gyldig dag i måneden konfigurert for månedlig gjentakelse"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "Arrangementer vil bli opprettet for hver matchende forekomst innenfor denne datoperioden."
 
 #: 
 msgid "Every month on the"
@@ -14783,10 +14775,6 @@ msgid "Group Roster"
 msgstr "Grupperoster"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "Skjul avanserte alternativer"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Slik henger Søndagsskole + Arrangementer + Kiosker sammen"
 
@@ -14797,10 +14785,6 @@ msgstr "Ugyldig dato for %s — forventet YYYY-MM-DD"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Ugyldig datoformat for rangeStart eller rangeEnd"
-
-#: 
-msgid "Invalid date format."
-msgstr "Ugyldig datoformat."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -14855,10 +14839,6 @@ msgid "No active events found."
 msgstr "Ingen aktive arrangementer funnet."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "Ingen fremmøtetellingskategorier er definert for denne arrangementstypen ennå."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "Ingen har blitt sjekket inn på dette arrangementet ennå."
 
@@ -14899,10 +14879,6 @@ msgid "Please select a person to check in."
 msgstr "Vennligst velg en person som skal sjekkes inn."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "Forhåndsutfylt basert på denne arrangementstypen — for gjentakende typer er datoen neste forekomst etter siste arrangement av denne typen, og tidspunktet samsvarer med typens standard starttid."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "Periodens sluttdato må være lik eller etter periodens startdato."
 
@@ -14931,10 +14907,6 @@ msgid "Recommended"
 msgstr "Anbefalt"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "Påkrevd for kiosk"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "Tilbakestilling vil permanent slette:"
 
@@ -14953,14 +14925,6 @@ msgstr "Lagre endringer i dette kategorinavnet"
 #: 
 msgid "Select an event type…"
 msgstr "Velg en arrangementstype…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "Velg start- og sluttdato/-tid."
-
-#: 
-msgid "Show More Options"
-msgstr "Vis flere alternativer"
 
 #: 
 msgid "Skip"
@@ -15003,16 +14967,8 @@ msgid "The Events module is disabled"
 msgstr "Arrangementsmodulen er deaktivert"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "Den samme start- og sluttid vil bli brukt for alle genererte arrangementer."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "Det er ingen planlagte arrangementer i dag"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "Dette er telle-kategorier — frivillige fyller dem inn etter arrangementet slik at dashbordet kan bryte ned fremmøtet (f.eks. hvor mange medlemmer vs. besøkende). De er separate fra individuelle innsjekkinger på innsjekkingssiden."
 
 #: 
 msgid "This event is inactive."
@@ -15067,16 +15023,8 @@ msgid "View Event"
 msgstr "Vis arrangement"
 
 #: 
-msgid "What are these for?"
-msgstr "Hva er disse til?"
-
-#: 
 msgid "What does this find?"
 msgstr "Hva finner dette?"
-
-#: 
-msgid "What is this for?"
-msgstr "Hva er dette til?"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15459,14 +15407,6 @@ msgid "Set up Email"
 msgstr "Konfigurer e-post"
 
 #: 
-msgid "Test SMTP Email"
-msgstr "Test SMTP-e-post"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "Dette er en ChurchCRM-test-e-post som bekrefter at SMTP-konfigurasjonen din fungerer."
-
-#: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."
 msgstr "Kan ikke kopiere til utklippstavlen. Kopier kodene manuelt."
 
@@ -15481,10 +15421,6 @@ msgstr "Bruk en gjenopprettingskode"
 #: 
 msgid "Use authenticator app instead"
 msgstr "Bruk autentiseringsapp"
-
-#: 
-msgid " Notification Email Error"
-msgstr " E-postvarselfeil"
 
 #: 
 msgid "%d modules loaded"

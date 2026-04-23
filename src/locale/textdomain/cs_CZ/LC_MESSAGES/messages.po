@@ -14609,10 +14609,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "Událost byla vytvořena. Přesměrování na přihlašování..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "Datum/čas ukončení události musí být stejné nebo po datu/čase zahájení."
-
-#: 
 msgid "Event title is required."
 msgstr "Název události je povinný."
 
@@ -14639,10 +14635,6 @@ msgstr "Typ události nemá nakonfigurovaný vzor opakování"
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "Typ události nemá nakonfigurovaný platný den v měsíci pro měsíční opakování"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "Události budou vytvořeny pro každý odpovídající výskyt v tomto rozsahu dat."
 
 #: 
 msgid "Every month on the"
@@ -14693,10 +14685,6 @@ msgid "Group Roster"
 msgstr "Seznam skupiny"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "Skrýt pokročilé možnosti"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Jak spolu fungují Nedělní škola + Události + Kiosky"
 
@@ -14707,10 +14695,6 @@ msgstr "Neplatné datum pro %s — očekáváno RRRR-MM-DD"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Neplatný formát data pro rangeStart nebo rangeEnd"
-
-#: 
-msgid "Invalid date format."
-msgstr "Neplatný formát data."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -14765,10 +14749,6 @@ msgid "No active events found."
 msgstr "Nebyly nalezeny žádné aktivní události."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "Pro tento typ události dosud nejsou definovány žádné kategorie počtu docházky."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "K této události se ještě nikdo nepřihlásil."
 
@@ -14809,10 +14789,6 @@ msgid "Please select a person to check in."
 msgstr "Vyberte prosím osobu k přihlášení."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "Předvyplněno na základě tohoto typu události — pro opakující se typy je datum dalším výskytem po poslední události tohoto typu a čas odpovídá výchozímu času zahájení typu."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "Koncové datum rozsahu musí být stejné nebo po počátečním datu rozsahu."
 
@@ -14841,10 +14817,6 @@ msgid "Recommended"
 msgstr "Doporučeno"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "Povinné pro kiosek"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "Reset trvale smaže:"
 
@@ -14863,14 +14835,6 @@ msgstr "Uložit změny tohoto názvu kategorie"
 #: 
 msgid "Select an event type…"
 msgstr "Vyberte typ události…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "Vyberte datum/čas zahájení a ukončení."
-
-#: 
-msgid "Show More Options"
-msgstr "Zobrazit více možností"
 
 #: 
 msgid "Skip"
@@ -14913,16 +14877,8 @@ msgid "The Events module is disabled"
 msgstr "Modul Události je zakázán"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "Stejný čas zahájení a ukončení bude použit pro všechny vygenerované události."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "Na dnešek nejsou naplánované žádné události"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "Jedná se o skupiny počtů — dobrovolníci je vyplňují po události, aby přehled mohl rozdělit docházku (např. kolik farníků vs. návštěvníků). Jsou odděleny od individuálního přihlašování na stránce přihlašování."
 
 #: 
 msgid "This event is inactive."
@@ -14977,16 +14933,8 @@ msgid "View Event"
 msgstr "Zobrazit událost"
 
 #: 
-msgid "What are these for?"
-msgstr "K čemu slouží?"
-
-#: 
 msgid "What does this find?"
 msgstr "Co toto najde?"
-
-#: 
-msgid "What is this for?"
-msgstr "K čemu to slouží?"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15369,14 +15317,6 @@ msgid "Set up Email"
 msgstr "Nastavit e-mail"
 
 #: 
-msgid "Test SMTP Email"
-msgstr "Testovat SMTP e-mail"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "Toto je testovací e-mail ChurchCRM potvrzující, že vaše konfigurace SMTP funguje."
-
-#: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."
 msgstr "Nelze zkopírovat do schránky. Zkopírujte kódy ručně."
 
@@ -15391,10 +15331,6 @@ msgstr "Použít záchranný kód"
 #: 
 msgid "Use authenticator app instead"
 msgstr "Použít aplikaci pro ověřování"
-
-#: 
-msgid " Notification Email Error"
-msgstr " Chyba notifikačního e-mailu"
 
 #: 
 msgid "%d modules loaded"

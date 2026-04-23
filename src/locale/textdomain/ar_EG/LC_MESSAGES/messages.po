@@ -14648,10 +14648,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "تم إنشاء الحدث. جارٍ التوجيه إلى تسجيل الحضور..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "يجب أن يكون تاريخ/وقت انتهاء الحدث في نفس تاريخ/وقت البدء أو بعده."
-
-#: 
 msgid "Event title is required."
 msgstr "عنوان الحدث مطلوب."
 
@@ -14678,10 +14674,6 @@ msgstr "نوع الحدث لا يحتوي على نمط تكرار مُهيأ"
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "نوع الحدث لا يحتوي على يوم شهري صالح مُهيأ للتكرار الشهري"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "سيتم إنشاء الأحداث لكل تكرار مطابق ضمن نطاق التاريخ هذا."
 
 #: 
 msgid "Every month on the"
@@ -14732,10 +14724,6 @@ msgid "Group Roster"
 msgstr "قائمة المجموعة"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "إخفاء الخيارات المتقدمة"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "كيف تتكامل مدرسة الأحد والأحداث والـ Kiosks"
 
@@ -14746,10 +14734,6 @@ msgstr "تاريخ غير صالح لـ %s — الصيغة المتوقعة YYY
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "صيغة تاريخ غير صالحة لـ rangeStart أو rangeEnd"
-
-#: 
-msgid "Invalid date format."
-msgstr "صيغة التاريخ غير صالحة."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -14804,10 +14788,6 @@ msgid "No active events found."
 msgstr "لم يتم العثور على أحداث نشطة."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "لم يتم تحديد فئات عد الحضور لهذا النوع من الأحداث بعد."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "لم يسجل أحد حضوره في هذا الحدث بعد."
 
@@ -14848,10 +14828,6 @@ msgid "Please select a person to check in."
 msgstr "يرجى اختيار شخص لتسجيل حضوره."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "مملوء مسبقاً بناءً على نوع الحدث هذا — للأنواع المتكررة، التاريخ هو التكرار التالي بعد آخر حدث من هذا النوع، والوقت يطابق وقت البدء الافتراضي للنوع."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "يجب أن يكون تاريخ نهاية النطاق في نفس تاريخ بدء النطاق أو بعده."
 
@@ -14880,10 +14856,6 @@ msgid "Recommended"
 msgstr "مُوصى به"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "مطلوب لـ Kiosk"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "ستؤدي إعادة الضبط إلى الحذف الدائم لـ:"
 
@@ -14902,14 +14874,6 @@ msgstr "حفظ التغييرات على اسم هذه الفئة"
 #: 
 msgid "Select an event type…"
 msgstr "اختر نوع الحدث…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "اختر تاريخ/وقت البدء والانتهاء."
-
-#: 
-msgid "Show More Options"
-msgstr "عرض المزيد من الخيارات"
 
 #: 
 msgid "Skip"
@@ -14952,16 +14916,8 @@ msgid "The Events module is disabled"
 msgstr "وحدة الأحداث معطّلة"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "سيتم استخدام نفس وقت البدء والانتهاء لجميع الأحداث المُنشأة."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "لا توجد أحداث مجدولة لليوم"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "هذه فئات عد الحضور — يملؤها المتطوعون بعد الحدث حتى تتمكن لوحة التحكم من تفصيل الحضور (مثل عدد الأعضاء مقابل الزوار). وهي منفصلة عن تسجيلات الحضور الفردية في صفحة تسجيل الحضور."
 
 #: 
 msgid "This event is inactive."
@@ -15016,16 +14972,8 @@ msgid "View Event"
 msgstr "عرض الحدث"
 
 #: 
-msgid "What are these for?"
-msgstr "ما الغرض منها؟"
-
-#: 
 msgid "What does this find?"
 msgstr "ماذا يجد هذا؟"
-
-#: 
-msgid "What is this for?"
-msgstr "ما الغرض من هذا؟"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15412,14 +15360,6 @@ msgid "Set up Email"
 msgstr "إعداد البريد الإلكتروني"
 
 #: 
-msgid "Test SMTP Email"
-msgstr "اختبار بريد SMTP الإلكتروني"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "هذا بريد إلكتروني تجريبي من ChurchCRM يؤكد أن تكوين SMTP الخاص بك يعمل بشكل صحيح."
-
-#: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."
 msgstr "تعذّر النسخ إلى الحافظة. يرجى نسخ الرموز يدوياً."
 
@@ -15434,10 +15374,6 @@ msgstr "استخدم رمز الاسترداد بدلاً من ذلك"
 #: 
 msgid "Use authenticator app instead"
 msgstr "استخدم تطبيق المصادقة بدلاً من ذلك"
-
-#: 
-msgid " Notification Email Error"
-msgstr "خطأ في بريد الإشعارات الإلكتروني"
 
 #: 
 msgid "%d modules loaded"
@@ -15462,10 +15398,6 @@ msgstr "جميع الفحوصات ناجحة"
 #: 
 msgid "App"
 msgstr "التطبيق"
-
-#: 
-msgid "Auto-TLS"
-msgstr "TLS تلقائي"
 
 #: 
 msgid "Browser time zone differs:"

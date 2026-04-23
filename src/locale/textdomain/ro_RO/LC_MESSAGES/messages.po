@@ -14697,10 +14697,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "Evenimentul a fost creat. Redirecționare la înregistrarea prezenței..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "Data/ora de sfârșit a evenimentului trebuie să fie la sau după data/ora de începere."
-
-#: 
 msgid "Event title is required."
 msgstr "Titlul evenimentului este obligatoriu."
 
@@ -14727,10 +14723,6 @@ msgstr "Tipul de eveniment nu are un model de recurență configurat"
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "Tipul de eveniment nu are o zi validă din lună configurată pentru recurența lunară"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "Evenimentele vor fi create pentru fiecare apariție corespunzătoare în acest interval de date."
 
 #: 
 msgid "Every month on the"
@@ -14781,10 +14773,6 @@ msgid "Group Roster"
 msgstr "Lista Grupului"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "Ascunde Opțiunile Avansate"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Cum se conectează Școala Duminicală + Evenimente + Chioșcuri"
 
@@ -14795,10 +14783,6 @@ msgstr "Dată invalidă pentru %s — formatul așteptat este YYYY-MM-DD"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Format de dată invalid pentru rangeStart sau rangeEnd"
-
-#: 
-msgid "Invalid date format."
-msgstr "Format de dată invalid."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -14853,10 +14837,6 @@ msgid "No active events found."
 msgstr "Nu s-au găsit evenimente active."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "Nu au fost definite categorii de numărare a prezenței pentru acest tip de eveniment."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "Nicio persoană nu a fost înregistrată la acest eveniment."
 
@@ -14897,10 +14877,6 @@ msgid "Please select a person to check in."
 msgstr "Vă rugăm să selectați o persoană pentru înregistrare."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "Precompletat pe baza acestui tip de eveniment — pentru tipurile recurente, data este următoarea apariție după ultimul eveniment de acest tip, iar ora corespunde orei implicite de începere a tipului."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "Data de sfârșit a intervalului trebuie să fie la sau după data de început a intervalului."
 
@@ -14929,10 +14905,6 @@ msgid "Recommended"
 msgstr "Recomandat"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "Obligatoriu pentru Chioșc"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "Resetarea va șterge permanent:"
 
@@ -14951,14 +14923,6 @@ msgstr "Salvați modificările pentru acest nume de categorie"
 #: 
 msgid "Select an event type…"
 msgstr "Selectați un tip de eveniment…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "Selectați data/ora de început și de sfârșit."
-
-#: 
-msgid "Show More Options"
-msgstr "Afișați mai multe opțiuni"
 
 #: 
 msgid "Skip"
@@ -15001,16 +14965,8 @@ msgid "The Events module is disabled"
 msgstr "Modulul Evenimente este dezactivat"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "Aceeași oră de început și de sfârșit va fi folosită pentru toate evenimentele generate."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "Nu există evenimente programate pentru astăzi"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "Acestea sunt categorii de numărare — voluntarii le completează după eveniment pentru ca tabloul de bord să poată detalia prezența (ex. câți membri față de vizitatori). Sunt separate de înregistrările individuale de pe pagina de prezență."
 
 #: 
 msgid "This event is inactive."
@@ -15065,16 +15021,8 @@ msgid "View Event"
 msgstr "Vizualizați evenimentul"
 
 #: 
-msgid "What are these for?"
-msgstr "La ce servesc acestea?"
-
-#: 
 msgid "What does this find?"
 msgstr "Ce găsește aceasta?"
-
-#: 
-msgid "What is this for?"
-msgstr "La ce servește aceasta?"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15457,14 +15405,6 @@ msgid "Set up Email"
 msgstr "Configurați e-mailul"
 
 #: 
-msgid "Test SMTP Email"
-msgstr "Testați e-mailul SMTP"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "Acesta este un e-mail de test ChurchCRM care confirmă că configurația dvs. SMTP funcționează."
-
-#: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."
 msgstr "Imposibil de copiat în clipboard. Copiați codurile manual."
 
@@ -15479,10 +15419,6 @@ msgstr "Utilizați un cod de recuperare"
 #: 
 msgid "Use authenticator app instead"
 msgstr "Utilizați aplicația de autentificare"
-
-#: 
-msgid " Notification Email Error"
-msgstr " Eroare e-mail notificare"
 
 #: 
 msgid "%d modules loaded"
