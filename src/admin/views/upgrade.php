@@ -197,7 +197,7 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                                         <div class="datagrid-content" id="updateFileName"></div>
                                     </div>
                                     <div class="datagrid-item">
-                                        <div class="datagrid-title"><?= gettext('SHA1 Hash') ?></div>
+                                        <div class="datagrid-title">SHA1 Hash</div>
                                         <div class="datagrid-content"><code id="updateSHA1"></code></div>
                                     </div>
                                     <div class="datagrid-item">

@@ -6,44 +6,39 @@ Translate missing ChurchCRM UI terms for one or all locales.
 
 ---
 
-## ⛔ MANDATORY: Data Loss Prevention Rules <!-- learned: 2026-04-09 -->
+## ⛔ MANDATORY: Data Loss Prevention Rules <!-- learned: 2026-04-09, updated: 2026-04-22 -->
 
 **These rules are NON-NEGOTIABLE. Every translation session MUST follow them.**
 
-1. **ALWAYS create a new branch** before translating ANY locale — no exceptions
+1. **ALWAYS create a BRAND-NEW branch** before translating ANY locale — never reuse an existing `locale/*` or `copilot/*` branch, even from earlier the same day
 2. **ALWAYS commit + push after EVERY locale** — never accumulate uncommitted translations
 3. **ALWAYS upload to POEditor after EVERY locale** — reduces manual steps
 4. **If any step fails, STOP and report** — do not continue without saving work
 
-**Why:** Cloud/remote agent sessions can timeout at any moment. Uncommitted translations are LOST FOREVER. We have lost hours of work from agents that translated 20+ locales without committing.
+**Why:** Cloud/remote agent sessions can timeout at any moment. Uncommitted translations are LOST FOREVER. We have lost hours of work from agents that translated 20+ locales without committing. Reusing old branches also causes review-thread churn and can silently overwrite reviewer edits from the prior run.
 
 ---
 
-## Step 1: Branch setup (MANDATORY) <!-- learned: 2026-04-09 -->
+## Step 1: Branch setup (MANDATORY) <!-- learned: 2026-04-09, updated: 2026-04-22 -->
 
 **MUST happen before any translation work begins.**
 
-Check if already on a `locale/*` branch first:
-
-```bash
-git branch --show-current
-```
-
-If already on a `locale/*` branch, **skip to Step 2**.
-
-If not, create a new branch:
+**Every session starts on a brand-new branch.** Never resume work on a `locale/*` or `copilot/*` branch from a previous run — always cut a fresh one. The branch manager appends a `HHMMSS` UTC timestamp so branches are unique even when run multiple times the same day.
 
 ```bash
 node locale/scripts/locale-branch-manager.js --init
+# Output: locale/<VERSION>-<YYYY-MM-DD>-<HHMMSS>  (e.g. locale/7.2.0-2026-04-22-174530)
 # If it errors on push, ignore the error — branch was created locally
 ```
 
-If the branch manager fails entirely, create manually:
+If the branch manager fails entirely, create manually (include the time suffix):
 ```bash
-git checkout -b locale/$(node -p "require('./package.json').version")-$(date +%Y-%m-%d)
+git checkout -b "locale/$(node -p "require('./package.json').version")-$(date -u +%Y-%m-%d-%H%M%S)"
 ```
 
-**Do NOT proceed to Step 2 until you are on a locale/* branch.**
+**Do not reuse the current branch even if it looks like a locale branch.** If you are already on a `locale/*` branch from an earlier session, still run `--init` to cut a fresh one.
+
+**Do NOT proceed to Step 2 until you are on a brand-new `locale/*` branch created in this session.**
 
 ---
 
@@ -229,9 +224,11 @@ rm /tmp/fr-1-trans.json
 
 ---
 
-## Resume after timeout
+## Resume after timeout <!-- updated: 2026-04-22 -->
 
-Run `node locale/scripts/locale-translate.js --list` to see which locales still have terms. Already-translated locales show 0 or 1 remaining (the 1 is usually `N/A`). Resume from there.
+**A resumed session is a new session.** Always cut a fresh branch with `node locale/scripts/locale-branch-manager.js --init` — do NOT `git checkout` the prior run's `locale/*` branch. Because every completed locale is already pushed + uploaded to POEditor, starting clean loses nothing.
+
+Run `node locale/scripts/locale-translate.js --list` on the new branch to see which locales still have terms. Already-translated locales show 0 or 1 remaining (the 1 is usually `N/A`). Resume from there.
 
 ---
 
@@ -273,3 +270,14 @@ d = json.load(open('locale/terms/english-ok.json'))
 print(f\"fil: {len(d.get('fil', []))} terms\")
 "
 ```
+
+---
+
+## Related Skills & Docs
+
+- [`/locale-release`](./locale-release.md) — release-time wrapper: regenerates missing terms, invokes this command, then downloads approved translations.
+- [`/locale-translate-agent-prompt`](./locale-translate-agent-prompt.md) — copy-paste prompt template for Copilot / remote agents (same workflow, different framing).
+- [`locale-cloud-safe-translation.md`](../../.agents/skills/churchcrm/locale-cloud-safe-translation.md) — branch-manager internals, branch naming (`locale/{v}-{YYYY-MM-DD}-{HHMMSS}`), cloud-resume mechanics.
+- [`locale-stack-ranking.md`](../../.agents/skills/churchcrm/locale-stack-ranking.md) — **authoritative** TIER-1/2/3 prioritization (the list in Step 5 above mirrors this).
+- [`locale-ai-translation.md`](../../.agents/skills/churchcrm/locale-ai-translation.md) — **authoritative** church vocabulary / denomination context (the summary in Step 4b above mirrors this).
+- [`i18n-localization.md`](../../.agents/skills/churchcrm/i18n-localization.md) — adding UI terms, `gettext`/`i18next.t` usage, and what NOT to wrap (brand/technical literals).

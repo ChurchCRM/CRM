@@ -61,6 +61,62 @@ $request->get('/api/persons/');  // Route, don't change
 - Changing `People` UI term → Only translate, don't rename key
 - All UI gettext/i18next entries → Can rename consolidated terms
 
+### Capitalization Convention <!-- learned: 2026-04-22 -->
+
+**Use Title Case for UI chrome, Sentence case for body text. Never have both forms of the same string in the codebase — translators see them as two different msgids and must translate twice.**
+
+| Use Title Case for | Use Sentence case for |
+|---|---|
+| Form field labels: `First Name`, `Email Address`, `Phone Number` | Helper text: `Enter your first name` |
+| Button labels: `Save`, `Sign In`, `Add Family` | Validation messages: `This field is required` |
+| Column headers: `Member`, `Family`, `Status` | Helper/placeholder text |
+| Page titles & card headers: `Email Configuration` | Body paragraphs, descriptions |
+| Navigation/menu items: `Reports`, `Settings` | Toast notifications: `Saved successfully` |
+| Tab labels: `App`, `Server`, `Database` | Modal body content |
+| Status badges (single word): `Active`, `Inactive`, `Online` | Counts/aggregates: `5 members`, `3 families` |
+| Dialog titles: `Confirm Delete`, `Error` | Status sentences: `1 family is inactive` |
+
+**Survey result (2026-04-22):** Title Case dominates form labels in this codebase. Form labels with case duplicates were ALL won by Title Case (`First Name` 10× vs `First name` 1×, `Last Name` 11× vs 1×, `Phone Number` 5× vs 1×, etc.).
+
+```php
+// CORRECT — Title Case for labels, Sentence case for help text
+<label><?= gettext('Email Address') ?></label>
+<small class="text-muted"><?= gettext('We never share your email address.') ?></small>
+
+// WRONG — inconsistent: same label, different casing creates 2 msgids
+<label><?= gettext('Email Address') ?></label>     // page A
+<label><?= gettext('Email address') ?></label>     // page B
+```
+
+**Detection:**
+```bash
+# Find case-only duplicate msgids
+python3 -c "
+import re
+from collections import defaultdict
+po = open('locale/messages.po').read()
+ids = [m for m in re.findall(r'^msgid \"(.*?)\"\$', po, re.MULTILINE) if m]
+g = defaultdict(set)
+for m in ids: g[m.lower()].add(m)
+for v in g.values():
+    if len(v) > 1: print(sorted(v))
+"
+```
+
+**Acronym exceptions** (always uppercase regardless of case form): `URL`, `ID`, `IP`, `SMTP`, `CSV`, `PDF`, `2FA`, `API`, `HTML`, `TLS`, `SSL`. Never write `Id`, `Url`, `Sms`, etc. — pick the acronym form once and use it everywhere.
+
+```php
+// CORRECT
+gettext('User ID')
+gettext('SMTP Host')
+
+// WRONG — acronym should stay all-caps
+gettext('User Id')
+gettext('Smtp Host')
+```
+
+**Dialog title special case:** `i18next.t('ERROR')` was historically used as a bootbox title and created an `ERROR`/`Error` msgid pair. Always use `i18next.t('Error')` (Title Case) for dialog titles. Reserve all-caps strings for log levels / data attribute values, NOT translation keys (e.g. `data-level="ERROR"` is fine, but the visible label uses `gettext('Error')`).
+
 ### Family Life Cycle
 
 Use **Active / Inactive** for consistent family status:
@@ -526,6 +582,101 @@ msgstr ""
 
 The msgid key must match what's passed to gettext() in PHP code.
 
+### Do Not Wrap Brand / Technical Literals <!-- learned: 2026-04-22 -->
+
+**Rule: Never wrap brand names, product names, language/runtime identifiers, config keys, protocol acronyms, or placeholder strings in `gettext()` / `_()`.** These are literals, not UI copy — translators cannot (and should not) change them, and wrapping them pollutes every locale's missing-terms batch and creates POEditor noise in every language.
+
+**Always bare literals (never translate, never wrap):**
+
+| Category | Examples |
+|---|---|
+| Language / runtime names | `PHP`, `Node.js`, `MySQL`, `MariaDB`, `Apache`, `nginx` |
+| Extension / module names | `OPcache`, `SAPI`, `mod_rewrite`, `ionCube` |
+| Config keys & directives | `date.timezone`, `memory_limit`, `post_max_size`, `session.save_handler` |
+| Protocol / tech acronyms | `TLS`, `Auto-TLS`, `SSL`, `SMTP`, `IMAP`, `DNS`, `CSP`, `CORS`, `SHA1 Hash` |
+| Brand names | `ChurchCRM`, `Vonage`, `MailChimp`, `GitHub`, `OpenLP`, `Nextcloud`, `Gravatar`, `WebDAV`, `POEditor`, `ownCloud`, `Stripe`, `PayPal` |
+| Placeholder examples | `name@example.com`, `+1-555-123-4567`, `https://example.com` |
+
+**Pattern:**
+
+```php
+// ❌ WRONG - Brand/config literal wrapped in gettext (pollutes all locales' missing batches)
+echo gettext('OPcache');
+echo gettext('PHP');
+echo gettext('SAPI');
+$phpIni = [
+    gettext('date.timezone') => ini_get('date.timezone'),
+];
+<td><?= gettext('Auto-TLS') ?></td>
+<input placeholder="<?= gettext('name@example.com') ?>">
+
+// ✅ CORRECT - Bare literal
+echo 'OPcache';
+echo 'PHP';
+echo 'SAPI';
+$phpIni = [
+    'date.timezone' => ini_get('date.timezone'),
+];
+<td>Auto-TLS</td>
+<input placeholder="name@example.com">
+```
+
+**How to detect leaks:** a term that a) appears in `locale/terms/missing/{code}/{code}-N.json` across many locales with an empty string, and b) is a brand / technical / config literal, is almost certainly wrongly wrapped. Quick aggregation:
+
+```bash
+node -e "
+const fs=require('fs'),path=require('path');
+const root='locale/terms/missing';
+const counts={};
+for (const d of fs.readdirSync(root)) {
+  const dir=path.join(root,d);
+  if (!fs.statSync(dir).isDirectory()) continue;
+  for (const f of fs.readdirSync(dir)) {
+    if (!f.endsWith('.json')) continue;
+    const data=JSON.parse(fs.readFileSync(path.join(dir,f),'utf8'));
+    for (const k of Object.keys(data)) counts[k]=(counts[k]||0)+1;
+  }
+}
+Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,30)
+  .forEach(([k,v])=>console.log(String(v).padStart(3)+'  '+JSON.stringify(k)));
+"
+```
+
+Terms at the top of the list that match the table above should be unwrapped in source.
+
+**If you remove a wrapper**, the next `npm run locale:build` stops extracting it. New missing batches no longer include it; stale POEditor entries are harmless and can be cleaned up manually.
+
+**Related:** the locale translation commands (`/locale-translate`, `/locale-release`) list these same tokens under "Preserve exactly / never translate" — the fix here is to stop them entering the pipeline in the first place.
+
+### Never Split a Sentence Across Multiple gettext() Calls <!-- learned: 2026-04-22 -->
+
+Concatenating `gettext()` fragments loses context and creates broken msgids with leading/trailing spaces that translators cannot understand. Always wrap the **complete sentence** as a single string and use `sprintf()` for embedded values.
+
+```php
+// ❌ WRONG — splits "This value cannot be more than N characters long" into 3 pieces
+$msg = gettext('This value cannot be more than ') . $n . gettext(' characters long');
+// Produces orphaned msgid ' characters long' with leading space — untranslatable
+
+// ✅ CORRECT — full sentence, value injected via sprintf
+$msg = sprintf(gettext('This value cannot be more than %d characters long'), $n);
+
+// ❌ WRONG — page title split across fragments
+$title = gettext('New Payment') . " - $dep_Type" . gettext(' Deposit #') . " $id";
+
+// ✅ CORRECT
+$title = sprintf(gettext('New Payment - %1$s Deposit #%2$d'), $dep_Type, $id);
+
+// ❌ WRONG — result count
+echo mysqli_num_rows($rs) . gettext(' record(s) returned');
+
+// ✅ CORRECT
+echo sprintf(gettext('%d record(s) returned'), mysqli_num_rows($rs));
+```
+
+**Detection:** fragment msgids are identifiable in `locale/messages.po` by a leading or trailing space in the msgid string — e.g. `msgid " characters long"`. Open issue [#8772](https://github.com/ChurchCRM/CRM/issues/8772) tracks the known fragments still in the codebase.
+
+**Checklist addition:** Add `- [ ] No gettext() fragments — full sentence per call, sprintf for values` to your pre-commit review.
+
 ### Plural Forms
 
 ```php
@@ -564,6 +715,18 @@ window.CRM.notify('Operation completed');
 i18next.t('Hello, ' + name);  // name value won't translate
 ```
 
+**Do not wrap brand / technical literals in `i18next.t()`** — same rule as PHP. Brand names (`ChurchCRM`, `GitHub`, `Stripe`), protocol acronyms (`TLS`, `SMTP`, `SSL`), runtime/language names (`PHP`, `Node.js`), config keys (`date.timezone`), and placeholder examples (`name@example.com`) are literals, not UI copy — leave them unwrapped. See the full table and detection recipe in the PHP section's ["Do Not Wrap Brand / Technical Literals"](#do-not-wrap-brand--technical-literals----learned-2026-04-22---) subsection above.
+
+```javascript
+// ❌ WRONG - Brand/tech literal wrapped in i18next.t()
+el.textContent = i18next.t('ChurchCRM');
+el.placeholder = i18next.t('name@example.com');
+
+// ✅ CORRECT - Bare literal
+el.textContent = 'ChurchCRM';
+el.placeholder = 'name@example.com';
+```
+
 ### Notifications
 
 ```javascript
@@ -585,6 +748,8 @@ Before committing:
 
 - [ ] All new UI text wrapped with `gettext()` (PHP) or `i18next.t()` (JS)
 - [ ] No hardcoded user-facing strings
+- [ ] No brand / technical literals wrapped — see ["Do Not Wrap Brand / Technical Literals"](#do-not-wrap-brand--technical-literals----learned-2026-04-22---) (brand names, config keys, protocol acronyms, `name@example.com`-style placeholders all stay as bare literals)
+- [ ] No split-sentence fragments — each `gettext()` call wraps a complete sentence; dynamic values use `sprintf()` — see ["Never Split a Sentence"](#never-split-a-sentence-across-multiple-gettext-calls----learned-2026-04-22-)
 - [ ] If strings added: Ran `npm run locale:build`
 - [ ] If strings added: Ran `npm run build`
 - [ ] Committed `locale/terms/messages.po`

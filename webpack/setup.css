@@ -348,7 +348,7 @@ body {
 }
 
 .integrity-details-row td {
-  padding: 16px 20px !important;
+  padding: 16px 20px;
 }
 
 .integrity-details-header {
@@ -672,7 +672,7 @@ body {
 }
 
 .integrity-details-row td {
-  padding: 1rem 1.25rem !important;
+  padding: 1rem 1.25rem;
 }
 
 .integrity-details-header {

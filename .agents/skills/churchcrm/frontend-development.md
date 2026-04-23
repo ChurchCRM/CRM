@@ -1312,3 +1312,30 @@ function updateTitleFeedback() {
   titleFb.style.display = show ? "block" : "none";
 }
 ```
+
+### Direct jQuery Click Bindings Override Global Delegated Handlers <!-- learned: 2026-04-22 -->
+
+jQuery direct bindings (`$(".class").click(fn)`) fire **before** delegated handlers
+(`$(document).on("click", ".class", fn)`). When a global handler is registered in
+`CRMJSOM.js` and a page-specific JS file also binds the same selector directly,
+the page-specific handler wins — and the global handler never runs.
+
+The CI failure in `standard.person.delete.spec.js` traced to a stale handler
+in `MemberView.js` that redirected to `/v2/dashboard` instead of `/people/list`,
+overriding the correct delegated handler in `CRMJSOM.js`.
+
+**Rule:** When moving a click handler from a per-page JS file into the global
+delegated handler in `CRMJSOM.js`, **search and remove every direct binding for
+that selector across all page-specific JS files** before shipping.
+
+```bash
+# Find all direct bindings for a selector across webpack/ and src/skin/js/
+grep -r '\.delete-person\|\.AddToCart' webpack/ src/skin/js/ --include="*.js" --include="*.ts"
+```
+
+If the page-specific file no longer needs any code, replace it with a comment
+header only (never leave empty files — Webpack may warn):
+
+```js
+// Click handlers are registered globally in CRMJSOM.js.
+```

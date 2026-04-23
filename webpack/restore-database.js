@@ -94,7 +94,7 @@ function formatFileSize(bytes) {
   const k = 1024;
   const sizes = ["Bytes", "KB", "MB", "GB"];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
-  return parseFloat((bytes / k ** i).toFixed(2)) + " " + sizes[i];
+  return `${parseFloat((bytes / k ** i).toFixed(2))} ${sizes[i]}`;
 }
 
 /**
@@ -117,8 +117,7 @@ function handleRestoreSubmit($form) {
   // Validate file size if browser supports FileReader
   if (window.FileReader && file.size > window.CRM.maxUploadSizeBytes) {
     window.CRM.DisplayErrorMessage("/admin/api/database/restore", {
-      message:
-        i18next.t("The selected file exceeds this servers maximum upload size of") + ": " + window.CRM.maxUploadSize,
+      message: `${i18next.t("The selected file exceeds this servers maximum upload size of")}: ${window.CRM.maxUploadSize}`,
     });
     return;
   }
@@ -141,10 +140,10 @@ function handleRestoreSubmit($form) {
       if (data.Messages && data.Messages.length > 0) {
         const $messages = $("#restoreModalMessages");
         $messages.empty();
-        $.each(data.Messages, (index, value) => {
+        $.each(data.Messages, (_index, value) => {
           $("<div>")
             .addClass("alert alert-warning mt-2")
-            .html('<i class="fa-solid fa-exclamation-triangle mr-2"></i>' + value)
+            .html(`<i class="fa-solid fa-exclamation-triangle mr-2"></i>${value}`)
             .appendTo($messages);
         });
       }
@@ -157,7 +156,7 @@ function handleRestoreSubmit($form) {
 
       // Log out the user via API (session will be invalid after DB restore)
       $.ajax({
-        url: window.CRM.root + "/session/end",
+        url: `${window.CRM.root}/session/end`,
         type: "GET",
       });
 
@@ -169,14 +168,14 @@ function handleRestoreSubmit($form) {
 
         if (countdown <= 0) {
           clearInterval(countdownInterval);
-          window.location.href = window.CRM.root + "/";
+          window.location.href = `${window.CRM.root}/`;
         }
       }, 1000);
     })
-    .fail((xhr, status, error) => {
+    .fail((xhr, _status, _error) => {
       let errorMessage = i18next.t("Restore failed. Please check the backup file and try again.");
 
-      if (xhr.responseJSON && xhr.responseJSON.message) {
+      if (xhr.responseJSON?.message) {
         errorMessage = xhr.responseJSON.message;
       }
 
