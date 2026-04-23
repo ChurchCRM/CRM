@@ -119,7 +119,7 @@ window.CRM.VerifyThenLoadAPIContent = (url) => {
   window.jQuery
     .ajax({ method: "HEAD", url: url })
     .done(() => {
-      window.open(url);
+      window.open(url, "_blank", "noopener,noreferrer");
     })
     .fail(() => {
       window.jQuery
@@ -263,7 +263,7 @@ window.CRM.groups = {
       window.jQuery("#targetGroupSelection").parents(".bootbox").removeAttr("tabindex");
       const groupEl = document.getElementById("targetGroupSelection");
       if (groupEl && groupEl.tomselect) groupEl.tomselect.destroy();
-      const groupTS = new TomSelect(groupEl, {
+      new TomSelect(groupEl, {
         valueField: "id",
         labelField: "text",
         searchField: "text",
@@ -634,18 +634,16 @@ window.CRM.renderEventActionMenu = (eventId, eventTitle, options) => {
       e.stopPropagation();
       const $btn = $(this);
       const eventId = $btn.data("event_id");
-      // The data-event_title attribute is already HTML-escaped by
-      // renderEventActionMenu(), so jQuery's .data() returns the escaped form
-      // (e.g. "Sunday &amp; Friends"). Embedding it directly in the bootbox
-      // message HTML preserves the correct rendering — calling escapeHtml()
-      // again would double-escape (e.g. "&amp;amp;").
-      const eventTitle = $btn.data("event_title");
+      // jQuery's .data() returns the browser-decoded attribute value, so the
+      // escaping applied by renderEventActionMenu() is undone here. Re-escape
+      // before embedding into the bootbox HTML message to prevent XSS.
+      const eventTitle = window.CRM.escapeHtml(String($btn.data("event_title") || ""));
       bootbox.confirm({
         title: i18next.t("Delete this event?"),
         message:
           i18next.t("Deleting an event will also delete all attendance counts. This cannot be undone.") +
           " <b>" +
-          String(eventTitle || "") +
+          eventTitle +
           "</b>",
         buttons: {
           cancel: { label: '<i class="ti ti-x"></i>' + i18next.t("Cancel") },
