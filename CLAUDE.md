@@ -18,7 +18,7 @@ Structured development skills live in `.agents/skills/`. **Always consult the re
 | New API endpoint | `api-development.md` → `service-layer.md` → `slim-4-best-practices.md` → `security-best-practices.md` |
 | Migrate legacy page | `routing-architecture.md` → `admin-mvc-migration.md` → `frontend-development.md` |
 | Database / ORM work | `database-operations.md` → `db-schema-migration.md` |
-| UI / frontend changes | `bootstrap-5-migration.md` → `frontend-development.md` → `webpack-typescript.md` |
+| UI / frontend changes | `responsive-design-guidelines.md` → `bootstrap-5-migration.md` → `frontend-development.md` → `webpack-typescript.md` |
 | i18n / translations | `i18n-localization.md` → `frontend-development.md` |
 | Security issue | `security-best-practices.md` → `authorization-security.md` |
 | Plugin work | `plugin-system.md` → `plugin-development.md` |
@@ -128,6 +128,28 @@ Even if you are confident the changes are correct, even if the user said "fix th
 
 @.agents/skills/churchcrm/git-workflow.md
 
+### Always Resolve PR Comments After Push
+
+After every push to a PR branch, resolve the open review threads that the just-pushed commit addresses.
+
+1. Fetch the PR review threads (`pull_request_read` → `get_review_comments`).
+2. For each thread that the new commit fixes, resolve it via `mcp__github__resolve_review_thread`.
+3. If the MCP tool can't surface the thread node ID (current limitation of `get_review_comments`), fall back to posting a single PR comment listing each addressed thread by URL + the commit SHA that fixed it.
+
+Never leave addressed-but-unresolved review threads dangling after a push.
+
+### Feature Adds and Big Refactors Require a Docs Task
+
+Any PR that adds a user-visible feature, renames/moves a route, or materially refactors behavior users interact with MUST be accompanied by a sibling GitHub issue for updating the user docs at [docs.churchcrm.io](https://docs.churchcrm.io).
+
+Before opening the PR:
+
+1. Open (or identify) a `documentation` issue in the same project/milestone as the feature issue, scoped to the user-doc changes needed.
+2. Link the docs issue from the PR description ("Docs: #XXXX").
+3. The feature issue / milestone cannot be closed until the docs issue is also resolved.
+
+Rule of thumb: if a user's workflow, on-screen terminology, CSV format, route URL, or setting changes, a docs issue is required. Internal refactors with no user-visible surface change are exempt.
+
 ---
 
 ## Test Review & Commit Workflow
@@ -154,7 +176,7 @@ When fixing a failed test:
 
 - `cypress-testing.md` — API patterns, session setup, data handling
 - `database-operations.md` — ORM query patterns
-- `webpack-typescript.md` — React/component patterns
+- `webpack-typescript.md` — JS/TS module patterns
 - `code-standards.md` — General best practices
 
 **Remember: Skills get documented the moment you learn something. Never defer skill updates.**
@@ -193,3 +215,19 @@ When fixing a failed test:
 - Do not skip build/lint even for "small" or "obvious" fixes
 - Do not commit even when the user says "fix it" — build + review first
 - Silence or follow-up questions from the user are NOT approval to commit
+
+### Pre-push enforcement (Biome lint)
+
+**Biome lint must pass before any `git push`.** This is enforced both ways:
+
+- **Git hook**: `.githooks/pre-push` runs `npm run lint` automatically. The
+  hook is wired up by the `prepare` script in `package.json` (sets
+  `core.hooksPath=.githooks`), so `npm install` enables it for every clone.
+  The hook is a no-op in CI (`$CI`/`$GITHUB_ACTIONS`).
+- **Agent rule**: agents must run `npm run lint` themselves *before* asking
+  for push approval — never rely on the hook to surface failures. Show the
+  output in the conversation.
+
+**Never use `git push --no-verify`** unless the user explicitly authorizes
+it for an emergency hot-fix AND the PR description names the rule that was
+bypassed and why. See [`git-workflow.md → Mandatory Pre-Push Biome Check`](.agents/skills/churchcrm/git-workflow.md).

@@ -121,6 +121,18 @@ return SlimUtils::renderErrorJSON($response, gettext('Validation failed'), ['err
 - ❌ Return raw exception messages (use gettext() for localization and sanitization)
 - ❌ Log exceptions separately in routes (renderErrorJSON handles all logging)
 
+### Never Throw HttpBadRequestException in Route Handlers <!-- learned: 2026-04-07 -->
+
+API route handlers must use `SlimUtils::renderErrorJSON()` instead of throwing `HttpBadRequestException`. Thrown exceptions can expose stack traces and bypass the custom error handler. `HttpNotFoundException` is fine to throw (Slim handles it natively), but `HttpBadRequestException` should return a JSON error response directly.
+
+```php
+// ✅ CORRECT
+return SlimUtils::renderErrorJSON($response, gettext('invalid event type id'), [], 400);
+
+// ❌ WRONG — can expose stack traces
+throw new HttpBadRequestException($request, gettext('invalid event type id'));
+```
+
 ## API Response Standardization
 
 **Maintain consistent error response format across all APIs** to prevent client-side errors.
@@ -141,14 +153,19 @@ return SlimUtils::renderErrorJSON($response, gettext('Upload failed'), [], 400, 
 var errorText = error.message || error.error || error.msg || i18next.t("Unknown error");
 ```
 
-## Middleware Order (CRITICAL - Slim 4 uses LIFO)
+## Middleware Order (CRITICAL - Slim 4 uses LIFO) <!-- learned: 2026-04-07 -->
+
+> **Full reference:** [`slim-4-best-practices.md` → Middleware Order](./slim-4-best-practices.md)
+
+**TL;DR:** `addErrorMiddleware()` MUST be called AFTER `addRoutingMiddleware()`. Wrong order → raw 500 on 404s.
 
 ```php
 $app->addBodyParsingMiddleware();
 $app->addRoutingMiddleware();
-$app->add(CorsMiddleware::class);          // Last added, runs FIRST
-$app->add(AuthMiddleware::class);          // Runs SECOND
-$app->add(VersionMiddleware::class);       // First added, runs LAST
+$errorMiddleware = $app->addErrorMiddleware(true, true, true);  // AFTER routing
+SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
+$app->add(new CorsMiddleware());
+$app->add(AuthMiddleware::class);
 ```
 
 ## HTTP Headers (RFC 7230)
@@ -450,6 +467,31 @@ return $response;
 
 **Feature-flag middleware on export routes** — Only add `SundaySchoolEnabledMiddleware` (or similar) to routes whose content is *exclusively* about that feature. General exports that merely enrich data with SS info should NOT be gated — block only the SS-specific logic inside the handler when the feature is off.
 
+### Route All Check-in/Check-out Through the Event Model <!-- learned: 2026-04-08 -->
+
+When migrating legacy pages, refactor **all** code paths to use the same model method
+instead of copy-pasting the persistence logic. For event check-in, the canonical entry
+points are `Event::checkInPerson()` and `Event::checkOutPerson()` — they set consistent
+timestamps, create the timeline Note (`type='event'`), and fire hooks.
+
+Even cart-to-event bulk check-in — which historically created `EventAttend` rows directly —
+should call the model method so every path produces identical side effects.
+
+```php
+// ❌ Direct ORM bypasses model logic (no timeline note, inconsistent timestamps)
+$ea = new EventAttend();
+$ea->setEventId($eventId)->setPersonId($personId)->save();
+
+// ✅ Use model method — sets timestamps, writes timeline note, fires hooks
+$event = EventQuery::create()->findPk($eventId);
+if ($event !== null) {
+    $event->checkInPerson($personId);
+}
+```
+
+Same rule applies anywhere a "canonical" mutator method exists on a model — prefer the
+model method over hand-rolling the same sequence of ORM calls.
+
 ### Note Privacy: nte_Private Stores personId, Not a Boolean <!-- learned: 2026-03-29 -->
 
 `nte_Private` is **not** a boolean flag. It stores either `0` (public) or the author's `personId` (private). `Note::isVisible($personId)` checks `getPrivate() === $personId`, so storing `1` instead of a real personId means only person with ID=1 can see the note.
@@ -473,3 +515,155 @@ $private = !empty($input['private']) ? 1 : 0;
 **OpenAPI info:** `src/api/openapi/openapi-public-info.php`, `src/api/openapi/openapi-private-info.php`
 **Generated specs:** `CRM/openapi/public-api.yaml`, `CRM/openapi/private-api.yaml`
 **Documentation site:** `docs.churchcrm.io/openapi/`, `docs.churchcrm.io/docs/public-api/`, `docs.churchcrm.io/docs/private-api/`
+
+### HTML + JSON Content Negotiation in Middleware <!-- learned: 2026-04-22 -->
+
+Middleware that serves both a browser-facing HTML route and a JSON API
+route under the same auth/validation logic (e.g. `PublicCalendarMiddleware`
+gating both `/external/calendars/{token}` and `/api/public/calendar/{token}/...`)
+should centralise error-response rendering and pick the format by
+**path prefix first, Accept header as fallback** — never return a bare
+`$response->withStatus(403)` with no body, which produces a blank white
+screen for the HTML consumer.
+
+```php
+private function renderError(
+    ServerRequestInterface $request,
+    ResponseInterface $response,
+    int $status,
+    string $title,
+    string $message,
+    string $icon = 'ti-calendar-off',
+): ResponseInterface {
+    if ($this->prefersJson($request)) {
+        return SlimUtils::renderJSON($response, [
+            'error' => $title, 'message' => $message,
+        ], $status);
+    }
+    $renderer = new PhpRenderer(SystemURLs::getDocumentRoot() . '/external/templates/calendar/');
+    return $renderer->render($response->withStatus($status), 'error.php', [
+        'title' => $title, 'message' => $message, 'icon' => $icon,
+    ]);
+}
+
+private function prefersJson(ServerRequestInterface $request): bool
+{
+    $path = $request->getUri()->getPath();
+    if (str_contains($path, '/api/')) return true;
+    $accept = strtolower($request->getHeaderLine('Accept'));
+    return str_contains($accept, 'application/json') && !str_contains($accept, 'text/html');
+}
+```
+
+The HTML branch renders a branded template wrapped in `HeaderNotLoggedIn`
+/ `FooterNotLoggedIn` using `ChurchMetaData::getChurchLogoURL()` so the
+recipient of a shared link sees the church's identity, not a raw 4xx.
+
+### AttendanceCounts Round-trip Security <!-- learned: 2026-04-22 -->
+
+API endpoints that accept nested `AttendanceCounts` arrays (e.g.
+`POST /api/events`, `POST /api/events/:id`) MUST NOT trust client-supplied
+`id`, `name`, or `notes`. The attack surface:
+
+1. `id` — writing counts for arbitrary category IDs not belonging to the
+   event's type, or overwriting unrelated rows.
+2. `name` — tampering with the displayed category label (potential
+   stored XSS if re-rendered unsanitized).
+3. `notes` — injecting raw HTML that renders in reports or dashboards.
+
+Defenses, applied in a shared helper (`applyEventExtendedFields()`):
+
+```php
+// Whitelist countId by EventCountName rows for the event's type.
+$typeId = (int) $event->getType();
+$allowedNames = [];
+foreach (EventCountNameQuery::create()->filterByTypeId($typeId)->find() as $cn) {
+    $allowedNames[(int) $cn->getId()] = (string) $cn->getName();
+}
+
+foreach ($input['AttendanceCounts'] as $row) {
+    $countId = (int) ($row['id'] ?? 0);
+    if ($countId <= 0 || !array_key_exists($countId, $allowedNames)) {
+        continue; // silently drop foreign ids
+    }
+    $count = EventCountsQuery::create()->findPk([$eventId, $countId])
+        ?? (new EventCounts())->setEvtcntEventid($eventId)->setEvtcntCountid($countId);
+    // Canonical name comes from the DB, not the payload.
+    $count->setEvtcntCountname($allowedNames[$countId]);
+    $count->setEvtcntCountcount((int) ($row['count'] ?? 0));
+    // Notes are plain text — strip tags server-side.
+    $count->setEvtcntNotes(InputUtils::sanitizeText((string) ($row['notes'] ?? '')));
+    $count->save();
+}
+```
+
+Apply the same pattern for any other nested "rows belonging to a parent
+entity" API shape.
+
+### API-canonical Field Names, Shared `applyExtendedFields` Helper <!-- learned: 2026-04-22 -->
+
+When unifying legacy form POST handlers into a single API endpoint, keep
+the API's field names canonical (`Title`, `Type`, `Start`, `End`) and
+extract the "extended fields" (InActive / LinkedGroupId / AttendanceCounts
+for events) into a helper that `newXxx()` and `updateXxx()` both call
+**after** saving the main entity. This keeps the two write paths
+idempotent and impossible to drift:
+
+```php
+function newEvent(...) {
+    // ... create, setTitle, setEventType, setCalendars, save
+    applyEventExtendedFields($event, $input);
+    return SlimUtils::renderSuccessJSON($response);
+}
+
+function updateEvent(...) {
+    $Event->fromArray($input); // copies Title/Desc/Start/End/InActive automatically
+    // ... setCalendars, save
+    applyEventExtendedFields($Event, $input);
+    return SlimUtils::renderSuccessJSON($response);
+}
+```
+
+Enrich the `GET /{id}` response to include the extended fields so the UI
+doesn't need extra round-trips — fall back to type defaults when the
+entity has no rows yet (e.g. for Attendance Counts, return the event
+type's `EventCountName` categories with `count: 0`).
+
+### League\Csv `SyntaxError` — Catch for Clean 400 on Duplicate Column Headers <!-- learned: 2026-04-21 -->
+
+`League\Csv\Reader::getHeader()` throws `League\Csv\SyntaxError` when the CSV has duplicate column names. Without a catch this surfaces as an unhandled 500. Always wrap the upload endpoint's header read in a try/catch and return a 400 with a human-readable message:
+
+```php
+use League\Csv\Reader;
+use League\Csv\SyntaxError;
+
+try {
+    $csv = Reader::createFromPath($tmpPath, 'r');
+    $csv->setHeaderOffset(0);
+    $headers = $csv->getHeader(); // throws SyntaxError on duplicates
+} catch (SyntaxError $e) {
+    return SlimUtils::renderErrorJSON($response, 'Your CSV has duplicate column names. Each column header must be unique.', 400);
+}
+```
+
+This is the only checked exception `League\Csv` throws for malformed headers; other parse errors surface as standard `Exception`.
+
+### CSV Template Column Uniqueness — Category-Suffix Pattern <!-- learned: 2026-04-21 -->
+
+When generating a CSV template that includes custom fields and properties from multiple extension buckets (PersonCustom, FamilyCustom, PersonProperty, FamilyProperty), column name collisions are inevitable. Use a `"{name} ({category})"` suffix to keep headers unique and visible in Excel, and fall back to a `(2)`, `(3)` counter for residual duplicates within the same category:
+
+```php
+$seen = [];
+foreach ($fields as &$field) {
+    $candidate = $field['name'] . ' (' . $field['category'] . ')';
+    if (isset($seen[$candidate])) {
+        $seen[$candidate]++;
+        $candidate .= ' (' . $seen[$candidate] . ')';
+    } else {
+        $seen[$candidate] = 1;
+    }
+    $field['header'] = $candidate; // stored in English — NOT gettext()
+}
+```
+
+Store the header in **English only** (never wrapped in `gettext()`). The header must be locale-stable: the same CSV downloaded in French and re-uploaded under English locale must still auto-map correctly. The category suffix (`Person Custom Fields`, `Family Properties`, etc.) lives in the PHP constant, not the translation layer.

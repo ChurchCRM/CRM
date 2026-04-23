@@ -12,6 +12,7 @@ use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
 use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -399,4 +400,138 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
 
         return SlimUtils::renderJSON($response, $result, $success ? 200 : 400);
     })->add(EditRecordsRoleAuthMiddleware::class);
+
+    /**
+     * @OA\Delete(
+     *     path="/family/{familyId}",
+     *     summary="Delete a family record and optionally its members (DeleteRecord role required)",
+     *     tags={"Families"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Parameter(name="deleteMembers", in="query", required=false, @OA\Schema(type="boolean", default=false),
+     *         description="If true, also delete all family members. If false, members are unlinked from the family."),
+     *     @OA\Response(response=200, description="Family deleted"),
+     *     @OA\Response(response=403, description="DeleteRecord role required or family has donations"),
+     *     @OA\Response(response=404, description="Family not found")
+     * )
+     */
+    $group->delete('', function (Request $request, Response $response, array $args): Response {
+        /** @var Family $family */
+        $family = $request->getAttribute('family');
+        $familyId = $family->getId();
+        $deleteMembers = filter_var($request->getQueryParams()['deleteMembers'] ?? 'false', FILTER_VALIDATE_BOOLEAN);
+
+        // Check for donations — cannot delete a family with payment records unless finance-authorized
+        $pledgeCount = \ChurchCRM\model\ChurchCRM\PledgeQuery::create()
+            ->filterByFamId($familyId)
+            ->filterByPledgeOrPayment('Payment')
+            ->count();
+        if ($pledgeCount > 0 && !AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
+            return SlimUtils::renderErrorJSON($response, gettext('Cannot delete a family with donation records. Contact a finance administrator.'), [], 403);
+        }
+
+        // Delete associated notes
+        \ChurchCRM\model\ChurchCRM\NoteQuery::create()
+            ->filterByFamId($familyId)
+            ->delete();
+
+        // Delete family pledges (non-payment)
+        \ChurchCRM\model\ChurchCRM\PledgeQuery::create()
+            ->filterByFamId($familyId)
+            ->filterByPledgeOrPayment('Pledge')
+            ->delete();
+
+        // Remove family property assignments
+        $familyProps = \ChurchCRM\model\ChurchCRM\PropertyQuery::create()
+            ->filterByProClass('f')
+            ->find();
+        foreach ($familyProps as $prop) {
+            \ChurchCRM\model\ChurchCRM\RecordPropertyQuery::create()
+                ->filterByPropertyId($prop->getProId())
+                ->filterByRecordId($familyId)
+                ->delete();
+        }
+
+        if ($deleteMembers) {
+            \ChurchCRM\model\ChurchCRM\PersonQuery::create()
+                ->filterByFamId($familyId)
+                ->find()
+                ->delete();
+        } else {
+            // Unlink members from the family
+            $members = \ChurchCRM\model\ChurchCRM\PersonQuery::create()
+                ->filterByFamId($familyId)
+                ->find();
+            foreach ($members as $member) {
+                $member->setFamId(0);
+                $member->save();
+            }
+        }
+
+        // Remove custom field data via ORM
+        \ChurchCRM\model\ChurchCRM\FamilyCustomQuery::create()
+            ->filterByFamId($familyId)
+            ->delete();
+
+        // Delete the family record itself. Family::preDelete() removes the
+        // photo file from disk; member deletion above triggers Person::preDelete
+        // for each member, which cleans up their photos too (#1697).
+        $family->delete();
+
+        return SlimUtils::renderJSON($response, ['success' => true]);
+    })->add(DeleteRecordRoleAuthMiddleware::class);
+
+    /**
+     * @OA\Post(
+     *     path="/family/{familyId}/donations/move",
+     *     summary="Move all donations from this family to another (Finance role required)",
+     *     tags={"Families"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\RequestBody(required=true,
+     *         @OA\JsonContent(
+     *             required={"targetFamilyId"},
+     *             @OA\Property(property="targetFamilyId", type="integer", description="Family ID to move donations to")
+     *         )
+     *     ),
+     *     @OA\Response(response=200, description="Donations moved"),
+     *     @OA\Response(response=400, description="Invalid target family"),
+     *     @OA\Response(response=403, description="Finance role required")
+     * )
+     */
+    $group->post('/donations/move', function (Request $request, Response $response, array $args): Response {
+        if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
+            return SlimUtils::renderErrorJSON($response, gettext('Finance permission required'), [], 403);
+        }
+
+        /** @var Family $family */
+        $family = $request->getAttribute('family');
+        $body = $request->getParsedBody();
+        $targetFamilyId = (int) ($body['targetFamilyId'] ?? 0);
+
+        if ($targetFamilyId <= 0 || $targetFamilyId === $family->getId()) {
+            throw new \Slim\Exception\HttpBadRequestException($request, gettext('Invalid target family'));
+        }
+
+        $targetFamily = FamilyQuery::create()->findPk($targetFamilyId);
+        if ($targetFamily === null) {
+            throw new HttpNotFoundException($request, gettext('Target family not found'));
+        }
+
+        // Move all pledges/payments to the target family
+        $pledges = \ChurchCRM\model\ChurchCRM\PledgeQuery::create()
+            ->filterByFamId($family->getId())
+            ->find();
+        foreach ($pledges as $pledge) {
+            $pledge->setFamId($targetFamilyId);
+            $pledge->setDateLastEdited(date('Y-m-d'));
+            $pledge->setEditedBy(AuthenticationManager::getCurrentUser()->getId());
+            $pledge->save();
+        }
+
+        return SlimUtils::renderJSON($response, [
+            'success' => true,
+            'movedCount' => $pledges->count(),
+        ]);
+    });
 })->add(FamilyMiddleware::class);

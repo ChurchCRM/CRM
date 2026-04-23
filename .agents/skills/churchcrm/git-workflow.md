@@ -262,7 +262,7 @@ Before marking PR ready for review, ensure:
 
 ### Code Quality
 - [ ] PHP syntax validation passed (`npm run build:php`)
-- [ ] No linting errors (`npm run lint`)
+- [ ] **Biome lint passed (`npm run lint`) — also enforced by `.githooks/pre-push`**
 - [ ] Code follows project standards (read nearby files)
 
 ### Database & ORM
@@ -388,6 +388,41 @@ Remove every reference found before (or as part of) the deletion commit:
 8. git add → git commit → git push
 ```
 
+### Mandatory Pre-Push Biome Check <!-- learned: 2026-04-09 -->
+
+**Biome lint MUST pass before any `git push`.** This is enforced two ways
+so neither humans nor agents can ship code that fails CI lint:
+
+1. **Git hook** — `.githooks/pre-push` runs `npm run lint` automatically.
+   The hooks path is wired up by the `prepare` script in `package.json`
+   (`git config core.hooksPath .githooks`), so `npm install` enables it
+   for every clone. The hook is a no-op inside CI (`$CI` / `$GITHUB_ACTIONS`)
+   because the lint job runs there as a separate step.
+
+2. **Agent checklist** — agents must run `npm run lint` themselves before
+   even *asking* for push approval. Do not rely on the hook to catch
+   failures; surface them in the conversation so the user sees them.
+
+**Bypass policy:**
+
+```bash
+# ❌ NEVER (silent bypass — hides failing lint from reviewer)
+git push --no-verify
+
+# ✅ Only acceptable when:
+#    - The user explicitly authorizes it for an emergency hot-fix, AND
+#    - The PR description calls out exactly which rule was bypassed and why
+git push --no-verify   # bypassing lint per user approval — see PR body
+```
+
+If `npm run lint` ever times out or fails for an unrelated reason
+(e.g. missing `node_modules`), fix the root cause — never paper over
+it by removing the hook or bypassing.
+
+**Why this is hardcoded:** Lint failures used to land on master because
+contributors pushed before CI feedback arrived. The pre-push hook closes
+that loop locally so feedback is instant and the master branch stays green.
+
 **Examples:**
 
 ```
@@ -504,6 +539,34 @@ $users = UserQuery::create()
 
 ---
 
+## Branch Consolidation — Merging Multiple Feature Branches <!-- learned: 2026-04-07 -->
+
+When consolidating multiple feature branches into one:
+
+1. **Audit each branch** before merging:
+   - `git log master..branch --oneline` — identify unique commits per branch
+   - `git diff master...branch --name-only` — find overlapping files
+   - `git branch --merged master` — identify already-merged branches (safe to delete)
+
+2. **Merge in order of increasing conflict risk** (clean merges first)
+
+3. **Conflict resolution patterns:**
+   - Modify/delete conflicts where the file was refactored away in master — accept the deletion
+   - Import conflicts from merges — keep all imports from both sides
+   - Overlapping edits to the same file — manually review and combine intent from both branches
+
+```bash
+# Example: consolidating branch-a and branch-b into branch-combined
+git checkout -b branch-combined master
+git merge branch-a            # clean merge first
+git merge branch-b            # higher-conflict merge second
+# Resolve any conflicts, then:
+git add <resolved-files>
+git commit -m "Merge branch-b into branch-combined"
+```
+
+---
+
 ## Troubleshooting
 
 ### Commit Message Mistakes
@@ -559,6 +622,80 @@ git push origin fix/issue-1234-description --force-with-lease
 
 ---
 
+## Dependabot Workflow <!-- learned: 2026-04-21 -->
+
+The repo uses grouped Dependabot updates configured in [.github/dependabot.yml](../../../.github/dependabot.yml). When reviewing or maintaining these PRs:
+
+### Pinning away from a specific version
+
+When a published release has regressions we don't want, add a scoped `ignore:` under the npm `updates` entry — **never** rely on `@dependabot ignore` PR comments alone. Comments live in Dependabot's internal state and can be lost when the config is rewritten; the YAML is durable.
+
+```yaml
+# .github/dependabot.yml
+- package-ecosystem: "npm"
+  directory: "/"
+  open-pull-requests-limit: 5
+  ignore:
+    # Pinned: quill 2.0.3 has regressions we don't want to pick up.
+    # Remove this entry when a newer 2.x release addresses them.
+    - dependency-name: "quill"
+      versions: ["2.0.3"]    # blocks just 2.0.3 — 2.0.4+ still proposed
+```
+
+Variants: `update-types: ["version-update:semver-patch"]` to block *all* patches of a package, or a bare `dependency-name` with no `versions`/`update-types` to pin the package entirely.
+
+### Detecting deprecated `@types/*` stubs
+
+Many libraries (e.g. `dompurify@3.x`) now ship their own `.d.ts` via the `types`/`exports` fields in their own `package.json`, which makes the `@types/*` companion obsolete. `npm` marks these stubs deprecated in `package-lock.json`:
+
+```jsonc
+"node_modules/@types/dompurify": {
+  "deprecated": "This is a stub types definition. dompurify provides its own type definitions, so you do not need this installed."
+}
+```
+
+**Action on a Dependabot `@types/*` bump:** before merging, grep `package-lock.json` for `"deprecated":` on that entry. If it's a stub, open a follow-up PR that **removes** the stub from `package.json` instead of bumping it. Verify by checking the real package's `node_modules/<pkg>/package.json` for a `types` or `exports.types` field.
+
+### Concurrent Dependabot PR conflicts
+
+Dependabot groups touch overlapping regions of `package.json` / `package-lock.json`, so once one group PR merges, sibling PRs (or follow-up branches cut from the pre-merge master) hit merge conflicts on those two files. Recipe to resolve:
+
+```bash
+git checkout <your-branch>
+git fetch origin master
+git merge origin/master                                 # conflict in package.json / package-lock.json
+git checkout --theirs package.json package-lock.json    # take master's full state
+# Re-apply your surgical edit (e.g. delete a single line)
+npm install --no-audit --no-fund                        # regenerate lockfile cleanly
+git add package.json package-lock.json
+git commit                                              # merge commit
+```
+
+Do not hand-edit the lockfile merge markers — `npm install` is the source of truth. Running `npm run lint` + `npm run build:webpack` after resolution catches any missed constraint conflicts.
+
+### Reviewing grouped `npm-minor-patch` PRs
+
+Grouped bumps lump patch and minor updates into one PR. Scan-review approach:
+
+1. **Sort by risk:** patches ≤ dev-deps < minors < majors. Dev-only deps (in `devDependencies` or used only in `locale/scripts/`, `scripts/`, etc.) are low-risk regardless of semver — they never ship to end users.
+2. **Call out every minor explicitly:** the group label says "minor-patch" but a single minor bump in a UI library (e.g. `tom-select`) can change DOM behavior. Link its release notes in the review.
+3. **Cross-check against MEMORY.md Critical Patterns:** many libraries here have workarounds documented (TomSelect `value=""` bug, `marked.parse()` XSS, etc.). A bump may invalidate or re-validate those workarounds.
+4. **Green CI is the gate:** the UI Cypress suites (`test-root ui`, `test-subdir ui`) exercise TomSelect, DataTables, and calendar-event-editor directly. A fully-green run is sufficient sign-off for grouped patch/minor bumps.
+
+### Dependabot PR state fields
+
+```bash
+gh pr view <n> --json mergeable,mergeStateStatus
+```
+
+- `mergeable: MERGEABLE` — **git** conflicts absent, says nothing about CI.
+- `mergeStateStatus: UNSTABLE` — failing or pending required checks. A re-run may clear it.
+- `mergeStateStatus: CLEAN` — all required checks pass; safe to merge.
+
+Dependabot force-pushes its own branches frequently (rebase/re-resolve). If `git merge origin/master` against a Dependabot branch reports "Already up to date" when you expected conflicts, Dependabot likely just rebased it under you.
+
+---
+
 ## Related Skills
 
 - [Routing & Project Architecture](./routing-architecture.md) - Where to put code
@@ -567,4 +704,4 @@ git push origin fix/issue-1234-description --force-with-lease
 
 ---
 
-Last updated: March 3, 2026
+Last updated: April 21, 2026

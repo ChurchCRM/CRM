@@ -121,7 +121,7 @@ describe("Photo Gallery Action Icons", () => {
     beforeEach(() => cy.setupStandardSession());
 
     it("shows 3 action icons per card", () => {
-        cy.visit("v2/people/photos?photosOnly=0");
+        cy.visit("people/photos?photosOnly=0");
         cy.get("#photo-grid .card", { timeout: 10000 }).first().within(() => {
             // All 3 icons should be present (some may be disabled)
             cy.get(".ti-phone").should("exist");
@@ -131,7 +131,7 @@ describe("Photo Gallery Action Icons", () => {
     });
 
     it("shows Not Classified for unclassified people", () => {
-        cy.visit("v2/people/photos?photosOnly=0");
+        cy.visit("people/photos?photosOnly=0");
         // At least one person should show "Not Classified"
         cy.contains("Not Classified").should("exist");
     });

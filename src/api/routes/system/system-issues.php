@@ -2,6 +2,7 @@
 
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\VersionUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
@@ -47,8 +48,8 @@ $app->post('/issues', function (Request $request, Response $response, array $arg
         'Platform Information | ' . php_uname($mode = 'a') . "\r\n" .
         'PHP Version | ' . phpversion() . "\r\n" .
         'SQL Version | ' . SystemService::getDBServerVersion() . "\r\n" .
-        'ChurchCRM Version |' . $_SESSION['sSoftwareInstalledVersion'] . "\r\n" .
-        'Reporting Browser |' . $_SERVER['HTTP_USER_AGENT'] . "\r\n" .
+        'ChurchCRM Version |' . VersionUtils::getInstalledVersion() . "\r\n" .
+        'Reporting Browser |' . ($_SERVER['HTTP_USER_AGENT'] ?? 'API') . "\r\n" .
         'Prerequisite Status |' . SystemService::getPrerequisiteStatus() . "\r\n";
 
     return SlimUtils::renderJSON($response, ['issueBody' => $issueDescription]);

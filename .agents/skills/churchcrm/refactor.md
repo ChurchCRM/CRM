@@ -180,5 +180,26 @@ summary: |
 - See `src/Include/Functions.php` for global helpers used during migration.
 - Follow Perpl ORM patterns described in the repository's standards docs.
 
+## Removing Methods Called From `ChurchCRMReleaseManager::doUpgrade()` <!-- learned: 2026-04-22 -->
+
+`ChurchCRMReleaseManager::doUpgrade()` runs inside a single PHP request that:
+
+1. Loads the **old** `ChurchCRMReleaseManager` class from the installed version into PHP memory.
+2. Extracts and moves the **new** version's files into place on disk.
+3. Continues executing the **old** (in-memory) `doUpgrade()` method, which autoloads any class it references *from the new files on disk*.
+
+Consequence: if the old `doUpgrade()` calls `SomeService::someMethod()` and you have removed `someMethod()` from `SomeService` in the new release, the upgrade will throw a fatal `Call to undefined method` — *after* file moves and DB migrations already succeeded. The upgrade has actually completed; the user just sees a red banner.
+
+This hit issue #8729 (6.8.1 → 7.2.1): commit `9ab2326d7` removed `AppIntegrityService::clearIntegrityCache()` and the caller at `ChurchCRMReleaseManager.php:542`, but installs on 6.8.1 still held the old caller in memory during the jump, so they hit the fatal despite the upgrade succeeding.
+
+**Rules before removing a public static method from `src/ChurchCRM/Service/*` or any class `ChurchCRMReleaseManager` touches:**
+
+- Grep the *previous three minor release tags* for callers, not just current master:
+  ```bash
+  git grep -n "MyClass::myMethod\b" <tag-of-previous-release>
+  ```
+- If any older release's `ChurchCRMReleaseManager` calls it: **keep the method as a no-op shim** until all supported upgrade sources have moved past it, or explicitly test the upgrade path from the oldest supported version.
+- If keeping a shim is not viable, update release notes to warn that the upgrade will show a harmless error toast but did succeed, and that the user should reload.
+
 ---
 Generated: Refactor skill for feature-by-feature CRM migration.

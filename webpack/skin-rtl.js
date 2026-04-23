@@ -12,6 +12,7 @@
 
 // Import Tabler RTL CSS (Bootstrap 5 admin UI — RTL variant)
 import "@tabler/core/dist/css/tabler.rtl.min.css";
+import "@tabler/core/dist/css/tabler-themes.rtl.min.css";
 
 // Import all shared CSS (no JS — JS stays in churchcrm.min.js via skin-main.js)
 import "./skin-core-css";

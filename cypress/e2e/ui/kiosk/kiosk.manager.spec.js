@@ -9,8 +9,8 @@ describe("Kiosk Manager", () => {
         it("should display the Kiosk Manager page", () => {
             cy.visit("kiosk/admin");
             cy.contains("Kiosk Manager");
-            cy.contains("Enable new kiosk registration");
-            cy.contains("Active Kiosks");
+            cy.contains("Register New Device");
+            cy.contains("Kiosk Devices");
         });
 
         it("should display the kiosk registration toggle", () => {
@@ -28,8 +28,16 @@ describe("Kiosk Manager", () => {
         it("should have correct table columns", () => {
             cy.visit("kiosk/admin");
             cy.get("#KioskTable").should("exist");
-            // Wait for DataTable headers to load
-            cy.get("#KioskTable thead th").should("have.length.at.least", 5);
+            // Wait for DataTable headers to load — columns: Status, Kiosk Name, Assignment, Actions
+            cy.get("#KioskTable thead th").should("have.length.at.least", 4);
+        });
+
+        it("should display dashboard stat cards when kiosks exist", () => {
+            cy.visit("kiosk/admin");
+            // Stat cards are populated via JS after table loads; they hide when no kiosks
+            cy.get("#KioskTable_wrapper", { timeout: 10000 }).should("exist");
+            // Check the stat card container exists in DOM (may be hidden if no kiosks)
+            cy.get("#kioskStats").should("exist");
         });
     });
 
@@ -46,74 +54,8 @@ describe("Kiosk Manager", () => {
     });
 });
 
-describe("Kiosk API", () => {
-    describe("Admin API Access", () => {
-        beforeEach(() => {
-            cy.setupAdminSession();
-        });
-
-        it("should fetch kiosk devices list", () => {
-            cy.request({
-                method: "GET",
-                url: "/kiosk/api/devices",
-            }).then((response) => {
-                expect(response.status).to.equal(200);
-                expect(response.body).to.have.property("KioskDevices");
-                expect(response.body.KioskDevices).to.be.an("array");
-            });
-        });
-
-        it("should enable kiosk registration", () => {
-            cy.request({
-                method: "POST",
-                url: "/kiosk/api/allowRegistration",
-            }).then((response) => {
-                expect(response.status).to.equal(200);
-                expect(response.body).to.have.property("visibleUntil");
-            });
-        });
-    });
-
-    describe("Standard User API Access Denied", () => {
-        beforeEach(() => {
-            cy.setupStandardSession();
-        });
-
-        it("should deny access to non-admin users for kiosk API", () => {
-            cy.request({
-                method: "GET",
-                url: "/kiosk/api/devices",
-                failOnStatusCode: false,
-            }).then((response) => {
-                // Should get 401 or 403 or redirect
-                expect(response.status).to.be.oneOf([401, 403, 302]);
-            });
-        });
-
-        it("should deny access to allowRegistration for non-admin users", () => {
-            cy.request({
-                method: "POST",
-                url: "/kiosk/api/allowRegistration",
-                failOnStatusCode: false,
-            }).then((response) => {
-                expect(response.status).to.be.oneOf([401, 403, 302]);
-            });
-        });
-    });
-
-    describe("Unauthenticated API Access Denied", () => {
-        it("should deny access to unauthenticated users for kiosk API", () => {
-            cy.request({
-                method: "GET",
-                url: "/kiosk/api/devices",
-                failOnStatusCode: false,
-            }).then((response) => {
-                // Should get 401 or redirect to login
-                expect(response.status).to.be.oneOf([401, 302]);
-            });
-        });
-    });
-});
+// NOTE: pure-API kiosk tests (GET/POST/DELETE /kiosk/api/*, access control)
+// live in cypress/e2e/api/private/kiosk/kiosk.api.spec.js.
 
 describe("Kiosk Manager Workflow", () => {
     beforeEach(() => {
@@ -162,96 +104,6 @@ describe("Kiosk Manager Workflow", () => {
                 cy.visit("kiosk/admin");
                 cy.get("#KioskTable_wrapper").should("exist");
             }
-        });
-    });
-});
-
-describe("Kiosk Device Operations", () => {
-    let testKioskId = null;
-
-    beforeEach(() => {
-        cy.setupAdminSession();
-    });
-
-    it("should handle reload command for existing kiosk", () => {
-        cy.request({
-            method: "GET",
-            url: "/kiosk/api/devices",
-        }).then((response) => {
-            if (response.body.KioskDevices && response.body.KioskDevices.length > 0) {
-                testKioskId = response.body.KioskDevices[0].Id;
-                
-                cy.request({
-                    method: "POST",
-                    url: `/kiosk/api/devices/${testKioskId}/reload`,
-                }).then((reloadResponse) => {
-                    expect(reloadResponse.status).to.equal(200);
-                    expect(reloadResponse.body.success).to.equal(true);
-                });
-            } else {
-                cy.log("No kiosks available for testing reload command");
-            }
-        });
-    });
-
-    it("should handle identify command for existing kiosk", () => {
-        cy.request({
-            method: "GET",
-            url: "/kiosk/api/devices",
-        }).then((response) => {
-            if (response.body.KioskDevices && response.body.KioskDevices.length > 0) {
-                testKioskId = response.body.KioskDevices[0].Id;
-                
-                cy.request({
-                    method: "POST",
-                    url: `/kiosk/api/devices/${testKioskId}/identify`,
-                }).then((identifyResponse) => {
-                    expect(identifyResponse.status).to.equal(200);
-                    expect(identifyResponse.body.success).to.equal(true);
-                });
-            } else {
-                cy.log("No kiosks available for testing identify command");
-            }
-        });
-    });
-
-    it("should return 404 for non-existent kiosk", () => {
-        cy.request({
-            method: "POST",
-            url: "/kiosk/api/devices/99999/reload",
-            failOnStatusCode: false,
-        }).then((response) => {
-            expect(response.status).to.equal(404);
-        });
-    });
-
-    it("should return 404 for non-existent kiosk identify", () => {
-        cy.request({
-            method: "POST",
-            url: "/kiosk/api/devices/99999/identify",
-            failOnStatusCode: false,
-        }).then((response) => {
-            expect(response.status).to.equal(404);
-        });
-    });
-
-    it("should return 404 for non-existent kiosk accept", () => {
-        cy.request({
-            method: "POST",
-            url: "/kiosk/api/devices/99999/accept",
-            failOnStatusCode: false,
-        }).then((response) => {
-            expect(response.status).to.equal(404);
-        });
-    });
-
-    it("should return 404 for non-existent kiosk delete", () => {
-        cy.request({
-            method: "DELETE",
-            url: "/kiosk/api/devices/99999",
-            failOnStatusCode: false,
-        }).then((response) => {
-            expect(response.status).to.equal(404);
         });
     });
 });

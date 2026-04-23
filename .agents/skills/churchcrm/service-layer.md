@@ -292,3 +292,56 @@ if (
 - Always log what happened (success/failure/skipped)
 - Don't break the main transaction if the side-effect fails
 - Use logger->debug for parameter values, ->info for success, ->warning for expected failures
+
+## Time String Concatenation Hazards <!-- learned: 2026-04-09 -->
+
+When building DB datetime strings by concatenating a date with a user-supplied time, **never blindly append `:00`** to add seconds — the input may already include seconds. `EventService::createRepeatEvents()` was producing invalid timestamps like `2026-04-09 09:00:00:00` when the form passed `09:00:00` instead of `09:00`.
+
+Normalize the input to a known shape before concatenation:
+
+```php
+private static function normalizeTime(string $time): string
+{
+    $parsed = \DateTimeImmutable::createFromFormat('H:i:s', $time)
+        ?: \DateTimeImmutable::createFromFormat('H:i', $time);
+    if ($parsed === false) {
+        return '09:00:00';
+    }
+    return $parsed->format('H:i:s');
+}
+
+// Caller — never ' . $time . ':00'
+$startTime = self::normalizeTime($data['startTime'] ?? '09:00');
+$eventStart = $occurrenceDate->format('Y-m-d') . ' ' . $startTime;
+```
+
+## Wrap Naked `new \DateTime($input)` in try/catch <!-- learned: 2026-04-09 -->
+
+`new \DateTime($userString)` throws when the string is malformed, and the uncaught exception bubbles to a 500 instead of a proper 400. In a service method that throws `\InvalidArgumentException` for validation failures, wrap raw `DateTime` construction so the API layer gets a clean validation error:
+
+```php
+try {
+    $rangeStart = new \DateTime($data['rangeStart'] ?? '');
+    $rangeEnd = new \DateTime($data['rangeEnd'] ?? '');
+} catch (\Throwable $e) {
+    throw new \InvalidArgumentException(gettext('Invalid date format for rangeStart or rangeEnd'));
+}
+```
+
+For stricter validation at the route level (before reaching the service), use `\DateTimeImmutable::createFromFormat('!Y-m-d', $input)` and check the round-trip — `DateTime` constructor accepts loose formats like `2026-13-99` and rolls them over silently.
+
+## Cap Bulk-Generation Loops <!-- learned: 2026-04-09 -->
+
+Any service method that generates rows from a date range needs an upper bound to stop a wide range from creating thousands of rows in one request. `createRepeatEvents()` could otherwise generate `weekly × 10 years × 52 = 520` rows per call.
+
+```php
+public const MAX_REPEAT_OCCURRENCES = 366;
+
+if (count($occurrenceDates) > self::MAX_REPEAT_OCCURRENCES) {
+    throw new \InvalidArgumentException(sprintf(
+        gettext('Too many occurrences (%d) — narrow the date range. Maximum allowed: %d'),
+        count($occurrenceDates),
+        self::MAX_REPEAT_OCCURRENCES
+    ));
+}
+```

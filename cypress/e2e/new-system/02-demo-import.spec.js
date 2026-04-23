@@ -87,9 +87,6 @@ describe('02 - Demo Data Import', () => {
             // Note: The spinner might appear very briefly or not at all if import is fast
             // Just wait for the overlay to not have the show class (import done)
             cy.get('#demoImportSpinnerOverlay', { timeout: 120000 }).should('not.have.class', 'show');
-            
-            // Give page time to settle after import
-            cy.wait(1000);
         });
     });
 
@@ -144,19 +141,16 @@ describe('02 - Demo Data Import', () => {
         });
 
         it('should show people listing with demo data', () => {
-            cy.visit('/v2/people');
+            cy.visit('/people/list');
 
             // Should see the people listing
             cy.contains('People').should('be.visible');
 
-            // Should have table with people data
+            // Should have table with people data + rows populated via DataTables
+            // AJAX. The .should('have.length.at.least') auto-retries so no
+            // explicit wait is needed.
             cy.get('table', { timeout: 10000 }).should('exist');
-
-            // Wait for table to populate (DataTable lazy loading)
-            cy.wait(2000);
-
-            // Should have rows with people
-            cy.get('table tbody tr').should('have.length.at.least', 1);
+            cy.get('table tbody tr', { timeout: 10000 }).should('have.length.at.least', 1);
         });
     });
 

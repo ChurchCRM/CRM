@@ -64,7 +64,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         if (type !== 'display' || !row.FamilyId) {
                             return data;
                         }
-                        return "<a href='" + window.CRM.root + "/v2/family/" + row.FamilyId + "'>" +
+                        return "<a href='" + window.CRM.root + "/people/family/" + row.FamilyId + "'>" +
                                window.CRM.escapeHtml(data) + "</a>";
                     },
                     searchable: true

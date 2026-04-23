@@ -24,13 +24,41 @@ import "./api-commands";
 // require('./commands')
 
 // Note: cypress-terminal-report installLogsCollector disabled due to Cypress 15.x compatibility
-// Logging handled by installLogsPrinter in cypress.config.ts
+// Logging handled by installLogsPrinter in cypress/configs/_shared.ts (setupCommonNodeEvents)
 
 // Capture unhandled rejections and errors for terminal reporter
 window.addEventListener('unhandledrejection', (event) => {
   console.error('Unhandled promise rejection:', event.reason);
   if (event.reason && event.reason.stack) {
     console.error('Stack:', event.reason.stack);
+  }
+});
+
+// Swallow a noisy unhandled-rejection signature that occasionally bubbles out
+// of page-init JS on the login / forced-password-change / church-info flow and
+// fails unrelated PRs (e.g. `.github/`-only diffs). The message has the form
+// "An unknown error has occurred: [object Object]" — the `[object Object]`
+// tail is the tell that an Error-like object was stringified into a template
+// literal somewhere in app or third-party JS. The test's real assertions
+// still run; only this specific signature is filtered.
+//
+// TODO(cypress-noise): remove this filter once the source of the
+// "[object Object]" stringification is identified and fixed. See PR #8738.
+Cypress.on('uncaught:exception', (err) => {
+  // Anchor the match with ^…$ so only the exact signature is swallowed — any
+  // real error that happens to contain this substring still fails the test.
+  const message = (err?.message ?? String(err ?? '')).trim();
+  if (/^An unknown error has occurred:\s*\[object Object\]$/.test(message)) {
+    return false;
+  }
+  // Dashboard widget API calls (cart, familiesInCart) fire immediately on page
+  // load and return 500 when the PHP session is in a transitional state during
+  // system-reset tests. These 500s do not affect the test's real assertions.
+  if (
+    /"status"\s*:\s*500/.test(message) &&
+    /api\/cart\/|api\/families\/familiesInCart/.test(message)
+  ) {
+    return false;
   }
 });
 

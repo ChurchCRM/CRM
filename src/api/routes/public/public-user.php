@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Emails\users\ResetPasswordTokenEmail;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\UserQuery;
@@ -8,7 +9,6 @@ use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpBadRequestException;
-use Slim\Exception\HttpNotFoundException;
 use Slim\Exception\HttpUnauthorizedException;
 use Slim\Routing\RouteCollectorProxy;
 
@@ -40,20 +40,19 @@ $app->group('/public/user', function (RouteCollectorProxy $group): void {
  *             @OA\Property(property="apiKey", type="string", example="abc123xyz")
  *         )
  *     ),
- *     @OA\Response(response=401, description="Invalid username or password"),
- *     @OA\Response(response=404, description="User not found")
+ *     @OA\Response(response=401, description="Invalid username or password")
  * )
  */
 function userLogin(Request $request, Response $response, array $args): Response
 {
     $body = json_decode($request->getBody(), true, 512, JSON_THROW_ON_ERROR);
     if (empty($body['userName'])) {
-        throw new HttpNotFoundException($request);
+        throw new HttpUnauthorizedException($request, gettext('Invalid User/Password'));
     }
 
     $user = UserQuery::create()->findOneByUserName($body['userName']);
     if (empty($user)) {
-        throw new HttpNotFoundException($request);
+        throw new HttpUnauthorizedException($request, gettext('Invalid User/Password'));
     }
 
     $password = $body['password'];
@@ -99,6 +98,13 @@ function passwordResetRequest(Request $request, Response $response, array $args)
         throw new HttpBadRequestException($request, gettext('Login Name is required'));
     }
 
+    if (!SystemConfig::isEmailEnabled()) {
+        // No tokens minted when we can't deliver the reset link. Still returns
+        // success so we don't reveal whether the account exists.
+        $logger->warning('Password reset requested but email is disabled or SMTP is not configured');
+        return SlimUtils::renderJSON($response, ['success' => true]);
+    }
+
     $user = UserQuery::create()->findOneByUserName($userName);
     if (empty($user) || empty($user->getEmail())) {
         // Don't reveal whether user exists (security best practice)
@@ -109,11 +115,15 @@ function passwordResetRequest(Request $request, Response $response, array $args)
     $token = new Token();
     $token->build('password', $user->getId());
     $token->save();
-    
+
     $email = new ResetPasswordTokenEmail($user, $token->getToken());
     if (!$email->send()) {
+        // The token was saved before the send attempt — if delivery fails the
+        // user never sees the link, so drop the unusable token immediately
+        // instead of letting it sit in the table until expiry.
+        $token->delete();
         $logger->error('Failed to send password reset email for user ' . $user->getUserName() . ': ' . $email->getError());
-        // Still return success to user (don't expose email issues)
+        // Still return success to user (don't expose email issues).
         return SlimUtils::renderJSON($response, ['success' => true]);
     }
 

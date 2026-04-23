@@ -175,6 +175,15 @@
       border-radius: 0.25rem;
       white-space: nowrap;
     }
+
+    // Allow buttons to wrap on small screens
+    @media (max-width: 575.98px) {
+      flex-wrap: wrap;
+
+      > .btn {
+        white-space: normal;
+      }
+    }
   }
 
   .btn-success {

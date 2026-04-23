@@ -991,18 +991,46 @@ toast.show();
 }
 ```
 
-### Dark Mode
+### Tabler Theme System <!-- learned: 2026-04-07 -->
 
-```html
-<body data-bs-theme="dark">
-```
+Theme attributes go on `<html>`, not `<body>`. Applied server-side in `Header.php` / `Header-Minimal.php` from user settings.
 
-Toggle via JS:
+| Attribute | CSS file needed | Values |
+|-----------|----------------|--------|
+| `data-bs-theme="dark"` | `tabler.min.css` (built-in) | `dark` (omit for light) |
+| `data-bs-theme-primary="purple"` | `tabler-themes.min.css` (separate import!) | `blue`, `azure`, `indigo`, `purple`, `pink`, `red`, `orange`, `yellow`, `lime`, `green`, `teal`, `cyan` |
+
+**Critical**: `tabler-themes.min.css` must be imported in webpack — it's NOT part of `tabler.min.css`. Without it, `data-bs-theme-primary` does nothing.
+
 ```js
-document.body.setAttribute('data-bs-theme',
-  document.body.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark'
-);
+// webpack/skin-main.js
+import "@tabler/core/dist/css/tabler.min.css";
+import "@tabler/core/dist/css/tabler-themes.min.css"; // ← required for theme-primary
 ```
+
+**Bridge override trap**: If `_tabler-bridge.scss` sets `--tblr-primary` in `:root`, it overrides `data-bs-theme-primary`. Scope the override:
+```scss
+// ✅ Yields to theme attribute
+:root:not([data-bs-theme-primary]) {
+  --tblr-primary: #206bc4;
+}
+
+// ❌ Always wins, theme attribute ignored
+:root {
+  --tblr-primary: #206bc4;
+}
+```
+
+**Non-functional Tabler layout toggles (don't expose to users)**:
+- `sidebar-collapse` — AdminLTE class, doesn't exist in Tabler
+- `navbar-overlap` — requires `bg-dark`/`bg-primary` on `<header>`, breaks with transparent navbar
+- `layout-boxed` — works technically but no visible value in this app's layout
+
+**`navbar-brand-autodark` logo inversion**: Applies `filter: brightness(0) invert(1)` in dark mode. Only works for black-on-**transparent** logos. White-background PNGs (like `CRM_50x50.png`) become invisible — remove the class for those.
+
+### User Settings API Pattern <!-- learned: 2026-04-07 -->
+
+Settings saved via `POST /api/user/{userId}/setting/{settingName}` with `{value: "..."}`. Always use `window.CRM.viewUserId` (the viewed user) not `window.CRM.userId` (the logged-in user) — critical when admin views another user's settings.
 
 ---
 

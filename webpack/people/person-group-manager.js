@@ -17,7 +17,7 @@ const MODAL_ID = "personGroupModal";
  * Caller must attach any `shown.bs.modal` listeners, then call `modal.show()`.
  */
 function createModal(title, bodyHtml) {
-  let existing = document.getElementById(MODAL_ID);
+  const existing = document.getElementById(MODAL_ID);
   if (existing) {
     const bsModal = window.bootstrap.Modal.getInstance(existing);
     if (bsModal) bsModal.dispose();
@@ -58,7 +58,7 @@ function createModal(title, bodyHtml) {
   // Cleanup on close
   wrapper.addEventListener(
     "hidden.bs.modal",
-    function () {
+    () => {
       modal.dispose();
       wrapper.remove();
     },
@@ -86,7 +86,7 @@ function populateSelect(selectEl, items) {
  */
 function handleAddToGroup(personId) {
   // Fetch groups first so data is ready when the modal opens
-  window.CRM.groups.get().done(function (groups) {
+  window.CRM.groups.get().done((groups) => {
     const body =
       '<div class="mb-3">' +
       '<label class="form-label">' +
@@ -108,7 +108,7 @@ function handleAddToGroup(personId) {
 
     // Populate <option> elements now (while modal is hidden, before TomSelect)
     const groupEl = document.getElementById("pgm-group-select");
-    groups.forEach(function (g) {
+    groups.forEach((g) => {
       const opt = document.createElement("option");
       opt.value = String(g.Id);
       opt.textContent = g.Name;
@@ -119,21 +119,21 @@ function handleAddToGroup(personId) {
     // Register listener BEFORE show() to avoid race condition.
     el.addEventListener(
       "shown.bs.modal",
-      function () {
+      () => {
         const roleWrapper = document.getElementById("pgm-role-wrapper");
         const roleEl = document.getElementById("pgm-role-select");
 
         new window.TomSelect(groupEl, {
           placeholder: i18next.t("Search groups..."),
           items: [],
-          onChange: function (value) {
+          onChange: (value) => {
             selectedGroupId = value || null;
             if (!value) {
               roleWrapper.classList.add("d-none");
               confirm.disabled = true;
               return;
             }
-            loadRoles(value, roleEl, roleWrapper, confirm, function (roleId) {
+            loadRoles(value, roleEl, roleWrapper, confirm, (roleId) => {
               selectedRoleId = roleId;
             });
           },
@@ -145,10 +145,10 @@ function handleAddToGroup(personId) {
     // NOW show — the listener above will fire after fade animation completes
     modal.show();
 
-    confirm.addEventListener("click", function () {
+    confirm.addEventListener("click", () => {
       if (!selectedGroupId) return;
       confirm.disabled = true;
-      window.CRM.groups.addPerson(selectedGroupId, personId, selectedRoleId).done(function () {
+      window.CRM.groups.addPerson(selectedGroupId, personId, selectedRoleId).done(() => {
         modal.hide();
         location.reload();
       });
@@ -165,7 +165,7 @@ function loadRoles(groupId, roleEl, roleWrapper, confirmBtn, onRoleSelected) {
   roleEl.innerHTML = "";
   roleWrapper.classList.add("d-none");
 
-  window.CRM.groups.getRoles(groupId).done(function (roles) {
+  window.CRM.groups.getRoles(groupId).done((roles) => {
     if (roles.length === 0) {
       onRoleSelected(null);
       confirmBtn.disabled = false;
@@ -181,16 +181,14 @@ function loadRoles(groupId, roleEl, roleWrapper, confirmBtn, onRoleSelected) {
     // Multiple roles — show picker
     populateSelect(
       roleEl,
-      roles.map(function (r) {
-        return { value: String(r.OptionId), text: i18next.t(r.OptionName) };
-      }),
+      roles.map((r) => ({ value: String(r.OptionId), text: i18next.t(r.OptionName) })),
     );
 
     roleWrapper.classList.remove("d-none");
     confirmBtn.disabled = false;
 
     new window.TomSelect(roleEl, {
-      onChange: function (value) {
+      onChange: (value) => {
         onRoleSelected(value || null);
       },
     });
@@ -204,7 +202,7 @@ function loadRoles(groupId, roleEl, roleWrapper, confirmBtn, onRoleSelected) {
  * shows a notification instead of a modal. Pre-selects current role.
  */
 function handleChangeRole(personId, groupId, currentRoleId) {
-  window.CRM.groups.getRoles(groupId).done(function (roles) {
+  window.CRM.groups.getRoles(groupId).done((roles) => {
     if (roles.length <= 1) {
       window.CRM.notify(i18next.t("This group only has one role."), { type: "info" });
       return;
@@ -227,17 +225,15 @@ function handleChangeRole(personId, groupId, currentRoleId) {
     const roleEl = document.getElementById("pgm-role-select");
     populateSelect(
       roleEl,
-      roles.map(function (r) {
-        return { value: String(r.OptionId), text: i18next.t(r.OptionName) };
-      }),
+      roles.map((r) => ({ value: String(r.OptionId), text: i18next.t(r.OptionName) })),
     );
 
     // Init TomSelect after modal is visible
     el.addEventListener(
       "shown.bs.modal",
-      function () {
+      () => {
         const ts = new window.TomSelect(roleEl, {
-          onChange: function (value) {
+          onChange: (value) => {
             selectedRoleId = value || null;
           },
         });
@@ -251,10 +247,10 @@ function handleChangeRole(personId, groupId, currentRoleId) {
 
     modal.show();
 
-    confirm.addEventListener("click", function () {
+    confirm.addEventListener("click", () => {
       if (!selectedRoleId) return;
       confirm.disabled = true;
-      window.CRM.groups.addPerson(groupId, personId, selectedRoleId).done(function () {
+      window.CRM.groups.addPerson(groupId, personId, selectedRoleId).done(() => {
         modal.hide();
         location.reload();
       });
@@ -273,9 +269,9 @@ function handleRemoveFromGroup(personId, groupId, groupName) {
       cancel: { label: i18next.t("Cancel"), className: "btn-ghost-secondary" },
       confirm: { label: i18next.t("Remove"), className: "btn-danger" },
     },
-    callback: function (result) {
+    callback: (result) => {
       if (result) {
-        window.CRM.groups.removePerson(groupId, personId).done(function () {
+        window.CRM.groups.removePerson(groupId, personId).done(() => {
           location.reload();
         });
       }
@@ -291,7 +287,7 @@ export function initGroupManager() {
   const personId = window.CRM && window.CRM.currentPersonID;
   if (!personId) return;
 
-  document.addEventListener("click", function (e) {
+  document.addEventListener("click", (e) => {
     const addBtn = e.target.closest("#addGroup, #addGroupFromEmpty");
     if (addBtn) {
       e.preventDefault();

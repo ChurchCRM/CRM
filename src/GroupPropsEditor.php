@@ -4,6 +4,7 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -205,7 +206,7 @@ if (mysqli_num_rows($rsPropList) === 0) {
 <?php
 }
 ?>
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
     // Initialize all phone mask toggles for custom fields (guarded)
     document.addEventListener('DOMContentLoaded', function() {
         if (window.CRM && window.CRM.formUtils && typeof window.CRM.formUtils.initializeAllPhoneMaskToggles === 'function') {

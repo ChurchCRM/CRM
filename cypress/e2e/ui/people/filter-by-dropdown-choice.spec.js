@@ -4,7 +4,7 @@ describe("template spec", () => {
     });
 
     it("filter-by-dropdown-choice", () => {
-        cy.visit("v2/people?familyActiveStatus=all");
+        cy.visit("people/list?familyActiveStatus=all");
 
         // Wait for DataTable and TomSelect to initialize
         cy.get("#members tbody tr", { timeout: 10000 }).should("have.length.greaterThan", 0);

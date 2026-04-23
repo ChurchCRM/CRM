@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const data = await response.json();
         window.location.href = `${window.CRM.root}/groups/sundayschool/class/${data.Id}`;
       } catch (error) {
-        console.error("Failed to create Sunday School class:", error);
+        window.CRM.notify(i18next.t("Failed to create class. Please try again."), { type: "danger", delay: 5000 });
       }
     });
   }
@@ -73,8 +73,56 @@ document.addEventListener("DOMContentLoaded", () => {
 
       window.CRM.notify(i18next.t("Members added to cart."), { type: "success", delay: 3000 });
     } catch (error) {
-      console.error("Failed to add members to cart:", error);
       window.CRM.notify(i18next.t("Failed to add members to cart. Please try again."), { type: "danger", delay: 5000 });
+    }
+  });
+
+  // Start Check-in: quick-create event for this group and redirect to check-in page
+  $(document).on("click", ".start-checkin-btn", async function () {
+    const $btn = $(this);
+    const groupId = $btn.data("group-id");
+
+    $btn
+      .prop("disabled", true)
+      .html('<span class="spinner-border spinner-border-sm me-1"></span>' + i18next.t("Loading..."));
+
+    try {
+      // Find an event type linked to this group, or use a generic one
+      const typesRes = await fetch(buildAPIUrl("events/types"));
+      if (!typesRes.ok) throw new Error(`HTTP ${typesRes.status}`);
+      const types = await typesRes.json();
+
+      // Try to find an event type linked to this group (type_grpid match)
+      // If not found, use quick-create with just the groupId
+      let eventTypeId = 0;
+      if (Array.isArray(types)) {
+        const linkedType = types.find((t) => t.GroupId === groupId);
+        if (linkedType) {
+          eventTypeId = linkedType.Id;
+        }
+      }
+
+      // Quick-create the event
+      const createRes = await fetch(buildAPIUrl("events/quick-create"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          eventTypeId: eventTypeId > 0 ? eventTypeId : null,
+          groupId: groupId,
+        }),
+      });
+
+      if (!createRes.ok) {
+        // If quick-create fails (e.g., no event type), fall back to check-in page
+        window.location.href = `${window.CRM.root}/event/checkin`;
+        return;
+      }
+
+      const data = await createRes.json();
+      window.location.href = `${window.CRM.root}/event/checkin/${data.eventId}`;
+    } catch (error) {
+      // Fall back to check-in page
+      window.location.href = `${window.CRM.root}/event/checkin`;
     }
   });
 
@@ -98,7 +146,6 @@ document.addEventListener("DOMContentLoaded", () => {
             window.location.reload();
           })
           .catch((error) => {
-            console.error("Failed to delete class:", error);
             window.CRM.notify(i18next.t("Failed to delete class. Please try again."), { type: "danger", delay: 5000 });
           });
       },

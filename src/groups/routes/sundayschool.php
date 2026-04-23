@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\EventAttendQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\GroupPropMasterQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
@@ -155,6 +156,25 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
             ->orderByStart(Criteria::DESC)
             ->find();
 
+        // Find today's active event for this group (for smart "Take Attendance" button)
+        $todayStr = date('Y-m-d');
+        $todayEvent = null;
+        $todayEventAttendance = 0;
+        foreach ($groupEvents as $evt) {
+            if ((int) $evt->getInActive() === 1) {
+                continue;
+            }
+            $evtDate = $evt->getStart() ? $evt->getStart()->format('Y-m-d') : '';
+            if ($evtDate === $todayStr) {
+                $todayEvent = $evt;
+                $todayEventAttendance = EventAttendQuery::create()
+                    ->filterByEventId($evt->getId())
+                    ->filterByCheckinDate(null, Criteria::NOT_EQUAL)
+                    ->count();
+                break;
+            }
+        }
+
         // Pre-fetch kiosk assignments for all event IDs in one query
         $kioskEventSet = [];
         $eventIds = [];
@@ -218,6 +238,8 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
             'groupSpecificProps'     => $groupSpecificProps,
             'aPropTypes'             => $aPropTypes,
             'groupEvents'            => $groupEvents,
+            'todayEvent'             => $todayEvent,
+            'todayEventAttendance'   => $todayEventAttendance,
             'kioskEventSet'          => $kioskEventSet,
             'birthDayMonthChartJSON' => $birthDayMonthChartJSON,
             'rsTeachers'             => $rsTeachers,

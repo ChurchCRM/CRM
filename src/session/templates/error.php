@@ -4,6 +4,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
 
 $sPageTitle = gettext("Password Reset Error");
+$sBodyClass = 'page-auth page-login';
 require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
 ?>
 
@@ -24,6 +25,12 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
         <h1><i class="fa-solid fa-circle-exclamation"></i><?= gettext('Password Reset Error') ?></h1>
         <p><?= gettext('We were unable to process your password reset request.') ?></p>
       </div>
+
+      <?php if (!empty($message ?? '')): ?>
+      <div class="alert alert-warning" role="alert">
+        <p><?= htmlspecialchars($message) ?></p>
+      </div>
+      <?php endif; ?>
 
       <!-- Error Alert Message -->
       <div class="alert alert-danger" role="alert">

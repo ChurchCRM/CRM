@@ -6,7 +6,7 @@
  * - States:    GET /api/public/data/countries/{code}/states
  */
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   const countrySelect = document.getElementById("sChurchCountry");
   const stateContainer = document.getElementById("sChurchStateContainer");
   const defaultCountrySelect = document.getElementById("sDefaultCountry");
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const blankLabel = window.i18next ? i18next.t("— Select State —") : "— Select State —";
     $select.append(new Option(blankLabel, ""));
 
-    $.each(states, function (code, name) {
+    $.each(states, (code, name) => {
       const selected = selectedValue === code || selectedValue === name;
       $select.append(new Option(name, code, selected, selected));
     });
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
       type: "GET",
       url: window.CRM.root + "/api/public/data/countries/" + countryCode.toLowerCase() + "/states",
     })
-      .done(function (data) {
+      .done((data) => {
         container.innerHTML = "";
         if (data && Object.keys(data).length > 0) {
           const $select = buildStateSelect(fieldId, fieldName, data, selectedValue);
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
           container.appendChild(buildStateInput(fieldId, fieldName, selectedValue)[0]);
         }
       })
-      .fail(function () {
+      .fail(() => {
         container.innerHTML = "";
         container.appendChild(buildStateInput(fieldId, fieldName, selectedValue)[0]);
       });
@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
         type: "GET",
         url: window.CRM.root + "/api/public/data/countries",
       });
-      countriesPromise.fail(function () {
+      countriesPromise.fail(() => {
         countriesPromise = null;
       });
     }
@@ -104,12 +104,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function populateCountrySelect($selectEl, selectedValue, callback) {
-    fetchCountries().done(function (data) {
+    fetchCountries().done((data) => {
       $selectEl.empty();
       const blankLabel = window.i18next ? i18next.t("— Select Country —") : "— Select Country —";
       $selectEl.append(new Option(blankLabel, ""));
 
-      $.each(data, function (idx, country) {
+      $.each(data, (idx, country) => {
         const selected = selectedValue === country.code || selectedValue === country.name;
         $selectEl.append(new Option(country.name, country.code, selected, selected));
       });
@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // ── Church country → church state ───────────────────────────────────────
 
-  populateCountrySelect($countrySelect, userSelectedCountry, function (preselected) {
+  populateCountrySelect($countrySelect, userSelectedCountry, (preselected) => {
     if (preselected) {
       updateStateField(stateContainer, "sChurchState", "sChurchState", preselected, userSelectedState);
     } else {
@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const $defaultCountrySelect = $(defaultCountrySelect);
     const userSelectedDefaultCountry = $defaultCountrySelect.data("user-selected") || "";
 
-    populateCountrySelect($defaultCountrySelect, userSelectedDefaultCountry, function (preselected) {
+    populateCountrySelect($defaultCountrySelect, userSelectedDefaultCountry, (preselected) => {
       if (preselected) {
         updateStateField(
           defaultStateContainer,
@@ -179,7 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const copyBtn = document.getElementById("copy-church-address");
   if (copyBtn) {
-    copyBtn.addEventListener("click", function () {
+    copyBtn.addEventListener("click", () => {
       // Copy city
       const cityVal = document.getElementById("sChurchCity");
       const defaultCity = document.getElementById("sDefaultCity");

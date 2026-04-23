@@ -59,11 +59,13 @@ $GLOBALS['CHURCHCRM_SETUP_DOC_ROOT'] = dirname(__DIR__);
 $app = AppFactory::create();
 $app->setBasePath($basePath);
 
-// Add Slim error middleware for proper error handling and logging
-// Note: Setup runs before Config.php exists, so use lightweight error handler
-$errorMiddleware = $app->addErrorMiddleware(true, true, true);
-
 // Simple error handler for setup (no database/logging dependencies)
+// Error middleware must be added AFTER routing (LIFO) so it wraps
+// the routing layer and can catch HttpNotFoundException as a proper 404.
+// Note: Setup runs before Config.php exists, so use lightweight error handler.
+$app->addBodyParsingMiddleware();
+$app->addRoutingMiddleware();
+$errorMiddleware = $app->addErrorMiddleware(true, true, true);
 $errorMiddleware->setDefaultErrorHandler(function (
     ServerRequestInterface $request,
     \Throwable $exception,
@@ -97,9 +99,7 @@ $errorMiddleware->setDefaultErrorHandler(function (
     return $response->withStatus($statusCode)->withHeader('Content-Type', 'application/json');
 });
 
-// Add CORS middleware for browser API access
-$app->addBodyParsingMiddleware();
-$app->addRoutingMiddleware();
+// CORS and version middleware
 
 $app->add(VersionMiddleware::class);
 $app->add(new CorsMiddleware());

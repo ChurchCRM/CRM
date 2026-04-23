@@ -5,26 +5,52 @@ use ChurchCRM\dto\SystemURLs;
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
-<!-- Info Card -->
-<div class="card">
-    <div class="card-header d-flex align-items-center">
-        <h3 class="card-title"><i class="fa-solid fa-file-csv me-2"></i><?= gettext('Import from Spreadsheet') ?></h3>
+<!-- How It Works -->
+<div class="card mb-3">
+    <div class="card-header">
+        <h3 class="card-title"><i class="ti ti-info-circle me-2"></i><?= gettext('How the CSV Import Works') ?></h3>
     </div>
     <div class="card-body">
-        <div class="row align-items-center">
-            <div class="col-md-1 text-center d-none d-md-block">
-                <i class="fa-solid fa-table fa-3x text-primary"></i>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="card card-sm h-100">
+                    <div class="card-body">
+                        <h4 class="card-title text-primary"><i class="ti ti-download me-2"></i><?= gettext('1. Download the template') ?></h4>
+                        <p class="text-secondary mb-0"><?= gettext('The template already contains every column you can map — the core Person/Family fields plus each custom field and property your site defines.') ?></p>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-11">
-                <p class="mb-2 lead"><?= gettext('Upload a CSV file to import families and people into ChurchCRM.') ?></p>
-                <ul class="mb-2">
-                    <li><?= gettext('Download the template to see the expected column format.') ?></li>
-                    <li><?= gettext('Each row is one person. Members of the same family share a FamilyID.') ?></li>
-                    <li><?= gettext('Compatible with Excel, Google Sheets, or any CSV export.') ?></li>
-                </ul>
-                <a href="<?= SystemURLs::getRootPath() ?>/admin/api/import/csv/families" class="btn btn-outline-primary">
-                    <i class="fa-solid fa-download me-2"></i><?= gettext('Download CSV Template') ?>
-                </a>
+            <div class="col-md-4">
+                <div class="card card-sm h-100">
+                    <div class="card-body">
+                        <h4 class="card-title text-info"><i class="ti ti-table-filled me-2"></i><?= gettext('2. Fill in your data') ?></h4>
+                        <p class="text-secondary mb-0"><?= gettext('Each row is one person. People in the same family share a FamilyID. Leave columns blank when you have no value for them.') ?></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-sm h-100">
+                    <div class="card-body">
+                        <h4 class="card-title text-success"><i class="ti ti-upload me-2"></i><?= gettext('3. Upload and map') ?></h4>
+                        <p class="text-secondary mb-0"><?= gettext('ChurchCRM auto-matches each column by name. Anything it cannot match is marked as Unmapped — pick a field or leave it as Ignore.') ?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="alert alert-info mt-3 mb-0">
+            <div class="d-flex">
+                <div><i class="ti ti-bulb fs-3 me-2"></i></div>
+                <div>
+                    <h4 class="alert-title mb-1"><?= gettext('Custom fields and properties are supported') ?></h4>
+                    <div class="text-secondary">
+                        <?= gettext('The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically.') ?>
+                        <ul class="mb-0 mt-2">
+                            <li><?= gettext('Boolean properties/fields accept yes / no / true / false / 1 / 0.') ?></li>
+                            <li><?= gettext('Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a month and day with no year.') ?></li>
+                            <li><?= gettext('Custom field columns you have not configured are ignored — nothing is created on the fly.') ?></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -109,7 +135,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
     <div class="card-footer">
-        <a href="<?= SystemURLs::getRootPath() ?>/v2/people" class="btn btn-success">
+        <a href="<?= SystemURLs::getRootPath() ?>/people/list" class="btn btn-success">
             <i class="fa-solid fa-people-group me-2"></i><?= gettext('View People') ?>
         </a>
         <button class="btn btn-outline-secondary ms-2" id="restart-import-summary">

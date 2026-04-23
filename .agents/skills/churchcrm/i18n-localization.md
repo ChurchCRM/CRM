@@ -526,6 +526,101 @@ msgstr ""
 
 The msgid key must match what's passed to gettext() in PHP code.
 
+### Do Not Wrap Brand / Technical Literals <!-- learned: 2026-04-22 -->
+
+**Rule: Never wrap brand names, product names, language/runtime identifiers, config keys, protocol acronyms, or placeholder strings in `gettext()` / `_()`.** These are literals, not UI copy — translators cannot (and should not) change them, and wrapping them pollutes every locale's missing-terms batch and creates POEditor noise in every language.
+
+**Always bare literals (never translate, never wrap):**
+
+| Category | Examples |
+|---|---|
+| Language / runtime names | `PHP`, `Node.js`, `MySQL`, `MariaDB`, `Apache`, `nginx` |
+| Extension / module names | `OPcache`, `SAPI`, `mod_rewrite`, `ionCube` |
+| Config keys & directives | `date.timezone`, `memory_limit`, `post_max_size`, `session.save_handler` |
+| Protocol / tech acronyms | `TLS`, `Auto-TLS`, `SSL`, `SMTP`, `IMAP`, `DNS`, `CSP`, `CORS`, `SHA1 Hash` |
+| Brand names | `ChurchCRM`, `Vonage`, `MailChimp`, `GitHub`, `OpenLP`, `Nextcloud`, `Gravatar`, `WebDAV`, `POEditor`, `ownCloud`, `Stripe`, `PayPal` |
+| Placeholder examples | `name@example.com`, `+1-555-123-4567`, `https://example.com` |
+
+**Pattern:**
+
+```php
+// ❌ WRONG - Brand/config literal wrapped in gettext (pollutes all locales' missing batches)
+echo gettext('OPcache');
+echo gettext('PHP');
+echo gettext('SAPI');
+$phpIni = [
+    gettext('date.timezone') => ini_get('date.timezone'),
+];
+<td><?= gettext('Auto-TLS') ?></td>
+<input placeholder="<?= gettext('name@example.com') ?>">
+
+// ✅ CORRECT - Bare literal
+echo 'OPcache';
+echo 'PHP';
+echo 'SAPI';
+$phpIni = [
+    'date.timezone' => ini_get('date.timezone'),
+];
+<td>Auto-TLS</td>
+<input placeholder="name@example.com">
+```
+
+**How to detect leaks:** a term that a) appears in `locale/terms/missing/{code}/{code}-N.json` across many locales with an empty string, and b) is a brand / technical / config literal, is almost certainly wrongly wrapped. Quick aggregation:
+
+```bash
+node -e "
+const fs=require('fs'),path=require('path');
+const root='locale/terms/missing';
+const counts={};
+for (const d of fs.readdirSync(root)) {
+  const dir=path.join(root,d);
+  if (!fs.statSync(dir).isDirectory()) continue;
+  for (const f of fs.readdirSync(dir)) {
+    if (!f.endsWith('.json')) continue;
+    const data=JSON.parse(fs.readFileSync(path.join(dir,f),'utf8'));
+    for (const k of Object.keys(data)) counts[k]=(counts[k]||0)+1;
+  }
+}
+Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,30)
+  .forEach(([k,v])=>console.log(String(v).padStart(3)+'  '+JSON.stringify(k)));
+"
+```
+
+Terms at the top of the list that match the table above should be unwrapped in source.
+
+**If you remove a wrapper**, the next `npm run locale:build` stops extracting it. New missing batches no longer include it; stale POEditor entries are harmless and can be cleaned up manually.
+
+**Related:** the locale translation commands (`/locale-translate`, `/locale-release`) list these same tokens under "Preserve exactly / never translate" — the fix here is to stop them entering the pipeline in the first place.
+
+### Never Split a Sentence Across Multiple gettext() Calls <!-- learned: 2026-04-22 -->
+
+Concatenating `gettext()` fragments loses context and creates broken msgids with leading/trailing spaces that translators cannot understand. Always wrap the **complete sentence** as a single string and use `sprintf()` for embedded values.
+
+```php
+// ❌ WRONG — splits "This value cannot be more than N characters long" into 3 pieces
+$msg = gettext('This value cannot be more than ') . $n . gettext(' characters long');
+// Produces orphaned msgid ' characters long' with leading space — untranslatable
+
+// ✅ CORRECT — full sentence, value injected via sprintf
+$msg = sprintf(gettext('This value cannot be more than %d characters long'), $n);
+
+// ❌ WRONG — page title split across fragments
+$title = gettext('New Payment') . " - $dep_Type" . gettext(' Deposit #') . " $id";
+
+// ✅ CORRECT
+$title = sprintf(gettext('New Payment - %1$s Deposit #%2$d'), $dep_Type, $id);
+
+// ❌ WRONG — result count
+echo mysqli_num_rows($rs) . gettext(' record(s) returned');
+
+// ✅ CORRECT
+echo sprintf(gettext('%d record(s) returned'), mysqli_num_rows($rs));
+```
+
+**Detection:** fragment msgids are identifiable in `locale/messages.po` by a leading or trailing space in the msgid string — e.g. `msgid " characters long"`. Open issue [#8772](https://github.com/ChurchCRM/CRM/issues/8772) tracks the known fragments still in the codebase.
+
+**Checklist addition:** Add `- [ ] No gettext() fragments — full sentence per call, sprintf for values` to your pre-commit review.
+
 ### Plural Forms
 
 ```php
@@ -564,6 +659,18 @@ window.CRM.notify('Operation completed');
 i18next.t('Hello, ' + name);  // name value won't translate
 ```
 
+**Do not wrap brand / technical literals in `i18next.t()`** — same rule as PHP. Brand names (`ChurchCRM`, `GitHub`, `Stripe`), protocol acronyms (`TLS`, `SMTP`, `SSL`), runtime/language names (`PHP`, `Node.js`), config keys (`date.timezone`), and placeholder examples (`name@example.com`) are literals, not UI copy — leave them unwrapped. See the full table and detection recipe in the PHP section's ["Do Not Wrap Brand / Technical Literals"](#do-not-wrap-brand--technical-literals----learned-2026-04-22---) subsection above.
+
+```javascript
+// ❌ WRONG - Brand/tech literal wrapped in i18next.t()
+el.textContent = i18next.t('ChurchCRM');
+el.placeholder = i18next.t('name@example.com');
+
+// ✅ CORRECT - Bare literal
+el.textContent = 'ChurchCRM';
+el.placeholder = 'name@example.com';
+```
+
 ### Notifications
 
 ```javascript
@@ -585,6 +692,8 @@ Before committing:
 
 - [ ] All new UI text wrapped with `gettext()` (PHP) or `i18next.t()` (JS)
 - [ ] No hardcoded user-facing strings
+- [ ] No brand / technical literals wrapped — see ["Do Not Wrap Brand / Technical Literals"](#do-not-wrap-brand--technical-literals----learned-2026-04-22---) (brand names, config keys, protocol acronyms, `name@example.com`-style placeholders all stay as bare literals)
+- [ ] No split-sentence fragments — each `gettext()` call wraps a complete sentence; dynamic values use `sprintf()` — see ["Never Split a Sentence"](#never-split-a-sentence-across-multiple-gettext-calls----learned-2026-04-22-)
 - [ ] If strings added: Ran `npm run locale:build`
 - [ ] If strings added: Ran `npm run build`
 - [ ] Committed `locale/terms/messages.po`
@@ -906,6 +1015,95 @@ done
 
 ---
 
+## AI-Assisted Bulk Translation: Agent Patterns <!-- learned: 2026-04-09 -->
+
+When running bulk locale translation via AI sub-agents (e.g. the `locale-translate` skill), the following patterns were learned from empirical sessions:
+
+### ✅ What Works: One Locale Per Sub-Agent
+
+**Assign exactly ONE locale (2 files) to each sub-agent.** This is the only reliably completing pattern.
+
+```
+✅ agent-1: translate de (de-1.json + de-2.json)
+✅ agent-2: translate ru (ru-1.json + ru-2.json)
+✅ agent-3: translate ja (ja-1.json + ja-2.json)
+... (all launched in parallel)
+```
+
+**Why it works:** Each agent reads 2 files, translates ~190 terms, and applies 2 `--apply` calls — a total of ~4–6 operations well within token/time budget.
+
+### ❌ What Fails: Multiple Locales Per Sub-Agent
+
+**Do NOT assign 2+ locales per agent.** This pattern causes timeout/failure on nearly every locale beyond the first.
+
+```
+❌ agent-1: translate de + ja   → reads 4 files, translates 380 terms, times out
+❌ agent-1: translate sw + am   → reads 4 files, both incomplete
+```
+
+**Why it fails:** Reading 4 files + translating 380+ terms + applying 4 `--apply` calls exhausts the agent's context/time budget. The agent typically finishes reading but runs out of time before applying.
+
+### ✅ Commit Immediately After Each Batch
+
+**Always call `report_progress` to commit and push after each batch of agents completes.** Translations applied locally are lost on session termination if not committed.
+
+```
+❌ WRONG: Translate 20 locales, then call report_progress once → session expires, all work lost
+✅ RIGHT: Translate 10 locales, call report_progress → push → translate next 10 → call report_progress
+```
+
+### Translation Conventions for All Locales
+
+These rules must be stated explicitly in every agent prompt:
+
+- Preserve `%d`, `%s`, `%1$s` format specifiers exactly  
+- Preserve brand names: ChurchCRM, Vonage, MailChimp, GitHub, OpenLP, Nextcloud, Azure, Gravatar, WebDAV, POEditor, ownCloud  
+- Leave intentionally empty strings as `""`: `N/A`, `name@example.com`, `SHA1 Hash`, `BCC`  
+- For plural objects `{"one": "", "other": ""}`: provide both forms  
+- Country names (e.g., "Australia", "Canada") stay in English (value = key) — mark these in `locale/terms/english-ok.json` rather than translating  
+
+### Locale Church Vocabulary Reference
+
+| Locale | Members | Groups | Giving | Kiosk |
+|--------|---------|--------|--------|-------|
+| es/es-MX/es-AR/es-CO/es-SV | Miembros | Ministerios | Ofrendas | Quiosco |
+| pt/pt-br | Membros | Ministérios | Ofertas | Quiosque |
+| fr | Membres | Ministères | Offrandes | Borne interactive |
+| de | Gemeindemitglieder | Dienste | Gaben/Spenden | Kiosk |
+| ru | Прихожане | Служения | Пожертвования | Киоск |
+| zh-CN | 会众 | 事工部门 | 奉献 | 签到台 |
+| zh-TW | 會眾 | 事工部門 | 奉獻 | 簽到台 |
+| ja | 信徒 | ミニストリー | 献金 | チェックインキオスク |
+| ko | 교인 | 사역 | 헌금 | 출석 키오스크 |
+| ar | المؤمنين | الخدمات | العطاء | كشك |
+| hi | सदस्य | मंत्रालय | दान/अर्पण | चेक-इन कियोस्क |
+| id | Jemaat | Pelayanan | Persembahan | Kios |
+| sw | Wanachama wa Kanisa | Huduma | Sadaka/Matoleo | Kiosk |
+| am | አባላት | አገልግሎቶች | ስጦታ | ኪዮስክ |
+| vi | Giáo đoàn | Các bộ phận | Dâng hiến | Quầy điểm danh |
+| nl | Gemeenteleden | Bedieningen | Gaven/Giften | Kiosk |
+| pl | Parafianie | Posługi | Ofiary/Datki | Kiosk |
+| uk | Парафіяни | Служіння | Пожертвування | Кіоск |
+| el | Ενορίτες | Λειτουργίες | Προσφορές | Περίπτερο |
+| sv | Församlingsmedlemmar | Tjänster | Gåvor | Kiosk |
+| ro | Enoriași | Slujiri | Ofrande | Chioșc |
+| cs | Farníci/Členové | Služby | Příspěvky/Dary | Kiosek |
+| hu | Gyülekezeti tagok | Szolgálatok | Adományok | Kiosk |
+| he | מאמינים | שירותים | תרומות | קיוסק |
+| nb | Menighetsmedlemmer | Tjenester | Gaver | Kiosk |
+| fi | Seurakuntalaiset | Palvelut | Lahjoitukset | Kioski |
+| et | Koguduse liikmed | Teenistused | Annetused | Kioski |
+| af | Gemeentelede | Bedieninge | Gawes/Offergawes | Kiosk |
+| sq | Besimtarët | Shërbesat | Kontributet | Kiosk |
+| fil | Mga Miyembro ng Simbahan | Mga Ministeryo | Mga Handog | Kiosk |
+| ml | സഭാ അംഗങ്ങൾ | ശുശ്രൂഷകൾ | കാഴ്ചദ്രവ്യം | കിയോസ്ക് |
+| ta | சபை உறுப்பினர்கள் | ஊழியங்கள் | காணிக்கை | வருகை மையம் |
+| te | సంఘ సభ్యులు | పరిచర్యలు | కానుకలు | హాజరు కేంద్రం |
+| th | สมาชิกคริสตจักร | พันธกิจ | การถวาย | คีออสก์ |
+| tr | Cemaat üyeleri | Hizmetler | Bağışlar | Kiosk |
+
+---
+
 ## Related Skills
 
 - [Git Workflow](./git-workflow.md) - Locale rebuild in pre-commit checklist
@@ -914,4 +1112,4 @@ done
 
 ---
 
-Last updated: April 3, 2026
+Last updated: April 9, 2026

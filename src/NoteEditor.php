@@ -34,7 +34,7 @@ if (isset($_GET['FamilyID'])) {
 if ($iPersonID > 0) {
     $sBackPage = 'PersonView.php?PersonID=' . $iPersonID;
 } else {
-    $sBackPage = 'v2/family/' . $iFamilyID;
+    $sBackPage = 'people/family/' . $iFamilyID;
 }
 
 // Has the form been submitted?
@@ -111,7 +111,7 @@ require_once __DIR__ . '/Include/Header.php';
       <input type="hidden" name="NoteID" value="<?= $iNoteID ?>">
 
       <div class="mb-3">
-        <?= getQuillEditorContainer('NoteText', 'NoteTextInput', $sNoteText, 'w-100', '300px') ?>
+        <?= getQuillEditorContainer('NoteText', 'NoteTextInput', $sNoteText, 'w-100', 'tall') ?>
         <?= $sNoteTextError ?>
       </div>
 

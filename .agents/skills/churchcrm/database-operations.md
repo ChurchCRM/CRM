@@ -106,6 +106,57 @@ public function preSelect(ConnectionInterface $con): void
 }
 ```
 
+### Person / Family postInsert Auto-Writes a Timeline Note <!-- learned: 2026-04-18 -->
+<!-- updated: 2026-04-21 — PR #8685 removed manual Note creation from PersonEditor/FamilyEditor -->
+
+`Person::postInsert()` / `postUpdate()` and `Family::postInsert()` / `postUpdate()` (see `src/ChurchCRM/model/ChurchCRM/Person.php:144` and `Family.php`) are the **single source of truth** for timeline notes. They automatically call `createTimeLineNote('create'|'edit')`, which writes a `Note` row with:
+
+- `nte_Type = 'create'` or `'edit'`
+- `nte_Text = gettext('Created')` or `gettext('Updated')`
+- `nte_EnteredBy` / `nte_DateEntered` copied from the Person/Family
+- attached via `nte_per_ID` or `nte_fam_ID`
+
+**Rule: never manually `new Note()` with `type='create'`/`'edit'` after saving a Person or Family** — the hook has already written it. This rule is now enforced across the codebase: PR #8685 (commit 8ca2fcb75, closes #8695 / #8701) removed the legacy manual `Note` writes from `PersonEditor.php` and `FamilyEditor.php` that were producing duplicate timeline rows.
+
+**Suppressing the `postUpdate` 'edit' note** — When a specific action writes its own domain-specific note (e.g. `setImageFromBase64()` writes a *"Profile Image uploaded"* note) and then saves the Person/Family to bump `DateLastEdited`, set the transient `$skipPostUpdateNote` flag around the save to prevent a generic *"Updated"* note on top:
+
+```php
+$this->skipPostUpdateNote = true;
+try {
+    $this->save();
+} finally {
+    $this->skipPostUpdateNote = false;
+}
+```
+
+See `Family::setImageFromBase64()` for the canonical example. The flag is a private model property and `postUpdate()` checks it before calling `createTimeLineNote('edit')`.
+
+### Person / Family preDelete Removes the Uploaded Photo from Disk <!-- learned: 2026-04-22 -->
+
+`Person::preDelete()` and `Family::preDelete()` call `$this->getPhoto()->delete()` so the uploaded image file under `src/Images/Person/` or `src/Images/Family/` is removed whenever the record is deleted — on **any** code path, not just the API route. This closes GH #1697 (orphaned image files after family/member delete).
+
+**Do NOT call `deletePhoto()` from inside `preDelete`** — it gates on `AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()` (which can silently skip the unlink for programmatic deletions) and writes a transient `Note` that the rest of `preDelete` deletes a few lines later anyway. Call `$this->getPhoto()->delete()` directly. The public `deletePhoto()` method is for the UI "delete photo only" action (keeps the record, writes an audit note).
+
+**Do NOT explicitly call `$family->deletePhoto()` (or `$person->deletePhoto()`) right before `$family->delete()` (or `$person->delete()`)** in controllers — the `preDelete` hook already handles it, and the explicit pre-call writes an audit `Note` for a record that is about to be deleted (the Family note even got the wrong FK via `setPerId`).
+
+**For bulk creators (importers, migrations, seeders)** that want custom text on the auto-created note: accept the default `"Created"`, or look up the auto-created note after save and mutate its text:
+
+```php
+$person->save($con);  // postInsert hook writes the 'create' note
+
+$note = NoteQuery::create()
+    ->filterByPerId($person->getId())
+    ->filterByType('create')
+    ->orderByDateEntered('DESC')
+    ->findOne($con);
+if ($note !== null) {
+    $note->setText(gettext('Imported from CSV'));
+    $note->save($con);
+}
+```
+
+Same hook also triggers `NewPersonOrFamilyEmail::sendIfConfigured()` when `SystemConfig::sNewPersonNotificationRecipientIDs` is non-empty — relevant for bulk importers (each imported person/family triggers a mail). After PR #8685, creating a family with N members sends 1 email (family-level), not N+1.
+
 ## Propel ORM Method Naming (CRITICAL)
 
 **NEVER guess ORM method names.** Propel uses strict column-to-method mapping. **Always check the Query class documentation comments** to verify exact method names before writing code.
@@ -251,6 +302,25 @@ return SlimUtils::renderJSON($response, $events->toArray());
 
 This applies to any `->find()` result or relation collection returned by Perpl ORM.
 
+### `array_column()` Silently Returns Zeros on ObjectCollection <!-- learned: 2026-04-21 -->
+
+`array_column($collection, 'PersonId')` does **not** work on a Propel `ObjectCollection`. PHP's `array_column` reads public properties / array keys — it does not call ORM getters. With Propel objects it silently returns an array of nulls/zeros, and any downstream `in_array($id, $rosterIds, true)` check fails for every input.
+
+This was the root cause of the kiosk photo 403 bug (PR #8706): every roster membership check returned false, so every photo request was rejected.
+
+```php
+// ❌ WRONG — silently returns [0, 0, 0, ...] for Propel Person objects
+$rosterIds = array_map('intval', array_column($assignment->getActiveGroupMembers(), 'PersonId'));
+
+// ✅ CORRECT — iterate the collection and call the ORM getter
+$rosterIds = [];
+foreach ($assignment->getActiveGroupMembers() as $member) {
+    $rosterIds[] = $member->getId();
+}
+```
+
+Rule of thumb: any time you need "list of IDs from an ORM collection," write an explicit `foreach` with `->getId()` (or the relevant getter). Never `array_column` on Propel objects.
+
 ### Looking Up ListOption Role Names for Group Memberships <!-- learned: 2026-03-30 -->
 
 `Group` has no `getListOptionById()` method. To resolve a role name from a group membership, query `ListOptionQuery` with both the group's role list ID and the membership's option ID.
@@ -288,6 +358,32 @@ EventTypeQuery::create()
 ```
 
 When unsure of the method name, grep `public function use.*Query` in `Base/XxxQuery.php` to see all generated relation methods and their return types.
+
+### PersonCustomMaster::getId() Returns the Column Name String, Not a Numeric ID <!-- learned: 2026-04-21 -->
+
+The `PersonCustomMaster` model overrides Propel's default `getId()` to return
+the `custom_field` string (e.g. `"c3"`) — **not** a numeric primary key. This
+is easy to get wrong because every other Propel model's `getId()` returns an
+int, and Copilot / AI reviewers consistently assume int.
+
+```php
+// ✅ CORRECT — getId() returns "c3" already, don't prepend another 'c'
+foreach (PersonCustomMasterQuery::create()->find() as $cf) {
+    $typeMap[$cf->getId()] = (int) $cf->getTypeId();  // key = "c3"
+    $catalogKey = 'pcustom_' . $cf->getId();          // "pcustom_c3"
+}
+
+// ❌ WRONG — produces "cc3" / "pcustom_cc3", silently breaks everything
+$typeMap['c' . $cf->getId()] = ...;
+$catalogKey = 'pcustom_c' . $cf->getId();
+```
+
+`FamilyCustomMaster` is different — it still has a numeric `getId()`, and the
+column-name accessor is `getField()`. Always grep the Base class when unsure:
+
+```bash
+grep -nE "public function getId" src/ChurchCRM/model/ChurchCRM/Base/*CustomMaster.php
+```
 
 ### People Without Families — Always Use leftJoinWithFamily() <!-- learned: 2026-03-29 -->
 
@@ -346,6 +442,48 @@ if ($startTime instanceof \DateTime) {
 check the Base model's getter signature. Temporal columns accept an optional `$format`
 parameter — pass it to get a string, or handle the `DateTime` object explicitly.
 
+### Timezone-Naive DateTime Construction Is a Critical Bug <!-- learned: 2026-04-18 -->
+
+**Never use `new \DateTime($string)` without a `DateTimeZone` argument in code that
+handles user-facing times** (event start/end, reminders, audit timestamps, token
+expiry, iCal export). Without the zone, PHP falls back to the server's default
+timezone at the moment of construction, which may differ from `sTimeZone` and from
+the client's expectation. Result: times get silently shifted by the configured
+UTC offset (e.g. events entered at 10:00 are displayed as 08:00 for a Europe/Berlin
+install on a UTC server). Tracked in issue #8712.
+
+Use [`DateTimeUtils`](../../../src/ChurchCRM/utils/DateTimeUtils.php):
+
+```php
+use ChurchCRM\Utils\DateTimeUtils;
+
+// ❌ WRONG — uses server default timezone, silently drifts from sTimeZone
+$dt = new \DateTime($userInput);
+$dt->modify('+1 hour');
+
+// ❌ WRONG — 'c' emits the server offset, leaks to JS/ICS consumers
+$json = ['start' => $event->getStart('c')];
+
+// ✅ CORRECT — always zone-aware
+$dt = DateTimeUtils::createDateTime($userInput);
+
+// ✅ CORRECT — current wall-clock in the church's timezone
+$now = DateTimeUtils::getToday();
+
+// ✅ CORRECT — clone before setTimezone to avoid mutating the ORM object's
+// in-memory DateTime (setTimezone mutates in place; Propel may cache it)
+$tz = DateTimeUtils::getConfiguredTimezone();
+$start = clone $event->getStart();
+$json = ['start' => $start->setTimezone($tz)->format('c')];
+```
+
+Hotspots to double-check on any calendar/time PR:
+- `new \DateTime(`/`new \DateTimeImmutable(` with a single string argument
+- `strtotime(...)` feeding `date(...)` or `DateTime::setTimestamp()`
+- `->format('c'|'r'|DateTime::ATOM|DateTime::RFC3339)` on objects loaded from
+  `TIMESTAMP` columns — Propel hydrates these as zone-naive, so the emitted
+  offset is the server's, not the church's.
+
 ### Null Guards on ORM findOne Results <!-- learned: 2026-04-03 -->
 
 `findOneByXxx()` and `findOne()` return `null` when no row matches. Always guard
@@ -384,6 +522,21 @@ $sSQL = 'ALTER TABLE `person_custom` DROP IF EXISTS `' . $sField . '`';
 RunQuery($sSQL);
 ```
 
+### Timeline Note Types for Event Check-in/out <!-- learned: 2026-04-07 -->
+
+The `Note` model supports a `type` field for filtering. Existing types: `note`, `create`, `edit`, `verify`, `group`, `photo`, `user`, `cal`. The `event` type is used for check-in/out timeline entries. Use `setType('event')` and add the type to `TimelineService::createTimeLineItem()` switch for icon/color mapping.
+
+```php
+$note = new Note();
+$note->setPerId($personId);
+$note->setFamId(0);
+$note->setText(sprintf(gettext('Checked in to event: %s'), $event->getTitle()));
+$note->setType('event');
+$note->setPrivate(0);
+$note->setEntered($currentUserId);
+$note->save();
+```
+
 ### MySQL ENUM Columns Need Exact String Values <!-- learned: 2026-04-03 -->
 
 When a MySQL column uses `ENUM('Sunday','Monday',...)`, Propel setters require the
@@ -406,3 +559,60 @@ if (isset($dayOfWeekMap[$dowValue])) {
 }
 $eventType->setDefRecurDOW($dowValue);
 ```
+
+### Replacing INSERT...ON DUPLICATE KEY UPDATE with findPk + Create-If-Missing <!-- learned: 2026-04-08 -->
+
+Propel has no direct equivalent to `INSERT ... ON DUPLICATE KEY UPDATE`. When migrating raw
+SQL upserts to ORM, use `findPk()` with the composite primary key and create the record if
+missing — do not hunt for a single "upsert" method.
+
+```php
+// ❌ Raw SQL
+// INSERT eventcounts_evtcnt (evtcnt_eventid, evtcnt_countid, evtcnt_countcount)
+// VALUES (1, 2, 5)
+// ON DUPLICATE KEY UPDATE evtcnt_countcount=5;
+
+// ✅ Propel ORM (works with composite primary keys)
+$eventCount = EventCountsQuery::create()->findPk([$eventId, $countId]);
+if ($eventCount === null) {
+    $eventCount = new EventCounts();
+    $eventCount->setEvtcntEventid($eventId);
+    $eventCount->setEvtcntCountid($countId);
+}
+$eventCount->setEvtcntCountcount($value);
+$eventCount->save();
+```
+
+`findPk()` accepts an array for composite keys in the exact order declared in the schema.
+
+### Replacing MONTH() / YEAR() SQL with Propel Date Range <!-- learned: 2026-04-08 -->
+
+Don't try to translate `WHERE MONTH(date) = 4 AND YEAR(date) = 2026` directly — Propel has
+no helper for SQL date functions. Use a full date-range filter with `cal_days_in_month()` for
+the inclusive upper bound.
+
+```php
+$daysInMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+$monthMin = sprintf('%04d-%02d-01 00:00:00', $year, $month);
+$monthMax = sprintf('%04d-%02d-%02d 23:59:59', $year, $month, $daysInMonth);
+
+EventQuery::create()
+    ->filterByStart(['min' => $monthMin, 'max' => $monthMax])
+    ->find();
+```
+
+Always use full `HH:MM:SS` timestamps on the boundaries — see "Datetime Year-Range Filters"
+above for why a bare `YYYY-MM-DD` max silently drops same-day afternoon records.
+
+### Shared Date Parser — `DateTimeUtils::parsePartialDate()` <!-- learned: 2026-04-21 -->
+
+`src/ChurchCRM/utils/DateTimeUtils.php` contains a static helper for parsing the partial-date formats accepted by CSV imports and person/family edit forms:
+
+```php
+use ChurchCRM\utils\DateTimeUtils;
+
+// Accepts: YYYY-MM-DD, M/D/YYYY, 0000-MM-DD, M/D (month+day, no year)
+$dt = DateTimeUtils::parsePartialDate($rawString); // returns DateTime|null
+```
+
+Returns `null` for blank/unparseable input — always null-guard before calling ORM setters. Use this instead of `new \DateTime($userInput)` anywhere user-supplied date strings are accepted; it handles the year-less `0000-MM-DD` format that standard PHP date functions reject.
