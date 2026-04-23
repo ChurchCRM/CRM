@@ -92,7 +92,7 @@ window.CRM.DisplayErrorMessage = (endpoint, error) => {
 
   // Never include server side traces in the UI
   bootbox.alert({
-    title: i18next.t("ERROR"),
+    title: i18next.t("Error"),
     message: message,
   });
 };

@@ -234,11 +234,6 @@
   transform: rotate(180deg);
 }
 
-/* ── Upgrade wizard card visibility ── */
-#upgrade-wizard-card.d-none {
-  display: none !important;
-}
-
 /* ── Full-page spinner overlay ── */
 #upgradeSpinner {
   display: none;
