@@ -14,7 +14,7 @@
  * - System starts fresh with admin/changeme credentials
  */
 
-describe('04 - System Reset', () => {
+describe('05 - System Post Reset', () => {
     describe('Step 10c: Verify System Reset and Login', () => {
         it('should redirect to login after reset', () => {
             // Clear any cached sessions since we just reset the database
