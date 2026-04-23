@@ -14572,10 +14572,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "Tapahtuma luotu. Siirrytään sisäänkirjaukseen..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "Tapahtuman päättymispäivä/-aika on oltava alkamispäivän/-ajan jälkeen tai samana ajankohtana."
-
-#: 
 msgid "Event title is required."
 msgstr "Tapahtuman otsikko on pakollinen."
 
@@ -14602,10 +14598,6 @@ msgstr "Tapahtumatyypillä ei ole toistuvuusmallia määritetty"
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "Tapahtumatyypillä ei ole kelvollista kuukauden päivää määritetty kuukausittaiselle toistuvuudelle"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "Tapahtumat luodaan jokaista tähän aikaväliin sopivaa kertaa varten."
 
 #: 
 msgid "Every month on the"
@@ -14656,10 +14648,6 @@ msgid "Group Roster"
 msgstr "Ryhmälista"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "Piilota lisäasetukset"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Kuinka pyhäkoulu, tapahtumat ja kioskitoiminnot liittyvät yhteen"
 
@@ -14670,10 +14658,6 @@ msgstr "Virheellinen päivämäärä kohteelle %s — odotetaan muotoa VVVV-KK-P
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Virheellinen päivämäärämuoto rangeStart- tai rangeEnd-kentässä"
-
-#: 
-msgid "Invalid date format."
-msgstr "Virheellinen päivämäärämuoto."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -14728,10 +14712,6 @@ msgid "No active events found."
 msgstr "Aktiivisia tapahtumia ei löydy."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "Tälle tapahtumatyypille ei ole vielä määritetty läsnäololaskurikategorioita."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "Ketään ei ole vielä kirjattu sisään tähän tapahtumaan."
 
@@ -14772,10 +14752,6 @@ msgid "Please select a person to check in."
 msgstr "Valitse kirjattava henkilö."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "Esitäytetty tämän tapahtumatyypin perusteella — toistuvilla tyypeillä päivämäärä on seuraava kerta tämän tyypin viimeisen tapahtuman jälkeen, ja aika vastaa tyypin oletusalkamisaikaa."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "Aikavälin päättymispäivän on oltava alkamispäivän jälkeen tai samana päivänä."
 
@@ -14804,10 +14780,6 @@ msgid "Recommended"
 msgstr "Suositeltu"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "Vaaditaan kioskille"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "Nollaaminen poistaa pysyvästi:"
 
@@ -14826,14 +14798,6 @@ msgstr "Tallenna muutokset tähän kategorian nimeen"
 #: 
 msgid "Select an event type…"
 msgstr "Valitse tapahtumatyyppi…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "Valitse alkamis- ja päättymispäivä/-aika."
-
-#: 
-msgid "Show More Options"
-msgstr "Näytä lisää vaihtoehtoja"
 
 #: 
 msgid "Skip"
@@ -14876,16 +14840,8 @@ msgid "The Events module is disabled"
 msgstr "Tapahtumamooduuli on poistettu käytöstä"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "Samaa alku- ja päättymisaikaa käytetään kaikille luotaville tapahtumille."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "Tänään ei ole aikataulutettuja tapahtumia"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "Nämä ovat osallistujamäärälaskureita — vapaaehtoiset täyttävät ne tapahtuman jälkeen, jotta hallintapaneeli voi eritellä läsnäolon (esim. kuinka monta seurakuntalaisista vs. vierailijoista). Ne ovat erillisiä sisäänkirjaussivun yksilöllisistä sisäänkirjauksista."
 
 #: 
 msgid "This event is inactive."
@@ -14940,16 +14896,8 @@ msgid "View Event"
 msgstr "Näytä tapahtuma"
 
 #: 
-msgid "What are these for?"
-msgstr "Mitä varten nämä ovat?"
-
-#: 
 msgid "What does this find?"
 msgstr "Mitä tämä etsii?"
-
-#: 
-msgid "What is this for?"
-msgstr "Mihin tämä on tarkoitettu?"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15336,14 +15284,6 @@ msgid "Set up Email"
 msgstr "Määritä sähköposti"
 
 #: 
-msgid "Test SMTP Email"
-msgstr "Testaa SMTP-sähköposti"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "Tämä on ChurchCRM-testisähköposti, joka vahvistaa, että SMTP-määrityksesi toimii."
-
-#: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."
 msgstr "Leikepöydälle kopiointi epäonnistui. Kopioi koodit manuaalisesti."
 
@@ -15358,10 +15298,6 @@ msgstr "Käytä palautuskoodia"
 #: 
 msgid "Use authenticator app instead"
 msgstr "Käytä todennussovellusta"
-
-#: 
-msgid " Notification Email Error"
-msgstr " Ilmoitussähköpostivirhe"
 
 #: 
 msgid "%d modules loaded"

@@ -14633,10 +14633,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "Evento creato. Reindirizzamento al check-in..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "La data/ora di fine dell'evento deve essere uguale o successiva alla data/ora di inizio."
-
-#: 
 msgid "Event title is required."
 msgstr "Il titolo dell'evento è obbligatorio."
 
@@ -14663,10 +14659,6 @@ msgstr "Il tipo di evento non ha un pattern di ricorrenza configurato"
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "Il tipo di evento non ha un giorno del mese valido configurato per la ricorrenza mensile"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "Gli eventi verranno creati per ogni occorrenza corrispondente in questo intervallo di date."
 
 #: 
 msgid "Every month on the"
@@ -14717,10 +14709,6 @@ msgid "Group Roster"
 msgstr "Elenco del gruppo"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "Nascondi opzioni avanzate"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Come si collegano Catechismo Domenicale + Eventi + Chioschi"
 
@@ -14731,10 +14719,6 @@ msgstr "Data non valida per %s — previsto YYYY-MM-DD"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Formato data non valido per rangeStart o rangeEnd"
-
-#: 
-msgid "Invalid date format."
-msgstr "Formato data non valido."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -14789,10 +14773,6 @@ msgid "No active events found."
 msgstr "Nessun evento attivo trovato."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "Nessuna categoria di conteggio presenze definita per questo tipo di evento."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "Nessuno ha ancora effettuato il check-in per questo evento."
 
@@ -14833,10 +14813,6 @@ msgid "Please select a person to check in."
 msgstr "Seleziona una persona per il check-in."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "Pre-compilato in base a questo tipo di evento — per i tipi ricorrenti, la data è la prossima occorrenza dopo l'ultimo evento di questo tipo e l'orario corrisponde all'orario di inizio predefinito del tipo."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "La data di fine dell'intervallo deve essere uguale o successiva alla data di inizio dell'intervallo."
 
@@ -14865,10 +14841,6 @@ msgid "Recommended"
 msgstr "Consigliato"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "Obbligatorio per il chiosco"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "Il ripristino eliminerà definitivamente:"
 
@@ -14887,14 +14859,6 @@ msgstr "Salva le modifiche al nome di questa categoria"
 #: 
 msgid "Select an event type…"
 msgstr "Seleziona un tipo di evento…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "Seleziona data/ora di inizio e di fine."
-
-#: 
-msgid "Show More Options"
-msgstr "Mostra più opzioni"
 
 #: 
 msgid "Skip"
@@ -14937,16 +14901,8 @@ msgid "The Events module is disabled"
 msgstr "Il modulo Eventi è disabilitato"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "La stessa ora di inizio e di fine verrà utilizzata per tutti gli eventi generati."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "Non ci sono eventi programmati per oggi"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "Queste sono categorie di conteggio — i volontari le compilano dopo l'evento in modo che la dashboard possa analizzare le presenze (es. quanti fedeli rispetto ai visitatori). Sono separate dai check-in individuali nella pagina di Check-in."
 
 #: 
 msgid "This event is inactive."
@@ -15001,16 +14957,8 @@ msgid "View Event"
 msgstr "Visualizza evento"
 
 #: 
-msgid "What are these for?"
-msgstr "A cosa servono?"
-
-#: 
 msgid "What does this find?"
 msgstr "Cosa trova?"
-
-#: 
-msgid "What is this for?"
-msgstr "A cosa serve?"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15393,14 +15341,6 @@ msgid "Set up Email"
 msgstr "Configura email"
 
 #: 
-msgid "Test SMTP Email"
-msgstr "Test email SMTP"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "Questa è un’email di test di ChurchCRM che conferma che la configurazione SMTP funziona correttamente."
-
-#: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."
 msgstr "Impossibile copiare negli appunti. Copiare i codici manualmente."
 
@@ -15415,10 +15355,6 @@ msgstr "Usa un codice di recupero"
 #: 
 msgid "Use authenticator app instead"
 msgstr "Usa invece l’app di autenticazione"
-
-#: 
-msgid " Notification Email Error"
-msgstr " Errore email di notifica"
 
 #: 
 msgid "%d modules loaded"

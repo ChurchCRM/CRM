@@ -14574,10 +14574,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "Evenement aangemaakt. Doorsturen naar inchecken..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "Einddatum/-tijd van het evenement moet op of na de begindatum/-tijd liggen."
-
-#: 
 msgid "Event title is required."
 msgstr "Evenementtitel is verplicht."
 
@@ -14604,10 +14600,6 @@ msgstr "Evenementtype heeft geen herhalingspatroon ingesteld"
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "Evenementtype heeft geen geldige dag van de maand ingesteld voor maandelijkse herhaling"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "Evenementen worden aangemaakt voor elke overeenkomende gebeurtenis binnen dit datumbereik."
 
 #: 
 msgid "Every month on the"
@@ -14658,10 +14650,6 @@ msgid "Group Roster"
 msgstr "Groepslijst"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "Geavanceerde opties verbergen"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Hoe Zondagsschool + Evenementen + Kiosken samenwerken"
 
@@ -14672,10 +14660,6 @@ msgstr "Ongeldige datum voor %s — verwacht YYYY-MM-DD"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Ongeldig datumformaat voor rangeStart of rangeEnd"
-
-#: 
-msgid "Invalid date format."
-msgstr "Ongeldig datumformaat."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -14730,10 +14714,6 @@ msgid "No active events found."
 msgstr "Geen actieve evenementen gevonden."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "Er zijn nog geen categorieën voor aanwezigheidstelling gedefinieerd voor dit evenementtype."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "Er is nog niemand ingecheckt bij dit evenement."
 
@@ -14774,10 +14754,6 @@ msgid "Please select a person to check in."
 msgstr "Selecteer een persoon om in te checken."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "Vooraf ingevuld op basis van dit evenementtype — voor terugkerende typen is de datum de eerstvolgende keer na het laatste evenement van dit type, en de tijd komt overeen met de standaard begintijd van het type."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "Einddatum van het bereik moet op of na de begindatum liggen."
 
@@ -14806,10 +14782,6 @@ msgid "Recommended"
 msgstr "Aanbevolen"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "Vereist voor kiosk"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "Resetten zal permanent verwijderen:"
 
@@ -14828,14 +14800,6 @@ msgstr "Wijzigingen in deze categorienaam opslaan"
 #: 
 msgid "Select an event type…"
 msgstr "Selecteer een evenementtype…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "Selecteer begin- en einddatum/-tijd."
-
-#: 
-msgid "Show More Options"
-msgstr "Meer opties tonen"
 
 #: 
 msgid "Skip"
@@ -14878,16 +14842,8 @@ msgid "The Events module is disabled"
 msgstr "De Evenementenmodule is uitgeschakeld"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "Dezelfde begin- en eindtijd wordt gebruikt voor alle gegenereerde evenementen."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "Er zijn geen evenementen gepland voor vandaag"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "Dit zijn tellingscategorieën — vrijwilligers vullen deze in na het evenement zodat het dashboard de aanwezigheid kan uitsplitsen (bijv. hoeveel gemeenteleden versus bezoekers). Ze staan los van individuele incheck-acties op de Incheckpagina."
 
 #: 
 msgid "This event is inactive."
@@ -14942,16 +14898,8 @@ msgid "View Event"
 msgstr "Evenement bekijken"
 
 #: 
-msgid "What are these for?"
-msgstr "Waarvoor dienen deze?"
-
-#: 
 msgid "What does this find?"
 msgstr "Wat vindt dit?"
-
-#: 
-msgid "What is this for?"
-msgstr "Waarvoor dient dit?"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15334,14 +15282,6 @@ msgid "Set up Email"
 msgstr "E-mail instellen"
 
 #: 
-msgid "Test SMTP Email"
-msgstr "SMTP-e-mail testen"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "Dit is een ChurchCRM-testmail die bevestigt dat uw SMTP-configuratie werkt."
-
-#: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."
 msgstr "Kan niet naar klembord kopiëren. Kopieer de codes handmatig."
 
@@ -15356,10 +15296,6 @@ msgstr "Gebruik in plaats daarvan een herstelcode"
 #: 
 msgid "Use authenticator app instead"
 msgstr "Gebruik in plaats daarvan een authenticatie-app"
-
-#: 
-msgid " Notification Email Error"
-msgstr " Fout bij e-mailmelding"
 
 #: 
 msgid "%d modules loaded"
