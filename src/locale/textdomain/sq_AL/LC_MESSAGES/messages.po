@@ -15188,6 +15188,10 @@ msgid "No active event assignment"
 msgstr "Nuk ka caktim aktiv ngjarjesh"
 
 #: 
+msgid "Online"
+msgstr "Online"
+
+#: 
 msgid "Opens a 30-second window for devices to register at:"
 msgstr "Hap një dritare 30-sekondëshe për regjistrimin e pajisjeve në:"
 
@@ -15572,6 +15576,10 @@ msgid "Subject"
 msgstr "Tema"
 
 #: 
+msgid "Test"
+msgstr "Test"
+
+#: 
 msgid "Test email accepted by SMTP server"
 msgstr "Email-i testues u pranua nga serveri SMTP"
 
@@ -15782,4 +15790,24 @@ msgstr "Numërime të futura nga vullnetarët, të ndara sipas kategorisë."
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "CSV-ja juaj ka emra kolonash të dublifikuar. Riemërtoni kolonat e dublifikuara (p.sh. shtoni \"(2)\" të dytës) dhe ngarkoni përsëri."
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "A jeni të sigurt që doni të fshini përgjithmonë këtë artikull të dhuruar?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "A jeni të sigurt që doni të fshini përgjithmonë këtë numër pagaie?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Fshi artikullin e dhuruar"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Fshi numrin e pagaies"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Tokeni i sigurisë është i pavlefshëm. Ju lutemi provoni përsëri."
 

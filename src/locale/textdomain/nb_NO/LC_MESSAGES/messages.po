@@ -15287,6 +15287,10 @@ msgid "No active event assignment"
 msgstr "Ingen aktiv hendelsestildeling"
 
 #: 
+msgid "Online"
+msgstr "Online"
+
+#: 
 msgid "Opens a 30-second window for devices to register at:"
 msgstr "Åpner et 30-sekunders vindu for enheter som skal registrere seg på:"
 
@@ -15443,6 +15447,10 @@ msgid "All checks passing"
 msgstr "Alle kontroller bestått"
 
 #: 
+msgid "App"
+msgstr "App"
+
+#: 
 msgid "Browser time zone differs:"
 msgstr "Nettleserens tidssone avviker:"
 
@@ -15477,6 +15485,10 @@ msgstr "Sorteringsrekkefølge"
 #: 
 msgid "Connection"
 msgstr "Tilkobling"
+
+#: 
+msgid "Database"
+msgstr "Database"
 
 #: 
 msgid "Delivery"
@@ -15639,6 +15651,10 @@ msgid "Send a test message to verify your SMTP configuration"
 msgstr "Send en testmelding for å verifisere SMTP-konfigurasjonen din"
 
 #: 
+msgid "Server"
+msgstr "Server"
+
+#: 
 msgid "Server Version"
 msgstr "Serverversjon"
 
@@ -15657,6 +15673,10 @@ msgstr "Innstillinger gyldige"
 #: 
 msgid "Subject"
 msgstr "Emne"
+
+#: 
+msgid "Test"
+msgstr "Test"
 
 #: 
 msgid "Test email accepted by SMTP server"
@@ -15869,4 +15889,24 @@ msgstr "Frivillig-registrerte personantall, delt opp etter kategori."
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "CSV-filen din har duplikate kolonnenavn. Gi de duplikate kolonnene nytt navn (f.eks. legg til \"(2)\" til den andre) og last opp igjen."
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "Er du sikker på at du vil slette dette donerte elementet permanent?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "Er du sikker på at du vil slette dette budnummeret permanent?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Slett donert element"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Slett budnummer"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Ugyldig sikkerhetstoken. Vennligst prøv igjen."
 
