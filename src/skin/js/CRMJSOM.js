@@ -17,7 +17,7 @@ window.CRM.escapeHtml = (text) => {
   if (text === null || text === undefined) {
     return "";
   }
-  var div = document.createElement("div");
+  const div = document.createElement("div");
   div.textContent = text;
   return div.innerHTML;
 };
@@ -38,9 +38,13 @@ window.CRM.APIRequest = (options) => {
   options.beforeSend = (jqXHR, settings) => {
     jqXHR.url = settings.url;
   };
-  options.error = (jqXHR, textStatus, errorThrown) => {
-    window.CRM.system.handlejQAJAXError(jqXHR, textStatus, errorThrown, options.suppressErrorDialog);
-  };
+  // Only install the default error handler if the caller did not supply one —
+  // otherwise the caller's handler was silently discarded.
+  if (typeof options.error !== "function") {
+    options.error = (jqXHR, textStatus, errorThrown) => {
+      window.CRM.system.handlejQAJAXError(jqXHR, textStatus, errorThrown, options.suppressErrorDialog);
+    };
+  }
   return window.jQuery.ajax(options);
 };
 
@@ -65,20 +69,24 @@ window.CRM.AdminAPIRequest = (options) => {
   options.beforeSend = (jqXHR, settings) => {
     jqXHR.url = settings.url;
   };
-  options.error = (jqXHR, textStatus, errorThrown) => {
-    window.CRM.system.handlejQAJAXError(jqXHR, textStatus, errorThrown, options.suppressErrorDialog);
-  };
+  // Only install the default error handler if the caller did not supply one —
+  // otherwise the caller's handler was silently discarded.
+  if (typeof options.error !== "function") {
+    options.error = (jqXHR, textStatus, errorThrown) => {
+      window.CRM.system.handlejQAJAXError(jqXHR, textStatus, errorThrown, options.suppressErrorDialog);
+    };
+  }
   return window.jQuery.ajax(options);
 };
 
 window.CRM.DisplayErrorMessage = (endpoint, error) => {
   // Handle different error response formats (message, error, msg)
-  var errorText =
+  const errorText =
     error && (error.message || error.error || error.msg)
       ? error.message || error.error || error.msg
       : i18next.t("Unknown error");
 
-  var message =
+  const message =
     "<p>" +
     i18next.t("Error making API Call to") +
     ": " +
@@ -98,113 +106,32 @@ window.CRM.DisplayErrorMessage = (endpoint, error) => {
 };
 
 window.CRM.VerifyThenLoadAPIContent = (url) => {
-  var error = i18next.t("There was a problem retrieving the requested object");
-
-  // Helper function to fetch error message from JSON response
-  function fetchErrorMessage(targetUrl, fallbackError, callback) {
-    try {
-      if (!window.jQuery) {
-        callback(fallbackError);
-        return;
-      }
-      window.jQuery.ajax({
-        method: "GET",
-        url: targetUrl,
-        async: false,
-        dataType: "json",
-        success: (data) => {
-          var msg = data && data.message ? data.message : fallbackError;
-          callback(msg);
-        },
-        error: () => {
-          callback(fallbackError);
-        },
-      });
-    } catch (e) {
-      callback(fallbackError);
-    }
-  }
+  const fallbackError = i18next.t("There was a problem retrieving the requested object");
 
   if (!window.jQuery) {
-    window.CRM.DisplayErrorMessage(url, { message: error });
+    window.CRM.DisplayErrorMessage(url, { message: fallbackError });
     return;
   }
 
-  window.jQuery.ajax({
-    method: "HEAD",
-    url: url,
-    async: false,
-    statusCode: {
-      200: () => {
-        window.open(url);
-      },
-      404: () => {
-        fetchErrorMessage(url, error, (msg) => {
+  // HEAD the URL first: if 2xx, open it. Otherwise GET the JSON body so we can
+  // surface the server's error message. Both requests are async (no synchronous
+  // XHR — Chrome deprecates `async: false`).
+  window.jQuery
+    .ajax({ method: "HEAD", url: url })
+    .done(() => {
+      window.open(url);
+    })
+    .fail(() => {
+      window.jQuery
+        .ajax({ method: "GET", url: url, dataType: "json" })
+        .done((data) => {
+          const msg = data && data.message ? data.message : fallbackError;
           window.CRM.DisplayErrorMessage(url, { message: msg });
+        })
+        .fail(() => {
+          window.CRM.DisplayErrorMessage(url, { message: fallbackError });
         });
-      },
-      500: () => {
-        fetchErrorMessage(url, error, (msg) => {
-          window.CRM.DisplayErrorMessage(url, { message: msg });
-        });
-      },
-    },
-  });
-};
-
-window.CRM.kiosks = {
-  assignmentTypes: {
-    1: "Event Attendance",
-    2: "Self Registration",
-    3: "Self Checkin",
-    4: "General Attendance",
-  },
-  reload: (id) => {
-    window.CRM.APIRequest({
-      path: "kiosks/" + id + "/reloadKiosk",
-      method: "POST",
-    }).done((data) => {});
-  },
-  enableRegistration: () =>
-    window.CRM.APIRequest({
-      path: "kiosks/allowRegistration",
-      method: "POST",
-    }),
-  accept: (id) => {
-    window.CRM.APIRequest({
-      path: "kiosks/" + id + "/acceptKiosk",
-      method: "POST",
-    }).done((data) => {
-      window.CRM.kioskDataTable.ajax.reload();
     });
-  },
-  identify: (id) => {
-    window.CRM.APIRequest({
-      path: "kiosks/" + id + "/identifyKiosk",
-      method: "POST",
-    }).done((data) => {
-      //do nothing...
-    });
-  },
-  setAssignment: (id, assignmentId) => {
-    const assignmentSplit = assignmentId.split("-");
-    let assignmentType, eventId;
-    if (assignmentSplit.length > 0) {
-      assignmentType = assignmentSplit[0];
-      eventId = assignmentSplit[1];
-    } else {
-      assignmentType = assignmentId;
-    }
-
-    window.CRM.APIRequest({
-      path: "kiosks/" + id + "/setAssignment",
-      method: "POST",
-      data: JSON.stringify({
-        assignmentType: assignmentType,
-        eventId: eventId,
-      }),
-    }).done((data) => {});
-  },
 };
 
 window.CRM.groups = {
@@ -223,7 +150,7 @@ window.CRM.groups = {
     Role: 2,
   },
   promptSelection: (selectOptions, selectionCallback) => {
-    var options = {
+    const options = {
       message:
         '<div class="modal-body">\
                   <input type="hidden" id="targetGroupAction">',
@@ -264,7 +191,7 @@ window.CRM.groups = {
         ':</span>\
                   <select name="targetGroupSelection" id="targetGroupSelection" class="form-control"></select>';
       options.buttons.confirm.callback = () => {
-        var groupId = readSelectValue("targetGroupSelection");
+        const groupId = readSelectValue("targetGroupSelection");
         if (!groupId) {
           bootbox.alert(i18next.t("Please select a group."));
           return false;
@@ -280,7 +207,7 @@ window.CRM.groups = {
         ':</span>\
                   <select name="targetRoleSelection" id="targetRoleSelection" class="form-control"></select>';
       options.buttons.confirm.callback = () => {
-        var roleId = readSelectValue("targetRoleSelection");
+        const roleId = readSelectValue("targetRoleSelection");
         if (!roleId) {
           bootbox.alert(i18next.t("Please select a role."));
           return false;
@@ -316,8 +243,8 @@ window.CRM.groups = {
     if (selectOptions.Type === (window.CRM.groups.selectTypes.Group | window.CRM.groups.selectTypes.Role)) {
       options.title = i18next.t("Select Group and Role");
       options.buttons.confirm.callback = () => {
-        var groupId = readSelectValue("targetGroupSelection");
-        var roleId = readSelectValue("targetRoleSelection");
+        const groupId = readSelectValue("targetGroupSelection");
+        const roleId = readSelectValue("targetRoleSelection");
         if (!groupId || !roleId) {
           bootbox.alert(i18next.t("Please select both a group and a role."));
           return false;
@@ -329,14 +256,14 @@ window.CRM.groups = {
     bootbox.dialog(options).init(initFunction).show();
 
     window.CRM.groups.get().done((rdata) => {
-      var groupsList = rdata.map((item) => ({
+      const groupsList = rdata.map((item) => ({
         text: item.Name,
         id: String(item.Id),
       }));
       window.jQuery("#targetGroupSelection").parents(".bootbox").removeAttr("tabindex");
-      var groupEl = document.getElementById("targetGroupSelection");
+      const groupEl = document.getElementById("targetGroupSelection");
       if (groupEl && groupEl.tomselect) groupEl.tomselect.destroy();
-      var groupTS = new TomSelect(groupEl, {
+      const groupTS = new TomSelect(groupEl, {
         valueField: "id",
         labelField: "text",
         searchField: "text",
@@ -344,12 +271,12 @@ window.CRM.groups = {
         dropdownParent: document.querySelector(".bootbox"),
         onChange: (value) => {
           if (!value) return;
-          var roleEl = document.getElementById("targetRoleSelection");
+          const roleEl = document.getElementById("targetRoleSelection");
           if (roleEl && roleEl.tomselect) roleEl.tomselect.destroy();
           // Clear existing options
           while (roleEl && roleEl.options.length) roleEl.remove(0);
           window.CRM.groups.getRoles(value).done((rdata) => {
-            var rolesList = rdata.map((item) => ({
+            const rolesList = rdata.map((item) => ({
               // i18next-disable-next-line
               text: i18next.t(item.OptionName),
               id: String(item.OptionId),
@@ -367,8 +294,8 @@ window.CRM.groups = {
     });
   },
   addPerson: (GroupID, PersonID, RoleID) => {
-    params = {
-      method: "POST", // define the type of HTTP verb we want to use (POST for our form)
+    const params = {
+      method: "POST",
       path: "groups/" + GroupID + "/addperson/" + PersonID,
     };
     if (RoleID) {
@@ -400,29 +327,23 @@ window.CRM.groups = {
         },
       },
       callback: (result) => {
-        if (result) {
-          var newGroup = { groupName: result };
-
-          if (!window.jQuery) {
-            return;
-          }
-
-          window.jQuery
-            .ajax({
-              method: "POST",
-              url: window.CRM.root + "/api/groups/", //call the groups api handler located at window.CRM.root
-              data: JSON.stringify(newGroup), // stringify the object we created earlier, and add it to the data payload
-              contentType: "application/json; charset=utf-8",
-              dataType: "json",
-            })
-            .done((data) => {
-              //yippie, we got something good back from the server
-              window.CRM.cartManager.refreshCartCount();
-              if (callbackM) {
-                callbackM(data);
-              }
-            });
+        if (!result) {
+          return;
         }
+        window.CRM
+          .APIRequest({
+            method: "POST",
+            path: "groups/",
+            data: JSON.stringify({ groupName: result }),
+          })
+          .done((data) => {
+            if (window.CRM.cartManager && typeof window.CRM.cartManager.refreshCartCount === "function") {
+              window.CRM.cartManager.refreshCartCount();
+            }
+            if (callbackM) {
+              callbackM(data);
+            }
+          });
       },
     });
   },
@@ -440,20 +361,21 @@ window.CRM.system = {
     if (jqXHR.status === 401) {
       window.location = window.CRM.root + "/session/begin?location=" + window.location.pathname;
     }
-    try {
-      var CRMResponse = JSON.parse(jqXHR.responseText);
-    } catch (err) {
-      var errortext = textStatus + " " + errorThrown;
+    if (textStatus === "abort" || suppressErrorDialog) {
+      return;
     }
-
-    if (!(textStatus === "abort" || suppressErrorDialog)) {
-      if (CRMResponse) {
-        window.CRM.DisplayErrorMessage(jqXHR.url, CRMResponse);
-      } else {
-        window.CRM.DisplayErrorMessage(jqXHR.url, {
-          message: errortext,
-        });
-      }
+    let parsedResponse = null;
+    try {
+      parsedResponse = JSON.parse(jqXHR.responseText);
+    } catch (_err) {
+      parsedResponse = null;
+    }
+    if (parsedResponse) {
+      window.CRM.DisplayErrorMessage(jqXHR.url, parsedResponse);
+    } else {
+      window.CRM.DisplayErrorMessage(jqXHR.url, {
+        message: textStatus + " " + errorThrown,
+      });
     }
   },
 };
@@ -465,7 +387,7 @@ window.CRM.dashboard = {
   loadEventCounters: () => {
     // Pass the browser's local date so the counter matches the calendar's "today" cell.
     // FullCalendar highlights today using the browser local date, not the server timezone.
-    var today = new Date().toLocaleDateString("en-CA"); // yields YYYY-MM-DD
+    const today = new Date().toLocaleDateString("en-CA"); // yields YYYY-MM-DD
     window.CRM.APIRequest({
       method: "GET",
       path: "calendar/events-counters?date=" + today,
@@ -489,11 +411,11 @@ window.CRM.dashboard = {
  */
 window.CRM.renderPersonActionMenu = (personId, personName, options) => {
   options = options || {};
-  var inCart = options.inCart || false;
-  var familyId = options.familyId || null;
-  var root = window.CRM.root;
-  var escapedName = window.CRM.escapeHtml(personName || "");
-  var familyItem = familyId
+  const inCart = options.inCart || false;
+  const familyId = options.familyId || null;
+  const root = window.CRM.root;
+  const escapedName = window.CRM.escapeHtml(personName || "");
+  const familyItem = familyId
     ? '<a class="dropdown-item" href="' +
       root +
       "/people/family/" +
@@ -570,8 +492,8 @@ window.CRM.renderPersonActionMenu = (personId, personName, options) => {
  */
 window.CRM.renderFamilyActionMenu = (familyId, _familyName, options) => {
   options = options || {};
-  var inCart = options.inCart || false;
-  var root = window.CRM.root;
+  const inCart = options.inCart || false;
+  const root = window.CRM.root;
   return (
     '<div class="dropdown">' +
     '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">' +
@@ -638,11 +560,11 @@ window.CRM.renderFamilyActionMenu = (familyId, _familyName, options) => {
  */
 window.CRM.renderEventActionMenu = (eventId, eventTitle, options) => {
   options = options || {};
-  var inactive = options.inactive || false;
-  var root = window.CRM.root;
-  var escapedTitle = window.CRM.escapeHtml(eventTitle || "");
+  const inactive = options.inactive || false;
+  const root = window.CRM.root;
+  const escapedTitle = window.CRM.escapeHtml(eventTitle || "");
 
-  var statusButton = inactive
+  const statusButton = inactive
     ? '<button type="button" class="dropdown-item activate-event" data-event_id="' +
       eventId +
       '">' +
@@ -707,19 +629,19 @@ window.CRM.renderEventActionMenu = (eventId, eventTitle, options) => {
 (function setupEventActionHandlers() {
   function register() {
     if (!window.jQuery) return;
-    var $ = window.jQuery;
+    const $ = window.jQuery;
 
     $(document).on("click", ".delete-event", function (e) {
       e.preventDefault();
       e.stopPropagation();
-      var $btn = $(this);
-      var eventId = $btn.data("event_id");
+      const $btn = $(this);
+      const eventId = $btn.data("event_id");
       // The data-event_title attribute is already HTML-escaped by
       // renderEventActionMenu(), so jQuery's .data() returns the escaped form
       // (e.g. "Sunday &amp; Friends"). Embedding it directly in the bootbox
       // message HTML preserves the correct rendering — calling escapeHtml()
       // again would double-escape (e.g. "&amp;amp;").
-      var eventTitle = $btn.data("event_title");
+      const eventTitle = $btn.data("event_title");
       bootbox.confirm({
         title: i18next.t("Delete this event?"),
         message:
@@ -778,9 +700,9 @@ window.CRM.renderEventActionMenu = (eventId, eventTitle, options) => {
     window.jQuery(document).on("click", ".delete-person", function (e) {
       e.preventDefault();
       e.stopPropagation();
-      var $btn = window.jQuery(this);
-      var personId = $btn.data("person_id");
-      var personName = $btn.data("person_name");
+      const $btn = window.jQuery(this);
+      const personId = $btn.data("person_id");
+      const personName = $btn.data("person_name");
       bootbox.confirm({
         title: i18next.t("Delete this person?"),
         message:
@@ -815,7 +737,7 @@ window.CRM.renderEventActionMenu = (eventId, eventTitle, options) => {
  * @param {string} [successMsg] - Optional toast message on success
  */
 window.CRM.copyToClipboard = (text, successMsg) => {
-  var msg = successMsg || i18next.t("Copied to clipboard");
+  const msg = successMsg || i18next.t("Copied to clipboard");
   if (navigator.clipboard) {
     return navigator.clipboard
       .writeText(text)
@@ -830,16 +752,3 @@ window.CRM.copyToClipboard = (text, successMsg) => {
   return Promise.resolve();
 };
 
-function LimitTextSize(theTextArea, size) {
-  if (theTextArea.value.length > size) {
-    theTextArea.value = theTextArea.value.substr(0, size);
-  }
-}
-
-function popUp(URL) {
-  window.open(
-    URL,
-    "popup-window",
-    "toolbar=0,scrollbars=yes,location=0,statusbar=0,menubar=0,resizable=yes,width=600,height=400,left=100,top=50,noopener,noreferrer",
-  );
-}
