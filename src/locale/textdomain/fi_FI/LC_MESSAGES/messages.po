@@ -15827,3 +15827,23 @@ msgstr "Vapaaehtoisten syöttämät henkilömäärät, jaoteltuna kategorioittai
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "CSV:ssä on päällekkäisiä sarakkeiden nimiä. Nimeä päällekkäiset sarakkeet uudelleen (esim. lisää \"(2)\" toiseen) ja lataa uudelleen."
 
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "Haluatko varmasti poistaa tämän lahjoitetun esineen pysyvästi?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "Haluatko varmasti poistaa tämän huutokauppanumeron pysyvästi?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Poista lahjoitettu esine"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Poista huutokauppanumero"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Virheellinen suojausmerkki. Yritä uudelleen."
+

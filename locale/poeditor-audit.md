@@ -10,23 +10,23 @@
 
 | Locale | Language | Translations | Percentage | Status | Supported |
 |--------|----------|--------------|------------|--------|----------|
-| `ja` | Japanese | 3766 | 99.79% | 🟢 Complete | ✅ Yes |
-| `ar` | Arabic | 3765 | 99.76% | 🟢 Complete | ✅ Yes |
-| `zh-cn` | Chinese | 3765 | 99.76% | 🟢 Complete | ✅ Yes |
-| `zh-tw` | Chinese (TW) | 3765 | 99.76% | 🟢 Complete | ✅ Yes |
-| `hi` | Hindi | 3765 | 99.76% | 🟢 Complete | ✅ Yes |
-| `ko` | Korean | 3765 | 99.76% | 🟢 Complete | ✅ Yes |
-| `ru` | Russian | 3765 | 99.76% | 🟢 Complete | ✅ Yes |
-| `ta` | Tamil | 3765 | 99.76% | 🟢 Complete | ✅ Yes |
-| `uk` | Ukrainian | 3765 | 99.76% | 🟢 Complete | ✅ Yes |
-| `vi` | Vietnamese | 3765 | 99.76% | 🟢 Complete | ✅ Yes |
-| `af` | Afrikaans | 3764 | 99.74% | 🟢 Complete | ✅ Yes |
-| `am` | Amharic | 3764 | 99.74% | 🟢 Complete | ✅ Yes |
-| `fi` | Finnish | 3764 | 99.74% | 🟢 Complete | ✅ Yes |
-| `el` | Greek | 3764 | 99.74% | 🟢 Complete | ✅ Yes |
-| `he` | Hebrew | 3764 | 99.74% | 🟢 Complete | ✅ Yes |
-| `es` | Spanish | 3764 | 99.74% | 🟢 Complete | ✅ Yes |
-| `sw` | Swahili | 3764 | 99.74% | 🟢 Complete | ✅ Yes |
+| `ja` | Japanese | 3771 | 99.92% | 🟢 Complete | ✅ Yes |
+| `ar` | Arabic | 3770 | 99.89% | 🟢 Complete | ✅ Yes |
+| `zh-cn` | Chinese | 3770 | 99.89% | 🟢 Complete | ✅ Yes |
+| `zh-tw` | Chinese (TW) | 3770 | 99.89% | 🟢 Complete | ✅ Yes |
+| `hi` | Hindi | 3770 | 99.89% | 🟢 Complete | ✅ Yes |
+| `ko` | Korean | 3770 | 99.89% | 🟢 Complete | ✅ Yes |
+| `ru` | Russian | 3770 | 99.89% | 🟢 Complete | ✅ Yes |
+| `ta` | Tamil | 3770 | 99.89% | 🟢 Complete | ✅ Yes |
+| `uk` | Ukrainian | 3770 | 99.89% | 🟢 Complete | ✅ Yes |
+| `vi` | Vietnamese | 3770 | 99.89% | 🟢 Complete | ✅ Yes |
+| `af` | Afrikaans | 3769 | 99.87% | 🟢 Complete | ✅ Yes |
+| `am` | Amharic | 3769 | 99.87% | 🟢 Complete | ✅ Yes |
+| `fi` | Finnish | 3769 | 99.87% | 🟢 Complete | ✅ Yes |
+| `el` | Greek | 3769 | 99.87% | 🟢 Complete | ✅ Yes |
+| `he` | Hebrew | 3769 | 99.87% | 🟢 Complete | ✅ Yes |
+| `es` | Spanish | 3769 | 99.87% | 🟢 Complete | ✅ Yes |
+| `sw` | Swahili | 3769 | 99.87% | 🟢 Complete | ✅ Yes |
 | `hu` | Hungarian | 3763 | 99.71% | 🟢 Complete | ✅ Yes |
 | `pt-br` | Portuguese (BR) | 3763 | 99.71% | 🟢 Complete | ✅ Yes |
 | `sq` | Albanian | 3762 | 99.68% | 🟢 Complete | ✅ Yes |

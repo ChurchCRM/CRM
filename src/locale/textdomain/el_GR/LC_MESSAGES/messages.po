@@ -15868,3 +15868,23 @@ msgstr "Αριθμοί παρόντων που καταχωρήθηκαν από
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "Το CSV σας έχει διπλότυπα ονόματα στηλών. Μετονομάστε τις διπλότυπες στήλες (π.χ. προσθέστε \"(2)\" στη δεύτερη) και μεταφορτώστε ξανά."
 
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "Είστε βέβαιοι ότι θέλετε να διαγράψετε οριστικά αυτό το δωρισμένο είδος;"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "Είστε βέβαιοι ότι θέλετε να διαγράψετε οριστικά αυτόν τον αριθμό κουπιού;"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Διαγραφή δωρισμένου είδους"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Διαγραφή αριθμού κουπιού"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Μη έγκυρο διακριτικό ασφαλείας. Παρακαλώ δοκιμάστε ξανά."
+

@@ -3796,5 +3796,10 @@
     "Ties this event to a class or ministry roster — used by the Kiosk check-in flow.": "இந்த நிகழ்வை ஒரு வகுப்பு அல்லது ஊழிய பட்டியலுடன் இணைக்கிறது — கியோஸ்க் செக்-இன் ஓட்டத்தால் பயன்படுத்தப்படுகிறது.",
     "Upload a CSV to create families and people in bulk.": "குடும்பங்களையும் நபர்களையும் மொத்தமாக உருவாக்க CSV பதிவேற்றவும்.",
     "Volunteer-entered headcounts, broken down by category.": "தன்னார்வலர் உள்ளிட்ட தலை எண்ணிக்கைகள், வகைவாரியாக பிரிக்கப்பட்டன.",
-    "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again.": "உங்கள் CSV இல் நகல் நெடுவரிசை பெயர்கள் உள்ளன. நகல் நெடுவரிசைகளை மறுபெயரிடவும் (எ.கா. இரண்டாவதில் \"(2)\" சேர்க்கவும்) மீண்டும் பதிவேற்றவும்."
+    "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again.": "உங்கள் CSV இல் நகல் நெடுவரிசை பெயர்கள் உள்ளன. நகல் நெடுவரிசைகளை மறுபெயரிடவும் (எ.கா. இரண்டாவதில் \"(2)\" சேர்க்கவும்) மீண்டும் பதிவேற்றவும்.",
+    "Are you sure you want to permanently delete this donated item?": "இந்த நன்கொடை பொருளை நிரந்தரமாக நீக்க விரும்புகிறீர்களா?",
+    "Are you sure you want to permanently delete this paddle number?": "இந்த துடுப்பு எண்ணை நிரந்தரமாக நீக்க விரும்புகிறீர்களா?",
+    "Delete Donated Item": "நன்கொடை பொருளை நீக்கு",
+    "Delete Paddle Number": "துடுப்பு எண்ணை நீக்கு",
+    "Invalid security token. Please try again.": "தவறான பாதுகாப்பு டோக்கன். மீண்டும் முயலவும்."
 }
