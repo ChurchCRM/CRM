@@ -14570,10 +14570,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "പരിപാടി സൃഷ്ടിച്ചു. ചെക്ക്-ഇനിലേക്ക് റീഡയറക്ട് ചെയ്യുന്നു..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "പരിപാടി അവസാന തീയതി/സമയം ആരംഭ തീയതി/സമയത്തിന് ശേഷം ആയിരിക്കണം."
-
-#: 
 msgid "Event title is required."
 msgstr "പരിപാടിയുടെ ശീർഷകം ആവശ്യമാണ്."
 
@@ -14600,10 +14596,6 @@ msgstr "പരിപാടി തരത്തിൽ ആവർത്തന രീ
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "മാസിക ആവർത്തനത്തിനായി പരിപാടി തരത്തിൽ മാസത്തിലെ ദിവസം ക്രമീകരിച്ചിട്ടില്ല"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "ഈ തീയതി ശ്രേണിക്കുള്ളിൽ ഓരോ യോജിക്കുന്ന സംഭവത്തിനും പരിപാടികൾ സൃഷ്ടിക്കും."
 
 #: 
 msgid "Every month on the"
@@ -14654,10 +14646,6 @@ msgid "Group Roster"
 msgstr "ഗ്രൂപ്പ് പട്ടിക"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "വിപുലമായ ഓപ്ഷനുകൾ മറയ്ക്കുക"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "ഞായറാഴ്ച പഠനം + പരിപാടികൾ + കിയോസ്കുകൾ ഒരുമിച്ച് എങ്ങനെ ഉൾക്കൊള്ളുന്നു"
 
@@ -14668,10 +14656,6 @@ msgstr "%s-നുള്ള അസാധുവായ തീയതി — YYYY-MM-
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "rangeStart അല്ലെങ്കിൽ rangeEnd-ന് അസാധുവായ തീയതി ഫോർമാറ്റ്"
-
-#: 
-msgid "Invalid date format."
-msgstr "അസാധുവായ തീയതി ഫോർമാറ്റ്."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -14726,10 +14710,6 @@ msgid "No active events found."
 msgstr "സക്രിയ പരിപാടികൾ ഒന്നും കണ്ടെത്തിയില്ല."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "ഈ പരിപാടി തരത്തിന് ഇതുവരെ ഹാജർ എണ്ണൽ വിഭാഗങ്ങൾ നിർവ്വചിച്ചിട്ടില്ല."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "ഈ പരിപാടിയിൽ ഇതുവരെ ആരും ചെക്ക് ഇൻ ചെയ്തിട്ടില്ല."
 
@@ -14770,10 +14750,6 @@ msgid "Please select a person to check in."
 msgstr "ചെക്ക് ഇൻ ചെയ്യാൻ ഒരു വ്യക്തിയെ തിരഞ്ഞെടുക്കുക."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "ഈ പരിപാടി തരത്തെ അടിസ്ഥാനമാക്കി മുൻകൂട്ടി പൂരിപ്പിച്ചത് — ആവർത്തിക്കുന്ന തരങ്ങൾക്ക്, ഈ തരത്തിലെ അവസാന പരിപാടിക്ക് ശേഷമുള്ള അടുത്ത സംഭവം ആണ് തീയതി, കൂടാതെ സമയം തരത്തിന്റെ ഡിഫോൾട്ട് ആരംഭ സമയവുമായി പൊരുത്തപ്പെടുന്നു."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "ശ്രേണി അവസാന തീയതി ശ്രേണി ആരംഭ തീയതിക്ക് ശേഷമോ അതേ ദിവസമോ ആയിരിക്കണം."
 
@@ -14802,10 +14778,6 @@ msgid "Recommended"
 msgstr "ശുപാർശ ചെയ്തത്"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "കിയോസ്കിനായി ആവശ്യമാണ്"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "റീസെറ്റ് ചെയ്യൽ ശാശ്വതമായി ഇല്ലാതാക്കും:"
 
@@ -14824,14 +14796,6 @@ msgstr "ഈ വിഭാഗ നാമത്തിലെ മാറ്റങ്ങ
 #: 
 msgid "Select an event type…"
 msgstr "ഒരു പരിപാടി തരം തിരഞ്ഞെടുക്കുക…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "ആരംഭ, അവസാന തീയതി/സമയം തിരഞ്ഞെടുക്കുക."
-
-#: 
-msgid "Show More Options"
-msgstr "കൂടുതൽ ഓപ്ഷനുകൾ കാണിക്കുക"
 
 #: 
 msgid "Skip"
@@ -14874,16 +14838,8 @@ msgid "The Events module is disabled"
 msgstr "പരിപാടി മൊഡ്യൂൾ പ്രവർത്തനരഹിതമാണ്"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "ജനിപ്പിക്കപ്പെടുന്ന എല്ലാ പരിപാടികൾക്കും ഒരേ ആരംഭ, അവസാന സമയം ഉപയോഗിക്കും."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "ഇന്ന് ഷെഡ്യൂൾ ചെയ്ത പരിപാടികൾ ഒന്നുമില്ല"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "ഇവ ആൾക്കണക്ക് വിഭാഗങ്ങൾ ആണ് — ഡാഷ്ബോർഡിന് ഹാജർ വിഭജിക്കാൻ (ഉദാ. എത്ര അംഗങ്ങൾ, എത്ര സന്ദർശകർ) പരിപാടിക്ക് ശേഷം സന്നദ്ധ സേവകർ ഇവ പൂരിപ്പിക്കുന്നു. ചെക്ക്-ഇൻ താളിലെ വ്യക്തിഗത ചെക്ക്-ഇനുകളിൽ നിന്ന് ഇവ വ്യത്യസ്തമാണ്."
 
 #: 
 msgid "This event is inactive."
@@ -14938,16 +14894,8 @@ msgid "View Event"
 msgstr "പരിപാടി കാണുക"
 
 #: 
-msgid "What are these for?"
-msgstr "ഇവ എന്തിനാണ്?"
-
-#: 
 msgid "What does this find?"
 msgstr "ഇത് എന്ത് കണ്ടെത്തുന്നു?"
-
-#: 
-msgid "What is this for?"
-msgstr "ഇത് എന്തിനാണ്?"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15332,14 +15280,6 @@ msgstr "റിക്കവറി കോഡ്"
 #: 
 msgid "Set up Email"
 msgstr "ഇമെയിൽ സജ്ജമാക്കുക"
-
-#: 
-msgid "Test SMTP Email"
-msgstr "SMTP ഇമെയിൽ പരീക്ഷിക്കുക"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "ഇത് ChurchCRM-ന്റെ ഒരു ടെസ്റ്റ് ഇമെയിലാണ്, നിങ്ങളുടെ SMTP കോൺഫിഗറേഷൻ പ്രവർത്തിക്കുന്നു എന്ന് ഇത് സ്ഥിരീകരിക്കുന്നു."
 
 #: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."

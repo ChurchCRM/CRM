@@ -14613,10 +14613,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "Etkinlik oluşturuldu. Giriş sayfasına yönlendiriliyor..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "Etkinlik bitiş tarihi/saati, başlangıç tarihi/saatinde veya sonrasında olmalıdır."
-
-#: 
 msgid "Event title is required."
 msgstr "Etkinlik başlığı zorunludur."
 
@@ -14643,10 +14639,6 @@ msgstr "Etkinlik türünde tekrarlama düzeni yapılandırılmamış"
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "Etkinlik türünde aylık tekrarlama için geçerli ayın günü yapılandırılmamış"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "Bu tarih aralığındaki her eşleşen oluşum için etkinlik oluşturulacaktır."
 
 #: 
 msgid "Every month on the"
@@ -14697,10 +14689,6 @@ msgid "Group Roster"
 msgstr "Hizmet Listesi"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "Gelişmiş Seçenekleri Gizle"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Pazar Okulu + Etkinlikler + Kiosk'lar nasıl birlikte çalışır"
 
@@ -14711,10 +14699,6 @@ msgstr "%s için geçersiz tarih — YYYY-AA-GG bekleniyor"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "rangeStart veya rangeEnd için geçersiz tarih biçimi"
-
-#: 
-msgid "Invalid date format."
-msgstr "Geçersiz tarih biçimi."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -14769,10 +14753,6 @@ msgid "No active events found."
 msgstr "Aktif etkinlik bulunamadı."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "Bu etkinlik türü için henüz katılım sayısı kategorisi tanımlanmamış."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "Bu etkinliğe henüz kimse giriş yapmadı."
 
@@ -14813,10 +14793,6 @@ msgid "Please select a person to check in."
 msgstr "Lütfen giriş yapacak bir kişi seçin."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "Bu etkinlik türüne göre önceden doldurulmuş — tekrar eden türler için tarih, bu türün son etkinliğinden sonraki oluşumdur ve saat türün varsayılan başlangıç saatiyle eşleşir."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "Aralık bitiş tarihi, aralık başlangıç tarihinde veya sonrasında olmalıdır."
 
@@ -14845,10 +14821,6 @@ msgid "Recommended"
 msgstr "Önerilen"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "Kiosk için Zorunlu"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "Sıfırlama kalıcı olarak silecektir:"
 
@@ -14867,14 +14839,6 @@ msgstr "Bu kategori adındaki değişiklikleri kaydet"
 #: 
 msgid "Select an event type…"
 msgstr "Bir etkinlik türü seçin…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "Başlangıç ve bitiş tarihi/saatini seçin."
-
-#: 
-msgid "Show More Options"
-msgstr "Daha Fazla Seçenek Göster"
 
 #: 
 msgid "Skip"
@@ -14917,16 +14881,8 @@ msgid "The Events module is disabled"
 msgstr "Etkinlikler modülü devre dışı"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "Oluşturulan tüm etkinlikler için aynı başlangıç ve bitiş saati kullanılacaktır."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "Bugün için planlanmış etkinlik yok"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "Bunlar katılımcı sayısı gruplarıdır — gönüllüler etkinlikten sonra bunları doldurur, böylece pano katılımı ayrıştırabilir (ör. kaç cemaat üyesi ve kaç ziyaretçi). Bunlar, Giriş sayfasındaki bireysel girişlerden ayrıdır."
 
 #: 
 msgid "This event is inactive."
@@ -14981,16 +14937,8 @@ msgid "View Event"
 msgstr "Etkinliği Görüntüle"
 
 #: 
-msgid "What are these for?"
-msgstr "Bunlar ne için?"
-
-#: 
 msgid "What does this find?"
 msgstr "Bu ne bulur?"
-
-#: 
-msgid "What is this for?"
-msgstr "Bu ne için?"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15375,14 +15323,6 @@ msgstr "Kurtarma Kodu"
 #: 
 msgid "Set up Email"
 msgstr "E-postayı Yapılandır"
-
-#: 
-msgid "Test SMTP Email"
-msgstr "SMTP E-postasını Test Et"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "Bu, SMTP yapılandırmanızın çalıştığını doğrulayan bir ChurchCRM test e-postasıdır."
 
 #: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."

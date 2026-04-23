@@ -14570,10 +14570,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "Nalilikha ang kaganapan. Inililipat sa check-in..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "Ang petsa/oras ng pagtatapos ng kaganapan ay dapat sa o pagkatapos ng petsa/oras ng pagsisimula."
-
-#: 
 msgid "Event title is required."
 msgstr "Kinakailangan ang pamagat ng kaganapan."
 
@@ -14600,10 +14596,6 @@ msgstr "Ang uri ng kaganapan ay walang pattern ng paulit-ulit na na-configure"
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "Ang uri ng kaganapan ay walang wastong araw ng buwan na na-configure para sa buwanang paulit-ulit"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "Ang mga kaganapan ay lilikha para sa bawat katugmang pagkakataon sa loob ng saklaw ng petsang ito."
 
 #: 
 msgid "Every month on the"
@@ -14654,10 +14646,6 @@ msgid "Group Roster"
 msgstr "Listahan ng Grupo"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "Itago ang mga Advanced na Opsyon"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Paano Magkasya ang Sunday School + Mga Kaganapan + Mga Kiosk"
 
@@ -14668,10 +14656,6 @@ msgstr "Hindi wastong petsa para sa %s — inaasahang YYYY-MM-DD"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Hindi wastong format ng petsa para sa rangeStart o rangeEnd"
-
-#: 
-msgid "Invalid date format."
-msgstr "Hindi wastong format ng petsa."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -14726,10 +14710,6 @@ msgid "No active events found."
 msgstr "Walang nahanap na aktibong kaganapan."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "Wala pang mga kategorya ng bilang ng presensya na itinakda para sa uri ng kaganapang ito."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "Wala pang naka-check in sa kaganapang ito."
 
@@ -14770,10 +14750,6 @@ msgid "Please select a person to check in."
 msgstr "Pumili ng tao para i-check in."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "Paunang napuno batay sa uri ng kaganapang ito — para sa mga paulit-ulit na uri, ang petsa ay ang susunod na pagkakataon pagkatapos ng huling kaganapan ng uri na ito, at ang oras ay tumutugma sa default na oras ng pagsisimula ng uri."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "Ang petsa ng katapusan ng saklaw ay dapat sa o pagkatapos ng petsa ng simula ng saklaw."
 
@@ -14802,10 +14778,6 @@ msgid "Recommended"
 msgstr "Inirerekomenda"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "Kinakailangan para sa Kiosk"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "Ang pag-reset ay permanenteng magtatanggal ng:"
 
@@ -14824,14 +14796,6 @@ msgstr "I-save ang mga pagbabago sa pangalan ng kategoryang ito"
 #: 
 msgid "Select an event type…"
 msgstr "Pumili ng uri ng kaganapan…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "Pumili ng petsa/oras ng simula at katapusan."
-
-#: 
-msgid "Show More Options"
-msgstr "Ipakita ang Higit pang mga Opsyon"
 
 #: 
 msgid "Skip"
@@ -14874,16 +14838,8 @@ msgid "The Events module is disabled"
 msgstr "Ang module ng mga Kaganapan ay hindi pinagana"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "Ang parehong oras ng simula at katapusan ay gagamitin para sa lahat ng nabuong kaganapan."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "Walang mga kaganapang nakatakda para ngayon"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "Ang mga ito ay mga lalagyan ng bilang ng tao — pinupunan ng mga boluntaryo ang mga ito pagkatapos ng kaganapan para mapaghatian ng dashboard ang presensya (hal. ilang miyembro kumpara sa mga bisita). Ang mga ito ay hiwalay mula sa mga indibidwal na check-in sa pahina ng Check-in."
 
 #: 
 msgid "This event is inactive."
@@ -14938,16 +14894,8 @@ msgid "View Event"
 msgstr "Tingnan ang Kaganapan"
 
 #: 
-msgid "What are these for?"
-msgstr "Para saan ang mga ito?"
-
-#: 
 msgid "What does this find?"
 msgstr "Ano ang hahanapin nito?"
-
-#: 
-msgid "What is this for?"
-msgstr "Para saan ito?"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15324,14 +15272,6 @@ msgstr "Na-reset ang password ngunit hindi maipadala ang email. Naka-lock out an
 #: 
 msgid "Set up Email"
 msgstr "I-set up ang Email"
-
-#: 
-msgid "Test SMTP Email"
-msgstr "Subukan ang SMTP Email"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "Ito ay isang test email ng ChurchCRM na nagpapatunay na gumagana ang iyong SMTP configuration."
 
 #: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."

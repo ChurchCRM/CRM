@@ -14635,10 +14635,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "Подію створено. Перенаправлення на реєстрацію..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "Дата/час завершення події має бути не раніше дати/часу початку."
-
-#: 
 msgid "Event title is required."
 msgstr "Назва події є обов'язковою."
 
@@ -14665,10 +14661,6 @@ msgstr "Для типу події не налаштовано шаблон по
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "Для типу події не налаштовано дійсний день місяця для щомісячного повторення"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "Події будуть створені для кожного відповідного проведення в межах цього діапазону дат."
 
 #: 
 msgid "Every month on the"
@@ -14719,10 +14711,6 @@ msgid "Group Roster"
 msgstr "Реєстр групи"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "Приховати розширені параметри"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Як взаємодіють Недільна школа, події та кіоски"
 
@@ -14733,10 +14721,6 @@ msgstr "Недійсна дата для %s — очікується РРРР-М
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Недійсний формат дати для rangeStart або rangeEnd"
-
-#: 
-msgid "Invalid date format."
-msgstr "Недійсний формат дати."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -14791,10 +14775,6 @@ msgid "No active events found."
 msgstr "Активних подій не знайдено."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "Для цього типу події ще не визначено категорії підрахунку відвідуваності."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "Ще ніхто не відмічений на цій події."
 
@@ -14835,10 +14815,6 @@ msgid "Please select a person to check in."
 msgstr "Будь ласка, виберіть особу для відмітки."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "Попередньо заповнено на основі цього типу події — для повторюваних типів дата є наступним проведенням після останньої події цього типу, а час відповідає часу початку за замовчуванням."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "Кінцева дата діапазону має бути не раніше початкової дати діапазону."
 
@@ -14867,10 +14843,6 @@ msgid "Recommended"
 msgstr "Рекомендовано"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "Обов'язково для кіоску"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "Скидання назавжди видалить:"
 
@@ -14889,14 +14861,6 @@ msgstr "Зберегти зміни назви цієї категорії"
 #: 
 msgid "Select an event type…"
 msgstr "Виберіть тип події…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "Виберіть дату/час початку та завершення."
-
-#: 
-msgid "Show More Options"
-msgstr "Показати більше параметрів"
 
 #: 
 msgid "Skip"
@@ -14939,16 +14903,8 @@ msgid "The Events module is disabled"
 msgstr "Модуль подій вимкнено"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "Однаковий час початку та завершення буде використовуватися для всіх створених подій."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "На сьогодні не заплановано жодних подій"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "Це категорії підрахунку — волонтери заповнюють їх після події, щоб панель управління могла розбити відвідуваність (наприклад, скільки парафіян та скільки відвідувачів). Вони окремі від індивідуальних відміток на сторінці реєстрації."
 
 #: 
 msgid "This event is inactive."
@@ -15003,16 +14959,8 @@ msgid "View Event"
 msgstr "Переглянути подію"
 
 #: 
-msgid "What are these for?"
-msgstr "Для чого вони?"
-
-#: 
 msgid "What does this find?"
 msgstr "Що це знаходить?"
-
-#: 
-msgid "What is this for?"
-msgstr "Для чого це?"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15399,14 +15347,6 @@ msgid "Set up Email"
 msgstr "Налаштувати пошту"
 
 #: 
-msgid "Test SMTP Email"
-msgstr "Тестовий лист SMTP"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "Це тестовий лист ChurchCRM, що підтверджує коректну роботу вашої конфігурації SMTP."
-
-#: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."
 msgstr "Не вдалося скопіювати до буфера обміну. Скопіюйте коди вручну."
 
@@ -15421,10 +15361,6 @@ msgstr "Використати код відновлення замість ць
 #: 
 msgid "Use authenticator app instead"
 msgstr "Використати застосунок автентифікації замість цього"
-
-#: 
-msgid " Notification Email Error"
-msgstr " Помилка сповіщення електронною поштою"
 
 #: 
 msgid "%d modules loaded"
@@ -15449,10 +15385,6 @@ msgstr "Всі перевірки пройдено"
 #: 
 msgid "App"
 msgstr "Додаток"
-
-#: 
-msgid "Auto-TLS"
-msgstr "Авто-TLS"
 
 #: 
 msgid "Browser time zone differs:"

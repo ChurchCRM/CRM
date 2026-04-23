@@ -14596,10 +14596,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "Acara dibuat. Mengalihkan ke halaman absen masuk..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "Tanggal/waktu berakhir acara harus pada atau setelah tanggal/waktu mulai."
-
-#: 
 msgid "Event title is required."
 msgstr "Judul acara diperlukan."
 
@@ -14626,10 +14622,6 @@ msgstr "Jenis acara tidak memiliki pola perulangan yang dikonfigurasi"
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "Jenis acara tidak memiliki tanggal dalam bulan yang valid untuk perulangan bulanan"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "Acara akan dibuat untuk setiap pertemuan yang sesuai dalam rentang tanggal ini."
 
 #: 
 msgid "Every month on the"
@@ -14680,10 +14672,6 @@ msgid "Group Roster"
 msgstr "Daftar Anggota Pelayanan"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "Sembunyikan Opsi Lanjutan"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Cara Sekolah Minggu + Acara + Kios bekerja bersama"
 
@@ -14694,10 +14682,6 @@ msgstr "Tanggal tidak valid untuk %s — diharapkan YYYY-MM-DD"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Format tanggal tidak valid untuk rangeStart atau rangeEnd"
-
-#: 
-msgid "Invalid date format."
-msgstr "Format tanggal tidak valid."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -14752,10 +14736,6 @@ msgid "No active events found."
 msgstr "Tidak ada acara aktif yang ditemukan."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "Belum ada kategori hitungan kehadiran yang ditentukan untuk jenis acara ini."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "Belum ada yang absen masuk ke acara ini."
 
@@ -14796,10 +14776,6 @@ msgid "Please select a person to check in."
 msgstr "Silakan pilih seseorang untuk diabsen masuk."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "Diisi otomatis berdasarkan jenis acara ini — untuk jenis berulang, tanggal adalah pertemuan berikutnya setelah acara terakhir jenis ini, dan waktu sesuai dengan waktu mulai default jenis ini."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "Tanggal akhir rentang harus pada atau setelah tanggal awal rentang."
 
@@ -14828,10 +14804,6 @@ msgid "Recommended"
 msgstr "Disarankan"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "Diperlukan untuk Kios"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "Pengaturan ulang akan menghapus secara permanen:"
 
@@ -14850,14 +14822,6 @@ msgstr "Simpan perubahan nama kategori ini"
 #: 
 msgid "Select an event type…"
 msgstr "Pilih jenis acara…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "Pilih tanggal/waktu mulai dan selesai."
-
-#: 
-msgid "Show More Options"
-msgstr "Tampilkan Lebih Banyak Opsi"
 
 #: 
 msgid "Skip"
@@ -14900,16 +14864,8 @@ msgid "The Events module is disabled"
 msgstr "Modul Acara dinonaktifkan"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "Waktu mulai dan selesai yang sama akan digunakan untuk semua acara yang dibuat."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "Tidak ada acara yang dijadwalkan untuk hari ini"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "Ini adalah kategori hitungan kehadiran — sukarelawan mengisinya setelah acara agar dasbor dapat merinci kehadiran (mis. berapa banyak jemaat vs. pengunjung). Ini terpisah dari absen masuk individu di halaman Absen Masuk."
 
 #: 
 msgid "This event is inactive."
@@ -14964,16 +14920,8 @@ msgid "View Event"
 msgstr "Lihat Acara"
 
 #: 
-msgid "What are these for?"
-msgstr "Untuk apa ini?"
-
-#: 
 msgid "What does this find?"
 msgstr "Apa yang dicari ini?"
-
-#: 
-msgid "What is this for?"
-msgstr "Untuk apa ini?"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15356,14 +15304,6 @@ msgid "Set up Email"
 msgstr "Atur Email"
 
 #: 
-msgid "Test SMTP Email"
-msgstr "Uji Email SMTP"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "Ini adalah email uji ChurchCRM yang mengonfirmasi bahwa konfigurasi SMTP Anda berfungsi."
-
-#: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."
 msgstr "Tidak dapat menyalin ke papan klip. Harap salin kode secara manual."
 
@@ -15378,10 +15318,6 @@ msgstr "Gunakan kode pemulihan sebagai gantinya"
 #: 
 msgid "Use authenticator app instead"
 msgstr "Gunakan aplikasi autentikator sebagai gantinya"
-
-#: 
-msgid " Notification Email Error"
-msgstr " Kesalahan Email Notifikasi"
 
 #: 
 msgid "%d modules loaded"
