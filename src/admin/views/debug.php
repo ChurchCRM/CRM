@@ -19,16 +19,7 @@ $failingCount = count($failing);
 $orphanedFiles = AppIntegrityService::getOrphanedFiles();
 $orphanedCount = count($orphanedFiles);
 
-try {
-    $localeInfo = LocaleService::getLocaleSetupInfo();
-} catch (\RuntimeException $e) {
-    $localeInfo = [
-        'supportedLocales' => [],
-        'availableSystemLocales' => [],
-        'systemLocaleSupportSummary' => gettext('System locale detection failed') . ': ' . $e->getMessage(),
-        'systemLocaleDetected' => false,
-    ];
-}
+$localeInfo = LocaleService::getLocaleSetupInfo();
 $localeDetected = $localeInfo['systemLocaleDetected'];
 
 $serverTimezone = date_default_timezone_get();

@@ -80,7 +80,7 @@ function checkBrowserLocale() {
       markDismissed();
       alert.remove();
     });
-    alert.querySelector(".close").addEventListener("click", markDismissed);
+    alert.querySelector(".btn-close").addEventListener("click", markDismissed);
   };
 
   if (document.readyState === "loading") {
