@@ -743,15 +743,17 @@ jobs:
         GH_TOKEN: ${{ github.token }}
       run: |
         tag="${{ steps.package-version.outputs.current-version }}"
-        zip_file=$(ls temp/ChurchCRM-*.zip 2>/dev/null | head -1)
-        if [ -z "$zip_file" ]; then
-          echo "::error::No zip file found in temp/"
+        # scripts/package-release.js emits ChurchCRM-<version>.zip deterministically
+        zip_file="temp/ChurchCRM-${tag}.zip"
+        if [ ! -f "$zip_file" ]; then
+          echo "::error::Expected zip not found: $zip_file"
+          ls -la temp/ || true
           exit 1
         fi
         echo "Uploading $(basename "$zip_file") to release $tag"
-        release_id=$(gh api repos/${{ github.repository }}/releases \
-          --jq '.[] | select(.tag_name=="'"$tag"'") | .id' 2>/dev/null | head -1)
-        if [ -z "$release_id" ]; then
+        # `gh release view` exits non-zero when the release doesn't exist — works
+        # regardless of how many releases exist (no pagination concerns).
+        if ! gh release view "$tag" >/dev/null 2>&1; then
           gh release create "$tag" \
             --title "ChurchCRM ${{ steps.package-version.outputs.current-version }}" \
             --generate-notes \
