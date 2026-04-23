@@ -1149,10 +1149,6 @@ msgid "Summary Data"
 msgstr "Data ng Buod"
 
 #: 
-msgid "CSV"
-msgstr "CSV"
-
-#: 
 msgid "Back"
 msgstr "Bumalik"
 
@@ -1271,10 +1267,6 @@ msgstr "Format ng data file"
 #: 
 msgid "GPS Visualizer"
 msgstr "GPS Visualizer"
-
-#: 
-msgid "Street Atlas USA"
-msgstr "Street Atlas USA"
 
 #: 
 msgid "Include families in the coordinate file"
@@ -2300,18 +2292,6 @@ msgstr "Ang numero ay masyadong malaki. Dapat nasa pagitan ng -2147483648 at 214
 #: 
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Ang halaga ng pera ay masyadong malaki. Pinakamataas ay $999999999.99"
-
-#: 
-msgid " Bold Italic"
-msgstr " Makapal na Italiko"
-
-#: 
-msgid " Italic"
-msgstr " Italiko"
-
-#: 
-msgid " Bold"
-msgstr " Makapal"
 
 #: 
 msgid "Error making API Call to"
@@ -5024,7 +5004,8 @@ msgid "Indonesian - Indonesia"
 msgstr "Indonesyano - Indonesia"
 
 #: 
-msgid "records(s) successfully added to selected Group."
+#, fuzzy
+msgid "record(s) successfully added to selected Group."
 msgstr "rekord(s) ay matagumpay na naidagdag sa napiling Grupo."
 
 #: 
@@ -5332,7 +5313,8 @@ msgid "Remove All from Cart"
 msgstr "Alisin ang Lahat mula sa Cart"
 
 #: 
-msgid "records(s) successfully deleted from the selected Group."
+#, fuzzy
+msgid "record(s) successfully deleted from the selected Group."
 msgstr "rekord(s) ay matagumpay na nabura mula sa napiling Grupo."
 
 #: 
@@ -5811,10 +5793,6 @@ msgstr "Walang email na naipasa"
 #: 
 msgid "Mailchimp is not active"
 msgstr "Hindi aktibo ang Mailchimp"
-
-#: 
-msgid "Mailchimp"
-msgstr "Mailchimp"
 
 #: 
 msgid "Lists"
@@ -6821,7 +6799,8 @@ msgid "Total Payments"
 msgstr "Kabuuang Pagbabayad"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payments?"
 msgstr "pagbabayad(mga)?"
 
 #: 
@@ -6835,10 +6814,6 @@ msgstr "Base URL"
 #: 
 msgid "Copy"
 msgstr "Kopyahin"
-
-#: 
-msgid "DSN"
-msgstr "DSN"
 
 #: 
 msgid "Debug Info"
@@ -7892,10 +7867,6 @@ msgstr "Mga Bukas na Deposito:"
 #: 
 msgid "Orphaned Files:"
 msgstr "Mga Orphaned na File:"
-
-#: 
-msgid "PDF/CSV"
-msgstr "PDF/CSV"
 
 #: 
 msgid "Payment"
@@ -9464,10 +9435,6 @@ msgid "Loading recovery codes"
 msgstr "Naglo-load ng mga recovery code"
 
 #: 
-msgid "MailChimp"
-msgstr "MailChimp"
-
-#: 
 msgid "MailChimp API Key"
 msgstr "MailChimp API Key"
 
@@ -10827,10 +10794,6 @@ msgid "Download CSV Template"
 msgstr "I-download ang Template ng CSV"
 
 #: 
-msgid "Download the template to see the expected column format."
-msgstr "I-download ang template para makita ang inaasahang format ng kolumna."
-
-#: 
 msgid "Drag and drop your CSV file here"
 msgstr "I-drag at i-drop ang iyong CSV file dito"
 
@@ -10841,10 +10804,6 @@ msgstr "Mga Duplicate"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Ang bawat tao ay maaaring magkaroon ng sariling email at numero ng mobile."
-
-#: 
-msgid "Each row is one person. Members of the same family share a FamilyID."
-msgstr "Ang bawat row ay isang tao. Ang mga miyembro ng parehong pamilya ay nagbabahagi ng FamilyID."
 
 #: 
 msgid "Easy registration"
@@ -11929,10 +11888,6 @@ msgid "Upload CSV"
 msgstr "Mag-upload ng CSV"
 
 #: 
-msgid "Upload a CSV file to import families and people into ChurchCRM."
-msgstr "Mag-upload ng CSV file para mag-import ng mga pamilya at tao sa ChurchCRM."
-
-#: 
 msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
 msgstr "Mag-upload ng CSV mula sa Excel, Google Sheets, o iyong nakaraang sistema ng pamamahala ng simbahan at i-mapa ang mga kolumna sa mga larangan ng ChurchCRM."
 
@@ -12155,10 +12110,6 @@ msgstr "mga miyembro"
 #: 
 msgid "opportunities"
 msgstr "mga pagkakataon"
-
-#: 
-msgid "options"
-msgstr "mga opsyon"
 
 #: 
 msgid "or connect an external service"
@@ -14335,10 +14286,6 @@ msgstr[0] "%d paulit-ulit na kaganapan ay matagumpay na nalilikha."
 msgstr[1] "%d paulit-ulit na kaganapan ay matagumpay na nalilikha."
 
 #: 
-msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
-msgstr "(hal. Mga Miyembro, Bisita, Mga Bata) para makapagtala ang mga boluntaryo ng bilang ng tao dito."
-
-#: 
 msgid "1. Sunday School Class"
 msgstr "1. Klase ng Sunday School"
 
@@ -14359,10 +14306,6 @@ msgid "A class is a Group with type \"Sunday School\". It holds the students and
 msgstr "Ang klase ay isang Grupo na may uri na \"Sunday School\". Naglalaman ito ng mga mag-aaral at guro (mga miyembro na may mga papel)."
 
 #: 
-msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
-msgstr "Ang isang naka-link na grupo ay nagtatali sa kaganapang ito sa isang klase o listahan ng ministeryo. Kapag ang kaganapan ay itinalaga sa isang Kiosk, kinukuha ng kiosk ang mga miyembro ng grupo at ipinapakita ang mga ito bilang isang listahang pindutin para mag-check-in. Para sa mga klase ng Sunday School, i-link ang grupo ng klase dito para makapag-check in ang mga boluntaryo ng mga mag-aaral mula sa isang tablet."
-
-#: 
 msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
 msgstr "Isang tiyak na pagkakataon (hal. \"Preschool — Abr 12\"). Nagmamana ng mga default mula sa uri at naka-link sa grupo ng klase sa pamamagitan ng audience. Ito ang batayan ng pagtatala ng presensya ng mga boluntaryo."
 
@@ -14373,10 +14316,6 @@ msgstr "Isang tablet na itinalaga sa isang kaganapan. Kinukuha ng kiosk ang list
 #: 
 msgid "Add Walk-in / Visitor"
 msgstr "Magdagdag ng Walk-in / Bisita"
-
-#: 
-msgid "Add categories on the Event Type page"
-msgstr "Magdagdag ng mga kategorya sa pahina ng Uri ng Kaganapan"
 
 #: 
 msgid "Add people to your cart first, then come back to check them in to an event."
@@ -14425,10 +14364,6 @@ msgstr "Audit"
 #: 
 msgid "Audit Events"
 msgstr "Mga Kaganapan ng Audit"
-
-#: 
-msgid "Auto-totalled from counts at right"
-msgstr "Awtomatikong pinagsama mula sa mga bilang sa kanan"
 
 #: 
 msgid "Back to Events"
@@ -14553,10 +14488,6 @@ msgstr "Database + mga na-upload na litrato (mas malaki)"
 #: 
 msgid "Database dump only (.sql)"
 msgstr "Database dump lamang (.sql)"
-
-#: 
-msgid "Date Range"
-msgstr "Saklaw ng Petsa"
 
 #: 
 msgid "Date range cannot exceed 1 year"
