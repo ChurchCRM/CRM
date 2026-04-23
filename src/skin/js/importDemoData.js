@@ -359,7 +359,9 @@
       countsLine +
       '<div style="font-size: 13px; color: #856404; background: #fff3cd; padding: 10px 12px; border-radius: 4px; border: 1px solid #ffeeba;">' +
       '<i class="fa fa-circle-info mr-1"></i>' +
-      i18next.t("To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data.") +
+      i18next.t(
+        "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data.",
+      ) +
       "</div></div>";
     $(".demo-import-options").before(warningHtml);
 
@@ -510,7 +512,8 @@
           // If the rendering page told us the database already has data,
           // jump straight into force-import mode with an upfront warning
           // instead of letting the user discover the 403 after clicking.
-          var hasExistingData = $(this).data("has-existing-data") === true || $(this).data("has-existing-data") === "true";
+          var hasExistingData =
+            $(this).data("has-existing-data") === true || $(this).data("has-existing-data") === "true";
           ensureConfirmOverlay();
           if (hasExistingData) {
             forceImportMode = true;
