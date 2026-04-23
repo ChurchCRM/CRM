@@ -1,10 +1,10 @@
 {
-  "Online": "",
-  "Server": "",
-  "Test": "",
-  "Are you sure you want to permanently delete this donated item?": "",
-  "Are you sure you want to permanently delete this paddle number?": "",
-  "Delete Donated Item": "",
-  "Delete Paddle Number": "",
-  "Invalid security token. Please try again.": ""
+  "Online": "Online",
+  "Server": "Server",
+  "Test": "Test",
+  "Are you sure you want to permanently delete this donated item?": "Sigur doriți să ștergeți permanent acest articol donat?",
+  "Are you sure you want to permanently delete this paddle number?": "Sigur doriți să ștergeți permanent acest număr de paletă?",
+  "Delete Donated Item": "Șterge articol donat",
+  "Delete Paddle Number": "Șterge număr de paletă",
+  "Invalid security token. Please try again.": "Token de securitate invalid. Vă rugăm să încercați din nou."
 }

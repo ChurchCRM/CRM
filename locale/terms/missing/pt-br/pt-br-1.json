@@ -1,9 +1,9 @@
 {
-  "Online": "",
-  "Host": "",
-  "Are you sure you want to permanently delete this donated item?": "",
-  "Are you sure you want to permanently delete this paddle number?": "",
-  "Delete Donated Item": "",
-  "Delete Paddle Number": "",
-  "Invalid security token. Please try again.": ""
+  "Online": "Online",
+  "Host": "Host",
+  "Are you sure you want to permanently delete this donated item?": "Tem certeza de que deseja excluir permanentemente este item doado?",
+  "Are you sure you want to permanently delete this paddle number?": "Tem certeza de que deseja excluir permanentemente este número de remo?",
+  "Delete Donated Item": "Excluir item doado",
+  "Delete Paddle Number": "Excluir número de remo",
+  "Invalid security token. Please try again.": "Token de segurança inválido. Por favor, tente novamente."
 }

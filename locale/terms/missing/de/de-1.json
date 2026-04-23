@@ -1,12 +1,12 @@
 {
-  "Online": "",
-  "App": "",
-  "Host": "",
-  "Server": "",
-  "Test": "",
-  "Are you sure you want to permanently delete this donated item?": "",
-  "Are you sure you want to permanently delete this paddle number?": "",
-  "Delete Donated Item": "",
-  "Delete Paddle Number": "",
-  "Invalid security token. Please try again.": ""
+  "Online": "Online",
+  "App": "App",
+  "Host": "Host",
+  "Server": "Server",
+  "Test": "Test",
+  "Are you sure you want to permanently delete this donated item?": "Sind Sie sicher, dass Sie diesen gespendeten Artikel dauerhaft löschen möchten?",
+  "Are you sure you want to permanently delete this paddle number?": "Sind Sie sicher, dass Sie diese Auktionsnummer dauerhaft löschen möchten?",
+  "Delete Donated Item": "Gespendeten Artikel löschen",
+  "Delete Paddle Number": "Auktionsnummer löschen",
+  "Invalid security token. Please try again.": "Ungültiges Sicherheitstoken. Bitte versuchen Sie es erneut."
 }

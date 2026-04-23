@@ -8,48 +8,64 @@
   ],
   "cs": [
     "Audit",
-    "Azure"
+    "Azure",
+    "Online",
+    "Server",
+    "Test"
   ],
   "el": [
     "Azure"
   ],
   "es": [
     "Azure",
+    "Error:",
     "Malayalam - India",
     "Manual",
     "Material"
   ],
   "es-AR": [
     "Azure",
+    "Error:",
+    "Host",
     "Malayalam - India",
     "Manual",
     "Material"
   ],
   "es-CO": [
     "Azure",
+    "Error:",
+    "Host",
     "Malayalam - India",
     "Manual",
     "Material"
   ],
   "es-MX": [
     "Azure",
+    "Error:",
+    "Host",
     "Malayalam - India",
     "Manual",
     "Material"
   ],
   "es-SV": [
     "Azure",
+    "Error:",
+    "Host",
     "Malayalam - India",
     "Manual",
     "Material"
   ],
   "et": [
-    "Audit"
+    "Audit",
+    "Host",
+    "Server",
+    "Test"
   ],
   "fi": [
     "Azure"
   ],
   "fil": [
+    "(PHP default)",
     "-----------------------------------------------------------------------------------------------------------------------------------------------",
     "2FA",
     "4. Kiosk",
@@ -69,6 +85,7 @@
     "Angola",
     "Anguilla",
     "Antarctica",
+    "App",
     "Argentina",
     "Armenia (Հայաստան)",
     "Aruba",
@@ -115,11 +132,14 @@
     "Cell",
     "Central African Republic (République centrafricaine)",
     "Chad (Tchad)",
+    "Charset",
     "Check-in",
     "Chile",
     "Christmas Island",
+    "ChurchCRM Test Email",
     "Clipperton Island",
     "Cocos (Keeling) Islands (Kepulauan Cocos (Keeling))",
+    "Collation",
     "Colombia",
     "Communication",
     "Comoros (‫جزر القمر‬‎)",
@@ -127,6 +147,7 @@
     "Configuration",
     "Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)",
     "Congo (Republic) (Congo-Brazzaville)",
+    "Connection",
     "Continent",
     "Cook Islands",
     "Costa Rica",
@@ -139,11 +160,14 @@
     "Côte d’Ivoire",
     "DSN",
     "Dashboard",
+    "Database",
     "Database:",
     "Default",
     "Denmark (Danmark)",
     "Diego Garcia",
     "Discord Chat",
+    "Disk (Images Root)",
+    "Display Errors",
     "Djibouti",
     "Document Root",
     "Dominica",
@@ -155,16 +179,22 @@
     "El Salvador",
     "Email Address",
     "Email BCC",
+    "Email Debug",
     "Email address",
     "Email/Username",
+    "Environment",
     "Equatorial Guinea (Guinea Ecuatorial)",
     "Eritrea",
     "Error",
+    "Error Log",
+    "Error Reporting",
     "Error:",
     "Estonia (Eesti)",
     "Ethiopia",
     "FY %s",
     "Falkland Islands (Islas Malvinas)",
+    "Family Custom",
+    "Family Property",
     "Faroe Islands (Føroyar)",
     "Fiji",
     "Filipino - Philippines",
@@ -197,8 +227,10 @@
     "Haiti",
     "Heard & McDonald Islands",
     "Hindi - India",
+    "Hit Rate",
     "Honduras",
     "Hong Kong (香港)",
+    "Host",
     "Hostname",
     "Hungary (Magyarország)",
     "ICS URL",
@@ -236,6 +268,8 @@
     "Liechtenstein",
     "Lime",
     "Lithuania (Lietuva)",
+    "Loaded php.ini",
+    "Locale",
     "Log File",
     "Luxembourg",
     "Macau (澳門)",
@@ -258,7 +292,12 @@
     "Material",
     "Mauritania (‫موريتانيا‬‎)",
     "Mauritius (Moris)",
+    "Max Execution Time",
+    "Max POST Size",
+    "Max Upload Size",
     "Mayotte",
+    "Memory",
+    "Memory Limit",
     "Mexico (México)",
     "Micronesia",
     "Minimum",
@@ -287,10 +326,15 @@
     "Northern Mariana Islands",
     "Norway (Norge)",
     "OK",
+    "Off",
     "Oman (‫عُمان‬‎)",
+    "On",
+    "Online",
     "Orange",
     "PDF",
     "PDF/CSV",
+    "PHP Version",
+    "PHPMailer SMTP session",
     "Paddle",
     "Pakistan (‫پاکستان‬‎)",
     "Palau",
@@ -300,6 +344,8 @@
     "Paraguay",
     "Parents",
     "Password",
+    "Person Custom",
+    "Person Property",
     "Personal",
     "Peru (Perú)",
     "Photo",
@@ -312,11 +358,14 @@
     "Profile",
     "Puerto Rico",
     "Qatar (‫قطر‬‎)",
+    "Recovery Code",
     "Romania (România)",
     "Root Path",
     "Russia (Россия)",
     "Rwanda",
     "Réunion (La Réunion)",
+    "SMTP Configuration",
+    "SMTP Debug Log",
     "SMTP Host",
     "SMTP Password",
     "SMTP Server Address (mail.server.com:25)",
@@ -329,8 +378,14 @@
     "Samoa",
     "San Marino",
     "Saudi Arabia (‫المملكة العربية السعودية‬‎)",
+    "Schema Version",
     "Senegal (Sénégal)",
     "Serbia (Србија)",
+    "Server",
+    "Server Version",
+    "Session Handler",
+    "Session Save Path",
+    "Settings Valid",
     "Setup",
     "Seychelles",
     "Sierra Leone",
@@ -350,6 +405,7 @@
     "Sri Lanka (ශ්‍රී ලංකාව)",
     "St. Vincent & Grenadines",
     "Street Atlas USA",
+    "Subject",
     "Sudan (‫السودان‬‎)",
     "Suriname",
     "Swahili",
@@ -363,10 +419,13 @@
     "Tanzania",
     "Teal",
     "Telugu - India",
+    "Test",
     "Thai",
     "Thailand (ไทย)",
     "Time Zone",
     "Time zone",
+    "Timeout",
+    "Timezone",
     "Timor-Leste",
     "Tip",
     "Tip:",
@@ -408,6 +467,7 @@
     "options",
     "page",
     "s",
+    "user:",
     "Åland Islands (Åland)"
   ],
   "fr": [
@@ -426,6 +486,7 @@
     "Orange",
     "Parents",
     "Photo",
+    "Test",
     "options",
     "page"
   ],
@@ -436,9 +497,12 @@
     "Azure",
     "Email BCC",
     "Format",
+    "Host",
     "Malayalam - India",
     "Manual",
-    "Minimum"
+    "Minimum",
+    "Online",
+    "Server"
   ],
   "ja": [
     "Azure"
@@ -449,23 +513,33 @@
   "nl": [
     "4. Kiosk",
     "Account",
+    "App",
     "Audit",
     "Azure",
     "Continent",
+    "Database",
+    "Host",
     "Indigo",
     "Malayalam - India",
+    "Online",
+    "Server",
+    "Test",
     "Vonage Dashboard"
   ],
   "pt": [
     "Azure",
+    "Host",
     "Manual",
-    "Material"
+    "Material",
+    "Online"
   ],
   "pt-BR": [
     "Azure"
   ],
   "pt-br": [
-    "Azure"
+    "Azure",
+    "Host",
+    "Online"
   ],
   "ru": [
     "Azure"
@@ -473,7 +547,9 @@
   "sq": [
     "4. Kiosk",
     "Azure",
-    "Indigo"
+    "Indigo",
+    "Online",
+    "Test"
   ],
   "tr": [
     "4. Kiosk",
@@ -493,19 +569,32 @@
     "name@example.com"
   ],
   "hu": [
-    "Azure"
+    "Azure",
+    "Online"
   ],
   "it": [
     "Account",
+    "App",
     "Audit",
     "Azure",
-    "Malayalam - India"
+    "Charset",
+    "Collation",
+    "Database",
+    "Host",
+    "Locale",
+    "Malayalam - India",
+    "Online",
+    "Server",
+    "Test",
+    "Timeout"
   ],
   "ml": [
     "-----------------------------------------------------------------------------------------------------------------------------------------------",
     "2FA",
     "Azure",
     "CSV",
+    "Charset",
+    "Collation",
     "DSN",
     "HTML URL",
     "ICS URL",
@@ -522,14 +611,19 @@
   "nb": [
     "4. Kiosk",
     "Administrator",
+    "App",
     "Azure",
     "Cyan",
+    "Database",
     "Format",
     "Indigo",
     "Kiosk",
     "Lime",
     "Malayalam - India",
     "Minimum",
+    "Online",
+    "Server",
+    "Test",
     "Vonage Dashboard"
   ],
   "pl": [
@@ -537,8 +631,11 @@
     "Administrator",
     "Azure",
     "Format",
+    "Host",
     "Kiosk",
-    "Minimum"
+    "Minimum",
+    "Online",
+    "Test"
   ],
   "ro": [
     "Administrator",
@@ -549,16 +646,23 @@
     "Format",
     "Indigo",
     "Manual",
-    "Material"
+    "Material",
+    "Online",
+    "Server",
+    "Test"
   ],
   "sv": [
     "4. Kiosk",
+    "App",
     "Azure",
     "Cyan",
     "Format",
     "Indigo",
     "Material",
+    "Online",
     "Orange",
+    "Server",
+    "Test",
     "Vonage Dashboard"
   ],
   "sw": [
@@ -569,12 +673,46 @@
     "Azure"
   ],
   "te": [
-    "Azure"
+    "App",
+    "Azure",
+    "Charset",
+    "Collation",
+    "Database",
+    "Display Errors",
+    "Error Reporting",
+    "Hit Rate",
+    "Host",
+    "Locale",
+    "Max Execution Time",
+    "Max POST Size",
+    "Max Upload Size",
+    "Memory Limit",
+    "Server",
+    "Test",
+    "Timeout"
   ],
   "th": [
-    "Azure"
+    "App",
+    "Azure",
+    "Charset",
+    "Collation",
+    "Database",
+    "Hit Rate",
+    "Host",
+    "Locale",
+    "Server",
+    "Session Handler",
+    "Test",
+    "Timeout"
   ],
   "uk": [
     "Azure"
+  ],
+  "de": [
+    "App",
+    "Host",
+    "Online",
+    "Server",
+    "Test"
   ]
 }

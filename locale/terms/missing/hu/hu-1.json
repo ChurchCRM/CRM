@@ -1,8 +1,8 @@
 {
-  "Online": "",
-  "Are you sure you want to permanently delete this donated item?": "",
-  "Are you sure you want to permanently delete this paddle number?": "",
-  "Delete Donated Item": "",
-  "Delete Paddle Number": "",
-  "Invalid security token. Please try again.": ""
+  "Online": "Online",
+  "Are you sure you want to permanently delete this donated item?": "Biztosan véglegesen törölni szeretné ezt az adományozott tételt?",
+  "Are you sure you want to permanently delete this paddle number?": "Biztosan véglegesen törölni szeretné ezt a licitsorszámot?",
+  "Delete Donated Item": "Adományozott tétel törlése",
+  "Delete Paddle Number": "Licitsorszám törlése",
+  "Invalid security token. Please try again.": "Érvénytelen biztonsági token. Kérjük, próbálja újra."
 }
