@@ -14,12 +14,7 @@
  * - System starts fresh with admin/changeme credentials
  */
 
-describe('04 - System Reset', () => {
-    // Default admin credentials
-    const adminCredentials = {
-        username: 'admin',
-        password: 'changeme'
-    };
+describe('05 - System Post Reset', () => {
 
     // Helper to manually login, handling forced password-change redirect after a DB reset
     const manualLogin = () => {
@@ -141,15 +136,14 @@ describe('04 - System Reset', () => {
             cy.request({
                 method: 'GET', 
                 url: '/api/groups/',
-                timeout: 30000,
-                failOnStatusCode: false
+                timeout: 30000
             }).then((response) => {
-                if (response.status === 200) {
-                    // Groups API returns array directly
-                    const groups = response.body;
-                    expect(groups.length).to.equal(0);
-                    cy.log('No groups found after reset (as expected)');
-                }
+                expect(response.status).to.equal(200);
+
+                // Groups API returns array directly
+                const groups = response.body;
+                expect(groups.length).to.equal(0);
+                cy.log('No groups found after reset (as expected)');
             });
         });
     });
