@@ -136,10 +136,13 @@ describe("Family Wedding Date Edit Workflow", () => {
 
 describe("Standard Family Activation", () => {
     beforeEach(() => {
+        // Reset family 3 to active BEFORE registering intercepts so the setup
+        // call is not captured by @updateToActive — only UI-triggered requests
+        // should resolve those aliases.
+        cy.makePrivateUserAPICall("POST", "/api/family/3/activate/true", "", 200);
+
         cy.intercept("POST", "**/api/family/3/activate/true").as("updateToActive");
         cy.intercept("POST", "**/api/family/3/activate/false").as("updateToInActive");
-
-        cy.makePrivateUserAPICall("POST", "/api/family/3/activate/true", "", 200);
 
         cy.setupStandardSession({ forceLogin: true });
     });
