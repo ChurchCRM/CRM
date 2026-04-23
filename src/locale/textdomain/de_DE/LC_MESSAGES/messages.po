@@ -14709,10 +14709,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "Veranstaltung erstellt. Weiterleitung zum Check-in..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "Enddatum/-uhrzeit der Veranstaltung muss gleich oder nach dem Startdatum/-uhrzeit liegen."
-
-#: 
 msgid "Event title is required."
 msgstr "Veranstaltungstitel ist erforderlich."
 
@@ -14739,10 +14735,6 @@ msgstr "Für den Veranstaltungstyp ist kein Wiederholungsmuster konfiguriert"
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "Für den Veranstaltungstyp ist kein gültiger Tag des Monats für die monatliche Wiederholung konfiguriert"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "Veranstaltungen werden für jedes passende Ereignis innerhalb dieses Datumsbereichs erstellt."
 
 #: 
 msgid "Every month on the"
@@ -14793,10 +14785,6 @@ msgid "Group Roster"
 msgstr "Gruppenliste"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "Erweiterte Optionen ausblenden"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Wie Sonntagsschule, Veranstaltungen und Kiosks zusammenpassen"
 
@@ -14807,10 +14795,6 @@ msgstr "Ungültiges Datum für %s – erwartet YYYY-MM-DD"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Ungültiges Datumsformat für Bereichsstart oder Bereichsende"
-
-#: 
-msgid "Invalid date format."
-msgstr "Ungültiges Datumsformat."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -14865,10 +14849,6 @@ msgid "No active events found."
 msgstr "Keine aktiven Veranstaltungen gefunden."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "Noch keine Anwesenheitskategorien für diesen Veranstaltungstyp definiert."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "Noch niemand für diese Veranstaltung eingecheckt."
 
@@ -14909,10 +14889,6 @@ msgid "Please select a person to check in."
 msgstr "Bitte wählen Sie eine Person zum Einchecken aus."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "Vorausgefüllt basierend auf diesem Veranstaltungstyp – bei wiederkehrenden Typen ist das Datum das nächste Ereignis nach der letzten Veranstaltung dieses Typs, und die Uhrzeit entspricht der Standard-Startzeit des Typs."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "Das Bereichsenddatum muss gleich oder nach dem Bereichsstartdatum liegen."
 
@@ -14941,10 +14917,6 @@ msgid "Recommended"
 msgstr "Empfohlen"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "Erforderlich für Kiosk"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "Das Zurücksetzen löscht dauerhaft:"
 
@@ -14963,14 +14935,6 @@ msgstr "Änderungen an diesem Kategorienamen speichern"
 #: 
 msgid "Select an event type…"
 msgstr "Veranstaltungstyp auswählen…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "Start- und Enddatum/-uhrzeit auswählen."
-
-#: 
-msgid "Show More Options"
-msgstr "Weitere Optionen anzeigen"
 
 #: 
 msgid "Skip"
@@ -15013,16 +14977,8 @@ msgid "The Events module is disabled"
 msgstr "Das Veranstaltungsmodul ist deaktiviert"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "Dieselbe Start- und Endzeit wird für alle generierten Veranstaltungen verwendet."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "Für heute sind keine Veranstaltungen geplant"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "Dies sind Personenzählkategorien – Helfer füllen diese nach der Veranstaltung aus, damit das Dashboard die Anwesenheit aufschlüsseln kann (z.B. wie viele Gemeindemitglieder vs. Besucher). Sie sind getrennt von den individuellen Check-ins auf der Check-in-Seite."
 
 #: 
 msgid "This event is inactive."
@@ -15077,16 +15033,8 @@ msgid "View Event"
 msgstr "Veranstaltung anzeigen"
 
 #: 
-msgid "What are these for?"
-msgstr "Wofür sind diese?"
-
-#: 
 msgid "What does this find?"
 msgstr "Was findet das?"
-
-#: 
-msgid "What is this for?"
-msgstr "Wofür ist das?"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15349,6 +15297,10 @@ msgid "No active event assignment"
 msgstr "Keine aktive Veranstaltungszuweisung"
 
 #: 
+msgid "Online"
+msgstr "Online"
+
+#: 
 msgid "Opens a 30-second window for devices to register at:"
 msgstr "Öffnet ein 30-Sekunden-Fenster für Geräte zur Registrierung bei:"
 
@@ -15469,14 +15421,6 @@ msgid "Set up Email"
 msgstr "E-Mail einrichten"
 
 #: 
-msgid "Test SMTP Email"
-msgstr "SMTP-E-Mail testen"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "Dies ist eine ChurchCRM-Test-E-Mail, die bestätigt, dass Ihre SMTP-Konfiguration funktioniert."
-
-#: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."
 msgstr "In die Zwischenablage kopieren nicht möglich. Bitte kopieren Sie die Codes manuell."
 
@@ -15491,10 +15435,6 @@ msgstr "Stattdessen einen Wiederherstellungscode verwenden"
 #: 
 msgid "Use authenticator app instead"
 msgstr "Stattdessen Authentifizierungs-App verwenden"
-
-#: 
-msgid " Notification Email Error"
-msgstr " Benachrichtigungs-E-Mail-Fehler"
 
 #: 
 msgid "%d modules loaded"
@@ -15515,6 +15455,10 @@ msgstr "(nicht festgelegt)"
 #: 
 msgid "All checks passing"
 msgstr "Alle Prüfungen bestanden"
+
+#: 
+msgid "App"
+msgstr "App"
 
 #: 
 msgid "Browser time zone differs:"
@@ -15595,6 +15539,10 @@ msgstr "Einstellungen korrigieren"
 #: 
 msgid "Hit Rate"
 msgstr "Trefferrate"
+
+#: 
+msgid "Host"
+msgstr "Host"
 
 #: 
 msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
@@ -15713,6 +15661,10 @@ msgid "Send a test message to verify your SMTP configuration"
 msgstr "Senden Sie eine Testnachricht, um Ihre SMTP-Konfiguration zu überprüfen"
 
 #: 
+msgid "Server"
+msgstr "Server"
+
+#: 
 msgid "Server Version"
 msgstr "Server-Version"
 
@@ -15731,6 +15683,10 @@ msgstr "Einstellungen gültig"
 #: 
 msgid "Subject"
 msgstr "Betreff"
+
+#: 
+msgid "Test"
+msgstr "Test"
 
 #: 
 msgid "Test email accepted by SMTP server"
@@ -15943,4 +15899,24 @@ msgstr "Von Freiwilligen eingegebene Personenzählungen, aufgeschlüsselt nach K
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "Ihre CSV-Datei enthält doppelte Spaltennamen. Benennen Sie die doppelten Spalten um (z. B. fügen Sie \"(2)\" zum zweiten hinzu) und laden Sie sie erneut hoch."
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "Sind Sie sicher, dass Sie diesen gespendeten Artikel dauerhaft löschen möchten?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "Sind Sie sicher, dass Sie diese Auktionsnummer dauerhaft löschen möchten?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Gespendeten Artikel löschen"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Auktionsnummer löschen"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Ungültiges Sicherheitstoken. Bitte versuchen Sie es erneut."
 

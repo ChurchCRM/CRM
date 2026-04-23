@@ -14600,10 +14600,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "Ngjarja u krijua. Po ridrejtoheni te regjistrimi..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "Data/koha e mbarimit të ngjarjes duhet të jetë në ose pas datës/kohës së fillimit."
-
-#: 
 msgid "Event title is required."
 msgstr "Titulli i ngjarjes është i detyrueshëm."
 
@@ -14630,10 +14626,6 @@ msgstr "Lloji i ngjarjes nuk ka model përsëritjeje të konfiguruar"
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "Lloji i ngjarjes nuk ka ditë të vlefshme të muajit të konfiguruar për përsëritje mujore"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "Ngjarjet do të krijohen për çdo rast përputhës brenda këtij intervali datash."
 
 #: 
 msgid "Every month on the"
@@ -14684,10 +14676,6 @@ msgid "Group Roster"
 msgstr "Lista e Shërbësës"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "Fshih Opsionet e Avancuara"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Si përshtaten bashkë Shkolla e Dielë + Ngjarjet + Kioskët"
 
@@ -14698,10 +14686,6 @@ msgstr "Datë e pavlefshme për %s — pritej YYYY-MM-DD"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Format i pavlefshëm date për rangeStart ose rangeEnd"
-
-#: 
-msgid "Invalid date format."
-msgstr "Format i pavlefshëm date."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -14756,10 +14740,6 @@ msgid "No active events found."
 msgstr "Nuk u gjetën ngjarje aktive."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "Nuk janë përcaktuar kategori numërimi pranie për këtë lloj ngjarjeje ende."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "Askush nuk është regjistruar ende në këtë ngjarje."
 
@@ -14800,10 +14780,6 @@ msgid "Please select a person to check in."
 msgstr "Ju lutemi zgjidhni një person për të regjistruar."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "I parapërgatitur bazuar në këtë lloj ngjarjeje — për llojet e përsëritura, data është rasti tjetër pas ngjarjes së fundit të këtij lloji, dhe koha përputhet me kohën e paracaktuar të fillimit të llojit."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "Data e fundit e intervalit duhet të jetë në ose pas datës së fillimit të intervalit."
 
@@ -14832,10 +14808,6 @@ msgid "Recommended"
 msgstr "E rekomanduar"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "E detyrueshme për Kiosk"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "Rivendosja do të fshijë përgjithmonë:"
 
@@ -14854,14 +14826,6 @@ msgstr "Ruani ndryshimet në emrin e kësaj kategorie"
 #: 
 msgid "Select an event type…"
 msgstr "Zgjidhni një lloj ngjarjeje…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "Zgjidhni datën/orën e fillimit dhe mbarimit."
-
-#: 
-msgid "Show More Options"
-msgstr "Shfaq Më Shumë Opsione"
 
 #: 
 msgid "Skip"
@@ -14904,16 +14868,8 @@ msgid "The Events module is disabled"
 msgstr "Moduli i Ngjarjeve është i çaktivizuar"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "E njëjta kohë fillimi dhe mbarimi do të përdoret për të gjitha ngjarjet e gjeneruara."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "Nuk ka ngjarje të planifikuara për sot"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "Këto janë grupe numërimi — vullnetarët i plotësojnë pas ngjarjes që paneli të mund të ndajë praninë (p.sh. sa anëtarë kundrejt vizitorëve). Ato janë të ndara nga regjistrimet individuale në faqen e Regjistrimit."
 
 #: 
 msgid "This event is inactive."
@@ -14968,16 +14924,8 @@ msgid "View Event"
 msgstr "Shiko Ngjarjen"
 
 #: 
-msgid "What are these for?"
-msgstr "Për çfarë janë këto?"
-
-#: 
 msgid "What does this find?"
 msgstr "Çfarë gjen kjo?"
-
-#: 
-msgid "What is this for?"
-msgstr "Për çfarë është kjo?"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15240,6 +15188,10 @@ msgid "No active event assignment"
 msgstr "Nuk ka caktim aktiv ngjarjesh"
 
 #: 
+msgid "Online"
+msgstr "Online"
+
+#: 
 msgid "Opens a 30-second window for devices to register at:"
 msgstr "Hap një dritare 30-sekondëshe për regjistrimin e pajisjeve në:"
 
@@ -15360,14 +15312,6 @@ msgid "Set up Email"
 msgstr "Konfiguro Emailin"
 
 #: 
-msgid "Test SMTP Email"
-msgstr "Testo Email SMTP"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "Ky është një email testues i ChurchCRM që konfirmon se konfigurimi juaj SMTP po funksionon."
-
-#: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."
 msgstr "Nuk mund të kopjohet në kllipbord. Ju lutemi kopjoni kodet manualisht."
 
@@ -15382,10 +15326,6 @@ msgstr "Përdor një kod rikuperimi"
 #: 
 msgid "Use authenticator app instead"
 msgstr "Përdor aplikacionin vërtetues"
-
-#: 
-msgid " Notification Email Error"
-msgstr " Gabim në Email-in e Njoftimit"
 
 #: 
 msgid "%d modules loaded"
@@ -15636,6 +15576,10 @@ msgid "Subject"
 msgstr "Tema"
 
 #: 
+msgid "Test"
+msgstr "Test"
+
+#: 
 msgid "Test email accepted by SMTP server"
 msgstr "Email-i testues u pranua nga serveri SMTP"
 
@@ -15846,4 +15790,24 @@ msgstr "Numërime të futura nga vullnetarët, të ndara sipas kategorisë."
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "CSV-ja juaj ka emra kolonash të dublifikuar. Riemërtoni kolonat e dublifikuara (p.sh. shtoni \"(2)\" të dytës) dhe ngarkoni përsëri."
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "A jeni të sigurt që doni të fshini përgjithmonë këtë artikull të dhuruar?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "A jeni të sigurt që doni të fshini përgjithmonë këtë numër pagaie?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Fshi artikullin e dhuruar"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Fshi numrin e pagaies"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Tokeni i sigurisë është i pavlefshëm. Ju lutemi provoni përsëri."
 
