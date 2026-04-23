@@ -48,9 +48,10 @@ function requireAcceptedKioskWithEvent(callable $getKiosk, Response $response): 
 
 /**
  * Extract the IDs of all people in the active class roster for a given kiosk
- * assignment. getActiveGroupMembers() returns a Propel ObjectCollection of
- * Person objects, so we must iterate and call getId() — array_column() does
- * not work with Propel ORM objects.
+ * assignment. getActiveGroupMembers() returns a Propel Collection of Person
+ * objects — an ObjectCollection when groups are linked, or an empty
+ * ArrayCollection when the event has no groups — so we must iterate and call
+ * getId(); array_column() does not work with Propel ORM objects.
  *
  * @return int[]
  */
