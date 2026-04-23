@@ -21,6 +21,53 @@ describe('04 - System Reset', () => {
         password: 'changeme'
     };
 
+    // Helper to manually login, handling forced password-change redirect after a DB reset
+    const manualLogin = () => {
+        cy.clearCookies();
+        cy.clearLocalStorage();
+        // Admin password is 'changeme'. After a DB reset NeedPasswordChange=true,
+        // which forces a redirect to /changepassword on first login.
+        const password = adminCredentials.password;
+        cy.visit('/login');
+        cy.get('input[name=User]', { timeout: 15000 }).type(adminCredentials.username);
+        cy.get('input[name=Password]').type(password);
+        cy.get('input[name=Password]').type('{enter}');
+        cy.url({ timeout: 30000 }).should('not.include', '/session/begin');
+
+        // After a DB reset the admin has NeedPasswordChange=true; complete the forced form if needed.
+        // The forced form uses button[type=submit] (login-box layout, not card layout).
+        cy.url().then((url) => {
+            if (url.includes('/changepassword')) {
+                cy.get('#OldPassword').type(password);
+                cy.get('#NewPassword1').type('Cypress@01!');
+                cy.get('#NewPassword2').type('Cypress@01!');
+                cy.get('button[type=submit]').click();
+                // ChurchInfoRequiredMiddleware redirects to church-info when sChurchName is empty
+                cy.url({ timeout: 15000 }).should('include', '/admin/system/church-info');
+            }
+        });
+
+        // After a DB reset sChurchName is empty; fill in the minimum required fields so the
+        // middleware stops redirecting and subsequent test navigation works normally.
+        cy.url().then((url) => {
+            if (url.includes('/admin/system/church-info')) {
+                // Wait for page to fully load — country defaults to US and populates state dropdown
+                cy.get('#sChurchCountry', { timeout: 10000 }).siblings('.ts-wrapper').should('exist');
+                cy.get('#sChurchName').clear().type('Test Community Church');
+                cy.get('#sChurchPhone').clear().type('(555) 123-4567');
+                cy.get('#sChurchEmail').clear().type('info@testchurch.org');
+                cy.get('#sChurchAddress').clear().type('123 Main Street');
+                cy.get('#sChurchCity').clear().type('Springfield');
+                // Country defaults to US — wait for state dropdown then verify value is set
+                cy.get('#sChurchState', { timeout: 10000 }).siblings('.ts-wrapper').should('exist');
+                cy.tomSelectByValue('#sChurchState', 'IL');
+                cy.get('#sChurchState').should('have.value', 'IL');
+                cy.get('#sChurchZip').clear().type('62701');
+                cy.get('#church-info-form').submit();
+                cy.url({ timeout: 10000 }).should('include', 'church-info');
+            }
+        });
+    };
     describe('Step 10c: Verify System Reset and Login', () => {
         it('should redirect to login after reset', () => {
             // Clear any cached sessions since we just reset the database
