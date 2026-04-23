@@ -61,6 +61,62 @@ $request->get('/api/persons/');  // Route, don't change
 - Changing `People` UI term → Only translate, don't rename key
 - All UI gettext/i18next entries → Can rename consolidated terms
 
+### Capitalization Convention <!-- learned: 2026-04-22 -->
+
+**Use Title Case for UI chrome, Sentence case for body text. Never have both forms of the same string in the codebase — translators see them as two different msgids and must translate twice.**
+
+| Use Title Case for | Use Sentence case for |
+|---|---|
+| Form field labels: `First Name`, `Email Address`, `Phone Number` | Helper text: `Enter your first name` |
+| Button labels: `Save`, `Sign In`, `Add Family` | Validation messages: `This field is required` |
+| Column headers: `Member`, `Family`, `Status` | Helper/placeholder text |
+| Page titles & card headers: `Email Configuration` | Body paragraphs, descriptions |
+| Navigation/menu items: `Reports`, `Settings` | Toast notifications: `Saved successfully` |
+| Tab labels: `App`, `Server`, `Database` | Modal body content |
+| Status badges (single word): `Active`, `Inactive`, `Online` | Counts/aggregates: `5 members`, `3 families` |
+| Dialog titles: `Confirm Delete`, `Error` | Status sentences: `1 family is inactive` |
+
+**Survey result (2026-04-22):** Title Case dominates form labels in this codebase. Form labels with case duplicates were ALL won by Title Case (`First Name` 10× vs `First name` 1×, `Last Name` 11× vs 1×, `Phone Number` 5× vs 1×, etc.).
+
+```php
+// CORRECT — Title Case for labels, Sentence case for help text
+<label><?= gettext('Email Address') ?></label>
+<small class="text-muted"><?= gettext('We never share your email address.') ?></small>
+
+// WRONG — inconsistent: same label, different casing creates 2 msgids
+<label><?= gettext('Email Address') ?></label>     // page A
+<label><?= gettext('Email address') ?></label>     // page B
+```
+
+**Detection:**
+```bash
+# Find case-only duplicate msgids
+python3 -c "
+import re
+from collections import defaultdict
+po = open('locale/messages.po').read()
+ids = [m for m in re.findall(r'^msgid \"(.*?)\"\$', po, re.MULTILINE) if m]
+g = defaultdict(set)
+for m in ids: g[m.lower()].add(m)
+for v in g.values():
+    if len(v) > 1: print(sorted(v))
+"
+```
+
+**Acronym exceptions** (always uppercase regardless of case form): `URL`, `ID`, `IP`, `SMTP`, `CSV`, `PDF`, `2FA`, `API`, `HTML`, `TLS`, `SSL`. Never write `Id`, `Url`, `Sms`, etc. — pick the acronym form once and use it everywhere.
+
+```php
+// CORRECT
+gettext('User ID')
+gettext('SMTP Host')
+
+// WRONG — acronym should stay all-caps
+gettext('User Id')
+gettext('Smtp Host')
+```
+
+**Dialog title special case:** `i18next.t('ERROR')` was historically used as a bootbox title and created an `ERROR`/`Error` msgid pair. Always use `i18next.t('Error')` (Title Case) for dialog titles. Reserve all-caps strings for log levels / data attribute values, NOT translation keys (e.g. `data-level="ERROR"` is fine, but the visible label uses `gettext('Error')`).
+
 ### Family Life Cycle
 
 Use **Active / Inactive** for consistent family status:

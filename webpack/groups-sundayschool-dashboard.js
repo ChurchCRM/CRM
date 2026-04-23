@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Delete Sunday School class
   $(document).on("click", ".delete-ss-class", function () {
     const groupId = $(this).data("group-id");
-    const groupName = $(this).data("group-name");
+    const groupName = window.CRM.escapeHtml(String($(this).data("group-name") || ""));
 
     bootbox.confirm({
       message: `${i18next.t("Are you sure you want to delete")} <strong>${groupName}</strong>?`,

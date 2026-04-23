@@ -66,7 +66,6 @@ export function initializeQuillEditor(selector, options = {}) {
  */
 export function getEditorHtml(editor) {
   if (!editor) return "";
-  const _delta = editor.getContents();
   return editor.root.innerHTML;
 }
 

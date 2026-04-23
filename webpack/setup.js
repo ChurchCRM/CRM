@@ -830,7 +830,6 @@ window.Stepper = Stepper;
     // Real-time password matching validation
     const passwordField = document.getElementById("DB_PASSWORD");
     const confirmPasswordField = document.getElementById("DB_PASSWORD_CONFIRM");
-    const _submitButton = document.getElementById("submit-setup");
 
     function validatePasswordMatch() {
       const password = passwordField.value;

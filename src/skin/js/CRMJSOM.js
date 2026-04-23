@@ -79,57 +79,56 @@ window.CRM.AdminAPIRequest = (options) => {
   return window.jQuery.ajax(options);
 };
 
-window.CRM.DisplayErrorMessage = (endpoint, error) => {
-  // Handle different error response formats (message, error, msg)
-  const errorText =
-    error && (error.message || error.error || error.msg)
-      ? error.message || error.error || error.msg
-      : i18next.t("Unknown error");
-
-  const message =
-    "<p>" +
-    i18next.t("Error making API Call to") +
-    ": " +
-    endpoint +
-    "</p>" +
-    "<p>" +
-    i18next.t("Error text") +
-    ": " +
-    errorText +
-    "</p>";
-
-  // Never include server side traces in the UI
-  bootbox.alert({
-    title: i18next.t("ERROR"),
-    message: message,
-  });
-};
-
 window.CRM.VerifyThenLoadAPIContent = (url) => {
   const fallbackError = i18next.t("There was a problem retrieving the requested object");
 
+  const showError = (msg) => {
+    if (window.CRM && typeof window.CRM.notify === "function") {
+      window.CRM.notify(msg, { type: "danger", delay: 6000 });
+    } else if (typeof alert === "function") {
+      alert(msg);
+    }
+  };
+
   if (!window.jQuery) {
-    window.CRM.DisplayErrorMessage(url, { message: fallbackError });
+    showError(fallbackError);
     return;
   }
 
-  // HEAD the URL first: if 2xx, open it. Otherwise GET the JSON body so we can
-  // surface the server's error message. Both requests are async (no synchronous
-  // XHR — Chrome deprecates `async: false`).
+  // Pre-open a blank tab synchronously so browsers tie it to the originating
+  // user gesture — popup blockers reject `window.open` from async callbacks.
+  // We navigate it on success, or close it on failure. Setting `opener = null`
+  // prevents reverse-tabnabbing; we can't pass `noopener` here because that
+  // would force `window.open` to return null and leave us nothing to navigate.
+  const pendingWindow = window.open("", "_blank");
+  if (pendingWindow) {
+    pendingWindow.opener = null;
+  }
+
+  // HEAD the URL first: if 2xx, navigate the pre-opened tab. Otherwise GET
+  // the JSON body so we can surface the server's error message. Both requests
+  // are async (Chrome deprecates `async: false`).
   window.jQuery
     .ajax({ method: "HEAD", url: url })
     .done(() => {
-      window.open(url, "_blank", "noopener,noreferrer");
+      if (pendingWindow && !pendingWindow.closed) {
+        pendingWindow.location = url;
+      } else {
+        window.open(url, "_blank", "noopener,noreferrer");
+      }
     })
     .fail(() => {
+      if (pendingWindow && !pendingWindow.closed) {
+        pendingWindow.close();
+      }
       window.jQuery
         .ajax({ method: "GET", url: url, dataType: "json" })
         .done((data) => {
           const msg = data && data.message ? data.message : fallbackError;
-          window.CRM.DisplayErrorMessage(url, { message: msg });
+          showError(msg);
         })
         .fail(() => {
-          window.CRM.DisplayErrorMessage(url, { message: fallbackError });
+          showError(fallbackError);
         });
     });
 };
@@ -368,12 +367,12 @@ window.CRM.system = {
     } catch (_err) {
       parsedResponse = null;
     }
-    if (parsedResponse) {
-      window.CRM.DisplayErrorMessage(jqXHR.url, parsedResponse);
-    } else {
-      window.CRM.DisplayErrorMessage(jqXHR.url, {
-        message: textStatus + " " + errorThrown,
-      });
+    const message =
+      (parsedResponse && (parsedResponse.message || parsedResponse.error || parsedResponse.msg)) ||
+      `${textStatus || i18next.t("Error")} ${errorThrown || ""}`.trim() ||
+      i18next.t("Unknown error");
+    if (window.CRM && typeof window.CRM.notify === "function") {
+      window.CRM.notify(message, { type: "danger", delay: 6000 });
     }
   },
 };

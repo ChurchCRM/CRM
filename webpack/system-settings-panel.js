@@ -277,7 +277,7 @@ import "../src/skin/scss/system-settings-panel.scss";
         const name = typeof s === "string" ? s : s.name;
         const cfg = this.getSettingConfig(s);
 
-        fetch(`${window.CRM.root + this.options.configApiPath}/${name}`)
+        fetch(`${window.CRM.root}${this.options.configApiPath}/${name}`)
           .then((response) => response.json())
           .then((data) => {
             // For ajax selects, load options from the remote URL first
@@ -502,7 +502,7 @@ import "../src/skin/scss/system-settings-panel.scss";
 
       // Save each setting
       const promises = Object.keys(settings).map((key) =>
-        fetch(`${window.CRM.root + this.options.configApiPath}/${key}`, {
+        fetch(`${window.CRM.root}${this.options.configApiPath}/${key}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
