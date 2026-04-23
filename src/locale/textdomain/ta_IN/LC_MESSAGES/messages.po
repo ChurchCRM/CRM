@@ -15881,3 +15881,23 @@ msgstr "தன்னார்வலர் உள்ளிட்ட தலை எ
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "உங்கள் CSV இல் நகல் நெடுவரிசை பெயர்கள் உள்ளன. நகல் நெடுவரிசைகளை மறுபெயரிடவும் (எ.கா. இரண்டாவதில் \"(2)\" சேர்க்கவும்) மீண்டும் பதிவேற்றவும்."
 
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "இந்த நன்கொடை பொருளை நிரந்தரமாக நீக்க விரும்புகிறீர்களா?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "இந்த துடுப்பு எண்ணை நிரந்தரமாக நீக்க விரும்புகிறீர்களா?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "நன்கொடை பொருளை நீக்கு"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "துடுப்பு எண்ணை நீக்கு"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "தவறான பாதுகாப்பு டோக்கன். மீண்டும் முயலவும்."
+

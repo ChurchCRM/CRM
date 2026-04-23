@@ -15822,3 +15822,23 @@ msgstr "ボランティアが入力した、カテゴリ別の参加者数。"
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "CSVに重複した列名があります。重複している列の名前を変更し（例: 2番目に「(2)」を追加）、再度アップロードしてください。"
 
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "この寄付品を完全に削除してもよろしいですか？"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "このパドル番号を完全に削除してもよろしいですか？"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "寄付品を削除"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "パドル番号を削除"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "セキュリティトークンが無効です。もう一度お試しください。"
+

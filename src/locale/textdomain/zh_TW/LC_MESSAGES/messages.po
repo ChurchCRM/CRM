@@ -16044,3 +16044,23 @@ msgstr "志工輸入的出席人數，依類別分類。"
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "您的 CSV 檔案有重複的欄位名稱。請重新命名重複的欄位（例如在第二個欄位後加上「(2)」），然後重新上傳。"
 
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "您確定要永久刪除此捐贈物品嗎？"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "您確定要永久刪除此競拍號嗎？"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "刪除捐贈物品"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "刪除競拍號"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "安全權杖無效。請重試。"
+

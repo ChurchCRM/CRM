@@ -3818,5 +3818,10 @@
     "Ties this event to a class or ministry roster — used by the Kiosk check-in flow.": "Прив'язує цю подію до списку класу або служіння — використовується в процесі реєстрації через кіоск.",
     "Upload a CSV to create families and people in bulk.": "Завантажте CSV для масового створення родин та осіб.",
     "Volunteer-entered headcounts, broken down by category.": "Дані про кількість людей, введені волонтерами, з розбивкою за категоріями.",
-    "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again.": "Ваш CSV містить дублюючі назви стовпців. Перейменуйте їх (наприклад, додайте «(2)» до другого) та завантажте знову."
+    "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again.": "Ваш CSV містить дублюючі назви стовпців. Перейменуйте їх (наприклад, додайте «(2)» до другого) та завантажте знову.",
+    "Are you sure you want to permanently delete this donated item?": "Ви впевнені, що хочете назавжди видалити цей пожертвуваний предмет?",
+    "Are you sure you want to permanently delete this paddle number?": "Ви впевнені, що хочете назавжди видалити цей номер весла?",
+    "Delete Donated Item": "Видалити пожертвуваний предмет",
+    "Delete Paddle Number": "Видалити номер весла",
+    "Invalid security token. Please try again.": "Недійсний токен безпеки. Будь ласка, спробуйте ще раз."
 }

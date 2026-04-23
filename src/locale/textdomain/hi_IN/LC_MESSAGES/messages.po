@@ -15828,3 +15828,23 @@ msgstr "स्वयंसेवकों द्वारा दर्ज की
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "आपकी CSV में डुप्लिकेट कॉलम नाम हैं। डुप्लिकेट कॉलम का नाम बदलें (जैसे दूसरे में \"(2)\" जोड़ें) और पुनः अपलोड करें।"
 
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "क्या आप वाकई इस दान की गई वस्तु को स्थायी रूप से हटाना चाहते हैं?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "क्या आप वाकई इस पैडल नंबर को स्थायी रूप से हटाना चाहते हैं?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "दान की गई वस्तु हटाएं"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "पैडल नंबर हटाएं"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "अमान्य सुरक्षा टोकन। कृपया पुनः प्रयास करें।"
+
