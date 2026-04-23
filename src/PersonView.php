@@ -9,6 +9,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\PersonService;
+use ChurchCRM\Service\PropertyService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\DateTimeUtils;
@@ -96,7 +97,8 @@ $sSQL ="SELECT a.*, family_fam.*, COALESCE(cls.lst_OptionName , 'Unassigned') AS
 $rsPerson = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsPerson));
 
-$assignedProperties = $person->getProperties();
+$assignedPersonProperties = PropertyService::getAssigned($person);
+$allPersonProperties = PropertyService::getAll($person);
 
 // Get the lists of custom person fields
 $sSQL = 'SELECT person_custom_master.* FROM person_custom_master
@@ -136,19 +138,6 @@ $rsAssignedVolunteerOpps = RunQuery($sSQL);
 // Get all the volunteer opportunities
 $sSQL = 'SELECT vol_ID, vol_Name FROM volunteeropportunity_vol ORDER BY vol_Order';
 $rsVolunteerOpps = RunQuery($sSQL);
-
-// Get the Properties assigned to this Person
-$sSQL ="SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
-FROM record2property_r2p
-LEFT JOIN property_pro ON pro_ID = r2p_pro_ID
-LEFT JOIN propertytype_prt ON propertytype_prt.prt_ID = property_pro.pro_prt_ID
-WHERE pro_Class = 'p' AND r2p_record_ID =" . $iPersonID .
-    ' ORDER BY prt_Name, pro_Name';
-$rsAssignedProperties = RunQuery($sSQL);
-
-// Get all the properties
-$sSQL ="SELECT * FROM property_pro WHERE pro_Class = 'p' ORDER BY pro_Name";
-$rsProperties = RunQuery($sSQL);
 
 // Get Field Security List Matrix
 $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence';
@@ -216,10 +205,18 @@ $bOkToEdit = (
             <div class="card-body p-0">
                 <div class="d-flex">
                     <!-- Photo (left) — click to upload -->
-                    <div class="flex-shrink-0 position-relative" style="width: 120px; min-height: 120px;">
+                    <div class="flex-shrink-0 position-relative" style="width: 120px; aspect-ratio: 1 / 1;">
                         <a href="#" id="uploadImageButton" class="d-block w-100 h-100" title="<?= $bOkToEdit ? gettext("Click to upload photo") : gettext("View Photo") ?>">
-                            <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="w-100 h-100 object-fit-cover" style="border-radius: var(--tblr-border-radius) 0 0 var(--tblr-border-radius);">
+                            <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="photo-profile w-100 h-100 object-fit-cover" style="border-radius: var(--tblr-border-radius) 0 0 var(--tblr-border-radius);">
                         </a>
+                        <button type="button"
+                                class="photo-view-overlay btn btn-sm position-absolute bottom-0 end-0 m-1 d-none"
+                                data-entity-type="person"
+                                data-entity-id="<?= $person->getId() ?>"
+                                title="<?= gettext('View full photo') ?>"
+                                aria-label="<?= gettext('View full photo') ?>">
+                            <i class="fa-solid fa-magnifying-glass" aria-hidden="true" style="color:white; text-shadow: 0 1px 3px rgba(0,0,0,.8);"></i>
+                        </button>
                     </div>
                     <!-- Attributes (right) -->
                     <div class="p-3 flex-grow-1">
@@ -452,67 +449,62 @@ $bOkToEdit = (
                 <h3 class="card-title"><?= gettext('Properties') ?></h3>
             </div>
             <div class="card-body">
-                <?php
-                $sAssignedProperties = ','; ?>
-                <?php if (mysqli_num_rows($rsAssignedProperties) === 0) : ?>
+                <?php if (count($assignedPersonProperties) === 0) : ?>
                     <div class="text-center text-muted py-3">
                         <i class="fa-solid fa-tags fa-2x mb-2 d-block opacity-50"></i>
                         <p class="mb-0"><?= gettext('No properties assigned.') ?></p>
                     </div>
                 <?php else : ?>
                     <div class="list-group list-group-flush">
-                        <?php while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
-                            $pro_Prompt = '';
-                            $r2p_Value = '';
-                            extract($aRow); ?>
+                        <?php foreach ($assignedPersonProperties as $rp) {
+                            $prop = $rp->getProperty();
+                            $propType = $prop->getPropertyType();
+                            $value = $rp->getPropertyValue(); ?>
                             <div class="list-group-item px-0 d-flex align-items-center">
                                 <div class="me-auto">
-                                    <strong><?= InputUtils::escapeHTML($pro_Name) ?></strong>
-                                    <span class="badge bg-secondary-lt text-secondary ms-1"><?= InputUtils::escapeHTML($prt_Name) ?></span>
-                                    <?php if (!empty($r2p_Value)) { ?>
-                                        <small class="text-muted d-block"><?= InputUtils::escapeHTML($r2p_Value) ?></small>
+                                    <strong><?= InputUtils::escapeHTML($prop->getProName()) ?></strong>
+                                    <?php if ($propType) { ?>
+                                        <span class="badge bg-secondary-lt text-secondary ms-1"><?= InputUtils::escapeHTML($propType->getPrtName()) ?></span>
+                                    <?php } ?>
+                                    <?php if (!empty($value)) { ?>
+                                        <small class="text-muted d-block"><?= InputUtils::escapeHTML($value) ?></small>
                                     <?php } ?>
                                 </div>
                                 <?php if ($bOkToEdit) { ?>
-                                    <button class="btn btn-sm btn-ghost-danger remove-property-btn" data-property_id="<?= (int)$pro_ID ?>" title="<?= gettext('Remove') ?>">
+                                    <button class="btn btn-sm btn-ghost-danger remove-property-btn" data-property_id="<?= (int) $prop->getProId() ?>" title="<?= gettext('Remove') ?>">
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
                                 <?php } ?>
                             </div>
-                        <?php
-                            $sAssignedProperties .= $pro_ID . ',';
-                        } ?>
+                        <?php } ?>
                     </div>
                 <?php endif; ?>
 
-                <?php if ($bOkToEdit && mysqli_num_rows($rsProperties) !== 0) : ?>
+                <?php if ($bOkToEdit && count($allPersonProperties) > 0) : ?>
                     <div class="mt-3 d-print-none">
-                        <form method="post" action="<?= SystemURLs::getRootPath() . '/api/properties/persons/assign' ?>" id="assign-property-form">
+                        <form method="post" id="assign-property-form">
                             <div class="mb-2">
                                 <select name="PropertyId" id="input-person-properties" class="form-select" data-placeholder="<?= gettext('Choose a property...') ?>">
                                     <option value=""></option>
                                     <?php
-                                    $assignedPropertiesArray = [];
-                                    foreach ($assignedProperties as $assignedProperty) {
-                                        $assignedPropertiesArray[] = $assignedProperty->getPropertyId();
+                                    $valueByPropId = [];
+                                    foreach ($assignedPersonProperties as $rp) {
+                                        $valueByPropId[(int) $rp->getProperty()->getProId()] = $rp->getPropertyValue();
                                     }
-                                    while ($aRow = mysqli_fetch_array($rsProperties)) {
-                                        extract($aRow);
-                                        $attributes = "value=\"{$pro_ID}\"";
-                                        if (!empty($pro_Prompt)) {
-                                            $pro_Value = '';
-                                            foreach ($assignedProperties as $assignedProperty) {
-                                                if ($assignedProperty->getPropertyId() === (int)$pro_ID) {
-                                                    $pro_Value = $assignedProperty->getPropertyValue();
-                                                }
-                                            }
-                                            $attributes .= " data-pro_Prompt=\"" . InputUtils::escapeAttribute($pro_Prompt) . "\" data-pro_Value=\"" . InputUtils::escapeAttribute($pro_Value) . "\"";
+                                    foreach ($allPersonProperties as $prop) {
+                                        $pid = (int) $prop->getProId();
+                                        $isAssigned = array_key_exists($pid, $valueByPropId);
+                                        $attrs = 'value="' . $pid . '"';
+                                        $prompt = $prop->getProPrompt();
+                                        if (!empty($prompt)) {
+                                            $attrs .= ' data-pro_Prompt="' . InputUtils::escapeAttribute($prompt) . '"';
+                                            $attrs .= ' data-pro_Value="' . InputUtils::escapeAttribute($valueByPropId[$pid] ?? '') . '"';
                                         }
-                                        $optionText = InputUtils::escapeHTML($pro_Name);
-                                        if (in_array($pro_ID, $assignedPropertiesArray)) {
-                                            $optionText = InputUtils::escapeHTML($pro_Name) . ' (' . gettext('assigned') . ')';
+                                        $optionText = InputUtils::escapeHTML($prop->getProName());
+                                        if ($isAssigned) {
+                                            $optionText .= ' (' . gettext('assigned') . ')';
                                         }
-                                        echo "<option {$attributes}>{$optionText}</option>";
+                                        echo "<option {$attrs}>{$optionText}</option>";
                                     } ?>
                                 </select>
                             </div>

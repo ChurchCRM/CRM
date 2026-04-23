@@ -820,10 +820,6 @@ msgid "Family Info"
 msgstr "가족 정보"
 
 #: 
-msgid "Contact Info"
-msgstr "연락처 정보"
-
-#: 
 msgid "Envelope Info"
 msgstr "헌금봉투 정보"
 
@@ -946,10 +942,6 @@ msgstr "값"
 #: 
 msgid "Edit Value"
 msgstr "값 편집"
-
-#: 
-msgid "Assign a New Property"
-msgstr "새 속성 배정"
 
 #: 
 msgid "Assign"
@@ -1678,20 +1670,8 @@ msgid "Group"
 msgstr "그룹"
 
 #: 
-msgid "Option"
-msgstr "옵션"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "오류: 중복"
-
-#: 
 msgid "Default"
 msgstr "기본값"
-
-#: 
-msgid "Duplicate name found."
-msgstr "중복된 이름이 있습니다."
 
 #: 
 msgid "Make Default"
@@ -1704,10 +1684,6 @@ msgstr "나가기"
 #: 
 msgid "Add New"
 msgstr "새로 추가"
-
-#: 
-msgid " by that name already exists."
-msgstr " 이름이 이미 존재합니다."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3189,10 +3165,6 @@ msgid "Security Group"
 msgstr "보안 그룹"
 
 #: 
-msgid "Security Groups"
-msgstr "보안 그룹 목록"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "보안 그룹 편집"
 
@@ -3205,56 +3177,16 @@ msgid "Group Member Roles Editor"
 msgstr "그룹 구성원 역할 편집"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "개인 사용자 정의 목록 옵션"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "개인 사용자 정의 목록 옵션"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "개인 사용자 정의 목록 옵션 편집"
-
-#: 
-msgid "Custom List Option"
-msgstr "사용자 정의 목록 옵션"
-
-#: 
-msgid "Custom List Options"
-msgstr "사용자 정의 목록 옵션"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "사용자 정의 목록 옵션 편집"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "가족 사용자 정의 목록 옵션"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "가족 사용자 정의 목록 옵션"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "가족 사용자 정의 목록 옵션 편집"
-
-#: 
-msgid "are not allowed."
-msgstr "는 허용되지 않습니다."
-
-#: 
-msgid "Name for New"
-msgstr "새 항목 이름"
-
-#: 
-msgid "Created via Family"
-msgstr "가족을 통해 생성됨"
-
-#: 
-msgid "Updated via Family"
-msgstr "가족을 통해 수정됨"
 
 #: 
 msgid "Family Data Verified"
@@ -5480,14 +5412,6 @@ msgid "Added to group"
 msgstr "그룹에 추가됨"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "SMTP 호스트가 설정되지 않았습니다. 설정 페이지에서 구성하세요"
-
-#: 
-msgid "Debug Email Connection"
-msgstr "이메일 연결 디버그"
-
-#: 
 #, fuzzy
 msgid "This Family is Inactive"
 msgstr "이 가족은 비활성 상태입니다"
@@ -5499,14 +5423,6 @@ msgstr "데이터베이스가 초기화되었습니다."
 #: 
 msgid "Anniversaries"
 msgstr "기념일"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "새 가족 알림 이메일 오류"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "새 개인 알림 이메일 오류"
 
 #: 
 msgid "View User"
@@ -5693,10 +5609,6 @@ msgstr "비활성화되어 있습니다"
 #: 
 msgid "Software Version"
 msgstr "소프트웨어 버전"
-
-#: 
-msgid "Database Version"
-msgstr "데이터베이스 버전"
 
 #: 
 msgid "Application Prerequisites"
@@ -6060,14 +5972,6 @@ msgid "Loading"
 msgstr "불러오는 중"
 
 #: 
-msgid "Family Property Unassignment"
-msgstr "가족 속성 해제"
-
-#: 
-msgid "Do you want to remove"
-msgstr "다음을 제거하시겠습니까"
-
-#: 
 msgid "Today's Birthdays"
 msgstr "오늘의 생일"
 
@@ -6102,10 +6006,6 @@ msgstr "잘못된 생년월일: 생월 또는 생일이 없습니다."
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "잘못된 생년월일: 생월과 생일이 없습니다."
-
-#: 
-msgid "System"
-msgstr "시스템"
 
 #. Context: locales
 #: 
@@ -6193,10 +6093,6 @@ msgid "Not Subscribed"
 msgstr "구독되지 않음"
 
 #: 
-msgid "property"
-msgstr "속성"
-
-#: 
 msgid "Default Zip"
 msgstr "기본 우편번호"
 
@@ -6234,10 +6130,6 @@ msgstr "이름에서 1글자, 성에서 1글자 사용"
 #: 
 msgid "Two characters from FirstName"
 msgstr "이름에서 2글자 사용"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "교회 이메일이 설정되지 않았습니다. 설정 페이지에서 구성하세요"
 
 #. Context: locales
 #: 
@@ -6998,10 +6890,6 @@ msgid "Base URL"
 msgstr "기본 URL"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "ChurchCRM 설치"
-
-#: 
 msgid "Copy"
 msgstr "복사"
 
@@ -7010,24 +6898,12 @@ msgid "DSN"
 msgstr "DSN"
 
 #: 
-msgid "Database Server"
-msgstr "데이터베이스 서버"
-
-#: 
 msgid "Debug Info"
 msgstr "디버그 정보"
 
 #: 
 msgid "Document Root"
 msgstr "문서 루트"
-
-#: 
-msgid "Email Configuration"
-msgstr "이메일 구성"
-
-#: 
-msgid "Email Debug Info"
-msgstr "이메일 디버그 정보"
 
 #: 
 msgid "Filesystem Permissions"
@@ -7070,10 +6946,6 @@ msgid "PHP & Server Requirements"
 msgstr "PHP 및 서버 요구사항"
 
 #: 
-msgid "PHP Configuration"
-msgstr "PHP 구성"
-
-#: 
 msgid "Platform"
 msgstr "플랫폼"
 
@@ -7084,10 +6956,6 @@ msgstr "루트 경로"
 #: 
 msgid "SMTP Host"
 msgstr "SMTP 호스트"
-
-#: 
-msgid "Server Information"
-msgstr "서버 정보"
 
 #: 
 msgid "Software"
@@ -8386,10 +8254,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "<strong>끝에 슬래시</strong> (/)로 끝남"
 
 #: 
-msgid "Error:"
-msgstr "오류:"
-
-#: 
 msgid "Find the line:"
 msgstr "다음 줄을 찾으세요:"
 
@@ -8781,10 +8645,6 @@ msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "%d명이 선택된 그룹에 성공적으로 추가됨."
 
 #: 
-msgid "A "
-msgstr "하나 "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "정말로 삭제하시겠습니까?"
 
@@ -8813,10 +8673,6 @@ msgid "Delete Confirmation"
 msgstr "삭제 확인"
 
 #: 
-msgid "Existing"
-msgstr "기존"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "기존 사용자 정의 가족 필드"
 
@@ -8839,10 +8695,6 @@ msgstr "유효하지 않은 CSRF 토큰"
 #: 
 msgid "Invalid fields or selections."
 msgstr "유효하지 않은 필드 또는 선택 항목입니다."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "항목이 성공적으로 삭제됨"
 
 #: 
 msgid "Move down"
@@ -8879,10 +8731,6 @@ msgstr "속성 유형"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "이 자원봉사 기회에 할당된 사람들이 있습니다. 삭제하면 할당이 해제됩니다:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "이것은 현재 할당된 모든 사람에게서 제거됩니다."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11525,10 +11373,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "주일학교 반, 교사 및 학생 출석 관리"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "분류 목록, 역할 및 그룹 유형 관리"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "재정 추적을 위한 헌금 기금 관리"
 
@@ -11779,10 +11623,6 @@ msgstr "GitHub 이슈 열기"
 #: 
 msgid "Open user menu"
 msgstr "사용자 메뉴 열기"
-
-#: 
-msgid "Options"
-msgstr "옵션"
 
 #: 
 msgid "Other Members"
@@ -15578,4 +15418,120 @@ msgstr "예정된 이벤트"
 #: 
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "개 이벤트. 대신 유형을 비활성화하거나 먼저 이벤트를 재할당하십시오."
+
+#: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "이메일 템플릿에 표시되는 교회 로고의 절대 http(s) URL입니다(향후 다른 곳에서도 재사용됨). 이메일 클라이언트 간 최적 렌더링을 위해 약 3.5:1 비율(예: 350×100 px)의 넓은 배너 이미지를 PNG 또는 JPG 형식으로 HTTPS로 제공하세요. 비워 두거나 잘못된 값을 입력하면 기본 ChurchCRM 로고가 사용됩니다."
+
+#: 
+msgid "An option with that name already exists"
+msgstr "같은 이름의 옵션이 이미 존재합니다"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "마지막 남은 옵션은 삭제할 수 없습니다"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "클립보드를 사용할 수 없습니다. 다운로드 버튼을 사용하여 코드를 저장하세요."
+
+#: 
+msgid "Custom Option"
+msgstr "사용자 정의 옵션"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "기본 받은 편지함 미리보기 텍스트"
+
+#: 
+msgid "Email is disabled"
+msgstr "이메일이 비활성화되어 있습니다"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "이메일이 비활성화되어 있습니다. 비밀번호를 재설정하려면 먼저 이메일을 설정하거나 비밀번호 변경을 사용하세요."
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "이메일이 비활성화되어 있습니다. 테스트하기 전에 이메일 대시보드 설정에서 활성화하세요."
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "백업 복구 코드 중 하나를 입력하세요"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "계정에 접근하려면 백업 복구 코드 중 하나를 입력하세요"
+
+#: 
+msgid "Existing Options"
+msgstr "기존 옵션"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "이 역할 목록에 해당하는 사역부서를 찾을 수 없습니다"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "비활성 상태는 분류 목록에서만 전환할 수 있습니다"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "새 사용자는 계정 정보가 포함된 환영 이메일을 받지 못합니다. 비밀번호를 직접 공유하거나 먼저 이메일을 설정하세요."
+
+#: 
+msgid "Option name is required"
+msgstr "옵션 이름은 필수입니다"
+
+#: 
+msgid "Option not found"
+msgstr "옵션을 찾을 수 없습니다"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "제목 줄 옆에 받은 편지함 미리보기 텍스트로 표시되는 선택적 짧은 요약입니다. 비워 두면 이메일 클라이언트가 본문에서 자동 생성합니다. 이메일 유형별(비밀번호 재설정, 신규 성도, 인증)로 자체 미리보기 텍스트가 설정되며, 이 항목은 기본값으로 사용됩니다."
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "이메일이 설정되기 전까지 비밀번호 재설정 이메일 및 신규 계정 환영 이메일이 발송되지 않습니다. 사용자는 계정 정보를 자동으로 받지 못합니다."
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "이메일이 비활성화되어 있어 비밀번호 재설정을 사용할 수 없습니다. 시스템 관리자에게 문의하세요."
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "비밀번호가 재설정되었지만 이메일을 보낼 수 없습니다. 해당 사용자가 잠긴 상태입니다. 새 비밀번호를 직접 공유하거나 비밀번호 변경을 사용하세요."
+
+#: 
+msgid "Recovery Code"
+msgstr "복구 코드"
+
+#: 
+msgid "Set up Email"
+msgstr "이메일 설정"
+
+#: 
+msgid "Test SMTP Email"
+msgstr "SMTP 이메일 테스트"
+
+#: 
+msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
+msgstr "이 이메일은 SMTP 설정이 올바르게 작동하고 있음을 확인하는 ChurchCRM 테스트 이메일입니다."
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "클립보드에 복사할 수 없습니다. 코드를 수동으로 복사하세요."
+
+#: 
+msgid "Use Recovery Code"
+msgstr "복구 코드 사용"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "대신 복구 코드 사용"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "대신 인증 앱 사용"
 

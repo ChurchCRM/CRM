@@ -4,6 +4,7 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\users\NewAccountEmail;
 use ChurchCRM\view\PageHeader;
@@ -152,8 +153,10 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                     $newUser->save();
 
                     $newUser->createTimeLineNote("created");
-                    $email = new NewAccountEmail($newUser, $rawPassword);
-                    $email->send();
+                    if (SystemConfig::isEmailEnabled()) {
+                        $email = new NewAccountEmail($newUser, $rawPassword);
+                        $email->send();
+                    }
 
                     RedirectUtils::redirect('admin/system/users');
                 } else {
@@ -345,6 +348,19 @@ require_once __DIR__ . '/Include/Header.php';
 <div class="alert alert-danger alert-dismissible" role="alert">
     <i class="ti ti-alert-circle me-2"></i><?= InputUtils::escapeHTML($sErrorText) ?>
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+<?php endif; ?>
+
+<?php if (!SystemConfig::isEmailEnabled()): ?>
+<div class="alert alert-warning d-flex align-items-center" role="alert">
+    <i class="fa-solid fa-triangle-exclamation me-2 fs-3"></i>
+    <div class="flex-grow-1">
+        <strong><?= gettext('Email is disabled') ?></strong>
+        <div class="text-secondary"><?= gettext('New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first.') ?></div>
+    </div>
+    <a href="<?= SystemURLs::getRootPath() ?>/v2/email/dashboard?settings=open" class="btn btn-warning ms-3">
+        <i class="fa-solid fa-envelope me-1"></i><?= gettext('Set up Email') ?>
+    </a>
 </div>
 <?php endif; ?>
 

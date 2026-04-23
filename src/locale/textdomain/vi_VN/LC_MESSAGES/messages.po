@@ -832,10 +832,6 @@ msgid "Family Info"
 msgstr "Thông tin gia đình"
 
 #: 
-msgid "Contact Info"
-msgstr "Thông tin liên hệ"
-
-#: 
 msgid "Envelope Info"
 msgstr "Thông tin phong bì"
 
@@ -958,10 +954,6 @@ msgstr "Giá trị"
 #: 
 msgid "Edit Value"
 msgstr "Chỉnh sửa giá trị"
-
-#: 
-msgid "Assign a New Property"
-msgstr "Thêm vào thuộc tính mới"
 
 #: 
 msgid "Assign"
@@ -1691,20 +1683,8 @@ msgid "Group"
 msgstr "Ban/Mục vụ"
 
 #: 
-msgid "Option"
-msgstr "Tùy chọn"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Lỗi: trùng lặp"
-
-#: 
 msgid "Default"
 msgstr "Mặc định"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Đã tìm thấy tên trùng lặp."
 
 #: 
 msgid "Make Default"
@@ -1717,10 +1697,6 @@ msgstr "Thoát khỏi"
 #: 
 msgid "Add New"
 msgstr "Thêm mới"
-
-#: 
-msgid " by that name already exists."
-msgstr "bởi tên đó đã tồn tại."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3205,10 +3181,6 @@ msgid "Security Group"
 msgstr "Nhóm bảo mật"
 
 #: 
-msgid "Security Groups"
-msgstr "Nhóm bảo mật"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Biên tập viên nhóm bảo mật"
 
@@ -3221,56 +3193,16 @@ msgid "Group Member Roles Editor"
 msgstr "Biên tập vai trò thành viên nhóm"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Tùy chọn danh sách tùy chỉnh cá nhân"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Tùy chọn danh sách tùy chỉnh cá nhân"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Người chỉnh sửa tùy chọn danh sách tùy chỉnh"
-
-#: 
-msgid "Custom List Option"
-msgstr "Tùy chọn danh sách tùy chỉnh"
-
-#: 
-msgid "Custom List Options"
-msgstr "Tùy chọn danh sách tùy chỉnh"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Trình chỉnh sửa tùy chọn danh sách tùy chỉnh"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Tùy chọn danh sách tùy chỉnh cho gia đình"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Tùy chọn danh sách tùy chỉnh cho gia đình"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Trình chỉnh sửa tùy chọn danh sách tùy chỉnh dành cho gia đình"
-
-#: 
-msgid "are not allowed."
-msgstr "không được cho phép."
-
-#: 
-msgid "Name for New"
-msgstr "Tên mới cho thuộc tính"
-
-#: 
-msgid "Created via Family"
-msgstr "Đã tạo gia đình"
-
-#: 
-msgid "Updated via Family"
-msgstr "Đã cập nhật qua gia đình"
 
 #: 
 msgid "Family Data Verified"
@@ -5497,14 +5429,6 @@ msgid "Added to group"
 msgstr "Đã thêm vào Ban/Mục vụ"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "Máy chủ lưu trữ SMTP chưa được thiết lập, vui lòng truy cập trang cài đặt"
-
-#: 
-msgid "Debug Email Connection"
-msgstr "Gỡ lỗi kết nối email"
-
-#: 
 #, fuzzy
 msgid "This Family is Inactive"
 msgstr "Gia đình này đã bị hủy kích hoạt"
@@ -5516,14 +5440,6 @@ msgstr "Dữ liệu đã được xóa sạch"
 #: 
 msgid "Anniversaries"
 msgstr "Kỷ niệm ngày cưới"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "Lỗi email thông báo gia đình mới"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "Lỗi email thông báo người mới"
 
 #: 
 msgid "View User"
@@ -5711,10 +5627,6 @@ msgstr "đã được vô hiệu hóa"
 #: 
 msgid "Software Version"
 msgstr "Phiên bản phần mềm"
-
-#: 
-msgid "Database Version"
-msgstr "Phiên bản dữ liệu"
 
 #: 
 msgid "Application Prerequisites"
@@ -6073,14 +5985,6 @@ msgid "Loading"
 msgstr "Đang tải"
 
 #: 
-msgid "Family Property Unassignment"
-msgstr "Chuyển nhượng tài sản gia đình"
-
-#: 
-msgid "Do you want to remove"
-msgstr "Bạn có muốn loại bỏ"
-
-#: 
 msgid "Today's Birthdays"
 msgstr "Sinh nhật hôm nay"
 
@@ -6115,10 +6019,6 @@ msgstr "Ngày sinh không hợp lệ: Thiếu tháng hoặc ngày sinh."
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Ngày sinh không hợp lệ: Thiếu tháng hoặc ngày sinh."
-
-#: 
-msgid "System"
-msgstr "Hệ thống"
 
 #. Context: locales
 #: 
@@ -6206,10 +6106,6 @@ msgid "Not Subscribed"
 msgstr "Không đăng ký"
 
 #: 
-msgid "property"
-msgstr "thuộc tính"
-
-#: 
 msgid "Default Zip"
 msgstr "Mã vùng mặc định"
 
@@ -6247,10 +6143,6 @@ msgstr "Một ký tự từ Tên và một ký tự từ Họ"
 #: 
 msgid "Two characters from FirstName"
 msgstr "Hai ký tự từ Tên"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "Email Giáo hội chưa được thiết lập, vui lòng truy cập trang cài đặt"
 
 #. Context: locales
 #: 
@@ -7011,10 +6903,6 @@ msgid "Base URL"
 msgstr "URL cơ sở"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "Cài đặt ChurchCRM"
-
-#: 
 msgid "Copy"
 msgstr "Sao chép"
 
@@ -7023,24 +6911,12 @@ msgid "DSN"
 msgstr "DSN"
 
 #: 
-msgid "Database Server"
-msgstr "Máy chủ cơ sở dữ liệu"
-
-#: 
 msgid "Debug Info"
 msgstr "Thông tin gỡ lỗi"
 
 #: 
 msgid "Document Root"
 msgstr "Thư mục gốc tài liệu"
-
-#: 
-msgid "Email Configuration"
-msgstr "Cấu hình Email"
-
-#: 
-msgid "Email Debug Info"
-msgstr "Thông tin gỡ lỗi Email"
 
 #: 
 msgid "Filesystem Permissions"
@@ -7083,10 +6959,6 @@ msgid "PHP & Server Requirements"
 msgstr "Yêu cầu PHP & Máy chủ"
 
 #: 
-msgid "PHP Configuration"
-msgstr "Cấu hình PHP"
-
-#: 
 msgid "Platform"
 msgstr "Nền tảng"
 
@@ -7097,10 +6969,6 @@ msgstr "Đường dẫn gốc"
 #: 
 msgid "SMTP Host"
 msgstr "Máy chủ SMTP"
-
-#: 
-msgid "Server Information"
-msgstr "Thông tin máy chủ"
 
 #: 
 msgid "Software"
@@ -8398,10 +8266,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Kết thúc bằng một <strong>dấu gạch chéo</strong> (/)"
 
 #: 
-msgid "Error:"
-msgstr "Lỗi:"
-
-#: 
 msgid "Find the line:"
 msgstr "Tìm dòng:"
 
@@ -8793,10 +8657,6 @@ msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "Đã thêm thành công %d người vào Nhóm được chọn."
 
 #: 
-msgid "A "
-msgstr "Một "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Bạn có chắc chắn muốn xóa"
 
@@ -8825,10 +8685,6 @@ msgid "Delete Confirmation"
 msgstr "Xác nhận xóa"
 
 #: 
-msgid "Existing"
-msgstr "Hiện có"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Các trường gia đình tùy chỉnh hiện có"
 
@@ -8851,10 +8707,6 @@ msgstr "Mã thông báo CSRF không hợp lệ"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Các trường hoặc lựa chọn không hợp lệ."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Mục đã được xóa thành công"
 
 #: 
 msgid "Move down"
@@ -8891,10 +8743,6 @@ msgstr "Loại thuộc tính"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "Có những người được giao cho cơ hội tình nguyện này. Việc xóa sẽ hủy phân công:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "Điều này sẽ xóa nó khỏi tất cả những người hiện đang được gán."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11537,10 +11385,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Quan ly lop giao ly, giao vien va diem danh hoc vien"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Quan ly danh sach phan loai, vai tro va loai nhom"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Quan ly quy dang hien de theo doi tai chinh"
 
@@ -11791,10 +11635,6 @@ msgstr "Mo GitHub Issue"
 #: 
 msgid "Open user menu"
 msgstr "Mo menu nguoi dung"
-
-#: 
-msgid "Options"
-msgstr "Tuy chon"
 
 #: 
 msgid "Other Members"
@@ -15590,4 +15430,120 @@ msgstr "Sự kiện sắp tới"
 #: 
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "sự kiện. Hãy vô hiệu hóa loại này hoặc giao lại các sự kiện trước."
+
+#: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "URL tuyệt đối http(s) của logo nhà thờ được hiển thị trong các mẫu email (và sẽ được sử dụng lại ở nơi khác trong tương lai). Để hiển thị tốt nhất trên các ứng dụng email, hãy dùng hình ảnh biểu ngữ rộng với tỷ lệ khoảng 3,5:1 (ví dụ 350×100 px), định dạng PNG hoặc JPG, phục vụ qua HTTPS. Để trống hoặc nhập giá trị không hợp lệ để sử dụng logo ChurchCRM mặc định."
+
+#: 
+msgid "An option with that name already exists"
+msgstr "Đã có một tùy chọn với tên đó"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "Không thể xóa tùy chọn duy nhất còn lại"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "Bộ nhớ tạm không khả dụng. Vui lòng sử dụng nút Tải xuống để lưu mã của bạn."
+
+#: 
+msgid "Custom Option"
+msgstr "Tùy chọn tùy chỉnh"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "Văn bản xem trước hộp thư đến mặc định"
+
+#: 
+msgid "Email is disabled"
+msgstr "Email đã bị tắt"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "Email đã bị tắt. Hãy cấu hình email trước khi đặt lại mật khẩu, hoặc sử dụng Đổi mật khẩu."
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "Email đã bị tắt. Hãy bật trong cài đặt Bảng điều khiển Email trước khi kiểm tra."
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "Nhập một trong các mã khôi phục dự phòng của bạn"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "Nhập một trong các mã khôi phục dự phòng của bạn để truy cập tài khoản"
+
+#: 
+msgid "Existing Options"
+msgstr "Các tùy chọn hiện có"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "Không tìm thấy sứ vụ cho danh sách vai trò này"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "Trạng thái không hoạt động chỉ có thể được bật/tắt cho danh sách phân loại"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "Thành viên mới sẽ không nhận được email chào mừng kèm thông tin đăng nhập. Hãy chia sẻ mật khẩu với họ theo cách thủ công, hoặc cấu hình email trước."
+
+#: 
+msgid "Option name is required"
+msgstr "Tên tùy chọn là bắt buộc"
+
+#: 
+msgid "Option not found"
+msgstr "Không tìm thấy tùy chọn"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "Tóm tắt ngắn tùy chọn hiển thị dưới dạng văn bản xem trước hộp thư đến bên cạnh dòng chủ đề. Để trống để ứng dụng email tự tạo từ nội dung. Các loại email riêng (đặt lại mật khẩu, thành viên mới, xác minh) có tiêu đề riêng; đây là phương án dự phòng."
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "Email đặt lại mật khẩu và email chào mừng tài khoản mới sẽ không được gửi cho đến khi email được cấu hình. Người dùng sẽ không tự động nhận được thông tin đăng nhập."
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "Không thể đặt lại mật khẩu vì email đã bị tắt. Vui lòng liên hệ quản trị viên hệ thống của bạn."
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "Mật khẩu đã được đặt lại nhưng không thể gửi email. Người dùng đã bị khóa — hãy chia sẻ mật khẩu mới theo cách thủ công hoặc sử dụng Đổi mật khẩu."
+
+#: 
+msgid "Recovery Code"
+msgstr "Mã khôi phục"
+
+#: 
+msgid "Set up Email"
+msgstr "Thiết lập Email"
+
+#: 
+msgid "Test SMTP Email"
+msgstr "Kiểm tra Email SMTP"
+
+#: 
+msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
+msgstr "Đây là email kiểm tra của ChurchCRM xác nhận rằng cấu hình SMTP của bạn đang hoạt động."
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "Không thể sao chép vào bộ nhớ tạm. Vui lòng sao chép mã theo cách thủ công."
+
+#: 
+msgid "Use Recovery Code"
+msgstr "Sử dụng mã khôi phục"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "Sử dụng mã khôi phục thay thế"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "Sử dụng ứng dụng xác thực thay thế"
 

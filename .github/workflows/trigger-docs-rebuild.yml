@@ -16,7 +16,7 @@ jobs:
       contents: read
     steps:
       - name: Trigger docs rebuild via repository_dispatch
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const owner = 'ChurchCRM';

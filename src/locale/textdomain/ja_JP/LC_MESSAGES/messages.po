@@ -813,10 +813,6 @@ msgid "Family Info"
 msgstr "家族情報"
 
 #: 
-msgid "Contact Info"
-msgstr "連絡先情報"
-
-#: 
 msgid "Envelope Info"
 msgstr "封筒情報"
 
@@ -939,10 +935,6 @@ msgstr "値"
 #: 
 msgid "Edit Value"
 msgstr "値を編集"
-
-#: 
-msgid "Assign a New Property"
-msgstr "新しいプロパティを割り当て"
 
 #: 
 msgid "Assign"
@@ -1657,20 +1649,8 @@ msgid "Group"
 msgstr "グループ"
 
 #: 
-msgid "Option"
-msgstr "オプション"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "エラー: 重複"
-
-#: 
 msgid "Default"
 msgstr "デフォルト"
-
-#: 
-msgid "Duplicate name found."
-msgstr "重複した名前が見つかりました。"
 
 #: 
 msgid "Make Default"
@@ -1683,10 +1663,6 @@ msgstr "終了"
 #: 
 msgid "Add New"
 msgstr "新規追加"
-
-#: 
-msgid " by that name already exists."
-msgstr " という名前は既に存在します。"
 
 #: 
 msgid "Buyer Number Editor"
@@ -3162,10 +3138,6 @@ msgid "Security Group"
 msgstr "セキュリティグループ"
 
 #: 
-msgid "Security Groups"
-msgstr "セキュリティグループ"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "セキュリティグループエディタ"
 
@@ -3178,56 +3150,16 @@ msgid "Group Member Roles Editor"
 msgstr "グループメンバーの役割エディタ"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "人物カスタムリストオプション"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "人物カスタムリストオプション"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "人物カスタムリストオプションエディタ"
-
-#: 
-msgid "Custom List Option"
-msgstr "カスタムリストオプション"
-
-#: 
-msgid "Custom List Options"
-msgstr "カスタムリストオプション"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "カスタムリストオプションエディタ"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "家族カスタムリストオプション"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "家族カスタムリストオプション"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "家族カスタムリストオプションエディタ"
-
-#: 
-msgid "are not allowed."
-msgstr "は許可されていません。"
-
-#: 
-msgid "Name for New"
-msgstr "新規の名前"
-
-#: 
-msgid "Created via Family"
-msgstr "ファミリー経由で作成"
-
-#: 
-msgid "Updated via Family"
-msgstr "ファミリー経由で更新"
 
 #: 
 msgid "Family Data Verified"
@@ -5448,14 +5380,6 @@ msgid "Added to group"
 msgstr "グループに追加されました"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "SMTPホストが設定されていません。設定ページにアクセスしてください"
-
-#: 
-msgid "Debug Email Connection"
-msgstr "メール接続をデバッグ"
-
-#: 
 msgid "This Family is Inactive"
 msgstr "この家族は非アクティブです"
 
@@ -5466,14 +5390,6 @@ msgstr "データベースがクリアされました。"
 #: 
 msgid "Anniversaries"
 msgstr "記念日"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "新しい家族通知メールエラー"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "新しい人物通知メールエラー"
 
 #: 
 msgid "View User"
@@ -5658,10 +5574,6 @@ msgstr "は無効です"
 #: 
 msgid "Software Version"
 msgstr "ソフトウェア・バージョン"
-
-#: 
-msgid "Database Version"
-msgstr "データベースバージョン"
 
 #: 
 msgid "Application Prerequisites"
@@ -6025,14 +5937,6 @@ msgid "Loading"
 msgstr "読み込み中"
 
 #: 
-msgid "Family Property Unassignment"
-msgstr "家族プロパティの割り当て解除"
-
-#: 
-msgid "Do you want to remove"
-msgstr "削除しますか"
-
-#: 
 msgid "Today's Birthdays"
 msgstr "今日の誕生日"
 
@@ -6067,10 +5971,6 @@ msgstr "無効な生年月日：誕生月または日がありません。"
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "無効な生年月日：誕生月と日がありません。"
-
-#: 
-msgid "System"
-msgstr "システム"
 
 #. Context: locales
 #: 
@@ -6158,10 +6058,6 @@ msgid "Not Subscribed"
 msgstr "購読していません"
 
 #: 
-msgid "property"
-msgstr "プロパティ"
-
-#: 
 msgid "Default Zip"
 msgstr "デフォルト郵便番号"
 
@@ -6199,10 +6095,6 @@ msgstr "名から1文字と姓から1文字"
 #: 
 msgid "Two characters from FirstName"
 msgstr "名から2文字"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "教会メールが設定されていません。設定ページにアクセスしてください"
 
 #. Context: locales
 #: 
@@ -6963,10 +6855,6 @@ msgid "Base URL"
 msgstr "ベースURL"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "ChurchCRMのインストール"
-
-#: 
 msgid "Copy"
 msgstr "コピー"
 
@@ -6975,24 +6863,12 @@ msgid "DSN"
 msgstr "DSN"
 
 #: 
-msgid "Database Server"
-msgstr "データベースサーバー"
-
-#: 
 msgid "Debug Info"
 msgstr "デバッグ情報"
 
 #: 
 msgid "Document Root"
 msgstr "ドキュメントルート"
-
-#: 
-msgid "Email Configuration"
-msgstr "メール設定"
-
-#: 
-msgid "Email Debug Info"
-msgstr "メールデバッグ情報"
 
 #: 
 msgid "Filesystem Permissions"
@@ -7035,10 +6911,6 @@ msgid "PHP & Server Requirements"
 msgstr "PHPとサーバー要件"
 
 #: 
-msgid "PHP Configuration"
-msgstr "PHP設定"
-
-#: 
 msgid "Platform"
 msgstr "プラットフォーム"
 
@@ -7049,10 +6921,6 @@ msgstr "ルートパス"
 #: 
 msgid "SMTP Host"
 msgstr "SMTPホスト"
-
-#: 
-msgid "Server Information"
-msgstr "サーバー情報"
 
 #: 
 msgid "Software"
@@ -8350,10 +8218,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "<strong>末尾のスラッシュ</strong>（/）で終わる"
 
 #: 
-msgid "Error:"
-msgstr "エラー："
-
-#: 
 msgid "Find the line:"
 msgstr "行を見つける："
 
@@ -8745,10 +8609,6 @@ msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "%d人が選択したグループに正常に追加されました。"
 
 #: 
-msgid "A "
-msgstr "A "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "削除してもよろしいですか"
 
@@ -8777,10 +8637,6 @@ msgid "Delete Confirmation"
 msgstr "削除の確認"
 
 #: 
-msgid "Existing"
-msgstr "既存"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "既存のカスタム世帯フィールド"
 
@@ -8803,10 +8659,6 @@ msgstr "無効な CSRF トークンです"
 #: 
 msgid "Invalid fields or selections."
 msgstr "無効なフィールドまたは選択があります。"
-
-#: 
-msgid "Item deleted successfully"
-msgstr "アイテムが正常に削除されました"
 
 #: 
 msgid "Move down"
@@ -8843,10 +8695,6 @@ msgstr "プロパティタイプ"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "このボランティア機会に割り当てられている人物がいます。削除すると割り当てが解除されます:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "これにより、現在割り当てられているすべての人物から削除されます。"
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11489,10 +11337,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "日曜学校のクラス、教師、生徒の出席を管理"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "分類リスト、役割、グループタイプを管理"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "財務管理用の献金基金を管理"
 
@@ -11743,10 +11587,6 @@ msgstr "GitHub Issueを開く"
 #: 
 msgid "Open user menu"
 msgstr "ユーザーメニューを開く"
-
-#: 
-msgid "Options"
-msgstr "オプション"
 
 #: 
 msgid "Other Members"
@@ -15542,4 +15382,120 @@ msgstr "今後のイベント"
 #: 
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "件のイベント。代わりにタイプを無効化するか、最初にイベントを再割り当てしてください。"
+
+#: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "メールテンプレートに表示される教会ロゴの絶対 http(s) URL（将来的には他の場所でも再利用されます）。メールクライアント間で最適な表示を得るには、約 3.5:1 のアスペクト比（例：350×100 px）のワイドバナー画像を PNG または JPG 形式で HTTPS 経由で提供してください。空白のままにするか無効な値を入力すると、デフォルトの ChurchCRM ロゴにフォールバックします。"
+
+#: 
+msgid "An option with that name already exists"
+msgstr "その名前のオプションは既に存在します"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "最後に残ったオプションは削除できません"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "クリップボードが使用できません。ダウンロードボタンを使用してコードを保存してください。"
+
+#: 
+msgid "Custom Option"
+msgstr "カスタムオプション"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "デフォルトの受信トレイプレビューテキスト"
+
+#: 
+msgid "Email is disabled"
+msgstr "メールは無効です"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "メールは無効です。パスワードをリセットする前にメールを設定するか、パスワード変更をご使用ください。"
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "メールは無効です。テストを行う前に、メールダッシュボードの設定で有効にしてください。"
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "バックアップ回復コードのいずれかを入力してください"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "アカウントにアクセスするには、バックアップ回復コードのいずれかを入力してください"
+
+#: 
+msgid "Existing Options"
+msgstr "既存のオプション"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "このロールリストに対応するミニストリーが見つかりません"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "非アクティブ状態は分類リストに対してのみ切り替えできます"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "新しいユーザーには認証情報を含むウェルカムメールが送信されません。パスワードを手動でお知らせいただくか、先にメールを設定してください。"
+
+#: 
+msgid "Option name is required"
+msgstr "オプション名は必須です"
+
+#: 
+msgid "Option not found"
+msgstr "オプションが見つかりません"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "件名の横に受信トレイのプレビューテキストとして表示されるオプションの短い概要です。空白のままにすると、メールクライアントが本文から自動生成します。メールの種類ごと（パスワードリセット、新規信徒、確認）に独自のプレヘッダーが設定されており、これはフォールバックです。"
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "メールが設定されるまで、パスワードリセットメールおよび新規アカウントのウェルカムメールは送信されません。ユーザーは認証情報を自動的に受け取りません。"
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "メールが無効なため、パスワードリセットは利用できません。システム管理者にお問い合わせください。"
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "パスワードはリセットされましたが、メールを送信できませんでした。ユーザーはロックアウトされています。新しいパスワードを手動でお知らせいただくか、パスワード変更をご使用ください。"
+
+#: 
+msgid "Recovery Code"
+msgstr "回復コード"
+
+#: 
+msgid "Set up Email"
+msgstr "メールを設定する"
+
+#: 
+msgid "Test SMTP Email"
+msgstr "SMTP メールのテスト"
+
+#: 
+msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
+msgstr "これは SMTP 設定が正常に機能していることを確認する ChurchCRM のテストメールです。"
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "クリップボードにコピーできません。コードを手動でコピーしてください。"
+
+#: 
+msgid "Use Recovery Code"
+msgstr "回復コードを使用する"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "代わりに回復コードを使用する"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "代わりに認証アプリを使用する"
 

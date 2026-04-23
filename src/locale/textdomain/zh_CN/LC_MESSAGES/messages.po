@@ -847,10 +847,6 @@ msgid "Family Info"
 msgstr "家庭资料"
 
 #: 
-msgid "Contact Info"
-msgstr "联络人资料"
-
-#: 
 msgid "Envelope Info"
 msgstr "信封资料"
 
@@ -973,11 +969,6 @@ msgstr "值"
 #: 
 msgid "Edit Value"
 msgstr "编辑值"
-
-#: 
-#, fuzzy
-msgid "Assign a New Property"
-msgstr "分配一个新的属性"
 
 #: 
 msgid "Assign"
@@ -1725,20 +1716,8 @@ msgid "Group"
 msgstr "组"
 
 #: 
-msgid "Option"
-msgstr "选项"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "错误：重复"
-
-#: 
 msgid "Default"
 msgstr "默认"
-
-#: 
-msgid "Duplicate name found."
-msgstr "发现重复的名称。"
 
 #: 
 msgid "Make Default"
@@ -1751,10 +1730,6 @@ msgstr "出口"
 #: 
 msgid "Add New"
 msgstr "添加新"
-
-#: 
-msgid " by that name already exists."
-msgstr "由该名称已经存在。"
 
 #: 
 msgid "Buyer Number Editor"
@@ -3275,10 +3250,6 @@ msgid "Security Group"
 msgstr "安全组"
 
 #: 
-msgid "Security Groups"
-msgstr "安全组"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "安全组编辑器"
 
@@ -3291,56 +3262,16 @@ msgid "Group Member Roles Editor"
 msgstr "群组成员角色编辑器"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "人员自定义列表选项"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "人员自定义列表选项"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "人员自定义列表选项编辑器"
-
-#: 
-msgid "Custom List Option"
-msgstr "自定义列表选项"
-
-#: 
-msgid "Custom List Options"
-msgstr "自定义列表选项"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "人员自定义列表选项编辑器"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "家庭自定义列表选项"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "家庭自定义列表选项"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "家庭自定义列表选项编辑器"
-
-#: 
-msgid "are not allowed."
-msgstr "是不允许的"
-
-#: 
-msgid "Name for New"
-msgstr "新名称"
-
-#: 
-msgid "Created via Family"
-msgstr "通过家庭创建"
-
-#: 
-msgid "Updated via Family"
-msgstr "通过家庭更新"
 
 #: 
 msgid "Family Data Verified"
@@ -5570,14 +5501,6 @@ msgid "Added to group"
 msgstr "增加至群组"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "未设置SMTP主机，请访问设置页面"
-
-#: 
-msgid "Debug Email Connection"
-msgstr "Debug邮件连接"
-
-#: 
 #, fuzzy
 msgid "This Family is Inactive"
 msgstr "这个家庭已停用"
@@ -5589,14 +5512,6 @@ msgstr "数据库已被清理"
 #: 
 msgid "Anniversaries"
 msgstr "纪念日"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "新家庭通知电子邮件错误"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "新人员通知电子邮件错误"
 
 #: 
 msgid "View User"
@@ -5784,10 +5699,6 @@ msgstr "被禁用"
 #: 
 msgid "Software Version"
 msgstr "软件版本"
-
-#: 
-msgid "Database Version"
-msgstr "数据库版本"
 
 #: 
 msgid "Application Prerequisites"
@@ -6153,14 +6064,6 @@ msgid "Loading"
 msgstr "载入中"
 
 #: 
-msgid "Family Property Unassignment"
-msgstr "家庭财产分配"
-
-#: 
-msgid "Do you want to remove"
-msgstr "您要删除吗"
-
-#: 
 msgid "Today's Birthdays"
 msgstr "今天的生日"
 
@@ -6195,10 +6098,6 @@ msgstr "无效的出生日期：缺少出生月份或日期。"
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "无效的出生日期：缺少出生月份和日期。"
-
-#: 
-msgid "System"
-msgstr "系统"
 
 #. Context: locales
 #: 
@@ -6286,10 +6185,6 @@ msgid "Not Subscribed"
 msgstr "未订阅"
 
 #: 
-msgid "property"
-msgstr "属性"
-
-#: 
 msgid "Default Zip"
 msgstr "默认邮编"
 
@@ -6327,10 +6222,6 @@ msgstr "名字的一个字符和姓氏的一个字符"
 #: 
 msgid "Two characters from FirstName"
 msgstr "名字的两个字符"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "未设置教会电子邮件，请访问设置页面"
 
 #. Context: locales
 #: 
@@ -7091,10 +6982,6 @@ msgid "Base URL"
 msgstr "基本 URL"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "ChurchCRM 安装"
-
-#: 
 msgid "Copy"
 msgstr "复制"
 
@@ -7103,24 +6990,12 @@ msgid "DSN"
 msgstr "DSN"
 
 #: 
-msgid "Database Server"
-msgstr "数据库服务器"
-
-#: 
 msgid "Debug Info"
 msgstr "调试信息"
 
 #: 
 msgid "Document Root"
 msgstr "文档根目录"
-
-#: 
-msgid "Email Configuration"
-msgstr "电子邮件配置"
-
-#: 
-msgid "Email Debug Info"
-msgstr "电子邮件调试信息"
 
 #: 
 msgid "Filesystem Permissions"
@@ -7163,10 +7038,6 @@ msgid "PHP & Server Requirements"
 msgstr "PHP 及服务器要求"
 
 #: 
-msgid "PHP Configuration"
-msgstr "PHP 配置"
-
-#: 
 msgid "Platform"
 msgstr "平台"
 
@@ -7177,10 +7048,6 @@ msgstr "根路径"
 #: 
 msgid "SMTP Host"
 msgstr "SMTP 主机"
-
-#: 
-msgid "Server Information"
-msgstr "服务器信息"
 
 #: 
 msgid "Software"
@@ -8478,10 +8345,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "以<strong>结尾斜杠</strong> (/) 结束"
 
 #: 
-msgid "Error:"
-msgstr "错误："
-
-#: 
 msgid "Find the line:"
 msgstr "找到这一行："
 
@@ -8873,10 +8736,6 @@ msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "%d 人已成功加入选定的群组。"
 
 #: 
-msgid "A "
-msgstr "一个 "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "您确定要删除吗"
 
@@ -8905,10 +8764,6 @@ msgid "Delete Confirmation"
 msgstr "删除确认"
 
 #: 
-msgid "Existing"
-msgstr "现有"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "现有自定义家庭字段"
 
@@ -8931,10 +8786,6 @@ msgstr "无效的 CSRF 令牌"
 #: 
 msgid "Invalid fields or selections."
 msgstr "无效的字段或选择。"
-
-#: 
-msgid "Item deleted successfully"
-msgstr "项目删除成功"
 
 #: 
 msgid "Move down"
@@ -8971,10 +8822,6 @@ msgstr "属性类型"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "有人被分配到此志愿服务机会。删除将取消分配："
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "这将从当前分配的所有人员中移除它。"
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11617,10 +11464,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "管理主日学班级、教师和学生出席"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "管理分类列表、角色和小组类型"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "管理捐献基金以进行财务跟踪"
 
@@ -11871,10 +11714,6 @@ msgstr "打开 GitHub 问题"
 #: 
 msgid "Open user menu"
 msgstr "打开用户菜单"
-
-#: 
-msgid "Options"
-msgstr "选项"
 
 #: 
 msgid "Other Members"
@@ -15674,4 +15513,120 @@ msgstr "即将到来的事件"
 #: 
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "个事件。请停用此类型，或先重新分配事件。"
+
+#: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "在电子邮件模板中显示的教会标志的绝对 http(s) URL（未来也将在其他地方复用）。为在各电子邮件客户端获得最佳渲染效果，请使用宽横幅图片，宽高比约为 3.5:1（例如 350×100 像素），PNG 或 JPG 格式，通过 HTTPS 提供。留空或输入无效值将回退到默认的 ChurchCRM 标志。"
+
+#: 
+msgid "An option with that name already exists"
+msgstr "已存在同名选项"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "无法删除最后一个选项"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "剪贴板不可用。请使用下载按钮保存您的代码。"
+
+#: 
+msgid "Custom Option"
+msgstr "自定义选项"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "默认收件箱预览文本"
+
+#: 
+msgid "Email is disabled"
+msgstr "电子邮件已禁用"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "电子邮件已禁用。请先配置电子邮件再重置密码，或使用更改密码功能。"
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "电子邮件已禁用。请在电子邮件仪表盘设置中启用后再进行测试。"
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "输入您的一个备用恢复代码"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "输入您的一个备用恢复代码以访问您的账户"
+
+#: 
+msgid "Existing Options"
+msgstr "现有选项"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "未找到此角色列表对应的事工"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "非活跃状态只能在分类列表中切换"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "新用户将不会收到包含其凭据的欢迎电子邮件。请手动与他们分享密码，或先配置电子邮件。"
+
+#: 
+msgid "Option name is required"
+msgstr "选项名称为必填项"
+
+#: 
+msgid "Option not found"
+msgstr "选项未找到"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "显示在主题行旁边的收件箱预览文本的可选简短摘要。留空让电子邮件客户端从正文自动生成。每种电子邮件类型（密码重置、新会众、验证）都有自己的预标题；此为备用设置。"
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "在配置电子邮件之前，密码重置邮件和新账户欢迎邮件将不会发送。用户将不会自动收到凭据。"
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "由于电子邮件已禁用，密码重置功能不可用。请联系您的系统管理员。"
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "密码已重置，但电子邮件无法发送。用户已被锁定——请手动分享新密码或使用更改密码功能。"
+
+#: 
+msgid "Recovery Code"
+msgstr "恢复代码"
+
+#: 
+msgid "Set up Email"
+msgstr "配置电子邮件"
+
+#: 
+msgid "Test SMTP Email"
+msgstr "测试 SMTP 电子邮件"
+
+#: 
+msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
+msgstr "这是一封 ChurchCRM 测试邮件，确认您的 SMTP 配置正常运行。"
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "无法复制到剪贴板。请手动复制这些代码。"
+
+#: 
+msgid "Use Recovery Code"
+msgstr "使用恢复代码"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "改用恢复代码"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "改用验证器应用"
 

@@ -820,10 +820,6 @@ msgid "Family Info"
 msgstr "Aile bilgisi"
 
 #: 
-msgid "Contact Info"
-msgstr "İletişim bilgileri"
-
-#: 
 msgid "Envelope Info"
 msgstr "Zarf Bilgisi"
 
@@ -946,10 +942,6 @@ msgstr "Değer"
 #: 
 msgid "Edit Value"
 msgstr "Değer Düzenle"
-
-#: 
-msgid "Assign a New Property"
-msgstr "Yeni bir mülk atayın"
 
 #: 
 msgid "Assign"
@@ -1679,20 +1671,8 @@ msgid "Group"
 msgstr "Grup"
 
 #: 
-msgid "Option"
-msgstr "Seçenek"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Hata: kopya"
-
-#: 
 msgid "Default"
 msgstr "Varsayılan"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Yinelenen isim bulundu."
 
 #: 
 msgid "Make Default"
@@ -1705,10 +1685,6 @@ msgstr "çıkış"
 #: 
 msgid "Add New"
 msgstr "Yeni ekle"
-
-#: 
-msgid " by that name already exists."
-msgstr " Bu isim zaten var."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3193,10 +3169,6 @@ msgid "Security Group"
 msgstr "Güvenlik grubu"
 
 #: 
-msgid "Security Groups"
-msgstr "Güvenlik grupları"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Güvenlik Grupları Editör"
 
@@ -3209,56 +3181,16 @@ msgid "Group Member Roles Editor"
 msgstr "Grup Üyesi Roller Editör"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Kişi Özel Listesi Seçeneği"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Kişi Özel Listesi Seçenekleri"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Kişi Özel Listesi Seçenekleri Düzenleyicisi"
-
-#: 
-msgid "Custom List Option"
-msgstr "Özel Liste seçeneği"
-
-#: 
-msgid "Custom List Options"
-msgstr "Özel Liste Seçenekleri"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Özel Liste Seçenekleri Düzenleyicisi"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Aile Özel Listesi Seçeneği"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Aile Özel Listesi Seçenekleri"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Aile Özel Listesi Seçenekleri Editör"
-
-#: 
-msgid "are not allowed."
-msgstr "izin verilmez."
-
-#: 
-msgid "Name for New"
-msgstr "YENİ İÇİN ADI"
-
-#: 
-msgid "Created via Family"
-msgstr "Aile aracılığıyla oluşturuldu"
-
-#: 
-msgid "Updated via Family"
-msgstr "Aile aracılığıyla güncellendi"
 
 #: 
 msgid "Family Data Verified"
@@ -5485,14 +5417,6 @@ msgid "Added to group"
 msgstr "Gruba eklendi"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "SMTP Host kurulum değil, lütfen Ayarlar sayfasını ziyaret edin"
-
-#: 
-msgid "Debug Email Connection"
-msgstr "E -posta bağlantısı hata ayıklama"
-
-#: 
 #, fuzzy
 msgid "This Family is Inactive"
 msgstr "Bu aile devre dışı bırakıldı"
@@ -5504,14 +5428,6 @@ msgstr "Veritabanı temizlendi."
 #: 
 msgid "Anniversaries"
 msgstr "Yıldönümleri"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "Yeni Aile Bildirimi E -posta Hatası"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "Yeni Kişi Bildirimi E -posta Hatası"
 
 #: 
 msgid "View User"
@@ -5699,10 +5615,6 @@ msgstr "devre dışı bırakıldı"
 #: 
 msgid "Software Version"
 msgstr "Yazılım versiyonu"
-
-#: 
-msgid "Database Version"
-msgstr "Veritabanı Sürümü"
 
 #: 
 msgid "Application Prerequisites"
@@ -6070,14 +5982,6 @@ msgid "Loading"
 msgstr "Yükleniyor"
 
 #: 
-msgid "Family Property Unassignment"
-msgstr "Aile Mülkiyeti Tahsilat"
-
-#: 
-msgid "Do you want to remove"
-msgstr "Kaldırmak ister misin"
-
-#: 
 msgid "Today's Birthdays"
 msgstr "Bugünün Doğum Günleri"
 
@@ -6112,10 +6016,6 @@ msgstr "Geçersiz Doğum Tarihi: Ek ay veya gün eksik."
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Geçersiz Doğum Tarihi: Aylık ve Gündüz Eksik."
-
-#: 
-msgid "System"
-msgstr "Sistem"
 
 #. Context: locales
 #: 
@@ -6203,10 +6103,6 @@ msgid "Not Subscribed"
 msgstr "Abone Değil"
 
 #: 
-msgid "property"
-msgstr "özellik"
-
-#: 
 msgid "Default Zip"
 msgstr "Varsayılan Posta Kodu"
 
@@ -6244,10 +6140,6 @@ msgstr "Adından bir karakter ve Soyadından bir karakter"
 #: 
 msgid "Two characters from FirstName"
 msgstr "Adından iki karakter"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "Kilise e-postası ayarlanmamış, lütfen ayarlar sayfasını ziyaret edin"
 
 #. Context: locales
 #: 
@@ -7008,10 +6900,6 @@ msgid "Base URL"
 msgstr "Temel URL"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "ChurchCRM Kurulumu"
-
-#: 
 msgid "Copy"
 msgstr "Kopyala"
 
@@ -7020,24 +6908,12 @@ msgid "DSN"
 msgstr "DSN"
 
 #: 
-msgid "Database Server"
-msgstr "Veritabanı Sunucusu"
-
-#: 
 msgid "Debug Info"
 msgstr "Hata Ayıklama Bilgisi"
 
 #: 
 msgid "Document Root"
 msgstr "Belge Kök Dizini (Document Root)"
-
-#: 
-msgid "Email Configuration"
-msgstr "E-posta Yapılandırması"
-
-#: 
-msgid "Email Debug Info"
-msgstr "E-posta Hata Ayıklama Bilgisi"
 
 #: 
 msgid "Filesystem Permissions"
@@ -7080,10 +6956,6 @@ msgid "PHP & Server Requirements"
 msgstr "PHP ve Sunucu Gereksinimleri"
 
 #: 
-msgid "PHP Configuration"
-msgstr "PHP Yapılandırması"
-
-#: 
 msgid "Platform"
 msgstr "Platform"
 
@@ -7094,10 +6966,6 @@ msgstr "Kök Yolu"
 #: 
 msgid "SMTP Host"
 msgstr "SMTP Sunucusu"
-
-#: 
-msgid "Server Information"
-msgstr "Sunucu Bilgileri"
 
 #: 
 msgid "Software"
@@ -8397,10 +8265,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Bir <strong>eğik çizgi</strong> (/) ile biter"
 
 #: 
-msgid "Error:"
-msgstr "Hata:"
-
-#: 
 msgid "Find the line:"
 msgstr "Şu satırı bulun:"
 
@@ -8795,10 +8659,6 @@ msgstr[0] "%d Kişi seçilen Gruba başarıyla eklendi."
 msgstr[1] "%d Kişi seçilen Gruba başarıyla eklendi."
 
 #: 
-msgid "A "
-msgstr "Bir "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Silmek istediğinizden emin misiniz:"
 
@@ -8827,10 +8687,6 @@ msgid "Delete Confirmation"
 msgstr "Silme Onayı"
 
 #: 
-msgid "Existing"
-msgstr "Mevcut"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Mevcut Özel Aile Alanları"
 
@@ -8853,10 +8709,6 @@ msgstr "Geçersiz CSRF belirteci"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Geçersiz alanlar veya seçimler."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Öğe başarıyla silindi"
 
 #: 
 msgid "Move down"
@@ -8893,10 +8745,6 @@ msgstr "Özellik Türü"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "Bu Gönüllü Fırsatına atanmış kişiler var. Silme işlemi şu kişilerin atamasını kaldıracaktır:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "Bu, şu anda ona atanmış olan tüm kişilerden kaldıracaktır."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11542,10 +11390,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Pazar okulu sınıflarını, öğretmenleri ve öğrenci yoklamasını yönet"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Sınıflandırma listelerini, rolleri ve grup türlerini yönet"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Mali takip için bağış fonlarını yönet"
 
@@ -11796,10 +11640,6 @@ msgstr "GitHub Issue Aç"
 #: 
 msgid "Open user menu"
 msgstr "Kullanıcı menüsünü aç"
-
-#: 
-msgid "Options"
-msgstr "Seçenekler"
 
 #: 
 msgid "Other Members"
@@ -15600,4 +15440,120 @@ msgstr "Yaklaşan Etkinlikler"
 #: 
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "etkinlik. Bunun yerine türü devre dışı bırakın veya önce etkinlikleri yeniden atayın."
+
+#: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "E-posta şablonlarında gösterilen (ve gelecekte başka yerlerde yeniden kullanılacak) kilise logosunun mutlak http(s) URL'si. E-posta istemcilerinde en iyi görüntüleme için yaklaşık 3,5:1 en-boy oranında (örneğin 350×100 px) geniş bir afiş resmi, PNG veya JPG, HTTPS üzerinden sunulan bir resim kullanın. Varsayılan ChurchCRM logosuna geri dönmek için boş bırakın veya geçersiz bir değer girin."
+
+#: 
+msgid "An option with that name already exists"
+msgstr "Bu isimde bir seçenek zaten mevcut"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "Son kalan seçenek silinemiyor"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "Pano kullanılamıyor. Kodlarınızı kaydetmek için İndir düğmesini kullanın."
+
+#: 
+msgid "Custom Option"
+msgstr "Özel Seçenek"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "Varsayılan Gelen Kutusu Önizleme Metni"
+
+#: 
+msgid "Email is disabled"
+msgstr "E-posta devre dışı"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "E-posta devre dışı. Şifreleri sıfırlamadan önce e-postayı yapılandırın veya Şifre Değiştir'i kullanın."
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "E-posta devre dışı. Test etmeden önce E-posta Panosu ayarlarından etkinleştirin."
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "Yedek kurtarma kodlarınızdan birini girin"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "Hesabınıza erişmek için yedek kurtarma kodlarınızdan birini girin"
+
+#: 
+msgid "Existing Options"
+msgstr "Mevcut Seçenekler"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "Bu rol listesi için grup bulunamadı"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "Pasif durum yalnızca sınıflandırma listesi için değiştirilebilir"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "Yeni kullanıcılar kimlik bilgileriyle birlikte hoş geldiniz e-postası almayacak. Şifreyi onlarla manuel olarak paylaşın veya önce e-postayı yapılandırın."
+
+#: 
+msgid "Option name is required"
+msgstr "Seçenek adı zorunludur"
+
+#: 
+msgid "Option not found"
+msgstr "Seçenek bulunamadı"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "Konu satırının yanında gelen kutusu önizleme metni olarak gösterilen isteğe bağlı kısa özet. E-posta istemcisinin gövdeden otomatik oluşturması için boş bırakın. E-posta türleri (şifre sıfırlama, yeni üye, doğrulama) kendi ön başlıklarını ayarlar; bu bir yedektir."
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "E-posta yapılandırılana kadar şifre sıfırlama e-postaları ve yeni hesap hoş geldiniz e-postaları gönderilmeyecek. Kullanıcılar kimlik bilgilerini otomatik olarak almayacak."
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "E-posta devre dışı olduğu için şifre sıfırlama kullanılamıyor. Lütfen sistem yöneticinizle iletişime geçin."
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "Şifre sıfırlandı ancak e-posta gönderilemedi. Kullanıcı kilitlendi — yeni şifreyi manuel olarak paylaşın veya Şifre Değiştir'i kullanın."
+
+#: 
+msgid "Recovery Code"
+msgstr "Kurtarma Kodu"
+
+#: 
+msgid "Set up Email"
+msgstr "E-postayı Yapılandır"
+
+#: 
+msgid "Test SMTP Email"
+msgstr "SMTP E-postasını Test Et"
+
+#: 
+msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
+msgstr "Bu, SMTP yapılandırmanızın çalıştığını doğrulayan bir ChurchCRM test e-postasıdır."
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "Panoya kopyalanamıyor. Lütfen kodları manuel olarak kopyalayın."
+
+#: 
+msgid "Use Recovery Code"
+msgstr "Kurtarma Kodu Kullan"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "Kurtarma kodu kullan"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "Kimlik doğrulama uygulaması kullan"
 

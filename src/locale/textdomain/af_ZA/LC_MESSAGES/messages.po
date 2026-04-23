@@ -820,10 +820,6 @@ msgid "Family Info"
 msgstr "Gesinsinligting"
 
 #: 
-msgid "Contact Info"
-msgstr "Kontakbesonderhede"
-
-#: 
 msgid "Envelope Info"
 msgstr "Koevertinligting"
 
@@ -946,10 +942,6 @@ msgstr "Waarde"
 #: 
 msgid "Edit Value"
 msgstr "Wysig waarde"
-
-#: 
-msgid "Assign a New Property"
-msgstr "Ken 'n nuwe eiendom toe"
 
 #: 
 msgid "Assign"
@@ -1679,20 +1671,8 @@ msgid "Group"
 msgstr "Groep"
 
 #: 
-msgid "Option"
-msgstr "Opsie"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Fout: dupliseer"
-
-#: 
 msgid "Default"
 msgstr "Verstek"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Duplikaatnaam gevind."
 
 #: 
 msgid "Make Default"
@@ -1705,10 +1685,6 @@ msgstr "Uitgang"
 #: 
 msgid "Add New"
 msgstr "Voeg nuwe"
-
-#: 
-msgid " by that name already exists."
-msgstr " bestaan by daardie naam al."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3193,10 +3169,6 @@ msgid "Security Group"
 msgstr "Veiligheidsgroep"
 
 #: 
-msgid "Security Groups"
-msgstr "Veiligheidsgroepe"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Sekuriteitsgroepredakteur"
 
@@ -3209,56 +3181,16 @@ msgid "Group Member Roles Editor"
 msgstr "Groepredakteurs vir groeplede"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Persoonlike persoonlike lysopsie"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Persoonlike persoonlike lysopsies"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Persoonredakteur vir persoonlike lyslyste"
-
-#: 
-msgid "Custom List Option"
-msgstr "Aangepaste lysopsie"
-
-#: 
-msgid "Custom List Options"
-msgstr "Opsies vir persoonlike lys"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Aangepaste lysopsie-redakteur"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Gesins-persoonlike lysopsie"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Gesinslystelys-opsies"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Gesondheidsopsie-redakteur vir gesinslys"
-
-#: 
-msgid "are not allowed."
-msgstr "word nie toegelaat nie."
-
-#: 
-msgid "Name for New"
-msgstr "Naam vir nuut"
-
-#: 
-msgid "Created via Family"
-msgstr "Geskep via familie"
-
-#: 
-msgid "Updated via Family"
-msgstr "Opgedateer via familie"
 
 #: 
 msgid "Family Data Verified"
@@ -5485,14 +5417,6 @@ msgid "Added to group"
 msgstr "By groep gevoeg"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "SMTP Host is nie opgestel nie, besoek die instellingsbladsy"
-
-#: 
-msgid "Debug Email Connection"
-msgstr "Ontfout e-posverbinding"
-
-#: 
 #, fuzzy
 msgid "This Family is Inactive"
 msgstr "Hierdie gesin is gedeaktiveer"
@@ -5504,14 +5428,6 @@ msgstr "Die databasis is skoongemaak."
 #: 
 msgid "Anniversaries"
 msgstr "Herdenkings"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "Nuwe e-posfout vir familiekennisgewing"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "E-posfout met kennisgewing oor nuwe persone"
 
 #: 
 msgid "View User"
@@ -5699,10 +5615,6 @@ msgstr "is uitgeskakel"
 #: 
 msgid "Software Version"
 msgstr "Sagteware weergawe"
-
-#: 
-msgid "Database Version"
-msgstr "Databasis weergawe"
 
 #: 
 msgid "Application Prerequisites"
@@ -6070,14 +5982,6 @@ msgid "Loading"
 msgstr "Besig om te laai"
 
 #: 
-msgid "Family Property Unassignment"
-msgstr "Gesins eiendom ontoegeken"
-
-#: 
-msgid "Do you want to remove"
-msgstr "Is jy seker jy wil dit verwyder"
-
-#: 
 msgid "Today's Birthdays"
 msgstr "Vandag se verjaarsdae"
 
@@ -6112,10 +6016,6 @@ msgstr "Ongeldige geboortedatum: Geboortemaand of -dag ontbreek."
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Ongeldige geboortedatum: Geboortemaand en -dag ontbreek."
-
-#: 
-msgid "System"
-msgstr "Stelsel"
 
 #. Context: locales
 #: 
@@ -6203,10 +6103,6 @@ msgid "Not Subscribed"
 msgstr "Nie ingeteken nie"
 
 #: 
-msgid "property"
-msgstr "eiendom"
-
-#: 
 msgid "Default Zip"
 msgstr "Standaard Poskode"
 
@@ -6244,10 +6140,6 @@ msgstr "Een karakter van Voornaam en een karakter van Familienaam"
 #: 
 msgid "Two characters from FirstName"
 msgstr "Twee karakters van Voornaam"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "Kerkpos is nie ingestel nie, besoek asseblief die instellingsbladsy"
 
 #. Context: locales
 #: 
@@ -7008,10 +6900,6 @@ msgid "Base URL"
 msgstr "Basis-URL"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "ChurchCRM-installasie"
-
-#: 
 msgid "Copy"
 msgstr "Kopie"
 
@@ -7020,24 +6908,12 @@ msgid "DSN"
 msgstr "DSN"
 
 #: 
-msgid "Database Server"
-msgstr "Databasisstelsel"
-
-#: 
 msgid "Debug Info"
 msgstr "Debug Inligting"
 
 #: 
 msgid "Document Root"
 msgstr "Dokument Wortel"
-
-#: 
-msgid "Email Configuration"
-msgstr "E-pos Konfigurasie"
-
-#: 
-msgid "Email Debug Info"
-msgstr "E-pos Debug Inligting"
 
 #: 
 msgid "Filesystem Permissions"
@@ -7080,10 +6956,6 @@ msgid "PHP & Server Requirements"
 msgstr "PHP & Bediener Vereistes"
 
 #: 
-msgid "PHP Configuration"
-msgstr "PHP Konfigurasie"
-
-#: 
 msgid "Platform"
 msgstr "Platform"
 
@@ -7094,10 +6966,6 @@ msgstr "Wortel Pad"
 #: 
 msgid "SMTP Host"
 msgstr "SMTP Gasheer"
-
-#: 
-msgid "Server Information"
-msgstr "Bediener Inligting"
 
 #: 
 msgid "Software"
@@ -8397,10 +8265,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Eindig met 'n <strong>sluipweg</strong> (/)"
 
 #: 
-msgid "Error:"
-msgstr "Fout:"
-
-#: 
 msgid "Find the line:"
 msgstr "Soek die lyn:"
 
@@ -8795,10 +8659,6 @@ msgstr[0] "%d persoon suksesvol by die gekose Groep gevoeg."
 msgstr[1] "%d persone suksesvol by die gekose Groep gevoeg."
 
 #: 
-msgid "A "
-msgstr "A "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Is jy seker dat jy wil uitvee"
 
@@ -8827,10 +8687,6 @@ msgid "Delete Confirmation"
 msgstr "Uitvee Bevestiging"
 
 #: 
-msgid "Existing"
-msgstr "Bestaande"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Bestaande Pasgemaakte Familie Velde"
 
@@ -8853,10 +8709,6 @@ msgstr "Ongeldig CSRF-teken"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Ongeldige velde of keuses."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Item suksesvol verwyder"
 
 #: 
 msgid "Move down"
@@ -8893,10 +8745,6 @@ msgstr "Eiendom Tipe"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "Daar is mense aan hierdie Vrywilliger-geleentheid toegeken. Verwydering sal ontoeken:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "Dit sal dit uit alle mense wat tans daaraan toegeken is, verwyder."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11542,10 +11390,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Bestuur Sondag-skool klasse, onderwysers, en studentbywoning"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Bestuur klassifikasieliste, rolle, en ministerie-tipes"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Bestuur donasie-fondse vir finansiële sporing"
 
@@ -11796,10 +11640,6 @@ msgstr "Open GitHub-Probleem"
 #: 
 msgid "Open user menu"
 msgstr "Open gebruiker-keuselys"
-
-#: 
-msgid "Options"
-msgstr "Opsies"
 
 #: 
 msgid "Other Members"
@@ -15596,4 +15436,120 @@ msgstr "Komende geleenthede"
 #: 
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "geleentheid(e). Deaktiveer eerder die tipe, of ken die geleenthede eers opnuut toe."
+
+#: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "Absolute http(s) URL van die kerkslogo wat in e-possjablone vertoon word (en in die toekoms elders hergebruik word). Vir die beste weergawe in e-poskliënte, gebruik 'n breë bannerbeeld met 'n aspekverhouding van ongeveer 3,5:1 (byvoorbeeld 350×100 px), PNG of JPG, bedien oor HTTPS. Laat leeg of voer 'n ongeldige waarde in om na die versteklogo van ChurchCRM terug te val."
+
+#: 
+msgid "An option with that name already exists"
+msgstr "'n Opsie met daardie naam bestaan reeds"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "Die enigste oorblywende opsie kan nie uitgevee word nie"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "Knipbord nie beskikbaar nie. Gebruik asseblief die Aflaai-knoppie om u kodes te stoor."
+
+#: 
+msgid "Custom Option"
+msgstr "Pasgemaakte opsie"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "Verstekvoorskoutableks van inkassie"
+
+#: 
+msgid "Email is disabled"
+msgstr "E-pos is gedeaktiveer"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "E-pos is gedeaktiveer. Stel e-pos op voor wagwoordterugstelling, of gebruik Verander wagwoord."
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "E-pos is gedeaktiveer. Aktiveer dit in die E-pos-paneelbord-instellings voor toetsing."
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "Voer een van u rugsteun-herstelkodes in"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "Voer een van u rugsteun-herstelkodes in om toegang tot u rekening te kry"
+
+#: 
+msgid "Existing Options"
+msgstr "Bestaande opsies"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "Groep nie gevind vir hierdie rollys nie"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "Inaktiewe status kan slegs vir die klassifikasielys omgeskakel word"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "Nuwe gebruikers sal nie 'n welkome e-pos met hul geloofsbriewe ontvang nie. Deel die wagwoord handmatig met hulle, of stel eers e-pos op."
+
+#: 
+msgid "Option name is required"
+msgstr "Opsienaam is verpligtend"
+
+#: 
+msgid "Option not found"
+msgstr "Opsie nie gevind nie"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "Opsionele kort opsomming wat as voorskoutableks langs die onderwerplyn vertoon word. Laat leeg om die e-poskliënt outomaties uit die liggaam te genereer. Per-e-postipes (wagwoordterugstelling, nuwe lid, verifikasie) stel hul eie vooropskrif in; dit is 'n terugvalopsie."
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "Wagwoordterugstelling-e-posse en nuwe-rekening-welkome-e-posse sal nie gestuur word totdat e-pos opgestel is nie. Gebruikers sal nie outomaties geloofsbriewe ontvang nie."
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "Wagwoordterugstelling is nie beskikbaar nie omdat e-pos gedeaktiveer is. Kontak asseblief u stelseladministrateur."
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "Wagwoord is teruggestel maar die e-pos kon nie gestuur word nie. Die gebruiker is uitgesluit — deel die nuwe wagwoord handmatig of gebruik Verander wagwoord."
+
+#: 
+msgid "Recovery Code"
+msgstr "Herstelkode"
+
+#: 
+msgid "Set up Email"
+msgstr "Stel e-pos op"
+
+#: 
+msgid "Test SMTP Email"
+msgstr "Toets SMTP-e-pos"
+
+#: 
+msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
+msgstr "Dit is 'n ChurchCRM-toetse-pos wat bevestig dat u SMTP-konfigurasie werk."
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "Kan nie na knipbord kopieer nie. Kopieer die kodes handmatig."
+
+#: 
+msgid "Use Recovery Code"
+msgstr "Gebruik herstelkode"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "Gebruik eerder 'n herstelkode"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "Gebruik eerder 'n verifikasieprogrammatuur"
 

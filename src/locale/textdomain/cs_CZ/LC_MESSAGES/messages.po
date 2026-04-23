@@ -820,10 +820,6 @@ msgid "Family Info"
 msgstr "Rodinné informace"
 
 #: 
-msgid "Contact Info"
-msgstr "Kontaktní informace"
-
-#: 
 msgid "Envelope Info"
 msgstr "Informace o obálce"
 
@@ -946,10 +942,6 @@ msgstr "Hodnota"
 #: 
 msgid "Edit Value"
 msgstr "Upravit hodnotu"
-
-#: 
-msgid "Assign a New Property"
-msgstr "Přiřadit novou vlastnost"
 
 #: 
 msgid "Assign"
@@ -1678,20 +1670,8 @@ msgid "Group"
 msgstr "Skupina"
 
 #: 
-msgid "Option"
-msgstr "Možnost"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Chyba: duplikát"
-
-#: 
 msgid "Default"
 msgstr "Výchozí"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Nalezen duplikátní název."
 
 #: 
 msgid "Make Default"
@@ -1704,10 +1684,6 @@ msgstr "Exit"
 #: 
 msgid "Add New"
 msgstr "Přidat nový"
-
-#: 
-msgid " by that name already exists."
-msgstr "toho názvu už existuje."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3188,10 +3164,6 @@ msgid "Security Group"
 msgstr "Skupina zabezpečení"
 
 #: 
-msgid "Security Groups"
-msgstr "Skupiny zabezpečení"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Editor skupin zabezpečení"
 
@@ -3204,56 +3176,16 @@ msgid "Group Member Roles Editor"
 msgstr "Editor rolí členů skupin"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Možnost Vlastní seznam osob"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Možnosti vlastního seznamu osob"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Editor možností vlastního seznamu osob"
-
-#: 
-msgid "Custom List Option"
-msgstr "Možnost vlastního seznamu"
-
-#: 
-msgid "Custom List Options"
-msgstr "Možnosti vlastního seznamu"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Editor možností vlastního seznamu"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Možnost vlastního seznamu rodiny"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Možnosti vlastního seznamu rodiny"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Editor možností vlastního seznamu rodiny"
-
-#: 
-msgid "are not allowed."
-msgstr "nejsou povoleny."
-
-#: 
-msgid "Name for New"
-msgstr "Název pro nový"
-
-#: 
-msgid "Created via Family"
-msgstr "Vytvořeno přes rodinu"
-
-#: 
-msgid "Updated via Family"
-msgstr "Aktualizováno přes rodinu"
 
 #: 
 msgid "Family Data Verified"
@@ -5476,14 +5408,6 @@ msgid "Added to group"
 msgstr "Přidána do skupiny"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "Hostitel SMTP není nastaven, navštivte stránku nastavení"
-
-#: 
-msgid "Debug Email Connection"
-msgstr "Debug e-mailového připojení"
-
-#: 
 msgid "This Family is Inactive"
 msgstr "Tato rodina je deaktivována"
 
@@ -5494,14 +5418,6 @@ msgstr "Databáze byla vyčištěna."
 #: 
 msgid "Anniversaries"
 msgstr "Výročí"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "Chyba e-mailu s oznámením o nové rodině"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "Chyba e-mailu s oznámením o nové osobě"
 
 #: 
 msgid "View User"
@@ -5686,10 +5602,6 @@ msgstr "je zakázáno"
 #: 
 msgid "Software Version"
 msgstr "Verze softwaru"
-
-#: 
-msgid "Database Version"
-msgstr "Verze databáze"
 
 #: 
 msgid "Application Prerequisites"
@@ -6057,14 +5969,6 @@ msgid "Loading"
 msgstr "Nahrávání"
 
 #: 
-msgid "Family Property Unassignment"
-msgstr "Zrušení přidělení vlastnosti rodině"
-
-#: 
-msgid "Do you want to remove"
-msgstr "Chcete odstranit"
-
-#: 
 msgid "Today's Birthdays"
 msgstr "Dnešní narozeniny"
 
@@ -6099,10 +6003,6 @@ msgstr "Neplatné datum narození: chybí měsíc nebo den."
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Neplatné datum narození: chybí měsíc a den."
-
-#: 
-msgid "System"
-msgstr "Systém"
 
 #. Context: locales
 #: 
@@ -6190,10 +6090,6 @@ msgid "Not Subscribed"
 msgstr "Nepřihlášený"
 
 #: 
-msgid "property"
-msgstr "vlastnost"
-
-#: 
 msgid "Default Zip"
 msgstr "Výchozí PSČ"
 
@@ -6231,10 +6127,6 @@ msgstr "Jedno písmeno z KřestníhoJména a jedno z Příjmení"
 #: 
 msgid "Two characters from FirstName"
 msgstr "Dvě písmena z KřestníhoJména"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "Sborový e-mail není zadán, přejděte do Nastavení"
 
 #. Context: locales
 #: 
@@ -6995,10 +6887,6 @@ msgid "Base URL"
 msgstr "Základní URL"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "Instalace ChurchCRM"
-
-#: 
 msgid "Copy"
 msgstr "Kopírovat"
 
@@ -7007,24 +6895,12 @@ msgid "DSN"
 msgstr "DSN"
 
 #: 
-msgid "Database Server"
-msgstr "Server databáze"
-
-#: 
 msgid "Debug Info"
 msgstr "Informace o ladění"
 
 #: 
 msgid "Document Root"
 msgstr "Kořen dokumentu"
-
-#: 
-msgid "Email Configuration"
-msgstr "Konfigurace e-mailu"
-
-#: 
-msgid "Email Debug Info"
-msgstr "Informace o ladění e-mailu"
 
 #: 
 msgid "Filesystem Permissions"
@@ -7067,10 +6943,6 @@ msgid "PHP & Server Requirements"
 msgstr "Požadavky na PHP a server"
 
 #: 
-msgid "PHP Configuration"
-msgstr "Konfigurace PHP"
-
-#: 
 msgid "Platform"
 msgstr "Platforma"
 
@@ -7081,10 +6953,6 @@ msgstr "Kořenová cesta"
 #: 
 msgid "SMTP Host"
 msgstr "Hostitel SMTP"
-
-#: 
-msgid "Server Information"
-msgstr "Informace o serveru"
 
 #: 
 msgid "Software"
@@ -8386,10 +8254,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Končí <strong>závěrečným lomítkem</strong> (/)"
 
 #: 
-msgid "Error:"
-msgstr "Chyba:"
-
-#: 
 msgid "Find the line:"
 msgstr "Najít řádek:"
 
@@ -8787,10 +8651,6 @@ msgstr[1] "%d osoby byly úspěšně přidány do vybrané skupiny."
 msgstr[2] "%d osob bylo úspěšně přidáno do vybrané skupiny."
 
 #: 
-msgid "A "
-msgstr "Nějaký "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Opravdu chcete smazat"
 
@@ -8819,10 +8679,6 @@ msgid "Delete Confirmation"
 msgstr "Potvrzení smazaní"
 
 #: 
-msgid "Existing"
-msgstr "Existující"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Existující vlastní pole rodiny"
 
@@ -8845,10 +8701,6 @@ msgstr "Neplatný token CSRF"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Neplatná pole nebo výběry."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Položka byla úspěšně smazána"
 
 #: 
 msgid "Move down"
@@ -8885,10 +8737,6 @@ msgstr "Typ vlastnosti"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "K této dobrovolnické příležitosti jsou přiřazeni lidé. Smazáním se přiřazení zruší:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "Tím se odstraní od všech osob, kterým je v současné době přiřazeno."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11537,10 +11385,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Spravovat třídy nedělní školy, učitele a docházku žáků"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Spravovat klasifikační seznamy, role a typy skupin"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Spravovat fondy darů pro finanční sledování"
 
@@ -11791,10 +11635,6 @@ msgstr "Vytvořit problém na GitHubu"
 #: 
 msgid "Open user menu"
 msgstr "Otevřít nabídku uživatele"
-
-#: 
-msgid "Options"
-msgstr "Možnosti"
 
 #: 
 msgid "Other Members"
@@ -15588,4 +15428,120 @@ msgstr "Nadcházející události"
 #: 
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "událost(í). Místo toho deaktivujte typ nebo nejprve přesuňte události."
+
+#: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "Absolutní URL http(s) loga sboru zobrazovaného v e-mailových šablonách (a v budoucnu i jinde). Pro nejlepší zobrazení v e-mailových klientech použijte široký bannerový obrázek v poměru stran přibližně 3,5:1 (například 350×100 px), PNG nebo JPG, servírovaný přes HTTPS. Ponechte prázdné nebo zadejte neplatnou hodnotu pro návrat k výchozímu logu ChurchCRM."
+
+#: 
+msgid "An option with that name already exists"
+msgstr "Možnost s tímto názvem již existuje"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "Nelze smazat jedinou zbývající možnost"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "Schránka není dostupná. Pro uložení kódů použijte tlačítko Stáhnout."
+
+#: 
+msgid "Custom Option"
+msgstr "Vlastní možnost"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "Výchozí text náhledu doručené pošty"
+
+#: 
+msgid "Email is disabled"
+msgstr "E-mail je zakázán"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "E-mail je zakázán. Před resetováním hesel nakonfigurujte e-mail nebo použijte Změnit heslo."
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "E-mail je zakázán. Před testováním jej povolte v nastavení řídicího panelu e-mailu."
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "Zadejte jeden ze záložních kódů pro obnovení"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "Zadejte jeden ze záložních kódů pro obnovení pro přístup k účtu"
+
+#: 
+msgid "Existing Options"
+msgstr "Stávající možnosti"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "Skupina nebyla nalezena pro tento seznam rolí"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "Neaktivní stav lze přepínat pouze pro seznam klasifikací"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "Noví uživatelé neobdrží uvítací e-mail s přihlašovacími údaji. Sdílejte heslo ručně nebo nejprve nakonfigurujte e-mail."
+
+#: 
+msgid "Option name is required"
+msgstr "Název možnosti je povinný"
+
+#: 
+msgid "Option not found"
+msgstr "Možnost nenalezena"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "Volitelný krátký souhrn zobrazený jako text náhledu vedle předmětu. Ponechte prázdné pro automatické generování e-mailovým klientem z těla zprávy. Jednotlivé typy e-mailů (reset hesla, nový člen, ověření) mají vlastní preheader; toto je záloha."
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "E-maily pro reset hesla a uvítací e-maily pro nové účty nebudou odesílány, dokud nebude e-mail nakonfigurován. Uživatelé neobdrží přihlašovací údaje automaticky."
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "Reset hesla není dostupný, protože e-mail je zakázán. Kontaktujte správce systému."
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "Heslo bylo resetováno, ale e-mail nebylo možné odeslat. Uživatel je zablokován — sdílejte nové heslo ručně nebo použijte Změnit heslo."
+
+#: 
+msgid "Recovery Code"
+msgstr "Záchranný kód"
+
+#: 
+msgid "Set up Email"
+msgstr "Nastavit e-mail"
+
+#: 
+msgid "Test SMTP Email"
+msgstr "Testovat SMTP e-mail"
+
+#: 
+msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
+msgstr "Toto je testovací e-mail ChurchCRM potvrzující, že vaše konfigurace SMTP funguje."
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "Nelze zkopírovat do schránky. Zkopírujte kódy ručně."
+
+#: 
+msgid "Use Recovery Code"
+msgstr "Použít záchranný kód"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "Použít záchranný kód"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "Použít aplikaci pro ověřování"
 

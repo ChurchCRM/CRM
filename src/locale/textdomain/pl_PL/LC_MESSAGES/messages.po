@@ -846,10 +846,6 @@ msgid "Family Info"
 msgstr "Informacje o rodzinie"
 
 #: 
-msgid "Contact Info"
-msgstr "Informacje kontaktowe"
-
-#: 
 msgid "Envelope Info"
 msgstr "Informacje o kopercie"
 
@@ -972,11 +968,6 @@ msgstr "Wartość"
 #: 
 msgid "Edit Value"
 msgstr "Edytuj Wartość"
-
-#: 
-#, fuzzy
-msgid "Assign a New Property"
-msgstr "Przypisz Nowe Właściowści"
 
 #: 
 msgid "Assign"
@@ -1723,20 +1714,8 @@ msgid "Group"
 msgstr "Grupa"
 
 #: 
-msgid "Option"
-msgstr "Opcje"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Błąd: Istnieje Duplikat"
-
-#: 
 msgid "Default"
 msgstr "Domyślne"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Znaleziono duplikat Nazwy."
 
 #: 
 msgid "Make Default"
@@ -1749,10 +1728,6 @@ msgstr "Wyjdź"
 #: 
 msgid "Add New"
 msgstr "Dodaj Nowe"
-
-#: 
-msgid " by that name already exists."
-msgstr " nazwa już istnieje."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3270,10 +3245,6 @@ msgid "Security Group"
 msgstr "Grupa zabezpieczeń"
 
 #: 
-msgid "Security Groups"
-msgstr "Grupy zabezpieczeń"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Edytor grup zabezpieczeń"
 
@@ -3286,56 +3257,16 @@ msgid "Group Member Roles Editor"
 msgstr "Edytor ról członków grupy"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Opcja niestandardowej listy osób"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Opcje niestandardowej listy osób"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Edytor opcji niestandardowej listy osób"
-
-#: 
-msgid "Custom List Option"
-msgstr "Opcja listy niestandardowej"
-
-#: 
-msgid "Custom List Options"
-msgstr "Opcje listy niestandardowej"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Edytor opcji listy niestandardowej"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Opcja niestandardowej listy rodzin"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Opcje niestandardowej listy rodzin"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Edytor opcji niestandardowej listy rodzin"
-
-#: 
-msgid "are not allowed."
-msgstr "są niedozwolone."
-
-#: 
-msgid "Name for New"
-msgstr "Nazwa dla nowego"
-
-#: 
-msgid "Created via Family"
-msgstr "Utworzono przez rodzinę"
-
-#: 
-msgid "Updated via Family"
-msgstr "Zaktualizowano przez rodzinę"
 
 #: 
 msgid "Family Data Verified"
@@ -5557,14 +5488,6 @@ msgid "Added to group"
 msgstr "Dodano do grupy"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "Host SMTP nie jest skonfigurowany, odwiedź stronę ustawień"
-
-#: 
-msgid "Debug Email Connection"
-msgstr "Debuguj połączenie e-mail"
-
-#: 
 msgid "This Family is Inactive"
 msgstr "Ta rodzina jest nieaktywna"
 
@@ -5575,14 +5498,6 @@ msgstr "Baza danych została wyczyszczona."
 #: 
 msgid "Anniversaries"
 msgstr "Rocznice"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "Błąd e-maila z powiadomieniem o nowej rodzinie"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "Błąd e-maila z powiadomieniem o nowej osobie"
 
 #: 
 msgid "View User"
@@ -5769,10 +5684,6 @@ msgstr "wyłączone"
 #: 
 msgid "Software Version"
 msgstr "Wersja Oprogramowania"
-
-#: 
-msgid "Database Version"
-msgstr "Wersja Bazy Danych"
 
 #: 
 msgid "Application Prerequisites"
@@ -6143,14 +6054,6 @@ msgid "Loading"
 msgstr "Ładowanie"
 
 #: 
-msgid "Family Property Unassignment"
-msgstr "Odpinanie właściwości rodziny"
-
-#: 
-msgid "Do you want to remove"
-msgstr "Czy chcesz usunąć"
-
-#: 
 msgid "Today's Birthdays"
 msgstr "Dzisiejsze urodziny"
 
@@ -6185,10 +6088,6 @@ msgstr "Nieprawidłowa data urodzin. Brak miesiąca lub dnia"
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Nieprawidłowa data urodzin. Brak miesiąca lub dnia"
-
-#: 
-msgid "System"
-msgstr "System"
 
 #. Context: locales
 #: 
@@ -6276,10 +6175,6 @@ msgid "Not Subscribed"
 msgstr "Niezasubskrybowany"
 
 #: 
-msgid "property"
-msgstr "właściwość"
-
-#: 
 msgid "Default Zip"
 msgstr "Domyślny kod pocztowy"
 
@@ -6317,10 +6212,6 @@ msgstr "Jeden znak z imienia i jeden z nazwiska"
 #: 
 msgid "Two characters from FirstName"
 msgstr "Dwa znaki z imienia"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "E-mail kościoła nieustawiony, odwiedź stronę ustawień"
 
 #. Context: locales
 #: 
@@ -7081,10 +6972,6 @@ msgid "Base URL"
 msgstr "Base URL"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "Instalacja ChurchCRM"
-
-#: 
 msgid "Copy"
 msgstr "Kopiuj"
 
@@ -7093,24 +6980,12 @@ msgid "DSN"
 msgstr "DSN"
 
 #: 
-msgid "Database Server"
-msgstr "Serwer bazy danych"
-
-#: 
 msgid "Debug Info"
 msgstr "Info debugowania"
 
 #: 
 msgid "Document Root"
 msgstr "Document Root"
-
-#: 
-msgid "Email Configuration"
-msgstr "Konfiguracja e-mail"
-
-#: 
-msgid "Email Debug Info"
-msgstr "Debugowanie e-mail"
 
 #: 
 msgid "Filesystem Permissions"
@@ -7153,10 +7028,6 @@ msgid "PHP & Server Requirements"
 msgstr "Wymagania PHP i serwera"
 
 #: 
-msgid "PHP Configuration"
-msgstr "Konfiguracja PHP"
-
-#: 
 msgid "Platform"
 msgstr "Platforma"
 
@@ -7167,10 +7038,6 @@ msgstr "Ścieżka główna"
 #: 
 msgid "SMTP Host"
 msgstr "Host SMTP"
-
-#: 
-msgid "Server Information"
-msgstr "Informacje o serwerze"
 
 #: 
 msgid "Software"
@@ -8472,10 +8339,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Kończy się <strong>ukośnikiem</strong> (/)"
 
 #: 
-msgid "Error:"
-msgstr "Błąd:"
-
-#: 
 msgid "Find the line:"
 msgstr "Znajdź linię:"
 
@@ -8873,10 +8736,6 @@ msgstr[1] "%d osoby pomyślnie dodane do wybranej grupy."
 msgstr[2] "%d osób pomyślnie dodanych do wybranej grupy."
 
 #: 
-msgid "A "
-msgstr "A "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Czy na pewno chcesz usunąć"
 
@@ -8905,10 +8764,6 @@ msgid "Delete Confirmation"
 msgstr "Potwierdzenie usunięcia"
 
 #: 
-msgid "Existing"
-msgstr "Istniejące"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Istniejące niestandardowe pola rodziny"
 
@@ -8931,10 +8786,6 @@ msgstr "Nieprawidłowy token CSRF"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Nieprawidłowe pola lub wybór."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Element pomyślnie usunięty"
 
 #: 
 msgid "Move down"
@@ -8971,10 +8822,6 @@ msgstr "Typ właściwości"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "Osoby są przypisane do tego zadania. Usunięcie spowoduje ich odpięcie:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "To usunie właściwość ze wszystkich osób, które ją posiadają."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11623,10 +11470,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Zarządzaj klasami szkoły niedzielnej, nauczycielami i frekwencją uczniów"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Zarządzaj listami klasyfikacji, rolami i typami grup"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Zarządzaj funduszami ofiar do śledzenia finansów"
 
@@ -11877,10 +11720,6 @@ msgstr "Otwórz zgłoszenie na GitHub"
 #: 
 msgid "Open user menu"
 msgstr "Otwórz menu użytkownika"
-
-#: 
-msgid "Options"
-msgstr "Opcje"
 
 #: 
 msgid "Other Members"
@@ -15674,4 +15513,120 @@ msgstr "Nadchodzące zdarzenia"
 #: 
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "zdarzenie(a). Dezaktywuj typ lub najpierw przypisz zdarzenia ponownie."
+
+#: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "Bezwzględny adres URL http(s) logo parafii wyświetlanego w szablonach wiadomości e-mail (i używanego w przyszłości w innych miejscach). Aby uzyskać najlepsze wyświetlanie w różnych klientach poczty, należy użyć szerokiego obrazu baneru o proporcjach około 3,5:1 (na przykład 350×100 px), PNG lub JPG, serwowanego przez HTTPS. Pozostaw puste lub podaj nieprawidłową wartość, aby użyć domyślnego logo ChurchCRM."
+
+#: 
+msgid "An option with that name already exists"
+msgstr "Opcja o tej nazwie już istnieje"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "Nie można usunąć jedynej pozostałej opcji"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "Schowek jest niedostępny. Użyj przycisku Pobierz, aby zapisać swoje kody."
+
+#: 
+msgid "Custom Option"
+msgstr "Opcja niestandardowa"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "Domyślny tekst podglądu skrzynki odbiorczej"
+
+#: 
+msgid "Email is disabled"
+msgstr "Poczta e-mail jest wyłączona"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "Poczta e-mail jest wyłączona. Skonfiguruj pocztę przed resetowaniem haseł lub użyj Zmień hasło."
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "Poczta e-mail jest wyłączona. Włącz ją w ustawieniach panelu poczty e-mail przed testowaniem."
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "Wprowadź jeden z zapasowych kodów odzyskiwania"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "Wprowadź jeden z zapasowych kodów odzyskiwania, aby uzyskać dostęp do swojego konta"
+
+#: 
+msgid "Existing Options"
+msgstr "Istniejące opcje"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "Nie znaleziono ministerstwa dla tej listy ról"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "Status nieaktywny można zmieniać tylko dla listy klasyfikacji"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "Nowi parafianie nie otrzymają wiadomości powitalnej z danymi logowania. Przekaż im hasło ręcznie lub najpierw skonfiguruj pocztę e-mail."
+
+#: 
+msgid "Option name is required"
+msgstr "Nazwa opcji jest wymagana"
+
+#: 
+msgid "Option not found"
+msgstr "Nie znaleziono opcji"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "Opcjonalne krótkie podsumowanie wyświetlane jako tekst podglądu w skrzynce odbiorczej obok tematu. Pozostaw puste, aby klient poczty automatycznie wygenerował z treści. Poszczególne typy wiadomości (reset hasła, nowy parafianin, weryfikacja) mają własny nagłówek wstępny; to jest wartość zapasowa."
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "Wiadomości e-mail dotyczące resetowania hasła oraz powitalne wiadomości dla nowych kont nie będą wysyłane do czasu skonfigurowania poczty. Parafianie nie otrzymają danych logowania automatycznie."
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "Resetowanie hasła jest niedostępne, ponieważ poczta e-mail jest wyłączona. Skontaktuj się z administratorem systemu."
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "Hasło zostało zresetowane, ale nie udało się wysłać wiadomości e-mail. Użytkownik jest zablokowany — przekaż nowe hasło ręcznie lub użyj Zmień hasło."
+
+#: 
+msgid "Recovery Code"
+msgstr "Kod odzyskiwania"
+
+#: 
+msgid "Set up Email"
+msgstr "Skonfiguruj pocztę"
+
+#: 
+msgid "Test SMTP Email"
+msgstr "Testowa wiadomość SMTP"
+
+#: 
+msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
+msgstr "To jest testowa wiadomość e-mail ChurchCRM potwierdzająca, że konfiguracja SMTP działa poprawnie."
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "Nie można skopiować do schowka. Skopiuj kody ręcznie."
+
+#: 
+msgid "Use Recovery Code"
+msgstr "Użyj kodu odzyskiwania"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "Użyj zamiast tego kodu odzyskiwania"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "Użyj zamiast tego aplikacji uwierzytelniającej"
 

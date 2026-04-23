@@ -843,10 +843,6 @@ msgid "Family Info"
 msgstr "Családi információk"
 
 #: 
-msgid "Contact Info"
-msgstr "Kapcsolati adatok"
-
-#: 
 msgid "Envelope Info"
 msgstr "Boríték információk"
 
@@ -969,11 +965,6 @@ msgstr "Érték"
 #: 
 msgid "Edit Value"
 msgstr "Érték szerkesztése"
-
-#: 
-#, fuzzy
-msgid "Assign a New Property"
-msgstr "Rendelni egy új tulajdon"
 
 #: 
 msgid "Assign"
@@ -1717,20 +1708,8 @@ msgid "Group"
 msgstr "Csoport"
 
 #: 
-msgid "Option"
-msgstr "Opció"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Hiba: Ismétlődő"
-
-#: 
 msgid "Default"
 msgstr "Alapértelmezett"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Ismétlődő név található."
 
 #: 
 msgid "Make Default"
@@ -1743,10 +1722,6 @@ msgstr "Kijárat"
 #: 
 msgid "Add New"
 msgstr "Új"
-
-#: 
-msgid " by that name already exists."
-msgstr "ezen a néven már létezik."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3261,10 +3236,6 @@ msgid "Security Group"
 msgstr "Biztonsági csoport"
 
 #: 
-msgid "Security Groups"
-msgstr "Biztonsági csoportok"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Biztonsági csoport szerkesztő"
 
@@ -3277,56 +3248,16 @@ msgid "Group Member Roles Editor"
 msgstr "Csoporttag szerepkör szerkesztő"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Személy egyéni lista opció"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Személy egyéni lista opciók"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Személy egyéni lista opció szerkesztő"
-
-#: 
-msgid "Custom List Option"
-msgstr "Egyéni lista opció"
-
-#: 
-msgid "Custom List Options"
-msgstr "Egyéni lista opciók"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Egyéni lista opció szerkesztő"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Család egyéni lista opció"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Család egyéni lista opciók"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Család egyéni lista opció szerkesztő"
-
-#: 
-msgid "are not allowed."
-msgstr "nem engedélyezett."
-
-#: 
-msgid "Name for New"
-msgstr "Új elem neve"
-
-#: 
-msgid "Created via Family"
-msgstr "Létrehozva családon keresztül"
-
-#: 
-msgid "Updated via Family"
-msgstr "Frissítve családon keresztül"
 
 #: 
 msgid "Family Data Verified"
@@ -5547,14 +5478,6 @@ msgid "Added to group"
 msgstr "Hozzáadva a csoporthoz"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "Az SMTP-gazdagép nincs beállítva, kérjük, látogasson el a beállítások oldalra"
-
-#: 
-msgid "Debug Email Connection"
-msgstr "Hibakeresés e-mail csatlakozáshoz"
-
-#: 
 msgid "This Family is Inactive"
 msgstr "Ez a család inaktív"
 
@@ -5565,14 +5488,6 @@ msgstr "Az adatbázis törölve lett."
 #: 
 msgid "Anniversaries"
 msgstr "Évfordulók"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "Új család értesítési e-mail hiba"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "Új személy értesítési e-mail hiba"
 
 #: 
 msgid "View User"
@@ -5757,10 +5672,6 @@ msgstr "letiltva"
 #: 
 msgid "Software Version"
 msgstr "Szoftver verzió"
-
-#: 
-msgid "Database Version"
-msgstr "Adatbázis verzió"
 
 #: 
 msgid "Application Prerequisites"
@@ -6126,14 +6037,6 @@ msgid "Loading"
 msgstr "Betöltés"
 
 #: 
-msgid "Family Property Unassignment"
-msgstr "Család tulajdonságának hozzárendelésének törlése"
-
-#: 
-msgid "Do you want to remove"
-msgstr "El akarja távolítani"
-
-#: 
 msgid "Today's Birthdays"
 msgstr "A mai születésnapok"
 
@@ -6168,10 +6071,6 @@ msgstr "Érvénytelen születési dátum: Hiányzik a születési hónap vagy na
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Érvénytelen születési dátum: Hiányzik a születési hónap és nap."
-
-#: 
-msgid "System"
-msgstr "Rendszer"
 
 #. Context: locales
 #: 
@@ -6259,10 +6158,6 @@ msgid "Not Subscribed"
 msgstr "Nem feliratkozott"
 
 #: 
-msgid "property"
-msgstr "tulajdonság"
-
-#: 
 msgid "Default Zip"
 msgstr "Alapértelmezett Zip"
 
@@ -6300,10 +6195,6 @@ msgstr "Egy karakter az Előnévből és egy karakter a Vezetéknévből"
 #: 
 msgid "Two characters from FirstName"
 msgstr "Két karakter az Előnévből"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "Az egyházi e-mail nincs beállítva, kérjük, látogasson el a beállítások oldalra"
 
 #. Context: locales
 #: 
@@ -7064,10 +6955,6 @@ msgid "Base URL"
 msgstr "Alap URL"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "ChurchCRM Telepítés"
-
-#: 
 msgid "Copy"
 msgstr "Másolás"
 
@@ -7076,24 +6963,12 @@ msgid "DSN"
 msgstr "DSN"
 
 #: 
-msgid "Database Server"
-msgstr "Adatbázis Szerver"
-
-#: 
 msgid "Debug Info"
 msgstr "Hibakeresési Információ"
 
 #: 
 msgid "Document Root"
 msgstr "Dokumentum Gyökér"
-
-#: 
-msgid "Email Configuration"
-msgstr "E-mail Konfiguráció"
-
-#: 
-msgid "Email Debug Info"
-msgstr "E-mail Hibakeresési Információ"
 
 #: 
 msgid "Filesystem Permissions"
@@ -7136,10 +7011,6 @@ msgid "PHP & Server Requirements"
 msgstr "PHP & Szerver Követelmények"
 
 #: 
-msgid "PHP Configuration"
-msgstr "PHP Konfiguráció"
-
-#: 
 msgid "Platform"
 msgstr "Platform"
 
@@ -7150,10 +7021,6 @@ msgstr "Gyökér Útvonal"
 #: 
 msgid "SMTP Host"
 msgstr "SMTP Kiszolgáló"
-
-#: 
-msgid "Server Information"
-msgstr "Szerver Információ"
 
 #: 
 msgid "Software"
@@ -8453,10 +8320,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Záró <strong>perjelel</strong> (/) végződik"
 
 #: 
-msgid "Error:"
-msgstr "Hiba:"
-
-#: 
 msgid "Find the line:"
 msgstr "Keresse meg a sort:"
 
@@ -8851,10 +8714,6 @@ msgstr[0] "%d személy sikeresen hozzáadva a kiválasztott csoporthoz."
 msgstr[1] "%d személy sikeresen hozzáadva a kiválasztott csoporthoz."
 
 #: 
-msgid "A "
-msgstr "A "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Biztosan törölni szeretné?"
 
@@ -8883,10 +8742,6 @@ msgid "Delete Confirmation"
 msgstr "Törlés megerősítése"
 
 #: 
-msgid "Existing"
-msgstr "Létező"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Létező egyéni családmezők"
 
@@ -8909,10 +8764,6 @@ msgstr "Érvénytelen CSRF token"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Érvénytelen mezők vagy választások."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Elem sikeresen törölve"
 
 #: 
 msgid "Move down"
@@ -8949,10 +8800,6 @@ msgstr "Tulajdonság típusa"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "Ehhez az önkéntes lehetőséghez személyek vannak rendelve. A törlés megszünteti a hozzárendelést:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "Ez eltávolítja az összes jelenleg hozzárendelt személytől."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11598,10 +11445,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Vasárnapi iskola osztályok, tanítók és tanulói jelenlét kezelése"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Besorolási listák, szerepek és csoporttípusok kezelése"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Adományalapok kezelése pénzügyi nyilvántartáshoz"
 
@@ -11852,10 +11695,6 @@ msgstr "GitHub hiba megnyitása"
 #: 
 msgid "Open user menu"
 msgstr "Felhasználói menü megnyitása"
-
-#: 
-msgid "Options"
-msgstr "Beállítások"
 
 #: 
 msgid "Other Members"
@@ -15648,4 +15487,120 @@ msgstr "Közelgő esemény"
 #: 
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "esemény. Ehelyett inaktiválja a típust, vagy rendelje hozzá az eseményeket újra."
+
+#: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "Az e-mail sablonokban megjelenő gyülekezeti logó abszolút http(s) URL-je (a jövőben máshol is újrafelhasználva). A legjobb megjelenítés érdekében az e-mail kliensekben körülbelül 3,5:1 arányú széles szalaghirdetési képet használjon (például 350×100 px), PNG vagy JPG formátumban, HTTPS-en keresztül kiszolgálva. Hagyja üresen vagy adjon meg érvénytelen értéket az alapértelmezett ChurchCRM logóra való visszatéréshez."
+
+#: 
+msgid "An option with that name already exists"
+msgstr "Ilyen nevű lehetőség már létezik"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "Nem lehet törölni az egyetlen megmaradó lehetőséget"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "A vágólap nem elérhető. A kódok mentéséhez használja a Letöltés gombot."
+
+#: 
+msgid "Custom Option"
+msgstr "Egyéni lehetőség"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "Alapértelmezett beérkezett üzenetek előnézeti szövege"
+
+#: 
+msgid "Email is disabled"
+msgstr "Az e-mail le van tiltva"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "Az e-mail le van tiltva. A jelszavak visszaállítása előtt konfigurálja az e-mailt, vagy használja a Jelszó módosítása funkciót."
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "Az e-mail le van tiltva. A tesztelés előtt engedélyezze az E-mail irányítópult beállításaiban."
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "Adja meg az egyik mentési helyreállítási kódját"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "Adja meg az egyik mentési helyreállítási kódját a fiókjába való belépéshez"
+
+#: 
+msgid "Existing Options"
+msgstr "Meglévő lehetőségek"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "A csoport nem található ehhez a szerepkörlistához"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "Az inaktív állapot csak a besorolások listájánál kapcsolható át"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "Az új felhasználók nem kapnak üdvözlő e-mailt a hitelesítő adataikkal. Ossza meg velük a jelszót manuálisan, vagy először konfigurálja az e-mailt."
+
+#: 
+msgid "Option name is required"
+msgstr "A lehetőség neve kötelező"
+
+#: 
+msgid "Option not found"
+msgstr "A lehetőség nem található"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "Opcionális rövid összefoglaló, amely a tárgysor mellett beérkezett üzenetek előnézeti szövegeként jelenik meg. Hagyja üresen, hogy az e-mail kliens automatikusan generálja a törzs alapján. Az egyes e-mail típusok (jelszó visszaállítás, új tag, ellenőrzés) saját fejlécet állítanak be; ez egy tartalék."
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "A jelszó-visszaállítási e-mailek és az új fiókhoz tartozó üdvözlő e-mailek nem kerülnek elküldésre, amíg az e-mail nincs konfigurálva. A felhasználók nem kapják meg automatikusan a hitelesítő adatokat."
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "A jelszó visszaállítása nem érhető el, mert az e-mail le van tiltva. Lépjen kapcsolatba a rendszergazdával."
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "A jelszó visszaállítva, de az e-mail nem küldhető el. A felhasználó ki van zárva — ossza meg az új jelszót manuálisan vagy használja a Jelszó módosítása funkciót."
+
+#: 
+msgid "Recovery Code"
+msgstr "Helyreállítási kód"
+
+#: 
+msgid "Set up Email"
+msgstr "E-mail beállítása"
+
+#: 
+msgid "Test SMTP Email"
+msgstr "SMTP e-mail tesztelése"
+
+#: 
+msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
+msgstr "Ez egy ChurchCRM teszt e-mail, amely megerősíti, hogy az SMTP konfigurációja működik."
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "Nem lehet a vágólapra másolni. Másolja a kódokat manuálisan."
+
+#: 
+msgid "Use Recovery Code"
+msgstr "Helyreállítási kód használata"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "Helyreállítási kód használata"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "Hitelesítő alkalmazás használata"
 

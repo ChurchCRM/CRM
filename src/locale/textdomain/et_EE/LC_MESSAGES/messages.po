@@ -820,10 +820,6 @@ msgid "Family Info"
 msgstr "Pereinfo"
 
 #: 
-msgid "Contact Info"
-msgstr "Kontaktinfo"
-
-#: 
 msgid "Envelope Info"
 msgstr "Ümbriku teave"
 
@@ -946,10 +942,6 @@ msgstr "Väärtus"
 #: 
 msgid "Edit Value"
 msgstr "Muuda väärtust"
-
-#: 
-msgid "Assign a New Property"
-msgstr "Uue omaduse määramine"
 
 #: 
 msgid "Assign"
@@ -1679,20 +1671,8 @@ msgid "Group"
 msgstr "Grupp"
 
 #: 
-msgid "Option"
-msgstr "Võimalus"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Viga: duplikaat"
-
-#: 
 msgid "Default"
 msgstr "Vaikimisi"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Leiti duplikaatnimi."
 
 #: 
 msgid "Make Default"
@@ -1705,10 +1685,6 @@ msgstr "Välju"
 #: 
 msgid "Add New"
 msgstr "Lisa uus"
-
-#: 
-msgid " by that name already exists."
-msgstr " selle nime järgi on juba olemas."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3192,10 +3168,6 @@ msgid "Security Group"
 msgstr "Turvagrupp"
 
 #: 
-msgid "Security Groups"
-msgstr "Turvagrupid"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Turvagruppide redaktor"
 
@@ -3208,56 +3180,16 @@ msgid "Group Member Roles Editor"
 msgstr "Grupi liikmete rollide redigeerija"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Isiku kohandatud loendi valik"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Isiku kohandatud loendi valikud"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Isiku kohandatud loendi valikute redaktor"
-
-#: 
-msgid "Custom List Option"
-msgstr "Kohandatud loendi valik"
-
-#: 
-msgid "Custom List Options"
-msgstr "Kohandatud loendi valikud"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Kohandatud loendi valikute redaktor"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Perekonna kohandatud loendi valik"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Perekonna kohandatud loendi valikud"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Perekonna kohandatud loendi valikute redaktor"
-
-#: 
-msgid "are not allowed."
-msgstr "ei ole lubatud."
-
-#: 
-msgid "Name for New"
-msgstr "Uus nimi"
-
-#: 
-msgid "Created via Family"
-msgstr "Loodud perekonna kaudu"
-
-#: 
-msgid "Updated via Family"
-msgstr "Värskendati perekonna kaudu"
 
 #: 
 msgid "Family Data Verified"
@@ -5484,14 +5416,6 @@ msgid "Added to group"
 msgstr "Lisati gruppi"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "SMTP-host pole häälestatud, külastage seadete lehte"
-
-#: 
-msgid "Debug Email Connection"
-msgstr "Siluri e-posti ühendus"
-
-#: 
 #, fuzzy
 msgid "This Family is Inactive"
 msgstr "See perekond on mitteaktiivne (välja lülitatud)"
@@ -5503,14 +5427,6 @@ msgstr "Andmebaas on kustutatud."
 #: 
 msgid "Anniversaries"
 msgstr "Tähtpäevad"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "Uue perekonna teavituse e-posti viga"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "Uue isiku teavituse e-posti viga"
 
 #: 
 msgid "View User"
@@ -5698,10 +5614,6 @@ msgstr "on keelatud"
 #: 
 msgid "Software Version"
 msgstr "Tarkvara versioon"
-
-#: 
-msgid "Database Version"
-msgstr "Andmebaasi versioon"
 
 #: 
 msgid "Application Prerequisites"
@@ -6069,14 +5981,6 @@ msgid "Loading"
 msgstr "Laadimine"
 
 #: 
-msgid "Family Property Unassignment"
-msgstr "Perekonna omaduse määramise tühistamine"
-
-#: 
-msgid "Do you want to remove"
-msgstr "Kas soovite eemaldada"
-
-#: 
 msgid "Today's Birthdays"
 msgstr "Täna on sünnipäev"
 
@@ -6111,10 +6015,6 @@ msgstr "Kehtetu sünnikuupäev: puudub sünnikuu või -päev."
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Kehtetu sünnikuupäev: puuduvad sünnikuu ja -päev."
-
-#: 
-msgid "System"
-msgstr "Süsteem"
 
 #. Context: locales
 #: 
@@ -6202,10 +6102,6 @@ msgid "Not Subscribed"
 msgstr "Pole tellitud"
 
 #: 
-msgid "property"
-msgstr "omadus"
-
-#: 
 msgid "Default Zip"
 msgstr "Vaikimisi ZIP"
 
@@ -6243,10 +6139,6 @@ msgstr "Üks märk eesnimest ja üks märk perenimest"
 #: 
 msgid "Two characters from FirstName"
 msgstr "Kaks märki eesnimest"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "Kiriku e-mail pole määratud, külastage sätete lehte"
 
 #. Context: locales
 #: 
@@ -7007,10 +6899,6 @@ msgid "Base URL"
 msgstr "Base URL"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "ChurchCRM paigaldus"
-
-#: 
 msgid "Copy"
 msgstr "Kopeeri"
 
@@ -7019,24 +6907,12 @@ msgid "DSN"
 msgstr "DSN"
 
 #: 
-msgid "Database Server"
-msgstr "Andmebaasi server"
-
-#: 
 msgid "Debug Info"
 msgstr "Silumise teave"
 
 #: 
 msgid "Document Root"
 msgstr "Dokumendi juur"
-
-#: 
-msgid "Email Configuration"
-msgstr "E-posti konfiguratsioon"
-
-#: 
-msgid "Email Debug Info"
-msgstr "E-posti silumise teave"
 
 #: 
 msgid "Filesystem Permissions"
@@ -7079,10 +6955,6 @@ msgid "PHP & Server Requirements"
 msgstr "PHP ja serveri nõuded"
 
 #: 
-msgid "PHP Configuration"
-msgstr "PHP konfiguratsioon"
-
-#: 
 msgid "Platform"
 msgstr "Platvorm"
 
@@ -7093,10 +6965,6 @@ msgstr "Juure tee"
 #: 
 msgid "SMTP Host"
 msgstr "SMTP host"
-
-#: 
-msgid "Server Information"
-msgstr "Serveri teave"
 
 #: 
 msgid "Software"
@@ -8396,10 +8264,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Lõpeb <strong>jälje kaldkriipsuga</strong> (/)"
 
 #: 
-msgid "Error:"
-msgstr "Viga:"
-
-#: 
 msgid "Find the line:"
 msgstr "Leidke rida:"
 
@@ -8794,10 +8658,6 @@ msgstr[0] "%d inimene lisati edukalt valitud rühma."
 msgstr[1] "%d inimest lisati edukalt valitud rühma."
 
 #: 
-msgid "A "
-msgstr "A "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Kas olete kindel, et soovite kustutada"
 
@@ -8826,10 +8686,6 @@ msgid "Delete Confirmation"
 msgstr "Kustutamise kinnitus"
 
 #: 
-msgid "Existing"
-msgstr "Olemasolev"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Olemasolevad kohandatud perekonna väljad"
 
@@ -8852,10 +8708,6 @@ msgstr "Sobimatu CSRF märk"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Sobimatud väljad või valikud."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Üksus on edukalt kustutatud"
 
 #: 
 msgid "Move down"
@@ -8892,10 +8744,6 @@ msgstr "Vara tüüp"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "Sellele vabatahtliku võimalusele on määratud inimesi. Kustutamine jääb määramata:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "See eemaldab selle kõigilt inimestelt, kellele see on praegu määratud."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11541,10 +11389,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Hallake pühapäevakooli klasse, õpetajaid ja õpilaste kohalolekut"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Hallake klassifitseerimisnimekirju, rolle ja grupitüüpe"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Hallake annetuste fonde finantsarvestuse jaoks"
 
@@ -11795,10 +11639,6 @@ msgstr "Ava GitHubi probleem"
 #: 
 msgid "Open user menu"
 msgstr "Ava kasutajamenüü"
-
-#: 
-msgid "Options"
-msgstr "Valikud"
 
 #: 
 msgid "Other Members"
@@ -15595,4 +15435,120 @@ msgstr "Tulevased sündmused"
 #: 
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "sündmus(t). Desaktiveerige tüüp või määrake sündmused ümber."
+
+#: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "Koguduse logo absoluutne http(s) URL, mis kuvatakse meilimudelites (ja kasutatakse tulevikus mujal). Parima kuvamise tagamiseks meilirakenduses kasutage laia bännerPilti ligikaudse kuvasuhtega 3,5:1 (nt 350×100 px), PNG või JPG, mida serveeritakse HTTPS-i kaudu. Jätke tühjaks või sisestage kehtetu väärtus, et naasta ChurchCRM vaikimisi logo juurde."
+
+#: 
+msgid "An option with that name already exists"
+msgstr "Selle nimega valik on juba olemas"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "Ainus järelejäänud valikut ei saa kustutada"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "Lõikelaud pole saadaval. Kasutage koodide salvestamiseks allalaadimise nuppu."
+
+#: 
+msgid "Custom Option"
+msgstr "Kohandatud valik"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "Postkasti eelvaate vaikimisi tekst"
+
+#: 
+msgid "Email is disabled"
+msgstr "E-post on keelatud"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "E-post on keelatud. Seadistage e-post enne paroolide lähtestamist või kasutage Muuda parooli."
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "E-post on keelatud. Lubage see enne testimist e-posti armatuurlaua seadetes."
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "Sisestage üks oma varundamise taastekoodidest"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "Sisestage üks oma varundamise taastekoodidest kontole juurdepääsuks"
+
+#: 
+msgid "Existing Options"
+msgstr "Olemasolevad valikud"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "Rühma ei leitud selle rollinimekirja jaoks"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "Passiivset olekut saab lülitada ainult klassifikatsioonide loendi jaoks"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "Uued kasutajad ei saa tervitusmeili oma mandaatidega. Jagage parool nendega käsitsi või seadistage esmalt e-post."
+
+#: 
+msgid "Option name is required"
+msgstr "Valiku nimi on kohustuslik"
+
+#: 
+msgid "Option not found"
+msgstr "Valikut ei leitud"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "Valikuline lühikokkuvõte, mis kuvatakse postkasti eelvaate tekstina teemarea kõrval. Jätke tühjaks, et meilirakendus genereeriks automaatselt sisust. Iga meilitüüp (parooli lähtestamine, uus liige, kinnitamine) seab oma eelpäise; see on varundus."
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "Parooli lähtestamise e-kirju ja uue konto tervitusmeile ei saadeta enne e-posti seadistamist. Kasutajad ei saa mandaate automaatselt."
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "Parooli lähtestamine pole saadaval, kuna e-post on keelatud. Võtke ühendust süsteemiadministraatoriga."
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "Parool lähtestati, kuid e-kirja ei saanud saata. Kasutaja on lukustatud — jagage uus parool käsitsi või kasutage Muuda parooli."
+
+#: 
+msgid "Recovery Code"
+msgstr "Taastekood"
+
+#: 
+msgid "Set up Email"
+msgstr "Seadista e-post"
+
+#: 
+msgid "Test SMTP Email"
+msgstr "Testi SMTP e-posti"
+
+#: 
+msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
+msgstr "See on ChurchCRM testmeil, mis kinnitab, et teie SMTP konfiguratsioon töötab."
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "Lõikelauale kopeerimine ebaõnnestus. Kopeerige koodid käsitsi."
+
+#: 
+msgid "Use Recovery Code"
+msgstr "Kasuta taastekoodi"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "Kasuta taastekoodi"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "Kasuta autentimisrakendust"
 

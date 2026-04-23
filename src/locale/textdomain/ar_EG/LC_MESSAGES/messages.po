@@ -819,10 +819,6 @@ msgid "Family Info"
 msgstr "بيانات العائلة"
 
 #: 
-msgid "Contact Info"
-msgstr "بيانات الاتصال"
-
-#: 
 msgid "Envelope Info"
 msgstr "معلومات المظروف"
 
@@ -945,10 +941,6 @@ msgstr "القيمة"
 #: 
 msgid "Edit Value"
 msgstr "تحرير القيمة"
-
-#: 
-msgid "Assign a New Property"
-msgstr "تعيين خاصية جديدة"
 
 #: 
 msgid "Assign"
@@ -1677,20 +1669,8 @@ msgid "Group"
 msgstr "مجموعة"
 
 #: 
-msgid "Option"
-msgstr "اختيار"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "الخطأ: تكرار"
-
-#: 
 msgid "Default"
 msgstr "الافتراضي"
-
-#: 
-msgid "Duplicate name found."
-msgstr "العثور على اسم مكرر."
 
 #: 
 msgid "Make Default"
@@ -1703,10 +1683,6 @@ msgstr "اغلاق"
 #: 
 msgid "Add New"
 msgstr "اضافة جديد"
-
-#: 
-msgid " by that name already exists."
-msgstr "بهذا الاسم موجود مسبقا."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3191,10 +3167,6 @@ msgid "Security Group"
 msgstr "المجموعة الأمنية"
 
 #: 
-msgid "Security Groups"
-msgstr "المجموعات الأمن"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "محرر المجموعات الأمن"
 
@@ -3207,56 +3179,16 @@ msgid "Group Member Roles Editor"
 msgstr "عضو مجموعة أدوار محرر"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "شخص قائمة مخصص الخيار"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "شخص مخصص خيارات قائمة"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "شخص قائمة مخصصة محرر الخيارات"
-
-#: 
-msgid "Custom List Option"
-msgstr "قائمة مخصصة الخيار"
-
-#: 
-msgid "Custom List Options"
-msgstr "مخصص خيارات قائمة"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "قائمة مخصصة محرر الخيارات"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "عائلة قائمة مخصص الخيار"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "الأسرة مخصص خيارات قائمة"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "عائلة قائمة مخصصة محرر الخيارات"
-
-#: 
-msgid "are not allowed."
-msgstr "ليست مسموحة."
-
-#: 
-msgid "Name for New"
-msgstr "اسم لجديد"
-
-#: 
-msgid "Created via Family"
-msgstr "تم إنشاؤها عن طريق الأسرة"
-
-#: 
-msgid "Updated via Family"
-msgstr "تحديث عن طريق الأسرة"
 
 #: 
 msgid "Family Data Verified"
@@ -5483,14 +5415,6 @@ msgid "Added to group"
 msgstr "تم اضافتة الى المجموعه"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "المضيف SMTP لا الإعداد، يرجى زيارة صفحة إعدادات"
-
-#: 
-msgid "Debug Email Connection"
-msgstr "التصحيح البريد الإلكتروني اتصال"
-
-#: 
 #, fuzzy
 msgid "This Family is Inactive"
 msgstr "هذه الأسرة هي المعطلة"
@@ -5502,14 +5426,6 @@ msgstr "تم مسح قاعدة البيانات."
 #: 
 msgid "Anniversaries"
 msgstr "المناسبات"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "الأسرة الجديد خطأ التبليغ"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "شخص جديد خطأ التبليغ"
 
 #: 
 msgid "View User"
@@ -5697,10 +5613,6 @@ msgstr "معطل"
 #: 
 msgid "Software Version"
 msgstr "إصدار البرنامج"
-
-#: 
-msgid "Database Version"
-msgstr "اصدار قاعدة البيانات"
 
 #: 
 msgid "Application Prerequisites"
@@ -6069,14 +5981,6 @@ msgid "Loading"
 msgstr "جار التحميل"
 
 #: 
-msgid "Family Property Unassignment"
-msgstr "إلغاء التنازل عن ممتلكات العائلة"
-
-#: 
-msgid "Do you want to remove"
-msgstr "هل تريد إزالة"
-
-#: 
 msgid "Today's Birthdays"
 msgstr "اعياد ميلاد اليوم"
 
@@ -6111,10 +6015,6 @@ msgstr "تاريخ ميلاد خطأ ، شهر الميلاد او اليوم غ
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "تاريخ ميلاد خطأ ، شهر الميلاد او اليوم غير صحيح."
-
-#: 
-msgid "System"
-msgstr "النظام"
 
 #. Context: locales
 #: 
@@ -6202,10 +6102,6 @@ msgid "Not Subscribed"
 msgstr "غير مشترك"
 
 #: 
-msgid "property"
-msgstr "مِلكِيَّة"
-
-#: 
 msgid "Default Zip"
 msgstr "الرمز البريدي الافتراضي"
 
@@ -6243,10 +6139,6 @@ msgstr "حرف واحد من الاسم الأول وحرف واحد من الا
 #: 
 msgid "Two characters from FirstName"
 msgstr "حرفان من الاسم الأول"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "بريد الكنيسة الإلكتروني غير معين، يرجى زيارة صفحة الإعدادات"
 
 #. Context: locales
 #: 
@@ -7007,10 +6899,6 @@ msgid "Base URL"
 msgstr "عنوان URL الأساسي"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "تثبيت ChurchCRM"
-
-#: 
 msgid "Copy"
 msgstr "نسخ"
 
@@ -7019,24 +6907,12 @@ msgid "DSN"
 msgstr "DSN"
 
 #: 
-msgid "Database Server"
-msgstr "خادم قاعدة البيانات"
-
-#: 
 msgid "Debug Info"
 msgstr "معلومات التصحيح"
 
 #: 
 msgid "Document Root"
 msgstr "جذر المستند"
-
-#: 
-msgid "Email Configuration"
-msgstr "تكوين البريد الإلكتروني"
-
-#: 
-msgid "Email Debug Info"
-msgstr "معلومات تصحيح البريد الإلكتروني"
 
 #: 
 msgid "Filesystem Permissions"
@@ -7079,10 +6955,6 @@ msgid "PHP & Server Requirements"
 msgstr "متطلبات PHP وخادم الويب"
 
 #: 
-msgid "PHP Configuration"
-msgstr "تكوين PHP"
-
-#: 
 msgid "Platform"
 msgstr "المنصة"
 
@@ -7093,10 +6965,6 @@ msgstr "مسار جذر التطبيق"
 #: 
 msgid "SMTP Host"
 msgstr "خادم البريد الإلكتروني"
-
-#: 
-msgid "Server Information"
-msgstr "معلومات الخادم"
 
 #: 
 msgid "Software"
@@ -8404,10 +8272,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "ينتهي بـ <strong>شرطة زائدة</strong> (/)"
 
 #: 
-msgid "Error:"
-msgstr "خطأ:"
-
-#: 
 msgid "Find the line:"
 msgstr "ابحث عن السطر:"
 
@@ -8814,10 +8678,6 @@ msgstr[4] "تمت إضافة %d شخصاً بنجاح إلى المجموعة ا
 msgstr[5] "تم إضافة %d شخص بنجاح إلى المجموعة المحددة."
 
 #: 
-msgid "A "
-msgstr "أ"
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "هل أنت متأكد من رغبتك في الحذف"
 
@@ -8846,10 +8706,6 @@ msgid "Delete Confirmation"
 msgstr "تأكيد الحذف"
 
 #: 
-msgid "Existing"
-msgstr "موجود"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "حقول الأسرة المخصصة الموجودة"
 
@@ -8872,10 +8728,6 @@ msgstr "رمز CSRF غير صالح"
 #: 
 msgid "Invalid fields or selections."
 msgstr "حقول أو تحديدات غير صالحة."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "تم حذف العنصر بنجاح"
 
 #: 
 msgid "Move down"
@@ -8912,10 +8764,6 @@ msgstr "نوع الخاصية"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "هناك أشخاص مخصصون لهذه فرصة التطوع. سيؤدي الحذف إلى إلغاء التعيين:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "سيؤدي هذا إلى إزالته من جميع الأشخاص المخصصين له حاليا."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11573,10 +11421,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "إدارة فئات مدرسة الأحد والمعلمين وحضور الطلاب"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "إدارة قوائم التصنيفات والأدوار وأنواع المجموعات"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "إدارة صناديق المساهمات لتتبع مالي"
 
@@ -11827,10 +11671,6 @@ msgstr "فتح مشكلة GitHub"
 #: 
 msgid "Open user menu"
 msgstr "فتح قائمة المستخدم"
-
-#: 
-msgid "Options"
-msgstr "خيارات"
 
 #: 
 msgid "Other Members"
@@ -15627,4 +15467,120 @@ msgstr "الأحداث القادمة"
 #: 
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "حدث(أحداث). قم بإلغاء تنشيط النوع بدلاً من ذلك، أو أعد تعيين الأحداث أولاً."
+
+#: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "عنوان URL المطلق لـ http(s) لشعار الكنيسة المعروض في قوالب البريد الإلكتروني (وسيُعاد استخدامه في مواضع أخرى مستقبلاً). للحصول على أفضل عرض في عملاء البريد الإلكتروني، استخدم صورة بانر عريضة بنسبة أبعاد تقريبية 3.5:1 (مثلاً 350×100 بكسل)، بصيغة PNG أو JPG، مستضافة عبر HTTPS. اتركه فارغاً أو أدخل قيمة غير صالحة للرجوع إلى شعار ChurchCRM الافتراضي."
+
+#: 
+msgid "An option with that name already exists"
+msgstr "يوجد خيار بهذا الاسم بالفعل"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "لا يمكن حذف الخيار الوحيد المتبقي"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "الحافظة غير متاحة. يرجى استخدام زر التنزيل لحفظ الرموز."
+
+#: 
+msgid "Custom Option"
+msgstr "خيار مخصص"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "نص معاينة البريد الوارد الافتراضي"
+
+#: 
+msgid "Email is disabled"
+msgstr "البريد الإلكتروني معطّل"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "البريد الإلكتروني معطّل. قم بتكوين البريد الإلكتروني قبل إعادة تعيين كلمات المرور، أو استخدم تغيير كلمة المرور."
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "البريد الإلكتروني معطّل. قم بتفعيله في إعدادات لوحة البريد الإلكتروني قبل الاختبار."
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "أدخل أحد رموز الاسترداد الاحتياطية"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "أدخل أحد رموز الاسترداد الاحتياطية للوصول إلى حسابك"
+
+#: 
+msgid "Existing Options"
+msgstr "الخيارات الموجودة"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "لم يتم العثور على الخدمة لقائمة الأدوار هذه"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "يمكن تبديل حالة عدم النشاط فقط في قائمة التصنيفات"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "لن يتلقى الأعضاء الجدد بريداً إلكترونياً ترحيبياً ببيانات اعتمادهم. شارك كلمة المرور معهم يدوياً، أو قم بتكوين البريد الإلكتروني أولاً."
+
+#: 
+msgid "Option name is required"
+msgstr "اسم الخيار مطلوب"
+
+#: 
+msgid "Option not found"
+msgstr "الخيار غير موجود"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "ملخص قصير اختياري يظهر كنص معاينة في صندوق الوارد بجانب سطر الموضوع. اتركه فارغاً للسماح لعميل البريد الإلكتروني بالإنشاء التلقائي من النص. أنواع البريد الإلكتروني الخاصة (إعادة تعيين كلمة المرور، عضو جديد، التحقق) تضع رأسها الخاص؛ هذا احتياطي."
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "لن يتم إرسال رسائل إعادة تعيين كلمة المرور ورسائل الترحيب بالحسابات الجديدة حتى يتم تكوين البريد الإلكتروني. لن يتلقى المستخدمون بيانات اعتمادهم تلقائياً."
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "إعادة تعيين كلمة المرور غير متاحة لأن البريد الإلكتروني معطّل. يرجى التواصل مع مسؤول النظام."
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "تمت إعادة تعيين كلمة المرور لكن تعذّر إرسال البريد الإلكتروني. المستخدم محجوب — شارك كلمة المرور الجديدة يدوياً أو استخدم تغيير كلمة المرور."
+
+#: 
+msgid "Recovery Code"
+msgstr "رمز الاسترداد"
+
+#: 
+msgid "Set up Email"
+msgstr "إعداد البريد الإلكتروني"
+
+#: 
+msgid "Test SMTP Email"
+msgstr "اختبار بريد SMTP الإلكتروني"
+
+#: 
+msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
+msgstr "هذا بريد إلكتروني تجريبي من ChurchCRM يؤكد أن تكوين SMTP الخاص بك يعمل بشكل صحيح."
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "تعذّر النسخ إلى الحافظة. يرجى نسخ الرموز يدوياً."
+
+#: 
+msgid "Use Recovery Code"
+msgstr "استخدام رمز الاسترداد"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "استخدم رمز الاسترداد بدلاً من ذلك"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "استخدم تطبيق المصادقة بدلاً من ذلك"
 

@@ -848,10 +848,6 @@ msgid "Family Info"
 msgstr "Familie informasjon"
 
 #: 
-msgid "Contact Info"
-msgstr "Kontakt informasjon"
-
-#: 
 msgid "Envelope Info"
 msgstr "Brev Informasjon"
 
@@ -974,11 +970,6 @@ msgstr "Verdi"
 #: 
 msgid "Edit Value"
 msgstr "Rediger verdi"
-
-#: 
-#, fuzzy
-msgid "Assign a New Property"
-msgstr "Tildele en ny egenskap"
 
 #: 
 msgid "Assign"
@@ -1736,20 +1727,8 @@ msgid "Group"
 msgstr "Gruppe"
 
 #: 
-msgid "Option"
-msgstr "Alternativet"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Feil: Duplikat"
-
-#: 
 msgid "Default"
 msgstr "Standard"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Duplisere navn funnet."
 
 #: 
 msgid "Make Default"
@@ -1762,10 +1741,6 @@ msgstr "Utgang"
 #: 
 msgid "Add New"
 msgstr "Legg til ny"
-
-#: 
-msgid " by that name already exists."
-msgstr "ved det navnet finnes allerede."
 
 #: 
 #, fuzzy
@@ -3297,10 +3272,6 @@ msgid "Security Group"
 msgstr "Sikkerhetsgruppe"
 
 #: 
-msgid "Security Groups"
-msgstr "Sikkerhetsgrupper"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Redigering av sikkerhetsgrupper"
 
@@ -3313,56 +3284,16 @@ msgid "Group Member Roles Editor"
 msgstr "Redigering av roller for gruppemedlemmer"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Alternativ for egendefinert personliste"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Alternativer for egendefinert personliste"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Redigering av alternativer for egendefinert personliste"
-
-#: 
-msgid "Custom List Option"
-msgstr "Alternativ for egendefinert liste"
-
-#: 
-msgid "Custom List Options"
-msgstr "Alternativer for egendefinert liste"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Redigering av alternativer for egendefinert liste"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Alternativ for egendefinert familieliste"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Alternativer for egendefinert familieliste"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Redigering av alternativer for egendefinert familieliste"
-
-#: 
-msgid "are not allowed."
-msgstr "er ikke tillatt."
-
-#: 
-msgid "Name for New"
-msgstr "Navn på ny"
-
-#: 
-msgid "Created via Family"
-msgstr "Opprettet via familie"
-
-#: 
-msgid "Updated via Family"
-msgstr "Oppdatert via familie"
 
 #: 
 msgid "Family Data Verified"
@@ -5583,14 +5514,6 @@ msgid "Added to group"
 msgstr "Lagt til i gruppe"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "SMTP-tjener er ikke satt opp, vennligst gå til innstillingssiden"
-
-#: 
-msgid "Debug Email Connection"
-msgstr "Feilsøk e-postforbindelse"
-
-#: 
 msgid "This Family is Inactive"
 msgstr "Denne familien er inaktiv"
 
@@ -5601,14 +5524,6 @@ msgstr "Databasen er tømt."
 #: 
 msgid "Anniversaries"
 msgstr "Jubileer"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "Feil ved varslingse-post for ny familie"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "Feil ved varslingse-post for ny person"
 
 #: 
 msgid "View User"
@@ -5793,10 +5708,6 @@ msgstr "er deaktivert"
 #: 
 msgid "Software Version"
 msgstr "Programvareversjon"
-
-#: 
-msgid "Database Version"
-msgstr "Databaseversjon"
 
 #: 
 msgid "Application Prerequisites"
@@ -6157,14 +6068,6 @@ msgid "Loading"
 msgstr "Laster"
 
 #: 
-msgid "Family Property Unassignment"
-msgstr "Fjerning av familieegenskap"
-
-#: 
-msgid "Do you want to remove"
-msgstr "Vil du fjerne"
-
-#: 
 msgid "Today's Birthdays"
 msgstr "Fødselsdager i dag"
 
@@ -6199,10 +6102,6 @@ msgstr "Ugyldig fødselsdato: Mangler fødselsmåned eller dag."
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Ugyldig fødselsdato: Mangler fødselsmåned og dag."
-
-#: 
-msgid "System"
-msgstr "System"
 
 #. Context: locales
 #: 
@@ -6290,10 +6189,6 @@ msgid "Not Subscribed"
 msgstr "Ikke abonnert"
 
 #: 
-msgid "property"
-msgstr "egenskap"
-
-#: 
 msgid "Default Zip"
 msgstr "Standard postnummer"
 
@@ -6331,10 +6226,6 @@ msgstr "Ett tegn fra fornavn og ett tegn fra etternavn"
 #: 
 msgid "Two characters from FirstName"
 msgstr "To tegn fra fornavn"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "Kirkens e-post er ikke satt, vennligst besøk siden for innstillinger"
 
 #. Context: locales
 #: 
@@ -7095,10 +6986,6 @@ msgid "Base URL"
 msgstr "Base-URL"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "ChurchCRM-installasjon"
-
-#: 
 msgid "Copy"
 msgstr "Kopier"
 
@@ -7107,24 +6994,12 @@ msgid "DSN"
 msgstr "DSN"
 
 #: 
-msgid "Database Server"
-msgstr "Databaseserver"
-
-#: 
 msgid "Debug Info"
 msgstr "Feilsøkingsinfo"
 
 #: 
 msgid "Document Root"
 msgstr "Dokumentrot"
-
-#: 
-msgid "Email Configuration"
-msgstr "E-postkonfigurasjon"
-
-#: 
-msgid "Email Debug Info"
-msgstr "Feilsøkingsinfo for e-post"
 
 #: 
 msgid "Filesystem Permissions"
@@ -7167,10 +7042,6 @@ msgid "PHP & Server Requirements"
 msgstr "PHP- og serverkrav"
 
 #: 
-msgid "PHP Configuration"
-msgstr "PHP-konfigurasjon"
-
-#: 
 msgid "Platform"
 msgstr "Plattform"
 
@@ -7181,10 +7052,6 @@ msgstr "Rotbane"
 #: 
 msgid "SMTP Host"
 msgstr "SMTP-vert"
-
-#: 
-msgid "Server Information"
-msgstr "Serverinformasjon"
 
 #: 
 msgid "Software"
@@ -8484,10 +8351,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Ender med en <strong>skråstrek</strong> (/)"
 
 #: 
-msgid "Error:"
-msgstr "Feil:"
-
-#: 
 msgid "Find the line:"
 msgstr "Finn linjen:"
 
@@ -8882,10 +8745,6 @@ msgstr[0] "%d person lagt til i valgt gruppe."
 msgstr[1] "%d personer lagt til i valgt gruppe."
 
 #: 
-msgid "A "
-msgstr "En "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Er du sikker på at du vil slette"
 
@@ -8914,10 +8773,6 @@ msgid "Delete Confirmation"
 msgstr "Bekreftelse på sletting"
 
 #: 
-msgid "Existing"
-msgstr "Eksisterende"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Eksisterende egendefinerte familiefelt"
 
@@ -8940,10 +8795,6 @@ msgstr "Ugyldig CSRF-token"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Ugyldige felt eller valg."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Elementet ble slettet"
 
 #: 
 msgid "Move down"
@@ -8980,10 +8831,6 @@ msgstr "Egenskapstype"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "Det er personer tildelt denne frivillig-muligheten. Sletting vil fjerne tildeling for:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "Dette vil fjerne den fra alle personer den er tildelt for øyeblikket."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11629,10 +11476,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Administrer søndagsskoleklasser, lærere og elevoppmøte"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Administrer klassifiseringslister, roller og gruppetyper"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Administrer gavefond for økonomisk sporing"
 
@@ -11883,10 +11726,6 @@ msgstr "Åpne GitHub-sak"
 #: 
 msgid "Open user menu"
 msgstr "Åpne brukermeny"
-
-#: 
-msgid "Options"
-msgstr "Alternativer"
 
 #: 
 msgid "Other Members"
@@ -15679,4 +15518,120 @@ msgstr "Kommende hendelser"
 #: 
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "hendelse(r). Deaktiver typen i stedet eller tilordne hendelsene på nytt først."
+
+#: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "Absolutt http(s) URL for menighetens logo som vises i e-postmaler (og gjenbrukes andre steder i fremtiden). For best visning i e-postklienter, bruk et bredt bannerbilde med et sideforhold på omtrent 3,5:1 (f.eks. 350×100 px), PNG eller JPG, servert over HTTPS. La det være tomt eller skriv inn en ugyldig verdi for å gå tilbake til standard ChurchCRM-logo."
+
+#: 
+msgid "An option with that name already exists"
+msgstr "Et alternativ med det navnet finnes allerede"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "Kan ikke slette det eneste gjenværende alternativet"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "Utklippstavle er ikke tilgjengelig. Bruk Last ned-knappen for å lagre kodene dine."
+
+#: 
+msgid "Custom Option"
+msgstr "Tilpasset alternativ"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "Standard forhåndsvisningstest for innboks"
+
+#: 
+msgid "Email is disabled"
+msgstr "E-post er deaktivert"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "E-post er deaktivert. Konfigurer e-post før du tilbakestiller passord, eller bruk Endre passord."
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "E-post er deaktivert. Aktiver det i innstillingene for e-postpanelet før testing."
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "Skriv inn en av sikkerhetskopikodene for gjenoppretting"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "Skriv inn en av sikkerhetskopikodene for gjenoppretting for å få tilgang til kontoen din"
+
+#: 
+msgid "Existing Options"
+msgstr "Eksisterende alternativer"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "Gruppe ikke funnet for denne rollelisten"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "Inaktiv status kan bare endres for klassifiseringslisten"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "Nye brukere vil ikke motta en velkomst-e-post med legitimasjon. Del passordet med dem manuelt, eller konfigurer e-post først."
+
+#: 
+msgid "Option name is required"
+msgstr "Alternativnavn er påkrevd"
+
+#: 
+msgid "Option not found"
+msgstr "Alternativ ikke funnet"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "Valgfritt kort sammendrag vist som forhåndsvisningstekst for innboks ved siden av emnelinjen. La det være tomt for å la e-postklienten generere automatisk fra brødteksten. Per-e-posttyper (passordtilbakestilling, nytt medlem, bekreftelse) setter sin egen forhåndsoverskrift; dette er en reserve."
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "E-poster for passordtilbakestilling og velkomst-e-poster for nye kontoer vil ikke bli sendt før e-post er konfigurert. Brukere vil ikke motta legitimasjon automatisk."
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "Passordtilbakestilling er utilgjengelig fordi e-post er deaktivert. Kontakt systemadministratoren din."
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "Passordet ble tilbakestilt, men e-posten kunne ikke sendes. Brukeren er utestengt — del det nye passordet manuelt eller bruk Endre passord."
+
+#: 
+msgid "Recovery Code"
+msgstr "Gjenopprettingskode"
+
+#: 
+msgid "Set up Email"
+msgstr "Konfigurer e-post"
+
+#: 
+msgid "Test SMTP Email"
+msgstr "Test SMTP-e-post"
+
+#: 
+msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
+msgstr "Dette er en ChurchCRM-test-e-post som bekrefter at SMTP-konfigurasjonen din fungerer."
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "Kan ikke kopiere til utklippstavlen. Kopier kodene manuelt."
+
+#: 
+msgid "Use Recovery Code"
+msgstr "Bruk gjenopprettingskode"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "Bruk en gjenopprettingskode"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "Bruk autentiseringsapp"
 

@@ -45,135 +45,52 @@ function initializeFamilyView() {
     }
   });
 
-  let masterFamilyProperties = {};
-  let selectedFamilyProperties = [];
-  let assignedFamilyValues = {};
-  window.CRM.APIRequest({
-    path: "people/properties/family",
-  }).then(function (masterData) {
-    masterFamilyProperties = masterData;
-
-    window.CRM.APIRequest({
-      path: `people/properties/family/${window.CRM.currentFamily}`,
-    }).then(function (data) {
-      $("#family-property-loading").hide();
-
-      if (data.length === 0) {
-        $("#family-property-no-data").show();
-      } else {
-        $("#family-property-list").show();
-        $.each(data, function (key, prop) {
-          let { id: propId, name: propName, value: propVal, allowEdit, allowDelete } = prop;
-          selectedFamilyProperties.push(propId);
-          assignedFamilyValues[propId] = propVal || "";
-
-          // GHSA-8r36-fvxj-26qv: Escape property values to prevent XSS
-          let safePropName = window.CRM.escapeHtml(propName || "");
-          let safePropVal = window.CRM.escapeHtml(propVal || "");
-
-          let deleteBtn = allowDelete
-            ? `<button class="btn btn-sm btn-ghost-danger delete-property" data-property-id="${propId}" data-property-name="${safePropName}" title="${i18next.t("Remove")}"><i class="fa-solid fa-trash"></i></button>`
-            : "";
-
-          $("#family-property-list").append(
-            `<div class="list-group-item px-0 d-flex align-items-center">` +
-              `<div class="me-auto">` +
-              `<strong>${safePropName}</strong>` +
-              (safePropVal ? `<small class="text-muted d-block">${safePropVal}</small>` : "") +
-              `</div>` +
-              deleteBtn +
-              `</div>`,
-          );
-        });
-
-        $(".delete-property").on("click", deleteProperty);
-      }
-
-      // Populate the inline assign form. Mirrors the Person view UX:
-      // show every definition (assigned entries marked with "(assigned)")
-      // so the user can edit values in place, and expose the property's
-      // prompt + current value as data attributes for the prompt box.
-      let $select = $("#input-family-properties");
-      if ($select.length && Array.isArray(masterFamilyProperties) && masterFamilyProperties.length > 0) {
-        masterFamilyProperties.forEach(function (masterProp) {
-          let propId = masterProp.ProId;
-          let propName = masterProp.ProName || "";
-          let isAssigned = selectedFamilyProperties.includes(propId);
-          let label = isAssigned ? `${propName} (${i18next.t("assigned")})` : propName;
-          let $option = $("<option></option>").attr("value", propId).text(label);
-          if (masterProp.ProPrompt) {
-            $option.attr("data-pro_prompt", masterProp.ProPrompt);
-            $option.attr("data-pro_value", assignedFamilyValues[propId] || "");
-          }
-          $select.append($option);
-        });
-        $("#family-property-assign-wrapper").show();
-      }
-    });
-  });
-
-  // Mirror the Person view prompt-box behavior: when a property with a
-  // prompt is chosen, reveal a text area pre-filled with any existing
-  // value so it can be edited in place.
+  // Family properties: inline form (matches Person page UX).
   $("#input-family-properties").on("change", function () {
-    let $promptBox = $("#family-prompt-box");
-    $promptBox.removeClass("mb-3").html("");
-    let $selected = $("#input-family-properties :selected");
-    let promptText = $selected.data("pro_prompt");
-    let promptValue = $selected.data("pro_value");
-    if (promptText) {
-      $promptBox
+    const promptBox = $("#family-property-prompt-box").removeClass("mb-3").html("");
+    const selected = $("#input-family-properties :selected");
+    const proPrompt = selected.data("pro_prompt");
+    const proValue = selected.data("pro_value");
+    if (proPrompt) {
+      promptBox
         .addClass("mb-3")
-        .append($("<label></label>").text(promptText))
-        .append($('<textarea rows="3" class="form-control" name="PropertyValue"></textarea>').val(promptValue || ""));
+        .append($("<label></label>").text(proPrompt))
+        .append($('<textarea rows="3" class="form-control" name="PropertyValue"></textarea>').val(proValue || ""));
     }
   });
 
   $("#assign-family-property-btn").on("click", function () {
     let propertyId = "";
     let value = "";
-    let dataToSend = $("#assign-family-property-form").serializeArray();
-    $.each(dataToSend, function (key, field) {
-      if (field.name === "PropertyId") {
-        propertyId = field.value;
-      } else if (field.name === "PropertyValue") {
-        value = field.value;
-      }
-    });
-    if (!propertyId) {
-      return;
-    }
+    $("#assign-family-property-form")
+      .serializeArray()
+      .forEach(function (field) {
+        if (field.name === "PropertyId") propertyId = field.value;
+        else if (field.name === "PropertyValue") value = field.value;
+      });
+    if (!propertyId) return;
     window.CRM.APIRequest({
       method: "POST",
       path: `people/properties/family/${window.CRM.currentFamily}/${propertyId}`,
       data: JSON.stringify({ value: value }),
-    }).then(function () {
+    }).done(function () {
       location.reload();
     });
   });
 
-  function deleteProperty() {
-    let propId = $(this).attr("data-property-id");
-    let propName = $(this).attr("data-property-name");
-    // GHSA-8r36-fvxj-26qv: Escape property name in bootbox message
-    let safePropName = window.CRM.escapeHtml(propName || "");
-
-    bootbox.confirm({
-      title: i18next.t("Family Property Unassignment"),
-      message: `${i18next.t("Do you want to remove")} ${safePropName} ${i18next.t("property")}`,
-      locale: window.CRM.locale,
-      callback: function (result) {
-        if (result) {
-          window.CRM.APIRequest({
-            path: `people/properties/family/${window.CRM.currentFamily}/${propId}`,
-            method: "DELETE",
-          }).then(function () {
-            location.reload();
-          });
-        }
-      },
+  $(".remove-family-property-btn").on("click", function () {
+    const propertyId = $(this).data("property_id");
+    bootbox.confirm(i18next.t("Are you sure you want to unassign this property?"), function (result) {
+      if (result) {
+        window.CRM.APIRequest({
+          method: "DELETE",
+          path: `people/properties/family/${window.CRM.currentFamily}/${propertyId}`,
+        }).done(function () {
+          location.reload();
+        });
+      }
     });
-  }
+  });
 
   // Pledges & Payments table — init after ensuring both types are returned by API
   if ($("#pledge-payment-v2-table").length) {

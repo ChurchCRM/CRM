@@ -847,10 +847,6 @@ msgid "Family Info"
 msgstr "Info Familie"
 
 #: 
-msgid "Contact Info"
-msgstr "Info Contact"
-
-#: 
 msgid "Envelope Info"
 msgstr "Informații plic"
 
@@ -973,11 +969,6 @@ msgstr "Valoare"
 #: 
 msgid "Edit Value"
 msgstr "Editare Valoare"
-
-#: 
-#, fuzzy
-msgid "Assign a New Property"
-msgstr "Atribuie o nouă proprietate"
 
 #: 
 msgid "Assign"
@@ -1724,20 +1715,8 @@ msgid "Group"
 msgstr "Grup"
 
 #: 
-msgid "Option"
-msgstr "Opțiune"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Eroare: Duplicate"
-
-#: 
 msgid "Default"
 msgstr "Lipsă"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Duplicat nume de găsit."
 
 #: 
 msgid "Make Default"
@@ -1750,10 +1729,6 @@ msgstr "Ieșire"
 #: 
 msgid "Add New"
 msgstr "Adăugați noi"
-
-#: 
-msgid " by that name already exists."
-msgstr "cu acest nume există deja."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3270,10 +3245,6 @@ msgid "Security Group"
 msgstr "Grup securitate"
 
 #: 
-msgid "Security Groups"
-msgstr "Grupuri securitate"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Editor grupuri securitate"
 
@@ -3286,56 +3257,16 @@ msgid "Group Member Roles Editor"
 msgstr "Editor roluri membri grup"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Opțiune listă personalizată persoană"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Opțiuni listă personalizată persoană"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Editor opțiuni listă personalizată persoană"
-
-#: 
-msgid "Custom List Option"
-msgstr "Opțiune listă personalizată"
-
-#: 
-msgid "Custom List Options"
-msgstr "Opțiuni listă personalizată"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Editor opțiuni listă personalizată"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Opțiune listă personalizată familie"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Opțiuni listă personalizată familie"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Editor de opțiuni de listă personalizată pentru familie"
-
-#: 
-msgid "are not allowed."
-msgstr "nu sunt permise."
-
-#: 
-msgid "Name for New"
-msgstr "Nume pentru nou"
-
-#: 
-msgid "Created via Family"
-msgstr "Creat prin Familie"
-
-#: 
-msgid "Updated via Family"
-msgstr "Actualizat prin Familie"
 
 #: 
 msgid "Family Data Verified"
@@ -5563,14 +5494,6 @@ msgid "Added to group"
 msgstr "Adăugat la grup"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "domeniu SMTP nesetat, vizitați pagina de setări"
-
-#: 
-msgid "Debug Email Connection"
-msgstr "Depanare conectare Email"
-
-#: 
 #, fuzzy
 msgid "This Family is Inactive"
 msgstr "Această familie este dezactivată"
@@ -5582,14 +5505,6 @@ msgstr "Baza de date a fost șearsă"
 #: 
 msgid "Anniversaries"
 msgstr "Aniversări"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "Eroare la notificarea prin email a unei familii noi"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "Eroare la notificarea prin email a unei persoane noi"
 
 #: 
 msgid "View User"
@@ -5777,10 +5692,6 @@ msgstr "este dezactivat"
 #: 
 msgid "Software Version"
 msgstr "Versiune soft"
-
-#: 
-msgid "Database Version"
-msgstr "Versiune bază de date"
 
 #: 
 msgid "Application Prerequisites"
@@ -6146,14 +6057,6 @@ msgid "Loading"
 msgstr "Se încarcă"
 
 #: 
-msgid "Family Property Unassignment"
-msgstr "Anulare Atribuire Proprietate Familie"
-
-#: 
-msgid "Do you want to remove"
-msgstr "Doriți să ștergeti"
-
-#: 
 msgid "Today's Birthdays"
 msgstr "Ziua de naștere a celor de astăzi"
 
@@ -6188,10 +6091,6 @@ msgstr "Data de naștere invalidă: Lipsesc luna sau ziua nașterii"
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Data de naștere invalidă: Lipsesc luna și ziua nașterii"
-
-#: 
-msgid "System"
-msgstr "Sistem"
 
 #. Context: locales
 #: 
@@ -6279,10 +6178,6 @@ msgid "Not Subscribed"
 msgstr "Nezabonat"
 
 #: 
-msgid "property"
-msgstr "proprietate"
-
-#: 
 msgid "Default Zip"
 msgstr "Cod poștal implicit"
 
@@ -6320,10 +6215,6 @@ msgstr "Un caracter din prenume și un caracter din nume"
 #: 
 msgid "Two characters from FirstName"
 msgstr "Două caractere din prenume"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "E-mailul bisericii nu este setat, vă rugăm să vizitați pagina de setări"
 
 #. Context: locales
 #: 
@@ -7084,10 +6975,6 @@ msgid "Base URL"
 msgstr "URL de bază"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "Instalare ChurchCRM"
-
-#: 
 msgid "Copy"
 msgstr "Copiază"
 
@@ -7096,24 +6983,12 @@ msgid "DSN"
 msgstr "DSN"
 
 #: 
-msgid "Database Server"
-msgstr "Server bază de date"
-
-#: 
 msgid "Debug Info"
 msgstr "Informații depanare"
 
 #: 
 msgid "Document Root"
 msgstr "Rădăcina documentului"
-
-#: 
-msgid "Email Configuration"
-msgstr "Configurare e-mail"
-
-#: 
-msgid "Email Debug Info"
-msgstr "Informații depanare e-mail"
 
 #: 
 msgid "Filesystem Permissions"
@@ -7156,10 +7031,6 @@ msgid "PHP & Server Requirements"
 msgstr "Cerințe PHP și server"
 
 #: 
-msgid "PHP Configuration"
-msgstr "Configurare PHP"
-
-#: 
 msgid "Platform"
 msgstr "Platformă"
 
@@ -7170,10 +7041,6 @@ msgstr "Calea rădăcină"
 #: 
 msgid "SMTP Host"
 msgstr "Gazdă SMTP"
-
-#: 
-msgid "Server Information"
-msgstr "Informații server"
 
 #: 
 msgid "Software"
@@ -8475,10 +8342,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Se termină cu un <strong>slash la sfârșit</strong> (/)"
 
 #: 
-msgid "Error:"
-msgstr "Eroare:"
-
-#: 
 msgid "Find the line:"
 msgstr "Găsiți linia:"
 
@@ -8876,10 +8739,6 @@ msgstr[1] "%d persoane adăugate cu succes la grupul selectat."
 msgstr[2] "%d persoane adăugate cu succes la grupul selectat."
 
 #: 
-msgid "A "
-msgstr "Un/O "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Sigur doriți să ștergeți"
 
@@ -8908,10 +8767,6 @@ msgid "Delete Confirmation"
 msgstr "Confirmare ștergere"
 
 #: 
-msgid "Existing"
-msgstr "Existent"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Câmpuri personalizate de familie existente"
 
@@ -8934,10 +8789,6 @@ msgstr "Token CSRF nevalid"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Câmpuri sau selecții nevalide."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Element șters cu succes"
 
 #: 
 msgid "Move down"
@@ -8974,10 +8825,6 @@ msgstr "Tip proprietate"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "Există persoane atribuite acestei oportunități de voluntariat. Ștergerea le va dezasocia:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "Aceasta o va elimina de la toate persoanele atribuite în prezent."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11626,10 +11473,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Gestionează clasele de școală duminicală, profesorii și prezența elevilor"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Gestionează listele de clasificare, rolurile și tipurile de grupuri"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Gestionează fondurile de ofertă pentru urmărirea financiară"
 
@@ -11880,10 +11723,6 @@ msgstr "Deschide problemă GitHub"
 #: 
 msgid "Open user menu"
 msgstr "Deschide meniul utilizatorului"
-
-#: 
-msgid "Options"
-msgstr "Opțiuni"
 
 #: 
 msgid "Other Members"
@@ -15677,4 +15516,120 @@ msgstr "Evenimente viitoare"
 #: 
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "eveniment(e). Dezactivați tipul sau reatribuiți mai întâi evenimentele."
+
+#: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "URL absolut http(s) al logo-ului bisericii afișat în șabloanele de e-mail (și reutilizat în altă parte în viitor). Pentru cea mai bună redare în clienții de e-mail, utilizați o imagine banner largă cu un raport de aspect de aproximativ 3,5:1 (de exemplu 350×100 px), PNG sau JPG, servit prin HTTPS. Lăsați necompletat sau introduceți o valoare invalidă pentru a reveni la logo-ul implicit ChurchCRM."
+
+#: 
+msgid "An option with that name already exists"
+msgstr "Există deja o opțiune cu acel nume"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "Nu se poate șterge singura opțiune rămasă"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "Clipboard-ul nu este disponibil. Vă rugăm să utilizați butonul Descărcare pentru a salva codurile."
+
+#: 
+msgid "Custom Option"
+msgstr "Opțiune personalizată"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "Text implicit de previzualizare în căsuța de e-mail"
+
+#: 
+msgid "Email is disabled"
+msgstr "E-mailul este dezactivat"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "E-mailul este dezactivat. Configurați e-mailul înainte de a reseta parolele sau utilizați Schimbați parola."
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "E-mailul este dezactivat. Activați-l în setările Tabloului de bord e-mail înainte de testare."
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "Introduceți unul dintre codurile de recuperare de rezervă"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "Introduceți unul dintre codurile de recuperare de rezervă pentru a accesa contul"
+
+#: 
+msgid "Existing Options"
+msgstr "Opțiuni existente"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "Grupul nu a fost găsit pentru această listă de roluri"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "Starea inactivă poate fi modificată numai pentru lista de clasificări"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "Utilizatorii noi nu vor primi un e-mail de bun venit cu datele lor de autentificare. Partajați parola manual sau configurați mai întâi e-mailul."
+
+#: 
+msgid "Option name is required"
+msgstr "Numele opțiunii este obligatoriu"
+
+#: 
+msgid "Option not found"
+msgstr "Opțiunea nu a fost găsită"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "Rezumat scurt opțional afișat ca text de previzualizare în căsuța de e-mail lângă subiect. Lăsați necompletat pentru a permite clientului de e-mail să genereze automat din conținut. Tipurile individuale de e-mail (resetare parolă, membru nou, verificare) au propriul preheader; acesta este un fallback."
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "E-mailurile de resetare a parolei și e-mailurile de bun venit pentru conturi noi nu vor fi trimise până când e-mailul nu este configurat. Utilizatorii nu vor primi credențiale automat."
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "Resetarea parolei nu este disponibilă deoarece e-mailul este dezactivat. Contactați administratorul de sistem."
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "Parola a fost resetată, dar e-mailul nu a putut fi trimis. Utilizatorul este blocat — partajați noua parolă manual sau utilizați Schimbați parola."
+
+#: 
+msgid "Recovery Code"
+msgstr "Cod de recuperare"
+
+#: 
+msgid "Set up Email"
+msgstr "Configurați e-mailul"
+
+#: 
+msgid "Test SMTP Email"
+msgstr "Testați e-mailul SMTP"
+
+#: 
+msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
+msgstr "Acesta este un e-mail de test ChurchCRM care confirmă că configurația dvs. SMTP funcționează."
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "Imposibil de copiat în clipboard. Copiați codurile manual."
+
+#: 
+msgid "Use Recovery Code"
+msgstr "Utilizați codul de recuperare"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "Utilizați un cod de recuperare"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "Utilizați aplicația de autentificare"
 

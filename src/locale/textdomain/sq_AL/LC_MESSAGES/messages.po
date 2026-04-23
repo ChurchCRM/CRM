@@ -820,10 +820,6 @@ msgid "Family Info"
 msgstr "Info e familjes"
 
 #: 
-msgid "Contact Info"
-msgstr "Info e kontaktit"
-
-#: 
 msgid "Envelope Info"
 msgstr "Info e zarfit"
 
@@ -946,10 +942,6 @@ msgstr "Vlera"
 #: 
 msgid "Edit Value"
 msgstr "Edit Vlera"
-
-#: 
-msgid "Assign a New Property"
-msgstr "Cakto një Pronës Re"
 
 #: 
 msgid "Assign"
@@ -1679,20 +1671,8 @@ msgid "Group"
 msgstr "Grup"
 
 #: 
-msgid "Option"
-msgstr "Alternativë"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Error: Duplicate"
-
-#: 
 msgid "Default"
 msgstr "Parazgjedhur"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Duplicate emrin gjetur."
 
 #: 
 msgid "Make Default"
@@ -1705,10 +1685,6 @@ msgstr "Dalje"
 #: 
 msgid "Add New"
 msgstr "Shto të re"
-
-#: 
-msgid " by that name already exists."
-msgstr " me atë emër ekziston."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3192,10 +3168,6 @@ msgid "Security Group"
 msgstr "Grupi i sigurisë"
 
 #: 
-msgid "Security Groups"
-msgstr "Grupet e sigurisë"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Redaktori i grupeve të sigurisë"
 
@@ -3208,56 +3180,16 @@ msgid "Group Member Roles Editor"
 msgstr "Redaktori i roleve të anëtarëve të grupit"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Opsioni i listës së personalizuar të personit"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Opsionet e listës së personalizuar të personit"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Redaktori i opsioneve të listës së personalizuar të personit"
-
-#: 
-msgid "Custom List Option"
-msgstr "Opsioni i listës së personalizuar"
-
-#: 
-msgid "Custom List Options"
-msgstr "Opsionet e listës së personalizuar"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Redaktori i opsioneve të listës së personalizuar"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Opsioni i listës së personalizuar të familjes"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Opsionet e listës së personalizuar të familjes"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Redaktori i opsioneve të listës së personalizuar të familjes"
-
-#: 
-msgid "are not allowed."
-msgstr "nuk lejohen."
-
-#: 
-msgid "Name for New"
-msgstr "Emri për të renë"
-
-#: 
-msgid "Created via Family"
-msgstr "Krijuar përmes familjes"
-
-#: 
-msgid "Updated via Family"
-msgstr "Përditësuar përmes familjes"
 
 #: 
 msgid "Family Data Verified"
@@ -5478,14 +5410,6 @@ msgid "Added to group"
 msgstr "U shtua në grup"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "Hosti SMTP nuk është konfiguruar, ju lutem vizitoni faqjen e cilësimeve"
-
-#: 
-msgid "Debug Email Connection"
-msgstr "Korrigjo lidhjen e email-it"
-
-#: 
 msgid "This Family is Inactive"
 msgstr "Kjo familje është joaktive"
 
@@ -5496,14 +5420,6 @@ msgstr "Baza e të dhënave u pastrua."
 #: 
 msgid "Anniversaries"
 msgstr "Përvjetorët"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "Gabim në email-in e njoftimit të familjes së re"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "Gabim në email-in e njoftimit të personit të ri"
 
 #: 
 msgid "View User"
@@ -5688,10 +5604,6 @@ msgstr "është çaktivizuar"
 #: 
 msgid "Software Version"
 msgstr "Versioni i softuerit"
-
-#: 
-msgid "Database Version"
-msgstr "Versioni i Bazës së të Dhënave"
 
 #: 
 msgid "Application Prerequisites"
@@ -6057,14 +5969,6 @@ msgid "Loading"
 msgstr "Duke ngarkuar"
 
 #: 
-msgid "Family Property Unassignment"
-msgstr "Heqja e caktimit të vetisë familjare"
-
-#: 
-msgid "Do you want to remove"
-msgstr "Dëshironi të hiqni"
-
-#: 
 msgid "Today's Birthdays"
 msgstr "Ditëlindjet e sotme"
 
@@ -6099,10 +6003,6 @@ msgstr "Datë lindjeje e pavlefshme: Mungon muaji ose dita e lindjes."
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Datë lindjeje e pavlefshme: Mungon muaji dhe dita e lindjes."
-
-#: 
-msgid "System"
-msgstr "Sistemi"
 
 #. Context: locales
 #: 
@@ -6190,10 +6090,6 @@ msgid "Not Subscribed"
 msgstr "I paabonuar"
 
 #: 
-msgid "property"
-msgstr "veti"
-
-#: 
 msgid "Default Zip"
 msgstr "Kodi postar i parazgjedhur"
 
@@ -6231,10 +6127,6 @@ msgstr "Një karakter nga emri dhe një karakter nga mbiemri"
 #: 
 msgid "Two characters from FirstName"
 msgstr "Dy karaktere nga emri"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "Email-i i kishës nuk është vendosur, ju lutem vizitoni faqjen e cilësimeve"
 
 #. Context: locales
 #: 
@@ -6995,10 +6887,6 @@ msgid "Base URL"
 msgstr "URL bazë"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "Instalimi i ChurchCRM"
-
-#: 
 msgid "Copy"
 msgstr "Kopjo"
 
@@ -7007,24 +6895,12 @@ msgid "DSN"
 msgstr "DSN"
 
 #: 
-msgid "Database Server"
-msgstr "Serveri i bazës së të dhënave"
-
-#: 
 msgid "Debug Info"
 msgstr "Informacioni i korrigjimit"
 
 #: 
 msgid "Document Root"
 msgstr "Rrënja e dokumentit"
-
-#: 
-msgid "Email Configuration"
-msgstr "Konfigurimi i email-it"
-
-#: 
-msgid "Email Debug Info"
-msgstr "Informacioni i korrigjimit të email-it"
 
 #: 
 msgid "Filesystem Permissions"
@@ -7067,10 +6943,6 @@ msgid "PHP & Server Requirements"
 msgstr "Kërkesat e PHP dhe serverit"
 
 #: 
-msgid "PHP Configuration"
-msgstr "Konfigurimi i PHP"
-
-#: 
 msgid "Platform"
 msgstr "Platforma"
 
@@ -7081,10 +6953,6 @@ msgstr "Shtegu rrënjë"
 #: 
 msgid "SMTP Host"
 msgstr "Hosti SMTP"
-
-#: 
-msgid "Server Information"
-msgstr "Informacioni i serverit"
 
 #: 
 msgid "Software"
@@ -8384,10 +8252,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Përfundon me një <strong>pjerret (slash)</strong> (/)"
 
 #: 
-msgid "Error:"
-msgstr "Gabim:"
-
-#: 
 msgid "Find the line:"
 msgstr "Gjeni rreshtin:"
 
@@ -8782,10 +8646,6 @@ msgstr[0] "%d person u shtua me sukses në grupin e zgjedhur."
 msgstr[1] "%d persona u shtuan me sukses në grupin e zgjedhur."
 
 #: 
-msgid "A "
-msgstr "Një "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "A jeni të sigurt që dëshironi të fshini"
 
@@ -8814,10 +8674,6 @@ msgid "Delete Confirmation"
 msgstr "Konfirmimi i fshirjes"
 
 #: 
-msgid "Existing"
-msgstr "Ekzistues"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Fushat e personalizuara ekzistuese të familjes"
 
@@ -8840,10 +8696,6 @@ msgstr "Token CSRF i pavlefshëm"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Fusha ose përzgjedhje të pavlefshme."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Elementi u fshi me sukses"
 
 #: 
 msgid "Move down"
@@ -8880,10 +8732,6 @@ msgstr "Lloji i pronës"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "Ka njerëz të caktuar në këtë mundësi vullnetare. Fshirja do të heqë caktimin për:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "Kjo do ta heqë atë nga të gjithë njerëzit e caktuar aktualisht."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11529,10 +11377,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Administro klasat e shkollës së diel, mësuesit dhe frekuentimin e studentëve"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Administro listat e klasifikimit, rolet dhe llojet e grupmesionit"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Administro fondet e dhuratave për ndjekjen financiare"
 
@@ -11783,10 +11627,6 @@ msgstr "Hapa Problemin GitHub"
 #: 
 msgid "Open user menu"
 msgstr "Hapa menunë e përdoruesit"
-
-#: 
-msgid "Options"
-msgstr "Opsione"
 
 #: 
 msgid "Other Members"
@@ -15579,4 +15419,120 @@ msgstr "Ngjarjet e ardhshme"
 #: 
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "ngjarje. Çaktivizoni llojin ose ricaktoni ngjarjet fillimisht."
+
+#: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "URL absolut http(s) i logos së kishës që shfaqet në shablonet e emailit (dhe ripërdoret gjetkë në të ardhmen). Për renderim më të mirë në klientët e emailit, përdorni një imazh baner të gjerë me raport pamjeje rreth 3.5:1 (p.sh. 350×100 px), PNG ose JPG, të shërbyer mbi HTTPS. Lini bosh ose vendosni një vlerë të pavlefshme për t'u rikthyer te logoja e parazgjedhur e ChurchCRM."
+
+#: 
+msgid "An option with that name already exists"
+msgstr "Tashmë ekziston një opsion me atë emër"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "Nuk mund të fshihet opsioni i vetëm i mbetur"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "Kllipbordi nuk është i disponueshëm. Ju lutemi përdorni butonin e Shkarkimit për të ruajtur kodet tuaja."
+
+#: 
+msgid "Custom Option"
+msgstr "Opsion i personalizuar"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "Teksti i parazgjedhur i parapamjes së kutisë hyrëse"
+
+#: 
+msgid "Email is disabled"
+msgstr "Emaili është i çaktivizuar"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "Emaili është i çaktivizuar. Konfiguroni emailin para rivendosjes së fjalëkalimeve, ose përdorni Ndrysho Fjalëkalimin."
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "Emaili është i çaktivizuar. Aktivizojeni në cilësimet e Panelit të Emailit para testimit."
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "Vendosni një nga kodet tuaja rezervë të rikuperimit"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "Vendosni një nga kodet tuaja rezervë të rikuperimit për të hyrë në llogarinë tuaj"
+
+#: 
+msgid "Existing Options"
+msgstr "Opsionet ekzistuese"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "Grupi nuk u gjet për këtë listë rolesh"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "Statusi joaktiv mund të ndryshohet vetëm për listën e klasifikimeve"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "Përdoruesit e rinj nuk do të marrin një email mirëseardhje me kredencialet e tyre. Ndani fjalëkalimin me ta manualisht, ose konfiguroni emailin fillimisht."
+
+#: 
+msgid "Option name is required"
+msgstr "Emri i opsionit është i detyrueshëm"
+
+#: 
+msgid "Option not found"
+msgstr "Opsioni nuk u gjet"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "Përmbledhje e shkurtër opsionale e shfaqur si tekst parapamjeje pranë rreshtit të temës. Lini bosh që klienti i emailit të gjenerojë automatikisht nga trupi. Llojet e emaileve (rivendosja e fjalëkalimit, anëtar i ri, verifikimi) vendosin titullin e tyre; ky është alternativë."
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "Emailet për rivendosjen e fjalëkalimit dhe emailet mirëseardhje për llogari të reja nuk do të dërgohen derisa emaili të konfigurohet. Përdoruesit nuk do të marrin kredenciale automatikisht."
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "Rivendosja e fjalëkalimit nuk është e disponueshme sepse emaili është i çaktivizuar. Ju lutemi kontaktoni administratorin e sistemit."
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "Fjalëkalimi u rivendos por emaili nuk mund të dërgohej. Përdoruesi është i bllokuar — ndani fjalëkalimin e ri manualisht ose përdorni Ndrysho Fjalëkalimin."
+
+#: 
+msgid "Recovery Code"
+msgstr "Kodi i rikuperimit"
+
+#: 
+msgid "Set up Email"
+msgstr "Konfiguro Emailin"
+
+#: 
+msgid "Test SMTP Email"
+msgstr "Testo Email SMTP"
+
+#: 
+msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
+msgstr "Ky është një email testues i ChurchCRM që konfirmon se konfigurimi juaj SMTP po funksionon."
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "Nuk mund të kopjohet në kllipbord. Ju lutemi kopjoni kodet manualisht."
+
+#: 
+msgid "Use Recovery Code"
+msgstr "Përdor Kodin e Rikuperimit"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "Përdor një kod rikuperimi"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "Përdor aplikacionin vërtetues"
 

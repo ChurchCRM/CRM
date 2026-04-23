@@ -820,10 +820,6 @@ msgid "Family Info"
 msgstr "Perheen tiedot"
 
 #: 
-msgid "Contact Info"
-msgstr "Yhteystiedot"
-
-#: 
 msgid "Envelope Info"
 msgstr "Kirjekuoren tiedot"
 
@@ -946,10 +942,6 @@ msgstr "Arvo"
 #: 
 msgid "Edit Value"
 msgstr "Muokkaa arvoa"
-
-#: 
-msgid "Assign a New Property"
-msgstr "Määritä uusi ominaisuus"
 
 #: 
 msgid "Assign"
@@ -1664,20 +1656,8 @@ msgid "Group"
 msgstr "Ryhmä"
 
 #: 
-msgid "Option"
-msgstr "Vaihtoehto"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Virhe: Kaksoiskappale"
-
-#: 
 msgid "Default"
 msgstr "Oletus"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Löytyi duplikaatti nimi."
 
 #: 
 msgid "Make Default"
@@ -1690,10 +1670,6 @@ msgstr "Poistu"
 #: 
 msgid "Add New"
 msgstr "Lisää uusi"
-
-#: 
-msgid " by that name already exists."
-msgstr " tällä nimellä on jo olemassa."
 
 #: 
 msgid "Buyer Number Editor"
@@ -3169,10 +3145,6 @@ msgid "Security Group"
 msgstr "Turvallisuusryhmä"
 
 #: 
-msgid "Security Groups"
-msgstr "Turvallisuusryhmät"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Turvallisuusryhmien muokkain"
 
@@ -3185,56 +3157,16 @@ msgid "Group Member Roles Editor"
 msgstr "Ryhmän jäsenen roolien muokkain"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Henkilön mukautettu luetteloasetus"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Henkilön mukautetut luetteloasetukset"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Henkilön mukautettujen luetteloasetusten muokkain"
-
-#: 
-msgid "Custom List Option"
-msgstr "Mukautettu luetteloasetus"
-
-#: 
-msgid "Custom List Options"
-msgstr "Mukautetut luetteloasetukset"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Mukautettujen luetteloasetusten muokkain"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Perheen mukautettu luetteloasetus"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Perheen mukautetut luetteloasetukset"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Perheen mukautettujen luetteloasetusten muokkain"
-
-#: 
-msgid "are not allowed."
-msgstr "ei ole sallittu."
-
-#: 
-msgid "Name for New"
-msgstr "Nimi uudelle"
-
-#: 
-msgid "Created via Family"
-msgstr "Luotu perheen kautta"
-
-#: 
-msgid "Updated via Family"
-msgstr "Päivitetty perheen kautta"
 
 #: 
 msgid "Family Data Verified"
@@ -5455,14 +5387,6 @@ msgid "Added to group"
 msgstr "Lisätty ryhmään"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "SMTP-palvelinta ei ole määritetty, käy asetussivulla"
-
-#: 
-msgid "Debug Email Connection"
-msgstr "Sähköpostiyhteyden vianetsintä"
-
-#: 
 msgid "This Family is Inactive"
 msgstr "Tämä perhe on epäaktiivinen"
 
@@ -5473,14 +5397,6 @@ msgstr "Tietokanta on tyhjennetty."
 #: 
 msgid "Anniversaries"
 msgstr "Vuosipäivät"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "Virhe uuden perheen ilmoitussähköpostia lähetettäessä"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "Virhe uuden henkilön ilmoitussähköpostia lähetettäessä"
 
 #: 
 msgid "View User"
@@ -5665,10 +5581,6 @@ msgstr "on poissa käytöstä"
 #: 
 msgid "Software Version"
 msgstr "Ohjelmistoversio"
-
-#: 
-msgid "Database Version"
-msgstr "Tietokantaversio"
 
 #: 
 msgid "Application Prerequisites"
@@ -6029,14 +5941,6 @@ msgid "Loading"
 msgstr "Ladataan"
 
 #: 
-msgid "Family Property Unassignment"
-msgstr "Perheen ominaisuuden poisto"
-
-#: 
-msgid "Do you want to remove"
-msgstr "Haluatko poistaa"
-
-#: 
 msgid "Today's Birthdays"
 msgstr "Tämän päivän syntymäpäivät"
 
@@ -6071,10 +5975,6 @@ msgstr "Virheellinen syntymäaika: Syntymäkuukausi tai -päivä puuttuu."
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Virheellinen syntymäaika: Syntymäkuukausi ja -päivä puuttuvat."
-
-#: 
-msgid "System"
-msgstr "Järjestelmä"
 
 #. Context: locales
 #: 
@@ -6162,10 +6062,6 @@ msgid "Not Subscribed"
 msgstr "Ei tilattu"
 
 #: 
-msgid "property"
-msgstr "omaisuus"
-
-#: 
 msgid "Default Zip"
 msgstr "Oletuspostinumero"
 
@@ -6203,10 +6099,6 @@ msgstr "Yksi merkki etunimestä ja yksi merkki sukunimestä"
 #: 
 msgid "Two characters from FirstName"
 msgstr "Kaksi merkkiä etunimestä"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "Kirkon sähköpostia ei ole asetettu, käy asetussivulla"
 
 #. Context: locales
 #: 
@@ -6967,10 +6859,6 @@ msgid "Base URL"
 msgstr "Perus-URL"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "ChurchCRM-asennus"
-
-#: 
 msgid "Copy"
 msgstr "Kopioi"
 
@@ -6979,24 +6867,12 @@ msgid "DSN"
 msgstr "DSN"
 
 #: 
-msgid "Database Server"
-msgstr "Tietokantapalvelin"
-
-#: 
 msgid "Debug Info"
 msgstr "Vianetsintätiedot"
 
 #: 
 msgid "Document Root"
 msgstr "Dokumenttijuuri"
-
-#: 
-msgid "Email Configuration"
-msgstr "Sähköpostiasetukset"
-
-#: 
-msgid "Email Debug Info"
-msgstr "Sähköpostin vianetsintätiedot"
 
 #: 
 msgid "Filesystem Permissions"
@@ -7039,10 +6915,6 @@ msgid "PHP & Server Requirements"
 msgstr "PHP- ja palvelinvaatimukset"
 
 #: 
-msgid "PHP Configuration"
-msgstr "PHP-asetukset"
-
-#: 
 msgid "Platform"
 msgstr "Alusta"
 
@@ -7053,10 +6925,6 @@ msgstr "Juuripolku"
 #: 
 msgid "SMTP Host"
 msgstr "SMTP-isäntä"
-
-#: 
-msgid "Server Information"
-msgstr "Palvelimen tiedot"
 
 #: 
 msgid "Software"
@@ -8356,10 +8224,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Päättyy <strong>perässä olevaan vinoviivoihin</strong> (/)"
 
 #: 
-msgid "Error:"
-msgstr "Virhe:"
-
-#: 
 msgid "Find the line:"
 msgstr "Etsi rivi:"
 
@@ -8754,10 +8618,6 @@ msgstr[0] "%d Henkilö lisätty onnistuneesti valittuun Ryhmään."
 msgstr[1] "%d Henkilöä lisätty onnistuneesti valittuun Ryhmään."
 
 #: 
-msgid "A "
-msgstr "A "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Oletko varma, että haluat poistaa"
 
@@ -8786,10 +8646,6 @@ msgid "Delete Confirmation"
 msgstr "Poiston vahvistus"
 
 #: 
-msgid "Existing"
-msgstr "Olemassa oleva"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Olemassa olevat mukautetut perheen kentät"
 
@@ -8812,10 +8668,6 @@ msgstr "Virheellinen CSRF-tunnus"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Virheelliset kentät tai valinnat."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Kohde poistettu onnistuneesti"
 
 #: 
 msgid "Move down"
@@ -8852,10 +8704,6 @@ msgstr "Ominaisuustyyppi"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "Tälle vapaaehtoistyön mahdollisuudelle on määritetty ihmisiä. Poistaminen poistaa määritykset:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "Tämä poistaa sen kaikista sille määritetyistä ihmisistä."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -11501,10 +11349,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Hallitse pyhäkoulun luokkia, opettajia ja oppilaiden läsnäoloa"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Hallitse luokitteluluetteloita, rooleja ja ryhmätyyppejä"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Hallitse lahjoitusrahastoja taloudellista seurantaa varten"
 
@@ -11755,10 +11599,6 @@ msgstr "Avaa GitHub-ongelma"
 #: 
 msgid "Open user menu"
 msgstr "Avaa käyttäjävalikko"
-
-#: 
-msgid "Options"
-msgstr "Vaihtoehdot"
 
 #: 
 msgid "Other Members"
@@ -15551,4 +15391,120 @@ msgstr "Tulevat tapahtumat"
 #: 
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "tapahtuma(a). Poista tyyppi käytöstä tai määritä tapahtumat uudelleen ensin."
+
+#: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "Seurakunnan logon absoluuttinen http(s)-URL, joka näkyy sähköpostipohjissa (ja jota käytetään tulevaisuudessa muuallakin). Parasta näyttämistä sähköpostiohjelmissa varten käytä leveää bannerikuvaa noin 3,5:1-kuvasuhteella (esim. 350×100 px), PNG tai JPG, HTTPS:n kautta. Jätä tyhjäksi tai anna virheellinen arvo palataksesi ChurchCRM-oletuslogoon."
+
+#: 
+msgid "An option with that name already exists"
+msgstr "Vaihtoehto tällä nimellä on jo olemassa"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "Ainoa jäljellä olevaa vaihtoehtoa ei voi poistaa"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "Leikepöytä ei ole käytettävissä. Käytä Lataa-painiketta tallentaaksesi koodisi."
+
+#: 
+msgid "Custom Option"
+msgstr "Mukautettu vaihtoehto"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "Postilaatikon oletusesikatseluteksti"
+
+#: 
+msgid "Email is disabled"
+msgstr "Sähköposti on poistettu käytöstä"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "Sähköposti on poistettu käytöstä. Määritä sähköposti ennen salasanojen nollaamista tai käytä Vaihda salasana -toimintoa."
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "Sähköposti on poistettu käytöstä. Ota se käyttöön sähköpostin koontinäytön asetuksissa ennen testausta."
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "Anna yksi varmuuskopion palautuskoodeistasi"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "Anna yksi varmuuskopion palautuskoodeistasi päästäksesi tilillesi"
+
+#: 
+msgid "Existing Options"
+msgstr "Olemassa olevat vaihtoehdot"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "Ryhmää ei löydy tälle rooliluettelolle"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "Passiivinen tila voidaan vaihtaa vain luokitteluluettelossa"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "Uudet käyttäjät eivät saa tervetulosähköpostia tunnistetietoineen. Jaa salasana heille manuaalisesti tai määritä ensin sähköposti."
+
+#: 
+msgid "Option name is required"
+msgstr "Vaihtoehdon nimi on pakollinen"
+
+#: 
+msgid "Option not found"
+msgstr "Vaihtoehtoa ei löydy"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "Valinnainen lyhyt yhteenveto, joka näkyy postilaatikon esikatselutekstinä aiherivin vieressä. Jätä tyhjäksi, jotta sähköpostiohjelma luo sen automaattisesti viestistä. Sähköpostityypeillä (salasanan nollaus, uusi jäsen, vahvistus) on omat esiotsikot; tämä on varavaihtoehto."
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "Salasanan nollaussähköposteja ja uuden tilin tervetulosähköposteja ei lähetetä, ennen kuin sähköposti on määritetty. Käyttäjät eivät saa tunnistetietoja automaattisesti."
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "Salasanan nollaus ei ole käytettävissä, koska sähköposti on poistettu käytöstä. Ota yhteyttä järjestelmänvalvojaasi."
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "Salasana nollattiin, mutta sähköpostia ei voitu lähettää. Käyttäjä on lukittu — jaa uusi salasana manuaalisesti tai käytä Vaihda salasana -toimintoa."
+
+#: 
+msgid "Recovery Code"
+msgstr "Palautuskoodi"
+
+#: 
+msgid "Set up Email"
+msgstr "Määritä sähköposti"
+
+#: 
+msgid "Test SMTP Email"
+msgstr "Testaa SMTP-sähköposti"
+
+#: 
+msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
+msgstr "Tämä on ChurchCRM-testisähköposti, joka vahvistaa, että SMTP-määrityksesi toimii."
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "Leikepöydälle kopiointi epäonnistui. Kopioi koodit manuaalisesti."
+
+#: 
+msgid "Use Recovery Code"
+msgstr "Käytä palautuskoodia"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "Käytä palautuskoodia"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "Käytä todennussovellusta"
 

@@ -515,3 +515,116 @@ $private = !empty($input['private']) ? 1 : 0;
 **OpenAPI info:** `src/api/openapi/openapi-public-info.php`, `src/api/openapi/openapi-private-info.php`
 **Generated specs:** `CRM/openapi/public-api.yaml`, `CRM/openapi/private-api.yaml`
 **Documentation site:** `docs.churchcrm.io/openapi/`, `docs.churchcrm.io/docs/public-api/`, `docs.churchcrm.io/docs/private-api/`
+
+### HTML + JSON Content Negotiation in Middleware <!-- learned: 2026-04-22 -->
+
+Middleware that serves both a browser-facing HTML route and a JSON API
+route under the same auth/validation logic (e.g. `PublicCalendarMiddleware`
+gating both `/external/calendars/{token}` and `/api/public/calendar/{token}/...`)
+should centralise error-response rendering and pick the format by
+**path prefix first, Accept header as fallback** — never return a bare
+`$response->withStatus(403)` with no body, which produces a blank white
+screen for the HTML consumer.
+
+```php
+private function renderError(
+    ServerRequestInterface $request,
+    ResponseInterface $response,
+    int $status,
+    string $title,
+    string $message,
+    string $icon = 'ti-calendar-off',
+): ResponseInterface {
+    if ($this->prefersJson($request)) {
+        return SlimUtils::renderJSON($response, [
+            'error' => $title, 'message' => $message,
+        ], $status);
+    }
+    $renderer = new PhpRenderer(SystemURLs::getDocumentRoot() . '/external/templates/calendar/');
+    return $renderer->render($response->withStatus($status), 'error.php', [
+        'title' => $title, 'message' => $message, 'icon' => $icon,
+    ]);
+}
+
+private function prefersJson(ServerRequestInterface $request): bool
+{
+    $path = $request->getUri()->getPath();
+    if (str_contains($path, '/api/')) return true;
+    $accept = strtolower($request->getHeaderLine('Accept'));
+    return str_contains($accept, 'application/json') && !str_contains($accept, 'text/html');
+}
+```
+
+The HTML branch renders a branded template wrapped in `HeaderNotLoggedIn`
+/ `FooterNotLoggedIn` using `ChurchMetaData::getChurchLogoURL()` so the
+recipient of a shared link sees the church's identity, not a raw 4xx.
+
+### AttendanceCounts Round-trip Security <!-- learned: 2026-04-22 -->
+
+API endpoints that accept nested `AttendanceCounts` arrays (e.g.
+`POST /api/events`, `POST /api/events/:id`) MUST NOT trust client-supplied
+`id`, `name`, or `notes`. The attack surface:
+
+1. `id` — writing counts for arbitrary category IDs not belonging to the
+   event's type, or overwriting unrelated rows.
+2. `name` — tampering with the displayed category label (potential
+   stored XSS if re-rendered unsanitized).
+3. `notes` — injecting raw HTML that renders in reports or dashboards.
+
+Defenses, applied in a shared helper (`applyEventExtendedFields()`):
+
+```php
+// Whitelist countId by EventCountName rows for the event's type.
+$typeId = (int) $event->getType();
+$allowedNames = [];
+foreach (EventCountNameQuery::create()->filterByTypeId($typeId)->find() as $cn) {
+    $allowedNames[(int) $cn->getId()] = (string) $cn->getName();
+}
+
+foreach ($input['AttendanceCounts'] as $row) {
+    $countId = (int) ($row['id'] ?? 0);
+    if ($countId <= 0 || !array_key_exists($countId, $allowedNames)) {
+        continue; // silently drop foreign ids
+    }
+    $count = EventCountsQuery::create()->findPk([$eventId, $countId])
+        ?? (new EventCounts())->setEvtcntEventid($eventId)->setEvtcntCountid($countId);
+    // Canonical name comes from the DB, not the payload.
+    $count->setEvtcntCountname($allowedNames[$countId]);
+    $count->setEvtcntCountcount((int) ($row['count'] ?? 0));
+    // Notes are plain text — strip tags server-side.
+    $count->setEvtcntNotes(InputUtils::sanitizeText((string) ($row['notes'] ?? '')));
+    $count->save();
+}
+```
+
+Apply the same pattern for any other nested "rows belonging to a parent
+entity" API shape.
+
+### API-canonical Field Names, Shared `applyExtendedFields` Helper <!-- learned: 2026-04-22 -->
+
+When unifying legacy form POST handlers into a single API endpoint, keep
+the API's field names canonical (`Title`, `Type`, `Start`, `End`) and
+extract the "extended fields" (InActive / LinkedGroupId / AttendanceCounts
+for events) into a helper that `newXxx()` and `updateXxx()` both call
+**after** saving the main entity. This keeps the two write paths
+idempotent and impossible to drift:
+
+```php
+function newEvent(...) {
+    // ... create, setTitle, setEventType, setCalendars, save
+    applyEventExtendedFields($event, $input);
+    return SlimUtils::renderSuccessJSON($response);
+}
+
+function updateEvent(...) {
+    $Event->fromArray($input); // copies Title/Desc/Start/End/InActive automatically
+    // ... setCalendars, save
+    applyEventExtendedFields($Event, $input);
+    return SlimUtils::renderSuccessJSON($response);
+}
+```
+
+Enrich the `GET /{id}` response to include the extended fields so the UI
+doesn't need extra round-trips — fall back to type defaults when the
+entity has no rows yet (e.g. for Attendance Counts, return the event
+type's `EventCountName` categories with `count: 0`).
