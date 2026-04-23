@@ -102,23 +102,23 @@ body {
 }
 
 .text-primary {
-  color: #007bff !important;
+  color: #007bff;
 }
 
 .text-danger {
-  color: #dc3545 !important;
+  color: #dc3545;
 }
 
 .text-success {
-  color: #28a745 !important;
+  color: #28a745;
 }
 
 .text-warning {
-  color: #ffc107 !important;
+  color: #ffc107;
 }
 
 .modal-header.bg-success {
-  background-color: #28a745 !important;
+  background-color: #28a745;
 }
 
 .btn-close-white {

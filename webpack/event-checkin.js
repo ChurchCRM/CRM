@@ -478,7 +478,7 @@ $(() => {
   function openCheckoutByDialog(personId, personName, checkinId, checkinName) {
     const safeName = window.CRM.escapeHtml(String(personName));
     const dialog = bootbox.dialog({
-      title: i18next.t("Check out") + ": " + safeName,
+      title: `${i18next.t("Check out")}: ${safeName}`,
       message:
         '<p class="mb-2">' +
         i18next.t("Optional — record who is checking this person out (e.g. a parent picking up a child).") +
@@ -498,18 +498,18 @@ $(() => {
         "</small>",
       buttons: {
         cancel: {
-          label: '<i class="ti ti-x"></i> ' + i18next.t("Cancel"),
+          label: `<i class="ti ti-x"></i> ${i18next.t("Cancel")}`,
           className: "btn-link",
         },
         skip: {
-          label: '<i class="ti ti-check"></i> ' + i18next.t("Skip & Check Out"),
+          label: `<i class="ti ti-check"></i> ${i18next.t("Skip & Check Out")}`,
           className: "btn-outline-warning",
           callback: () => {
             performCheckout(personId, null);
           },
         },
         confirm: {
-          label: '<i class="ti ti-user-check"></i> ' + i18next.t("Confirm Check Out"),
+          label: `<i class="ti ti-user-check"></i> ${i18next.t("Confirm Check Out")}`,
           className: "btn-primary",
           callback: () => {
             const val = $("#checkoutBySelect").val();
@@ -601,8 +601,8 @@ $(() => {
       title: i18next.t("Delete attendance record?"),
       message: `${i18next.t("Delete check-in record for")} <strong>${window.CRM.escapeHtml(String(personName || ""))}</strong>?`,
       buttons: {
-        cancel: { label: '<i class="ti ti-x"></i> ' + i18next.t("Cancel") },
-        confirm: { label: '<i class="ti ti-trash"></i> ' + i18next.t("Delete"), className: "btn-danger" },
+        cancel: { label: `<i class="ti ti-x"></i> ${i18next.t("Cancel")}` },
+        confirm: { label: `<i class="ti ti-trash"></i> ${i18next.t("Delete")}`, className: "btn-danger" },
       },
       callback: (confirmed) => {
         if (!confirmed) return;

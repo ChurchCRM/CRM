@@ -58,7 +58,7 @@ function checkBrowserLocale() {
     alert.className = "alert alert-info alert-dismissible";
     alert.style.marginBottom = "1rem";
 
-    const userSettingsUrl = window.CRM.root + "/v2/user/" + window.CRM.userId;
+    const userSettingsUrl = `${window.CRM.root}/v2/user/${window.CRM.userId}`;
 
     alert.innerHTML = `
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>

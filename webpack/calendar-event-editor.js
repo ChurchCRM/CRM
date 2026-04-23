@@ -71,7 +71,9 @@ function cleanup() {
   modalEl = null;
 
   // Remove any leftover backdrop and body overrides
-  document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
+  document.querySelectorAll(".modal-backdrop").forEach((el) => {
+    el.remove();
+  });
   document.body.classList.remove("modal-open");
   document.body.style.removeProperty("overflow");
   document.body.style.removeProperty("padding-right");
@@ -252,8 +254,8 @@ function bindDeleteHandler(event) {
         t("Deleting this event will also delete all attendance records. This cannot be undone.") +
         ` <strong>${escapeHtml(event.Title || "")}</strong>`,
       buttons: {
-        cancel: { label: '<i class="ti ti-x"></i> ' + t("Cancel") },
-        confirm: { label: '<i class="ti ti-trash"></i> ' + t("Delete"), className: "btn-danger" },
+        cancel: { label: `<i class="ti ti-x"></i> ${t("Cancel")}` },
+        confirm: { label: `<i class="ti ti-trash"></i> ${t("Delete")}`, className: "btn-danger" },
       },
       callback: (confirmed) => {
         if (!confirmed) return;

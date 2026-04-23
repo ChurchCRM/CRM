@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const barData = JSON.parse(chartElement.dataset.chart || "[]");
   const barLabels = barData.map((d) => d[0]);
   const barValues = barData.map((d) => d[1]);
-  const maxBarValue = barValues.length > 0 ? Math.max(...barValues) : 0;
+  const _maxBarValue = barValues.length > 0 ? Math.max(...barValues) : 0;
 
   const barChartOptions = {
     chart: {
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         show: false,
       },
       events: {
-        click: (event, chartContext, opts) => {
+        click: (_event, _chartContext, opts) => {
           if (opts.dataPointIndex !== undefined) {
             applyBirthdayFilter(barLabels[opts.dataPointIndex]);
           }
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const personName = $btn.data("person-name");
 
     bootbox.confirm({
-      message: i18next.t("Remove") + " <strong>" + personName + "</strong> " + i18next.t("from this class?"),
+      message: `${i18next.t("Remove")} <strong>${personName}</strong> ${i18next.t("from this class?")}`,
       buttons: {
         confirm: { label: i18next.t("Remove"), className: "btn-warning" },
         cancel: { label: i18next.t("Cancel"), className: "btn-secondary" },
@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     $btn
       .prop("disabled", true)
-      .html('<span class="spinner-border spinner-border-sm me-1"></span>' + i18next.t("Creating..."));
+      .html(`<span class="spinner-border spinner-border-sm me-1"></span>${i18next.t("Creating...")}`);
 
     window.CRM.APIRequest({
       method: "POST",
@@ -146,14 +146,14 @@ document.addEventListener("DOMContentLoaded", () => {
       data: JSON.stringify({ groupId: groupId }),
     })
       .done((resp) => {
-        const eventId = resp && resp.eventId;
-        const wasCreated = resp && resp.created;
+        const eventId = resp?.eventId;
+        const wasCreated = resp?.created;
         if (!eventId) {
           window.CRM.notify(i18next.t("Failed to create event. Please try again."), {
             type: "danger",
             delay: 5000,
           });
-          $btn.prop("disabled", false).html('<i class="ti ti-plus me-1"></i>' + i18next.t("Create Today's Event"));
+          $btn.prop("disabled", false).html(`<i class="ti ti-plus me-1"></i>${i18next.t("Create Today's Event")}`);
           return;
         }
         window.CRM.notify(
@@ -168,9 +168,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 600);
       })
       .fail((jqXHR) => {
-        const msg = (jqXHR.responseJSON && jqXHR.responseJSON.message) || i18next.t("Failed to create event.");
+        const msg = jqXHR.responseJSON?.message || i18next.t("Failed to create event.");
         window.CRM.notify(msg, { type: "danger", delay: 5000 });
-        $btn.prop("disabled", false).html('<i class="ti ti-plus me-1"></i>' + i18next.t("Create Today's Event"));
+        $btn.prop("disabled", false).html(`<i class="ti ti-plus me-1"></i>${i18next.t("Create Today's Event")}`);
       });
   });
 });

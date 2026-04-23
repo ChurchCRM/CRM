@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const data = await response.json();
         window.location.href = `${window.CRM.root}/groups/sundayschool/class/${data.Id}`;
-      } catch (error) {
+      } catch (_error) {
         window.CRM.notify(i18next.t("Failed to create class. Please try again."), { type: "danger", delay: 5000 });
       }
     });
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!cartRes.ok) throw new Error(`HTTP ${cartRes.status}`);
 
       window.CRM.notify(i18next.t("Members added to cart."), { type: "success", delay: 3000 });
-    } catch (error) {
+    } catch (_error) {
       window.CRM.notify(i18next.t("Failed to add members to cart. Please try again."), { type: "danger", delay: 5000 });
     }
   });
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     $btn
       .prop("disabled", true)
-      .html('<span class="spinner-border spinner-border-sm me-1"></span>' + i18next.t("Loading..."));
+      .html(`<span class="spinner-border spinner-border-sm me-1"></span>${i18next.t("Loading...")}`);
 
     try {
       // Find an event type linked to this group, or use a generic one
@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const data = await createRes.json();
       window.location.href = `${window.CRM.root}/event/checkin/${data.eventId}`;
-    } catch (error) {
+    } catch (_error) {
       // Fall back to check-in page
       window.location.href = `${window.CRM.root}/event/checkin`;
     }
@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const groupName = $(this).data("group-name");
 
     bootbox.confirm({
-      message: i18next.t("Are you sure you want to delete") + " <strong>" + groupName + "</strong>?",
+      message: `${i18next.t("Are you sure you want to delete")} <strong>${groupName}</strong>?`,
       buttons: {
         confirm: { label: i18next.t("Delete"), className: "btn-danger" },
         cancel: { label: i18next.t("Cancel"), className: "btn-secondary" },
@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             window.location.reload();
           })
-          .catch((error) => {
+          .catch((_error) => {
             window.CRM.notify(i18next.t("Failed to delete class. Please try again."), { type: "danger", delay: 5000 });
           });
       },

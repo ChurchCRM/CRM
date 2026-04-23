@@ -236,7 +236,7 @@
 
 /* ── Upgrade wizard card visibility ── */
 #upgrade-wizard-card.d-none {
-  display: none !important;
+  display: none;
 }
 
 /* ── Full-page spinner overlay ── */

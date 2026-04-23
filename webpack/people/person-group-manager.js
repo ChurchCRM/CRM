@@ -264,7 +264,7 @@ function handleChangeRole(personId, groupId, currentRoleId) {
 function handleRemoveFromGroup(personId, groupId, groupName) {
   bootbox.confirm({
     title: i18next.t("Remove from Group"),
-    message: i18next.t("Are you sure you want to remove this person from") + " <strong>" + groupName + "</strong>?",
+    message: `${i18next.t("Are you sure you want to remove this person from")} <strong>${groupName}</strong>?`,
     buttons: {
       cancel: { label: i18next.t("Cancel"), className: "btn-ghost-secondary" },
       confirm: { label: i18next.t("Remove"), className: "btn-danger" },
@@ -284,7 +284,7 @@ function handleRemoveFromGroup(personId, groupId, groupName) {
  * Call once on DOMContentLoaded.
  */
 export function initGroupManager() {
-  const personId = window.CRM && window.CRM.currentPersonID;
+  const personId = window.CRM?.currentPersonID;
   if (!personId) return;
 
   document.addEventListener("click", (e) => {
