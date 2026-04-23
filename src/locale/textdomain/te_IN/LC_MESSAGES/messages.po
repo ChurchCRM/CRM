@@ -15309,3 +15309,487 @@ msgstr "బదులుగా రికవరీ కోడ్ ఉపయోగి
 msgid "Use authenticator app instead"
 msgstr "బదులుగా అథెంటికేటర్ యాప్ ఉపయోగించండి"
 
+#: 
+msgid "%d modules loaded"
+msgstr "%d మాడ్యూల్‌లు లోడ్ అయ్యాయి"
+
+#: 
+msgid "(PHP default)"
+msgstr "(PHP డిఫాల్ట్)"
+
+#: 
+msgid "(none)"
+msgstr "(ఏదీ లేదు)"
+
+#: 
+msgid "(not set)"
+msgstr "(సెట్ చేయబడలేదు)"
+
+#: 
+msgid "All checks passing"
+msgstr "అన్ని తనిఖీలు సమర్థవంతంగా పూర్తయ్యాయి"
+
+#: 
+msgid "App"
+msgstr "App"
+
+#: 
+msgid "Browser time zone differs:"
+msgstr "బ్రౌజర్ టైమ్ జోన్ వేరుగా ఉంది:"
+
+#: 
+msgid "Calendar time zone:"
+msgstr "క్యాలెండర్ టైమ్ జోన్:"
+
+#: 
+msgid "Cannot send test email"
+msgstr "టెస్ట్ ఇమెయిల్ పంపలేకపోతున్నాము"
+
+#: 
+msgid "Charset"
+msgstr "Charset"
+
+#: 
+msgid "Church Email address is not set — the test email has nowhere to go."
+msgstr "సంఘం ఇమెయిల్ చిరునామా సెట్ చేయబడలేదు — టెస్ట్ ఇమెయిల్ ఎక్కడికీ వెళ్ళడానికి లేదు."
+
+#: 
+msgid "Church email — configured on the"
+msgstr "సంఘం ఇమెయిల్ — ఇక్కడ కాన్ఫిగర్ చేయబడింది"
+
+#: 
+msgid "ChurchCRM Test Email"
+msgstr "ChurchCRM టెస్ట్ ఇమెయిల్"
+
+#: 
+msgid "Collation"
+msgstr "Collation"
+
+#: 
+msgid "Connection"
+msgstr "కనెక్షన్"
+
+#: 
+msgid "Database"
+msgstr "Database"
+
+#: 
+msgid "Delivery"
+msgstr "డెలివరీ"
+
+#: 
+msgid "Disk (Images Root)"
+msgstr "డిస్క్ (ఇమేజెస్ రూట్)"
+
+#: 
+msgid "Display Errors"
+msgstr "Display Errors"
+
+#: 
+msgid "Email Debug"
+msgstr "ఇమెయిల్ డీబగ్"
+
+#: 
+msgid "Environment"
+msgstr "ఎన్విరాన్‌మెంట్"
+
+#: 
+msgid "Error Log"
+msgstr "ఎర్రర్ లాగ్"
+
+#: 
+msgid "Error Reporting"
+msgstr "Error Reporting"
+
+#: 
+msgid "Error:"
+msgstr "ఎర్రర్:"
+
+#: 
+msgid "Fix Settings"
+msgstr "సెట్టింగులను సరిచేయండి"
+
+#: 
+msgid "Hit Rate"
+msgstr "Hit Rate"
+
+#: 
+msgid "Host"
+msgstr "Host"
+
+#: 
+msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
+msgstr "కొద్ది నిమిషాలలో సందేశం రాకపోతే, స్పామ్/జంక్ ఫోల్డర్‌ను మరియు దిగువన ఉన్న SMTP డీబగ్ లాగ్‌ను తనిఖీ చేయండి."
+
+#: 
+msgid "If you can read this message in your inbox, your SMTP configuration is working correctly."
+msgstr "మీ ఇన్‌బాక్స్‌లో ఈ సందేశాన్ని చదవగలిగితే, మీ SMTP కాన్ఫిగరేషన్ సరిగ్గా పనిచేస్తోంది."
+
+#: 
+msgid "Incomplete"
+msgstr "అసంపూర్ణం"
+
+#: 
+msgid "Installed on Server"
+msgstr "సర్వర్‌లో ఇన్‌స్టాల్ చేయబడింది"
+
+#: 
+msgid "Integrity"
+msgstr "ఇంటిగ్రిటీ"
+
+#: 
+msgid "Issues detected"
+msgstr "సమస్యలు కనుగొనబడ్డాయి"
+
+#: 
+msgid "Loaded php.ini"
+msgstr "లోడ్ చేయబడిన php.ini"
+
+#: 
+msgid "Locale"
+msgstr "Locale"
+
+#: 
+msgid "Max Execution Time"
+msgstr "Max Execution Time"
+
+#: 
+msgid "Max POST Size"
+msgstr "Max POST Size"
+
+#: 
+msgid "Max Upload Size"
+msgstr "Max Upload Size"
+
+#: 
+msgid "Memory"
+msgstr "మెమొరీ"
+
+#: 
+msgid "Memory Limit"
+msgstr "Memory Limit"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
+msgstr "డెలివరీని నిర్ధారించడానికి ఇప్పుడు గ్రహీత ఇన్‌బాక్స్‌ను తనిఖీ చేయండి. ఈ సబ్జెక్ట్ కోసం వెతకండి:"
+
+#: 
+msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
+msgstr "OPcache ఎనేబుల్ చేయబడలేదు. దీన్ని ఎనేబుల్ చేయడం PHP పేజీ లోడ్‌లను వేగవంతం చేయడానికి తక్కువ-రిస్క్ మార్గం."
+
+#: 
+msgid "Off"
+msgstr "ఆఫ్"
+
+#: 
+msgid "On"
+msgstr "ఆన్"
+
+#: 
+msgid "Open the email debug tester"
+msgstr "ఇమెయిల్ డీబగ్ టెస్టర్‌ను తెరవండి"
+
+#: 
+msgid "PHP Version"
+msgstr "PHP వెర్షన్"
+
+#: 
+msgid "PHPMailer SMTP session"
+msgstr "PHPMailer SMTP సెషన్"
+
+#: 
+msgid "Prerequisites"
+msgstr "ముందస్తు అవసరాలు"
+
+#: 
+msgid "Review the SMTP debug log below for the handshake details, then adjust your settings."
+msgstr "హ్యాండ్‌షేక్ వివరాల కోసం దిగువన ఉన్న SMTP డీబగ్ లాగ్‌ను సమీక్షించి, ఆ తర్వాత మీ సెట్టింగులను సర్దుబాటు చేయండి."
+
+#: 
+msgid "SMTP Configuration"
+msgstr "SMTP కాన్ఫిగరేషన్"
+
+#: 
+msgid "SMTP Debug Log"
+msgstr "SMTP డీబగ్ లాగ్"
+
+#: 
+msgid "SMTP Host is not configured."
+msgstr "SMTP Host కాన్ఫిగర్ చేయబడలేదు."
+
+#: 
+msgid "SMTP configuration test — if this arrived, your setup works."
+msgstr "SMTP కాన్ఫిగరేషన్ టెస్ట్ — ఇది వచ్చి ఉంటే, మీ సెటప్ పనిచేస్తోంది."
+
+#: 
+msgid "Schema Version"
+msgstr "స్కీమా వెర్షన్"
+
+#: 
+msgid "Send Again"
+msgstr "మళ్ళీ పంపండి"
+
+#: 
+msgid "Send a test message to verify your SMTP configuration"
+msgstr "మీ SMTP కాన్ఫిగరేషన్‌ను ధృవీకరించడానికి టెస్ట్ సందేశం పంపండి"
+
+#: 
+msgid "Server"
+msgstr "Server"
+
+#: 
+msgid "Server Version"
+msgstr "సర్వర్ వెర్షన్"
+
+#: 
+msgid "Session Handler"
+msgstr "సెషన్ హ్యాండ్లర్"
+
+#: 
+msgid "Session Save Path"
+msgstr "సెషన్ సేవ్ పాత్"
+
+#: 
+msgid "Settings Valid"
+msgstr "సెట్టింగులు చెల్లుబాటు అయ్యేవి"
+
+#: 
+msgid "Subject"
+msgstr "సబ్జెక్ట్"
+
+#: 
+msgid "Test"
+msgstr "Test"
+
+#: 
+msgid "Test email accepted by SMTP server"
+msgstr "SMTP సర్వర్ ద్వారా టెస్ట్ ఇమెయిల్ ఆమోదించబడింది"
+
+#: 
+msgid "Test email failed to send"
+msgstr "టెస్ట్ ఇమెయిల్ పంపడంలో విఫలమైంది"
+
+#: 
+msgid "This is a ChurchCRM test email."
+msgstr "ఇది ఒక ChurchCRM టెస్ట్ ఇమెయిల్."
+
+#: 
+msgid "Timeout"
+msgstr "Timeout"
+
+#: 
+msgid "Timezone"
+msgstr "టైమ్‌జోన్"
+
+#: 
+msgid "Unable to list web server modules (non-Apache SAPI)."
+msgstr "వెబ్ సర్వర్ మాడ్యూల్‌లను జాబితా చేయలేకపోతున్నాము (non-Apache SAPI)."
+
+#: 
+msgid "Update Settings"
+msgstr "సెట్టింగులను నవీకరించండి"
+
+#: 
+msgid "View full photo"
+msgstr "పూర్తి ఫోటోను చూడండి"
+
+#: 
+msgid "page."
+msgstr "పేజీ."
+
+#: 
+msgid "user:"
+msgstr "వినియోగదారు:"
+
+#: 
+msgid "1. Download the template"
+msgstr "1. టెంప్లేట్‌ను డౌన్‌లోడ్ చేయండి"
+
+#: 
+msgid "2. Fill in your data"
+msgstr "2. మీ డేటాను నింపండి"
+
+#: 
+msgid "3. Upload and map"
+msgstr "3. అప్‌లోడ్ చేసి మ్యాప్ చేయండి"
+
+#: 
+msgid "Add Recurring Event"
+msgstr "పునరావృత ఈవెంట్‌ను జోడించండి"
+
+#: 
+msgid "Available after the event is saved."
+msgstr "ఈవెంట్ సేవ్ చేయబడిన తర్వాత అందుబాటులో ఉంటుంది."
+
+#: 
+msgid "Boolean properties/fields accept yes / no / true / false / 1 / 0."
+msgstr "Boolean ప్రాపర్టీలు/ఫీల్డ్‌లు yes / no / true / false / 1 / 0 అంగీకరిస్తాయి."
+
+#: 
+msgid "ChurchCRM auto-matches each column by name. Anything it cannot match is marked as Unmapped — pick a field or leave it as Ignore."
+msgstr "ChurchCRM ప్రతి కాలమ్‌ను పేరు ద్వారా స్వయంచాలకంగా సరిపోల్చుతుంది. సరిపోల్చలేనివి Unmapped గా గుర్తించబడతాయి — ఒక ఫీల్డ్‌ను ఎంచుకోండి లేదా Ignore గా వదిలేయండి."
+
+#: 
+msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
+msgstr "CSV ఫైల్‌ను పార్స్ చేయలేకపోయాము. అది హెడర్ వరుసతో ఉన్న చెల్లుబాటు అయ్యే కామా-సెపరేటెడ్ ఫైల్ అని తనిఖీ చేయండి."
+
+#: 
+msgid "Custom field columns you have not configured are ignored — nothing is created on the fly."
+msgstr "మీరు కాన్ఫిగర్ చేయని కస్టమ్ ఫీల్డ్ కాలమ్‌లు విస్మరించబడతాయి — తక్షణమే ఏదీ సృష్టించబడదు."
+
+#: 
+msgid "Custom fields and properties are supported"
+msgstr "కస్టమ్ ఫీల్డ్‌లు మరియు ప్రాపర్టీలు మద్దతు ఇవ్వబడ్డాయి"
+
+#: 
+msgid "Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a month and day with no year."
+msgstr "తేదీ ఫీల్డ్‌లు YYYY-MM-DD లేదా M/D/YYYY అంగీకరిస్తాయి. సంవత్సరం లేకుండా నెల మరియు రోజు కోసం 0000-MM-DD లేదా M/D ఉపయోగించండి."
+
+#: 
+msgid "Each row is one person. People in the same family share a FamilyID. Leave columns blank when you have no value for them."
+msgstr "ప్రతి వరుస ఒక వ్యక్తి. ఒకే కుటుంబంలోని వ్యక్తులు ఒక FamilyID ను పంచుకుంటారు. విలువ లేనప్పుడు కాలమ్‌లను ఖాళీగా వదిలేయండి."
+
+#: 
+msgid "Event Timing"
+msgstr "ఈవెంట్ సమయం"
+
+#: 
+msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
+msgstr "From మరియు To మధ్య ప్రతి సరిపోలే సందర్భానికి అదే ప్రారంభ/ముగింపు సమయంలో దాని స్వంత ఈవెంట్ లభిస్తుంది."
+
+#: 
+msgid "External calendar sharing is disabled"
+msgstr "బాహ్య క్యాలెండర్ షేరింగ్ నిలిపివేయబడింది"
+
+#: 
+msgid "Failed to load event editor. Please refresh and try again."
+msgstr "ఈవెంట్ ఎడిటర్‌ను లోడ్ చేయడంలో విఫలమైంది. దయచేసి రిఫ్రెష్ చేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Family Custom"
+msgstr "కుటుంబం కస్టమ్"
+
+#: 
+msgid "Family Property"
+msgstr "కుటుంబం ప్రాపర్టీ"
+
+#: 
+msgid "Fields"
+msgstr "ఫీల్డ్‌లు"
+
+#: 
+msgid "Go to home"
+msgstr "హోమ్‌కు వెళ్ళండి"
+
+#: 
+msgid "Hide advanced options"
+msgstr "అధునాతన ఎంపికలను దాచండి"
+
+#: 
+msgid "How the CSV Import Works"
+msgstr "CSV దిగుమతి ఎలా పనిచేస్తుంది"
+
+#: 
+msgid "Imported from CSV"
+msgstr "CSV నుండి దిగుమతి చేయబడింది"
+
+#: 
+msgid "Invalid date format"
+msgstr "చెల్లని తేదీ ఫార్మాట్"
+
+#: 
+msgid "Loading event editor…"
+msgstr "ఈవెంట్ ఎడిటర్ లోడ్ అవుతోంది…"
+
+#: 
+msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
+msgstr "క్యాలెండర్ ఎంపిక చేయబడలేదు — ఈ ఈవెంట్ సేవ్ చేయబడుతుంది కానీ ఏ క్యాలెండర్ వీక్షణలో కనిపించదు."
+
+#: 
+msgid "No group"
+msgstr "పరిచర్య లేదు"
+
+#: 
+msgid "Not pinned to any calendar"
+msgstr "ఏ క్యాలెండర్‌కు పిన్ చేయబడలేదు"
+
+#: 
+msgid "Optional — sermon notes, materials, or other details copied to every generated event."
+msgstr "ఐచ్ఛికం — సందేశ గమనికలు, వనరులు లేదా ఇతర వివరాలు ఉత్పన్నమైన ప్రతి ఈవెంట్‌కు కాపీ చేయబడతాయి."
+
+#: 
+msgid "Person / Family"
+msgstr "వ్యక్తి / కుటుంబం"
+
+#: 
+msgid "Person Custom"
+msgstr "వ్యక్తి కస్టమ్"
+
+#: 
+msgid "Person Property"
+msgstr "వ్యక్తి ప్రాపర్టీ"
+
+#: 
+msgid "Show more options"
+msgstr "మరిన్ని ఎంపికలను చూపించండి"
+
+#: 
+msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
+msgstr "క్యాలెండర్ లింక్ అసంపూర్ణంగా ఉంది. మీకు పంపిన వ్యక్తితో URL ను తనిఖీ చేయండి."
+
+#: 
+msgid "The church administrator has not enabled external calendar sharing. Please contact them if you believe this is in error."
+msgstr "సంఘం నిర్వాహకుడు బాహ్య క్యాలెండర్ షేరింగ్‌ను ఎనేబుల్ చేయలేదు. ఇది తప్పు అని మీరు భావిస్తే దయచేసి వారిని సంప్రదించండి."
+
+#: 
+msgid "The start or end date in the link could not be understood. Try the base calendar link without date parameters."
+msgstr "లింక్‌లోని ప్రారంభ లేదా ముగింపు తేదీని అర్థం చేసుకోలేకపోయాము. తేదీ పారామితులు లేకుండా బేస్ క్యాలెండర్ లింక్‌ను ప్రయత్నించండి."
+
+#: 
+msgid "The template already contains every column you can map — the core Person/Family fields plus each custom field and property your site defines."
+msgstr "మీరు మ్యాప్ చేయగల ప్రతి కాలమ్‌ను టెంప్లేట్ ఇప్పటికే కలిగి ఉంది — కోర్ Person/Family ఫీల్డ్‌లు మరియు మీ సైట్ నిర్వచించిన ప్రతి కస్టమ్ ఫీల్డ్ మరియు ప్రాపర్టీ."
+
+#: 
+msgid "The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically."
+msgstr "ప్రతి Person/Family కస్టమ్ ఫీల్డ్ కోసం మరియు మీరు నిర్వచించిన ప్రతి ప్రాపర్టీ కోసం టెంప్లేట్ ఇప్పటికే ఒక కాలమ్‌ను కలిగి ఉంది. మీరు మాన్యువల్‌గా కాలమ్‌లను జోడిస్తే, కస్టమ్ ఫీల్డ్ లేదా ప్రాపర్టీ యొక్క ఖచ్చితమైన పేరును కాలమ్ హెడర్‌గా ఉపయోగించండి, ఇంపోర్టర్ స్వయంచాలకంగా దానిని సరిపోల్చుతుంది."
+
+#: 
+msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
+msgstr "ఈ క్యాలెండర్ లింక్ చెల్లనిది లేదా రద్దు చేయబడింది. ప్రస్తుత లింక్ కోసం సంఘాన్ని అడగండి."
+
+#: 
+msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
+msgstr "ఈ ఈవెంట్‌ను ఒక తరగతికి లేదా పరిచర్య రోస్టర్‌కు అనుసంధానిస్తుంది — Kiosk చెక్-ఇన్ ఫ్లో ద్వారా ఉపయోగించబడుతుంది."
+
+#: 
+msgid "Upload a CSV to create families and people in bulk."
+msgstr "కుటుంబాలను మరియు వ్యక్తులను బల్క్‌గా సృష్టించడానికి ఒక CSV ను అప్‌లోడ్ చేయండి."
+
+#: 
+msgid "Volunteer-entered headcounts, broken down by category."
+msgstr "స్వచ్ఛంద సేవకులు నమోదు చేసిన హెడ్‌కౌంట్‌లు, వర్గం ద్వారా విభజించబడ్డాయి."
+
+#: 
+msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
+msgstr "మీ CSV లో నకిలీ కాలమ్ పేర్లు ఉన్నాయి. నకిలీ కాలమ్‌లను పేరు మార్చండి (ఉదా. రెండవదానికి \"(2)\" జోడించండి) మరియు మళ్ళీ అప్‌లోడ్ చేయండి."
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "ఈ విరాళంగా ఇచ్చిన వస్తువును శాశ్వతంగా తొలగించాలని మీరు ఖచ్చితంగా అనుకుంటున్నారా?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "ఈ ప్యాడిల్ నంబర్‌ను శాశ్వతంగా తొలగించాలని మీరు ఖచ్చితంగా అనుకుంటున్నారా?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "విరాళంగా ఇచ్చిన వస్తువును తొలగించండి"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "ప్యాడిల్ నంబర్‌ను తొలగించండి"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "చెల్లని భద్రతా టోకెన్. దయచేసి మళ్ళీ ప్రయత్నించండి."
+

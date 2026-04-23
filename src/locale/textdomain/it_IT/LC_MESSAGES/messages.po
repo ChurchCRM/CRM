@@ -15221,6 +15221,10 @@ msgid "No active event assignment"
 msgstr "Nessuna assegnazione evento attiva"
 
 #: 
+msgid "Online"
+msgstr "Online"
+
+#: 
 msgid "Opens a 30-second window for devices to register at:"
 msgstr "Apre una finestra di 30 secondi per la registrazione dei dispositivi su:"
 
@@ -15377,6 +15381,10 @@ msgid "All checks passing"
 msgstr "Tutti i controlli superati"
 
 #: 
+msgid "App"
+msgstr "App"
+
+#: 
 msgid "Browser time zone differs:"
 msgstr "Il fuso orario del browser è diverso:"
 
@@ -15387,6 +15395,10 @@ msgstr "Fuso orario del calendario:"
 #: 
 msgid "Cannot send test email"
 msgstr "Impossibile inviare l'email di test"
+
+#: 
+msgid "Charset"
+msgstr "Charset"
 
 #: 
 msgid "Church Email address is not set — the test email has nowhere to go."
@@ -15401,8 +15413,16 @@ msgid "ChurchCRM Test Email"
 msgstr "Email di test ChurchCRM"
 
 #: 
+msgid "Collation"
+msgstr "Collation"
+
+#: 
 msgid "Connection"
 msgstr "Connessione"
+
+#: 
+msgid "Database"
+msgstr "Database"
 
 #: 
 msgid "Delivery"
@@ -15445,6 +15465,10 @@ msgid "Hit Rate"
 msgstr "Tasso di utilizzo cache"
 
 #: 
+msgid "Host"
+msgstr "Host"
+
+#: 
 msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
 msgstr "Se il messaggio non arriva entro pochi minuti, controlla la cartella spam/posta indesiderata e il log di debug SMTP qui sotto."
 
@@ -15471,6 +15495,10 @@ msgstr "Problemi rilevati"
 #: 
 msgid "Loaded php.ini"
 msgstr "php.ini caricato"
+
+#: 
+msgid "Locale"
+msgstr "Locale"
 
 #: 
 msgid "Max Execution Time"
@@ -15557,6 +15585,10 @@ msgid "Send a test message to verify your SMTP configuration"
 msgstr "Invia un messaggio di test per verificare la configurazione SMTP"
 
 #: 
+msgid "Server"
+msgstr "Server"
+
+#: 
 msgid "Server Version"
 msgstr "Versione server"
 
@@ -15577,6 +15609,10 @@ msgid "Subject"
 msgstr "Oggetto"
 
 #: 
+msgid "Test"
+msgstr "Test"
+
+#: 
 msgid "Test email accepted by SMTP server"
 msgstr "Email di test accettata dal server SMTP"
 
@@ -15587,6 +15623,10 @@ msgstr "Invio dell'email di test non riuscito"
 #: 
 msgid "This is a ChurchCRM test email."
 msgstr "Questa è un'email di test di ChurchCRM."
+
+#: 
+msgid "Timeout"
+msgstr "Timeout"
 
 #: 
 msgid "Timezone"
@@ -15783,4 +15823,24 @@ msgstr "Conteggi inseriti dai volontari, suddivisi per categoria."
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "Il file CSV contiene nomi di colonna duplicati. Rinomina le colonne duplicate (ad es. aggiungi \"(2)\" alla seconda) e carica di nuovo."
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "Sei sicuro di voler eliminare definitivamente questo articolo donato?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "Sei sicuro di voler eliminare definitivamente questo numero di paletta?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Elimina articolo donato"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Elimina numero di paletta"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Token di sicurezza non valido. Riprova."
 

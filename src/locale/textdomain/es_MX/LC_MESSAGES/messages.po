@@ -15401,6 +15401,10 @@ msgid "Hit Rate"
 msgstr "Tasa de aciertos"
 
 #: 
+msgid "Host"
+msgstr "Host"
+
+#: 
 msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
 msgstr "Si el mensaje no llega en unos minutos, revisa la carpeta de spam/correo no deseado y el registro de depuración SMTP a continuación."
 
@@ -15755,4 +15759,24 @@ msgstr "Recuentos de asistentes ingresados por voluntarios, desglosados por cate
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "Tu CSV tiene nombres de columna duplicados. Cambia el nombre de las columnas duplicadas (p. ej. agrega \"(2)\" a la segunda) y vuelve a subir."
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "¿Está seguro de que desea eliminar permanentemente este artículo donado?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "¿Está seguro de que desea eliminar permanentemente este número de paleta?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Eliminar artículo donado"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Eliminar número de paleta"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Token de seguridad no válido. Por favor, inténtelo de nuevo."
 

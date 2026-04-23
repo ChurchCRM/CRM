@@ -3629,6 +3629,7 @@
     "Kiosk Devices": "Pajisjet Kiosk",
     "Kiosk device has not been accepted by an administrator": "Pajisja kiosk nuk është pranuar nga një administrator",
     "No active event assignment": "Nuk ka caktim aktiv ngjarjesh",
+    "Online": "Online",
     "Opens a 30-second window for devices to register at:": "Hap një dritare 30-sekondëshe për regjistrimin e pajisjeve në:",
     "Pending": "Në pritje",
     "Register New Device": "Regjistro pajisje të re",
@@ -3725,6 +3726,7 @@
     "Session Save Path": "Shtegu i Ruajtjes së Sesionit",
     "Settings Valid": "Cilësimet janë të vlefshme",
     "Subject": "Tema",
+    "Test": "Test",
     "Test email accepted by SMTP server": "Email-i testues u pranua nga serveri SMTP",
     "Test email failed to send": "Dërgimi i email-it testues dështoi",
     "This is a ChurchCRM test email.": "Ky është një email testues i ChurchCRM.",
@@ -3777,5 +3779,10 @@
     "Ties this event to a class or ministry roster — used by the Kiosk check-in flow.": "Lidh këtë event me listën e një klase ose shërbese — e përdorur nga rrjedha e regjistrimit të Kioskës.",
     "Upload a CSV to create families and people in bulk.": "Ngarkoni një CSV për të krijuar familje dhe persona në masë.",
     "Volunteer-entered headcounts, broken down by category.": "Numërime të futura nga vullnetarët, të ndara sipas kategorisë.",
-    "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again.": "CSV-ja juaj ka emra kolonash të dublifikuar. Riemërtoni kolonat e dublifikuara (p.sh. shtoni \"(2)\" të dytës) dhe ngarkoni përsëri."
+    "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again.": "CSV-ja juaj ka emra kolonash të dublifikuar. Riemërtoni kolonat e dublifikuara (p.sh. shtoni \"(2)\" të dytës) dhe ngarkoni përsëri.",
+    "Are you sure you want to permanently delete this donated item?": "A jeni të sigurt që doni të fshini përgjithmonë këtë artikull të dhuruar?",
+    "Are you sure you want to permanently delete this paddle number?": "A jeni të sigurt që doni të fshini përgjithmonë këtë numër pagaie?",
+    "Delete Donated Item": "Fshi artikullin e dhuruar",
+    "Delete Paddle Number": "Fshi numrin e pagaies",
+    "Invalid security token. Please try again.": "Tokeni i sigurisë është i pavlefshëm. Ju lutemi provoni përsëri."
 }

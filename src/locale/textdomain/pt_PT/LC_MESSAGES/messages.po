@@ -15344,6 +15344,10 @@ msgid "No active event assignment"
 msgstr "Sem atribuição de evento ativa"
 
 #: 
+msgid "Online"
+msgstr "Online"
+
+#: 
 msgid "Opens a 30-second window for devices to register at:"
 msgstr "Abre uma janela de 30 segundos para que os dispositivos se registem em:"
 
@@ -15582,6 +15586,10 @@ msgstr "Corrigir definições"
 #: 
 msgid "Hit Rate"
 msgstr "Taxa de acertos"
+
+#: 
+msgid "Host"
+msgstr "Host"
 
 #: 
 msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
@@ -15938,4 +15946,24 @@ msgstr "Contagens de participantes inseridas por voluntários, discriminadas por
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "O seu CSV tem nomes de colunas duplicados. Renomeie as colunas duplicadas (p. ex. adicione \"(2)\" à segunda) e carregue novamente."
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "Tem a certeza de que pretende eliminar permanentemente este artigo doado?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "Tem a certeza de que pretende eliminar permanentemente este número de remo?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Eliminar artigo doado"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Eliminar número de remo"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Token de segurança inválido. Por favor, tente novamente."
 

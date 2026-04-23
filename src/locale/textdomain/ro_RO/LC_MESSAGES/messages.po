@@ -15285,6 +15285,10 @@ msgid "No active event assignment"
 msgstr "Nicio atribuire activă de eveniment"
 
 #: 
+msgid "Online"
+msgstr "Online"
+
+#: 
 msgid "Opens a 30-second window for devices to register at:"
 msgstr "Deschide o fereastră de 30 de secunde pentru înregistrarea dispozitivelor la:"
 
@@ -15645,6 +15649,10 @@ msgid "Send a test message to verify your SMTP configuration"
 msgstr "Trimiteți un mesaj de test pentru a verifica configurația SMTP"
 
 #: 
+msgid "Server"
+msgstr "Server"
+
+#: 
 msgid "Server Version"
 msgstr "Versiune server"
 
@@ -15663,6 +15671,10 @@ msgstr "Setări valide"
 #: 
 msgid "Subject"
 msgstr "Subiect"
+
+#: 
+msgid "Test"
+msgstr "Test"
 
 #: 
 msgid "Test email accepted by SMTP server"
@@ -15875,4 +15887,24 @@ msgstr "Numărători introduse de voluntari, defalcate pe categorii."
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "CSV-ul dvs. are nume de coloane duplicate. Redenumiți coloanele duplicate (de ex. adăugați \"(2)\" la a doua) și încărcați din nou."
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "Sigur doriți să ștergeți permanent acest articol donat?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "Sigur doriți să ștergeți permanent acest număr de paletă?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Șterge articol donat"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Șterge număr de paletă"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Token de securitate invalid. Vă rugăm să încercați din nou."
 

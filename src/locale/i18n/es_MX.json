@@ -3689,6 +3689,7 @@
     "Error Reporting": "Reporte de errores",
     "Fix Settings": "Corregir configuración",
     "Hit Rate": "Tasa de aciertos",
+    "Host": "Host",
     "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below.": "Si el mensaje no llega en unos minutos, revisa la carpeta de spam/correo no deseado y el registro de depuración SMTP a continuación.",
     "If you can read this message in your inbox, your SMTP configuration is working correctly.": "Si puedes leer este mensaje en tu bandeja de entrada, la configuración SMTP está funcionando correctamente.",
     "Incomplete": "Incompleto",
@@ -3777,5 +3778,10 @@
     "Ties this event to a class or ministry roster — used by the Kiosk check-in flow.": "Vincula este evento a un registro de clase o ministerio — utilizado por el flujo de entrada en el quiosco.",
     "Upload a CSV to create families and people in bulk.": "Sube un CSV para crear familias y feligreses en masa.",
     "Volunteer-entered headcounts, broken down by category.": "Recuentos de asistentes ingresados por voluntarios, desglosados por categoría.",
-    "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again.": "Tu CSV tiene nombres de columna duplicados. Cambia el nombre de las columnas duplicadas (p. ej. agrega \"(2)\" a la segunda) y vuelve a subir."
+    "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again.": "Tu CSV tiene nombres de columna duplicados. Cambia el nombre de las columnas duplicadas (p. ej. agrega \"(2)\" a la segunda) y vuelve a subir.",
+    "Are you sure you want to permanently delete this donated item?": "¿Está seguro de que desea eliminar permanentemente este artículo donado?",
+    "Are you sure you want to permanently delete this paddle number?": "¿Está seguro de que desea eliminar permanentemente este número de paleta?",
+    "Delete Donated Item": "Eliminar artículo donado",
+    "Delete Paddle Number": "Eliminar número de paleta",
+    "Invalid security token. Please try again.": "Token de seguridad no válido. Por favor, inténtelo de nuevo."
 }

@@ -15256,6 +15256,10 @@ msgid "No active event assignment"
 msgstr "Nincs aktív esemény-hozzárendelés"
 
 #: 
+msgid "Online"
+msgstr "Online"
+
+#: 
 msgid "Opens a 30-second window for devices to register at:"
 msgstr "30 másodperces ablakot nyit az eszközök regisztrálásához:"
 
@@ -15854,4 +15858,24 @@ msgstr "Önkéntesek által bevitt fejszámok, kategóriánként lebontva."
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "A CSV-ben ismétlődő oszlopnevek találhatók. Nevezze át az ismétlődő oszlopokat (pl. adja hozzá a \"(2)\" jelölést a másodikhoz) és töltse fel újra."
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "Biztosan véglegesen törölni szeretné ezt az adományozott tételt?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "Biztosan véglegesen törölni szeretné ezt a licitsorszámot?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Adományozott tétel törlése"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Licitsorszám törlése"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Érvénytelen biztonsági token. Kérjük, próbálja újra."
 
