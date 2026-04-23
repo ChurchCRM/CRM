@@ -3640,6 +3640,7 @@
     "Kiosk Devices": "Urządzenia kiosku",
     "Kiosk device has not been accepted by an administrator": "Urządzenie kiosku nie zostało zaakceptowane przez administratora",
     "No active event assignment": "Brak aktywnego przypisania zdarzenia",
+    "Online": "Online",
     "Opens a 30-second window for devices to register at:": "Otwiera 30-sekundowe okno dla urządzeń do rejestracji w:",
     "Pending": "Oczekujące",
     "Register New Device": "Zarejestruj nowe urządzenie",
@@ -3700,6 +3701,7 @@
     "Error:": "Błąd:",
     "Fix Settings": "Napraw ustawienia",
     "Hit Rate": "Współczynnik trafień",
+    "Host": "Host",
     "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below.": "Jeśli wiadomość nie dotrze w ciągu kilku minut, sprawdź folder ze spamem i dziennik debugowania SMTP poniżej.",
     "If you can read this message in your inbox, your SMTP configuration is working correctly.": "Jeśli widzisz tę wiadomość w skrzynce odbiorczej, konfiguracja SMTP działa poprawnie.",
     "Incomplete": "Niekompletne",
@@ -3735,6 +3737,7 @@
     "Session Save Path": "Ścieżka zapisu sesji",
     "Settings Valid": "Ustawienia prawidłowe",
     "Subject": "Temat",
+    "Test": "Test",
     "Test email accepted by SMTP server": "Testowa wiadomość przyjęta przez serwer SMTP",
     "Test email failed to send": "Wysyłanie testowej wiadomości nie powiodło się",
     "This is a ChurchCRM test email.": "To jest testowa wiadomość e-mail ChurchCRM.",
@@ -3787,5 +3790,10 @@
     "Ties this event to a class or ministry roster — used by the Kiosk check-in flow.": "Łączy to wydarzenie z listą uczestników klasy lub posługi — używane w procesie meldowania przez kiosk.",
     "Upload a CSV to create families and people in bulk.": "Prześlij plik CSV, aby masowo tworzyć rodziny i osoby.",
     "Volunteer-entered headcounts, broken down by category.": "Liczba osób wprowadzona przez wolontariuszy, z podziałem na kategorie.",
-    "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again.": "Twój plik CSV ma zduplikowane nazwy kolumn. Zmień nazwy zduplikowanych kolumn (np. dodaj \"(2)\" do drugiej) i prześlij ponownie."
+    "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again.": "Twój plik CSV ma zduplikowane nazwy kolumn. Zmień nazwy zduplikowanych kolumn (np. dodaj \"(2)\" do drugiej) i prześlij ponownie.",
+    "Are you sure you want to permanently delete this donated item?": "Czy na pewno chcesz trwale usunąć ten darowany przedmiot?",
+    "Are you sure you want to permanently delete this paddle number?": "Czy na pewno chcesz trwale usunąć ten numer licytacyjny?",
+    "Delete Donated Item": "Usuń darowany przedmiot",
+    "Delete Paddle Number": "Usuń numer licytacyjny",
+    "Invalid security token. Please try again.": "Nieprawidłowy token bezpieczeństwa. Spróbuj ponownie."
 }

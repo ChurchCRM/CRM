@@ -15459,6 +15459,10 @@ msgid "Error Reporting"
 msgstr "Notificación de errores"
 
 #: 
+msgid "Error:"
+msgstr "Error:"
+
+#: 
 msgid "Fix Settings"
 msgstr "Corregir configuración"
 

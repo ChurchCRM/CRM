@@ -15297,3 +15297,487 @@ msgstr "ഒരു റിക്കവറി കോഡ് ഉപയോഗിക്
 msgid "Use authenticator app instead"
 msgstr "ഓതന്റിക്കേറ്റർ ആപ്പ് ഉപയോഗിക്കുക"
 
+#: 
+msgid "%d modules loaded"
+msgstr "%d മൊഡ്യൂളുകൾ ലോഡ് ചെയ്തു"
+
+#: 
+msgid "(PHP default)"
+msgstr "(PHP ഡിഫോൾട്ട്)"
+
+#: 
+msgid "(none)"
+msgstr "(ഒന്നുമില്ല)"
+
+#: 
+msgid "(not set)"
+msgstr "(സജ്ജമാക്കിയിട്ടില്ല)"
+
+#: 
+msgid "All checks passing"
+msgstr "എല്ലാ പരിശോധനകളും വിജയകരം"
+
+#: 
+msgid "App"
+msgstr "ആപ്പ്"
+
+#: 
+msgid "Browser time zone differs:"
+msgstr "ബ്രൗസർ സമയ മേഖല വ്യത്യാസപ്പെടുന്നു:"
+
+#: 
+msgid "Calendar time zone:"
+msgstr "കലണ്ടർ സമയ മേഖല:"
+
+#: 
+msgid "Cannot send test email"
+msgstr "ടെസ്റ്റ് ഇമെയിൽ അയയ്ക്കാൻ കഴിയില്ല"
+
+#: 
+msgid "Charset"
+msgstr "Charset"
+
+#: 
+msgid "Church Email address is not set — the test email has nowhere to go."
+msgstr "സഭയുടെ ഇമെയിൽ വിലാസം സജ്ജമാക്കിയിട്ടില്ല — ടെസ്റ്റ് ഇമെയിൽ അയയ്ക്കാൻ സ്ഥലമില്ല."
+
+#: 
+msgid "Church email — configured on the"
+msgstr "സഭയുടെ ഇമെയിൽ — ഇവിടെ കോൺഫിഗർ ചെയ്തിട്ടുണ്ട്"
+
+#: 
+msgid "ChurchCRM Test Email"
+msgstr "ChurchCRM ടെസ്റ്റ് ഇമെയിൽ"
+
+#: 
+msgid "Collation"
+msgstr "Collation"
+
+#: 
+msgid "Connection"
+msgstr "കണക്ഷൻ"
+
+#: 
+msgid "Database"
+msgstr "ഡാറ്റാബേസ്"
+
+#: 
+msgid "Delivery"
+msgstr "ഡെലിവറി"
+
+#: 
+msgid "Disk (Images Root)"
+msgstr "ഡിസ്ക് (ഇമേജസ് റൂട്ട്)"
+
+#: 
+msgid "Display Errors"
+msgstr "പിശകുകൾ പ്രദർശിപ്പിക്കുക"
+
+#: 
+msgid "Email Debug"
+msgstr "ഇമെയിൽ ഡീബഗ്"
+
+#: 
+msgid "Environment"
+msgstr "എൻവയോൺമെന്റ്"
+
+#: 
+msgid "Error Log"
+msgstr "പിശക് ലോഗ്"
+
+#: 
+msgid "Error Reporting"
+msgstr "പിശക് റിപ്പോർട്ടിംഗ്"
+
+#: 
+msgid "Error:"
+msgstr "പിശക്:"
+
+#: 
+msgid "Fix Settings"
+msgstr "ക്രമീകരണങ്ങൾ പരിഹരിക്കുക"
+
+#: 
+msgid "Hit Rate"
+msgstr "ഹിറ്റ് റേറ്റ്"
+
+#: 
+msgid "Host"
+msgstr "ഹോസ്റ്റ്"
+
+#: 
+msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
+msgstr "ഏതാനും മിനിറ്റുകൾക്കുള്ളിൽ സന്ദേശം ലഭിച്ചില്ലെങ്കിൽ, സ്പാം/ജങ്ക് ഫോൾഡറും താഴെയുള്ള SMTP ഡീബഗ് ലോഗും പരിശോധിക്കുക."
+
+#: 
+msgid "If you can read this message in your inbox, your SMTP configuration is working correctly."
+msgstr "നിങ്ങളുടെ ഇൻബോക്സിൽ ഈ സന്ദേശം വായിക്കാൻ കഴിയുന്നുണ്ടെങ്കിൽ, നിങ്ങളുടെ SMTP കോൺഫിഗറേഷൻ ശരിയായി പ്രവർത്തിക്കുന്നുണ്ട്."
+
+#: 
+msgid "Incomplete"
+msgstr "അപൂർണ്ണം"
+
+#: 
+msgid "Installed on Server"
+msgstr "സെർവറിൽ ഇൻസ്റ്റാൾ ചെയ്തു"
+
+#: 
+msgid "Integrity"
+msgstr "സമഗ്രത"
+
+#: 
+msgid "Issues detected"
+msgstr "പ്രശ്നങ്ങൾ കണ്ടെത്തി"
+
+#: 
+msgid "Loaded php.ini"
+msgstr "ലോഡ് ചെയ്ത php.ini"
+
+#: 
+msgid "Locale"
+msgstr "ലൊക്കേൽ"
+
+#: 
+msgid "Max Execution Time"
+msgstr "പരമാവധി എക്സിക്യൂഷൻ സമയം"
+
+#: 
+msgid "Max POST Size"
+msgstr "പരമാവധി POST വലുപ്പം"
+
+#: 
+msgid "Max Upload Size"
+msgstr "പരമാവധി അപ്‌ലോഡ് വലുപ്പം"
+
+#: 
+msgid "Memory"
+msgstr "മെമ്മറി"
+
+#: 
+msgid "Memory Limit"
+msgstr "മെമ്മറി പരിധി"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
+msgstr "ഡെലിവറി സ്ഥിരീകരിക്കാൻ ഇപ്പോൾ സ്വീകർത്താവിന്റെ ഇൻബോക്സ് പരിശോധിക്കുക. ഈ വിഷയം നോക്കുക:"
+
+#: 
+msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
+msgstr "OPcache പ്രവർത്തനക്ഷമമാക്കിയിട്ടില്ല. PHP പേജ് ലോഡിംഗ് വേഗത്തിലാക്കാൻ ഇത് സജീവമാക്കുന്നത് കുറഞ്ഞ റിസ്ക് ഉള്ള ഒരു മാർഗമാണ്."
+
+#: 
+msgid "Off"
+msgstr "ഓഫ്"
+
+#: 
+msgid "On"
+msgstr "ഓൺ"
+
+#: 
+msgid "Open the email debug tester"
+msgstr "ഇമെയിൽ ഡീബഗ് ടെസ്റ്റർ തുറക്കുക"
+
+#: 
+msgid "PHP Version"
+msgstr "PHP പതിപ്പ്"
+
+#: 
+msgid "PHPMailer SMTP session"
+msgstr "PHPMailer SMTP സെഷൻ"
+
+#: 
+msgid "Prerequisites"
+msgstr "മുൻകൂർ ആവശ്യങ്ങൾ"
+
+#: 
+msgid "Review the SMTP debug log below for the handshake details, then adjust your settings."
+msgstr "ഹാൻഡ്‌ഷേക്ക് വിശദാംശങ്ങൾക്കായി താഴെയുള്ള SMTP ഡീബഗ് ലോഗ് അവലോകനം ചെയ്ത്, ക്രമീകരണങ്ങൾ ക്രമീകരിക്കുക."
+
+#: 
+msgid "SMTP Configuration"
+msgstr "SMTP കോൺഫിഗറേഷൻ"
+
+#: 
+msgid "SMTP Debug Log"
+msgstr "SMTP ഡീബഗ് ലോഗ്"
+
+#: 
+msgid "SMTP Host is not configured."
+msgstr "SMTP ഹോസ്റ്റ് കോൺഫിഗർ ചെയ്തിട്ടില്ല."
+
+#: 
+msgid "SMTP configuration test — if this arrived, your setup works."
+msgstr "SMTP കോൺഫിഗറേഷൻ ടെസ്റ്റ് — ഇത് ലഭിച്ചെങ്കിൽ, നിങ്ങളുടെ സജ്ജീകരണം പ്രവർത്തിക്കുന്നു."
+
+#: 
+msgid "Schema Version"
+msgstr "സ്കീമ പതിപ്പ്"
+
+#: 
+msgid "Send Again"
+msgstr "വീണ്ടും അയയ്ക്കുക"
+
+#: 
+msgid "Send a test message to verify your SMTP configuration"
+msgstr "നിങ്ങളുടെ SMTP കോൺഫിഗറേഷൻ പരിശോധിക്കാൻ ഒരു ടെസ്റ്റ് സന്ദേശം അയയ്ക്കുക"
+
+#: 
+msgid "Server"
+msgstr "സെർവർ"
+
+#: 
+msgid "Server Version"
+msgstr "സെർവർ പതിപ്പ്"
+
+#: 
+msgid "Session Handler"
+msgstr "സെഷൻ ഹാൻഡ്‌ലർ"
+
+#: 
+msgid "Session Save Path"
+msgstr "സെഷൻ സേവ് പാത്ത്"
+
+#: 
+msgid "Settings Valid"
+msgstr "ക്രമീകരണങ്ങൾ സാധുവാണ്"
+
+#: 
+msgid "Subject"
+msgstr "വിഷയം"
+
+#: 
+msgid "Test"
+msgstr "ടെസ്റ്റ്"
+
+#: 
+msgid "Test email accepted by SMTP server"
+msgstr "SMTP സെർവർ ടെസ്റ്റ് ഇമെയിൽ സ്വീകരിച്ചു"
+
+#: 
+msgid "Test email failed to send"
+msgstr "ടെസ്റ്റ് ഇമെയിൽ അയയ്ക്കുന്നത് പരാജയപ്പെട്ടു"
+
+#: 
+msgid "This is a ChurchCRM test email."
+msgstr "ഇത് ഒരു ChurchCRM ടെസ്റ്റ് ഇമെയിൽ ആണ്."
+
+#: 
+msgid "Timeout"
+msgstr "ടൈംഔട്ട്"
+
+#: 
+msgid "Timezone"
+msgstr "സമയ മേഖല"
+
+#: 
+msgid "Unable to list web server modules (non-Apache SAPI)."
+msgstr "വെബ് സെർവർ മൊഡ്യൂളുകൾ ലിസ്റ്റ് ചെയ്യാൻ കഴിയില്ല (Apache അല്ലാത്ത SAPI)."
+
+#: 
+msgid "Update Settings"
+msgstr "ക്രമീകരണങ്ങൾ അപ്ഡേറ്റ് ചെയ്യുക"
+
+#: 
+msgid "View full photo"
+msgstr "പൂർണ്ണ ഫോട്ടോ കാണുക"
+
+#: 
+msgid "page."
+msgstr "പേജ്."
+
+#: 
+msgid "user:"
+msgstr "ഉപയോക്താവ്:"
+
+#: 
+msgid "1. Download the template"
+msgstr "1. ടെംപ്ലേറ്റ് ഡൗൺലോഡ് ചെയ്യുക"
+
+#: 
+msgid "2. Fill in your data"
+msgstr "2. നിങ്ങളുടെ ഡാറ്റ പൂരിപ്പിക്കുക"
+
+#: 
+msgid "3. Upload and map"
+msgstr "3. അപ്‌ലോഡ് ചെയ്ത് മാപ്പ് ചെയ്യുക"
+
+#: 
+msgid "Add Recurring Event"
+msgstr "ആവർത്തിക്കുന്ന ഇവന്റ് ചേർക്കുക"
+
+#: 
+msgid "Available after the event is saved."
+msgstr "ഇവന്റ് സേവ് ചെയ്തതിനു ശേഷം ലഭ്യമാണ്."
+
+#: 
+msgid "Boolean properties/fields accept yes / no / true / false / 1 / 0."
+msgstr "ബൂളിയൻ പ്രോപ്പർട്ടികൾ/ഫീൽഡുകൾ yes / no / true / false / 1 / 0 എന്നിവ സ്വീകരിക്കുന്നു."
+
+#: 
+msgid "ChurchCRM auto-matches each column by name. Anything it cannot match is marked as Unmapped — pick a field or leave it as Ignore."
+msgstr "ChurchCRM ഓരോ കോളത്തെയും പേര് അനുസരിച്ച് സ്വയമേവ പൊരുത്തപ്പെടുത്തുന്നു. പൊരുത്തപ്പെടുത്താൻ കഴിയാത്തവ Unmapped ആയി അടയാളപ്പെടുത്തപ്പെടും — ഒരു ഫീൽഡ് തിരഞ്ഞെടുക്കുക അല്ലെങ്കിൽ Ignore ആയി വിടുക."
+
+#: 
+msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
+msgstr "CSV ഫയൽ പാഴ്‌സ് ചെയ്യാൻ കഴിഞ്ഞില്ല. ഹെഡർ വരിയോടു കൂടിയ ഒരു സാധുവായ കോമ-വേർതിരിച്ച ഫയൽ ആണെന്ന് പരിശോധിക്കുക."
+
+#: 
+msgid "Custom field columns you have not configured are ignored — nothing is created on the fly."
+msgstr "നിങ്ങൾ കോൺഫിഗർ ചെയ്യാത്ത ഇഷ്ടാനുസൃത ഫീൽഡ് കോളങ്ങൾ അവഗണിക്കപ്പെടും — യാന്ത്രികമായി ഒന്നും സൃഷ്ടിക്കപ്പെടില്ല."
+
+#: 
+msgid "Custom fields and properties are supported"
+msgstr "ഇഷ്ടാനുസൃത ഫീൽഡുകളും പ്രോപ്പർട്ടികളും പിന്തുണയ്ക്കുന്നു"
+
+#: 
+msgid "Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a month and day with no year."
+msgstr "തീയതി ഫീൽഡുകൾ YYYY-MM-DD അല്ലെങ്കിൽ M/D/YYYY സ്വീകരിക്കുന്നു. വർഷം ഇല്ലാത്ത മാസവും ദിവസവും ഉപയോഗിക്കാൻ 0000-MM-DD അല്ലെങ്കിൽ M/D ഉപയോഗിക്കുക."
+
+#: 
+msgid "Each row is one person. People in the same family share a FamilyID. Leave columns blank when you have no value for them."
+msgstr "ഓരോ വരിയും ഒരു വ്യക്തിയാണ്. ഒരേ കുടുംബത്തിലെ ആളുകൾ ഒരു FamilyID പങ്കിടുന്നു. നിങ്ങൾക്ക് വിലയില്ലാത്ത കോളങ്ങൾ ശൂന്യമായി വിടുക."
+
+#: 
+msgid "Event Timing"
+msgstr "ഇവന്റ് സമയം"
+
+#: 
+msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
+msgstr "From-നും To-നും ഇടയിലുള്ള ഓരോ പൊരുത്തപ്പെടുന്ന അവസരത്തിനും ഒരേ Start/End സമയത്ത് സ്വന്തമായി ഒരു ഇവന്റ് ലഭിക്കും."
+
+#: 
+msgid "External calendar sharing is disabled"
+msgstr "ബാഹ്യ കലണ്ടർ പങ്കിടൽ പ്രവർത്തനരഹിതമാണ്"
+
+#: 
+msgid "Failed to load event editor. Please refresh and try again."
+msgstr "ഇവന്റ് എഡിറ്റർ ലോഡ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു. ദയവായി പുതുക്കി വീണ്ടും ശ്രമിക്കുക."
+
+#: 
+msgid "Family Custom"
+msgstr "കുടുംബ ഇഷ്ടാനുസൃത"
+
+#: 
+msgid "Family Property"
+msgstr "കുടുംബ പ്രോപ്പർട്ടി"
+
+#: 
+msgid "Fields"
+msgstr "ഫീൽഡുകൾ"
+
+#: 
+msgid "Go to home"
+msgstr "ഹോമിലേക്ക് പോകുക"
+
+#: 
+msgid "Hide advanced options"
+msgstr "വിപുലമായ ഓപ്ഷനുകൾ മറയ്ക്കുക"
+
+#: 
+msgid "How the CSV Import Works"
+msgstr "CSV ഇംപോർട്ട് എങ്ങനെ പ്രവർത്തിക്കുന്നു"
+
+#: 
+msgid "Imported from CSV"
+msgstr "CSV-ൽ നിന്ന് ഇംപോർട്ട് ചെയ്തു"
+
+#: 
+msgid "Invalid date format"
+msgstr "അസാധുവായ തീയതി ഫോർമാറ്റ്"
+
+#: 
+msgid "Loading event editor…"
+msgstr "ഇവന്റ് എഡിറ്റർ ലോഡ് ചെയ്യുന്നു…"
+
+#: 
+msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
+msgstr "കലണ്ടർ തിരഞ്ഞെടുത്തിട്ടില്ല — ഈ ഇവന്റ് സേവ് ചെയ്യപ്പെടുമെങ്കിലും ഒരു കലണ്ടർ കാഴ്ചയിലും ദൃശ്യമാകില്ല."
+
+#: 
+msgid "No group"
+msgstr "ഗ്രൂപ്പ് ഇല്ല"
+
+#: 
+msgid "Not pinned to any calendar"
+msgstr "ഏതെങ്കിലും കലണ്ടറിൽ പിൻ ചെയ്തിട്ടില്ല"
+
+#: 
+msgid "Optional — sermon notes, materials, or other details copied to every generated event."
+msgstr "ഓപ്ഷണൽ — പ്രസംഗ കുറിപ്പുകൾ, വസ്തുക്കൾ, അല്ലെങ്കിൽ ജനറേറ്റ് ചെയ്യപ്പെടുന്ന ഓരോ ഇവന്റിലേക്കും പകർത്തപ്പെടുന്ന മറ്റ് വിശദാംശങ്ങൾ."
+
+#: 
+msgid "Person / Family"
+msgstr "വ്യക്തി / കുടുംബം"
+
+#: 
+msgid "Person Custom"
+msgstr "വ്യക്തി ഇഷ്ടാനുസൃത"
+
+#: 
+msgid "Person Property"
+msgstr "വ്യക്തി പ്രോപ്പർട്ടി"
+
+#: 
+msgid "Show more options"
+msgstr "കൂടുതൽ ഓപ്ഷനുകൾ കാണിക്കുക"
+
+#: 
+msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
+msgstr "കലണ്ടർ ലിങ്ക് അപൂർണ്ണമാണ്. ദയവായി ഇത് നിങ്ങൾക്ക് അയച്ച വ്യക്തിയുമായി URL പരിശോധിക്കുക."
+
+#: 
+msgid "The church administrator has not enabled external calendar sharing. Please contact them if you believe this is in error."
+msgstr "സഭാ അഡ്മിനിസ്ട്രേറ്റർ ബാഹ്യ കലണ്ടർ പങ്കിടൽ പ്രവർത്തനക്ഷമമാക്കിയിട്ടില്ല. ഇത് തെറ്റാണെന്ന് നിങ്ങൾ വിശ്വസിക്കുന്നുവെങ്കിൽ ദയവായി അവരെ ബന്ധപ്പെടുക."
+
+#: 
+msgid "The start or end date in the link could not be understood. Try the base calendar link without date parameters."
+msgstr "ലിങ്കിലെ ആരംഭ അല്ലെങ്കിൽ അവസാന തീയതി മനസ്സിലാക്കാൻ കഴിഞ്ഞില്ല. തീയതി പാരാമീറ്ററുകൾ ഇല്ലാത്ത അടിസ്ഥാന കലണ്ടർ ലിങ്ക് പരീക്ഷിക്കുക."
+
+#: 
+msgid "The template already contains every column you can map — the core Person/Family fields plus each custom field and property your site defines."
+msgstr "ടെംപ്ലേറ്റിൽ നിങ്ങൾക്ക് മാപ്പ് ചെയ്യാൻ കഴിയുന്ന എല്ലാ കോളവും ഇതിനകം അടങ്ങിയിട്ടുണ്ട് — കോർ Person/Family ഫീൽഡുകളും നിങ്ങളുടെ സൈറ്റ് നിർവചിക്കുന്ന ഓരോ ഇഷ്ടാനുസൃത ഫീൽഡും പ്രോപ്പർട്ടിയും."
+
+#: 
+msgid "The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically."
+msgstr "ടെംപ്ലേറ്റിൽ ഓരോ Person/Family ഇഷ്ടാനുസൃത ഫീൽഡിനും നിങ്ങൾ നിർവചിച്ച ഓരോ പ്രോപ്പർട്ടിക്കും ഒരു കോളം ഇതിനകം ഉൾപ്പെടുന്നു. നിങ്ങൾ കൈകൊണ്ട് കോളങ്ങൾ ചേർക്കുകയാണെങ്കിൽ, ഇഷ്ടാനുസൃത ഫീൽഡിന്റെ അല്ലെങ്കിൽ പ്രോപ്പർട്ടിയുടെ കൃത്യമായ പേര് കോളം ഹെഡർ ആയി ഉപയോഗിക്കുക, ഇംപോർട്ടർ അത് സ്വയമേവ പൊരുത്തപ്പെടുത്തും."
+
+#: 
+msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
+msgstr "ഈ കലണ്ടർ ലിങ്ക് അസാധുവാണ് അല്ലെങ്കിൽ പിൻവലിച്ചതാണ്. നിലവിലെ ലിങ്കിനായി സഭയോട് ആവശ്യപ്പെടുക."
+
+#: 
+msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
+msgstr "ഈ ഇവന്റിനെ ഒരു ക്ലാസ് അല്ലെങ്കിൽ ശുശ്രൂഷ റോസ്റ്ററുമായി ബന്ധിപ്പിക്കുന്നു — കിയോസ്ക് ചെക്ക്-ഇൻ ഫ്ലോ ഉപയോഗിക്കുന്നു."
+
+#: 
+msgid "Upload a CSV to create families and people in bulk."
+msgstr "കൂട്ടത്തോടെ കുടുംബങ്ങളും ആളുകളും സൃഷ്ടിക്കാൻ ഒരു CSV അപ്‌ലോഡ് ചെയ്യുക."
+
+#: 
+msgid "Volunteer-entered headcounts, broken down by category."
+msgstr "സന്നദ്ധസേവകർ നൽകിയ തലയെണ്ണൽ, വിഭാഗം അനുസരിച്ച് വേർതിരിച്ചിരിക്കുന്നു."
+
+#: 
+msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
+msgstr "നിങ്ങളുടെ CSV-യിൽ തനിയാവർത്തിച്ച കോളം പേരുകൾ ഉണ്ട്. തനിയാവർത്തിച്ച കോളങ്ങൾ പുനർനാമകരണം ചെയ്യുക (ഉദാ. രണ്ടാമത്തേതിലേക്ക് \"(2)\" ചേർക്കുക) വീണ്ടും അപ്‌ലോഡ് ചെയ്യുക."
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "ഈ സംഭാവന ചെയ്ത ഇനം ശാശ്വതമായി ഇല്ലാതാക്കാൻ നിങ്ങൾക്ക് ഉറപ്പാണോ?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "ഈ പാഡിൽ നമ്പർ ശാശ്വതമായി ഇല്ലാതാക്കാൻ നിങ്ങൾക്ക് ഉറപ്പാണോ?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "സംഭാവന ചെയ്ത ഇനം ഇല്ലാതാക്കുക"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "പാഡിൽ നമ്പർ ഇല്ലാതാക്കുക"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "അസാധുവായ സുരക്ഷാ ടോക്കൺ. ദയവായി വീണ്ടും ശ്രമിക്കുക."
+

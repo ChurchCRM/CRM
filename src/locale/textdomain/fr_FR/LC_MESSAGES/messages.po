@@ -15586,6 +15586,10 @@ msgid "Subject"
 msgstr "Objet"
 
 #: 
+msgid "Test"
+msgstr "Test"
+
+#: 
 msgid "Test email accepted by SMTP server"
 msgstr "E-mail de test accepté par le serveur SMTP"
 
@@ -15792,4 +15796,24 @@ msgstr "Comptages de participants saisis par les bénévoles, répartis par cat�
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "Votre CSV contient des noms de colonnes en double. Renommez les colonnes en double (par ex. ajoutez « (2) » à la seconde) et importez à nouveau."
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "Êtes-vous sûr de vouloir supprimer définitivement cet article offert ?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "Êtes-vous sûr de vouloir supprimer définitivement ce numéro de palette ?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Supprimer l'article offert"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Supprimer le numéro de palette"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Jeton de sécurité invalide. Veuillez réessayer."
 

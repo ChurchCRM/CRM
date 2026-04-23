@@ -11,46 +11,46 @@
 | Locale | Language | Translations | Percentage | Status | Supported |
 |--------|----------|--------------|------------|--------|----------|
 | `af` | Afrikaans | 3753 | 100% | 🟢 Complete | ✅ Yes |
+| `sq` | Albanian | 3753 | 100% | 🟢 Complete | ✅ Yes |
 | `am` | Amharic | 3753 | 100% | 🟢 Complete | ✅ Yes |
 | `ar` | Arabic | 3753 | 100% | 🟢 Complete | ✅ Yes |
 | `zh-cn` | Chinese | 3753 | 100% | 🟢 Complete | ✅ Yes |
 | `zh-tw` | Chinese (TW) | 3753 | 100% | 🟢 Complete | ✅ Yes |
+| `cs` | Czech | 3753 | 100% | 🟢 Complete | ✅ Yes |
+| `nl` | Dutch | 3753 | 100% | 🟢 Complete | ✅ Yes |
+| `et` | Estonian | 3753 | 100% | 🟢 Complete | ✅ Yes |
+| `fil` | Filipino | 3753 | 100% | 🟢 Complete | ✅ Yes |
 | `fi` | Finnish | 3753 | 100% | 🟢 Complete | ✅ Yes |
+| `de` | German | 3753 | 100% | 🟢 Complete | ✅ Yes |
 | `el` | Greek | 3753 | 100% | 🟢 Complete | ✅ Yes |
 | `he` | Hebrew | 3753 | 100% | 🟢 Complete | ✅ Yes |
 | `hi` | Hindi | 3753 | 100% | 🟢 Complete | ✅ Yes |
+| `hu` | Hungarian | 3753 | 100% | 🟢 Complete | ✅ Yes |
+| `id` | Indonesian | 3753 | 100% | 🟢 Complete | ✅ Yes |
+| `it` | Italian | 3753 | 100% | 🟢 Complete | ✅ Yes |
 | `ja` | Japanese | 3753 | 100% | 🟢 Complete | ✅ Yes |
 | `ko` | Korean | 3753 | 100% | 🟢 Complete | ✅ Yes |
+| `ml` | Malayalam | 3753 | 100% | 🟢 Complete | ✅ Yes |
+| `nb` | Norwegian Bokmål | 3753 | 100% | 🟢 Complete | ✅ Yes |
+| `pl` | Polish | 3753 | 100% | 🟢 Complete | ✅ Yes |
+| `pt` | Portuguese | 3753 | 100% | 🟢 Complete | ✅ Yes |
+| `pt-br` | Portuguese (BR) | 3753 | 100% | 🟢 Complete | ✅ Yes |
+| `ro` | Romanian | 3753 | 100% | 🟢 Complete | ✅ Yes |
 | `ru` | Russian | 3753 | 100% | 🟢 Complete | ✅ Yes |
+| `es` | Spanish | 3753 | 100% | 🟢 Complete | ✅ Yes |
 | `sw` | Swahili | 3753 | 100% | 🟢 Complete | ✅ Yes |
+| `sv` | Swedish | 3753 | 100% | 🟢 Complete | ✅ Yes |
 | `ta` | Tamil | 3753 | 100% | 🟢 Complete | ✅ Yes |
+| `te` | Telugu | 3753 | 100% | 🟢 Complete | ✅ Yes |
+| `th` | Thai | 3753 | 100% | 🟢 Complete | ✅ Yes |
+| `tr` | Turkish | 3753 | 100% | 🟢 Complete | ✅ Yes |
 | `uk` | Ukrainian | 3753 | 100% | 🟢 Complete | ✅ Yes |
 | `vi` | Vietnamese | 3753 | 100% | 🟢 Complete | ✅ Yes |
-| `es` | Spanish | 3752 | 99.97% | 🟢 Complete | ✅ Yes |
-| `hu` | Hungarian | 3747 | 99.84% | 🟢 Complete | ✅ Yes |
-| `sq` | Albanian | 3746 | 99.81% | 🟢 Complete | ✅ Yes |
-| `fr` | French | 3746 | 99.81% | 🟢 Complete | ✅ Yes |
-| `pt` | Portuguese | 3746 | 99.81% | 🟢 Complete | ✅ Yes |
-| `pt-br` | Portuguese (BR) | 3746 | 99.81% | 🟢 Complete | ✅ Yes |
-| `es-ar` | Spanish (AR) | 3746 | 99.81% | 🟢 Complete | ✅ Yes |
-| `es-co` | Spanish (CO) | 3746 | 99.81% | 🟢 Complete | ✅ Yes |
-| `es-mx` | Spanish (MX) | 3746 | 99.81% | 🟢 Complete | ✅ Yes |
-| `es-sv` | Spanish (SV) | 3746 | 99.81% | 🟢 Complete | ✅ Yes |
-| `cs` | Czech | 3745 | 99.79% | 🟢 Complete | ✅ Yes |
-| `et` | Estonian | 3745 | 99.79% | 🟢 Complete | ✅ Yes |
-| `id` | Indonesian | 3745 | 99.79% | 🟢 Complete | ✅ Yes |
-| `pl` | Polish | 3745 | 99.79% | 🟢 Complete | ✅ Yes |
-| `ro` | Romanian | 3745 | 99.79% | 🟢 Complete | ✅ Yes |
-| `sv` | Swedish | 3744 | 99.76% | 🟢 Complete | ✅ Yes |
-| `de` | German | 3743 | 99.73% | 🟢 Complete | ✅ Yes |
-| `nb` | Norwegian Bokmål | 3743 | 99.73% | 🟢 Complete | ✅ Yes |
-| `nl` | Dutch | 3742 | 99.71% | 🟢 Complete | ✅ Yes |
-| `it` | Italian | 3738 | 99.6% | 🟢 Complete | ✅ Yes |
-| `ml` | Malayalam | 3632 | 96.78% | 🟢 Complete | ✅ Yes |
-| `te` | Telugu | 3632 | 96.78% | 🟢 Complete | ✅ Yes |
-| `th` | Thai | 3632 | 96.78% | 🟢 Complete | ✅ Yes |
-| `tr` | Turkish | 3632 | 96.78% | 🟢 Complete | ✅ Yes |
-| `fil` | Filipino | 3630 | 96.72% | 🟢 Complete | ✅ Yes |
+| `fr` | French | 3752 | 99.97% | 🟢 Complete | ✅ Yes |
+| `es-ar` | Spanish (AR) | 3752 | 99.97% | 🟢 Complete | ✅ Yes |
+| `es-co` | Spanish (CO) | 3752 | 99.97% | 🟢 Complete | ✅ Yes |
+| `es-mx` | Spanish (MX) | 3752 | 99.97% | 🟢 Complete | ✅ Yes |
+| `es-sv` | Spanish (SV) | 3752 | 99.97% | 🟢 Complete | ✅ Yes |
 | `my` | Burmese | 66 | 1.76% | 🟠 Needs Work | ❌ No |
 | `sl` | Slovenian | 65 | 1.73% | 🟠 Needs Work | ❌ No |
 | `sr-cyrl` | Serbian (Cyrillic) | 58 | 1.55% | 🟠 Needs Work | ❌ No |

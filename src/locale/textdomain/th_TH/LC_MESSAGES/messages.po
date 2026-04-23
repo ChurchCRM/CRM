@@ -15298,3 +15298,487 @@ msgstr "ใช้รหัสกู้คืนแทน"
 msgid "Use authenticator app instead"
 msgstr "ใช้แอปตรวจสอบสิทธิ์แทน"
 
+#: 
+msgid "%d modules loaded"
+msgstr "โหลดโมดูลแล้ว %d รายการ"
+
+#: 
+msgid "(PHP default)"
+msgstr "(ค่าเริ่มต้น PHP)"
+
+#: 
+msgid "(none)"
+msgstr "(ไม่มี)"
+
+#: 
+msgid "(not set)"
+msgstr "(ยังไม่ได้ตั้งค่า)"
+
+#: 
+msgid "All checks passing"
+msgstr "ผ่านการตรวจสอบทั้งหมด"
+
+#: 
+msgid "App"
+msgstr "App"
+
+#: 
+msgid "Browser time zone differs:"
+msgstr "เขตเวลาของเบราว์เซอร์แตกต่างกัน:"
+
+#: 
+msgid "Calendar time zone:"
+msgstr "เขตเวลาของปฏิทิน:"
+
+#: 
+msgid "Cannot send test email"
+msgstr "ไม่สามารถส่งอีเมลทดสอบได้"
+
+#: 
+msgid "Charset"
+msgstr "Charset"
+
+#: 
+msgid "Church Email address is not set — the test email has nowhere to go."
+msgstr "ยังไม่ได้ตั้งค่าที่อยู่อีเมลของคริสตจักร — อีเมลทดสอบไม่มีปลายทางที่จะส่งไป"
+
+#: 
+msgid "Church email — configured on the"
+msgstr "อีเมลของคริสตจักร — ตั้งค่าไว้ในหน้า"
+
+#: 
+msgid "ChurchCRM Test Email"
+msgstr "อีเมลทดสอบ ChurchCRM"
+
+#: 
+msgid "Collation"
+msgstr "Collation"
+
+#: 
+msgid "Connection"
+msgstr "การเชื่อมต่อ"
+
+#: 
+msgid "Database"
+msgstr "Database"
+
+#: 
+msgid "Delivery"
+msgstr "การส่งมอบ"
+
+#: 
+msgid "Disk (Images Root)"
+msgstr "ดิสก์ (Images Root)"
+
+#: 
+msgid "Display Errors"
+msgstr "แสดงข้อผิดพลาด"
+
+#: 
+msgid "Email Debug"
+msgstr "ดีบักอีเมล"
+
+#: 
+msgid "Environment"
+msgstr "สภาพแวดล้อม"
+
+#: 
+msgid "Error Log"
+msgstr "บันทึกข้อผิดพลาด"
+
+#: 
+msgid "Error Reporting"
+msgstr "การรายงานข้อผิดพลาด"
+
+#: 
+msgid "Error:"
+msgstr "ข้อผิดพลาด:"
+
+#: 
+msgid "Fix Settings"
+msgstr "แก้ไขการตั้งค่า"
+
+#: 
+msgid "Hit Rate"
+msgstr "Hit Rate"
+
+#: 
+msgid "Host"
+msgstr "Host"
+
+#: 
+msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
+msgstr "หากข้อความไม่มาถึงภายในไม่กี่นาที โปรดตรวจสอบโฟลเดอร์ spam/junk และบันทึกดีบัก SMTP ด้านล่าง"
+
+#: 
+msgid "If you can read this message in your inbox, your SMTP configuration is working correctly."
+msgstr "หากคุณสามารถอ่านข้อความนี้ในกล่องจดหมายของคุณได้ แสดงว่าการตั้งค่า SMTP ของคุณทำงานได้อย่างถูกต้อง"
+
+#: 
+msgid "Incomplete"
+msgstr "ไม่สมบูรณ์"
+
+#: 
+msgid "Installed on Server"
+msgstr "ติดตั้งบน Server"
+
+#: 
+msgid "Integrity"
+msgstr "ความสมบูรณ์"
+
+#: 
+msgid "Issues detected"
+msgstr "พบปัญหา"
+
+#: 
+msgid "Loaded php.ini"
+msgstr "php.ini ที่โหลดแล้ว"
+
+#: 
+msgid "Locale"
+msgstr "Locale"
+
+#: 
+msgid "Max Execution Time"
+msgstr "เวลาดำเนินการสูงสุด"
+
+#: 
+msgid "Max POST Size"
+msgstr "ขนาด POST สูงสุด"
+
+#: 
+msgid "Max Upload Size"
+msgstr "ขนาดอัปโหลดสูงสุด"
+
+#: 
+msgid "Memory"
+msgstr "หน่วยความจำ"
+
+#: 
+msgid "Memory Limit"
+msgstr "ขีดจำกัดหน่วยความจำ"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
+msgstr "ตอนนี้ให้ตรวจสอบกล่องจดหมายของผู้รับเพื่อยืนยันการส่ง โดยมองหาหัวเรื่อง:"
+
+#: 
+msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
+msgstr "OPcache ยังไม่ถูกเปิดใช้งาน การเปิดใช้งานเป็นวิธีที่มีความเสี่ยงต่ำในการเร่งความเร็วการโหลดหน้าเว็บ PHP"
+
+#: 
+msgid "Off"
+msgstr "ปิด"
+
+#: 
+msgid "On"
+msgstr "เปิด"
+
+#: 
+msgid "Open the email debug tester"
+msgstr "เปิดเครื่องมือทดสอบดีบักอีเมล"
+
+#: 
+msgid "PHP Version"
+msgstr "เวอร์ชัน PHP"
+
+#: 
+msgid "PHPMailer SMTP session"
+msgstr "เซสชัน PHPMailer SMTP"
+
+#: 
+msgid "Prerequisites"
+msgstr "ข้อกำหนดเบื้องต้น"
+
+#: 
+msgid "Review the SMTP debug log below for the handshake details, then adjust your settings."
+msgstr "ตรวจสอบบันทึกดีบัก SMTP ด้านล่างเพื่อดูรายละเอียดการ handshake แล้วปรับการตั้งค่าของคุณ"
+
+#: 
+msgid "SMTP Configuration"
+msgstr "การตั้งค่า SMTP"
+
+#: 
+msgid "SMTP Debug Log"
+msgstr "บันทึกดีบัก SMTP"
+
+#: 
+msgid "SMTP Host is not configured."
+msgstr "ยังไม่ได้ตั้งค่า SMTP Host"
+
+#: 
+msgid "SMTP configuration test — if this arrived, your setup works."
+msgstr "ทดสอบการตั้งค่า SMTP — หากข้อความนี้มาถึง แสดงว่าการตั้งค่าของคุณทำงานได้"
+
+#: 
+msgid "Schema Version"
+msgstr "เวอร์ชัน Schema"
+
+#: 
+msgid "Send Again"
+msgstr "ส่งอีกครั้ง"
+
+#: 
+msgid "Send a test message to verify your SMTP configuration"
+msgstr "ส่งข้อความทดสอบเพื่อยืนยันการตั้งค่า SMTP ของคุณ"
+
+#: 
+msgid "Server"
+msgstr "Server"
+
+#: 
+msgid "Server Version"
+msgstr "เวอร์ชัน Server"
+
+#: 
+msgid "Session Handler"
+msgstr "Session Handler"
+
+#: 
+msgid "Session Save Path"
+msgstr "เส้นทางบันทึกเซสชัน"
+
+#: 
+msgid "Settings Valid"
+msgstr "การตั้งค่าถูกต้อง"
+
+#: 
+msgid "Subject"
+msgstr "หัวเรื่อง"
+
+#: 
+msgid "Test"
+msgstr "Test"
+
+#: 
+msgid "Test email accepted by SMTP server"
+msgstr "อีเมลทดสอบได้รับการยอมรับจากเซิร์ฟเวอร์ SMTP"
+
+#: 
+msgid "Test email failed to send"
+msgstr "ส่งอีเมลทดสอบไม่สำเร็จ"
+
+#: 
+msgid "This is a ChurchCRM test email."
+msgstr "นี่คืออีเมลทดสอบจาก ChurchCRM"
+
+#: 
+msgid "Timeout"
+msgstr "Timeout"
+
+#: 
+msgid "Timezone"
+msgstr "เขตเวลา"
+
+#: 
+msgid "Unable to list web server modules (non-Apache SAPI)."
+msgstr "ไม่สามารถแสดงรายการโมดูลของเว็บเซิร์ฟเวอร์ได้ (ไม่ใช่ Apache SAPI)"
+
+#: 
+msgid "Update Settings"
+msgstr "อัปเดตการตั้งค่า"
+
+#: 
+msgid "View full photo"
+msgstr "ดูภาพเต็ม"
+
+#: 
+msgid "page."
+msgstr "หน้า"
+
+#: 
+msgid "user:"
+msgstr "ผู้ใช้:"
+
+#: 
+msgid "1. Download the template"
+msgstr "1. ดาวน์โหลดเทมเพลต"
+
+#: 
+msgid "2. Fill in your data"
+msgstr "2. กรอกข้อมูลของคุณ"
+
+#: 
+msgid "3. Upload and map"
+msgstr "3. อัปโหลดและจับคู่ฟิลด์"
+
+#: 
+msgid "Add Recurring Event"
+msgstr "เพิ่มกิจกรรมที่เกิดซ้ำ"
+
+#: 
+msgid "Available after the event is saved."
+msgstr "ใช้งานได้หลังจากบันทึกกิจกรรมแล้ว"
+
+#: 
+msgid "Boolean properties/fields accept yes / no / true / false / 1 / 0."
+msgstr "คุณสมบัติ/ฟิลด์แบบ Boolean รองรับค่า yes / no / true / false / 1 / 0"
+
+#: 
+msgid "ChurchCRM auto-matches each column by name. Anything it cannot match is marked as Unmapped — pick a field or leave it as Ignore."
+msgstr "ChurchCRM จะจับคู่แต่ละคอลัมน์ตามชื่อโดยอัตโนมัติ สิ่งใดที่จับคู่ไม่ได้จะถูกระบุว่า ยังไม่ได้จับคู่ (Unmapped) — เลือกฟิลด์หรือปล่อยไว้เป็น ข้าม (Ignore)"
+
+#: 
+msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
+msgstr "ไม่สามารถแยกวิเคราะห์ไฟล์ CSV ได้ โปรดตรวจสอบว่าเป็นไฟล์ที่คั่นด้วยจุลภาคที่ถูกต้องและมีแถวส่วนหัว"
+
+#: 
+msgid "Custom field columns you have not configured are ignored — nothing is created on the fly."
+msgstr "คอลัมน์ฟิลด์กำหนดเองที่คุณยังไม่ได้ตั้งค่าจะถูกละเว้น — ไม่มีการสร้างขึ้นใหม่โดยอัตโนมัติ"
+
+#: 
+msgid "Custom fields and properties are supported"
+msgstr "รองรับฟิลด์กำหนดเองและคุณสมบัติ"
+
+#: 
+msgid "Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a month and day with no year."
+msgstr "ฟิลด์วันที่รองรับรูปแบบ YYYY-MM-DD หรือ M/D/YYYY ใช้ 0000-MM-DD หรือ M/D สำหรับเดือนและวันที่โดยไม่มีปี"
+
+#: 
+msgid "Each row is one person. People in the same family share a FamilyID. Leave columns blank when you have no value for them."
+msgstr "แต่ละแถวคือหนึ่งคน คนในครอบครัวเดียวกันใช้ FamilyID ร่วมกัน ปล่อยคอลัมน์ว่างไว้เมื่อคุณไม่มีค่าสำหรับคอลัมน์เหล่านั้น"
+
+#: 
+msgid "Event Timing"
+msgstr "เวลาของกิจกรรม"
+
+#: 
+msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
+msgstr "ทุกครั้งที่ตรงกันระหว่าง จาก และ ถึง จะถูกสร้างเป็นกิจกรรมของตัวเองในเวลาเริ่ม/สิ้นสุดเดียวกัน"
+
+#: 
+msgid "External calendar sharing is disabled"
+msgstr "การแชร์ปฏิทินภายนอกถูกปิดใช้งาน"
+
+#: 
+msgid "Failed to load event editor. Please refresh and try again."
+msgstr "โหลดตัวแก้ไขกิจกรรมไม่สำเร็จ โปรดรีเฟรชและลองอีกครั้ง"
+
+#: 
+msgid "Family Custom"
+msgstr "ฟิลด์กำหนดเองของครอบครัว"
+
+#: 
+msgid "Family Property"
+msgstr "คุณสมบัติของครอบครัว"
+
+#: 
+msgid "Fields"
+msgstr "ฟิลด์"
+
+#: 
+msgid "Go to home"
+msgstr "กลับสู่หน้าหลัก"
+
+#: 
+msgid "Hide advanced options"
+msgstr "ซ่อนตัวเลือกขั้นสูง"
+
+#: 
+msgid "How the CSV Import Works"
+msgstr "การนำเข้า CSV ทำงานอย่างไร"
+
+#: 
+msgid "Imported from CSV"
+msgstr "นำเข้าจาก CSV"
+
+#: 
+msgid "Invalid date format"
+msgstr "รูปแบบวันที่ไม่ถูกต้อง"
+
+#: 
+msgid "Loading event editor…"
+msgstr "กำลังโหลดตัวแก้ไขกิจกรรม…"
+
+#: 
+msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
+msgstr "ยังไม่ได้เลือกปฏิทิน — กิจกรรมนี้จะถูกบันทึกแต่จะไม่แสดงในมุมมองปฏิทินใดๆ"
+
+#: 
+msgid "No group"
+msgstr "ไม่มีพันธกิจ"
+
+#: 
+msgid "Not pinned to any calendar"
+msgstr "ไม่ได้ปักหมุดในปฏิทินใดๆ"
+
+#: 
+msgid "Optional — sermon notes, materials, or other details copied to every generated event."
+msgstr "ทางเลือก — บันทึกคำเทศนา สื่อประกอบ หรือรายละเอียดอื่นๆ ที่จะคัดลอกไปยังทุกกิจกรรมที่สร้างขึ้น"
+
+#: 
+msgid "Person / Family"
+msgstr "บุคคล / ครอบครัว"
+
+#: 
+msgid "Person Custom"
+msgstr "ฟิลด์กำหนดเองของบุคคล"
+
+#: 
+msgid "Person Property"
+msgstr "คุณสมบัติของบุคคล"
+
+#: 
+msgid "Show more options"
+msgstr "แสดงตัวเลือกเพิ่มเติม"
+
+#: 
+msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
+msgstr "ลิงก์ปฏิทินไม่สมบูรณ์ โปรดตรวจสอบ URL กับผู้ที่ส่งให้คุณ"
+
+#: 
+msgid "The church administrator has not enabled external calendar sharing. Please contact them if you believe this is in error."
+msgstr "ผู้ดูแลคริสตจักรยังไม่ได้เปิดใช้งานการแชร์ปฏิทินภายนอก โปรดติดต่อพวกเขาหากคุณเห็นว่าเป็นข้อผิดพลาด"
+
+#: 
+msgid "The start or end date in the link could not be understood. Try the base calendar link without date parameters."
+msgstr "ไม่สามารถเข้าใจวันที่เริ่มต้นหรือสิ้นสุดในลิงก์ได้ โปรดลองใช้ลิงก์ปฏิทินพื้นฐานโดยไม่มีพารามิเตอร์วันที่"
+
+#: 
+msgid "The template already contains every column you can map — the core Person/Family fields plus each custom field and property your site defines."
+msgstr "เทมเพลตมีทุกคอลัมน์ที่คุณสามารถจับคู่ได้อยู่แล้ว — ฟิลด์หลักของบุคคล/ครอบครัว พร้อมด้วยฟิลด์กำหนดเองและคุณสมบัติแต่ละรายการที่ไซต์ของคุณกำหนด"
+
+#: 
+msgid "The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically."
+msgstr "เทมเพลตมีคอลัมน์สำหรับฟิลด์กำหนดเองของบุคคล/ครอบครัวทุกฟิลด์ และทุกคุณสมบัติที่คุณกำหนดไว้แล้ว หากคุณเพิ่มคอลัมน์ด้วยตนเอง เพียงใช้ชื่อที่ตรงกับฟิลด์กำหนดเองหรือคุณสมบัติเป็นส่วนหัวของคอลัมน์ ตัวนำเข้าจะจับคู่โดยอัตโนมัติ"
+
+#: 
+msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
+msgstr "ลิงก์ปฏิทินนี้ไม่ถูกต้องหรือถูกเพิกถอนแล้ว โปรดขอลิงก์ปัจจุบันจากคริสตจักร"
+
+#: 
+msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
+msgstr "ผูกกิจกรรมนี้เข้ากับรายชื่อชั้นเรียนหรือพันธกิจ — ใช้ในขั้นตอนการเช็คอินของ Kiosk"
+
+#: 
+msgid "Upload a CSV to create families and people in bulk."
+msgstr "อัปโหลด CSV เพื่อสร้างครอบครัวและบุคคลแบบกลุ่ม"
+
+#: 
+msgid "Volunteer-entered headcounts, broken down by category."
+msgstr "จำนวนผู้เข้าร่วมที่อาสาสมัครบันทึก แบ่งตามหมวดหมู่"
+
+#: 
+msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
+msgstr "ไฟล์ CSV ของคุณมีชื่อคอลัมน์ที่ซ้ำกัน โปรดเปลี่ยนชื่อคอลัมน์ที่ซ้ำ (เช่น เพิ่ม \"(2)\" ในคอลัมน์ที่สอง) แล้วอัปโหลดอีกครั้ง"
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบรายการบริจาคนี้อย่างถาวร?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบหมายเลข paddle นี้อย่างถาวร?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "ลบรายการบริจาค"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "ลบหมายเลข Paddle"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "โทเค็นความปลอดภัยไม่ถูกต้อง โปรดลองอีกครั้ง"
+

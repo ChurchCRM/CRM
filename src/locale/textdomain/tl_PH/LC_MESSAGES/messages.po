@@ -15158,6 +15158,10 @@ msgid "No active event assignment"
 msgstr "Walang aktibong pagtatalaga ng kaganapan"
 
 #: 
+msgid "Online"
+msgstr "Online"
+
+#: 
 msgid "Opens a 30-second window for devices to register at:"
 msgstr "Nagbubukas ng 30-segundong window para magrehistro ang mga device sa:"
 
@@ -15270,6 +15274,10 @@ msgid "Password was reset but the email could not be sent. The user is locked ou
 msgstr "Na-reset ang password ngunit hindi maipadala ang email. Naka-lock out ang gumagamit — ibahagi ang bagong password nang manu-mano o gamitin ang Baguhin ang Password."
 
 #: 
+msgid "Recovery Code"
+msgstr "Recovery Code"
+
+#: 
 msgid "Set up Email"
 msgstr "I-set up ang Email"
 
@@ -15288,4 +15296,488 @@ msgstr "Gumamit ng recovery code"
 #: 
 msgid "Use authenticator app instead"
 msgstr "Gumamit ng authenticator app"
+
+#: 
+msgid "%d modules loaded"
+msgstr "%d na modules ang naka-load"
+
+#: 
+msgid "(PHP default)"
+msgstr "(PHP default)"
+
+#: 
+msgid "(none)"
+msgstr "(wala)"
+
+#: 
+msgid "(not set)"
+msgstr "(hindi naka-set)"
+
+#: 
+msgid "All checks passing"
+msgstr "Pumasa ang lahat ng pagsusuri"
+
+#: 
+msgid "App"
+msgstr "App"
+
+#: 
+msgid "Browser time zone differs:"
+msgstr "Iba ang time zone ng browser:"
+
+#: 
+msgid "Calendar time zone:"
+msgstr "Time zone ng kalendaryo:"
+
+#: 
+msgid "Cannot send test email"
+msgstr "Hindi makapagpadala ng test email"
+
+#: 
+msgid "Charset"
+msgstr "Charset"
+
+#: 
+msgid "Church Email address is not set — the test email has nowhere to go."
+msgstr "Hindi naka-set ang Email address ng Simbahan — walang patutunguhan ang test email."
+
+#: 
+msgid "Church email — configured on the"
+msgstr "Email ng Simbahan — naka-configure sa"
+
+#: 
+msgid "ChurchCRM Test Email"
+msgstr "ChurchCRM Test Email"
+
+#: 
+msgid "Collation"
+msgstr "Collation"
+
+#: 
+msgid "Connection"
+msgstr "Connection"
+
+#: 
+msgid "Database"
+msgstr "Database"
+
+#: 
+msgid "Delivery"
+msgstr "Paghahatid"
+
+#: 
+msgid "Disk (Images Root)"
+msgstr "Disk (Images Root)"
+
+#: 
+msgid "Display Errors"
+msgstr "Display Errors"
+
+#: 
+msgid "Email Debug"
+msgstr "Email Debug"
+
+#: 
+msgid "Environment"
+msgstr "Environment"
+
+#: 
+msgid "Error Log"
+msgstr "Error Log"
+
+#: 
+msgid "Error Reporting"
+msgstr "Error Reporting"
+
+#: 
+msgid "Error:"
+msgstr "Error:"
+
+#: 
+msgid "Fix Settings"
+msgstr "Ayusin ang Settings"
+
+#: 
+msgid "Hit Rate"
+msgstr "Hit Rate"
+
+#: 
+msgid "Host"
+msgstr "Host"
+
+#: 
+msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
+msgstr "Kung hindi dumating ang mensahe sa loob ng ilang minuto, tingnan ang spam/junk folder at ang SMTP debug log sa ibaba."
+
+#: 
+msgid "If you can read this message in your inbox, your SMTP configuration is working correctly."
+msgstr "Kung nababasa mo ang mensaheng ito sa iyong inbox, gumagana nang tama ang iyong SMTP configuration."
+
+#: 
+msgid "Incomplete"
+msgstr "Hindi kumpleto"
+
+#: 
+msgid "Installed on Server"
+msgstr "Naka-install sa Server"
+
+#: 
+msgid "Integrity"
+msgstr "Integridad"
+
+#: 
+msgid "Issues detected"
+msgstr "May natuklasang isyu"
+
+#: 
+msgid "Loaded php.ini"
+msgstr "Loaded php.ini"
+
+#: 
+msgid "Locale"
+msgstr "Locale"
+
+#: 
+msgid "Max Execution Time"
+msgstr "Max Execution Time"
+
+#: 
+msgid "Max POST Size"
+msgstr "Max POST Size"
+
+#: 
+msgid "Max Upload Size"
+msgstr "Max Upload Size"
+
+#: 
+msgid "Memory"
+msgstr "Memory"
+
+#: 
+msgid "Memory Limit"
+msgstr "Memory Limit"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
+msgstr "Tingnan na ngayon ang inbox ng tatanggap upang kumpirmahin ang paghahatid. Hanapin ang subject:"
+
+#: 
+msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
+msgstr "Hindi naka-enable ang OPcache. Ang pag-enable nito ay isang low-risk na paraan upang mapabilis ang pag-load ng PHP page."
+
+#: 
+msgid "Off"
+msgstr "Off"
+
+#: 
+msgid "On"
+msgstr "On"
+
+#: 
+msgid "Open the email debug tester"
+msgstr "Buksan ang email debug tester"
+
+#: 
+msgid "PHP Version"
+msgstr "PHP Version"
+
+#: 
+msgid "PHPMailer SMTP session"
+msgstr "PHPMailer SMTP session"
+
+#: 
+msgid "Prerequisites"
+msgstr "Mga Kailangan"
+
+#: 
+msgid "Review the SMTP debug log below for the handshake details, then adjust your settings."
+msgstr "Suriin ang SMTP debug log sa ibaba para sa mga detalye ng handshake, pagkatapos ay i-adjust ang iyong settings."
+
+#: 
+msgid "SMTP Configuration"
+msgstr "SMTP Configuration"
+
+#: 
+msgid "SMTP Debug Log"
+msgstr "SMTP Debug Log"
+
+#: 
+msgid "SMTP Host is not configured."
+msgstr "Hindi naka-configure ang SMTP Host."
+
+#: 
+msgid "SMTP configuration test — if this arrived, your setup works."
+msgstr "SMTP configuration test — kung dumating ito, gumagana ang iyong setup."
+
+#: 
+msgid "Schema Version"
+msgstr "Schema Version"
+
+#: 
+msgid "Send Again"
+msgstr "Ipadala Muli"
+
+#: 
+msgid "Send a test message to verify your SMTP configuration"
+msgstr "Magpadala ng test message upang i-verify ang iyong SMTP configuration"
+
+#: 
+msgid "Server"
+msgstr "Server"
+
+#: 
+msgid "Server Version"
+msgstr "Server Version"
+
+#: 
+msgid "Session Handler"
+msgstr "Session Handler"
+
+#: 
+msgid "Session Save Path"
+msgstr "Session Save Path"
+
+#: 
+msgid "Settings Valid"
+msgstr "Settings Valid"
+
+#: 
+msgid "Subject"
+msgstr "Subject"
+
+#: 
+msgid "Test"
+msgstr "Test"
+
+#: 
+msgid "Test email accepted by SMTP server"
+msgstr "Tinanggap ng SMTP server ang test email"
+
+#: 
+msgid "Test email failed to send"
+msgstr "Nabigo ang pagpapadala ng test email"
+
+#: 
+msgid "This is a ChurchCRM test email."
+msgstr "Ito ay isang ChurchCRM test email."
+
+#: 
+msgid "Timeout"
+msgstr "Timeout"
+
+#: 
+msgid "Timezone"
+msgstr "Timezone"
+
+#: 
+msgid "Unable to list web server modules (non-Apache SAPI)."
+msgstr "Hindi mailista ang mga web server module (non-Apache SAPI)."
+
+#: 
+msgid "Update Settings"
+msgstr "I-update ang Settings"
+
+#: 
+msgid "View full photo"
+msgstr "Tingnan ang buong larawan"
+
+#: 
+msgid "page."
+msgstr "pahina."
+
+#: 
+msgid "user:"
+msgstr "user:"
+
+#: 
+msgid "1. Download the template"
+msgstr "1. I-download ang template"
+
+#: 
+msgid "2. Fill in your data"
+msgstr "2. Punan ang iyong data"
+
+#: 
+msgid "3. Upload and map"
+msgstr "3. Mag-upload at i-map"
+
+#: 
+msgid "Add Recurring Event"
+msgstr "Magdagdag ng Recurring Event"
+
+#: 
+msgid "Available after the event is saved."
+msgstr "Magagamit pagkatapos i-save ang event."
+
+#: 
+msgid "Boolean properties/fields accept yes / no / true / false / 1 / 0."
+msgstr "Tumatanggap ang mga Boolean property/field ng yes / no / true / false / 1 / 0."
+
+#: 
+msgid "ChurchCRM auto-matches each column by name. Anything it cannot match is marked as Unmapped — pick a field or leave it as Ignore."
+msgstr "Awtomatikong tinutugma ng ChurchCRM ang bawat column sa pamamagitan ng pangalan. Anumang hindi nito matugma ay mamarkahan bilang Unmapped — pumili ng field o iwanang Ignore."
+
+#: 
+msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
+msgstr "Hindi ma-parse ang CSV file. Tiyaking ito ay isang wastong comma-separated file na may header row."
+
+#: 
+msgid "Custom field columns you have not configured are ignored — nothing is created on the fly."
+msgstr "Hindi pinapansin ang mga custom field column na hindi mo na-configure — walang ginagawang bago habang nag-i-import."
+
+#: 
+msgid "Custom fields and properties are supported"
+msgstr "Suportado ang mga custom field at property"
+
+#: 
+msgid "Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a month and day with no year."
+msgstr "Tumatanggap ang mga date field ng YYYY-MM-DD o M/D/YYYY. Gamitin ang 0000-MM-DD o M/D para sa buwan at araw na walang taon."
+
+#: 
+msgid "Each row is one person. People in the same family share a FamilyID. Leave columns blank when you have no value for them."
+msgstr "Bawat row ay isang tao. Ang mga taong magkakapamilya ay nagbabahagi ng iisang FamilyID. Iwanang blangko ang mga column kapag wala kang halagang inilagay."
+
+#: 
+msgid "Event Timing"
+msgstr "Oras ng Event"
+
+#: 
+msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
+msgstr "Bawat tumutugmang pangyayari sa pagitan ng From at To ay magkakaroon ng sariling event sa parehong Start/End time."
+
+#: 
+msgid "External calendar sharing is disabled"
+msgstr "Naka-disable ang external calendar sharing"
+
+#: 
+msgid "Failed to load event editor. Please refresh and try again."
+msgstr "Nabigong i-load ang event editor. Mangyaring i-refresh at subukan muli."
+
+#: 
+msgid "Family Custom"
+msgstr "Family Custom"
+
+#: 
+msgid "Family Property"
+msgstr "Family Property"
+
+#: 
+msgid "Fields"
+msgstr "Mga Field"
+
+#: 
+msgid "Go to home"
+msgstr "Pumunta sa home"
+
+#: 
+msgid "Hide advanced options"
+msgstr "Itago ang advanced options"
+
+#: 
+msgid "How the CSV Import Works"
+msgstr "Paano Gumagana ang CSV Import"
+
+#: 
+msgid "Imported from CSV"
+msgstr "Na-import mula sa CSV"
+
+#: 
+msgid "Invalid date format"
+msgstr "Hindi wastong format ng petsa"
+
+#: 
+msgid "Loading event editor…"
+msgstr "Naglo-load ng event editor…"
+
+#: 
+msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
+msgstr "Walang napiling kalendaryo — ise-save ang event na ito ngunit hindi ito lalabas sa anumang calendar view."
+
+#: 
+msgid "No group"
+msgstr "Walang grupo"
+
+#: 
+msgid "Not pinned to any calendar"
+msgstr "Hindi naka-pin sa anumang kalendaryo"
+
+#: 
+msgid "Optional — sermon notes, materials, or other details copied to every generated event."
+msgstr "Optional — mga tala ng sermon, materyales, o iba pang detalye na kokopyahin sa bawat magagawang event."
+
+#: 
+msgid "Person / Family"
+msgstr "Tao / Pamilya"
+
+#: 
+msgid "Person Custom"
+msgstr "Person Custom"
+
+#: 
+msgid "Person Property"
+msgstr "Person Property"
+
+#: 
+msgid "Show more options"
+msgstr "Ipakita ang higit pang options"
+
+#: 
+msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
+msgstr "Hindi kumpleto ang calendar link. Mangyaring suriin ang URL kasama ang taong nagpadala nito sa iyo."
+
+#: 
+msgid "The church administrator has not enabled external calendar sharing. Please contact them if you believe this is in error."
+msgstr "Hindi pa na-enable ng administrator ng simbahan ang external calendar sharing. Mangyaring makipag-ugnayan sa kanila kung sa palagay mo ay isang pagkakamali ito."
+
+#: 
+msgid "The start or end date in the link could not be understood. Try the base calendar link without date parameters."
+msgstr "Hindi maintindihan ang start o end date sa link. Subukan ang base calendar link nang walang date parameters."
+
+#: 
+msgid "The template already contains every column you can map — the core Person/Family fields plus each custom field and property your site defines."
+msgstr "Naglalaman na ang template ng bawat column na maaari mong i-map — ang core Person/Family fields kasama ang bawat custom field at property na tinukoy ng iyong site."
+
+#: 
+msgid "The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically."
+msgstr "Kasama na sa template ang isang column para sa bawat Person/Family custom field at para sa bawat property na iyong tinukoy. Kung manu-manong magdagdag ka ng column, gamitin lamang ang eksaktong pangalan ng custom field o property bilang column header at awtomatikong itutugma ito ng importer."
+
+#: 
+msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
+msgstr "Hindi wasto o naka-revoke na ang calendar link na ito. Humingi sa simbahan ng kasalukuyang link."
+
+#: 
+msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
+msgstr "Iniuugnay ang event na ito sa isang klase o ministeryo roster — ginagamit ng Kiosk check-in flow."
+
+#: 
+msgid "Upload a CSV to create families and people in bulk."
+msgstr "Mag-upload ng CSV para gumawa ng mga pamilya at tao nang sabay-sabay."
+
+#: 
+msgid "Volunteer-entered headcounts, broken down by category."
+msgstr "Mga headcount na inilagay ng volunteer, hinati ayon sa kategorya."
+
+#: 
+msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
+msgstr "May duplicate na column names ang iyong CSV. Palitan ang pangalan ng mga duplicate column (hal. magdagdag ng \"(2)\" sa pangalawa) at mag-upload muli."
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "Sigurado ka bang permanenteng burahin ang donated item na ito?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "Sigurado ka bang permanenteng burahin ang paddle number na ito?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Burahin ang Donated Item"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Burahin ang Paddle Number"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Hindi wastong security token. Mangyaring subukan muli."
 

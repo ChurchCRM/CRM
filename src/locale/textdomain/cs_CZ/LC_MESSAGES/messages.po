@@ -15197,6 +15197,10 @@ msgid "No active event assignment"
 msgstr "Žádné aktivní přiřazení události"
 
 #: 
+msgid "Online"
+msgstr "Online"
+
+#: 
 msgid "Opens a 30-second window for devices to register at:"
 msgstr "Otevře 30sekundové okno pro registraci zařízení na:"
 
@@ -15557,6 +15561,10 @@ msgid "Send a test message to verify your SMTP configuration"
 msgstr "Odeslat testovací zprávu pro ověření konfigurace SMTP"
 
 #: 
+msgid "Server"
+msgstr "Server"
+
+#: 
 msgid "Server Version"
 msgstr "Verze serveru"
 
@@ -15575,6 +15583,10 @@ msgstr "Nastavení platné"
 #: 
 msgid "Subject"
 msgstr "Předmět"
+
+#: 
+msgid "Test"
+msgstr "Test"
 
 #: 
 msgid "Test email accepted by SMTP server"
@@ -15787,4 +15799,24 @@ msgstr "Počty zadané dobrovolníky, rozdělené podle kategorie."
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "Váš CSV má duplicitní názvy sloupců. Přejmenujte duplicitní sloupce (např. přidejte \"(2)\" k druhému) a nahrajte znovu."
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "Jste si jisti, že chcete tuto darovanou položku trvale odstranit?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "Jste si jisti, že chcete toto číslo licitace trvale odstranit?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Odstranit darovanou položku"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Odstranit číslo licitace"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Neplatný bezpečnostní token. Zkuste to prosím znovu."
 

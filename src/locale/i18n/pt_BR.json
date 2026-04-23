@@ -3629,6 +3629,7 @@
     "Kiosk Devices": "Dispositivos de quiosque",
     "Kiosk device has not been accepted by an administrator": "O dispositivo de quiosque não foi aceito por um administrador",
     "No active event assignment": "Sem atribuição de evento ativa",
+    "Online": "Online",
     "Opens a 30-second window for devices to register at:": "Abre uma janela de 30 segundos para que os dispositivos se registrem em:",
     "Pending": "Pendente",
     "Register New Device": "Registrar novo dispositivo",
@@ -3689,6 +3690,7 @@
     "Error:": "Erro:",
     "Fix Settings": "Corrigir Configurações",
     "Hit Rate": "Taxa de Acerto",
+    "Host": "Host",
     "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below.": "Se a mensagem não chegar em alguns minutos, verifique a pasta de spam/lixo eletrônico e o registro de depuração SMTP abaixo.",
     "If you can read this message in your inbox, your SMTP configuration is working correctly.": "Se você consegue ler esta mensagem em sua caixa de entrada, sua configuração SMTP está funcionando corretamente.",
     "Incomplete": "Incompleto",
@@ -3777,5 +3779,10 @@
     "Ties this event to a class or ministry roster — used by the Kiosk check-in flow.": "Vincula este evento a uma turma ou lista de ministério — usado pelo fluxo de check-in do Quiosque.",
     "Upload a CSV to create families and people in bulk.": "Envie um CSV para criar famílias e pessoas em massa.",
     "Volunteer-entered headcounts, broken down by category.": "Contagens de pessoas inseridas por voluntários, divididas por categoria.",
-    "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again.": "Seu CSV tem nomes de colunas duplicados. Renomeie as colunas duplicadas (ex.: adicione \"(2)\" à segunda) e envie novamente."
+    "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again.": "Seu CSV tem nomes de colunas duplicados. Renomeie as colunas duplicadas (ex.: adicione \"(2)\" à segunda) e envie novamente.",
+    "Are you sure you want to permanently delete this donated item?": "Tem certeza de que deseja excluir permanentemente este item doado?",
+    "Are you sure you want to permanently delete this paddle number?": "Tem certeza de que deseja excluir permanentemente este número de remo?",
+    "Delete Donated Item": "Excluir item doado",
+    "Delete Paddle Number": "Excluir número de remo",
+    "Invalid security token. Please try again.": "Token de segurança inválido. Por favor, tente novamente."
 }

@@ -15282,6 +15282,10 @@ msgid "No active event assignment"
 msgstr "Brak aktywnego przypisania zdarzenia"
 
 #: 
+msgid "Online"
+msgstr "Online"
+
+#: 
 msgid "Opens a 30-second window for devices to register at:"
 msgstr "Otwiera 30-sekundowe okno dla urządzeń do rejestracji w:"
 
@@ -15522,6 +15526,10 @@ msgid "Hit Rate"
 msgstr "Współczynnik trafień"
 
 #: 
+msgid "Host"
+msgstr "Host"
+
+#: 
 msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
 msgstr "Jeśli wiadomość nie dotrze w ciągu kilku minut, sprawdź folder ze spamem i dziennik debugowania SMTP poniżej."
 
@@ -15660,6 +15668,10 @@ msgstr "Ustawienia prawidłowe"
 #: 
 msgid "Subject"
 msgstr "Temat"
+
+#: 
+msgid "Test"
+msgstr "Test"
 
 #: 
 msgid "Test email accepted by SMTP server"
@@ -15872,4 +15884,24 @@ msgstr "Liczba osób wprowadzona przez wolontariuszy, z podziałem na kategorie.
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "Twój plik CSV ma zduplikowane nazwy kolumn. Zmień nazwy zduplikowanych kolumn (np. dodaj \"(2)\" do drugiej) i prześlij ponownie."
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "Czy na pewno chcesz trwale usunąć ten darowany przedmiot?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "Czy na pewno chcesz trwale usunąć ten numer licytacyjny?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Usuń darowany przedmiot"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Usuń numer licytacyjny"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Nieprawidłowy token bezpieczeństwa. Spróbuj ponownie."
 

@@ -15184,6 +15184,10 @@ msgid "No active event assignment"
 msgstr "Tidak ada penugasan acara aktif"
 
 #: 
+msgid "Online"
+msgstr "Online"
+
+#: 
 msgid "Opens a 30-second window for devices to register at:"
 msgstr "Membuka jendela 30 detik untuk perangkat mendaftar di:"
 
@@ -15424,6 +15428,10 @@ msgid "Hit Rate"
 msgstr "Tingkat Hit"
 
 #: 
+msgid "Host"
+msgstr "Host"
+
+#: 
 msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
 msgstr "Jika pesan tidak tiba dalam beberapa menit, periksa folder spam/sampah dan log debug SMTP di bawah."
 
@@ -15538,6 +15546,10 @@ msgstr "Kirim Lagi"
 #: 
 msgid "Send a test message to verify your SMTP configuration"
 msgstr "Kirim pesan uji coba untuk memverifikasi konfigurasi SMTP Anda"
+
+#: 
+msgid "Server"
+msgstr "Server"
 
 #: 
 msgid "Server Version"
@@ -15774,4 +15786,24 @@ msgstr "Jumlah peserta yang dimasukkan sukarelawan, dikelompokkan berdasarkan ka
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "CSV Anda memiliki nama kolom yang duplikat. Ganti nama kolom yang duplikat (mis. tambahkan \"(2)\" pada yang kedua) dan unggah kembali."
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "Apakah Anda yakin ingin menghapus barang sumbangan ini secara permanen?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "Apakah Anda yakin ingin menghapus nomor lelang ini secara permanen?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Hapus barang sumbangan"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Hapus nomor lelang"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Token keamanan tidak valid. Silakan coba lagi."
 
