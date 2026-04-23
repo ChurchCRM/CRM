@@ -205,3 +205,44 @@ async function loadLocaleFiles(localeConfig) {
 
 // Export for use in other scripts
 window.CRM.loadLocaleFiles = loadLocaleFiles;
+
+/**
+ * Populate a <select> with locale options grouped by region.
+ * Shared by church-info and user-settings pages.
+ *
+ * @param {HTMLSelectElement} selectEl       - Target element to populate.
+ * @param {string}            selectedLocale - Locale code to pre-select.
+ * @returns {Promise<void>}
+ */
+async function populateLocaleDropdown(selectEl, selectedLocale) {
+  const root = window.CRM.root || "";
+  const response = await fetch(`${root}/locale/locales.json`);
+  if (!response.ok) {
+    throw new Error(`Failed to load locales.json: ${response.status}`);
+  }
+  const locales = await response.json();
+
+  const byRegion = {};
+  for (const [englishName, data] of Object.entries(locales)) {
+    const region = data.region || "Other";
+    if (!byRegion[region]) byRegion[region] = [];
+    byRegion[region].push({ englishName, data });
+  }
+
+  for (const region of Object.keys(byRegion).sort()) {
+    const group = document.createElement("optgroup");
+    group.label = region;
+    for (const { englishName, data } of byRegion[region]) {
+      const native = data.nativeName || "";
+      const label =
+        native && native !== englishName
+          ? `${native} \u2014 ${englishName} [${data.locale}]`
+          : `${englishName} [${data.locale}]`;
+      const option = new Option(label, data.locale, false, data.locale === selectedLocale);
+      group.appendChild(option);
+    }
+    selectEl.appendChild(group);
+  }
+}
+
+window.CRM.populateLocaleDropdown = populateLocaleDropdown;

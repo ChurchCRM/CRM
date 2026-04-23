@@ -30,12 +30,12 @@ function notifyError() {
 }
 
 // ── API Key Regeneration ──────────────────────────────────────────
-$("#regenApiKey").on("click", function () {
+$("#regenApiKey").on("click", () => {
   $.ajax({
     type: "POST",
     url: window.CRM.root + "/api/user/" + window.CRM.viewUserId + "/apikey/regen",
   })
-    .done(function (data) {
+    .done((data) => {
       $("#apiKey").val(data.apiKey);
       window.CRM.notify(i18next.t("API key regenerated"), {
         type: "success",
@@ -47,9 +47,9 @@ $("#regenApiKey").on("click", function () {
 
 // ── Theme Mode (Light / Dark) ────────────────────────────────────
 $('input[name="themeMode"]').on("change", function () {
-  let value = $(this).val();
+  const value = $(this).val();
   saveUserSetting("ui.style", value)
-    .done(function () {
+    .done(() => {
       if (value === "dark") {
         document.documentElement.setAttribute("data-bs-theme", "dark");
       } else {
@@ -62,11 +62,11 @@ $('input[name="themeMode"]').on("change", function () {
 
 // ── Primary Color Picker ─────────────────────────────────────────
 $("#primaryColorPicker .btn-color-swatch").on("click", function () {
-  let swatch = $(this);
-  let color = swatch.data("color");
+  const swatch = $(this);
+  const color = swatch.data("color");
 
   saveUserSetting("ui.theme.primary", color)
-    .done(function () {
+    .done(() => {
       $("#primaryColorPicker .btn-color-swatch").removeClass("active");
       swatch.addClass("active");
       if (color) {
@@ -81,7 +81,7 @@ $("#primaryColorPicker .btn-color-swatch").on("click", function () {
 
 // ── Table Page Length ─────────────────────────────────────────────
 $("#tablePageLength").on("change", function () {
-  let value = $(this).val();
+  const value = $(this).val();
   saveUserSetting("ui.table.size", value).done(notifySuccess).fail(notifyError);
 });
 
@@ -89,40 +89,37 @@ $("#tablePageLength").on("change", function () {
 // Handled separately because it populates from JSON and triggers reload.
 // The change handler is bound AFTER initial value is set to avoid reload loop.
 function initLocaleDropdown() {
-  let dropdown = $("#user-locale-setting");
+  const dropdown = $("#user-locale-setting");
+  const savedLocale = getUserSetting("ui.locale");
 
-  let localeList = $.ajax({
-    url: window.CRM.root + "/locale/locales.json",
-    dataType: "json",
-    type: "GET",
-  });
-  let savedLocale = getUserSetting("ui.locale");
+  savedLocale.done((settingResult) => {
+    const userLocale = settingResult?.value || window.CRM.systemLocale || "";
 
-  $.when(localeList, savedLocale).done(function (listResult, settingResult) {
-    let locales = listResult[0];
-    let userLocale = settingResult[0]?.value || "";
-
-    $.each(locales, function (localeName, localeData) {
-      let isSelected = userLocale ? localeData.locale === userLocale : localeData.locale === window.CRM.systemLocale;
-      dropdown.append(new Option(localeName, localeData.locale, false, isSelected));
-    });
-
-    dropdown.on("change", function () {
-      let selected = $(this).find("option:selected");
-      saveUserSetting("ui.locale", selected.val())
-        .done(function () {
-          window.CRM.notify(i18next.t("Language updated to") + " " + selected.text(), { type: "success", delay: 3000 });
-          setTimeout(function () {
-            window.location.reload();
-          }, 3000);
-        })
-        .fail(notifyError);
-    });
+    window.CRM.populateLocaleDropdown(dropdown[0], userLocale)
+      .then(() => {
+        dropdown.on("change", function () {
+          const selected = $(this).find("option:selected");
+          saveUserSetting("ui.locale", selected.val())
+            .done(() => {
+              window.CRM.notify(i18next.t("Language updated to") + " " + selected.text(), {
+                type: "success",
+                delay: 3000,
+              });
+              setTimeout(() => {
+                window.location.reload();
+              }, 3000);
+            })
+            .fail(notifyError);
+        });
+      })
+      .catch((e) => {
+        console.error("Failed to load locale dropdown:", e);
+      });
   });
 }
 
 // ── Initialize on page load ──────────────────────────────────────
-$(document).ready(function () {
+$(document).ready(() => {
   initLocaleDropdown();
 
   // Photo uploader
@@ -133,11 +130,11 @@ $(document).ready(function () {
     window.CRM.photoUploader = window.CRM.createPhotoUploader({
       uploadUrl: window.CRM.root + "/api/person/" + window.CRM.viewPersonId + "/photo",
       maxFileSize: window.CRM.maxUploadSizeBytes,
-      onComplete: function () {
+      onComplete: () => {
         window.location.reload();
       },
     });
-    $("#uploadPhotoBtn").on("click", function (e) {
+    $("#uploadPhotoBtn").on("click", (e) => {
       e.preventDefault();
       if (window.CRM.photoUploader) {
         window.CRM.photoUploader.show();

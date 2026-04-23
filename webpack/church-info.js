@@ -7,6 +7,18 @@
  */
 
 document.addEventListener("DOMContentLoaded", () => {
+  // ── Language picker ─────────────────────────────────────────────────────
+  const langSelect = document.getElementById("sLanguage");
+  if (langSelect) {
+    const selected = langSelect.dataset.selectedLocale || "";
+    window.CRM.populateLocaleDropdown(langSelect, selected)
+      .then(() => {
+        if (window.TomSelect && !langSelect.tomselect) {
+          new window.TomSelect(langSelect, { allowEmptyOption: false });
+        }
+      })
+      .catch((e) => console.error("Failed to load language options:", e));
+  }
   const countrySelect = document.getElementById("sChurchCountry");
   const stateContainer = document.getElementById("sChurchStateContainer");
   const defaultCountrySelect = document.getElementById("sDefaultCountry");
