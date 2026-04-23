@@ -473,10 +473,9 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
             ->filterByFamId($familyId)
             ->delete();
 
-        // Delete photo before deleting the record (needs the ID)
-        $family->deletePhoto();
-
-        // Delete the family record itself
+        // Delete the family record itself. Family::preDelete() removes the
+        // photo file from disk; member deletion above triggers Person::preDelete
+        // for each member, which cleans up their photos too (#1697).
         $family->delete();
 
         return SlimUtils::renderJSON($response, ['success' => true]);

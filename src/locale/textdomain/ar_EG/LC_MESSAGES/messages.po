@@ -638,10 +638,6 @@ msgid "Save Changes"
 msgstr "حفظ التغييرات"
 
 #: 
-msgid "Church Event Editor"
-msgstr "محرر حدث الكنيسة"
-
-#: 
 msgid "Edit Event Type"
 msgstr "تحرير نوع الحدث"
 
@@ -707,20 +703,8 @@ msgid "Create Event"
 msgstr "إنشاء حدث"
 
 #: 
-msgid "Create a new Event"
-msgstr "إنشاء حدث جديد"
-
-#: 
-msgid "Select your event type"
-msgstr "اختر نوع الحدث"
-
-#: 
 msgid "Event Status"
 msgstr "حالة الحدث"
-
-#: 
-msgid "Return to Events"
-msgstr "العودة إلى أحداث"
 
 #: 
 msgid "Sundays"
@@ -1178,10 +1162,6 @@ msgid "Summary Data"
 msgstr "ملخص البيانات"
 
 #: 
-msgid "CSV"
-msgstr "CSV"
-
-#: 
 msgid "Back"
 msgstr "عودة"
 
@@ -1304,10 +1284,6 @@ msgstr "تنسيق ملف البيانات"
 #: 
 msgid "GPS Visualizer"
 msgstr "GPS متخيل"
-
-#: 
-msgid "Street Atlas USA"
-msgstr "شارع أطلس الولايات المتحدة الأمريكية"
 
 #: 
 #, fuzzy
@@ -2337,18 +2313,6 @@ msgstr "عدد كبير جدا. يجب أن يكون بين -2147483648 21474836
 #: 
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "مبلغ من المال كبير جدا. الحد الأقصى هو $ 999٬999٬999،99"
-
-#: 
-msgid " Bold Italic"
-msgstr "ثقيل/مائل"
-
-#: 
-msgid " Italic"
-msgstr "مائل"
-
-#: 
-msgid " Bold"
-msgstr "ثقيل"
 
 #: 
 msgid "Error making API Call to"
@@ -5075,7 +5039,8 @@ msgid "Indonesian - Indonesia"
 msgstr "الأندونيسية - اندونيسيا"
 
 #: 
-msgid "records(s) successfully added to selected Group."
+#, fuzzy
+msgid "record(s) successfully added to selected Group."
 msgstr "سجلات (ق) وأضاف بنجاح لاختيار المجموعة."
 
 #: 
@@ -5105,10 +5070,6 @@ msgstr "المضافة الجديدة الأسرة"
 #: 
 msgid "Church Greeter"
 msgstr "الكنيسة Greeter"
-
-#: 
-msgid "External Calendar API is disabled"
-msgstr "تم تعطيل API التقويم الخارجي"
 
 #: 
 msgid "Special Group Settings : Sunday School Type"
@@ -5387,7 +5348,8 @@ msgid "Remove All from Cart"
 msgstr "إزالة جميع من العربة"
 
 #: 
-msgid "records(s) successfully deleted from the selected Group."
+#, fuzzy
+msgid "record(s) successfully deleted from the selected Group."
 msgstr "سجلات (ق) حذف بنجاح من المجموعة المختارة."
 
 #: 
@@ -5535,10 +5497,6 @@ msgstr "غير قادر على فتح ملف"
 #: 
 msgid "Missing calendar access token"
 msgstr "في عداد المفقودين رمز وصول تقويم"
-
-#: 
-msgid "Calendar access token not found"
-msgstr "التقويم رمز وصول لم يتم العثور على"
 
 #: 
 msgid "User must have Delete Records permission"
@@ -5877,10 +5835,6 @@ msgstr "لم يمر أي بريد إلكتروني"
 #: 
 msgid "Mailchimp is not active"
 msgstr "Mailchimp غير نشط"
-
-#: 
-msgid "Mailchimp"
-msgstr "Mailchimp"
 
 #: 
 msgid "Lists"
@@ -6887,7 +6841,8 @@ msgid "Total Payments"
 msgstr "إجمالي المدفوعات"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payments?"
 msgstr "المدفوعات (ات)؟"
 
 #: 
@@ -6901,10 +6856,6 @@ msgstr "عنوان URL الأساسي"
 #: 
 msgid "Copy"
 msgstr "نسخ"
-
-#: 
-msgid "DSN"
-msgstr "DSN"
 
 #: 
 msgid "Debug Info"
@@ -6967,20 +6918,8 @@ msgid "SMTP Host"
 msgstr "خادم البريد الإلكتروني"
 
 #: 
-msgid "Software"
-msgstr "البرنامج"
-
-#: 
-msgid "System & Configuration"
-msgstr "النظام والتكوين"
-
-#: 
 msgid "Tip:"
 msgstr "نصيحة:"
-
-#: 
-msgid "Valid Settings"
-msgstr "الإعدادات الصحيحة"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7045,10 +6984,6 @@ msgid "Attendance Count Categories"
 msgstr "فئات عد الحضور"
 
 #: 
-msgid "Attendance Notes"
-msgstr "ملاحظات الحضور"
-
-#: 
 msgid "Change Event"
 msgstr "تغيير الحدث"
 
@@ -7104,14 +7039,6 @@ msgstr "حذف الحدث"
 msgid "Edit Event"
 msgstr "تعديل الحدث"
 
-#: 
-msgid "Editing Event"
-msgstr "تحرير الحدث"
-
-#: 
-msgid "Enter event title..."
-msgstr "أدخل عنوان الحدث..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7162,14 +7089,6 @@ msgid "None (one-time event)"
 msgstr "بدون (حدث لمرة واحدة)"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "اختياري - أضف ملاحظات الخطبة أو تفاصيل الحدث الإضافية"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "ملاحظات اختيارية حول الحضور..."
-
-#: 
 msgid "People Checked In"
 msgstr "الأشخاص المسجلون للدخول"
 
@@ -7204,10 +7123,6 @@ msgstr "ابحث عن مشرف..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "حدد الحدث لتسجيل الدخول"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "الخطبة / نص الحدث"
 
 #: 
 msgid "Unclassified"
@@ -8004,10 +7919,6 @@ msgid "Orphaned Files:"
 msgstr "الملفات اليتيمة:"
 
 #: 
-msgid "PDF/CSV"
-msgstr "PDF/CSV"
-
-#: 
 msgid "Payment"
 msgstr "الدفع"
 
@@ -8244,10 +8155,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "لم يتم تكوين عنوان URL الأساسي في Config.php"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "اللغات المدعومة في ChurchCRM"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "اتصل بخادمك عبر SSH أو FTP أو لوحة التحكم الخاصة بالاستضافة"
 
@@ -8294,10 +8201,6 @@ msgstr "اللغة"
 #: 
 msgid "Local development:"
 msgstr "التطوير المحلي:"
-
-#: 
-msgid "Locale Support"
-msgstr "دعم اللغات المحلية"
 
 #: 
 msgid "Location & Contact Information"
@@ -9136,10 +9039,6 @@ msgid "Failed to save the downloaded release file. Please check disk space and p
 msgstr "فشل في حفظ ملف الإصدار المحمل. يرجى التحقق من مساحة القرص والأذونات."
 
 #: 
-msgid "Invalid date format in start parameter"
-msgstr "تنسيق تاريخ غير صالح في معامل البداية"
-
-#: 
 msgid "Mismatch"
 msgstr "عدم تطابق"
 
@@ -9604,10 +9503,6 @@ msgstr "الرابط غير موجود"
 #: 
 msgid "Loading recovery codes"
 msgstr "جارٍ تحميل رموز الاسترداد"
-
-#: 
-msgid "MailChimp"
-msgstr "MailChimp"
 
 #: 
 msgid "MailChimp API Key"
@@ -10725,10 +10620,6 @@ msgid "CSV Column"
 msgstr "عمود CSV"
 
 #: 
-msgid "CSV template not found"
-msgstr "لم يتم العثور على قالب CSV"
-
-#: 
 msgid "Call"
 msgstr "اتصل"
 
@@ -10803,10 +10694,6 @@ msgstr "تم مطابقة العمود تلقائيًا مع حقل ChurchCRM."
 #: 
 msgid "Community Management Platform"
 msgstr "منصة إدارة المجتمع"
-
-#: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "متوافق مع Excel أو Google Sheets أو أي تصدير CSV."
 
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
@@ -10981,10 +10868,6 @@ msgid "Download CSV Template"
 msgstr "تحميل نموذج CSV"
 
 #: 
-msgid "Download the template to see the expected column format."
-msgstr "قم بتحميل النموذج لمعرفة تنسيق العمود المتوقع."
-
-#: 
 msgid "Drag and drop your CSV file here"
 msgstr "اسحب وأفلت ملف CSV هنا"
 
@@ -10995,10 +10878,6 @@ msgstr "النسخ المكررة"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "يمكن لكل شخص أن يكون لديه بريده الإلكتروني ورقم هاتفه المحمول."
-
-#: 
-msgid "Each row is one person. Members of the same family share a FamilyID."
-msgstr "كل صف هو شخص واحد. يشارك أعضاء نفس العائلة معرف FamilyID."
 
 #: 
 msgid "Easy registration"
@@ -12083,10 +11962,6 @@ msgid "Upload CSV"
 msgstr "تحميل CSV"
 
 #: 
-msgid "Upload a CSV file to import families and people into ChurchCRM."
-msgstr "قم بتحميل ملف CSV لاستيراد العائلات والأشخاص في ChurchCRM."
-
-#: 
 msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
 msgstr "قم بتحميل ملف CSV من Excel أو Google Sheets أو نظام إدارة الكنيسة السابق وخريطة الأعمدة إلى حقول ChurchCRM."
 
@@ -12309,10 +12184,6 @@ msgstr "الأعضاء"
 #: 
 msgid "opportunities"
 msgstr "الفرص"
-
-#: 
-msgid "options"
-msgstr "الخيارات"
 
 #: 
 msgid "or connect an external service"
@@ -14493,10 +14364,6 @@ msgstr[4] "تم إنشاء %d حدثاً متكرراً بنجاح."
 msgstr[5] "تم إنشاء %d حدث متكرر بنجاح."
 
 #: 
-msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
-msgstr "(مثل الأعضاء، الزوار، الأطفال) حتى يتمكن المتطوعون من تسجيل الأعداد هنا."
-
-#: 
 msgid "1. Sunday School Class"
 msgstr "1. فصل مدرسة الأحد"
 
@@ -14517,10 +14384,6 @@ msgid "A class is a Group with type \"Sunday School\". It holds the students and
 msgstr "الفصل هو مجموعة من نوع \"مدرسة الأحد\". يضم الطلاب والمعلمين (الأعضاء بأدوار محددة)."
 
 #: 
-msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
-msgstr "المجموعة المرتبطة تربط هذا الحدث بفصل أو قائمة مجموعة. عند تعيين الحدث إلى Kiosk، يسحب الـ Kiosk أعضاء المجموعة ويعرضهم كقائمة للتسجيل بلمسة. لفصول مدرسة الأحد، اربط مجموعة الفصل هنا حتى يتمكن المتطوعون من تسجيل حضور الطلاب من جهاز لوحي."
-
-#: 
 msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
 msgstr "حدوث محدد (مثل \"ما قبل المدرسة — 12 أبريل\"). يرث الإعدادات الافتراضية من النوع ومرتبط بمجموعة الفصل عبر الجمهور. هذا ما يسجل المتطوعون الحضور ضده."
 
@@ -14531,10 +14394,6 @@ msgstr "جهاز لوحي مخصص لحدث واحد. يسحب الـ Kiosk قا
 #: 
 msgid "Add Walk-in / Visitor"
 msgstr "إضافة زائر مباشر / زيارة"
-
-#: 
-msgid "Add categories on the Event Type page"
-msgstr "أضف فئات في صفحة نوع الحدث"
 
 #: 
 msgid "Add people to your cart first, then come back to check them in to an event."
@@ -14583,10 +14442,6 @@ msgstr "مراجعة"
 #: 
 msgid "Audit Events"
 msgstr "مراجعة الأحداث"
-
-#: 
-msgid "Auto-totalled from counts at right"
-msgstr "إجمالي محسوب تلقائياً من الأعداد على اليمين"
 
 #: 
 msgid "Back to Events"
@@ -14713,10 +14568,6 @@ msgid "Database dump only (.sql)"
 msgstr "نسخة قاعدة البيانات فقط (.sql)"
 
 #: 
-msgid "Date Range"
-msgstr "نطاق التاريخ"
-
-#: 
 msgid "Date range cannot exceed 1 year"
 msgstr "لا يمكن أن يتجاوز نطاق التاريخ سنة واحدة"
 
@@ -14797,10 +14648,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "تم إنشاء الحدث. جارٍ التوجيه إلى تسجيل الحضور..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "يجب أن يكون تاريخ/وقت انتهاء الحدث في نفس تاريخ/وقت البدء أو بعده."
-
-#: 
 msgid "Event title is required."
 msgstr "عنوان الحدث مطلوب."
 
@@ -14827,10 +14674,6 @@ msgstr "نوع الحدث لا يحتوي على نمط تكرار مُهيأ"
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "نوع الحدث لا يحتوي على يوم شهري صالح مُهيأ للتكرار الشهري"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "سيتم إنشاء الأحداث لكل تكرار مطابق ضمن نطاق التاريخ هذا."
 
 #: 
 msgid "Every month on the"
@@ -14881,10 +14724,6 @@ msgid "Group Roster"
 msgstr "قائمة المجموعة"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "إخفاء الخيارات المتقدمة"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "كيف تتكامل مدرسة الأحد والأحداث والـ Kiosks"
 
@@ -14895,10 +14734,6 @@ msgstr "تاريخ غير صالح لـ %s — الصيغة المتوقعة YYY
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "صيغة تاريخ غير صالحة لـ rangeStart أو rangeEnd"
-
-#: 
-msgid "Invalid date format."
-msgstr "صيغة التاريخ غير صالحة."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -14953,10 +14788,6 @@ msgid "No active events found."
 msgstr "لم يتم العثور على أحداث نشطة."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "لم يتم تحديد فئات عد الحضور لهذا النوع من الأحداث بعد."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "لم يسجل أحد حضوره في هذا الحدث بعد."
 
@@ -14997,10 +14828,6 @@ msgid "Please select a person to check in."
 msgstr "يرجى اختيار شخص لتسجيل حضوره."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "مملوء مسبقاً بناءً على نوع الحدث هذا — للأنواع المتكررة، التاريخ هو التكرار التالي بعد آخر حدث من هذا النوع، والوقت يطابق وقت البدء الافتراضي للنوع."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "يجب أن يكون تاريخ نهاية النطاق في نفس تاريخ بدء النطاق أو بعده."
 
@@ -15029,10 +14856,6 @@ msgid "Recommended"
 msgstr "مُوصى به"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "مطلوب لـ Kiosk"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "ستؤدي إعادة الضبط إلى الحذف الدائم لـ:"
 
@@ -15051,14 +14874,6 @@ msgstr "حفظ التغييرات على اسم هذه الفئة"
 #: 
 msgid "Select an event type…"
 msgstr "اختر نوع الحدث…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "اختر تاريخ/وقت البدء والانتهاء."
-
-#: 
-msgid "Show More Options"
-msgstr "عرض المزيد من الخيارات"
 
 #: 
 msgid "Skip"
@@ -15101,16 +14916,8 @@ msgid "The Events module is disabled"
 msgstr "وحدة الأحداث معطّلة"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "سيتم استخدام نفس وقت البدء والانتهاء لجميع الأحداث المُنشأة."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "لا توجد أحداث مجدولة لليوم"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "هذه فئات عد الحضور — يملؤها المتطوعون بعد الحدث حتى تتمكن لوحة التحكم من تفصيل الحضور (مثل عدد الأعضاء مقابل الزوار). وهي منفصلة عن تسجيلات الحضور الفردية في صفحة تسجيل الحضور."
 
 #: 
 msgid "This event is inactive."
@@ -15165,16 +14972,8 @@ msgid "View Event"
 msgstr "عرض الحدث"
 
 #: 
-msgid "What are these for?"
-msgstr "ما الغرض منها؟"
-
-#: 
 msgid "What does this find?"
 msgstr "ماذا يجد هذا؟"
-
-#: 
-msgid "What is this for?"
-msgstr "ما الغرض من هذا؟"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15561,14 +15360,6 @@ msgid "Set up Email"
 msgstr "إعداد البريد الإلكتروني"
 
 #: 
-msgid "Test SMTP Email"
-msgstr "اختبار بريد SMTP الإلكتروني"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "هذا بريد إلكتروني تجريبي من ChurchCRM يؤكد أن تكوين SMTP الخاص بك يعمل بشكل صحيح."
-
-#: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."
 msgstr "تعذّر النسخ إلى الحافظة. يرجى نسخ الرموز يدوياً."
 
@@ -15583,4 +15374,488 @@ msgstr "استخدم رمز الاسترداد بدلاً من ذلك"
 #: 
 msgid "Use authenticator app instead"
 msgstr "استخدم تطبيق المصادقة بدلاً من ذلك"
+
+#: 
+msgid "%d modules loaded"
+msgstr "تم تحميل %d وحدة"
+
+#: 
+msgid "(PHP default)"
+msgstr "(الافتراضي في PHP)"
+
+#: 
+msgid "(none)"
+msgstr "(لا شيء)"
+
+#: 
+msgid "(not set)"
+msgstr "(غير محدد)"
+
+#: 
+msgid "All checks passing"
+msgstr "جميع الفحوصات ناجحة"
+
+#: 
+msgid "App"
+msgstr "التطبيق"
+
+#: 
+msgid "Browser time zone differs:"
+msgstr "المنطقة الزمنية للمتصفح مختلفة:"
+
+#: 
+msgid "Calendar time zone:"
+msgstr "المنطقة الزمنية للتقويم:"
+
+#: 
+msgid "Cannot send test email"
+msgstr "تعذّر إرسال البريد الإلكتروني التجريبي"
+
+#: 
+msgid "Charset"
+msgstr "مجموعة الأحرف"
+
+#: 
+msgid "Church Email address is not set — the test email has nowhere to go."
+msgstr "لم يتم تعيين عنوان البريد الإلكتروني للكنيسة — لا يوجد مكان لإرسال البريد التجريبي إليه."
+
+#: 
+msgid "Church email — configured on the"
+msgstr "البريد الإلكتروني للكنيسة — تم إعداده في"
+
+#: 
+msgid "ChurchCRM Test Email"
+msgstr "بريد ChurchCRM التجريبي"
+
+#: 
+msgid "Collation"
+msgstr "ترتيب الحروف"
+
+#: 
+msgid "Connection"
+msgstr "الاتصال"
+
+#: 
+msgid "Database"
+msgstr "قاعدة البيانات"
+
+#: 
+msgid "Delivery"
+msgstr "التسليم"
+
+#: 
+msgid "Disk (Images Root)"
+msgstr "القرص (مجلد الصور الرئيسي)"
+
+#: 
+msgid "Display Errors"
+msgstr "عرض الأخطاء"
+
+#: 
+msgid "Email Debug"
+msgstr "تصحيح البريد الإلكتروني"
+
+#: 
+msgid "Environment"
+msgstr "البيئة"
+
+#: 
+msgid "Error Log"
+msgstr "سجل الأخطاء"
+
+#: 
+msgid "Error Reporting"
+msgstr "الإبلاغ عن الأخطاء"
+
+#: 
+msgid "Error:"
+msgstr "خطأ:"
+
+#: 
+msgid "Fix Settings"
+msgstr "تصحيح الإعدادات"
+
+#: 
+msgid "Hit Rate"
+msgstr "معدل الإصابة في الذاكرة المؤقتة"
+
+#: 
+msgid "Host"
+msgstr "المضيف"
+
+#: 
+msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
+msgstr "إذا لم تصل الرسالة في غضون دقائق قليلة، تحقق من مجلد البريد غير المرغوب فيه وسجل تصحيح SMTP أدناه."
+
+#: 
+msgid "If you can read this message in your inbox, your SMTP configuration is working correctly."
+msgstr "إذا كان بإمكانك قراءة هذه الرسالة في صندوق الوارد، فإن إعداد SMTP لديك يعمل بشكل صحيح."
+
+#: 
+msgid "Incomplete"
+msgstr "غير مكتمل"
+
+#: 
+msgid "Installed on Server"
+msgstr "مثبّت على الخادم"
+
+#: 
+msgid "Integrity"
+msgstr "سلامة البيانات"
+
+#: 
+msgid "Issues detected"
+msgstr "تم اكتشاف مشكلات"
+
+#: 
+msgid "Loaded php.ini"
+msgstr "ملف php.ini المحمّل"
+
+#: 
+msgid "Locale"
+msgstr "اللغة والمنطقة"
+
+#: 
+msgid "Max Execution Time"
+msgstr "الحد الأقصى لوقت التنفيذ"
+
+#: 
+msgid "Max POST Size"
+msgstr "الحد الأقصى لحجم POST"
+
+#: 
+msgid "Max Upload Size"
+msgstr "الحد الأقصى لحجم الرفع"
+
+#: 
+msgid "Memory"
+msgstr "الذاكرة"
+
+#: 
+msgid "Memory Limit"
+msgstr "حد الذاكرة"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
+msgstr "تحقق الآن من صندوق الوارد للمستلم للتأكد من التسليم. ابحث عن الموضوع:"
+
+#: 
+msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
+msgstr "لم يتم تفعيل OPcache. تفعيله طريقة منخفضة المخاطر لتسريع تحميل صفحات PHP."
+
+#: 
+msgid "Off"
+msgstr "معطّل"
+
+#: 
+msgid "On"
+msgstr "مفعّل"
+
+#: 
+msgid "Open the email debug tester"
+msgstr "فتح أداة اختبار تصحيح البريد الإلكتروني"
+
+#: 
+msgid "PHP Version"
+msgstr "إصدار PHP"
+
+#: 
+msgid "PHPMailer SMTP session"
+msgstr "جلسة PHPMailer SMTP"
+
+#: 
+msgid "Prerequisites"
+msgstr "المتطلبات الأساسية"
+
+#: 
+msgid "Review the SMTP debug log below for the handshake details, then adjust your settings."
+msgstr "راجع سجل تصحيح SMTP أدناه للاطلاع على تفاصيل المصافحة، ثم عدّل إعداداتك."
+
+#: 
+msgid "SMTP Configuration"
+msgstr "إعداد SMTP"
+
+#: 
+msgid "SMTP Debug Log"
+msgstr "سجل تصحيح SMTP"
+
+#: 
+msgid "SMTP Host is not configured."
+msgstr "لم يتم إعداد مضيف SMTP."
+
+#: 
+msgid "SMTP configuration test — if this arrived, your setup works."
+msgstr "اختبار إعداد SMTP — إذا وصل هذا، فإن إعدادك يعمل."
+
+#: 
+msgid "Schema Version"
+msgstr "إصدار المخطط"
+
+#: 
+msgid "Send Again"
+msgstr "إرسال مجدداً"
+
+#: 
+msgid "Send a test message to verify your SMTP configuration"
+msgstr "أرسل رسالة تجريبية للتحقق من إعداد SMTP"
+
+#: 
+msgid "Server"
+msgstr "الخادم"
+
+#: 
+msgid "Server Version"
+msgstr "إصدار الخادم"
+
+#: 
+msgid "Session Handler"
+msgstr "معالج الجلسة"
+
+#: 
+msgid "Session Save Path"
+msgstr "مسار حفظ الجلسة"
+
+#: 
+msgid "Settings Valid"
+msgstr "الإعدادات صالحة"
+
+#: 
+msgid "Subject"
+msgstr "الموضوع"
+
+#: 
+msgid "Test"
+msgstr "اختبار"
+
+#: 
+msgid "Test email accepted by SMTP server"
+msgstr "تم قبول البريد الإلكتروني التجريبي بواسطة خادم SMTP"
+
+#: 
+msgid "Test email failed to send"
+msgstr "فشل إرسال البريد الإلكتروني التجريبي"
+
+#: 
+msgid "This is a ChurchCRM test email."
+msgstr "هذا بريد إلكتروني تجريبي من ChurchCRM."
+
+#: 
+msgid "Timeout"
+msgstr "انتهاء المهلة"
+
+#: 
+msgid "Timezone"
+msgstr "المنطقة الزمنية"
+
+#: 
+msgid "Unable to list web server modules (non-Apache SAPI)."
+msgstr "تعذّر سرد وحدات خادم الويب (SAPI غير Apache)."
+
+#: 
+msgid "Update Settings"
+msgstr "تحديث الإعدادات"
+
+#: 
+msgid "View full photo"
+msgstr "عرض الصورة كاملة"
+
+#: 
+msgid "page."
+msgstr "الصفحة."
+
+#: 
+msgid "user:"
+msgstr "المستخدم:"
+
+#: 
+msgid "1. Download the template"
+msgstr "١. تنزيل النموذج"
+
+#: 
+msgid "2. Fill in your data"
+msgstr "٢. أدخل بياناتك"
+
+#: 
+msgid "3. Upload and map"
+msgstr "٣. رفع وتعيين الحقول"
+
+#: 
+msgid "Add Recurring Event"
+msgstr "إضافة حدث متكرر"
+
+#: 
+msgid "Available after the event is saved."
+msgstr "متاح بعد حفظ الحدث."
+
+#: 
+msgid "Boolean properties/fields accept yes / no / true / false / 1 / 0."
+msgstr "الخصائص/الحقول المنطقية تقبل: yes / no / true / false / 1 / 0."
+
+#: 
+msgid "ChurchCRM auto-matches each column by name. Anything it cannot match is marked as Unmapped — pick a field or leave it as Ignore."
+msgstr "يقوم ChurchCRM تلقائياً بمطابقة كل عمود بالاسم. ما لا يمكن مطابقته يُعلَّم بـ \"غير مُعيَّن\" — اختر حقلاً أو اتركه بوصفه متجاهَلاً."
+
+#: 
+msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
+msgstr "تعذّر تحليل ملف CSV. تأكد من أنه ملف صالح مفصول بفواصل ويحتوي على صف رأس."
+
+#: 
+msgid "Custom field columns you have not configured are ignored — nothing is created on the fly."
+msgstr "أعمدة الحقول المخصصة غير المُعدَّة يتم تجاهلها — لا يُنشأ شيء تلقائياً."
+
+#: 
+msgid "Custom fields and properties are supported"
+msgstr "الحقول المخصصة والخصائص مدعومة"
+
+#: 
+msgid "Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a month and day with no year."
+msgstr "حقول التاريخ تقبل YYYY-MM-DD أو M/D/YYYY. استخدم 0000-MM-DD أو M/D لشهر ويوم بدون سنة."
+
+#: 
+msgid "Each row is one person. People in the same family share a FamilyID. Leave columns blank when you have no value for them."
+msgstr "كل صف يمثل شخصاً واحداً. الأشخاص في الأسرة الواحدة يتشاركون FamilyID. اترك الأعمدة فارغة عند عدم توافر قيمة لها."
+
+#: 
+msgid "Event Timing"
+msgstr "توقيت الحدث"
+
+#: 
+msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
+msgstr "كل تكرار مطابق بين \"من\" و\"إلى\" سيحصل على حدثه الخاص في نفس وقت البدء/الانتهاء."
+
+#: 
+msgid "External calendar sharing is disabled"
+msgstr "مشاركة التقويم الخارجي معطّلة"
+
+#: 
+msgid "Failed to load event editor. Please refresh and try again."
+msgstr "فشل تحميل محرر الأحداث. يرجى تحديث الصفحة والمحاولة مجدداً."
+
+#: 
+msgid "Family Custom"
+msgstr "مخصص الأسرة"
+
+#: 
+msgid "Family Property"
+msgstr "خاصية الأسرة"
+
+#: 
+msgid "Fields"
+msgstr "الحقول"
+
+#: 
+msgid "Go to home"
+msgstr "الذهاب إلى الرئيسية"
+
+#: 
+msgid "Hide advanced options"
+msgstr "إخفاء الخيارات المتقدمة"
+
+#: 
+msgid "How the CSV Import Works"
+msgstr "كيفية عمل استيراد CSV"
+
+#: 
+msgid "Imported from CSV"
+msgstr "مستورد من CSV"
+
+#: 
+msgid "Invalid date format"
+msgstr "صيغة التاريخ غير صالحة"
+
+#: 
+msgid "Loading event editor…"
+msgstr "جارٍ تحميل محرر الأحداث…"
+
+#: 
+msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
+msgstr "لم يتم اختيار تقويم — سيتم حفظ هذا الحدث لكنه لن يظهر في أي عرض تقويم."
+
+#: 
+msgid "No group"
+msgstr "لا توجد خدمة"
+
+#: 
+msgid "Not pinned to any calendar"
+msgstr "غير مثبّت في أي تقويم"
+
+#: 
+msgid "Optional — sermon notes, materials, or other details copied to every generated event."
+msgstr "اختياري — ملاحظات العظة أو المواد أو تفاصيل أخرى تُنسخ إلى كل حدث مُنشأ."
+
+#: 
+msgid "Person / Family"
+msgstr "الشخص / الأسرة"
+
+#: 
+msgid "Person Custom"
+msgstr "مخصص الشخص"
+
+#: 
+msgid "Person Property"
+msgstr "خاصية الشخص"
+
+#: 
+msgid "Show more options"
+msgstr "عرض المزيد من الخيارات"
+
+#: 
+msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
+msgstr "رابط التقويم غير مكتمل. يرجى مراجعة الرابط مع الشخص الذي أرسله إليك."
+
+#: 
+msgid "The church administrator has not enabled external calendar sharing. Please contact them if you believe this is in error."
+msgstr "لم يُفعِّل مدير الكنيسة مشاركة التقويم الخارجي. يرجى التواصل معه إذا كنت تعتقد أن هذا خطأ."
+
+#: 
+msgid "The start or end date in the link could not be understood. Try the base calendar link without date parameters."
+msgstr "تعذّر فهم تاريخ البدء أو الانتهاء في الرابط. حاول استخدام رابط التقويم الأساسي بدون معاملات التاريخ."
+
+#: 
+msgid "The template already contains every column you can map — the core Person/Family fields plus each custom field and property your site defines."
+msgstr "يحتوي النموذج بالفعل على كل عمود يمكنك تعيينه — حقول الشخص/الأسرة الأساسية بالإضافة إلى كل حقل مخصص وخاصية يحددها موقعك."
+
+#: 
+msgid "The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically."
+msgstr "يتضمن النموذج بالفعل عموداً لكل حقل مخصص للشخص/الأسرة ولكل خاصية حددتها. إذا أضفت أعمدة يدوياً، استخدم الاسم الدقيق للحقل المخصص أو الخاصية كعنوان للعمود وسيقوم المستورد بمطابقتها تلقائياً."
+
+#: 
+msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
+msgstr "رابط التقويم هذا غير صالح أو تم إلغاؤه. اطلب من الكنيسة رابطاً حالياً."
+
+#: 
+msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
+msgstr "يربط هذا الحدث بقائمة فصل أو خدمة — يُستخدم في تدفق تسجيل الدخول على الكشك."
+
+#: 
+msgid "Upload a CSV to create families and people in bulk."
+msgstr "ارفع ملف CSV لإنشاء الأسر والأشخاص بكميات كبيرة."
+
+#: 
+msgid "Volunteer-entered headcounts, broken down by category."
+msgstr "إحصاءات الأعداد المُدخلة من قِبل المتطوعين، مصنّفة حسب الفئة."
+
+#: 
+msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
+msgstr "يحتوي ملف CSV الخاص بك على أسماء أعمدة مكررة. أعد تسمية الأعمدة المكررة (مثلاً أضف \"(2)\" للعمود الثاني) وارفعه مجدداً."
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "هل أنت متأكد من رغبتك في حذف هذا العنصر المتبرع به نهائيًا؟"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "هل أنت متأكد من رغبتك في حذف رقم المجداف هذا نهائيًا؟"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "حذف العنصر المتبرع به"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "حذف رقم المجداف"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "رمز أمان غير صالح. يرجى المحاولة مرة أخرى."
 
