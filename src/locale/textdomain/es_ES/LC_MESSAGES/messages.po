@@ -15894,3 +15894,23 @@ msgstr "Recuentos introducidos por voluntarios, desglosados por categoría."
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "Su CSV tiene nombres de columna duplicados. Cambie el nombre de las columnas duplicadas (p. ej., añada \"(2)\" a la segunda) y cárguelo de nuevo."
 
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "¿Está seguro de que desea eliminar permanentemente este artículo donado?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "¿Está seguro de que desea eliminar permanentemente este número de paleta?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Eliminar artículo donado"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Eliminar número de paleta"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Token de seguridad no válido. Por favor, inténtelo de nuevo."
+

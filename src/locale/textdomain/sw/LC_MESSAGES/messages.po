@@ -15862,3 +15862,23 @@ msgstr "Hesabu za watu zilizowekwa na wahusika, zimeainishwa kwa kategoria."
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "CSV yako ina majina ya safu wima yanayorudiwa. Badilisha jina la safu wima zinazorudiwa (mf. ongeza \"(2)\" kwa ya pili) na upaki tena."
 
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "Je, una uhakika unataka kufuta kabisa kitu hiki kilichochangiwa?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "Je, una uhakika unataka kufuta kabisa nambari hii ya paddle?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Futa kitu kilichochangiwa"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Futa nambari ya paddle"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Tokeni ya usalama batili. Tafadhali jaribu tena."
+

@@ -3785,5 +3785,10 @@
     "Ties this event to a class or ministry roster — used by the Kiosk check-in flow.": "Liên kết sự kiện này với danh sách lớp học hoặc chức vụ — được sử dụng bởi quy trình check-in Kiosk.",
     "Upload a CSV to create families and people in bulk.": "Tải lên CSV để tạo gia đình và giáo dân hàng loạt.",
     "Volunteer-entered headcounts, broken down by category.": "Số lượng người do tình nguyện viên nhập, phân theo danh mục.",
-    "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again.": "CSV của bạn có tên cột trùng lặp. Đổi tên các cột trùng lặp (ví dụ: thêm \"(2)\" vào cột thứ hai) và tải lên lại."
+    "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again.": "CSV của bạn có tên cột trùng lặp. Đổi tên các cột trùng lặp (ví dụ: thêm \"(2)\" vào cột thứ hai) và tải lên lại.",
+    "Are you sure you want to permanently delete this donated item?": "Bạn có chắc chắn muốn xóa vĩnh viễn vật phẩm được quyên góp này không?",
+    "Are you sure you want to permanently delete this paddle number?": "Bạn có chắc chắn muốn xóa vĩnh viễn số mái chèo này không?",
+    "Delete Donated Item": "Xóa vật phẩm được quyên góp",
+    "Delete Paddle Number": "Xóa số mái chèo",
+    "Invalid security token. Please try again.": "Mã thông báo bảo mật không hợp lệ. Vui lòng thử lại."
 }

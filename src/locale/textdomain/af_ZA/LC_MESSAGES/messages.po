@@ -15868,3 +15868,23 @@ msgstr "Vrywilligeringevoerde koptelings, opgebreek per kategorie."
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "U CSV het duplikaatkolomname. Hernoem die duplikaatkolomme (bv. voeg \"(2)\" by die tweede een) en laai weer op."
 
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "Is jy seker jy wil hierdie geskenkte item permanent uitvee?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "Is jy seker jy wil hierdie roeinommer permanent uitvee?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Vee geskenkte item uit"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Vee roeinommer uit"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Ongeldige sekuriteitstoken. Probeer asseblief weer."
+

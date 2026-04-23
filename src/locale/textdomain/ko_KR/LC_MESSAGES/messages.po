@@ -15854,3 +15854,23 @@ msgstr "자원봉사자가 입력한 인원 수로, 범주별로 구분됩니다
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "CSV에 중복된 열 이름이 있습니다. 중복된 열의 이름을 변경(예: 두 번째 열에 \"(2)\" 추가)한 후 다시 업로드하세요."
 
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "이 기증 품목을 영구적으로 삭제하시겠습니까?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "이 패들 번호를 영구적으로 삭제하시겠습니까?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "기증 품목 삭제"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "패들 번호 삭제"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "보안 토큰이 유효하지 않습니다. 다시 시도해 주세요."
+

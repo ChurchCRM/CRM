@@ -15960,3 +15960,23 @@ msgstr "Количество посетителей, введённое воло
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "В вашем CSV-файле есть повторяющиеся названия столбцов. Переименуйте дублирующиеся столбцы (например, добавьте «(2)» ко второму) и загрузите снова."
 
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "Вы уверены, что хотите окончательно удалить этот пожертвованный предмет?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "Вы уверены, что хотите окончательно удалить этот номер лопасти?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Удалить пожертвованный предмет"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Удалить номер лопасти"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Недействительный токен безопасности. Пожалуйста, попробуйте снова."
+

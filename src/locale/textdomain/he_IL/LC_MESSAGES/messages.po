@@ -15864,3 +15864,23 @@ msgstr "ספירת נוכחים שהוזנה על ידי מתנדב, מחולק�
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "ל-CSV שלך יש שמות עמודות כפולים. שנה את שמות העמודות הכפולות (לדוגמה, הוסף \"(2)\" לשנייה) והעלה שוב."
 
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "האם אתה בטוח שברצונך למחוק לצמיתות פריט תרומה זה?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "האם אתה בטוח שברצונך למחוק לצמיתות מספר משוט זה?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "מחק פריט תרומה"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "מחק מספר משוט"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "אסימון אבטחה לא חוקי. אנא נסה שוב."
+

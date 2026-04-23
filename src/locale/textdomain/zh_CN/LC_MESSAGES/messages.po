@@ -15945,3 +15945,23 @@ msgstr "志愿者输入的按类别分类的出席人数。"
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "您的 CSV 文件中存在重复的列名。请重命名重复的列（例如在第二个列名后添加「(2)」），然后重新上传。"
 
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "您确定要永久删除此捐赠物品吗？"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "您确定要永久删除此竞拍号吗？"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "删除捐赠物品"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "删除竞拍号"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "安全令牌无效。请重试。"
+

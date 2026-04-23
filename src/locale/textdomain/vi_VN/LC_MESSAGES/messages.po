@@ -15866,3 +15866,23 @@ msgstr "Số lượng người do tình nguyện viên nhập, phân theo danh m
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr "CSV của bạn có tên cột trùng lặp. Đổi tên các cột trùng lặp (ví dụ: thêm \"(2)\" vào cột thứ hai) và tải lên lại."
 
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "Bạn có chắc chắn muốn xóa vĩnh viễn vật phẩm được quyên góp này không?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "Bạn có chắc chắn muốn xóa vĩnh viễn số mái chèo này không?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Xóa vật phẩm được quyên góp"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Xóa số mái chèo"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Mã thông báo bảo mật không hợp lệ. Vui lòng thử lại."
+
