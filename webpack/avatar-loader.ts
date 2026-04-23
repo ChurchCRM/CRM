@@ -410,7 +410,9 @@ class AvatarLoader {
    */
   private loadAllImages(): void {
     const images = document.querySelectorAll<HTMLImageElement>("[data-image-entity-type]");
-    images.forEach((img) => this.loadAvatar(img));
+    images.forEach((img) => {
+      this.loadAvatar(img);
+    });
   }
 
   /**
@@ -421,7 +423,7 @@ class AvatarLoader {
 
     if (this.observer) {
       images.forEach((img) => {
-        this.observer!.observe(img);
+        this.observer?.observe(img);
       });
     } else {
       this.loadAllImages();
@@ -449,7 +451,7 @@ class AvatarLoader {
       const images = document.querySelectorAll<HTMLImageElement>("[data-image-entity-type]");
       images.forEach((img) => {
         if (!img.src || img.src.includes("data:")) {
-          this.observer!.observe(img);
+          this.observer?.observe(img);
         }
       });
     } else {

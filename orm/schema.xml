@@ -887,20 +887,22 @@
      <parameter name="Engine" value="InnoDB"/>
    </vendor>
  </table>
+ -->
 
- <table name="paddlenum_pn" idMethod="native" phpName="PaddlenumPn" >
-   <column name="pn_ID" phpName="PnId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
-   <column name="pn_fr_ID" phpName="PnFrId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
-   <column name="pn_Num" phpName="PnNum" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
-   <column name="pn_per_ID" phpName="PnPerId" type="SMALLINT" size="9" required="true" defaultValue="0"/>
-   <unique name="pn_ID">
-     <unique-column name="pn_ID"/>
-   </unique>
-   <vendor type="mysql">
-     <parameter name="Engine" value="InnoDB"/>
-   </vendor>
- </table>
+    <table name="paddlenum_pn" idMethod="native" phpName="PaddlenumPn" >
+        <column name="pn_ID" phpName="PnId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="pn_fr_ID" phpName="PnFrId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+        <column name="pn_Num" phpName="PnNum" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+        <column name="pn_per_ID" phpName="PnPerId" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+        <unique name="pn_ID">
+            <unique-column name="pn_ID"/>
+        </unique>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
 
+    <!--
  <table name="queryparameteroptions_qpo" idMethod="native" phpName="QueryparameteroptionsQpo" description="Defines the values for the parameters for each query">
    <column name="qpo_ID" phpName="QpoId" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
    <column name="qpo_qrp_ID" phpName="QpoQrpId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
