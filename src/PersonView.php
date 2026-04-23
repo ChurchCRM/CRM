@@ -1056,7 +1056,7 @@ $bOkToEdit = (
             });
         </script>
 
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
 // Timeline category filter — show/hide timeline events based on the
 // active filter chips. Notes are the default active category; events and
 // system entries start hidden so long timelines stay skimmable.

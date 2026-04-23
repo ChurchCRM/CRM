@@ -893,7 +893,7 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
         </div>
     </div>
 </div>
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
 (function () {
     function initTimelineFilter(container) {
         if (!container) { return; }
