@@ -330,20 +330,18 @@ window.CRM.groups = {
         if (!result) {
           return;
         }
-        window.CRM
-          .APIRequest({
-            method: "POST",
-            path: "groups/",
-            data: JSON.stringify({ groupName: result }),
-          })
-          .done((data) => {
-            if (window.CRM.cartManager && typeof window.CRM.cartManager.refreshCartCount === "function") {
-              window.CRM.cartManager.refreshCartCount();
-            }
-            if (callbackM) {
-              callbackM(data);
-            }
-          });
+        window.CRM.APIRequest({
+          method: "POST",
+          path: "groups/",
+          data: JSON.stringify({ groupName: result }),
+        }).done((data) => {
+          if (window.CRM.cartManager && typeof window.CRM.cartManager.refreshCartCount === "function") {
+            window.CRM.cartManager.refreshCartCount();
+          }
+          if (callbackM) {
+            callbackM(data);
+          }
+        });
       },
     });
   },
@@ -751,4 +749,3 @@ window.CRM.copyToClipboard = (text, successMsg) => {
   prompt(i18next.t("Press CTRL + C to copy"), text);
   return Promise.resolve();
 };
-
