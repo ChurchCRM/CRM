@@ -262,9 +262,10 @@ function handleChangeRole(personId, groupId, currentRoleId) {
  * Remove a person from a group with a confirmation dialog.
  */
 function handleRemoveFromGroup(personId, groupId, groupName) {
+  const safeGroupName = window.CRM.escapeHtml(String(groupName || ""));
   bootbox.confirm({
     title: i18next.t("Remove from Group"),
-    message: `${i18next.t("Are you sure you want to remove this person from")} <strong>${groupName}</strong>?`,
+    message: `${i18next.t("Are you sure you want to remove this person from")} <strong>${safeGroupName}</strong>?`,
     buttons: {
       cancel: { label: i18next.t("Cancel"), className: "btn-ghost-secondary" },
       confirm: { label: i18next.t("Remove"), className: "btn-danger" },
