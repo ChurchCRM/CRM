@@ -21,9 +21,9 @@
     {
       "id": "hello-world",
       "name": "Hello World",
-      "version": "1.0.0",
-      "downloadUrl": "https://github.com/ChurchCRM/community-plugin-hello-world/releases/download/v1.0.0/hello-world-1.0.0.zip",
-      "sha256": "81897fc3f9e8e1108b603229e5a8c2737d5bb41a1f4dc3fa5e0052d9d2607d2b",
+      "version": "1.0.1",
+      "downloadUrl": "https://github.com/ChurchCRM/community-plugin-hello-world/releases/download/v1.0.1/hello-world-1.0.1.zip",
+      "sha256": "ad1bfa1427b778c052f4c816072c8d9bc2f79cfc07fe481d9dd29be4c448082a",
       "risk": "low",
       "riskSummary": "Logs a greeting when a person record is created. No outbound calls, no database writes, no secrets stored.",
       "permissions": ["hooks.person"],

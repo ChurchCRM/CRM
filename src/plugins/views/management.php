@@ -1013,7 +1013,7 @@ $(document).ready(function() {
                 const msg = (xhr.responseJSON && xhr.responseJSON.message)
                     ? xhr.responseJSON.message
                     : "<?= addslashes(gettext('Install failed')) ?>";
-                alert(msg);
+                window.CRM.notify(msg, { type: 'error' });
                 $btn.prop('disabled', false).html('<i class="fa-solid fa-download me-1"></i><?= addslashes(gettext('Install')) ?>');
             }
         });
