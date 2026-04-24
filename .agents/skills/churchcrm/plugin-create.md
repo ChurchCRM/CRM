@@ -44,8 +44,8 @@ classified `high` and will need two maintainer reviews.
 
 ## 1. Scaffold the plugin directory
 
-Use the scaffolder — it copies the reference plugin from
-[`examples/community-plugin-hello-world/`](../../../examples/community-plugin-hello-world/)
+Use the scaffolder — it clones the reference plugin from
+[ChurchCRM/community-plugin-hello-world](https://github.com/ChurchCRM/community-plugin-hello-world)
 into `src/plugins/community/{id}/` and rewrites the namespace, id,
 and class name for you:
 
@@ -77,10 +77,10 @@ A full-featured plugin might also add:
 Keep it minimal. The fewer files you ship, the faster the review and
 the smaller the attack surface.
 
-> **Don't want to use the scaffolder?** You can hand-scaffold — just
-> copy `examples/community-plugin-hello-world/` manually and rename
-> the identifiers. The scaffolder is a convenience, not a
-> requirement.
+> **Don't want to use the scaffolder?** Fork
+> [ChurchCRM/community-plugin-hello-world](https://github.com/ChurchCRM/community-plugin-hello-world)
+> directly and rename the identifiers. The scaffolder is a
+> convenience, not a requirement.
 
 ---
 
