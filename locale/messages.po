@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-22 21:56+0000\n"
+"POT-Creation-Date: 2026-04-24 03:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1889,6 +1889,9 @@ msgstr ""
 msgid "Choose how you'd like to populate your database. You can always use a different method later."
 msgstr ""
 
+msgid "Choose map provider"
+msgstr ""
+
 msgid "Choose opportunities..."
 msgstr ""
 
@@ -2596,6 +2599,9 @@ msgstr ""
 msgid "Current Value"
 msgstr ""
 
+msgid "Current database"
+msgstr ""
+
 msgid "Current fiscal year"
 msgstr ""
 
@@ -2993,6 +2999,9 @@ msgstr ""
 msgid "Demo data imported successfully"
 msgstr ""
 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr ""
+
 msgid "Demo data loaded successfully"
 msgstr ""
 
@@ -3293,9 +3302,6 @@ msgid "E.164 Phone Number Format"
 msgstr ""
 
 msgid "ENE"
-msgstr ""
-
-msgid "ERROR"
 msgstr ""
 
 msgid "ESE"
@@ -3771,19 +3777,10 @@ msgstr ""
 msgid "Error loading payments"
 msgstr ""
 
-msgid "Error making API Call to"
-msgstr ""
-
 msgid "Error saving deposit"
 msgstr ""
 
 msgid "Error sending email(s)"
-msgstr ""
-
-msgid "Error text"
-msgstr ""
-
-msgid "Error:"
 msgstr ""
 
 msgid "Error: Invalid Editor ID!"
@@ -5392,6 +5389,9 @@ msgstr ""
 msgid "Import contacts from your MailChimp audiences"
 msgstr ""
 
+msgid "Import demo data anyway"
+msgstr ""
+
 msgid "Import failed"
 msgstr ""
 
@@ -6599,6 +6599,9 @@ msgstr ""
 msgid "Missing people"
 msgstr ""
 
+msgid "Missing pledge identifier."
+msgstr ""
+
 #. Context: query_qry
 msgid "Missing pledges"
 msgstr ""
@@ -7075,6 +7078,9 @@ msgstr ""
 msgid "No matches for \"%s\". Try a different search term."
 msgstr ""
 
+msgid "No matching entries for the selected filters."
+msgstr ""
+
 msgid "No member properties defined."
 msgstr ""
 
@@ -7378,7 +7384,16 @@ msgstr ""
 msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
 msgstr ""
 
+msgid "Open in Apple Maps"
+msgstr ""
+
+msgid "Open in Google Maps"
+msgstr ""
+
 msgid "Open in New Tab"
+msgstr ""
+
+msgid "Open in new tab"
 msgstr ""
 
 msgid "Open the email debug tester"
@@ -9339,6 +9354,9 @@ msgstr ""
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr ""
 
+msgid "Show all"
+msgstr ""
+
 msgid "Show in"
 msgstr ""
 
@@ -9358,6 +9376,9 @@ msgid "Show or hide the Sunday School module in the sidebar navigation"
 msgstr ""
 
 msgid "Show/Hide Lost Password Link on the login screen"
+msgstr ""
+
+msgid "Show:"
 msgstr ""
 
 #, php-format
@@ -9722,6 +9743,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Syria (‫سوريا‬‎)"
+msgstr ""
+
+msgid "System"
 msgstr ""
 
 msgid "System Calendars"
@@ -10198,6 +10222,9 @@ msgstr ""
 msgid "Timeline"
 msgstr ""
 
+msgid "Timeline filters"
+msgstr ""
+
 msgid "Timeout"
 msgstr ""
 
@@ -10264,6 +10291,9 @@ msgid ""
 "4. Enter your username and password\n"
 "5. Optionally set an auto-backup interval in hours\n"
 "6. Save your settings"
+msgstr ""
+
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
 msgstr ""
 
 msgid "To stop receiving these emails, you can email"
@@ -11546,6 +11576,9 @@ msgstr ""
 msgid "Your current access levels (read-only)"
 msgstr ""
 
+msgid "Your database already contains data"
+msgstr ""
+
 msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
 msgstr ""
 
@@ -11845,6 +11878,9 @@ msgid "payment(s)?"
 msgstr ""
 
 msgid "payments?"
+msgstr ""
+
+msgid "people"
 msgstr ""
 
 msgid "people added to cart"
