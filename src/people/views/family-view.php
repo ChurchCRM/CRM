@@ -653,7 +653,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                 <?php endif; ?>
 
                 <?php if ($canEditRecords && count($allFamilyProperties) > 0) : ?>
-                    <div class="mt-3 d-print-none">
+                    <div id="family-property-assign-wrapper" class="mt-3 d-print-none">
                         <form method="post" id="assign-family-property-form">
                             <div class="mb-2">
                                 <select name="PropertyId" id="input-family-properties" class="form-select" data-placeholder="<?= gettext('Choose a property...') ?>">
