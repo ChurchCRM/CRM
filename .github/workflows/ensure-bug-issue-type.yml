@@ -1,0 +1,128 @@
+name: Ensure "Bug" Issue Type
+
+# =============================================================================
+# Guarantee every issue that looks like a bug has the repository's "Bug"
+# Issue Type set (GitHub's newer typed-issue feature).
+#
+# Trigger paths:
+#   - A new issue is opened  → inspect labels, title, body, existing type.
+#   - The "bug" label is added to an existing issue → promote to type Bug.
+#
+# An issue is considered a bug when ANY of these are true:
+#   1. It has the "bug" (or "Type:Bug" / "type: bug") label.
+#   2. Its title begins with "Bug:".
+#   3. The body contains the legacy in-app reporter marker
+#      ("**Describe the issue**") or the YAML form marker
+#      ("### What happened?") — see .github/ISSUE_TEMPLATE/bug_report.yml
+#      and src/api/routes/system/system-issues.php.
+#
+# If the issue is a bug and its Issue Type isn't already "Bug", we set it via
+# `PATCH /repos/{owner}/{repo}/issues/{issue_number}` using the `type` field.
+# We also ensure the plain `bug` label is present so older tooling keeps
+# working.
+#
+# REQUIRED: the repository must have an Issue Type named "Bug".
+# Set one up at: Organization / Repository settings → Issue Types.
+# =============================================================================
+
+on:
+  issues:
+    types: [opened, edited, labeled, reopened]
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: ensure-bug-type-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
+jobs:
+  classify-and-type:
+    name: Classify issue and set type
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    # Skip the edited/reopened noise when nothing about bug-ness could have changed.
+    if: >
+      github.event.action == 'opened' ||
+      github.event.action == 'reopened' ||
+      github.event.action == 'edited' ||
+      (github.event.action == 'labeled' && (
+        github.event.label.name == 'bug' ||
+        github.event.label.name == 'type:bug' ||
+        github.event.label.name == 'type: bug'
+      ))
+
+    steps:
+      - name: Classify issue
+        id: classify
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const issue = context.payload.issue || {};
+            const title = (issue.title || '').toLowerCase();
+            const body  = (issue.body  || '').toLowerCase();
+            const labels = (issue.labels || []).map(l => (l && l.name ? l.name.toLowerCase() : ''));
+            const currentType = issue.type && issue.type.name ? issue.type.name : null;
+
+            const hasBugLabel =
+              labels.includes('bug') ||
+              labels.includes('type:bug') ||
+              labels.includes('type: bug');
+
+            const titleLooksLikeBug = title.startsWith('bug:');
+
+            // In-app reporter writes "**Describe the issue**" + a system-info table.
+            // YAML form writes "### What happened?" as its first heading.
+            const bodyLooksLikeBug =
+              body.includes('describe the issue') ||
+              body.includes('### what happened?');
+
+            const isBug = hasBugLabel || titleLooksLikeBug || bodyLooksLikeBug;
+            const alreadyTypedBug = currentType && currentType.toLowerCase() === 'bug';
+
+            core.setOutput('is_bug',           String(isBug));
+            core.setOutput('already_typed',    String(alreadyTypedBug));
+            core.setOutput('has_bug_label',    String(hasBugLabel));
+            console.log({ isBug, alreadyTypedBug, hasBugLabel, currentType });
+
+      - name: Add "bug" label if missing
+        if: steps.classify.outputs.is_bug == 'true' && steps.classify.outputs.has_bug_label == 'false'
+        uses: actions/github-script@v9
+        with:
+          script: |
+            try {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels: ['bug']
+              });
+            } catch (e) {
+              console.log('Could not add bug label:', e.message);
+            }
+
+      - name: Set Issue Type to "Bug"
+        if: steps.classify.outputs.is_bug == 'true' && steps.classify.outputs.already_typed == 'false'
+        uses: actions/github-script@v9
+        with:
+          script: |
+            // GitHub's typed-issues feature exposes a `type` field on
+            // PATCH /repos/{owner}/{repo}/issues/{issue_number}. The value is
+            // the Issue Type *name* (not an id) and must already exist in the
+            // repository / organisation. If the repo has no "Bug" type the
+            // call returns 422 — we log a warning and move on.
+            try {
+              await github.request('PATCH /repos/{owner}/{repo}/issues/{issue_number}', {
+                owner:        context.repo.owner,
+                repo:         context.repo.repo,
+                issue_number: context.issue.number,
+                type:         'Bug',
+              });
+              console.log(`Set issue #${context.issue.number} type to Bug`);
+            } catch (e) {
+              core.warning(
+                `Could not set Issue Type to Bug (is it defined in Settings → Issue Types?): ${e.message}`
+              );
+            }

@@ -28,6 +28,7 @@ class Person extends BasePerson implements PhotoInterface
     public const SELF_REGISTER = -1;
     public const SELF_VERIFY = -2;
     private ?Photo $photo = null;
+    private bool $skipPostUpdateNote = false;
 
     public function getFullName(): string
     {
@@ -143,17 +144,16 @@ class Person extends BasePerson implements PhotoInterface
     public function postInsert(?ConnectionInterface $con = null): void
     {
         $this->createTimeLineNote('create');
-        if (!empty(SystemConfig::getValue('sNewPersonNotificationRecipientIDs'))) {
-            $NotificationEmail = new NewPersonOrFamilyEmail($this);
-            if (!$NotificationEmail->send()) {
-                LoggerUtils::getAppLogger()->warning(gettext('New Person Notification Email Error') . ' :' . $NotificationEmail->getError());
-            }
+
+        // Unaffiliated persons only — Family::postInsert() sends one email per family.
+        if (empty($this->getFamId())) {
+            NewPersonOrFamilyEmail::sendIfConfigured($this);
         }
     }
 
     public function postUpdate(?ConnectionInterface $con = null): void
     {
-        if (!empty($this->getDateLastEdited())) {
+        if (!empty($this->getDateLastEdited()) && !$this->skipPostUpdateNote) {
             $this->createTimeLineNote('edit');
         }
     }
@@ -348,6 +348,29 @@ class Person extends BasePerson implements PhotoInterface
         return GeoUtils::buildDirectionsUrl($family->getAddress());
     }
 
+    /**
+     * Apple Maps companion to {@see self::getDirectionsUrl()}. Mirrors the
+     * same address/lat/lng precedence rules so the two links resolve to the
+     * same destination.
+     */
+    public function getAppleMapsDirectionsUrl(): string
+    {
+        if (!empty($this->getAddress1())) {
+            return GeoUtils::buildAppleMapsDirectionsUrl($this->getAddress());
+        }
+
+        $family = $this->getFamily();
+        if ($family === null) {
+            return '';
+        }
+
+        if ($family->hasLatitudeAndLongitude()) {
+            return GeoUtils::buildAppleMapsDirectionsUrl('', (float) $family->getLatitude(), (float) $family->getLongitude());
+        }
+
+        return GeoUtils::buildAppleMapsDirectionsUrl($family->getAddress());
+    }
+
     public function deletePhoto(): bool
     {
         if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {
@@ -384,11 +407,15 @@ class Person extends BasePerson implements PhotoInterface
         $this->getPhoto()->setImageFromBase64($base64);
         $note->setPerId($this->getId());
         $note->save();
-        
-        // Update person's last edited date and editor
+
         $this->setDateLastEdited(new \DateTime());
         $this->setEditedBy(AuthenticationManager::getCurrentUser()->getId());
-        $this->save();
+        $this->skipPostUpdateNote = true;
+        try {
+            $this->save();
+        } finally {
+            $this->skipPostUpdateNote = false;
+        }
     }
 
     /**
@@ -536,7 +563,11 @@ class Person extends BasePerson implements PhotoInterface
 
     public function preDelete(?ConnectionInterface $con = null): bool
     {
-        $this->deletePhoto();
+        // Remove the uploaded image from disk. Call Photo::delete() directly
+        // rather than $this->deletePhoto(), which gates on the current user's
+        // delete-records permission and writes a Note that NoteQuery below
+        // would immediately delete. See GH issue #1697.
+        $this->getPhoto()->delete();
 
         $obj = Person2group2roleP2g2rQuery::create()->filterByPerson($this)->find($con);
         if ($obj->count() > 0) {

@@ -96,7 +96,7 @@ if ($iFYMonth === 1) {
                                     </h6>
                                     <small class="text-muted"><?= gettext('Summary of pledges vs payments by fund for the fiscal year.') ?></small>
                                 </div>
-                                <span class="badge bg-info badge-pill"><?= gettext('PDF/CSV') ?></span>
+                                <span class="badge bg-info badge-pill">PDF/CSV</span>
                             </div>
                         </a>
                         
@@ -157,7 +157,7 @@ if ($iFYMonth === 1) {
                                     </h6>
                                     <small class="text-muted"><?= gettext('Detailed breakdown of a single deposit slip.') ?></small>
                                 </div>
-                                <span class="badge bg-primary badge-pill"><?= gettext('PDF/CSV') ?></span>
+                                <span class="badge bg-primary badge-pill">PDF/CSV</span>
                             </div>
                         </a>
                         
@@ -171,7 +171,7 @@ if ($iFYMonth === 1) {
                                     </h6>
                                     <small class="text-muted"><?= gettext('Customizable report with filtering by date, fund, family, and payment method.') ?></small>
                                 </div>
-                                <span class="badge bg-light text-dark"><?= gettext('PDF/CSV') ?></span>
+                                <span class="badge bg-light text-dark">PDF/CSV</span>
                             </div>
                         </a>
                     </div>

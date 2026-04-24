@@ -661,10 +661,6 @@ msgid "Save Changes"
 msgstr "Változtatások mentése"
 
 #: 
-msgid "Church Event Editor"
-msgstr "Church Esemény szerkesztő"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Szerkesztése Esemény típusa"
 
@@ -730,21 +726,9 @@ msgid "Create Event"
 msgstr "Esemény létrehozása"
 
 #: 
-msgid "Create a new Event"
-msgstr "Új esemény létrehozása"
-
-#: 
-msgid "Select your event type"
-msgstr "Válassza ki az esemény típusát"
-
-#: 
 #, fuzzy
 msgid "Event Status"
 msgstr "Event Állapot"
-
-#: 
-msgid "Return to Events"
-msgstr "Vissza az eseményekhez"
 
 #: 
 msgid "Sundays"
@@ -841,10 +825,6 @@ msgstr "Email nem érvényes"
 #: 
 msgid "Family Info"
 msgstr "Családi információk"
-
-#: 
-msgid "Contact Info"
-msgstr "Kapcsolati adatok"
 
 #: 
 msgid "Envelope Info"
@@ -969,11 +949,6 @@ msgstr "Érték"
 #: 
 msgid "Edit Value"
 msgstr "Érték szerkesztése"
-
-#: 
-#, fuzzy
-msgid "Assign a New Property"
-msgstr "Rendelni egy új tulajdon"
 
 #: 
 msgid "Assign"
@@ -1213,10 +1188,6 @@ msgid "Summary Data"
 msgstr "Összefoglaló adatok"
 
 #: 
-msgid "CSV"
-msgstr "CSV"
-
-#: 
 msgid "Back"
 msgstr "Vissza"
 
@@ -1341,10 +1312,6 @@ msgstr "Adat formátum"
 #: 
 msgid "GPS Visualizer"
 msgstr "GPS Visualizer"
-
-#: 
-msgid "Street Atlas USA"
-msgstr "Street Atlas USA"
 
 #: 
 #, fuzzy
@@ -1717,20 +1684,8 @@ msgid "Group"
 msgstr "Csoport"
 
 #: 
-msgid "Option"
-msgstr "Opció"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Hiba: Ismétlődő"
-
-#: 
 msgid "Default"
 msgstr "Alapértelmezett"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Ismétlődő név található."
 
 #: 
 msgid "Make Default"
@@ -1743,10 +1698,6 @@ msgstr "Kijárat"
 #: 
 msgid "Add New"
 msgstr "Új"
-
-#: 
-msgid " by that name already exists."
-msgstr "ezen a néven már létezik."
 
 #: 
 msgid "Buyer Number Editor"
@@ -2422,18 +2373,6 @@ msgstr "Száma túl nagy. Között kell lennie -2147483648 és 2147483647"
 #: 
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Pénz összeg túl nagy. Maximum $ 999999999,99"
-
-#: 
-msgid " Bold Italic"
-msgstr "Bold Italic"
-
-#: 
-msgid " Italic"
-msgstr "Dőlt betű"
-
-#: 
-msgid " Bold"
-msgstr "Bátor"
 
 #: 
 msgid "Error making API Call to"
@@ -3261,10 +3200,6 @@ msgid "Security Group"
 msgstr "Biztonsági csoport"
 
 #: 
-msgid "Security Groups"
-msgstr "Biztonsági csoportok"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Biztonsági csoport szerkesztő"
 
@@ -3277,56 +3212,16 @@ msgid "Group Member Roles Editor"
 msgstr "Csoporttag szerepkör szerkesztő"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Személy egyéni lista opció"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Személy egyéni lista opciók"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Személy egyéni lista opció szerkesztő"
-
-#: 
-msgid "Custom List Option"
-msgstr "Egyéni lista opció"
-
-#: 
-msgid "Custom List Options"
-msgstr "Egyéni lista opciók"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Egyéni lista opció szerkesztő"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Család egyéni lista opció"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Család egyéni lista opciók"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Család egyéni lista opció szerkesztő"
-
-#: 
-msgid "are not allowed."
-msgstr "nem engedélyezett."
-
-#: 
-msgid "Name for New"
-msgstr "Új elem neve"
-
-#: 
-msgid "Created via Family"
-msgstr "Létrehozva családon keresztül"
-
-#: 
-msgid "Updated via Family"
-msgstr "Frissítve családon keresztül"
 
 #: 
 msgid "Family Data Verified"
@@ -5207,7 +5102,8 @@ msgid "Indonesian - Indonesia"
 msgstr "Indonéz - Indonézia"
 
 #: 
-msgid "records(s) successfully added to selected Group."
+#, fuzzy
+msgid "record(s) successfully added to selected Group."
 msgstr "rekord(ok) sikeresen hozzáadva a kiválasztott csoporthoz."
 
 #: 
@@ -5237,10 +5133,6 @@ msgstr "Új család hozzáadva"
 #: 
 msgid "Church Greeter"
 msgstr "Templomi üdvözlő"
-
-#: 
-msgid "External Calendar API is disabled"
-msgstr "Külső naptár API letiltva"
 
 #: 
 msgid "Special Group Settings : Sunday School Type"
@@ -5519,7 +5411,8 @@ msgid "Remove All from Cart"
 msgstr "Összes eltávolítása a kosárból"
 
 #: 
-msgid "records(s) successfully deleted from the selected Group."
+#, fuzzy
+msgid "record(s) successfully deleted from the selected Group."
 msgstr "rekord(ok) sikeresen törölve a kiválasztott csoportból."
 
 #: 
@@ -5547,14 +5440,6 @@ msgid "Added to group"
 msgstr "Hozzáadva a csoporthoz"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "Az SMTP-gazdagép nincs beállítva, kérjük, látogasson el a beállítások oldalra"
-
-#: 
-msgid "Debug Email Connection"
-msgstr "Hibakeresés e-mail csatlakozáshoz"
-
-#: 
 msgid "This Family is Inactive"
 msgstr "Ez a család inaktív"
 
@@ -5565,14 +5450,6 @@ msgstr "Az adatbázis törölve lett."
 #: 
 msgid "Anniversaries"
 msgstr "Évfordulók"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "Új család értesítési e-mail hiba"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "Új személy értesítési e-mail hiba"
 
 #: 
 msgid "View User"
@@ -5683,10 +5560,6 @@ msgid "Missing calendar access token"
 msgstr "Hiányzik a naptár hozzáférési tokenje"
 
 #: 
-msgid "Calendar access token not found"
-msgstr "A naptár hozzáférési tokenja nem található"
-
-#: 
 msgid "User must have Delete Records permission"
 msgstr "A felhasználónak Rekordok törlése engedéllyel kell rendelkeznie"
 
@@ -5757,10 +5630,6 @@ msgstr "letiltva"
 #: 
 msgid "Software Version"
 msgstr "Szoftver verzió"
-
-#: 
-msgid "Database Version"
-msgstr "Adatbázis verzió"
 
 #: 
 msgid "Application Prerequisites"
@@ -6024,10 +5893,6 @@ msgid "Mailchimp is not active"
 msgstr "A Mailchimp nem aktív"
 
 #: 
-msgid "Mailchimp"
-msgstr "Mailchimp"
-
-#: 
 msgid "Lists"
 msgstr "Listák"
 
@@ -6126,14 +5991,6 @@ msgid "Loading"
 msgstr "Betöltés"
 
 #: 
-msgid "Family Property Unassignment"
-msgstr "Család tulajdonságának hozzárendelésének törlése"
-
-#: 
-msgid "Do you want to remove"
-msgstr "El akarja távolítani"
-
-#: 
 msgid "Today's Birthdays"
 msgstr "A mai születésnapok"
 
@@ -6168,10 +6025,6 @@ msgstr "Érvénytelen születési dátum: Hiányzik a születési hónap vagy na
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Érvénytelen születési dátum: Hiányzik a születési hónap és nap."
-
-#: 
-msgid "System"
-msgstr "Rendszer"
 
 #. Context: locales
 #: 
@@ -6259,10 +6112,6 @@ msgid "Not Subscribed"
 msgstr "Nem feliratkozott"
 
 #: 
-msgid "property"
-msgstr "tulajdonság"
-
-#: 
 msgid "Default Zip"
 msgstr "Alapértelmezett Zip"
 
@@ -6300,10 +6149,6 @@ msgstr "Egy karakter az Előnévből és egy karakter a Vezetéknévből"
 #: 
 msgid "Two characters from FirstName"
 msgstr "Két karakter az Előnévből"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "Az egyházi e-mail nincs beállítva, kérjük, látogasson el a beállítások oldalra"
 
 #. Context: locales
 #: 
@@ -7052,7 +6897,8 @@ msgid "Total Payments"
 msgstr "Teljes fizetések"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payments?"
 msgstr "fizetés(ek)?"
 
 #: 
@@ -7064,20 +6910,8 @@ msgid "Base URL"
 msgstr "Alap URL"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "ChurchCRM Telepítés"
-
-#: 
 msgid "Copy"
 msgstr "Másolás"
-
-#: 
-msgid "DSN"
-msgstr "DSN"
-
-#: 
-msgid "Database Server"
-msgstr "Adatbázis Szerver"
 
 #: 
 msgid "Debug Info"
@@ -7086,14 +6920,6 @@ msgstr "Hibakeresési Információ"
 #: 
 msgid "Document Root"
 msgstr "Dokumentum Gyökér"
-
-#: 
-msgid "Email Configuration"
-msgstr "E-mail Konfiguráció"
-
-#: 
-msgid "Email Debug Info"
-msgstr "E-mail Hibakeresési Információ"
 
 #: 
 msgid "Filesystem Permissions"
@@ -7136,10 +6962,6 @@ msgid "PHP & Server Requirements"
 msgstr "PHP & Szerver Követelmények"
 
 #: 
-msgid "PHP Configuration"
-msgstr "PHP Konfiguráció"
-
-#: 
 msgid "Platform"
 msgstr "Platform"
 
@@ -7152,24 +6974,8 @@ msgid "SMTP Host"
 msgstr "SMTP Kiszolgáló"
 
 #: 
-msgid "Server Information"
-msgstr "Szerver Információ"
-
-#: 
-msgid "Software"
-msgstr "Szoftver"
-
-#: 
-msgid "System & Configuration"
-msgstr "Rendszer & Konfiguráció"
-
-#: 
 msgid "Tip:"
 msgstr "Tipp:"
-
-#: 
-msgid "Valid Settings"
-msgstr "Érvényes Beállítások"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7230,10 +7036,6 @@ msgid "Attendance Count Categories"
 msgstr "Részvételi Szám Kategóriák"
 
 #: 
-msgid "Attendance Notes"
-msgstr "Részvételi Megjegyzések"
-
-#: 
 msgid "Change Event"
 msgstr "Esemény Módosítása"
 
@@ -7289,14 +7091,6 @@ msgstr "Esemény Törlése"
 msgid "Edit Event"
 msgstr "Esemény Szerkesztése"
 
-#: 
-msgid "Editing Event"
-msgstr "Esemény Szerkesztése"
-
-#: 
-msgid "Enter event title..."
-msgstr "Írja be az esemény címét..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7347,14 +7141,6 @@ msgid "None (one-time event)"
 msgstr "Nincs (egyszeri esemény)"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "Opcionális - Adjon hozzá prédikációs megjegyzéseket vagy további esemény részleteket"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "Opcionális megjegyzések a részvételről..."
-
-#: 
 msgid "People Checked In"
 msgstr "Érkezési Nyilvántartásban Szereplő Személyek"
 
@@ -7389,10 +7175,6 @@ msgstr "Keresés felügyelő alapján..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "Válasszon Eseményt az Érkezési Nyilvántartáshoz"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "Prédikáció / Eseményszöveg"
 
 #: 
 msgid "Unclassified"
@@ -8185,10 +7967,6 @@ msgid "Orphaned Files:"
 msgstr "Árva fájlok:"
 
 #: 
-msgid "PDF/CSV"
-msgstr "PDF/CSV"
-
-#: 
 msgid "Payment"
 msgstr "Fizetés"
 
@@ -8425,10 +8203,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "Az alapvető URL nincs konfigurálva a Config.php-ben"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "ChurchCRM Támogatott Területi Beállítások"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "Csatlakozzon kiszolgálójához SSH-n, FTP-n vagy a tárolóhelykezelő panelén keresztül"
 
@@ -8453,10 +8227,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Záró <strong>perjelel</strong> (/) végződik"
 
 #: 
-msgid "Error:"
-msgstr "Hiba:"
-
-#: 
 msgid "Find the line:"
 msgstr "Keresse meg a sort:"
 
@@ -8479,10 +8249,6 @@ msgstr "Nyelv"
 #: 
 msgid "Local development:"
 msgstr "Helyi fejlesztés:"
-
-#: 
-msgid "Locale Support"
-msgstr "Helyi Támogatás"
 
 #: 
 msgid "Location & Contact Information"
@@ -8851,10 +8617,6 @@ msgstr[0] "%d személy sikeresen hozzáadva a kiválasztott csoporthoz."
 msgstr[1] "%d személy sikeresen hozzáadva a kiválasztott csoporthoz."
 
 #: 
-msgid "A "
-msgstr "A "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Biztosan törölni szeretné?"
 
@@ -8883,10 +8645,6 @@ msgid "Delete Confirmation"
 msgstr "Törlés megerősítése"
 
 #: 
-msgid "Existing"
-msgstr "Létező"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Létező egyéni családmezők"
 
@@ -8909,10 +8667,6 @@ msgstr "Érvénytelen CSRF token"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Érvénytelen mezők vagy választások."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Elem sikeresen törölve"
 
 #: 
 msgid "Move down"
@@ -8949,10 +8703,6 @@ msgstr "Tulajdonság típusa"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "Ehhez az önkéntes lehetőséghez személyek vannak rendelve. A törlés megszünteti a hozzárendelést:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "Ez eltávolítja az összes jelenleg hozzárendelt személytől."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -9319,10 +9069,6 @@ msgstr "A frissítési archívum megnyitása sikertelen. A letöltött fájl sé
 #: 
 msgid "Failed to save the downloaded release file. Please check disk space and permissions."
 msgstr "A letöltött kiadási fájl mentése sikertelen. Kérem, ellenőrizze a lemezterületet és a jogosultságokat."
-
-#: 
-msgid "Invalid date format in start parameter"
-msgstr "Érvénytelen dátumformátum a kezdési paraméterben"
 
 #: 
 msgid "Mismatch"
@@ -9785,10 +9531,6 @@ msgstr "A hivatkozás nem található"
 #: 
 msgid "Loading recovery codes"
 msgstr "Visszaállítási kódok betöltése"
-
-#: 
-msgid "MailChimp"
-msgstr "MailChimp"
 
 #: 
 msgid "MailChimp API Key"
@@ -10902,10 +10644,6 @@ msgid "CSV Column"
 msgstr "CSV oszlop"
 
 #: 
-msgid "CSV template not found"
-msgstr "CSV sablon nem található"
-
-#: 
 msgid "Call"
 msgstr "Hívás"
 
@@ -10980,10 +10718,6 @@ msgstr "Az oszlop automatikusan hozzá lett rendelve egy ChurchCRM mezőhöz."
 #: 
 msgid "Community Management Platform"
 msgstr "Közösségkezelő platform"
-
-#: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "Kompatibilis az Excellel, Google Táblázatokkal vagy bármely CSV exporttal."
 
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
@@ -11158,10 +10892,6 @@ msgid "Download CSV Template"
 msgstr "CSV sablon letöltése"
 
 #: 
-msgid "Download the template to see the expected column format."
-msgstr "Töltse le a sablont az elvárt oszlopformátum megtekintéséhez."
-
-#: 
 msgid "Drag and drop your CSV file here"
 msgstr "Húzza ide a CSV fájlt"
 
@@ -11172,10 +10902,6 @@ msgstr "Duplikátumok"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Minden személy rendelkezhet saját e-mail címmel és mobilszámmal."
-
-#: 
-msgid "Each row is one person. Members of the same family share a FamilyID."
-msgstr "Minden sor egy személy. Ugyanazon család tagjai azonos FamilyID-vel rendelkeznek."
 
 #: 
 msgid "Easy registration"
@@ -11598,10 +11324,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Vasárnapi iskola osztályok, tanítók és tanulói jelenlét kezelése"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Besorolási listák, szerepek és csoporttípusok kezelése"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Adományalapok kezelése pénzügyi nyilvántartáshoz"
 
@@ -11852,10 +11574,6 @@ msgstr "GitHub hiba megnyitása"
 #: 
 msgid "Open user menu"
 msgstr "Felhasználói menü megnyitása"
-
-#: 
-msgid "Options"
-msgstr "Beállítások"
 
 #: 
 msgid "Other Members"
@@ -12268,10 +11986,6 @@ msgid "Upload CSV"
 msgstr "CSV feltöltése"
 
 #: 
-msgid "Upload a CSV file to import families and people into ChurchCRM."
-msgstr "Töltsön fel egy CSV fájlt a családok és személyek importálásához a ChurchCRM-be."
-
-#: 
 msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
 msgstr "Töltsön fel egy CSV fájlt Excelből, Google Táblázatokból vagy korábbi gyülekezetkezelő rendszeréből, és rendelje hozzá az oszlopokat a ChurchCRM mezőihez."
 
@@ -12494,10 +12208,6 @@ msgstr "tagok"
 #: 
 msgid "opportunities"
 msgstr "lehetőségek"
-
-#: 
-msgid "options"
-msgstr "beállítások"
 
 #: 
 msgid "or connect an external service"
@@ -12734,10 +12444,6 @@ msgstr "Kioszk eszközök regisztrálása és kezelése eseménybejelentkezéshe
 #: 
 msgid "Review & Delete"
 msgstr "Áttekintés és törlés"
-
-#: 
-msgid "SHA1 Hash"
-msgstr "SHA1 hash"
 
 #: 
 msgid "Signature Mismatch"
@@ -14678,10 +14384,6 @@ msgstr[0] "%d ismétlődő esemény sikeresen létrehozva."
 msgstr[1] "%d ismétlődő esemény sikeresen létrehozva."
 
 #: 
-msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
-msgstr "(pl. Tagok, Látogatók, Gyermekek), hogy az önkéntesek itt rögzíthessék a fejszámokat."
-
-#: 
 msgid "1. Sunday School Class"
 msgstr "1. Vasárnapi iskolai csoport"
 
@@ -14702,10 +14404,6 @@ msgid "A class is a Group with type \"Sunday School\". It holds the students and
 msgstr "Az osztály egy \"Vasárnapi iskola\" típusú csoport. Tartalmazza a tanulókat és tanárokat (szerepkörrel rendelkező tagokat)."
 
 #: 
-msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
-msgstr "A csatolt csoport összekapcsolja ezt az eseményt egy osztállyal vagy szolgálati névsorral. Ha az esemény kioszthoz van rendelve, a kioszk lekéri a csoporttagokat, és érintéses bejelentkezési listaként jeleníti meg őket. Vasárnapi iskolai osztályoknál csatolja ide az osztálycsoportot, hogy az önkéntesek tabletről tudják bejelentkeztetni a diákokat."
-
-#: 
 msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
 msgstr "Egy konkrét alkalom (pl. \"Óvodások — ápr. 12\"). Örökli az alapértékeket a típustól, és a célközönségen keresztül kapcsolódik az osztálycsoporthoz. Az önkéntesek ehhez rögzítik a jelenlétet."
 
@@ -14716,10 +14414,6 @@ msgstr "Egy eseményhez rendelt tablet. A kioszk lekéri az esemény csatolt cso
 #: 
 msgid "Add Walk-in / Visitor"
 msgstr "Látogató hozzáadása"
-
-#: 
-msgid "Add categories on the Event Type page"
-msgstr "Kategóriák hozzáadása az Eseménytípus oldalon"
 
 #: 
 msgid "Add people to your cart first, then come back to check them in to an event."
@@ -14768,10 +14462,6 @@ msgstr "Napló"
 #: 
 msgid "Audit Events"
 msgstr "Eseménynapló"
-
-#: 
-msgid "Auto-totalled from counts at right"
-msgstr "Automatikusan összesítve a jobb oldali számlálókból"
 
 #: 
 msgid "Back to Events"
@@ -14898,10 +14588,6 @@ msgid "Database dump only (.sql)"
 msgstr "Csak adatbázis-mentés (.sql)"
 
 #: 
-msgid "Date Range"
-msgstr "Dátumtartomány"
-
-#: 
 msgid "Date range cannot exceed 1 year"
 msgstr "A dátumtartomány nem haladhatja meg az 1 évet"
 
@@ -14982,10 +14668,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "Az esemény létrehozva. Átirányítás a bejelentkezéshez..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "Az esemény befejezési dátuma/időpontja nem lehet a kezdési dátum/időpont előtt."
-
-#: 
 msgid "Event title is required."
 msgstr "Az esemény neve kötelező."
 
@@ -15012,10 +14694,6 @@ msgstr "Az eseménytípushoz nincs ismétlődési minta beállítva."
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "Az eseménytípushoz nincs érvényes hónap napja beállítva a havi ismétlődéshez."
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "Az eseményeket minden egyező alkalomra létrehozzák ebben a dátumtartományban."
 
 #: 
 msgid "Every month on the"
@@ -15066,10 +14744,6 @@ msgid "Group Roster"
 msgstr "Csoport névsor"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "Speciális beállítások elrejtése"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Hogyan illeszkedik össze a Vasárnapi iskola + Események + Kioszkok"
 
@@ -15080,10 +14754,6 @@ msgstr "Érvénytelen dátum: %s — várt formátum: ÉÉÉÉ-HH-NN"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Érvénytelen dátumformátum a rangeStart vagy rangeEnd mezőhöz"
-
-#: 
-msgid "Invalid date format."
-msgstr "Érvénytelen dátumformátum."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -15138,10 +14808,6 @@ msgid "No active events found."
 msgstr "Nem találhatók aktív események."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "Ehhez az eseménytípushoz még nincs meghatározva jelenléti számláló kategória."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "Még senki sem jelentkezett be erre az eseményre."
 
@@ -15182,10 +14848,6 @@ msgid "Please select a person to check in."
 msgstr "Kérjük, válasszon személyt a bejelentkeztetéshez."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "Az eseménytípus alapján előre kitöltve — ismétlődő típusoknál a dátum az utolsó ilyen típusú esemény utáni következő alkalom, az idő pedig a típus alapértelmezett kezdési idejével egyezik meg."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "A tartomány záró dátumának a kezdő dátummal egyezőnek vagy utána kell lennie."
 
@@ -15214,10 +14876,6 @@ msgid "Recommended"
 msgstr "Ajánlott"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "Kioszk esetén kötelező"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "Az alaphelyzetbe állítás véglegesen törli:"
 
@@ -15236,14 +14894,6 @@ msgstr "Módosítások mentése ennél a kategórianévnél"
 #: 
 msgid "Select an event type…"
 msgstr "Válasszon eseménytípust…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "Válasszon kezdési és befejezési dátumot/időpontot."
-
-#: 
-msgid "Show More Options"
-msgstr "További beállítások megjelenítése"
 
 #: 
 msgid "Skip"
@@ -15286,16 +14936,8 @@ msgid "The Events module is disabled"
 msgstr "Az Események modul le van tiltva"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "Minden generált eseményhez ugyanaz a kezdési és befejezési idő lesz használva."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "Ma nincs tervezett esemény"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "Ezek fejszám-gyűjtők — az önkéntesek az esemény után töltik ki őket, hogy az irányítópult részletezhesse a jelenlétet (pl. hány tag vs. látogató). Ezek különállnak a bejelentkezési oldalon lévő egyéni bejelentkezésektől."
 
 #: 
 msgid "This event is inactive."
@@ -15350,16 +14992,8 @@ msgid "View Event"
 msgstr "Esemény megtekintése"
 
 #: 
-msgid "What are these for?"
-msgstr "Mire valók ezek?"
-
-#: 
 msgid "What does this find?"
 msgstr "Mit talál ez?"
-
-#: 
-msgid "What is this for?"
-msgstr "Mire való ez?"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15622,6 +15256,10 @@ msgid "No active event assignment"
 msgstr "Nincs aktív esemény-hozzárendelés"
 
 #: 
+msgid "Online"
+msgstr "Online"
+
+#: 
 msgid "Opens a 30-second window for devices to register at:"
 msgstr "30 másodperces ablakot nyit az eszközök regisztrálásához:"
 
@@ -15648,4 +15286,596 @@ msgstr "Közelgő esemény"
 #: 
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "esemény. Ehelyett inaktiválja a típust, vagy rendelje hozzá az eseményeket újra."
+
+#: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "Az e-mail sablonokban megjelenő gyülekezeti logó abszolút http(s) URL-je (a jövőben máshol is újrafelhasználva). A legjobb megjelenítés érdekében az e-mail kliensekben körülbelül 3,5:1 arányú széles szalaghirdetési képet használjon (például 350×100 px), PNG vagy JPG formátumban, HTTPS-en keresztül kiszolgálva. Hagyja üresen vagy adjon meg érvénytelen értéket az alapértelmezett ChurchCRM logóra való visszatéréshez."
+
+#: 
+msgid "An option with that name already exists"
+msgstr "Ilyen nevű lehetőség már létezik"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "Nem lehet törölni az egyetlen megmaradó lehetőséget"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "A vágólap nem elérhető. A kódok mentéséhez használja a Letöltés gombot."
+
+#: 
+msgid "Custom Option"
+msgstr "Egyéni lehetőség"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "Alapértelmezett beérkezett üzenetek előnézeti szövege"
+
+#: 
+msgid "Email is disabled"
+msgstr "Az e-mail le van tiltva"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "Az e-mail le van tiltva. A jelszavak visszaállítása előtt konfigurálja az e-mailt, vagy használja a Jelszó módosítása funkciót."
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "Az e-mail le van tiltva. A tesztelés előtt engedélyezze az E-mail irányítópult beállításaiban."
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "Adja meg az egyik mentési helyreállítási kódját"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "Adja meg az egyik mentési helyreállítási kódját a fiókjába való belépéshez"
+
+#: 
+msgid "Existing Options"
+msgstr "Meglévő lehetőségek"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "A csoport nem található ehhez a szerepkörlistához"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "Az inaktív állapot csak a besorolások listájánál kapcsolható át"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "Az új felhasználók nem kapnak üdvözlő e-mailt a hitelesítő adataikkal. Ossza meg velük a jelszót manuálisan, vagy először konfigurálja az e-mailt."
+
+#: 
+msgid "Option name is required"
+msgstr "A lehetőség neve kötelező"
+
+#: 
+msgid "Option not found"
+msgstr "A lehetőség nem található"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "Opcionális rövid összefoglaló, amely a tárgysor mellett beérkezett üzenetek előnézeti szövegeként jelenik meg. Hagyja üresen, hogy az e-mail kliens automatikusan generálja a törzs alapján. Az egyes e-mail típusok (jelszó visszaállítás, új tag, ellenőrzés) saját fejlécet állítanak be; ez egy tartalék."
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "A jelszó-visszaállítási e-mailek és az új fiókhoz tartozó üdvözlő e-mailek nem kerülnek elküldésre, amíg az e-mail nincs konfigurálva. A felhasználók nem kapják meg automatikusan a hitelesítő adatokat."
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "A jelszó visszaállítása nem érhető el, mert az e-mail le van tiltva. Lépjen kapcsolatba a rendszergazdával."
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "A jelszó visszaállítva, de az e-mail nem küldhető el. A felhasználó ki van zárva — ossza meg az új jelszót manuálisan vagy használja a Jelszó módosítása funkciót."
+
+#: 
+msgid "Recovery Code"
+msgstr "Helyreállítási kód"
+
+#: 
+msgid "Set up Email"
+msgstr "E-mail beállítása"
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "Nem lehet a vágólapra másolni. Másolja a kódokat manuálisan."
+
+#: 
+msgid "Use Recovery Code"
+msgstr "Helyreállítási kód használata"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "Helyreállítási kód használata"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "Hitelesítő alkalmazás használata"
+
+#: 
+msgid "%d modules loaded"
+msgstr "%d modul betöltve"
+
+#: 
+msgid "(PHP default)"
+msgstr "(PHP alapértelmezett)"
+
+#: 
+msgid "(none)"
+msgstr "(nincs)"
+
+#: 
+msgid "(not set)"
+msgstr "(nincs beállítva)"
+
+#: 
+msgid "All checks passing"
+msgstr "Minden ellenőrzés sikeres"
+
+#: 
+msgid "App"
+msgstr "Alkalmazás"
+
+#: 
+msgid "Browser time zone differs:"
+msgstr "A böngésző időzónája eltér:"
+
+#: 
+msgid "Calendar time zone:"
+msgstr "Naptár időzónája:"
+
+#: 
+msgid "Cannot send test email"
+msgstr "Nem lehet elküldeni a tesztüzenetet"
+
+#: 
+msgid "Charset"
+msgstr "Karakterkészlet"
+
+#: 
+msgid "Church Email address is not set — the test email has nowhere to go."
+msgstr "A gyülekezet e-mail-címe nincs beállítva — a tesztüzenetnek nincs hová mennie."
+
+#: 
+msgid "Church email — configured on the"
+msgstr "Gyülekezeti e-mail — konfigurálva a következőn:"
+
+#: 
+msgid "ChurchCRM Test Email"
+msgstr "ChurchCRM tesztüzenet"
+
+#: 
+msgid "Collation"
+msgstr "Rendezés"
+
+#: 
+msgid "Connection"
+msgstr "Kapcsolat"
+
+#: 
+msgid "Database"
+msgstr "Adatbázis"
+
+#: 
+msgid "Delivery"
+msgstr "Kézbesítés"
+
+#: 
+msgid "Disk (Images Root)"
+msgstr "Lemez (képek gyökérkönyvtára)"
+
+#: 
+msgid "Display Errors"
+msgstr "Hibák megjelenítése"
+
+#: 
+msgid "Email Debug"
+msgstr "E-mail hibakeresés"
+
+#: 
+msgid "Environment"
+msgstr "Környezet"
+
+#: 
+msgid "Error Log"
+msgstr "Hibanapló"
+
+#: 
+msgid "Error Reporting"
+msgstr "Hibajelentés"
+
+#: 
+msgid "Error:"
+msgstr "Hiba:"
+
+#: 
+msgid "Fix Settings"
+msgstr "Beállítások javítása"
+
+#: 
+msgid "Hit Rate"
+msgstr "Találati arány"
+
+#: 
+msgid "Host"
+msgstr "Kiszolgáló"
+
+#: 
+msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
+msgstr "Ha az üzenet néhány percen belül nem érkezik meg, ellenőrizze a spam/levélszemét mappát és az alábbi SMTP hibakeresési naplót."
+
+#: 
+msgid "If you can read this message in your inbox, your SMTP configuration is working correctly."
+msgstr "Ha ezt az üzenetet el tudja olvasni a beérkező levelek között, az SMTP konfiguráció megfelelően működik."
+
+#: 
+msgid "Incomplete"
+msgstr "Hiányos"
+
+#: 
+msgid "Installed on Server"
+msgstr "Telepítve a szerverre"
+
+#: 
+msgid "Integrity"
+msgstr "Integritás"
+
+#: 
+msgid "Issues detected"
+msgstr "Problémák észlelve"
+
+#: 
+msgid "Loaded php.ini"
+msgstr "Betöltött php.ini"
+
+#: 
+msgid "Locale"
+msgstr "Területi beállítás"
+
+#: 
+msgid "Max Execution Time"
+msgstr "Maximális végrehajtási idő"
+
+#: 
+msgid "Max POST Size"
+msgstr "Maximális POST méret"
+
+#: 
+msgid "Max Upload Size"
+msgstr "Maximális feltöltési méret"
+
+#: 
+msgid "Memory"
+msgstr "Memória"
+
+#: 
+msgid "Memory Limit"
+msgstr "Memória korlát"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
+msgstr "Most ellenőrizze a címzett postaládáját a kézbesítés megerősítéséhez. Keresse a következő tárgyat:"
+
+#: 
+msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
+msgstr "Az OPcache nincs engedélyezve. Engedélyezése alacsony kockázatú módszer a PHP oldalak betöltésének gyorsítására."
+
+#: 
+msgid "Off"
+msgstr "Ki"
+
+#: 
+msgid "On"
+msgstr "Be"
+
+#: 
+msgid "Open the email debug tester"
+msgstr "Nyissa meg az e-mail hibakereső eszközt"
+
+#: 
+msgid "PHP Version"
+msgstr "PHP verzió"
+
+#: 
+msgid "PHPMailer SMTP session"
+msgstr "PHPMailer SMTP munkamenet"
+
+#: 
+msgid "Prerequisites"
+msgstr "Előfeltételek"
+
+#: 
+msgid "Review the SMTP debug log below for the handshake details, then adjust your settings."
+msgstr "Tekintse át az alábbi SMTP hibakeresési naplót a kézfogás részleteiért, majd módosítsa beállításait."
+
+#: 
+msgid "SMTP Configuration"
+msgstr "SMTP konfiguráció"
+
+#: 
+msgid "SMTP Debug Log"
+msgstr "SMTP hibakeresési napló"
+
+#: 
+msgid "SMTP Host is not configured."
+msgstr "Az SMTP kiszolgáló nincs konfigurálva."
+
+#: 
+msgid "SMTP configuration test — if this arrived, your setup works."
+msgstr "SMTP konfigurációs teszt — ha ez megérkezett, a beállítás működik."
+
+#: 
+msgid "Schema Version"
+msgstr "Séma verzió"
+
+#: 
+msgid "Send Again"
+msgstr "Küldés újra"
+
+#: 
+msgid "Send a test message to verify your SMTP configuration"
+msgstr "Küldjön tesztüzenetet az SMTP konfiguráció ellenőrzéséhez"
+
+#: 
+msgid "Server"
+msgstr "Szerver"
+
+#: 
+msgid "Server Version"
+msgstr "Szerver verzió"
+
+#: 
+msgid "Session Handler"
+msgstr "Munkamenet-kezelő"
+
+#: 
+msgid "Session Save Path"
+msgstr "Munkamenet mentési útvonala"
+
+#: 
+msgid "Settings Valid"
+msgstr "Érvényes beállítások"
+
+#: 
+msgid "Subject"
+msgstr "Tárgy"
+
+#: 
+msgid "Test"
+msgstr "Teszt"
+
+#: 
+msgid "Test email accepted by SMTP server"
+msgstr "A tesztüzenetet az SMTP szerver elfogadta"
+
+#: 
+msgid "Test email failed to send"
+msgstr "A tesztüzenet küldése sikertelen"
+
+#: 
+msgid "This is a ChurchCRM test email."
+msgstr "Ez egy ChurchCRM tesztüzenet."
+
+#: 
+msgid "Timeout"
+msgstr "Időtúllépés"
+
+#: 
+msgid "Timezone"
+msgstr "Időzóna"
+
+#: 
+msgid "Unable to list web server modules (non-Apache SAPI)."
+msgstr "Nem sikerült listázni a webszerver moduljait (nem Apache SAPI)."
+
+#: 
+msgid "Update Settings"
+msgstr "Beállítások frissítése"
+
+#: 
+msgid "View full photo"
+msgstr "Teljes kép megtekintése"
+
+#: 
+msgid "page."
+msgstr "oldalon."
+
+#: 
+msgid "user:"
+msgstr "felhasználó:"
+
+#: 
+msgid "1. Download the template"
+msgstr "1. Töltse le a sablont"
+
+#: 
+msgid "2. Fill in your data"
+msgstr "2. Töltse ki az adatokat"
+
+#: 
+msgid "3. Upload and map"
+msgstr "3. Töltse fel és képezze le"
+
+#: 
+msgid "Add Recurring Event"
+msgstr "Ismétlődő esemény hozzáadása"
+
+#: 
+msgid "Available after the event is saved."
+msgstr "Az esemény mentése után érhető el."
+
+#: 
+msgid "Boolean properties/fields accept yes / no / true / false / 1 / 0."
+msgstr "A logikai tulajdonságok/mezők elfogadják a yes / no / true / false / 1 / 0 értékeket."
+
+#: 
+msgid "ChurchCRM auto-matches each column by name. Anything it cannot match is marked as Unmapped — pick a field or leave it as Ignore."
+msgstr "A ChurchCRM automatikusan párosítja az egyes oszlopokat név szerint. Amit nem tud párosítani, az Nem leképezett jelölést kap — válasszon mezőt, vagy hagyja Figyelmen kívül értékre."
+
+#: 
+msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
+msgstr "Nem sikerült elemezni a CSV fájlt. Ellenőrizze, hogy érvényes, vesszővel elválasztott fájl-e fejlécsorral."
+
+#: 
+msgid "Custom field columns you have not configured are ignored — nothing is created on the fly."
+msgstr "Az Ön által nem konfigurált egyéni mező oszlopok figyelmen kívül maradnak — semmi nem jön létre automatikusan."
+
+#: 
+msgid "Custom fields and properties are supported"
+msgstr "Az egyéni mezők és tulajdonságok támogatottak"
+
+#: 
+msgid "Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a month and day with no year."
+msgstr "A dátummezők elfogadják az YYYY-MM-DD vagy M/D/YYYY formátumot. Használja a 0000-MM-DD vagy M/D formátumot hónap és nap megadásához év nélkül."
+
+#: 
+msgid "Each row is one person. People in the same family share a FamilyID. Leave columns blank when you have no value for them."
+msgstr "Minden sor egy személyt jelöl. Ugyanabból a családból való személyek közös FamilyID-vel rendelkeznek. Hagyja üresen az oszlopokat, ha nincs érték."
+
+#: 
+msgid "Event Timing"
+msgstr "Esemény időzítése"
+
+#: 
+msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
+msgstr "Minden egyező előfordulás a Kezdő és a Záró dátum között saját eseményt kap ugyanazzal a Kezdési/Befejezési időponttal."
+
+#: 
+msgid "External calendar sharing is disabled"
+msgstr "A külső naptármegosztás le van tiltva"
+
+#: 
+msgid "Failed to load event editor. Please refresh and try again."
+msgstr "Az eseményszerkesztő betöltése sikertelen. Frissítse az oldalt és próbálja újra."
+
+#: 
+msgid "Family Custom"
+msgstr "Egyéni családi"
+
+#: 
+msgid "Family Property"
+msgstr "Családi tulajdonság"
+
+#: 
+msgid "Fields"
+msgstr "Mezők"
+
+#: 
+msgid "Go to home"
+msgstr "Ugrás a főoldalra"
+
+#: 
+msgid "Hide advanced options"
+msgstr "Speciális beállítások elrejtése"
+
+#: 
+msgid "How the CSV Import Works"
+msgstr "Hogyan működik a CSV importálás"
+
+#: 
+msgid "Imported from CSV"
+msgstr "CSV-ből importálva"
+
+#: 
+msgid "Invalid date format"
+msgstr "Érvénytelen dátumformátum"
+
+#: 
+msgid "Loading event editor…"
+msgstr "Az eseményszerkesztő betöltése…"
+
+#: 
+msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
+msgstr "Nincs naptár kiválasztva — az esemény mentésre kerül, de nem jelenik meg egyetlen naptárnézetben sem."
+
+#: 
+msgid "No group"
+msgstr "Nincs csoport"
+
+#: 
+msgid "Not pinned to any calendar"
+msgstr "Nincs naptárhoz rögzítve"
+
+#: 
+msgid "Optional — sermon notes, materials, or other details copied to every generated event."
+msgstr "Nem kötelező — prédikáció-jegyzetek, anyagok vagy egyéb részletek, amelyek minden generált eseménybe másolódnak."
+
+#: 
+msgid "Person / Family"
+msgstr "Személy / Család"
+
+#: 
+msgid "Person Custom"
+msgstr "Egyéni személyi"
+
+#: 
+msgid "Person Property"
+msgstr "Személyi tulajdonság"
+
+#: 
+msgid "Show more options"
+msgstr "További lehetőségek megjelenítése"
+
+#: 
+msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
+msgstr "A naptárhivatkozás hiányos. Ellenőrizze az URL-t azzal a személlyel, aki elküldte Önnek."
+
+#: 
+msgid "The church administrator has not enabled external calendar sharing. Please contact them if you believe this is in error."
+msgstr "A gyülekezet adminisztrátora nem engedélyezte a külső naptármegosztást. Lépjen kapcsolatba velük, ha úgy véli, hogy ez tévedés."
+
+#: 
+msgid "The start or end date in the link could not be understood. Try the base calendar link without date parameters."
+msgstr "A hivatkozásban szereplő kezdő vagy befejező dátum nem értelmezhető. Próbálja meg az alap naptárhivatkozást dátumparaméterek nélkül."
+
+#: 
+msgid "The template already contains every column you can map — the core Person/Family fields plus each custom field and property your site defines."
+msgstr "A sablon már tartalmaz minden leképezhető oszlopot — az alap Személy/Család mezőket és az összes egyéni mezőt és tulajdonságot, amelyet az oldala meghatároz."
+
+#: 
+msgid "The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically."
+msgstr "A sablon már tartalmaz egy oszlopot minden Személy/Család egyéni mezőhöz és minden meghatározott tulajdonsághoz. Ha manuálisan ad hozzá oszlopokat, csak az egyéni mező vagy tulajdonság pontos nevét használja oszlopfejlécként, és az importáló automatikusan párosítja."
+
+#: 
+msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
+msgstr "Ez a naptárhivatkozás érvénytelen vagy visszavonták. Kérjen aktuális hivatkozást a gyülekezettől."
+
+#: 
+msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
+msgstr "Ezt az eseményt egy osztályhoz vagy szolgálati névsorhoz köti — a Kiosk bejelentkezési folyamatban használatos."
+
+#: 
+msgid "Upload a CSV to create families and people in bulk."
+msgstr "Töltsön fel egy CSV-t a családok és személyek tömeges létrehozásához."
+
+#: 
+msgid "Volunteer-entered headcounts, broken down by category."
+msgstr "Önkéntesek által bevitt fejszámok, kategóriánként lebontva."
+
+#: 
+msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
+msgstr "A CSV-ben ismétlődő oszlopnevek találhatók. Nevezze át az ismétlődő oszlopokat (pl. adja hozzá a \"(2)\" jelölést a másodikhoz) és töltse fel újra."
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "Biztosan véglegesen törölni szeretné ezt az adományozott tételt?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "Biztosan véglegesen törölni szeretné ezt a licitsorszámot?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Adományozott tétel törlése"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Licitsorszám törlése"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Érvénytelen biztonsági token. Kérjük, próbálja újra."
 

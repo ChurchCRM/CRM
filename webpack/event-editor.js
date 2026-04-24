@@ -1,81 +1,157 @@
 /**
- * Event Editor — client-side behavior.
- *
- * Reads initialization data from `window.CRM.eventEditor` (set inline by view).
- * Handles:
- *  - daterangepicker initialization with start/end values
- *  - attendance-count auto-total
- *  - Quick-mode toggle (#8499)
- *  - Client-side date order validation (#6629)
+ * Event Editor page — boots the shared `event-form.js` renderer on the
+ * full-page /event/editor/:id surface. The same renderer powers the
+ * calendar modal, so field set, validation, and save payload stay
+ * identical between the two entry points.
  */
 
+import { deleteEvent, renderEventEditor, saveEvent } from "./event-form.js";
+
+const CRMRoot = window.CRM.root;
+const t = (key) => (window.i18next ? window.i18next.t(key) : key);
+const cfg = window.CRM.eventEditorPage || {};
+
+function fetchJSON(url, fallback = null) {
+  return fetch(url, { credentials: "include" })
+    .then((r) => {
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      return r.status === 204 ? {} : r.json();
+    })
+    .catch(() => fallback);
+}
+
+function escapeHtml(str) {
+  if (!str) return "";
+  const div = document.createElement("div");
+  div.textContent = str;
+  return div.innerHTML.replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+}
+
+function showError(message) {
+  const mount = document.getElementById("event-editor-mount");
+  if (!mount) return;
+  mount.innerHTML = `<div class="alert alert-danger mb-0"><i class="ti ti-alert-triangle me-1"></i>${escapeHtml(message)}</div>`;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-  const $ = window.$;
-  if (!$) return;
+  const mount = document.getElementById("event-editor-mount");
+  const titleHost = document.getElementById("event-editor-title-host");
+  const actions = document.getElementById("event-editor-actions");
+  const saveBtn = document.getElementById("event-editor-save");
+  const deleteBtn = document.getElementById("event-editor-delete");
+  if (!mount || !titleHost) return;
 
-  const cfg = window.CRM?.eventEditor || {};
-  const t = window.i18next ? window.i18next.t.bind(window.i18next) : (s) => s;
-
-  // ---------------------------------------------------------------------------
-  // daterangepicker setup
-  // ---------------------------------------------------------------------------
-  if (cfg.startStr && cfg.endStr) {
-    const startDate = window.moment(cfg.startStr, "YYYY-MM-DD H:mm").format("YYYY-MM-DD h:mm A");
-    const endDate = window.moment(cfg.endStr, "YYYY-MM-DD H:mm").format("YYYY-MM-DD h:mm A");
-    $("#EventDateRange").val(`${startDate} - ${endDate}`);
-    $("#EventDateRange").daterangepicker({
-      timePicker: true,
-      timePickerIncrement: 30,
-      linkedCalendars: true,
-      showDropdowns: true,
-      locale: { format: "YYYY-MM-DD h:mm A" },
-      startDate,
-      endDate,
-    });
+  const fetches = [
+    fetchJSON(`${CRMRoot}/api/calendars`, { Calendars: [] }),
+    fetchJSON(`${CRMRoot}/api/events/types`, { EventTypes: [] }),
+    fetchJSON(`${CRMRoot}/api/groups/`, []),
+  ];
+  if (cfg.eventId > 0) {
+    fetches.unshift(fetchJSON(`${CRMRoot}/api/events/${cfg.eventId}`, null));
   }
 
-  // ---------------------------------------------------------------------------
-  // Attendance count auto-total
-  // ---------------------------------------------------------------------------
-  function updateRealTotal() {
-    let total = 0;
-    $(".attendance-count").each(function () {
-      total += parseInt($(this).val(), 10) || 0;
-    });
-    $("#RealTotal").val(total);
-  }
-  $(".attendance-count").on("input change", updateRealTotal);
-  updateRealTotal();
-
-  // ---------------------------------------------------------------------------
-  // Quick mode toggle (#8499) — show/hide advanced fields
-  // ---------------------------------------------------------------------------
-  let advancedShown = !!cfg.eventExists;
-  $("#toggleAdvancedBtn").on("click", () => {
-    advancedShown = !advancedShown;
-    $(".event-editor-advanced").toggle(advancedShown);
-    $("#toggleAdvancedIcon").toggleClass("ti-chevron-down", !advancedShown).toggleClass("ti-chevron-up", advancedShown);
-    $("#toggleAdvancedLabel").text(advancedShown ? t("Hide Advanced Options") : t("Show More Options"));
-  });
-
-  // ---------------------------------------------------------------------------
-  // Client-side date order validation (#6629) — block submit if end < start
-  // ---------------------------------------------------------------------------
-  $('form[name="EventsEditor"]').on("submit", (e) => {
-    const range = $("#EventDateRange").val() || "";
-    const parts = range.split(" - ");
-    if (parts.length !== 2) return;
-    const start = window.moment(parts[0], "YYYY-MM-DD h:mm A");
-    const end = window.moment(parts[1], "YYYY-MM-DD h:mm A");
-    if (start.isValid() && end.isValid() && end.isBefore(start)) {
-      e.preventDefault();
-      const msg = t("Event end date/time must be on or after the start date/time.");
-      if (window.CRM && window.CRM.notify) {
-        window.CRM.notify(msg, { type: "danger", delay: 5000 });
+  Promise.all(fetches)
+    .then((results) => {
+      let eventData = null;
+      let calData;
+      let typeData;
+      let groups;
+      if (cfg.eventId > 0) {
+        [eventData, calData, typeData, groups] = results;
+        if (eventData === null) throw new Error("Failed to load event");
       } else {
-        alert(msg);
+        [calData, typeData, groups] = results;
       }
-      $("#EventDateRange").trigger("focus");
-    }
-  });
+
+      // Pre-fill Start/End for new events to the next whole hour + 1h. The
+      // calendar modal gets these from the day the user clicked; the full-
+      // page surface has no click context, so we seed sensible defaults
+      // here. Without this the save button stays disabled because validate()
+      // requires Start and End to be non-null.
+      const defaultStart = new Date();
+      defaultStart.setMinutes(0, 0, 0);
+      defaultStart.setHours(defaultStart.getHours() + 1);
+      const defaultEnd = new Date(defaultStart);
+      defaultEnd.setHours(defaultEnd.getHours() + 1);
+
+      const event = eventData || {
+        Id: 0,
+        Title: "",
+        Type: cfg.typeId || 0,
+        PinnedCalendars: [],
+        Start: defaultStart,
+        End: defaultEnd,
+        InActive: 0,
+        LinkedGroupId: 0,
+        AttendanceCounts: [],
+      };
+      if (event.Start && !(event.Start instanceof Date)) event.Start = new Date(event.Start);
+      if (event.End && !(event.End instanceof Date)) event.End = new Date(event.End);
+
+      // Seed Type for brand-new events: the first available type is the
+      // sensible default and ensures the save payload never submits Type:0.
+      if (!event.Type && typeData.EventTypes.length > 0) {
+        event.Type = typeData.EventTypes[0].Id;
+      }
+
+      // Clear the "Loading…" spinner before mounting the form.
+      mount.innerHTML = "";
+
+      const controller = renderEventEditor(mount, event, calData.Calendars, typeData.EventTypes, {
+        titleHost,
+        groups: Array.isArray(groups) ? groups : [],
+        onValidityChange: (valid) => {
+          if (saveBtn) saveBtn.disabled = !valid;
+        },
+      });
+
+      if (actions) actions.classList.remove("d-none");
+
+      if (saveBtn) {
+        saveBtn.addEventListener("click", () => {
+          saveBtn.disabled = true;
+          saveEvent(controller.getEvent(), CRMRoot)
+            .then(() => {
+              window.location.href = cfg.redirectUrl;
+            })
+            .catch(() => {
+              saveBtn.disabled = false;
+              if (window.CRM?.notify) {
+                window.CRM.notify(t("Failed to save event. Please try again."), { type: "danger" });
+              }
+            });
+        });
+      }
+
+      if (deleteBtn && cfg.eventId > 0) {
+        deleteBtn.addEventListener("click", () => {
+          window.bootbox.confirm({
+            title: t("Delete this event?"),
+            message:
+              t("Deleting this event will also delete all attendance records. This cannot be undone.") +
+              ` <strong>${escapeHtml(event.Title || "")}</strong>`,
+            buttons: {
+              cancel: { label: `<i class="ti ti-x"></i> ${t("Cancel")}` },
+              confirm: { label: `<i class="ti ti-trash"></i> ${t("Delete")}`, className: "btn-danger" },
+            },
+            callback: (confirmed) => {
+              if (!confirmed) return;
+              deleteEvent(cfg.eventId, CRMRoot)
+                .then(() => {
+                  window.location.href = cfg.redirectUrl;
+                })
+                .catch(() => {
+                  if (window.CRM?.notify) {
+                    window.CRM.notify(t("Failed to delete event. Please try again."), { type: "danger" });
+                  }
+                });
+            },
+          });
+        });
+      }
+    })
+    .catch((err) => {
+      console.error("event-editor boot error:", err);
+      showError(t("Failed to load event editor. Please refresh and try again."));
+    });
 });

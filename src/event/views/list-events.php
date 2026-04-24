@@ -91,6 +91,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <a href="<?= $sRootPath ?>/event/editor" class="btn btn-primary btn-sm">
               <i class="ti ti-plus me-1"></i><?= gettext('Add Event') ?>
             </a>
+            <a href="<?= $sRootPath ?>/event/repeat-editor" class="btn btn-outline-primary btn-sm">
+              <i class="ti ti-repeat me-1"></i><?= gettext('Add Recurring Event') ?>
+            </a>
           <?php endif; ?>
           <a href="<?= $sRootPath ?>/event/checkin" class="btn btn-outline-secondary btn-sm">
             <i class="ti ti-user-check me-1"></i><?= gettext('Check-in') ?>
@@ -151,7 +154,7 @@ foreach ($monthlyData as $monthData):
     $monthName = $monthData['monthName'];
     $averages = $monthData['averages'];
 ?>
-<div class="card mb-3">
+<div class="card mb-3" id="month-<?= (int) $monthData['month'] ?>">
   <div class="card-header d-flex align-items-center">
     <h3 class="card-title mb-0">
       <i class="ti ti-calendar me-2 text-muted"></i>
@@ -267,6 +270,15 @@ foreach ($monthlyData as $monthData):
   </div>
 </div>
 <?php endforeach; ?>
+
+<?php if ($hasEvents && $EventYear === (int) date('Y')): ?>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+  document.addEventListener('DOMContentLoaded', function () {
+    var m = document.getElementById('month-<?= (int) date('n') ?>');
+    if (m) m.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+</script>
+<?php endif; ?>
 
 <?php if (!$hasEvents): ?>
 <div class="card">

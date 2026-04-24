@@ -6,6 +6,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\Service\PropertyService;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
@@ -52,6 +53,11 @@ $spousePeople = $family->getSpousePeople();
 $keyPeople = array_merge($headPeople, $spousePeople);
 $childPeople = $family->getChildPeople();
 $otherPeople = $family->getOtherPeople();
+
+$assignedFamilyProperties = PropertyService::getAssigned($family);
+$allFamilyProperties = PropertyService::getAll($family);
+
+$canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled();
 ?>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
@@ -94,16 +100,6 @@ $otherPeople = $family->getOtherPeople();
                 <i class="fa-solid fa-note-sticky me-1"></i><?= gettext('Add Note') ?>
             </a>
             <?php } ?>
-            <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
-            <a class="btn btn-ghost-secondary" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?FamilyID=<?= $family->getId() ?>">
-                <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add Member') ?>
-            </a>
-            <?php } ?>
-            <?php if ($showFamilyCheckin && $memberCount > 0) { ?>
-            <button class="btn btn-ghost-success" id="checkInFamilyBtn" data-bs-toggle="modal" data-bs-target="#familyCheckinModal">
-                <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Check In Family') ?>
-            </button>
-            <?php } ?>
             <?php if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
             <div class="dropdown">
                 <button class="btn btn-ghost-warning dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
@@ -124,6 +120,12 @@ $otherPeople = $family->getOtherPeople();
                     <i class="fa-solid fa-ellipsis-vertical me-1"></i><?= gettext("Actions") ?>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
+                    <?php if ($showFamilyCheckin && $memberCount > 0) { ?>
+                    <button type="button" class="dropdown-item text-success fw-semibold" id="checkInFamilyBtn" data-bs-toggle="modal" data-bs-target="#familyCheckinModal">
+                        <i class="fa-solid fa-clipboard-check me-2"></i><?= gettext('Check In Family') ?>
+                    </button>
+                    <div class="dropdown-divider"></div>
+                    <?php } ?>
                     <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#confirm-verify">
                         <i class="fa-solid fa-clipboard-check me-2"></i><?= gettext('Verify Info') ?>
                     </a>
@@ -308,6 +310,11 @@ $otherPeople = $family->getOtherPeople();
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title m-0"><i class="fa-solid fa-people-roof me-1"></i> <?= gettext("Family Members") ?></h3>
                 <span class="badge bg-primary-lt text-primary ms-2"><?= $memberCount ?></span>
+                <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
+                <a class="btn btn-sm btn-outline-primary ms-auto" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?FamilyID=<?= $family->getId() ?>">
+                    <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add Member') ?>
+                </a>
+                <?php } ?>
             </div>
             <div class="card-body">
                 <?php renderMemberTable($keyPeople, gettext("Key People"), 'fa-crown', 'warning'); ?>
@@ -317,7 +324,7 @@ $otherPeople = $family->getOtherPeople();
         </div>
 
         <!-- Timeline Card -->
-        <div class="card mb-3">
+        <div class="card mb-3 timeline-container" id="family-timeline-container">
             <div class="card-header d-flex align-items-center" role="button" data-bs-toggle="collapse" data-bs-target="#family-timeline-body" aria-expanded="true">
                 <h3 class="card-title m-0"><i class="fa-solid fa-clock-rotate-left me-1"></i> <?= gettext("Timeline") ?></h3>
                 <div class="ms-auto"><i class="fa-solid fa-chevron-down"></i></div>
@@ -330,14 +337,43 @@ $otherPeople = $family->getOtherPeople();
                             <span><?= gettext('No timeline events yet.') ?></span>
                         </div>
                     <?php } else {
-                        $currentYear = ''; ?>
+                        $timelineCounts = ['notes' => 0, 'events' => 0, 'system' => 0];
+                        foreach ($familyTimeline as $tlItem) {
+                            $cat = $tlItem['category'] ?? 'notes';
+                            if (isset($timelineCounts[$cat])) {
+                                $timelineCounts[$cat]++;
+                            }
+                        }
+                        ?>
+                        <div class="timeline-filters d-flex flex-wrap align-items-center gap-2 mb-3" role="group" aria-label="<?= gettext('Timeline filters') ?>">
+                            <span class="text-muted small me-1"><i class="fa-solid fa-filter me-1"></i><?= gettext('Show:') ?></span>
+                            <button type="button" class="btn btn-sm btn-primary timeline-filter-chip active" data-filter="notes">
+                                <i class="fa-solid fa-note-sticky me-1"></i><?= gettext('Notes') ?>
+                                <span class="badge bg-white text-primary ms-1"><?= $timelineCounts['notes'] ?></span>
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary timeline-filter-chip" data-filter="events">
+                                <i class="fa-solid fa-calendar-days me-1"></i><?= gettext('Events') ?>
+                                <span class="badge bg-secondary-lt text-secondary ms-1"><?= $timelineCounts['events'] ?></span>
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary timeline-filter-chip" data-filter="system">
+                                <i class="fa-solid fa-gear me-1"></i><?= gettext('System') ?>
+                                <span class="badge bg-secondary-lt text-secondary ms-1"><?= $timelineCounts['system'] ?></span>
+                            </button>
+                            <button type="button" class="btn btn-sm btn-link ms-auto timeline-filter-all" data-filter="all">
+                                <?= gettext('Show all') ?>
+                            </button>
+                        </div>
+                        <div class="timeline-empty-notice alert alert-info" style="display:none;">
+                            <i class="fa-solid fa-circle-info fa-fw me-1"></i><?= gettext('No matching entries for the selected filters.') ?>
+                        </div>
+                        <?php $currentYear = ''; ?>
                         <div class="timeline mt-3">
                             <?php foreach ($familyTimeline as $item) {
                                 if ($currentYear !== $item['year']) {
                                     $currentYear = $item['year']; ?>
-                                    <div class="hr-text"><i class="fa-solid fa-calendar-days"></i> <?= $currentYear ?></div>
+                                    <div class="hr-text timeline-year" data-timeline-year="<?= htmlspecialchars((string)$currentYear) ?>"><i class="fa-solid fa-calendar-days"></i> <?= $currentYear ?></div>
                                 <?php } ?>
-                                <div class="timeline-event">
+                                <div class="timeline-event" data-timeline-category="<?= htmlspecialchars($item['category'] ?? 'notes') ?>" data-timeline-year="<?= htmlspecialchars((string)$item['year']) ?>">
                                     <div class="timeline-event-icon bg-<?= $item['color'] ?>-lt text-<?= $item['color'] ?>">
                                         <i class="fa-solid <?= $item['style'] ?>"></i>
                                     </div>
@@ -407,25 +443,51 @@ $otherPeople = $family->getOtherPeople();
 
         <!-- Family Photo & Attributes Card -->
         <div class="card mb-3">
-            <!-- Full-width family photo (click to upload) -->
-            <a href="#" id="uploadImageTrigger" class="d-block" title="<?= AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() ? gettext("Click to upload photo") : gettext("View Photo") ?>">
-                <img data-image-entity-type="family"
-                     data-image-entity-id="<?= $family->getId() ?>" class="card-img-top object-fit-cover"
-                     style="max-height: 220px;">
-            </a>
-            <div class="card-body p-3">
-                <ul class="list-unstyled mb-0">
-                    <li class="mb-1">
-                        <i class="fa-solid fa-circle me-2 <?= $family->isActive() ? 'text-success' : 'text-secondary' ?>" style="width: 1rem; text-align: center;"></i><?= $family->isActive() ? gettext('Active') : gettext('Inactive') ?>
-                    </li>
-                    <li class="mb-1"><i class="fa-solid fa-person-half-dress me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= $memberCount ?> <?= $memberCount == 1 ? gettext('Member') : gettext('Members') ?></li>
-                    <?php if ($family->getEnvelope()) { ?>
-                    <li class="mb-1"><i class="fa-solid fa-envelope me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= gettext('Envelope') ?> #<?= $family->getEnvelope() ?></li>
-                    <?php } ?>
-                    <?php if (!SystemConfig::getBooleanValue("bHideWeddingDate") && !empty($family->getWeddingdate())) { ?>
-                    <li class="mb-1"><i class="fa-solid fa-ring me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= $family->getWeddingDate()->format(SystemConfig::getValue("sDateFormatLong")) ?></li>
-                    <?php } ?>
-                </ul>
+            <div class="card-body p-0">
+                <div class="d-flex">
+                    <!-- Photo (left) — click to upload -->
+                    <div class="flex-shrink-0 position-relative" style="width: 160px; aspect-ratio: 1 / 1;">
+                        <a href="#" id="uploadImageTrigger" class="d-block w-100 h-100" title="<?= AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() ? gettext("Click to upload photo") : gettext("View Photo") ?>">
+                            <img data-image-entity-type="family"
+                                 data-image-entity-id="<?= $family->getId() ?>" class="photo-profile w-100 h-100 object-fit-cover"
+                                 style="border-radius: var(--tblr-border-radius) 0 0 var(--tblr-border-radius);">
+                        </a>
+                        <button type="button"
+                                class="photo-view-overlay btn btn-sm position-absolute bottom-0 end-0 m-1 d-none"
+                                data-entity-type="family"
+                                data-entity-id="<?= $family->getId() ?>"
+                                title="<?= gettext('View full photo') ?>"
+                                aria-label="<?= gettext('View full photo') ?>">
+                            <i class="fa-solid fa-magnifying-glass" aria-hidden="true" style="color:white; text-shadow: 0 1px 3px rgba(0,0,0,.8);"></i>
+                        </button>
+                    </div>
+                    <!-- Attributes (right) -->
+                    <div class="p-3 flex-grow-1">
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-1">
+                                <i class="fa-solid fa-circle me-2 <?= $family->isActive() ? 'text-success' : 'text-secondary' ?>" style="width: 1rem; text-align: center;"></i><?= $family->isActive() ? gettext('Active') : gettext('Inactive') ?>
+                            </li>
+                            <li class="mb-1"><i class="fa-solid fa-person-half-dress me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= $memberCount ?> <?= $memberCount == 1 ? gettext('Member') : gettext('Members') ?></li>
+                            <?php if (!empty($family->getHomePhone())) { ?>
+                            <li class="mb-1">
+                                <i class="fa-solid fa-phone me-2 text-muted" style="width: 1rem; text-align: center;"></i><a href="tel:<?= InputUtils::escapeAttribute($family->getHomePhone()) ?>"><?= InputUtils::escapeHTML($family->getHomePhone()) ?></a>
+                            </li>
+                            <?php } ?>
+                            <?php if (!SystemConfig::getBooleanValue("bHideFamilyNewsletter")) { ?>
+                            <li class="mb-1">
+                                <i class="fa-solid fa-newspaper me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= gettext("Newsletter") ?>:
+                                <span class="<?= ($family->isSendNewsletter() ? "text-success" : "text-danger") ?>"><i class="fa-solid fa-<?= ($family->isSendNewsletter() ? "check" : "times") ?>"></i></span>
+                            </li>
+                            <?php } ?>
+                            <?php if ($family->getEnvelope()) { ?>
+                            <li class="mb-1"><i class="fa-solid fa-envelope me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= gettext('Envelope') ?> #<?= $family->getEnvelope() ?></li>
+                            <?php } ?>
+                            <?php if (!SystemConfig::getBooleanValue("bHideWeddingDate") && !empty($family->getWeddingdate())) { ?>
+                            <li class="mb-1"><i class="fa-solid fa-ring me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= $family->getWeddingDate()->format(SystemConfig::getValue("sDateFormatLong")) ?></li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -447,13 +509,37 @@ $otherPeople = $family->getOtherPeople();
             <div class="card-body">
                 <a href="https://maps.google.com/?q=<?= urlencode($familyAddress) ?>"
                    target="_blank" rel="noopener noreferrer"><?= $familyAddress ?></a>
-                <?php $directionsUrl = $family->getDirectionsUrl(); ?>
+                <?php
+                $directionsUrl = $family->getDirectionsUrl();
+                $appleDirectionsUrl = $family->getAppleMapsDirectionsUrl();
+                ?>
                 <div class="mt-2">
-                    <?php if (!empty($directionsUrl)) : ?>
-                    <a href="<?= $directionsUrl ?>" target="_blank" rel="noopener noreferrer"
-                       class="btn btn-sm btn-outline-primary">
-                        <i class="fa-solid fa-diamond-turn-right me-1"></i><?= gettext('Get Directions') ?>
-                    </a>
+                    <?php if (!empty($directionsUrl) || !empty($appleDirectionsUrl)) : ?>
+                    <div class="btn-group directions-btn-group">
+                        <?php if (!empty($directionsUrl)) : ?>
+                        <a href="<?= $directionsUrl ?>" target="_blank" rel="noopener noreferrer"
+                           class="btn btn-sm btn-outline-primary">
+                            <i class="fa-solid fa-diamond-turn-right me-1"></i><?= gettext('Get Directions') ?>
+                        </a>
+                        <?php endif; ?>
+                        <?php if (!empty($appleDirectionsUrl)) : ?>
+                        <button type="button"
+                                class="btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-split directions-provider-toggle d-none"
+                                data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                            <span class="visually-hidden"><?= gettext('Choose map provider') ?></span>
+                        </button>
+                        <div class="dropdown-menu directions-provider-menu d-none">
+                            <?php if (!empty($directionsUrl)) : ?>
+                            <a class="dropdown-item" href="<?= $directionsUrl ?>" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-brands fa-google me-2"></i><?= gettext('Open in Google Maps') ?>
+                            </a>
+                            <?php endif; ?>
+                            <a class="dropdown-item apple-maps-option" href="<?= $appleDirectionsUrl ?>" target="_blank" rel="noopener noreferrer">
+                                <i class="fa-brands fa-apple me-2"></i><?= gettext('Open in Apple Maps') ?>
+                            </a>
+                        </div>
+                        <?php endif; ?>
+                    </div>
                     <?php endif; ?>
                     <?php if (!$family->hasLatitudeAndLongitude()) : ?>
                     <button type="button" class="btn btn-sm btn-outline-success" id="refresh-coordinates-btn"
@@ -472,52 +558,31 @@ $otherPeople = $family->getOtherPeople();
             </div>
         </div>
 
-        <!-- Contact Info Card -->
+        <?php if (!empty($family->getEmail())) { ?>
+        <!-- Email Card (with Mailchimp status if plugin enabled) -->
         <div class="card mb-3">
             <div class="card-header d-flex align-items-center">
-                <h3 class="card-title m-0"><i class="fa-solid fa-address-book me-1"></i> <?= gettext("Contact Info") ?></h3>
+                <h3 class="card-title m-0"><i class="fa-solid fa-envelope me-1"></i> <?= gettext("Email") ?></h3>
             </div>
             <div class="card-body">
-                    <ul class="list-unstyled mb-0">
-                        <?php if (!empty($family->getHomePhone())) { ?>
-                            <li class="mb-1">
-                                <i class="fa-solid fa-phone me-2 text-muted" style="width: 1rem; text-align: center;"></i><a href="tel:<?= InputUtils::escapeAttribute($family->getHomePhone()) ?>"><?= InputUtils::escapeHTML($family->getHomePhone()) ?></a>
-                                <button class="btn btn-sm btn-ghost-secondary ms-1 copy-phone-btn" type="button"
-                                        data-phone="<?= InputUtils::escapeAttribute($family->getHomePhone()) ?>"
-                                        title="<?= gettext('Copy to clipboard') ?>">
-                                    <i class="fa-solid fa-copy"></i>
-                                </button>
-                            </li>
-                        <?php }
-                        if (!empty($family->getEmail())) { ?>
-                            <li class="mb-1">
-                                <i class="fa-solid fa-envelope me-2 text-muted" style="width: 1rem; text-align: center;"></i><a href="mailto:<?= InputUtils::escapeAttribute($family->getEmail()) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($family->getEmail()) ?></a>
-                                <button class="btn btn-sm btn-ghost-secondary ms-1 copy-email-btn" type="button"
-                                        data-email="<?= InputUtils::escapeAttribute($family->getEmail()) ?>"
-                                        title="<?= gettext('Copy to clipboard') ?>">
-                                    <i class="fa-solid fa-copy"></i>
-                                </button>
-                            </li>
-                            <!-- MailChimp status - populated by JavaScript if plugin is active -->
-                            <li class="d-none mb-1" id="mailchimp-status-container">
-                                <i class="fa-regular fa-paper-plane me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= gettext("Mailchimp") ?>:
-                                <span id="mailchimp-status">... <?= gettext("loading")?> ...</span>
-                            </li>
-                        <?php }
-                        if (!SystemConfig::getBooleanValue("bHideFamilyNewsletter")) { ?>
-                            <li class="mb-1">
-                                <i class="fa-solid fa-newspaper me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= gettext("Send Newsletter") ?>:
-                                <span class="<?= ($family->isSendNewsletter() ?"text-success" :"text-danger") ?>"><i class="fa-solid fa-<?= ($family->isSendNewsletter() ?"check" :"times") ?>"></i></span>
-                            </li>
-                        <?php }
-                        if (SystemConfig::getValue("bUseDonationEnvelopes")) { ?>
-                            <li class="mb-1">
-                                <i class="fa-solid fa-envelope me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= gettext("Envelope Number") ?>: <?= $family->getEnvelope() ?>
-                            </li>
-                        <?php } ?>
+                <ul class="list-unstyled mb-0">
+                    <li class="mb-1">
+                        <i class="fa-solid fa-envelope me-2 text-muted" style="width: 1rem; text-align: center;"></i><a href="mailto:<?= InputUtils::escapeAttribute($family->getEmail()) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($family->getEmail()) ?></a>
+                        <button class="btn btn-sm btn-ghost-secondary ms-1 copy-email-btn" type="button"
+                                data-email="<?= InputUtils::escapeAttribute($family->getEmail()) ?>"
+                                title="<?= gettext('Copy to clipboard') ?>">
+                            <i class="fa-solid fa-copy"></i>
+                        </button>
+                    </li>
+                    <!-- MailChimp status - populated by JavaScript if plugin is active -->
+                    <li class="d-none mb-1" id="mailchimp-status-container">
+                        <i class="fa-regular fa-paper-plane me-2 text-muted" style="width: 1rem; text-align: center;"></i>Mailchimp:
+                        <span id="mailchimp-status">... <?= gettext("loading")?> ...</span>
+                    </li>
                 </ul>
             </div>
         </div>
+        <?php } ?>
 
         <?php if (!empty($familyCustom)) { ?>
         <!-- Custom Fields Card (collapsible) -->
@@ -550,35 +615,78 @@ $otherPeople = $family->getOtherPeople();
         </div>
         <?php } ?>
 
-        <!-- Properties Card (collapsible, matching Person page style) -->
+        <!-- Properties Card (inline, matching Person page style) -->
         <div class="card mb-3">
-            <div class="card-header d-flex align-items-center" role="button" data-bs-toggle="collapse" data-bs-target="#family-properties-body" aria-expanded="true">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title m-0"><i class="fa-solid fa-hashtag me-1"></i> <?= gettext("Properties") ?></h3>
-                <div class="ms-auto"><i class="fa-solid fa-chevron-down"></i></div>
             </div>
-            <div class="collapse show" id="family-properties-body">
-                <div class="card-body">
-                    <div id="family-property-loading" class="w-100 text-center">
-                        <i class="btn btn-secondary ajax">
-                            <i class="fa-solid fa-spinner fa-spin"></i><?= gettext("Loading") ?>
-                        </i>
-                    </div>
-
-                    <div id="family-property-no-data" class="text-center text-muted py-3" style="display: none;">
+            <div class="card-body">
+                <?php if (count($assignedFamilyProperties) === 0) : ?>
+                    <div class="text-center text-muted py-3">
                         <i class="fa-solid fa-tags fa-2x mb-2 d-block opacity-50"></i>
                         <p class="mb-0"><?= gettext("No properties assigned.") ?></p>
                     </div>
-
-                    <div id="family-property-list" class="list-group list-group-flush" style="display: none;"></div>
-
-                    <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
-                    <div class="mt-3">
-                        <button id="add-family-property" type="button" class="btn btn-sm btn-primary w-100">
-                            <i class="fa-solid fa-check me-1"></i><?= gettext('Assign') ?>
-                        </button>
+                <?php else : ?>
+                    <div class="list-group list-group-flush">
+                        <?php foreach ($assignedFamilyProperties as $rp) {
+                            $prop = $rp->getProperty();
+                            $propType = $prop->getPropertyType();
+                            $value = $rp->getPropertyValue(); ?>
+                            <div class="list-group-item px-0 d-flex align-items-center">
+                                <div class="me-auto">
+                                    <strong><?= InputUtils::escapeHTML($prop->getProName()) ?></strong>
+                                    <?php if ($propType) { ?>
+                                        <span class="badge bg-secondary-lt text-secondary ms-1"><?= InputUtils::escapeHTML($propType->getPrtName()) ?></span>
+                                    <?php } ?>
+                                    <?php if (!empty($value)) { ?>
+                                        <small class="text-muted d-block"><?= InputUtils::escapeHTML($value) ?></small>
+                                    <?php } ?>
+                                </div>
+                                <?php if ($canEditRecords) { ?>
+                                    <button class="btn btn-sm btn-ghost-danger remove-family-property-btn" data-property_id="<?= (int) $prop->getProId() ?>" title="<?= gettext('Remove') ?>">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                <?php } ?>
+                            </div>
+                        <?php } ?>
                     </div>
-                    <?php } ?>
-                </div>
+                <?php endif; ?>
+
+                <?php if ($canEditRecords && count($allFamilyProperties) > 0) : ?>
+                    <div id="family-property-assign-wrapper" class="mt-3 d-print-none">
+                        <form method="post" id="assign-family-property-form">
+                            <div class="mb-2">
+                                <select name="PropertyId" id="input-family-properties" class="form-select" data-placeholder="<?= gettext('Choose a property...') ?>">
+                                    <option value=""></option>
+                                    <?php
+                                    $valueByPropId = [];
+                                    foreach ($assignedFamilyProperties as $rp) {
+                                        $valueByPropId[(int) $rp->getProperty()->getProId()] = $rp->getPropertyValue();
+                                    }
+                                    foreach ($allFamilyProperties as $prop) {
+                                        $pid = (int) $prop->getProId();
+                                        $isAssigned = array_key_exists($pid, $valueByPropId);
+                                        $attrs = 'value="' . $pid . '"';
+                                        $prompt = $prop->getProPrompt();
+                                        if (!empty($prompt)) {
+                                            $attrs .= ' data-pro_Prompt="' . InputUtils::escapeAttribute($prompt) . '"';
+                                            $attrs .= ' data-pro_Value="' . InputUtils::escapeAttribute($valueByPropId[$pid] ?? '') . '"';
+                                        }
+                                        $optionText = InputUtils::escapeHTML($prop->getProName());
+                                        if ($isAssigned) {
+                                            $optionText .= ' (' . gettext('assigned') . ')';
+                                        }
+                                        echo "<option {$attrs}>{$optionText}</option>";
+                                    } ?>
+                                </select>
+                            </div>
+                            <div id="family-property-prompt-box" class="mb-2"></div>
+                            <button id="assign-family-property-btn" type="button" class="btn btn-sm btn-primary w-100">
+                                <i class="fa-solid fa-check me-1"></i><?= gettext('Assign') ?>
+                            </button>
+                        </form>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -762,7 +870,7 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
                         <?php
                     } ?>
             <div class="modal-footer text-center">
-                <?php if (count($familyEmails) > 0 && !empty(SystemConfig::getValue('sSMTPHost'))) {
+                <?php if (count($familyEmails) > 0 && SystemConfig::isEmailEnabled()) {
                     ?>
                     <button type="button" id="onlineVerify"
                             class="btn btn-warning warning"><i
@@ -785,5 +893,60 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
         </div>
     </div>
 </div>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+(function () {
+    function initTimelineFilter(container) {
+        if (!container) { return; }
+        var chips = container.querySelectorAll(".timeline-filter-chip");
+        var allChip = container.querySelector(".timeline-filter-all");
+        var events = container.querySelectorAll(".timeline-event[data-timeline-category]");
+        var years = container.querySelectorAll(".timeline-year");
+        var emptyNotice = container.querySelector(".timeline-empty-notice");
+        if (chips.length === 0 || events.length === 0) { return; }
+        var active = new Set(["notes"]);
+        function applyFilter() {
+            var showAll = active.has("all");
+            var visibleYears = {};
+            var anyVisible = false;
+            events.forEach(function (el) {
+                var cat = el.getAttribute("data-timeline-category") || "notes";
+                var visible = showAll || active.has(cat);
+                el.style.display = visible ? "" : "none";
+                if (visible) { anyVisible = true; visibleYears[el.getAttribute("data-timeline-year") || ""] = true; }
+            });
+            years.forEach(function (y) { y.style.display = visibleYears[y.getAttribute("data-timeline-year") || ""] ? "" : "none"; });
+            if (emptyNotice) { emptyNotice.style.display = anyVisible ? "none" : ""; }
+            chips.forEach(function (chip) {
+                var f = chip.getAttribute("data-filter"), on = showAll || active.has(f);
+                chip.classList.toggle("btn-primary", on); chip.classList.toggle("active", on); chip.classList.toggle("btn-outline-secondary", !on);
+            });
+            if (allChip) { allChip.classList.toggle("active", showAll); }
+        }
+        chips.forEach(function (chip) {
+            chip.addEventListener("click", function () {
+                var f = chip.getAttribute("data-filter"); if (!f) return;
+                active.delete("all"); if (active.has(f)) active.delete(f); else active.add(f);
+                if (active.size === 0) active.add("notes");
+                applyFilter();
+            });
+        });
+        if (allChip) { allChip.addEventListener("click", function () { active = new Set(["all"]); applyFilter(); }); }
+        applyFilter();
+    }
+    function isAppleMobile() {
+        var ua = navigator.userAgent || "";
+        if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) return true;
+        if (navigator.platform === "MacIntel" && typeof navigator.maxTouchPoints === "number" && navigator.maxTouchPoints > 1) return true;
+        return false;
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".timeline-container").forEach(initTimelineFilter);
+        if (isAppleMobile()) {
+            document.querySelectorAll(".directions-provider-toggle").forEach(function (el) { el.classList.remove("d-none"); });
+            document.querySelectorAll(".directions-provider-menu").forEach(function (el) { el.classList.remove("d-none"); });
+        }
+    });
+})();
+</script>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

@@ -632,10 +632,6 @@ msgid "Save Changes"
 msgstr "Wijziging opslaan"
 
 #: 
-msgid "Church Event Editor"
-msgstr "Activiteiten"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Hoofdactiviteiten"
 
@@ -701,20 +697,8 @@ msgid "Create Event"
 msgstr "Maak een activiteit"
 
 #: 
-msgid "Create a new Event"
-msgstr "Nieuwe activiteit"
-
-#: 
-msgid "Select your event type"
-msgstr "Selecteer hoofdactiviteit"
-
-#: 
 msgid "Event Status"
 msgstr "Status"
-
-#: 
-msgid "Return to Events"
-msgstr "Terug naar activiteiten"
 
 #: 
 msgid "Sundays"
@@ -811,10 +795,6 @@ msgstr "E-mail is niet geldig"
 #: 
 msgid "Family Info"
 msgstr "Adresgegevens gezin"
-
-#: 
-msgid "Contact Info"
-msgstr "Contact gegevens"
 
 #: 
 msgid "Envelope Info"
@@ -939,10 +919,6 @@ msgstr "Waarde"
 #: 
 msgid "Edit Value"
 msgstr "Wijzig Waarde"
-
-#: 
-msgid "Assign a New Property"
-msgstr "Kenmerk toevoegen"
 
 #: 
 msgid "Assign"
@@ -1173,10 +1149,6 @@ msgid "Summary Data"
 msgstr "Samenvattings Data"
 
 #: 
-msgid "CSV"
-msgstr "CSV"
-
-#: 
 msgid "Back"
 msgstr "Terug"
 
@@ -1295,10 +1267,6 @@ msgstr "Gegevens bestandsformaat"
 #: 
 msgid "GPS Visualizer"
 msgstr "GPS Visualizer"
-
-#: 
-msgid "Street Atlas USA"
-msgstr "Street Atlas USA"
 
 #: 
 msgid "Include families in the coordinate file"
@@ -1657,20 +1625,8 @@ msgid "Group"
 msgstr "Groep"
 
 #: 
-msgid "Option"
-msgstr "Optie"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "Error: Duplicaat"
-
-#: 
 msgid "Default"
 msgstr "Standaard"
-
-#: 
-msgid "Duplicate name found."
-msgstr "Indentieke naam gevonden."
 
 #: 
 msgid "Make Default"
@@ -1683,10 +1639,6 @@ msgstr "Annuleer"
 #: 
 msgid "Add New"
 msgstr "Nieuw - "
-
-#: 
-msgid " by that name already exists."
-msgstr " met die naam bestaat al."
 
 #: 
 msgid "Buyer Number Editor"
@@ -2340,18 +2292,6 @@ msgstr "Nummer is te groot. Moet tussen -2147483648 and 2147483647 vallen"
 #: 
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Geld bedrag te groot. Maximum is $999999999.99"
-
-#: 
-msgid " Bold Italic"
-msgstr "Vet Cursief"
-
-#: 
-msgid " Italic"
-msgstr "Cursief"
-
-#: 
-msgid " Bold"
-msgstr "Vet"
 
 #: 
 msgid "Error making API Call to"
@@ -3165,10 +3105,6 @@ msgid "Security Group"
 msgstr "Veiligheisgroep"
 
 #: 
-msgid "Security Groups"
-msgstr "Veiligheidsgroepen"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "Veiligheidsgroepen"
 
@@ -3181,56 +3117,16 @@ msgid "Group Member Roles Editor"
 msgstr "Rollen van de groepsleden"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "Aangepaste lijst met personen"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "Aangepaste lijsten met personen"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "Aanpasbare lijstweergave van personen"
-
-#: 
-msgid "Custom List Option"
-msgstr "Aangepaste lijstoptie"
-
-#: 
-msgid "Custom List Options"
-msgstr "Aangepaste lijstopties"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "Opties voor de aanpasbare lijsten"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "Optie voor aangepaste gezinslijst"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "Opties voor aangepaste gezinslijst"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "Editor voor aangepaste lijstopties voor gezinnen"
-
-#: 
-msgid "are not allowed."
-msgstr "zijn niet toegestaan"
-
-#: 
-msgid "Name for New"
-msgstr "Naam voor nieuwe"
-
-#: 
-msgid "Created via Family"
-msgstr "Gemaakt via Familie"
-
-#: 
-msgid "Updated via Family"
-msgstr "Gewijzigd via gezin"
 
 #: 
 msgid "Family Data Verified"
@@ -5111,7 +5007,8 @@ msgid "Indonesian - Indonesia"
 msgstr "Indonesisch - Indonesië"
 
 #: 
-msgid "records(s) successfully added to selected Group."
+#, fuzzy
+msgid "record(s) successfully added to selected Group."
 msgstr "records(s) succesvol toegevoegd aan geselecteerde groep."
 
 #: 
@@ -5141,10 +5038,6 @@ msgstr "Gezin toegevoegd"
 #: 
 msgid "Church Greeter"
 msgstr "Groet"
-
-#: 
-msgid "External Calendar API is disabled"
-msgstr "De API voor een externe kalender is inactief "
 
 #: 
 msgid "Special Group Settings : Sunday School Type"
@@ -5423,7 +5316,8 @@ msgid "Remove All from Cart"
 msgstr "Alles uit het werkbestand verwijderen"
 
 #: 
-msgid "records(s) successfully deleted from the selected Group."
+#, fuzzy
+msgid "record(s) successfully deleted from the selected Group."
 msgstr "records(s) succesvol verwijderd uit de geselecteerde groep."
 
 #: 
@@ -5451,14 +5345,6 @@ msgid "Added to group"
 msgstr "Aan de groep toegevoegd"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "SMTP Host is niet ingesteld, ga naar de instellingenpagina"
-
-#: 
-msgid "Debug Email Connection"
-msgstr "Info e-mail connectie"
-
-#: 
 msgid "This Family is Inactive"
 msgstr "Dit gezin is gedeactiveerd"
 
@@ -5469,14 +5355,6 @@ msgstr "Deze databank is opgeschoond"
 #: 
 msgid "Anniversaries"
 msgstr "Gedenkdagen"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "E-mailfout met nieuwe gezinsmelding"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "E-mailfout met melding van nieuwe persoon"
 
 #: 
 msgid "View User"
@@ -5587,10 +5465,6 @@ msgid "Missing calendar access token"
 msgstr "Het certificaat van toegang tot de kalender is afwezig"
 
 #: 
-msgid "Calendar access token not found"
-msgstr "Het certificaat van toegang tot de kalender is niet gevonden"
-
-#: 
 msgid "User must have Delete Records permission"
 msgstr "De gebruiker heeft de rechten nodig om rijen met gegevens te mogen verwijderen"
 
@@ -5661,10 +5535,6 @@ msgstr "Is inactief gemaakt"
 #: 
 msgid "Software Version"
 msgstr "Software versie"
-
-#: 
-msgid "Database Version"
-msgstr "Versie van de database"
 
 #: 
 msgid "Application Prerequisites"
@@ -5928,10 +5798,6 @@ msgid "Mailchimp is not active"
 msgstr "Mailchimp is niet actief"
 
 #: 
-msgid "Mailchimp"
-msgstr "Mailchimp"
-
-#: 
 msgid "Lists"
 msgstr "Lijsten"
 
@@ -6030,14 +5896,6 @@ msgid "Loading"
 msgstr "Bezig met laden"
 
 #: 
-msgid "Family Property Unassignment"
-msgstr "Gezinseigendom intrekken"
-
-#: 
-msgid "Do you want to remove"
-msgstr "Wil je het verwijderen?"
-
-#: 
 msgid "Today's Birthdays"
 msgstr "Verjaardagen van vandaag"
 
@@ -6072,10 +5930,6 @@ msgstr "Ongeldige geboortedatum: geboortemaand of -dag ontbreekt."
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Ongeldige geboortedatum: geboortemaand en -dag ontbreken."
-
-#: 
-msgid "System"
-msgstr "Systeem"
 
 #. Context: locales
 #: 
@@ -6163,10 +6017,6 @@ msgid "Not Subscribed"
 msgstr "Niet geabonneerd"
 
 #: 
-msgid "property"
-msgstr "Bezit"
-
-#: 
 msgid "Default Zip"
 msgstr "Standaard Postcode"
 
@@ -6204,10 +6054,6 @@ msgstr "Een letter van de Voornaam en een letter van de Achternaam"
 #: 
 msgid "Two characters from FirstName"
 msgstr "Twee letters van de Voornaam"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "Kerk e-mail is niet ingesteld. Ga naar \"Instellingen\"."
 
 #. Context: locales
 #: 
@@ -6957,7 +6803,8 @@ msgid "Total Payments"
 msgstr "Totale betalingen"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payments?"
 msgstr "betaling(en)?"
 
 #: 
@@ -6969,20 +6816,8 @@ msgid "Base URL"
 msgstr "Basis-URL"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "ChurchCRM-installatie"
-
-#: 
 msgid "Copy"
 msgstr "Kopiëren"
-
-#: 
-msgid "DSN"
-msgstr "DSN"
-
-#: 
-msgid "Database Server"
-msgstr "Databaseserver"
 
 #: 
 msgid "Debug Info"
@@ -6991,14 +6826,6 @@ msgstr "Debug-informatie"
 #: 
 msgid "Document Root"
 msgstr "Documentroot"
-
-#: 
-msgid "Email Configuration"
-msgstr "E-mailconfiguratie"
-
-#: 
-msgid "Email Debug Info"
-msgstr "E-mail debug-informatie"
 
 #: 
 msgid "Filesystem Permissions"
@@ -7041,10 +6868,6 @@ msgid "PHP & Server Requirements"
 msgstr "PHP- en serververeisten"
 
 #: 
-msgid "PHP Configuration"
-msgstr "PHP-configuratie"
-
-#: 
 msgid "Platform"
 msgstr "Platform"
 
@@ -7057,24 +6880,8 @@ msgid "SMTP Host"
 msgstr "SMTP-host"
 
 #: 
-msgid "Server Information"
-msgstr "Serverinformatie"
-
-#: 
-msgid "Software"
-msgstr "Software"
-
-#: 
-msgid "System & Configuration"
-msgstr "Systeem en configuratie"
-
-#: 
 msgid "Tip:"
 msgstr "Tip:"
-
-#: 
-msgid "Valid Settings"
-msgstr "Geldige instellingen"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7135,10 +6942,6 @@ msgid "Attendance Count Categories"
 msgstr "Aanwezigheidstellincategorieën"
 
 #: 
-msgid "Attendance Notes"
-msgstr "Aanwezigheidsnotities"
-
-#: 
 msgid "Change Event"
 msgstr "Gebeurtenis wijzigen"
 
@@ -7194,14 +6997,6 @@ msgstr "Evenement Verwijderen"
 msgid "Edit Event"
 msgstr "Evenement Bewerken"
 
-#: 
-msgid "Editing Event"
-msgstr "Evenement aan het bewerken"
-
-#: 
-msgid "Enter event title..."
-msgstr "Voer evenementtitel in..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7252,14 +7047,6 @@ msgid "None (one-time event)"
 msgstr "Geen (eenmalig evenement)"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "Optioneel - Voeg preeknotities of aanvullende evenementdetails toe"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "Optionele notities over aanwezigheid..."
-
-#: 
 msgid "People Checked In"
 msgstr "Mensen Ingecheckt"
 
@@ -7294,10 +7081,6 @@ msgstr "Zoeken naar toezichthouder..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "Selecteer Evenement voor Inchecken"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "Preek / Evenementtekst"
 
 #: 
 msgid "Unclassified"
@@ -8090,10 +7873,6 @@ msgid "Orphaned Files:"
 msgstr "Verweesde Bestanden:"
 
 #: 
-msgid "PDF/CSV"
-msgstr "PDF/CSV"
-
-#: 
 msgid "Payment"
 msgstr "Betaling"
 
@@ -8330,10 +8109,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "Base URL is niet geconfigureerd in Config.php"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "ChurchCRM Ondersteunde Talen"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "Maak verbinding met uw server via SSH, FTP of uw hostingcontrolpanel"
 
@@ -8358,10 +8133,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Eindigt met een <strong>trailing slash</strong> (/)"
 
 #: 
-msgid "Error:"
-msgstr "Fout:"
-
-#: 
 msgid "Find the line:"
 msgstr "Vind de regel:"
 
@@ -8384,10 +8155,6 @@ msgstr "Taal"
 #: 
 msgid "Local development:"
 msgstr "Lokale ontwikkeling:"
-
-#: 
-msgid "Locale Support"
-msgstr "Taalondersteuning"
 
 #: 
 msgid "Location & Contact Information"
@@ -8756,10 +8523,6 @@ msgstr[0] "%d persoon succesvol toegevoegd aan geselecteerde groep."
 msgstr[1] "%d personen succesvol toegevoegd aan geselecteerde groep."
 
 #: 
-msgid "A "
-msgstr "Een "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Weet je zeker dat je wilt verwijderen"
 
@@ -8788,10 +8551,6 @@ msgid "Delete Confirmation"
 msgstr "Verwijdering Bevestigen"
 
 #: 
-msgid "Existing"
-msgstr "Bestaande"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "Bestaande Aangepaste Familievelden"
 
@@ -8814,10 +8573,6 @@ msgstr "Ongeldig CSRF-token"
 #: 
 msgid "Invalid fields or selections."
 msgstr "Ongeldige velden of selecties."
-
-#: 
-msgid "Item deleted successfully"
-msgstr "Item succesvol verwijderd"
 
 #: 
 msgid "Move down"
@@ -8854,10 +8609,6 @@ msgstr "Eigendomstype"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "Er zijn personen toegewezen aan deze Vrijwilligersmogelijkheid. Verwijdering zal unassign:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "Dit zal het verwijderen uit alle personen die er momenteel aan zijn toegewezen."
 
 #: 
 msgid "Volunteer Opportunity"
@@ -9224,10 +8975,6 @@ msgstr "Openen van upgrade-archief mislukt. Het gedownloade bestand is mogelijk 
 #: 
 msgid "Failed to save the downloaded release file. Please check disk space and permissions."
 msgstr "Opslaan van het gedownloade releasebestand mislukt. Controleer de schijfruimte en rechten."
-
-#: 
-msgid "Invalid date format in start parameter"
-msgstr "Ongeldig datumformaat in startparameter"
 
 #: 
 msgid "Mismatch"
@@ -9690,10 +9437,6 @@ msgstr "Link niet gevonden"
 #: 
 msgid "Loading recovery codes"
 msgstr "Herstelcodes laden"
-
-#: 
-msgid "MailChimp"
-msgstr "MailChimp"
 
 #: 
 msgid "MailChimp API Key"
@@ -10807,10 +10550,6 @@ msgid "CSV Column"
 msgstr "CSV-kolom"
 
 #: 
-msgid "CSV template not found"
-msgstr "CSV-sjabloon niet gevonden"
-
-#: 
 msgid "Call"
 msgstr "Bellen"
 
@@ -10885,10 +10624,6 @@ msgstr "Kolom werd automatisch gekoppeld aan een ChurchCRM-veld."
 #: 
 msgid "Community Management Platform"
 msgstr "Gemeentebeheerplatform"
-
-#: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "Compatibel met Excel, Google Spreadsheets of een willekeurige CSV-export."
 
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
@@ -11063,10 +10798,6 @@ msgid "Download CSV Template"
 msgstr "CSV-sjabloon downloaden"
 
 #: 
-msgid "Download the template to see the expected column format."
-msgstr "Download het sjabloon om het verwachte kolomformaat te zien."
-
-#: 
 msgid "Drag and drop your CSV file here"
 msgstr "Sleep uw CSV-bestand hier naartoe"
 
@@ -11077,10 +10808,6 @@ msgstr "Duplicaten"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Elke persoon kan een eigen e-mailadres en mobiel nummer hebben."
-
-#: 
-msgid "Each row is one person. Members of the same family share a FamilyID."
-msgstr "Elke rij is één persoon. Leden van hetzelfde gezin delen een FamilyID."
 
 #: 
 msgid "Easy registration"
@@ -11503,10 +11230,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "Zondagsschoolklassen, leraren en leerlingenopkomst beheren"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "Classificatielijsten, rollen en groepstypen beheren"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "Donatiefondsen beheren voor financieel toezicht"
 
@@ -11757,10 +11480,6 @@ msgstr "GitHub-issue openen"
 #: 
 msgid "Open user menu"
 msgstr "Gebruikersmenu openen"
-
-#: 
-msgid "Options"
-msgstr "Opties"
 
 #: 
 msgid "Other Members"
@@ -12173,10 +11892,6 @@ msgid "Upload CSV"
 msgstr "CSV uploaden"
 
 #: 
-msgid "Upload a CSV file to import families and people into ChurchCRM."
-msgstr "Upload een CSV-bestand om gezinnen en personen te importeren in ChurchCRM."
-
-#: 
 msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
 msgstr "Upload een CSV-bestand vanuit Excel, Google Spreadsheets of uw vorige kerkbeheersysteem en koppel kolommen aan ChurchCRM-velden."
 
@@ -12399,10 +12114,6 @@ msgstr "leden"
 #: 
 msgid "opportunities"
 msgstr "mogelijkheden"
-
-#: 
-msgid "options"
-msgstr "opties"
 
 #: 
 msgid "or connect an external service"
@@ -12639,10 +12350,6 @@ msgstr "Kioskapparaten registreren en beheren voor het inchecken bij evenementen
 #: 
 msgid "Review & Delete"
 msgstr "Bekijken & Verwijderen"
-
-#: 
-msgid "SHA1 Hash"
-msgstr "SHA1-hashwaarde"
 
 #: 
 msgid "Signature Mismatch"
@@ -14583,10 +14290,6 @@ msgstr[0] "%d terugkerend evenement succesvol aangemaakt."
 msgstr[1] "%d terugkerende evenementen succesvol aangemaakt."
 
 #: 
-msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
-msgstr "(bijv. Gemeenteleden, Bezoekers, Kinderen) zodat vrijwilligers hier tellingen kunnen invoeren."
-
-#: 
 msgid "1. Sunday School Class"
 msgstr "1. Zondagsschoolklas"
 
@@ -14607,10 +14310,6 @@ msgid "A class is a Group with type \"Sunday School\". It holds the students and
 msgstr "Een klas is een Groep van het type \"Zondagsschool\". Het bevat de leerlingen en leraren (leden met rollen)."
 
 #: 
-msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
-msgstr "Een gekoppelde groep verbindt dit evenement met een klas of bediening. Wanneer het evenement aan een kiosk is toegewezen, haalt de kiosk de groepsleden op en toont hen als aanmeldlijst. Koppel voor zondagsschoolklassen de klasgroep hier zodat vrijwilligers leerlingen via een tablet kunnen inchecken."
-
-#: 
 msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
 msgstr "Een specifieke gebeurtenis (bijv. \"Kleutergroep — 12 apr\"). Erft standaardinstellingen van het type en is via het publiek gekoppeld aan de klasgroep. Dit is waartegen vrijwilligers aanwezigheid registreren."
 
@@ -14621,10 +14320,6 @@ msgstr "Een tablet toegewezen aan één evenement. De kiosk haalt de gekoppelde 
 #: 
 msgid "Add Walk-in / Visitor"
 msgstr "Inloper / Bezoeker toevoegen"
-
-#: 
-msgid "Add categories on the Event Type page"
-msgstr "Voeg categorieën toe op de pagina Evenementtype"
 
 #: 
 msgid "Add people to your cart first, then come back to check them in to an event."
@@ -14673,10 +14368,6 @@ msgstr "Audit"
 #: 
 msgid "Audit Events"
 msgstr "Audit Evenementen"
-
-#: 
-msgid "Auto-totalled from counts at right"
-msgstr "Automatisch opgeteld van tellingen rechts"
 
 #: 
 msgid "Back to Events"
@@ -14803,10 +14494,6 @@ msgid "Database dump only (.sql)"
 msgstr "Alleen database-dump (.sql)"
 
 #: 
-msgid "Date Range"
-msgstr "Datumbereik"
-
-#: 
 msgid "Date range cannot exceed 1 year"
 msgstr "Datumbereik mag niet meer dan 1 jaar bedragen"
 
@@ -14887,10 +14574,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "Evenement aangemaakt. Doorsturen naar inchecken..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "Einddatum/-tijd van het evenement moet op of na de begindatum/-tijd liggen."
-
-#: 
 msgid "Event title is required."
 msgstr "Evenementtitel is verplicht."
 
@@ -14917,10 +14600,6 @@ msgstr "Evenementtype heeft geen herhalingspatroon ingesteld"
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "Evenementtype heeft geen geldige dag van de maand ingesteld voor maandelijkse herhaling"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "Evenementen worden aangemaakt voor elke overeenkomende gebeurtenis binnen dit datumbereik."
 
 #: 
 msgid "Every month on the"
@@ -14971,10 +14650,6 @@ msgid "Group Roster"
 msgstr "Groepslijst"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "Geavanceerde opties verbergen"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Hoe Zondagsschool + Evenementen + Kiosken samenwerken"
 
@@ -14985,10 +14660,6 @@ msgstr "Ongeldige datum voor %s — verwacht YYYY-MM-DD"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Ongeldig datumformaat voor rangeStart of rangeEnd"
-
-#: 
-msgid "Invalid date format."
-msgstr "Ongeldig datumformaat."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -15043,10 +14714,6 @@ msgid "No active events found."
 msgstr "Geen actieve evenementen gevonden."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "Er zijn nog geen categorieën voor aanwezigheidstelling gedefinieerd voor dit evenementtype."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "Er is nog niemand ingecheckt bij dit evenement."
 
@@ -15087,10 +14754,6 @@ msgid "Please select a person to check in."
 msgstr "Selecteer een persoon om in te checken."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "Vooraf ingevuld op basis van dit evenementtype — voor terugkerende typen is de datum de eerstvolgende keer na het laatste evenement van dit type, en de tijd komt overeen met de standaard begintijd van het type."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "Einddatum van het bereik moet op of na de begindatum liggen."
 
@@ -15119,10 +14782,6 @@ msgid "Recommended"
 msgstr "Aanbevolen"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "Vereist voor kiosk"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "Resetten zal permanent verwijderen:"
 
@@ -15141,14 +14800,6 @@ msgstr "Wijzigingen in deze categorienaam opslaan"
 #: 
 msgid "Select an event type…"
 msgstr "Selecteer een evenementtype…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "Selecteer begin- en einddatum/-tijd."
-
-#: 
-msgid "Show More Options"
-msgstr "Meer opties tonen"
 
 #: 
 msgid "Skip"
@@ -15191,16 +14842,8 @@ msgid "The Events module is disabled"
 msgstr "De Evenementenmodule is uitgeschakeld"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "Dezelfde begin- en eindtijd wordt gebruikt voor alle gegenereerde evenementen."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "Er zijn geen evenementen gepland voor vandaag"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "Dit zijn tellingscategorieën — vrijwilligers vullen deze in na het evenement zodat het dashboard de aanwezigheid kan uitsplitsen (bijv. hoeveel gemeenteleden versus bezoekers). Ze staan los van individuele incheck-acties op de Incheckpagina."
 
 #: 
 msgid "This event is inactive."
@@ -15255,16 +14898,8 @@ msgid "View Event"
 msgstr "Evenement bekijken"
 
 #: 
-msgid "What are these for?"
-msgstr "Waarvoor dienen deze?"
-
-#: 
 msgid "What does this find?"
 msgstr "Wat vindt dit?"
-
-#: 
-msgid "What is this for?"
-msgstr "Waarvoor dient dit?"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15527,6 +15162,10 @@ msgid "No active event assignment"
 msgstr "Geen actieve evenementtoewijzing"
 
 #: 
+msgid "Online"
+msgstr "Online"
+
+#: 
 msgid "Opens a 30-second window for devices to register at:"
 msgstr "Opent een venster van 30 seconden voor apparaten om te registreren bij:"
 
@@ -15553,4 +15192,596 @@ msgstr "Aanstaande evenementen"
 #: 
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "evenement(en). Deactiveer het type of wijs de evenementen eerst opnieuw toe."
+
+#: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "Absolute http(s) URL van het kerklogo dat wordt weergegeven in e-mailsjablonen (en in de toekomst elders hergebruikt). Voor de beste weergave in e-mailclients gebruikt u een brede bannerafbeelding met een verhouding van ongeveer 3,5:1 (bijvoorbeeld 350×100 px), PNG of JPG, geserveerd via HTTPS. Laat leeg of voer een ongeldige waarde in om terug te vallen op het standaard ChurchCRM-logo."
+
+#: 
+msgid "An option with that name already exists"
+msgstr "Er bestaat al een optie met die naam"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "De enige resterende optie kan niet worden verwijderd"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "Klembord niet beschikbaar. Gebruik de downloadknop om uw codes op te slaan."
+
+#: 
+msgid "Custom Option"
+msgstr "Aangepaste optie"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "Standaard voorbeeldtekst voor inbox"
+
+#: 
+msgid "Email is disabled"
+msgstr "E-mail is uitgeschakeld"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "E-mail is uitgeschakeld. Configureer e-mail voordat u wachtwoorden opnieuw instelt, of gebruik Wachtwoord wijzigen."
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "E-mail is uitgeschakeld. Schakel het in via de instellingen van het e-maildashboard voordat u test."
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "Voer een van uw back-upherstelcodes in"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "Voer een van uw back-upherstelcodes in om toegang te krijgen tot uw account"
+
+#: 
+msgid "Existing Options"
+msgstr "Bestaande opties"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "Groep niet gevonden voor deze rollenlijst"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "Inactieve status kan alleen worden gewijzigd voor de classificatielijst"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "Nieuwe gebruikers ontvangen geen welkomstmail met hun inloggegevens. Deel het wachtwoord handmatig met hen of configureer eerst e-mail."
+
+#: 
+msgid "Option name is required"
+msgstr "Optienaam is vereist"
+
+#: 
+msgid "Option not found"
+msgstr "Optie niet gevonden"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "Optionele korte samenvatting weergegeven als inboxvoorbeeldtekst naast de onderwerpregel. Laat leeg om de e-mailclient automatisch uit de hoofdtekst te laten genereren. Per e-mailtype (wachtwoord opnieuw instellen, nieuw lid, verificatie) worden eigen preheaders ingesteld; dit is een terugvaloptie."
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "E-mails voor het opnieuw instellen van wachtwoorden en welkomstmails voor nieuwe accounts worden niet verzonden totdat e-mail is geconfigureerd. Gebruikers ontvangen geen inloggegevens automatisch."
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "Wachtwoord opnieuw instellen is niet beschikbaar omdat e-mail is uitgeschakeld. Neem contact op met uw systeembeheerder."
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "Wachtwoord is opnieuw ingesteld maar de e-mail kon niet worden verzonden. De gebruiker is buitengesloten — deel het nieuwe wachtwoord handmatig of gebruik Wachtwoord wijzigen."
+
+#: 
+msgid "Recovery Code"
+msgstr "Herstelcode"
+
+#: 
+msgid "Set up Email"
+msgstr "E-mail instellen"
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "Kan niet naar klembord kopiëren. Kopieer de codes handmatig."
+
+#: 
+msgid "Use Recovery Code"
+msgstr "Herstelcode gebruiken"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "Gebruik in plaats daarvan een herstelcode"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "Gebruik in plaats daarvan een authenticatie-app"
+
+#: 
+msgid "%d modules loaded"
+msgstr "%d modules geladen"
+
+#: 
+msgid "(PHP default)"
+msgstr "(PHP standaard)"
+
+#: 
+msgid "(none)"
+msgstr "(geen)"
+
+#: 
+msgid "(not set)"
+msgstr "(niet ingesteld)"
+
+#: 
+msgid "All checks passing"
+msgstr "Alle controles geslaagd"
+
+#: 
+msgid "App"
+msgstr "App"
+
+#: 
+msgid "Browser time zone differs:"
+msgstr "Browser tijdzone verschilt:"
+
+#: 
+msgid "Calendar time zone:"
+msgstr "Agendatijdzone:"
+
+#: 
+msgid "Cannot send test email"
+msgstr "Kan test-e-mail niet verzenden"
+
+#: 
+msgid "Charset"
+msgstr "Tekenset"
+
+#: 
+msgid "Church Email address is not set — the test email has nowhere to go."
+msgstr "Het e-mailadres van de kerk is niet ingesteld — de test-e-mail heeft geen bestemming."
+
+#: 
+msgid "Church email — configured on the"
+msgstr "Kerk-e-mail — geconfigureerd op de"
+
+#: 
+msgid "ChurchCRM Test Email"
+msgstr "ChurchCRM Test-e-mail"
+
+#: 
+msgid "Collation"
+msgstr "Sorteervolgorde"
+
+#: 
+msgid "Connection"
+msgstr "Verbinding"
+
+#: 
+msgid "Database"
+msgstr "Database"
+
+#: 
+msgid "Delivery"
+msgstr "Bezorging"
+
+#: 
+msgid "Disk (Images Root)"
+msgstr "Schijf (afbeeldingenmap)"
+
+#: 
+msgid "Display Errors"
+msgstr "Fouten weergeven"
+
+#: 
+msgid "Email Debug"
+msgstr "E-mail foutopsporing"
+
+#: 
+msgid "Environment"
+msgstr "Omgeving"
+
+#: 
+msgid "Error Log"
+msgstr "Foutlog"
+
+#: 
+msgid "Error Reporting"
+msgstr "Foutrapportage"
+
+#: 
+msgid "Error:"
+msgstr "Fout:"
+
+#: 
+msgid "Fix Settings"
+msgstr "Instellingen herstellen"
+
+#: 
+msgid "Hit Rate"
+msgstr "Trefferverhouding"
+
+#: 
+msgid "Host"
+msgstr "Host"
+
+#: 
+msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
+msgstr "Als het bericht niet binnen een paar minuten aankomt, controleer dan de spam/ongewenste e-mailmap en het SMTP-foutopsporingslog hieronder."
+
+#: 
+msgid "If you can read this message in your inbox, your SMTP configuration is working correctly."
+msgstr "Als u dit bericht in uw postvak kunt lezen, werkt uw SMTP-configuratie correct."
+
+#: 
+msgid "Incomplete"
+msgstr "Onvolledig"
+
+#: 
+msgid "Installed on Server"
+msgstr "Geïnstalleerd op server"
+
+#: 
+msgid "Integrity"
+msgstr "Integriteit"
+
+#: 
+msgid "Issues detected"
+msgstr "Problemen gedetecteerd"
+
+#: 
+msgid "Loaded php.ini"
+msgstr "Geladen php.ini"
+
+#: 
+msgid "Locale"
+msgstr "Taalinstellingen"
+
+#: 
+msgid "Max Execution Time"
+msgstr "Maximale uitvoeringstijd"
+
+#: 
+msgid "Max POST Size"
+msgstr "Maximale POST-grootte"
+
+#: 
+msgid "Max Upload Size"
+msgstr "Maximale uploadgrootte"
+
+#: 
+msgid "Memory"
+msgstr "Geheugen"
+
+#: 
+msgid "Memory Limit"
+msgstr "Geheugenlimiet"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
+msgstr "Controleer nu het postvak van de ontvanger om de bezorging te bevestigen. Zoek naar het onderwerp:"
+
+#: 
+msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
+msgstr "OPcache is niet ingeschakeld. Het inschakelen hiervan is een risicoarme manier om PHP-pagina's sneller te laden."
+
+#: 
+msgid "Off"
+msgstr "Uit"
+
+#: 
+msgid "On"
+msgstr "Aan"
+
+#: 
+msgid "Open the email debug tester"
+msgstr "Open de e-mail foutopsporingstester"
+
+#: 
+msgid "PHP Version"
+msgstr "PHP-versie"
+
+#: 
+msgid "PHPMailer SMTP session"
+msgstr "PHPMailer SMTP-sessie"
+
+#: 
+msgid "Prerequisites"
+msgstr "Vereisten"
+
+#: 
+msgid "Review the SMTP debug log below for the handshake details, then adjust your settings."
+msgstr "Bekijk het SMTP-foutopsporingslog hieronder voor de handshakedetails en pas vervolgens uw instellingen aan."
+
+#: 
+msgid "SMTP Configuration"
+msgstr "SMTP-configuratie"
+
+#: 
+msgid "SMTP Debug Log"
+msgstr "SMTP-foutopsporingslog"
+
+#: 
+msgid "SMTP Host is not configured."
+msgstr "SMTP-host is niet geconfigureerd."
+
+#: 
+msgid "SMTP configuration test — if this arrived, your setup works."
+msgstr "SMTP-configuratietest — als dit is aangekomen, werkt uw configuratie correct."
+
+#: 
+msgid "Schema Version"
+msgstr "Schemaversie"
+
+#: 
+msgid "Send Again"
+msgstr "Opnieuw verzenden"
+
+#: 
+msgid "Send a test message to verify your SMTP configuration"
+msgstr "Stuur een testbericht om uw SMTP-configuratie te verifiëren"
+
+#: 
+msgid "Server"
+msgstr "Server"
+
+#: 
+msgid "Server Version"
+msgstr "Serverversie"
+
+#: 
+msgid "Session Handler"
+msgstr "Sessiebehandeling"
+
+#: 
+msgid "Session Save Path"
+msgstr "Sessie-opslagpad"
+
+#: 
+msgid "Settings Valid"
+msgstr "Instellingen geldig"
+
+#: 
+msgid "Subject"
+msgstr "Onderwerp"
+
+#: 
+msgid "Test"
+msgstr "Test"
+
+#: 
+msgid "Test email accepted by SMTP server"
+msgstr "Test-e-mail geaccepteerd door SMTP-server"
+
+#: 
+msgid "Test email failed to send"
+msgstr "Verzenden van test-e-mail mislukt"
+
+#: 
+msgid "This is a ChurchCRM test email."
+msgstr "Dit is een ChurchCRM test-e-mail."
+
+#: 
+msgid "Timeout"
+msgstr "Time-out"
+
+#: 
+msgid "Timezone"
+msgstr "Tijdzone"
+
+#: 
+msgid "Unable to list web server modules (non-Apache SAPI)."
+msgstr "Kan webservermodules niet weergeven (niet-Apache SAPI)."
+
+#: 
+msgid "Update Settings"
+msgstr "Instellingen bijwerken"
+
+#: 
+msgid "View full photo"
+msgstr "Volledige foto bekijken"
+
+#: 
+msgid "page."
+msgstr "pagina."
+
+#: 
+msgid "user:"
+msgstr "gebruiker:"
+
+#: 
+msgid "1. Download the template"
+msgstr "1. Download de sjabloon"
+
+#: 
+msgid "2. Fill in your data"
+msgstr "2. Vul uw gegevens in"
+
+#: 
+msgid "3. Upload and map"
+msgstr "3. Uploaden en koppelen"
+
+#: 
+msgid "Add Recurring Event"
+msgstr "Terugkerend evenement toevoegen"
+
+#: 
+msgid "Available after the event is saved."
+msgstr "Beschikbaar nadat het evenement is opgeslagen."
+
+#: 
+msgid "Boolean properties/fields accept yes / no / true / false / 1 / 0."
+msgstr "Booleaanse eigenschappen/velden accepteren ja / nee / true / false / 1 / 0."
+
+#: 
+msgid "ChurchCRM auto-matches each column by name. Anything it cannot match is marked as Unmapped — pick a field or leave it as Ignore."
+msgstr "ChurchCRM koppelt elke kolom automatisch op naam. Alles wat niet gekoppeld kan worden, is gemarkeerd als Niet toegewezen — kies een veld of laat het op Negeren staan."
+
+#: 
+msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
+msgstr "Het CSV-bestand kon niet worden gelezen. Controleer of het een geldig kommagescheiden bestand is met een koprij."
+
+#: 
+msgid "Custom field columns you have not configured are ignored — nothing is created on the fly."
+msgstr "Kolommen voor aangepaste velden die u niet hebt geconfigureerd, worden genegeerd — er wordt niets automatisch aangemaakt."
+
+#: 
+msgid "Custom fields and properties are supported"
+msgstr "Aangepaste velden en eigenschappen worden ondersteund"
+
+#: 
+msgid "Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a month and day with no year."
+msgstr "Datumvelden accepteren YYYY-MM-DD of M/D/YYYY. Gebruik 0000-MM-DD of M/D voor een maand en dag zonder jaar."
+
+#: 
+msgid "Each row is one person. People in the same family share a FamilyID. Leave columns blank when you have no value for them."
+msgstr "Elke rij is één persoon. Mensen uit hetzelfde gezin delen een FamilieID. Laat kolommen leeg wanneer u geen waarde heeft."
+
+#: 
+msgid "Event Timing"
+msgstr "Evenementtijdstip"
+
+#: 
+msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
+msgstr "Elke overeenkomende herhaling tussen Van en Tot krijgt een eigen evenement op hetzelfde begin-/eindtijdstip."
+
+#: 
+msgid "External calendar sharing is disabled"
+msgstr "Extern agendadelen is uitgeschakeld"
+
+#: 
+msgid "Failed to load event editor. Please refresh and try again."
+msgstr "Laden van evenementeditor mislukt. Vernieuw de pagina en probeer het opnieuw."
+
+#: 
+msgid "Family Custom"
+msgstr "Gezinsaanpassing"
+
+#: 
+msgid "Family Property"
+msgstr "Gezinseigenschap"
+
+#: 
+msgid "Fields"
+msgstr "Velden"
+
+#: 
+msgid "Go to home"
+msgstr "Naar startpagina"
+
+#: 
+msgid "Hide advanced options"
+msgstr "Geavanceerde opties verbergen"
+
+#: 
+msgid "How the CSV Import Works"
+msgstr "Hoe de CSV-import werkt"
+
+#: 
+msgid "Imported from CSV"
+msgstr "Geïmporteerd uit CSV"
+
+#: 
+msgid "Invalid date format"
+msgstr "Ongeldig datumformaat"
+
+#: 
+msgid "Loading event editor…"
+msgstr "Evenementeditor laden…"
+
+#: 
+msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
+msgstr "Geen agenda geselecteerd — dit evenement wordt opgeslagen maar verschijnt niet in een agendaweergave."
+
+#: 
+msgid "No group"
+msgstr "Geen groep"
+
+#: 
+msgid "Not pinned to any calendar"
+msgstr "Niet vastgezet in een agenda"
+
+#: 
+msgid "Optional — sermon notes, materials, or other details copied to every generated event."
+msgstr "Optioneel — preeknotities, materialen of andere details die naar elk gegenereerd evenement worden gekopieerd."
+
+#: 
+msgid "Person / Family"
+msgstr "Persoon / Gezin"
+
+#: 
+msgid "Person Custom"
+msgstr "Persoonsaanpassing"
+
+#: 
+msgid "Person Property"
+msgstr "Persoonseigenschap"
+
+#: 
+msgid "Show more options"
+msgstr "Meer opties weergeven"
+
+#: 
+msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
+msgstr "De agendakoppeling is onvolledig. Controleer de URL bij de persoon die hem naar u heeft gestuurd."
+
+#: 
+msgid "The church administrator has not enabled external calendar sharing. Please contact them if you believe this is in error."
+msgstr "De kerkbeheerder heeft extern agendadelen niet ingeschakeld. Neem contact op als u denkt dat dit een fout is."
+
+#: 
+msgid "The start or end date in the link could not be understood. Try the base calendar link without date parameters."
+msgstr "De start- of einddatum in de koppeling kon niet worden begrepen. Probeer de basisagendakoppeling zonder datumparameters."
+
+#: 
+msgid "The template already contains every column you can map — the core Person/Family fields plus each custom field and property your site defines."
+msgstr "De sjabloon bevat al alle kolommen die u kunt koppelen — de kern Persoon/Gezin-velden plus elk aangepast veld en elke eigenschap die uw site definieert."
+
+#: 
+msgid "The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically."
+msgstr "De sjabloon bevat al een kolom voor elk aangepast Persoon/Gezin-veld en voor elke eigenschap die u heeft gedefinieerd. Als u kolommen handmatig toevoegt, gebruik dan de exacte naam van het aangepaste veld of de eigenschap als kolomkoptekst en de importeur zal het automatisch koppelen."
+
+#: 
+msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
+msgstr "Deze agendakoppeling is ongeldig of ingetrokken. Vraag de kerk om een actuele koppeling."
+
+#: 
+msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
+msgstr "Koppelt dit evenement aan een les of dienstrooster — gebruikt door de Kiosk-incheckstroom."
+
+#: 
+msgid "Upload a CSV to create families and people in bulk."
+msgstr "Upload een CSV om gezinnen en personen in bulk aan te maken."
+
+#: 
+msgid "Volunteer-entered headcounts, broken down by category."
+msgstr "Door vrijwilligers ingevoerde aantallen, uitgesplitst per categorie."
+
+#: 
+msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
+msgstr "Uw CSV heeft dubbele kolomnamen. Hernoem de dubbele kolommen (bijv. voeg \"(2)\" toe aan de tweede) en upload opnieuw."
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "Weet u zeker dat u dit gedoneerde artikel permanent wilt verwijderen?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "Weet u zeker dat u dit bodnummer permanent wilt verwijderen?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Gedoneerd artikel verwijderen"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Bodnummer verwijderen"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Ongeldig beveiligingstoken. Probeer het opnieuw."
 

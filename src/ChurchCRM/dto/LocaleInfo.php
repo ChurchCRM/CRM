@@ -228,4 +228,31 @@ class LocaleInfo
     {
         return isset($this->localeConfig['isRTL']) && $this->localeConfig['isRTL'] === true;
     }
+
+    /**
+     * Language label in its own script (e.g. "Deutsch", "中文（简体）", "العربية").
+     * Falls back to the English display key when the locales.json entry
+     * has no nativeName (forward-compatible with older data files).
+     */
+    public function getNativeName(): string
+    {
+        $native = $this->localeConfig['nativeName'] ?? null;
+        if (is_string($native) && $native !== '') {
+            return $native;
+        }
+
+        return $this->name ?? '';
+    }
+
+    /**
+     * Geographic region for grouped pickers — one of:
+     * Americas, Europe, Asia, Africa, Middle East, Oceania.
+     * Returns empty string when the entry is missing the field.
+     */
+    public function getRegion(): string
+    {
+        $region = $this->localeConfig['region'] ?? null;
+
+        return is_string($region) ? $region : '';
+    }
 }

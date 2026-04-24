@@ -30,4 +30,17 @@ describe("People classification filters", () => {
 
         cy.get("#members tbody tr", { timeout: 10000 }).should("have.length.greaterThan", 0);
     });
+
+    it("filter-by-dropdown-choice filters table to matching row", () => {
+        cy.visit("people/list?familyActiveStatus=all");
+
+        cy.get("#members tbody tr", { timeout: 10000 }).should("have.length.greaterThan", 0);
+        cy.get(".filter-Custom").siblings(".ts-wrapper").should("exist");
+
+        cy.tomSelectByText(".filter-Custom", "My Custom Drop Down List:My Custom Item 1");
+
+        cy.get("#members tbody tr", { timeout: 10000 }).should("have.length", 1);
+        cy.get("#members tbody").should("contain", "Mark");
+        cy.get("#members tbody").should("contain", "Smith");
+    });
 });

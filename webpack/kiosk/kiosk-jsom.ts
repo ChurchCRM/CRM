@@ -783,7 +783,7 @@ function renderStatusCard(
  */
 function checkInPerson(personId: number): void {
   if (kioskState.checkinByEnabled) {
-    const $personDiv = $("#personId-" + personId);
+    const $personDiv = $(`#personId-${personId}`);
     const personName = $personDiv.find(".kiosk-member-name").text().trim() || "this person";
     showCheckinByModal(personId, "checkin", personName);
   } else {
@@ -813,7 +813,7 @@ function performCheckin(personId: number, checkedInById: number | null): void {
  */
 function checkOutPerson(personId: number): void {
   if (kioskState.checkinByEnabled) {
-    const $personDiv = $("#personId-" + personId);
+    const $personDiv = $(`#personId-${personId}`);
     const personName = $personDiv.find(".kiosk-member-name").text().trim() || "this person";
     showCheckinByModal(personId, "checkout", personName);
   } else {
@@ -852,7 +852,7 @@ function renderFamilyMemberOptions(members: FamilyMember[]): string {
   let html = '<div class="checkin-by-members">';
   for (const member of members) {
     const photoHtml = member.hasPhoto
-      ? '<img src="' + getPhotoUrl(member.Id) + '" alt="' + escapeHtml(member.FirstName) + '" class="checkin-by-photo">'
+      ? `<img src="${getPhotoUrl(member.Id)}" alt="${escapeHtml(member.FirstName)}" class="checkin-by-photo">`
       : '<i class="fa-solid fa-user fa-2x"></i>';
     html +=
       '<button type="button" class="checkin-by-member-btn checkinByMemberBtn" data-memberid="' +
@@ -860,7 +860,7 @@ function renderFamilyMemberOptions(members: FamilyMember[]): string {
       '">' +
       photoHtml +
       '<span class="checkin-by-name">' +
-      escapeHtml(member.FirstName + " " + member.LastName) +
+      escapeHtml(`${member.FirstName} ${member.LastName}`) +
       "</span>" +
       "</button>";
   }
@@ -899,7 +899,7 @@ function showCheckinByModal(personId: number, action: "checkin" | "checkout", pe
 
   // Fetch family members
   APIRequest({
-    path: "activeClassMember/" + personId + "/family",
+    path: `activeClassMember/${personId}/family`,
   })
     .done((data: FamilyMembersResponse) => {
       // Guard against unexpected API responses (defensive check for empty/malformed members array)

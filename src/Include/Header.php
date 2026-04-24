@@ -249,29 +249,19 @@ $MenuFirst = 1;
           </div>
         </div>
 
-        <!-- Locale -->
-        <div class="nav-item dropdown ms-1">
-          <a class="nav-link px-0" data-bs-toggle="dropdown" href="#">
-            <i class="fi fi-<?= $localeInfo->getCountryFlagCode() ?> fi-squared"></i>
-            <?php if ($localeInfo->shouldShowTranslationBadge()) { ?>
-            <span class="badge bg-warning text-dark ms-1" title="<?= gettext('Translation incomplete') ?>">!</span>
-            <?php } ?>
+        <!-- Locale: flag links directly to the localization tab on the profile page -->
+        <?php
+        $flagCode    = $localeInfo->getCountryFlagCode();
+        $nativeName  = $localeInfo->getNativeName();
+        $englishName = $localeInfo->getName();
+        $hasNative   = $nativeName !== '' && $nativeName !== $englishName;
+        $localeUrl   = SystemURLs::getRootPath() . '/v2/user/' . AuthenticationManager::getCurrentUser()->getId() . '#tab-localization';
+        ?>
+        <div class="nav-item ms-1">
+          <a class="nav-link px-0" href="<?= $localeUrl ?>"
+             title="<?= InputUtils::escapeAttribute($hasNative ? $nativeName . ' — ' . $englishName : $englishName) ?>">
+            <i class="fi fi-<?= $flagCode ?> fi-squared"></i>
           </a>
-          <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-            <span class="dropdown-item disabled">
-              <i class="fi fi-<?= $localeInfo->getCountryFlagCode() ?> me-2"></i>
-              <?= $localeInfo->getName() ?> [<?= $localeInfo->getLocale() ?>]
-              <?php if ($localeInfo->shouldShowTranslationPercentage()) { ?>
-              <span class="badge bg-<?= $localeInfo->getTranslationPercentage() < 90 ? 'warning' : 'success' ?> ms-1">
-                <?= $localeInfo->getTranslationPercentage() ?>%
-              </span>
-              <?php } ?>
-            </span>
-            <div class="dropdown-divider"></div>
-            <a href="https://poeditor.com/join/project?hash=RABdnDSqAt" class="dropdown-item" target="_blank">
-              <i class="ti ti-users me-2"></i><?= gettext("Help translate this project") ?>
-            </a>
-          </div>
         </div>
 
         <!-- Cart -->

@@ -159,7 +159,15 @@ class AvatarLoader {
     if (img.classList.contains("photo-small")) return 85;
     if (img.classList.contains("photo-medium")) return 100;
     if (img.classList.contains("photo-large")) return 200;
-    if (img.classList.contains("photo-profile")) return 200;
+    if (img.classList.contains("photo-profile")) {
+      // Render at actual displayed size × devicePixelRatio so initials stay crisp
+      // on HiDPI screens and on wide cards (e.g. 300px+ family photo). Cap at 600
+      // to keep the PNG payload reasonable.
+      const rect = img.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      const target = Math.ceil(Math.max(rect.width, rect.height, 120) * dpr);
+      return Math.min(600, target);
+    }
 
     // Default size
     return 100;
@@ -219,6 +227,12 @@ class AvatarLoader {
       }
     }
     // No button found — normal on list/dashboard pages where no view-larger-image button exists
+
+    // Show/hide the inline overlay icon button (inside the photo container)
+    const overlay = img.closest(".position-relative")?.querySelector<HTMLElement>(".photo-view-overlay");
+    if (overlay) {
+      overlay.classList.toggle("d-none", !hasPhoto);
+    }
   }
 
   /**
@@ -396,7 +410,9 @@ class AvatarLoader {
    */
   private loadAllImages(): void {
     const images = document.querySelectorAll<HTMLImageElement>("[data-image-entity-type]");
-    images.forEach((img) => this.loadAvatar(img));
+    images.forEach((img) => {
+      this.loadAvatar(img);
+    });
   }
 
   /**
@@ -407,7 +423,7 @@ class AvatarLoader {
 
     if (this.observer) {
       images.forEach((img) => {
-        this.observer!.observe(img);
+        this.observer?.observe(img);
       });
     } else {
       this.loadAllImages();
@@ -435,7 +451,7 @@ class AvatarLoader {
       const images = document.querySelectorAll<HTMLImageElement>("[data-image-entity-type]");
       images.forEach((img) => {
         if (!img.src || img.src.includes("data:")) {
-          this.observer!.observe(img);
+          this.observer?.observe(img);
         }
       });
     } else {
@@ -484,6 +500,22 @@ document.addEventListener("click", (e) => {
     const familyId = target.dataset.familyId;
     if (familyId) showLightbox("family", parseInt(familyId, 10));
   }
+});
+
+// Delegated click handler for the inline overlay magnifying-glass button on profile pages.
+document.addEventListener("click", (e) => {
+  const btn = (e.target as HTMLElement).closest<HTMLElement>(".photo-view-overlay");
+  if (!btn) return;
+
+  e.preventDefault();
+  e.stopPropagation();
+
+  const showLightbox = (window as any).CRM?.showPhotoLightbox;
+  if (!showLightbox) return;
+
+  const type = btn.dataset.entityType;
+  const id = btn.dataset.entityId;
+  if (type && id) showLightbox(type, parseInt(id, 10));
 });
 
 // Auto-initialize when DOM is ready

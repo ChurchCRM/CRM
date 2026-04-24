@@ -240,29 +240,90 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         return $renderer->render($response, 'debug.php', $pageArgs);
     });
 
-    // Email Debug page
+    // Email Debug page — sends a test message to the church's own email
+    // address so an admin can confirm the SMTP settings work end-to-end.
     $group->get('/debug/email', function (Request $request, Response $response): Response {
         $renderer = new PhpRenderer(__DIR__ . '/../../v2/templates/email/');
-        $message = '';
 
-        if (empty(SystemConfig::getValue('sSMTPHost'))) {
-            $message = gettext('SMTP Host is not setup, please visit the settings page');
-        } elseif (empty(ChurchMetaData::getChurchEmail())) {
-            $message = gettext('Church Email not set, please visit the settings page');
-        } else {
-            $email = new TestEmail([ChurchMetaData::getChurchEmail()]);
+        $configError = null;
+        $configErrorFixUrl = null; // page where the setting actually lives
+        $churchEmail = ChurchMetaData::getChurchEmail();
+        if (!SystemConfig::getBooleanValue('bEnabledEmail')) {
+            $configError = gettext('Email is disabled. Enable it in the Email Dashboard settings before testing.');
+            $configErrorFixUrl = SystemURLs::getRootPath() . '/v2/email/dashboard?settings=open';
+        } elseif (empty(SystemConfig::getValue('sSMTPHost'))) {
+            $configError = gettext('SMTP Host is not configured.');
+            $configErrorFixUrl = SystemURLs::getRootPath() . '/v2/email/dashboard?settings=open';
+        } elseif (empty($churchEmail)) {
+            // Church email is configured on the Church Information page, not
+            // the Email Dashboard — point the admin at the right page.
+            $configError = gettext('Church Email address is not set — the test email has nowhere to go.');
+            $configErrorFixUrl = SystemURLs::getRootPath() . '/admin/system/church-info';
+        }
+
+        // Gather SMTP settings up-front so the page can render them even when
+        // we abort before the send (config errors) — admins still get the
+        // summary of what IS configured.
+        $smtpSettings = [
+            'host'     => SystemConfig::getValue('sSMTPHost') ?: '(not set)',
+            'secure'   => SystemConfig::getValue('sPHPMailerSMTPSecure') ?: gettext('(none)'),
+            'auth'     => SystemConfig::getBooleanValue('bSMTPAuth') ? gettext('Yes') : gettext('No'),
+            'username' => SystemConfig::getBooleanValue('bSMTPAuth') ? SystemConfig::getValue('sSMTPUser') : null,
+            'autoTLS'  => SystemConfig::getBooleanValue('bPHPMailerAutoTLS') ? gettext('Yes') : gettext('No'),
+            'timeout'  => SystemConfig::getIntValue('iSMTPTimeout') . 's',
+        ];
+
+        $sendResult = [
+            'attempted' => false,
+            'success'   => false,
+            'error'     => null,
+            'debugLog'  => '',
+            'from'      => null,
+            'fromName'  => null,
+            'to'        => null,
+        ];
+
+        if ($configError === null) {
+            $email = new TestEmail([$churchEmail]);
+            $sendResult['attempted'] = true;
+            $sendResult['from']     = $churchEmail;
+            $sendResult['fromName'] = ChurchMetaData::getChurchName();
+            $sendResult['to']       = $churchEmail;
+
+            // Capture PHPMailer's HTML debug output (Debugoutput='html' echoes
+            // directly during send) so we can show it inline instead of bleeding
+            // into the rendered page.
+            ob_start();
+            try {
+                $sendResult['success'] = $email->send();
+            } catch (\Throwable $e) {
+                $sendResult['success'] = false;
+                $sendResult['error']   = $e->getMessage();
+            }
+            $sendResult['debugLog'] = ob_get_clean() ?: '';
+
+            if (!$sendResult['success'] && empty($sendResult['error'])) {
+                $sendResult['error'] = $email->getError();
+            }
         }
 
         $pageArgs = [
-            'sRootPath'  => SystemURLs::getRootPath(),
-            'sPageTitle' => gettext('Debug Email Connection'),
+            'sRootPath'    => SystemURLs::getRootPath(),
+            'sPageTitle'   => gettext('Email Debug'),
+            'sPageSubtitle' => gettext('Send a test message to verify your SMTP configuration'),
             'aBreadcrumbs' => PageHeader::breadcrumbs([
                 [gettext('Admin'), '/admin/'],
-                [gettext('Debug'), '/admin/system/debug'],
-                [gettext('Email')],
+                [gettext('Email Dashboard'), '/v2/email/dashboard'],
+                [gettext('Debug')],
             ]),
-            'mailer'     => $email,
-            'message'    => $message,
+            'configError'  => $configError,
+            'configErrorFixUrl' => $configErrorFixUrl,
+            'smtpSettings' => $smtpSettings,
+            'sendResult'   => $sendResult,
+            // ?settings=open matches the dashboard tile behavior — opens the
+            // settings panel so the admin lands directly on the fields they
+            // need to edit, not the dashboard landing view.
+            'emailDashboardUrl' => SystemURLs::getRootPath() . '/v2/email/dashboard?settings=open',
         ];
 
         return $renderer->render($response, 'debug.php', $pageArgs);

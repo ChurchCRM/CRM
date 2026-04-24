@@ -111,7 +111,7 @@ require_once __DIR__ . '/Include/Header.php';
       <input type="hidden" name="NoteID" value="<?= $iNoteID ?>">
 
       <div class="mb-3">
-        <?= getQuillEditorContainer('NoteText', 'NoteTextInput', $sNoteText, 'w-100', '300px') ?>
+        <?= getQuillEditorContainer('NoteText', 'NoteTextInput', $sNoteText, 'w-100', 'tall') ?>
         <?= $sNoteTextError ?>
       </div>
 

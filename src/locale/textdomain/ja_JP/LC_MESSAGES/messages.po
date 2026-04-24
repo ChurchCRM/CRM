@@ -632,10 +632,6 @@ msgid "Save Changes"
 msgstr "変更内容を保存"
 
 #: 
-msgid "Church Event Editor"
-msgstr "教会イベントエディター"
-
-#: 
 msgid "Edit Event Type"
 msgstr "イベントタイプを編集"
 
@@ -701,20 +697,8 @@ msgid "Create Event"
 msgstr "イベント作成"
 
 #: 
-msgid "Create a new Event"
-msgstr "新しいイベントを作成"
-
-#: 
-msgid "Select your event type"
-msgstr "イベントタイプを選択"
-
-#: 
 msgid "Event Status"
 msgstr "イベント状況"
-
-#: 
-msgid "Return to Events"
-msgstr "イベントに戻る"
 
 #: 
 msgid "Sundays"
@@ -811,10 +795,6 @@ msgstr "メールアドレスが無効です"
 #: 
 msgid "Family Info"
 msgstr "家族情報"
-
-#: 
-msgid "Contact Info"
-msgstr "連絡先情報"
 
 #: 
 msgid "Envelope Info"
@@ -939,10 +919,6 @@ msgstr "値"
 #: 
 msgid "Edit Value"
 msgstr "値を編集"
-
-#: 
-msgid "Assign a New Property"
-msgstr "新しいプロパティを割り当て"
 
 #: 
 msgid "Assign"
@@ -1173,10 +1149,6 @@ msgid "Summary Data"
 msgstr "概要データ"
 
 #: 
-msgid "CSV"
-msgstr "CSV"
-
-#: 
 msgid "Back"
 msgstr "戻る"
 
@@ -1295,10 +1267,6 @@ msgstr "データファイル形式"
 #: 
 msgid "GPS Visualizer"
 msgstr "GPS ビジュアライザー"
-
-#: 
-msgid "Street Atlas USA"
-msgstr "Street Atlas USA"
 
 #: 
 msgid "Include families in the coordinate file"
@@ -1657,20 +1625,8 @@ msgid "Group"
 msgstr "グループ"
 
 #: 
-msgid "Option"
-msgstr "オプション"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "エラー: 重複"
-
-#: 
 msgid "Default"
 msgstr "デフォルト"
-
-#: 
-msgid "Duplicate name found."
-msgstr "重複した名前が見つかりました。"
 
 #: 
 msgid "Make Default"
@@ -1683,10 +1639,6 @@ msgstr "終了"
 #: 
 msgid "Add New"
 msgstr "新規追加"
-
-#: 
-msgid " by that name already exists."
-msgstr " という名前は既に存在します。"
 
 #: 
 msgid "Buyer Number Editor"
@@ -2340,18 +2292,6 @@ msgstr "数値が大きすぎます。-2147483648 から 2147483647 の間であ
 #: 
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "金額が大きすぎます。最大は $999999999.99 です"
-
-#: 
-msgid " Bold Italic"
-msgstr " 太字 斜体"
-
-#: 
-msgid " Italic"
-msgstr " 斜体"
-
-#: 
-msgid " Bold"
-msgstr " 太字"
 
 #: 
 msgid "Error making API Call to"
@@ -3162,10 +3102,6 @@ msgid "Security Group"
 msgstr "セキュリティグループ"
 
 #: 
-msgid "Security Groups"
-msgstr "セキュリティグループ"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "セキュリティグループエディタ"
 
@@ -3178,56 +3114,16 @@ msgid "Group Member Roles Editor"
 msgstr "グループメンバーの役割エディタ"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "人物カスタムリストオプション"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "人物カスタムリストオプション"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "人物カスタムリストオプションエディタ"
-
-#: 
-msgid "Custom List Option"
-msgstr "カスタムリストオプション"
-
-#: 
-msgid "Custom List Options"
-msgstr "カスタムリストオプション"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "カスタムリストオプションエディタ"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "家族カスタムリストオプション"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "家族カスタムリストオプション"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "家族カスタムリストオプションエディタ"
-
-#: 
-msgid "are not allowed."
-msgstr "は許可されていません。"
-
-#: 
-msgid "Name for New"
-msgstr "新規の名前"
-
-#: 
-msgid "Created via Family"
-msgstr "ファミリー経由で作成"
-
-#: 
-msgid "Updated via Family"
-msgstr "ファミリー経由で更新"
 
 #: 
 msgid "Family Data Verified"
@@ -5108,7 +5004,8 @@ msgid "Indonesian - Indonesia"
 msgstr "インドネシア語 - インドネシア"
 
 #: 
-msgid "records(s) successfully added to selected Group."
+#, fuzzy
+msgid "record(s) successfully added to selected Group."
 msgstr "件のレコードが選択したグループに正常に追加されました。"
 
 #: 
@@ -5138,10 +5035,6 @@ msgstr "新しい家族が追加されました"
 #: 
 msgid "Church Greeter"
 msgstr "教会の挨拶係"
-
-#: 
-msgid "External Calendar API is disabled"
-msgstr "外部カレンダーAPIが無効です"
 
 #: 
 msgid "Special Group Settings : Sunday School Type"
@@ -5420,7 +5313,8 @@ msgid "Remove All from Cart"
 msgstr "すべてをカートから削除"
 
 #: 
-msgid "records(s) successfully deleted from the selected Group."
+#, fuzzy
+msgid "record(s) successfully deleted from the selected Group."
 msgstr "件のレコードが選択したグループから正常に削除されました。"
 
 #: 
@@ -5448,14 +5342,6 @@ msgid "Added to group"
 msgstr "グループに追加されました"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "SMTPホストが設定されていません。設定ページにアクセスしてください"
-
-#: 
-msgid "Debug Email Connection"
-msgstr "メール接続をデバッグ"
-
-#: 
 msgid "This Family is Inactive"
 msgstr "この家族は非アクティブです"
 
@@ -5466,14 +5352,6 @@ msgstr "データベースがクリアされました。"
 #: 
 msgid "Anniversaries"
 msgstr "記念日"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "新しい家族通知メールエラー"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "新しい人物通知メールエラー"
 
 #: 
 msgid "View User"
@@ -5584,10 +5462,6 @@ msgid "Missing calendar access token"
 msgstr "カレンダーアクセストークンがありません"
 
 #: 
-msgid "Calendar access token not found"
-msgstr "カレンダーアクセストークンが見つかりません"
-
-#: 
 msgid "User must have Delete Records permission"
 msgstr "ユーザーにはレコード削除権限が必要です"
 
@@ -5658,10 +5532,6 @@ msgstr "は無効です"
 #: 
 msgid "Software Version"
 msgstr "ソフトウェア・バージョン"
-
-#: 
-msgid "Database Version"
-msgstr "データベースバージョン"
 
 #: 
 msgid "Application Prerequisites"
@@ -5923,10 +5793,6 @@ msgid "Mailchimp is not active"
 msgstr "Mailchimpがアクティブではありません"
 
 #: 
-msgid "Mailchimp"
-msgstr "Mailchimp"
-
-#: 
 msgid "Lists"
 msgstr "リスト"
 
@@ -6025,14 +5891,6 @@ msgid "Loading"
 msgstr "読み込み中"
 
 #: 
-msgid "Family Property Unassignment"
-msgstr "家族プロパティの割り当て解除"
-
-#: 
-msgid "Do you want to remove"
-msgstr "削除しますか"
-
-#: 
 msgid "Today's Birthdays"
 msgstr "今日の誕生日"
 
@@ -6067,10 +5925,6 @@ msgstr "無効な生年月日：誕生月または日がありません。"
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "無効な生年月日：誕生月と日がありません。"
-
-#: 
-msgid "System"
-msgstr "システム"
 
 #. Context: locales
 #: 
@@ -6158,10 +6012,6 @@ msgid "Not Subscribed"
 msgstr "購読していません"
 
 #: 
-msgid "property"
-msgstr "プロパティ"
-
-#: 
 msgid "Default Zip"
 msgstr "デフォルト郵便番号"
 
@@ -6199,10 +6049,6 @@ msgstr "名から1文字と姓から1文字"
 #: 
 msgid "Two characters from FirstName"
 msgstr "名から2文字"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "教会メールが設定されていません。設定ページにアクセスしてください"
 
 #. Context: locales
 #: 
@@ -6951,7 +6797,8 @@ msgid "Total Payments"
 msgstr "支払い合計"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payments?"
 msgstr "件の支払い？"
 
 #: 
@@ -6963,20 +6810,8 @@ msgid "Base URL"
 msgstr "ベースURL"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "ChurchCRMのインストール"
-
-#: 
 msgid "Copy"
 msgstr "コピー"
-
-#: 
-msgid "DSN"
-msgstr "DSN"
-
-#: 
-msgid "Database Server"
-msgstr "データベースサーバー"
 
 #: 
 msgid "Debug Info"
@@ -6985,14 +6820,6 @@ msgstr "デバッグ情報"
 #: 
 msgid "Document Root"
 msgstr "ドキュメントルート"
-
-#: 
-msgid "Email Configuration"
-msgstr "メール設定"
-
-#: 
-msgid "Email Debug Info"
-msgstr "メールデバッグ情報"
 
 #: 
 msgid "Filesystem Permissions"
@@ -7035,10 +6862,6 @@ msgid "PHP & Server Requirements"
 msgstr "PHPとサーバー要件"
 
 #: 
-msgid "PHP Configuration"
-msgstr "PHP設定"
-
-#: 
 msgid "Platform"
 msgstr "プラットフォーム"
 
@@ -7051,24 +6874,8 @@ msgid "SMTP Host"
 msgstr "SMTPホスト"
 
 #: 
-msgid "Server Information"
-msgstr "サーバー情報"
-
-#: 
-msgid "Software"
-msgstr "ソフトウェア"
-
-#: 
-msgid "System & Configuration"
-msgstr "システムと設定"
-
-#: 
 msgid "Tip:"
 msgstr "ヒント："
-
-#: 
-msgid "Valid Settings"
-msgstr "有効な設定"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7128,10 +6935,6 @@ msgid "Attendance Count Categories"
 msgstr "出席カウントカテゴリー"
 
 #: 
-msgid "Attendance Notes"
-msgstr "出席メモ"
-
-#: 
 msgid "Change Event"
 msgstr "イベントを変更"
 
@@ -7187,14 +6990,6 @@ msgstr "イベントを削除"
 msgid "Edit Event"
 msgstr "イベントを編集"
 
-#: 
-msgid "Editing Event"
-msgstr "イベントを編集中"
-
-#: 
-msgid "Enter event title..."
-msgstr "イベントタイトルを入力..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7245,14 +7040,6 @@ msgid "None (one-time event)"
 msgstr "なし（一回限りのイベント）"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "オプション - 説教ノートや追加イベント詳細を追加"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "出席に関するオプションのメモ..."
-
-#: 
 msgid "People Checked In"
 msgstr "チェックイン済みの人物"
 
@@ -7287,10 +7074,6 @@ msgstr "監督者を検索..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "チェックイン用のイベントを選択"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "説教/イベントテキスト"
 
 #: 
 msgid "Unclassified"
@@ -8082,10 +7865,6 @@ msgid "Orphaned Files:"
 msgstr "孤立ファイル："
 
 #: 
-msgid "PDF/CSV"
-msgstr "PDF/CSV"
-
-#: 
 msgid "Payment"
 msgstr "支払い"
 
@@ -8322,10 +8101,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "ベースURLがConfig.phpで設定されていません"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "ChurchCRMサポートされているロケール"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "SSH、FTP、またはホスティングコントロールパネルを介してサーバーに接続します"
 
@@ -8350,10 +8125,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "<strong>末尾のスラッシュ</strong>（/）で終わる"
 
 #: 
-msgid "Error:"
-msgstr "エラー："
-
-#: 
 msgid "Find the line:"
 msgstr "行を見つける："
 
@@ -8376,10 +8147,6 @@ msgstr "言語"
 #: 
 msgid "Local development:"
 msgstr "ローカル開発："
-
-#: 
-msgid "Locale Support"
-msgstr "ロケールサポート"
 
 #: 
 msgid "Location & Contact Information"
@@ -8745,10 +8512,6 @@ msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "%d人が選択したグループに正常に追加されました。"
 
 #: 
-msgid "A "
-msgstr "A "
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "削除してもよろしいですか"
 
@@ -8777,10 +8540,6 @@ msgid "Delete Confirmation"
 msgstr "削除の確認"
 
 #: 
-msgid "Existing"
-msgstr "既存"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "既存のカスタム世帯フィールド"
 
@@ -8803,10 +8562,6 @@ msgstr "無効な CSRF トークンです"
 #: 
 msgid "Invalid fields or selections."
 msgstr "無効なフィールドまたは選択があります。"
-
-#: 
-msgid "Item deleted successfully"
-msgstr "アイテムが正常に削除されました"
 
 #: 
 msgid "Move down"
@@ -8843,10 +8598,6 @@ msgstr "プロパティタイプ"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr "このボランティア機会に割り当てられている人物がいます。削除すると割り当てが解除されます:"
-
-#: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "これにより、現在割り当てられているすべての人物から削除されます。"
 
 #: 
 msgid "Volunteer Opportunity"
@@ -9212,10 +8963,6 @@ msgstr "アップグレードアーカイブを開けませんでした。ダウ
 #: 
 msgid "Failed to save the downloaded release file. Please check disk space and permissions."
 msgstr "ダウンロードしたリリースファイルの保存に失敗しました。ディスク容量と権限をご確認ください。"
-
-#: 
-msgid "Invalid date format in start parameter"
-msgstr "開始パラメータの日付形式が無効です"
 
 #: 
 msgid "Mismatch"
@@ -9677,10 +9424,6 @@ msgstr "リンクが見つかりません"
 #: 
 msgid "Loading recovery codes"
 msgstr "リカバリーコードを読み込み中"
-
-#: 
-msgid "MailChimp"
-msgstr "MailChimp"
 
 #: 
 msgid "MailChimp API Key"
@@ -10793,10 +10536,6 @@ msgid "CSV Column"
 msgstr "CSV列"
 
 #: 
-msgid "CSV template not found"
-msgstr "CSVテンプレートが見つかりません"
-
-#: 
 msgid "Call"
 msgstr "電話"
 
@@ -10871,10 +10610,6 @@ msgstr "列はChurchCRMフィールドに自動的にマッピングされまし
 #: 
 msgid "Community Management Platform"
 msgstr "コミュニティ管理プラットフォーム"
-
-#: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "Excel、Googleスプレッドシート、または任意のCSVエクスポートに対応。"
 
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
@@ -11049,10 +10784,6 @@ msgid "Download CSV Template"
 msgstr "CSVテンプレートをダウンロード"
 
 #: 
-msgid "Download the template to see the expected column format."
-msgstr "テンプレートをダウンロードして期待される列形式を確認してください。"
-
-#: 
 msgid "Drag and drop your CSV file here"
 msgstr "CSVファイルをここにドラッグ＆ドロップ"
 
@@ -11063,10 +10794,6 @@ msgstr "重複"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "各個人は独自のメールアドレスと携帯番号を持つことができます。"
-
-#: 
-msgid "Each row is one person. Members of the same family share a FamilyID."
-msgstr "各行は一人分です。同じ家族のメンバーは同じFamilyIDを共有します。"
 
 #: 
 msgid "Easy registration"
@@ -11489,10 +11216,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "日曜学校のクラス、教師、生徒の出席を管理"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "分類リスト、役割、グループタイプを管理"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "財務管理用の献金基金を管理"
 
@@ -11743,10 +11466,6 @@ msgstr "GitHub Issueを開く"
 #: 
 msgid "Open user menu"
 msgstr "ユーザーメニューを開く"
-
-#: 
-msgid "Options"
-msgstr "オプション"
 
 #: 
 msgid "Other Members"
@@ -12159,10 +11878,6 @@ msgid "Upload CSV"
 msgstr "CSVをアップロード"
 
 #: 
-msgid "Upload a CSV file to import families and people into ChurchCRM."
-msgstr "CSVファイルをアップロードして家族と個人をChurchCRMにインポートします。"
-
-#: 
 msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
 msgstr "Excel、Googleスプレッドシート、または以前の教会管理システムからCSVをアップロードし、列をChurchCRMフィールドにマッピングします。"
 
@@ -12385,10 +12100,6 @@ msgstr "メンバー"
 #: 
 msgid "opportunities"
 msgstr "機会"
-
-#: 
-msgid "options"
-msgstr "オプション"
 
 #: 
 msgid "or connect an external service"
@@ -12625,10 +12336,6 @@ msgstr "イベントチェックイン用のキオスクデバイスの登録と
 #: 
 msgid "Review & Delete"
 msgstr "確認して削除"
-
-#: 
-msgid "SHA1 Hash"
-msgstr "SHA1ハッシュ"
 
 #: 
 msgid "Signature Mismatch"
@@ -14568,10 +14275,6 @@ msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d 件の繰り返しイベントが正常に作成されました。"
 
 #: 
-msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
-msgstr "（例：会員、来訪者、子供）ボランティアがここで人数を記録できます。"
-
-#: 
 msgid "1. Sunday School Class"
 msgstr "1. 日曜学校クラス"
 
@@ -14592,10 +14295,6 @@ msgid "A class is a Group with type \"Sunday School\". It holds the students and
 msgstr "クラスは「日曜学校」タイプの奉仕グループです。生徒と教師（役割を持つ会員）が含まれます。"
 
 #: 
-msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
-msgstr "リンクされたグループは、このイベントをクラスまたはミニストリー名簿に結び付けます。イベントがKioskに割り当てられると、Kioskはグループメンバーを取得してタップでチェックインできるリストとして表示します。日曜学校のクラスの場合、ここにクラスグループをリンクすると、ボランティアがタブレットから生徒をチェックインできます。"
-
-#: 
 msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
 msgstr "特定の開催回（例：「幼稚科 — 4月12日」）。タイプからデフォルト値を継承し、参加者を通じてクラスグループに紐付けられます。ボランティアがこれに対して出席を記録します。"
 
@@ -14606,10 +14305,6 @@ msgstr "1つのイベントに割り当てられたタブレット。Kioskはイ
 #: 
 msgid "Add Walk-in / Visitor"
 msgstr "飛び込み参加者 / 来訪者を追加"
-
-#: 
-msgid "Add categories on the Event Type page"
-msgstr "イベントタイプページでカテゴリを追加"
 
 #: 
 msgid "Add people to your cart first, then come back to check them in to an event."
@@ -14658,10 +14353,6 @@ msgstr "監査"
 #: 
 msgid "Audit Events"
 msgstr "イベントの監査"
-
-#: 
-msgid "Auto-totalled from counts at right"
-msgstr "右側の集計から自動合計"
 
 #: 
 msgid "Back to Events"
@@ -14788,10 +14479,6 @@ msgid "Database dump only (.sql)"
 msgstr "データベースダンプのみ（.sql）"
 
 #: 
-msgid "Date Range"
-msgstr "日付範囲"
-
-#: 
 msgid "Date range cannot exceed 1 year"
 msgstr "日付範囲は1年を超えることはできません"
 
@@ -14872,10 +14559,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "イベントを作成しました。チェックインページにリダイレクトしています..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "イベントの終了日時は開始日時以降でなければなりません。"
-
-#: 
 msgid "Event title is required."
 msgstr "イベントタイトルは必須です。"
 
@@ -14902,10 +14585,6 @@ msgstr "イベントタイプに繰り返しパターンが設定されていま
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "イベントタイプに月次繰り返しの有効な日付が設定されていません"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "この日付範囲内の一致するすべての発生日にイベントが作成されます。"
 
 #: 
 msgid "Every month on the"
@@ -14956,10 +14635,6 @@ msgid "Group Roster"
 msgstr "グループ名簿"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "詳細オプションを非表示"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "日曜学校・イベント・Kioskの連携方法"
 
@@ -14970,10 +14645,6 @@ msgstr "%s の日付が無効です — YYYY-MM-DD 形式が必要です"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "rangeStart または rangeEnd の日付形式が無効です"
-
-#: 
-msgid "Invalid date format."
-msgstr "日付形式が無効です。"
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -15028,10 +14699,6 @@ msgid "No active events found."
 msgstr "アクティブなイベントが見つかりません。"
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "このイベントタイプにはまだ出席数カテゴリが定義されていません。"
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "このイベントにはまだ誰もチェックインしていません。"
 
@@ -15072,10 +14739,6 @@ msgid "Please select a person to check in."
 msgstr "チェックインする人を選択してください。"
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "このイベントタイプに基づいて事前入力されています。繰り返しタイプの場合、日付はこのタイプの最後のイベント後の次の発生日で、時刻はタイプのデフォルト開始時刻と一致します。"
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "終了日は開始日以降でなければなりません。"
 
@@ -15104,10 +14767,6 @@ msgid "Recommended"
 msgstr "推奨"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "Kioskに必須"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "リセットにより以下が完全に削除されます："
 
@@ -15126,14 +14785,6 @@ msgstr "このカテゴリ名の変更を保存"
 #: 
 msgid "Select an event type…"
 msgstr "イベントタイプを選択..."
-
-#: 
-msgid "Select start and end date/time."
-msgstr "開始と終了の日付/時刻を選択してください。"
-
-#: 
-msgid "Show More Options"
-msgstr "オプションをさらに表示"
 
 #: 
 msgid "Skip"
@@ -15176,16 +14827,8 @@ msgid "The Events module is disabled"
 msgstr "イベントモジュールが無効です"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "生成されるすべてのイベントに同じ開始時刻と終了時刻が使用されます。"
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "本日予定されているイベントはありません"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "これらは人数集計用のバケットです。ボランティアがイベント後に記入することで、ダッシュボードで出席の内訳（例：会員と来訪者の人数）を確認できます。チェックインページの個別チェックインとは別のものです。"
 
 #: 
 msgid "This event is inactive."
@@ -15240,16 +14883,8 @@ msgid "View Event"
 msgstr "イベントを表示"
 
 #: 
-msgid "What are these for?"
-msgstr "これらは何のためですか？"
-
-#: 
 msgid "What does this find?"
 msgstr "これは何を検索しますか？"
-
-#: 
-msgid "What is this for?"
-msgstr "これは何のためですか？"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15542,4 +15177,596 @@ msgstr "今後のイベント"
 #: 
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "件のイベント。代わりにタイプを無効化するか、最初にイベントを再割り当てしてください。"
+
+#: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "メールテンプレートに表示される教会ロゴの絶対 http(s) URL（将来的には他の場所でも再利用されます）。メールクライアント間で最適な表示を得るには、約 3.5:1 のアスペクト比（例：350×100 px）のワイドバナー画像を PNG または JPG 形式で HTTPS 経由で提供してください。空白のままにするか無効な値を入力すると、デフォルトの ChurchCRM ロゴにフォールバックします。"
+
+#: 
+msgid "An option with that name already exists"
+msgstr "その名前のオプションは既に存在します"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "最後に残ったオプションは削除できません"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "クリップボードが使用できません。ダウンロードボタンを使用してコードを保存してください。"
+
+#: 
+msgid "Custom Option"
+msgstr "カスタムオプション"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "デフォルトの受信トレイプレビューテキスト"
+
+#: 
+msgid "Email is disabled"
+msgstr "メールは無効です"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "メールは無効です。パスワードをリセットする前にメールを設定するか、パスワード変更をご使用ください。"
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "メールは無効です。テストを行う前に、メールダッシュボードの設定で有効にしてください。"
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "バックアップ回復コードのいずれかを入力してください"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "アカウントにアクセスするには、バックアップ回復コードのいずれかを入力してください"
+
+#: 
+msgid "Existing Options"
+msgstr "既存のオプション"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "このロールリストに対応するミニストリーが見つかりません"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "非アクティブ状態は分類リストに対してのみ切り替えできます"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "新しいユーザーには認証情報を含むウェルカムメールが送信されません。パスワードを手動でお知らせいただくか、先にメールを設定してください。"
+
+#: 
+msgid "Option name is required"
+msgstr "オプション名は必須です"
+
+#: 
+msgid "Option not found"
+msgstr "オプションが見つかりません"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "件名の横に受信トレイのプレビューテキストとして表示されるオプションの短い概要です。空白のままにすると、メールクライアントが本文から自動生成します。メールの種類ごと（パスワードリセット、新規信徒、確認）に独自のプレヘッダーが設定されており、これはフォールバックです。"
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "メールが設定されるまで、パスワードリセットメールおよび新規アカウントのウェルカムメールは送信されません。ユーザーは認証情報を自動的に受け取りません。"
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "メールが無効なため、パスワードリセットは利用できません。システム管理者にお問い合わせください。"
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "パスワードはリセットされましたが、メールを送信できませんでした。ユーザーはロックアウトされています。新しいパスワードを手動でお知らせいただくか、パスワード変更をご使用ください。"
+
+#: 
+msgid "Recovery Code"
+msgstr "回復コード"
+
+#: 
+msgid "Set up Email"
+msgstr "メールを設定する"
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "クリップボードにコピーできません。コードを手動でコピーしてください。"
+
+#: 
+msgid "Use Recovery Code"
+msgstr "回復コードを使用する"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "代わりに回復コードを使用する"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "代わりに認証アプリを使用する"
+
+#: 
+msgid "%d modules loaded"
+msgstr "%d 個のモジュールが読み込まれました"
+
+#: 
+msgid "(PHP default)"
+msgstr "(PHPデフォルト)"
+
+#: 
+msgid "(none)"
+msgstr "(なし)"
+
+#: 
+msgid "(not set)"
+msgstr "(未設定)"
+
+#: 
+msgid "All checks passing"
+msgstr "すべてのチェックが合格しています"
+
+#: 
+msgid "App"
+msgstr "アプリ"
+
+#: 
+msgid "Browser time zone differs:"
+msgstr "ブラウザのタイムゾーンが異なります:"
+
+#: 
+msgid "Calendar time zone:"
+msgstr "カレンダーのタイムゾーン:"
+
+#: 
+msgid "Cannot send test email"
+msgstr "テストメールを送信できません"
+
+#: 
+msgid "Charset"
+msgstr "文字セット"
+
+#: 
+msgid "Church Email address is not set — the test email has nowhere to go."
+msgstr "教会のメールアドレスが設定されていません — テストメールの送信先がありません。"
+
+#: 
+msgid "Church email — configured on the"
+msgstr "教会のメール — 設定場所:"
+
+#: 
+msgid "ChurchCRM Test Email"
+msgstr "ChurchCRM テストメール"
+
+#: 
+msgid "Collation"
+msgstr "照合順序"
+
+#: 
+msgid "Connection"
+msgstr "接続"
+
+#: 
+msgid "Database"
+msgstr "データベース"
+
+#: 
+msgid "Delivery"
+msgstr "配信"
+
+#: 
+msgid "Disk (Images Root)"
+msgstr "ディスク（画像ルート）"
+
+#: 
+msgid "Display Errors"
+msgstr "エラー表示"
+
+#: 
+msgid "Email Debug"
+msgstr "メールデバッグ"
+
+#: 
+msgid "Environment"
+msgstr "環境"
+
+#: 
+msgid "Error Log"
+msgstr "エラーログ"
+
+#: 
+msgid "Error Reporting"
+msgstr "エラーレポート"
+
+#: 
+msgid "Error:"
+msgstr "エラー:"
+
+#: 
+msgid "Fix Settings"
+msgstr "設定を修正"
+
+#: 
+msgid "Hit Rate"
+msgstr "ヒット率"
+
+#: 
+msgid "Host"
+msgstr "ホスト"
+
+#: 
+msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
+msgstr "数分以内にメッセージが届かない場合は、迷惑メールフォルダーと下記のSMTPデバッグログをご確認ください。"
+
+#: 
+msgid "If you can read this message in your inbox, your SMTP configuration is working correctly."
+msgstr "受信トレイでこのメッセージをお読みいただけた場合、SMTPの設定は正しく機能しています。"
+
+#: 
+msgid "Incomplete"
+msgstr "未完了"
+
+#: 
+msgid "Installed on Server"
+msgstr "サーバーにインストール済み"
+
+#: 
+msgid "Integrity"
+msgstr "整合性"
+
+#: 
+msgid "Issues detected"
+msgstr "問題が検出されました"
+
+#: 
+msgid "Loaded php.ini"
+msgstr "読み込まれたphp.ini"
+
+#: 
+msgid "Locale"
+msgstr "ロケール"
+
+#: 
+msgid "Max Execution Time"
+msgstr "最大実行時間"
+
+#: 
+msgid "Max POST Size"
+msgstr "最大POSTサイズ"
+
+#: 
+msgid "Max Upload Size"
+msgstr "最大アップロードサイズ"
+
+#: 
+msgid "Memory"
+msgstr "メモリ"
+
+#: 
+msgid "Memory Limit"
+msgstr "メモリ制限"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
+msgstr "受取人の受信トレイを確認して、配信をご確認ください。件名:"
+
+#: 
+msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
+msgstr "OPキャッシュが有効になっていません。有効にすると、PHPページの読み込みを低リスクで高速化できます。"
+
+#: 
+msgid "Off"
+msgstr "オフ"
+
+#: 
+msgid "On"
+msgstr "オン"
+
+#: 
+msgid "Open the email debug tester"
+msgstr "メールデバッグテスターを開く"
+
+#: 
+msgid "PHP Version"
+msgstr "PHPバージョン"
+
+#: 
+msgid "PHPMailer SMTP session"
+msgstr "PHPMailer SMTPセッション"
+
+#: 
+msgid "Prerequisites"
+msgstr "前提条件"
+
+#: 
+msgid "Review the SMTP debug log below for the handshake details, then adjust your settings."
+msgstr "ハンドシェイクの詳細については、以下のSMTPデバッグログを確認し、設定を調整してください。"
+
+#: 
+msgid "SMTP Configuration"
+msgstr "SMTP設定"
+
+#: 
+msgid "SMTP Debug Log"
+msgstr "SMTPデバッグログ"
+
+#: 
+msgid "SMTP Host is not configured."
+msgstr "SMTPホストが設定されていません。"
+
+#: 
+msgid "SMTP configuration test — if this arrived, your setup works."
+msgstr "SMTP設定テスト — このメールが届いた場合、設定は正常に動作しています。"
+
+#: 
+msgid "Schema Version"
+msgstr "スキーマバージョン"
+
+#: 
+msgid "Send Again"
+msgstr "再送信"
+
+#: 
+msgid "Send a test message to verify your SMTP configuration"
+msgstr "SMTP設定を確認するためのテストメッセージを送信"
+
+#: 
+msgid "Server"
+msgstr "サーバー"
+
+#: 
+msgid "Server Version"
+msgstr "サーバーバージョン"
+
+#: 
+msgid "Session Handler"
+msgstr "セッションハンドラー"
+
+#: 
+msgid "Session Save Path"
+msgstr "セッション保存パス"
+
+#: 
+msgid "Settings Valid"
+msgstr "設定が有効です"
+
+#: 
+msgid "Subject"
+msgstr "件名"
+
+#: 
+msgid "Test"
+msgstr "テスト"
+
+#: 
+msgid "Test email accepted by SMTP server"
+msgstr "テストメールがSMTPサーバーに受け付けられました"
+
+#: 
+msgid "Test email failed to send"
+msgstr "テストメールの送信に失敗しました"
+
+#: 
+msgid "This is a ChurchCRM test email."
+msgstr "これはChurchCRMのテストメールです。"
+
+#: 
+msgid "Timeout"
+msgstr "タイムアウト"
+
+#: 
+msgid "Timezone"
+msgstr "タイムゾーン"
+
+#: 
+msgid "Unable to list web server modules (non-Apache SAPI)."
+msgstr "Webサーバーモジュールを一覧表示できません（Apache以外のSAPI）。"
+
+#: 
+msgid "Update Settings"
+msgstr "設定を更新"
+
+#: 
+msgid "View full photo"
+msgstr "フル写真を表示"
+
+#: 
+msgid "page."
+msgstr "ページ。"
+
+#: 
+msgid "user:"
+msgstr "ユーザー:"
+
+#: 
+msgid "1. Download the template"
+msgstr "1. テンプレートをダウンロード"
+
+#: 
+msgid "2. Fill in your data"
+msgstr "2. データを入力"
+
+#: 
+msgid "3. Upload and map"
+msgstr "3. アップロードしてマッピング"
+
+#: 
+msgid "Add Recurring Event"
+msgstr "繰り返しイベントを追加"
+
+#: 
+msgid "Available after the event is saved."
+msgstr "イベントの保存後に利用可能です。"
+
+#: 
+msgid "Boolean properties/fields accept yes / no / true / false / 1 / 0."
+msgstr "ブール型のプロパティ/フィールドは yes / no / true / false / 1 / 0 を受け付けます。"
+
+#: 
+msgid "ChurchCRM auto-matches each column by name. Anything it cannot match is marked as Unmapped — pick a field or leave it as Ignore."
+msgstr "ChurchCRMは各列を名前で自動的にマッチングします。マッチングできない列は「未マッピング」と表示されます — フィールドを選択するか、「無視」のままにしてください。"
+
+#: 
+msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
+msgstr "CSVファイルを解析できませんでした。ヘッダー行を含む有効なカンマ区切りファイルであることを確認してください。"
+
+#: 
+msgid "Custom field columns you have not configured are ignored — nothing is created on the fly."
+msgstr "設定されていないカスタムフィールドの列は無視されます — 動的に何も作成されません。"
+
+#: 
+msgid "Custom fields and properties are supported"
+msgstr "カスタムフィールドとプロパティがサポートされています"
+
+#: 
+msgid "Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a month and day with no year."
+msgstr "日付フィールドはYYYY-MM-DDまたはM/D/YYYY形式を受け付けます。年なしの月と日には0000-MM-DDまたはM/Dを使用してください。"
+
+#: 
+msgid "Each row is one person. People in the same family share a FamilyID. Leave columns blank when you have no value for them."
+msgstr "各行は1人の人物です。同じ家族の人々は同じFamilyIDを共有します。値がない列は空欄のままにしてください。"
+
+#: 
+msgid "Event Timing"
+msgstr "イベントのタイミング"
+
+#: 
+msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
+msgstr "「開始日」から「終了日」の間のすべての該当する出現には、同じ開始/終了時刻で独自のイベントが作成されます。"
+
+#: 
+msgid "External calendar sharing is disabled"
+msgstr "外部カレンダー共有が無効になっています"
+
+#: 
+msgid "Failed to load event editor. Please refresh and try again."
+msgstr "イベントエディターを読み込めませんでした。ページを更新して再度お試しください。"
+
+#: 
+msgid "Family Custom"
+msgstr "家族カスタム"
+
+#: 
+msgid "Family Property"
+msgstr "家族プロパティ"
+
+#: 
+msgid "Fields"
+msgstr "フィールド"
+
+#: 
+msgid "Go to home"
+msgstr "ホームへ移動"
+
+#: 
+msgid "Hide advanced options"
+msgstr "詳細オプションを非表示"
+
+#: 
+msgid "How the CSV Import Works"
+msgstr "CSVインポートの仕組み"
+
+#: 
+msgid "Imported from CSV"
+msgstr "CSVからインポート済み"
+
+#: 
+msgid "Invalid date format"
+msgstr "無効な日付形式"
+
+#: 
+msgid "Loading event editor…"
+msgstr "イベントエディターを読み込み中…"
+
+#: 
+msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
+msgstr "カレンダーが選択されていません — このイベントは保存されますが、カレンダービューには表示されません。"
+
+#: 
+msgid "No group"
+msgstr "グループなし"
+
+#: 
+msgid "Not pinned to any calendar"
+msgstr "カレンダーに固定されていません"
+
+#: 
+msgid "Optional — sermon notes, materials, or other details copied to every generated event."
+msgstr "任意 — 説教のメモ、資料、またはその他の詳細が生成されたすべてのイベントにコピーされます。"
+
+#: 
+msgid "Person / Family"
+msgstr "個人 / 家族"
+
+#: 
+msgid "Person Custom"
+msgstr "個人カスタム"
+
+#: 
+msgid "Person Property"
+msgstr "個人プロパティ"
+
+#: 
+msgid "Show more options"
+msgstr "さらにオプションを表示"
+
+#: 
+msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
+msgstr "カレンダーリンクが不完全です。送信者にURLをご確認ください。"
+
+#: 
+msgid "The church administrator has not enabled external calendar sharing. Please contact them if you believe this is in error."
+msgstr "教会の管理者が外部カレンダー共有を有効にしていません。誤りと思われる場合は管理者にお問い合わせください。"
+
+#: 
+msgid "The start or end date in the link could not be understood. Try the base calendar link without date parameters."
+msgstr "リンクの開始日または終了日を解読できませんでした。日付パラメーターなしのベースカレンダーリンクをお試しください。"
+
+#: 
+msgid "The template already contains every column you can map — the core Person/Family fields plus each custom field and property your site defines."
+msgstr "テンプレートには、マッピング可能なすべての列（コアの個人/家族フィールドおよびサイトで定義した各カスタムフィールドとプロパティ）がすでに含まれています。"
+
+#: 
+msgid "The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically."
+msgstr "テンプレートには、すべての個人/家族カスタムフィールドと定義したすべてのプロパティの列がすでに含まれています。列を手動で追加する場合は、列ヘッダーにカスタムフィールドまたはプロパティの正確な名前を使用するとインポーターが自動的にマッチングします。"
+
+#: 
+msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
+msgstr "このカレンダーリンクは無効または取り消されています。教会に最新のリンクをお問い合わせください。"
+
+#: 
+msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
+msgstr "このイベントをクラスまたはミニストリー名簿に関連付けます — キオスクのチェックインフローで使用されます。"
+
+#: 
+msgid "Upload a CSV to create families and people in bulk."
+msgstr "CSVをアップロードして、家族と人物を一括作成します。"
+
+#: 
+msgid "Volunteer-entered headcounts, broken down by category."
+msgstr "ボランティアが入力した、カテゴリ別の参加者数。"
+
+#: 
+msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
+msgstr "CSVに重複した列名があります。重複している列の名前を変更し（例: 2番目に「(2)」を追加）、再度アップロードしてください。"
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "この寄付品を完全に削除してもよろしいですか？"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "このパドル番号を完全に削除してもよろしいですか？"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "寄付品を削除"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "パドル番号を削除"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "セキュリティトークンが無効です。もう一度お試しください。"
 

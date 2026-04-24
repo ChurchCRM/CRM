@@ -9,6 +9,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\PersonService;
+use ChurchCRM\Service\PropertyService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\DateTimeUtils;
@@ -96,7 +97,8 @@ $sSQL ="SELECT a.*, family_fam.*, COALESCE(cls.lst_OptionName , 'Unassigned') AS
 $rsPerson = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsPerson));
 
-$assignedProperties = $person->getProperties();
+$assignedPersonProperties = PropertyService::getAssigned($person);
+$allPersonProperties = PropertyService::getAll($person);
 
 // Get the lists of custom person fields
 $sSQL = 'SELECT person_custom_master.* FROM person_custom_master
@@ -136,19 +138,6 @@ $rsAssignedVolunteerOpps = RunQuery($sSQL);
 // Get all the volunteer opportunities
 $sSQL = 'SELECT vol_ID, vol_Name FROM volunteeropportunity_vol ORDER BY vol_Order';
 $rsVolunteerOpps = RunQuery($sSQL);
-
-// Get the Properties assigned to this Person
-$sSQL ="SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
-FROM record2property_r2p
-LEFT JOIN property_pro ON pro_ID = r2p_pro_ID
-LEFT JOIN propertytype_prt ON propertytype_prt.prt_ID = property_pro.pro_prt_ID
-WHERE pro_Class = 'p' AND r2p_record_ID =" . $iPersonID .
-    ' ORDER BY prt_Name, pro_Name';
-$rsAssignedProperties = RunQuery($sSQL);
-
-// Get all the properties
-$sSQL ="SELECT * FROM property_pro WHERE pro_Class = 'p' ORDER BY pro_Name";
-$rsProperties = RunQuery($sSQL);
 
 // Get Field Security List Matrix
 $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 5 ORDER BY lst_OptionSequence';
@@ -216,10 +205,18 @@ $bOkToEdit = (
             <div class="card-body p-0">
                 <div class="d-flex">
                     <!-- Photo (left) — click to upload -->
-                    <div class="flex-shrink-0 position-relative" style="width: 120px; min-height: 120px;">
+                    <div class="flex-shrink-0 position-relative" style="width: 120px; aspect-ratio: 1 / 1;">
                         <a href="#" id="uploadImageButton" class="d-block w-100 h-100" title="<?= $bOkToEdit ? gettext("Click to upload photo") : gettext("View Photo") ?>">
-                            <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="w-100 h-100 object-fit-cover" style="border-radius: var(--tblr-border-radius) 0 0 var(--tblr-border-radius);">
+                            <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="photo-profile w-100 h-100 object-fit-cover" style="border-radius: var(--tblr-border-radius) 0 0 var(--tblr-border-radius);">
                         </a>
+                        <button type="button"
+                                class="photo-view-overlay btn btn-sm position-absolute bottom-0 end-0 m-1 d-none"
+                                data-entity-type="person"
+                                data-entity-id="<?= $person->getId() ?>"
+                                title="<?= gettext('View full photo') ?>"
+                                aria-label="<?= gettext('View full photo') ?>">
+                            <i class="fa-solid fa-magnifying-glass" aria-hidden="true" style="color:white; text-shadow: 0 1px 3px rgba(0,0,0,.8);"></i>
+                        </button>
                     </div>
                     <!-- Attributes (right) -->
                     <div class="p-3 flex-grow-1">
@@ -452,67 +449,62 @@ $bOkToEdit = (
                 <h3 class="card-title"><?= gettext('Properties') ?></h3>
             </div>
             <div class="card-body">
-                <?php
-                $sAssignedProperties = ','; ?>
-                <?php if (mysqli_num_rows($rsAssignedProperties) === 0) : ?>
+                <?php if (count($assignedPersonProperties) === 0) : ?>
                     <div class="text-center text-muted py-3">
                         <i class="fa-solid fa-tags fa-2x mb-2 d-block opacity-50"></i>
                         <p class="mb-0"><?= gettext('No properties assigned.') ?></p>
                     </div>
                 <?php else : ?>
                     <div class="list-group list-group-flush">
-                        <?php while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
-                            $pro_Prompt = '';
-                            $r2p_Value = '';
-                            extract($aRow); ?>
+                        <?php foreach ($assignedPersonProperties as $rp) {
+                            $prop = $rp->getProperty();
+                            $propType = $prop->getPropertyType();
+                            $value = $rp->getPropertyValue(); ?>
                             <div class="list-group-item px-0 d-flex align-items-center">
                                 <div class="me-auto">
-                                    <strong><?= InputUtils::escapeHTML($pro_Name) ?></strong>
-                                    <span class="badge bg-secondary-lt text-secondary ms-1"><?= InputUtils::escapeHTML($prt_Name) ?></span>
-                                    <?php if (!empty($r2p_Value)) { ?>
-                                        <small class="text-muted d-block"><?= InputUtils::escapeHTML($r2p_Value) ?></small>
+                                    <strong><?= InputUtils::escapeHTML($prop->getProName()) ?></strong>
+                                    <?php if ($propType) { ?>
+                                        <span class="badge bg-secondary-lt text-secondary ms-1"><?= InputUtils::escapeHTML($propType->getPrtName()) ?></span>
+                                    <?php } ?>
+                                    <?php if (!empty($value)) { ?>
+                                        <small class="text-muted d-block"><?= InputUtils::escapeHTML($value) ?></small>
                                     <?php } ?>
                                 </div>
                                 <?php if ($bOkToEdit) { ?>
-                                    <button class="btn btn-sm btn-ghost-danger remove-property-btn" data-property_id="<?= (int)$pro_ID ?>" title="<?= gettext('Remove') ?>">
+                                    <button class="btn btn-sm btn-ghost-danger remove-property-btn" data-property_id="<?= (int) $prop->getProId() ?>" title="<?= gettext('Remove') ?>">
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
                                 <?php } ?>
                             </div>
-                        <?php
-                            $sAssignedProperties .= $pro_ID . ',';
-                        } ?>
+                        <?php } ?>
                     </div>
                 <?php endif; ?>
 
-                <?php if ($bOkToEdit && mysqli_num_rows($rsProperties) !== 0) : ?>
+                <?php if ($bOkToEdit && count($allPersonProperties) > 0) : ?>
                     <div class="mt-3 d-print-none">
-                        <form method="post" action="<?= SystemURLs::getRootPath() . '/api/properties/persons/assign' ?>" id="assign-property-form">
+                        <form method="post" id="assign-property-form">
                             <div class="mb-2">
                                 <select name="PropertyId" id="input-person-properties" class="form-select" data-placeholder="<?= gettext('Choose a property...') ?>">
                                     <option value=""></option>
                                     <?php
-                                    $assignedPropertiesArray = [];
-                                    foreach ($assignedProperties as $assignedProperty) {
-                                        $assignedPropertiesArray[] = $assignedProperty->getPropertyId();
+                                    $valueByPropId = [];
+                                    foreach ($assignedPersonProperties as $rp) {
+                                        $valueByPropId[(int) $rp->getProperty()->getProId()] = $rp->getPropertyValue();
                                     }
-                                    while ($aRow = mysqli_fetch_array($rsProperties)) {
-                                        extract($aRow);
-                                        $attributes = "value=\"{$pro_ID}\"";
-                                        if (!empty($pro_Prompt)) {
-                                            $pro_Value = '';
-                                            foreach ($assignedProperties as $assignedProperty) {
-                                                if ($assignedProperty->getPropertyId() === (int)$pro_ID) {
-                                                    $pro_Value = $assignedProperty->getPropertyValue();
-                                                }
-                                            }
-                                            $attributes .= " data-pro_Prompt=\"" . InputUtils::escapeAttribute($pro_Prompt) . "\" data-pro_Value=\"" . InputUtils::escapeAttribute($pro_Value) . "\"";
+                                    foreach ($allPersonProperties as $prop) {
+                                        $pid = (int) $prop->getProId();
+                                        $isAssigned = array_key_exists($pid, $valueByPropId);
+                                        $attrs = 'value="' . $pid . '"';
+                                        $prompt = $prop->getProPrompt();
+                                        if (!empty($prompt)) {
+                                            $attrs .= ' data-pro_Prompt="' . InputUtils::escapeAttribute($prompt) . '"';
+                                            $attrs .= ' data-pro_Value="' . InputUtils::escapeAttribute($valueByPropId[$pid] ?? '') . '"';
                                         }
-                                        $optionText = InputUtils::escapeHTML($pro_Name);
-                                        if (in_array($pro_ID, $assignedPropertiesArray)) {
-                                            $optionText = InputUtils::escapeHTML($pro_Name) . ' (' . gettext('assigned') . ')';
+                                        $optionText = InputUtils::escapeHTML($prop->getProName());
+                                        if ($isAssigned) {
+                                            $optionText .= ' (' . gettext('assigned') . ')';
                                         }
-                                        echo "<option {$attributes}>{$optionText}</option>";
+                                        echo "<option {$attrs}>{$optionText}</option>";
                                     } ?>
                                 </select>
                             </div>
@@ -643,9 +635,31 @@ $bOkToEdit = (
                     <div>
                         <i class="fa-solid fa-location-dot me-1 text-muted"></i>
                         <a href="https://maps.google.com/?q=<?= urlencode($plaintextMailingAddress) ?>" target="_blank" rel="noopener noreferrer"><?= $formattedMailingAddress ?></a>
-                        <?php $personDirectionsUrl = $person->getDirectionsUrl(); ?>
-                        <?php if (!empty($personDirectionsUrl)) : ?>
-                            <a href="<?= $personDirectionsUrl ?>" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-ghost-primary ms-2"><i class="fa-solid fa-diamond-turn-right me-1"></i><?= gettext('Directions') ?></a>
+                        <?php
+                        $personDirectionsUrl = $person->getDirectionsUrl();
+                        $personAppleDirectionsUrl = $person->getAppleMapsDirectionsUrl();
+                        ?>
+                        <?php if (!empty($personDirectionsUrl) || !empty($personAppleDirectionsUrl)) : ?>
+                            <div class="btn-group ms-2 directions-btn-group">
+                                <?php if (!empty($personDirectionsUrl)) : ?>
+                                    <a href="<?= $personDirectionsUrl ?>" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-ghost-primary"><i class="fa-solid fa-diamond-turn-right me-1"></i><?= gettext('Directions') ?></a>
+                                <?php endif; ?>
+                                <?php if (!empty($personAppleDirectionsUrl)) : ?>
+                                <button type="button" class="btn btn-sm btn-ghost-primary dropdown-toggle dropdown-toggle-split directions-provider-toggle d-none" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                    <span class="visually-hidden"><?= gettext('Choose map provider') ?></span>
+                                </button>
+                                <div class="dropdown-menu directions-provider-menu d-none">
+                                    <?php if (!empty($personDirectionsUrl)) : ?>
+                                        <a class="dropdown-item" href="<?= $personDirectionsUrl ?>" target="_blank" rel="noopener noreferrer">
+                                            <i class="fa-brands fa-google me-2"></i><?= gettext('Open in Google Maps') ?>
+                                        </a>
+                                    <?php endif; ?>
+                                    <a class="dropdown-item apple-maps-option" href="<?= $personAppleDirectionsUrl ?>" target="_blank" rel="noopener noreferrer">
+                                        <i class="fa-brands fa-apple me-2"></i><?= gettext('Open in Apple Maps') ?>
+                                    </a>
+                                </div>
+                                <?php endif; ?>
+                            </div>
                         <?php endif; ?>
                         <?php if (!empty($fam_ID) && !$familyHasCoords) : ?>
                             <button type="button" class="btn btn-sm btn-ghost-success ms-1" id="refresh-coordinates-btn" data-family-id="<?= $fam_ID ?>" title="<?= gettext('Refresh Coordinates') ?>">
@@ -693,7 +707,7 @@ $bOkToEdit = (
                     <!-- Plugin tabs will be dynamically added here by JavaScript -->
                     <li class="nav-item d-none" id="nav-item-mailchimp-container">
                         <a class="nav-link" id="nav-item-mailchimp" href="#mailchimp" data-bs-toggle="tab">
-                            <i class="fa-brands fa-mailchimp me-1"></i><?= gettext('Mailchimp') ?>
+                            <i class="fa-brands fa-mailchimp me-1"></i>Mailchimp
                         </a>
                     </li>
                 </ul>
@@ -701,7 +715,7 @@ $bOkToEdit = (
             <div class="card-body">
                 <div class="tab-content">
 
-                    <div class="tab-pane active" id="timeline">
+                    <div class="tab-pane active timeline-container" id="timeline">
                         <?php
                         $personTimeline = $timelineService->getForPerson($iPersonID);
                         if (empty($personTimeline)) { ?>
@@ -710,14 +724,46 @@ $bOkToEdit = (
                                 <span><?= gettext('No timeline events yet.') ?></span>
                             </div>
                         <?php } else {
-                            $currentYear = ''; ?>
+                            // Count each category so the filter chips can show
+                            // at-a-glance totals. Notes is the focus and is the
+                            // only category enabled by default on long timelines.
+                            $timelineCounts = ['notes' => 0, 'events' => 0, 'system' => 0];
+                            foreach ($personTimeline as $tlItem) {
+                                $cat = $tlItem['category'] ?? 'notes';
+                                if (isset($timelineCounts[$cat])) {
+                                    $timelineCounts[$cat]++;
+                                }
+                            }
+                            ?>
+                            <div class="timeline-filters d-flex flex-wrap align-items-center gap-2 mt-3 mb-1" role="group" aria-label="<?= gettext('Timeline filters') ?>">
+                                <span class="text-muted small me-1"><i class="fa-solid fa-filter me-1"></i><?= gettext('Show:') ?></span>
+                                <button type="button" class="btn btn-sm btn-primary timeline-filter-chip active" data-filter="notes">
+                                    <i class="fa-solid fa-note-sticky me-1"></i><?= gettext('Notes') ?>
+                                    <span class="badge bg-white text-primary ms-1"><?= $timelineCounts['notes'] ?></span>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary timeline-filter-chip" data-filter="events">
+                                    <i class="fa-solid fa-calendar-days me-1"></i><?= gettext('Events') ?>
+                                    <span class="badge bg-secondary-lt text-secondary ms-1"><?= $timelineCounts['events'] ?></span>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary timeline-filter-chip" data-filter="system">
+                                    <i class="fa-solid fa-gear me-1"></i><?= gettext('System') ?>
+                                    <span class="badge bg-secondary-lt text-secondary ms-1"><?= $timelineCounts['system'] ?></span>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-link ms-auto timeline-filter-all" data-filter="all">
+                                    <?= gettext('Show all') ?>
+                                </button>
+                            </div>
+                            <div class="timeline-empty-notice alert alert-info" style="display:none;">
+                                <i class="fa-solid fa-circle-info fa-fw me-1"></i><?= gettext('No matching entries for the selected filters.') ?>
+                            </div>
+                            <?php $currentYear = ''; ?>
                             <div class="timeline mt-3">
                                 <?php foreach ($personTimeline as $item) {
                                     if ($currentYear !== $item['year']) {
                                         $currentYear = $item['year']; ?>
-                                        <div class="hr-text"> <i class="fa-solid fa-calendar-days"></i> <?= $currentYear ?></div>
+                                        <div class="hr-text timeline-year" data-timeline-year="<?= htmlspecialchars((string)$currentYear) ?>"> <i class="fa-solid fa-calendar-days"></i> <?= $currentYear ?></div>
                                     <?php } ?>
-                                    <div class="timeline-event">
+                                    <div class="timeline-event" data-timeline-category="<?= htmlspecialchars($item['category'] ?? 'notes') ?>" data-timeline-year="<?= htmlspecialchars((string)$item['year']) ?>">
                                         <div class="timeline-event-icon bg-<?= $item['color'] ?>-lt text-<?= $item['color'] ?>">
                                             <i class="fa-solid <?= $item['style'] ?>"></i>
                                         </div>
@@ -1010,6 +1056,112 @@ $bOkToEdit = (
             });
         </script>
 
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+// Timeline category filter — show/hide timeline events based on the
+// active filter chips. Notes are the default active category; events and
+// system entries start hidden so long timelines stay skimmable.
+(function () {
+    function initTimelineFilter(container) {
+        if (!container) { return; }
+        var chips = container.querySelectorAll(".timeline-filter-chip");
+        var allChip = container.querySelector(".timeline-filter-all");
+        var events = container.querySelectorAll(".timeline-event[data-timeline-category]");
+        var years = container.querySelectorAll(".timeline-year");
+        var emptyNotice = container.querySelector(".timeline-empty-notice");
+        if (chips.length === 0 || events.length === 0) { return; }
+
+        var active = new Set(["notes"]);
+
+        function applyFilter() {
+            var showAll = active.has("all");
+            var visibleYears = {};
+            var anyVisible = false;
+            events.forEach(function (el) {
+                var cat = el.getAttribute("data-timeline-category") || "notes";
+                var visible = showAll || active.has(cat);
+                el.style.display = visible ? "" : "none";
+                if (visible) {
+                    anyVisible = true;
+                    var yr = el.getAttribute("data-timeline-year") || "";
+                    visibleYears[yr] = true;
+                }
+            });
+            years.forEach(function (y) {
+                var yr = y.getAttribute("data-timeline-year") || "";
+                y.style.display = visibleYears[yr] ? "" : "none";
+            });
+            if (emptyNotice) {
+                emptyNotice.style.display = anyVisible ? "none" : "";
+            }
+            chips.forEach(function (chip) {
+                var f = chip.getAttribute("data-filter");
+                var on = showAll || active.has(f);
+                chip.classList.toggle("btn-primary", on);
+                chip.classList.toggle("active", on);
+                chip.classList.toggle("btn-outline-secondary", !on);
+            });
+            if (allChip) {
+                allChip.classList.toggle("active", showAll);
+            }
+        }
+
+        chips.forEach(function (chip) {
+            chip.addEventListener("click", function () {
+                var f = chip.getAttribute("data-filter");
+                if (!f) { return; }
+                active.delete("all");
+                if (active.has(f)) {
+                    active.delete(f);
+                } else {
+                    active.add(f);
+                }
+                if (active.size === 0) {
+                    active.add("notes");
+                }
+                applyFilter();
+            });
+        });
+
+        if (allChip) {
+            allChip.addEventListener("click", function () {
+                active = new Set(["all"]);
+                applyFilter();
+            });
+        }
+
+        applyFilter();
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".timeline-container").forEach(initTimelineFilter);
+    });
+})();
+
+// Apple Maps is only offered on iOS devices — the Google Maps URL is the
+// universal default everywhere else. iPadOS 13+ reports as MacIntel, so we
+// check for a touch-capable Mac as a fallback heuristic.
+(function () {
+    function isAppleMobile() {
+        var ua = navigator.userAgent || "";
+        if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+            return true;
+        }
+        if (navigator.platform === "MacIntel" && typeof navigator.maxTouchPoints === "number" && navigator.maxTouchPoints > 1) {
+            return true;
+        }
+        return false;
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+        if (!isAppleMobile()) { return; }
+        document.querySelectorAll(".directions-provider-toggle").forEach(function (el) {
+            el.classList.remove("d-none");
+        });
+        document.querySelectorAll(".directions-provider-menu").forEach(function (el) {
+            el.classList.remove("d-none");
+        });
+    });
+})();
+</script>
 
 <?php
 require_once __DIR__ . '/Include/Footer.php';
