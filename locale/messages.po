@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-22 03:49+0000\n"
+"POT-Creation-Date: 2026-04-24 16:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,19 +21,7 @@ msgstr ""
 msgid "                                        Signature ________________________________________________________________"
 msgstr ""
 
-msgid " Bold"
-msgstr ""
-
-msgid " Bold Italic"
-msgstr ""
-
 msgid " Deposit #"
-msgstr ""
-
-msgid " Italic"
-msgstr ""
-
-msgid " Notification Email Error"
 msgstr ""
 
 msgid " characters long"
@@ -597,6 +585,10 @@ msgstr ""
 msgid "Address is required"
 msgstr ""
 
+#. plugin:holidays:summary
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr ""
+
 msgid "Admin"
 msgstr ""
 
@@ -996,6 +988,12 @@ msgstr ""
 msgid "Are you sure you want to move"
 msgstr ""
 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr ""
+
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr ""
+
 msgid "Are you sure you want to permanently delete this pledge record?"
 msgstr ""
 
@@ -1144,9 +1142,6 @@ msgid "Auto-Backup"
 msgstr ""
 
 msgid "Auto-Backup Interval"
-msgstr ""
-
-msgid "Auto-TLS"
 msgstr ""
 
 msgid "Auto-mapped"
@@ -1558,9 +1553,6 @@ msgstr ""
 msgid "CRM Members Not Subscribed"
 msgstr ""
 
-msgid "CSV"
-msgstr ""
-
 msgid "CSV Column"
 msgstr ""
 
@@ -1899,6 +1891,9 @@ msgid "Choose customer person field"
 msgstr ""
 
 msgid "Choose how you'd like to populate your database. You can always use a different method later."
+msgstr ""
+
+msgid "Choose map provider"
 msgstr ""
 
 msgid "Choose opportunities..."
@@ -2608,6 +2603,9 @@ msgstr ""
 msgid "Current Value"
 msgstr ""
 
+msgid "Current database"
+msgstr ""
+
 msgid "Current fiscal year"
 msgstr ""
 
@@ -2696,9 +2694,6 @@ msgstr ""
 
 #. Context: countries
 msgid "Côte d’Ivoire"
-msgstr ""
-
-msgid "DSN"
 msgstr ""
 
 msgid "Dark"
@@ -2907,6 +2902,9 @@ msgstr ""
 msgid "Delete Confirmation"
 msgstr ""
 
+msgid "Delete Donated Item"
+msgstr ""
+
 msgid "Delete Event"
 msgstr ""
 
@@ -2923,6 +2921,9 @@ msgid "Delete Family Record ONLY"
 msgstr ""
 
 msgid "Delete Group"
+msgstr ""
+
+msgid "Delete Paddle Number"
 msgstr ""
 
 msgid "Delete Person"
@@ -3000,6 +3001,9 @@ msgid "Demo data import is only available on fresh installations with exactly 1 
 msgstr ""
 
 msgid "Demo data imported successfully"
+msgstr ""
+
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
 msgstr ""
 
 msgid "Demo data loaded successfully"
@@ -3304,10 +3308,11 @@ msgstr ""
 msgid "ENE"
 msgstr ""
 
-msgid "ERROR"
+msgid "ESE"
 msgstr ""
 
-msgid "ESE"
+#. plugin:holidays:section:2:content
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
 msgstr ""
 
 msgid "Each person can have their own email and mobile number."
@@ -3780,19 +3785,10 @@ msgstr ""
 msgid "Error loading payments"
 msgstr ""
 
-msgid "Error making API Call to"
-msgstr ""
-
 msgid "Error saving deposit"
 msgstr ""
 
 msgid "Error sending email(s)"
-msgstr ""
-
-msgid "Error text"
-msgstr ""
-
-msgid "Error:"
 msgstr ""
 
 msgid "Error: Invalid Editor ID!"
@@ -4509,6 +4505,10 @@ msgstr ""
 msgid "Filtering"
 msgstr ""
 
+#. plugin:holidays:section:1:title
+msgid "Filtering by category"
+msgstr ""
+
 msgid "Filters"
 msgstr ""
 
@@ -5199,9 +5199,6 @@ msgstr ""
 msgid "Help on types.."
 msgstr ""
 
-msgid "Help translate this project"
-msgstr ""
-
 msgid "Here"
 msgstr ""
 
@@ -5224,10 +5221,15 @@ msgstr ""
 msgid "Hit Rate"
 msgstr ""
 
-msgid "Holiday"
+msgid "Holiday Settings"
 msgstr ""
 
-msgid "Holidays"
+#, php-format
+msgid "Holidays (%s)"
+msgstr ""
+
+#. plugin:holidays:section:1:content
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
 msgstr ""
 
 msgid "Home"
@@ -5399,6 +5401,9 @@ msgid "Import Demo Data"
 msgstr ""
 
 msgid "Import contacts from your MailChimp audiences"
+msgstr ""
+
+msgid "Import demo data anyway"
 msgstr ""
 
 msgid "Import failed"
@@ -5660,6 +5665,9 @@ msgid "Invalid person ID"
 msgstr ""
 
 msgid "Invalid request data"
+msgstr ""
+
+msgid "Invalid security token. Please try again."
 msgstr ""
 
 msgid "Invalid server URL format."
@@ -6165,9 +6173,6 @@ msgstr ""
 msgid "Madagascar (Madagasikara)"
 msgstr ""
 
-msgid "MailChimp"
-msgstr ""
-
 msgid "MailChimp API Key"
 msgstr ""
 
@@ -6185,9 +6190,6 @@ msgid "MailChimp is not configured"
 msgstr ""
 
 msgid "MailChimp, backups, and more"
-msgstr ""
-
-msgid "Mailchimp"
 msgstr ""
 
 msgid "Mailchimp Connected"
@@ -6611,6 +6613,9 @@ msgstr ""
 msgid "Missing people"
 msgstr ""
 
+msgid "Missing pledge identifier."
+msgstr ""
+
 #. Context: query_qry
 msgid "Missing pledges"
 msgstr ""
@@ -7016,6 +7021,9 @@ msgstr ""
 msgid "No core plugins found"
 msgstr ""
 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr ""
+
 msgid "No custom Family fields have been added yet"
 msgstr ""
 
@@ -7085,6 +7093,9 @@ msgstr ""
 
 #, php-format
 msgid "No matches for \"%s\". Try a different search term."
+msgstr ""
+
+msgid "No matching entries for the selected filters."
 msgstr ""
 
 msgid "No member properties defined."
@@ -7299,9 +7310,6 @@ msgstr ""
 msgid "OK"
 msgstr ""
 
-msgid "OPcache"
-msgstr ""
-
 msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
 msgstr ""
 
@@ -7393,7 +7401,16 @@ msgstr ""
 msgid "Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance."
 msgstr ""
 
+msgid "Open in Apple Maps"
+msgstr ""
+
+msgid "Open in Google Maps"
+msgstr ""
+
 msgid "Open in New Tab"
+msgstr ""
+
+msgid "Open in new tab"
 msgstr ""
 
 msgid "Open the email debug tester"
@@ -7522,14 +7539,8 @@ msgstr ""
 msgid "PDF successfully emailed to family members."
 msgstr ""
 
-msgid "PDF/CSV"
-msgstr ""
-
 #, php-format
 msgid "PDFs successfully emailed to %s families."
-msgstr ""
-
-msgid "PHP"
 msgstr ""
 
 msgid "PHP & Server Requirements"
@@ -8797,13 +8808,7 @@ msgstr ""
 msgid "S"
 msgstr ""
 
-msgid "SAPI"
-msgstr ""
-
 msgid "SE"
-msgstr ""
-
-msgid "SHA1 Hash"
 msgstr ""
 
 msgid "SMS Integration"
@@ -8894,10 +8899,6 @@ msgid "Sale Price"
 msgstr ""
 
 msgid "Salutation Utility"
-msgstr ""
-
-#. Context: locales
-msgid "Sami (Northern) (Sweden)"
 msgstr ""
 
 #. Context: countries
@@ -9315,6 +9316,10 @@ msgstr ""
 msgid "Setting saved"
 msgstr ""
 
+#. plugin:holidays:section:0:title
+msgid "Setting up countries"
+msgstr ""
+
 msgid "Setting updated successfully"
 msgstr ""
 
@@ -9366,6 +9371,9 @@ msgstr ""
 msgid "Show a breakdown of bill denominations on the deposit slip report"
 msgstr ""
 
+msgid "Show all"
+msgstr ""
+
 msgid "Show in"
 msgstr ""
 
@@ -9385,6 +9393,13 @@ msgid "Show or hide the Sunday School module in the sidebar navigation"
 msgstr ""
 
 msgid "Show/Hide Lost Password Link on the login screen"
+msgstr ""
+
+msgid "Show:"
+msgstr ""
+
+#. plugin:holidays:section:2:title
+msgid "Showing and hiding individual countries"
 msgstr ""
 
 #, php-format
@@ -9631,9 +9646,6 @@ msgstr ""
 msgid "Street Address"
 msgstr ""
 
-msgid "Street Atlas USA"
-msgstr ""
-
 msgid "Street address"
 msgstr ""
 
@@ -9746,12 +9758,19 @@ msgstr ""
 msgid "Sweden (Sverige)"
 msgstr ""
 
+#. Context: locales
+msgid "Swedish"
+msgstr ""
+
 #. Context: countries
 msgid "Switzerland (Schweiz)"
 msgstr ""
 
 #. Context: countries
 msgid "Syria (‫سوريا‬‎)"
+msgstr ""
+
+msgid "System"
 msgstr ""
 
 msgid "System Calendars"
@@ -10228,6 +10247,9 @@ msgstr ""
 msgid "Timeline"
 msgstr ""
 
+msgid "Timeline filters"
+msgstr ""
+
 msgid "Timeout"
 msgstr ""
 
@@ -10294,6 +10316,9 @@ msgid ""
 "4. Enter your username and password\n"
 "5. Optionally set an auto-backup interval in hours\n"
 "6. Save your settings"
+msgstr ""
+
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
 msgstr ""
 
 msgid "To stop receiving these emails, you can email"
@@ -10416,9 +10441,6 @@ msgid "Translating missing strings to improve coverage"
 msgstr ""
 
 msgid "Translation Progress"
-msgstr ""
-
-msgid "Translation incomplete"
 msgstr ""
 
 #. Context: countries
@@ -10771,6 +10793,10 @@ msgid "Use classification and family filters to generate reports for specific gr
 msgstr ""
 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
+msgstr ""
+
+#. plugin:holidays:section:0:content
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
 msgstr ""
 
 msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
@@ -11576,6 +11602,9 @@ msgstr ""
 msgid "Your current access levels (read-only)"
 msgstr ""
 
+msgid "Your database already contains data"
+msgstr ""
+
 msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
 msgstr ""
 
@@ -11683,9 +11712,6 @@ msgid "complete"
 msgstr ""
 
 msgid "data for member"
-msgstr ""
-
-msgid "date.timezone"
 msgstr ""
 
 msgid "day"
@@ -11829,9 +11855,6 @@ msgstr ""
 msgid "mos"
 msgstr ""
 
-msgid "name@example.com"
-msgstr ""
-
 msgid "needs to be picked up from"
 msgstr ""
 
@@ -11880,7 +11903,10 @@ msgstr ""
 msgid "payment(s)?"
 msgstr ""
 
-msgid "payments(s)?"
+msgid "payments?"
+msgstr ""
+
+msgid "people"
 msgstr ""
 
 msgid "people added to cart"
@@ -11909,13 +11935,13 @@ msgstr ""
 msgid "properties"
 msgstr ""
 
+msgid "record(s) successfully added to selected Group."
+msgstr ""
+
+msgid "record(s) successfully deleted from the selected Group."
+msgstr ""
+
 msgid "records"
-msgstr ""
-
-msgid "records(s) successfully added to selected Group."
-msgstr ""
-
-msgid "records(s) successfully deleted from the selected Group."
 msgstr ""
 
 msgid "s"

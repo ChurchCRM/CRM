@@ -348,6 +348,29 @@ class Person extends BasePerson implements PhotoInterface
         return GeoUtils::buildDirectionsUrl($family->getAddress());
     }
 
+    /**
+     * Apple Maps companion to {@see self::getDirectionsUrl()}. Mirrors the
+     * same address/lat/lng precedence rules so the two links resolve to the
+     * same destination.
+     */
+    public function getAppleMapsDirectionsUrl(): string
+    {
+        if (!empty($this->getAddress1())) {
+            return GeoUtils::buildAppleMapsDirectionsUrl($this->getAddress());
+        }
+
+        $family = $this->getFamily();
+        if ($family === null) {
+            return '';
+        }
+
+        if ($family->hasLatitudeAndLongitude()) {
+            return GeoUtils::buildAppleMapsDirectionsUrl('', (float) $family->getLatitude(), (float) $family->getLongitude());
+        }
+
+        return GeoUtils::buildAppleMapsDirectionsUrl($family->getAddress());
+    }
+
     public function deletePhoto(): bool
     {
         if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {
@@ -540,7 +563,11 @@ class Person extends BasePerson implements PhotoInterface
 
     public function preDelete(?ConnectionInterface $con = null): bool
     {
-        $this->deletePhoto();
+        // Remove the uploaded image from disk. Call Photo::delete() directly
+        // rather than $this->deletePhoto(), which gates on the current user's
+        // delete-records permission and writes a Note that NoteQuery below
+        // would immediately delete. See GH issue #1697.
+        $this->getPhoto()->delete();
 
         $obj = Person2group2roleP2g2rQuery::create()->filterByPerson($this)->find($con);
         if ($obj->count() > 0) {

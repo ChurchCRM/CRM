@@ -60,6 +60,27 @@ describe("Standard User Settings Page", () => {
             .should("exist");
     });
 
+    it("Populates locale dropdown grouped by region with native names", () => {
+        cy.visit("/v2/user/3");
+        cy.get('#settingsNav a[href="#tab-localization"]').click();
+        cy.get("#tab-localization").should("be.visible");
+
+        // Wait for async populateLocaleDropdown to complete
+        cy.get("#user-locale-setting optgroup", { timeout: 8000 }).should("have.length.greaterThan", 2);
+
+        // Region groups must be present
+        cy.get("#user-locale-setting optgroup[label='Americas']").should("exist");
+        cy.get("#user-locale-setting optgroup[label='Europe']").should("exist");
+
+        // Options must include locale code in brackets
+        cy.get("#user-locale-setting optgroup[label='Europe'] option").first()
+            .invoke("text")
+            .should("match", /\[.+\]$/);
+
+        // English (US) base locale must be present
+        cy.get("#user-locale-setting option[value='en_US']").should("exist");
+    });
+
     it("Navigates to API Access tab and shows API key", () => {
         cy.visit("/v2/user/3");
         cy.get('#settingsNav a[href="#tab-api"]').click();

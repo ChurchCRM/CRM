@@ -52,6 +52,13 @@ window.moveEventModal = {
   handleEventDrop: (info) => {
     const event = info.event;
     const revertFunc = info.revert;
+    // Fixed-date events (birthdays, anniversaries, holidays) have startEditable=false
+    // via per-event `editable: false`. Guard against any path that still fires the
+    // drop handler on them so the move-confirmation modal never appears. See #4835.
+    if (!event.startEditable) {
+      revertFunc();
+      return;
+    }
     const originalStart = info.oldEvent.start ? info.oldEvent.start.toLocaleString() : info.oldEvent.startStr;
     const newStart = event.start ? event.start.toLocaleString() : event.startStr;
     window.moveEventModal.revertFunc = revertFunc;
@@ -67,6 +74,10 @@ window.moveEventModal = {
   handleEventResize: (info) => {
     const event = info.event;
     const revertFunc = info.revert;
+    if (!event.durationEditable) {
+      revertFunc();
+      return;
+    }
     const originalEnd = info.oldEvent.end
       ? info.oldEvent.end.toLocaleString()
       : info.oldEvent.endStr || info.oldEvent.startStr;
@@ -502,7 +513,13 @@ function initializeCalendar() {
       } else if (eventData.editable || eventData.startEditable || eventData.durationEditable) {
         window.showEventForm(eventData);
       } else {
-        window.CRM.notify(`${i18next.t("Holiday")}: ${eventData.title}`, { type: "info", delay: 4000 });
+        const props = eventData.extendedProps || {};
+        const country = props.country || "";
+        const type = props.type ? props.type.charAt(0).toUpperCase() + props.type.slice(1) : "";
+        const parts = [eventData.title];
+        if (country) parts.push(country);
+        if (type) parts.push(type);
+        window.CRM.notify(parts.join(" · "), { type: "info", delay: 10000, close: true });
       }
     },
     loading: (isLoading) => {

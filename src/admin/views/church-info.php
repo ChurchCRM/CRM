@@ -242,19 +242,9 @@ $validationError     = $validationError ?? '';
                     <div class="row">
                         <div class="mb-3 col-md-4">
                             <label for="sLanguage"><?= gettext('Language') ?></label>
-                            <select class="form-select auto-tomselect" id="sLanguage" name="sLanguage" style="width: 100%;">
-                                <?php
-                                $supportedLocales = json_decode(file_get_contents(SystemURLs::getDocumentRoot() . '/locale/locales.json'), true);
-                                foreach ($supportedLocales as $locale => $localeData):
-                                    $label = gettext($locale);
-                                    $value = $localeData['locale'];
-                                ?>
-                                <option value="<?= InputUtils::escapeHTML($value) ?>"
-                                    <?= ($churchInfo['sLanguage'] === $value) ? 'selected' : '' ?>>
-                                    <?= InputUtils::escapeHTML($label) ?> [<?= InputUtils::escapeHTML($value) ?>]
-                                </option>
-                                <?php endforeach; ?>
-                            </select>
+                            <select class="form-select" id="sLanguage" name="sLanguage"
+                                data-selected-locale="<?= InputUtils::escapeAttribute($churchInfo['sLanguage']) ?>"
+                                style="width: 100%;"></select>
                             <small class="form-text text-muted">
                                 <?= gettext('System language for the church.') ?>
                             </small>

@@ -4,6 +4,7 @@ use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\AppIntegrityService;
+use ChurchCRM\Service\LocaleService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\VersionUtils;
@@ -18,7 +19,7 @@ $failingCount = count($failing);
 $orphanedFiles = AppIntegrityService::getOrphanedFiles();
 $orphanedCount = count($orphanedFiles);
 
-$localeInfo = AppIntegrityService::getLocaleSetupInfo();
+$localeInfo = LocaleService::getLocaleSetupInfo();
 $localeDetected = $localeInfo['systemLocaleDetected'];
 
 $serverTimezone = date_default_timezone_get();
@@ -118,18 +119,18 @@ $envPaths = [
     gettext('Document Root') => SystemURLs::getDocumentRoot(),
     gettext('Base URL')     => SystemURLs::getURL(),
     gettext('Images Root')  => SystemURLs::getImagesRoot(),
-    gettext('DSN')          => Bootstrapper::getDSN(),
+    'DSN'                   => Bootstrapper::getDSN(),
     gettext('Loaded php.ini') => php_ini_loaded_file() ?: gettext('(none)'),
     gettext('Error Log')    => ini_get('error_log') ?: gettext('(PHP default)'),
 ];
 
 $phpIni = [
-    gettext('SAPI')                  => php_sapi_name(),
+    'SAPI'                           => php_sapi_name(),
     gettext('Memory Limit')          => ini_get('memory_limit'),
     gettext('Max Execution Time')    => ini_get('max_execution_time') . 's',
     gettext('Max Upload Size')       => ini_get('upload_max_filesize'),
     gettext('Max POST Size')         => ini_get('post_max_size'),
-    gettext('date.timezone')         => ini_get('date.timezone') ?: gettext('(not set)'),
+    'date.timezone'                  => ini_get('date.timezone') ?: gettext('(not set)'),
     gettext('Display Errors')        => ini_get('display_errors') ? gettext('On') : gettext('Off'),
     gettext('Error Reporting')       => (string) ini_get('error_reporting'),
     gettext('Session Handler')       => ini_get('session.save_handler'),
@@ -178,7 +179,7 @@ $fmtBytes = static function ($bytes): string {
                     <li class="nav-item" role="presentation"><a class="nav-link active" id="env-app-tab" data-bs-toggle="tab" href="#env-app" role="tab"><?= gettext('App') ?></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" id="env-server-tab" data-bs-toggle="tab" href="#env-server" role="tab"><?= gettext('Server') ?></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" id="env-db-tab" data-bs-toggle="tab" href="#env-db" role="tab"><?= gettext('Database') ?></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" id="env-php-tab" data-bs-toggle="tab" href="#env-php" role="tab"><?= gettext('PHP') ?></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" id="env-php-tab" data-bs-toggle="tab" href="#env-php" role="tab">PHP</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" id="env-web-tab" data-bs-toggle="tab" href="#env-web" role="tab"><?= gettext('Web Server') ?></a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" id="env-locale-tab" data-bs-toggle="tab" href="#env-locale" role="tab"><?= gettext('Locale') ?></a></li>
                 </ul>
@@ -272,7 +273,7 @@ $fmtBytes = static function ($bytes): string {
                             </tbody>
                         </table>
 
-                        <h6 class="text-muted mt-3 mb-2"><?= gettext('OPcache') ?></h6>
+                        <h6 class="text-muted mt-3 mb-2">OPcache</h6>
                         <?php if ($opcacheEnabled && $opcacheStatus && !empty($opcacheStatus['opcache_enabled'])):
                             $hits = $opcacheStatus['opcache_statistics']['hits'] ?? 0;
                             $misses = $opcacheStatus['opcache_statistics']['misses'] ?? 0;

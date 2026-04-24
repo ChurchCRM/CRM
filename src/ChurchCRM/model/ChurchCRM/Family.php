@@ -97,6 +97,18 @@ class Family extends BaseFamily implements PhotoInterface
         }
     }
 
+    /**
+     * Ensure the family's uploaded photo is removed from disk whenever the
+     * record is deleted — on any code path, not just the API route.
+     * See GH issue #1697.
+     */
+    public function preDelete(?ConnectionInterface $con = null): bool
+    {
+        $this->getPhoto()->delete();
+
+        return parent::preDelete($con);
+    }
+
     public function getPeopleSorted(): array
     {
         $familyMembersParents = array_merge($this->getHeadPeople(), $this->getSpousePeople());
@@ -240,7 +252,7 @@ class Family extends BaseFamily implements PhotoInterface
                 $note->setText(gettext('Profile Image Deleted'));
                 $note->setType('photo');
                 $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
-                $note->setPerId($this->getId());
+                $note->setFamId($this->getId());
                 $note->save();
 
                 return true;
@@ -358,6 +370,19 @@ class Family extends BaseFamily implements PhotoInterface
             return GeoUtils::buildDirectionsUrl('', (float) $this->getLatitude(), (float) $this->getLongitude());
         }
         return GeoUtils::buildDirectionsUrl($this->getAddress());
+    }
+
+    /**
+     * Apple Maps companion to {@see self::getDirectionsUrl()}. Used
+     * alongside the Google Maps link so users on iOS/macOS can open
+     * directions natively in the Maps app.
+     */
+    public function getAppleMapsDirectionsUrl(): string
+    {
+        if ($this->hasLatitudeAndLongitude()) {
+            return GeoUtils::buildAppleMapsDirectionsUrl('', (float) $this->getLatitude(), (float) $this->getLongitude());
+        }
+        return GeoUtils::buildAppleMapsDirectionsUrl($this->getAddress());
     }
 
     /**

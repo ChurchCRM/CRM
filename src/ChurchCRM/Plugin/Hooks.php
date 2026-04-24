@@ -123,6 +123,13 @@ final class Hooks
     public const EVENT_CREATED = 'event.created';
 
     /**
+     * Filter: Allow plugins to contribute additional system calendars.
+     * Receives: SystemCalendar[] $calendars
+     * Returns: SystemCalendar[] Modified array of system calendars
+     */
+    public const SYSTEM_CALENDARS_REGISTER = 'systemcalendars.register';
+
+    /**
      * Action: Called after a person checks in to an event.
      * Receives: EventAttend $attendance, Event $event, Person $person
      */

@@ -7,6 +7,18 @@
  */
 
 document.addEventListener("DOMContentLoaded", () => {
+  // ── Language picker ─────────────────────────────────────────────────────
+  const langSelect = document.getElementById("sLanguage");
+  if (langSelect) {
+    const selected = langSelect.dataset.selectedLocale || "";
+    window.CRM.populateLocaleDropdown(langSelect, selected)
+      .then(() => {
+        if (window.TomSelect && !langSelect.tomselect) {
+          new window.TomSelect(langSelect, { allowEmptyOption: false, dropdownParent: "body" });
+        }
+      })
+      .catch((e) => console.error("Failed to load language options:", e));
+  }
   const countrySelect = document.getElementById("sChurchCountry");
   const stateContainer = document.getElementById("sChurchStateContainer");
   const defaultCountrySelect = document.getElementById("sDefaultCountry");
@@ -67,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     $.ajax({
       type: "GET",
-      url: window.CRM.root + "/api/public/data/countries/" + countryCode.toLowerCase() + "/states",
+      url: `${window.CRM.root}/api/public/data/countries/${countryCode.toLowerCase()}/states`,
     })
       .done((data) => {
         container.innerHTML = "";
@@ -94,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!countriesPromise) {
       countriesPromise = $.ajax({
         type: "GET",
-        url: window.CRM.root + "/api/public/data/countries",
+        url: `${window.CRM.root}/api/public/data/countries`,
       });
       countriesPromise.fail(() => {
         countriesPromise = null;
@@ -109,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const blankLabel = window.i18next ? i18next.t("— Select Country —") : "— Select Country —";
       $selectEl.append(new Option(blankLabel, ""));
 
-      $.each(data, (idx, country) => {
+      $.each(data, (_idx, country) => {
         const selected = selectedValue === country.code || selectedValue === country.name;
         $selectEl.append(new Option(country.name, country.code, selected, selected));
       });
@@ -197,7 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Copy country — set via TomSelect API, then update default state
       const churchCountryEl = document.getElementById("sChurchCountry");
       const defaultCountryEl = document.getElementById("sDefaultCountry");
-      if (churchCountryEl && defaultCountryEl && defaultCountryEl.tomselect) {
+      if (churchCountryEl && defaultCountryEl?.tomselect) {
         const countryCode = churchCountryEl.value;
         defaultCountryEl.tomselect.setValue(countryCode);
 
@@ -213,7 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ── Map initialization ────────────────────────────────────────────────────
 
-  if (window.L && window.CRM && window.CRM.churchMapConfig) {
+  if (window.L && window.CRM?.churchMapConfig) {
     const cfg = window.CRM.churchMapConfig;
 
     function initChurchMap() {
@@ -239,7 +251,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }).addTo(churchMap);
 
         window.L.marker([cfg.lat, cfg.lng])
-          .bindPopup("<strong>" + window.CRM.escapeHtml(cfg.name) + "</strong>")
+          .bindPopup(`<strong>${window.CRM.escapeHtml(cfg.name)}</strong>`)
           .addTo(churchMap);
 
         setTimeout(() => {
