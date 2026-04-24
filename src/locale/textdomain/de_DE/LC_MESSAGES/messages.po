@@ -2393,14 +2393,6 @@ msgstr "Nummer zu groß. Muss zwischen -2147483648 und 2147483647 liegen."
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Geldbetrag zu hoch. Höchstens EUR 999999999.99"
 
-#: 
-msgid "Error making API Call to"
-msgstr "Fehler beim API-Aufruf an"
-
-#: 
-msgid "Error text"
-msgstr "Fehlermeldung"
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -4680,11 +4672,6 @@ msgstr "Russisch"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "Samisch (Schweden)"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "Albanisch"
 
@@ -4967,10 +4954,6 @@ msgstr "System-Benutzeranmeldung zurücksetzen"
 #: 
 msgid "Notification for"
 msgstr "Benachrichtigung für"
-
-#: 
-msgid "ERROR"
-msgstr "FEHLER"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -5683,10 +5666,6 @@ msgid "LastName FirstName"
 msgstr "Nachname Vorname"
 
 #: 
-msgid "Holidays"
-msgstr "Ferien"
-
-#: 
 msgid "Person Name"
 msgstr "Personenname"
 
@@ -5869,10 +5848,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugal"
 
 #: 
-msgid "Holiday"
-msgstr "Feiertag"
-
-#: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Geben Sie den Anwendungsnamen an, der in der Authentifizierungsanwendung angezeigt werden soll"
 
@@ -6017,10 +5992,6 @@ msgstr "Text"
 #: 
 msgid "Event Description"
 msgstr "Ereignis Beschreibung"
-
-#: 
-msgid "Help translate this project"
-msgstr "Helfen Sie mit dieses Projekt zu übersetzen"
 
 #. Context: locales
 #: 
@@ -8458,10 +8429,6 @@ msgstr "Überprüfung absenden"
 #: 
 msgid "Thank You!"
 msgstr "Danke dir!"
-
-#: 
-msgid "Translation incomplete"
-msgstr "Übersetzung unvollständig"
 
 #: 
 msgid "Visit Our Website"
@@ -15527,10 +15494,6 @@ msgstr "Fehlerprotokoll"
 #: 
 msgid "Error Reporting"
 msgstr "Fehlerberichterstattung"
-
-#: 
-msgid "Error:"
-msgstr "Fehler:"
 
 #: 
 msgid "Fix Settings"

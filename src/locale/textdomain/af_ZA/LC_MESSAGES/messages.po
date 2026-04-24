@@ -2316,14 +2316,6 @@ msgstr "Getal te groot. Moet tussen -2147483648 en 2147483647 wees"
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Geldbedrag te groot. Maksimum is $ 999999999.99"
 
-#: 
-msgid "Error making API Call to"
-msgstr "Kon nie API-oproep maak nie"
-
-#: 
-msgid "Error text"
-msgstr "Foutteks"
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -4584,11 +4576,6 @@ msgstr "Russies"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "Sami (Noord) (Swede)"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "Albanees"
 
@@ -4871,10 +4858,6 @@ msgstr "herstel van die stelselgebruikerstelsel"
 #: 
 msgid "Notification for"
 msgstr "Kennisgewing vir"
-
-#: 
-msgid "ERROR"
-msgstr "FOUT"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -5587,10 +5570,6 @@ msgid "LastName FirstName"
 msgstr "Achternaam Voornaam"
 
 #: 
-msgid "Holidays"
-msgstr "Vakansies"
-
-#: 
 msgid "Person Name"
 msgstr "Persoon se naam"
 
@@ -5773,10 +5752,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugees - Portugal"
 
 #: 
-msgid "Holiday"
-msgstr "Vakansie"
-
-#: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Spesifiseer die toepassingsnaam wat in die verifikasie-app vertoon moet word"
 
@@ -5921,10 +5896,6 @@ msgstr "Teks"
 #: 
 msgid "Event Description"
 msgstr "Gebeurtenis beskrywing"
-
-#: 
-msgid "Help translate this project"
-msgstr "Help om hierdie projek te vertaal"
 
 #. Context: locales
 #: 
@@ -8362,10 +8333,6 @@ msgstr "Dien Verifikasie In"
 #: 
 msgid "Thank You!"
 msgstr "Dank U!"
-
-#: 
-msgid "Translation incomplete"
-msgstr "Vertaling Onvolledig"
 
 #: 
 msgid "Visit Our Website"
@@ -15431,10 +15398,6 @@ msgstr "Foutlog"
 #: 
 msgid "Error Reporting"
 msgstr "Foutverslagdoening"
-
-#: 
-msgid "Error:"
-msgstr "Fout:"
 
 #: 
 msgid "Fix Settings"

@@ -2316,14 +2316,6 @@ msgstr "Ο αριθμός είναι πολύ μεγάλος. Πρέπει να 
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Το χρηματικό ποσό είναι πολύ μεγάλο. Το μέγιστο είναι 999999999,99 $"
 
-#: 
-msgid "Error making API Call to"
-msgstr "Σφάλμα κατά την κλήση API σε"
-
-#: 
-msgid "Error text"
-msgstr "Κείμενο σφάλματος"
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -4584,11 +4576,6 @@ msgstr "Ρωσική"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "Sami (Βόρεια) (Σουηδία)"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "Αλβανός"
 
@@ -4871,10 +4858,6 @@ msgstr "επαναφορά σύνδεσης χρήστη συστήματος"
 #: 
 msgid "Notification for"
 msgstr "Ειδοποίηση για"
-
-#: 
-msgid "ERROR"
-msgstr "ΛΑΘΟΣ"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -5587,10 +5570,6 @@ msgid "LastName FirstName"
 msgstr "Επώνυμο Όνομα"
 
 #: 
-msgid "Holidays"
-msgstr "Διακοπές"
-
-#: 
 msgid "Person Name"
 msgstr "Όνομα προσώπου"
 
@@ -5773,10 +5752,6 @@ msgid "Portuguese - Portugal"
 msgstr "Πορτογαλικά - Πορτογαλία"
 
 #: 
-msgid "Holiday"
-msgstr "Αργία"
-
-#: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Καθορίστε το όνομα της εφαρμογής που θα εμφανίζεται στην εφαρμογή ελέγχου ταυτότητας"
 
@@ -5921,10 +5896,6 @@ msgstr "Κείμενο"
 #: 
 msgid "Event Description"
 msgstr "Περιγραφή συμβάντος"
-
-#: 
-msgid "Help translate this project"
-msgstr "Βοηθήστε στη μετάφραση αυτού του έργου"
 
 #. Context: locales
 #: 
@@ -8362,10 +8333,6 @@ msgstr "Υποβολή Επαλήθευσης"
 #: 
 msgid "Thank You!"
 msgstr "Ευχαριστούμε!"
-
-#: 
-msgid "Translation incomplete"
-msgstr "Μετάφραση Ημιτελής"
 
 #: 
 msgid "Visit Our Website"
@@ -15431,10 +15398,6 @@ msgstr "Αρχείο καταγραφής σφαλμάτων"
 #: 
 msgid "Error Reporting"
 msgstr "Αναφορά σφαλμάτων"
-
-#: 
-msgid "Error:"
-msgstr "Σφάλμα:"
 
 #: 
 msgid "Fix Settings"

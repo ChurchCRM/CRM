@@ -2318,14 +2318,6 @@ msgstr "Numri shumë i madh. Duhet të jetë në mes dhe -2147483648 2147483647"
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Shuma Paratë shumë e madhe. Maksimale është $ 999.999.999,99"
 
-#: 
-msgid "Error making API Call to"
-msgstr "Gabim gjatë thirrjes API te"
-
-#: 
-msgid "Error text"
-msgstr "Teksti i gabimit"
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -4583,11 +4575,6 @@ msgstr "Rusisht"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "Sami (Veriore) (Suedi)"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "Shqip"
 
@@ -4865,10 +4852,6 @@ msgstr "hyrja e përdoruesit të sistemit u rivendos"
 #: 
 msgid "Notification for"
 msgstr "Njoftim për"
-
-#: 
-msgid "ERROR"
-msgstr "GABIM"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -5576,10 +5559,6 @@ msgid "LastName FirstName"
 msgstr "Mbiemri Emri"
 
 #: 
-msgid "Holidays"
-msgstr "Pushimet"
-
-#: 
 msgid "Person Name"
 msgstr "Emri i Personit"
 
@@ -5761,10 +5740,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugalisht - Portugali"
 
 #: 
-msgid "Holiday"
-msgstr "Festë"
-
-#: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Specifikoni emrin e aplikacionit që do të shfaqet në aplikacionin e vërtetimit"
 
@@ -5908,10 +5883,6 @@ msgstr "Teksti"
 #: 
 msgid "Event Description"
 msgstr "Përshkrimi i ngjarjes"
-
-#: 
-msgid "Help translate this project"
-msgstr "Ndihmoni në përkthimin e këtij projekti"
 
 #. Context: locales
 #: 
@@ -8349,10 +8320,6 @@ msgstr "Dërgo verifikimin"
 #: 
 msgid "Thank You!"
 msgstr "Faleminderit!"
-
-#: 
-msgid "Translation incomplete"
-msgstr "Përkthimi i paplotë"
 
 #: 
 msgid "Visit Our Website"
@@ -15418,10 +15385,6 @@ msgstr "Regjistri i Gabimeve"
 #: 
 msgid "Error Reporting"
 msgstr "Raportimi i Gabimeve"
-
-#: 
-msgid "Error:"
-msgstr "Gabim:"
 
 #: 
 msgid "Fix Settings"

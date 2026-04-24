@@ -2296,14 +2296,6 @@ msgstr "संख्या बहुत बड़ी है। -2147483648 औ�
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "धनराशि बहुत बड़ी है। अधिकतम $999999999.99 है"
 
-#: 
-msgid "Error making API Call to"
-msgstr "API कॉल करने में त्रुटि: "
-
-#: 
-msgid "Error text"
-msgstr "त्रुटि टेक्स्ट"
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -4556,11 +4548,6 @@ msgstr "रूसी"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "सामी (उत्तरी) (स्वीडन)"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "अल्बानियाई"
 
@@ -4838,10 +4825,6 @@ msgstr "सिस्टम उपयोगकर्ता लॉगिन री
 #: 
 msgid "Notification for"
 msgstr "इसके लिए अधिसूचना"
-
-#: 
-msgid "ERROR"
-msgstr "त्रुटि (ERROR)"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -5549,10 +5532,6 @@ msgid "LastName FirstName"
 msgstr "अंतिमनाम प्रथमनाम"
 
 #: 
-msgid "Holidays"
-msgstr "छुटियाँ"
-
-#: 
 msgid "Person Name"
 msgstr "व्यक्ति का नाम"
 
@@ -5730,10 +5709,6 @@ msgid "Portuguese - Portugal"
 msgstr "पुर्तगाली - पुर्तगाल"
 
 #: 
-msgid "Holiday"
-msgstr "छुट्टी"
-
-#: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "प्रमाणीकरण ऐप में प्रदर्शित होने वाला एप्लिकेशन नाम निर्दिष्ट करें"
 
@@ -5877,10 +5852,6 @@ msgstr "पाठ"
 #: 
 msgid "Event Description"
 msgstr "घटना का विवरण"
-
-#: 
-msgid "Help translate this project"
-msgstr "इस प्रोजेक्ट के अनुवाद में सहायता करें"
 
 #. Context: locales
 #: 
@@ -8318,10 +8289,6 @@ msgstr "सत्यापन सबमिट करें"
 #: 
 msgid "Thank You!"
 msgstr "धन्यवाद!"
-
-#: 
-msgid "Translation incomplete"
-msgstr "अनुवाद अपूर्ण"
 
 #: 
 msgid "Visit Our Website"
@@ -15387,10 +15354,6 @@ msgstr "त्रुटि लॉग"
 #: 
 msgid "Error Reporting"
 msgstr "त्रुटि रिपोर्टिंग"
-
-#: 
-msgid "Error:"
-msgstr "त्रुटि:"
 
 #: 
 msgid "Fix Settings"
