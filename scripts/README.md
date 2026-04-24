@@ -12,7 +12,7 @@ This folder contains Node.js and shell scripts used for building, packaging, and
 | `package-release.js` | Create release ZIP package | `npm run package` |
 | `locale-check.js` | Lint locale files for issues | `npm run locale:lint` |
 | `startNewRelease.js` | Version bump for releases | Used by maintainers |
-| `create-plugin.php` | Scaffold a new community plugin from `examples/community-plugin-hello-world/` | `php scripts/create-plugin.php <kebab-id> [--author="Name"]` |
+| `create-plugin.php` | Scaffold a new community plugin (clones [community-plugin-hello-world](https://github.com/ChurchCRM/community-plugin-hello-world) from GitHub) | `php scripts/create-plugin.php <kebab-id> [--author="Name"]` |
 | `plugin-scan.php` | Self-audit a community plugin directory against the maintainer review checklist | `php scripts/plugin-scan.php [--json] <plugin-dir>` |
 
 ---
@@ -129,8 +129,9 @@ node scripts/startNewRelease.js <new-version>
 
 ### create-plugin.php
 
-**Scaffold a new community plugin.** Copies
-`examples/community-plugin-hello-world/` into
+**Scaffold a new community plugin.** Clones
+[ChurchCRM/community-plugin-hello-world](https://github.com/ChurchCRM/community-plugin-hello-world)
+into a temp directory, then copies it into
 `src/plugins/community/<kebab-id>/`, rewriting plugin id, PHP
 namespace, and main class name so the result is immediately runnable.
 
