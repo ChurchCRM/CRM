@@ -58,7 +58,7 @@ function checkBrowserLocale() {
     alert.className = "alert alert-info alert-dismissible";
     alert.style.marginBottom = "1rem";
 
-    const userSettingsUrl = `${window.CRM.root}/v2/user/${window.CRM.userId}`;
+    const userSettingsUrl = `${window.CRM.root}/v2/user/${window.CRM.userId}#tab-localization`;
 
     alert.innerHTML = `
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -234,8 +234,11 @@ async function populateLocaleDropdown(selectEl, selectedLocale) {
     group.label = region;
     for (const { englishName, data } of byRegion[region]) {
       const native = data.nativeName || "";
+      const nativeFirstWord = native.split(/[\s(-]/)[0].toLowerCase();
+      const englishFirstWord = englishName.split(/[\s(-]/)[0].toLowerCase();
+      const sameLanguage = nativeFirstWord === englishFirstWord;
       const label =
-        native && native !== englishName
+        native && native !== englishName && !sameLanguage
           ? `${native} \u2014 ${englishName} [${data.locale}]`
           : `${englishName} [${data.locale}]`;
       const option = new Option(label, data.locale, false, data.locale === selectedLocale);

@@ -249,48 +249,19 @@ $MenuFirst = 1;
           </div>
         </div>
 
-        <!-- Locale -->
+        <!-- Locale: flag links directly to the localization tab on the profile page -->
         <?php
-        $flagCode         = $localeInfo->getCountryFlagCode();
-        $showPercentage   = $localeInfo->shouldShowTranslationPercentage();
-        $translationPct   = $showPercentage ? $localeInfo->getTranslationPercentage() : 100;
-        $translationIsLow = $showPercentage && $translationPct < 90;
-        $nativeName       = $localeInfo->getNativeName();
-        $englishName      = $localeInfo->getName();
-        $hasNative        = $nativeName !== '' && $nativeName !== $englishName;
-        $userSettingsUrl  = SystemURLs::getRootPath() . '/v2/user/' . AuthenticationManager::getCurrentUser()->getId();
+        $flagCode    = $localeInfo->getCountryFlagCode();
+        $nativeName  = $localeInfo->getNativeName();
+        $englishName = $localeInfo->getName();
+        $hasNative   = $nativeName !== '' && $nativeName !== $englishName;
+        $localeUrl   = SystemURLs::getRootPath() . '/v2/user/' . AuthenticationManager::getCurrentUser()->getId() . '#tab-localization';
         ?>
-        <div class="nav-item dropdown ms-1">
-          <a class="nav-link px-0" data-bs-toggle="dropdown" href="#"
+        <div class="nav-item ms-1">
+          <a class="nav-link px-0" href="<?= $localeUrl ?>"
              title="<?= InputUtils::escapeAttribute($hasNative ? $nativeName . ' — ' . $englishName : $englishName) ?>">
             <i class="fi fi-<?= $flagCode ?> fi-squared"></i>
-            <?php if ($translationIsLow) { ?>
-            <span class="badge bg-warning text-dark ms-1" title="<?= gettext('Translation incomplete') ?>">!</span>
-            <?php } ?>
           </a>
-          <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-            <span class="dropdown-item disabled">
-              <i class="fi fi-<?= $flagCode ?> me-2"></i>
-              <?php if ($hasNative) { ?>
-                <?= InputUtils::escapeHTML($nativeName) ?> <span class="text-muted">— <?= $englishName ?></span>
-              <?php } else { ?>
-                <?= $englishName ?>
-              <?php } ?>
-              <span class="text-muted ms-1">[<?= $localeInfo->getLocale() ?>]</span>
-              <?php if ($showPercentage) { ?>
-              <span class="badge bg-<?= $translationIsLow ? 'warning text-dark' : 'success' ?> ms-1">
-                <?= $translationPct ?>%
-              </span>
-              <?php } ?>
-            </span>
-            <div class="dropdown-divider"></div>
-            <a href="<?= $userSettingsUrl ?>" class="dropdown-item">
-              <i class="ti ti-settings me-2"></i><?= gettext('Change your language') ?>
-            </a>
-            <a href="https://poeditor.com/join/project?hash=RABdnDSqAt" class="dropdown-item" target="_blank">
-              <i class="ti ti-users me-2"></i><?= gettext('Help translate this project') ?>
-            </a>
-          </div>
         </div>
 
         <!-- Cart -->

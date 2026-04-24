@@ -120,6 +120,14 @@ function initLocaleDropdown() {
 
 // ── Initialize on page load ──────────────────────────────────────
 $(document).ready(() => {
+  // Activate the tab matching the URL hash (e.g. #tab-localization from locale banner link).
+  if (window.location.hash) {
+    const tabEl = document.querySelector(`[data-bs-toggle="list"][href="${window.location.hash}"]`);
+    if (tabEl && window.bootstrap?.Tab) {
+      window.bootstrap.Tab.getOrCreateInstance(tabEl).show();
+    }
+  }
+
   initLocaleDropdown();
 
   // Photo uploader

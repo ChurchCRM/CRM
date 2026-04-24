@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.CRM.populateLocaleDropdown(langSelect, selected)
       .then(() => {
         if (window.TomSelect && !langSelect.tomselect) {
-          new window.TomSelect(langSelect, { allowEmptyOption: false });
+          new window.TomSelect(langSelect, { allowEmptyOption: false, dropdownParent: "body" });
         }
       })
       .catch((e) => console.error("Failed to load language options:", e));
