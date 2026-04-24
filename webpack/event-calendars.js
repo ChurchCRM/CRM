@@ -513,7 +513,13 @@ function initializeCalendar() {
       } else if (eventData.editable || eventData.startEditable || eventData.durationEditable) {
         window.showEventForm(eventData);
       } else {
-        window.CRM.notify(`${i18next.t("Holiday")}: ${eventData.title}`, { type: "info", delay: 4000 });
+        const props = eventData.extendedProps || {};
+        const country = props.country || "";
+        const type = props.type ? props.type.charAt(0).toUpperCase() + props.type.slice(1) : "";
+        const parts = [eventData.title];
+        if (country) parts.push(country);
+        if (type) parts.push(type);
+        window.CRM.notify(parts.join(" · "), { type: "info", delay: 10000, close: true });
       }
     },
     loading: (isLoading) => {
