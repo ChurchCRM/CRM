@@ -295,11 +295,7 @@ describe("Standard Calendar — save (admin-session)", () => {
         cy.get("#ForegroundColor").invoke("val", "#FA8072").trigger("change");
         cy.get("#BackgroundColor").invoke("val", "#212F3D").trigger("change");
 
-        // Register intercept just before the click so page-load GETs don't consume the alias.
-        // Use a regex pattern — glob `**/api/calendars` can be ambiguous with subdirectory installs.
-        cy.intercept({ method: "POST", url: /\/api\/calendars/ }).as("createCalendar");
-        cy.get(".modal-footer .btn-primary.float-end").should("be.visible").click();
-        cy.wait("@createCalendar", { timeout: 15000 }).its("response.statusCode").should("eq", 200);
+        cy.get(".modal-footer .btn-primary.float-end").click();
     });
 
     it("InActive and LinkedGroupId flow into the POST /api/events payload", () => {

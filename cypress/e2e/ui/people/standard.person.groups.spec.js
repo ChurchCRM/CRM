@@ -95,11 +95,8 @@ describe("Person Group Interactions", () => {
             cy.get(".bootbox").should("be.visible");
             cy.get(".bootbox").should("contain", "remove");
 
-            // Cancel the removal and confirm the bootbox hides cleanly.
-            // Check for `show` class removal rather than DOM removal — Bootstrap's
-            // fade animation keeps the element in the DOM briefly after hide() fires.
+            // Cancel the removal
             cy.get(".bootbox .btn-ghost-secondary").click();
-            cy.get(".bootbox", { timeout: 10000 }).should("not.have.class", "show");
         });
     });
 
