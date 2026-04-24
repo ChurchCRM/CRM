@@ -944,31 +944,45 @@ $(document).ready(function() {
                     const riskClass = risk === 'high' ? 'bg-red-lt text-red'
                                    : risk === 'medium' ? 'bg-yellow-lt text-yellow'
                                    : 'bg-green-lt text-green';
-                    const permsHtml = (entry.permissions || []).map(function(p) {
-                        return '<span class="badge bg-secondary me-1">' + $('<div>').text(p).html() + '</span>';
-                    }).join('');
-                    const homepage = entry.homepage
-                        ? '<a href="' + $('<div>').text(entry.homepage).html() + '" target="_blank" rel="noopener"><?= addslashes(gettext('Homepage')) ?></a>'
+                    const perms = entry.permissions || [];
+                    const permsHtml = perms.length
+                        ? '<div class="mt-2">' + perms.map(function(p) {
+                              return '<span class="badge bg-secondary-lt text-secondary me-1">' + $('<div>').text(p).html() + '</span>';
+                          }).join('') + '</div>'
+                        : '';
+                    const author = (entry.author || '').trim();
+                    const homepageUrl = (entry.homepage || '').trim();
+                    const homepageLink = homepageUrl
+                        ? '<a href="' + $('<div>').text(homepageUrl).html() + '" target="_blank" rel="noopener"><?= addslashes(gettext('Homepage')) ?></a>'
+                        : '';
+                    const metaParts = [author ? $('<div>').text(author).html() : '', homepageLink].filter(Boolean);
+                    const metaHtml = metaParts.length
+                        ? '<div class="mt-1 small text-muted">' + metaParts.join(' · ') + '</div>'
+                        : '';
+                    const notesHtml = entry.notes
+                        ? '<div class="mt-2 small text-muted fst-italic">' + $('<div>').text(entry.notes).html() + '</div>'
                         : '';
                     return '' +
                         '<div class="card">' +
                         '  <div class="card-body">' +
-                        '    <div class="d-flex align-items-start">' +
+                        '    <div class="d-flex align-items-start gap-3">' +
                         '      <div class="flex-grow-1">' +
-                        '        <h4 class="mb-1">' + $('<div>').text(entry.name || entry.id).html() +
-                        '          <span class="badge bg-info ms-2">v' + $('<div>').text(entry.version || '').html() + '</span>' +
-                        '          <span class="badge ' + riskClass + ' ms-2">' + $('<div>').text(risk).html() + ' <?= addslashes(gettext('risk')) ?></span>' +
-                        '        </h4>' +
-                        '        <p class="mb-1">' + $('<div>').text(entry.riskSummary || '').html() + '</p>' +
-                        '        <div class="mb-1">' + permsHtml + '</div>' +
-                        '        <small class="text-muted">' +
-                        '          ' + $('<div>').text(entry.author || '').html() + ' · ' + homepage +
-                        '        </small>' +
+                        '        <div class="d-flex align-items-center flex-wrap gap-1 mb-1">' +
+                        '          <strong>' + $('<div>').text(entry.name || entry.id).html() + '</strong>' +
+                        '          <span class="badge bg-azure-lt text-azure">v' + $('<div>').text(entry.version || '').html() + '</span>' +
+                        '          <span class="badge ' + riskClass + '">' + $('<div>').text(risk).html() + ' <?= addslashes(gettext('risk')) ?></span>' +
+                        '        </div>' +
+                        '        <div>' + $('<div>').text(entry.riskSummary || '').html() + '</div>' +
+                        permsHtml +
+                        metaHtml +
+                        notesHtml +
                         '      </div>' +
-                        '      <button type="button" class="btn btn-primary btn-sm ms-3 btn-install-approved"' +
-                        '              data-download-url="' + $('<div>').text(entry.downloadUrl || '').html() + '">' +
-                        '        <i class="fa-solid fa-download me-1"></i><?= addslashes(gettext('Install')) ?>' +
-                        '      </button>' +
+                        '      <div class="flex-shrink-0">' +
+                        '        <button type="button" class="btn btn-primary btn-sm btn-install-approved"' +
+                        '                data-download-url="' + $('<div>').text(entry.downloadUrl || '').html() + '">' +
+                        '          <i class="fa-solid fa-download me-1"></i><?= addslashes(gettext('Install')) ?>' +
+                        '        </button>' +
+                        '      </div>' +
                         '    </div>' +
                         '  </div>' +
                         '</div>';
@@ -990,8 +1004,7 @@ $(document).ready(function() {
         $.ajax({
             url: '<?= $sRootPath ?>/plugins/api/plugins/install',
             method: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({ downloadUrl: downloadUrl }),
+            data: { downloadUrl: downloadUrl },
             success: function() {
                 $('#approvedPluginsModal').modal('hide');
                 setTimeout(function() { window.location.reload(); }, 300);
