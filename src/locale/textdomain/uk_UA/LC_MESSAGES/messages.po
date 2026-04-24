@@ -2316,14 +2316,6 @@ msgstr "Номер завеликий. Має бути від -2147483648 до 2
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Сума грошей завелика. Максимум - 999999999,99 доларів"
 
-#: 
-msgid "Error making API Call to"
-msgstr "Помилка під час здійснення виклику через API"
-
-#: 
-msgid "Error text"
-msgstr "Текст помилки"
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -4584,11 +4576,6 @@ msgstr "російський"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "Саамі (північ) (Швеція)"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "Албанська"
 
@@ -4871,10 +4858,6 @@ msgstr "скидання входу користувача системи"
 #: 
 msgid "Notification for"
 msgstr "Повідомлення для"
-
-#: 
-msgid "ERROR"
-msgstr "ПОМИЛКА"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -5587,10 +5570,6 @@ msgid "LastName FirstName"
 msgstr "Прізвище Ім'я"
 
 #: 
-msgid "Holidays"
-msgstr "Свята"
-
-#: 
 msgid "Person Name"
 msgstr "Ім'я особи"
 
@@ -5777,10 +5756,6 @@ msgid "Portuguese - Portugal"
 msgstr "Португальська - Португалія"
 
 #: 
-msgid "Holiday"
-msgstr "Свято"
-
-#: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Вкажіть назву програми, яка відображатиметься в програмі автентифікації"
 
@@ -5925,10 +5900,6 @@ msgstr "Текст"
 #: 
 msgid "Event Description"
 msgstr "Опис події"
-
-#: 
-msgid "Help translate this project"
-msgstr "Допоможіть перекласти цей проект"
 
 #. Context: locales
 #: 
@@ -8370,10 +8341,6 @@ msgstr "Надіслати підтвердження"
 #: 
 msgid "Thank You!"
 msgstr "Дякуємо!"
-
-#: 
-msgid "Translation incomplete"
-msgstr "Переклад неповний"
 
 #: 
 msgid "Visit Our Website"
@@ -15453,10 +15420,6 @@ msgstr "Журнал помилок"
 #: 
 msgid "Error Reporting"
 msgstr "Звітування про помилки"
-
-#: 
-msgid "Error:"
-msgstr "Помилка:"
 
 #: 
 msgid "Fix Settings"

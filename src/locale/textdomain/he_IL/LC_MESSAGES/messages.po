@@ -2314,14 +2314,6 @@ msgstr "המספר גדול מדי. חייב להיות בין -2147483648 ל-21
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "סכום הכסף גדול מדי. המקסימום הוא 999,999,999.99$"
 
-#: 
-msgid "Error making API Call to"
-msgstr "שגיאה בביצוע קריאת API אל"
-
-#: 
-msgid "Error text"
-msgstr "טקסט שגיאה"
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -4583,11 +4575,6 @@ msgstr "Russian"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "Sami (Northern) (Sweden)"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "Albanian"
 
@@ -4870,10 +4857,6 @@ msgstr "איפוס התחברות משתמש מערכת"
 #: 
 msgid "Notification for"
 msgstr "הודעה עבור"
-
-#: 
-msgid "ERROR"
-msgstr "שגיאה"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -5585,10 +5568,6 @@ msgid "LastName FirstName"
 msgstr "שם משפחה שם פרטי"
 
 #: 
-msgid "Holidays"
-msgstr "חגים"
-
-#: 
 msgid "Person Name"
 msgstr "שם האדם"
 
@@ -5770,10 +5749,6 @@ msgid "Portuguese - Portugal"
 msgstr "פוטוגזית - פורטוגל"
 
 #: 
-msgid "Holiday"
-msgstr "חופשה"
-
-#: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "ציין את שם האפליקציה שיוצג באפליקציית האימות"
 
@@ -5917,10 +5892,6 @@ msgstr "טקסט"
 #: 
 msgid "Event Description"
 msgstr "תיאור אירוע"
-
-#: 
-msgid "Help translate this project"
-msgstr "עזור לתרגם את הפרויקט הזה"
 
 #. Context: locales
 #: 
@@ -8358,10 +8329,6 @@ msgstr "שלח אימות"
 #: 
 msgid "Thank You!"
 msgstr "תודה לך!"
-
-#: 
-msgid "Translation incomplete"
-msgstr "תרגום לא הושלם"
 
 #: 
 msgid "Visit Our Website"
@@ -15427,10 +15394,6 @@ msgstr "יומן שגיאות"
 #: 
 msgid "Error Reporting"
 msgstr "דיווח שגיאות"
-
-#: 
-msgid "Error:"
-msgstr "שגיאה:"
 
 #: 
 msgid "Fix Settings"

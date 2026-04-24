@@ -2380,14 +2380,6 @@ msgstr "Număr prea mare. Trebuie să fie între -2147483648 și 2147483647"
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Suma de bani prea mare. Maxim este de 999,999,999.99 dolari"
 
-#: 
-msgid "Error making API Call to"
-msgstr "Eroare apelare API către"
-
-#: 
-msgid "Error text"
-msgstr "Text eroare"
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -4661,11 +4653,6 @@ msgstr "Rus"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "Suedez"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "Albanez"
 
@@ -4948,10 +4935,6 @@ msgstr "resetare autentificare pentru utilizatorul sistemului"
 #: 
 msgid "Notification for"
 msgstr "Notificări de la"
-
-#: 
-msgid "ERROR"
-msgstr "EROARE"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -5664,10 +5647,6 @@ msgid "LastName FirstName"
 msgstr "Nume Prenume"
 
 #: 
-msgid "Holidays"
-msgstr "Sărbători"
-
-#: 
 msgid "Person Name"
 msgstr "Nume persoană"
 
@@ -5849,10 +5828,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugheză - Portugalia"
 
 #: 
-msgid "Holiday"
-msgstr "Vacanță"
-
-#: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Specificați numele aplicației care va fi afișat în aplicația de autentificare"
 
@@ -5996,10 +5971,6 @@ msgstr "Text"
 #: 
 msgid "Event Description"
 msgstr "Descriere eveniment"
-
-#: 
-msgid "Help translate this project"
-msgstr "Ajutați la traducerea acestui proiect"
 
 #. Context: locales
 #: 
@@ -8439,10 +8410,6 @@ msgstr "Trimite verificare"
 #: 
 msgid "Thank You!"
 msgstr "Vă mulțumim!"
-
-#: 
-msgid "Translation incomplete"
-msgstr "Traducere incompletă"
 
 #: 
 msgid "Visit Our Website"
@@ -15515,10 +15482,6 @@ msgstr "Jurnal erori"
 #: 
 msgid "Error Reporting"
 msgstr "Raportare erori"
-
-#: 
-msgid "Error:"
-msgstr "Eroare:"
 
 #: 
 msgid "Fix Settings"

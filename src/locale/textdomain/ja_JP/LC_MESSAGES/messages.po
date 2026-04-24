@@ -2293,14 +2293,6 @@ msgstr "数値が大きすぎます。-2147483648 から 2147483647 の間であ
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "金額が大きすぎます。最大は $999999999.99 です"
 
-#: 
-msgid "Error making API Call to"
-msgstr "API 呼び出しエラー:"
-
-#: 
-msgid "Error text"
-msgstr "エラーテキスト"
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -4553,11 +4545,6 @@ msgstr "ロシア語"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "サーミ語 (北部) (スウェーデン)"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "アルバニア語"
 
@@ -4835,10 +4822,6 @@ msgstr "システムユーザーログインがリセットされました"
 #: 
 msgid "Notification for"
 msgstr "の通知"
-
-#: 
-msgid "ERROR"
-msgstr "エラー"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -5546,10 +5529,6 @@ msgid "LastName FirstName"
 msgstr "姓 名"
 
 #: 
-msgid "Holidays"
-msgstr "祝日"
-
-#: 
 msgid "Person Name"
 msgstr "人物名"
 
@@ -5729,10 +5708,6 @@ msgid "Portuguese - Portugal"
 msgstr "ポルトガル語 - ポルトガル"
 
 #: 
-msgid "Holiday"
-msgstr "祝日"
-
-#: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "認証器アプリに表示されるアプリケーション名を指定します"
 
@@ -5876,10 +5851,6 @@ msgstr "テキスト"
 #: 
 msgid "Event Description"
 msgstr "イベントの説明"
-
-#: 
-msgid "Help translate this project"
-msgstr "このプロジェクトの翻訳にご協力ください"
 
 #. Context: locales
 #: 
@@ -8315,10 +8286,6 @@ msgstr "確認を送信"
 #: 
 msgid "Thank You!"
 msgstr "ありがとうございます！"
-
-#: 
-msgid "Translation incomplete"
-msgstr "翻訳が不完全です"
 
 #: 
 msgid "Visit Our Website"
@@ -15377,10 +15344,6 @@ msgstr "エラーログ"
 #: 
 msgid "Error Reporting"
 msgstr "エラーレポート"
-
-#: 
-msgid "Error:"
-msgstr "エラー:"
 
 #: 
 msgid "Fix Settings"

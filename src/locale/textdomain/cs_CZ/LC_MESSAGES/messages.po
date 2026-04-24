@@ -2314,14 +2314,6 @@ msgstr "Číslo příliš velké. Musí být mezi -2147483648 a 2147483647"
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Příliš vysoká peněžní částka. Maximum je $999999999.99"
 
-#: 
-msgid "Error making API Call to"
-msgstr "Chyba při API volání na"
-
-#: 
-msgid "Error text"
-msgstr "Chybový text"
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -4579,11 +4571,6 @@ msgstr "Ruština"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "Sámové (severní) (Švédsko)"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "Albánština"
 
@@ -4863,10 +4850,6 @@ msgstr "reset přihlášení uživatele systému"
 #: 
 msgid "Notification for"
 msgstr "Oznámení pro"
-
-#: 
-msgid "ERROR"
-msgstr "ERROR"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -5574,10 +5557,6 @@ msgid "LastName FirstName"
 msgstr "Příjmení KřestníJméno"
 
 #: 
-msgid "Holidays"
-msgstr "Svátky"
-
-#: 
 msgid "Person Name"
 msgstr "Jméno osoby"
 
@@ -5761,10 +5740,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugalština - Portugalsko"
 
 #: 
-msgid "Holiday"
-msgstr "Svátek"
-
-#: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Zadejte název aplikace, který se má zobrazit v autentizační aplikaci "
 
@@ -5908,10 +5883,6 @@ msgstr "Text"
 #: 
 msgid "Event Description"
 msgstr "Popis události"
-
-#: 
-msgid "Help translate this project"
-msgstr "Pomožte přeložit tento projekt"
 
 #. Context: locales
 #: 
@@ -8351,10 +8322,6 @@ msgstr "Odeslat ovęření"
 #: 
 msgid "Thank You!"
 msgstr "Děkuji!"
-
-#: 
-msgid "Translation incomplete"
-msgstr "Překlad nekomplitní"
 
 #: 
 msgid "Visit Our Website"
@@ -15427,10 +15394,6 @@ msgstr "Protokol chyb"
 #: 
 msgid "Error Reporting"
 msgstr "Hlášení chyb"
-
-#: 
-msgid "Error:"
-msgstr "Chyba:"
 
 #: 
 msgid "Fix Settings"

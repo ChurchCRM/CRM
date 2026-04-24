@@ -2300,14 +2300,6 @@ msgstr "Numero on liian suuri. Sen on oltava välillä -2147483648 ja 2147483647
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Rahamäärä on liian suuri. Maksimi on 999999999,99"
 
-#: 
-msgid "Error making API Call to"
-msgstr "Virhe tehtäessä API-kutsua kohteeseen"
-
-#: 
-msgid "Error text"
-msgstr "Virheteksti"
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -4560,11 +4552,6 @@ msgstr "Venäjä"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "Saame (pohjoissaame, Ruotsi)"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "Albania"
 
@@ -4842,10 +4829,6 @@ msgstr "järjestelmäkäyttäjän kirjautumisen nollaus"
 #: 
 msgid "Notification for"
 msgstr "Ilmoitus kohteelle"
-
-#: 
-msgid "ERROR"
-msgstr "VIRHE"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -5553,10 +5536,6 @@ msgid "LastName FirstName"
 msgstr "Sukunimi Etunimi"
 
 #: 
-msgid "Holidays"
-msgstr "Pyhäpäivät"
-
-#: 
 msgid "Person Name"
 msgstr "Henkilön nimi"
 
@@ -5733,10 +5712,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugali - Portugali"
 
 #: 
-msgid "Holiday"
-msgstr "Pyhäpäivä"
-
-#: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Määritä sovelluksen nimi, joka näkyy tunnistussovelluksessa"
 
@@ -5880,10 +5855,6 @@ msgstr "Teksti"
 #: 
 msgid "Event Description"
 msgstr "Tapahtuman kuvaus"
-
-#: 
-msgid "Help translate this project"
-msgstr "Auta kääntämään tätä projektia"
 
 #. Context: locales
 #: 
@@ -8321,10 +8292,6 @@ msgstr "Lähetä vahvistus"
 #: 
 msgid "Thank You!"
 msgstr "Kiitos!"
-
-#: 
-msgid "Translation incomplete"
-msgstr "Käännös epätäydellinen"
 
 #: 
 msgid "Visit Our Website"
@@ -15390,10 +15357,6 @@ msgstr "Virheloki"
 #: 
 msgid "Error Reporting"
 msgstr "Virheraportit"
-
-#: 
-msgid "Error:"
-msgstr "Virhe:"
 
 #: 
 msgid "Fix Settings"

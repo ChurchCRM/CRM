@@ -2317,14 +2317,6 @@ msgstr "Jumlahnya terlalu besar. Harus antara -2147483648 dan 2147483647"
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Jumlah uang terlalu besar. Maksimal $ 999999999,99"
 
-#: 
-msgid "Error making API Call to"
-msgstr "Kesalahan membuat Panggilan API ke"
-
-#: 
-msgid "Error text"
-msgstr "Teks salah"
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -4585,11 +4577,6 @@ msgstr "Rusia"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "Sami (Utara) (Swedia)"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "bahasa Albania"
 
@@ -4872,10 +4859,6 @@ msgstr "reset login pengguna sistem"
 #: 
 msgid "Notification for"
 msgstr "Pemberitahuan untuk"
-
-#: 
-msgid "ERROR"
-msgstr "KESALAHAN"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -5588,10 +5571,6 @@ msgid "LastName FirstName"
 msgstr "NamaAkhir NamaDepan"
 
 #: 
-msgid "Holidays"
-msgstr "Liburan"
-
-#: 
 msgid "Person Name"
 msgstr "Nama Orang"
 
@@ -5765,10 +5744,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugis - Portugal"
 
 #: 
-msgid "Holiday"
-msgstr "Hari libur"
-
-#: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Tentukan nama aplikasi yang akan ditampilkan di aplikasi authenticator"
 
@@ -5913,10 +5888,6 @@ msgstr "Teks"
 #: 
 msgid "Event Description"
 msgstr "Deskripsi Acara"
-
-#: 
-msgid "Help translate this project"
-msgstr "Bantu terjemahkan proyek ini"
 
 #. Context: locales
 #: 
@@ -8352,10 +8323,6 @@ msgstr "Kirim Verifikasi"
 #: 
 msgid "Thank You!"
 msgstr "Terima Kasih!"
-
-#: 
-msgid "Translation incomplete"
-msgstr "Terjemahan belum lengkap"
 
 #: 
 msgid "Visit Our Website"
@@ -15414,10 +15381,6 @@ msgstr "Log Kesalahan"
 #: 
 msgid "Error Reporting"
 msgstr "Pelaporan Kesalahan"
-
-#: 
-msgid "Error:"
-msgstr "Kesalahan:"
 
 #: 
 msgid "Fix Settings"

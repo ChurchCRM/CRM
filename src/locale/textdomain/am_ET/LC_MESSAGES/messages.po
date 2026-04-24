@@ -2315,14 +2315,6 @@ msgstr "ቁጥሩ በጣም ትልቅ ነው። በ -2147483648 እና 214748364
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "የገንዘብ መጠን በጣም ትልቅ ነው። ከፍተኛው $999999999.99 ነው።"
 
-#: 
-msgid "Error making API Call to"
-msgstr "የAPI ጥሪ ማድረግ ላይ ስህተት"
-
-#: 
-msgid "Error text"
-msgstr "የስህተት ጽሑፍ "
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -4584,11 +4576,6 @@ msgstr "ሩሲያኛ"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "ሳሚ"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "አልባንያኛ"
 
@@ -4871,10 +4858,6 @@ msgstr "የሲስተም ተጠቃሚ መግቢያ ዳግም ማስጀመር"
 #: 
 msgid "Notification for"
 msgstr "ማስታወቂያ ለ"
-
-#: 
-msgid "ERROR"
-msgstr "ስህተት"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -5588,10 +5571,6 @@ msgid "LastName FirstName"
 msgstr "ያባት ስም የመጀመሪያ ስም"
 
 #: 
-msgid "Holidays"
-msgstr "የበዓል ቀናት "
-
-#: 
 msgid "Person Name"
 msgstr "የግለሰቡ ስም "
 
@@ -5776,10 +5755,6 @@ msgid "Portuguese - Portugal"
 msgstr "ፖርቱጋልኛ - ፖርቱጋል"
 
 #: 
-msgid "Holiday"
-msgstr "በዓል"
-
-#: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "\n"
 "በአረጋጋጭ መተግበሪያ ውስጥ የሚታየውን የመተግበሪያ ስም ይግለጹ"
@@ -5928,10 +5903,6 @@ msgstr "ጽሁፍ"
 #: 
 msgid "Event Description"
 msgstr "የክስተት መግለጫ"
-
-#: 
-msgid "Help translate this project"
-msgstr "ይህንን ፕሮጀክት ለመተርጎም ያግዙ"
 
 #. Context: locales
 #: 
@@ -8370,10 +8341,6 @@ msgstr "ማረጋገጫውን ላክ"
 #: 
 msgid "Thank You!"
 msgstr "እናመሰግናለን!"
-
-#: 
-msgid "Translation incomplete"
-msgstr "ትርጉም አልተጠናቀቀም"
 
 #: 
 msgid "Visit Our Website"
@@ -15439,10 +15406,6 @@ msgstr "የስህተት መዝገብ"
 #: 
 msgid "Error Reporting"
 msgstr "የስህተት ሪፖርት"
-
-#: 
-msgid "Error:"
-msgstr "ስህተት፡"
 
 #: 
 msgid "Fix Settings"

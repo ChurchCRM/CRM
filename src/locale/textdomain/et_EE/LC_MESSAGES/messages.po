@@ -2316,14 +2316,6 @@ msgstr "Arv on liiga suur. Peab olema vahemikus -2147483648 kuni 2147483647"
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Rahasumma on liiga suur. Maksimaalne summa on 999999999,99 dollarit"
 
-#: 
-msgid "Error making API Call to"
-msgstr "Viga API-kõnele helistamisel"
-
-#: 
-msgid "Error text"
-msgstr "Vea tekst"
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -4583,11 +4575,6 @@ msgstr "vene keel"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "saami keel (põhja) (Rootsi)"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "albaania keel"
 
@@ -4870,10 +4857,6 @@ msgstr "süsteemi kasutaja sisselogimise lähtestamine"
 #: 
 msgid "Notification for"
 msgstr "Märguanne kasutajale"
-
-#: 
-msgid "ERROR"
-msgstr "VIGA"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -5586,10 +5569,6 @@ msgid "LastName FirstName"
 msgstr "Perekonnanimi Eesnimi"
 
 #: 
-msgid "Holidays"
-msgstr "Pühad"
-
-#: 
 msgid "Person Name"
 msgstr "Isiku nimi"
 
@@ -5772,10 +5751,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugali keel - Portugal"
 
 #: 
-msgid "Holiday"
-msgstr "Püha"
-
-#: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Määrake autentimisrakenduses kuvatav rakenduse nimi"
 
@@ -5920,10 +5895,6 @@ msgstr "Tekst"
 #: 
 msgid "Event Description"
 msgstr "Sündmuse kirjeldus"
-
-#: 
-msgid "Help translate this project"
-msgstr "Aidake seda projekti tõlkida"
 
 #. Context: locales
 #: 
@@ -8361,10 +8332,6 @@ msgstr "Esitage kontrollimine"
 #: 
 msgid "Thank You!"
 msgstr "Täname!"
-
-#: 
-msgid "Translation incomplete"
-msgstr "Tõlge pole lõpetatud"
 
 #: 
 msgid "Visit Our Website"
@@ -15430,10 +15397,6 @@ msgstr "Veaprotokoll"
 #: 
 msgid "Error Reporting"
 msgstr "Veaaruandlus"
-
-#: 
-msgid "Error:"
-msgstr "Viga:"
 
 #: 
 msgid "Fix Settings"
