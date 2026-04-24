@@ -373,6 +373,19 @@ class Family extends BaseFamily implements PhotoInterface
     }
 
     /**
+     * Apple Maps companion to {@see self::getDirectionsUrl()}. Used
+     * alongside the Google Maps link so users on iOS/macOS can open
+     * directions natively in the Maps app.
+     */
+    public function getAppleMapsDirectionsUrl(): string
+    {
+        if ($this->hasLatitudeAndLongitude()) {
+            return GeoUtils::buildAppleMapsDirectionsUrl('', (float) $this->getLatitude(), (float) $this->getLongitude());
+        }
+        return GeoUtils::buildAppleMapsDirectionsUrl($this->getAddress());
+    }
+
+    /**
      * if the latitude or longitude is empty find the lat/lng from the address and update the lat lng for the family.
      */
     public function updateLanLng(): void

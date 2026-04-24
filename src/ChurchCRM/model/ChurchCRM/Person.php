@@ -348,6 +348,29 @@ class Person extends BasePerson implements PhotoInterface
         return GeoUtils::buildDirectionsUrl($family->getAddress());
     }
 
+    /**
+     * Apple Maps companion to {@see self::getDirectionsUrl()}. Mirrors the
+     * same address/lat/lng precedence rules so the two links resolve to the
+     * same destination.
+     */
+    public function getAppleMapsDirectionsUrl(): string
+    {
+        if (!empty($this->getAddress1())) {
+            return GeoUtils::buildAppleMapsDirectionsUrl($this->getAddress());
+        }
+
+        $family = $this->getFamily();
+        if ($family === null) {
+            return '';
+        }
+
+        if ($family->hasLatitudeAndLongitude()) {
+            return GeoUtils::buildAppleMapsDirectionsUrl('', (float) $family->getLatitude(), (float) $family->getLongitude());
+        }
+
+        return GeoUtils::buildAppleMapsDirectionsUrl($family->getAddress());
+    }
+
     public function deletePhoto(): bool
     {
         if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {
