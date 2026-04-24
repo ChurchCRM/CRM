@@ -10,6 +10,8 @@ Release notes are stored in the [`changelog/`](./changelog/) folder — one file
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| [7.2.2](./changelog/7.2.2.md) | April 2026 | CSRF hardening (GHSA-3xq9-c86x-cwpp), person delete fix, orphaned images cleanup, 41 locales |
+| [7.2.1](./changelog/7.2.1.md) | April 2026 | Permission consolidation, admin menu bypass fix, photo cache bust, FrankenPHP redirect fix |
 | [7.2.0](./changelog/7.2.0.md) | April 2026 | Event MVC epic, responsive design guidelines, 27 locales translated, GA4 tracking, mobile UX |
 | [7.1.2](./changelog/7.1.2.md) | April 2026 | User settings redesign, CSV import fields, MvcAppFactory, React removal |
 | [7.1.1](./changelog/7.1.1.md) | April 2026 | Stored XSS fix, CSP hardening, notification system redesign, CSS cleanup |
