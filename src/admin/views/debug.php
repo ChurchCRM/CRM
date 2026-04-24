@@ -4,6 +4,7 @@ use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\AppIntegrityService;
+use ChurchCRM\Service\LocaleService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\VersionUtils;
@@ -18,7 +19,7 @@ $failingCount = count($failing);
 $orphanedFiles = AppIntegrityService::getOrphanedFiles();
 $orphanedCount = count($orphanedFiles);
 
-$localeInfo = AppIntegrityService::getLocaleSetupInfo();
+$localeInfo = LocaleService::getLocaleSetupInfo();
 $localeDetected = $localeInfo['systemLocaleDetected'];
 
 $serverTimezone = date_default_timezone_get();
