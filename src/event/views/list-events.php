@@ -154,7 +154,7 @@ foreach ($monthlyData as $monthData):
     $monthName = $monthData['monthName'];
     $averages = $monthData['averages'];
 ?>
-<div class="card mb-3" id="month-<?= (int) $monthData['month'] ?>">
+<div class="card mb-3">
   <div class="card-header d-flex align-items-center">
     <h3 class="card-title mb-0">
       <i class="ti ti-calendar me-2 text-muted"></i>
@@ -270,15 +270,6 @@ foreach ($monthlyData as $monthData):
   </div>
 </div>
 <?php endforeach; ?>
-
-<?php if ($hasEvents && $EventYear === (int) date('Y')): ?>
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-  document.addEventListener('DOMContentLoaded', function () {
-    var m = document.getElementById('month-<?= (int) date('n') ?>');
-    if (m) m.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-</script>
-<?php endif; ?>
 
 <?php if (!$hasEvents): ?>
 <div class="card">
