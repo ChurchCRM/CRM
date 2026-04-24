@@ -92,3 +92,86 @@ describe("Standard Family", () => {
         cy.get('body').should('not.contain', `${weddingMonth}/${weddingDay}/${weddingYear}`);
     });
 });
+
+describe("Family Wedding Date Edit Workflow", () => {
+    beforeEach(() => cy.setupStandardSession());
+
+    it("Create family without wedding date, then add wedding date via edit", () => {
+        cy.visit("FamilyEditor.php");
+        cy.contains("Family Info");
+
+        const familyName = "Smith" + Cypress._.random(0, 1e6);
+        cy.get("#FamilyName").type(familyName);
+        cy.get('input[name="Address1"]').type("123 Main Street");
+        cy.get('input[name="City"]').clear().type("Springfield");
+        cy.get('select[name="State"]').select("IL", { force: true });
+        cy.get('input[name="Email"]').type("test@example.com");
+        cy.get('input[name="FirstName1"]').type("John");
+        cy.get('select[name="Classification1"]').select("1", { force: true });
+
+        cy.get('button[name="FamilySubmit"]').click();
+
+        cy.location("pathname").should("include", "/people/family/");
+        cy.contains("Family Profile");
+        cy.get("i.fa-ring").should("not.exist");
+        cy.contains(familyName).should("exist");
+
+        cy.get('a.btn-ghost-primary').contains("Edit").click();
+        cy.contains("Family Info");
+
+        const weddingYear = "2020";
+        const weddingMonth = "06";
+        const weddingDay = "15";
+        cy.get("#WeddingDate").type(`${weddingYear}-${weddingMonth}-${weddingDay}`);
+
+        cy.get('button[name="FamilySubmit"]').click();
+
+        cy.location("pathname").should("include", "/people/family/");
+        cy.contains("Family Profile");
+        cy.get("i.fa-ring").should("be.visible");
+        cy.contains(`${weddingMonth}/${weddingDay}/${weddingYear}`).should("be.visible");
+        cy.get("li").contains(`${weddingMonth}/${weddingDay}/${weddingYear}`).find("i.fa-ring").should("be.visible");
+    });
+});
+
+describe("Standard Family Activation", () => {
+    beforeEach(() => {
+        // Reset family 3 to active BEFORE registering intercepts so the setup
+        // call is not captured by @updateToActive — only UI-triggered requests
+        // should resolve those aliases.
+        cy.makePrivateUserAPICall("POST", "/api/family/3/activate/true", "", 200);
+
+        cy.intercept("POST", "**/api/family/3/activate/true").as("updateToActive");
+        cy.intercept("POST", "**/api/family/3/activate/false").as("updateToInActive");
+
+        cy.setupStandardSession({ forceLogin: true });
+    });
+
+    it("Family activation flow", () => {
+        cy.visit("people/family");
+        cy.contains("Family Listing");
+
+        cy.visit("people/family?mode=inactive");
+        cy.contains("Lewis").should("not.exist");
+
+        cy.visit("people/family/3");
+        cy.contains("This Family is Inactive").should("not.be.visible");
+        cy.get("#family-actions-dropdown").click();
+        cy.get("#activateDeactivate").click();
+        cy.get(".bootbox-accept").should("be.visible").click();
+        cy.wait("@updateToInActive");
+
+        cy.visit("people/family?mode=inactive");
+        cy.contains("Lewis");
+
+        cy.visit("people/family/3");
+        cy.contains("This Family is Inactive").should("be.visible");
+        cy.get("#family-actions-dropdown").click();
+        cy.get("#activateDeactivate").click();
+        cy.get(".bootbox-accept").should("be.visible").click();
+        cy.wait("@updateToActive");
+
+        cy.visit("people/family?mode=inactive");
+        cy.contains("Lewis").should("not.exist");
+    });
+});

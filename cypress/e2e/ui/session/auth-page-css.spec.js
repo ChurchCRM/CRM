@@ -70,4 +70,11 @@ describe("Auth Page CSS Regression", () => {
             cy.get(".alert-buttons a, .alert-buttons button").should("have.length.at.least", 1);
         });
     });
+
+    describe("Login Page Query Parameters", () => {
+        it("Should prefill username from query parameter", () => {
+            cy.visit("/session/begin?username=test@user.com");
+            cy.get('input[id="UserBox"]').should("have.value", "test@user.com");
+        });
+    });
 });

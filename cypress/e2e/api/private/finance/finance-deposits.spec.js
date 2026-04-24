@@ -29,7 +29,7 @@ describe("API Private Deposit Operations", () => {
                 "GET",
                 `/api/deposits/${depositID}`,
                 null,
-                [200, 404, 500]
+                [200, 404]
             ).then((resp) => {
                 if (resp.status === 200) {
                     expect(resp.body).to.have.property("Id");
@@ -58,7 +58,7 @@ describe("API Private Deposit Operations", () => {
                 "GET",
                 `/api/deposits/${depositID}/csv`,
                 null,
-                [200, 404, 500]
+                [200, 404]
             ).then((resp) => {
                 if (resp.status === 200) {
                     expect(resp.body).to.exist;
@@ -72,7 +72,7 @@ describe("API Private Deposit Operations", () => {
                 "GET",
                 `/api/deposits/${depositID}/pdf`,
                 null,
-                [200, 404, 500]
+                [200, 404]
             );
         });
 
@@ -82,7 +82,7 @@ describe("API Private Deposit Operations", () => {
                 "GET",
                 `/api/deposits/${depositID}/ofx`,
                 null,
-                [200, 404, 500]
+                [200, 404]
             ).then((resp) => {
                 if (resp.status === 200) {
                     expect(resp.body).to.have.property("content");
@@ -122,7 +122,7 @@ describe("API Private Deposit Operations", () => {
                     depositDate: today,
                     depositClosed: false,
                 },
-                [200, 404, 500]
+                [200, 404]
             );
         });
 
