@@ -12,7 +12,7 @@ import { initRefreshCoordinatesBtn } from "./geo-refresh";
 
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize map if coordinates exist
-  const config = window.CRM && window.CRM.familyMapConfig;
+  const config = window.CRM?.familyMapConfig;
   if (config && config.lat !== undefined && config.lng !== undefined) {
     const map = L.map("map1", {
       scrollWheelZoom: false,

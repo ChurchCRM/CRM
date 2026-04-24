@@ -122,10 +122,11 @@ describe("Person Group Interactions", () => {
             // TomSelect should be initialized with groups loaded
             cy.get("#personGroupModal .ts-control").should("be.visible");
 
-            // Close modal
+            // Close modal and verify it is no longer visible
             cy.get("#personGroupModal [data-bs-dismiss='modal']")
                 .first()
                 .click();
+            cy.get("#personGroupModal").should("not.be.visible");
         });
     });
 });

@@ -96,7 +96,25 @@ describe('04 - System Reset', () => {
         it('should reset the database via API', () => {
             manualLogin();
 
-            // Perform reset via API
+            // Navigate to the reset page BEFORE firing the destructive API call.
+            // manualLogin() leaves the browser on /v2/dashboard (or church-info),
+            // which fires async widget XHRs (cart, familiesInCart,
+            // deposits/dashboard, calendar counters, ...). If any are still
+            // in-flight when /admin/api/database/reset invalidates the session
+            // and wipes tables, they reject with unexpected payloads and
+            // surface as "An unknown error has occurred: [object Object]"
+            // unhandled rejections that fail the test — a pure race condition.
+            //
+            // The reset page is simple (one confirmation form, no DataTable,
+            // no charts) — loading it replaces the dashboard, aborts any
+            // pending dashboard XHRs, and gives the header cart-count refresh
+            // time to complete before we fire the destructive call.
+            cy.visit('/admin/system/reset');
+            cy.contains('.alert-danger', 'Destructive Operation', { timeout: 15000 })
+                .should('be.visible');
+            cy.get('#resetBtn').should('be.disabled');
+
+            // Browser is now idle on a static page. Perform reset via API.
             cy.request({
                 method: 'DELETE',
                 url: '/admin/api/database/reset',
@@ -107,108 +125,15 @@ describe('04 - System Reset', () => {
                 expect(response.body).to.have.property('msg');
                 expect(response.body).to.have.property('defaultUsername', 'admin');
                 expect(response.body).to.have.property('defaultPassword', 'changeme');
-                
+
                 cy.log('Database reset successful');
             });
         });
     });
-
-    describe('Step 10c: Verify System Reset and Login', () => {
-        it('should redirect to login after reset', () => {
-            // Clear any cached sessions since we just reset the database
-            cy.clearCookies();
-            cy.clearLocalStorage();
-
-            // Visit homepage - should redirect to login after reset.
-            // A DB reset recreates the schema at the current version, so no version
-            // mismatch occurs and the db-upgrade page is never shown.
-            cy.visit('/');
-
-            cy.url({ timeout: 30000 }).should('satisfy', (url) => {
-                return url.includes('/session/begin') || url.includes('/login');
-            });
-        });
-
-        it('should login with default credentials after reset', () => {
-            // manualLogin() uses 'changeme', detects forced /changepassword redirect,
-            // and completes it — leaving password as 'Cypress@01!' with NeedPasswordChange=false.
-            manualLogin();
-
-            // Now change it back to 'changeme' so Steps 10d/10e can login cleanly.
-            // NeedPasswordChange=false so this shows the voluntary form (input[type=submit]).
-            cy.visit('/v2/user/current/changepassword');
-            cy.get('#OldPassword').type('Cypress@01!');
-            cy.get('#NewPassword1').type('changeme');
-            cy.get('#NewPassword2').type('changeme');
-            cy.get('input[type=submit]').click();
-            cy.contains('Password Change Successful', { timeout: 10000 }).should('be.visible');
-        });
-    });
-
-    describe('Step 10d: Verify System is Blank', () => {
-        beforeEach(() => {
-            manualLogin();
-        });
-
-        it('should verify no people exist (except admin)', () => {
-            cy.request({
-                method: 'GET',
-                url: '/api/persons/latest',
-                timeout: 30000
-            }).then((response) => {
-                expect(response.status).to.equal(200);
-                expect(response.body).to.have.property('people');
-                
-                // Should only have admin user (1 person max)
-                const people = response.body.people;
-                expect(people.length).to.be.lessThan(2);
-                cy.log(`Found ${people.length} people after reset (expected 0-1)`);
-            });
-        });
-
-        it('should verify no families exist', () => {
-            cy.request({
-                method: 'GET',
-                url: '/api/families/latest',
-                timeout: 30000
-            }).then((response) => {
-                expect(response.status).to.equal(200);
-                expect(response.body).to.have.property('families');
-                
-                // Should have no families
-                const families = response.body.families;
-                expect(families.length).to.equal(0);
-                cy.log('No families found after reset (as expected)');
-            });
-        });
-
-        it('should verify no groups exist', () => {
-            cy.request({
-                method: 'GET', 
-                url: '/api/groups/',
-                timeout: 30000,
-                failOnStatusCode: false
-            }).then((response) => {
-                if (response.status === 200) {
-                    // Groups API returns array directly
-                    const groups = response.body;
-                    expect(groups.length).to.equal(0);
-                    cy.log('No groups found after reset (as expected)');
-                }
-            });
-        });
-    });
-
-    describe('Step 10e: Final Verification', () => {
-        it('should have a clean system ready for use', () => {
-            manualLogin();
-            
-            // Verify admin dashboard is accessible
-            cy.visit('/admin/');
-            cy.contains('Admin Dashboard', { timeout: 15000 }).should('be.visible');
-            
-            // The system is now blank and ready for a fresh start
-            cy.log('System reset complete - clean installation verified');
-        });
-    });
 });
+
+// Post-reset verification (Steps 10c / 10d / 10e) lives in
+// 05-post-reset-verification.spec.js so Cypress tears down the browser context
+// between the destructive reset and the verification steps. This eliminates
+// any possibility of lingering XHRs from the pre-reset session interacting
+// with the freshly-wiped database.
