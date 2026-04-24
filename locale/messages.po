@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-24 03:22+0000\n"
+"POT-Creation-Date: 2026-04-24 16:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -583,6 +583,10 @@ msgid "Address has been geocoded (coordinates stored)"
 msgstr ""
 
 msgid "Address is required"
+msgstr ""
+
+#. plugin:holidays:summary
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
 msgstr ""
 
 msgid "Admin"
@@ -3307,6 +3311,10 @@ msgstr ""
 msgid "ESE"
 msgstr ""
 
+#. plugin:holidays:section:2:content
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr ""
+
 msgid "Each person can have their own email and mobile number."
 msgstr ""
 
@@ -4497,6 +4505,10 @@ msgstr ""
 msgid "Filtering"
 msgstr ""
 
+#. plugin:holidays:section:1:title
+msgid "Filtering by category"
+msgstr ""
+
 msgid "Filters"
 msgstr ""
 
@@ -5187,9 +5199,6 @@ msgstr ""
 msgid "Help on types.."
 msgstr ""
 
-msgid "Help translate this project"
-msgstr ""
-
 msgid "Here"
 msgstr ""
 
@@ -5212,10 +5221,15 @@ msgstr ""
 msgid "Hit Rate"
 msgstr ""
 
-msgid "Holiday"
+msgid "Holiday Settings"
 msgstr ""
 
-msgid "Holidays"
+#, php-format
+msgid "Holidays (%s)"
+msgstr ""
+
+#. plugin:holidays:section:1:content
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
 msgstr ""
 
 msgid "Home"
@@ -7005,6 +7019,9 @@ msgid "No community plugins installed"
 msgstr ""
 
 msgid "No core plugins found"
+msgstr ""
+
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
 msgstr ""
 
 msgid "No custom Family fields have been added yet"
@@ -8884,10 +8901,6 @@ msgstr ""
 msgid "Salutation Utility"
 msgstr ""
 
-#. Context: locales
-msgid "Sami (Northern) (Sweden)"
-msgstr ""
-
 #. Context: countries
 msgid "Samoa"
 msgstr ""
@@ -9303,6 +9316,10 @@ msgstr ""
 msgid "Setting saved"
 msgstr ""
 
+#. plugin:holidays:section:0:title
+msgid "Setting up countries"
+msgstr ""
+
 msgid "Setting updated successfully"
 msgstr ""
 
@@ -9379,6 +9396,10 @@ msgid "Show/Hide Lost Password Link on the login screen"
 msgstr ""
 
 msgid "Show:"
+msgstr ""
+
+#. plugin:holidays:section:2:title
+msgid "Showing and hiding individual countries"
 msgstr ""
 
 #, php-format
@@ -9735,6 +9756,10 @@ msgstr ""
 
 #. Context: countries
 msgid "Sweden (Sverige)"
+msgstr ""
+
+#. Context: locales
+msgid "Swedish"
 msgstr ""
 
 #. Context: countries
@@ -10418,9 +10443,6 @@ msgstr ""
 msgid "Translation Progress"
 msgstr ""
 
-msgid "Translation incomplete"
-msgstr ""
-
 #. Context: countries
 msgid "Trinidad and Tobago"
 msgstr ""
@@ -10771,6 +10793,10 @@ msgid "Use classification and family filters to generate reports for specific gr
 msgstr ""
 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
+msgstr ""
+
+#. plugin:holidays:section:0:content
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
 msgstr ""
 
 msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
