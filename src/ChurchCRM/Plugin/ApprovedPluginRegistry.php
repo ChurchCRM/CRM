@@ -36,6 +36,9 @@ class ApprovedPluginRegistry
     /** Default filename relative to the plugins directory. */
     public const FILENAME = 'approved-plugins.json';
 
+    /** Remote registry URL — updated without a CRM release via the Plugins orphan branch. */
+    public const REGISTRY_URL = 'https://raw.githubusercontent.com/ChurchCRM/CRM/Plugins/approved-plugins.json';
+
     /** Required keys on every entry. */
     private const REQUIRED_KEYS = ['id', 'name', 'version', 'downloadUrl', 'sha256', 'risk', 'riskSummary'];
 
@@ -64,6 +67,7 @@ class ApprovedPluginRegistry
         'hooks.email',        // plugin listens for EMAIL_* hooks
         'email.send',         // plugin sends email on behalf of the church
         'sms.send',           // plugin sends SMS on behalf of the church
+        'calendar.register',  // plugin contributes SystemCalendar instances via systemcalendars.register hook
     ];
 
     /** @var array<string, array<string, mixed>>|null */
@@ -130,6 +134,13 @@ class ApprovedPluginRegistry
             self::$cache[$entry['id']] = $entry;
         }
 
+        // Remote entries (fetched at login, stored in session) take precedence
+        // over the local fallback file so the registry can be updated without a
+        // CRM release.
+        if (!empty($_SESSION['RemotePluginRegistry']) && is_array($_SESSION['RemotePluginRegistry'])) {
+            self::$cache = array_merge(self::$cache, $_SESSION['RemotePluginRegistry']);
+        }
+
         return self::$cache;
     }
 
@@ -161,6 +172,39 @@ class ApprovedPluginRegistry
         }
 
         return null;
+    }
+
+    /**
+     * Fetch the approved-plugins registry from the remote URL configured in
+     * sPluginRegistryURL and store the validated entries in the session.
+     * Called once at login by AuthenticationManager — never in the render path.
+     */
+    public static function fetchRemoteRegistry(): void
+    {
+        try {
+            $contents = file_get_contents(self::REGISTRY_URL);
+            if ($contents === false) {
+                LoggerUtils::getAppLogger()->warning('Failed to fetch remote plugin registry', ['url' => self::REGISTRY_URL]);
+
+                return;
+            }
+            $data = json_decode($contents, true, 512, JSON_THROW_ON_ERROR);
+            $entries = $data['plugins'] ?? [];
+            if (!is_array($entries)) {
+                return;
+            }
+            $validated = [];
+            foreach ($entries as $entry) {
+                if (is_array($entry) && self::isValidEntry($entry)) {
+                    $validated[$entry['id']] = $entry;
+                }
+            }
+            $_SESSION['RemotePluginRegistry'] = $validated;
+            self::$cache = null; // invalidate so next all() call merges fresh data
+            self::$cachePath = null;
+        } catch (\Exception $e) {
+            LoggerUtils::getAppLogger()->warning('Error processing remote plugin registry', ['error' => $e->getMessage()]);
+        }
     }
 
     /**

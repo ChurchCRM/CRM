@@ -156,6 +156,7 @@ PR — do not quietly reclassify the behaviour.
 | `hooks.email`       |       |                      |       |
 | `email.send`        |       |                      |       |
 | `sms.send`          |       |                      |       |
+| `calendar.register` |       |                      |       |
 
 This matches the WordPress 2026 "declared capabilities" model and the
 upcoming plugin-security validation in WP 7.2. Any capability the plugin
