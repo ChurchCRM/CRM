@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Base\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\EventAudienceQuery;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Group;
@@ -838,40 +839,41 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      * @OA\Delete(
      *     path="/groups/{groupID}",
      *     summary="Delete a group (ManageGroupRole role required)",
-     *     description="Deletes a group. Returns 409 Conflict if the group still has members, custom properties, or is referenced by an event type — clear those references first.",
+     *     description="Deletes a group. Members and custom properties are cascade-deleted. Returns 409 Conflict if the group is the audience for one or more events, or is referenced by an event type — reassign those first.",
      *     tags={"Groups"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="groupID", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Group deleted successfully"),
      *     @OA\Response(response=403, description="ManageGroupRole role required"),
-     *     @OA\Response(response=409, description="Group is still referenced by members, properties, or event types")
+     *     @OA\Response(response=409, description="Group is the audience for active events or referenced by event types")
      * )
      */
     $group->delete('/{groupID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         $group = $request->getAttribute('group');
         $groupId = (int) $group->getId();
 
-        // Block-if-in-use: refuse delete while the group has members, custom
-        // properties, or event types that default to it. Cascade would silently
-        // erase membership history and detach event types; blocking surfaces
-        // the fact that the caller has cleanup to do first. See #8669.
-        $memberCount = Person2group2roleP2g2rQuery::create()->filterByGroupId($groupId)->count();
-        $propCount = GroupPropMasterQuery::create()->filterByGrpId($groupId)->count();
+        // Block if the group is attached to events (as audience or via event type default).
+        // These references have independent meaning and must be reassigned first.
+        $eventAudienceCount = EventAudienceQuery::create()->filterByGroupId($groupId)->count();
         $eventTypeCount = EventTypeQuery::create()->filterByTypeGrpid($groupId)->count();
 
-        if ($memberCount + $propCount + $eventTypeCount > 0) {
+        if ($eventAudienceCount + $eventTypeCount > 0) {
             return SlimUtils::renderErrorJSON(
                 $response,
                 sprintf(
-                    gettext('Cannot delete group: %d members, %d custom properties, %d event types still reference it.'),
-                    $memberCount,
-                    $propCount,
+                    gettext('Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.'),
+                    $eventAudienceCount,
                     $eventTypeCount
                 ),
                 [],
                 409
             );
         }
+
+        // Cascade members and custom property definitions — these are owned by
+        // the group and have no meaning once it is gone.
+        Person2group2roleP2g2rQuery::create()->filterByGroupId($groupId)->delete();
+        GroupPropMasterQuery::create()->filterByGrpId($groupId)->delete();
 
         $group->delete();
         return SlimUtils::renderSuccessJSON($response);

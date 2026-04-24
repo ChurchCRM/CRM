@@ -6,6 +6,7 @@ use ChurchCRM\model\ChurchCRM\Base\EventQuery;
 use ChurchCRM\model\ChurchCRM\Base\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\Event;
+use ChurchCRM\model\ChurchCRM\KioskAssignmentQuery;
 use ChurchCRM\model\ChurchCRM\EventAudience;
 use ChurchCRM\model\ChurchCRM\EventAudienceQuery;
 use ChurchCRM\model\ChurchCRM\EventAttendQuery;
@@ -634,7 +635,37 @@ function setEventTime(Request $request, Response $response, array $args): Respon
  */
 function deleteEvent(Request $request, Response $response, array $args): Response
 {
-    $request->getAttribute('event')->delete();
+    $event = $request->getAttribute('event');
+    $eventId = (int) $event->getId();
+
+    // Block if event is still open and people are currently checked in.
+    if (!$event->getInActive()) {
+        $checkedInCount = EventAttendQuery::create()
+            ->filterByEventId($eventId)
+            ->filterByCheckinDate(null, Criteria::NOT_EQUAL)
+            ->filterByCheckoutDate(null, Criteria::EQUAL)
+            ->count();
+        if ($checkedInCount > 0) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                sprintf(gettext('Cannot delete event: %d people are currently checked in.'), $checkedInCount),
+                [],
+                409
+            );
+        }
+    }
+
+    // Block if the event is currently assigned to a kiosk.
+    if (KioskAssignmentQuery::create()->filterByEventId($eventId)->exists()) {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            gettext('Cannot delete event: event is currently assigned to a kiosk.'),
+            [],
+            409
+        );
+    }
+
+    $event->delete();
 
     return SlimUtils::renderSuccessJSON($response);
 }
