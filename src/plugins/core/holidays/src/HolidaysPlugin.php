@@ -61,6 +61,10 @@ class HolidaysPlugin extends AbstractPlugin
                 'country' => $yasumiName,
             ]);
         }
+
+        if (empty($this->getConfigValue('categories'))) {
+            $this->setConfigValue('categories', 'official,religious');
+        }
     }
 
     /**
@@ -137,10 +141,7 @@ class HolidaysPlugin extends AbstractPlugin
             return null;
         }
 
-        return gettext(
-            'No holiday country is configured. Set the church country in System Settings ' .
-            'or list countries explicitly in the plugin settings.'
-        );
+        return gettext('No country is selected. Choose at least one country in the Holiday Calendars plugin settings.');
     }
 
     private function getChurchCountryYasumiName(): ?string

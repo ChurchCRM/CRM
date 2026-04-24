@@ -28,6 +28,20 @@ class HolidayCalendarProvider implements SystemCalendar
      */
     private const ID_OFFSET = 10000;
 
+    /** Distinct pastel background colours, one per country (black text works on all). */
+    private const CALENDAR_BG_COLORS = [
+        '91CAF9', // blue
+        '95E6B3', // green
+        'FAC56E', // amber
+        'D4A4EB', // purple
+        'F4919C', // coral
+        '69D5D5', // teal
+        'F9E080', // yellow
+        'F9AEDE', // pink
+        'A8BAED', // indigo
+        'B2D8A8', // sage
+    ];
+
     private string $yasumiCountry;
 
     /** @var string[] Lowercase category names; empty means "all". */
@@ -56,7 +70,8 @@ class HolidayCalendarProvider implements SystemCalendar
 
     public function getBackgroundColor(): string
     {
-        return '6dfff5';
+        $index = (crc32($this->yasumiCountry) & 0xffffffff) % count(self::CALENDAR_BG_COLORS);
+        return self::CALENDAR_BG_COLORS[$index];
     }
 
     public function getForegroundColor(): string
@@ -69,12 +84,13 @@ class HolidayCalendarProvider implements SystemCalendar
         // Stable, deterministic, unsigned ID derived from the country name.
         // Modulo keeps it inside a comfortable range; offset prevents collision
         // with built-in system calendar IDs (0..9).
-        return self::ID_OFFSET + (int) (crc32($this->yasumiCountry) % 1000000);
+        return self::ID_OFFSET + (int) (crc32($this->yasumiCountry) & 0xffffffff) % 1000000;
     }
 
     public function getName(): string
     {
-        return sprintf(gettext('Holidays (%s)'), $this->yasumiCountry);
+        $display = preg_replace('/(?<=[a-z])(?=[A-Z])/', ' ', $this->yasumiCountry) ?? $this->yasumiCountry;
+        return sprintf(gettext('Holidays (%s)'), $display);
     }
 
     public function getEvents(string $start, string $end): ObjectCollection
@@ -84,12 +100,17 @@ class HolidayCalendarProvider implements SystemCalendar
 
         try {
             [$startYear, $endYear] = $this->resolveYearRange($start, $end);
+            $startDate = !empty($start) ? new \DateTimeImmutable($start) : null;
+            $endDate   = !empty($end)   ? new \DateTimeImmutable($end)   : null;
 
             for ($year = $startYear; $year <= $endYear; $year++) {
                 $holidays = Yasumi::create($this->yasumiCountry, $year);
 
                 foreach ($holidays->getHolidays() as $holiday) {
                     if (!$this->matchesCategory($holiday)) {
+                        continue;
+                    }
+                    if (!$this->inDateRange($holiday, $startDate, $endDate)) {
                         continue;
                     }
                     $events->push($this->yasumiHolidayToEvent($holiday));
@@ -102,7 +123,7 @@ class HolidayCalendarProvider implements SystemCalendar
         return $events;
     }
 
-    public function getEventById(int $Id): ObjectCollection
+    public function getEventById(int $_id): ObjectCollection
     {
         $emptySet = new ObjectCollection();
         $emptySet->setModel(Event::class);
@@ -155,14 +176,32 @@ class HolidayCalendarProvider implements SystemCalendar
         return in_array($type, $this->categories, true);
     }
 
+    private function inDateRange(Holiday $holiday, ?\DateTimeImmutable $start, ?\DateTimeImmutable $end): bool
+    {
+        if ($start === null && $end === null) {
+            return true;
+        }
+        $ts = $holiday->getTimestamp();
+        if ($start !== null && $ts < $start->setTime(0, 0, 0)->getTimestamp()) {
+            return false;
+        }
+        // FullCalendar $end is exclusive (the day after the last visible day)
+        if ($end !== null && $ts >= $end->setTime(0, 0, 0)->getTimestamp()) {
+            return false;
+        }
+        return true;
+    }
+
     private function yasumiHolidayToEvent(Holiday $holiday): Event
     {
-        $id = crc32($this->yasumiCountry . '|' . $holiday->getName() . '|' . $holiday->getTimestamp());
+        $id = (int) (crc32($this->yasumiCountry . '|' . $holiday->getName() . '|' . $holiday->getTimestamp()) & 0x7fffffff);
         $event = new Event();
         $event->setId($id);
         $event->setEditable(false);
         $event->setTitle($holiday->getName());
         $event->setStart($holiday->getTimestamp());
+        $event->setVirtualColumn('holidayCountry', $this->yasumiCountry);
+        $event->setVirtualColumn('holidayType', $holiday->getType());
 
         return $event;
     }

@@ -169,9 +169,55 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                                         </option>
                                     <?php endforeach; ?>
                                 </select>
+                            <?php elseif ($settingType === 'multiselect' && !empty($setting['options'])): ?>
+                                <?php $selectedValues = !empty($settingValue) ? array_map('trim', explode(',', $settingValue)) : []; ?>
+                                <select class="form-select plugin-setting"
+                                        id="<?= $pluginId ?>-<?= $settingKey ?>"
+                                        data-setting-key="<?= $settingKey ?>"
+                                        data-config-key="<?= $configKey ?>"
+                                        multiple
+                                        size="<?= min(8, count($setting['options'])) ?>">
+                                    <?php foreach ($setting['options'] as $idx => $opt):
+                                        $optLabel = $setting['optionLabels'][$idx] ?? $opt;
+                                    ?>
+                                        <option value="<?= htmlspecialchars($opt) ?>"
+                                                <?= in_array($opt, $selectedValues, true) ? 'selected' : '' ?>>
+                                            <?= htmlspecialchars($optLabel) ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            <?php elseif ($settingType === 'checkboxes' && !empty($setting['options'])): ?>
+                                <?php
+                                    $defaultValues = (!empty($setting['default']) && is_array($setting['default'])) ? $setting['default'] : [];
+                                    $selectedValues = !empty($settingValue) ? array_map('trim', explode(',', $settingValue)) : $defaultValues;
+                                ?>
+                                <div class="d-flex flex-wrap gap-3 mt-1">
+                                    <?php foreach ($setting['options'] as $idx => $opt):
+                                        $optLabel = $setting['optionLabels'][$idx] ?? $opt;
+                                        $cbId = $pluginId . '-' . $settingKey . '-cb-' . $idx;
+                                    ?>
+                                        <div class="form-check">
+                                            <input class="form-check-input plugin-checkbox-item"
+                                                   type="checkbox"
+                                                   id="<?= $cbId ?>"
+                                                   value="<?= htmlspecialchars($opt) ?>"
+                                                   data-group-key="<?= htmlspecialchars($settingKey) ?>"
+                                                   <?= in_array($opt, $selectedValues, true) ? 'checked' : '' ?>>
+                                            <label class="form-check-label" for="<?= $cbId ?>">
+                                                <?= htmlspecialchars($optLabel) ?>
+                                            </label>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                                <input type="hidden"
+                                       class="plugin-setting plugin-checkboxes"
+                                       id="<?= $pluginId ?>-<?= $settingKey ?>"
+                                       data-setting-key="<?= $settingKey ?>"
+                                       data-config-key="<?= $configKey ?>"
+                                       value="<?= htmlspecialchars($settingValue) ?>">
                             <?php else: ?>
-                                <input type="text" 
-                                       class="form-control plugin-setting" 
+                                <input type="text"
+                                       class="form-control plugin-setting"
                                        id="<?= $pluginId ?>-<?= $settingKey ?>"
                                        data-setting-key="<?= $settingKey ?>"
                                        data-config-key="<?= $configKey ?>"
@@ -288,9 +334,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                     <i class="fa-solid fa-circle-question me-3"></i>
                     <span id="pluginHelpTitle"><?= gettext('Plugin Help') ?></span>
                 </h5>
-                <button type="button" class="close text-white" data-bs-dismiss="modal" aria-label="<?= gettext('Close') ?>">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="<?= gettext('Close') ?>"></button>
             </div>
             <div class="modal-body" id="pluginHelpContent">
                 <!-- Help content will be injected here -->
@@ -333,6 +377,18 @@ $(document).ready(function() {
         const card = $(this).closest('.card');
         togglePluginCard(card);
     });
+
+    // Initialize TomSelect on multiselect plugin settings
+    if (typeof TomSelect !== 'undefined') {
+        document.querySelectorAll('select[multiple].plugin-setting').forEach(function(el) {
+            new TomSelect(el, {
+                plugins: ['remove_button'],
+                maxItems: null,
+                create: false,
+                placeholder: i18next.t('Select…'),
+            });
+        });
+    }
 
     // Show plugin help modal
     $('.btn-plugin-help').on('click', function(e) {
@@ -440,6 +496,15 @@ $(document).ready(function() {
             if (input.attr('type') === 'checkbox') {
                 value = input.is(':checked') ? '1' : '0';
                 settings[key] = value;
+            } else if (input.is('select[multiple]')) {
+                const ts = input[0].tomselect;
+                const vals = ts ? Object.keys(ts.items) : input.val();
+                settings[key] = Array.isArray(vals) ? vals.join(',') : (vals || '');
+            } else if (input.hasClass('plugin-checkboxes')) {
+                const groupKey = input.data('setting-key');
+                const checked = form.find('.plugin-checkbox-item[data-group-key="' + groupKey + '"]:checked')
+                    .map(function() { return this.value; }).get();
+                settings[groupKey] = checked.join(',');
             } else if (input.attr('type') === 'password') {
                 // For password fields, only include if user entered a new value
                 // Skip empty passwords when there's an existing value (preserve current)
@@ -488,6 +553,15 @@ $(document).ready(function() {
             const key   = input.data('setting-key');
             if (input.attr('type') === 'checkbox') {
                 settings[key] = input.is(':checked') ? '1' : '0';
+            } else if (input.is('select[multiple]')) {
+                const ts = input[0].tomselect;
+                const vals = ts ? Object.keys(ts.items) : input.val();
+                settings[key] = Array.isArray(vals) ? vals.join(',') : (vals || '');
+            } else if (input.hasClass('plugin-checkboxes')) {
+                const groupKey = input.data('setting-key');
+                const checked = form.find('.plugin-checkbox-item[data-group-key="' + groupKey + '"]:checked')
+                    .map(function() { return this.value; }).get();
+                settings[groupKey] = checked.join(',');
             } else if (input.attr('type') === 'password') {
                 const val = input.val();
                 // Only include if the admin actually typed a new value

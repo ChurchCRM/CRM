@@ -1,21 +1,17 @@
 {
-  "summary": "Adds public holidays to the main calendar using the Yasumi data provider. Each configured country becomes its own toggleable system calendar in the calendar sidebar, so users can independently show or hide holidays per country.",
+  "summary": "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently.",
   "sections": [
     {
-      "title": "Default behaviour",
-      "content": "When you enable the plugin for the first time it will pre-select the country configured in System Settings (sChurchCountry), provided Yasumi has data for it. You can override this by listing one or more Yasumi country names (e.g. \"USA,Mexico\") in the Countries setting."
+      "title": "Setting up countries",
+      "content": "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
     },
     {
-      "title": "Filtering categories",
-      "content": "Yasumi tags each holiday with a category: official, observance, bank, seasonal or religious. Leave the Categories setting blank to show every holiday, or list the categories you want (e.g. \"official,religious\")."
+      "title": "Filtering by category",
+      "content": "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
     },
     {
-      "title": "Showing/hiding individual countries",
-      "content": "Each country produces its own calendar in the sidebar. Use the existing per-calendar toggle to hide a country without changing plugin settings."
+      "title": "Showing and hiding individual countries",
+      "content": "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
     }
-  ],
-  "links": [
-    { "label": "Yasumi project", "url": "https://github.com/azuyalabs/yasumi" },
-    { "label": "Supported countries", "url": "https://www.yasumi.dev/" }
   ]
 }
