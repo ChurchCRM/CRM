@@ -328,7 +328,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                         </div>
                     <?php endforeach; ?>
                     <div class="btn-group" role="group">
-                        <button type="submit" class="btn btn-primary btn-sm">
+                        <button type="submit" class="btn btn-primary btn-sm btn-save-settings" data-plugin-id="<?= $pluginId ?>">
                             <i class="fa-solid fa-floppy-disk me-2"></i><?= gettext('Save Settings') ?>
                         </button>
                         <?php if (!empty($plugin['hasTest'])): ?>
@@ -355,7 +355,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
 <div class="row">
     <div class="col-lg-8">
         <!-- Core Plugins -->
-        <div class="card">
+        <div class="card" id="core-plugins-section">
             <div class="card-header border-0">
                 <h3 class="card-title">
                     <i class="fa-solid fa-plug me-3"></i><?= gettext('Core Plugins') ?>
@@ -376,7 +376,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
         </div>
 
         <!-- Community Plugins -->
-        <div class="card">
+        <div class="card" id="community-plugins-section">
             <div class="card-header border-0 d-flex align-items-center">
                 <h3 class="card-title">
                     <i class="fa-solid fa-puzzle-piece me-3"></i><?= gettext('Community Plugins') ?>
@@ -988,7 +988,7 @@ $(document).ready(function() {
                 ? '<div class="mt-2 small text-muted fst-italic">' + $('<div>').text(entry.notes).html() + '</div>'
                 : '';
             return '' +
-                '<div class="card">' +
+                '<div class="card" data-approved-plugin-id="' + $('<div>').text(entry.id || '').html() + '">' +
                 '  <div class="card-body">' +
                 '    <div class="d-flex align-items-start gap-3">' +
                 '      <div class="flex-grow-1">' +
@@ -1004,6 +1004,7 @@ $(document).ready(function() {
                 '      </div>' +
                 '      <div class="flex-shrink-0">' +
                 '        <button type="button" class="btn btn-primary btn-sm btn-install-approved"' +
+                '                data-plugin-id="' + $('<div>').text(entry.id || '').html() + '"' +
                 '                data-download-url="' + $('<div>').text(entry.downloadUrl || '').html() + '">' +
                 '          <i class="fa-solid fa-download me-1"></i><?= addslashes(gettext('Install')) ?>' +
                 '        </button>' +

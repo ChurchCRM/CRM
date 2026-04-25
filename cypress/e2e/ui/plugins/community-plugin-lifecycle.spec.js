@@ -1,13 +1,15 @@
 /**
  * Community Plugin Lifecycle
  *
- * Tests the full lifecycle of a community plugin:
- *   1. Enable via management UI
- *   2. Create a person (fires PERSON_CREATED hook)
- *   3. Uninstall via management UI confirm modal
+ * Tests the full lifecycle of a community plugin entirely through the web UI:
+ *   1. Install from the Browse Approved modal (exercises registry load + download)
+ *   2. Enable via the plugin card on the management page
+ *   3. Create a person (fires PERSON_CREATED hook)
+ *   4. Uninstall via the management UI confirm modal
  *
- * Uses hello-world (tracked in git at src/plugins/community/hello-world).
- * The after() hook restores the plugin directory via git so subsequent runs work.
+ * Uses hello-world from the approved plugin registry.
+ * No local files are required — the plugin is downloaded from GitHub during the test.
+ * before() cleans up any leftover install from a previous run via the API.
  */
 describe('Community Plugin Lifecycle', () => {
     const PLUGIN_ID = 'hello-world';
@@ -15,23 +17,12 @@ describe('Community Plugin Lifecycle', () => {
     let createdPersonId = null;
 
     before(() => {
-        // Restore hello-world from git if a previous run deleted it
-        cy.exec('git -C . checkout -- src/plugins/community/hello-world 2>/dev/null; true', {
-            failOnNonZero: false,
-        });
-
-        // Start with a clean disabled state
         cy.setupAdminSession();
-        cy.makePrivateAdminAPICall('POST', `/plugins/api/plugins/${PLUGIN_ID}/disable`);
+        // Remove any leftover install from a previous partial run (400 = not installed = fine)
+        cy.makePrivateAdminAPICall('DELETE', `/plugins/api/plugins/${PLUGIN_ID}`, null, [200, 400]);
     });
 
     after(() => {
-        // Restore plugin files deleted by the uninstall test
-        cy.exec('git -C . checkout -- src/plugins/community/hello-world 2>/dev/null; true', {
-            failOnNonZero: false,
-        });
-
-        // Clean up the test person
         if (createdPersonId) {
             cy.setupAdminSession();
             cy.makePrivateAdminAPICall('DELETE', `/api/people/${createdPersonId}`, null, [200, 204, 404]);
@@ -39,22 +30,46 @@ describe('Community Plugin Lifecycle', () => {
     });
 
     // ─────────────────────────────────────────────────────────────────────────
+    it('installs the hello-world plugin via the Browse Approved modal', () => {
+        cy.setupAdminSession({ forceLogin: true });
+        cy.visit('/plugins/management');
+
+        // Open Browse Approved modal
+        cy.get('#btn-browse-approved').should('be.visible').click();
+        cy.get('#approvedPluginsModal').should('be.visible');
+
+        // Wait for the registry to load (spinner gone, Install buttons rendered)
+        cy.get('#approvedPluginsList .btn-install-approved', { timeout: 15000 }).should('be.visible');
+
+        // Target hello-world by its plugin id — adding more approved plugins won't break this test
+        cy.get(`#approvedPluginsList .btn-install-approved[data-plugin-id="${PLUGIN_ID}"]`).click();
+
+        // Modal closes and page reloads after install — wait for hello-world card to appear
+        cy.get(`.card[data-plugin-id="${PLUGIN_ID}"]`, { timeout: 30000 }).should('exist');
+
+        // Confirm installed but not yet enabled
+        cy.makePrivateAdminAPICall('GET', '/plugins/api/plugins').then((response) => {
+            const plugin = response.body.data.find((p) => p.id === PLUGIN_ID);
+            expect(plugin, 'hello-world in plugin list').to.exist;
+            expect(plugin.isActive, 'not yet enabled after install').to.be.false;
+        });
+    });
+
+    // ─────────────────────────────────────────────────────────────────────────
     it('enables the hello-world plugin from the management page', () => {
         cy.setupAdminSession({ forceLogin: true });
         cy.visit('/plugins/management');
 
-        // Plugin card should exist and show Enable button (currently disabled)
         cy.get(`.card[data-plugin-id="${PLUGIN_ID}"]`).as('card').should('exist');
         cy.get('@card').within(() => {
             cy.get('[data-action="enable"]').should('be.visible').click();
         });
 
-        // Page reloads after toggle — plugin should now show Disable button
+        // Page reloads after toggle — Disable button should now be visible
         cy.get(`.card[data-plugin-id="${PLUGIN_ID}"]`, { timeout: 10000 }).within(() => {
             cy.get('[data-action="disable"]').should('be.visible');
         });
 
-        // Confirm via API that the plugin is active
         cy.makePrivateAdminAPICall('GET', '/plugins/api/plugins').then((response) => {
             const plugin = response.body.data.find((p) => p.id === PLUGIN_ID);
             expect(plugin, 'hello-world plugin in list').to.exist;
@@ -93,7 +108,6 @@ describe('Community Plugin Lifecycle', () => {
 
         cy.get(`.card[data-plugin-id="${PLUGIN_ID}"]`).as('card').should('exist');
 
-        // Uninstall button lives in the card header toolbar
         cy.get('@card').within(() => {
             cy.get('.btn-plugin-uninstall').should('be.visible').click();
         });
