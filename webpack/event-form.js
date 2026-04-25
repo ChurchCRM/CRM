@@ -293,13 +293,14 @@ function renderEditorFields(event, calendars, eventTypes, groups, allDay) {
   // configured sTimeZone, so admins editing from a different region know that
   // the times they enter are interpreted as the church's wall-clock — not
   // their browser's local time.
-  // Show a compact one-line tz reminder when browser tz differs from sTimeZone.
-  // The dates/times entered in this editor are stored as the church's
-  // wall-clock — independent of viewer tz. Banner only renders for cross-tz
-  // admins so single-tz setups stay clutter-free.
+  // Show a compact one-line tz reminder when browser tz differs from sTimeZone
+  // — only for TIMED events. All-day events have no time component, so the
+  // user's tz vs the church's tz is irrelevant; showing the warning would be
+  // confusing noise. Banner only renders for cross-tz admins on timed events
+  // so single-tz setups and date-only events stay clutter-free.
   let tzNoticeMarkup = "";
   const churchTz = getChurchTz();
-  if (churchTz && churchTz !== "UTC") {
+  if (churchTz && churchTz !== "UTC" && !allDay) {
     let browserTz = "";
     try {
       browserTz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
