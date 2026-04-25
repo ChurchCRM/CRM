@@ -95,12 +95,19 @@ export function toWallClockString(value) {
       return formatJsDateInChurchTz(parsed, getChurchTz(), false);
     }
   }
-  // Naive: assume already wall-clock in church tz. Strip space/microseconds.
-  return value.replace(" ", "T").replace(/\.\d+/, "").substring(0, 19);
+  // Naive: assume already wall-clock in church tz. Strip space/microseconds,
+  // then pad missing seconds. datetime-local inputs typically yield 16-char
+  // strings ("YYYY-MM-DDTHH:mm") with no seconds, but downstream substrings
+  // (`substring(11, 19)`) and the API expect "YYYY-MM-DDTHH:mm:ss".
+  let normalized = value.replace(" ", "T").replace(/\.\d+/, "").substring(0, 19);
+  if (/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(normalized)) {
+    normalized = `${normalized}:00`;
+  }
+  return normalized;
 }
 
 // Date-only variant: returns "YYYY-MM-DD".
-function toWallClockDate(value) {
+export function toWallClockDate(value) {
   if (!value) return "";
   if (value instanceof Date) {
     return formatJsDateInChurchTz(value, getChurchTz(), true);
@@ -121,33 +128,40 @@ function formatDateForInput(value, allDay) {
   return toWallClockString(value).substring(0, 16);
 }
 
-// Human-readable display: "April 24, 2026" or "April 24, 2026 at 08:00 PM".
+// Human-readable display, locale-aware. The previous implementation hardcoded
+// English month names ("April") and the literal "at" / AM/PM, regressing the
+// non-English UI relative to the original toLocaleString-based code. Trick:
+// parse the wall-clock string into individual components, then construct a JS
+// Date with those components in browser-local. The Date's wall-clock numbers
+// then round-trip through toLocaleString unchanged — no tz shift — but the
+// month name, separator, and AM/PM come from the user's locale.
 function formatDateForDisplay(value, allDay) {
   const s = allDay ? toWallClockDate(value) : toWallClockString(value);
   if (!s) return "N/A";
   const m = s.match(/^(\d{4})-(\d{2})-(\d{2})(?:T(\d{2}):(\d{2}))?/);
   if (!m) return s;
   const [, y, mo, d, hh, mi] = m;
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  const dateStr = `${months[parseInt(mo, 10) - 1]} ${parseInt(d, 10)}, ${y}`;
-  if (allDay || hh === undefined) return dateStr;
-  let h = parseInt(hh, 10);
-  const am = h < 12 ? "AM" : "PM";
-  h = h % 12 || 12;
-  return `${dateStr} at ${String(h).padStart(2, "0")}:${mi} ${am}`;
+  const localDate = new Date(
+    parseInt(y, 10),
+    parseInt(mo, 10) - 1,
+    parseInt(d, 10),
+    hh ? parseInt(hh, 10) : 0,
+    mi ? parseInt(mi, 10) : 0,
+  );
+  if (allDay || hh === undefined) {
+    return localDate.toLocaleDateString(undefined, {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  }
+  return localDate.toLocaleString(undefined, {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 }
 
 export function isAllDay(event) {
