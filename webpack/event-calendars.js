@@ -37,12 +37,19 @@ window.moveEventModal = {
   modalCallBack: (result) => {
     if (result === true) {
       const evt = window.moveEventModal.event;
+      // Storage convention: wall-clock-in-sTimeZone (matches all existing
+      // events). FullCalendar's `startStr`/`endStr` already carry the time
+      // in the calendar's configured tz (sTimeZone). Strip any trailing Z
+      // or +HH:MM offset so PHP/Propel stores the wall-clock numbers as-is
+      // and hydrates them back in sTimeZone for display. Using `toISOString()`
+      // here would send UTC and double-shift the time on read.
+      const stripTz = (s) => (typeof s === "string" ? s.replace(/(?:Z|[+-]\d{2}:\d{2})$/, "") : s);
       window.CRM.APIRequest({
         method: "POST",
         path: `events/${evt.id}/time`,
         data: JSON.stringify({
-          startTime: evt.allDay ? evt.startStr : evt.start.toISOString(),
-          endTime: evt.end ? evt.end.toISOString() : null,
+          startTime: evt.allDay ? evt.startStr : stripTz(evt.startStr),
+          endTime: evt.end ? stripTz(evt.endStr) : null,
         }),
       });
     } else {

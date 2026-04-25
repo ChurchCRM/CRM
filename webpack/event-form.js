@@ -31,49 +31,133 @@ function escapeHtml(str) {
   return div.innerHTML.replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 }
 
-/** Parse an input value as a local date. Date-only "YYYY-MM-DD" is parsed
- *  as local (not UTC) to avoid off-by-one day shifts in non-UTC timezones. */
-function parseInputDate(value) {
-  if (!value) return undefined;
-  const dateOnly = value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
-  if (dateOnly) {
-    return new Date(Number(dateOnly[1]), Number(dateOnly[2]) - 1, Number(dateOnly[3]));
-  }
-  return new Date(value);
+// Architecture: event.Start / event.End are CHURCH wall-clock STRINGS in
+// `YYYY-MM-DDTHH:mm:ss` (timed) or `YYYY-MM-DD` (all-day). Never JS Date
+// objects in date logic. This avoids browser-tz contamination — `new Date()`,
+// `getHours()`, `getDate()` etc. all interpret in the user's local tz, which
+// silently shifts wall-clock numbers when browser tz ≠ church tz.
+//
+// All format conversions happen at boundaries:
+//   - API response → toWallClockString  (strips space/Z/offset)
+//   - FullCalendar Date → formatJsDateInChurchTz  (Intl with timeZone)
+//   - User input field → already a string, used directly
+//   - Send to API → string passes through JSON.stringify
+
+function getChurchTz() {
+  return window.CRM?.calendarJSArgs?.sTimeZone || "UTC";
 }
 
-function formatDateForInput(date, allDay) {
-  if (!date) return "";
-  const d = new Date(date);
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, "0");
-  const day = String(d.getDate()).padStart(2, "0");
-  if (allDay) return `${y}-${m}-${day}`;
-  const h = String(d.getHours()).padStart(2, "0");
-  const mi = String(d.getMinutes()).padStart(2, "0");
-  return `${y}-${m}-${day}T${h}:${mi}`;
-}
-
-function formatDateForDisplay(date, allDay) {
-  if (!date) return "N/A";
-  const d = new Date(date);
-  if (allDay) return d.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
-  return d.toLocaleString(undefined, {
+// Format a JS Date as "YYYY-MM-DDTHH:mm:ss" wall-clock numbers in the given tz.
+// Uses Intl with `timeZone` so the components reflect the church's tz, not the
+// browser's. en-CA gives ISO-friendly numeric output.
+function formatJsDateInChurchTz(date, tz, dateOnly) {
+  const opts = {
+    timeZone: tz,
     year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
+    month: "2-digit",
+    day: "2-digit",
+    hour12: false,
+    ...(dateOnly ? {} : { hour: "2-digit", minute: "2-digit", second: "2-digit" }),
+  };
+  const parts = new Intl.DateTimeFormat("en-CA", opts).formatToParts(date);
+  const get = (type) => parts.find((p) => p.type === type)?.value || "00";
+  const ymd = `${get("year")}-${get("month")}-${get("day")}`;
+  if (dateOnly) return ymd;
+  // en-CA returns "24" for midnight in some locales — normalize to "00".
+  const hh = get("hour") === "24" ? "00" : get("hour");
+  return `${ymd}T${hh}:${get("minute")}:${get("second")}`;
+}
+
+// Coerce any input (Date, API string, naive ISO, date-only) to a wall-clock
+// string in the church's tz. Returns "" for empty input.
+//   - API space format "2026-04-24 20:00:00.000000"      → "2026-04-24T20:00:00"
+//   - ISO with offset  "2026-04-24T20:00:00-04:00"        → "2026-04-24T20:00:00"
+//   - ISO with Z       "2026-04-25T00:00:00.000Z"         → reinterpret in tz
+//   - Date-only        "2026-04-24"                        → "2026-04-24"
+//   - JS Date                                              → format in church tz
+export function toWallClockString(value) {
+  if (!value) return "";
+  if (value instanceof Date) {
+    return formatJsDateInChurchTz(value, getChurchTz(), false);
+  }
+  if (typeof value !== "string") return "";
+  // ISO with explicit Z or +HH:MM: parse as instant, format in church tz so
+  // the wall-clock numbers reflect the configured display zone (handles
+  // legacy UTC-stored events from the brief broken iteration).
+  if (/Z$/.test(value) || /[+-]\d{2}:\d{2}$/.test(value)) {
+    const parsed = new Date(value);
+    if (!Number.isNaN(parsed.getTime())) {
+      return formatJsDateInChurchTz(parsed, getChurchTz(), false);
+    }
+  }
+  // Naive: assume already wall-clock in church tz. Strip space/microseconds.
+  return value.replace(" ", "T").replace(/\.\d+/, "").substring(0, 19);
+}
+
+// Date-only variant: returns "YYYY-MM-DD".
+function toWallClockDate(value) {
+  if (!value) return "";
+  if (value instanceof Date) {
+    return formatJsDateInChurchTz(value, getChurchTz(), true);
+  }
+  if (typeof value !== "string") return "";
+  if (/Z$/.test(value) || /[+-]\d{2}:\d{2}$/.test(value)) {
+    const parsed = new Date(value);
+    if (!Number.isNaN(parsed.getTime())) {
+      return formatJsDateInChurchTz(parsed, getChurchTz(), true);
+    }
+  }
+  return value.replace(" ", "T").substring(0, 10);
+}
+
+// Datetime-local input format ("YYYY-MM-DDTHH:mm") — no seconds.
+function formatDateForInput(value, allDay) {
+  if (allDay) return toWallClockDate(value);
+  return toWallClockString(value).substring(0, 16);
+}
+
+// Human-readable display: "April 24, 2026" or "April 24, 2026 at 08:00 PM".
+function formatDateForDisplay(value, allDay) {
+  const s = allDay ? toWallClockDate(value) : toWallClockString(value);
+  if (!s) return "N/A";
+  const m = s.match(/^(\d{4})-(\d{2})-(\d{2})(?:T(\d{2}):(\d{2}))?/);
+  if (!m) return s;
+  const [, y, mo, d, hh, mi] = m;
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const dateStr = `${months[parseInt(mo, 10) - 1]} ${parseInt(d, 10)}, ${y}`;
+  if (allDay || hh === undefined) return dateStr;
+  let h = parseInt(hh, 10);
+  const am = h < 12 ? "AM" : "PM";
+  h = h % 12 || 12;
+  return `${dateStr} at ${String(h).padStart(2, "0")}:${mi} ${am}`;
 }
 
 export function isAllDay(event) {
   if (!event.Start) return true;
-  const s = new Date(event.Start);
-  if (s.getHours() !== 0 || s.getMinutes() !== 0) return false;
+  const s = toWallClockString(event.Start);
+  // Date-only string (length 10) is implicitly all-day.
+  if (s.length <= 10) return true;
+  const m = s.match(/T(\d{2}):(\d{2})/);
+  if (!m || m[1] !== "00" || m[2] !== "00") return false;
   if (event.End) {
-    const e = new Date(event.End);
-    if (e.getHours() !== 0 || e.getMinutes() !== 0) return false;
+    const e = toWallClockString(event.End);
+    if (e.length > 10) {
+      const me = e.match(/T(\d{2}):(\d{2})/);
+      if (me && (me[1] !== "00" || me[2] !== "00")) return false;
+    }
   }
   return true;
 }
@@ -200,6 +284,30 @@ function renderEditorFields(event, calendars, eventTypes, groups, allDay) {
   const startVal = formatDateForInput(event.Start, allDay);
   const endVal = formatDateForInput(event.End, allDay);
 
+  // Show a banner when the user's browser tz differs from the church's
+  // configured sTimeZone, so admins editing from a different region know that
+  // the times they enter are interpreted as the church's wall-clock — not
+  // their browser's local time.
+  let tzNoticeMarkup = "";
+  const churchTz = window.CRM?.calendarJSArgs?.sTimeZone;
+  if (churchTz && !allDay) {
+    let browserTz = "";
+    try {
+      browserTz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+    } catch (_e) {
+      browserTz = "";
+    }
+    if (browserTz && browserTz !== churchTz) {
+      tzNoticeMarkup = `
+    <div class="alert alert-info py-2 mb-3" role="status">
+      <i class="ti ti-clock me-1"></i>
+      ${t("Times are interpreted as")} <strong>${escapeHtml(churchTz)}</strong>
+      (${t("the church's configured timezone")}).
+      ${t("Your browser is in")} <strong>${escapeHtml(browserTz)}</strong> — ${t("the times you enter here will be saved as the church's wall-clock time, not your local time.")}
+    </div>`;
+    }
+  }
+
   return `
     <div class="row g-3 mb-3">
       <div class="col-md-6">
@@ -214,7 +322,7 @@ function renderEditorFields(event, calendars, eventTypes, groups, allDay) {
         </div>
       </div>
     </div>
-
+    ${tzNoticeMarkup}
     <div class="mb-2">
       <div class="form-selectgroup form-selectgroup-pills">
         <label class="form-selectgroup-item">
@@ -487,21 +595,26 @@ export function renderEventEditor(container, event, calendars, eventTypes, optio
       const startInput = document.getElementById("eventStartDate");
       const endInput = document.getElementById("eventEndDate");
 
+      // String math: extract date parts from existing wall-clock strings (or
+      // "today in church tz" if absent); re-assemble with new time portion.
+      const churchToday = formatJsDateInChurchTz(new Date(), getChurchTz(), true);
+      const startDate = toWallClockDate(event.Start) || churchToday;
+      const endDate = toWallClockDate(event.End) || startDate;
       if (nowAllDay) {
-        const s = event.Start ? new Date(event.Start) : new Date();
-        s.setHours(0, 0, 0, 0);
-        event.Start = s;
-        const e = event.End ? new Date(event.End) : new Date(s);
-        e.setHours(0, 0, 0, 0);
-        event.End = e;
+        event.Start = startDate;
+        event.End = endDate;
       } else {
-        const now = new Date();
-        const s = event.Start ? new Date(event.Start) : new Date();
-        s.setHours(now.getHours(), 0, 0, 0);
-        event.Start = s;
-        const e = event.End ? new Date(event.End) : new Date(s);
-        e.setHours(now.getHours() + 1, 0, 0, 0);
-        event.End = e;
+        // Default time-of-day for a fresh timed event. Church events are
+        // overwhelmingly morning/midday (services, meetings, classes), so
+        // 9:00 AM is a far better default than "current church-time hour"
+        // — which produced confusing 1 AM defaults during after-hours edits.
+        // If the existing time portion is non-zero, preserve it.
+        const existingStart = toWallClockString(event.Start);
+        const existingEnd = toWallClockString(event.End);
+        const startTimePart = /T(?!00:00)/.test(existingStart) ? existingStart.substring(11, 19) : "09:00:00";
+        const endTimePart = /T(?!00:00)/.test(existingEnd) ? existingEnd.substring(11, 19) : "10:00:00";
+        event.Start = `${startDate}T${startTimePart}`;
+        event.End = `${endDate}T${endTimePart}`;
       }
 
       startInput.type = nowAllDay ? "date" : "datetime-local";
@@ -518,14 +631,31 @@ export function renderEventEditor(container, event, calendars, eventTypes, optio
   const endInput = document.getElementById("eventEndDate");
   if (startInput) {
     startInput.addEventListener("change", () => {
-      event.Start = startInput.value ? parseInputDate(startInput.value) : undefined;
-      if (endInput) endInput.min = startInput.value || "";
+      // Input value is already a wall-clock string ("YYYY-MM-DDTHH:mm" or
+      // "YYYY-MM-DD"). Pad seconds for timed entries so the wire format is
+      // consistent. No `new Date()` — we don't want browser-tz interpretation.
+      const v = startInput.value;
+      if (!v) {
+        event.Start = undefined;
+      } else if (v.length === 16) {
+        event.Start = `${v}:00`;
+      } else {
+        event.Start = v;
+      }
+      if (endInput) endInput.min = v || "";
       fireValidity();
     });
   }
   if (endInput) {
     endInput.addEventListener("change", () => {
-      event.End = endInput.value ? parseInputDate(endInput.value) : undefined;
+      const v = endInput.value;
+      if (!v) {
+        event.End = undefined;
+      } else if (v.length === 16) {
+        event.End = `${v}:00`;
+      } else {
+        event.End = v;
+      }
       fireValidity();
     });
   }
@@ -625,8 +755,12 @@ export function renderEventEditor(container, event, calendars, eventTypes, optio
 export function saveEvent(event, apiRoot) {
   const url = `${apiRoot}/api/events${event.Id !== 0 ? `/${event.Id}` : ""}`;
   const body = JSON.stringify(event, (_key, value) => {
+    // event.Start / event.End should already be wall-clock strings by this
+    // point (see toWallClockString boundaries). Any leftover JS Date —
+    // typically from a code path that hasn't been refactored — is converted
+    // to church-tz wall-clock so we never send browser-tz components or UTC.
     if (value instanceof Date) {
-      return window.moment ? window.moment(value).format() : value.toISOString();
+      return formatJsDateInChurchTz(value, getChurchTz(), false);
     }
     return value;
   });
