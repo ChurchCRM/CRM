@@ -3007,10 +3007,6 @@ msgid "Add Church Event"
 msgstr "Ajouter un nouvel événement d'église"
 
 #: 
-msgid "List Event Types"
-msgstr "Listes les types d'événement"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "Vérifier et confirmer"
 
@@ -5483,10 +5479,6 @@ msgstr "Jeton d'accès au calendrier manquant"
 #: 
 msgid "User must have Delete Records permission"
 msgstr "L'utilisateur doit avoir l'autorisation d'effacer des enregistrements"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "URL de notifications de ChurchCRM"
 
 #: 
 msgid "invalid event type id"
@@ -9378,10 +9370,6 @@ msgid "Important"
 msgstr "Important"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "Installez des plugins en les plaçant dans"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "Code invalide. Veuillez réessayer."
 
@@ -10657,10 +10645,6 @@ msgid "Connect with others"
 msgstr "Entrer en contact avec d'autres"
 
 #: 
-msgid "Contact us"
-msgstr "Contactez-nous"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Convertir des fiches individuelles en unités familiales"
 
@@ -11343,10 +11327,6 @@ msgstr "Les modifications de nom nécessitent une sauvegarde. Les actions de ré
 #: 
 msgid "Name, address, contact details"
 msgstr "Nom, adresse, coordonnées"
-
-#: 
-msgid "Need help?"
-msgstr "Besoin d'aide ?"
 
 #: 
 msgid "New"
@@ -15169,10 +15149,6 @@ msgid "Online"
 msgstr "En ligne"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "Ouvre une fenêtre de 30 secondes pour que les appareils s'enregistrent à :"
-
-#: 
 msgid "Pending"
 msgstr "En attente"
 
@@ -15687,10 +15663,6 @@ msgstr "Format de date invalide"
 #: 
 msgid "Loading event editor…"
 msgstr "Chargement de l'éditeur d'événements…"
-
-#: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "Aucun calendrier sélectionné — cet événement sera enregistré mais n'apparaîtra dans aucune vue de calendrier."
 
 #: 
 msgid "No group"

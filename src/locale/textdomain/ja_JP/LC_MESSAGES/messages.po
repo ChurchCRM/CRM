@@ -2979,10 +2979,6 @@ msgid "Add Church Event"
 msgstr "教会イベントを追加"
 
 #: 
-msgid "List Event Types"
-msgstr "イベントタイプを一覧表示"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "チェックインとチェックアウト"
 
@@ -5447,10 +5443,6 @@ msgstr "カレンダーアクセストークンがありません"
 #: 
 msgid "User must have Delete Records permission"
 msgstr "ユーザーにはレコード削除権限が必要です"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "ChurchCRM中央通知URL"
 
 #: 
 msgid "invalid event type id"
@@ -9329,10 +9321,6 @@ msgid "Important"
 msgstr "重要"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "プラグインを次の場所に配置してインストールする："
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "無効なコードです。もう一度お試しください。"
 
@@ -10607,10 +10595,6 @@ msgid "Connect with others"
 msgstr "他の方とつながる"
 
 #: 
-msgid "Contact us"
-msgstr "お問い合わせ"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "個人レコードを家族単位に変換"
 
@@ -11293,10 +11277,6 @@ msgstr "名前の変更は保存が必要です。アクションメニューで
 #: 
 msgid "Name, address, contact details"
 msgstr "名前、住所、連絡先"
-
-#: 
-msgid "Need help?"
-msgstr "お困りですか？"
 
 #: 
 msgid "New"
@@ -15118,10 +15098,6 @@ msgid "Online"
 msgstr "オンライン"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "端末が登録するための30秒のウィンドウを開きます："
-
-#: 
 msgid "Pending"
 msgstr "保留中"
 
@@ -15640,10 +15616,6 @@ msgstr "無効な日付形式"
 #: 
 msgid "Loading event editor…"
 msgstr "イベントエディターを読み込み中…"
-
-#: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "カレンダーが選択されていません — このイベントは保存されますが、カレンダービューには表示されません。"
 
 #: 
 msgid "No group"

@@ -3011,10 +3011,6 @@ msgid "Add Church Event"
 msgstr "Tambahkan Acara Gereja"
 
 #: 
-msgid "List Event Types"
-msgstr "Daftar Jenis Acara"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "Check-in dan Check-out"
 
@@ -5487,10 +5483,6 @@ msgstr "Token akses kalender tidak ada"
 #: 
 msgid "User must have Delete Records permission"
 msgstr "Pengguna harus memiliki izin Hapus Catatan"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "URL Pemberitahuan Pusat ChurchCRM"
 
 #: 
 msgid "invalid event type id"
@@ -9366,10 +9358,6 @@ msgid "Important"
 msgstr "Penting"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "Instal plugin dengan menempatkannya di"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "Kode tidak valid. Silakan coba lagi."
 
@@ -10644,10 +10632,6 @@ msgid "Connect with others"
 msgstr "Terhubung dengan yang lain"
 
 #: 
-msgid "Contact us"
-msgstr "Hubungi kami"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Ubah catatan individu menjadi unit keluarga"
 
@@ -11330,10 +11314,6 @@ msgstr "Perubahan nama memerlukan penyimpanan. Tindakan pengurutan ulang dan pen
 #: 
 msgid "Name, address, contact details"
 msgstr "Nama, alamat, detail kontak"
-
-#: 
-msgid "Need help?"
-msgstr "Butuh bantuan?"
 
 #: 
 msgid "New"
@@ -15155,10 +15135,6 @@ msgid "Online"
 msgstr "Online"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "Membuka jendela 30 detik untuk perangkat mendaftar di:"
-
-#: 
 msgid "Pending"
 msgstr "Tertunda"
 
@@ -15677,10 +15653,6 @@ msgstr "Format tanggal tidak valid"
 #: 
 msgid "Loading event editor…"
 msgstr "Memuat editor acara…"
-
-#: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "Tidak ada kalender yang dipilih — acara ini akan disimpan tetapi tidak akan muncul di tampilan kalender mana pun."
 
 #: 
 msgid "No group"

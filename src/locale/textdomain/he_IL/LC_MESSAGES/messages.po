@@ -3006,10 +3006,6 @@ msgid "Add Church Event"
 msgstr "הוסף אירוע במוסד"
 
 #: 
-msgid "List Event Types"
-msgstr "רשימת סוגי אירועים"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "כניסה ויציאה"
 
@@ -5484,10 +5480,6 @@ msgstr "חסר אסימון גישה ללוח שנה"
 #: 
 msgid "User must have Delete Records permission"
 msgstr "המשתמש חייב להיות בעל הרשאת מחיקת רשומות"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "כתובת התראות מרכזיות של ChurchCRM"
 
 #: 
 msgid "invalid event type id"
@@ -9377,10 +9369,6 @@ msgid "Important"
 msgstr "חשוב"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "התקן תוספים על ידי הנחתם ב-"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "קוד לא חוקי. אנא נסה שוב."
 
@@ -10656,10 +10644,6 @@ msgid "Connect with others"
 msgstr "התחברו עם אחרים"
 
 #: 
-msgid "Contact us"
-msgstr "צרו קשר"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "המרת רשומות בודדות ליחידות משפחתיות"
 
@@ -11342,10 +11326,6 @@ msgstr "שינויי שמות דורשים שמירה. פעולות סידור �
 #: 
 msgid "Name, address, contact details"
 msgstr "שם, כתובת, פרטי קשר"
-
-#: 
-msgid "Need help?"
-msgstr "צריכים עזרה?"
 
 #: 
 msgid "New"
@@ -15168,10 +15148,6 @@ msgid "Online"
 msgstr "מקוון"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "פותח חלון של 30 שניות לרישום מכשירים ב:"
-
-#: 
 msgid "Pending"
 msgstr "ממתין"
 
@@ -15690,10 +15666,6 @@ msgstr "פורמט תאריך לא חוקי"
 #: 
 msgid "Loading event editor…"
 msgstr "טוען עורך אירועים…"
-
-#: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "לא נבחר לוח שנה — אירוע זה יישמר אך לא יופיע בשום תצוגת לוח שנה."
 
 #: 
 msgid "No group"

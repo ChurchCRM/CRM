@@ -3107,10 +3107,6 @@ msgid "Add Church Event"
 msgstr "增加教會活動"
 
 #: 
-msgid "List Event Types"
-msgstr "列出活動類型"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "辦理入住和退房"
 
@@ -5596,10 +5592,6 @@ msgstr "缺少日曆訪問令牌"
 #: 
 msgid "User must have Delete Records permission"
 msgstr "用戶必須具有刪除記錄權限"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "ChurchCRM中央通知URL"
 
 #: 
 msgid "invalid event type id"
@@ -9553,10 +9545,6 @@ msgid "Important"
 msgstr "重要"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "透過將外掛程式放置在以下位置來安裝外掛程式"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "驗證碼無效。請重試。"
 
@@ -10831,10 +10819,6 @@ msgid "Connect with others"
 msgstr "與他人聯繫"
 
 #: 
-msgid "Contact us"
-msgstr "聯繫我們"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "將個人記錄轉換為家庭單位"
 
@@ -11517,10 +11501,6 @@ msgstr "名稱變更需要儲存。操作選單中的重新排序和刪除操作
 #: 
 msgid "Name, address, contact details"
 msgstr "姓名、地址、聯絡資訊"
-
-#: 
-msgid "Need help?"
-msgstr "需要幫助？"
 
 #: 
 msgid "New"
@@ -15342,10 +15322,6 @@ msgid "Online"
 msgstr "線上"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "為設備注冊開啟一個30秒的視窗："
-
-#: 
 msgid "Pending"
 msgstr "待處理"
 
@@ -15864,10 +15840,6 @@ msgstr "無效的日期格式"
 #: 
 msgid "Loading event editor…"
 msgstr "正在載入活動編輯器……"
-
-#: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "未選擇日曆——此活動將會儲存，但不會出現在任何日曆檢視中。"
 
 #: 
 msgid "No group"

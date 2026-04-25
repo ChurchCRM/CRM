@@ -2991,10 +2991,6 @@ msgid "Add Church Event"
 msgstr "เพิ่มกิจกรรมคริสตจักร"
 
 #: 
-msgid "List Event Types"
-msgstr "รายการประเภทกิจกรรม"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "เช็คอินและเช็คเอาท์"
 
@@ -5459,10 +5455,6 @@ msgstr "ไม่มีโทเค็นการเข้าถึงปฏิ
 #: 
 msgid "User must have Delete Records permission"
 msgstr "ผู้ใช้ต้องมีสิทธิ์ลบระเบียน"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "URL การแจ้งเตือนส่วนกลาง ChurchCRM"
 
 #: 
 msgid "invalid event type id"
@@ -9341,10 +9333,6 @@ msgid "Important"
 msgstr "สำคัญ"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "ติดตั้งปลั๊กอินโดยวางไว้ใน"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "รหัสไม่ถูกต้อง โปรดลองอีกครั้ง"
 
@@ -10619,10 +10607,6 @@ msgid "Connect with others"
 msgstr "เชื่อมต่อกับผู้อื่น"
 
 #: 
-msgid "Contact us"
-msgstr "ติดต่อเรา"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "แปลงข้อมูลบุคคลเป็นหน่วยครอบครัว"
 
@@ -11305,10 +11289,6 @@ msgstr "การเปลี่ยนชื่อต้องบันทึก
 #: 
 msgid "Name, address, contact details"
 msgstr "ชื่อ ที่อยู่ ข้อมูลการติดต่อ"
-
-#: 
-msgid "Need help?"
-msgstr "ต้องการความช่วยเหลือ?"
 
 #: 
 msgid "New"
@@ -15130,10 +15110,6 @@ msgid "Online"
 msgstr "ออนไลน์"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "เปิดหน้าต่าง 30 วินาทีสำหรับอุปกรณ์ลงทะเบียนที่:"
-
-#: 
 msgid "Pending"
 msgstr "รอดำเนินการ"
 
@@ -15652,10 +15628,6 @@ msgstr "รูปแบบวันที่ไม่ถูกต้อง"
 #: 
 msgid "Loading event editor…"
 msgstr "กำลังโหลดตัวแก้ไขกิจกรรม…"
-
-#: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "ยังไม่ได้เลือกปฏิทิน — กิจกรรมนี้จะถูกบันทึกแต่จะไม่แสดงในมุมมองปฏิทินใดๆ"
 
 #: 
 msgid "No group"
