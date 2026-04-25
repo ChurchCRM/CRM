@@ -546,7 +546,7 @@ function heartbeat(): void {
       clearInterval(kioskState.kioskEventLoop);
       $("#event").hide();
       $("#noEvent").css("display", "flex");
-      $("#noEvent").html(renderStatusCard("info", "fa-tablet-alt", "Kiosk Identification", data.Name, null));
+      $("#noEvent").html(renderStatusCard("info", "fa-tablet-screen-button", "Kiosk Identification", data.Name, null));
       setTimeout(() => {
         location.reload();
       }, 2000);
@@ -591,7 +591,7 @@ function heartbeat(): void {
             data.Name,
             "<p class='text-muted mb-0'>This kiosk is accepted but has no active event assignment.</p>" +
               "<div class='kiosk-instructions'>" +
-              "<h5><i class='fas fa-info-circle'></i> Next Steps</h5>" +
+              "<h5><i class='fa-solid fa-circle-info'></i> Next Steps</h5>" +
               "<ol>" +
               "<li>Go to <strong>Groups → Admin → Kiosk Manager</strong></li>" +
               "<li>Find this kiosk in the device list</li>" +
@@ -611,14 +611,14 @@ function heartbeat(): void {
           data.Name,
           "<p class='text-muted'>This kiosk has registered but needs to be accepted by an administrator before it can be used.</p>" +
             "<div class='kiosk-instructions'>" +
-            "<h5><i class='fas fa-info-circle'></i> How to Accept This Kiosk</h5>" +
+            "<h5><i class='fa-solid fa-circle-info'></i> How to Accept This Kiosk</h5>" +
             "<ol>" +
             "<li>Log in to ChurchCRM as an administrator</li>" +
             "<li>Navigate to <strong>Groups → Admin → Kiosk Manager</strong></li>" +
             "<li>Find the kiosk named <strong>" +
             escapeHtml(data.Name) +
             "</strong> in the list</li>" +
-            "<li>Click the <strong><i class='fas fa-check'></i> Accept</strong> button</li>" +
+            "<li>Click the <strong><i class='fa-solid fa-check'></i> Accept</strong> button</li>" +
             "<li>Assign an event to the kiosk using the dropdown</li>" +
             "</ol>" +
             "<p class='mb-0'><small>This page will automatically update once the kiosk is accepted.</small></p>" +

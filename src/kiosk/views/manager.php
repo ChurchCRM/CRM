@@ -478,14 +478,22 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           defaultContent: '',
           orderable: false,
           render: function(data, type, full, meta) {
+            // Inline onclick handlers can't safely interpolate user-controlled
+            // strings (kiosk Name) into a JS string context — escapeHtml emits
+            // HTML entities that show literally in the rename prompt, and
+            // backslashes / newlines / </script> can still break out. Use
+            // data-* attributes (HTML-attr context, safely escaped) and a
+            // delegated click handler attached after the DataTable is built.
+            // Also CSP-clean (no inline JS), per project rule.
+            var nameAttr = window.CRM.escapeHtml(full.Name);
             var buttons = '<div class="btn-group btn-group-sm" role="group">';
             if (!full.Accepted) {
-              buttons += '<button class="btn btn-success" onclick="window.CRM.kioskAPI.accept(' + full.Id + ').then(function() { window.CRM.kioskDataTable.ajax.reload(); window.CRM.notify(i18next.t(\'Kiosk accepted\'), {type: \'success\'}); })" title="' + i18next.t('Accept') + '"><i class="fa-solid fa-check me-1"></i>' + i18next.t('Accept') + '</button>';
+              buttons += '<button class="btn btn-success" data-kiosk-action="accept" data-kiosk-id="' + full.Id + '" title="' + i18next.t('Accept') + '"><i class="fa-solid fa-check me-1"></i>' + i18next.t('Accept') + '</button>';
             }
-            buttons += '<button class="btn btn-outline-secondary" onclick="renameKiosk(' + full.Id + ', \'' + window.CRM.escapeHtml(full.Name).replace(/'/g, "\\'") + '\')" title="' + i18next.t('Rename') + '"><i class="fa-solid fa-pen"></i></button>';
-            buttons += '<button class="btn btn-outline-primary" onclick="window.CRM.kioskAPI.reload(' + full.Id + ').then(function() { window.CRM.notify(i18next.t(\'Reload command sent\'), {type: \'success\'}); })" title="' + i18next.t('Reload') + '"><i class="fa-solid fa-sync"></i></button>';
-            buttons += '<button class="btn btn-outline-info" onclick="window.CRM.kioskAPI.identify(' + full.Id + ').then(function() { window.CRM.notify(i18next.t(\'Identify command sent\'), {type: \'success\'}); })" title="' + i18next.t('Identify') + '"><i class="fa-solid fa-eye"></i></button>';
-            buttons += '<button class="btn btn-outline-danger" onclick="confirmDeleteKiosk(' + full.Id + ', \'' + window.CRM.escapeHtml(full.Name).replace(/'/g,"\\'") + '\')" title="' + i18next.t('Delete') + '"><i class="fa-solid fa-trash"></i></button>';
+            buttons += '<button class="btn btn-outline-secondary" data-kiosk-action="rename" data-kiosk-id="' + full.Id + '" data-kiosk-name="' + nameAttr + '" title="' + i18next.t('Rename') + '"><i class="fa-solid fa-pen"></i></button>';
+            buttons += '<button class="btn btn-outline-primary" data-kiosk-action="reload" data-kiosk-id="' + full.Id + '" title="' + i18next.t('Reload') + '"><i class="fa-solid fa-sync"></i></button>';
+            buttons += '<button class="btn btn-outline-info" data-kiosk-action="identify" data-kiosk-id="' + full.Id + '" title="' + i18next.t('Identify') + '"><i class="fa-solid fa-eye"></i></button>';
+            buttons += '<button class="btn btn-outline-danger" data-kiosk-action="delete" data-kiosk-id="' + full.Id + '" data-kiosk-name="' + nameAttr + '" title="' + i18next.t('Delete') + '"><i class="fa-solid fa-trash"></i></button>';
             buttons += '</div>';
             return buttons;
           }
@@ -504,6 +512,32 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
 
     window.CRM.kioskDataTable = $("#KioskTable").DataTable(dataTableConfig);
+
+    // Delegated click handler for the action buttons in the Actions column.
+    // Replaces inline onclick handlers — see the render() comment above.
+    $("#KioskTable").on("click", "[data-kiosk-action]", function() {
+      var action = $(this).data("kiosk-action");
+      var id = parseInt($(this).data("kiosk-id"), 10);
+      var name = $(this).data("kiosk-name") || "";
+      if (action === "accept") {
+        window.CRM.kioskAPI.accept(id).then(function() {
+          window.CRM.kioskDataTable.ajax.reload();
+          window.CRM.notify(i18next.t("Kiosk accepted"), { type: "success" });
+        });
+      } else if (action === "rename") {
+        renameKiosk(id, String(name));
+      } else if (action === "reload") {
+        window.CRM.kioskAPI.reload(id).then(function() {
+          window.CRM.notify(i18next.t("Reload command sent"), { type: "success" });
+        });
+      } else if (action === "identify") {
+        window.CRM.kioskAPI.identify(id).then(function() {
+          window.CRM.notify(i18next.t("Identify command sent"), { type: "success" });
+        });
+      } else if (action === "delete") {
+        confirmDeleteKiosk(id, String(name));
+      }
+    });
 
     setInterval(function() { window.CRM.kioskDataTable.ajax.reload(null, false); }, 10000);
   }
