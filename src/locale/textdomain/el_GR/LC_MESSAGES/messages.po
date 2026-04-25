@@ -15759,3 +15759,379 @@ msgstr "Διαγραφή αριθμού κουπιού"
 msgid "Invalid security token. Please try again."
 msgstr "Μη έγκυρο διακριτικό ασφαλείας. Παρακαλώ δοκιμάστε ξανά."
 
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "Προσθέτει αργίες στο κύριο ημερολόγιο. Κάθε επιλεγμένη χώρα εμφανίζεται ως ξεχωριστό ημερολόγιο στην πλαϊνή μπάρα, ώστε οι χρήστες να μπορούν να το εμφανίζουν ή να το αποκρύπτουν ανεξάρτητα."
+
+#: 
+msgid "Choose map provider"
+msgstr "Επιλογή παρόχου χαρτών"
+
+#: 
+msgid "Current database"
+msgstr "Τρέχουσα βάση δεδομένων"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "Τα δεδομένα επίδειξης φορτώνονται συνήθως μόνο σε νέες εγκαταστάσεις. Η εισαγωγή τώρα θα προσθέσει δείγματα εγγραφών μαζί με τα υπάρχοντα δεδομένα σας και ενδέχεται να δημιουργήσει διπλότυπα."
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "Κάθε χώρα δημιουργεί τη δική της γραμμή ημερολογίου στην πλαϊνή μπάρα. Χρησιμοποιήστε την εναλλαγή ανά ημερολόγιο για να αποκρύψετε προσωρινά μια χώρα χωρίς να αλλάξετε τις ρυθμίσεις της προσθήκης."
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "Φιλτράρισμα κατά κατηγορία"
+
+#: 
+msgid "Holiday Settings"
+msgstr "Ρυθμίσεις αργιών"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "Αργίες (%s)"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "Οι αργίες κατηγοριοποιούνται κατά τύπο: Επίσημες, Εορτασμοί, Τραπεζικές αργίες, Εποχιακές και Θρησκευτικές. Αφήστε όλες τις κατηγορίες ανεπιλεγμένες για εμφάνιση όλων των αργιών, ή επιλέξτε συγκεκριμένους τύπους για να περιορίσετε την προβολή."
+
+#: 
+msgid "Import demo data anyway"
+msgstr "Εισαγωγή δεδομένων επίδειξης ούτως ή άλλως"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "Λείπει το αναγνωριστικό οικονομικής δέσμευσης."
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "Δεν έχει επιλεγεί χώρα. Επιλέξτε τουλάχιστον μία χώρα στις ρυθμίσεις της προσθήκης Ημερολόγια Αργιών."
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "Δεν βρέθηκαν εγγραφές για τα επιλεγμένα φίλτρα."
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "Άνοιγμα στο Apple Maps"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "Άνοιγμα στο Google Maps"
+
+#: 
+msgid "Open in new tab"
+msgstr "Άνοιγμα σε νέα καρτέλα"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "Ρύθμιση χωρών"
+
+#: 
+msgid "Show all"
+msgstr "Εμφάνιση όλων"
+
+#: 
+msgid "Show:"
+msgstr "Εμφάνιση:"
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "Εμφάνιση και απόκρυψη μεμονωμένων χωρών"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "Σουηδικά"
+
+#: 
+msgid "System"
+msgstr "Σύστημα"
+
+#: 
+msgid "Timeline filters"
+msgstr "Φίλτρα χρονολογίου"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "Για να ξεκινήσετε από την αρχή με καθαρή βάση δεδομένων, χρησιμοποιήστε την Επαναφορά Βάσης Δεδομένων από τον Πίνακα Διαχείρισης πριν εισαγάγετε δεδομένα επίδειξης."
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "Χρησιμοποιήστε την επιλογή Χωρών για να επιλέξετε μία ή περισσότερες χώρες. Κάθε χώρα που προσθέτετε θα εμφανίζεται ως ξεχωριστή καταχώρηση ημερολογίου στην πλαϊνή μπάρα — επιτρέποντάς σας να εμφανίζετε αργίες για ένα διεθνές εκκλησίασμα."
+
+#: 
+msgid "Your database already contains data"
+msgstr "Η βάση δεδομένων σας περιέχει ήδη δεδομένα"
+
+#: 
+msgid "people"
+msgstr "άτομα"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "Απαιτείται downloadUrl για την εγκατάσταση μιας προσθήκης."
+
+#: 
+msgid "All three fields are required."
+msgstr "Και τα τρία πεδία είναι υποχρεωτικά."
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "Εγκεκριμένες προσθήκες κοινότητας"
+
+#: 
+msgid "Browse Approved"
+msgstr "Περιήγηση εγκεκριμένων"
+
+#: 
+msgid "Check for Updates"
+msgstr "Έλεγχος για ενημερώσεις"
+
+#: 
+msgid "Checking…"
+msgstr "Έλεγχος…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "Εκκαθάριση καραντίνας"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "Εκκαθαρίστε την καραντίνα μόνο αφού επιλυθεί το υποκείμενο πρόβλημα. Η ενεργοποίηση μιας προσθήκης σε καραντίνα απορρίπτεται από τον διακομιστή."
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "Κάντε κλικ στο «Περιήγηση εγκεκριμένων» παραπάνω για να εγκαταστήσετε μια ελεγμένη προσθήκη, ή «Εγκατάσταση από URL» για μη επαληθευμένη έκδοση κατά την ανάπτυξη."
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "Αποτυχία εκκαθάρισης καραντίνας προσθήκης"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "Αποτυχία εκκαθάρισης καραντίνας"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "Αποτυχία εγκατάστασης προσθήκης"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "Αποτυχία εγκατάστασης προσθήκης από URL"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "Αποτυχία φόρτωσης λίστας εγκεκριμένων προσθηκών"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "Αποτυχία φόρτωσης λίστας εγκεκριμένων προσθηκών."
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "Αποτυχία ανανέωσης μητρώου προσθηκών"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "Αποτυχία ανανέωσης μητρώου προσθηκών. Ελέγξτε τη σύνδεσή σας στο διαδίκτυο."
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "Αποτυχία απεγκατάστασης προσθήκης"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "Λήψη τελευταίου μητρώου…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "Λάβετε το από τον συγγραφέα της προσθήκης. Το πρόγραμμα εγκατάστασης θα αρνηθεί τη λήψη εάν δεν ταιριάζει byte-for-byte."
+
+#: 
+msgid "Homepage"
+msgstr "Αρχική σελίδα"
+
+#: 
+msgid "Install"
+msgstr "Εγκατάσταση"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "Εγκατάσταση προσθήκης από URL (Μη επαληθευμένη)"
+
+#: 
+msgid "Install Unverified"
+msgstr "Εγκατάσταση μη επαληθευμένης"
+
+#: 
+msgid "Install failed"
+msgstr "Αποτυχία εγκατάστασης"
+
+#: 
+msgid "Install from URL"
+msgstr "Εγκατάσταση από URL"
+
+#: 
+msgid "Installing…"
+msgstr "Εγκατάσταση…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "Kebab-case. Πρέπει να ταιριάζει με το όνομα του κορυφαίου καταλόγου εντός του zip και το id στο plugin.json."
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "Φόρτωση λίστας εγκεκριμένων προσθηκών…"
+
+#: 
+msgid "Loading…"
+msgstr "Φόρτωση…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "Ταιριάζει με καταχώρηση στη λίστα εγκεκριμένων προσθηκών"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "Πρέπει να είναι αμετάβλητο URL έκδοσης που παρέχεται μέσω HTTPS."
+
+#: 
+msgid "Plugin id"
+msgstr "Αναγνωριστικό προσθήκης"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "Η προσθήκη εγκαταστάθηκε ως ΜΗ ΕΠΑΛΗΘΕΥΜΕΝΗ. Ελέγξτε προσεκτικά τα εξαγόμενα αρχεία πριν την ενεργοποιήσετε."
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "Η προσθήκη εγκαταστάθηκε. Ελέγξτε την και κάντε κλικ στο Ενεργοποίηση για να την ενεργοποιήσετε."
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "Η καραντίνα της προσθήκης εκκαθαρίστηκε. Μπορείτε τώρα να ενεργοποιήσετε ξανά την προσθήκη."
+
+#: 
+msgid "Plugin quarantined"
+msgstr "Προσθήκη σε καραντίνα"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "Το μητρώο προσθηκών ανανεώθηκε."
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "Η προσθήκη απεγκαταστάθηκε"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "Η προσθήκη απεγκαταστάθηκε."
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "URL zip προσθήκης (μόνο HTTPS)"
+
+#: 
+msgid "Quarantined"
+msgstr "Σε καραντίνα"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "Ελέγξτε τα αρχεία της προσθήκης στο δίσκο πριν την ενεργοποιήσετε. Οι μη επαληθευμένες προσθήκες εκτελούνται με τα ίδια δικαιώματα με τις εγκεκριμένες."
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "Άθροισμα ελέγχου SHA-256"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "Το SHA-256 πρέπει να είναι μια δεκαεξαδική συμβολοσειρά 64 χαρακτήρων."
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "Οι συντηρητές του ChurchCRM δεν το έχουν ελέγξει. Είστε υπεύθυνοι για την ασφάλεια και τη συμπεριφορά οτιδήποτε εγκαθιστάτε εδώ. Προτιμήστε τη ροή Περιήγηση εγκεκριμένων όποτε είναι δυνατόν."
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "Η λίστα εγκεκριμένων προσθηκών είναι κενή. Δεν υπάρχουν ακόμη διαθέσιμες προσθήκες τρίτων μέσω του επαληθευμένου προγράμματος εγκατάστασης."
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "Η προσθήκη απενεργοποιήθηκε αυτόματα μετά από σφάλμα κατά την εκτέλεση."
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "Αυτές οι προσθήκες έχουν ελεγχθεί και εγκριθεί από τους συντηρητές του ChurchCRM. Κάντε κλικ στο Εγκατάσταση για λήψη και εγκατάσταση — η προσθήκη δεν θα ενεργοποιηθεί αυτόματα."
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "Αυτή η προσθήκη δεν βρίσκεται στη λίστα εγκεκριμένων προσθηκών του ChurchCRM."
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "Αυτή η προσθήκη θα εγκατασταθεί ως ΜΗ ΕΠΑΛΗΘΕΥΜΕΝΗ."
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "Το URL πρέπει να χρησιμοποιεί HTTPS."
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "Απεγκατάσταση (διαγραφή από δίσκο)"
+
+#: 
+msgid "Unverified plugin"
+msgstr "Μη επαληθευμένη προσθήκη"
+
+#: 
+msgid "Verified"
+msgstr "Επαληθευμένη"
+
+#: 
+msgid "What this plugin does:"
+msgstr "Τι κάνει αυτή η προσθήκη:"
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "Τα downloadUrl, sha256 και pluginId απαιτούνται για μη επαληθευμένες εγκαταστάσεις."
+
+#: 
+msgid "risk"
+msgstr "κίνδυνος"
+
+#: 
+msgid "Name cannot be empty"
+msgstr "Το όνομα δεν μπορεί να είναι κενό"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "Το όνομα δεν μπορεί να είναι μεγαλύτερο από %d χαρακτήρες"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "Χρειάζεστε βοήθεια; Επικοινωνήστε μαζί μας"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "Δεν έχει επιλεγεί ημερολόγιο — αυτή η εκδήλωση θα εμφανιστεί στο ημερολόγιο συστήματος «Μη καρφιτσωμένες εκδηλώσεις» έως ότου το καρφιτσώσετε."
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "Ανοίγει ένα παράθυρο 2 λεπτών για εγγραφή συσκευών στη διεύθυνση:"
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "Οι ώρες χρησιμοποιούν την ώρα της εκκλησίας ({{church}}), όχι τη ζώνη ώρας του προγράμματος περιήγησής σας ({{browser}})."
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "Καλώς ήρθατε — συνδεθείτε για να διαχειριστείτε το εκκλησίασμά σας"
+

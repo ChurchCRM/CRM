@@ -15755,3 +15755,379 @@ msgstr "מחק מספר משוט"
 msgid "Invalid security token. Please try again."
 msgstr "אסימון אבטחה לא חוקי. אנא נסה שוב."
 
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "מוסיף חגים לאומיים ללוח השנה הראשי. כל מדינה שנבחרת הופכת ללוח שנה משלה הניתן להפעלה ולכיבוי בסרגל הצד, כך שמשתמשים יכולים להציג או להסתיר חגים באופן עצמאי."
+
+#: 
+msgid "Choose map provider"
+msgstr "בחר ספק מפות"
+
+#: 
+msgid "Current database"
+msgstr "מסד נתונים נוכחי"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "נתוני הדגמה נטענים בדרך כלל רק בהתקנות חדשות. ייבוא עכשיו יוסיף רשומות לדוגמה לצד הנתונים הקיימים שלך ועשוי ליצור כפילויות."
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "כל מדינה יוצרת שורת לוח שנה משלה בסרגל הצד. השתמש במתג לכל לוח שנה כדי להסתיר מדינה זמנית מבלי לשנות את הגדרות התוסף."
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "סינון לפי קטגוריה"
+
+#: 
+msgid "Holiday Settings"
+msgstr "הגדרות חגים"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "חגים (%s)"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "חגים מסומנים לפי סוג: רשמיים, אירועים, חגי בנקים, עונתיים ודתיים. השאר את כל הקטגוריות לא מסומנות כדי להציג כל חג, או בחר סוגים ספציפיים לצמצום התצוגה."
+
+#: 
+msgid "Import demo data anyway"
+msgstr "ייבא נתוני הדגמה בכל זאת"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "מזהה ההתחייבות הכספית חסר."
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "לא נבחרה מדינה. בחר לפחות מדינה אחת בהגדרות תוסף לוחות שנה של חגים."
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "אין רשומות תואמות לפילטרים שנבחרו."
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "פתח ב-Apple Maps"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "פתח ב-Google Maps"
+
+#: 
+msgid "Open in new tab"
+msgstr "פתח בכרטיסייה חדשה"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "הגדרת מדינות"
+
+#: 
+msgid "Show all"
+msgstr "הצג הכול"
+
+#: 
+msgid "Show:"
+msgstr "הצג:"
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "הצגה והסתרה של מדינות בודדות"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "שוודית"
+
+#: 
+msgid "System"
+msgstr "מערכת"
+
+#: 
+msgid "Timeline filters"
+msgstr "פילטרי ציר זמן"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "כדי להתחיל מחדש עם מסד נתונים נקי, השתמש באיפוס מסד הנתונים מלוח הבקרה של מנהל המערכת לפני ייבוא נתוני הדגמה."
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "השתמש בבורר המדינות כדי לבחור מדינה אחת או יותר. כל מדינה שתוסיף תופיע כערך לוח שנה נפרד בסרגל הצד — ומאפשרת לך להציג חגים עבור קהילה עולמית."
+
+#: 
+msgid "Your database already contains data"
+msgstr "מסד הנתונים שלך כבר מכיל נתונים"
+
+#: 
+msgid "people"
+msgstr "אנשים"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "נדרש downloadUrl להתקנת תוסף."
+
+#: 
+msgid "All three fields are required."
+msgstr "שלושת השדות נדרשים."
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "תוספים קהילתיים מאושרים"
+
+#: 
+msgid "Browse Approved"
+msgstr "עיין במאושרים"
+
+#: 
+msgid "Check for Updates"
+msgstr "בדוק עדכונים"
+
+#: 
+msgid "Checking…"
+msgstr "בודק…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "נקה הסגר"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "נקה את ההסגר רק לאחר תיקון הבעיה הבסיסית. הפעלת תוסף שבהסגר נדחית על ידי השרת."
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "לחץ על \"עיין במאושרים\" למעלה להתקנת תוסף שנבדק, או \"התקן מ-URL\" לגרסה לא מאומתת בזמן פיתוח."
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "נכשל בניקוי הסגר התוסף"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "נכשל בניקוי ההסגר"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "נכשלה התקנת התוסף"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "נכשלה התקנת התוסף מ-URL"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "נכשלה טעינת רשימת התוספים המאושרים"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "נכשלה טעינת רשימת התוספים המאושרים."
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "נכשל ברענון רשם התוספים"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "נכשל ברענון רשם התוספים. בדוק את חיבור האינטרנט שלך."
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "נכשלה הסרת התוסף"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "מאחזר את הרשם העדכני…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "קבל זאת ממחבר התוסף. המתקין יסרב להורדה אם היא אינה תואמת בדיוק."
+
+#: 
+msgid "Homepage"
+msgstr "דף הבית"
+
+#: 
+msgid "Install"
+msgstr "התקן"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "התקן תוסף מ-URL (לא מאומת)"
+
+#: 
+msgid "Install Unverified"
+msgstr "התקן לא מאומת"
+
+#: 
+msgid "Install failed"
+msgstr "ההתקנה נכשלה"
+
+#: 
+msgid "Install from URL"
+msgstr "התקן מ-URL"
+
+#: 
+msgid "Installing…"
+msgstr "מתקין…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "Kebab-case. חייב להתאים לשם הספרייה ברמה העליונה בתוך ה-zip ולמזהה ב-plugin.json."
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "טוען רשימת תוספים מאושרים…"
+
+#: 
+msgid "Loading…"
+msgstr "טוען…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "תואם ערך ברשימת התוספים המאושרים"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "חייב להיות כתובת URL קבועה של גרסה המוגשת דרך HTTPS."
+
+#: 
+msgid "Plugin id"
+msgstr "מזהה תוסף"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "התוסף הותקן כלא מאומת. בדוק את הקבצים שחולצו בקפידה לפני הפעלה."
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "התוסף הותקן. בדוק אותו ולחץ על הפעל כדי להפעיל."
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "הסגר התוסף נוקה. כעת תוכל להפעיל את התוסף שוב."
+
+#: 
+msgid "Plugin quarantined"
+msgstr "התוסף הוסגר"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "רשם התוספים רוענן."
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "התוסף הוסר"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "התוסף הוסר."
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "כתובת URL של ZIP לתוסף (HTTPS בלבד)"
+
+#: 
+msgid "Quarantined"
+msgstr "בהסגר"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "בדוק את קבצי התוסף בדיסק לפני הפעלה. תוספים לא מאומתים פועלים עם אותן הרשאות כמו תוספים מאושרים."
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "סכום בדיקה SHA-256"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "SHA-256 חייב להיות מחרוזת הקסדצימלית באורך 64 תווים."
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "מתחזקי ChurchCRM לא בדקו תוסף זה. אתה אחראי לאבטחה ולהתנהגות של כל מה שאתה מתקין כאן. העדף את תהליך עיין במאושרים בכל עת שאפשר."
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "רשימת התוספים המאושרים ריקה. אין עדיין תוספים של צד שלישי זמינים דרך המתקין המאומת."
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "התוסף הושבת אוטומטית לאחר כשל בזמן הריצה."
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "תוספים אלה נבדקו ואושרו על ידי מתחזקי ChurchCRM. לחץ על התקן כדי להוריד ולהתקין — התוסף לא יופעל אוטומטית."
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "תוסף זה אינו ברשימת התוספים המאושרים של ChurchCRM."
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "תוסף זה יותקן כלא מאומת."
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "ה-URL חייב להשתמש ב-HTTPS."
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "הסר התקנה (מחק מהדיסק)"
+
+#: 
+msgid "Unverified plugin"
+msgstr "תוסף לא מאומת"
+
+#: 
+msgid "Verified"
+msgstr "מאומת"
+
+#: 
+msgid "What this plugin does:"
+msgstr "מה תוסף זה עושה:"
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "downloadUrl,‏ sha256 ו-pluginId נדרשים כולם להתקנות לא מאומתות."
+
+#: 
+msgid "risk"
+msgstr "סיכון"
+
+#: 
+msgid "Name cannot be empty"
+msgstr "השם לא יכול להיות ריק"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "השם לא יכול להיות ארוך מ-%d תווים"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "זקוק לעזרה? צור איתנו קשר"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "לא נבחר לוח שנה — אירוע זה יופיע תחת לוח השנה של המערכת \"אירועים לא מוצמדים\" עד שתצמיד אותו."
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "פותח חלון של 2 דקות לרישום מכשירים ב:"
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "הזמנים משתמשים בשעון הקהילה ({{church}}), ולא בשעון הדפדפן שלך ({{browser}})."
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "ברוך הבא — התחבר כדי לנהל את קהילתך"
+

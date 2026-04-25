@@ -15742,3 +15742,379 @@ msgstr "Hapus nomor lelang"
 msgid "Invalid security token. Please try again."
 msgstr "Token keamanan tidak valid. Silakan coba lagi."
 
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "Menambahkan hari libur nasional ke kalender utama. Setiap negara yang dipilih akan menjadi kalender tersendiri yang dapat diaktifkan/nonaktifkan di bilah samping, sehingga pengguna dapat menampilkan atau menyembunyikan hari libur secara independen."
+
+#: 
+msgid "Choose map provider"
+msgstr "Pilih penyedia peta"
+
+#: 
+msgid "Current database"
+msgstr "Basis data saat ini"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "Data demo biasanya hanya dimuat pada instalasi baru. Mengimpor sekarang akan menambahkan data sampel bersamaan dengan data yang sudah ada dan dapat membuat duplikat."
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "Setiap negara menghasilkan baris kalender tersendiri di bilah samping. Gunakan tombol per-kalender untuk menyembunyikan sementara suatu negara tanpa mengubah pengaturan plugin Anda."
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "Menyaring berdasarkan kategori"
+
+#: 
+msgid "Holiday Settings"
+msgstr "Pengaturan Hari Libur"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "Hari Libur (%s)"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "Hari libur ditandai berdasarkan jenis: Resmi, Peringatan, Hari Libur Bank, Musiman, dan Keagamaan. Biarkan semua kategori tidak dipilih untuk menampilkan semua hari libur, atau pilih jenis tertentu untuk mempersempit tampilan."
+
+#: 
+msgid "Import demo data anyway"
+msgstr "Impor data demo tetap saja"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "Pengenal komitmen keuangan tidak ditemukan."
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "Tidak ada negara yang dipilih. Pilih setidaknya satu negara di pengaturan plugin Kalender Hari Libur."
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "Tidak ada entri yang cocok untuk filter yang dipilih."
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "Buka di Apple Maps"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "Buka di Google Maps"
+
+#: 
+msgid "Open in new tab"
+msgstr "Buka di tab baru"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "Mengatur negara"
+
+#: 
+msgid "Show all"
+msgstr "Tampilkan semua"
+
+#: 
+msgid "Show:"
+msgstr "Tampilkan:"
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "Menampilkan dan menyembunyikan negara secara individual"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "Bahasa Swedia"
+
+#: 
+msgid "System"
+msgstr "Sistem"
+
+#: 
+msgid "Timeline filters"
+msgstr "Filter linimasa"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "Untuk memulai ulang dengan basis data bersih, gunakan Reset Basis Data dari Dasbor Admin sebelum mengimpor data demo."
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "Gunakan pemilih Negara untuk memilih satu atau lebih negara. Setiap negara yang Anda tambahkan akan muncul sebagai entri kalender terpisah di bilah samping — memungkinkan Anda menampilkan hari libur untuk jemaat yang tersebar secara global."
+
+#: 
+msgid "Your database already contains data"
+msgstr "Basis data Anda sudah berisi data"
+
+#: 
+msgid "people"
+msgstr "orang"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "downloadUrl diperlukan untuk menginstal plugin."
+
+#: 
+msgid "All three fields are required."
+msgstr "Ketiga kolom harus diisi."
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "Plugin Komunitas yang Disetujui"
+
+#: 
+msgid "Browse Approved"
+msgstr "Telusuri yang Disetujui"
+
+#: 
+msgid "Check for Updates"
+msgstr "Periksa Pembaruan"
+
+#: 
+msgid "Checking…"
+msgstr "Memeriksa…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "Hapus Karantina"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "Hapus karantina hanya setelah masalah yang mendasarinya telah diperbaiki. Mengaktifkan plugin yang dikarantina akan ditolak oleh server."
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "Klik \"Telusuri yang Disetujui\" di atas untuk menginstal plugin yang telah diverifikasi, atau \"Instal dari URL\" untuk build yang belum diverifikasi selama pengembangan."
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "Gagal menghapus karantina plugin"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "Gagal menghapus karantina"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "Gagal menginstal plugin"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "Gagal menginstal plugin dari URL"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "Gagal memuat daftar plugin yang disetujui"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "Gagal memuat daftar plugin yang disetujui."
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "Gagal menyegarkan registri plugin"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "Gagal menyegarkan registri plugin. Periksa koneksi internet Anda."
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "Gagal menghapus instalasi plugin"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "Mengambil registri terbaru…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "Dapatkan ini dari penulis plugin. Penginstal akan menolak unduhan jika tidak cocok byte-per-byte."
+
+#: 
+msgid "Homepage"
+msgstr "Beranda"
+
+#: 
+msgid "Install"
+msgstr "Instal"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "Instal Plugin dari URL (Belum Diverifikasi)"
+
+#: 
+msgid "Install Unverified"
+msgstr "Instal Belum Diverifikasi"
+
+#: 
+msgid "Install failed"
+msgstr "Instalasi gagal"
+
+#: 
+msgid "Install from URL"
+msgstr "Instal dari URL"
+
+#: 
+msgid "Installing…"
+msgstr "Menginstal…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "Kebab-case. Harus sesuai dengan nama direktori tingkat atas di dalam zip dan id di plugin.json."
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "Memuat daftar plugin yang disetujui…"
+
+#: 
+msgid "Loading…"
+msgstr "Memuat…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "Cocok dengan entri di daftar plugin yang disetujui"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "Harus berupa URL rilis yang tidak dapat diubah dan disajikan melalui HTTPS."
+
+#: 
+msgid "Plugin id"
+msgstr "Id plugin"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "Plugin diinstal sebagai BELUM DIVERIFIKASI. Tinjau file yang diekstrak dengan cermat sebelum mengaktifkan."
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "Plugin berhasil diinstal. Tinjau dan klik Aktifkan untuk mengaktifkannya."
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "Karantina plugin telah dihapus. Anda sekarang dapat mengaktifkan plugin kembali."
+
+#: 
+msgid "Plugin quarantined"
+msgstr "Plugin dikarantina"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "Registri plugin telah diperbarui."
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "Plugin dihapus"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "Plugin telah dihapus."
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "URL zip plugin (hanya HTTPS)"
+
+#: 
+msgid "Quarantined"
+msgstr "Dikarantina"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "Tinjau file plugin di disk sebelum mengaktifkan. Plugin yang belum diverifikasi berjalan dengan izin yang sama seperti plugin yang disetujui."
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "Checksum SHA-256"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "SHA-256 harus berupa string heksadesimal 64 karakter."
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "Pengelola ChurchCRM belum meninjaunya. Anda bertanggung jawab atas keamanan dan perilaku dari segala sesuatu yang Anda instal di sini. Lebih baik gunakan alur Telusuri yang Disetujui bila memungkinkan."
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "Daftar plugin yang disetujui kosong. Belum ada plugin pihak ketiga yang tersedia melalui penginstal terverifikasi."
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "Plugin dinonaktifkan secara otomatis setelah kegagalan saat berjalan."
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "Plugin-plugin ini telah ditinjau dan disetujui oleh pengelola ChurchCRM. Klik Instal untuk mengunduh dan menginstalnya — plugin tidak akan diaktifkan secara otomatis."
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "Plugin ini tidak ada dalam daftar plugin yang disetujui ChurchCRM."
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "Plugin ini akan diinstal sebagai BELUM DIVERIFIKASI."
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "URL harus menggunakan HTTPS."
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "Hapus instalasi (hapus dari disk)"
+
+#: 
+msgid "Unverified plugin"
+msgstr "Plugin belum diverifikasi"
+
+#: 
+msgid "Verified"
+msgstr "Terverifikasi"
+
+#: 
+msgid "What this plugin does:"
+msgstr "Apa yang dilakukan plugin ini:"
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "downloadUrl, sha256, dan pluginId semuanya diperlukan untuk instalasi yang belum diverifikasi."
+
+#: 
+msgid "risk"
+msgstr "risiko"
+
+#: 
+msgid "Name cannot be empty"
+msgstr "Nama tidak boleh kosong"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "Nama tidak boleh lebih dari %d karakter"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "Butuh bantuan? Hubungi kami"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "Tidak ada kalender yang dipilih — acara ini akan muncul di kalender sistem \"Acara Tidak Disematkan\" sampai Anda menyematkannya."
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "Membuka jendela 2 menit untuk perangkat mendaftar di:"
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "Waktu menggunakan waktu gereja ({{church}}), bukan waktu browser Anda ({{browser}})."
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "Selamat datang — masuk untuk mengelola komunitas Anda"
+

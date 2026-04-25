@@ -15741,3 +15741,379 @@ msgstr "패들 번호 삭제"
 msgid "Invalid security token. Please try again."
 msgstr "보안 토큰이 유효하지 않습니다. 다시 시도해 주세요."
 
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "공휴일을 메인 캘린더에 추가합니다. 선택된 각 국가는 사이드바에서 개별 캘린더로 표시되며, 사용자가 국가별 공휴일을 독립적으로 표시하거나 숨길 수 있습니다."
+
+#: 
+msgid "Choose map provider"
+msgstr "지도 서비스 선택"
+
+#: 
+msgid "Current database"
+msgstr "현재 데이터베이스"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "데모 데이터는 일반적으로 새로 설치할 때만 불러옵니다. 지금 가져오면 기존 데이터에 샘플 레코드가 추가되어 중복이 발생할 수 있습니다."
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "각 국가는 사이드바에 별도의 캘린더 행으로 표시됩니다. 캘린더별 토글을 사용하면 플러그인 설정을 변경하지 않고 특정 국가를 일시적으로 숨길 수 있습니다."
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "카테고리별 필터링"
+
+#: 
+msgid "Holiday Settings"
+msgstr "공휴일 설정"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "공휴일 (%s)"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "공휴일은 유형별로 분류됩니다: 공식 공휴일, 기념일, 은행 휴일, 계절 행사, 종교 행사. 모든 카테고리를 선택 해제하면 모든 공휴일이 표시되며, 특정 유형을 선택하면 표시 범위를 좁힐 수 있습니다."
+
+#: 
+msgid "Import demo data anyway"
+msgstr "그래도 데모 데이터 가져오기"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "재정 서약 식별자가 없습니다."
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "선택된 국가가 없습니다. 공휴일 캘린더 플러그인 설정에서 최소 한 개의 국가를 선택하세요."
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "선택한 필터에 해당하는 항목이 없습니다."
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "Apple Maps에서 열기"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "Google Maps에서 열기"
+
+#: 
+msgid "Open in new tab"
+msgstr "새 탭에서 열기"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "국가 설정"
+
+#: 
+msgid "Show all"
+msgstr "모두 보기"
+
+#: 
+msgid "Show:"
+msgstr "표시:"
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "개별 국가 표시 및 숨기기"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "스웨덴어"
+
+#: 
+msgid "System"
+msgstr "시스템"
+
+#: 
+msgid "Timeline filters"
+msgstr "타임라인 필터"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "새로운 데이터베이스로 시작하려면 데모 데이터를 가져오기 전에 관리자 대시보드에서 데이터베이스 초기화를 사용하세요."
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "국가 선택기를 사용하여 하나 이상의 국가를 선택하세요. 추가하는 각 국가는 사이드바에 별도의 캘린더 항목으로 표시되어 전 세계 성도들의 공휴일을 확인할 수 있습니다."
+
+#: 
+msgid "Your database already contains data"
+msgstr "데이터베이스에 이미 데이터가 있습니다"
+
+#: 
+msgid "people"
+msgstr "명"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "플러그인을 설치하려면 다운로드 URL이 필요합니다."
+
+#: 
+msgid "All three fields are required."
+msgstr "세 필드 모두 필수입니다."
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "승인된 커뮤니티 플러그인"
+
+#: 
+msgid "Browse Approved"
+msgstr "승인된 항목 찾아보기"
+
+#: 
+msgid "Check for Updates"
+msgstr "업데이트 확인"
+
+#: 
+msgid "Checking…"
+msgstr "확인 중…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "격리 해제"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "기본 문제가 해결된 후에만 격리를 해제하세요. 격리된 플러그인 활성화는 서버에서 거부됩니다."
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "검증된 플러그인을 설치하려면 위의 \"승인된 항목 찾아보기\"를 클릭하거나, 개발 중인 미검증 빌드를 위해 \"URL에서 설치\"를 사용하세요."
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "플러그인 격리 해제 실패"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "격리 해제 실패"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "플러그인 설치 실패"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "URL에서 플러그인 설치 실패"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "승인된 플러그인 목록 불러오기 실패"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "승인된 플러그인 목록을 불러오지 못했습니다."
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "플러그인 레지스트리 새로고침 실패"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "플러그인 레지스트리를 새로고침하지 못했습니다. 인터넷 연결을 확인하세요."
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "플러그인 제거 실패"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "최신 레지스트리 불러오는 중…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "플러그인 작성자에게 이 값을 받으세요. 바이트 단위로 일치하지 않으면 설치 프로그램이 다운로드를 거부합니다."
+
+#: 
+msgid "Homepage"
+msgstr "홈페이지"
+
+#: 
+msgid "Install"
+msgstr "설치"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "URL에서 플러그인 설치 (미검증)"
+
+#: 
+msgid "Install Unverified"
+msgstr "미검증 설치"
+
+#: 
+msgid "Install failed"
+msgstr "설치 실패"
+
+#: 
+msgid "Install from URL"
+msgstr "URL에서 설치"
+
+#: 
+msgid "Installing…"
+msgstr "설치 중…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "케밥 케이스. zip 내부 최상위 디렉토리 이름 및 plugin.json의 id와 일치해야 합니다."
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "승인된 플러그인 목록 불러오는 중…"
+
+#: 
+msgid "Loading…"
+msgstr "불러오는 중…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "승인된 플러그인 목록의 항목과 일치"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "HTTPS로 제공되는 변경 불가능한 릴리스 URL이어야 합니다."
+
+#: 
+msgid "Plugin id"
+msgstr "플러그인 ID"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "플러그인이 미검증 상태로 설치되었습니다. 활성화하기 전에 압축 해제된 파일을 주의 깊게 검토하세요."
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "플러그인이 설치되었습니다. 검토 후 활성화를 클릭하여 사용하세요."
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "플러그인 격리가 해제되었습니다. 이제 플러그인을 다시 활성화할 수 있습니다."
+
+#: 
+msgid "Plugin quarantined"
+msgstr "플러그인 격리됨"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "플러그인 레지스트리가 새로고침되었습니다."
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "플러그인 제거됨"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "플러그인이 제거되었습니다."
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "플러그인 zip URL (HTTPS 전용)"
+
+#: 
+msgid "Quarantined"
+msgstr "격리됨"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "활성화하기 전에 디스크의 플러그인 파일을 검토하세요. 미검증 플러그인은 승인된 플러그인과 동일한 권한으로 실행됩니다."
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "SHA-256 체크섬"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "SHA-256은 64자리 16진수 문자열이어야 합니다."
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "ChurchCRM 관리자들이 검토하지 않은 플러그인입니다. 여기서 설치하는 모든 항목의 보안과 동작에 대한 책임은 사용자에게 있습니다. 가능하면 승인된 항목 찾아보기를 이용하세요."
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "승인된 플러그인 목록이 비어 있습니다. 검증된 설치 프로그램을 통해 사용 가능한 서드파티 플러그인이 아직 없습니다."
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "런타임 오류로 인해 플러그인이 자동으로 비활성화되었습니다."
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "이 플러그인들은 ChurchCRM 관리자들이 검토하고 승인한 것입니다. 설치를 클릭하여 다운로드 및 설치하세요 — 플러그인은 자동으로 활성화되지 않습니다."
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "이 플러그인은 ChurchCRM 승인 플러그인 목록에 없습니다."
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "이 플러그인은 미검증 상태로 설치됩니다."
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "URL은 HTTPS를 사용해야 합니다."
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "제거 (디스크에서 삭제)"
+
+#: 
+msgid "Unverified plugin"
+msgstr "미검증 플러그인"
+
+#: 
+msgid "Verified"
+msgstr "검증됨"
+
+#: 
+msgid "What this plugin does:"
+msgstr "이 플러그인의 기능:"
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "미검증 설치에는 downloadUrl, sha256, pluginId가 모두 필요합니다."
+
+#: 
+msgid "risk"
+msgstr "위험"
+
+#: 
+msgid "Name cannot be empty"
+msgstr "이름을 비워둘 수 없습니다"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "이름은 %d자를 초과할 수 없습니다"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "도움이 필요하신가요? 문의하기"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "캘린더가 선택되지 않았습니다 — 이 일정은 고정할 때까지 \"고정되지 않은 일정\" 시스템 캘린더에 표시됩니다."
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "기기 등록을 위한 2분간의 창이 열립니다:"
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "시간은 브라우저({{browser}}) 시간이 아닌 교회 시간({{church}})을 사용합니다."
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "환영합니다 — 교회 관리를 위해 로그인하세요"
+
