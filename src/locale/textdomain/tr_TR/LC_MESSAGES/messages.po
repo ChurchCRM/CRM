@@ -15759,3 +15759,375 @@ msgstr "Paddle Numarasını Sil"
 msgid "Invalid security token. Please try again."
 msgstr "Geçersiz güvenlik tokenı. Lütfen tekrar deneyin."
 
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "Resmî tatilleri ana takvime ekler. Seçilen her ülke, kenar çubuğunda kendi açılıp kapanabilir takvimi haline gelir; böylece kullanıcılar tatilleri bağımsız olarak gösterip gizleyebilir."
+
+#: 
+msgid "Choose map provider"
+msgstr "Harita sağlayıcısını seçin"
+
+#: 
+msgid "Current database"
+msgstr "Mevcut veritabanı"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "Demo veriler normalde yalnızca yeni kurulumlarda yüklenir. Şimdi içe aktarmak, mevcut verilerinizin yanına örnek kayıtlar ekleyecek ve yinelemeler oluşturabilir."
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "Her ülke, kenar çubuğunda kendi takvim satırını oluşturur. Eklenti ayarlarınızı değiştirmeden bir ülkeyi geçici olarak gizlemek için takvim başına açma/kapama düğmesini kullanın."
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "Kategoriye göre filtreleme"
+
+#: 
+msgid "Holiday Settings"
+msgstr "Tatil Ayarları"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "Tatiller (%s)"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "Tatiller türlerine göre etiketlenir: Resmî, Anma Günleri, Banka Tatilleri, Mevsimsel ve Dinî. Tüm tatilleri göstermek için hiçbir kategoriyi seçmeden bırakın ya da görünümü daraltmak için belirli türleri seçin."
+
+#: 
+msgid "Import demo data anyway"
+msgstr "Demo verileri yine de içe aktar"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "Mali taahhüt tanımlayıcısı eksik."
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "Hiçbir ülke seçilmedi. Tatil Takvimleri eklenti ayarlarından en az bir ülke seçin."
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "Seçilen filtreler için eşleşen kayıt yok."
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "Apple Maps'te aç"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "Google Maps'te aç"
+
+#: 
+msgid "Open in new tab"
+msgstr "Yeni sekmede aç"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "Ülkeleri ayarlama"
+
+#: 
+msgid "Show all"
+msgstr "Tümünü göster"
+
+#: 
+msgid "Show:"
+msgstr "Göster:"
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "Ülkeleri tek tek gösterme ve gizleme"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "İsveççe"
+
+#: 
+msgid "System"
+msgstr "Sistem"
+
+#: 
+msgid "Timeline filters"
+msgstr "Zaman çizelgesi filtreleri"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "Temiz bir veritabanıyla yeniden başlamak için demo verileri içe aktarmadan önce Yönetici Panelindeki Veritabanını Sıfırla seçeneğini kullanın."
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "Bir veya daha fazla ülke seçmek için Ülkeler seçicisini kullanın. Eklediğiniz her ülke, kenar çubuğunda ayrı bir takvim girişi olarak görünür — küresel cemaatiniz için tatilleri göstermenizi sağlar."
+
+#: 
+msgid "Your database already contains data"
+msgstr "Veritabanınız zaten veri içeriyor"
+
+#: 
+msgid "people"
+msgstr "kişi"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "Bir eklenti yüklemek için indirme URL'si gereklidir."
+
+#: 
+msgid "All three fields are required."
+msgstr "Üç alan da zorunludur."
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "Onaylı Topluluk Eklentileri"
+
+#: 
+msgid "Browse Approved"
+msgstr "Onaylıları İncele"
+
+#: 
+msgid "Check for Updates"
+msgstr "Güncellemeleri Kontrol Et"
+
+#: 
+msgid "Checking…"
+msgstr "Kontrol ediliyor…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "Karantinayı Temizle"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "Karantinayı yalnızca altta yatan sorun giderildikten sonra temizleyin. Karantinaya alınmış bir eklentiyi etkinleştirme sunucu tarafından reddedilir."
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "Onaylanmış bir eklenti yüklemek için yukarıdaki \"Onaylıları İncele\" seçeneğini, geliştirme sırasında doğrulanmamış bir derleme için \"URL'den Yükle\" seçeneğini tıklayın."
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "Eklenti karantinası temizlenemedi"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "Karantina temizlenemedi"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "Eklenti yüklenemedi"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "URL'den eklenti yüklenemedi"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "Onaylı eklenti listesi yüklenemedi"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "Onaylı eklenti listesi yüklenemedi."
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "Eklenti kayıt defteri yenilenemedi"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "Eklenti kayıt defteri yenilenemedi. İnternet bağlantınızı kontrol edin."
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "Eklenti kaldırılamadı"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "Son kayıt defteri alınıyor…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "Bunu eklenti yazarından alın. Yükleyici, bayt bayt eşleşmezse indirmeyi reddeder."
+
+#: 
+msgid "Homepage"
+msgstr "Ana sayfa"
+
+#: 
+msgid "Install"
+msgstr "Yükle"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "URL'den Eklenti Yükle (Doğrulanmamış)"
+
+#: 
+msgid "Install Unverified"
+msgstr "Doğrulanmamış Olarak Yükle"
+
+#: 
+msgid "Install failed"
+msgstr "Yükleme başarısız"
+
+#: 
+msgid "Install from URL"
+msgstr "URL'den Yükle"
+
+#: 
+msgid "Installing…"
+msgstr "Yükleniyor…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "Kebab-case biçiminde. Zip içindeki üst düzey dizin adıyla ve plugin.json dosyasındaki kimlikle eşleşmelidir."
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "Onaylı eklenti listesi yükleniyor…"
+
+#: 
+msgid "Loading…"
+msgstr "Yükleniyor…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "Onaylı eklenti listesindeki bir girişle eşleşiyor"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "HTTPS üzerinden sunulan değişmez bir sürüm URL'si olmalıdır."
+
+#: 
+msgid "Plugin id"
+msgstr "Eklenti kimliği"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "Eklenti DOĞRULANMAMIŞ olarak yüklendi. Etkinleştirmeden önce çıkarılan dosyaları dikkatle inceleyin."
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "Eklenti yüklendi. İnceleyip etkinleştirmek için Etkinleştir'e tıklayın."
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "Eklenti karantinası temizlendi. Artık eklentiyi yeniden etkinleştirebilirsiniz."
+
+#: 
+msgid "Plugin quarantined"
+msgstr "Eklenti karantinaya alındı"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "Eklenti kayıt defteri yenilendi."
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "Eklenti kaldırıldı"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "Eklenti kaldırıldı."
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "Eklenti zip URL'si (yalnızca HTTPS)"
+
+#: 
+msgid "Quarantined"
+msgstr "Karantinada"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "Etkinleştirmeden önce diskteki eklenti dosyalarını inceleyin. Doğrulanmamış eklentiler, onaylı eklentilerle aynı izinlerle çalışır."
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "SHA-256 sağlama toplamı"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "SHA-256, 64 karakterlik bir onaltılık dize olmalıdır."
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "ChurchCRM geliştiricileri bunu incelememiştir. Buraya yüklediğiniz her şeyin güvenliği ve davranışından siz sorumlusunuz. Mümkün olduğunda Onaylıları İncele akışını tercih edin."
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "Onaylı eklenti listesi boş. Doğrulanmış yükleyici aracılığıyla henüz herhangi bir üçüncü taraf eklentisi mevcut değil."
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "Eklenti, çalışma zamanı hatası nedeniyle otomatik olarak devre dışı bırakıldı."
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "Bu eklentiler ChurchCRM geliştiricileri tarafından incelenmiş ve onaylanmıştır. Birini indirip yüklemek için Yükle'ye tıklayın — eklenti otomatik olarak etkinleştirilmeyecektir."
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "Bu eklenti, ChurchCRM onaylı eklenti listesinde değil."
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "Bu eklenti DOĞRULANMAMIŞ olarak yüklenecek."
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "URL, HTTPS kullanmalıdır."
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "Kaldır (diskten sil)"
+
+#: 
+msgid "Unverified plugin"
+msgstr "Doğrulanmamış eklenti"
+
+#: 
+msgid "Verified"
+msgstr "Doğrulandı"
+
+#: 
+msgid "What this plugin does:"
+msgstr "Bu eklentinin işlevi:"
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "Doğrulanmamış yüklemeler için downloadUrl, sha256 ve pluginId alanlarının tümü gereklidir."
+
+#: 
+msgid "Name cannot be empty"
+msgstr "Ad boş olamaz"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "Ad %d karakterden uzun olamaz"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "Yardım mı lazım? Bize ulaşın"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "Takvim seçilmedi — bu etkinlik, siz sabitleyene kadar \"Sabitlenmemiş Etkinlikler\" sistem takviminde görünecektir."
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "Cihazların şuraya kaydolması için 2 dakikalık pencere açar:"
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "Saatler, tarayıcı saatiniz ({{browser}}) değil, kilise saatini ({{church}}) kullanır."
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "Hoş geldiniz — cemaatinizi yönetmek için giriş yapın"
+

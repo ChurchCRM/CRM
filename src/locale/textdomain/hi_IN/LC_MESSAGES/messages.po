@@ -15715,3 +15715,379 @@ msgstr "पैडल नंबर हटाएं"
 msgid "Invalid security token. Please try again."
 msgstr "अमान्य सुरक्षा टोकन। कृपया पुनः प्रयास करें।"
 
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "मुख्य कैलेंडर में सार्वजनिक अवकाश जोड़ता है। प्रत्येक चयनित देश साइडबार में अपना टॉगल करने योग्य कैलेंडर बन जाता है, जिससे उपयोगकर्ता स्वतंत्र रूप से अवकाश दिखा या छिपा सकते हैं।"
+
+#: 
+msgid "Choose map provider"
+msgstr "मानचित्र प्रदाता चुनें"
+
+#: 
+msgid "Current database"
+msgstr "वर्तमान डेटाबेस"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "डेमो डेटा सामान्यतः केवल नई स्थापनाओं पर लोड किया जाता है। अभी आयात करने से आपके मौजूदा डेटा के साथ नमूना रिकॉर्ड जुड़ जाएंगे और डुप्लीकेट बन सकते हैं।"
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "प्रत्येक देश साइडबार में अपनी कैलेंडर पंक्ति बनाता है। प्लगइन सेटिंग बदले बिना किसी देश को अस्थायी रूप से छिपाने के लिए प्रति-कैलेंडर टॉगल का उपयोग करें।"
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "श्रेणी के अनुसार फ़िल्टर"
+
+#: 
+msgid "Holiday Settings"
+msgstr "अवकाश सेटिंग"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "अवकाश (%s)"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "अवकाश को प्रकार के अनुसार टैग किया जाता है: आधिकारिक, पर्यवेक्षण, बैंक अवकाश, मौसमी और धार्मिक। सभी अवकाश दिखाने के लिए सभी श्रेणियाँ अनचुनी छोड़ें, या प्रदर्शन संकुचित करने के लिए विशिष्ट प्रकार चुनें।"
+
+#: 
+msgid "Import demo data anyway"
+msgstr "फिर भी डेमो डेटा आयात करें"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "वित्तीय प्रतिबद्धता पहचानकर्ता गायब है।"
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "कोई देश नहीं चुना गया है। अवकाश कैलेंडर प्लगइन सेटिंग में कम से कम एक देश चुनें।"
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "चयनित फ़िल्टर के लिए कोई मिलती-जुलती प्रविष्टियाँ नहीं हैं।"
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "Apple Maps में खोलें"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "Google Maps में खोलें"
+
+#: 
+msgid "Open in new tab"
+msgstr "नए टैब में खोलें"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "देश सेट करना"
+
+#: 
+msgid "Show all"
+msgstr "सब दिखाएं"
+
+#: 
+msgid "Show:"
+msgstr "दिखाएं:"
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "व्यक्तिगत देशों को दिखाना और छिपाना"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "स्वीडिश"
+
+#: 
+msgid "System"
+msgstr "सिस्टम"
+
+#: 
+msgid "Timeline filters"
+msgstr "टाइमलाइन फ़िल्टर"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "स्वच्छ डेटाबेस के साथ पुनः शुरू करने के लिए, डेमो डेटा आयात करने से पहले व्यवस्थापक डैशबोर्ड से डेटाबेस रीसेट करें।"
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "एक या अधिक देश चुनने के लिए देश चयनकर्ता का उपयोग करें। आपके द्वारा जोड़ा गया प्रत्येक देश साइडबार में एक अलग कैलेंडर प्रविष्टि के रूप में दिखाई देगा — जिससे आप वैश्विक मण्डली के लिए अवकाश दिखा सकते हैं।"
+
+#: 
+msgid "Your database already contains data"
+msgstr "आपके डेटाबेस में पहले से डेटा है"
+
+#: 
+msgid "people"
+msgstr "लोग"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "प्लगइन स्थापित करने के लिए downloadUrl आवश्यक है।"
+
+#: 
+msgid "All three fields are required."
+msgstr "तीनों फ़ील्ड आवश्यक हैं।"
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "अनुमोदित सामुदायिक प्लगइन"
+
+#: 
+msgid "Browse Approved"
+msgstr "अनुमोदित ब्राउज़ करें"
+
+#: 
+msgid "Check for Updates"
+msgstr "अपडेट जाँचें"
+
+#: 
+msgid "Checking…"
+msgstr "जाँच हो रही है…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "क्वारंटीन साफ़ करें"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "क्वारंटीन तभी साफ़ करें जब अंतर्निहित समस्या ठीक हो जाए। क्वारंटीन किए गए प्लगइन को सक्षम करने से सर्वर इनकार करता है।"
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "परीक्षित प्लगइन स्थापित करने के लिए ऊपर \"अनुमोदित ब्राउज़ करें\" पर क्लिक करें, या विकास के दौरान असत्यापित बिल्ड के लिए \"URL से स्थापित करें\" पर क्लिक करें।"
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "प्लगइन क्वारंटीन साफ़ करने में विफल"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "क्वारंटीन साफ़ करने में विफल"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "प्लगइन स्थापित करने में विफल"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "URL से प्लगइन स्थापित करने में विफल"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "अनुमोदित प्लगइन सूची लोड करने में विफल"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "अनुमोदित प्लगइन सूची लोड करने में विफल।"
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "प्लगइन रजिस्ट्री ताज़ा करने में विफल"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "प्लगइन रजिस्ट्री ताज़ा करने में विफल। अपना इंटरनेट कनेक्शन जाँचें।"
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "प्लगइन अनइंस्टॉल करने में विफल"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "नवीनतम रजिस्ट्री प्राप्त की जा रही है…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "यह प्लगइन लेखक से प्राप्त करें। यदि यह बाइट-दर-बाइट मेल नहीं खाता तो इंस्टॉलर डाउनलोड से इनकार करेगा।"
+
+#: 
+msgid "Homepage"
+msgstr "होमपेज"
+
+#: 
+msgid "Install"
+msgstr "स्थापित करें"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "URL से प्लगइन स्थापित करें (असत्यापित)"
+
+#: 
+msgid "Install Unverified"
+msgstr "असत्यापित स्थापित करें"
+
+#: 
+msgid "Install failed"
+msgstr "स्थापना विफल"
+
+#: 
+msgid "Install from URL"
+msgstr "URL से स्थापित करें"
+
+#: 
+msgid "Installing…"
+msgstr "स्थापित हो रहा है…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "Kebab-case। ज़िप के अंदर शीर्ष-स्तरीय डायरेक्टरी नाम और plugin.json में id से मेल खाना चाहिए।"
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "अनुमोदित प्लगइन सूची लोड हो रही है…"
+
+#: 
+msgid "Loading…"
+msgstr "लोड हो रहा है…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "अनुमोदित प्लगइन सूची में एक प्रविष्टि से मेल खाता है"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "HTTPS पर दिया गया एक अपरिवर्तनीय रिलीज़ URL होना चाहिए।"
+
+#: 
+msgid "Plugin id"
+msgstr "प्लगइन id"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "प्लगइन UNVERIFIED के रूप में स्थापित हुआ। सक्षम करने से पहले निकाली गई फ़ाइलों की ध्यानपूर्वक समीक्षा करें।"
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "प्लगइन स्थापित हुआ। इसकी समीक्षा करें और सक्रिय करने के लिए सक्षम करें पर क्लिक करें।"
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "प्लगइन क्वारंटीन साफ़ हुआ। आप अब प्लगइन को फिर से सक्षम कर सकते हैं।"
+
+#: 
+msgid "Plugin quarantined"
+msgstr "प्लगइन क्वारंटीन किया गया"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "प्लगइन रजिस्ट्री ताज़ा हुई।"
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "प्लगइन अनइंस्टॉल हुआ"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "प्लगइन अनइंस्टॉल हुआ।"
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "प्लगइन zip URL (केवल HTTPS)"
+
+#: 
+msgid "Quarantined"
+msgstr "क्वारंटीन किया गया"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "सक्षम करने से पहले डिस्क पर प्लगइन फ़ाइलों की समीक्षा करें। असत्यापित प्लगइन अनुमोदित प्लगइन के समान अनुमतियों के साथ चलते हैं।"
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "SHA-256 चेकसम"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "SHA-256 एक 64-अक्षर की hex स्ट्रिंग होनी चाहिए।"
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "ChurchCRM अनुरक्षकों ने इसकी समीक्षा नहीं की है। यहाँ आप जो भी स्थापित करते हैं उसकी सुरक्षा और व्यवहार के लिए आप स्वयं जिम्मेदार हैं। जब भी संभव हो अनुमोदित ब्राउज़ प्रवाह को प्राथमिकता दें।"
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "अनुमोदित प्लगइन सूची खाली है। सत्यापित इंस्टॉलर के माध्यम से अभी तक कोई तृतीय-पक्ष प्लगइन उपलब्ध नहीं है।"
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "रनटाइम विफलता के बाद प्लगइन स्वचालित रूप से अक्षम कर दिया गया।"
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "इन प्लगइनों की समीक्षा ChurchCRM अनुरक्षकों द्वारा की गई है और अनुमोदित किए गए हैं। एक डाउनलोड और स्थापित करने के लिए स्थापित करें पर क्लिक करें — प्लगइन स्वचालित रूप से सक्षम नहीं होगा।"
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "यह प्लगइन ChurchCRM अनुमोदित प्लगइन सूची में नहीं है।"
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "यह प्लगइन UNVERIFIED के रूप में स्थापित होगा।"
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "URL HTTPS का उपयोग करना चाहिए।"
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "अनइंस्टॉल करें (डिस्क से हटाएं)"
+
+#: 
+msgid "Unverified plugin"
+msgstr "असत्यापित प्लगइन"
+
+#: 
+msgid "Verified"
+msgstr "सत्यापित"
+
+#: 
+msgid "What this plugin does:"
+msgstr "यह प्लगइन क्या करता है:"
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "असत्यापित स्थापनाओं के लिए downloadUrl, sha256 और pluginId सभी आवश्यक हैं।"
+
+#: 
+msgid "risk"
+msgstr "जोखिम"
+
+#: 
+msgid "Name cannot be empty"
+msgstr "नाम खाली नहीं हो सकता"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "नाम %d अक्षरों से अधिक लंबा नहीं हो सकता"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "सहायता चाहिए? हमसे संपर्क करें"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "कोई कैलेंडर नहीं चुना गया — यह आयोजन \"Unpinned Events\" सिस्टम कैलेंडर के अंतर्गत तब तक दिखेगा जब तक आप इसे पिन नहीं करते।"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "उपकरणों को पंजीकरण करने के लिए 2-मिनट की विंडो खोलता है:"
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "समय चर्च के समय ({{church}}) का उपयोग करता है, न कि आपके ब्राउज़र ({{browser}}) का।"
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "स्वागत है — अपनी मण्डली प्रबंधित करने के लिए साइन इन करें"
+

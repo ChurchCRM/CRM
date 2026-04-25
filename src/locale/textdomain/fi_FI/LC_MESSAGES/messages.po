@@ -15718,3 +15718,379 @@ msgstr "Poista huutokauppanumero"
 msgid "Invalid security token. Please try again."
 msgstr "Virheellinen suojausmerkki. Yritä uudelleen."
 
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "Lisää julkiset pyhäpäivät pääkalenteriin. Kukin valittu maa näkyy omana vaihdettavana kalenterinaan sivupalkissa, joten käyttäjät voivat näyttää tai piilottaa pyhäpäivät erikseen."
+
+#: 
+msgid "Choose map provider"
+msgstr "Valitse kartantarjoaja"
+
+#: 
+msgid "Current database"
+msgstr "Nykyinen tietokanta"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "Esimerkkitiedot ladataan tavallisesti vain uusiin asennuksiin. Tuominen nyt lisää näytetietueita olemassa olevien tietojesi rinnalle ja voi aiheuttaa kaksoiskappaleita."
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "Kukin maa tuottaa oman kalenteririvin sivupalkissa. Käytä kalenterikohtaista kytkintä piilottaaksesi maan tilapäisesti muuttamatta laajennusasetuksiasi."
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "Suodatus kategorian mukaan"
+
+#: 
+msgid "Holiday Settings"
+msgstr "Pyhäpäiväasetukset"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "Pyhäpäivät (%s)"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "Pyhäpäivät on merkitty tyypin mukaan: Viralliset, Muistopäivät, Pankkivapaat, Kausittaiset ja Uskonnolliset. Jätä kaikki kategoriat valitsematta näyttääksesi kaikki pyhäpäivät tai valitse tietyt tyypit rajaaksesi näyttöä."
+
+#: 
+msgid "Import demo data anyway"
+msgstr "Tuo esimerkkitiedot silti"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "Taloudellisen sitoumuksen tunniste puuttuu."
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "Yhtään maata ei ole valittu. Valitse vähintään yksi maa Pyhäpäiväkalenterit-laajennuksen asetuksissa."
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "Valituilla suodattimilla ei löydy vastaavia merkintöjä."
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "Avaa Apple Mapsissa"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "Avaa Google Mapsissa"
+
+#: 
+msgid "Open in new tab"
+msgstr "Avaa uudessa välilehdessä"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "Maiden määrittäminen"
+
+#: 
+msgid "Show all"
+msgstr "Näytä kaikki"
+
+#: 
+msgid "Show:"
+msgstr "Näytä:"
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "Yksittäisten maiden näyttäminen ja piilottaminen"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "Ruotsi"
+
+#: 
+msgid "System"
+msgstr "Järjestelmä"
+
+#: 
+msgid "Timeline filters"
+msgstr "Aikajanasuodattimet"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "Aloittaaksesi puhtaalta tietokannalta, käytä Nollaa tietokanta -toimintoa hallintapaneelista ennen esimerkkitietojen tuomista."
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "Käytä Maat-valitsinta valitaksesi yhden tai useamman maan. Kukin lisäämäsi maa näkyy erillisenä kalenterimerkintänä sivupalkissa — näin voit näyttää pyhäpäivät kansainväliselle seurakunnalle."
+
+#: 
+msgid "Your database already contains data"
+msgstr "Tietokannassasi on jo tietoja"
+
+#: 
+msgid "people"
+msgstr "henkilöä"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "Laajennuksen asentamiseen tarvitaan lataus-URL."
+
+#: 
+msgid "All three fields are required."
+msgstr "Kaikki kolme kenttää ovat pakollisia."
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "Hyväksytyt yhteisölaajennukset"
+
+#: 
+msgid "Browse Approved"
+msgstr "Selaa hyväksyttyjä"
+
+#: 
+msgid "Check for Updates"
+msgstr "Tarkista päivitykset"
+
+#: 
+msgid "Checking…"
+msgstr "Tarkistetaan…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "Tyhjennä karanteeni"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "Tyhjennä karanteeni vasta, kun taustalla oleva ongelma on korjattu. Palvelin estää karanteenissa olevan laajennuksen käyttöönoton."
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "Napsauta \"Selaa hyväksyttyjä\" asentaaksesi tarkistetun laajennuksen tai \"Asenna URL:sta\" kehityksen aikana varmentamattoman version asentamiseksi."
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "Laajennuksen karanteenin tyhjentäminen epäonnistui"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "Karanteenin tyhjentäminen epäonnistui"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "Laajennuksen asentaminen epäonnistui"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "Laajennuksen asentaminen URL:sta epäonnistui"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "Hyväksyttyjen laajennusten luettelon lataaminen epäonnistui"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "Hyväksyttyjen laajennusten luettelon lataaminen epäonnistui."
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "Laajennusrekisterin päivittäminen epäonnistui"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "Laajennusrekisterin päivittäminen epäonnistui. Tarkista internetyhteytesi."
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "Laajennuksen poistaminen epäonnistui"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "Haetaan uusinta rekisteriä…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "Hanki tämä laajennuksen tekijältä. Asennusohjelma kieltäytyy lataamisesta, jos se ei täsmää tavu tavulta."
+
+#: 
+msgid "Homepage"
+msgstr "Kotisivu"
+
+#: 
+msgid "Install"
+msgstr "Asenna"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "Asenna laajennus URL:sta (varmentamaton)"
+
+#: 
+msgid "Install Unverified"
+msgstr "Asenna varmentamattomana"
+
+#: 
+msgid "Install failed"
+msgstr "Asennus epäonnistui"
+
+#: 
+msgid "Install from URL"
+msgstr "Asenna URL:sta"
+
+#: 
+msgid "Installing…"
+msgstr "Asennetaan…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "Kebab-case-muoto. Täytyy vastata zip-tiedoston ylimmän tason hakemiston nimeä ja plugin.json-tiedoston id-arvoa."
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "Ladataan hyväksyttyjen laajennusten luetteloa…"
+
+#: 
+msgid "Loading…"
+msgstr "Ladataan…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "Vastaa merkintää hyväksyttyjen laajennusten luettelossa"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "Täytyy olla muuttumaton julkaisuosoite, joka on saatavilla HTTPS-protokollan kautta."
+
+#: 
+msgid "Plugin id"
+msgstr "Laajennuksen tunnus"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "Laajennus asennettu VARMENTAMATTOMANA. Tarkista puretut tiedostot huolellisesti ennen käyttöönottoa."
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "Laajennus asennettu. Tarkista se ja napsauta Ota käyttöön aktivoidaksesi."
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "Laajennuksen karanteeni tyhjennetty. Voit nyt ottaa laajennuksen uudelleen käyttöön."
+
+#: 
+msgid "Plugin quarantined"
+msgstr "Laajennus karanteenissa"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "Laajennusrekisteri päivitetty."
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "Laajennus poistettu"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "Laajennus poistettu."
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "Laajennuksen zip-URL (vain HTTPS)"
+
+#: 
+msgid "Quarantined"
+msgstr "Karanteenissa"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "Tarkista laajennuksen tiedostot levyltä ennen käyttöönottoa. Varmentamattomat laajennukset toimivat samoilla oikeuksilla kuin hyväksytyt laajennukset."
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "SHA-256-tarkistussumma"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "SHA-256:n täytyy olla 64 merkin pituinen heksadesimaalinen merkkijono."
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "ChurchCRM-ylläpitäjät eivät ole tarkistaneet sitä. Olet vastuussa tänne asentamiesi asioiden tietoturvasta ja toiminnasta. Käytä Selaa hyväksyttyjä -prosessia aina kun mahdollista."
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "Hyväksyttyjen laajennusten luettelo on tyhjä. Tarkistetun asennusohjelman kautta ei ole vielä saatavilla kolmannen osapuolen laajennuksia."
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "Laajennus poistettiin automaattisesti käytöstä suorituksenaikaisen virheen jälkeen."
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "ChurchCRM-ylläpitäjät ovat tarkistaneet ja hyväksyneet nämä laajennukset. Napsauta Asenna ladataksesi ja asentaaksesi laajennuksen — laajennusta ei oteta automaattisesti käyttöön."
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "Tämä laajennus ei ole ChurchCRM:n hyväksyttyjen laajennusten luettelossa."
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "Tämä laajennus asennetaan VARMENTAMATTOMANA."
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "URL:n täytyy käyttää HTTPS-protokollaa."
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "Poista (poista levyltä)"
+
+#: 
+msgid "Unverified plugin"
+msgstr "Varmentamaton laajennus"
+
+#: 
+msgid "Verified"
+msgstr "Varmennettu"
+
+#: 
+msgid "What this plugin does:"
+msgstr "Mitä tämä laajennus tekee:"
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "downloadUrl, sha256 ja pluginId ovat kaikki pakollisia varmentamattomissa asennuksissa."
+
+#: 
+msgid "risk"
+msgstr "riski"
+
+#: 
+msgid "Name cannot be empty"
+msgstr "Nimi ei voi olla tyhjä"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "Nimi ei voi olla pidempi kuin %d merkkiä"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "Tarvitsetko apua? Ota yhteyttä"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "Kalenteria ei ole valittu — tämä tapahtuma näkyy \"Kiinnittämättömät tapahtumat\" -järjestelmäkalenterissa, kunnes kiinnität sen."
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "Avaa 2 minuutin ikkunan laitteiden rekisteröitymiselle osoitteessa:"
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "Ajat käyttävät seurakunnan aikaa ({{church}}), ei selaimesi aikaa ({{browser}})."
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "Tervetuloa — kirjaudu sisään hallitaksesi seurakuntaasi"
+
