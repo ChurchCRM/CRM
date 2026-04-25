@@ -522,6 +522,16 @@ function initializeCalendar() {
         window.CRM.notify(parts.join(" · "), { type: "info", delay: 10000, close: true });
       }
     },
+    eventDidMount: (info) => {
+      // Long event titles get clipped by FullCalendar's default
+      // `overflow:hidden;text-overflow:ellipsis` styling on month-grid events.
+      // Set the native HTML `title` attribute so hovering reveals the full
+      // text via a browser tooltip — no JS dependency, accessible by default.
+      // Closes #8792.
+      if (info.event.title) {
+        info.el.setAttribute("title", info.event.title);
+      }
+    },
     loading: (isLoading) => {
       window.CRM.isCalendarLoading = isLoading;
     },
