@@ -249,7 +249,12 @@ class Menu
         $eventsMenu->addSubMenu(new MenuItem(gettext('Events Dashboard'), 'event/dashboard', true, 'fa-gauge'));
         $eventsMenu->addSubMenu(new MenuItem(gettext('Add Church Event'), 'event/editor', $isAddEventEnabled, 'fa-circle-plus'));
         $eventsMenu->addSubMenu(new MenuItem(gettext('Check-in and Check-out'), 'event/checkin', true, 'fa-user-check'));
-        $eventsMenu->addSubMenu(new MenuItem(gettext('List Event Types'), 'event/types', $isAddEventEnabled, 'fa-tags'));
+
+        if ($isAddEventEnabled) {
+            $adminMenu = new MenuItem(gettext('Admin'), '', true);
+            $adminMenu->addSubMenu(new MenuItem(gettext('Event Types'), 'event/types', true, 'fa-tags'));
+            $eventsMenu->addSubMenu($adminMenu);
+        }
 
         return $eventsMenu;
     }
