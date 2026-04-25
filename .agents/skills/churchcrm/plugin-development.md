@@ -501,32 +501,25 @@ $errorMiddleware->setDefaultErrorHandler(function (Request $request, Throwable $
 Defined in `src/ChurchCRM/Plugin/Hooks.php`:
 
 **Person**
-- `PERSON_PRE_CREATE`, `PERSON_CREATED`
-- `PERSON_PRE_UPDATE`, `PERSON_UPDATED`
-- `PERSON_DELETED`, `PERSON_VIEW_TABS`
+- `PERSON_CREATED`, `PERSON_UPDATED`, `PERSON_DELETED`
 
 **Family**
-- `FAMILY_PRE_CREATE`, `FAMILY_CREATED`
-- `FAMILY_PRE_UPDATE`, `FAMILY_UPDATED`
-- `FAMILY_DELETED`, `FAMILY_VIEW_TABS`
+- `FAMILY_CREATED`, `FAMILY_UPDATED`, `FAMILY_DELETED`
 
 **Financial**
 - `DONATION_RECEIVED`, `DEPOSIT_CLOSED`
 
 **Events**
-- `EVENT_CREATED`, `EVENT_CHECKIN`, `EVENT_CHECKOUT`
+- `EVENT_CREATED`, `EVENT_CHECKIN`, `EVENT_CHECKOUT`, `SYSTEM_CALENDARS_REGISTER`
 
 **Groups**
 - `GROUP_MEMBER_ADDED`, `GROUP_MEMBER_REMOVED`
 
-**Email**
-- `EMAIL_PRE_SEND`, `EMAIL_SENT`
-
 **UI/Menu**
-- `MENU_BUILDING`, `DASHBOARD_WIDGETS`, `SETTINGS_PANELS`, `ADMIN_PAGE`
+- `MENU_BUILDING`
 
 **System**
-- `SYSTEM_INIT`, `SYSTEM_UPGRADED`, `CRON_RUN`, `API_RESPONSE`
+- `CRON_RUN`
 
 ## Registering Hooks
 
@@ -547,6 +540,15 @@ public function onPersonUpdated($person, array $oldData): void
     }
     // Handle person update
 }
+```
+
+### Hook Initialization Requirement <!-- learned: 2026-04-24 -->
+
+Hooks registered in `boot()` only fire if `PluginManager::init()` has run **before** the ORM save that triggers the Propel lifecycle hook. For MVC routes, initialization happens automatically via `PageInit.php` before the body parser. Legacy `src/*.php` pages also run `PageInit.php` before form processing. If writing a CLI script, unit test, or custom entry point, call `PluginManager::init()` explicitly before any ORM operation:
+
+```php
+\ChurchCRM\Plugin\PluginManager::init(SystemURLs::getDocumentRoot() . '/plugins');
+$person->setFirstName('Test')->save(); // Now hooks fire
 ```
 
 ## Core Plugins Reference

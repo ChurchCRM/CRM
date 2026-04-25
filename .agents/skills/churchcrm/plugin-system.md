@@ -490,15 +490,14 @@ $this->setConfigValue('lastSync', date('c'));        // Sets plugin.mailchimp.la
 ### Available Hook Points
 
 **Person Lifecycle:**
-- `PERSON_PRE_CREATE` - Before person is created (pre-save, can prevent)
 - `PERSON_CREATED` - After person is created
-- `PERSON_PRE_UPDATE` - Before person is updated
 - `PERSON_UPDATED` - After person is updated
 - `PERSON_DELETED` - After person is deleted
-- `PERSON_VIEW_TABS` - Add tabs to person profile
 
 **Family Lifecycle:**
-- `FAMILY_PRE_CREATE`, `FAMILY_CREATED`, `FAMILY_PRE_UPDATE`, `FAMILY_UPDATED`, `FAMILY_DELETED`, `FAMILY_VIEW_TABS`
+- `FAMILY_CREATED` - After family is created
+- `FAMILY_UPDATED` - After family is updated
+- `FAMILY_DELETED` - After family is deleted
 
 **Financial:**
 - `DONATION_RECEIVED` - When donation is recorded
@@ -508,26 +507,17 @@ $this->setConfigValue('lastSync', date('c'));        // Sets plugin.mailchimp.la
 - `EVENT_CREATED` - When event is created
 - `EVENT_CHECKIN` - When person checks in
 - `EVENT_CHECKOUT` - When person checks out
+- `SYSTEM_CALENDARS_REGISTER` - Register custom calendars
 
 **Groups:**
 - `GROUP_MEMBER_ADDED` - When person added to group
 - `GROUP_MEMBER_REMOVED` - When person removed from group
 
-**Email:**
-- `EMAIL_PRE_SEND` - Before email is sent (can modify)
-- `EMAIL_SENT` - After email is sent
-
 **UI/Menu:**
 - `MENU_BUILDING` - Building navigation menu
-- `DASHBOARD_WIDGETS` - Adding dashboard widgets
-- `SETTINGS_PANELS` - Adding settings to admin panel
-- `ADMIN_PAGE` - Rendering admin pages
 
 **System:**
-- `SYSTEM_INIT` - System initialization
-- `SYSTEM_UPGRADED` - After version upgrade
 - `CRON_RUN` - Periodic task execution
-- `API_RESPONSE` - Before API response sent
 
 ### Registering Hooks
 
@@ -557,6 +547,29 @@ public function filterEmailBody($emailBody, $recipient): string
     return str_replace('{{placeholders}}', 'values', $emailBody);
 }
 ```
+
+### Hook Dispatch Locations <!-- learned: 2026-04-24 -->
+
+Hook constants in `Hooks.php` are inert — nothing fires automatically. Each hook requires an explicit `HookManager::doAction()` call at the right point in the codebase for plugins to observe it.
+
+| Hook | Dispatch Location | Status |
+|------|-------------------|--------|
+| `PERSON_CREATED` | `src/ChurchCRM/Model/Person.php` `postInsert()` — after timeline note creation | ✅ Wired |
+| `PERSON_UPDATED` | `src/ChurchCRM/Model/Person.php` `postUpdate()` — after timeline note check | ✅ Wired |
+| `FAMILY_CREATED` | `src/ChurchCRM/Model/Family.php` `postInsert()` — after welcome email | ✅ Wired |
+| `FAMILY_UPDATED` | `src/ChurchCRM/Model/Family.php` `postUpdate()` — after timeline note | ✅ Wired |
+| `CRON_RUN` | `src/ChurchCRM/Service/SystemService.php` `runTimerJobs()` | ✅ Wired |
+| `MENU_BUILDING` | Core menu builder in admin initializer | ✅ Wired |
+| `SYSTEM_CALENDARS_REGISTER` | Calendar system initialization | ✅ Wired |
+| `PERSON_DELETED` | Needs wiring in `/people/person` DELETE route | ⏳ Pending |
+| `FAMILY_DELETED` | Needs wiring in `/people/family` DELETE route | ⏳ Pending |
+| `EVENT_CREATED` | Needs wiring in `EventService::createEvent()` | ⏳ Pending |
+| `EVENT_CHECKIN` | Needs wiring in `Event::checkInPerson()` | ⏳ Pending |
+| `EVENT_CHECKOUT` | Needs wiring in `Event::checkOutPerson()` | ⏳ Pending |
+| `GROUP_MEMBER_ADDED` | Needs wiring in groups membership route | ⏳ Pending |
+| `GROUP_MEMBER_REMOVED` | Needs wiring in groups membership route | ⏳ Pending |
+| `DONATION_RECEIVED` | Needs wiring in financial donation route | ⏳ Pending |
+| `DEPOSIT_CLOSED` | Needs wiring in `FinancialService::setDeposit()` | ⏳ Pending |
 
 ---
 
@@ -693,6 +706,22 @@ $app->run();
 - ✅ Uninstall cleanup - remove temporary data
 
 ---
+
+---
+
+## Legacy Page Init Timing <!-- learned: 2026-04-24 -->
+
+In legacy `src/*.php` pages (PersonEditor.php, FamilyEditor.php, etc.), form processing—including `$person->save()` and `$family->save()`—happens **before** `Header.php` is included. Because `PluginManager::init()` was historically only called in `Header.php`, Propel lifecycle hooks (`postInsert`, `postUpdate`) fired with zero registered listeners, and plugins saw no events.
+
+**Fix:** Added `PluginManager::init()` to `src/Include/PageInit.php` (inside the `if (empty($bSuppressSessionTests))` guard, after the no-permissions check). `PluginManager::init()` is idempotent — protected by a static `$initialized` flag — so `Header.php`'s call becomes a no-op on the second invocation. Now legacy pages initialize plugins before any ORM save, and MVC routes gain free initialization via `PageInit.php` before the body parser runs.
+
+```php
+// src/Include/PageInit.php
+if (empty($bSuppressSessionTests)) {
+    // ... permissions checks ...
+    \ChurchCRM\Plugin\PluginManager::init(SystemURLs::getDocumentRoot() . '/plugins');
+}
+```
 
 ---
 

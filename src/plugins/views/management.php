@@ -53,7 +53,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
          data-plugin-verified="<?= $isVerified ? '1' : '0' ?>"
          data-plugin-quarantined="<?= $isQuarantined ? '1' : '0' ?>"
          <?php if ($hasHelp): ?>data-plugin-help="<?= $helpData ?>"<?php endif; ?>>
-        <div class="card-header d-flex align-items-center" style="cursor: pointer;" class="plugin-card-header">
+        <div class="card-header d-flex align-items-center plugin-card-header" style="cursor: pointer;">
             <h3 class="card-title">
                 <?php if ($isQuarantined): ?>
                     <i class="fa-solid fa-shield-halved text-warning me-3" title="<?= gettext('Quarantined') ?>"></i>
@@ -110,8 +110,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                     <button type="button" class="btn btn-tool btn-plugin-help text-info"
                             data-plugin-id="<?= $pluginId ?>"
                             data-plugin-name="<?= htmlspecialchars($plugin['name']) ?>"
-                            title="<?= gettext('Help') ?>"
-                            onclick="event.stopPropagation();">
+                            title="<?= gettext('Help') ?>">
                         <i class="fa-solid fa-circle-question"></i>
                     </button>
                 <?php endif; ?>
@@ -119,15 +118,13 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                     <?php if ($isActive): ?>
                         <button type="button" class="btn btn-tool btn-plugin-toggle text-danger"
                                 data-action="disable" data-plugin-id="<?= $pluginId ?>"
-                                title="<?= gettext('Disable Plugin') ?>"
-                                onclick="event.stopPropagation();">
+                                title="<?= gettext('Disable Plugin') ?>">
                             <i class="fa-solid fa-power-off"></i><?= gettext('Disable') ?>
                         </button>
                     <?php else: ?>
                         <button type="button" class="btn btn-tool btn-plugin-toggle text-success"
                                 data-action="enable" data-plugin-id="<?= $pluginId ?>"
-                                title="<?= gettext('Enable Plugin') ?>"
-                                onclick="event.stopPropagation();">
+                                title="<?= gettext('Enable Plugin') ?>">
                             <i class="fa-solid fa-play"></i><?= gettext('Enable') ?>
                         </button>
                     <?php endif; ?>
@@ -135,8 +132,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                 <?php if ($isQuarantined): ?>
                     <button type="button" class="btn btn-tool btn-plugin-clear-quarantine text-warning"
                             data-plugin-id="<?= $pluginId ?>"
-                            title="<?= gettext('Clear Quarantine') ?>"
-                            onclick="event.stopPropagation();">
+                            title="<?= gettext('Clear Quarantine') ?>">
                         <i class="fa-solid fa-shield-halved"></i>
                     </button>
                 <?php endif; ?>
@@ -144,12 +140,11 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                     <button type="button" class="btn btn-tool btn-plugin-uninstall text-danger"
                             data-plugin-id="<?= $pluginId ?>"
                             data-plugin-name="<?= htmlspecialchars($plugin['name']) ?>"
-                            title="<?= gettext('Uninstall (delete from disk)') ?>"
-                            onclick="event.stopPropagation();">
+                            title="<?= gettext('Uninstall (delete from disk)') ?>">
                         <i class="fa-solid fa-trash"></i>
                     </button>
                 <?php endif; ?>
-                <button type="button" class="btn btn-tool btn-expand-plugin" title="<?= gettext('Expand') ?>" onclick="event.stopPropagation();">
+                <button type="button" class="btn btn-tool btn-expand-plugin" title="<?= gettext('Expand') ?>">
                     <i class="fa-solid fa-chevron-down"></i>
                 </button>
             </div>
@@ -180,7 +175,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                     <?php if (!empty($permissions) && is_array($permissions)): ?>
                         <div class="mt-2">
                             <?php foreach ($permissions as $perm): ?>
-                                <span class="badge bg-secondary me-1"><?= htmlspecialchars((string) $perm) ?></span>
+                                <span class="badge bg-secondary-lt text-secondary me-1"><?= htmlspecialchars((string) $perm) ?></span>
                             <?php endforeach; ?>
                         </div>
                     <?php endif; ?>
@@ -435,6 +430,23 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
     </div>
 </div>
 
+<!-- Shared Confirm Modal -->
+<div class="modal fade" id="pluginConfirmModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="pluginConfirmTitle"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= gettext('Close') ?>"></button>
+            </div>
+            <div class="modal-body" id="pluginConfirmBody"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
+                <button type="button" class="btn btn-danger" id="pluginConfirmOk"><?= gettext('Confirm') ?></button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Browse Approved Plugins Modal -->
 <div class="modal fade" id="approvedPluginsModal" tabindex="-1" role="dialog" aria-labelledby="approvedPluginsModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
@@ -534,6 +546,19 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 $(document).ready(function() {
+    // Shared confirm helper — replaces window.confirm with a Tabler modal
+    function showConfirm(title, message, okLabel, onConfirm) {
+        $('#pluginConfirmTitle').text(title);
+        $('#pluginConfirmBody').text(message);
+        $('#pluginConfirmOk').text(okLabel || i18next.t('Confirm'));
+        const modal = new bootstrap.Modal(document.getElementById('pluginConfirmModal'));
+        $('#pluginConfirmOk').off('click').one('click', function() {
+            modal.hide();
+            onConfirm();
+        });
+        modal.show();
+    }
+
     // Expand/collapse plugin card
     function togglePluginCard(card) {
         const body = card.find('.card-body');
@@ -549,8 +574,9 @@ $(document).ready(function() {
         }
     }
 
-    // Click on card header to expand/collapse
-    $('.plugin-card-header').on('click', function() {
+    // Click on card header to expand/collapse (skip if a button was clicked)
+    $('.plugin-card-header').on('click', function(e) {
+        if ($(e.target).closest('.btn').length) return;
         const card = $(this).closest('.card');
         togglePluginCard(card);
     });
@@ -808,11 +834,11 @@ $(document).ready(function() {
         const pluginId = btn.data('plugin-id');
         const form = btn.closest('form');
         
-        // Confirm reset
-        if (!confirm(i18next.t('Are you sure you want to reset all settings for this plugin? This will clear all configured values.'))) {
-            return;
-        }
-        
+        showConfirm(
+            i18next.t('Reset Settings'),
+            i18next.t('This will clear all configured values for this plugin. This cannot be undone.'),
+            i18next.t('Reset'),
+            function() {
         btn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin me-1"></i>' + i18next.t('Resetting...'));
         
         $.ajax({
@@ -844,8 +870,10 @@ $(document).ready(function() {
         .always(function() {
             btn.prop('disabled', false).html('<i class="fa-solid fa-undo me-1"></i>' + i18next.t('Reset'));
         });
+            }
+        );
     });
-    
+
     // Auto-expand plugin card if URL has hash (e.g., #plugin-mailchimp)
     if (window.location.hash && window.location.hash.startsWith('#plugin-')) {
         const pluginId = window.location.hash.replace('#plugin-', '');
@@ -870,59 +898,61 @@ $(document).ready(function() {
     // ─────────────────────────────────────────────────────────────
     //  Uninstall (delete community plugin from disk)
     // ─────────────────────────────────────────────────────────────
-    $(document).on('click', '.btn-plugin-uninstall', function(e) {
+    $('.btn-plugin-uninstall').on('click', function(e) {
         e.stopPropagation();
         const pluginId = $(this).data('plugin-id');
         const pluginName = $(this).data('plugin-name');
         if (!pluginId) return;
 
-        const confirmed = window.confirm(
-            "<?= addslashes(gettext('This will permanently delete the plugin files from disk and clear its settings. This cannot be undone. Continue?')) ?>\n\n" + pluginName
-        );
-        if (!confirmed) return;
-
+        showConfirm(
+            i18next.t('Uninstall Plugin'),
+            pluginName + ' — ' + i18next.t('This will permanently delete the plugin files from disk and clear its settings. This cannot be undone.'),
+            i18next.t('Delete'),
+            function() {
         $.ajax({
-            url: '<?= $sRootPath ?>/plugins/api/plugins/' + encodeURIComponent(pluginId),
+            url: window.CRM.root + '/plugins/api/plugins/' + encodeURIComponent(pluginId),
             method: 'DELETE',
             success: function() {
-                window.CRM && window.CRM.notify
-                    ? window.CRM.notify(<?= json_encode(gettext('Plugin uninstalled')) ?>, 'success')
-                    : alert(<?= json_encode(gettext('Plugin uninstalled')) ?>);
+                window.CRM.notify(<?= json_encode(gettext('Plugin uninstalled')) ?>, { type: 'success' });
                 setTimeout(function() { window.location.reload(); }, 400);
             },
             error: function(xhr) {
                 const msg = (xhr.responseJSON && xhr.responseJSON.message)
                     ? xhr.responseJSON.message
                     : <?= json_encode(gettext('Failed to uninstall plugin')) ?>;
-                alert(msg);
+                window.CRM.notify(msg, { type: 'error', delay: 0 });
             }
         });
+            }
+        );
     });
 
     // ─────────────────────────────────────────────────────────────
     //  Clear Quarantine
     // ─────────────────────────────────────────────────────────────
-    $(document).on('click', '.btn-plugin-clear-quarantine', function(e) {
+    $('.btn-plugin-clear-quarantine').on('click', function(e) {
         e.stopPropagation();
         const pluginId = $(this).data('plugin-id');
         if (!pluginId) return;
 
-        const confirmed = window.confirm(
-            <?= json_encode(gettext('Clear quarantine for this plugin? Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again.')) ?>
-        );
-        if (!confirmed) return;
-
-        $.ajax({
-            url: '<?= $sRootPath ?>/plugins/api/plugins/' + encodeURIComponent(pluginId) + '/quarantine',
-            method: 'DELETE',
-            success: function() { setTimeout(function() { window.location.reload(); }, 200); },
-            error: function(xhr) {
-                const msg = (xhr.responseJSON && xhr.responseJSON.message)
-                    ? xhr.responseJSON.message
-                    : <?= json_encode(gettext('Failed to clear quarantine')) ?>;
-                alert(msg);
+        showConfirm(
+            i18next.t('Clear Quarantine'),
+            i18next.t('Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again.'),
+            i18next.t('Clear Quarantine'),
+            function() {
+                $.ajax({
+                    url: window.CRM.root + '/plugins/api/plugins/' + encodeURIComponent(pluginId) + '/quarantine',
+                    method: 'DELETE',
+                    success: function() { setTimeout(function() { window.location.reload(); }, 200); },
+                    error: function(xhr) {
+                        const msg = (xhr.responseJSON && xhr.responseJSON.message)
+                            ? xhr.responseJSON.message
+                            : <?= json_encode(gettext('Failed to clear quarantine')) ?>;
+                        window.CRM.notify(msg, { type: 'error', delay: 0 });
+                    }
+                });
             }
-        });
+        );
     });
 
     // ─────────────────────────────────────────────────────────────
