@@ -330,7 +330,7 @@ function renderEditorFields(event, calendars, eventTypes, groups, allDay) {
         <label class="form-label" for="pinnedCalendarsSelect">${t("Pinned Calendars")}</label>
         <select id="pinnedCalendarsSelect" class="form-select" multiple>${calOptions}</select>
         <div class="form-text text-warning d-none" id="calendarsEmptyHint">
-          <i class="ti ti-info-circle me-1"></i>${t("No calendar selected — this event will be saved but won't appear on any calendar view.")}
+          <i class="ti ti-info-circle me-1"></i>${t('No calendar selected — this event will appear under the "Unpinned Events" system calendar until you pin it.')}
         </div>
       </div>
     </div>
