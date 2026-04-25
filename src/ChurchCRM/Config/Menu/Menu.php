@@ -167,6 +167,7 @@ class Menu
             $adminMenu = new MenuItem(gettext('Admin'), '', true);
             $adminMenu->addSubMenu(new MenuItem(gettext('Group Properties'), 'PropertyList.php?Type=g', true, 'fa-users'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Group Types'), 'admin/system/options?mode=grptypes', $isAdmin, 'fa-tags'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Kiosk Manager'), 'kiosk/admin', $isAdmin, 'fa-desktop'));
 
             $groupMenu->addSubMenu($adminMenu);
         }
@@ -178,7 +179,6 @@ class Menu
     {
         $sundaySchoolMenu = new MenuItem(gettext('Sunday School'), '', $isAdmin || SystemConfig::getBooleanValue('bEnabledSundaySchool'), 'fa-school');
         $sundaySchoolMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'groups/sundayschool/dashboard', true, 'fa-gauge'));
-        $sundaySchoolMenu->addSubMenu(new MenuItem(gettext('Kiosk Manager'), 'kiosk/admin', $isAdmin, 'fa-desktop'));
         $classes = GroupQuery::create()->filterByType(4)->orderByName()->select(['Id','Name'])->find()->toArray();
         if (!empty($classes)) {
             foreach ($classes as $group) {

@@ -48,6 +48,7 @@ const kioskState = {
   kioskAssignmentId: undefined as KioskAssignment | undefined,
   kioskEventLoop: undefined as ReturnType<typeof setInterval> | undefined,
   countdownInterval: undefined as ReturnType<typeof setInterval> | undefined,
+  kioskName: undefined as string | undefined,
 };
 
 // Pending callback for the "Check-in By" modal
@@ -518,6 +519,13 @@ function heartbeat(): void {
   APIRequest({
     path: "heartbeat",
   }).done((data: HeartbeatResponse) => {
+    // Reload if the kiosk was renamed in the admin panel
+    if (kioskState.kioskName !== undefined && kioskState.kioskName !== data.Name) {
+      location.reload();
+      return;
+    }
+    kioskState.kioskName = data.Name;
+
     const thisAssignment = parseAssignment(data.Assignment);
     if (kioskState.kioskAssignmentId === undefined) {
       kioskState.kioskAssignmentId = thisAssignment || undefined;
@@ -537,7 +545,7 @@ function heartbeat(): void {
     if (data.Commands === "Identify") {
       clearInterval(kioskState.kioskEventLoop);
       $("#event").hide();
-      $("#noEvent").show();
+      $("#noEvent").css("display", "flex");
       $("#noEvent").html(renderStatusCard("info", "fa-tablet-alt", "Kiosk Identification", data.Name, null));
       setTimeout(() => {
         location.reload();
@@ -574,18 +582,18 @@ function heartbeat(): void {
           $("#event").show();
         }
       } else {
-        $("#noEvent").show();
+        $("#noEvent").css("display", "flex");
         $("#noEvent").html(
           renderStatusCard(
             "success",
-            "fa-check-circle",
+            "fa-circle-check",
             "Kiosk Ready",
             data.Name,
             "<p class='text-muted mb-0'>This kiosk is accepted but has no active event assignment.</p>" +
               "<div class='kiosk-instructions'>" +
               "<h5><i class='fas fa-info-circle'></i> Next Steps</h5>" +
               "<ol>" +
-              "<li>Go to <strong>Kiosk Manager</strong> in the admin menu</li>" +
+              "<li>Go to <strong>Groups → Admin → Kiosk Manager</strong></li>" +
               "<li>Find this kiosk in the device list</li>" +
               "<li>Use the <strong>Assign</strong> dropdown to select an event</li>" +
               "</ol></div>",
@@ -594,7 +602,7 @@ function heartbeat(): void {
         $("#event").hide();
       }
     } else {
-      $("#noEvent").show();
+      $("#noEvent").css("display", "flex");
       $("#noEvent").html(
         renderStatusCard(
           "pending",
@@ -606,7 +614,7 @@ function heartbeat(): void {
             "<h5><i class='fas fa-info-circle'></i> How to Accept This Kiosk</h5>" +
             "<ol>" +
             "<li>Log in to ChurchCRM as an administrator</li>" +
-            "<li>Navigate to <strong>Admin → Kiosk Manager</strong></li>" +
+            "<li>Navigate to <strong>Groups → Admin → Kiosk Manager</strong></li>" +
             "<li>Find the kiosk named <strong>" +
             escapeHtml(data.Name) +
             "</strong> in the list</li>" +
@@ -733,32 +741,32 @@ function renderStatusCard(
   kioskName: string,
   bodyContent: string | null,
 ): string {
-  // Use Bootstrap 4.6.2 card-primary pattern consistent with ChurchCRM
-  let cardClass = "card-primary";
+  let statusColor = "bg-primary";
   let iconColorClass = "text-primary";
 
   if (statusType === "pending") {
-    cardClass = "card-warning";
+    statusColor = "bg-warning";
     iconColorClass = "text-warning";
   } else if (statusType === "success") {
-    cardClass = "card-success";
+    statusColor = "bg-success";
     iconColorClass = "text-success";
   } else if (statusType === "info") {
-    cardClass = "card-info";
+    statusColor = "bg-info";
     iconColorClass = "text-info";
   }
 
   // Validate iconClass to prevent XSS via class injection (only allow known FA icons)
-  const safeIconClass = /^fa-[a-z0-9-]+$/.test(iconClass) ? iconClass : "fa-question-circle";
+  const safeIconClass = /^fa-[a-z0-9-]+$/.test(iconClass) ? iconClass : "fa-circle-question";
 
   return (
-    '<div class="card kiosk-status-card ' +
-    cardClass +
-    '">' +
+    '<div class="card kiosk-status-card">' +
+    '<div class="card-status-top ' +
+    statusColor +
+    '"></div>' +
     '<div class="card-header">' +
-    '<h3 class="card-title"><i class="fas ' +
+    '<h3 class="card-title"><i class="fa-solid ' +
     safeIconClass +
-    ' mr-2"></i>' +
+    ' me-2"></i>' +
     escapeHtml(title) +
     "</h3>" +
     "</div>" +
@@ -766,11 +774,11 @@ function renderStatusCard(
     '<div class="kiosk-status-icon ' +
     iconColorClass +
     '">' +
-    '<i class="fas ' +
+    '<i class="fa-solid ' +
     safeIconClass +
     '"></i>' +
     "</div>" +
-    '<div class="kiosk-name"><i class="fas fa-tablet-alt mr-2"></i>' +
+    '<div class="kiosk-name"><i class="fa-solid fa-tablet me-2"></i>' +
     escapeHtml(kioskName) +
     "</div>" +
     (bodyContent ? bodyContent : "") +
@@ -1241,7 +1249,7 @@ function startEventLoop(): void {
   // the event is active, avoiding a duplicate API call on page load.
   heartbeat();
   // Then set up periodic heartbeat updates (1 minute)
-  kioskState.kioskEventLoop = setInterval(heartbeat, 60000);
+  kioskState.kioskEventLoop = setInterval(heartbeat, 15000);
 }
 
 /**
