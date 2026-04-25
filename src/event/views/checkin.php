@@ -100,7 +100,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <span id="rosterGroupName" class="text-secondary"></span>
                 </h3>
                 <div class="d-flex align-items-center gap-2">
-                    <span class="badge bg-primary" id="rosterStats"></span>
+                    <span class="badge bg-primary-lt text-primary" id="rosterStats"></span>
                     <button type="button" class="btn btn-sm btn-success" id="checkinAllBtn">
                         <i class="ti ti-checks me-1"></i><?= gettext('Check In All') ?>
                     </button>
@@ -118,7 +118,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="col-md-6 pe-md-2">
                     <h4 class="text-secondary mb-2">
                         <i class="ti ti-clock me-1"></i><?= gettext('Waiting to Check In') ?>
-                        <span class="badge bg-secondary ms-1" id="notCheckedInCount">0</span>
+                        <span class="badge bg-secondary text-white ms-1" id="notCheckedInCount">0</span>
                     </h4>
                     <div id="notCheckedInList" class="d-flex flex-column gap-1"></div>
                     <div id="notCheckedInEmpty" class="text-center text-success py-3 d-none">
@@ -128,7 +128,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="col-md-6 ps-md-2 mt-3 mt-md-0">
                     <h4 class="text-secondary mb-2">
                         <i class="ti ti-circle-check me-1"></i><?= gettext('Checked In') ?>
-                        <span class="badge bg-success ms-1" id="checkedInCount">0</span>
+                        <span class="badge bg-success text-white ms-1" id="checkedInCount">0</span>
                     </h4>
                     <div id="checkedInList" class="d-flex flex-column gap-1"></div>
                     <div id="checkedInEmpty" class="text-center text-secondary py-3 d-none">
