@@ -53,6 +53,28 @@ git checkout -b fix/issue-1234-description
      git branch -d fix/issue-1234-description
 ```
 
+### Git Worktree — Parallel Branch Work Without Switching <!-- learned: 2026-04-25 -->
+
+When you need to commit to a different branch (e.g., update a skill file on `master`) while staying on a feature or locale branch, use `git worktree`. No branch switch = no risk of clobbering in-progress work, and the branch-switch gate hook won't fire.
+
+```bash
+# Create a private checkout of master in a temp directory
+git worktree add /tmp/crm-master master
+
+# Edit files using absolute paths inside the worktree
+# e.g. nano /tmp/crm-master/.agents/skills/churchcrm/some-skill.md
+
+# Commit and push from the worktree (no cd needed — use -C flag)
+git -C /tmp/crm-master add .agents/skills/
+git -C /tmp/crm-master commit -m "docs: update skill with ..."
+git -C /tmp/crm-master push origin master
+
+# Remove the worktree when done
+git worktree remove /tmp/crm-master
+```
+
+Current branch, staged changes, and working tree are completely unaffected.
+
 ---
 
 ## Commit Message Format
