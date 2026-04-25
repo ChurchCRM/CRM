@@ -481,10 +481,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             // Inline onclick handlers can't safely interpolate user-controlled
             // strings (kiosk Name) into a JS string context — escapeHtml emits
             // HTML entities that show literally in the rename prompt, and
-            // backslashes / newlines / </script> can still break out. Use
-            // data-* attributes (HTML-attr context, safely escaped) and a
-            // delegated click handler attached after the DataTable is built.
-            // Also CSP-clean (no inline JS), per project rule.
+            // backslashes / newlines / closing-script tags can still break
+            // out. Use data-* attributes (HTML-attr context, safely escaped)
+            // and a delegated click handler attached after the DataTable is
+            // built. Also CSP-clean (no inline JS), per project rule.
             var nameAttr = window.CRM.escapeHtml(full.Name);
             var buttons = '<div class="btn-group btn-group-sm" role="group">';
             if (!full.Accepted) {
