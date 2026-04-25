@@ -5112,8 +5112,8 @@ paths:
     post:
       tags:
         - Kiosk
-      summary: 'Open a 30-second kiosk registration window'
-      description: 'Allows a new kiosk device to register itself within the next 30 seconds.'
+      summary: 'Open a 2-minute kiosk registration window'
+      description: 'Allows a new kiosk device to register itself within the next 2 minutes.'
       operationId: allowKioskRegistration
       responses:
         '200':
@@ -5271,6 +5271,44 @@ paths:
           description: 'Kiosk not found'
         '500':
           description: 'Error deleting kiosk'
+      security:
+        -
+          ApiKeyAuth: []
+  '/kiosk/api/devices/{kioskId}/name':
+    post:
+      tags:
+        - Kiosk
+      summary: 'Rename a kiosk device'
+      operationId: renameKiosk
+      parameters:
+        -
+          name: kioskId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'Kiosk renamed'
+        '400':
+          description: 'Invalid request'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden — Admin role required'
+        '404':
+          description: 'Kiosk not found'
       security:
         -
           ApiKeyAuth: []

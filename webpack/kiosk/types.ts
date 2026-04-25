@@ -100,7 +100,7 @@ export interface KioskJSOM {
   renderNoMembersMessage: () => string;
   renderErrorMessage: (message: string, statusCode?: number) => string;
   heartbeat: () => void;
-  renderCountdown: (eventStart: moment.Moment, eventTitle: string) => string;
+  renderCountdown: (eventStart: moment.Moment, eventTitle: string, kioskName: string) => string;
   renderEventEnded: (eventTitle: string) => string;
   startCountdown: (eventStart: moment.Moment) => void;
   renderStatusCard: (
