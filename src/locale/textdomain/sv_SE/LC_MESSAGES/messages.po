@@ -15961,6 +15961,10 @@ msgid "Swedish"
 msgstr "Svenska"
 
 #: 
+msgid "System"
+msgstr "System"
+
+#: 
 msgid "Timeline filters"
 msgstr "Tidslinjefilter"
 
@@ -16208,6 +16212,10 @@ msgstr "Vad detta insticksprogram gör:"
 #: 
 msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
 msgstr "downloadUrl, sha256 och pluginId krävs alla för overifierade installationer."
+
+#: 
+msgid "risk"
+msgstr "risk"
 
 #: 
 msgid "Name cannot be empty"

@@ -3816,6 +3816,7 @@
     "Failed to uninstall plugin": "Plugin verwijderen mislukt",
     "Fetching latest registry…": "Laatste register ophalen…",
     "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte.": "Vraag dit op bij de auteur van de plugin. Het installatieprogramma weigert de download als deze niet byte-voor-byte overeenkomt.",
+    "Homepage": "Startpagina",
     "Install": "Installeren",
     "Install Plugin from URL (Unverified)": "Plugin installeren via URL (niet-geverifieerd)",
     "Install Unverified": "Niet-geverifieerd installeren",

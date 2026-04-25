@@ -15937,6 +15937,10 @@ msgid "Swedish"
 msgstr "Svensk"
 
 #: 
+msgid "System"
+msgstr "System"
+
+#: 
 msgid "Timeline filters"
 msgstr "Tidslinjefiltre"
 

@@ -3853,6 +3853,7 @@
     "Verified": "Kontrollitud",
     "What this plugin does:": "Mida see pistikprogramm teeb:",
     "downloadUrl, sha256, and pluginId are all required for unverified installs.": "downloadUrl, sha256 ja pluginId on kõik kontrollimata installimiseks nõutavad.",
+    "risk": "risk",
     "Name cannot be empty": "Nimi ei tohi olla tühi",
     "Name cannot be longer than %d characters": "Nimi ei tohi olla pikem kui %d tähemärki",
     "Need help? Contact us": "Vajate abi? Võtke meiega ühendust",

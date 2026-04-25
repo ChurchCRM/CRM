@@ -16103,6 +16103,10 @@ msgid "downloadUrl, sha256, and pluginId are all required for unverified install
 msgstr "downloadUrl, sha256 ja pluginId on kõik kontrollimata installimiseks nõutavad."
 
 #: 
+msgid "risk"
+msgstr "risk"
+
+#: 
 msgid "Name cannot be empty"
 msgstr "Nimi ei tohi olla tühi"
 
