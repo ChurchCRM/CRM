@@ -7,12 +7,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
 <!-- Dashboard Stat Cards -->
-<div class="row row-cards mb-3 g-2" id="kioskStats" style="display:none;">
+<div class="row row-cards mb-4 g-2" id="kioskStats">
     <div class="col-6 col-md-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
-                    <div class="col-auto"><span class="bg-primary text-white avatar rounded-circle"><i class="fa-solid fa-desktop"></i></span></div>
+                    <div class="col-auto"><span class="bg-primary text-white avatar rounded-circle"><i class="fa-solid fa-desktop icon"></i></span></div>
                     <div class="col"><div class="fw-medium" id="statTotal">0</div><div class="text-muted"><?= gettext('Total Kiosks') ?></div></div>
                 </div>
             </div>
@@ -22,7 +22,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
-                    <div class="col-auto"><span class="bg-success text-white avatar rounded-circle"><i class="fa-solid fa-circle-check"></i></span></div>
+                    <div class="col-auto"><span class="bg-success text-white avatar rounded-circle"><i class="fa-solid fa-circle-check icon"></i></span></div>
                     <div class="col"><div class="fw-medium" id="statOnline">0</div><div class="text-muted"><?= gettext('Online') ?></div></div>
                 </div>
             </div>
@@ -32,7 +32,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
-                    <div class="col-auto"><span class="bg-warning text-dark avatar rounded-circle"><i class="fa-solid fa-clock"></i></span></div>
+                    <div class="col-auto"><span class="bg-warning text-dark avatar rounded-circle"><i class="fa-solid fa-clock icon"></i></span></div>
                     <div class="col"><div class="fw-medium" id="statPending">0</div><div class="text-muted"><?= gettext('Pending') ?></div></div>
                 </div>
             </div>
@@ -42,7 +42,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
-                    <div class="col-auto"><span class="bg-azure text-white avatar rounded-circle"><i class="fa-solid fa-calendar-check"></i></span></div>
+                    <div class="col-auto"><span class="bg-azure text-white avatar rounded-circle"><i class="fa-solid fa-calendar-check icon"></i></span></div>
                     <div class="col"><div class="fw-medium" id="statAssigned">0</div><div class="text-muted"><?= gettext('Assigned') ?></div></div>
                 </div>
             </div>
@@ -51,7 +51,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 
 <!-- Registration + Setup -->
-<div class="card mb-3">
+<div class="card mb-4">
   <div class="card-body py-3">
     <div class="row g-3 align-items-center">
       <div class="col-auto">
@@ -62,7 +62,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       </div>
       <div class="col">
         <strong><?= gettext('Register New Device') ?></strong>
-        <span class="text-muted ms-1"><?= gettext('Opens a 30-second window for devices to register at:') ?></span>
+        <span class="text-muted ms-1"><?= gettext('Opens a 2-minute window for devices to register at:') ?></span>
         <code class="ms-1"><?= InputUtils::escapeHTML(SystemURLs::getURL()) ?>/kiosk</code>
       </div>
       <div class="col-auto">
@@ -163,8 +163,36 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     },
     delete: function(id) {
       return this.request('/devices/' + id, 'DELETE');
+    },
+    rename: function(id, name) {
+      return this.request('/devices/' + id + '/name', 'POST', { name: name });
     }
   };
+
+  function renameKiosk(id, currentName) {
+    bootbox.prompt({
+      title: i18next.t('Rename Kiosk'),
+      value: currentName,
+      callback: function(result) {
+        if (result === null) return;
+        var name = result.trim();
+        if (!name) {
+          window.CRM.notify(i18next.t('Name cannot be empty'), { type: 'error' });
+          return;
+        }
+        window.CRM.kioskAPI.rename(id, name).then(function(data) {
+          if (data.success) {
+            window.CRM.notify(i18next.t('Kiosk renamed'), { type: 'success' });
+            window.CRM.kioskDataTable.ajax.reload(null, false);
+          } else {
+            window.CRM.notify(data.message || i18next.t('Failed to rename kiosk'), { type: 'error' });
+          }
+        }).catch(function() {
+          window.CRM.notify(i18next.t('Failed to rename kiosk'), { type: 'error' });
+        });
+      }
+    });
+  }
 
   function renderKioskAssignment(data) {
     if (data.Accepted) {
@@ -212,7 +240,17 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         clearInterval(window.CRM.discoverInterval);
       }
       window.CRM.kioskAPI.enableRegistration().then(function(data) {
-        window.CRM.secondsLeft = moment(data.visibleUntil.date).unix() - moment().unix();
+        // The API returns visibleUntil as an ISO 8601 string (DateTime::ATOM),
+        // not the legacy {date, timezone_type, timezone} object — reading
+        // .date silently produced undefined → moment(undefined) → NaN
+        // secondsLeft → toggle flipped back to Inactive on first tick.
+        // Also fall back to the known 120s window length if the diff is
+        // missing/out-of-range (defensive against client/server clock skew).
+        var REGISTRATION_WINDOW_SECONDS = 120;
+        var diff = moment(data.visibleUntil).unix() - moment().unix();
+        window.CRM.secondsLeft = (diff > 0 && diff <= REGISTRATION_WINDOW_SECONDS * 2)
+          ? diff
+          : REGISTRATION_WINDOW_SECONDS;
         window.CRM.discoverInterval = setInterval(function() {
           window.CRM.secondsLeft -= 1;
           if (window.CRM.secondsLeft > 0) {
@@ -373,16 +411,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
   // Update dashboard stat cards from kiosk data
   function updateDashboardStats(kiosks) {
-    if (!kiosks || kiosks.length === 0) {
-      $('#kioskStats').hide();
-      return;
-    }
-    var total = kiosks.length;
+    var total = kiosks ? kiosks.length : 0;
     var pending = 0;
     var online = 0;
     var assigned = 0;
     var now = moment();
-    kiosks.forEach(function(k) {
+    (kiosks || []).forEach(function(k) {
       if (!k.Accepted) pending++;
       if (k.LastHeartbeat && now.diff(moment(k.LastHeartbeat), 'minutes') < 5) online++;
       if (k.Accepted && k.KioskAssignments && k.KioskAssignments.length > 0 && k.KioskAssignments[0].EventId) assigned++;
@@ -391,7 +425,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     $('#statOnline').text(online);
     $('#statPending').text(pending);
     $('#statAssigned').text(assigned);
-    $('#kioskStats').show();
   }
 
   function initKioskTable() {
@@ -454,13 +487,22 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           defaultContent: '',
           orderable: false,
           render: function(data, type, full, meta) {
+            // Inline onclick handlers can't safely interpolate user-controlled
+            // strings (kiosk Name) into a JS string context — escapeHtml emits
+            // HTML entities that show literally in the rename prompt, and
+            // backslashes / newlines / closing-script tags can still break
+            // out. Use data-* attributes (HTML-attr context, safely escaped)
+            // and a delegated click handler attached after the DataTable is
+            // built. Also CSP-clean (no inline JS), per project rule.
+            var nameAttr = window.CRM.escapeHtml(full.Name);
             var buttons = '<div class="btn-group btn-group-sm" role="group">';
             if (!full.Accepted) {
-              buttons += '<button class="btn btn-success" onclick="window.CRM.kioskAPI.accept(' + full.Id + ').then(function() { window.CRM.kioskDataTable.ajax.reload(); window.CRM.notify(i18next.t(\'Kiosk accepted\'), {type: \'success\'}); })" title="' + i18next.t('Accept') + '"><i class="fa-solid fa-check me-1"></i>' + i18next.t('Accept') + '</button>';
+              buttons += '<button class="btn btn-success" data-kiosk-action="accept" data-kiosk-id="' + full.Id + '" title="' + i18next.t('Accept') + '"><i class="fa-solid fa-check me-1"></i>' + i18next.t('Accept') + '</button>';
             }
-            buttons += '<button class="btn btn-outline-primary" onclick="window.CRM.kioskAPI.reload(' + full.Id + ').then(function() { window.CRM.notify(i18next.t(\'Reload command sent\'), {type: \'success\'}); })" title="' + i18next.t('Reload') + '"><i class="fa-solid fa-sync"></i></button>';
-            buttons += '<button class="btn btn-outline-info" onclick="window.CRM.kioskAPI.identify(' + full.Id + ').then(function() { window.CRM.notify(i18next.t(\'Identify command sent\'), {type: \'success\'}); })" title="' + i18next.t('Identify') + '"><i class="fa-solid fa-eye"></i></button>';
-            buttons += '<button class="btn btn-outline-danger" onclick="confirmDeleteKiosk(' + full.Id + ', \'' + window.CRM.escapeHtml(full.Name).replace(/'/g,"\\'") + '\')" title="' + i18next.t('Delete') + '"><i class="fa-solid fa-trash"></i></button>';
+            buttons += '<button class="btn btn-outline-secondary" data-kiosk-action="rename" data-kiosk-id="' + full.Id + '" data-kiosk-name="' + nameAttr + '" title="' + i18next.t('Rename') + '"><i class="fa-solid fa-pen"></i></button>';
+            buttons += '<button class="btn btn-outline-primary" data-kiosk-action="reload" data-kiosk-id="' + full.Id + '" title="' + i18next.t('Reload') + '"><i class="fa-solid fa-sync"></i></button>';
+            buttons += '<button class="btn btn-outline-info" data-kiosk-action="identify" data-kiosk-id="' + full.Id + '" title="' + i18next.t('Identify') + '"><i class="fa-solid fa-eye"></i></button>';
+            buttons += '<button class="btn btn-outline-danger" data-kiosk-action="delete" data-kiosk-id="' + full.Id + '" data-kiosk-name="' + nameAttr + '" title="' + i18next.t('Delete') + '"><i class="fa-solid fa-trash"></i></button>';
             buttons += '</div>';
             return buttons;
           }
@@ -480,7 +522,33 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
     window.CRM.kioskDataTable = $("#KioskTable").DataTable(dataTableConfig);
 
-    setInterval(function() { window.CRM.kioskDataTable.ajax.reload(null, false); }, 30000);
+    // Delegated click handler for the action buttons in the Actions column.
+    // Replaces inline onclick handlers — see the render() comment above.
+    $("#KioskTable").on("click", "[data-kiosk-action]", function() {
+      var action = $(this).data("kiosk-action");
+      var id = parseInt($(this).data("kiosk-id"), 10);
+      var name = $(this).data("kiosk-name") || "";
+      if (action === "accept") {
+        window.CRM.kioskAPI.accept(id).then(function() {
+          window.CRM.kioskDataTable.ajax.reload();
+          window.CRM.notify(i18next.t("Kiosk accepted"), { type: "success" });
+        });
+      } else if (action === "rename") {
+        renameKiosk(id, String(name));
+      } else if (action === "reload") {
+        window.CRM.kioskAPI.reload(id).then(function() {
+          window.CRM.notify(i18next.t("Reload command sent"), { type: "success" });
+        });
+      } else if (action === "identify") {
+        window.CRM.kioskAPI.identify(id).then(function() {
+          window.CRM.notify(i18next.t("Identify command sent"), { type: "success" });
+        });
+      } else if (action === "delete") {
+        confirmDeleteKiosk(id, String(name));
+      }
+    });
+
+    setInterval(function() { window.CRM.kioskDataTable.ajax.reload(null, false); }, 10000);
   }
 
 </script>
