@@ -37,17 +37,44 @@ window.moveEventModal = {
   modalCallBack: (result) => {
     if (result === true) {
       const evt = window.moveEventModal.event;
+      // Storage convention: wall-clock-in-sTimeZone (matches all existing
+      // events). FullCalendar's `startStr`/`endStr` already carry the time
+      // in the calendar's configured tz (sTimeZone). Strip any trailing Z
+      // or +HH:MM offset so PHP/Propel stores the wall-clock numbers as-is
+      // and hydrates them back in sTimeZone for display. Using `toISOString()`
+      // here would send UTC and double-shift the time on read.
+      const stripTz = (s) => (typeof s === "string" ? s.replace(/(?:Z|[+-]\d{2}:\d{2})$/, "") : s);
       window.CRM.APIRequest({
         method: "POST",
         path: `events/${evt.id}/time`,
         data: JSON.stringify({
-          startTime: evt.allDay ? evt.startStr : evt.start.toISOString(),
-          endTime: evt.end ? evt.end.toISOString() : null,
+          startTime: evt.allDay ? evt.startStr : stripTz(evt.startStr),
+          endTime: evt.end ? stripTz(evt.endStr) : null,
         }),
       });
     } else {
       window.moveEventModal.revertFunc();
     }
+  },
+  // Format a FullCalendar event Date for display in the church's wall-clock.
+  // FullCalendar uses "marker" Dates: a JS Date whose UTC components encode
+  // the wall-clock time in the calendar's configured timezone (so a 10 PM
+  // Detroit event has start.getUTCHours() === 22, regardless of browser tz).
+  // Read those UTC components verbatim with `timeZone: "UTC"` so the modal
+  // mirrors the time the calendar grid displays. Using `timeZone: sTimeZone`
+  // would re-apply the offset and shift the display by the church's UTC
+  // offset (e.g. 10 PM → 6 PM on EDT calendars).
+  formatChurchDate: (date) => {
+    if (!(date instanceof Date)) return "";
+    return new Intl.DateTimeFormat(undefined, {
+      timeZone: "UTC",
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    }).format(date);
   },
   handleEventDrop: (info) => {
     const event = info.event;
@@ -59,8 +86,9 @@ window.moveEventModal = {
       revertFunc();
       return;
     }
-    const originalStart = info.oldEvent.start ? info.oldEvent.start.toLocaleString() : info.oldEvent.startStr;
-    const newStart = event.start ? event.start.toLocaleString() : event.startStr;
+    const fmt = window.moveEventModal.formatChurchDate;
+    const originalStart = info.oldEvent.start ? fmt(info.oldEvent.start) : info.oldEvent.startStr;
+    const newStart = event.start ? fmt(event.start) : event.startStr;
     window.moveEventModal.revertFunc = revertFunc;
     window.moveEventModal.event = event;
     bootbox.confirm({
@@ -78,10 +106,9 @@ window.moveEventModal = {
       revertFunc();
       return;
     }
-    const originalEnd = info.oldEvent.end
-      ? info.oldEvent.end.toLocaleString()
-      : info.oldEvent.endStr || info.oldEvent.startStr;
-    const newEnd = event.end ? event.end.toLocaleString() : event.endStr || event.startStr;
+    const fmt = window.moveEventModal.formatChurchDate;
+    const originalEnd = info.oldEvent.end ? fmt(info.oldEvent.end) : info.oldEvent.endStr || info.oldEvent.startStr;
+    const newEnd = event.end ? fmt(event.end) : event.endStr || event.startStr;
     window.moveEventModal.revertFunc = revertFunc;
     window.moveEventModal.event = event;
     bootbox.confirm({
@@ -485,9 +512,34 @@ function initializeCalendar() {
   };
   const mobileFooterToolbar = { end: "dayGridMonth,timeGridWeek,timeGridDay,listMonth" };
 
+  // FullCalendar's "today" highlight is computed from `now`. Default `now` is
+  // the actual current moment, but FC reads its date components in a way that
+  // can fall back to browser-local — so a PST admin sees April 24 highlighted
+  // even when it's already April 25 in the church's tz. Build a Date whose
+  // local components match the church's wall-clock right now: pulled from
+  // Intl with timeZone so getDate()/getHours() reflect the church's "today".
+  const churchNow = (() => {
+    const tz = window.CRM.calendarJSArgs.sTimeZone;
+    if (!tz) return new Date();
+    const parts = new Intl.DateTimeFormat("en-CA", {
+      timeZone: tz,
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+    }).formatToParts(new Date());
+    const get = (type) => parts.find((p) => p.type === type)?.value || "00";
+    const hh = get("hour") === "24" ? "00" : get("hour");
+    return new Date(`${get("year")}-${get("month")}-${get("day")}T${hh}:${get("minute")}:${get("second")}`);
+  })();
+
   window.CRM.fullcalendar = new FullCalendar.Calendar(document.getElementById("calendar"), {
     locale: window.CRM.lang || "en",
     timeZone: window.CRM.calendarJSArgs.sTimeZone || "local",
+    now: churchNow,
     headerToolbar: window.innerWidth < 768 ? mobileHeaderToolbar : desktopHeaderToolbar,
     footerToolbar: window.innerWidth < 768 ? mobileFooterToolbar : false,
     contentHeight: "auto",

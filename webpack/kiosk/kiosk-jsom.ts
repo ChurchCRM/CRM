@@ -559,27 +559,33 @@ function heartbeat(): void {
     if (data.Accepted) {
       const Assignment = parseAssignment(data.Assignment);
       if (Assignment && Assignment.AssignmentType === 1) {
+        // Event.Start / End / CheckInOpensAt are ISO 8601 strings with the
+        // church's sTimeZone offset (set by KioskDevice::heartbeat). moment
+        // parses them as instants-in-time, so all comparisons below are
+        // tz-correct regardless of the kiosk device's browser timezone.
+        // CheckInOpensAt = event start − 1 hour (server-computed) so check-in
+        // opens before the event actually starts. Falls back to event start
+        // − 1 hour for older API responses without the field.
         const eventStart = moment(Assignment.Event.Start);
         const eventEnd = moment(Assignment.Event.End);
+        // Server emits CheckInOpensAt as ISO+sTimeZone offset (event start − 1h).
+        // Fallback to client-side compute for older API responses.
+        const checkInOpensAt = Assignment.Event.CheckInOpensAt
+          ? moment(Assignment.Event.CheckInOpensAt)
+          : eventStart.clone().subtract(1, "hour");
         const now = moment();
-        // Open the kiosk for check-in 1 hour before the scheduled event
-        // start so volunteers can use it during pre-event setup. Below this
-        // threshold the kiosk shows the countdown; above it (and before the
-        // event end) it goes into active check-in mode.
-        const checkinOpenAt = eventStart.clone().subtract(1, "hour");
 
         $("#eventTitle").text(Assignment.Event.Title);
         $("#kioskName").text(data.Name);
         $("#startTime").text(eventStart.format("MMMM Do YYYY, h:mm:ss a"));
         $("#endTime").text(eventEnd.format("MMMM Do YYYY, h:mm:ss a"));
 
-        if (now.isBefore(checkinOpenAt)) {
-          // More than 1 hour before event start - show countdown
+        if (now.isBefore(checkInOpensAt)) {
           $("#noEvent").hide();
           $("#event").show();
           $("#timeRemaining").addClass("d-none");
-          $("#classMemberContainer").html(renderCountdown(eventStart, Assignment.Event.Title, data.Name));
-          startCountdown(eventStart);
+          $("#classMemberContainer").html(renderCountdown(checkInOpensAt, Assignment.Event.Title, data.Name));
+          startCountdown(checkInOpensAt);
         } else if (now.isAfter(eventEnd)) {
           // Event has ended
           $("#noEvent").hide();

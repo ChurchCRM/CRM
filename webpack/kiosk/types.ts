@@ -58,6 +58,9 @@ export interface KioskAssignment {
     Title: string;
     Start: string;
     End: string;
+    /** Server-computed: event start − 1 hour, ISO 8601 with sTimeZone offset.
+     *  Marks when the kiosk transitions from countdown to active check-in. */
+    CheckInOpensAt?: string;
     GroupId?: number;
   };
 }
