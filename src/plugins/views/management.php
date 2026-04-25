@@ -455,7 +455,10 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-outline-secondary" id="btn-refresh-registry">
+                    <i class="fa-solid fa-rotate me-1"></i><?= gettext('Check for Updates') ?>
+                </button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Close') ?></button>
             </div>
         </div>
@@ -925,6 +928,63 @@ $(document).ready(function() {
     // ─────────────────────────────────────────────────────────────
     //  Browse Approved Plugins
     // ─────────────────────────────────────────────────────────────
+    function renderApprovedList(entries) {
+        const $list = $('#approvedPluginsList');
+        if (!Array.isArray(entries) || entries.length === 0) {
+            $list.html('<div class="alert alert-info"><?= addslashes(gettext('The approved plugin list is empty. There are no third-party plugins available through the verified installer yet.')) ?></div>');
+            return;
+        }
+        const html = entries.map(function(entry) {
+            const risk = (entry.risk || 'low').toLowerCase();
+            const riskClass = risk === 'high' ? 'bg-red-lt text-red'
+                           : risk === 'medium' ? 'bg-yellow-lt text-yellow'
+                           : 'bg-green-lt text-green';
+            const perms = entry.permissions || [];
+            const permsHtml = perms.length
+                ? '<div class="mt-2">' + perms.map(function(p) {
+                      return '<span class="badge bg-secondary-lt text-secondary me-1">' + $('<div>').text(p).html() + '</span>';
+                  }).join('') + '</div>'
+                : '';
+            const author = (entry.author || '').trim();
+            const homepageUrl = (entry.homepage || '').trim();
+            const homepageLink = homepageUrl
+                ? '<a href="' + $('<div>').text(homepageUrl).html() + '" target="_blank" rel="noopener"><?= addslashes(gettext('Homepage')) ?></a>'
+                : '';
+            const metaParts = [author ? $('<div>').text(author).html() : '', homepageLink].filter(Boolean);
+            const metaHtml = metaParts.length
+                ? '<div class="mt-1 small text-muted">' + metaParts.join(' · ') + '</div>'
+                : '';
+            const notesHtml = entry.notes
+                ? '<div class="mt-2 small text-muted fst-italic">' + $('<div>').text(entry.notes).html() + '</div>'
+                : '';
+            return '' +
+                '<div class="card">' +
+                '  <div class="card-body">' +
+                '    <div class="d-flex align-items-start gap-3">' +
+                '      <div class="flex-grow-1">' +
+                '        <div class="d-flex align-items-center flex-wrap gap-1 mb-1">' +
+                '          <strong>' + $('<div>').text(entry.name || entry.id).html() + '</strong>' +
+                '          <span class="badge bg-azure-lt text-azure">v' + $('<div>').text(entry.version || '').html() + '</span>' +
+                '          <span class="badge ' + riskClass + '">' + $('<div>').text(risk).html() + ' <?= addslashes(gettext('risk')) ?></span>' +
+                '        </div>' +
+                '        <div>' + $('<div>').text(entry.riskSummary || '').html() + '</div>' +
+                permsHtml +
+                metaHtml +
+                notesHtml +
+                '      </div>' +
+                '      <div class="flex-shrink-0">' +
+                '        <button type="button" class="btn btn-primary btn-sm btn-install-approved"' +
+                '                data-download-url="' + $('<div>').text(entry.downloadUrl || '').html() + '">' +
+                '          <i class="fa-solid fa-download me-1"></i><?= addslashes(gettext('Install')) ?>' +
+                '        </button>' +
+                '      </div>' +
+                '    </div>' +
+                '  </div>' +
+                '</div>';
+        }).join('');
+        $list.html(html);
+    }
+
     $('#btn-browse-approved').on('click', function() {
         const $list = $('#approvedPluginsList');
         $list.html('<div class="text-center text-muted py-4"><i class="fa-solid fa-spinner fa-spin me-2"></i><?= addslashes(gettext('Loading…')) ?></div>');
@@ -935,62 +995,33 @@ $(document).ready(function() {
             method: 'GET',
             dataType: 'json',
             success: function(resp) {
-                if (!resp.success || !Array.isArray(resp.data) || resp.data.length === 0) {
-                    $list.html('<div class="alert alert-info"><?= addslashes(gettext('The approved plugin list is empty. There are no third-party plugins available through the verified installer yet.')) ?></div>');
-                    return;
-                }
-                const html = resp.data.map(function(entry) {
-                    const risk = (entry.risk || 'low').toLowerCase();
-                    const riskClass = risk === 'high' ? 'bg-red-lt text-red'
-                                   : risk === 'medium' ? 'bg-yellow-lt text-yellow'
-                                   : 'bg-green-lt text-green';
-                    const perms = entry.permissions || [];
-                    const permsHtml = perms.length
-                        ? '<div class="mt-2">' + perms.map(function(p) {
-                              return '<span class="badge bg-secondary-lt text-secondary me-1">' + $('<div>').text(p).html() + '</span>';
-                          }).join('') + '</div>'
-                        : '';
-                    const author = (entry.author || '').trim();
-                    const homepageUrl = (entry.homepage || '').trim();
-                    const homepageLink = homepageUrl
-                        ? '<a href="' + $('<div>').text(homepageUrl).html() + '" target="_blank" rel="noopener"><?= addslashes(gettext('Homepage')) ?></a>'
-                        : '';
-                    const metaParts = [author ? $('<div>').text(author).html() : '', homepageLink].filter(Boolean);
-                    const metaHtml = metaParts.length
-                        ? '<div class="mt-1 small text-muted">' + metaParts.join(' · ') + '</div>'
-                        : '';
-                    const notesHtml = entry.notes
-                        ? '<div class="mt-2 small text-muted fst-italic">' + $('<div>').text(entry.notes).html() + '</div>'
-                        : '';
-                    return '' +
-                        '<div class="card">' +
-                        '  <div class="card-body">' +
-                        '    <div class="d-flex align-items-start gap-3">' +
-                        '      <div class="flex-grow-1">' +
-                        '        <div class="d-flex align-items-center flex-wrap gap-1 mb-1">' +
-                        '          <strong>' + $('<div>').text(entry.name || entry.id).html() + '</strong>' +
-                        '          <span class="badge bg-azure-lt text-azure">v' + $('<div>').text(entry.version || '').html() + '</span>' +
-                        '          <span class="badge ' + riskClass + '">' + $('<div>').text(risk).html() + ' <?= addslashes(gettext('risk')) ?></span>' +
-                        '        </div>' +
-                        '        <div>' + $('<div>').text(entry.riskSummary || '').html() + '</div>' +
-                        permsHtml +
-                        metaHtml +
-                        notesHtml +
-                        '      </div>' +
-                        '      <div class="flex-shrink-0">' +
-                        '        <button type="button" class="btn btn-primary btn-sm btn-install-approved"' +
-                        '                data-download-url="' + $('<div>').text(entry.downloadUrl || '').html() + '">' +
-                        '          <i class="fa-solid fa-download me-1"></i><?= addslashes(gettext('Install')) ?>' +
-                        '        </button>' +
-                        '      </div>' +
-                        '    </div>' +
-                        '  </div>' +
-                        '</div>';
-                }).join('');
-                $list.html(html);
+                renderApprovedList(resp.data);
             },
             error: function() {
-                $list.html('<div class="alert alert-danger"><?= addslashes(gettext('Failed to load approved plugin list.')) ?></div>');
+                $('#approvedPluginsList').html('<div class="alert alert-danger"><?= addslashes(gettext('Failed to load approved plugin list.')) ?></div>');
+            }
+        });
+    });
+
+    $('#btn-refresh-registry').on('click', function() {
+        const $btn = $(this);
+        const $list = $('#approvedPluginsList');
+        $btn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin me-1"></i><?= addslashes(gettext('Checking…')) ?>');
+        $list.html('<div class="text-center text-muted py-4"><i class="fa-solid fa-spinner fa-spin me-2"></i><?= addslashes(gettext('Fetching latest registry…')) ?></div>');
+
+        $.ajax({
+            url: '<?= $sRootPath ?>/plugins/api/registry/refresh',
+            method: 'POST',
+            dataType: 'json',
+            success: function(resp) {
+                renderApprovedList(resp.data);
+                window.CRM.notify('<?= addslashes(gettext('Plugin registry refreshed.')) ?>', { type: 'success' });
+            },
+            error: function() {
+                $list.html('<div class="alert alert-danger"><?= addslashes(gettext('Failed to refresh plugin registry. Check your internet connection.')) ?></div>');
+            },
+            complete: function() {
+                $btn.prop('disabled', false).html('<i class="fa-solid fa-rotate me-1"></i><?= addslashes(gettext('Check for Updates')) ?>');
             }
         });
     });

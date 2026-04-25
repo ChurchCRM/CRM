@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Plugin;
 
+use ChurchCRM\Remote\CentralServices;
 use ChurchCRM\Utils\LoggerUtils;
 
 /**
@@ -36,8 +37,8 @@ class ApprovedPluginRegistry
     /** Default filename relative to the plugins directory. */
     public const FILENAME = 'approved-plugins.json';
 
-    /** Remote registry URL — updated without a CRM release via the Plugins orphan branch. */
-    public const REGISTRY_URL = 'https://raw.githubusercontent.com/ChurchCRM/CRM/Plugins/approved-plugins.json';
+    /** @see CentralServices::PLUGIN_REGISTRY_URL */
+    public const REGISTRY_URL = CentralServices::PLUGIN_REGISTRY_URL;
 
     /** Required keys on every entry. */
     private const REQUIRED_KEYS = ['id', 'name', 'version', 'downloadUrl', 'sha256', 'risk', 'riskSummary'];

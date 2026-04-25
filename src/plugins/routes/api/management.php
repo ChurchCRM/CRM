@@ -711,3 +711,40 @@ $group->delete('/plugins/{pluginId}/quarantine', function (Request $request, Res
         );
     }
 });
+
+/**
+ * @OA\Post(
+ *     path="/plugins/api/registry/refresh",
+ *     operationId="refreshPluginRegistry",
+ *     summary="Re-fetch the remote approved-plugin registry",
+ *     description="Pulls the latest approved-plugins.json from the remote source and updates the session cache. Returns the merged list immediately so the UI can refresh without a page reload.",
+ *     tags={"Plugins"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Response(response=200, description="Registry refreshed — returns current approved list"),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="Forbidden — Admin role required"),
+ *     @OA\Response(response=500, description="Refresh failed")
+ * )
+ */
+$group->post('/registry/refresh', function (Request $request, Response $response): Response {
+    try {
+        ApprovedPluginRegistry::fetchRemoteRegistry();
+        $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
+        $entries = array_values(ApprovedPluginRegistry::all($pluginsPath));
+
+        return SlimUtils::renderJSON($response, [
+            'success' => true,
+            'message' => gettext('Plugin registry refreshed.'),
+            'data' => $entries,
+        ]);
+    } catch (\Throwable $e) {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            gettext('Failed to refresh plugin registry'),
+            [],
+            500,
+            $e,
+            $request
+        );
+    }
+});
