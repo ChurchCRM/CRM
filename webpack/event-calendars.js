@@ -56,6 +56,25 @@ window.moveEventModal = {
       window.moveEventModal.revertFunc();
     }
   },
+  // Format a JS Date for display in the church's configured timezone, NOT the
+  // viewer's browser tz. Date.toLocaleString() defaults to the browser locale
+  // and tz, so an "11 PM Detroit" event would display as "8 PM PDT" (or worse,
+  // "4 PM PDT" if the API source is parsed as UTC) on a PST admin's screen.
+  // Using Intl with `timeZone` keeps the displayed time consistent with what
+  // the calendar grid shows.
+  formatChurchDate: (date) => {
+    if (!(date instanceof Date)) return "";
+    const tz = window.CRM?.calendarJSArgs?.sTimeZone || undefined;
+    return new Intl.DateTimeFormat(undefined, {
+      timeZone: tz,
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    }).format(date);
+  },
   handleEventDrop: (info) => {
     const event = info.event;
     const revertFunc = info.revert;
@@ -66,8 +85,9 @@ window.moveEventModal = {
       revertFunc();
       return;
     }
-    const originalStart = info.oldEvent.start ? info.oldEvent.start.toLocaleString() : info.oldEvent.startStr;
-    const newStart = event.start ? event.start.toLocaleString() : event.startStr;
+    const fmt = window.moveEventModal.formatChurchDate;
+    const originalStart = info.oldEvent.start ? fmt(info.oldEvent.start) : info.oldEvent.startStr;
+    const newStart = event.start ? fmt(event.start) : event.startStr;
     window.moveEventModal.revertFunc = revertFunc;
     window.moveEventModal.event = event;
     bootbox.confirm({
@@ -85,10 +105,9 @@ window.moveEventModal = {
       revertFunc();
       return;
     }
-    const originalEnd = info.oldEvent.end
-      ? info.oldEvent.end.toLocaleString()
-      : info.oldEvent.endStr || info.oldEvent.startStr;
-    const newEnd = event.end ? event.end.toLocaleString() : event.endStr || event.startStr;
+    const fmt = window.moveEventModal.formatChurchDate;
+    const originalEnd = info.oldEvent.end ? fmt(info.oldEvent.end) : info.oldEvent.endStr || info.oldEvent.startStr;
+    const newEnd = event.end ? fmt(event.end) : event.endStr || event.startStr;
     window.moveEventModal.revertFunc = revertFunc;
     window.moveEventModal.event = event;
     bootbox.confirm({
@@ -492,9 +511,34 @@ function initializeCalendar() {
   };
   const mobileFooterToolbar = { end: "dayGridMonth,timeGridWeek,timeGridDay,listMonth" };
 
+  // FullCalendar's "today" highlight is computed from `now`. Default `now` is
+  // the actual current moment, but FC reads its date components in a way that
+  // can fall back to browser-local — so a PST admin sees April 24 highlighted
+  // even when it's already April 25 in the church's tz. Build a Date whose
+  // local components match the church's wall-clock right now: pulled from
+  // Intl with timeZone so getDate()/getHours() reflect the church's "today".
+  const churchNow = (() => {
+    const tz = window.CRM.calendarJSArgs.sTimeZone;
+    if (!tz) return new Date();
+    const parts = new Intl.DateTimeFormat("en-CA", {
+      timeZone: tz,
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+    }).formatToParts(new Date());
+    const get = (type) => parts.find((p) => p.type === type)?.value || "00";
+    const hh = get("hour") === "24" ? "00" : get("hour");
+    return new Date(`${get("year")}-${get("month")}-${get("day")}T${hh}:${get("minute")}:${get("second")}`);
+  })();
+
   window.CRM.fullcalendar = new FullCalendar.Calendar(document.getElementById("calendar"), {
     locale: window.CRM.lang || "en",
     timeZone: window.CRM.calendarJSArgs.sTimeZone || "local",
+    now: churchNow,
     headerToolbar: window.innerWidth < 768 ? mobileHeaderToolbar : desktopHeaderToolbar,
     footerToolbar: window.innerWidth < 768 ? mobileFooterToolbar : false,
     contentHeight: "auto",
