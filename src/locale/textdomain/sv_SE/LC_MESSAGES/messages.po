@@ -15869,3 +15869,371 @@ msgstr "Ta bort budnummer"
 msgid "Invalid security token. Please try again."
 msgstr "Ogiltig säkerhetstoken. Försök igen."
 
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "Lägger till helgdagar i huvudkalendern. Varje valt land blir en egen växlingsbar kalender i sidofältet, så användare kan visa eller dölja helgdagar separat."
+
+#: 
+msgid "Choose map provider"
+msgstr "Välj kartleverantör"
+
+#: 
+msgid "Current database"
+msgstr "Aktuell databas"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "Demonstrationsdata laddas normalt bara in vid nya installationer. Om du importerar nu läggs exempelpost till bredvid dina befintliga data och kan skapa dubbletter."
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "Varje land genererar en egen kalenderrad i sidofältet. Använd kalenderns växlingsknapp för att tillfälligt dölja ett land utan att ändra insticksprogrammets inställningar."
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "Filtrera efter kategori"
+
+#: 
+msgid "Holiday Settings"
+msgstr "Helgdagsinställningar"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "Helgdagar (%s)"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "Helgdagar märks efter typ: Officiella, Observanser, Bankhelgdagar, Säsongsbaserade och Religiösa. Lämna alla kategorier omarkerade för att visa alla helgdagar, eller välj specifika typer för att begränsa visningen."
+
+#: 
+msgid "Import demo data anyway"
+msgstr "Importera demonstrationsdata ändå"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "Saknar identifierare för ekonomiskt åtagande."
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "Inget land är valt. Välj minst ett land i inställningarna för insticksprogrammet Helgdagskalendrar."
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "Inga matchande poster för de valda filtren."
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "Öppna i Apple Maps"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "Öppna i Google Maps"
+
+#: 
+msgid "Open in new tab"
+msgstr "Öppna i ny flik"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "Konfigurera länder"
+
+#: 
+msgid "Show all"
+msgstr "Visa alla"
+
+#: 
+msgid "Show:"
+msgstr "Visa:"
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "Visa och dölj enskilda länder"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "Svenska"
+
+#: 
+msgid "Timeline filters"
+msgstr "Tidslinjefilter"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "För att börja om med en ren databas, använd Återställ databas från administratörspanelen innan du importerar demonstrationsdata."
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "Använd landsväljaren för att välja ett eller flera länder. Varje land du lägger till visas som en separat kalenderpost i sidofältet — vilket gör att du kan visa helgdagar för en global församling."
+
+#: 
+msgid "Your database already contains data"
+msgstr "Din databas innehåller redan data"
+
+#: 
+msgid "people"
+msgstr "personer"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "En nedladdnings-URL krävs för att installera ett insticksprogram."
+
+#: 
+msgid "All three fields are required."
+msgstr "Alla tre fält är obligatoriska."
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "Godkända gemenskapsplugins"
+
+#: 
+msgid "Browse Approved"
+msgstr "Bläddra bland godkända"
+
+#: 
+msgid "Check for Updates"
+msgstr "Sök efter uppdateringar"
+
+#: 
+msgid "Checking…"
+msgstr "Kontrollerar…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "Rensa karantän"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "Rensa karantänen först efter att det underliggande problemet har åtgärdats. Servern nekar aktivering av ett karantänerat insticksprogram."
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "Klicka på \"Bläddra bland godkända\" ovan för att installera ett granskat insticksprogram, eller \"Installera från URL\" för en overifierad version under utveckling."
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "Det gick inte att rensa insticksprogrammets karantän"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "Det gick inte att rensa karantänen"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "Det gick inte att installera insticksprogrammet"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "Det gick inte att installera insticksprogrammet från URL"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "Det gick inte att läsa in listan över godkända insticksprogram"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "Det gick inte att läsa in listan över godkända insticksprogram."
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "Det gick inte att uppdatera insticksprogramregistret"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "Det gick inte att uppdatera insticksprogramregistret. Kontrollera din internetanslutning."
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "Det gick inte att avinstallera insticksprogrammet"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "Hämtar senaste registret…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "Hämta detta från insticksprogrammets upphovsman. Installeraren nekar nedladdningen om den inte matchar byte för byte."
+
+#: 
+msgid "Homepage"
+msgstr "Hemsida"
+
+#: 
+msgid "Install"
+msgstr "Installera"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "Installera insticksprogram från URL (overifierat)"
+
+#: 
+msgid "Install Unverified"
+msgstr "Installera overifierat"
+
+#: 
+msgid "Install failed"
+msgstr "Installationen misslyckades"
+
+#: 
+msgid "Install from URL"
+msgstr "Installera från URL"
+
+#: 
+msgid "Installing…"
+msgstr "Installerar…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "Kebab-format. Måste matcha katalognamnet på översta nivån i zip-filen och id:t i plugin.json."
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "Läser in listan över godkända insticksprogram…"
+
+#: 
+msgid "Loading…"
+msgstr "Läser in…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "Matchar en post i listan över godkända insticksprogram"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "Måste vara en oföränderlig release-URL som serveras via HTTPS."
+
+#: 
+msgid "Plugin id"
+msgstr "Insticksprogram-id"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "Insticksprogrammet installerades som OVERIFIERAT. Granska de extraherade filerna noggrant innan du aktiverar det."
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "Insticksprogrammet installerades. Granska det och klicka på Aktivera för att sätta igång det."
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "Insticksprogrammets karantän rensades. Du kan nu aktivera insticksprogrammet igen."
+
+#: 
+msgid "Plugin quarantined"
+msgstr "Insticksprogrammet karantänerades"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "Insticksprogramregistret uppdaterades."
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "Insticksprogrammet avinstallerades"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "Insticksprogrammet avinstallerades."
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "Insticksprogram zip-URL (endast HTTPS)"
+
+#: 
+msgid "Quarantined"
+msgstr "Karantänerat"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "Granska insticksprogrammets filer på disken innan du aktiverar det. Overifierade insticksprogram körs med samma behörigheter som godkända insticksprogram."
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "SHA-256-kontrollsumma"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "SHA-256 måste vara en 64-teckens hexsträng."
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "ChurchCRM:s underhållare har inte granskat det. Du ansvarar för säkerheten och beteendet hos allt du installerar här. Föredra flödet Bläddra bland godkända när det är möjligt."
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "Listan över godkända insticksprogram är tom. Det finns inga tredjepartsinsticksprogram tillgängliga via det verifierade installationsprogrammet ännu."
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "Insticksprogrammet inaktiverades automatiskt efter ett körningsfel."
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "Dessa insticksprogram har granskats och godkänts av ChurchCRM:s underhållare. Klicka på Installera för att ladda ner och installera ett — insticksprogrammet aktiveras inte automatiskt."
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "Detta insticksprogram finns inte på ChurchCRM:s lista över godkända insticksprogram."
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "Detta insticksprogram installeras som OVERIFIERAT."
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "URL måste använda HTTPS."
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "Avinstallera (radera från disk)"
+
+#: 
+msgid "Unverified plugin"
+msgstr "Overifierat insticksprogram"
+
+#: 
+msgid "Verified"
+msgstr "Verifierat"
+
+#: 
+msgid "What this plugin does:"
+msgstr "Vad detta insticksprogram gör:"
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "downloadUrl, sha256 och pluginId krävs alla för overifierade installationer."
+
+#: 
+msgid "Name cannot be empty"
+msgstr "Namnet får inte vara tomt"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "Namnet får inte vara längre än %d tecken"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "Behöver du hjälp? Kontakta oss"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "Ingen kalender vald — det här evenemanget visas under systemkalendern \"Opinnatta händelser\" tills du fäster det."
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "Öppnar ett 2-minutersfönster för enheter att registrera sig på:"
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "Tider använder kyrkans tid ({{church}}), inte din webbläsares ({{browser}})."
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "Välkommen — logga in för att hantera din församling"
+

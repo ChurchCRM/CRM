@@ -15755,3 +15755,379 @@ msgstr "Odstranit číslo licitace"
 msgid "Invalid security token. Please try again."
 msgstr "Neplatný bezpečnostní token. Zkuste to prosím znovu."
 
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "Přidává státní svátky do hlavního kalendáře. Každá vybraná země se zobrazí jako samostatný přepínatelný kalendář v postranním panelu, takže uživatelé mohou svátky jednotlivých zemí zobrazit nebo skrýt."
+
+#: 
+msgid "Choose map provider"
+msgstr "Vybrat poskytovatele map"
+
+#: 
+msgid "Current database"
+msgstr "Aktuální databáze"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "Ukázková data se obvykle načítají pouze při nových instalacích. Import nyní přidá ukázkové záznamy k vašim stávajícím datům a může vytvořit duplicity."
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "Každá země vytvoří vlastní řádek kalendáře v postranním panelu. Pomocí přepínače konkrétního kalendáře můžete zemi dočasně skrýt bez změny nastavení pluginu."
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "Filtrování podle kategorie"
+
+#: 
+msgid "Holiday Settings"
+msgstr "Nastavení svátků"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "Svátky (%s)"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "Svátky jsou označeny podle typu: Úřední, Připomínky, Bankovní svátky, Sezónní a Náboženské. Ponechte všechny kategorie nevybrané pro zobrazení všech svátků, nebo vyberte konkrétní typy pro zúžení zobrazení."
+
+#: 
+msgid "Import demo data anyway"
+msgstr "Importovat ukázková data přesto"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "Chybí identifikátor finančního závazku."
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "Není vybrána žádná země. Vyberte alespoň jednu zemi v nastavení pluginu Sváteční kalendáře."
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "Pro vybrané filtry nebyly nalezeny žádné záznamy."
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "Otevřít v Apple Maps"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "Otevřít v Google Maps"
+
+#: 
+msgid "Open in new tab"
+msgstr "Otevřít na nové kartě"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "Nastavení zemí"
+
+#: 
+msgid "Show all"
+msgstr "Zobrazit vše"
+
+#: 
+msgid "Show:"
+msgstr "Zobrazit:"
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "Zobrazení a skrytí jednotlivých zemí"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "Švédština"
+
+#: 
+msgid "System"
+msgstr "Systém"
+
+#: 
+msgid "Timeline filters"
+msgstr "Filtry časové osy"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "Chcete-li začít znovu s prázdnou databází, použijte Resetovat databázi na řídicím panelu správce před importem ukázkových dat."
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "Pomocí výběru zemí zvolte jednu nebo více zemí. Každá přidaná země se zobrazí jako samostatná položka kalendáře v postranním panelu – umožňuje vám zobrazit svátky pro celou světovou farní komunitu."
+
+#: 
+msgid "Your database already contains data"
+msgstr "Vaše databáze již obsahuje data"
+
+#: 
+msgid "people"
+msgstr "lidé"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "K instalaci pluginu je vyžadována adresa URL ke stažení."
+
+#: 
+msgid "All three fields are required."
+msgstr "Všechna tři pole jsou povinná."
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "Schválené komunitní pluginy"
+
+#: 
+msgid "Browse Approved"
+msgstr "Procházet schválené"
+
+#: 
+msgid "Check for Updates"
+msgstr "Zkontrolovat aktualizace"
+
+#: 
+msgid "Checking…"
+msgstr "Kontroluji…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "Vymazat karanténu"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "Vymažte karanténu až po vyřešení základního problému. Server odmítne povolení pluginu v karanténě."
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "Klikněte na \"Procházet schválené\" výše pro instalaci ověřeného pluginu nebo na \"Instalovat z URL\" pro neověřené sestavení během vývoje."
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "Nepodařilo se vymazat karanténu pluginu"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "Nepodařilo se vymazat karanténu"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "Nepodařilo se instalovat plugin"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "Nepodařilo se instalovat plugin z URL"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "Nepodařilo se načíst seznam schválených pluginů"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "Nepodařilo se načíst seznam schválených pluginů."
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "Nepodařilo se obnovit registr pluginů"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "Nepodařilo se obnovit registr pluginů. Zkontrolujte připojení k internetu."
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "Nepodařilo se odinstalovat plugin"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "Načítám nejnovější registr…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "Získejte od autora pluginu. Instalátor odmítne stažení, pokud se neshoduje bajt za bajtem."
+
+#: 
+msgid "Homepage"
+msgstr "Domovská stránka"
+
+#: 
+msgid "Install"
+msgstr "Instalovat"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "Instalovat plugin z URL (neověřený)"
+
+#: 
+msgid "Install Unverified"
+msgstr "Instalovat neověřený"
+
+#: 
+msgid "Install failed"
+msgstr "Instalace selhala"
+
+#: 
+msgid "Install from URL"
+msgstr "Instalovat z URL"
+
+#: 
+msgid "Installing…"
+msgstr "Instaluji…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "Kebab-case. Musí odpovídat názvu adresáře nejvyšší úrovně uvnitř zipu a id v plugin.json."
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "Načítám seznam schválených pluginů…"
+
+#: 
+msgid "Loading…"
+msgstr "Načítám…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "Odpovídá záznamu v seznamu schválených pluginů"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "Musí být neměnná URL vydání dostupná přes HTTPS."
+
+#: 
+msgid "Plugin id"
+msgstr "ID pluginu"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "Plugin nainstalován jako NEOVĚŘENÝ. Před povolením pečlivě zkontrolujte extrahované soubory."
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "Plugin nainstalován. Zkontrolujte jej a klikněte na Povolit pro aktivaci."
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "Karanténa pluginu vymazána. Plugin nyní můžete znovu povolit."
+
+#: 
+msgid "Plugin quarantined"
+msgstr "Plugin v karanténě"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "Registr pluginů obnoven."
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "Plugin odinstalován"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "Plugin odinstalován."
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "URL souboru ZIP pluginu (pouze HTTPS)"
+
+#: 
+msgid "Quarantined"
+msgstr "V karanténě"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "Před povolením zkontrolujte soubory pluginu na disku. Neověřené pluginy běží se stejnými oprávněními jako schválené pluginy."
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "Kontrolní součet SHA-256"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "SHA-256 musí být 64znakový hexadecimální řetězec."
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "Správci ChurchCRM jej neprověřili. Jste zodpovědní za bezpečnost a chování všeho, co zde instalujete. Kdykoli je to možné, preferujte postup Procházet schválené."
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "Seznam schválených pluginů je prázdný. Zatím nejsou k dispozici žádné pluginy třetích stran prostřednictvím ověřeného instalátoru."
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "Plugin byl automaticky deaktivován po selhání za běhu."
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "Tyto pluginy byly přezkoumány a schváleny správci ChurchCRM. Kliknutím na Instalovat si plugin stáhněte a nainstalujte – plugin nebude automaticky povolen."
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "Tento plugin není na seznamu schválených pluginů ChurchCRM."
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "Tento plugin bude nainstalován jako NEOVĚŘENÝ."
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "URL musí používat HTTPS."
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "Odinstalovat (smazat z disku)"
+
+#: 
+msgid "Unverified plugin"
+msgstr "Neověřený plugin"
+
+#: 
+msgid "Verified"
+msgstr "Ověřený"
+
+#: 
+msgid "What this plugin does:"
+msgstr "Co tento plugin dělá:"
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "Pro neověřené instalace jsou povinné downloadUrl, sha256 a pluginId."
+
+#: 
+msgid "risk"
+msgstr "riziko"
+
+#: 
+msgid "Name cannot be empty"
+msgstr "Jméno nesmí být prázdné"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "Jméno nesmí být delší než %d znaků"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "Potřebujete pomoc? Kontaktujte nás"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "Není vybrán žádný kalendář – tato událost se zobrazí v systémovém kalendáři \"Nepřipnuté události\", dokud ji nepřipnete."
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "Otevírá 2minutové okno pro registraci zařízení na adrese:"
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "Časy používají čas farnosti ({{church}}), nikoli čas vašeho prohlížeče ({{browser}})."
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "Vítejte – přihlaste se pro správu vaší farní komunity"
+

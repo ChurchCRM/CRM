@@ -15781,3 +15781,379 @@ msgstr "Видалити номер весла"
 msgid "Invalid security token. Please try again."
 msgstr "Недійсний токен безпеки. Будь ласка, спробуйте ще раз."
 
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "Додає державні свята до головного календаря. Кожна вибрана країна стає окремим календарем на бічній панелі, який можна вмикати або вимикати незалежно."
+
+#: 
+msgid "Choose map provider"
+msgstr "Вибрати постачальника карт"
+
+#: 
+msgid "Current database"
+msgstr "Поточна база даних"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "Демонстраційні дані зазвичай завантажуються лише на нових інсталяціях. Імпортування зараз додасть зразкові записи поруч із вашими наявними даними та може створити дублікати."
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "Кожна країна створює власний рядок календаря на бічній панелі. Використовуйте перемикач для окремого календаря, щоб тимчасово приховати країну без зміни налаштувань плагіна."
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "Фільтрування за категорією"
+
+#: 
+msgid "Holiday Settings"
+msgstr "Налаштування свят"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "Свята (%s)"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "Свята позначені за типом: Офіційні, Пам'ятні дати, Банківські свята, Сезонні та Релігійні. Залиште всі категорії невибраними, щоб показати всі свята, або виберіть конкретні типи для звуження відображення."
+
+#: 
+msgid "Import demo data anyway"
+msgstr "Все одно імпортувати демонстраційні дані"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "Відсутній ідентифікатор фінансового зобов'язання."
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "Жодна країна не вибрана. Виберіть принаймні одну країну в налаштуваннях плагіна «Календарі свят»."
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "Немає записів, що відповідають вибраним фільтрам."
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "Відкрити в Apple Maps"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "Відкрити в Google Maps"
+
+#: 
+msgid "Open in new tab"
+msgstr "Відкрити в новій вкладці"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "Налаштування країн"
+
+#: 
+msgid "Show all"
+msgstr "Показати все"
+
+#: 
+msgid "Show:"
+msgstr "Показати:"
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "Показ і приховування окремих країн"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "Шведська"
+
+#: 
+msgid "System"
+msgstr "Система"
+
+#: 
+msgid "Timeline filters"
+msgstr "Фільтри часової шкали"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "Щоб почати з чистою базою даних, використовуйте «Скинути базу даних» на панелі адміністратора перед імпортом демонстраційних даних."
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "Використовуйте вибір країн, щоб обрати одну або кілька країн. Кожна додана країна відображатиметься як окремий запис календаря на бічній панелі — це дозволяє показувати свята для глобальної громади."
+
+#: 
+msgid "Your database already contains data"
+msgstr "Ваша база даних вже містить дані"
+
+#: 
+msgid "people"
+msgstr "людей"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "Для встановлення плагіна потрібна URL-адреса завантаження."
+
+#: 
+msgid "All three fields are required."
+msgstr "Усі три поля є обов'язковими."
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "Схвалені плагіни спільноти"
+
+#: 
+msgid "Browse Approved"
+msgstr "Переглянути схвалені"
+
+#: 
+msgid "Check for Updates"
+msgstr "Перевірити оновлення"
+
+#: 
+msgid "Checking…"
+msgstr "Перевірка…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "Очистити карантин"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "Очищайте карантин лише після усунення проблеми. Сервер відмовляє у ввімкненні плагіна в карантині."
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "Натисніть «Переглянути схвалені» вище, щоб встановити перевірений плагін, або «Встановити з URL» для неперевіреної збірки під час розробки."
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "Не вдалося очистити карантин плагіна"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "Не вдалося очистити карантин"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "Не вдалося встановити плагін"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "Не вдалося встановити плагін з URL"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "Не вдалося завантажити список схвалених плагінів"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "Не вдалося завантажити список схвалених плагінів."
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "Не вдалося оновити реєстр плагінів"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "Не вдалося оновити реєстр плагінів. Перевірте підключення до Інтернету."
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "Не вдалося видалити плагін"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "Отримання останнього реєстру…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "Отримайте це від автора плагіна. Інсталятор відмовиться від завантаження, якщо воно не збігається побайтово."
+
+#: 
+msgid "Homepage"
+msgstr "Домашня сторінка"
+
+#: 
+msgid "Install"
+msgstr "Встановити"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "Встановити плагін з URL (неперевірений)"
+
+#: 
+msgid "Install Unverified"
+msgstr "Встановити неперевірений"
+
+#: 
+msgid "Install failed"
+msgstr "Встановлення не вдалося"
+
+#: 
+msgid "Install from URL"
+msgstr "Встановити з URL"
+
+#: 
+msgid "Installing…"
+msgstr "Встановлення…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "Kebab-case. Має збігатися з назвою каталогу верхнього рівня всередині zip-архіву та ідентифікатором у plugin.json."
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "Завантаження списку схвалених плагінів…"
+
+#: 
+msgid "Loading…"
+msgstr "Завантаження…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "Відповідає запису в списку схвалених плагінів"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "Має бути незмінною URL-адресою релізу, що обслуговується через HTTPS."
+
+#: 
+msgid "Plugin id"
+msgstr "Ідентифікатор плагіна"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "Плагін встановлено як НЕПЕРЕВІРЕНИЙ. Уважно перегляньте розпаковані файли перед увімкненням."
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "Плагін встановлено. Перегляньте його та натисніть «Увімкнути» для активації."
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "Карантин плагіна очищено. Тепер ви можете знову увімкнути плагін."
+
+#: 
+msgid "Plugin quarantined"
+msgstr "Плагін поміщено в карантин"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "Реєстр плагінів оновлено."
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "Плагін видалено"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "Плагін видалено."
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "URL zip-архіву плагіна (лише HTTPS)"
+
+#: 
+msgid "Quarantined"
+msgstr "В карантині"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "Перегляньте файли плагіна на диску перед увімкненням. Неперевірені плагіни працюють з тими самими дозволами, що й схвалені."
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "Контрольна сума SHA-256"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "SHA-256 має бути 64-символьним шістнадцятковим рядком."
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "Супровідники ChurchCRM не перевіряли його. Ви несете відповідальність за безпеку та поведінку всього, що ви тут встановлюєте. За можливості використовуйте перегляд схвалених плагінів."
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "Список схвалених плагінів порожній. Наразі немає сторонніх плагінів, доступних через перевірений інсталятор."
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "Плагін було автоматично вимкнено після збою під час виконання."
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "Ці плагіни були перевірені та схвалені супровідниками ChurchCRM. Натисніть «Встановити», щоб завантажити та встановити один — плагін не буде увімкнено автоматично."
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "Цього плагіна немає в списку схвалених плагінів ChurchCRM."
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "Цей плагін буде встановлено як НЕПЕРЕВІРЕНИЙ."
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "URL має використовувати HTTPS."
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "Видалити (стерти з диска)"
+
+#: 
+msgid "Unverified plugin"
+msgstr "Неперевірений плагін"
+
+#: 
+msgid "Verified"
+msgstr "Перевірений"
+
+#: 
+msgid "What this plugin does:"
+msgstr "Що робить цей плагін:"
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "downloadUrl, sha256 та pluginId — усі обов'язкові для неперевірених встановлень."
+
+#: 
+msgid "risk"
+msgstr "ризик"
+
+#: 
+msgid "Name cannot be empty"
+msgstr "Назва не може бути порожньою"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "Назва не може бути довшою за %d символів"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "Потрібна допомога? Зв'яжіться з нами"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "Календар не вибрано — ця подія відображатиметься в системному календарі «Незакріплені події», поки ви її не закріпите."
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "Відкриває 2-хвилинне вікно для реєстрації пристроїв за адресою:"
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "Час вказується за церковним часом ({{church}}), а не часом вашого браузера ({{browser}})."
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "Ласкаво просимо — увійдіть, щоб керувати вашою парафією"
+
