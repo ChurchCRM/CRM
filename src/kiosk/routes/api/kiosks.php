@@ -227,6 +227,29 @@ $app->group('/api', function (RouteCollectorProxy $group): void {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to delete kiosk'), [], 500, $e, $request);
         }
     })->add(KioskDeviceMiddleware::class);
+
+    /**
+     * @OA\Post(
+     *     path="/kiosk/api/devices/{kioskId}/name",
+     *     operationId="renameKiosk",
+     *     summary="Rename a kiosk device",
+     *     tags={"Kiosk"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="kioskId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"name"},
+     *             @OA\Property(property="name", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(response=200, description="Kiosk renamed"),
+     *     @OA\Response(response=400, description="Invalid request"),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Forbidden — Admin role required"),
+     *     @OA\Response(response=404, description="Kiosk not found")
+     * )
+     */
     $group->post('/devices/{kioskId:[0-9]+}/name', function (Request $request, Response $response, array $args): Response {
         $input = $request->getParsedBody();
         $name = trim(InputUtils::sanitizeText((string) ($input['name'] ?? '')));
