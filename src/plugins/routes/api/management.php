@@ -1,6 +1,9 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Plugin\ApprovedPluginRegistry;
+use ChurchCRM\Plugin\PluginAlreadyInstalledException;
+use ChurchCRM\Plugin\PluginInstaller;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -412,6 +415,332 @@ $group->post('/plugins/{pluginId}/reset', function (Request $request, Response $
         return SlimUtils::renderErrorJSON(
             $response,
             gettext('Failed to reset settings'),
+            [],
+            500,
+            $e,
+            $request
+        );
+    }
+});
+
+/**
+ * @OA\Get(
+ *     path="/plugins/api/approved",
+ *     operationId="listApprovedPlugins",
+ *     summary="List community plugins approved for URL install",
+ *     description="Returns the entries from src/plugins/approved-plugins.json. Only plugins in this list can be installed by URL.",
+ *     tags={"Plugins"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Response(response=200, description="Approved plugin list"),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="Forbidden — Admin role required")
+ * )
+ */
+$group->get('/approved', function (Request $request, Response $response): Response {
+    try {
+        $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
+        $entries = array_values(ApprovedPluginRegistry::all($pluginsPath));
+
+        return SlimUtils::renderJSON($response, [
+            'success' => true,
+            'data' => $entries,
+        ]);
+    } catch (\Throwable $e) {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            gettext('Failed to load approved plugin list'),
+            [],
+            500,
+            $e,
+            $request
+        );
+    }
+});
+
+/**
+ * @OA\Post(
+ *     path="/plugins/api/plugins/install",
+ *     operationId="installPluginFromUrl",
+ *     summary="Install a community plugin from an approved download URL",
+ *     description="Downloads the zip, verifies its SHA-256 against approved-plugins.json, validates the archive, and extracts it into src/plugins/community/{id}. The plugin is NOT enabled automatically — admins must review and click Enable.",
+ *     tags={"Plugins"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\RequestBody(required=true,
+ *         @OA\JsonContent(type="object",
+ *             @OA\Property(property="downloadUrl", type="string", description="HTTPS URL to the plugin zip. Must match an approved entry exactly.")
+ *         )
+ *     ),
+ *     @OA\Response(response=200, description="Plugin installed (not yet enabled)"),
+ *     @OA\Response(response=400, description="Validation failure (unknown URL, checksum mismatch, unsafe zip)"),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="Forbidden — Admin role required"),
+ *     @OA\Response(response=409, description="Plugin already installed"),
+ *     @OA\Response(response=500, description="Install failed")
+ * )
+ */
+$group->post('/plugins/install', function (Request $request, Response $response): Response {
+    $body = $request->getParsedBody();
+    $downloadUrl = is_array($body) ? (string) ($body['downloadUrl'] ?? '') : '';
+
+    if ($downloadUrl === '') {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            gettext('A downloadUrl is required to install a plugin.'),
+            [],
+            400
+        );
+    }
+
+    $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
+
+    try {
+        $result = PluginInstaller::installFromUrl($pluginsPath, $downloadUrl);
+
+        // Force rediscovery so the new plugin appears in the management UI.
+        PluginManager::reset();
+        PluginManager::init($pluginsPath);
+
+        LoggerUtils::getAppLogger()->info('Community plugin installed via URL', [
+            'plugin' => $result['pluginId'],
+            'version' => $result['version'],
+        ]);
+
+        return SlimUtils::renderJSON($response, [
+            'success' => true,
+            'message' => gettext('Plugin installed. Review it and click Enable to activate.'),
+            'data' => $result,
+        ]);
+    } catch (PluginAlreadyInstalledException $e) {
+        // Map "already installed" via a typed exception, not a substring
+        // match on the message — wording changes can't silently flip the
+        // status code from 409 to 400 this way.
+        LoggerUtils::getAppLogger()->warning('Plugin install rejected (already installed)', [
+            'url' => $downloadUrl,
+            'error' => $e->getMessage(),
+        ]);
+
+        return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 409);
+    } catch (\RuntimeException $e) {
+        // Expected validation failures — map to 400 so the UI can show the message.
+        LoggerUtils::getAppLogger()->warning('Plugin install rejected', [
+            'url' => $downloadUrl,
+            'error' => $e->getMessage(),
+        ]);
+
+        return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400);
+    } catch (\Throwable $e) {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            gettext('Failed to install plugin'),
+            [],
+            500,
+            $e,
+            $request
+        );
+    }
+});
+
+/**
+ * @OA\Post(
+ *     path="/plugins/api/plugins/install-url",
+ *     operationId="installPluginFromUnverifiedUrl",
+ *     summary="Install a community plugin from an arbitrary URL (unverified)",
+ *     description="Installs a plugin from a URL that is NOT on the approved list. The admin must supply the expected SHA-256 themselves. The plugin is flagged as unverified and the admin UI shows a warning banner before it can be enabled. Intended for plugin developers testing their own builds and for admins running experimental plugins.",
+ *     tags={"Plugins"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\RequestBody(required=true,
+ *         @OA\JsonContent(type="object",
+ *             @OA\Property(property="downloadUrl", type="string", description="HTTPS URL to the plugin zip"),
+ *             @OA\Property(property="sha256", type="string", description="64-hex SHA-256 of the zip bytes"),
+ *             @OA\Property(property="pluginId", type="string", description="Expected plugin id (kebab-case, must match top-level directory)")
+ *         )
+ *     ),
+ *     @OA\Response(response=200, description="Plugin installed (unverified, not yet enabled)"),
+ *     @OA\Response(response=400, description="Validation failure"),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="Forbidden — Admin role required"),
+ *     @OA\Response(response=409, description="Plugin already installed")
+ * )
+ */
+$group->post('/plugins/install-url', function (Request $request, Response $response): Response {
+    $body = $request->getParsedBody();
+    $downloadUrl = is_array($body) ? (string) ($body['downloadUrl'] ?? '') : '';
+    $sha256 = is_array($body) ? (string) ($body['sha256'] ?? '') : '';
+    $pluginId = is_array($body) ? (string) ($body['pluginId'] ?? '') : '';
+
+    if ($downloadUrl === '' || $sha256 === '' || $pluginId === '') {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            gettext('downloadUrl, sha256, and pluginId are all required for unverified installs.'),
+            [],
+            400
+        );
+    }
+
+    $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
+
+    try {
+        $result = PluginInstaller::installUnverifiedFromUrl(
+            $pluginsPath,
+            $downloadUrl,
+            $sha256,
+            $pluginId
+        );
+
+        PluginManager::reset();
+        PluginManager::init($pluginsPath);
+
+        LoggerUtils::getAppLogger()->warning('Community plugin installed via unverified URL', [
+            'plugin' => $result['pluginId'],
+            'version' => $result['version'],
+            'verified' => $result['verified'],
+        ]);
+
+        return SlimUtils::renderJSON($response, [
+            'success' => true,
+            'message' => $result['verified']
+                ? gettext('Plugin installed. Review it and click Enable to activate.')
+                : gettext('Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling.'),
+            'data' => $result,
+        ]);
+    } catch (PluginAlreadyInstalledException $e) {
+        return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 409);
+    } catch (\RuntimeException $e) {
+        return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 400);
+    } catch (\Throwable $e) {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            gettext('Failed to install plugin from URL'),
+            [],
+            500,
+            $e,
+            $request
+        );
+    }
+});
+
+/**
+ * @OA\Delete(
+ *     path="/plugins/api/plugins/{pluginId}",
+ *     operationId="uninstallPlugin",
+ *     summary="Delete a community plugin from disk",
+ *     description="Disables the plugin, calls its uninstall() lifecycle hook, deletes the community directory, and clears every plugin.{id}.* config key. Refuses to touch core plugins.",
+ *     tags={"Plugins"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="pluginId", in="path", required=true, @OA\Schema(type="string")),
+ *     @OA\Response(response=200, description="Plugin removed"),
+ *     @OA\Response(response=400, description="Refused — core plugin or invalid id"),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="Forbidden — Admin role required"),
+ *     @OA\Response(response=500, description="Failed to uninstall")
+ * )
+ */
+$group->delete('/plugins/{pluginId}', function (Request $request, Response $response, array $args): Response {
+    $pluginId = (string) ($args['pluginId'] ?? '');
+    $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
+
+    try {
+        $result = PluginInstaller::uninstall($pluginsPath, $pluginId);
+
+        PluginManager::reset();
+        PluginManager::init($pluginsPath);
+
+        LoggerUtils::getAppLogger()->info('Community plugin uninstalled via API', [
+            'plugin' => $result['pluginId'],
+            'keys' => count($result['removedKeys']),
+        ]);
+
+        return SlimUtils::renderJSON($response, [
+            'success' => true,
+            'message' => gettext('Plugin uninstalled.'),
+            'data' => $result,
+        ]);
+    } catch (\RuntimeException $e) {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            $e->getMessage(),
+            [],
+            400
+        );
+    } catch (\Throwable $e) {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            gettext('Failed to uninstall plugin'),
+            [],
+            500,
+            $e,
+            $request
+        );
+    }
+});
+
+/**
+ * @OA\Delete(
+ *     path="/plugins/api/plugins/{pluginId}/quarantine",
+ *     operationId="clearPluginQuarantine",
+ *     summary="Clear a plugin's quarantine flag",
+ *     description="Removes the quarantine flag from a plugin so it can be enabled again. Use after the underlying issue (crash, revoked registry entry, etc.) has been resolved.",
+ *     tags={"Plugins"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="pluginId", in="path", required=true, @OA\Schema(type="string")),
+ *     @OA\Response(response=200, description="Quarantine cleared"),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="Forbidden — Admin role required")
+ * )
+ */
+$group->delete('/plugins/{pluginId}/quarantine', function (Request $request, Response $response, array $args): Response {
+    $pluginId = (string) ($args['pluginId'] ?? '');
+    $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
+
+    try {
+        PluginManager::init($pluginsPath);
+        PluginManager::clearQuarantine($pluginId);
+
+        return SlimUtils::renderJSON($response, [
+            'success' => true,
+            'message' => gettext('Plugin quarantine cleared. You may now enable the plugin again.'),
+        ]);
+    } catch (\Throwable $e) {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            gettext('Failed to clear plugin quarantine'),
+            [],
+            500,
+            $e,
+            $request
+        );
+    }
+});
+
+/**
+ * @OA\Post(
+ *     path="/plugins/api/registry/refresh",
+ *     operationId="refreshPluginRegistry",
+ *     summary="Re-fetch the remote approved-plugin registry",
+ *     description="Pulls the latest approved-plugins.json from the remote source and updates the session cache. Returns the merged list immediately so the UI can refresh without a page reload.",
+ *     tags={"Plugins"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Response(response=200, description="Registry refreshed — returns current approved list"),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="Forbidden — Admin role required"),
+ *     @OA\Response(response=500, description="Refresh failed")
+ * )
+ */
+$group->post('/registry/refresh', function (Request $request, Response $response): Response {
+    try {
+        ApprovedPluginRegistry::fetchRemoteRegistry();
+        $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
+        $entries = array_values(ApprovedPluginRegistry::all($pluginsPath));
+
+        return SlimUtils::renderJSON($response, [
+            'success' => true,
+            'message' => gettext('Plugin registry refreshed.'),
+            'data' => $entries,
+        ]);
+    } catch (\Throwable $e) {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            gettext('Failed to refresh plugin registry'),
             [],
             500,
             $e,

@@ -1,283 +1,253 @@
 # ChurchCRM Plugin System
 
-ChurchCRM features a WordPress-style plugin architecture that allows extending functionality without modifying core code.
+ChurchCRM features a WordPress-style plugin architecture that lets you
+extend functionality without modifying core code. Plugins come in two
+flavours:
 
-## Plugin Structure
+- **Core plugins** (`src/plugins/core/`) ship with ChurchCRM and are
+  maintained in this repository.
+- **Community plugins** (`src/plugins/community/`) are third-party
+  extensions installed at runtime via the admin-only URL installer,
+  gated by an approved-plugins allowlist.
 
-Each plugin lives in its own directory under either:
-- `src/plugins/core/` - Core plugins shipped with ChurchCRM
-- `src/plugins/community/` - Third-party community plugins (user-installed)
+> **Read the security model first.** Community plugins are a supply-chain
+> surface for your parish data. Before you install one, read
+> [`.agents/skills/churchcrm/plugin-compliance.md`](../../.agents/skills/churchcrm/plugin-compliance.md).
+> Before you write one, read
+> [`.agents/skills/churchcrm/plugin-development.md`](../../.agents/skills/churchcrm/plugin-development.md)
+> and then
+> [`.agents/skills/churchcrm/plugin-security-scan.md`](../../.agents/skills/churchcrm/plugin-security-scan.md).
+
+---
+
+## Directory layout
 
 ```
 src/plugins/
+├── approved-plugins.json           # Allowlist for URL installs
+├── index.php                       # Slim entry point (/plugins/...)
+├── routes/                         # Admin management routes
+│   ├── management.php
+│   └── api/management.php
+├── views/                          # Admin management UI
 ├── core/
 │   ├── mailchimp/
-│   │   ├── plugin.json          # Plugin manifest
-│   │   └── src/
-│   │       └── MailChimpPlugin.php
+│   │   ├── plugin.json
+│   │   └── src/MailChimpPlugin.php
 │   ├── vonage/
 │   ├── google-analytics/
 │   ├── openlp/
-│   └── gravatar/
+│   ├── gravatar/
+│   ├── external-backup/
+│   └── custom-links/
 └── community/
-    └── my-custom-plugin/
+    └── {plugin-id}/                # Installed at runtime, never in signatures.json
         ├── plugin.json
-        └── src/
-            └── MyCustomPlugin.php
+        ├── src/{PluginClass}.php
+        ├── routes/routes.php       # optional
+        ├── views/…                 # optional
+        └── locale/                 # optional — see Localization below
+            ├── textdomain/{locale}/LC_MESSAGES/{plugin-id}.mo
+            └── i18n/{locale}.json
 ```
 
-## Creating a Plugin
+Community plugins are excluded from the orphan-scan in
+`AppIntegrityService::isExcludedFromOrphanDetection()` and from
+`scripts/generate-signatures-node.js`. This is enforced by the Cypress
+regression test
+`cypress/e2e/api/private/admin/private.admin.orphaned-files.plugins.spec.js`.
 
-### 1. Create the plugin.json manifest
+---
 
-```json
-{
-    "id": "my-plugin",
-    "name": "My Custom Plugin",
-    "description": "A description of what the plugin does",
-    "version": "1.0.0",
-    "author": "Your Name",
-    "authorUrl": "https://yourwebsite.com",
-    "type": "community",
-    "minimumCRMVersion": "5.0.0",
-    "mainClass": "ChurchCRM\\Plugins\\MyPlugin\\MyPlugin",
-    "dependencies": [],
-    "settingsUrl": "/plugins/my-plugin/settings",
-    "settings": [
-        {
-            "key": "apiKey",
-            "label": "API Key",
-            "type": "text",
-            "required": true,
-            "help": "Your API key"
-        }
-    ],
-    "menuItems": [
-        {
-            "parent": "admin",
-            "label": "My Plugin",
-            "url": "/plugins/my-plugin/dashboard",
-            "icon": "fa-puzzle-piece",
-            "permission": "bAdmin"
-        }
-    ],
-    "hooks": [
-        "person.created",
-        "person.updated"
-    ]
-}
+## Installing a community plugin
+
+Community plugins must be installed through the admin API. Raw disk
+installs work but skip the safety checks, so prefer the URL installer:
+
+```
+GET  /plugins/api/approved                         # list vetted plugins
+POST /plugins/api/plugins/install                  # { "downloadUrl": "https://…" }
 ```
 
-### 2. Create the main plugin class
+Requirements enforced by `PluginInstaller`:
 
-```php
-<?php
+1. The URL must be in `src/plugins/approved-plugins.json`.
+2. Your CRM version must meet `minimumCRMVersion`.
+3. The destination `community/{id}` must not already exist.
+4. The download is ≤ 20 MB, HTTPS, with TLS verification.
+5. The downloaded bytes' SHA-256 must match the registry entry.
+6. The zip must have no ZIP-Slip paths, no `..`, no absolute paths, no
+   drive letters, no control bytes, no symlinks.
+7. Exactly one top-level directory, named after the plugin `id`.
+8. Only allowed extensions (`.php`, `.js`, `.json`, `.css`, `.html`,
+   `.twig`, `.md`, `.png`/`.jpg`/`.svg`/…, `.woff`, `.po`/`.mo`, etc.).
+   No `.phar`, `.sh`, `.exe`, `.so`, `.dll`.
+9. Extracted `plugin.json` must match `id`, `version`,
+   `type: "community"`.
 
-namespace ChurchCRM\Plugins\MyPlugin;
+The installer does **not** auto-enable the plugin — an admin must click
+Enable after reviewing.
 
-use ChurchCRM\Plugin\AbstractPlugin;
-use ChurchCRM\Plugin\Hook\HookManager;
-use ChurchCRM\Plugin\Hooks;
+### Approved plugin entry
 
-class MyPlugin extends AbstractPlugin
-{
-    public function getId(): string
-    {
-        return 'my-plugin';
-    }
+Every entry in `approved-plugins.json` declares:
 
-    public function getName(): string
-    {
-        return 'My Custom Plugin';
-    }
+| Field | Required | What it means |
+|-------|:--------:|---------------|
+| `id` | ✓ | Kebab-case id, must match `plugin.json` |
+| `name` | ✓ | Display name |
+| `version` | ✓ | Semver, must match `plugin.json` |
+| `downloadUrl` | ✓ | HTTPS URL to an immutable release zip |
+| `sha256` | ✓ | 64-hex SHA-256 of the zip bytes |
+| `risk` | ✓ | `low` \| `medium` \| `high` |
+| `riskSummary` | ✓ | One plain-language sentence admins see before Install |
+| `permissions` | optional | Capability tags from `ApprovedPluginRegistry::KNOWN_PERMISSIONS` |
+| `minimumCRMVersion` | optional | Enforced by the installer |
+| `author`, `homepage`, `reviewedAt`, `notes` | optional | Metadata |
 
-    public function getDescription(): string
-    {
-        return 'A description of what the plugin does';
-    }
+---
 
-    public function getVersion(): string
-    {
-        return '1.0.0';
-    }
+## Creating a plugin
 
-    public function boot(): void
-    {
-        // Called when the plugin is loaded
-        // Register hooks, initialize services, etc.
-        HookManager::addAction(Hooks::PERSON_CREATED, [$this, 'onPersonCreated']);
-    }
+Community plugin authors follow
+[`.agents/skills/churchcrm/plugin-create.md`](../../.agents/skills/churchcrm/plugin-create.md)
+— that is the scaffold → code → security-scan → zip → approved-list
+submission flow. The technical reference lives in
+[`.agents/skills/churchcrm/plugin-development.md`](../../.agents/skills/churchcrm/plugin-development.md).
+High-level steps:
 
-    public function activate(): void
-    {
-        // Called when the plugin is enabled
-    }
+1. Create `src/plugins/{core|community}/{your-id}/plugin.json` with
+   `type`, `mainClass`, settings, hooks, and optional routes.
+2. Create the main class at
+   `{plugin}/src/{YourClass}Plugin.php` extending `AbstractPlugin`.
+3. Optionally add `routes/routes.php` (only loaded for active plugins)
+   and `views/*.php` templates.
+4. Optionally add `locale/textdomain/…` and `locale/i18n/…` for
+   translations.
+5. **Before submitting** a community plugin: run the static-analysis
+   pass in `plugin-security-scan.md` against your own code.
 
-    public function deactivate(): void
-    {
-        // Called when the plugin is disabled
-    }
+---
 
-    public function uninstall(): void
-    {
-        // Called when the plugin is removed
-        // Clean up database tables, files, etc.
-    }
+## Plugin Localization (no POeditor)
 
-    public function isConfigured(): bool
-    {
-        // Return true if the plugin has all required settings
-        return !empty(SystemConfig::getValue('sMyPluginApiKey'));
-    }
+Community plugins are **not** added to the ChurchCRM POeditor project.
+Ship translations inside the plugin directory:
 
-    public function registerRoutes($routeCollector): void
-    {
-        // Register custom routes
-        $routeCollector->group('/my-plugin', function ($group) {
-            $group->get('/dashboard', [$this, 'handleDashboard']);
-        });
-    }
-
-    public function getMenuItems(): array
-    {
-        // Return menu items for this plugin
-        return [];
-    }
-
-    public function getSettingsSchema(): array
-    {
-        // Return settings schema for the settings UI
-        return [];
-    }
-
-    // Hook handlers
-    public function onPersonCreated($person): void
-    {
-        $this->log("Person created: " . $person->getFullName());
-    }
-}
+```
+locale/
+├── textdomain/              # PHP gettext (.mo) files
+│   └── {locale}/LC_MESSAGES/{plugin-id}.mo
+└── i18n/                    # JavaScript i18next (flat key/value JSON)
+    └── {locale}.json
 ```
 
-## Hooks System
+- PHP code uses `dgettext('{plugin-id}', 'Hello')` — never plain
+  `gettext()`.
+- JS code reads strings from `window.CRM.plugins['{plugin-id}'].i18n[key]`
+  (or registers the map as an i18next namespace via `addResourceBundle`).
+- Files larger than 512 KB are rejected by the loader.
+- Only flat `key => string` maps are accepted; nested JSON is silently
+  dropped.
+- Missing locales fall back to `en_US.json`.
 
-ChurchCRM uses a WordPress-style hooks system with **actions** and **filters**.
+Full guide:
+[`plugin-development.md → Plugin Localization`](../../.agents/skills/churchcrm/plugin-development.md#plugin-localization-independent-of-poeditor).
 
-### Actions
+---
 
-Actions are triggered when something happens. Use them to run code in response to events.
+## Hooks system
 
-```php
-// Register an action
-HookManager::addAction(Hooks::PERSON_CREATED, [$this, 'onPersonCreated'], 10, 1);
+ChurchCRM exposes WordPress-style hooks (`HookManager::addAction`,
+`HookManager::addFilter`). See `src/ChurchCRM/Plugin/Hooks.php` for the
+full constant list. Hook categories:
 
-// Trigger an action (in core code)
-HookManager::doAction(Hooks::PERSON_CREATED, $person);
-```
+- **People / Family** — `PERSON_*`, `FAMILY_*`, `*_VIEW_TABS`
+- **Financial** — `DONATION_RECEIVED`, `DEPOSIT_CLOSED`
+- **Events / Groups** — `EVENT_*`, `GROUP_MEMBER_*`
+- **Email / SMS** — `EMAIL_PRE_SEND`, `EMAIL_SENT`
+- **UI** — `MENU_BUILDING`, `DASHBOARD_WIDGETS`, `SETTINGS_PANELS`, `ADMIN_PAGE`
+- **System** — `SYSTEM_INIT`, `SYSTEM_UPGRADED`, `CRON_RUN`, `API_RESPONSE`
 
-### Filters
+If a hook touches PII or financial data, declare the matching
+capability tag (`hooks.person`, `hooks.financial`, …) in your approved
+registry entry. See `plugin-development.md` for the full allow/deny
+contract.
 
-Filters allow modifying data before it's used. They receive data, modify it, and return it.
+---
 
-```php
-// Register a filter
-HookManager::addFilter(Hooks::MENU_BUILDING, [$this, 'modifyMenu'], 10, 1);
+## Core plugins
 
-// Apply a filter (in core code)
-$menuItems = HookManager::applyFilters(Hooks::MENU_BUILDING, $menuItems);
-```
-
-### Available Hooks
-
-See `src/ChurchCRM/Plugin/Hooks.php` for all available hook constants:
-
-**Person Hooks:**
-- `person.pre_create` - Filter: Before person creation
-- `person.created` - Action: After person created
-- `person.pre_update` - Filter: Before person update
-- `person.updated` - Action: After person updated
-- `person.deleted` - Action: After person deleted
-- `person.view.tabs` - Filter: Modify tabs on person view
-
-**Family Hooks:**
-- `family.pre_create`, `family.created`, etc.
-
-**Financial Hooks:**
-- `donation.received` - After donation recorded
-- `deposit.closed` - After deposit slip closed
-
-**Event Hooks:**
-- `event.created`, `event.checkin`, `event.checkout`
-
-**Group Hooks:**
-- `group.member.added`, `group.member.removed`
-
-**UI Hooks:**
-- `menu.building` - Modify menu items
-- `dashboard.widgets` - Add dashboard widgets
-- `settings.panels` - Add settings panels
-
-**System Hooks:**
-- `system.init` - During initialization
-- `system.upgraded` - After upgrade
-- `cron.run` - During scheduled tasks
-
-## Best Practices
-
-1. **Use hooks instead of modifying core code** - This ensures your plugin survives updates.
-
-2. **Store settings in SystemConfig** - Use existing config infrastructure.
-
-3. **Namespace your code** - Use `ChurchCRM\Plugins\YourPlugin\` namespace.
-
-4. **Handle errors gracefully** - Don't crash the system if your plugin fails.
-
-5. **Log important actions** - Use `$this->log()` from AbstractPlugin.
-
-6. **Check `isConfigured()`** - Don't run if required settings are missing.
-
-7. **Clean up on uninstall** - Remove any database tables, files, etc.
-
-## Core Plugins
-
-ChurchCRM ships with these core plugins:
-
-| Plugin | Description |
-|--------|-------------|
+| Plugin | Purpose |
+|--------|---------|
 | `mailchimp` | MailChimp email list integration |
 | `vonage` | Vonage SMS notifications |
 | `google-analytics` | Google Analytics tracking |
 | `openlp` | OpenLP presentation software integration |
 | `gravatar` | Gravatar profile photos |
+| `external-backup` | Off-site backup uploads |
+| `custom-links` | User-defined menu links |
 
-## Admin UI
+---
 
-Plugins are managed through **Admin → Plugins** in the ChurchCRM menu.
+## Admin UI & API reference
 
-From this page you can:
-- View all installed plugins
-- Enable/disable plugins
-- Access plugin settings
-
-## API
-
-Plugin management API endpoints:
+Plugins are managed from **Admin → Plugins**.
 
 ```
-GET  /plugins/api/plugins              # List all plugins
-GET  /plugins/api/plugins/{id}         # Get plugin details
-POST /plugins/api/plugins/{id}/enable  # Enable a plugin
-POST /plugins/api/plugins/{id}/disable # Disable a plugin
+# Management UI (admin only)
+GET    /plugins/management                    # List + enable/disable page
+
+# Management API (admin only)
+GET    /plugins/api/plugins                   # List all discovered plugins
+GET    /plugins/api/plugins/{id}              # Plugin details
+POST   /plugins/api/plugins/{id}/enable       # Enable
+POST   /plugins/api/plugins/{id}/disable      # Disable
+POST   /plugins/api/plugins/{id}/settings     # Update settings
+POST   /plugins/api/plugins/{id}/test         # Test connection (hasTest: true)
+POST   /plugins/api/plugins/{id}/reset        # Clear all plugin settings
+
+# Installation (admin only)
+GET    /plugins/api/approved                  # Approved registry for URL installer
+POST   /plugins/api/plugins/install           # Install from an approved URL
+POST   /plugins/api/plugins/install-url       # Install from an arbitrary URL (UNVERIFIED)
+DELETE /plugins/api/plugins/{id}              # Uninstall (community only) — deletes files + clears config
+DELETE /plugins/api/plugins/{id}/quarantine   # Clear a plugin's quarantine flag
+
+# Public
+GET    /plugins/status/{id}                   # Used by core UI to gate plugin tabs
 ```
 
-## Migration from Legacy Integrations
+The `getAllPlugins()` response now surfaces:
 
-If you're migrating from the old integration system:
+- `verified` + `verificationSource` — `core`, `registry`,
+  `unverified-url`, `unknown`, `revoked`, `registry-drift`
+- `verificationReason` — human-readable explanation
+- `quarantined` + `quarantineReason`
+- `risk` + `riskSummary` + `permissions` (from the approved registry
+  entry; null for core plugins and unverified community ones)
+- `canUninstall` — true for community plugins, false for core
 
-1. Legacy config values (e.g., `sMailChimpApiKey`) are still used
-2. Plugins check these values for `isConfigured()` status
-3. No data migration needed - plugins use existing config
+The admin UI renders badges, banners, and delete/clear-quarantine
+buttons based on these fields. See
+`src/plugins/views/management.php`.
+
+---
 
 ## Questions?
 
-For plugin development help, visit:
+- Issues: https://github.com/ChurchCRM/CRM/issues
+- Docs: https://docs.churchcrm.io
+
+# For plugin development help, visit:
+
 - ChurchCRM Chat: https://discord.gg/tuWyFzj3Nj
+
+Plugin-specific skill files:
+
+- [Plugin System](../../.agents/skills/churchcrm/plugin-system.md) — runtime architecture
+- [Plugin Development](../../.agents/skills/churchcrm/plugin-development.md) — build an end-to-end plugin (allowed/forbidden contract)
+- [Plugin Create — Community quickstart](../../.agents/skills/churchcrm/plugin-create.md) — scaffold a community plugin and submit it to the approved list
+- [Plugin Migration — Core plugins only](../../.agents/skills/churchcrm/plugin-migration.md) — update `src/plugins/core/*` when a core API changes
+- [Plugin Security Scan (maintainers)](../../.agents/skills/churchcrm/plugin-security-scan.md) — review checklist before approval
+- [Plugin Compliance (site admins)](../../.agents/skills/churchcrm/plugin-compliance.md) — on-server audit

@@ -37,8 +37,8 @@ declare global {
 }
 
 // Helper to access window.CRM safely
-function getCRM(): any {
-  return (window as any).CRM || {};
+function getCRM(): CRMNamespace {
+  return window.CRM ?? {};
 }
 
 // Module-level state (avoids global window.CRM pollution)
@@ -216,7 +216,7 @@ function updateMemberCounts(): void {
   // Show/hide Alert All button based on checked-in count, notifications enabled, and members with families
   let checkedInWithFamilies = 0;
   $("#checkedInList .kiosk-member").each(function () {
-    const familyId = ($(this).data() as any)?.familyId;
+    const familyId = ($(this).data() as { familyId?: number })?.familyId;
     if (familyId) {
       checkedInWithFamilies++;
     }
@@ -895,7 +895,8 @@ function showCheckinByModal(personId: number, action: "checkin" | "checkout", pe
   };
 
   // Show modal
-  window.bootstrap.Modal.getOrCreateInstance(document.getElementById("checkinByModal")!).show();
+  const checkinByEl = document.getElementById("checkinByModal");
+  if (checkinByEl) window.bootstrap.Modal.getOrCreateInstance(checkinByEl).show();
 
   // Fetch family members
   APIRequest({
@@ -905,7 +906,8 @@ function showCheckinByModal(personId: number, action: "checkin" | "checkout", pe
       // Guard against unexpected API responses (defensive check for empty/malformed members array)
       if (!data.members || data.members.length === 0) {
         // No family members found — close modal and proceed without a checker
-        window.bootstrap.Modal.getOrCreateInstance(document.getElementById("checkinByModal")!).hide();
+        const el = document.getElementById("checkinByModal");
+        if (el) window.bootstrap.Modal.getOrCreateInstance(el).hide();
         const cb = pendingCheckinByCallback;
         pendingCheckinByCallback = null;
         if (cb) {
@@ -917,7 +919,8 @@ function showCheckinByModal(personId: number, action: "checkin" | "checkout", pe
     })
     .fail(() => {
       // On API failure close modal and proceed without a checker
-      window.bootstrap.Modal.getOrCreateInstance(document.getElementById("checkinByModal")!).hide();
+      const failEl = document.getElementById("checkinByModal");
+      if (failEl) window.bootstrap.Modal.getOrCreateInstance(failEl).hide();
       const cb = pendingCheckinByCallback;
       pendingCheckinByCallback = null;
       if (cb) {
@@ -952,7 +955,7 @@ function alertAll(): void {
   const membersToAlert: Array<{ personId: number; name: string }> = [];
   $("#checkedInList .kiosk-member").each(function () {
     const idAttr = $(this).attr("id");
-    const familyId = ($(this).data() as any)?.familyId;
+    const familyId = ($(this).data() as { familyId?: number })?.familyId;
     if (!idAttr || !familyId) {
       return;
     }
@@ -1083,7 +1086,7 @@ function setCheckedIn(personId: number): void {
   $personDiv.addClass("checked-in");
 
   // Get familyId from rendered data (stored in member row)
-  const familyId = ($personDiv.data() as any)?.familyId;
+  const familyId = ($personDiv.data() as { familyId?: number })?.familyId;
 
   // Manage alert button: add if conditions are met, remove if not
   const hasAlertBtn = $personDiv.find(".parentAlertButton").length > 0;
@@ -1119,7 +1122,7 @@ function triggerNotification(personId: number): void {
   const studentName = $personDiv.find(".kiosk-member-name").text().trim() || "Student";
 
   // GUARD: Verify person has a family before sending alert (should not be reachable if UI guard works)
-  const familyId = ($personDiv.data() as any)?.familyId;
+  const familyId = ($personDiv.data() as { familyId?: number })?.familyId;
   if (!familyId) {
     console.error(`Cannot send alert: ${studentName} has no family record (familyId=${familyId})`);
     showKioskNotification(`Error: ${studentName} has no family on record`, "error");
@@ -1138,8 +1141,9 @@ function triggerNotification(personId: number): void {
   })
     .done(() => {
       // Show success notification
-      if (typeof getCRM().notify === "function") {
-        getCRM().notify(`Parent alert sent for ${studentName}`, { type: "success", delay: 4000 });
+      const crm = getCRM();
+      if (crm.notify) {
+        crm.notify(`Parent alert sent for ${studentName}`, { type: "success", delay: 4000 });
       } else {
         // Fallback for kiosk view without full CRM.notify
         showKioskNotification(`Parent alert sent for ${studentName}`, "success");
@@ -1152,8 +1156,9 @@ function triggerNotification(personId: number): void {
     })
     .fail(() => {
       // Show error notification
-      if (typeof getCRM().notify === "function") {
-        getCRM().notify("Failed to send parent alert", { type: "error", delay: 4000 });
+      const crmFail = getCRM();
+      if (crmFail.notify) {
+        crmFail.notify("Failed to send parent alert", { type: "error", delay: 4000 });
       } else {
         showKioskNotification("Failed to send parent alert", "error");
       }
@@ -1296,7 +1301,5 @@ export const kiosk: KioskJSOM = {
 };
 
 // Attach to window.CRM.kiosk for global access (for external use)
-if (!(window as any).CRM) {
-  (window as any).CRM = {};
-}
-(window as any).CRM.kiosk = kiosk;
+window.CRM = window.CRM ?? {};
+window.CRM.kiosk = kiosk;
