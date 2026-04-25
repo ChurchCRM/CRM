@@ -315,7 +315,7 @@ function renderEditorFields(event, calendars, eventTypes, groups, allDay) {
         .replace("{{browser}}", browserTz);
       tzNoticeMarkup = `
     <div class="small mb-3 text-warning-emphasis">
-      <i class="ti ti-alert-triangle-filled me-1 text-warning"></i>${escapeHtml(hintText)}
+      <i class="ti ti-alert-triangle me-1 text-warning"></i>${escapeHtml(hintText)}
     </div>`;
     }
   }
