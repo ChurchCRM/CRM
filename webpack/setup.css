@@ -347,7 +347,7 @@ body {
   background: #fff5f5;
 }
 
-.integrity-details-row td {
+.check-details .integrity-details-row > td {
   padding: 16px 20px;
 }
 
@@ -671,7 +671,7 @@ body {
   background: rgba(var(--bs-danger-rgb), 0.05);
 }
 
-.integrity-details-row td {
+.check-details .integrity-details-row > td {
   padding: 1rem 1.25rem;
 }
 
