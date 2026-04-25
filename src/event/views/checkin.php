@@ -100,7 +100,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <span id="rosterGroupName" class="text-secondary"></span>
                 </h3>
                 <div class="d-flex align-items-center gap-2">
-                    <span class="badge bg-primary" id="rosterStats"></span>
+                    <span class="badge bg-primary-lt text-primary" id="rosterStats"></span>
                     <button type="button" class="btn btn-sm btn-success" id="checkinAllBtn">
                         <i class="ti ti-checks me-1"></i><?= gettext('Check In All') ?>
                     </button>
