@@ -307,9 +307,15 @@ function renderEditorFields(event, calendars, eventTypes, groups, allDay) {
       browserTz = "";
     }
     if (browserTz && browserTz !== churchTz) {
+      // Plain muted hint — Tabler's .alert chrome was rendering inline <strong>
+      // and <span> children with visible gaps/separators that read as columns.
+      // Single text node with parenthetical tz names keeps the line clean.
+      const hintText = t("Times use church time ({{church}}), not your browser ({{browser}}).")
+        .replace("{{church}}", churchTz)
+        .replace("{{browser}}", browserTz);
       tzNoticeMarkup = `
-    <div class="alert alert-info py-2 px-3 mb-3 small" role="status">
-      <i class="ti ti-clock-hour-4 me-2"></i>${t("Times use church timezone")} <strong>${escapeHtml(churchTz)}</strong>, ${t("not your browser's")} <span class="text-secondary">${escapeHtml(browserTz)}</span>.
+    <div class="text-secondary small mb-3">
+      <i class="ti ti-info-circle me-1"></i>${escapeHtml(hintText)}
     </div>`;
     }
   }
