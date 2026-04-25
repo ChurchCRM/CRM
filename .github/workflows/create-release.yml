@@ -9,11 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: 'Git tag to create, e.g. v8.0.0 or v8.0.0-rc1'
-        required: true
-        type: string
-      name:
-        description: 'Release title, e.g. ChurchCRM 8.0.0 or ChurchCRM 8.0.0 RC1'
+        description: 'Git tag and release title, e.g. 8.0.0 or 8.0.0-rc1'
         required: true
         type: string
       prerelease:
@@ -107,7 +103,6 @@ jobs:
         id: release
         env:
           TAG: ${{ inputs.tag }}
-          NAME: ${{ inputs.name }}
           TARGET_COMMIT: ${{ steps.run.outputs.commit }}
           ZIP_NAME: ${{ steps.artifact.outputs.zip_name }}
           IS_DRAFT: ${{ inputs.draft }}
@@ -115,31 +110,21 @@ jobs:
         run: |
           set -euo pipefail
 
-          flags=()
-          if [ "$IS_DRAFT" = "true" ]; then
-            flags+=(--draft=true)
-          else
-            flags+=(--draft=false)
-          fi
-          if [ "$IS_PRERELEASE" = "true" ]; then
-            flags+=(--prerelease=true)
-          else
-            flags+=(--prerelease=false)
-          fi
-
           if gh release view "$TAG" >/dev/null 2>&1; then
             echo "Release $TAG already exists — updating metadata and re-uploading asset."
             gh release edit "$TAG" \
-              --title "$NAME" \
-              "${flags[@]}"
+              --title "$TAG" \
+              --draft="$IS_DRAFT" \
+              --prerelease="$IS_PRERELEASE"
             gh release upload "$TAG" "$ZIP_NAME" --clobber
           else
             echo "Creating release $TAG targeting $TARGET_COMMIT."
             gh release create "$TAG" "$ZIP_NAME" \
-              --title "$NAME" \
+              --title "$TAG" \
               --target "$TARGET_COMMIT" \
               --generate-notes \
-              "${flags[@]}"
+              --draft="$IS_DRAFT" \
+              --prerelease="$IS_PRERELEASE"
           fi
 
           release_url=$(gh release view "$TAG" --json url --jq .url)
@@ -149,7 +134,6 @@ jobs:
         if: always()
         env:
           TAG: ${{ inputs.tag }}
-          NAME: ${{ inputs.name }}
           IS_DRAFT: ${{ inputs.draft }}
           IS_PRERELEASE: ${{ inputs.prerelease }}
           RUN_ID: ${{ steps.run.outputs.run_id }}
@@ -162,7 +146,6 @@ jobs:
             echo "## Release Summary"
             echo ""
             echo "- **Tag:** \`$TAG\`"
-            echo "- **Name:** $NAME"
             echo "- **Draft:** $IS_DRAFT"
             echo "- **Pre-release:** $IS_PRERELEASE"
             echo "- **Source build:** [run #$RUN_ID]($RUN_URL)"
