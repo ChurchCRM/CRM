@@ -1248,7 +1248,7 @@ function startEventLoop(): void {
   // Call heartbeat immediately — it will call updateActiveClassMembers() when
   // the event is active, avoiding a duplicate API call on page load.
   heartbeat();
-  // Then set up periodic heartbeat updates (1 minute)
+  // Then set up periodic heartbeat updates (15 seconds)
   kioskState.kioskEventLoop = setInterval(heartbeat, 15000);
 }
 
