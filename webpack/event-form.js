@@ -44,7 +44,12 @@ function escapeHtml(str) {
 //   - Send to API → string passes through JSON.stringify
 
 function getChurchTz() {
-  return window.CRM?.calendarJSArgs?.sTimeZone || "UTC";
+  // Two sources for sTimeZone in window.CRM:
+  //   - calendarJSArgs.sTimeZone (set only on /event/calendar — calendar.php)
+  //   - timeZone                 (set on every page via Include/Header.php)
+  // The full-page editor (/event/editor/:id) doesn't have calendarJSArgs, so
+  // without the global fallback the tz banner never showed there.
+  return window.CRM?.calendarJSArgs?.sTimeZone || window.CRM?.timeZone || "UTC";
 }
 
 // Format a JS Date as "YYYY-MM-DDTHH:mm:ss" wall-clock numbers in the given tz.
@@ -288,15 +293,13 @@ function renderEditorFields(event, calendars, eventTypes, groups, allDay) {
   // configured sTimeZone, so admins editing from a different region know that
   // the times they enter are interpreted as the church's wall-clock — not
   // their browser's local time.
-  // Show the banner whenever browser tz differs from sTimeZone — regardless of
-  // timed vs all-day. The user reported the banner missing because the previous
-  // gate `&& !allDay` hid it on month-view cell clicks (which open in all-day
-  // mode by default). Even for all-day events the date cell can be ambiguous
-  // if the user's tz differs from the church's, so the reminder is still
-  // useful: the date numbers they enter are the church's calendar date.
+  // Show a compact one-line tz reminder when browser tz differs from sTimeZone.
+  // The dates/times entered in this editor are stored as the church's
+  // wall-clock — independent of viewer tz. Banner only renders for cross-tz
+  // admins so single-tz setups stay clutter-free.
   let tzNoticeMarkup = "";
-  const churchTz = window.CRM?.calendarJSArgs?.sTimeZone;
-  if (churchTz) {
+  const churchTz = getChurchTz();
+  if (churchTz && churchTz !== "UTC") {
     let browserTz = "";
     try {
       browserTz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
@@ -305,11 +308,8 @@ function renderEditorFields(event, calendars, eventTypes, groups, allDay) {
     }
     if (browserTz && browserTz !== churchTz) {
       tzNoticeMarkup = `
-    <div class="alert alert-info py-2 mb-3" role="status">
-      <i class="ti ti-clock me-1"></i>
-      ${t("Times are interpreted as")} <strong>${escapeHtml(churchTz)}</strong>
-      (${t("the church's configured timezone")}).
-      ${t("Your browser is in")} <strong>${escapeHtml(browserTz)}</strong> — ${t("the times you enter here will be saved as the church's wall-clock time, not your local time.")}
+    <div class="alert alert-info py-2 px-3 mb-3 small" role="status">
+      <i class="ti ti-clock-hour-4 me-2"></i>${t("Times use church timezone")} <strong>${escapeHtml(churchTz)}</strong>, ${t("not your browser's")} <span class="text-secondary">${escapeHtml(browserTz)}</span>.
     </div>`;
     }
   }
