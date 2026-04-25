@@ -41,6 +41,7 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 |-------|------------|
 | [Table Action Menu](./table-action-menu.md) | **Required for every table with row-level actions** — dropdown pattern, overflow fix, cart buttons, checklist |
 | [Frontend Development](./frontend-development.md) | **Settings Panel (gold-standard pattern), UI changes, Bootstrap 5, i18n, notifications, confirmations, modals, asset management** |
+| [Timezone Handling](./timezone-handling.md) | **Required for any datetime-aware change** — wall-clock-in-sTimeZone storage, FullCalendar marker quirks, Propel space format Chrome misparse, kiosk timing, cross-tz banner. Read before touching event-form.js, event-calendars.js, calendar-event-editor.js, kiosk-jsom.ts, KioskDevice::heartbeat(), or events.php API |
 | [Responsive Design Guidelines](./responsive-design-guidelines.md) | **Canonical mobile / tablet / laptop form factors, breakpoints, grid patterns, touch targets — read before any page layout or responsive bug fix** |
 | [Tabler Components](./tabler-components.md) | Page layout, cards, tables, forms, nav, badges, modals, toasts, icons |
 | [Bootstrap 5 Migration](./bootstrap-5-migration.md) | Complete BS4→BS5 migration reference: data attributes, class renames, JS API, components |
