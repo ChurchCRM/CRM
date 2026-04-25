@@ -14,6 +14,8 @@ use ChurchCRM\model\ChurchCRM\EventCountsQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Map\ListOptionTableMap;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Plugin\Hook\HookManager;
+use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Service\EventService;
 use ChurchCRM\Slim\Middleware\EventsMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
@@ -426,6 +428,7 @@ function newEvent(Request $request, Response $response, array $args): Response
     }
     $event->setCalendars($calendars);
     $event->save();
+    HookManager::doAction(Hooks::EVENT_CREATED, $event);
 
     applyEventExtendedFields($event, $input);
 
@@ -823,6 +826,7 @@ function quickCreateEvent(Request $request, Response $response, array $args): Re
     $event->setEnd($end);
     $event->setInActive(0);
     $event->save();
+    HookManager::doAction(Hooks::EVENT_CREATED, $event);
 
     // Link to group via event_audience if groupId is set
     if ($groupId > 0) {

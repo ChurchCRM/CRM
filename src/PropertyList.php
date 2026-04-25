@@ -64,9 +64,15 @@ $canManage = AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled();
 $colCount = $canManage ? 4 : 3;
 
 $sPageSubtitle = gettext('Define custom properties that can be assigned to') . ' ' . strtolower(InputUtils::escapeHTML($sTypeName)) . ' ' . gettext('records');
-$aBreadcrumbs = PageHeader::breadcrumbs([
+$breadcrumbParent = match ($sType) {
+    'g' => [gettext('Groups'), '/groups/dashboard'],
+    'p', 'f' => [gettext('People'), '/people/dashboard'],
+    default => null,
+};
+$aBreadcrumbs = PageHeader::breadcrumbs(array_values(array_filter([
+    $breadcrumbParent,
     [$sTypeName . ' ' . gettext('Properties')],
-]);
+])));
 require_once __DIR__ . '/Include/Header.php';
 ?>
 

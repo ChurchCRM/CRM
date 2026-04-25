@@ -11,6 +11,7 @@ use ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest;
 use ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\Plugin\ApprovedPluginRegistry;
 use ChurchCRM\Service\NotificationService;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
 use ChurchCRM\Utils\LoggerUtils;
@@ -138,9 +139,10 @@ class AuthenticationManager
             unset($_SESSION['location']); // clear post-login redirect (one-time use)
             $redirectLocation ??= 'v2/dashboard';
             
-            // One-time login tasks: check for system updates and fetch remote notifications
+            // One-time login tasks: check for system updates, fetch remote notifications and plugin registry
             self::checkSystemUpdates();
             NotificationService::fetchRemoteNotifications();
+            ApprovedPluginRegistry::fetchRemoteRegistry();
 
             $logger->debug(
                 'Authentication Successful; redirecting to: ' . $redirectLocation

@@ -24,7 +24,7 @@
  * - photo-profile: 200px (profile pages)
  */
 
-import Avatar from "avatar-initials";
+import Avatar, { type AvatarOptions } from "avatar-initials";
 import { buildAPIUrl } from "./api-utils";
 
 interface AvatarInfo {
@@ -51,12 +51,12 @@ const avatarInfoCache = new Map<string, AvatarInfo>();
  */
 function isGravatarEnabled(): boolean {
   // First try the new plugin config structure
-  const plugins = (window as any).CRM?.plugins;
+  const plugins = window.CRM?.plugins;
   if (plugins?.gravatar?.enabled !== undefined) {
     return plugins.gravatar.enabled;
   }
   // Fall back to legacy config for backward compatibility
-  return (window as any).CRM?.bEnableGravatarPhotos ?? false;
+  return window.CRM?.bEnableGravatarPhotos ?? false;
 }
 
 /**
@@ -64,7 +64,7 @@ function isGravatarEnabled(): boolean {
  * Gravatar supports: mp, identicon, monsterid, wavatar, retro, robohash, blank
  */
 function getGravatarDefaultImage(): string {
-  const plugins = (window as any).CRM?.plugins;
+  const plugins = window.CRM?.plugins;
   return plugins?.gravatar?.defaultImage ?? "blank";
 }
 
@@ -181,7 +181,7 @@ class AvatarLoader {
 
     // Check cache first
     if (avatarInfoCache.has(cacheKey)) {
-      return avatarInfoCache.get(cacheKey)!;
+      return avatarInfoCache.get(cacheKey) as AvatarInfo;
     }
 
     const url = this.buildAvatarInfoUrl(config);
@@ -348,7 +348,7 @@ class AvatarLoader {
     const useGravatarFallback = defaultImage !== "blank";
 
     // Build settings object with all required fields
-    const settings: any = {
+    const settings: AvatarOptions = {
       useGravatar: true,
       useGravatarFallback: useGravatarFallback, // Use Gravatar's fallback (identicon, monsterid, etc.)
       size: size,
@@ -490,7 +490,7 @@ document.addEventListener("click", (e) => {
   e.preventDefault();
   e.stopPropagation();
 
-  const showLightbox = (window as any).CRM?.showPhotoLightbox;
+  const showLightbox = window.CRM?.showPhotoLightbox;
   if (!showLightbox) return;
 
   if (target.classList.contains("view-person-photo")) {
@@ -510,7 +510,7 @@ document.addEventListener("click", (e) => {
   e.preventDefault();
   e.stopPropagation();
 
-  const showLightbox = (window as any).CRM?.showPhotoLightbox;
+  const showLightbox = window.CRM?.showPhotoLightbox;
   if (!showLightbox) return;
 
   const type = btn.dataset.entityType;
@@ -531,7 +531,7 @@ if (document.readyState === "loading") {
 export default avatarLoader;
 
 // Also attach to window for legacy code
-(window as any).CRM = (window as any).CRM || {};
-(window as any).CRM.avatarLoader = avatarLoader;
+window.CRM = window.CRM || {};
+window.CRM.avatarLoader = avatarLoader;
 // Keep backward compatibility with old name
-(window as any).CRM.peopleImageLoader = avatarLoader;
+window.CRM.peopleImageLoader = avatarLoader;

@@ -18,6 +18,15 @@ ChurchCRM supports 45+ languages through gettext (PHP) and i18next (JavaScript).
 
 **Key Principle:** Every translatable term added = 45+ translations needed (one per language). Consolidate compound terms to reduce this burden.
 
+> **Scope note — this skill is for the CORE `messages` domain only.** Community
+> plugins do **not** go through POeditor and do **not** contribute strings to
+> `locale/messages.po` or `locale/i18n/*.json`. Plugin authors ship their
+> translations inside the plugin directory and ChurchCRM loads them via
+> `PluginLocalization`. See
+> [`plugin-development.md → Plugin Localization`](./plugin-development.md#plugin-localization-independent-of-poeditor)
+> for the plugin workflow. Anything below applies to the core `messages`
+> textdomain; do not copy these patterns into a plugin.
+
 ---
 
 ## Terminology & UI Conventions

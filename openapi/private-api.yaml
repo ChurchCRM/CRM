@@ -5331,6 +5331,33 @@ paths:
       security:
         -
           ApiKeyAuth: []
+    delete:
+      tags:
+        - Plugins
+      summary: 'Delete a community plugin from disk'
+      description: 'Disables the plugin, calls its uninstall() lifecycle hook, deletes the community directory, and clears every plugin.{id}.* config key. Refuses to touch core plugins.'
+      operationId: uninstallPlugin
+      parameters:
+        -
+          name: pluginId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Plugin removed'
+        '400':
+          description: 'Refused — core plugin or invalid id'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden — Admin role required'
+        '500':
+          description: 'Failed to uninstall'
+      security:
+        -
+          ApiKeyAuth: []
   '/plugins/api/plugins/{pluginId}/enable':
     post:
       tags:
@@ -5482,6 +5509,136 @@ paths:
           description: 'Forbidden — Admin role required'
         '404':
           description: 'Plugin not found'
+      security:
+        -
+          ApiKeyAuth: []
+  /plugins/api/approved:
+    get:
+      tags:
+        - Plugins
+      summary: 'List community plugins approved for URL install'
+      description: 'Returns the entries from src/plugins/approved-plugins.json. Only plugins in this list can be installed by URL.'
+      operationId: listApprovedPlugins
+      responses:
+        '200':
+          description: 'Approved plugin list'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden — Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /plugins/api/plugins/install:
+    post:
+      tags:
+        - Plugins
+      summary: 'Install a community plugin from an approved download URL'
+      description: 'Downloads the zip, verifies its SHA-256 against approved-plugins.json, validates the archive, and extracts it into src/plugins/community/{id}. The plugin is NOT enabled automatically — admins must review and click Enable.'
+      operationId: installPluginFromUrl
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                downloadUrl:
+                  description: 'HTTPS URL to the plugin zip. Must match an approved entry exactly.'
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'Plugin installed (not yet enabled)'
+        '400':
+          description: 'Validation failure (unknown URL, checksum mismatch, unsafe zip)'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden — Admin role required'
+        '409':
+          description: 'Plugin already installed'
+        '500':
+          description: 'Install failed'
+      security:
+        -
+          ApiKeyAuth: []
+  /plugins/api/plugins/install-url:
+    post:
+      tags:
+        - Plugins
+      summary: 'Install a community plugin from an arbitrary URL (unverified)'
+      description: 'Installs a plugin from a URL that is NOT on the approved list. The admin must supply the expected SHA-256 themselves. The plugin is flagged as unverified and the admin UI shows a warning banner before it can be enabled. Intended for plugin developers testing their own builds and for admins running experimental plugins.'
+      operationId: installPluginFromUnverifiedUrl
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                downloadUrl:
+                  description: 'HTTPS URL to the plugin zip'
+                  type: string
+                sha256:
+                  description: '64-hex SHA-256 of the zip bytes'
+                  type: string
+                pluginId:
+                  description: 'Expected plugin id (kebab-case, must match top-level directory)'
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'Plugin installed (unverified, not yet enabled)'
+        '400':
+          description: 'Validation failure'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden — Admin role required'
+        '409':
+          description: 'Plugin already installed'
+      security:
+        -
+          ApiKeyAuth: []
+  '/plugins/api/plugins/{pluginId}/quarantine':
+    delete:
+      tags:
+        - Plugins
+      summary: "Clear a plugin's quarantine flag"
+      description: 'Removes the quarantine flag from a plugin so it can be enabled again. Use after the underlying issue (crash, revoked registry entry, etc.) has been resolved.'
+      operationId: clearPluginQuarantine
+      parameters:
+        -
+          name: pluginId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Quarantine cleared'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden — Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /plugins/api/registry/refresh:
+    post:
+      tags:
+        - Plugins
+      summary: 'Re-fetch the remote approved-plugin registry'
+      description: 'Pulls the latest approved-plugins.json from the remote source and updates the session cache. Returns the merged list immediately so the UI can refresh without a page reload.'
+      operationId: refreshPluginRegistry
+      responses:
+        '200':
+          description: 'Registry refreshed — returns current approved list'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden — Admin role required'
+        '500':
+          description: 'Refresh failed'
       security:
         -
           ApiKeyAuth: []

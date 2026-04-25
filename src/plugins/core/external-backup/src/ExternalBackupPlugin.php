@@ -6,6 +6,8 @@ use ChurchCRM\Backup\BackupJob;
 use ChurchCRM\Backup\BackupType;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Plugin\AbstractPlugin;
+use ChurchCRM\Plugin\Hook\HookManager;
+use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Utils\LoggerUtils;
 
 /**
@@ -46,7 +48,16 @@ class ExternalBackupPlugin extends AbstractPlugin
 
     public function boot(): void
     {
-        // Plugin boots but doesn't register hooks - functionality called directly from SystemService
+        HookManager::addAction(Hooks::CRON_RUN, [$this, 'onCronRun']);
+    }
+
+    public function onCronRun(): void
+    {
+        try {
+            $this->executeAutomaticBackup();
+        } catch (\Exception $exc) {
+            LoggerUtils::getAppLogger()->warning('Failure executing backup job: ' . $exc->getMessage());
+        }
     }
 
     public function activate(): void

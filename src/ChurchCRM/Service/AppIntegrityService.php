@@ -479,6 +479,10 @@ class AppIntegrityService
             '/^vendor\/.*\/Tests\//',
             '/^vendor\/.*\/test\//',
             '/^vendor\/.*\/docs\//',
+            // Community plugins are third-party extensions installed at runtime.
+            // They are never part of the shipped signatures.json and must not
+            // be reported as orphans. See plugin-system.md / plugin-security-scan.md.
+            '/^plugins\/community\//',
         ];
 
         foreach ($excludePatterns as $pattern) {

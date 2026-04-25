@@ -243,7 +243,6 @@ class   SystemConfig
             'bEnabledFundraiser'                   => new ConfigItem('bEnabledFundraiser', 'boolean', '1', gettext('Enable Fundraiser menu.')),
             'bEnabledEmail'                        => new ConfigItem('bEnabledEmail', 'boolean', '1', gettext('Enable email sending from ChurchCRM. Required for password reset, notifications, and email links.')),
             'sEmailPreheader'                      => new ConfigItem('sEmailPreheader', 'text', '', gettext('Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback.')),
-            'sNotificationsURL'                    => new ConfigItem('sNotificationsURL', 'text', 'https://raw.githubusercontent.com/ChurchCRM/CRM/Notifications/notifications.json', gettext('ChurchCRM Central Notifications URL')),
             'sGreeterCustomMsg1'                   => new ConfigItem('sGreeterCustomMsg1', 'text', '', gettext('Custom message for church greeter email 1, max 255 characters')),
             'sGreeterCustomMsg2'                   => new ConfigItem('sGreeterCustomMsg2', 'text', '', gettext('Custom message for church greeter email 2, max 255 characters')),
             'IncludeDataInNewPersonNotifications'  => new ConfigItem('IncludeDataInNewPersonNotifications', 'boolean', '0', gettext('Include contact and demographic data in new member email notification body')),

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-24 16:37+0000\n"
+"POT-Creation-Date: 2026-04-25 03:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -245,6 +245,9 @@ msgid "A class is a Group with type \"Sunday School\". It holds the students and
 msgstr ""
 
 msgid "A comma-separated list of disallowed (too obvious) passwords."
+msgstr ""
+
+msgid "A downloadUrl is required to install a plugin."
 msgstr ""
 
 msgid "A family represents a household. It holds the shared address and home phone number for all family members living together."
@@ -760,6 +763,9 @@ msgstr ""
 msgid "All system settings and custom fields"
 msgstr ""
 
+msgid "All three fields are required."
+msgstr ""
+
 msgid "All timezones match"
 msgstr ""
 
@@ -949,6 +955,9 @@ msgid "Applying System Update..."
 msgstr ""
 
 msgid "Applying..."
+msgstr ""
+
+msgid "Approved Community Plugins"
 msgstr ""
 
 msgid "Apr"
@@ -1462,6 +1471,9 @@ msgstr ""
 msgid "British Virgin Islands"
 msgstr ""
 
+msgid "Browse Approved"
+msgstr ""
+
 msgid "Browse all available plugins"
 msgstr ""
 
@@ -1785,6 +1797,9 @@ msgstr ""
 msgid "Check Out All"
 msgstr ""
 
+msgid "Check for Updates"
+msgstr ""
+
 msgid "Check for updates and upgrade your ChurchCRM installation"
 msgstr ""
 
@@ -1849,6 +1864,9 @@ msgstr ""
 
 #, php-format
 msgid "Checked out from event: %s"
+msgstr ""
+
+msgid "Checking…"
 msgstr ""
 
 msgid "Checks"
@@ -1960,9 +1978,6 @@ msgstr ""
 msgid "Church name is required. Please fill in the Church Identity section above."
 msgstr ""
 
-msgid "ChurchCRM Central Notifications URL"
-msgstr ""
-
 msgid "ChurchCRM Test Email"
 msgstr ""
 
@@ -2032,6 +2047,9 @@ msgstr ""
 msgid "Clear Filters"
 msgstr ""
 
+msgid "Clear Quarantine"
+msgstr ""
+
 msgid "Clear all"
 msgstr ""
 
@@ -2045,6 +2063,12 @@ msgid "Clear all items from cart"
 msgstr ""
 
 msgid "Clear filter"
+msgstr ""
+
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr ""
+
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
 msgstr ""
 
 msgid "Click Save to apply."
@@ -4063,6 +4087,12 @@ msgstr ""
 msgid "Failed to cancel enrollment. Please try again."
 msgstr ""
 
+msgid "Failed to clear plugin quarantine"
+msgstr ""
+
+msgid "Failed to clear quarantine"
+msgstr ""
+
 msgid "Failed to connect to OpenLP server."
 msgstr ""
 
@@ -4153,7 +4183,19 @@ msgstr ""
 msgid "Failed to get plugin details"
 msgstr ""
 
+msgid "Failed to install plugin"
+msgstr ""
+
+msgid "Failed to install plugin from URL"
+msgstr ""
+
 msgid "Failed to list plugins"
+msgstr ""
+
+msgid "Failed to load approved plugin list"
+msgstr ""
+
+msgid "Failed to load approved plugin list."
 msgstr ""
 
 msgid "Failed to load calendar data. Please try again."
@@ -4178,6 +4220,12 @@ msgid "Failed to move donations."
 msgstr ""
 
 msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
+msgstr ""
+
+msgid "Failed to refresh plugin registry"
+msgstr ""
+
+msgid "Failed to refresh plugin registry. Check your internet connection."
 msgstr ""
 
 msgid "Failed to refresh upgrade information"
@@ -4223,6 +4271,9 @@ msgid "Failed to save the downloaded release file. Please check disk space and p
 msgstr ""
 
 msgid "Failed to set default role. Please try again."
+msgstr ""
+
+msgid "Failed to uninstall plugin"
 msgstr ""
 
 msgid "Failed to update group. Please try again."
@@ -4411,6 +4462,9 @@ msgstr ""
 
 #. Context: queryparameteroptions_qpo
 msgid "Female"
+msgstr ""
+
+msgid "Fetching latest registry…"
 msgstr ""
 
 #. Context: queryparameters_qrp
@@ -4906,6 +4960,9 @@ msgstr ""
 msgid "Get Your Data Into ChurchCRM"
 msgstr ""
 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr ""
+
 msgid "Get your API key from MailChimp: Account Settings > Extras > API Keys"
 msgstr ""
 
@@ -5248,6 +5305,9 @@ msgstr ""
 msgid "Home phone number"
 msgstr ""
 
+msgid "Homepage"
+msgstr ""
+
 #. Context: countries
 msgid "Honduras"
 msgstr ""
@@ -5540,10 +5600,22 @@ msgstr ""
 msgid "Initial zoom level when opening the map"
 msgstr ""
 
+msgid "Install"
+msgstr ""
+
+msgid "Install Plugin from URL (Unverified)"
+msgstr ""
+
+msgid "Install Unverified"
+msgstr ""
+
 msgid "Install a TLS/SSL certificate for secure connections"
 msgstr ""
 
-msgid "Install plugins by placing them in"
+msgid "Install failed"
+msgstr ""
+
+msgid "Install from URL"
 msgstr ""
 
 msgid "Installed"
@@ -5553,6 +5625,9 @@ msgid "Installed Software Version"
 msgstr ""
 
 msgid "Installed on Server"
+msgstr ""
+
+msgid "Installing…"
 msgstr ""
 
 msgid "Integrity"
@@ -5784,6 +5859,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Kazakhstan (Казахстан)"
+msgstr ""
+
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
 msgstr ""
 
 msgid "Keep one copy in a fire-proof safe on-site and another off-site."
@@ -6082,6 +6160,9 @@ msgstr ""
 msgid "Loading"
 msgstr ""
 
+msgid "Loading approved plugin list…"
+msgstr ""
+
 msgid "Loading event editor…"
 msgstr ""
 
@@ -6092,6 +6173,9 @@ msgid "Loading recovery codes"
 msgstr ""
 
 msgid "Loading..."
+msgstr ""
+
+msgid "Loading…"
 msgstr ""
 
 msgid "Local development:"
@@ -6386,6 +6470,9 @@ msgstr ""
 
 #. Context: queryparameters_qrp
 msgid "Match custom field to this value"
+msgstr ""
+
+msgid "Matches an entry on the approved plugin list"
 msgstr ""
 
 msgid "Material"
@@ -6752,6 +6839,9 @@ msgid "Must be a valid URL starting with http:// or https:// (e.g., http://local
 msgstr ""
 
 msgid "Must be a valid port number (e.g., 3306)"
+msgstr ""
+
+msgid "Must be an immutable release URL served over HTTPS."
 msgstr ""
 
 msgid "Must specify non-zero check number"
@@ -8200,10 +8290,37 @@ msgstr ""
 msgid "Plugin failed to load"
 msgstr ""
 
+msgid "Plugin id"
+msgstr ""
+
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr ""
+
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr ""
+
 msgid "Plugin not found"
 msgstr ""
 
 msgid "Plugin not found or not active"
+msgstr ""
+
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr ""
+
+msgid "Plugin quarantined"
+msgstr ""
+
+msgid "Plugin registry refreshed."
+msgstr ""
+
+msgid "Plugin uninstalled"
+msgstr ""
+
+msgid "Plugin uninstalled."
+msgstr ""
+
+msgid "Plugin zip URL (HTTPS only)"
 msgstr ""
 
 msgid "Plugins"
@@ -8356,6 +8473,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Qatar (‫قطر‬‎)"
+msgstr ""
+
+msgid "Quarantined"
 msgstr ""
 
 msgid "Quarterly"
@@ -8739,6 +8859,9 @@ msgstr ""
 msgid "Review the files below and delete them to improve security."
 msgstr ""
 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr ""
+
 msgid "Role"
 msgstr ""
 
@@ -8809,6 +8932,12 @@ msgid "S"
 msgstr ""
 
 msgid "SE"
+msgstr ""
+
+msgid "SHA-256 checksum"
+msgstr ""
+
+msgid "SHA-256 must be a 64-character hex string."
 msgstr ""
 
 msgid "SMS Integration"
@@ -9956,6 +10085,9 @@ msgstr ""
 msgid "That fund name already exists."
 msgstr ""
 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr ""
+
 #. plugin:custom-links:section:0:content
 msgid "The Custom Menu Links plugin allows administrators to add external links to the navigation menu. When enabled, a 'Links' menu appears in the sidebar containing all configured links."
 msgstr ""
@@ -9965,6 +10097,9 @@ msgstr ""
 
 #. plugin:external-backup:section:0:content
 msgid "The External Backup plugin allows you to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services. This includes popular services like Nextcloud, ownCloud, or any server supporting WebDAV protocol."
+msgstr ""
+
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
 msgstr ""
 
 #. Context: queryparameters_qrp
@@ -10012,6 +10147,9 @@ msgstr ""
 
 #, php-format
 msgid "The password for %s has been updated."
+msgstr ""
+
+msgid "The plugin was automatically disabled after a runtime failure."
 msgstr ""
 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -10112,6 +10250,9 @@ msgstr ""
 msgid "These people exist in ChurchCRM with email addresses but are not subscribed to this MailChimp audience. Consider inviting them to subscribe."
 msgstr ""
 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr ""
+
 msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
 msgstr ""
 
@@ -10180,8 +10321,14 @@ msgstr ""
 msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an alert can be sent to the OpenLP projector display to notify parents or volunteers."
 msgstr ""
 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr ""
+
 #. plugin:mailchimp:section:4:content
 msgid "This plugin transmits email addresses to MailChimp servers. Ensure you have appropriate consent from your members before syncing their information to third-party services like MailChimp."
+msgstr ""
+
+msgid "This plugin will be installed as UNVERIFIED."
 msgstr ""
 
 msgid "This property type is still being used by at least one property."
@@ -10556,6 +10703,9 @@ msgstr ""
 msgid "URL must start with http:// or https://"
 msgstr ""
 
+msgid "URL must use HTTPS."
+msgstr ""
+
 msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
 msgstr ""
 
@@ -10610,6 +10760,9 @@ msgstr ""
 msgid "Unfocus"
 msgstr ""
 
+msgid "Uninstall (delete from disk)"
+msgstr ""
+
 msgid "Unit used to measure distance, miles or km."
 msgstr ""
 
@@ -10659,6 +10812,9 @@ msgid "Unverified"
 msgstr ""
 
 msgid "Unverified Addresses"
+msgstr ""
+
+msgid "Unverified plugin"
 msgstr ""
 
 msgid "Up to Date"
@@ -10963,6 +11119,9 @@ msgid "Verification failed. Please try again."
 msgstr ""
 
 msgid "Verification recorded"
+msgstr ""
+
+msgid "Verified"
 msgstr ""
 
 msgid "Verified In Person"
@@ -11318,6 +11477,9 @@ msgid "What does this find?"
 msgstr ""
 
 msgid "What happens next?"
+msgstr ""
+
+msgid "What this plugin does:"
 msgstr ""
 
 msgid "What went wrong? What did you expect to happen?"
@@ -11723,6 +11885,9 @@ msgstr ""
 msgid "deposit(s) with no payments"
 msgstr ""
 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr ""
+
 msgid "e.g. Sunday Service"
 msgstr ""
 
@@ -11942,6 +12107,9 @@ msgid "record(s) successfully deleted from the selected Group."
 msgstr ""
 
 msgid "records"
+msgstr ""
+
+msgid "risk"
 msgstr ""
 
 msgid "s"

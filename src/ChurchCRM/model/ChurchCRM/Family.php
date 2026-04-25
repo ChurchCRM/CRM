@@ -10,6 +10,8 @@ use ChurchCRM\Emails\verify\FamilyVerificationEmail;
 use ChurchCRM\Emails\notifications\NewPersonOrFamilyEmail;
 use ChurchCRM\model\ChurchCRM\Base\Family as BaseFamily;
 use ChurchCRM\PhotoInterface;
+use ChurchCRM\Plugin\Hook\HookManager;
+use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -88,6 +90,8 @@ class Family extends BaseFamily implements PhotoInterface
     {
         $this->createTimeLineNote('create');
         NewPersonOrFamilyEmail::sendIfConfigured($this);
+
+        HookManager::doAction(Hooks::FAMILY_CREATED, $this);
     }
 
     public function postUpdate(ConnectionInterface $con = null): void
@@ -95,6 +99,8 @@ class Family extends BaseFamily implements PhotoInterface
         if (!empty($this->getDateLastEdited()) && !$this->skipPostUpdateNote) {
             $this->createTimeLineNote('edit');
         }
+
+        HookManager::doAction(Hooks::FAMILY_UPDATED, $this);
     }
 
     /**
