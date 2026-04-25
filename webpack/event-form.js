@@ -288,9 +288,15 @@ function renderEditorFields(event, calendars, eventTypes, groups, allDay) {
   // configured sTimeZone, so admins editing from a different region know that
   // the times they enter are interpreted as the church's wall-clock — not
   // their browser's local time.
+  // Show the banner whenever browser tz differs from sTimeZone — regardless of
+  // timed vs all-day. The user reported the banner missing because the previous
+  // gate `&& !allDay` hid it on month-view cell clicks (which open in all-day
+  // mode by default). Even for all-day events the date cell can be ambiguous
+  // if the user's tz differs from the church's, so the reminder is still
+  // useful: the date numbers they enter are the church's calendar date.
   let tzNoticeMarkup = "";
   const churchTz = window.CRM?.calendarJSArgs?.sTimeZone;
-  if (churchTz && !allDay) {
+  if (churchTz) {
     let browserTz = "";
     try {
       browserTz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
