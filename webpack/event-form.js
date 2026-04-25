@@ -293,14 +293,14 @@ function renderEditorFields(event, calendars, eventTypes, groups, allDay) {
   // configured sTimeZone, so admins editing from a different region know that
   // the times they enter are interpreted as the church's wall-clock — not
   // their browser's local time.
-  // Show a compact one-line tz reminder when browser tz differs from sTimeZone
-  // — only for TIMED events. All-day events have no time component, so the
-  // user's tz vs the church's tz is irrelevant; showing the warning would be
-  // confusing noise. Banner only renders for cross-tz admins on timed events
-  // so single-tz setups and date-only events stay clutter-free.
+  // Compact one-line tz reminder when browser tz differs from sTimeZone — only
+  // applies to TIMED events (all-day has no time component). Render the markup
+  // unconditionally with a stable id so the day-type toggle handler can show /
+  // hide it without re-rendering the whole form. Initial visibility honors the
+  // current allDay state.
   let tzNoticeMarkup = "";
   const churchTz = getChurchTz();
-  if (churchTz && churchTz !== "UTC" && !allDay) {
+  if (churchTz && churchTz !== "UTC") {
     let browserTz = "";
     try {
       browserTz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
@@ -315,7 +315,7 @@ function renderEditorFields(event, calendars, eventTypes, groups, allDay) {
         .replace("{{church}}", churchTz)
         .replace("{{browser}}", browserTz);
       tzNoticeMarkup = `
-    <div class="small mb-3 text-warning-emphasis">
+    <div id="eventTzNotice" class="small mb-3 text-warning-emphasis ${allDay ? "d-none" : ""}">
       <i class="ti ti-alert-triangle me-1 text-warning"></i>${escapeHtml(hintText)}
     </div>`;
     }
@@ -335,7 +335,6 @@ function renderEditorFields(event, calendars, eventTypes, groups, allDay) {
         </div>
       </div>
     </div>
-    ${tzNoticeMarkup}
     <div class="mb-2">
       <div class="form-selectgroup form-selectgroup-pills">
         <label class="form-selectgroup-item">
@@ -359,6 +358,7 @@ function renderEditorFields(event, calendars, eventTypes, groups, allDay) {
         <input type="${inputType}" id="eventEndDate" class="form-control" value="${endVal}" autocomplete="off" ${startVal ? `min="${startVal}"` : ""}>
       </div>
     </div>
+    ${tzNoticeMarkup}
 
     <div class="mb-3">
       <label class="form-label" for="quill-Desc">${t("Description")}</label>
@@ -635,6 +635,15 @@ export function renderEventEditor(container, event, calendars, eventTypes, optio
       startInput.value = formatDateForInput(event.Start, nowAllDay);
       endInput.value = formatDateForInput(event.End, nowAllDay);
       endInput.min = startInput.value || "";
+
+      // Show/hide the cross-tz reminder — only meaningful for timed events.
+      // Markup is rendered once with d-none toggled here so we don't have to
+      // re-render the whole form on every toggle.
+      const tzNotice = document.getElementById("eventTzNotice");
+      if (tzNotice) {
+        tzNotice.classList.toggle("d-none", nowAllDay);
+      }
+
       fireValidity();
     });
   }
