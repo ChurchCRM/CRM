@@ -56,17 +56,18 @@ window.moveEventModal = {
       window.moveEventModal.revertFunc();
     }
   },
-  // Format a JS Date for display in the church's configured timezone, NOT the
-  // viewer's browser tz. Date.toLocaleString() defaults to the browser locale
-  // and tz, so an "11 PM Detroit" event would display as "8 PM PDT" (or worse,
-  // "4 PM PDT" if the API source is parsed as UTC) on a PST admin's screen.
-  // Using Intl with `timeZone` keeps the displayed time consistent with what
-  // the calendar grid shows.
+  // Format a FullCalendar event Date for display in the church's wall-clock.
+  // FullCalendar uses "marker" Dates: a JS Date whose UTC components encode
+  // the wall-clock time in the calendar's configured timezone (so a 10 PM
+  // Detroit event has start.getUTCHours() === 22, regardless of browser tz).
+  // Read those UTC components verbatim with `timeZone: "UTC"` so the modal
+  // mirrors the time the calendar grid displays. Using `timeZone: sTimeZone`
+  // would re-apply the offset and shift the display by the church's UTC
+  // offset (e.g. 10 PM → 6 PM on EDT calendars).
   formatChurchDate: (date) => {
     if (!(date instanceof Date)) return "";
-    const tz = window.CRM?.calendarJSArgs?.sTimeZone || undefined;
     return new Intl.DateTimeFormat(undefined, {
-      timeZone: tz,
+      timeZone: "UTC",
       year: "numeric",
       month: "numeric",
       day: "numeric",
