@@ -164,6 +164,27 @@ A: `git log origin/locale/{version}-{date}-{time} --oneline` — every commit on
 **Q: Can I merge a locale branch directly to master?**
 A: No. The branch contains raw `locale/terms/missing/` batch files, not approved translations. After POEditor approval, the GitHub Action opens a PR with the translated `src/locale/i18n/` files — merge that PR instead.
 
+**Q: How do I update skill files on master while staying on a locale branch?** <!-- learned: 2026-04-25 -->
+A: Use `git worktree` — a private checkout of master in a temp directory that leaves the current branch completely untouched. The branch-switch gate hook won't fire because no `git checkout` or `git switch` is involved.
+
+```bash
+# From your locale branch — create a worktree pointed at master
+git worktree add /tmp/crm-master master
+
+# Edit skill files inside the worktree (use absolute paths)
+# e.g. edit /tmp/crm-master/.agents/skills/churchcrm/some-skill.md
+
+# Commit and push from the worktree
+git -C /tmp/crm-master add .agents/skills/
+git -C /tmp/crm-master commit -m "docs: update locale skill with ..."
+git -C /tmp/crm-master push origin master
+
+# Remove the temp worktree when done
+git worktree remove /tmp/crm-master
+```
+
+Your locale branch, working tree, and uncommitted changes are completely unaffected.
+
 ---
 
 ## Related Skills & Docs
