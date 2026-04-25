@@ -112,13 +112,13 @@ function renderClassMember(classMember: ClassMember): void {
       );
     } else {
       // Gender icon - 1 = Male, 2 = Female
-      let iconClass = "fas fa-user";
+      let iconClass = "fa-solid fa-user";
       let iconColor = "#6c757d";
       if (classMember.gender === 1) {
-        iconClass = "fas fa-male";
+        iconClass = "fa-solid fa-person";
         iconColor = "#007bff";
       } else if (classMember.gender === 2) {
-        iconClass = "fas fa-female";
+        iconClass = "fa-solid fa-person-dress";
         iconColor = "#e83e8c";
       }
       avatarDiv.append(
@@ -138,7 +138,7 @@ function renderClassMember(classMember: ClassMember): void {
     if (classMember.birthdayUpcoming || classMember.birthdayRecent) {
       nameDiv.append(
         $("<i>", {
-          class: "fas fa-birthday-cake ml-2",
+          class: "fa-solid fa-cake-candles ms-2",
           style: "color: #e83e8c;",
           title: classMember.birthdayUpcoming ? "Birthday coming up!" : "Recent birthday!",
         }),
@@ -163,7 +163,7 @@ function renderClassMember(classMember: ClassMember): void {
       class: "kiosk-btn kiosk-btn-checkin checkinButton",
       "data-personid": classMember.personId,
       title: "Check In",
-    }).append($("<i>", { class: "fas fa-sign-in-alt" }));
+    }).append($("<i>", { class: "fa-solid fa-right-to-bracket" }));
 
     actionsDiv.append(checkinBtn);
 
@@ -173,7 +173,7 @@ function renderClassMember(classMember: ClassMember): void {
         class: "kiosk-btn kiosk-btn-alert parentAlertButton",
         "data-personid": classMember.personId,
         title: "Parent Alert",
-      }).append($("<i>", { class: "fas fa-bell" }));
+      }).append($("<i>", { class: "fa-solid fa-bell" }));
       actionsDiv.append(alertBtn);
     }
 
@@ -233,7 +233,10 @@ function updateMemberCounts(): void {
   if (checkedIn === 0) {
     if ($("#checkedInList .kiosk-empty").length === 0) {
       $("#checkedInList").html(
-        '<div class="kiosk-empty">' + '<i class="fas fa-user-clock"></i>' + "<p>No one checked in yet</p>" + "</div>",
+        '<div class="kiosk-empty">' +
+          '<i class="fa-solid fa-user-clock"></i>' +
+          "<p>No one checked in yet</p>" +
+          "</div>",
       );
     }
   } else {
@@ -244,7 +247,7 @@ function updateMemberCounts(): void {
     if ($("#notCheckedInList .kiosk-empty").length === 0) {
       $("#notCheckedInList").html(
         '<div class="kiosk-empty">' +
-          '<i class="fas fa-check-double text-success"></i>' +
+          '<i class="fa-solid fa-check-double text-success"></i>' +
           "<p>Everyone is here!</p>" +
           "</div>",
       );
@@ -320,7 +323,7 @@ function renderBirthdayCard(person: ClassMember, monthNames: string[], cardType:
       }),
     );
   } else {
-    avatarDiv.append($("<i>", { class: "fas fa-birthday-cake" }));
+    avatarDiv.append($("<i>", { class: "fa-solid fa-cake-candles" }));
   }
   card.append(avatarDiv);
 
@@ -432,15 +435,15 @@ function renderNoMembersMessage(): string {
     '<div class="kiosk-status-container">' +
     '<div class="card kiosk-status-card card-warning">' +
     '<div class="card-header">' +
-    '<h3 class="card-title"><i class="fas fa-users-slash mr-2"></i>No Class Members Found</h3>' +
+    '<h3 class="card-title"><i class="fa-solid fa-users-slash me-2"></i>No Class Members Found</h3>' +
     "</div>" +
     '<div class="card-body">' +
     '<div class="kiosk-status-icon text-warning">' +
-    '<i class="fas fa-users-slash"></i>' +
+    '<i class="fa-solid fa-users-slash"></i>' +
     "</div>" +
     '<p class="text-muted">This kiosk is assigned to an event, but no members are available for check-in.</p>' +
     '<div class="kiosk-instructions">' +
-    '<h5><i class="fas fa-info-circle mr-2"></i>Possible Causes</h5>' +
+    '<h5><i class="fa-solid fa-circle-info me-2"></i>Possible Causes</h5>' +
     "<ol>" +
     "<li><strong>Event not linked to a Group:</strong> Edit the event and associate it with a Sunday School or other group</li>" +
     "<li><strong>Group has no members:</strong> Add people to the group that is linked to this event</li>" +
@@ -448,7 +451,7 @@ function renderNoMembersMessage(): string {
     "</ol>" +
     "</div>" +
     '<div class="kiosk-instructions mt-3">' +
-    '<h5><i class="fas fa-wrench mr-2"></i>How to Fix</h5>' +
+    '<h5><i class="fa-solid fa-wrench me-2"></i>How to Fix</h5>' +
     '<ol class="small">' +
     "<li>Go to <strong>Events</strong> in ChurchCRM</li>" +
     "<li>Edit this event and set the <strong>Group</strong> field</li>" +
@@ -470,18 +473,18 @@ function renderErrorMessage(message: string, statusCode?: number): string {
     '<div class="kiosk-status-container">' +
     '<div class="card kiosk-status-card card-danger">' +
     '<div class="card-header">' +
-    '<h3 class="card-title"><i class="fas fa-exclamation-triangle mr-2"></i>Error Loading Members</h3>' +
+    '<h3 class="card-title"><i class="fa-solid fa-triangle-exclamation me-2"></i>Error Loading Members</h3>' +
     "</div>" +
     '<div class="card-body">' +
     '<div class="kiosk-status-icon text-danger">' +
-    '<i class="fas fa-exclamation-triangle"></i>' +
+    '<i class="fa-solid fa-triangle-exclamation"></i>' +
     "</div>" +
     '<p class="text-muted">' +
     escapeHtml(message) +
     "</p>" +
     (statusCode ? `<p class="small text-muted">HTTP Status: ${escapeHtml(String(statusCode))}</p>` : "") +
     '<div class="kiosk-instructions">' +
-    '<h5><i class="fas fa-lightbulb mr-2"></i>Troubleshooting</h5>' +
+    '<h5><i class="fa-solid fa-lightbulb me-2"></i>Troubleshooting</h5>' +
     "<ul>" +
     "<li>Verify the event is linked to a <strong>Group</strong></li>" +
     "<li>Check that the event start/end times are correct</li>" +
@@ -559,27 +562,49 @@ function heartbeat(): void {
         const eventStart = moment(Assignment.Event.Start);
         const eventEnd = moment(Assignment.Event.End);
         const now = moment();
+        // Open the kiosk for check-in 1 hour before the scheduled event
+        // start so volunteers can use it during pre-event setup. Below this
+        // threshold the kiosk shows the countdown; above it (and before the
+        // event end) it goes into active check-in mode.
+        const checkinOpenAt = eventStart.clone().subtract(1, "hour");
 
         $("#eventTitle").text(Assignment.Event.Title);
+        $("#kioskName").text(data.Name);
         $("#startTime").text(eventStart.format("MMMM Do YYYY, h:mm:ss a"));
         $("#endTime").text(eventEnd.format("MMMM Do YYYY, h:mm:ss a"));
 
-        if (now.isBefore(eventStart)) {
-          // Event hasn't started yet - show countdown
+        if (now.isBefore(checkinOpenAt)) {
+          // More than 1 hour before event start - show countdown
           $("#noEvent").hide();
           $("#event").show();
-          $("#classMemberContainer").html(renderCountdown(eventStart, Assignment.Event.Title));
+          $("#timeRemaining").addClass("d-none");
+          $("#classMemberContainer").html(renderCountdown(eventStart, Assignment.Event.Title, data.Name));
           startCountdown(eventStart);
         } else if (now.isAfter(eventEnd)) {
           // Event has ended
           $("#noEvent").hide();
           $("#event").show();
+          $("#timeRemaining").addClass("d-none");
           $("#classMemberContainer").html(renderEventEnded(Assignment.Event.Title));
         } else {
-          // Event is active - show class members
+          // Event is active - show class members + time-remaining badge so
+          // volunteers know when the kiosk will close. Heartbeat runs every
+          // 15s, so minute-level granularity is plenty here.
           updateActiveClassMembers();
           $("#noEvent").hide();
           $("#event").show();
+          const minutesLeft = Math.max(0, Math.ceil((eventEnd.unix() - now.unix()) / 60));
+          let label: string;
+          if (minutesLeft < 1) {
+            label = i18next.t("Closing");
+          } else if (minutesLeft < 60) {
+            label = i18next.t("{{count}} min left", { count: minutesLeft });
+          } else {
+            const hours = Math.floor(minutesLeft / 60);
+            const mins = minutesLeft % 60;
+            label = i18next.t("{{hours}}h {{mins}}m left", { hours: hours, mins: mins });
+          }
+          $("#timeRemaining").removeClass("d-none").text(label);
         }
       } else {
         $("#noEvent").css("display", "flex");
@@ -633,16 +658,19 @@ function heartbeat(): void {
 /**
  * Render countdown timer before event starts
  */
-function renderCountdown(eventStart: moment.Moment, eventTitle: string): string {
+function renderCountdown(eventStart: moment.Moment, eventTitle: string, kioskName: string): string {
   return (
     '<div class="kiosk-status-container">' +
     '<div class="card kiosk-status-card card-primary">' +
     '<div class="card-header">' +
-    '<h3 class="card-title"><i class="fas fa-clock mr-2"></i>Check-in Opens Soon</h3>' +
+    '<h3 class="card-title"><i class="fa-solid fa-clock me-2"></i>Check-in Opens Soon</h3>' +
     "</div>" +
     '<div class="card-body text-center">' +
     '<div class="kiosk-status-icon text-primary">' +
-    '<i class="fas fa-clock"></i>' +
+    '<i class="fa-solid fa-clock"></i>' +
+    "</div>" +
+    '<div class="kiosk-name mb-2"><i class="fa-solid fa-tablet-screen-button me-2"></i>' +
+    escapeHtml(kioskName) +
     "</div>" +
     '<p class="text-muted mb-3">Check-in for <strong>' +
     escapeHtml(eventTitle) +
@@ -683,11 +711,11 @@ function renderEventEnded(eventTitle: string): string {
     '<div class="kiosk-status-container">' +
     '<div class="card kiosk-status-card card-success">' +
     '<div class="card-header">' +
-    '<h3 class="card-title"><i class="fas fa-calendar-check mr-2"></i>Event Has Ended</h3>' +
+    '<h3 class="card-title"><i class="fa-solid fa-calendar-check me-2"></i>Event Has Ended</h3>' +
     "</div>" +
     '<div class="card-body text-center">' +
     '<div class="kiosk-status-icon text-success">' +
-    '<i class="fas fa-calendar-check"></i>' +
+    '<i class="fa-solid fa-calendar-check"></i>' +
     "</div>" +
     '<p class="text-muted mb-0">Check-in for <strong>' +
     escapeHtml(eventTitle) +
@@ -778,7 +806,7 @@ function renderStatusCard(
     safeIconClass +
     '"></i>' +
     "</div>" +
-    '<div class="kiosk-name"><i class="fa-solid fa-tablet me-2"></i>' +
+    '<div class="kiosk-name"><i class="fa-solid fa-tablet-screen-button me-2"></i>' +
     escapeHtml(kioskName) +
     "</div>" +
     (bodyContent ? bodyContent : "") +
@@ -984,7 +1012,7 @@ function alertAll(): void {
   // Disable button and show sending state
   const $btn = $("#alertAllBtn");
   const originalHtml = $btn.html();
-  $btn.prop("disabled", true).html('<i class="fas fa-spinner fa-spin"></i>');
+  $btn.prop("disabled", true).html('<i class="fa-solid fa-spinner fa-spin"></i>');
 
   // Track success/failure per alert
   let completed = 0;
@@ -1025,7 +1053,7 @@ function checkOutAll(): void {
   // Disable button during processing
   const $btn = $("#checkoutAllBtn");
   const originalHtml = $btn.html();
-  $btn.prop("disabled", true).html('<i class="fas fa-spinner fa-spin mr-1"></i>Processing...');
+  $btn.prop("disabled", true).html('<i class="fa-solid fa-spinner fa-spin me-1"></i>Processing...');
 
   APIRequest({
     path: "checkoutAll",
@@ -1061,7 +1089,7 @@ function setCheckedOut(personId: number): void {
   // Update button - icon only
   $personDivButton.removeClass("checkoutButton kiosk-btn-checkout");
   $personDivButton.addClass("checkinButton kiosk-btn-checkin");
-  $personDivButton.html('<i class="fas fa-sign-in-alt"></i>');
+  $personDivButton.html('<i class="fa-solid fa-right-to-bracket"></i>');
   $personDivButton.attr("title", "Check In");
 
   // Remove checked-in styling
@@ -1087,7 +1115,7 @@ function setCheckedIn(personId: number): void {
   // Update button - icon only
   $personDivButton.removeClass("checkinButton kiosk-btn-checkin");
   $personDivButton.addClass("checkoutButton kiosk-btn-checkout");
-  $personDivButton.html('<i class="fas fa-sign-out-alt"></i>');
+  $personDivButton.html('<i class="fa-solid fa-right-from-bracket"></i>');
   $personDivButton.attr("title", "Check Out");
 
   // Add checked-in styling
@@ -1107,7 +1135,7 @@ function setCheckedIn(personId: number): void {
       class: "kiosk-btn kiosk-btn-alert parentAlertButton",
       "data-personid": personId,
       title: "Parent Alert",
-    }).append($("<i>", { class: "fas fa-bell" }));
+    }).append($("<i>", { class: "fa-solid fa-bell" }));
     $actionsDiv.append(alertBtn);
   } else if (!shouldHaveAlertBtn && hasAlertBtn) {
     // Remove alert button if conditions no longer met

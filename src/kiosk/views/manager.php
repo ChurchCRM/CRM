@@ -240,12 +240,21 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         clearInterval(window.CRM.discoverInterval);
       }
       window.CRM.kioskAPI.enableRegistration().then(function(data) {
-        window.CRM.secondsLeft = moment(data.visibleUntil).unix() - moment().unix();
+        // The API returns visibleUntil as an ISO 8601 string (DateTime::ATOM),
+        // not the legacy {date, timezone_type, timezone} object — reading
+        // .date silently produced undefined → moment(undefined) → NaN
+        // secondsLeft → toggle flipped back to Inactive on first tick.
+        // Also fall back to the known 120s window length if the diff is
+        // missing/out-of-range (defensive against client/server clock skew).
+        var REGISTRATION_WINDOW_SECONDS = 120;
+        var diff = moment(data.visibleUntil).unix() - moment().unix();
+        window.CRM.secondsLeft = (diff > 0 && diff <= REGISTRATION_WINDOW_SECONDS * 2)
+          ? diff
+          : REGISTRATION_WINDOW_SECONDS;
         window.CRM.discoverInterval = setInterval(function() {
           window.CRM.secondsLeft -= 1;
           if (window.CRM.secondsLeft > 0) {
-            var minsLeft = Math.max(1, Math.round(window.CRM.secondsLeft / 60));
-            $("#kioskRegistrationStatus").text(i18next.t('Active for {{count}} min', { count: minsLeft })).removeClass('bg-secondary-lt text-secondary').addClass('bg-success-lt text-success');
+            $("#kioskRegistrationStatus").text(i18next.t('Active for {{count}} seconds', { count: window.CRM.secondsLeft })).removeClass('bg-secondary-lt text-secondary').addClass('bg-success-lt text-success');
           } else {
             clearInterval(window.CRM.discoverInterval);
             $('#isNewKioskRegistrationActive').prop('checked', false);
