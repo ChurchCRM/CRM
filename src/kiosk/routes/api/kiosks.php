@@ -256,6 +256,11 @@ $app->group('/api', function (RouteCollectorProxy $group): void {
         if ($name === '') {
             return SlimUtils::renderErrorJSON($response, gettext('Name cannot be empty'), [], 400);
         }
+
+        $maxNameLength = 50;
+        if (mb_strlen($name) > $maxNameLength) {
+            return SlimUtils::renderErrorJSON($response, sprintf(gettext('Name cannot be longer than %d characters'), $maxNameLength), [], 400);
+        }
         $kioskDevice = $request->getAttribute('kioskDevice');
         $kioskDevice->setName($name);
         $kioskDevice->save();
