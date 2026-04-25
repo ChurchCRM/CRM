@@ -2384,14 +2384,6 @@ msgstr "数字太大。必须是介于-2147483648和2147483647"
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "货币量过于庞大。最大999999999.99美元"
 
-#: 
-msgid "Error making API Call to"
-msgstr "API调用出现错误"
-
-#: 
-msgid "Error text"
-msgstr "文本错误"
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -4665,11 +4657,6 @@ msgstr "俄语"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "萨米语（北部）（瑞典）"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "阿尔巴尼亚语"
 
@@ -4952,10 +4939,6 @@ msgstr "系统用户登录重置"
 #: 
 msgid "Notification for"
 msgstr "通知"
-
-#: 
-msgid "ERROR"
-msgstr "错误"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -5671,10 +5654,6 @@ msgid "LastName FirstName"
 msgstr "姓氏 名字"
 
 #: 
-msgid "Holidays"
-msgstr "假日"
-
-#: 
 msgid "Person Name"
 msgstr "人名"
 
@@ -5855,10 +5834,6 @@ msgid "Portuguese - Portugal"
 msgstr "葡萄牙语-葡萄牙"
 
 #: 
-msgid "Holiday"
-msgstr "假期"
-
-#: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "指定要在身份验证器应用程序中显示的应用程序名称"
 
@@ -6003,10 +5978,6 @@ msgstr "文本"
 #: 
 msgid "Event Description"
 msgstr "活动说明"
-
-#: 
-msgid "Help translate this project"
-msgstr "帮助翻译这个项目"
 
 #. Context: locales
 #: 
@@ -8442,10 +8413,6 @@ msgstr "提交核实"
 #: 
 msgid "Thank You!"
 msgstr "谢谢！"
-
-#: 
-msgid "Translation incomplete"
-msgstr "翻译不完整"
 
 #: 
 msgid "Visit Our Website"
@@ -15504,10 +15471,6 @@ msgstr "错误日志"
 #: 
 msgid "Error Reporting"
 msgstr "错误报告"
-
-#: 
-msgid "Error:"
-msgstr "错误："
 
 #: 
 msgid "Fix Settings"

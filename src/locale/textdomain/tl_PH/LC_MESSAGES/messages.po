@@ -2293,14 +2293,6 @@ msgstr "Ang numero ay masyadong malaki. Dapat nasa pagitan ng -2147483648 at 214
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Ang halaga ng pera ay masyadong malaki. Pinakamataas ay $999999999.99"
 
-#: 
-msgid "Error making API Call to"
-msgstr "Error sa paggawa ng API Call sa"
-
-#: 
-msgid "Error text"
-msgstr "Teksto ng Error"
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -4553,11 +4545,6 @@ msgstr "Ruso"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "Sami (Hilaga) (Sweden)"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "Albanyano"
 
@@ -4835,10 +4822,6 @@ msgstr "login ng user ng sistema ay na-reset"
 #: 
 msgid "Notification for"
 msgstr "Abiso para sa"
-
-#: 
-msgid "ERROR"
-msgstr "ERROR"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -5546,10 +5529,6 @@ msgid "LastName FirstName"
 msgstr "Apelyido Pangalan"
 
 #: 
-msgid "Holidays"
-msgstr "Mga Pista Opisyal"
-
-#: 
 msgid "Person Name"
 msgstr "Pangalan ng Tao"
 
@@ -5731,10 +5710,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portuges - Portugal"
 
 #: 
-msgid "Holiday"
-msgstr "Pista Opisyal"
-
-#: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Tukuyin ang pangalan ng aplikasyon na ipapakita sa authenticator app"
 
@@ -5878,10 +5853,6 @@ msgstr "Teksto"
 #: 
 msgid "Event Description"
 msgstr "Paglalarawan ng Kaganapan"
-
-#: 
-msgid "Help translate this project"
-msgstr "Tumulong sa pagsasalin ng proyektong ito"
 
 #. Context: locales
 #: 
@@ -8319,10 +8290,6 @@ msgstr "Isumite ang Verification"
 #: 
 msgid "Thank You!"
 msgstr "Salamat!"
-
-#: 
-msgid "Translation incomplete"
-msgstr "Hindi kumpleto ang pagsasalin"
 
 #: 
 msgid "Visit Our Website"
@@ -15388,10 +15355,6 @@ msgstr "Error Log"
 #: 
 msgid "Error Reporting"
 msgstr "Error Reporting"
-
-#: 
-msgid "Error:"
-msgstr "Error:"
 
 #: 
 msgid "Fix Settings"

@@ -2314,14 +2314,6 @@ msgstr "Nambari ni kubwa mno. Lazima iwe kati ya -2147483648 na 2147483647"
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Pesa ni kubwa mno. Kiwango cha juu ni $999999999.99"
 
-#: 
-msgid "Error making API Call to"
-msgstr "Hitilafu katika kufanya Simu ya API kwa"
-
-#: 
-msgid "Error text"
-msgstr "Maandishi ya hitilafu"
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -4580,11 +4572,6 @@ msgstr "Kirusi"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "Kisami (Kaskazini) (Uswidi)"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "Kialbeni"
 
@@ -4867,10 +4854,6 @@ msgstr "kuweka upya mfumo wa kuingia kwa mtumiaji"
 #: 
 msgid "Notification for"
 msgstr "Taarifa kwa"
-
-#: 
-msgid "ERROR"
-msgstr "HITILAFU"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -5583,10 +5566,6 @@ msgid "LastName FirstName"
 msgstr "Jina la mwisho Jina la kwanza"
 
 #: 
-msgid "Holidays"
-msgstr "Likizo"
-
-#: 
 msgid "Person Name"
 msgstr "Jina la Mtu"
 
@@ -5768,10 +5747,6 @@ msgid "Portuguese - Portugal"
 msgstr "Kireno - Ureno"
 
 #: 
-msgid "Holiday"
-msgstr "Sikukuu"
-
-#: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Bainisha jina la programu litakaloonyeshwa katika programu ya uthibitishaji"
 
@@ -5915,10 +5890,6 @@ msgstr "Maandishi"
 #: 
 msgid "Event Description"
 msgstr "Maelezo ya Tukio"
-
-#: 
-msgid "Help translate this project"
-msgstr "Saidia kutafsiri mradi huu"
 
 #. Context: locales
 #: 
@@ -8356,10 +8327,6 @@ msgstr "Tuma Uhakiki"
 #: 
 msgid "Thank You!"
 msgstr "Asante!"
-
-#: 
-msgid "Translation incomplete"
-msgstr "Tafsiri haijakamilika"
 
 #: 
 msgid "Visit Our Website"
@@ -15425,10 +15392,6 @@ msgstr "Kumbukumbu ya Makosa"
 #: 
 msgid "Error Reporting"
 msgstr "Ripoti ya Makosa"
-
-#: 
-msgid "Error:"
-msgstr "Hitilafu:"
 
 #: 
 msgid "Fix Settings"

@@ -2374,14 +2374,6 @@ msgstr "Száma túl nagy. Között kell lennie -2147483648 és 2147483647"
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Pénz összeg túl nagy. Maximum $ 999999999,99"
 
-#: 
-msgid "Error making API Call to"
-msgstr "Hiba az API hívás során a következőhöz:"
-
-#: 
-msgid "Error text"
-msgstr "Hiba szövege"
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -4651,11 +4643,6 @@ msgstr "Orosz"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "Számi (északi) (Svédország)"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "Albán"
 
@@ -4933,10 +4920,6 @@ msgstr "rendszerfelhasználó bejelentkezése visszaállítva"
 #: 
 msgid "Notification for"
 msgstr "Értesítés:"
-
-#: 
-msgid "ERROR"
-msgstr "HIBA"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -5644,10 +5627,6 @@ msgid "LastName FirstName"
 msgstr "Vezetéknév Keresztnév"
 
 #: 
-msgid "Holidays"
-msgstr "Ünnepek"
-
-#: 
 msgid "Person Name"
 msgstr "Személy neve"
 
@@ -5829,10 +5808,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugál - Portugália"
 
 #: 
-msgid "Holiday"
-msgstr "Ünnep"
-
-#: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Adja meg az alkalmazásnév meg kell jeleníteni a hitelesítő alkalmazásban"
 
@@ -5976,10 +5951,6 @@ msgstr "Szöveg"
 #: 
 msgid "Event Description"
 msgstr "Esemény leírása"
-
-#: 
-msgid "Help translate this project"
-msgstr "Segítsen lefordítani ezt a projektet"
 
 #. Context: locales
 #: 
@@ -8417,10 +8388,6 @@ msgstr "Ellenőrzés beküldése"
 #: 
 msgid "Thank You!"
 msgstr "Köszönjük!"
-
-#: 
-msgid "Translation incomplete"
-msgstr "Fordítás hiányos"
 
 #: 
 msgid "Visit Our Website"
@@ -15486,10 +15453,6 @@ msgstr "Hibanapló"
 #: 
 msgid "Error Reporting"
 msgstr "Hibajelentés"
-
-#: 
-msgid "Error:"
-msgstr "Hiba:"
 
 #: 
 msgid "Fix Settings"

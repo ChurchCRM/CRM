@@ -2328,14 +2328,6 @@ msgstr "Số lượng quá lớn. Phải nằm trong khoảng từ -2147483648 
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Số tiền quá lớn. Tối đa là $ 999999999,99"
 
-#: 
-msgid "Error making API Call to"
-msgstr "Lỗi khi thực hiện lệnh gọi API tới"
-
-#: 
-msgid "Error text"
-msgstr "Văn bản lỗi"
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -4596,11 +4588,6 @@ msgstr "tiếng Nga"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "Sami (Miền Bắc) (Thụy Điển)"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "Người Albanian"
 
@@ -4883,10 +4870,6 @@ msgstr "hệ thống thành viên khôi phục đăng nhập"
 #: 
 msgid "Notification for"
 msgstr "Thông báo cho"
-
-#: 
-msgid "ERROR"
-msgstr "XUẤT HIỆN LỖI"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -5599,10 +5582,6 @@ msgid "LastName FirstName"
 msgstr "Họ và tên"
 
 #: 
-msgid "Holidays"
-msgstr "Ngày lễ"
-
-#: 
 msgid "Person Name"
 msgstr "Tên người"
 
@@ -5776,10 +5755,6 @@ msgid "Portuguese - Portugal"
 msgstr "Tiếng Bồ Đào Nha - Bồ Đào Nha"
 
 #: 
-msgid "Holiday"
-msgstr "Ngày lễ"
-
-#: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Chỉ định tên ứng dụng sẽ được hiển thị trong ứng dụng xác thực"
 
@@ -5924,10 +5899,6 @@ msgstr "Bản văn"
 #: 
 msgid "Event Description"
 msgstr "Mô tả sự kiện"
-
-#: 
-msgid "Help translate this project"
-msgstr "Giúp dịch dự án này"
 
 #. Context: locales
 #: 
@@ -8363,10 +8334,6 @@ msgstr "Gửi xác nhận"
 #: 
 msgid "Thank You!"
 msgstr "Xin cảm ơn!"
-
-#: 
-msgid "Translation incomplete"
-msgstr "Bản dịch chưa hoàn thành"
 
 #: 
 msgid "Visit Our Website"
@@ -15425,10 +15392,6 @@ msgstr "Nhật ký lỗi"
 #: 
 msgid "Error Reporting"
 msgstr "Báo cáo lỗi"
-
-#: 
-msgid "Error:"
-msgstr "Lỗi:"
 
 #: 
 msgid "Fix Settings"

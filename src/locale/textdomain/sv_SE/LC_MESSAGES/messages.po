@@ -2410,14 +2410,6 @@ msgstr "Nummer för stor.  Måste vara mellan -2147483648 och 2147483647"
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Pengar summa för stor.  Maximalla är 999999999.99"
 
-#: 
-msgid "Error making API Call to"
-msgstr "Fel vid API-anrop till"
-
-#: 
-msgid "Error text"
-msgstr "Feltext"
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -4694,11 +4686,6 @@ msgstr "ryska"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "Samiska (norra) (Sverige)"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "albanska"
 
@@ -4981,10 +4968,6 @@ msgstr "återställning av systemanvändares system"
 #: 
 msgid "Notification for"
 msgstr "Meddelande om"
-
-#: 
-msgid "ERROR"
-msgstr "FEL"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -5697,10 +5680,6 @@ msgid "LastName FirstName"
 msgstr "Efternamn förnamn"
 
 #: 
-msgid "Holidays"
-msgstr "Högtider"
-
-#: 
 msgid "Person Name"
 msgstr "Personnamn"
 
@@ -5883,10 +5862,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugisiska - Portugal"
 
 #: 
-msgid "Holiday"
-msgstr "Semester"
-
-#: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Ange applikationsnamnet som ska visas i autentiseringsapp"
 
@@ -6031,10 +6006,6 @@ msgstr "Text"
 #: 
 msgid "Event Description"
 msgstr "Händelsebeskrivning"
-
-#: 
-msgid "Help translate this project"
-msgstr "Hjälpa till att översätta detta projekt"
 
 #. Context: locales
 #: 
@@ -8472,10 +8443,6 @@ msgstr "Skicka verifiering"
 #: 
 msgid "Thank You!"
 msgstr "Tack!"
-
-#: 
-msgid "Translation incomplete"
-msgstr "Översättning ofullständig"
 
 #: 
 msgid "Visit Our Website"
@@ -15541,10 +15508,6 @@ msgstr "Fellogg"
 #: 
 msgid "Error Reporting"
 msgstr "Felrapportering"
-
-#: 
-msgid "Error:"
-msgstr "Fel:"
 
 #: 
 msgid "Fix Settings"
