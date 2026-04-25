@@ -548,20 +548,32 @@ function heartbeat(): void {
     if (data.Accepted) {
       const Assignment = parseAssignment(data.Assignment);
       if (Assignment && Assignment.AssignmentType === 1) {
+        // Event.Start / End / CheckInOpensAt are ISO 8601 strings with the
+        // church's sTimeZone offset (set by KioskDevice::heartbeat). moment
+        // parses them as instants-in-time, so all comparisons below are
+        // tz-correct regardless of the kiosk device's browser timezone.
+        // CheckInOpensAt = event start − 1 hour (server-computed) so check-in
+        // opens before the event actually starts. Falls back to event start
+        // − 1 hour for older API responses without the field.
         const eventStart = moment(Assignment.Event.Start);
         const eventEnd = moment(Assignment.Event.End);
+        const checkInOpensAt = Assignment.Event.CheckInOpensAt
+          ? moment(Assignment.Event.CheckInOpensAt)
+          : eventStart.clone().subtract(1, "hour");
         const now = moment();
 
         $("#eventTitle").text(Assignment.Event.Title);
         $("#startTime").text(eventStart.format("MMMM Do YYYY, h:mm:ss a"));
         $("#endTime").text(eventEnd.format("MMMM Do YYYY, h:mm:ss a"));
 
-        if (now.isBefore(eventStart)) {
-          // Event hasn't started yet - show countdown
+        if (now.isBefore(checkInOpensAt)) {
+          // Check-in hasn't opened yet (event start is still > 1 hour away).
+          // Show countdown to checkInOpensAt so volunteers know when the
+          // kiosk will become usable.
           $("#noEvent").hide();
           $("#event").show();
-          $("#classMemberContainer").html(renderCountdown(eventStart, Assignment.Event.Title));
-          startCountdown(eventStart);
+          $("#classMemberContainer").html(renderCountdown(checkInOpensAt, Assignment.Event.Title));
+          startCountdown(checkInOpensAt);
         } else if (now.isAfter(eventEnd)) {
           // Event has ended
           $("#noEvent").hide();
