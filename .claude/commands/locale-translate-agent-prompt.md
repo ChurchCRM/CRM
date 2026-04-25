@@ -18,7 +18,7 @@ We have lost hours of translated work from agents that skipped these steps. They
 **Every session starts on a brand-new branch.** Append a UTC timestamp so the name is unique even when run twice the same day:
 
 ```bash
-BRANCH="locale/7.2.0-$(date -u +%Y-%m-%d-%H%M%S)"
+BRANCH="locales/7.2.0-$(date -u +%Y-%m-%d-%H%M%S)"
 git checkout -b "$BRANCH"
 git push -u origin "$BRANCH"
 ```
@@ -27,7 +27,7 @@ Preferred helper (auto-detects version and appends time suffix):
 
 ```bash
 node locale/scripts/locale-branch-manager.js --init
-# Output: locale/<version>-<YYYY-MM-DD>-<HHMMSS>
+# Output: locales/<version>-<YYYY-MM-DD>-<HHMMSS>
 ```
 
 **Do not reuse the current branch even if it is already a `locale/*` branch.** If you are resuming after a timeout, still cut a new branch — prior sessions' completed locales are already pushed to their own branch and uploaded to POEditor, so nothing is lost.
