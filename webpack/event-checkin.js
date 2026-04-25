@@ -280,6 +280,13 @@ function loadRoster(eventId) {
       // Show the grid, hide loading
       $("#rosterLoading").addClass("d-none");
       $("#rosterGrid").removeClass("d-none");
+
+      // avatar-loader's IntersectionObserver was wired up at DOMContentLoaded,
+      // so the <img data-image-entity-type> elements we just appended need to
+      // be re-observed. init() is idempotent (already-loaded images skip via
+      // the src-already-set guard) and does NOT clear the info cache, so it's
+      // cheaper than refresh() on repeat roster reloads.
+      window.CRM?.avatarLoader?.init();
     })
     .catch(() => {
       $("#rosterCheckin").addClass("d-none");
