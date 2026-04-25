@@ -708,7 +708,8 @@ $(document).ready(function() {
                 settings[key] = value;
             } else if (input.is('select[multiple]')) {
                 const ts = input[0].tomselect;
-                const vals = ts ? Object.keys(ts.items) : input.val();
+                // ts.items is an Array — Object.keys gives indices not values; use getValue()
+                const vals = ts ? ts.getValue() : input.val();
                 settings[key] = Array.isArray(vals) ? vals.join(',') : (vals || '');
             } else if (input.hasClass('plugin-checkboxes')) {
                 const groupKey = input.data('setting-key');
@@ -765,7 +766,8 @@ $(document).ready(function() {
                 settings[key] = input.is(':checked') ? '1' : '0';
             } else if (input.is('select[multiple]')) {
                 const ts = input[0].tomselect;
-                const vals = ts ? Object.keys(ts.items) : input.val();
+                // ts.items is an Array — Object.keys gives indices not values; use getValue()
+                const vals = ts ? ts.getValue() : input.val();
                 settings[key] = Array.isArray(vals) ? vals.join(',') : (vals || '');
             } else if (input.hasClass('plugin-checkboxes')) {
                 const groupKey = input.data('setting-key');
