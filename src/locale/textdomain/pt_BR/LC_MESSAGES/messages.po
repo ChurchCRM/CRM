@@ -97,7 +97,7 @@ msgstr "Obrigatório"
 
 #: 
 msgid "First Name"
-msgstr "Nome"
+msgstr "Primeiro Nome"
 
 #: 
 msgid "Middle Name"
@@ -204,7 +204,7 @@ msgstr "CSV registros individuais"
 
 #: 
 msgid "CSV Combine Families"
-msgstr "CSV combine as famílias"
+msgstr "CSV famílias combinadas"
 
 #: 
 msgid "Add Individuals to Cart"
@@ -2980,10 +2980,6 @@ msgid "Add Church Event"
 msgstr "Adicionar Evento da Igreja"
 
 #: 
-msgid "List Event Types"
-msgstr "Listar Tipos de Eventos"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "Entrada e Saída"
 
@@ -5450,10 +5446,6 @@ msgid "User must have Delete Records permission"
 msgstr "O usuário deve ter permissão para excluir registros"
 
 #: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "URL de notificações da ChurchCRM Central"
-
-#: 
 msgid "invalid event type id"
 msgstr "ID do tipo de evento inválido"
 
@@ -7235,7 +7227,7 @@ msgstr "Os arquivos podem estar modificados ou faltando. Considere reimplementar
 
 #: 
 msgid "Finance access"
-msgstr "Acesso de finanzas"
+msgstr "Acesso de finanças"
 
 #: 
 msgid "Force Re-install"
@@ -7679,11 +7671,11 @@ msgstr "Filtragem"
 
 #: 
 msgid "Finance"
-msgstr "Finanzas"
+msgstr "Finanças"
 
 #: 
 msgid "Finance Dashboard"
-msgstr "Painel de finanzas"
+msgstr "Painel de finanças"
 
 #: 
 msgid "Force Import"
@@ -9340,10 +9332,6 @@ msgid "Important"
 msgstr "Importante"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "Instale plugins colocando-os em"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "Código inválido. Por favor, tente novamente."
 
@@ -10619,10 +10607,6 @@ msgid "Connect with others"
 msgstr "Conectar com outros"
 
 #: 
-msgid "Contact us"
-msgstr "Contacte-nos"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Converter registos individuais em unidades familiares"
 
@@ -11305,10 +11289,6 @@ msgstr "As alterações de nome requerem guardar. As ações de reordenar e elim
 #: 
 msgid "Name, address, contact details"
 msgstr "Nome, endereço, dados de contacto"
-
-#: 
-msgid "Need help?"
-msgstr "Precisa de ajuda?"
 
 #: 
 msgid "New"
@@ -15131,10 +15111,6 @@ msgid "Online"
 msgstr "Online"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "Abre uma janela de 30 segundos para que os dispositivos se registrem em:"
-
-#: 
 msgid "Pending"
 msgstr "Pendente"
 
@@ -15655,10 +15631,6 @@ msgid "Loading event editor…"
 msgstr "Carregando editor de eventos…"
 
 #: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "Nenhum calendário selecionado — este evento será salvo, mas não aparecerá em nenhuma visualização de calendário."
-
-#: 
 msgid "No group"
 msgstr "Nenhum grupo"
 
@@ -15745,4 +15717,120 @@ msgstr "Excluir número de remo"
 #: 
 msgid "Invalid security token. Please try again."
 msgstr "Token de segurança inválido. Por favor, tente novamente."
+
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "Adiciona feriados ao calendário principal. Cada país selecionado torna-se seu próprio calendário alternável na barra lateral, para que os usuários possam mostrar ou ocultar feriados de forma independente."
+
+#: 
+msgid "Choose map provider"
+msgstr "Escolha o provedor de mapas"
+
+#: 
+msgid "Current database"
+msgstr "Banco de dados atual"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "Os dados de demonstração normalmente só são carregados em instalações novas. A importação agora adicionará registros de amostra junto com os dados existentes e poderá criar duplicatas."
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "Cada país produz sua própria linha de calendário na barra lateral. Use a alternância por calendário para ocultar temporariamente um país sem alterar as configurações do plug-in."
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "Filtrando por categoria"
+
+#: 
+msgid "Holiday Settings"
+msgstr "Configurações de feriados"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "Feriados (%s)"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "Os feriados são marcados por tipo: Oficiais, Datas comemorativas, Feriados bancários, Sazonais e Religiosos. Deixe todas as categorias desmarcadas para mostrar todos os feriados ou escolha tipos específicos para restringir a exibição."
+
+#: 
+msgid "Import demo data anyway"
+msgstr "Importe os dados de demonstração de qualquer maneira"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "Identificador de promessa ausente."
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "Nenhum país foi selecionado. Escolha pelo menos um país nas configurações do plug-in Calendários de feriados."
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "Nenhuma entrada correspondente para os filtros selecionados."
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "Abrir no Apple Maps"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "Abrir no Google Maps"
+
+#: 
+msgid "Open in new tab"
+msgstr "Abrir em nova aba"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "Configurando países"
+
+#: 
+msgid "Show all"
+msgstr "Mostrar tudo"
+
+#: 
+msgid "Show:"
+msgstr "Mostrar:"
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "Mostrar e ocultar países individuais"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "Sueco"
+
+#: 
+msgid "System"
+msgstr "Sistema"
+
+#: 
+msgid "Timeline filters"
+msgstr "Filtros de linha do tempo"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "Para recomeçar com um banco de dados limpo, use Redefinir banco de dados no painel do administrador antes de importar dados de demonstração."
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "Use o seletor de Países para escolher um ou mais países. Cada país adicionado aparecerá como uma entrada de calendário separada na barra lateral — permitindo que você mostre os feriados de uma congregação global."
+
+#: 
+msgid "Your database already contains data"
+msgstr "Seu banco de dados já contém dados"
+
+#: 
+msgid "people"
+msgstr "pessoas"
 

@@ -3010,10 +3010,6 @@ msgid "Add Church Event"
 msgstr "Kilise Etkinliği Ekle"
 
 #: 
-msgid "List Event Types"
-msgstr "Olay türlerini listeleyin"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "Check-in ve check-out"
 
@@ -5486,10 +5482,6 @@ msgstr "Eksik Takvim Erişim Jetonu"
 #: 
 msgid "User must have Delete Records permission"
 msgstr "Kullanıcının kayıt iznini silmesi gerekir"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "Churchcrm Merkezi Bildirimler URL"
 
 #: 
 msgid "invalid event type id"
@@ -9381,10 +9373,6 @@ msgid "Important"
 msgstr "Önemli"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "Eklentileri şuraya yerleştirerek yükleyin:"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "Geçersiz kod. Lütfen tekrar deneyin."
 
@@ -10660,10 +10648,6 @@ msgid "Connect with others"
 msgstr "Başkalarıyla bağlantı kurun"
 
 #: 
-msgid "Contact us"
-msgstr "Bize ulaşın"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Bireysel kayıtları aile birimlerine dönüştür"
 
@@ -11346,10 +11330,6 @@ msgstr "Ad değişiklikleri kaydetmeyi gerektirir. İşlem menüsündeki yeniden
 #: 
 msgid "Name, address, contact details"
 msgstr "Ad, adres, iletişim bilgileri"
-
-#: 
-msgid "Need help?"
-msgstr "Yardıma mı ihtiyacınız var?"
 
 #: 
 msgid "New"
@@ -15172,10 +15152,6 @@ msgid "Online"
 msgstr "Çevrimiçi"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "Cihazların kayıt olması için 30 saniyelik bir pencere açar:"
-
-#: 
 msgid "Pending"
 msgstr "Beklemede"
 
@@ -15694,10 +15670,6 @@ msgstr "Geçersiz tarih biçimi"
 #: 
 msgid "Loading event editor…"
 msgstr "Etkinlik düzenleyici yükleniyor…"
-
-#: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "Takvim seçilmedi — bu etkinlik kaydedilecek ancak hiçbir takvim görünümünde gözükmeyecektir."
 
 #: 
 msgid "No group"

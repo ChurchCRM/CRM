@@ -3008,10 +3008,6 @@ msgid "Add Church Event"
 msgstr "إضافة حدث الكنيسة"
 
 #: 
-msgid "List Event Types"
-msgstr "أنواع قائمة الأحداث"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "أو تسجيل إجراءات الوصول والمغادرة"
 
@@ -5484,10 +5480,6 @@ msgstr "في عداد المفقودين رمز وصول تقويم"
 #: 
 msgid "User must have Delete Records permission"
 msgstr "يجب أن يكون المستخدم إذن السجلات حذف"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "ChurchCRM URL الإخطارات الوسطى"
 
 #: 
 msgid "invalid event type id"
@@ -9408,10 +9400,6 @@ msgid "Important"
 msgstr "مهم"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "قم بتثبيت الإضافات بوضعها في"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "رمز غير صالح. يرجى المحاولة مرة أخرى."
 
@@ -10691,10 +10679,6 @@ msgid "Connect with others"
 msgstr "تواصل مع الآخرين"
 
 #: 
-msgid "Contact us"
-msgstr "اتصل بنا"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "تحويل السجلات الفردية إلى وحدات عائلية"
 
@@ -11377,10 +11361,6 @@ msgstr "تتطلب تغييرات الأسماء الحفظ. تدخل إعادة
 #: 
 msgid "Name, address, contact details"
 msgstr "الاسم والعنوان وبيانات الاتصال"
-
-#: 
-msgid "Need help?"
-msgstr "هل تحتاج إلى مساعدة؟"
 
 #: 
 msgid "New"
@@ -15207,10 +15187,6 @@ msgid "Online"
 msgstr "متصل"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "يفتح نافذة مدتها 30 ثانية لتسجيل الأجهزة على:"
-
-#: 
 msgid "Pending"
 msgstr "قيد الانتظار"
 
@@ -15729,10 +15705,6 @@ msgstr "صيغة التاريخ غير صالحة"
 #: 
 msgid "Loading event editor…"
 msgstr "جارٍ تحميل محرر الأحداث…"
-
-#: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "لم يتم اختيار تقويم — سيتم حفظ هذا الحدث لكنه لن يظهر في أي عرض تقويم."
 
 #: 
 msgid "No group"

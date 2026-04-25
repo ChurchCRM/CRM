@@ -3006,10 +3006,6 @@ msgid "Add Church Event"
 msgstr "Ongeza Tukio la Kanisa"
 
 #: 
-msgid "List Event Types"
-msgstr "Orodhesha Aina za Matukio"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "Ingia na Toka"
 
@@ -5482,10 +5478,6 @@ msgstr "Tokeni ya ufikiaji ya kalenda haipo"
 #: 
 msgid "User must have Delete Records permission"
 msgstr "Mtumiaji lazima awe na ruhusa ya Futa Rekodi"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "ChurchCRM Central Notifications URL"
 
 #: 
 msgid "invalid event type id"
@@ -9375,10 +9367,6 @@ msgid "Important"
 msgstr "Muhimu"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "Sakinisha programu-jalizi kwa kuziweka katika"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "Msimbo batili. Tafadhali jaribu tena."
 
@@ -10654,10 +10642,6 @@ msgid "Connect with others"
 msgstr "Ungana na wengine"
 
 #: 
-msgid "Contact us"
-msgstr "Wasiliana nasi"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Badilisha rekodi za mtu binafsi kuwa vitengo vya familia"
 
@@ -11340,10 +11324,6 @@ msgstr "Mabadiliko ya jina yanahitaji kuhifadhiwa. Vitendo vya kupanga upya na k
 #: 
 msgid "Name, address, contact details"
 msgstr "Jina, anwani, maelezo ya mawasiliano"
-
-#: 
-msgid "Need help?"
-msgstr "Unahitaji msaada?"
 
 #: 
 msgid "New"
@@ -15166,10 +15146,6 @@ msgid "Online"
 msgstr "Mtandaoni"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "Inafungua dirisha la sekunde 30 kwa vifaa kusajiliwa katika:"
-
-#: 
 msgid "Pending"
 msgstr "Inasubiri"
 
@@ -15688,10 +15664,6 @@ msgstr "Umbizo la tarehe si sahihi"
 #: 
 msgid "Loading event editor…"
 msgstr "Inapakia kihariri cha tukio…"
-
-#: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "Hakuna kalenda iliyochaguliwa — tukio hili litahifadhiwa lakini halitaonekana kwenye muonekano wowote wa kalenda."
 
 #: 
 msgid "No group"

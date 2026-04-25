@@ -2979,10 +2979,6 @@ msgid "Add Church Event"
 msgstr "Magdagdag ng Kaganapan sa Simbahan"
 
 #: 
-msgid "List Event Types"
-msgstr "Ilista ang mga Uri ng Kaganapan"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "Pagpasok at Paglabas"
 
@@ -5447,10 +5443,6 @@ msgstr "Nawawalang calendar access token"
 #: 
 msgid "User must have Delete Records permission"
 msgstr "Ang user ay dapat may pahintulot sa Pag-delete ng mga Rekord"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "URL ng Sentral na Mga Abiso ng ChurchCRM"
 
 #: 
 msgid "invalid event type id"
@@ -9338,10 +9330,6 @@ msgid "Important"
 msgstr "Mahalaga"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "Mag-install ng mga plugin sa pamamagitan ng paglalagay nito sa"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "Hindi wastong code. Pakisubukan muli."
 
@@ -10617,10 +10605,6 @@ msgid "Connect with others"
 msgstr "Makipag-ugnayan sa iba"
 
 #: 
-msgid "Contact us"
-msgstr "Makipag-ugnayan sa amin"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "I-convert ang mga indibidwal na rekord sa mga yunit ng pamilya"
 
@@ -11303,10 +11287,6 @@ msgstr "Ang mga pagbabago ng pangalan ay nangangailangan ng pag-save. Ang mga ak
 #: 
 msgid "Name, address, contact details"
 msgstr "Pangalan, address, mga detalye ng pakikipag-ugnayan"
-
-#: 
-msgid "Need help?"
-msgstr "Kailangan ng tulong?"
 
 #: 
 msgid "New"
@@ -15129,10 +15109,6 @@ msgid "Online"
 msgstr "Online"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "Nagbubukas ng 30-segundong window para magrehistro ang mga device sa:"
-
-#: 
 msgid "Pending"
 msgstr "Nakabinbin"
 
@@ -15651,10 +15627,6 @@ msgstr "Hindi wastong format ng petsa"
 #: 
 msgid "Loading event editor…"
 msgstr "Naglo-load ng event editor…"
-
-#: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "Walang napiling kalendaryo — ise-save ang event na ito ngunit hindi ito lalabas sa anumang calendar view."
 
 #: 
 msgid "No group"

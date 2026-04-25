@@ -3086,10 +3086,6 @@ msgid "Add Church Event"
 msgstr "Adaugă event al Bisericii"
 
 #: 
-msgid "List Event Types"
-msgstr "Listează tipurile de eveniment"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "Intrare și ieșire"
 
@@ -5563,10 +5559,6 @@ msgstr "Indicativ (token) de acces la calendar lipsește"
 #: 
 msgid "User must have Delete Records permission"
 msgstr "Utilizatorul trebuie să aibă permisiuni pentru ștergerea înregistrărilor"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "URL-ul pentru Notificări Centrale ChurchCRM"
 
 #: 
 msgid "invalid event type id"
@@ -9463,10 +9455,6 @@ msgid "Important"
 msgstr "Important"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "Instalați pluginuri plasându-le în"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "Cod invalid. Încercați din nou."
 
@@ -10743,10 +10731,6 @@ msgid "Connect with others"
 msgstr "Conectează-te cu alții"
 
 #: 
-msgid "Contact us"
-msgstr "Contactați-ne"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Convertiți înregistrări individuale în unități de familie"
 
@@ -11429,10 +11413,6 @@ msgstr "Modificările de nume necesită salvare. Acțiunile de reordonare și ș
 #: 
 msgid "Name, address, contact details"
 msgstr "Nume, adresă, date de contact"
-
-#: 
-msgid "Need help?"
-msgstr "Aveți nevoie de ajutor?"
 
 #: 
 msgid "New"
@@ -15256,10 +15236,6 @@ msgid "Online"
 msgstr "Online"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "Deschide o fereastră de 30 de secunde pentru înregistrarea dispozitivelor la:"
-
-#: 
 msgid "Pending"
 msgstr "În așteptare"
 
@@ -15778,10 +15754,6 @@ msgstr "Format dată invalid"
 #: 
 msgid "Loading event editor…"
 msgstr "Se încarcă editorul de evenimente…"
-
-#: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "Niciun calendar selectat — evenimentul va fi salvat, dar nu va apărea în nicio vizualizare a calendarului."
 
 #: 
 msgid "No group"

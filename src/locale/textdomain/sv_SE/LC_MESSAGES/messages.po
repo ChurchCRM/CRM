@@ -3120,10 +3120,6 @@ msgid "Add Church Event"
 msgstr "Lägg till kyrkans evenemang"
 
 #: 
-msgid "List Event Types"
-msgstr "Lista händelsetyper"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "Incheckning och utcheckning"
 
@@ -5596,10 +5592,6 @@ msgstr "Saknar kalenderåtkomsttoken"
 #: 
 msgid "User must have Delete Records permission"
 msgstr "Användaren måste ha tillåtelse att ta bort poster"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "ChurchCRM Central Notifications URL"
 
 #: 
 msgid "invalid event type id"
@@ -9491,10 +9483,6 @@ msgid "Important"
 msgstr "Viktigt"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "Installera plugin-program genom att placera dem i"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "Ogiltig kod. Försök igen."
 
@@ -10770,10 +10758,6 @@ msgid "Connect with others"
 msgstr "Håll kontakten med andra"
 
 #: 
-msgid "Contact us"
-msgstr "Kontakta oss"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Konvertera enskilda poster till familjeenheter"
 
@@ -11456,10 +11440,6 @@ msgstr "Namnändringar kräver sparande. Omordning och borttagning i åtgärdsme
 #: 
 msgid "Name, address, contact details"
 msgstr "Namn, adress, kontaktuppgifter"
-
-#: 
-msgid "Need help?"
-msgstr "Behöver du hjälp?"
 
 #: 
 msgid "New"
@@ -15282,10 +15262,6 @@ msgid "Online"
 msgstr "Online"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "Öppnar ett 30-sekunders fönster för enheter att registrera sig på:"
-
-#: 
 msgid "Pending"
 msgstr "Väntande"
 
@@ -15804,10 +15780,6 @@ msgstr "Ogiltigt datumformat"
 #: 
 msgid "Loading event editor…"
 msgstr "Laddar händelseeditor…"
-
-#: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "Ingen kalender vald — denna händelse sparas men visas inte i någon kalendervy."
 
 #: 
 msgid "No group"

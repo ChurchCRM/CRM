@@ -3086,10 +3086,6 @@ msgid "Add Church Event"
 msgstr "Dodaj wydarzenie kościoła"
 
 #: 
-msgid "List Event Types"
-msgstr "Typy wydarzeń"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "Meldowanie i wymeldowanie"
 
@@ -5555,10 +5551,6 @@ msgstr "Brakujący token dostępu do kalendarza"
 #: 
 msgid "User must have Delete Records permission"
 msgstr "Użytkownik musi mieć dostęp do Usuwania Wpisów"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "Adres URL Powiadomień ChurchCRM"
 
 #: 
 msgid "invalid event type id"
@@ -9460,10 +9452,6 @@ msgid "Important"
 msgstr "Ważne"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "Zainstaluj wtyczki, umieszczając je w"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "Nieprawidłowy kod. Spróbuj ponownie."
 
@@ -10740,10 +10728,6 @@ msgid "Connect with others"
 msgstr "Połącz się z innymi"
 
 #: 
-msgid "Contact us"
-msgstr "Skontaktuj się z nami"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Przekształć pojedyncze rekordy w jednostki rodzinne"
 
@@ -11426,10 +11410,6 @@ msgstr "Zmiany nazw wymagają zapisania. Zmiana kolejności i usuwanie w menu ak
 #: 
 msgid "Name, address, contact details"
 msgstr "Imię i nazwisko, adres, dane kontaktowe"
-
-#: 
-msgid "Need help?"
-msgstr "Potrzebujesz pomocy?"
 
 #: 
 msgid "New"
@@ -15253,10 +15233,6 @@ msgid "Online"
 msgstr "Online"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "Otwiera 30-sekundowe okno dla urządzeń do rejestracji w:"
-
-#: 
 msgid "Pending"
 msgstr "Oczekujące"
 
@@ -15775,10 +15751,6 @@ msgstr "Nieprawidłowy format daty"
 #: 
 msgid "Loading event editor…"
 msgstr "Ładowanie edytora wydarzeń…"
-
-#: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "Nie wybrano kalendarza — to wydarzenie zostanie zapisane, ale nie pojawi się w żadnym widoku kalendarza."
 
 #: 
 msgid "No group"

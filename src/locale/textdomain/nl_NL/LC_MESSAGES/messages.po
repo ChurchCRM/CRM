@@ -2982,10 +2982,6 @@ msgid "Add Church Event"
 msgstr "Details er activiteit"
 
 #: 
-msgid "List Event Types"
-msgstr "Weergave activiteit per kenmerk"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "Mutaties"
 
@@ -5450,10 +5446,6 @@ msgstr "Het certificaat van toegang tot de kalender is afwezig"
 #: 
 msgid "User must have Delete Records permission"
 msgstr "De gebruiker heeft de rechten nodig om rijen met gegevens te mogen verwijderen"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "De URL voor de centrale meldingen"
 
 #: 
 msgid "invalid event type id"
@@ -9342,10 +9334,6 @@ msgid "Important"
 msgstr "Belangrijk"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "Installeer plugins door ze te plaatsen in"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "Ongeldige code. Probeer het opnieuw."
 
@@ -10621,10 +10609,6 @@ msgid "Connect with others"
 msgstr "Verbinding maken met anderen"
 
 #: 
-msgid "Contact us"
-msgstr "Neem contact op"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Individuele dossiers omzetten naar gezinseenheden"
 
@@ -11307,10 +11291,6 @@ msgstr "Naamswijzigingen moeten worden opgeslagen. Acties voor herordenen en ver
 #: 
 msgid "Name, address, contact details"
 msgstr "Naam, adres, contactgegevens"
-
-#: 
-msgid "Need help?"
-msgstr "Heeft u hulp nodig?"
 
 #: 
 msgid "New"
@@ -15133,10 +15113,6 @@ msgid "Online"
 msgstr "Online"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "Opent een venster van 30 seconden voor apparaten om te registreren bij:"
-
-#: 
 msgid "Pending"
 msgstr "In behandeling"
 
@@ -15655,10 +15631,6 @@ msgstr "Ongeldig datumformaat"
 #: 
 msgid "Loading event editor…"
 msgstr "Evenementeditor laden…"
-
-#: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "Geen agenda geselecteerd — dit evenement wordt opgeslagen maar verschijnt niet in een agendaweergave."
 
 #: 
 msgid "No group"

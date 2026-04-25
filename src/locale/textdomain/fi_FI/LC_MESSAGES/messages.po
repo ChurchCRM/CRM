@@ -2986,10 +2986,6 @@ msgid "Add Church Event"
 msgstr "Lisää kirkon tapahtuma"
 
 #: 
-msgid "List Event Types"
-msgstr "Listaa tapahtumatyypit"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "Sisäänkirjaus ja uloskirjaus"
 
@@ -5454,10 +5450,6 @@ msgstr "Kalenterin pääsyavain puuttuu"
 #: 
 msgid "User must have Delete Records permission"
 msgstr "Käyttäjällä on oltava oikeus poistaa tietueita"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "ChurchCRM:n keskitettyjen ilmoitusten URL"
 
 #: 
 msgid "invalid event type id"
@@ -9340,10 +9332,6 @@ msgid "Important"
 msgstr "Tärkeää"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "Asenna liitännäiset sijoittamalla ne kansioon"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "Virheellinen koodi. Yritä uudelleen."
 
@@ -10619,10 +10607,6 @@ msgid "Connect with others"
 msgstr "Pidä yhteyttä muihin"
 
 #: 
-msgid "Contact us"
-msgstr "Ota yhteyttä"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Muunna yksittäiset tietueet perheyksiköiksi"
 
@@ -11305,10 +11289,6 @@ msgstr "Nimimuutokset vaativat tallentamisen. Järjestys- ja poistotoiminnot toi
 #: 
 msgid "Name, address, contact details"
 msgstr "Nimi, osoite, yhteystiedot"
-
-#: 
-msgid "Need help?"
-msgstr "Tarvitsetko apua?"
 
 #: 
 msgid "New"
@@ -15131,10 +15111,6 @@ msgid "Online"
 msgstr "Verkossa"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "Avaa 30 sekunnin ikkunan laitteille rekisteröitymistä varten:"
-
-#: 
 msgid "Pending"
 msgstr "Odottaa"
 
@@ -15653,10 +15629,6 @@ msgstr "Virheellinen päivämäärämuoto"
 #: 
 msgid "Loading event editor…"
 msgstr "Ladataan tapahtumaeditoria…"
-
-#: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "Kalenteria ei valittu — tämä tapahtuma tallennetaan, mutta se ei näy missään kalenterinäkymässä."
 
 #: 
 msgid "No group"

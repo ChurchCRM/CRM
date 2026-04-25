@@ -3022,10 +3022,6 @@ msgid "Add Church Event"
 msgstr "Thêm sự kiện mới"
 
 #: 
-msgid "List Event Types"
-msgstr "Loại sự kiện"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "Nhận phòng và Trả phòng"
 
@@ -5498,10 +5494,6 @@ msgstr "Thiếu mã thông báo truy cập lịch"
 #: 
 msgid "User must have Delete Records permission"
 msgstr "Người dùng phải có quyền Xóa Bản ghi"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "URL thông báo trung tâm của ChurchCRM"
 
 #: 
 msgid "invalid event type id"
@@ -9377,10 +9369,6 @@ msgid "Important"
 msgstr "Quan trọng"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "Cài đặt plugin bằng cách đặt chúng vào"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "Mã không hợp lệ. Vui lòng thử lại."
 
@@ -10655,10 +10643,6 @@ msgid "Connect with others"
 msgstr "Ket noi voi nguoi khac"
 
 #: 
-msgid "Contact us"
-msgstr "Lien he chung toi"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Chuyen doi ho so ca nhan thanh don vi gia dinh"
 
@@ -11341,10 +11325,6 @@ msgstr "Thay doi ten can luu lai. Cac thao tac sap xep lai va xoa trong menu han
 #: 
 msgid "Name, address, contact details"
 msgstr "Ten, dia chi, thong tin lien he"
-
-#: 
-msgid "Need help?"
-msgstr "Can giup do?"
 
 #: 
 msgid "New"
@@ -15166,10 +15146,6 @@ msgid "Online"
 msgstr "Trực tuyến"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "Mở cửa sổ 30 giây để thiết bị đăng ký tại:"
-
-#: 
 msgid "Pending"
 msgstr "Đang chờ"
 
@@ -15688,10 +15664,6 @@ msgstr "Định dạng ngày không hợp lệ"
 #: 
 msgid "Loading event editor…"
 msgstr "Đang tải trình chỉnh sửa sự kiện…"
-
-#: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "Chưa chọn lịch — sự kiện này sẽ được lưu nhưng không xuất hiện trong bất kỳ chế độ xem lịch nào."
 
 #: 
 msgid "No group"

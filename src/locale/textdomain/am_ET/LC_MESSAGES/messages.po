@@ -3009,10 +3009,6 @@ msgid "Add Church Event"
 msgstr "የቤተክርስቲያን ክስተት ጨምር"
 
 #: 
-msgid "List Event Types"
-msgstr "የክስተት ዓይነቶችን ይዘርዝሩ"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "ይግቡ እና ይመልከቱ"
 
@@ -5487,10 +5483,6 @@ msgstr "የቀን መቁጠሪያ መዳረሻ መተኪያ ይጎድላል"
 #: 
 msgid "User must have Delete Records permission"
 msgstr "ተጠቃሚው መዝገቦችን የማጥፋት ፈቃድ ሊኖረው ይገባል"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "ChurchCRM ማዕከላዊ ማሳወቂያዎች URL"
 
 #: 
 msgid "invalid event type id"
@@ -9389,10 +9381,6 @@ msgid "Important"
 msgstr "አስፈላጊ"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "ፕለጊኖችን ያዘዘዋቸውን በማስቀመጥ ጫን"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "ልክ ያልሆነ ኮድ። እባክዎ እንደገና ሞክሩ።"
 
@@ -10668,10 +10656,6 @@ msgid "Connect with others"
 msgstr "ሌላ ሰዎች ታሰር"
 
 #: 
-msgid "Contact us"
-msgstr "ኛ ዐድር"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "ግለሰብ ሰነዶች ቤተሰብ ዓይነ ለውጥ"
 
@@ -11354,10 +11338,6 @@ msgstr "ስሞች ለውጥ ቁኝት ማሰወር። ውሰድ እና ሐላፍ
 #: 
 msgid "Name, address, contact details"
 msgstr "ስም አድራሻ ስንኩሪት ዝርዝር"
-
-#: 
-msgid "Need help?"
-msgstr "እርዳታ ያስፈልግዎታል?"
 
 #: 
 msgid "New"
@@ -15180,10 +15160,6 @@ msgid "Online"
 msgstr "ኦንላይን"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "መሳሪያዎች ለመመዝገብ 30 ሰከንድ መስኮት ይከፍታል:"
-
-#: 
 msgid "Pending"
 msgstr "በጥበቃ ላይ"
 
@@ -15702,10 +15678,6 @@ msgstr "ልክ ያልሆነ የቀን ቅርጸት"
 #: 
 msgid "Loading event editor…"
 msgstr "የዝግጅት አርታኢ እየጫነ ነው…"
-
-#: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "ምንም የቀን መቁጠሪያ አልተመረጠም — ይህ ዝግጅት ይቀመጣል ግን በምንም የቀን መቁጠሪያ እይታ ላይ አይታይም።"
 
 #: 
 msgid "No group"

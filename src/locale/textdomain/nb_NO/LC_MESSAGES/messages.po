@@ -3113,10 +3113,6 @@ msgid "Add Church Event"
 msgstr "Legg til kirkehendelse"
 
 #: 
-msgid "List Event Types"
-msgstr "List hendelsestyper"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "Innsjekking og utsjekking"
 
@@ -5581,10 +5577,6 @@ msgstr "Mangler tilgangstoken for kalender"
 #: 
 msgid "User must have Delete Records permission"
 msgstr "Brukeren må ha tillatelse til å slette oppføringer"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "URL for sentrale varsler i ChurchCRM"
 
 #: 
 msgid "invalid event type id"
@@ -9467,10 +9459,6 @@ msgid "Important"
 msgstr "Viktig"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "Installer programtillegg ved å plassere dem i"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "Ugyldig kode. Prøv igjen."
 
@@ -10746,10 +10734,6 @@ msgid "Connect with others"
 msgstr "Kom i kontakt med andre"
 
 #: 
-msgid "Contact us"
-msgstr "Kontakt oss"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Konverter enkeltposter til familieenheter"
 
@@ -11432,10 +11416,6 @@ msgstr "Navneendringer krever lagring. Omorganisering og sletting i handlingsmen
 #: 
 msgid "Name, address, contact details"
 msgstr "Navn, adresse, kontaktopplysninger"
-
-#: 
-msgid "Need help?"
-msgstr "Trenger du hjelp?"
 
 #: 
 msgid "New"
@@ -15258,10 +15238,6 @@ msgid "Online"
 msgstr "Online"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "Åpner et 30-sekunders vindu for enheter som skal registrere seg på:"
-
-#: 
 msgid "Pending"
 msgstr "Venter"
 
@@ -15780,10 +15756,6 @@ msgstr "Ugyldig datoformat"
 #: 
 msgid "Loading event editor…"
 msgstr "Laster hendelsesredigerer…"
-
-#: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "Ingen kalender valgt — denne hendelsen lagres, men vises ikke i noen kalendervisning."
 
 #: 
 msgid "No group"

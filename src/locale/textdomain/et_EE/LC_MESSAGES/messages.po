@@ -3009,10 +3009,6 @@ msgid "Add Church Event"
 msgstr "Lisa koguduse sündmus"
 
 #: 
-msgid "List Event Types"
-msgstr "Sündmuste tüüpide nimekiri"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "Sisse- ja väljaregistreerimine"
 
@@ -5485,10 +5481,6 @@ msgstr "Puudub kalendri juurdepääsuluba"
 #: 
 msgid "User must have Delete Records permission"
 msgstr "Kasutajal peab olema Kustutamise kirjete luba"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "ChurchCRM-i keskseadete URL"
 
 #: 
 msgid "invalid event type id"
@@ -9380,10 +9372,6 @@ msgid "Important"
 msgstr "Oluline"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "Installige pistikprogrammid, asetades need kausta"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "Vale kood. Palun proovige uuesti."
 
@@ -10659,10 +10647,6 @@ msgid "Connect with others"
 msgstr "Suhelge teistega"
 
 #: 
-msgid "Contact us"
-msgstr "Võtke meiega ühendust"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Teisendage üksikisiku kirjed perekondadeks"
 
@@ -11345,10 +11329,6 @@ msgstr "Nimemuudatused nõuavad salvestamist. Järjestuse muutmine ja kustutamin
 #: 
 msgid "Name, address, contact details"
 msgstr "Nimi, aadress, kontaktandmed"
-
-#: 
-msgid "Need help?"
-msgstr "Vajate abi?"
 
 #: 
 msgid "New"
@@ -15171,10 +15151,6 @@ msgid "Online"
 msgstr "Võrgus"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "Avab 30-sekundilise akna seadmete registreerimiseks aadressil:"
-
-#: 
 msgid "Pending"
 msgstr "Ootel"
 
@@ -15693,10 +15669,6 @@ msgstr "Kehtetu kuupäevaformaat"
 #: 
 msgid "Loading event editor…"
 msgstr "Sündmusetoimetaja laadimine…"
-
-#: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "Kalender pole valitud — see sündmus salvestatakse, kuid ei kuvata üheski kalendervaates."
 
 #: 
 msgid "No group"

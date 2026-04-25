@@ -3077,10 +3077,6 @@ msgid "Add Church Event"
 msgstr "Egyházi esemény hozzáadása"
 
 #: 
-msgid "List Event Types"
-msgstr "Eseménytípusok listázása"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "Bejelentkezés és kijelentkezés"
 
@@ -5545,10 +5541,6 @@ msgstr "Hiányzik a naptár hozzáférési tokenje"
 #: 
 msgid "User must have Delete Records permission"
 msgstr "A felhasználónak Rekordok törlése engedéllyel kell rendelkeznie"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "ChurchCRM központi értesítések URL-je"
 
 #: 
 msgid "invalid event type id"
@@ -9436,10 +9428,6 @@ msgid "Important"
 msgstr "Fontos"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "Bővítmények telepítése ide helyezéssel:"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "Érvénytelen kód. Kérjük, próbálja újra."
 
@@ -10715,10 +10703,6 @@ msgid "Connect with others"
 msgstr "Kapcsolódjon másokhoz"
 
 #: 
-msgid "Contact us"
-msgstr "Kapcsolat"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Egyéni rekordok átalakítása családi egységekké"
 
@@ -11401,10 +11385,6 @@ msgstr "A névváltoztatások mentést igényelnek. Az átrendezés és törlés
 #: 
 msgid "Name, address, contact details"
 msgstr "Név, cím, elérhetőségek"
-
-#: 
-msgid "Need help?"
-msgstr "Segítségre van szüksége?"
 
 #: 
 msgid "New"
@@ -15227,10 +15207,6 @@ msgid "Online"
 msgstr "Online"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "30 másodperces ablakot nyit az eszközök regisztrálásához:"
-
-#: 
 msgid "Pending"
 msgstr "Folyamatban"
 
@@ -15749,10 +15725,6 @@ msgstr "Érvénytelen dátumformátum"
 #: 
 msgid "Loading event editor…"
 msgstr "Az eseményszerkesztő betöltése…"
-
-#: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "Nincs naptár kiválasztva — az esemény mentésre kerül, de nem jelenik meg egyetlen naptárnézetben sem."
 
 #: 
 msgid "No group"

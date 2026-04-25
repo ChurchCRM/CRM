@@ -3009,10 +3009,6 @@ msgid "Add Church Event"
 msgstr "Shto ngjarje kishë"
 
 #: 
-msgid "List Event Types"
-msgstr "Listo llojet e ngjarjeve"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "Hyrja dhe Dalja"
 
@@ -5477,10 +5473,6 @@ msgstr "Mungon kodi i aksesit të kalendarit"
 #: 
 msgid "User must have Delete Records permission"
 msgstr "Përdoruesi duhet të ketë lejen 'Fshij Regjistrimet'"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "URL-ja e njoftimeve qendrore të ChurchCRM"
 
 #: 
 msgid "invalid event type id"
@@ -9368,10 +9360,6 @@ msgid "Important"
 msgstr "I rëndësishëm"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "Instaloni shtojcat duke i vendosur ato në"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "Kodi i pavlefshëm. Ju lutemi provoni sërish."
 
@@ -10647,10 +10635,6 @@ msgid "Connect with others"
 msgstr "Lidhu me të tjerët"
 
 #: 
-msgid "Contact us"
-msgstr "Kontaktoni amin"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Konverto rekorde individuale në njësi familjare"
 
@@ -11333,10 +11317,6 @@ msgstr "Ndryshimet e emrit kërkojnë ruajtje. Veprimi i rirenditjes dhe fshirje
 #: 
 msgid "Name, address, contact details"
 msgstr "Emri, adresa, detajet e kontaktit"
-
-#: 
-msgid "Need help?"
-msgstr "Keni nevojë për ndihmë?"
 
 #: 
 msgid "New"
@@ -15159,10 +15139,6 @@ msgid "Online"
 msgstr "Online"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "Hap një dritare 30-sekondëshe për regjistrimin e pajisjeve në:"
-
-#: 
 msgid "Pending"
 msgstr "Në pritje"
 
@@ -15681,10 +15657,6 @@ msgstr "Format date jo i vlefshëm"
 #: 
 msgid "Loading event editor…"
 msgstr "Po ngarkohet redaktori i eventit…"
-
-#: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "Asnjë kalendarar nuk është zgjedhur — ky event do të ruhet por nuk do të shfaqet në asnjë pamje kalendarike."
 
 #: 
 msgid "No group"
