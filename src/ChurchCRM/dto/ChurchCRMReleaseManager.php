@@ -605,13 +605,167 @@ class ChurchCRMReleaseManager
     }
 
     /**
+     * Fetch all stable releases from GitHub, cached in session under ChurchCRMAllStableReleases.
+     * Returns releases sorted descending (newest first).
+     *
+     * @return ChurchCRMRelease[]
+     */
+    private static function fetchAllStableReleasesForPreview(): array
+    {
+        if (!empty($_SESSION['ChurchCRMAllStableReleases'])) {
+            return $_SESSION['ChurchCRMAllStableReleases'];
+        }
+
+        $client = new Client();
+        try {
+            $gitHubReleases = $client->repo()
+                ->releases()
+                ->all(
+                    self::GITHUB_USER_NAME,
+                    self::GITHUB_REPOSITORY_NAME
+                );
+        } catch (\Exception $e) {
+            LoggerUtils::getAppLogger()->warning('Failed to fetch all releases for preview', ['error' => $e->getMessage()]);
+            return array_values(array_filter(
+                $_SESSION['ChurchCRMReleases'] ?? [],
+                fn (ChurchCRMRelease $r): bool => !$r->isPreRelease()
+            ));
+        }
+
+        $stableReleases = [];
+        foreach ($gitHubReleases as $r) {
+            $release = new ChurchCRMRelease($r);
+            if (!$release->isPreRelease()) {
+                $stableReleases[] = $release;
+            }
+        }
+
+        usort($stableReleases, fn (ChurchCRMRelease $a, ChurchCRMRelease $b): int => version_compare($b->__toString(), $a->__toString()));
+        $_SESSION['ChurchCRMAllStableReleases'] = $stableReleases;
+        return $stableReleases;
+    }
+
+    /**
+     * Returns all stable releases newer than the installed version, sorted ascending.
+     *
+     * @return ChurchCRMRelease[]
+     */
+    public static function getReleasesAhead(string $installedVersionStr): array
+    {
+        $installedRelease = new ChurchCRMRelease(['name' => $installedVersionStr]);
+        $allStable = self::fetchAllStableReleasesForPreview();
+
+        $ahead = array_values(array_filter(
+            $allStable,
+            fn (ChurchCRMRelease $r): bool => version_compare($r->__toString(), $installedRelease->__toString()) > 0
+        ));
+
+        usort($ahead, fn (ChurchCRMRelease $a, ChurchCRMRelease $b): int => version_compare($a->__toString(), $b->__toString()));
+        return $ahead;
+    }
+
+    /**
+     * Find a fully-populated release object by version string (has download assets).
+     */
+    public static function getReleaseByVersion(string $version): ?ChurchCRMRelease
+    {
+        $allStable = self::fetchAllStableReleasesForPreview();
+        foreach ($allStable as $release) {
+            if ($release->__toString() === $version) {
+                return $release;
+            }
+        }
+        foreach ($_SESSION['ChurchCRMReleases'] ?? [] as $release) {
+            if ($release->__toString() === $version) {
+                return $release;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Download a specific release by version string.
+     *
+     * @return array Upgrade file information (fileName, fullPath, releaseNotes, sha1)
+     * @throws \Exception
+     */
+    public static function downloadSpecificRelease(string $version): array
+    {
+        $release = self::getReleaseByVersion($version);
+        if ($release === null) {
+            throw new \Exception('Release ' . $version . ' not found in available releases.');
+        }
+        LoggerUtils::getAppLogger()->info('Downloading specific release: ' . $version);
+        return self::downloadRelease($release);
+    }
+
+    /**
      * Check if a system update is available for the current installation
      * Returns an array with 'available' (bool) and 'version' (ChurchCRMRelease|null) keys
      *
      * @return array{available: bool, version: ChurchCRMRelease|null, latestVersion: ChurchCRMRelease|null}
      */
-    public static function checkSystemUpdateAvailable(): array
+    /**
+     * Build preview data for the "What's New" wizard step.
+     * Returns next release notes, upgrade path (all releases ahead), and version selector list.
+     */
+    public static function getUpgradePreviewData(): array
     {
+        $installedVersionStr = \ChurchCRM\Utils\VersionUtils::getInstalledVersion();
+        $installedRelease = new ChurchCRMRelease(['name' => $installedVersionStr]);
+
+        if (empty($_SESSION['ChurchCRMReleases'])) {
+            $_SESSION['ChurchCRMReleases'] = self::populateReleases();
+        }
+
+        $nextRelease = self::getNextReleaseStep($installedRelease);
+        $releasesAhead = self::getReleasesAhead($installedVersionStr);
+
+        $githubBaseUrl = 'https://github.com/' . self::GITHUB_USER_NAME . '/' . self::GITHUB_REPOSITORY_NAME;
+        $changelogBaseUrl = $githubBaseUrl . '/blob/master/changelog/';
+
+        // Determine bump type relative to previous in the chain
+        $pathEntries = [];
+        $prevRelease = $installedRelease;
+        foreach ($releasesAhead as $release) {
+            if ($release->MAJOR > $prevRelease->MAJOR) {
+                $type = 'major';
+            } elseif ($release->MINOR > $prevRelease->MINOR) {
+                $type = 'minor';
+            } else {
+                $type = 'patch';
+            }
+            $versionStr = $release->__toString();
+            $pathEntries[] = [
+                'version'      => $versionStr,
+                'type'         => $type,
+                'notes'        => $release->getReleaseNotes(),
+                'changelogUrl' => $changelogBaseUrl . $versionStr . '.md',
+                'isNext'       => $nextRelease !== null && $release->__toString() === $nextRelease->__toString(),
+            ];
+            $prevRelease = $release;
+        }
+
+        $nextVersionStr = $nextRelease !== null ? $nextRelease->__toString() : null;
+        $latestVersionStr = !empty($releasesAhead) ? end($releasesAhead)->__toString() : $installedVersionStr;
+
+        return [
+            'installedVersion' => $installedVersionStr,
+            'nextVersion'      => $nextVersionStr,
+            'latestVersion'    => $latestVersionStr,
+            'nextReleaseNotes' => $nextRelease !== null ? $nextRelease->getReleaseNotes() : '',
+            'nextChangelogUrl' => $nextVersionStr !== null ? $changelogBaseUrl . $nextVersionStr . '.md' : null,
+            'releasesAhead'    => count($releasesAhead),
+            'upgradePath'      => $pathEntries,
+        ];
+    }
+
+    /**
+     * Check if a system update is available for the current installation
+     * Returns an array with 'available' (bool) and 'version' (ChurchCRMRelease|null) keys
+     *
+     * @return array{available: bool, version: ChurchCRMRelease|null, latestVersion: ChurchCRMRelease|null}
+     */
         try {
             $logger = LoggerUtils::getAppLogger();
             $installedVersionString = VersionUtils::getInstalledVersion();

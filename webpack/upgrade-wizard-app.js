@@ -1,6 +1,13 @@
 /**
  * Upgrade Wizard Application Logic
  * Handles the upgrade wizard workflow using bs-stepper
+ *
+ * Step indices:
+ *   0 - Pre-flight
+ *   1 - Backup
+ *   2 - What's New
+ *   3 - Download & Apply
+ *   4 - Complete
  */
 
 import Stepper from "bs-stepper";
@@ -23,11 +30,15 @@ marked.use({
 
 let upgradeStepper;
 
+// Stores the version the user wants to download (may be overridden by target selector)
+let selectedTargetVersion = null;
+
+// Stores changelog URL for the installed version after upgrade completes
+let installedChangelogUrl = null;
+
 // Ensure AdminAPIRequest is available - fallback to regular APIRequest if not defined
 if (window.CRM && !window.CRM.AdminAPIRequest) {
   window.CRM.AdminAPIRequest = (options) => {
-    // Fallback: if AdminAPIRequest is not defined, assume it's the same as APIRequest
-    // The path should already be prefixed with admin/api/
     if (!options.method) {
       options.method = "GET";
     } else {
@@ -51,42 +62,40 @@ if (window.CRM && !window.CRM.AdminAPIRequest) {
  * Initialize the upgrade wizard when DOM is ready
  */
 $(document).ready(() => {
-  // Verify AdminAPIRequest is available
   if (!window.CRM?.AdminAPIRequest) {
     console.error("AdminAPIRequest not available - upgrade wizard cannot proceed");
     return;
   }
 
-  // Initialize bs-stepper
   upgradeStepper = new Stepper(document.querySelector("#upgrade-stepper"), {
     linear: true,
     animation: false,
   });
 
-  // Set up event handlers
   setupNavigationHandlers();
   setupStepHandlers();
   setupRefreshButton();
   setupForceReinstallButton();
 
-  // Listen for step changes — mark completed steps and auto-download on apply step
   const stepElements = document.querySelectorAll("#upgrade-stepper .step");
   document.querySelector("#upgrade-stepper").addEventListener("show.bs-stepper", (event) => {
     // Mark all previous steps as completed
     for (let i = 0; i < event.detail.to; i++) {
       stepElements[i].classList.add("completed");
-      // Replace icon with checkmark for completed steps
       const circle = stepElements[i].querySelector(".bs-stepper-circle");
       if (circle) {
         circle.innerHTML = '<i class="fa fa-check"></i>';
       }
     }
 
-    // Auto-download when entering the apply step (index 2)
+    // What's New step (index 2): fetch preview
     if (event.detail.to === 2) {
-      setTimeout(() => {
-        autoDownloadUpdate();
-      }, 300);
+      setTimeout(() => fetchUpgradePreview(), 300);
+    }
+
+    // Download & Apply step (index 3): auto-download
+    if (event.detail.to === 3) {
+      setTimeout(() => autoDownloadUpdate(), 300);
     }
   });
 });
@@ -95,13 +104,23 @@ $(document).ready(() => {
  * Set up navigation button handlers
  */
 function setupNavigationHandlers() {
-  // Warning step - accept and continue
   $("#acceptWarnings").click(() => {
     upgradeStepper.next();
   });
 
-  // Backup step navigation
   $("#backup-next").click(() => {
+    upgradeStepper.next();
+  });
+
+  // "Download & Install" — stores the selected version then advances to download step
+  $("#proceedToDownload").click(() => {
+    const sel = $("#targetVersionSelect").val();
+    selectedTargetVersion = sel && sel !== "" ? sel : null;
+    upgradeStepper.next();
+  });
+
+  // "Continue Anyway" on error state
+  $("#skipWhatsNew").click(() => {
     upgradeStepper.next();
   });
 }
@@ -123,7 +142,6 @@ function setupBackupStep() {
     const $backupStatus = $("#backupStatus");
     const $resultFiles = $("#resultFiles");
 
-    // Show loading state
     $button
       .prop("disabled", true)
       .html(`<span class="spinner-border spinner-border-sm me-1"></span>${i18next.t("Creating Backup...")}`);
@@ -145,7 +163,6 @@ function setupBackupStep() {
         $resultFiles.html(`<button class="btn btn-primary" id="downloadbutton" role="button" onclick="window.UpgradeWizard.downloadBackup('${data.BackupDownloadFileName}')">
                 <i class="fa-solid fa-download me-1"></i>${i18next.t("Download Backup & Continue")}
             </button>`);
-        // Hide backup/skip buttons
         $button.addClass("d-none");
         $("#skipBackup").addClass("d-none");
 
@@ -153,7 +170,6 @@ function setupBackupStep() {
           $(this)
             .prop("disabled", true)
             .html(`<i class="fa-solid fa-check me-1"></i>${i18next.t("Downloaded")}`);
-          // Auto-advance to next step after download starts
           setTimeout(() => {
             upgradeStepper.next();
           }, 1000);
@@ -184,7 +200,6 @@ function setupBackupStep() {
       });
   });
 
-  // Skip Backup — show warning and advance to next step
   $("#skipBackup").click(function () {
     $("#backupStatus").html(`<div class="alert alert-warning">
             <div class="d-flex align-items-center">
@@ -197,7 +212,6 @@ function setupBackupStep() {
         </div>`);
     $(this).addClass("d-none");
     $("#doBackup").addClass("d-none");
-    // Advance to next step after a brief pause for the alert to render
     setTimeout(() => {
       upgradeStepper.next();
     }, 300);
@@ -205,12 +219,186 @@ function setupBackupStep() {
 }
 
 /**
- * Auto-download update when step is shown
+ * Fetch upgrade preview data and render the What's New step
+ */
+function fetchUpgradePreview() {
+  const $loading = $("#whatsNewLoading");
+  const $content = $("#whatsNewContent");
+  const $error = $("#whatsNewError");
+
+  $loading.removeClass("d-none");
+  $content.addClass("d-none");
+  $error.addClass("d-none");
+
+  window.CRM.AdminAPIRequest({
+    method: "GET",
+    path: "upgrade/preview",
+  })
+    .done((data) => {
+      $loading.addClass("d-none");
+      renderWhatsNew(data);
+      $content.removeClass("d-none");
+    })
+    .fail((xhr) => {
+      $loading.addClass("d-none");
+      let msg = i18next.t("Could not load release information.");
+      if (xhr.responseJSON?.message) {
+        msg = xhr.responseJSON.message;
+      }
+      $("#whatsNewErrorMsg").text(msg);
+      $error.removeClass("d-none");
+    });
+}
+
+/**
+ * Render the What's New content from preview API response
+ */
+function renderWhatsNew(data) {
+  const { nextVersion, nextReleaseNotes, nextChangelogUrl, releasesAhead, upgradePath } = data;
+
+  // Version heading
+  $("#whatsNewVersion").text(nextVersion || "");
+
+  // Changelog link
+  if (nextChangelogUrl) {
+    $("#whatsNewChangelogLink").attr("href", nextChangelogUrl).removeClass("d-none");
+  }
+
+  // Release notes
+  $("#whatsNewNotes").html(marked.parse(nextReleaseNotes || ""));
+
+  // Store the changelog URL for the completion screen (use the version being installed)
+  installedChangelogUrl = nextChangelogUrl || null;
+
+  // Upgrade path panel (only when ≥ 2 releases ahead)
+  if (releasesAhead >= 2 && upgradePath && upgradePath.length >= 2) {
+    const count = upgradePath.length;
+    $("#upgradePathSummary").html(
+      `${i18next.t("You are")} <strong>${count}</strong> ${i18next.t("releases behind. Here's what you'll gain:")}`,
+    );
+    renderUpgradePath(upgradePath);
+    $("#upgradePathPanel").removeClass("d-none");
+  }
+
+  // Target version selector
+  renderVersionSelector(upgradePath, nextVersion);
+}
+
+/**
+ * Render the collapsible upgrade path accordion
+ */
+function renderUpgradePath(upgradePath) {
+  const $accordion = $("#upgradePathAccordion").empty();
+
+  upgradePath.forEach((entry, idx) => {
+    const collapseId = `upgradePath-${idx}`;
+    const typeBadge = badgeForType(entry.type);
+    const isNextBadge = entry.isNext
+      ? `<span class="badge bg-primary-lt text-primary ms-1">${i18next.t("installing next")}</span>`
+      : "";
+    const changelogLink = entry.changelogUrl
+      ? `<a href="${entry.changelogUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost-secondary btn-sm ms-auto">
+           <i class="fa fa-external-link me-1"></i>${i18next.t("Changelog")}
+         </a>`
+      : "";
+
+    const notes = marked.parse(entry.notes || "");
+
+    $accordion.append(`
+      <div class="upgrade-path-entry">
+        <button class="upgrade-path-header collapse-toggle d-flex align-items-center gap-2 w-100 text-start py-2 px-3 border-0 bg-transparent"
+            data-bs-toggle="collapse" data-bs-target="#${collapseId}" aria-expanded="false">
+          <i class="fa fa-chevron-down upgrade-path-chevron text-secondary small"></i>
+          <span class="fw-semibold">${escapeHtml(entry.version)}</span>
+          ${typeBadge}
+          ${isNextBadge}
+          ${changelogLink}
+        </button>
+        <div id="${collapseId}" class="collapse upgrade-path-notes px-3 pb-2">
+          <div class="release-notes p-3 border rounded">${notes}</div>
+        </div>
+      </div>
+    `);
+  });
+}
+
+/**
+ * Render the target version selector
+ */
+function renderVersionSelector(upgradePath, defaultNextVersion) {
+  const $select = $("#targetVersionSelect").empty();
+  if (!upgradePath || upgradePath.length === 0) {
+    $("#advancedVersionCollapse").closest(".mb-4").addClass("d-none");
+    return;
+  }
+
+  // Default option
+  $select.append(`<option value="">${i18next.t("Recommended")}: ${escapeHtml(defaultNextVersion || "")}</option>`);
+
+  upgradePath.forEach((entry) => {
+    const label = `${entry.version} (${entry.type})`;
+    $select.append(`<option value="${escapeHtml(entry.version)}">${escapeHtml(label)}</option>`);
+  });
+
+  // Update the "What's New" notes when selection changes
+  $select.on("change", function () {
+    const ver = $(this).val();
+    if (!ver) {
+      // Reset to default next version notes
+      const defaultEntry = upgradePath.find((e) => e.isNext);
+      if (defaultEntry) {
+        $("#whatsNewVersion").text(defaultEntry.version);
+        $("#whatsNewNotes").html(marked.parse(defaultEntry.notes || ""));
+        if (defaultEntry.changelogUrl) {
+          $("#whatsNewChangelogLink").attr("href", defaultEntry.changelogUrl).removeClass("d-none");
+        }
+        installedChangelogUrl = defaultEntry.changelogUrl || null;
+      }
+    } else {
+      const entry = upgradePath.find((e) => e.version === ver);
+      if (entry) {
+        $("#whatsNewVersion").text(entry.version);
+        $("#whatsNewNotes").html(marked.parse(entry.notes || ""));
+        if (entry.changelogUrl) {
+          $("#whatsNewChangelogLink").attr("href", entry.changelogUrl).removeClass("d-none");
+        }
+        installedChangelogUrl = entry.changelogUrl || null;
+      }
+    }
+  });
+}
+
+/**
+ * Return a Tabler badge HTML string for a release type label
+ */
+function badgeForType(type) {
+  const map = {
+    major: "bg-danger-lt text-danger",
+    minor: "bg-azure-lt text-azure",
+    patch: "bg-secondary-lt text-secondary",
+  };
+  const cls = map[type] || map.patch;
+  return `<span class="badge ${cls}">${escapeHtml(type)}</span>`;
+}
+
+/**
+ * Minimal HTML escaping for user-supplied version strings
+ */
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+/**
+ * Auto-download update when the Download & Apply step is shown
  */
 function autoDownloadUpdate() {
   const $downloadStatus = $("#downloadStatus");
 
-  // Check if already downloaded
   if (window.CRM.updateFile) {
     $("#updateDetails").removeClass("d-none");
     $("#applyButtonContainer").removeClass("d-none");
@@ -218,21 +406,25 @@ function autoDownloadUpdate() {
   }
 
   $downloadStatus.html(`<div class="alert alert-info">
-        <span class="spinner-border spinner-border-sm me-2"></span>${i18next.t("Downloading latest release from GitHub...")}
+        <span class="spinner-border spinner-border-sm me-2"></span>${i18next.t("Downloading release from GitHub...")}
     </div>`);
 
   performDownload();
 }
 
 /**
- * Perform the actual download operation
+ * Perform the actual download operation, using selectedTargetVersion if set
  */
 function performDownload() {
   const $downloadStatus = $("#downloadStatus");
 
+  const path = selectedTargetVersion
+    ? `upgrade/download-latest-release?version=${encodeURIComponent(selectedTargetVersion)}`
+    : "upgrade/download-latest-release";
+
   window.CRM.AdminAPIRequest({
     method: "GET",
-    path: "upgrade/download-latest-release",
+    path,
   })
     .done((data) => {
       window.CRM.updateFile = data;
@@ -241,14 +433,11 @@ function performDownload() {
             <i class="fa-solid fa-check-circle me-2"></i>${i18next.t("Update package downloaded successfully.")}
         </div>`);
 
-      // Show update details
       $("#updateFileName").text(data.fileName);
       $("#updateFullPath").text(data.fullPath);
       $("#releaseNotes").html(marked.parse(data.releaseNotes || ""));
       $("#updateSHA1").text(data.sha1);
       $("#updateDetails").removeClass("d-none");
-
-      // Show apply button after download completes
       $("#applyButtonContainer").removeClass("d-none");
     })
     .fail((xhr, _status, error) => {
@@ -279,7 +468,6 @@ function performDownload() {
             <i class="fa-solid fa-times-circle me-2"></i>${errorMessage}
         </div>`);
 
-      // Show manual retry button
       $downloadStatus.append(`<button class="btn btn-warning mt-2" id="retryDownload">
                 <i class="fa-solid fa-redo me-2"></i>${i18next.t("Retry Download")}
             </button>`);
@@ -314,29 +502,26 @@ function setupApplyStep() {
       }),
     })
       .done((_data) => {
-        // Hide spinner
         $spinner.removeClass("active");
 
         $applyStatus.html(`<div class="alert alert-success">
                 <i class="fa-solid fa-check-circle me-2"></i><strong>${i18next.t("System upgrade completed successfully!")}</strong>
             </div>`);
 
-        // Auto-advance to final step and logout after a brief delay
         setTimeout(() => {
           upgradeStepper.next();
 
-          // Log out the user
-          $.ajax({
-            url: `${window.CRM.root}/session/end`,
-            type: "GET",
-          });
+          // Show changelog link for the installed version
+          if (installedChangelogUrl) {
+            $("#completionChangelogLink").attr("href", installedChangelogUrl).removeClass("d-none");
+          }
 
-          // Start countdown and redirect to login
+          $.ajax({ url: `${window.CRM.root}/session/end`, type: "GET" });
+
           var countdown = 5;
           var countdownInterval = setInterval(() => {
             countdown--;
             $("#upgradeRedirectCountdown strong").text(countdown);
-
             if (countdown <= 0) {
               clearInterval(countdownInterval);
               window.location.href = `${window.CRM.root}/`;
@@ -345,7 +530,6 @@ function setupApplyStep() {
         }, 1000);
       })
       .fail((xhr, _status, error) => {
-        // Hide spinner
         $spinner.removeClass("active");
 
         let errorMessage = i18next.t("Upgrade failed. Please check the logs.");
@@ -375,7 +559,6 @@ function setupApplyStep() {
 
 /**
  * Download backup file
- * @param {string} filename - The backup filename to download
  */
 function downloadBackup(filename) {
   window.location = `${window.CRM.root}/admin/api/database/download/${filename}`;
@@ -384,10 +567,7 @@ function downloadBackup(filename) {
     </div>`);
 }
 
-// Export functions to global scope for onclick handlers
-window.UpgradeWizard = {
-  downloadBackup,
-};
+window.UpgradeWizard = { downloadBackup };
 
 /**
  * Setup refresh from GitHub button
@@ -398,12 +578,10 @@ function setupRefreshButton() {
     const $spinner = $("#upgradeSpinner");
     const $icon = $button.find("i");
 
-    // Disable button and show spinner
     $button.prop("disabled", true);
     $icon.removeClass("fa-sync").addClass("fa-circle-notch fa-spin");
     $spinner.addClass("active");
 
-    // Call refresh API
     window.CRM.AdminAPIRequest({
       method: "POST",
       path: "upgrade/refresh-upgrade-info",
@@ -414,8 +592,6 @@ function setupRefreshButton() {
           type: "success",
           delay: 1500,
         });
-
-        // Reload the page after a short delay
         setTimeout(() => {
           window.location.reload();
         }, 1500);
@@ -429,30 +605,23 @@ function setupRefreshButton() {
         if (xhr.responseJSON?.message) {
           errorMessage = xhr.responseJSON.message;
         }
-
-        window.CRM.notify(errorMessage, {
-          type: "error",
-          delay: 5000,
-        });
+        window.CRM.notify(errorMessage, { type: "error", delay: 5000 });
       });
   });
 }
 
 /**
- * Setup force reinstall button - allows re-downloading and applying the current version
+ * Setup force reinstall button
  */
 function setupForceReinstallButton() {
-  // Open modal on button click
   $("#forceReinstall").click(() => {
     const modal = new bootstrap.Modal(document.getElementById("forceReinstallModal"));
     modal.show();
   });
 
-  // Confirm action inside modal
   $("#confirmForceReinstall").click(() => {
     bootstrap.Modal.getInstance(document.getElementById("forceReinstallModal")).hide();
 
-    // Navigate to backup step
     upgradeStepper.to(0);
     setTimeout(() => {
       upgradeStepper.to(1);

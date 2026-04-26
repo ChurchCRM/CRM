@@ -234,6 +234,36 @@
   transform: rotate(180deg);
 }
 
+/* ── Upgrade path list ── */
+.upgrade-path-list {
+  border: 1px solid var(--tblr-border-color, #e6e7e9);
+  border-radius: var(--tblr-border-radius, 4px);
+  overflow: hidden;
+}
+
+.upgrade-path-entry + .upgrade-path-entry {
+  border-top: 1px solid var(--tblr-border-color, #e6e7e9);
+}
+
+.upgrade-path-header {
+  font-size: 0.875rem;
+  background: var(--tblr-bg-surface-secondary, #f8fafc);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.upgrade-path-header:hover {
+  background: var(--tblr-bg-surface, #fff);
+}
+
+.upgrade-path-chevron {
+  transition: transform 0.2s;
+}
+
+.upgrade-path-header[aria-expanded="true"] .upgrade-path-chevron {
+  transform: rotate(180deg);
+}
+
 /* ── Full-page spinner overlay ── */
 #upgradeSpinner {
   display: none;

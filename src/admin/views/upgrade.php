@@ -74,6 +74,13 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                             </button>
                         </div>
                         <div class="line"></div>
+                        <div class="step" data-target="#step-whats-new">
+                            <button type="button" class="step-trigger" role="tab" aria-controls="step-whats-new" id="step-whats-new-trigger">
+                                <span class="bs-stepper-circle"><i class="fa fa-newspaper"></i></span>
+                                <span class="bs-stepper-label"><?= gettext("What's New") ?></span>
+                            </button>
+                        </div>
+                        <div class="line"></div>
                         <div class="step" data-target="#step-apply">
                             <button type="button" class="step-trigger" role="tab" aria-controls="step-apply" id="step-apply-trigger">
                                 <span class="bs-stepper-circle"><i class="fa fa-cloud-arrow-down"></i></span>
@@ -184,7 +191,75 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                             </div>
                         </div>
 
-                        <!-- Step 3: Download and Apply Update -->
+                        <!-- Step 3: What's New -->
+                        <div id="step-whats-new" class="content p-4" role="tabpanel" aria-labelledby="step-whats-new-trigger">
+                            <div id="whatsNewLoading" class="text-center py-4">
+                                <span class="spinner-border spinner-border-sm me-2"></span><?= gettext('Loading release information...') ?>
+                            </div>
+
+                            <div id="whatsNewContent" class="d-none">
+                                <!-- Upgrade path panel (shown when ≥2 releases behind) -->
+                                <div id="upgradePathPanel" class="d-none mb-4">
+                                    <div class="alert alert-info d-flex align-items-center gap-2 mb-2">
+                                        <i class="fa fa-layer-group"></i>
+                                        <span id="upgradePathSummary"></span>
+                                    </div>
+                                    <a href="#upgradePathCollapse" class="collapse-toggle d-inline-flex align-items-center gap-1 text-secondary text-decoration-none small fw-medium mb-2"
+                                        data-bs-toggle="collapse" aria-expanded="false">
+                                        <i class="fa fa-chevron-down"></i>
+                                        <?= gettext('Show full upgrade path') ?>
+                                    </a>
+                                    <div id="upgradePathCollapse" class="collapse">
+                                        <div id="upgradePathAccordion" class="upgrade-path-list mb-2"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Next release notes -->
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <h4 class="mb-0">
+                                        <i class="fa fa-tag me-1 text-primary"></i>
+                                        <?= gettext("What's New in") ?> <span id="whatsNewVersion" class="text-primary"></span>
+                                    </h4>
+                                    <a id="whatsNewChangelogLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-ghost-secondary btn-sm d-none">
+                                        <i class="fa fa-external-link me-1"></i><?= gettext('Full changelog') ?>
+                                    </a>
+                                </div>
+                                <div id="whatsNewNotes" class="release-notes p-3 border rounded mb-4"></div>
+
+                                <!-- Advanced: target version selector -->
+                                <div class="mb-4">
+                                    <a href="#advancedVersionCollapse" class="collapse-toggle d-inline-flex align-items-center gap-1 text-secondary text-decoration-none small fw-medium"
+                                        data-bs-toggle="collapse" aria-expanded="false">
+                                        <i class="fa fa-chevron-down"></i>
+                                        <?= gettext('Advanced: choose a specific target version') ?>
+                                    </a>
+                                    <div id="advancedVersionCollapse" class="collapse mt-2">
+                                        <div class="card card-sm">
+                                            <div class="card-body">
+                                                <p class="text-secondary small mb-2"><?= gettext('By default the wizard downloads the next recommended release. You may instead choose any available version below.') ?></p>
+                                                <select class="form-select form-select-sm" id="targetVersionSelect" style="max-width: 220px;"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-primary" id="proceedToDownload">
+                                    <i class="fa fa-cloud-arrow-down me-1"></i><?= gettext('Download & Install') ?>
+                                </button>
+                            </div>
+
+                            <div id="whatsNewError" class="d-none">
+                                <div class="alert alert-warning">
+                                    <i class="fa fa-triangle-exclamation me-2"></i>
+                                    <span id="whatsNewErrorMsg"></span>
+                                </div>
+                                <button class="btn btn-primary" id="skipWhatsNew">
+                                    <?= gettext('Continue Anyway') ?> <i class="fa fa-arrow-right ms-1"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Download and Apply Update -->
                         <div id="step-apply" class="content p-4" role="tabpanel" aria-labelledby="step-apply-trigger">
                             <p class="text-secondary mb-3"><?= gettext('Download the latest release and apply it to your installation.') ?></p>
 
@@ -220,7 +295,7 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                             </div>
                         </div>
 
-                        <!-- Step 4: Complete -->
+                        <!-- Step 5: Complete -->
                         <div id="step-complete" class="content p-4" role="tabpanel" aria-labelledby="step-complete-trigger">
                             <div class="empty py-5">
                                 <div class="empty-icon"><i class="fa fa-circle-check text-success fa-4x"></i></div>
@@ -232,6 +307,11 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                                         <li><?= gettext('Database schema upgraded automatically') ?></li>
                                         <li><?= gettext('Orphaned files from previous versions cleaned up') ?></li>
                                     </ul>
+                                </div>
+                                <div class="mt-3">
+                                    <a id="completionChangelogLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-ghost-primary btn-sm d-none">
+                                        <i class="fa fa-book-open me-1"></i><?= gettext('View release notes') ?>
+                                    </a>
                                 </div>
                                 <div class="mt-4 text-secondary">
                                     <div class="spinner-border spinner-border-sm me-1" role="status"></div>
