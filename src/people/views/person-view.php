@@ -601,8 +601,8 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                                             <span class="text-secondary"><?= $item['text'] ?> <?= gettext($item['header']) ?></span>
                                                         <?php } else { ?>
                                                             <strong>
-                                                                <?php if (in_array('headerlink', $item)) { ?>
-                                                                    <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
+                                                                <?php if (!empty($item['headerLink'])) { ?>
+                                                                    <a href="<?= $item['headerLink'] ?>"><?= $item['header'] ?></a>
                                                                 <?php } else { ?>
                                                                     <?= $item['header'] ?>
                                                                 <?php } ?>
@@ -659,7 +659,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                     <div class="list-group-item">
                                         <div class="d-flex align-items-center">
                                             <div class="me-auto">
-                                                <a href="<?= SystemURLs::getRootPath() ?>/groups/view/<?= $grp_ID ?>" class="fw-bold"><?= $grp_Name ?></a>
+                                                <a href="<?= SystemURLs::getRootPath() ?>/groups/view/<?= $grp_ID ?>" class="fw-bold"><?= InputUtils::escapeHTML($grp_Name) ?></a>
                                                 <?php if ((int)$grp_Type !== 0) { ?>
                                                 <span class="badge bg-info-lt text-info ms-2"><?= InputUtils::escapeHTML($groupTypeName) ?></span>
                                                 <?php } ?>
@@ -709,7 +709,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                     </div>
                     <div class="tab-pane" id="volunteer">
                         <?php
-                        $sAssignedVolunteerOpps = ',';
+                        $assignedVolIDs = [];
                         if (count($assignedVolunteerOppsData) === 0) {
                         ?>
                             <div class="text-center text-muted py-4">
@@ -734,6 +734,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                 $vol_ID          = $aRow->getId();
                                 $vol_Name        = $aRow->getName();
                                 $vol_Description = $aRow->getDescription();
+                                $assignedVolIDs[] = (int) $vol_ID;
                                 echo '<tr>';
                                 echo '<td><strong>' . InputUtils::escapeHTML($vol_Name) . '</strong></td>';
                                 echo '<td>' . InputUtils::escapeHTML($vol_Description) . '</td>';
@@ -747,7 +748,6 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                 }
 
                                 echo '</tr>';
-                                $sAssignedVolunteerOpps .= $vol_ID . ',';
                             }
                             echo '</tbody>';
                             echo '</table>';
@@ -770,7 +770,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                                     foreach ($allVolunteerOppsData as $aRow) {
                                                         $vol_ID   = $aRow->getId();
                                                         $vol_Name = $aRow->getName();
-                                                        if (strlen(strstr($sAssignedVolunteerOpps, ',' . $vol_ID . ',')) === 0) {
+                                                        if (!in_array((int) $vol_ID, $assignedVolIDs, true)) {
                                                             echo '<option value="' . InputUtils::escapeAttribute($vol_ID) . '">' . InputUtils::escapeHTML($vol_Name) . '</option>';
                                                         }
                                                     } ?>
