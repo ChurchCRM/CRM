@@ -167,7 +167,7 @@ echo $sError;
                 echo '<td class="text-center">' . $count++ . '</td>';
                 echo '<td><div class="d-flex align-items-center">';
                 echo '<img data-image-entity-type="person" data-image-entity-id="' . $cartPerson->getId() . '" class="avatar avatar-sm rounded-circle me-2" alt="" />';
-                echo '<a href="PersonView.php?PersonID=' . $cartPerson->getId() . '">' . InputUtils::escapeHTML($cartPerson->getFullName()) . '</a>';
+                echo '<a href="' . $cartPerson->getViewURI() . '">' . InputUtils::escapeHTML($cartPerson->getFullName()) . '</a>';
                 echo '</div></td>';
 
                 echo '<td class="text-center">';

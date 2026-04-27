@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Service\UserService;
 use ChurchCRM\Utils\InputUtils;
 
@@ -131,7 +132,7 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                     <?php foreach ($rsUsers as $user) { ?>
                         <tr>
                             <td>
-                                <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $user->getId() ?>"><?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?></a>
+                                <a href="<?= Person::getViewURIForId($user->getId()) ?>"><?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?></a>
                             </td>
                             <td>
                                 <code><?= InputUtils::escapeHTML($user->getUserName()) ?></code>

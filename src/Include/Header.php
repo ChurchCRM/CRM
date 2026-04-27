@@ -7,6 +7,7 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\view\MenuRenderer;
 use ChurchCRM\Service\SystemService;
@@ -349,7 +350,7 @@ $MenuFirst = 1;
             </div>
           </a>
           <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-            <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $currentUser->getPersonId() ?>"
+            <a href="<?= Person::getViewURIForId($currentUser->getPersonId()) ?>"
                class="dropdown-item">
               <i class="ti ti-user me-2"></i><?= gettext("Profile") ?>
             </a>
