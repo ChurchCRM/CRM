@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/../../Include/PageInit.php';
+
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
@@ -7,9 +9,9 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
-use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOpportunityQuery;
 use ChurchCRM\Service\PersonService;
+use ChurchCRM\Service\PropertyService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\CustomFieldUtils;
@@ -163,27 +165,9 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
         ->orderByOrder()
         ->find();
 
-    // ── Assigned properties (raw SQL, for display and edit) ──────────────────
-    $sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
-        FROM record2property_r2p
-        LEFT JOIN property_pro ON pro_ID = r2p_pro_ID
-        LEFT JOIN propertytype_prt ON propertytype_prt.prt_ID = property_pro.pro_prt_ID
-        WHERE pro_Class = 'p' AND r2p_record_ID = " . $iPersonID .
-        ' ORDER BY prt_Name, pro_Name';
-    $rsAssignedProperties    = RunQuery($sSQL);
-    $assignedPropertiesData  = [];
-    while ($row = mysqli_fetch_array($rsAssignedProperties, MYSQLI_ASSOC)) {
-        $assignedPropertiesData[] = $row;
-    }
-
-    // ORM collection used for the property assign dropdown filtering
-    $assignedPropertiesOrm = $person->getProperties();
-
-    // ── All properties for the assign dropdown ───────────────────────────────
-    $allPropertiesData = PropertyQuery::create()
-        ->filterByProClass('p')
-        ->orderByProName()
-        ->find();
+    // ── Properties (ORM via PropertyService — mirrors master's PersonView.php) ─
+    $assignedPersonProperties = PropertyService::getAssigned($person);
+    $allPersonProperties      = PropertyService::getAll($person);
 
     // ── Computed display values ──────────────────────────────────────────────
     $dBirthDate              = $person->getFormattedBirthDate();
@@ -265,10 +249,9 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
         // Volunteer opps
         'assignedVolunteerOppsData' => $assignedVolunteerOppsData,
         'allVolunteerOppsData'      => $allVolunteerOppsData,
-        // Properties
-        'assignedPropertiesData'    => $assignedPropertiesData,
-        'allPropertiesData'         => $allPropertiesData,
-        'assignedPropertiesOrm'     => $assignedPropertiesOrm,
+        // Properties (ORM)
+        'assignedPersonProperties'  => $assignedPersonProperties,
+        'allPersonProperties'       => $allPersonProperties,
         // Map & Timeline
         'personMapConfig'        => $personMapConfig,
         'familyHasCoords'        => $familyHasCoords,
