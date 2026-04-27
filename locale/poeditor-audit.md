@@ -17,7 +17,12 @@
 | `zh-cn` | Chinese | 3829 | 100% | 🟢 Complete | ✅ Yes |
 | `zh-tw` | Chinese (TW) | 3829 | 100% | 🟢 Complete | ✅ Yes |
 | `cs` | Czech | 3829 | 100% | 🟢 Complete | ✅ Yes |
+| `nl` | Dutch | 3829 | 100% | 🟢 Complete | ✅ Yes |
+| `et` | Estonian | 3829 | 100% | 🟢 Complete | ✅ Yes |
+| `fil` | Filipino | 3829 | 100% | 🟢 Complete | ✅ Yes |
 | `fi` | Finnish | 3829 | 100% | 🟢 Complete | ✅ Yes |
+| `fr` | French | 3829 | 100% | 🟢 Complete | ✅ Yes |
+| `de` | German | 3829 | 100% | 🟢 Complete | ✅ Yes |
 | `el` | Greek | 3829 | 100% | 🟢 Complete | ✅ Yes |
 | `he` | Hebrew | 3829 | 100% | 🟢 Complete | ✅ Yes |
 | `hi` | Hindi | 3829 | 100% | 🟢 Complete | ✅ Yes |
@@ -27,6 +32,8 @@
 | `ja` | Japanese | 3829 | 100% | 🟢 Complete | ✅ Yes |
 | `ko` | Korean | 3829 | 100% | 🟢 Complete | ✅ Yes |
 | `ml` | Malayalam | 3829 | 100% | 🟢 Complete | ✅ Yes |
+| `nb` | Norwegian Bokmål | 3829 | 100% | 🟢 Complete | ✅ Yes |
+| `pl` | Polish | 3829 | 100% | 🟢 Complete | ✅ Yes |
 | `pt` | Portuguese | 3829 | 100% | 🟢 Complete | ✅ Yes |
 | `pt-br` | Portuguese (BR) | 3829 | 100% | 🟢 Complete | ✅ Yes |
 | `ro` | Romanian | 3829 | 100% | 🟢 Complete | ✅ Yes |
@@ -37,20 +44,13 @@
 | `es-mx` | Spanish (MX) | 3829 | 100% | 🟢 Complete | ✅ Yes |
 | `es-sv` | Spanish (SV) | 3829 | 100% | 🟢 Complete | ✅ Yes |
 | `sw` | Swahili | 3829 | 100% | 🟢 Complete | ✅ Yes |
+| `sv` | Swedish | 3829 | 100% | 🟢 Complete | ✅ Yes |
 | `ta` | Tamil | 3829 | 100% | 🟢 Complete | ✅ Yes |
 | `te` | Telugu | 3829 | 100% | 🟢 Complete | ✅ Yes |
 | `th` | Thai | 3829 | 100% | 🟢 Complete | ✅ Yes |
+| `tr` | Turkish | 3829 | 100% | 🟢 Complete | ✅ Yes |
 | `uk` | Ukrainian | 3829 | 100% | 🟢 Complete | ✅ Yes |
 | `vi` | Vietnamese | 3829 | 100% | 🟢 Complete | ✅ Yes |
-| `nl` | Dutch | 3828 | 99.97% | 🟢 Complete | ✅ Yes |
-| `et` | Estonian | 3828 | 99.97% | 🟢 Complete | ✅ Yes |
-| `fr` | French | 3828 | 99.97% | 🟢 Complete | ✅ Yes |
-| `de` | German | 3828 | 99.97% | 🟢 Complete | ✅ Yes |
-| `nb` | Norwegian Bokmål | 3828 | 99.97% | 🟢 Complete | ✅ Yes |
-| `pl` | Polish | 3828 | 99.97% | 🟢 Complete | ✅ Yes |
-| `tr` | Turkish | 3828 | 99.97% | 🟢 Complete | ✅ Yes |
-| `sv` | Swedish | 3827 | 99.95% | 🟢 Complete | ✅ Yes |
-| `fil` | Filipino | 3826 | 99.92% | 🟢 Complete | ✅ Yes |
 | `my` | Burmese | 66 | 1.72% | 🟠 Needs Work | ❌ No |
 | `sl` | Slovenian | 65 | 1.7% | 🟠 Needs Work | ❌ No |
 | `sr-cyrl` | Serbian (Cyrillic) | 58 | 1.51% | 🟠 Needs Work | ❌ No |

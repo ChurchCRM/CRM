@@ -15917,6 +15917,10 @@ msgid "Get this from the plugin author. The installer will refuse the download i
 msgstr "Vraag dit op bij de auteur van de plugin. Het installatieprogramma weigert de download als deze niet byte-voor-byte overeenkomt."
 
 #: 
+msgid "Homepage"
+msgstr "Startpagina"
+
+#: 
 msgid "Install"
 msgstr "Installeren"
 

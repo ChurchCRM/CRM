@@ -3853,6 +3853,7 @@
     "Verified": "Doğrulandı",
     "What this plugin does:": "Bu eklentinin işlevi:",
     "downloadUrl, sha256, and pluginId are all required for unverified installs.": "Doğrulanmamış yüklemeler için downloadUrl, sha256 ve pluginId alanlarının tümü gereklidir.",
+    "risk": "risk",
     "Name cannot be empty": "Ad boş olamaz",
     "Name cannot be longer than %d characters": "Ad %d karakterden uzun olamaz",
     "Need help? Contact us": "Yardım mı lazım? Bize ulaşın",

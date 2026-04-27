@@ -15561,6 +15561,10 @@ msgid "View full photo"
 msgstr "Voir la photo en entier"
 
 #: 
+msgid "page."
+msgstr "page."
+
+#: 
 msgid "user:"
 msgstr "utilisateur :"
 

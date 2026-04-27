@@ -16104,6 +16104,10 @@ msgid "downloadUrl, sha256, and pluginId are all required for unverified install
 msgstr "Doğrulanmamış yüklemeler için downloadUrl, sha256 ve pluginId alanlarının tümü gereklidir."
 
 #: 
+msgid "risk"
+msgstr "risk"
+
+#: 
 msgid "Name cannot be empty"
 msgstr "Ad boş olamaz"
 

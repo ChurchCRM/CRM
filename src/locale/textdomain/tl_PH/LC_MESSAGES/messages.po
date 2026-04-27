@@ -15913,6 +15913,10 @@ msgid "Get this from the plugin author. The installer will refuse the download i
 msgstr "Kunin ito mula sa may-akda ng plugin. Tatanggihan ng installer ang pag-download kung hindi ito tugma byte-for-byte."
 
 #: 
+msgid "Homepage"
+msgstr "Pangunahing Pahina"
+
+#: 
 msgid "Install"
 msgstr "I-install"
 
@@ -15957,6 +15961,10 @@ msgid "Must be an immutable release URL served over HTTPS."
 msgstr "Dapat ay isang hindi nababago na release URL na ibinibigay sa pamamagitan ng HTTPS."
 
 #: 
+msgid "Plugin id"
+msgstr "ID ng Plugin"
+
+#: 
 msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
 msgstr "Ang plugin ay na-install bilang HINDI BINERIPIKA. Maingat na suriin ang mga extracted na file bago i-enable."
 
@@ -15995,6 +16003,10 @@ msgstr "Nasa quarantine"
 #: 
 msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
 msgstr "Suriin ang mga file ng plugin sa disk bago i-enable. Ang mga hindi bineripikahang plugin ay tumatakbo gamit ang parehong mga pahintulot tulad ng mga naaprubahang plugin."
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "SHA-256 checksum"
 
 #: 
 msgid "SHA-256 must be a 64-character hex string."
