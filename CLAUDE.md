@@ -93,6 +93,13 @@ After updating a skill file, also check if [`.claude/projects/.../memory/MEMORY.
 
 ---
 
+## After PR Review Sessions
+
+- After completing PR review fixes and pushing, always update the relevant skill files in `.claude/skills/` with new learnings (cypress-testing.md, api-development.md, git-workflow.md, etc.) before ending the session
+- If no genuine new learnings emerged, explicitly say so rather than padding with trivia
+
+---
+
 ## Always-Apply Standards
 
 These rules apply to **every code change** in this project.
@@ -130,6 +137,12 @@ Even if you are confident the changes are correct, even if the user said "fix th
 ## Git & PR Workflow
 
 @.agents/skills/churchcrm/git-workflow.md
+
+### Branch Hygiene
+
+- Before committing skill/memory/doc updates, always verify current branch with `git branch --show-current` and switch to master or a dedicated docs branch if on a feature branch
+- Never commit cross-cutting documentation changes onto an unrelated feature branch
+- If uncommitted changes exist when starting a new task, stash or commit them first and confirm branch state before proceeding
 
 ### Always Resolve PR Comments After Push
 
@@ -183,6 +196,12 @@ When fixing a failed test:
 - `code-standards.md` — General best practices
 
 **Remember: Skills get documented the moment you learn something. Never defer skill updates.**
+
+### Test Data Assumptions
+
+- Never assume Cypress test fixtures or library data (e.g., Yasumi holidays) have specific shapes without verifying — check the actual data source first
+- Always include leading slashes in `cy.visit()` URLs
+- When tests reference country/locale-specific data, prefer locales with documented variety (e.g., Netherlands for multi-category holidays)
 
 ---
 
