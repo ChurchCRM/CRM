@@ -5,8 +5,10 @@ require_once __DIR__ . '/Include/PageInit.php';
 require_once __DIR__ . '/Include/QuillEditorHelper.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\NoteQuery;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
@@ -32,9 +34,9 @@ if (isset($_GET['FamilyID'])) {
 
 // To which page do we send the user if they cancel?
 if ($iPersonID > 0) {
-    $sBackPage = 'PersonView.php?PersonID=' . $iPersonID;
+    $sBackPage = Person::getViewURIForId($iPersonID);
 } else {
-    $sBackPage = 'people/family/' . $iFamilyID;
+    $sBackPage = Family::getFamilyViewURIForId($iFamilyID);
 }
 
 // Has the form been submitted?

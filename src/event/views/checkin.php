@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Utils\InputUtils;
 
 $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
@@ -230,7 +231,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <div class="d-flex align-items-center">
                             <img data-image-entity-type="person" data-image-entity-id="<?= $att['personId'] ?>"
                                  class="avatar avatar-sm rounded-circle me-2" alt="" />
-                            <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $att['personId'] ?>"><?= InputUtils::escapeHTML($att['fullName']) ?></a>
+                            <a href="<?= Person::getViewURIForId($att['personId']) ?>"><?= InputUtils::escapeHTML($att['fullName']) ?></a>
                         </div>
                     </td>
                     <td><?= $att['checkinDate'] ? InputUtils::escapeHTML($att['checkinDate']) : '' ?></td>
@@ -244,7 +245,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <i class="ti ti-dots-vertical"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $att['personId'] ?>">
+                                <a class="dropdown-item" href="<?= Person::getViewURIForId($att['personId']) ?>">
                                     <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
                                 </a>
                                 <?php if ($att['familyId']): ?>

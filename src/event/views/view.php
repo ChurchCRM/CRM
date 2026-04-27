@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Utils\InputUtils;
 
 $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
@@ -119,7 +120,7 @@ $inactive = (int) $event->getInActive() === 1;
               <?php foreach ($attendees as $att): ?>
                 <tr>
                   <td>
-                    <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $att['personId'] ?>">
+                    <a href="<?= Person::getViewURIForId($att['personId']) ?>">
                       <?= InputUtils::escapeHTML($att['fullName']) ?>
                     </a>
                   </td>

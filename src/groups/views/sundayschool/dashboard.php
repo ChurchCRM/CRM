@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
@@ -327,7 +328,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <td>
                             <div class="d-flex align-items-center">
                                 <img data-image-entity-type="person" data-image-entity-id="<?= $kidId ?>" class="avatar avatar-xs rounded-circle me-2" alt="" />
-                                <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $kidId ?>">
+                                <a href="<?= Person::getViewURIForId($kidId) ?>">
                                     <?= InputUtils::escapeHTML($firstName) ?>
                                 </a>
                             </div>
@@ -342,7 +343,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     <i class="ti ti-dots-vertical"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-end">
-                                    <a class="dropdown-item" href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $kidId ?>">
+                                    <a class="dropdown-item" href="<?= Person::getViewURIForId($kidId) ?>">
                                         <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
                                     </a>
                                     <a class="dropdown-item" href="<?= $sRootPath ?>/PersonEditor.php?PersonID=<?= $kidId ?>">

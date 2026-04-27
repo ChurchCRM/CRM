@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\PropertyService;
@@ -412,7 +413,7 @@ $bOkToEdit = (
                         $displayLink ="";
                         if ((int)$type_ID === 9) {
                             $displayIcon ="fa-solid fa-person-half-dress";
-                            $displayLink = SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $currentData;
+                            $displayLink = Person::getViewURIForId((int) $currentData);
                         } elseif ((int)$type_ID === 11) {
                             $custom_Special = null;
                             $displayIcon ="fa-solid fa-phone";
@@ -595,7 +596,7 @@ $bOkToEdit = (
                                             <span class="fw-bold"><?= $familyMember->getFullName() ?></span>
                                             <i class="fa-solid fa-circle-user text-primary ms-2" title="<?= gettext('Current person') ?>"></i>
                                         <?php } else { ?>
-                                            <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $tmpPersonId ?>"><?= $familyMember->getFullName() ?></a>
+                                            <a href="<?= $familyMember->getViewURI() ?>"><?= $familyMember->getFullName() ?></a>
                                         <?php } ?>
                                     </div>
                                 </td>
@@ -902,7 +903,7 @@ $bOkToEdit = (
 
                                 if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
                                     echo '<td class="text-end">';
-                                    echo '<a class="btn btn-sm btn-danger" href="' . SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $per_ID . '&RemoveVO=' . $vol_ID . '" title="' . gettext('Remove') . '">';
+                                    echo '<a class="btn btn-sm btn-danger" href="' . Person::getViewURIForId($per_ID) . '&RemoveVO=' . $vol_ID . '" title="' . gettext('Remove') . '">';
                                     echo '<i class="fa-solid fa-trash"></i>';
                                     echo '</a>';
                                     echo '</td>';
@@ -923,7 +924,7 @@ $bOkToEdit = (
                                     </h5>
                                 </div>
                                 <div class="card-body">
-                                    <form method="post" action="PersonView.php?PersonID=<?= $iPersonID ?>">
+                                    <form method="post" action="<?= Person::getViewURIForId($iPersonID) ?>">
                                         <div class="row">
                                             <div class="mb-3 col-md-6">
                                                 <label for="input-volunteer-opportunities"><?= gettext('Select Opportunities') ?></label>
