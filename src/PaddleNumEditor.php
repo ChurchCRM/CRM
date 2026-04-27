@@ -5,6 +5,8 @@ require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
+use ChurchCRM\model\ChurchCRM\MultibuyMb;
+use ChurchCRM\model\ChurchCRM\MultibuyMbQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -51,19 +53,24 @@ if (isset($_POST['PaddleNumSubmit']) || isset($_POST['PaddleNumSubmitAndAdd']) |
         $mbName = 'MBItem' . $di_ID;
         $iMBCount = (int) InputUtils::legacyFilterInput($_POST[$mbName], 'int');
         if ($iMBCount > 0) { // count for this item is positive.  If a multibuy record exists, update it.  If not, create it.
-            $sqlNumBought = 'SELECT mb_count from multibuy_mb WHERE mb_per_ID=' . $iPerID . ' AND mb_item_ID=' . (int)$di_ID;
-            $rsNumBought = RunQuery($sqlNumBought);
-            $numBoughtRow = mysqli_fetch_array($rsNumBought);
-            if ($numBoughtRow) {
-                $sSQL = 'UPDATE multibuy_mb SET mb_count=' . $iMBCount . ' WHERE mb_per_ID=' . $iPerID . ' AND mb_item_ID=' . (int)$di_ID;
-                RunQuery($sSQL);
+            $existingMb = MultibuyMbQuery::create()
+                ->filterByMbPerId($iPerID)
+                ->filterByMbItemId((int) $di_ID)
+                ->findOne();
+            if ($existingMb !== null) {
+                $existingMb->setMbCount($iMBCount)->save();
             } else {
-                $sSQL = 'INSERT INTO multibuy_mb (mb_per_ID, mb_item_ID, mb_count) VALUES (' . $iPerID . ',' . (int)$di_ID . ',' . $iMBCount . ')';
-                RunQuery($sSQL);
+                (new MultibuyMb())
+                    ->setMbPerId($iPerID)
+                    ->setMbItemId((int) $di_ID)
+                    ->setMbCount($iMBCount)
+                    ->save();
             }
         } else { // count is zero, if it was positive before there is a multibuy record that needs to be deleted
-            $sSQL = 'DELETE FROM multibuy_mb WHERE mb_per_ID=' . $iPerID . ' AND mb_item_ID=' . (int)$di_ID;
-            RunQuery($sSQL);
+            MultibuyMbQuery::create()
+                ->filterByMbPerId($iPerID)
+                ->filterByMbItemId((int) $di_ID)
+                ->delete();
         }
     }
 
@@ -181,10 +188,11 @@ require_once __DIR__ . '/Include/Header.php';
           $rsMBItems = RunQuery($sMultibuyItemsSQL);
           while ($aRow = mysqli_fetch_array($rsMBItems)) {
               extract($aRow);
-              $sqlNumBought = 'SELECT mb_count from multibuy_mb WHERE mb_per_ID=' . $iPerID . ' AND mb_item_ID=' . $di_ID;
-              $rsNumBought = RunQuery($sqlNumBought);
-              $numBoughtRow = mysqli_fetch_array($rsNumBought);
-              $mb_count = $numBoughtRow ? $numBoughtRow['mb_count'] : 0;
+              $existingMb = MultibuyMbQuery::create()
+                  ->filterByMbPerId($iPerID)
+                  ->filterByMbItemId((int) $di_ID)
+                  ->findOne();
+              $mb_count = $existingMb !== null ? $existingMb->getMbCount() : 0;
               ?>
             <div class="mb-3">
               <label class="form-label" for="MBItem<?= (int)$di_ID ?>"><?= InputUtils::escapeHTML($di_title) ?></label>

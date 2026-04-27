@@ -852,42 +852,19 @@
         </vendor>
     </table>
 
-    <!--
- <table name="istlookup_lu" idMethod="native" phpName="IstlookupLu" >
-   <column name="lu_fam_ID" phpName="LuFamId" type="SMALLINT" size="9" primaryKey="true" required="true" defaultValue="0"/>
-   <column name="lu_LookupDateTime" phpName="LuLookupdatetime" type="TIMESTAMP" required="true" defaultValue="2016-01-01 00:00:00"/>
-   <column name="lu_DeliveryLine1" phpName="LuDeliveryline1" type="VARCHAR" size="255"/>
-   <column name="lu_DeliveryLine2" phpName="LuDeliveryline2" type="VARCHAR" size="255"/>
-   <column name="lu_City" phpName="LuCity" type="VARCHAR" size="50"/>
-   <column name="lu_State" phpName="LuState" type="VARCHAR" size="50"/>
-   <column name="lu_ZipAddon" phpName="LuZipaddon" type="VARCHAR" size="50"/>
-   <column name="lu_Zip" phpName="LuZip" type="VARCHAR" size="10"/>
-   <column name="lu_Addon" phpName="LuAddon" type="VARCHAR" size="10"/>
-   <column name="lu_LOTNumber" phpName="LuLotnumber" type="VARCHAR" size="10"/>
-   <column name="lu_DPCCheckdigit" phpName="LuDpccheckdigit" type="VARCHAR" size="10"/>
-   <column name="lu_RecordType" phpName="LuRecordtype" type="VARCHAR" size="10"/>
-   <column name="lu_LastLine" phpName="LuLastline" type="VARCHAR" size="255"/>
-   <column name="lu_CarrierRoute" phpName="LuCarrierroute" type="VARCHAR" size="10"/>
-   <column name="lu_ReturnCodes" phpName="LuReturncodes" type="VARCHAR" size="10"/>
-   <column name="lu_ErrorCodes" phpName="LuErrorcodes" type="VARCHAR" size="10"/>
-   <column name="lu_ErrorDesc" phpName="LuErrordesc" type="VARCHAR" size="255"/>
-   <vendor type="mysql">
-     <parameter name="Engine" value="InnoDB"/>
-   </vendor>
- </table>
- <table name="multibuy_mb" idMethod="native" phpName="MultibuyMb" >
-   <column name="mb_ID" phpName="MbId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
-   <column name="mb_per_ID" phpName="MbPerId" type="SMALLINT" size="9" required="true" defaultValue="0"/>
-   <column name="mb_item_ID" phpName="MbItemId" type="SMALLINT" size="9" required="true" defaultValue="0"/>
-   <column name="mb_count" phpName="MbCount" type="DECIMAL" size="8" scale="0"/>
-   <unique name="mb_ID">
-     <unique-column name="mb_ID"/>
-   </unique>
-   <vendor type="mysql">
-     <parameter name="Engine" value="InnoDB"/>
-   </vendor>
- </table>
- -->
+
+    <table name="multibuy_mb" idMethod="native" phpName="MultibuyMb">
+        <column name="mb_ID" phpName="MbId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="mb_per_ID" phpName="MbPerId" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+        <column name="mb_item_ID" phpName="MbItemId" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+        <column name="mb_count" phpName="MbCount" type="DECIMAL" size="8" scale="0"/>
+        <unique name="mb_ID">
+            <unique-column name="mb_ID"/>
+        </unique>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
 
     <table name="paddlenum_pn" idMethod="native" phpName="PaddlenumPn" >
         <column name="pn_ID" phpName="PnId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
@@ -902,41 +879,29 @@
         </vendor>
     </table>
 
-    <!--
- <table name="queryparameteroptions_qpo" idMethod="native" phpName="QueryparameteroptionsQpo" description="Defines the values for the parameters for each query">
-   <column name="qpo_ID" phpName="QpoId" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
-   <column name="qpo_qrp_ID" phpName="QpoQrpId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
-   <column name="qpo_Display" phpName="QpoDisplay" type="VARCHAR" size="50" required="true" defaultValue=""/>
-   <column name="qpo_Value" phpName="QpoValue" type="VARCHAR" size="50" required="true" defaultValue=""/>
-   <unique name="qpo_ID">
-     <unique-column name="qpo_ID"/>
-   </unique>
-   <vendor type="mysql">
-     <parameter name="Engine" value="InnoDB"/>
-   </vendor>
- </table>
 
- <table name="result_res" idMethod="native" phpName="ResultRes" description="contains the results of authorizations from electronic payments">
-   <column name="res_ID" phpName="ResId" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
-   <column name="res_echotype1" phpName="ResEchotype1" type="LONGVARCHAR" required="true"/>
-   <column name="res_echotype2" phpName="ResEchotype2" type="LONGVARCHAR" required="true"/>
-   <column name="res_echotype3" phpName="ResEchotype3" type="LONGVARCHAR" required="true"/>
-   <column name="res_authorization" phpName="ResAuthorization" type="LONGVARCHAR" required="true"/>
-   <column name="res_order_number" phpName="ResOrderNumber" type="LONGVARCHAR" required="true"/>
-   <column name="res_reference" phpName="ResReference" type="LONGVARCHAR" required="true"/>
-   <column name="res_status" phpName="ResStatus" type="LONGVARCHAR" required="true"/>
-   <column name="res_avs_result" phpName="ResAvsResult" type="LONGVARCHAR" required="true"/>
-   <column name="res_security_result" phpName="ResSecurityResult" type="LONGVARCHAR" required="true"/>
-   <column name="res_mac" phpName="ResMac" type="LONGVARCHAR" required="true"/>
-   <column name="res_decline_code" phpName="ResDeclineCode" type="LONGVARCHAR" required="true"/>
-   <column name="res_tran_date" phpName="ResTranDate" type="LONGVARCHAR" required="true"/>
-   <column name="res_merchant_name" phpName="ResMerchantName" type="LONGVARCHAR" required="true"/>
-   <column name="res_version" phpName="ResVersion" type="LONGVARCHAR" required="true"/>
-   <column name="res_EchoServer" phpName="ResEchoserver" type="LONGVARCHAR" required="true"/>
-   <vendor type="mysql">
-     <parameter name="Engine" value="InnoDB"/>
-   </vendor>
- </table>
- -->
+    <table name="result_res" idMethod="native" phpName="ResultRes" description="contains the results of authorizations from electronic payments">
+        <column name="res_ID" phpName="ResId" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="res_echotype1" phpName="ResEchotype1" type="LONGVARCHAR" required="true"/>
+        <column name="res_echotype2" phpName="ResEchotype2" type="LONGVARCHAR" required="true"/>
+        <column name="res_echotype3" phpName="ResEchotype3" type="LONGVARCHAR" required="true"/>
+        <column name="res_authorization" phpName="ResAuthorization" type="LONGVARCHAR" required="true"/>
+        <column name="res_order_number" phpName="ResOrderNumber" type="LONGVARCHAR" required="true"/>
+        <column name="res_reference" phpName="ResReference" type="LONGVARCHAR" required="true"/>
+        <column name="res_status" phpName="ResStatus" type="LONGVARCHAR" required="true"/>
+        <column name="res_avs_result" phpName="ResAvsResult" type="LONGVARCHAR" required="true"/>
+        <column name="res_security_result" phpName="ResSecurityResult" type="LONGVARCHAR" required="true"/>
+        <column name="res_mac" phpName="ResMac" type="LONGVARCHAR" required="true"/>
+        <column name="res_decline_code" phpName="ResDeclineCode" type="LONGVARCHAR" required="true"/>
+        <column name="res_tran_date" phpName="ResTranDate" type="LONGVARCHAR" required="true"/>
+        <column name="res_merchant_name" phpName="ResMerchantName" type="LONGVARCHAR" required="true"/>
+        <column name="res_version" phpName="ResVersion" type="LONGVARCHAR" required="true"/>
+        <column name="res_EchoServer" phpName="ResEchoserver" type="LONGVARCHAR" required="true"/>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+
 
 </database>
