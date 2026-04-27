@@ -193,7 +193,7 @@ while ($row = mysqli_fetch_array($rsPaddleNums)) {
             }
 
             // Batch-load donors for those items (keyed by per_ID)
-            $donorIds = array_filter(array_unique(array_map(fn ($di) => $di->getDonorId(), $donatedItemsById)));
+            $donorIds = array_filter(array_unique(array_map(fn ($di) => $di->getDonorId(), $donatedItemsById)), fn ($x) => $x !== null && $x !== 0);
             $personsById = [];
             if (!empty($donorIds)) {
                 foreach (PersonQuery::create()->filterById(array_values($donorIds))->find() as $person) {
@@ -202,7 +202,7 @@ while ($row = mysqli_fetch_array($rsPaddleNums)) {
             }
 
             // Batch-load families for those donors (keyed by fam_ID)
-            $famIds = array_filter(array_unique(array_map(fn ($p) => $p->getFamId(), $personsById)));
+            $famIds = array_filter(array_unique(array_map(fn ($p) => $p->getFamId(), $personsById)), fn ($x) => $x !== null && $x !== 0);
             $familiesById = [];
             if (!empty($famIds)) {
                 foreach (FamilyQuery::create()->filterById(array_values($famIds))->find() as $family) {
