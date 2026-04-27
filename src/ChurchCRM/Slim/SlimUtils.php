@@ -363,7 +363,7 @@ class SlimUtils
                         . 'const originalHTML = btn.innerHTML;'
                         . 'btn.innerHTML = \'<i class="ti ti-check"></i>\';'
                         . 'setTimeout(() => {btn.innerHTML = originalHTML;}, 2000);'
-                        . '});'
+                        . '}).catch(() => { /* clipboard unavailable — no-op */ });'
                         . '});'
                         . '</script>';
                 }

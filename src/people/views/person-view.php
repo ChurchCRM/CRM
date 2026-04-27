@@ -38,7 +38,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                     <!-- Photo (left) — click to upload -->
                     <div class="flex-shrink-0 position-relative" style="width: 120px; aspect-ratio: 1 / 1;">
                         <a href="#" id="uploadImageButton" class="d-block w-100 h-100" title="<?= $bOkToEdit ? gettext("Click to upload photo") : gettext("View Photo") ?>">
-                            <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="photo-profile w-100 h-100 object-fit-cover" style="border-radius: var(--tblr-border-radius) 0 0 var(--tblr-border-radius);">
+                            <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" alt="" class="photo-profile w-100 h-100 object-fit-cover" style="border-radius: var(--tblr-border-radius) 0 0 var(--tblr-border-radius);">
                         </a>
                         <button type="button"
                                 class="photo-view-overlay btn btn-sm position-absolute bottom-0 end-0 m-1 d-none"
@@ -64,9 +64,9 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                         ?>
                         <ul class="list-unstyled mb-0">
                             <li class="mb-1"><i class="fa <?= $genderClass ?> me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= $genderText ?></li>
-                            <li class="mb-1"><i class="fa-solid fa-id-card me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= gettext($sClassName) ?></li>
+                            <li class="mb-1"><i class="fa-solid fa-id-card me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= InputUtils::escapeHTML(gettext($sClassName)) ?></li>
                             <?php if (!empty($sFamRole)) : ?>
-                            <li class="mb-1"><i class="fa-solid fa-users me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= gettext($sFamRole) ?></li>
+                            <li class="mb-1"><i class="fa-solid fa-users me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= InputUtils::escapeHTML(gettext($sFamRole)) ?></li>
                             <?php endif; ?>
                             <?php if ($per_MembershipDate) : ?>
                             <li class="mb-1"><i class="fa-solid fa-calendar-check me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= gettext('Since') ?> <?= DateTimeUtils::formatDate($per_MembershipDate, false) ?></li>
@@ -682,7 +682,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                                             if ((int)$type_ID === 11) {
                                                                 $prop_Special = null;
                                                             }
-                                                            echo '<br><small class="text-muted"><strong>' . $prop_Name . '</strong>: ' . CustomFieldUtils::display($type_ID, $currentData, $prop_Special) . '</small>';
+                                                            echo '<br><small class="text-muted"><strong>' . InputUtils::escapeHTML($prop_Name) . '</strong>: ' . CustomFieldUtils::display($type_ID, $currentData, $prop_Special) . '</small>';
                                                         }
                                                     }
                                                 } ?>
@@ -867,7 +867,8 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                     console.error('Photo uploader function not found in window._CRM_createPhotoUploader');
                 }
 
-                // Initialize Uppy photo uploader
+                // Initialize Uppy photo uploader (edit-only)
+                <?php if ($bOkToEdit): ?>
                 if (typeof window.CRM.createPhotoUploader === 'function') {
                     window.CRM.photoUploader = window.CRM.createPhotoUploader({
                         uploadUrl: window.CRM.root + '/api/person/<?= $iPersonID ?>/photo',
@@ -891,6 +892,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                 } else {
                     console.error('window.CRM.createPhotoUploader is not a function');
                 }
+                <?php endif; ?>
 
             });
         </script>

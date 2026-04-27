@@ -36,7 +36,7 @@ $app->post('/view/{personID:[0-9]+}', function (Request $request, Response $resp
     if ($currentUser->isEditRecordsEnabled()) {
         $personService = new PersonService();
         $parsedBody    = $request->getParsedBody();
-        $volIDs        = $parsedBody['VolunteerOpportunityIDs'] ?? [];
+        $volIDs        = is_array($parsedBody) ? ($parsedBody['VolunteerOpportunityIDs'] ?? []) : [];
         if (!empty($volIDs)) {
             foreach ($volIDs as $volID) {
                 $personService->addVolunteerOpportunity($iPersonID, (int) $volID);
