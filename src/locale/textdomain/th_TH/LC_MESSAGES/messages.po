@@ -2991,10 +2991,6 @@ msgid "Add Church Event"
 msgstr "เพิ่มกิจกรรมคริสตจักร"
 
 #: 
-msgid "List Event Types"
-msgstr "รายการประเภทกิจกรรม"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "เช็คอินและเช็คเอาท์"
 
@@ -5459,10 +5455,6 @@ msgstr "ไม่มีโทเค็นการเข้าถึงปฏิ
 #: 
 msgid "User must have Delete Records permission"
 msgstr "ผู้ใช้ต้องมีสิทธิ์ลบระเบียน"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "URL การแจ้งเตือนส่วนกลาง ChurchCRM"
 
 #: 
 msgid "invalid event type id"
@@ -9341,10 +9333,6 @@ msgid "Important"
 msgstr "สำคัญ"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "ติดตั้งปลั๊กอินโดยวางไว้ใน"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "รหัสไม่ถูกต้อง โปรดลองอีกครั้ง"
 
@@ -10619,10 +10607,6 @@ msgid "Connect with others"
 msgstr "เชื่อมต่อกับผู้อื่น"
 
 #: 
-msgid "Contact us"
-msgstr "ติดต่อเรา"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "แปลงข้อมูลบุคคลเป็นหน่วยครอบครัว"
 
@@ -11305,10 +11289,6 @@ msgstr "การเปลี่ยนชื่อต้องบันทึก
 #: 
 msgid "Name, address, contact details"
 msgstr "ชื่อ ที่อยู่ ข้อมูลการติดต่อ"
-
-#: 
-msgid "Need help?"
-msgstr "ต้องการความช่วยเหลือ?"
 
 #: 
 msgid "New"
@@ -15130,10 +15110,6 @@ msgid "Online"
 msgstr "ออนไลน์"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "เปิดหน้าต่าง 30 วินาทีสำหรับอุปกรณ์ลงทะเบียนที่:"
-
-#: 
 msgid "Pending"
 msgstr "รอดำเนินการ"
 
@@ -15654,10 +15630,6 @@ msgid "Loading event editor…"
 msgstr "กำลังโหลดตัวแก้ไขกิจกรรม…"
 
 #: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "ยังไม่ได้เลือกปฏิทิน — กิจกรรมนี้จะถูกบันทึกแต่จะไม่แสดงในมุมมองปฏิทินใดๆ"
-
-#: 
 msgid "No group"
 msgstr "ไม่มีพันธกิจ"
 
@@ -15744,4 +15716,380 @@ msgstr "ลบหมายเลข Paddle"
 #: 
 msgid "Invalid security token. Please try again."
 msgstr "โทเค็นความปลอดภัยไม่ถูกต้อง โปรดลองอีกครั้ง"
+
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "เพิ่มวันหยุดนักขัตฤกษ์ลงในปฏิทินหลัก แต่ละประเทศที่เลือกจะกลายเป็นปฏิทินแยกที่สามารถเปิด/ปิดได้ในแถบด้านข้าง"
+
+#: 
+msgid "Choose map provider"
+msgstr "เลือกผู้ให้บริการแผนที่"
+
+#: 
+msgid "Current database"
+msgstr "ฐานข้อมูลปัจจุบัน"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "โดยปกติข้อมูลตัวอย่างจะโหลดเฉพาะการติดตั้งใหม่เท่านั้น การนำเข้าตอนนี้จะเพิ่มระเบียนตัวอย่างควบคู่กับข้อมูลที่มีอยู่และอาจทำให้เกิดข้อมูลซ้ำ"
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "แต่ละประเทศจะแสดงเป็นแถวปฏิทินแยกในแถบด้านข้าง ใช้ปุ่มเปิด/ปิดเพื่อซ่อนประเทศชั่วคราวโดยไม่เปลี่ยนการตั้งค่าปลั๊กอิน"
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "กรองตามหมวดหมู่"
+
+#: 
+msgid "Holiday Settings"
+msgstr "การตั้งค่าวันหยุด"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "วันหยุด (%s)"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "วันหยุดจัดแบ่งตามประเภท: ราชการ, ประเพณี, ธนาคาร, ฤดูกาล และศาสนา เลือกทั้งหมดเพื่อแสดงทุกวันหยุด หรือเลือกเฉพาะประเภทที่ต้องการ"
+
+#: 
+msgid "Import demo data anyway"
+msgstr "นำเข้าข้อมูลตัวอย่างต่อไป"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "ไม่พบรหัสคำมั่นสัญญาทางการเงิน"
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "ยังไม่ได้เลือกประเทศ กรุณาเลือกอย่างน้อยหนึ่งประเทศในการตั้งค่าปลั๊กอินปฏิทินวันหยุด"
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "ไม่พบรายการที่ตรงกับตัวกรองที่เลือก"
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "เปิดใน Apple Maps"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "เปิดใน Google Maps"
+
+#: 
+msgid "Open in new tab"
+msgstr "เปิดในแท็บใหม่"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "การตั้งค่าประเทศ"
+
+#: 
+msgid "Show all"
+msgstr "แสดงทั้งหมด"
+
+#: 
+msgid "Show:"
+msgstr "แสดง:"
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "การแสดงและซ่อนประเทศแต่ละประเทศ"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "สวีเดน"
+
+#: 
+msgid "System"
+msgstr "ระบบ"
+
+#: 
+msgid "Timeline filters"
+msgstr "ตัวกรองไทม์ไลน์"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "หากต้องการเริ่มต้นใหม่ด้วยฐานข้อมูลเปล่า ให้ใช้การรีเซ็ตฐานข้อมูลจากแดชบอร์ดผู้ดูแลระบบก่อนนำเข้าข้อมูลตัวอย่าง"
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "ใช้ตัวเลือกประเทศเพื่อเลือกหนึ่งประเทศหรือมากกว่า แต่ละประเทศที่เพิ่มจะปรากฏเป็นรายการปฏิทินแยกในแถบด้านข้าง"
+
+#: 
+msgid "Your database already contains data"
+msgstr "ฐานข้อมูลของคุณมีข้อมูลอยู่แล้ว"
+
+#: 
+msgid "people"
+msgstr "คน"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "ต้องระบุ downloadUrl เพื่อติดตั้งปลั๊กอิน"
+
+#: 
+msgid "All three fields are required."
+msgstr "ต้องกรอกครบทั้งสามช่อง"
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "ปลั๊กอินชุมชนที่ผ่านการรับรอง"
+
+#: 
+msgid "Browse Approved"
+msgstr "เรียกดูที่ผ่านการรับรอง"
+
+#: 
+msgid "Check for Updates"
+msgstr "ตรวจสอบการอัปเดต"
+
+#: 
+msgid "Checking…"
+msgstr "กำลังตรวจสอบ…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "ล้างการกักกัน"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "ล้างการกักกันหลังจากแก้ไขปัญหาหลักแล้วเท่านั้น เซิร์ฟเวอร์จะปฏิเสธการเปิดใช้งานปลั๊กอินที่ถูกกักกัน"
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "คลิก \"เรียกดูที่ผ่านการรับรอง\" เพื่อติดตั้งปลั๊กอินที่ตรวจสอบแล้ว หรือ \"ติดตั้งจาก URL\" สำหรับเวอร์ชันที่ยังไม่ผ่านการตรวจสอบ"
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "ไม่สามารถล้างการกักกันปลั๊กอินได้"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "ไม่สามารถล้างการกักกันได้"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "ไม่สามารถติดตั้งปลั๊กอินได้"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "ไม่สามารถติดตั้งปลั๊กอินจาก URL ได้"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "ไม่สามารถโหลดรายการปลั๊กอินที่ผ่านการรับรองได้"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "ไม่สามารถโหลดรายการปลั๊กอินที่ผ่านการรับรองได้"
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "ไม่สามารถรีเฟรชรีจิสทรีปลั๊กอินได้"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "ไม่สามารถรีเฟรชรีจิสทรีปลั๊กอินได้ กรุณาตรวจสอบการเชื่อมต่ออินเทอร์เน็ต"
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "ไม่สามารถถอนการติดตั้งปลั๊กอินได้"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "กำลังดึงข้อมูลรีจิสทรีล่าสุด…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "รับข้อมูลนี้จากผู้พัฒนาปลั๊กอิน ตัวติดตั้งจะปฏิเสธการดาวน์โหลดหากไม่ตรงกันทุกบิต"
+
+#: 
+msgid "Homepage"
+msgstr "หน้าหลัก"
+
+#: 
+msgid "Install"
+msgstr "ติดตั้ง"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "ติดตั้งปลั๊กอินจาก URL (ยังไม่ผ่านการตรวจสอบ)"
+
+#: 
+msgid "Install Unverified"
+msgstr "ติดตั้งโดยไม่ผ่านการตรวจสอบ"
+
+#: 
+msgid "Install failed"
+msgstr "การติดตั้งล้มเหลว"
+
+#: 
+msgid "Install from URL"
+msgstr "ติดตั้งจาก URL"
+
+#: 
+msgid "Installing…"
+msgstr "กำลังติดตั้ง…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "รูปแบบ kebab-case ต้องตรงกับชื่อไดเรกทอรีระดับบนสุดภายใน zip และ id ใน plugin.json"
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "กำลังโหลดรายการปลั๊กอินที่ผ่านการรับรอง…"
+
+#: 
+msgid "Loading…"
+msgstr "กำลังโหลด…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "ตรงกับรายการในรายชื่อปลั๊กอินที่ผ่านการรับรอง"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "ต้องเป็น URL ที่ไม่เปลี่ยนแปลงและให้บริการผ่าน HTTPS"
+
+#: 
+msgid "Plugin id"
+msgstr "รหัสปลั๊กอิน"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "ติดตั้งปลั๊กอินในฐานะ ไม่ผ่านการตรวจสอบ กรุณาตรวจสอบไฟล์ที่แตกออกมาก่อนเปิดใช้งาน"
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "ติดตั้งปลั๊กอินแล้ว ตรวจสอบและคลิกเปิดใช้งานเพื่อเปิดใช้"
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "ล้างการกักกันปลั๊กอินแล้ว คุณสามารถเปิดใช้งานปลั๊กอินได้อีกครั้ง"
+
+#: 
+msgid "Plugin quarantined"
+msgstr "ปลั๊กอินถูกกักกัน"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "รีเฟรชรีจิสทรีปลั๊กอินแล้ว"
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "ถอนการติดตั้งปลั๊กอินแล้ว"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "ถอนการติดตั้งปลั๊กอินแล้ว"
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "URL ไฟล์ zip ปลั๊กอิน (HTTPS เท่านั้น)"
+
+#: 
+msgid "Quarantined"
+msgstr "ถูกกักกัน"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "ตรวจสอบไฟล์ปลั๊กอินบนดิสก์ก่อนเปิดใช้งาน ปลั๊กอินที่ไม่ผ่านการตรวจสอบทำงานด้วยสิทธิ์เดียวกับปลั๊กอินที่ผ่านการรับรอง"
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "ค่าตรวจสอบ SHA-256"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "SHA-256 ต้องเป็นสตริงเลขฐานสิบหกขนาด 64 ตัวอักษร"
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "ผู้ดูแล ChurchCRM ยังไม่ได้ตรวจสอบปลั๊กอินนี้ คุณรับผิดชอบด้านความปลอดภัยและพฤติกรรมของสิ่งที่ติดตั้งที่นี่ ควรใช้เส้นทางเรียกดูที่ผ่านการรับรองเมื่อเป็นไปได้"
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "รายการปลั๊กอินที่ผ่านการรับรองว่างเปล่า ยังไม่มีปลั๊กอินของบุคคลที่สามที่พร้อมใช้งานผ่านตัวติดตั้งที่ผ่านการตรวจสอบ"
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "ปลั๊กอินถูกปิดใช้งานโดยอัตโนมัติหลังเกิดข้อผิดพลาดขณะรันไทม์"
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "ปลั๊กอินเหล่านี้ได้รับการตรวจสอบและรับรองโดยผู้ดูแล ChurchCRM คลิกติดตั้งเพื่อดาวน์โหลดและติดตั้ง ปลั๊กอินจะไม่เปิดใช้งานโดยอัตโนมัติ"
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "ปลั๊กอินนี้ไม่อยู่ในรายการปลั๊กอินที่ผ่านการรับรองของ ChurchCRM"
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "ปลั๊กอินนี้จะถูกติดตั้งในฐานะ ไม่ผ่านการตรวจสอบ"
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "URL ต้องใช้ HTTPS"
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "ถอนการติดตั้ง (ลบออกจากดิสก์)"
+
+#: 
+msgid "Unverified plugin"
+msgstr "ปลั๊กอินที่ไม่ผ่านการตรวจสอบ"
+
+#: 
+msgid "Verified"
+msgstr "ผ่านการตรวจสอบแล้ว"
+
+#: 
+msgid "What this plugin does:"
+msgstr "ปลั๊กอินนี้ทำอะไร:"
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "downloadUrl, sha256 และ pluginId จำเป็นต้องระบุทั้งหมดสำหรับการติดตั้งที่ไม่ผ่านการตรวจสอบ"
+
+#: 
+msgid "risk"
+msgstr "ความเสี่ยง"
+
+#: 
+msgid "Name cannot be empty"
+msgstr "ชื่อต้องไม่ว่างเปล่า"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "ชื่อต้องไม่เกิน %d ตัวอักษร"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "ต้องการความช่วยเหลือ? ติดต่อเรา"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "ยังไม่ได้เลือกปฏิทิน กิจกรรมนี้จะปรากฏในปฏิทินระบบ \"กิจกรรมที่ยังไม่ปักหมุด\" จนกว่าคุณจะปักหมุด"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "เปิดหน้าต่าง 2 นาทีให้อุปกรณ์ลงทะเบียนที่:"
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "เวลาใช้เวลาคริสตจักร ({{church}}) ไม่ใช่เวลาเบราว์เซอร์ของคุณ ({{browser}})"
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "ยินดีต้อนรับ — เข้าสู่ระบบเพื่อจัดการชุมชนของคุณ"
 

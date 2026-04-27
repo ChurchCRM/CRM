@@ -10,6 +10,7 @@ Release notes are stored in the [`changelog/`](./changelog/) folder — one file
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| [7.3.0](./changelog/7.3.0.md) | April 2026 | ChurchCRM 7.3.0 expands customization with plugins and fixes timezone issues, Community Plugin System, Timezone refactoring for wall-clock precision, Kiosk support for all group types, Timeline filters on member profiles, Regional language grouping |
 | [7.2.2](./changelog/7.2.2.md) | April 2026 | CSRF hardening (GHSA-3xq9-c86x-cwpp), person delete fix, orphaned images cleanup, 41 locales |
 | [7.2.1](./changelog/7.2.1.md) | April 2026 | Permission consolidation, admin menu bypass fix, photo cache bust, FrankenPHP redirect fix |
 | [7.2.0](./changelog/7.2.0.md) | April 2026 | Event MVC epic, responsive design guidelines, 27 locales translated, GA4 tracking, mobile UX |

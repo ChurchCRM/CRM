@@ -2982,10 +2982,6 @@ msgid "Add Church Event"
 msgstr "Details er activiteit"
 
 #: 
-msgid "List Event Types"
-msgstr "Weergave activiteit per kenmerk"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "Mutaties"
 
@@ -5450,10 +5446,6 @@ msgstr "Het certificaat van toegang tot de kalender is afwezig"
 #: 
 msgid "User must have Delete Records permission"
 msgstr "De gebruiker heeft de rechten nodig om rijen met gegevens te mogen verwijderen"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "De URL voor de centrale meldingen"
 
 #: 
 msgid "invalid event type id"
@@ -9342,10 +9334,6 @@ msgid "Important"
 msgstr "Belangrijk"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "Installeer plugins door ze te plaatsen in"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "Ongeldige code. Probeer het opnieuw."
 
@@ -10621,10 +10609,6 @@ msgid "Connect with others"
 msgstr "Verbinding maken met anderen"
 
 #: 
-msgid "Contact us"
-msgstr "Neem contact op"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Individuele dossiers omzetten naar gezinseenheden"
 
@@ -11307,10 +11291,6 @@ msgstr "Naamswijzigingen moeten worden opgeslagen. Acties voor herordenen en ver
 #: 
 msgid "Name, address, contact details"
 msgstr "Naam, adres, contactgegevens"
-
-#: 
-msgid "Need help?"
-msgstr "Heeft u hulp nodig?"
 
 #: 
 msgid "New"
@@ -15133,10 +15113,6 @@ msgid "Online"
 msgstr "Online"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "Opent een venster van 30 seconden voor apparaten om te registreren bij:"
-
-#: 
 msgid "Pending"
 msgstr "In behandeling"
 
@@ -15657,10 +15633,6 @@ msgid "Loading event editor…"
 msgstr "Evenementeditor laden…"
 
 #: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "Geen agenda geselecteerd — dit evenement wordt opgeslagen maar verschijnt niet in een agendaweergave."
-
-#: 
 msgid "No group"
 msgstr "Geen groep"
 
@@ -15747,4 +15719,380 @@ msgstr "Bodnummer verwijderen"
 #: 
 msgid "Invalid security token. Please try again."
 msgstr "Ongeldig beveiligingstoken. Probeer het opnieuw."
+
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "Voegt officiële feestdagen toe aan de hoofdkalender. Elk geselecteerd land wordt een eigen schakelbare kalender in de zijbalk, zodat gebruikers feestdagen onafhankelijk kunnen tonen of verbergen."
+
+#: 
+msgid "Choose map provider"
+msgstr "Kies kaartprovider"
+
+#: 
+msgid "Current database"
+msgstr "Huidige database"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "Demogegevens worden normaal gesproken alleen bij nieuwe installaties geladen. Importeren voegt nu voorbeeldrecords toe naast uw bestaande gegevens en kan duplicaten veroorzaken."
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "Elk land geeft een eigen kalenderrij in de zijbalk. Gebruik de schakelaar per kalender om een land tijdelijk te verbergen zonder de plugin-instellingen te wijzigen."
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "Filteren op categorie"
+
+#: 
+msgid "Holiday Settings"
+msgstr "Feestdageninstellingen"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "Feestdagen (%s)"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "Feestdagen zijn getagd op type: Officieel, Herdenkingen, Bankfeestdagen, Seizoensgebonden en Religieus. Laat alle categorieën uitgeschakeld om alle feestdagen te tonen, of kies specifieke typen om de weergave te beperken."
+
+#: 
+msgid "Import demo data anyway"
+msgstr "Toch demogegevens importeren"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "Ontbrekende identifier voor financiële toezegging."
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "Er is geen land geselecteerd. Kies ten minste één land in de instellingen van de Feestdagenkalenders plugin."
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "Geen overeenkomende vermeldingen voor de geselecteerde filters."
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "Openen in Apple Maps"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "Openen in Google Maps"
+
+#: 
+msgid "Open in new tab"
+msgstr "Openen in nieuw tabblad"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "Landen instellen"
+
+#: 
+msgid "Show all"
+msgstr "Alles tonen"
+
+#: 
+msgid "Show:"
+msgstr "Tonen:"
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "Afzonderlijke landen tonen en verbergen"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "Zweeds"
+
+#: 
+msgid "System"
+msgstr "Systeem"
+
+#: 
+msgid "Timeline filters"
+msgstr "Tijdlijnfilters"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "Om opnieuw te beginnen met een lege database, gebruik Database resetten vanuit het beheerdashboard voordat u demogegevens importeert."
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "Gebruik de landenkiezer om een of meer landen te kiezen. Elk land dat u toevoegt verschijnt als een aparte kalendervermelding in de zijbalk — zodat u feestdagen voor een internationale gemeente kunt tonen."
+
+#: 
+msgid "Your database already contains data"
+msgstr "Uw database bevat al gegevens"
+
+#: 
+msgid "people"
+msgstr "personen"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "Een downloadUrl is vereist om een plugin te installeren."
+
+#: 
+msgid "All three fields are required."
+msgstr "Alle drie de velden zijn verplicht."
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "Goedgekeurde gemeenschaps-plugins"
+
+#: 
+msgid "Browse Approved"
+msgstr "Goedgekeurde plugins bekijken"
+
+#: 
+msgid "Check for Updates"
+msgstr "Controleren op updates"
+
+#: 
+msgid "Checking…"
+msgstr "Controleren…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "Quarantaine wissen"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "Wis de quarantaine alleen nadat het onderliggende probleem is opgelost. Het inschakelen van een in quarantaine geplaatste plugin wordt door de server geweigerd."
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "Klik hierboven op \"Goedgekeurde plugins bekijken\" om een geverifieerde plugin te installeren, of \"Installeren via URL\" voor een niet-geverifieerde versie tijdens ontwikkeling."
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "Kon plugin-quarantaine niet wissen"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "Kon quarantaine niet wissen"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "Plugin installeren mislukt"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "Plugin installeren via URL mislukt"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "Kon lijst met goedgekeurde plugins niet laden"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "Kon lijst met goedgekeurde plugins niet laden."
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "Kon plugin-register niet vernieuwen"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "Kon plugin-register niet vernieuwen. Controleer uw internetverbinding."
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "Plugin verwijderen mislukt"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "Laatste register ophalen…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "Vraag dit op bij de auteur van de plugin. Het installatieprogramma weigert de download als deze niet byte-voor-byte overeenkomt."
+
+#: 
+msgid "Homepage"
+msgstr "Startpagina"
+
+#: 
+msgid "Install"
+msgstr "Installeren"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "Plugin installeren via URL (niet-geverifieerd)"
+
+#: 
+msgid "Install Unverified"
+msgstr "Niet-geverifieerd installeren"
+
+#: 
+msgid "Install failed"
+msgstr "Installatie mislukt"
+
+#: 
+msgid "Install from URL"
+msgstr "Installeren via URL"
+
+#: 
+msgid "Installing…"
+msgstr "Installeren…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "Kebab-case. Moet overeenkomen met de naam van de hoofdmap in het zip-bestand en de id in plugin.json."
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "Lijst met goedgekeurde plugins laden…"
+
+#: 
+msgid "Loading…"
+msgstr "Laden…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "Komt overeen met een vermelding op de lijst met goedgekeurde plugins"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "Moet een onveranderlijke release-URL zijn die via HTTPS wordt aangeboden."
+
+#: 
+msgid "Plugin id"
+msgstr "Plugin-id"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "Plugin geïnstalleerd als NIET-GEVERIFIEERD. Controleer de uitgepakte bestanden zorgvuldig voordat u deze inschakelt."
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "Plugin geïnstalleerd. Bekijk de plugin en klik op Inschakelen om te activeren."
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "Plugin-quarantaine gewist. U kunt de plugin nu opnieuw inschakelen."
+
+#: 
+msgid "Plugin quarantined"
+msgstr "Plugin in quarantaine geplaatst"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "Plugin-register vernieuwd."
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "Plugin verwijderd"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "Plugin verwijderd."
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "Plugin zip-URL (alleen HTTPS)"
+
+#: 
+msgid "Quarantined"
+msgstr "In quarantaine"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "Controleer de plugin-bestanden op schijf voordat u deze inschakelt. Niet-geverifieerde plugins draaien met dezelfde rechten als goedgekeurde plugins."
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "SHA-256 controlesom"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "SHA-256 moet een hex-reeks van 64 tekens zijn."
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "De ChurchCRM-beheerders hebben dit niet beoordeeld. U bent verantwoordelijk voor de beveiliging en het gedrag van alles wat u hier installeert. Gebruik indien mogelijk de stroom voor goedgekeurde plugins."
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "De lijst met goedgekeurde plugins is leeg. Er zijn nog geen externe plugins beschikbaar via het geverifieerde installatieprogramma."
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "De plugin is automatisch uitgeschakeld na een runtime-fout."
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "Deze plugins zijn beoordeeld en goedgekeurd door de ChurchCRM-beheerders. Klik op Installeren om er een te downloaden en te installeren — de plugin wordt niet automatisch ingeschakeld."
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "Deze plugin staat niet op de ChurchCRM-lijst met goedgekeurde plugins."
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "Deze plugin wordt geïnstalleerd als NIET-GEVERIFIEERD."
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "URL moet HTTPS gebruiken."
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "Verwijderen (van schijf verwijderen)"
+
+#: 
+msgid "Unverified plugin"
+msgstr "Niet-geverifieerde plugin"
+
+#: 
+msgid "Verified"
+msgstr "Geverifieerd"
+
+#: 
+msgid "What this plugin does:"
+msgstr "Wat deze plugin doet:"
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "downloadUrl, sha256 en pluginId zijn allemaal vereist voor niet-geverifieerde installaties."
+
+#: 
+msgid "risk"
+msgstr "risico"
+
+#: 
+msgid "Name cannot be empty"
+msgstr "Naam mag niet leeg zijn"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "Naam mag niet langer zijn dan %d tekens"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "Hulp nodig? Neem contact met ons op"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "Geen kalender geselecteerd — dit evenement verschijnt onder de systeemkalender \"Niet-vastgezette evenementen\" totdat u het vastmaakt."
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "Opent een venster van 2 minuten voor apparaten om te registreren op:"
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "Tijden gebruiken kerkelijke tijd ({{church}}), niet uw browser ({{browser}})."
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "Welkom — meld u aan om uw gemeente te beheren"
 

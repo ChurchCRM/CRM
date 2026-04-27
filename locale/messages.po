@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-25 03:20+0000\n"
+"POT-Creation-Date: 2026-04-25 08:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2359,9 +2359,6 @@ msgid "Contact Information"
 msgstr ""
 
 msgid "Contact info, family roles, and key dates"
-msgstr ""
-
-msgid "Contact us"
 msgstr ""
 
 msgid "Continent"
@@ -6120,9 +6117,6 @@ msgstr ""
 msgid "Links"
 msgstr ""
 
-msgid "List Event Types"
-msgstr ""
-
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr ""
 
@@ -6891,6 +6885,13 @@ msgstr ""
 msgid "Name & Identity"
 msgstr ""
 
+msgid "Name cannot be empty"
+msgstr ""
+
+#, php-format
+msgid "Name cannot be longer than %d characters"
+msgstr ""
+
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
 msgstr ""
 
@@ -6905,7 +6906,7 @@ msgstr ""
 msgid "Nauru"
 msgstr ""
 
-msgid "Need help?"
+msgid "Need help? Contact us"
 msgstr ""
 
 msgid "Need to remove this data later?"
@@ -7099,7 +7100,7 @@ msgstr ""
 msgid "No birthdays in the past or next 7 days"
 msgstr ""
 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
 msgstr ""
 
 msgid "No cell phone on file"
@@ -7531,7 +7532,7 @@ msgstr ""
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
 msgstr ""
 
-msgid "Opens a 30-second window for devices to register at:"
+msgid "Opens a 2-minute window for devices to register at:"
 msgstr ""
 
 msgid "Opportunity"
@@ -10400,6 +10401,9 @@ msgstr ""
 msgid "Timeout"
 msgstr ""
 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr ""
+
 msgid "Timezone"
 msgstr ""
 
@@ -11460,6 +11464,9 @@ msgid "Welcome to"
 msgstr ""
 
 msgid "Welcome to the Family!"
+msgstr ""
+
+msgid "Welcome — sign in to manage your community"
 msgstr ""
 
 #. Context: countries

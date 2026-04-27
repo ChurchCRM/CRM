@@ -3010,10 +3010,6 @@ msgid "Add Church Event"
 msgstr "Voeg kerkgeleentheid by"
 
 #: 
-msgid "List Event Types"
-msgstr "Lys die soorte gebeurtenisse"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "In- en uitklok"
 
@@ -5486,10 +5482,6 @@ msgstr "Kalender-toegangstoken ontbreek"
 #: 
 msgid "User must have Delete Records permission"
 msgstr "Gebruiker moet toestemming vir Verwyder rekords hê"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "URL van die ChurchCRM Central Notifications"
 
 #: 
 msgid "invalid event type id"
@@ -9381,10 +9373,6 @@ msgid "Important"
 msgstr "Belangrik"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "Installeer inproppe deur hulle te plaas in"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "Ongeldige kode. Probeer asseblief weer."
 
@@ -10660,10 +10648,6 @@ msgid "Connect with others"
 msgstr "Verbind met ander"
 
 #: 
-msgid "Contact us"
-msgstr "Kontak ons"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Skakel individuele rekords om in familieenhede"
 
@@ -11346,10 +11330,6 @@ msgstr "Naamveranderings vereis besparing. Herordening en verwyder-aksies in die
 #: 
 msgid "Name, address, contact details"
 msgstr "Naam, adres, kontakbesonderhede"
-
-#: 
-msgid "Need help?"
-msgstr "Nodig hulp?"
 
 #: 
 msgid "New"
@@ -15172,10 +15152,6 @@ msgid "Online"
 msgstr "Aanlyn"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "Open 'n 30-sekonde venster vir toestelle om te registreer by:"
-
-#: 
 msgid "Pending"
 msgstr "Hangende"
 
@@ -15696,10 +15672,6 @@ msgid "Loading event editor…"
 msgstr "Geleentheidsredakteur word gelaai…"
 
 #: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "Geen kalender gekies nie — hierdie geleentheid sal gestoor word maar sal nie in enige kalenderaansig verskyn nie."
-
-#: 
 msgid "No group"
 msgstr "Geen bediening"
 
@@ -15786,4 +15758,380 @@ msgstr "Vee roeinommer uit"
 #: 
 msgid "Invalid security token. Please try again."
 msgstr "Ongeldige sekuriteitstoken. Probeer asseblief weer."
+
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "Voeg openbare vakansiedae by die hoofkalender. Elke geselekteerde land word sy eie skakelbare kalender in die kantbalk, sodat gebruikers vakansiedae onafhanklik kan wys of verberg."
+
+#: 
+msgid "Choose map provider"
+msgstr "Kies kaartverskaffer"
+
+#: 
+msgid "Current database"
+msgstr "Huidige databasis"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "Demo-data word gewoonlik slegs by nuwe installasies gelaai. Die invoer nou sal voorbeeldrekords by u bestaande data voeg en kan duplikate skep."
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "Elke land produseer sy eie kalenderry in die kantbalk. Gebruik die per-kalender-skakelaar om 'n land tydelik te verberg sonder om u inpropinstellings te verander."
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "Filtreer volgens kategorie"
+
+#: 
+msgid "Holiday Settings"
+msgstr "Vakansiedag-instellings"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "Vakansiedae (%s)"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "Vakansiedae word gemerk volgens tipe: Amptelik, Herdenking, Bankvakansiesdae, Seisoenaal en Godsdienstig. Laat alle kategorieë ongeselekteer om elke vakansiedag te wys, of kies spesifieke tipes om die vertoning te vernou."
+
+#: 
+msgid "Import demo data anyway"
+msgstr "Voer demo-data steeds in"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "Ontbrekende finansiële verbintenis-identifiseerder."
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "Geen land is geselekteer nie. Kies ten minste een land in die Vakansiedagkalender-inpropinstellings."
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "Geen ooreenstemmende inskrywings vir die geselekteerde filters nie."
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "Maak oop in Apple Maps"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "Maak oop in Google Maps"
+
+#: 
+msgid "Open in new tab"
+msgstr "Maak oop in nuwe oortjie"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "Lande opstel"
+
+#: 
+msgid "Show all"
+msgstr "Wys alles"
+
+#: 
+msgid "Show:"
+msgstr "Wys:"
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "Individuele lande wys en verberg"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "Sweeds"
+
+#: 
+msgid "System"
+msgstr "Stelsel"
+
+#: 
+msgid "Timeline filters"
+msgstr "Tydlyn-filters"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "Om van voor af te begin met 'n skoon databasis, gebruik Herstel Databasis vanaf die Admin-dashboard voordat u demo-data invoer."
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "Gebruik die Lande-kieser om een of meer lande te kies. Elke land wat u byvoeg sal as 'n aparte kalenderinskrywing in die kantbalk verskyn — wat u in staat stel om vakansiedae vir 'n wêreldwye gemeente te wys."
+
+#: 
+msgid "Your database already contains data"
+msgstr "U databasis bevat reeds data"
+
+#: 
+msgid "people"
+msgstr "mense"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "'n downloadUrl is nodig om 'n inprop te installeer."
+
+#: 
+msgid "All three fields are required."
+msgstr "Al drie velde is vereis."
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "Goedgekeurde Gemeenskapsinproppe"
+
+#: 
+msgid "Browse Approved"
+msgstr "Blaai Goedgekeurdes"
+
+#: 
+msgid "Check for Updates"
+msgstr "Kyk vir opdaterings"
+
+#: 
+msgid "Checking…"
+msgstr "Besig om te kontroleer…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "Verwyder Kwarantyn"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "Verwyder die kwarantyn slegs nadat die onderliggende probleem reggestel is. Die aktivering van 'n gekwarantynde inprop word deur die bediener geweier."
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "Klik \"Blaai Goedgekeurdes\" hierbo om 'n goedgekeurde inprop te installeer, of \"Installeer vanaf URL\" vir 'n ongesertifiseerde weergawe tydens ontwikkeling."
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "Kon nie inprop-kwarantyn verwyder nie"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "Kon nie kwarantyn verwyder nie"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "Kon nie inprop installeer nie"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "Kon nie inprop vanaf URL installeer nie"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "Kon nie goedgekeurde inproplys laai nie"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "Kon nie goedgekeurde inproplys laai nie."
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "Kon nie inpropregister verfris nie"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "Kon nie inpropregister verfris nie. Kontroleer u internetverbinding."
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "Kon nie inprop verwyder nie"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "Besig om nuutste register op te haal…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "Kry dit by die inpropouteur. Die installeerder sal die aflaai weier as dit nie greep-vir-greep ooreenstem nie."
+
+#: 
+msgid "Homepage"
+msgstr "Tuisblad"
+
+#: 
+msgid "Install"
+msgstr "Installeer"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "Installeer Inprop vanaf URL (Ongesertifiseer)"
+
+#: 
+msgid "Install Unverified"
+msgstr "Installeer Ongesertifiseer"
+
+#: 
+msgid "Install failed"
+msgstr "Installasie het misluk"
+
+#: 
+msgid "Install from URL"
+msgstr "Installeer vanaf URL"
+
+#: 
+msgid "Installing…"
+msgstr "Besig om te installeer…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "Kebab-formaat. Moet ooreenstem met die boonste gidsnaam binne die zip en die id in plugin.json."
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "Besig om goedgekeurde inproplys te laai…"
+
+#: 
+msgid "Loading…"
+msgstr "Besig om te laai…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "Stem ooreen met 'n inskrywing op die goedgekeurde inproplys"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "Moet 'n onveranderlike vrylating-URL wees wat oor HTTPS bedien word."
+
+#: 
+msgid "Plugin id"
+msgstr "Inprop-id"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "Inprop geïnstalleer as ONGESERTIFISEER. Hersien die uitgepakte lêers noukeurig voor aktivering."
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "Inprop geïnstalleer. Hersien dit en klik Aktiveer om te aktiveer."
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "Inprop-kwarantyn verwyder. U kan die inprop nou weer aktiveer."
+
+#: 
+msgid "Plugin quarantined"
+msgstr "Inprop gekwarantyn"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "Inpropregister verfris."
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "Inprop verwyder"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "Inprop verwyder."
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "Inprop zip-URL (slegs HTTPS)"
+
+#: 
+msgid "Quarantined"
+msgstr "Gekwarantyn"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "Hersien die inproplêers op die skyf voor aktivering. Ongesertifiseerde inproppe loop met dieselfde toestemmings as goedgekeurde inproppe."
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "SHA-256 kontrolesom"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "SHA-256 moet 'n 64-karakter heksadesimale string wees."
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "Die ChurchCRM-onderhouers het dit nie hersien nie. U is verantwoordelik vir die sekuriteit en gedrag van alles wat u hier installeer. Verkies die Blaai Goedgekeurdes-vloei waar moontlik."
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "Die goedgekeurde inproplys is leeg. Daar is nog geen derdeparty-inproppe beskikbaar via die gesertifiseerde installeerder nie."
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "Die inprop is outomaties gedeaktiveer na 'n looptydmislukking."
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "Hierdie inproppe is hersien en goedgekeur deur die ChurchCRM-onderhouers. Klik Installeer om een af te laai en te installeer — die inprop sal nie outomaties geaktiveer word nie."
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "Hierdie inprop is nie op die ChurchCRM goedgekeurde inproplys nie."
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "Hierdie inprop sal as ONGESERTIFISEER geïnstalleer word."
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "URL moet HTTPS gebruik."
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "Verwyder (skrap van skyf)"
+
+#: 
+msgid "Unverified plugin"
+msgstr "Ongesertifiseerde inprop"
+
+#: 
+msgid "Verified"
+msgstr "Gesertifiseer"
+
+#: 
+msgid "What this plugin does:"
+msgstr "Wat hierdie inprop doen:"
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "downloadUrl, sha256 en pluginId is almal vereis vir ongesertifiseerde installasies."
+
+#: 
+msgid "risk"
+msgstr "risiko"
+
+#: 
+msgid "Name cannot be empty"
+msgstr "Naam kan nie leeg wees nie"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "Naam kan nie langer as %d karakters wees nie"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "Hulp nodig? Kontak ons"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "Geen kalender geselekteer nie — hierdie geleentheid sal onder die \"Ongekoppelde Geleenthede\" stelselkalender verskyn totdat u dit koppel."
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "Open 'n 2-minuut venster vir toestelle om te registreer by:"
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "Tye gebruik kerktyd ({{church}}), nie u blaaier ({{browser}}) nie."
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "Welkom — meld aan om u gemeente te bestuur"
 

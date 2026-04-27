@@ -2979,10 +2979,6 @@ msgid "Add Church Event"
 msgstr "教会イベントを追加"
 
 #: 
-msgid "List Event Types"
-msgstr "イベントタイプを一覧表示"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "チェックインとチェックアウト"
 
@@ -5447,10 +5443,6 @@ msgstr "カレンダーアクセストークンがありません"
 #: 
 msgid "User must have Delete Records permission"
 msgstr "ユーザーにはレコード削除権限が必要です"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "ChurchCRM中央通知URL"
 
 #: 
 msgid "invalid event type id"
@@ -9329,10 +9321,6 @@ msgid "Important"
 msgstr "重要"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "プラグインを次の場所に配置してインストールする："
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "無効なコードです。もう一度お試しください。"
 
@@ -10607,10 +10595,6 @@ msgid "Connect with others"
 msgstr "他の方とつながる"
 
 #: 
-msgid "Contact us"
-msgstr "お問い合わせ"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "個人レコードを家族単位に変換"
 
@@ -11293,10 +11277,6 @@ msgstr "名前の変更は保存が必要です。アクションメニューで
 #: 
 msgid "Name, address, contact details"
 msgstr "名前、住所、連絡先"
-
-#: 
-msgid "Need help?"
-msgstr "お困りですか？"
 
 #: 
 msgid "New"
@@ -15118,10 +15098,6 @@ msgid "Online"
 msgstr "オンライン"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "端末が登録するための30秒のウィンドウを開きます："
-
-#: 
 msgid "Pending"
 msgstr "保留中"
 
@@ -15642,10 +15618,6 @@ msgid "Loading event editor…"
 msgstr "イベントエディターを読み込み中…"
 
 #: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "カレンダーが選択されていません — このイベントは保存されますが、カレンダービューには表示されません。"
-
-#: 
 msgid "No group"
 msgstr "グループなし"
 
@@ -15732,4 +15704,380 @@ msgstr "パドル番号を削除"
 #: 
 msgid "Invalid security token. Please try again."
 msgstr "セキュリティトークンが無効です。もう一度お試しください。"
+
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "祝日をメインカレンダーに追加します。選択した各国はサイドバーで独自に切り替え可能なカレンダーとなり、ユーザーは国ごとに祝日の表示・非表示を設定できます。"
+
+#: 
+msgid "Choose map provider"
+msgstr "地図プロバイダーを選択"
+
+#: 
+msgid "Current database"
+msgstr "現在のデータベース"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "デモデータは通常、新規インストール時のみ読み込まれます。今インポートすると、既存のデータにサンプルレコードが追加され、重複が生じる場合があります。"
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "各国ごとにサイドバーにカレンダー行が作成されます。カレンダーごとの切り替えを使用すると、プラグイン設定を変更せずに一時的に国を非表示にできます。"
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "カテゴリーで絞り込む"
+
+#: 
+msgid "Holiday Settings"
+msgstr "祝日設定"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "祝日（%s）"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "祝日は「公式」「記念日」「銀行休日」「季節」「宗教」の種類でタグ付けされています。すべてのカテゴリーを未選択のままにすると全ての祝日が表示され、特定の種類を選択すると表示が絞り込まれます。"
+
+#: 
+msgid "Import demo data anyway"
+msgstr "デモデータをインポートする"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "財政的コミットメントの識別子がありません。"
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "国が選択されていません。祝日カレンダープラグインの設定で少なくとも1か国を選択してください。"
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "選択したフィルターに一致するエントリーがありません。"
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "Apple Mapsで開く"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "Google Mapsで開く"
+
+#: 
+msgid "Open in new tab"
+msgstr "新しいタブで開く"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "国の設定"
+
+#: 
+msgid "Show all"
+msgstr "すべて表示"
+
+#: 
+msgid "Show:"
+msgstr "表示："
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "国ごとの表示・非表示"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "スウェーデン語"
+
+#: 
+msgid "System"
+msgstr "システム"
+
+#: 
+msgid "Timeline filters"
+msgstr "タイムラインフィルター"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "クリーンなデータベースで最初からやり直すには、デモデータをインポートする前に管理ダッシュボードの「データベースリセット」を使用してください。"
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "国の選択ツールを使用して1か国以上を選択してください。追加した各国はサイドバーに個別のカレンダーとして表示され、世界規模の会衆の祝日を表示できます。"
+
+#: 
+msgid "Your database already contains data"
+msgstr "データベースにはすでにデータが含まれています"
+
+#: 
+msgid "people"
+msgstr "人"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "プラグインをインストールするにはダウンロードURLが必要です。"
+
+#: 
+msgid "All three fields are required."
+msgstr "3つのフィールドはすべて必須です。"
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "承認済みコミュニティプラグイン"
+
+#: 
+msgid "Browse Approved"
+msgstr "承認済みを参照"
+
+#: 
+msgid "Check for Updates"
+msgstr "更新を確認"
+
+#: 
+msgid "Checking…"
+msgstr "確認中…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "隔離を解除"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "根本的な問題が修正された後にのみ隔離を解除してください。隔離されたプラグインの有効化はサーバーによって拒否されます。"
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "審査済みプラグインをインストールするには上の「承認済みを参照」をクリックするか、開発中の未確認ビルドの場合は「URLからインストール」をクリックしてください。"
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "プラグインの隔離解除に失敗しました"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "隔離解除に失敗しました"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "プラグインのインストールに失敗しました"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "URLからのプラグインインストールに失敗しました"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "承認済みプラグインリストの読み込みに失敗しました"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "承認済みプラグインリストの読み込みに失敗しました。"
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "プラグインレジストリの更新に失敗しました"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "プラグインレジストリの更新に失敗しました。インターネット接続を確認してください。"
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "プラグインのアンインストールに失敗しました"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "最新のレジストリを取得中…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "プラグインの作者から取得してください。バイト単位で一致しない場合、インストーラーはダウンロードを拒否します。"
+
+#: 
+msgid "Homepage"
+msgstr "ホームページ"
+
+#: 
+msgid "Install"
+msgstr "インストール"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "URLからプラグインをインストール（未確認）"
+
+#: 
+msgid "Install Unverified"
+msgstr "未確認をインストール"
+
+#: 
+msgid "Install failed"
+msgstr "インストール失敗"
+
+#: 
+msgid "Install from URL"
+msgstr "URLからインストール"
+
+#: 
+msgid "Installing…"
+msgstr "インストール中…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "ケバブケース。zip内のトップレベルディレクトリ名およびplugin.jsonのidと一致する必要があります。"
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "承認済みプラグインリストを読み込み中…"
+
+#: 
+msgid "Loading…"
+msgstr "読み込み中…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "承認済みプラグインリストのエントリーと一致します"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "HTTPS経由で提供される変更不可のリリースURLである必要があります。"
+
+#: 
+msgid "Plugin id"
+msgstr "プラグインID"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "プラグインは「未確認」としてインストールされました。有効化する前に展開されたファイルを注意深く確認してください。"
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "プラグインがインストールされました。確認後、「有効化」をクリックして有効にしてください。"
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "プラグインの隔離が解除されました。プラグインを再度有効にすることができます。"
+
+#: 
+msgid "Plugin quarantined"
+msgstr "プラグインが隔離されました"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "プラグインレジストリが更新されました。"
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "プラグインがアンインストールされました"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "プラグインがアンインストールされました。"
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "プラグインzipのURL（HTTPSのみ）"
+
+#: 
+msgid "Quarantined"
+msgstr "隔離済み"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "有効化する前にディスク上のプラグインファイルを確認してください。未確認プラグインは承認済みプラグインと同じ権限で動作します。"
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "SHA-256チェックサム"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "SHA-256は64文字の16進数文字列でなければなりません。"
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "ChurchCRMのメンテナーはこれをレビューしていません。ここでインストールするもののセキュリティと動作はあなたの責任です。できる限り「承認済みを参照」フローを使用することをお勧めします。"
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "承認済みプラグインリストは空です。検証済みインストーラーで利用可能なサードパーティプラグインはまだありません。"
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "ランタイムエラーの後、プラグインは自動的に無効化されました。"
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "これらのプラグインはChurchCRMのメンテナーによってレビューおよび承認されています。「インストール」をクリックしてダウンロードとインストールを行ってください——プラグインは自動的に有効化されません。"
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "このプラグインはChurchCRMの承認済みプラグインリストに含まれていません。"
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "このプラグインは「未確認」としてインストールされます。"
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "URLはHTTPSを使用する必要があります。"
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "アンインストール（ディスクから削除）"
+
+#: 
+msgid "Unverified plugin"
+msgstr "未確認プラグイン"
+
+#: 
+msgid "Verified"
+msgstr "確認済み"
+
+#: 
+msgid "What this plugin does:"
+msgstr "このプラグインの機能："
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "未確認インストールにはdownloadUrl、sha256、pluginIdがすべて必要です。"
+
+#: 
+msgid "risk"
+msgstr "リスク"
+
+#: 
+msgid "Name cannot be empty"
+msgstr "名前は空にできません"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "名前は%d文字を超えることはできません"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "ヘルプが必要ですか？お問い合わせください"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "カレンダーが選択されていません——ピン留めするまで、このイベントは「固定されていないイベント」システムカレンダーの下に表示されます。"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "デバイスが以下のアドレスで登録できる2分間のウィンドウを開きます："
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "時刻はブラウザ（{{browser}}）ではなく、教会の時刻（{{church}}）を使用します。"
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "ようこそ——会衆を管理するためにサインインしてください"
 

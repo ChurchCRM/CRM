@@ -2981,10 +2981,6 @@ msgid "Add Church Event"
 msgstr "Añadir Evento de la iglesia"
 
 #: 
-msgid "List Event Types"
-msgstr "Listar tipos de evento"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "Check-in y Check-out"
 
@@ -5449,10 +5445,6 @@ msgstr "Falta token de acceso de calendario"
 #: 
 msgid "User must have Delete Records permission"
 msgstr "Usuario debe tener permiso para borrar registros"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "URL Central de Notificaciones de ChurchCRM"
 
 #: 
 msgid "invalid event type id"
@@ -9350,10 +9342,6 @@ msgid "Important"
 msgstr "Importante"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "Instale los complementos colocándolos en"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "Código inválido. Por favor intente de nuevo."
 
@@ -10630,10 +10618,6 @@ msgid "Connect with others"
 msgstr "Conecte con otros"
 
 #: 
-msgid "Contact us"
-msgstr "Contáctenos"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Convertir registros individuales en unidades familiares"
 
@@ -11316,10 +11300,6 @@ msgstr "Los cambios de nombre requieren guardar. Las acciones de reordenación y
 #: 
 msgid "Name, address, contact details"
 msgstr "Nombre, dirección, datos de contacto"
-
-#: 
-msgid "Need help?"
-msgstr "¿Necesita ayuda?"
 
 #: 
 msgid "New"
@@ -15143,10 +15123,6 @@ msgid "Online"
 msgstr "En línea"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "Abre una ventana de 30 segundos para que los dispositivos se registren en:"
-
-#: 
 msgid "Pending"
 msgstr "Pendiente"
 
@@ -15667,10 +15643,6 @@ msgid "Loading event editor…"
 msgstr "Cargando editor de eventos…"
 
 #: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "Sin calendario seleccionado — este evento se guardará pero no aparecerá en ninguna vista de calendario."
-
-#: 
 msgid "No group"
 msgstr "Sin ministerio"
 
@@ -15757,4 +15729,380 @@ msgstr "Eliminar número de paleta"
 #: 
 msgid "Invalid security token. Please try again."
 msgstr "Token de seguridad no válido. Por favor, inténtelo de nuevo."
+
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "Agrega festivos públicos al calendario principal. Cada país seleccionado se convierte en su propio calendario activable en la barra lateral, para que los usuarios puedan mostrar u ocultar los festivos de forma independiente."
+
+#: 
+msgid "Choose map provider"
+msgstr "Seleccionar proveedor de mapas"
+
+#: 
+msgid "Current database"
+msgstr "Base de datos actual"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "Los datos de demostración normalmente solo se cargan en instalaciones nuevas. Importar ahora agregará registros de muestra junto a sus datos existentes y puede generar duplicados."
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "Cada país genera su propia fila de calendario en la barra lateral. Use el interruptor por calendario para ocultar temporalmente un país sin cambiar la configuración del complemento."
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "Filtrar por categoría"
+
+#: 
+msgid "Holiday Settings"
+msgstr "Configuración de festivos"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "Festivos (%s)"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "Los festivos están etiquetados por tipo: Oficiales, Conmemoraciones, Festivos bancarios, Estacionales y Religiosos. Deje todas las categorías sin seleccionar para mostrar todos los festivos, o elija tipos específicos para reducir la vista."
+
+#: 
+msgid "Import demo data anyway"
+msgstr "Importar datos de demostración de todas formas"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "Identificador de compromiso financiero no encontrado."
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "No se ha seleccionado ningún país. Elija al menos un país en la configuración del complemento de Calendarios de Festivos."
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "No hay registros que coincidan con los filtros seleccionados."
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "Abrir en Apple Maps"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "Abrir en Google Maps"
+
+#: 
+msgid "Open in new tab"
+msgstr "Abrir en nueva pestaña"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "Configurar países"
+
+#: 
+msgid "Show all"
+msgstr "Mostrar todos"
+
+#: 
+msgid "Show:"
+msgstr "Mostrar:"
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "Mostrar y ocultar países individuales"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "Sueco"
+
+#: 
+msgid "System"
+msgstr "Sistema"
+
+#: 
+msgid "Timeline filters"
+msgstr "Filtros de línea de tiempo"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "Para comenzar con una base de datos limpia, use Restablecer base de datos desde el Panel de administración antes de importar los datos de demostración."
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "Use el selector de países para elegir uno o más países. Cada país que agregue aparecerá como una entrada de calendario separada en la barra lateral, lo que le permitirá mostrar los festivos para una congregación global."
+
+#: 
+msgid "Your database already contains data"
+msgstr "Su base de datos ya contiene datos"
+
+#: 
+msgid "people"
+msgstr "personas"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "Se requiere una URL de descarga para instalar un complemento."
+
+#: 
+msgid "All three fields are required."
+msgstr "Los tres campos son obligatorios."
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "Complementos comunitarios aprobados"
+
+#: 
+msgid "Browse Approved"
+msgstr "Explorar aprobados"
+
+#: 
+msgid "Check for Updates"
+msgstr "Buscar actualizaciones"
+
+#: 
+msgid "Checking…"
+msgstr "Verificando…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "Limpiar cuarentena"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "Limpie la cuarentena solo después de que el problema subyacente haya sido resuelto. El servidor rechaza la habilitación de un complemento en cuarentena."
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "Haga clic en \"Explorar aprobados\" arriba para instalar un complemento verificado, o en \"Instalar desde URL\" para una versión no verificada durante el desarrollo."
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "Error al limpiar la cuarentena del complemento"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "Error al limpiar la cuarentena"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "Error al instalar el complemento"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "Error al instalar el complemento desde URL"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "Error al cargar la lista de complementos aprobados"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "Error al cargar la lista de complementos aprobados."
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "Error al actualizar el registro de complementos"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "Error al actualizar el registro de complementos. Verifique su conexión a internet."
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "Error al desinstalar el complemento"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "Obteniendo el registro más reciente…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "Obténgalo del autor del complemento. El instalador rechazará la descarga si no coincide byte a byte."
+
+#: 
+msgid "Homepage"
+msgstr "Página principal"
+
+#: 
+msgid "Install"
+msgstr "Instalar"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "Instalar complemento desde URL (No verificado)"
+
+#: 
+msgid "Install Unverified"
+msgstr "Instalar no verificado"
+
+#: 
+msgid "Install failed"
+msgstr "Instalación fallida"
+
+#: 
+msgid "Install from URL"
+msgstr "Instalar desde URL"
+
+#: 
+msgid "Installing…"
+msgstr "Instalando…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "Kebab-case. Debe coincidir con el nombre del directorio de nivel superior dentro del zip y el id en plugin.json."
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "Cargando lista de complementos aprobados…"
+
+#: 
+msgid "Loading…"
+msgstr "Cargando…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "Coincide con una entrada en la lista de complementos aprobados"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "Debe ser una URL de versión inmutable servida a través de HTTPS."
+
+#: 
+msgid "Plugin id"
+msgstr "ID del complemento"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "Complemento instalado como NO VERIFICADO. Revise cuidadosamente los archivos extraídos antes de habilitarlo."
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "Complemento instalado. Revíselo y haga clic en Habilitar para activarlo."
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "Cuarentena del complemento limpiada. Ahora puede habilitar el complemento nuevamente."
+
+#: 
+msgid "Plugin quarantined"
+msgstr "Complemento en cuarentena"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "Registro de complementos actualizado."
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "Complemento desinstalado"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "Complemento desinstalado."
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "URL del zip del complemento (solo HTTPS)"
+
+#: 
+msgid "Quarantined"
+msgstr "En cuarentena"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "Revise los archivos del complemento en disco antes de habilitarlo. Los complementos no verificados se ejecutan con los mismos permisos que los complementos aprobados."
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "Suma de verificación SHA-256"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "SHA-256 debe ser una cadena hexadecimal de 64 caracteres."
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "Los mantenedores de ChurchCRM no lo han revisado. Usted es responsable de la seguridad y el comportamiento de todo lo que instale aquí. Prefiera el flujo de Explorar aprobados siempre que sea posible."
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "La lista de complementos aprobados está vacía. Aún no hay complementos de terceros disponibles a través del instalador verificado."
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "El complemento fue deshabilitado automáticamente después de un fallo en tiempo de ejecución."
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "Estos complementos han sido revisados y aprobados por los mantenedores de ChurchCRM. Haga clic en Instalar para descargar e instalar uno — el complemento no se habilitará automáticamente."
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "Este complemento no está en la lista de complementos aprobados de ChurchCRM."
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "Este complemento se instalará como NO VERIFICADO."
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "La URL debe usar HTTPS."
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "Desinstalar (eliminar del disco)"
+
+#: 
+msgid "Unverified plugin"
+msgstr "Complemento no verificado"
+
+#: 
+msgid "Verified"
+msgstr "Verificado"
+
+#: 
+msgid "What this plugin does:"
+msgstr "Lo que hace este complemento:"
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "downloadUrl, sha256 y pluginId son obligatorios para instalaciones no verificadas."
+
+#: 
+msgid "risk"
+msgstr "riesgo"
+
+#: 
+msgid "Name cannot be empty"
+msgstr "El nombre no puede estar vacío"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "El nombre no puede tener más de %d caracteres"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "¿Necesita ayuda? Contáctenos"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "Ningún calendario seleccionado — este evento aparecerá en el calendario del sistema \"Eventos sin fijar\" hasta que lo fije."
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "Abre una ventana de 2 minutos para que los dispositivos se registren en:"
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "Los horarios usan la hora de la iglesia ({{church}}), no la de su navegador ({{browser}})."
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "Bienvenido — inicie sesión para gestionar su comunidad"
 

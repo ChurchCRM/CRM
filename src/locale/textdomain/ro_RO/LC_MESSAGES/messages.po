@@ -3086,10 +3086,6 @@ msgid "Add Church Event"
 msgstr "Adaugă event al Bisericii"
 
 #: 
-msgid "List Event Types"
-msgstr "Listează tipurile de eveniment"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "Intrare și ieșire"
 
@@ -5563,10 +5559,6 @@ msgstr "Indicativ (token) de acces la calendar lipsește"
 #: 
 msgid "User must have Delete Records permission"
 msgstr "Utilizatorul trebuie să aibă permisiuni pentru ștergerea înregistrărilor"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "URL-ul pentru Notificări Centrale ChurchCRM"
 
 #: 
 msgid "invalid event type id"
@@ -9463,10 +9455,6 @@ msgid "Important"
 msgstr "Important"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "Instalați pluginuri plasându-le în"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "Cod invalid. Încercați din nou."
 
@@ -10743,10 +10731,6 @@ msgid "Connect with others"
 msgstr "Conectează-te cu alții"
 
 #: 
-msgid "Contact us"
-msgstr "Contactați-ne"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Convertiți înregistrări individuale în unități de familie"
 
@@ -11429,10 +11413,6 @@ msgstr "Modificările de nume necesită salvare. Acțiunile de reordonare și ș
 #: 
 msgid "Name, address, contact details"
 msgstr "Nume, adresă, date de contact"
-
-#: 
-msgid "Need help?"
-msgstr "Aveți nevoie de ajutor?"
 
 #: 
 msgid "New"
@@ -15256,10 +15236,6 @@ msgid "Online"
 msgstr "Online"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "Deschide o fereastră de 30 de secunde pentru înregistrarea dispozitivelor la:"
-
-#: 
 msgid "Pending"
 msgstr "În așteptare"
 
@@ -15780,10 +15756,6 @@ msgid "Loading event editor…"
 msgstr "Se încarcă editorul de evenimente…"
 
 #: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "Niciun calendar selectat — evenimentul va fi salvat, dar nu va apărea în nicio vizualizare a calendarului."
-
-#: 
 msgid "No group"
 msgstr "Niciun grup"
 
@@ -15870,4 +15842,380 @@ msgstr "Șterge număr de paletă"
 #: 
 msgid "Invalid security token. Please try again."
 msgstr "Token de securitate invalid. Vă rugăm să încercați din nou."
+
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "Adaugă sărbătorile legale în calendarul principal. Fiecare țară selectată devine propriul calendar activabil/dezactivabil în bara laterală, astfel încât utilizatorii pot afișa sau ascunde sărbătorile independent."
+
+#: 
+msgid "Choose map provider"
+msgstr "Alegeți furnizorul de hărți"
+
+#: 
+msgid "Current database"
+msgstr "Baza de date curentă"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "Datele demonstrative sunt încărcate în mod normal doar la instalări noi. Importarea acum va adăuga înregistrări exemplu alături de datele existente și poate crea duplicate."
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "Fiecare țară generează propriul rând de calendar în bara laterală. Utilizați comutatorul per calendar pentru a ascunde temporar o țară fără a modifica setările pluginului."
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "Filtrare după categorie"
+
+#: 
+msgid "Holiday Settings"
+msgstr "Setări sărbători"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "Sărbători (%s)"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "Sărbătorile sunt etichetate după tip: Oficiale, Comemorative, Zile bancare, Sezoniere și Religioase. Lăsați toate categoriile neselectate pentru a afișa toate sărbătorile sau selectați tipuri specifice pentru a restrânge afișarea."
+
+#: 
+msgid "Import demo data anyway"
+msgstr "Importați oricum datele demonstrative"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "Identificatorul angajamentului financiar lipsește."
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "Nicio țară selectată. Alegeți cel puțin o țară în setările pluginului Calendare de Sărbători."
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "Nicio înregistrare corespunzătoare filtrelor selectate."
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "Deschide în Apple Maps"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "Deschide în Google Maps"
+
+#: 
+msgid "Open in new tab"
+msgstr "Deschide în filă nouă"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "Configurare țări"
+
+#: 
+msgid "Show all"
+msgstr "Afișați tot"
+
+#: 
+msgid "Show:"
+msgstr "Afișați:"
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "Afișarea și ascunderea țărilor individuale"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "Suedeză"
+
+#: 
+msgid "System"
+msgstr "Sistem"
+
+#: 
+msgid "Timeline filters"
+msgstr "Filtre cronologie"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "Pentru a începe cu o bază de date curată, utilizați Resetare bază de date din Panoul de administrare înainte de a importa datele demonstrative."
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "Utilizați selectorul de Țări pentru a alege una sau mai multe țări. Fiecare țară adăugată va apărea ca o intrare de calendar separată în bara laterală — permițând afișarea sărbătorilor pentru o parohie globală."
+
+#: 
+msgid "Your database already contains data"
+msgstr "Baza dvs. de date conține deja date"
+
+#: 
+msgid "people"
+msgstr "persoane"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "Un downloadUrl este necesar pentru a instala un plugin."
+
+#: 
+msgid "All three fields are required."
+msgstr "Toate cele trei câmpuri sunt obligatorii."
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "Pluginuri comunitare aprobate"
+
+#: 
+msgid "Browse Approved"
+msgstr "Răsfoiți aprobate"
+
+#: 
+msgid "Check for Updates"
+msgstr "Verificați actualizări"
+
+#: 
+msgid "Checking…"
+msgstr "Se verifică…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "Curățați carantina"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "Curățați carantina numai după ce problema de bază a fost rezolvată. Activarea unui plugin în carantină este refuzată de server."
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "Faceți clic pe \"Răsfoiți aprobate\" de mai sus pentru a instala un plugin verificat, sau \"Instalați din URL\" pentru o versiune neverificată în timpul dezvoltării."
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "Eroare la curățarea carantinei pluginului"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "Eroare la curățarea carantinei"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "Eroare la instalarea pluginului"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "Eroare la instalarea pluginului din URL"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "Eroare la încărcarea listei de pluginuri aprobate"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "Eroare la încărcarea listei de pluginuri aprobate."
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "Eroare la actualizarea registrului de pluginuri"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "Eroare la actualizarea registrului de pluginuri. Verificați conexiunea la internet."
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "Eroare la dezinstalarea pluginului"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "Se obține cel mai recent registru…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "Obțineți aceasta de la autorul pluginului. Programul de instalare va refuza descărcarea dacă nu se potrivește byte cu byte."
+
+#: 
+msgid "Homepage"
+msgstr "Pagina de start"
+
+#: 
+msgid "Install"
+msgstr "Instalați"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "Instalați plugin din URL (Neverificat)"
+
+#: 
+msgid "Install Unverified"
+msgstr "Instalați neverificat"
+
+#: 
+msgid "Install failed"
+msgstr "Instalare eșuată"
+
+#: 
+msgid "Install from URL"
+msgstr "Instalați din URL"
+
+#: 
+msgid "Installing…"
+msgstr "Se instalează…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "Kebab-case. Trebuie să corespundă numelui directorului de nivel superior din arhivă și id-ului din plugin.json."
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "Se încarcă lista de pluginuri aprobate…"
+
+#: 
+msgid "Loading…"
+msgstr "Se încarcă…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "Corespunde unei intrări din lista de pluginuri aprobate"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "Trebuie să fie un URL de lansare imutabil servit prin HTTPS."
+
+#: 
+msgid "Plugin id"
+msgstr "ID plugin"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "Plugin instalat ca NEVERIFICAT. Examinați cu atenție fișierele extrase înainte de activare."
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "Plugin instalat. Examinați-l și faceți clic pe Activare pentru a-l activa."
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "Carantina pluginului a fost curățată. Acum puteți activa din nou pluginul."
+
+#: 
+msgid "Plugin quarantined"
+msgstr "Plugin în carantină"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "Registrul de pluginuri a fost actualizat."
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "Plugin dezinstalat"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "Plugin dezinstalat."
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "URL zip plugin (numai HTTPS)"
+
+#: 
+msgid "Quarantined"
+msgstr "În carantină"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "Examinați fișierele pluginului de pe disc înainte de activare. Pluginurile neverificate rulează cu aceleași permisiuni ca pluginurile aprobate."
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "Sumă de control SHA-256"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "SHA-256 trebuie să fie un șir hexadecimal de 64 de caractere."
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "Administratorii ChurchCRM nu l-au revizuit. Sunteți responsabil pentru securitatea și comportamentul oricărui lucru pe care îl instalați aici. Preferați fluxul Răsfoiți aprobate ori de câte ori este posibil."
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "Lista de pluginuri aprobate este goală. Nu există încă pluginuri terțe disponibile prin programul de instalare verificat."
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "Pluginul a fost dezactivat automat după o eroare de rulare."
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "Aceste pluginuri au fost revizuite și aprobate de administratorii ChurchCRM. Faceți clic pe Instalați pentru a descărca și instala unul — pluginul nu va fi activat automat."
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "Acest plugin nu se află pe lista de pluginuri aprobate ChurchCRM."
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "Acest plugin va fi instalat ca NEVERIFICAT."
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "URL-ul trebuie să utilizeze HTTPS."
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "Dezinstalați (ștergeți de pe disc)"
+
+#: 
+msgid "Unverified plugin"
+msgstr "Plugin neverificat"
+
+#: 
+msgid "Verified"
+msgstr "Verificat"
+
+#: 
+msgid "What this plugin does:"
+msgstr "Ce face acest plugin:"
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "downloadUrl, sha256 și pluginId sunt obligatorii pentru instalările neverificate."
+
+#: 
+msgid "risk"
+msgstr "risc"
+
+#: 
+msgid "Name cannot be empty"
+msgstr "Numele nu poate fi gol"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "Numele nu poate depăși %d caractere"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "Aveți nevoie de ajutor? Contactați-ne"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "Niciun calendar selectat — acest eveniment va apărea în calendarul de sistem \"Evenimente neprinse\" până când îl fixați."
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "Deschide o fereastră de 2 minute pentru înregistrarea dispozitivelor la:"
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "Orele folosesc ora parohiei ({{church}}), nu a browserului dvs. ({{browser}})."
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "Bun venit — autentificați-vă pentru a gestiona comunitatea dvs."
 

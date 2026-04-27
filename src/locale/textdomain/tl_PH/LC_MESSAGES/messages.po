@@ -2979,10 +2979,6 @@ msgid "Add Church Event"
 msgstr "Magdagdag ng Kaganapan sa Simbahan"
 
 #: 
-msgid "List Event Types"
-msgstr "Ilista ang mga Uri ng Kaganapan"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "Pagpasok at Paglabas"
 
@@ -5447,10 +5443,6 @@ msgstr "Nawawalang calendar access token"
 #: 
 msgid "User must have Delete Records permission"
 msgstr "Ang user ay dapat may pahintulot sa Pag-delete ng mga Rekord"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "URL ng Sentral na Mga Abiso ng ChurchCRM"
 
 #: 
 msgid "invalid event type id"
@@ -9338,10 +9330,6 @@ msgid "Important"
 msgstr "Mahalaga"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "Mag-install ng mga plugin sa pamamagitan ng paglalagay nito sa"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "Hindi wastong code. Pakisubukan muli."
 
@@ -10617,10 +10605,6 @@ msgid "Connect with others"
 msgstr "Makipag-ugnayan sa iba"
 
 #: 
-msgid "Contact us"
-msgstr "Makipag-ugnayan sa amin"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "I-convert ang mga indibidwal na rekord sa mga yunit ng pamilya"
 
@@ -11303,10 +11287,6 @@ msgstr "Ang mga pagbabago ng pangalan ay nangangailangan ng pag-save. Ang mga ak
 #: 
 msgid "Name, address, contact details"
 msgstr "Pangalan, address, mga detalye ng pakikipag-ugnayan"
-
-#: 
-msgid "Need help?"
-msgstr "Kailangan ng tulong?"
 
 #: 
 msgid "New"
@@ -15129,10 +15109,6 @@ msgid "Online"
 msgstr "Online"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "Nagbubukas ng 30-segundong window para magrehistro ang mga device sa:"
-
-#: 
 msgid "Pending"
 msgstr "Nakabinbin"
 
@@ -15653,10 +15629,6 @@ msgid "Loading event editor…"
 msgstr "Naglo-load ng event editor…"
 
 #: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "Walang napiling kalendaryo — ise-save ang event na ito ngunit hindi ito lalabas sa anumang calendar view."
-
-#: 
 msgid "No group"
 msgstr "Walang grupo"
 
@@ -15743,4 +15715,380 @@ msgstr "Burahin ang Paddle Number"
 #: 
 msgid "Invalid security token. Please try again."
 msgstr "Hindi wastong security token. Mangyaring subukan muli."
+
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "Nagdaragdag ng mga pampublikong pista opisyal sa pangunahing kalendaryo. Ang bawat napiling bansa ay nagiging sariling kalendaryo sa sidebar na maaaring ipakita o itago nang hiwalay."
+
+#: 
+msgid "Choose map provider"
+msgstr "Pumili ng tagapagbigay ng mapa"
+
+#: 
+msgid "Current database"
+msgstr "Kasalukuyang database"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "Ang demo na datos ay karaniwang inilalagay lamang sa mga bagong instalasyon. Ang pag-import ngayon ay magdaragdag ng mga sample na rekord kasama ang iyong kasalukuyang datos at maaaring lumikha ng mga duplicate."
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "Ang bawat bansa ay lumilikha ng sariling hilera ng kalendaryo sa sidebar. Gamitin ang toggle ng bawat kalendaryo upang pansamantalang itago ang isang bansa nang hindi binabago ang mga setting ng plugin."
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "Pagsasala ayon sa kategorya"
+
+#: 
+msgid "Holiday Settings"
+msgstr "Mga Setting ng Pista Opisyal"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "Mga Pista Opisyal (%s)"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "Ang mga pista opisyal ay inuri ayon sa uri: Opisyal, Paggunita, Pista ng mga Bangko, Pana-panahon, at Relihiyoso. Iwanang walang napili ang lahat ng kategorya upang ipakita ang bawat pista opisyal, o pumili ng mga tiyak na uri upang paliit ang display."
+
+#: 
+msgid "Import demo data anyway"
+msgstr "I-import ang demo na datos kahit na"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "Nawawalang identifier ng pangako sa pananalapi."
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "Walang napiling bansa. Pumili ng kahit isang bansa sa mga setting ng plugin ng Holiday Calendars."
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "Walang katugmang entry para sa mga napiling filter."
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "Buksan sa Apple Maps"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "Buksan sa Google Maps"
+
+#: 
+msgid "Open in new tab"
+msgstr "Buksan sa bagong tab"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "Pag-set up ng mga bansa"
+
+#: 
+msgid "Show all"
+msgstr "Ipakita lahat"
+
+#: 
+msgid "Show:"
+msgstr "Ipakita:"
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "Pagpapakita at pagtatago ng mga indibidwal na bansa"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "Wikang Suweko"
+
+#: 
+msgid "System"
+msgstr "Sistema"
+
+#: 
+msgid "Timeline filters"
+msgstr "Mga filter ng timeline"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "Upang magsimula muli sa malinis na database, gamitin ang I-reset ang Database mula sa Admin Dashboard bago mag-import ng demo na datos."
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "Gamitin ang picker ng mga bansa upang pumili ng isa o higit pang bansa. Ang bawat bansang idadagdag mo ay lilitaw bilang hiwalay na entry ng kalendaryo sa sidebar — nagbibigay-daan sa iyo upang ipakita ang mga pista opisyal para sa isang pandaigdigang kongregasyon."
+
+#: 
+msgid "Your database already contains data"
+msgstr "Ang iyong database ay naglalaman na ng datos"
+
+#: 
+msgid "people"
+msgstr "mga tao"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "Kinakailangan ang downloadUrl upang mag-install ng plugin."
+
+#: 
+msgid "All three fields are required."
+msgstr "Kinakailangan ang lahat ng tatlong field."
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "Mga Naaprubahang Plugin ng Komunidad"
+
+#: 
+msgid "Browse Approved"
+msgstr "I-browse ang Naaprubahan"
+
+#: 
+msgid "Check for Updates"
+msgstr "Suriin para sa mga Update"
+
+#: 
+msgid "Checking…"
+msgstr "Sinusuri…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "Burahin ang Quarantine"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "Burahin ang quarantine pagkatapos lamang na maayos ang pinagbabatayan na isyu. Ang pag-enable ng isang quarantined na plugin ay tinatanggihan ng server."
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "I-click ang \"I-browse ang Naaprubahan\" sa itaas upang mag-install ng bineripikahang plugin, o \"I-install mula sa URL\" para sa hindi bineripikahang build sa panahon ng pagbuo."
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "Nabigo ang pag-clear ng quarantine ng plugin"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "Nabigo ang pag-clear ng quarantine"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "Nabigo ang pag-install ng plugin"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "Nabigo ang pag-install ng plugin mula sa URL"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "Nabigo ang pag-load ng listahan ng naaprubahang plugin"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "Nabigo ang pag-load ng listahan ng naaprubahang plugin."
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "Nabigo ang pag-refresh ng registry ng plugin"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "Nabigo ang pag-refresh ng registry ng plugin. Suriin ang iyong koneksyon sa internet."
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "Nabigo ang pag-uninstall ng plugin"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "Kinukuha ang pinakabagong registry…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "Kunin ito mula sa may-akda ng plugin. Tatanggihan ng installer ang pag-download kung hindi ito tugma byte-for-byte."
+
+#: 
+msgid "Homepage"
+msgstr "Pangunahing Pahina"
+
+#: 
+msgid "Install"
+msgstr "I-install"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "Mag-install ng Plugin mula sa URL (Hindi Bineripika)"
+
+#: 
+msgid "Install Unverified"
+msgstr "I-install ang Hindi Bineripika"
+
+#: 
+msgid "Install failed"
+msgstr "Nabigo ang pag-install"
+
+#: 
+msgid "Install from URL"
+msgstr "I-install mula sa URL"
+
+#: 
+msgid "Installing…"
+msgstr "Nag-iinstall…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "Kebab-case. Dapat tumugma sa pangalan ng nangungunang direktoryo sa loob ng zip at ang id sa plugin.json."
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "Nino-load ang listahan ng naaprubahang plugin…"
+
+#: 
+msgid "Loading…"
+msgstr "Nino-load…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "Tumutugma sa isang entry sa listahan ng naaprubahang plugin"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "Dapat ay isang hindi nababago na release URL na ibinibigay sa pamamagitan ng HTTPS."
+
+#: 
+msgid "Plugin id"
+msgstr "ID ng Plugin"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "Ang plugin ay na-install bilang HINDI BINERIPIKA. Maingat na suriin ang mga extracted na file bago i-enable."
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "Ang plugin ay na-install. Suriin ito at i-click ang I-enable upang i-activate."
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "Nalikas na ang quarantine ng plugin. Maaari mo na ngayong i-enable muli ang plugin."
+
+#: 
+msgid "Plugin quarantined"
+msgstr "Ang plugin ay nasa quarantine"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "Na-refresh ang registry ng plugin."
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "Na-uninstall ang plugin"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "Na-uninstall ang plugin."
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "URL ng zip ng plugin (HTTPS lamang)"
+
+#: 
+msgid "Quarantined"
+msgstr "Nasa quarantine"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "Suriin ang mga file ng plugin sa disk bago i-enable. Ang mga hindi bineripikahang plugin ay tumatakbo gamit ang parehong mga pahintulot tulad ng mga naaprubahang plugin."
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "SHA-256 checksum"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "Ang SHA-256 ay dapat na isang 64-character na hex string."
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "Hindi ito nasuri ng mga tagapanatili ng ChurchCRM. Ikaw ang responsable para sa seguridad at gawi ng anumang i-install mo dito. Mas piliin ang daloy ng Browse Approved hangga't maaari."
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "Ang listahan ng naaprubahang plugin ay walang laman. Wala pang mga third-party na plugin na magagamit sa pamamagitan ng bineripikahang installer."
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "Ang plugin ay awtomatikong na-disable pagkatapos ng runtime failure."
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "Ang mga plugin na ito ay nasuri at naaprubahan ng mga tagapanatili ng ChurchCRM. I-click ang I-install upang i-download at i-install ang isa — ang plugin ay hindi awtomatikong ie-enable."
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "Ang plugin na ito ay wala sa listahan ng naaprubahang plugin ng ChurchCRM."
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "Ang plugin na ito ay ii-install bilang HINDI BINERIPIKA."
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "Ang URL ay dapat gumamit ng HTTPS."
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "I-uninstall (burahin mula sa disk)"
+
+#: 
+msgid "Unverified plugin"
+msgstr "Plugin na hindi bineripika"
+
+#: 
+msgid "Verified"
+msgstr "Bineripika"
+
+#: 
+msgid "What this plugin does:"
+msgstr "Ginagawa ng plugin na ito:"
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "Ang downloadUrl, sha256, at pluginId ay lahat kinakailangan para sa mga hindi bineripikahang pag-install."
+
+#: 
+msgid "risk"
+msgstr "panganib"
+
+#: 
+msgid "Name cannot be empty"
+msgstr "Hindi maaaring walang laman ang pangalan"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "Hindi maaaring higit sa %d na karakter ang pangalan"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "Kailangan ng tulong? Makipag-ugnayan sa amin"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "Walang napiling kalendaryo — ang event na ito ay lilitaw sa ilalim ng sistema ng kalendaryo na \"Mga Hindi Naka-pin na Event\" hanggang sa i-pin mo ito."
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "Nagbubukas ng 2-minutong window para sa mga device na magrehistro sa:"
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "Gumagamit ng oras ng simbahan ({{church}}), hindi ang iyong browser ({{browser}})."
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "Maligayang pagdating — mag-sign in upang pamahalaan ang iyong komunidad"
 

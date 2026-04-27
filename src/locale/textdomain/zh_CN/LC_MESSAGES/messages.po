@@ -3091,10 +3091,6 @@ msgid "Add Church Event"
 msgstr "增加教会活动"
 
 #: 
-msgid "List Event Types"
-msgstr "列出活动类型"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "办理入住和退房"
 
@@ -5570,10 +5566,6 @@ msgstr "缺少日历访问令牌"
 #: 
 msgid "User must have Delete Records permission"
 msgstr "用户必须具有删除记录权限"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "ChurchCRM中央通知URL"
 
 #: 
 msgid "invalid event type id"
@@ -9456,10 +9448,6 @@ msgid "Important"
 msgstr "重要"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "通过将插件放置在以下位置来安装插件"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "验证码无效。请重试。"
 
@@ -10734,10 +10722,6 @@ msgid "Connect with others"
 msgstr "与他人联系"
 
 #: 
-msgid "Contact us"
-msgstr "联系我们"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "将个人记录转换为家族单位"
 
@@ -11420,10 +11404,6 @@ msgstr "名称更改需要保存。操作菜单中的重新排序和删除操作
 #: 
 msgid "Name, address, contact details"
 msgstr "姓名、地址、联系方式"
-
-#: 
-msgid "Need help?"
-msgstr "需要帮助？"
 
 #: 
 msgid "New"
@@ -15245,10 +15225,6 @@ msgid "Online"
 msgstr "在线"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "为设备注册打开一个30秒的窗口："
-
-#: 
 msgid "Pending"
 msgstr "待处理"
 
@@ -15769,10 +15745,6 @@ msgid "Loading event editor…"
 msgstr "正在加载事件编辑器……"
 
 #: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "未选择日历——此事件将被保存，但不会显示在任何日历视图中。"
-
-#: 
 msgid "No group"
 msgstr "无事工部门"
 
@@ -15859,4 +15831,380 @@ msgstr "删除竞拍号"
 #: 
 msgid "Invalid security token. Please try again."
 msgstr "安全令牌无效。请重试。"
+
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "将公众假期添加到主日历。每个选定的国家/地区将在侧栏中显示为独立的可切换日历，用户可以单独显示或隐藏节假日。"
+
+#: 
+msgid "Choose map provider"
+msgstr "选择地图服务"
+
+#: 
+msgid "Current database"
+msgstr "当前数据库"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "演示数据通常仅在全新安装时加载。现在导入将在现有数据旁边添加示例记录，可能会产生重复项。"
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "每个国家/地区在侧栏中生成独立的日历行。使用每个日历的切换开关可临时隐藏某个国家/地区，而无需更改插件设置。"
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "按类别筛选"
+
+#: 
+msgid "Holiday Settings"
+msgstr "节假日设置"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "节假日（%s）"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "节假日按类型标记：法定节假日、纪念日、银行假期、季节性节日和宗教节日。不选择任何类别将显示所有节假日，或选择特定类型进行筛选。"
+
+#: 
+msgid "Import demo data anyway"
+msgstr "仍然导入演示数据"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "缺少财务承诺标识符。"
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "未选择任何国家/地区。请在节假日日历插件设置中至少选择一个国家/地区。"
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "所选筛选条件无匹配记录。"
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "在 Apple Maps 中打开"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "在 Google Maps 中打开"
+
+#: 
+msgid "Open in new tab"
+msgstr "在新标签页中打开"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "设置国家/地区"
+
+#: 
+msgid "Show all"
+msgstr "显示全部"
+
+#: 
+msgid "Show:"
+msgstr "显示："
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "显示和隐藏各个国家/地区"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "瑞典语"
+
+#: 
+msgid "System"
+msgstr "系统"
+
+#: 
+msgid "Timeline filters"
+msgstr "时间轴筛选"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "如需从空白数据库重新开始，请在导入演示数据之前从管理仪表板使用重置数据库功能。"
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "使用国家/地区选择器选择一个或多个国家/地区。您添加的每个国家/地区将在侧栏中显示为独立的日历条目——让您可以显示全球会众的节假日。"
+
+#: 
+msgid "Your database already contains data"
+msgstr "您的数据库已包含数据"
+
+#: 
+msgid "people"
+msgstr "人"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "安装插件需要提供下载地址（downloadUrl）。"
+
+#: 
+msgid "All three fields are required."
+msgstr "所有三个字段均为必填项。"
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "已审核的社区插件"
+
+#: 
+msgid "Browse Approved"
+msgstr "浏览已审核插件"
+
+#: 
+msgid "Check for Updates"
+msgstr "检查更新"
+
+#: 
+msgid "Checking…"
+msgstr "检查中…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "清除隔离"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "仅在根本问题已修复后才清除隔离。服务器将拒绝启用被隔离的插件。"
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "点击上方“浏览已审核插件”安装经过审核的插件，或点击“从 URL 安装”以在开发期间安装未经验证的版本。"
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "清除插件隔离失败"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "清除隔离失败"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "安装插件失败"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "从 URL 安装插件失败"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "加载已审核插件列表失败"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "加载已审核插件列表失败。"
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "刷新插件注册表失败"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "刷新插件注册表失败。请检查您的网络连接。"
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "卸载插件失败"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "正在获取最新注册表…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "从插件作者处获取此值。如果不完全匹配，安装程序将拒绝下载。"
+
+#: 
+msgid "Homepage"
+msgstr "主页"
+
+#: 
+msgid "Install"
+msgstr "安装"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "从 URL 安装插件（未验证）"
+
+#: 
+msgid "Install Unverified"
+msgstr "安装未验证插件"
+
+#: 
+msgid "Install failed"
+msgstr "安装失败"
+
+#: 
+msgid "Install from URL"
+msgstr "从 URL 安装"
+
+#: 
+msgid "Installing…"
+msgstr "安装中…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "短横线命名格式。必须与 ZIP 文件内的顶层目录名称及 plugin.json 中的 id 一致。"
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "正在加载已审核插件列表…"
+
+#: 
+msgid "Loading…"
+msgstr "加载中…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "匹配已审核插件列表中的条目"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "必须是通过 HTTPS 提供的不可变发布 URL。"
+
+#: 
+msgid "Plugin id"
+msgstr "插件 ID"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "插件已安装为未验证状态。启用前请仔细检查提取的文件。"
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "插件已安装。请检查后点击“启用”以激活。"
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "插件隔离已清除。您现在可以重新启用该插件。"
+
+#: 
+msgid "Plugin quarantined"
+msgstr "插件已被隔离"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "插件注册表已刷新。"
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "插件已卸载"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "插件已卸载。"
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "插件 ZIP 下载地址（仅限 HTTPS）"
+
+#: 
+msgid "Quarantined"
+msgstr "已隔离"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "启用前请检查磁盘上的插件文件。未验证的插件与已审核的插件具有相同的权限运行。"
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "SHA-256 校验和"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "SHA-256 必须为 64 位十六进制字符串。"
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "ChurchCRM 维护者尚未审核此插件。您对此处安装的任何内容的安全性和行为负全责。请尽可能使用“浏览已审核插件”流程。"
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "已审核插件列表为空。目前尚无第三方插件可通过验证安装程序获取。"
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "插件在运行时失败后已自动禁用。"
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "这些插件已经 ChurchCRM 维护者审核并批准。点击“安装”下载并安装——插件不会自动启用。"
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "此插件不在 ChurchCRM 已审核插件列表中。"
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "此插件将以未验证状态安装。"
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "URL 必须使用 HTTPS。"
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "卸载（从磁盘删除）"
+
+#: 
+msgid "Unverified plugin"
+msgstr "未验证插件"
+
+#: 
+msgid "Verified"
+msgstr "已验证"
+
+#: 
+msgid "What this plugin does:"
+msgstr "此插件的功能："
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "未验证安装需要提供 downloadUrl、sha256 和 pluginId。"
+
+#: 
+msgid "risk"
+msgstr "风险"
+
+#: 
+msgid "Name cannot be empty"
+msgstr "名称不能为空"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "名称不能超过 %d 个字符"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "需要帮助？联系我们"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "未选择日历——此活动将显示在“未固定活动”系统日历下，直到您将其固定为止。"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "打开一个 2 分钟的窗口，供设备在以下地址注册："
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "时间使用教会时间（{{church}}），而非您的浏览器时间（{{browser}}）。"
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "欢迎——登录以管理您的会众"
 

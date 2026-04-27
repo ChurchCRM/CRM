@@ -3022,10 +3022,6 @@ msgid "Add Church Event"
 msgstr "Thêm sự kiện mới"
 
 #: 
-msgid "List Event Types"
-msgstr "Loại sự kiện"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "Nhận phòng và Trả phòng"
 
@@ -5498,10 +5494,6 @@ msgstr "Thiếu mã thông báo truy cập lịch"
 #: 
 msgid "User must have Delete Records permission"
 msgstr "Người dùng phải có quyền Xóa Bản ghi"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "URL thông báo trung tâm của ChurchCRM"
 
 #: 
 msgid "invalid event type id"
@@ -9377,10 +9369,6 @@ msgid "Important"
 msgstr "Quan trọng"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "Cài đặt plugin bằng cách đặt chúng vào"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "Mã không hợp lệ. Vui lòng thử lại."
 
@@ -10655,10 +10643,6 @@ msgid "Connect with others"
 msgstr "Ket noi voi nguoi khac"
 
 #: 
-msgid "Contact us"
-msgstr "Lien he chung toi"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Chuyen doi ho so ca nhan thanh don vi gia dinh"
 
@@ -11341,10 +11325,6 @@ msgstr "Thay doi ten can luu lai. Cac thao tac sap xep lai va xoa trong menu han
 #: 
 msgid "Name, address, contact details"
 msgstr "Ten, dia chi, thong tin lien he"
-
-#: 
-msgid "Need help?"
-msgstr "Can giup do?"
 
 #: 
 msgid "New"
@@ -15166,10 +15146,6 @@ msgid "Online"
 msgstr "Trực tuyến"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "Mở cửa sổ 30 giây để thiết bị đăng ký tại:"
-
-#: 
 msgid "Pending"
 msgstr "Đang chờ"
 
@@ -15690,10 +15666,6 @@ msgid "Loading event editor…"
 msgstr "Đang tải trình chỉnh sửa sự kiện…"
 
 #: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "Chưa chọn lịch — sự kiện này sẽ được lưu nhưng không xuất hiện trong bất kỳ chế độ xem lịch nào."
-
-#: 
 msgid "No group"
 msgstr "Không có nhóm"
 
@@ -15780,4 +15752,380 @@ msgstr "Xóa số mái chèo"
 #: 
 msgid "Invalid security token. Please try again."
 msgstr "Mã thông báo bảo mật không hợp lệ. Vui lòng thử lại."
+
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "Thêm ngày lễ quốc gia vào lịch chính. Mỗi quốc gia được chọn sẽ trở thành một lịch riêng có thể bật/tắt trong thanh bên, cho phép người dùng hiển thị hoặc ẩn ngày lễ một cách độc lập."
+
+#: 
+msgid "Choose map provider"
+msgstr "Chọn nhà cung cấp bản đồ"
+
+#: 
+msgid "Current database"
+msgstr "Cơ sở dữ liệu hiện tại"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "Dữ liệu mẫu thường chỉ được tải trên các cài đặt mới. Nhập ngay bây giờ sẽ thêm bản ghi mẫu cùng với dữ liệu hiện có và có thể tạo ra các bản trùng lặp."
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "Mỗi quốc gia tạo ra một hàng lịch riêng trong thanh bên. Sử dụng nút bật/tắt theo lịch để tạm thời ẩn một quốc gia mà không thay đổi cài đặt tiện ích của bạn."
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "Lọc theo danh mục"
+
+#: 
+msgid "Holiday Settings"
+msgstr "Cài đặt ngày lễ"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "Ngày lễ (%s)"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "Ngày lễ được phân loại theo: Chính thức, Ngày kỷ niệm, Ngày nghỉ ngân hàng, Theo mùa và Tôn giáo. Để trống tất cả danh mục để hiển thị mọi ngày lễ, hoặc chọn loại cụ thể để thu hẹp hiển thị."
+
+#: 
+msgid "Import demo data anyway"
+msgstr "Nhập dữ liệu mẫu dù sao"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "Thiếu mã định danh cam kết tài chính."
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "Chưa chọn quốc gia nào. Hãy chọn ít nhất một quốc gia trong cài đặt tiện ích Lịch ngày lễ."
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "Không có mục nào khớp với bộ lọc đã chọn."
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "Mở trong Apple Maps"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "Mở trong Google Maps"
+
+#: 
+msgid "Open in new tab"
+msgstr "Mở trong tab mới"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "Thiết lập quốc gia"
+
+#: 
+msgid "Show all"
+msgstr "Hiển thị tất cả"
+
+#: 
+msgid "Show:"
+msgstr "Hiển thị:"
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "Hiển thị và ẩn từng quốc gia"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "Tiếng Thụy Điển"
+
+#: 
+msgid "System"
+msgstr "Hệ thống"
+
+#: 
+msgid "Timeline filters"
+msgstr "Bộ lọc dòng thời gian"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "Để bắt đầu lại với cơ sở dữ liệu sạch, hãy sử dụng Đặt lại cơ sở dữ liệu từ Bảng điều khiển quản trị trước khi nhập dữ liệu mẫu."
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "Sử dụng bộ chọn Quốc gia để chọn một hoặc nhiều quốc gia. Mỗi quốc gia bạn thêm sẽ xuất hiện như một mục lịch riêng trong thanh bên — cho phép bạn hiển thị ngày lễ cho hội chúng toàn cầu."
+
+#: 
+msgid "Your database already contains data"
+msgstr "Cơ sở dữ liệu của bạn đã chứa dữ liệu"
+
+#: 
+msgid "people"
+msgstr "người"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "Cần có downloadUrl để cài đặt tiện ích."
+
+#: 
+msgid "All three fields are required."
+msgstr "Cả ba trường đều bắt buộc."
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "Tiện ích cộng đồng đã được phê duyệt"
+
+#: 
+msgid "Browse Approved"
+msgstr "Duyệt danh sách đã phê duyệt"
+
+#: 
+msgid "Check for Updates"
+msgstr "Kiểm tra cập nhật"
+
+#: 
+msgid "Checking…"
+msgstr "Đang kiểm tra…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "Xóa kiểm dịch"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "Chỉ xóa kiểm dịch sau khi vấn đề cơ bản đã được khắc phục. Máy chủ sẽ từ chối kích hoạt tiện ích đang trong kiểm dịch."
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "Nhấp vào \"Duyệt danh sách đã phê duyệt\" ở trên để cài đặt tiện ích đã được kiểm duyệt, hoặc \"Cài từ URL\" cho bản dựng chưa được xác minh trong quá trình phát triển."
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "Không thể xóa kiểm dịch tiện ích"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "Không thể xóa kiểm dịch"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "Không thể cài đặt tiện ích"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "Không thể cài đặt tiện ích từ URL"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "Không thể tải danh sách tiện ích đã phê duyệt"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "Không thể tải danh sách tiện ích đã phê duyệt."
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "Không thể làm mới kho lưu trữ tiện ích"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "Không thể làm mới kho lưu trữ tiện ích. Kiểm tra kết nối internet của bạn."
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "Không thể gỡ cài đặt tiện ích"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "Đang tải kho lưu trữ mới nhất…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "Lấy thông tin này từ tác giả tiện ích. Trình cài đặt sẽ từ chối tải xuống nếu không khớp từng byte."
+
+#: 
+msgid "Homepage"
+msgstr "Trang chủ"
+
+#: 
+msgid "Install"
+msgstr "Cài đặt"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "Cài đặt tiện ích từ URL (Chưa được xác minh)"
+
+#: 
+msgid "Install Unverified"
+msgstr "Cài đặt chưa xác minh"
+
+#: 
+msgid "Install failed"
+msgstr "Cài đặt thất bại"
+
+#: 
+msgid "Install from URL"
+msgstr "Cài từ URL"
+
+#: 
+msgid "Installing…"
+msgstr "Đang cài đặt…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "Dạng kebab-case. Phải khớp với tên thư mục cấp cao nhất trong file zip và id trong plugin.json."
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "Đang tải danh sách tiện ích đã phê duyệt…"
+
+#: 
+msgid "Loading…"
+msgstr "Đang tải…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "Khớp với một mục trong danh sách tiện ích đã phê duyệt"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "Phải là URL phát hành cố định được phục vụ qua HTTPS."
+
+#: 
+msgid "Plugin id"
+msgstr "ID tiện ích"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "Tiện ích đã được cài đặt ở trạng thái CHƯA XÁC MINH. Hãy xem xét kỹ các tệp đã giải nén trước khi kích hoạt."
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "Tiện ích đã được cài đặt. Xem xét và nhấp Kích hoạt để bật."
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "Kiểm dịch tiện ích đã được xóa. Bây giờ bạn có thể kích hoạt lại tiện ích."
+
+#: 
+msgid "Plugin quarantined"
+msgstr "Tiện ích đã bị kiểm dịch"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "Kho lưu trữ tiện ích đã được làm mới."
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "Tiện ích đã gỡ cài đặt"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "Tiện ích đã được gỡ cài đặt."
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "URL zip tiện ích (chỉ HTTPS)"
+
+#: 
+msgid "Quarantined"
+msgstr "Đang kiểm dịch"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "Xem xét các tệp tiện ích trên đĩa trước khi kích hoạt. Tiện ích chưa được xác minh chạy với cùng quyền như tiện ích đã phê duyệt."
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "Mã kiểm tra SHA-256"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "SHA-256 phải là chuỗi hex 64 ký tự."
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "Nhóm duy trì ChurchCRM chưa xem xét tiện ích này. Bạn chịu trách nhiệm về bảo mật và hoạt động của bất kỳ thứ gì bạn cài đặt ở đây. Ưu tiên sử dụng quy trình Duyệt danh sách đã phê duyệt bất cứ khi nào có thể."
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "Danh sách tiện ích đã phê duyệt trống. Hiện chưa có tiện ích của bên thứ ba nào có sẵn qua trình cài đặt đã xác minh."
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "Tiện ích đã bị tự động vô hiệu hóa sau khi xảy ra lỗi thời gian chạy."
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "Các tiện ích này đã được nhóm duy trì ChurchCRM xem xét và phê duyệt. Nhấp Cài đặt để tải xuống và cài đặt — tiện ích sẽ không được kích hoạt tự động."
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "Tiện ích này không có trong danh sách tiện ích đã phê duyệt của ChurchCRM."
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "Tiện ích này sẽ được cài đặt ở trạng thái CHƯA XÁC MINH."
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "URL phải sử dụng HTTPS."
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "Gỡ cài đặt (xóa khỏi đĩa)"
+
+#: 
+msgid "Unverified plugin"
+msgstr "Tiện ích chưa được xác minh"
+
+#: 
+msgid "Verified"
+msgstr "Đã xác minh"
+
+#: 
+msgid "What this plugin does:"
+msgstr "Tiện ích này làm gì:"
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "downloadUrl, sha256 và pluginId đều bắt buộc cho các cài đặt chưa được xác minh."
+
+#: 
+msgid "risk"
+msgstr "rủi ro"
+
+#: 
+msgid "Name cannot be empty"
+msgstr "Tên không được để trống"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "Tên không được dài hơn %d ký tự"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "Cần trợ giúp? Liên hệ với chúng tôi"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "Chưa chọn lịch — sự kiện này sẽ xuất hiện trong lịch hệ thống \"Sự kiện chưa ghim\" cho đến khi bạn ghim nó."
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "Mở cửa sổ 2 phút để thiết bị đăng ký tại:"
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "Thời gian sử dụng múi giờ nhà thờ ({{church}}), không phải trình duyệt của bạn ({{browser}})."
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "Chào mừng — đăng nhập để quản lý cộng đoàn của bạn"
 
