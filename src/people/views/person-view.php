@@ -425,7 +425,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                             <span class="fw-bold"><?= $familyMember->getFullName() ?></span>
                                             <i class="fa-solid fa-circle-user text-primary ms-2" title="<?= gettext('Current person') ?>"></i>
                                         <?php } else { ?>
-                                            <a href="<?= SystemURLs::getRootPath() ?>/people/view/<?= $tmpPersonId ?>"><?= $familyMember->getFullName() ?></a>
+                                            <a href="<?= $familyMember->getViewURI() ?>"><?= $familyMember->getFullName() ?></a>
                                         <?php } ?>
                                     </div>
                                 </td>
