@@ -132,7 +132,7 @@ Fix bugs, add features, improve performance, and expand test coverage in the mai
 **Quick start:**
 1. Make sure you have a [GitHub account](https://github.com/signup/free)
 2. Join [Discord](https://discord.gg/tuWyFzj3Nj) and introduce yourself
-3. Find a [`good first issue`](https://github.com/ChurchCRM/CRM/labels/good%20first%20issue) to start with
+3. Ask in Discord what's a good place to start — maintainers will point you to something concrete
 4. Set up your [development environment](#setting-up-your-development-environment)
 5. Open a pull request
 
