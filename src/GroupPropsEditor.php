@@ -151,7 +151,7 @@ if (mysqli_num_rows($rsPropList) === 0) {
 ?>
     <form>
         <p class="text-muted"><?= gettext('This group currently has no properties!  You can add them in the Group Editor.') ?></p>
-        <input type="button" class="btn btn-secondary" value="<?= gettext('Return to Person Record') ?>" Name="Cancel" onclick="javascript:document.location='<?= Person::getViewURIForId($iPersonID) ?>';">
+        <a href="<?= SystemURLs::getRootPath() ?>/people/view/<?= $iPersonID ?>" class="btn btn-secondary"><?= gettext('Return to Person Record') ?></a>
 
     </form>
 <?php
@@ -197,7 +197,7 @@ if (mysqli_num_rows($rsPropList) === 0) {
                         <td colspan="3" class="pt-3">
                             <div class="d-flex gap-2">
                                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" Name="GroupPropSubmit">
-                                <input type="button" class="btn btn-secondary" value="<?= gettext('Cancel') ?>" Name="Cancel" onclick="javascript:document.location='<?= Person::getViewURIForId($iPersonID) ?>';">
+                                <a href="<?= SystemURLs::getRootPath() ?>/people/view/<?= $iPersonID ?>" class="btn btn-secondary"><?= gettext('Cancel') ?></a>
 
                             </div>
                         </td>

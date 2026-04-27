@@ -3,7 +3,6 @@
 require_once __DIR__ . '/../../Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
@@ -14,8 +13,6 @@ use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\PropertyService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Slim\SlimUtils;
-use ChurchCRM\Utils\CustomFieldUtils;
-use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
