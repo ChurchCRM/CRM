@@ -184,42 +184,66 @@ while ($row = mysqli_fetch_array($rsPaddleNums)) {
             ->filterByMbPerId($iPnPerID)
             ->find();
 
-        foreach ($multiBuyItems as $mbRecord) {
-            $donatedItem = DonatedItemQuery::create()
-                ->filterById($mbRecord->getMbItemId())
-                ->filterByFrId($iFundRaiserID)
-                ->findOne();
-            if ($donatedItem === null) {
-                continue;
+        if ($multiBuyItems->count() > 0) {
+            // Batch-load donated items for this fundraiser (keyed by di_ID)
+            $mbItemIds = array_map(fn ($mb) => $mb->getMbItemId(), $multiBuyItems->getData());
+            $donatedItemsById = [];
+            foreach (DonatedItemQuery::create()->filterById($mbItemIds)->filterByFrId($iFundRaiserID)->find() as $di) {
+                $donatedItemsById[$di->getId()] = $di;
             }
 
-            $mb_count = $mbRecord->getMbCount();
-            $di_item = $donatedItem->getItem();
-            $di_title = $donatedItem->getTitle();
-            $di_sellprice = $donatedItem->getSellprice();
-
-            $donor = PersonQuery::create()->findPk($donatedItem->getDonorId());
-            $donorFirstName = $donor !== null ? $donor->getFirstName() : '';
-            $donorLastName  = $donor !== null ? $donor->getLastName()  : '';
-            $donorEmail     = $donor !== null ? $donor->getEmail()     : '';
-
-            $donorPhone = '';
-            if ($donor !== null && $donor->getFamId()) {
-                $family = FamilyQuery::create()->findPk($donor->getFamId());
-                $donorPhone = $family !== null ? $family->getHomePhone() : '';
+            // Batch-load donors for those items (keyed by per_ID)
+            $donorIds = array_filter(array_unique(array_map(fn ($di) => $di->getDonorId(), $donatedItemsById)));
+            $personsById = [];
+            if (!empty($donorIds)) {
+                foreach (PersonQuery::create()->filterById(array_values($donorIds))->find() as $person) {
+                    $personsById[$person->getId()] = $person;
+                }
             }
 
-            $nextY = $curY;
-            $pdf->SetXY(SystemConfig::getValue('leftX'), $curY);
-            $nextY = $pdf->cellWithWrap($curY, $nextY, $ItemWid, $tableCellY, $di_item, 0, 'L');
-            $nextY = $pdf->cellWithWrap($curY, $nextY, $QtyWid, $tableCellY, $mb_count, 0, 'L');
-            $nextY = $pdf->cellWithWrap($curY, $nextY, $TitleWid, $tableCellY, stripslashes($di_title), 0, 'L');
-            $nextY = $pdf->cellWithWrap($curY, $nextY, $DonorWid, $tableCellY, $donorFirstName . ' ' . $donorLastName, 0, 'L');
-            $nextY = $pdf->cellWithWrap($curY, $nextY, $PhoneWid, $tableCellY, $donorPhone, 0, 'L');
-            $nextY = $pdf->cellWithWrap($curY, $nextY, $EmailWid, $tableCellY, $donorEmail, 0, 'L');
-            $nextY = $pdf->cellWithWrap($curY, $nextY, $PriceWid, $tableCellY, '$' . ($mb_count * $di_sellprice), 0, 'R');
-            $curY = $nextY;
-            $totalAmount += $mb_count * $di_sellprice;
+            // Batch-load families for those donors (keyed by fam_ID)
+            $famIds = array_filter(array_unique(array_map(fn ($p) => $p->getFamId(), $personsById)));
+            $familiesById = [];
+            if (!empty($famIds)) {
+                foreach (FamilyQuery::create()->filterById(array_values($famIds))->find() as $family) {
+                    $familiesById[$family->getId()] = $family;
+                }
+            }
+
+            foreach ($multiBuyItems as $mbRecord) {
+                $donatedItem = $donatedItemsById[$mbRecord->getMbItemId()] ?? null;
+                if ($donatedItem === null) {
+                    continue;
+                }
+
+                $mb_count = $mbRecord->getMbCount();
+                $di_item = $donatedItem->getItem();
+                $di_title = $donatedItem->getTitle();
+                $di_sellprice = $donatedItem->getSellprice();
+
+                $donor = $personsById[$donatedItem->getDonorId()] ?? null;
+                $donorFirstName = $donor !== null ? $donor->getFirstName() : '';
+                $donorLastName  = $donor !== null ? $donor->getLastName()  : '';
+                $donorEmail     = $donor !== null ? $donor->getEmail()     : '';
+
+                $donorPhone = '';
+                if ($donor !== null && $donor->getFamId()) {
+                    $family = $familiesById[$donor->getFamId()] ?? null;
+                    $donorPhone = $family !== null ? $family->getHomePhone() : '';
+                }
+
+                $nextY = $curY;
+                $pdf->SetXY(SystemConfig::getValue('leftX'), $curY);
+                $nextY = $pdf->cellWithWrap($curY, $nextY, $ItemWid, $tableCellY, $di_item, 0, 'L');
+                $nextY = $pdf->cellWithWrap($curY, $nextY, $QtyWid, $tableCellY, $mb_count, 0, 'L');
+                $nextY = $pdf->cellWithWrap($curY, $nextY, $TitleWid, $tableCellY, stripslashes($di_title), 0, 'L');
+                $nextY = $pdf->cellWithWrap($curY, $nextY, $DonorWid, $tableCellY, $donorFirstName . ' ' . $donorLastName, 0, 'L');
+                $nextY = $pdf->cellWithWrap($curY, $nextY, $PhoneWid, $tableCellY, $donorPhone, 0, 'L');
+                $nextY = $pdf->cellWithWrap($curY, $nextY, $EmailWid, $tableCellY, $donorEmail, 0, 'L');
+                $nextY = $pdf->cellWithWrap($curY, $nextY, $PriceWid, $tableCellY, '$' . ($mb_count * $di_sellprice), 0, 'R');
+                $curY = $nextY;
+                $totalAmount += $mb_count * $di_sellprice;
+            }
         }
 
         // Report total purchased items
