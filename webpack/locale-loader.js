@@ -58,7 +58,7 @@ function checkBrowserLocale() {
     alert.className = "alert alert-info alert-dismissible";
     alert.style.marginBottom = "1rem";
 
-    const userSettingsUrl = `${window.CRM.root}/v2/user/${window.CRM.userId}`;
+    const userSettingsUrl = `${window.CRM.root}/v2/user/${window.CRM.userId}#tab-localization`;
 
     alert.innerHTML = `
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -80,7 +80,7 @@ function checkBrowserLocale() {
       markDismissed();
       alert.remove();
     });
-    alert.querySelector(".close").addEventListener("click", markDismissed);
+    alert.querySelector(".btn-close").addEventListener("click", markDismissed);
   };
 
   if (document.readyState === "loading") {
@@ -157,8 +157,11 @@ async function loadLocaleFiles(localeConfig) {
       );
     }
 
-    // Load FullCalendar locale if configured
-    if (localeConfig.fullCalendar) {
+    // Load FullCalendar locale only when FullCalendar is available.
+    // FooterNotLoggedIn.php (login page) runs this loader but never loads
+    // index.global.min.js, so ar.js / other locale IIFEs would throw
+    // "FullCalendar is not defined" if loaded there.
+    if (localeConfig.fullCalendar && typeof FullCalendar !== "undefined") {
       let fcLocale = localeConfig.languageCode.toLowerCase();
       if (localeConfig.fullCalendarLocale) {
         fcLocale = localeConfig.fullCalendarLocale;
@@ -205,3 +208,47 @@ async function loadLocaleFiles(localeConfig) {
 
 // Export for use in other scripts
 window.CRM.loadLocaleFiles = loadLocaleFiles;
+
+/**
+ * Populate a <select> with locale options grouped by region.
+ * Shared by church-info and user-settings pages.
+ *
+ * @param {HTMLSelectElement} selectEl       - Target element to populate.
+ * @param {string}            selectedLocale - Locale code to pre-select.
+ * @returns {Promise<void>}
+ */
+async function populateLocaleDropdown(selectEl, selectedLocale) {
+  const root = window.CRM.root || "";
+  const response = await fetch(`${root}/locale/locales.json`);
+  if (!response.ok) {
+    throw new Error(`Failed to load locales.json: ${response.status}`);
+  }
+  const locales = await response.json();
+
+  const byRegion = {};
+  for (const [englishName, data] of Object.entries(locales)) {
+    const region = data.region || "Other";
+    if (!byRegion[region]) byRegion[region] = [];
+    byRegion[region].push({ englishName, data });
+  }
+
+  for (const region of Object.keys(byRegion).sort()) {
+    const group = document.createElement("optgroup");
+    group.label = region;
+    for (const { englishName, data } of byRegion[region]) {
+      const native = data.nativeName || "";
+      const nativeFirstWord = native.split(/[\s(-]/)[0].toLowerCase();
+      const englishFirstWord = englishName.split(/[\s(-]/)[0].toLowerCase();
+      const sameLanguage = nativeFirstWord === englishFirstWord;
+      const label =
+        native && native !== englishName && !sameLanguage
+          ? `${native} \u2014 ${englishName} [${data.locale}]`
+          : `${englishName} [${data.locale}]`;
+      const option = new Option(label, data.locale, false, data.locale === selectedLocale);
+      group.appendChild(option);
+    }
+    selectEl.appendChild(group);
+  }
+}
+
+window.CRM.populateLocaleDropdown = populateLocaleDropdown;

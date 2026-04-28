@@ -91,7 +91,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     data: 'name',
                     render: function (data, type, row) {
                         // row.id is from CRM (integer), safe to use directly
-                        return '<a href="' + window.CRM.root + '/PersonView.php?PersonID=' + parseInt(row.id, 10) + '" class="text-primary">' +
+                        return '<a href="' + window.CRM.root + '/people/view/' + parseInt(row.id, 10) + '" class="text-primary">' +
                             '<i class="fa-solid fa-user me-2"></i>' + escapeHtml(data) + '</a>';
                     },
                     searchable: true

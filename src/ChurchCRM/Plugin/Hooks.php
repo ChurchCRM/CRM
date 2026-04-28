@@ -13,26 +13,11 @@ final class Hooks
     // =========================================================================
     // Person Hooks
     // =========================================================================
-
-    /**
-     * Filter: Called before a person is created.
-     * Receives: array $personData
-     * Returns: array Modified person data
-     */
-    public const PERSON_PRE_CREATE = 'person.pre_create';
-
     /**
      * Action: Called after a person is created.
      * Receives: Person $person
      */
     public const PERSON_CREATED = 'person.created';
-
-    /**
-     * Filter: Called before a person is updated.
-     * Receives: Person $person, array $changes
-     * Returns: array Modified changes
-     */
-    public const PERSON_PRE_UPDATE = 'person.pre_update';
 
     /**
      * Action: Called after a person is updated.
@@ -46,36 +31,15 @@ final class Hooks
      */
     public const PERSON_DELETED = 'person.deleted';
 
-    /**
-     * Filter: Modify tabs on person view page.
-     * Receives: array $tabs, Person $person
-     * Returns: array Modified tabs
-     */
-    public const PERSON_VIEW_TABS = 'person.view.tabs';
-
     // =========================================================================
     // Family Hooks
     // =========================================================================
-
-    /**
-     * Filter: Called before a family is created.
-     * Receives: array $familyData
-     * Returns: array Modified family data
-     */
-    public const FAMILY_PRE_CREATE = 'family.pre_create';
 
     /**
      * Action: Called after a family is created.
      * Receives: Family $family
      */
     public const FAMILY_CREATED = 'family.created';
-
-    /**
-     * Filter: Called before a family is updated.
-     * Receives: Family $family, array $changes
-     * Returns: array Modified changes
-     */
-    public const FAMILY_PRE_UPDATE = 'family.pre_update';
 
     /**
      * Action: Called after a family is updated.
@@ -88,13 +52,6 @@ final class Hooks
      * Receives: int $familyId, array $familyData
      */
     public const FAMILY_DELETED = 'family.deleted';
-
-    /**
-     * Filter: Modify tabs on family view page.
-     * Receives: array $tabs, Family $family
-     * Returns: array Modified tabs
-     */
-    public const FAMILY_VIEW_TABS = 'family.view.tabs';
 
     // =========================================================================
     // Financial Hooks
@@ -121,6 +78,13 @@ final class Hooks
      * Receives: Event $event
      */
     public const EVENT_CREATED = 'event.created';
+
+    /**
+     * Filter: Allow plugins to contribute additional system calendars.
+     * Receives: SystemCalendar[] $calendars
+     * Returns: SystemCalendar[] Modified array of system calendars
+     */
+    public const SYSTEM_CALENDARS_REGISTER = 'systemcalendars.register';
 
     /**
      * Action: Called after a person checks in to an event.
@@ -151,23 +115,6 @@ final class Hooks
     public const GROUP_MEMBER_REMOVED = 'group.member.removed';
 
     // =========================================================================
-    // Email Hooks
-    // =========================================================================
-
-    /**
-     * Filter: Called before an email is sent.
-     * Receives: array $emailData (to, subject, body, etc.)
-     * Returns: array Modified email data
-     */
-    public const EMAIL_PRE_SEND = 'email.pre_send';
-
-    /**
-     * Action: Called after an email is sent.
-     * Receives: array $emailData, bool $success
-     */
-    public const EMAIL_SENT = 'email.sent';
-
-    // =========================================================================
     // UI/Menu Hooks
     // =========================================================================
 
@@ -178,59 +125,6 @@ final class Hooks
      */
     public const MENU_BUILDING = 'menu.building';
 
-    /**
-     * Filter: Modify dashboard widgets.
-     * Receives: array $widgets
-     * Returns: array Modified widgets
-     */
-    public const DASHBOARD_WIDGETS = 'dashboard.widgets';
-
-    /**
-     * Filter: Modify settings panels.
-     * Receives: array $panels
-     * Returns: array Modified panels
-     */
-    public const SETTINGS_PANELS = 'settings.panels';
-
-    /**
-     * Action: Called when admin pages are being rendered.
-     * Receives: string $pageId
-     */
-    public const ADMIN_PAGE = 'admin.page';
-
-    // =========================================================================
-    // Report Hooks
-    // =========================================================================
-
-    /**
-     * Filter: Called before a report is generated.
-     * Receives: array $reportData, string $reportType
-     * Returns: array Modified report data
-     */
-    public const REPORT_PRE_GENERATE = 'report.pre_generate';
-
-    /**
-     * Filter: Add custom report types.
-     * Receives: array $reportTypes
-     * Returns: array Modified report types
-     */
-    public const REPORT_TYPES = 'report.types';
-
-    // =========================================================================
-    // System Hooks
-    // =========================================================================
-
-    /**
-     * Action: Called during system initialization.
-     * Receives: (none)
-     */
-    public const SYSTEM_INIT = 'system.init';
-
-    /**
-     * Action: Called after system upgrade.
-     * Receives: string $fromVersion, string $toVersion
-     */
-    public const SYSTEM_UPGRADED = 'system.upgraded';
 
     /**
      * Action: Called during scheduled tasks (cron).
@@ -238,10 +132,5 @@ final class Hooks
      */
     public const CRON_RUN = 'cron.run';
 
-    /**
-     * Filter: Modify API response before sending.
-     * Receives: array $response, string $endpoint
-     * Returns: array Modified response
-     */
-    public const API_RESPONSE = 'api.response';
+    // =========================================================================
 }

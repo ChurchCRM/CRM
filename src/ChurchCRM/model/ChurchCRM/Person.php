@@ -9,6 +9,8 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\notifications\NewPersonOrFamilyEmail;
 use ChurchCRM\model\ChurchCRM\Base\Person as BasePerson;
 use ChurchCRM\PhotoInterface;
+use ChurchCRM\Plugin\Hook\HookManager;
+use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -92,9 +94,14 @@ class Person extends BasePerson implements PhotoInterface
         }
     }
 
+    public static function getViewURIForId(int $id): string
+    {
+        return SystemURLs::getRootPath() . '/people/view/' . $id;
+    }
+
     public function getViewURI(): string
     {
-        return SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $this->getId();
+        return self::getViewURIForId($this->getId());
     }
 
     public function getFamilyRole()
@@ -149,6 +156,8 @@ class Person extends BasePerson implements PhotoInterface
         if (empty($this->getFamId())) {
             NewPersonOrFamilyEmail::sendIfConfigured($this);
         }
+
+        HookManager::doAction(Hooks::PERSON_CREATED, $this);
     }
 
     public function postUpdate(?ConnectionInterface $con = null): void
@@ -156,6 +165,8 @@ class Person extends BasePerson implements PhotoInterface
         if (!empty($this->getDateLastEdited()) && !$this->skipPostUpdateNote) {
             $this->createTimeLineNote('edit');
         }
+
+        HookManager::doAction(Hooks::PERSON_UPDATED, $this);
     }
 
     private function createTimeLineNote(string $type): void

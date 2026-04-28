@@ -2374,14 +2374,6 @@ msgstr "Száma túl nagy. Között kell lennie -2147483648 és 2147483647"
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Pénz összeg túl nagy. Maximum $ 999999999,99"
 
-#: 
-msgid "Error making API Call to"
-msgstr "Hiba az API hívás során a következőhöz:"
-
-#: 
-msgid "Error text"
-msgstr "Hiba szövege"
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -3083,10 +3075,6 @@ msgstr "QuickBooks befizetési jegy beállítások"
 #: 
 msgid "Add Church Event"
 msgstr "Egyházi esemény hozzáadása"
-
-#: 
-msgid "List Event Types"
-msgstr "Eseménytípusok listázása"
 
 #: 
 msgid "Check-in and Check-out"
@@ -4651,11 +4639,6 @@ msgstr "Orosz"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "Számi (északi) (Svédország)"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "Albán"
 
@@ -4933,10 +4916,6 @@ msgstr "rendszerfelhasználó bejelentkezése visszaállítva"
 #: 
 msgid "Notification for"
 msgstr "Értesítés:"
-
-#: 
-msgid "ERROR"
-msgstr "HIBA"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -5564,10 +5543,6 @@ msgid "User must have Delete Records permission"
 msgstr "A felhasználónak Rekordok törlése engedéllyel kell rendelkeznie"
 
 #: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "ChurchCRM központi értesítések URL-je"
-
-#: 
 msgid "invalid event type id"
 msgstr "érvénytelen eseménytípus azonosítója"
 
@@ -5642,10 +5617,6 @@ msgstr "Érvénytelen ország neve"
 #: 
 msgid "LastName FirstName"
 msgstr "Vezetéknév Keresztnév"
-
-#: 
-msgid "Holidays"
-msgstr "Ünnepek"
 
 #: 
 msgid "Person Name"
@@ -5829,10 +5800,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugál - Portugália"
 
 #: 
-msgid "Holiday"
-msgstr "Ünnep"
-
-#: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Adja meg az alkalmazásnév meg kell jeleníteni a hitelesítő alkalmazásban"
 
@@ -5976,10 +5943,6 @@ msgstr "Szöveg"
 #: 
 msgid "Event Description"
 msgstr "Esemény leírása"
-
-#: 
-msgid "Help translate this project"
-msgstr "Segítsen lefordítani ezt a projektet"
 
 #. Context: locales
 #: 
@@ -8419,10 +8382,6 @@ msgid "Thank You!"
 msgstr "Köszönjük!"
 
 #: 
-msgid "Translation incomplete"
-msgstr "Fordítás hiányos"
-
-#: 
 msgid "Visit Our Website"
 msgstr "Látogassa meg webhelyünket"
 
@@ -9467,10 +9426,6 @@ msgstr "A kép jelenik meg, ha nincs Gravatar az e-mail-címhez"
 #: 
 msgid "Important"
 msgstr "Fontos"
-
-#: 
-msgid "Install plugins by placing them in"
-msgstr "Bővítmények telepítése ide helyezéssel:"
 
 #: 
 msgid "Invalid code. Please try again."
@@ -10748,10 +10703,6 @@ msgid "Connect with others"
 msgstr "Kapcsolódjon másokhoz"
 
 #: 
-msgid "Contact us"
-msgstr "Kapcsolat"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Egyéni rekordok átalakítása családi egységekké"
 
@@ -11434,10 +11385,6 @@ msgstr "A névváltoztatások mentést igényelnek. Az átrendezés és törlés
 #: 
 msgid "Name, address, contact details"
 msgstr "Név, cím, elérhetőségek"
-
-#: 
-msgid "Need help?"
-msgstr "Segítségre van szüksége?"
 
 #: 
 msgid "New"
@@ -15260,10 +15207,6 @@ msgid "Online"
 msgstr "Online"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "30 másodperces ablakot nyit az eszközök regisztrálásához:"
-
-#: 
 msgid "Pending"
 msgstr "Folyamatban"
 
@@ -15486,10 +15429,6 @@ msgstr "Hibanapló"
 #: 
 msgid "Error Reporting"
 msgstr "Hibajelentés"
-
-#: 
-msgid "Error:"
-msgstr "Hiba:"
 
 #: 
 msgid "Fix Settings"
@@ -15788,10 +15727,6 @@ msgid "Loading event editor…"
 msgstr "Az eseményszerkesztő betöltése…"
 
 #: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "Nincs naptár kiválasztva — az esemény mentésre kerül, de nem jelenik meg egyetlen naptárnézetben sem."
-
-#: 
 msgid "No group"
 msgstr "Nincs csoport"
 
@@ -15878,4 +15813,380 @@ msgstr "Licitsorszám törlése"
 #: 
 msgid "Invalid security token. Please try again."
 msgstr "Érvénytelen biztonsági token. Kérjük, próbálja újra."
+
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "Nyilvános ünnepnapokat ad a fő naptárhoz. Minden kiválasztott ország saját, be- és kikapcsolható naptárként jelenik meg az oldalsávban, így a felhasználók egymástól függetlenül mutathatják vagy rejthetik el az ünnepnapokat."
+
+#: 
+msgid "Choose map provider"
+msgstr "Térképszolgáltató kiválasztása"
+
+#: 
+msgid "Current database"
+msgstr "Jelenlegi adatbázis"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "A bemutató adatok általában csak friss telepítésekkor kerülnek betöltésre. Az importálás most mintarekordokat ad a meglévő adatokhoz, és ismétlődéseket hozhat létre."
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "Minden ország saját naptársort hoz létre az oldalsávban. Az egyes naptárakhoz tartozó kapcsolóval ideiglenesen elrejthető egy ország a beépülő modul beállításainak módosítása nélkül."
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "Szűrés kategória szerint"
+
+#: 
+msgid "Holiday Settings"
+msgstr "Ünnepnap beállítások"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "Ünnepnapok (%s)"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "Az ünnepnapok típus szerint vannak megjelölve: Hivatalos, Emléknapok, Banki szünnapok, Évszaki és Vallási. Hagyja az összes kategóriát kijelöletlenül az összes ünnepnap megjelenítéséhez, vagy válasszon meghatározott típusokat a megjelenítés szűkítéséhez."
+
+#: 
+msgid "Import demo data anyway"
+msgstr "Bemutató adatok importálása mindenképpen"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "Hiányzó fogadalom-azonosító."
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "Nincs ország kiválasztva. Válasszon ki legalább egy országot az Ünnepi naptárak beépülő modul beállításaiban."
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "Nincs egyező bejegyzés a kiválasztott szűrőkhöz."
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "Megnyitás Apple Maps-ben"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "Megnyitás Google Maps-ben"
+
+#: 
+msgid "Open in new tab"
+msgstr "Megnyitás új lapon"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "Országok beállítása"
+
+#: 
+msgid "Show all"
+msgstr "Összes megjelenítése"
+
+#: 
+msgid "Show:"
+msgstr "Megjelenítés:"
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "Egyes országok megjelenítése és elrejtése"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "Svéd"
+
+#: 
+msgid "System"
+msgstr "Rendszer"
+
+#: 
+msgid "Timeline filters"
+msgstr "Idősor szűrők"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "Tiszta adatbázissal való újrakezdéshez használja az Adatbázis visszaállítása funkciót az Admin irányítópultból, mielőtt bemutató adatokat importál."
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "Használja az Országok választót egy vagy több ország kiválasztásához. Minden hozzáadott ország külön naptárbejegyzésként jelenik meg az oldalsávban – lehetővé téve az ünnepnapok megjelenítését egy globális gyülekezet számára."
+
+#: 
+msgid "Your database already contains data"
+msgstr "Az adatbázis már tartalmaz adatokat"
+
+#: 
+msgid "people"
+msgstr "személy"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "Beépülő modul telepítéséhez letöltési URL szükséges."
+
+#: 
+msgid "All three fields are required."
+msgstr "Mindhárom mező kitöltése kötelező."
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "Jóváhagyott közösségi beépülő modulok"
+
+#: 
+msgid "Browse Approved"
+msgstr "Jóváhagyottak böngészése"
+
+#: 
+msgid "Check for Updates"
+msgstr "Frissítések keresése"
+
+#: 
+msgid "Checking…"
+msgstr "Ellenőrzés…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "Karantén törlése"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "A karantént csak az alapul szolgáló probléma megoldása után törölje. A szerver megtagadja a karanténba helyezett beépülő modul engedélyezését."
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "Kattintson a fenti \"Jóváhagyottak böngészése\" gombra egy ellenőrzött beépülő modul telepítéséhez, vagy a \"Telepítés URL-ről\" lehetőségre egy nem ellenőrzött verzióhoz fejlesztés során."
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "A beépülő modul karanténjának törlése sikertelen"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "A karantén törlése sikertelen"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "A beépülő modul telepítése sikertelen"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "A beépülő modul URL-ről való telepítése sikertelen"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "A jóváhagyott beépülő modulok listájának betöltése sikertelen"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "A jóváhagyott beépülő modulok listájának betöltése sikertelen."
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "A beépülő modul-nyilvántartás frissítése sikertelen"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "A beépülő modul-nyilvántartás frissítése sikertelen. Ellenőrizze az internetkapcsolatát."
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "A beépülő modul eltávolítása sikertelen"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "Legújabb nyilvántartás letöltése…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "Kérje ezt a beépülő modul szerzőjétől. A telepítő megtagadja a letöltést, ha az nem egyezik byte-onként."
+
+#: 
+msgid "Homepage"
+msgstr "Honlap"
+
+#: 
+msgid "Install"
+msgstr "Telepítés"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "Beépülő modul telepítése URL-ről (nem ellenőrzött)"
+
+#: 
+msgid "Install Unverified"
+msgstr "Nem ellenőrzött telepítése"
+
+#: 
+msgid "Install failed"
+msgstr "Telepítés sikertelen"
+
+#: 
+msgid "Install from URL"
+msgstr "Telepítés URL-ről"
+
+#: 
+msgid "Installing…"
+msgstr "Telepítés…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "Kötőjeles formátum. Egyeznie kell a zip fájlon belüli legfelső szintű könyvtár nevével és a plugin.json azonosítójával."
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "Jóváhagyott beépülő modulok listájának betöltése…"
+
+#: 
+msgid "Loading…"
+msgstr "Betöltés…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "Egyezik egy bejegyzéssel a jóváhagyott beépülő modulok listáján"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "HTTPS-en keresztül kiszolgált, megváltoztathatatlan kiadási URL kell legyen."
+
+#: 
+msgid "Plugin id"
+msgstr "Beépülő modul azonosítója"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "A beépülő modul NEM ELLENŐRZÖTTKÉNT lett telepítve. Gondosan ellenőrizze a kicsomagolt fájlokat az engedélyezés előtt."
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "A beépülő modul telepítve. Ellenőrizze, majd kattintson az Engedélyezés gombra az aktiváláshoz."
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "A beépülő modul karanténja törölve. Most már újra engedélyezheti a beépülő modult."
+
+#: 
+msgid "Plugin quarantined"
+msgstr "Beépülő modul karanténba helyezve"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "A beépülő modul-nyilvántartás frissítve."
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "Beépülő modul eltávolítva"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "Beépülő modul eltávolítva."
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "Beépülő modul zip URL (csak HTTPS)"
+
+#: 
+msgid "Quarantined"
+msgstr "Karanténban"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "Ellenőrizze a lemezen lévő beépülő modul fájlokat az engedélyezés előtt. A nem ellenőrzött beépülő modulok ugyanolyan jogosultságokkal futnak, mint a jóváhagyottak."
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "SHA-256 ellenőrzőösszeg"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "A SHA-256 egy 64 karakteres hexadecimális karakterlánc kell legyen."
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "A ChurchCRM karbantartói nem ellenőrizték. Ön felelős az itt telepített szoftverek biztonságáért és viselkedéséért. Ha lehetséges, részesítse előnyben a Jóváhagyottak böngészése folyamatot."
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "A jóváhagyott beépülő modulok listája üres. Jelenleg nem érhetők el harmadik féltől származó beépülő modulok az ellenőrzött telepítőn keresztül."
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "A beépülő modul automatikusan le lett tiltva futásidejű hiba után."
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "Ezeket a beépülő modulokat a ChurchCRM karbantartói átvizsgálták és jóváhagyták. Kattintson a Telepítés gombra az egyik letöltéséhez és telepítéséhez – a beépülő modul nem lesz automatikusan engedélyezve."
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "Ez a beépülő modul nem szerepel a ChurchCRM jóváhagyott beépülő modulok listáján."
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "Ez a beépülő modul NEM ELLENŐRZÖTTKÉNT lesz telepítve."
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "Az URL-nek HTTPS-t kell használnia."
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "Eltávolítás (törlés a lemezről)"
+
+#: 
+msgid "Unverified plugin"
+msgstr "Nem ellenőrzött beépülő modul"
+
+#: 
+msgid "Verified"
+msgstr "Ellenőrzött"
+
+#: 
+msgid "What this plugin does:"
+msgstr "Mit csinál ez a beépülő modul:"
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "A downloadUrl, sha256 és pluginId mind szükséges a nem ellenőrzött telepítésekhez."
+
+#: 
+msgid "risk"
+msgstr "kockázat"
+
+#: 
+msgid "Name cannot be empty"
+msgstr "A név nem lehet üres"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "A név nem lehet hosszabb %d karakternél"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "Segítségre van szüksége? Vegye fel velünk a kapcsolatot"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "Nincs naptár kiválasztva – ez az esemény a \"Rögzítetlen események\" rendszernaptárban jelenik meg, amíg nem rögzíti."
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "2 perces ablakot nyit az eszközök regisztrálásához a következő címen:"
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "Az időpontok a gyülekezet helyi idejét ({{church}}) használják, nem a böngésző idejét ({{browser}})."
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "Üdvözöljük – jelentkezzen be közösségének kezeléséhez"
 

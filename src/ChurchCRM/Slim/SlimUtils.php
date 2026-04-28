@@ -346,11 +346,26 @@ class SlimUtils
                 // Dev-mode technical details
                 if ($displayErrorDetails && $statusCode >= 500) {
                     $escaped = htmlspecialchars($exception->getMessage());
+                    $nonce = SystemURLs::getCSPNonce();
                     $extraHtml = '<div class="mb-4"><details class="card card-outline border-secondary">'
-                        . '<summary class="card-header cursor-pointer"><i class="ti ti-code"></i> '
-                        . gettext('Technical Details') . ' (Development Mode)</summary>'
-                        . '<div class="card-body"><pre class="mb-0"><code>' . $escaped . '</code></pre></div>'
-                        . '</details></div>';
+                        . '<summary class="card-header cursor-pointer d-flex justify-content-between align-items-center">'
+                        . '<span><i class="ti ti-code"></i> ' . gettext('Technical Details') . ' (Development Mode)</span>'
+                        . '<button type="button" class="btn btn-sm btn-outline-secondary copy-error-btn" style="border: none; padding: 0.25rem 0.5rem;" title="' . gettext('Copy error message') . '">'
+                        . '<i class="ti ti-copy"></i></button></summary>'
+                        . '<div class="card-body"><pre class="mb-0"><code id="errorMessage">' . $escaped . '</code></pre></div>'
+                        . '</details></div>'
+                        . '<script nonce="' . $nonce . '">'
+                        . 'document.querySelector(".copy-error-btn")?.addEventListener("click", function(e) {'
+                        . 'e.stopPropagation();'
+                        . 'const errorText = document.getElementById("errorMessage")?.textContent || "";'
+                        . 'navigator.clipboard.writeText(errorText).then(() => {'
+                        . 'const btn = this;'
+                        . 'const originalHTML = btn.innerHTML;'
+                        . 'btn.innerHTML = \'<i class="ti ti-check"></i>\';'
+                        . 'setTimeout(() => {btn.innerHTML = originalHTML;}, 2000);'
+                        . '}).catch(() => { /* clipboard unavailable — no-op */ });'
+                        . '});'
+                        . '</script>';
                 }
 
                 $sPageTitle = $title;

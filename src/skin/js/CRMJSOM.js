@@ -430,7 +430,7 @@ window.CRM.renderPersonActionMenu = (personId, personName, options) => {
     '<div class="dropdown-menu dropdown-menu-end">' +
     '<a class="dropdown-item" href="' +
     root +
-    "/PersonView.php?PersonID=" +
+    "/people/view/" +
     personId +
     '">' +
     '<i class="ti ti-eye me-2"></i>' +

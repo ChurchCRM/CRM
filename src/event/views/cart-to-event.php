@@ -32,7 +32,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="avatar avatar-sm rounded-circle me-2" alt="" />
-                                            <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $person->getId() ?>">
+                                            <a href="<?= $person->getViewURI() ?>">
                                                 <?= InputUtils::escapeHTML($person->getFullName()) ?>
                                             </a>
                                         </div>

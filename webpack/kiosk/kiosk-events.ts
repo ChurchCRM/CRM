@@ -68,13 +68,15 @@ $(document).on("change", "#checkinByToggle", function () {
 // Family member selected in "Check-in By" modal
 $(document).on("click", ".checkinByMemberBtn", (event) => {
   const memberId = Number($(event.currentTarget).data("memberid"));
-  window.bootstrap.Modal.getOrCreateInstance(document.getElementById("checkinByModal")!).hide();
+  const checkinModal = document.getElementById("checkinByModal");
+  if (checkinModal) window.bootstrap.Modal.getOrCreateInstance(checkinModal).hide();
   kiosk.resolveCheckinByModal(Number.isNaN(memberId) || memberId <= 0 ? null : memberId);
 });
 
 // "Skip" button in "Check-in By" modal
 $(document).on("click", "#checkinBySkipBtn", () => {
-  window.bootstrap.Modal.getOrCreateInstance(document.getElementById("checkinByModal")!).hide();
+  const checkinModal = document.getElementById("checkinByModal");
+  if (checkinModal) window.bootstrap.Modal.getOrCreateInstance(checkinModal).hide();
   kiosk.resolveCheckinByModal(null);
 });
 
