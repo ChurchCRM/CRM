@@ -10,10 +10,12 @@ use ChurchCRM\Utils\LoggerUtils;
  * and approved for installation via the URL-based installer.
  *
  * The registry lives at the URL defined in CentralServices::PLUGIN_REGISTRY_URL
- * (the External branch of the CRM repo). It is fetched once at login by
- * AuthenticationManager and stored in $_SESSION['RemotePluginRegistry']. There
- * is no local fallback — if the remote fetch fails the session entry is absent
- * and installs are refused until the next successful login.
+ * (the External branch of the CRM repo). It is fetched lazily on first use
+ * within a session and then stored in $_SESSION['RemotePluginRegistry'] for
+ * the remainder of that session. There is no local fallback — if the remote
+ * fetch fails, $_SESSION['RemotePluginRegistry'] is set to an empty array and
+ * installs are refused until the registry can be fetched successfully in a
+ * later session.
  *
  * Adding an approved plugin requires a PR to the External branch registry file.
  * See .agents/skills/churchcrm/plugin-security-scan.md for the review checklist.
