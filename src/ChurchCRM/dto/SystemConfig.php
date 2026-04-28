@@ -256,7 +256,7 @@ class   SystemConfig
             'bSendUserDeletedEmail'                => new ConfigItem('bSendUserDeletedEmail', 'boolean', '0', gettext('Send an email notifying users when their account has been deleted')),
             'sInactiveClassification'              => new ConfigItem('sInactiveClassification', 'text', '', gettext('Comma separated list of classifications that should appear as inactive')),
             'sDefaultZip'                          => new ConfigItem('sDefaultZip', 'text', '', gettext('Default Zip')),
-            'sSystemID'                            => new ConfigItem('sSystemID', 'text', '', gettext('Unique anonymous identifier for this ChurchCRM installation (auto-generated on first boot, used for telemetry)')),
+            'sSystemID'                            => new ConfigItem('sSystemID', 'text', '')
         ];
     }
 
