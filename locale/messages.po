@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-25 08:05+0000\n"
+"POT-Creation-Date: 2026-04-28 05:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2417,6 +2417,9 @@ msgid "Copy All Numbers"
 msgstr ""
 
 msgid "Copy Members to Group"
+msgstr ""
+
+msgid "Copy error message"
 msgstr ""
 
 msgid "Copy from church address"
@@ -6268,6 +6271,9 @@ msgid "MailChimp is not configured"
 msgstr ""
 
 msgid "MailChimp, backups, and more"
+msgstr ""
+
+msgid "Mailchimp"
 msgstr ""
 
 msgid "Mailchimp Connected"
