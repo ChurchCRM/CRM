@@ -4376,7 +4376,7 @@ paths:
               schema:
                 type: array
                 items:
-                  properties: { id: { type: integer }, objid: { type: integer }, text: { type: string, example: 'John Smith' }, uri: { type: string, example: '/PersonView.php?PersonID=42' } }
+                  properties: { id: { type: integer }, objid: { type: integer }, text: { type: string, example: 'John Smith' }, uri: { type: string, example: /people/view/42 } }
                   type: object
         '401':
           description: Unauthorized
