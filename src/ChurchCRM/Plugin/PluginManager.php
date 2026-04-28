@@ -397,7 +397,7 @@ class PluginManager
             ];
         }
 
-        $entry = ApprovedPluginRegistry::find(self::$pluginsPath, $pluginId);
+        $entry = ApprovedPluginRegistry::find($pluginId);
         if ($entry === null) {
             return [
                 'verified' => false,
@@ -575,7 +575,7 @@ class PluginManager
                 $verification = self::getVerificationStatus($id);
                 $quarantineReason = self::getQuarantineReason($id);
                 $registryEntry = $metadata->getType() === 'community'
-                    ? ApprovedPluginRegistry::find(self::$pluginsPath, $id)
+                    ? ApprovedPluginRegistry::find($id)
                     : null;
 
                 $result[] = [
