@@ -16,7 +16,7 @@
     "notes": "optional free-form notes shown to admins on the install screen"
   },
   "schemaVersion": 2,
-  "updatedAt": "2026-04-24",
+  "updatedAt": "2026-04-28",
   "plugins": [
     {
       "id": "hello-world",
@@ -32,6 +32,21 @@
       "homepage": "https://github.com/ChurchCRM/community-plugin-hello-world",
       "reviewedAt": "2026-04-24",
       "notes": "Reference implementation plugin. Safe to install on any ChurchCRM instance."
+    },
+    {
+      "id": "meeting-outlines",
+      "name": "Meeting Outlines",
+      "version": "1.0.1",
+      "downloadUrl": "https://github.com/huckjs-sys/meeting-outlines/releases/download/v1.0.1/meeting-outlines-1.0.1.zip",
+      "sha256": "ebf5a6524a486126be2c80c16a11b554e37f7787757a81014d6a45794a7e922f",
+      "risk": "high",
+      "riskSummary": "Downloads Bible texts from api.getbible.net and writes them to local JSON files inside the plugin directory; also sends email notifications to meeting participants via CRM SMTP and performs CRUD on plugin-owned database tables.",
+      "permissions": ["network.outbound", "network.inbound", "db.read", "db.write", "email.send", "fs.write"],
+      "minimumCRMVersion": "7.0.0",
+      "author": "Eoles Conseil",
+      "homepage": "https://github.com/huckjs-sys/meeting-outlines",
+      "reviewedAt": "2026-04-28",
+      "notes": "Outbound HTTPS to api.getbible.net (Bible text downloads, admin-initiated) and cdn.jsdelivr.net (SortableJS CDN asset). All file writes confined to data/text/ inside the plugin directory. Two maintainer reviews required before production use (high-risk policy)."
     }
   ]
 }
