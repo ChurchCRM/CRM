@@ -77,7 +77,7 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
 
     $breadcrumbItems = [[gettext('People'), '/people/dashboard']];
     if ($person->getFamId() !== '' && $person->getFamily() !== null) {
-        $breadcrumbItems[] = [InputUtils::escapeHTML($person->getFamily()->getName()), '/v2/family/' . $person->getFamId()];
+        $breadcrumbItems[] = [InputUtils::escapeHTML($person->getFamily()->getName()), '/people/family/' . $person->getFamId()];
     }
     $breadcrumbItems[] = [InputUtils::escapeHTML($person->getFirstName() . ' ' . $person->getLastName())];
     $aBreadcrumbs = PageHeader::breadcrumbs($breadcrumbItems);
