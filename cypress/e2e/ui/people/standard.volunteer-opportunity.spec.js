@@ -14,7 +14,7 @@ describe("Volunteer Opportunity Assignment - Issue #7917", () => {
 
     it("should assign a volunteer opportunity without error", () => {
         // Visit a person's profile page
-        cy.visit("PersonView.php?PersonID=1");
+        cy.visit("/people/view/1");
         cy.contains("Person Profile");
 
         // Click on the Volunteer tab in the profile (use specific id to avoid sidebar matches)
@@ -66,7 +66,7 @@ describe("Volunteer Opportunity Assignment - Issue #7917", () => {
 
     it("should display volunteer tab content without errors", () => {
         // Visit a person's profile page
-        cy.visit("PersonView.php?PersonID=1");
+        cy.visit("/people/view/1");
         cy.contains("Person Profile");
 
         // Click on the Volunteer tab

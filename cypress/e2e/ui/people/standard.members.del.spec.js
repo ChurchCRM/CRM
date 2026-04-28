@@ -22,7 +22,7 @@ describe("Standard Family", () => {
             cy.get(".bootbox-accept").first().click({ force: true });
             cy.url({ timeout: 5000 }).should("contain", "people/list");
 
-            cy.visit(`PersonView.php?PersonID=${personId}`);
+            cy.visit(`/people/view/${personId}`);
             cy.contains("Person not found");
         });
     });

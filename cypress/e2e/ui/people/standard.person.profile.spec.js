@@ -6,7 +6,7 @@ describe("Person Profile", () => {
     beforeEach(() => cy.setupStandardSession());
 
     it("should display breadcrumbs with family link", () => {
-        cy.visit(`PersonView.php?PersonID=${personId}`);
+        cy.visit(`/people/view/${personId}`);
 
         // Breadcrumb should show Home / People / Family / Person
         cy.get(".breadcrumb").within(() => {
@@ -17,7 +17,7 @@ describe("Person Profile", () => {
     });
 
     it("should display toolbar with Edit, Print, Cart, Actions", () => {
-        cy.visit(`PersonView.php?PersonID=${personId}`);
+        cy.visit(`/people/view/${personId}`);
 
         cy.contains("a.btn", "Edit").should("be.visible");
         cy.get("#printPerson").should("be.visible");
@@ -26,7 +26,7 @@ describe("Person Profile", () => {
     });
 
     it("should show person info card with photo and details", () => {
-        cy.visit(`PersonView.php?PersonID=${personId}`);
+        cy.visit(`/people/view/${personId}`);
 
         // Photo upload button wraps the avatar — stable selector unaffected by avatar-loader cleanup
         cy.get("#uploadImageButton").should("exist");
@@ -36,14 +36,14 @@ describe("Person Profile", () => {
     });
 
     it("should display timeline tab active by default", () => {
-        cy.visit(`PersonView.php?PersonID=${personId}`);
+        cy.visit(`/people/view/${personId}`);
 
         cy.get("#nav-item-timeline").should("have.class", "active");
         cy.get("#timeline").should("have.class", "active");
     });
 
     it("should display tabs for Timeline, Groups, and Volunteer", () => {
-        cy.visit(`PersonView.php?PersonID=${personId}`);
+        cy.visit(`/people/view/${personId}`);
 
         cy.get("#nav-item-timeline").should("be.visible");
         cy.get("#nav-item-groups").should("be.visible");
@@ -51,7 +51,7 @@ describe("Person Profile", () => {
     });
 
     it("Print button triggers window.print", () => {
-        cy.visit(`PersonView.php?PersonID=${personId}`);
+        cy.visit(`/people/view/${personId}`);
 
         cy.window().then((win) => {
             cy.stub(win, "print").as("printStub");
@@ -61,7 +61,7 @@ describe("Person Profile", () => {
     });
 
     it("Add a Note", () => {
-        cy.visit(`PersonView.php?PersonID=${personId}`);
+        cy.visit(`/people/view/${personId}`);
 
         // Open Actions dropdown, then click Add Note
         cy.get("#person-actions-dropdown").click();
@@ -80,7 +80,7 @@ describe("Person Profile", () => {
     });
 
     it("Edit Why Came", () => {
-        cy.visit(`PersonView.php?PersonID=${personId}`);
+        cy.visit(`/people/view/${personId}`);
 
         // Open Actions dropdown, then click Why Came
         cy.get("#person-actions-dropdown").click();

@@ -62,7 +62,7 @@ describe("PersonView: Add to group with multiple roles", () => {
         freshAdminLogin();
 
         // Visit PersonView and open Add to Group modal
-        cy.visit(`/PersonView.php?PersonID=${personId}`);
+        cy.visit(`/people/view/${personId}`);
         cy.get("#person-actions-dropdown").click();
         cy.get("#addGroup").click();
 
@@ -96,7 +96,7 @@ describe("PersonView: Add to group with multiple roles", () => {
         freshAdminLogin();
 
         // Visit PersonView and open modal
-        cy.visit(`/PersonView.php?PersonID=${personId}`);
+        cy.visit(`/people/view/${personId}`);
         cy.get("#person-actions-dropdown").click();
         cy.get("#addGroup").click();
 
@@ -148,7 +148,7 @@ describe("PersonView: Update Properties for group with special props", () => {
         freshAdminLogin();
 
         // Visit PersonView and go to Groups tab
-        cy.visit(`/PersonView.php?PersonID=${personId}`);
+        cy.visit(`/people/view/${personId}`);
         cy.get("#nav-item-groups").click();
         cy.get("#groups").should("be.visible");
 

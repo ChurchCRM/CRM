@@ -93,7 +93,7 @@ describe('RedirectUtils Security - linkBack Parameter', () => {
 
     describe('Accepts valid relative URLs', () => {
         const validUrls = [
-            'PersonView.php?PersonID=1',
+            '/people/view/1',
             'v2/dashboard',
             '/FundRaiserEditor.php?FundRaiserID=1',
             'groups/view/5',
