@@ -88,7 +88,7 @@ class PluginInstaller
         $pluginsPath = rtrim($pluginsPath, '/');
 
         // (1) Registry gate — the URL must be explicitly approved.
-        $entry = ApprovedPluginRegistry::findByDownloadUrl($pluginsPath, $downloadUrl);
+        $entry = ApprovedPluginRegistry::findByDownloadUrl($downloadUrl);
         if ($entry === null) {
             $logger->warning('Refused plugin install: URL not in approved registry', ['url' => $downloadUrl]);
             throw new \RuntimeException('This plugin is not in the approved plugin list. Installation refused.');
@@ -251,7 +251,7 @@ class PluginInstaller
         // If the admin happens to point us at a URL that IS in the
         // registry, short-circuit into the verified path so they get
         // the full risk/permissions display.
-        $registryEntry = ApprovedPluginRegistry::findByDownloadUrl($pluginsPath, $downloadUrl);
+        $registryEntry = ApprovedPluginRegistry::findByDownloadUrl($downloadUrl);
         if ($registryEntry !== null) {
             $logger->info('Unverified install short-circuited into verified path', [
                 'url' => $downloadUrl,
