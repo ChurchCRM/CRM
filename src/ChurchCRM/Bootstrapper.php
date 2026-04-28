@@ -8,6 +8,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ConfigQuery;
 use ChurchCRM\model\ChurchCRM\Version;
+use Ramsey\Uuid\Uuid;
 use ChurchCRM\Service\UpgradeService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -115,6 +116,15 @@ class Bootstrapper
         // Fallback error handlers (testMYSQLI, systemFailure) will call init() without parameters
         if (!SystemConfig::isInitialized()) {
             SystemConfig::init(ConfigQuery::create()->find());
+        }
+
+        // Auto-generate a stable anonymous installation UUID on first boot.
+        // A very narrow race window exists if two requests arrive simultaneously
+        // on a brand-new install, but the last writer wins in the DB and every
+        // subsequent request reads the persisted value — identical to the
+        // sTwoFASecretKey auto-generation pattern in LoadConfigs.php.
+        if (empty(SystemConfig::getValue('sSystemID'))) {
+            SystemConfig::setValue('sSystemID', Uuid::uuid4()->toString());
         }
         
         self::configureLogging();
