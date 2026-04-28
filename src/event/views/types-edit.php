@@ -99,7 +99,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </button>
           </div>
         </div>
-        <small class="text-muted"><?= gettext('Used as the default start time when creating events of this type.') ?></small>
+        <small class="text-body-secondary"><?= gettext('Used as the default start time when creating events of this type.') ?></small>
       </div>
     </form>
 
@@ -161,7 +161,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </tbody>
           </table>
         </div>
-        <small class="text-muted">
+        <small class="text-body-secondary">
           <?= gettext('Edit a category name and click Save, or use the trash icon to remove. New rows are added via the bottom field.') ?>
         </small>
       </div>

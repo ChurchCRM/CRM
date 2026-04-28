@@ -24,7 +24,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
             <h2 class="mb-0">
                 <i class="fa-solid fa-clipboard-check me-2 text-primary"></i><?= gettext('Family Verification') ?>
             </h2>
-            <p class="text-muted mb-0"><?= gettext('Please review your family information below and confirm or request changes.') ?></p>
+            <p class="text-body-secondary mb-0"><?= gettext('Please review your family information below and confirm or request changes.') ?></p>
         </div>
         <a href="<?= SystemURLs::getRootPath() ?>/session/end" class="btn btn-outline-secondary">
             <i class="fa-solid fa-right-from-bracket me-1"></i><?= gettext('Log Out') ?>
@@ -47,7 +47,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                 </div>
                 <div class="col">
                     <h1 class="mb-2"><?= InputUtils::escapeHTML($family->getName()) ?></h1>
-                    <div class="text-muted">
+                    <div class="text-body-secondary">
                         <div class="mb-2">
                             <i class="fa-solid fa-fw fa-map-marker text-primary"></i>
                             <?= InputUtils::escapeHTML($family->getAddress()) ?>
@@ -119,11 +119,11 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                             <!-- Name and Role -->
                             <h5 class="card-title mb-1">
                                 <?php if (!empty($person->getTitle())) { ?>
-                                    <small class="text-muted"><?= InputUtils::escapeHTML($person->getTitle()) ?></small><br>
+                                    <small class="text-body-secondary"><?= InputUtils::escapeHTML($person->getTitle()) ?></small><br>
                                 <?php } ?>
                                 <?= InputUtils::escapeHTML($person->getFullName()) ?>
                             </h5>
-                            <p class="text-muted mb-3">
+                            <p class="text-body-secondary mb-3">
                                 <i class="fa-solid fa-<?= ($person->isMale() ?"mars" :"venus") ?> me-1"></i>
                                 <?= InputUtils::escapeHTML($person->getFamilyRoleName()) ?>
                             </p>

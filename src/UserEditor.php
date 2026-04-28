@@ -439,7 +439,7 @@ require_once __DIR__ . '/Include/Header.php';
                 <label class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" name="<?= $perm['name'] ?>" id="<?= $perm['name'] ?>" value="1"<?= $perm['checked'] ? ' checked' : '' ?>>
                     <?php if ($perm['hint']): ?>
-                    <span class="form-check-label text-muted"><?= $perm['hint'] ?></span>
+                    <span class="form-check-label text-body-secondary"><?= $perm['hint'] ?></span>
                     <?php endif; ?>
                 </label>
             </div>
@@ -506,7 +506,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <?php endif; ?>
                         <input type="hidden" name="type[<?= (int)$ucfg_id ?>]" value="<?= InputUtils::escapeAttribute($ucfg_type) ?>">
                     </td>
-                    <td class="text-muted"><?= gettext($ucfg_tooltip) ?></td>
+                    <td class="text-body-secondary"><?= gettext($ucfg_tooltip) ?></td>
                 </tr>
                 <?php } ?>
                 </tbody>

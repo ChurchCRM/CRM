@@ -6,7 +6,7 @@ use ChurchCRM\Utils\InputUtils;
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
-<p class="text-muted mb-3"><?= sprintf(gettext('Manage %s options'), InputUtils::escapeHTML($noun)) ?></p>
+<p class="text-body-secondary mb-3"><?= sprintf(gettext('Manage %s options'), InputUtils::escapeHTML($noun)) ?></p>
 
 <!-- Add New Option -->
 <div class="card mb-4">

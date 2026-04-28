@@ -21,9 +21,9 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                 <div>
                     <?php if (!empty($errorMessage)) { ?>
                         <h3 class="mb-1"><?= gettext('Database Upgrade Failed') ?></h3>
-                        <p class="text-muted mb-2"><?= gettext('An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator.') ?></p>
+                        <p class="text-body-secondary mb-2"><?= gettext('An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator.') ?></p>
 
-                        <ul class="list-unstyled small text-muted">
+                        <ul class="list-unstyled small text-body-secondary">
                             <li><strong><?= gettext('Current DB Version') ?>:</strong> <?= InputUtils::escapeHTML($dbVersion) ?></li>
                             <li><strong><?= gettext('Current Software Version') ?>:</strong> <?= InputUtils::escapeHTML($softwareVersion) ?></li>
                         </ul>
@@ -34,9 +34,9 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                         </div>
                     <?php } else { ?>
                         <h3 class="mb-1"><?= gettext('Software Update Required') ?></h3>
-                        <p class="text-muted mb-2"><?= gettext('Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.') ?></p>
+                        <p class="text-body-secondary mb-2"><?= gettext('Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.') ?></p>
 
-                        <ul class="list-unstyled small text-muted">
+                        <ul class="list-unstyled small text-body-secondary">
                             <li><strong><?= gettext('Current DB Version') ?>:</strong> <?= InputUtils::escapeHTML($dbVersion) ?></li>
                             <li><strong><?= gettext('Installed Software Version') ?>:</strong> <?= InputUtils::escapeHTML($softwareVersion) ?></li>
                         </ul>

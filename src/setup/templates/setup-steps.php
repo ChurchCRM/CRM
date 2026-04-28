@@ -34,14 +34,14 @@ require_once __DIR__ . '/header.php';
     <!-- Stepper -->
     <div id="setup-stepper" class="bs-stepper">
         <div class="bs-stepper-header" role="tablist">
-            <div class="step active" data-target="#step-prerequisites">
+            <div class="step active" data-bs-target="#step-prerequisites">
                 <button type="button" class="step-trigger" role="tab" aria-controls="step-prerequisites" id="step-prerequisites-trigger">
                     <span class="bs-stepper-circle">1</span>
                     <span class="bs-stepper-label">System Check</span>
                 </button>
             </div>
             <div class="line"></div>
-            <div class="step" data-target="#step-database">
+            <div class="step" data-bs-target="#step-database">
                 <button type="button" class="step-trigger" role="tab" aria-controls="step-database" id="step-database-trigger">
                     <span class="bs-stepper-circle">2</span>
                     <span class="bs-stepper-label">Configure</span>
@@ -98,7 +98,7 @@ require_once __DIR__ . '/header.php';
                                 <span>PHP Extensions</span>
                             </div>
                             <div class="check-status" id="php-extensions-status">
-                                <i class="fa-solid fa-spinner fa-spin text-muted"></i>
+                                <i class="fa-solid fa-spinner fa-spin text-body-secondary"></i>
                             </div>
                         </div>
                         <div id="php-extensions-collapse" class="collapse check-details">
@@ -114,7 +114,7 @@ require_once __DIR__ . '/header.php';
                                 <span>File Permissions</span>
                             </div>
                             <div class="check-status" id="filesystem-status">
-                                <i class="fa-solid fa-spinner fa-spin text-muted"></i>
+                                <i class="fa-solid fa-spinner fa-spin text-body-secondary"></i>
                             </div>
                         </div>
                         <div id="filesystem-collapse" class="collapse check-details">
@@ -130,7 +130,7 @@ require_once __DIR__ . '/header.php';
                                 <span>File Integrity</span>
                             </div>
                             <div class="check-status" id="integrity-status">
-                                <i class="fa-solid fa-spinner fa-spin text-muted"></i>
+                                <i class="fa-solid fa-spinner fa-spin text-body-secondary"></i>
                             </div>
                         </div>
                         <div id="integrity-collapse" class="collapse check-details">
@@ -146,11 +146,11 @@ require_once __DIR__ . '/header.php';
                                 <span>Orphaned Files</span>
                             </div>
                             <div class="check-status" id="orphaned-status">
-                                <i class="fa-solid fa-spinner fa-spin text-muted"></i>
+                                <i class="fa-solid fa-spinner fa-spin text-body-secondary"></i>
                             </div>
                         </div>
                         <div id="orphaned-collapse" class="collapse check-details">
-                            <p class="small text-muted mb-2 px-3 pt-2">These files are not part of the official release and should be reviewed.</p>
+                            <p class="small text-body-secondary mb-2 px-3 pt-2">These files are not part of the official release and should be reviewed.</p>
                             <table class="table table-sm mb-0" id="orphaned-checks"></table>
                         </div>
                     </div>
@@ -163,7 +163,7 @@ require_once __DIR__ . '/header.php';
                                 <span>Locale Support</span>
                             </div>
                             <div class="check-status" id="locale-support-status">
-                                <i class="fa-solid fa-spinner fa-spin text-muted"></i>
+                                <i class="fa-solid fa-spinner fa-spin text-body-secondary"></i>
                             </div>
                         </div>
                         <div id="locale-support-collapse" class="collapse check-details">
@@ -192,7 +192,7 @@ require_once __DIR__ . '/header.php';
                 <div id="step-database" class="content" role="tabpanel" aria-labelledby="step-database-trigger">
                     <div class="step-intro mb-4">
                         <h4 class="mb-2">Connect Your Database</h4>
-                        <p class="text-muted mb-0">ChurchCRM requires MySQL 5.7+ or MariaDB 10.2+ with full privileges.</p>
+                        <p class="text-body-secondary mb-0">ChurchCRM requires MySQL 5.7+ or MariaDB 10.2+ with full privileges.</p>
                     </div>
 
                     <div class="form-card">
@@ -251,12 +251,12 @@ require_once __DIR__ . '/header.php';
                         <div class="advanced-header" data-bs-toggle="collapse" data-bs-target="#advanced-settings-collapse">
                             <i class="fa-solid fa-cog me-2"></i>
                             <span>Advanced Settings</span>
-                            <small class="text-muted ms-2">(auto-detected)</small>
+                            <small class="text-body-secondary ms-2">(auto-detected)</small>
                             <i class="fa-solid fa-chevron-down ms-auto toggle-icon"></i>
                         </div>
                         <div id="advanced-settings-collapse" class="collapse">
                             <div class="advanced-body">
-                                <p class="small text-muted mb-3">These settings are auto-detected from your server. Only change them if you know what you're doing.</p>
+                                <p class="small text-body-secondary mb-3">These settings are auto-detected from your server. Only change them if you know what you're doing.</p>
                                 <div class="mb-3">
                                     <label for="ROOT_PATH">Root Path</label>
                                     <input type="text" name="ROOT_PATH" id="ROOT_PATH"
@@ -266,7 +266,7 @@ require_once __DIR__ . '/header.php';
                                            placeholder="Leave empty for root installation"
                                            maxlength="64">
                                     <div class="invalid-feedback"></div>
-                                    <small id="ROOT_PATH_HELP" class="form-text text-muted">
+                                    <small id="ROOT_PATH_HELP" class="form-text text-body-secondary">
                                         Example: <code>/churchcrm</code> for subdirectory, or leave empty for root.
                                     </small>
                                 </div>
@@ -277,7 +277,7 @@ require_once __DIR__ . '/header.php';
                                            placeholder="https://your-domain.com/"
                                            required>
                                     <div class="invalid-feedback"></div>
-                                    <small id="URL_HELP" class="form-text text-muted">
+                                    <small id="URL_HELP" class="form-text text-body-secondary">
                                         Must start with <code>http://</code> or <code>https://</code> and end with <code>/</code>
                                     </small>
                                 </div>
@@ -310,7 +310,7 @@ require_once __DIR__ . '/header.php';
                         <span class="visually-hidden">Loading...</span>
                     </div>
                     <h4>Installing ChurchCRM</h4>
-                    <p class="text-muted">Creating database tables and configuring your system...</p>
+                    <p class="text-body-secondary">Creating database tables and configuring your system...</p>
                 </div>
                 <div id="setup-success" class="d-none">
                     <div class="success-checkmark mb-4">
@@ -319,13 +319,13 @@ require_once __DIR__ . '/header.php';
                     <h3 class="mb-4">Installation Complete!</h3>
                     <div class="card bg-light mb-4">
                         <div class="card-body">
-                            <p class="text-muted mb-2">Sign in with your admin account:</p>
+                            <p class="text-body-secondary mb-2">Sign in with your admin account:</p>
                             <div class="d-flex justify-content-center align-items-center mb-2">
-                                <span class="text-muted me-2">Username:</span>
+                                <span class="text-body-secondary me-2">Username:</span>
                                 <code class="h5 mb-0">admin</code>
                             </div>
                             <div class="d-flex justify-content-center align-items-center">
-                                <span class="text-muted me-2">Password:</span>
+                                <span class="text-body-secondary me-2">Password:</span>
                                 <code class="h5 mb-0">changeme</code>
                             </div>
                         </div>

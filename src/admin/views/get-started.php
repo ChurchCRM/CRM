@@ -121,7 +121,7 @@ $isMailChimpActive = PluginManager::isPluginActive('mailchimp');
            class="gs-plugin-badge"
            data-bs-toggle="tooltip"
            title="<?= gettext('Browse all available plugins') ?>">
-            <i class="fa-solid fa-grid-2 text-muted"></i>
+            <i class="fa-solid fa-grid-2 text-body-secondary"></i>
             <?= gettext('Browse all plugins') ?>
         </a>
     </div>

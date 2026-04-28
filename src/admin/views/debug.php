@@ -225,11 +225,11 @@ $fmtBytes = static function ($bytes): string {
                                         <td><?= gettext('Disk (Images Root)') ?></td>
                                         <td>
                                             <div class="d-flex align-items-center gap-2">
-                                                <span class="flex-grow-1"><?= $fmtBytes($diskTotal - $diskFree) ?> <span class="text-muted">/ <?= $fmtBytes($diskTotal) ?></span></span>
+                                                <span class="flex-grow-1"><?= $fmtBytes($diskTotal - $diskFree) ?> <span class="text-body-secondary">/ <?= $fmtBytes($diskTotal) ?></span></span>
                                                 <div class="progress flex-grow-1" style="max-width: 200px; height: 6px;">
                                                     <div class="progress-bar <?= $usedPct > 90 ? 'bg-danger' : ($usedPct > 75 ? 'bg-warning' : 'bg-success') ?>" style="width: <?= $usedPct ?>%;"></div>
                                                 </div>
-                                                <small class="text-muted"><?= $usedPct ?>%</small>
+                                                <small class="text-body-secondary"><?= $usedPct ?>%</small>
                                             </div>
                                         </td>
                                     </tr>
@@ -273,7 +273,7 @@ $fmtBytes = static function ($bytes): string {
                             </tbody>
                         </table>
 
-                        <h6 class="text-muted mt-3 mb-2">OPcache</h6>
+                        <h6 class="text-body-secondary mt-3 mb-2">OPcache</h6>
                         <?php if ($opcacheEnabled && $opcacheStatus && !empty($opcacheStatus['opcache_enabled'])):
                             $hits = $opcacheStatus['opcache_statistics']['hits'] ?? 0;
                             $misses = $opcacheStatus['opcache_statistics']['misses'] ?? 0;
@@ -286,11 +286,11 @@ $fmtBytes = static function ($bytes): string {
                                 <tbody>
                                     <tr><td><?= gettext('Status') ?></td><td><span class="badge bg-success-lt text-success"><i class="fa fa-check me-1"></i><?= gettext('Enabled') ?></span></td></tr>
                                     <tr><td><?= gettext('Hit Rate') ?></td><td><?= $hitRate ?>%</td></tr>
-                                    <tr><td><?= gettext('Memory') ?></td><td><?= $fmtBytes($memUsed) ?> <span class="text-muted">/ <?= $fmtBytes($memTotal) ?></span></td></tr>
+                                    <tr><td><?= gettext('Memory') ?></td><td><?= $fmtBytes($memUsed) ?> <span class="text-body-secondary">/ <?= $fmtBytes($memTotal) ?></span></td></tr>
                                 </tbody>
                             </table>
                         <?php else: ?>
-                            <p class="text-muted mb-3"><i class="fa fa-info-circle me-1"></i><?= gettext('OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads.') ?></p>
+                            <p class="text-body-secondary mb-3"><i class="fa fa-info-circle me-1"></i><?= gettext('OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads.') ?></p>
                         <?php endif; ?>
 
                     </div>
@@ -301,14 +301,14 @@ $fmtBytes = static function ($bytes): string {
                             $modules = apache_get_modules();
                             sort($modules);
                         ?>
-                            <p class="text-muted small mb-2"><?= sprintf(gettext('%d modules loaded'), count($modules)) ?></p>
+                            <p class="text-body-secondary small mb-2"><?= sprintf(gettext('%d modules loaded'), count($modules)) ?></p>
                             <div class="d-flex flex-wrap gap-1" style="max-height: 240px; overflow-y: auto;">
                                 <?php foreach ($modules as $module): ?>
                                     <span class="badge bg-light text-dark"><?= InputUtils::escapeHTML($module) ?></span>
                                 <?php endforeach; ?>
                             </div>
                         <?php } else { ?>
-                            <p class="text-muted mb-0"><?= gettext('Unable to list web server modules (non-Apache SAPI).') ?></p>
+                            <p class="text-body-secondary mb-0"><?= gettext('Unable to list web server modules (non-Apache SAPI).') ?></p>
                         <?php } ?>
                     </div>
                     <!-- Locale -->
@@ -331,7 +331,7 @@ $fmtBytes = static function ($bytes): string {
                                         <tr>
                                             <td>
                                                 <div style="font-weight: 500; font-size: 0.95em;"><?= InputUtils::escapeHTML($locale['name']) ?></div>
-                                                <small class="text-muted" style="font-size: 0.85em;"><?= InputUtils::escapeHTML($locale['locale']) ?></small>
+                                                <small class="text-body-secondary" style="font-size: 0.85em;"><?= InputUtils::escapeHTML($locale['locale']) ?></small>
                                             </td>
                                             <td style="text-align: center; vertical-align: middle;">
                                                 <?php if ($locale['systemAvailable']): ?>
@@ -344,7 +344,7 @@ $fmtBytes = static function ($bytes): string {
                                     <?php endforeach; ?>
                                 <?php else: ?>
                                     <tr>
-                                        <td colspan="2" class="text-muted text-center"><?= gettext('No locales configured') ?></td>
+                                        <td colspan="2" class="text-body-secondary text-center"><?= gettext('No locales configured') ?></td>
                                     </tr>
                                 <?php endif; ?>
                             </tbody>
@@ -375,10 +375,10 @@ $fmtBytes = static function ($bytes): string {
             <div class="card-body">
                 <?php if ($integrityPassed): ?>
                     <p><i class="fa fa-circle-check text-success me-2"></i><?= gettext('All system files have passed integrity validation.') ?></p>
-                    <p class="text-muted small mb-0"><?= gettext('File signatures match the official release.') ?></p>
+                    <p class="text-body-secondary small mb-0"><?= gettext('File signatures match the official release.') ?></p>
                 <?php else: ?>
                     <p><?= sprintf(gettext('%d files have failed integrity validation.'), $failingCount) ?></p>
-                    <p class="text-muted small"><?= gettext('Files may be modified or missing. Consider re-deploying from an official release.') ?></p>
+                    <p class="text-body-secondary small"><?= gettext('Files may be modified or missing. Consider re-deploying from an official release.') ?></p>
                     <a href="<?= SystemURLs::getRootPath() ?>/admin/system/upgrade" class="btn btn-warning w-100">
                         <i class="fa fa-cloud-upload-alt me-2"></i><?= gettext('System Upgrade') ?>
                     </a>
@@ -399,7 +399,7 @@ $fmtBytes = static function ($bytes): string {
         </div>
         <div class="card-body">
             <p><?= sprintf(gettext('%d orphaned files were detected on your server.'), $orphanedCount) ?></p>
-            <p class="text-muted small"><?= gettext('These files are not part of the official release and may pose security risks.') ?></p>
+            <p class="text-body-secondary small"><?= gettext('These files are not part of the official release and may pose security risks.') ?></p>
             <a href="<?= SystemURLs::getRootPath() ?>/admin/system/orphaned-files" class="btn btn-danger w-100">
                 <i class="fa fa-trash me-2"></i><?= gettext('Manage Orphaned Files') ?>
             </a>
@@ -421,7 +421,7 @@ $fmtBytes = static function ($bytes): string {
             </div>
             <div id="collapsePrerequisites" class="collapse" aria-labelledby="collapsePrerequisites">
                 <div class="card-body">
-                <h6 class="text-muted"><?= gettext('PHP & Server Requirements') ?></h6>
+                <h6 class="text-body-secondary"><?= gettext('PHP & Server Requirements') ?></h6>
                 <table class="table table-sm">
                     <?php foreach ($appPrereqs as $prerequisite) {
                         $status = $prerequisite->getStatusText();
@@ -434,7 +434,7 @@ $fmtBytes = static function ($bytes): string {
                     <?php } ?>
                 </table>
                 <hr>
-                <h6 class="text-muted"><?= gettext('Filesystem Permissions') ?></h6>
+                <h6 class="text-body-secondary"><?= gettext('Filesystem Permissions') ?></h6>
                 <table class="table table-sm">
                     <?php foreach ($fsPrereqs as $prerequisite) {
                         $status = $prerequisite->getStatusText();
@@ -473,7 +473,7 @@ $fmtBytes = static function ($bytes): string {
                 <tbody>
                     <tr>
                         <td><?= gettext('SMTP Host') ?></td>
-                        <td><?= SystemConfig::getValueForHtml('sSMTPHost') ?: '<span class="text-muted">' . gettext('Not configured') . '</span>' ?></td>
+                        <td><?= SystemConfig::getValueForHtml('sSMTPHost') ?: '<span class="text-body-secondary">' . gettext('Not configured') . '</span>' ?></td>
                     </tr>
                     <tr>
                         <td><?= gettext('Settings Valid') ?></td>
@@ -511,7 +511,7 @@ $fmtBytes = static function ($bytes): string {
                     <div class="p-3 bg-light border-bottom">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
-                                <small class="text-muted d-block"><?= gettext('System Config') ?> (sTimeZone)</small>
+                                <small class="text-body-secondary d-block"><?= gettext('System Config') ?> (sTimeZone)</small>
                                 <strong class="h6 mb-0"><?= InputUtils::escapeHTML($configuredTimezone ?: gettext('Not set')) ?></strong>
                             </div>
                             <span class="badge bg-primary-lt text-primary"><?= gettext('Baseline') ?></span>
@@ -522,9 +522,9 @@ $fmtBytes = static function ($bytes): string {
                     <div class="p-3 border-bottom <?= $serverConfigMismatch ? 'bg-warning-light' : '' ?>">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
-                                <small class="text-muted d-block"><?= gettext('PHP Active') ?></small>
+                                <small class="text-body-secondary d-block"><?= gettext('PHP Active') ?></small>
                                 <strong class="mb-0"><?= InputUtils::escapeHTML($serverTimezone) ?></strong>
-                                <small class="text-muted d-block"><?= InputUtils::escapeHTML($currentServerTime->format('Y-m-d H:i:s T')) ?></small>
+                                <small class="text-body-secondary d-block"><?= InputUtils::escapeHTML($currentServerTime->format('Y-m-d H:i:s T')) ?></small>
                             </div>
                             <?php if ($serverConfigMismatch): ?>
                                 <span class="badge bg-warning-lt text-warning" title="<?= gettext('Does not match system config') ?>">
@@ -542,9 +542,9 @@ $fmtBytes = static function ($bytes): string {
                     <div class="p-3 border-bottom" id="browser-tz-row">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
-                                <small class="text-muted d-block"><?= gettext('Browser') ?></small>
+                                <small class="text-body-secondary d-block"><?= gettext('Browser') ?></small>
                                 <strong class="mb-0" id="browser-timezone"><?= gettext('Loading...') ?></strong>
-                                <small class="text-muted d-block" id="browser-time"><?= gettext('Loading...') ?></small>
+                                <small class="text-body-secondary d-block" id="browser-time"><?= gettext('Loading...') ?></small>
                             </div>
                             <span class="badge" id="browser-tz-badge"><?= gettext('Loading...') ?></span>
                         </div>
@@ -552,7 +552,7 @@ $fmtBytes = static function ($bytes): string {
                     
                     <!-- Summary -->
                     <div class="p-3" id="timezone-summary">
-                        <small class="text-muted"><i class="fa fa-spinner fa-spin me-1"></i><?= gettext('Comparing timezones...') ?></small>
+                        <small class="text-body-secondary"><i class="fa fa-spinner fa-spin me-1"></i><?= gettext('Comparing timezones...') ?></small>
                     </div>
                 </div>
             </div>
@@ -716,7 +716,7 @@ $fmtBytes = static function ($bytes): string {
             summaryHtml = '<span class="text-warning"><i class="fa fa-triangle-exclamation me-1"></i>' + 
                           issueCount + ' ' + (issueCount === 1 ? '<?= gettext('mismatch detected') ?>' : '<?= gettext('mismatches detected') ?>') + '</span>';
             if (!browserMatchesBaseline) {
-                summaryHtml += '<br><small class="text-muted"><?= gettext('Browser differs from system config - dates may display incorrectly for this user.') ?></small>';
+                summaryHtml += '<br><small class="text-body-secondary"><?= gettext('Browser differs from system config - dates may display incorrectly for this user.') ?></small>';
             }
         }
         $('#timezone-summary').html(summaryHtml);

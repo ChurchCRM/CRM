@@ -37,13 +37,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
 
-    <div id="auditEmpty" class="card-body text-center text-muted py-5 d-none">
+    <div id="auditEmpty" class="card-body text-center text-body-secondary py-5 d-none">
         <i class="ti ti-mood-happy mb-2 d-block" style="font-size: 3rem;"></i>
-        <h3 class="text-muted"><?= gettext('All clear!') ?></h3>
-        <p class="text-muted mb-0"><?= gettext('No past events are still marked Active.') ?></p>
+        <h3 class="text-body-secondary"><?= gettext('All clear!') ?></h3>
+        <p class="text-body-secondary mb-0"><?= gettext('No past events are still marked Active.') ?></p>
     </div>
 
-    <div id="auditLoading" class="card-body text-center text-muted py-5">
+    <div id="auditLoading" class="card-body text-center text-body-secondary py-5">
         <span class="spinner-border spinner-border-sm me-2"></span><?= gettext('Looking for stuck events...') ?>
     </div>
 

@@ -37,7 +37,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <div class="mb-4">
                             <label for="GroupRole" class="form-label">
                                 <?= gettext('Role') ?>
-                                <span class="text-muted fw-normal ms-1 small"><?= gettext('(optional — leave blank to include all roles)') ?></span>
+                                <span class="text-body-secondary fw-normal ms-1 small"><?= gettext('(optional — leave blank to include all roles)') ?></span>
                             </label>
                             <select name="GroupRole" id="GroupRole" class="form-select">
                                 <option value=""><?= gettext('All roles') ?></option>
@@ -81,7 +81,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <label class="form-label fw-medium mb-0"><?= gettext('Fields to Include') ?></label>
                                 <div class="d-flex gap-2">
                                     <a href="#" id="selectAllFields" class="small"><?= gettext('Select all') ?></a>
-                                    <span class="text-muted small">·</span>
+                                    <span class="text-body-secondary small">·</span>
                                     <a href="#" id="clearAllFields" class="small"><?= gettext('Clear all') ?></a>
                                 </div>
                             </div>

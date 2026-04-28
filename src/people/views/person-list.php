@@ -265,16 +265,16 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         $cellPhone = $person->getCellPhone();
                         $hasPhone = false;
                         if (!empty($homePhone)) {
-                            echo '<i class="fa-solid fa-house text-muted me-1" title="' . gettext('Home') . '"></i>' . InputUtils::escapeHTML($homePhone);
+                            echo '<i class="fa-solid fa-house text-body-secondary me-1" title="' . gettext('Home') . '"></i>' . InputUtils::escapeHTML($homePhone);
                             $hasPhone = true;
                         }
                         if (!empty($cellPhone)) {
                             if ($hasPhone) echo '<br>';
-                            echo '<i class="fa-solid fa-mobile-screen text-muted me-1" title="' . gettext('Cell') . '"></i>' . InputUtils::escapeHTML($cellPhone);
+                            echo '<i class="fa-solid fa-mobile-screen text-body-secondary me-1" title="' . gettext('Cell') . '"></i>' . InputUtils::escapeHTML($cellPhone);
                             $hasPhone = true;
                         }
                         if (!$hasPhone) {
-                            echo '<span class="text-muted">—</span>';
+                            echo '<span class="text-body-secondary">—</span>';
                         }
                     }
                     // Handle other columns
@@ -312,7 +312,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                             if (!empty($columnData)) {
                                 echo '<a href="mailto:' . InputUtils::escapeAttribute($columnData) . '" target="_blank" rel="noopener noreferrer">' . InputUtils::escapeHTML($columnData) . '</a>';
                             } else {
-                                echo '<span class="text-muted">—</span>';
+                                echo '<span class="text-body-secondary">—</span>';
                             }
                         }
                         // Make person name clickable and add gender icon, role, and photo icon
@@ -321,7 +321,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                             // Add role in parentheses
                             $role = $person->getFamilyRoleName();
                             if (!empty($role) && $role !== 'Unassigned') {
-                                echo ' <span class="text-muted small">(' . InputUtils::escapeHTML($role) . ')</span>';
+                                echo ' <span class="text-body-secondary small">(' . InputUtils::escapeHTML($role) . ')</span>';
                             }
                             // Add gender icon
                             $gender = $person->getGender();
@@ -347,7 +347,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                                 // Add hidden span with JSON for DataTables filtering
                                 echo '<span style="display:none;">' . InputUtils::escapeHTML(json_encode($columnData, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR)) . '</span>';
                             } else {
-                                echo '<span class="text-muted">—</span>';
+                                echo '<span class="text-body-secondary">—</span>';
                             }
                         }
                         // Handle Family Status column (hidden for filter)

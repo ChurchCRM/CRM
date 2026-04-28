@@ -10,7 +10,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
      the inline script below compares it to the browser time zone and reveals
      a warning if they differ, so misconfiguration is visible without opening
      the admin debug page. -->
-<div class="mb-2 d-flex flex-wrap align-items-center small text-muted" id="calendarTimezoneIndicator">
+<div class="mb-2 d-flex flex-wrap align-items-center small text-body-secondary" id="calendarTimezoneIndicator">
     <span class="me-2"><i class="fa fa-clock me-1"></i><?= _('Calendar time zone:') ?></span>
     <span class="badge bg-secondary-lt" id="calendarTimezoneConfigured"><?= htmlspecialchars($calendarJSArgs['sTimeZone'], ENT_QUOTES, 'UTF-8') ?></span>
     <span class="badge bg-warning-lt ms-2 d-none" id="calendarTimezoneWarning" role="alert">
@@ -44,7 +44,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="offcanvas offcanvas-end" tabindex="-1" id="calendarSidebar" aria-labelledby="calendarSidebarLabel" style="width: 320px;">
     <div class="offcanvas-header border-bottom">
         <h5 class="offcanvas-title" id="calendarSidebarLabel">
-            <i class="ti ti-stack-2 me-2 text-muted"></i><?= _('Calendars') ?>
+            <i class="ti ti-stack-2 me-2 text-body-secondary"></i><?= _('Calendars') ?>
         </h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="<?= _('Close') ?>"></button>
     </div>
@@ -52,7 +52,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <!-- User Calendars -->
         <div class="px-3 pt-3 pb-1">
             <div class="d-flex align-items-center justify-content-between">
-                <span class="text-uppercase text-muted small fw-bold" style="letter-spacing:.05em;">
+                <span class="text-uppercase text-body-secondary small fw-bold" style="letter-spacing:.05em;">
                     <i class="ti ti-user me-1"></i><?= _('My Calendars') ?>
                 </span>
             </div>
@@ -68,7 +68,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
         <!-- System Calendars -->
         <div class="px-3 pt-3 pb-1">
-            <span class="text-uppercase text-muted small fw-bold" style="letter-spacing:.05em;">
+            <span class="text-uppercase text-body-secondary small fw-bold" style="letter-spacing:.05em;">
                 <i class="ti ti-settings me-1"></i><?= _('System Calendars') ?>
             </span>
         </div>

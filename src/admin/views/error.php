@@ -39,7 +39,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <i class="ti <?= $statusIcon ?>" style="font-size:3rem;"></i>
             </div>
             <h3 class="mb-2"><?= htmlspecialchars($statusTitle) ?></h3>
-            <p class="text-muted mb-4"><?= gettext('An unexpected error occurred while processing your request. Please contact your administrator for assistance.') ?></p>
+            <p class="text-body-secondary mb-4"><?= gettext('An unexpected error occurred while processing your request. Please contact your administrator for assistance.') ?></p>
 
             <?php if (!empty($errorDetails) && ($errorDetails['displayErrorDetails'] ?? false)): ?>
             <div class="mb-4">

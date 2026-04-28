@@ -56,7 +56,7 @@ if ($isForced) {
                         <?php endif; ?>
                     </div>
 
-                    <p class="text-muted small mb-3">
+                    <p class="text-body-secondary small mb-3">
                         <?= gettext('Passwords must be at least') ?> <?= SystemConfig::getValue('iMinPasswordLength') ?> <?= gettext('characters in length.') ?>
                     </p>
 

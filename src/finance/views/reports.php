@@ -34,7 +34,7 @@ if ($iFYMonth === 1) {
                     </h5>
                 </div>
                 <div class="card-body">
-                    <p class="text-muted small mb-3">
+                    <p class="text-body-secondary small mb-3">
                         <?= gettext('Generate annual giving statements for donors and identify giving patterns.') ?>
                     </p>
                     
@@ -47,7 +47,7 @@ if ($iFYMonth === 1) {
                                         <i class="fa-solid fa-file-invoice text-success me-2"></i>
                                         <?= gettext('Giving Report (Tax Statements)') ?>
                                     </h6>
-                                    <small class="text-muted"><?= gettext('Generate annual tax-deductible giving statements for donors. Can be printed or emailed.') ?></small>
+                                    <small class="text-body-secondary"><?= gettext('Generate annual tax-deductible giving statements for donors. Can be printed or emailed.') ?></small>
                                 </div>
                                 <span class="badge bg-green-lt text-green"><?= gettext('PDF') ?></span>
                             </div>
@@ -61,9 +61,9 @@ if ($iFYMonth === 1) {
                                         <i class="fa-solid fa-user-slash text-warning me-2"></i>
                                         <?= gettext('Zero Givers') ?>
                                     </h6>
-                                    <small class="text-muted"><?= gettext('Identify members who have not made any donations within a date range.') ?></small>
+                                    <small class="text-body-secondary"><?= gettext('Identify members who have not made any donations within a date range.') ?></small>
                                 </div>
-                                <span class="badge bg-warning text-dark badge-pill"><?= gettext('PDF') ?></span>
+                                <span class="badge bg-warning text-dark rounded-pill"><?= gettext('PDF') ?></span>
                             </div>
                         </a>
                     </div>
@@ -81,7 +81,7 @@ if ($iFYMonth === 1) {
                     </h5>
                 </div>
                 <div class="card-body">
-                    <p class="text-muted small mb-3">
+                    <p class="text-body-secondary small mb-3">
                         <?= gettext('Track pledges and payment progress for campaigns and fiscal year budgeting.') ?>
                     </p>
                     
@@ -94,9 +94,9 @@ if ($iFYMonth === 1) {
                                         <i class="fa-solid fa-chart-bar text-info me-2"></i>
                                         <?= gettext('Pledge Summary') ?>
                                     </h6>
-                                    <small class="text-muted"><?= gettext('Summary of pledges vs payments by fund for the fiscal year.') ?></small>
+                                    <small class="text-body-secondary"><?= gettext('Summary of pledges vs payments by fund for the fiscal year.') ?></small>
                                 </div>
-                                <span class="badge bg-info badge-pill">PDF/CSV</span>
+                                <span class="badge bg-info rounded-pill">PDF/CSV</span>
                             </div>
                         </a>
                         
@@ -108,9 +108,9 @@ if ($iFYMonth === 1) {
                                         <i class="fa-solid fa-users text-info me-2"></i>
                                         <?= gettext('Pledge Family Summary') ?>
                                     </h6>
-                                    <small class="text-muted"><?= gettext('Detailed breakdown of pledges and payments by family.') ?></small>
+                                    <small class="text-body-secondary"><?= gettext('Detailed breakdown of pledges and payments by family.') ?></small>
                                 </div>
-                                <span class="badge bg-info badge-pill"><?= gettext('PDF') ?></span>
+                                <span class="badge bg-info rounded-pill"><?= gettext('PDF') ?></span>
                             </div>
                         </a>
                         
@@ -122,9 +122,9 @@ if ($iFYMonth === 1) {
                                         <i class="fa-solid fa-bell text-warning me-2"></i>
                                         <?= gettext('Pledge Reminders') ?>
                                     </h6>
-                                    <small class="text-muted"><?= gettext('Generate reminder letters for families with outstanding pledges.') ?></small>
+                                    <small class="text-body-secondary"><?= gettext('Generate reminder letters for families with outstanding pledges.') ?></small>
                                 </div>
-                                <span class="badge bg-warning text-dark badge-pill"><?= gettext('PDF') ?></span>
+                                <span class="badge bg-warning text-dark rounded-pill"><?= gettext('PDF') ?></span>
                             </div>
                         </a>
                     </div>
@@ -142,7 +142,7 @@ if ($iFYMonth === 1) {
                     </h5>
                 </div>
                 <div class="card-body">
-                    <p class="text-muted small mb-3">
+                    <p class="text-body-secondary small mb-3">
                         <?= gettext('Generate detailed reports for individual deposits or date ranges.') ?>
                     </p>
                     
@@ -155,9 +155,9 @@ if ($iFYMonth === 1) {
                                         <i class="fa-solid fa-file-invoice text-primary me-2"></i>
                                         <?= gettext('Individual Deposit Report') ?>
                                     </h6>
-                                    <small class="text-muted"><?= gettext('Detailed breakdown of a single deposit slip.') ?></small>
+                                    <small class="text-body-secondary"><?= gettext('Detailed breakdown of a single deposit slip.') ?></small>
                                 </div>
-                                <span class="badge bg-primary badge-pill">PDF/CSV</span>
+                                <span class="badge bg-primary rounded-pill">PDF/CSV</span>
                             </div>
                         </a>
                         
@@ -169,7 +169,7 @@ if ($iFYMonth === 1) {
                                         <i class="fa-solid fa-database text-secondary me-2"></i>
                                         <?= gettext('Advanced Deposit Report') ?>
                                     </h6>
-                                    <small class="text-muted"><?= gettext('Customizable report with filtering by date, fund, family, and payment method.') ?></small>
+                                    <small class="text-body-secondary"><?= gettext('Customizable report with filtering by date, fund, family, and payment method.') ?></small>
                                 </div>
                                 <span class="badge bg-light text-dark">PDF/CSV</span>
                             </div>
@@ -188,7 +188,7 @@ if ($iFYMonth === 1) {
                     </h5>
                 </div>
                 <div class="card-body">
-                    <p class="text-muted small mb-3">
+                    <p class="text-body-secondary small mb-3">
                         <?= gettext('Reports related to member voting eligibility and organization governance.') ?>
                     </p>
                     
@@ -201,9 +201,9 @@ if ($iFYMonth === 1) {
                                         <i class="fa-solid fa-square-poll-vertical text-dark me-2"></i>
                                         <?= gettext('Voting Members') ?>
                                     </h6>
-                                    <small class="text-muted"><?= gettext('List members eligible to vote based on giving history and membership criteria.') ?></small>
+                                    <small class="text-body-secondary"><?= gettext('List members eligible to vote based on giving history and membership criteria.') ?></small>
                                 </div>
-                                <span class="badge bg-dark badge-pill"><?= gettext('PDF') ?></span>
+                                <span class="badge bg-dark rounded-pill"><?= gettext('PDF') ?></span>
                             </div>
                         </a>
                     </div>
@@ -217,7 +217,7 @@ if ($iFYMonth === 1) {
         <div class="col-12">
             <div class="card finance-card shadow-sm border-0">
                 <div class="card-header bg-light py-2">
-                    <h5 class="mb-0 text-muted">
+                    <h5 class="mb-0 text-body-secondary">
                         <i class="fa-solid fa-circle-info"></i> <?= gettext('Report Tips') ?>
                     </h5>
                 </div>
@@ -225,7 +225,7 @@ if ($iFYMonth === 1) {
                     <div class="row">
                         <div class="col-md-4">
                             <h6><i class="fa-solid fa-calendar-check text-primary"></i> <?= gettext('Fiscal Year') ?></h6>
-                            <p class="small text-muted">
+                            <p class="small text-body-secondary">
                                 <?= gettext('Your fiscal year starts in month') ?> <strong><?= $iFYMonth ?></strong>.
                                 <?= gettext('Current fiscal year') ?>: <strong><?= $fyLabel ?></strong>.
                                 <?= gettext('Change this in System Settings.') ?>
@@ -233,13 +233,13 @@ if ($iFYMonth === 1) {
                         </div>
                         <div class="col-md-4">
                             <h6><i class="fa-solid fa-download text-success"></i> <?= gettext('Export Options') ?></h6>
-                            <p class="small text-muted">
+                            <p class="small text-body-secondary">
                                 <?= gettext('Most reports can be exported as PDF for printing or CSV for spreadsheet analysis.') ?>
                             </p>
                         </div>
                         <div class="col-md-4">
                             <h6><i class="fa-solid fa-filter text-info"></i> <?= gettext('Filtering') ?></h6>
-                            <p class="small text-muted">
+                            <p class="small text-body-secondary">
                                 <?= gettext('Use classification and family filters to generate reports for specific groups of donors.') ?>
                             </p>
                         </div>

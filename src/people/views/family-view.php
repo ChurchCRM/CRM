@@ -287,7 +287,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                                                 <span class="badge bg-info-lt text-info me-1"><?= InputUtils::escapeHTML($ssName) ?></span>
                                             <?php }
                                         } else { ?>
-                                            <span class="text-muted">—</span>
+                                            <span class="text-body-secondary">—</span>
                                         <?php } ?>
                                     </td>
                                     <?php } ?>
@@ -346,7 +346,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                         }
                         ?>
                         <div class="timeline-filters d-flex flex-wrap align-items-center gap-2 mb-3" role="group" aria-label="<?= gettext('Timeline filters') ?>">
-                            <span class="text-muted small me-1"><i class="fa-solid fa-filter me-1"></i><?= gettext('Show:') ?></span>
+                            <span class="text-body-secondary small me-1"><i class="fa-solid fa-filter me-1"></i><?= gettext('Show:') ?></span>
                             <button type="button" class="btn btn-sm btn-primary timeline-filter-chip active" data-filter="notes">
                                 <i class="fa-solid fa-note-sticky me-1"></i><?= gettext('Notes') ?>
                                 <span class="badge bg-white text-primary ms-1"><?= $timelineCounts['notes'] ?></span>
@@ -412,7 +412,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                                             <?php if (!$item['slim'] && !empty($item['text'])) { ?>
                                                 <div class="text-secondary mt-1" style="white-space: pre-wrap; font-size: 0.875rem;"><?= $item['text'] ?></div>
                                             <?php } ?>
-                                            <small class="text-muted"><i class="fa-solid fa-clock me-1"></i><?= $item['datetime'] ?></small>
+                                            <small class="text-body-secondary"><i class="fa-solid fa-clock me-1"></i><?= $item['datetime'] ?></small>
                                         </div>
                                     </div>
                                 </div>
@@ -467,23 +467,23 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                             <li class="mb-1">
                                 <i class="fa-solid fa-circle me-2 <?= $family->isActive() ? 'text-success' : 'text-secondary' ?>" style="width: 1rem; text-align: center;"></i><?= $family->isActive() ? gettext('Active') : gettext('Inactive') ?>
                             </li>
-                            <li class="mb-1"><i class="fa-solid fa-person-half-dress me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= $memberCount ?> <?= $memberCount == 1 ? gettext('Member') : gettext('Members') ?></li>
+                            <li class="mb-1"><i class="fa-solid fa-person-half-dress me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= $memberCount ?> <?= $memberCount == 1 ? gettext('Member') : gettext('Members') ?></li>
                             <?php if (!empty($family->getHomePhone())) { ?>
                             <li class="mb-1">
-                                <i class="fa-solid fa-phone me-2 text-muted" style="width: 1rem; text-align: center;"></i><a href="tel:<?= InputUtils::escapeAttribute($family->getHomePhone()) ?>"><?= InputUtils::escapeHTML($family->getHomePhone()) ?></a>
+                                <i class="fa-solid fa-phone me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><a href="tel:<?= InputUtils::escapeAttribute($family->getHomePhone()) ?>"><?= InputUtils::escapeHTML($family->getHomePhone()) ?></a>
                             </li>
                             <?php } ?>
                             <?php if (!SystemConfig::getBooleanValue("bHideFamilyNewsletter")) { ?>
                             <li class="mb-1">
-                                <i class="fa-solid fa-newspaper me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= gettext("Newsletter") ?>:
+                                <i class="fa-solid fa-newspaper me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= gettext("Newsletter") ?>:
                                 <span class="<?= ($family->isSendNewsletter() ? "text-success" : "text-danger") ?>"><i class="fa-solid fa-<?= ($family->isSendNewsletter() ? "check" : "times") ?>"></i></span>
                             </li>
                             <?php } ?>
                             <?php if ($family->getEnvelope()) { ?>
-                            <li class="mb-1"><i class="fa-solid fa-envelope me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= gettext('Envelope') ?> #<?= $family->getEnvelope() ?></li>
+                            <li class="mb-1"><i class="fa-solid fa-envelope me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= gettext('Envelope') ?> #<?= $family->getEnvelope() ?></li>
                             <?php } ?>
                             <?php if (!SystemConfig::getBooleanValue("bHideWeddingDate") && !empty($family->getWeddingdate())) { ?>
-                            <li class="mb-1"><i class="fa-solid fa-ring me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= $family->getWeddingDate()->format(SystemConfig::getValue("sDateFormatLong")) ?></li>
+                            <li class="mb-1"><i class="fa-solid fa-ring me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= $family->getWeddingDate()->format(SystemConfig::getValue("sDateFormatLong")) ?></li>
                             <?php } ?>
                         </ul>
                     </div>
@@ -567,7 +567,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
             <div class="card-body">
                 <ul class="list-unstyled mb-0">
                     <li class="mb-1">
-                        <i class="fa-solid fa-envelope me-2 text-muted" style="width: 1rem; text-align: center;"></i><a href="mailto:<?= InputUtils::escapeAttribute($family->getEmail()) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($family->getEmail()) ?></a>
+                        <i class="fa-solid fa-envelope me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><a href="mailto:<?= InputUtils::escapeAttribute($family->getEmail()) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($family->getEmail()) ?></a>
                         <button class="btn btn-sm btn-ghost-secondary ms-1 copy-email-btn" type="button"
                                 data-email="<?= InputUtils::escapeAttribute($family->getEmail()) ?>"
                                 title="<?= gettext('Copy to clipboard') ?>">
@@ -576,7 +576,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                     </li>
                     <!-- MailChimp status - populated by JavaScript if plugin is active -->
                     <li class="d-none mb-1" id="mailchimp-status-container">
-                        <i class="fa-regular fa-paper-plane me-2 text-muted" style="width: 1rem; text-align: center;"></i>Mailchimp:
+                        <i class="fa-regular fa-paper-plane me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i>Mailchimp:
                         <span id="mailchimp-status">... <?= gettext("loading")?> ...</span>
                     </li>
                 </ul>
@@ -596,13 +596,13 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                     <ul class="list-unstyled mb-0">
                         <?php foreach ($familyCustom as $customField) { ?>
                             <li class="mb-1">
-                                <i class="<?= $customField->getIcon() ?> me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= $customField->getDisplayValue() ?>:
+                                <i class="<?= $customField->getIcon() ?> me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= $customField->getDisplayValue() ?>:
                                 <?php if ($customField->getLink()) { ?>
                                     <a href="<?= $customField->getLink() ?>"><?= $customField->getFormattedValue() ?></a>
                                 <?php } else {
                                     $val = $customField->getFormattedValue();
                                     if (strlen($val) > 40) { ?>
-                                        <span class="d-block text-muted text-truncate" title="<?= InputUtils::escapeAttribute($val) ?>"><?= $val ?></span>
+                                        <span class="d-block text-body-secondary text-truncate" title="<?= InputUtils::escapeAttribute($val) ?>"><?= $val ?></span>
                                     <?php } else { ?>
                                         <span><?= $val ?></span>
                                     <?php }
@@ -622,7 +622,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
             </div>
             <div class="card-body">
                 <?php if (count($assignedFamilyProperties) === 0) : ?>
-                    <div class="text-center text-muted py-3">
+                    <div class="text-center text-body-secondary py-3">
                         <i class="fa-solid fa-tags fa-2x mb-2 d-block opacity-50"></i>
                         <p class="mb-0"><?= gettext("No properties assigned.") ?></p>
                     </div>
@@ -639,7 +639,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                                         <span class="badge bg-secondary-lt text-secondary ms-1"><?= InputUtils::escapeHTML($propType->getPrtName()) ?></span>
                                     <?php } ?>
                                     <?php if (!empty($value)) { ?>
-                                        <small class="text-muted d-block"><?= InputUtils::escapeHTML($value) ?></small>
+                                        <small class="text-body-secondary d-block"><?= InputUtils::escapeHTML($value) ?></small>
                                     <?php } ?>
                                 </div>
                                 <?php if ($canEditRecords) { ?>

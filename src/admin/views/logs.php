@@ -45,7 +45,7 @@ $currentLevelLabel = $logLevelMap[$currentLogLevel] ?? 'INFO';
                         </div>
                         <div class="col">
                             <div class="fw-medium" id="currentLogLevelDisplay"><?= $currentLevelLabel ?></div>
-                            <div class="text-muted"><?= gettext('Log Level') ?></div>
+                            <div class="text-body-secondary"><?= gettext('Log Level') ?></div>
                         </div>
                     </div>
                 </div>
@@ -63,7 +63,7 @@ $currentLevelLabel = $logLevelMap[$currentLogLevel] ?? 'INFO';
                         </div>
                         <div class="col">
                             <div class="fw-medium"><?= $totalLogFiles ?></div>
-                            <div class="text-muted"><?= gettext('Log Files') ?></div>
+                            <div class="text-body-secondary"><?= gettext('Log Files') ?></div>
                         </div>
                     </div>
                 </div>
@@ -80,7 +80,7 @@ $currentLevelLabel = $logLevelMap[$currentLogLevel] ?? 'INFO';
                         </div>
                         <div class="col">
                             <div class="fw-medium"><?= number_format($totalLogSize / 1024 / 1024, 2) ?> MB</div>
-                            <div class="text-muted"><?= gettext('Total Size') ?></div>
+                            <div class="text-body-secondary"><?= gettext('Total Size') ?></div>
                         </div>
                     </div>
                 </div>

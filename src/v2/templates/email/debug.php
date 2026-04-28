@@ -32,12 +32,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="d-flex align-items-start">
                 <div class="flex-grow-1">
                     <h4 class="mb-1"><i class="fa fa-circle-check text-success me-2"></i><?= gettext('Test email accepted by SMTP server') ?></h4>
-                    <p class="text-muted mb-2">
+                    <p class="text-body-secondary mb-2">
                         <?= gettext('Now check the recipient inbox to confirm delivery. Look for the subject:') ?>
                         <br>
                         <strong>&ldquo;<?= gettext('ChurchCRM Test Email') ?>&rdquo;</strong>
                     </p>
-                    <p class="text-muted small mb-0">
+                    <p class="text-body-secondary small mb-0">
                         <i class="fa fa-info-circle me-1"></i>
                         <?= gettext('If the message doesn\'t arrive within a few minutes, check the spam/junk folder and the SMTP debug log below.') ?>
                     </p>
@@ -59,7 +59,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <?php if (!empty($sendResult['error'])): ?>
                         <p class="mb-2"><strong><?= gettext('Error') ?>:</strong> <?= InputUtils::escapeHTML((string) $sendResult['error']) ?></p>
                     <?php endif; ?>
-                    <p class="text-muted mb-0"><?= gettext('Review the SMTP debug log below for the handshake details, then adjust your settings.') ?></p>
+                    <p class="text-body-secondary mb-0"><?= gettext('Review the SMTP debug log below for the handshake details, then adjust your settings.') ?></p>
                 </div>
                 <a href="<?= InputUtils::escapeAttribute($emailDashboardUrl) ?>" class="btn btn-danger ms-3">
                     <i class="fa fa-cog me-1"></i><?= gettext('Update Settings') ?>
@@ -81,7 +81,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <table class="table table-sm mb-0">
                     <tbody>
                         <tr>
-                            <td class="text-muted" style="width: 80px;"><?= gettext('From') ?></td>
+                            <td class="text-body-secondary" style="width: 80px;"><?= gettext('From') ?></td>
                             <td>
                                 <?php if (!empty($sendResult['fromName'])): ?>
                                     <strong><?= InputUtils::escapeHTML($sendResult['fromName']) ?></strong><br>
@@ -90,10 +90,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             </td>
                         </tr>
                         <tr>
-                            <td class="text-muted"><?= gettext('To') ?></td>
+                            <td class="text-body-secondary"><?= gettext('To') ?></td>
                             <td>
                                 <a href="mailto:<?= InputUtils::escapeAttribute((string) $sendResult['to']) ?>"><?= InputUtils::escapeHTML((string) $sendResult['to']) ?></a>
-                                <small class="text-muted d-block">
+                                <small class="text-body-secondary d-block">
                                     <?= gettext('Church email — configured on the') ?>
                                     <a href="<?= SystemURLs::getRootPath() ?>/admin/system/church-info"><?= gettext('Church Information') ?></a>
                                     <?= gettext('page.') ?>
@@ -101,7 +101,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             </td>
                         </tr>
                         <tr>
-                            <td class="text-muted"><?= gettext('Subject') ?></td>
+                            <td class="text-body-secondary"><?= gettext('Subject') ?></td>
                             <td><code><?= gettext('ChurchCRM Test Email') ?></code></td>
                         </tr>
                     </tbody>
@@ -124,28 +124,28 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <table class="table table-sm mb-0">
                     <tbody>
                         <tr>
-                            <td class="text-muted" style="width: 140px;"><?= gettext('Host') ?></td>
+                            <td class="text-body-secondary" style="width: 140px;"><?= gettext('Host') ?></td>
                             <td><code><?= InputUtils::escapeHTML($smtpSettings['host']) ?></code></td>
                         </tr>
                         <tr>
-                            <td class="text-muted"><?= gettext('Encryption') ?></td>
+                            <td class="text-body-secondary"><?= gettext('Encryption') ?></td>
                             <td><code><?= InputUtils::escapeHTML($smtpSettings['secure']) ?></code></td>
                         </tr>
                         <tr>
-                            <td class="text-muted">Auto-TLS</td>
+                            <td class="text-body-secondary">Auto-TLS</td>
                             <td><?= InputUtils::escapeHTML($smtpSettings['autoTLS']) ?></td>
                         </tr>
                         <tr>
-                            <td class="text-muted"><?= gettext('Authentication') ?></td>
+                            <td class="text-body-secondary"><?= gettext('Authentication') ?></td>
                             <td>
                                 <?= InputUtils::escapeHTML($smtpSettings['auth']) ?>
                                 <?php if (!empty($smtpSettings['username'])): ?>
-                                    <span class="text-muted ms-2">(<?= gettext('user:') ?> <code><?= InputUtils::escapeHTML((string) $smtpSettings['username']) ?></code>)</span>
+                                    <span class="text-body-secondary ms-2">(<?= gettext('user:') ?> <code><?= InputUtils::escapeHTML((string) $smtpSettings['username']) ?></code>)</span>
                                 <?php endif; ?>
                             </td>
                         </tr>
                         <tr>
-                            <td class="text-muted"><?= gettext('Timeout') ?></td>
+                            <td class="text-body-secondary"><?= gettext('Timeout') ?></td>
                             <td><?= InputUtils::escapeHTML($smtpSettings['timeout']) ?></td>
                         </tr>
                     </tbody>
@@ -163,7 +163,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <button type="button" class="btn btn-link w-100 text-start text-decoration-none text-reset p-3 m-0" data-bs-toggle="collapse" data-bs-target="#collapseSmtpDebug" aria-expanded="<?= $sendResult['success'] ? 'false' : 'true' ?>" aria-controls="collapseSmtpDebug">
             <span class="h4 mb-0 d-flex align-items-center">
                 <i class="fa fa-terminal me-2"></i><?= gettext('SMTP Debug Log') ?>
-                <small class="text-muted ms-2"><?= gettext('PHPMailer SMTP session') ?></small>
+                <small class="text-body-secondary ms-2"><?= gettext('PHPMailer SMTP session') ?></small>
                 <i class="fa fa-chevron-<?= $sendResult['success'] ? 'down' : 'up' ?> ms-auto"></i>
             </span>
         </button>

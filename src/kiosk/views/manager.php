@@ -13,7 +13,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card-body">
                 <div class="row align-items-center">
                     <div class="col-auto"><span class="bg-primary text-white avatar rounded-circle"><i class="fa-solid fa-desktop icon"></i></span></div>
-                    <div class="col"><div class="fw-medium" id="statTotal">0</div><div class="text-muted"><?= gettext('Total Kiosks') ?></div></div>
+                    <div class="col"><div class="fw-medium" id="statTotal">0</div><div class="text-body-secondary"><?= gettext('Total Kiosks') ?></div></div>
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card-body">
                 <div class="row align-items-center">
                     <div class="col-auto"><span class="bg-success text-white avatar rounded-circle"><i class="fa-solid fa-circle-check icon"></i></span></div>
-                    <div class="col"><div class="fw-medium" id="statOnline">0</div><div class="text-muted"><?= gettext('Online') ?></div></div>
+                    <div class="col"><div class="fw-medium" id="statOnline">0</div><div class="text-body-secondary"><?= gettext('Online') ?></div></div>
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card-body">
                 <div class="row align-items-center">
                     <div class="col-auto"><span class="bg-warning text-dark avatar rounded-circle"><i class="fa-solid fa-clock icon"></i></span></div>
-                    <div class="col"><div class="fw-medium" id="statPending">0</div><div class="text-muted"><?= gettext('Pending') ?></div></div>
+                    <div class="col"><div class="fw-medium" id="statPending">0</div><div class="text-body-secondary"><?= gettext('Pending') ?></div></div>
                 </div>
             </div>
         </div>
@@ -43,7 +43,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card-body">
                 <div class="row align-items-center">
                     <div class="col-auto"><span class="bg-azure text-white avatar rounded-circle"><i class="fa-solid fa-calendar-check icon"></i></span></div>
-                    <div class="col"><div class="fw-medium" id="statAssigned">0</div><div class="text-muted"><?= gettext('Assigned') ?></div></div>
+                    <div class="col"><div class="fw-medium" id="statAssigned">0</div><div class="text-body-secondary"><?= gettext('Assigned') ?></div></div>
                 </div>
             </div>
         </div>
@@ -62,7 +62,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       </div>
       <div class="col">
         <strong><?= gettext('Register New Device') ?></strong>
-        <span class="text-muted ms-1"><?= gettext('Opens a 2-minute window for devices to register at:') ?></span>
+        <span class="text-body-secondary ms-1"><?= gettext('Opens a 2-minute window for devices to register at:') ?></span>
         <code class="ms-1"><?= InputUtils::escapeHTML(SystemURLs::getURL()) ?>/kiosk</code>
       </div>
       <div class="col-auto">
@@ -229,7 +229,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       
       return html;
     } else {
-        return '<span class="text-muted">' + i18next.t('Kiosk must be accepted') + '</span>';
+        return '<span class="text-body-secondary">' + i18next.t('Kiosk must be accepted') + '</span>';
     }
   }
 
@@ -463,7 +463,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           render: function(data, type, full, meta) {
             var heartbeat = full.LastHeartbeat ? moment(full.LastHeartbeat).fromNow() : i18next.t('Never');
             return '<div><span class="fw-medium">' + window.CRM.escapeHtml(data) + '</span></div>' +
-                   '<div class="text-muted small">' + i18next.t('Last seen') + ': ' + heartbeat + '</div>';
+                   '<div class="text-body-secondary small">' + i18next.t('Last seen') + ': ' + heartbeat + '</div>';
           }
         },
         {

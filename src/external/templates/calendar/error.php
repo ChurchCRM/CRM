@@ -38,7 +38,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
           <i class="ti <?= InputUtils::escapeAttribute($icon) ?> text-warning" style="font-size: 3.5rem; line-height: 1;"></i>
         </div>
         <h2 class="h2 mb-2"><?= InputUtils::escapeHTML($title) ?></h2>
-        <p class="text-muted mb-4 mx-auto" style="max-width: 32rem;">
+        <p class="text-body-secondary mb-4 mx-auto" style="max-width: 32rem;">
           <?= InputUtils::escapeHTML($message) ?>
         </p>
         <a href="<?= InputUtils::escapeAttribute($rootPath) ?>/" class="btn btn-primary">

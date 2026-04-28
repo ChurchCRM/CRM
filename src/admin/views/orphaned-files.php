@@ -98,7 +98,7 @@ $hasOrphanedFiles = $orphanedCount > 0;
             <div class="modal-body">
                 <p><?= gettext('Are you sure you want to delete all orphaned files?') ?></p>
                 <p class="text-danger"><strong><?= gettext('This action cannot be undone.') ?></strong></p>
-                <p class="text-muted"><?= sprintf(gettext('%d files will be permanently deleted.'), $orphanedCount) ?></p>
+                <p class="text-body-secondary"><?= sprintf(gettext('%d files will be permanently deleted.'), $orphanedCount) ?></p>
             </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
@@ -232,7 +232,7 @@ $hasOrphanedFiles = $orphanedCount > 0;
             });
             html += '</ul>';
         } else if (deletedCount > 20) {
-            html += '<p class="text-muted">' + i18next.t('Deleted') + ' ' + deletedCount + ' ' + i18next.t('files') + '</p>';
+            html += '<p class="text-body-secondary">' + i18next.t('Deleted') + ' ' + deletedCount + ' ' + i18next.t('files') + '</p>';
         }
 
         // Failed files list

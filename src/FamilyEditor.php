@@ -579,7 +579,7 @@ require_once __DIR__ . '/Include/Header.php';
             <!-- Location Section -->
             <div class="row">
                 <div class="col-12">
-                    <h5 class="text-muted mb-3"><?= gettext('Address') ?></h5>
+                    <h5 class="text-body-secondary mb-3"><?= gettext('Address') ?></h5>
                 </div>
             </div>
             <div class="row">
@@ -655,7 +655,7 @@ require_once __DIR__ . '/Include/Header.php';
             <!-- Contact Information Section -->
             <div class="row mt-4">
                 <div class="col-12">
-                    <h5 class="text-muted mb-3"><?= gettext('Contact') ?></h5>
+                    <h5 class="text-body-secondary mb-3"><?= gettext('Contact') ?></h5>
                 </div>
             </div>
             <div class="row">

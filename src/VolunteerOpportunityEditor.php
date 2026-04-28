@@ -229,7 +229,7 @@ $aBreadcrumbs = PageHeader::breadcrumbs([
 require_once __DIR__ . '/Include/Header.php';
 ?>
 
-<p class="text-muted mb-3"><?= gettext('Manage volunteer opportunities and assign members') ?></p>
+<p class="text-body-secondary mb-3"><?= gettext('Manage volunteer opportunities and assign members') ?></p>
 
 <?php
 

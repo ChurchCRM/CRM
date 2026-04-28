@@ -183,11 +183,11 @@ require_once __DIR__ . '/Include/Header.php';
             <div class="mb-3">
               <i class="fa-solid fa-money-bill fa-2x text-success mb-2"></i>
               <div class="fw-bold h5 text-success">$<?= number_format($thisDeposit->getTotalCash(), 2); ?></div>
-              <div class="small text-muted"><?= gettext('Cash'); ?> (<?= $thisDeposit->getCountCash(); ?>)</div>
+              <div class="small text-body-secondary"><?= gettext('Cash'); ?> (<?= $thisDeposit->getCountCash(); ?>)</div>
             </div>
             <?php endif; ?>
             <?php if (!$thisDeposit->getCountCash()): ?>
-            <div class="text-muted small">
+            <div class="text-body-secondary small">
               <i class="fa-solid fa-money-bill fa-2x mb-2 opacity-25"></i>
               <div><?= gettext('No Cash'); ?></div>
             </div>
@@ -201,11 +201,11 @@ require_once __DIR__ . '/Include/Header.php';
             <div class="mb-3">
               <i class="fa-solid fa-money-check fa-2x text-info mb-2"></i>
               <div class="fw-bold h5 text-info">$<?= number_format($thisDeposit->getTotalChecks(), 2); ?></div>
-              <div class="small text-muted"><?= gettext('Checks'); ?> (<?= $thisDeposit->getCountChecks(); ?>)</div>
+              <div class="small text-body-secondary"><?= gettext('Checks'); ?> (<?= $thisDeposit->getCountChecks(); ?>)</div>
             </div>
             <?php endif; ?>
             <?php if (!$thisDeposit->getCountChecks()): ?>
-            <div class="text-muted small">
+            <div class="text-body-secondary small">
               <i class="fa-solid fa-money-check fa-2x mb-2 opacity-25"></i>
               <div><?= gettext('No Checks'); ?></div>
             </div>
@@ -234,7 +234,7 @@ require_once __DIR__ . '/Include/Header.php';
       <div class="card-header bg-light d-flex justify-content-between align-items-center">
         <h5 class="card-title mb-0">
           <i class="fa-solid fa-chart-bar"></i> <?= gettext('Funds'); ?>
-          <small class="text-muted ms-2"><?= gettext('Click a bar to filter payments'); ?></small>
+          <small class="text-body-secondary ms-2"><?= gettext('Click a bar to filter payments'); ?></small>
         </h5>
         <button type="button" class="btn btn-sm btn-outline-secondary d-none" id="clearFundFilter">
           <i class="fa-solid fa-times"></i><?= gettext('Clear Filter'); ?>

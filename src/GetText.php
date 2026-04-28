@@ -29,7 +29,7 @@ $aEventText = $event->getText();
 <body>
 <div class="container-fluid p-4">
   <h4><?= InputUtils::escapeHTML($aEventTitle) ?></h4>
-  <div class="text-muted small mb-3"><?= gettext('Event ID') ?>: <?= InputUtils::escapeHTML($aEventID) ?></div>
+  <div class="text-body-secondary small mb-3"><?= gettext('Event ID') ?>: <?= InputUtils::escapeHTML($aEventID) ?></div>
   
   <div class="lh-lg">
     <?= $aEventText ?>

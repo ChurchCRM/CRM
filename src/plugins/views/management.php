@@ -181,9 +181,9 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                     <?php endif; ?>
                 </div>
             <?php endif; ?>
-            <p class="text-muted mb-2"><?= htmlspecialchars($plugin['description']) ?></p>
+            <p class="text-body-secondary mb-2"><?= htmlspecialchars($plugin['description']) ?></p>
             <?php if (!empty($plugin['author'])): ?>
-                <small class="text-muted">
+                <small class="text-body-secondary">
                     <?= gettext('by') ?>
                     <?php if (!empty($plugin['authorUrl'])): ?>
                         <a href="<?= htmlspecialchars($plugin['authorUrl']) ?>" target="_blank">
@@ -323,7 +323,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                                        placeholder="<?= $isRequired ? gettext('Required') : '' ?>">
                             <?php endif; ?>
                             <?php if ($settingHelp): ?>
-                                <small class="form-text text-muted"><?= htmlspecialchars($settingHelp) ?></small>
+                                <small class="form-text text-body-secondary"><?= htmlspecialchars($settingHelp) ?></small>
                             <?php endif; ?>
                         </div>
                     <?php endforeach; ?>
@@ -363,7 +363,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
             </div>
             <div class="card-body">
                 <?php if (empty($corePlugins)): ?>
-                    <div class="text-center py-4 text-muted">
+                    <div class="text-center py-4 text-body-secondary">
                         <i class="fa-solid fa-circle-info fa-2x mb-2"></i>
                         <p><?= gettext('No core plugins found') ?></p>
                     </div>
@@ -392,7 +392,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
             </div>
             <div class="card-body">
                 <?php if (empty($communityPlugins)): ?>
-                    <div class="text-center py-4 text-muted">
+                    <div class="text-center py-4 text-body-secondary">
                         <i class="fa-solid fa-folder-open fa-2x mb-2"></i>
                         <p><?= gettext('No community plugins installed') ?></p>
                         <p class="small">
@@ -422,7 +422,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                     <li><strong><?= gettext('Core plugins') ?>:</strong> <?= gettext('Shipped with ChurchCRM.') ?></li>
                     <li><strong><?= gettext('Community plugins') ?>:</strong> <?= gettext('Third-party extensions.') ?></li>
                 </ul>
-                <p class="small text-muted">
+                <p class="small text-body-secondary">
                     <?= gettext('Each plugin requires a') ?> <code>plugin.json</code> <?= gettext('manifest.') ?>
                 </p>
             </div>
@@ -458,11 +458,11 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= gettext('Close') ?>"></button>
             </div>
             <div class="modal-body">
-                <p class="text-muted">
+                <p class="text-body-secondary">
                     <?= gettext('These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically.') ?>
                 </p>
                 <div id="approvedPluginsList" class="d-flex flex-column gap-2">
-                    <div class="text-center text-muted py-4">
+                    <div class="text-center text-body-secondary py-4">
                         <i class="fa-solid fa-spinner fa-spin me-2"></i><?= gettext('Loading approved plugin list…') ?>
                     </div>
                 </div>
@@ -496,17 +496,17 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                     <div class="mb-3">
                         <label for="install-url-input" class="form-label"><?= gettext('Plugin zip URL (HTTPS only)') ?></label>
                         <input type="url" id="install-url-input" class="form-control" placeholder="https://example.org/releases/my-plugin-1.0.0.zip" required>
-                        <small class="text-muted"><?= gettext('Must be an immutable release URL served over HTTPS.') ?></small>
+                        <small class="text-body-secondary"><?= gettext('Must be an immutable release URL served over HTTPS.') ?></small>
                     </div>
                     <div class="mb-3">
                         <label for="install-sha256-input" class="form-label"><?= gettext('SHA-256 checksum') ?></label>
                         <input type="text" id="install-sha256-input" class="form-control font-monospace" pattern="[a-fA-F0-9]{64}" placeholder="0123456789abcdef… (64 hex characters)" required>
-                        <small class="text-muted"><?= gettext('Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte.') ?></small>
+                        <small class="text-body-secondary"><?= gettext('Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte.') ?></small>
                     </div>
                     <div class="mb-3">
                         <label for="install-plugin-id-input" class="form-label"><?= gettext('Plugin id') ?></label>
                         <input type="text" id="install-plugin-id-input" class="form-control" pattern="[a-z0-9][a-z0-9-]*" placeholder="my-plugin" required>
-                        <small class="text-muted"><?= gettext('Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json.') ?></small>
+                        <small class="text-body-secondary"><?= gettext('Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json.') ?></small>
                     </div>
                 </form>
                 <div id="installFromUrlResult"></div>
@@ -642,7 +642,7 @@ $(document).ready(function() {
         }
         
         if (!contentHtml) {
-            contentHtml = '<p class="text-muted">' + i18next.t('No help available for this plugin.') + '</p>';
+            contentHtml = '<p class="text-body-secondary">' + i18next.t('No help available for this plugin.') + '</p>';
         }
         
         $('#pluginHelpTitle').text(pluginName + ' - ' + i18next.t('Help'));
@@ -984,10 +984,10 @@ $(document).ready(function() {
                 : '';
             const metaParts = [author ? $('<div>').text(author).html() : '', homepageLink].filter(Boolean);
             const metaHtml = metaParts.length
-                ? '<div class="mt-1 small text-muted">' + metaParts.join(' · ') + '</div>'
+                ? '<div class="mt-1 small text-body-secondary">' + metaParts.join(' · ') + '</div>'
                 : '';
             const notesHtml = entry.notes
-                ? '<div class="mt-2 small text-muted fst-italic">' + $('<div>').text(entry.notes).html() + '</div>'
+                ? '<div class="mt-2 small text-body-secondary fst-italic">' + $('<div>').text(entry.notes).html() + '</div>'
                 : '';
             return '' +
                 '<div class="card" data-approved-plugin-id="' + $('<div>').text(entry.id || '').html() + '">' +
@@ -1020,7 +1020,7 @@ $(document).ready(function() {
 
     $('#btn-browse-approved').on('click', function() {
         const $list = $('#approvedPluginsList');
-        $list.html('<div class="text-center text-muted py-4"><i class="fa-solid fa-spinner fa-spin me-2"></i><?= addslashes(gettext('Loading…')) ?></div>');
+        $list.html('<div class="text-center text-body-secondary py-4"><i class="fa-solid fa-spinner fa-spin me-2"></i><?= addslashes(gettext('Loading…')) ?></div>');
         $('#approvedPluginsModal').modal('show');
 
         $.ajax({
@@ -1040,7 +1040,7 @@ $(document).ready(function() {
         const $btn = $(this);
         const $list = $('#approvedPluginsList');
         $btn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin me-1"></i><?= addslashes(gettext('Checking…')) ?>');
-        $list.html('<div class="text-center text-muted py-4"><i class="fa-solid fa-spinner fa-spin me-2"></i><?= addslashes(gettext('Fetching latest registry…')) ?></div>');
+        $list.html('<div class="text-center text-body-secondary py-4"><i class="fa-solid fa-spinner fa-spin me-2"></i><?= addslashes(gettext('Fetching latest registry…')) ?></div>');
 
         $.ajax({
             url: '<?= $sRootPath ?>/plugins/api/registry/refresh',

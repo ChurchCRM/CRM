@@ -24,7 +24,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <?php endforeach; ?>
                     </select>
                 </form>
-                <small class="form-text text-muted">
+                <small class="form-text text-body-secondary">
                     <?= gettext('Current Fiscal Year') ?>: <strong><?= FinancialService::formatFiscalYear($currentFyid) ?></strong>
                 </small>
             </div>
@@ -92,11 +92,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <div class="h5 mb-1 fw-bold text-dark">
                                 $<?= number_format($fundTotal['total_paid'], 2) ?>
                             </div>
-                            <div class="text-muted small mb-2">
+                            <div class="text-body-secondary small mb-2">
                                 <?= gettext('of') ?> $<?= number_format($fundTotal['total_pledged'], 2) ?>
                                 (<?= number_format($fundPercent, 0) ?>%)
                             </div>
-                            <div class="text-muted small mb-2">
+                            <div class="text-body-secondary small mb-2">
                                 <?= $fundTotal['family_count'] ?> <?= $fundTotal['family_count'] == 1 ? gettext('Family') : gettext('Families') ?>
                             </div>
                             <div class="progress finance-progress">
@@ -152,17 +152,17 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         ?>
                                         <?php foreach ($family['pledges'] as $idx => $pledge): ?>
                                             <tr <?= $isMultiplePledges ? 'style="border-left: 3px solid #007bff;"' : '' ?>>
-                                                <td class="<?= $idx === 0 ? 'fw-bold' : 'text-muted small ps-4' ?>">
+                                                <td class="<?= $idx === 0 ? 'fw-bold' : 'text-body-secondary small ps-4' ?>">
                                                     <?php if ($idx === 0): ?>
                                                         <a href="<?= SystemURLs::getRootPath() ?>/people/family/<?= $family['family_id'] ?>">
                                                             <?= InputUtils::escapeHTML($family['family_name']) ?>
                                                         </a>
                                                     <?php else: ?>
-                                                        <span class="text-muted">↳</span>
+                                                        <span class="text-body-secondary">↳</span>
                                                     <?php endif; ?>
                                                 </td>
                                                 <?php if (SystemConfig::getBooleanValue('bUseDonationEnvelopes')): ?>
-                                                <td class="text-muted small">
+                                                <td class="text-body-secondary small">
                                                     <?= $idx === 0 ? InputUtils::escapeHTML($family['envelope'] ?? '') : '' ?>
                                                 </td>
                                                 <?php endif; ?>
@@ -188,7 +188,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                 ?>
                                                 <td class="text-end <?= $statusClass ?>">
                                                     $<?= number_format($remaining, 2) ?>
-                                                    <small class="d-block text-muted"><?= number_format($percentComplete, 0) ?>%</small>
+                                                    <small class="d-block text-body-secondary"><?= number_format($percentComplete, 0) ?>%</small>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>

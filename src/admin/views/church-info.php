@@ -38,7 +38,7 @@ $validationError     = $validationError ?? '';
                                required
                                maxlength="200"
                                aria-describedby="churchNameHelp">
-                        <small id="churchNameHelp" class="form-text text-muted">
+                        <small id="churchNameHelp" class="form-text text-body-secondary">
                             <?= gettext('Required. Used on all reports and communications.') ?>
                         </small>
                         <?php if (!empty($validationError)): ?>
@@ -55,7 +55,7 @@ $validationError     = $validationError ?? '';
                                value="<?= InputUtils::escapeHTML($churchInfo['sChurchWebSite']) ?>"
                                maxlength="200"
                                placeholder="https://">
-                        <small class="form-text text-muted">
+                        <small class="form-text text-body-secondary">
                             <?= gettext('Optional. URL for your church website.') ?>
                         </small>
                     </div>
@@ -167,7 +167,7 @@ $validationError     = $validationError ?? '';
 
                     <hr class="my-3">
                     <h5 class="mb-3"><?= gettext('Map Coordinates') ?></h5>
-                    <p class="text-muted small mb-3">
+                    <p class="text-body-secondary small mb-3">
                         <i class="fa-solid fa-circle-info me-1"></i>
                         <?= gettext('Coordinates are auto-detected from your address on save (via OpenStreetMap). You can also enter them manually below — manual values always take precedence over auto-detection. Leave both blank to let the system geocode from the address.') ?>
                     </p>
@@ -183,7 +183,7 @@ $validationError     = $validationError ?? '';
                                    name="iChurchLatitude"
                                    value="<?= InputUtils::escapeHTML((string) $churchInfo['iChurchLatitude']) ?>"
                                    placeholder="<?= gettext('e.g., 40.7128') ?>">
-                            <small class="form-text text-muted"><?= gettext('Range: -90 to 90.') ?></small>
+                            <small class="form-text text-body-secondary"><?= gettext('Range: -90 to 90.') ?></small>
                         </div>
                         <div class="mb-3 col-md-4">
                             <label for="iChurchLongitude"><?= gettext('Longitude') ?></label>
@@ -196,7 +196,7 @@ $validationError     = $validationError ?? '';
                                    name="iChurchLongitude"
                                    value="<?= InputUtils::escapeHTML((string) $churchInfo['iChurchLongitude']) ?>"
                                    placeholder="<?= gettext('e.g., -74.0060') ?>">
-                            <small class="form-text text-muted"><?= gettext('Range: -180 to 180.') ?></small>
+                            <small class="form-text text-body-secondary"><?= gettext('Range: -180 to 180.') ?></small>
                         </div>
                     </div>
 
@@ -245,7 +245,7 @@ $validationError     = $validationError ?? '';
                             <select class="form-select" id="sLanguage" name="sLanguage"
                                 data-selected-locale="<?= InputUtils::escapeAttribute($churchInfo['sLanguage']) ?>"
                                 style="width: 100%;"></select>
-                            <small class="form-text text-muted">
+                            <small class="form-text text-body-secondary">
                                 <?= gettext('System language for the church.') ?>
                             </small>
                         </div>
@@ -259,7 +259,7 @@ $validationError     = $validationError ?? '';
                                 </option>
                                 <?php endforeach; ?>
                             </select>
-                            <small class="form-text text-muted">
+                            <small class="form-text text-body-secondary">
                                 <?= gettext('Used for scheduling events and reporting times.') ?>
                             </small>
                         </div>
@@ -273,7 +273,7 @@ $validationError     = $validationError ?? '';
                                     <?= gettext('kilometers') ?>
                                 </option>
                             </select>
-                            <small class="form-text text-muted">
+                            <small class="form-text text-body-secondary">
                                 <?= gettext('Unit used to measure distance.') ?>
                             </small>
                         </div>
@@ -294,7 +294,7 @@ $validationError     = $validationError ?? '';
                     </button>
                 </div>
                 <div class="card-body">
-                    <p class="text-muted mb-3">
+                    <p class="text-body-secondary mb-3">
                         <?= gettext('These values are pre-filled when creating new families. Leave blank to require manual entry.') ?>
                     </p>
                     <div class="row">
@@ -342,7 +342,7 @@ $validationError     = $validationError ?? '';
                     <h3 class="card-title"><i class="fa-solid fa-eye me-2"></i><?= gettext('Display Preview') ?></h3>
                 </div>
                 <div class="card-body">
-                    <p class="text-muted">
+                    <p class="text-body-secondary">
                         <?= gettext('This is how your church information will appear on reports and directories.') ?>
                     </p>
 
@@ -403,7 +403,7 @@ $validationError     = $validationError ?? '';
                             <?= gettext('Cancel') ?>
                         </a>
                     </div>
-                    <small class="text-muted">
+                    <small class="text-body-secondary">
                         <span class="text-danger">*</span> <?= gettext('Required') ?>
                     </small>
                 </div>
