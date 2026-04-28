@@ -353,7 +353,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
 ?>
 
 <div class="row">
-    <div class="col-lg-8">
+    <div class="col-12">
         <!-- Core Plugins -->
         <div class="card" id="core-plugins-section">
             <div class="card-header border-0">
@@ -404,27 +404,6 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                         <?php renderPluginCard($plugin, $sRootPath, SystemURLs::getCSPNonce()); ?>
                     <?php endforeach; ?>
                 <?php endif; ?>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-4">
-        <!-- Plugin Info -->
-        <div class="card border border-info">
-            <div class="card-header d-flex align-items-center">
-                <h3 class="card-title">
-                    <i class="fa-solid fa-circle-info me-3"></i><?= gettext('Plugin Development') ?>
-                </h3>
-            </div>
-            <div class="card-body">
-                <p><?= gettext('ChurchCRM supports a plugin architecture for extending functionality.') ?></p>
-                <ul class="ps-3">
-                    <li><strong><?= gettext('Core plugins') ?>:</strong> <?= gettext('Shipped with ChurchCRM.') ?></li>
-                    <li><strong><?= gettext('Community plugins') ?>:</strong> <?= gettext('Third-party extensions.') ?></li>
-                </ul>
-                <p class="small text-muted">
-                    <?= gettext('Each plugin requires a') ?> <code>plugin.json</code> <?= gettext('manifest.') ?>
-                </p>
             </div>
         </div>
     </div>
