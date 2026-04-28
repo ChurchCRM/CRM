@@ -302,7 +302,7 @@ describe(
 
                 const idByName = {};
                 personsGroup.children.forEach((child) => {
-                    const match = child.uri.match(/PersonID=(\d+)/);
+                    const match = child.uri.match(/\/people\/view\/(\d+)/);
                     if (match) idByName[child.text.split(" ")[0]] = match[1];
                 });
 
