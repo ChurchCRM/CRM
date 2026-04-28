@@ -96,7 +96,7 @@ class Person extends BasePerson implements PhotoInterface
 
     public static function getViewURIForId(int $id): string
     {
-        return SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $id;
+        return SystemURLs::getRootPath() . '/people/view/' . $id;
     }
 
     public function getViewURI(): string

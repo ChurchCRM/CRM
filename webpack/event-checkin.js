@@ -129,7 +129,7 @@ function displayPersonDetails(element, person) {
   }
 
   if (person?.objid) {
-    const personViewUrl = `PersonView.php?PersonID=${person.objid}`;
+    const personViewUrl = `/people/view/${person.objid}`;
 
     // Compact inline display with name and check icon
     const html =
@@ -328,7 +328,7 @@ function buildMemberCard(member, eventId) {
 
   // Make the name a link to PersonView, matching the bottom "People Checked In"
   // table. text-reset + text-decoration-none keep the visual weight unchanged.
-  const personUrl = `${window.CRM.root}/PersonView.php?PersonID=${member.personId}`;
+  const personUrl = `${window.CRM.root}/people/view/${member.personId}`;
 
   const html =
     '<div class="d-flex align-items-center justify-content-between p-2 border rounded roster-member" data-person-id="' +

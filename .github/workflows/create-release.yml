@@ -1,19 +1,33 @@
-name: Create Release
+name: Release & Start Next
 
-# Manually-triggered release workflow. Takes the zip built by a successful
-# "Build, Test and Package" run on master and publishes it as a GitHub Release
-# with the tag and name you specify. Use this to cut a release (or RC) whenever
-# you're ready — not every master merge is a release.
+# End-of-cycle one-click flow:
+#
+#   1. publish    — finds the latest successful master Build/Test/Package run,
+#                   downloads its ChurchCRM-<version>.zip, and creates a
+#                   GitHub Release (draft by default). The tag is auto-
+#                   detected from package.json on that build's commit, so you
+#                   don't retype the version.
+#
+#   2. start_next — chains into start-release.yml (reusable) to bump master
+#                   to the version you typed in `next_version` and open the
+#                   "Start <next> release" PR.
+#
+# Review the draft release + the bump PR. If happy, click "Publish release"
+# on GitHub and merge the PR.
+#
+# For mid-cycle re-bumps (e.g. patch → minor because a feature landed) run
+# the standalone "Start New Release" workflow directly — it remains the
+# right tool for that scope change.
 
 on:
   workflow_dispatch:
     inputs:
-      tag:
-        description: 'Git tag and release title, e.g. 8.0.0 or 8.0.0-rc1'
+      next_version:
+        description: 'Next version to start AFTER this release (e.g. 7.2.4 patch, 7.3.0 minor, 8.0.0 major). The current version being released is auto-detected from package.json on master.'
         required: true
         type: string
       prerelease:
-        description: 'Mark as pre-release (tick this for RCs / betas)'
+        description: 'Mark the release being published as pre-release (RCs / betas)'
         required: false
         type: boolean
         default: false
@@ -23,12 +37,19 @@ on:
         type: boolean
         default: true
       run_id:
-        description: 'Optional: specific Build, Test and Package run ID to release from. Leave blank for the latest successful master build. To find it: open the run in Actions and copy the number from the URL (e.g. /actions/runs/24362759265 → 24362759265).'
+        description: 'Optional: specific Build/Test/Package run ID to release from. Leave blank for the latest successful master build.'
+        required: false
+        type: string
+      release_version_override:
+        description: 'Optional: override the auto-detected release tag. Leave blank to use package.json on the source build commit.'
         required: false
         type: string
 
 jobs:
-  release:
+  # ───────────────────────────────────────────────────────────────────
+  # Publish the CURRENT version as a GitHub Release.
+  # ───────────────────────────────────────────────────────────────────
+  publish:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -39,6 +60,9 @@ jobs:
       # "fatal: not a git repository".
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
+    outputs:
+      release_tag: ${{ steps.tag.outputs.tag }}
+      release_url: ${{ steps.release.outputs.release_url }}
     steps:
       - name: Resolve source build run
         id: run
@@ -74,6 +98,57 @@ jobs:
 
           echo "Releasing from run #$run_id (commit $commit)"
 
+      - name: Resolve release tag
+        id: tag
+        env:
+          INPUT_OVERRIDE: ${{ inputs.release_version_override }}
+          NEXT_VERSION: ${{ inputs.next_version }}
+          COMMIT: ${{ steps.run.outputs.commit }}
+        run: |
+          set -euo pipefail
+
+          if [ -n "$INPUT_OVERRIDE" ]; then
+            tag="$INPUT_OVERRIDE"
+            echo "Using explicit release_version_override=$tag from workflow input."
+          else
+            # Read package.json at the source build's commit. Avoids checking
+            # out the whole tree just to inspect one file.
+            pkg_b64=$(gh api "repos/$GH_REPO/contents/package.json?ref=$COMMIT" --jq '.content')
+            tag=$(echo "$pkg_b64" | base64 -d | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>console.log(JSON.parse(s).version))")
+            if [ -z "$tag" ]; then
+              echo "::error::Could not auto-detect version from package.json at $COMMIT. Pass release_version_override explicitly."
+              exit 1
+            fi
+            echo "Auto-detected tag=$tag from package.json at $COMMIT."
+          fi
+
+          # Sanity: next_version must differ from the tag we're about to release.
+          if [ "$tag" = "$NEXT_VERSION" ]; then
+            echo "::error::next_version ($NEXT_VERSION) matches the version being released ($tag). Pick a higher version for next_version."
+            exit 1
+          fi
+
+          # Suggestion table (visibility for patch/minor/major decision).
+          BASE="${tag%%-*}"
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$BASE"
+          NEXT_PATCH="$MAJOR.$MINOR.$((PATCH+1))"
+          NEXT_MINOR="$MAJOR.$((MINOR+1)).0"
+          NEXT_MAJOR="$((MAJOR+1)).0.0"
+
+          {
+            echo "## Version check"
+            echo ""
+            echo "| Role | Version |"
+            echo "|---|---|"
+            echo "| Releasing now           | \`$tag\` |"
+            echo "| Next version (typed)    | \`$NEXT_VERSION\` |"
+            echo "| Suggested next patch    | \`$NEXT_PATCH\` |"
+            echo "| Suggested next minor    | \`$NEXT_MINOR\` |"
+            echo "| Suggested next major    | \`$NEXT_MAJOR\` |"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+
       - name: Download release artifact
         id: artifact
         env:
@@ -102,7 +177,7 @@ jobs:
       - name: Create or update GitHub Release
         id: release
         env:
-          TAG: ${{ inputs.tag }}
+          TAG: ${{ steps.tag.outputs.tag }}
           TARGET_COMMIT: ${{ steps.run.outputs.commit }}
           ZIP_NAME: ${{ steps.artifact.outputs.zip_name }}
           IS_DRAFT: ${{ inputs.draft }}
@@ -130,10 +205,10 @@ jobs:
           release_url=$(gh release view "$TAG" --json url --jq .url)
           echo "release_url=$release_url" >> "$GITHUB_OUTPUT"
 
-      - name: Summary
+      - name: Publish summary
         if: always()
         env:
-          TAG: ${{ inputs.tag }}
+          TAG: ${{ steps.tag.outputs.tag }}
           IS_DRAFT: ${{ inputs.draft }}
           IS_PRERELEASE: ${{ inputs.prerelease }}
           RUN_ID: ${{ steps.run.outputs.run_id }}
@@ -158,3 +233,17 @@ jobs:
               echo "### [Open release page]($RELEASE_URL)"
             fi
           } >> "$GITHUB_STEP_SUMMARY"
+
+  # ───────────────────────────────────────────────────────────────────
+  # Bump master to the next version + open "Start <next> release" PR.
+  # Reuses start-release.yml so the bump logic lives in one place.
+  # ───────────────────────────────────────────────────────────────────
+  start_next:
+    needs: publish
+    if: success()
+    uses: ./.github/workflows/start-release.yml
+    with:
+      version: ${{ inputs.next_version }}
+    permissions:
+      contents: write
+      pull-requests: write

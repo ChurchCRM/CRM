@@ -182,7 +182,7 @@ if ($bCanManageGroups) {
                 <div class="list-group-item p-3 ss-member" data-person-id="<?= $teacher->getId() ?>" data-role="Teacher">
                     <div class="row align-items-center">
                         <div class="col-auto">
-                            <a href="<?= Person::getViewURIForId($teacher->getId()) ?>">
+                            <a href="<?= $teacher->getViewURI() ?>">
                                 <span class="avatar avatar-md">
                                     <img data-image-entity-type="person" data-image-entity-id="<?= $teacher->getId() ?>"
                                          alt="<?= InputUtils::escapeAttribute($teacher->getFirstName() . ' ' . $teacher->getLastName()) ?>" />
@@ -190,7 +190,7 @@ if ($bCanManageGroups) {
                             </a>
                         </div>
                         <div class="col">
-                            <a href="<?= Person::getViewURIForId($teacher->getId()) ?>">
+                            <a href="<?= $teacher->getViewURI() ?>">
                                 <strong><?= InputUtils::escapeHTML($teacher->getFirstName() . ' ' . $teacher->getLastName()) ?></strong>
                             </a>
                             <div class="text-muted small"><?= gettext('Teacher') ?></div>

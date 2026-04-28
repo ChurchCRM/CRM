@@ -89,12 +89,12 @@ describe('Community Plugin Lifecycle', () => {
         cy.get('#LastName').type(lastName);
         cy.get('button[name="PersonSubmit"]').click();
 
-        cy.url().should('contain', 'PersonView.php');
+        cy.url().should('contain', '/people/view/');
         cy.contains(firstName).should('be.visible');
 
         // Capture person ID from redirect URL for cleanup
         cy.url().then((url) => {
-            const match = url.match(/PersonID=(\d+)/);
+            const match = url.match(/\/people\/view\/(\d+)/);
             if (match) {
                 createdPersonId = parseInt(match[1], 10);
             }

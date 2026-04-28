@@ -20,7 +20,7 @@ Structured development skills live in `.agents/skills/`. **Always consult the re
 | Database / ORM work | `database-operations.md` → `db-schema-migration.md` |
 | UI / frontend changes | `responsive-design-guidelines.md` → `bootstrap-5-migration.md` → `frontend-development.md` → `webpack-typescript.md` |
 | Datetime / timezone work | `timezone-handling.md` (event editor, calendar, kiosk, anything cross-tz) |
-| i18n / translations | `i18n-localization.md` → `frontend-development.md` |
+| i18n / translations | `i18n-localization.md` → `locale-translation-workflow.md` → `frontend-development.md` |
 | Security issue | `security-best-practices.md` → `authorization-security.md` |
 | New community plugin | `plugin-system.md` → `plugin-development.md` → `plugin-create.md` → `plugin-security-scan.md` |
 | Core plugin update (`src/plugins/core/*`) | `plugin-system.md` → `plugin-development.md` → `plugin-migration.md` |
