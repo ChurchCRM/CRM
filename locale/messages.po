@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-29 13:23+0000\n"
+"POT-Creation-Date: 2026-04-29 13:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2002,6 +2002,9 @@ msgstr ""
 msgid "ChurchCRM can send emails directly."
 msgstr ""
 
+msgid "ChurchCRM supports a plugin architecture for extending functionality."
+msgstr ""
+
 msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
 msgstr ""
 
@@ -2189,6 +2192,9 @@ msgid "Community Management Platform"
 msgstr ""
 
 msgid "Community Plugins"
+msgstr ""
+
+msgid "Community plugins"
 msgstr ""
 
 #. Context: countries
@@ -2447,6 +2453,9 @@ msgid "Copyright"
 msgstr ""
 
 msgid "Core Plugins"
+msgstr ""
+
+msgid "Core plugins"
 msgstr ""
 
 #. Context: countries
@@ -3355,6 +3364,9 @@ msgid "Each country produces its own calendar row in the sidebar. Use the per-ca
 msgstr ""
 
 msgid "Each person can have their own email and mobile number."
+msgstr ""
+
+msgid "Each plugin requires a"
 msgstr ""
 
 msgid "Each row is one person. People in the same family share a FamilyID. Leave columns blank when you have no value for them."
@@ -8324,6 +8336,9 @@ msgstr ""
 msgid "Pledges and Payments"
 msgstr ""
 
+msgid "Plugin Development"
+msgstr ""
+
 msgid "Plugin Development Docs"
 msgstr ""
 
@@ -9555,6 +9570,9 @@ msgstr ""
 msgid "Share this URL with family members to verify their information"
 msgstr ""
 
+msgid "Shipped with ChurchCRM."
+msgstr ""
+
 msgid "Show Family Head of House Names"
 msgstr ""
 
@@ -10321,6 +10339,9 @@ msgid "These plugins have been reviewed and approved by the ChurchCRM maintainer
 msgstr ""
 
 msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
+msgstr ""
+
+msgid "Third-party extensions."
 msgstr ""
 
 msgid "This Family is Inactive"
@@ -12067,6 +12088,9 @@ msgid "kilometers"
 msgstr ""
 
 msgid "loading"
+msgstr ""
+
+msgid "manifest."
 msgstr ""
 
 msgid "member"
