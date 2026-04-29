@@ -148,7 +148,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <i class="ti ti-alert-triangle me-2 fs-3"></i>
         <div class="flex-grow-1">
             <strong><?= gettext('This event is inactive.') ?></strong>
-            <div class="small text-muted">
+            <div class="small text-body-secondary">
                 <?= gettext('Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in.') ?>
             </div>
         </div>

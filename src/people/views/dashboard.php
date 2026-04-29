@@ -23,7 +23,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </div>
                         <div class="col">
                             <div class="fw-medium text-body"><?= $familyCount['familyCount'] ?></div>
-                            <div class="text-muted"><?= gettext('Families') ?></div>
+                            <div class="text-body-secondary"><?= gettext('Families') ?></div>
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </div>
                         <div class="col">
                             <div class="fw-medium text-body"><?= $personCount ?></div>
-                            <div class="text-muted"><?= gettext('People') ?></div>
+                            <div class="text-body-secondary"><?= gettext('People') ?></div>
                         </div>
                     </div>
                 </div>
@@ -58,7 +58,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </div>
                         <div class="col">
                             <div class="fw-medium text-body"><?= $groupStats['sundaySchoolkids'] ?></div>
-                            <div class="text-muted"><?= gettext('Sunday School Kids') ?></div>
+                            <div class="text-body-secondary"><?= gettext('Sunday School Kids') ?></div>
                         </div>
                     </div>
                 </div>
@@ -76,7 +76,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </div>
                         <div class="col">
                             <div class="fw-medium text-body"><?= $groupStats['groups'] ?></div>
-                            <div class="text-muted"><?= gettext('Groups') ?></div>
+                            <div class="text-body-secondary"><?= gettext('Groups') ?></div>
                         </div>
                     </div>
                 </div>
@@ -186,7 +186,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                             <div class="progress flex-grow-1 me-2" style="height:6px;">
                                                 <div class="progress-bar bg-primary" style="width:<?= $pct ?>%"></div>
                                             </div>
-                                            <span class="text-muted small" style="min-width:2.5rem;"><?= $pct ?>%</span>
+                                            <span class="text-body-secondary small" style="min-width:2.5rem;"><?= $pct ?>%</span>
                                         </div>
                                     </td>
                                     <td class="text-end">
@@ -232,7 +232,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                             <div class="progress flex-grow-1 me-2" style="height:6px;">
                                                 <div class="progress-bar bg-success" style="width:<?= $pct ?>%"></div>
                                             </div>
-                                            <span class="text-muted small" style="min-width:2.5rem;"><?= $pct ?>%</span>
+                                            <span class="text-body-secondary small" style="min-width:2.5rem;"><?= $pct ?>%</span>
                                         </div>
                                     </td>
                                     <td class="text-end">
@@ -257,29 +257,29 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
                 <div class="list-group list-group-flush">
                     <a href="<?= $sRootPath ?>/members/self-register.php" class="list-group-item list-group-item-action d-flex align-items-center">
-                        <i class="fa-solid fa-user-clock fa-fw text-muted me-3"></i>
+                        <i class="fa-solid fa-user-clock fa-fw text-body-secondary me-3"></i>
                         <div>
                             <div class="fw-medium"><?= gettext('Self Registration Report') ?></div>
-                            <div class="text-muted small"><?= gettext('List families created via self registration') ?></div>
+                            <div class="text-body-secondary small"><?= gettext('List families created via self registration') ?></div>
                         </div>
-                        <i class="fa-solid fa-chevron-right ms-auto text-muted"></i>
+                        <i class="fa-solid fa-chevron-right ms-auto text-body-secondary"></i>
                     </a>
 
                     <a href="<?= $sRootPath ?>/DirectoryReports.php" class="list-group-item list-group-item-action d-flex align-items-center">
-                        <i class="fa-solid fa-address-book fa-fw text-muted me-3"></i>
+                        <i class="fa-solid fa-address-book fa-fw text-body-secondary me-3"></i>
                         <div>
                             <div class="fw-medium"><?= gettext('People Directory') ?></div>
-                            <div class="text-muted small"><?= gettext('Printable directory of all people, grouped by family') ?></div>
+                            <div class="text-body-secondary small"><?= gettext('Printable directory of all people, grouped by family') ?></div>
                         </div>
-                        <i class="fa-solid fa-chevron-right ms-auto text-muted"></i>
+                        <i class="fa-solid fa-chevron-right ms-auto text-body-secondary"></i>
                     </a>
                     <a href="<?= $sRootPath ?>/LettersAndLabels.php" class="list-group-item list-group-item-action d-flex align-items-center">
-                        <i class="fa-solid fa-envelope-open-text fa-fw text-muted me-3"></i>
+                        <i class="fa-solid fa-envelope-open-text fa-fw text-body-secondary me-3"></i>
                         <div>
                             <div class="fw-medium"><?= gettext('Letters & Mailing Labels') ?></div>
-                            <div class="text-muted small"><?= gettext('Generate letters and mailing labels') ?></div>
+                            <div class="text-body-secondary small"><?= gettext('Generate letters and mailing labels') ?></div>
                         </div>
-                        <i class="fa-solid fa-chevron-right ms-auto text-muted"></i>
+                        <i class="fa-solid fa-chevron-right ms-auto text-body-secondary"></i>
                     </a>
                 </div>
             </div>
@@ -314,7 +314,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         </div>
                                     </td>
                                     <td class="text-end"><strong><?= $count ?></strong></td>
-                                    <td class="text-end text-muted"><?= $pct ?>%</td>
+                                    <td class="text-end text-body-secondary"><?= $pct ?>%</td>
                                 </tr>
                             <?php endforeach; ?>
                             <tr class="table-light">

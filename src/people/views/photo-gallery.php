@@ -115,10 +115,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <?php if (empty($peopleData)): ?>
             <div class="empty">
                 <div class="empty-icon">
-                    <i class="ti ti-camera-off fs-1 text-muted"></i>
+                    <i class="ti ti-camera-off fs-1 text-body-secondary"></i>
                 </div>
                 <p class="empty-title"><?= gettext('No people found') ?></p>
-                <p class="empty-subtitle text-muted">
+                <p class="empty-subtitle text-body-secondary">
                     <?= gettext('No people match your current filters.') ?>
                 </p>
                 <div class="empty-action">
@@ -166,7 +166,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         <?= InputUtils::escapeHTML($person->getLastName()) ?>
                                     </a>
                                 </div>
-                                <div class="text-muted small mt-1">
+                                <div class="text-body-secondary small mt-1">
                                     <?php if ($person->getClsId() && isset($classificationMap[$person->getClsId()])): ?>
                                         <?= InputUtils::escapeHTML($classificationMap[$person->getClsId()]) ?>
                                     <?php else: ?>

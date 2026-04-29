@@ -63,16 +63,16 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                         }
                         ?>
                         <ul class="list-unstyled mb-0">
-                            <li class="mb-1"><i class="fa <?= $genderClass ?> me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= $genderText ?></li>
-                            <li class="mb-1"><i class="fa-solid fa-id-card me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= InputUtils::escapeHTML(gettext($sClassName)) ?></li>
+                            <li class="mb-1"><i class="fa <?= $genderClass ?> me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= $genderText ?></li>
+                            <li class="mb-1"><i class="fa-solid fa-id-card me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= InputUtils::escapeHTML(gettext($sClassName)) ?></li>
                             <?php if (!empty($sFamRole)) : ?>
-                            <li class="mb-1"><i class="fa-solid fa-users me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= InputUtils::escapeHTML(gettext($sFamRole)) ?></li>
+                            <li class="mb-1"><i class="fa-solid fa-users me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= InputUtils::escapeHTML(gettext($sFamRole)) ?></li>
                             <?php endif; ?>
                             <?php if ($per_MembershipDate) : ?>
-                            <li class="mb-1"><i class="fa-solid fa-calendar-check me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= gettext('Since') ?> <?= DateTimeUtils::formatDate($per_MembershipDate, false) ?></li>
+                            <li class="mb-1"><i class="fa-solid fa-calendar-check me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= gettext('Since') ?> <?= DateTimeUtils::formatDate($per_MembershipDate, false) ?></li>
                             <?php endif; ?>
                             <?php if ($sEnvelope !== gettext('Not assigned')) : ?>
-                            <li class="mb-1"><i class="fa-solid fa-envelope me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= gettext('Envelope') ?> #<?= $sEnvelope ?></li>
+                            <li class="mb-1"><i class="fa-solid fa-envelope me-2 text-body-secondary" style="width: 1rem; text-align: center;"></i><?= gettext('Envelope') ?> #<?= $sEnvelope ?></li>
                             <?php endif; ?>
                         </ul>
                     </div>
@@ -90,20 +90,20 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                 <!-- Personal Information -->
                 <?php if ($dBirthDate || (!SystemConfig::getBooleanValue('bHideFriendDate') && $per_FriendDate !== '')) : ?>
                 <div class="mb-3">
-                    <h6 class="text-muted mb-2"><i class="fa-solid fa-user me-1"></i><?= gettext('Personal') ?></h6>
+                    <h6 class="text-body-secondary mb-2"><i class="fa-solid fa-user me-1"></i><?= gettext('Personal') ?></h6>
                     <ul class="list-unstyled ms-3">
                         <?php if ($dBirthDate) : ?>
                         <li class="mb-2">
-                            <i class="fa-solid fa-cake-candles me-2 text-muted"></i>
+                            <i class="fa-solid fa-cake-candles me-2 text-body-secondary"></i>
                             <?= $dBirthDate ?>
                             <?php if (!$person->hideAge()) : ?>
-                                <span class="text-muted">(<?= $person->getAge() ?>)</span>
+                                <span class="text-body-secondary">(<?= $person->getAge() ?>)</span>
                             <?php endif; ?>
                         </li>
                         <?php endif; ?>
                         <?php if (!SystemConfig::getBooleanValue('bHideFriendDate') && $per_FriendDate !== '') : ?>
                         <li class="mb-2">
-                            <i class="fa-solid fa-handshake me-2 text-muted"></i>
+                            <i class="fa-solid fa-handshake me-2 text-body-secondary"></i>
                             <?= gettext('Friend Date') ?>: <?= DateTimeUtils::formatDate($per_FriendDate, false) ?>
                         </li>
                         <?php endif; ?>
@@ -114,14 +114,14 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                 <!-- Phone Numbers -->
                 <?php if ($sCellPhone || $sHomePhone || $sWorkPhone) : ?>
                 <div class="mb-3">
-                    <h6 class="text-muted mb-2"><i class="fa-solid fa-phone me-1"></i><?= gettext('Phone') ?></h6>
+                    <h6 class="text-body-secondary mb-2"><i class="fa-solid fa-phone me-1"></i><?= gettext('Phone') ?></h6>
                     <ul class="list-unstyled ms-3">
                         <?php if ($sCellPhone) : ?>
                         <li class="mb-2">
-                            <i class="fa-solid fa-mobile-screen me-2 text-muted"></i>
+                            <i class="fa-solid fa-mobile-screen me-2 text-body-secondary"></i>
                             <a href="tel:<?= InputUtils::escapeAttribute($sCellPhoneUnformatted) ?>"><?= $sCellPhone ?></a>
                             <a href="sms:<?= InputUtils::escapeAttribute(preg_replace('/[^\d+]/', '', $sCellPhoneUnformatted)) ?>"
-                               class="ms-1 text-muted" title="<?= gettext('Send text message') ?>">
+                               class="ms-1 text-body-secondary" title="<?= gettext('Send text message') ?>">
                                 <i class="fa-solid fa-comment-sms"></i>
                             </a>
                             <button class="btn btn-sm btn-ghost-secondary ms-1 copy-phone-btn" type="button"
@@ -129,31 +129,31 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                     title="<?= gettext('Copy to clipboard') ?>">
                                 <i class="fa-solid fa-copy"></i>
                             </button>
-                            <small class="text-muted">(<?= gettext('Mobile') ?>)</small>
+                            <small class="text-body-secondary">(<?= gettext('Mobile') ?>)</small>
                         </li>
                         <?php endif; ?>
                         <?php if ($sHomePhone) : ?>
                         <li class="mb-2">
-                            <i class="fa-solid fa-house me-2 text-muted"></i>
+                            <i class="fa-solid fa-house me-2 text-body-secondary"></i>
                             <a href="tel:<?= InputUtils::escapeAttribute($sHomePhoneUnformatted) ?>"><?= $sHomePhone ?></a>
                             <button class="btn btn-sm btn-ghost-secondary ms-1 copy-phone-btn" type="button"
                                     data-phone="<?= InputUtils::escapeAttribute($sHomePhone) ?>"
                                     title="<?= gettext('Copy to clipboard') ?>">
                                 <i class="fa-solid fa-copy"></i>
                             </button>
-                            <small class="text-muted">(<?= gettext('Home') ?>)</small>
+                            <small class="text-body-secondary">(<?= gettext('Home') ?>)</small>
                         </li>
                         <?php endif; ?>
                         <?php if ($sWorkPhone) : ?>
                         <li class="mb-2">
-                            <i class="fa-solid fa-briefcase me-2 text-muted"></i>
+                            <i class="fa-solid fa-briefcase me-2 text-body-secondary"></i>
                             <a href="tel:<?= InputUtils::escapeAttribute($sWorkPhoneUnformatted) ?>"><?= $sWorkPhone ?></a>
                             <button class="btn btn-sm btn-ghost-secondary ms-1 copy-phone-btn" type="button"
                                     data-phone="<?= InputUtils::escapeAttribute($sWorkPhone) ?>"
                                     title="<?= gettext('Copy to clipboard') ?>">
                                 <i class="fa-solid fa-copy"></i>
                             </button>
-                            <small class="text-muted">(<?= gettext('Work') ?>)</small>
+                            <small class="text-body-secondary">(<?= gettext('Work') ?>)</small>
                         </li>
                         <?php endif; ?>
                     </ul>
@@ -163,11 +163,11 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                 <!-- Email -->
                 <?php if (!empty($sEmail) || !empty($per_WorkEmail)) : ?>
                 <div class="mb-3">
-                    <h6 class="text-muted mb-2"><i class="fa-solid fa-envelope me-1"></i><?= gettext('Email') ?></h6>
+                    <h6 class="text-body-secondary mb-2"><i class="fa-solid fa-envelope me-1"></i><?= gettext('Email') ?></h6>
                     <ul class="list-unstyled ms-3">
                         <?php if (!empty($sEmail)) : ?>
                         <li class="mb-2">
-                            <i class="fa-solid fa-at me-2 text-muted"></i>
+                            <i class="fa-solid fa-at me-2 text-body-secondary"></i>
                             <a href="mailto:<?= InputUtils::escapeAttribute($sUnformattedEmail) ?>" target="_blank" rel="noopener noreferrer"><?= $sEmail ?></a>
                             <button class="btn btn-sm btn-ghost-secondary ms-1 copy-email-btn" type="button"
                                     data-email="<?= InputUtils::escapeAttribute($sUnformattedEmail) ?>"
@@ -178,14 +178,14 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                         <?php endif; ?>
                         <?php if (!empty($per_WorkEmail)) : ?>
                         <li class="mb-2">
-                            <i class="fa-solid fa-briefcase me-2 text-muted"></i>
+                            <i class="fa-solid fa-briefcase me-2 text-body-secondary"></i>
                             <a href="mailto:<?= InputUtils::escapeAttribute($per_WorkEmail) ?>" target="_blank" rel="noopener noreferrer"><?= $per_WorkEmail ?></a>
                             <button class="btn btn-sm btn-ghost-secondary ms-1 copy-email-btn" type="button"
                                     data-email="<?= InputUtils::escapeAttribute($per_WorkEmail) ?>"
                                     title="<?= gettext('Copy to clipboard') ?>">
                                 <i class="fa-solid fa-copy"></i>
                             </button>
-                            <small class="text-muted">(<?= gettext('Work') ?>)</small>
+                            <small class="text-body-secondary">(<?= gettext('Work') ?>)</small>
                         </li>
                         <?php endif; ?>
                     </ul>
@@ -195,7 +195,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                 <!-- Social Media -->
                 <?php if (strlen($per_Facebook) > 0 || strlen($per_Twitter) > 0 || strlen($per_LinkedIn) > 0) : ?>
                 <div class="mb-3">
-                    <h6 class="text-muted mb-2"><i class="fa-solid fa-share-nodes me-1"></i><?= gettext('Social Media') ?></h6>
+                    <h6 class="text-body-secondary mb-2"><i class="fa-solid fa-share-nodes me-1"></i><?= gettext('Social Media') ?></h6>
                     <ul class="list-unstyled ms-3">
                         <?php if (strlen($per_Facebook) > 0) : ?>
                         <li class="mb-2">
@@ -247,7 +247,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                             $displayLink = "tel:" . $sanitizedPhone;
                         }
                         $customFieldsHtml .= '<li class="mb-2">';
-                        $customFieldsHtml .= '<i class="' . $displayIcon . ' me-2 text-muted"></i>';
+                        $customFieldsHtml .= '<i class="' . $displayIcon . ' me-2 text-body-secondary"></i>';
                         $temp_string = nl2br(CustomFieldUtils::display($type_ID, $currentData, $custom_Special));
                         if ($displayLink) {
                             $customFieldsHtml .= '<strong>' . InputUtils::escapeHTML($custom_Name) . ':</strong> <a href="' . InputUtils::escapeAttribute($displayLink) . '">' . $temp_string . '</a>';
@@ -259,7 +259,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                 }
                 if ($hasCustomFields) : ?>
                 <div class="mb-3">
-                    <h6 class="text-muted mb-2"><i class="fa-solid fa-circle-info me-1"></i><?= gettext('Additional Information') ?></h6>
+                    <h6 class="text-body-secondary mb-2"><i class="fa-solid fa-circle-info me-1"></i><?= gettext('Additional Information') ?></h6>
                     <ul class="list-unstyled ms-3">
                         <?= $customFieldsHtml ?>
                     </ul>
@@ -275,7 +275,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
             </div>
             <div class="card-body">
                 <?php if (count($assignedPersonProperties) === 0) : ?>
-                    <div class="text-center text-muted py-3">
+                    <div class="text-center text-body-secondary py-3">
                         <i class="fa-solid fa-tags fa-2x mb-2 d-block opacity-50"></i>
                         <p class="mb-0"><?= gettext('No properties assigned.') ?></p>
                     </div>
@@ -292,7 +292,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                         <span class="badge bg-secondary-lt text-secondary ms-1"><?= InputUtils::escapeHTML($propType->getPrtName()) ?></span>
                                     <?php } ?>
                                     <?php if (!empty($value)) { ?>
-                                        <small class="text-muted d-block"><?= InputUtils::escapeHTML($value) ?></small>
+                                        <small class="text-body-secondary d-block"><?= InputUtils::escapeHTML($value) ?></small>
                                     <?php } ?>
                                 </div>
                                 <?php if ($bOkToEdit) { ?>
@@ -463,7 +463,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
             <div class="card-footer">
                 <div class="d-flex align-items-start gap-3">
                     <div>
-                        <i class="fa-solid fa-location-dot me-1 text-muted"></i>
+                        <i class="fa-solid fa-location-dot me-1 text-body-secondary"></i>
                         <a href="https://maps.google.com/?q=<?= urlencode($plaintextMailingAddress) ?>" target="_blank" rel="noopener noreferrer"><?= $formattedMailingAddress ?></a>
                         <?php
                         $personDirectionsUrl = $person->getDirectionsUrl();
@@ -562,7 +562,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                             }
                             ?>
                             <div class="timeline-filters d-flex flex-wrap align-items-center gap-2 mt-3 mb-1" role="group" aria-label="<?= gettext('Timeline filters') ?>">
-                                <span class="text-muted small me-1"><i class="fa-solid fa-filter me-1"></i><?= gettext('Show:') ?></span>
+                                <span class="text-body-secondary small me-1"><i class="fa-solid fa-filter me-1"></i><?= gettext('Show:') ?></span>
                                 <button type="button" class="btn btn-sm btn-primary timeline-filter-chip active" data-filter="notes">
                                     <i class="fa-solid fa-note-sticky me-1"></i><?= gettext('Notes') ?>
                                     <span class="badge bg-white text-primary ms-1"><?= $timelineCounts['notes'] ?></span>
@@ -623,7 +623,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                                 <?php if (!$item['slim'] && !empty($item['text'])) { ?>
                                                     <div class="text-secondary mt-1" style="white-space: pre-wrap; font-size: 0.875rem;"><?= $item['text'] ?></div>
                                                 <?php } ?>
-                                                <small class="text-muted"><i class="fa-solid fa-clock me-1"></i><?= $item['datetime'] ?></small>
+                                                <small class="text-body-secondary"><i class="fa-solid fa-clock me-1"></i><?= $item['datetime'] ?></small>
                                             </div>
                                         </div>
                                     </div>
@@ -637,7 +637,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                         $sAssignedGroups = ',';
                         if (count($assignedGroupsData) === 0) {
                         ?>
-                            <div class="text-center text-muted py-4">
+                            <div class="text-center text-body-secondary py-4">
                                 <i class="fa-solid fa-users fa-2x mb-2 d-block opacity-50"></i>
                                 <p class="mb-1"><?= gettext('No group assignments yet.') ?></p>
                                 <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) { ?>
@@ -682,7 +682,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                                             if ((int)$type_ID === 11) {
                                                                 $prop_Special = null;
                                                             }
-                                                            echo '<br><small class="text-muted"><strong>' . InputUtils::escapeHTML($prop_Name) . '</strong>: ' . CustomFieldUtils::display($type_ID, $currentData, $prop_Special) . '</small>';
+                                                            echo '<br><small class="text-body-secondary"><strong>' . InputUtils::escapeHTML($prop_Name) . '</strong>: ' . CustomFieldUtils::display($type_ID, $currentData, $prop_Special) . '</small>';
                                                         }
                                                     }
                                                 } ?>
@@ -712,7 +712,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                         $assignedVolIDs = [];
                         if (count($assignedVolunteerOppsData) === 0) {
                         ?>
-                            <div class="text-center text-muted py-4">
+                            <div class="text-center text-body-secondary py-4">
                                 <i class="fa-solid fa-handshake-angle fa-2x mb-2 d-block opacity-50"></i>
                                 <p class="mb-1"><?= gettext('No volunteer opportunity assignments yet.') ?></p>
                             </div>
