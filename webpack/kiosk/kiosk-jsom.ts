@@ -1464,7 +1464,7 @@ function submitGuestRegistration(): void {
         firstName: data.FirstName,
         classRole: "",
         personId: data.Id,
-        status: 1,
+        status: data.status, // 1 = checked in (server confirmed check-in)
         gender: data.Gender,
         hasPhoto: data.hasPhoto,
         age: data.age,
