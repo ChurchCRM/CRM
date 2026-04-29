@@ -107,11 +107,13 @@ class KioskAssignment extends BaseKioskAssignment
             $groupMemberIds = array_unique($groupMemberIds);
         }
 
-        // Find attendees currently checked in (no checkout) who are not group members
+        // Find attendees currently checked in (no checkout) who are not group members.
+        // Use joinWithPerson() to eager-load Person objects in one query (avoids N+1).
         $query = EventAttendQuery::create()
             ->filterByEventId($event->getId())
             ->filterByCheckoutDate(null)
-            ->filterByCheckinDate(null, Criteria::NOT_EQUAL);
+            ->filterByCheckinDate(null, Criteria::NOT_EQUAL)
+            ->joinWithPerson();
 
         if (!empty($groupMemberIds)) {
             $query->filterByPersonId($groupMemberIds, Criteria::NOT_IN);
@@ -121,7 +123,7 @@ class KioskAssignment extends BaseKioskAssignment
 
         $guests = [];
         foreach ($attendees as $attend) {
-            $person = PersonQuery::create()->findOneById($attend->getPersonId());
+            $person = $attend->getPerson();
             if ($person !== null) {
                 $guests[] = $person;
             }
