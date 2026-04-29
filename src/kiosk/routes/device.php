@@ -405,7 +405,7 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         $person = new Person();
         $person->setFirstName($firstName);
         $person->setLastName($lastName);
-        $person->setDateEntered(date('Y-m-d H:i:s'));
+        $person->setDateEntered(DateTimeUtils::getNowDateTime());
         $person->setEnteredBy(0); // 0 = kiosk entry
 
         // Optional demographic fields

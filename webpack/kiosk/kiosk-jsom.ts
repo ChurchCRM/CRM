@@ -1298,14 +1298,9 @@ function showGuestRegistrationModal(): void {
   const modalEl = document.getElementById("guestRegistrationModal");
   if (!modalEl) return;
 
-  // Reset form fields
-  (document.getElementById("guestFirstName") as HTMLInputElement).value = "";
-  (document.getElementById("guestLastName") as HTMLInputElement).value = "";
-  (document.getElementById("guestPhone") as HTMLInputElement).value = "";
-  (document.getElementById("guestEmail") as HTMLInputElement).value = "";
-  (document.getElementById("guestBirthYear") as HTMLInputElement).value = "";
-  (document.getElementById("guestBirthMonth") as HTMLSelectElement).value = "";
-  (document.getElementById("guestBirthDay") as HTMLInputElement).value = "";
+  // Reset all form fields in one call
+  const form = document.getElementById("guestRegistrationForm") as HTMLFormElement | null;
+  form?.reset();
 
   // Clear validation state
   modalEl.querySelectorAll(".is-invalid").forEach((el) => {

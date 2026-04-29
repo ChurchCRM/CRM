@@ -165,6 +165,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
       </div>
       <div class="modal-body">
         <div id="guestFormError" class="alert alert-danger" style="display:none;"></div>
+        <form id="guestRegistrationForm" novalidate>
         <div class="row g-3">
           <div class="col-md-6">
             <label class="form-label" for="guestFirstName"><?= gettext('First Name') ?> <span class="text-danger">*</span></label>
@@ -211,6 +212,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
             <input type="email" class="form-control" id="guestEmail" autocomplete="email" placeholder="<?= gettext('Email address') ?>">
           </div>
         </div>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
