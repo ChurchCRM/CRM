@@ -614,7 +614,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                                     </div>
                                                     <div class="d-flex align-items-center gap-1 ms-2 flex-shrink-0">
                                                         <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) { ?>
-                                                            <?php if (isset($item["editLink"])) { ?>
+                                                            <?php if (!empty($item["editLink"])) { ?>
                                                                 <a href="<?= $item["editLink"] ?>" class="btn btn-sm btn-ghost-primary" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen"></i></a>
                                                             <?php }
                                                             if (isset($item["deleteLink"])) {

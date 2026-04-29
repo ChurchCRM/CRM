@@ -401,7 +401,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                                                         <div class="dropdown">
                                                             <button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown" data-bs-display="static"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                                                             <div class="dropdown-menu dropdown-menu-end">
-                                                                <?php if (isset($item["editLink"])) { ?>
+                                                                <?php if (!empty($item["editLink"])) { ?>
                                                                     <a href="<?= $item["editLink"] ?>" class="dropdown-item"><i class="fa-solid fa-pen me-2"></i><?= gettext('Edit') ?></a>
                                                                 <?php }
                                                                 if (isset($item["deleteLink"])) {
