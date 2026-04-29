@@ -614,13 +614,18 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                                     </div>
                                                     <div class="d-flex align-items-center gap-1 ms-2 flex-shrink-0">
                                                         <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) { ?>
-                                                            <?php if (!empty($item["editLink"])) { ?>
-                                                                <a href="<?= $item["editLink"] ?>" class="btn btn-sm btn-ghost-primary" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen"></i></a>
-                                                            <?php }
-                                                            if (isset($item["deleteLink"])) {
-                                                                $noteId = str_replace('api-delete-note-', '', $item['deleteLink']); ?>
-                                                                <button type="button" class="btn btn-sm btn-ghost-danger delete-note-btn" data-note-id="<?= htmlspecialchars($noteId) ?>" title="<?= gettext('Delete') ?>"><i class="fa-solid fa-trash"></i></button>
-                                                            <?php } ?>
+                                                            <div class="dropdown">
+                                                                <button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown" data-bs-display="static"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                                                <div class="dropdown-menu dropdown-menu-end">
+                                                                    <?php if (!empty($item["editLink"])) { ?>
+                                                                        <a href="<?= $item["editLink"] ?>" class="dropdown-item"><i class="fa-solid fa-pen me-2"></i><?= gettext('Edit') ?></a>
+                                                                    <?php }
+                                                                    if (isset($item["deleteLink"])) {
+                                                                        $noteId = str_replace('api-delete-note-', '', $item['deleteLink']); ?>
+                                                                        <button type="button" class="dropdown-item text-danger delete-note-btn" data-note-id="<?= htmlspecialchars($noteId) ?>"><i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?></button>
+                                                                    <?php } ?>
+                                                                </div>
+                                                            </div>
                                                         <?php } ?>
                                                     </div>
                                                 </div>
