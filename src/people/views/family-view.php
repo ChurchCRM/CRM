@@ -897,6 +897,26 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="deleteNoteModal" tabindex="-1" role="dialog" aria-labelledby="deleteNoteLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h4 class="modal-title" id="deleteNoteLabel"><?= gettext('Confirm Delete') ?></h4>
+            </div>
+            <div class="modal-body">
+                <p><?= gettext('Are you sure you want to delete this note?') ?></p>
+                <p><small class="text-muted"><?= gettext('This action cannot be undone.') ?></small></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteNoteBtn"><?= gettext('Delete') ?></button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 (function () {
     function initTimelineFilter(container) {
@@ -998,25 +1018,6 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
     });
 })();
 </script>
-
-<div class="modal fade" id="deleteNoteModal" tabindex="-1" role="dialog" aria-labelledby="deleteNoteLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                <h4 class="modal-title" id="deleteNoteLabel"><?= gettext('Confirm Delete') ?></h4>
-            </div>
-            <div class="modal-body">
-                <p><?= gettext('Are you sure you want to delete this note?') ?></p>
-                <p><small class="text-muted"><?= gettext('This action cannot be undone.') ?></small></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
-                <button type="button" class="btn btn-danger" id="confirmDeleteNoteBtn"><?= gettext('Delete') ?></button>
-            </div>
-        </div>
-    </div>
-</div>
 
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
