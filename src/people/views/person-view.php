@@ -402,7 +402,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                     <?php if ($bOkToEdit) { ?>
                     <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $fam_ID ?>" class="btn btn-sm btn-ghost-secondary" title="<?= gettext('Edit Family') ?>"><i class="fa-solid fa-pen"></i></a>
                     <?php } ?>
-                    <a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $person->getFamId() ?>" class="btn btn-sm btn-ghost-primary"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?= gettext('View') ?></a>
+                    <a href="<?= $person->getFamily()->getViewURI() ?>" class="btn btn-sm btn-ghost-primary"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?= gettext('View') ?></a>
                 </div>
             </div>
             <div style="overflow: visible;">

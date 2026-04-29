@@ -28,7 +28,7 @@ describe("UI Private Notes Timeline", () => {
                 const noteId = createResp.body.note.id;
 
                 // Admin visits person 1 page
-                cy.visit("/PersonView.php?PersonID=1");
+                cy.visit("/people/view/1");
                 cy.wait(1000);
 
                 // Navigate to timeline tab if needed
@@ -59,7 +59,7 @@ describe("UI Private Notes Timeline", () => {
                 const noteId = createResp.body.note.id;
 
                 // Admin visits person 1 page
-                cy.visit("/PersonView.php?PersonID=1");
+                cy.visit("/people/view/1");
                 cy.wait(1000);
 
                 // Navigate to timeline
@@ -116,7 +116,7 @@ describe("UI Private Notes Timeline", () => {
                 const noteId = createResp.body.note.id;
 
                 // Admin visits family 1 page
-                cy.visit("/FamilyView.php?FamilyID=1");
+                cy.visit("/people/family/1");
                 cy.wait(1000);
 
                 // Timeline should show placeholder
@@ -141,7 +141,7 @@ describe("UI Private Notes Timeline", () => {
             ).then((createResp) => {
                 const noteId = createResp.body.note.id;
 
-                cy.visit("/FamilyView.php?FamilyID=1");
+                cy.visit("/people/family/1");
                 cy.wait(1000);
 
                 // Should see full content
@@ -168,7 +168,7 @@ describe("UI Private Notes Timeline", () => {
             ).then((createResp) => {
                 const noteId = createResp.body.note.id;
 
-                cy.visit("/FamilyView.php?FamilyID=1");
+                cy.visit("/people/family/1");
                 cy.wait(1000);
 
                 // Private badge should display
