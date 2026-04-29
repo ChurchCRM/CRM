@@ -83,7 +83,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
 
         $result = [];
         foreach ($notes as $note) {
-            if ($note->isVisible($currentUser->getPersonId())) {
+            if ($note->isVisible($currentUser->getId())) {
                 $result[] = noteToArray($note);
             }
         }
@@ -126,7 +126,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
             return SlimUtils::renderErrorJSON($response, gettext('Note text is required'), [], 400);
         }
 
-        $private = !empty($input['private']) ? $currentUser->getPersonId() : 0;
+        $private = !empty($input['private']) ? 1 : 0;
 
         $note = new Note();
         $note->setPerId($person->getId());
@@ -188,7 +188,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
 
         $result = [];
         foreach ($notes as $note) {
-            if ($note->isVisible($currentUser->getPersonId())) {
+            if ($note->isVisible($currentUser->getId())) {
                 $result[] = noteToArray($note);
             }
         }
@@ -231,7 +231,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
             return SlimUtils::renderErrorJSON($response, gettext('Note text is required'), [], 400);
         }
 
-        $private = !empty($input['private']) ? $currentUser->getPersonId() : 0;
+        $private = !empty($input['private']) ? 1 : 0;
 
         $note = new Note();
         $note->setPerId(0);
@@ -272,7 +272,7 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
         $note = $request->getAttribute('note');
         $currentUser = AuthenticationManager::getCurrentUser();
 
-        if (!$note->isVisible($currentUser->getPersonId())) {
+        if (!$note->isVisible($currentUser->getId())) {
             return SlimUtils::renderErrorJSON($response, gettext('Note not found'), [], 404);
         }
 

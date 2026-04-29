@@ -136,7 +136,7 @@ class TimelineService
     public function noteToTimelineItem(Note $dbNote)
     {
         $item = null;
-        $isVisible = $dbNote->isVisible($this->currentUser->getPersonId());
+        $isVisible = $dbNote->isVisible($this->currentUser->getId());
 
         if ($isVisible) {
             $displayEditedBy = gettext('Unknown');
