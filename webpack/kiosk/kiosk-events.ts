@@ -92,3 +92,23 @@ $(document).on("hidden.bs.modal", "#checkinByModal", () => {
 $(document).on("click", "#cancelRefreshBtn", () => {
   kiosk.cancelScheduledRefresh();
 });
+
+// Guest registration FAB
+$(document).on("click", "#registerGuestBtn", (event) => {
+  event.preventDefault();
+  kiosk.showGuestRegistrationModal();
+});
+
+// Guest registration form submit
+$(document).on("click", "#guestRegisterSubmitBtn", (event) => {
+  event.preventDefault();
+  kiosk.submitGuestRegistration();
+});
+
+// Allow Enter key to submit the guest registration form
+$(document).on("keydown", "#guestRegistrationModal", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    kiosk.submitGuestRegistration();
+  }
+});
