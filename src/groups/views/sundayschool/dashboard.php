@@ -23,7 +23,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                     <div class="col">
                         <div class="fw-medium"><?= $classes ?></div>
-                        <div class="text-muted"><?= gettext('Classes') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Classes') ?></div>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                     <div class="col">
                         <div class="fw-medium"><?= $teachers ?></div>
-                        <div class="text-muted"><?= gettext('Teachers') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Teachers') ?></div>
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                     <div class="col">
                         <div class="fw-medium"><?= $kids ?></div>
-                        <div class="text-muted"><?= gettext('Students') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Students') ?></div>
                     </div>
                 </div>
             </div>
@@ -74,7 +74,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                     <div class="col">
                         <div class="fw-medium"><?= $families ?></div>
-                        <div class="text-muted"><?= gettext('Families') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Families') ?></div>
                     </div>
                 </div>
             </div>
@@ -91,7 +91,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                     <div class="col">
                         <div class="fw-medium"><?= $maleKids ?></div>
-                        <div class="text-muted"><?= gettext('Boys') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Boys') ?></div>
                     </div>
                 </div>
             </div>
@@ -108,7 +108,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                     <div class="col">
                         <div class="fw-medium"><?= $femaleKids ?></div>
-                        <div class="text-muted"><?= gettext('Girls') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Girls') ?></div>
                     </div>
                 </div>
             </div>
@@ -136,7 +136,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="text-secondary fw-bold mb-1">
                         <i class="ti ti-users me-1 text-blue"></i><?= gettext('1. Sunday School Class') ?>
                     </div>
-                    <div class="small text-muted">
+                    <div class="small text-body-secondary">
                         <?= gettext("A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles).") ?>
                     </div>
                 </div>
@@ -144,7 +144,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="text-secondary fw-bold mb-1">
                         <i class="ti ti-tags me-1 text-orange"></i><?= gettext('2. Event Type') ?>
                     </div>
-                    <div class="small text-muted">
+                    <div class="small text-body-secondary">
                         <?= gettext('An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience.') ?>
                     </div>
                 </div>
@@ -152,7 +152,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="text-secondary fw-bold mb-1">
                         <i class="ti ti-calendar me-1 text-green"></i><?= gettext('3. Event') ?>
                     </div>
-                    <div class="small text-muted">
+                    <div class="small text-body-secondary">
                         <?= gettext("A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against.") ?>
                     </div>
                 </div>
@@ -160,7 +160,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="text-secondary fw-bold mb-1">
                         <i class="ti ti-device-ipad me-1 text-purple"></i><?= gettext('4. Kiosk') ?>
                     </div>
-                    <div class="small text-muted">
+                    <div class="small text-body-secondary">
                         <?= gettext('A tablet assigned to one event. The kiosk pulls the event\'s linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display.') ?>
                     </div>
                 </div>

@@ -46,7 +46,7 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                     </div>
                     <div class="col">
                         <div class="fw-medium"><?= $userStats['total'] ?></div>
-                        <div class="text-muted"><?= gettext('Total Users') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Total Users') ?></div>
                     </div>
                 </div>
             </div>
@@ -63,7 +63,7 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                     </div>
                     <div class="col">
                         <div class="fw-medium"><?= $userStats['active'] ?></div>
-                        <div class="text-muted"><?= gettext('Active Users') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Active Users') ?></div>
                     </div>
                 </div>
             </div>
@@ -80,7 +80,7 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                     </div>
                     <div class="col">
                         <div class="fw-medium"><?= $userStats['locked'] ?></div>
-                        <div class="text-muted"><?= gettext('Locked Users') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Locked Users') ?></div>
                     </div>
                 </div>
             </div>
@@ -97,7 +97,7 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                     </div>
                     <div class="col">
                         <div class="fw-medium"><?= $userStats['twoFactor'] ?></div>
-                        <div class="text-muted"><?= gettext('2FA Enabled') ?></div>
+                        <div class="text-body-secondary"><?= gettext('2FA Enabled') ?></div>
                     </div>
                 </div>
             </div>
@@ -142,7 +142,7 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                                 <?php if ($user->getFailedLogins() > 0) { ?>
                                     <span class="badge text-white <?= $user->isLocked() ? 'bg-danger' : 'bg-warning' ?>"><?= $user->getFailedLogins() ?></span>
                                 <?php } else { ?>
-                                    <span class="text-muted">—</span>
+                                    <span class="text-body-secondary">—</span>
                                 <?php } ?>
                             </td>
                             <td class="text-center">

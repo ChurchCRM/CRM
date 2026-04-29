@@ -37,7 +37,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                     <div class="col">
                         <div class="h3 m-0"><?= $status['configured'] ? gettext('Configured') : gettext('Not Configured') ?></div>
-                        <div class="text-muted"><?= gettext('WebDAV Connection') ?></div>
+                        <div class="text-body-secondary"><?= gettext('WebDAV Connection') ?></div>
                     </div>
                 </div>
             </div>
@@ -54,7 +54,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                     <div class="col">
                         <div class="h3 m-0"><?= $status['autoBackupEnabled'] ? $status['autoInterval'] . 'h' : gettext('Disabled') ?></div>
-                        <div class="text-muted"><?= gettext('Auto-Backup Interval') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Auto-Backup Interval') ?></div>
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                     <div class="col">
                         <div class="h3 m-0"><?= !empty($status['lastBackup']) ? $status['lastBackup'] : gettext('Never') ?></div>
-                        <div class="text-muted"><?= gettext('Last Backup') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Last Backup') ?></div>
                     </div>
                 </div>
             </div>
@@ -92,7 +92,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </p>
         </div>
 
-        <p class="text-muted">
+        <p class="text-body-secondary">
             <i class="fa-solid fa-arrow-right me-1"></i>
             <?= gettext('Configure these settings in the') ?>
             <a href="<?= SystemURLs::getRootPath() ?>/plugins/management/external-backup">
@@ -113,7 +113,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <?php if (!empty($status['endpoint'])): ?>
                             <code><?= htmlspecialchars($status['endpoint'], ENT_QUOTES, 'UTF-8') ?></code>
                         <?php else: ?>
-                            <span class="text-muted"><?= gettext('Not configured') ?></span>
+                            <span class="text-body-secondary"><?= gettext('Not configured') ?></span>
                         <?php endif; ?>
                     </dd>
                 </dl>
@@ -125,7 +125,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <?php if ($status['autoInterval'] > 0): ?>
                             <?= sprintf(ngettext('%d hour', '%d hours', $status['autoInterval']), $status['autoInterval']) ?>
                         <?php else: ?>
-                            <span class="text-muted"><?= gettext('Disabled') ?></span>
+                            <span class="text-body-secondary"><?= gettext('Disabled') ?></span>
                         <?php endif; ?>
                     </dd>
 
@@ -134,7 +134,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <?php if (!empty($status['lastBackup'])): ?>
                             <?= htmlspecialchars($status['lastBackup'], ENT_QUOTES, 'UTF-8') ?>
                         <?php else: ?>
-                            <span class="text-muted"><?= gettext('No backups recorded') ?></span>
+                            <span class="text-body-secondary"><?= gettext('No backups recorded') ?></span>
                         <?php endif; ?>
                     </dd>
                 </dl>

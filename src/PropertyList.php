@@ -123,7 +123,7 @@ require_once __DIR__ . '/Include/Header.php';
             <tbody>
                 <?php if (empty($groups)): ?>
                 <tr>
-                    <td colspan="<?= $colCount ?>" class="text-center text-muted py-5">
+                    <td colspan="<?= $colCount ?>" class="text-center text-body-secondary py-5">
                         <i class="fa-solid fa-inbox fa-3x mb-3 d-block"></i>
                         <?= gettext('No properties defined yet') ?>
                         <?php if ($canManage): ?>
@@ -150,12 +150,12 @@ require_once __DIR__ . '/Include/Header.php';
                         <td>
                             <strong><?= InputUtils::escapeHTML($prop['pro_Name']) ?></strong>
                         </td>
-                        <td class="text-muted">
+                        <td class="text-body-secondary">
                             <?php if ($prop['pro_Description'] !== ''): ?>
                             ...<?= InputUtils::escapeHTML($prop['pro_Description']) ?>
                             <?php endif; ?>
                         </td>
-                        <td class="text-muted">
+                        <td class="text-body-secondary">
                             <?= InputUtils::escapeHTML($prop['pro_Prompt']) ?>
                         </td>
                         <?php if ($canManage): ?>

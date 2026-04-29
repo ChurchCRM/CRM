@@ -278,7 +278,7 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
         <i class="fa fa-cog fa-spin spinner-icon"></i>
         <h3><?= gettext('Applying System Update...') ?></h3>
         <p><?= gettext('Please do not close this window or refresh the page.') ?></p>
-        <p class="text-muted"><?= gettext('This may take several minutes.') ?></p>
+        <p class="text-body-secondary"><?= gettext('This may take several minutes.') ?></p>
     </div>
 </div>
 

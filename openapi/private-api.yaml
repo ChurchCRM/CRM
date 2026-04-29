@@ -2183,6 +2183,287 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  /donation-funds:
+    get:
+      tags:
+        - Finance
+      summary: 'List all donation funds (Finance role required)'
+      parameters:
+        -
+          name: activeOnly
+          in: query
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: 'Array of donation funds'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Finance role required'
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Finance
+      summary: 'Create a new donation fund (Finance role required)'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                  maxLength: 30
+                description:
+                  type: string
+                  maxLength: 100
+                active:
+                  type: boolean
+              type: object
+      responses:
+        '201':
+          description: 'Newly created fund'
+        '400':
+          description: 'Validation error (missing name or duplicate)'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Finance role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/donation-funds/{id}':
+    get:
+      tags:
+        - Finance
+      summary: 'Get a single donation fund (Finance role required)'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Donation fund object'
+        '404':
+          description: 'Fund not found'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Finance role required'
+      security:
+        -
+          ApiKeyAuth: []
+    put:
+      tags:
+        - Finance
+      summary: 'Update a donation fund (Finance role required)'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                name:
+                  type: string
+                  maxLength: 30
+                description:
+                  type: string
+                  maxLength: 100
+                active:
+                  type: boolean
+              type: object
+      responses:
+        '200':
+          description: 'Updated fund'
+        '400':
+          description: 'Validation error (blank or duplicate name)'
+        '404':
+          description: 'Fund not found'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Finance role required'
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - Finance
+      summary: 'Delete a donation fund (Finance role required)'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Deleted
+        '404':
+          description: 'Fund not found'
+        '409':
+          description: 'Fund is still referenced by one or more pledges'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Finance role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /fundraisers:
+    get:
+      tags:
+        - Finance
+      summary: 'List all fundraisers (Finance role required)'
+      responses:
+        '200':
+          description: 'Array of fundraiser objects'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Finance role required'
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Finance
+      summary: 'Create a new fundraiser (Finance role required)'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - title
+              properties:
+                title:
+                  type: string
+                  maxLength: 128
+                description:
+                  type: string
+                date:
+                  type: string
+                  format: date
+              type: object
+      responses:
+        '201':
+          description: 'Newly created fundraiser object'
+        '400':
+          description: 'Validation error'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Finance role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/fundraisers/{id}':
+    get:
+      tags:
+        - Finance
+      summary: 'Get a single fundraiser (Finance role required)'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Fundraiser object'
+        '404':
+          description: 'Fundraiser not found'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Finance role required'
+      security:
+        -
+          ApiKeyAuth: []
+    put:
+      tags:
+        - Finance
+      summary: 'Update a fundraiser (Finance role required)'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                title:
+                  type: string
+                  maxLength: 128
+                description:
+                  type: string
+                date:
+                  type: string
+                  format: date
+              type: object
+      responses:
+        '200':
+          description: 'Updated fundraiser object'
+        '400':
+          description: 'Validation error'
+        '404':
+          description: 'Fundraiser not found'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Finance role required'
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - Finance
+      summary: 'Delete a fundraiser (Finance role required)'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Fundraiser deleted'
+        '404':
+          description: 'Fundraiser not found'
+        '409':
+          description: 'Fundraiser still has associated donated items'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Finance role required'
+      security:
+        -
+          ApiKeyAuth: []
   /payments/:
     get:
       tags:
@@ -4767,6 +5048,152 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  /property-types:
+    get:
+      tags:
+        - System
+      summary: 'List all property types (MenuOptions role required)'
+      parameters:
+        -
+          name: class
+          in: query
+          description: 'Filter by class (p/f/g)'
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Array of property types'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'MenuOptions role required'
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - System
+      summary: 'Create a new property type (MenuOptions role required)'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - class
+                - name
+              properties:
+                class:
+                  type: string
+                  enum: [p, f, g]
+                name:
+                  type: string
+                  maxLength: 50
+                description:
+                  type: string
+              type: object
+      responses:
+        '201':
+          description: 'Newly created property type'
+        '400':
+          description: 'Validation error'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'MenuOptions role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/property-types/{id}':
+    get:
+      tags:
+        - System
+      summary: 'Get a single property type (MenuOptions role required)'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Property type object'
+        '404':
+          description: 'Property type not found'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'MenuOptions role required'
+      security:
+        -
+          ApiKeyAuth: []
+    put:
+      tags:
+        - System
+      summary: 'Update a property type (MenuOptions role required)'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                class:
+                  type: string
+                  enum: [p, f, g]
+                name:
+                  type: string
+                  maxLength: 50
+                description:
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'Updated property type'
+        '400':
+          description: 'Validation error'
+        '404':
+          description: 'Property type not found'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'MenuOptions role required'
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - System
+      summary: 'Delete a property type (MenuOptions role required)'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Deleted
+        '404':
+          description: 'Property type not found'
+        '409':
+          description: 'Property type is still in use by one or more properties'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'MenuOptions role required'
+      security:
+        -
+          ApiKeyAuth: []
   /system/custom-fields/person:
     get:
       tags:
@@ -4849,6 +5276,150 @@ paths:
                 properties:
                   issueBody: { type: string }
                 type: object
+      security:
+        -
+          ApiKeyAuth: []
+  /volunteer-opportunities:
+    get:
+      tags:
+        - Admin
+      summary: 'List all volunteer opportunities (Admin role required)'
+      parameters:
+        -
+          name: activeOnly
+          in: query
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: 'Array of volunteer opportunities'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Admin
+      summary: 'Create a new volunteer opportunity (Admin role required)'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                  maxLength: 30
+                description:
+                  type: string
+                  maxLength: 100
+                active:
+                  type: boolean
+              type: object
+      responses:
+        '201':
+          description: 'Newly created volunteer opportunity'
+        '400':
+          description: 'Validation error'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/volunteer-opportunities/{id}':
+    get:
+      tags:
+        - Admin
+      summary: 'Get a single volunteer opportunity (Admin role required)'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Volunteer opportunity object'
+        '404':
+          description: 'Volunteer opportunity not found'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+    put:
+      tags:
+        - Admin
+      summary: 'Update a volunteer opportunity (Admin role required)'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                name:
+                  type: string
+                  maxLength: 30
+                description:
+                  type: string
+                  maxLength: 100
+                active:
+                  type: boolean
+              type: object
+      responses:
+        '200':
+          description: 'Updated volunteer opportunity'
+        '400':
+          description: 'Validation error'
+        '404':
+          description: 'Volunteer opportunity not found'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - Admin
+      summary: 'Delete a volunteer opportunity (Admin role required)'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Deleted
+        '404':
+          description: 'Volunteer opportunity not found'
+        '409':
+          description: 'Volunteer opportunity is still assigned to one or more people'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required'
       security:
         -
           ApiKeyAuth: []

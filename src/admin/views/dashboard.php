@@ -83,14 +83,14 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                     </div>
                     <div class="card-body bg-white">
                         <div class="mb-2">
-                            <small class="text-muted"><?= gettext('Local development:') ?></small><br>
+                            <small class="text-body-secondary"><?= gettext('Local development:') ?></small><br>
                             <code class="text-success" style="font-size: 1em;">$URL[0] = 'http://localhost/';</code>
                         </div>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             <code class="text-success" style="font-size: 1em;">$URL[0] = 'https://www.yourdomain.com/churchcrm/';</code>
                         </div>
                         <div>
-                            <small class="text-muted"><?= gettext('Custom port:') ?></small><br>
+                            <small class="text-body-secondary"><?= gettext('Custom port:') ?></small><br>
                             <code class="text-success" style="font-size: 1em;">$URL[0] = 'https://www.yourdomain.com:8080/app/';</code>
                         </div>
                     </div>
@@ -152,15 +152,15 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                                     <?php if ($step['done']): ?>
                                         <i class="fa-solid fa-circle-check text-success"></i>
                                     <?php else: ?>
-                                        <i class="fa-regular fa-circle text-muted"></i>
+                                        <i class="fa-regular fa-circle text-body-secondary"></i>
                                     <?php endif; ?>
                                 </div>
-                                <div class="flex-grow-1 <?= $step['done'] ? 'text-muted' : '' ?>">
+                                <div class="flex-grow-1 <?= $step['done'] ? 'text-body-secondary' : '' ?>">
                                     <span class="fw-semibold <?= $step['done'] ? '' : 'text-dark' ?>" style="font-size: 0.875rem;">
                                         <?= $step['label'] ?>
                                     </span>
                                     <?php if (!$step['done']): ?>
-                                        <br><small class="text-muted"><?= $step['desc'] ?></small>
+                                        <br><small class="text-body-secondary"><?= $step['desc'] ?></small>
                                     <?php endif; ?>
                                 </div>
                                 <?php if (!$step['done']): ?>
@@ -185,7 +185,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                     </h5>
                 </div>
                 <div class="card-body">
-                    <p class="text-muted mb-3"><?= gettext('Jump to any setup step:') ?></p>
+                    <p class="text-body-secondary mb-3"><?= gettext('Jump to any setup step:') ?></p>
 
                     <div class="row">
                         <!-- 1. Church Information -->
@@ -274,7 +274,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                         <div class="col-md-6 mb-3 mb-md-0">
                             <div class="border rounded p-3 h-100">
                                 <h6 class="text-warning"><i class="fa-solid fa-upload"></i> <?= gettext('Restore Database') ?></h6>
-                                <p class="small text-muted mb-2"><?= gettext('Restore from a backup file. Erases existing data.') ?></p>
+                                <p class="small text-body-secondary mb-2"><?= gettext('Restore from a backup file. Erases existing data.') ?></p>
                                 <a href="<?= SystemURLs::getRootPath() ?>/admin/system/restore" class="btn btn-sm btn-outline-warning">
                                     <?= gettext('Restore') ?>
                                 </a>
@@ -284,7 +284,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                         <div class="col-md-6">
                             <div class="border rounded p-3 h-100">
                                 <h6 class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> <?= gettext('Reset Database') ?></h6>
-                                <p class="small text-muted mb-2"><?= gettext('Clear all data and start fresh. Cannot be undone.') ?></p>
+                                <p class="small text-body-secondary mb-2"><?= gettext('Clear all data and start fresh. Cannot be undone.') ?></p>
                                 <a href="<?= SystemURLs::getRootPath() ?>/admin/system/reset" class="btn btn-sm btn-outline-danger">
                                     <?= gettext('Reset') ?>
                                 </a>
@@ -296,7 +296,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                         <div class="col-md-6">
                             <div class="border rounded p-3 h-100">
                                 <h6 class="text-info"><i class="fa-solid fa-file-lines"></i> <?= gettext('System Logs') ?></h6>
-                                <p class="small text-muted mb-2"><?= gettext('View and manage system log files for debugging.') ?></p>
+                                <p class="small text-body-secondary mb-2"><?= gettext('View and manage system log files for debugging.') ?></p>
                                 <a href="<?= SystemURLs::getRootPath() ?>/admin/system/logs" class="btn btn-sm btn-outline-info">
                                     <?= gettext('View Logs') ?>
                                 </a>
@@ -319,11 +319,11 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                     </h5>
                 </div>
                 <div class="card-body">
-                    <p class="small text-muted mb-3"><?= gettext('Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!') ?></p>
+                    <p class="small text-body-secondary mb-3"><?= gettext('Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!') ?></p>
                     <a href="https://forms.gle/F1xgoBaWUD1Fy7Bn9" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-100">
                         <i class="fa-solid fa-arrow-up-right-from-square"></i><?= gettext('Register Now') ?>
                     </a>
-                    <p class="small text-muted mt-3 mb-0"><i class="fa-solid fa-shield-alt"></i> <?= gettext('Your privacy is important. We never share your information with third parties.') ?></p>
+                    <p class="small text-body-secondary mt-3 mb-0"><i class="fa-solid fa-shield-alt"></i> <?= gettext('Your privacy is important. We never share your information with third parties.') ?></p>
                 </div>
             </div>
 
@@ -338,11 +338,11 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                 </div>
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-2">
-                        <span class="text-muted"><?= gettext('Version:') ?></span>
+                        <span class="text-body-secondary"><?= gettext('Version:') ?></span>
                         <code><?= VersionUtils::getInstalledVersion() ?></code>
                     </div>
                     <div class="d-flex justify-content-between mb-3">
-                        <span class="text-muted"><?= gettext('Database:') ?></span>
+                        <span class="text-body-secondary"><?= gettext('Database:') ?></span>
                         <code><?= VersionUtils::getDBVersion() ?></code>
                     </div>
                     <div class="btn-group d-flex mb-2" role="group">

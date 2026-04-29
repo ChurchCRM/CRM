@@ -150,7 +150,7 @@ require_once __DIR__ . '/Include/Header.php';
 if (mysqli_num_rows($rsPropList) === 0) {
 ?>
     <form>
-        <p class="text-muted"><?= gettext('This group currently has no properties!  You can add them in the Group Editor.') ?></p>
+        <p class="text-body-secondary"><?= gettext('This group currently has no properties!  You can add them in the Group Editor.') ?></p>
         <a href="<?= SystemURLs::getRootPath() ?>/people/view/<?= $iPersonID ?>" class="btn btn-secondary"><?= gettext('Return to Person Record') ?></a>
 
     </form>

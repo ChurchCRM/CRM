@@ -59,7 +59,7 @@ describe("API Public User", () => {
         });
 
         it("Error message is generic to prevent user enumeration", () => {
-            // All error cases should return the same generic message
+            const GENERIC_ERROR = "Invalid login or password";
             const testCases = [
                 { userName: "nonexistent", password: "wrong", label: "non-existent user" },
                 { userName: "admin", password: "wrong", label: "wrong password" },
@@ -74,10 +74,77 @@ describe("API Public User", () => {
                     body: { userName: testCase.userName, password: testCase.password },
                     failOnStatusCode: false,
                 }).then((resp) => {
-                    expect(resp.status).to.eq(401);
-                    // All should contain the same generic error message
-                    expect(resp.body).to.have.property('error');
+                    expect(resp.status, testCase.label).to.eq(401);
+                    expect(resp.body.error, testCase.label).to.eq(GENERIC_ERROR);
                 });
+            });
+        });
+    });
+
+    // 2FA Authentication tests
+    // NOTE: Tests below require a seeded user with usr_TwoFactorAuthSecret set.
+    // Add a dedicated 2FA user to cypress/data/seed.sql before unskipping.
+    describe("2FA Authentication", () => {
+        it.skip("Login returns 202 requiresOTP when valid password supplied but OTP omitted", () => {
+            // Requires seed user: { userName: "twofa_user", password: "changeme", usr_TwoFactorAuthSecret: "<valid TOTP secret>" }
+            cy.apiRequest({
+                method: "POST",
+                url: "/api/public/user/login",
+                headers: { "content-type": "application/json" },
+                body: { userName: "twofa_user", password: "changeme" },
+                failOnStatusCode: false,
+            }).then((resp) => {
+                expect(resp.status).to.eq(202);
+                expect(resp.body).to.have.property("requiresOTP", true);
+            });
+        });
+
+        it.skip("Login returns 401 on invalid OTP", () => {
+            // Requires the same twofa_user seed entry
+            cy.apiRequest({
+                method: "POST",
+                url: "/api/public/user/login",
+                headers: { "content-type": "application/json" },
+                body: { userName: "twofa_user", password: "changeme", otp: "000000" },
+                failOnStatusCode: false,
+            }).then((resp) => {
+                expect(resp.status).to.eq(401);
+                expect(resp.body.error).to.eq("Invalid login or password");
+            });
+        });
+    });
+
+    // Lockout tests
+    // Uses `limited.user` (seeded, password "changeme") so admin credentials are not affected.
+    // The DB is reset between Cypress runs so lockout state does not persist across suites.
+    describe("Account Lockout", () => {
+        const LOCKOUT_USER = "limited.user";
+        const LOCKOUT_PASS = "changeme";
+        const MAX_FAILURES = 5; // matches iMaxFailedLogins default in SystemConfig
+
+        it("Correct password still returns 401 after account is locked", () => {
+            // Trigger lockout by exhausting failed login attempts
+            for (let i = 0; i < MAX_FAILURES; i++) {
+                cy.apiRequest({
+                    method: "POST",
+                    url: "/api/public/user/login",
+                    headers: { "content-type": "application/json" },
+                    body: { userName: LOCKOUT_USER, password: "wrong_password" },
+                    failOnStatusCode: false,
+                });
+            }
+
+            // Correct password should now be rejected (account locked)
+            cy.apiRequest({
+                method: "POST",
+                url: "/api/public/user/login",
+                headers: { "content-type": "application/json" },
+                body: { userName: LOCKOUT_USER, password: LOCKOUT_PASS },
+                failOnStatusCode: false,
+            }).then((resp) => {
+                expect(resp.status).to.eq(401);
+                // Same generic message as wrong password — prevents confirming lockout state
+                expect(resp.body.error).to.eq("Invalid login or password");
             });
         });
     });

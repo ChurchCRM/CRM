@@ -241,7 +241,7 @@ require_once __DIR__ . '/Include/Header.php';
                     <td><?= InputUtils::escapeHTML($donorFirstName) . ' ' . InputUtils::escapeHTML($donorLastName) ?></td>
                     <td>
                         <?php if ($item->getMultibuy()) {
-                            echo '<span class="text-muted">' . gettext('Multiple') . '</span>';
+                            echo '<span class="text-body-secondary">' . gettext('Multiple') . '</span>';
                         } else {
                             echo InputUtils::escapeHTML($buyerFirstName) . ' ' . InputUtils::escapeHTML($buyerLastName);
                         } ?>
