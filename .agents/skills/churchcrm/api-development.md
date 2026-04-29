@@ -521,19 +521,16 @@ $audit->setEntered($currentUser->getId());
 $audit->save();
 ```
 
-### Note Privacy: nte_Private Stores personId, Not a Boolean <!-- learned: 2026-03-29 -->
+### Note Privacy: nte_Private Is a Boolean Flag <!-- learned: 2026-04-28 -->
 
-`nte_Private` is **not** a boolean flag. It stores either `0` (public) or the author's `personId` (private). `Note::isVisible($personId)` checks `getPrivate() === $personId`, so storing `1` instead of a real personId means only person with ID=1 can see the note.
+`nte_Private` **is a boolean** — store `1` (private) or `0` (public). `Note::isPrivate()` checks `getPrivate() !== 0`. Visibility is determined by `Note::isVisible($userId)` which checks `getEnteredBy() === $userId` — not the value of `nte_Private`. Admins do **not** get API access to other users' private notes; the TimelineService shows admins a `[Private Note]` placeholder instead.
 
 ```php
-// ✅ CORRECT — store the author's personId for private notes
-$private = !empty($input['private']) ? (int) $currentUser->getPersonId() : 0;
-
-// For PUT, preserve the original author's visibility (not the editor's):
-$private = !empty($input['private']) ? (int) $note->getEnteredBy() : 0;
-
-// ❌ WRONG — stores 1, which only makes it visible to person with id=1
+// ✅ CORRECT — boolean 1/0
 $private = !empty($input['private']) ? 1 : 0;
+
+// ❌ WRONG — do not store personId in nte_Private; isVisible() uses getEnteredBy(), not getPrivate()
+$private = !empty($input['private']) ? (int) $currentUser->getId() : 0;
 ```
 
 ### note_nte Requires utf8mb4 for Emoji Support <!-- learned: 2026-04-29 -->

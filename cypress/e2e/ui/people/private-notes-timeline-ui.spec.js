@@ -91,8 +91,8 @@ describe("UI Private Notes Timeline", () => {
                 cy.wait(1000);
                 cy.get("#nav-item-timeline").click();
 
-                // Private badge should be visible
-                cy.contains("Another private note").parent().within(() => {
+                // Private badge lives in the card header, not inside the note preview element
+                cy.contains("Another private note").closest(".card-body").within(() => {
                     cy.get(".badge").contains("Private").should("be.visible");
                 });
 
@@ -171,8 +171,8 @@ describe("UI Private Notes Timeline", () => {
                 cy.visit("/people/family/1");
                 cy.wait(1000);
 
-                // Private badge should display
-                cy.contains("Marked private family note").parent().within(() => {
+                // Private badge lives in the card header, not inside the note preview element
+                cy.contains("Marked private family note").closest(".card-body").within(() => {
                     cy.get(".badge").contains("Private").should("be.visible");
                 });
 
@@ -198,21 +198,11 @@ describe("UI Private Notes Timeline", () => {
                 cy.wait(1000);
                 cy.get("#nav-item-timeline").click();
 
-                // Find the private note placeholder
-                cy.contains("[Private Note").parent().parent().within(() => {
-                    // Dropdown button should exist
-                    cy.get("button[data-bs-toggle='dropdown']").should("exist");
-                });
-
-                // Open dropdown and check that Edit is NOT present
-                cy.contains("[Private Note").parent().parent().within(() => {
-                    cy.get("button[data-bs-toggle='dropdown']").click();
-                });
-
-                cy.get(".dropdown-menu").within(() => {
-                    cy.contains("Edit").should("not.exist");
-                    // But Delete should exist
-                    cy.contains("Delete").should("exist");
+                // The timeline renders inline Edit/Delete buttons (no dropdown).
+                // For a private note the admin doesn't own: no Edit link, but Delete button present.
+                cy.contains("[Private Note").closest(".card-body").within(() => {
+                    cy.get("a[href*='NoteEditor.php']").should("not.exist");
+                    cy.get("button[data-note-id]").should("exist");
                 });
 
                 cy.makePrivateAdminAPICall("DELETE", `/api/note/${noteId}`, null, 200);
@@ -232,14 +222,10 @@ describe("UI Private Notes Timeline", () => {
                 cy.wait(1000);
                 cy.get("#nav-item-timeline").click();
 
-                // Find the note with full content (not placeholder)
-                cy.contains("Admin private").parent().parent().within(() => {
-                    cy.get("button[data-bs-toggle='dropdown']").click();
-                });
-
-                cy.get(".dropdown-menu").within(() => {
-                    cy.contains("Edit").should("be.visible");
-                    cy.contains("Delete").should("be.visible");
+                // Admin owns this note: both Edit link and Delete button should be inline.
+                cy.contains("Admin private").closest(".card-body").within(() => {
+                    cy.get("a[href*='NoteEditor.php']").should("be.visible");
+                    cy.get("button[data-note-id]").should("be.visible");
                 });
 
                 cy.makePrivateAdminAPICall("DELETE", `/api/note/${noteId}`, null, 200);

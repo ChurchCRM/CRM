@@ -72,9 +72,9 @@ if (empty($timeline)) { ?>
                             <div class="d-flex align-items-center justify-content-between gap-2 mb-1">
                                 <span class="fw-semibold">
                                     <?php if (!empty($item['headerLink'])) { ?>
-                                        <a href="<?= $item['headerLink'] ?>"><?= $item['header'] ?></a>
+                                        <a href="<?= htmlspecialchars($item['headerLink'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>"><?= htmlspecialchars($item['header'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></a>
                                     <?php } else { ?>
-                                        <?= $item['header'] ?>
+                                        <?= htmlspecialchars($item['header'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>
                                     <?php } ?>
                                 </span>
                                 <div class="d-flex align-items-center gap-1 flex-shrink-0">

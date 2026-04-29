@@ -49,7 +49,7 @@ use ChurchCRM\dto\SystemURLs;
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 (function () {
-    const rootPath = <?= json_encode(SystemURLs::getRootPath()) ?>;
+    const rootPath = <?= json_encode(SystemURLs::getRootPath(), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>;
 
     // ── Delete modal ──────────────────────────────────────────────────────────
     const deleteModal = document.getElementById("deleteNoteModal");
@@ -72,15 +72,15 @@ use ChurchCRM\dto\SystemURLs;
                 if (r.ok) {
                     location.reload();
                 } else if (r.status === 403) {
-                    alert(<?= json_encode(gettext('You do not have permission to delete this note.'), JSON_HEX_TAG | JSON_HEX_AMP) ?>);
+                    bootbox.alert(<?= json_encode(gettext('You do not have permission to delete this note.'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>);
                 } else if (r.status === 404) {
-                    alert(<?= json_encode(gettext('Note not found.'), JSON_HEX_TAG | JSON_HEX_AMP) ?>);
+                    bootbox.alert(<?= json_encode(gettext('Note not found.'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>);
                 } else {
-                    alert(<?= json_encode(gettext('Failed to delete note.'), JSON_HEX_TAG | JSON_HEX_AMP) ?>);
+                    bootbox.alert(<?= json_encode(gettext('Failed to delete note.'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>);
                 }
             } catch (e) {
                 console.error("Delete note error:", e);
-                alert(<?= json_encode(gettext('Error deleting note.'), JSON_HEX_TAG | JSON_HEX_AMP) ?>);
+                bootbox.alert(<?= json_encode(gettext('Error deleting note.'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>);
             }
         });
     }
@@ -121,9 +121,9 @@ use ChurchCRM\dto\SystemURLs;
                 });
                 viewBody.innerHTML = r.ok
                     ? ((await r.json()).note?.text ?? "")
-                    : '<p class="text-danger"><?= gettext('Could not load note.') ?></p>';
+                    : '<p class="text-danger">' + <?= json_encode(gettext('Could not load note.'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> + '</p>';
             } catch {
-                viewBody.innerHTML = '<p class="text-danger"><?= gettext('Could not load note.') ?></p>';
+                viewBody.innerHTML = '<p class="text-danger">' + <?= json_encode(gettext('Could not load note.'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> + '</p>';
             }
         });
     }

@@ -78,7 +78,7 @@ if (isset($_POST['Submit'])) {
             $note = NoteQuery::create()->findPk($iNoteID);
             // Only the creator can edit their note
             if ($note->getEnteredBy() !== AuthenticationManager::getCurrentUser()->getId()) {
-                $sNoteTextError = '<br><span class="text-danger">You do not have permission to edit this note.</span>';
+                $sNoteTextError = '<br><span class="text-danger">' . gettext('You do not have permission to edit this note.') . '</span>';
                 $bErrorFlag = true;
             } else {
                 $note->setPrivate($bPrivate);
@@ -101,6 +101,8 @@ if (isset($_POST['Submit'])) {
 
         // Only the creator can edit a private note
         if ($dbNote && $dbNote->isPrivate() && $dbNote->getEnteredBy() !== AuthenticationManager::getCurrentUser()->getId()) {
+            $_SESSION['sGlobalMessage'] = gettext('You do not have permission to edit this note.');
+            $_SESSION['sGlobalMessageClass'] = 'danger';
             RedirectUtils::redirect($sBackPage ?: SystemURLs::getRootPath() . '/');
         }
 
