@@ -11,10 +11,6 @@
  *   DELETE /api/volunteer-opportunities/{id}
  */
 describe("API Private Volunteer Opportunities", () => {
-    beforeEach(() => {
-        cy.setupAdminSession();
-    });
-
     describe("GET /api/volunteer-opportunities", () => {
         it("Returns 200 with volunteerOpportunities array", () => {
             cy.makePrivateAdminAPICall(
@@ -46,7 +42,7 @@ describe("API Private Volunteer Opportunities", () => {
 
     describe("POST /api/volunteer-opportunities", () => {
         it("Creates a volunteer opportunity and returns 201", () => {
-            const name = `Cypress Vol ${Date.now()}`;
+            const name = `Vol ${Date.now()}`;
             cy.makePrivateAdminAPICall(
                 "POST",
                 "/api/volunteer-opportunities",
@@ -116,7 +112,7 @@ describe("API Private Volunteer Opportunities", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 "/api/volunteer-opportunities",
-                { name: `Cypress Vol GET ${Date.now()}` },
+                { name: `GET ${Date.now()}` },
                 201,
             ).then((createResp) => {
                 const id = createResp.body.volunteerOpportunity.id;
@@ -149,8 +145,8 @@ describe("API Private Volunteer Opportunities", () => {
         });
 
         it("Updates name, description, and active", () => {
-            const orig = `Cypress Vol Orig ${Date.now()}`;
-            const updated = `Cypress Vol Upd ${Date.now()}`;
+            const orig = `Orig ${Date.now()}`;
+            const updated = `Upd ${Date.now()}`;
             cy.makePrivateAdminAPICall(
                 "POST",
                 "/api/volunteer-opportunities",
@@ -187,7 +183,7 @@ describe("API Private Volunteer Opportunities", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 "/api/volunteer-opportunities",
-                { name: `Cypress Vol Blank ${Date.now()}` },
+                { name: `Blank ${Date.now()}` },
                 201,
             ).then((createResp) => {
                 const id = createResp.body.volunteerOpportunity.id;
@@ -228,7 +224,7 @@ describe("API Private Volunteer Opportunities", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 "/api/volunteer-opportunities",
-                { name: `Cypress Vol Del ${Date.now()}` },
+                { name: `Del ${Date.now()}` },
                 201,
             ).then((createResp) => {
                 const id = createResp.body.volunteerOpportunity.id;

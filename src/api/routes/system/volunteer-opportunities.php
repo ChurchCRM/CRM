@@ -99,6 +99,14 @@ $app->group('/volunteer-opportunities', function (RouteCollectorProxy $group): v
                 return SlimUtils::renderErrorJSON($response, gettext('You must enter a name'), [], 400);
             }
 
+            if (strlen($name) > 30) {
+                return SlimUtils::renderErrorJSON($response, gettext('Name cannot exceed 30 characters'), [], 400);
+            }
+
+            if (strlen($description) > 100) {
+                return SlimUtils::renderErrorJSON($response, gettext('Description cannot exceed 100 characters'), [], 400);
+            }
+
             if (VolunteerOpportunityQuery::create()->findOneByName($name) !== null) {
                 return SlimUtils::renderErrorJSON($response, gettext('That name already exists.'), [], 400);
             }
@@ -177,6 +185,9 @@ $app->group('/volunteer-opportunities', function (RouteCollectorProxy $group): v
                 if ($name === '') {
                     return SlimUtils::renderErrorJSON($response, gettext('You must enter a name'), [], 400);
                 }
+                if (strlen($name) > 30) {
+                    return SlimUtils::renderErrorJSON($response, gettext('Name cannot exceed 30 characters'), [], 400);
+                }
                 $existing = VolunteerOpportunityQuery::create()->findOneByName($name);
                 if ($existing !== null && (int) $existing->getId() !== $id) {
                     return SlimUtils::renderErrorJSON($response, gettext('That name already exists.'), [], 400);
@@ -185,7 +196,11 @@ $app->group('/volunteer-opportunities', function (RouteCollectorProxy $group): v
             }
 
             if (array_key_exists('description', $input)) {
-                $opp->setDescription(InputUtils::sanitizeText($input['description']));
+                $desc = InputUtils::sanitizeText($input['description']);
+                if (strlen($desc) > 100) {
+                    return SlimUtils::renderErrorJSON($response, gettext('Description cannot exceed 100 characters'), [], 400);
+                }
+                $opp->setDescription($desc);
             }
 
             if (array_key_exists('active', $input)) {
