@@ -353,7 +353,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
 ?>
 
 <div class="row">
-    <div class="col-lg-8">
+    <div class="col-12">
         <!-- Core Plugins -->
         <div class="card" id="core-plugins-section">
             <div class="card-header border-0">

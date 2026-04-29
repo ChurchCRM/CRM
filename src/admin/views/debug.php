@@ -115,6 +115,7 @@ $hasAnyIssue = $integrityPassed === false
 <?php
 // Environment data — paths (with copy chips), PHP runtime, extensions.
 $envPaths = [
+    gettext('Installation ID') => SystemConfig::getValue('sSystemID'),
     gettext('Root Path')    => SystemURLs::getRootPath() ?: '(empty - top level)',
     gettext('Document Root') => SystemURLs::getDocumentRoot(),
     gettext('Base URL')     => SystemURLs::getURL(),
