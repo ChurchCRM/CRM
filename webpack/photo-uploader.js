@@ -125,7 +125,7 @@ export function createPhotoUploader(config) {
 
   // Handle all restriction failures (size, type, count) — use Uppy's own message so
   // the persistent alert accurately describes the actual failure reason.
-  uppy.on("restriction-failed", (file, error) => {
+  uppy.on("restriction-failed", (_file, error) => {
     const message =
       error && typeof error.message === "string" && error.message.trim().length > 0
         ? error.message
@@ -134,7 +134,7 @@ export function createPhotoUploader(config) {
   });
 
   // Custom upload handler that converts image to base64
-  uppy.on("upload", (data) => {
+  uppy.on("upload", (_data) => {
     // Clear any previous persistent errors when a new upload starts
     clearPersistentError();
 

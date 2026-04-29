@@ -6,7 +6,7 @@
  * surface can render the identical form inline.
  */
 
-import { deleteEvent, renderEventEditor, renderEventViewer, saveEvent } from "./event-form.js";
+import { deleteEvent, renderEventEditor, renderEventViewer, saveEvent, toWallClockString } from "./event-form.js";
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -71,7 +71,9 @@ function cleanup() {
   modalEl = null;
 
   // Remove any leftover backdrop and body overrides
-  document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
+  document.querySelectorAll(".modal-backdrop").forEach((el) => {
+    el.remove();
+  });
   document.body.classList.remove("modal-open");
   document.body.style.removeProperty("overflow");
   document.body.style.removeProperty("padding-right");
@@ -252,8 +254,8 @@ function bindDeleteHandler(event) {
         t("Deleting this event will also delete all attendance records. This cannot be undone.") +
         ` <strong>${escapeHtml(event.Title || "")}</strong>`,
       buttons: {
-        cancel: { label: '<i class="ti ti-x"></i> ' + t("Cancel") },
-        confirm: { label: '<i class="ti ti-trash"></i> ' + t("Delete"), className: "btn-danger" },
+        cancel: { label: `<i class="ti ti-x"></i> ${t("Cancel")}` },
+        confirm: { label: `<i class="ti ti-trash"></i> ${t("Delete")}`, className: "btn-danger" },
       },
       callback: (confirmed) => {
         if (!confirmed) return;
@@ -317,8 +319,12 @@ window.showEventForm = (eventArg) => {
     .then(([eventData, calData, typeData, groups]) => {
       if (thisRequest !== activeRequestId) return;
       const event = eventData;
-      if (event.Start) event.Start = new Date(event.Start);
-      if (event.End) event.End = new Date(event.End);
+      // event-form treats Start/End as church wall-clock STRINGS. Normalize
+      // the API response (Propel space format, optional .uuuuuu, optional tz)
+      // to "YYYY-MM-DDTHH:mm:ss" — never `new Date()` here, which would let
+      // Chrome reinterpret space-format as UTC and shift wall-clock numbers.
+      if (event.Start) event.Start = toWallClockString(event.Start);
+      if (event.End) event.End = toWallClockString(event.End);
       showViewContent(event, calData.Calendars, typeData.EventTypes, Array.isArray(groups) ? groups : []);
     })
     .catch((err) => {
@@ -334,13 +340,20 @@ window.showNewEventForm = (info) => {
 
   const thisRequest = ++activeRequestId;
 
+  // FullCalendar quirk: `info.start` for an all-day month-view click is a JS
+  // Date at midnight UTC of the clicked date — NOT midnight in the calendar's
+  // configured tz. Reading getDate()/getHours() in a non-UTC browser shifts
+  // back by the browser's offset (April 24 cell click → April 23 5 PM in PDT).
+  // `info.startStr` / `info.endStr` give the date/time in the calendar's tz
+  // ("YYYY-MM-DD" for all-day, "YYYY-MM-DDTHH:mm:ss±HH:MM" for timed) — strip
+  // the offset and we have the church wall-clock string the editor expects.
   const event = {
     Id: 0,
     Title: "",
     Type: 0,
     PinnedCalendars: [],
-    Start: info.start,
-    End: info.end,
+    Start: info.startStr ? toWallClockString(info.startStr) : undefined,
+    End: info.endStr ? toWallClockString(info.endStr) : undefined,
   };
 
   Promise.all([

@@ -666,10 +666,6 @@ msgid "Save Changes"
 msgstr "保存更改"
 
 #: 
-msgid "Church Event Editor"
-msgstr "教會活動編輯器"
-
-#: 
 msgid "Edit Event Type"
 msgstr "編輯活動類型"
 
@@ -736,21 +732,9 @@ msgid "Create Event"
 msgstr "建立活動"
 
 #: 
-msgid "Create a new Event"
-msgstr "建立新活動"
-
-#: 
-msgid "Select your event type"
-msgstr "選擇您的活動類型"
-
-#: 
 #, fuzzy
 msgid "Event Status"
 msgstr "活動狀態"
-
-#: 
-msgid "Return to Events"
-msgstr "返回至活動"
 
 #: 
 msgid "Sundays"
@@ -1211,10 +1195,6 @@ msgid "Summary Data"
 msgstr "摘要數據"
 
 #: 
-msgid "CSV"
-msgstr "CSV"
-
-#: 
 msgid "Back"
 msgstr "背面"
 
@@ -1341,10 +1321,6 @@ msgstr "數據文件格式"
 #: 
 msgid "GPS Visualizer"
 msgstr "GPS可視化"
-
-#: 
-msgid "Street Atlas USA"
-msgstr "街道地圖集美國"
 
 #: 
 #, fuzzy
@@ -2413,26 +2389,6 @@ msgstr "數字太大。必須是介於-2147483648和2147483647"
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "貨幣量過於龐大。最大999999999.99美元"
 
-#: 
-msgid " Bold Italic"
-msgstr "粗體斜體"
-
-#: 
-msgid " Italic"
-msgstr "斜體"
-
-#: 
-msgid " Bold"
-msgstr "膽大"
-
-#: 
-msgid "Error making API Call to"
-msgstr "API調用出現錯誤"
-
-#: 
-msgid "Error text"
-msgstr "文本錯誤"
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -3149,10 +3105,6 @@ msgstr "QuickBooks存款票設置"
 #: 
 msgid "Add Church Event"
 msgstr "增加教會活動"
-
-#: 
-msgid "List Event Types"
-msgstr "列出活動類型"
 
 #: 
 msgid "Check-in and Check-out"
@@ -4723,11 +4675,6 @@ msgstr "俄語"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "薩米語（北部）（瑞典）"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "阿爾巴尼亞語"
 
@@ -5012,10 +4959,6 @@ msgid "Notification for"
 msgstr "通知"
 
 #: 
-msgid "ERROR"
-msgstr "錯誤"
-
-#: 
 msgid "Title FirstName MiddleName LastName"
 msgstr "Title FirstName MiddleName LastName"
 
@@ -5181,7 +5124,8 @@ msgid "Indonesian - Indonesia"
 msgstr "印尼語 - 印尼"
 
 #: 
-msgid "records(s) successfully added to selected Group."
+#, fuzzy
+msgid "record(s) successfully added to selected Group."
 msgstr "記錄已成功添加到選定的組。"
 
 #: 
@@ -5211,10 +5155,6 @@ msgstr "新增家庭"
 #: 
 msgid "Church Greeter"
 msgstr "教會迎賓員"
-
-#: 
-msgid "External Calendar API is disabled"
-msgstr "外部日曆API已禁用"
 
 #: 
 msgid "Special Group Settings : Sunday School Type"
@@ -5498,7 +5438,8 @@ msgid "Remove All from Cart"
 msgstr "從購物車中刪除全部"
 
 #: 
-msgid "records(s) successfully deleted from the selected Group."
+#, fuzzy
+msgid "record(s) successfully deleted from the selected Group."
 msgstr "順利將紀綠從所選的群組中刪除"
 
 #: 
@@ -5649,16 +5590,8 @@ msgid "Missing calendar access token"
 msgstr "缺少日曆訪問令牌"
 
 #: 
-msgid "Calendar access token not found"
-msgstr "未找到日曆訪問令牌"
-
-#: 
 msgid "User must have Delete Records permission"
 msgstr "用戶必須具有刪除記錄權限"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "ChurchCRM中央通知URL"
 
 #: 
 msgid "invalid event type id"
@@ -5737,10 +5670,6 @@ msgstr "提供的國家名稱無效"
 #: 
 msgid "LastName FirstName"
 msgstr "姓氏 名字"
-
-#: 
-msgid "Holidays"
-msgstr "假日"
 
 #: 
 msgid "Person Name"
@@ -5955,11 +5884,6 @@ msgstr "葡萄牙語-葡萄牙"
 
 #: 
 #, fuzzy
-msgid "Holiday"
-msgstr "假日"
-
-#: 
-#, fuzzy
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "指定要在驗證器應用程序中顯示的應用程序名稱"
 
@@ -6025,10 +5949,6 @@ msgstr "沒有傳入電子郵件"
 #: 
 msgid "Mailchimp is not active"
 msgstr "Mailchimp無效"
-
-#: 
-msgid "Mailchimp"
-msgstr "Mailchimp"
 
 #: 
 msgid "Lists"
@@ -6125,11 +6045,6 @@ msgstr "文本"
 #, fuzzy
 msgid "Event Description"
 msgstr "活動說明"
-
-#: 
-#, fuzzy
-msgid "Help translate this project"
-msgstr "幫助翻譯此專案"
 
 #. Context: locales
 #: 
@@ -7069,7 +6984,8 @@ msgid "Total Payments"
 msgstr "總付款"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payments?"
 msgstr "付款記錄"
 
 #: 
@@ -7083,10 +6999,6 @@ msgstr "基本 URL"
 #: 
 msgid "Copy"
 msgstr "複製"
-
-#: 
-msgid "DSN"
-msgstr "DSN"
 
 #: 
 msgid "Debug Info"
@@ -7149,20 +7061,8 @@ msgid "SMTP Host"
 msgstr "SMTP 主機"
 
 #: 
-msgid "Software"
-msgstr "軟體"
-
-#: 
-msgid "System & Configuration"
-msgstr "系統與配置"
-
-#: 
 msgid "Tip:"
 msgstr "提示："
-
-#: 
-msgid "Valid Settings"
-msgstr "有效設定"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7222,10 +7122,6 @@ msgid "Attendance Count Categories"
 msgstr "考勤統計類別"
 
 #: 
-msgid "Attendance Notes"
-msgstr "考勤筆記"
-
-#: 
 msgid "Change Event"
 msgstr "更改活動"
 
@@ -7281,14 +7177,6 @@ msgstr "刪除活動"
 msgid "Edit Event"
 msgstr "編輯活動"
 
-#: 
-msgid "Editing Event"
-msgstr "正在編輯活動"
-
-#: 
-msgid "Enter event title..."
-msgstr "輸入活動標題..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7339,14 +7227,6 @@ msgid "None (one-time event)"
 msgstr "無（一次性活動）"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "可選 - 添加講道筆記或額外的活動詳情"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "有關考勤的可選筆記..."
-
-#: 
 msgid "People Checked In"
 msgstr "已簽到人員"
 
@@ -7381,10 +7261,6 @@ msgstr "搜尋主管..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "選擇簽到活動"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "講道/活動文字"
 
 #: 
 msgid "Unclassified"
@@ -8176,10 +8052,6 @@ msgid "Orphaned Files:"
 msgstr "孤立檔案："
 
 #: 
-msgid "PDF/CSV"
-msgstr "PDF/CSV"
-
-#: 
 msgid "Payment"
 msgstr "付款"
 
@@ -8416,10 +8288,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "Config.php 中未配置基礎 URL"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "ChurchCRM 支援的語言環境"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "通過 SSH、FTP 或您的主機控制台連接到您的伺服器"
 
@@ -8466,10 +8334,6 @@ msgstr "語言"
 #: 
 msgid "Local development:"
 msgstr "本地開發："
-
-#: 
-msgid "Locale Support"
-msgstr "語言環境支援"
 
 #: 
 msgid "Location & Contact Information"
@@ -8638,10 +8502,6 @@ msgstr "提交核實"
 #: 
 msgid "Thank You!"
 msgstr "謝謝！"
-
-#: 
-msgid "Translation incomplete"
-msgstr "翻譯不完整"
 
 #: 
 msgid "Visit Our Website"
@@ -9288,10 +9148,6 @@ msgid "Failed to save the downloaded release file. Please check disk space and p
 msgstr "儲存下載的發布文件失敗。請檢查磁碟空間和權限。"
 
 #: 
-msgid "Invalid date format in start parameter"
-msgstr "開始參數中的日期格式無效"
-
-#: 
 msgid "Mismatch"
 msgstr "不匹配"
 
@@ -9689,10 +9545,6 @@ msgid "Important"
 msgstr "重要"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "透過將外掛程式放置在以下位置來安裝外掛程式"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "驗證碼無效。請重試。"
 
@@ -9751,10 +9603,6 @@ msgstr "找不到連結"
 #: 
 msgid "Loading recovery codes"
 msgstr "正在載入復原碼"
-
-#: 
-msgid "MailChimp"
-msgstr "MailChimp"
 
 #: 
 msgid "MailChimp API Key"
@@ -10867,10 +10715,6 @@ msgid "CSV Column"
 msgstr "CSV 欄位"
 
 #: 
-msgid "CSV template not found"
-msgstr "找不到 CSV 範本"
-
-#: 
 msgid "Call"
 msgstr "致電"
 
@@ -10947,10 +10791,6 @@ msgid "Community Management Platform"
 msgstr "社群管理平台"
 
 #: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "相容於 Excel、Google Sheets 或任何 CSV 匯出。"
-
-#: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
 msgstr "以任意順序完成這些步驟，讓 ChurchCRM 為您的會眾做好準備。"
 
@@ -10977,10 +10817,6 @@ msgstr "連接 SMTP 伺服器以便 ChurchCRM 發送電子郵件"
 #: 
 msgid "Connect with others"
 msgstr "與他人聯繫"
-
-#: 
-msgid "Contact us"
-msgstr "聯繫我們"
 
 #: 
 msgid "Convert individual records into family units"
@@ -11123,10 +10959,6 @@ msgid "Download CSV Template"
 msgstr "下載 CSV 範本"
 
 #: 
-msgid "Download the template to see the expected column format."
-msgstr "下載範本以查看預期的欄位格式。"
-
-#: 
 msgid "Drag and drop your CSV file here"
 msgstr "將您的 CSV 檔案拖放至此處"
 
@@ -11137,10 +10969,6 @@ msgstr "重複項目"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "每個人都可以有自己的電子郵件和手機號碼。"
-
-#: 
-msgid "Each row is one person. Members of the same family share a FamilyID."
-msgstr "每一列代表一個人。同一家庭的成員共用一個 FamilyID。"
 
 #: 
 msgid "Easy registration"
@@ -11673,10 +11501,6 @@ msgstr "名稱變更需要儲存。操作選單中的重新排序和刪除操作
 #: 
 msgid "Name, address, contact details"
 msgstr "姓名、地址、聯絡資訊"
-
-#: 
-msgid "Need help?"
-msgstr "需要幫助？"
 
 #: 
 msgid "New"
@@ -12225,10 +12049,6 @@ msgid "Upload CSV"
 msgstr "上傳 CSV"
 
 #: 
-msgid "Upload a CSV file to import families and people into ChurchCRM."
-msgstr "上傳 CSV 檔案將家庭和人員匯入 ChurchCRM。"
-
-#: 
 msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
 msgstr "上傳來自 Excel、Google Sheets 或之前教會管理系統的 CSV 檔案，並將欄位對應到 ChurchCRM 欄位。"
 
@@ -12451,10 +12271,6 @@ msgstr "成員"
 #: 
 msgid "opportunities"
 msgstr "服務機會"
-
-#: 
-msgid "options"
-msgstr "選項"
 
 #: 
 msgid "or connect an external service"
@@ -12691,10 +12507,6 @@ msgstr "註冊和管理用於活動簽到的自助終端機裝置"
 #: 
 msgid "Review & Delete"
 msgstr "檢視並刪除"
-
-#: 
-msgid "SHA1 Hash"
-msgstr "SHA1 雜湊"
 
 #: 
 msgid "Signature Mismatch"
@@ -14231,10 +14043,6 @@ msgid "Select the desired event"
 msgstr "選擇所需活動"
 
 #: 
-msgid "name@example.com"
-msgstr "name@example.com"
-
-#: 
 msgid "Advanced filtering by group, classification, and role"
 msgstr "依小組、分類及角色進行進階篩選"
 
@@ -14638,10 +14446,6 @@ msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d 個重複事件建立成功。"
 
 #: 
-msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
-msgstr "（例如：會眾、訪客、兒童），義工可在此記錄人數。"
-
-#: 
 msgid "1. Sunday School Class"
 msgstr "1. 主日學班級"
 
@@ -14662,10 +14466,6 @@ msgid "A class is a Group with type \"Sunday School\". It holds the students and
 msgstr "班級是類型為「主日學」的事工部門，包含學生和老師（帶角色的會眾）。"
 
 #: 
-msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
-msgstr "關聯部門將此活動與班級或事工名冊綁定。活動分配到簽到台後，簽到台會拉取部門成員並顯示為點擊簽到列表。主日學班級請在此關聯班級部門，義工即可透過平板為學生簽到。"
-
-#: 
 msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
 msgstr "特定的活動場次（例如「幼兒班 — 4月12日」），繼承類型的預設設定，並透過受眾關聯班級部門。義工以此記錄出席情況。"
 
@@ -14676,10 +14476,6 @@ msgstr "分配給某一活動的平板（簽到台）。簽到台拉取活動關
 #: 
 msgid "Add Walk-in / Visitor"
 msgstr "新增現場訪客"
-
-#: 
-msgid "Add categories on the Event Type page"
-msgstr "在活動類型頁面新增分類"
 
 #: 
 msgid "Add people to your cart first, then come back to check them in to an event."
@@ -14728,10 +14524,6 @@ msgstr "稽核"
 #: 
 msgid "Audit Events"
 msgstr "稽核活動"
-
-#: 
-msgid "Auto-totalled from counts at right"
-msgstr "自動彙總右側計數"
 
 #: 
 msgid "Back to Events"
@@ -14858,10 +14650,6 @@ msgid "Database dump only (.sql)"
 msgstr "僅資料庫轉儲（.sql）"
 
 #: 
-msgid "Date Range"
-msgstr "日期範圍"
-
-#: 
 msgid "Date range cannot exceed 1 year"
 msgstr "日期範圍不能超過1年"
 
@@ -14942,10 +14730,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "活動已建立，正在跳轉到簽到頁面…"
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "活動結束日期/時間必須等於或晚於開始日期/時間。"
-
-#: 
 msgid "Event title is required."
 msgstr "活動標題為必填項。"
 
@@ -14972,10 +14756,6 @@ msgstr "活動類型未配置重複規則"
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "活動類型未配置有效的每月重複日期"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "將在此日期範圍內為每個符合的場次建立活動。"
 
 #: 
 msgid "Every month on the"
@@ -15026,10 +14806,6 @@ msgid "Group Roster"
 msgstr "部門名冊"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "隱藏進階選項"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "主日學、活動與簽到台如何協同工作"
 
@@ -15040,10 +14816,6 @@ msgstr "%s 的日期無效，期望格式為 YYYY-MM-DD"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "rangeStart 或 rangeEnd 的日期格式無效"
-
-#: 
-msgid "Invalid date format."
-msgstr "日期格式無效。"
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -15098,10 +14870,6 @@ msgid "No active events found."
 msgstr "未找到進行中的活動。"
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "此活動類型尚未定義出席計數分類。"
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "尚無人簽到此活動。"
 
@@ -15142,10 +14910,6 @@ msgid "Please select a person to check in."
 msgstr "請選擇要簽到的人員。"
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "根據此活動類型預填 — 對於重複類型，日期為此類型最後一次活動後的下一場次，時間與類型預設開始時間一致。"
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "範圍結束日期必須等於或晚於範圍開始日期。"
 
@@ -15174,10 +14938,6 @@ msgid "Recommended"
 msgstr "推薦"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "簽到台必填"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "重置將永久刪除："
 
@@ -15196,14 +14956,6 @@ msgstr "儲存此分類名稱的更改"
 #: 
 msgid "Select an event type…"
 msgstr "選擇活動類型…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "選擇開始和結束日期/時間。"
-
-#: 
-msgid "Show More Options"
-msgstr "顯示更多選項"
 
 #: 
 msgid "Skip"
@@ -15246,16 +14998,8 @@ msgid "The Events module is disabled"
 msgstr "活動模組已停用"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "所有產生的活動將使用相同的開始和結束時間。"
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "今日沒有安排活動"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "這些是人數統計分類 — 義工在活動結束後填寫，以便儀表板按類型細分出席情況（例如會眾與訪客的數量）。這與簽到頁面上的個人簽到是獨立的。"
 
 #: 
 msgid "This event is inactive."
@@ -15310,16 +15054,8 @@ msgid "View Event"
 msgstr "查看活動"
 
 #: 
-msgid "What are these for?"
-msgstr "這些有什麼用？"
-
-#: 
 msgid "What does this find?"
 msgstr "這個功能查找什麼？"
-
-#: 
-msgid "What is this for?"
-msgstr "這有什麼用？"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15586,10 +15322,6 @@ msgid "Online"
 msgstr "線上"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "為設備注冊開啟一個30秒的視窗："
-
-#: 
 msgid "Pending"
 msgstr "待處理"
 
@@ -15706,14 +15438,6 @@ msgid "Set up Email"
 msgstr "設定電子郵件"
 
 #: 
-msgid "Test SMTP Email"
-msgstr "測試 SMTP 電子郵件"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "這是一封 ChurchCRM 測試電子郵件，確認您的 SMTP 設定正常運作。"
-
-#: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."
 msgstr "無法複製到剪貼簿。請手動複製驗證碼。"
 
@@ -15728,4 +15452,856 @@ msgstr "改用恢復碼"
 #: 
 msgid "Use authenticator app instead"
 msgstr "改用驗證應用程式"
+
+#: 
+msgid "%d modules loaded"
+msgstr "已載入 %d 個模組"
+
+#: 
+msgid "(PHP default)"
+msgstr "（PHP 預設）"
+
+#: 
+msgid "(none)"
+msgstr "（無）"
+
+#: 
+msgid "(not set)"
+msgstr "（未設定）"
+
+#: 
+msgid "All checks passing"
+msgstr "所有檢查通過"
+
+#: 
+msgid "App"
+msgstr "應用程式"
+
+#: 
+msgid "Browser time zone differs:"
+msgstr "瀏覽器時區不符："
+
+#: 
+msgid "Calendar time zone:"
+msgstr "日曆時區："
+
+#: 
+msgid "Cannot send test email"
+msgstr "無法發送測試電子郵件"
+
+#: 
+msgid "Charset"
+msgstr "字元集"
+
+#: 
+msgid "Church Email address is not set — the test email has nowhere to go."
+msgstr "教會電子郵件地址未設定——測試電子郵件無處可送。"
+
+#: 
+msgid "Church email — configured on the"
+msgstr "教會電子郵件——設定於"
+
+#: 
+msgid "ChurchCRM Test Email"
+msgstr "ChurchCRM 測試電子郵件"
+
+#: 
+msgid "Collation"
+msgstr "排序規則"
+
+#: 
+msgid "Connection"
+msgstr "連線"
+
+#: 
+msgid "Database"
+msgstr "資料庫"
+
+#: 
+msgid "Delivery"
+msgstr "傳送"
+
+#: 
+msgid "Disk (Images Root)"
+msgstr "磁碟（圖片根目錄）"
+
+#: 
+msgid "Display Errors"
+msgstr "顯示錯誤"
+
+#: 
+msgid "Email Debug"
+msgstr "電子郵件除錯"
+
+#: 
+msgid "Environment"
+msgstr "環境"
+
+#: 
+msgid "Error Log"
+msgstr "錯誤日誌"
+
+#: 
+msgid "Error Reporting"
+msgstr "錯誤回報"
+
+#: 
+msgid "Fix Settings"
+msgstr "修正設定"
+
+#: 
+msgid "Hit Rate"
+msgstr "命中率"
+
+#: 
+msgid "Host"
+msgstr "主機"
+
+#: 
+msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
+msgstr "若訊息在數分鐘內未送達，請檢查垃圾郵件資料夾及下方的 SMTP 除錯日誌。"
+
+#: 
+msgid "If you can read this message in your inbox, your SMTP configuration is working correctly."
+msgstr "若您可在收件匣中閱讀此訊息，表示您的 SMTP 設定運作正常。"
+
+#: 
+msgid "Incomplete"
+msgstr "未完成"
+
+#: 
+msgid "Installed on Server"
+msgstr "已安裝於伺服器"
+
+#: 
+msgid "Integrity"
+msgstr "完整性"
+
+#: 
+msgid "Issues detected"
+msgstr "偵測到問題"
+
+#: 
+msgid "Loaded php.ini"
+msgstr "已載入的 php.ini"
+
+#: 
+msgid "Locale"
+msgstr "地區設定"
+
+#: 
+msgid "Max Execution Time"
+msgstr "最長執行時間"
+
+#: 
+msgid "Max POST Size"
+msgstr "POST 最大容量"
+
+#: 
+msgid "Max Upload Size"
+msgstr "上傳最大容量"
+
+#: 
+msgid "Memory"
+msgstr "記憶體"
+
+#: 
+msgid "Memory Limit"
+msgstr "記憶體限制"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
+msgstr "請立即查看收件人的收件匣以確認送達。尋找主旨："
+
+#: 
+msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
+msgstr "OPcache 未啟用。啟用它是加速 PHP 頁面載入的低風險方式。"
+
+#: 
+msgid "Off"
+msgstr "關閉"
+
+#: 
+msgid "On"
+msgstr "開啟"
+
+#: 
+msgid "Open the email debug tester"
+msgstr "開啟電子郵件除錯測試工具"
+
+#: 
+msgid "PHP Version"
+msgstr "PHP 版本"
+
+#: 
+msgid "PHPMailer SMTP session"
+msgstr "PHPMailer SMTP 連線工作階段"
+
+#: 
+msgid "Prerequisites"
+msgstr "前置需求"
+
+#: 
+msgid "Review the SMTP debug log below for the handshake details, then adjust your settings."
+msgstr "請查看下方的 SMTP 除錯日誌了解交握詳情，然後調整您的設定。"
+
+#: 
+msgid "SMTP Configuration"
+msgstr "SMTP 設定"
+
+#: 
+msgid "SMTP Debug Log"
+msgstr "SMTP 除錯日誌"
+
+#: 
+msgid "SMTP Host is not configured."
+msgstr "SMTP 主機未設定。"
+
+#: 
+msgid "SMTP configuration test — if this arrived, your setup works."
+msgstr "SMTP 設定測試——若您收到此郵件，表示您的設定正常運作。"
+
+#: 
+msgid "Schema Version"
+msgstr "資料庫結構版本"
+
+#: 
+msgid "Send Again"
+msgstr "重新發送"
+
+#: 
+msgid "Send a test message to verify your SMTP configuration"
+msgstr "發送測試訊息以驗證您的 SMTP 設定"
+
+#: 
+msgid "Server"
+msgstr "伺服器"
+
+#: 
+msgid "Server Version"
+msgstr "伺服器版本"
+
+#: 
+msgid "Session Handler"
+msgstr "工作階段處理器"
+
+#: 
+msgid "Session Save Path"
+msgstr "工作階段儲存路徑"
+
+#: 
+msgid "Settings Valid"
+msgstr "設定有效"
+
+#: 
+msgid "Subject"
+msgstr "主旨"
+
+#: 
+msgid "Test"
+msgstr "測試"
+
+#: 
+msgid "Test email accepted by SMTP server"
+msgstr "測試電子郵件已被 SMTP 伺服器接受"
+
+#: 
+msgid "Test email failed to send"
+msgstr "測試電子郵件發送失敗"
+
+#: 
+msgid "This is a ChurchCRM test email."
+msgstr "這是一封 ChurchCRM 測試電子郵件。"
+
+#: 
+msgid "Timeout"
+msgstr "連線逾時"
+
+#: 
+msgid "Timezone"
+msgstr "時區"
+
+#: 
+msgid "Unable to list web server modules (non-Apache SAPI)."
+msgstr "無法列出網頁伺服器模組（非 Apache SAPI）。"
+
+#: 
+msgid "Update Settings"
+msgstr "更新設定"
+
+#: 
+msgid "View full photo"
+msgstr "檢視完整照片"
+
+#: 
+msgid "page."
+msgstr "頁面。"
+
+#: 
+msgid "user:"
+msgstr "使用者："
+
+#: 
+msgid "1. Download the template"
+msgstr "1. 下載範本"
+
+#: 
+msgid "2. Fill in your data"
+msgstr "2. 填入您的資料"
+
+#: 
+msgid "3. Upload and map"
+msgstr "3. 上傳並對應欄位"
+
+#: 
+msgid "Add Recurring Event"
+msgstr "新增週期性活動"
+
+#: 
+msgid "Available after the event is saved."
+msgstr "活動儲存後即可使用。"
+
+#: 
+msgid "Boolean properties/fields accept yes / no / true / false / 1 / 0."
+msgstr "布林值屬性/欄位接受 yes / no / true / false / 1 / 0。"
+
+#: 
+msgid "ChurchCRM auto-matches each column by name. Anything it cannot match is marked as Unmapped — pick a field or leave it as Ignore."
+msgstr "ChurchCRM 會依名稱自動比對每個欄位。無法比對的欄位會標記為「未對應」——請選擇一個欄位或設為忽略。"
+
+#: 
+msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
+msgstr "無法解析 CSV 檔案。請確認它是包含標題列的有效逗號分隔檔案。"
+
+#: 
+msgid "Custom field columns you have not configured are ignored — nothing is created on the fly."
+msgstr "您未設定的自訂欄位欄會被忽略——不會自動建立任何內容。"
+
+#: 
+msgid "Custom fields and properties are supported"
+msgstr "支援自訂欄位與屬性"
+
+#: 
+msgid "Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a month and day with no year."
+msgstr "日期欄位接受 YYYY-MM-DD 或 M/D/YYYY 格式。使用 0000-MM-DD 或 M/D 可輸入無年份的月日。"
+
+#: 
+msgid "Each row is one person. People in the same family share a FamilyID. Leave columns blank when you have no value for them."
+msgstr "每列代表一個人。同一家庭的成員共用一個 FamilyID。無值的欄位請留空。"
+
+#: 
+msgid "Event Timing"
+msgstr "活動時間設定"
+
+#: 
+msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
+msgstr "從「開始日期」到「結束日期」之間每個符合的日期，都將在相同的開始/結束時間建立各自的活動。"
+
+#: 
+msgid "External calendar sharing is disabled"
+msgstr "外部日曆共享已停用"
+
+#: 
+msgid "Failed to load event editor. Please refresh and try again."
+msgstr "載入活動編輯器失敗。請重新整理頁面後再試。"
+
+#: 
+msgid "Family Custom"
+msgstr "家庭自訂"
+
+#: 
+msgid "Family Property"
+msgstr "家庭屬性"
+
+#: 
+msgid "Fields"
+msgstr "欄位"
+
+#: 
+msgid "Go to home"
+msgstr "前往首頁"
+
+#: 
+msgid "Hide advanced options"
+msgstr "隱藏進階選項"
+
+#: 
+msgid "How the CSV Import Works"
+msgstr "CSV 匯入功能說明"
+
+#: 
+msgid "Imported from CSV"
+msgstr "從 CSV 匯入"
+
+#: 
+msgid "Invalid date format"
+msgstr "無效的日期格式"
+
+#: 
+msgid "Loading event editor…"
+msgstr "正在載入活動編輯器……"
+
+#: 
+msgid "No group"
+msgstr "無群組"
+
+#: 
+msgid "Not pinned to any calendar"
+msgstr "未釘選至任何日曆"
+
+#: 
+msgid "Optional — sermon notes, materials, or other details copied to every generated event."
+msgstr "選填——講道筆記、材料或其他詳情，將複製到每個生成的活動中。"
+
+#: 
+msgid "Person / Family"
+msgstr "個人 / 家庭"
+
+#: 
+msgid "Person Custom"
+msgstr "個人自訂"
+
+#: 
+msgid "Person Property"
+msgstr "個人屬性"
+
+#: 
+msgid "Show more options"
+msgstr "顯示更多選項"
+
+#: 
+msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
+msgstr "日曆連結不完整。請與傳送此連結給您的人確認網址。"
+
+#: 
+msgid "The church administrator has not enabled external calendar sharing. Please contact them if you believe this is in error."
+msgstr "教會管理員尚未啟用外部日曆共享。若您認為這是錯誤，請與他們聯繫。"
+
+#: 
+msgid "The start or end date in the link could not be understood. Try the base calendar link without date parameters."
+msgstr "無法識別連結中的開始或結束日期。請嘗試不帶日期參數的基本日曆連結。"
+
+#: 
+msgid "The template already contains every column you can map — the core Person/Family fields plus each custom field and property your site defines."
+msgstr "此範本已包含所有可對應的欄位——包括核心個人/家庭欄位，以及您的系統所定義的每個自訂欄位和屬性。"
+
+#: 
+msgid "The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically."
+msgstr "此範本已包含每個個人/家庭自訂欄位及您所定義的每個屬性的對應欄。若您手動新增欄位，只需使用自訂欄位或屬性的確切名稱作為欄標題，匯入工具即會自動比對。"
+
+#: 
+msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
+msgstr "此日曆連結無效或已被撤銷。請向教會索取最新連結。"
+
+#: 
+msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
+msgstr "將此活動連結至班級或事工名冊——由報到站簽到流程使用。"
+
+#: 
+msgid "Upload a CSV to create families and people in bulk."
+msgstr "上傳 CSV 以批次建立家庭和個人資料。"
+
+#: 
+msgid "Volunteer-entered headcounts, broken down by category."
+msgstr "志工輸入的出席人數，依類別分類。"
+
+#: 
+msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
+msgstr "您的 CSV 檔案有重複的欄位名稱。請重新命名重複的欄位（例如在第二個欄位後加上「(2)」），然後重新上傳。"
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "您確定要永久刪除此捐贈物品嗎？"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "您確定要永久刪除此競拍號嗎？"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "刪除捐贈物品"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "刪除競拍號"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "安全權杖無效。請重試。"
+
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "將公共假期新增至主行事曆。每個所選國家／地區將在側邊欄中成為獨立的可切換行事曆，讓使用者可以單獨顯示或隱藏假期。"
+
+#: 
+msgid "Choose map provider"
+msgstr "選擇地圖服務"
+
+#: 
+msgid "Current database"
+msgstr "目前資料庫"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "示範資料通常僅在全新安裝時載入。現在匯入將在現有資料旁新增範例記錄，可能會產生重複資料。"
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "每個國家／地區在側邊欄中都會有自己的行事曆列。使用各行事曆的切換按鈕可暫時隱藏某個國家／地區，而不會變更外掛設定。"
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "依類別篩選"
+
+#: 
+msgid "Holiday Settings"
+msgstr "假期設定"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "假期（%s）"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "假期依類型標記：官方假期、紀念日、銀行假日、季節性假期與宗教節日。不選取任何類別可顯示所有假期，或選擇特定類型以縮小顯示範圍。"
+
+#: 
+msgid "Import demo data anyway"
+msgstr "仍然匯入示範資料"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "缺少財務承諾識別碼。"
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "未選取任何國家／地區。請在假期行事曆外掛設定中至少選擇一個國家／地區。"
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "所選篩選條件沒有符合的項目。"
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "在 Apple Maps 中開啟"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "在 Google Maps 中開啟"
+
+#: 
+msgid "Open in new tab"
+msgstr "在新分頁中開啟"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "設定國家／地區"
+
+#: 
+msgid "Show all"
+msgstr "顯示全部"
+
+#: 
+msgid "Show:"
+msgstr "顯示："
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "顯示與隱藏個別國家／地區"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "瑞典語"
+
+#: 
+msgid "System"
+msgstr "系統"
+
+#: 
+msgid "Timeline filters"
+msgstr "時間軸篩選"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "若要從乾淨的資料庫重新開始，請在匯入示範資料前，從管理儀表板使用「重設資料庫」功能。"
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "使用國家／地區選擇器選擇一個或多個國家／地區。您新增的每個國家／地區將在側邊欄中顯示為獨立的行事曆項目，讓您可以顯示全球會眾的假期。"
+
+#: 
+msgid "Your database already contains data"
+msgstr "您的資料庫已包含資料"
+
+#: 
+msgid "people"
+msgstr "人員"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "安裝外掛需要提供下載網址（downloadUrl）。"
+
+#: 
+msgid "All three fields are required."
+msgstr "三個欄位都是必填項目。"
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "已核准的社群外掛"
+
+#: 
+msgid "Browse Approved"
+msgstr "瀏覽已核准的外掛"
+
+#: 
+msgid "Check for Updates"
+msgstr "檢查更新"
+
+#: 
+msgid "Checking…"
+msgstr "檢查中…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "清除隔離"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "僅在根本問題已修復後才清除隔離。伺服器拒絕啟用已隔離的外掛。"
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "點選上方「瀏覽已核准的外掛」以安裝已審核的外掛，或點選「從網址安裝」以在開發期間安裝未經驗證的版本。"
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "清除外掛隔離失敗"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "清除隔離失敗"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "安裝外掛失敗"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "從網址安裝外掛失敗"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "載入已核准外掛清單失敗"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "載入已核准外掛清單失敗。"
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "重新整理外掛登錄失敗"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "重新整理外掛登錄失敗。請檢查您的網路連線。"
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "解除安裝外掛失敗"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "正在擷取最新登錄…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "請向外掛作者取得此值。若不能逐位元組完全相符，安裝程式將拒絕下載。"
+
+#: 
+msgid "Homepage"
+msgstr "首頁"
+
+#: 
+msgid "Install"
+msgstr "安裝"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "從網址安裝外掛（未驗證）"
+
+#: 
+msgid "Install Unverified"
+msgstr "安裝未驗證外掛"
+
+#: 
+msgid "Install failed"
+msgstr "安裝失敗"
+
+#: 
+msgid "Install from URL"
+msgstr "從網址安裝"
+
+#: 
+msgid "Installing…"
+msgstr "安裝中…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "使用 kebab-case 格式。必須與 zip 壓縮檔內的頂層目錄名稱以及 plugin.json 中的 id 相符。"
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "正在載入已核准外掛清單…"
+
+#: 
+msgid "Loading…"
+msgstr "載入中…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "與已核准外掛清單中的項目相符"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "必須是透過 HTTPS 提供的不可變更發行版本網址。"
+
+#: 
+msgid "Plugin id"
+msgstr "外掛 ID"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "外掛已安裝為「未驗證」狀態。請在啟用前仔細審閱解壓縮的檔案。"
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "外掛已安裝。請審閱後點選「啟用」以啟動。"
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "外掛隔離已清除。您現在可以再次啟用該外掛。"
+
+#: 
+msgid "Plugin quarantined"
+msgstr "外掛已隔離"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "外掛登錄已重新整理。"
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "外掛已解除安裝"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "外掛已解除安裝。"
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "外掛 zip 網址（僅限 HTTPS）"
+
+#: 
+msgid "Quarantined"
+msgstr "已隔離"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "啟用前請先審閱磁碟上的外掛檔案。未驗證的外掛與已核准的外掛具有相同的執行權限。"
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "SHA-256 檢查碼"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "SHA-256 必須是 64 個字元的十六進位字串。"
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "ChurchCRM 維護者尚未審閱此外掛。您安裝的任何內容，其安全性與行為由您自行負責。請盡可能優先使用「瀏覽已核准的外掛」流程。"
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "已核准外掛清單為空。目前尚無第三方外掛可透過已驗證安裝程式取得。"
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "外掛在執行時發生錯誤後已自動停用。"
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "這些外掛已由 ChurchCRM 維護者審閱並核准。點選「安裝」以下載並安裝——外掛不會自動啟用。"
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "此外掛不在 ChurchCRM 已核准外掛清單中。"
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "此外掛將以「未驗證」狀態安裝。"
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "網址必須使用 HTTPS。"
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "解除安裝（從磁碟刪除）"
+
+#: 
+msgid "Unverified plugin"
+msgstr "未驗證的外掛"
+
+#: 
+msgid "Verified"
+msgstr "已驗證"
+
+#: 
+msgid "What this plugin does:"
+msgstr "此外掛的功能："
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "未驗證安裝需要同時提供 downloadUrl、sha256 和 pluginId。"
+
+#: 
+msgid "risk"
+msgstr "風險"
+
+#: 
+msgid "Name cannot be empty"
+msgstr "名稱不可為空"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "名稱不可超過 %d 個字元"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "需要協助？請聯絡我們"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "未選取行事曆——此活動將顯示在「未釘選活動」系統行事曆中，直到您釘選它為止。"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "開啟 2 分鐘的時間窗口讓裝置在此處登錄："
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "時間使用教會時區（{{church}}），而非您的瀏覽器時區（{{browser}}）。"
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "歡迎——請登入以管理您的社群"
 

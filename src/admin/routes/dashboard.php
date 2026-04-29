@@ -15,6 +15,14 @@ use Slim\Views\PhpRenderer;
 $app->get('/get-started', function (Request $request, Response $response) {
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
+    // Determine whether the database already contains user data. The demo
+    // data import API only runs on a truly fresh install (exactly 1 person,
+    // no families). When data is present we surface a warning in the UI
+    // *before* the user clicks, instead of letting them discover the 403.
+    $personCount = PersonQuery::create()->count();
+    $familyCount = FamilyQuery::create()->count();
+    $hasExistingData = $personCount > 1 || $familyCount > 0;
+
     $pageArgs = [
         'sRootPath'  => SystemURLs::getRootPath(),
         'sPageTitle' => gettext('Get Your Data Into ChurchCRM'),
@@ -23,6 +31,9 @@ $app->get('/get-started', function (Request $request, Response $response) {
             [gettext('Admin'), '/admin/'],
             [gettext('Get Started')],
         ]),
+        'hasExistingData' => $hasExistingData,
+        'personCount'     => $personCount,
+        'familyCount'     => $familyCount,
     ];
 
     return $renderer->render($response, 'get-started.php', $pageArgs);

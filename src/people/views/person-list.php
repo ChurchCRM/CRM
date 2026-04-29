@@ -2,6 +2,7 @@
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
@@ -295,7 +296,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         
                         // Make family name clickable to family view
                         if ($column->displayFunction === 'getFamilyName') {
-                            $familyLink = '<a href="' . SystemURLs::getRootPath() . '/people/family/' . $person->getFamId() . '">' . InputUtils::escapeHTML($columnData) . '</a>';
+                            $familyLink = '<a href="' . Family::getFamilyViewURIForId((int) $person->getFamId()) . '">' . InputUtils::escapeHTML($columnData) . '</a>';
                             // Check if family is inactive using Family::isActive()
                             $family = $person->getFamily();
                             if ($family && !$family->isActive()) {
@@ -316,7 +317,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         }
                         // Make person name clickable and add gender icon, role, and photo icon
                         elseif (in_array($column->displayFunction, ['getFullName', 'getFirstName', 'getLastName'], true)) {
-                            echo '<a href="' . SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $person->getId() . '" class="fw-bold">' . InputUtils::escapeHTML($columnData) . '</a>';
+                            echo '<a href="' . $person->getViewURI() . '" class="fw-bold">' . InputUtils::escapeHTML($columnData) . '</a>';
                             // Add role in parentheses
                             $role = $person->getFamilyRoleName();
                             if (!empty($role) && $role !== 'Unassigned') {
@@ -407,14 +408,14 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                             <i class="ti ti-dots-vertical"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-end">
-                            <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $person->getId() ?>">
+                            <a class="dropdown-item" href="<?= $person->getViewURI() ?>">
                                 <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
                             </a>
                             <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $person->getId() ?>">
                                 <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
                             </a>
                             <?php if ($person->getFamId()): ?>
-                            <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/people/family/<?= $person->getFamId() ?>">
+                            <a class="dropdown-item" href="<?= Family::getFamilyViewURIForId((int) $person->getFamId()) ?>">
                                 <i class="ti ti-users me-2"></i><?= gettext('View Family') ?>
                             </a>
                             <?php endif; ?>

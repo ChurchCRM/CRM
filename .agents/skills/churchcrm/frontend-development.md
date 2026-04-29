@@ -1312,3 +1312,101 @@ function updateTitleFeedback() {
   titleFb.style.display = show ? "block" : "none";
 }
 ```
+
+### Direct jQuery Click Bindings Override Global Delegated Handlers <!-- learned: 2026-04-22 -->
+
+jQuery direct bindings (`$(".class").click(fn)`) fire **before** delegated handlers
+(`$(document).on("click", ".class", fn)`). When a global handler is registered in
+`CRMJSOM.js` and a page-specific JS file also binds the same selector directly,
+the page-specific handler wins — and the global handler never runs.
+
+The CI failure in `standard.person.delete.spec.js` traced to a stale handler
+in `MemberView.js` that redirected to `/v2/dashboard` instead of `/people/list`,
+overriding the correct delegated handler in `CRMJSOM.js`.
+
+**Rule:** When moving a click handler from a per-page JS file into the global
+delegated handler in `CRMJSOM.js`, **search and remove every direct binding for
+that selector across all page-specific JS files** before shipping.
+
+```bash
+# Find all direct bindings for a selector across webpack/ and src/skin/js/
+grep -r '\.delete-person\|\.AddToCart' webpack/ src/skin/js/ --include="*.js" --include="*.ts"
+```
+
+If the page-specific file no longer needs any code, replace it with a comment
+header only (never leave empty files — Webpack may warn):
+
+```js
+// Click handlers are registered globally in CRMJSOM.js.
+```
+
+### Literal `</script>` Inside an Inline `<script>` Block Closes the Tag <!-- learned: 2026-04-25 -->
+
+The HTML parser scans an inline `<script>` body for `</script>` *as text* — it
+doesn't understand JS comments, string literals, or template literals. A stray
+`</script>` anywhere in the script — even inside `// ...` or `/* ... */` — ends
+the script tag at that position, and everything after it is treated as HTML.
+Symptom: `SyntaxError: Unexpected end of input` for every page that loads the
+file, and the latter half of the script never executes (DataTables, click
+handlers, polling intervals all silently dead).
+
+This bit PR #8805: a comment explaining a security rationale read
+`// backslashes / newlines / </script> can still break out.` — the literal
+`</script>` killed the entire Kiosk Manager page and failed 9 Cypress UI specs.
+
+**Rule:** Never write the literal characters `</script>` inside any inline
+`<script nonce="...">` block. Reword (`closing-script tag`), split (`</scr` +
+`ipt>`), or escape (`<\/script>`).
+
+```php
+<script nonce="...">
+  // ❌ BREAKS THE PAGE
+  // backslashes / newlines / </script> can still break out
+
+  // ✅ SAFE — same meaning, no closing tag
+  // backslashes / newlines / closing-script tags can still break out
+</script>
+```
+
+Inline `<script>` blocks are common in Slim views (`src/**/views/*.php`,
+`src/**/templates/*.php`). When working in those, scan your edits for any
+literal `</script>` before saving.
+
+### User-Controlled Strings in Inline `onclick` — Data-Attrs + Delegated Handler <!-- learned: 2026-04-25 -->
+
+`onclick="myFunc('${escapeHtml(name)}')"` looks safe but isn't:
+
+1. `escapeHtml()` produces HTML entities (`&#039;`, `&amp;`). Inside an
+   `onclick` JS string, those entities show up **literally** at runtime
+   (e.g. the rename prompt prefills with `O&#039;Brien` instead of `O'Brien`).
+2. JS-string breakout characters (`'`, `\`, newlines, `</script>`) aren't
+   escaped by `escapeHtml()`. A name like `\'); alert(1); //` still breaks out.
+3. CSP forbids inline `onclick` outright (the project rule lives in
+   MEMORY.md → "no inline `onclick` (CSP)").
+
+**Pattern:** put the user string into an HTML attribute (`escapeHtml()` IS the
+right encoding here — attribute context), then read it from a delegated click
+handler.
+
+```js
+// In the row renderer (DataTables, list, etc.)
+var nameAttr = window.CRM.escapeHtml(row.Name);  // attribute-safe
+var html = '<button class="btn btn-outline-secondary"' +
+  ' data-row-action="rename"' +
+  ' data-row-id="' + row.Id + '"' +
+  ' data-row-name="' + nameAttr + '"' +
+  ' title="Rename"><i class="fa-solid fa-pen"></i></button>';
+
+// Once, after the table is initialized
+$("#MyTable").on("click", "[data-row-action]", function() {
+  var action = $(this).data("row-action");
+  var id = parseInt($(this).data("row-id"), 10);
+  var name = String($(this).data("row-name") || "");  // jQuery decodes HTML entities back to the original
+  if (action === "rename") {
+    renameRow(id, name);
+  }
+});
+```
+
+`$(...).data()` decodes the attribute value back to the original string — the
+JS-context concerns disappear because the string never enters a JS literal.

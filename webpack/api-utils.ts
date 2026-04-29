@@ -15,7 +15,7 @@
  * @returns The root path (e.g., '', '/churchcrm', '/crm')
  */
 export function getRootPath(): string {
-  return (window as any).CRM?.root || "";
+  return window.CRM?.root ?? "";
 }
 
 /**
@@ -106,7 +106,7 @@ export async function fetchAdminAPI(path: string, options: RequestInit = {}): Pr
  * @param options - Fetch options
  * @returns Promise resolving to parsed JSON response
  */
-export async function fetchAPIJSON<T = any>(path: string, options: RequestInit = {}): Promise<T> {
+export async function fetchAPIJSON<T = unknown>(path: string, options: RequestInit = {}): Promise<T> {
   const response = await fetchAPI(path, options);
   return response.json();
 }
@@ -118,7 +118,7 @@ export async function fetchAPIJSON<T = any>(path: string, options: RequestInit =
  * @param options - Fetch options
  * @returns Promise resolving to parsed JSON response
  */
-export async function fetchAdminAPIJSON<T = any>(path: string, options: RequestInit = {}): Promise<T> {
+export async function fetchAdminAPIJSON<T = unknown>(path: string, options: RequestInit = {}): Promise<T> {
   const response = await fetchAdminAPI(path, options);
   return response.json();
 }

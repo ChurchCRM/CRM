@@ -1,0 +1,75 @@
+name: Sync Release Changelog
+
+# Fires automatically when a release is published.
+# Can also be triggered manually to re-sync or back-fill any version.
+#
+# Steps:
+#   1. Writes changelog/<tag>.md from the GitHub Release title + body.
+#   2. Inserts a new row in CHANGELOG.md and commits to master.
+#   3. Generates X / Facebook / LinkedIn marketing posts and attaches
+#      them as a downloadable artifact on this Actions run.
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag to sync (e.g. 7.3.0)'
+        required: true
+        type: string
+      force:
+        description: 'Overwrite changelog/<tag>.md if it already exists'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN:          ${{ github.token }}
+      GH_REPO:           ${{ github.repository }}
+      GITHUB_TOKEN:      ${{ github.token }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      # Auto-trigger: release tag. Manual trigger: workflow_dispatch input.
+      TAG: ${{ github.event.release.tag_name || inputs.tag }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Sync changelog file and CHANGELOG.md table
+        env:
+          FORCE: ${{ inputs.force == true && '--force' || '' }}
+        run: node scripts/release-changelog.js "$TAG" $FORCE
+
+      - name: Commit and push
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add CHANGELOG.md "changelog/${TAG}.md"
+          if git diff --cached --quiet; then
+            echo "Nothing to commit — files already up to date."
+          else
+            git commit -m "chore(changelog): sync ${TAG} release notes"
+            git push origin master
+          fi
+
+      - name: Generate marketing posts
+        run: |
+          mkdir -p /tmp/marketing
+          node scripts/release-marketing.js "$TAG" > "/tmp/marketing/${TAG}-social-posts.md"
+
+      - name: Attach marketing posts as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: marketing-posts-${{ env.TAG }}
+          path: /tmp/marketing/${{ env.TAG }}-social-posts.md
+          retention-days: 30

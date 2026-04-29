@@ -145,7 +145,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <div class="card-body p-3 text-center">
 
                                 <!-- Avatar -->
-                                <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $person->getId() ?>"
+                                <a href="<?= $person->getViewURI() ?>"
                                    class="d-block mb-3">
                                     <?php if ($hasPhoto): ?>
                                         <span class="avatar avatar-xl rounded"
@@ -160,7 +160,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
                                 <!-- Name -->
                                 <div class="fw-bold lh-sm">
-                                    <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $person->getId() ?>"
+                                    <a href="<?= $person->getViewURI() ?>"
                                        class="text-reset">
                                         <?= InputUtils::escapeHTML($person->getFirstName()) ?>
                                         <?= InputUtils::escapeHTML($person->getLastName()) ?>

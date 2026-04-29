@@ -651,10 +651,6 @@ msgid "Save Changes"
 msgstr "Lưu thay đổi"
 
 #: 
-msgid "Church Event Editor"
-msgstr "Chỉnh sửa sự kiện Hội Thánh"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Chỉnh sửa loại sự kiện"
 
@@ -720,20 +716,8 @@ msgid "Create Event"
 msgstr "Tạo sự kiện"
 
 #: 
-msgid "Create a new Event"
-msgstr "Tạo sự kiện mới"
-
-#: 
-msgid "Select your event type"
-msgstr "Lựa chọn loại sự kiện"
-
-#: 
 msgid "Event Status"
 msgstr "Trạng thái sự kiện"
-
-#: 
-msgid "Return to Events"
-msgstr "Quay về sự kiện"
 
 #: 
 msgid "Sundays"
@@ -1191,10 +1175,6 @@ msgid "Summary Data"
 msgstr "Dữ liệu tóm tắt"
 
 #: 
-msgid "CSV"
-msgstr "CSV"
-
-#: 
 msgid "Back"
 msgstr "Quay lại"
 
@@ -1318,10 +1298,6 @@ msgstr "Định dạng tệp dữ liệu"
 #: 
 msgid "GPS Visualizer"
 msgstr "Trình hiển thị GPS"
-
-#: 
-msgid "Street Atlas USA"
-msgstr "Bản đồ đường phố Hoa Kỳ"
 
 #: 
 #, fuzzy
@@ -2352,26 +2328,6 @@ msgstr "Số lượng quá lớn. Phải nằm trong khoảng từ -2147483648 
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Số tiền quá lớn. Tối đa là $ 999999999,99"
 
-#: 
-msgid " Bold Italic"
-msgstr "In nghiêng đậm"
-
-#: 
-msgid " Italic"
-msgstr "In nghiêng"
-
-#: 
-msgid " Bold"
-msgstr "Dũng cảm"
-
-#: 
-msgid "Error making API Call to"
-msgstr "Lỗi khi thực hiện lệnh gọi API tới"
-
-#: 
-msgid "Error text"
-msgstr "Văn bản lỗi"
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -3064,10 +3020,6 @@ msgstr "Cài đặt vé gửi tiền QuickBooks"
 #: 
 msgid "Add Church Event"
 msgstr "Thêm sự kiện mới"
-
-#: 
-msgid "List Event Types"
-msgstr "Loại sự kiện"
 
 #: 
 msgid "Check-in and Check-out"
@@ -4632,11 +4584,6 @@ msgstr "tiếng Nga"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "Sami (Miền Bắc) (Thụy Điển)"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "Người Albanian"
 
@@ -4921,10 +4868,6 @@ msgid "Notification for"
 msgstr "Thông báo cho"
 
 #: 
-msgid "ERROR"
-msgstr "XUẤT HIỆN LỖI"
-
-#: 
 msgid "Title FirstName MiddleName LastName"
 msgstr "Tiêu đề FirstName MiddleName LastName"
 
@@ -5089,7 +5032,8 @@ msgid "Indonesian - Indonesia"
 msgstr "Indonesia - Indonesia"
 
 #: 
-msgid "records(s) successfully added to selected Group."
+#, fuzzy
+msgid "record(s) successfully added to selected Group."
 msgstr "(các) bản ghi được thêm thành công vào Nhóm đã chọn."
 
 #: 
@@ -5119,10 +5063,6 @@ msgstr "Gia đình mới đã được thêm"
 #: 
 msgid "Church Greeter"
 msgstr "Church Greeter"
-
-#: 
-msgid "External Calendar API is disabled"
-msgstr "API lịch bên ngoài bị tắt"
 
 #: 
 msgid "Special Group Settings : Sunday School Type"
@@ -5401,7 +5341,8 @@ msgid "Remove All from Cart"
 msgstr "Xóa tất cả trong giỏ"
 
 #: 
-msgid "records(s) successfully deleted from the selected Group."
+#, fuzzy
+msgid "record(s) successfully deleted from the selected Group."
 msgstr "(các) bản ghi đã được xóa thành công khỏi Nhóm đã chọn."
 
 #: 
@@ -5551,16 +5492,8 @@ msgid "Missing calendar access token"
 msgstr "Thiếu mã thông báo truy cập lịch"
 
 #: 
-msgid "Calendar access token not found"
-msgstr "Không tìm thấy mã thông báo truy cập lịch"
-
-#: 
 msgid "User must have Delete Records permission"
 msgstr "Người dùng phải có quyền Xóa Bản ghi"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "URL thông báo trung tâm của ChurchCRM"
 
 #: 
 msgid "invalid event type id"
@@ -5639,10 +5572,6 @@ msgstr "Tên quốc gia được cung cấp không hợp lệ"
 #: 
 msgid "LastName FirstName"
 msgstr "Họ và tên"
-
-#: 
-msgid "Holidays"
-msgstr "Ngày lễ"
 
 #: 
 msgid "Person Name"
@@ -5818,10 +5747,6 @@ msgid "Portuguese - Portugal"
 msgstr "Tiếng Bồ Đào Nha - Bồ Đào Nha"
 
 #: 
-msgid "Holiday"
-msgstr "Ngày lễ"
-
-#: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Chỉ định tên ứng dụng sẽ được hiển thị trong ứng dụng xác thực"
 
@@ -5881,10 +5806,6 @@ msgstr "Không có email nào được chuyển vào"
 #: 
 msgid "Mailchimp is not active"
 msgstr "Mailchimp không hoạt động"
-
-#: 
-msgid "Mailchimp"
-msgstr "Mailchimp"
 
 #: 
 msgid "Lists"
@@ -5970,10 +5891,6 @@ msgstr "Bản văn"
 #: 
 msgid "Event Description"
 msgstr "Mô tả sự kiện"
-
-#: 
-msgid "Help translate this project"
-msgstr "Giúp dịch dự án này"
 
 #. Context: locales
 #: 
@@ -6891,7 +6808,8 @@ msgid "Total Payments"
 msgstr "Tổng khoản thu"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payments?"
 msgstr "khoản thanh toán?"
 
 #: 
@@ -6905,10 +6823,6 @@ msgstr "URL cơ sở"
 #: 
 msgid "Copy"
 msgstr "Sao chép"
-
-#: 
-msgid "DSN"
-msgstr "DSN"
 
 #: 
 msgid "Debug Info"
@@ -6971,20 +6885,8 @@ msgid "SMTP Host"
 msgstr "Máy chủ SMTP"
 
 #: 
-msgid "Software"
-msgstr "Phần mềm"
-
-#: 
-msgid "System & Configuration"
-msgstr "Hệ thống & Cấu hình"
-
-#: 
 msgid "Tip:"
 msgstr "Mẹo:"
-
-#: 
-msgid "Valid Settings"
-msgstr "Cài đặt hợp lệ"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7044,10 +6946,6 @@ msgid "Attendance Count Categories"
 msgstr "Các danh mục đếm số người tham dự"
 
 #: 
-msgid "Attendance Notes"
-msgstr "Ghi chú hiện diện"
-
-#: 
 msgid "Change Event"
 msgstr "Thay đổi sự kiện"
 
@@ -7103,14 +7001,6 @@ msgstr "Xóa sự kiện"
 msgid "Edit Event"
 msgstr "Chỉnh sửa sự kiện"
 
-#: 
-msgid "Editing Event"
-msgstr "Đang chỉnh sửa sự kiện"
-
-#: 
-msgid "Enter event title..."
-msgstr "Nhập tiêu đề sự kiện..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7161,14 +7051,6 @@ msgid "None (one-time event)"
 msgstr "Không (sự kiện một lần)"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "Tùy chọn - Thêm ghi chú bài giảng hoặc chi tiết sự kiện bổ sung"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "Ghi chú tùy chọn về việc tham dự..."
-
-#: 
 msgid "People Checked In"
 msgstr "Những người đã điểm danh"
 
@@ -7203,10 +7085,6 @@ msgstr "Tìm người giám sát..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "Chọn sự kiện để điểm danh"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "Nội dung Bài giảng / Sự kiện"
 
 #: 
 msgid "Unclassified"
@@ -7998,10 +7876,6 @@ msgid "Orphaned Files:"
 msgstr "Các tệp mồ côi:"
 
 #: 
-msgid "PDF/CSV"
-msgstr "PDF/CSV"
-
-#: 
 msgid "Payment"
 msgstr "Thanh toán"
 
@@ -8238,10 +8112,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "URL cơ sở chưa được cấu hình trong Config.php"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "Các ngôn ngữ được ChurchCRM hỗ trợ"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "Kết nối với máy chủ của bạn qua SSH, FTP hoặc bảng điều khiển lưu trữ"
 
@@ -8288,10 +8158,6 @@ msgstr "Ngôn ngữ"
 #: 
 msgid "Local development:"
 msgstr "Phát triển cục bộ:"
-
-#: 
-msgid "Locale Support"
-msgstr "Hỗ trợ ngôn ngữ địa phương"
 
 #: 
 msgid "Location & Contact Information"
@@ -8460,10 +8326,6 @@ msgstr "Gửi xác nhận"
 #: 
 msgid "Thank You!"
 msgstr "Xin cảm ơn!"
-
-#: 
-msgid "Translation incomplete"
-msgstr "Bản dịch chưa hoàn thành"
 
 #: 
 msgid "Visit Our Website"
@@ -9110,10 +8972,6 @@ msgid "Failed to save the downloaded release file. Please check disk space and p
 msgstr "Không thể lưu tệp phát hành đã tải xuống. Vui lòng kiểm tra dung lượng đĩa và quyền."
 
 #: 
-msgid "Invalid date format in start parameter"
-msgstr "Định dạng ngày không hợp lệ trong tham số bắt đầu"
-
-#: 
 msgid "Mismatch"
 msgstr "Không khớp"
 
@@ -9511,10 +9369,6 @@ msgid "Important"
 msgstr "Quan trọng"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "Cài đặt plugin bằng cách đặt chúng vào"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "Mã không hợp lệ. Vui lòng thử lại."
 
@@ -9573,10 +9427,6 @@ msgstr "Không tìm thấy liên kết"
 #: 
 msgid "Loading recovery codes"
 msgstr "Đang tải mã khôi phục"
-
-#: 
-msgid "MailChimp"
-msgstr "MailChimp"
 
 #: 
 msgid "MailChimp API Key"
@@ -10689,10 +10539,6 @@ msgid "CSV Column"
 msgstr "Cot CSV"
 
 #: 
-msgid "CSV template not found"
-msgstr "Khong tim thay mau CSV"
-
-#: 
 msgid "Call"
 msgstr "Goi"
 
@@ -10769,10 +10615,6 @@ msgid "Community Management Platform"
 msgstr "Nen tang quan ly cong dong"
 
 #: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "Tuong thich voi Excel, Google Sheets hoac bat ky xuat CSV nao."
-
-#: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
 msgstr "Hoan thanh cac buoc nay theo bat ky thu tu nao de chuan bi ChurchCRM cho giao xu cua ban."
 
@@ -10799,10 +10641,6 @@ msgstr "Ket noi may chu SMTP de ChurchCRM co the gui email"
 #: 
 msgid "Connect with others"
 msgstr "Ket noi voi nguoi khac"
-
-#: 
-msgid "Contact us"
-msgstr "Lien he chung toi"
 
 #: 
 msgid "Convert individual records into family units"
@@ -10945,10 +10783,6 @@ msgid "Download CSV Template"
 msgstr "Tai mau CSV"
 
 #: 
-msgid "Download the template to see the expected column format."
-msgstr "Tai mau de xem dinh dang cot mong doi."
-
-#: 
 msgid "Drag and drop your CSV file here"
 msgstr "Keo va tha tep CSV cua ban vao day"
 
@@ -10959,10 +10793,6 @@ msgstr "Ban sao trung"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Moi nguoi co the co email va so di dong rieng."
-
-#: 
-msgid "Each row is one person. Members of the same family share a FamilyID."
-msgstr "Moi dong la mot nguoi. Cac thanh vien cung gia dinh dung chung mot FamilyID."
 
 #: 
 msgid "Easy registration"
@@ -11495,10 +11325,6 @@ msgstr "Thay doi ten can luu lai. Cac thao tac sap xep lai va xoa trong menu han
 #: 
 msgid "Name, address, contact details"
 msgstr "Ten, dia chi, thong tin lien he"
-
-#: 
-msgid "Need help?"
-msgstr "Can giup do?"
 
 #: 
 msgid "New"
@@ -12047,10 +11873,6 @@ msgid "Upload CSV"
 msgstr "Tai len CSV"
 
 #: 
-msgid "Upload a CSV file to import families and people into ChurchCRM."
-msgstr "Tai len tep CSV de nhap gia dinh va nguoi vao ChurchCRM."
-
-#: 
 msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
 msgstr "Tai len CSV tu Excel, Google Sheets hoac he thong quan ly giao hoi truoc do va ghep noi cot voi truong ChurchCRM."
 
@@ -12273,10 +12095,6 @@ msgstr "thanh vien"
 #: 
 msgid "opportunities"
 msgstr "co hoi"
-
-#: 
-msgid "options"
-msgstr "tuy chon"
 
 #: 
 msgid "or connect an external service"
@@ -12513,10 +12331,6 @@ msgstr "Dang ky va quan ly thiet bi kiosk de dang ky vao su kien"
 #: 
 msgid "Review & Delete"
 msgstr "Xem lai va xoa"
-
-#: 
-msgid "SHA1 Hash"
-msgstr "Ma bam SHA1"
 
 #: 
 msgid "Signature Mismatch"
@@ -14456,10 +14270,6 @@ msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d sự kiện lặp lại đã được tạo thành công."
 
 #: 
-msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
-msgstr "(ví dụ: Giáo dân, Khách, Trẻ em) để các tình nguyện viên có thể ghi số lượng tại đây."
-
-#: 
 msgid "1. Sunday School Class"
 msgstr "1. Lớp Giáo lý Chúa nhật"
 
@@ -14480,10 +14290,6 @@ msgid "A class is a Group with type \"Sunday School\". It holds the students and
 msgstr "Một lớp là một Nhóm có loại \"Giáo lý Chúa nhật\". Bao gồm học viên và giáo lý viên (giáo dân có vai trò)."
 
 #: 
-msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
-msgstr "Một nhóm được liên kết gắn sự kiện này với danh sách lớp học hoặc hội đoàn. Khi sự kiện được gán cho Kiosk, kiosk sẽ tải danh sách thành viên nhóm và hiển thị dưới dạng danh sách đăng ký. Đối với các lớp Giáo lý Chúa nhật, hãy liên kết nhóm lớp ở đây để tình nguyện viên có thể điểm danh học viên từ máy tính bảng."
-
-#: 
 msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
 msgstr "Một lần tổ chức cụ thể (ví dụ: \"Mẫu giáo — 12/4\"). Kế thừa cài đặt mặc định từ loại và được liên kết với nhóm lớp qua đối tượng tham dự. Đây là cơ sở để tình nguyện viên điểm danh."
 
@@ -14494,10 +14300,6 @@ msgstr "Máy tính bảng được gán cho một sự kiện. Kiosk tải danh 
 #: 
 msgid "Add Walk-in / Visitor"
 msgstr "Thêm khách vãng lai / Người viếng thăm"
-
-#: 
-msgid "Add categories on the Event Type page"
-msgstr "Thêm danh mục trên trang Loại sự kiện"
 
 #: 
 msgid "Add people to your cart first, then come back to check them in to an event."
@@ -14546,10 +14348,6 @@ msgstr "Kiểm tra"
 #: 
 msgid "Audit Events"
 msgstr "Kiểm tra sự kiện"
-
-#: 
-msgid "Auto-totalled from counts at right"
-msgstr "Tự động tính tổng từ các số liệu bên phải"
 
 #: 
 msgid "Back to Events"
@@ -14676,10 +14474,6 @@ msgid "Database dump only (.sql)"
 msgstr "Chỉ kết xuất cơ sở dữ liệu (.sql)"
 
 #: 
-msgid "Date Range"
-msgstr "Phạm vi ngày"
-
-#: 
 msgid "Date range cannot exceed 1 year"
 msgstr "Phạm vi ngày không được vượt quá 1 năm"
 
@@ -14760,10 +14554,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "Sự kiện đã được tạo. Đang chuyển đến trang đăng ký..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "Ngày/giờ kết thúc sự kiện phải bằng hoặc sau ngày/giờ bắt đầu."
-
-#: 
 msgid "Event title is required."
 msgstr "Tiêu đề sự kiện là bắt buộc."
 
@@ -14790,10 +14580,6 @@ msgstr "Loại sự kiện chưa được cấu hình mẫu lặp lại"
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "Loại sự kiện chưa được cấu hình ngày trong tháng hợp lệ cho lặp lại hàng tháng"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "Sự kiện sẽ được tạo cho mỗi lần phù hợp trong phạm vi ngày này."
 
 #: 
 msgid "Every month on the"
@@ -14844,10 +14630,6 @@ msgid "Group Roster"
 msgstr "Danh sách nhóm"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "Ẩn tùy chọn nâng cao"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Cách Giáo lý Chúa nhật + Sự kiện + Kiosk hoạt động cùng nhau"
 
@@ -14858,10 +14640,6 @@ msgstr "Ngày không hợp lệ cho %s — dự kiến YYYY-MM-DD"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Định dạng ngày không hợp lệ cho rangeStart hoặc rangeEnd"
-
-#: 
-msgid "Invalid date format."
-msgstr "Định dạng ngày không hợp lệ."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -14916,10 +14694,6 @@ msgid "No active events found."
 msgstr "Không tìm thấy sự kiện đang hoạt động."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "Chưa có danh mục đếm điểm danh nào được xác định cho loại sự kiện này."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "Chưa có ai đăng ký tham dự sự kiện này."
 
@@ -14960,10 +14734,6 @@ msgid "Please select a person to check in."
 msgstr "Vui lòng chọn một người để đăng ký."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "Được điền tự động dựa trên loại sự kiện này — đối với các loại lặp lại, ngày là lần tiếp theo sau sự kiện cuối cùng của loại này, và thời gian khớp với thời gian bắt đầu mặc định của loại."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "Ngày kết thúc phạm vi phải bằng hoặc sau ngày bắt đầu phạm vi."
 
@@ -14992,10 +14762,6 @@ msgid "Recommended"
 msgstr "Được khuyến nghị"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "Bắt buộc cho Kiosk"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "Đặt lại sẽ xóa vĩnh viễn:"
 
@@ -15014,14 +14780,6 @@ msgstr "Lưu thay đổi cho tên danh mục này"
 #: 
 msgid "Select an event type…"
 msgstr "Chọn loại sự kiện…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "Chọn ngày/giờ bắt đầu và kết thúc."
-
-#: 
-msgid "Show More Options"
-msgstr "Hiển thị thêm tùy chọn"
 
 #: 
 msgid "Skip"
@@ -15064,16 +14822,8 @@ msgid "The Events module is disabled"
 msgstr "Mô-đun Sự kiện bị tắt"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "Thời gian bắt đầu và kết thúc giống nhau sẽ được sử dụng cho tất cả sự kiện được tạo."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "Không có sự kiện nào được lên lịch cho hôm nay"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "Đây là các nhóm đếm số lượng — tình nguyện viên điền vào sau sự kiện để bảng điều khiển có thể phân tích điểm danh (ví dụ: bao nhiêu giáo dân so với khách). Chúng tách biệt với các đăng ký cá nhân trên trang Đăng ký."
 
 #: 
 msgid "This event is inactive."
@@ -15128,16 +14878,8 @@ msgid "View Event"
 msgstr "Xem sự kiện"
 
 #: 
-msgid "What are these for?"
-msgstr "Những thứ này dùng để làm gì?"
-
-#: 
 msgid "What does this find?"
 msgstr "Điều này tìm kiếm gì?"
-
-#: 
-msgid "What is this for?"
-msgstr "Cái này dùng để làm gì?"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15404,10 +15146,6 @@ msgid "Online"
 msgstr "Trực tuyến"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "Mở cửa sổ 30 giây để thiết bị đăng ký tại:"
-
-#: 
 msgid "Pending"
 msgstr "Đang chờ"
 
@@ -15524,14 +15262,6 @@ msgid "Set up Email"
 msgstr "Thiết lập Email"
 
 #: 
-msgid "Test SMTP Email"
-msgstr "Kiểm tra Email SMTP"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "Đây là email kiểm tra của ChurchCRM xác nhận rằng cấu hình SMTP của bạn đang hoạt động."
-
-#: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."
 msgstr "Không thể sao chép vào bộ nhớ tạm. Vui lòng sao chép mã theo cách thủ công."
 
@@ -15546,4 +15276,856 @@ msgstr "Sử dụng mã khôi phục thay thế"
 #: 
 msgid "Use authenticator app instead"
 msgstr "Sử dụng ứng dụng xác thực thay thế"
+
+#: 
+msgid "%d modules loaded"
+msgstr "Đã tải %d mô-đun"
+
+#: 
+msgid "(PHP default)"
+msgstr "(Mặc định PHP)"
+
+#: 
+msgid "(none)"
+msgstr "(Không có)"
+
+#: 
+msgid "(not set)"
+msgstr "(Chưa đặt)"
+
+#: 
+msgid "All checks passing"
+msgstr "Tất cả kiểm tra đều đạt"
+
+#: 
+msgid "App"
+msgstr "Ứng dụng"
+
+#: 
+msgid "Browser time zone differs:"
+msgstr "Múi giờ trình duyệt khác:"
+
+#: 
+msgid "Calendar time zone:"
+msgstr "Múi giờ lịch:"
+
+#: 
+msgid "Cannot send test email"
+msgstr "Không thể gửi email kiểm tra"
+
+#: 
+msgid "Charset"
+msgstr "Bộ ký tự"
+
+#: 
+msgid "Church Email address is not set — the test email has nowhere to go."
+msgstr "Địa chỉ email nhà thờ chưa được đặt — email kiểm tra không có nơi gửi đến."
+
+#: 
+msgid "Church email — configured on the"
+msgstr "Email nhà thờ — được cấu hình trên trang"
+
+#: 
+msgid "ChurchCRM Test Email"
+msgstr "Email kiểm tra ChurchCRM"
+
+#: 
+msgid "Collation"
+msgstr "Đối chiếu"
+
+#: 
+msgid "Connection"
+msgstr "Kết nối"
+
+#: 
+msgid "Database"
+msgstr "Cơ sở dữ liệu"
+
+#: 
+msgid "Delivery"
+msgstr "Gửi thư"
+
+#: 
+msgid "Disk (Images Root)"
+msgstr "Đĩa (Thư mục gốc hình ảnh)"
+
+#: 
+msgid "Display Errors"
+msgstr "Hiển thị lỗi"
+
+#: 
+msgid "Email Debug"
+msgstr "Gỡ lỗi email"
+
+#: 
+msgid "Environment"
+msgstr "Môi trường"
+
+#: 
+msgid "Error Log"
+msgstr "Nhật ký lỗi"
+
+#: 
+msgid "Error Reporting"
+msgstr "Báo cáo lỗi"
+
+#: 
+msgid "Fix Settings"
+msgstr "Sửa cài đặt"
+
+#: 
+msgid "Hit Rate"
+msgstr "Tỷ lệ trúng"
+
+#: 
+msgid "Host"
+msgstr "Máy chủ"
+
+#: 
+msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
+msgstr "Nếu thư không đến trong vài phút, hãy kiểm tra thư mục spam/junk và nhật ký gỡ lỗi SMTP bên dưới."
+
+#: 
+msgid "If you can read this message in your inbox, your SMTP configuration is working correctly."
+msgstr "Nếu bạn đọc được tin nhắn này trong hộp thư đến, cấu hình SMTP của bạn đang hoạt động đúng."
+
+#: 
+msgid "Incomplete"
+msgstr "Chưa hoàn chỉnh"
+
+#: 
+msgid "Installed on Server"
+msgstr "Đã cài đặt trên máy chủ"
+
+#: 
+msgid "Integrity"
+msgstr "Tính toàn vẹn"
+
+#: 
+msgid "Issues detected"
+msgstr "Đã phát hiện sự cố"
+
+#: 
+msgid "Loaded php.ini"
+msgstr "php.ini đã tải"
+
+#: 
+msgid "Locale"
+msgstr "Ngôn ngữ địa phương"
+
+#: 
+msgid "Max Execution Time"
+msgstr "Thời gian thực thi tối đa"
+
+#: 
+msgid "Max POST Size"
+msgstr "Kích thước POST tối đa"
+
+#: 
+msgid "Max Upload Size"
+msgstr "Kích thước tải lên tối đa"
+
+#: 
+msgid "Memory"
+msgstr "Bộ nhớ"
+
+#: 
+msgid "Memory Limit"
+msgstr "Giới hạn bộ nhớ"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
+msgstr "Bây giờ hãy kiểm tra hộp thư của người nhận để xác nhận đã gửi. Tìm tiêu đề:"
+
+#: 
+msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
+msgstr "OPcache chưa được bật. Bật nó là cách ít rủi ro để tăng tốc tải trang PHP."
+
+#: 
+msgid "Off"
+msgstr "Tắt"
+
+#: 
+msgid "On"
+msgstr "Bật"
+
+#: 
+msgid "Open the email debug tester"
+msgstr "Mở công cụ kiểm tra gỡ lỗi email"
+
+#: 
+msgid "PHP Version"
+msgstr "Phiên bản PHP"
+
+#: 
+msgid "PHPMailer SMTP session"
+msgstr "Phiên SMTP PHPMailer"
+
+#: 
+msgid "Prerequisites"
+msgstr "Điều kiện tiên quyết"
+
+#: 
+msgid "Review the SMTP debug log below for the handshake details, then adjust your settings."
+msgstr "Xem nhật ký gỡ lỗi SMTP bên dưới để biết chi tiết bắt tay, sau đó điều chỉnh cài đặt của bạn."
+
+#: 
+msgid "SMTP Configuration"
+msgstr "Cấu hình SMTP"
+
+#: 
+msgid "SMTP Debug Log"
+msgstr "Nhật ký gỡ lỗi SMTP"
+
+#: 
+msgid "SMTP Host is not configured."
+msgstr "Máy chủ SMTP chưa được cấu hình."
+
+#: 
+msgid "SMTP configuration test — if this arrived, your setup works."
+msgstr "Kiểm tra cấu hình SMTP — nếu nhận được thư này, cài đặt của bạn hoạt động đúng."
+
+#: 
+msgid "Schema Version"
+msgstr "Phiên bản lược đồ"
+
+#: 
+msgid "Send Again"
+msgstr "Gửi lại"
+
+#: 
+msgid "Send a test message to verify your SMTP configuration"
+msgstr "Gửi tin nhắn kiểm tra để xác minh cấu hình SMTP của bạn"
+
+#: 
+msgid "Server"
+msgstr "Máy chủ"
+
+#: 
+msgid "Server Version"
+msgstr "Phiên bản máy chủ"
+
+#: 
+msgid "Session Handler"
+msgstr "Trình xử lý phiên"
+
+#: 
+msgid "Session Save Path"
+msgstr "Đường dẫn lưu phiên"
+
+#: 
+msgid "Settings Valid"
+msgstr "Cài đặt hợp lệ"
+
+#: 
+msgid "Subject"
+msgstr "Tiêu đề"
+
+#: 
+msgid "Test"
+msgstr "Kiểm tra"
+
+#: 
+msgid "Test email accepted by SMTP server"
+msgstr "Email kiểm tra đã được máy chủ SMTP chấp nhận"
+
+#: 
+msgid "Test email failed to send"
+msgstr "Email kiểm tra gửi thất bại"
+
+#: 
+msgid "This is a ChurchCRM test email."
+msgstr "Đây là email kiểm tra ChurchCRM."
+
+#: 
+msgid "Timeout"
+msgstr "Hết thời gian"
+
+#: 
+msgid "Timezone"
+msgstr "Múi giờ"
+
+#: 
+msgid "Unable to list web server modules (non-Apache SAPI)."
+msgstr "Không thể liệt kê các mô-đun máy chủ web (SAPI không phải Apache)."
+
+#: 
+msgid "Update Settings"
+msgstr "Cập nhật cài đặt"
+
+#: 
+msgid "View full photo"
+msgstr "Xem ảnh đầy đủ"
+
+#: 
+msgid "page."
+msgstr "trang."
+
+#: 
+msgid "user:"
+msgstr "người dùng:"
+
+#: 
+msgid "1. Download the template"
+msgstr "1. Tải xuống mẫu"
+
+#: 
+msgid "2. Fill in your data"
+msgstr "2. Điền dữ liệu của bạn"
+
+#: 
+msgid "3. Upload and map"
+msgstr "3. Tải lên và ánh xạ"
+
+#: 
+msgid "Add Recurring Event"
+msgstr "Thêm sự kiện định kỳ"
+
+#: 
+msgid "Available after the event is saved."
+msgstr "Có sẵn sau khi sự kiện được lưu."
+
+#: 
+msgid "Boolean properties/fields accept yes / no / true / false / 1 / 0."
+msgstr "Các thuộc tính/trường Boolean chấp nhận yes / no / true / false / 1 / 0."
+
+#: 
+msgid "ChurchCRM auto-matches each column by name. Anything it cannot match is marked as Unmapped — pick a field or leave it as Ignore."
+msgstr "ChurchCRM tự động khớp từng cột theo tên. Bất kỳ cột nào không khớp sẽ được đánh dấu là Chưa ánh xạ — chọn một trường hoặc để là Bỏ qua."
+
+#: 
+msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
+msgstr "Không thể phân tích tệp CSV. Hãy kiểm tra đó là tệp phân cách bằng dấu phẩy hợp lệ có hàng tiêu đề."
+
+#: 
+msgid "Custom field columns you have not configured are ignored — nothing is created on the fly."
+msgstr "Các cột trường tùy chỉnh chưa cấu hình sẽ bị bỏ qua — không có gì được tạo tự động."
+
+#: 
+msgid "Custom fields and properties are supported"
+msgstr "Các trường tùy chỉnh và thuộc tính được hỗ trợ"
+
+#: 
+msgid "Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a month and day with no year."
+msgstr "Các trường ngày chấp nhận YYYY-MM-DD hoặc M/D/YYYY. Dùng 0000-MM-DD hoặc M/D cho tháng và ngày không có năm."
+
+#: 
+msgid "Each row is one person. People in the same family share a FamilyID. Leave columns blank when you have no value for them."
+msgstr "Mỗi hàng là một người. Những người trong cùng gia đình chia sẻ FamilyID. Để trống các cột khi không có giá trị."
+
+#: 
+msgid "Event Timing"
+msgstr "Thời gian sự kiện"
+
+#: 
+msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
+msgstr "Mỗi lần xuất hiện phù hợp giữa Từ và Đến sẽ có sự kiện riêng tại cùng thời gian Bắt đầu/Kết thúc."
+
+#: 
+msgid "External calendar sharing is disabled"
+msgstr "Chia sẻ lịch bên ngoài đã bị tắt"
+
+#: 
+msgid "Failed to load event editor. Please refresh and try again."
+msgstr "Không tải được trình chỉnh sửa sự kiện. Vui lòng làm mới và thử lại."
+
+#: 
+msgid "Family Custom"
+msgstr "Tùy chỉnh gia đình"
+
+#: 
+msgid "Family Property"
+msgstr "Thuộc tính gia đình"
+
+#: 
+msgid "Fields"
+msgstr "Các trường"
+
+#: 
+msgid "Go to home"
+msgstr "Về trang chủ"
+
+#: 
+msgid "Hide advanced options"
+msgstr "Ẩn tùy chọn nâng cao"
+
+#: 
+msgid "How the CSV Import Works"
+msgstr "Cách nhập CSV hoạt động"
+
+#: 
+msgid "Imported from CSV"
+msgstr "Nhập từ CSV"
+
+#: 
+msgid "Invalid date format"
+msgstr "Định dạng ngày không hợp lệ"
+
+#: 
+msgid "Loading event editor…"
+msgstr "Đang tải trình chỉnh sửa sự kiện…"
+
+#: 
+msgid "No group"
+msgstr "Không có nhóm"
+
+#: 
+msgid "Not pinned to any calendar"
+msgstr "Không ghim vào lịch nào"
+
+#: 
+msgid "Optional — sermon notes, materials, or other details copied to every generated event."
+msgstr "Tùy chọn — ghi chú bài giảng, tài liệu hoặc thông tin khác được sao chép vào mọi sự kiện được tạo."
+
+#: 
+msgid "Person / Family"
+msgstr "Cá nhân / Gia đình"
+
+#: 
+msgid "Person Custom"
+msgstr "Tùy chỉnh cá nhân"
+
+#: 
+msgid "Person Property"
+msgstr "Thuộc tính cá nhân"
+
+#: 
+msgid "Show more options"
+msgstr "Hiển thị thêm tùy chọn"
+
+#: 
+msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
+msgstr "Liên kết lịch không đầy đủ. Vui lòng kiểm tra URL với người đã gửi cho bạn."
+
+#: 
+msgid "The church administrator has not enabled external calendar sharing. Please contact them if you believe this is in error."
+msgstr "Quản trị viên nhà thờ chưa bật chia sẻ lịch bên ngoài. Vui lòng liên hệ với họ nếu bạn cho rằng đây là lỗi."
+
+#: 
+msgid "The start or end date in the link could not be understood. Try the base calendar link without date parameters."
+msgstr "Ngày bắt đầu hoặc kết thúc trong liên kết không thể hiểu được. Hãy thử liên kết lịch cơ sở không có tham số ngày."
+
+#: 
+msgid "The template already contains every column you can map — the core Person/Family fields plus each custom field and property your site defines."
+msgstr "Mẫu đã chứa mọi cột bạn có thể ánh xạ — các trường cốt lõi Cá nhân/Gia đình cộng với mỗi trường tùy chỉnh và thuộc tính mà trang web của bạn xác định."
+
+#: 
+msgid "The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically."
+msgstr "Mẫu đã bao gồm một cột cho mọi trường tùy chỉnh Cá nhân/Gia đình và mọi thuộc tính bạn đã xác định. Nếu bạn thêm cột thủ công, chỉ cần sử dụng tên chính xác của trường tùy chỉnh hoặc thuộc tính làm tiêu đề cột và trình nhập sẽ khớp tự động."
+
+#: 
+msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
+msgstr "Liên kết lịch này không hợp lệ hoặc đã bị thu hồi. Hãy hỏi nhà thờ để lấy liên kết hiện tại."
+
+#: 
+msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
+msgstr "Liên kết sự kiện này với danh sách lớp học hoặc chức vụ — được sử dụng bởi quy trình check-in Kiosk."
+
+#: 
+msgid "Upload a CSV to create families and people in bulk."
+msgstr "Tải lên CSV để tạo gia đình và giáo dân hàng loạt."
+
+#: 
+msgid "Volunteer-entered headcounts, broken down by category."
+msgstr "Số lượng người do tình nguyện viên nhập, phân theo danh mục."
+
+#: 
+msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
+msgstr "CSV của bạn có tên cột trùng lặp. Đổi tên các cột trùng lặp (ví dụ: thêm \"(2)\" vào cột thứ hai) và tải lên lại."
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "Bạn có chắc chắn muốn xóa vĩnh viễn vật phẩm được quyên góp này không?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "Bạn có chắc chắn muốn xóa vĩnh viễn số mái chèo này không?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Xóa vật phẩm được quyên góp"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Xóa số mái chèo"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Mã thông báo bảo mật không hợp lệ. Vui lòng thử lại."
+
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "Thêm ngày lễ quốc gia vào lịch chính. Mỗi quốc gia được chọn sẽ trở thành một lịch riêng có thể bật/tắt trong thanh bên, cho phép người dùng hiển thị hoặc ẩn ngày lễ một cách độc lập."
+
+#: 
+msgid "Choose map provider"
+msgstr "Chọn nhà cung cấp bản đồ"
+
+#: 
+msgid "Current database"
+msgstr "Cơ sở dữ liệu hiện tại"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "Dữ liệu mẫu thường chỉ được tải trên các cài đặt mới. Nhập ngay bây giờ sẽ thêm bản ghi mẫu cùng với dữ liệu hiện có và có thể tạo ra các bản trùng lặp."
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "Mỗi quốc gia tạo ra một hàng lịch riêng trong thanh bên. Sử dụng nút bật/tắt theo lịch để tạm thời ẩn một quốc gia mà không thay đổi cài đặt tiện ích của bạn."
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "Lọc theo danh mục"
+
+#: 
+msgid "Holiday Settings"
+msgstr "Cài đặt ngày lễ"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "Ngày lễ (%s)"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "Ngày lễ được phân loại theo: Chính thức, Ngày kỷ niệm, Ngày nghỉ ngân hàng, Theo mùa và Tôn giáo. Để trống tất cả danh mục để hiển thị mọi ngày lễ, hoặc chọn loại cụ thể để thu hẹp hiển thị."
+
+#: 
+msgid "Import demo data anyway"
+msgstr "Nhập dữ liệu mẫu dù sao"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "Thiếu mã định danh cam kết tài chính."
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "Chưa chọn quốc gia nào. Hãy chọn ít nhất một quốc gia trong cài đặt tiện ích Lịch ngày lễ."
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "Không có mục nào khớp với bộ lọc đã chọn."
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "Mở trong Apple Maps"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "Mở trong Google Maps"
+
+#: 
+msgid "Open in new tab"
+msgstr "Mở trong tab mới"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "Thiết lập quốc gia"
+
+#: 
+msgid "Show all"
+msgstr "Hiển thị tất cả"
+
+#: 
+msgid "Show:"
+msgstr "Hiển thị:"
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "Hiển thị và ẩn từng quốc gia"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "Tiếng Thụy Điển"
+
+#: 
+msgid "System"
+msgstr "Hệ thống"
+
+#: 
+msgid "Timeline filters"
+msgstr "Bộ lọc dòng thời gian"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "Để bắt đầu lại với cơ sở dữ liệu sạch, hãy sử dụng Đặt lại cơ sở dữ liệu từ Bảng điều khiển quản trị trước khi nhập dữ liệu mẫu."
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "Sử dụng bộ chọn Quốc gia để chọn một hoặc nhiều quốc gia. Mỗi quốc gia bạn thêm sẽ xuất hiện như một mục lịch riêng trong thanh bên — cho phép bạn hiển thị ngày lễ cho hội chúng toàn cầu."
+
+#: 
+msgid "Your database already contains data"
+msgstr "Cơ sở dữ liệu của bạn đã chứa dữ liệu"
+
+#: 
+msgid "people"
+msgstr "người"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "Cần có downloadUrl để cài đặt tiện ích."
+
+#: 
+msgid "All three fields are required."
+msgstr "Cả ba trường đều bắt buộc."
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "Tiện ích cộng đồng đã được phê duyệt"
+
+#: 
+msgid "Browse Approved"
+msgstr "Duyệt danh sách đã phê duyệt"
+
+#: 
+msgid "Check for Updates"
+msgstr "Kiểm tra cập nhật"
+
+#: 
+msgid "Checking…"
+msgstr "Đang kiểm tra…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "Xóa kiểm dịch"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "Chỉ xóa kiểm dịch sau khi vấn đề cơ bản đã được khắc phục. Máy chủ sẽ từ chối kích hoạt tiện ích đang trong kiểm dịch."
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "Nhấp vào \"Duyệt danh sách đã phê duyệt\" ở trên để cài đặt tiện ích đã được kiểm duyệt, hoặc \"Cài từ URL\" cho bản dựng chưa được xác minh trong quá trình phát triển."
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "Không thể xóa kiểm dịch tiện ích"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "Không thể xóa kiểm dịch"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "Không thể cài đặt tiện ích"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "Không thể cài đặt tiện ích từ URL"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "Không thể tải danh sách tiện ích đã phê duyệt"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "Không thể tải danh sách tiện ích đã phê duyệt."
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "Không thể làm mới kho lưu trữ tiện ích"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "Không thể làm mới kho lưu trữ tiện ích. Kiểm tra kết nối internet của bạn."
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "Không thể gỡ cài đặt tiện ích"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "Đang tải kho lưu trữ mới nhất…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "Lấy thông tin này từ tác giả tiện ích. Trình cài đặt sẽ từ chối tải xuống nếu không khớp từng byte."
+
+#: 
+msgid "Homepage"
+msgstr "Trang chủ"
+
+#: 
+msgid "Install"
+msgstr "Cài đặt"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "Cài đặt tiện ích từ URL (Chưa được xác minh)"
+
+#: 
+msgid "Install Unverified"
+msgstr "Cài đặt chưa xác minh"
+
+#: 
+msgid "Install failed"
+msgstr "Cài đặt thất bại"
+
+#: 
+msgid "Install from URL"
+msgstr "Cài từ URL"
+
+#: 
+msgid "Installing…"
+msgstr "Đang cài đặt…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "Dạng kebab-case. Phải khớp với tên thư mục cấp cao nhất trong file zip và id trong plugin.json."
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "Đang tải danh sách tiện ích đã phê duyệt…"
+
+#: 
+msgid "Loading…"
+msgstr "Đang tải…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "Khớp với một mục trong danh sách tiện ích đã phê duyệt"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "Phải là URL phát hành cố định được phục vụ qua HTTPS."
+
+#: 
+msgid "Plugin id"
+msgstr "ID tiện ích"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "Tiện ích đã được cài đặt ở trạng thái CHƯA XÁC MINH. Hãy xem xét kỹ các tệp đã giải nén trước khi kích hoạt."
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "Tiện ích đã được cài đặt. Xem xét và nhấp Kích hoạt để bật."
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "Kiểm dịch tiện ích đã được xóa. Bây giờ bạn có thể kích hoạt lại tiện ích."
+
+#: 
+msgid "Plugin quarantined"
+msgstr "Tiện ích đã bị kiểm dịch"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "Kho lưu trữ tiện ích đã được làm mới."
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "Tiện ích đã gỡ cài đặt"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "Tiện ích đã được gỡ cài đặt."
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "URL zip tiện ích (chỉ HTTPS)"
+
+#: 
+msgid "Quarantined"
+msgstr "Đang kiểm dịch"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "Xem xét các tệp tiện ích trên đĩa trước khi kích hoạt. Tiện ích chưa được xác minh chạy với cùng quyền như tiện ích đã phê duyệt."
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "Mã kiểm tra SHA-256"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "SHA-256 phải là chuỗi hex 64 ký tự."
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "Nhóm duy trì ChurchCRM chưa xem xét tiện ích này. Bạn chịu trách nhiệm về bảo mật và hoạt động của bất kỳ thứ gì bạn cài đặt ở đây. Ưu tiên sử dụng quy trình Duyệt danh sách đã phê duyệt bất cứ khi nào có thể."
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "Danh sách tiện ích đã phê duyệt trống. Hiện chưa có tiện ích của bên thứ ba nào có sẵn qua trình cài đặt đã xác minh."
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "Tiện ích đã bị tự động vô hiệu hóa sau khi xảy ra lỗi thời gian chạy."
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "Các tiện ích này đã được nhóm duy trì ChurchCRM xem xét và phê duyệt. Nhấp Cài đặt để tải xuống và cài đặt — tiện ích sẽ không được kích hoạt tự động."
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "Tiện ích này không có trong danh sách tiện ích đã phê duyệt của ChurchCRM."
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "Tiện ích này sẽ được cài đặt ở trạng thái CHƯA XÁC MINH."
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "URL phải sử dụng HTTPS."
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "Gỡ cài đặt (xóa khỏi đĩa)"
+
+#: 
+msgid "Unverified plugin"
+msgstr "Tiện ích chưa được xác minh"
+
+#: 
+msgid "Verified"
+msgstr "Đã xác minh"
+
+#: 
+msgid "What this plugin does:"
+msgstr "Tiện ích này làm gì:"
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "downloadUrl, sha256 và pluginId đều bắt buộc cho các cài đặt chưa được xác minh."
+
+#: 
+msgid "risk"
+msgstr "rủi ro"
+
+#: 
+msgid "Name cannot be empty"
+msgstr "Tên không được để trống"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "Tên không được dài hơn %d ký tự"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "Cần trợ giúp? Liên hệ với chúng tôi"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "Chưa chọn lịch — sự kiện này sẽ xuất hiện trong lịch hệ thống \"Sự kiện chưa ghim\" cho đến khi bạn ghim nó."
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "Mở cửa sổ 2 phút để thiết bị đăng ký tại:"
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "Thời gian sử dụng múi giờ nhà thờ ({{church}}), không phải trình duyệt của bạn ({{browser}})."
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "Chào mừng — đăng nhập để quản lý cộng đoàn của bạn"
 

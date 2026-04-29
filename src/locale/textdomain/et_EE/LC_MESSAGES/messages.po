@@ -639,10 +639,6 @@ msgid "Save Changes"
 msgstr "Salvesta muudatused"
 
 #: 
-msgid "Church Event Editor"
-msgstr "Koguduse/kiriku ürituse toimetaja"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Muutke sündmuste tüüpi"
 
@@ -708,20 +704,8 @@ msgid "Create Event"
 msgstr "Loo sündmus"
 
 #: 
-msgid "Create a new Event"
-msgstr "Looge uus sündmus"
-
-#: 
-msgid "Select your event type"
-msgstr "Valige sündmuse tüüp"
-
-#: 
 msgid "Event Status"
 msgstr "Sündmuse olek"
-
-#: 
-msgid "Return to Events"
-msgstr "Tagasi sündmuste juurde"
 
 #: 
 msgid "Sundays"
@@ -1179,10 +1163,6 @@ msgid "Summary Data"
 msgstr "Kokkuvõtlikud andmed"
 
 #: 
-msgid "CSV"
-msgstr "CSV"
-
-#: 
 msgid "Back"
 msgstr "Tagasi"
 
@@ -1306,10 +1286,6 @@ msgstr "Andmefaili vorming"
 #: 
 msgid "GPS Visualizer"
 msgstr "GPS-i visualiseerija"
-
-#: 
-msgid "Street Atlas USA"
-msgstr "USA tänava kaart"
 
 #: 
 #, fuzzy
@@ -2340,26 +2316,6 @@ msgstr "Arv on liiga suur. Peab olema vahemikus -2147483648 kuni 2147483647"
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Rahasumma on liiga suur. Maksimaalne summa on 999999999,99 dollarit"
 
-#: 
-msgid " Bold Italic"
-msgstr " Rasvane kaldkiri"
-
-#: 
-msgid " Italic"
-msgstr " kaldkiri"
-
-#: 
-msgid " Bold"
-msgstr " Rasvane"
-
-#: 
-msgid "Error making API Call to"
-msgstr "Viga API-kõnele helistamisel"
-
-#: 
-msgid "Error text"
-msgstr "Vea tekst"
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -3051,10 +3007,6 @@ msgstr "QuickBooksi sissemakse kviitungi seaded"
 #: 
 msgid "Add Church Event"
 msgstr "Lisa koguduse sündmus"
-
-#: 
-msgid "List Event Types"
-msgstr "Sündmuste tüüpide nimekiri"
 
 #: 
 msgid "Check-in and Check-out"
@@ -4619,11 +4571,6 @@ msgstr "vene keel"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "saami keel (põhja) (Rootsi)"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "albaania keel"
 
@@ -4908,10 +4855,6 @@ msgid "Notification for"
 msgstr "Märguanne kasutajale"
 
 #: 
-msgid "ERROR"
-msgstr "VIGA"
-
-#: 
 msgid "Title FirstName MiddleName LastName"
 msgstr "Tiitel Eesnimi Keskmine nimi Perekonnanimi"
 
@@ -5076,7 +5019,8 @@ msgid "Indonesian - Indonesia"
 msgstr "indoneesia keel – Indoneesia"
 
 #: 
-msgid "records(s) successfully added to selected Group."
+#, fuzzy
+msgid "record(s) successfully added to selected Group."
 msgstr "kirje(d) edukalt lisatud valitud gruppi."
 
 #: 
@@ -5106,10 +5050,6 @@ msgstr "Lisatud uus perekond"
 #: 
 msgid "Church Greeter"
 msgstr "Koguduse tervitaja"
-
-#: 
-msgid "External Calendar API is disabled"
-msgstr "Väline kalendri API on keelatud"
 
 #: 
 msgid "Special Group Settings : Sunday School Type"
@@ -5388,7 +5328,8 @@ msgid "Remove All from Cart"
 msgstr "Eemalda kõik ostukorvist"
 
 #: 
-msgid "records(s) successfully deleted from the selected Group."
+#, fuzzy
+msgid "record(s) successfully deleted from the selected Group."
 msgstr "kirjed / kirjed valitud grupist edukalt kustutatud."
 
 #: 
@@ -5538,16 +5479,8 @@ msgid "Missing calendar access token"
 msgstr "Puudub kalendri juurdepääsuluba"
 
 #: 
-msgid "Calendar access token not found"
-msgstr "Kalendri juurdepääsuluba ei leitud"
-
-#: 
 msgid "User must have Delete Records permission"
 msgstr "Kasutajal peab olema Kustutamise kirjete luba"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "ChurchCRM-i keskseadete URL"
 
 #: 
 msgid "invalid event type id"
@@ -5626,10 +5559,6 @@ msgstr "Sisestatud on kehtetu riiginimi"
 #: 
 msgid "LastName FirstName"
 msgstr "Perekonnanimi Eesnimi"
-
-#: 
-msgid "Holidays"
-msgstr "Pühad"
 
 #: 
 msgid "Person Name"
@@ -5814,10 +5743,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugali keel - Portugal"
 
 #: 
-msgid "Holiday"
-msgstr "Püha"
-
-#: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Määrake autentimisrakenduses kuvatav rakenduse nimi"
 
@@ -5877,10 +5802,6 @@ msgstr "Ühtegi meili ei edastatud"
 #: 
 msgid "Mailchimp is not active"
 msgstr "Mailchimp ei ole aktiivne"
-
-#: 
-msgid "Mailchimp"
-msgstr "Mailchimp"
 
 #: 
 msgid "Lists"
@@ -5966,10 +5887,6 @@ msgstr "Tekst"
 #: 
 msgid "Event Description"
 msgstr "Sündmuse kirjeldus"
-
-#: 
-msgid "Help translate this project"
-msgstr "Aidake seda projekti tõlkida"
 
 #. Context: locales
 #: 
@@ -6887,7 +6804,8 @@ msgid "Total Payments"
 msgstr "Kokku maksed"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payments?"
 msgstr "makset(e)?"
 
 #: 
@@ -6901,10 +6819,6 @@ msgstr "Base URL"
 #: 
 msgid "Copy"
 msgstr "Kopeeri"
-
-#: 
-msgid "DSN"
-msgstr "DSN"
 
 #: 
 msgid "Debug Info"
@@ -6967,20 +6881,8 @@ msgid "SMTP Host"
 msgstr "SMTP host"
 
 #: 
-msgid "Software"
-msgstr "Tarkvara"
-
-#: 
-msgid "System & Configuration"
-msgstr "Süsteem ja konfiguratsioon"
-
-#: 
 msgid "Tip:"
 msgstr "Nõuanne:"
-
-#: 
-msgid "Valid Settings"
-msgstr "Kehtivad sätted"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7041,10 +6943,6 @@ msgid "Attendance Count Categories"
 msgstr "Kohaloleku loendamise kategooriad"
 
 #: 
-msgid "Attendance Notes"
-msgstr "Kohaloleku märkmed"
-
-#: 
 msgid "Change Event"
 msgstr "Muuda sündmust"
 
@@ -7100,14 +6998,6 @@ msgstr "Kustuta sündmus"
 msgid "Edit Event"
 msgstr "Muuda sündmust"
 
-#: 
-msgid "Editing Event"
-msgstr "Sündmuse muutmine"
-
-#: 
-msgid "Enter event title..."
-msgstr "Sisestage sündmuse pealkiri..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7158,14 +7048,6 @@ msgid "None (one-time event)"
 msgstr "Puudub (ühekordselt sündmus)"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "Valikuline - lisage jutluse märkmed või täiendavad sündmuse üksikasjad"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "Valikulised märkmed kohaloleku kohta..."
-
-#: 
 msgid "People Checked In"
 msgstr "Inimesed kontrollis sisse"
 
@@ -7200,10 +7082,6 @@ msgstr "Otsing juhendajale..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "Valige sisse kontrolli sündmus"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "Jutlus / sündmuse tekst"
 
 #: 
 msgid "Unclassified"
@@ -7996,10 +7874,6 @@ msgid "Orphaned Files:"
 msgstr "Vervatest failid:"
 
 #: 
-msgid "PDF/CSV"
-msgstr "PDF/CSV"
-
-#: 
 msgid "Payment"
 msgstr "Makse"
 
@@ -8236,10 +8110,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "Base URL ei ole Config.php-s konfigureeritud"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "ChurchCRM toetatud lokaalsed määrangud"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "Ühendage oma serveriga SSH, FTP või hosting kontrollpaneeli kaudu"
 
@@ -8286,10 +8156,6 @@ msgstr "Keel"
 #: 
 msgid "Local development:"
 msgstr "Kohalik areng:"
-
-#: 
-msgid "Locale Support"
-msgstr "Lokaalse toe tugi"
 
 #: 
 msgid "Location & Contact Information"
@@ -8458,10 +8324,6 @@ msgstr "Esitage kontrollimine"
 #: 
 msgid "Thank You!"
 msgstr "Täname!"
-
-#: 
-msgid "Translation incomplete"
-msgstr "Tõlge pole lõpetatud"
 
 #: 
 msgid "Visit Our Website"
@@ -9112,10 +8974,6 @@ msgid "Failed to save the downloaded release file. Please check disk space and p
 msgstr "Allalaaditud väljalasefaili salvestamine ebaõnnestus. Palun kontrollige ketta ruumi ja õigusi."
 
 #: 
-msgid "Invalid date format in start parameter"
-msgstr "Vale kuupäevaformaat algusparameetris"
-
-#: 
 msgid "Mismatch"
 msgstr "Mittevastavus"
 
@@ -9514,10 +9372,6 @@ msgid "Important"
 msgstr "Oluline"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "Installige pistikprogrammid, asetades need kausta"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "Vale kood. Palun proovige uuesti."
 
@@ -9576,10 +9430,6 @@ msgstr "Linki ei leitud"
 #: 
 msgid "Loading recovery codes"
 msgstr "Taastekoodide laadimine"
-
-#: 
-msgid "MailChimp"
-msgstr "MailChimp"
 
 #: 
 msgid "MailChimp API Key"
@@ -10693,10 +10543,6 @@ msgid "CSV Column"
 msgstr "CSV veerg"
 
 #: 
-msgid "CSV template not found"
-msgstr "CSV malli ei leitud"
-
-#: 
 msgid "Call"
 msgstr "Helista"
 
@@ -10773,10 +10619,6 @@ msgid "Community Management Platform"
 msgstr "Kogukonna haldamise platvorm"
 
 #: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "Ühildub Exceli, Google Sheetsi või mis tahes CSV ekspordiga."
-
-#: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
 msgstr "Täitke need mis tahes järjekorras, et valmistada ChurchCRM teie koguduse jaoks ette."
 
@@ -10803,10 +10645,6 @@ msgstr "Ühendage SMTP server, et ChurchCRM saaks e-kirju saata"
 #: 
 msgid "Connect with others"
 msgstr "Suhelge teistega"
-
-#: 
-msgid "Contact us"
-msgstr "Võtke meiega ühendust"
 
 #: 
 msgid "Convert individual records into family units"
@@ -10949,10 +10787,6 @@ msgid "Download CSV Template"
 msgstr "Laadi alla CSV mall"
 
 #: 
-msgid "Download the template to see the expected column format."
-msgstr "Laadige mall alla, et näha oodatavat veeruvormingut."
-
-#: 
 msgid "Drag and drop your CSV file here"
 msgstr "Lohistage oma CSV fail siia"
 
@@ -10963,10 +10797,6 @@ msgstr "Duplikaadid"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Igal isikul võib olla oma e-posti aadress ja mobiilinumber."
-
-#: 
-msgid "Each row is one person. Members of the same family share a FamilyID."
-msgstr "Iga rida on üks isik. Sama perekonna liikmed jagavad FamilyID-d."
 
 #: 
 msgid "Easy registration"
@@ -11499,10 +11329,6 @@ msgstr "Nimemuudatused nõuavad salvestamist. Järjestuse muutmine ja kustutamin
 #: 
 msgid "Name, address, contact details"
 msgstr "Nimi, aadress, kontaktandmed"
-
-#: 
-msgid "Need help?"
-msgstr "Vajate abi?"
 
 #: 
 msgid "New"
@@ -12051,10 +11877,6 @@ msgid "Upload CSV"
 msgstr "Laadi üles CSV"
 
 #: 
-msgid "Upload a CSV file to import families and people into ChurchCRM."
-msgstr "Laadige üles CSV fail perekondade ja isikute importimiseks ChurchCRM-i."
-
-#: 
 msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
 msgstr "Laadige üles CSV Excelist, Google Sheetsist või oma eelmisest kiriku haldussüsteemist ja seostage veerud ChurchCRM väljadega."
 
@@ -12277,10 +12099,6 @@ msgstr "liikmed"
 #: 
 msgid "opportunities"
 msgstr "võimalused"
-
-#: 
-msgid "options"
-msgstr "valikud"
 
 #: 
 msgid "or connect an external service"
@@ -12517,10 +12335,6 @@ msgstr "Registreerige ja hallake kioskiseadmeid sündmuste registreerimiseks"
 #: 
 msgid "Review & Delete"
 msgstr "Vaata üle ja kustuta"
-
-#: 
-msgid "SHA1 Hash"
-msgstr "SHA1 räsi"
 
 #: 
 msgid "Signature Mismatch"
@@ -14461,10 +14275,6 @@ msgstr[0] "%d korduv sündmus loodi edukalt."
 msgstr[1] "%d korduvat sündmust loodi edukalt."
 
 #: 
-msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
-msgstr "(nt liikmed, külastajad, lapsed), et vabatahtlikud saaksid siin osalejate arvu registreerida."
-
-#: 
 msgid "1. Sunday School Class"
 msgstr "1. Pühapäevakooli klass"
 
@@ -14485,10 +14295,6 @@ msgid "A class is a Group with type \"Sunday School\". It holds the students and
 msgstr "Klass on grupp tüübiga \"Pühapäevakool\". See sisaldab õpilasi ja õpetajaid (liikmeid rollidega)."
 
 #: 
-msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
-msgstr "Seotud rühm seob selle sündmuse klassi või teenistuse nimekirjaga. Kui sündmus on määratud kioskile, laadib kioskk rühma liikmed ja kuvab need registreerimise loendina. Pühapäevakooli klasside puhul seoge siia klassi rühm, et vabatahtlikud saaksid õpilasi tahvelarvutist registreerida."
-
-#: 
 msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
 msgstr "Konkreetne toimumine (nt \"Lasteaed — 12. apr\"). Pärib vaikeväärtused tüübist ja on seotud klassigrupiga auditooriumi kaudu. Selle põhjal märgivad vabatahtlikud kohalolekut."
 
@@ -14499,10 +14305,6 @@ msgstr "Ühe sündmusega seotud tahvelarvuti. Kioskk laadib sündmuse seotud rü
 #: 
 msgid "Add Walk-in / Visitor"
 msgstr "Lisa kõndija / külaline"
-
-#: 
-msgid "Add categories on the Event Type page"
-msgstr "Lisa kategooriad sündmuse tüübi lehel"
 
 #: 
 msgid "Add people to your cart first, then come back to check them in to an event."
@@ -14551,10 +14353,6 @@ msgstr "Audit"
 #: 
 msgid "Audit Events"
 msgstr "Auditi sündmused"
-
-#: 
-msgid "Auto-totalled from counts at right"
-msgstr "Arvutatakse automaatselt paremal olevatest loendusandmetest"
 
 #: 
 msgid "Back to Events"
@@ -14681,10 +14479,6 @@ msgid "Database dump only (.sql)"
 msgstr "Ainult andmebaasi dump (.sql)"
 
 #: 
-msgid "Date Range"
-msgstr "Kuupäevavahemik"
-
-#: 
 msgid "Date range cannot exceed 1 year"
 msgstr "Kuupäevavahemik ei tohi ületada 1 aastat"
 
@@ -14765,10 +14559,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "Sündmus loodud. Suunamine registreerimisele..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "Sündmuse lõppkuupäev/-aeg peab olema alguskuupäevast/-ajast samal ajal või hiljem."
-
-#: 
 msgid "Event title is required."
 msgstr "Sündmuse pealkiri on kohustuslik."
 
@@ -14795,10 +14585,6 @@ msgstr "Sündmuse tüübil puudub korduvuse muster"
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "Sündmuse tüübil puudub igakuise korduvuse kehtiv kuupäev"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "Sündmused luuakse iga sobiva toimumise jaoks selles kuupäevavahemikus."
 
 #: 
 msgid "Every month on the"
@@ -14849,10 +14635,6 @@ msgid "Group Roster"
 msgstr "Rühma nimekiri"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "Peida täpsemad valikud"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Kuidas pühapäevakool + sündmused + kioskid sobivad kokku"
 
@@ -14863,10 +14645,6 @@ msgstr "Vigane kuupäev %s jaoks — oodatakse AAAA-KK-PP"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Vigane kuupäevavorming vahemiku alguse või lõpu jaoks"
-
-#: 
-msgid "Invalid date format."
-msgstr "Vigane kuupäevavorming."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -14921,10 +14699,6 @@ msgid "No active events found."
 msgstr "Aktiivseid sündmusi ei leitud."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "Selle sündmuse tüübi jaoks pole veel kohaloleku loendamise kategooriaid määratletud."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "Keegi pole selle sündmuse jaoks veel registreerunud."
 
@@ -14965,10 +14739,6 @@ msgid "Please select a person to check in."
 msgstr "Palun valige registreerimiseks isik."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "Eeltäidetud selle sündmuse tüübi alusel — korduvate tüüpide puhul on kuupäev järgmine toimumine pärast selle tüübi viimast sündmust ja aeg vastab tüübi vaikimisi algusajale."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "Vahemiku lõppkuupäev peab olema alguskuupäevast samal ajal või hiljem."
 
@@ -14997,10 +14767,6 @@ msgid "Recommended"
 msgstr "Soovitatav"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "Vajalik kioski jaoks"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "Lähtestamine kustutab jäädavalt:"
 
@@ -15019,14 +14785,6 @@ msgstr "Salvesta muutused selle kategooria nimele"
 #: 
 msgid "Select an event type…"
 msgstr "Valige sündmuse tüüp…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "Valige algus- ja lõppkuupäev/-aeg."
-
-#: 
-msgid "Show More Options"
-msgstr "Kuva rohkem valikuid"
 
 #: 
 msgid "Skip"
@@ -15069,16 +14827,8 @@ msgid "The Events module is disabled"
 msgstr "Sündmuste moodul on keelatud"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "Kõigi loodavate sündmuste jaoks kasutatakse sama algus- ja lõpuaega."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "Täna pole ühtegi sündmust planeeritud"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "Need on kohaloleku loendamise kategooriad — vabatahtlikud täidavad need pärast sündmust, et armatuurlaud saaks kohalolekut jaotada (nt mitu liiget vs. külastajat). Need on eraldi registreerimislehe individuaalsetest sisseregistreerimistest."
 
 #: 
 msgid "This event is inactive."
@@ -15133,16 +14883,8 @@ msgid "View Event"
 msgstr "Vaata sündmust"
 
 #: 
-msgid "What are these for?"
-msgstr "Milleks need on?"
-
-#: 
 msgid "What does this find?"
 msgstr "Mida see leiab?"
-
-#: 
-msgid "What is this for?"
-msgstr "Milleks see on?"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15409,10 +15151,6 @@ msgid "Online"
 msgstr "Võrgus"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "Avab 30-sekundilise akna seadmete registreerimiseks aadressil:"
-
-#: 
 msgid "Pending"
 msgstr "Ootel"
 
@@ -15529,14 +15267,6 @@ msgid "Set up Email"
 msgstr "Seadista e-post"
 
 #: 
-msgid "Test SMTP Email"
-msgstr "Testi SMTP e-posti"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "See on ChurchCRM testmeil, mis kinnitab, et teie SMTP konfiguratsioon töötab."
-
-#: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."
 msgstr "Lõikelauale kopeerimine ebaõnnestus. Kopeerige koodid käsitsi."
 
@@ -15551,4 +15281,856 @@ msgstr "Kasuta taastekoodi"
 #: 
 msgid "Use authenticator app instead"
 msgstr "Kasuta autentimisrakendust"
+
+#: 
+msgid "%d modules loaded"
+msgstr "%d moodulit laaditud"
+
+#: 
+msgid "(PHP default)"
+msgstr "(PHP vaikimisi)"
+
+#: 
+msgid "(none)"
+msgstr "(puudub)"
+
+#: 
+msgid "(not set)"
+msgstr "(pole seadistatud)"
+
+#: 
+msgid "All checks passing"
+msgstr "Kõik kontrollid läbitud"
+
+#: 
+msgid "App"
+msgstr "Rakendus"
+
+#: 
+msgid "Browser time zone differs:"
+msgstr "Brauseri ajavöönd erineb:"
+
+#: 
+msgid "Calendar time zone:"
+msgstr "Kalendri ajavöönd:"
+
+#: 
+msgid "Cannot send test email"
+msgstr "Testmeili ei saa saata"
+
+#: 
+msgid "Charset"
+msgstr "Märgistik"
+
+#: 
+msgid "Church Email address is not set — the test email has nowhere to go."
+msgstr "Koguduse meiliaadress pole seadistatud — testmeilil pole kuhugi minna."
+
+#: 
+msgid "Church email — configured on the"
+msgstr "Koguduse meil — seadistatud lehel"
+
+#: 
+msgid "ChurchCRM Test Email"
+msgstr "ChurchCRM testmeil"
+
+#: 
+msgid "Collation"
+msgstr "Sortimine"
+
+#: 
+msgid "Connection"
+msgstr "Ühendus"
+
+#: 
+msgid "Database"
+msgstr "Andmebaas"
+
+#: 
+msgid "Delivery"
+msgstr "Kohaletoimetamine"
+
+#: 
+msgid "Disk (Images Root)"
+msgstr "Ketas (piltide juurkaust)"
+
+#: 
+msgid "Display Errors"
+msgstr "Kuva vead"
+
+#: 
+msgid "Email Debug"
+msgstr "Meili silumine"
+
+#: 
+msgid "Environment"
+msgstr "Keskkond"
+
+#: 
+msgid "Error Log"
+msgstr "Veaprotokoll"
+
+#: 
+msgid "Error Reporting"
+msgstr "Veaaruandlus"
+
+#: 
+msgid "Fix Settings"
+msgstr "Paranda seaded"
+
+#: 
+msgid "Hit Rate"
+msgstr "Tabamuste määr"
+
+#: 
+msgid "Host"
+msgstr "Host"
+
+#: 
+msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
+msgstr "Kui sõnum ei saabu mõne minuti jooksul, kontrollige rämpsposti kausta ja allpool olevat SMTP silumislogi."
+
+#: 
+msgid "If you can read this message in your inbox, your SMTP configuration is working correctly."
+msgstr "Kui saate seda sõnumit oma postkastis lugeda, töötab teie SMTP seadistus korrektselt."
+
+#: 
+msgid "Incomplete"
+msgstr "Lõpetamata"
+
+#: 
+msgid "Installed on Server"
+msgstr "Serverisse installitud"
+
+#: 
+msgid "Integrity"
+msgstr "Terviklus"
+
+#: 
+msgid "Issues detected"
+msgstr "Probleemid tuvastatud"
+
+#: 
+msgid "Loaded php.ini"
+msgstr "Laaditud php.ini"
+
+#: 
+msgid "Locale"
+msgstr "Lokaat"
+
+#: 
+msgid "Max Execution Time"
+msgstr "Maksimaalne täitmisaeg"
+
+#: 
+msgid "Max POST Size"
+msgstr "POST-päringu maksimaalne suurus"
+
+#: 
+msgid "Max Upload Size"
+msgstr "Üleslaadimise maksimaalne suurus"
+
+#: 
+msgid "Memory"
+msgstr "Mälu"
+
+#: 
+msgid "Memory Limit"
+msgstr "Mälupiirang"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
+msgstr "Kontrollige nüüd saaja postkasti kohaletoimetamise kinnitamiseks. Otsige teemat:"
+
+#: 
+msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
+msgstr "OPcache pole lubatud. Selle lubamine on madala riskiga viis PHP lehtede laadimise kiirendamiseks."
+
+#: 
+msgid "Off"
+msgstr "Väljas"
+
+#: 
+msgid "On"
+msgstr "Sees"
+
+#: 
+msgid "Open the email debug tester"
+msgstr "Ava meili silumisvahend"
+
+#: 
+msgid "PHP Version"
+msgstr "PHP versioon"
+
+#: 
+msgid "PHPMailer SMTP session"
+msgstr "PHPMailer SMTP seanss"
+
+#: 
+msgid "Prerequisites"
+msgstr "Eeltingimused"
+
+#: 
+msgid "Review the SMTP debug log below for the handshake details, then adjust your settings."
+msgstr "Vaadake allpool olevat SMTP silumislogi käelaskmise üksikasjade jaoks, seejärel kohandage seadeid."
+
+#: 
+msgid "SMTP Configuration"
+msgstr "SMTP seadistus"
+
+#: 
+msgid "SMTP Debug Log"
+msgstr "SMTP silumislogi"
+
+#: 
+msgid "SMTP Host is not configured."
+msgstr "SMTP host pole seadistatud."
+
+#: 
+msgid "SMTP configuration test — if this arrived, your setup works."
+msgstr "SMTP seadistuse test — kui see saabus, töötab teie seadistus."
+
+#: 
+msgid "Schema Version"
+msgstr "Skeemi versioon"
+
+#: 
+msgid "Send Again"
+msgstr "Saada uuesti"
+
+#: 
+msgid "Send a test message to verify your SMTP configuration"
+msgstr "Saatke testisõnum SMTP seadistuse kontrollimiseks"
+
+#: 
+msgid "Server"
+msgstr "Server"
+
+#: 
+msgid "Server Version"
+msgstr "Serveri versioon"
+
+#: 
+msgid "Session Handler"
+msgstr "Seansi käsitleja"
+
+#: 
+msgid "Session Save Path"
+msgstr "Seansi salvestustee"
+
+#: 
+msgid "Settings Valid"
+msgstr "Seaded kehtivad"
+
+#: 
+msgid "Subject"
+msgstr "Teema"
+
+#: 
+msgid "Test"
+msgstr "Test"
+
+#: 
+msgid "Test email accepted by SMTP server"
+msgstr "SMTP server aktsepteeris testmeili"
+
+#: 
+msgid "Test email failed to send"
+msgstr "Testmeili saatmine ebaõnnestus"
+
+#: 
+msgid "This is a ChurchCRM test email."
+msgstr "See on ChurchCRM testmeil."
+
+#: 
+msgid "Timeout"
+msgstr "Ajalõpp"
+
+#: 
+msgid "Timezone"
+msgstr "Ajavöönd"
+
+#: 
+msgid "Unable to list web server modules (non-Apache SAPI)."
+msgstr "Veebiserverimooduleid ei saa loetleda (mitte-Apache SAPI)."
+
+#: 
+msgid "Update Settings"
+msgstr "Uuenda seadeid"
+
+#: 
+msgid "View full photo"
+msgstr "Vaata täisfotot"
+
+#: 
+msgid "page."
+msgstr "leht."
+
+#: 
+msgid "user:"
+msgstr "kasutaja:"
+
+#: 
+msgid "1. Download the template"
+msgstr "1. Laadige mall alla"
+
+#: 
+msgid "2. Fill in your data"
+msgstr "2. Täitke oma andmed"
+
+#: 
+msgid "3. Upload and map"
+msgstr "3. Laadige üles ja kaardistage"
+
+#: 
+msgid "Add Recurring Event"
+msgstr "Lisa korduv sündmus"
+
+#: 
+msgid "Available after the event is saved."
+msgstr "Saadaval pärast sündmuse salvestamist."
+
+#: 
+msgid "Boolean properties/fields accept yes / no / true / false / 1 / 0."
+msgstr "Tõeväärtuse omadused/väljad aktsepteerivad jah / ei / tõsi / väär / 1 / 0."
+
+#: 
+msgid "ChurchCRM auto-matches each column by name. Anything it cannot match is marked as Unmapped — pick a field or leave it as Ignore."
+msgstr "ChurchCRM sobitab iga veeru automaatselt nime järgi. Kõik, mida ei suudeta sobitada, on märgitud Kaardistamata — valige väli või jätke Ignoreeri."
+
+#: 
+msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
+msgstr "CSV faili ei saanud parsida. Kontrollige, et see oleks kehtiv komaeraldajatega fail päisereaga."
+
+#: 
+msgid "Custom field columns you have not configured are ignored — nothing is created on the fly."
+msgstr "Kohandatud väljaveerud, mida te pole seadistanud, ignoreeritakse — midagi ei looda lennult."
+
+#: 
+msgid "Custom fields and properties are supported"
+msgstr "Kohandatud väljad ja omadused on toetatud"
+
+#: 
+msgid "Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a month and day with no year."
+msgstr "Kuupäevaväljad aktsepteerivad AAAA-KK-PP või K/P/AAAA. Kasutage 0000-KK-PP või K/P kuu ja päeva jaoks ilma aastata."
+
+#: 
+msgid "Each row is one person. People in the same family share a FamilyID. Leave columns blank when you have no value for them."
+msgstr "Iga rida on üks inimene. Sama pere inimesed jagavad FamilyID-d. Jätke veerud tühjaks, kui teil pole nende jaoks väärtust."
+
+#: 
+msgid "Event Timing"
+msgstr "Sündmuse ajastus"
+
+#: 
+msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
+msgstr "Iga sobiv esinemiskord vahemikus Alates kuni Kuni saab oma sündmuse sama algus-/lõpuajaga."
+
+#: 
+msgid "External calendar sharing is disabled"
+msgstr "Väline kalendri jagamine on keelatud"
+
+#: 
+msgid "Failed to load event editor. Please refresh and try again."
+msgstr "Sündmusetoimetaja laadimine ebaõnnestus. Värskendage lehte ja proovige uuesti."
+
+#: 
+msgid "Family Custom"
+msgstr "Perekonna kohandatud"
+
+#: 
+msgid "Family Property"
+msgstr "Perekonna omadus"
+
+#: 
+msgid "Fields"
+msgstr "Väljad"
+
+#: 
+msgid "Go to home"
+msgstr "Mine avalehele"
+
+#: 
+msgid "Hide advanced options"
+msgstr "Peida täpsemad suvandid"
+
+#: 
+msgid "How the CSV Import Works"
+msgstr "Kuidas CSV import töötab"
+
+#: 
+msgid "Imported from CSV"
+msgstr "Imporditud CSV-st"
+
+#: 
+msgid "Invalid date format"
+msgstr "Kehtetu kuupäevaformaat"
+
+#: 
+msgid "Loading event editor…"
+msgstr "Sündmusetoimetaja laadimine…"
+
+#: 
+msgid "No group"
+msgstr "Rühm puudub"
+
+#: 
+msgid "Not pinned to any calendar"
+msgstr "Pole ühegi kalendriga seotud"
+
+#: 
+msgid "Optional — sermon notes, materials, or other details copied to every generated event."
+msgstr "Vabatahtlik — jutluse märkmed, materjalid või muud üksikasjad kopeeritakse igasse loodud sündmusse."
+
+#: 
+msgid "Person / Family"
+msgstr "Isik / Perekond"
+
+#: 
+msgid "Person Custom"
+msgstr "Isiku kohandatud"
+
+#: 
+msgid "Person Property"
+msgstr "Isiku omadus"
+
+#: 
+msgid "Show more options"
+msgstr "Kuva rohkem suvandeid"
+
+#: 
+msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
+msgstr "Kalendi link on puudulik. Kontrollige URL-i isikuga, kes selle teile saatis."
+
+#: 
+msgid "The church administrator has not enabled external calendar sharing. Please contact them if you believe this is in error."
+msgstr "Koguduse administraator pole välist kalendri jagamist lubanud. Võtke nendega ühendust, kui arvate, et see on viga."
+
+#: 
+msgid "The start or end date in the link could not be understood. Try the base calendar link without date parameters."
+msgstr "Lingi algus- või lõpukuupäeva ei saanud mõista. Proovige põhikalendri linki ilma kuupäevaparameetriteta."
+
+#: 
+msgid "The template already contains every column you can map — the core Person/Family fields plus each custom field and property your site defines."
+msgstr "Mall sisaldab juba kõiki veerge, mida saate kaardistada — põhilised Isik/Perekond väljad pluss kõik kohandatud väljad ja omadused, mille teie sait määratleb."
+
+#: 
+msgid "The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically."
+msgstr "Mall sisaldab juba veergu iga Isik/Perekond kohandatud välja ja iga teie määratletud omaduse jaoks. Kui lisate veerge käsitsi, kasutage kohandatud välja või omaduse täpset nime veerupäisena ja importija sobitab selle automaatselt."
+
+#: 
+msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
+msgstr "See kalendi link on kehtetu või tühistatud. Küsige koguduselt praegust linki."
+
+#: 
+msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
+msgstr "Seob selle sündmuse klassi või teenistusnimekirjaga — kasutatakse kiosk sisseregistreerimise voos."
+
+#: 
+msgid "Upload a CSV to create families and people in bulk."
+msgstr "Laadige CSV üles, et luua massimpordi teel peresid ja inimesi."
+
+#: 
+msgid "Volunteer-entered headcounts, broken down by category."
+msgstr "Vabatahtlike sisestatud peaarvud, jaotatud kategooriate kaupa."
+
+#: 
+msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
+msgstr "Teie CSV-s on duplikaatseid veerunimesid. Nimetage duplikaatide veerud ümber (nt lisage teisele \"(2)\") ja laadige uuesti üles."
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "Kas soovite kindlasti selle annetatud eseme jäädavalt kustutada?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "Kas soovite kindlasti selle pakkumisnumbri jäädavalt kustutada?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Kustuta annetatud ese"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Kustuta pakkumisnumber"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Kehtetu turvatokeni. Palun proovige uuesti."
+
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "Lisab riiklikud pühad põhikalendrisse. Iga valitud riik muutub küljeribal eraldi lülitatavaks kalendriks, nii et kasutajad saavad pühad iseseisvalt kuvada või peita."
+
+#: 
+msgid "Choose map provider"
+msgstr "Vali kaarditeenuse pakkuja"
+
+#: 
+msgid "Current database"
+msgstr "Praegune andmebaas"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "Demoandmeid laaditakse tavaliselt ainult uuele installile. Nüüd importimine lisab näidiskirjed olemasolevatele andmetele kõrvale ning võib tekitada duplikaate."
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "Iga riik loob küljeribal oma kalenderrea. Kasutage kalendrispetsiifilist lülitit, et ajutiselt riik peita ilma pistikprogrammi seadeid muutmata."
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "Filtreerimine kategooria järgi"
+
+#: 
+msgid "Holiday Settings"
+msgstr "Pühade seaded"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "Pühad (%s)"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "Pühad on märgistatud tüübi järgi: Ametlikud, Tähtpäevad, Pangapühad, Hooajalised ja Usulised. Jätke kõik kategooriad valimata, et kuvada kõik pühad, või valige konkreetsed tüübid kuvamise kitsendamiseks."
+
+#: 
+msgid "Import demo data anyway"
+msgstr "Impordi demoandmed igal juhul"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "Finantskohustuse identifikaator puudub."
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "Ühtegi riiki pole valitud. Valige vähemalt üks riik pühade kalendrite pistikprogrammi seadetes."
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "Valitud filtritele vastavaid kirjeid ei leitud."
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "Ava Apple Mapsis"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "Ava Google Mapsis"
+
+#: 
+msgid "Open in new tab"
+msgstr "Ava uuel vahelehel"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "Riikide seadistamine"
+
+#: 
+msgid "Show all"
+msgstr "Näita kõiki"
+
+#: 
+msgid "Show:"
+msgstr "Kuva:"
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "Üksikute riikide näitamine ja peitmine"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "Rootsi"
+
+#: 
+msgid "System"
+msgstr "Süsteem"
+
+#: 
+msgid "Timeline filters"
+msgstr "Ajajoone filtrid"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "Puhta andmebaasiga alustamiseks kasutage enne demoandmete importimist admini armatuurlaualt valikut „Lähtesta andmebaas“."
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "Kasutage riikide valijat ühe või mitme riigi valimiseks. Iga lisatud riik ilmub küljeribal eraldi kalenderkirjena — see võimaldab kuvada ülemaailmse koguduse pühad."
+
+#: 
+msgid "Your database already contains data"
+msgstr "Teie andmebaas sisaldab juba andmeid"
+
+#: 
+msgid "people"
+msgstr "inimest"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "Pistikprogrammi installimiseks on nõutav allalaadimise URL."
+
+#: 
+msgid "All three fields are required."
+msgstr "Kõik kolm välja on kohustuslikud."
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "Heakskiidetud kogukonnapistikprogrammid"
+
+#: 
+msgid "Browse Approved"
+msgstr "Sirvi heakskiidetu"
+
+#: 
+msgid "Check for Updates"
+msgstr "Kontrolli uuendusi"
+
+#: 
+msgid "Checking…"
+msgstr "Kontrollimine…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "Tühjenda karantiin"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "Tühjendage karantiin ainult pärast algpõhjuse kõrvaldamist. Server keeldub karantiinis pistikprogrammi lubamisest."
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "Klõpsake üleval „Sirvi heakskiidetu“, et installida kontrollitud pistikprogramm, või „Installi URL-ilt“ arenduse ajal kontrollimata versiooni jaoks."
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "Pistikprogrammi karantiini tühjendamine ebaõnnestus"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "Karantiini tühjendamine ebaõnnestus"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "Pistikprogrammi installimine ebaõnnestus"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "Pistikprogrammi URL-ilt installimine ebaõnnestus"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "Heakskiidetud pistikprogrammide loendi laadimine ebaõnnestus"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "Heakskiidetud pistikprogrammide loendi laadimine ebaõnnestus."
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "Pistikprogrammide registri värskendamine ebaõnnestus"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "Pistikprogrammide registri värskendamine ebaõnnestus. Kontrollige internetiühendust."
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "Pistikprogrammi desinstallimine ebaõnnestus"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "Uusima registri toomine…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "Hankige see pistikprogrammi autorilt. Installija keeldub allalaadimisest, kui see ei ühti bait-baidi haaval."
+
+#: 
+msgid "Homepage"
+msgstr "Koduleht"
+
+#: 
+msgid "Install"
+msgstr "Installi"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "Installi pistikprogramm URL-ilt (kontrollimata)"
+
+#: 
+msgid "Install Unverified"
+msgstr "Installi kontrollimata"
+
+#: 
+msgid "Install failed"
+msgstr "Installimine ebaõnnestus"
+
+#: 
+msgid "Install from URL"
+msgstr "Installi URL-ilt"
+
+#: 
+msgid "Installing…"
+msgstr "Installimine…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "Kebab-kujul. Peab vastama ZIP-faili sees oleva peakataloogi nimele ja plugin.json-i id-väljale."
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "Heakskiidetud pistikprogrammide loendi laadimine…"
+
+#: 
+msgid "Loading…"
+msgstr "Laadimine…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "Vastab heakskiidetud pistikprogrammide loendis olevale kirjele"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "Peab olema muutumatu väljaande URL, mida serveeritakse HTTPS kaudu."
+
+#: 
+msgid "Plugin id"
+msgstr "Pistikprogrammi ID"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "Pistikprogramm installitud KONTROLLIMATA olekus. Vaadake ekstraktitud failid hoolikalt üle enne lubamist."
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "Pistikprogramm installitud. Vaadake see üle ja klõpsake aktiveerimiseks nuppu Luba."
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "Pistikprogrammi karantiin tühjendatud. Nüüd saate pistikprogrammi uuesti lubada."
+
+#: 
+msgid "Plugin quarantined"
+msgstr "Pistikprogramm karantiinis"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "Pistikprogrammide register värskendatud."
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "Pistikprogramm desinstallitud"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "Pistikprogramm desinstallitud."
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "Pistikprogrammi ZIP-faili URL (ainult HTTPS)"
+
+#: 
+msgid "Quarantined"
+msgstr "Karantiinis"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "Vaadake pistikprogrammi failid kettal üle enne lubamist. Kontrollimata pistikprogrammid töötavad sama õigustega kui heakskiidetud pistikprogrammid."
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "SHA-256 kontrollsumma"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "SHA-256 peab olema 64-märgiline heksadetsimaalstring."
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "ChurchCRM hooldajad pole seda üle vaadanud. Vastutate ise kõige installitu turvalisuse ja käitumise eest. Kasutage võimalusel voolu „Sirvi heakskiidetu“."
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "Heakskiidetud pistikprogrammide loend on tühi. Kontrollitud installeri kaudu pole veel kolmandate osapoolte pistikprogramme saadaval."
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "Pistikprogramm keelati automaatselt käitusaegsete tõrgete tõttu."
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "Need pistikprogrammid on ChurchCRM hooldajate poolt üle vaadatud ja heaks kiidetud. Klõpsake Installi, et üks alla laadida ja installida — pistikprogrammi ei lubata automaatselt."
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "See pistikprogramm ei ole ChurchCRM-i heakskiidetud pistikprogrammide loendis."
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "See pistikprogramm installitakse KONTROLLIMATA olekus."
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "URL peab kasutama HTTPS-i."
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "Desinstalli (kustuta kettalt)"
+
+#: 
+msgid "Unverified plugin"
+msgstr "Kontrollimata pistikprogramm"
+
+#: 
+msgid "Verified"
+msgstr "Kontrollitud"
+
+#: 
+msgid "What this plugin does:"
+msgstr "Mida see pistikprogramm teeb:"
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "downloadUrl, sha256 ja pluginId on kõik kontrollimata installimiseks nõutavad."
+
+#: 
+msgid "risk"
+msgstr "risk"
+
+#: 
+msgid "Name cannot be empty"
+msgstr "Nimi ei tohi olla tühi"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "Nimi ei tohi olla pikem kui %d tähemärki"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "Vajate abi? Võtke meiega ühendust"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "Ühtegi kalendrit pole valitud — see sündmus kuvatakse süsteemikalendris „Kinnitamata sündmused“ kuni selle kinnitamiseni."
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "Avab 2-minutilise akna seadmete registreerimiseks aadressil:"
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "Ajad kasutavad kiriku aega ({{church}}), mitte teie brauseri aega ({{browser}})."
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "Tere tulemast — logige sisse oma koguduse haldamiseks"
 

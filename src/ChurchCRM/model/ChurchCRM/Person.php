@@ -9,6 +9,8 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\notifications\NewPersonOrFamilyEmail;
 use ChurchCRM\model\ChurchCRM\Base\Person as BasePerson;
 use ChurchCRM\PhotoInterface;
+use ChurchCRM\Plugin\Hook\HookManager;
+use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -92,9 +94,14 @@ class Person extends BasePerson implements PhotoInterface
         }
     }
 
+    public static function getViewURIForId(int $id): string
+    {
+        return SystemURLs::getRootPath() . '/people/view/' . $id;
+    }
+
     public function getViewURI(): string
     {
-        return SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $this->getId();
+        return self::getViewURIForId($this->getId());
     }
 
     public function getFamilyRole()
@@ -149,6 +156,8 @@ class Person extends BasePerson implements PhotoInterface
         if (empty($this->getFamId())) {
             NewPersonOrFamilyEmail::sendIfConfigured($this);
         }
+
+        HookManager::doAction(Hooks::PERSON_CREATED, $this);
     }
 
     public function postUpdate(?ConnectionInterface $con = null): void
@@ -156,6 +165,8 @@ class Person extends BasePerson implements PhotoInterface
         if (!empty($this->getDateLastEdited()) && !$this->skipPostUpdateNote) {
             $this->createTimeLineNote('edit');
         }
+
+        HookManager::doAction(Hooks::PERSON_UPDATED, $this);
     }
 
     private function createTimeLineNote(string $type): void
@@ -346,6 +357,29 @@ class Person extends BasePerson implements PhotoInterface
         }
 
         return GeoUtils::buildDirectionsUrl($family->getAddress());
+    }
+
+    /**
+     * Apple Maps companion to {@see self::getDirectionsUrl()}. Mirrors the
+     * same address/lat/lng precedence rules so the two links resolve to the
+     * same destination.
+     */
+    public function getAppleMapsDirectionsUrl(): string
+    {
+        if (!empty($this->getAddress1())) {
+            return GeoUtils::buildAppleMapsDirectionsUrl($this->getAddress());
+        }
+
+        $family = $this->getFamily();
+        if ($family === null) {
+            return '';
+        }
+
+        if ($family->hasLatitudeAndLongitude()) {
+            return GeoUtils::buildAppleMapsDirectionsUrl('', (float) $family->getLatitude(), (float) $family->getLongitude());
+        }
+
+        return GeoUtils::buildAppleMapsDirectionsUrl($family->getAddress());
     }
 
     public function deletePhoto(): bool
@@ -540,7 +574,11 @@ class Person extends BasePerson implements PhotoInterface
 
     public function preDelete(?ConnectionInterface $con = null): bool
     {
-        $this->deletePhoto();
+        // Remove the uploaded image from disk. Call Photo::delete() directly
+        // rather than $this->deletePhoto(), which gates on the current user's
+        // delete-records permission and writes a Note that NoteQuery below
+        // would immediately delete. See GH issue #1697.
+        $this->getPhoto()->delete();
 
         $obj = Person2group2roleP2g2rQuery::create()->filterByPerson($this)->find($con);
         if ($obj->count() > 0) {

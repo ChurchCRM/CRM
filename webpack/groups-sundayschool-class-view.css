@@ -127,8 +127,8 @@
   }
 
   .photo-small-thumb {
-    width: 28px !important;
-    height: 28px !important;
+    width: 28px;
+    height: 28px;
   }
 
   .expand-details {

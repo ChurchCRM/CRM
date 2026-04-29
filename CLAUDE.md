@@ -19,9 +19,12 @@ Structured development skills live in `.agents/skills/`. **Always consult the re
 | Migrate legacy page | `routing-architecture.md` → `admin-mvc-migration.md` → `frontend-development.md` |
 | Database / ORM work | `database-operations.md` → `db-schema-migration.md` |
 | UI / frontend changes | `responsive-design-guidelines.md` → `bootstrap-5-migration.md` → `frontend-development.md` → `webpack-typescript.md` |
-| i18n / translations | `i18n-localization.md` → `frontend-development.md` |
+| Datetime / timezone work | `timezone-handling.md` (event editor, calendar, kiosk, anything cross-tz) |
+| i18n / translations | `i18n-localization.md` → `locale-translation-workflow.md` → `frontend-development.md` |
 | Security issue | `security-best-practices.md` → `authorization-security.md` |
-| Plugin work | `plugin-system.md` → `plugin-development.md` |
+| New community plugin | `plugin-system.md` → `plugin-development.md` → `plugin-create.md` → `plugin-security-scan.md` |
+| Core plugin update (`src/plugins/core/*`) | `plugin-system.md` → `plugin-development.md` → `plugin-migration.md` |
+| Admin-side plugin audit | `plugin-system.md` → `plugin-compliance.md` |
 | Testing | `testing.md` → `cypress-testing.md` |
 | Commit / PR | `git-workflow.md` → `github-interaction.md` |
 | Refactor | `refactor.md` → `service-layer.md` |
@@ -90,6 +93,13 @@ After updating a skill file, also check if [`.claude/projects/.../memory/MEMORY.
 
 ---
 
+## After PR Review Sessions
+
+- After completing PR review fixes and pushing, always update the relevant skill files in `.claude/skills/` with new learnings (cypress-testing.md, api-development.md, git-workflow.md, etc.) before ending the session
+- If no genuine new learnings emerged, explicitly say so rather than padding with trivia
+
+---
+
 ## Always-Apply Standards
 
 These rules apply to **every code change** in this project.
@@ -127,6 +137,12 @@ Even if you are confident the changes are correct, even if the user said "fix th
 ## Git & PR Workflow
 
 @.agents/skills/churchcrm/git-workflow.md
+
+### Branch Hygiene
+
+- Before committing skill/memory/doc updates, always verify current branch with `git branch --show-current` and switch to master or a dedicated docs branch if on a feature branch
+- Never commit cross-cutting documentation changes onto an unrelated feature branch
+- If uncommitted changes exist when starting a new task, stash or commit them first and confirm branch state before proceeding
 
 ### Always Resolve PR Comments After Push
 
@@ -180,6 +196,12 @@ When fixing a failed test:
 - `code-standards.md` — General best practices
 
 **Remember: Skills get documented the moment you learn something. Never defer skill updates.**
+
+### Test Data Assumptions
+
+- Never assume Cypress test fixtures or library data (e.g., Yasumi holidays) have specific shapes without verifying — check the actual data source first
+- Always include leading slashes in `cy.visit()` URLs
+- When tests reference country/locale-specific data, prefer locales with documented variety (e.g., Netherlands for multi-category holidays)
 
 ---
 

@@ -2,8 +2,8 @@
 
 use ChurchCRM\dto\SystemURLs;
 
-$sPageTitle ="ChurchCRM - Sunday School Device Kiosk";
-require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
+$sPageTitle = 'ChurchCRM - Kiosk';
+require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
 ?>
 
 <!-- Kiosk Status Container - shown when waiting for event or acceptance -->
@@ -26,11 +26,15 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
         <div>
           <h1 id="eventTitle"></h1>
           <div class="kiosk-time-info">
+            <i class="fa-solid fa-tablet-screen-button me-1"></i>
+            <span id="kioskName"></span>
+            <span class="mx-2">|</span>
             <i class="fa-solid fa-users me-1"></i>
             <span class="kiosk-group-name"></span>
             <span class="mx-2">|</span>
             <i class="fa-solid fa-clock me-1"></i>
             <span id="startTime"></span> &mdash; <span id="endTime"></span>
+            <span id="timeRemaining" class="badge bg-warning-lt text-warning ms-2 d-none"></span>
           </div>
         </div>
         <div class="d-flex flex-column align-items-end mt-2 mt-md-0">
@@ -148,4 +152,4 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
 
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/kiosk.min.js') ?>"></script>
 <?php
-require(SystemURLs::getDocumentRoot() ."/Include/FooterNotLoggedIn.php");
+require SystemURLs::getDocumentRoot() . '/Include/FooterNotLoggedIn.php';

@@ -4,7 +4,9 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\NoteQuery;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -22,10 +24,10 @@ $note = NoteQuery::create()->findOneById($iNoteID);
 
 // If deleting a note for a person, set the PersonView page as the redirect
 if ($note->getPerId() > 0) {
-    $sReroute = 'PersonView.php?PersonID=' . $note->getPerId();
+    $sReroute = Person::getViewURIForId($note->getPerId());
 } elseif ($note->getFamId() > 0) {
     // If deleting a note for a family, set the FamilyView page as the redirect
-    $sReroute = 'people/family/' . $note->getFamId();
+    $sReroute = Family::getFamilyViewURIForId($note->getFamId());
 }
 
 // Do we have confirmation?

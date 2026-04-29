@@ -756,3 +756,42 @@ Enrich the `GET /{id}` response to include the extended fields so the UI
 doesn't need extra round-trips — fall back to type defaults when the
 entity has no rows yet (e.g. for Attendance Counts, return the event
 type's `EventCountName` categories with `count: 0`).
+
+### League\Csv `SyntaxError` — Catch for Clean 400 on Duplicate Column Headers <!-- learned: 2026-04-21 -->
+
+`League\Csv\Reader::getHeader()` throws `League\Csv\SyntaxError` when the CSV has duplicate column names. Without a catch this surfaces as an unhandled 500. Always wrap the upload endpoint's header read in a try/catch and return a 400 with a human-readable message:
+
+```php
+use League\Csv\Reader;
+use League\Csv\SyntaxError;
+
+try {
+    $csv = Reader::createFromPath($tmpPath, 'r');
+    $csv->setHeaderOffset(0);
+    $headers = $csv->getHeader(); // throws SyntaxError on duplicates
+} catch (SyntaxError $e) {
+    return SlimUtils::renderErrorJSON($response, 'Your CSV has duplicate column names. Each column header must be unique.', 400);
+}
+```
+
+This is the only checked exception `League\Csv` throws for malformed headers; other parse errors surface as standard `Exception`.
+
+### CSV Template Column Uniqueness — Category-Suffix Pattern <!-- learned: 2026-04-21 -->
+
+When generating a CSV template that includes custom fields and properties from multiple extension buckets (PersonCustom, FamilyCustom, PersonProperty, FamilyProperty), column name collisions are inevitable. Use a `"{name} ({category})"` suffix to keep headers unique and visible in Excel, and fall back to a `(2)`, `(3)` counter for residual duplicates within the same category:
+
+```php
+$seen = [];
+foreach ($fields as &$field) {
+    $candidate = $field['name'] . ' (' . $field['category'] . ')';
+    if (isset($seen[$candidate])) {
+        $seen[$candidate]++;
+        $candidate .= ' (' . $seen[$candidate] . ')';
+    } else {
+        $seen[$candidate] = 1;
+    }
+    $field['header'] = $candidate; // stored in English — NOT gettext()
+}
+```
+
+Store the header in **English only** (never wrapped in `gettext()`). The header must be locale-stable: the same CSV downloaded in French and re-uploaded under English locale must still auto-map correctly. The category suffix (`Person Custom Fields`, `Family Properties`, etc.) lives in the PHP constant, not the translation layer.

@@ -12,7 +12,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <ol class="breadcrumb mb-0 bg-light">
                 <li class="breadcrumb-item"><a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard"><i class="fa-solid fa-home"></i></a></li>
                 <li class="breadcrumb-item"><a href="<?= SystemURLs::getRootPath() ?>/plugins/management"><?= gettext('Plugins') ?></a></li>
-                <li class="breadcrumb-item"><a href="<?= SystemURLs::getRootPath() ?>/plugins/mailchimp/dashboard"><?= gettext('MailChimp') ?></a></li>
+                <li class="breadcrumb-item"><a href="<?= SystemURLs::getRootPath() ?>/plugins/mailchimp/dashboard">Mailchimp</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><?= gettext('Not Subscribed') ?></li>
             </ol>
         </nav>
@@ -91,7 +91,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     data: 'name',
                     render: function (data, type, row) {
                         // row.id is from CRM (integer), safe to use directly
-                        return '<a href="' + window.CRM.root + '/PersonView.php?PersonID=' + parseInt(row.id, 10) + '" class="text-primary">' +
+                        return '<a href="' + window.CRM.root + '/people/view/' + parseInt(row.id, 10) + '" class="text-primary">' +
                             '<i class="fa-solid fa-user me-2"></i>' + escapeHtml(data) + '</a>';
                     },
                     searchable: true

@@ -90,7 +90,7 @@ if (typeof window !== "undefined") {
    *
    * The bridge stores TomSelect instances on the DOM element as `element.tomselect`.
    */
-  if (window.$ && window.$.fn) {
+  if (window.$?.fn) {
     window.$.fn.tomselect = function (optionsOrCommand) {
       // Handle string commands: 'destroy', 'val', etc.
       if (typeof optionsOrCommand === "string") {
@@ -116,7 +116,7 @@ if (typeof window !== "undefined") {
         // Placeholder
         if (opts.placeholder) {
           tsOpts.placeholder = opts.placeholder;
-        } else if (this.dataset && this.dataset.placeholder) {
+        } else if (this.dataset?.placeholder) {
           tsOpts.placeholder = this.dataset.placeholder;
         }
 

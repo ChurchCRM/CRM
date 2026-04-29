@@ -58,6 +58,9 @@ export interface KioskAssignment {
     Title: string;
     Start: string;
     End: string;
+    /** Server-computed: event start − 1 hour, ISO 8601 with sTimeZone offset.
+     *  Marks when the kiosk transitions from countdown to active check-in. */
+    CheckInOpensAt?: string;
     GroupId?: number;
   };
 }
@@ -97,7 +100,7 @@ export interface KioskJSOM {
   renderNoMembersMessage: () => string;
   renderErrorMessage: (message: string, statusCode?: number) => string;
   heartbeat: () => void;
-  renderCountdown: (eventStart: moment.Moment, eventTitle: string) => string;
+  renderCountdown: (eventStart: moment.Moment, eventTitle: string, kioskName: string) => string;
   renderEventEnded: (eventTitle: string) => string;
   startCountdown: (eventStart: moment.Moment) => void;
   renderStatusCard: (
