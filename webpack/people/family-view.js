@@ -9,8 +9,10 @@
  */
 import L from "leaflet";
 import { initRefreshCoordinatesBtn } from "./geo-refresh";
+import { initTimelineFilter } from "./timeline-filter";
 
 document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".timeline-container").forEach(initTimelineFilter);
   // Initialize map if coordinates exist
   const config = window.CRM?.familyMapConfig;
   if (config && config.lat !== undefined && config.lng !== undefined) {

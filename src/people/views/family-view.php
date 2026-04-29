@@ -331,98 +331,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
             </div>
             <div class="collapse show" id="family-timeline-body">
                 <div class="card-body">
-                    <?php if (empty($familyTimeline)) { ?>
-                        <div class="alert alert-info">
-                            <i class="fa-solid fa-circle-info fa-fw fa-lg"></i>
-                            <span><?= gettext('No timeline events yet.') ?></span>
-                        </div>
-                    <?php } else {
-                        $timelineCounts = ['notes' => 0, 'events' => 0, 'system' => 0];
-                        foreach ($familyTimeline as $tlItem) {
-                            $cat = $tlItem['category'] ?? 'notes';
-                            if (isset($timelineCounts[$cat])) {
-                                $timelineCounts[$cat]++;
-                            }
-                        }
-                        ?>
-                        <div class="timeline-filters d-flex flex-wrap align-items-center gap-2 mb-3" role="group" aria-label="<?= gettext('Timeline filters') ?>">
-                            <span class="text-muted small me-1"><i class="fa-solid fa-filter me-1"></i><?= gettext('Show:') ?></span>
-                            <button type="button" class="btn btn-sm btn-primary timeline-filter-chip active" data-filter="notes">
-                                <i class="fa-solid fa-note-sticky me-1"></i><?= gettext('Notes') ?>
-                                <span class="badge bg-white text-primary ms-1"><?= $timelineCounts['notes'] ?></span>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary timeline-filter-chip" data-filter="events">
-                                <i class="fa-solid fa-calendar-days me-1"></i><?= gettext('Events') ?>
-                                <span class="badge bg-secondary-lt text-secondary ms-1"><?= $timelineCounts['events'] ?></span>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary timeline-filter-chip" data-filter="system">
-                                <i class="fa-solid fa-gear me-1"></i><?= gettext('System') ?>
-                                <span class="badge bg-secondary-lt text-secondary ms-1"><?= $timelineCounts['system'] ?></span>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-link ms-auto timeline-filter-all" data-filter="all">
-                                <?= gettext('Show all') ?>
-                            </button>
-                        </div>
-                        <div class="timeline-empty-notice alert alert-info" style="display:none;">
-                            <i class="fa-solid fa-circle-info fa-fw me-1"></i><?= gettext('No matching entries for the selected filters.') ?>
-                        </div>
-                        <?php $currentYear = ''; ?>
-                        <div class="timeline mt-3">
-                            <?php foreach ($familyTimeline as $item) {
-                                if ($currentYear !== $item['year']) {
-                                    $currentYear = $item['year']; ?>
-                                    <div class="hr-text timeline-year" data-timeline-year="<?= htmlspecialchars((string)$currentYear) ?>"><i class="fa-solid fa-calendar-days"></i> <?= $currentYear ?></div>
-                                <?php } ?>
-                                <div class="timeline-event" data-timeline-category="<?= htmlspecialchars($item['category'] ?? 'notes') ?>" data-timeline-year="<?= htmlspecialchars((string)$item['year']) ?>">
-                                    <div class="timeline-event-icon bg-<?= $item['color'] ?>-lt text-<?= $item['color'] ?>">
-                                        <i class="fa-solid <?= $item['style'] ?>"></i>
-                                    </div>
-                                    <div class="timeline-event-card card">
-                                        <div class="card-body p-3">
-                                            <div class="d-flex justify-content-between align-items-start mb-1">
-                                                <div>
-                                                    <?php if ($item['slim']) { ?>
-                                                        <span class="text-secondary"><?= $item['text'] ?> <?= gettext($item['header']) ?></span>
-                                                    <?php } else { ?>
-                                                        <strong>
-                                                            <?php if (!empty($item['headerLink'])) { ?>
-                                                                <a href="<?= $item['headerLink'] ?>"><?= $item['header'] ?></a>
-                                                            <?php } else { ?>
-                                                                <?= $item['header'] ?>
-                                                            <?php } ?>
-                                                        </strong>
-                                                        <?php if (!empty($item['isPrivate'])) { ?>
-                                                            <span class="badge bg-warning-lt text-warning ms-1"><?= gettext('Private') ?></span>
-                                                        <?php } ?>
-                                                    <?php } ?>
-                                                </div>
-                                                <div class="d-flex align-items-center gap-1 ms-2 flex-shrink-0">
-                                                    <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) { ?>
-                                                        <div class="dropdown">
-                                                            <button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown" data-bs-display="static"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                                                            <div class="dropdown-menu dropdown-menu-end">
-                                                                <?php if (!empty($item["editLink"])) { ?>
-                                                                    <a href="<?= $item["editLink"] ?>" class="dropdown-item"><i class="fa-solid fa-pen me-2"></i><?= gettext('Edit') ?></a>
-                                                                <?php }
-                                                                if (isset($item["deleteLink"])) {
-                                                                    $noteId = str_replace('api-delete-note-', '', $item['deleteLink']); ?>
-                                                                    <button type="button" class="dropdown-item text-danger delete-note-btn" data-note-id="<?= htmlspecialchars($noteId) ?>"><i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?></button>
-                                                                <?php } ?>
-                                                            </div>
-                                                        </div>
-                                                    <?php } ?>
-                                                </div>
-                                            </div>
-                                            <?php if (!$item['slim'] && !empty($item['text'])) { ?>
-                                                <div class="text-secondary mt-1" style="white-space: pre-wrap; font-size: 0.875rem;"><?= $item['text'] ?></div>
-                                            <?php } ?>
-                                            <small class="text-muted"><i class="fa-solid fa-clock me-1"></i><?= $item['datetime'] ?></small>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php } ?>
-                        </div>
-                    <?php } ?>
+                    <?php $timeline = $familyTimeline; include __DIR__ . '/timeline-events.php'; ?>
                 </div>
             </div>
         </div>
@@ -495,6 +404,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
             </div>
         </div>
 
+        <?php if ($family->hasAddress()): ?>
         <!-- Address Card -->
         <div class="card mb-3">
             <div class="card-header d-flex align-items-center">
@@ -561,6 +471,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                 <?php endif; ?>
             </div>
         </div>
+        <?php endif; ?>
 
         <?php if (!empty($family->getEmail())) { ?>
         <!-- Email Card (with Mailchimp status if plugin enabled) -->
@@ -900,44 +811,6 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 (function () {
-    function initTimelineFilter(container) {
-        if (!container) { return; }
-        var chips = container.querySelectorAll(".timeline-filter-chip");
-        var allChip = container.querySelector(".timeline-filter-all");
-        var events = container.querySelectorAll(".timeline-event[data-timeline-category]");
-        var years = container.querySelectorAll(".timeline-year");
-        var emptyNotice = container.querySelector(".timeline-empty-notice");
-        if (chips.length === 0 || events.length === 0) { return; }
-        var active = new Set(["notes"]);
-        function applyFilter() {
-            var showAll = active.has("all");
-            var visibleYears = {};
-            var anyVisible = false;
-            events.forEach(function (el) {
-                var cat = el.getAttribute("data-timeline-category") || "notes";
-                var visible = showAll || active.has(cat);
-                el.style.display = visible ? "" : "none";
-                if (visible) { anyVisible = true; visibleYears[el.getAttribute("data-timeline-year") || ""] = true; }
-            });
-            years.forEach(function (y) { y.style.display = visibleYears[y.getAttribute("data-timeline-year") || ""] ? "" : "none"; });
-            if (emptyNotice) { emptyNotice.style.display = anyVisible ? "none" : ""; }
-            chips.forEach(function (chip) {
-                var f = chip.getAttribute("data-filter"), on = showAll || active.has(f);
-                chip.classList.toggle("btn-primary", on); chip.classList.toggle("active", on); chip.classList.toggle("btn-outline-secondary", !on);
-            });
-            if (allChip) { allChip.classList.toggle("active", showAll); }
-        }
-        chips.forEach(function (chip) {
-            chip.addEventListener("click", function () {
-                var f = chip.getAttribute("data-filter"); if (!f) return;
-                active.delete("all"); if (active.has(f)) active.delete(f); else active.add(f);
-                if (active.size === 0) active.add("notes");
-                applyFilter();
-            });
-        });
-        if (allChip) { allChip.addEventListener("click", function () { active = new Set(["all"]); applyFilter(); }); }
-        applyFilter();
-    }
     function isAppleMobile() {
         var ua = navigator.userAgent || "";
         if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) return true;
@@ -945,80 +818,15 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
         return false;
     }
     document.addEventListener("DOMContentLoaded", function () {
-        document.querySelectorAll(".timeline-container").forEach(initTimelineFilter);
         if (isAppleMobile()) {
             document.querySelectorAll(".directions-provider-toggle").forEach(function (el) { el.classList.remove("d-none"); });
             document.querySelectorAll(".directions-provider-menu").forEach(function (el) { el.classList.remove("d-none"); });
-        }
-
-        let deleteNoteModal, pendingNoteId;
-        const modal = document.getElementById("deleteNoteModal");
-        if (modal) {
-            deleteNoteModal = new bootstrap.Modal(modal);
-        }
-
-        document.querySelectorAll(".delete-note-btn").forEach((btn) => {
-            btn.addEventListener("click", function (e) {
-                e.preventDefault();
-                pendingNoteId = this.getAttribute("data-note-id");
-                if (!pendingNoteId || !deleteNoteModal) return;
-                deleteNoteModal.show();
-            });
-        });
-
-        const confirmBtn = document.getElementById("confirmDeleteNoteBtn");
-        if (confirmBtn) {
-            confirmBtn.addEventListener("click", async function () {
-                if (!pendingNoteId) return;
-                deleteNoteModal.hide();
-
-                try {
-                    const response = await fetch(`<?= SystemURLs::getRootPath() ?>/api/note/${pendingNoteId}`, {
-                        method: "DELETE",
-                        headers: {
-                            "content-type": "application/json",
-                            Authorization: `Bearer ${sessionStorage.getItem("apiKey")}`,
-                        },
-                    });
-
-                    if (response.ok) {
-                        location.reload();
-                    } else if (response.status === 403) {
-                        alert("<?= gettext('You do not have permission to delete this note.') ?>");
-                    } else if (response.status === 404) {
-                        alert("<?= gettext('Note not found.') ?>");
-                    } else {
-                        alert("<?= gettext('Failed to delete note.') ?>");
-                    }
-                } catch (error) {
-                    console.error("Delete note error:", error);
-                    alert("<?= gettext('Error deleting note.') ?>");
-                }
-            });
         }
     });
 })();
 </script>
 
-<!-- Delete Note Modal -->
-<div class="modal fade" id="deleteNoteModal" tabindex="-1" role="dialog" aria-labelledby="deleteNoteLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                <h4 class="modal-title" id="deleteNoteLabel"><?= gettext('Confirm Delete') ?></h4>
-            </div>
-            <div class="modal-body">
-                <p><?= gettext('Are you sure you want to delete this note?') ?></p>
-                <p><small class="text-muted"><?= gettext('This action cannot be undone.') ?></small></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
-                <button type="button" class="btn btn-danger" id="confirmDeleteNoteBtn"><?= gettext('Delete') ?></button>
-            </div>
-        </div>
-    </div>
-</div>
+<?php require_once __DIR__ . '/delete-note-modal.php'; ?>
 
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

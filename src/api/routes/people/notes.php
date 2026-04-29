@@ -5,6 +5,7 @@ use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\NoteQuery;
 use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
 use ChurchCRM\Slim\Middleware\Api\NoteMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
@@ -356,8 +357,29 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
             return SlimUtils::renderErrorJSON($response, gettext('Only the note author or an admin may delete this note'), [], 403);
         }
 
+        // Capture before deletion
+        $perId    = (int) $note->getPerId();
+        $famId    = (int) $note->getFamId();
+        $authorId = $note->getEnteredBy();
+
+        $authorPerson = PersonQuery::create()->findPk($authorId);
+        $authorName   = $authorPerson !== null ? $authorPerson->getFullName() : gettext('Unknown');
+
         try {
             $note->delete();
+
+            // Write a system timeline entry so the deletion is auditable
+            $audit = new Note();
+            if ($perId > 0) {
+                $audit->setPerId($perId);
+            }
+            if ($famId > 0) {
+                $audit->setFamId($famId);
+            }
+            $audit->setType('delete-note');
+            $audit->setText(sprintf(gettext('Note by %s deleted'), $authorName));
+            $audit->setEntered($currentUser->getId());
+            $audit->save();
 
             return SlimUtils::renderJSON($response, ['success' => true]);
         } catch (\Throwable $e) {

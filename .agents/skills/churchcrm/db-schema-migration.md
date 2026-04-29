@@ -64,3 +64,30 @@ When removing an unused DB table, touch **all four locations** — missing any l
 | `src/mysql/upgrade/X.Y.Z-cleanup.sql` | Add `DROP TABLE IF EXISTS` (existing installs need the cleanup on upgrade) |
 
 Register the cleanup script in `upgrade.json` `current` block using the two-block pattern above. Use `DROP TABLE IF EXISTS` so the script is idempotent on fresh installs.
+
+### Keep Install.sql in Sync with Every Migration <!-- learned: 2026-04-29 -->
+
+`src/mysql/install/Install.sql` is the canonical schema for **new installs**. Whenever you add an upgrade SQL that alters a table (charset, new column, dropped column, index change), you **must also apply the same change in Install.sql** so fresh installations are identical to upgraded ones.
+
+**Always update Install.sql. Ask the user before editing seed.sql** — it contains Cypress test data that may need regeneration.
+
+Checklist for any `ALTER TABLE` migration:
+
+| File | Action |
+|------|--------|
+| `src/mysql/upgrade/X.Y.Z-<desc>.sql` | The `ALTER TABLE` statement |
+| `src/mysql/install/Install.sql` | Apply the same change to the `CREATE TABLE` block — required |
+| `cypress/data/seed.sql` | Update the `CREATE TABLE` block — **ask user first** |
+| `orm/schema.xml` | Update column/table attributes if Propel schema tracks this |
+
+### Use utf8mb4 for All User-Content Tables <!-- learned: 2026-04-29 -->
+
+MySQL `utf8` / `utf8mb3` is 3-byte max and silently fails on emoji and other 4-byte Unicode (`SQLSTATE[22007] Incorrect string value`). Any table that stores user-generated text must use `utf8mb4_unicode_ci`.
+
+```sql
+-- ✅ New tables
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- ✅ Upgrading existing tables
+ALTER TABLE `note_nte` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```

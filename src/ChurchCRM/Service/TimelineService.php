@@ -33,14 +33,7 @@ class TimelineService
             }
         }
 
-        krsort($timeline);
-
-        $sortedTimeline = [];
-        foreach ($timeline as $item) {
-            $sortedTimeline[] = $item;
-        }
-
-        return $sortedTimeline;
+        return $this->sortTimeline($timeline);
     }
 
     /**
@@ -139,17 +132,7 @@ class TimelineService
         $isVisible = $dbNote->isVisible($this->currentUser->getId());
 
         if ($isVisible) {
-            $displayEditedBy = gettext('Unknown');
-            if ($dbNote->getDisplayEditedBy() === Person::SELF_REGISTER) {
-                $displayEditedBy = gettext('Self Registration');
-            } elseif ($dbNote->getDisplayEditedBy() === Person::SELF_VERIFY) {
-                $displayEditedBy = gettext('Self Verification');
-            } else {
-                $editor = PersonQuery::create()->findPk($dbNote->getDisplayEditedBy());
-                if ($editor !== null) {
-                    $displayEditedBy = $editor->getFullName();
-                }
-            }
+            $displayEditedBy = $this->resolveAuthorName($dbNote);
             $text = $dbNote->getText();
             $editLink = $dbNote->getEditLink();
             $deleteLink = 'api-delete-note-' . $dbNote->getId();
@@ -157,7 +140,7 @@ class TimelineService
             $text = gettext('[Private Note — visible only to creator]');
             $editLink = '';
             $deleteLink = 'api-delete-note-' . $dbNote->getId();
-            $displayEditedBy = gettext('Unknown');
+            $displayEditedBy = $this->resolveAuthorName($dbNote);
         } else {
             return null;
         }
@@ -174,11 +157,27 @@ class TimelineService
             $deleteLink ?? ''
         );
 
+        // Override key to use 24-hour format so krsort orders notes and events correctly
+        $item['key'] = $dbNote->getDisplayEditedDate('Y-m-d H:i:s') . '-' . $dbNote->getId();
+
         if ($isVisible && $dbNote->isPrivate()) {
             $item['isPrivate'] = true;
         }
 
         return $item;
+    }
+
+    private function resolveAuthorName(Note $dbNote): string
+    {
+        if ($dbNote->getDisplayEditedBy() === Person::SELF_REGISTER) {
+            return gettext('Self Registration');
+        }
+        if ($dbNote->getDisplayEditedBy() === Person::SELF_VERIFY) {
+            return gettext('Self Verification');
+        }
+        $editor = PersonQuery::create()->findPk($dbNote->getDisplayEditedBy());
+
+        return $editor !== null ? $editor->getFullName() : gettext('Unknown');
     }
 
     /**
@@ -199,6 +198,7 @@ class TimelineService
         'verify-link' => 'system',
         'verify-URL'  => 'system',
         'user'        => 'system',
+        'delete-note' => 'system',
     ];
 
     /**
@@ -249,6 +249,10 @@ class TimelineService
             case 'user':
                 $item['style'] = 'fa-user-secret';
                 $item['color'] = 'secondary';
+                break;
+            case 'delete-note':
+                $item['style'] = 'fa-trash';
+                $item['color'] = 'danger';
                 break;
             default:
                 $item['slim'] = false;

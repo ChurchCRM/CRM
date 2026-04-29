@@ -492,6 +492,35 @@ if ($event !== null) {
 Same rule applies anywhere a "canonical" mutator method exists on a model — prefer the
 model method over hand-rolling the same sequence of ORM calls.
 
+### Notes REST API — Full Route Set <!-- learned: 2026-04-29 -->
+
+Notes have a dedicated route file at `src/api/routes/people/notes.php` covering person notes, family notes, and single-note CRUD. All routes require `NotesRoleAuthMiddleware`.
+
+```
+GET    /person/{personId}/notes   — list type=note for person (visibility-filtered)
+POST   /person/{personId}/note    — create note for person
+GET    /family/{familyId}/notes   — list type=note for family (visibility-filtered)
+POST   /family/{familyId}/note    — create note for family
+GET    /note/{noteId}             — fetch single note (visibility check)
+PUT    /note/{noteId}             — update text/private (author or admin only)
+DELETE /note/{noteId}             — delete + write type=delete-note audit entry
+```
+
+**Delete audit trail pattern** — capture author name BEFORE deleting, then write a `type='delete-note'` Note so the timeline stays auditable:
+
+```php
+$authorPerson = PersonQuery::create()->findPk($note->getEnteredBy());
+$authorName   = $authorPerson?->getFullName() ?? gettext('Unknown');
+$note->delete();
+$audit = new Note();
+if ($perId > 0) { $audit->setPerId($perId); }
+if ($famId > 0) { $audit->setFamId($famId); }
+$audit->setType('delete-note');
+$audit->setText(sprintf(gettext('Note by %s deleted'), $authorName));
+$audit->setEntered($currentUser->getId());
+$audit->save();
+```
+
 ### Note Privacy: nte_Private Stores personId, Not a Boolean <!-- learned: 2026-03-29 -->
 
 `nte_Private` is **not** a boolean flag. It stores either `0` (public) or the author's `personId` (private). `Note::isVisible($personId)` checks `getPrivate() === $personId`, so storing `1` instead of a real personId means only person with ID=1 can see the note.
@@ -506,6 +535,10 @@ $private = !empty($input['private']) ? (int) $note->getEnteredBy() : 0;
 // ❌ WRONG — stores 1, which only makes it visible to person with id=1
 $private = !empty($input['private']) ? 1 : 0;
 ```
+
+### note_nte Requires utf8mb4 for Emoji Support <!-- learned: 2026-04-29 -->
+
+MySQL `utf8`/`utf8mb3` is 3-byte max. Saving emoji in `nte_Text` causes `SQLSTATE[22007] Incorrect string value`. Fixed in `7.3.1-cleanup.sql` and `Install.sql`. Any new table storing user text should declare `utf8mb4_unicode_ci` from the start.
 
 ## Files
 
