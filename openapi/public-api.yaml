@@ -334,6 +334,10 @@ paths:
                   type: string
                   format: password
                   example: secret
+                otp:
+                  description: 'One-time password or recovery code for 2FA (required when 202 is returned)'
+                  type: string
+                  example: '123456'
               type: object
       responses:
         '200':
@@ -346,6 +350,14 @@ paths:
                 type: object
         '401':
           description: 'Invalid username or password'
+        '202':
+          description: 'Password valid but 2FA verification required'
+          content:
+            application/json:
+              schema:
+                properties:
+                  requiresOTP: { type: boolean, example: true }
+                type: object
   /public/user/password-reset:
     post:
       tags:
