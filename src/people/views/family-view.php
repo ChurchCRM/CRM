@@ -385,10 +385,10 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                                                         <span class="text-secondary"><?= $item['text'] ?> <?= gettext($item['header']) ?></span>
                                                     <?php } else { ?>
                                                         <strong>
-                                                            <?php if (array_key_exists('headerlink', $item)) { ?>
-                                                                <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
+                                                            <?php if (!empty($item['headerLink'])) { ?>
+                                                                <a href="<?= $item['headerLink'] ?>"><?= $item['header'] ?></a>
                                                             <?php } else { ?>
-                                                                <?= gettext($item['header']) ?>
+                                                                <?= $item['header'] ?>
                                                             <?php } ?>
                                                         </strong>
                                                         <?php if (!empty($item['isPrivate'])) { ?>
