@@ -4,9 +4,11 @@ This skill documents how to access, analyze, and respond to GitHub security advi
 
 ## Accessing Unpublished Advisories
 
-### Via GitHub CLI (Recommended)
+### Via GitHub Web UI
 
-Unpublished (draft) advisories are NOT accessible via the web UI. Use `gh` CLI instead:
+Draft advisories **are** visible to repo maintainers in the GitHub web UI under **Security → Advisories**. Non-maintainers cannot see them.
+
+### Via GitHub CLI (useful for automation/scripting)
 
 ```bash
 gh api repos/ChurchCRM/CRM/security-advisories/{GHSA_ID} \

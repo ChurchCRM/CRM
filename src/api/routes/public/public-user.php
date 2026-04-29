@@ -53,7 +53,7 @@ $app->group('/public/user', function (RouteCollectorProxy $group): void {
  */
 function userLogin(Request $request, Response $response, array $args): Response
 {
-    $logger = LoggerUtils::getAppLogger();
+    $logger = LoggerUtils::getAuthLogger();
     $body = json_decode($request->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
     // Use a generic error message to prevent username enumeration
@@ -112,10 +112,8 @@ function userLogin(Request $request, Response $response, array $args): Response
             throw new HttpUnauthorizedException($request, $genericError);
         }
 
-        // Persist consumed recovery code if one was used
-        if ($recoveryValid) {
-            $user->save();
-        }
+        // isTwoFaRecoveryCodeValid() already calls $user->save() internally when
+        // a recovery code is consumed — no additional save needed here.
     }
 
     // Full authentication complete — reset failed login counter
@@ -174,7 +172,7 @@ function passwordResetRequest(Request $request, Response $response, array $args)
     $email = new ResetPasswordTokenEmail($user, $token->getToken());
     if (!$email->send()) {
         $logger->error('Failed to send password reset email for user ' . $user->getUserName() . ': ' . $email->getError());
-        // Still return success to user (don't expose email issues)
+        $token->delete();
         return SlimUtils::renderJSON($response, ['success' => true]);
     }
 
