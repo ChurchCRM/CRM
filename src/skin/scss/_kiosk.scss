@@ -132,6 +132,11 @@
     border-left-color: #28a745;
     background: #f0fff4;
   }
+
+  // Guest members get a distinct amber/orange left border
+  &.kiosk-member-guest {
+    border-left-color: #fd7e14;
+  }
 }
 
 .kiosk-member-avatar {
@@ -682,6 +687,11 @@
   // Refresh FAB - Green
   &.kiosk-fab-refresh {
     background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  }
+
+  // Guest Registration FAB - Orange (distinct from checkout orange)
+  &.kiosk-fab-guest {
+    background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
   }
 
   // Alert FAB - Blue
