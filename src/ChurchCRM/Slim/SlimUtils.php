@@ -418,22 +418,27 @@ class SlimUtils
      */
     public static function sanitizeErrorMessage(Throwable $exception): string
     {
+        // HTTP exceptions carry intentionally user-facing messages (e.g. "Invalid login or password")
+        // set by route handlers — pass through as-is without redaction.
+        if ($exception instanceof \Slim\Exception\HttpException) {
+            return $exception->getMessage();
+        }
+
         $message = $exception->getMessage();
-        
+
         // For database-related exceptions, return generic message
-        if ($exception instanceof \PDOException || 
+        if ($exception instanceof \PDOException ||
             stripos($exception->getFile(), 'propel') !== false ||
             stripos($message, 'sql') !== false ||
             stripos($message, 'database') !== false) {
             return 'A database error occurred. Please contact your system administrator.';
         }
-        
-        // For all other exceptions, don't return the actual message in production
-        // Only return message if it doesn't contain sensitive info patterns
+
+        // For unexpected exceptions, redact messages that may contain credentials or internal details
         if (preg_match('/(password|credential|secret|api[_-]?key|token|username|user|host|localhost|127\.0\.0|\d{1,3}\.\d{1,3})/i', $message)) {
             return 'An error occurred. Please contact your system administrator.';
         }
-        
+
         return $message;
     }
 
