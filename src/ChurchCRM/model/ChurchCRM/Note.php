@@ -37,7 +37,7 @@ class Note extends BaseNote
 
     public function getDeleteLink(): string
     {
-        return SystemURLs::getRootPath() . '/NoteDelete.php?NoteID=' . $this->getId();
+        return 'data-delete-note-' . $this->getId();
     }
 
     public function getDisplayEditedDate(string $format = 'Y-m-d h:i:s'): string

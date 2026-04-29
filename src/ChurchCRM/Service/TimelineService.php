@@ -157,7 +157,7 @@ class TimelineService
                 '',
                 $dbNote->getText(),
                 $dbNote->getEditLink(),
-                $dbNote->getDeleteLink()
+                'api-delete-note-' . $dbNote->getId()
             );
         }
 

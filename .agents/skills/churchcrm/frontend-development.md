@@ -208,7 +208,7 @@ alert('Operation completed');
 
 ## Confirmations (CRITICAL)
 
-**ALWAYS use bootbox.confirm() for confirmations, NEVER confirm():**
+**For simple confirmations, use bootbox.confirm() — NEVER use confirm() or alert():** <!-- learned: 2026-04-28 -->
 
 ```javascript
 // ✅ CORRECT - Use bootbox.confirm
@@ -233,11 +233,69 @@ bootbox.confirm({
     }
 });
 
-// ❌ WRONG - Never use confirm()
+// ❌ WRONG - Never use browser's confirm() or alert()
 if (confirm('Are you sure?')) {
     performDeletion();
 }
 ```
+
+**For styled confirmations, use Bootstrap modals instead of alert():** <!-- learned: 2026-04-28 -->
+
+When a confirmation requires formatted text, multiple sections, or custom styling, use a Bootstrap modal
+with event listeners instead of bootbox:
+
+```html
+<!-- Modal HTML -->
+<div class="modal fade" id="deleteNoteModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><?= gettext('Confirm Delete') ?></h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p><?= gettext('Are you sure you want to delete this note?') ?></p>
+                <p><small class="text-muted"><?= gettext('This action cannot be undone.') ?></small></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <?= gettext('Cancel') ?>
+                </button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">
+                    <?= gettext('Delete') ?>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+```javascript
+document.addEventListener("DOMContentLoaded", function() {
+    let modal = new bootstrap.Modal(document.getElementById("deleteNoteModal"));
+    let pendingItemId;
+
+    document.querySelectorAll(".delete-btn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            pendingItemId = btn.getAttribute("data-id");
+            modal.show();
+        });
+    });
+
+    document.getElementById("confirmDeleteBtn").addEventListener("click", async () => {
+        modal.hide();
+        const response = await fetch(`/api/note/${pendingItemId}`, {
+            method: "DELETE",
+            headers: { Authorization: `Bearer ${sessionStorage.getItem("apiKey")}` }
+        });
+        if (response.ok) location.reload();
+    });
+});
+```
+
+**Rule of thumb:** Use bootbox for simple yes/no confirmations; use Bootstrap modals for anything
+that needs custom formatting or more control.
 
 ## Modals (Bootstrap 5 / Tabler) <!-- updated: 2026-03-22 -->
 

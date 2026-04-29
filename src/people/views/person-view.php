@@ -614,8 +614,9 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                                             <?php if (isset($item["editLink"])) { ?>
                                                                 <a href="<?= $item["editLink"] ?>" class="btn btn-sm btn-ghost-primary" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen"></i></a>
                                                             <?php }
-                                                            if (isset($item["deleteLink"])) { ?>
-                                                                <a href="<?= $item["deleteLink"] ?>" class="btn btn-sm btn-ghost-danger" title="<?= gettext('Delete') ?>"><i class="fa-solid fa-trash"></i></a>
+                                                            if (isset($item["deleteLink"])) {
+                                                                $noteId = str_replace('api-delete-note-', '', $item['deleteLink']); ?>
+                                                                <button type="button" class="btn btn-sm btn-ghost-danger delete-note-btn" data-note-id="<?= htmlspecialchars($noteId) ?>" title="<?= gettext('Delete') ?>"><i class="fa-solid fa-trash"></i></button>
                                                             <?php } ?>
                                                         <?php } ?>
                                                     </div>
@@ -995,8 +996,75 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
             el.classList.remove("d-none");
         });
     });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        let deleteNoteModal, pendingNoteId;
+        const modal = document.getElementById("deleteNoteModal");
+        if (modal) {
+            deleteNoteModal = new bootstrap.Modal(modal);
+        }
+
+        document.querySelectorAll(".delete-note-btn").forEach((btn) => {
+            btn.addEventListener("click", function (e) {
+                e.preventDefault();
+                pendingNoteId = this.getAttribute("data-note-id");
+                if (!pendingNoteId || !deleteNoteModal) return;
+                deleteNoteModal.show();
+            });
+        });
+
+        const confirmBtn = document.getElementById("confirmDeleteNoteBtn");
+        if (confirmBtn) {
+            confirmBtn.addEventListener("click", async function () {
+                if (!pendingNoteId) return;
+                deleteNoteModal.hide();
+
+                try {
+                    const response = await fetch(`<?= SystemURLs::getRootPath() ?>/api/note/${pendingNoteId}`, {
+                        method: "DELETE",
+                        headers: {
+                            "content-type": "application/json",
+                            Authorization: `Bearer ${sessionStorage.getItem("apiKey")}`,
+                        },
+                    });
+
+                    if (response.ok) {
+                        location.reload();
+                    } else if (response.status === 403) {
+                        alert("<?= gettext('You do not have permission to delete this note.') ?>");
+                    } else if (response.status === 404) {
+                        alert("<?= gettext('Note not found.') ?>");
+                    } else {
+                        alert("<?= gettext('Failed to delete note.') ?>");
+                    }
+                } catch (error) {
+                    console.error("Delete note error:", error);
+                    alert("<?= gettext('Error deleting note.') ?>");
+                }
+            });
+        }
+    });
 })();
 </script>
+
+<div class="modal fade" id="deleteNoteModal" tabindex="-1" role="dialog" aria-labelledby="deleteNoteLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h4 class="modal-title" id="deleteNoteLabel"><?= gettext('Confirm Delete') ?></h4>
+            </div>
+            <div class="modal-body">
+                <p><?= gettext('Are you sure you want to delete this note?') ?></p>
+                <p><small class="text-muted"><?= gettext('This action cannot be undone.') ?></small></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteNoteBtn"><?= gettext('Delete') ?></button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php
 require_once SystemURLs::getDocumentRoot() . '/Include/Footer.php';
