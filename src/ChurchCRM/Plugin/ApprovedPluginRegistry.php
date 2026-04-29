@@ -121,14 +121,17 @@ class ApprovedPluginRegistry
             $contents = file_get_contents(self::REGISTRY_URL);
             if ($contents === false) {
                 LoggerUtils::getAppLogger()->warning('Failed to fetch remote plugin registry', ['url' => self::REGISTRY_URL]);
-                $_SESSION['RemotePluginRegistry'] = [];
+                // Preserve any previously cached data on re-fetch failure; only
+                // seed an empty array on the very first attempt so all()'s
+                // once-per-session gate doesn't retry on every request.
+                $_SESSION['RemotePluginRegistry'] ??= [];
 
                 return;
             }
             $data = json_decode($contents, true, 512, JSON_THROW_ON_ERROR);
             $entries = $data['plugins'] ?? [];
             if (!is_array($entries)) {
-                $_SESSION['RemotePluginRegistry'] = [];
+                $_SESSION['RemotePluginRegistry'] ??= [];
 
                 return;
             }
@@ -142,7 +145,7 @@ class ApprovedPluginRegistry
             self::$cache = null;
         } catch (\Exception $e) {
             LoggerUtils::getAppLogger()->warning('Error processing remote plugin registry', ['error' => $e->getMessage()]);
-            $_SESSION['RemotePluginRegistry'] = [];
+            $_SESSION['RemotePluginRegistry'] ??= [];
         }
     }
 
