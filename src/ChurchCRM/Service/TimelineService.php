@@ -136,7 +136,9 @@ class TimelineService
     public function noteToTimelineItem(Note $dbNote)
     {
         $item = null;
-        if ($this->currentUser->isAdmin() || $dbNote->isVisible($this->currentUser->getPersonId())) {
+        $isVisible = $this->currentUser->isAdmin() || $dbNote->isVisible($this->currentUser->getPersonId());
+
+        if ($isVisible) {
             $displayEditedBy = gettext('Unknown');
             if ($dbNote->getDisplayEditedBy() === Person::SELF_REGISTER) {
                 $displayEditedBy = gettext('Self Registration');
@@ -148,17 +150,32 @@ class TimelineService
                     $displayEditedBy = $editor->getFullName();
                 }
             }
-            $item = $this->createTimeLineItem(
-                $dbNote->getId(),
-                $dbNote->getType(),
-                $dbNote->getDisplayEditedDate(),
-                $dbNote->getDisplayEditedDate('Y'),
-                gettext('by') . ' ' . $displayEditedBy,
-                '',
-                $dbNote->getText(),
-                $dbNote->getEditLink(),
-                'api-delete-note-' . $dbNote->getId()
-            );
+            $text = $dbNote->getText();
+            $editLink = $dbNote->getEditLink();
+            $deleteLink = 'api-delete-note-' . $dbNote->getId();
+        } elseif ($this->currentUser->isAdmin() && $dbNote->isPrivate()) {
+            $text = gettext('[Private Note — visible only to creator]');
+            $editLink = '';
+            $deleteLink = 'api-delete-note-' . $dbNote->getId();
+            $displayEditedBy = gettext('Unknown');
+        } else {
+            return null;
+        }
+
+        $item = $this->createTimeLineItem(
+            $dbNote->getId(),
+            $dbNote->getType(),
+            $dbNote->getDisplayEditedDate(),
+            $dbNote->getDisplayEditedDate('Y'),
+            gettext('by') . ' ' . $displayEditedBy,
+            '',
+            $text,
+            $editLink ?? '',
+            $deleteLink ?? ''
+        );
+
+        if ($isVisible && $dbNote->isPrivate()) {
+            $item['isPrivate'] = true;
         }
 
         return $item;

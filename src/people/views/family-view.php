@@ -391,6 +391,9 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                                                                 <?= gettext($item['header']) ?>
                                                             <?php } ?>
                                                         </strong>
+                                                        <?php if (!empty($item['isPrivate'])) { ?>
+                                                            <span class="badge bg-warning-lt text-warning ms-1"><?= gettext('Private') ?></span>
+                                                        <?php } ?>
                                                     <?php } ?>
                                                 </div>
                                                 <div class="d-flex align-items-center gap-1 ms-2 flex-shrink-0">
