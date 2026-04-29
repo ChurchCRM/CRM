@@ -97,8 +97,8 @@ $(document).on("click", "#guestRegisterSubmitBtn", (event) => {
   kiosk.submitGuestRegistration();
 });
 
-// Allow Enter key to submit the guest registration form
-$(document).on("keydown", "#guestRegistrationModal", (event) => {
+// Allow Enter key in text inputs to submit the guest registration form
+$(document).on("keydown", "#guestRegistrationModal input", (event) => {
   if (event.key === "Enter") {
     event.preventDefault();
     kiosk.submitGuestRegistration();
