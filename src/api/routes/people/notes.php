@@ -83,7 +83,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
 
         $result = [];
         foreach ($notes as $note) {
-            if ($currentUser->isAdmin() || $note->isVisible($currentUser->getPersonId())) {
+            if ($note->isVisible($currentUser->getPersonId())) {
                 $result[] = noteToArray($note);
             }
         }
@@ -188,7 +188,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
 
         $result = [];
         foreach ($notes as $note) {
-            if ($currentUser->isAdmin() || $note->isVisible($currentUser->getPersonId())) {
+            if ($note->isVisible($currentUser->getPersonId())) {
                 $result[] = noteToArray($note);
             }
         }
@@ -272,7 +272,7 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
         $note = $request->getAttribute('note');
         $currentUser = AuthenticationManager::getCurrentUser();
 
-        if (!$currentUser->isAdmin() && !$note->isVisible($currentUser->getPersonId())) {
+        if (!$note->isVisible($currentUser->getPersonId())) {
             return SlimUtils::renderErrorJSON($response, gettext('Note not found'), [], 404);
         }
 
