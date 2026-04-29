@@ -54,7 +54,7 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
             <div class="card-body p-0">
                 <div id="upgrade-stepper" class="bs-stepper">
                     <div class="bs-stepper-header" role="tablist">
-                        <div class="step<?= $hasWarnings ? ' warning-step' : ' ok-step' ?>" data-bs-target="#step-warnings">
+                        <div class="step<?= $hasWarnings ? ' warning-step' : ' ok-step' ?>" data-target="#step-warnings">
                             <button type="button" class="step-trigger" role="tab" aria-controls="step-warnings" id="step-warnings-trigger">
                                 <span class="bs-stepper-circle">
                                     <?php if ($hasWarnings): ?>
@@ -67,21 +67,21 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                             </button>
                         </div>
                         <div class="line"></div>
-                        <div class="step" data-bs-target="#step-backup">
+                        <div class="step" data-target="#step-backup">
                             <button type="button" class="step-trigger" role="tab" aria-controls="step-backup" id="step-backup-trigger">
                                 <span class="bs-stepper-circle"><i class="fa fa-database"></i></span>
                                 <span class="bs-stepper-label"><?= gettext('Backup') ?></span>
                             </button>
                         </div>
                         <div class="line"></div>
-                        <div class="step" data-bs-target="#step-apply">
+                        <div class="step" data-target="#step-apply">
                             <button type="button" class="step-trigger" role="tab" aria-controls="step-apply" id="step-apply-trigger">
                                 <span class="bs-stepper-circle"><i class="fa fa-cloud-arrow-down"></i></span>
                                 <span class="bs-stepper-label"><?= gettext('Download & Apply') ?></span>
                             </button>
                         </div>
                         <div class="line"></div>
-                        <div class="step" data-bs-target="#step-complete">
+                        <div class="step" data-target="#step-complete">
                             <button type="button" class="step-trigger" role="tab" aria-controls="step-complete" id="step-complete-trigger">
                                 <span class="bs-stepper-circle"><i class="fa fa-check"></i></span>
                                 <span class="bs-stepper-label"><?= gettext('Complete') ?></span>

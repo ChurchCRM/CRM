@@ -30,21 +30,21 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
     <div class="card registration-card">
         <div id="registration-stepper" class="bs-stepper">
             <div class="bs-stepper-header" role="tablist">
-                <div class="step" data-bs-target="#step-family-info">
+                <div class="step" data-target="#step-family-info">
                     <button type="button" class="step-trigger" role="tab" aria-controls="step-family-info" id="step-family-info-trigger">
                         <span class="bs-stepper-circle">1</span>
                         <span class="bs-stepper-label"><?= gettext("Family Info") ?></span>
                     </button>
                 </div>
                 <div class="line"></div>
-                <div class="step" data-bs-target="#step-members">
+                <div class="step" data-target="#step-members">
                     <button type="button" class="step-trigger" role="tab" aria-controls="step-members" id="step-members-trigger">
                         <span class="bs-stepper-circle">2</span>
                         <span class="bs-stepper-label"><?= gettext("Members") ?></span>
                     </button>
                 </div>
                 <div class="line"></div>
-                <div class="step" data-bs-target="#step-review">
+                <div class="step" data-target="#step-review">
                     <button type="button" class="step-trigger" role="tab" aria-controls="step-review" id="step-review-trigger">
                         <span class="bs-stepper-circle">3</span>
                         <span class="bs-stepper-label"><?= gettext("Review") ?></span>

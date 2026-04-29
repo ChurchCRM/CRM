@@ -71,6 +71,7 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 |-------|------------|
 | [Authorization & Security](./authorization-security.md) | Permission checks, authentication |
 | [Security Best Practices](./security-best-practices.md) | Security features, sensitive operations, output escaping (incl. data-* attributes) |
+| [Security Advisory Review](./security-advisory-review.md) | **Accessing draft/private advisories** — Fetch and review unpublished security advisories via GitHub API |
 | [GitHub Interaction](./github-interaction.md) | Security Advisory lifecycle: draft → publish → CVE request, notifying reporters |
 
 ## Plugins
