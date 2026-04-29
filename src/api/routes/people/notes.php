@@ -319,7 +319,7 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
             return SlimUtils::renderErrorJSON($response, gettext('Note text is required'), [], 400);
         }
 
-        $private = !empty($input['private']) ? (int) $note->getEnteredBy() : 0;
+        $private = !empty($input['private']) ? 1 : 0;
 
         $note->setText($text);
         $note->setPrivate($private);

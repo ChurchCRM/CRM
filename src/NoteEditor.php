@@ -75,11 +75,17 @@ if (isset($_POST['Submit'])) {
             $note->save();
         } else {
             $note = NoteQuery::create()->findPk($iNoteID);
-            $note->setPrivate($bPrivate);
-            $note->setText($sNoteText);
-            $note->setDateLastEdited(new DateTime());
-            $note->setEditedBy(AuthenticationManager::getCurrentUser()->getId());
-            $note->save();
+            // Only the creator can edit their note
+            if ($note->getEnteredBy() !== AuthenticationManager::getCurrentUser()->getId()) {
+                $sNoteTextError = '<br><span class="text-danger">You do not have permission to edit this note.</span>';
+                $bErrorFlag = true;
+            } else {
+                $note->setPrivate($bPrivate);
+                $note->setText($sNoteText);
+                $note->setDateLastEdited(new DateTime());
+                $note->setEditedBy(AuthenticationManager::getCurrentUser()->getId());
+                $note->save();
+            }
         }
 
         // Send them back to wherever they came from
