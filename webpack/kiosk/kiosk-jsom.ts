@@ -15,6 +15,7 @@ import type {
   KioskAssignment,
   KioskJSOM,
   PersonApiData,
+  RegisterGuestResponse,
 } from "./types";
 
 // Declare moment as global (loaded via CDN in header)
@@ -97,7 +98,7 @@ function renderClassMember(classMember: ClassMember): void {
     // Create member row
     const memberRow = $("<div>", {
       id: `personId-${classMember.personId}`,
-      class: "kiosk-member",
+      class: `kiosk-member${classMember.isGuest ? " kiosk-member-guest" : ""}`,
       "data-familyId": classMember.familyId || null,
     });
 
@@ -141,6 +142,15 @@ function renderClassMember(classMember: ClassMember): void {
           class: "fa-solid fa-cake-candles ms-2",
           style: "color: #e83e8c;",
           title: classMember.birthdayUpcoming ? "Birthday coming up!" : "Recent birthday!",
+        }),
+      );
+    }
+    // Guest badge
+    if (classMember.isGuest) {
+      nameDiv.append(
+        $("<span>", {
+          class: "badge bg-orange-lt text-orange ms-2 kiosk-guest-badge",
+          text: i18next.t("Guest"),
         }),
       );
     }
@@ -399,6 +409,7 @@ function updateActiveClassMembers(): void {
           birthDay: d.birthDay,
           birthMonth: d.birthMonth,
           familyId: d.familyId,
+          isGuest: d.isGuest ?? false,
         };
 
         renderClassMember(memberData);
@@ -1281,6 +1292,148 @@ function displayPersonInfo(_personId: number): void {
 }
 
 /**
+ * Show the guest registration modal, resetting any previous form state.
+ */
+function showGuestRegistrationModal(): void {
+  const modalEl = document.getElementById("guestRegistrationModal");
+  if (!modalEl) return;
+
+  // Reset form fields
+  (document.getElementById("guestFirstName") as HTMLInputElement).value = "";
+  (document.getElementById("guestLastName") as HTMLInputElement).value = "";
+  (document.getElementById("guestPhone") as HTMLInputElement).value = "";
+  (document.getElementById("guestEmail") as HTMLInputElement).value = "";
+  (document.getElementById("guestBirthYear") as HTMLInputElement).value = "";
+  (document.getElementById("guestBirthMonth") as HTMLSelectElement).value = "";
+  (document.getElementById("guestBirthDay") as HTMLInputElement).value = "";
+
+  // Clear validation state
+  modalEl.querySelectorAll(".is-invalid").forEach((el) => {
+    el.classList.remove("is-invalid");
+  });
+  const errorDiv = document.getElementById("guestFormError");
+  if (errorDiv) {
+    errorDiv.textContent = "";
+    errorDiv.style.display = "none";
+  }
+
+  // Re-enable submit button
+  const submitBtn = document.getElementById("guestRegisterSubmitBtn") as HTMLButtonElement | null;
+  if (submitBtn) {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = `<i class="fa-solid fa-user-plus me-1"></i>${i18next.t("Register & Check In")}`;
+  }
+
+  window.bootstrap.Modal.getOrCreateInstance(modalEl).show();
+}
+
+/**
+ * Submit the guest registration form
+ */
+function submitGuestRegistration(): void {
+  const firstNameEl = document.getElementById("guestFirstName") as HTMLInputElement;
+  const lastNameEl = document.getElementById("guestLastName") as HTMLInputElement;
+  const phoneEl = document.getElementById("guestPhone") as HTMLInputElement;
+  const emailEl = document.getElementById("guestEmail") as HTMLInputElement;
+  const birthYearEl = document.getElementById("guestBirthYear") as HTMLInputElement;
+  const birthMonthEl = document.getElementById("guestBirthMonth") as HTMLSelectElement;
+  const birthDayEl = document.getElementById("guestBirthDay") as HTMLInputElement;
+  const errorDiv = document.getElementById("guestFormError");
+  const submitBtn = document.getElementById("guestRegisterSubmitBtn") as HTMLButtonElement | null;
+
+  // Clear previous validation
+  [firstNameEl, lastNameEl].forEach((el) => {
+    el.classList.remove("is-invalid");
+  });
+  if (errorDiv) {
+    errorDiv.textContent = "";
+    errorDiv.style.display = "none";
+  }
+
+  // Validate required fields
+  let valid = true;
+  if (!firstNameEl.value.trim()) {
+    firstNameEl.classList.add("is-invalid");
+    valid = false;
+  }
+  if (!lastNameEl.value.trim()) {
+    lastNameEl.classList.add("is-invalid");
+    valid = false;
+  }
+  if (!valid) return;
+
+  // Disable submit button to prevent double-submit
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin me-1"></i>${i18next.t("Registering...")}`;
+  }
+
+  const payload: Record<string, string | number> = {
+    FirstName: firstNameEl.value.trim(),
+    LastName: lastNameEl.value.trim(),
+  };
+  if (phoneEl.value.trim()) payload.Phone = phoneEl.value.trim();
+  if (emailEl.value.trim()) payload.Email = emailEl.value.trim();
+  if (birthYearEl.value) payload.BirthYear = parseInt(birthYearEl.value, 10);
+  if (birthMonthEl.value) payload.BirthMonth = parseInt(birthMonthEl.value, 10);
+  if (birthDayEl.value) payload.BirthDay = parseInt(birthDayEl.value, 10);
+
+  APIRequest({
+    path: "registerGuest",
+    method: "POST",
+    data: JSON.stringify(payload),
+  })
+    .done((data: RegisterGuestResponse) => {
+      // Close modal
+      const modalEl = document.getElementById("guestRegistrationModal");
+      if (modalEl) window.bootstrap.Modal.getOrCreateInstance(modalEl).hide();
+
+      // Render the guest directly in the Checked In list
+      const guestMember: ClassMember = {
+        displayName: `${data.FirstName} ${data.LastName}`,
+        firstName: data.FirstName,
+        classRole: "",
+        personId: data.Id,
+        status: 1,
+        gender: data.Gender,
+        hasPhoto: data.hasPhoto,
+        age: data.age,
+        birthdayThisMonth: false,
+        birthdayUpcoming: false,
+        birthdayRecent: false,
+        birthdayToday: false,
+        birthDay: null,
+        birthMonth: null,
+        familyId: data.familyId,
+        isGuest: true,
+      };
+      renderClassMember(guestMember);
+      updateMemberCounts();
+
+      showKioskNotification(
+        i18next.t("{{name}} registered and checked in!", {
+          name: `${data.FirstName} ${data.LastName}`,
+        }),
+        "success",
+      );
+    })
+    .fail((xhr: JQuery.jqXHR) => {
+      // Re-enable submit button on failure
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `<i class="fa-solid fa-user-plus me-1"></i>${i18next.t("Register & Check In")}`;
+      }
+      const message =
+        (xhr.responseJSON as { message?: string } | undefined)?.message ||
+        i18next.t("Failed to register guest. Please try again.");
+      if (errorDiv) {
+        errorDiv.textContent = message;
+        errorDiv.style.display = "block";
+      }
+    });
+}
+
+/**
  * Start the event loop
  */
 function startEventLoop(): void {
@@ -1340,6 +1493,8 @@ export const kiosk: KioskJSOM = {
   setCheckinByEnabled,
   resolveCheckinByModal,
   cancelCheckinByModal,
+  showGuestRegistrationModal,
+  submitGuestRegistration,
 };
 
 // Attach to window.CRM.kiosk for global access (for external use)

@@ -3,6 +3,7 @@
 use ChurchCRM\dto\Notification;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Slim\SlimUtils;
@@ -191,80 +192,86 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         $groupName = $groups->count() > 0 ? $groups->getFirst()->getName() : '';
 
         // Build response array using Person object methods
-        // Use configured timezone for"today" calculations
+        // Use configured timezone for "today" calculations
         $today = DateTimeUtils::getToday();
         $currentMonth = (int) $today->format('n');
         $currentDay = (int) $today->format('j');
         $currentYear = (int) $today->format('Y');
         $peopleData = [];
-        foreach ($members as $person) {
+
+        /**
+         * Build the standard person data array entry used by the kiosk.
+         *
+         * @param \ChurchCRM\model\ChurchCRM\Person $person
+         * @param int|null  $statusOverride  Pass an int to override the Propel virtual column (e.g. for guests).
+         * @param bool      $isGuest         Whether this person is a walk-in guest.
+         */
+        $buildPersonEntry = function ($person, ?int $statusOverride = null, bool $isGuest = false) use ($today, $currentMonth, $currentDay, $currentYear): array {
             $photo = new Photo('Person', $person->getId());
 
-            // Get birth data - returns 0 when not set
             $birthMonth = (int) $person->getBirthMonth();
             $birthDay = (int) $person->getBirthDay();
             $birthYear = $person->getBirthYear();
 
-            // Calculate age - try multiple approaches
             $age = null;
             if (!empty($birthYear) && $birthMonth > 0 && $birthDay > 0) {
-                // Calculate age manually to avoid hideAge() interference
                 $birthDate = DateTimeUtils::createDateTime("$birthYear-$birthMonth-$birthDay");
                 $ageInterval = $today->diff($birthDate);
                 $age = $ageInterval->y;
             }
 
-            // Birthday is"this month" if birthMonth matches current month
             $birthdayThisMonth = ($birthMonth > 0 && $birthMonth === $currentMonth);
-
-            // Calculate if birthday is upcoming (within next 14 days) or recent (within past 14 days)
-            $birthdayUpcoming = false;
-            $birthdayRecent = false;
-            $birthdayToday = false;
+            $birthdayUpcoming  = false;
+            $birthdayRecent    = false;
+            $birthdayToday     = false;
             if ($birthMonth > 0 && $birthDay > 0) {
-                // Calculate this year's birthday using configured timezone
                 $thisBirthday = DateTimeUtils::getToday();
                 $thisBirthday->setDate($currentYear, $birthMonth, $birthDay);
-
-                // Get the difference in days
-                $interval = $today->diff($thisBirthday);
-                $daysDiff = (int) $interval->format('%r%a');
-
-                // Check if birthday is today
+                $interval  = $today->diff($thisBirthday);
+                $daysDiff  = (int) $interval->format('%r%a');
                 if ($daysDiff === 0) {
-                    $birthdayToday = true;
+                    $birthdayToday    = true;
                     $birthdayUpcoming = true;
-                }
-                // Upcoming: birthday in next 14 days (positive diff)
-                elseif ($daysDiff > 0 && $daysDiff <= 14) {
+                } elseif ($daysDiff > 0 && $daysDiff <= 14) {
                     $birthdayUpcoming = true;
-                }
-                // Recent: birthday in past 14 days (negative diff)
-                elseif ($daysDiff < 0 && $daysDiff >= -14) {
+                } elseif ($daysDiff < 0 && $daysDiff >= -14) {
                     $birthdayRecent = true;
                 }
             }
 
-            $family = $person->getFamily();
+            $family   = $person->getFamily();
             $familyId = $family !== null ? $family->getId() : null;
 
-            $peopleData[] = [
-                'Id' => $person->getId(),
-                'FirstName' => $person->getFirstName(),
-                'LastName' => $person->getLastName(),
-                'Gender' => $person->getGender(),
-                'age' => $age,
+            $status = $statusOverride ?? (int) $person->getVirtualColumn('status');
+
+            return [
+                'Id'              => $person->getId(),
+                'FirstName'       => $person->getFirstName(),
+                'LastName'        => $person->getLastName(),
+                'Gender'          => $person->getGender(),
+                'age'             => $age,
                 'birthdayThisMonth' => $birthdayThisMonth,
-                'birthdayUpcoming' => $birthdayUpcoming,
-                'birthdayRecent' => $birthdayRecent,
-                'birthdayToday' => $birthdayToday,
-                'birthDay' => $birthDay > 0 ? $birthDay : null,
-                'birthMonth' => $birthMonth > 0 ? $birthMonth : null,
-                'hasPhoto' => $photo->hasUploadedPhoto(),
-                'RoleName' => $person->getVirtualColumn('RoleName'),
-                'status' => $person->getVirtualColumn('status'),
-                'familyId' => $familyId,
+                'birthdayUpcoming'  => $birthdayUpcoming,
+                'birthdayRecent'    => $birthdayRecent,
+                'birthdayToday'     => $birthdayToday,
+                'birthDay'        => $birthDay > 0 ? $birthDay : null,
+                'birthMonth'      => $birthMonth > 0 ? $birthMonth : null,
+                'hasPhoto'        => $photo->hasUploadedPhoto(),
+                'RoleName'        => $isGuest ? '' : $person->getVirtualColumn('RoleName'),
+                'status'          => $status,
+                'familyId'        => $familyId,
+                'isGuest'         => $isGuest,
             ];
+        };
+
+        foreach ($members as $person) {
+            $peopleData[] = $buildPersonEntry($person);
+        }
+
+        // Append walk-in guests (checked in to this event but not in the group)
+        $guests = $assignment->getEventGuests();
+        foreach ($guests as $guest) {
+            $peopleData[] = $buildPersonEntry($guest, 1, true);
         }
 
         // Check if any notification method is configured
@@ -297,7 +304,7 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
             return SlimUtils::renderErrorJSON($response, gettext('Invalid person ID'), [], 400);
         }
 
-        // Verify the person is in the active class roster
+        // Verify the person is in the active class roster (group members + event guests)
         // array_column() returns zeros on a Propel ObjectCollection (it reads
         // public props/array keys, not ORM getters), which silently 403s every
         // photo/family request with a confusing "not in roster" error. Iterate
@@ -305,6 +312,9 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         $rosterIds = [];
         foreach ($assignment->getActiveGroupMembers() as $member) {
             $rosterIds[] = (int) $member->getId();
+        }
+        foreach ($assignment->getEventGuests() as $guest) {
+            $rosterIds[] = (int) $guest->getId();
         }
         if (!in_array($personId, $rosterIds, true)) {
             return SlimUtils::renderErrorJSON($response, gettext('Person not in active class roster'), [], 403);
@@ -330,8 +340,8 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         }
 
         // Verify the requested person is actually part of the kiosk's
-        // active class roster — prevents enumeration outside the assigned
-        // group's members.
+        // active class roster (group members + event guests) — prevents
+        // enumeration outside the assigned group's members.
         // array_column() returns zeros on a Propel ObjectCollection (it reads
         // public props/array keys, not ORM getters), which silently 403s every
         // photo/family request with a confusing "not in roster" error. Iterate
@@ -339,6 +349,9 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         $rosterIds = [];
         foreach ($assignment->getActiveGroupMembers() as $member) {
             $rosterIds[] = (int) $member->getId();
+        }
+        foreach ($assignment->getEventGuests() as $guest) {
+            $rosterIds[] = (int) $guest->getId();
         }
         if (!in_array($personId, $rosterIds, true)) {
             return SlimUtils::renderErrorJSON($response, gettext('Person not in active class roster'), [], 403);
@@ -370,6 +383,78 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         }
 
         return SlimUtils::renderJSON($response, ['members' => $membersData]);
+    });
+
+    $group->post('/registerGuest', function (Request $request, Response $response) use ($getKioskFromCookie): Response {
+        $input = $request->getParsedBody();
+
+        $firstName = InputUtils::sanitizeText($input['FirstName'] ?? '');
+        $lastName  = InputUtils::sanitizeText($input['LastName'] ?? '');
+
+        if ($firstName === '' || $lastName === '') {
+            return SlimUtils::renderErrorJSON($response, gettext('First name and last name are required'), [], 400);
+        }
+
+        $result = requireAcceptedKioskWithEvent($getKioskFromCookie, $response);
+        if ($result instanceof Response) {
+            return $result;
+        }
+        [, , $event] = $result;
+
+        // Create a new Person record for the walk-in guest
+        $person = new Person();
+        $person->setFirstName($firstName);
+        $person->setLastName($lastName);
+        $person->setDateEntered(date('Y-m-d H:i:s'));
+        $person->setEnteredBy(0); // 0 = kiosk entry
+
+        // Optional demographic fields
+        $birthYear = InputUtils::filterInt($input['BirthYear'] ?? 0);
+        if ($birthYear > 0) {
+            $person->setBirthYear($birthYear);
+        }
+        $birthMonth = InputUtils::filterInt($input['BirthMonth'] ?? 0);
+        if ($birthMonth > 0 && $birthMonth <= 12) {
+            $person->setBirthMonth($birthMonth);
+        }
+        $birthDay = InputUtils::filterInt($input['BirthDay'] ?? 0);
+        if ($birthDay > 0 && $birthDay <= 31) {
+            $person->setBirthDay($birthDay);
+        }
+
+        // Optional contact fields
+        $phone = InputUtils::sanitizeText($input['Phone'] ?? '');
+        if ($phone !== '') {
+            $person->setCellPhone($phone);
+        }
+        $email = InputUtils::sanitizeText($input['Email'] ?? '');
+        if ($email !== '') {
+            $person->setEmail($email);
+        }
+
+        $person->save();
+
+        // Immediately check the guest into the current event
+        $event->checkInPerson($person->getId());
+
+        LoggerUtils::getAppLogger()->info('registerGuest: Walk-in guest registered and checked in', [
+            'personId'  => $person->getId(),
+            'name'      => "$firstName $lastName",
+            'eventId'   => $event->getId(),
+            'eventTitle' => $event->getTitle(),
+        ]);
+
+        return SlimUtils::renderJSON($response, [
+            'Id'        => $person->getId(),
+            'FirstName' => $person->getFirstName(),
+            'LastName'  => $person->getLastName(),
+            'Gender'    => $person->getGender(),
+            'age'       => null,
+            'hasPhoto'  => false,
+            'isGuest'   => true,
+            'familyId'  => null,
+            'status'    => 1,
+        ]);
     });
 
     $group->post('/checkoutAll', function (Request $request, Response $response) use ($getKioskFromCookie): Response {
