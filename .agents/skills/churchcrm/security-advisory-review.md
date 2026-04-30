@@ -280,8 +280,63 @@ After merging the fix:
 - [Cypress Testing](./cypress-testing.md) — E2E test patterns
 - [API Development](./api-development.md) — OpenAPI annotations
 
+## Updating Private Advisories (API Method) <!-- learned: 2026-04-30 -->
+
+When a fix is merged and you need to mark a draft advisory ready for a specific version:
+
+### Fetch Current Advisory State
+
+```bash
+gh api repos/ChurchCRM/CRM/security-advisories/{GHSA_ID} \
+  --header "X-GitHub-Api-Version:2022-11-28" | jq '.vulnerabilities'
+```
+
+### Update Patched Version
+
+The API requires the full `vulnerabilities` array. Use a JSON file to avoid escaping issues:
+
+```bash
+# Create update payload
+cat > /tmp/advisory-patch.json <<'EOF'
+{
+  "vulnerabilities": [
+    {
+      "package": {
+        "ecosystem": "composer",
+        "name": "ChurchCRM/CRM"
+      },
+      "vulnerable_version_range": ">= 7.2.0, <= 7.2.2",
+      "patched_versions": "7.3.1",
+      "vulnerable_functions": []
+    }
+  ]
+}
+EOF
+
+# Submit via PATCH
+gh api repos/ChurchCRM/CRM/security-advisories/{GHSA_ID} \
+  -X PATCH \
+  --input /tmp/advisory-patch.json \
+  --header "X-GitHub-Api-Version:2022-11-28"
+```
+
+**Note:** The `-f field=value` syntax treats arrays as strings and fails with HTTP 422. Always use `--input` for complex payloads.
+
+### Key Field Format Rules
+
+- `vulnerable_version_range`: Use inclusive ranges like `">= 7.2.0, <= 7.2.2"` or `"< 7.3.1"`
+- `patched_versions`: Exact version string (e.g., `"7.3.1"`) or empty string `""` if unfixed
+- Both fields are case-sensitive and version-literal — no wildcards
+
+### Advisory States
+
+- `triage` — draft, not public; fix may or may not be merged
+- `published` — live public advisory; GitHub sends security alerts to affected repos
+- `closed` — advisory rejected or superseded
+
 ## References
 
 - [GitHub Security Advisories](https://github.blog/2022-12-15-security-advisories-github-secret-scanning-and-codeql-are-generally-available/)
 - [OWASP Top 10](https://owasp.org/www-project-top-ten/)
 - [CWE/CVSS Scoring](https://nvd.nist.gov/vuln/detail/CVE-2026-40582) (example CVE)
+- [GitHub REST API: Repository Security Advisories](https://docs.github.com/en/rest/security-advisories/repository-advisories)
