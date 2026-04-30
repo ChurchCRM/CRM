@@ -1309,6 +1309,13 @@ function showRefreshWarning(): void {
     return;
   }
 
+  const modalEl = document.getElementById("refreshWarningModal");
+  if (!modalEl) {
+    // Modal HTML is missing from this template — skip gracefully and reschedule.
+    scheduleNextRefresh();
+    return;
+  }
+
   let secondsLeft = 10;
 
   const updateCountdown = (): void => {
@@ -1317,8 +1324,7 @@ function showRefreshWarning(): void {
   };
   updateCountdown();
 
-  const modalEl = document.getElementById("refreshWarningModal");
-  if (modalEl) window.bootstrap.Modal.getOrCreateInstance(modalEl).show();
+  window.bootstrap.Modal.getOrCreateInstance(modalEl).show();
 
   kioskState.refreshCountdownTimer = setInterval(() => {
     secondsLeft--;
@@ -1326,11 +1332,8 @@ function showRefreshWarning(): void {
     if (secondsLeft <= 0) {
       clearInterval(kioskState.refreshCountdownTimer);
       kioskState.refreshCountdownTimer = undefined;
-      const el = document.getElementById("refreshWarningModal");
-      if (el) {
-        const instance = window.bootstrap.Modal.getInstance(el);
-        if (instance) instance.hide();
-      }
+      const instance = window.bootstrap.Modal.getInstance(modalEl);
+      if (instance) instance.hide();
       heartbeat();
       scheduleNextRefresh();
     }
