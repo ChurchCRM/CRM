@@ -69,24 +69,6 @@ Update the relevant skill file immediately when you:
 4. **Keep it concise** — one paragraph max, prefer code examples over prose
 5. **Date the entry** — append `<!-- learned: YYYY-MM-DD -->` as an HTML comment on the section header line
 
-### Example Auto-Update (what to write)
-
-```markdown
-### Casting Foreign Keys in Propel Relations <!-- learned: 2026-02-28 -->
-
-When traversing Propel relations via `->getXxx()`, always cast the FK to `(int)`
-before passing to query methods — Propel does not auto-cast string inputs from
-`$_POST`/route params.
-
-```php
-// ✅ CORRECT
-$group = GroupQuery::create()->findPk((int)$groupId);
-
-// ❌ WRONG — silently returns null when $groupId is a string "42"
-$group = GroupQuery::create()->findPk($groupId);
-```
-```
-
 ### Memory File Sync
 
 After updating a skill file, also check if [`.claude/projects/.../memory/MEMORY.md`] needs a one-line summary added under **Critical Patterns**.
@@ -105,32 +87,6 @@ After updating a skill file, also check if [`.claude/projects/.../memory/MEMORY.
 These rules apply to **every code change** in this project.
 
 @.agents/skills/churchcrm/code-standards.md
-
----
-
-## Mandatory Code Review Before Any Commit
-
-**NEVER commit or push without first showing the user the diff and getting explicit approval.**
-
-This applies even when the user asks you to "fix" or "make changes" — finishing the code is not permission to commit.
-
-### Required sequence for every commit:
-
-1. Make the changes
-2. Run `git diff` and show the output to the user
-3. Explicitly ask: *"Please review the changes above. Shall I commit?"*
-4. Wait for explicit approval (e.g. "yes", "looks good", "commit it")
-5. Only then run `git add` + `git commit` + `git push`
-
-### What counts as explicit approval
-
-✅ "yes", "looks good", "lgtm", "commit it", "go ahead", "ship it"
-
-❌ Silence, continuing the conversation, asking follow-up questions — these are NOT approval
-
-### No exceptions
-
-Even if you are confident the changes are correct, even if the user said "fix the bug" — always show the diff and wait for approval before committing.
 
 ---
 
