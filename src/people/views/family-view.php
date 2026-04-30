@@ -640,7 +640,7 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
 
 <!-- Leaflet map (loaded only if geocoded) -->
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
-<?php if ($family->hasLatitudeAndLongitude()) : ?>
+<?php if ($family->hasAddress() && $family->hasLatitudeAndLongitude()) : ?>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM = window.CRM || {};
     window.CRM.familyMapConfig = <?= json_encode(['lat' => (float) $family->getLatitude(), 'lng' => (float) $family->getLongitude()]) ?>;

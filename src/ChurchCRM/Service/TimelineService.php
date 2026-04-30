@@ -212,6 +212,7 @@ class TimelineService
 
     public function createTimeLineItem(string $id, $type, string $datetime, $year, $header, $headerLink, $text, $editLink = '', $deleteLink = '')
     {
+        $item['id'] = $id;
         $item['slim'] = true;
         $item['type'] = $type;
         $item['category'] = self::categoryForType($type);

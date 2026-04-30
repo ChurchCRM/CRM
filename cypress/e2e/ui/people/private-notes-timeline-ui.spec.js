@@ -87,7 +87,7 @@ describe("UI Private Notes Timeline", () => {
             ).then((createResp) => {
                 const noteId = createResp.body.note.id;
 
-                cy.visit("/PersonView.php?PersonID=1");
+                cy.visit("/people/view/1");
                 cy.wait(1000);
                 cy.get("#nav-item-timeline").click();
 
@@ -194,7 +194,7 @@ describe("UI Private Notes Timeline", () => {
             ).then((createResp) => {
                 const noteId = createResp.body.note.id;
 
-                cy.visit("/PersonView.php?PersonID=1");
+                cy.visit("/people/view/1");
                 cy.wait(1000);
                 cy.get("#nav-item-timeline").click();
 
@@ -218,7 +218,7 @@ describe("UI Private Notes Timeline", () => {
             ).then((createResp) => {
                 const noteId = createResp.body.note.id;
 
-                cy.visit("/PersonView.php?PersonID=1");
+                cy.visit("/people/view/1");
                 cy.wait(1000);
                 cy.get("#nav-item-timeline").click();
 
