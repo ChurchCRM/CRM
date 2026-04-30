@@ -88,7 +88,6 @@ export interface FamilyMembersResponse {
 export interface KioskJSOM {
   notificationsEnabled: boolean;
   checkinByEnabled: boolean;
-  kioskEventLoop?: ReturnType<typeof setInterval>;
   escapeHtml: (text: string | null | undefined) => string;
   APIRequest: (options: AjaxOptions) => JQuery.jqXHR;
   getPhotoUrl: (personId: number) => string;

@@ -46,6 +46,9 @@ $(document).on("click", ".checkoutButton", (event) => {
 $(document).on("click", "#refreshBtn", (event) => {
   event.preventDefault();
   kiosk.updateActiveClassMembers();
+  // Reset the 60s smart-refresh cycle so the warning modal doesn't appear
+  // unexpectedly soon after a manual refresh.
+  kiosk.cancelScheduledRefresh();
 });
 
 $(document).on("click", "#alertAllBtn", (event) => {

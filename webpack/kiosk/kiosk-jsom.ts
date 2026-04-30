@@ -46,7 +46,6 @@ const kioskState = {
   notificationsEnabled: false,
   checkinByEnabled: false,
   kioskAssignmentId: undefined as KioskAssignment | undefined,
-  kioskEventLoop: undefined as ReturnType<typeof setInterval> | undefined,
   countdownInterval: undefined as ReturnType<typeof setInterval> | undefined,
   kioskName: undefined as string | undefined,
   // Smart refresh: 60s cycle with 10s cancellable popup before each refresh
@@ -549,7 +548,7 @@ function heartbeat(): void {
     }
 
     if (data.Commands === "Identify") {
-      clearInterval(kioskState.kioskEventLoop);
+      stopEventLoop();
       $("#event").hide();
       $("#noEvent").css("display", "flex");
       $("#noEvent").html(renderStatusCard("info", "fa-tablet-screen-button", "Kiosk Identification", data.Name, null));
@@ -1309,6 +1308,13 @@ function showRefreshWarning(): void {
     return;
   }
 
+  const modalEl = document.getElementById("refreshWarningModal");
+  if (!modalEl) {
+    // Modal HTML is missing from this template — skip gracefully and reschedule.
+    scheduleNextRefresh();
+    return;
+  }
+
   let secondsLeft = 10;
 
   const updateCountdown = (): void => {
@@ -1317,8 +1323,7 @@ function showRefreshWarning(): void {
   };
   updateCountdown();
 
-  const modalEl = document.getElementById("refreshWarningModal");
-  if (modalEl) window.bootstrap.Modal.getOrCreateInstance(modalEl).show();
+  window.bootstrap.Modal.getOrCreateInstance(modalEl).show();
 
   kioskState.refreshCountdownTimer = setInterval(() => {
     secondsLeft--;
@@ -1326,11 +1331,8 @@ function showRefreshWarning(): void {
     if (secondsLeft <= 0) {
       clearInterval(kioskState.refreshCountdownTimer);
       kioskState.refreshCountdownTimer = undefined;
-      const el = document.getElementById("refreshWarningModal");
-      if (el) {
-        const instance = window.bootstrap.Modal.getInstance(el);
-        if (instance) instance.hide();
-      }
+      const instance = window.bootstrap.Modal.getInstance(modalEl);
+      if (instance) instance.hide();
       heartbeat();
       scheduleNextRefresh();
     }
@@ -1368,8 +1370,13 @@ function startEventLoop(): void {
  * Stop the event loop
  */
 function stopEventLoop(): void {
-  if (kioskState.kioskEventLoop) {
-    clearInterval(kioskState.kioskEventLoop);
+  if (kioskState.refreshScheduleTimer) {
+    clearTimeout(kioskState.refreshScheduleTimer);
+    kioskState.refreshScheduleTimer = undefined;
+  }
+  if (kioskState.refreshCountdownTimer) {
+    clearInterval(kioskState.refreshCountdownTimer);
+    kioskState.refreshCountdownTimer = undefined;
   }
   if (kioskState.refreshScheduleTimer) {
     clearTimeout(kioskState.refreshScheduleTimer);
