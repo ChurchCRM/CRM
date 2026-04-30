@@ -19,7 +19,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                     <div class="col">
                         <div class="fw-medium text-body" id="familyCountDashboard"><?= $dashboardCounts["families"] ?></div>
-                        <div class="text-muted"><?= gettext('Families') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Families') ?></div>
                     </div>
                 </div>
             </div>
@@ -36,7 +36,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                     <div class="col">
                         <div class="fw-medium text-body" id="peopleStatsDashboard"><?= $dashboardCounts["People"] ?></div>
-                        <div class="text-muted"><?= gettext('People') ?></div>
+                        <div class="text-body-secondary"><?= gettext('People') ?></div>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                     <div class="col">
                         <div class="fw-medium text-body" id="groupsCountDashboard"><?= $dashboardCounts["Groups"] ?></div>
-                        <div class="text-muted"><?= gettext('Groups') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Groups') ?></div>
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                     <div class="col">
                         <div class="fw-medium text-body" id="groupStatsSundaySchool"><?= $dashboardCounts["SundaySchool"] ?></div>
-                        <div class="text-muted"><?= gettext('Sunday School') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Sunday School') ?></div>
                     </div>
                 </div>
             </div>
@@ -86,8 +86,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </span>
                     </div>
                     <div class="col">
-                        <div class="fw-medium text-muted"><?= gettext('No Sunday School') ?></div>
-                        <div class="text-muted small"><?= gettext('Disabled in settings') ?></div>
+                        <div class="fw-medium text-body-secondary"><?= gettext('No Sunday School') ?></div>
+                        <div class="text-body-secondary small"><?= gettext('Disabled in settings') ?></div>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                     <div class="col">
                         <div class="fw-medium text-body"><?= $dashboardCounts["events"] ?></div>
-                        <div class="text-muted"><?= gettext('Check-ins') ?></div>
+                        <div class="text-body-secondary"><?= gettext('Check-ins') ?></div>
                     </div>
                 </div>
             </div>
@@ -121,8 +121,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </span>
                     </div>
                     <div class="col">
-                        <div class="fw-medium text-muted"><?= gettext('No Check-ins') ?></div>
-                        <div class="text-muted small"><?= gettext('Disabled in settings') ?></div>
+                        <div class="fw-medium text-body-secondary"><?= gettext('No Check-ins') ?></div>
+                        <div class="text-body-secondary small"><?= gettext('Disabled in settings') ?></div>
                     </div>
                 </div>
             </div>
@@ -157,7 +157,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="card mb-3">
             <div class="card-header">
                 <div class="card-title">
-                    <i class="ti ti-users me-2 text-muted"></i><?= gettext('People') ?>
+                    <i class="ti ti-users me-2 text-body-secondary"></i><?= gettext('People') ?>
                 </div>
                 <div class="card-options ms-auto">
                     <ul class="nav nav-tabs card-header-tabs" id="people-tabs" role="tablist">
@@ -210,7 +210,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <h3 class="card-title"><i class="fa-solid fa-cake-candles me-2"></i><?= gettext('Birthdays') ?></h3>
             </div>
             <div class="card-body p-0">
-                <p class="text-muted small px-3 pt-3 mb-2"><?= gettext('Past & next 7 days') ?></p>
+                <p class="text-body-secondary small px-3 pt-3 mb-2"><?= gettext('Past & next 7 days') ?></p>
                 <div class="table-responsive">
                     <table class="table table-hover mb-0" width="100%" id="PersonBirthdayDashboardItem"></table>
                 </div>
@@ -221,7 +221,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <h3 class="card-title"><i class="fa-solid fa-heart me-2"></i><?= gettext('Anniversaries') ?></h3>
             </div>
             <div class="card-body p-0">
-                <p class="text-muted small px-3 pt-3 mb-2"><?= gettext('Past & next 7 days') ?></p>
+                <p class="text-body-secondary small px-3 pt-3 mb-2"><?= gettext('Past & next 7 days') ?></p>
                 <div class="table-responsive">
                     <table class="table table-hover mb-0" width="100%" id="FamiliesWithAnniversariesDashboardItem"></table>
                 </div>

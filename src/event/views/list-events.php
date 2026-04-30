@@ -22,7 +22,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           </div>
           <div class="col">
             <div class="fw-medium"><?= (int) $totalEventsThisYear ?></div>
-            <div class="text-muted"><?= gettext('Events This Year') ?></div>
+            <div class="text-body-secondary"><?= gettext('Events This Year') ?></div>
           </div>
         </div>
       </div>
@@ -39,7 +39,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           </div>
           <div class="col">
             <div class="fw-medium"><?= (int) $totalCheckInsThisYear ?></div>
-            <div class="text-muted"><?= gettext('Total Check-ins') ?></div>
+            <div class="text-body-secondary"><?= gettext('Total Check-ins') ?></div>
           </div>
         </div>
       </div>
@@ -56,7 +56,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           </div>
           <div class="col">
             <div class="fw-medium"><?= (int) $activeEventsThisYear ?></div>
-            <div class="text-muted"><?= gettext('Active Events') ?></div>
+            <div class="text-body-secondary"><?= gettext('Active Events') ?></div>
           </div>
         </div>
       </div>
@@ -73,7 +73,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           </div>
           <div class="col">
             <div class="fw-medium"><?= (int) $totalEventTypes ?></div>
-            <div class="text-muted"><?= gettext('Event Types') ?></div>
+            <div class="text-body-secondary"><?= gettext('Event Types') ?></div>
           </div>
         </div>
       </div>
@@ -157,7 +157,7 @@ foreach ($monthlyData as $monthData):
 <div class="card mb-3" id="month-<?= (int) $monthData['month'] ?>">
   <div class="card-header d-flex align-items-center">
     <h3 class="card-title mb-0">
-      <i class="ti ti-calendar me-2 text-muted"></i>
+      <i class="ti ti-calendar me-2 text-body-secondary"></i>
       <?= sprintf(ngettext('%d event in %s', '%d events in %s', $numRows), $numRows, gettext($monthName)) ?>
     </h3>
     <span class="badge bg-blue-lt ms-auto"><?= (int) $EventYear ?></span>
@@ -192,7 +192,7 @@ foreach ($monthlyData as $monthData):
                   $descText = trim(strip_tags((string) ($event['desc'] ?? '')));
                 ?>
                 <?php if ($descText !== ''): ?>
-                  <div><small class="text-muted"><?= InputUtils::escapeHTML($descText) ?></small></div>
+                  <div><small class="text-body-secondary"><?= InputUtils::escapeHTML($descText) ?></small></div>
                 <?php endif; ?>
               </td>
               <td>
@@ -204,22 +204,22 @@ foreach ($monthlyData as $monthData):
                   <?php if ($event['attendee_count'] > 0): ?>
                     <span class="badge bg-primary text-white"><?= $event['attendee_count'] ?></span>
                   <?php else: ?>
-                    <span class="text-muted">0</span>
+                    <span class="text-body-secondary">0</span>
                   <?php endif; ?>
                 </a>
               </td>
               <td>
                 <?php if (empty($event['counts'])): ?>
-                  <span class="text-muted">—</span>
+                  <span class="text-body-secondary">—</span>
                 <?php else: ?>
                   <?php
                   $countParts = [];
                   foreach ($event['counts'] as $count) {
                       if ($count['count'] > 0) {
-                          $countParts[] = '<span class="text-muted small">' . InputUtils::escapeHTML($count['name']) . '</span> ' . $count['count'];
+                          $countParts[] = '<span class="text-body-secondary small">' . InputUtils::escapeHTML($count['name']) . '</span> ' . $count['count'];
                       }
                   }
-                  echo !empty($countParts) ? implode('<br>', $countParts) : '<span class="text-muted">—</span>';
+                  echo !empty($countParts) ? implode('<br>', $countParts) : '<span class="text-body-secondary">—</span>';
                   ?>
                 <?php endif; ?>
               </td>
@@ -255,7 +255,7 @@ foreach ($monthlyData as $monthData):
                 <?php
                 $avgParts = [];
                 foreach ($averages as $avg) {
-                    $avgParts[] = '<span class="text-muted small">' . InputUtils::escapeHTML($avg['name']) . '</span> ' . sprintf('%.1f', $avg['avg_count']);
+                    $avgParts[] = '<span class="text-body-secondary small">' . InputUtils::escapeHTML($avg['name']) . '</span> ' . sprintf('%.1f', $avg['avg_count']);
                 }
                 echo implode('<br>', $avgParts);
                 ?>
@@ -284,10 +284,10 @@ foreach ($monthlyData as $monthData):
 <div class="card">
   <div class="card-body text-center py-5">
     <div class="mb-3">
-      <i class="ti ti-calendar-off text-muted" style="font-size: 3rem;"></i>
+      <i class="ti ti-calendar-off text-body-secondary" style="font-size: 3rem;"></i>
     </div>
-    <h3 class="text-muted"><?= gettext('No Events Found') ?></h3>
-    <p class="text-muted mb-3">
+    <h3 class="text-body-secondary"><?= gettext('No Events Found') ?></h3>
+    <p class="text-body-secondary mb-3">
       <?= sprintf(gettext('No events found for %s.'), (int) $EventYear) ?>
       <?php if ($eType !== 'All'): ?>
         <?= gettext('Try selecting a different event type or year.') ?>

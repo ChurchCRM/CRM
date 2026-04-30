@@ -13,7 +13,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="row mb-4">
         <div class="col-12">
             <h2><?= gettext('Pledge Dashboard') ?></h2>
-            <p class="text-muted small">
+            <p class="text-body-secondary small">
                 <?= gettext('Track and manage pledge commitments by family and fund') ?>
             </p>
         </div>

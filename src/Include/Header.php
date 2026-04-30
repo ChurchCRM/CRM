@@ -68,7 +68,7 @@ $MenuFirst = 1;
               <?= gettext('Clicking "Open GitHub Issue" will open a new tab with your system info pre-filled. No personally identifiable information will be included unless you add it.') ?>
             </div>
             <div class="mb-3">
-              <label for="issueDescription" class="fw-bold"><?= gettext('Describe the issue') ?> <span class="text-muted fw-normal">(<?= gettext('optional') ?>)</span></label>
+              <label for="issueDescription" class="fw-bold"><?= gettext('Describe the issue') ?> <span class="text-body-secondary fw-normal">(<?= gettext('optional') ?>)</span></label>
               <textarea id="issueDescription" class="form-control" rows="4" placeholder="<?= gettext('What went wrong? What did you expect to happen?') ?>"></textarea>
             </div>
           </div>
@@ -434,7 +434,7 @@ $MenuFirst = 1;
           <div class="col">
             <h2 class="page-title"><?= $sPageTitle ?></h2>
             <?php if (!empty($sPageSubtitle)) : ?>
-            <div class="text-muted mt-1"><?= $sPageSubtitle ?></div>
+            <div class="text-body-secondary mt-1"><?= $sPageSubtitle ?></div>
             <?php endif; ?>
           </div>
         </div>

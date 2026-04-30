@@ -86,7 +86,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         if (type !== 'display') {
                             return data !== null ? data : -1;
                         }
-                        return data !== null ? data : '<span class="text-muted">—</span>';
+                        return data !== null ? data : '<span class="text-body-secondary">—</span>';
                     },
                     searchable: false
                 },

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-29 06:52+0000\n"
+"POT-Creation-Date: 2026-04-29 13:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1655,11 +1655,26 @@ msgstr ""
 msgid "Cannot delete a family with donation records. Contact a finance administrator."
 msgstr ""
 
+msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
+msgstr ""
+
+#, php-format
+msgid "Cannot delete fundraiser: %d donated items are still associated. Remove the items first."
+msgstr ""
+
+#, php-format
+msgid "Cannot delete property type: %d properties still reference it. Reassign or delete those properties first."
+msgstr ""
+
 msgid "Cannot delete the only remaining option"
 msgstr ""
 
 #, php-format
 msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
+msgstr ""
+
+#, php-format
+msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
 msgstr ""
 
 msgid "Cannot execute query."
@@ -1987,6 +2002,9 @@ msgstr ""
 msgid "ChurchCRM can send emails directly."
 msgstr ""
 
+msgid "ChurchCRM supports a plugin architecture for extending functionality."
+msgstr ""
+
 msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
 msgstr ""
 
@@ -2011,6 +2029,9 @@ msgid "Class / Group"
 msgstr ""
 
 msgid "Class List Export"
+msgstr ""
+
+msgid "Class must be one of p, f, or g"
 msgstr ""
 
 msgid "Classes"
@@ -2171,6 +2192,9 @@ msgid "Community Management Platform"
 msgstr ""
 
 msgid "Community Plugins"
+msgstr ""
+
+msgid "Community plugins"
 msgstr ""
 
 #. Context: countries
@@ -2429,6 +2453,9 @@ msgid "Copyright"
 msgstr ""
 
 msgid "Core Plugins"
+msgstr ""
+
+msgid "Core plugins"
 msgstr ""
 
 #. Context: countries
@@ -3100,6 +3127,9 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
+msgid "Description cannot exceed 100 characters"
+msgstr ""
+
 msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
 msgstr ""
 
@@ -3251,6 +3281,9 @@ msgstr ""
 msgid "Donation Funds"
 msgstr ""
 
+msgid "Donation fund not found"
+msgstr ""
+
 msgid "Donations and giving records are tracked at the family level. If you plan to record giving for an individual who lives alone, create a single-person family for them."
 msgstr ""
 
@@ -3331,6 +3364,9 @@ msgid "Each country produces its own calendar row in the sidebar. Use the per-ca
 msgstr ""
 
 msgid "Each person can have their own email and mobile number."
+msgstr ""
+
+msgid "Each plugin requires a"
 msgstr ""
 
 msgid "Each row is one person. People in the same family share a FamilyID. Leave columns blank when you have no value for them."
@@ -4096,10 +4132,16 @@ msgstr ""
 msgid "Failed to create class. Please try again."
 msgstr ""
 
+msgid "Failed to create donation fund"
+msgstr ""
+
 msgid "Failed to create event."
 msgstr ""
 
 msgid "Failed to create event. Please try again."
+msgstr ""
+
+msgid "Failed to create fundraiser"
 msgstr ""
 
 msgid "Failed to create group. Please try again."
@@ -4108,10 +4150,22 @@ msgstr ""
 msgid "Failed to create link"
 msgstr ""
 
+msgid "Failed to create property type"
+msgstr ""
+
+msgid "Failed to create volunteer opportunity"
+msgstr ""
+
 msgid "Failed to delete class. Please try again."
 msgstr ""
 
+msgid "Failed to delete donation fund"
+msgstr ""
+
 msgid "Failed to delete event. Please try again."
+msgstr ""
+
+msgid "Failed to delete fundraiser"
 msgstr ""
 
 msgid "Failed to delete group. Please try again."
@@ -4129,7 +4183,13 @@ msgstr ""
 msgid "Failed to delete orphaned files"
 msgstr ""
 
+msgid "Failed to delete property type"
+msgstr ""
+
 msgid "Failed to delete role. Please try again."
+msgstr ""
+
+msgid "Failed to delete volunteer opportunity"
 msgstr ""
 
 msgid "Failed to delete. Please try again."
@@ -4264,16 +4324,28 @@ msgstr ""
 msgid "Failed to uninstall plugin"
 msgstr ""
 
+msgid "Failed to update donation fund"
+msgstr ""
+
+msgid "Failed to update fundraiser"
+msgstr ""
+
 msgid "Failed to update group. Please try again."
 msgstr ""
 
 msgid "Failed to update properties. Please try again."
 msgstr ""
 
+msgid "Failed to update property type"
+msgstr ""
+
 msgid "Failed to update role name. Please try again."
 msgstr ""
 
 msgid "Failed to update role. Please try again."
+msgstr ""
+
+msgid "Failed to update volunteer opportunity"
 msgstr ""
 
 msgid "Failed to upload family photo"
@@ -4804,6 +4876,9 @@ msgid "Fundraiser"
 msgstr ""
 
 msgid "Fundraiser Listing"
+msgstr ""
+
+msgid "Fundraiser not found"
 msgstr ""
 
 msgid "Funds"
@@ -5673,6 +5748,9 @@ msgid "Invalid Year"
 msgstr ""
 
 msgid "Invalid assignment type"
+msgstr ""
+
+msgid "Invalid class"
 msgstr ""
 
 msgid "Invalid code. Please try again."
@@ -6884,6 +6962,9 @@ msgstr ""
 
 #, php-format
 msgid "Name cannot be longer than %d characters"
+msgstr ""
+
+msgid "Name cannot exceed 30 characters"
 msgstr ""
 
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
@@ -8255,6 +8336,9 @@ msgstr ""
 msgid "Pledges and Payments"
 msgstr ""
 
+msgid "Plugin Development"
+msgstr ""
+
 msgid "Plugin Development Docs"
 msgstr ""
 
@@ -8445,6 +8529,9 @@ msgid "Property not found"
 msgstr ""
 
 msgid "Property not found."
+msgstr ""
+
+msgid "Property type not found"
 msgstr ""
 
 msgid "Provide any corrections or additional information here..."
@@ -9483,6 +9570,9 @@ msgstr ""
 msgid "Share this URL with family members to verify their information"
 msgstr ""
 
+msgid "Shipped with ChurchCRM."
+msgstr ""
+
 msgid "Show Family Head of House Names"
 msgstr ""
 
@@ -10077,6 +10167,9 @@ msgstr ""
 msgid "That fund name already exists."
 msgstr ""
 
+msgid "That name already exists."
+msgstr ""
+
 msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr ""
 
@@ -10246,6 +10339,9 @@ msgid "These plugins have been reviewed and approved by the ChurchCRM maintainer
 msgstr ""
 
 msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
+msgstr ""
+
+msgid "Third-party extensions."
 msgstr ""
 
 msgid "This Family is Inactive"
@@ -10421,6 +10517,9 @@ msgid "Title FirstName MiddleInitial. LastName"
 msgstr ""
 
 msgid "Title FirstName MiddleName LastName"
+msgstr ""
+
+msgid "Title is required"
 msgstr ""
 
 msgid "Title page"
@@ -11291,6 +11390,9 @@ msgstr ""
 msgid "Volunteer opportunities"
 msgstr ""
 
+msgid "Volunteer opportunity not found"
+msgstr ""
+
 msgid "Volunteer-entered headcounts, broken down by category."
 msgstr ""
 
@@ -11986,6 +12088,9 @@ msgid "kilometers"
 msgstr ""
 
 msgid "loading"
+msgstr ""
+
+msgid "manifest."
 msgstr ""
 
 msgid "member"
