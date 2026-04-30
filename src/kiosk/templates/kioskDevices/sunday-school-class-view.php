@@ -128,6 +128,29 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
   </button>
 </div>
 
+<!-- Refresh Warning Modal -->
+<div class="modal fade" id="refreshWarningModal" tabindex="-1" aria-labelledby="refreshWarningModalLabel" aria-modal="true" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-warning text-dark">
+        <h5 class="modal-title" id="refreshWarningModalLabel">
+          <i class="fa-solid fa-arrows-rotate me-2"></i><?= gettext('Refreshing Soon') ?>
+        </h5>
+      </div>
+      <div class="modal-body text-center py-4">
+        <p class="mb-1"><?= gettext('Refreshing in') ?></p>
+        <div class="display-4 fw-bold text-warning" id="refreshWarningCountdown">10</div>
+        <p class="text-muted small mt-1"><?= gettext('seconds') ?></p>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-secondary" id="cancelRefreshBtn">
+          <i class="fa-solid fa-ban me-1"></i><?= gettext('Cancel — wait 1 more minute') ?>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Check-in By Modal -->
 <div class="modal fade" id="checkinByModal" tabindex="-1" aria-labelledby="checkinByModalTitle" aria-modal="true">
   <div class="modal-dialog modal-lg">
