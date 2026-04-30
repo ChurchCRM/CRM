@@ -46,7 +46,6 @@ const kioskState = {
   notificationsEnabled: false,
   checkinByEnabled: false,
   kioskAssignmentId: undefined as KioskAssignment | undefined,
-  kioskEventLoop: undefined as ReturnType<typeof setInterval> | undefined,
   countdownInterval: undefined as ReturnType<typeof setInterval> | undefined,
   kioskName: undefined as string | undefined,
   // Smart refresh: 60s cycle with 10s cancellable popup before each refresh
@@ -549,7 +548,7 @@ function heartbeat(): void {
     }
 
     if (data.Commands === "Identify") {
-      clearInterval(kioskState.kioskEventLoop);
+      stopEventLoop();
       $("#event").hide();
       $("#noEvent").css("display", "flex");
       $("#noEvent").html(renderStatusCard("info", "fa-tablet-screen-button", "Kiosk Identification", data.Name, null));
@@ -1371,14 +1370,13 @@ function startEventLoop(): void {
  * Stop the event loop
  */
 function stopEventLoop(): void {
-  if (kioskState.kioskEventLoop) {
-    clearInterval(kioskState.kioskEventLoop);
-  }
   if (kioskState.refreshScheduleTimer) {
     clearTimeout(kioskState.refreshScheduleTimer);
+    kioskState.refreshScheduleTimer = undefined;
   }
   if (kioskState.refreshCountdownTimer) {
     clearInterval(kioskState.refreshCountdownTimer);
+    kioskState.refreshCountdownTimer = undefined;
   }
 }
 
