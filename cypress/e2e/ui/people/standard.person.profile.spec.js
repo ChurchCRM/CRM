@@ -63,9 +63,8 @@ describe("Person Profile", () => {
     it("Add a Note", () => {
         cy.visit(`/people/view/${personId}`);
 
-        // Open Actions dropdown, then click Add Note
-        cy.get("#person-actions-dropdown").click();
-        cy.contains('.dropdown-item', 'Add Note').click();
+        // "Add Note" is a standalone toolbar button, not inside the Actions dropdown
+        cy.contains('a.btn', 'Add Note').click();
         cy.url().should("contain", `NoteEditor.php?PersonID=${personId}`);
 
         const currentDateString = new Date().toISOString();

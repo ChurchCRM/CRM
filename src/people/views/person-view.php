@@ -356,13 +356,17 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
             <?php } ?>
             <button class="btn btn-ghost-secondary" id="printPerson" title="<?= gettext("Print") ?>"><i class="fa-solid fa-print me-1"></i><?= gettext("Print") ?></button>
             <button class="btn btn-ghost-success AddToCart" id="AddPersonToCart" data-cart-id="<?= $iPersonID ?>" data-cart-type="person" title="<?= gettext("Add to Cart") ?>"><i class="fa-solid fa-cart-plus me-1"></i><span class="cartActionDescription"><?= gettext("Cart") ?></span></button>
+            <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
+            <a class="btn btn-ghost-info" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>">
+                <i class="fa-solid fa-note-sticky me-1"></i><?= gettext("Add Note") ?>
+            </a>
+            <?php } ?>
             <div class="dropdown">
                 <button class="btn btn-ghost-secondary dropdown-toggle" id="person-actions-dropdown" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                     <i class="fa-solid fa-ellipsis-vertical me-1"></i><?= gettext("Actions") ?>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
-                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-note-sticky me-2"></i><?= gettext("Add Note") ?></a>
                         <a class="dropdown-item" id="editWhyCame" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-circle-question me-2"></i><?= gettext("Why Came") ?></a>
                     <?php } ?>
                     <?php if ($bOkToEdit && $fam_ID !== '') { ?>
@@ -398,7 +402,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                     <?php if ($bOkToEdit) { ?>
                     <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $fam_ID ?>" class="btn btn-sm btn-ghost-secondary" title="<?= gettext('Edit Family') ?>"><i class="fa-solid fa-pen"></i></a>
                     <?php } ?>
-                    <a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $person->getFamId() ?>" class="btn btn-sm btn-ghost-primary"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?= gettext('View') ?></a>
+                    <a href="<?= $person->getFamily()->getViewURI() ?>" class="btn btn-sm btn-ghost-primary"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?= gettext('View') ?></a>
                 </div>
             </div>
             <div style="overflow: visible;">
@@ -546,90 +550,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                 <div class="tab-content">
 
                     <div class="tab-pane active timeline-container" id="timeline">
-                        <?php
-                        if (empty($personTimeline)) { ?>
-                            <div class="alert alert-info mt-3">
-                                <i class="fa-solid fa-circle-info fa-fw fa-lg"></i>
-                                <span><?= gettext('No timeline events yet.') ?></span>
-                            </div>
-                        <?php } else {
-                            $timelineCounts = ['notes' => 0, 'events' => 0, 'system' => 0];
-                            foreach ($personTimeline as $tlItem) {
-                                $cat = $tlItem['category'] ?? 'notes';
-                                if (isset($timelineCounts[$cat])) {
-                                    $timelineCounts[$cat]++;
-                                }
-                            }
-                            ?>
-                            <div class="timeline-filters d-flex flex-wrap align-items-center gap-2 mt-3 mb-1" role="group" aria-label="<?= gettext('Timeline filters') ?>">
-                                <span class="text-body-secondary small me-1"><i class="fa-solid fa-filter me-1"></i><?= gettext('Show:') ?></span>
-                                <button type="button" class="btn btn-sm btn-primary timeline-filter-chip active" data-filter="notes">
-                                    <i class="fa-solid fa-note-sticky me-1"></i><?= gettext('Notes') ?>
-                                    <span class="badge bg-white text-primary ms-1"><?= $timelineCounts['notes'] ?></span>
-                                </button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary timeline-filter-chip" data-filter="events">
-                                    <i class="fa-solid fa-calendar-days me-1"></i><?= gettext('Events') ?>
-                                    <span class="badge bg-secondary-lt text-secondary ms-1"><?= $timelineCounts['events'] ?></span>
-                                </button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary timeline-filter-chip" data-filter="system">
-                                    <i class="fa-solid fa-gear me-1"></i><?= gettext('System') ?>
-                                    <span class="badge bg-secondary-lt text-secondary ms-1"><?= $timelineCounts['system'] ?></span>
-                                </button>
-                                <button type="button" class="btn btn-sm btn-link ms-auto timeline-filter-all" data-filter="all">
-                                    <?= gettext('Show all') ?>
-                                </button>
-                            </div>
-                            <div class="timeline-empty-notice alert alert-info" style="display:none;">
-                                <i class="fa-solid fa-circle-info fa-fw me-1"></i><?= gettext('No matching entries for the selected filters.') ?>
-                            </div>
-                            <?php $currentYear = ''; ?>
-                            <div class="timeline mt-3">
-                                <?php foreach ($personTimeline as $item) {
-                                    if ($currentYear !== $item['year']) {
-                                        $currentYear = $item['year']; ?>
-                                        <div class="hr-text timeline-year" data-timeline-year="<?= htmlspecialchars((string)$currentYear) ?>"> <i class="fa-solid fa-calendar-days"></i> <?= $currentYear ?></div>
-                                    <?php } ?>
-                                    <div class="timeline-event" data-timeline-category="<?= htmlspecialchars($item['category'] ?? 'notes') ?>" data-timeline-year="<?= htmlspecialchars((string)$item['year']) ?>">
-                                        <div class="timeline-event-icon bg-<?= $item['color'] ?>-lt text-<?= $item['color'] ?>">
-                                            <i class="fa-solid <?= $item['style'] ?>"></i>
-                                        </div>
-                                        <div class="timeline-event-card card">
-                                            <div class="card-body p-3">
-                                                <div class="d-flex justify-content-between align-items-start mb-1">
-                                                    <div>
-                                                        <?php if ($item['slim']) { ?>
-                                                            <span class="text-secondary"><?= $item['text'] ?> <?= gettext($item['header']) ?></span>
-                                                        <?php } else { ?>
-                                                            <strong>
-                                                                <?php if (!empty($item['headerLink'])) { ?>
-                                                                    <a href="<?= $item['headerLink'] ?>"><?= $item['header'] ?></a>
-                                                                <?php } else { ?>
-                                                                    <?= $item['header'] ?>
-                                                                <?php } ?>
-                                                            </strong>
-                                                        <?php } ?>
-                                                    </div>
-                                                    <div class="d-flex align-items-center gap-1 ms-2 flex-shrink-0">
-                                                        <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) { ?>
-                                                            <?php if (isset($item["editLink"])) { ?>
-                                                                <a href="<?= $item["editLink"] ?>" class="btn btn-sm btn-ghost-primary" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen"></i></a>
-                                                            <?php }
-                                                            if (isset($item["deleteLink"])) { ?>
-                                                                <a href="<?= $item["deleteLink"] ?>" class="btn btn-sm btn-ghost-danger" title="<?= gettext('Delete') ?>"><i class="fa-solid fa-trash"></i></a>
-                                                            <?php } ?>
-                                                        <?php } ?>
-                                                    </div>
-                                                </div>
-                                                <?php if (!$item['slim'] && !empty($item['text'])) { ?>
-                                                    <div class="text-secondary mt-1" style="white-space: pre-wrap; font-size: 0.875rem;"><?= $item['text'] ?></div>
-                                                <?php } ?>
-                                                <small class="text-body-secondary"><i class="fa-solid fa-clock me-1"></i><?= $item['datetime'] ?></small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <?php } ?>
-                            </div>
-                        <?php } ?>
+                        <?php $timeline = $personTimeline; include __DIR__ . '/timeline-events.php'; ?>
                     </div>
 
                     <div class="tab-pane" id="groups">
@@ -899,104 +820,21 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 (function () {
-    function initTimelineFilter(container) {
-        if (!container) { return; }
-        var chips = container.querySelectorAll(".timeline-filter-chip");
-        var allChip = container.querySelector(".timeline-filter-all");
-        var events = container.querySelectorAll(".timeline-event[data-timeline-category]");
-        var years = container.querySelectorAll(".timeline-year");
-        var emptyNotice = container.querySelector(".timeline-empty-notice");
-        if (chips.length === 0 || events.length === 0) { return; }
-
-        var active = new Set(["notes"]);
-
-        function applyFilter() {
-            var showAll = active.has("all");
-            var visibleYears = {};
-            var anyVisible = false;
-            events.forEach(function (el) {
-                var cat = el.getAttribute("data-timeline-category") || "notes";
-                var visible = showAll || active.has(cat);
-                el.style.display = visible ? "" : "none";
-                if (visible) {
-                    anyVisible = true;
-                    var yr = el.getAttribute("data-timeline-year") || "";
-                    visibleYears[yr] = true;
-                }
-            });
-            years.forEach(function (y) {
-                var yr = y.getAttribute("data-timeline-year") || "";
-                y.style.display = visibleYears[yr] ? "" : "none";
-            });
-            if (emptyNotice) {
-                emptyNotice.style.display = anyVisible ? "none" : "";
-            }
-            chips.forEach(function (chip) {
-                var f = chip.getAttribute("data-filter");
-                var on = showAll || active.has(f);
-                chip.classList.toggle("btn-primary", on);
-                chip.classList.toggle("active", on);
-                chip.classList.toggle("btn-outline-secondary", !on);
-            });
-            if (allChip) {
-                allChip.classList.toggle("active", showAll);
-            }
-        }
-
-        chips.forEach(function (chip) {
-            chip.addEventListener("click", function () {
-                var f = chip.getAttribute("data-filter");
-                if (!f) { return; }
-                active.delete("all");
-                if (active.has(f)) {
-                    active.delete(f);
-                } else {
-                    active.add(f);
-                }
-                if (active.size === 0) {
-                    active.add("notes");
-                }
-                applyFilter();
-            });
-        });
-
-        if (allChip) {
-            allChip.addEventListener("click", function () {
-                active = new Set(["all"]);
-                applyFilter();
-            });
-        }
-
-        applyFilter();
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-        document.querySelectorAll(".timeline-container").forEach(initTimelineFilter);
-    });
-})();
-
-(function () {
     function isAppleMobile() {
         var ua = navigator.userAgent || "";
-        if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-            return true;
-        }
-        if (navigator.platform === "MacIntel" && typeof navigator.maxTouchPoints === "number" && navigator.maxTouchPoints > 1) {
-            return true;
-        }
+        if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) { return true; }
+        if (navigator.platform === "MacIntel" && typeof navigator.maxTouchPoints === "number" && navigator.maxTouchPoints > 1) { return true; }
         return false;
     }
     document.addEventListener("DOMContentLoaded", function () {
         if (!isAppleMobile()) { return; }
-        document.querySelectorAll(".directions-provider-toggle").forEach(function (el) {
-            el.classList.remove("d-none");
-        });
-        document.querySelectorAll(".directions-provider-menu").forEach(function (el) {
-            el.classList.remove("d-none");
-        });
+        document.querySelectorAll(".directions-provider-toggle").forEach(function (el) { el.classList.remove("d-none"); });
+        document.querySelectorAll(".directions-provider-menu").forEach(function (el) { el.classList.remove("d-none"); });
     });
 })();
 </script>
+
+<?php require_once __DIR__ . '/delete-note-modal.php'; ?>
 
 <?php
 require_once SystemURLs::getDocumentRoot() . '/Include/Footer.php';

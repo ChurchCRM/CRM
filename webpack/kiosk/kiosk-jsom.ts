@@ -1378,6 +1378,12 @@ function stopEventLoop(): void {
     clearInterval(kioskState.refreshCountdownTimer);
     kioskState.refreshCountdownTimer = undefined;
   }
+  if (kioskState.refreshScheduleTimer) {
+    clearTimeout(kioskState.refreshScheduleTimer);
+  }
+  if (kioskState.refreshCountdownTimer) {
+    clearInterval(kioskState.refreshCountdownTimer);
+  }
 }
 
 // Export the kiosk object for global access

@@ -406,7 +406,7 @@ CREATE TABLE `note_nte` (
   `nte_EditedBy` mediumint(8) unsigned NOT NULL default '0',
   `nte_Type` varchar(50) DEFAULT NULL,
   PRIMARY KEY  (`nte_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `note_nte`
