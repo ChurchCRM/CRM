@@ -120,6 +120,9 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
   <button type="button" class="kiosk-fab kiosk-fab-refresh" id="refreshBtn" title="Refresh member list">
     <i class="fa-solid fa-arrows-rotate"></i>
   </button>
+  <button type="button" class="kiosk-fab kiosk-fab-guest" id="registerGuestBtn" title="Register walk-in guest">
+    <i class="fa-solid fa-user-plus"></i>
+  </button>
   <button type="button" class="kiosk-fab kiosk-fab-alert" id="alertAllBtn" title="Send alert to all families">
     <i class="fa-solid fa-bullhorn"></i>
   </button>
@@ -144,6 +147,79 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" id="checkinBySkipBtn">
           <i class="fa-solid fa-forward me-1"></i><?= gettext('Skip') ?>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Guest Registration Modal -->
+<div class="modal fade" id="guestRegistrationModal" tabindex="-1" aria-labelledby="guestRegistrationModalTitle" aria-modal="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-orange text-white">
+        <h5 class="modal-title" id="guestRegistrationModalTitle">
+          <i class="fa-solid fa-user-plus me-2"></i><?= gettext('Register Walk-In Guest') ?>
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="<?= gettext('Cancel') ?>"></button>
+      </div>
+      <div class="modal-body">
+        <div id="guestFormError" class="alert alert-danger" style="display:none;"></div>
+        <form id="guestRegistrationForm" novalidate>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label" for="guestFirstName"><?= gettext('First Name') ?> <span class="text-danger">*</span></label>
+            <input type="text" class="form-control form-control-lg" id="guestFirstName" autocomplete="given-name" placeholder="<?= gettext('First Name') ?>">
+            <div class="invalid-feedback"><?= gettext('First name is required') ?></div>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="guestLastName"><?= gettext('Last Name') ?> <span class="text-danger">*</span></label>
+            <input type="text" class="form-control form-control-lg" id="guestLastName" autocomplete="family-name" placeholder="<?= gettext('Last Name') ?>">
+            <div class="invalid-feedback"><?= gettext('Last name is required') ?></div>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="guestBirthYear"><?= gettext('Birth Year') ?></label>
+            <input type="number" class="form-control" id="guestBirthYear" min="1900" max="<?= date('Y') ?>" placeholder="<?= date('Y') ?>">
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="guestBirthMonth"><?= gettext('Birth Month') ?></label>
+            <select class="form-select" id="guestBirthMonth">
+              <option value=""><?= gettext('— Month —') ?></option>
+              <option value="1"><?= gettext('January') ?></option>
+              <option value="2"><?= gettext('February') ?></option>
+              <option value="3"><?= gettext('March') ?></option>
+              <option value="4"><?= gettext('April') ?></option>
+              <option value="5"><?= gettext('May') ?></option>
+              <option value="6"><?= gettext('June') ?></option>
+              <option value="7"><?= gettext('July') ?></option>
+              <option value="8"><?= gettext('August') ?></option>
+              <option value="9"><?= gettext('September') ?></option>
+              <option value="10"><?= gettext('October') ?></option>
+              <option value="11"><?= gettext('November') ?></option>
+              <option value="12"><?= gettext('December') ?></option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="guestBirthDay"><?= gettext('Birth Day') ?></label>
+            <input type="number" class="form-control" id="guestBirthDay" min="1" max="31" placeholder="<?= gettext('Day') ?>">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="guestPhone"><?= gettext('Phone') ?></label>
+            <input type="tel" class="form-control" id="guestPhone" autocomplete="tel" placeholder="<?= gettext('Phone number') ?>">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="guestEmail"><?= gettext('Email') ?></label>
+            <input type="email" class="form-control" id="guestEmail" autocomplete="email" placeholder="<?= gettext('Email address') ?>">
+          </div>
+        </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          <i class="fa-solid fa-xmark me-1"></i><?= gettext('Cancel') ?>
+        </button>
+        <button type="button" class="btn btn-orange" id="guestRegisterSubmitBtn">
+          <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Register & Check In') ?>
         </button>
       </div>
     </div>
