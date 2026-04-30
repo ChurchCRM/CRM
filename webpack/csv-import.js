@@ -18,7 +18,7 @@ $(document).ready(() => {
     autoProceed: false,
     restrictions: { maxNumberOfFiles: 1, allowedFileTypes: [".csv", "text/csv"] },
   }).use(XHRUpload, {
-    endpoint: window.CRM.root + "/admin/api/import/csv/upload",
+    endpoint: `${window.CRM.root}/admin/api/import/csv/upload`,
     fieldName: "csvFile",
     withCredentials: true,
   });
@@ -131,7 +131,7 @@ $(document).ready(() => {
       .html(`<span class="spinner-border spinner-border-sm mr-2"></span>${i18next.t("Importing...")}`);
 
     $.ajax({
-      url: window.CRM.root + "/admin/api/import/csv/execute",
+      url: `${window.CRM.root}/admin/api/import/csv/execute`,
       type: "POST",
       contentType: "application/json",
       data: JSON.stringify({ token, mapping }),
@@ -245,7 +245,7 @@ function formatSize(bytes) {
   const k = 1024;
   const sizes = ["Bytes", "KB", "MB", "GB"];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
-  return parseFloat((bytes / k ** i).toFixed(2)) + " " + sizes[i];
+  return `${parseFloat((bytes / k ** i).toFixed(2))} ${sizes[i]}`;
 }
 
 function setStatus(status, errorMessage) {

@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const img = container.querySelector(".avatar-img");
     const initials = container.querySelector(".initials");
 
-    if (img && img.src) {
+    if (img?.src) {
       img.addEventListener("load", () => {
         if (initials) {
           initials.style.display = "none";
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const photoElement = e.target.closest(".view-person-photo");
     if (photoElement) {
       const personId = photoElement.getAttribute("data-person-id");
-      if (window.CRM && window.CRM.showPhotoLightbox) {
+      if (window.CRM?.showPhotoLightbox) {
         window.CRM.showPhotoLightbox("person", personId);
       }
       e.preventDefault();
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const familyPhotoElement = e.target.closest(".view-family-photo");
     if (familyPhotoElement) {
       const familyId = familyPhotoElement.getAttribute("data-family-id");
-      if (window.CRM && window.CRM.showPhotoLightbox) {
+      if (window.CRM?.showPhotoLightbox) {
         window.CRM.showPhotoLightbox("family", familyId);
       }
       e.preventDefault();
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let message = "";
       if (verifyType && verifyType.value === "no-change") {
         message = "No Changes";
-      } else if (textarea && textarea.value.trim()) {
+      } else if (textarea?.value.trim()) {
         message = textarea.value.trim();
       } else {
         message = "Changes requested (no details provided)";

@@ -14,9 +14,18 @@ describe("Fundraiser Delete Operations", () => {
         });
 
         it("does not delete on GET", () => {
-            cy.visit("/DonatedItemDelete.php?DonatedItemID=1&linkBack=FindFundRaiser.php");
-            cy.contains("Confirm Delete");
-            cy.url().should("contain", "DonatedItemDelete.php");
+            // A GET must render the confirmation form (HTTP 200) and must never
+            // follow the delete-then-redirect path — which would surface as a
+            // 302 because the POST Delete handler ends with RedirectUtils::redirect.
+            cy.request({
+                method: "GET",
+                url: "/DonatedItemDelete.php?DonatedItemID=1&linkBack=FindFundRaiser.php",
+                followRedirect: false,
+            }).then((resp) => {
+                expect(resp.status, "GET must render form, not 302-redirect").to.eq(200);
+                expect(resp.body).to.match(/name="DonatedItemID"\s+value="1"/);
+                expect(resp.body).to.match(/name="csrf_token"\s+value="[a-f0-9]{64}"/);
+            });
         });
 
         it("rejects POST without a valid CSRF token", () => {
@@ -44,9 +53,18 @@ describe("Fundraiser Delete Operations", () => {
         });
 
         it("does not delete on GET", () => {
-            cy.visit("/PaddleNumDelete.php?PaddleNumID=1&linkBack=FindFundRaiser.php");
-            cy.contains("Confirm Delete");
-            cy.url().should("contain", "PaddleNumDelete.php");
+            // A GET must render the confirmation form (HTTP 200) and must never
+            // follow the delete-then-redirect path — which would surface as a
+            // 302 because the POST Delete handler ends with RedirectUtils::redirect.
+            cy.request({
+                method: "GET",
+                url: "/PaddleNumDelete.php?PaddleNumID=1&linkBack=FindFundRaiser.php",
+                followRedirect: false,
+            }).then((resp) => {
+                expect(resp.status, "GET must render form, not 302-redirect").to.eq(200);
+                expect(resp.body).to.match(/name="PaddleNumID"\s+value="1"/);
+                expect(resp.body).to.match(/name="csrf_token"\s+value="[a-f0-9]{64}"/);
+            });
         });
 
         it("rejects POST without a valid CSRF token", () => {

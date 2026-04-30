@@ -2389,14 +2389,6 @@ msgstr "數字太大。必須是介於-2147483648和2147483647"
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "貨幣量過於龐大。最大999999999.99美元"
 
-#: 
-msgid "Error making API Call to"
-msgstr "API調用出現錯誤"
-
-#: 
-msgid "Error text"
-msgstr "文本錯誤"
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -3113,10 +3105,6 @@ msgstr "QuickBooks存款票設置"
 #: 
 msgid "Add Church Event"
 msgstr "增加教會活動"
-
-#: 
-msgid "List Event Types"
-msgstr "列出活動類型"
 
 #: 
 msgid "Check-in and Check-out"
@@ -4687,11 +4675,6 @@ msgstr "俄語"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "薩米語（北部）（瑞典）"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "阿爾巴尼亞語"
 
@@ -4974,10 +4957,6 @@ msgstr "系統用戶登錄重置"
 #: 
 msgid "Notification for"
 msgstr "通知"
-
-#: 
-msgid "ERROR"
-msgstr "錯誤"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -5615,10 +5594,6 @@ msgid "User must have Delete Records permission"
 msgstr "用戶必須具有刪除記錄權限"
 
 #: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "ChurchCRM中央通知URL"
-
-#: 
 msgid "invalid event type id"
 msgstr "無效的事件類型ID"
 
@@ -5695,10 +5670,6 @@ msgstr "提供的國家名稱無效"
 #: 
 msgid "LastName FirstName"
 msgstr "姓氏 名字"
-
-#: 
-msgid "Holidays"
-msgstr "假日"
 
 #: 
 msgid "Person Name"
@@ -5913,11 +5884,6 @@ msgstr "葡萄牙語-葡萄牙"
 
 #: 
 #, fuzzy
-msgid "Holiday"
-msgstr "假日"
-
-#: 
-#, fuzzy
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "指定要在驗證器應用程序中顯示的應用程序名稱"
 
@@ -6079,11 +6045,6 @@ msgstr "文本"
 #, fuzzy
 msgid "Event Description"
 msgstr "活動說明"
-
-#: 
-#, fuzzy
-msgid "Help translate this project"
-msgstr "幫助翻譯此專案"
 
 #. Context: locales
 #: 
@@ -8543,10 +8504,6 @@ msgid "Thank You!"
 msgstr "謝謝！"
 
 #: 
-msgid "Translation incomplete"
-msgstr "翻譯不完整"
-
-#: 
 msgid "Visit Our Website"
 msgstr "訪問我們的網站"
 
@@ -9586,10 +9543,6 @@ msgstr "當電子郵件地址沒有Gravatar時顯示的圖片"
 #: 
 msgid "Important"
 msgstr "重要"
-
-#: 
-msgid "Install plugins by placing them in"
-msgstr "透過將外掛程式放置在以下位置來安裝外掛程式"
 
 #: 
 msgid "Invalid code. Please try again."
@@ -10866,10 +10819,6 @@ msgid "Connect with others"
 msgstr "與他人聯繫"
 
 #: 
-msgid "Contact us"
-msgstr "聯繫我們"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "將個人記錄轉換為家庭單位"
 
@@ -11552,10 +11501,6 @@ msgstr "名稱變更需要儲存。操作選單中的重新排序和刪除操作
 #: 
 msgid "Name, address, contact details"
 msgstr "姓名、地址、聯絡資訊"
-
-#: 
-msgid "Need help?"
-msgstr "需要幫助？"
 
 #: 
 msgid "New"
@@ -15377,10 +15322,6 @@ msgid "Online"
 msgstr "線上"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "為設備注冊開啟一個30秒的視窗："
-
-#: 
 msgid "Pending"
 msgstr "待處理"
 
@@ -15603,10 +15544,6 @@ msgstr "錯誤日誌"
 #: 
 msgid "Error Reporting"
 msgstr "錯誤回報"
-
-#: 
-msgid "Error:"
-msgstr "錯誤："
 
 #: 
 msgid "Fix Settings"
@@ -15905,10 +15842,6 @@ msgid "Loading event editor…"
 msgstr "正在載入活動編輯器……"
 
 #: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "未選擇日曆——此活動將會儲存，但不會出現在任何日曆檢視中。"
-
-#: 
 msgid "No group"
 msgstr "無群組"
 
@@ -15995,4 +15928,380 @@ msgstr "刪除競拍號"
 #: 
 msgid "Invalid security token. Please try again."
 msgstr "安全權杖無效。請重試。"
+
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "將公共假期新增至主行事曆。每個所選國家／地區將在側邊欄中成為獨立的可切換行事曆，讓使用者可以單獨顯示或隱藏假期。"
+
+#: 
+msgid "Choose map provider"
+msgstr "選擇地圖服務"
+
+#: 
+msgid "Current database"
+msgstr "目前資料庫"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "示範資料通常僅在全新安裝時載入。現在匯入將在現有資料旁新增範例記錄，可能會產生重複資料。"
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "每個國家／地區在側邊欄中都會有自己的行事曆列。使用各行事曆的切換按鈕可暫時隱藏某個國家／地區，而不會變更外掛設定。"
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "依類別篩選"
+
+#: 
+msgid "Holiday Settings"
+msgstr "假期設定"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "假期（%s）"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "假期依類型標記：官方假期、紀念日、銀行假日、季節性假期與宗教節日。不選取任何類別可顯示所有假期，或選擇特定類型以縮小顯示範圍。"
+
+#: 
+msgid "Import demo data anyway"
+msgstr "仍然匯入示範資料"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "缺少財務承諾識別碼。"
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "未選取任何國家／地區。請在假期行事曆外掛設定中至少選擇一個國家／地區。"
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "所選篩選條件沒有符合的項目。"
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "在 Apple Maps 中開啟"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "在 Google Maps 中開啟"
+
+#: 
+msgid "Open in new tab"
+msgstr "在新分頁中開啟"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "設定國家／地區"
+
+#: 
+msgid "Show all"
+msgstr "顯示全部"
+
+#: 
+msgid "Show:"
+msgstr "顯示："
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "顯示與隱藏個別國家／地區"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "瑞典語"
+
+#: 
+msgid "System"
+msgstr "系統"
+
+#: 
+msgid "Timeline filters"
+msgstr "時間軸篩選"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "若要從乾淨的資料庫重新開始，請在匯入示範資料前，從管理儀表板使用「重設資料庫」功能。"
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "使用國家／地區選擇器選擇一個或多個國家／地區。您新增的每個國家／地區將在側邊欄中顯示為獨立的行事曆項目，讓您可以顯示全球會眾的假期。"
+
+#: 
+msgid "Your database already contains data"
+msgstr "您的資料庫已包含資料"
+
+#: 
+msgid "people"
+msgstr "人員"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "安裝外掛需要提供下載網址（downloadUrl）。"
+
+#: 
+msgid "All three fields are required."
+msgstr "三個欄位都是必填項目。"
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "已核准的社群外掛"
+
+#: 
+msgid "Browse Approved"
+msgstr "瀏覽已核准的外掛"
+
+#: 
+msgid "Check for Updates"
+msgstr "檢查更新"
+
+#: 
+msgid "Checking…"
+msgstr "檢查中…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "清除隔離"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "僅在根本問題已修復後才清除隔離。伺服器拒絕啟用已隔離的外掛。"
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "點選上方「瀏覽已核准的外掛」以安裝已審核的外掛，或點選「從網址安裝」以在開發期間安裝未經驗證的版本。"
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "清除外掛隔離失敗"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "清除隔離失敗"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "安裝外掛失敗"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "從網址安裝外掛失敗"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "載入已核准外掛清單失敗"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "載入已核准外掛清單失敗。"
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "重新整理外掛登錄失敗"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "重新整理外掛登錄失敗。請檢查您的網路連線。"
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "解除安裝外掛失敗"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "正在擷取最新登錄…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "請向外掛作者取得此值。若不能逐位元組完全相符，安裝程式將拒絕下載。"
+
+#: 
+msgid "Homepage"
+msgstr "首頁"
+
+#: 
+msgid "Install"
+msgstr "安裝"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "從網址安裝外掛（未驗證）"
+
+#: 
+msgid "Install Unverified"
+msgstr "安裝未驗證外掛"
+
+#: 
+msgid "Install failed"
+msgstr "安裝失敗"
+
+#: 
+msgid "Install from URL"
+msgstr "從網址安裝"
+
+#: 
+msgid "Installing…"
+msgstr "安裝中…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "使用 kebab-case 格式。必須與 zip 壓縮檔內的頂層目錄名稱以及 plugin.json 中的 id 相符。"
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "正在載入已核准外掛清單…"
+
+#: 
+msgid "Loading…"
+msgstr "載入中…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "與已核准外掛清單中的項目相符"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "必須是透過 HTTPS 提供的不可變更發行版本網址。"
+
+#: 
+msgid "Plugin id"
+msgstr "外掛 ID"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "外掛已安裝為「未驗證」狀態。請在啟用前仔細審閱解壓縮的檔案。"
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "外掛已安裝。請審閱後點選「啟用」以啟動。"
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "外掛隔離已清除。您現在可以再次啟用該外掛。"
+
+#: 
+msgid "Plugin quarantined"
+msgstr "外掛已隔離"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "外掛登錄已重新整理。"
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "外掛已解除安裝"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "外掛已解除安裝。"
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "外掛 zip 網址（僅限 HTTPS）"
+
+#: 
+msgid "Quarantined"
+msgstr "已隔離"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "啟用前請先審閱磁碟上的外掛檔案。未驗證的外掛與已核准的外掛具有相同的執行權限。"
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "SHA-256 檢查碼"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "SHA-256 必須是 64 個字元的十六進位字串。"
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "ChurchCRM 維護者尚未審閱此外掛。您安裝的任何內容，其安全性與行為由您自行負責。請盡可能優先使用「瀏覽已核准的外掛」流程。"
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "已核准外掛清單為空。目前尚無第三方外掛可透過已驗證安裝程式取得。"
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "外掛在執行時發生錯誤後已自動停用。"
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "這些外掛已由 ChurchCRM 維護者審閱並核准。點選「安裝」以下載並安裝——外掛不會自動啟用。"
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "此外掛不在 ChurchCRM 已核准外掛清單中。"
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "此外掛將以「未驗證」狀態安裝。"
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "網址必須使用 HTTPS。"
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "解除安裝（從磁碟刪除）"
+
+#: 
+msgid "Unverified plugin"
+msgstr "未驗證的外掛"
+
+#: 
+msgid "Verified"
+msgstr "已驗證"
+
+#: 
+msgid "What this plugin does:"
+msgstr "此外掛的功能："
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "未驗證安裝需要同時提供 downloadUrl、sha256 和 pluginId。"
+
+#: 
+msgid "risk"
+msgstr "風險"
+
+#: 
+msgid "Name cannot be empty"
+msgstr "名稱不可為空"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "名稱不可超過 %d 個字元"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "需要協助？請聯絡我們"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "未選取行事曆——此活動將顯示在「未釘選活動」系統行事曆中，直到您釘選它為止。"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "開啟 2 分鐘的時間窗口讓裝置在此處登錄："
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "時間使用教會時區（{{church}}），而非您的瀏覽器時區（{{browser}}）。"
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "歡迎——請登入以管理您的社群"
 

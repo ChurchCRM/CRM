@@ -129,7 +129,7 @@ function displayPersonDetails(element, person) {
   }
 
   if (person?.objid) {
-    const personViewUrl = `PersonView.php?PersonID=${person.objid}`;
+    const personViewUrl = `/people/view/${person.objid}`;
 
     // Compact inline display with name and check icon
     const html =
@@ -280,6 +280,13 @@ function loadRoster(eventId) {
       // Show the grid, hide loading
       $("#rosterLoading").addClass("d-none");
       $("#rosterGrid").removeClass("d-none");
+
+      // avatar-loader's IntersectionObserver was wired up at DOMContentLoaded,
+      // so the <img data-image-entity-type> elements we just appended need to
+      // be re-observed. init() is idempotent (already-loaded images skip via
+      // the src-already-set guard) and does NOT clear the info cache, so it's
+      // cheaper than refresh() on repeat roster reloads.
+      window.CRM?.avatarLoader?.init();
     })
     .catch(() => {
       $("#rosterCheckin").addClass("d-none");
@@ -299,20 +306,29 @@ function buildMemberCard(member, eventId) {
   const btnText = isCheckedIn ? i18next.t("Check Out") : i18next.t("Check In");
   const action = isCheckedIn ? "checkout" : "checkin";
 
-  const roleBadge = member.role ? `<span class="badge bg-blue-lt ms-2">${escapeHtml(member.role)}</span>` : "";
+  // bg-blue-lt with no companion text-blue fails WCAG AA contrast in Tabler.
+  // Pair the soft background with the matching text color for the same hue.
+  const roleBadge = member.role
+    ? `<span class="badge bg-blue-lt text-blue ms-2">${escapeHtml(member.role)}</span>`
+    : "";
 
-  const photoHtml = member.hasPhoto
-    ? '<span class="avatar avatar-sm me-2" style="background-image: url(' +
-      window.CRM.root +
-      "/api/person/" +
-      member.personId +
-      '/photo)"></span>'
-    : '<span class="avatar avatar-sm me-2 bg-primary-lt"><i class="ti ti-user"></i></span>';
+  // Use the standard avatar-loader contract (data-image-entity-type/-id) so
+  // the shared loader handles fallbacks (Gravatar, identicons, default
+  // placeholder) consistently with the rest of the app. The previous direct
+  // background-image hack bypassed the loader and produced empty squares.
+  const photoHtml =
+    '<img data-image-entity-type="person" data-image-entity-id="' +
+    member.personId +
+    '" class="avatar avatar-sm rounded-circle me-2" alt="" />';
 
   let timeInfo = "";
   if (isCheckedIn && member.checkinTime) {
     timeInfo = `<small class="text-secondary ms-2">${escapeHtml(member.checkinTime)}</small>`;
   }
+
+  // Make the name a link to PersonView, matching the bottom "People Checked In"
+  // table. text-reset + text-decoration-none keep the visual weight unchanged.
+  const personUrl = `${window.CRM.root}/people/view/${member.personId}`;
 
   const html =
     '<div class="d-flex align-items-center justify-content-between p-2 border rounded roster-member" data-person-id="' +
@@ -320,9 +336,11 @@ function buildMemberCard(member, eventId) {
     '">' +
     '<div class="d-flex align-items-center">' +
     photoHtml +
-    '<span class="fw-medium">' +
+    '<a class="fw-medium text-reset text-decoration-none" href="' +
+    personUrl +
+    '">' +
     escapeHtml(`${member.firstName} ${member.lastName}`) +
-    "</span>" +
+    "</a>" +
     roleBadge +
     timeInfo +
     "</div>" +
@@ -478,7 +496,7 @@ $(() => {
   function openCheckoutByDialog(personId, personName, checkinId, checkinName) {
     const safeName = window.CRM.escapeHtml(String(personName));
     const dialog = bootbox.dialog({
-      title: i18next.t("Check out") + ": " + safeName,
+      title: `${i18next.t("Check out")}: ${safeName}`,
       message:
         '<p class="mb-2">' +
         i18next.t("Optional — record who is checking this person out (e.g. a parent picking up a child).") +
@@ -498,18 +516,18 @@ $(() => {
         "</small>",
       buttons: {
         cancel: {
-          label: '<i class="ti ti-x"></i> ' + i18next.t("Cancel"),
+          label: `<i class="ti ti-x"></i> ${i18next.t("Cancel")}`,
           className: "btn-link",
         },
         skip: {
-          label: '<i class="ti ti-check"></i> ' + i18next.t("Skip & Check Out"),
+          label: `<i class="ti ti-check"></i> ${i18next.t("Skip & Check Out")}`,
           className: "btn-outline-warning",
           callback: () => {
             performCheckout(personId, null);
           },
         },
         confirm: {
-          label: '<i class="ti ti-user-check"></i> ' + i18next.t("Confirm Check Out"),
+          label: `<i class="ti ti-user-check"></i> ${i18next.t("Confirm Check Out")}`,
           className: "btn-primary",
           callback: () => {
             const val = $("#checkoutBySelect").val();
@@ -601,8 +619,8 @@ $(() => {
       title: i18next.t("Delete attendance record?"),
       message: `${i18next.t("Delete check-in record for")} <strong>${window.CRM.escapeHtml(String(personName || ""))}</strong>?`,
       buttons: {
-        cancel: { label: '<i class="ti ti-x"></i> ' + i18next.t("Cancel") },
-        confirm: { label: '<i class="ti ti-trash"></i> ' + i18next.t("Delete"), className: "btn-danger" },
+        cancel: { label: `<i class="ti ti-x"></i> ${i18next.t("Cancel")}` },
+        confirm: { label: `<i class="ti ti-trash"></i> ${i18next.t("Delete")}`, className: "btn-danger" },
       },
       callback: (confirmed) => {
         if (!confirmed) return;

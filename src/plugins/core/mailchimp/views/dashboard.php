@@ -50,11 +50,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="flex-grow-1">
                 <strong><?= htmlspecialchars($accountInfo['account_name'], ENT_QUOTES, 'UTF-8') ?></strong>
                 <?php if (!empty($accountInfo['email'])) : ?>
-                    <span class="text-muted ms-2">(<?= htmlspecialchars($accountInfo['email'], ENT_QUOTES, 'UTF-8') ?>)</span>
+                    <span class="text-body-secondary ms-2">(<?= htmlspecialchars($accountInfo['email'], ENT_QUOTES, 'UTF-8') ?>)</span>
                 <?php endif; ?>
             </div>
             <?php if ($latestCampaignDate) : ?>
-            <div class="text-end text-muted small">
+            <div class="text-end text-body-secondary small">
                 <i class="fa-solid fa-paper-plane me-1"></i><?= gettext('Last campaign') ?>: 
                 <strong><?= date('M j, Y', strtotime($latestCampaignDate)) ?></strong>
             </div>
@@ -76,7 +76,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </div>
                         <div class="col">
                             <div class="h3 m-0"><?= count($mailChimpLists) ?></div>
-                            <div class="text-muted"><?= gettext('Audiences') ?></div>
+                            <div class="text-body-secondary"><?= gettext('Audiences') ?></div>
                         </div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </div>
                         <div class="col">
                             <div class="h3 m-0"><?= number_format($totalMembers) ?></div>
-                            <div class="text-muted"><?= gettext('Total Subscribers') ?></div>
+                            <div class="text-body-secondary"><?= gettext('Total Subscribers') ?></div>
                         </div>
                     </div>
                 </div>
@@ -110,7 +110,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </div>
                         <div class="col">
                             <div class="h3 m-0"><?= number_format($totalCampaigns) ?></div>
-                            <div class="text-muted"><?= gettext('Total Campaigns') ?></div>
+                            <div class="text-body-secondary"><?= gettext('Total Campaigns') ?></div>
                         </div>
                     </div>
                 </div>
@@ -127,7 +127,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </div>
                         <div class="col">
                             <div class="h3 m-0"><i class="fa-solid fa-check"></i></div>
-                            <div class="text-muted"><?= gettext('Connected') ?></div>
+                            <div class="text-body-secondary"><?= gettext('Connected') ?></div>
                         </div>
                     </div>
                 </div>
@@ -211,9 +211,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="col-12">
             <div class="card">
                 <div class="card-body text-center py-5">
-                    <i class="fa-brands fa-mailchimp fa-4x text-muted mb-3"></i>
-                    <h4 class="text-muted"><?= gettext('No Audiences Found') ?></h4>
-                    <p class="text-muted"><?= gettext('Your MailChimp account does not have any audiences (lists) configured.') ?></p>
+                    <i class="fa-brands fa-mailchimp fa-4x text-body-secondary mb-3"></i>
+                    <h4 class="text-body-secondary"><?= gettext('No Audiences Found') ?></h4>
+                    <p class="text-body-secondary"><?= gettext('Your MailChimp account does not have any audiences (lists) configured.') ?></p>
                     <a href="https://mailchimp.com/help/create-audience/" target="_blank" class="btn btn-primary">
                         <i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?= gettext('Create an Audience in MailChimp') ?>
                     </a>

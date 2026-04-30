@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\FunctionsUtils;
@@ -21,6 +22,12 @@ if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
     if ($currentUser->hasNoAdminPermissions()) {
         RedirectUtils::redirect(SystemURLs::getRootPath() . '/external/limited-access');
     }
+
+    // Boot plugins early so hook listeners are registered before any ORM saves.
+    // Legacy pages process form submissions before including Header.php, so without
+    // this the PERSON_CREATED / FAMILY_CREATED hooks never fire on those pages.
+    // PluginManager::init() is idempotent — Header.php's later call is a no-op.
+    PluginManager::init(SystemURLs::getDocumentRoot() . '/plugins');
 }
 
 $sGlobalMessageClass = 'success';

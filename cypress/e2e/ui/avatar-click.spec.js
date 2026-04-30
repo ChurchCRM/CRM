@@ -111,7 +111,7 @@ describe("Avatar Click Behavior", () => {
     const personId = 2;
 
     it("clicking profile photo opens Uppy upload dialog", () => {
-      cy.visit(`PersonView.php?PersonID=${personId}`);
+      cy.visit(`/people/view/${personId}`);
 
       cy.get("#uploadImageButton", { timeout: 10000 }).should("exist");
       cy.window().its("CRM.photoUploader", { timeout: 10000 }).should("exist");
@@ -125,7 +125,7 @@ describe("Avatar Click Behavior", () => {
     });
 
     it("profile photo does NOT have lightbox click class", () => {
-      cy.visit(`PersonView.php?PersonID=${personId}`);
+      cy.visit(`/people/view/${personId}`);
 
       // Wait for avatar-loader to finish processing
       cy.get("#uploadImageButton img.loaded", { timeout: 10000 }).should("exist");
@@ -135,7 +135,7 @@ describe("Avatar Click Behavior", () => {
     });
 
     it("family member with photo gets clickable avatar via avatar-loader", () => {
-      cy.visit(`PersonView.php?PersonID=${personId}`);
+      cy.visit(`/people/view/${personId}`);
 
       // Wait for avatar-loader to process family member avatars
       cy.get("img.loaded[data-person-id]", { timeout: 10000 }).then(($imgs) => {

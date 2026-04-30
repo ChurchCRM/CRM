@@ -34,7 +34,7 @@ $extraHtml = $extraHtml ?? '';
               <i class="ti ti-alert-circle" style="font-size:3rem;"></i>
             </div>
             <h3 class="mb-2"><?= htmlspecialchars($title) ?></h3>
-            <p class="text-muted mb-4"><?= htmlspecialchars($message) ?></p>
+            <p class="text-body-secondary mb-4"><?= htmlspecialchars($message) ?></p>
             <?php if (!empty($extraHtml)) { echo $extraHtml; } ?>
 
                       <div class="d-flex justify-content-center gap-2">

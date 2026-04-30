@@ -208,7 +208,7 @@ alert('Operation completed');
 
 ## Confirmations (CRITICAL)
 
-**ALWAYS use bootbox.confirm() for confirmations, NEVER confirm():**
+**For simple confirmations, use bootbox.confirm() — NEVER use confirm() or alert():** <!-- learned: 2026-04-28 -->
 
 ```javascript
 // ✅ CORRECT - Use bootbox.confirm
@@ -233,11 +233,69 @@ bootbox.confirm({
     }
 });
 
-// ❌ WRONG - Never use confirm()
+// ❌ WRONG - Never use browser's confirm() or alert()
 if (confirm('Are you sure?')) {
     performDeletion();
 }
 ```
+
+**For styled confirmations, use Bootstrap modals instead of alert():** <!-- learned: 2026-04-28 -->
+
+When a confirmation requires formatted text, multiple sections, or custom styling, use a Bootstrap modal
+with event listeners instead of bootbox:
+
+```html
+<!-- Modal HTML -->
+<div class="modal fade" id="deleteNoteModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><?= gettext('Confirm Delete') ?></h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p><?= gettext('Are you sure you want to delete this note?') ?></p>
+                <p><small class="text-muted"><?= gettext('This action cannot be undone.') ?></small></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <?= gettext('Cancel') ?>
+                </button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">
+                    <?= gettext('Delete') ?>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+```javascript
+document.addEventListener("DOMContentLoaded", function() {
+    let modal = new bootstrap.Modal(document.getElementById("deleteNoteModal"));
+    let pendingItemId;
+
+    document.querySelectorAll(".delete-btn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            pendingItemId = btn.getAttribute("data-id");
+            modal.show();
+        });
+    });
+
+    document.getElementById("confirmDeleteBtn").addEventListener("click", async () => {
+        modal.hide();
+        const response = await fetch(`/api/note/${pendingItemId}`, {
+            method: "DELETE",
+            headers: { Authorization: `Bearer ${sessionStorage.getItem("apiKey")}` }
+        });
+        if (response.ok) location.reload();
+    });
+});
+```
+
+**Rule of thumb:** Use bootbox for simple yes/no confirmations; use Bootstrap modals for anything
+that needs custom formatting or more control.
 
 ## Modals (Bootstrap 5 / Tabler) <!-- updated: 2026-03-22 -->
 
@@ -1339,3 +1397,74 @@ header only (never leave empty files — Webpack may warn):
 ```js
 // Click handlers are registered globally in CRMJSOM.js.
 ```
+
+### Literal `</script>` Inside an Inline `<script>` Block Closes the Tag <!-- learned: 2026-04-25 -->
+
+The HTML parser scans an inline `<script>` body for `</script>` *as text* — it
+doesn't understand JS comments, string literals, or template literals. A stray
+`</script>` anywhere in the script — even inside `// ...` or `/* ... */` — ends
+the script tag at that position, and everything after it is treated as HTML.
+Symptom: `SyntaxError: Unexpected end of input` for every page that loads the
+file, and the latter half of the script never executes (DataTables, click
+handlers, polling intervals all silently dead).
+
+This bit PR #8805: a comment explaining a security rationale read
+`// backslashes / newlines / </script> can still break out.` — the literal
+`</script>` killed the entire Kiosk Manager page and failed 9 Cypress UI specs.
+
+**Rule:** Never write the literal characters `</script>` inside any inline
+`<script nonce="...">` block. Reword (`closing-script tag`), split (`</scr` +
+`ipt>`), or escape (`<\/script>`).
+
+```php
+<script nonce="...">
+  // ❌ BREAKS THE PAGE
+  // backslashes / newlines / </script> can still break out
+
+  // ✅ SAFE — same meaning, no closing tag
+  // backslashes / newlines / closing-script tags can still break out
+</script>
+```
+
+Inline `<script>` blocks are common in Slim views (`src/**/views/*.php`,
+`src/**/templates/*.php`). When working in those, scan your edits for any
+literal `</script>` before saving.
+
+### User-Controlled Strings in Inline `onclick` — Data-Attrs + Delegated Handler <!-- learned: 2026-04-25 -->
+
+`onclick="myFunc('${escapeHtml(name)}')"` looks safe but isn't:
+
+1. `escapeHtml()` produces HTML entities (`&#039;`, `&amp;`). Inside an
+   `onclick` JS string, those entities show up **literally** at runtime
+   (e.g. the rename prompt prefills with `O&#039;Brien` instead of `O'Brien`).
+2. JS-string breakout characters (`'`, `\`, newlines, `</script>`) aren't
+   escaped by `escapeHtml()`. A name like `\'); alert(1); //` still breaks out.
+3. CSP forbids inline `onclick` outright (the project rule lives in
+   MEMORY.md → "no inline `onclick` (CSP)").
+
+**Pattern:** put the user string into an HTML attribute (`escapeHtml()` IS the
+right encoding here — attribute context), then read it from a delegated click
+handler.
+
+```js
+// In the row renderer (DataTables, list, etc.)
+var nameAttr = window.CRM.escapeHtml(row.Name);  // attribute-safe
+var html = '<button class="btn btn-outline-secondary"' +
+  ' data-row-action="rename"' +
+  ' data-row-id="' + row.Id + '"' +
+  ' data-row-name="' + nameAttr + '"' +
+  ' title="Rename"><i class="fa-solid fa-pen"></i></button>';
+
+// Once, after the table is initialized
+$("#MyTable").on("click", "[data-row-action]", function() {
+  var action = $(this).data("row-action");
+  var id = parseInt($(this).data("row-id"), 10);
+  var name = String($(this).data("row-name") || "");  // jQuery decodes HTML entities back to the original
+  if (action === "rename") {
+    renameRow(id, name);
+  }
+});
+```
+
+`$(...).data()` decodes the attribute value back to the original string — the
+JS-context concerns disappear because the string never enters a JS literal.

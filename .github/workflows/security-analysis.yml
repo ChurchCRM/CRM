@@ -54,6 +54,8 @@ jobs:
   codeql-analysis:
     name: 'CodeQL (JS/TS)'
     runs-on: ubuntu-latest
+    env:
+      CODEQL_ACTION_FILE_COVERAGE_ON_PRS: 'true'
     permissions:
       security-events: write
       contents: read

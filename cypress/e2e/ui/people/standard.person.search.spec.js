@@ -13,7 +13,7 @@ describe("Standard Person", () => {
         // Click FAB save button
         cy.get('button[name="PersonSubmit"]').click();
 
-        cy.url().should("contain", "PersonView.php");
+        cy.url().should("contain", "people/view/");
         cy.contains(name).should("be.visible");
     });
 
@@ -25,7 +25,7 @@ describe("Standard Person", () => {
         cy.get("#LastName").type("Campbell");
         // Click FAB save button
         cy.get('button[name="PersonSubmit"]').click();
-        cy.url().should("contain", "PersonView.php");
+        cy.url().should("contain", "people/view/");
         cy.contains(firstName).should("be.visible");
     });
 

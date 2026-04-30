@@ -33,19 +33,19 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                   </a>
                 </td>
                 <td><?= InputUtils::escapeHTML($r['recurText']) ?></td>
-                <td><?= !empty($r['startTime']) ? InputUtils::escapeHTML($r['startTime']) : '<span class="text-muted">—</span>' ?></td>
+                <td><?= !empty($r['startTime']) ? InputUtils::escapeHTML($r['startTime']) : '<span class="text-body-secondary">—</span>' ?></td>
                 <td>
                   <?php if (!empty($r['countList'])): ?>
                     <?= InputUtils::escapeHTML($r['countList']) ?>
                   <?php else: ?>
-                    <span class="text-muted">—</span>
+                    <span class="text-body-secondary">—</span>
                   <?php endif; ?>
                 </td>
                 <td class="text-center">
                   <?php if ($r['eventCount'] > 0): ?>
                     <span class="badge bg-blue-lt"><?= $r['eventCount'] ?></span>
                   <?php else: ?>
-                    <span class="text-muted">0</span>
+                    <span class="text-body-secondary">0</span>
                   <?php endif; ?>
                 </td>
                 <td class="text-center">
@@ -86,7 +86,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </table>
       </div>
     <?php else: ?>
-      <div class="text-center text-muted py-5">
+      <div class="text-center text-body-secondary py-5">
         <i class="ti ti-calendar mb-3" style="font-size: 3rem;"></i>
         <p><?= gettext('No event types defined yet.') ?></p>
         <a href="<?= $sRootPath ?>/event/types/new" class="btn btn-primary">

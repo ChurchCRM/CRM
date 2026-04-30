@@ -43,6 +43,6 @@
     }
   ],
   "menuItems": [],
-  "hooks": [],
+  "hooks": ["cron.run"],
   "hasTest": true
 }

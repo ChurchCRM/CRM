@@ -27,13 +27,13 @@ Translate missing ChurchCRM UI terms for one or all locales.
 
 ```bash
 node locale/scripts/locale-branch-manager.js --init
-# Output: locale/<VERSION>-<YYYY-MM-DD>-<HHMMSS>  (e.g. locale/7.2.0-2026-04-22-174530)
+# Output: locales/<VERSION>-<YYYY-MM-DD>-<HHMMSS>  (e.g. locales/7.2.0-2026-04-22-174530)
 # If it errors on push, ignore the error — branch was created locally
 ```
 
 If the branch manager fails entirely, create manually (include the time suffix):
 ```bash
-git checkout -b "locale/$(node -p "require('./package.json').version")-$(date -u +%Y-%m-%d-%H%M%S)"
+git checkout -b "locales/$(node -p "require('./package.json').version")-$(date -u +%Y-%m-%d-%H%M%S)"
 ```
 
 **Do not reuse the current branch even if it looks like a locale branch.** If you are already on a `locale/*` branch from an earlier session, still run `--init` to cut a fresh one.

@@ -94,32 +94,32 @@ function getAutoVersion() {
  * Build branch name from version, date, and time.
  * A HHMMSS suffix is appended to guarantee each invocation produces a
  * fresh, unique branch — never reusing a prior day's or prior run's branch.
- * Example: locale/7.1.0-2026-04-01-174530
+ * Example: locales/7.1.0-2026-04-01-174530
  */
 function buildBranchName(version) {
     const date = getTodayDate();
     const time = getCurrentTime();
-    return `locale/${version}-${date}-${time}`;
+    return `locales/${version}-${date}-${time}`;
 }
 
 /**
  * Check if current branch is a locale branch.
- * Accepts both the current `locale/{v}-YYYY-MM-DD-HHMMSS` form and the
+ * Accepts both the current `locales/{v}-YYYY-MM-DD-HHMMSS` form and the
  * legacy `locale/{v}-YYYY-MM-DD` form (so existing in-flight branches
  * still detect correctly during the rollout).
  */
 function isLocaleBranch(branchName) {
-    return /^locale\/[\w.-]+-\d{4}-\d{2}-\d{2}(?:-\d{6})?$/.test(branchName);
+    return /^locales?\/[\w.-]+-\d{4}-\d{2}-\d{2}(?:-\d{6})?$/.test(branchName);
 }
 
 /**
  * Extract version from locale branch name.
- * Handles both the current `locale/{v}-YYYY-MM-DD-HHMMSS` form and the
+ * Handles both the current `locales/{v}-YYYY-MM-DD-HHMMSS` form and the
  * legacy `locale/{v}-YYYY-MM-DD` form.
- * Example: locale/7.1.0-2026-04-01-174530 → 7.1.0
+ * Example: locales/7.1.0-2026-04-01-174530 → 7.1.0
  */
 function extractVersionFromBranch(branchName) {
-    const match = branchName.match(/^locale\/([\w.-]+)-\d{4}-\d{2}-\d{2}(?:-\d{6})?$/);
+    const match = branchName.match(/^locales?\/([\w.-]+)-\d{4}-\d{2}-\d{2}(?:-\d{6})?$/);
     return match ? match[1] : null;
 }
 
@@ -269,7 +269,7 @@ Usage:
     Examples:
       --init                          (auto-detect version)
       --init --version 7.1.0          (explicit version)
-    Output: locale/7.1.0-2026-04-01-174530  (YYYY-MM-DD-HHMMSS)
+    Output: locales/7.1.0-2026-04-01-174530  (YYYY-MM-DD-HHMMSS)
 
   node locale/scripts/locale-branch-manager.js --current
     Get current branch name

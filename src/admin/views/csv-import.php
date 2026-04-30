@@ -66,15 +66,15 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="mb-3 mb-3">
                 <div id="dropzone" class="dropzone-area text-center p-5 rounded" style="border: 2px dashed #dee2e6; cursor: pointer;">
                     <input type="file" name="csvFile" id="csvFile" class="d-none" accept=".csv">
-                    <i class="fa-solid fa-file-arrow-up fa-4x text-muted mb-3 d-block"></i>
+                    <i class="fa-solid fa-file-arrow-up fa-4x text-body-secondary mb-3 d-block"></i>
                     <p class="mb-1 fw-bold"><?= gettext('Drag and drop your CSV file here') ?></p>
-                    <p class="text-muted mb-0"><?= gettext('or click to browse') ?></p>
-                    <small class="text-muted"><?= gettext('Accepted format: .csv') ?></small>
+                    <p class="text-body-secondary mb-0"><?= gettext('or click to browse') ?></p>
+                    <small class="text-body-secondary"><?= gettext('Accepted format: .csv') ?></small>
                 </div>
                 <div id="fileInfo" class="alert alert-success mt-3 d-none">
                     <i class="fa-solid fa-file-csv me-2"></i>
                     <strong id="fileName"></strong>
-                    <span class="text-muted ms-2">(<span id="fileSize"></span>)</span>
+                    <span class="text-body-secondary ms-2">(<span id="fileSize"></span>)</span>
                 </div>
             </div>
             <button type="submit" class="btn btn-warning w-100">
@@ -96,7 +96,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div id="statusError" class="text-center py-4 d-none">
             <i class="fa-solid fa-circle-xmark fa-3x text-danger mb-3"></i>
             <p class="mb-2 fw-bold text-danger"><?= gettext('Upload failed.') ?></p>
-            <p class="text-muted" id="errorMessage"></p>
+            <p class="text-body-secondary" id="errorMessage"></p>
         </div>
     </div>
 </div>

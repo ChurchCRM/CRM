@@ -68,17 +68,24 @@ $(document).on("change", "#checkinByToggle", function () {
 // Family member selected in "Check-in By" modal
 $(document).on("click", ".checkinByMemberBtn", (event) => {
   const memberId = Number($(event.currentTarget).data("memberid"));
-  window.bootstrap.Modal.getOrCreateInstance(document.getElementById("checkinByModal")!).hide();
+  const checkinModal = document.getElementById("checkinByModal");
+  if (checkinModal) window.bootstrap.Modal.getOrCreateInstance(checkinModal).hide();
   kiosk.resolveCheckinByModal(Number.isNaN(memberId) || memberId <= 0 ? null : memberId);
 });
 
 // "Skip" button in "Check-in By" modal
 $(document).on("click", "#checkinBySkipBtn", () => {
-  window.bootstrap.Modal.getOrCreateInstance(document.getElementById("checkinByModal")!).hide();
+  const checkinModal = document.getElementById("checkinByModal");
+  if (checkinModal) window.bootstrap.Modal.getOrCreateInstance(checkinModal).hide();
   kiosk.resolveCheckinByModal(null);
 });
 
 // "Check-in By" modal dismissed without making a selection (X / Escape / backdrop click)
 $(document).on("hidden.bs.modal", "#checkinByModal", () => {
   kiosk.cancelCheckinByModal();
+});
+
+// Cancel the pending auto-refresh — resets the 60s cycle from scratch
+$(document).on("click", "#cancelRefreshBtn", () => {
+  kiosk.cancelScheduledRefresh();
 });

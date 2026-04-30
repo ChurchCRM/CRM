@@ -62,7 +62,7 @@ describe("PersonView: Add to group with multiple roles", () => {
         freshAdminLogin();
 
         // Visit PersonView and open Add to Group modal
-        cy.visit(`/PersonView.php?PersonID=${personId}`);
+        cy.visit(`/people/view/${personId}`);
         cy.get("#person-actions-dropdown").click();
         cy.get("#addGroup").click();
 
@@ -85,7 +85,7 @@ describe("PersonView: Add to group with multiple roles", () => {
         cy.get("#personGroupConfirmBtn").click();
 
         // Page reloads — verify the group now appears in the Groups tab
-        cy.url().should("include", `PersonID=${personId}`);
+        cy.url().should("include", `people/view/${personId}`);
         cy.get("#nav-item-groups").click();
         cy.get("#groups").should("be.visible");
         cy.get("#groups").contains("Angels class").should("be.visible");
@@ -96,7 +96,7 @@ describe("PersonView: Add to group with multiple roles", () => {
         freshAdminLogin();
 
         // Visit PersonView and open modal
-        cy.visit(`/PersonView.php?PersonID=${personId}`);
+        cy.visit(`/people/view/${personId}`);
         cy.get("#person-actions-dropdown").click();
         cy.get("#addGroup").click();
 
@@ -119,7 +119,7 @@ describe("PersonView: Add to group with multiple roles", () => {
         cy.get("#personGroupConfirmBtn").should("not.be.disabled").click();
 
         // Verify group + role appear after reload
-        cy.url().should("include", `PersonID=${personId}`);
+        cy.url().should("include", `people/view/${personId}`);
         cy.get("#nav-item-groups").click();
         cy.get("#groups").should("be.visible");
         cy.get("#groups").contains("Angels class").should("be.visible");
@@ -148,7 +148,7 @@ describe("PersonView: Update Properties for group with special props", () => {
         freshAdminLogin();
 
         // Visit PersonView and go to Groups tab
-        cy.visit(`/PersonView.php?PersonID=${personId}`);
+        cy.visit(`/people/view/${personId}`);
         cy.get("#nav-item-groups").click();
         cy.get("#groups").should("be.visible");
 
@@ -207,10 +207,9 @@ describe("PersonView: Update Properties for group with special props", () => {
         cy.get("form[name='GroupPropEditor']").should("exist").and("be.visible");
         cy.contains("sdfsaf").should("be.visible");
 
-        // Cancel button should navigate back to PersonView
+        // Cancel button (now an <a> tag — was converted from input to avoid inline onclick CSP issues)
         // Scope to the form to avoid matching the hidden IssueReportModal Cancel button
-        cy.get("form[name='GroupPropEditor'] input[name='Cancel']").click();
-        cy.url().should("include", `PersonView.php`);
-        cy.url().should("include", `PersonID=${personId}`);
+        cy.get("form[name='GroupPropEditor']").contains("a.btn", "Cancel").click();
+        cy.url().should("include", `people/view/${personId}`);
     });
 });

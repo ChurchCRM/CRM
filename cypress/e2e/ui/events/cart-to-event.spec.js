@@ -21,7 +21,7 @@ describe("Cart to Event (MVC)", () => {
     it("should show cart contents after adding a person via the UI", () => {
         // Add a person to the cart from PersonView (same PHP session as /event/)
         cy.intercept("POST", "**/api/cart/").as("addToCart");
-        cy.visit("PersonView.php?PersonID=3");
+        cy.visit("/people/view/3");
         cy.get(".AddToCart[data-cart-id='3']", { timeout: 10000 }).first().click();
         cy.wait("@addToCart").its("response.statusCode").should("eq", 200);
 

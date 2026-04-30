@@ -116,7 +116,7 @@ require_once __DIR__ . '/Include/Header.php';
                                 <?= gettext('Group') ?>
                             </option>
                         </select>
-                        <small class="form-text text-muted">
+                        <small class="form-text text-body-secondary">
                             <?= gettext('Select the type of record this property applies to') ?>
                         </small>
                     </div>
@@ -151,7 +151,7 @@ require_once __DIR__ . '/Include/Header.php';
                                   name="Description"
                                   rows="8"
                                   maxlength="255"><?= InputUtils::escapeHTML($sDescription) ?></textarea>
-                        <small class="form-text text-muted">
+                        <small class="form-text text-body-secondary">
                             <?= gettext('Optional detailed description of this property type') ?>
                         </small>
                     </div>

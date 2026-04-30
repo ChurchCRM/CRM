@@ -113,7 +113,7 @@ class NewPersonOrFamilyEmail extends BaseEmail
         if ($this->relatedObject instanceof Family) {
             return SystemURLs::getURL() . '/people/family/' . $this->relatedObject->getId();
         } elseif ($this->relatedObject instanceof Person) {
-            return SystemURLs::getURL() . '/PersonView.php?PersonID=' . $this->relatedObject->getId();
+            return SystemURLs::getURL() . '/people/view/' . $this->relatedObject->getId();
         }
 
         return '';

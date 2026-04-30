@@ -5,6 +5,8 @@ namespace ChurchCRM\model\ChurchCRM;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Base\Event as BaseEvent;
+use ChurchCRM\Plugin\Hook\HookManager;
+use ChurchCRM\Plugin\Hooks;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Map\TableMap;
 
@@ -59,6 +61,7 @@ class Event extends BaseEvent
         }
 
         $AttendanceRecord->save();
+        HookManager::doAction(Hooks::EVENT_CHECKIN, $AttendanceRecord, $this, $PersonId);
 
         $this->addTimelineNote(
             $PersonId,
@@ -90,6 +93,7 @@ class Event extends BaseEvent
         }
 
         $AttendanceRecord->save();
+        HookManager::doAction(Hooks::EVENT_CHECKOUT, $AttendanceRecord, $this, $PersonId);
 
         $this->addTimelineNote(
             $PersonId,

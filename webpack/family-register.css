@@ -419,8 +419,8 @@
 /* ── Mobile Responsive Overrides ───────────────────────────────── */
 @media (max-width: 767.98px) {
   .register-box {
-    width: 100% !important;
-    max-width: 100% !important;
+    width: 100%;
+    max-width: 100%;
     padding: 0 12px;
     margin: 16px auto;
   }
@@ -487,7 +487,7 @@
 
   .bs-stepper .content > .mb-3:last-child .btn {
     width: 100%;
-    margin-right: 0 !important;
+    margin-right: 0;
   }
 
   /* Family count badge */
@@ -503,7 +503,7 @@
 
   /* Register logo */
   .register-logo {
-    margin-bottom: 12px !important;
+    margin-bottom: 12px;
   }
 
   .register-logo .h2,

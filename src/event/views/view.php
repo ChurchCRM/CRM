@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Utils\InputUtils;
 
 $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
@@ -39,7 +40,7 @@ $inactive = (int) $event->getInActive() === 1;
             <?php if ($event->getEventType()): ?>
               <span class="badge bg-azure-lt"><?= InputUtils::escapeHTML($event->getEventType()->getName()) ?></span>
             <?php else: ?>
-              <span class="text-muted">—</span>
+              <span class="text-body-secondary">—</span>
             <?php endif; ?>
           </dd>
 
@@ -99,7 +100,7 @@ $inactive = (int) $event->getInActive() === 1;
         </h3>
       </div>
       <?php if (empty($attendees)): ?>
-        <div class="card-body text-center text-muted py-4">
+        <div class="card-body text-center text-body-secondary py-4">
           <i class="ti ti-users-off fs-3 d-block mb-2"></i>
           <?= gettext('No one has been checked in to this event yet.') ?>
         </div>
@@ -119,14 +120,14 @@ $inactive = (int) $event->getInActive() === 1;
               <?php foreach ($attendees as $att): ?>
                 <tr>
                   <td>
-                    <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $att['personId'] ?>">
+                    <a href="<?= Person::getViewURIForId($att['personId']) ?>">
                       <?= InputUtils::escapeHTML($att['fullName']) ?>
                     </a>
                   </td>
-                  <td><?= $att['checkinDate'] ? InputUtils::escapeHTML($att['checkinDate']) : '<span class="text-muted">—</span>' ?></td>
-                  <td><?= $att['checkinBy'] !== '' ? InputUtils::escapeHTML($att['checkinBy']) : '<span class="text-muted">—</span>' ?></td>
-                  <td><?= $att['checkoutDate'] ? InputUtils::escapeHTML($att['checkoutDate']) : '<span class="text-muted">—</span>' ?></td>
-                  <td><?= $att['checkoutBy'] !== '' ? InputUtils::escapeHTML($att['checkoutBy']) : '<span class="text-muted">—</span>' ?></td>
+                  <td><?= $att['checkinDate'] ? InputUtils::escapeHTML($att['checkinDate']) : '<span class="text-body-secondary">—</span>' ?></td>
+                  <td><?= $att['checkinBy'] !== '' ? InputUtils::escapeHTML($att['checkinBy']) : '<span class="text-body-secondary">—</span>' ?></td>
+                  <td><?= $att['checkoutDate'] ? InputUtils::escapeHTML($att['checkoutDate']) : '<span class="text-body-secondary">—</span>' ?></td>
+                  <td><?= $att['checkoutBy'] !== '' ? InputUtils::escapeHTML($att['checkoutBy']) : '<span class="text-body-secondary">—</span>' ?></td>
                 </tr>
               <?php endforeach; ?>
             </tbody>

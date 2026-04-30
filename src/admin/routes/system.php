@@ -126,12 +126,18 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             }
         }
 
+        $breadcrumbParent = match ($mode) {
+            'grptypes', 'grproles', 'groupcustom' => [gettext('Groups'), '/groups/dashboard'],
+            'famroles', 'famcustom' => [gettext('People'), '/people/dashboard'],
+            'classes', 'custom' => [gettext('People'), '/people/dashboard'],
+            default => [gettext('Admin'), '/admin/'],
+        };
         $pageArgs = [
             'sRootPath' => SystemURLs::getRootPath(),
             'sPageTitle' => $listConfig['title'],
             'sPageSubtitle' => sprintf(gettext('Manage %s options'), $listConfig['noun']),
             'aBreadcrumbs' => PageHeader::breadcrumbs([
-                [gettext('Admin'), '/admin/'],
+                $breadcrumbParent,
                 [$listConfig['title']],
             ]),
             'mode' => $mode,

@@ -73,7 +73,7 @@ describe('Event Type Management', () => {
         cy.get('#newEvtPeriod').select('AM');
         cy.contains('button', 'Save Event Type').click();
 
-        cy.url().should('include', '/event/types');
+        cy.location('pathname', { timeout: 10000 }).should('match', /\/event\/types\/?$/);
         cy.get('#eventTypesTable', { timeout: 10000 }).should('exist');
         filterEventTypesTable(midnight);
         cy.get('#eventTypesTable tbody tr', { timeout: 10000 }).should('have.length', 1);
@@ -89,7 +89,7 @@ describe('Event Type Management', () => {
         cy.get('#newEvtPeriod').select('PM');
         cy.contains('button', 'Save Event Type').click();
 
-        cy.url().should('include', '/event/types');
+        cy.location('pathname', { timeout: 10000 }).should('match', /\/event\/types\/?$/);
         cy.get('#eventTypesTable', { timeout: 10000 }).should('exist');
         filterEventTypesTable(noon);
         cy.get('#eventTypesTable tbody tr', { timeout: 10000 }).should('have.length', 1);

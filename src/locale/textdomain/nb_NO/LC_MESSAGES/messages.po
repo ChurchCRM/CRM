@@ -2407,14 +2407,6 @@ msgstr "Tallet er for stort. Må være mellom -2147483648 og 2147483647"
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Pengene beløp for stor. Maksimum er $ 999,999,999.99"
 
-#: 
-msgid "Error making API Call to"
-msgstr "Feil ved API-kall til"
-
-#: 
-msgid "Error text"
-msgstr "Feiltekst"
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -3119,10 +3111,6 @@ msgstr "Innstillinger for QuickBooks innskuddsseddel"
 #: 
 msgid "Add Church Event"
 msgstr "Legg til kirkehendelse"
-
-#: 
-msgid "List Event Types"
-msgstr "List hendelsestyper"
 
 #: 
 msgid "Check-in and Check-out"
@@ -4687,11 +4675,6 @@ msgstr "Russisk"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "Nordsamisk (Sverige)"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "Albansk"
 
@@ -4969,10 +4952,6 @@ msgstr "innlogging for systembruker tilbakestilt"
 #: 
 msgid "Notification for"
 msgstr "Varsel for"
-
-#: 
-msgid "ERROR"
-msgstr "FEIL"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -5600,10 +5579,6 @@ msgid "User must have Delete Records permission"
 msgstr "Brukeren må ha tillatelse til å slette oppføringer"
 
 #: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "URL for sentrale varsler i ChurchCRM"
-
-#: 
 msgid "invalid event type id"
 msgstr "ugyldig hendelsestype-ID"
 
@@ -5678,10 +5653,6 @@ msgstr "Ugyldig landnavn oppgitt"
 #: 
 msgid "LastName FirstName"
 msgstr "Etternavn Fornavn"
-
-#: 
-msgid "Holidays"
-msgstr "Helligdager"
 
 #: 
 msgid "Person Name"
@@ -5860,10 +5831,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugisisk - Portugal"
 
 #: 
-msgid "Holiday"
-msgstr "Helligdag"
-
-#: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Angi applikasjonsnavnet som skal vises i autentiseringsappen"
 
@@ -6007,10 +5974,6 @@ msgstr "Tekst"
 #: 
 msgid "Event Description"
 msgstr "Hendelsesbeskrivelse"
-
-#: 
-msgid "Help translate this project"
-msgstr "Hjelp til med å oversette dette prosjektet"
 
 #. Context: locales
 #: 
@@ -8450,10 +8413,6 @@ msgid "Thank You!"
 msgstr "Takk!"
 
 #: 
-msgid "Translation incomplete"
-msgstr "Oversettelse ufullstendig"
-
-#: 
 msgid "Visit Our Website"
 msgstr "Besøk vår nettside"
 
@@ -9498,10 +9457,6 @@ msgstr "Bilde som vises når det ikke finnes noe Gravatar for e-postadressen"
 #: 
 msgid "Important"
 msgstr "Viktig"
-
-#: 
-msgid "Install plugins by placing them in"
-msgstr "Installer programtillegg ved å plassere dem i"
 
 #: 
 msgid "Invalid code. Please try again."
@@ -10779,10 +10734,6 @@ msgid "Connect with others"
 msgstr "Kom i kontakt med andre"
 
 #: 
-msgid "Contact us"
-msgstr "Kontakt oss"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Konverter enkeltposter til familieenheter"
 
@@ -11465,10 +11416,6 @@ msgstr "Navneendringer krever lagring. Omorganisering og sletting i handlingsmen
 #: 
 msgid "Name, address, contact details"
 msgstr "Navn, adresse, kontaktopplysninger"
-
-#: 
-msgid "Need help?"
-msgstr "Trenger du hjelp?"
 
 #: 
 msgid "New"
@@ -15291,10 +15238,6 @@ msgid "Online"
 msgstr "Online"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "Åpner et 30-sekunders vindu for enheter som skal registrere seg på:"
-
-#: 
 msgid "Pending"
 msgstr "Venter"
 
@@ -15517,10 +15460,6 @@ msgstr "Feillogg"
 #: 
 msgid "Error Reporting"
 msgstr "Feilrapportering"
-
-#: 
-msgid "Error:"
-msgstr "Feil:"
 
 #: 
 msgid "Fix Settings"
@@ -15819,10 +15758,6 @@ msgid "Loading event editor…"
 msgstr "Laster hendelsesredigerer…"
 
 #: 
-msgid "No calendar selected — this event will be saved but won't appear on any calendar view."
-msgstr "Ingen kalender valgt — denne hendelsen lagres, men vises ikke i noen kalendervisning."
-
-#: 
 msgid "No group"
 msgstr "Ingen gruppe"
 
@@ -15909,4 +15844,380 @@ msgstr "Slett budnummer"
 #: 
 msgid "Invalid security token. Please try again."
 msgstr "Ugyldig sikkerhetstoken. Vennligst prøv igjen."
+
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "Legger til offentlige helligdager i hovedkalenderen. Hvert valgt land blir sin egen kalender i sidefeltet som kan slås av og på, slik at brukerne kan vise eller skjule helligdager uavhengig av hverandre."
+
+#: 
+msgid "Choose map provider"
+msgstr "Velg kartleverandør"
+
+#: 
+msgid "Current database"
+msgstr "Gjeldende database"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "Demodata lastes normalt bare inn ved nye installasjoner. Import nå vil legge til eksempelregistreringer ved siden av eksisterende data og kan skape duplikater."
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "Hvert land produserer sin egen kalenderrad i sidefeltet. Bruk av/på-bryteren per kalender for å skjule et land midlertidig uten å endre programtilleggsinnstillingene."
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "Filtrering etter kategori"
+
+#: 
+msgid "Holiday Settings"
+msgstr "Helligdagsinnstillinger"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "Helligdager (%s)"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "Helligdager er merket etter type: Offisielle, Høytider, Bankhelligdager, Sesongbaserte og Religiøse. La alle kategorier stå uvalgte for å vise alle helligdager, eller velg spesifikke typer for å begrense visningen."
+
+#: 
+msgid "Import demo data anyway"
+msgstr "Importer demodata likevel"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "Manglende identifikator for finansielt løfte."
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "Ingen land er valgt. Velg minst ett land i innstillingene for programtillegget Helligdagskalendere."
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "Ingen samsvarende oppføringer for de valgte filtrene."
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "Åpne i Apple Maps"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "Åpne i Google Maps"
+
+#: 
+msgid "Open in new tab"
+msgstr "Åpne i ny fane"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "Konfigurere land"
+
+#: 
+msgid "Show all"
+msgstr "Vis alle"
+
+#: 
+msgid "Show:"
+msgstr "Vis:"
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "Vise og skjule enkeltland"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "Svensk"
+
+#: 
+msgid "System"
+msgstr "System"
+
+#: 
+msgid "Timeline filters"
+msgstr "Tidslinjefiltre"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "For å starte på nytt med en ren database, bruk Tilbakestill database fra administrasjonspanelet før du importerer demodata."
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "Bruk landvelgeren til å velge ett eller flere land. Hvert land du legger til vil vises som en separat kalenderoppføring i sidefeltet — slik at du kan vise helligdager for en global menighet."
+
+#: 
+msgid "Your database already contains data"
+msgstr "Databasen din inneholder allerede data"
+
+#: 
+msgid "people"
+msgstr "personer"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "En nedlastings-URL kreves for å installere et programtillegg."
+
+#: 
+msgid "All three fields are required."
+msgstr "Alle tre feltene er obligatoriske."
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "Godkjente fellesskapsprogramtillegg"
+
+#: 
+msgid "Browse Approved"
+msgstr "Bla gjennom godkjente"
+
+#: 
+msgid "Check for Updates"
+msgstr "Se etter oppdateringer"
+
+#: 
+msgid "Checking…"
+msgstr "Kontrollerer…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "Tøm karantene"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "Tøm karantenen kun etter at det underliggende problemet er løst. Aktivering av et karantenelagt programtillegg avvises av serveren."
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "Klikk på «Bla gjennom godkjente» ovenfor for å installere et kontrollert programtillegg, eller «Installer fra URL» for en ikke-verifisert bygg under utvikling."
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "Kunne ikke tømme programtilleggets karantene"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "Kunne ikke tømme karantene"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "Kunne ikke installere programtillegg"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "Kunne ikke installere programtillegg fra URL"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "Kunne ikke laste godkjent programtilleggliste"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "Kunne ikke laste godkjent programtilleggliste."
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "Kunne ikke oppdatere programtillegregisteret"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "Kunne ikke oppdatere programtillegregisteret. Kontroller internettilkoblingen din."
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "Kunne ikke avinstallere programtillegg"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "Henter siste register…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "Hent dette fra programtilleggets forfatter. Installasjonsprogrammet vil avvise nedlastingen hvis den ikke samsvarer byte for byte."
+
+#: 
+msgid "Homepage"
+msgstr "Hjemmeside"
+
+#: 
+msgid "Install"
+msgstr "Installer"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "Installer programtillegg fra URL (ikke-verifisert)"
+
+#: 
+msgid "Install Unverified"
+msgstr "Installer ikke-verifisert"
+
+#: 
+msgid "Install failed"
+msgstr "Installasjon mislyktes"
+
+#: 
+msgid "Install from URL"
+msgstr "Installer fra URL"
+
+#: 
+msgid "Installing…"
+msgstr "Installerer…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "Kebab-case. Må samsvare med katalognavnet på øverste nivå i zip-filen og id-en i plugin.json."
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "Laster godkjent programtilleggliste…"
+
+#: 
+msgid "Loading…"
+msgstr "Laster…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "Samsvarer med en oppføring på den godkjente programtillegglisten"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "Må være en uforanderlig utgivelses-URL levert over HTTPS."
+
+#: 
+msgid "Plugin id"
+msgstr "Programtillegg-ID"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "Programtillegg installert som IKKE-VERIFISERT. Gjennomgå de utpakkede filene nøye før aktivering."
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "Programtillegg installert. Gjennomgå det og klikk på Aktiver for å aktivere."
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "Programtilleggets karantene er tømt. Du kan nå aktivere programtillegget igjen."
+
+#: 
+msgid "Plugin quarantined"
+msgstr "Programtillegg satt i karantene"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "Programtillegregisteret er oppdatert."
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "Programtillegg avinstallert"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "Programtillegg avinstallert."
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "Programtillegg zip-URL (kun HTTPS)"
+
+#: 
+msgid "Quarantined"
+msgstr "Karantenelagt"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "Gjennomgå programtilleggets filer på disken før aktivering. Ikke-verifiserte programtillegg kjører med de samme tillatelsene som godkjente programtillegg."
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "SHA-256 kontrollsum"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "SHA-256 må være en 64-tegns heksadesimal streng."
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "ChurchCRM-vedlikeholderne har ikke gjennomgått det. Du er ansvarlig for sikkerheten og oppførselen til alt du installerer her. Foretrekk prosessen Bla gjennom godkjente når det er mulig."
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "Den godkjente programtillegglisten er tom. Det er ingen tredjeparts programtillegg tilgjengelig gjennom det verifiserte installasjonsprogrammet ennå."
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "Programtillegget ble automatisk deaktivert etter en kjøretidsfeil."
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "Disse programtilleggene er gjennomgått og godkjent av ChurchCRM-vedlikeholderne. Klikk Installer for å laste ned og installere ett — programtillegget vil ikke bli aktivert automatisk."
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "Dette programtillegget er ikke på ChurchCRM sin godkjente programtilleggliste."
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "Dette programtillegget vil bli installert som IKKE-VERIFISERT."
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "URL-en må bruke HTTPS."
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "Avinstaller (slett fra disk)"
+
+#: 
+msgid "Unverified plugin"
+msgstr "Ikke-verifisert programtillegg"
+
+#: 
+msgid "Verified"
+msgstr "Verifisert"
+
+#: 
+msgid "What this plugin does:"
+msgstr "Hva dette programtillegget gjør:"
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "downloadUrl, sha256 og pluginId er alle obligatoriske for ikke-verifiserte installasjoner."
+
+#: 
+msgid "risk"
+msgstr "risiko"
+
+#: 
+msgid "Name cannot be empty"
+msgstr "Navn kan ikke være tomt"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "Navn kan ikke være lengre enn %d tegn"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "Trenger du hjelp? Kontakt oss"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "Ingen kalender valgt — denne hendelsen vil vises under systemkalenderen «Ikke-festede hendelser» til du fester den."
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "Åpner et 2-minutters vindu for enheter for å registrere seg på:"
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "Tidspunktene bruker kirketid ({{church}}), ikke nettlesertiden din ({{browser}})."
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "Velkommen — logg inn for å administrere menigheten din"
 

@@ -1,10 +1,24 @@
 name: Start New Release
 
+# Manually bump the version on master, push a build/<version> branch, and open
+# a "Start <version> release" PR. Use this:
+#
+#   • Standalone (workflow_dispatch) — when a mid-cycle scope change forces
+#     you to re-bump (e.g. patch → minor because a new feature landed).
+#   • Reusable (workflow_call) — invoked by create-release.yml so the
+#     end-of-cycle workflow can publish and start the next version in one go.
+
 on:
   workflow_dispatch:
     inputs:
       version:
         description: 'Release version (e.g., 6.1.0)'
+        required: true
+        type: string
+  workflow_call:
+    inputs:
+      version:
+        description: 'Release version'
         required: true
         type: string
 

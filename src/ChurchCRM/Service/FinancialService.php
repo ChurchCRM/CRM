@@ -14,6 +14,8 @@ use ChurchCRM\model\ChurchCRM\Map\DonationFundTableMap;
 use ChurchCRM\model\ChurchCRM\Map\PledgeTableMap;
 use ChurchCRM\model\ChurchCRM\Pledge;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
+use ChurchCRM\Plugin\Hook\HookManager;
+use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Service\AuthService;
@@ -110,6 +112,9 @@ class FinancialService
                 ->setEnteredby(AuthenticationManager::getCurrentUser()->getId())
                 ->setClosed(intval($depositClosed));
             $deposit->save();
+            if ($depositClosed) {
+                HookManager::doAction(Hooks::DEPOSIT_CLOSED, $deposit);
+            }
             if ($depositClosed && ($depositType === 'CreditCard' || $depositType === 'BankDraft')) {
                 // Delete any failed transactions on this deposit slip now that it is closing
                 PledgeQuery::create()
@@ -303,6 +308,7 @@ class FinancialService
                     $pledge->setNondeductible($Fund->NonDeductible);
                 }
                 $pledge->save();
+                HookManager::doAction(Hooks::DONATION_RECEIVED, $pledge);
                 return $sGroupKey;
             }
         }

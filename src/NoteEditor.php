@@ -5,8 +5,11 @@ require_once __DIR__ . '/Include/PageInit.php';
 require_once __DIR__ . '/Include/QuillEditorHelper.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\NoteQuery;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
@@ -32,9 +35,9 @@ if (isset($_GET['FamilyID'])) {
 
 // To which page do we send the user if they cancel?
 if ($iPersonID > 0) {
-    $sBackPage = 'PersonView.php?PersonID=' . $iPersonID;
+    $sBackPage = Person::getViewURIForId($iPersonID);
 } else {
-    $sBackPage = 'people/family/' . $iFamilyID;
+    $sBackPage = Family::getFamilyViewURIForId($iFamilyID);
 }
 
 // Has the form been submitted?
@@ -73,11 +76,17 @@ if (isset($_POST['Submit'])) {
             $note->save();
         } else {
             $note = NoteQuery::create()->findPk($iNoteID);
-            $note->setPrivate($bPrivate);
-            $note->setText($sNoteText);
-            $note->setDateLastEdited(new DateTime());
-            $note->setEditedBy(AuthenticationManager::getCurrentUser()->getId());
-            $note->save();
+            // Only the creator can edit their note
+            if ($note->getEnteredBy() !== AuthenticationManager::getCurrentUser()->getId()) {
+                $sNoteTextError = '<br><span class="text-danger">' . gettext('You do not have permission to edit this note.') . '</span>';
+                $bErrorFlag = true;
+            } else {
+                $note->setPrivate($bPrivate);
+                $note->setText($sNoteText);
+                $note->setDateLastEdited(new DateTime());
+                $note->setEditedBy(AuthenticationManager::getCurrentUser()->getId());
+                $note->save();
+            }
         }
 
         // Send them back to wherever they came from
@@ -89,6 +98,13 @@ if (isset($_POST['Submit'])) {
         // Get the NoteID from the querystring
         $iNoteID = InputUtils::legacyFilterInput($_GET['NoteID'], 'int');
         $dbNote = NoteQuery::create()->findPk($iNoteID);
+
+        // Only the creator can edit a private note
+        if ($dbNote && $dbNote->isPrivate() && $dbNote->getEnteredBy() !== AuthenticationManager::getCurrentUser()->getId()) {
+            $_SESSION['sGlobalMessage'] = gettext('You do not have permission to edit this note.');
+            $_SESSION['sGlobalMessageClass'] = 'danger';
+            RedirectUtils::redirect($sBackPage ?: SystemURLs::getRootPath() . '/');
+        }
 
         // Assign everything locally
         $sNoteText = $dbNote->getText();

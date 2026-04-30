@@ -26,7 +26,11 @@ const excludes = [
   /^Images\/Person\/thumbnails\//,
   /^vendor\/.*\/example\//,
   /^vendor\/.*\/tests\//,
-  /^vendor\/.*\/docs\//
+  /^vendor\/.*\/docs\//,
+  // Community plugins are installed at runtime and must never be shipped in
+  // signatures.json (they'd otherwise be reported as orphans on every install).
+  // Keep this in sync with AppIntegrityService::isExcludedFromOrphanDetection().
+  /^plugins\/community\//
 ];
 
 function isExcluded(rel) {
