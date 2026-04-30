@@ -84,3 +84,8 @@ $(document).on("click", "#checkinBySkipBtn", () => {
 $(document).on("hidden.bs.modal", "#checkinByModal", () => {
   kiosk.cancelCheckinByModal();
 });
+
+// Cancel the pending auto-refresh — resets the 60s cycle from scratch
+$(document).on("click", "#cancelRefreshBtn", () => {
+  kiosk.cancelScheduledRefresh();
+});

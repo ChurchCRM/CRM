@@ -49,6 +49,9 @@ const kioskState = {
   kioskEventLoop: undefined as ReturnType<typeof setInterval> | undefined,
   countdownInterval: undefined as ReturnType<typeof setInterval> | undefined,
   kioskName: undefined as string | undefined,
+  // Smart refresh: 60s cycle with 10s cancellable popup before each refresh
+  refreshScheduleTimer: undefined as ReturnType<typeof setTimeout> | undefined,
+  refreshCountdownTimer: undefined as ReturnType<typeof setInterval> | undefined,
 };
 
 // Pending callback for the "Check-in By" modal
@@ -1281,14 +1284,84 @@ function displayPersonInfo(_personId: number): void {
 }
 
 /**
+ * Schedule the next refresh: wait 50s, then show a 10s countdown popup.
+ * If the user cancels the popup, the cycle resets for another 60s.
+ * If the countdown completes, heartbeat() fires and the cycle repeats.
+ */
+function scheduleNextRefresh(): void {
+  if (kioskState.refreshScheduleTimer) {
+    clearTimeout(kioskState.refreshScheduleTimer);
+  }
+  kioskState.refreshScheduleTimer = setTimeout(() => {
+    showRefreshWarning();
+  }, 50_000);
+}
+
+/**
+ * Show the refresh warning popup with a 10s countdown.
+ * Skips silently (reschedules) if another modal is already open to avoid
+ * stacking modals mid-interaction (e.g. during check-in).
+ */
+function showRefreshWarning(): void {
+  // Don't interrupt an active modal (check-in, guest registration, etc.)
+  if (document.querySelector(".modal.show")) {
+    scheduleNextRefresh();
+    return;
+  }
+
+  let secondsLeft = 10;
+
+  const updateCountdown = (): void => {
+    const el = document.getElementById("refreshWarningCountdown");
+    if (el) el.textContent = String(secondsLeft);
+  };
+  updateCountdown();
+
+  const modalEl = document.getElementById("refreshWarningModal");
+  if (modalEl) window.bootstrap.Modal.getOrCreateInstance(modalEl).show();
+
+  kioskState.refreshCountdownTimer = setInterval(() => {
+    secondsLeft--;
+    updateCountdown();
+    if (secondsLeft <= 0) {
+      clearInterval(kioskState.refreshCountdownTimer);
+      kioskState.refreshCountdownTimer = undefined;
+      const el = document.getElementById("refreshWarningModal");
+      if (el) {
+        const instance = window.bootstrap.Modal.getInstance(el);
+        if (instance) instance.hide();
+      }
+      heartbeat();
+      scheduleNextRefresh();
+    }
+  }, 1000);
+}
+
+/**
+ * Cancel the pending refresh (triggered by the Cancel button in the popup).
+ * Clears the countdown and resets the full 60s cycle.
+ */
+function cancelScheduledRefresh(): void {
+  if (kioskState.refreshCountdownTimer) {
+    clearInterval(kioskState.refreshCountdownTimer);
+    kioskState.refreshCountdownTimer = undefined;
+  }
+  const el = document.getElementById("refreshWarningModal");
+  if (el) {
+    const instance = window.bootstrap.Modal.getInstance(el);
+    if (instance) instance.hide();
+  }
+  scheduleNextRefresh();
+}
+
+/**
  * Start the event loop
  */
 function startEventLoop(): void {
-  // Call heartbeat immediately — it will call updateActiveClassMembers() when
-  // the event is active, avoiding a duplicate API call on page load.
+  // Call heartbeat immediately on page load (no popup for the first fetch).
   heartbeat();
-  // Then set up periodic heartbeat updates (15 seconds)
-  kioskState.kioskEventLoop = setInterval(heartbeat, 15000);
+  // Schedule recurring refreshes: 60s cycle with a 10s cancellable popup.
+  scheduleNextRefresh();
 }
 
 /**
@@ -1297,6 +1370,12 @@ function startEventLoop(): void {
 function stopEventLoop(): void {
   if (kioskState.kioskEventLoop) {
     clearInterval(kioskState.kioskEventLoop);
+  }
+  if (kioskState.refreshScheduleTimer) {
+    clearTimeout(kioskState.refreshScheduleTimer);
+  }
+  if (kioskState.refreshCountdownTimer) {
+    clearInterval(kioskState.refreshCountdownTimer);
   }
 }
 
@@ -1340,6 +1419,7 @@ export const kiosk: KioskJSOM = {
   setCheckinByEnabled,
   resolveCheckinByModal,
   cancelCheckinByModal,
+  cancelScheduledRefresh,
 };
 
 // Attach to window.CRM.kiosk for global access (for external use)

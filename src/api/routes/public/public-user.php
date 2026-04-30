@@ -173,6 +173,7 @@ function passwordResetRequest(Request $request, Response $response, array $args)
     if (!$email->send()) {
         $logger->error('Failed to send password reset email for user ' . $user->getUserName() . ': ' . $email->getError());
         $token->delete();
+        // Still return success to user (don't expose email issues)
         return SlimUtils::renderJSON($response, ['success' => true]);
     }
 
