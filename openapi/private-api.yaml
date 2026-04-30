@@ -2858,7 +2858,7 @@ paths:
       tags:
         - People
       summary: 'List user-type notes for a person'
-      description: "Returns all notes of type 'note' for the person, filtered by visibility for the current user. Private notes are only visible to admins or the user who entered them."
+      description: "Returns all notes of type 'note' for the person, filtered by visibility for the current user. Private notes are only visible to the user who entered them."
       operationId: getPersonNotes
       parameters:
         -
@@ -2941,7 +2941,7 @@ paths:
       tags:
         - Families
       summary: 'List user-type notes for a family'
-      description: "Returns all notes of type 'note' for the family, filtered by visibility for the current user."
+      description: "Returns all notes of type 'note' for the family, filtered by visibility for the current user. Private notes are only visible to the user who entered them."
       operationId: getFamilyNotes
       parameters:
         -
@@ -3024,7 +3024,7 @@ paths:
       tags:
         - People
       summary: 'Get a single note by ID'
-      description: 'Returns the note if it is visible to the current user. Private notes are only visible to admins or the user who entered them.'
+      description: 'Returns the note if it is visible to the current user. Private notes are only visible to the user who entered them. Returns 404 for notes not visible to the current user.'
       operationId: getNote
       parameters:
         -
@@ -5019,6 +5019,64 @@ paths:
           description: 'Property not found'
         '403':
           description: 'MenuOptions role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/timeline/person/{personId}':
+    get:
+      tags:
+        - People
+      summary: 'Get full timeline for a person'
+      description: "Returns all timeline items (notes and events) for a person, filtered by the current user's visibility permissions. Private notes are only visible to the user who entered them; admins see a placeholder."
+      operationId: getPersonTimeline
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: 'Timeline items'
+          content:
+            application/json:
+              schema:
+                properties:
+                  timeline: { type: array, items: { type: object } }
+                type: object
+        '404':
+          description: 'Person not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/timeline/family/{familyId}':
+    get:
+      tags:
+        - People
+      summary: 'Get full timeline for a family'
+      description: "Returns all timeline items (notes) for a family, filtered by the current user's visibility permissions. Private notes are only visible to the user who entered them; admins see a placeholder."
+      operationId: getFamilyTimeline
+      parameters:
+        -
+          name: familyId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: 'Timeline items'
+          content:
+            application/json:
+              schema:
+                properties:
+                  timeline: { type: array, items: { type: object } }
+                type: object
+        '404':
+          description: 'Family not found'
       security:
         -
           ApiKeyAuth: []
