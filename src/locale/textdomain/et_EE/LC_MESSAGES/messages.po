@@ -16126,3 +16126,175 @@ msgstr "Ajad kasutavad kiriku aega ({{church}}), mitte teie brauseri aega ({{bro
 msgid "Welcome — sign in to manage your community"
 msgstr "Tere tulemast — logige sisse oma koguduse haldamiseks"
 
+#: 
+msgid "Are you sure you want to delete this note?"
+msgstr "Kas olete kindel, et soovite selle märkuse kustutada?"
+
+#: 
+msgid "Cancel — wait 1 more minute"
+msgstr "Tühista — oota veel 1 minut"
+
+#: 
+msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
+msgstr "Annetusfondi ei saa kustutada: sellele viitab veel üks või mitu rahalist kohustust."
+
+#: 
+msgid "Cannot delete fundraiser: %d donated items are still associated. Remove the items first."
+msgstr "Heategevusüritust ei saa kustutada: sellega on seotud %d annetatud kirjet. Eemaldage esmalt kirjed."
+
+#: 
+msgid "Cannot delete property type: %d properties still reference it. Reassign or delete those properties first."
+msgstr "Omaduse tüüpi ei saa kustutada: sellele viitab veel %d omadust. Määrake need omadused ümber või kustutage need esmalt."
+
+#: 
+msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
+msgstr "Vabatahtliku töö võimalust ei saa kustutada: sellele on määratud %d inimest. Eemaldage esmalt määrangud."
+
+#: 
+msgid "Class must be one of p, f, or g"
+msgstr "Klass peab olema üks järgmistest: p, f või g"
+
+#: 
+msgid "Copy error message"
+msgstr "Kopeeri veateade"
+
+#: 
+msgid "Could not load note."
+msgstr "Märkuse laadimine ebaõnnestus."
+
+#: 
+msgid "Description cannot exceed 100 characters"
+msgstr "Kirjeldus ei tohi ületada 100 tähemärki"
+
+#: 
+msgid "Donation fund not found"
+msgstr "Annetusfondi ei leitud"
+
+#: 
+msgid "Error deleting note."
+msgstr "Viga märkuse kustutamisel."
+
+#: 
+msgid "Failed to create donation fund"
+msgstr "Annetusfondi loomine ebaõnnestus"
+
+#: 
+msgid "Failed to create fundraiser"
+msgstr "Heategevusürituse loomine ebaõnnestus"
+
+#: 
+msgid "Failed to create property type"
+msgstr "Omaduse tüübi loomine ebaõnnestus"
+
+#: 
+msgid "Failed to create volunteer opportunity"
+msgstr "Vabatahtliku töö võimaluse loomine ebaõnnestus"
+
+#: 
+msgid "Failed to delete donation fund"
+msgstr "Annetusfondi kustutamine ebaõnnestus"
+
+#: 
+msgid "Failed to delete fundraiser"
+msgstr "Heategevusürituse kustutamine ebaõnnestus"
+
+#: 
+msgid "Failed to delete note."
+msgstr "Märkuse kustutamine ebaõnnestus."
+
+#: 
+msgid "Failed to delete property type"
+msgstr "Omaduse tüübi kustutamine ebaõnnestus"
+
+#: 
+msgid "Failed to delete volunteer opportunity"
+msgstr "Vabatahtliku töö võimaluse kustutamine ebaõnnestus"
+
+#: 
+msgid "Failed to update donation fund"
+msgstr "Annetusfondi uuendamine ebaõnnestus"
+
+#: 
+msgid "Failed to update fundraiser"
+msgstr "Heategevusürituse uuendamine ebaõnnestus"
+
+#: 
+msgid "Failed to update property type"
+msgstr "Omaduse tüübi uuendamine ebaõnnestus"
+
+#: 
+msgid "Failed to update volunteer opportunity"
+msgstr "Vabatahtliku töö võimaluse uuendamine ebaõnnestus"
+
+#: 
+msgid "Fundraiser not found"
+msgstr "Heategevusüritust ei leitud"
+
+#: 
+msgid "Installation ID"
+msgstr "Installi ID"
+
+#: 
+msgid "Invalid class"
+msgstr "Vigane klass"
+
+#: 
+msgid "Name cannot exceed 30 characters"
+msgstr "Nimi ei tohi ületada 30 tähemärki"
+
+#: 
+msgid "Note by %s deleted"
+msgstr "Kasutaja %s märkus kustutatud"
+
+#: 
+msgid "Note not found."
+msgstr "Märkust ei leitud."
+
+#: 
+msgid "Plugin Development Docs"
+msgstr "Pluginate arendusdokumentatsioon"
+
+#: 
+msgid "Property type not found"
+msgstr "Omaduse tüüpi ei leitud"
+
+#: 
+msgid "Read more"
+msgstr "Loe rohkem"
+
+#: 
+msgid "Refreshing Soon"
+msgstr "Värskendamine varsti"
+
+#: 
+msgid "Refreshing in"
+msgstr "Värskendamine"
+
+#: 
+msgid "That name already exists."
+msgstr "See nimi on juba olemas."
+
+#: 
+msgid "Title is required"
+msgstr "Pealkiri on kohustuslik"
+
+#: 
+msgid "Volunteer opportunity not found"
+msgstr "Vabatahtliku töö võimalust ei leitud"
+
+#: 
+msgid "You do not have permission to delete this note."
+msgstr "Teil puudub luba selle märkuse kustutamiseks."
+
+#: 
+msgid "You do not have permission to edit this note."
+msgstr "Teil puudub luba selle märkuse muutmiseks."
+
+#: 
+msgid "[Private Note — visible only to creator]"
+msgstr "[Privaatne märkus — nähtav ainult loojale]"
+
+#: 
+msgid "seconds"
+msgstr "sekundit"
+

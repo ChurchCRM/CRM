@@ -16084,3 +16084,175 @@ msgstr "Gumagamit ng oras ng simbahan ({{church}}), hindi ang iyong browser ({{b
 msgid "Welcome — sign in to manage your community"
 msgstr "Maligayang pagdating — mag-sign in upang pamahalaan ang iyong komunidad"
 
+#: 
+msgid "Are you sure you want to delete this note?"
+msgstr "Sigurado ka bang gusto mong burahin ang talang ito?"
+
+#: 
+msgid "Cancel — wait 1 more minute"
+msgstr "Kanselahin — maghintay ng 1 pang minuto"
+
+#: 
+msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
+msgstr "Hindi mabura ang pondo ng donasyon: ginagamit pa ito ng isa o higit pang pangako ng tulong-pinansyal."
+
+#: 
+msgid "Cannot delete fundraiser: %d donated items are still associated. Remove the items first."
+msgstr "Hindi mabura ang pangongolekta ng pondo: %d mga nai-donate na aytem ay naka-ugnay pa rin. Alisin muna ang mga aytem."
+
+#: 
+msgid "Cannot delete property type: %d properties still reference it. Reassign or delete those properties first."
+msgstr "Hindi mabura ang uri ng katangian: %d katangian ay nagtutukoy pa rito. I-reassign o burahin muna ang mga katangiang iyon."
+
+#: 
+msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
+msgstr "Hindi mabura ang pagkakataon sa boluntaryo: %d tao ay nakatalagang pa rin. Alisin muna ang mga takdang gawain."
+
+#: 
+msgid "Class must be one of p, f, or g"
+msgstr "Ang klase ay dapat na isa sa p, f, o g"
+
+#: 
+msgid "Copy error message"
+msgstr "Kopyahin ang mensahe ng error"
+
+#: 
+msgid "Could not load note."
+msgstr "Hindi ma-load ang tala."
+
+#: 
+msgid "Description cannot exceed 100 characters"
+msgstr "Ang paglalarawan ay hindi maaaring lumampas sa 100 na karakter"
+
+#: 
+msgid "Donation fund not found"
+msgstr "Hindi nahanap ang pondo ng donasyon"
+
+#: 
+msgid "Error deleting note."
+msgstr "Error sa pagbura ng tala."
+
+#: 
+msgid "Failed to create donation fund"
+msgstr "Nabigo sa paglikha ng pondo ng donasyon"
+
+#: 
+msgid "Failed to create fundraiser"
+msgstr "Nabigo sa paglikha ng pangongolekta ng pondo"
+
+#: 
+msgid "Failed to create property type"
+msgstr "Nabigo sa paglikha ng uri ng katangian"
+
+#: 
+msgid "Failed to create volunteer opportunity"
+msgstr "Nabigo sa paglikha ng pagkakataon sa boluntaryo"
+
+#: 
+msgid "Failed to delete donation fund"
+msgstr "Nabigo sa pagbura ng pondo ng donasyon"
+
+#: 
+msgid "Failed to delete fundraiser"
+msgstr "Nabigo sa pagbura ng pangongolekta ng pondo"
+
+#: 
+msgid "Failed to delete note."
+msgstr "Nabigo sa pagbura ng tala."
+
+#: 
+msgid "Failed to delete property type"
+msgstr "Nabigo sa pagbura ng uri ng katangian"
+
+#: 
+msgid "Failed to delete volunteer opportunity"
+msgstr "Nabigo sa pagbura ng pagkakataon sa boluntaryo"
+
+#: 
+msgid "Failed to update donation fund"
+msgstr "Nabigo sa pag-update ng pondo ng donasyon"
+
+#: 
+msgid "Failed to update fundraiser"
+msgstr "Nabigo sa pag-update ng pangongolekta ng pondo"
+
+#: 
+msgid "Failed to update property type"
+msgstr "Nabigo sa pag-update ng uri ng katangian"
+
+#: 
+msgid "Failed to update volunteer opportunity"
+msgstr "Nabigo sa pag-update ng pagkakataon sa boluntaryo"
+
+#: 
+msgid "Fundraiser not found"
+msgstr "Hindi nahanap ang pangongolekta ng pondo"
+
+#: 
+msgid "Installation ID"
+msgstr "ID ng Pag-install"
+
+#: 
+msgid "Invalid class"
+msgstr "Hindi wastong klase"
+
+#: 
+msgid "Name cannot exceed 30 characters"
+msgstr "Ang pangalan ay hindi maaaring lumampas sa 30 na karakter"
+
+#: 
+msgid "Note by %s deleted"
+msgstr "Tala ni %s ay binura"
+
+#: 
+msgid "Note not found."
+msgstr "Hindi nahanap ang tala."
+
+#: 
+msgid "Plugin Development Docs"
+msgstr "Dokumentasyon ng Plugin Development"
+
+#: 
+msgid "Property type not found"
+msgstr "Hindi nahanap ang uri ng katangian"
+
+#: 
+msgid "Read more"
+msgstr "Magbasa pa"
+
+#: 
+msgid "Refreshing Soon"
+msgstr "Mag-refresh na Malapit Na"
+
+#: 
+msgid "Refreshing in"
+msgstr "Mag-refresh sa"
+
+#: 
+msgid "That name already exists."
+msgstr "Ang pangalang iyon ay mayroon na."
+
+#: 
+msgid "Title is required"
+msgstr "Kinakailangan ang pamagat"
+
+#: 
+msgid "Volunteer opportunity not found"
+msgstr "Hindi nahanap ang pagkakataon sa boluntaryo"
+
+#: 
+msgid "You do not have permission to delete this note."
+msgstr "Wala kang pahintulot na burahin ang talang ito."
+
+#: 
+msgid "You do not have permission to edit this note."
+msgstr "Wala kang pahintulot na i-edit ang talang ito."
+
+#: 
+msgid "[Private Note — visible only to creator]"
+msgstr "[Pribadong Tala — nakikita lamang ng tagalikha]"
+
+#: 
+msgid "seconds"
+msgstr "segundo"
+

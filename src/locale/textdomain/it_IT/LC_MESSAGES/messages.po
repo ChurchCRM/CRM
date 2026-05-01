@@ -16147,3 +16147,175 @@ msgstr "Gli orari utilizzano l'ora della parrocchia ({{church}}), non quella del
 msgid "Welcome — sign in to manage your community"
 msgstr "Benvenuto — accedi per gestire la tua comunità"
 
+#: 
+msgid "Are you sure you want to delete this note?"
+msgstr "Sei sicuro di voler eliminare questa nota?"
+
+#: 
+msgid "Cancel — wait 1 more minute"
+msgstr "Annulla — attendi ancora 1 minuto"
+
+#: 
+msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
+msgstr "Impossibile eliminare il fondo donazioni: è ancora referenziato da uno o più impegni finanziari."
+
+#: 
+msgid "Cannot delete fundraiser: %d donated items are still associated. Remove the items first."
+msgstr "Impossibile eliminare la raccolta fondi: %d elementi donati sono ancora associati. Rimuovere prima gli elementi."
+
+#: 
+msgid "Cannot delete property type: %d properties still reference it. Reassign or delete those properties first."
+msgstr "Impossibile eliminare il tipo di proprietà: %d proprietà vi fanno ancora riferimento. Riassegnare o eliminare prima tali proprietà."
+
+#: 
+msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
+msgstr "Impossibile eliminare l'opportunità di volontariato: %d persone sono ancora assegnate. Rimuovere prima le assegnazioni."
+
+#: 
+msgid "Class must be one of p, f, or g"
+msgstr "La classe deve essere una tra p, f o g"
+
+#: 
+msgid "Copy error message"
+msgstr "Copia messaggio di errore"
+
+#: 
+msgid "Could not load note."
+msgstr "Impossibile caricare la nota."
+
+#: 
+msgid "Description cannot exceed 100 characters"
+msgstr "La descrizione non può superare 100 caratteri"
+
+#: 
+msgid "Donation fund not found"
+msgstr "Fondo donazioni non trovato"
+
+#: 
+msgid "Error deleting note."
+msgstr "Errore durante l'eliminazione della nota."
+
+#: 
+msgid "Failed to create donation fund"
+msgstr "Impossibile creare il fondo donazioni"
+
+#: 
+msgid "Failed to create fundraiser"
+msgstr "Impossibile creare la raccolta fondi"
+
+#: 
+msgid "Failed to create property type"
+msgstr "Impossibile creare il tipo di proprietà"
+
+#: 
+msgid "Failed to create volunteer opportunity"
+msgstr "Impossibile creare l'opportunità di volontariato"
+
+#: 
+msgid "Failed to delete donation fund"
+msgstr "Impossibile eliminare il fondo donazioni"
+
+#: 
+msgid "Failed to delete fundraiser"
+msgstr "Impossibile eliminare la raccolta fondi"
+
+#: 
+msgid "Failed to delete note."
+msgstr "Impossibile eliminare la nota."
+
+#: 
+msgid "Failed to delete property type"
+msgstr "Impossibile eliminare il tipo di proprietà"
+
+#: 
+msgid "Failed to delete volunteer opportunity"
+msgstr "Impossibile eliminare l'opportunità di volontariato"
+
+#: 
+msgid "Failed to update donation fund"
+msgstr "Impossibile aggiornare il fondo donazioni"
+
+#: 
+msgid "Failed to update fundraiser"
+msgstr "Impossibile aggiornare la raccolta fondi"
+
+#: 
+msgid "Failed to update property type"
+msgstr "Impossibile aggiornare il tipo di proprietà"
+
+#: 
+msgid "Failed to update volunteer opportunity"
+msgstr "Impossibile aggiornare l'opportunità di volontariato"
+
+#: 
+msgid "Fundraiser not found"
+msgstr "Raccolta fondi non trovata"
+
+#: 
+msgid "Installation ID"
+msgstr "ID installazione"
+
+#: 
+msgid "Invalid class"
+msgstr "Classe non valida"
+
+#: 
+msgid "Name cannot exceed 30 characters"
+msgstr "Il nome non può superare 30 caratteri"
+
+#: 
+msgid "Note by %s deleted"
+msgstr "Nota di %s eliminata"
+
+#: 
+msgid "Note not found."
+msgstr "Nota non trovata."
+
+#: 
+msgid "Plugin Development Docs"
+msgstr "Documentazione sviluppo plugin"
+
+#: 
+msgid "Property type not found"
+msgstr "Tipo di proprietà non trovato"
+
+#: 
+msgid "Read more"
+msgstr "Leggi di più"
+
+#: 
+msgid "Refreshing Soon"
+msgstr "Aggiornamento imminente"
+
+#: 
+msgid "Refreshing in"
+msgstr "Aggiornamento tra"
+
+#: 
+msgid "That name already exists."
+msgstr "Questo nome esiste già."
+
+#: 
+msgid "Title is required"
+msgstr "Il titolo è obbligatorio"
+
+#: 
+msgid "Volunteer opportunity not found"
+msgstr "Opportunità di volontariato non trovata"
+
+#: 
+msgid "You do not have permission to delete this note."
+msgstr "Non si dispone dell'autorizzazione per eliminare questa nota."
+
+#: 
+msgid "You do not have permission to edit this note."
+msgstr "Non si dispone dell'autorizzazione per modificare questa nota."
+
+#: 
+msgid "[Private Note — visible only to creator]"
+msgstr "[Nota privata — visibile solo al creatore]"
+
+#: 
+msgid "seconds"
+msgstr "secondi"
+

@@ -16127,3 +16127,175 @@ msgstr "Οι ώρες χρησιμοποιούν την ώρα της εκκλη
 msgid "Welcome — sign in to manage your community"
 msgstr "Καλώς ήρθατε — συνδεθείτε για να διαχειριστείτε το εκκλησίασμά σας"
 
+#: 
+msgid "Are you sure you want to delete this note?"
+msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτή τη σημείωση;"
+
+#: 
+msgid "Cancel — wait 1 more minute"
+msgstr "Ακύρωση — περιμένετε ακόμα 1 λεπτό"
+
+#: 
+msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
+msgstr "Δεν είναι δυνατή η διαγραφή του ταμείου δωρεών: αναφέρεται ακόμα σε μία ή περισσότερες οικονομικές δεσμεύσεις."
+
+#: 
+msgid "Cannot delete fundraiser: %d donated items are still associated. Remove the items first."
+msgstr "Δεν είναι δυνατή η διαγραφή της εκστρατείας συγκέντρωσης πόρων: %d δωρισμένα αντικείμενα είναι ακόμα συνδεδεμένα. Αφαιρέστε πρώτα τα αντικείμενα."
+
+#: 
+msgid "Cannot delete property type: %d properties still reference it. Reassign or delete those properties first."
+msgstr "Δεν είναι δυνατή η διαγραφή του τύπου ιδιότητας: %d ιδιότητες το αναφέρουν ακόμα. Αναθέστε εκ νέου ή διαγράψτε πρώτα αυτές τις ιδιότητες."
+
+#: 
+msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
+msgstr "Δεν είναι δυνατή η διαγραφή της ευκαιρίας εθελοντισμού: %d άτομα είναι ακόμα ανατεθειμένα. Αφαιρέστε πρώτα τις αναθέσεις."
+
+#: 
+msgid "Class must be one of p, f, or g"
+msgstr "Η κλάση πρέπει να είναι p, f ή g"
+
+#: 
+msgid "Copy error message"
+msgstr "Αντιγραφή μηνύματος σφάλματος"
+
+#: 
+msgid "Could not load note."
+msgstr "Δεν ήταν δυνατή η φόρτωση της σημείωσης."
+
+#: 
+msgid "Description cannot exceed 100 characters"
+msgstr "Η περιγραφή δεν μπορεί να υπερβαίνει τους 100 χαρακτήρες"
+
+#: 
+msgid "Donation fund not found"
+msgstr "Το ταμείο δωρεών δεν βρέθηκε"
+
+#: 
+msgid "Error deleting note."
+msgstr "Σφάλμα κατά τη διαγραφή της σημείωσης."
+
+#: 
+msgid "Failed to create donation fund"
+msgstr "Αποτυχία δημιουργίας ταμείου δωρεών"
+
+#: 
+msgid "Failed to create fundraiser"
+msgstr "Αποτυχία δημιουργίας εκστρατείας συγκέντρωσης πόρων"
+
+#: 
+msgid "Failed to create property type"
+msgstr "Αποτυχία δημιουργίας τύπου ιδιότητας"
+
+#: 
+msgid "Failed to create volunteer opportunity"
+msgstr "Αποτυχία δημιουργίας ευκαιρίας εθελοντισμού"
+
+#: 
+msgid "Failed to delete donation fund"
+msgstr "Αποτυχία διαγραφής ταμείου δωρεών"
+
+#: 
+msgid "Failed to delete fundraiser"
+msgstr "Αποτυχία διαγραφής εκστρατείας συγκέντρωσης πόρων"
+
+#: 
+msgid "Failed to delete note."
+msgstr "Αποτυχία διαγραφής σημείωσης."
+
+#: 
+msgid "Failed to delete property type"
+msgstr "Αποτυχία διαγραφής τύπου ιδιότητας"
+
+#: 
+msgid "Failed to delete volunteer opportunity"
+msgstr "Αποτυχία διαγραφής ευκαιρίας εθελοντισμού"
+
+#: 
+msgid "Failed to update donation fund"
+msgstr "Αποτυχία ενημέρωσης ταμείου δωρεών"
+
+#: 
+msgid "Failed to update fundraiser"
+msgstr "Αποτυχία ενημέρωσης εκστρατείας συγκέντρωσης πόρων"
+
+#: 
+msgid "Failed to update property type"
+msgstr "Αποτυχία ενημέρωσης τύπου ιδιότητας"
+
+#: 
+msgid "Failed to update volunteer opportunity"
+msgstr "Αποτυχία ενημέρωσης ευκαιρίας εθελοντισμού"
+
+#: 
+msgid "Fundraiser not found"
+msgstr "Η εκστρατεία συγκέντρωσης πόρων δεν βρέθηκε"
+
+#: 
+msgid "Installation ID"
+msgstr "Αναγνωριστικό εγκατάστασης"
+
+#: 
+msgid "Invalid class"
+msgstr "Μη έγκυρη κλάση"
+
+#: 
+msgid "Name cannot exceed 30 characters"
+msgstr "Το όνομα δεν μπορεί να υπερβαίνει τους 30 χαρακτήρες"
+
+#: 
+msgid "Note by %s deleted"
+msgstr "Η σημείωση από %s διαγράφηκε"
+
+#: 
+msgid "Note not found."
+msgstr "Η σημείωση δεν βρέθηκε."
+
+#: 
+msgid "Plugin Development Docs"
+msgstr "Τεκμηρίωση ανάπτυξης προσθέτων"
+
+#: 
+msgid "Property type not found"
+msgstr "Ο τύπος ιδιότητας δεν βρέθηκε"
+
+#: 
+msgid "Read more"
+msgstr "Διαβάστε περισσότερα"
+
+#: 
+msgid "Refreshing Soon"
+msgstr "Ανανέωση σύντομα"
+
+#: 
+msgid "Refreshing in"
+msgstr "Ανανέωση σε"
+
+#: 
+msgid "That name already exists."
+msgstr "Αυτό το όνομα υπάρχει ήδη."
+
+#: 
+msgid "Title is required"
+msgstr "Ο τίτλος είναι υποχρεωτικός"
+
+#: 
+msgid "Volunteer opportunity not found"
+msgstr "Η ευκαιρία εθελοντισμού δεν βρέθηκε"
+
+#: 
+msgid "You do not have permission to delete this note."
+msgstr "Δεν έχετε άδεια να διαγράψετε αυτή τη σημείωση."
+
+#: 
+msgid "You do not have permission to edit this note."
+msgstr "Δεν έχετε άδεια να επεξεργαστείτε αυτή τη σημείωση."
+
+#: 
+msgid "[Private Note — visible only to creator]"
+msgstr "[Ιδιωτική σημείωση — ορατή μόνο στον δημιουργό]"
+
+#: 
+msgid "seconds"
+msgstr "δευτερόλεπτα"
+
