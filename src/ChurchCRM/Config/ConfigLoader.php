@@ -37,7 +37,6 @@ final class ConfigLoader
         $sDATABASE = null;
         $sRootPath = null;
         $URL = [];
-        $bLockURL = false;
 
         // Suppress errors during require; we'll validate ourselves
         $error = error_get_last();
@@ -71,7 +70,6 @@ final class ConfigLoader
             dbPassword: (string)$sPASSWORD,
             rootPath: (string)$sRootPath,
             url: (string)$URL[0],
-            lockUrl: (bool)$bLockURL,
         );
     }
 

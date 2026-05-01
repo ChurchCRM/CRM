@@ -27,11 +27,13 @@ try {
     $sDATABASE = $config->getDbName();
     $sRootPath = $config->getRootPath();
     $URL = [$config->getUrl()];
-    $bLockURL = $config->getLockUrl();
 } catch (RuntimeException $e) {
     header('Location: ../config-error.php?error=' . urlencode($e->getMessage()));
     exit;
 }
+
+// Lock URL setting is admin-configurable via SystemConfig (defaults to false)
+$bLockURL = false;
 
 // Enable this line to debug the bootstrapper process (database connections, etc).
 // this makes a lot of log noise, so don't leave it on for normal production use.

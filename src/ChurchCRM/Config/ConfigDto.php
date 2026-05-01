@@ -16,7 +16,6 @@ final class ConfigDto
         public readonly string $dbPassword,
         public readonly string $rootPath,
         public readonly string $url,
-        public readonly bool $lockUrl = false,
     ) {}
 
     public function getDbServerName(): string
@@ -52,10 +51,5 @@ final class ConfigDto
     public function getUrl(): string
     {
         return $this->url;
-    }
-
-    public function getLockUrl(): bool
-    {
-        return $this->lockUrl;
     }
 }
