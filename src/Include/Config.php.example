@@ -3,56 +3,91 @@
  *
  *  filename    : Include/Config.php
  *  website     : https://churchcrm.io
- *  description : global configuration
+ *  description : ChurchCRM Configuration
  *
  ******************************************************************************/
 
-// Database connection constants
+/**
+ * IMPORTANT: Configuration is loaded and validated by LoadConfigs.php (line at bottom).
+ *
+ * If you are NOT using the setup wizard:
+ * - Replace ||PLACEHOLDER|| values with your actual settings below
+ * - Ensure all REQUIRED settings are present (will fail validation otherwise)
+ * - Be careful with special characters in $sPASSWORD (no quotes needed, but must be exact)
+ * - Test by accessing the application; errors will display on config-error.php page
+ */
+
+// ============================================================================
+// DATABASE CONNECTION (REQUIRED)
+// ============================================================================
+// These must match your database server exactly or the application will fail
+
+// Database server hostname or IP address
+// Examples: "localhost", "127.0.0.1", "db.example.com"
 $sSERVERNAME = '||DB_SERVER_NAME||';
+
+// Database server port (standard MySQL port is 3306)
 $dbPort = '||DB_SERVER_PORT||';
+
+// Database user (must have SELECT, INSERT, UPDATE, DELETE, ALTER privileges)
 $sUSER = '||DB_USER||';
+
+// Database password (special chars are allowed, do NOT add quotes)
 $sPASSWORD = '||DB_PASSWORD||';
+
+// Database name where ChurchCRM tables are located
 $sDATABASE = '||DB_NAME||';
 
-// Root path of your ChurchCRM installation ( THIS MUST BE SET CORRECTLY! )
-//
+// ============================================================================
+// APPLICATION PATH (REQUIRED)
+// ============================================================================
+// Path where ChurchCRM is installed on your web server (MUST BE SET CORRECTLY)
+
 // Examples:
-// - if you will be accessing from https://www.yourdomain.com/churchcrm then you would enter '/churchcrm' here.
-// - if you will be accessing from https://www.yourdomain.com then you would enter '' ... an empty string for a top level installation.
+// - https://www.yourdomain.com/churchcrm    → $sRootPath = '/churchcrm'
+// - https://www.yourdomain.com               → $sRootPath = ''  (empty string)
+// - https://crm.yourdomain.com               → $sRootPath = ''  (empty string, subdomain)
 //
-// NOTE:
-// - the path SHOULD Start with slash, if not ''.
-// - the path SHOULD NOT end with slash.
-// - the path is case sensitive.
+// Rules:
+// - Start with "/" (slash) OR use empty string for root installation
+// - DO NOT end with "/" (slash)
+// - Case sensitive (usually lowercase)
 $sRootPath = '||ROOT_PATH||';
 
-// URL[0] is the URL that you prefer most users use when they
-// log in.  These are case sensitive.
+// ============================================================================
+// ACCESS URLS (REQUIRED)
+// ============================================================================
+// URL[0] is the primary URL users will use to access ChurchCRM
+
+// Primary URL - must include https://, domain, and path (with trailing slash)
+// Examples: "https://www.mychurch.org/churchcrm/", "https://crm.mychurch.org/"
 $URL[0] = '||URL||';
-// List as many other URL's as may be needed. Number them sequentially.
-//$URL[1] = 'https://www.mychurch.org/churchcrm/';
-//$URL[2] = 'https://www.mychurch.org:8080/churchcrm/';
-//$URL[3] = 'https://www.mychurch.org/churchcrm/';
-//$URL[4] = 'https://ssl.sharedsslserver.com/mychurch.org/churchcrm/';
-//$URL[5] = 'https://crm.mychurch.org/';
 
-// If you are using a non-standard port number be sure to include the
-// port number in the URL. See example $URL[2]
+// Optional: Add alternate URLs if users access via multiple URLs
+// Uncomment and configure if needed. Use the same format as $URL[0]
+// (Must include https:// protocol, domain, full path, and trailing slash)
+//
+// Example for non-standard port:
+//$URL[1] = 'https://www.mychurch.org:8080/churchcrm/';
+//
+// Example for alternate domain:
+//$URL[2] = 'https://crm.mychurch.org/';
+//
+// Example for shared SSL server:
+//$URL[3] = 'https://ssl.sharedsslserver.com/mychurch.org/churchcrm/';
+//
+// Number them sequentially starting from [1]. ChurchCRM accepts $URL[0] through $URL[5]
 
-// To enforce https access make sure that "https" is specified in all of the
-// the allowable URLs.  Safe exceptions are when you are at the local machine
-// and using "localhost" or "127.0.0.1"
-
-// When using a shared SSL certificate provided by your webhost for https access
-// you may need to add the shared SSL server name as well as your host name to
-// the URL.  See example $URL[4]
-
-// Sets which PHP errors are reported see https://www.php.net/manual/en/errorfunc.constants.php
+// ============================================================================
+// ERROR REPORTING (OPTIONAL)
+// ============================================================================
+// Sets which PHP errors are reported
+// E_ERROR = only fatal errors (recommended for production)
+// See https://www.php.net/manual/en/errorfunc.constants.php for other options
 error_reporting(E_ERROR);
 
-//
-// SETTINGS END HERE.  DO NOT MODIFY BELOW THIS LINE
-//
-// Absolute path must be specified since this file is called
-// from scripts located in other directories
+// ============================================================================
+// DO NOT MODIFY BELOW THIS LINE
+// ============================================================================
+// LoadConfigs.php loads and validates all settings above
 require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'LoadConfigs.php');
