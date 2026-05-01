@@ -5,77 +5,72 @@ namespace ChurchCRM\Config;
 use RuntimeException;
 
 /**
- * Loads ChurchCRM configuration from a JSON values file and validates every
- * field at read time.
+ * Loads and validates ChurchCRM configuration.
  *
  * Security note (GHSA-mp2w-4q3r-ppx7 / CVE-2026-39337):
  * The setup wizard previously substituted user-supplied DB credentials into
  * a PHP template, which allowed quote-breaking payloads in DB_PASSWORD to
- * inject executable PHP. Configuration values are now stored in JSON and
- * loaded through this class, so user input cannot reach the PHP grammar.
- * Validation is enforced on read — the loader rejects anything that does
- * not match the expected shape regardless of how it was written to disk.
+ * inject executable PHP. This class validates configuration values at read time,
+ * rejecting anything that does not match the expected shape.
  */
 final class ConfigLoader
 {
-    public const REQUIRED_KEYS = [
-        'DB_SERVER_NAME',
-        'DB_SERVER_PORT',
-        'DB_NAME',
-        'DB_USER',
-        'DB_PASSWORD',
-        'ROOT_PATH',
-        'URL',
-    ];
 
     /**
-     * Load and validate config values from a JSON file.
+     * Load and validate configuration from the existing templated Config.php file.
+     * Extracts the global variables that Config.php sets and validates them.
      *
-     * @return array<string, string> validated values keyed by REQUIRED_KEYS
+     * @return ConfigDto validated configuration as a DTO
      * @throws RuntimeException on any validation failure
      */
-    public static function load(string $path): array
+    public static function loadFromConfigPhp(string $configPath): ConfigDto
     {
-        if (!is_file($path) || !is_readable($path)) {
-            throw new RuntimeException("Config values file not found or not readable: {$path}");
+        if (!is_file($configPath) || !is_readable($configPath)) {
+            throw new RuntimeException("Config file not found or not readable: {$configPath}");
         }
 
-        $raw = file_get_contents($path);
-        if ($raw === false) {
-            throw new RuntimeException("Unable to read config values file: {$path}");
+        // Load the Config.php file in an isolated scope to capture globals
+        $sSERVERNAME = null;
+        $dbPort = null;
+        $sUSER = null;
+        $sPASSWORD = null;
+        $sDATABASE = null;
+        $sRootPath = null;
+        $URL = [];
+
+        // Suppress errors during require; we'll validate ourselves
+        $error = error_get_last();
+        require_once $configPath;
+        $newError = error_get_last();
+        if ($newError !== $error && $newError !== null) {
+            throw new RuntimeException("Error loading Config.php: " . $newError['message']);
         }
 
-        $data = json_decode($raw, true);
-        if (!is_array($data)) {
-            throw new RuntimeException("Config values file is not a valid JSON object: {$path}");
+        // Validate that required variables were set
+        if ($sSERVERNAME === null || $dbPort === null || $sUSER === null ||
+            $sPASSWORD === null || $sDATABASE === null || $sRootPath === null ||
+            !isset($URL[0])) {
+            throw new RuntimeException("Config.php did not set required variables");
         }
 
-        foreach (self::REQUIRED_KEYS as $key) {
-            if (!array_key_exists($key, $data)) {
-                throw new RuntimeException("Missing required config key: {$key}");
-            }
-            if (!is_string($data[$key])) {
-                throw new RuntimeException("Config key must be a string: {$key}");
-            }
-        }
+        // Validate each value
+        self::validateHostname((string)$sSERVERNAME);
+        self::validatePort((string)$dbPort);
+        self::validateDbName((string)$sDATABASE);
+        self::validateDbUser((string)$sUSER);
+        self::validateDbPassword((string)$sPASSWORD);
+        self::validateRootPath((string)$sRootPath);
+        self::validateUrl((string)$URL[0]);
 
-        self::validateHostname($data['DB_SERVER_NAME']);
-        self::validatePort($data['DB_SERVER_PORT']);
-        self::validateDbName($data['DB_NAME']);
-        self::validateDbUser($data['DB_USER']);
-        self::validateDbPassword($data['DB_PASSWORD']);
-        self::validateRootPath($data['ROOT_PATH']);
-        self::validateUrl($data['URL']);
-
-        return [
-            'DB_SERVER_NAME' => $data['DB_SERVER_NAME'],
-            'DB_SERVER_PORT' => $data['DB_SERVER_PORT'],
-            'DB_NAME'        => $data['DB_NAME'],
-            'DB_USER'        => $data['DB_USER'],
-            'DB_PASSWORD'    => $data['DB_PASSWORD'],
-            'ROOT_PATH'      => $data['ROOT_PATH'],
-            'URL'            => $data['URL'],
-        ];
+        return new ConfigDto(
+            dbServerName: (string)$sSERVERNAME,
+            dbServerPort: (string)$dbPort,
+            dbName: (string)$sDATABASE,
+            dbUser: (string)$sUSER,
+            dbPassword: (string)$sPASSWORD,
+            rootPath: (string)$sRootPath,
+            url: (string)$URL[0],
+        );
     }
 
     private static function validateHostname(string $value): void
