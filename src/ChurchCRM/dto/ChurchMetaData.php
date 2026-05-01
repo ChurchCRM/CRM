@@ -4,76 +4,89 @@ namespace ChurchCRM\dto;
 
 use ChurchCRM\Utils\GeoUtils;
 
+/**
+ * Strongly-typed accessors for the church-identity portion of SystemConfig
+ * (`sChurchName`, `sChurchAddress`, ...). Each string getter always
+ * returns a trimmed string — never null — so callers don't need to cast,
+ * trim, or null-check at every use site. An unset/whitespace-only config
+ * value surfaces as `""` and callers can apply `?:` fallbacks cleanly.
+ */
 class ChurchMetaData
 {
-    public static function getChurchName()
+    /** Read a SystemConfig key as a trimmed string, coalescing null. */
+    private static function readString(string $key): string
     {
-        return SystemConfig::getValue('sChurchName');
+        return trim((string) SystemConfig::getValue($key));
+    }
+
+    public static function getChurchName(): string
+    {
+        return self::readString('sChurchName');
     }
 
     public static function getChurchFullAddress(): string
     {
         $address = [];
-        if (!empty(self::getChurchAddress())) {
+        if (self::getChurchAddress() !== '') {
             $address[] = self::getChurchAddress();
         }
 
-        if (!empty(self::getChurchCity())) {
+        if (self::getChurchCity() !== '') {
             $address[] = self::getChurchCity() . ',';
         }
 
-        if (!empty(self::getChurchState())) {
+        if (self::getChurchState() !== '') {
             $address[] = self::getChurchState();
         }
 
-        if (!empty(self::getChurchZip())) {
+        if (self::getChurchZip() !== '') {
             $address[] = self::getChurchZip();
         }
-        if (!empty(self::getChurchCountry())) {
+        if (self::getChurchCountry() !== '') {
             $address[] = self::getChurchCountry();
         }
 
         return implode(' ', $address);
     }
 
-    public static function getChurchAddress()
+    public static function getChurchAddress(): string
     {
-        return SystemConfig::getValue('sChurchAddress');
+        return self::readString('sChurchAddress');
     }
 
-    public static function getChurchCity()
+    public static function getChurchCity(): string
     {
-        return SystemConfig::getValue('sChurchCity');
+        return self::readString('sChurchCity');
     }
 
-    public static function getChurchState()
+    public static function getChurchState(): string
     {
-        return SystemConfig::getValue('sChurchState');
+        return self::readString('sChurchState');
     }
 
-    public static function getChurchZip()
+    public static function getChurchZip(): string
     {
-        return SystemConfig::getValue('sChurchZip');
+        return self::readString('sChurchZip');
     }
 
-    public static function getChurchCountry()
+    public static function getChurchCountry(): string
     {
-        return SystemConfig::getValue('sChurchCountry');
+        return self::readString('sChurchCountry');
     }
 
-    public static function getChurchEmail()
+    public static function getChurchEmail(): string
     {
-        return SystemConfig::getValue('sChurchEmail');
+        return self::readString('sChurchEmail');
     }
 
-    public static function getChurchPhone()
+    public static function getChurchPhone(): string
     {
-        return SystemConfig::getValue('sChurchPhone');
+        return self::readString('sChurchPhone');
     }
 
-    public static function getChurchWebSite()
+    public static function getChurchWebSite(): string
     {
-        return SystemConfig::getValue('sChurchWebSite');
+        return self::readString('sChurchWebSite');
     }
 
     /**
@@ -85,7 +98,7 @@ class ChurchMetaData
      */
     public static function getChurchLogoURL(): string
     {
-        $configured = trim((string) SystemConfig::getValue('sChurchLogoURL'));
+        $configured = self::readString('sChurchLogoURL');
         if ($configured !== '' && filter_var($configured, FILTER_VALIDATE_URL) !== false) {
             return $configured;
         }
@@ -93,32 +106,42 @@ class ChurchMetaData
         return SystemURLs::getURL() . '/Images/logo-churchcrm-350.jpg';
     }
 
-    public static function getChurchLatitude()
+    /**
+     * Church latitude as a float; `0.0` when unset. Triggers a geocode
+     * against the configured full address on first read if missing.
+     */
+    public static function getChurchLatitude(): float
     {
-        if (empty(SystemConfig::getValue('iChurchLatitude'))) {
+        if (self::readString('iChurchLatitude') === '') {
             self::updateLatLng();
         }
 
-        return SystemConfig::getValue('iChurchLatitude');
+        return (float) SystemConfig::getValue('iChurchLatitude');
     }
 
-    public static function getChurchLongitude()
+    public static function getChurchLongitude(): float
     {
-        if (empty(SystemConfig::getValue('iChurchLongitude'))) {
+        if (self::readString('iChurchLongitude') === '') {
             self::updateLatLng();
         }
 
-        return SystemConfig::getValue('iChurchLongitude');
+        return (float) SystemConfig::getValue('iChurchLongitude');
     }
 
-    public static function getChurchTimeZone()
+    /** True when a geocoded latitude is stored; use in place of the old `!== ''` check. */
+    public static function hasChurchLocation(): bool
     {
-        return SystemConfig::getValue('sTimeZone');
+        return self::readString('iChurchLatitude') !== '' && self::readString('iChurchLongitude') !== '';
+    }
+
+    public static function getChurchTimeZone(): string
+    {
+        return self::readString('sTimeZone');
     }
 
     private static function updateLatLng(): void
     {
-        if (!empty(self::getChurchFullAddress())) {
+        if (self::getChurchFullAddress() !== '') {
             $latLng = GeoUtils::getLatLong(self::getChurchFullAddress());
             if (!empty($latLng['Latitude']) && !empty($latLng['Longitude'])) {
                 SystemConfig::setValue('iChurchLatitude', $latLng['Latitude']);

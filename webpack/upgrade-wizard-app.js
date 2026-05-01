@@ -33,13 +33,13 @@ if (window.CRM && !window.CRM.AdminAPIRequest) {
     } else {
       options.dataType = "json";
     }
-    options.url = window.CRM.root + "/admin/api/" + options.path;
+    options.url = `${window.CRM.root}/admin/api/${options.path}`;
     options.contentType = "application/json";
     options.beforeSend = (jqXHR, settings) => {
       jqXHR.url = settings.url;
     };
     options.error = (jqXHR, textStatus, errorThrown) => {
-      if (window.CRM.system && window.CRM.system.handlejQAJAXError) {
+      if (window.CRM.system?.handlejQAJAXError) {
         window.CRM.system.handlejQAJAXError(jqXHR, textStatus, errorThrown, options.suppressErrorDialog);
       }
     };
@@ -52,7 +52,7 @@ if (window.CRM && !window.CRM.AdminAPIRequest) {
  */
 $(document).ready(() => {
   // Verify AdminAPIRequest is available
-  if (!window.CRM || !window.CRM.AdminAPIRequest) {
+  if (!window.CRM?.AdminAPIRequest) {
     console.error("AdminAPIRequest not available - upgrade wizard cannot proceed");
     return;
   }
@@ -159,24 +159,22 @@ function setupBackupStep() {
           }, 1000);
         });
       })
-      .fail((xhr, status, error) => {
+      .fail((xhr, _status, error) => {
         let errorMessage = i18next.t("Failed to create backup.");
 
-        if (xhr.responseJSON && xhr.responseJSON.message) {
-          errorMessage =
-            "<strong>" + i18next.t("Failed to create backup.") + "</strong><br>" + xhr.responseJSON.message;
+        if (xhr.responseJSON?.message) {
+          errorMessage = `<strong>${i18next.t("Failed to create backup.")}</strong><br>${xhr.responseJSON.message}`;
         } else if (xhr.responseText) {
           try {
             const response = JSON.parse(xhr.responseText);
             if (response.message) {
-              errorMessage = "<strong>" + i18next.t("Failed to create backup.") + "</strong><br>" + response.message;
+              errorMessage = `<strong>${i18next.t("Failed to create backup.")}</strong><br>${response.message}`;
             }
-          } catch (e) {
-            errorMessage =
-              "<strong>" + i18next.t("Failed to create backup.") + "</strong><br>" + xhr.status + ": " + xhr.statusText;
+          } catch (_e) {
+            errorMessage = `<strong>${i18next.t("Failed to create backup.")}</strong><br>${xhr.status}: ${xhr.statusText}`;
           }
         } else if (error) {
-          errorMessage = "<strong>" + i18next.t("Failed to create backup.") + "</strong><br>" + error;
+          errorMessage = `<strong>${i18next.t("Failed to create backup.")}</strong><br>${error}`;
         }
 
         $backupStatus.html(`<div class="alert alert-danger">
@@ -253,20 +251,18 @@ function performDownload() {
       // Show apply button after download completes
       $("#applyButtonContainer").removeClass("d-none");
     })
-    .fail((xhr, status, error) => {
+    .fail((xhr, _status, error) => {
       let errorMessage = i18next.t("Failed to download update package.");
 
-      if (xhr.responseJSON && xhr.responseJSON.message) {
-        errorMessage =
-          "<strong>" + i18next.t("Failed to download update package.") + "</strong><br>" + xhr.responseJSON.message;
+      if (xhr.responseJSON?.message) {
+        errorMessage = `<strong>${i18next.t("Failed to download update package.")}</strong><br>${xhr.responseJSON.message}`;
       } else if (xhr.responseText) {
         try {
           const response = JSON.parse(xhr.responseText);
           if (response.message) {
-            errorMessage =
-              "<strong>" + i18next.t("Failed to download update package.") + "</strong><br>" + response.message;
+            errorMessage = `<strong>${i18next.t("Failed to download update package.")}</strong><br>${response.message}`;
           }
-        } catch (e) {
+        } catch (_e) {
           errorMessage =
             "<strong>" +
             i18next.t("Failed to download update package.") +
@@ -276,7 +272,7 @@ function performDownload() {
             xhr.statusText;
         }
       } else if (error) {
-        errorMessage = "<strong>" + i18next.t("Failed to download update package.") + "</strong><br>" + error;
+        errorMessage = `<strong>${i18next.t("Failed to download update package.")}</strong><br>${error}`;
       }
 
       $downloadStatus.html(`<div class="alert alert-danger">
@@ -317,7 +313,7 @@ function setupApplyStep() {
         sha1: window.CRM.updateFile.sha1,
       }),
     })
-      .done((data) => {
+      .done((_data) => {
         // Hide spinner
         $spinner.removeClass("active");
 
@@ -331,7 +327,7 @@ function setupApplyStep() {
 
           // Log out the user
           $.ajax({
-            url: window.CRM.root + "/session/end",
+            url: `${window.CRM.root}/session/end`,
             type: "GET",
           });
 
@@ -343,31 +339,30 @@ function setupApplyStep() {
 
             if (countdown <= 0) {
               clearInterval(countdownInterval);
-              window.location.href = window.CRM.root + "/";
+              window.location.href = `${window.CRM.root}/`;
             }
           }, 1000);
         }, 1000);
       })
-      .fail((xhr, status, error) => {
+      .fail((xhr, _status, error) => {
         // Hide spinner
         $spinner.removeClass("active");
 
         let errorMessage = i18next.t("Upgrade failed. Please check the logs.");
 
-        if (xhr.responseJSON && xhr.responseJSON.message) {
-          errorMessage = "<strong>" + i18next.t("Upgrade failed.") + "</strong><br>" + xhr.responseJSON.message;
+        if (xhr.responseJSON?.message) {
+          errorMessage = `<strong>${i18next.t("Upgrade failed.")}</strong><br>${xhr.responseJSON.message}`;
         } else if (xhr.responseText) {
           try {
             const response = JSON.parse(xhr.responseText);
             if (response.message) {
-              errorMessage = "<strong>" + i18next.t("Upgrade failed.") + "</strong><br>" + response.message;
+              errorMessage = `<strong>${i18next.t("Upgrade failed.")}</strong><br>${response.message}`;
             }
-          } catch (e) {
-            errorMessage =
-              "<strong>" + i18next.t("Upgrade failed.") + "</strong><br>" + xhr.status + ": " + xhr.statusText;
+          } catch (_e) {
+            errorMessage = `<strong>${i18next.t("Upgrade failed.")}</strong><br>${xhr.status}: ${xhr.statusText}`;
           }
         } else if (error) {
-          errorMessage = "<strong>" + i18next.t("Upgrade failed.") + "</strong><br>" + error;
+          errorMessage = `<strong>${i18next.t("Upgrade failed.")}</strong><br>${error}`;
         }
 
         $applyStatus.html(`<div class="alert alert-danger">
@@ -413,7 +408,7 @@ function setupRefreshButton() {
       method: "POST",
       path: "upgrade/refresh-upgrade-info",
     })
-      .done((data) => {
+      .done((_data) => {
         $spinner.removeClass("active");
         window.CRM.notify(i18next.t("Upgrade information refreshed. Reloading page..."), {
           type: "success",
@@ -425,13 +420,13 @@ function setupRefreshButton() {
           window.location.reload();
         }, 1500);
       })
-      .fail((xhr, status, error) => {
+      .fail((xhr, _status, _error) => {
         $spinner.removeClass("active");
         $button.prop("disabled", false);
         $icon.removeClass("fa-circle-notch fa-spin").addClass("fa-sync");
 
         let errorMessage = i18next.t("Failed to refresh upgrade information from GitHub.");
-        if (xhr.responseJSON && xhr.responseJSON.message) {
+        if (xhr.responseJSON?.message) {
           errorMessage = xhr.responseJSON.message;
         }
 

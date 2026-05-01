@@ -109,6 +109,78 @@ An issue closed on `2026-04-18` with milestone `7.4.0 (in development)` is almos
 
 ---
 
+## Epic Hygiene: Duplicate Subtasks, Milestones, Links <!-- learned: 2026-04-21 -->
+
+Multi-subtask epics in this repo have consistently shown three drift patterns.
+Audit them together whenever you revisit an epic:
+
+### 1. Duplicate subtask issues
+
+Subtasks created in bulk (e.g. a templated `gh issue create` loop) can produce
+two issues for the same scope — usually when a prior draft was partially
+committed and the template ran again. Signal: two issues with nearly identical
+titles created the same day (e.g. `#8191 "Subtask: Routes & Template"` vs
+`#8192 "Subtask 1: Routes & Template"`).
+
+```bash
+# Scan a sequential range around a known issue to find siblings + dupes
+for n in 8188 8189 ... 8196; do
+  gh issue view $n --json number,title,state,milestone,createdAt \
+    --jq '"\(.number) [\(.state)] created=\(.createdAt[:10]) milestone=\(.milestone.title // "none") — \(.title)"'
+done
+```
+
+Resolve: keep the one with the richer history (more cross-references, correct
+milestone). Close the other with a short comment pointing at the keeper:
+
+```bash
+gh issue comment <dup_n> --body "Closing as duplicate of #<keeper>. Work shipped via PR #NNNN in release X.Y.Z."
+gh issue close <dup_n> --reason "not planned"
+```
+
+### 2. Milestones on the epic and its siblings drift apart
+
+Because subtasks and the epic are often closed weeks apart, they end up on
+different milestones. Apply the "milestone = release that shipped it" rule
+(section above) to every issue in the group — epic included. Then verify they
+all agree:
+
+```bash
+for n in <epic> <subtask1> <subtask2> ...; do
+  gh issue view $n --json number,milestone \
+    --jq '"#\(.number) milestone=\(.milestone.title // "none")"'
+done
+```
+
+### 3. Epic body has no links to subtasks
+
+Epics often get opened with a plan-in-prose body that never references the
+actual issue numbers. Add a `## Subtasks` section at the bottom so future
+readers (and `gh issue view`) can follow the trail:
+
+```bash
+gh issue view <epic> --json body --jq .body > /tmp/epic.md
+cat >> /tmp/epic.md <<'MD'
+
+---
+
+## Subtasks
+
+- [x] #NNNN — Subtask 1: Title (shipped in X.Y.Z via #PPPP)
+- [x] #NNNN — Subtask 2: Title (shipped in X.Y.Z via #PPPP)
+
+**Status**: All subtasks closed; feature shipped in **X.Y.Z**.
+MD
+
+gh issue edit <epic> --body-file /tmp/epic.md
+```
+
+Do all three together — fixing milestones without linking subtasks leaves the
+next reviewer rediscovering the same mess, and closing duplicates without
+fixing milestones just propagates the wrong release tag.
+
+---
+
 ## Security Advisory Management <!-- learned: 2026-04-05 -->
 
 Use `gh api` to manage GitHub Security Advisories (GHSAs). The full lifecycle is:
@@ -203,3 +275,38 @@ gh api graphql -f query='
     }) { discussion { url } }
   }'
 ```
+
+---
+
+## Verify a fix is on master before closing an issue <!-- learned: 2026-04-21 -->
+
+A commit titled `Fix: X` in `git log --all` does **not** mean the fix has
+shipped. Copilot agents, stale branches, and abandoned PRs all produce
+fix-shaped commits that never merged. Before closing any issue on the
+claim "this is fixed":
+
+1. Grep the commit log (include `--all` to catch unmerged branches):
+   ```bash
+   git log --all --oneline --grep="<keyword from issue>"
+   ```
+2. For each candidate commit, **verify it reached master**:
+   ```bash
+   git branch --contains <sha>
+   # Must include "master" — not just "claude/check-issue-XXXX" or a feature branch.
+   ```
+3. Or check master directly for the closing PR:
+   ```bash
+   git log master --oneline --grep="closes #<issue>"
+   git log master --oneline -- <expected file path>
+   ```
+4. Read the current file on master and confirm the buggy code is actually
+   gone. A stale commit message on an unmerged branch is not evidence.
+
+**Why:** Closed-when-actually-open issues confuse reporters and hide
+regressions. The only authoritative signal is "the fix is in a commit
+reachable from `master` and the bad code is gone from the working tree."
+
+**How to apply:** Whenever a user says *"I think this is fixed, close
+it"* — run `git branch --contains` on the candidate commit and read the
+file on master. If either check fails, leave the issue open and explain
+which branch holds the fix so it can be merged.

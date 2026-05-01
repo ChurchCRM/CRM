@@ -197,7 +197,7 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                                         <div class="datagrid-content" id="updateFileName"></div>
                                     </div>
                                     <div class="datagrid-item">
-                                        <div class="datagrid-title"><?= gettext('SHA1 Hash') ?></div>
+                                        <div class="datagrid-title">SHA1 Hash</div>
                                         <div class="datagrid-content"><code id="updateSHA1"></code></div>
                                     </div>
                                     <div class="datagrid-item">
@@ -278,7 +278,7 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
         <i class="fa fa-cog fa-spin spinner-icon"></i>
         <h3><?= gettext('Applying System Update...') ?></h3>
         <p><?= gettext('Please do not close this window or refresh the page.') ?></p>
-        <p class="text-muted"><?= gettext('This may take several minutes.') ?></p>
+        <p class="text-body-secondary"><?= gettext('This may take several minutes.') ?></p>
     </div>
 </div>
 

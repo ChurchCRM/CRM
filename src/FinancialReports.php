@@ -377,7 +377,7 @@ if ($sReportType === '') {
           </div>
           <div class="form-check">
             <input class="form-check-input" type="radio" name="output" value="csv" id="outputCsv">
-            <label class="form-check-label" for="outputCsv"><?= gettext('CSV') ?></label>
+            <label class="form-check-label" for="outputCsv">CSV</label>
           </div>
         </div>
       </div>

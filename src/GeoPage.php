@@ -272,7 +272,7 @@ $families = FamilyQuery::create()
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="CoordFileFormat" id="fmt_sa"
                                 value="StreetAtlasUSA" <?= ($sCoordFileFormat === 'StreetAtlasUSA' ? 'checked' : '') ?>>
-                            <label class="form-check-label" for="fmt_sa"><?= gettext('Street Atlas USA') ?></label>
+                            <label class="form-check-label" for="fmt_sa">Street Atlas USA</label>
                         </div>
                     </div>
                 </div>

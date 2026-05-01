@@ -81,16 +81,19 @@ jobs:
             exit 0
           fi
           
-          # Check if changes are only in the header (first 20 lines typically contain headers)
-          # We'll check if there are changes beyond line 25 to be safe
-          CHANGES=$(git diff -- "$PO_FILE" | grep -E '^\+[^+]|^\-[^-]' | tail -n +25 | wc -l)
-          
+          # Skip PR only when the diff is purely auto-bumped header timestamps.
+          # Previous tail -n +25 heuristic silently dropped small valid changes.
+          CHANGES=$(git diff -- "$PO_FILE" \
+            | grep -E '^\+[^+]|^\-[^-]' \
+            | grep -vE '^[+-]"(POT-Creation-Date|PO-Revision-Date):' \
+            | wc -l)
+
           if [ "$CHANGES" -gt 0 ]; then
             echo "has_changes=true" >> $GITHUB_OUTPUT
             echo "Meaningful changes detected: $CHANGES lines"
           else
             echo "has_changes=false" >> $GITHUB_OUTPUT
-            echo "Only header changes detected, skipping PR creation"
+            echo "Only POT-Creation-Date/PO-Revision-Date changed, skipping PR creation"
           fi
       
       - name: Configure Git

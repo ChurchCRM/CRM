@@ -663,10 +663,6 @@ msgid "Save Changes"
 msgstr "Zapisz Zmiany"
 
 #: 
-msgid "Church Event Editor"
-msgstr "Edytuj Wydarzenia"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Edytuj Typ Wydarzenia"
 
@@ -733,21 +729,9 @@ msgid "Create Event"
 msgstr "Utwórz wydarzenie"
 
 #: 
-msgid "Create a new Event"
-msgstr "Utwórz nowe wydarzenie"
-
-#: 
-msgid "Select your event type"
-msgstr "Wybierz typ wydarzenia"
-
-#: 
 #, fuzzy
 msgid "Event Status"
 msgstr "Status Wydarzenia"
-
-#: 
-msgid "Return to Events"
-msgstr "Wróć do Wydarzeń"
 
 #: 
 msgid "Sundays"
@@ -1207,10 +1191,6 @@ msgid "Summary Data"
 msgstr "Dane Podsumowujące"
 
 #: 
-msgid "CSV"
-msgstr "CSV"
-
-#: 
 msgid "Back"
 msgstr "Wstecz"
 
@@ -1337,10 +1317,6 @@ msgstr "Format danych"
 #: 
 msgid "GPS Visualizer"
 msgstr "Wizualizacja GPS"
-
-#: 
-msgid "Street Atlas USA"
-msgstr "Atlas Ulica USA"
 
 #: 
 #, fuzzy
@@ -2406,26 +2382,6 @@ msgstr "Zbyt duża liczba. Musi mieściś się pomiędzy -2147483648 a 214748364
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Zbyt duża suma. Maksimum to £999999999.99"
 
-#: 
-msgid " Bold Italic"
-msgstr "Pogrubina Kursywa"
-
-#: 
-msgid " Italic"
-msgstr "Kursywa"
-
-#: 
-msgid " Bold"
-msgstr "Pogrubione"
-
-#: 
-msgid "Error making API Call to"
-msgstr "Błąd podczas wywołania API do"
-
-#: 
-msgid "Error text"
-msgstr "Treść błędu"
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -3128,10 +3084,6 @@ msgstr "Ustawienia dowodu wpłaty QuickBooks"
 #: 
 msgid "Add Church Event"
 msgstr "Dodaj wydarzenie kościoła"
-
-#: 
-msgid "List Event Types"
-msgstr "Typy wydarzeń"
 
 #: 
 msgid "Check-in and Check-out"
@@ -4696,11 +4648,6 @@ msgstr "Rosyjski"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "Saamski (północny) (Szwecja)"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "Albański"
 
@@ -4981,10 +4928,6 @@ msgid "Notification for"
 msgstr "Powiadomienie dla"
 
 #: 
-msgid "ERROR"
-msgstr "BŁĄD"
-
-#: 
 msgid "Title FirstName MiddleName LastName"
 msgstr "Tytuł Imię DrugieImię Nazwisko"
 
@@ -5148,7 +5091,8 @@ msgid "Indonesian - Indonesia"
 msgstr "Indonezyjski - Indonezja"
 
 #: 
-msgid "records(s) successfully added to selected Group."
+#, fuzzy
+msgid "record(s) successfully added to selected Group."
 msgstr "rekordy pomyślnie dodane do wybranej grupy."
 
 #: 
@@ -5178,10 +5122,6 @@ msgstr "Dodano nową rodzinę"
 #: 
 msgid "Church Greeter"
 msgstr "Witający w kościele"
-
-#: 
-msgid "External Calendar API is disabled"
-msgstr "Zewnętrzny kalendarz API jest wyłączony"
 
 #: 
 msgid "Special Group Settings : Sunday School Type"
@@ -5460,7 +5400,8 @@ msgid "Remove All from Cart"
 msgstr "Usuń wszystko z koszyka"
 
 #: 
-msgid "records(s) successfully deleted from the selected Group."
+#, fuzzy
+msgid "record(s) successfully deleted from the selected Group."
 msgstr "rekordy pomyślnie usunięte z wybranej grupy."
 
 #: 
@@ -5608,16 +5549,8 @@ msgid "Missing calendar access token"
 msgstr "Brakujący token dostępu do kalendarza"
 
 #: 
-msgid "Calendar access token not found"
-msgstr "Nie znaleziono tokena dostępu do Kalendarza"
-
-#: 
 msgid "User must have Delete Records permission"
 msgstr "Użytkownik musi mieć dostęp do Usuwania Wpisów"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "Adres URL Powiadomień ChurchCRM"
 
 #: 
 msgid "invalid event type id"
@@ -5696,10 +5629,6 @@ msgstr "Błędna nazwa kraju"
 #: 
 msgid "LastName FirstName"
 msgstr "Nazwisko Imię"
-
-#: 
-msgid "Holidays"
-msgstr "Święta"
 
 #: 
 msgid "Person Name"
@@ -5887,10 +5816,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugalski"
 
 #: 
-msgid "Holiday"
-msgstr "Święto"
-
-#: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Podaj nazwę wyswietlaną przez aplikację uwierzytelniającą"
 
@@ -5950,10 +5875,6 @@ msgstr "Nie pobrano żadnego email"
 #: 
 msgid "Mailchimp is not active"
 msgstr "Mailchimp nieaktywny"
-
-#: 
-msgid "Mailchimp"
-msgstr "Mailchimp"
 
 #: 
 msgid "Lists"
@@ -6039,10 +5960,6 @@ msgstr "Tekst"
 #: 
 msgid "Event Description"
 msgstr "Opis wydarzenia"
-
-#: 
-msgid "Help translate this project"
-msgstr "Pomóż tłumaczyć ten projekt"
 
 #. Context: locales
 #: 
@@ -6960,7 +6877,8 @@ msgid "Total Payments"
 msgstr "Suma płatności"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payments?"
 msgstr "płatność(i)?"
 
 #: 
@@ -6974,10 +6892,6 @@ msgstr "Base URL"
 #: 
 msgid "Copy"
 msgstr "Kopiuj"
-
-#: 
-msgid "DSN"
-msgstr "DSN"
 
 #: 
 msgid "Debug Info"
@@ -7040,20 +6954,8 @@ msgid "SMTP Host"
 msgstr "Host SMTP"
 
 #: 
-msgid "Software"
-msgstr "Oprogramowanie"
-
-#: 
-msgid "System & Configuration"
-msgstr "System i konfiguracja"
-
-#: 
 msgid "Tip:"
 msgstr "Wskazówka:"
-
-#: 
-msgid "Valid Settings"
-msgstr "Prawidłowe ustawienia"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7115,10 +7017,6 @@ msgid "Attendance Count Categories"
 msgstr "Kategorie liczebności"
 
 #: 
-msgid "Attendance Notes"
-msgstr "Notatki o obecności"
-
-#: 
 msgid "Change Event"
 msgstr "Zmień wydarzenie"
 
@@ -7174,14 +7072,6 @@ msgstr "Usuń wydarzenie"
 msgid "Edit Event"
 msgstr "Edytuj wydarzenie"
 
-#: 
-msgid "Editing Event"
-msgstr "Edytowanie wydarzenia"
-
-#: 
-msgid "Enter event title..."
-msgstr "Wpisz tytuł wydarzenia..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7232,14 +7122,6 @@ msgid "None (one-time event)"
 msgstr "Brak (wydarzenie jednorazowe)"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "Opcjonalnie - dodaj notatki lub szczegóły"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "Opcjonalne notatki o obecności..."
-
-#: 
 msgid "People Checked In"
 msgstr "Osoby zameldowane"
 
@@ -7274,10 +7156,6 @@ msgstr "Szukaj nadzorcy..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "Wybierz wydarzenie do zameldowania"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "Tekst kazania / wydarzenia"
 
 #: 
 msgid "Unclassified"
@@ -8071,10 +7949,6 @@ msgid "Orphaned Files:"
 msgstr "Osierocone pliki:"
 
 #: 
-msgid "PDF/CSV"
-msgstr "PDF/CSV"
-
-#: 
 msgid "Payment"
 msgstr "Płatność"
 
@@ -8311,10 +8185,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "Base URL nie jest skonfigurowany w Config.php"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "Obsługiwane języki w ChurchCRM"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "Połącz się z serwerem przez SSH, FTP lub panel hostingu"
 
@@ -8361,10 +8231,6 @@ msgstr "Język"
 #: 
 msgid "Local development:"
 msgstr "Środowisko lokalne:"
-
-#: 
-msgid "Locale Support"
-msgstr "Obsługa lokalizacji"
 
 #: 
 msgid "Location & Contact Information"
@@ -8533,10 +8399,6 @@ msgstr "Wyślij weryfikację"
 #: 
 msgid "Thank You!"
 msgstr "Dziękujemy!"
-
-#: 
-msgid "Translation incomplete"
-msgstr "Tłumaczenie niekompletne"
 
 #: 
 msgid "Visit Our Website"
@@ -9191,10 +9053,6 @@ msgid "Failed to save the downloaded release file. Please check disk space and p
 msgstr "Nie udało się zapisać pobranego pliku wydania. Sprawdź miejsce na dysku i uprawnienia."
 
 #: 
-msgid "Invalid date format in start parameter"
-msgstr "Nieprawidłowy format daty w parametrze początkowym"
-
-#: 
 msgid "Mismatch"
 msgstr "Niezgodność"
 
@@ -9594,10 +9452,6 @@ msgid "Important"
 msgstr "Ważne"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "Zainstaluj wtyczki, umieszczając je w"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "Nieprawidłowy kod. Spróbuj ponownie."
 
@@ -9656,10 +9510,6 @@ msgstr "Link nie został znaleziony"
 #: 
 msgid "Loading recovery codes"
 msgstr "Ładowanie kodów odzyskiwania"
-
-#: 
-msgid "MailChimp"
-msgstr "MailChimp"
 
 #: 
 msgid "MailChimp API Key"
@@ -10774,10 +10624,6 @@ msgid "CSV Column"
 msgstr "Kolumna CSV"
 
 #: 
-msgid "CSV template not found"
-msgstr "Nie znaleziono szablonu CSV"
-
-#: 
 msgid "Call"
 msgstr "Zadzwoń"
 
@@ -10854,10 +10700,6 @@ msgid "Community Management Platform"
 msgstr "Platforma zarządzania parafią"
 
 #: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "Kompatybilne z Excelem, Arkuszami Google lub dowolnym eksportem CSV."
-
-#: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
 msgstr "Wykonaj te kroki w dowolnej kolejności, aby przygotować ChurchCRM dla Twojej parafii."
 
@@ -10884,10 +10726,6 @@ msgstr "Połącz serwer SMTP, aby ChurchCRM mógł wysyłać wiadomości e-mail"
 #: 
 msgid "Connect with others"
 msgstr "Połącz się z innymi"
-
-#: 
-msgid "Contact us"
-msgstr "Skontaktuj się z nami"
 
 #: 
 msgid "Convert individual records into family units"
@@ -11030,10 +10868,6 @@ msgid "Download CSV Template"
 msgstr "Pobierz szablon CSV"
 
 #: 
-msgid "Download the template to see the expected column format."
-msgstr "Pobierz szablon, aby zobaczyć oczekiwany format kolumn."
-
-#: 
 msgid "Drag and drop your CSV file here"
 msgstr "Przeciągnij i upuść plik CSV tutaj"
 
@@ -11044,10 +10878,6 @@ msgstr "Duplikaty"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Każda osoba może mieć własny adres e-mail i numer komórkowy."
-
-#: 
-msgid "Each row is one person. Members of the same family share a FamilyID."
-msgstr "Każdy wiersz to jedna osoba. Członkowie tej samej rodziny mają wspólny FamilyID."
 
 #: 
 msgid "Easy registration"
@@ -11580,10 +11410,6 @@ msgstr "Zmiany nazw wymagają zapisania. Zmiana kolejności i usuwanie w menu ak
 #: 
 msgid "Name, address, contact details"
 msgstr "Imię i nazwisko, adres, dane kontaktowe"
-
-#: 
-msgid "Need help?"
-msgstr "Potrzebujesz pomocy?"
 
 #: 
 msgid "New"
@@ -12132,10 +11958,6 @@ msgid "Upload CSV"
 msgstr "Prześlij CSV"
 
 #: 
-msgid "Upload a CSV file to import families and people into ChurchCRM."
-msgstr "Prześlij plik CSV, aby zaimportować rodziny i osoby do ChurchCRM."
-
-#: 
 msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
 msgstr "Prześlij plik CSV z Excela, Arkuszy Google lub poprzedniego systemu zarządzania parafią i przypisz kolumny do pól ChurchCRM."
 
@@ -12358,10 +12180,6 @@ msgstr "członkowie"
 #: 
 msgid "opportunities"
 msgstr "możliwości"
-
-#: 
-msgid "options"
-msgstr "opcje"
 
 #: 
 msgid "or connect an external service"
@@ -12598,10 +12416,6 @@ msgstr "Zarejestruj i zarządzaj urządzeniami kiosku do rejestracji obecności 
 #: 
 msgid "Review & Delete"
 msgstr "Przejrzyj i usuń"
-
-#: 
-msgid "SHA1 Hash"
-msgstr "Hash SHA1"
 
 #: 
 msgid "Signature Mismatch"
@@ -14543,10 +14357,6 @@ msgstr[1] "Pomyślnie utworzono %d powtarzające się wydarzenia."
 msgstr[2] "Pomyślnie utworzono %d powtarzających się wydarzeń."
 
 #: 
-msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
-msgstr "(np. Wierni, Goście, Dzieci), aby wolontariusze mogli tu rejestrować liczebność."
-
-#: 
 msgid "1. Sunday School Class"
 msgstr "1. Klasa szkoły niedzielnej"
 
@@ -14567,10 +14377,6 @@ msgid "A class is a Group with type \"Sunday School\". It holds the students and
 msgstr "Klasa to Grupa z typem „Szkoła niedzielna”. Zawiera uczniów i nauczycieli (członków z rolami)."
 
 #: 
-msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
-msgstr "Powiązana grupa łączy to wydarzenie z listą klasy lub posługi. Gdy wydarzenie jest przypisane do Kiosku, kiosk pobiera członków grupy i wyświetla ich jako listę do zameldowania jednym kliknięciem. W przypadku klas szkoły niedzielnej połącz tutaj grupę klasy, aby wolontariusze mogli rejestrować obecność uczniów z tabletu."
-
-#: 
 msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
 msgstr "Konkretne wystąpienie (np. „Przedszkole — 12 kwi”). Dziedziczy wartości domyślne z typu i jest powiązane z grupą klasy przez listę odbiorców. To właśnie na tym wolontariusze rejestrują obecność."
 
@@ -14581,10 +14387,6 @@ msgstr "Tablet przypisany do jednego wydarzenia. Kiosk pobiera listę grupy powi
 #: 
 msgid "Add Walk-in / Visitor"
 msgstr "Dodaj gościa / odwiedzającego"
-
-#: 
-msgid "Add categories on the Event Type page"
-msgstr "Dodaj kategorie na stronie Typ wydarzenia"
 
 #: 
 msgid "Add people to your cart first, then come back to check them in to an event."
@@ -14633,10 +14435,6 @@ msgstr "Audyt"
 #: 
 msgid "Audit Events"
 msgstr "Audyt wydarzeń"
-
-#: 
-msgid "Auto-totalled from counts at right"
-msgstr "Automatyczne sumowanie z liczb po prawej"
 
 #: 
 msgid "Back to Events"
@@ -14763,10 +14561,6 @@ msgid "Database dump only (.sql)"
 msgstr "Tylko zrzut bazy danych (.sql)"
 
 #: 
-msgid "Date Range"
-msgstr "Zakres dat"
-
-#: 
 msgid "Date range cannot exceed 1 year"
 msgstr "Zakres dat nie może przekraczać 1 roku"
 
@@ -14847,10 +14641,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "Wydarzenie zostało utworzone. Przekierowanie do rejestracji obecności..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "Data/godzina zakończenia wydarzenia musi być równa lub późniejsza niż data/godzina rozpoczęcia."
-
-#: 
 msgid "Event title is required."
 msgstr "Tytuł wydarzenia jest wymagany."
 
@@ -14877,10 +14667,6 @@ msgstr "Typ wydarzenia nie ma skonfigurowanego wzorca powtarzania"
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "Typ wydarzenia nie ma prawidłowo skonfigurowanego dnia miesiąca dla miesięcznego powtarzania"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "Wydarzenia zostaną utworzone dla każdego pasującego wystąpienia w tym zakresie dat."
 
 #: 
 msgid "Every month on the"
@@ -14931,10 +14717,6 @@ msgid "Group Roster"
 msgstr "Lista grupy"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "Ukryj opcje zaawansowane"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Jak szkoła niedzielna, wydarzenia i kioski współdziałają"
 
@@ -14945,10 +14727,6 @@ msgstr "Nieprawidłowa data dla %s — oczekiwany format RRRR-MM-DD"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Nieprawidłowy format daty dla rangeStart lub rangeEnd"
-
-#: 
-msgid "Invalid date format."
-msgstr "Nieprawidłowy format daty."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -15003,10 +14781,6 @@ msgid "No active events found."
 msgstr "Nie znaleziono aktywnych wydarzeń."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "Nie zdefiniowano jeszcze kategorii liczby obecnych dla tego typu wydarzenia."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "Nikt nie został jeszcze zameldowany na to wydarzenie."
 
@@ -15047,10 +14821,6 @@ msgid "Please select a person to check in."
 msgstr "Wybierz osobę do zameldowania."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "Wstępnie wypełnione na podstawie tego typu wydarzenia — dla typów cyklicznych data to następne wystąpienie po ostatnim wydarzeniu tego typu, a godzina odpowiada domyślnej godzinie rozpoczęcia typu."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "Data końca zakresu musi być równa lub późniejsza niż data początku zakresu."
 
@@ -15079,10 +14849,6 @@ msgid "Recommended"
 msgstr "Zalecane"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "Wymagane dla kiosku"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "Resetowanie trwale usunie:"
 
@@ -15101,14 +14867,6 @@ msgstr "Zapisz zmiany nazwy tej kategorii"
 #: 
 msgid "Select an event type…"
 msgstr "Wybierz typ wydarzenia…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "Wybierz datę/godzinę rozpoczęcia i zakończenia."
-
-#: 
-msgid "Show More Options"
-msgstr "Pokaż więcej opcji"
 
 #: 
 msgid "Skip"
@@ -15151,16 +14909,8 @@ msgid "The Events module is disabled"
 msgstr "Moduł Wydarzeń jest wyłączony"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "Ta sama godzina rozpoczęcia i zakończenia będzie używana dla wszystkich wygenerowanych wydarzeń."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "Brak wydarzeń zaplanowanych na dziś"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "Są to kategorie liczebności — wolontariusze wypełniają je po wydarzeniu, aby panel mógł przedstawić podział obecności (np. ilu wiernych vs. gości). Są oddzielne od indywidualnych meldunków na stronie rejestracji obecności."
 
 #: 
 msgid "This event is inactive."
@@ -15215,16 +14965,8 @@ msgid "View Event"
 msgstr "Wyświetl wydarzenie"
 
 #: 
-msgid "What are these for?"
-msgstr "Do czego to służy?"
-
-#: 
 msgid "What does this find?"
 msgstr "Co to wyszukuje?"
-
-#: 
-msgid "What is this for?"
-msgstr "Do czego to jest?"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15487,8 +15229,8 @@ msgid "No active event assignment"
 msgstr "Brak aktywnego przypisania zdarzenia"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "Otwiera 30-sekundowe okno dla urządzeń do rejestracji w:"
+msgid "Online"
+msgstr "Online"
 
 #: 
 msgid "Pending"
@@ -15607,14 +15349,6 @@ msgid "Set up Email"
 msgstr "Skonfiguruj pocztę"
 
 #: 
-msgid "Test SMTP Email"
-msgstr "Testowa wiadomość SMTP"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "To jest testowa wiadomość e-mail ChurchCRM potwierdzająca, że konfiguracja SMTP działa poprawnie."
-
-#: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."
 msgstr "Nie można skopiować do schowka. Skopiuj kody ręcznie."
 
@@ -15629,4 +15363,856 @@ msgstr "Użyj zamiast tego kodu odzyskiwania"
 #: 
 msgid "Use authenticator app instead"
 msgstr "Użyj zamiast tego aplikacji uwierzytelniającej"
+
+#: 
+msgid "%d modules loaded"
+msgstr "Załadowano %d modułów"
+
+#: 
+msgid "(PHP default)"
+msgstr "(domyślnie PHP)"
+
+#: 
+msgid "(none)"
+msgstr "(brak)"
+
+#: 
+msgid "(not set)"
+msgstr "(nie ustawiono)"
+
+#: 
+msgid "All checks passing"
+msgstr "Wszystkie sprawdzenia zaliczone"
+
+#: 
+msgid "App"
+msgstr "Aplikacja"
+
+#: 
+msgid "Browser time zone differs:"
+msgstr "Strefa czasowa przeglądarki różni się:"
+
+#: 
+msgid "Calendar time zone:"
+msgstr "Strefa czasowa kalendarza:"
+
+#: 
+msgid "Cannot send test email"
+msgstr "Nie można wysłać testowej wiadomości e-mail"
+
+#: 
+msgid "Charset"
+msgstr "Zestaw znaków"
+
+#: 
+msgid "Church Email address is not set — the test email has nowhere to go."
+msgstr "Adres e-mail parafii nie jest ustawiony — testowa wiadomość nie ma dokąd trafić."
+
+#: 
+msgid "Church email — configured on the"
+msgstr "E-mail parafii — skonfigurowany na"
+
+#: 
+msgid "ChurchCRM Test Email"
+msgstr "Testowa wiadomość e-mail ChurchCRM"
+
+#: 
+msgid "Collation"
+msgstr "Zestawienie znaków"
+
+#: 
+msgid "Connection"
+msgstr "Połączenie"
+
+#: 
+msgid "Database"
+msgstr "Baza danych"
+
+#: 
+msgid "Delivery"
+msgstr "Dostarczanie"
+
+#: 
+msgid "Disk (Images Root)"
+msgstr "Dysk (katalog główny obrazów)"
+
+#: 
+msgid "Display Errors"
+msgstr "Wyświetlanie błędów"
+
+#: 
+msgid "Email Debug"
+msgstr "Debugowanie e-mail"
+
+#: 
+msgid "Environment"
+msgstr "Środowisko"
+
+#: 
+msgid "Error Log"
+msgstr "Dziennik błędów"
+
+#: 
+msgid "Error Reporting"
+msgstr "Raportowanie błędów"
+
+#: 
+msgid "Fix Settings"
+msgstr "Napraw ustawienia"
+
+#: 
+msgid "Hit Rate"
+msgstr "Współczynnik trafień"
+
+#: 
+msgid "Host"
+msgstr "Host"
+
+#: 
+msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
+msgstr "Jeśli wiadomość nie dotrze w ciągu kilku minut, sprawdź folder ze spamem i dziennik debugowania SMTP poniżej."
+
+#: 
+msgid "If you can read this message in your inbox, your SMTP configuration is working correctly."
+msgstr "Jeśli widzisz tę wiadomość w skrzynce odbiorczej, konfiguracja SMTP działa poprawnie."
+
+#: 
+msgid "Incomplete"
+msgstr "Niekompletne"
+
+#: 
+msgid "Installed on Server"
+msgstr "Zainstalowane na serwerze"
+
+#: 
+msgid "Integrity"
+msgstr "Integralność"
+
+#: 
+msgid "Issues detected"
+msgstr "Wykryto problemy"
+
+#: 
+msgid "Loaded php.ini"
+msgstr "Załadowany php.ini"
+
+#: 
+msgid "Locale"
+msgstr "Ustawienia regionalne"
+
+#: 
+msgid "Max Execution Time"
+msgstr "Maksymalny czas wykonania"
+
+#: 
+msgid "Max POST Size"
+msgstr "Maksymalny rozmiar POST"
+
+#: 
+msgid "Max Upload Size"
+msgstr "Maksymalny rozmiar przesyłania"
+
+#: 
+msgid "Memory"
+msgstr "Pamięć"
+
+#: 
+msgid "Memory Limit"
+msgstr "Limit pamięci"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
+msgstr "Sprawdź skrzynkę odbiorcy, aby potwierdzić dostarczenie. Szukaj tematu:"
+
+#: 
+msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
+msgstr "OPcache nie jest włączone. Jego włączenie to niskokosztowy sposób na przyspieszenie ładowania stron PHP."
+
+#: 
+msgid "Off"
+msgstr "Wyłączone"
+
+#: 
+msgid "On"
+msgstr "Włączone"
+
+#: 
+msgid "Open the email debug tester"
+msgstr "Otwórz tester debugowania e-mail"
+
+#: 
+msgid "PHP Version"
+msgstr "Wersja PHP"
+
+#: 
+msgid "PHPMailer SMTP session"
+msgstr "Sesja SMTP PHPMailer"
+
+#: 
+msgid "Prerequisites"
+msgstr "Wymagania wstępne"
+
+#: 
+msgid "Review the SMTP debug log below for the handshake details, then adjust your settings."
+msgstr "Przejrzyj dziennik debugowania SMTP poniżej, aby sprawdzić szczegóły uzgadniania, a następnie dostosuj ustawienia."
+
+#: 
+msgid "SMTP Configuration"
+msgstr "Konfiguracja SMTP"
+
+#: 
+msgid "SMTP Debug Log"
+msgstr "Dziennik debugowania SMTP"
+
+#: 
+msgid "SMTP Host is not configured."
+msgstr "Host SMTP nie jest skonfigurowany."
+
+#: 
+msgid "SMTP configuration test — if this arrived, your setup works."
+msgstr "Test konfiguracji SMTP — jeśli ta wiadomość dotarła, Twoja konfiguracja działa."
+
+#: 
+msgid "Schema Version"
+msgstr "Wersja schematu"
+
+#: 
+msgid "Send Again"
+msgstr "Wyślij ponownie"
+
+#: 
+msgid "Send a test message to verify your SMTP configuration"
+msgstr "Wyślij testową wiadomość, aby zweryfikować konfigurację SMTP"
+
+#: 
+msgid "Server"
+msgstr "Serwer"
+
+#: 
+msgid "Server Version"
+msgstr "Wersja serwera"
+
+#: 
+msgid "Session Handler"
+msgstr "Obsługa sesji"
+
+#: 
+msgid "Session Save Path"
+msgstr "Ścieżka zapisu sesji"
+
+#: 
+msgid "Settings Valid"
+msgstr "Ustawienia prawidłowe"
+
+#: 
+msgid "Subject"
+msgstr "Temat"
+
+#: 
+msgid "Test"
+msgstr "Test"
+
+#: 
+msgid "Test email accepted by SMTP server"
+msgstr "Testowa wiadomość przyjęta przez serwer SMTP"
+
+#: 
+msgid "Test email failed to send"
+msgstr "Wysyłanie testowej wiadomości nie powiodło się"
+
+#: 
+msgid "This is a ChurchCRM test email."
+msgstr "To jest testowa wiadomość e-mail ChurchCRM."
+
+#: 
+msgid "Timeout"
+msgstr "Limit czasu"
+
+#: 
+msgid "Timezone"
+msgstr "Strefa czasowa"
+
+#: 
+msgid "Unable to list web server modules (non-Apache SAPI)."
+msgstr "Nie można wyświetlić listy modułów serwera WWW (SAPI inne niż Apache)."
+
+#: 
+msgid "Update Settings"
+msgstr "Zaktualizuj ustawienia"
+
+#: 
+msgid "View full photo"
+msgstr "Zobacz pełne zdjęcie"
+
+#: 
+msgid "page."
+msgstr "stronie."
+
+#: 
+msgid "user:"
+msgstr "użytkownik:"
+
+#: 
+msgid "1. Download the template"
+msgstr "1. Pobierz szablon"
+
+#: 
+msgid "2. Fill in your data"
+msgstr "2. Wypełnij swoje dane"
+
+#: 
+msgid "3. Upload and map"
+msgstr "3. Prześlij i zmapuj"
+
+#: 
+msgid "Add Recurring Event"
+msgstr "Dodaj wydarzenie cykliczne"
+
+#: 
+msgid "Available after the event is saved."
+msgstr "Dostępne po zapisaniu wydarzenia."
+
+#: 
+msgid "Boolean properties/fields accept yes / no / true / false / 1 / 0."
+msgstr "Właściwości/pola logiczne akceptują yes / no / true / false / 1 / 0."
+
+#: 
+msgid "ChurchCRM auto-matches each column by name. Anything it cannot match is marked as Unmapped — pick a field or leave it as Ignore."
+msgstr "ChurchCRM automatycznie dopasowuje każdą kolumnę według nazwy. Wszystko, czego nie może dopasować, jest oznaczone jako Niezmapowane — wybierz pole lub pozostaw jako Ignoruj."
+
+#: 
+msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
+msgstr "Nie można przetworzyć pliku CSV. Sprawdź, czy jest to prawidłowy plik z separatorem przecinkowym i wierszem nagłówkowym."
+
+#: 
+msgid "Custom field columns you have not configured are ignored — nothing is created on the fly."
+msgstr "Kolumny pól niestandardowych, których nie skonfigurowałeś, są ignorowane — nic nie jest tworzone automatycznie."
+
+#: 
+msgid "Custom fields and properties are supported"
+msgstr "Pola niestandardowe i właściwości są obsługiwane"
+
+#: 
+msgid "Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a month and day with no year."
+msgstr "Pola daty akceptują YYYY-MM-DD lub M/D/YYYY. Użyj 0000-MM-DD lub M/D dla miesiąca i dnia bez roku."
+
+#: 
+msgid "Each row is one person. People in the same family share a FamilyID. Leave columns blank when you have no value for them."
+msgstr "Każdy wiersz to jedna osoba. Osoby z tej samej rodziny mają ten sam FamilyID. Pozostaw kolumny puste, gdy nie masz dla nich wartości."
+
+#: 
+msgid "Event Timing"
+msgstr "Czas wydarzenia"
+
+#: 
+msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
+msgstr "Każde pasujące wystąpienie między Od i Do otrzyma własne wydarzenie z tym samym czasem początku/końca."
+
+#: 
+msgid "External calendar sharing is disabled"
+msgstr "Udostępnianie zewnętrznego kalendarza jest wyłączone"
+
+#: 
+msgid "Failed to load event editor. Please refresh and try again."
+msgstr "Nie można załadować edytora wydarzeń. Odśwież stronę i spróbuj ponownie."
+
+#: 
+msgid "Family Custom"
+msgstr "Pola niestandardowe rodziny"
+
+#: 
+msgid "Family Property"
+msgstr "Właściwość rodziny"
+
+#: 
+msgid "Fields"
+msgstr "Pola"
+
+#: 
+msgid "Go to home"
+msgstr "Przejdź do strony głównej"
+
+#: 
+msgid "Hide advanced options"
+msgstr "Ukryj opcje zaawansowane"
+
+#: 
+msgid "How the CSV Import Works"
+msgstr "Jak działa import CSV"
+
+#: 
+msgid "Imported from CSV"
+msgstr "Zaimportowano z CSV"
+
+#: 
+msgid "Invalid date format"
+msgstr "Nieprawidłowy format daty"
+
+#: 
+msgid "Loading event editor…"
+msgstr "Ładowanie edytora wydarzeń…"
+
+#: 
+msgid "No group"
+msgstr "Brak grupy"
+
+#: 
+msgid "Not pinned to any calendar"
+msgstr "Nieprzypięte do żadnego kalendarza"
+
+#: 
+msgid "Optional — sermon notes, materials, or other details copied to every generated event."
+msgstr "Opcjonalne — notatki do kazania, materiały lub inne szczegóły kopiowane do każdego wygenerowanego wydarzenia."
+
+#: 
+msgid "Person / Family"
+msgstr "Osoba / Rodzina"
+
+#: 
+msgid "Person Custom"
+msgstr "Pola niestandardowe osoby"
+
+#: 
+msgid "Person Property"
+msgstr "Właściwość osoby"
+
+#: 
+msgid "Show more options"
+msgstr "Pokaż więcej opcji"
+
+#: 
+msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
+msgstr "Link do kalendarza jest niekompletny. Sprawdź adres URL u osoby, która Ci go wysłała."
+
+#: 
+msgid "The church administrator has not enabled external calendar sharing. Please contact them if you believe this is in error."
+msgstr "Administrator parafii nie włączył udostępniania zewnętrznego kalendarza. Skontaktuj się z nim, jeśli uważasz, że to błąd."
+
+#: 
+msgid "The start or end date in the link could not be understood. Try the base calendar link without date parameters."
+msgstr "Nie można odczytać daty początku lub końca w linku. Spróbuj podstawowego linku do kalendarza bez parametrów daty."
+
+#: 
+msgid "The template already contains every column you can map — the core Person/Family fields plus each custom field and property your site defines."
+msgstr "Szablon zawiera już wszystkie kolumny, które możesz zmapować — podstawowe pola Osoby/Rodziny oraz każde pole niestandardowe i właściwość zdefiniowane w Twojej witrynie."
+
+#: 
+msgid "The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically."
+msgstr "Szablon zawiera już kolumnę dla każdego niestandardowego pola Osoby/Rodziny i dla każdej właściwości, którą zdefiniowałeś. Jeśli dodajesz kolumny ręcznie, użyj dokładnej nazwy pola niestandardowego lub właściwości jako nagłówka kolumny, a importer dopasuje ją automatycznie."
+
+#: 
+msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
+msgstr "Ten link do kalendarza jest nieprawidłowy lub został unieważniony. Poproś parafię o aktualny link."
+
+#: 
+msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
+msgstr "Łączy to wydarzenie z listą uczestników klasy lub posługi — używane w procesie meldowania przez kiosk."
+
+#: 
+msgid "Upload a CSV to create families and people in bulk."
+msgstr "Prześlij plik CSV, aby masowo tworzyć rodziny i osoby."
+
+#: 
+msgid "Volunteer-entered headcounts, broken down by category."
+msgstr "Liczba osób wprowadzona przez wolontariuszy, z podziałem na kategorie."
+
+#: 
+msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
+msgstr "Twój plik CSV ma zduplikowane nazwy kolumn. Zmień nazwy zduplikowanych kolumn (np. dodaj \"(2)\" do drugiej) i prześlij ponownie."
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "Czy na pewno chcesz trwale usunąć ten darowany przedmiot?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "Czy na pewno chcesz trwale usunąć ten numer licytacyjny?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Usuń darowany przedmiot"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Usuń numer licytacyjny"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Nieprawidłowy token bezpieczeństwa. Spróbuj ponownie."
+
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "Dodaje dni wolne do głównego kalendarza. Każdy wybrany kraj staje się osobnym, przełączalnym kalendarzem na pasku bocznym."
+
+#: 
+msgid "Choose map provider"
+msgstr "Wybierz dostawcę map"
+
+#: 
+msgid "Current database"
+msgstr "Aktualna baza danych"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "Dane demonstracyjne są zazwyczaj ładowane tylko przy nowych instalacjach. Import teraz doda przykładowe rekordy obok istniejących danych i może tworzyć duplikaty."
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "Każdy kraj tworzy własny wiersz kalendarza na pasku bocznym. Użyj przełącznika, aby tymczasowo ukryć kraj bez zmiany ustawień wtyczki."
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "Filtrowanie według kategorii"
+
+#: 
+msgid "Holiday Settings"
+msgstr "Ustawienia dni wolnych"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "Dni wolne (%s)"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "Dni wolne są oznaczane według typu: Urzędowe, Obchody, Dni bankowe, Sezonowe i Religijne. Pozostaw wszystkie kategorie niezaznaczone, aby wyświetlić wszystkie święta, lub wybierz określone typy."
+
+#: 
+msgid "Import demo data anyway"
+msgstr "Importuj dane demonstracyjne mimo to"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "Brak identyfikatora zobowiązania finansowego."
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "Nie wybrano żadnego kraju. Wybierz co najmniej jeden kraj w ustawieniach wtyczki Kalendarze świąt."
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "Brak pasujących wpisów dla wybranych filtrów."
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "Otwórz w Apple Maps"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "Otwórz w Google Maps"
+
+#: 
+msgid "Open in new tab"
+msgstr "Otwórz w nowej karcie"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "Konfigurowanie krajów"
+
+#: 
+msgid "Show all"
+msgstr "Pokaż wszystkie"
+
+#: 
+msgid "Show:"
+msgstr "Pokaż:"
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "Pokazywanie i ukrywanie poszczególnych krajów"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "Szwedzki"
+
+#: 
+msgid "System"
+msgstr "System"
+
+#: 
+msgid "Timeline filters"
+msgstr "Filtry osi czasu"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "Aby zacząć od czystej bazy danych, użyj opcji Resetuj bazę danych w Panelu administratora przed importem danych demonstracyjnych."
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "Użyj selektora Krajów, aby wybrać jeden lub więcej krajów. Każdy dodany kraj pojawi się jako osobny wpis kalendarza na pasku bocznym."
+
+#: 
+msgid "Your database already contains data"
+msgstr "Twoja baza danych zawiera już dane"
+
+#: 
+msgid "people"
+msgstr "osoby"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "Adres URL pobierania jest wymagany do zainstalowania wtyczki."
+
+#: 
+msgid "All three fields are required."
+msgstr "Wszystkie trzy pola są wymagane."
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "Zatwierdzone wtyczki społeczności"
+
+#: 
+msgid "Browse Approved"
+msgstr "Przeglądaj zatwierdzone"
+
+#: 
+msgid "Check for Updates"
+msgstr "Sprawdź aktualizacje"
+
+#: 
+msgid "Checking…"
+msgstr "Sprawdzanie…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "Wyczyść kwarantannę"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "Wyczyść kwarantannę dopiero po naprawieniu problemu. Serwer odmówi włączenia wtyczki poddanej kwarantannie."
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "Kliknij \"Przeglądaj zatwierdzone\" powyżej, aby zainstalować zweryfikowaną wtyczkę, lub \"Zainstaluj z URL\" dla niezweryfikowanej wersji."
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "Nie udało się wyczyścić kwarantanny wtyczki"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "Nie udało się wyczyścić kwarantanny"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "Nie udało się zainstalować wtyczki"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "Nie udało się zainstalować wtyczki z URL"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "Nie udało się załadować listy zatwierdzonych wtyczek"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "Nie udało się załadować listy zatwierdzonych wtyczek."
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "Nie udało się odświeżyć rejestru wtyczek"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "Nie udało się odświeżyć rejestru wtyczek. Sprawdź połączenie z internetem."
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "Nie udało się odinstalować wtyczki"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "Pobieranie najnowszego rejestru…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "Pobierz to od autora wtyczki. Instalator odmówi pobierania, jeśli nie będzie zgodne bajt po bajcie."
+
+#: 
+msgid "Homepage"
+msgstr "Strona główna"
+
+#: 
+msgid "Install"
+msgstr "Zainstaluj"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "Zainstaluj wtyczkę z URL (niezweryfikowana)"
+
+#: 
+msgid "Install Unverified"
+msgstr "Zainstaluj niezweryfikowaną"
+
+#: 
+msgid "Install failed"
+msgstr "Instalacja nie powiodła się"
+
+#: 
+msgid "Install from URL"
+msgstr "Zainstaluj z URL"
+
+#: 
+msgid "Installing…"
+msgstr "Instalowanie…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "Format kebab-case. Musi być zgodny z nazwą katalogu najwyższego poziomu w pliku zip i identyfikatorem w plugin.json."
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "Ładowanie listy zatwierdzonych wtyczek…"
+
+#: 
+msgid "Loading…"
+msgstr "Ładowanie…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "Pasuje do wpisu na liście zatwierdzonych wtyczek"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "Musi być niezmiennym adresem URL wydania udostępnionym przez HTTPS."
+
+#: 
+msgid "Plugin id"
+msgstr "Identyfikator wtyczki"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "Wtyczka zainstalowana jako NIEZWERYFIKOWANA. Dokładnie przejrzyj wyodrębnione pliki przed włączeniem."
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "Wtyczka zainstalowana. Przejrzyj ją i kliknij Włącz, aby aktywować."
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "Kwarantanna wtyczki wyczyszczona. Możesz teraz ponownie włączyć wtyczkę."
+
+#: 
+msgid "Plugin quarantined"
+msgstr "Wtyczka poddana kwarantannie"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "Rejestr wtyczek odświeżony."
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "Wtyczka odinstalowana"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "Wtyczka odinstalowana."
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "URL pliku zip wtyczki (tylko HTTPS)"
+
+#: 
+msgid "Quarantined"
+msgstr "W kwarantannie"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "Przejrzyj pliki wtyczki na dysku przed włączeniem. Niezweryfikowane wtyczki działają z tymi samymi uprawnieniami co zatwierdzone."
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "Suma kontrolna SHA-256"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "SHA-256 musi być 64-znakowym ciągiem szesnastkowym."
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "Opiekunowie ChurchCRM nie dokonali przeglądu tej wtyczki. Jesteś odpowiedzialny za bezpieczeństwo wszystkiego, co instalujesz. Gdy to możliwe, korzystaj z opcji Przeglądaj zatwierdzone."
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "Lista zatwierdzonych wtyczek jest pusta. Nie ma jeszcze dostępnych wtyczek firm trzecich przez zweryfikowany instalator."
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "Wtyczka została automatycznie wyłączona po błędzie podczas działania."
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "Te wtyczki zostały przejrzane i zatwierdzone przez opiekunów ChurchCRM. Kliknij Zainstaluj, aby pobrać i zainstalować — wtyczka nie zostanie włączona automatycznie."
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "Ta wtyczka nie znajduje się na liście zatwierdzonych wtyczek ChurchCRM."
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "Ta wtyczka zostanie zainstalowana jako NIEZWERYFIKOWANA."
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "URL musi używać HTTPS."
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "Odinstaluj (usuń z dysku)"
+
+#: 
+msgid "Unverified plugin"
+msgstr "Niezweryfikowana wtyczka"
+
+#: 
+msgid "Verified"
+msgstr "Zweryfikowana"
+
+#: 
+msgid "What this plugin does:"
+msgstr "Co robi ta wtyczka:"
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "downloadUrl, sha256 i pluginId są wymagane dla niezweryfikowanych instalacji."
+
+#: 
+msgid "risk"
+msgstr "ryzyko"
+
+#: 
+msgid "Name cannot be empty"
+msgstr "Nazwa nie może być pusta"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "Nazwa nie może być dłuższa niż %d znaków"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "Potrzebujesz pomocy? Skontaktuj się z nami"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "Nie wybrano kalendarza — to wydarzenie pojawi się w kalendarzu systemowym \"Nieprzypięte wydarzenia\", dopóki go nie przypniesz."
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "Otwiera 2-minutowe okno rejestracji urządzeń pod adresem:"
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "Godziny używają czasu kościoła ({{church}}), nie czasu przeglądarki ({{browser}})."
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "Witamy — zaloguj się, aby zarządzać swoją parafią"
 

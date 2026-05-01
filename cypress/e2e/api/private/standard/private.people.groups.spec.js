@@ -95,7 +95,6 @@ describe("API Private Group Operations", () => {
         });
 
         it("Add new role to group", () => {
-            // Test adding a new role to a group
             const roleNameUnique = "TestRole" + Date.now();
             cy.makePrivateAdminAPICall(
                 "POST",
@@ -103,14 +102,10 @@ describe("API Private Group Operations", () => {
                 {
                     roleName: roleNameUnique,
                 },
-                [200, 500]
+                200
             ).then((resp) => {
-                // These endpoints are known to return 500 due to middleware ordering issue
-                // We're testing that the endpoint exists and can be called
-                if (resp.status === 200) {
-                    expect(resp.body).to.exist;
-                    expect(resp.body).to.have.property("newRole");
-                }
+                expect(resp.body).to.exist;
+                expect(resp.body).to.have.property("newRole");
             });
         });
 
@@ -140,32 +135,39 @@ describe("API Private Group Operations", () => {
         });
 
         it("Delete group role", () => {
-            // Test deleting a role from a group
-            // Using a non-existent role ID to avoid deleting important roles
+            // Create a temporary role first so we have a real ID to delete.
+            // Deleting a non-existent role ID against a single-role group throws
+            // "only group" guard → 500. Create-then-delete is the correct pattern.
+            const tempRoleName = "TempRoleToDelete" + Date.now();
             cy.makePrivateAdminAPICall(
-                "DELETE",
-                `/api/groups/${groupID}/roles/999`,
-                null,
-                [200, 400, 422, 500]
-            );
+                "POST",
+                `/api/groups/${groupID}/roles`,
+                { roleName: tempRoleName },
+                200
+            ).then((resp) => {
+                const roleId = resp.body.newRole.roleID;
+                cy.makePrivateAdminAPICall(
+                    "DELETE",
+                    `/api/groups/${groupID}/roles/${roleId}`,
+                    null,
+                    200
+                );
+            });
         });
     });
 
     describe("Group Properties Operations", () => {
         it("Toggle group-specific properties status", () => {
-            // Test setting group-specific property status
             cy.makePrivateAdminAPICall(
                 "POST",
                 `/api/groups/${groupID}/setGroupSpecificPropertyStatus`,
                 {
                     GroupSpecificPropertyStatus: true,
                 },
-                [200, 500]
+                200
             ).then((resp) => {
-                if (resp.status === 200) {
-                    expect(resp.body).to.exist;
-                    expect(resp.body).to.have.property("status");
-                }
+                expect(resp.body).to.exist;
+                expect(resp.body).to.have.property("status");
             });
         });
 

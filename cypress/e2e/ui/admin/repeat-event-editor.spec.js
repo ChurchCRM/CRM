@@ -9,8 +9,16 @@ describe('Repeat Event Editor', () => {
         cy.visit('/event/repeat-editor');
         cy.contains('Create Repeat Events').should('exist');
         cy.contains('Event Template').should('exist');
+        cy.contains('Event Timing').should('exist');
         cy.contains('Recurrence Pattern').should('exist');
-        cy.contains('Date Range').should('exist');
+        // Event Timing card now includes the date range fields that used
+        // to live in a separate "Date Range" card.
+        cy.get('#RangeStart').should('exist');
+        cy.get('#RangeEnd').should('exist');
+        // Parity with the unified editor: Description + Additional
+        // Information Quill fields are both present.
+        cy.get('#EventDesc .ql-editor').should('exist');
+        cy.get('#EventText .ql-editor').should('exist');
     });
 
     it('should pre-fill event type when navigating with type ID', () => {
@@ -80,6 +88,60 @@ describe('Repeat Event Editor', () => {
             cy.get('button[name="CreateRepeat"]').click();
 
             cy.url().should('include', '/event/dashboard');
+        });
+    });
+
+    /**
+     * Parity regression: Additional Information (Quill #EventText) is a
+     * new field on the repeat editor — matches the unified event editor's
+     * "Additional Information" field. Types content into both Quill
+     * editors, submits, then asserts the generated events come back from
+     * /api/events carrying both Desc and Text bodies.
+     */
+    it('propagates Description + Additional Information to generated events', () => {
+        cy.visit('/event/types');
+        cy.get('#eventTypesTable tbody tr').first().find('a').first().invoke('attr', 'href').then((href) => {
+            const typeId = href.split('/').pop();
+            cy.visit('/event/repeat-editor/' + typeId);
+
+            const uniqueTitle = 'AdditionalInfoRepeat' + Date.now();
+            const descBody = 'Weekly description body for Quill';
+            const textBody = 'Sermon notes body for Quill';
+
+            cy.get('input[name="EventTitle"]').clear().type(uniqueTitle);
+            cy.get('#StartTime').clear().type('09:00');
+            cy.get('#EndTime').clear().type('10:00');
+
+            // The shared helper populates Quill through the global registry
+            // (window.quillEditors[editorId]) so the hidden input captures
+            // its HTML on form submit.
+            cy.typeInQuill('EventDesc', descBody);
+            cy.typeInQuill('EventText', textBody);
+
+            cy.get('#recurWeekly').check();
+            cy.get('#RecurDOW').select('Sunday');
+
+            const today = new Date();
+            const oneWeek = new Date(today);
+            oneWeek.setDate(today.getDate() + 7);
+            const formatDate = (d) => d.toISOString().slice(0, 10);
+            cy.get('#RangeStart').clear().type(formatDate(today));
+            cy.get('#RangeEnd').clear().type(formatDate(oneWeek));
+
+            cy.get('button[name="CreateRepeat"]').click();
+            cy.url().should('include', '/event/dashboard');
+
+            // Confirm persistence: at least one generated event has both
+            // the description AND the additional-information body from
+            // the repeat template.
+            cy.request('/api/events').then((response) => {
+                const events = response.body.Events || response.body;
+                const arr = Array.isArray(events) ? events : Object.values(events);
+                const match = arr.find((e) => e.Title === uniqueTitle);
+                expect(match, 'generated event should exist').to.exist;
+                expect(match.Desc).to.include(descBody);
+                expect(match.Text).to.include(textBody);
+            });
         });
     });
 

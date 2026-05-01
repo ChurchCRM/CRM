@@ -667,10 +667,6 @@ msgid "Save Changes"
 msgstr "Spara ändringar"
 
 #: 
-msgid "Church Event Editor"
-msgstr "Kyrkans evenemang redigeringsverktyg"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Redigera evenemangtyp"
 
@@ -737,21 +733,9 @@ msgid "Create Event"
 msgstr "Skapa händelse"
 
 #: 
-msgid "Create a new Event"
-msgstr "Skapa en ny händelse"
-
-#: 
-msgid "Select your event type"
-msgstr "Välj din händelsetyp"
-
-#: 
 #, fuzzy
 msgid "Event Status"
 msgstr "Evenemangsstatus"
-
-#: 
-msgid "Return to Events"
-msgstr "Återgå till händelser"
 
 #: 
 msgid "Sundays"
@@ -1211,10 +1195,6 @@ msgid "Summary Data"
 msgstr "Sammanfattning information"
 
 #: 
-msgid "CSV"
-msgstr "CSV"
-
-#: 
 msgid "Back"
 msgstr "Tillbaka"
 
@@ -1347,10 +1327,6 @@ msgstr "Filformat"
 #: 
 msgid "GPS Visualizer"
 msgstr "GPS Visning"
-
-#: 
-msgid "Street Atlas USA"
-msgstr "Gata karta av USA"
 
 #: 
 #, fuzzy
@@ -2434,26 +2410,6 @@ msgstr "Nummer för stor.  Måste vara mellan -2147483648 och 2147483647"
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Pengar summa för stor.  Maximalla är 999999999.99"
 
-#: 
-msgid " Bold Italic"
-msgstr " Fet kursiv"
-
-#: 
-msgid " Italic"
-msgstr " Kursiv"
-
-#: 
-msgid " Bold"
-msgstr " Fet"
-
-#: 
-msgid "Error making API Call to"
-msgstr "Fel vid API-anrop till"
-
-#: 
-msgid "Error text"
-msgstr "Feltext"
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -3162,10 +3118,6 @@ msgstr "QuickBooks Sätt in biljettinställningar"
 #: 
 msgid "Add Church Event"
 msgstr "Lägg till kyrkans evenemang"
-
-#: 
-msgid "List Event Types"
-msgstr "Lista händelsetyper"
 
 #: 
 msgid "Check-in and Check-out"
@@ -4730,11 +4682,6 @@ msgstr "ryska"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "Samiska (norra) (Sverige)"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "albanska"
 
@@ -5019,10 +4966,6 @@ msgid "Notification for"
 msgstr "Meddelande om"
 
 #: 
-msgid "ERROR"
-msgstr "FEL"
-
-#: 
 msgid "Title FirstName MiddleName LastName"
 msgstr "Titel Förnamn Mellannamn Efternamn"
 
@@ -5187,7 +5130,8 @@ msgid "Indonesian - Indonesia"
 msgstr "Indonesiska - Indonesien"
 
 #: 
-msgid "records(s) successfully added to selected Group."
+#, fuzzy
+msgid "record(s) successfully added to selected Group."
 msgstr "poster har lagts till den valda gruppen."
 
 #: 
@@ -5217,10 +5161,6 @@ msgstr "Ny familj tillagd"
 #: 
 msgid "Church Greeter"
 msgstr "Church Greeter"
-
-#: 
-msgid "External Calendar API is disabled"
-msgstr "Extern kalender-API är inaktiverad"
 
 #: 
 msgid "Special Group Settings : Sunday School Type"
@@ -5499,7 +5439,8 @@ msgid "Remove All from Cart"
 msgstr "Ta bort allt från kundvagnen"
 
 #: 
-msgid "records(s) successfully deleted from the selected Group."
+#, fuzzy
+msgid "record(s) successfully deleted from the selected Group."
 msgstr "poster raderas framgångsrikt från den valda gruppen."
 
 #: 
@@ -5649,16 +5590,8 @@ msgid "Missing calendar access token"
 msgstr "Saknar kalenderåtkomsttoken"
 
 #: 
-msgid "Calendar access token not found"
-msgstr "Kalenderåtkomsttoken hittades inte"
-
-#: 
 msgid "User must have Delete Records permission"
 msgstr "Användaren måste ha tillåtelse att ta bort poster"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "ChurchCRM Central Notifications URL"
 
 #: 
 msgid "invalid event type id"
@@ -5737,10 +5670,6 @@ msgstr "Ogiltigt landnamn angav"
 #: 
 msgid "LastName FirstName"
 msgstr "Efternamn förnamn"
-
-#: 
-msgid "Holidays"
-msgstr "Högtider"
 
 #: 
 msgid "Person Name"
@@ -5925,10 +5854,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugisiska - Portugal"
 
 #: 
-msgid "Holiday"
-msgstr "Semester"
-
-#: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Ange applikationsnamnet som ska visas i autentiseringsapp"
 
@@ -5988,10 +5913,6 @@ msgstr "Inget e-postmeddelande har skickats in"
 #: 
 msgid "Mailchimp is not active"
 msgstr "Mailchimp är inte aktivt"
-
-#: 
-msgid "Mailchimp"
-msgstr "MailChimp"
 
 #: 
 msgid "Lists"
@@ -6077,10 +5998,6 @@ msgstr "Text"
 #: 
 msgid "Event Description"
 msgstr "Händelsebeskrivning"
-
-#: 
-msgid "Help translate this project"
-msgstr "Hjälpa till att översätta detta projekt"
 
 #. Context: locales
 #: 
@@ -6998,7 +6915,8 @@ msgid "Total Payments"
 msgstr "Totala betalningar"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payments?"
 msgstr "betalning(ar)?"
 
 #: 
@@ -7012,10 +6930,6 @@ msgstr "Bas-URL"
 #: 
 msgid "Copy"
 msgstr "Kopiera"
-
-#: 
-msgid "DSN"
-msgstr "DSN"
 
 #: 
 msgid "Debug Info"
@@ -7078,20 +6992,8 @@ msgid "SMTP Host"
 msgstr "SMTP-värd"
 
 #: 
-msgid "Software"
-msgstr "Programvara"
-
-#: 
-msgid "System & Configuration"
-msgstr "System & Konfiguration"
-
-#: 
 msgid "Tip:"
 msgstr "Tips:"
-
-#: 
-msgid "Valid Settings"
-msgstr "Giltiga inställningar"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7152,10 +7054,6 @@ msgid "Attendance Count Categories"
 msgstr "Kategorier för närvaroräkning"
 
 #: 
-msgid "Attendance Notes"
-msgstr "Närvaroanteckningar"
-
-#: 
 msgid "Change Event"
 msgstr "Ändra händelse"
 
@@ -7211,14 +7109,6 @@ msgstr "Radera händelse"
 msgid "Edit Event"
 msgstr "Redigera händelse"
 
-#: 
-msgid "Editing Event"
-msgstr "Redigerar händelse"
-
-#: 
-msgid "Enter event title..."
-msgstr "Ange händelsetitel..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7269,14 +7159,6 @@ msgid "None (one-time event)"
 msgstr "Ingen (engångshändelse)"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "Valfritt - Lägg till predikoanteckningar eller ytterligare händelsedetaljer"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "Valfria anteckningar om närvaro..."
-
-#: 
 msgid "People Checked In"
 msgstr "Incheckade personer"
 
@@ -7311,10 +7193,6 @@ msgstr "Sök efter handledare..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "Välj händelse för incheckning"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "Prediko- / händelsetext"
 
 #: 
 msgid "Unclassified"
@@ -8107,10 +7985,6 @@ msgid "Orphaned Files:"
 msgstr "Föräldralösa filer:"
 
 #: 
-msgid "PDF/CSV"
-msgstr "PDF/CSV"
-
-#: 
 msgid "Payment"
 msgstr "Betalning"
 
@@ -8347,10 +8221,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "Bas-URL är inte konfigurerad i Config.php"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "Språk som stöds av ChurchCRM"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "Anslut till din server via SSH, FTP eller din värdkontrollpanel"
 
@@ -8397,10 +8267,6 @@ msgstr "Språk"
 #: 
 msgid "Local development:"
 msgstr "Lokal utveckling:"
-
-#: 
-msgid "Locale Support"
-msgstr "Språkstöd"
 
 #: 
 msgid "Location & Contact Information"
@@ -8569,10 +8435,6 @@ msgstr "Skicka verifiering"
 #: 
 msgid "Thank You!"
 msgstr "Tack!"
-
-#: 
-msgid "Translation incomplete"
-msgstr "Översättning ofullständig"
 
 #: 
 msgid "Visit Our Website"
@@ -9223,10 +9085,6 @@ msgid "Failed to save the downloaded release file. Please check disk space and p
 msgstr "Det gick inte att spara den nedladdade versionsfilen. Kontrollera diskutrymme och behörigheter."
 
 #: 
-msgid "Invalid date format in start parameter"
-msgstr "Ogiltigt datumformat i startparameter"
-
-#: 
 msgid "Mismatch"
 msgstr "Konflikt"
 
@@ -9625,10 +9483,6 @@ msgid "Important"
 msgstr "Viktigt"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "Installera plugin-program genom att placera dem i"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "Ogiltig kod. Försök igen."
 
@@ -9687,10 +9541,6 @@ msgstr "Länken hittades inte"
 #: 
 msgid "Loading recovery codes"
 msgstr "Laddar återställningskoder"
-
-#: 
-msgid "MailChimp"
-msgstr "MailChimp"
 
 #: 
 msgid "MailChimp API Key"
@@ -10804,10 +10654,6 @@ msgid "CSV Column"
 msgstr "CSV-kolumn"
 
 #: 
-msgid "CSV template not found"
-msgstr "CSV-mall hittades inte"
-
-#: 
 msgid "Call"
 msgstr "Ring"
 
@@ -10884,10 +10730,6 @@ msgid "Community Management Platform"
 msgstr "Plattform för gemenskapshantering"
 
 #: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "Kompatibel med Excel, Google Sheets eller valfri CSV-export."
-
-#: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
 msgstr "Slutför dessa i valfri ordning för att förbereda ChurchCRM för din församling."
 
@@ -10914,10 +10756,6 @@ msgstr "Anslut en SMTP-server så att ChurchCRM kan skicka e-post"
 #: 
 msgid "Connect with others"
 msgstr "Håll kontakten med andra"
-
-#: 
-msgid "Contact us"
-msgstr "Kontakta oss"
 
 #: 
 msgid "Convert individual records into family units"
@@ -11060,10 +10898,6 @@ msgid "Download CSV Template"
 msgstr "Ladda ner CSV-mall"
 
 #: 
-msgid "Download the template to see the expected column format."
-msgstr "Ladda ner mallen för att se det förväntade kolumnformatet."
-
-#: 
 msgid "Drag and drop your CSV file here"
 msgstr "Dra och släpp din CSV-fil här"
 
@@ -11074,10 +10908,6 @@ msgstr "Dubbletter"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Varje person kan ha sin egen e-post och sitt eget mobilnummer."
-
-#: 
-msgid "Each row is one person. Members of the same family share a FamilyID."
-msgstr "Varje rad är en person. Medlemmar i samma familj delar ett FamilyID."
 
 #: 
 msgid "Easy registration"
@@ -11610,10 +11440,6 @@ msgstr "Namnändringar kräver sparande. Omordning och borttagning i åtgärdsme
 #: 
 msgid "Name, address, contact details"
 msgstr "Namn, adress, kontaktuppgifter"
-
-#: 
-msgid "Need help?"
-msgstr "Behöver du hjälp?"
 
 #: 
 msgid "New"
@@ -12162,10 +11988,6 @@ msgid "Upload CSV"
 msgstr "Ladda upp CSV"
 
 #: 
-msgid "Upload a CSV file to import families and people into ChurchCRM."
-msgstr "Ladda upp en CSV-fil för att importera familjer och personer till ChurchCRM."
-
-#: 
 msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
 msgstr "Ladda upp en CSV från Excel, Google Sheets eller ditt tidigare församlingshanteringssystem och mappa kolumner till ChurchCRM-fält."
 
@@ -12388,10 +12210,6 @@ msgstr "medlemmar"
 #: 
 msgid "opportunities"
 msgstr "möjligheter"
-
-#: 
-msgid "options"
-msgstr "alternativ"
 
 #: 
 msgid "or connect an external service"
@@ -12628,10 +12446,6 @@ msgstr "Registrera och hantera kioskenheter för evenemangsregistrering"
 #: 
 msgid "Review & Delete"
 msgstr "Granska och ta bort"
-
-#: 
-msgid "SHA1 Hash"
-msgstr "SHA1-hash"
 
 #: 
 msgid "Signature Mismatch"
@@ -14572,10 +14386,6 @@ msgstr[0] "%d återkommande händelse skapades."
 msgstr[1] "%d återkommande händelser skapades."
 
 #: 
-msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
-msgstr "(t.ex. Medlemmar, Besökare, Barn) så att volontärer kan registrera antal närvaro här."
-
-#: 
 msgid "1. Sunday School Class"
 msgstr "1. Söndagsskoleklass"
 
@@ -14596,10 +14406,6 @@ msgid "A class is a Group with type \"Sunday School\". It holds the students and
 msgstr "En klass är en Grupp med typen \"Söndagsskola\". Den innehåller elever och lärare (medlemmar med roller)."
 
 #: 
-msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
-msgstr "En länkad grupp kopplar denna händelse till en klass eller tjänsts deltagarlista. När händelsen tilldelas en kiosk hämtar kiosken gruppmedlemmarna och visar dem som en tryck-för-incheckning-lista. För söndagsskoleklasser, länka klassgruppen här så att volontärer kan checka in elever från en surfplatta."
-
-#: 
 msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
 msgstr "Ett specifikt tillfälle (t.ex. \"Förskola — 12 apr\"). Ärver standardinställningar från typen och är kopplat till klassgruppen via publiken. Det är mot detta som volontärer registrerar närvaro."
 
@@ -14610,10 +14416,6 @@ msgstr "En surfplatta tilldelad en händelse. Kiosken hämtar händelsens länka
 #: 
 msgid "Add Walk-in / Visitor"
 msgstr "Lägg till inkommande / besökare"
-
-#: 
-msgid "Add categories on the Event Type page"
-msgstr "Lägg till kategorier på sidan Händelsetyp"
 
 #: 
 msgid "Add people to your cart first, then come back to check them in to an event."
@@ -14662,10 +14464,6 @@ msgstr "Granskning"
 #: 
 msgid "Audit Events"
 msgstr "Händelsegranskning"
-
-#: 
-msgid "Auto-totalled from counts at right"
-msgstr "Summeras automatiskt från räkningarna till höger"
 
 #: 
 msgid "Back to Events"
@@ -14792,10 +14590,6 @@ msgid "Database dump only (.sql)"
 msgstr "Enbart databasdump (.sql)"
 
 #: 
-msgid "Date Range"
-msgstr "Datumintervall"
-
-#: 
 msgid "Date range cannot exceed 1 year"
 msgstr "Datumintervallet får inte överstiga 1 år"
 
@@ -14876,10 +14670,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "Händelsen skapades. Omdirigerar till incheckning..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "Händelsens slutdatum/-tid måste vara på eller efter startdatum/-tid."
-
-#: 
 msgid "Event title is required."
 msgstr "Händelsetitel krävs."
 
@@ -14906,10 +14696,6 @@ msgstr "Händelsetypen har inget upprepningsmönster konfigurerat"
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "Händelsetypen har ingen giltig månadsdag konfigurerad för månadsvis upprepning"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "Händelser skapas för varje matchande tillfälle inom detta datumintervall."
 
 #: 
 msgid "Every month on the"
@@ -14960,10 +14746,6 @@ msgid "Group Roster"
 msgstr "Grupplista"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "Dölj avancerade alternativ"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Hur söndagsskola + händelser + kiosker hör ihop"
 
@@ -14974,10 +14756,6 @@ msgstr "Ogiltigt datum för %s — förväntat YYYY-MM-DD"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Ogiltigt datumformat för rangeStart eller rangeEnd"
-
-#: 
-msgid "Invalid date format."
-msgstr "Ogiltigt datumformat."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -15032,10 +14810,6 @@ msgid "No active events found."
 msgstr "Inga aktiva händelser hittades."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "Inga nährvaroräkningskategorier har definierats för denna händelsetyp ännu."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "Ingen har checkats in till denna händelse ännu."
 
@@ -15076,10 +14850,6 @@ msgid "Please select a person to check in."
 msgstr "Välj en person att checka in."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "Förifyllt baserat på denna händelsetyp — för återkommande typer är datumet nästa tillfälle efter den senaste händelsen av denna typ, och tiden matchar typens standard starttid."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "Intervallets slutdatum måste vara på eller efter intervallets startdatum."
 
@@ -15108,10 +14878,6 @@ msgid "Recommended"
 msgstr "Rekommenderas"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "Krävs för kiosk"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "Återställning kommer permanent att ta bort:"
 
@@ -15130,14 +14896,6 @@ msgstr "Spara ändringar av detta kategorinamn"
 #: 
 msgid "Select an event type…"
 msgstr "Välj en händelsetyp…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "Välj start- och slutdatum/-tid."
-
-#: 
-msgid "Show More Options"
-msgstr "Visa fler alternativ"
 
 #: 
 msgid "Skip"
@@ -15180,16 +14938,8 @@ msgid "The Events module is disabled"
 msgstr "Händelsemodulen är inaktiverad"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "Samma start- och sluttid används för alla genererade händelser."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "Det finns inga händelser schemalagda för idag"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "Det här är räkningskategorier — volontärer fyller i dem efter händelsen så att instrumentpanelen kan dela upp närvaron (t.ex. hur många medlemmar jämfört med besökare). De är separata från individuella incheckningar på incheckningssidan."
 
 #: 
 msgid "This event is inactive."
@@ -15244,16 +14994,8 @@ msgid "View Event"
 msgstr "Visa händelse"
 
 #: 
-msgid "What are these for?"
-msgstr "Vad används dessa till?"
-
-#: 
 msgid "What does this find?"
 msgstr "Vad hittar detta?"
-
-#: 
-msgid "What is this for?"
-msgstr "Vad används detta till?"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15516,8 +15258,8 @@ msgid "No active event assignment"
 msgstr "Ingen aktiv händelsetilldelning"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "Öppnar ett 30-sekunders fönster för enheter att registrera sig på:"
+msgid "Online"
+msgstr "Online"
 
 #: 
 msgid "Pending"
@@ -15636,14 +15378,6 @@ msgid "Set up Email"
 msgstr "Konfigurera e-post"
 
 #: 
-msgid "Test SMTP Email"
-msgstr "Testa SMTP-e-post"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "Det här är ett ChurchCRM-testmeddelande som bekräftar att din SMTP-konfiguration fungerar."
-
-#: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."
 msgstr "Det gick inte att kopiera till urklipp. Kopiera koderna manuellt."
 
@@ -15658,4 +15392,856 @@ msgstr "Använd en återställningskod istället"
 #: 
 msgid "Use authenticator app instead"
 msgstr "Använd autentiseringsapp istället"
+
+#: 
+msgid "%d modules loaded"
+msgstr "%d moduler laddade"
+
+#: 
+msgid "(PHP default)"
+msgstr "(PHP-standard)"
+
+#: 
+msgid "(none)"
+msgstr "(ingen)"
+
+#: 
+msgid "(not set)"
+msgstr "(ej angett)"
+
+#: 
+msgid "All checks passing"
+msgstr "Alla kontroller godkända"
+
+#: 
+msgid "App"
+msgstr "App"
+
+#: 
+msgid "Browser time zone differs:"
+msgstr "Webbläsarens tidszon skiljer sig:"
+
+#: 
+msgid "Calendar time zone:"
+msgstr "Kalenderns tidszon:"
+
+#: 
+msgid "Cannot send test email"
+msgstr "Kan inte skicka testmejl"
+
+#: 
+msgid "Charset"
+msgstr "Teckenuppsättning"
+
+#: 
+msgid "Church Email address is not set — the test email has nowhere to go."
+msgstr "Kyrkans e-postadress är inte angiven — testmejlet har ingen mottagare."
+
+#: 
+msgid "Church email — configured on the"
+msgstr "Kyrkans e-post — konfigurerad på"
+
+#: 
+msgid "ChurchCRM Test Email"
+msgstr "ChurchCRM testmejl"
+
+#: 
+msgid "Collation"
+msgstr "Sorteringsordning"
+
+#: 
+msgid "Connection"
+msgstr "Anslutning"
+
+#: 
+msgid "Database"
+msgstr "Databas"
+
+#: 
+msgid "Delivery"
+msgstr "Leverans"
+
+#: 
+msgid "Disk (Images Root)"
+msgstr "Disk (bildrotmapp)"
+
+#: 
+msgid "Display Errors"
+msgstr "Visa fel"
+
+#: 
+msgid "Email Debug"
+msgstr "E-postfelsökning"
+
+#: 
+msgid "Environment"
+msgstr "Miljö"
+
+#: 
+msgid "Error Log"
+msgstr "Fellogg"
+
+#: 
+msgid "Error Reporting"
+msgstr "Felrapportering"
+
+#: 
+msgid "Fix Settings"
+msgstr "Åtgärda inställningar"
+
+#: 
+msgid "Hit Rate"
+msgstr "Träffrekvens"
+
+#: 
+msgid "Host"
+msgstr "Värd"
+
+#: 
+msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
+msgstr "Om meddelandet inte anländer inom några minuter, kontrollera skräppostmappen och SMTP-felsökningsloggen nedan."
+
+#: 
+msgid "If you can read this message in your inbox, your SMTP configuration is working correctly."
+msgstr "Om du kan läsa detta meddelande i din inkorg fungerar din SMTP-konfiguration korrekt."
+
+#: 
+msgid "Incomplete"
+msgstr "Ofullständig"
+
+#: 
+msgid "Installed on Server"
+msgstr "Installerat på servern"
+
+#: 
+msgid "Integrity"
+msgstr "Integritet"
+
+#: 
+msgid "Issues detected"
+msgstr "Problem upptäckta"
+
+#: 
+msgid "Loaded php.ini"
+msgstr "Laddad php.ini"
+
+#: 
+msgid "Locale"
+msgstr "Nationella inställningar"
+
+#: 
+msgid "Max Execution Time"
+msgstr "Maximal körningstid"
+
+#: 
+msgid "Max POST Size"
+msgstr "Maximal POST-storlek"
+
+#: 
+msgid "Max Upload Size"
+msgstr "Maximal uppladdningsstorlek"
+
+#: 
+msgid "Memory"
+msgstr "Minne"
+
+#: 
+msgid "Memory Limit"
+msgstr "Minnesgräns"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
+msgstr "Kontrollera nu mottagarens inkorg för att bekräfta leveransen. Leta efter ämnet:"
+
+#: 
+msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
+msgstr "OPcache är inte aktiverat. Att aktivera det är ett lågrisksätt att snabba upp PHP-sidinläsning."
+
+#: 
+msgid "Off"
+msgstr "Av"
+
+#: 
+msgid "On"
+msgstr "På"
+
+#: 
+msgid "Open the email debug tester"
+msgstr "Öppna e-postfelsökningstestaren"
+
+#: 
+msgid "PHP Version"
+msgstr "PHP-version"
+
+#: 
+msgid "PHPMailer SMTP session"
+msgstr "PHPMailer SMTP-session"
+
+#: 
+msgid "Prerequisites"
+msgstr "Förutsättningar"
+
+#: 
+msgid "Review the SMTP debug log below for the handshake details, then adjust your settings."
+msgstr "Granska SMTP-felsökningsloggen nedan för anslutningsdetaljerna och justera sedan dina inställningar."
+
+#: 
+msgid "SMTP Configuration"
+msgstr "SMTP-konfiguration"
+
+#: 
+msgid "SMTP Debug Log"
+msgstr "SMTP-felsökningslogg"
+
+#: 
+msgid "SMTP Host is not configured."
+msgstr "SMTP-värd är inte konfigurerad."
+
+#: 
+msgid "SMTP configuration test — if this arrived, your setup works."
+msgstr "SMTP-konfigurationstest — om detta anlände fungerar din konfiguration."
+
+#: 
+msgid "Schema Version"
+msgstr "Schemaversion"
+
+#: 
+msgid "Send Again"
+msgstr "Skicka igen"
+
+#: 
+msgid "Send a test message to verify your SMTP configuration"
+msgstr "Skicka ett testmeddelande för att verifiera din SMTP-konfiguration"
+
+#: 
+msgid "Server"
+msgstr "Server"
+
+#: 
+msgid "Server Version"
+msgstr "Serverversion"
+
+#: 
+msgid "Session Handler"
+msgstr "Sessionshanterare"
+
+#: 
+msgid "Session Save Path"
+msgstr "Lagringsväg för sessioner"
+
+#: 
+msgid "Settings Valid"
+msgstr "Inställningar giltiga"
+
+#: 
+msgid "Subject"
+msgstr "Ämne"
+
+#: 
+msgid "Test"
+msgstr "Test"
+
+#: 
+msgid "Test email accepted by SMTP server"
+msgstr "Testmejl accepterat av SMTP-servern"
+
+#: 
+msgid "Test email failed to send"
+msgstr "Testmejl misslyckades att skicka"
+
+#: 
+msgid "This is a ChurchCRM test email."
+msgstr "Detta är ett ChurchCRM testmejl."
+
+#: 
+msgid "Timeout"
+msgstr "Tidsgräns"
+
+#: 
+msgid "Timezone"
+msgstr "Tidszon"
+
+#: 
+msgid "Unable to list web server modules (non-Apache SAPI)."
+msgstr "Det går inte att lista webbservermoduler (icke-Apache SAPI)."
+
+#: 
+msgid "Update Settings"
+msgstr "Uppdatera inställningar"
+
+#: 
+msgid "View full photo"
+msgstr "Visa fullstor bild"
+
+#: 
+msgid "page."
+msgstr "sida."
+
+#: 
+msgid "user:"
+msgstr "användare:"
+
+#: 
+msgid "1. Download the template"
+msgstr "1. Ladda ner mallen"
+
+#: 
+msgid "2. Fill in your data"
+msgstr "2. Fyll i dina uppgifter"
+
+#: 
+msgid "3. Upload and map"
+msgstr "3. Ladda upp och mappa"
+
+#: 
+msgid "Add Recurring Event"
+msgstr "Lägg till återkommande händelse"
+
+#: 
+msgid "Available after the event is saved."
+msgstr "Tillgänglig efter att händelsen har sparats."
+
+#: 
+msgid "Boolean properties/fields accept yes / no / true / false / 1 / 0."
+msgstr "Booleska egenskaper/fält accepterar yes / no / true / false / 1 / 0."
+
+#: 
+msgid "ChurchCRM auto-matches each column by name. Anything it cannot match is marked as Unmapped — pick a field or leave it as Ignore."
+msgstr "ChurchCRM matchar automatiskt varje kolumn med namn. Det som inte kan matchas markeras som Omappad — välj ett fält eller lämna det som Ignorera."
+
+#: 
+msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
+msgstr "Kunde inte tolka CSV-filen. Kontrollera att det är en giltig kommaseparerad fil med en rubrikrad."
+
+#: 
+msgid "Custom field columns you have not configured are ignored — nothing is created on the fly."
+msgstr "Anpassade fältkolumner som du inte har konfigurerat ignoreras — ingenting skapas automatiskt."
+
+#: 
+msgid "Custom fields and properties are supported"
+msgstr "Anpassade fält och egenskaper stöds"
+
+#: 
+msgid "Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a month and day with no year."
+msgstr "Datumfält accepterar ÅÅÅÅ-MM-DD eller M/D/ÅÅÅÅ. Använd 0000-MM-DD eller M/D för månad och dag utan år."
+
+#: 
+msgid "Each row is one person. People in the same family share a FamilyID. Leave columns blank when you have no value for them."
+msgstr "Varje rad är en person. Personer i samma familj delar ett FamiljeID. Lämna kolumner tomma när du saknar värden för dem."
+
+#: 
+msgid "Event Timing"
+msgstr "Händelsetid"
+
+#: 
+msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
+msgstr "Varje matchande förekomst mellan Från och Till får sin egen händelse vid samma start-/sluttid."
+
+#: 
+msgid "External calendar sharing is disabled"
+msgstr "Extern kalenderdelning är inaktiverad"
+
+#: 
+msgid "Failed to load event editor. Please refresh and try again."
+msgstr "Det gick inte att ladda händelseeditorn. Uppdatera sidan och försök igen."
+
+#: 
+msgid "Family Custom"
+msgstr "Familjeanpassad"
+
+#: 
+msgid "Family Property"
+msgstr "Familjeegenskapen"
+
+#: 
+msgid "Fields"
+msgstr "Fält"
+
+#: 
+msgid "Go to home"
+msgstr "Gå till startsidan"
+
+#: 
+msgid "Hide advanced options"
+msgstr "Dölj avancerade alternativ"
+
+#: 
+msgid "How the CSV Import Works"
+msgstr "Hur CSV-import fungerar"
+
+#: 
+msgid "Imported from CSV"
+msgstr "Importerad från CSV"
+
+#: 
+msgid "Invalid date format"
+msgstr "Ogiltigt datumformat"
+
+#: 
+msgid "Loading event editor…"
+msgstr "Laddar händelseeditor…"
+
+#: 
+msgid "No group"
+msgstr "Ingen grupp"
+
+#: 
+msgid "Not pinned to any calendar"
+msgstr "Inte fäst vid någon kalender"
+
+#: 
+msgid "Optional — sermon notes, materials, or other details copied to every generated event."
+msgstr "Valfritt — predikoanteckningar, material eller annan information som kopieras till varje genererad händelse."
+
+#: 
+msgid "Person / Family"
+msgstr "Person / Familj"
+
+#: 
+msgid "Person Custom"
+msgstr "Personanpassad"
+
+#: 
+msgid "Person Property"
+msgstr "Personegenskap"
+
+#: 
+msgid "Show more options"
+msgstr "Visa fler alternativ"
+
+#: 
+msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
+msgstr "Kalenderlänken är ofullständig. Kontrollera webbadressen med personen som skickade den till dig."
+
+#: 
+msgid "The church administrator has not enabled external calendar sharing. Please contact them if you believe this is in error."
+msgstr "Kyrkoförvaltaren har inte aktiverat extern kalenderdelning. Kontakta dem om du anser att detta är ett misstag."
+
+#: 
+msgid "The start or end date in the link could not be understood. Try the base calendar link without date parameters."
+msgstr "Start- eller slutdatumet i länken kunde inte tolkas. Prova bas-kalenderlänken utan datumparametrar."
+
+#: 
+msgid "The template already contains every column you can map — the core Person/Family fields plus each custom field and property your site defines."
+msgstr "Mallen innehåller redan varje kolumn du kan mappa — kärnfälten för Person/Familj plus varje anpassat fält och egenskap som din webbplats definierar."
+
+#: 
+msgid "The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically."
+msgstr "Mallen innehåller redan en kolumn för varje anpassat Person/Familj-fält och för varje egenskap du har definierat. Om du lägger till kolumner manuellt, använd exakt namnet på det anpassade fältet eller egenskapen som kolumnrubrik så matchas det automatiskt av importverktyget."
+
+#: 
+msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
+msgstr "Denna kalenderlänk är ogiltig eller har återkallats. Be kyrkan om en aktuell länk."
+
+#: 
+msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
+msgstr "Kopplar denna händelse till en klass- eller ministerlista — används av kioskens incheckningsmöde."
+
+#: 
+msgid "Upload a CSV to create families and people in bulk."
+msgstr "Ladda upp en CSV för att skapa familjer och personer i bulk."
+
+#: 
+msgid "Volunteer-entered headcounts, broken down by category."
+msgstr "Frivilligregistrerade personräkningar, uppdelade efter kategori."
+
+#: 
+msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
+msgstr "Din CSV har duplicerade kolumnnamn. Byt namn på de duplicerade kolumnerna (t.ex. lägg till \"(2)\" till den andra) och ladda upp igen."
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "Är du säker på att du vill ta bort denna donerade artikel permanent?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "Är du säker på att du vill ta bort detta budnummer permanent?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Ta bort donerad artikel"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Ta bort budnummer"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Ogiltig säkerhetstoken. Försök igen."
+
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "Lägger till helgdagar i huvudkalendern. Varje valt land blir en egen växlingsbar kalender i sidofältet, så användare kan visa eller dölja helgdagar separat."
+
+#: 
+msgid "Choose map provider"
+msgstr "Välj kartleverantör"
+
+#: 
+msgid "Current database"
+msgstr "Aktuell databas"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "Demonstrationsdata laddas normalt bara in vid nya installationer. Om du importerar nu läggs exempelpost till bredvid dina befintliga data och kan skapa dubbletter."
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "Varje land genererar en egen kalenderrad i sidofältet. Använd kalenderns växlingsknapp för att tillfälligt dölja ett land utan att ändra insticksprogrammets inställningar."
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "Filtrera efter kategori"
+
+#: 
+msgid "Holiday Settings"
+msgstr "Helgdagsinställningar"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "Helgdagar (%s)"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "Helgdagar märks efter typ: Officiella, Observanser, Bankhelgdagar, Säsongsbaserade och Religiösa. Lämna alla kategorier omarkerade för att visa alla helgdagar, eller välj specifika typer för att begränsa visningen."
+
+#: 
+msgid "Import demo data anyway"
+msgstr "Importera demonstrationsdata ändå"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "Saknar identifierare för ekonomiskt åtagande."
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "Inget land är valt. Välj minst ett land i inställningarna för insticksprogrammet Helgdagskalendrar."
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "Inga matchande poster för de valda filtren."
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "Öppna i Apple Maps"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "Öppna i Google Maps"
+
+#: 
+msgid "Open in new tab"
+msgstr "Öppna i ny flik"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "Konfigurera länder"
+
+#: 
+msgid "Show all"
+msgstr "Visa alla"
+
+#: 
+msgid "Show:"
+msgstr "Visa:"
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "Visa och dölj enskilda länder"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "Svenska"
+
+#: 
+msgid "System"
+msgstr "System"
+
+#: 
+msgid "Timeline filters"
+msgstr "Tidslinjefilter"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "För att börja om med en ren databas, använd Återställ databas från administratörspanelen innan du importerar demonstrationsdata."
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "Använd landsväljaren för att välja ett eller flera länder. Varje land du lägger till visas som en separat kalenderpost i sidofältet — vilket gör att du kan visa helgdagar för en global församling."
+
+#: 
+msgid "Your database already contains data"
+msgstr "Din databas innehåller redan data"
+
+#: 
+msgid "people"
+msgstr "personer"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "En nedladdnings-URL krävs för att installera ett insticksprogram."
+
+#: 
+msgid "All three fields are required."
+msgstr "Alla tre fält är obligatoriska."
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "Godkända gemenskapsplugins"
+
+#: 
+msgid "Browse Approved"
+msgstr "Bläddra bland godkända"
+
+#: 
+msgid "Check for Updates"
+msgstr "Sök efter uppdateringar"
+
+#: 
+msgid "Checking…"
+msgstr "Kontrollerar…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "Rensa karantän"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "Rensa karantänen först efter att det underliggande problemet har åtgärdats. Servern nekar aktivering av ett karantänerat insticksprogram."
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "Klicka på \"Bläddra bland godkända\" ovan för att installera ett granskat insticksprogram, eller \"Installera från URL\" för en overifierad version under utveckling."
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "Det gick inte att rensa insticksprogrammets karantän"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "Det gick inte att rensa karantänen"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "Det gick inte att installera insticksprogrammet"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "Det gick inte att installera insticksprogrammet från URL"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "Det gick inte att läsa in listan över godkända insticksprogram"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "Det gick inte att läsa in listan över godkända insticksprogram."
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "Det gick inte att uppdatera insticksprogramregistret"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "Det gick inte att uppdatera insticksprogramregistret. Kontrollera din internetanslutning."
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "Det gick inte att avinstallera insticksprogrammet"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "Hämtar senaste registret…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "Hämta detta från insticksprogrammets upphovsman. Installeraren nekar nedladdningen om den inte matchar byte för byte."
+
+#: 
+msgid "Homepage"
+msgstr "Hemsida"
+
+#: 
+msgid "Install"
+msgstr "Installera"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "Installera insticksprogram från URL (overifierat)"
+
+#: 
+msgid "Install Unverified"
+msgstr "Installera overifierat"
+
+#: 
+msgid "Install failed"
+msgstr "Installationen misslyckades"
+
+#: 
+msgid "Install from URL"
+msgstr "Installera från URL"
+
+#: 
+msgid "Installing…"
+msgstr "Installerar…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "Kebab-format. Måste matcha katalognamnet på översta nivån i zip-filen och id:t i plugin.json."
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "Läser in listan över godkända insticksprogram…"
+
+#: 
+msgid "Loading…"
+msgstr "Läser in…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "Matchar en post i listan över godkända insticksprogram"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "Måste vara en oföränderlig release-URL som serveras via HTTPS."
+
+#: 
+msgid "Plugin id"
+msgstr "Insticksprogram-id"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "Insticksprogrammet installerades som OVERIFIERAT. Granska de extraherade filerna noggrant innan du aktiverar det."
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "Insticksprogrammet installerades. Granska det och klicka på Aktivera för att sätta igång det."
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "Insticksprogrammets karantän rensades. Du kan nu aktivera insticksprogrammet igen."
+
+#: 
+msgid "Plugin quarantined"
+msgstr "Insticksprogrammet karantänerades"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "Insticksprogramregistret uppdaterades."
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "Insticksprogrammet avinstallerades"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "Insticksprogrammet avinstallerades."
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "Insticksprogram zip-URL (endast HTTPS)"
+
+#: 
+msgid "Quarantined"
+msgstr "Karantänerat"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "Granska insticksprogrammets filer på disken innan du aktiverar det. Overifierade insticksprogram körs med samma behörigheter som godkända insticksprogram."
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "SHA-256-kontrollsumma"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "SHA-256 måste vara en 64-teckens hexsträng."
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "ChurchCRM:s underhållare har inte granskat det. Du ansvarar för säkerheten och beteendet hos allt du installerar här. Föredra flödet Bläddra bland godkända när det är möjligt."
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "Listan över godkända insticksprogram är tom. Det finns inga tredjepartsinsticksprogram tillgängliga via det verifierade installationsprogrammet ännu."
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "Insticksprogrammet inaktiverades automatiskt efter ett körningsfel."
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "Dessa insticksprogram har granskats och godkänts av ChurchCRM:s underhållare. Klicka på Installera för att ladda ner och installera ett — insticksprogrammet aktiveras inte automatiskt."
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "Detta insticksprogram finns inte på ChurchCRM:s lista över godkända insticksprogram."
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "Detta insticksprogram installeras som OVERIFIERAT."
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "URL måste använda HTTPS."
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "Avinstallera (radera från disk)"
+
+#: 
+msgid "Unverified plugin"
+msgstr "Overifierat insticksprogram"
+
+#: 
+msgid "Verified"
+msgstr "Verifierat"
+
+#: 
+msgid "What this plugin does:"
+msgstr "Vad detta insticksprogram gör:"
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "downloadUrl, sha256 och pluginId krävs alla för overifierade installationer."
+
+#: 
+msgid "risk"
+msgstr "risk"
+
+#: 
+msgid "Name cannot be empty"
+msgstr "Namnet får inte vara tomt"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "Namnet får inte vara längre än %d tecken"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "Behöver du hjälp? Kontakta oss"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "Ingen kalender vald — det här evenemanget visas under systemkalendern \"Opinnatta händelser\" tills du fäster det."
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "Öppnar ett 2-minutersfönster för enheter att registrera sig på:"
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "Tider använder kyrkans tid ({{church}}), inte din webbläsares ({{browser}})."
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "Välkommen — logga in för att hantera din församling"
 

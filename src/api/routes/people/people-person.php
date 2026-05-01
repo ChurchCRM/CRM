@@ -5,6 +5,8 @@ use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\Exceptions\PhotoSizeException;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\Plugin\Hook\HookManager;
+use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
@@ -223,7 +225,9 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         if (AuthenticationManager::getCurrentUser()->getId() === (int) $person->getId()) {
             throw new HttpForbiddenException($request, gettext("Can't delete yourself"));
         }
+        $personId = $person->getId();
         $person->delete();
+        HookManager::doAction(Hooks::PERSON_DELETED, $personId);
 
         return SlimUtils::renderSuccessJSON($response);
     })->add(DeleteRecordRoleAuthMiddleware::class);

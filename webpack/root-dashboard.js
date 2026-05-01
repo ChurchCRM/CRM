@@ -7,7 +7,7 @@ import { initializeMainDashboard } from "../src/skin/js/MainDashboard";
 
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize dashboard components when locales are ready
-  if (window.CRM && window.CRM.onLocalesReady) {
+  if (window.CRM?.onLocalesReady) {
     window.CRM.onLocalesReady(initializeMainDashboard);
   }
 

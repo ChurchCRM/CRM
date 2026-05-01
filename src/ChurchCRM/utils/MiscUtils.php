@@ -234,12 +234,12 @@ class MiscUtils
             return ucfirst($family);
         } else {
             if (strlen($filename) - strlen($family) === 2) {
-                return ucfirst($family) . gettext(' Bold Italic');
+                return ucfirst($family) . ' Bold Italic';
             } else {
                 if (mb_substr($filename, strlen($filename) - 1) === 'i') {
-                    return ucfirst($family) . gettext(' Italic');
+                    return ucfirst($family) . ' Italic';
                 } else {
-                    return ucfirst($family) . gettext(' Bold');
+                    return ucfirst($family) . ' Bold';
                 }
             }
         }

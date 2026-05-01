@@ -163,15 +163,16 @@ describe('Plugin Management UI', () => {
 
         it('should reset settings when reset button is clicked', () => {
             cy.visit('/plugins/management');
-            
+
             cy.get('.card[data-plugin-id="mailchimp"]').within(() => {
                 cy.get('.btn-expand-plugin').click();
                 cy.get('.btn-reset-settings').click();
             });
 
-            // Should show confirmation dialog - confirm it
-            cy.on('window:confirm', () => true);
-            
+            // Confirm via Tabler modal (replaced window.confirm)
+            cy.get('#pluginConfirmModal').should('be.visible');
+            cy.get('#pluginConfirmOk').click();
+
             cy.waitForNotification('Settings reset');
         });
     });

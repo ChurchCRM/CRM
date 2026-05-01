@@ -167,7 +167,7 @@ echo $sError;
                 echo '<td class="text-center">' . $count++ . '</td>';
                 echo '<td><div class="d-flex align-items-center">';
                 echo '<img data-image-entity-type="person" data-image-entity-id="' . $cartPerson->getId() . '" class="avatar avatar-sm rounded-circle me-2" alt="" />';
-                echo '<a href="PersonView.php?PersonID=' . $cartPerson->getId() . '">' . InputUtils::escapeHTML($cartPerson->getFullName()) . '</a>';
+                echo '<a href="' . $cartPerson->getViewURI() . '">' . InputUtils::escapeHTML($cartPerson->getFullName()) . '</a>';
                 echo '</div></td>';
 
                 echo '<td class="text-center">';
@@ -194,7 +194,7 @@ echo $sError;
             }
             echo '</select>'; ?>
         </div>
-        <p class="text-muted"><?= gettext('If adding a new family, enter data below.') ?></p>
+        <p class="text-body-secondary"><?= gettext('If adding a new family, enter data below.') ?></p>
         <div class="mb-3">
             <label class="form-label"><?= gettext('Family Name') ?>:</label>
             <input type="text" class="form-control" name="FamilyName" value="<?= InputUtils::escapeAttribute($sName ?? '') ?>" maxlength="48">
@@ -238,7 +238,7 @@ echo $sError;
             </div>
             <div id="stateInputDiv" class="d-none">
                 <input type="text" class="form-control" name="StateTextbox" id="StateTextbox" value="" maxlength="30">
-                <small class="text-muted"><?= gettext('(Enter state/province for countries without predefined states)') ?></small>
+                <small class="text-body-secondary"><?= gettext('(Enter state/province for countries without predefined states)') ?></small>
             </div>
         </div>
         <div class="mb-3">

@@ -73,7 +73,7 @@ describe(
                 // Build a map of first-name → personId from the search results
                 const nameToId = {};
                 personsGroup.children.forEach((child) => {
-                    const match = child.uri.match(/PersonID=(\d+)/);
+                    const match = child.uri.match(/\/people\/view\/(\d+)/);
                     if (match) {
                         // child.text is "FirstName LastName"
                         const firstName = child.text.split(" ")[0];
@@ -162,7 +162,7 @@ describe(
 
                 const byFirstName = {};
                 personsGroup.children.forEach((child) => {
-                    const match = child.uri.match(/PersonID=(\d+)/);
+                    const match = child.uri.match(/\/people\/view\/(\d+)/);
                     if (match) byFirstName[child.text.split(" ")[0]] = match[1];
                 });
 
@@ -266,8 +266,8 @@ describe(
                 // Extract the last 2 person IDs (most recent import) from the uri field
                 const recentChildren = personsGroup.children.slice(-2);
                 recentChildren.forEach((child) => {
-                    const match = child.uri.match(/PersonID=(\d+)/);
-                    expect(match, `Expected PersonID in uri: ${child.uri}`).to.exist;
+                    const match = child.uri.match(/\/people\/view\/(\d+)/);
+                    expect(match, `Expected /people/view/{id} in uri: ${child.uri}`).to.exist;
                     const personId = match[1];
 
                     cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, 200).then((personResp) => {

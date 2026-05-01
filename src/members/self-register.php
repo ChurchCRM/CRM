@@ -110,7 +110,7 @@ use ChurchCRM\dto\SystemURLs;
                     data: 'Id',
                     searchable: false,
                     render: function (data, type, full, meta) {
-                        return '<a href="' + window.CRM.root + '/PersonView.php?PersonID=' + encodeURIComponent(data) + '">' + data + '</a>';
+                        return '<a href="' + window.CRM.root + '/people/view/' + encodeURIComponent(data) + '">' + data + '</a>';
                     }
                 },
                 {

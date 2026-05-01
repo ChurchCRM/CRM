@@ -639,10 +639,6 @@ msgid "Save Changes"
 msgstr "Hifadhi"
 
 #: 
-msgid "Church Event Editor"
-msgstr "Mhariri wa Tukio la Kanisa"
-
-#: 
 msgid "Edit Event Type"
 msgstr "Badilisha Aina ya Tukio"
 
@@ -708,20 +704,8 @@ msgid "Create Event"
 msgstr "Ongeza tukio"
 
 #: 
-msgid "Create a new Event"
-msgstr "Ongeza tukio"
-
-#: 
-msgid "Select your event type"
-msgstr "Chagua aina ya tukio lako"
-
-#: 
 msgid "Event Status"
 msgstr "Hali ya tukio"
-
-#: 
-msgid "Return to Events"
-msgstr "Rudi kwa Matukio"
 
 #: 
 msgid "Sundays"
@@ -1178,10 +1162,6 @@ msgid "Summary Data"
 msgstr "Data ya Muhtasari"
 
 #: 
-msgid "CSV"
-msgstr "CSV"
-
-#: 
 msgid "Back"
 msgstr "Nyuma"
 
@@ -1305,10 +1285,6 @@ msgstr "Umbizo la faili ya data"
 #: 
 msgid "GPS Visualizer"
 msgstr "GPS Visualizer"
-
-#: 
-msgid "Street Atlas USA"
-msgstr "Atlasi ya Mtaa Marekani"
 
 #: 
 #, fuzzy
@@ -2338,26 +2314,6 @@ msgstr "Nambari ni kubwa mno. Lazima iwe kati ya -2147483648 na 2147483647"
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Pesa ni kubwa mno. Kiwango cha juu ni $999999999.99"
 
-#: 
-msgid " Bold Italic"
-msgstr " Italiki ya Bold"
-
-#: 
-msgid " Italic"
-msgstr " Italiki"
-
-#: 
-msgid " Bold"
-msgstr " Ujasiri"
-
-#: 
-msgid "Error making API Call to"
-msgstr "Hitilafu katika kufanya Simu ya API kwa"
-
-#: 
-msgid "Error text"
-msgstr "Maandishi ya hitilafu"
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -3048,10 +3004,6 @@ msgstr "Mipangilio ya Tikiti ya Amana ya QuickBooks"
 #: 
 msgid "Add Church Event"
 msgstr "Ongeza Tukio la Kanisa"
-
-#: 
-msgid "List Event Types"
-msgstr "Orodhesha Aina za Matukio"
 
 #: 
 msgid "Check-in and Check-out"
@@ -4616,11 +4568,6 @@ msgstr "Kirusi"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "Kisami (Kaskazini) (Uswidi)"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "Kialbeni"
 
@@ -4905,10 +4852,6 @@ msgid "Notification for"
 msgstr "Taarifa kwa"
 
 #: 
-msgid "ERROR"
-msgstr "HITILAFU"
-
-#: 
 msgid "Title FirstName MiddleName LastName"
 msgstr "Jina FirstName MiddleName LastName"
 
@@ -5073,7 +5016,8 @@ msgid "Indonesian - Indonesia"
 msgstr "Kiindonesia - Indonesia"
 
 #: 
-msgid "records(s) successfully added to selected Group."
+#, fuzzy
+msgid "record(s) successfully added to selected Group."
 msgstr "rekodi zimeongezwa kwa Kikundi kilichochaguliwa."
 
 #: 
@@ -5103,10 +5047,6 @@ msgstr "Familia Mpya Imeongezwa"
 #: 
 msgid "Church Greeter"
 msgstr "Salamu wa Kanisa"
-
-#: 
-msgid "External Calendar API is disabled"
-msgstr "API ya Kalenda ya Nje imezimwa"
 
 #: 
 msgid "Special Group Settings : Sunday School Type"
@@ -5385,7 +5325,8 @@ msgid "Remove All from Cart"
 msgstr "Ondoa Zote kutoka kwa Cart"
 
 #: 
-msgid "records(s) successfully deleted from the selected Group."
+#, fuzzy
+msgid "record(s) successfully deleted from the selected Group."
 msgstr "rekodi zimefutwa kutoka kwa Kikundi kilichochaguliwa."
 
 #: 
@@ -5535,16 +5476,8 @@ msgid "Missing calendar access token"
 msgstr "Tokeni ya ufikiaji ya kalenda haipo"
 
 #: 
-msgid "Calendar access token not found"
-msgstr "Tokeni ya ufikiaji wa kalenda haijapatikana"
-
-#: 
 msgid "User must have Delete Records permission"
 msgstr "Mtumiaji lazima awe na ruhusa ya Futa Rekodi"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "ChurchCRM Central Notifications URL"
 
 #: 
 msgid "invalid event type id"
@@ -5623,10 +5556,6 @@ msgstr "Jina batili la nchi limetolewa"
 #: 
 msgid "LastName FirstName"
 msgstr "Jina la mwisho Jina la kwanza"
-
-#: 
-msgid "Holidays"
-msgstr "Likizo"
 
 #: 
 msgid "Person Name"
@@ -5810,10 +5739,6 @@ msgid "Portuguese - Portugal"
 msgstr "Kireno - Ureno"
 
 #: 
-msgid "Holiday"
-msgstr "Sikukuu"
-
-#: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Bainisha jina la programu litakaloonyeshwa katika programu ya uthibitishaji"
 
@@ -5872,10 +5797,6 @@ msgstr "Hakuna barua pepe iliyotumwa"
 #: 
 msgid "Mailchimp is not active"
 msgstr "Mailchimp haitumiki"
-
-#: 
-msgid "Mailchimp"
-msgstr "Mailchimp"
 
 #: 
 msgid "Lists"
@@ -5961,10 +5882,6 @@ msgstr "Maandishi"
 #: 
 msgid "Event Description"
 msgstr "Maelezo ya Tukio"
-
-#: 
-msgid "Help translate this project"
-msgstr "Saidia kutafsiri mradi huu"
 
 #. Context: locales
 #: 
@@ -6882,7 +6799,8 @@ msgid "Total Payments"
 msgstr "Jumla ya Malipo"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payments?"
 msgstr "malipo?"
 
 #: 
@@ -6896,10 +6814,6 @@ msgstr "URL ya Msingi"
 #: 
 msgid "Copy"
 msgstr "Nakili"
-
-#: 
-msgid "DSN"
-msgstr "DSN"
 
 #: 
 msgid "Debug Info"
@@ -6962,20 +6876,8 @@ msgid "SMTP Host"
 msgstr "Seva ya SMTP"
 
 #: 
-msgid "Software"
-msgstr "Programu"
-
-#: 
-msgid "System & Configuration"
-msgstr "Mfumo na Usanidi"
-
-#: 
 msgid "Tip:"
 msgstr "Kidokezo:"
-
-#: 
-msgid "Valid Settings"
-msgstr "Mipangilio Sahihi"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7036,10 +6938,6 @@ msgid "Attendance Count Categories"
 msgstr "Kategoria za Hesabu ya Mahudhurio"
 
 #: 
-msgid "Attendance Notes"
-msgstr "Maelezo ya Mahudhurio"
-
-#: 
 msgid "Change Event"
 msgstr "Badilisha Tukio"
 
@@ -7095,14 +6993,6 @@ msgstr "Futa Tukio"
 msgid "Edit Event"
 msgstr "Hariri Tukio"
 
-#: 
-msgid "Editing Event"
-msgstr "Inahariri Tukio"
-
-#: 
-msgid "Enter event title..."
-msgstr "Ingiza kichwa cha tukio..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7153,14 +7043,6 @@ msgid "None (one-time event)"
 msgstr "Hakuna (tukio la mara moja tu)"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "Hiari - Ongeza muhtasari wa mahubiri au maelezo ya ziada"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "Maelezo ya hiari kuhusu mahudhurio..."
-
-#: 
 msgid "People Checked In"
 msgstr "Watu Waliosajiliwa"
 
@@ -7195,10 +7077,6 @@ msgstr "Tafuta msimamizi..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "Chagua Tukio kwa ajili ya Usajili"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "Andiko la Mahubiri / Tukio"
 
 #: 
 msgid "Unclassified"
@@ -7991,10 +7869,6 @@ msgid "Orphaned Files:"
 msgstr "Faili Yatima:"
 
 #: 
-msgid "PDF/CSV"
-msgstr "PDF/CSV"
-
-#: 
 msgid "Payment"
 msgstr "Malipo"
 
@@ -8231,10 +8105,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "URL ya Msingi haijasanidiwa katika Config.php"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "Lugha Zinazotumika na ChurchCRM"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "Unganisha kwenye seva yako kupitia SSH, FTP, au jopo lako la udhibiti wa mwenyeji"
 
@@ -8281,10 +8151,6 @@ msgstr "Lugha"
 #: 
 msgid "Local development:"
 msgstr "Uendelezaji wa ndani (Local):"
-
-#: 
-msgid "Locale Support"
-msgstr "Usaidizi wa Lugha/Eneo"
 
 #: 
 msgid "Location & Contact Information"
@@ -8453,10 +8319,6 @@ msgstr "Tuma Uhakiki"
 #: 
 msgid "Thank You!"
 msgstr "Asante!"
-
-#: 
-msgid "Translation incomplete"
-msgstr "Tafsiri haijakamilika"
 
 #: 
 msgid "Visit Our Website"
@@ -9107,10 +8969,6 @@ msgid "Failed to save the downloaded release file. Please check disk space and p
 msgstr "Imeshindwa kuhifadhi faili la toleo lililopakuliwa. Tafadhali angalia nafasi ya diski na ruhusa."
 
 #: 
-msgid "Invalid date format in start parameter"
-msgstr "Muundo wa tarehe si sahihi katika kigezo cha mwanzo"
-
-#: 
 msgid "Mismatch"
 msgstr "Kutofanana"
 
@@ -9509,10 +9367,6 @@ msgid "Important"
 msgstr "Muhimu"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "Sakinisha programu-jalizi kwa kuziweka katika"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "Msimbo batili. Tafadhali jaribu tena."
 
@@ -9571,10 +9425,6 @@ msgstr "Kiungo hakikupatikana"
 #: 
 msgid "Loading recovery codes"
 msgstr "Inapakia misimbo ya uokoaji"
-
-#: 
-msgid "MailChimp"
-msgstr "MailChimp"
 
 #: 
 msgid "MailChimp API Key"
@@ -10688,10 +10538,6 @@ msgid "CSV Column"
 msgstr "Safu ya CSV"
 
 #: 
-msgid "CSV template not found"
-msgstr "Kiolezo cha CSV hakijapatikana"
-
-#: 
 msgid "Call"
 msgstr "Piga Simu"
 
@@ -10768,10 +10614,6 @@ msgid "Community Management Platform"
 msgstr "Jukwaa la Usimamizi wa Jumuiya"
 
 #: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "Inaoana na Excel, Google Sheets, au usafirishaji wowote wa CSV."
-
-#: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
 msgstr "Kamilisha hizi kwa mpangilio wowote ili kuandaa ChurchCRM kwa ushirika wako."
 
@@ -10798,10 +10640,6 @@ msgstr "Unganisha seva ya SMTP ili ChurchCRM iweze kutuma barua pepe"
 #: 
 msgid "Connect with others"
 msgstr "Ungana na wengine"
-
-#: 
-msgid "Contact us"
-msgstr "Wasiliana nasi"
 
 #: 
 msgid "Convert individual records into family units"
@@ -10944,10 +10782,6 @@ msgid "Download CSV Template"
 msgstr "Pakua Kiolezo cha CSV"
 
 #: 
-msgid "Download the template to see the expected column format."
-msgstr "Pakua kiolezo kuona muundo wa safu unaotarajiwa."
-
-#: 
 msgid "Drag and drop your CSV file here"
 msgstr "Buruta na uache faili yako ya CSV hapa"
 
@@ -10958,10 +10792,6 @@ msgstr "Nakala Rudufu"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Kila mtu anaweza kuwa na barua pepe yake na nambari ya simu ya mkononi."
-
-#: 
-msgid "Each row is one person. Members of the same family share a FamilyID."
-msgstr "Kila mstari ni mtu mmoja. Wanafamilia wa familia moja wanashiriki FamilyID."
 
 #: 
 msgid "Easy registration"
@@ -11494,10 +11324,6 @@ msgstr "Mabadiliko ya jina yanahitaji kuhifadhiwa. Vitendo vya kupanga upya na k
 #: 
 msgid "Name, address, contact details"
 msgstr "Jina, anwani, maelezo ya mawasiliano"
-
-#: 
-msgid "Need help?"
-msgstr "Unahitaji msaada?"
 
 #: 
 msgid "New"
@@ -12046,10 +11872,6 @@ msgid "Upload CSV"
 msgstr "Pakia CSV"
 
 #: 
-msgid "Upload a CSV file to import families and people into ChurchCRM."
-msgstr "Pakia faili ya CSV kuingiza familia na watu katika ChurchCRM."
-
-#: 
 msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
 msgstr "Pakia CSV kutoka Excel, Google Sheets, au mfumo wako wa awali wa usimamizi wa kanisa na uoanishe safu na sehemu za ChurchCRM."
 
@@ -12272,10 +12094,6 @@ msgstr "washiriki"
 #: 
 msgid "opportunities"
 msgstr "fursa"
-
-#: 
-msgid "options"
-msgstr "chaguo"
 
 #: 
 msgid "or connect an external service"
@@ -12512,10 +12330,6 @@ msgstr "Sajili na simamia vifaa vya kiosk kwa usajili wa matukio"
 #: 
 msgid "Review & Delete"
 msgstr "Kagua na Futa"
-
-#: 
-msgid "SHA1 Hash"
-msgstr "Alama ya SHA1"
 
 #: 
 msgid "Signature Mismatch"
@@ -14456,10 +14270,6 @@ msgstr[0] "Tukio %d la kurudia limeundwa kwa mafanikio."
 msgstr[1] "Matukio %d ya kurudia yameundwa kwa mafanikio."
 
 #: 
-msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
-msgstr "(mf. Waumini, Wageni, Watoto) ili wafanyakazi wa kujitolea waweze kurekodi hesabu za watu hapa."
-
-#: 
 msgid "1. Sunday School Class"
 msgstr "1. Darasa la Shule ya Jumapili"
 
@@ -14480,10 +14290,6 @@ msgid "A class is a Group with type \"Sunday School\". It holds the students and
 msgstr "Darasa ni Kikundi chenye aina ya \"Shule ya Jumapili\". Lina wanafunzi na walimu (wanakikundi wenye majukumu)."
 
 #: 
-msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
-msgstr "Kikundi kilichounganishwa kinaunganisha tukio hili na darasa au orodha ya huduma. Wakati tukio linapopewa Kioski, kioski hupata wanakikundi na kuwaonyesha kama orodha ya kugusa-kuingia. Kwa madarasa ya Shule ya Jumapili, unganisha kikundi cha darasa hapa ili wafanyakazi wa kujitolea waweze kuingiza wanafunzi kutoka kwenye kompyuta kibao."
-
-#: 
 msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
 msgstr "Tukio maalum (mf. \"Shule ya Awali — Apr 12\"). Linarithi mipangilio kutoka aina na linaunganishwa na kikundi cha darasa kupitia hadhira. Hili ndilo wafanyakazi wa kujitolea wanalopiga mahudhurio."
 
@@ -14494,10 +14300,6 @@ msgstr "Kompyuta kibao iliyopewa tukio moja. Kioski hupata orodha ya kikundi kil
 #: 
 msgid "Add Walk-in / Visitor"
 msgstr "Ongeza Mgeni wa Kutembea / Mtembeaji"
-
-#: 
-msgid "Add categories on the Event Type page"
-msgstr "Ongeza makundi kwenye ukurasa wa Aina ya Tukio"
 
 #: 
 msgid "Add people to your cart first, then come back to check them in to an event."
@@ -14546,10 +14348,6 @@ msgstr "Ukaguzi"
 #: 
 msgid "Audit Events"
 msgstr "Ukaguzi wa Matukio"
-
-#: 
-msgid "Auto-totalled from counts at right"
-msgstr "Jumla imeundwa kiotomatiki kutoka hesabu upande wa kulia"
 
 #: 
 msgid "Back to Events"
@@ -14676,10 +14474,6 @@ msgid "Database dump only (.sql)"
 msgstr "Nakala ya hifadhidata peke yake (.sql)"
 
 #: 
-msgid "Date Range"
-msgstr "Kipindi cha Tarehe"
-
-#: 
 msgid "Date range cannot exceed 1 year"
 msgstr "Kipindi cha tarehe haiwezi kuzidi mwaka 1"
 
@@ -14760,10 +14554,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "Tukio limeundwa. Inakuelekeza kwenye kuingia..."
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "Tarehe/wakati wa mwisho wa tukio lazima uwe sawa na au baada ya tarehe/wakati wa kuanza."
-
-#: 
 msgid "Event title is required."
 msgstr "Kichwa cha tukio kinahitajika."
 
@@ -14790,10 +14580,6 @@ msgstr "Aina ya tukio haina mpangilio wa kurudia uliowekwa"
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "Aina ya tukio haina siku halali ya mwezi iliyowekwa kwa kurudia kila mwezi"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "Matukio yataundwa kwa kila tukio linalolingana ndani ya kipindi hiki cha tarehe."
 
 #: 
 msgid "Every month on the"
@@ -14844,10 +14630,6 @@ msgid "Group Roster"
 msgstr "Orodha ya Kikundi"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "Ficha Chaguzi za Hali ya Juu"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "Jinsi Shule ya Jumapili + Matukio + Vioski unavyofanya kazi pamoja"
 
@@ -14858,10 +14640,6 @@ msgstr "Tarehe batili kwa %s — inatarajiwa YYYY-MM-DD"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "Muundo batili wa tarehe kwa rangeStart au rangeEnd"
-
-#: 
-msgid "Invalid date format."
-msgstr "Muundo batili wa tarehe."
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -14916,10 +14694,6 @@ msgid "No active events found."
 msgstr "Hakuna matukio yanayofanya kazi yaliyopatikana."
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "Hakuna makundi ya hesabu za mahudhurio yaliyowekwa kwa aina hii ya tukio bado."
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "Hakuna mtu aliyeingia kwenye tukio hili bado."
 
@@ -14960,10 +14734,6 @@ msgid "Please select a person to check in."
 msgstr "Tafadhali chagua mtu wa kuingiza."
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "Imejazwa awali kulingana na aina hii ya tukio — kwa aina zinazokurudia, tarehe ni tukio lijalo baada ya tukio la mwisho la aina hii, na wakati unalingana na wakati wa kuanza wa chaguo-msingi wa aina."
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "Tarehe ya mwisho wa kipindi lazima iwe sawa na au baada ya tarehe ya mwanzo wa kipindi."
 
@@ -14992,10 +14762,6 @@ msgid "Recommended"
 msgstr "Inayopendekezwa"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "Inahitajika kwa Kioski"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "Kuanzisha upya kutafuta kabisa:"
 
@@ -15014,14 +14780,6 @@ msgstr "Hifadhi mabadiliko ya jina hili la kundi"
 #: 
 msgid "Select an event type…"
 msgstr "Chagua aina ya tukio…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "Chagua tarehe/wakati wa kuanza na mwisho."
-
-#: 
-msgid "Show More Options"
-msgstr "Onyesha Chaguzi Zaidi"
 
 #: 
 msgid "Skip"
@@ -15064,16 +14822,8 @@ msgid "The Events module is disabled"
 msgstr "Moduli ya Matukio imezimwa"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "Wakati sawa wa kuanza na mwisho utatumika kwa matukio yote yaliyoundwa."
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "Hakuna matukio yaliyopangwa kwa leo"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "Hizi ni makundi ya hesabu za watu — wafanyakazi wa kujitolea hujaza baada ya tukio ili dashibodi iweze kugawanya mahudhurio (mf. waumini wangapi dhidi ya wageni). Zimetengwa na kuingia kwa mtu mmoja mmoja kwenye ukurasa wa Kuingia."
 
 #: 
 msgid "This event is inactive."
@@ -15128,16 +14878,8 @@ msgid "View Event"
 msgstr "Tazama Tukio"
 
 #: 
-msgid "What are these for?"
-msgstr "Hizi ni kwa nini?"
-
-#: 
 msgid "What does this find?"
 msgstr "Hii inatafuta nini?"
-
-#: 
-msgid "What is this for?"
-msgstr "Hii ni kwa nini?"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15404,10 +15146,6 @@ msgid "Online"
 msgstr "Mtandaoni"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "Inafungua dirisha la sekunde 30 kwa vifaa kusajiliwa katika:"
-
-#: 
 msgid "Pending"
 msgstr "Inasubiri"
 
@@ -15524,14 +15262,6 @@ msgid "Set up Email"
 msgstr "Sanidi Barua Pepe"
 
 #: 
-msgid "Test SMTP Email"
-msgstr "Jaribu Barua Pepe ya SMTP"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "Hii ni barua pepe ya majaribio ya ChurchCRM inayothibitisha kwamba mipangilio yako ya SMTP inafanya kazi."
-
-#: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."
 msgstr "Haiwezekani kunakili kwenye ubao wa kunakili. Tafadhali nakili nambari kwa mkono."
 
@@ -15546,4 +15276,856 @@ msgstr "Tumia nambari ya urejeshaji badala yake"
 #: 
 msgid "Use authenticator app instead"
 msgstr "Tumia programu ya uthibitishaji badala yake"
+
+#: 
+msgid "%d modules loaded"
+msgstr "Moduli %d zimepakiwa"
+
+#: 
+msgid "(PHP default)"
+msgstr "(Chaguo-msingi cha PHP)"
+
+#: 
+msgid "(none)"
+msgstr "(Hakuna)"
+
+#: 
+msgid "(not set)"
+msgstr "(Haijawekwa)"
+
+#: 
+msgid "All checks passing"
+msgstr "Ukaguzi wote umepita"
+
+#: 
+msgid "App"
+msgstr "Programu"
+
+#: 
+msgid "Browser time zone differs:"
+msgstr "Eneo la saa la kivinjari linatofautiana:"
+
+#: 
+msgid "Calendar time zone:"
+msgstr "Eneo la saa la kalenda:"
+
+#: 
+msgid "Cannot send test email"
+msgstr "Haiwezekani kutuma barua pepe ya majaribio"
+
+#: 
+msgid "Charset"
+msgstr "Seti ya herufi"
+
+#: 
+msgid "Church Email address is not set — the test email has nowhere to go."
+msgstr "Anwani ya barua pepe ya kanisa haijawekwa — barua pepe ya majaribio haina mahali pa kwenda."
+
+#: 
+msgid "Church email — configured on the"
+msgstr "Barua pepe ya kanisa — iliyosanidiwa kwenye"
+
+#: 
+msgid "ChurchCRM Test Email"
+msgstr "Barua pepe ya Majaribio ya ChurchCRM"
+
+#: 
+msgid "Collation"
+msgstr "Uainishaji wa Herufi"
+
+#: 
+msgid "Connection"
+msgstr "Muunganisho"
+
+#: 
+msgid "Database"
+msgstr "Hifadhidata"
+
+#: 
+msgid "Delivery"
+msgstr "Uwasilishaji"
+
+#: 
+msgid "Disk (Images Root)"
+msgstr "Diski (Saraka ya Picha)"
+
+#: 
+msgid "Display Errors"
+msgstr "Onyesha Makosa"
+
+#: 
+msgid "Email Debug"
+msgstr "Utatuzi wa Barua pepe"
+
+#: 
+msgid "Environment"
+msgstr "Mazingira"
+
+#: 
+msgid "Error Log"
+msgstr "Kumbukumbu ya Makosa"
+
+#: 
+msgid "Error Reporting"
+msgstr "Ripoti ya Makosa"
+
+#: 
+msgid "Fix Settings"
+msgstr "Rekebisha Mipangilio"
+
+#: 
+msgid "Hit Rate"
+msgstr "Kiwango cha Mafanikio"
+
+#: 
+msgid "Host"
+msgstr "Seva Mwenyeji"
+
+#: 
+msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
+msgstr "Ikiwa ujumbe hauja kwa dakika chache, angalia folda ya taka/spam na kumbukumbu ya utatuzi wa SMTP hapa chini."
+
+#: 
+msgid "If you can read this message in your inbox, your SMTP configuration is working correctly."
+msgstr "Ikiwa unaweza kusoma ujumbe huu kwenye kikasha chako, usanidi wako wa SMTP unafanya kazi vizuri."
+
+#: 
+msgid "Incomplete"
+msgstr "Haikamilika"
+
+#: 
+msgid "Installed on Server"
+msgstr "Imewekwa kwenye Seva"
+
+#: 
+msgid "Integrity"
+msgstr "Uadilifu"
+
+#: 
+msgid "Issues detected"
+msgstr "Matatizo yamegunduliwa"
+
+#: 
+msgid "Loaded php.ini"
+msgstr "php.ini iliyopakiwa"
+
+#: 
+msgid "Locale"
+msgstr "Eneo la Lugha"
+
+#: 
+msgid "Max Execution Time"
+msgstr "Muda wa Juu wa Utekelezaji"
+
+#: 
+msgid "Max POST Size"
+msgstr "Ukubwa wa Juu wa POST"
+
+#: 
+msgid "Max Upload Size"
+msgstr "Ukubwa wa Juu wa Upakiaji"
+
+#: 
+msgid "Memory"
+msgstr "Kumbukumbu"
+
+#: 
+msgid "Memory Limit"
+msgstr "Kikomo cha Kumbukumbu"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
+msgstr "Sasa angalia kikasha cha mpokeaji kuthibitisha uwasilishaji. Tafuta mada:"
+
+#: 
+msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
+msgstr "OPcache haijawezeshwa. Kuiwezesha ni njia salama ya kuharakisha upakiaji wa kurasa za PHP."
+
+#: 
+msgid "Off"
+msgstr "Imezimwa"
+
+#: 
+msgid "On"
+msgstr "Imewashwa"
+
+#: 
+msgid "Open the email debug tester"
+msgstr "Fungua kipimo cha utatuzi wa barua pepe"
+
+#: 
+msgid "PHP Version"
+msgstr "Toleo la PHP"
+
+#: 
+msgid "PHPMailer SMTP session"
+msgstr "Kikao cha PHPMailer SMTP"
+
+#: 
+msgid "Prerequisites"
+msgstr "Mahitaji ya Awali"
+
+#: 
+msgid "Review the SMTP debug log below for the handshake details, then adjust your settings."
+msgstr "Kagua kumbukumbu ya utatuzi wa SMTP hapa chini kwa maelezo ya muunganisho, kisha rekebisha mipangilio yako."
+
+#: 
+msgid "SMTP Configuration"
+msgstr "Usanidi wa SMTP"
+
+#: 
+msgid "SMTP Debug Log"
+msgstr "Kumbukumbu ya Utatuzi wa SMTP"
+
+#: 
+msgid "SMTP Host is not configured."
+msgstr "Seva mwenyeji ya SMTP haijasanidiwa."
+
+#: 
+msgid "SMTP configuration test — if this arrived, your setup works."
+msgstr "Jaribio la usanidi wa SMTP — ikiwa hii ilifika, mfumo wako unafanya kazi."
+
+#: 
+msgid "Schema Version"
+msgstr "Toleo la Mpango wa Hifadhidata"
+
+#: 
+msgid "Send Again"
+msgstr "Tuma Tena"
+
+#: 
+msgid "Send a test message to verify your SMTP configuration"
+msgstr "Tuma ujumbe wa majaribio kuthibitisha usanidi wako wa SMTP"
+
+#: 
+msgid "Server"
+msgstr "Seva"
+
+#: 
+msgid "Server Version"
+msgstr "Toleo la Seva"
+
+#: 
+msgid "Session Handler"
+msgstr "Kidhibiti cha Kikao"
+
+#: 
+msgid "Session Save Path"
+msgstr "Njia ya Kuhifadhi Kikao"
+
+#: 
+msgid "Settings Valid"
+msgstr "Mipangilio Sahihi"
+
+#: 
+msgid "Subject"
+msgstr "Mada"
+
+#: 
+msgid "Test"
+msgstr "Jaribio"
+
+#: 
+msgid "Test email accepted by SMTP server"
+msgstr "Barua pepe ya majaribio imekubaliwa na seva ya SMTP"
+
+#: 
+msgid "Test email failed to send"
+msgstr "Barua pepe ya majaribio imeshindwa kutumwa"
+
+#: 
+msgid "This is a ChurchCRM test email."
+msgstr "Hii ni barua pepe ya majaribio ya ChurchCRM."
+
+#: 
+msgid "Timeout"
+msgstr "Muda Umeisha"
+
+#: 
+msgid "Timezone"
+msgstr "Eneo la Saa"
+
+#: 
+msgid "Unable to list web server modules (non-Apache SAPI)."
+msgstr "Haiwezekani kuorodhesha moduli za seva ya wavuti (SAPI isiyo ya Apache)."
+
+#: 
+msgid "Update Settings"
+msgstr "Sasisha Mipangilio"
+
+#: 
+msgid "View full photo"
+msgstr "Tazama picha kamili"
+
+#: 
+msgid "page."
+msgstr "ukurasa."
+
+#: 
+msgid "user:"
+msgstr "mtumiaji:"
+
+#: 
+msgid "1. Download the template"
+msgstr "1. Pakua templeti"
+
+#: 
+msgid "2. Fill in your data"
+msgstr "2. Jaza data yako"
+
+#: 
+msgid "3. Upload and map"
+msgstr "3. Pakia na oana"
+
+#: 
+msgid "Add Recurring Event"
+msgstr "Ongeza Tukio Linalorudiwa"
+
+#: 
+msgid "Available after the event is saved."
+msgstr "Inapatikana baada ya tukio kuhifadhiwa."
+
+#: 
+msgid "Boolean properties/fields accept yes / no / true / false / 1 / 0."
+msgstr "Sehemu/mali za Boolean zinakubali ndiyo / hapana / kweli / uongo / 1 / 0."
+
+#: 
+msgid "ChurchCRM auto-matches each column by name. Anything it cannot match is marked as Unmapped — pick a field or leave it as Ignore."
+msgstr "ChurchCRM inaoana kiotomatiki kila safu wima kwa jina. Chochote kisichoweza kuoanishwa kimewekwa alama ya Haioani — chagua sehemu au uache kama Puuza."
+
+#: 
+msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
+msgstr "Haiwezekani kusoma faili la CSV. Hakikisha ni faili halali la kutenganishwa na koma yenye safu mlalo ya kichwa."
+
+#: 
+msgid "Custom field columns you have not configured are ignored — nothing is created on the fly."
+msgstr "Safu wima za sehemu maalum ambazo haujasanidi zinapuuzwa — hakuna kinachoundwa papo hapo."
+
+#: 
+msgid "Custom fields and properties are supported"
+msgstr "Sehemu maalum na mali zinasaidiwa"
+
+#: 
+msgid "Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a month and day with no year."
+msgstr "Sehemu za tarehe zinakubali YYYY-MM-DD au M/D/YYYY. Tumia 0000-MM-DD au M/D kwa mwezi na siku bila mwaka."
+
+#: 
+msgid "Each row is one person. People in the same family share a FamilyID. Leave columns blank when you have no value for them."
+msgstr "Kila safu mlalo ni mtu mmoja. Watu wa familia moja wanashiriki FamilyID. Acha safu wima tupu unapokuwa huna thamani kwao."
+
+#: 
+msgid "Event Timing"
+msgstr "Muda wa Tukio"
+
+#: 
+msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
+msgstr "Kila tukio linalooanishwa kati ya Kutoka na Kwenda litapata tukio lake kwa wakati sawa wa Kuanza/Kumalizika."
+
+#: 
+msgid "External calendar sharing is disabled"
+msgstr "Kushiriki kalenda ya nje kumezimwa"
+
+#: 
+msgid "Failed to load event editor. Please refresh and try again."
+msgstr "Imeshindwa kupakia kihariri cha tukio. Tafadhali onyesha upya na ujaribu tena."
+
+#: 
+msgid "Family Custom"
+msgstr "Familia Maalum"
+
+#: 
+msgid "Family Property"
+msgstr "Mali ya Familia"
+
+#: 
+msgid "Fields"
+msgstr "Sehemu"
+
+#: 
+msgid "Go to home"
+msgstr "Nenda ukurasa mkuu"
+
+#: 
+msgid "Hide advanced options"
+msgstr "Ficha chaguo za hali ya juu"
+
+#: 
+msgid "How the CSV Import Works"
+msgstr "Jinsi Uingizaji wa CSV Unavyofanya Kazi"
+
+#: 
+msgid "Imported from CSV"
+msgstr "Iliingizwa kutoka CSV"
+
+#: 
+msgid "Invalid date format"
+msgstr "Umbizo la tarehe si sahihi"
+
+#: 
+msgid "Loading event editor…"
+msgstr "Inapakia kihariri cha tukio…"
+
+#: 
+msgid "No group"
+msgstr "Hakuna kikundi"
+
+#: 
+msgid "Not pinned to any calendar"
+msgstr "Haijabandikwa kwenye kalenda yoyote"
+
+#: 
+msgid "Optional — sermon notes, materials, or other details copied to every generated event."
+msgstr "Hiari — maelezo ya mahubiri, nyenzo, au maelezo mengine yanayonakiliwa kwa kila tukio linalozalishwa."
+
+#: 
+msgid "Person / Family"
+msgstr "Mtu / Familia"
+
+#: 
+msgid "Person Custom"
+msgstr "Mtu Maalum"
+
+#: 
+msgid "Person Property"
+msgstr "Mali ya Mtu"
+
+#: 
+msgid "Show more options"
+msgstr "Onyesha chaguo zaidi"
+
+#: 
+msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
+msgstr "Kiungo cha kalenda hakikamiliki. Tafadhali angalia URL na mtu aliyekutumia."
+
+#: 
+msgid "The church administrator has not enabled external calendar sharing. Please contact them if you believe this is in error."
+msgstr "Msimamizi wa kanisa hajawezesha kushiriki kalenda ya nje. Tafadhali wasiliana nao ikiwa unaamini hii ni kosa."
+
+#: 
+msgid "The start or end date in the link could not be understood. Try the base calendar link without date parameters."
+msgstr "Tarehe ya kuanza au kumalizika katika kiungo haikuweza kueleweka. Jaribu kiungo cha msingi cha kalenda bila vigezo vya tarehe."
+
+#: 
+msgid "The template already contains every column you can map — the core Person/Family fields plus each custom field and property your site defines."
+msgstr "Templeti tayari ina kila safu wima unayoweza kuramani — sehemu za msingi za Mtu/Familia pamoja na kila sehemu maalum na mali inayofafanuliwa na tovuti yako."
+
+#: 
+msgid "The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically."
+msgstr "Templeti tayari ina safu wima kwa kila sehemu maalum ya Mtu/Familia na kwa kila mali uliyofafanua. Ukiongeza safu wima kwa mkono, tumia tu jina halisi la sehemu maalum au mali kama kichwa cha safu wima na kiingizaji kitaoanisha kiotomatiki."
+
+#: 
+msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
+msgstr "Kiungo hiki cha kalenda si sahihi au kimefutwa. Omba kanisa kiungo cha sasa."
+
+#: 
+msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
+msgstr "Inaunganisha tukio hili na orodha ya darasa au wizara — inatumika na mtiririko wa kuingia wa Kiosk."
+
+#: 
+msgid "Upload a CSV to create families and people in bulk."
+msgstr "Pakia CSV kuunda familia na watu kwa wingi."
+
+#: 
+msgid "Volunteer-entered headcounts, broken down by category."
+msgstr "Hesabu za watu zilizowekwa na wahusika, zimeainishwa kwa kategoria."
+
+#: 
+msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
+msgstr "CSV yako ina majina ya safu wima yanayorudiwa. Badilisha jina la safu wima zinazorudiwa (mf. ongeza \"(2)\" kwa ya pili) na upaki tena."
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "Je, una uhakika unataka kufuta kabisa kitu hiki kilichochangiwa?"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "Je, una uhakika unataka kufuta kabisa nambari hii ya paddle?"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "Futa kitu kilichochangiwa"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "Futa nambari ya paddle"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "Tokeni ya usalama batili. Tafadhali jaribu tena."
+
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "Inaongeza likizo za umma kwenye kalenda kuu. Kila nchi iliyochaguliwa inakuwa kalenda yake inayoweza kuwashwa/kuzimwa kwenye upau wa pembeni, ili watumiaji waweze kuonyesha au kuficha likizo kwa kujitegemea."
+
+#: 
+msgid "Choose map provider"
+msgstr "Chagua mtoa ramani"
+
+#: 
+msgid "Current database"
+msgstr "Hifadhidata ya sasa"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "Data ya maonyesho kwa kawaida hupakiwa tu kwenye usakinishaji mpya. Kuingiza sasa kutaongeza rekodi za mfano pamoja na data yako iliyopo na inaweza kuunda nakala rudia."
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "Kila nchi inazalisha safu yake ya kalenda kwenye upau wa pembeni. Tumia kitufe cha kila kalenda kuificha nchi kwa muda bila kubadilisha mipangilio ya programu jalizi."
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "Kuchuja kwa jamii"
+
+#: 
+msgid "Holiday Settings"
+msgstr "Mipangilio ya Likizo"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "Likizo (%s)"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "Likizo zimepewa lebo kwa aina: Rasmi, Matukio, Likizo za Benki, za Msimu, na za Kidini. Acha makundi yote bila kuchaguliwa kuonyesha kila likizo, au chagua aina mahususi kupunguza maonyesho."
+
+#: 
+msgid "Import demo data anyway"
+msgstr "Ingiza data ya maonyesho hata hivyo"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "Kitambulisho cha ahadi ya fedha hakipo."
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "Hakuna nchi iliyochaguliwa. Chagua angalau nchi moja katika mipangilio ya programu jalizi ya Kalenda za Likizo."
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "Hakuna rekodi zinazolingana na vichujio vilivyochaguliwa."
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "Fungua katika Apple Maps"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "Fungua katika Google Maps"
+
+#: 
+msgid "Open in new tab"
+msgstr "Fungua katika kichupo kipya"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "Kusakinisha nchi"
+
+#: 
+msgid "Show all"
+msgstr "Onyesha zote"
+
+#: 
+msgid "Show:"
+msgstr "Onyesha:"
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "Kuonyesha na kuficha nchi moja moja"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "Kiswidi"
+
+#: 
+msgid "System"
+msgstr "Mfumo"
+
+#: 
+msgid "Timeline filters"
+msgstr "Vichujio vya mstari wa wakati"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "Kuanza upya na hifadhidata safi, tumia Weka upya Hifadhidata kutoka kwenye Dashibodi ya Msimamizi kabla ya kuingiza data ya maonyesho."
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "Tumia kichaguo cha Nchi kuchagua nchi moja au zaidi. Kila nchi unayoiongeza itaonekana kama ingizo tofauti la kalenda kwenye upau wa pembeni — ikiruhusu kuonyesha likizo kwa mkutano wa kimataifa."
+
+#: 
+msgid "Your database already contains data"
+msgstr "Hifadhidata yako tayari ina data"
+
+#: 
+msgid "people"
+msgstr "watu"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "downloadUrl inahitajika kusakinisha programu jalizi."
+
+#: 
+msgid "All three fields are required."
+msgstr "Sehemu zote tatu zinahitajika."
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "Programu Jalizi Zilizoidhinishwa na Jumuiya"
+
+#: 
+msgid "Browse Approved"
+msgstr "Vinjari Zilizoidhinishwa"
+
+#: 
+msgid "Check for Updates"
+msgstr "Angalia Masasisho"
+
+#: 
+msgid "Checking…"
+msgstr "Inakagua…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "Futa Karantini"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "Futa karantini tu baada ya tatizo la msingi kutatuliwa. Kuwasha programu jalizi iliyopo karantini kunakataliwa na seva."
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "Bonyeza \"Vinjari Zilizoidhinishwa\" hapo juu kusakinisha programu jalizi iliyopitishwa, au \"Sakinisha kutoka URL\" kwa ujenzi ambao haujathibitishwa wakati wa maendeleo."
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "Imeshindwa kufuta karantini ya programu jalizi"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "Imeshindwa kufuta karantini"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "Imeshindwa kusakinisha programu jalizi"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "Imeshindwa kusakinisha programu jalizi kutoka URL"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "Imeshindwa kupakia orodha ya programu jalizi zilizoidhinishwa"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "Imeshindwa kupakia orodha ya programu jalizi zilizoidhinishwa."
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "Imeshindwa kusasisha rejista ya programu jalizi"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "Imeshindwa kusasisha rejista ya programu jalizi. Angalia muunganisho wako wa intaneti."
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "Imeshindwa kuondoa programu jalizi"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "Inapata rejista ya hivi karibuni…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "Pata hii kutoka kwa mwandishi wa programu jalizi. Kisanikisha kitakataa upakuaji kama hazilingani tabia kwa tabia."
+
+#: 
+msgid "Homepage"
+msgstr "Ukurasa wa Nyumbani"
+
+#: 
+msgid "Install"
+msgstr "Sakinisha"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "Sakinisha Programu Jalizi kutoka URL (Isiyothibitishwa)"
+
+#: 
+msgid "Install Unverified"
+msgstr "Sakinisha Isiyothibitishwa"
+
+#: 
+msgid "Install failed"
+msgstr "Usakinishaji umeshindwa"
+
+#: 
+msgid "Install from URL"
+msgstr "Sakinisha kutoka URL"
+
+#: 
+msgid "Installing…"
+msgstr "Inasakinisha…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "Kibab-case. Lazima ilingane na jina la saraka ya juu ndani ya zip na kitambulisho katika plugin.json."
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "Inapakia orodha ya programu jalizi zilizoidhinishwa…"
+
+#: 
+msgid "Loading…"
+msgstr "Inapakia…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "Inalingana na ingizo kwenye orodha ya programu jalizi zilizoidhinishwa"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "Lazima iwe URL ya toleo lisiloweza kubadilishwa inayotolewa kupitia HTTPS."
+
+#: 
+msgid "Plugin id"
+msgstr "Kitambulisho cha programu jalizi"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "Programu jalizi imesanikishwa kama ISIYOTHIBITISHWA. Kagua faili zilizotolewa kwa makini kabla ya kuwasha."
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "Programu jalizi imesanikishwa. Kagua na bonyeza Wezesha kuiamsha."
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "Karantini ya programu jalizi imefutwa. Sasa unaweza kuiwezesha tena programu jalizi."
+
+#: 
+msgid "Plugin quarantined"
+msgstr "Programu jalizi ipo karantini"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "Rejista ya programu jalizi imesasishwa."
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "Programu jalizi imeondolewa"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "Programu jalizi imeondolewa."
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "URL ya zip ya programu jalizi (HTTPS pekee)"
+
+#: 
+msgid "Quarantined"
+msgstr "Ipo Karantini"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "Kagua faili za programu jalizi kwenye diski kabla ya kuwasha. Programu jalizi zisizothibitishwa zinafanya kazi kwa ruhusa sawa na programu jalizi zilizoidhinishwa."
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "Hundi ya SHA-256"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "SHA-256 lazima iwe mfuatano wa herufi 64 za hex."
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "Watunzaji wa ChurchCRM hawajakagua. Unawajibika kwa usalama na tabia ya chochote unachosakinisha hapa. Pendelea mtiririko wa Vinjari Zilizoidhinishwa inapowezekana."
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "Orodha ya programu jalizi zilizoidhinishwa iko wazi. Bado hakuna programu jalizi za wahusika wengine zinazopatikana kupitia kisanikisha kilichothibitishwa."
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "Programu jalizi ilizimwa kiotomatiki baada ya kushindwa wakati wa uendeshaji."
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "Programu jalizi hizi zimekaguliwa na kuidhinishwa na watunzaji wa ChurchCRM. Bonyeza Sakinisha kupakua na kusakinisha moja — programu jalizi haitawashwa kiotomatiki."
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "Programu jalizi hii haipo kwenye orodha ya programu jalizi zilizoidhinishwa za ChurchCRM."
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "Programu jalizi hii itasanikishwa kama ISIYOTHIBITISHWA."
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "URL lazima itumie HTTPS."
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "Ondoa (futa kutoka diski)"
+
+#: 
+msgid "Unverified plugin"
+msgstr "Programu jalizi isiyothibitishwa"
+
+#: 
+msgid "Verified"
+msgstr "Imethibitishwa"
+
+#: 
+msgid "What this plugin does:"
+msgstr "Programu jalizi hii inafanya nini:"
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "downloadUrl, sha256, na pluginId zote zinahitajika kwa usakinishaji usiothibitishwa."
+
+#: 
+msgid "risk"
+msgstr "hatari"
+
+#: 
+msgid "Name cannot be empty"
+msgstr "Jina haliwezi kuwa tupu"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "Jina haliwezi kuwa ndefu zaidi ya herufi %d"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "Unahitaji msaada? Wasiliana nasi"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "Hakuna kalenda iliyochaguliwa — tukio hili litaonekana chini ya kalenda ya mfumo ya \"Matukio Yasiyobandikwa\" hadi uibandike."
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "Inafungua dirisha la dakika 2 kwa vifaa kusajili:"
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "Nyakati zinatumia wakati wa kanisa ({{church}}), si ya kivinjari chako ({{browser}})."
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "Karibu — ingia ili kusimamia mkutano wako"
 

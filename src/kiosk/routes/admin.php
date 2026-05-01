@@ -3,7 +3,6 @@
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
-use ChurchCRM\Slim\Middleware\Request\Setting\SundaySchoolEnabledMiddleware;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -20,7 +19,7 @@ $app->group('/admin', function (RouteCollectorProxy $group): void {
             'sPageTitle'   => gettext('Kiosk Manager'),
             'sPageSubtitle' => gettext('Register and manage kiosk devices for event check-in'),
             'aBreadcrumbs' => PageHeader::breadcrumbs([
-                [gettext('Admin'), '/admin/'],
+                [gettext('Groups'), '/groups/dashboard'],
                 [gettext('Kiosk Manager')],
             ]),
         ];
@@ -30,4 +29,4 @@ $app->group('/admin', function (RouteCollectorProxy $group): void {
 
     $group->get('', $handler);
     $group->get('/', $handler);
-})->add(SundaySchoolEnabledMiddleware::class)->add(AdminRoleAuthMiddleware::class)->add(AuthMiddleware::class);
+})->add(AdminRoleAuthMiddleware::class)->add(AuthMiddleware::class);

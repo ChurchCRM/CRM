@@ -4,6 +4,7 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\PaddlenumPnQuery;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -13,12 +14,18 @@ use ChurchCRM\view\PageHeader;
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled(), 'DeleteRecords');
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
 
-// Read the ID from $_POST on the confirmed-delete submit, $_GET when rendering
-// the confirmation page. $_REQUEST depends on request_order and can include
-// cookies — unsafe for destructive operations.
-$idSource = isset($_POST['Delete']) ? $_POST : $_GET;
-$iPaddleNumID = (int) InputUtils::legacyFilterInput($idSource['PaddleNumID'] ?? 0, 'int');
-$linkBack = RedirectUtils::getLinkBackFromRequest('FindFundRaiser.php');
+// Read destructive-action inputs from the right superglobal per request method:
+// GET renders the confirmation page, POST performs the delete. Using $_REQUEST
+// would let PHP's request_order/cookies influence a destructive operation.
+$isPostAction = isset($_POST['Delete']) || isset($_POST['Cancel']);
+$paddleNumIDSource = $isPostAction ? ($_POST['PaddleNumID'] ?? 0) : ($_GET['PaddleNumID'] ?? 0);
+$iPaddleNumID = (int) InputUtils::legacyFilterInput($paddleNumIDSource, 'int');
+$linkBack = $isPostAction
+    ? RedirectUtils::validateRedirectUrl(
+        InputUtils::legacyFilterInput($_POST['linkBack'] ?? '', 'string') ?? '',
+        'FindFundRaiser.php'
+    )
+    : RedirectUtils::getLinkBackFromRequest('FindFundRaiser.php');
 $iFundRaiserID = (int) ($_SESSION['iCurrentFundraiser'] ?? 0);
 
 // Confirmed deletion (second pass, POST with CSRF token)
@@ -30,10 +37,10 @@ if (isset($_POST['Delete'])) {
     }
 
     if ($iPaddleNumID > 0 && $iFundRaiserID > 0) {
-        // No Propel-generated model exists for paddlenum_pn; raw SQL is safe
-        // here because both IDs are hard-cast to int before interpolation.
-        $sSQL = 'DELETE FROM paddlenum_pn WHERE pn_id=' . $iPaddleNumID . ' AND pn_fr_id=' . $iFundRaiserID;
-        RunQuery($sSQL);
+        PaddlenumPnQuery::create()
+            ->filterByPnId($iPaddleNumID)
+            ->filterByPnFrId($iFundRaiserID)
+            ->delete();
     }
     RedirectUtils::redirect($linkBack);
 } elseif (isset($_POST['Cancel'])) {
@@ -51,9 +58,10 @@ require_once __DIR__ . '/Include/Header.php';
 
 <div class="card-body text-center">
     <p class="lead mb-4"><?= gettext('Are you sure you want to permanently delete this paddle number?') ?></p>
-    <form method="post" action="PaddleNumDelete.php?PaddleNumID=<?= $iPaddleNumID ?>&amp;linkBack=<?= urlencode($linkBack) ?>" name="PaddleNumDelete">
+    <form method="post" action="PaddleNumDelete.php" name="PaddleNumDelete">
         <?= CSRFUtils::getTokenInputField('paddle_num_delete') ?>
         <input type="hidden" name="PaddleNumID" value="<?= $iPaddleNumID ?>">
+        <input type="hidden" name="linkBack" value="<?= InputUtils::escapeAttribute($linkBack) ?>">
         <input type="submit" class="btn btn-danger" value="<?= gettext('Delete') ?>" name="Delete">
         <input type="submit" class="btn btn-secondary ms-2" value="<?= gettext('Cancel') ?>" name="Cancel">
     </form>

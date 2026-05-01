@@ -133,8 +133,8 @@ document.addEventListener("DOMContentLoaded", () => {
       title: i18next.t("Confirm"),
       message: msg,
       buttons: {
-        cancel: { label: '<i class="ti ti-x"></i> ' + i18next.t("Cancel") },
-        confirm: { label: '<i class="ti ti-check"></i> ' + i18next.t("OK"), className: "btn-danger" },
+        cancel: { label: `<i class="ti ti-x"></i> ${i18next.t("Cancel")}` },
+        confirm: { label: `<i class="ti ti-check"></i> ${i18next.t("OK")}`, className: "btn-danger" },
       },
       callback: (result) => {
         if (result) {

@@ -664,10 +664,6 @@ msgid "Save Changes"
 msgstr "保存更改"
 
 #: 
-msgid "Church Event Editor"
-msgstr "教会事件编辑器"
-
-#: 
 msgid "Edit Event Type"
 msgstr "编辑事件类型"
 
@@ -734,21 +730,9 @@ msgid "Create Event"
 msgstr "建立活动"
 
 #: 
-msgid "Create a new Event"
-msgstr "建立新活动"
-
-#: 
-msgid "Select your event type"
-msgstr "选择您的活动类型"
-
-#: 
 #, fuzzy
 msgid "Event Status"
 msgstr "事件状态"
-
-#: 
-msgid "Return to Events"
-msgstr "返回至活动"
 
 #: 
 msgid "Sundays"
@@ -1209,10 +1193,6 @@ msgid "Summary Data"
 msgstr "摘要数据"
 
 #: 
-msgid "CSV"
-msgstr "CSV"
-
-#: 
 msgid "Back"
 msgstr "背面"
 
@@ -1339,10 +1319,6 @@ msgstr "数据文件格式"
 #: 
 msgid "GPS Visualizer"
 msgstr "GPS可视化"
-
-#: 
-msgid "Street Atlas USA"
-msgstr "街道地图集美国"
 
 #: 
 #, fuzzy
@@ -2408,26 +2384,6 @@ msgstr "数字太大。必须是介于-2147483648和2147483647"
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "货币量过于庞大。最大999999999.99美元"
 
-#: 
-msgid " Bold Italic"
-msgstr "粗体斜体"
-
-#: 
-msgid " Italic"
-msgstr "斜体"
-
-#: 
-msgid " Bold"
-msgstr "胆大"
-
-#: 
-msgid "Error making API Call to"
-msgstr "API调用出现错误"
-
-#: 
-msgid "Error text"
-msgstr "文本错误"
-
 #. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
@@ -3133,10 +3089,6 @@ msgstr "QuickBooks存款票设置"
 #: 
 msgid "Add Church Event"
 msgstr "增加教会活动"
-
-#: 
-msgid "List Event Types"
-msgstr "列出活动类型"
 
 #: 
 msgid "Check-in and Check-out"
@@ -4701,11 +4653,6 @@ msgstr "俄语"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "萨米语（北部）（瑞典）"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "阿尔巴尼亚语"
 
@@ -4990,10 +4937,6 @@ msgid "Notification for"
 msgstr "通知"
 
 #: 
-msgid "ERROR"
-msgstr "错误"
-
-#: 
 msgid "Title FirstName MiddleName LastName"
 msgstr "Title FirstName MiddleName LastName"
 
@@ -5158,7 +5101,8 @@ msgid "Indonesian - Indonesia"
 msgstr "印尼语 - 印尼"
 
 #: 
-msgid "records(s) successfully added to selected Group."
+#, fuzzy
+msgid "record(s) successfully added to selected Group."
 msgstr "记录已成功添加到选定的组。"
 
 #: 
@@ -5188,10 +5132,6 @@ msgstr "新增家庭"
 #: 
 msgid "Church Greeter"
 msgstr "教会迎宾员"
-
-#: 
-msgid "External Calendar API is disabled"
-msgstr "外部日历API已禁用"
 
 #: 
 msgid "Special Group Settings : Sunday School Type"
@@ -5473,7 +5413,8 @@ msgid "Remove All from Cart"
 msgstr "从购物车中删除全部"
 
 #: 
-msgid "records(s) successfully deleted from the selected Group."
+#, fuzzy
+msgid "record(s) successfully deleted from the selected Group."
 msgstr "顺利将纪绿从所选的群组中删除"
 
 #: 
@@ -5623,16 +5564,8 @@ msgid "Missing calendar access token"
 msgstr "缺少日历访问令牌"
 
 #: 
-msgid "Calendar access token not found"
-msgstr "未找到日历访问令牌"
-
-#: 
 msgid "User must have Delete Records permission"
 msgstr "用户必须具有删除记录权限"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "ChurchCRM中央通知URL"
 
 #: 
 msgid "invalid event type id"
@@ -5711,10 +5644,6 @@ msgstr "提供的国家名称无效"
 #: 
 msgid "LastName FirstName"
 msgstr "姓氏 名字"
-
-#: 
-msgid "Holidays"
-msgstr "假日"
 
 #: 
 msgid "Person Name"
@@ -5897,10 +5826,6 @@ msgid "Portuguese - Portugal"
 msgstr "葡萄牙语-葡萄牙"
 
 #: 
-msgid "Holiday"
-msgstr "假期"
-
-#: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "指定要在身份验证器应用程序中显示的应用程序名称"
 
@@ -5960,10 +5885,6 @@ msgstr "没有传入电子邮件"
 #: 
 msgid "Mailchimp is not active"
 msgstr "Mailchimp无效"
-
-#: 
-msgid "Mailchimp"
-msgstr "Mailchimp"
 
 #: 
 msgid "Lists"
@@ -6049,10 +5970,6 @@ msgstr "文本"
 #: 
 msgid "Event Description"
 msgstr "活动说明"
-
-#: 
-msgid "Help translate this project"
-msgstr "帮助翻译这个项目"
 
 #. Context: locales
 #: 
@@ -6970,7 +6887,8 @@ msgid "Total Payments"
 msgstr "总付款"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payments?"
 msgstr "付款记录"
 
 #: 
@@ -6984,10 +6902,6 @@ msgstr "基本 URL"
 #: 
 msgid "Copy"
 msgstr "复制"
-
-#: 
-msgid "DSN"
-msgstr "DSN"
 
 #: 
 msgid "Debug Info"
@@ -7050,20 +6964,8 @@ msgid "SMTP Host"
 msgstr "SMTP 主机"
 
 #: 
-msgid "Software"
-msgstr "软件"
-
-#: 
-msgid "System & Configuration"
-msgstr "系统与配置"
-
-#: 
 msgid "Tip:"
 msgstr "提示："
-
-#: 
-msgid "Valid Settings"
-msgstr "有效设置"
 
 #: 
 msgid "An error occurred during demo data import"
@@ -7123,10 +7025,6 @@ msgid "Attendance Count Categories"
 msgstr "考勤统计类别"
 
 #: 
-msgid "Attendance Notes"
-msgstr "考勤笔记"
-
-#: 
 msgid "Change Event"
 msgstr "更改活动"
 
@@ -7182,14 +7080,6 @@ msgstr "删除活动"
 msgid "Edit Event"
 msgstr "编辑活动"
 
-#: 
-msgid "Editing Event"
-msgstr "正在编辑活动"
-
-#: 
-msgid "Enter event title..."
-msgstr "输入活动标题..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7240,14 +7130,6 @@ msgid "None (one-time event)"
 msgstr "无（一次性活动）"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "可选 - 添加讲道笔记或额外的活动详情"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "有关考勤的可选笔记..."
-
-#: 
 msgid "People Checked In"
 msgstr "已签到人员"
 
@@ -7282,10 +7164,6 @@ msgstr "搜索主管..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "选择签到活动"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "讲道/活动文本"
 
 #: 
 msgid "Unclassified"
@@ -8077,10 +7955,6 @@ msgid "Orphaned Files:"
 msgstr "孤立文件："
 
 #: 
-msgid "PDF/CSV"
-msgstr "PDF/CSV"
-
-#: 
 msgid "Payment"
 msgstr "付款"
 
@@ -8317,10 +8191,6 @@ msgid "Base URL is not configured in Config.php"
 msgstr "Config.php 中未配置基础 URL"
 
 #: 
-msgid "ChurchCRM Supported Locales"
-msgstr "ChurchCRM 支持的语言环境"
-
-#: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "通过 SSH、FTP 或您的主机控制面板连接到服务器"
 
@@ -8367,10 +8237,6 @@ msgstr "语言"
 #: 
 msgid "Local development:"
 msgstr "本地开发："
-
-#: 
-msgid "Locale Support"
-msgstr "语言环境支持"
 
 #: 
 msgid "Location & Contact Information"
@@ -8539,10 +8405,6 @@ msgstr "提交核实"
 #: 
 msgid "Thank You!"
 msgstr "谢谢！"
-
-#: 
-msgid "Translation incomplete"
-msgstr "翻译不完整"
 
 #: 
 msgid "Visit Our Website"
@@ -9189,10 +9051,6 @@ msgid "Failed to save the downloaded release file. Please check disk space and p
 msgstr "保存下载的发布文件失败。请检查磁盘空间和权限。"
 
 #: 
-msgid "Invalid date format in start parameter"
-msgstr "开始参数中的日期格式无效"
-
-#: 
 msgid "Mismatch"
 msgstr "不匹配"
 
@@ -9590,10 +9448,6 @@ msgid "Important"
 msgstr "重要"
 
 #: 
-msgid "Install plugins by placing them in"
-msgstr "通过将插件放置在以下位置来安装插件"
-
-#: 
 msgid "Invalid code. Please try again."
 msgstr "验证码无效。请重试。"
 
@@ -9652,10 +9506,6 @@ msgstr "未找到链接"
 #: 
 msgid "Loading recovery codes"
 msgstr "正在加载恢复码"
-
-#: 
-msgid "MailChimp"
-msgstr "MailChimp"
 
 #: 
 msgid "MailChimp API Key"
@@ -10768,10 +10618,6 @@ msgid "CSV Column"
 msgstr "CSV 列"
 
 #: 
-msgid "CSV template not found"
-msgstr "未找到 CSV 模板"
-
-#: 
 msgid "Call"
 msgstr "致电"
 
@@ -10848,10 +10694,6 @@ msgid "Community Management Platform"
 msgstr "社区管理平台"
 
 #: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "与 Excel、Google Sheets 或任何 CSV 导出兼容。"
-
-#: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
 msgstr "以任何顺序完成这些操作，为您的会众准备好 ChurchCRM。"
 
@@ -10878,10 +10720,6 @@ msgstr "连接 SMTP 服务器以便 ChurchCRM 可以发送电子邮件"
 #: 
 msgid "Connect with others"
 msgstr "与他人联系"
-
-#: 
-msgid "Contact us"
-msgstr "联系我们"
 
 #: 
 msgid "Convert individual records into family units"
@@ -11024,10 +10862,6 @@ msgid "Download CSV Template"
 msgstr "下载 CSV 模板"
 
 #: 
-msgid "Download the template to see the expected column format."
-msgstr "下载模板以查看预期的列格式。"
-
-#: 
 msgid "Drag and drop your CSV file here"
 msgstr "在此拖放您的 CSV 文件"
 
@@ -11038,10 +10872,6 @@ msgstr "重复项"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "每个人可以拥有自己的电子邮件和手机号码。"
-
-#: 
-msgid "Each row is one person. Members of the same family share a FamilyID."
-msgstr "每一行是一个人。同一家族的成员共享一个 FamilyID。"
 
 #: 
 msgid "Easy registration"
@@ -11574,10 +11404,6 @@ msgstr "名称更改需要保存。操作菜单中的重新排序和删除操作
 #: 
 msgid "Name, address, contact details"
 msgstr "姓名、地址、联系方式"
-
-#: 
-msgid "Need help?"
-msgstr "需要帮助？"
 
 #: 
 msgid "New"
@@ -12126,10 +11952,6 @@ msgid "Upload CSV"
 msgstr "上传 CSV"
 
 #: 
-msgid "Upload a CSV file to import families and people into ChurchCRM."
-msgstr "上传 CSV 文件将家庭和人员导入 ChurchCRM。"
-
-#: 
 msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
 msgstr "上传来自 Excel、Google Sheets 或之前教会管理系统的 CSV 文件，并将列映射到 ChurchCRM 字段。"
 
@@ -12352,10 +12174,6 @@ msgstr "成员"
 #: 
 msgid "opportunities"
 msgstr "服务机会"
-
-#: 
-msgid "options"
-msgstr "选项"
 
 #: 
 msgid "or connect an external service"
@@ -12592,10 +12410,6 @@ msgstr "注册和管理用于活动签到的自助终端设备"
 #: 
 msgid "Review & Delete"
 msgstr "审查并删除"
-
-#: 
-msgid "SHA1 Hash"
-msgstr "SHA1 哈希"
 
 #: 
 msgid "Signature Mismatch"
@@ -14132,10 +13946,6 @@ msgid "Select the desired event"
 msgstr "选择所需活动"
 
 #: 
-msgid "name@example.com"
-msgstr "name@example.com"
-
-#: 
 msgid "Advanced filtering by group, classification, and role"
 msgstr "按小组、分类和角色进行高级筛选"
 
@@ -14539,10 +14349,6 @@ msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d 个重复事件创建成功。"
 
 #: 
-msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
-msgstr "（例如：会众、访客、儿童），义工可在此记录人数。"
-
-#: 
 msgid "1. Sunday School Class"
 msgstr "1. 主日学班级"
 
@@ -14563,10 +14369,6 @@ msgid "A class is a Group with type \"Sunday School\". It holds the students and
 msgstr "班级是类型为\"Sunday School\"的事工部门，包含学生和老师（带角色的会众）。"
 
 #: 
-msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
-msgstr "关联部门将此活动与班级或事工名册绑定。活动分配到签到台后，签到台会拉取部门成员并显示为点击签到列表。主日学班级请在此关联班级部门，义工即可通过平板为学生签到。"
-
-#: 
 msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
 msgstr "特定的活动场次（例如\"幼儿班 — 4月12日\"），继承类型的默认设置，并通过受众关联班级部门。义工以此记录出席情况。"
 
@@ -14577,10 +14379,6 @@ msgstr "分配给某一活动的平板（签到台）。签到台拉取活动关
 #: 
 msgid "Add Walk-in / Visitor"
 msgstr "添加现场访客"
-
-#: 
-msgid "Add categories on the Event Type page"
-msgstr "在活动类型页面添加分类"
 
 #: 
 msgid "Add people to your cart first, then come back to check them in to an event."
@@ -14629,10 +14427,6 @@ msgstr "审计"
 #: 
 msgid "Audit Events"
 msgstr "审计活动"
-
-#: 
-msgid "Auto-totalled from counts at right"
-msgstr "自动汇总右侧计数"
 
 #: 
 msgid "Back to Events"
@@ -14759,10 +14553,6 @@ msgid "Database dump only (.sql)"
 msgstr "仅数据库转储（.sql）"
 
 #: 
-msgid "Date Range"
-msgstr "日期范围"
-
-#: 
 msgid "Date range cannot exceed 1 year"
 msgstr "日期范围不能超过1年"
 
@@ -14843,10 +14633,6 @@ msgid "Event created. Redirecting to check-in..."
 msgstr "活动已创建，正在跳转到签到页面…"
 
 #: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "活动结束日期/时间必须等于或晚于开始日期/时间。"
-
-#: 
 msgid "Event title is required."
 msgstr "活动标题为必填项。"
 
@@ -14873,10 +14659,6 @@ msgstr "活动类型未配置重复规则"
 #: 
 msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "活动类型未配置有效的每月重复日期"
-
-#: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "将在此日期范围内为每个匹配的场次创建活动。"
 
 #: 
 msgid "Every month on the"
@@ -14927,10 +14709,6 @@ msgid "Group Roster"
 msgstr "部门名册"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "隐藏高级选项"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "主日学、活动与签到台如何协同工作"
 
@@ -14941,10 +14719,6 @@ msgstr "%s 的日期无效，期望格式为 YYYY-MM-DD"
 #: 
 msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "rangeStart 或 rangeEnd 的日期格式无效"
-
-#: 
-msgid "Invalid date format."
-msgstr "日期格式无效。"
 
 #: 
 msgid "Invalid date; expected format YYYY-MM-DD"
@@ -14999,10 +14773,6 @@ msgid "No active events found."
 msgstr "未找到活动中的活动。"
 
 #: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "此活动类型尚未定义出席计数分类。"
-
-#: 
 msgid "No one has been checked in to this event yet."
 msgstr "尚无人签到此活动。"
 
@@ -15043,10 +14813,6 @@ msgid "Please select a person to check in."
 msgstr "请选择要签到的人员。"
 
 #: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "根据此活动类型预填 — 对于重复类型，日期为此类型最后一次活动后的下一场次，时间与类型默认开始时间一致。"
-
-#: 
 msgid "Range end date must be on or after range start date."
 msgstr "范围结束日期必须等于或晚于范围开始日期。"
 
@@ -15075,10 +14841,6 @@ msgid "Recommended"
 msgstr "推荐"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "签到台必填"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "重置将永久删除："
 
@@ -15097,14 +14859,6 @@ msgstr "保存此分类名称的更改"
 #: 
 msgid "Select an event type…"
 msgstr "选择活动类型…"
-
-#: 
-msgid "Select start and end date/time."
-msgstr "选择开始和结束日期/时间。"
-
-#: 
-msgid "Show More Options"
-msgstr "显示更多选项"
 
 #: 
 msgid "Skip"
@@ -15147,16 +14901,8 @@ msgid "The Events module is disabled"
 msgstr "活动模块已禁用"
 
 #: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "所有生成的活动将使用相同的开始和结束时间。"
-
-#: 
 msgid "There are no events scheduled for today"
 msgstr "今日没有安排活动"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "这些是人数统计分类 — 义工在活动结束后填写，以便仪表板按类型细分出席情况（例如会众与访客的数量）。这与签到页面上的个人签到是独立的。"
 
 #: 
 msgid "This event is inactive."
@@ -15211,16 +14957,8 @@ msgid "View Event"
 msgstr "查看活动"
 
 #: 
-msgid "What are these for?"
-msgstr "这些有什么用？"
-
-#: 
 msgid "What does this find?"
 msgstr "这个功能查找什么？"
-
-#: 
-msgid "What is this for?"
-msgstr "这有什么用？"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15487,10 +15225,6 @@ msgid "Online"
 msgstr "在线"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "为设备注册打开一个30秒的窗口："
-
-#: 
 msgid "Pending"
 msgstr "待处理"
 
@@ -15607,14 +15341,6 @@ msgid "Set up Email"
 msgstr "配置电子邮件"
 
 #: 
-msgid "Test SMTP Email"
-msgstr "测试 SMTP 电子邮件"
-
-#: 
-msgid "This is a ChurchCRM test email confirming that your SMTP configuration is working."
-msgstr "这是一封 ChurchCRM 测试邮件，确认您的 SMTP 配置正常运行。"
-
-#: 
 msgid "Unable to copy to clipboard. Please copy the codes manually."
 msgstr "无法复制到剪贴板。请手动复制这些代码。"
 
@@ -15629,4 +15355,856 @@ msgstr "改用恢复代码"
 #: 
 msgid "Use authenticator app instead"
 msgstr "改用验证器应用"
+
+#: 
+msgid "%d modules loaded"
+msgstr "已加载 %d 个模块"
+
+#: 
+msgid "(PHP default)"
+msgstr "（PHP 默认值）"
+
+#: 
+msgid "(none)"
+msgstr "（无）"
+
+#: 
+msgid "(not set)"
+msgstr "（未设置）"
+
+#: 
+msgid "All checks passing"
+msgstr "所有检查通过"
+
+#: 
+msgid "App"
+msgstr "应用"
+
+#: 
+msgid "Browser time zone differs:"
+msgstr "浏览器时区不同："
+
+#: 
+msgid "Calendar time zone:"
+msgstr "日历时区："
+
+#: 
+msgid "Cannot send test email"
+msgstr "无法发送测试邮件"
+
+#: 
+msgid "Charset"
+msgstr "字符集"
+
+#: 
+msgid "Church Email address is not set — the test email has nowhere to go."
+msgstr "教会邮件地址未设置——测试邮件无处发送。"
+
+#: 
+msgid "Church email — configured on the"
+msgstr "教会邮件——配置于"
+
+#: 
+msgid "ChurchCRM Test Email"
+msgstr "ChurchCRM 测试邮件"
+
+#: 
+msgid "Collation"
+msgstr "排序规则"
+
+#: 
+msgid "Connection"
+msgstr "连接"
+
+#: 
+msgid "Database"
+msgstr "数据库"
+
+#: 
+msgid "Delivery"
+msgstr "投递"
+
+#: 
+msgid "Disk (Images Root)"
+msgstr "磁盘（图片根目录）"
+
+#: 
+msgid "Display Errors"
+msgstr "显示错误"
+
+#: 
+msgid "Email Debug"
+msgstr "邮件调试"
+
+#: 
+msgid "Environment"
+msgstr "运行环境"
+
+#: 
+msgid "Error Log"
+msgstr "错误日志"
+
+#: 
+msgid "Error Reporting"
+msgstr "错误报告"
+
+#: 
+msgid "Fix Settings"
+msgstr "修复设置"
+
+#: 
+msgid "Hit Rate"
+msgstr "命中率"
+
+#: 
+msgid "Host"
+msgstr "主机"
+
+#: 
+msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
+msgstr "如果邮件几分钟内未到达，请检查垃圾邮件文件夹及下方的 SMTP 调试日志。"
+
+#: 
+msgid "If you can read this message in your inbox, your SMTP configuration is working correctly."
+msgstr "如果您能在收件箱中看到此邮件，说明您的 SMTP 配置工作正常。"
+
+#: 
+msgid "Incomplete"
+msgstr "不完整"
+
+#: 
+msgid "Installed on Server"
+msgstr "已安装于服务器"
+
+#: 
+msgid "Integrity"
+msgstr "完整性"
+
+#: 
+msgid "Issues detected"
+msgstr "检测到问题"
+
+#: 
+msgid "Loaded php.ini"
+msgstr "已加载 php.ini"
+
+#: 
+msgid "Locale"
+msgstr "区域设置"
+
+#: 
+msgid "Max Execution Time"
+msgstr "最大执行时间"
+
+#: 
+msgid "Max POST Size"
+msgstr "最大 POST 大小"
+
+#: 
+msgid "Max Upload Size"
+msgstr "最大上传大小"
+
+#: 
+msgid "Memory"
+msgstr "内存"
+
+#: 
+msgid "Memory Limit"
+msgstr "内存限制"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
+msgstr "现在请检查收件人的收件箱以确认投递。请查找主题："
+
+#: 
+msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
+msgstr "OPcache 未启用。启用它是加速 PHP 页面加载的低风险方式。"
+
+#: 
+msgid "Off"
+msgstr "关闭"
+
+#: 
+msgid "On"
+msgstr "开启"
+
+#: 
+msgid "Open the email debug tester"
+msgstr "打开邮件调试测试器"
+
+#: 
+msgid "PHP Version"
+msgstr "PHP 版本"
+
+#: 
+msgid "PHPMailer SMTP session"
+msgstr "PHPMailer SMTP 会话"
+
+#: 
+msgid "Prerequisites"
+msgstr "前提条件"
+
+#: 
+msgid "Review the SMTP debug log below for the handshake details, then adjust your settings."
+msgstr "请查看下方 SMTP 调试日志以了解握手详情，然后调整您的设置。"
+
+#: 
+msgid "SMTP Configuration"
+msgstr "SMTP 配置"
+
+#: 
+msgid "SMTP Debug Log"
+msgstr "SMTP 调试日志"
+
+#: 
+msgid "SMTP Host is not configured."
+msgstr "SMTP 主机未配置。"
+
+#: 
+msgid "SMTP configuration test — if this arrived, your setup works."
+msgstr "SMTP 配置测试——如果此邮件已到达，说明您的设置正常工作。"
+
+#: 
+msgid "Schema Version"
+msgstr "数据库模式版本"
+
+#: 
+msgid "Send Again"
+msgstr "重新发送"
+
+#: 
+msgid "Send a test message to verify your SMTP configuration"
+msgstr "发送测试邮件以验证您的 SMTP 配置"
+
+#: 
+msgid "Server"
+msgstr "服务器"
+
+#: 
+msgid "Server Version"
+msgstr "服务器版本"
+
+#: 
+msgid "Session Handler"
+msgstr "会话处理程序"
+
+#: 
+msgid "Session Save Path"
+msgstr "会话保存路径"
+
+#: 
+msgid "Settings Valid"
+msgstr "设置有效"
+
+#: 
+msgid "Subject"
+msgstr "主题"
+
+#: 
+msgid "Test"
+msgstr "测试"
+
+#: 
+msgid "Test email accepted by SMTP server"
+msgstr "测试邮件已被 SMTP 服务器接受"
+
+#: 
+msgid "Test email failed to send"
+msgstr "测试邮件发送失败"
+
+#: 
+msgid "This is a ChurchCRM test email."
+msgstr "这是一封 ChurchCRM 测试邮件。"
+
+#: 
+msgid "Timeout"
+msgstr "超时"
+
+#: 
+msgid "Timezone"
+msgstr "时区"
+
+#: 
+msgid "Unable to list web server modules (non-Apache SAPI)."
+msgstr "无法列出 Web 服务器模块（非 Apache SAPI）。"
+
+#: 
+msgid "Update Settings"
+msgstr "更新设置"
+
+#: 
+msgid "View full photo"
+msgstr "查看完整照片"
+
+#: 
+msgid "page."
+msgstr "页面。"
+
+#: 
+msgid "user:"
+msgstr "用户："
+
+#: 
+msgid "1. Download the template"
+msgstr "1. 下载模板"
+
+#: 
+msgid "2. Fill in your data"
+msgstr "2. 填写数据"
+
+#: 
+msgid "3. Upload and map"
+msgstr "3. 上传并映射"
+
+#: 
+msgid "Add Recurring Event"
+msgstr "添加重复事件"
+
+#: 
+msgid "Available after the event is saved."
+msgstr "事件保存后可用。"
+
+#: 
+msgid "Boolean properties/fields accept yes / no / true / false / 1 / 0."
+msgstr "布尔属性/字段接受 yes / no / true / false / 1 / 0。"
+
+#: 
+msgid "ChurchCRM auto-matches each column by name. Anything it cannot match is marked as Unmapped — pick a field or leave it as Ignore."
+msgstr "ChurchCRM 自动按名称匹配每一列。无法匹配的列将标记为「未映射」——请选择一个字段或将其设置为「忽略」。"
+
+#: 
+msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
+msgstr "无法解析 CSV 文件。请确认该文件是带有标题行的有效逗号分隔文件。"
+
+#: 
+msgid "Custom field columns you have not configured are ignored — nothing is created on the fly."
+msgstr "您未配置的自定义字段列将被忽略——不会自动创建任何内容。"
+
+#: 
+msgid "Custom fields and properties are supported"
+msgstr "支持自定义字段和属性"
+
+#: 
+msgid "Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a month and day with no year."
+msgstr "日期字段接受 YYYY-MM-DD 或 M/D/YYYY 格式。使用 0000-MM-DD 或 M/D 表示无年份的月日。"
+
+#: 
+msgid "Each row is one person. People in the same family share a FamilyID. Leave columns blank when you have no value for them."
+msgstr "每行代表一个人。同一家庭的成员共享 FamilyID。没有数据的列留空即可。"
+
+#: 
+msgid "Event Timing"
+msgstr "事件时间"
+
+#: 
+msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
+msgstr "从「开始」到「结束」之间的每个匹配日期，将在相同的开始/结束时间生成各自的事件。"
+
+#: 
+msgid "External calendar sharing is disabled"
+msgstr "外部日历共享已禁用"
+
+#: 
+msgid "Failed to load event editor. Please refresh and try again."
+msgstr "加载事件编辑器失败。请刷新页面后重试。"
+
+#: 
+msgid "Family Custom"
+msgstr "家庭自定义"
+
+#: 
+msgid "Family Property"
+msgstr "家庭属性"
+
+#: 
+msgid "Fields"
+msgstr "字段"
+
+#: 
+msgid "Go to home"
+msgstr "返回主页"
+
+#: 
+msgid "Hide advanced options"
+msgstr "隐藏高级选项"
+
+#: 
+msgid "How the CSV Import Works"
+msgstr "CSV 导入工作原理"
+
+#: 
+msgid "Imported from CSV"
+msgstr "从 CSV 导入"
+
+#: 
+msgid "Invalid date format"
+msgstr "日期格式无效"
+
+#: 
+msgid "Loading event editor…"
+msgstr "正在加载事件编辑器……"
+
+#: 
+msgid "No group"
+msgstr "无事工部门"
+
+#: 
+msgid "Not pinned to any calendar"
+msgstr "未固定到任何日历"
+
+#: 
+msgid "Optional — sermon notes, materials, or other details copied to every generated event."
+msgstr "可选——讲道笔记、材料或其他详情将复制到每个生成的事件。"
+
+#: 
+msgid "Person / Family"
+msgstr "会众/家庭"
+
+#: 
+msgid "Person Custom"
+msgstr "会众自定义"
+
+#: 
+msgid "Person Property"
+msgstr "会众属性"
+
+#: 
+msgid "Show more options"
+msgstr "显示更多选项"
+
+#: 
+msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
+msgstr "日历链接不完整。请向发送链接的人确认 URL。"
+
+#: 
+msgid "The church administrator has not enabled external calendar sharing. Please contact them if you believe this is in error."
+msgstr "教会管理员尚未启用外部日历共享。如果您认为这是错误，请联系管理员。"
+
+#: 
+msgid "The start or end date in the link could not be understood. Try the base calendar link without date parameters."
+msgstr "无法识别链接中的开始或结束日期。请尝试不带日期参数的基础日历链接。"
+
+#: 
+msgid "The template already contains every column you can map — the core Person/Family fields plus each custom field and property your site defines."
+msgstr "模板已包含所有可映射的列——核心会众/家庭字段，加上您系统定义的每个自定义字段和属性。"
+
+#: 
+msgid "The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically."
+msgstr "模板已包含每个会众/家庭自定义字段及您定义的每个属性的列。如果您手动添加列，只需使用自定义字段或属性的确切名称作为列标题，导入程序将自动匹配。"
+
+#: 
+msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
+msgstr "此日历链接无效或已被撤销。请向教会索取最新链接。"
+
+#: 
+msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
+msgstr "将此事件关联到班级或事工名单——由自助签到流程使用。"
+
+#: 
+msgid "Upload a CSV to create families and people in bulk."
+msgstr "上传 CSV 文件以批量创建家庭和会众。"
+
+#: 
+msgid "Volunteer-entered headcounts, broken down by category."
+msgstr "志愿者输入的按类别分类的出席人数。"
+
+#: 
+msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
+msgstr "您的 CSV 文件中存在重复的列名。请重命名重复的列（例如在第二个列名后添加「(2)」），然后重新上传。"
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "您确定要永久删除此捐赠物品吗？"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "您确定要永久删除此竞拍号吗？"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "删除捐赠物品"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "删除竞拍号"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "安全令牌无效。请重试。"
+
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "将公众假期添加到主日历。每个选定的国家/地区将在侧栏中显示为独立的可切换日历，用户可以单独显示或隐藏节假日。"
+
+#: 
+msgid "Choose map provider"
+msgstr "选择地图服务"
+
+#: 
+msgid "Current database"
+msgstr "当前数据库"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "演示数据通常仅在全新安装时加载。现在导入将在现有数据旁边添加示例记录，可能会产生重复项。"
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "每个国家/地区在侧栏中生成独立的日历行。使用每个日历的切换开关可临时隐藏某个国家/地区，而无需更改插件设置。"
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "按类别筛选"
+
+#: 
+msgid "Holiday Settings"
+msgstr "节假日设置"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "节假日（%s）"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "节假日按类型标记：法定节假日、纪念日、银行假期、季节性节日和宗教节日。不选择任何类别将显示所有节假日，或选择特定类型进行筛选。"
+
+#: 
+msgid "Import demo data anyway"
+msgstr "仍然导入演示数据"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "缺少财务承诺标识符。"
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "未选择任何国家/地区。请在节假日日历插件设置中至少选择一个国家/地区。"
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "所选筛选条件无匹配记录。"
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "在 Apple Maps 中打开"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "在 Google Maps 中打开"
+
+#: 
+msgid "Open in new tab"
+msgstr "在新标签页中打开"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "设置国家/地区"
+
+#: 
+msgid "Show all"
+msgstr "显示全部"
+
+#: 
+msgid "Show:"
+msgstr "显示："
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "显示和隐藏各个国家/地区"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "瑞典语"
+
+#: 
+msgid "System"
+msgstr "系统"
+
+#: 
+msgid "Timeline filters"
+msgstr "时间轴筛选"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "如需从空白数据库重新开始，请在导入演示数据之前从管理仪表板使用重置数据库功能。"
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "使用国家/地区选择器选择一个或多个国家/地区。您添加的每个国家/地区将在侧栏中显示为独立的日历条目——让您可以显示全球会众的节假日。"
+
+#: 
+msgid "Your database already contains data"
+msgstr "您的数据库已包含数据"
+
+#: 
+msgid "people"
+msgstr "人"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "安装插件需要提供下载地址（downloadUrl）。"
+
+#: 
+msgid "All three fields are required."
+msgstr "所有三个字段均为必填项。"
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "已审核的社区插件"
+
+#: 
+msgid "Browse Approved"
+msgstr "浏览已审核插件"
+
+#: 
+msgid "Check for Updates"
+msgstr "检查更新"
+
+#: 
+msgid "Checking…"
+msgstr "检查中…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "清除隔离"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "仅在根本问题已修复后才清除隔离。服务器将拒绝启用被隔离的插件。"
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "点击上方“浏览已审核插件”安装经过审核的插件，或点击“从 URL 安装”以在开发期间安装未经验证的版本。"
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "清除插件隔离失败"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "清除隔离失败"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "安装插件失败"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "从 URL 安装插件失败"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "加载已审核插件列表失败"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "加载已审核插件列表失败。"
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "刷新插件注册表失败"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "刷新插件注册表失败。请检查您的网络连接。"
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "卸载插件失败"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "正在获取最新注册表…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "从插件作者处获取此值。如果不完全匹配，安装程序将拒绝下载。"
+
+#: 
+msgid "Homepage"
+msgstr "主页"
+
+#: 
+msgid "Install"
+msgstr "安装"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "从 URL 安装插件（未验证）"
+
+#: 
+msgid "Install Unverified"
+msgstr "安装未验证插件"
+
+#: 
+msgid "Install failed"
+msgstr "安装失败"
+
+#: 
+msgid "Install from URL"
+msgstr "从 URL 安装"
+
+#: 
+msgid "Installing…"
+msgstr "安装中…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "短横线命名格式。必须与 ZIP 文件内的顶层目录名称及 plugin.json 中的 id 一致。"
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "正在加载已审核插件列表…"
+
+#: 
+msgid "Loading…"
+msgstr "加载中…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "匹配已审核插件列表中的条目"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "必须是通过 HTTPS 提供的不可变发布 URL。"
+
+#: 
+msgid "Plugin id"
+msgstr "插件 ID"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "插件已安装为未验证状态。启用前请仔细检查提取的文件。"
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "插件已安装。请检查后点击“启用”以激活。"
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "插件隔离已清除。您现在可以重新启用该插件。"
+
+#: 
+msgid "Plugin quarantined"
+msgstr "插件已被隔离"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "插件注册表已刷新。"
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "插件已卸载"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "插件已卸载。"
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "插件 ZIP 下载地址（仅限 HTTPS）"
+
+#: 
+msgid "Quarantined"
+msgstr "已隔离"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "启用前请检查磁盘上的插件文件。未验证的插件与已审核的插件具有相同的权限运行。"
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "SHA-256 校验和"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "SHA-256 必须为 64 位十六进制字符串。"
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "ChurchCRM 维护者尚未审核此插件。您对此处安装的任何内容的安全性和行为负全责。请尽可能使用“浏览已审核插件”流程。"
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "已审核插件列表为空。目前尚无第三方插件可通过验证安装程序获取。"
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "插件在运行时失败后已自动禁用。"
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "这些插件已经 ChurchCRM 维护者审核并批准。点击“安装”下载并安装——插件不会自动启用。"
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "此插件不在 ChurchCRM 已审核插件列表中。"
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "此插件将以未验证状态安装。"
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "URL 必须使用 HTTPS。"
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "卸载（从磁盘删除）"
+
+#: 
+msgid "Unverified plugin"
+msgstr "未验证插件"
+
+#: 
+msgid "Verified"
+msgstr "已验证"
+
+#: 
+msgid "What this plugin does:"
+msgstr "此插件的功能："
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "未验证安装需要提供 downloadUrl、sha256 和 pluginId。"
+
+#: 
+msgid "risk"
+msgstr "风险"
+
+#: 
+msgid "Name cannot be empty"
+msgstr "名称不能为空"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "名称不能超过 %d 个字符"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "需要帮助？联系我们"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "未选择日历——此活动将显示在“未固定活动”系统日历下，直到您将其固定为止。"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "打开一个 2 分钟的窗口，供设备在以下地址注册："
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "时间使用教会时间（{{church}}），而非您的浏览器时间（{{browser}}）。"
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "欢迎——登录以管理您的会众"
 

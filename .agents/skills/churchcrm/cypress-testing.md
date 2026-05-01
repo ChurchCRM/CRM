@@ -135,6 +135,74 @@ env: {
 > you which config file is missing the key. Always grep both files when
 > adding a new `*.username` / `*.password` entry.
 
+### API-key test matrix (who has what permission) <!-- learned: 2026-04-15 -->
+
+**The Cypress seed's API-key users do NOT map cleanly to "one user per
+permission."** Before writing a `403` or `200` assertion, verify against
+`cypress/data/seed.sql` (`user_usr` INSERT) and `docker.config.ts`
+(`*.api.key` env vars). Column order in `user_usr` is: AddRecords,
+EditRecords, DeleteRecords, **MenuOptions**, ManageGroups, **Finance**,
+Notes, **Admin** — in that order (positions 7–14 of the INSERT).
+
+| Env var | Seed user | `bAdmin` | `bMenuOptions` | `bFinance` | `bNotes` | `bDeleteRecords` |
+|---|---|---|---|---|---|---|
+| `admin.api.key` | `Admin` (id 1) | **1** | 0 | 0 | 0 | 0 |
+| `user.api.key` | `tony.wade@example.com` (id 3) | 0 | **1** | **1** | **1** | **1** |
+| `nofinance.api.key` | ⚠️ **not seeded** — key doesn't match any user row | — | — | — | — | — |
+| no convenience cmd | `limited.user` (id 4) | 0 | 0 | 0 | 0 | 0 |
+
+**Three things this surfaces that WILL bite you:**
+
+1. **Admin bypasses almost every role middleware.** `User::isMenuOptionsEnabled()`,
+   `isFinanceEnabled()`, `isDeleteRecordsEnabled()`, `isNotesEnabled()`, etc.
+   all return `$this->isAdmin() || $this->isXxx()`. So even though the admin
+   seed row has `bMenuOptions=0`, the admin key **passes** `MenuOptionsRoleAuthMiddleware`
+   and gets 200. You cannot test the 403 path with the admin key for any of
+   these middlewares. `AdminRoleAuthMiddleware` is the only one without a
+   bypass (it's the bypass itself).
+
+2. **`nofinance.api.key` is not in `seed.sql`.** The value in
+   `docker.config.ts` (`M_5K4ZWTdBTmMOTGTfLWCmXFbETgHNG6_…`) doesn't match
+   any `usr_apiKey` column in `cypress/data/seed.sql`. A request with that
+   key hits `AuthMiddleware` → **401** (unknown key), not 403. Existing specs
+   use `[401, 403]` (or `[401, 403, 500]`) to stay honest about this:
+   ```js
+   // ✅ CORRECT — works whether the key is seeded or not
+   cy.makePrivateNoFinanceAPICall("GET", "/api/deposits", null, [401, 403]);
+   // ❌ WRONG — strict 403 fails every run
+   cy.makePrivateNoFinanceAPICall("GET", "/api/deposits", null, 403);
+   ```
+
+3. **The only user that can trigger a pure 403 from most role middlewares
+   is `limited.user` (id 4)**, which has every permission bit = 0 and a
+   valid API key (`limitedUserApiKeyForTesting123456789012345678`). But
+   there's **no `makePrivateLimitedUserAPICall` convenience command** and
+   no `limited.user.api.key` env var. If you need 403 coverage for a
+   middleware with an admin bypass (MenuOptions, Finance-as-non-finance-user,
+   Notes, etc.), you have three options:
+   - Add an env var + command (touches `docker.config.ts`, `new-system.config.ts`,
+     and `cypress/support/api-commands.js`)
+   - Call `cy.makePrivateAPICall(Cypress.env("limited.user.api.key"), …)`
+     inline after adding the env var
+   - Document the gap with a code comment and defer to a follow-up
+
+**Which middleware maps to which bypass:**
+
+| Middleware | Bypasses on `isAdmin()`? | 403 reachable with admin key? |
+|---|---|---|
+| `AdminRoleAuthMiddleware` | — (is the bypass) | ❌ never — admin always passes |
+| `FinanceRoleAuthMiddleware` | ✅ | ❌ |
+| `MenuOptionsRoleAuthMiddleware` | ✅ | ❌ |
+| `NotesRoleAuthMiddleware` | ✅ | ❌ |
+| `DeleteRecordRoleAuthMiddleware` | ✅ | ❌ |
+| `EditRecordsRoleAuthMiddleware` | ✅ | ❌ |
+| `AddEventsRoleAuthMiddleware` | ✅ | ❌ |
+| `ManageGroupRoleAuthMiddleware` | ✅ (if `ManageGroups` bit) | ❌ |
+
+TL;DR: **never assert strict 403 on an admin-keyed call against a role-gated
+route**, and **never assert strict 403 on `makePrivateNoFinanceAPICall`** —
+use `[401, 403]`.
+
 **CRITICAL:**
 - ❌ DO NOT hardcode credentials in test files
 - ❌ DO NOT add commented-out tests or TODO comments
@@ -1810,3 +1878,78 @@ it("rejects POST without a valid CSRF token", () => {
 ```
 
 The 403 assertion exercises the exact code path a CSRF attacker would hit, so it's the regression test that actually proves the fix. Use `cy.setupStandardSession()` (or `cy.setupAdminSession()`) in `beforeEach` so the session cookie is real; the CSRF check runs AFTER the role/auth check.
+
+### In-Memory CSV Files via `Cypress.Buffer` — No Fixture File Needed <!-- learned: 2026-04-21 -->
+
+When testing CSV upload error paths (duplicate headers, malformed content, etc.) you don't need a fixture file — build the CSV string in the test body and pass it via `Cypress.Buffer`:
+
+```js
+it("rejects a CSV with duplicate column headers", () => {
+    const csv = "FirstName,LastName,FirstName\nAlice,Smith,Alice\n";
+    cy.get("#csvFile").selectFile(
+        { contents: Cypress.Buffer.from(csv), fileName: "dup.csv", mimeType: "text/csv" },
+        { force: true },
+    );
+    cy.get("#csv-import-form").submit();
+    cy.contains("duplicate column names", { matchCase: false });
+});
+```
+
+`Cypress.Buffer.from(string)` returns a `Buffer` the same way `Buffer.from()` does in Node — `selectFile` accepts it directly as the `contents` property. This is the right tool for synthetic error-path files; use `cypress/fixtures/` for real data files that are shared across tests.
+
+### `cy.request()` for Redirect Tests — 30x Faster Than `cy.visit()` <!-- learned: 2026-04-22 -->
+
+When a test only needs to assert the final URL after a redirect (e.g. `/setup` →
+`session/begin`), use `cy.request()` with `.its("redirectedToUrl")` instead of
+`cy.visit()` + `cy.location()`. `cy.request()` follows redirects without loading
+JS/CSS/images, dropping ~600ms to ~20ms per test.
+
+```js
+// ❌ slow (~600ms) — loads full page
+it("Redirects to session/begin", () => {
+    cy.visit("/setup");
+    cy.location("pathname").should("include", "session/begin");
+});
+
+// ✅ fast (~20ms) — HTTP only, no browser rendering
+it("Redirects to session/begin", () => {
+    cy.request("/setup").its("redirectedToUrl").should("include", "session/begin");
+});
+```
+
+Use this pattern wherever a test's only assertion is on the destination URL.
+Do NOT use it when the test needs to assert page content, DOM elements, or JS state.
+
+### Spec File Startup Overhead — Consolidate Single-Test Files <!-- learned: 2026-04-22 -->
+
+Each Cypress spec file carries ~200–500ms startup overhead (browser context
+creation, `beforeEach` session setup, `cy.visit()` page load). In a CI matrix
+where jobs run specs serially, 11 single-test files add ~3–5 seconds per job.
+
+**Rule:** Avoid creating a new spec file for a single `it()` block.
+Merge it into a related existing spec that shares the same page and session type.
+Good consolidation targets:
+
+- Same `cy.visit()` URL → same spec file
+- Same `beforeEach` session type (`setupStandardSession` / `setupAdminSession`) → same or nearby `describe` block
+- Same admin area (e.g., `/admin/system/debug/*`) → same spec file, separate `it()` blocks
+
+When merging a spec with a different `beforeEach`, add it as a separate `describe`
+block with its own `beforeEach` inside the same file — don't force a common setup.
+
+```js
+// ✅ Two describe blocks in one file — each has its own beforeEach
+describe("Family basic", () => {
+    beforeEach(() => cy.setupStandardSession());
+    it("...", () => { /* ... */ });
+});
+
+describe("Family Activation", () => {
+    beforeEach(() => {
+        cy.intercept(...);
+        cy.makePrivateUserAPICall(...);
+        cy.setupStandardSession({ forceLogin: true });
+    });
+    it("...", () => { /* ... */ });
+});
+```

@@ -37,8 +37,8 @@ declare global {
 }
 
 // Helper to access window.CRM safely
-function getCRM(): any {
-  return (window as any).CRM || {};
+function getCRM(): CRMNamespace {
+  return window.CRM ?? {};
 }
 
 // Module-level state (avoids global window.CRM pollution)
@@ -48,6 +48,10 @@ const kioskState = {
   kioskAssignmentId: undefined as KioskAssignment | undefined,
   kioskEventLoop: undefined as ReturnType<typeof setInterval> | undefined,
   countdownInterval: undefined as ReturnType<typeof setInterval> | undefined,
+  kioskName: undefined as string | undefined,
+  // Smart refresh: 60s cycle with 10s cancellable popup before each refresh
+  refreshScheduleTimer: undefined as ReturnType<typeof setTimeout> | undefined,
+  refreshCountdownTimer: undefined as ReturnType<typeof setInterval> | undefined,
 };
 
 // Pending callback for the "Check-in By" modal
@@ -111,13 +115,13 @@ function renderClassMember(classMember: ClassMember): void {
       );
     } else {
       // Gender icon - 1 = Male, 2 = Female
-      let iconClass = "fas fa-user";
+      let iconClass = "fa-solid fa-user";
       let iconColor = "#6c757d";
       if (classMember.gender === 1) {
-        iconClass = "fas fa-male";
+        iconClass = "fa-solid fa-person";
         iconColor = "#007bff";
       } else if (classMember.gender === 2) {
-        iconClass = "fas fa-female";
+        iconClass = "fa-solid fa-person-dress";
         iconColor = "#e83e8c";
       }
       avatarDiv.append(
@@ -137,7 +141,7 @@ function renderClassMember(classMember: ClassMember): void {
     if (classMember.birthdayUpcoming || classMember.birthdayRecent) {
       nameDiv.append(
         $("<i>", {
-          class: "fas fa-birthday-cake ml-2",
+          class: "fa-solid fa-cake-candles ms-2",
           style: "color: #e83e8c;",
           title: classMember.birthdayUpcoming ? "Birthday coming up!" : "Recent birthday!",
         }),
@@ -162,7 +166,7 @@ function renderClassMember(classMember: ClassMember): void {
       class: "kiosk-btn kiosk-btn-checkin checkinButton",
       "data-personid": classMember.personId,
       title: "Check In",
-    }).append($("<i>", { class: "fas fa-sign-in-alt" }));
+    }).append($("<i>", { class: "fa-solid fa-right-to-bracket" }));
 
     actionsDiv.append(checkinBtn);
 
@@ -172,7 +176,7 @@ function renderClassMember(classMember: ClassMember): void {
         class: "kiosk-btn kiosk-btn-alert parentAlertButton",
         "data-personid": classMember.personId,
         title: "Parent Alert",
-      }).append($("<i>", { class: "fas fa-bell" }));
+      }).append($("<i>", { class: "fa-solid fa-bell" }));
       actionsDiv.append(alertBtn);
     }
 
@@ -216,7 +220,7 @@ function updateMemberCounts(): void {
   // Show/hide Alert All button based on checked-in count, notifications enabled, and members with families
   let checkedInWithFamilies = 0;
   $("#checkedInList .kiosk-member").each(function () {
-    const familyId = ($(this).data() as any)?.familyId;
+    const familyId = ($(this).data() as { familyId?: number })?.familyId;
     if (familyId) {
       checkedInWithFamilies++;
     }
@@ -232,7 +236,10 @@ function updateMemberCounts(): void {
   if (checkedIn === 0) {
     if ($("#checkedInList .kiosk-empty").length === 0) {
       $("#checkedInList").html(
-        '<div class="kiosk-empty">' + '<i class="fas fa-user-clock"></i>' + "<p>No one checked in yet</p>" + "</div>",
+        '<div class="kiosk-empty">' +
+          '<i class="fa-solid fa-user-clock"></i>' +
+          "<p>No one checked in yet</p>" +
+          "</div>",
       );
     }
   } else {
@@ -243,7 +250,7 @@ function updateMemberCounts(): void {
     if ($("#notCheckedInList .kiosk-empty").length === 0) {
       $("#notCheckedInList").html(
         '<div class="kiosk-empty">' +
-          '<i class="fas fa-check-double text-success"></i>' +
+          '<i class="fa-solid fa-check-double text-success"></i>' +
           "<p>Everyone is here!</p>" +
           "</div>",
       );
@@ -319,7 +326,7 @@ function renderBirthdayCard(person: ClassMember, monthNames: string[], cardType:
       }),
     );
   } else {
-    avatarDiv.append($("<i>", { class: "fas fa-birthday-cake" }));
+    avatarDiv.append($("<i>", { class: "fa-solid fa-cake-candles" }));
   }
   card.append(avatarDiv);
 
@@ -431,15 +438,15 @@ function renderNoMembersMessage(): string {
     '<div class="kiosk-status-container">' +
     '<div class="card kiosk-status-card card-warning">' +
     '<div class="card-header">' +
-    '<h3 class="card-title"><i class="fas fa-users-slash mr-2"></i>No Class Members Found</h3>' +
+    '<h3 class="card-title"><i class="fa-solid fa-users-slash me-2"></i>No Class Members Found</h3>' +
     "</div>" +
     '<div class="card-body">' +
     '<div class="kiosk-status-icon text-warning">' +
-    '<i class="fas fa-users-slash"></i>' +
+    '<i class="fa-solid fa-users-slash"></i>' +
     "</div>" +
     '<p class="text-muted">This kiosk is assigned to an event, but no members are available for check-in.</p>' +
     '<div class="kiosk-instructions">' +
-    '<h5><i class="fas fa-info-circle mr-2"></i>Possible Causes</h5>' +
+    '<h5><i class="fa-solid fa-circle-info me-2"></i>Possible Causes</h5>' +
     "<ol>" +
     "<li><strong>Event not linked to a Group:</strong> Edit the event and associate it with a Sunday School or other group</li>" +
     "<li><strong>Group has no members:</strong> Add people to the group that is linked to this event</li>" +
@@ -447,7 +454,7 @@ function renderNoMembersMessage(): string {
     "</ol>" +
     "</div>" +
     '<div class="kiosk-instructions mt-3">' +
-    '<h5><i class="fas fa-wrench mr-2"></i>How to Fix</h5>' +
+    '<h5><i class="fa-solid fa-wrench me-2"></i>How to Fix</h5>' +
     '<ol class="small">' +
     "<li>Go to <strong>Events</strong> in ChurchCRM</li>" +
     "<li>Edit this event and set the <strong>Group</strong> field</li>" +
@@ -469,18 +476,18 @@ function renderErrorMessage(message: string, statusCode?: number): string {
     '<div class="kiosk-status-container">' +
     '<div class="card kiosk-status-card card-danger">' +
     '<div class="card-header">' +
-    '<h3 class="card-title"><i class="fas fa-exclamation-triangle mr-2"></i>Error Loading Members</h3>' +
+    '<h3 class="card-title"><i class="fa-solid fa-triangle-exclamation me-2"></i>Error Loading Members</h3>' +
     "</div>" +
     '<div class="card-body">' +
     '<div class="kiosk-status-icon text-danger">' +
-    '<i class="fas fa-exclamation-triangle"></i>' +
+    '<i class="fa-solid fa-triangle-exclamation"></i>' +
     "</div>" +
     '<p class="text-muted">' +
     escapeHtml(message) +
     "</p>" +
     (statusCode ? `<p class="small text-muted">HTTP Status: ${escapeHtml(String(statusCode))}</p>` : "") +
     '<div class="kiosk-instructions">' +
-    '<h5><i class="fas fa-lightbulb mr-2"></i>Troubleshooting</h5>' +
+    '<h5><i class="fa-solid fa-lightbulb me-2"></i>Troubleshooting</h5>' +
     "<ul>" +
     "<li>Verify the event is linked to a <strong>Group</strong></li>" +
     "<li>Check that the event start/end times are correct</li>" +
@@ -518,6 +525,13 @@ function heartbeat(): void {
   APIRequest({
     path: "heartbeat",
   }).done((data: HeartbeatResponse) => {
+    // Reload if the kiosk was renamed in the admin panel
+    if (kioskState.kioskName !== undefined && kioskState.kioskName !== data.Name) {
+      location.reload();
+      return;
+    }
+    kioskState.kioskName = data.Name;
+
     const thisAssignment = parseAssignment(data.Assignment);
     if (kioskState.kioskAssignmentId === undefined) {
       kioskState.kioskAssignmentId = thisAssignment || undefined;
@@ -537,8 +551,8 @@ function heartbeat(): void {
     if (data.Commands === "Identify") {
       clearInterval(kioskState.kioskEventLoop);
       $("#event").hide();
-      $("#noEvent").show();
-      $("#noEvent").html(renderStatusCard("info", "fa-tablet-alt", "Kiosk Identification", data.Name, null));
+      $("#noEvent").css("display", "flex");
+      $("#noEvent").html(renderStatusCard("info", "fa-tablet-screen-button", "Kiosk Identification", data.Name, null));
       setTimeout(() => {
         location.reload();
       }, 2000);
@@ -548,44 +562,72 @@ function heartbeat(): void {
     if (data.Accepted) {
       const Assignment = parseAssignment(data.Assignment);
       if (Assignment && Assignment.AssignmentType === 1) {
+        // Event.Start / End / CheckInOpensAt are ISO 8601 strings with the
+        // church's sTimeZone offset (set by KioskDevice::heartbeat). moment
+        // parses them as instants-in-time, so all comparisons below are
+        // tz-correct regardless of the kiosk device's browser timezone.
+        // CheckInOpensAt = event start − 1 hour (server-computed) so check-in
+        // opens before the event actually starts. Falls back to event start
+        // − 1 hour for older API responses without the field.
         const eventStart = moment(Assignment.Event.Start);
         const eventEnd = moment(Assignment.Event.End);
+        // Server emits CheckInOpensAt as ISO+sTimeZone offset (event start − 1h).
+        // Fallback to client-side compute for older API responses.
+        const checkInOpensAt = Assignment.Event.CheckInOpensAt
+          ? moment(Assignment.Event.CheckInOpensAt)
+          : eventStart.clone().subtract(1, "hour");
         const now = moment();
 
         $("#eventTitle").text(Assignment.Event.Title);
+        $("#kioskName").text(data.Name);
         $("#startTime").text(eventStart.format("MMMM Do YYYY, h:mm:ss a"));
         $("#endTime").text(eventEnd.format("MMMM Do YYYY, h:mm:ss a"));
 
-        if (now.isBefore(eventStart)) {
-          // Event hasn't started yet - show countdown
+        if (now.isBefore(checkInOpensAt)) {
           $("#noEvent").hide();
           $("#event").show();
-          $("#classMemberContainer").html(renderCountdown(eventStart, Assignment.Event.Title));
-          startCountdown(eventStart);
+          $("#timeRemaining").addClass("d-none");
+          $("#classMemberContainer").html(renderCountdown(checkInOpensAt, Assignment.Event.Title, data.Name));
+          startCountdown(checkInOpensAt);
         } else if (now.isAfter(eventEnd)) {
           // Event has ended
           $("#noEvent").hide();
           $("#event").show();
+          $("#timeRemaining").addClass("d-none");
           $("#classMemberContainer").html(renderEventEnded(Assignment.Event.Title));
         } else {
-          // Event is active - show class members
+          // Event is active - show class members + time-remaining badge so
+          // volunteers know when the kiosk will close. Heartbeat runs every
+          // 15s, so minute-level granularity is plenty here.
           updateActiveClassMembers();
           $("#noEvent").hide();
           $("#event").show();
+          const minutesLeft = Math.max(0, Math.ceil((eventEnd.unix() - now.unix()) / 60));
+          let label: string;
+          if (minutesLeft < 1) {
+            label = i18next.t("Closing");
+          } else if (minutesLeft < 60) {
+            label = i18next.t("{{count}} min left", { count: minutesLeft });
+          } else {
+            const hours = Math.floor(minutesLeft / 60);
+            const mins = minutesLeft % 60;
+            label = i18next.t("{{hours}}h {{mins}}m left", { hours: hours, mins: mins });
+          }
+          $("#timeRemaining").removeClass("d-none").text(label);
         }
       } else {
-        $("#noEvent").show();
+        $("#noEvent").css("display", "flex");
         $("#noEvent").html(
           renderStatusCard(
             "success",
-            "fa-check-circle",
+            "fa-circle-check",
             "Kiosk Ready",
             data.Name,
             "<p class='text-muted mb-0'>This kiosk is accepted but has no active event assignment.</p>" +
               "<div class='kiosk-instructions'>" +
-              "<h5><i class='fas fa-info-circle'></i> Next Steps</h5>" +
+              "<h5><i class='fa-solid fa-circle-info'></i> Next Steps</h5>" +
               "<ol>" +
-              "<li>Go to <strong>Kiosk Manager</strong> in the admin menu</li>" +
+              "<li>Go to <strong>Groups → Admin → Kiosk Manager</strong></li>" +
               "<li>Find this kiosk in the device list</li>" +
               "<li>Use the <strong>Assign</strong> dropdown to select an event</li>" +
               "</ol></div>",
@@ -594,7 +636,7 @@ function heartbeat(): void {
         $("#event").hide();
       }
     } else {
-      $("#noEvent").show();
+      $("#noEvent").css("display", "flex");
       $("#noEvent").html(
         renderStatusCard(
           "pending",
@@ -603,14 +645,14 @@ function heartbeat(): void {
           data.Name,
           "<p class='text-muted'>This kiosk has registered but needs to be accepted by an administrator before it can be used.</p>" +
             "<div class='kiosk-instructions'>" +
-            "<h5><i class='fas fa-info-circle'></i> How to Accept This Kiosk</h5>" +
+            "<h5><i class='fa-solid fa-circle-info'></i> How to Accept This Kiosk</h5>" +
             "<ol>" +
             "<li>Log in to ChurchCRM as an administrator</li>" +
-            "<li>Navigate to <strong>Admin → Kiosk Manager</strong></li>" +
+            "<li>Navigate to <strong>Groups → Admin → Kiosk Manager</strong></li>" +
             "<li>Find the kiosk named <strong>" +
             escapeHtml(data.Name) +
             "</strong> in the list</li>" +
-            "<li>Click the <strong><i class='fas fa-check'></i> Accept</strong> button</li>" +
+            "<li>Click the <strong><i class='fa-solid fa-check'></i> Accept</strong> button</li>" +
             "<li>Assign an event to the kiosk using the dropdown</li>" +
             "</ol>" +
             "<p class='mb-0'><small>This page will automatically update once the kiosk is accepted.</small></p>" +
@@ -625,16 +667,19 @@ function heartbeat(): void {
 /**
  * Render countdown timer before event starts
  */
-function renderCountdown(eventStart: moment.Moment, eventTitle: string): string {
+function renderCountdown(eventStart: moment.Moment, eventTitle: string, kioskName: string): string {
   return (
     '<div class="kiosk-status-container">' +
     '<div class="card kiosk-status-card card-primary">' +
     '<div class="card-header">' +
-    '<h3 class="card-title"><i class="fas fa-clock mr-2"></i>Check-in Opens Soon</h3>' +
+    '<h3 class="card-title"><i class="fa-solid fa-clock me-2"></i>Check-in Opens Soon</h3>' +
     "</div>" +
     '<div class="card-body text-center">' +
     '<div class="kiosk-status-icon text-primary">' +
-    '<i class="fas fa-clock"></i>' +
+    '<i class="fa-solid fa-clock"></i>' +
+    "</div>" +
+    '<div class="kiosk-name mb-2"><i class="fa-solid fa-tablet-screen-button me-2"></i>' +
+    escapeHtml(kioskName) +
     "</div>" +
     '<p class="text-muted mb-3">Check-in for <strong>' +
     escapeHtml(eventTitle) +
@@ -675,11 +720,11 @@ function renderEventEnded(eventTitle: string): string {
     '<div class="kiosk-status-container">' +
     '<div class="card kiosk-status-card card-success">' +
     '<div class="card-header">' +
-    '<h3 class="card-title"><i class="fas fa-calendar-check mr-2"></i>Event Has Ended</h3>' +
+    '<h3 class="card-title"><i class="fa-solid fa-calendar-check me-2"></i>Event Has Ended</h3>' +
     "</div>" +
     '<div class="card-body text-center">' +
     '<div class="kiosk-status-icon text-success">' +
-    '<i class="fas fa-calendar-check"></i>' +
+    '<i class="fa-solid fa-calendar-check"></i>' +
     "</div>" +
     '<p class="text-muted mb-0">Check-in for <strong>' +
     escapeHtml(eventTitle) +
@@ -733,32 +778,32 @@ function renderStatusCard(
   kioskName: string,
   bodyContent: string | null,
 ): string {
-  // Use Bootstrap 4.6.2 card-primary pattern consistent with ChurchCRM
-  let cardClass = "card-primary";
+  let statusColor = "bg-primary";
   let iconColorClass = "text-primary";
 
   if (statusType === "pending") {
-    cardClass = "card-warning";
+    statusColor = "bg-warning";
     iconColorClass = "text-warning";
   } else if (statusType === "success") {
-    cardClass = "card-success";
+    statusColor = "bg-success";
     iconColorClass = "text-success";
   } else if (statusType === "info") {
-    cardClass = "card-info";
+    statusColor = "bg-info";
     iconColorClass = "text-info";
   }
 
   // Validate iconClass to prevent XSS via class injection (only allow known FA icons)
-  const safeIconClass = /^fa-[a-z0-9-]+$/.test(iconClass) ? iconClass : "fa-question-circle";
+  const safeIconClass = /^fa-[a-z0-9-]+$/.test(iconClass) ? iconClass : "fa-circle-question";
 
   return (
-    '<div class="card kiosk-status-card ' +
-    cardClass +
-    '">' +
+    '<div class="card kiosk-status-card">' +
+    '<div class="card-status-top ' +
+    statusColor +
+    '"></div>' +
     '<div class="card-header">' +
-    '<h3 class="card-title"><i class="fas ' +
+    '<h3 class="card-title"><i class="fa-solid ' +
     safeIconClass +
-    ' mr-2"></i>' +
+    ' me-2"></i>' +
     escapeHtml(title) +
     "</h3>" +
     "</div>" +
@@ -766,11 +811,11 @@ function renderStatusCard(
     '<div class="kiosk-status-icon ' +
     iconColorClass +
     '">' +
-    '<i class="fas ' +
+    '<i class="fa-solid ' +
     safeIconClass +
     '"></i>' +
     "</div>" +
-    '<div class="kiosk-name"><i class="fas fa-tablet-alt mr-2"></i>' +
+    '<div class="kiosk-name"><i class="fa-solid fa-tablet-screen-button me-2"></i>' +
     escapeHtml(kioskName) +
     "</div>" +
     (bodyContent ? bodyContent : "") +
@@ -783,7 +828,7 @@ function renderStatusCard(
  */
 function checkInPerson(personId: number): void {
   if (kioskState.checkinByEnabled) {
-    const $personDiv = $("#personId-" + personId);
+    const $personDiv = $(`#personId-${personId}`);
     const personName = $personDiv.find(".kiosk-member-name").text().trim() || "this person";
     showCheckinByModal(personId, "checkin", personName);
   } else {
@@ -813,7 +858,7 @@ function performCheckin(personId: number, checkedInById: number | null): void {
  */
 function checkOutPerson(personId: number): void {
   if (kioskState.checkinByEnabled) {
-    const $personDiv = $("#personId-" + personId);
+    const $personDiv = $(`#personId-${personId}`);
     const personName = $personDiv.find(".kiosk-member-name").text().trim() || "this person";
     showCheckinByModal(personId, "checkout", personName);
   } else {
@@ -852,7 +897,7 @@ function renderFamilyMemberOptions(members: FamilyMember[]): string {
   let html = '<div class="checkin-by-members">';
   for (const member of members) {
     const photoHtml = member.hasPhoto
-      ? '<img src="' + getPhotoUrl(member.Id) + '" alt="' + escapeHtml(member.FirstName) + '" class="checkin-by-photo">'
+      ? `<img src="${getPhotoUrl(member.Id)}" alt="${escapeHtml(member.FirstName)}" class="checkin-by-photo">`
       : '<i class="fa-solid fa-user fa-2x"></i>';
     html +=
       '<button type="button" class="checkin-by-member-btn checkinByMemberBtn" data-memberid="' +
@@ -860,7 +905,7 @@ function renderFamilyMemberOptions(members: FamilyMember[]): string {
       '">' +
       photoHtml +
       '<span class="checkin-by-name">' +
-      escapeHtml(member.FirstName + " " + member.LastName) +
+      escapeHtml(`${member.FirstName} ${member.LastName}`) +
       "</span>" +
       "</button>";
   }
@@ -895,17 +940,19 @@ function showCheckinByModal(personId: number, action: "checkin" | "checkout", pe
   };
 
   // Show modal
-  window.bootstrap.Modal.getOrCreateInstance(document.getElementById("checkinByModal")!).show();
+  const checkinByEl = document.getElementById("checkinByModal");
+  if (checkinByEl) window.bootstrap.Modal.getOrCreateInstance(checkinByEl).show();
 
   // Fetch family members
   APIRequest({
-    path: "activeClassMember/" + personId + "/family",
+    path: `activeClassMember/${personId}/family`,
   })
     .done((data: FamilyMembersResponse) => {
       // Guard against unexpected API responses (defensive check for empty/malformed members array)
       if (!data.members || data.members.length === 0) {
         // No family members found — close modal and proceed without a checker
-        window.bootstrap.Modal.getOrCreateInstance(document.getElementById("checkinByModal")!).hide();
+        const el = document.getElementById("checkinByModal");
+        if (el) window.bootstrap.Modal.getOrCreateInstance(el).hide();
         const cb = pendingCheckinByCallback;
         pendingCheckinByCallback = null;
         if (cb) {
@@ -917,7 +964,8 @@ function showCheckinByModal(personId: number, action: "checkin" | "checkout", pe
     })
     .fail(() => {
       // On API failure close modal and proceed without a checker
-      window.bootstrap.Modal.getOrCreateInstance(document.getElementById("checkinByModal")!).hide();
+      const failEl = document.getElementById("checkinByModal");
+      if (failEl) window.bootstrap.Modal.getOrCreateInstance(failEl).hide();
       const cb = pendingCheckinByCallback;
       pendingCheckinByCallback = null;
       if (cb) {
@@ -952,7 +1000,7 @@ function alertAll(): void {
   const membersToAlert: Array<{ personId: number; name: string }> = [];
   $("#checkedInList .kiosk-member").each(function () {
     const idAttr = $(this).attr("id");
-    const familyId = ($(this).data() as any)?.familyId;
+    const familyId = ($(this).data() as { familyId?: number })?.familyId;
     if (!idAttr || !familyId) {
       return;
     }
@@ -973,7 +1021,7 @@ function alertAll(): void {
   // Disable button and show sending state
   const $btn = $("#alertAllBtn");
   const originalHtml = $btn.html();
-  $btn.prop("disabled", true).html('<i class="fas fa-spinner fa-spin"></i>');
+  $btn.prop("disabled", true).html('<i class="fa-solid fa-spinner fa-spin"></i>');
 
   // Track success/failure per alert
   let completed = 0;
@@ -1014,7 +1062,7 @@ function checkOutAll(): void {
   // Disable button during processing
   const $btn = $("#checkoutAllBtn");
   const originalHtml = $btn.html();
-  $btn.prop("disabled", true).html('<i class="fas fa-spinner fa-spin mr-1"></i>Processing...');
+  $btn.prop("disabled", true).html('<i class="fa-solid fa-spinner fa-spin me-1"></i>Processing...');
 
   APIRequest({
     path: "checkoutAll",
@@ -1050,7 +1098,7 @@ function setCheckedOut(personId: number): void {
   // Update button - icon only
   $personDivButton.removeClass("checkoutButton kiosk-btn-checkout");
   $personDivButton.addClass("checkinButton kiosk-btn-checkin");
-  $personDivButton.html('<i class="fas fa-sign-in-alt"></i>');
+  $personDivButton.html('<i class="fa-solid fa-right-to-bracket"></i>');
   $personDivButton.attr("title", "Check In");
 
   // Remove checked-in styling
@@ -1076,14 +1124,14 @@ function setCheckedIn(personId: number): void {
   // Update button - icon only
   $personDivButton.removeClass("checkinButton kiosk-btn-checkin");
   $personDivButton.addClass("checkoutButton kiosk-btn-checkout");
-  $personDivButton.html('<i class="fas fa-sign-out-alt"></i>');
+  $personDivButton.html('<i class="fa-solid fa-right-from-bracket"></i>');
   $personDivButton.attr("title", "Check Out");
 
   // Add checked-in styling
   $personDiv.addClass("checked-in");
 
   // Get familyId from rendered data (stored in member row)
-  const familyId = ($personDiv.data() as any)?.familyId;
+  const familyId = ($personDiv.data() as { familyId?: number })?.familyId;
 
   // Manage alert button: add if conditions are met, remove if not
   const hasAlertBtn = $personDiv.find(".parentAlertButton").length > 0;
@@ -1096,7 +1144,7 @@ function setCheckedIn(personId: number): void {
       class: "kiosk-btn kiosk-btn-alert parentAlertButton",
       "data-personid": personId,
       title: "Parent Alert",
-    }).append($("<i>", { class: "fas fa-bell" }));
+    }).append($("<i>", { class: "fa-solid fa-bell" }));
     $actionsDiv.append(alertBtn);
   } else if (!shouldHaveAlertBtn && hasAlertBtn) {
     // Remove alert button if conditions no longer met
@@ -1119,7 +1167,7 @@ function triggerNotification(personId: number): void {
   const studentName = $personDiv.find(".kiosk-member-name").text().trim() || "Student";
 
   // GUARD: Verify person has a family before sending alert (should not be reachable if UI guard works)
-  const familyId = ($personDiv.data() as any)?.familyId;
+  const familyId = ($personDiv.data() as { familyId?: number })?.familyId;
   if (!familyId) {
     console.error(`Cannot send alert: ${studentName} has no family record (familyId=${familyId})`);
     showKioskNotification(`Error: ${studentName} has no family on record`, "error");
@@ -1138,8 +1186,9 @@ function triggerNotification(personId: number): void {
   })
     .done(() => {
       // Show success notification
-      if (typeof getCRM().notify === "function") {
-        getCRM().notify(`Parent alert sent for ${studentName}`, { type: "success", delay: 4000 });
+      const crm = getCRM();
+      if (crm.notify) {
+        crm.notify(`Parent alert sent for ${studentName}`, { type: "success", delay: 4000 });
       } else {
         // Fallback for kiosk view without full CRM.notify
         showKioskNotification(`Parent alert sent for ${studentName}`, "success");
@@ -1152,8 +1201,9 @@ function triggerNotification(personId: number): void {
     })
     .fail(() => {
       // Show error notification
-      if (typeof getCRM().notify === "function") {
-        getCRM().notify("Failed to send parent alert", { type: "error", delay: 4000 });
+      const crmFail = getCRM();
+      if (crmFail.notify) {
+        crmFail.notify("Failed to send parent alert", { type: "error", delay: 4000 });
       } else {
         showKioskNotification("Failed to send parent alert", "error");
       }
@@ -1234,14 +1284,84 @@ function displayPersonInfo(_personId: number): void {
 }
 
 /**
+ * Schedule the next refresh: wait 50s, then show a 10s countdown popup.
+ * If the user cancels the popup, the cycle resets for another 60s.
+ * If the countdown completes, heartbeat() fires and the cycle repeats.
+ */
+function scheduleNextRefresh(): void {
+  if (kioskState.refreshScheduleTimer) {
+    clearTimeout(kioskState.refreshScheduleTimer);
+  }
+  kioskState.refreshScheduleTimer = setTimeout(() => {
+    showRefreshWarning();
+  }, 50_000);
+}
+
+/**
+ * Show the refresh warning popup with a 10s countdown.
+ * Skips silently (reschedules) if another modal is already open to avoid
+ * stacking modals mid-interaction (e.g. during check-in).
+ */
+function showRefreshWarning(): void {
+  // Don't interrupt an active modal (check-in, guest registration, etc.)
+  if (document.querySelector(".modal.show")) {
+    scheduleNextRefresh();
+    return;
+  }
+
+  let secondsLeft = 10;
+
+  const updateCountdown = (): void => {
+    const el = document.getElementById("refreshWarningCountdown");
+    if (el) el.textContent = String(secondsLeft);
+  };
+  updateCountdown();
+
+  const modalEl = document.getElementById("refreshWarningModal");
+  if (modalEl) window.bootstrap.Modal.getOrCreateInstance(modalEl).show();
+
+  kioskState.refreshCountdownTimer = setInterval(() => {
+    secondsLeft--;
+    updateCountdown();
+    if (secondsLeft <= 0) {
+      clearInterval(kioskState.refreshCountdownTimer);
+      kioskState.refreshCountdownTimer = undefined;
+      const el = document.getElementById("refreshWarningModal");
+      if (el) {
+        const instance = window.bootstrap.Modal.getInstance(el);
+        if (instance) instance.hide();
+      }
+      heartbeat();
+      scheduleNextRefresh();
+    }
+  }, 1000);
+}
+
+/**
+ * Cancel the pending refresh (triggered by the Cancel button in the popup).
+ * Clears the countdown and resets the full 60s cycle.
+ */
+function cancelScheduledRefresh(): void {
+  if (kioskState.refreshCountdownTimer) {
+    clearInterval(kioskState.refreshCountdownTimer);
+    kioskState.refreshCountdownTimer = undefined;
+  }
+  const el = document.getElementById("refreshWarningModal");
+  if (el) {
+    const instance = window.bootstrap.Modal.getInstance(el);
+    if (instance) instance.hide();
+  }
+  scheduleNextRefresh();
+}
+
+/**
  * Start the event loop
  */
 function startEventLoop(): void {
-  // Call heartbeat immediately — it will call updateActiveClassMembers() when
-  // the event is active, avoiding a duplicate API call on page load.
+  // Call heartbeat immediately on page load (no popup for the first fetch).
   heartbeat();
-  // Then set up periodic heartbeat updates (1 minute)
-  kioskState.kioskEventLoop = setInterval(heartbeat, 60000);
+  // Schedule recurring refreshes: 60s cycle with a 10s cancellable popup.
+  scheduleNextRefresh();
 }
 
 /**
@@ -1250,6 +1370,12 @@ function startEventLoop(): void {
 function stopEventLoop(): void {
   if (kioskState.kioskEventLoop) {
     clearInterval(kioskState.kioskEventLoop);
+  }
+  if (kioskState.refreshScheduleTimer) {
+    clearTimeout(kioskState.refreshScheduleTimer);
+  }
+  if (kioskState.refreshCountdownTimer) {
+    clearInterval(kioskState.refreshCountdownTimer);
   }
 }
 
@@ -1293,10 +1419,9 @@ export const kiosk: KioskJSOM = {
   setCheckinByEnabled,
   resolveCheckinByModal,
   cancelCheckinByModal,
+  cancelScheduledRefresh,
 };
 
 // Attach to window.CRM.kiosk for global access (for external use)
-if (!(window as any).CRM) {
-  (window as any).CRM = {};
-}
-(window as any).CRM.kiosk = kiosk;
+window.CRM = window.CRM ?? {};
+window.CRM.kiosk = kiosk;

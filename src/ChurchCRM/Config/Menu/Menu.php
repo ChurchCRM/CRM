@@ -167,6 +167,7 @@ class Menu
             $adminMenu = new MenuItem(gettext('Admin'), '', true);
             $adminMenu->addSubMenu(new MenuItem(gettext('Group Properties'), 'PropertyList.php?Type=g', true, 'fa-users'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Group Types'), 'admin/system/options?mode=grptypes', $isAdmin, 'fa-tags'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Kiosk Manager'), 'kiosk/admin', $isAdmin, 'fa-desktop'));
 
             $groupMenu->addSubMenu($adminMenu);
         }
@@ -178,7 +179,6 @@ class Menu
     {
         $sundaySchoolMenu = new MenuItem(gettext('Sunday School'), '', $isAdmin || SystemConfig::getBooleanValue('bEnabledSundaySchool'), 'fa-school');
         $sundaySchoolMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'groups/sundayschool/dashboard', true, 'fa-gauge'));
-        $sundaySchoolMenu->addSubMenu(new MenuItem(gettext('Kiosk Manager'), 'kiosk/admin', $isAdmin, 'fa-desktop'));
         $classes = GroupQuery::create()->filterByType(4)->orderByName()->select(['Id','Name'])->find()->toArray();
         if (!empty($classes)) {
             foreach ($classes as $group) {
@@ -249,7 +249,12 @@ class Menu
         $eventsMenu->addSubMenu(new MenuItem(gettext('Events Dashboard'), 'event/dashboard', true, 'fa-gauge'));
         $eventsMenu->addSubMenu(new MenuItem(gettext('Add Church Event'), 'event/editor', $isAddEventEnabled, 'fa-circle-plus'));
         $eventsMenu->addSubMenu(new MenuItem(gettext('Check-in and Check-out'), 'event/checkin', true, 'fa-user-check'));
-        $eventsMenu->addSubMenu(new MenuItem(gettext('List Event Types'), 'event/types', $isAddEventEnabled, 'fa-tags'));
+
+        if ($isAddEventEnabled) {
+            $adminMenu = new MenuItem(gettext('Admin'), '', true);
+            $adminMenu->addSubMenu(new MenuItem(gettext('Event Types'), 'event/types', true, 'fa-tags'));
+            $eventsMenu->addSubMenu($adminMenu);
+        }
 
         return $eventsMenu;
     }

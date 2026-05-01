@@ -1,0 +1,17 @@
+{
+  "summary": "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently.",
+  "sections": [
+    {
+      "title": "Setting up countries",
+      "content": "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+    },
+    {
+      "title": "Filtering by category",
+      "content": "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+    },
+    {
+      "title": "Showing and hiding individual countries",
+      "content": "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+    }
+  ]
+}

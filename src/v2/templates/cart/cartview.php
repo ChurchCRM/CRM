@@ -73,7 +73,7 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
                     // fetch avatar info and set photo/initials as appropriate.
                     echo '<img data-image-entity-type="person" data-image-entity-id="' . $Person->getId() . '" class="avatar avatar-sm rounded-circle photo-small me-2" alt="" />';
                   ?>
-                  <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $Person->getId() ?>"><?= $Person->getFullName() ?></a>
+                  <a href="<?= $Person->getViewURI() ?>"><?= $Person->getFullName() ?></a>
                 </div>
               </td>
               <td><?= $Person->getAddress() ?></td>
@@ -86,7 +86,7 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
                     <i class="ti ti-dots-vertical"></i>
                   </button>
                   <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $Person->getId() ?>">
+                    <a class="dropdown-item" href="<?= $Person->getViewURI() ?>">
                       <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
                     </a>
                     <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $Person->getId() ?>">

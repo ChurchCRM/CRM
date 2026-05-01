@@ -107,15 +107,39 @@ public function preSelect(ConnectionInterface $con): void
 ```
 
 ### Person / Family postInsert Auto-Writes a Timeline Note <!-- learned: 2026-04-18 -->
+<!-- updated: 2026-04-21 — PR #8685 removed manual Note creation from PersonEditor/FamilyEditor -->
 
-`Person::postInsert()` and `Family::postInsert()` (see `src/ChurchCRM/model/ChurchCRM/Person.php:143` and `Family.php:86`) automatically call `createTimeLineNote('create')`, which writes a `Note` row with:
+`Person::postInsert()` / `postUpdate()` and `Family::postInsert()` / `postUpdate()` (see `src/ChurchCRM/model/ChurchCRM/Person.php:144` and `Family.php`) are the **single source of truth** for timeline notes. They automatically call `createTimeLineNote('create'|'edit')`, which writes a `Note` row with:
 
-- `nte_Type = 'create'`
-- `nte_Text = gettext('Created')`
+- `nte_Type = 'create'` or `'edit'`
+- `nte_Text = gettext('Created')` or `gettext('Updated')`
 - `nte_EnteredBy` / `nte_DateEntered` copied from the Person/Family
 - attached via `nte_per_ID` or `nte_fam_ID`
 
-**Consequence for bulk creators (importers, migrations, seeders):** do **not** manually `new Note()` with `type='create'` after saving a Person or Family — you will write a duplicate row. Either accept the default `"Created"` text, or find the auto-created note and mutate its text:
+**Rule: never manually `new Note()` with `type='create'`/`'edit'` after saving a Person or Family** — the hook has already written it. This rule is now enforced across the codebase: PR #8685 (commit 8ca2fcb75, closes #8695 / #8701) removed the legacy manual `Note` writes from `PersonEditor.php` and `FamilyEditor.php` that were producing duplicate timeline rows.
+
+**Suppressing the `postUpdate` 'edit' note** — When a specific action writes its own domain-specific note (e.g. `setImageFromBase64()` writes a *"Profile Image uploaded"* note) and then saves the Person/Family to bump `DateLastEdited`, set the transient `$skipPostUpdateNote` flag around the save to prevent a generic *"Updated"* note on top:
+
+```php
+$this->skipPostUpdateNote = true;
+try {
+    $this->save();
+} finally {
+    $this->skipPostUpdateNote = false;
+}
+```
+
+See `Family::setImageFromBase64()` for the canonical example. The flag is a private model property and `postUpdate()` checks it before calling `createTimeLineNote('edit')`.
+
+### Person / Family preDelete Removes the Uploaded Photo from Disk <!-- learned: 2026-04-22 -->
+
+`Person::preDelete()` and `Family::preDelete()` call `$this->getPhoto()->delete()` so the uploaded image file under `src/Images/Person/` or `src/Images/Family/` is removed whenever the record is deleted — on **any** code path, not just the API route. This closes GH #1697 (orphaned image files after family/member delete).
+
+**Do NOT call `deletePhoto()` from inside `preDelete`** — it gates on `AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()` (which can silently skip the unlink for programmatic deletions) and writes a transient `Note` that the rest of `preDelete` deletes a few lines later anyway. Call `$this->getPhoto()->delete()` directly. The public `deletePhoto()` method is for the UI "delete photo only" action (keeps the record, writes an audit note).
+
+**Do NOT explicitly call `$family->deletePhoto()` (or `$person->deletePhoto()`) right before `$family->delete()` (or `$person->delete()`)** in controllers — the `preDelete` hook already handles it, and the explicit pre-call writes an audit `Note` for a record that is about to be deleted (the Family note even got the wrong FK via `setPerId`).
+
+**For bulk creators (importers, migrations, seeders)** that want custom text on the auto-created note: accept the default `"Created"`, or look up the auto-created note after save and mutate its text:
 
 ```php
 $person->save($con);  // postInsert hook writes the 'create' note
@@ -131,9 +155,7 @@ if ($note !== null) {
 }
 ```
 
-Note that the legacy `PersonEditor.php` still does a manual `new Note()` after save, which produces two `'create'` notes per new person. Don't copy that pattern.
-
-Same hook also sends a new-person/family notification email when `SystemConfig::sNewPersonNotificationRecipientIDs` is non-empty — relevant if you're writing a bulk importer (each imported person triggers a mail).
+Same hook also triggers `NewPersonOrFamilyEmail::sendIfConfigured()` when `SystemConfig::sNewPersonNotificationRecipientIDs` is non-empty — relevant for bulk importers (each imported person/family triggers a mail). After PR #8685, creating a family with N members sends 1 email (family-level), not N+1.
 
 ## Propel ORM Method Naming (CRITICAL)
 
@@ -280,6 +302,25 @@ return SlimUtils::renderJSON($response, $events->toArray());
 
 This applies to any `->find()` result or relation collection returned by Perpl ORM.
 
+### `array_column()` Silently Returns Zeros on ObjectCollection <!-- learned: 2026-04-21 -->
+
+`array_column($collection, 'PersonId')` does **not** work on a Propel `ObjectCollection`. PHP's `array_column` reads public properties / array keys — it does not call ORM getters. With Propel objects it silently returns an array of nulls/zeros, and any downstream `in_array($id, $rosterIds, true)` check fails for every input.
+
+This was the root cause of the kiosk photo 403 bug (PR #8706): every roster membership check returned false, so every photo request was rejected.
+
+```php
+// ❌ WRONG — silently returns [0, 0, 0, ...] for Propel Person objects
+$rosterIds = array_map('intval', array_column($assignment->getActiveGroupMembers(), 'PersonId'));
+
+// ✅ CORRECT — iterate the collection and call the ORM getter
+$rosterIds = [];
+foreach ($assignment->getActiveGroupMembers() as $member) {
+    $rosterIds[] = $member->getId();
+}
+```
+
+Rule of thumb: any time you need "list of IDs from an ORM collection," write an explicit `foreach` with `->getId()` (or the relevant getter). Never `array_column` on Propel objects.
+
 ### Looking Up ListOption Role Names for Group Memberships <!-- learned: 2026-03-30 -->
 
 `Group` has no `getListOptionById()` method. To resolve a role name from a group membership, query `ListOptionQuery` with both the group's role list ID and the membership's option ID.
@@ -317,6 +358,32 @@ EventTypeQuery::create()
 ```
 
 When unsure of the method name, grep `public function use.*Query` in `Base/XxxQuery.php` to see all generated relation methods and their return types.
+
+### PersonCustomMaster::getId() Returns the Column Name String, Not a Numeric ID <!-- learned: 2026-04-21 -->
+
+The `PersonCustomMaster` model overrides Propel's default `getId()` to return
+the `custom_field` string (e.g. `"c3"`) — **not** a numeric primary key. This
+is easy to get wrong because every other Propel model's `getId()` returns an
+int, and Copilot / AI reviewers consistently assume int.
+
+```php
+// ✅ CORRECT — getId() returns "c3" already, don't prepend another 'c'
+foreach (PersonCustomMasterQuery::create()->find() as $cf) {
+    $typeMap[$cf->getId()] = (int) $cf->getTypeId();  // key = "c3"
+    $catalogKey = 'pcustom_' . $cf->getId();          // "pcustom_c3"
+}
+
+// ❌ WRONG — produces "cc3" / "pcustom_cc3", silently breaks everything
+$typeMap['c' . $cf->getId()] = ...;
+$catalogKey = 'pcustom_c' . $cf->getId();
+```
+
+`FamilyCustomMaster` is different — it still has a numeric `getId()`, and the
+column-name accessor is `getField()`. Always grep the Base class when unsure:
+
+```bash
+grep -nE "public function getId" src/ChurchCRM/model/ChurchCRM/Base/*CustomMaster.php
+```
 
 ### People Without Families — Always Use leftJoinWithFamily() <!-- learned: 2026-03-29 -->
 
@@ -536,3 +603,16 @@ EventQuery::create()
 
 Always use full `HH:MM:SS` timestamps on the boundaries — see "Datetime Year-Range Filters"
 above for why a bare `YYYY-MM-DD` max silently drops same-day afternoon records.
+
+### Shared Date Parser — `DateTimeUtils::parsePartialDate()` <!-- learned: 2026-04-21 -->
+
+`src/ChurchCRM/utils/DateTimeUtils.php` contains a static helper for parsing the partial-date formats accepted by CSV imports and person/family edit forms:
+
+```php
+use ChurchCRM\utils\DateTimeUtils;
+
+// Accepts: YYYY-MM-DD, M/D/YYYY, 0000-MM-DD, M/D (month+day, no year)
+$dt = DateTimeUtils::parsePartialDate($rawString); // returns DateTime|null
+```
+
+Returns `null` for blank/unparseable input — always null-guard before calling ORM setters. Use this instead of `new \DateTime($userInput)` anywhere user-supplied date strings are accepted; it handles the year-less `0000-MM-DD` format that standard PHP date functions reject.

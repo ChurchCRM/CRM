@@ -10,6 +10,8 @@ use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
+use ChurchCRM\Plugin\Hook\HookManager;
+use ChurchCRM\Plugin\Hooks;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Service\PersonService;
@@ -865,6 +867,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         foreach ($groupRoleMemberships as $groupRoleMembership) {
             if ($groupRoleMembership->getPersonId() == $person->getId()) {
                 $groupRoleMembership->delete();
+                HookManager::doAction(Hooks::GROUP_MEMBER_REMOVED, $person->getId(), $group);
                 $note = new Note();
                 $note->setText(gettext('Deleted from group') . ': ' . $group->getName());
                 $note->setType('group');
@@ -904,6 +907,12 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
 
         $groupService = new GroupService();
         $groupService->addUserToGroup($groupID, $userID, $roleID);
+
+        $membership = Person2group2roleP2g2rQuery::create()
+            ->filterByGroupId((int) $groupID)
+            ->filterByPersonId((int) $userID)
+            ->findOne();
+        HookManager::doAction(Hooks::GROUP_MEMBER_ADDED, $membership, $group, $person);
 
         $note = new Note();
         $note->setText(gettext('Added to group') . ': ' . $group->getName());

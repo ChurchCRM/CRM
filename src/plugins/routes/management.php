@@ -3,6 +3,7 @@
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
@@ -33,10 +34,21 @@ $group->get('[/]', function (Request $request, Response $response): Response {
     $communityPlugins = array_filter($plugins, fn ($p) => $p['type'] !== 'core');
 
     $pageArgs = [
-        'sRootPath' => SystemURLs::getRootPath(),
-        'sPageTitle' => gettext('Plugin Management'),
-        'corePlugins' => array_values($corePlugins),
-        'communityPlugins' => array_values($communityPlugins),
+        'sRootPath'          => SystemURLs::getRootPath(),
+        'sPageTitle'         => gettext('Plugin Management'),
+        'aBreadcrumbs'       => PageHeader::breadcrumbs([
+            [gettext('Admin'), '/admin/dashboard'],
+            [gettext('Plugin Management')],
+        ]),
+        'sPageHeaderButtons' => PageHeader::buttons([
+            [
+                'label' => gettext('Plugin Development Docs'),
+                'url'   => 'https://github.com/ChurchCRM/CRM/wiki/Creating-Community-Plugins',
+                'icon'  => 'fa-book',
+            ],
+        ]),
+        'corePlugins'        => array_values($corePlugins),
+        'communityPlugins'   => array_values($communityPlugins),
     ];
 
     return $renderer->render($response, 'management.php', $pageArgs);

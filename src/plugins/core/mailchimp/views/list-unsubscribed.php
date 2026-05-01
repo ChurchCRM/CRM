@@ -12,7 +12,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <ol class="breadcrumb mb-0 bg-light">
                 <li class="breadcrumb-item"><a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard"><i class="fa-solid fa-home"></i></a></li>
                 <li class="breadcrumb-item"><a href="<?= SystemURLs::getRootPath() ?>/plugins/management"><?= gettext('Plugins') ?></a></li>
-                <li class="breadcrumb-item"><a href="<?= SystemURLs::getRootPath() ?>/plugins/mailchimp/dashboard"><?= gettext('MailChimp') ?></a></li>
+                <li class="breadcrumb-item"><a href="<?= SystemURLs::getRootPath() ?>/plugins/mailchimp/dashboard">Mailchimp</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><?= gettext('Not Subscribed') ?></li>
             </ol>
         </nav>
@@ -41,7 +41,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
             </div>
             <div class="card-body p-0">
-                <p class="text-muted mb-3 px-3 pt-3">
+                <p class="text-body-secondary mb-3 px-3 pt-3">
                     <i class="fa-solid fa-circle-info me-1"></i>
                     <?= gettext('These people exist in ChurchCRM with email addresses but are not subscribed to this MailChimp audience. Consider inviting them to subscribe.') ?>
                 </p>
@@ -91,7 +91,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     data: 'name',
                     render: function (data, type, row) {
                         // row.id is from CRM (integer), safe to use directly
-                        return '<a href="' + window.CRM.root + '/PersonView.php?PersonID=' + parseInt(row.id, 10) + '" class="text-primary">' +
+                        return '<a href="' + window.CRM.root + '/people/view/' + parseInt(row.id, 10) + '" class="text-primary">' +
                             '<i class="fa-solid fa-user me-2"></i>' + escapeHtml(data) + '</a>';
                     },
                     searchable: true
@@ -100,7 +100,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     title: i18next.t('Email Addresses'),
                     data: 'emails',
                     render: function (data, type, row) {
-                        if (!data || data.length === 0) return '<span class="text-muted">' + i18next.t('No email') + '</span>';
+                        if (!data || data.length === 0) return '<span class="text-body-secondary">' + i18next.t('No email') + '</span>';
                         return data.map(function(email) {
                             var escaped = escapeHtml(email);
                             return '<a href="mailto:' + encodeURIComponent(email) + '" class="badge bg-light text-dark me-1" target="_blank" rel="noopener noreferrer">' +

@@ -52,7 +52,10 @@ All project-specific skills live in **[`churchcrm/`](./churchcrm/)**. See [`chur
 ### Plugins
 - [Plugin System](./churchcrm/plugin-system.md)
 - [Plugin Development](./churchcrm/plugin-development.md)
-- [Plugin Migration](./churchcrm/plugin-migration.md)
+- [Plugin Create (Community)](./churchcrm/plugin-create.md)
+- [Plugin Migration (Core only)](./churchcrm/plugin-migration.md)
+- [Plugin Security Scan](./churchcrm/plugin-security-scan.md)
+- [Plugin Compliance (Admin Audit)](./churchcrm/plugin-compliance.md)
 
 ### Testing
 - [Testing](./churchcrm/testing.md)
@@ -108,7 +111,9 @@ They are registered in `~/.claude/CLAUDE.md` for automatic discovery.
 - **New API endpoint**: `api-development.md` → `service-layer.md` → `slim-4-best-practices.md` → `security-best-practices.md` → `cypress-testing.md` → `git-workflow.md`
 - **Migrate legacy page**: `routing-architecture.md` → `admin-mvc-migration.md` → `frontend-development.md` → `database-operations.md` → `git-workflow.md`
 - **Fix security issue**: `security-best-practices.md` → `authorization-security.md` → `php-best-practices.md` → `git-workflow.md`
-- **Add plugin**: `plugin-system.md` → `plugin-development.md` → `api-development.md` → `git-workflow.md`
+- **Add community plugin**: `plugin-system.md` → `plugin-development.md` → `plugin-create.md` → `plugin-security-scan.md` → `git-workflow.md`
+- **Update a core plugin**: `plugin-system.md` → `plugin-development.md` → `plugin-migration.md` → `git-workflow.md`
+- **Audit installed plugins**: `plugin-compliance.md`
 - **Optimize queries**: `performance-optimization.md` → `database-operations.md` → `service-layer.md`
 - **Add UI text**: `i18n-localization.md` → `frontend-development.md` → `git-workflow.md`
 

@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
@@ -47,7 +48,7 @@ if (isset($_POST['Submit'])) {
     if ($iReturn) {
         RedirectUtils::redirect('groups/view/' . $iGroupID);
     } else {
-        RedirectUtils::redirect('PersonView.php?PersonID=' . $iPersonID);
+        RedirectUtils::redirect(Person::getViewURIForId($iPersonID));
     }
 }
 
@@ -125,7 +126,7 @@ require_once __DIR__ . '/Include/Header.php'
             if ($iReturn) {
                 echo ' <a href="' . SystemURLs::getRootPath() . '/groups/view/' . $iGroupID . '" class="btn btn-secondary ms-2">' . gettext('Cancel') . '</a>';
             } else {
-                echo ' <a href="PersonView.php?PersonID=' . $iPersonID . '" class="btn btn-secondary ms-2">' . gettext('Cancel') . '</a>';
+                echo ' <a href="' . Person::getViewURIForId($iPersonID) . '" class="btn btn-secondary ms-2">' . gettext('Cancel') . '</a>';
             }
             ?>
         </div>
