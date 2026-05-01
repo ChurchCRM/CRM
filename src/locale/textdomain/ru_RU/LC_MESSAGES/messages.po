@@ -1660,11 +1660,6 @@ msgid "Updated"
 msgstr "Обновлено"
 
 #: 
-#, fuzzy
-msgid "Please confirm deletion of this note"
-msgstr "Пожалуйста, подтвердите удаление этой заметке"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "Да, удалить эту запись"
 
@@ -5567,10 +5562,6 @@ msgstr "неверное значение статуса"
 #: 
 msgid "invalid export value"
 msgstr "неверное значение экспорта"
-
-#: 
-msgid "Invalid User/Password"
-msgstr "Неверное имя пользователя/пароль"
 
 #: 
 msgid "Duplicate Emails"

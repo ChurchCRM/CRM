@@ -1661,11 +1661,6 @@ msgid "Updated"
 msgstr "Zaktualizowane"
 
 #: 
-#, fuzzy
-msgid "Please confirm deletion of this note"
-msgstr "Proszę potwierdzić USUNIĘCIE tej notatki"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "Tak, USUŃ ten Wpis"
 
@@ -5567,10 +5562,6 @@ msgstr "błędna wartość stanu"
 #: 
 msgid "invalid export value"
 msgstr "nieprawidłowa wartość eksportu"
-
-#: 
-msgid "Invalid User/Password"
-msgstr "Błędny Użytkownik lub Hasło"
 
 #: 
 msgid "Duplicate Emails"

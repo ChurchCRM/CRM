@@ -1618,10 +1618,6 @@ msgid "Updated"
 msgstr "עודכן"
 
 #: 
-msgid "Please confirm deletion of this note"
-msgstr "אנא אשר את מחיקת ההערה הזו"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "כן, מחק רשומה זו"
 
@@ -5496,10 +5492,6 @@ msgstr "ערך סטטוס לא חוקי"
 #: 
 msgid "invalid export value"
 msgstr "ערך ייצוא לא חוקי"
-
-#: 
-msgid "Invalid User/Password"
-msgstr "משתמש/סיסמה לא חוקיים"
 
 #: 
 msgid "Duplicate Emails"

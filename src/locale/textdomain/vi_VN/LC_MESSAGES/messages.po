@@ -1631,10 +1631,6 @@ msgid "Updated"
 msgstr "Đã cập nhật"
 
 #: 
-msgid "Please confirm deletion of this note"
-msgstr "Vui lòng xác nhận việc xóa ghi chú này"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "Vâng, xóa thành viên này"
 
@@ -5510,10 +5506,6 @@ msgstr "giá trị trạng thái không hợp lệ"
 #: 
 msgid "invalid export value"
 msgstr "giá trị xuất khẩu không hợp lệ"
-
-#: 
-msgid "Invalid User/Password"
-msgstr "Người dùng / Mật khẩu không hợp lệ"
 
 #: 
 msgid "Duplicate Emails"

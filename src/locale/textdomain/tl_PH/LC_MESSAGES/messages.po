@@ -1597,10 +1597,6 @@ msgid "Updated"
 msgstr "Na-update"
 
 #: 
-msgid "Please confirm deletion of this note"
-msgstr "Pakikumpirma ang pagbubura ng tala na ito"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "Oo, burahin ang rekord na ito"
 
@@ -5459,10 +5455,6 @@ msgstr "hindi wastong halaga ng katayuan"
 #: 
 msgid "invalid export value"
 msgstr "hindi wastong halaga ng export"
-
-#: 
-msgid "Invalid User/Password"
-msgstr "Hindi Wastong User/Password"
 
 #: 
 msgid "Duplicate Emails"

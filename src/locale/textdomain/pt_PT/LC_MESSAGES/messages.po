@@ -1675,11 +1675,6 @@ msgid "Updated"
 msgstr "Atualizado"
 
 #: 
-#, fuzzy
-msgid "Please confirm deletion of this note"
-msgstr "Por favor confirme a exclusão desta nota"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "Sim, apague este registo"
 
@@ -5637,10 +5632,6 @@ msgstr "valor de status inválido"
 #: 
 msgid "invalid export value"
 msgstr "valor de exportação inválido"
-
-#: 
-msgid "Invalid User/Password"
-msgstr "Utilizador ou Senha Inválidos"
 
 #: 
 msgid "Duplicate Emails"

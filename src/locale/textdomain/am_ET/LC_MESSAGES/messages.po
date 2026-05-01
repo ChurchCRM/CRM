@@ -1618,10 +1618,6 @@ msgid "Updated"
 msgstr "ተዘምኗል"
 
 #: 
-msgid "Please confirm deletion of this note"
-msgstr "ይህ ጽሁፍ እንዲጠፋ አረጋግጥ"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "አዎ፣ ይህን አጥፋ"
 
@@ -5499,10 +5495,6 @@ msgstr "ልክ ያልሆነ የሁኔታ ዋጋ"
 #: 
 msgid "invalid export value"
 msgstr "ልክ ያልሆነ መላኪያ ዋጋ"
-
-#: 
-msgid "Invalid User/Password"
-msgstr "የተሳሳተ ተጠቃሚ/የይለፍ ቃል"
 
 #: 
 msgid "Duplicate Emails"

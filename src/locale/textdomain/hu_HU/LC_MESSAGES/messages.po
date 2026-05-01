@@ -1655,11 +1655,6 @@ msgid "Updated"
 msgstr "Frissítve"
 
 #: 
-#, fuzzy
-msgid "Please confirm deletion of this note"
-msgstr "Kérjük, erősítse meg törlését e feljegyzés"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "Igen, törlöm ezt a rekordot"
 
@@ -5557,10 +5552,6 @@ msgstr "érvénytelen státusz értéke"
 #: 
 msgid "invalid export value"
 msgstr "érvénytelen exportálási érték"
-
-#: 
-msgid "Invalid User/Password"
-msgstr "Érvénytelen felhasználó/jelszó"
 
 #: 
 msgid "Duplicate Emails"

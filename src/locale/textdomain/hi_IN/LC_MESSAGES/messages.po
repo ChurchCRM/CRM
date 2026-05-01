@@ -1600,10 +1600,6 @@ msgid "Updated"
 msgstr "अपडेट किया गया"
 
 #: 
-msgid "Please confirm deletion of this note"
-msgstr "कृपया इस नोट को हटाने की पुष्टि करें"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "हाँ, इस रिकॉर्ड को हटाएँ"
 
@@ -5462,10 +5458,6 @@ msgstr "अमान्य स्थिति मान"
 #: 
 msgid "invalid export value"
 msgstr "अमान्य निर्यात मान"
-
-#: 
-msgid "Invalid User/Password"
-msgstr "अमान्य उपयोगकर्ता/पासवर्ड"
 
 #: 
 msgid "Duplicate Emails"

@@ -1618,10 +1618,6 @@ msgid "Updated"
 msgstr "Imesasishwa"
 
 #: 
-msgid "Please confirm deletion of this note"
-msgstr "Tafadhali thibitisha kufutwa kwa dokezo hili"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "Ndiyo, futa rekodi hii"
 
@@ -5494,10 +5490,6 @@ msgstr "thamani ya hali batili"
 #: 
 msgid "invalid export value"
 msgstr "thamani batili ya usafirishaji"
-
-#: 
-msgid "Invalid User/Password"
-msgstr "Mtumiaji/Nenosiri batili"
 
 #: 
 msgid "Duplicate Emails"

@@ -1662,11 +1662,6 @@ msgid "Updated"
 msgstr "Actualizat"
 
 #: 
-#, fuzzy
-msgid "Please confirm deletion of this note"
-msgstr "Vă rugăm să confirmați ștergerea această notă"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "Da, șterge această înregistrare"
 
@@ -5575,10 +5570,6 @@ msgstr "valoarea stării este invalidă"
 #: 
 msgid "invalid export value"
 msgstr "valoarea exportului este invalidă"
-
-#: 
-msgid "Invalid User/Password"
-msgstr "Utilizator/Parolă nevalidă"
 
 #: 
 msgid "Duplicate Emails"

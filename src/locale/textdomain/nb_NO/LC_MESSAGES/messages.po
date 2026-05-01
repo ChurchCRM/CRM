@@ -1674,11 +1674,6 @@ msgid "Updated"
 msgstr "Oppdatert"
 
 #: 
-#, fuzzy
-msgid "Please confirm deletion of this note"
-msgstr "Vennligst bekrefte sletting av dette notatet"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "Ja, slett denne posten"
 
@@ -5593,10 +5588,6 @@ msgstr "ugyldig statusverdi"
 #: 
 msgid "invalid export value"
 msgstr "ugyldig eksportverdi"
-
-#: 
-msgid "Invalid User/Password"
-msgstr "Ugyldig brukernavn/passord"
 
 #: 
 msgid "Duplicate Emails"

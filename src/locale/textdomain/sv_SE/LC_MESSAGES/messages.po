@@ -1676,11 +1676,6 @@ msgid "Updated"
 msgstr "Uppdaterad"
 
 #: 
-#, fuzzy
-msgid "Please confirm deletion of this note"
-msgstr "Var snäll och bekräfta borttagningen av anteckningen"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "Ja, radera denna post"
 
@@ -5608,10 +5603,6 @@ msgstr "ogiltigt statusvärde"
 #: 
 msgid "invalid export value"
 msgstr "ogiltigt exportvärde"
-
-#: 
-msgid "Invalid User/Password"
-msgstr "Ogiltigt användare / lösenord"
 
 #: 
 msgid "Duplicate Emails"

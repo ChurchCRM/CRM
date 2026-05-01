@@ -1619,10 +1619,6 @@ msgid "Updated"
 msgstr "Përditësuar"
 
 #: 
-msgid "Please confirm deletion of this note"
-msgstr "Ju lutem konfirmoni fshirjen e këtij shënim"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "Po, fshini këtë arkiv të dhënash"
 
@@ -5489,10 +5485,6 @@ msgstr "vlera e statusit është e pavlefshme"
 #: 
 msgid "invalid export value"
 msgstr "vlera e eksportit është e pavlefshme"
-
-#: 
-msgid "Invalid User/Password"
-msgstr "Përdorues/Fjalëkalim i pavlefshëm"
 
 #: 
 msgid "Duplicate Emails"

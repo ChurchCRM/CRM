@@ -1617,10 +1617,6 @@ msgid "Updated"
 msgstr "تم التحديث"
 
 #: 
-msgid "Please confirm deletion of this note"
-msgstr "حذف تأكيد يرجى من هذه المذكرة"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "نعم , امسح هذا السجل"
 
@@ -5496,10 +5492,6 @@ msgstr "قيمة حالة غير صالحة"
 #: 
 msgid "invalid export value"
 msgstr "قيمة الصادرات غير صالحة"
-
-#: 
-msgid "Invalid User/Password"
-msgstr "العضو صالح / كلمة المرور"
 
 #: 
 msgid "Duplicate Emails"
