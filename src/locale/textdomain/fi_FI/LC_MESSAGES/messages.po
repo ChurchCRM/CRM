@@ -16086,3 +16086,175 @@ msgstr "Ajat käyttävät seurakunnan aikaa ({{church}}), ei selaimesi aikaa ({{
 msgid "Welcome — sign in to manage your community"
 msgstr "Tervetuloa — kirjaudu sisään hallitaksesi seurakuntaasi"
 
+#: 
+msgid "Are you sure you want to delete this note?"
+msgstr "Haluatko varmasti poistaa tämän muistiinpanon?"
+
+#: 
+msgid "Cancel — wait 1 more minute"
+msgstr "Peruuta — odota vielä 1 minuutti"
+
+#: 
+msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
+msgstr "Lahjoitusrahastoa ei voi poistaa: siihen viitataan yhä yhdessä tai useammassa taloudellisessa sitoumuksessa."
+
+#: 
+msgid "Cannot delete fundraiser: %d donated items are still associated. Remove the items first."
+msgstr "Varainhankintaa ei voi poistaa: siihen liittyy vielä %d lahjoitettua kohdetta. Poista kohteet ensin."
+
+#: 
+msgid "Cannot delete property type: %d properties still reference it. Reassign or delete those properties first."
+msgstr "Ominaisuustyyppiä ei voi poistaa: %d ominaisuutta viittaa siihen edelleen. Määritä uudelleen tai poista nämä ominaisuudet ensin."
+
+#: 
+msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
+msgstr "Vapaaehtoistyömahdollisuutta ei voi poistaa: %d henkilöä on yhä määritetty. Poista määritykset ensin."
+
+#: 
+msgid "Class must be one of p, f, or g"
+msgstr "Luokan täytyy olla p, f tai g"
+
+#: 
+msgid "Copy error message"
+msgstr "Kopioi virheilmoitus"
+
+#: 
+msgid "Could not load note."
+msgstr "Muistiinpanoa ei voitu ladata."
+
+#: 
+msgid "Description cannot exceed 100 characters"
+msgstr "Kuvaus ei voi ylittää 100 merkkiä"
+
+#: 
+msgid "Donation fund not found"
+msgstr "Lahjoitusrahastoa ei löydy"
+
+#: 
+msgid "Error deleting note."
+msgstr "Virhe muistiinpanon poistamisessa."
+
+#: 
+msgid "Failed to create donation fund"
+msgstr "Lahjoitusrahaston luominen epäonnistui"
+
+#: 
+msgid "Failed to create fundraiser"
+msgstr "Varainhankinnan luominen epäonnistui"
+
+#: 
+msgid "Failed to create property type"
+msgstr "Ominaisuustyypin luominen epäonnistui"
+
+#: 
+msgid "Failed to create volunteer opportunity"
+msgstr "Vapaaehtoistyömahdollisuuden luominen epäonnistui"
+
+#: 
+msgid "Failed to delete donation fund"
+msgstr "Lahjoitusrahaston poistaminen epäonnistui"
+
+#: 
+msgid "Failed to delete fundraiser"
+msgstr "Varainhankinnan poistaminen epäonnistui"
+
+#: 
+msgid "Failed to delete note."
+msgstr "Muistiinpanon poistaminen epäonnistui."
+
+#: 
+msgid "Failed to delete property type"
+msgstr "Ominaisuustyypin poistaminen epäonnistui"
+
+#: 
+msgid "Failed to delete volunteer opportunity"
+msgstr "Vapaaehtoistyömahdollisuuden poistaminen epäonnistui"
+
+#: 
+msgid "Failed to update donation fund"
+msgstr "Lahjoitusrahaston päivitys epäonnistui"
+
+#: 
+msgid "Failed to update fundraiser"
+msgstr "Varainhankinnan päivitys epäonnistui"
+
+#: 
+msgid "Failed to update property type"
+msgstr "Ominaisuustyypin päivitys epäonnistui"
+
+#: 
+msgid "Failed to update volunteer opportunity"
+msgstr "Vapaaehtoistyömahdollisuuden päivitys epäonnistui"
+
+#: 
+msgid "Fundraiser not found"
+msgstr "Varainhankintaa ei löydy"
+
+#: 
+msgid "Installation ID"
+msgstr "Asennustunnus"
+
+#: 
+msgid "Invalid class"
+msgstr "Virheellinen luokka"
+
+#: 
+msgid "Name cannot exceed 30 characters"
+msgstr "Nimi ei voi ylittää 30 merkkiä"
+
+#: 
+msgid "Note by %s deleted"
+msgstr "Muistiinpano käyttäjältä %s poistettu"
+
+#: 
+msgid "Note not found."
+msgstr "Muistiinpanoa ei löydy."
+
+#: 
+msgid "Plugin Development Docs"
+msgstr "Liitännäiskehityksen dokumentaatio"
+
+#: 
+msgid "Property type not found"
+msgstr "Ominaisuustyyppiä ei löydy"
+
+#: 
+msgid "Read more"
+msgstr "Lue lisää"
+
+#: 
+msgid "Refreshing Soon"
+msgstr "Päivitetään pian"
+
+#: 
+msgid "Refreshing in"
+msgstr "Päivitetään"
+
+#: 
+msgid "That name already exists."
+msgstr "Tämä nimi on jo olemassa."
+
+#: 
+msgid "Title is required"
+msgstr "Otsikko on pakollinen"
+
+#: 
+msgid "Volunteer opportunity not found"
+msgstr "Vapaaehtoistyömahdollisuutta ei löydy"
+
+#: 
+msgid "You do not have permission to delete this note."
+msgstr "Sinulla ei ole oikeutta poistaa tätä muistiinpanoa."
+
+#: 
+msgid "You do not have permission to edit this note."
+msgstr "Sinulla ei ole oikeutta muokata tätä muistiinpanoa."
+
+#: 
+msgid "[Private Note — visible only to creator]"
+msgstr "[Yksityinen muistiinpano — näkyvissä vain luojalle]"
+
+#: 
+msgid "seconds"
+msgstr "sekuntia"
+

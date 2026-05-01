@@ -16249,10 +16249,6 @@ msgid "Invalid class"
 msgstr "தவறான வகுப்பு"
 
 #: 
-msgid "Mailchimp"
-msgstr "மெயில்சிம்ப்"
-
-#: 
 msgid "Name cannot exceed 30 characters"
 msgstr "பெயர் 30 எழுத்துகளை விட அதிகமாக இருக்க முடியாது"
 

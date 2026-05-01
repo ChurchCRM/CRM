@@ -16083,3 +16083,175 @@ msgstr "समय चर्च के समय ({{church}}) का उपयो
 msgid "Welcome — sign in to manage your community"
 msgstr "स्वागत है — अपनी मण्डली प्रबंधित करने के लिए साइन इन करें"
 
+#: 
+msgid "Are you sure you want to delete this note?"
+msgstr "क्या आप वाकई इस नोट को हटाना चाहते हैं?"
+
+#: 
+msgid "Cancel — wait 1 more minute"
+msgstr "रद्द करें — 1 मिनट और प्रतीक्षा करें"
+
+#: 
+msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
+msgstr "दान निधि हटाई नहीं जा सकती: इसे एक या अधिक वित्तीय प्रतिज्ञाओं में संदर्भित किया गया है।"
+
+#: 
+msgid "Cannot delete fundraiser: %d donated items are still associated. Remove the items first."
+msgstr "धन संग्रह अभियान हटाया नहीं जा सकता: %d दान की गई वस्तुएँ अभी भी जुड़ी हुई हैं। पहले वस्तुएँ हटाएँ।"
+
+#: 
+msgid "Cannot delete property type: %d properties still reference it. Reassign or delete those properties first."
+msgstr "संपत्ति प्रकार हटाया नहीं जा सकता: %d संपत्तियाँ अभी भी इसका संदर्भ देती हैं। पहले उन संपत्तियों को पुनः असाइन करें या हटाएँ।"
+
+#: 
+msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
+msgstr "स्वयंसेवक अवसर हटाया नहीं जा सकता: %d लोग अभी भी नियुक्त हैं। पहले नियुक्तियाँ हटाएँ।"
+
+#: 
+msgid "Class must be one of p, f, or g"
+msgstr "वर्ग p, f, या g में से एक होना चाहिए"
+
+#: 
+msgid "Copy error message"
+msgstr "त्रुटि संदेश कॉपी करें"
+
+#: 
+msgid "Could not load note."
+msgstr "नोट लोड नहीं हो सका।"
+
+#: 
+msgid "Description cannot exceed 100 characters"
+msgstr "विवरण 100 वर्णों से अधिक नहीं हो सकता"
+
+#: 
+msgid "Donation fund not found"
+msgstr "दान निधि नहीं मिली"
+
+#: 
+msgid "Error deleting note."
+msgstr "नोट हटाने में त्रुटि।"
+
+#: 
+msgid "Failed to create donation fund"
+msgstr "दान निधि बनाने में विफल"
+
+#: 
+msgid "Failed to create fundraiser"
+msgstr "धन संग्रह अभियान बनाने में विफल"
+
+#: 
+msgid "Failed to create property type"
+msgstr "संपत्ति प्रकार बनाने में विफल"
+
+#: 
+msgid "Failed to create volunteer opportunity"
+msgstr "स्वयंसेवक अवसर बनाने में विफल"
+
+#: 
+msgid "Failed to delete donation fund"
+msgstr "दान निधि हटाने में विफल"
+
+#: 
+msgid "Failed to delete fundraiser"
+msgstr "धन संग्रह अभियान हटाने में विफल"
+
+#: 
+msgid "Failed to delete note."
+msgstr "नोट हटाने में विफल।"
+
+#: 
+msgid "Failed to delete property type"
+msgstr "संपत्ति प्रकार हटाने में विफल"
+
+#: 
+msgid "Failed to delete volunteer opportunity"
+msgstr "स्वयंसेवक अवसर हटाने में विफल"
+
+#: 
+msgid "Failed to update donation fund"
+msgstr "दान निधि अपडेट करने में विफल"
+
+#: 
+msgid "Failed to update fundraiser"
+msgstr "धन संग्रह अभियान अपडेट करने में विफल"
+
+#: 
+msgid "Failed to update property type"
+msgstr "संपत्ति प्रकार अपडेट करने में विफल"
+
+#: 
+msgid "Failed to update volunteer opportunity"
+msgstr "स्वयंसेवक अवसर अपडेट करने में विफल"
+
+#: 
+msgid "Fundraiser not found"
+msgstr "धन संग्रह अभियान नहीं मिला"
+
+#: 
+msgid "Installation ID"
+msgstr "इंस्टॉलेशन आईडी"
+
+#: 
+msgid "Invalid class"
+msgstr "अमान्य वर्ग"
+
+#: 
+msgid "Name cannot exceed 30 characters"
+msgstr "नाम 30 वर्णों से अधिक नहीं हो सकता"
+
+#: 
+msgid "Note by %s deleted"
+msgstr "%s द्वारा नोट हटाया गया"
+
+#: 
+msgid "Note not found."
+msgstr "नोट नहीं मिला।"
+
+#: 
+msgid "Plugin Development Docs"
+msgstr "प्लगइन विकास दस्तावेज़"
+
+#: 
+msgid "Property type not found"
+msgstr "संपत्ति प्रकार नहीं मिला"
+
+#: 
+msgid "Read more"
+msgstr "और पढ़ें"
+
+#: 
+msgid "Refreshing Soon"
+msgstr "शीघ्र ताज़ा हो रहा है"
+
+#: 
+msgid "Refreshing in"
+msgstr "ताज़ा होगा"
+
+#: 
+msgid "That name already exists."
+msgstr "यह नाम पहले से मौजूद है।"
+
+#: 
+msgid "Title is required"
+msgstr "शीर्षक आवश्यक है"
+
+#: 
+msgid "Volunteer opportunity not found"
+msgstr "स्वयंसेवक अवसर नहीं मिला"
+
+#: 
+msgid "You do not have permission to delete this note."
+msgstr "आपके पास इस नोट को हटाने की अनुमति नहीं है।"
+
+#: 
+msgid "You do not have permission to edit this note."
+msgstr "आपके पास इस नोट को संपादित करने की अनुमति नहीं है।"
+
+#: 
+msgid "[Private Note — visible only to creator]"
+msgstr "[निजी नोट — केवल निर्माता को दृश्य]"
+
+#: 
+msgid "seconds"
+msgstr "सेकंड"
+

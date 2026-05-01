@@ -16123,3 +16123,175 @@ msgstr "הזמנים משתמשים בשעון הקהילה ({{church}}), ולא
 msgid "Welcome — sign in to manage your community"
 msgstr "ברוך הבא — התחבר כדי לנהל את קהילתך"
 
+#: 
+msgid "Are you sure you want to delete this note?"
+msgstr "האם אתה בטוח שברצונך למחוק פתק זה?"
+
+#: 
+msgid "Cancel — wait 1 more minute"
+msgstr "ביטול — המתן עוד דקה אחת"
+
+#: 
+msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
+msgstr "לא ניתן למחוק את קרן התרומות: היא עדיין מוזכרת בהתחייבות אחת או יותר."
+
+#: 
+msgid "Cannot delete fundraiser: %d donated items are still associated. Remove the items first."
+msgstr "לא ניתן למחוק את מסע גיוס התרומות: %d פריטים תרומה עדיין משויכים. הסר את הפריטים תחילה."
+
+#: 
+msgid "Cannot delete property type: %d properties still reference it. Reassign or delete those properties first."
+msgstr "לא ניתן למחוק את סוג הנכס: %d נכסים עדיין מפנים אליו. הקצה מחדש או מחק נכסים אלה תחילה."
+
+#: 
+msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
+msgstr "לא ניתן למחוק את הזדמנות גיוס המתנדבים: %d אנשים עדיין מוקצים. הסר את ההקצאות תחילה."
+
+#: 
+msgid "Class must be one of p, f, or g"
+msgstr "המחלקה חייבת להיות אחת מ-p, f, או g"
+
+#: 
+msgid "Copy error message"
+msgstr "העתק הודעת שגיאה"
+
+#: 
+msgid "Could not load note."
+msgstr "לא ניתן לטעון את הפתק."
+
+#: 
+msgid "Description cannot exceed 100 characters"
+msgstr "התיאור לא יכול לעלות על 100 תווים"
+
+#: 
+msgid "Donation fund not found"
+msgstr "קרן התרומות לא נמצאה"
+
+#: 
+msgid "Error deleting note."
+msgstr "שגיאה במחיקת הפתק."
+
+#: 
+msgid "Failed to create donation fund"
+msgstr "יצירת קרן התרומות נכשלה"
+
+#: 
+msgid "Failed to create fundraiser"
+msgstr "יצירת מסע גיוס התרומות נכשלה"
+
+#: 
+msgid "Failed to create property type"
+msgstr "יצירת סוג הנכס נכשלה"
+
+#: 
+msgid "Failed to create volunteer opportunity"
+msgstr "יצירת הזדמנות גיוס המתנדבים נכשלה"
+
+#: 
+msgid "Failed to delete donation fund"
+msgstr "מחיקת קרן התרומות נכשלה"
+
+#: 
+msgid "Failed to delete fundraiser"
+msgstr "מחיקת מסע גיוס התרומות נכשלה"
+
+#: 
+msgid "Failed to delete note."
+msgstr "מחיקת הפתק נכשלה."
+
+#: 
+msgid "Failed to delete property type"
+msgstr "מחיקת סוג הנכס נכשלה"
+
+#: 
+msgid "Failed to delete volunteer opportunity"
+msgstr "מחיקת הזדמנות גיוס המתנדבים נכשלה"
+
+#: 
+msgid "Failed to update donation fund"
+msgstr "עדכון קרן התרומות נכשל"
+
+#: 
+msgid "Failed to update fundraiser"
+msgstr "עדכון מסע גיוס התרומות נכשל"
+
+#: 
+msgid "Failed to update property type"
+msgstr "עדכון סוג הנכס נכשל"
+
+#: 
+msgid "Failed to update volunteer opportunity"
+msgstr "עדכון הזדמנות גיוס המתנדבים נכשל"
+
+#: 
+msgid "Fundraiser not found"
+msgstr "מסע גיוס התרומות לא נמצא"
+
+#: 
+msgid "Installation ID"
+msgstr "מזהה התקנה"
+
+#: 
+msgid "Invalid class"
+msgstr "מחלקה לא חוקית"
+
+#: 
+msgid "Name cannot exceed 30 characters"
+msgstr "השם לא יכול לעלות על 30 תווים"
+
+#: 
+msgid "Note by %s deleted"
+msgstr "הפתק של %s נמחק"
+
+#: 
+msgid "Note not found."
+msgstr "הפתק לא נמצא."
+
+#: 
+msgid "Plugin Development Docs"
+msgstr "תיעוד פיתוח תוספים"
+
+#: 
+msgid "Property type not found"
+msgstr "סוג הנכס לא נמצא"
+
+#: 
+msgid "Read more"
+msgstr "קרא עוד"
+
+#: 
+msgid "Refreshing Soon"
+msgstr "מתרענן בקרוב"
+
+#: 
+msgid "Refreshing in"
+msgstr "מתרענן בעוד"
+
+#: 
+msgid "That name already exists."
+msgstr "שם זה כבר קיים."
+
+#: 
+msgid "Title is required"
+msgstr "הכותרת נדרשת"
+
+#: 
+msgid "Volunteer opportunity not found"
+msgstr "הזדמנות גיוס המתנדבים לא נמצאה"
+
+#: 
+msgid "You do not have permission to delete this note."
+msgstr "אין לך הרשאה למחוק פתק זה."
+
+#: 
+msgid "You do not have permission to edit this note."
+msgstr "אין לך הרשאה לערוך פתק זה."
+
+#: 
+msgid "[Private Note — visible only to creator]"
+msgstr "[פתק פרטי — גלוי ליוצר בלבד]"
+
+#: 
+msgid "seconds"
+msgstr "שניות"
+

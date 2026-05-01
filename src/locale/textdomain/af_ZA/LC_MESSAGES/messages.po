@@ -16127,3 +16127,175 @@ msgstr "Tye gebruik kerktyd ({{church}}), nie u blaaier ({{browser}}) nie."
 msgid "Welcome — sign in to manage your community"
 msgstr "Welkom — meld aan om u gemeente te bestuur"
 
+#: 
+msgid "Are you sure you want to delete this note?"
+msgstr "Is jy seker dat jy hierdie nota wil uitvee?"
+
+#: 
+msgid "Cancel — wait 1 more minute"
+msgstr "Kanselleer — wag nog 1 minuut"
+
+#: 
+msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
+msgstr "Kan nie skenkingsfonds uitvee nie: dit word nog deur een of meer finansiële beloftes gebruik."
+
+#: 
+msgid "Cannot delete fundraiser: %d donated items are still associated. Remove the items first."
+msgstr "Kan nie fondsinsameling uitvee nie: %d geskenkte items is nog gekoppel. Verwyder eers die items."
+
+#: 
+msgid "Cannot delete property type: %d properties still reference it. Reassign or delete those properties first."
+msgstr "Kan nie eiendomstipe uitvee nie: %d eiendomme verwys nog daarna. Herassigneer of vee eers daardie eiendomme uit."
+
+#: 
+msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
+msgstr "Kan nie vrywilligergeleentheid uitvee nie: %d persone is nog toegewys. Verwyder eers die toewysingings."
+
+#: 
+msgid "Class must be one of p, f, or g"
+msgstr "Klas moet een van p, f, of g wees"
+
+#: 
+msgid "Copy error message"
+msgstr "Kopieer foutboodskap"
+
+#: 
+msgid "Could not load note."
+msgstr "Kon nie nota laai nie."
+
+#: 
+msgid "Description cannot exceed 100 characters"
+msgstr "Beskrywing kan nie 100 karakters oorskry nie"
+
+#: 
+msgid "Donation fund not found"
+msgstr "Skenkingsfonds nie gevind nie"
+
+#: 
+msgid "Error deleting note."
+msgstr "Fout by die uitvee van nota."
+
+#: 
+msgid "Failed to create donation fund"
+msgstr "Kon nie skenkingsfonds skep nie"
+
+#: 
+msgid "Failed to create fundraiser"
+msgstr "Kon nie fondsinsameling skep nie"
+
+#: 
+msgid "Failed to create property type"
+msgstr "Kon nie eiendomstipe skep nie"
+
+#: 
+msgid "Failed to create volunteer opportunity"
+msgstr "Kon nie vrywilligergeleentheid skep nie"
+
+#: 
+msgid "Failed to delete donation fund"
+msgstr "Kon nie skenkingsfonds uitvee nie"
+
+#: 
+msgid "Failed to delete fundraiser"
+msgstr "Kon nie fondsinsameling uitvee nie"
+
+#: 
+msgid "Failed to delete note."
+msgstr "Kon nie nota uitvee nie."
+
+#: 
+msgid "Failed to delete property type"
+msgstr "Kon nie eiendomstipe uitvee nie"
+
+#: 
+msgid "Failed to delete volunteer opportunity"
+msgstr "Kon nie vrywilligergeleentheid uitvee nie"
+
+#: 
+msgid "Failed to update donation fund"
+msgstr "Kon nie skenkingsfonds opdateer nie"
+
+#: 
+msgid "Failed to update fundraiser"
+msgstr "Kon nie fondsinsameling opdateer nie"
+
+#: 
+msgid "Failed to update property type"
+msgstr "Kon nie eiendomstipe opdateer nie"
+
+#: 
+msgid "Failed to update volunteer opportunity"
+msgstr "Kon nie vrywilligergeleentheid opdateer nie"
+
+#: 
+msgid "Fundraiser not found"
+msgstr "Fondsinsameling nie gevind nie"
+
+#: 
+msgid "Installation ID"
+msgstr "Installasie-ID"
+
+#: 
+msgid "Invalid class"
+msgstr "Ongeldige klas"
+
+#: 
+msgid "Name cannot exceed 30 characters"
+msgstr "Naam kan nie 30 karakters oorskry nie"
+
+#: 
+msgid "Note by %s deleted"
+msgstr "Nota deur %s uitgevee"
+
+#: 
+msgid "Note not found."
+msgstr "Nota nie gevind nie."
+
+#: 
+msgid "Plugin Development Docs"
+msgstr "Inprop-ontwikkelingsdokumentasie"
+
+#: 
+msgid "Property type not found"
+msgstr "Eiendomstipe nie gevind nie"
+
+#: 
+msgid "Read more"
+msgstr "Lees meer"
+
+#: 
+msgid "Refreshing Soon"
+msgstr "Binnekort verfris"
+
+#: 
+msgid "Refreshing in"
+msgstr "Verfris oor"
+
+#: 
+msgid "That name already exists."
+msgstr "Daardie naam bestaan reeds."
+
+#: 
+msgid "Title is required"
+msgstr "Titel is verpligtend"
+
+#: 
+msgid "Volunteer opportunity not found"
+msgstr "Vrywilligergeleentheid nie gevind nie"
+
+#: 
+msgid "You do not have permission to delete this note."
+msgstr "Jy het nie toestemming om hierdie nota uit te vee nie."
+
+#: 
+msgid "You do not have permission to edit this note."
+msgstr "Jy het nie toestemming om hierdie nota te wysig nie."
+
+#: 
+msgid "[Private Note — visible only to creator]"
+msgstr "[Privaatnota — slegs sigbaar vir skepper]"
+
+#: 
+msgid "seconds"
+msgstr "sekondes"
+
