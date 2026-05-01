@@ -1618,10 +1618,6 @@ msgid "Updated"
 msgstr "புதுப்பிக்கப்பட்டது"
 
 #: 
-msgid "Please confirm deletion of this note"
-msgstr "இந்தக் குறிப்பை நீக்குவதை உறுதிப்படுத்தவும்"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "ஆம், இந்தப் பதிவை நீக்கவும்"
 
@@ -5493,10 +5489,6 @@ msgstr "தவறான நிலை மதிப்பு"
 #: 
 msgid "invalid export value"
 msgstr "தவறான ஏற்றுமதி மதிப்பு"
-
-#: 
-msgid "Invalid User/Password"
-msgstr "தவறான பயனர்/கடவுச்சொல்"
 
 #: 
 msgid "Duplicate Emails"
@@ -16143,4 +16135,180 @@ msgstr "நேரங்கள் உங்கள் உலாவி ({{browser}}
 #: 
 msgid "Welcome — sign in to manage your community"
 msgstr "வரவேற்கிறோம் — உங்கள் சமூகத்தை நிர்வகிக்க உள்நுழையுங்கள்"
+
+#: 
+msgid "Are you sure you want to delete this note?"
+msgstr "இந்த குறிப்பை நீக்க விரும்புகிறீர்களா?"
+
+#: 
+msgid "Cancel — wait 1 more minute"
+msgstr "ரத்து செய் — இன்னும் 1 நிமிடம் காத்திருக்கவும்"
+
+#: 
+msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
+msgstr "நன்கொடை நிதியை நீக்க முடியாது: அது இன்னும் ஒரு அல்லது அதற்கு மேற்பட்ட உறுதிமொழிகளால் குறிப்பிடப்படுகிறது."
+
+#: 
+msgid "Cannot delete fundraiser: %d donated items are still associated. Remove the items first."
+msgstr "நிதி திரட்டலை நீக்க முடியாது: %d நன்கொடையாக வழங்கப்பட்ட பொருட்கள் இன்னும் தொடர்புடையவை. முதலில் அந்த பொருட்களை நீக்கவும்."
+
+#: 
+msgid "Cannot delete property type: %d properties still reference it. Reassign or delete those properties first."
+msgstr "சொத்து வகையை நீக்க முடியாது: %d சொத்துகள் இன்னும் இதை குறிப்பிடுகின்றன. முதலில் அந்த சொத்துகளை மறுவழங்கவும் அல்லது நீக்கவும்."
+
+#: 
+msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
+msgstr "தன்னார்வ வாய்ப்பை நீக்க முடியாது: %d பேர் இன்னும் ஒதுக்கப்பட்டுள்ளனர். முதலில் அந்த ஒதுக்கீடுகளை நீக்கவும்."
+
+#: 
+msgid "Class must be one of p, f, or g"
+msgstr "வகுப்பு p, f அல்லது g ஆகியவற்றில் ஒன்றாக இருக்க வேண்டும்"
+
+#: 
+msgid "Copy error message"
+msgstr "பிழைச் செய்தியை நகலெடு"
+
+#: 
+msgid "Could not load note."
+msgstr "குறிப்பை ஏற்ற முடியவில்லை."
+
+#: 
+msgid "Description cannot exceed 100 characters"
+msgstr "விளக்கம் 100 எழுத்துகளை மீறக்கூடாது"
+
+#: 
+msgid "Donation fund not found"
+msgstr "நன்கொடை நிதி கிடைக்கவில்லை"
+
+#: 
+msgid "Error deleting note."
+msgstr "குறிப்பை நீக்கும் போது பிழை ஏற்பட்டது."
+
+#: 
+msgid "Failed to create donation fund"
+msgstr "நன்கொடை நிதியை உருவாக்க முடியவில்லை"
+
+#: 
+msgid "Failed to create fundraiser"
+msgstr "நிதி திரட்டலை உருவாக்க முடியவில்லை"
+
+#: 
+msgid "Failed to create property type"
+msgstr "சொத்து வகையை உருவாக்க முடியவில்லை"
+
+#: 
+msgid "Failed to create volunteer opportunity"
+msgstr "தன்னார்வ வாய்ப்பை உருவாக்க முடியவில்லை"
+
+#: 
+msgid "Failed to delete donation fund"
+msgstr "நன்கொடை நிதியை நீக்க முடியவில்லை"
+
+#: 
+msgid "Failed to delete fundraiser"
+msgstr "நிதி திரட்டலை நீக்க முடியவில்லை"
+
+#: 
+msgid "Failed to delete note."
+msgstr "குறிப்பை நீக்க முடியவில்லை."
+
+#: 
+msgid "Failed to delete property type"
+msgstr "சொத்து வகையை நீக்க முடியவில்லை"
+
+#: 
+msgid "Failed to delete volunteer opportunity"
+msgstr "தன்னார்வ வாய்ப்பை நீக்க முடியவில்லை"
+
+#: 
+msgid "Failed to update donation fund"
+msgstr "நன்கொடை நிதியை புதுப்பிக்க முடியவில்லை"
+
+#: 
+msgid "Failed to update fundraiser"
+msgstr "நிதி திரட்டலை புதுப்பிக்க முடியவில்லை"
+
+#: 
+msgid "Failed to update property type"
+msgstr "சொத்து வகையை புதுப்பிக்க முடியவில்லை"
+
+#: 
+msgid "Failed to update volunteer opportunity"
+msgstr "தன்னார்வ வாய்ப்பை புதுப்பிக்க முடியவில்லை"
+
+#: 
+msgid "Fundraiser not found"
+msgstr "நிதி திரட்டல் கிடைக்கவில்லை"
+
+#: 
+msgid "Installation ID"
+msgstr "நிறுவல் ஐடி"
+
+#: 
+msgid "Invalid class"
+msgstr "தவறான வகுப்பு"
+
+#: 
+msgid "Mailchimp"
+msgstr "மெயில்சிம்ப்"
+
+#: 
+msgid "Name cannot exceed 30 characters"
+msgstr "பெயர் 30 எழுத்துகளை விட அதிகமாக இருக்க முடியாது"
+
+#: 
+msgid "Note by %s deleted"
+msgstr "%s மூலம் குறிப்பு நீக்கப்பட்டது"
+
+#: 
+msgid "Note not found."
+msgstr "குறிப்பு கிடைக்கவில்லை."
+
+#: 
+msgid "Plugin Development Docs"
+msgstr "பிளகின் உருவாக்க ஆவணங்கள்"
+
+#: 
+msgid "Property type not found"
+msgstr "சொத்து வகை கிடைக்கவில்லை"
+
+#: 
+msgid "Read more"
+msgstr "மேலும் படிக்க"
+
+#: 
+msgid "Refreshing Soon"
+msgstr "விரைவில் புதுப்பிக்கப்படுகிறது"
+
+#: 
+msgid "Refreshing in"
+msgstr "புதுப்பிப்பு நடைபெறுகிறது"
+
+#: 
+msgid "That name already exists."
+msgstr "அந்த பெயர் ஏற்கனவே உள்ளது."
+
+#: 
+msgid "Title is required"
+msgstr "தலைப்பு அவசியம்"
+
+#: 
+msgid "Volunteer opportunity not found"
+msgstr "தன்னார்வ வாய்ப்பு கிடைக்கவில்லை"
+
+#: 
+msgid "You do not have permission to delete this note."
+msgstr "இந்த குறிப்பை நீக்க உங்களுக்கு அனுமதி இல்லை."
+
+#: 
+msgid "You do not have permission to edit this note."
+msgstr "இந்த குறிப்பை திருத்த உங்களுக்கு அனுமதி இல்லை."
+
+#: 
+msgid "[Private Note — visible only to creator]"
+msgstr "[தனிப்பட்ட குறிப்பு — உருவாக்குநருக்கு மட்டும் காணப்படும்]"
+
+#: 
+msgid "seconds"
+msgstr "வினாடிகள்"
 

@@ -1609,10 +1609,6 @@ msgid "Updated"
 msgstr "నవీకరించబడింది"
 
 #: 
-msgid "Please confirm deletion of this note"
-msgstr "దయచేసి ఈ నోట్ తొలగింపును నిర్ధారించండి"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "అవును, ఈ రికార్డ్‌ను తొలగించండి"
 
@@ -5471,10 +5467,6 @@ msgstr "చెల్లని స్టేటస్ విలువ"
 #: 
 msgid "invalid export value"
 msgstr "చెల్లని ఎక్స్‌పోర్ట్ విలువ"
-
-#: 
-msgid "Invalid User/Password"
-msgstr "చెల్లని యూజర్/పాస్‌వర్డ్"
 
 #: 
 msgid "Duplicate Emails"

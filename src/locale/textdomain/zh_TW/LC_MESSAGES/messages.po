@@ -1667,11 +1667,6 @@ msgid "Updated"
 msgstr "更新"
 
 #: 
-#, fuzzy
-msgid "Please confirm deletion of this note"
-msgstr "請確認刪除本說明"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "是的，刪除這條記錄"
 
@@ -5608,10 +5603,6 @@ msgstr "無效的狀態值"
 #: 
 msgid "invalid export value"
 msgstr "無效的匯出值"
-
-#: 
-msgid "Invalid User/Password"
-msgstr "無效的用戶/密碼"
 
 #: 
 msgid "Duplicate Emails"

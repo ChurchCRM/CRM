@@ -1597,10 +1597,6 @@ msgid "Updated"
 msgstr "അപ്‌ഡേറ്റ് ചെയ്തു"
 
 #: 
-msgid "Please confirm deletion of this note"
-msgstr "ഈ കുറിപ്പ് ഇല്ലാതാക്കൽ സ്ഥിരീകരിക്കുക"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "അതെ, ഈ റെക്കോർഡ് ഇല്ലാതാക്കുക"
 
@@ -5459,10 +5455,6 @@ msgstr "അസാധുവായ സ്ഥിതി മൂല്യം"
 #: 
 msgid "invalid export value"
 msgstr "അസാധുവായ കയറ്റുമതി മൂല്യം"
-
-#: 
-msgid "Invalid User/Password"
-msgstr "അസാധുവായ ഉപയോക്താവ്/പാസ്‌വേഡ്"
 
 #: 
 msgid "Duplicate Emails"

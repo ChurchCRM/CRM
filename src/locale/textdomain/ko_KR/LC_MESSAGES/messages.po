@@ -1618,10 +1618,6 @@ msgid "Updated"
 msgstr "수정일"
 
 #: 
-msgid "Please confirm deletion of this note"
-msgstr "이 메모를 삭제할지 확인하세요."
-
-#: 
 msgid "Yes, delete this record"
 msgstr "예, 이 기록을 삭제합니다"
 
@@ -5492,10 +5488,6 @@ msgstr "잘못된 상태 값"
 #: 
 msgid "invalid export value"
 msgstr "잘못된 내보내기 값"
-
-#: 
-msgid "Invalid User/Password"
-msgstr "아이디 또는 비밀번호가 올바르지 않습니다"
 
 #: 
 msgid "Duplicate Emails"

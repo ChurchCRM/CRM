@@ -1618,10 +1618,6 @@ msgid "Updated"
 msgstr "Aktualizováno"
 
 #: 
-msgid "Please confirm deletion of this note"
-msgstr "Potvrďte smazání této poznámky"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "Ano, smazat tento záznam"
 
@@ -5487,10 +5483,6 @@ msgstr "neplatná hodnota stavu"
 #: 
 msgid "invalid export value"
 msgstr "neplatná hodnota exportu"
-
-#: 
-msgid "Invalid User/Password"
-msgstr "Neplatný uživatel/heslo"
 
 #: 
 msgid "Duplicate Emails"

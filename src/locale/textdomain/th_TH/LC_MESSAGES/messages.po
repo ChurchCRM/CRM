@@ -1609,10 +1609,6 @@ msgid "Updated"
 msgstr "อัปเดตแล้ว"
 
 #: 
-msgid "Please confirm deletion of this note"
-msgstr "กรุณายืนยันการลบบันทึกนี้"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "ใช่ ลบระเบียนนี้"
 
@@ -5471,10 +5467,6 @@ msgstr "ค่าสถานะไม่ถูกต้อง"
 #: 
 msgid "invalid export value"
 msgstr "ค่าส่งออกไม่ถูกต้อง"
-
-#: 
-msgid "Invalid User/Password"
-msgstr "ผู้ใช้/รหัสผ่านไม่ถูกต้อง"
 
 #: 
 msgid "Duplicate Emails"

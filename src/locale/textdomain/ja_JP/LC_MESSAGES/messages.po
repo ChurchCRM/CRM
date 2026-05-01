@@ -1597,10 +1597,6 @@ msgid "Updated"
 msgstr "更新日"
 
 #: 
-msgid "Please confirm deletion of this note"
-msgstr "このノートの削除を確認してください"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "はい、このレコードを削除します"
 
@@ -5459,10 +5455,6 @@ msgstr "無効なステータス値"
 #: 
 msgid "invalid export value"
 msgstr "無効なエクスポート値"
-
-#: 
-msgid "Invalid User/Password"
-msgstr "無効なユーザー名/パスワード"
 
 #: 
 msgid "Duplicate Emails"

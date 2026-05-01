@@ -1597,10 +1597,6 @@ msgid "Updated"
 msgstr "Bijgewerkt"
 
 #: 
-msgid "Please confirm deletion of this note"
-msgstr "Bevestig verwijdering van deze notitie"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "Ja, Verwijder dit record"
 
@@ -5462,10 +5458,6 @@ msgstr "Ongeldige waarde van de status"
 #: 
 msgid "invalid export value"
 msgstr "Ongeldige waarde van de export functie"
-
-#: 
-msgid "Invalid User/Password"
-msgstr "Ongeldige  inlogcode en/of password"
 
 #: 
 msgid "Duplicate Emails"

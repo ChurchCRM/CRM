@@ -1619,10 +1619,6 @@ msgid "Updated"
 msgstr "Оновлено"
 
 #: 
-msgid "Please confirm deletion of this note"
-msgstr "Будь ласка, підтвердьте видалення цієї примітки"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "Так, видалити цей запис"
 
@@ -5498,10 +5494,6 @@ msgstr "недійсне значення статусу"
 #: 
 msgid "invalid export value"
 msgstr "недійсне значення експорту"
-
-#: 
-msgid "Invalid User/Password"
-msgstr "Недійсний користувач / пароль"
 
 #: 
 msgid "Duplicate Emails"

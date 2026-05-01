@@ -1620,10 +1620,6 @@ msgid "Updated"
 msgstr "Diperbarui"
 
 #: 
-msgid "Please confirm deletion of this note"
-msgstr "Harap konfirmasi penghapusan catatan ini"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "Ya, hapus catatan ini"
 
@@ -5499,10 +5495,6 @@ msgstr "nilai status tidak valid"
 #: 
 msgid "invalid export value"
 msgstr "nilai ekspor tidak valid"
-
-#: 
-msgid "Invalid User/Password"
-msgstr "Salah User/Sandi"
 
 #: 
 msgid "Duplicate Emails"

@@ -1604,10 +1604,6 @@ msgid "Updated"
 msgstr "Päivitetty"
 
 #: 
-msgid "Please confirm deletion of this note"
-msgstr "Vahvista tämän huomautuksen poistaminen"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "Kyllä, poista nämä tiedot"
 
@@ -5466,10 +5462,6 @@ msgstr "virheellinen tilan arvo"
 #: 
 msgid "invalid export value"
 msgstr "virheellinen vientiarvo"
-
-#: 
-msgid "Invalid User/Password"
-msgstr "Virheellinen käyttäjätunnus tai salasana"
 
 #: 
 msgid "Duplicate Emails"

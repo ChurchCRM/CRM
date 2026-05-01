@@ -1624,10 +1624,6 @@ msgid "Updated"
 msgstr "Aggiornato"
 
 #: 
-msgid "Please confirm deletion of this note"
-msgstr "Si prega di confermare la cancellazione di questa nota"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "Sì, elimina questo record"
 
@@ -5518,10 +5514,6 @@ msgstr "valore di stato non valido"
 #: 
 msgid "invalid export value"
 msgstr "valore di esportazione non valido"
-
-#: 
-msgid "Invalid User/Password"
-msgstr "Utente non valido / password"
 
 #: 
 msgid "Duplicate Emails"
