@@ -27,6 +27,7 @@ try {
     $sDATABASE = $config->getDbName();
     $sRootPath = $config->getRootPath();
     $URL = [$config->getUrl()];
+    $bLockURL = $config->getLockUrl();
 } catch (RuntimeException $e) {
     header('Location: ../config-error.php?error=' . urlencode($e->getMessage()));
     exit;
