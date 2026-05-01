@@ -63,9 +63,19 @@ $sRootPath = '||ROOT_PATH||';
 // Examples: "https://www.mychurch.org/churchcrm/", "https://crm.mychurch.org/"
 $URL[0] = '||URL||';
 
-// Optional: Add alternate URLs if users access via multiple URLs
-// Uncomment and configure if needed. Use the same format as $URL[0]
-// (Must include https:// protocol, domain, full path, and trailing slash)
+// Optional: Add alternate URLs for multi-domain or multi-port access
+//
+// IMPORTANT: Alternate URLs are only enforced when "Lock URL" is enabled in the
+// admin settings (System Config). When disabled (default), any URL can access the app.
+// When enabled, ONLY the URLs listed below are allowed.
+//
+// Use cases:
+// - Allow access from both www.mychurch.org/churchcrm and crm.mychurch.org
+// - Allow both http and https (not recommended for security)
+// - Support non-standard port numbers (e.g., :8080)
+// - Support shared SSL hosted solutions
+//
+// Uncomment and configure as needed. Format: https://domain/path/ (with trailing slash)
 //
 // Example for non-standard port:
 //$URL[1] = 'https://www.mychurch.org:8080/churchcrm/';
