@@ -182,7 +182,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
             if (empty($members)) { return; } ?>
             <div class="mb-1">
                 <?php renderSectionHeader($label, $icon, $color, count($members)); ?>
-                <div style="overflow: visible;">
+                <div class="table-responsive">
                     <table class="table table-vcenter card-table mb-0">
                         <thead>
                             <tr>
@@ -256,7 +256,7 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
         ?>
             <div class="mb-1">
                 <?php renderSectionHeader($label, $icon, $color, count($members)); ?>
-                <div style="overflow: visible;">
+                <div class="table-responsive">
                     <table class="table table-vcenter card-table mb-0">
                         <thead>
                             <tr>
