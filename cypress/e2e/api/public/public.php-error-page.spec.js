@@ -12,7 +12,7 @@ describe('API Public PHP Error Page', () => {
     // The error page should be directly accessible even with PHP version check
     cy.request({
       method: 'GET',
-      url: '/php-error.php',
+      url: '/errors/php-error.php',
       failOnStatusCode: false
     }).then((response) => {
       // Page should load successfully
@@ -25,7 +25,7 @@ describe('API Public PHP Error Page', () => {
     // Simulate triggering the error page by checking index.php redirect
     cy.request({
       method: 'GET',
-      url: '/php-error.php',
+      url: '/errors/php-error.php',
       failOnStatusCode: false
     }).then((response) => {
       // Check for dynamic version requirement text (reads from composer.json)

@@ -1,26 +1,29 @@
 <?php
-require_once __DIR__ . '/../Include/Config.php';
+require_once __DIR__ . '/template.php';
 
-// Read required PHP version from composer.json (fallback kept for safety)
+// Get required PHP version from composer.json
 $requiredPhpVersion = '8.4';
-$composerFile = __DIR__ . '/../composer.json';
-if (file_exists($composerFile)) {
-    $composerJson = @file_get_contents($composerFile);
-    if ($composerJson !== false) {
-        $composer = json_decode($composerJson, true);
-        if (is_array($composer) && !empty($composer['config']['platform']['php'])) {
-            $requiredPhpVersion = $composer['config']['platform']['php'];
-        }
+if (file_exists(__DIR__ . '/../../composer.json')) {
+    $composer = json_decode(@file_get_contents(__DIR__ . '/../../composer.json'), true);
+    if (is_array($composer) && !empty($composer['config']['platform']['php'])) {
+        $requiredPhpVersion = $composer['config']['platform']['php'];
     }
 }
+$currentVersion = phpversion();
 
-$pageTitle = 'PHP Version Not Supported';
-$pageBodyHtml = '';
-$pageBodyHtml .= '<div class="version-info">';
-$pageBodyHtml .= '<p><strong>Current Version:</strong> <span class="highlight-version">' . htmlspecialchars(phpversion(), ENT_QUOTES, 'UTF-8') . '</span></p>';
-$pageBodyHtml .= '<p><strong>Required Version:</strong> PHP ' . htmlspecialchars($requiredPhpVersion, ENT_QUOTES, 'UTF-8') . ' or later</p>';
-$pageBodyHtml .= '</div>';
-$pageBodyHtml .= '<div class="error-message"><p>ChurchCRM requires PHP ' . htmlspecialchars($requiredPhpVersion, ENT_QUOTES, 'UTF-8') . ' or later with active security support.</p></div>';
-$pageBodyHtml .= '<div class="action-required"><strong>What you need to do:</strong><p>Contact your hosting provider or system administrator and request an upgrade to PHP ' . htmlspecialchars($requiredPhpVersion, ENT_QUOTES, 'UTF-8') . ' or later.</p></div>';
+// Build custom sections for this error
+$customSections = "### PHP Version Mismatch\n\n";
+$customSections .= "- **Current:** `" . htmlspecialchars($currentVersion) . "`\n";
+$customSections .= "- **Required:** `PHP " . htmlspecialchars($requiredPhpVersion) . "`\n\n";
+$customSections .= "Please contact your hosting provider and request an upgrade.";
 
-require __DIR__ . '/template.php';
+$issueBody = buildGitHubIssueBody('PHP Version Not Supported', $customSections);
+
+$content = '<p class="text-muted">ChurchCRM requires a current version of PHP with active security support.</p>'
+    . '<div class="alert alert-info bg-light border-info mt-3">'
+    . '<strong>Your PHP Version:</strong> <code>' . htmlspecialchars($currentVersion) . '</code><br>'
+    . '<strong>Required:</strong> <code>PHP ' . htmlspecialchars($requiredPhpVersion) . ' or later</code>'
+    . '</div>'
+    . '<p class="text-muted small mt-3">Contact your hosting provider to upgrade PHP.</p>';
+
+renderErrorPage('PHP Version Not Supported', '⚠️', 'primary-purple', $content, $issueBody);

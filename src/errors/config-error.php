@@ -1,18 +1,19 @@
 <?php
-require_once __DIR__ . '/../Include/Config.php';
+require_once __DIR__ . '/template.php';
 
 $errorMessage = $_GET['error'] ?? 'Configuration error';
-$logPath = sys_get_temp_dir() . '/churchcrm-' . date('Y-m-d') . '-config-error.log';
-$logContents = '';
-if (file_exists($logPath) && is_readable($logPath)) {
-    $logContents = file_get_contents($logPath);
-}
 
-$pageTitle = 'Configuration Error';
-$pageBodyHtml = '<div class="error-details"><p>ChurchCRM encountered an error reading or validating your configuration.</p><p>Review your <code>Include/Config.php</code> file and try again.</p></div>';
-$pageBodyHtml .= '<div class="error-message"><strong>Error:</strong><br>' . nl2br(htmlspecialchars($errorMessage, ENT_QUOTES, 'UTF-8')) . '</div>';
-if ($logContents) {
-    $pageBodyHtml .= '<div class="error-message" style="max-height:300px;overflow-y:auto;background:#f0f0f0;"><strong>Log Details:</strong><br><small style="color:#555;">' . nl2br(htmlspecialchars($logContents, ENT_QUOTES, 'UTF-8')) . '</small></div>';
-}
+// Build custom sections for this error
+$customSections = "### Configuration Error Details\n\n";
+$customSections .= "```\n" . htmlspecialchars($errorMessage) . "\n```";
 
-require __DIR__ . '/template.php';
+$issueBody = buildGitHubIssueBody('Configuration Error', $customSections);
+
+$content = '<p class="text-muted">ChurchCRM encountered an error reading or validating your configuration.</p>'
+    . '<div class="alert alert-warning bg-light border-warning mt-3">'
+    . '<strong>Error Details:</strong><br>'
+    . '<code class="small d-block mt-2 text-break">' . nl2br(htmlspecialchars($errorMessage)) . '</code>'
+    . '</div>'
+    . '<p class="text-muted small mt-3">Review your <code>Include/Config.php</code> file and try again.</p>';
+
+renderErrorPage('Configuration Error', '⚙️', 'danger', $content, $issueBody);
