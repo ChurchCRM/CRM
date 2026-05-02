@@ -96,4 +96,5 @@ jobs:
           ## Next Steps
           - Review and merge this PR to begin the ${{ inputs.version }} release cycle" \
             --base master \
-            --head "build/${{ inputs.version }}"
+            --head "build/${{ inputs.version }}" \
+            --label "Build"
