@@ -16127,3 +16127,175 @@ msgstr "Saatler, tarayıcı saatiniz ({{browser}}) değil, kilise saatini ({{chu
 msgid "Welcome — sign in to manage your community"
 msgstr "Hoş geldiniz — cemaatinizi yönetmek için giriş yapın"
 
+#: 
+msgid "Are you sure you want to delete this note?"
+msgstr "Bu notu silmek istediğinizden emin misiniz?"
+
+#: 
+msgid "Cancel — wait 1 more minute"
+msgstr "İptal — 1 dakika daha bekle"
+
+#: 
+msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
+msgstr "Bağış fonu silinemiyor: Bir veya daha fazla mali taahhüt tarafından hâlâ başvuruluyor."
+
+#: 
+msgid "Cannot delete fundraiser: %d donated items are still associated. Remove the items first."
+msgstr "Bağış kampanyası silinemiyor: %d bağış kalemi hâlâ ilişkili. Önce kalemleri kaldırın."
+
+#: 
+msgid "Cannot delete property type: %d properties still reference it. Reassign or delete those properties first."
+msgstr "Özellik türü silinemiyor: %d özellik hâlâ buna başvuruyor. Önce bu özellikleri yeniden atayın veya silin."
+
+#: 
+msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
+msgstr "Gönüllü fırsatı silinemiyor: %d kişi hâlâ atanmış durumda. Önce atamaları kaldırın."
+
+#: 
+msgid "Class must be one of p, f, or g"
+msgstr "Sınıf p, f veya g değerlerinden biri olmalıdır"
+
+#: 
+msgid "Copy error message"
+msgstr "Hata mesajını kopyala"
+
+#: 
+msgid "Could not load note."
+msgstr "Not yüklenemedi."
+
+#: 
+msgid "Description cannot exceed 100 characters"
+msgstr "Açıklama 100 karakteri aşamaz"
+
+#: 
+msgid "Donation fund not found"
+msgstr "Bağış fonu bulunamadı"
+
+#: 
+msgid "Error deleting note."
+msgstr "Not silinirken hata oluştu."
+
+#: 
+msgid "Failed to create donation fund"
+msgstr "Bağış fonu oluşturulamadı"
+
+#: 
+msgid "Failed to create fundraiser"
+msgstr "Bağış kampanyası oluşturulamadı"
+
+#: 
+msgid "Failed to create property type"
+msgstr "Özellik türü oluşturulamadı"
+
+#: 
+msgid "Failed to create volunteer opportunity"
+msgstr "Gönüllü fırsatı oluşturulamadı"
+
+#: 
+msgid "Failed to delete donation fund"
+msgstr "Bağış fonu silinemedi"
+
+#: 
+msgid "Failed to delete fundraiser"
+msgstr "Bağış kampanyası silinemedi"
+
+#: 
+msgid "Failed to delete note."
+msgstr "Not silinemedi."
+
+#: 
+msgid "Failed to delete property type"
+msgstr "Özellik türü silinemedi"
+
+#: 
+msgid "Failed to delete volunteer opportunity"
+msgstr "Gönüllü fırsatı silinemedi"
+
+#: 
+msgid "Failed to update donation fund"
+msgstr "Bağış fonu güncellenemedi"
+
+#: 
+msgid "Failed to update fundraiser"
+msgstr "Bağış kampanyası güncellenemedi"
+
+#: 
+msgid "Failed to update property type"
+msgstr "Özellik türü güncellenemedi"
+
+#: 
+msgid "Failed to update volunteer opportunity"
+msgstr "Gönüllü fırsatı güncellenemedi"
+
+#: 
+msgid "Fundraiser not found"
+msgstr "Bağış kampanyası bulunamadı"
+
+#: 
+msgid "Installation ID"
+msgstr "Kurulum Kimliği"
+
+#: 
+msgid "Invalid class"
+msgstr "Geçersiz sınıf"
+
+#: 
+msgid "Name cannot exceed 30 characters"
+msgstr "Ad 30 karakteri aşamaz"
+
+#: 
+msgid "Note by %s deleted"
+msgstr "%s tarafından yazılan not silindi"
+
+#: 
+msgid "Note not found."
+msgstr "Not bulunamadı."
+
+#: 
+msgid "Plugin Development Docs"
+msgstr "Eklenti Geliştirme Belgeleri"
+
+#: 
+msgid "Property type not found"
+msgstr "Özellik türü bulunamadı"
+
+#: 
+msgid "Read more"
+msgstr "Daha fazla oku"
+
+#: 
+msgid "Refreshing Soon"
+msgstr "Yakında Yenilenecek"
+
+#: 
+msgid "Refreshing in"
+msgstr "Yenileniyor"
+
+#: 
+msgid "That name already exists."
+msgstr "Bu ad zaten mevcut."
+
+#: 
+msgid "Title is required"
+msgstr "Başlık gereklidir"
+
+#: 
+msgid "Volunteer opportunity not found"
+msgstr "Gönüllü fırsatı bulunamadı"
+
+#: 
+msgid "You do not have permission to delete this note."
+msgstr "Bu notu silme izniniz yok."
+
+#: 
+msgid "You do not have permission to edit this note."
+msgstr "Bu notu düzenleme izniniz yok."
+
+#: 
+msgid "[Private Note — visible only to creator]"
+msgstr "[Özel Not — yalnızca oluşturan kişi tarafından görülebilir]"
+
+#: 
+msgid "seconds"
+msgstr "saniye"
+
