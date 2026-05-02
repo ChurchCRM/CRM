@@ -1,5 +1,10 @@
 name: Start New Release
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+
 # Manually bump the version on master, push a build/<version> branch, and open
 # a "Start <version> release" PR. Use this:
 #
@@ -91,4 +96,5 @@ jobs:
           ## Next Steps
           - Review and merge this PR to begin the ${{ inputs.version }} release cycle" \
             --base master \
-            --head "build/${{ inputs.version }}"
+            --head "build/${{ inputs.version }}" \
+            --label "Build"

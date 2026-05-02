@@ -1,5 +1,10 @@
 name: Release & Start Next
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+
 # End-of-cycle one-click flow:
 #
 #   1. publish    — finds the latest successful master Build/Test/Package run,
@@ -8,7 +13,7 @@ name: Release & Start Next
 #                   detected from package.json on that build's commit, so you
 #                   don't retype the version.
 #
-#   2. start_next — chains into start-release.yml (reusable) to bump master
+#   2. start_next — chains into release-prepare.yml (reusable) to bump master
 #                   to the version you typed in `next_version` and open the
 #                   "Start <next> release" PR.
 #
@@ -236,12 +241,12 @@ jobs:
 
   # ───────────────────────────────────────────────────────────────────
   # Bump master to the next version + open "Start <next> release" PR.
-  # Reuses start-release.yml so the bump logic lives in one place.
+  # Reuses release-prepare.yml so the bump logic lives in one place.
   # ───────────────────────────────────────────────────────────────────
   start_next:
     needs: publish
     if: success()
-    uses: ./.github/workflows/start-release.yml
+    uses: ./.github/workflows/release-prepare.yml
     with:
       version: ${{ inputs.next_version }}
     permissions:

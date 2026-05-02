@@ -1,5 +1,10 @@
 name: Security Discord Notifications
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+
 # Post to Discord #security channel when:
 #   1. An issue is labeled "security"  (automatic)
 #   2. A maintainer manually dispatches this workflow for a security advisory

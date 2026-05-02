@@ -1,4 +1,4 @@
-name: Locale Download POEditor 
+name: Locale Sync POEditor
 permissions:
   contents: write
   pull-requests: write
@@ -237,7 +237,7 @@ jobs:
         labels: |
           localization
         milestone: ${{ steps.package-version.outputs.current-version}}
-        title: "🌍 POEditor Locale Update - ${{ steps.date.outputs.date }}"
+        title: "locale: update translations from POEditor - ${{ steps.date.outputs.date }}"
         commit-message: |
           🌍 Locale update from POEditor on ${{ steps.date.outputs.date }}
           
