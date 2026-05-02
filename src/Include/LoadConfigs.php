@@ -28,7 +28,7 @@ try {
     $sRootPath = $config->getRootPath();
     $URL = $config->getUrls();
 } catch (RuntimeException $e) {
-    header('Location: ../config-error.php?error=' . urlencode($e->getMessage()));
+    header('Location: ../errors/config-error.php?error=' . urlencode($e->getMessage()));
     exit;
 }
 

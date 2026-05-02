@@ -25,7 +25,7 @@ try {
 
 $phpVersion = phpversion();
 if (version_compare($phpVersion, $requiredPhp, '<')) {
-    header('Location: php-error.php');
+    header('Location: errors/php-error.php');
     exit;
 }
 
