@@ -55,7 +55,7 @@
     # Block access to install-time configuration (Config.php, config-values.json,
     # bootstrap scripts). Nothing under Include/ should ever be served directly.
     # See GHSA-mp2w-4q3r-ppx7.
-    @include path /Include/*
+    @include path /Include /Include/*
     respond @include 404
 
     # ── Slim sub-application routing ──────────────────────────────────────

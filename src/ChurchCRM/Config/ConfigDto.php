@@ -8,6 +8,7 @@ namespace ChurchCRM\Config;
  */
 final class ConfigDto
 {
+    /** @param string[] $urls All URLs from Config.php — $URL[0] is primary; $URL[1..n] are alternates */
     public function __construct(
         public readonly string $dbServerName,
         public readonly string $dbServerPort,
@@ -15,7 +16,7 @@ final class ConfigDto
         public readonly string $dbUser,
         public readonly string $dbPassword,
         public readonly string $rootPath,
-        public readonly string $url,
+        public readonly array  $urls,
     ) {}
 
     public function getDbServerName(): string
@@ -48,8 +49,15 @@ final class ConfigDto
         return $this->rootPath;
     }
 
+    /** Primary URL ($URL[0]) */
     public function getUrl(): string
     {
-        return $this->url;
+        return $this->urls[0];
+    }
+
+    /** Full URL array — primary + any configured alternates */
+    public function getUrls(): array
+    {
+        return $this->urls;
     }
 }

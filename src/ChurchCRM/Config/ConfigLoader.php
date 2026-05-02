@@ -39,27 +39,20 @@ final class ConfigLoader
         $sRootPath = null;
         $URL = [];
 
-        // Suppress errors during require; we'll validate ourselves
+        // Use require (not require_once) so this method always executes Config.php in its
+        // own local scope, regardless of whether the caller already included the file.
+        // Legacy pages do: require Config.php → Config.php sets globals → Config.php calls
+        // require_once LoadConfigs.php → LoadConfigs.php calls us. Using require_once here
+        // would be a no-op (file already registered), leaving all local vars null. Using
+        // plain require re-executes the file in this method's scope. Config.php's own
+        // "require_once LoadConfigs.php" at its end is then a no-op (LoadConfigs already
+        // loaded), preventing infinite recursion.
         $error = error_get_last();
-        require_once $configPath;
+        require $configPath;
         $newError = error_get_last();
         if ($newError !== $error && $newError !== null) {
             self::writeErrorLog("Error loading Config.php: " . $newError['message']);
             throw new RuntimeException("Error loading Config.php: " . $newError['message']);
-        }
-
-        // Backward compatibility: legacy pages include Config.php directly, which sets
-        // globals, then Config.php calls require_once LoadConfigs.php. When LoadConfigs.php
-        // calls us, require_once above is a no-op (file already included), so local vars
-        // remain null. Fall back to reading the globals that Config.php already set.
-        if ($sSERVERNAME === null && isset($GLOBALS['sSERVERNAME'])) {
-            $sSERVERNAME = $GLOBALS['sSERVERNAME'];
-            $dbPort      = $GLOBALS['dbPort'] ?? null;
-            $sUSER       = $GLOBALS['sUSER'] ?? null;
-            $sPASSWORD   = $GLOBALS['sPASSWORD'] ?? null;
-            $sDATABASE   = $GLOBALS['sDATABASE'] ?? null;
-            $sRootPath   = $GLOBALS['sRootPath'] ?? null;
-            $URL         = $GLOBALS['URL'] ?? [];
         }
 
         // Validate that required variables were set
@@ -100,7 +93,9 @@ final class ConfigLoader
             self::validateDbUser((string)$sUSER);
             self::validateDbPassword((string)$sPASSWORD);
             self::validateRootPath((string)$sRootPath);
-            self::validateUrl((string)$URL[0]);
+            foreach ($URL as $i => $urlValue) {
+                self::validateUrl((string)$urlValue);
+            }
         } catch (RuntimeException $e) {
             self::writeErrorLog($e->getMessage());
             throw $e;
@@ -113,7 +108,7 @@ final class ConfigLoader
             dbUser: (string)$sUSER,
             dbPassword: (string)$sPASSWORD,
             rootPath: (string)$sRootPath,
-            url: (string)$URL[0],
+            urls: array_map('strval', $URL),
         );
     }
 
