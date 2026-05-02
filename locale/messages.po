@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-30 18:03+0000\n"
+"POT-Creation-Date: 2026-05-02 17:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1665,7 +1665,18 @@ msgid "Cannot delete donation fund: it is still referenced by one or more pledge
 msgstr ""
 
 #, php-format
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr ""
+
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr ""
+
+#, php-format
 msgid "Cannot delete fundraiser: %d donated items are still associated. Remove the items first."
+msgstr ""
+
+#, php-format
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
 msgstr ""
 
 #, php-format
