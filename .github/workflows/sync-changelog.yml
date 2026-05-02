@@ -1,4 +1,4 @@
-name: Sync Release Changelog
+name: Release: Changelog, Milestones & Marketing
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -8,11 +8,14 @@ concurrency:
 # Fires automatically when a release is published.
 # Can also be triggered manually to re-sync or back-fill any version.
 #
-# Steps:
+# For full releases (non-pre-release):
 #   1. Writes changelog/<tag>.md from the GitHub Release title + body.
 #   2. Inserts a new row in CHANGELOG.md and commits to master.
 #   3. Generates X / Facebook / LinkedIn marketing posts and attaches
 #      them as a downloadable artifact on this Actions run.
+#   4. Closes the release milestone and moves pending issues/PRs to next version.
+#
+# For pre-releases: Only runs steps 1-3 (skips milestone cleanup).
 
 on:
   release:
