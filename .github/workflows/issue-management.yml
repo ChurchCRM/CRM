@@ -1,8 +1,8 @@
 name: Issue Management
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  group: ${{ github.event_name == 'issues' && format('issue-{0}', github.event.issue.number) || github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'issues' }}
 
 # ==============================================================================
 # PURPOSE: Unified issue triage, stale detection, and auto-response workflow
@@ -44,6 +44,7 @@ on:
 permissions:
   contents: read
   issues: write
+  pull-requests: write
 
 jobs:
   # =========================================================================
@@ -198,7 +199,7 @@ jobs:
         with:
           script: |
             const issue = context.payload.issue || {};
-            const currentType = issue.type || null;
+            const currentType = issue.type?.name || null;
 
             if (currentType !== 'Bug') {
               try {

@@ -116,10 +116,10 @@ jobs:
       - name: Check for changes
         id: changes
         run: |
-          if git diff --quiet; then
-            echo "has_changes=false" >> $GITHUB_OUTPUT
-          else
+          if git status --porcelain -- openapi/ | grep -q .; then
             echo "has_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
           fi
 
       - name: Commit and push generated specs
@@ -163,8 +163,16 @@ jobs:
               triggered_by: process.env.GITHUB_ACTOR,
               reason: reason
             };
-            await github.repos.createDispatchEvent({ owner, repo, event_type, client_payload: clientPayload });
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+            try {
+              await github.repos.createDispatchEvent({ owner, repo, event_type, client_payload: clientPayload });
+            } catch (error) {
+              if (error.status === 401 || error.status === 403) {
+                core.setFailed(`Unable to dispatch to ${owner}/${repo}: Token has insufficient permissions. Set DOCS_REPO_TOKEN secret for cross-repo dispatch.`);
+              } else {
+                throw error;
+              }
+            }
+          github-token: ${{ secrets.DOCS_REPO_TOKEN || secrets.GITHUB_TOKEN }}
 
       - name: Log
         run: echo "Dispatched 'openapi-updated' to ChurchCRM/docs.churchcrm.io"

@@ -1,8 +1,8 @@
 name: Build, Test and Package
 
 concurrency:
-  # On PRs: cancel previous run for same PR; allow all master pushes to run
-  group: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.number) || 'master' }}
+  # On PRs: cancel previous run for same PR; on pushes: allow each branch to run independently
+  group: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.number) || github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 permissions:
