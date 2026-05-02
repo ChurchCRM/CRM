@@ -6,14 +6,15 @@
  */
 
 /**
- * Get ChurchCRM version from package.json
+ * Get ChurchCRM version from composer.json (single source of truth for app version)
+ * Path from /src/errors/template.php → /src/composer.json
  */
 function getChurchCRMVersion() {
-    $packageFile = __DIR__ . '/../../package.json';
-    if (file_exists($packageFile)) {
-        $package = json_decode(@file_get_contents($packageFile), true);
-        if (is_array($package) && !empty($package['version'])) {
-            return $package['version'];
+    $composerFile = __DIR__ . '/../composer.json';
+    if (file_exists($composerFile)) {
+        $composer = json_decode(@file_get_contents($composerFile), true);
+        if (is_array($composer) && !empty($composer['version'])) {
+            return $composer['version'];
         }
     }
     return 'Unknown';
