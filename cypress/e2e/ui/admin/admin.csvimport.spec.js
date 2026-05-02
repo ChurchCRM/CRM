@@ -306,18 +306,24 @@ describe(
                     if (match) idByName[child.text.split(" ")[0]] = match[1];
                 });
 
-                const expectations = {
-                    blankFamHead:      "United States",
-                    blankFamChild:     "United States",
-                    explicitCanada:    "Canada",
-                    blankOnCanadaFam:  "United States",
-                };
+                // Read the configured default country from the admin API so the test
+                // honors whichever value the seed or test env sets (issue #4347).
+                cy.request('GET', '/admin/api/system/config/sDefaultCountry').then((cfgResp) => {
+                    const defaultCountry = cfgResp.body.value || '';
 
-                Object.entries(expectations).forEach(([firstName, expectedCountry]) => {
-                    const personId = idByName[firstName];
-                    expect(personId, `imported person ${firstName} exists`).to.exist;
-                    cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, 200).then((resp) => {
-                        expect(resp.body.Country, `Person ${firstName} Country`).to.eq(expectedCountry);
+                    const expectations = {
+                        blankFamHead:      defaultCountry,
+                        blankFamChild:     defaultCountry,
+                        explicitCanada:    "Canada",
+                        blankOnCanadaFam:  defaultCountry,
+                    };
+
+                    Object.entries(expectations).forEach(([firstName, expectedCountry]) => {
+                        const personId = idByName[firstName];
+                        expect(personId, `imported person ${firstName} exists`).to.exist;
+                        cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, 200).then((resp) => {
+                            expect(resp.body.Country, `Person ${firstName} Country`).to.eq(expectedCountry);
+                        });
                     });
                 });
 
