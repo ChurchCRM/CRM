@@ -3,11 +3,12 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use ChurchCRM\Bootstrapper;
+use ChurchCRM\Config\ConfigLoader;
 use ChurchCRM\Utils\KeyManagerUtils;
 use ChurchCRM\dto\SystemConfig;
 
 /**
- * Safely loads Config.php with graceful handling for missing configuration.
+ * Safely loads and validates Config.php with graceful handling for missing configuration.
  * Redirects to setup if Config.php doesn't exist.
  * This file should be used by all Slim application entry points.
  */
@@ -16,7 +17,23 @@ if (!file_exists(__DIR__ . '/Config.php')) {
     exit;
 }
 
-require_once __DIR__ . '/Config.php';
+// Load and validate configuration
+try {
+    $config = ConfigLoader::loadFromConfigPhp(__DIR__ . '/Config.php');
+    $sSERVERNAME = $config->getDbServerName();
+    $dbPort = $config->getDbServerPort();
+    $sUSER = $config->getDbUser();
+    $sPASSWORD = $config->getDbPassword();
+    $sDATABASE = $config->getDbName();
+    $sRootPath = $config->getRootPath();
+    $URL = $config->getUrls();
+} catch (RuntimeException $e) {
+    header('Location: ../config-error.php?error=' . urlencode($e->getMessage()));
+    exit;
+}
+
+// Lock URL setting is admin-configurable via SystemConfig (defaults to false)
+$bLockURL = false;
 
 // Enable this line to debug the bootstrapper process (database connections, etc).
 // this makes a lot of log noise, so don't leave it on for normal production use.
