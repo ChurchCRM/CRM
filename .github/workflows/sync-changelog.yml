@@ -37,11 +37,11 @@ jobs:
       # Auto-trigger: release tag. Manual trigger: workflow_dispatch input.
       TAG: ${{ github.event.release.tag_name || inputs.tag }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           ref: master
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: '22'
 
@@ -68,7 +68,7 @@ jobs:
           node scripts/release-marketing.js "$TAG" > "/tmp/marketing/${TAG}-social-posts.md"
 
       - name: Attach marketing posts as artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: marketing-posts-${{ env.TAG }}
           path: /tmp/marketing/${{ env.TAG }}-social-posts.md

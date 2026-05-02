@@ -16110,3 +16110,175 @@ msgstr "Waktu menggunakan waktu gereja ({{church}}), bukan waktu browser Anda ({
 msgid "Welcome — sign in to manage your community"
 msgstr "Selamat datang — masuk untuk mengelola komunitas Anda"
 
+#: 
+msgid "Are you sure you want to delete this note?"
+msgstr "Apakah Anda yakin ingin menghapus catatan ini?"
+
+#: 
+msgid "Cancel — wait 1 more minute"
+msgstr "Batal — tunggu 1 menit lagi"
+
+#: 
+msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
+msgstr "Tidak dapat menghapus dana donasi: masih direferensikan oleh satu atau lebih komitmen keuangan."
+
+#: 
+msgid "Cannot delete fundraiser: %d donated items are still associated. Remove the items first."
+msgstr "Tidak dapat menghapus penggalangan dana: %d item donasi masih terkait. Hapus item tersebut terlebih dahulu."
+
+#: 
+msgid "Cannot delete property type: %d properties still reference it. Reassign or delete those properties first."
+msgstr "Tidak dapat menghapus jenis properti: %d properti masih mereferensikannya. Tetapkan ulang atau hapus properti tersebut terlebih dahulu."
+
+#: 
+msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
+msgstr "Tidak dapat menghapus kesempatan sukarela: %d orang masih ditugaskan. Hapus penugasan tersebut terlebih dahulu."
+
+#: 
+msgid "Class must be one of p, f, or g"
+msgstr "Kelas harus salah satu dari p, f, atau g"
+
+#: 
+msgid "Copy error message"
+msgstr "Salin pesan kesalahan"
+
+#: 
+msgid "Could not load note."
+msgstr "Tidak dapat memuat catatan."
+
+#: 
+msgid "Description cannot exceed 100 characters"
+msgstr "Deskripsi tidak boleh melebihi 100 karakter"
+
+#: 
+msgid "Donation fund not found"
+msgstr "Dana donasi tidak ditemukan"
+
+#: 
+msgid "Error deleting note."
+msgstr "Kesalahan saat menghapus catatan."
+
+#: 
+msgid "Failed to create donation fund"
+msgstr "Gagal membuat dana donasi"
+
+#: 
+msgid "Failed to create fundraiser"
+msgstr "Gagal membuat penggalangan dana"
+
+#: 
+msgid "Failed to create property type"
+msgstr "Gagal membuat jenis properti"
+
+#: 
+msgid "Failed to create volunteer opportunity"
+msgstr "Gagal membuat kesempatan sukarela"
+
+#: 
+msgid "Failed to delete donation fund"
+msgstr "Gagal menghapus dana donasi"
+
+#: 
+msgid "Failed to delete fundraiser"
+msgstr "Gagal menghapus penggalangan dana"
+
+#: 
+msgid "Failed to delete note."
+msgstr "Gagal menghapus catatan."
+
+#: 
+msgid "Failed to delete property type"
+msgstr "Gagal menghapus jenis properti"
+
+#: 
+msgid "Failed to delete volunteer opportunity"
+msgstr "Gagal menghapus kesempatan sukarela"
+
+#: 
+msgid "Failed to update donation fund"
+msgstr "Gagal memperbarui dana donasi"
+
+#: 
+msgid "Failed to update fundraiser"
+msgstr "Gagal memperbarui penggalangan dana"
+
+#: 
+msgid "Failed to update property type"
+msgstr "Gagal memperbarui jenis properti"
+
+#: 
+msgid "Failed to update volunteer opportunity"
+msgstr "Gagal memperbarui kesempatan sukarela"
+
+#: 
+msgid "Fundraiser not found"
+msgstr "Penggalangan dana tidak ditemukan"
+
+#: 
+msgid "Installation ID"
+msgstr "ID Instalasi"
+
+#: 
+msgid "Invalid class"
+msgstr "Kelas tidak valid"
+
+#: 
+msgid "Name cannot exceed 30 characters"
+msgstr "Nama tidak boleh melebihi 30 karakter"
+
+#: 
+msgid "Note by %s deleted"
+msgstr "Catatan oleh %s telah dihapus"
+
+#: 
+msgid "Note not found."
+msgstr "Catatan tidak ditemukan."
+
+#: 
+msgid "Plugin Development Docs"
+msgstr "Dokumentasi Pengembangan Plugin"
+
+#: 
+msgid "Property type not found"
+msgstr "Jenis properti tidak ditemukan"
+
+#: 
+msgid "Read more"
+msgstr "Baca selengkapnya"
+
+#: 
+msgid "Refreshing Soon"
+msgstr "Akan Segera Diperbarui"
+
+#: 
+msgid "Refreshing in"
+msgstr "Diperbarui dalam"
+
+#: 
+msgid "That name already exists."
+msgstr "Nama tersebut sudah ada."
+
+#: 
+msgid "Title is required"
+msgstr "Judul wajib diisi"
+
+#: 
+msgid "Volunteer opportunity not found"
+msgstr "Kesempatan sukarela tidak ditemukan"
+
+#: 
+msgid "You do not have permission to delete this note."
+msgstr "Anda tidak memiliki izin untuk menghapus catatan ini."
+
+#: 
+msgid "You do not have permission to edit this note."
+msgstr "Anda tidak memiliki izin untuk mengedit catatan ini."
+
+#: 
+msgid "[Private Note — visible only to creator]"
+msgstr "[Catatan Pribadi — hanya terlihat oleh pembuat]"
+
+#: 
+msgid "seconds"
+msgstr "detik"
+

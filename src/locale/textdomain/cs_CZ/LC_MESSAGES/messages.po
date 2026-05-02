@@ -16123,3 +16123,175 @@ msgstr "Časy používají čas farnosti ({{church}}), nikoli čas vašeho prohl
 msgid "Welcome — sign in to manage your community"
 msgstr "Vítejte – přihlaste se pro správu vaší farní komunity"
 
+#: 
+msgid "Are you sure you want to delete this note?"
+msgstr "Opravdu chcete smazat tuto poznámku?"
+
+#: 
+msgid "Cancel — wait 1 more minute"
+msgstr "Zrušit — počkat ještě 1 minutu"
+
+#: 
+msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
+msgstr "Fond darů nelze smazat: stále na něj odkazuje jeden nebo více finančních závazků."
+
+#: 
+msgid "Cannot delete fundraiser: %d donated items are still associated. Remove the items first."
+msgstr "Fundraiser nelze smazat: %d darovaných položek je stále přiřazeno. Nejprve odeberte tyto položky."
+
+#: 
+msgid "Cannot delete property type: %d properties still reference it. Reassign or delete those properties first."
+msgstr "Typ vlastnosti nelze smazat: %d vlastností na něj stále odkazuje. Nejprve přeřaďte nebo smažte tyto vlastnosti."
+
+#: 
+msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
+msgstr "Dobrovolnickou příležitost nelze smazat: %d osob je stále přiřazeno. Nejprve odeberte přiřazení."
+
+#: 
+msgid "Class must be one of p, f, or g"
+msgstr "Třída musí být jedna z: p, f nebo g"
+
+#: 
+msgid "Copy error message"
+msgstr "Kopírovat chybovou zprávu"
+
+#: 
+msgid "Could not load note."
+msgstr "Poznámku se nepodařilo načíst."
+
+#: 
+msgid "Description cannot exceed 100 characters"
+msgstr "Popis nesmí přesáhnout 100 znaků"
+
+#: 
+msgid "Donation fund not found"
+msgstr "Fond darů nenalezen"
+
+#: 
+msgid "Error deleting note."
+msgstr "Chyba při mazání poznámky."
+
+#: 
+msgid "Failed to create donation fund"
+msgstr "Nepodařilo se vytvořit fond darů"
+
+#: 
+msgid "Failed to create fundraiser"
+msgstr "Nepodařilo se vytvořit fundraiser"
+
+#: 
+msgid "Failed to create property type"
+msgstr "Nepodařilo se vytvořit typ vlastnosti"
+
+#: 
+msgid "Failed to create volunteer opportunity"
+msgstr "Nepodařilo se vytvořit dobrovolnickou příležitost"
+
+#: 
+msgid "Failed to delete donation fund"
+msgstr "Nepodařilo se smazat fond darů"
+
+#: 
+msgid "Failed to delete fundraiser"
+msgstr "Nepodařilo se smazat fundraiser"
+
+#: 
+msgid "Failed to delete note."
+msgstr "Nepodařilo se smazat poznámku."
+
+#: 
+msgid "Failed to delete property type"
+msgstr "Nepodařilo se smazat typ vlastnosti"
+
+#: 
+msgid "Failed to delete volunteer opportunity"
+msgstr "Nepodařilo se smazat dobrovolnickou příležitost"
+
+#: 
+msgid "Failed to update donation fund"
+msgstr "Nepodařilo se aktualizovat fond darů"
+
+#: 
+msgid "Failed to update fundraiser"
+msgstr "Nepodařilo se aktualizovat fundraiser"
+
+#: 
+msgid "Failed to update property type"
+msgstr "Nepodařilo se aktualizovat typ vlastnosti"
+
+#: 
+msgid "Failed to update volunteer opportunity"
+msgstr "Nepodařilo se aktualizovat dobrovolnickou příležitost"
+
+#: 
+msgid "Fundraiser not found"
+msgstr "Fundraiser nenalezen"
+
+#: 
+msgid "Installation ID"
+msgstr "ID instalace"
+
+#: 
+msgid "Invalid class"
+msgstr "Neplatná třída"
+
+#: 
+msgid "Name cannot exceed 30 characters"
+msgstr "Název nesmí přesáhnout 30 znaků"
+
+#: 
+msgid "Note by %s deleted"
+msgstr "Poznámka od %s smazána"
+
+#: 
+msgid "Note not found."
+msgstr "Poznámka nenalezena."
+
+#: 
+msgid "Plugin Development Docs"
+msgstr "Dokumentace pro vývoj pluginů"
+
+#: 
+msgid "Property type not found"
+msgstr "Typ vlastnosti nenalezen"
+
+#: 
+msgid "Read more"
+msgstr "Číst více"
+
+#: 
+msgid "Refreshing Soon"
+msgstr "Brzy se obnoví"
+
+#: 
+msgid "Refreshing in"
+msgstr "Obnovení za"
+
+#: 
+msgid "That name already exists."
+msgstr "Tento název již existuje."
+
+#: 
+msgid "Title is required"
+msgstr "Název je povinný"
+
+#: 
+msgid "Volunteer opportunity not found"
+msgstr "Dobrovolnická příležitost nenalezena"
+
+#: 
+msgid "You do not have permission to delete this note."
+msgstr "Nemáte oprávnění smazat tuto poznámku."
+
+#: 
+msgid "You do not have permission to edit this note."
+msgstr "Nemáte oprávnění upravit tuto poznámku."
+
+#: 
+msgid "[Private Note — visible only to creator]"
+msgstr "[Soukromá poznámka — viditelná pouze pro tvůrce]"
+
+#: 
+msgid "seconds"
+msgstr "sekund"
+
