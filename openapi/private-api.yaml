@@ -3801,6 +3801,7 @@ paths:
       tags:
         - Groups
       summary: 'Delete a group (ManageGroupRole role required)'
+      description: 'Deletes a group. Members and custom properties are cascade-deleted. Returns 409 Conflict if the group is the audience for one or more events, or is referenced by an event type — reassign those first.'
       parameters:
         -
           name: groupID
@@ -3813,6 +3814,8 @@ paths:
           description: 'Group deleted successfully'
         '403':
           description: 'ManageGroupRole role required'
+        '409':
+          description: 'Group is the audience for active events or referenced by event types'
       security:
         -
           ApiKeyAuth: []
