@@ -6,7 +6,11 @@
  */
 
 $errorMessage = $_GET['error'] ?? 'Configuration error';
-$isDev = function_exists('getenv') && getenv('DEVELOPMENT_MODE') === 'true';
+$logPath = sys_get_temp_dir() . '/churchcrm-' . date('Y-m-d') . '-config-error.log';
+$logContents = '';
+if (file_exists($logPath) && is_readable($logPath)) {
+    $logContents = file_get_contents($logPath);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,14 +73,19 @@ $isDev = function_exists('getenv') && getenv('DEVELOPMENT_MODE') === 'true';
         <h1>Configuration Error</h1>
         <div class="error-details">
             <p>ChurchCRM encountered an error reading or validating your configuration.</p>
-            <p>Please verify your <code>Include/Config.php</code> file and ensure all database credentials are correct.</p>
+            <p>Review your <code>Include/Config.php</code> file and try again.</p>
         </div>
-        <?php if ($isDev || $errorMessage !== 'Configuration error'): ?>
-            <div class="error-message">
-                <?= htmlspecialchars($errorMessage, ENT_QUOTES, 'UTF-8') ?>
+        <div class="error-message">
+            <strong>Error:</strong><br>
+            <?= htmlspecialchars($errorMessage, ENT_QUOTES, 'UTF-8') ?>
+        </div>
+        <?php if ($logContents): ?>
+            <div class="error-message" style="max-height: 300px; overflow-y: auto; background: #f0f0f0;">
+                <strong>Log Details:</strong><br>
+                <small style="color: #555;"><?= nl2br(htmlspecialchars($logContents, ENT_QUOTES, 'UTF-8')) ?></small>
             </div>
         <?php endif; ?>
-        <a href="/setup" class="btn btn-primary">Go to Setup Wizard</a>
+        <a href="/" class="btn btn-primary">Return to Home</a>
     </div>
 </body>
 </html>

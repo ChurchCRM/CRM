@@ -26,6 +26,7 @@ final class ConfigLoader
     public static function loadFromConfigPhp(string $configPath): ConfigDto
     {
         if (!is_file($configPath) || !is_readable($configPath)) {
+            self::writeErrorLog("Config file not found or not readable: {$configPath}");
             throw new RuntimeException("Config file not found or not readable: {$configPath}");
         }
 
@@ -43,24 +44,67 @@ final class ConfigLoader
         require_once $configPath;
         $newError = error_get_last();
         if ($newError !== $error && $newError !== null) {
+            self::writeErrorLog("Error loading Config.php: " . $newError['message']);
             throw new RuntimeException("Error loading Config.php: " . $newError['message']);
         }
 
+        // Backward compatibility: legacy pages include Config.php directly, which sets
+        // globals, then Config.php calls require_once LoadConfigs.php. When LoadConfigs.php
+        // calls us, require_once above is a no-op (file already included), so local vars
+        // remain null. Fall back to reading the globals that Config.php already set.
+        if ($sSERVERNAME === null && isset($GLOBALS['sSERVERNAME'])) {
+            $sSERVERNAME = $GLOBALS['sSERVERNAME'];
+            $dbPort      = $GLOBALS['dbPort'] ?? null;
+            $sUSER       = $GLOBALS['sUSER'] ?? null;
+            $sPASSWORD   = $GLOBALS['sPASSWORD'] ?? null;
+            $sDATABASE   = $GLOBALS['sDATABASE'] ?? null;
+            $sRootPath   = $GLOBALS['sRootPath'] ?? null;
+            $URL         = $GLOBALS['URL'] ?? [];
+        }
+
         // Validate that required variables were set
-        if ($sSERVERNAME === null || $dbPort === null || $sUSER === null ||
-            $sPASSWORD === null || $sDATABASE === null || $sRootPath === null ||
-            !isset($URL[0])) {
-            throw new RuntimeException("Config.php did not set required variables");
+        $missing = [];
+        if ($sSERVERNAME === null) {
+            $missing[] = '$sSERVERNAME (DB_SERVER_NAME)';
+        }
+        if ($dbPort === null) {
+            $missing[] = '$dbPort (DB_SERVER_PORT)';
+        }
+        if ($sUSER === null) {
+            $missing[] = '$sUSER (DB_USER)';
+        }
+        if ($sPASSWORD === null) {
+            $missing[] = '$sPASSWORD (DB_PASSWORD)';
+        }
+        if ($sDATABASE === null) {
+            $missing[] = '$sDATABASE (DB_NAME)';
+        }
+        if ($sRootPath === null) {
+            $missing[] = '$sRootPath (ROOT_PATH)';
+        }
+        if (!isset($URL[0])) {
+            $missing[] = '$URL[0] (PRIMARY_URL)';
+        }
+
+        if (!empty($missing)) {
+            $errorMsg = 'Config.php missing required variables: ' . implode(', ', $missing);
+            self::writeErrorLog($errorMsg);
+            throw new RuntimeException($errorMsg);
         }
 
         // Validate each value
-        self::validateHostname((string)$sSERVERNAME);
-        self::validatePort((string)$dbPort);
-        self::validateDbName((string)$sDATABASE);
-        self::validateDbUser((string)$sUSER);
-        self::validateDbPassword((string)$sPASSWORD);
-        self::validateRootPath((string)$sRootPath);
-        self::validateUrl((string)$URL[0]);
+        try {
+            self::validateHostname((string)$sSERVERNAME);
+            self::validatePort((string)$dbPort);
+            self::validateDbName((string)$sDATABASE);
+            self::validateDbUser((string)$sUSER);
+            self::validateDbPassword((string)$sPASSWORD);
+            self::validateRootPath((string)$sRootPath);
+            self::validateUrl((string)$URL[0]);
+        } catch (RuntimeException $e) {
+            self::writeErrorLog($e->getMessage());
+            throw $e;
+        }
 
         return new ConfigDto(
             dbServerName: (string)$sSERVERNAME,
@@ -71,6 +115,14 @@ final class ConfigLoader
             rootPath: (string)$sRootPath,
             url: (string)$URL[0],
         );
+    }
+
+    private static function writeErrorLog(string $message): void
+    {
+        $logPath = sys_get_temp_dir() . '/churchcrm-' . date('Y-m-d') . '-config-error.log';
+        $timestamp = date('Y-m-d\TH:i:s.uP');
+        $logEntry = "[{$timestamp}] CONFIG_ERROR: {$message}\n";
+        @file_put_contents($logPath, $logEntry, FILE_APPEND);
     }
 
     private static function validateHostname(string $value): void
