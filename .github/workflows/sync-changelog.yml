@@ -1,4 +1,4 @@
-name: Release: Changelog, Milestones & Marketing
+name: "Release: Changelog, Milestones & Marketing"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
