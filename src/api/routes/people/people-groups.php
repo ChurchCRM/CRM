@@ -855,7 +855,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         // Block if the group is attached to events (as audience or via event type default).
         // These references have independent meaning and must be reassigned first.
         $eventAudienceCount = EventAudienceQuery::create()->filterByGroupId($groupId)->count();
-        $eventTypeCount = EventTypeQuery::create()->filterByTypeGrpid($groupId)->count();
+        $eventTypeCount = EventTypeQuery::create()->filterByGroupId($groupId)->count();
 
         if ($eventAudienceCount + $eventTypeCount > 0) {
             return SlimUtils::renderErrorJSON(
