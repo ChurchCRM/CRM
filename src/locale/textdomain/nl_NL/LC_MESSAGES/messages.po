@@ -16088,3 +16088,175 @@ msgstr "Tijden gebruiken kerkelijke tijd ({{church}}), niet uw browser ({{browse
 msgid "Welcome — sign in to manage your community"
 msgstr "Welkom — meld u aan om uw gemeente te beheren"
 
+#: 
+msgid "Are you sure you want to delete this note?"
+msgstr "Weet u zeker dat u deze notitie wilt verwijderen?"
+
+#: 
+msgid "Cancel — wait 1 more minute"
+msgstr "Annuleren — wacht nog 1 minuut"
+
+#: 
+msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
+msgstr "Kan schenkingsfonds niet verwijderen: het wordt nog gebruikt door een of meer financiële toezeggingen."
+
+#: 
+msgid "Cannot delete fundraiser: %d donated items are still associated. Remove the items first."
+msgstr "Kan inzamelingsactie niet verwijderen: %d gedoneerde items zijn nog gekoppeld. Verwijder de items eerst."
+
+#: 
+msgid "Cannot delete property type: %d properties still reference it. Reassign or delete those properties first."
+msgstr "Kan eigendomstype niet verwijderen: %d eigendommen verwijzen er nog naar. Wijs die eigendommen opnieuw toe of verwijder ze eerst."
+
+#: 
+msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
+msgstr "Kan vrijwilligersmogelijkheid niet verwijderen: %d personen zijn nog toegewezen. Verwijder de toewijzingen eerst."
+
+#: 
+msgid "Class must be one of p, f, or g"
+msgstr "Klasse moet een van p, f of g zijn"
+
+#: 
+msgid "Copy error message"
+msgstr "Foutmelding kopiëren"
+
+#: 
+msgid "Could not load note."
+msgstr "Notitie kon niet worden geladen."
+
+#: 
+msgid "Description cannot exceed 100 characters"
+msgstr "Omschrijving mag niet meer dan 100 tekens bevatten"
+
+#: 
+msgid "Donation fund not found"
+msgstr "Schenkingsfonds niet gevonden"
+
+#: 
+msgid "Error deleting note."
+msgstr "Fout bij verwijderen van notitie."
+
+#: 
+msgid "Failed to create donation fund"
+msgstr "Aanmaken van schenkingsfonds mislukt"
+
+#: 
+msgid "Failed to create fundraiser"
+msgstr "Aanmaken van inzamelingsactie mislukt"
+
+#: 
+msgid "Failed to create property type"
+msgstr "Aanmaken van eigendomstype mislukt"
+
+#: 
+msgid "Failed to create volunteer opportunity"
+msgstr "Aanmaken van vrijwilligersmogelijkheid mislukt"
+
+#: 
+msgid "Failed to delete donation fund"
+msgstr "Verwijderen van schenkingsfonds mislukt"
+
+#: 
+msgid "Failed to delete fundraiser"
+msgstr "Verwijderen van inzamelingsactie mislukt"
+
+#: 
+msgid "Failed to delete note."
+msgstr "Verwijderen van notitie mislukt."
+
+#: 
+msgid "Failed to delete property type"
+msgstr "Verwijderen van eigendomstype mislukt"
+
+#: 
+msgid "Failed to delete volunteer opportunity"
+msgstr "Verwijderen van vrijwilligersmogelijkheid mislukt"
+
+#: 
+msgid "Failed to update donation fund"
+msgstr "Bijwerken van schenkingsfonds mislukt"
+
+#: 
+msgid "Failed to update fundraiser"
+msgstr "Bijwerken van inzamelingsactie mislukt"
+
+#: 
+msgid "Failed to update property type"
+msgstr "Bijwerken van eigendomstype mislukt"
+
+#: 
+msgid "Failed to update volunteer opportunity"
+msgstr "Bijwerken van vrijwilligersmogelijkheid mislukt"
+
+#: 
+msgid "Fundraiser not found"
+msgstr "Inzamelingsactie niet gevonden"
+
+#: 
+msgid "Installation ID"
+msgstr "Installatie-ID"
+
+#: 
+msgid "Invalid class"
+msgstr "Ongeldige klasse"
+
+#: 
+msgid "Name cannot exceed 30 characters"
+msgstr "Naam mag niet meer dan 30 tekens bevatten"
+
+#: 
+msgid "Note by %s deleted"
+msgstr "Notitie van %s verwijderd"
+
+#: 
+msgid "Note not found."
+msgstr "Notitie niet gevonden."
+
+#: 
+msgid "Plugin Development Docs"
+msgstr "Documentatie voor plug-inontwikkeling"
+
+#: 
+msgid "Property type not found"
+msgstr "Eigendomstype niet gevonden"
+
+#: 
+msgid "Read more"
+msgstr "Meer lezen"
+
+#: 
+msgid "Refreshing Soon"
+msgstr "Binnenkort vernieuwen"
+
+#: 
+msgid "Refreshing in"
+msgstr "Vernieuwen over"
+
+#: 
+msgid "That name already exists."
+msgstr "Die naam bestaat al."
+
+#: 
+msgid "Title is required"
+msgstr "Titel is verplicht"
+
+#: 
+msgid "Volunteer opportunity not found"
+msgstr "Vrijwilligersmogelijkheid niet gevonden"
+
+#: 
+msgid "You do not have permission to delete this note."
+msgstr "U heeft geen toestemming om deze notitie te verwijderen."
+
+#: 
+msgid "You do not have permission to edit this note."
+msgstr "U heeft geen toestemming om deze notitie te bewerken."
+
+#: 
+msgid "[Private Note — visible only to creator]"
+msgstr "[Privénotitie — alleen zichtbaar voor de auteur]"
+
+#: 
+msgid "seconds"
+msgstr "seconden"
+

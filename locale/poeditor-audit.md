@@ -11,9 +11,13 @@
 | Locale | Language | Translations | Percentage | Status | Supported |
 |--------|----------|--------------|------------|--------|----------|
 | `af` | Afrikaans | 3870 | 100% | 🟢 Complete | ✅ Yes |
+| `sq` | Albanian | 3870 | 100% | 🟢 Complete | ✅ Yes |
 | `am` | Amharic | 3870 | 100% | 🟢 Complete | ✅ Yes |
 | `ar` | Arabic | 3870 | 100% | 🟢 Complete | ✅ Yes |
+| `zh-cn` | Chinese | 3870 | 100% | 🟢 Complete | ✅ Yes |
+| `zh-tw` | Chinese (TW) | 3870 | 100% | 🟢 Complete | ✅ Yes |
 | `cs` | Czech | 3870 | 100% | 🟢 Complete | ✅ Yes |
+| `nl` | Dutch | 3870 | 100% | 🟢 Complete | ✅ Yes |
 | `et` | Estonian | 3870 | 100% | 🟢 Complete | ✅ Yes |
 | `fil` | Filipino | 3870 | 100% | 🟢 Complete | ✅ Yes |
 | `fi` | Finnish | 3870 | 100% | 🟢 Complete | ✅ Yes |
@@ -25,32 +29,28 @@
 | `hu` | Hungarian | 3870 | 100% | 🟢 Complete | ✅ Yes |
 | `id` | Indonesian | 3870 | 100% | 🟢 Complete | ✅ Yes |
 | `it` | Italian | 3870 | 100% | 🟢 Complete | ✅ Yes |
+| `ja` | Japanese | 3870 | 100% | 🟢 Complete | ✅ Yes |
+| `ko` | Korean | 3870 | 100% | 🟢 Complete | ✅ Yes |
+| `ml` | Malayalam | 3870 | 100% | 🟢 Complete | ✅ Yes |
+| `nb` | Norwegian Bokmål | 3870 | 100% | 🟢 Complete | ✅ Yes |
+| `pl` | Polish | 3870 | 100% | 🟢 Complete | ✅ Yes |
+| `pt` | Portuguese | 3870 | 100% | 🟢 Complete | ✅ Yes |
+| `pt-br` | Portuguese (BR) | 3870 | 100% | 🟢 Complete | ✅ Yes |
+| `ro` | Romanian | 3870 | 100% | 🟢 Complete | ✅ Yes |
+| `ru` | Russian | 3870 | 100% | 🟢 Complete | ✅ Yes |
 | `es` | Spanish | 3870 | 100% | 🟢 Complete | ✅ Yes |
 | `es-ar` | Spanish (AR) | 3870 | 100% | 🟢 Complete | ✅ Yes |
 | `es-co` | Spanish (CO) | 3870 | 100% | 🟢 Complete | ✅ Yes |
 | `es-mx` | Spanish (MX) | 3870 | 100% | 🟢 Complete | ✅ Yes |
 | `es-sv` | Spanish (SV) | 3870 | 100% | 🟢 Complete | ✅ Yes |
+| `sw` | Swahili | 3870 | 100% | 🟢 Complete | ✅ Yes |
+| `sv` | Swedish | 3870 | 100% | 🟢 Complete | ✅ Yes |
 | `ta` | Tamil | 3870 | 100% | 🟢 Complete | ✅ Yes |
-| `sq` | Albanian | 3827 | 98.89% | 🟢 Complete | ✅ Yes |
-| `zh-cn` | Chinese | 3827 | 98.89% | 🟢 Complete | ✅ Yes |
-| `zh-tw` | Chinese (TW) | 3827 | 98.89% | 🟢 Complete | ✅ Yes |
-| `nl` | Dutch | 3827 | 98.89% | 🟢 Complete | ✅ Yes |
-| `ja` | Japanese | 3827 | 98.89% | 🟢 Complete | ✅ Yes |
-| `ko` | Korean | 3827 | 98.89% | 🟢 Complete | ✅ Yes |
-| `ml` | Malayalam | 3827 | 98.89% | 🟢 Complete | ✅ Yes |
-| `nb` | Norwegian Bokmål | 3827 | 98.89% | 🟢 Complete | ✅ Yes |
-| `pl` | Polish | 3827 | 98.89% | 🟢 Complete | ✅ Yes |
-| `pt` | Portuguese | 3827 | 98.89% | 🟢 Complete | ✅ Yes |
-| `pt-br` | Portuguese (BR) | 3827 | 98.89% | 🟢 Complete | ✅ Yes |
-| `ro` | Romanian | 3827 | 98.89% | 🟢 Complete | ✅ Yes |
-| `ru` | Russian | 3827 | 98.89% | 🟢 Complete | ✅ Yes |
-| `sw` | Swahili | 3827 | 98.89% | 🟢 Complete | ✅ Yes |
-| `sv` | Swedish | 3827 | 98.89% | 🟢 Complete | ✅ Yes |
-| `te` | Telugu | 3827 | 98.89% | 🟢 Complete | ✅ Yes |
-| `th` | Thai | 3827 | 98.89% | 🟢 Complete | ✅ Yes |
-| `tr` | Turkish | 3827 | 98.89% | 🟢 Complete | ✅ Yes |
-| `uk` | Ukrainian | 3827 | 98.89% | 🟢 Complete | ✅ Yes |
-| `vi` | Vietnamese | 3827 | 98.89% | 🟢 Complete | ✅ Yes |
+| `te` | Telugu | 3870 | 100% | 🟢 Complete | ✅ Yes |
+| `th` | Thai | 3870 | 100% | 🟢 Complete | ✅ Yes |
+| `tr` | Turkish | 3870 | 100% | 🟢 Complete | ✅ Yes |
+| `uk` | Ukrainian | 3870 | 100% | 🟢 Complete | ✅ Yes |
+| `vi` | Vietnamese | 3870 | 100% | 🟢 Complete | ✅ Yes |
 | `my` | Burmese | 66 | 1.71% | 🟠 Needs Work | ❌ No |
 | `sl` | Slovenian | 65 | 1.68% | 🟠 Needs Work | ❌ No |
 | `sr-cyrl` | Serbian (Cyrillic) | 58 | 1.5% | 🟠 Needs Work | ❌ No |

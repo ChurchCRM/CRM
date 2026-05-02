@@ -16121,3 +16121,175 @@ msgstr "Thời gian sử dụng múi giờ nhà thờ ({{church}}), không phả
 msgid "Welcome — sign in to manage your community"
 msgstr "Chào mừng — đăng nhập để quản lý cộng đoàn của bạn"
 
+#: 
+msgid "Are you sure you want to delete this note?"
+msgstr "Bạn có chắc muốn xóa ghi chú này không?"
+
+#: 
+msgid "Cancel — wait 1 more minute"
+msgstr "Hủy — chờ thêm 1 phút nữa"
+
+#: 
+msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
+msgstr "Không thể xóa quỹ quyên góp: quỹ này vẫn đang được tham chiếu bởi một hoặc nhiều cam kết tài chính."
+
+#: 
+msgid "Cannot delete fundraiser: %d donated items are still associated. Remove the items first."
+msgstr "Không thể xóa chiến dịch quyên góp: vẫn còn %d mục đã quyên góp liên kết. Vui lòng xóa các mục đó trước."
+
+#: 
+msgid "Cannot delete property type: %d properties still reference it. Reassign or delete those properties first."
+msgstr "Không thể xóa loại thuộc tính: vẫn còn %d thuộc tính đang tham chiếu. Vui lòng gán lại hoặc xóa các thuộc tính đó trước."
+
+#: 
+msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
+msgstr "Không thể xóa cơ hội tình nguyện: vẫn còn %d người được phân công. Vui lòng xóa các phân công đó trước."
+
+#: 
+msgid "Class must be one of p, f, or g"
+msgstr "Lớp phải là một trong: p, f, hoặc g"
+
+#: 
+msgid "Copy error message"
+msgstr "Sao chép thông báo lỗi"
+
+#: 
+msgid "Could not load note."
+msgstr "Không thể tải ghi chú."
+
+#: 
+msgid "Description cannot exceed 100 characters"
+msgstr "Mô tả không được vượt quá 100 ký tự"
+
+#: 
+msgid "Donation fund not found"
+msgstr "Không tìm thấy quỹ quyên góp"
+
+#: 
+msgid "Error deleting note."
+msgstr "Lỗi khi xóa ghi chú."
+
+#: 
+msgid "Failed to create donation fund"
+msgstr "Không thể tạo quỹ quyên góp"
+
+#: 
+msgid "Failed to create fundraiser"
+msgstr "Không thể tạo chiến dịch quyên góp"
+
+#: 
+msgid "Failed to create property type"
+msgstr "Không thể tạo loại thuộc tính"
+
+#: 
+msgid "Failed to create volunteer opportunity"
+msgstr "Không thể tạo cơ hội tình nguyện"
+
+#: 
+msgid "Failed to delete donation fund"
+msgstr "Không thể xóa quỹ quyên góp"
+
+#: 
+msgid "Failed to delete fundraiser"
+msgstr "Không thể xóa chiến dịch quyên góp"
+
+#: 
+msgid "Failed to delete note."
+msgstr "Không thể xóa ghi chú."
+
+#: 
+msgid "Failed to delete property type"
+msgstr "Không thể xóa loại thuộc tính"
+
+#: 
+msgid "Failed to delete volunteer opportunity"
+msgstr "Không thể xóa cơ hội tình nguyện"
+
+#: 
+msgid "Failed to update donation fund"
+msgstr "Không thể cập nhật quỹ quyên góp"
+
+#: 
+msgid "Failed to update fundraiser"
+msgstr "Không thể cập nhật chiến dịch quyên góp"
+
+#: 
+msgid "Failed to update property type"
+msgstr "Không thể cập nhật loại thuộc tính"
+
+#: 
+msgid "Failed to update volunteer opportunity"
+msgstr "Không thể cập nhật cơ hội tình nguyện"
+
+#: 
+msgid "Fundraiser not found"
+msgstr "Không tìm thấy chiến dịch quyên góp"
+
+#: 
+msgid "Installation ID"
+msgstr "ID Cài Đặt"
+
+#: 
+msgid "Invalid class"
+msgstr "Lớp không hợp lệ"
+
+#: 
+msgid "Name cannot exceed 30 characters"
+msgstr "Tên không được vượt quá 30 ký tự"
+
+#: 
+msgid "Note by %s deleted"
+msgstr "Ghi chú của %s đã được xóa"
+
+#: 
+msgid "Note not found."
+msgstr "Không tìm thấy ghi chú."
+
+#: 
+msgid "Plugin Development Docs"
+msgstr "Tài Liệu Phát Triển Plugin"
+
+#: 
+msgid "Property type not found"
+msgstr "Không tìm thấy loại thuộc tính"
+
+#: 
+msgid "Read more"
+msgstr "Đọc thêm"
+
+#: 
+msgid "Refreshing Soon"
+msgstr "Sắp làm mới"
+
+#: 
+msgid "Refreshing in"
+msgstr "Làm mới sau"
+
+#: 
+msgid "That name already exists."
+msgstr "Tên đó đã tồn tại."
+
+#: 
+msgid "Title is required"
+msgstr "Tiêu đề là bắt buộc"
+
+#: 
+msgid "Volunteer opportunity not found"
+msgstr "Không tìm thấy cơ hội tình nguyện"
+
+#: 
+msgid "You do not have permission to delete this note."
+msgstr "Bạn không có quyền xóa ghi chú này."
+
+#: 
+msgid "You do not have permission to edit this note."
+msgstr "Bạn không có quyền chỉnh sửa ghi chú này."
+
+#: 
+msgid "[Private Note — visible only to creator]"
+msgstr "[Ghi Chú Riêng Tư — chỉ người tạo mới thấy]"
+
+#: 
+msgid "seconds"
+msgstr "giây"
+

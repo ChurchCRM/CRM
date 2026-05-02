@@ -16207,3 +16207,175 @@ msgstr "Godziny używają czasu kościoła ({{church}}), nie czasu przeglądarki
 msgid "Welcome — sign in to manage your community"
 msgstr "Witamy — zaloguj się, aby zarządzać swoją parafią"
 
+#: 
+msgid "Are you sure you want to delete this note?"
+msgstr "Czy na pewno chcesz usunąć tę notatkę?"
+
+#: 
+msgid "Cancel — wait 1 more minute"
+msgstr "Anuluj — poczekaj jeszcze 1 minutę"
+
+#: 
+msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
+msgstr "Nie można usunąć funduszu darowizn: jest on nadal powiązany z jednym lub więcej zobowiązaniami finansowymi."
+
+#: 
+msgid "Cannot delete fundraiser: %d donated items are still associated. Remove the items first."
+msgstr "Nie można usunąć zbiórki funduszy: %d wpłaconych elementów jest nadal powiązanych. Najpierw usuń te elementy."
+
+#: 
+msgid "Cannot delete property type: %d properties still reference it. Reassign or delete those properties first."
+msgstr "Nie można usunąć typu właściwości: %d właściwości nadal się do niego odwołuje. Najpierw przypisz je ponownie lub usuń."
+
+#: 
+msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
+msgstr "Nie można usunąć możliwości wolontariatu: %d osób jest nadal przypisanych. Najpierw usuń przypisania."
+
+#: 
+msgid "Class must be one of p, f, or g"
+msgstr "Klasa musi być jedną z: p, f lub g"
+
+#: 
+msgid "Copy error message"
+msgstr "Kopiuj komunikat błędu"
+
+#: 
+msgid "Could not load note."
+msgstr "Nie można załadować notatki."
+
+#: 
+msgid "Description cannot exceed 100 characters"
+msgstr "Opis nie może przekraczać 100 znaków"
+
+#: 
+msgid "Donation fund not found"
+msgstr "Nie znaleziono funduszu darowizn"
+
+#: 
+msgid "Error deleting note."
+msgstr "Błąd podczas usuwania notatki."
+
+#: 
+msgid "Failed to create donation fund"
+msgstr "Nie udało się utworzyć funduszu darowizn"
+
+#: 
+msgid "Failed to create fundraiser"
+msgstr "Nie udało się utworzyć zbiórki funduszy"
+
+#: 
+msgid "Failed to create property type"
+msgstr "Nie udało się utworzyć typu właściwości"
+
+#: 
+msgid "Failed to create volunteer opportunity"
+msgstr "Nie udało się utworzyć możliwości wolontariatu"
+
+#: 
+msgid "Failed to delete donation fund"
+msgstr "Nie udało się usunąć funduszu darowizn"
+
+#: 
+msgid "Failed to delete fundraiser"
+msgstr "Nie udało się usunąć zbiórki funduszy"
+
+#: 
+msgid "Failed to delete note."
+msgstr "Nie udało się usunąć notatki."
+
+#: 
+msgid "Failed to delete property type"
+msgstr "Nie udało się usunąć typu właściwości"
+
+#: 
+msgid "Failed to delete volunteer opportunity"
+msgstr "Nie udało się usunąć możliwości wolontariatu"
+
+#: 
+msgid "Failed to update donation fund"
+msgstr "Nie udało się zaktualizować funduszu darowizn"
+
+#: 
+msgid "Failed to update fundraiser"
+msgstr "Nie udało się zaktualizować zbiórki funduszy"
+
+#: 
+msgid "Failed to update property type"
+msgstr "Nie udało się zaktualizować typu właściwości"
+
+#: 
+msgid "Failed to update volunteer opportunity"
+msgstr "Nie udało się zaktualizować możliwości wolontariatu"
+
+#: 
+msgid "Fundraiser not found"
+msgstr "Nie znaleziono zbiórki funduszy"
+
+#: 
+msgid "Installation ID"
+msgstr "Identyfikator instalacji"
+
+#: 
+msgid "Invalid class"
+msgstr "Nieprawidłowa klasa"
+
+#: 
+msgid "Name cannot exceed 30 characters"
+msgstr "Nazwa nie może przekraczać 30 znaków"
+
+#: 
+msgid "Note by %s deleted"
+msgstr "Notatka autorstwa %s usunięta"
+
+#: 
+msgid "Note not found."
+msgstr "Nie znaleziono notatki."
+
+#: 
+msgid "Plugin Development Docs"
+msgstr "Dokumentacja tworzenia wtyczek"
+
+#: 
+msgid "Property type not found"
+msgstr "Nie znaleziono typu właściwości"
+
+#: 
+msgid "Read more"
+msgstr "Czytaj więcej"
+
+#: 
+msgid "Refreshing Soon"
+msgstr "Odświeżanie wkrótce"
+
+#: 
+msgid "Refreshing in"
+msgstr "Odświeżanie za"
+
+#: 
+msgid "That name already exists."
+msgstr "Ta nazwa już istnieje."
+
+#: 
+msgid "Title is required"
+msgstr "Tytuł jest wymagany"
+
+#: 
+msgid "Volunteer opportunity not found"
+msgstr "Nie znaleziono możliwości wolontariatu"
+
+#: 
+msgid "You do not have permission to delete this note."
+msgstr "Nie masz uprawnień do usunięcia tej notatki."
+
+#: 
+msgid "You do not have permission to edit this note."
+msgstr "Nie masz uprawnień do edytowania tej notatki."
+
+#: 
+msgid "[Private Note — visible only to creator]"
+msgstr "[Notatka prywatna — widoczna tylko dla twórcy]"
+
+#: 
+msgid "seconds"
+msgstr "sekund"
+

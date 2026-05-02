@@ -16210,3 +16210,175 @@ msgstr "Orele folosesc ora parohiei ({{church}}), nu a browserului dvs. ({{brows
 msgid "Welcome — sign in to manage your community"
 msgstr "Bun venit — autentificați-vă pentru a gestiona comunitatea dvs."
 
+#: 
+msgid "Are you sure you want to delete this note?"
+msgstr "Sigur doriți să ștergeți această notă?"
+
+#: 
+msgid "Cancel — wait 1 more minute"
+msgstr "Anulați — mai așteptați 1 minut"
+
+#: 
+msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
+msgstr "Nu se poate șterge fondul de donații: este referit de unul sau mai multe angajamente financiare."
+
+#: 
+msgid "Cannot delete fundraiser: %d donated items are still associated. Remove the items first."
+msgstr "Nu se poate șterge campania de strângere de fonduri: există încă %d articole donate asociate. Eliminați mai întâi articolele."
+
+#: 
+msgid "Cannot delete property type: %d properties still reference it. Reassign or delete those properties first."
+msgstr "Nu se poate șterge tipul de proprietate: %d proprietăți îl referă încă. Reasignați sau ștergeți mai întâi acele proprietăți."
+
+#: 
+msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
+msgstr "Nu se poate șterge oportunitatea de voluntariat: %d persoane sunt încă atribuite. Eliminați mai întâi atribuirile."
+
+#: 
+msgid "Class must be one of p, f, or g"
+msgstr "Clasa trebuie să fie p, f sau g"
+
+#: 
+msgid "Copy error message"
+msgstr "Copiați mesajul de eroare"
+
+#: 
+msgid "Could not load note."
+msgstr "Nu s-a putut încărca nota."
+
+#: 
+msgid "Description cannot exceed 100 characters"
+msgstr "Descrierea nu poate depăși 100 de caractere"
+
+#: 
+msgid "Donation fund not found"
+msgstr "Fondul de donații nu a fost găsit"
+
+#: 
+msgid "Error deleting note."
+msgstr "Eroare la ștergerea notei."
+
+#: 
+msgid "Failed to create donation fund"
+msgstr "Crearea fondului de donații a eșuat"
+
+#: 
+msgid "Failed to create fundraiser"
+msgstr "Crearea campaniei de strângere de fonduri a eșuat"
+
+#: 
+msgid "Failed to create property type"
+msgstr "Crearea tipului de proprietate a eșuat"
+
+#: 
+msgid "Failed to create volunteer opportunity"
+msgstr "Crearea oportunității de voluntariat a eșuat"
+
+#: 
+msgid "Failed to delete donation fund"
+msgstr "Ștergerea fondului de donații a eșuat"
+
+#: 
+msgid "Failed to delete fundraiser"
+msgstr "Ștergerea campaniei de strângere de fonduri a eșuat"
+
+#: 
+msgid "Failed to delete note."
+msgstr "Ștergerea notei a eșuat."
+
+#: 
+msgid "Failed to delete property type"
+msgstr "Ștergerea tipului de proprietate a eșuat"
+
+#: 
+msgid "Failed to delete volunteer opportunity"
+msgstr "Ștergerea oportunității de voluntariat a eșuat"
+
+#: 
+msgid "Failed to update donation fund"
+msgstr "Actualizarea fondului de donații a eșuat"
+
+#: 
+msgid "Failed to update fundraiser"
+msgstr "Actualizarea campaniei de strângere de fonduri a eșuat"
+
+#: 
+msgid "Failed to update property type"
+msgstr "Actualizarea tipului de proprietate a eșuat"
+
+#: 
+msgid "Failed to update volunteer opportunity"
+msgstr "Actualizarea oportunității de voluntariat a eșuat"
+
+#: 
+msgid "Fundraiser not found"
+msgstr "Campania de strângere de fonduri nu a fost găsită"
+
+#: 
+msgid "Installation ID"
+msgstr "ID instalare"
+
+#: 
+msgid "Invalid class"
+msgstr "Clasă invalidă"
+
+#: 
+msgid "Name cannot exceed 30 characters"
+msgstr "Numele nu poate depăși 30 de caractere"
+
+#: 
+msgid "Note by %s deleted"
+msgstr "Nota creată de %s a fost ștearsă"
+
+#: 
+msgid "Note not found."
+msgstr "Nota nu a fost găsită."
+
+#: 
+msgid "Plugin Development Docs"
+msgstr "Documentație dezvoltare plugin"
+
+#: 
+msgid "Property type not found"
+msgstr "Tipul de proprietate nu a fost găsit"
+
+#: 
+msgid "Read more"
+msgstr "Citiți mai mult"
+
+#: 
+msgid "Refreshing Soon"
+msgstr "Se actualizează în curând"
+
+#: 
+msgid "Refreshing in"
+msgstr "Se actualizează în"
+
+#: 
+msgid "That name already exists."
+msgstr "Acel nume există deja."
+
+#: 
+msgid "Title is required"
+msgstr "Titlul este obligatoriu"
+
+#: 
+msgid "Volunteer opportunity not found"
+msgstr "Oportunitatea de voluntariat nu a fost găsită"
+
+#: 
+msgid "You do not have permission to delete this note."
+msgstr "Nu aveți permisiunea de a șterge această notă."
+
+#: 
+msgid "You do not have permission to edit this note."
+msgstr "Nu aveți permisiunea de a edita această notă."
+
+#: 
+msgid "[Private Note — visible only to creator]"
+msgstr "[Notă privată — vizibilă doar creatorului]"
+
+#: 
+msgid "seconds"
+msgstr "secunde"
+

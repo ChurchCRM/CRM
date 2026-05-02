@@ -16085,3 +16085,175 @@ msgstr "เวลาใช้เวลาคริสตจักร ({{church}}
 msgid "Welcome — sign in to manage your community"
 msgstr "ยินดีต้อนรับ — เข้าสู่ระบบเพื่อจัดการชุมชนของคุณ"
 
+#: 
+msgid "Are you sure you want to delete this note?"
+msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบบันทึกนี้?"
+
+#: 
+msgid "Cancel — wait 1 more minute"
+msgstr "ยกเลิก — รอ 1 นาทีเพิ่มเติม"
+
+#: 
+msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
+msgstr "ไม่สามารถลบกองทุนเพื่อการบริจาคได้: ยังมีคำมั่นสัญญาทางการเงินหนึ่งรายการหรือมากกว่าอ้างอิงอยู่"
+
+#: 
+msgid "Cannot delete fundraiser: %d donated items are still associated. Remove the items first."
+msgstr "ไม่สามารถลบกิจกรรมระดมทุนได้: ยังมีรายการบริจาค %d รายการที่เชื่อมโยงอยู่ กรุณาลบรายการดังกล่าวก่อน"
+
+#: 
+msgid "Cannot delete property type: %d properties still reference it. Reassign or delete those properties first."
+msgstr "ไม่สามารถลบประเภทคุณสมบัติได้: ยังมีคุณสมบัติ %d รายการอ้างอิงอยู่ กรุณามอบหมายใหม่หรือลบคุณสมบัติเหล่านั้นก่อน"
+
+#: 
+msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
+msgstr "ไม่สามารถลบโอกาสอาสาสมัครได้: ยังมีผู้ได้รับมอบหมาย %d คน กรุณาลบการมอบหมายก่อน"
+
+#: 
+msgid "Class must be one of p, f, or g"
+msgstr "ประเภทต้องเป็นหนึ่งในนี้: p, f หรือ g"
+
+#: 
+msgid "Copy error message"
+msgstr "คัดลอกข้อความแสดงข้อผิดพลาด"
+
+#: 
+msgid "Could not load note."
+msgstr "ไม่สามารถโหลดบันทึกได้"
+
+#: 
+msgid "Description cannot exceed 100 characters"
+msgstr "คำอธิบายต้องไม่เกิน 100 ตัวอักษร"
+
+#: 
+msgid "Donation fund not found"
+msgstr "ไม่พบกองทุนเพื่อการบริจาค"
+
+#: 
+msgid "Error deleting note."
+msgstr "เกิดข้อผิดพลาดในการลบบันทึก"
+
+#: 
+msgid "Failed to create donation fund"
+msgstr "ไม่สามารถสร้างกองทุนเพื่อการบริจาคได้"
+
+#: 
+msgid "Failed to create fundraiser"
+msgstr "ไม่สามารถสร้างกิจกรรมระดมทุนได้"
+
+#: 
+msgid "Failed to create property type"
+msgstr "ไม่สามารถสร้างประเภทคุณสมบัติได้"
+
+#: 
+msgid "Failed to create volunteer opportunity"
+msgstr "ไม่สามารถสร้างโอกาสอาสาสมัครได้"
+
+#: 
+msgid "Failed to delete donation fund"
+msgstr "ไม่สามารถลบกองทุนเพื่อการบริจาคได้"
+
+#: 
+msgid "Failed to delete fundraiser"
+msgstr "ไม่สามารถลบกิจกรรมระดมทุนได้"
+
+#: 
+msgid "Failed to delete note."
+msgstr "ไม่สามารถลบบันทึกได้"
+
+#: 
+msgid "Failed to delete property type"
+msgstr "ไม่สามารถลบประเภทคุณสมบัติได้"
+
+#: 
+msgid "Failed to delete volunteer opportunity"
+msgstr "ไม่สามารถลบโอกาสอาสาสมัครได้"
+
+#: 
+msgid "Failed to update donation fund"
+msgstr "ไม่สามารถอัปเดตกองทุนเพื่อการบริจาคได้"
+
+#: 
+msgid "Failed to update fundraiser"
+msgstr "ไม่สามารถอัปเดตกิจกรรมระดมทุนได้"
+
+#: 
+msgid "Failed to update property type"
+msgstr "ไม่สามารถอัปเดตประเภทคุณสมบัติได้"
+
+#: 
+msgid "Failed to update volunteer opportunity"
+msgstr "ไม่สามารถอัปเดตโอกาสอาสาสมัครได้"
+
+#: 
+msgid "Fundraiser not found"
+msgstr "ไม่พบกิจกรรมระดมทุน"
+
+#: 
+msgid "Installation ID"
+msgstr "รหัสการติดตั้ง"
+
+#: 
+msgid "Invalid class"
+msgstr "ประเภทไม่ถูกต้อง"
+
+#: 
+msgid "Name cannot exceed 30 characters"
+msgstr "ชื่อต้องไม่เกิน 30 ตัวอักษร"
+
+#: 
+msgid "Note by %s deleted"
+msgstr "บันทึกโดย %s ถูกลบแล้ว"
+
+#: 
+msgid "Note not found."
+msgstr "ไม่พบบันทึก"
+
+#: 
+msgid "Plugin Development Docs"
+msgstr "เอกสารการพัฒนาปลั๊กอิน"
+
+#: 
+msgid "Property type not found"
+msgstr "ไม่พบประเภทคุณสมบัติ"
+
+#: 
+msgid "Read more"
+msgstr "อ่านเพิ่มเติม"
+
+#: 
+msgid "Refreshing Soon"
+msgstr "กำลังรีเฟรชเร็วๆ นี้"
+
+#: 
+msgid "Refreshing in"
+msgstr "รีเฟรชใน"
+
+#: 
+msgid "That name already exists."
+msgstr "ชื่อนี้มีอยู่แล้ว"
+
+#: 
+msgid "Title is required"
+msgstr "จำเป็นต้องระบุหัวเรื่อง"
+
+#: 
+msgid "Volunteer opportunity not found"
+msgstr "ไม่พบโอกาสอาสาสมัคร"
+
+#: 
+msgid "You do not have permission to delete this note."
+msgstr "คุณไม่มีสิทธิ์ลบบันทึกนี้"
+
+#: 
+msgid "You do not have permission to edit this note."
+msgstr "คุณไม่มีสิทธิ์แก้ไขบันทึกนี้"
+
+#: 
+msgid "[Private Note — visible only to creator]"
+msgstr "[บันทึกส่วนตัว — มองเห็นได้เฉพาะผู้สร้างเท่านั้น]"
+
+#: 
+msgid "seconds"
+msgstr "วินาที"
+

@@ -16212,3 +16212,175 @@ msgstr "Tidspunktene bruker kirketid ({{church}}), ikke nettlesertiden din ({{br
 msgid "Welcome — sign in to manage your community"
 msgstr "Velkommen — logg inn for å administrere menigheten din"
 
+#: 
+msgid "Are you sure you want to delete this note?"
+msgstr "Er du sikker på at du vil slette dette notatet?"
+
+#: 
+msgid "Cancel — wait 1 more minute"
+msgstr "Avbryt — vent 1 minutt til"
+
+#: 
+msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
+msgstr "Kan ikke slette donasjonsfondet: det refereres fortsatt til av ett eller flere finansielle løfter."
+
+#: 
+msgid "Cannot delete fundraiser: %d donated items are still associated. Remove the items first."
+msgstr "Kan ikke slette innsamlingen: %d donerte elementer er fortsatt tilknyttet. Fjern elementene først."
+
+#: 
+msgid "Cannot delete property type: %d properties still reference it. Reassign or delete those properties first."
+msgstr "Kan ikke slette egenskapstypen: %d egenskaper refererer fortsatt til den. Tilordne på nytt eller slett disse egenskapene først."
+
+#: 
+msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
+msgstr "Kan ikke slette frivillighetsmulighetene: %d personer er fortsatt tilordnet. Fjern tilordningene først."
+
+#: 
+msgid "Class must be one of p, f, or g"
+msgstr "Klasse må være en av p, f eller g"
+
+#: 
+msgid "Copy error message"
+msgstr "Kopier feilmelding"
+
+#: 
+msgid "Could not load note."
+msgstr "Kunne ikke laste notatet."
+
+#: 
+msgid "Description cannot exceed 100 characters"
+msgstr "Beskrivelse kan ikke overstige 100 tegn"
+
+#: 
+msgid "Donation fund not found"
+msgstr "Donasjonsfond ikke funnet"
+
+#: 
+msgid "Error deleting note."
+msgstr "Feil ved sletting av notat."
+
+#: 
+msgid "Failed to create donation fund"
+msgstr "Kunne ikke opprette donasjonsfond"
+
+#: 
+msgid "Failed to create fundraiser"
+msgstr "Kunne ikke opprette innsamling"
+
+#: 
+msgid "Failed to create property type"
+msgstr "Kunne ikke opprette egenskapstype"
+
+#: 
+msgid "Failed to create volunteer opportunity"
+msgstr "Kunne ikke opprette frivillighetsmulighet"
+
+#: 
+msgid "Failed to delete donation fund"
+msgstr "Kunne ikke slette donasjonsfond"
+
+#: 
+msgid "Failed to delete fundraiser"
+msgstr "Kunne ikke slette innsamling"
+
+#: 
+msgid "Failed to delete note."
+msgstr "Kunne ikke slette notat."
+
+#: 
+msgid "Failed to delete property type"
+msgstr "Kunne ikke slette egenskapstype"
+
+#: 
+msgid "Failed to delete volunteer opportunity"
+msgstr "Kunne ikke slette frivillighetsmulighet"
+
+#: 
+msgid "Failed to update donation fund"
+msgstr "Kunne ikke oppdatere donasjonsfond"
+
+#: 
+msgid "Failed to update fundraiser"
+msgstr "Kunne ikke oppdatere innsamling"
+
+#: 
+msgid "Failed to update property type"
+msgstr "Kunne ikke oppdatere egenskapstype"
+
+#: 
+msgid "Failed to update volunteer opportunity"
+msgstr "Kunne ikke oppdatere frivillighetsmulighet"
+
+#: 
+msgid "Fundraiser not found"
+msgstr "Innsamling ikke funnet"
+
+#: 
+msgid "Installation ID"
+msgstr "Installasjons-ID"
+
+#: 
+msgid "Invalid class"
+msgstr "Ugyldig klasse"
+
+#: 
+msgid "Name cannot exceed 30 characters"
+msgstr "Navn kan ikke overstige 30 tegn"
+
+#: 
+msgid "Note by %s deleted"
+msgstr "Notat av %s slettet"
+
+#: 
+msgid "Note not found."
+msgstr "Notat ikke funnet."
+
+#: 
+msgid "Plugin Development Docs"
+msgstr "Plugin-utviklingsdokumentasjon"
+
+#: 
+msgid "Property type not found"
+msgstr "Egenskapstype ikke funnet"
+
+#: 
+msgid "Read more"
+msgstr "Les mer"
+
+#: 
+msgid "Refreshing Soon"
+msgstr "Oppdaterer snart"
+
+#: 
+msgid "Refreshing in"
+msgstr "Oppdaterer om"
+
+#: 
+msgid "That name already exists."
+msgstr "Det navnet eksisterer allerede."
+
+#: 
+msgid "Title is required"
+msgstr "Tittel er påkrevd"
+
+#: 
+msgid "Volunteer opportunity not found"
+msgstr "Frivillighetsmulighet ikke funnet"
+
+#: 
+msgid "You do not have permission to delete this note."
+msgstr "Du har ikke tillatelse til å slette dette notatet."
+
+#: 
+msgid "You do not have permission to edit this note."
+msgstr "Du har ikke tillatelse til å redigere dette notatet."
+
+#: 
+msgid "[Private Note — visible only to creator]"
+msgstr "[Privat notat — kun synlig for oppretteren]"
+
+#: 
+msgid "seconds"
+msgstr "sekunder"
+

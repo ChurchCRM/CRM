@@ -16214,3 +16214,175 @@ msgstr "Время указывается по церковному времен
 msgid "Welcome — sign in to manage your community"
 msgstr "Добро пожаловать — войдите, чтобы управлять вашим приходом"
 
+#: 
+msgid "Are you sure you want to delete this note?"
+msgstr "Вы уверены, что хотите удалить эту заметку?"
+
+#: 
+msgid "Cancel — wait 1 more minute"
+msgstr "Отмена — подождать ещё 1 минуту"
+
+#: 
+msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
+msgstr "Невозможно удалить фонд пожертвований: на него ссылаются одно или несколько финансовых обязательств."
+
+#: 
+msgid "Cannot delete fundraiser: %d donated items are still associated. Remove the items first."
+msgstr "Невозможно удалить сбор средств: с ним всё ещё связано %d пожертвованных элемента(-ов). Сначала удалите эти элементы."
+
+#: 
+msgid "Cannot delete property type: %d properties still reference it. Reassign or delete those properties first."
+msgstr "Невозможно удалить тип свойства: на него ссылаются %d свойства(-в). Сначала переназначьте или удалите эти свойства."
+
+#: 
+msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
+msgstr "Невозможно удалить возможность волонтёрства: ей назначено %d человек(-а). Сначала снимите назначения."
+
+#: 
+msgid "Class must be one of p, f, or g"
+msgstr "Класс должен быть одним из: p, f или g"
+
+#: 
+msgid "Copy error message"
+msgstr "Копировать сообщение об ошибке"
+
+#: 
+msgid "Could not load note."
+msgstr "Не удалось загрузить заметку."
+
+#: 
+msgid "Description cannot exceed 100 characters"
+msgstr "Описание не должно превышать 100 символов"
+
+#: 
+msgid "Donation fund not found"
+msgstr "Фонд пожертвований не найден"
+
+#: 
+msgid "Error deleting note."
+msgstr "Ошибка при удалении заметки."
+
+#: 
+msgid "Failed to create donation fund"
+msgstr "Не удалось создать фонд пожертвований"
+
+#: 
+msgid "Failed to create fundraiser"
+msgstr "Не удалось создать сбор средств"
+
+#: 
+msgid "Failed to create property type"
+msgstr "Не удалось создать тип свойства"
+
+#: 
+msgid "Failed to create volunteer opportunity"
+msgstr "Не удалось создать возможность волонтёрства"
+
+#: 
+msgid "Failed to delete donation fund"
+msgstr "Не удалось удалить фонд пожертвований"
+
+#: 
+msgid "Failed to delete fundraiser"
+msgstr "Не удалось удалить сбор средств"
+
+#: 
+msgid "Failed to delete note."
+msgstr "Не удалось удалить заметку."
+
+#: 
+msgid "Failed to delete property type"
+msgstr "Не удалось удалить тип свойства"
+
+#: 
+msgid "Failed to delete volunteer opportunity"
+msgstr "Не удалось удалить возможность волонтёрства"
+
+#: 
+msgid "Failed to update donation fund"
+msgstr "Не удалось обновить фонд пожертвований"
+
+#: 
+msgid "Failed to update fundraiser"
+msgstr "Не удалось обновить сбор средств"
+
+#: 
+msgid "Failed to update property type"
+msgstr "Не удалось обновить тип свойства"
+
+#: 
+msgid "Failed to update volunteer opportunity"
+msgstr "Не удалось обновить возможность волонтёрства"
+
+#: 
+msgid "Fundraiser not found"
+msgstr "Сбор средств не найден"
+
+#: 
+msgid "Installation ID"
+msgstr "Идентификатор установки"
+
+#: 
+msgid "Invalid class"
+msgstr "Недопустимый класс"
+
+#: 
+msgid "Name cannot exceed 30 characters"
+msgstr "Имя не должно превышать 30 символов"
+
+#: 
+msgid "Note by %s deleted"
+msgstr "Заметка пользователя %s удалена"
+
+#: 
+msgid "Note not found."
+msgstr "Заметка не найдена."
+
+#: 
+msgid "Plugin Development Docs"
+msgstr "Документация для разработчиков плагинов"
+
+#: 
+msgid "Property type not found"
+msgstr "Тип свойства не найден"
+
+#: 
+msgid "Read more"
+msgstr "Подробнее"
+
+#: 
+msgid "Refreshing Soon"
+msgstr "Скоро обновится"
+
+#: 
+msgid "Refreshing in"
+msgstr "Обновление через"
+
+#: 
+msgid "That name already exists."
+msgstr "Такое имя уже существует."
+
+#: 
+msgid "Title is required"
+msgstr "Заголовок обязателен"
+
+#: 
+msgid "Volunteer opportunity not found"
+msgstr "Возможность волонтёрства не найдена"
+
+#: 
+msgid "You do not have permission to delete this note."
+msgstr "У вас нет разрешения на удаление этой заметки."
+
+#: 
+msgid "You do not have permission to edit this note."
+msgstr "У вас нет разрешения на редактирование этой заметки."
+
+#: 
+msgid "[Private Note — visible only to creator]"
+msgstr "[Личная заметка — видна только создателю]"
+
+#: 
+msgid "seconds"
+msgstr "секунд"
+
