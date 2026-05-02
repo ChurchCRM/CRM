@@ -325,22 +325,22 @@ describe(
                             expect(resp.body.Country, `Person ${firstName} Country`).to.eq(expectedCountry);
                         });
                     });
-                });
 
-                // Family-level: FamilyID 300 had no explicit Country on its creation row → default.
-                //               FamilyID 301's creation row had "Canada" → Canada preserved.
-                cy.makePrivateAdminAPICall("GET", `/api/person/${idByName.blankFamHead}`, null, 200).then((resp) => {
-                    const famId = resp.body.FamId;
-                    expect(famId, "blankFamHead attached to a family").to.be.greaterThan(0);
-                    cy.makePrivateAdminAPICall("GET", `/api/family/${famId}`, null, 200).then((famResp) => {
-                        expect(famResp.body.Country, "Family (blank-Country creation row) Country").to.eq("United States");
+                    // Family-level: FamilyID 300 had no explicit Country on its creation row → default.
+                    //               FamilyID 301's creation row had "Canada" → Canada preserved.
+                    cy.makePrivateAdminAPICall("GET", `/api/person/${idByName.blankFamHead}`, null, 200).then((resp) => {
+                        const famId = resp.body.FamId;
+                        expect(famId, "blankFamHead attached to a family").to.be.greaterThan(0);
+                        cy.makePrivateAdminAPICall("GET", `/api/family/${famId}`, null, 200).then((famResp) => {
+                            expect(famResp.body.Country, "Family (blank-Country creation row) Country").to.eq(defaultCountry);
+                        });
                     });
-                });
-                cy.makePrivateAdminAPICall("GET", `/api/person/${idByName.explicitCanada}`, null, 200).then((resp) => {
-                    const famId = resp.body.FamId;
-                    expect(famId, "explicitCanada attached to a family").to.be.greaterThan(0);
-                    cy.makePrivateAdminAPICall("GET", `/api/family/${famId}`, null, 200).then((famResp) => {
-                        expect(famResp.body.Country, "Family (explicit-Canada creation row) Country").to.eq("Canada");
+                    cy.makePrivateAdminAPICall("GET", `/api/person/${idByName.explicitCanada}`, null, 200).then((resp) => {
+                        const famId = resp.body.FamId;
+                        expect(famId, "explicitCanada attached to a family").to.be.greaterThan(0);
+                        cy.makePrivateAdminAPICall("GET", `/api/family/${famId}`, null, 200).then((famResp) => {
+                            expect(famResp.body.Country, "Family (explicit-Canada creation row) Country").to.eq("Canada");
+                        });
                     });
                 });
             });
