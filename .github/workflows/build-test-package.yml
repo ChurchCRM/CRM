@@ -1,5 +1,15 @@
 name: Build, Test and Package
 
+concurrency:
+  # On PRs: cancel previous run for same PR; allow all master pushes to run
+  group: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.number) || 'master' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+  checks: write
+  actions: read
+
 on:
   pull_request:
     branches:

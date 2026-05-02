@@ -1,4 +1,4 @@
-name: Locale Download POEditor 
+name: Locale Sync POEditor 
 permissions:
   contents: write
   pull-requests: write

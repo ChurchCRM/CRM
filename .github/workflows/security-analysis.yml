@@ -48,6 +48,10 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+  security-events: write
+
 jobs:
   # CodeQL: Semantic analysis for JavaScript/TypeScript
   # Understands data flow, tracks tainted input through function calls

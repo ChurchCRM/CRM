@@ -1,5 +1,10 @@
 name: Sync Release Changelog
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+
 # Fires automatically when a release is published.
 # Can also be triggered manually to re-sync or back-fill any version.
 #
