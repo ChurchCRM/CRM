@@ -16149,3 +16149,175 @@ msgstr "Час вказується за церковним часом ({{church
 msgid "Welcome — sign in to manage your community"
 msgstr "Ласкаво просимо — увійдіть, щоб керувати вашою парафією"
 
+#: 
+msgid "Are you sure you want to delete this note?"
+msgstr "Ви впевнені, що хочете видалити цю нотатку?"
+
+#: 
+msgid "Cancel — wait 1 more minute"
+msgstr "Скасувати — зачекати ще 1 хвилину"
+
+#: 
+msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
+msgstr "Неможливо видалити фонд пожертвувань: на нього ще посилаються одне або декілька фінансових зобов'язань."
+
+#: 
+msgid "Cannot delete fundraiser: %d donated items are still associated. Remove the items first."
+msgstr "Неможливо видалити збір коштів: %d пожертвуваних предметів ще прив'язані. Спочатку видаліть їх."
+
+#: 
+msgid "Cannot delete property type: %d properties still reference it. Reassign or delete those properties first."
+msgstr "Неможливо видалити тип властивості: %d властивостей ще посилаються на нього. Спочатку перепризначте або видаліть ці властивості."
+
+#: 
+msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
+msgstr "Неможливо видалити можливість для волонтерства: %d осіб ще призначені. Спочатку видаліть призначення."
+
+#: 
+msgid "Class must be one of p, f, or g"
+msgstr "Клас має бути одним із: p, f або g"
+
+#: 
+msgid "Copy error message"
+msgstr "Копіювати повідомлення про помилку"
+
+#: 
+msgid "Could not load note."
+msgstr "Не вдалося завантажити нотатку."
+
+#: 
+msgid "Description cannot exceed 100 characters"
+msgstr "Опис не може перевищувати 100 символів"
+
+#: 
+msgid "Donation fund not found"
+msgstr "Фонд пожертвувань не знайдено"
+
+#: 
+msgid "Error deleting note."
+msgstr "Помилка при видаленні нотатки."
+
+#: 
+msgid "Failed to create donation fund"
+msgstr "Не вдалося створити фонд пожертвувань"
+
+#: 
+msgid "Failed to create fundraiser"
+msgstr "Не вдалося створити збір коштів"
+
+#: 
+msgid "Failed to create property type"
+msgstr "Не вдалося створити тип властивості"
+
+#: 
+msgid "Failed to create volunteer opportunity"
+msgstr "Не вдалося створити можливість для волонтерства"
+
+#: 
+msgid "Failed to delete donation fund"
+msgstr "Не вдалося видалити фонд пожертвувань"
+
+#: 
+msgid "Failed to delete fundraiser"
+msgstr "Не вдалося видалити збір коштів"
+
+#: 
+msgid "Failed to delete note."
+msgstr "Не вдалося видалити нотатку."
+
+#: 
+msgid "Failed to delete property type"
+msgstr "Не вдалося видалити тип властивості"
+
+#: 
+msgid "Failed to delete volunteer opportunity"
+msgstr "Не вдалося видалити можливість для волонтерства"
+
+#: 
+msgid "Failed to update donation fund"
+msgstr "Не вдалося оновити фонд пожертвувань"
+
+#: 
+msgid "Failed to update fundraiser"
+msgstr "Не вдалося оновити збір коштів"
+
+#: 
+msgid "Failed to update property type"
+msgstr "Не вдалося оновити тип властивості"
+
+#: 
+msgid "Failed to update volunteer opportunity"
+msgstr "Не вдалося оновити можливість для волонтерства"
+
+#: 
+msgid "Fundraiser not found"
+msgstr "Збір коштів не знайдено"
+
+#: 
+msgid "Installation ID"
+msgstr "Ідентифікатор встановлення"
+
+#: 
+msgid "Invalid class"
+msgstr "Недійсний клас"
+
+#: 
+msgid "Name cannot exceed 30 characters"
+msgstr "Назва не може перевищувати 30 символів"
+
+#: 
+msgid "Note by %s deleted"
+msgstr "Нотатку від %s видалено"
+
+#: 
+msgid "Note not found."
+msgstr "Нотатку не знайдено."
+
+#: 
+msgid "Plugin Development Docs"
+msgstr "Документація розробника плагінів"
+
+#: 
+msgid "Property type not found"
+msgstr "Тип властивості не знайдено"
+
+#: 
+msgid "Read more"
+msgstr "Читати далі"
+
+#: 
+msgid "Refreshing Soon"
+msgstr "Оновлення незабаром"
+
+#: 
+msgid "Refreshing in"
+msgstr "Оновлення через"
+
+#: 
+msgid "That name already exists."
+msgstr "Таке ім'я вже існує."
+
+#: 
+msgid "Title is required"
+msgstr "Назва є обов'язковою"
+
+#: 
+msgid "Volunteer opportunity not found"
+msgstr "Можливість для волонтерства не знайдено"
+
+#: 
+msgid "You do not have permission to delete this note."
+msgstr "У вас немає дозволу на видалення цієї нотатки."
+
+#: 
+msgid "You do not have permission to edit this note."
+msgstr "У вас немає дозволу на редагування цієї нотатки."
+
+#: 
+msgid "[Private Note — visible only to creator]"
+msgstr "[Приватна нотатка — видима лише автору]"
+
+#: 
+msgid "seconds"
+msgstr "секунд"
+

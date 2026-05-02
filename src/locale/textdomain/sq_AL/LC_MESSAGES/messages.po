@@ -16114,3 +16114,175 @@ msgstr "Oraret përdorin kohën e kishës ({{church}}), jo shfletuesin tuaj ({{b
 msgid "Welcome — sign in to manage your community"
 msgstr "Mirë se vini — hyni për të menaxhuar komunitetin tuaj"
 
+#: 
+msgid "Are you sure you want to delete this note?"
+msgstr "Jeni të sigurt që dëshironi të fshini këtë shënim?"
+
+#: 
+msgid "Cancel — wait 1 more minute"
+msgstr "Anulo — prit edhe 1 minutë"
+
+#: 
+msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
+msgstr "Nuk mund të fshihet fondi i donacioneve: ai ende referohet nga një ose më shumë zotimet."
+
+#: 
+msgid "Cannot delete fundraiser: %d donated items are still associated. Remove the items first."
+msgstr "Nuk mund të fshihet mbledhja e fondeve: %d artikuj të dhuruar janë ende të lidhur. Hiqini artikujt fillimisht."
+
+#: 
+msgid "Cannot delete property type: %d properties still reference it. Reassign or delete those properties first."
+msgstr "Nuk mund të fshihet lloji i pronës: %d prona ende e referencojnë. Ricaktoni ose fshini ato prona fillimisht."
+
+#: 
+msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
+msgstr "Nuk mund të fshihet mundësia vullnetare: %d persona janë ende të caktuar. Hiqini caktimet fillimisht."
+
+#: 
+msgid "Class must be one of p, f, or g"
+msgstr "Klasa duhet të jetë njëra nga p, f, ose g"
+
+#: 
+msgid "Copy error message"
+msgstr "Kopjo mesazhin e gabimit"
+
+#: 
+msgid "Could not load note."
+msgstr "Nuk mund të ngarkohet shënimi."
+
+#: 
+msgid "Description cannot exceed 100 characters"
+msgstr "Përshkrimi nuk mund të kalojë 100 karaktere"
+
+#: 
+msgid "Donation fund not found"
+msgstr "Fondi i donacioneve nuk u gjet"
+
+#: 
+msgid "Error deleting note."
+msgstr "Gabim gjatë fshirjes së shënimit."
+
+#: 
+msgid "Failed to create donation fund"
+msgstr "Krijimi i fondit të donacioneve dështoi"
+
+#: 
+msgid "Failed to create fundraiser"
+msgstr "Krijimi i mbledhjes së fondeve dështoi"
+
+#: 
+msgid "Failed to create property type"
+msgstr "Krijimi i llojit të pronës dështoi"
+
+#: 
+msgid "Failed to create volunteer opportunity"
+msgstr "Krijimi i mundësisë vullnetare dështoi"
+
+#: 
+msgid "Failed to delete donation fund"
+msgstr "Fshirja e fondit të donacioneve dështoi"
+
+#: 
+msgid "Failed to delete fundraiser"
+msgstr "Fshirja e mbledhjes së fondeve dështoi"
+
+#: 
+msgid "Failed to delete note."
+msgstr "Fshirja e shënimit dështoi."
+
+#: 
+msgid "Failed to delete property type"
+msgstr "Fshirja e llojit të pronës dështoi"
+
+#: 
+msgid "Failed to delete volunteer opportunity"
+msgstr "Fshirja e mundësisë vullnetare dështoi"
+
+#: 
+msgid "Failed to update donation fund"
+msgstr "Përditësimi i fondit të donacioneve dështoi"
+
+#: 
+msgid "Failed to update fundraiser"
+msgstr "Përditësimi i mbledhjes së fondeve dështoi"
+
+#: 
+msgid "Failed to update property type"
+msgstr "Përditësimi i llojit të pronës dështoi"
+
+#: 
+msgid "Failed to update volunteer opportunity"
+msgstr "Përditësimi i mundësisë vullnetare dështoi"
+
+#: 
+msgid "Fundraiser not found"
+msgstr "Mbledhja e fondeve nuk u gjet"
+
+#: 
+msgid "Installation ID"
+msgstr "ID e instalimit"
+
+#: 
+msgid "Invalid class"
+msgstr "Klasë e pavlefshme"
+
+#: 
+msgid "Name cannot exceed 30 characters"
+msgstr "Emri nuk mund të kalojë 30 karaktere"
+
+#: 
+msgid "Note by %s deleted"
+msgstr "Shënimi nga %s u fshi"
+
+#: 
+msgid "Note not found."
+msgstr "Shënimi nuk u gjet."
+
+#: 
+msgid "Plugin Development Docs"
+msgstr "Dokumentacion për zhvillimin e shtojcave"
+
+#: 
+msgid "Property type not found"
+msgstr "Lloji i pronës nuk u gjet"
+
+#: 
+msgid "Read more"
+msgstr "Lexo më shumë"
+
+#: 
+msgid "Refreshing Soon"
+msgstr "Rifreskim së shpejti"
+
+#: 
+msgid "Refreshing in"
+msgstr "Rifreskim në"
+
+#: 
+msgid "That name already exists."
+msgstr "Ai emër ekziston tashmë."
+
+#: 
+msgid "Title is required"
+msgstr "Titulli është i detyrueshëm"
+
+#: 
+msgid "Volunteer opportunity not found"
+msgstr "Mundësia vullnetare nuk u gjet"
+
+#: 
+msgid "You do not have permission to delete this note."
+msgstr "Nuk keni leje për të fshirë këtë shënim."
+
+#: 
+msgid "You do not have permission to edit this note."
+msgstr "Nuk keni leje për të redaktuar këtë shënim."
+
+#: 
+msgid "[Private Note — visible only to creator]"
+msgstr "[Shënim Privat — i dukshëm vetëm për krijuesin]"
+
+#: 
+msgid "seconds"
+msgstr "sekonda"
+
