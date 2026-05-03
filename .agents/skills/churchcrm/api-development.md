@@ -375,8 +375,8 @@ Private spec: `Calendar`, `People`, `Families`, `Groups`, `Properties`, `Finance
 
 After annotating, run from `CRM/src/`:
 ```bash
-composer run openapi-public   # → CRM/openapi/public-api.yaml
-composer run openapi-private  # → CRM/openapi/private-api.yaml
+composer run openapi:public   # → CRM/docs/openapi/generated/public-api.yaml
+composer run openapi:private  # → CRM/docs/openapi/generated/private-api.yaml
 ```
 
 Commit the updated YAML files to the CRM repo. The rest is automated:
@@ -393,7 +393,7 @@ cd docs.churchcrm.io && npm run regen
 
 ### Global annotations / tags
 
-Defined in `src/api/openapi/openapi-public-info.php` and `src/api/openapi/openapi-private-info.php`. If you add a new tag, add it there first.
+Defined in `docs/openapi/openapi-public-info.php` and `docs/openapi/openapi-private-info.php`. If you add a new tag, add it there first.
 
 ## Calling External APIs: Nominatim Geocoding <!-- learned: 2026-03-08 -->
 
@@ -670,7 +670,7 @@ pages have a history of orphaning rows that the API shouldn't inherit.
 **API Routes:** `src/api/routes/`, `src/admin/routes/api/`
 **Utilities:** `src/ChurchCRM/Slim/SlimUtils.php`
 **Middleware:** `src/ChurchCRM/Slim/Middleware/`
-**OpenAPI info:** `src/api/openapi/openapi-public-info.php`, `src/api/openapi/openapi-private-info.php`
+**OpenAPI info:** `docs/openapi/openapi-public-info.php`, `docs/openapi/openapi-private-info.php`
 **Generated specs:** `CRM/openapi/public-api.yaml`, `CRM/openapi/private-api.yaml`
 **Documentation site:** `docs.churchcrm.io/openapi/`, `docs.churchcrm.io/docs/public-api/`, `docs.churchcrm.io/docs/private-api/`
 

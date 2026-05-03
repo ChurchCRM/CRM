@@ -21,8 +21,8 @@ All generation commands should be run from the `src/` directory:
 
 ```bash
 cd src
-npm run openapi-public   # Generate public API spec
-npm run openapi-private  # Generate private API spec
+npm run openapi:public   # Generate public API spec
+npm run openapi:private  # Generate private API spec
 ```
 
 Or manually:

@@ -11,14 +11,14 @@ on:
     paths:
       - 'src/api/routes/**'
       - 'src/admin/routes/api/**'
-      - 'src/api/openapi/**'
+      - 'docs/openapi/**'
       - 'src/kiosk/routes/api/**'
       - 'src/plugins/routes/api/**'
   pull_request:
     paths:
       - 'src/api/routes/**'
       - 'src/admin/routes/api/**'
-      - 'src/api/openapi/**'
+      - 'docs/openapi/**'
       - 'src/kiosk/routes/api/**'
       - 'src/plugins/routes/api/**'
   workflow_dispatch:
@@ -64,16 +64,16 @@ jobs:
         run: cd src && composer install --no-interaction --prefer-dist
 
       - name: Generate Public API spec
-        run: cd src && composer run openapi-public
+        run: cd src && composer run openapi:public
 
       - name: Generate Private API spec
-        run: cd src && composer run openapi-private
+        run: cd src && composer run openapi:private
 
       - name: Upload generated specs as artifacts
         uses: actions/upload-artifact@v7
         with:
           name: openapi-specs-${{ github.run_id }}
-          path: openapi/*.yaml
+          path: docs/openapi/generated/*.yaml
           retention-days: 7
 
   # ───────────────────────────────────────────────────────────────────
@@ -108,15 +108,15 @@ jobs:
         run: cd src && composer install --no-interaction --prefer-dist
 
       - name: Generate Public API spec
-        run: cd src && composer run openapi-public
+        run: cd src && composer run openapi:public
 
       - name: Generate Private API spec
-        run: cd src && composer run openapi-private
+        run: cd src && composer run openapi:private
 
       - name: Check for changes
         id: changes
         run: |
-          if git status --porcelain -- openapi/ | grep -q .; then
+          if git status --porcelain -- docs/openapi/generated/ | grep -q .; then
             echo "has_changes=true" >> $GITHUB_OUTPUT
           else
             echo "has_changes=false" >> $GITHUB_OUTPUT
@@ -127,7 +127,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add openapi/
+          git add docs/openapi/generated/
           git commit -m "docs: update OpenAPI specifications"
           git push origin master
 
@@ -135,7 +135,7 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: openapi-specs-${{ github.run_id }}
-          path: openapi/*.yaml
+          path: docs/openapi/generated/*.yaml
           retention-days: 7
 
   # ───────────────────────────────────────────────────────────────────
