@@ -33,7 +33,7 @@ require_once $vendorAutoload;
 
 use ChurchCRM\Api\OpenAPI\ChurchCRMDocBlockAnalyser;
 use OpenApi\Generator;
-use OpenApi\Loggers\ConsoleLogger;
+use OpenApi\Loggers\DefaultLogger;
 use Symfony\Component\Finder\Finder;
 
 // Parse command-line arguments
@@ -124,7 +124,7 @@ foreach ($resolvedPaths as $rawPath) {
 
 // Generate OpenAPI spec
 $debug = !empty($options['d']);
-$generator = new Generator(new ConsoleLogger($debug));
+$generator = new Generator(new DefaultLogger());
 $generator->setAnalyser(new ChurchCRMDocBlockAnalyser());
 
 $openapi = $generator->generate($filesToScan);
