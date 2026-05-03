@@ -205,8 +205,16 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               var event = window.CRM.events.futureEvents[i];
               var selected = (currentAssignment && currentAssignment.EventId === event.Id) ? 'selected' : '';
               
-              // Build event label with group name if available
+              // Build event label with date and group name if available
               var eventLabel = window.CRM.escapeHtml(event.Title);
+              
+              // Add start date if available
+              if (event.Start) {
+                  var eventDate = moment(event.Start).format('MMM D, YYYY');
+                  eventLabel += ' - ' + eventDate;
+              }
+              
+              // Add group names if available
               if (event.Groups && event.Groups.length > 0) {
                   var groupNames = event.Groups.map(function(g) { return g.Name; }).join(', ');
                   eventLabel += ' [' + window.CRM.escapeHtml(groupNames) + ']';
