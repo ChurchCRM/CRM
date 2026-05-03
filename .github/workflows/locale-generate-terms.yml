@@ -104,7 +104,7 @@ jobs:
           path: |
             locale/messages.po
             src/locale/i18n/
-          retention-days: 30
+          retention-days: 15
           if-no-files-found: warn
       
       - name: Generate detailed diff report
@@ -138,7 +138,7 @@ jobs:
         with:
           name: locale-diff-reports
           path: locale-diffs/
-          retention-days: 30
+          retention-days: 15
           if-no-files-found: warn
       
       - name: Configure Git

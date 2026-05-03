@@ -80,7 +80,7 @@ jobs:
         with:
           name: marketing-posts-${{ env.TAG }}
           path: /tmp/marketing/${{ env.TAG }}-social-posts.md
-          retention-days: 30
+          retention-days: 15
 
   # ───────────────────────────────────────────────────────────────────
   # Close release milestone and move pending items to next version

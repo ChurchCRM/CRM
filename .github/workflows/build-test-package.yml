@@ -264,7 +264,7 @@ jobs:
           cypress/logs
           cypress/screenshots
           cypress/videos
-        retention-days: 30
+        retention-days: 15
         if-no-files-found: ignore
 
     - name: Test Report
@@ -369,7 +369,7 @@ jobs:
           cypress/logs
           cypress/screenshots
           cypress/videos
-        retention-days: 30
+        retention-days: 15
         if-no-files-found: ignore
 
     - name: Test Report
@@ -473,7 +473,7 @@ jobs:
           cypress/logs
           cypress/screenshots
           cypress/videos
-        retention-days: 30
+        retention-days: 15
         if-no-files-found: ignore
 
     - name: Test Report
@@ -579,7 +579,7 @@ jobs:
           cypress/logs
           cypress/screenshots
           cypress/videos
-        retention-days: 30
+        retention-days: 15
         if-no-files-found: ignore
 
     - name: Test Report

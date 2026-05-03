@@ -234,4 +234,4 @@ jobs:
         with:
           name: devskim-security-results
           path: devskim-results.sarif
-          retention-days: 30
+          retention-days: 15
