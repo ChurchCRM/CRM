@@ -59,6 +59,7 @@ jobs:
     permissions:
       contents: write
       actions: read
+      pull-requests: write
     env:
       # gh CLI needs to know the repo to query since we don't check out the
       # working tree — without this, commands like `gh run download` fail with
