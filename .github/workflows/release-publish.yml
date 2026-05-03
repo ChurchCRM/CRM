@@ -190,19 +190,29 @@ jobs:
         run: |
           set -euo pipefail
 
+          # Check if release exists
           if gh release view "$TAG" >/dev/null 2>&1; then
             echo "Release $TAG already exists — deleting it and recreating from scratch."
-            gh release delete "$TAG" --yes
+            gh release delete "$TAG" --yes || {
+              echo "::warning::Failed to delete release $TAG, attempting with --force flag"
+              gh release delete "$TAG" --yes --force || true
+            }
             echo "Waiting 2 seconds for GitHub to finalize deletion..."
             sleep 2
           fi
 
-          # Also delete the git tag if it exists (GitHub deletes it, but ensure clean state)
-          if git rev-parse "$TAG" >/dev/null 2>&1 || gh api "repos/$GH_REPO/git/refs/tags/$TAG" >/dev/null 2>&1; then
-            echo "Git tag $TAG exists — deleting it."
-            git push origin ":$TAG" 2>/dev/null || gh api -X DELETE "repos/$GH_REPO/git/refs/tags/$TAG"
+          # Delete the git tag if it exists (GitHub usually deletes it automatically)
+          echo "Checking for git tag $TAG..."
+          if gh api "repos/$GH_REPO/git/refs/tags/$TAG" >/dev/null 2>&1; then
+            echo "Git tag $TAG exists — deleting via API."
+            gh api -X DELETE "repos/$GH_REPO/git/refs/tags/$TAG" || {
+              echo "::warning::Failed to delete git tag via API, it may have been auto-deleted"
+              true
+            }
             echo "Waiting 2 seconds for tag deletion to propagate..."
             sleep 2
+          else
+            echo "Git tag $TAG does not exist or already deleted."
           fi
 
           echo "Creating fresh release $TAG targeting $TARGET_COMMIT."
@@ -211,7 +221,10 @@ jobs:
             --target "$TARGET_COMMIT" \
             --generate-notes \
             --draft="$IS_DRAFT" \
-            --prerelease="$IS_PRERELEASE"
+            --prerelease="$IS_PRERELEASE" || {
+            echo "::error::Failed to create release. Check token permissions and ensure tag $TAG is fully deleted."
+            exit 1
+          }
 
           release_url=$(gh release view "$TAG" --json url --jq .url)
           echo "release_url=$release_url" >> "$GITHUB_OUTPUT"
