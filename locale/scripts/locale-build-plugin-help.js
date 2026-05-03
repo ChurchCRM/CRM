@@ -3,11 +3,11 @@
 /**
  * ChurchCRM Plugin Help Terms Extraction Script
  * 
- * Extracts translatable strings from plugin help.json files for localization.
+ * Extracts translatable strings from core plugin help.json files for localization.
+ * Community plugins are excluded.
  * 
  * Scans:
  *   src/plugins/core/{plugin}/help.json
- *   src/plugins/community/{plugin}/help.json
  * 
  * Extracts:
  *   summary text
@@ -54,7 +54,8 @@ class PluginHelpExtractor {
      */
     findHelpFiles() {
         const helpFiles = [];
-        const pluginTypes = ['core', 'community'];
+        // Only collect help.json from core plugins, exclude community plugins
+        const pluginTypes = ['core'];
 
         for (const type of pluginTypes) {
             const typeDir = path.join(this.pluginsDir, type);
