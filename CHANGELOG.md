@@ -10,6 +10,9 @@ Release notes are stored in the [`changelog/`](./changelog/) folder — one file
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| [7.3.2](./changelog/7.3.2.md) | May 2026 | ChurchCRM 7.3.2 hardens security and refines data workflows
+
+Configuration file access blocking, safe group/event deletion with orphan cleanup, member import respects default country setting, kiosk event dropdown displays dates, 1760 translation updates across 40 locales |
 | [7.3.1](./changelog/7.3.1.md) | April 2026 | ChurchCRM 7.3.1 enhances security and modernizes note management for congregations
 
 Shared family timeline with synchronized notes, professional-grade REST API security for pastoral notes, API lockout and 2FA protection restored, Kiosk 60-second smart-refresh reduces network load, lazy-loading plugin system with remote registry |
