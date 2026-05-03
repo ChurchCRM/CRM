@@ -179,7 +179,7 @@ jobs:
           echo "zip_name=$zip_name" >> "$GITHUB_OUTPUT"
           echo "Found release asset: $zip_name"
 
-      - name: Create or update GitHub Release
+      - name: Create GitHub Release (delete and recreate if exists)
         id: release
         env:
           TAG: ${{ steps.tag.outputs.tag }}
@@ -191,21 +191,27 @@ jobs:
           set -euo pipefail
 
           if gh release view "$TAG" >/dev/null 2>&1; then
-            echo "Release $TAG already exists — updating metadata and re-uploading asset."
-            gh release edit "$TAG" \
-              --title "$TAG" \
-              --draft="$IS_DRAFT" \
-              --prerelease="$IS_PRERELEASE"
-            gh release upload "$TAG" "$ZIP_NAME" --clobber
-          else
-            echo "Creating release $TAG targeting $TARGET_COMMIT."
-            gh release create "$TAG" "$ZIP_NAME" \
-              --title "$TAG" \
-              --target "$TARGET_COMMIT" \
-              --generate-notes \
-              --draft="$IS_DRAFT" \
-              --prerelease="$IS_PRERELEASE"
+            echo "Release $TAG already exists — deleting it and recreating from scratch."
+            gh release delete "$TAG" --yes
+            echo "Waiting 2 seconds for GitHub to finalize deletion..."
+            sleep 2
           fi
+
+          # Also delete the git tag if it exists (GitHub deletes it, but ensure clean state)
+          if git rev-parse "$TAG" >/dev/null 2>&1 || gh api "repos/$GH_REPO/git/refs/tags/$TAG" >/dev/null 2>&1; then
+            echo "Git tag $TAG exists — deleting it."
+            git push origin ":$TAG" 2>/dev/null || gh api -X DELETE "repos/$GH_REPO/git/refs/tags/$TAG"
+            echo "Waiting 2 seconds for tag deletion to propagate..."
+            sleep 2
+          fi
+
+          echo "Creating fresh release $TAG targeting $TARGET_COMMIT."
+          gh release create "$TAG" "$ZIP_NAME" \
+            --title "$TAG" \
+            --target "$TARGET_COMMIT" \
+            --generate-notes \
+            --draft="$IS_DRAFT" \
+            --prerelease="$IS_PRERELEASE"
 
           release_url=$(gh release view "$TAG" --json url --jq .url)
           echo "release_url=$release_url" >> "$GITHUB_OUTPUT"
