@@ -58,6 +58,32 @@ jobs:
       - name: Run locale build
         run: npm run locale:build
       
+      - name: Verify plugin help extraction
+        if: always()
+        run: |
+          echo "=== Checking plugin help extraction ==="
+          if grep -q "plugin:holidays" locale/messages.po; then
+            echo "✅ Plugin help terms found in messages.po"
+            echo "Total plugin term entries:"
+            grep "^#\. plugin:" locale/messages.po | wc -l
+            echo ""
+            echo "Plugins extracted:"
+            grep "^#\. plugin:" locale/messages.po | sed 's/.*plugin:\([^:]*\).*/\1/' | sort -u
+          else
+            echo "❌ WARNING: No plugin help terms found in messages.po"
+            echo "Plugin extraction may have failed"
+            echo ""
+            echo "=== Diagnostic Info ==="
+            echo "messages.po file size:"
+            ls -lh locale/messages.po || echo "File not found"
+            echo ""
+            echo "First 50 lines of messages.po:"
+            head -50 locale/messages.po || echo "Cannot read file"
+            echo ""
+            echo "Searching for any 'plugin:' references:"
+            grep "plugin:" locale/messages.po || echo "No plugin references found"
+          fi
+
       - name: Stop CI Docker containers
         if: always()
         run: npm run docker:ci:down

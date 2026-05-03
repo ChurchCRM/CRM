@@ -59,7 +59,10 @@ class PluginHelpExtractor {
         for (const type of pluginTypes) {
             const typeDir = path.join(this.pluginsDir, type);
             
+            this.log('🔍', `Checking ${type} plugins directory: ${typeDir}`);
+            
             if (!fs.existsSync(typeDir)) {
+                this.log('⚠️', `${type} plugins directory does not exist: ${typeDir}`);
                 continue;
             }
 
@@ -67,14 +70,19 @@ class PluginHelpExtractor {
                 .filter(dirent => dirent.isDirectory())
                 .map(dirent => dirent.name);
 
+            this.log('📁', `Found ${plugins.length} ${type} plugins: ${plugins.join(', ')}`);
+
             for (const plugin of plugins) {
                 const helpFile = path.join(typeDir, plugin, 'help.json');
                 if (fs.existsSync(helpFile)) {
+                    this.log('✓', `Found help.json: ${plugin}`);
                     helpFiles.push({
                         path: helpFile,
                         plugin: plugin,
                         type: type
                     });
+                } else {
+                    this.log('·', `No help.json for ${plugin}`);
                 }
             }
         }
@@ -214,6 +222,11 @@ msgstr ""
             console.log(this.tempDir);
             return;
         }
+
+        this.log('🔌', `Plugin help extraction starting...`);
+        this.log('📂', `Project root: ${this.projectRoot}`);
+        this.log('📂', `Plugins directory: ${this.pluginsDir}`);
+        this.log('📂', `Temp directory: ${this.tempDir}`);
 
         this.ensureTempDir();
 
