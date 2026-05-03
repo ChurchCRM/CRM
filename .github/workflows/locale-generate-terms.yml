@@ -96,6 +96,51 @@ jobs:
             echo "Only POT-Creation-Date/PO-Revision-Date changed, skipping PR creation"
           fi
       
+      - name: Upload generated locale files
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: locale-generated-files
+          path: |
+            locale/messages.po
+            src/locale/i18n/
+          retention-days: 30
+          if-no-files-found: warn
+      
+      - name: Generate detailed diff report
+        if: always()
+        run: |
+          mkdir -p locale-diffs
+          
+          # Full diff for messages.po
+          if [ -f locale/messages.po ]; then
+            git diff locale/messages.po > locale-diffs/messages.po.diff || true
+          fi
+          
+          # Full diff for i18n JSON files
+          if [ -d src/locale/i18n ]; then
+            git diff src/locale/i18n/ > locale-diffs/i18n-files.diff || true
+          fi
+          
+          # Git status for all locale-related files
+          git status locale/ src/locale/ > locale-diffs/git-status.txt 2>&1 || true
+          
+          # List all modified files with sizes
+          find locale src/locale -type f -newer /tmp 2>/dev/null | while read f; do
+            if [ -f "$f" ]; then
+              ls -lh "$f"
+            fi
+          done > locale-diffs/file-list.txt 2>&1 || true
+      
+      - name: Upload diff reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: locale-diff-reports
+          path: locale-diffs/
+          retention-days: 30
+          if-no-files-found: warn
+      
       - name: Configure Git
         if: steps.check_changes.outputs.has_changes == 'true'
         run: |
