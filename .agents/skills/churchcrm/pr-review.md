@@ -212,7 +212,7 @@ Work through each section that applies to the changed files.
 - [ ] If endpoint changed: annotations updated
 - [ ] Named functions annotated above the `function` keyword
 - [ ] Closures: standalone `@OA\` docblock above the `$group->get(...)` call with explicit `operationId`
-- [ ] After annotation changes: `composer run openapi-public` or `openapi-private` regenerated
+- [ ] After annotation changes: `composer run openapi:public` or `openapi:private` regenerated
 
 ### Testing
 
