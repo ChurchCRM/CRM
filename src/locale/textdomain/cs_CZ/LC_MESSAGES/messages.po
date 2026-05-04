@@ -345,22 +345,6 @@ msgid "Back to Menu"
 msgstr "Zpátky do menu"
 
 #: 
-msgid "Empty Cart"
-msgstr "Prázdný košík"
-
-#: 
-msgid "Empty Cart to Group"
-msgstr "Vyprázdnit košík do skupiny"
-
-#: 
-msgid "Empty Cart to Family"
-msgstr "Vyprázdnit košík do rodiny"
-
-#: 
-msgid "Map Cart"
-msgstr "Mapa košíku"
-
-#: 
 msgid "Bulk Mail Presort"
 msgstr "Předtřídění hromadné pošty"
 
@@ -1442,26 +1426,6 @@ msgid "Group View"
 msgstr "Zobrazení skupiny"
 
 #: 
-msgid "Confirm Delete Group"
-msgstr "Potvrďte smazání skupiny"
-
-#: 
-msgid "Please confirm deletion of this group record"
-msgstr "Potvrďte smazání tohoto záznamu skupiny"
-
-#: 
-msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
-msgstr "Tím se také odstraní všechny role a údaje o specifických vlastnostech skupiny spojené s tímto záznamem skupiny."
-
-#: 
-msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
-msgstr "Veškeré členství ve skupině a její vlastnosti budou odstraněny. Samotní členové skupiny nebudou změněni."
-
-#: 
-msgid "Please select target group for members"
-msgstr "Vyberte cílovou skupinu členů"
-
-#: 
 msgid "Default Role"
 msgstr "Výchozí role"
 
@@ -1644,10 +1608,6 @@ msgstr "Skupina"
 #: 
 msgid "Default"
 msgstr "Výchozí"
-
-#: 
-msgid "Make Default"
-msgstr "Nastavit jako výchozí"
 
 #: 
 msgid "Exit"
@@ -2055,14 +2015,6 @@ msgid "Calendar Year"
 msgstr "Kalendářní rok"
 
 #: 
-msgid "User Delete Confirmation"
-msgstr "Potvrzení smazání uživatele"
-
-#: 
-msgid "Please confirm removal of user status from"
-msgstr "Potvrďte odstranění statusu uživatele u osoby"
-
-#: 
 msgid "User Editor"
 msgstr "Editor uživatelů"
 
@@ -2119,10 +2071,6 @@ msgid "Failed Logins"
 msgstr "Neúspěšná přihlášení"
 
 #: 
-msgid "You must enter the same password in both boxes"
-msgstr "Musíte zadat stejné heslo do obou polí"
-
-#: 
 msgid "Your password choice is too obvious. Please choose something else."
 msgstr "Vámi vybrané heslo je příliš zřejmé. Vyberte něco jiného."
 
@@ -2153,10 +2101,6 @@ msgstr "Nové heslo"
 #: 
 msgid "Confirm New Password"
 msgstr "Potvrďte nové heslo"
-
-#: 
-msgid "Please confirm the password reset of this user"
-msgstr "Potvrďte obnovení hesla pro tohoto uživatele"
 
 #: 
 msgid "Volunteer Opportunity Editor"
@@ -2636,14 +2580,6 @@ msgid "Are you sure you want to delete the selected"
 msgstr "Opravdu chcete smazat vybrané"
 
 #: 
-msgid "Deposit(s)"
-msgstr "Vklad(y)"
-
-#: 
-msgid "This will also delete all payments associated with this deposit"
-msgstr "Tím se také odstraní všechny platby spojené s tímto vkladem"
-
-#: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "Tento úkon NELZE vzít zpět a může mít právní důsledky!"
 
@@ -2710,10 +2646,6 @@ msgstr "True"
 #: 
 msgid "Edit Settings"
 msgstr "Upravit nastavení"
-
-#: 
-msgid "Backup Downloaded, Copy on server removed"
-msgstr "Záloha stažena, kopie na serveru odstraněna"
 
 #: 
 msgid "Functions"
@@ -2831,10 +2763,6 @@ msgstr "Zakázat specifické vlastnosti skupiny"
 #: 
 msgid "Group Properties"
 msgstr "Vlastnosti skupiny"
-
-#: 
-msgid "There was a problem retrieving the requested object"
-msgstr "Vyskytl se problém s načtením požadovaného objektu"
 
 #: 
 msgid "All"
@@ -4586,10 +4514,6 @@ msgid "Maximum upload size"
 msgstr "Maximální velikost nahrávání"
 
 #: 
-msgid "The selected file exceeds this servers maximum upload size of"
-msgstr "Vybraný soubor přesahuje maximální velikost nahrávání tohoto serveru"
-
-#: 
 msgid "Failed"
 msgstr "Selhalo"
 
@@ -4620,26 +4544,6 @@ msgstr "Byl vyžádán neplatný název konfigurace"
 #: 
 msgid "Profile Image uploaded"
 msgstr "Profilový obrázek nahrán"
-
-#: 
-msgid "payment(s)?"
-msgstr "platba(-y)?"
-
-#: 
-msgid "Confirm Deactivation"
-msgstr "Potvrďte deaktivaci"
-
-#: 
-msgid "Confirm Activation"
-msgstr "Potvrďte aktivaci"
-
-#: 
-msgid "Please confirm deactivation of family"
-msgstr "Potvrďte deaktivaci rodiny"
-
-#: 
-msgid "Please confirm activation of family"
-msgstr "Potvrďte aktivaci rodiny"
 
 #: 
 #, fuzzy
@@ -4744,14 +4648,6 @@ msgid "Include"
 msgstr "Zařadit"
 
 #: 
-msgid "View Cart"
-msgstr "Zobrazit košík"
-
-#: 
-msgid "Your Cart is Empty"
-msgstr "Košík je prázdný"
-
-#: 
 msgid "Legend"
 msgstr "Legenda"
 
@@ -4766,14 +4662,6 @@ msgstr "Zobrazuji žáky s narozeninami v"
 #: 
 msgid "Actions"
 msgstr "Akce"
-
-#: 
-msgid "Action Confirmation"
-msgstr "Potvrzení akce"
-
-#: 
-msgid "Please confirm reset failed login count"
-msgstr "Potvrďte obnovení počtu neúspěšných přihlášení"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -4912,10 +4800,6 @@ msgid "Reset your password"
 msgstr "Obnovte své heslo"
 
 #: 
-msgid "Sorry, we are unable to process your request at this point in time."
-msgstr "Je nám líto, ale v tuto chvíli nemůžeme vaši žádost zpracovat."
-
-#: 
 msgid "Kiosk Manager"
 msgstr "Správce kiosku"
 
@@ -4928,10 +4812,6 @@ msgid "Self Verification"
 msgstr "Vlastní ověření"
 
 #: 
-msgid "Check Number"
-msgstr "Kontrolní číslo"
-
-#: 
 msgid "Details"
 msgstr "Detaily"
 
@@ -4940,48 +4820,12 @@ msgid "Verification email sent"
 msgstr "Ověřovací e-mail odeslán"
 
 #: 
-msgid "Confirm Enable Group Specific Properties"
-msgstr "Potvrďte povolení specifických vlastností skupiny"
-
-#: 
-msgid "This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor."
-msgstr "Tím se vytvoří tabulka specifických vlastností skupiny pro tuto skupinu.  Potřebné vlastnosti byste pak měli přidat pomocí editoru formuláře Specifické vlastnosti skupiny."
-
-#: 
-msgid "Confirm Disable Group Specific Properties"
-msgstr "Potvrďte zakázání specifických vlastností skupiny"
-
-#: 
-msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
-msgstr "Opravdu chcete odstranit všechny osobní specifické vlastnosti skupiny? Všechny údaje o vlastnostech členů skupiny budou ztracena!"
-
-#: 
-msgid "Role Name"
-msgstr "Název role"
-
-#: 
-msgid "Sequence"
-msgstr "Posloupnost"
-
-#: 
-msgid "Do you want to delete this person?  This cannot be undone."
-msgstr "Opravdu chcete odstranit tuto osobu? Tato akce nelze vzít zpět."
-
-#: 
-msgid "Are you sure you want to unassign this property?"
-msgstr "Opravdu chcete zrušit přiřazení této vlastnosti?"
-
-#: 
 msgid "Select a family"
 msgstr "Vyberte rodinu"
 
 #: 
 msgid "Release Notes"
 msgstr "Poznámky k vydání"
-
-#: 
-msgid "Move"
-msgstr "Přesunout"
 
 #. Context: locales
 #: 
@@ -5172,18 +5016,6 @@ msgid "OK"
 msgstr "OK"
 
 #: 
-msgid "Please select target Role for members"
-msgstr "Vyberte cílovou roli pro členy"
-
-#: 
-msgid "GroupID required for role selection prompt"
-msgstr "Pro výzvu k výběru role je vyžadované ID skupiny"
-
-#: 
-msgid "Select Group and Role"
-msgstr "Vyberte skupinu a roli"
-
-#: 
 msgid "All Members"
 msgstr "Všichni členové"
 
@@ -5210,14 +5042,6 @@ msgstr "Metoda pojmenování příjemce"
 #: 
 msgid "Salutation Utility"
 msgstr "Nástroj pro oslovování"
-
-#: 
-msgid "Add A Group Name"
-msgstr "Přidat jméno skupiny"
-
-#: 
-msgid "Default Name Group"
-msgstr "Výchozí název skupiny"
 
 #: 
 msgid "Group Role"
@@ -5385,42 +5209,6 @@ msgid "Username"
 msgstr "Uživatelské jméno"
 
 #: 
-msgid "Are you sure you want to move"
-msgstr "Opravdu chcete přesunout"
-
-#: 
-msgid "Access Token"
-msgstr "Přístupový token"
-
-#: 
-msgid "New Access Token"
-msgstr "Nový přístupový token"
-
-#: 
-msgid "ICS URL"
-msgstr "ICS URL"
-
-#: 
-msgid "Foreground Color"
-msgstr "Barva popředí"
-
-#: 
-msgid "Background Color"
-msgstr "Barva pozadí"
-
-#: 
-msgid "Delete Calendar"
-msgstr "Smazat kalendář"
-
-#: 
-msgid "Invalid Entry"
-msgstr "Neplatné zadání"
-
-#: 
-msgid "Calendar Name"
-msgstr "Název kalendáře"
-
-#: 
 msgid "New Calendar"
 msgstr "Nový kalendář"
 
@@ -5487,10 +5275,6 @@ msgstr "neplatná hodnota exportu"
 #: 
 msgid "Duplicate Emails"
 msgstr "Duplicitní e-maily"
-
-#: 
-msgid "HTML URL"
-msgstr "HTML URL"
 
 #: 
 msgid "Latest People"
@@ -5566,10 +5350,6 @@ msgid "Latvia (Latvija)"
 msgstr "Lotyšsko (Latvija)"
 
 #: 
-msgid "You are about to add a new deposit without a comment"
-msgstr "Chystáte se přidat nový vklad bez komentáře"
-
-#: 
 msgid "Record"
 msgstr "Záznam"
 
@@ -5584,14 +5364,6 @@ msgstr "Vyprázdněn do Události"
 #: 
 msgid "Passed"
 msgstr "Splňuje"
-
-#: 
-msgid "Focus"
-msgstr "Zaměřit"
-
-#: 
-msgid "Unfocus"
-msgstr "Nezaměřovat"
 
 #. Context: locales
 #: 
@@ -5645,10 +5417,6 @@ msgid "People Verify Dashboard"
 msgstr "Nástěnka ověření osob"
 
 #: 
-msgid "Verification recorded"
-msgstr "Ověření zaznamenáno"
-
-#: 
 msgid "Verification URL created"
 msgstr "Vytvořená ověřovací adresa URL"
 
@@ -5667,10 +5435,6 @@ msgstr "Chyba při odesílání e-mailu(ů)"
 #: 
 msgid "Please check logs for more information"
 msgstr "Další informace naleznete v protokolech"
-
-#: 
-msgid "Verification URL"
-msgstr "Adresa URL pro ověření"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5748,10 +5512,6 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Příjmení, KřestníJméno ProstředníJméno"
 
 #: 
-msgid "Please confirm disabling 2 Factor Auth for this user"
-msgstr "Potvrďte zakázání dvoufaktorového ověření pro tohoto uživatele"
-
-#: 
 msgid "Send an email notifying users when their account has been deleted"
 msgstr "Poslat e-mail s upozorněním uživatelům, že jejich účet byl smazán."
 
@@ -5817,10 +5577,6 @@ msgid "Hebrew"
 msgstr "Hebrejština"
 
 #: 
-msgid "open rate"
-msgstr "míra otevření"
-
-#: 
 msgid "Permissions"
 msgstr "Oprávnění"
 
@@ -5845,22 +5601,6 @@ msgid "Owe"
 msgstr "Dlužíte"
 
 #: 
-msgid "Start Date"
-msgstr "Datum začátku"
-
-#: 
-msgid "End Date"
-msgstr "Datum ukončení"
-
-#: 
-msgid "Pinned Calendars"
-msgstr "Připnuté kalendáře"
-
-#: 
-msgid "This field is required"
-msgstr "Toto pole je vyžadováno"
-
-#: 
 msgid "Text"
 msgstr "Text"
 
@@ -5872,10 +5612,6 @@ msgstr "Popis události"
 #: 
 msgid "Afrikaans"
 msgstr "Afrikánština"
-
-#: 
-msgid "Loading"
-msgstr "Nahrávání"
 
 #: 
 msgid "Today's Birthdays"
@@ -5944,24 +5680,8 @@ msgid "Ukrainian"
 msgstr "Ukrajinština"
 
 #: 
-msgid "Change role"
-msgstr "Změnit roli"
-
-#: 
 msgid "Closed"
 msgstr "Zavřeno"
-
-#: 
-msgid "Delete this person?"
-msgstr "Smazat tuto osobu?"
-
-#: 
-msgid "Deposit ID"
-msgstr "ID vkladu"
-
-#: 
-msgid "Deposit Total"
-msgstr "Vklad celkem"
 
 #: 
 msgid "If that doesn't work, copy and paste the following link in your browser"
@@ -6116,144 +5836,8 @@ msgid "Loading log file..."
 msgstr "Nahrávám soubor protokolu..."
 
 #: 
-msgid "A Calendar access token has been generated and saved."
-msgstr "Byl vygenerován a uložen přístupový token kalendáře."
-
-#: 
-msgid "added"
-msgstr "vloženo"
-
-#: 
-msgid "Added"
-msgstr "Vloženo"
-
-#: 
-msgid "Added to cart successfully"
-msgstr "Úspěšně vloženo do košíku"
-
-#: 
-msgid "All members already in cart"
-msgstr "Všichni členové jsou již v košíku"
-
-#: 
-msgid "already in cart"
-msgstr "již v košíku"
-
-#: 
-msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
-msgstr "Vlastnosti kalendáře nelze načíst. V tomto kalendáři pravděpodobně chybí přístupový token nebo není správně nakonfigurován."
-
-#: 
-msgid "Cart emptied successfully"
-msgstr "Košík byl úspěšně vyprázdněn"
-
-#: 
-msgid "Cart emptied to group successfully"
-msgstr "Košík byl úspěšně vyprázdněn do skupiny"
-
-#: 
-msgid "Empty your entire cart?"
-msgstr "Vyprázdnit celý košík?"
-
-#: 
-msgid "Failed to add family to cart"
-msgstr "Nepodařilo se přidat rodinu do košíku"
-
-#: 
-msgid "Failed to add group to cart"
-msgstr "Nepodařilo se přidat skupinu do košíku"
-
-#: 
-msgid "Failed to add to cart"
-msgstr "Nepodařilo se přidání do košíku"
-
-#: 
-msgid "Failed to empty cart"
-msgstr "Nepodařilo se vyprázdnit košík"
-
-#: 
-msgid "Failed to empty cart to group"
-msgstr "Nepodařilo se vyprázdnit košík do skupiny"
-
-#: 
-msgid "Failed to remove family from cart"
-msgstr "Nepodařilo se odstranit rodinu z košíku"
-
-#: 
-msgid "Failed to remove from cart"
-msgstr "Nepodařilo se odstranění z košíku"
-
-#: 
-msgid "Failed to remove group"
-msgstr "Nepodařilo se odstranit skupinu"
-
-#: 
-msgid "Family added to cart"
-msgstr "Rodina byla přidána do košíku"
-
-#: 
 msgid "Family removed from cart"
 msgstr "Rodina byla odstraněna z košíku"
-
-#: 
-msgid "Group added to cart"
-msgstr "Skupina byla přidána do košíku"
-
-#: 
-msgid "Group removed from cart"
-msgstr "Skupina byla odstraněna z košíku"
-
-#: 
-msgid "in cart"
-msgstr "v košíku"
-
-#: 
-msgid "members. Already had"
-msgstr "členů. Již bylo"
-
-#: 
-msgid "people added to cart"
-msgstr "osob přidáno do košíku"
-
-#: 
-msgid "people already in cart"
-msgstr "osob již v košíku"
-
-#: 
-msgid "people from cart"
-msgstr "osob z košíku"
-
-#: 
-msgid "people removed from cart"
-msgstr "osob odstraněno z košíku"
-
-#: 
-msgid "Person already in cart"
-msgstr "Osoba je již v košíku"
-
-#: 
-msgid "Remove this family from cart?"
-msgstr "Odstranit tuto rodinu z košíku?"
-
-#: 
-msgid "Remove this group from cart?"
-msgstr "Odstranit tuto skupinu z košíku?"
-
-#: 
-msgid "Remove this person from cart?"
-msgstr "Odstranit tuto osobu z košíku?"
-
-#: 
-msgid "Removed from cart successfully"
-msgstr "Úspěšně odstraněno z košíku"
-
-#: 
-msgid "Yes, Empty Cart"
-msgstr "Ano, vyprázdnit košík"
-
-#: 
-msgid "Yes, Remove"
-msgstr "Ano, odstranit"
 
 #: 
 msgid "Add Group"
@@ -6262,10 +5846,6 @@ msgstr "Přidat skupinu"
 #: 
 msgid "Back to Group List"
 msgstr "Zpět na seznam skupin"
-
-#: 
-msgid "Default role updated."
-msgstr "Výchozí role aktualizována."
 
 #: 
 msgid "Edit Group"
@@ -6280,36 +5860,12 @@ msgid "Failed to add role. Please try again."
 msgstr "Přidání role se nezdařilo. Zkuste to znovu."
 
 #: 
-msgid "Failed to create group. Please try again."
-msgstr "Vytvoření skupiny se nezdařilo. Zkuste to znovu."
-
-#: 
 msgid "Failed to delete role. Please try again."
 msgstr "Odstranění role se nezdařilo. Zkuste to znovu."
 
 #: 
-msgid "Failed to load cart status."
-msgstr "Nepodařilo se načíst stav košíku."
-
-#: 
-msgid "Failed to load groups. Please refresh the page."
-msgstr "Nepodařilo se načíst skupiny. Obnovte stránku."
-
-#: 
-msgid "Failed to set default role. Please try again."
-msgstr "Nastavení výchozí role se nezdařilo. Zkuste to znovu."
-
-#: 
-msgid "Failed to update group. Please try again."
-msgstr "Aktualizace skupiny se nezdařila. Zkuste to znovu."
-
-#: 
 msgid "Failed to update properties. Please try again."
 msgstr "Aktualizace vlastností se nezdařila. Zkuste to znovu."
-
-#: 
-msgid "Failed to update role name. Please try again."
-msgstr "Aktualizace názvu role se nezdařila. Zkuste to znovu."
 
 #: 
 msgid "Leave blank to keep existing password"
@@ -6318,18 +5874,6 @@ msgstr "Ponechte prázdné, chcete-li zachovat stávající heslo"
 #: 
 msgid "Please enter a group name."
 msgstr "Prosím zadejte název skupiny."
-
-#: 
-msgid "Role added successfully."
-msgstr "Role byla úspěšně přidána."
-
-#: 
-msgid "Role deleted successfully."
-msgstr "Role byla úspěšně smazána."
-
-#: 
-msgid "Role name updated."
-msgstr "Název role aktualizován."
 
 #: 
 msgid "View Group"
@@ -6342,14 +5886,6 @@ msgstr "Dnešní události"
 #: 
 msgid "Add Family Member"
 msgstr "Přidat člena rodiny"
-
-#: 
-msgid "Address is required"
-msgstr "Adresa je vyžadována"
-
-#: 
-msgid "City is required"
-msgstr "Město je vyžadováno"
 
 #: 
 msgid "Email Address"
@@ -6368,72 +5904,20 @@ msgid "Family name is required"
 msgstr "Je vyžadován název rodiny"
 
 #: 
-msgid "Family name must be at least 2 characters"
-msgstr "Název rodiny musí mít alespoň 2 znaky"
-
-#: 
 msgid "First name"
 msgstr "Křestní jméno"
-
-#: 
-msgid "First name is required"
-msgstr "Je vyžadováno křestní jméno"
-
-#: 
-msgid "First name must be at least 2 characters"
-msgstr "Křestní jméno musí mít alespoň 2 znaky"
-
-#: 
-msgid "Home phone is required"
-msgstr "Je vyžadováno telefonní číslo domů"
 
 #: 
 msgid "Home phone number"
 msgstr "Telefonní číslo domů"
 
 #: 
-msgid "Invalid format"
-msgstr "Nesprávný formát"
-
-#: 
 msgid "Last name"
 msgstr "Příjmení"
 
 #: 
-msgid "Last name is required"
-msgstr "Je vyžadováno příjmení"
-
-#: 
-msgid "Last name must be at least 2 characters"
-msgstr "Příjmení musí mít alespoň 2 znaky"
-
-#: 
-msgid "Maximum length is"
-msgstr "Maximální délka je"
-
-#: 
-msgid "Minimum length is"
-msgstr "Minimální délka je"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Musí se jednat o platnou adresu URL začínající http:// nebo https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Musí se jednat o platnou adresu URL začínající http:// nebo https:// (např. http://localhost nebo https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Musí být platné číslo portu (např. 3306)"
-
-#: 
 msgid "Next Member"
 msgstr "Další člen"
-
-#: 
-msgid "Passwords do not match"
-msgstr "Hesla nesouhlasí"
 
 #: 
 msgid "Phone Type"
@@ -6444,40 +5928,8 @@ msgid "Phone number"
 msgstr "Telefonní číslo"
 
 #: 
-msgid "Please add at least one family member."
-msgstr "Prosím zadejte alespoň jednoho člena rodiny."
-
-#: 
-msgid "Please enter a valid URL"
-msgstr "Prosím zadejte platné URL"
-
-#: 
-msgid "Please enter a valid email address"
-msgstr "Prosím zadejte platný e-mail"
-
-#: 
-msgid "Please enter a valid email address (e.g., name@example.com)"
-msgstr "Prosím zadejte platný e-mail (např. jmeno@priklad.cz)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Prosím zadejte platné číslo"
-
-#: 
-msgid "Please enter a valid phone number"
-msgstr "Prosím zadejte platné telefonní číslo"
-
-#: 
-msgid "Please fill in all required fields correctly."
-msgstr "Prosím vyplňte řádně všechna požadovaná pole."
-
-#: 
 msgid "Previous"
 msgstr "Předchozí"
-
-#: 
-msgid "Registration Error"
-msgstr "Chyba registrace"
 
 #: 
 msgid "Role in Family"
@@ -6494,10 +5946,6 @@ msgstr "Adresa"
 #: 
 msgid "Submit Registration"
 msgstr "Odeslat registraci"
-
-#: 
-msgid "Zip code is required"
-msgstr "Je vyžadováno PSČ"
 
 #: 
 msgid "A new password has been generated and sent to your email address."
@@ -6520,10 +5968,6 @@ msgid "Back to login"
 msgstr "Zpět k přihlášení"
 
 #: 
-msgid "Backup Skipped"
-msgstr "Záloha přeskočena"
-
-#: 
 msgid "Complete"
 msgstr "Hotovo"
 
@@ -6536,28 +5980,8 @@ msgid "Download & Apply"
 msgstr "Stáhnout a provést aktualizaci"
 
 #: 
-msgid "Downloaded"
-msgstr "Staženo"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Stahování nejnovější verze z GitHubu..."
-
-#: 
 msgid "Enter your login name and we will email you a link to reset your password."
 msgstr "Zadejte své přihlašovací jméno a my vám pošleme e-mail s odkazem pro resetování hesla."
-
-#: 
-msgid "Failed to create backup."
-msgstr "Vytvoření zálohy se nezdařilo."
-
-#: 
-msgid "Failed to download update package."
-msgstr "Stažení aktualizačního balíčku se nezdařilo."
-
-#: 
-msgid "Failed to refresh upgrade information from GitHub."
-msgstr "Nepodařilo se obnovit informace o aktualizaci z GitHubu."
 
 #: 
 msgid "File Name"
@@ -6566,10 +5990,6 @@ msgstr "Název souboru"
 #: 
 msgid "Go to Login"
 msgstr "Přejít na přihlášení"
-
-#: 
-msgid "Language updated to"
-msgstr "Jazyk aktualizován na"
 
 #: 
 msgid "Login Name is required"
@@ -6600,56 +6020,24 @@ msgid "Request Password Reset"
 msgstr "Žádost o obnovu hesla"
 
 #: 
-msgid "Retry Download"
-msgstr "Zkusit stahování znovu"
-
-#: 
 msgid "Send Reset Email"
 msgstr "Odeslat e-mail pro obnovu hesla"
-
-#: 
-msgid "Setting updated successfully"
-msgstr "Nastavení bylo úspěšně aktualizováno"
 
 #: 
 msgid "System Upgrade Wizard"
 msgstr "Průvodce aktualizací systému"
 
 #: 
-msgid "System upgrade completed successfully!"
-msgstr "Aktualizace systému byla úspěšně dokončena!"
-
-#: 
 msgid "This may take several minutes."
 msgstr "Může to trvat několik minut."
-
-#: 
-msgid "Update package downloaded successfully."
-msgstr "Aktualizační balíček byl úspěšně stažen."
 
 #: 
 msgid "Upgrade Complete!"
 msgstr "Aktualizace dokončena!"
 
 #: 
-msgid "Upgrade failed."
-msgstr "Aktualizace se nezdařila."
-
-#: 
-msgid "Upgrade failed. Please check the logs."
-msgstr "Aktualizace se nezdařila. Zkontrolujte protokoly."
-
-#: 
 msgid "Upgrade information refreshed successfully"
 msgstr "Informace o aktualizaci byly úspěšně obnoveny"
-
-#: 
-msgid "Upgrade information refreshed. Reloading page..."
-msgstr "Informace o aktualizaci byly obnoveny. Načítání stránky..."
-
-#: 
-msgid "Warnings"
-msgstr "Chyby"
 
 #: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
@@ -6712,22 +6100,6 @@ msgid "Delete Selected"
 msgstr "Odstranit vybrané"
 
 #: 
-msgid "Deposit saved successfully"
-msgstr "Vklad úspěšně uložen"
-
-#: 
-msgid "Error deleting payments"
-msgstr "Chyba při odstraňování plateb"
-
-#: 
-msgid "Error loading payments"
-msgstr "Chyba při načítání plateb"
-
-#: 
-msgid "Error saving deposit"
-msgstr "Chyba při ukládání vkladu"
-
-#: 
 msgid "Funds"
 msgstr "Fondy"
 
@@ -6744,32 +6116,12 @@ msgid "No Checks"
 msgstr "Bez šeků"
 
 #: 
-msgid "No payments yet. Click \"Add Payment\" to get started."
-msgstr "Zatím žádné platby. Klikněte na „Přidat platbu“."
-
-#: 
 msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
 msgstr "Neodpočitatelná částka přesahuje maximální povolenou hodnotu (999999,99)."
 
 #: 
 msgid "Payments"
 msgstr "Platby"
-
-#: 
-msgid "Payments deleted successfully"
-msgstr "Platby byly úspěšně smazány"
-
-#: 
-msgid "Please select a date"
-msgstr "Vyberte datum"
-
-#: 
-msgid "Please select rows to delete"
-msgstr "Vyberte řádky, které chcete smazat"
-
-#: 
-msgid "Saving..."
-msgstr "Ukládám..."
 
 #: 
 msgid "This action cannot be undone."
@@ -6797,10 +6149,6 @@ msgid "Base URL"
 msgstr "Základní URL"
 
 #: 
-msgid "Copy"
-msgstr "Kopírovat"
-
-#: 
 msgid "Debug Info"
 msgstr "Informace o ladění"
 
@@ -6823,18 +6171,6 @@ msgstr "IP adresa"
 #: 
 msgid "Images Root"
 msgstr "Kořen obrázků"
-
-#: 
-msgid "Import Demo Data"
-msgstr "Importovat ukázková data"
-
-#: 
-msgid "Include events and calendars"
-msgstr "Zahrnout události a kalendáře"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "Zahrnout finanční údaje (darované prostředky, přísliby)"
 
 #: 
 msgid "Invalid API key"
@@ -6869,40 +6205,12 @@ msgid "An error occurred during demo data import"
 msgstr "Při importu ukázkových dat došlo k chybě"
 
 #: 
-msgid "Demo data imported successfully"
-msgstr "Ukázková data byla úspěšně importována"
-
-#: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "Zahrnout třídy nedělky a zápisy"
-
-#: 
-msgid "Need to remove this data later?"
-msgstr "Potřebujete tyto údaje později odstranit?"
-
-#: 
 msgid "No Payments on this Deposit"
 msgstr "Žádné platby na tomto vkladu"
 
 #: 
-msgid "No payments on this deposit"
-msgstr "Žádné platby na tomto vkladu"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "Zahrnout volitelná data"
-
-#: 
 msgid "Skipped"
 msgstr "Přeskočeno"
-
-#: 
-msgid "Unknown error"
-msgstr "Neznámá chyba"
-
-#: 
-msgid "deposit(s) with no payments"
-msgstr "vklad(y) bez plateb"
 
 #: 
 msgid "%d event in %s"
@@ -7148,16 +6456,8 @@ msgid "Backup Type"
 msgstr "Typ zálohy"
 
 #: 
-msgid "Backup complete! Click below to download."
-msgstr "Zálohování dokončeno! Klikněte níže pro stažení."
-
-#: 
 msgid "Backup completed successfully!"
 msgstr "Zálohování bylo úspěšně dokončeno!"
-
-#: 
-msgid "Backup downloaded. Server copy removed."
-msgstr "Záloha stažena. Kopie ze serveru odstraněna."
 
 #: 
 msgid "Backup failed. Please try again."
@@ -7256,10 +6556,6 @@ msgid "Force Re-install"
 msgstr "Vynútit přeinstalování"
 
 #: 
-msgid "Force re-install initiated. Please backup your database before applying."
-msgstr "Byla zahájena vynucená reinstalace. Před provedením této operace si prosím zálohujte databázi."
-
-#: 
 msgid "Full Backup"
 msgstr "Úplná záloha"
 
@@ -7340,10 +6636,6 @@ msgid "Please check the backup file and try again."
 msgstr "Zkontrolujte záložní soubor a zkuste to znovu."
 
 #: 
-msgid "Please select a backup file to restore"
-msgstr "Vyberte záložní soubor, který chcete obnovit."
-
-#: 
 msgid "Redirecting in"
 msgstr "Přesměrování v"
 
@@ -7370,10 +6662,6 @@ msgstr "Stav obnovení"
 #: 
 msgid "Restore failed."
 msgstr "Obnovení se nezdařilo."
-
-#: 
-msgid "Restore failed. Please check the backup file and try again."
-msgstr "Obnovení se nezdařilo. Zkontrolujte záložní soubor a zkuste to znovu."
 
 #: 
 msgid "Restore in progress, please wait..."
@@ -7492,10 +6780,6 @@ msgid "Advanced Operations"
 msgstr "Rozšířené operace"
 
 #: 
-msgid "All System Settings"
-msgstr "Všechna nastavení systému"
-
-#: 
 msgid "An unexpected error occurred. Please contact your administrator."
 msgstr "Došlo k neočekávané chybě. Obraťte se na správce."
 
@@ -7550,10 +6834,6 @@ msgstr "Uzavřené vklady:"
 #: 
 msgid "Closed vs Total"
 msgstr "Uzavřené vs Celkově"
-
-#: 
-msgid "Coming soon"
-msgstr "Bude brzy"
 
 #: 
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
@@ -7700,14 +6980,6 @@ msgid "Finance Dashboard"
 msgstr "Finanční prostřed"
 
 #: 
-msgid "Force Import"
-msgstr "Vynutit import"
-
-#: 
-msgid "Force Import will retry and may create duplicate data."
-msgstr "Funkce Force Import (Vynutit import) se pokusí o opakování a může vytvořit duplicitní data."
-
-#: 
 msgid "Fund Allocation"
 msgstr "Alokace fondů"
 
@@ -7746,10 +7018,6 @@ msgstr "ID"
 #: 
 msgid "Identify members who have not made any donations within a date range."
 msgstr "Identifikovat členy, kteří v daném časovém období neposkytli žádné dary."
-
-#: 
-msgid "Import failed"
-msgstr "Import se nezdanil"
 
 #: 
 msgid "Jan"
@@ -7920,10 +7188,6 @@ msgid "Sep"
 msgstr "zář"
 
 #: 
-msgid "Server error"
-msgstr "Chyba serveru"
-
-#: 
 msgid "Settings"
 msgstr "Nastavení"
 
@@ -7974,10 +7238,6 @@ msgstr "Danění výkazy (Zpráva o dárcové)"
 #: 
 msgid "Tax Year Reporting Checklist"
 msgstr "Kontrolní seznam zprávy daněního roku"
-
-#: 
-msgid "Today"
-msgstr "Dnes"
 
 #: 
 msgid "Total"
@@ -8048,24 +7308,8 @@ msgid "active"
 msgstr "aktivní"
 
 #: 
-msgid "ago"
-msgstr "zpět"
-
-#: 
-msgid "day"
-msgstr "den"
-
-#: 
-msgid "days"
-msgstr "dní"
-
-#: 
 msgid "found"
 msgstr "nalezeno"
-
-#: 
-msgid "in"
-msgstr "v"
 
 #: 
 msgid "issues"
@@ -8074,10 +7318,6 @@ msgstr "problémy"
 #: 
 msgid "open"
 msgstr "otevřeno"
-
-#: 
-msgid "years"
-msgstr "roky"
 
 #: 
 msgid "(Enter state/province for countries without predefined states)"
@@ -8192,10 +7432,6 @@ msgid "URL must start with http:// or https://"
 msgstr "URL musí začínat http:// nebo https://"
 
 #: 
-msgid "Unable to load state list. Please check your network connection or try again later."
-msgstr "Nelze načíst seznam stavů. Zkontrolujte připojení k síti nebo to zkuste znovu později."
-
-#: 
 msgid "Update it to a valid URL that:"
 msgstr "Aktualizujte na platnou adresu URL, která:"
 
@@ -8248,10 +7484,6 @@ msgid "Contact & Personal Info"
 msgstr "Kontaktní a osobní údaje"
 
 #: 
-msgid "Copied!"
-msgstr "Zkopírováno!"
-
-#: 
 msgid "Edited"
 msgstr "Upraveno"
 
@@ -8260,16 +7492,8 @@ msgid "Email PDF"
 msgstr "E-mail PDF"
 
 #: 
-msgid "Failed to copy URL"
-msgstr "Ne podstoupilo se zkopité URL"
-
-#: 
 msgid "Newsletter"
 msgstr "Zprávy ze sboru"
-
-#: 
-msgid "Open in New Tab"
-msgstr "Otevřít v nové záložce"
 
 #: 
 msgid "Personal"
@@ -8288,16 +7512,8 @@ msgid "Provide any corrections or additional information here..."
 msgstr "Zde uveďte případné opravy nebo doplňující informace..."
 
 #: 
-msgid "Remove Property"
-msgstr "Odebrat vlastnost"
-
-#: 
 msgid "Select Opportunities"
 msgstr "Vyberte přílĕitosti"
-
-#: 
-msgid "Share this URL with family members to verify their information"
-msgstr "Sdílejte tuto URL adresu s členy rodiny, abyste ověřili jejich údaje."
 
 #: 
 msgid "Submit Verification"
@@ -8464,24 +7680,12 @@ msgid "total"
 msgstr "celkem"
 
 #: 
-msgid "Code incomplete"
-msgstr "Nekompletní kód"
-
-#: 
-msgid "Code is invalid"
-msgstr "Kód není platný"
-
-#: 
 msgid "Encryption key for storing 2FA secret keys in the database"
 msgstr "Šifrovací klíč pro ukládání tajných klíčů 2FA v databázi"
 
 #: 
 msgid "Two-Factor Authentication"
 msgstr "Dvoufaktorová autentizace"
-
-#: 
-msgid "Validation pending"
-msgstr "Očekává se ověření"
 
 #: 
 msgid "%d Person added to the Cart."
@@ -8603,14 +7807,6 @@ msgstr "Varování:"
 #: 
 msgid "Yes, delete this Opportunity"
 msgstr "Ano, odstranit tuto příležitost"
-
-#: 
-msgid "Fund(s)"
-msgstr "Fond(y)"
-
-#: 
-msgid "Password reset for"
-msgstr "Resetování hesla pro"
 
 #. Context: locales
 #: 
@@ -8779,10 +7975,6 @@ msgstr "ze slibů"
 #: 
 msgid "records"
 msgstr "záznamy"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Musí začínat / pokud není prázdné; bez koncového lomítka. Povolena jsou pouze písmena, čísla, podtržítko, pomlčka, tečka a /."
 
 #: 
 msgid "%d person"
@@ -9011,10 +8203,6 @@ msgid "Add Link"
 msgstr "Přidat odkaz"
 
 #: 
-msgid "Add an extra layer of security to your account"
-msgstr "Přidejte ke svému účtu další vrstvu zabezpečení"
-
-#: 
 msgid "Add custom external links to the navigation menu."
 msgstr "Přidejte vlastní externí odkazy do navigační nabídky."
 
@@ -9025,10 +8213,6 @@ msgstr "Povolit certifikáty s vlastním podpisem"
 #: 
 msgid "An error occurred processing the plugin request"
 msgstr "Při zpracování požadavku pluginu došlo k chybě"
-
-#: 
-msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
-msgstr "Opravdu chcete zakázat dvoufaktorové ověřování? Váš účet bude méně zabezpečen."
 
 #: 
 msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
@@ -9071,28 +8255,12 @@ msgid "Backup to WebDAV Now"
 msgstr "Zálohovat nyní na WebDAV"
 
 #: 
-msgid "Before You Start"
-msgstr "Než začnete"
-
-#: 
-msgid "Browser language preference detected"
-msgstr "Zjištěna jazyková preference prohlížeče"
-
-#: 
 msgid "CRM Members Not Subscribed"
 msgstr "Členové CRM bez předplatného"
 
 #: 
 msgid "Campaigns Sent"
 msgstr "Odeslané kampaně"
-
-#: 
-msgid "Can't scan?"
-msgstr "Nelze skenovat?"
-
-#: 
-msgid "Change Your Locale"
-msgstr "Změnit jazykové nastavení"
 
 #: 
 msgid "ChurchCRM supports a plugin architecture for extending functionality."
@@ -9133,10 +8301,6 @@ msgstr "Nakonfigurujte tento plugin pro automatické zálohování databáze Chu
 #: 
 msgid "Configured"
 msgstr "Nakonfigurováno"
-
-#: 
-msgid "Confirm with a code from your authenticator app"
-msgstr "Potvrďte kódem z vaší ověřovací aplikace"
 
 #: 
 msgid "Connected"
@@ -9199,24 +8363,12 @@ msgid "Disable Plugin"
 msgstr "Zakázat plugin"
 
 #: 
-msgid "Disable Two-Factor Authentication"
-msgstr "Zakázat dvoufaktorové ověřování"
-
-#: 
 msgid "Dismiss"
 msgstr "Zavřít"
 
 #: 
-msgid "Done"
-msgstr "Hotovo"
-
-#: 
 msgid "Each plugin requires a"
 msgstr "Každý plugin vyžaduje"
-
-#: 
-msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
-msgstr "Při každém přihlášení budete muset potvrdit kódem z vaší ověřovací aplikace"
 
 #: 
 msgid "Email Addresses"
@@ -9235,10 +8387,6 @@ msgid "Enable Plugin"
 msgstr "Povolit plugin"
 
 #: 
-msgid "Enable Two-Factor Authentication"
-msgstr "Povolit dvoufaktorové ověřování"
-
-#: 
 msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
 msgstr "Povolte toto pouze pro servery v lokální síti s SSL certifikáty s vlastním podpisem. Zakáže ověřování certifikátů."
 
@@ -9249,10 +8397,6 @@ msgstr "URL endpointu"
 #: 
 msgid "Enter the 6-digit code from your authenticator app"
 msgstr "Zadejte 6místný kód z vaší ověřovací aplikace"
-
-#: 
-msgid "Enter your username and password as usual"
-msgstr "Zadejte uživatelské jméno a heslo jako obvykle"
 
 #: 
 msgid "External Backup"
@@ -9327,20 +8471,12 @@ msgid "GA4 Measurement ID"
 msgstr "ID měření GA4"
 
 #: 
-msgid "Generate new code"
-msgstr "Generovat nový kód"
-
-#: 
 msgid "Get Started"
 msgstr "Začít"
 
 #: 
 msgid "Get your API key from MailChimp: Account Settings > Extras > API Keys"
 msgstr "Získejte svůj API klíč z MailChimp: Nastavení účtu > Doplňky > API klíče"
-
-#: 
-msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
-msgstr "Mějte připravenou ověřovací aplikaci (Google Authenticator, Microsoft Authenticator, Authy atd.)"
 
 #: 
 msgid "Help"
@@ -9353,10 +8489,6 @@ msgstr "Id"
 #: 
 msgid "Image shown when no Gravatar exists for the email address"
 msgstr "Obrázek zobrazený, pokud pro e-mailovou adresu neexistuje Gravatar"
-
-#: 
-msgid "Important"
-msgstr "Důležité"
 
 #: 
 msgid "Invalid code. Please try again."
@@ -9413,10 +8545,6 @@ msgstr "Odkaz musí začínat http:// nebo https://"
 #: 
 msgid "Link not found"
 msgstr "Odkaz nebyl nalezen"
-
-#: 
-msgid "Loading recovery codes"
-msgstr "Načítání záložních kódů"
 
 #: 
 msgid "MailChimp API Key"
@@ -9500,16 +8628,8 @@ msgid "Not in CRM"
 msgstr "Není v CRM"
 
 #: 
-msgid "One-Time Code"
-msgstr "Jednorázový kód"
-
-#: 
 msgid "Open MailChimp"
 msgstr "Otevřít MailChimp"
-
-#: 
-msgid "Open your authenticator app and scan this QR code"
-msgstr "Otevřete ověřovací aplikaci a naskenujte tento QR kód"
 
 #: 
 msgid "OpenLP Server URL"
@@ -9538,10 +8658,6 @@ msgstr "Prosím nakonfigurujte váš API klíč MailChimp pro použití této in
 #: 
 msgid "Please enter a link name (2-50 characters)"
 msgstr "Zadejte prosím název odkazu (2–50 znaků)"
-
-#: 
-msgid "Please try again"
-msgstr "Zkuste to prosím znovu"
 
 #: 
 msgid "Plugin Development"
@@ -9592,44 +8708,16 @@ msgid "Print"
 msgstr "Tisk"
 
 #: 
-msgid "Recovery Codes"
-msgstr "Záložní kódy"
-
-#: 
 msgid "Remote backup failed. Check server logs for details."
 msgstr "Vzdálená záloha selhala. Pro podrobnosti zkontrolujte protokoly serveru."
-
-#: 
-msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
-msgstr "Uložte tyto záložní kódy na bezpečné místo. Můžete je použít pro přístup k účtu, pokud ztratíte přístup k aplikaci autentizátoru."
-
-#: 
-msgid "Scan QR Code"
-msgstr "Naskenujte QR kód"
-
-#: 
-msgid "Secure"
-msgstr "Zabezpečeno"
-
-#: 
-msgid "Set Up Authenticator"
-msgstr "Nastavit autentizátor"
 
 #: 
 msgid "Settings reset successfully"
 msgstr "Nastavení bylo úspěšně resetováno"
 
 #: 
-msgid "Setup Complete"
-msgstr "Nastavení dokončeno"
-
-#: 
 msgid "Shipped with ChurchCRM."
 msgstr "Dodáváno s ChurchCRM."
-
-#: 
-msgid "Sign In"
-msgstr "Přihlásit se"
 
 #: 
 msgid "Some settings could not be reset"
@@ -9668,10 +8756,6 @@ msgid "Third-party extensions."
 msgstr "Rozšíření třetích stran."
 
 #: 
-msgid "This will replace any previously enrolled 2FA methods"
-msgstr "Toto nahradí všechny dříve zaregistrované metody 2FA"
-
-#: 
 msgid "Total Campaigns"
 msgstr "Celkový počet kampaní"
 
@@ -9680,24 +8764,8 @@ msgid "Total Subscribers"
 msgstr "Celkový počet odběratelů"
 
 #: 
-msgid "Two Factor Enrollment Error"
-msgstr "Chyba registrace dvoufázového ověření"
-
-#: 
-msgid "Two-factor authentication has been disabled"
-msgstr "Dvoufázové ověření bylo zakázáno"
-
-#: 
-msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
-msgstr "Dvoufázové ověření je jedním z nejlepších způsobů ochrany účtu. Důrazně doporučujeme ponechat ho povolené."
-
-#: 
 msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
 msgstr "URL vašeho serveru OpenLP (např. http://192.168.1.100:4316)"
-
-#: 
-msgid "Unable to load"
-msgstr "Nelze načíst"
 
 #: 
 msgid "Unsubscribed"
@@ -9718,14 +8786,6 @@ msgstr "Hodnota je nastavena – ponechte prázdné pro zachování aktuální"
 #: 
 msgid "Verify & Sign In"
 msgstr "Ověřit a přihlásit"
-
-#: 
-msgid "Verify Code"
-msgstr "Ověřit kód"
-
-#: 
-msgid "Verifying"
-msgstr "Ověřuji"
 
 #: 
 msgid "Vonage API Key"
@@ -9760,40 +8820,12 @@ msgid "WebDAV username is required."
 msgstr "Uživatelské jméno WebDAV je povinné."
 
 #: 
-msgid "You can also use backup recovery codes if you lose access to your app"
-msgstr "Pokud ztratíte přístup k aplikaci, můžete také použít záložní kódy pro obnovení"
-
-#: 
-msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
-msgstr "Nyní můžete pro přihlášení použít aplikaci autentizátoru. Každý kód je platný 30 sekund."
-
-#: 
-msgid "You'll receive backup codes that can be used if you lose access to your app"
-msgstr "Obdržíte záložní kódy, které lze použít, pokud ztratíte přístup k aplikaci"
-
-#: 
 msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
 msgstr "Vaše GA4 ID měření (G-XXXXXXXXXX)"
 
 #: 
 msgid "Your MailChimp account does not have any audiences (lists) configured."
 msgstr "Váš účet MailChimp nemá nakonfigurovány žádné audience (seznamy)."
-
-#: 
-msgid "Your account is now protected"
-msgstr "Váš účet je nyní chráněn"
-
-#: 
-msgid "Your account is protected"
-msgstr "Váš účet je chráněn"
-
-#: 
-msgid "Your authenticator app has been successfully enrolled"
-msgstr "Vaše aplikace autentizátoru byla úspěšně zaregistrována"
-
-#: 
-msgid "Your browser language preference differs from your ChurchCRM locale"
-msgstr "Jazyková předvolba vašeho prohlížeče se liší od nastavení jazyka ChurchCRM"
 
 #: 
 msgid "e.g., Church Website"
@@ -10012,10 +9044,6 @@ msgid "2FA"
 msgstr "2FA"
 
 #: 
-msgid "Leave blank to keep existing"
-msgstr "Nechte prázdné pro zachování stávající hodnoty"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Vyžadovat, aby se všichni uživatelé přihlásili k dvoufaktorovému ověřování"
 
@@ -10120,10 +9148,6 @@ msgid "Save Church Information"
 msgstr "Uložit informace o sboru"
 
 #: 
-msgid "Search or select..."
-msgstr "Vyhledat nebo vybrat..."
-
-#: 
 msgid "State is required."
 msgstr "Kraj je povinný."
 
@@ -10166,14 +9190,6 @@ msgstr "Webová stránka"
 #: 
 msgid "ZIP code is required."
 msgstr "PSČ je povinné."
-
-#: 
-msgid "— Select Country —"
-msgstr "— Vyberte zemi —"
-
-#: 
-msgid "— Select State —"
-msgstr "— Vyberte kraj —"
 
 #: 
 msgid "Address Status"
@@ -10387,10 +9403,6 @@ msgid "Age Distribution"
 msgstr "Věkové rozložení"
 
 #: 
-msgid "All Roles"
-msgstr "Všechny role"
-
-#: 
 msgid "All Time"
 msgstr "Za celou dobu"
 
@@ -10423,20 +9435,8 @@ msgid "An unexpected error occurred."
 msgstr "Došlo k neočekávané chybě."
 
 #: 
-msgid "Applied preset"
-msgstr "Použitá předvolba"
-
-#: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Opravdu chcete smazat tuto sbírku?"
-
-#: 
 msgid "Are you sure you want to delete this fundraiser?"
 msgstr "Opravdu chcete smazat tuto benefiční akci?"
-
-#: 
-msgid "Are you sure you want to remove"
-msgstr "Opravdu chcete odebrat"
 
 #: 
 msgid "Assign and manage donation envelope numbers"
@@ -10469,10 +9469,6 @@ msgstr "Ověřovací kód"
 #: 
 msgid "Auto-mapped"
 msgstr "Automaticky přiřazeno"
-
-#: 
-msgid "BCC All"
-msgstr "Skrytá kopie všem"
 
 #: 
 msgid "Back to Admin Dashboard"
@@ -10587,10 +9583,6 @@ msgid "Clear all items from cart"
 msgstr "Vymazat všechny položky z výběru"
 
 #: 
-msgid "Click Save to apply."
-msgstr "Klikněte na Uložit pro použití."
-
-#: 
 msgid "Click to upload photo"
 msgstr "Klikněte pro nahrání fotografie"
 
@@ -10641,14 +9633,6 @@ msgstr "Převést jednotlivé záznamy na rodinné jednotky"
 #: 
 msgid "Convert to Family"
 msgstr "Převést na rodinu"
-
-#: 
-msgid "Copied"
-msgstr "Zkopírováno"
-
-#: 
-msgid "Copy Members to Group"
-msgstr "Kopírovat členy do skupiny"
 
 #: 
 msgid "Copy to Group"
@@ -10737,10 +9721,6 @@ msgstr "Smazat závazek"
 #: 
 msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
 msgstr "Smazáním této vlastnosti budou také odstraněna všechna její přiřazení ze záznamů osob, rodin nebo skupin."
-
-#: 
-msgid "Deposit Value"
-msgstr "Hodnota sbírky"
 
 #: 
 msgid "Describe the issue"
@@ -10915,22 +9895,6 @@ msgid "FY %s"
 msgstr "RR %s"
 
 #: 
-msgid "Failed to add members to cart. Please try again."
-msgstr "Nepodařilo se přidat členy do výběru. Zkuste to prosím znovu."
-
-#: 
-msgid "Failed to delete class. Please try again."
-msgstr "Nepodařilo se smazat třídu. Zkuste to prosím znovu."
-
-#: 
-msgid "Failed to delete group. Please try again."
-msgstr "Nepodařilo se smazat skupinu. Zkuste to prosím znovu."
-
-#: 
-msgid "Failed to remove from class. Please try again."
-msgstr "Nepodařilo se odebrat z třídy. Zkuste to prosím znovu."
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "Rodiny sdílejí adresu a telefonní číslo."
 
@@ -11027,10 +9991,6 @@ msgid "Get Your Data Into ChurchCRM"
 msgstr "Importujte svá data do ChurchCRM"
 
 #: 
-msgid "Go to homepage"
-msgstr "Přejít na úvodní stránku"
-
-#: 
 msgid "Great choice! Here's how to add your church members."
 msgstr "Skvělá volba! Zde je postup pro přidání členů sboru."
 
@@ -11043,20 +10003,12 @@ msgid "Group Reports"
 msgstr "Sestavy skupin"
 
 #: 
-msgid "Group deleted successfully."
-msgstr "Skupina byla úspěšně smazána."
-
-#: 
 msgid "Have Existing Data?"
 msgstr "Máte existující data?"
 
 #: 
 msgid "If you have many records in a spreadsheet, the CSV import may be faster than entering data manually."
 msgstr "Pokud máte mnoho záznamů v tabulce, CSV import může být rychlejší než ruční zadávání dat."
-
-#: 
-msgid "Ignored"
-msgstr "Ignorováno"
 
 #: 
 msgid "Import Another File"
@@ -11073,10 +10025,6 @@ msgstr "Import dokončen"
 #: 
 msgid "Import contacts from your MailChimp audiences"
 msgstr "Importovat kontakty z vašich MailChimp seznamů"
-
-#: 
-msgid "Import failed. Please try again."
-msgstr "Import se nezdařil. Zkuste to prosím znovu."
 
 #: 
 msgid "Import failed: "
@@ -11101,10 +10049,6 @@ msgstr "Importovat, obnovit nebo zadat ručně"
 #: 
 msgid "Import, restore, or manually enter your congregation"
 msgstr "Importovat, obnovit nebo ručně zadat váš sbor"
-
-#: 
-msgid "Importing..."
-msgstr "Importování..."
 
 #: 
 msgid "Include in Email Export"
@@ -11251,10 +10195,6 @@ msgid "Manage your personal preferences and account settings"
 msgstr "Spravovat osobní předvolby a nastavení účtu"
 
 #: 
-msgid "Manual"
-msgstr "Manuální"
-
-#: 
 msgid "Map cart items"
 msgstr "Zobrazit položky výběru na mapě"
 
@@ -11275,10 +10215,6 @@ msgid "Member Roles"
 msgstr "Role členů"
 
 #: 
-msgid "Members added to cart."
-msgstr "Členové přidáni do výběru."
-
-#: 
 msgid "Memberships"
 msgstr "Členství"
 
@@ -11289,14 +10225,6 @@ msgstr "Minimální"
 #: 
 msgid "Modify family roles for group members"
 msgstr "Upravit rodinné role pro členy skupiny"
-
-#: 
-msgid "Move Members"
-msgstr "Přesunout členy"
-
-#: 
-msgid "Move Members to Group"
-msgstr "Přesunout členy do skupiny"
 
 #: 
 msgid "Move to Group"
@@ -11335,32 +10263,8 @@ msgid "New Person"
 msgstr "Nová osoba"
 
 #: 
-msgid "No Anniversaries"
-msgstr "Žádná výročí"
-
-#: 
-msgid "No Birthdays"
-msgstr "Žádné narozeniny"
-
-#: 
 msgid "No Check-ins"
 msgstr "Žádné registrace účasti"
-
-#: 
-msgid "No Deposits"
-msgstr "Žádné sbírky"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "Žádná výročí za posledních nebo příštích 7 dní"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "Žádné narozeniny za posledních nebo příštích 7 dní"
-
-#: 
-msgid "No deposit data available yet"
-msgstr "Zatím nejsou k dispozici žádná data o sbírkách"
 
 #: 
 msgid "No description set."
@@ -11393,10 +10297,6 @@ msgstr "Žádné výsledky pro \"%s\". Zkuste jiný hledaný výraz."
 #: 
 msgid "No member properties defined."
 msgstr "Nejsou definovány žádné vlastnosti členů."
-
-#: 
-msgid "No members found for this role."
-msgstr "Pro tuto roli nebyli nalezeni žádní členové."
 
 #: 
 msgid "No people found"
@@ -11481,10 +10381,6 @@ msgid "People by Classification"
 msgstr "Osoby podle klasifikace"
 
 #: 
-msgid "Person removed from class."
-msgstr "Osoba byla odebrána z třídy."
-
-#: 
 msgid "Photo"
 msgstr "Fotografie"
 
@@ -11499,14 +10395,6 @@ msgstr "Vyberte cestu pro začátek"
 #: 
 msgid "Please check everything looks right before submitting."
 msgstr "Před odesláním prosím zkontrolujte, že je vše v pořádku."
-
-#: 
-msgid "Please map at least one column before importing"
-msgstr "Před importem prosím přiřaďte alespoň jeden sloupec"
-
-#: 
-msgid "Please select a CSV file"
-msgstr "Vyberte prosím soubor CSV"
 
 #: 
 msgid "Please try requesting a new password reset link or contact support if you continue to experience issues."
@@ -11553,10 +10441,6 @@ msgid "Property not found."
 msgstr "Vlastnost nebyla nalezena."
 
 #: 
-msgid "Quick Setup"
-msgstr "Rychlé nastavení"
-
-#: 
 msgid "Quick Tips"
 msgstr "Rychlé tipy"
 
@@ -11587,10 +10471,6 @@ msgstr "Zaznamenat důvod návštěvy kostela"
 #: 
 msgid "Register Your Family"
 msgstr "Zaregistrujte svou rodinu"
-
-#: 
-msgid "Register another family"
-msgstr "Zaregistrovat další rodinu"
 
 #: 
 msgid "Remove all from Cart"
@@ -11637,14 +10517,6 @@ msgid "Review and clean up files not associated with any record"
 msgstr "Zkontrolovat a vyčistit soubory nepřiřazené k žádnému záznamu"
 
 #: 
-msgid "Role not found."
-msgstr "Role nebyla nalezena."
-
-#: 
-msgid "Roles"
-msgstr "Role"
-
-#: 
 msgid "Run"
 msgstr "Spustit"
 
@@ -11667,10 +10539,6 @@ msgstr "Vyhledávejte mezi osobami, rodinami, skupinami, adresami a dalšími."
 #: 
 msgid "Search and view deposit slip records"
 msgstr "Vyhledávat a zobrazit záznamy o sbírkách"
-
-#: 
-msgid "Search groups..."
-msgstr "Hledat skupiny..."
 
 #: 
 msgid "Search people, families, groups…"
@@ -11707,10 +10575,6 @@ msgstr "Odeslat e-mail rodinám"
 #: 
 msgid "Server Error"
 msgstr "Chyba serveru"
-
-#: 
-msgid "Server returned an unexpected response. Please try again."
-msgstr "Server vrátil neočekávanou odpověď. Zkuste to prosím znovu."
 
 #: 
 msgid "Set Permission True to give new users the ability to change their current value."
@@ -11787,10 +10651,6 @@ msgstr "Krok 1 — Nahrát CSV soubor"
 #: 
 msgid "Step 2 — Map Columns"
 msgstr "Krok 2 — Přiřadit sloupce"
-
-#: 
-msgid "Submitting..."
-msgstr "Odesílání..."
 
 #: 
 msgid "Supports backups from ChurchCRM and ChurchInfo."
@@ -11873,10 +10733,6 @@ msgid "Upload failed."
 msgstr "Nahrávání se nezdařilo."
 
 #: 
-msgid "Upload failed. Please check the file and try again."
-msgstr "Nahrávání se nezdařilo. Zkontrolujte soubor a zkuste to znovu."
-
-#: 
 msgid "Upload session expired. Please upload the file again."
 msgstr "Relace nahrávání vypršela. Nahrajte soubor prosím znovu."
 
@@ -11907,10 +10763,6 @@ msgstr "Zobrazit osoby"
 #: 
 msgid "View all families on an interactive map"
 msgstr "Zobrazit všechny rodiny na interaktivní mapě"
-
-#: 
-msgid "View all results"
-msgstr "Zobrazit všechny výsledky"
 
 #: 
 msgid "View and manage all groups in your congregation"
@@ -11993,20 +10845,12 @@ msgid "We're so glad you're here! Register your family in just 3 easy steps."
 msgstr "Jsme tak rádi, že jste tu! Zaregistrujte svou rodinu ve 3 snadných krocích."
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "Jsme velmi rádi, že se vaše rodina k nám přidala!"
-
-#: 
 msgid "Welcome Back!"
 msgstr "Vítejte zpět!"
 
 #: 
 msgid "Welcome back! Please enter your details to continue"
 msgstr "Vítejte zpět! Zadejte prosím své údaje pro pokračování"
-
-#: 
-msgid "Welcome to the Family!"
-msgstr "Vítejte v rodině!"
 
 #: 
 msgid "What happens next?"
@@ -12049,28 +10893,12 @@ msgid "Your previous session timed out. Please login again."
 msgstr "Vaše předchozí relace vypršela. Přihlaste se prosím znovu."
 
 #: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "Vaše registrace byla přijata. Náš tým se vám brzy ozve a osobně vás přivítá."
-
-#: 
-msgid "all members"
-msgstr "všichni členové"
-
-#: 
 msgid "complete"
 msgstr "dokončeno"
 
 #: 
 msgid "fields"
 msgstr "pole"
-
-#: 
-msgid "from this class?"
-msgstr "z této třídy?"
-
-#: 
-msgid "from this group?"
-msgstr "z této skupiny?"
 
 #: 
 msgid "full group view"
@@ -12081,20 +10909,12 @@ msgid "funds"
 msgstr "fondy"
 
 #: 
-msgid "members"
-msgstr "členové"
-
-#: 
 msgid "opportunities"
 msgstr "příležitosti"
 
 #: 
 msgid "or connect an external service"
 msgstr "nebo připojit externí službu"
-
-#: 
-msgid "our church"
-msgstr "náš sbor"
 
 #: 
 msgid "page"
@@ -12105,24 +10925,12 @@ msgid "properties"
 msgstr "vlastnosti"
 
 #: 
-msgid "to another group?"
-msgstr "do jiné skupiny?"
-
-#: 
-msgid "— Ignore —"
-msgstr "— Ignorovat —"
-
-#: 
 msgid "— Select a group —"
 msgstr "— Vyberte skupinu —"
 
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Vyberte typ (nepovinné) —"
-
-#: 
-msgid "Activate"
-msgstr "Aktivovat"
 
 #: 
 msgid "Active Events"
@@ -12145,10 +10953,6 @@ msgid "All Checks Passed"
 msgstr "Všechny kontroly prošly"
 
 #: 
-msgid "Applying..."
-msgstr "Aplikování..."
-
-#: 
 msgid "Assigned Kiosk"
 msgstr "Přiřazený kiosek"
 
@@ -12159,10 +10963,6 @@ msgstr "Docházka"
 #: 
 msgid "Back up modified files before upgrading if you want to keep your changes."
 msgstr "Před upgradem si zálohujte upravené soubory, pokud chcete zachovat své změny."
-
-#: 
-msgid "Backup Complete"
-msgstr "Záloha dokončena"
 
 #: 
 msgid "Class / Group"
@@ -12183,14 +10983,6 @@ msgstr "Vytvořit první událost"
 #: 
 msgid "Create a database backup before applying the update. This is strongly recommended."
 msgstr "Vytvořte zálohu databáze před aplikací aktualizace. Důrazně doporučeno."
-
-#: 
-msgid "Creating Backup..."
-msgstr "Vytváření zálohy..."
-
-#: 
-msgid "Download Backup & Continue"
-msgstr "Stáhnout zálohu a pokračovat"
 
 #: 
 msgid "Download the latest release and apply it to your installation."
@@ -12235,10 +11027,6 @@ msgstr "Generovat seznamy tříd, prezenční listiny a fotoalba"
 #: 
 msgid "Installed"
 msgstr "Nainstalováno"
-
-#: 
-msgid "It is strongly recommended to have a backup before proceeding."
-msgstr "Před pokračováním důrazně doporučujeme mít zálohu."
 
 #: 
 msgid "Latest"
@@ -12364,18 +11152,10 @@ msgstr "Uživatel musí mít oprávnění pro poznámky"
 msgid "Address Defaults"
 msgstr "Výchozí hodnoty adresy"
 
-#: 
-msgid "All Day"
-msgstr "Celodenní akce"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
 msgstr "Povolte uživateli přidávat nové akce"
-
-#: 
-msgid "Are you sure you want to continue?"
-msgstr "Chcete opravdu pokračovat?"
 
 #. Context: queryparameters_qrp
 #: 
@@ -12417,10 +11197,6 @@ msgid "ChurchCRM can send emails directly."
 msgstr "ChurchCRM může odesílat e-maily přímo."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "API schránky není k dispozici. Zkopírujte prosím adresu URL ručně."
-
-#: 
 msgid "Communication"
 msgstr "Komunikace"
 
@@ -12440,18 +11216,6 @@ msgstr "Konfigurovat Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Připojte Mailchimp k synchronizaci seznamů e-mailů pro zpravodaje a kampáně."
-
-#: 
-msgid "Copied to clipboard"
-msgstr "Zkopírováno do schránky"
-
-#: 
-msgid "Copy All Emails"
-msgstr "Kopírovat všechny e-maily"
-
-#: 
-msgid "Copy All Numbers"
-msgstr "Kopírovat všechna čísla"
 
 #: 
 msgid "Copy from church address"
@@ -12489,20 +11253,12 @@ msgid "Distance Unit"
 msgstr "Jednotka vzdálenosti"
 
 #: 
-msgid "Duration"
-msgstr "Trvání"
-
-#: 
 msgid "Email Dashboard"
 msgstr "Přístrojová deska e-mailu"
 
 #: 
 msgid "Email Integrations"
 msgstr "Integrace e-mailu"
-
-#: 
-msgid "Email addresses copied to clipboard"
-msgstr "E-mailové adresy kopírovány do schránky"
 
 #: 
 msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
@@ -12677,14 +11433,6 @@ msgstr "E-maily s oznámením o novém členovi"
 msgid "No cell phone on file"
 msgstr "Žádný mobilní telefon v souboru"
 
-#: 
-msgid "No email addresses available"
-msgstr "Nejsou dostupné e-mailové adresy"
-
-#: 
-msgid "No phone numbers available"
-msgstr "Nejsou dostupná telefonní čísla"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Non-Attender"
@@ -12703,10 +11451,6 @@ msgstr "Neklasifikováno"
 #: 
 msgid "Number of months since becoming a friend"
 msgstr "Počet měsíců od stání se přítelem"
-
-#: 
-msgid "Parents"
-msgstr "Rodiče"
 
 #: 
 msgid "Password reset emails — users cannot recover their accounts"
@@ -12734,14 +11478,6 @@ msgstr "Vlastnost osoby používaná k vyloučení členů sboru ze seznamů SMS
 msgid "Person property used to exclude members from email lists"
 msgstr "Vlastnost osoby používaná k vyloučení členů sboru ze seznamů e-mailů"
 
-#: 
-msgid "Phone numbers copied to clipboard"
-msgstr "Telefonní čísla zkopírována do schránky"
-
-#: 
-msgid "Phone numbers copied — paste into your messaging app"
-msgstr "Telefonní čísla zkopírována - vložte do aplikace pro zasílání zpráv"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
@@ -12762,18 +11498,10 @@ msgstr "Porovnání finančních závazků"
 msgid "Pledged this year"
 msgstr "Finanční závazek letos"
 
-#: 
-msgid "Press CTRL + C to copy"
-msgstr "Stiskněte CTRL + C pro kopírování"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "Vlastnost"
-
-#: 
-msgid "Public calendar"
-msgstr "Veřejný kalendář"
 
 #. Context: query_qry
 #: 
@@ -12826,14 +11554,6 @@ msgstr "Druhý účetní rok pro srovnání"
 msgid "Second volunteer opportunity choice"
 msgstr "Druhá volba příležitosti dobrovolníka"
 
-#: 
-msgid "Select calendars..."
-msgstr "Vyberte kalendáře..."
-
-#: 
-msgid "Select event type..."
-msgstr "Vyberte typ akce..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Select field to search for."
@@ -12859,10 +11579,6 @@ msgstr "Systémové kalendáře"
 #: 
 msgid "System language for the church."
 msgstr "Systémový jazyk pro církev."
-
-#: 
-msgid "Text All"
-msgstr "Textovat vše"
 
 #: 
 msgid "Text Dashboard"
@@ -12925,18 +11641,6 @@ msgid "These values are pre-filled when creating new families. Leave blank to re
 msgstr "Tyto hodnoty jsou předvyplněny při vytváření nových rodin. Nechejte prázdné, aby se vyžadoval ruční záznam."
 
 #: 
-msgid "Time"
-msgstr "Čas"
-
-#: 
-msgid "Timed"
-msgstr "Načasovaný"
-
-#: 
-msgid "Unable to copy to clipboard. Please copy the URL manually."
-msgstr "Nelze kopírovat do schránky. Zkopírujte adresu URL ručně."
-
-#: 
 msgid "Unit used to measure distance."
 msgstr "Jednotka používaná k měření vzdálenosti."
 
@@ -12981,14 +11685,6 @@ msgstr "Pracovní e-mail"
 #: 
 msgid "but not this year"
 msgstr "ale ne letos"
-
-#: 
-msgid "e.g. Sunday Service"
-msgstr "např. Nedělní služba"
-
-#: 
-msgid "member"
-msgstr "člen"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -13843,21 +12539,6 @@ msgstr "Velikost souboru překračuje limit serveru %s"
 msgid "Missing image data in request"
 msgstr "V požadavku chybí data obrázku"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "Najít osoby, které se nezúčastnily události"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Chybějící osoby"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Vyberte požadovanou událost"
-
 #: 
 msgid "Advanced filtering by group, classification, and role"
 msgstr "Pokročilé filtrování podle skupiny, klasifikace a role"
@@ -13935,10 +12616,6 @@ msgid "API Key"
 msgstr "Klíč API"
 
 #: 
-msgid "API key regenerated"
-msgstr "Klíč API byl obnoven"
-
-#: 
 msgid "Account"
 msgstr "Účet"
 
@@ -14013,46 +12690,6 @@ msgstr "Výchozí počet řádků zobrazených v datových tabulkách. Projeví 
 #: 
 msgid "Edit own family only"
 msgstr "Upravovat pouze vlastní rodinu"
-
-#: 
-msgid "Enter text here..."
-msgstr "Zadejte text zde..."
-
-#: 
-msgid "Failed to cancel enrollment. Please try again."
-msgstr "Nepodařilo se zrušit registraci. Zkuste to prosím znovu."
-
-#: 
-msgid "Failed to delete event. Please try again."
-msgstr "Nepodařilo se smazat událost. Zkuste to prosím znovu."
-
-#: 
-msgid "Failed to disable two-factor authentication. Please try again."
-msgstr "Nepodařilo se deaktivovat dvoufaktorové ověření. Zkuste to prosím znovu."
-
-#: 
-msgid "Failed to generate QR code. Please try again."
-msgstr "Nepodařilo se vygenerovat QR kód. Zkuste to prosím znovu."
-
-#: 
-msgid "Failed to load calendar data. Please try again."
-msgstr "Nepodařilo se načíst data kalendáře. Zkuste to prosím znovu."
-
-#: 
-msgid "Failed to load event. Please try again."
-msgstr "Nepodařilo se načíst událost. Zkuste to prosím znovu."
-
-#: 
-msgid "Failed to load recovery codes. Please refresh the page."
-msgstr "Nepodařilo se načíst obnovovací kódy. Obnovte prosím stránku."
-
-#: 
-msgid "Failed to save event. Please try again."
-msgstr "Nepodařilo se uložit událost. Zkuste to prosím znovu."
-
-#: 
-msgid "Failed to save setting"
-msgstr "Nepodařilo se uložit nastavení"
 
 #. Context: locales
 #: 
@@ -14237,10 +12874,6 @@ msgid "User Config"
 msgstr "Konfigurace uživatele"
 
 #: 
-msgid "Verification failed. Please try again."
-msgstr "Ověření selhalo. Zkuste to prosím znovu."
-
-#: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "Je dostupná verze %s. Aktualizujte svou instalaci."
 
@@ -14292,10 +12925,6 @@ msgid "A tablet assigned to one event. The kiosk pulls the event's linked group 
 msgstr "Tablet přiřazený k jedné události. Kiosek načte seznam propojené skupiny události a zobrazí přihlášení klepnutím. Bez propojené skupiny nemá kiosek žádný seznam k zobrazení."
 
 #: 
-msgid "Add Walk-in / Visitor"
-msgstr "Přidat příchozího / Návštěvníka"
-
-#: 
 msgid "Add people to your cart first, then come back to check them in to an event."
 msgstr "Nejprve přidejte osoby do košíku, poté se vraťte a přihlaste je k události."
 
@@ -14330,10 +12959,6 @@ msgstr "Všechny nahrané fotografie a dokumenty"
 #: 
 msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
 msgstr "Typ události je šablona — název, výchozí čas zahájení, opakování, kategorie počtu přítomných. Volitelně propojena s jednou skupinou třídy jako výchozím publikem."
-
-#: 
-msgid "Attendance record deleted."
-msgstr "Záznam o docházce byl smazán."
 
 #: 
 msgid "Audit"
@@ -14396,24 +13021,12 @@ msgid "Check in all %d family members to a single event."
 msgstr "Přihlásit všechny %d členy rodiny k jedné události."
 
 #: 
-msgid "Check out"
-msgstr "Odhlásit"
-
-#: 
 msgid "Check-in By"
 msgstr "Přihlášení od"
 
 #: 
-msgid "Check-in failed. Please try again."
-msgstr "Přihlášení selhalo. Zkuste to prosím znovu."
-
-#: 
 msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
 msgstr "Přihlašování je zakázáno pro neaktivní události. Aktivujte událost z přehledu událostí, abyste povolili přihlašování."
-
-#: 
-msgid "Check-out failed. Please try again."
-msgstr "Odhlášení selhalo. Zkuste to prosím znovu."
 
 #: 
 msgid "Checked in to event: %s"
@@ -14426,10 +13039,6 @@ msgstr "Odhlášen z události: %s"
 #: 
 msgid "Close All Stuck Events"
 msgstr "Uzavřít všechny zaseklé události"
-
-#: 
-msgid "Confirm Check Out"
-msgstr "Potvrdit odhlášení"
 
 #: 
 msgid "Create Repeat Events"
@@ -14456,10 +13065,6 @@ msgid "Creating backup..."
 msgstr "Vytváření zálohy..."
 
 #: 
-msgid "Creating..."
-msgstr "Vytváření..."
-
-#: 
 msgid "Database + uploaded photos (larger)"
 msgstr "Databáze + nahrané fotografie (větší)"
 
@@ -14472,34 +13077,6 @@ msgid "Date range cannot exceed 1 year"
 msgstr "Rozsah dat nesmí překročit 1 rok"
 
 #: 
-msgid "Deactivate"
-msgstr "Deaktivovat"
-
-#: 
-msgid "Delete Event Type"
-msgstr "Smazat typ události"
-
-#: 
-msgid "Delete attendance record?"
-msgstr "Smazat záznam o docházce?"
-
-#: 
-msgid "Delete check-in record for"
-msgstr "Smazat záznam o přihlášení pro"
-
-#: 
-msgid "Delete this event?"
-msgstr "Smazat tuto událost?"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
-msgstr "Smazáním události se také smažou všechny záznamy docházky. Tuto akci nelze vrátit zpět."
-
-#: 
-msgid "Deleting this event will also delete all attendance records. This cannot be undone."
-msgstr "Smazáním této události se také smažou všechny záznamy o docházce. Tuto akci nelze vrátit zpět."
-
-#: 
 msgid "Destructive Operation"
 msgstr "Destruktivní operace"
 
@@ -14510,10 +13087,6 @@ msgstr "Upravte název kategorie a klikněte na Uložit, nebo použijte ikonu ko
 #: 
 msgid "End Time"
 msgstr "Čas ukončení"
-
-#: 
-msgid "End time must be after start time."
-msgstr "Čas ukončení musí být po čase zahájení."
 
 #: 
 msgid "Ended"
@@ -14538,14 +13111,6 @@ msgstr "Podrobnosti události"
 #: 
 msgid "Event Template"
 msgstr "Šablona události"
-
-#: 
-msgid "Event already exists. Redirecting to check-in..."
-msgstr "Událost již existuje. Přesměrování na přihlašování..."
-
-#: 
-msgid "Event created. Redirecting to check-in..."
-msgstr "Událost byla vytvořena. Přesměrování na přihlašování..."
 
 #: 
 msgid "Event title is required."
@@ -14592,22 +13157,6 @@ msgid "Everyone is checked in!"
 msgstr "Všichni jsou přihlášeni!"
 
 #: 
-msgid "Failed to create class. Please try again."
-msgstr "Nepodařilo se vytvořit třídu. Zkuste to prosím znovu."
-
-#: 
-msgid "Failed to create event."
-msgstr "Nepodařilo se vytvořit událost."
-
-#: 
-msgid "Failed to create event. Please try again."
-msgstr "Nepodařilo se vytvořit událost. Zkuste to prosím znovu."
-
-#: 
-msgid "Failed to delete. Please try again."
-msgstr "Nepodařilo se smazat. Zkuste to prosím znovu."
-
-#: 
 msgid "Fastest workflow:"
 msgstr "Nejrychlejší postup:"
 
@@ -14648,14 +13197,6 @@ msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
 msgstr "Neplatný formát ročního opakování; očekáváno MM-DD (např. 04-12)"
 
 #: 
-msgid "Just now"
-msgstr "Právě teď"
-
-#: 
-msgid "Leave blank to check out without recording the supervisor."
-msgstr "Ponechte prázdné pro odhlášení bez zaznamenání dozorující osoby."
-
-#: 
 msgid "Link events to a group for Kiosk check-in functionality."
 msgstr "Propojte události se skupinou pro funkci přihlašování na kiosku."
 
@@ -14674,10 +13215,6 @@ msgstr "Spravovat názvy událostí, vzory opakování a počty docházky"
 #: 
 msgid "Missing required field: %s"
 msgstr "Chybí povinné pole: %s"
-
-#: 
-msgid "No Events Today"
-msgstr "Dnes žádné události"
 
 #: 
 msgid "No Group"
@@ -14704,14 +13241,6 @@ msgid "Optional Settings"
 msgstr "Volitelná nastavení"
 
 #: 
-msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
-msgstr "Volitelné — zaznamenejte, kdo tuto osobu odhlašuje (např. rodič vyzvedávající dítě)."
-
-#: 
-msgid "Person checked out."
-msgstr "Osoba byla odhlášena."
-
-#: 
 msgid "Person is not checked in"
 msgstr "Osoba není přihlášena"
 
@@ -14722,14 +13251,6 @@ msgstr "Osoba není v aktivním seznamu třídy"
 #: 
 msgid "Pin to Calendars"
 msgstr "Připnout do kalendářů"
-
-#: 
-msgid "Please select a person to check in."
-msgstr "Vyberte prosím osobu k přihlášení."
-
-#: 
-msgid "Range end date must be on or after range start date."
-msgstr "Koncové datum rozsahu musí být stejné nebo po počátečním datu rozsahu."
 
 #: 
 msgid "Range end must be a valid YYYY-MM-DD date."
@@ -14780,10 +13301,6 @@ msgid "Skip"
 msgstr "Přeskočit"
 
 #: 
-msgid "Skip & Check Out"
-msgstr "Přeskočit a odhlásit"
-
-#: 
 msgid "Start Check-in"
 msgstr "Zahájit přihlašování"
 
@@ -14814,10 +13331,6 @@ msgstr "Zaznamenat docházku"
 #: 
 msgid "The Events module is disabled"
 msgstr "Modul Události je zakázán"
-
-#: 
-msgid "There are no events scheduled for today"
-msgstr "Na dnešek nejsou naplánované žádné události"
 
 #: 
 msgid "This event is inactive."
@@ -14948,18 +13461,6 @@ msgid "Map Coordinates"
 msgstr "Souřadnice mapy"
 
 #: 
-msgid "Please select a group."
-msgstr "Vyberte prosím skupinu."
-
-#: 
-msgid "Please select a role."
-msgstr "Vyberte prosím roli."
-
-#: 
-msgid "Please select both a group and a role."
-msgstr "Vyberte prosím skupinu i roli."
-
-#: 
 msgid "Range: -180 to 180."
 msgstr "Rozsah: -180 až 180."
 
@@ -14974,22 +13475,6 @@ msgstr "např., -74.0060"
 #: 
 msgid "e.g., 40.7128"
 msgstr "např., 40.7128"
-
-#: 
-msgid "mo"
-msgstr "měs."
-
-#: 
-msgid "mos"
-msgstr "měs."
-
-#: 
-msgid "yr"
-msgstr "r."
-
-#: 
-msgid "yrs"
-msgstr "let"
 
 #: 
 msgid "An error occurred while deleting the family."
@@ -15100,10 +13585,6 @@ msgid "You do not have permission to view this person"
 msgstr "Nemáte oprávnění zobrazit tuto osobu"
 
 #: 
-msgid "Are you sure you want to delete this event type? This cannot be undone."
-msgstr "Opravdu chcete smazat tento typ události? Tuto akci nelze vrátit zpět."
-
-#: 
 msgid "Assign to me"
 msgstr "Přiřadit mně"
 
@@ -15114,10 +13595,6 @@ msgstr "Přiřazeno"
 #: 
 msgid "Assigned event not found"
 msgstr "Přiřazená událost nebyla nalezena"
-
-#: 
-msgid "Cannot Delete Event Type"
-msgstr "Typ události nelze smazat"
 
 #: 
 msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
@@ -15148,20 +13625,12 @@ msgid "Register New Device"
 msgstr "Registrovat nové zařízení"
 
 #: 
-msgid "This event type is used by"
-msgstr "Tento typ události je používán"
-
-#: 
 msgid "Total Kiosks"
 msgstr "Celkem kiosků"
 
 #: 
 msgid "Upcoming Events"
 msgstr "Nadcházející události"
-
-#: 
-msgid "event(s). Deactivate the type instead, or reassign the events first."
-msgstr "událost(í). Místo toho deaktivujte typ nebo nejprve přesuňte události."
 
 #: 
 msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
@@ -15174,10 +13643,6 @@ msgstr "Možnost s tímto názvem již existuje"
 #: 
 msgid "Cannot delete the only remaining option"
 msgstr "Nelze smazat jedinou zbývající možnost"
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Schránka není dostupná. Pro uložení kódů použijte tlačítko Stáhnout."
 
 #: 
 msgid "Custom Option"
@@ -15254,10 +13719,6 @@ msgstr "Záchranný kód"
 #: 
 msgid "Set up Email"
 msgstr "Nastavit e-mail"
-
-#: 
-msgid "Unable to copy to clipboard. Please copy the codes manually."
-msgstr "Nelze zkopírovat do schránky. Zkopírujte kódy ručně."
 
 #: 
 msgid "Use Recovery Code"
@@ -15576,10 +14037,6 @@ msgid "Add Recurring Event"
 msgstr "Přidat opakující se událost"
 
 #: 
-msgid "Available after the event is saved."
-msgstr "K dispozici po uložení události."
-
-#: 
 msgid "Boolean properties/fields accept yes / no / true / false / 1 / 0."
 msgstr "Logické vlastnosti/pole přijímají yes / no / true / false / 1 / 0."
 
@@ -15620,10 +14077,6 @@ msgid "External calendar sharing is disabled"
 msgstr "Sdílení externího kalendáře je zakázáno"
 
 #: 
-msgid "Failed to load event editor. Please refresh and try again."
-msgstr "Nepodařilo se načíst editor událostí. Obnovte stránku a zkuste to znovu."
-
-#: 
 msgid "Family Custom"
 msgstr "Vlastní rodina"
 
@@ -15632,16 +14085,8 @@ msgid "Family Property"
 msgstr "Vlastnost rodiny"
 
 #: 
-msgid "Fields"
-msgstr "Pole"
-
-#: 
 msgid "Go to home"
 msgstr "Přejít na domovskou stránku"
-
-#: 
-msgid "Hide advanced options"
-msgstr "Skrýt pokročilé možnosti"
 
 #: 
 msgid "How the CSV Import Works"
@@ -15660,14 +14105,6 @@ msgid "Loading event editor…"
 msgstr "Načítání editoru událostí…"
 
 #: 
-msgid "No group"
-msgstr "Žádná skupina"
-
-#: 
-msgid "Not pinned to any calendar"
-msgstr "Nepřipnuto k žádnému kalendáři"
-
-#: 
 msgid "Optional — sermon notes, materials, or other details copied to every generated event."
 msgstr "Volitelné — poznámky ke kázání, materiály nebo jiné podrobnosti zkopírované do každé vygenerované události."
 
@@ -15682,10 +14119,6 @@ msgstr "Vlastní osoba"
 #: 
 msgid "Person Property"
 msgstr "Vlastnost osoby"
-
-#: 
-msgid "Show more options"
-msgstr "Zobrazit více možností"
 
 #: 
 msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
@@ -15712,16 +14145,8 @@ msgid "This calendar link is invalid or has been revoked. Ask the church for a c
 msgstr "Tento odkaz na kalendář je neplatný nebo byl odvolán. Požádejte kostel o aktuální odkaz."
 
 #: 
-msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
-msgstr "Přiřadí tuto událost ke třídě nebo seznamu služby — používáno v procesu přihlašování přes Kiosk."
-
-#: 
 msgid "Upload a CSV to create families and people in bulk."
 msgstr "Nahrajte CSV pro hromadné vytvoření rodin a osob."
-
-#: 
-msgid "Volunteer-entered headcounts, broken down by category."
-msgstr "Počty zadané dobrovolníky, rozdělené podle kategorie."
 
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
@@ -15756,14 +14181,6 @@ msgstr "Přidává státní svátky do hlavního kalendáře. Každá vybraná z
 msgid "Choose map provider"
 msgstr "Vybrat poskytovatele map"
 
-#: 
-msgid "Current database"
-msgstr "Aktuální databáze"
-
-#: 
-msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
-msgstr "Ukázková data se obvykle načítají pouze při nových instalacích. Import nyní přidá ukázkové záznamy k vašim stávajícím datům a může vytvořit duplicity."
-
 #. plugin:holidays:section:2:content
 #: 
 msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
@@ -15788,10 +14205,6 @@ msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Season
 msgstr "Svátky jsou označeny podle typu: Úřední, Připomínky, Bankovní svátky, Sezónní a Náboženské. Ponechte všechny kategorie nevybrané pro zobrazení všech svátků, nebo vyberte konkrétní typy pro zúžení zobrazení."
 
 #: 
-msgid "Import demo data anyway"
-msgstr "Importovat ukázková data přesto"
-
-#: 
 msgid "Missing pledge identifier."
 msgstr "Chybí identifikátor finančního závazku."
 
@@ -15810,10 +14223,6 @@ msgstr "Otevřít v Apple Maps"
 #: 
 msgid "Open in Google Maps"
 msgstr "Otevřít v Google Maps"
-
-#: 
-msgid "Open in new tab"
-msgstr "Otevřít na nové kartě"
 
 #. plugin:holidays:section:0:title
 #: 
@@ -15846,22 +14255,10 @@ msgstr "Systém"
 msgid "Timeline filters"
 msgstr "Filtry časové osy"
 
-#: 
-msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
-msgstr "Chcete-li začít znovu s prázdnou databází, použijte Resetovat databázi na řídicím panelu správce před importem ukázkových dat."
-
 #. plugin:holidays:section:0:content
 #: 
 msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
 msgstr "Pomocí výběru zemí zvolte jednu nebo více zemí. Každá přidaná země se zobrazí jako samostatná položka kalendáře v postranním panelu – umožňuje vám zobrazit svátky pro celou světovou farní komunitu."
-
-#: 
-msgid "Your database already contains data"
-msgstr "Vaše databáze již obsahuje data"
-
-#: 
-msgid "people"
-msgstr "lidé"
 
 #: 
 msgid "A downloadUrl is required to install a plugin."
@@ -16108,16 +14505,8 @@ msgid "Need help? Contact us"
 msgstr "Potřebujete pomoc? Kontaktujte nás"
 
 #: 
-msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
-msgstr "Není vybrán žádný kalendář – tato událost se zobrazí v systémovém kalendáři \"Nepřipnuté události\", dokud ji nepřipnete."
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "Otevírá 2minutové okno pro registraci zařízení na adrese:"
-
-#: 
-msgid "Times use church time ({{church}}), not your browser ({{browser}})."
-msgstr "Časy používají čas farnosti ({{church}}), nikoli čas vašeho prohlížeče ({{browser}})."
 
 #: 
 msgid "Welcome — sign in to manage your community"

@@ -56,11 +56,3 @@ msgstr "Postal Code"
 msgid "Show neighbors with these classifications"
 msgstr "Show neighbours with these classifications"
 
-#: 
-msgid "Foreground Color"
-msgstr "Foreground Colour"
-
-#: 
-msgid "Background Color"
-msgstr "Background Colour"
-
