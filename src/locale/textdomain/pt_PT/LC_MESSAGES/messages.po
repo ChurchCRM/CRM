@@ -359,22 +359,6 @@ msgid "Back to Menu"
 msgstr "Menu principal"
 
 #: 
-msgid "Empty Cart"
-msgstr "Esvaziar carrinho"
-
-#: 
-msgid "Empty Cart to Group"
-msgstr "Carrinho vazio do grupo"
-
-#: 
-msgid "Empty Cart to Family"
-msgstr "Carrinho vazio da Família"
-
-#: 
-msgid "Map Cart"
-msgstr "Mapa do carrinho"
-
-#: 
 msgid "Bulk Mail Presort"
 msgstr "Muito correio a enviar "
 
@@ -1488,28 +1472,6 @@ msgid "Group View"
 msgstr "Ver Grupo"
 
 #: 
-msgid "Confirm Delete Group"
-msgstr "Confirme a Exclusão do Grupo"
-
-#: 
-#, fuzzy
-msgid "Please confirm deletion of this group record"
-msgstr "Por favor confirme a exclusão do registo deste grupo"
-
-#: 
-msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
-msgstr "Isso também irá excluir todos os papéis e dados do Grupo de propriedades específico associados a esse registo de grupo."
-
-#: 
-msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
-msgstr "Todos os membros e propriedades do grupo serão destruídos. Os membros do grupo não serão alterados."
-
-#: 
-#, fuzzy
-msgid "Please select target group for members"
-msgstr "Por favor, selecione o grupo desejado para os membos"
-
-#: 
 #, fuzzy
 msgid "Default Role"
 msgstr "Função padrão"
@@ -1701,10 +1663,6 @@ msgstr "Grupo"
 #: 
 msgid "Default"
 msgstr "Padrão"
-
-#: 
-msgid "Make Default"
-msgstr "Tornar padrão"
 
 #: 
 msgid "Exit"
@@ -2134,15 +2092,6 @@ msgid "Calendar Year"
 msgstr "Ano calendário"
 
 #: 
-msgid "User Delete Confirmation"
-msgstr "Confirmação de remoção de utilizador"
-
-#: 
-#, fuzzy
-msgid "Please confirm removal of user status from"
-msgstr "Por favor, confirme a remoção do status de utilizador de"
-
-#: 
 msgid "User Editor"
 msgstr "Editor de Utilizadores"
 
@@ -2209,10 +2158,6 @@ msgid "Failed Logins"
 msgstr "Logins fracassados"
 
 #: 
-msgid "You must enter the same password in both boxes"
-msgstr "Entre com a senha em ambos os campos"
-
-#: 
 msgid "Your password choice is too obvious. Please choose something else."
 msgstr "Sua senha é muito óbvia. Escolha outra."
 
@@ -2246,11 +2191,6 @@ msgstr "Nova Senha"
 #, fuzzy
 msgid "Confirm New Password"
 msgstr "Confirme a Nova Senha"
-
-#: 
-#, fuzzy
-msgid "Please confirm the password reset of this user"
-msgstr "Confirma reset de Senha deste Utilizador"
 
 #: 
 msgid "Volunteer Opportunity Editor"
@@ -2752,14 +2692,6 @@ msgid "Are you sure you want to delete the selected"
 msgstr "Você tem certeza de que quer apagar o que foi selecionado"
 
 #: 
-msgid "Deposit(s)"
-msgstr "Depósito(s)"
-
-#: 
-msgid "This will also delete all payments associated with this deposit"
-msgstr "Isso também irá excluir todos os pagamentos associados a este depósito"
-
-#: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "Esta ação NÃO pode ser desfeita, e pode ter implicações legais!"
 
@@ -2826,10 +2758,6 @@ msgstr "Verdadeiro"
 #: 
 msgid "Edit Settings"
 msgstr "Configurações"
-
-#: 
-msgid "Backup Downloaded, Copy on server removed"
-msgstr "Backup baixado, copiado ou removido do sistema"
 
 #: 
 msgid "Functions"
@@ -2947,10 +2875,6 @@ msgstr "Desabilitar Propriedades Específicas do Grupo"
 #: 
 msgid "Group Properties"
 msgstr "Propriedades (Grupos)"
-
-#: 
-msgid "There was a problem retrieving the requested object"
-msgstr "Ocorreu um problema ao recuperar o objeto solicitado"
 
 #: 
 #, fuzzy
@@ -4727,10 +4651,6 @@ msgid "Maximum upload size"
 msgstr "Tamanho Máximo para upload"
 
 #: 
-msgid "The selected file exceeds this servers maximum upload size of"
-msgstr "O arquivo selecionado excede o tamanho máximo para upload deste servidor de"
-
-#: 
 msgid "Failed"
 msgstr "Falhou"
 
@@ -4763,27 +4683,6 @@ msgstr "Um nome de configuração inválido foi solicitado"
 #: 
 msgid "Profile Image uploaded"
 msgstr "Imagem do Perfil Enviada"
-
-#: 
-#, fuzzy
-msgid "payment(s)?"
-msgstr "pagamento(s)?"
-
-#: 
-msgid "Confirm Deactivation"
-msgstr "Confirme a Desativação"
-
-#: 
-msgid "Confirm Activation"
-msgstr "Confirme a ativação"
-
-#: 
-msgid "Please confirm deactivation of family"
-msgstr "Por favor, confirme a desativação da família"
-
-#: 
-msgid "Please confirm activation of family"
-msgstr "Por favor, confirme a ativação da família"
 
 #: 
 #, fuzzy
@@ -4888,14 +4787,6 @@ msgid "Include"
 msgstr "Incluir"
 
 #: 
-msgid "View Cart"
-msgstr "Ver carrinho"
-
-#: 
-msgid "Your Cart is Empty"
-msgstr "Seu carrinho está vazio"
-
-#: 
 msgid "Legend"
 msgstr "Legenda"
 
@@ -4910,14 +4801,6 @@ msgstr "Mostrando alunos com aniversários em"
 #: 
 msgid "Actions"
 msgstr "Ações"
-
-#: 
-msgid "Action Confirmation"
-msgstr "Ação de confirmação"
-
-#: 
-msgid "Please confirm reset failed login count"
-msgstr "Confirme a contagem de login com falha de reset"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -5057,10 +4940,6 @@ msgid "Reset your password"
 msgstr "Resetar a sua senha"
 
 #: 
-msgid "Sorry, we are unable to process your request at this point in time."
-msgstr "Desculpe, não podemos processar seu pedido neste momento."
-
-#: 
 msgid "Kiosk Manager"
 msgstr "Gestão modo quiosque"
 
@@ -5073,10 +4952,6 @@ msgid "Self Verification"
 msgstr "Autoverificação"
 
 #: 
-msgid "Check Number"
-msgstr "Verificar número"
-
-#: 
 msgid "Details"
 msgstr "Detalhes"
 
@@ -5085,48 +4960,12 @@ msgid "Verification email sent"
 msgstr "Verificação de E-mail enviado"
 
 #: 
-msgid "Confirm Enable Group Specific Properties"
-msgstr "Confirmar habilitação de propriedade específicas de grupo"
-
-#: 
-msgid "This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor."
-msgstr "Isso criará uma tabela de propriedades específicas do grupo para este grupo. Em seguida, você deve adicionar as propriedades necessárias com o Editor de formulários de propriedades específicas do grupo."
-
-#: 
-msgid "Confirm Disable Group Specific Properties"
-msgstr "Confirmar desabilitação de propriedade específicas de grupo"
-
-#: 
-msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
-msgstr "Tem certeza de que deseja remover as propriedades da pessoa específica do grupo? Todos os dados das propriedades dos membros do grupo serão perdidos!"
-
-#: 
-msgid "Role Name"
-msgstr "Regra do nome"
-
-#: 
-msgid "Sequence"
-msgstr "Sequência"
-
-#: 
-msgid "Do you want to delete this person?  This cannot be undone."
-msgstr "Deseja  excluir esta pessoa? Isso não pode ser desfeito."
-
-#: 
-msgid "Are you sure you want to unassign this property?"
-msgstr "Tem certeza de que deseja desatribuir essa propriedade?"
-
-#: 
 msgid "Select a family"
 msgstr "Selecione a família"
 
 #: 
 msgid "Release Notes"
 msgstr "Notas da  Versão"
-
-#: 
-msgid "Move"
-msgstr "Mover"
 
 #. Context: locales
 #: 
@@ -5319,18 +5158,6 @@ msgid "OK"
 msgstr "OK"
 
 #: 
-msgid "Please select target Role for members"
-msgstr "Por favor, selecione o papel para os membros"
-
-#: 
-msgid "GroupID required for role selection prompt"
-msgstr "ID do grupo necessário para a regra selecionada"
-
-#: 
-msgid "Select Group and Role"
-msgstr "Selecione o Grupo e o papel"
-
-#: 
 msgid "All Members"
 msgstr "Todos os membros"
 
@@ -5357,14 +5184,6 @@ msgstr "Método de nomeação do destinatário"
 #: 
 msgid "Salutation Utility"
 msgstr "Utilitário de Saudação"
-
-#: 
-msgid "Add A Group Name"
-msgstr "Adicionar um nome de grupo"
-
-#: 
-msgid "Default Name Group"
-msgstr "Nome padrão do grupo"
 
 #: 
 msgid "Group Role"
@@ -5534,42 +5353,6 @@ msgid "Username"
 msgstr "Nome de Utilizador"
 
 #: 
-msgid "Are you sure you want to move"
-msgstr "Tem certeza de que quer mudar"
-
-#: 
-msgid "Access Token"
-msgstr "Token de Acesso"
-
-#: 
-msgid "New Access Token"
-msgstr "Novo Token de Acesso"
-
-#: 
-msgid "ICS URL"
-msgstr "URL do ICS"
-
-#: 
-msgid "Foreground Color"
-msgstr "Cor de Primeiro Plano"
-
-#: 
-msgid "Background Color"
-msgstr "Cor de Fundo"
-
-#: 
-msgid "Delete Calendar"
-msgstr "Excluir Calendário"
-
-#: 
-msgid "Invalid Entry"
-msgstr "Entrada inválida"
-
-#: 
-msgid "Calendar Name"
-msgstr "Nome do Calendário"
-
-#: 
 msgid "New Calendar"
 msgstr "Novo Calendário"
 
@@ -5636,10 +5419,6 @@ msgstr "valor de exportação inválido"
 #: 
 msgid "Duplicate Emails"
 msgstr "E-mails Duplicados"
-
-#: 
-msgid "HTML URL"
-msgstr "URL de HTML"
 
 #: 
 #, fuzzy
@@ -5718,10 +5497,6 @@ msgid "Latvia (Latvija)"
 msgstr "Letônia"
 
 #: 
-msgid "You are about to add a new deposit without a comment"
-msgstr "Você está prestes a adicionar um novo depósito sem um comentário"
-
-#: 
 msgid "Record"
 msgstr "Registo"
 
@@ -5737,14 +5512,6 @@ msgstr "Esvaziado para o do Evento"
 #: 
 msgid "Passed"
 msgstr "Aprovado"
-
-#: 
-msgid "Focus"
-msgstr "Foco"
-
-#: 
-msgid "Unfocus"
-msgstr "Desfocado"
 
 #. Context: locales
 #: 
@@ -5798,10 +5565,6 @@ msgid "People Verify Dashboard"
 msgstr "Painel para verificar Pessoas"
 
 #: 
-msgid "Verification recorded"
-msgstr "Verificação registada"
-
-#: 
 msgid "Verification URL created"
 msgstr "URL de verificação criado"
 
@@ -5820,10 +5583,6 @@ msgstr "Erro ao enviar e-mail(s)"
 #: 
 msgid "Please check logs for more information"
 msgstr "Analisar logs para mais informações"
-
-#: 
-msgid "Verification URL"
-msgstr "Verificar o URL"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5899,10 +5658,6 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Sobrenome, Nome"
 
 #: 
-msgid "Please confirm disabling 2 Factor Auth for this user"
-msgstr "Confirme a desactivação da autenticação de 2 factores para este utilizador"
-
-#: 
 msgid "Send an email notifying users when their account has been deleted"
 msgstr "Enviar um e-mail notificando os utilizadores quando sua conta foi excluída"
 
@@ -5969,10 +5724,6 @@ msgid "Hebrew"
 msgstr "Hebreu"
 
 #: 
-msgid "open rate"
-msgstr "taxa de abertura"
-
-#: 
 msgid "Permissions"
 msgstr "Permissões"
 
@@ -5997,22 +5748,6 @@ msgid "Owe"
 msgstr "Dever"
 
 #: 
-msgid "Start Date"
-msgstr "Data de início"
-
-#: 
-msgid "End Date"
-msgstr "Data de término"
-
-#: 
-msgid "Pinned Calendars"
-msgstr "Calendários fixados"
-
-#: 
-msgid "This field is required"
-msgstr "Este campo é obrigatório"
-
-#: 
 msgid "Text"
 msgstr "Texto"
 
@@ -6024,10 +5759,6 @@ msgstr "Descrição do evento"
 #: 
 msgid "Afrikaans"
 msgstr "Africâner"
-
-#: 
-msgid "Loading"
-msgstr "A carregar"
 
 #: 
 msgid "Today's Birthdays"
@@ -6096,24 +5827,8 @@ msgid "Ukrainian"
 msgstr "Ucraniano"
 
 #: 
-msgid "Change role"
-msgstr "Mudar função"
-
-#: 
 msgid "Closed"
 msgstr "Fechado"
-
-#: 
-msgid "Delete this person?"
-msgstr "Deletar esta pessoa?"
-
-#: 
-msgid "Deposit ID"
-msgstr "ID de depósito"
-
-#: 
-msgid "Deposit Total"
-msgstr "Total do depósito"
 
 #: 
 msgid "If that doesn't work, copy and paste the following link in your browser"
@@ -6268,144 +5983,8 @@ msgid "Loading log file..."
 msgstr "Carregando arquivo de log..."
 
 #: 
-msgid "A Calendar access token has been generated and saved."
-msgstr "Um token de acesso de calendário foi gerado e salvo."
-
-#: 
-msgid "added"
-msgstr "adicionado"
-
-#: 
-msgid "Added"
-msgstr "Adicionado"
-
-#: 
-msgid "Added to cart successfully"
-msgstr "Adicionado ao carrinho com sucesso"
-
-#: 
-msgid "All members already in cart"
-msgstr "Todos os membros já estão no carrinho"
-
-#: 
-msgid "already in cart"
-msgstr "já no carrinho"
-
-#: 
-msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
-msgstr "As propriedades do calendário não puderam ser carregadas. Este calendário pode estar faltando um token de acesso ou não estar configurado corretamente."
-
-#: 
-msgid "Cart emptied successfully"
-msgstr "Carrinho esvaziado com sucesso"
-
-#: 
-msgid "Cart emptied to group successfully"
-msgstr "Carrinho esvaziado para o grupo com sucesso"
-
-#: 
-msgid "Empty your entire cart?"
-msgstr "Esvaziar todo o seu carrinho?"
-
-#: 
-msgid "Failed to add family to cart"
-msgstr "Falha ao adicionar família ao carrinho"
-
-#: 
-msgid "Failed to add group to cart"
-msgstr "Falha ao adicionar grupo ao carrinho"
-
-#: 
-msgid "Failed to add to cart"
-msgstr "Falha ao adicionar ao carrinho"
-
-#: 
-msgid "Failed to empty cart"
-msgstr "Falha ao esvaziar o carrinho"
-
-#: 
-msgid "Failed to empty cart to group"
-msgstr "Falha ao esvaziar o carrinho para o grupo"
-
-#: 
-msgid "Failed to remove family from cart"
-msgstr "Falha ao remover família do carrinho"
-
-#: 
-msgid "Failed to remove from cart"
-msgstr "Falha ao remover do carrinho"
-
-#: 
-msgid "Failed to remove group"
-msgstr "Falha ao remover grupo"
-
-#: 
-msgid "Family added to cart"
-msgstr "Família adicionada ao carrinho"
-
-#: 
 msgid "Family removed from cart"
 msgstr "Família removida do carrinho"
-
-#: 
-msgid "Group added to cart"
-msgstr "Grupo adicionado ao carrinho"
-
-#: 
-msgid "Group removed from cart"
-msgstr "Grupo removido do carrinho"
-
-#: 
-msgid "in cart"
-msgstr "no carrinho"
-
-#: 
-msgid "members. Already had"
-msgstr "membros. Já tinha"
-
-#: 
-msgid "people added to cart"
-msgstr "pessoas adicionadas ao carrinho"
-
-#: 
-msgid "people already in cart"
-msgstr "pessoas já no carrinho"
-
-#: 
-msgid "people from cart"
-msgstr "pessoas do carrinho"
-
-#: 
-msgid "people removed from cart"
-msgstr "pessoas removidas do carrinho"
-
-#: 
-msgid "Person already in cart"
-msgstr "Pessoa já no carrinho"
-
-#: 
-msgid "Remove this family from cart?"
-msgstr "Remover esta família do carrinho?"
-
-#: 
-msgid "Remove this group from cart?"
-msgstr "Remover este grupo do carrinho?"
-
-#: 
-msgid "Remove this person from cart?"
-msgstr "Remover esta pessoa do carrinho?"
-
-#: 
-msgid "Removed from cart successfully"
-msgstr "Removido do carrinho com sucesso"
-
-#: 
-msgid "Yes, Empty Cart"
-msgstr "Sim, esvaziar carrinho"
-
-#: 
-msgid "Yes, Remove"
-msgstr "Sim, remover"
 
 #: 
 msgid "Add Group"
@@ -6414,10 +5993,6 @@ msgstr "Adicionar grupo"
 #: 
 msgid "Back to Group List"
 msgstr "Voltar para a lista de grupos"
-
-#: 
-msgid "Default role updated."
-msgstr "Função padrão atualizada."
 
 #: 
 msgid "Edit Group"
@@ -6432,36 +6007,12 @@ msgid "Failed to add role. Please try again."
 msgstr "Falha ao adicionar função. Por favor, tente novamente."
 
 #: 
-msgid "Failed to create group. Please try again."
-msgstr "Falha ao criar grupo. Por favor, tente novamente."
-
-#: 
 msgid "Failed to delete role. Please try again."
 msgstr "Falha ao excluir função. Por favor, tente novamente."
 
 #: 
-msgid "Failed to load cart status."
-msgstr "Falha ao carregar status do carrinho."
-
-#: 
-msgid "Failed to load groups. Please refresh the page."
-msgstr "Falha ao carregar grupos. Por favor, atualize a página."
-
-#: 
-msgid "Failed to set default role. Please try again."
-msgstr "Falha ao definir a função padrão. Por favor, tente novamente."
-
-#: 
-msgid "Failed to update group. Please try again."
-msgstr "Falha ao atualizar grupo. Por favor, tente novamente."
-
-#: 
 msgid "Failed to update properties. Please try again."
 msgstr "Falha ao atualizar propriedades. Por favor, tente novamente."
-
-#: 
-msgid "Failed to update role name. Please try again."
-msgstr "Falha ao atualizar nome da função. Por favor, tente novamente."
 
 #: 
 msgid "Leave blank to keep existing password"
@@ -6470,18 +6021,6 @@ msgstr "Deixe em branco para manter a senha existente"
 #: 
 msgid "Please enter a group name."
 msgstr "Por favor, digite um nome de grupo."
-
-#: 
-msgid "Role added successfully."
-msgstr "Função adicionada com sucesso."
-
-#: 
-msgid "Role deleted successfully."
-msgstr "Função excluída com sucesso."
-
-#: 
-msgid "Role name updated."
-msgstr "Nome da função atualizado."
 
 #: 
 msgid "View Group"
@@ -6494,14 +6033,6 @@ msgstr "Eventos de hoje"
 #: 
 msgid "Add Family Member"
 msgstr "Adicionar membro da família"
-
-#: 
-msgid "Address is required"
-msgstr "Endereço é obrigatório"
-
-#: 
-msgid "City is required"
-msgstr "Cidade é obrigatória"
 
 #: 
 msgid "Email Address"
@@ -6520,72 +6051,20 @@ msgid "Family name is required"
 msgstr "Nome da família é obrigatório"
 
 #: 
-msgid "Family name must be at least 2 characters"
-msgstr "Nome da família deve ter pelo menos 2 caracteres"
-
-#: 
 msgid "First name"
 msgstr "Primeiro nome"
-
-#: 
-msgid "First name is required"
-msgstr "Primeiro nome é obrigatório"
-
-#: 
-msgid "First name must be at least 2 characters"
-msgstr "Primeiro nome deve ter pelo menos 2 caracteres"
-
-#: 
-msgid "Home phone is required"
-msgstr "Telefone residencial é obrigatório"
 
 #: 
 msgid "Home phone number"
 msgstr "Número de telefone residencial"
 
 #: 
-msgid "Invalid format"
-msgstr "Formato inválido"
-
-#: 
 msgid "Last name"
 msgstr "Sobrenome"
 
 #: 
-msgid "Last name is required"
-msgstr "Sobrenome é obrigatório"
-
-#: 
-msgid "Last name must be at least 2 characters"
-msgstr "Sobrenome deve ter pelo menos 2 caracteres"
-
-#: 
-msgid "Maximum length is"
-msgstr "O comprimento máximo é"
-
-#: 
-msgid "Minimum length is"
-msgstr "O comprimento mínimo é"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Deve ser uma URL válida começando com http:// ou https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Deve ser uma URL válida começando com http:// ou https:// (por exemplo, http://localhost ou https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Deve ser um número de porta válido (por exemplo, 3306)"
-
-#: 
 msgid "Next Member"
 msgstr "Próximo membro"
-
-#: 
-msgid "Passwords do not match"
-msgstr "As senhas não correspondem"
 
 #: 
 msgid "Phone Type"
@@ -6596,40 +6075,8 @@ msgid "Phone number"
 msgstr "Número de telefone"
 
 #: 
-msgid "Please add at least one family member."
-msgstr "Por favor, adicione pelo menos um membro da família."
-
-#: 
-msgid "Please enter a valid URL"
-msgstr "Por favor, digite uma URL válida"
-
-#: 
-msgid "Please enter a valid email address"
-msgstr "Por favor, digite um endereço de e-mail válido"
-
-#: 
-msgid "Please enter a valid email address (e.g., name@example.com)"
-msgstr "Por favor, digite um endereço de e-mail válido (por exemplo, name@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Por favor, digite um número válido"
-
-#: 
-msgid "Please enter a valid phone number"
-msgstr "Por favor, digite um número de telefone válido"
-
-#: 
-msgid "Please fill in all required fields correctly."
-msgstr "Por favor, preencha todos os campos obrigatórios corretamente."
-
-#: 
 msgid "Previous"
 msgstr "Anterior"
-
-#: 
-msgid "Registration Error"
-msgstr "Erro de registro"
 
 #: 
 msgid "Role in Family"
@@ -6646,10 +6093,6 @@ msgstr "Endereço da rua"
 #: 
 msgid "Submit Registration"
 msgstr "Enviar registro"
-
-#: 
-msgid "Zip code is required"
-msgstr "CEP é obrigatório"
 
 #: 
 msgid "A new password has been generated and sent to your email address."
@@ -6672,10 +6115,6 @@ msgid "Back to login"
 msgstr "Voltar para login"
 
 #: 
-msgid "Backup Skipped"
-msgstr "Backup ignorado"
-
-#: 
 msgid "Complete"
 msgstr "Completo"
 
@@ -6688,28 +6127,8 @@ msgid "Download & Apply"
 msgstr "Download e aplicar"
 
 #: 
-msgid "Downloaded"
-msgstr "Baixado"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Baixando a versão mais recente do GitHub..."
-
-#: 
 msgid "Enter your login name and we will email you a link to reset your password."
 msgstr "Digite seu nome de login e enviaremos a você um link para redefinir sua senha."
-
-#: 
-msgid "Failed to create backup."
-msgstr "Falha ao criar backup."
-
-#: 
-msgid "Failed to download update package."
-msgstr "Falha ao baixar pacote de atualização."
-
-#: 
-msgid "Failed to refresh upgrade information from GitHub."
-msgstr "Falha ao atualizar informações de upgrade do GitHub."
 
 #: 
 msgid "File Name"
@@ -6718,10 +6137,6 @@ msgstr "Nome do arquivo"
 #: 
 msgid "Go to Login"
 msgstr "Ir para login"
-
-#: 
-msgid "Language updated to"
-msgstr "Idioma atualizado para"
 
 #: 
 msgid "Login Name is required"
@@ -6752,56 +6167,24 @@ msgid "Request Password Reset"
 msgstr "Solicitar redefinição de senha"
 
 #: 
-msgid "Retry Download"
-msgstr "Tentar download novamente"
-
-#: 
 msgid "Send Reset Email"
 msgstr "Enviar e-mail de redefinição"
-
-#: 
-msgid "Setting updated successfully"
-msgstr "Configuração atualizada com sucesso"
 
 #: 
 msgid "System Upgrade Wizard"
 msgstr "Assistente de atualização do sistema"
 
 #: 
-msgid "System upgrade completed successfully!"
-msgstr "Atualização do sistema concluída com sucesso!"
-
-#: 
 msgid "This may take several minutes."
 msgstr "Isso pode levar vários minutos."
-
-#: 
-msgid "Update package downloaded successfully."
-msgstr "Pacote de atualização baixado com sucesso."
 
 #: 
 msgid "Upgrade Complete!"
 msgstr "Atualização concluída!"
 
 #: 
-msgid "Upgrade failed."
-msgstr "Falha na atualização."
-
-#: 
-msgid "Upgrade failed. Please check the logs."
-msgstr "Falha na atualização. Por favor, verifique os logs."
-
-#: 
 msgid "Upgrade information refreshed successfully"
 msgstr "Informações de atualização atualizadas com sucesso"
-
-#: 
-msgid "Upgrade information refreshed. Reloading page..."
-msgstr "Informações de atualização atualizadas. Recarregando página..."
-
-#: 
-msgid "Warnings"
-msgstr "Avisos"
 
 #: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
@@ -6864,22 +6247,6 @@ msgid "Delete Selected"
 msgstr "Excluir selecionado"
 
 #: 
-msgid "Deposit saved successfully"
-msgstr "Depósito salvo com sucesso"
-
-#: 
-msgid "Error deleting payments"
-msgstr "Erro ao excluir pagamentos"
-
-#: 
-msgid "Error loading payments"
-msgstr "Erro ao carregar pagamentos"
-
-#: 
-msgid "Error saving deposit"
-msgstr "Erro ao salvar depósito"
-
-#: 
 msgid "Funds"
 msgstr "Fundos"
 
@@ -6896,32 +6263,12 @@ msgid "No Checks"
 msgstr "Sem verificações"
 
 #: 
-msgid "No payments yet. Click \"Add Payment\" to get started."
-msgstr "Nenhum pagamento ainda. Clique em \"Adicionar pagamento\" para começar."
-
-#: 
 msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
 msgstr "O valor não-dedutível excede o valor máximo permitido (999999.99)."
 
 #: 
 msgid "Payments"
 msgstr "Pagamentos"
-
-#: 
-msgid "Payments deleted successfully"
-msgstr "Pagamentos excluídos com sucesso"
-
-#: 
-msgid "Please select a date"
-msgstr "Por favor, selecione uma data"
-
-#: 
-msgid "Please select rows to delete"
-msgstr "Por favor, selecione linhas para excluir"
-
-#: 
-msgid "Saving..."
-msgstr "Salvando..."
 
 #: 
 msgid "This action cannot be undone."
@@ -6949,10 +6296,6 @@ msgid "Base URL"
 msgstr "URL base"
 
 #: 
-msgid "Copy"
-msgstr "Copiar"
-
-#: 
 msgid "Debug Info"
 msgstr "Informações de depuração"
 
@@ -6975,18 +6318,6 @@ msgstr "Endereço IP"
 #: 
 msgid "Images Root"
 msgstr "Raiz de imagens"
-
-#: 
-msgid "Import Demo Data"
-msgstr "Importar dados de demonstração"
-
-#: 
-msgid "Include events and calendars"
-msgstr "Incluir eventos e calendários"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "Incluir dados financeiros (fundos de doação, promessas)"
 
 #: 
 msgid "Invalid API key"
@@ -7021,40 +6352,12 @@ msgid "An error occurred during demo data import"
 msgstr "Um erro ocorreu durante a importação de dados de demonstração"
 
 #: 
-msgid "Demo data imported successfully"
-msgstr "Dados de demonstração importados com sucesso"
-
-#: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "Incluir aulas e inscrições da Escola Dominical"
-
-#: 
-msgid "Need to remove this data later?"
-msgstr "Precisa remover esses dados depois?"
-
-#: 
 msgid "No Payments on this Deposit"
 msgstr "Sem pagamentos neste depósito"
 
 #: 
-msgid "No payments on this deposit"
-msgstr "Sem pagamentos neste depósito"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "Dados opcionais para incluir"
-
-#: 
 msgid "Skipped"
 msgstr "Ignorado"
-
-#: 
-msgid "Unknown error"
-msgstr "Erro desconhecido"
-
-#: 
-msgid "deposit(s) with no payments"
-msgstr "depósito(s) sem pagamentos"
 
 #: 
 msgid "%d event in %s"
@@ -7298,16 +6601,8 @@ msgid "Backup Type"
 msgstr "Tipo de backup"
 
 #: 
-msgid "Backup complete! Click below to download."
-msgstr "Backup completo! Clique abaixo para baixar."
-
-#: 
 msgid "Backup completed successfully!"
 msgstr "Backup concluído com sucesso!"
-
-#: 
-msgid "Backup downloaded. Server copy removed."
-msgstr "Backup baixado. Cópia do servidor removida."
 
 #: 
 msgid "Backup failed. Please try again."
@@ -7406,10 +6701,6 @@ msgid "Force Re-install"
 msgstr "Forçar reinstalação"
 
 #: 
-msgid "Force re-install initiated. Please backup your database before applying."
-msgstr "Reinstalação forçada iniciada. Por favor, faça backup de seu banco de dados antes de aplicar."
-
-#: 
 msgid "Full Backup"
 msgstr "Backup completo"
 
@@ -7490,10 +6781,6 @@ msgid "Please check the backup file and try again."
 msgstr "Por favor, verifique o arquivo de backup e tente novamente."
 
 #: 
-msgid "Please select a backup file to restore"
-msgstr "Por favor, selecione um arquivo de backup para restaurar"
-
-#: 
 msgid "Redirecting in"
 msgstr "Redirecionando em"
 
@@ -7520,10 +6807,6 @@ msgstr "Status da restauração"
 #: 
 msgid "Restore failed."
 msgstr "Falha na restauração."
-
-#: 
-msgid "Restore failed. Please check the backup file and try again."
-msgstr "Falha na restauração. Por favor, verifique o arquivo de backup e tente novamente."
 
 #: 
 msgid "Restore in progress, please wait..."
@@ -7642,10 +6925,6 @@ msgid "Advanced Operations"
 msgstr "Operações avançadas"
 
 #: 
-msgid "All System Settings"
-msgstr "Todas as configurações do sistema"
-
-#: 
 msgid "An unexpected error occurred. Please contact your administrator."
 msgstr "Ocorreu um erro inesperado. Entre em contato com seu administrador."
 
@@ -7700,10 +6979,6 @@ msgstr "Depósitos fechados:"
 #: 
 msgid "Closed vs Total"
 msgstr "Fechado vs total"
-
-#: 
-msgid "Coming soon"
-msgstr "Chegando em breve"
 
 #: 
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
@@ -7850,14 +7125,6 @@ msgid "Finance Dashboard"
 msgstr "Painel de finanzas"
 
 #: 
-msgid "Force Import"
-msgstr "Forçar importação"
-
-#: 
-msgid "Force Import will retry and may create duplicate data."
-msgstr "A importação forçada tentará novamente e pode criar dados duplicados."
-
-#: 
 msgid "Fund Allocation"
 msgstr "Alocação de fundos"
 
@@ -7896,10 +7163,6 @@ msgstr "Identificação"
 #: 
 msgid "Identify members who have not made any donations within a date range."
 msgstr "Identifique membros que não fizeram nenhuma doação em um intervalo de datas."
-
-#: 
-msgid "Import failed"
-msgstr "Importação falhou"
 
 #: 
 msgid "Jan"
@@ -8070,10 +7333,6 @@ msgid "Sep"
 msgstr "Set"
 
 #: 
-msgid "Server error"
-msgstr "Erro do servidor"
-
-#: 
 msgid "Settings"
 msgstr "Configurações"
 
@@ -8124,10 +7383,6 @@ msgstr "Declarações fiscais (relatório de doação)"
 #: 
 msgid "Tax Year Reporting Checklist"
 msgstr "Lista de verificação de relatórios do ano fiscal"
-
-#: 
-msgid "Today"
-msgstr "Hoje"
 
 #: 
 msgid "Total"
@@ -8198,24 +7453,8 @@ msgid "active"
 msgstr "ativo"
 
 #: 
-msgid "ago"
-msgstr "atrás"
-
-#: 
-msgid "day"
-msgstr "dia"
-
-#: 
-msgid "days"
-msgstr "dias"
-
-#: 
 msgid "found"
 msgstr "encontrado"
-
-#: 
-msgid "in"
-msgstr "em"
 
 #: 
 msgid "issues"
@@ -8224,10 +7463,6 @@ msgstr "problemas"
 #: 
 msgid "open"
 msgstr "aberto"
-
-#: 
-msgid "years"
-msgstr "anos"
 
 #: 
 msgid "(Enter state/province for countries without predefined states)"
@@ -8342,10 +7577,6 @@ msgid "URL must start with http:// or https://"
 msgstr "A URL deve começar com http:// ou https://"
 
 #: 
-msgid "Unable to load state list. Please check your network connection or try again later."
-msgstr "Não é possível carregar a lista de estados. Por favor, verifique sua conexão de rede ou tente mais tarde."
-
-#: 
 msgid "Update it to a valid URL that:"
 msgstr "Atualize-o para uma URL válida que:"
 
@@ -8398,10 +7629,6 @@ msgid "Contact & Personal Info"
 msgstr "Informações de contato e pessoal"
 
 #: 
-msgid "Copied!"
-msgstr "Copiado!"
-
-#: 
 msgid "Edited"
 msgstr "Editado"
 
@@ -8410,16 +7637,8 @@ msgid "Email PDF"
 msgstr "PDF por e-mail"
 
 #: 
-msgid "Failed to copy URL"
-msgstr "Falha ao copiar URL"
-
-#: 
 msgid "Newsletter"
 msgstr "Boletim informativo"
-
-#: 
-msgid "Open in New Tab"
-msgstr "Abrir em nova aba"
 
 #: 
 msgid "Personal"
@@ -8438,16 +7657,8 @@ msgid "Provide any corrections or additional information here..."
 msgstr "Forneça aqui quaisquer correções ou informações adicionais..."
 
 #: 
-msgid "Remove Property"
-msgstr "Remover propriedade"
-
-#: 
 msgid "Select Opportunities"
 msgstr "Selecionar oportunidades"
-
-#: 
-msgid "Share this URL with family members to verify their information"
-msgstr "Compartilhe esta URL com membros da família para verificar suas informações"
 
 #: 
 msgid "Submit Verification"
@@ -8614,24 +7825,12 @@ msgid "total"
 msgstr "total"
 
 #: 
-msgid "Code incomplete"
-msgstr "Código incompleto"
-
-#: 
-msgid "Code is invalid"
-msgstr "Código inválido"
-
-#: 
 msgid "Encryption key for storing 2FA secret keys in the database"
 msgstr "Chave de criptografia para armazenar chaves secretas 2FA no banco de dados"
 
 #: 
 msgid "Two-Factor Authentication"
 msgstr "Autenticação de dois fatores"
-
-#: 
-msgid "Validation pending"
-msgstr "Validação pendente"
 
 #: 
 msgid "%d Person added to the Cart."
@@ -8750,14 +7949,6 @@ msgstr "Aviso:"
 #: 
 msgid "Yes, delete this Opportunity"
 msgstr "Sim, excluir esta Oportunidade"
-
-#: 
-msgid "Fund(s)"
-msgstr "Fundo(s)"
-
-#: 
-msgid "Password reset for"
-msgstr "Redefinição de senha para"
 
 #. Context: locales
 #: 
@@ -8926,10 +8117,6 @@ msgstr "dos compromissos"
 #: 
 msgid "records"
 msgstr "registos"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Deve começar com / se não estiver vazio; sem barra final. Apenas letras, números, sublinhado, hífen, ponto e / são permitidos."
 
 #: 
 msgid "%d person"
@@ -9156,10 +8343,6 @@ msgid "Add Link"
 msgstr "Adicionar Ligação"
 
 #: 
-msgid "Add an extra layer of security to your account"
-msgstr "Adicione uma camada extra de segurança à sua conta"
-
-#: 
 msgid "Add custom external links to the navigation menu."
 msgstr "Adicione ligações externas personalizadas ao menu de navegação."
 
@@ -9170,10 +8353,6 @@ msgstr "Permitir Certificados Autoassinados"
 #: 
 msgid "An error occurred processing the plugin request"
 msgstr "Ocorreu um erro ao processar o pedido do plugin"
-
-#: 
-msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
-msgstr "Tem a certeza de que pretende desativar a autenticação de dois fatores? A sua conta ficará menos segura."
 
 #: 
 msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
@@ -9216,28 +8395,12 @@ msgid "Backup to WebDAV Now"
 msgstr "Fazer Backup via WebDAV Agora"
 
 #: 
-msgid "Before You Start"
-msgstr "Antes de Começar"
-
-#: 
-msgid "Browser language preference detected"
-msgstr "Preferência de idioma do navegador detetada"
-
-#: 
 msgid "CRM Members Not Subscribed"
 msgstr "Membros do CRM Não Subscritos"
 
 #: 
 msgid "Campaigns Sent"
 msgstr "Campanhas Enviadas"
-
-#: 
-msgid "Can't scan?"
-msgstr "Não consegue digitalizar?"
-
-#: 
-msgid "Change Your Locale"
-msgstr "Alterar o Seu Idioma"
 
 #: 
 msgid "ChurchCRM supports a plugin architecture for extending functionality."
@@ -9278,10 +8441,6 @@ msgstr "Configure este plugin para fazer backup automático da base de dados do 
 #: 
 msgid "Configured"
 msgstr "Configurado"
-
-#: 
-msgid "Confirm with a code from your authenticator app"
-msgstr "Confirme com um código da sua aplicação autenticadora"
 
 #: 
 msgid "Connected"
@@ -9344,24 +8503,12 @@ msgid "Disable Plugin"
 msgstr "Desativar Plugin"
 
 #: 
-msgid "Disable Two-Factor Authentication"
-msgstr "Desativar Autenticação de Dois Fatores"
-
-#: 
 msgid "Dismiss"
 msgstr "Dispensar"
 
 #: 
-msgid "Done"
-msgstr "Concluído"
-
-#: 
 msgid "Each plugin requires a"
 msgstr "Cada plugin requer um"
-
-#: 
-msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
-msgstr "Cada vez que iniciar sessão, terá de confirmar com um código da sua aplicação autenticadora"
 
 #: 
 msgid "Email Addresses"
@@ -9380,10 +8527,6 @@ msgid "Enable Plugin"
 msgstr "Ativar Plugin"
 
 #: 
-msgid "Enable Two-Factor Authentication"
-msgstr "Ativar Autenticação de Dois Fatores"
-
-#: 
 msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
 msgstr "Ative apenas para servidores de rede local com certificados SSL autoassinados. Desativa a verificação de certificado."
 
@@ -9394,10 +8537,6 @@ msgstr "URL do Endpoint"
 #: 
 msgid "Enter the 6-digit code from your authenticator app"
 msgstr "Introduza o código de 6 dígitos da sua aplicação autenticadora"
-
-#: 
-msgid "Enter your username and password as usual"
-msgstr "Introduza o seu utilizador e palavra-passe normalmente"
 
 #: 
 msgid "External Backup"
@@ -9472,20 +8611,12 @@ msgid "GA4 Measurement ID"
 msgstr "ID de Medição GA4"
 
 #: 
-msgid "Generate new code"
-msgstr "Gerar novo código"
-
-#: 
 msgid "Get Started"
 msgstr "Começar"
 
 #: 
 msgid "Get your API key from MailChimp: Account Settings > Extras > API Keys"
 msgstr "Obtenha a sua chave de API no MailChimp: Definições da Conta > Extras > Chaves de API"
-
-#: 
-msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
-msgstr "Tenha a sua aplicação autenticadora pronta (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 
 #: 
 msgid "Help"
@@ -9498,10 +8629,6 @@ msgstr "Id"
 #: 
 msgid "Image shown when no Gravatar exists for the email address"
 msgstr "Imagem apresentada quando não existe Gravatar para o endereço de e-mail"
-
-#: 
-msgid "Important"
-msgstr "Importante"
 
 #: 
 msgid "Invalid code. Please try again."
@@ -9558,10 +8685,6 @@ msgstr "A ligação deve começar com http:// ou https://"
 #: 
 msgid "Link not found"
 msgstr "Ligação não encontrada"
-
-#: 
-msgid "Loading recovery codes"
-msgstr "A carregar códigos de recuperação"
 
 #: 
 msgid "MailChimp API Key"
@@ -9645,16 +8768,8 @@ msgid "Not in CRM"
 msgstr "Não está no CRM"
 
 #: 
-msgid "One-Time Code"
-msgstr "Código de Utilização Única"
-
-#: 
 msgid "Open MailChimp"
 msgstr "Abrir MailChimp"
-
-#: 
-msgid "Open your authenticator app and scan this QR code"
-msgstr "Abra a sua aplicação autenticadora e digitalize este código QR"
 
 #: 
 msgid "OpenLP Server URL"
@@ -9683,10 +8798,6 @@ msgstr "Configure a sua chave de API do MailChimp para utilizar esta integraçã
 #: 
 msgid "Please enter a link name (2-50 characters)"
 msgstr "Introduza um nome de ligação (2-50 caracteres)"
-
-#: 
-msgid "Please try again"
-msgstr "Por favor, tente novamente"
 
 #: 
 msgid "Plugin Development"
@@ -9737,44 +8848,16 @@ msgid "Print"
 msgstr "Imprimir"
 
 #: 
-msgid "Recovery Codes"
-msgstr "Códigos de Recuperação"
-
-#: 
 msgid "Remote backup failed. Check server logs for details."
 msgstr "Backup remoto falhou. Verifique os registos do servidor para mais detalhes."
-
-#: 
-msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
-msgstr "Guarde estes códigos de recuperação num local seguro. Pode utilizá-los para aceder à sua conta se perder acesso à sua aplicação autenticadora."
-
-#: 
-msgid "Scan QR Code"
-msgstr "Digitalizar Código QR"
-
-#: 
-msgid "Secure"
-msgstr "Seguro"
-
-#: 
-msgid "Set Up Authenticator"
-msgstr "Configurar Autenticador"
 
 #: 
 msgid "Settings reset successfully"
 msgstr "Definições repostas com sucesso"
 
 #: 
-msgid "Setup Complete"
-msgstr "Configuração Concluída"
-
-#: 
 msgid "Shipped with ChurchCRM."
 msgstr "Incluído com o ChurchCRM."
-
-#: 
-msgid "Sign In"
-msgstr "Iniciar Sessão"
 
 #: 
 msgid "Some settings could not be reset"
@@ -9813,10 +8896,6 @@ msgid "Third-party extensions."
 msgstr "Extensões de terceiros."
 
 #: 
-msgid "This will replace any previously enrolled 2FA methods"
-msgstr "Isto substituirá quaisquer métodos de 2FA previamente registados"
-
-#: 
 msgid "Total Campaigns"
 msgstr "Total de Campanhas"
 
@@ -9825,24 +8904,8 @@ msgid "Total Subscribers"
 msgstr "Total de Subscritores"
 
 #: 
-msgid "Two Factor Enrollment Error"
-msgstr "Erro de Registo de Dois Fatores"
-
-#: 
-msgid "Two-factor authentication has been disabled"
-msgstr "A autenticação de dois fatores foi desativada"
-
-#: 
-msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
-msgstr "A autenticação de dois fatores é uma das melhores formas de proteger a sua conta. Recomendamos vivamente mantê-la ativada."
-
-#: 
 msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
 msgstr "URL do seu servidor OpenLP (ex.: http://192.168.1.100:4316)"
-
-#: 
-msgid "Unable to load"
-msgstr "Não foi possível carregar"
 
 #: 
 msgid "Unsubscribed"
@@ -9863,14 +8926,6 @@ msgstr "Valor está definido - deixe em branco para manter o atual"
 #: 
 msgid "Verify & Sign In"
 msgstr "Verificar e Iniciar Sessão"
-
-#: 
-msgid "Verify Code"
-msgstr "Verificar Código"
-
-#: 
-msgid "Verifying"
-msgstr "A verificar"
 
 #: 
 msgid "Vonage API Key"
@@ -9905,40 +8960,12 @@ msgid "WebDAV username is required."
 msgstr "O utilizador WebDAV é obrigatório."
 
 #: 
-msgid "You can also use backup recovery codes if you lose access to your app"
-msgstr "Também pode utilizar códigos de recuperação de backup se perder acesso à sua aplicação"
-
-#: 
-msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
-msgstr "Agora pode utilizar a sua aplicação autenticadora para iniciar sessão. Cada código é válido durante 30 segundos."
-
-#: 
-msgid "You'll receive backup codes that can be used if you lose access to your app"
-msgstr "Receberá códigos de backup que podem ser utilizados se perder acesso à sua aplicação"
-
-#: 
 msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
 msgstr "O seu ID de Medição GA4 (G-XXXXXXXXXX)"
 
 #: 
 msgid "Your MailChimp account does not have any audiences (lists) configured."
 msgstr "A sua conta do MailChimp não tem nenhuma audiência (lista) configurada."
-
-#: 
-msgid "Your account is now protected"
-msgstr "A sua conta está agora protegida"
-
-#: 
-msgid "Your account is protected"
-msgstr "A sua conta está protegida"
-
-#: 
-msgid "Your authenticator app has been successfully enrolled"
-msgstr "A sua aplicação autenticadora foi registada com sucesso"
-
-#: 
-msgid "Your browser language preference differs from your ChurchCRM locale"
-msgstr "A preferência de idioma do seu navegador é diferente do idioma do ChurchCRM"
 
 #: 
 msgid "e.g., Church Website"
@@ -10157,10 +9184,6 @@ msgid "2FA"
 msgstr "2FA"
 
 #: 
-msgid "Leave blank to keep existing"
-msgstr "Deixe em branco para manter o valor existente"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Exigir que todos os utilizadores se inscrevam na autenticação de dois fatores"
 
@@ -10265,10 +9288,6 @@ msgid "Save Church Information"
 msgstr "Guardar informação da paróquia"
 
 #: 
-msgid "Search or select..."
-msgstr "Pesquisar ou selecionar..."
-
-#: 
 msgid "State is required."
 msgstr "O distrito é obrigatório."
 
@@ -10311,14 +9330,6 @@ msgstr "Website"
 #: 
 msgid "ZIP code is required."
 msgstr "O código postal é obrigatório."
-
-#: 
-msgid "— Select Country —"
-msgstr "— Selecionar país —"
-
-#: 
-msgid "— Select State —"
-msgstr "— Selecionar distrito —"
 
 #: 
 msgid "Address Status"
@@ -10531,10 +9542,6 @@ msgid "Age Distribution"
 msgstr "Distribuição por Idades"
 
 #: 
-msgid "All Roles"
-msgstr "Todas as Funções"
-
-#: 
 msgid "All Time"
 msgstr "Sempre"
 
@@ -10567,20 +9574,8 @@ msgid "An unexpected error occurred."
 msgstr "Ocorreu um erro inesperado."
 
 #: 
-msgid "Applied preset"
-msgstr "Predefinição aplicada"
-
-#: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Tem a certeza de que pretende eliminar este depósito?"
-
-#: 
 msgid "Are you sure you want to delete this fundraiser?"
 msgstr "Tem a certeza de que pretende eliminar esta angariação de fundos?"
-
-#: 
-msgid "Are you sure you want to remove"
-msgstr "Tem a certeza de que pretende remover"
 
 #: 
 msgid "Assign and manage donation envelope numbers"
@@ -10613,10 +9608,6 @@ msgstr "Código de Autenticação"
 #: 
 msgid "Auto-mapped"
 msgstr "Mapeado automaticamente"
-
-#: 
-msgid "BCC All"
-msgstr "BCC para Todos"
 
 #: 
 msgid "Back to Admin Dashboard"
@@ -10731,10 +9722,6 @@ msgid "Clear all items from cart"
 msgstr "Remover todos os itens do carrinho"
 
 #: 
-msgid "Click Save to apply."
-msgstr "Clique em Guardar para aplicar."
-
-#: 
 msgid "Click to upload photo"
 msgstr "Clique para carregar foto"
 
@@ -10785,14 +9772,6 @@ msgstr "Converter registos individuais em unidades familiares"
 #: 
 msgid "Convert to Family"
 msgstr "Converter para Família"
-
-#: 
-msgid "Copied"
-msgstr "Copiado"
-
-#: 
-msgid "Copy Members to Group"
-msgstr "Copiar Fiéis para Grupo"
 
 #: 
 msgid "Copy to Group"
@@ -10881,10 +9860,6 @@ msgstr "Eliminar Promessa de Doação"
 #: 
 msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
 msgstr "Eliminar esta propriedade também removerá todas as suas atribuições de quaisquer registos de Pessoas, Famílias ou Grupos."
-
-#: 
-msgid "Deposit Value"
-msgstr "Valor do Depósito"
 
 #: 
 msgid "Describe the issue"
@@ -11059,22 +10034,6 @@ msgid "FY %s"
 msgstr "AF %s"
 
 #: 
-msgid "Failed to add members to cart. Please try again."
-msgstr "Falha ao adicionar fiéis ao carrinho. Tente novamente."
-
-#: 
-msgid "Failed to delete class. Please try again."
-msgstr "Falha ao eliminar a turma. Tente novamente."
-
-#: 
-msgid "Failed to delete group. Please try again."
-msgstr "Falha ao eliminar o grupo. Tente novamente."
-
-#: 
-msgid "Failed to remove from class. Please try again."
-msgstr "Falha ao remover da turma. Tente novamente."
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "As famílias partilham um endereço e número de telefone."
 
@@ -11171,10 +10130,6 @@ msgid "Get Your Data Into ChurchCRM"
 msgstr "Introduza os Seus Dados no ChurchCRM"
 
 #: 
-msgid "Go to homepage"
-msgstr "Ir para a página inicial"
-
-#: 
 msgid "Great choice! Here's how to add your church members."
 msgstr "Excelente escolha! Eis como adicionar os fiéis da sua paróquia."
 
@@ -11187,20 +10142,12 @@ msgid "Group Reports"
 msgstr "Relatórios de Grupos"
 
 #: 
-msgid "Group deleted successfully."
-msgstr "Grupo eliminado com sucesso."
-
-#: 
 msgid "Have Existing Data?"
 msgstr "Tem Dados Existentes?"
 
 #: 
 msgid "If you have many records in a spreadsheet, the CSV import may be faster than entering data manually."
 msgstr "Se tiver muitos registos numa folha de cálculo, a importação CSV pode ser mais rápida do que introduzir dados manualmente."
-
-#: 
-msgid "Ignored"
-msgstr "Ignorado"
 
 #: 
 msgid "Import Another File"
@@ -11217,10 +10164,6 @@ msgstr "Importação Concluída"
 #: 
 msgid "Import contacts from your MailChimp audiences"
 msgstr "Importar contactos das suas audiências do MailChimp"
-
-#: 
-msgid "Import failed. Please try again."
-msgstr "Importação falhou. Tente novamente."
 
 #: 
 msgid "Import failed: "
@@ -11245,10 +10188,6 @@ msgstr "Importar, restaurar ou introduzir manualmente"
 #: 
 msgid "Import, restore, or manually enter your congregation"
 msgstr "Importar, restaurar ou introduzir manualmente os seus fiéis"
-
-#: 
-msgid "Importing..."
-msgstr "A importar..."
 
 #: 
 msgid "Include in Email Export"
@@ -11395,10 +10334,6 @@ msgid "Manage your personal preferences and account settings"
 msgstr "Gerir as suas preferências pessoais e definições de conta"
 
 #: 
-msgid "Manual"
-msgstr "Manual"
-
-#: 
 msgid "Map cart items"
 msgstr "Mapear itens do carrinho"
 
@@ -11419,10 +10354,6 @@ msgid "Member Roles"
 msgstr "Funções dos Fiéis"
 
 #: 
-msgid "Members added to cart."
-msgstr "Fiéis adicionados ao carrinho."
-
-#: 
 msgid "Memberships"
 msgstr "Participações"
 
@@ -11433,14 +10364,6 @@ msgstr "Mínimo"
 #: 
 msgid "Modify family roles for group members"
 msgstr "Modificar funções familiares para fiéis do grupo"
-
-#: 
-msgid "Move Members"
-msgstr "Mover Fiéis"
-
-#: 
-msgid "Move Members to Group"
-msgstr "Mover Fiéis para Grupo"
 
 #: 
 msgid "Move to Group"
@@ -11479,32 +10402,8 @@ msgid "New Person"
 msgstr "Nova Pessoa"
 
 #: 
-msgid "No Anniversaries"
-msgstr "Sem Aniversários de Casamento"
-
-#: 
-msgid "No Birthdays"
-msgstr "Sem Aniversários"
-
-#: 
 msgid "No Check-ins"
 msgstr "Sem Registos de Entrada"
-
-#: 
-msgid "No Deposits"
-msgstr "Sem Depósitos"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "Sem aniversários de casamento nos últimos ou próximos 7 dias"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "Sem aniversários nos últimos ou próximos 7 dias"
-
-#: 
-msgid "No deposit data available yet"
-msgstr "Ainda não existem dados de depósitos disponíveis"
 
 #: 
 msgid "No description set."
@@ -11537,10 +10436,6 @@ msgstr "Sem resultados para \"%s\". Tente um termo de pesquisa diferente."
 #: 
 msgid "No member properties defined."
 msgstr "Sem propriedades de membro definidas."
-
-#: 
-msgid "No members found for this role."
-msgstr "Sem fiéis encontrados para esta função."
 
 #: 
 msgid "No people found"
@@ -11625,10 +10520,6 @@ msgid "People by Classification"
 msgstr "Pessoas por Classificação"
 
 #: 
-msgid "Person removed from class."
-msgstr "Pessoa removida da turma."
-
-#: 
 msgid "Photo"
 msgstr "Foto"
 
@@ -11643,14 +10534,6 @@ msgstr "Escolha um caminho para começar"
 #: 
 msgid "Please check everything looks right before submitting."
 msgstr "Verifique se tudo está correto antes de submeter."
-
-#: 
-msgid "Please map at least one column before importing"
-msgstr "Mapeie pelo menos uma coluna antes de importar"
-
-#: 
-msgid "Please select a CSV file"
-msgstr "Selecione um ficheiro CSV"
 
 #: 
 msgid "Please try requesting a new password reset link or contact support if you continue to experience issues."
@@ -11697,10 +10580,6 @@ msgid "Property not found."
 msgstr "Propriedade não encontrada."
 
 #: 
-msgid "Quick Setup"
-msgstr "Configuração Rápida"
-
-#: 
 msgid "Quick Tips"
 msgstr "Dicas Rápidas"
 
@@ -11731,10 +10610,6 @@ msgstr "Registar o motivo pelo qual os participantes visitaram a sua paróquia"
 #: 
 msgid "Register Your Family"
 msgstr "Registar a Sua Família"
-
-#: 
-msgid "Register another family"
-msgstr "Registar outra família"
 
 #: 
 msgid "Remove all from Cart"
@@ -11781,14 +10656,6 @@ msgid "Review and clean up files not associated with any record"
 msgstr "Rever e limpar ficheiros não associados a nenhum registo"
 
 #: 
-msgid "Role not found."
-msgstr "Função não encontrada."
-
-#: 
-msgid "Roles"
-msgstr "Funções"
-
-#: 
 msgid "Run"
 msgstr "Executar"
 
@@ -11811,10 +10678,6 @@ msgstr "Pesquisar entre pessoas, famílias, grupos, endereços e muito mais."
 #: 
 msgid "Search and view deposit slip records"
 msgstr "Pesquisar e ver registos de talões de depósito"
-
-#: 
-msgid "Search groups..."
-msgstr "Pesquisar grupos..."
 
 #: 
 msgid "Search people, families, groups…"
@@ -11851,10 +10714,6 @@ msgstr "Enviar e-mail às famílias"
 #: 
 msgid "Server Error"
 msgstr "Erro do Servidor"
-
-#: 
-msgid "Server returned an unexpected response. Please try again."
-msgstr "O servidor devolveu uma resposta inesperada. Tente novamente."
 
 #: 
 msgid "Set Permission True to give new users the ability to change their current value."
@@ -11931,10 +10790,6 @@ msgstr "Passo 1 — Carregar Ficheiro CSV"
 #: 
 msgid "Step 2 — Map Columns"
 msgstr "Passo 2 — Mapear Colunas"
-
-#: 
-msgid "Submitting..."
-msgstr "A submeter..."
 
 #: 
 msgid "Supports backups from ChurchCRM and ChurchInfo."
@@ -12017,10 +10872,6 @@ msgid "Upload failed."
 msgstr "Carregamento falhou."
 
 #: 
-msgid "Upload failed. Please check the file and try again."
-msgstr "Carregamento falhou. Verifique o ficheiro e tente novamente."
-
-#: 
 msgid "Upload session expired. Please upload the file again."
 msgstr "Sessão de carregamento expirou. Carregue o ficheiro novamente."
 
@@ -12051,10 +10902,6 @@ msgstr "Ver Pessoas"
 #: 
 msgid "View all families on an interactive map"
 msgstr "Ver todas as famílias num mapa interativo"
-
-#: 
-msgid "View all results"
-msgstr "Ver todos os resultados"
 
 #: 
 msgid "View and manage all groups in your congregation"
@@ -12137,20 +10984,12 @@ msgid "We're so glad you're here! Register your family in just 3 easy steps."
 msgstr "Estamos muito contentes por estar aqui! Registe a sua família em apenas 3 passos simples."
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "Estamos muito contentes que a sua família se tenha juntado a nós!"
-
-#: 
 msgid "Welcome Back!"
 msgstr "Bem-vindo de Volta!"
 
 #: 
 msgid "Welcome back! Please enter your details to continue"
 msgstr "Bem-vindo de volta! Introduza os seus dados para continuar"
-
-#: 
-msgid "Welcome to the Family!"
-msgstr "Bem-vindo à Família!"
 
 #: 
 msgid "What happens next?"
@@ -12193,28 +11032,12 @@ msgid "Your previous session timed out. Please login again."
 msgstr "A sua sessão anterior expirou. Inicie sessão novamente."
 
 #: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "O seu registo foi recebido. A nossa equipa entrará em contacto em breve para recebê-lo pessoalmente."
-
-#: 
-msgid "all members"
-msgstr "todos os fiéis"
-
-#: 
 msgid "complete"
 msgstr "concluído"
 
 #: 
 msgid "fields"
 msgstr "campos"
-
-#: 
-msgid "from this class?"
-msgstr "desta turma?"
-
-#: 
-msgid "from this group?"
-msgstr "deste grupo?"
 
 #: 
 msgid "full group view"
@@ -12225,20 +11048,12 @@ msgid "funds"
 msgstr "fundos"
 
 #: 
-msgid "members"
-msgstr "fiéis"
-
-#: 
 msgid "opportunities"
 msgstr "oportunidades"
 
 #: 
 msgid "or connect an external service"
 msgstr "ou ligar um serviço externo"
-
-#: 
-msgid "our church"
-msgstr "a nossa paróquia"
 
 #: 
 msgid "page"
@@ -12249,24 +11064,12 @@ msgid "properties"
 msgstr "propriedades"
 
 #: 
-msgid "to another group?"
-msgstr "para outro grupo?"
-
-#: 
-msgid "— Ignore —"
-msgstr "— Ignorar —"
-
-#: 
 msgid "— Select a group —"
 msgstr "— Selecionar um grupo —"
 
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Selecionar tipo (opcional) —"
-
-#: 
-msgid "Activate"
-msgstr "Ativar"
 
 #: 
 msgid "Active Events"
@@ -12289,10 +11092,6 @@ msgid "All Checks Passed"
 msgstr "Todas as verificações aprovadas"
 
 #: 
-msgid "Applying..."
-msgstr "A aplicar..."
-
-#: 
 msgid "Assigned Kiosk"
 msgstr "Quiosque atribuído"
 
@@ -12303,10 +11102,6 @@ msgstr "Presenças"
 #: 
 msgid "Back up modified files before upgrading if you want to keep your changes."
 msgstr "Faça uma cópia de segurança dos ficheiros modificados antes de atualizar se pretender manter as suas alterações."
-
-#: 
-msgid "Backup Complete"
-msgstr "Cópia de segurança concluída"
 
 #: 
 msgid "Class / Group"
@@ -12327,14 +11122,6 @@ msgstr "Criar primeiro evento"
 #: 
 msgid "Create a database backup before applying the update. This is strongly recommended."
 msgstr "Crie uma cópia de segurança da base de dados antes de aplicar a atualização. Isto é altamente recomendado."
-
-#: 
-msgid "Creating Backup..."
-msgstr "A criar cópia de segurança..."
-
-#: 
-msgid "Download Backup & Continue"
-msgstr "Transferir cópia de segurança e continuar"
 
 #: 
 msgid "Download the latest release and apply it to your installation."
@@ -12379,10 +11166,6 @@ msgstr "Gerar listas de turmas, folhas de presenças e álbuns de fotografias"
 #: 
 msgid "Installed"
 msgstr "Instalado"
-
-#: 
-msgid "It is strongly recommended to have a backup before proceeding."
-msgstr "É altamente recomendado ter uma cópia de segurança antes de prosseguir."
 
 #: 
 msgid "Latest"
@@ -12508,18 +11291,10 @@ msgstr "O utilizador deve ter permissão de Notas"
 msgid "Address Defaults"
 msgstr "Padrões de Endereço"
 
-#: 
-msgid "All Day"
-msgstr "Dia inteiro"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
 msgstr "Permitir que o utilizador adicione um novo evento"
-
-#: 
-msgid "Are you sure you want to continue?"
-msgstr "Tem a certeza de que deseja continuar?"
 
 #. Context: queryparameters_qrp
 #: 
@@ -12561,10 +11336,6 @@ msgid "ChurchCRM can send emails directly."
 msgstr "O ChurchCRM pode enviar e-mails diretamente."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "A API da Área de Transferência não está disponível. Copie o URL manualmente."
-
-#: 
 msgid "Communication"
 msgstr "Comunicação"
 
@@ -12584,18 +11355,6 @@ msgstr "Configurar Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Conecte o Mailchimp para sincronizar listas de e-mails para newsletters e campanhas."
-
-#: 
-msgid "Copied to clipboard"
-msgstr "Copiado para a área de transferência"
-
-#: 
-msgid "Copy All Emails"
-msgstr "Copiar Todos os E-mails"
-
-#: 
-msgid "Copy All Numbers"
-msgstr "Copiar Todos os Números"
 
 #: 
 msgid "Copy from church address"
@@ -12633,20 +11392,12 @@ msgid "Distance Unit"
 msgstr "Unidade de Distância"
 
 #: 
-msgid "Duration"
-msgstr "Duração"
-
-#: 
 msgid "Email Dashboard"
 msgstr "Painel de E-mail"
 
 #: 
 msgid "Email Integrations"
 msgstr "Integrações de E-mail"
-
-#: 
-msgid "Email addresses copied to clipboard"
-msgstr "Endereços de e-mail copiados para a área de transferência"
 
 #: 
 msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
@@ -12821,14 +11572,6 @@ msgstr "E-mails de notificação de novo membro"
 msgid "No cell phone on file"
 msgstr "Nenhum celular em arquivo"
 
-#: 
-msgid "No email addresses available"
-msgstr "Nenhum endereço de e-mail disponível"
-
-#: 
-msgid "No phone numbers available"
-msgstr "Nenhum número de telefone disponível"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Non-Attender"
@@ -12847,10 +11590,6 @@ msgstr "Não classificado"
 #: 
 msgid "Number of months since becoming a friend"
 msgstr "Número de meses desde que se tornou amigo"
-
-#: 
-msgid "Parents"
-msgstr "Pais"
 
 #: 
 msgid "Password reset emails — users cannot recover their accounts"
@@ -12878,14 +11617,6 @@ msgstr "Propriedade de pessoa usada para excluir membros da paróquia de listas 
 msgid "Person property used to exclude members from email lists"
 msgstr "Propriedade de pessoa usada para excluir membros da paróquia de listas de e-mail"
 
-#: 
-msgid "Phone numbers copied to clipboard"
-msgstr "Números de telefone copiados para a área de transferência"
-
-#: 
-msgid "Phone numbers copied — paste into your messaging app"
-msgstr "Números de telefone copiados - cole no seu aplicativo de mensagens"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
@@ -12906,18 +11637,10 @@ msgstr "Comparação de compromissos financeiros"
 msgid "Pledged this year"
 msgstr "Comprometido este ano"
 
-#: 
-msgid "Press CTRL + C to copy"
-msgstr "Pressione CTRL + C para copiar"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "Propriedade"
-
-#: 
-msgid "Public calendar"
-msgstr "Calendário público"
 
 #. Context: query_qry
 #: 
@@ -12970,14 +11693,6 @@ msgstr "Segundo ano fiscal para comparação"
 msgid "Second volunteer opportunity choice"
 msgstr "Segunda escolha de oportunidade de voluntário"
 
-#: 
-msgid "Select calendars..."
-msgstr "Seleccionar calendários..."
-
-#: 
-msgid "Select event type..."
-msgstr "Seleccione o tipo de evento..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Select field to search for."
@@ -13003,10 +11718,6 @@ msgstr "Calendários do Sistema"
 #: 
 msgid "System language for the church."
 msgstr "Idioma do sistema para a igreja."
-
-#: 
-msgid "Text All"
-msgstr "Enviar Mensagem para Todos"
 
 #: 
 msgid "Text Dashboard"
@@ -13069,18 +11780,6 @@ msgid "These values are pre-filled when creating new families. Leave blank to re
 msgstr "Esses valores são preenchidos automaticamente ao criar novas famílias. Deixe em branco para exigir entrada manual."
 
 #: 
-msgid "Time"
-msgstr "Hora"
-
-#: 
-msgid "Timed"
-msgstr "Cronometrado"
-
-#: 
-msgid "Unable to copy to clipboard. Please copy the URL manually."
-msgstr "Não foi possível copiar para a área de transferência. Copie o URL manualmente."
-
-#: 
 msgid "Unit used to measure distance."
 msgstr "Unidade utilizada para medir a distância."
 
@@ -13125,14 +11824,6 @@ msgstr "Correio Electrónico de Trabalho"
 #: 
 msgid "but not this year"
 msgstr "mas não este ano"
-
-#: 
-msgid "e.g. Sunday Service"
-msgstr "por exemplo, Culto de Domingo"
-
-#: 
-msgid "member"
-msgstr "membro"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -13987,21 +12678,6 @@ msgstr "O tamanho do ficheiro excede o limite do servidor de %s"
 msgid "Missing image data in request"
 msgstr "Dados de imagem em falta no pedido"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "Encontrar pessoas que não participaram num evento"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Pessoas em falta"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Selecionar o evento pretendido"
-
 #: 
 msgid "Advanced filtering by group, classification, and role"
 msgstr "Filtragem avançada por grupo, classificação e função"
@@ -14079,10 +12755,6 @@ msgid "API Key"
 msgstr "Chave de API"
 
 #: 
-msgid "API key regenerated"
-msgstr "Chave de API regenerada"
-
-#: 
 msgid "Account"
 msgstr "Conta"
 
@@ -14157,46 +12829,6 @@ msgstr "Número predefinido de linhas mostradas nas tabelas de dados. Entra em v
 #: 
 msgid "Edit own family only"
 msgstr "Editar apenas a própria família"
-
-#: 
-msgid "Enter text here..."
-msgstr "Introduza texto aqui..."
-
-#: 
-msgid "Failed to cancel enrollment. Please try again."
-msgstr "Falha ao cancelar inscrição. Por favor, tente novamente."
-
-#: 
-msgid "Failed to delete event. Please try again."
-msgstr "Falha ao eliminar evento. Por favor, tente novamente."
-
-#: 
-msgid "Failed to disable two-factor authentication. Please try again."
-msgstr "Falha ao desativar a autenticação de dois fatores. Por favor, tente novamente."
-
-#: 
-msgid "Failed to generate QR code. Please try again."
-msgstr "Falha ao gerar código QR. Por favor, tente novamente."
-
-#: 
-msgid "Failed to load calendar data. Please try again."
-msgstr "Falha ao carregar dados do calendário. Por favor, tente novamente."
-
-#: 
-msgid "Failed to load event. Please try again."
-msgstr "Falha ao carregar evento. Por favor, tente novamente."
-
-#: 
-msgid "Failed to load recovery codes. Please refresh the page."
-msgstr "Falha ao carregar códigos de recuperação. Por favor, atualize a página."
-
-#: 
-msgid "Failed to save event. Please try again."
-msgstr "Falha ao guardar evento. Por favor, tente novamente."
-
-#: 
-msgid "Failed to save setting"
-msgstr "Falha ao guardar definição"
 
 #. Context: locales
 #: 
@@ -14381,10 +13013,6 @@ msgid "User Config"
 msgstr "Configuração do Utilizador"
 
 #: 
-msgid "Verification failed. Please try again."
-msgstr "Verificação falhada. Por favor, tente novamente."
-
-#: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "A versão %s está disponível. Por favor, atualize a sua instalação."
 
@@ -14435,10 +13063,6 @@ msgid "A tablet assigned to one event. The kiosk pulls the event's linked group 
 msgstr "Um tablet atribuído a um evento. O quiosque obtém a lista do grupo associado ao evento e apresenta-a para entrada por toque. Sem um grupo associado, o quiosque não tem lista para apresentar."
 
 #: 
-msgid "Add Walk-in / Visitor"
-msgstr "Adicionar Visitante"
-
-#: 
 msgid "Add people to your cart first, then come back to check them in to an event."
 msgstr "Adicione primeiro pessoas à sua Seleção e volte para registar a entrada num evento."
 
@@ -14473,10 +13097,6 @@ msgstr "Todas as fotos e documentos carregados"
 #: 
 msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
 msgstr "Um Tipo de Evento é um modelo — nome, hora de início predefinida, recorrência, categorias de contagem de presenças. Opcionalmente associado a um grupo de turma como audiência predefinida."
-
-#: 
-msgid "Attendance record deleted."
-msgstr "Registo de presença eliminado."
 
 #: 
 msgid "Audit"
@@ -14539,24 +13159,12 @@ msgid "Check in all %d family members to a single event."
 msgstr "Registar a entrada de todos os %d membros da família num único evento."
 
 #: 
-msgid "Check out"
-msgstr "Registar saída"
-
-#: 
 msgid "Check-in By"
 msgstr "Entrada Registada Por"
 
 #: 
-msgid "Check-in failed. Please try again."
-msgstr "O registo de entrada falhou. Por favor, tente novamente."
-
-#: 
 msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
 msgstr "O registo de entrada está desativado para eventos inativos. Ative o evento no Painel de Eventos para ativar o registo de entrada."
-
-#: 
-msgid "Check-out failed. Please try again."
-msgstr "O registo de saída falhou. Por favor, tente novamente."
 
 #: 
 msgid "Checked in to event: %s"
@@ -14569,10 +13177,6 @@ msgstr "Saída registada do evento: %s"
 #: 
 msgid "Close All Stuck Events"
 msgstr "Fechar Todos os Eventos Bloqueados"
-
-#: 
-msgid "Confirm Check Out"
-msgstr "Confirmar Saída"
 
 #: 
 msgid "Create Repeat Events"
@@ -14599,10 +13203,6 @@ msgid "Creating backup..."
 msgstr "A criar cópia de segurança..."
 
 #: 
-msgid "Creating..."
-msgstr "A criar..."
-
-#: 
 msgid "Database + uploaded photos (larger)"
 msgstr "Base de dados + fotos carregadas (maior)"
 
@@ -14615,34 +13215,6 @@ msgid "Date range cannot exceed 1 year"
 msgstr "O intervalo de datas não pode exceder 1 ano"
 
 #: 
-msgid "Deactivate"
-msgstr "Desativar"
-
-#: 
-msgid "Delete Event Type"
-msgstr "Eliminar Tipo de Evento"
-
-#: 
-msgid "Delete attendance record?"
-msgstr "Eliminar registo de presença?"
-
-#: 
-msgid "Delete check-in record for"
-msgstr "Eliminar registo de entrada para"
-
-#: 
-msgid "Delete this event?"
-msgstr "Eliminar este evento?"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
-msgstr "A eliminação de um evento também elimina todas as contagens de presenças. Esta ação não pode ser desfeita."
-
-#: 
-msgid "Deleting this event will also delete all attendance records. This cannot be undone."
-msgstr "A eliminação deste evento também eliminará todos os registos de presença. Esta ação não pode ser desfeita."
-
-#: 
 msgid "Destructive Operation"
 msgstr "Operação Destrutiva"
 
@@ -14653,10 +13225,6 @@ msgstr "Edite o nome de uma categoria e clique em Guardar, ou utilize o ícone d
 #: 
 msgid "End Time"
 msgstr "Hora de Fim"
-
-#: 
-msgid "End time must be after start time."
-msgstr "A hora de fim deve ser posterior à hora de início."
 
 #: 
 msgid "Ended"
@@ -14681,14 +13249,6 @@ msgstr "Detalhes do Evento"
 #: 
 msgid "Event Template"
 msgstr "Modelo de Evento"
-
-#: 
-msgid "Event already exists. Redirecting to check-in..."
-msgstr "O evento já existe. A redirecionar para o registo de entrada..."
-
-#: 
-msgid "Event created. Redirecting to check-in..."
-msgstr "Evento criado. A redirecionar para o registo de entrada..."
 
 #: 
 msgid "Event title is required."
@@ -14735,22 +13295,6 @@ msgid "Everyone is checked in!"
 msgstr "Todos estão registados!"
 
 #: 
-msgid "Failed to create class. Please try again."
-msgstr "Falha ao criar turma. Por favor, tente novamente."
-
-#: 
-msgid "Failed to create event."
-msgstr "Falha ao criar evento."
-
-#: 
-msgid "Failed to create event. Please try again."
-msgstr "Falha ao criar evento. Por favor, tente novamente."
-
-#: 
-msgid "Failed to delete. Please try again."
-msgstr "Falha ao eliminar. Por favor, tente novamente."
-
-#: 
 msgid "Fastest workflow:"
 msgstr "Fluxo de trabalho mais rápido:"
 
@@ -14791,14 +13335,6 @@ msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
 msgstr "Formato de recorrência anual inválido; esperado MM-DD (p. ex. 04-12)"
 
 #: 
-msgid "Just now"
-msgstr "Agora mesmo"
-
-#: 
-msgid "Leave blank to check out without recording the supervisor."
-msgstr "Deixe em branco para registar a saída sem gravar o supervisor."
-
-#: 
 msgid "Link events to a group for Kiosk check-in functionality."
 msgstr "Associar eventos a um grupo para a funcionalidade de registo de entrada no Quiosque."
 
@@ -14817,10 +13353,6 @@ msgstr "Gerir nomes de eventos, padrões de recorrência e contagens de presenç
 #: 
 msgid "Missing required field: %s"
 msgstr "Campo obrigatório em falta: %s"
-
-#: 
-msgid "No Events Today"
-msgstr "Sem Eventos Hoje"
 
 #: 
 msgid "No Group"
@@ -14847,14 +13379,6 @@ msgid "Optional Settings"
 msgstr "Definições Opcionais"
 
 #: 
-msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
-msgstr "Opcional — registe quem está a fazer a saída desta pessoa (p. ex. um pai ou mãe a levar um filho)."
-
-#: 
-msgid "Person checked out."
-msgstr "Saída da pessoa registada."
-
-#: 
 msgid "Person is not checked in"
 msgstr "A pessoa não está registada"
 
@@ -14865,14 +13389,6 @@ msgstr "Pessoa não está na lista da turma ativa"
 #: 
 msgid "Pin to Calendars"
 msgstr "Afixar nos Calendários"
-
-#: 
-msgid "Please select a person to check in."
-msgstr "Por favor, selecione uma pessoa para registar a entrada."
-
-#: 
-msgid "Range end date must be on or after range start date."
-msgstr "A data de fim do intervalo deve ser igual ou posterior à data de início."
 
 #: 
 msgid "Range end must be a valid YYYY-MM-DD date."
@@ -14923,10 +13439,6 @@ msgid "Skip"
 msgstr "Ignorar"
 
 #: 
-msgid "Skip & Check Out"
-msgstr "Ignorar e Registar Saída"
-
-#: 
 msgid "Start Check-in"
 msgstr "Iniciar Registo de Entrada"
 
@@ -14957,10 +13469,6 @@ msgstr "Registar Presenças"
 #: 
 msgid "The Events module is disabled"
 msgstr "O módulo de Eventos está desativado"
-
-#: 
-msgid "There are no events scheduled for today"
-msgstr "Não há eventos agendados para hoje"
 
 #: 
 msgid "This event is inactive."
@@ -15091,18 +13599,6 @@ msgid "Map Coordinates"
 msgstr "Coordenadas do Mapa"
 
 #: 
-msgid "Please select a group."
-msgstr "Por favor, selecione um ministério."
-
-#: 
-msgid "Please select a role."
-msgstr "Por favor, selecione uma função."
-
-#: 
-msgid "Please select both a group and a role."
-msgstr "Por favor, selecione um ministério e uma função."
-
-#: 
 msgid "Range: -180 to 180."
 msgstr "Intervalo: -180 a 180."
 
@@ -15117,22 +13613,6 @@ msgstr "ex.: -74.0060"
 #: 
 msgid "e.g., 40.7128"
 msgstr "ex.: 40.7128"
-
-#: 
-msgid "mo"
-msgstr "mês"
-
-#: 
-msgid "mos"
-msgstr "meses"
-
-#: 
-msgid "yr"
-msgstr "ano"
-
-#: 
-msgid "yrs"
-msgstr "anos"
 
 #: 
 msgid "An error occurred while deleting the family."
@@ -15243,10 +13723,6 @@ msgid "You do not have permission to view this person"
 msgstr "Não tem permissão para ver esta pessoa"
 
 #: 
-msgid "Are you sure you want to delete this event type? This cannot be undone."
-msgstr "Tem a certeza de que pretende eliminar este tipo de evento? Esta ação não pode ser desfeita."
-
-#: 
 msgid "Assign to me"
 msgstr "Atribuir a mim"
 
@@ -15257,10 +13733,6 @@ msgstr "Atribuído"
 #: 
 msgid "Assigned event not found"
 msgstr "Evento atribuído não encontrado"
-
-#: 
-msgid "Cannot Delete Event Type"
-msgstr "Não é possível eliminar o tipo de evento"
 
 #: 
 msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
@@ -15291,20 +13763,12 @@ msgid "Register New Device"
 msgstr "Registar novo dispositivo"
 
 #: 
-msgid "This event type is used by"
-msgstr "Este tipo de evento é utilizado por"
-
-#: 
 msgid "Total Kiosks"
 msgstr "Total de quiosques"
 
 #: 
 msgid "Upcoming Events"
 msgstr "Próximos eventos"
-
-#: 
-msgid "event(s). Deactivate the type instead, or reassign the events first."
-msgstr "evento(s). Desative o tipo ou reatribua os eventos primeiro."
 
 #: 
 msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
@@ -15317,10 +13781,6 @@ msgstr "Já existe uma opção com esse nome"
 #: 
 msgid "Cannot delete the only remaining option"
 msgstr "Não é possível eliminar a única opção restante"
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Área de transferência indisponível. Utilize o botão Transferir para guardar os seus códigos."
 
 #: 
 msgid "Custom Option"
@@ -15397,10 +13857,6 @@ msgstr "Código de Recuperação"
 #: 
 msgid "Set up Email"
 msgstr "Configurar E-mail"
-
-#: 
-msgid "Unable to copy to clipboard. Please copy the codes manually."
-msgstr "Não foi possível copiar para a área de transferência. Copie os códigos manualmente."
 
 #: 
 msgid "Use Recovery Code"
@@ -15719,10 +14175,6 @@ msgid "Add Recurring Event"
 msgstr "Adicionar evento recorrente"
 
 #: 
-msgid "Available after the event is saved."
-msgstr "Disponível após guardar o evento."
-
-#: 
 msgid "Boolean properties/fields accept yes / no / true / false / 1 / 0."
 msgstr "Propriedades/campos booleanos aceitam sim / não / true / false / 1 / 0."
 
@@ -15763,10 +14215,6 @@ msgid "External calendar sharing is disabled"
 msgstr "A partilha de calendário externo está desactivada"
 
 #: 
-msgid "Failed to load event editor. Please refresh and try again."
-msgstr "Falha ao carregar o editor de eventos. Actualize a página e tente novamente."
-
-#: 
 msgid "Family Custom"
 msgstr "Personalizado de família"
 
@@ -15775,16 +14223,8 @@ msgid "Family Property"
 msgstr "Propriedade de família"
 
 #: 
-msgid "Fields"
-msgstr "Campos"
-
-#: 
 msgid "Go to home"
 msgstr "Ir para o início"
-
-#: 
-msgid "Hide advanced options"
-msgstr "Ocultar opções avançadas"
 
 #: 
 msgid "How the CSV Import Works"
@@ -15803,14 +14243,6 @@ msgid "Loading event editor…"
 msgstr "A carregar editor de eventos…"
 
 #: 
-msgid "No group"
-msgstr "Sem ministério"
-
-#: 
-msgid "Not pinned to any calendar"
-msgstr "Não fixado a nenhum calendário"
-
-#: 
 msgid "Optional — sermon notes, materials, or other details copied to every generated event."
 msgstr "Opcional — notas do sermão, materiais ou outros detalhes copiados para cada evento gerado."
 
@@ -15825,10 +14257,6 @@ msgstr "Personalizado de pessoa"
 #: 
 msgid "Person Property"
 msgstr "Propriedade de pessoa"
-
-#: 
-msgid "Show more options"
-msgstr "Mostrar mais opções"
 
 #: 
 msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
@@ -15855,16 +14283,8 @@ msgid "This calendar link is invalid or has been revoked. Ask the church for a c
 msgstr "Esta ligação de calendário é inválida ou foi revogada. Peça à igreja uma ligação actual."
 
 #: 
-msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
-msgstr "Associa este evento a uma lista de classe ou ministério — utilizado pelo fluxo de entrada no Quiosque."
-
-#: 
 msgid "Upload a CSV to create families and people in bulk."
 msgstr "Carregue um CSV para criar famílias e paroquianos em massa."
-
-#: 
-msgid "Volunteer-entered headcounts, broken down by category."
-msgstr "Contagens de participantes inseridas por voluntários, discriminadas por categoria."
 
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
@@ -15899,14 +14319,6 @@ msgstr "Adiciona feriados públicos ao calendário principal. Cada país selecio
 msgid "Choose map provider"
 msgstr "Escolher fornecedor de mapas"
 
-#: 
-msgid "Current database"
-msgstr "Base de dados atual"
-
-#: 
-msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
-msgstr "Os dados de demonstração são normalmente carregados apenas em instalações novas. Importar agora irá adicionar registos de exemplo aos seus dados existentes e poderá criar duplicados."
-
 #. plugin:holidays:section:2:content
 #: 
 msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
@@ -15931,10 +14343,6 @@ msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Season
 msgstr "Os feriados são classificados por tipo: Oficiais, Observâncias, Feriados Bancários, Sazonais e Religiosos. Deixe todas as categorias desmarcadas para mostrar todos os feriados, ou selecione tipos específicos para filtrar a visualização."
 
 #: 
-msgid "Import demo data anyway"
-msgstr "Importar dados de demonstração mesmo assim"
-
-#: 
 msgid "Missing pledge identifier."
 msgstr "Identificador de compromisso financeiro em falta."
 
@@ -15953,10 +14361,6 @@ msgstr "Abrir no Apple Maps"
 #: 
 msgid "Open in Google Maps"
 msgstr "Abrir no Google Maps"
-
-#: 
-msgid "Open in new tab"
-msgstr "Abrir em novo separador"
 
 #. plugin:holidays:section:0:title
 #: 
@@ -15989,22 +14393,10 @@ msgstr "Sistema"
 msgid "Timeline filters"
 msgstr "Filtros da linha do tempo"
 
-#: 
-msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
-msgstr "Para começar do zero com uma base de dados limpa, utilize Repor Base de Dados no Painel de Administração antes de importar dados de demonstração."
-
 #. plugin:holidays:section:0:content
 #: 
 msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
 msgstr "Utilize o seletor de Países para escolher um ou mais países. Cada país que adicionar aparecerá como uma entrada de calendário separada na barra lateral — permitindo mostrar feriados para uma congregação global."
-
-#: 
-msgid "Your database already contains data"
-msgstr "A sua base de dados já contém dados"
-
-#: 
-msgid "people"
-msgstr "pessoas"
 
 #: 
 msgid "A downloadUrl is required to install a plugin."
@@ -16251,16 +14643,8 @@ msgid "Need help? Contact us"
 msgstr "Precisa de ajuda? Contacte-nos"
 
 #: 
-msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
-msgstr "Nenhum calendário selecionado — este evento aparecerá no calendário do sistema \"Eventos Não Fixados\" até ser fixado."
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "Abre uma janela de 2 minutos para os dispositivos se registarem em:"
-
-#: 
-msgid "Times use church time ({{church}}), not your browser ({{browser}})."
-msgstr "As horas utilizam o fuso horário da igreja ({{church}}), não o do seu navegador ({{browser}})."
 
 #: 
 msgid "Welcome — sign in to manage your community"
