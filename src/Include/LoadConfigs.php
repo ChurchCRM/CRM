@@ -12,8 +12,21 @@ use ChurchCRM\dto\SystemConfig;
  * Redirects to setup if Config.php doesn't exist.
  * This file should be used by all Slim application entry points.
  */
+
+// Detect the app's URL prefix from REQUEST_URI so redirects work on both
+// root installs (/) and subdirectory installs (/churchcrm).
+$_crm_path = rtrim(parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?? '/', '/');
+$_crm_root = '';
+if ($_crm_path !== '' && $_crm_path !== '/') {
+    preg_match('#^(/[^/]+)#', $_crm_path, $_crm_m);
+    $_crm_first = $_crm_m[1] ?? '';
+    if (!preg_match('#^/(admin|api|setup|errors|v2|event|skin|vendor|include|src|logs|index\.php)$#i', $_crm_first)) {
+        $_crm_root = $_crm_first;
+    }
+}
+
 if (!file_exists(__DIR__ . '/Config.php')) {
-    header('Location: ../setup');
+    header("Location: {$_crm_root}/setup");
     exit;
 }
 
@@ -28,7 +41,8 @@ try {
     $sRootPath = $config->getRootPath();
     $URL = $config->getUrls();
 } catch (RuntimeException $e) {
-    header('Location: ../errors/config-error.php?error=' . urlencode($e->getMessage()));
+    $errorParam = urlencode($e->getMessage());
+    header("Location: {$_crm_root}/errors/config-error.php?error={$errorParam}");
     exit;
 }
 
