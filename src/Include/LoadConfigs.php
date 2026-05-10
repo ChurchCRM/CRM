@@ -13,16 +13,15 @@ use ChurchCRM\dto\SystemConfig;
  * This file should be used by all Slim application entry points.
  */
 
-// Detect the app's URL prefix from REQUEST_URI so redirects work on both
-// root installs (/) and subdirectory installs (/churchcrm).
-$_crm_path = rtrim(parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?? '/', '/');
-$_crm_root = '';
-if ($_crm_path !== '' && $_crm_path !== '/') {
-    preg_match('#^(/[^/]+)#', $_crm_path, $_crm_m);
-    $_crm_first = $_crm_m[1] ?? '';
-    if (!preg_match('#^/(admin|api|setup|errors|v2|event|skin|vendor|include|src|logs|index\.php)$#i', $_crm_first)) {
-        $_crm_root = $_crm_first;
-    }
+// Derive the install prefix from SCRIPT_NAME so redirects work for root installs
+// and subdirectory installs of any depth (e.g. /apps/churchcrm/api/index.php).
+// SCRIPT_NAME is set by the web server to the path of the executing script:
+//   /churchcrm/api/index.php  →  dirname → /churchcrm/api  →  dirname → /churchcrm
+//   /api/index.php            →  dirname → /api             →  dirname → /  → ''
+$_crm_script = str_replace('\\', '/', $_SERVER['SCRIPT_NAME'] ?? '/index.php');
+$_crm_root   = dirname(dirname($_crm_script));
+if ($_crm_root === '/' || $_crm_root === '.') {
+    $_crm_root = '';
 }
 
 if (!file_exists(__DIR__ . '/Config.php')) {

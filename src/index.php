@@ -23,26 +23,25 @@ try {
     exit(1);
 }
 
+// Derive install prefix from SCRIPT_NAME — works for root and nested subdir installs.
+// Computed before any redirect so both the PHP-version and setup redirects resolve correctly.
+//   /churchcrm/index.php  →  dirname → /churchcrm
+//   /index.php            →  dirname → /  → ''
+$_idx_script = str_replace('\\', '/', $_SERVER['SCRIPT_NAME'] ?? '/index.php');
+$_idx_root   = dirname($_idx_script);
+if ($_idx_root === '/' || $_idx_root === '.') {
+    $_idx_root = '';
+}
+
 $phpVersion = phpversion();
 if (version_compare($phpVersion, $requiredPhp, '<')) {
-    header('Location: errors/php-error.php');
+    header("Location: {$_idx_root}/errors/php-error.php");
     exit;
 }
 
 if (file_exists(__DIR__ . '/Include/Config.php')) {
     require_once __DIR__ . '/Include/Config.php';
 } else {
-    // Detect the app's URL prefix from REQUEST_URI so the redirect works on
-    // both root installs (/) and subdirectory installs (/churchcrm).
-    $_idx_path = rtrim(parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?? '/', '/');
-    $_idx_root = '';
-    if ($_idx_path !== '' && $_idx_path !== '/') {
-        preg_match('#^(/[^/]+)#', $_idx_path, $_idx_m);
-        $_idx_first = $_idx_m[1] ?? '';
-        if (!preg_match('#^/(admin|api|setup|errors|v2|event|skin|vendor|include|src|logs|index\.php)$#i', $_idx_first)) {
-            $_idx_root = $_idx_first;
-        }
-    }
     header("Location: {$_idx_root}/setup");
     exit;
 }

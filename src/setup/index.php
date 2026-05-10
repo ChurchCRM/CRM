@@ -8,18 +8,11 @@ use Slim\Exception\HttpNotFoundException;
 use Slim\Factory\AppFactory;
 use Slim\Psr7\Response as SlimResponse;
 
-if (file_exists('../Include/Config.php')) {
-    header('Location: ../');
-    exit;
-}
-
-require_once __DIR__ . '/../vendor/autoload.php';
-
-// Detect base path from server variables - no Config.php dependency
+// Detect base path from server variables - no Config.php dependency.
+// Computed before the Config.php existence check so the redirect URL is correct.
 // For /churchcrm/setup/index.php -> SCRIPT_NAME = /churchcrm/setup/index.php
-// For /setup/index.php -> SCRIPT_NAME = /setup/index.php
-$scriptName = $_SERVER['SCRIPT_NAME'] ?? '/setup/index.php';
-$scriptName = str_replace('\\', '/', $scriptName);
+// For /setup/index.php           -> SCRIPT_NAME = /setup/index.php
+$scriptName = str_replace('\\', '/', $_SERVER['SCRIPT_NAME'] ?? '/setup/index.php');
 $basePath = dirname($scriptName); // Gets /churchcrm/setup or /setup
 
 // Calculate root path (parent of setup directory)
@@ -30,7 +23,7 @@ if ($rootPath === '/' || $rootPath === '.') {
     $rootPath = '';
 }
 
-// Fallback detection when SCRIPT_NAME lacks the installation prefix (common with subdir installs)
+// Fallback: SCRIPT_NAME sometimes lacks the subdir prefix on some server configs
 if ($rootPath === '') {
     $requestUri = $_SERVER['REQUEST_URI'] ?? '';
     $requestPath = parse_url($requestUri, PHP_URL_PATH) ?? '';
@@ -51,6 +44,16 @@ if ($rootPath === '') {
 if ($rootPath !== '' && $rootPath[0] !== '/') {
     $rootPath = '/' . $rootPath;
 }
+
+// If Config.php already exists the app is configured — redirect to the app root.
+// Use __DIR__ so the check resolves against the script path, not the server CWD
+// (CWD-relative paths fail under PHP-FPM where CWD is the document root).
+if (file_exists(__DIR__ . '/../Include/Config.php')) {
+    header("Location: {$rootPath}/");
+    exit;
+}
+
+require_once __DIR__ . '/../vendor/autoload.php';
 
 // Store paths in global for template access (no SystemURLs available)
 $GLOBALS['CHURCHCRM_SETUP_ROOT_PATH'] = $rootPath;
