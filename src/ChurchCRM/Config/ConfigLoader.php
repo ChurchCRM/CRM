@@ -58,7 +58,7 @@ final class ConfigLoader
         // Handle blank or missing dbPort: default to 3306 (standard MySQL port)
         if ($dbPort === null || $dbPort === '') {
             $dbPort = '3306';
-            self::writeLog('WARN', 'DB_SERVER_PORT not set or blank; defaulting to 3306');
+            self::writeLog('DEBUG', 'DB_SERVER_PORT not set or blank; defaulting to 3306');
         }
 
         // Validate that required variables were set
