@@ -1,0 +1,7 @@
+# Static error pages — never route through the app.
+#
+# Disable mod_rewrite so the parent .htaccess's REQUEST_FILENAME !-f rule
+# (which misbehaves on LiteSpeed for nested directories) does not rewrite
+# real PHP files like config-error.php to /index.php. The error pages are
+# self-contained and must be served directly even when the app cannot boot.
+RewriteEngine Off
