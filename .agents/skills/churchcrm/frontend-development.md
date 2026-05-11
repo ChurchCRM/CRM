@@ -1174,6 +1174,19 @@ tab-pane or collapse when `location.hash` matches its id).
 
 ---
 
+## Maps Modernization — Roadmap Status <!-- learned: 2026-05-10 -->
+
+The Maps Modernization epic (MAPS-00 through MAPS-18) is substantially complete. MAPS-01 through MAPS-11 are all closed (Google Maps → Leaflet+OSM migration done). The roadmap for the remaining tickets:
+
+| Ticket | Title | Status |
+|--------|-------|--------|
+| [#8055](https://github.com/ChurchCRM/CRM/issues/8055) MAPS-12 | Radius search UX improvement | **Open — 7.4.0** |
+| [#8056](https://github.com/ChurchCRM/CRM/issues/8056) MAPS-13 | Marker clustering | **Closed — won't do** |
+| [#8057](https://github.com/ChurchCRM/CRM/issues/8057) MAPS-14 | Color-coded care status pins | **Closed — won't do** |
+| [#8058](https://github.com/ChurchCRM/CRM/issues/8058) MAPS-15 | Small group assignment overlay | **Closed — won't do** |
+
+**Do not reopen or re-implement MAPS-13/14/15** without explicit user approval — closed as out-of-scope during 7.4.0 milestone review (2026-05-10). MAPS-12 (#8055) is the only remaining maps enhancement.
+
 ## Files
 
 **Compiled Assets:** `src/skin/v2/churchcrm.min.js`, `src/skin/v2/churchcrm.min.css`
