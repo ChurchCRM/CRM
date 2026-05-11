@@ -357,22 +357,6 @@ msgid "Back to Menu"
 msgstr "Quay lại Menu"
 
 #: 
-msgid "Empty Cart"
-msgstr "Xóa bỏ giỏ"
-
-#: 
-msgid "Empty Cart to Group"
-msgstr "Xóa bỏ giỏ trong Ban/Mục vụ"
-
-#: 
-msgid "Empty Cart to Family"
-msgstr "Xóa bỏ giỏ trong Gia đình"
-
-#: 
-msgid "Map Cart"
-msgstr "Giỏ Bản đồ"
-
-#: 
 msgid "Bulk Mail Presort"
 msgstr "Sắp xếp thư hàng loạt"
 
@@ -1455,26 +1439,6 @@ msgid "Group View"
 msgstr "Xem Ban/Mục vụ"
 
 #: 
-msgid "Confirm Delete Group"
-msgstr "Xác nhận xóa bỏ Ban/Mục vụ này"
-
-#: 
-msgid "Please confirm deletion of this group record"
-msgstr "Vui lòng xác nhận việc xóa bản ghi nhóm này"
-
-#: 
-msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
-msgstr "Thao tác này cũng sẽ xóa tất cả các vai trò và dữ liệu Thuộc tính Nhóm cụ thể được liên kết với bản ghi Nhóm này."
-
-#: 
-msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
-msgstr "Tất cả tư cách thành viên và tài sản của nhóm sẽ bị hủy. Bản thân các thành viên trong nhóm sẽ không bị thay đổi."
-
-#: 
-msgid "Please select target group for members"
-msgstr "Vui lòng lựa chọn nhóm tế bào cho thành viên"
-
-#: 
 msgid "Default Role"
 msgstr "Vai trò mặc định"
 
@@ -1657,10 +1621,6 @@ msgstr "Ban/Mục vụ"
 #: 
 msgid "Default"
 msgstr "Mặc định"
-
-#: 
-msgid "Make Default"
-msgstr "Làm mặc định"
 
 #: 
 msgid "Exit"
@@ -2068,15 +2028,6 @@ msgid "Calendar Year"
 msgstr "Lịch năm"
 
 #: 
-msgid "User Delete Confirmation"
-msgstr "Xác nhận xóa người dùng"
-
-#: 
-#, fuzzy
-msgid "Please confirm removal of user status from"
-msgstr "Vui lòng xác nhận việc xóa trạng thái người dùng khỏi"
-
-#: 
 msgid "User Editor"
 msgstr "Trình chỉnh sửa người dùng"
 
@@ -2133,10 +2084,6 @@ msgid "Failed Logins"
 msgstr "Đăng nhập thất bại"
 
 #: 
-msgid "You must enter the same password in both boxes"
-msgstr "Bạn phải nhập cùng một mật khẩu vào cả hai hộp"
-
-#: 
 msgid "Your password choice is too obvious. Please choose something else."
 msgstr "Lựa chọn mật khẩu của bạn là quá rõ ràng. Vui lòng chọn cái khác."
 
@@ -2167,10 +2114,6 @@ msgstr "Mật khẩu mới"
 #: 
 msgid "Confirm New Password"
 msgstr "Nhập lại mật khẩu mới"
-
-#: 
-msgid "Please confirm the password reset of this user"
-msgstr "Vui lòng xác nhận việc đặt lại mật khẩu của người dùng này"
 
 #: 
 msgid "Volunteer Opportunity Editor"
@@ -2650,14 +2593,6 @@ msgid "Are you sure you want to delete the selected"
 msgstr "Bạn có chắc chắn muốn xóa phần đã chọn"
 
 #: 
-msgid "Deposit(s)"
-msgstr "Tiền ký gửi"
-
-#: 
-msgid "This will also delete all payments associated with this deposit"
-msgstr "Điều này cũng sẽ xóa tất cả các khoản thanh toán được liên kết với khoản tiền gửi này"
-
-#: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "KHÔNG THỂ hoàn tác hành động này và có thể có tác động pháp lý!"
 
@@ -2724,10 +2659,6 @@ msgstr "Có"
 #: 
 msgid "Edit Settings"
 msgstr "Chỉnh sửa cài đặt"
-
-#: 
-msgid "Backup Downloaded, Copy on server removed"
-msgstr "Tập tin sao lưu đã được tải, bản sao lưu trên máy chủ đã được xóa đi"
 
 #: 
 msgid "Functions"
@@ -2845,10 +2776,6 @@ msgstr "Vô hiệu thuộc tính Ban/Mục vụ đặc biệt"
 #: 
 msgid "Group Properties"
 msgstr "Thuộc tính Ban/Mục vụ"
-
-#: 
-msgid "There was a problem retrieving the requested object"
-msgstr "Đã xảy ra sự cố khi truy xuất đối tượng được yêu cầu"
 
 #: 
 msgid "All"
@@ -4603,10 +4530,6 @@ msgid "Maximum upload size"
 msgstr "Kích thước tải lên tối đa"
 
 #: 
-msgid "The selected file exceeds this servers maximum upload size of"
-msgstr "Tệp đã chọn vượt quá kích thước tải lên tối đa của máy chủ này là"
-
-#: 
 msgid "Failed"
 msgstr "Thất bại"
 
@@ -4639,27 +4562,6 @@ msgstr "Tên cấu hình không hợp lệ đã được yêu cầu"
 #: 
 msgid "Profile Image uploaded"
 msgstr "Đã cập nhật hình ảnh đại diện"
-
-#: 
-#, fuzzy
-msgid "payment(s)?"
-msgstr "(các) khoản thanh toán?"
-
-#: 
-msgid "Confirm Deactivation"
-msgstr "Xác nhận việc hủy kích hoạt"
-
-#: 
-msgid "Confirm Activation"
-msgstr "Xác nhận kích hoạt"
-
-#: 
-msgid "Please confirm deactivation of family"
-msgstr "Vui lòng xác nhận việc hủy kích hoạt gia đình"
-
-#: 
-msgid "Please confirm activation of family"
-msgstr "Vui lòng xác nhận kích hoạt gia đình"
 
 #: 
 #, fuzzy
@@ -4764,14 +4666,6 @@ msgid "Include"
 msgstr "Bao gồm"
 
 #: 
-msgid "View Cart"
-msgstr "Xem giỏ"
-
-#: 
-msgid "Your Cart is Empty"
-msgstr "Giỏ của bạn đang trống"
-
-#: 
 msgid "Legend"
 msgstr "Huyền thoại"
 
@@ -4786,14 +4680,6 @@ msgstr "Hiển thị sinh viên có sinh nhật trong"
 #: 
 msgid "Actions"
 msgstr "Hành động"
-
-#: 
-msgid "Action Confirmation"
-msgstr "Xác nhận hành động"
-
-#: 
-msgid "Please confirm reset failed login count"
-msgstr "Vui lòng xác nhận đặt lại số lần đăng nhập không thành công"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -4933,10 +4819,6 @@ msgid "Reset your password"
 msgstr "Khôi phục mật khẩu của bạn"
 
 #: 
-msgid "Sorry, we are unable to process your request at this point in time."
-msgstr "Xin lỗi, chúng tôi không thể xử lý yêu cầu của bạn tại thời điểm này."
-
-#: 
 msgid "Kiosk Manager"
 msgstr "Người quản lý kiosk"
 
@@ -4949,10 +4831,6 @@ msgid "Self Verification"
 msgstr "Tự xác minh"
 
 #: 
-msgid "Check Number"
-msgstr "Số kiểm tra"
-
-#: 
 msgid "Details"
 msgstr "Chi tiết"
 
@@ -4961,48 +4839,12 @@ msgid "Verification email sent"
 msgstr "Gửi email xác minh"
 
 #: 
-msgid "Confirm Enable Group Specific Properties"
-msgstr "Xác nhận Bật thuộc tính cụ thể của nhóm"
-
-#: 
-msgid "This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor."
-msgstr "Thao tác này sẽ tạo một bảng thuộc tính dành riêng cho nhóm cho nhóm này. Sau đó, bạn nên thêm các thuộc tính cần thiết bằng Trình chỉnh sửa biểu mẫu thuộc tính nhóm cụ thể."
-
-#: 
-msgid "Confirm Disable Group Specific Properties"
-msgstr "Xác nhận vô hiệu hóa các thuộc tính cụ thể của nhóm"
-
-#: 
-msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
-msgstr "Bạn có chắc chắn muốn xóa các thuộc tính dành riêng cho từng nhóm không? Tất cả dữ liệu thuộc tính thành viên nhóm sẽ bị mất!"
-
-#: 
-msgid "Role Name"
-msgstr "Tên vai trò"
-
-#: 
-msgid "Sequence"
-msgstr "Sự nối tiếp"
-
-#: 
-msgid "Do you want to delete this person?  This cannot be undone."
-msgstr "Bạn có muốn xóa thành viên này không ? Điều này không thể hoàn lại."
-
-#: 
-msgid "Are you sure you want to unassign this property?"
-msgstr "Bạn có chắc chắn muốn bỏ gán thuộc tính này không?"
-
-#: 
 msgid "Select a family"
 msgstr "Lựa chọn gia đình"
 
 #: 
 msgid "Release Notes"
 msgstr "Ghi chú phát hành"
-
-#: 
-msgid "Move"
-msgstr "Di chuyển"
 
 #. Context: locales
 #: 
@@ -5193,18 +5035,6 @@ msgid "OK"
 msgstr "đồng ý"
 
 #: 
-msgid "Please select target Role for members"
-msgstr "Vui lòng lựa chọn vai trò cho thành viên"
-
-#: 
-msgid "GroupID required for role selection prompt"
-msgstr "Cần có GroupID cho lời nhắc lựa chọn vai trò"
-
-#: 
-msgid "Select Group and Role"
-msgstr "Lựa chọn nhóm tế bào và vai trò"
-
-#: 
 msgid "All Members"
 msgstr "Tất cả Thành viên"
 
@@ -5231,14 +5061,6 @@ msgstr "Phương pháp đặt tên người nhận"
 #: 
 msgid "Salutation Utility"
 msgstr "Salutation Utility"
-
-#: 
-msgid "Add A Group Name"
-msgstr "Thêm tên nhóm"
-
-#: 
-msgid "Default Name Group"
-msgstr "Nhóm tên mặc định"
 
 #: 
 msgid "Group Role"
@@ -5408,42 +5230,6 @@ msgid "Username"
 msgstr "Tài khoản"
 
 #: 
-msgid "Are you sure you want to move"
-msgstr "Bạn có chắc chắn muốn chuyển đi không"
-
-#: 
-msgid "Access Token"
-msgstr "Truy cập thẻ"
-
-#: 
-msgid "New Access Token"
-msgstr "Mã truy cập mới"
-
-#: 
-msgid "ICS URL"
-msgstr "URL ICS"
-
-#: 
-msgid "Foreground Color"
-msgstr "Màu viền"
-
-#: 
-msgid "Background Color"
-msgstr "Màu nền"
-
-#: 
-msgid "Delete Calendar"
-msgstr "Xóa lịch"
-
-#: 
-msgid "Invalid Entry"
-msgstr "Entry không hợp lệ"
-
-#: 
-msgid "Calendar Name"
-msgstr "Tên lịch"
-
-#: 
 msgid "New Calendar"
 msgstr "Tạo lịch mới"
 
@@ -5510,10 +5296,6 @@ msgstr "giá trị xuất khẩu không hợp lệ"
 #: 
 msgid "Duplicate Emails"
 msgstr "Email trùng lặp"
-
-#: 
-msgid "HTML URL"
-msgstr "URL HTML"
 
 #: 
 #, fuzzy
@@ -5591,10 +5373,6 @@ msgid "Latvia (Latvija)"
 msgstr "Latvia (Latvija)"
 
 #: 
-msgid "You are about to add a new deposit without a comment"
-msgstr "Bạn sắp thêm khoản tiền gửi mới mà không có bình luận"
-
-#: 
 msgid "Record"
 msgstr "Ghi lại"
 
@@ -5610,14 +5388,6 @@ msgstr "Đã hết vào sự kiện"
 #: 
 msgid "Passed"
 msgstr "Thông qua"
-
-#: 
-msgid "Focus"
-msgstr "Tiêu điểm"
-
-#: 
-msgid "Unfocus"
-msgstr "Không tập trung"
 
 #. Context: locales
 #: 
@@ -5664,10 +5434,6 @@ msgid "People Verify Dashboard"
 msgstr "Mọi người xác minh trang tổng quan"
 
 #: 
-msgid "Verification recorded"
-msgstr "Xác minh được ghi lại"
-
-#: 
 msgid "Verification URL created"
 msgstr "URL xác minh đã được tạo"
 
@@ -5686,10 +5452,6 @@ msgstr "Lỗi khi gửi (các) email"
 #: 
 msgid "Please check logs for more information"
 msgstr "Vui lòng kiểm tra nhật ký để biết thêm thông tin"
-
-#: 
-msgid "Verification URL"
-msgstr "URL xác minh"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5763,10 +5525,6 @@ msgid "LastName, FirstName MiddleName"
 msgstr "LastName, FirstName MiddleName"
 
 #: 
-msgid "Please confirm disabling 2 Factor Auth for this user"
-msgstr "Vui lòng xác nhận việc tắt 2 Factor Auth cho người dùng này"
-
-#: 
 msgid "Send an email notifying users when their account has been deleted"
 msgstr "Gửi email thông báo cho người dùng khi tài khoản của họ đã bị xóa"
 
@@ -5833,10 +5591,6 @@ msgid "Hebrew"
 msgstr "Tiếng Do Thái"
 
 #: 
-msgid "open rate"
-msgstr "tỉ lệ mở"
-
-#: 
 msgid "Permissions"
 msgstr "Quyền"
 
@@ -5861,22 +5615,6 @@ msgid "Owe"
 msgstr "Nợ"
 
 #: 
-msgid "Start Date"
-msgstr "Ngày bắt đầu"
-
-#: 
-msgid "End Date"
-msgstr "Ngày cuối"
-
-#: 
-msgid "Pinned Calendars"
-msgstr "Lịch được ghim"
-
-#: 
-msgid "This field is required"
-msgstr "Trường này là bắt buộc"
-
-#: 
 msgid "Text"
 msgstr "Bản văn"
 
@@ -5888,10 +5626,6 @@ msgstr "Mô tả sự kiện"
 #: 
 msgid "Afrikaans"
 msgstr "Người Afrikaans"
-
-#: 
-msgid "Loading"
-msgstr "Đang tải"
 
 #: 
 msgid "Today's Birthdays"
@@ -5960,24 +5694,8 @@ msgid "Ukrainian"
 msgstr "Ukraine"
 
 #: 
-msgid "Change role"
-msgstr "Thay đổi vai trò"
-
-#: 
 msgid "Closed"
 msgstr "Đóng"
-
-#: 
-msgid "Delete this person?"
-msgstr "Xóa người này?"
-
-#: 
-msgid "Deposit ID"
-msgstr "ID tiền gửi"
-
-#: 
-msgid "Deposit Total"
-msgstr "Tổng số tiền gửi"
 
 #: 
 msgid "If that doesn't work, copy and paste the following link in your browser"
@@ -6132,144 +5850,8 @@ msgid "Loading log file..."
 msgstr "Đang tải tệp nhật ký..."
 
 #: 
-msgid "A Calendar access token has been generated and saved."
-msgstr "Mã truy cập lịch đã được tạo và lưu."
-
-#: 
-msgid "added"
-msgstr "đã thêm"
-
-#: 
-msgid "Added"
-msgstr "Đã thêm"
-
-#: 
-msgid "Added to cart successfully"
-msgstr "Đã thêm vào danh sách chọn"
-
-#: 
-msgid "All members already in cart"
-msgstr "Tất cả thành viên đã có trong danh sách"
-
-#: 
-msgid "already in cart"
-msgstr "đã có trong danh sách"
-
-#: 
-msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
-msgstr "Không thể tải lịch. Vui lòng kiểm tra mã truy cập hoặc cấu hình."
-
-#: 
-msgid "Cart emptied successfully"
-msgstr "Đã làm trống danh sách chọn"
-
-#: 
-msgid "Cart emptied to group successfully"
-msgstr "Đã chuyển danh sách vào nhóm thành công"
-
-#: 
-msgid "Empty your entire cart?"
-msgstr "Xóa toàn bộ danh sách đang chọn?"
-
-#: 
-msgid "Failed to add family to cart"
-msgstr "Không thể thêm hộ gia đình vào danh sách"
-
-#: 
-msgid "Failed to add group to cart"
-msgstr "Không thể thêm nhóm vào danh sách"
-
-#: 
-msgid "Failed to add to cart"
-msgstr "Thêm vào danh sách thất bại"
-
-#: 
-msgid "Failed to empty cart"
-msgstr "Xóa danh sách thất bại"
-
-#: 
-msgid "Failed to empty cart to group"
-msgstr "Chuyển danh sách vào nhóm thất bại"
-
-#: 
-msgid "Failed to remove family from cart"
-msgstr "Không thể xóa hộ gia đình khỏi danh sách"
-
-#: 
-msgid "Failed to remove from cart"
-msgstr "Xóa khỏi danh sách thất bại"
-
-#: 
-msgid "Failed to remove group"
-msgstr "Xóa nhóm thất bại"
-
-#: 
-msgid "Family added to cart"
-msgstr "Đã thêm hộ gia đình vào danh sách"
-
-#: 
 msgid "Family removed from cart"
 msgstr "Đã xóa hộ gia đình khỏi danh sách"
-
-#: 
-msgid "Group added to cart"
-msgstr "Đã thêm nhóm vào danh sách"
-
-#: 
-msgid "Group removed from cart"
-msgstr "Đã xóa nhóm khỏi danh sách"
-
-#: 
-msgid "in cart"
-msgstr "trong danh sách"
-
-#: 
-msgid "members. Already had"
-msgstr "thành viên. Đã có sẵn"
-
-#: 
-msgid "people added to cart"
-msgstr "người đã được thêm vào danh sách"
-
-#: 
-msgid "people already in cart"
-msgstr "người đã có sẵn trong danh sách"
-
-#: 
-msgid "people from cart"
-msgstr "người từ danh sách"
-
-#: 
-msgid "people removed from cart"
-msgstr "người đã được xóa khỏi danh sách"
-
-#: 
-msgid "Person already in cart"
-msgstr "Người này đã có trong danh sách"
-
-#: 
-msgid "Remove this family from cart?"
-msgstr "Xóa hộ gia đình này khỏi danh sách?"
-
-#: 
-msgid "Remove this group from cart?"
-msgstr "Xóa nhóm này khỏi danh sách?"
-
-#: 
-msgid "Remove this person from cart?"
-msgstr "Xóa người này khỏi danh sách?"
-
-#: 
-msgid "Removed from cart successfully"
-msgstr "Đã xóa khỏi danh sách thành công"
-
-#: 
-msgid "Yes, Empty Cart"
-msgstr "Có, xóa hết"
-
-#: 
-msgid "Yes, Remove"
-msgstr "Có, xóa bỏ"
 
 #: 
 msgid "Add Group"
@@ -6278,10 +5860,6 @@ msgstr "Thêm nhóm"
 #: 
 msgid "Back to Group List"
 msgstr "Quay lại danh sách nhóm"
-
-#: 
-msgid "Default role updated."
-msgstr "Đã cập nhật vai trò mặc định."
 
 #: 
 msgid "Edit Group"
@@ -6296,36 +5874,12 @@ msgid "Failed to add role. Please try again."
 msgstr "Lỗi thêm vai trò. Vui lòng thử lại."
 
 #: 
-msgid "Failed to create group. Please try again."
-msgstr "Lỗi tạo nhóm. Vui lòng thử lại."
-
-#: 
 msgid "Failed to delete role. Please try again."
 msgstr "Xóa vai trò thất bại. Vui lòng thử lại."
 
 #: 
-msgid "Failed to load cart status."
-msgstr "Lỗi tải trạng thái danh sách chọn."
-
-#: 
-msgid "Failed to load groups. Please refresh the page."
-msgstr "Lỗi tải nhóm. Vui lòng tải lại trang."
-
-#: 
-msgid "Failed to set default role. Please try again."
-msgstr "Thiết lập vai trò mặc định thất bại. Vui lòng thử lại."
-
-#: 
-msgid "Failed to update group. Please try again."
-msgstr "Cập nhật nhóm thất bại. Vui lòng thử lại."
-
-#: 
 msgid "Failed to update properties. Please try again."
 msgstr "Cập nhật thuộc tính thất bại. Vui lòng thử lại."
-
-#: 
-msgid "Failed to update role name. Please try again."
-msgstr "Cập nhật tên vai trò thất bại. Vui lòng thử lại."
 
 #: 
 msgid "Leave blank to keep existing password"
@@ -6334,18 +5888,6 @@ msgstr "Để trống nếu không muốn đổi mật khẩu"
 #: 
 msgid "Please enter a group name."
 msgstr "Vui lòng nhập tên nhóm."
-
-#: 
-msgid "Role added successfully."
-msgstr "Đã thêm vai trò thành công."
-
-#: 
-msgid "Role deleted successfully."
-msgstr "Đã xóa vai trò thành công."
-
-#: 
-msgid "Role name updated."
-msgstr "Đã cập nhật tên vai trò."
 
 #: 
 msgid "View Group"
@@ -6358,14 +5900,6 @@ msgstr "Sự kiện hôm nay"
 #: 
 msgid "Add Family Member"
 msgstr "Thêm thành viên gia đình"
-
-#: 
-msgid "Address is required"
-msgstr "Yêu cầu nhập địa chỉ"
-
-#: 
-msgid "City is required"
-msgstr "Yêu cầu tên thành phố"
 
 #: 
 msgid "Email Address"
@@ -6384,72 +5918,20 @@ msgid "Family name is required"
 msgstr "Yêu cầu nhập tên hộ gia đình (tộc họ)"
 
 #: 
-msgid "Family name must be at least 2 characters"
-msgstr "Tên gia đình phải có ít nhất 2 ký tự"
-
-#: 
 msgid "First name"
 msgstr "Tên"
-
-#: 
-msgid "First name is required"
-msgstr "Yêu cầu tên"
-
-#: 
-msgid "First name must be at least 2 characters"
-msgstr "Tên phải có ít nhất 2 ký tự"
-
-#: 
-msgid "Home phone is required"
-msgstr "Yêu cầu số điện thoại nhà"
 
 #: 
 msgid "Home phone number"
 msgstr "Số điện thoại nhà"
 
 #: 
-msgid "Invalid format"
-msgstr "Định dạng không hợp lệ"
-
-#: 
 msgid "Last name"
 msgstr "Họ và tên đệm"
 
 #: 
-msgid "Last name is required"
-msgstr "Yêu cầu họ"
-
-#: 
-msgid "Last name must be at least 2 characters"
-msgstr "Họ phải có ít nhất 2 ký tự"
-
-#: 
-msgid "Maximum length is"
-msgstr "Độ dài tối đa là"
-
-#: 
-msgid "Minimum length is"
-msgstr "Độ dài tối thiểu là"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Phải là URL hợp lệ bắt đầu bằng http:// hoặc https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Phải là URL hợp lệ (ví dụ: http://localhost hoặc https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Phải là số cổng hợp lệ (ví dụ: 3306)"
-
-#: 
 msgid "Next Member"
 msgstr "Thành viên tiếp theo"
-
-#: 
-msgid "Passwords do not match"
-msgstr "Mật khẩu không khớp"
 
 #: 
 msgid "Phone Type"
@@ -6460,40 +5942,8 @@ msgid "Phone number"
 msgstr "Số điện thoại"
 
 #: 
-msgid "Please add at least one family member."
-msgstr "Vui lòng thêm ít nhất một thành viên trong gia đình."
-
-#: 
-msgid "Please enter a valid URL"
-msgstr "Vui lòng nhập URL hợp lệ"
-
-#: 
-msgid "Please enter a valid email address"
-msgstr "Vui lòng nhập địa chỉ email hợp lệ"
-
-#: 
-msgid "Please enter a valid email address (e.g., name@example.com)"
-msgstr "Vui lòng nhập địa chỉ email hợp lệ (ví dụ: name@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Vui lòng nhập một số hợp lệ"
-
-#: 
-msgid "Please enter a valid phone number"
-msgstr "Vui lòng nhập số điện thoại hợp lệ"
-
-#: 
-msgid "Please fill in all required fields correctly."
-msgstr "Vui lòng điền đúng các thông tin bắt buộc."
-
-#: 
 msgid "Previous"
 msgstr "Quay lại"
-
-#: 
-msgid "Registration Error"
-msgstr "Lỗi đăng ký"
 
 #: 
 msgid "Role in Family"
@@ -6510,10 +5960,6 @@ msgstr "Địa chỉ nhà/đường"
 #: 
 msgid "Submit Registration"
 msgstr "Gửi đăng ký"
-
-#: 
-msgid "Zip code is required"
-msgstr "Yêu cầu mã bưu điện"
 
 #: 
 msgid "A new password has been generated and sent to your email address."
@@ -6536,10 +5982,6 @@ msgid "Back to login"
 msgstr "Quay lại đăng nhập"
 
 #: 
-msgid "Backup Skipped"
-msgstr "Đã bỏ qua sao lưu"
-
-#: 
 msgid "Complete"
 msgstr "Hoàn tất"
 
@@ -6552,28 +5994,8 @@ msgid "Download & Apply"
 msgstr "Tải về & Áp dụng"
 
 #: 
-msgid "Downloaded"
-msgstr "Đã tải xuống"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Đang tải xuống phiên bản mới nhất từ GitHub..."
-
-#: 
 msgid "Enter your login name and we will email you a link to reset your password."
 msgstr "Nhập tên đăng nhập của bạn và chúng tôi sẽ gửi email liên kết để đặt lại mật khẩu."
-
-#: 
-msgid "Failed to create backup."
-msgstr "Tạo bản sao lưu thất bại."
-
-#: 
-msgid "Failed to download update package."
-msgstr "Tải gói cập nhật thất bại."
-
-#: 
-msgid "Failed to refresh upgrade information from GitHub."
-msgstr "Cập nhật thông tin nâng cấp từ GitHub thất bại."
 
 #: 
 msgid "File Name"
@@ -6582,10 +6004,6 @@ msgstr "Tên tệp"
 #: 
 msgid "Go to Login"
 msgstr "Đi tới Đăng nhập"
-
-#: 
-msgid "Language updated to"
-msgstr "Ngôn ngữ đã được cập nhật thành"
 
 #: 
 msgid "Login Name is required"
@@ -6616,56 +6034,24 @@ msgid "Request Password Reset"
 msgstr "Yêu cầu cấp lại mật khẩu"
 
 #: 
-msgid "Retry Download"
-msgstr "Tử tải lại"
-
-#: 
 msgid "Send Reset Email"
 msgstr "Gửi Email đặt lại"
-
-#: 
-msgid "Setting updated successfully"
-msgstr "Cập nhật cài đặt thành công"
 
 #: 
 msgid "System Upgrade Wizard"
 msgstr "Trình hướng dẫn nâng cấp hệ thống"
 
 #: 
-msgid "System upgrade completed successfully!"
-msgstr "Nâng cấp hệ thống hoàn tất thành công!"
-
-#: 
 msgid "This may take several minutes."
 msgstr "Quá trình này có thể mất vài phút."
-
-#: 
-msgid "Update package downloaded successfully."
-msgstr "Đã tải xuống gói cập nhật thành công."
 
 #: 
 msgid "Upgrade Complete!"
 msgstr "Cập nhật thành công!"
 
 #: 
-msgid "Upgrade failed."
-msgstr "Nâng cấp thất bại."
-
-#: 
-msgid "Upgrade failed. Please check the logs."
-msgstr "Nâng cấp thất bại. Vui lòng kiểm tra nhật ký (logs)."
-
-#: 
 msgid "Upgrade information refreshed successfully"
 msgstr "Thông tin nâng cấp đã được làm mới thành công"
-
-#: 
-msgid "Upgrade information refreshed. Reloading page..."
-msgstr "Thông tin nâng cấp đã làm mới. Đang tải lại trang..."
-
-#: 
-msgid "Warnings"
-msgstr "Cảnh báo"
 
 #: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
@@ -6728,22 +6114,6 @@ msgid "Delete Selected"
 msgstr "Xóa mục đã chọn"
 
 #: 
-msgid "Deposit saved successfully"
-msgstr "Đã lưu khoản đóng góp thành công"
-
-#: 
-msgid "Error deleting payments"
-msgstr "Lỗi khi xóa các khoản thanh toán"
-
-#: 
-msgid "Error loading payments"
-msgstr "Lỗi khi tải các khoản thanh toán"
-
-#: 
-msgid "Error saving deposit"
-msgstr "Lỗi khi lưu khoản tiền gửi"
-
-#: 
 msgid "Funds"
 msgstr "Các quỹ"
 
@@ -6760,32 +6130,12 @@ msgid "No Checks"
 msgstr "Không có chi phiếu"
 
 #: 
-msgid "No payments yet. Click \"Add Payment\" to get started."
-msgstr "Chưa có khoản thanh toán nào. Nhấp vào \"Thêm thanh toán\" để bắt đầu."
-
-#: 
 msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
 msgstr "Số tiền không được khấu trừ thuế vượt quá giá trị tối đa cho phép."
 
 #: 
 msgid "Payments"
 msgstr "Các khoản đóng góp"
-
-#: 
-msgid "Payments deleted successfully"
-msgstr "Xóa các khoản thanh toán thành công"
-
-#: 
-msgid "Please select a date"
-msgstr "Vui lòng chọn một ngày"
-
-#: 
-msgid "Please select rows to delete"
-msgstr "Vui lòng chọn các hàng để xóa"
-
-#: 
-msgid "Saving..."
-msgstr "Đang lưu..."
 
 #: 
 msgid "This action cannot be undone."
@@ -6813,10 +6163,6 @@ msgid "Base URL"
 msgstr "URL cơ sở"
 
 #: 
-msgid "Copy"
-msgstr "Sao chép"
-
-#: 
 msgid "Debug Info"
 msgstr "Thông tin gỡ lỗi"
 
@@ -6839,18 +6185,6 @@ msgstr "Địa chỉ IP"
 #: 
 msgid "Images Root"
 msgstr "Thư mục gốc hình ảnh"
-
-#: 
-msgid "Import Demo Data"
-msgstr "Nhập dữ liệu mẫu"
-
-#: 
-msgid "Include events and calendars"
-msgstr "Bao gồm sự kiện và lịch"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "Bao gồm dữ liệu tài chính (quỹ dâng hiến, hứa dâng)"
 
 #: 
 msgid "Invalid API key"
@@ -6885,40 +6219,12 @@ msgid "An error occurred during demo data import"
 msgstr "Đã xảy ra lỗi trong khi nhập dữ liệu mẫu"
 
 #: 
-msgid "Demo data imported successfully"
-msgstr "Nhập dữ liệu mẫu thành công"
-
-#: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "Bao gồm các lớp Trường Chúa Nhật và danh sách đăng ký"
-
-#: 
-msgid "Need to remove this data later?"
-msgstr "Cần xóa dữ liệu này sau?"
-
-#: 
 msgid "No Payments on this Deposit"
 msgstr "Không có khoản thanh toán nào trong lần gửi này"
 
 #: 
-msgid "No payments on this deposit"
-msgstr "Không có khoản thanh toán nào trong lần gửi này"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "Dữ liệu tùy chọn để bao gồm"
-
-#: 
 msgid "Skipped"
 msgstr "Đã bỏ qua"
-
-#: 
-msgid "Unknown error"
-msgstr "Lỗi không xác định"
-
-#: 
-msgid "deposit(s) with no payments"
-msgstr "khoản gửi không có thanh toán"
 
 #: 
 msgid "%d event in %s"
@@ -7160,16 +6466,8 @@ msgid "Backup Type"
 msgstr "Loại sao lưu"
 
 #: 
-msgid "Backup complete! Click below to download."
-msgstr "Sao lưu hoàn tất! Nhấp vào bên dưới để tải xuống."
-
-#: 
 msgid "Backup completed successfully!"
 msgstr "Sao lưu hoàn tất thành công!"
-
-#: 
-msgid "Backup downloaded. Server copy removed."
-msgstr "Đã tải bản sao lưu xuống. Bản sao trên máy chủ đã được xóa."
 
 #: 
 msgid "Backup failed. Please try again."
@@ -7268,10 +6566,6 @@ msgid "Force Re-install"
 msgstr "Buộc cài đặt lại"
 
 #: 
-msgid "Force re-install initiated. Please backup your database before applying."
-msgstr "Đã bắt đầu buộc cài đặt lại. Vui lòng sao lưu CSDL trước khi thực hiện."
-
-#: 
 msgid "Full Backup"
 msgstr "Sao lưu đầy đủ"
 
@@ -7352,10 +6646,6 @@ msgid "Please check the backup file and try again."
 msgstr "Vui lòng kiểm tra tệp sao lưu và thử lại."
 
 #: 
-msgid "Please select a backup file to restore"
-msgstr "Vui lòng chọn một tệp sao lưu để khôi phục"
-
-#: 
 msgid "Redirecting in"
 msgstr "Chuyển hướng sau"
 
@@ -7382,10 +6672,6 @@ msgstr "Trạng thái khôi phục"
 #: 
 msgid "Restore failed."
 msgstr "Khôi phục thất bại."
-
-#: 
-msgid "Restore failed. Please check the backup file and try again."
-msgstr "Khôi phục thất bại. Vui lòng kiểm tra tệp sao lưu và thử lại."
 
 #: 
 msgid "Restore in progress, please wait..."
@@ -7504,10 +6790,6 @@ msgid "Advanced Operations"
 msgstr "Thao tác nâng cao"
 
 #: 
-msgid "All System Settings"
-msgstr "Tất cả cài đặt hệ thống"
-
-#: 
 msgid "An unexpected error occurred. Please contact your administrator."
 msgstr "Đã xảy ra lỗi không mong muốn. Vui lòng liên hệ với quản trị viên."
 
@@ -7562,10 +6844,6 @@ msgstr "Các lần gửi tiền đã đóng:"
 #: 
 msgid "Closed vs Total"
 msgstr "Đã đóng so với Tổng số"
-
-#: 
-msgid "Coming soon"
-msgstr "Sắp ra mắt"
 
 #: 
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
@@ -7712,14 +6990,6 @@ msgid "Finance Dashboard"
 msgstr "Bảng quản lý tài chính"
 
 #: 
-msgid "Force Import"
-msgstr "Buộc nhập dữ liệu"
-
-#: 
-msgid "Force Import will retry and may create duplicate data."
-msgstr "Buộc nhập sẽ thử lại và có thể tạo dữ liệu trùng lặp."
-
-#: 
 msgid "Fund Allocation"
 msgstr "Phân bổ quỹ"
 
@@ -7758,10 +7028,6 @@ msgstr "ID"
 #: 
 msgid "Identify members who have not made any donations within a date range."
 msgstr "Xác định các thành viên không dâng hiến trong một khoảng thời gian."
-
-#: 
-msgid "Import failed"
-msgstr "Nhập dữ liệu thất bại"
 
 #: 
 msgid "Jan"
@@ -7932,10 +7198,6 @@ msgid "Sep"
 msgstr "Th9"
 
 #: 
-msgid "Server error"
-msgstr "Lỗi máy chủ"
-
-#: 
 msgid "Settings"
 msgstr "Cài đặt"
 
@@ -7986,10 +7248,6 @@ msgstr "Báo cáo thuế (Báo cáo dâng hiến)"
 #: 
 msgid "Tax Year Reporting Checklist"
 msgstr "Danh mục kiểm tra báo cáo năm thuế"
-
-#: 
-msgid "Today"
-msgstr "Hôm nay"
 
 #: 
 msgid "Total"
@@ -8060,24 +7318,8 @@ msgid "active"
 msgstr "đang hoạt động"
 
 #: 
-msgid "ago"
-msgstr "trước"
-
-#: 
-msgid "day"
-msgstr "ngày"
-
-#: 
-msgid "days"
-msgstr "ngày"
-
-#: 
 msgid "found"
 msgstr "tìm thấy"
-
-#: 
-msgid "in"
-msgstr "trong"
 
 #: 
 msgid "issues"
@@ -8086,10 +7328,6 @@ msgstr "vấn đề"
 #: 
 msgid "open"
 msgstr "đang mở"
-
-#: 
-msgid "years"
-msgstr "năm"
 
 #: 
 msgid "(Enter state/province for countries without predefined states)"
@@ -8204,10 +7442,6 @@ msgid "URL must start with http:// or https://"
 msgstr "URL phải bắt đầu bằng http:// hoặc https://"
 
 #: 
-msgid "Unable to load state list. Please check your network connection or try again later."
-msgstr "Không thể tải danh sách tỉnh/thành."
-
-#: 
 msgid "Update it to a valid URL that:"
 msgstr "Cập nhật thành một URL hợp lệ mà:"
 
@@ -8260,10 +7494,6 @@ msgid "Contact & Personal Info"
 msgstr "Thông tin liên hệ & cá nhân"
 
 #: 
-msgid "Copied!"
-msgstr "Đã sao chép!"
-
-#: 
 msgid "Edited"
 msgstr "Đã chỉnh sửa"
 
@@ -8272,16 +7502,8 @@ msgid "Email PDF"
 msgstr "Gửi PDF qua email"
 
 #: 
-msgid "Failed to copy URL"
-msgstr "Sao chép URL thất bại"
-
-#: 
 msgid "Newsletter"
 msgstr "Bản tin/Thông báo"
-
-#: 
-msgid "Open in New Tab"
-msgstr "Mở trong thẻ mới"
 
 #: 
 msgid "Personal"
@@ -8300,16 +7522,8 @@ msgid "Provide any corrections or additional information here..."
 msgstr "Cung cấp bất kỳ sửa đổi hoặc thông tin bổ sung nào tại đây..."
 
 #: 
-msgid "Remove Property"
-msgstr "Xóa thuộc tính"
-
-#: 
 msgid "Select Opportunities"
 msgstr "Chọn các cơ hội"
-
-#: 
-msgid "Share this URL with family members to verify their information"
-msgstr "Chia sẻ URL này với các thành viên gia đình để xác minh thông tin"
 
 #: 
 msgid "Submit Verification"
@@ -8476,24 +7690,12 @@ msgid "total"
 msgstr "tổng số"
 
 #: 
-msgid "Code incomplete"
-msgstr "Mã chưa đầy đủ"
-
-#: 
-msgid "Code is invalid"
-msgstr "Mã không hợp lệ"
-
-#: 
 msgid "Encryption key for storing 2FA secret keys in the database"
 msgstr "Khóa mã hóa để lưu trữ các khóa bí mật 2FA"
 
 #: 
 msgid "Two-Factor Authentication"
 msgstr "Xác thực 2 lớp (2FA)"
-
-#: 
-msgid "Validation pending"
-msgstr "Đang chờ xác thực"
 
 #: 
 msgid "%d Person added to the Cart."
@@ -8609,14 +7811,6 @@ msgstr "Cảnh báo:"
 #: 
 msgid "Yes, delete this Opportunity"
 msgstr "Có, xóa cơ hội này"
-
-#: 
-msgid "Fund(s)"
-msgstr "Quỹ"
-
-#: 
-msgid "Password reset for"
-msgstr "Đặt lại mật khẩu cho"
 
 #. Context: locales
 #: 
@@ -8785,10 +7979,6 @@ msgstr "cam kết"
 #: 
 msgid "records"
 msgstr "bản ghi"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Phải bắt đầu bằng / nếu không trống; không có dấu gạch chéo ở cuối. Chỉ cho phép chữ cái, số, gạch dưới, gạch ngang, dấu chấm và /."
 
 #: 
 msgid "%d person"
@@ -9013,10 +8203,6 @@ msgid "Add Link"
 msgstr "Thêm liên kết"
 
 #: 
-msgid "Add an extra layer of security to your account"
-msgstr "Thêm lớp bảo mật cho tài khoản của bạn"
-
-#: 
 msgid "Add custom external links to the navigation menu."
 msgstr "Thêm liên kết bên ngoài tùy chỉnh vào menu điều hướng."
 
@@ -9027,10 +8213,6 @@ msgstr "Cho phép chứng chỉ tự ký"
 #: 
 msgid "An error occurred processing the plugin request"
 msgstr "Đã xảy ra lỗi khi xử lý yêu cầu plugin"
-
-#: 
-msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
-msgstr "Bạn có chắc muốn tắt xác thực hai yếu tố không? Tài khoản của bạn sẽ kém bảo mật hơn."
 
 #: 
 msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
@@ -9073,28 +8255,12 @@ msgid "Backup to WebDAV Now"
 msgstr "Sao lưu lên WebDAV ngay"
 
 #: 
-msgid "Before You Start"
-msgstr "Trước khi bắt đầu"
-
-#: 
-msgid "Browser language preference detected"
-msgstr "Đã phát hiện tùy chọn ngôn ngữ trình duyệt"
-
-#: 
 msgid "CRM Members Not Subscribed"
 msgstr "Thành viên CRM chưa đăng ký"
 
 #: 
 msgid "Campaigns Sent"
 msgstr "Chiến dịch đã gửi"
-
-#: 
-msgid "Can't scan?"
-msgstr "Không thể quét?"
-
-#: 
-msgid "Change Your Locale"
-msgstr "Thay đổi địa phương"
 
 #: 
 msgid "ChurchCRM supports a plugin architecture for extending functionality."
@@ -9135,10 +8301,6 @@ msgstr "Cấu hình plugin này để tự động sao lưu cơ sở dữ liệu
 #: 
 msgid "Configured"
 msgstr "Đã cấu hình"
-
-#: 
-msgid "Confirm with a code from your authenticator app"
-msgstr "Xác nhận bằng mã từ ứng dụng xác thực"
 
 #: 
 msgid "Connected"
@@ -9201,24 +8363,12 @@ msgid "Disable Plugin"
 msgstr "Tắt plugin"
 
 #: 
-msgid "Disable Two-Factor Authentication"
-msgstr "Tắt xác thực hai yếu tố"
-
-#: 
 msgid "Dismiss"
 msgstr "Bỏ qua"
 
 #: 
-msgid "Done"
-msgstr "Xong"
-
-#: 
 msgid "Each plugin requires a"
 msgstr "Mỗi plugin yêu cầu một"
-
-#: 
-msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
-msgstr "Mỗi lần đăng nhập, bạn cần xác nhận bằng mã từ ứng dụng xác thực"
 
 #: 
 msgid "Email Addresses"
@@ -9237,10 +8387,6 @@ msgid "Enable Plugin"
 msgstr "Bật plugin"
 
 #: 
-msgid "Enable Two-Factor Authentication"
-msgstr "Bật xác thực hai yếu tố"
-
-#: 
 msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
 msgstr "Chỉ bật điều này cho máy chủ mạng nội bộ có chứng chỉ SSL tự ký. Tắt xác minh chứng chỉ."
 
@@ -9251,10 +8397,6 @@ msgstr "URL điểm cuối"
 #: 
 msgid "Enter the 6-digit code from your authenticator app"
 msgstr "Nhập mã 6 chữ số từ ứng dụng xác thực"
-
-#: 
-msgid "Enter your username and password as usual"
-msgstr "Nhập tên người dùng và mật khẩu như thường lệ"
 
 #: 
 msgid "External Backup"
@@ -9329,20 +8471,12 @@ msgid "GA4 Measurement ID"
 msgstr "ID đo lường GA4"
 
 #: 
-msgid "Generate new code"
-msgstr "Tạo mã mới"
-
-#: 
 msgid "Get Started"
 msgstr "Bắt đầu"
 
 #: 
 msgid "Get your API key from MailChimp: Account Settings > Extras > API Keys"
 msgstr "Lấy khóa API từ MailChimp: Cài đặt tài khoản > Extras > Khóa API"
-
-#: 
-msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
-msgstr "Chuẩn bị sẵn ứng dụng xác thực (Google Authenticator, Microsoft Authenticator, Authy, v.v.)"
 
 #: 
 msgid "Help"
@@ -9355,10 +8489,6 @@ msgstr "Id"
 #: 
 msgid "Image shown when no Gravatar exists for the email address"
 msgstr "Hình ảnh hiển thị khi không có Gravatar cho địa chỉ email"
-
-#: 
-msgid "Important"
-msgstr "Quan trọng"
 
 #: 
 msgid "Invalid code. Please try again."
@@ -9415,10 +8545,6 @@ msgstr "Liên kết phải bắt đầu bằng http:// hoặc https://"
 #: 
 msgid "Link not found"
 msgstr "Không tìm thấy liên kết"
-
-#: 
-msgid "Loading recovery codes"
-msgstr "Đang tải mã khôi phục"
 
 #: 
 msgid "MailChimp API Key"
@@ -9502,16 +8628,8 @@ msgid "Not in CRM"
 msgstr "Không có trong CRM"
 
 #: 
-msgid "One-Time Code"
-msgstr "Mã một lần"
-
-#: 
 msgid "Open MailChimp"
 msgstr "Mở MailChimp"
-
-#: 
-msgid "Open your authenticator app and scan this QR code"
-msgstr "Mở ứng dụng xác thực và quét mã QR này"
 
 #: 
 msgid "OpenLP Server URL"
@@ -9540,10 +8658,6 @@ msgstr "Vui lòng cấu hình khóa API MailChimp để sử dụng tích hợp 
 #: 
 msgid "Please enter a link name (2-50 characters)"
 msgstr "Vui lòng nhập tên liên kết (2–50 ký tự)"
-
-#: 
-msgid "Please try again"
-msgstr "Vui lòng thử lại"
 
 #: 
 msgid "Plugin Development"
@@ -9594,44 +8708,16 @@ msgid "Print"
 msgstr "In"
 
 #: 
-msgid "Recovery Codes"
-msgstr "Mã khôi phục"
-
-#: 
 msgid "Remote backup failed. Check server logs for details."
 msgstr "Sao lưu từ xa thất bại. Kiểm tra nhật ký máy chủ để biết chi tiết."
-
-#: 
-msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
-msgstr "Lưu các mã khôi phục này ở nơi an toàn. Bạn có thể dùng chúng để truy cập tài khoản nếu mất quyền truy cập ứng dụng xác thực."
-
-#: 
-msgid "Scan QR Code"
-msgstr "Quét mã QR"
-
-#: 
-msgid "Secure"
-msgstr "Bảo mật"
-
-#: 
-msgid "Set Up Authenticator"
-msgstr "Cài đặt ứng dụng xác thực"
 
 #: 
 msgid "Settings reset successfully"
 msgstr "Đã đặt lại cài đặt thành công"
 
 #: 
-msgid "Setup Complete"
-msgstr "Cài đặt hoàn tất"
-
-#: 
 msgid "Shipped with ChurchCRM."
 msgstr "Đi kèm với ChurchCRM."
-
-#: 
-msgid "Sign In"
-msgstr "Đăng nhập"
 
 #: 
 msgid "Some settings could not be reset"
@@ -9670,10 +8756,6 @@ msgid "Third-party extensions."
 msgstr "Tiện ích mở rộng bên thứ ba."
 
 #: 
-msgid "This will replace any previously enrolled 2FA methods"
-msgstr "Điều này sẽ thay thế mọi phương thức 2FA đã đăng ký trước đó"
-
-#: 
 msgid "Total Campaigns"
 msgstr "Tổng chiến dịch"
 
@@ -9682,24 +8764,8 @@ msgid "Total Subscribers"
 msgstr "Tổng người đăng ký"
 
 #: 
-msgid "Two Factor Enrollment Error"
-msgstr "Lỗi đăng ký hai yếu tố"
-
-#: 
-msgid "Two-factor authentication has been disabled"
-msgstr "Xác thực hai yếu tố đã bị tắt"
-
-#: 
-msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
-msgstr "Xác thực hai yếu tố là một trong những cách tốt nhất để bảo vệ tài khoản. Chúng tôi khuyến nghị giữ tính năng này bật."
-
-#: 
 msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
 msgstr "URL đến máy chủ OpenLP của bạn (ví dụ: http://192.168.1.100:4316)"
-
-#: 
-msgid "Unable to load"
-msgstr "Không thể tải"
 
 #: 
 msgid "Unsubscribed"
@@ -9720,14 +8786,6 @@ msgstr "Giá trị đã được đặt – để trống để giữ nguyên"
 #: 
 msgid "Verify & Sign In"
 msgstr "Xác minh và đăng nhập"
-
-#: 
-msgid "Verify Code"
-msgstr "Xác minh mã"
-
-#: 
-msgid "Verifying"
-msgstr "Đang xác minh"
 
 #: 
 msgid "Vonage API Key"
@@ -9762,40 +8820,12 @@ msgid "WebDAV username is required."
 msgstr "Tên người dùng WebDAV là bắt buộc."
 
 #: 
-msgid "You can also use backup recovery codes if you lose access to your app"
-msgstr "Bạn cũng có thể dùng mã khôi phục dự phòng nếu mất quyền truy cập ứng dụng"
-
-#: 
-msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
-msgstr "Bạn có thể dùng ứng dụng xác thực để đăng nhập. Mỗi mã có hiệu lực trong 30 giây."
-
-#: 
-msgid "You'll receive backup codes that can be used if you lose access to your app"
-msgstr "Bạn sẽ nhận được mã dự phòng có thể dùng nếu mất quyền truy cập ứng dụng"
-
-#: 
 msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
 msgstr "ID đo lường GA4 của bạn (G-XXXXXXXXXX)"
 
 #: 
 msgid "Your MailChimp account does not have any audiences (lists) configured."
 msgstr "Tài khoản MailChimp của bạn chưa cấu hình đối tượng (danh sách) nào."
-
-#: 
-msgid "Your account is now protected"
-msgstr "Tài khoản của bạn hiện đã được bảo vệ"
-
-#: 
-msgid "Your account is protected"
-msgstr "Tài khoản của bạn được bảo vệ"
-
-#: 
-msgid "Your authenticator app has been successfully enrolled"
-msgstr "Ứng dụng xác thực của bạn đã được đăng ký thành công"
-
-#: 
-msgid "Your browser language preference differs from your ChurchCRM locale"
-msgstr "Tùy chọn ngôn ngữ trình duyệt của bạn khác với địa phương ChurchCRM"
 
 #: 
 msgid "e.g., Church Website"
@@ -10014,10 +9044,6 @@ msgid "2FA"
 msgstr "2FA"
 
 #: 
-msgid "Leave blank to keep existing"
-msgstr "Để trống để giữ nguyên giá trị hiện có"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Yêu cầu tất cả người dùng đăng ký xác thực hai yếu tố"
 
@@ -10122,10 +9148,6 @@ msgid "Save Church Information"
 msgstr "Lưu thông tin hội thánh"
 
 #: 
-msgid "Search or select..."
-msgstr "Tìm kiếm hoặc chọn..."
-
-#: 
 msgid "State is required."
 msgstr "Tỉnh/Thành phố là bắt buộc."
 
@@ -10168,14 +9190,6 @@ msgstr "Trang web"
 #: 
 msgid "ZIP code is required."
 msgstr "Mã bưu điện là bắt buộc."
-
-#: 
-msgid "— Select Country —"
-msgstr "— Chọn quốc gia —"
-
-#: 
-msgid "— Select State —"
-msgstr "— Chọn tỉnh/thành phố —"
 
 #: 
 msgid "Address Status"
@@ -10387,10 +9401,6 @@ msgid "Age Distribution"
 msgstr "Phan bo do tuoi"
 
 #: 
-msgid "All Roles"
-msgstr "Tat ca vai tro"
-
-#: 
 msgid "All Time"
 msgstr "Toan bo thoi gian"
 
@@ -10423,20 +9433,8 @@ msgid "An unexpected error occurred."
 msgstr "Da xay ra loi khong mong doi."
 
 #: 
-msgid "Applied preset"
-msgstr "Da ap dung cai dat san"
-
-#: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Ban co chac chan muon xoa dot thu hien nay khong?"
-
-#: 
 msgid "Are you sure you want to delete this fundraiser?"
 msgstr "Ban co chac chan muon xoa su kien gay quy nay khong?"
-
-#: 
-msgid "Are you sure you want to remove"
-msgstr "Ban co chac chan muon xoa"
 
 #: 
 msgid "Assign and manage donation envelope numbers"
@@ -10469,10 +9467,6 @@ msgstr "Ma xac thuc"
 #: 
 msgid "Auto-mapped"
 msgstr "Tu dong ghep noi"
-
-#: 
-msgid "BCC All"
-msgstr "BCC tat ca"
 
 #: 
 msgid "Back to Admin Dashboard"
@@ -10587,10 +9581,6 @@ msgid "Clear all items from cart"
 msgstr "Xoa tat ca cac muc khoi danh sach"
 
 #: 
-msgid "Click Save to apply."
-msgstr "Nhan Luu de ap dung."
-
-#: 
 msgid "Click to upload photo"
 msgstr "Nhan de tai anh len"
 
@@ -10641,14 +9631,6 @@ msgstr "Chuyen doi ho so ca nhan thanh don vi gia dinh"
 #: 
 msgid "Convert to Family"
 msgstr "Chuyen thanh gia dinh"
-
-#: 
-msgid "Copied"
-msgstr "Da sao chep"
-
-#: 
-msgid "Copy Members to Group"
-msgstr "Sao chep thanh vien sang nhom"
 
 #: 
 msgid "Copy to Group"
@@ -10737,10 +9719,6 @@ msgstr "Xoa cam ket dang hien"
 #: 
 msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
 msgstr "Xoa thuoc tinh nay cung se go bo tat ca cac gan cua no khoi bat ky ho so Ca nhan, Gia dinh hoac Nhom nao."
-
-#: 
-msgid "Deposit Value"
-msgstr "Gia tri dot thu hien"
 
 #: 
 msgid "Describe the issue"
@@ -10915,22 +9893,6 @@ msgid "FY %s"
 msgstr "Nam tai chinh %s"
 
 #: 
-msgid "Failed to add members to cart. Please try again."
-msgstr "Khong the them thanh vien vao danh sach. Vui long thu lai."
-
-#: 
-msgid "Failed to delete class. Please try again."
-msgstr "Khong the xoa lop hoc. Vui long thu lai."
-
-#: 
-msgid "Failed to delete group. Please try again."
-msgstr "Khong the xoa nhom. Vui long thu lai."
-
-#: 
-msgid "Failed to remove from class. Please try again."
-msgstr "Khong the xoa khoi lop hoc. Vui long thu lai."
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "Cac gia dinh dung chung dia chi va so dien thoai."
 
@@ -11027,10 +9989,6 @@ msgid "Get Your Data Into ChurchCRM"
 msgstr "Dua du lieu cua ban vao ChurchCRM"
 
 #: 
-msgid "Go to homepage"
-msgstr "Di den trang chu"
-
-#: 
 msgid "Great choice! Here's how to add your church members."
 msgstr "Lua chon tuyet voi! Day la cach them thanh vien giao hoi cua ban."
 
@@ -11043,20 +10001,12 @@ msgid "Group Reports"
 msgstr "Bao cao nhom"
 
 #: 
-msgid "Group deleted successfully."
-msgstr "Da xoa nhom thanh cong."
-
-#: 
 msgid "Have Existing Data?"
 msgstr "Ban co du lieu san?"
 
 #: 
 msgid "If you have many records in a spreadsheet, the CSV import may be faster than entering data manually."
 msgstr "Neu ban co nhieu ban ghi trong bang tinh, nhap CSV co the nhanh hon nhap du lieu thu cong."
-
-#: 
-msgid "Ignored"
-msgstr "Da bo qua"
 
 #: 
 msgid "Import Another File"
@@ -11073,10 +10023,6 @@ msgstr "Nhap hoan tat"
 #: 
 msgid "Import contacts from your MailChimp audiences"
 msgstr "Nhap danh ba tu doi tuong MailChimp cua ban"
-
-#: 
-msgid "Import failed. Please try again."
-msgstr "Nhap that bai. Vui long thu lai."
 
 #: 
 msgid "Import failed: "
@@ -11101,10 +10047,6 @@ msgstr "Nhap, khoi phuc hoac nhap thu cong"
 #: 
 msgid "Import, restore, or manually enter your congregation"
 msgstr "Nhap, khoi phuc hoac nhap thu cong giao xu cua ban"
-
-#: 
-msgid "Importing..."
-msgstr "Dang nhap..."
 
 #: 
 msgid "Include in Email Export"
@@ -11251,10 +10193,6 @@ msgid "Manage your personal preferences and account settings"
 msgstr "Quan ly tuy chon ca nhan va cai dat tai khoan cua ban"
 
 #: 
-msgid "Manual"
-msgstr "Thu cong"
-
-#: 
 msgid "Map cart items"
 msgstr "Hien thi danh sach tren ban do"
 
@@ -11275,10 +10213,6 @@ msgid "Member Roles"
 msgstr "Vai tro thanh vien"
 
 #: 
-msgid "Members added to cart."
-msgstr "Da them thanh vien vao danh sach."
-
-#: 
 msgid "Memberships"
 msgstr "Tu cach thanh vien"
 
@@ -11289,14 +10223,6 @@ msgstr "Tối thiểu"
 #: 
 msgid "Modify family roles for group members"
 msgstr "Thay doi vai tro gia dinh cho thanh vien nhom"
-
-#: 
-msgid "Move Members"
-msgstr "Di chuyen thanh vien"
-
-#: 
-msgid "Move Members to Group"
-msgstr "Di chuyen thanh vien den nhom"
 
 #: 
 msgid "Move to Group"
@@ -11335,32 +10261,8 @@ msgid "New Person"
 msgstr "Nguoi moi"
 
 #: 
-msgid "No Anniversaries"
-msgstr "Khong co ngay ky niem"
-
-#: 
-msgid "No Birthdays"
-msgstr "Khong co ngay sinh nhat"
-
-#: 
 msgid "No Check-ins"
 msgstr "Khong co dang ky vao"
-
-#: 
-msgid "No Deposits"
-msgstr "Khong co dot thu hien"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "Khong co ngay ky niem trong 7 ngay qua hoac toi"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "Khong co ngay sinh nhat trong 7 ngay qua hoac toi"
-
-#: 
-msgid "No deposit data available yet"
-msgstr "Chua co du lieu dot thu hien"
 
 #: 
 msgid "No description set."
@@ -11393,10 +10295,6 @@ msgstr "Khong co ket qua cho \"%s\". Thu tu khoa tim kiem khac."
 #: 
 msgid "No member properties defined."
 msgstr "Chua dinh nghia thuoc tinh thanh vien."
-
-#: 
-msgid "No members found for this role."
-msgstr "Khong tim thay thanh vien cho vai tro nay."
 
 #: 
 msgid "No people found"
@@ -11481,10 +10379,6 @@ msgid "People by Classification"
 msgstr "Nguoi theo phan loai"
 
 #: 
-msgid "Person removed from class."
-msgstr "Da xoa nguoi khoi lop hoc."
-
-#: 
 msgid "Photo"
 msgstr "Anh"
 
@@ -11499,14 +10393,6 @@ msgstr "Chon mot cach de bat dau"
 #: 
 msgid "Please check everything looks right before submitting."
 msgstr "Vui long kiem tra moi thu dung truoc khi gui."
-
-#: 
-msgid "Please map at least one column before importing"
-msgstr "Vui long ghep noi it nhat mot cot truoc khi nhap"
-
-#: 
-msgid "Please select a CSV file"
-msgstr "Vui long chon mot tep CSV"
 
 #: 
 msgid "Please try requesting a new password reset link or contact support if you continue to experience issues."
@@ -11553,10 +10439,6 @@ msgid "Property not found."
 msgstr "Khong tim thay thuoc tinh."
 
 #: 
-msgid "Quick Setup"
-msgstr "Cai dat nhanh"
-
-#: 
 msgid "Quick Tips"
 msgstr "Meo nhanh"
 
@@ -11587,10 +10469,6 @@ msgstr "Ghi nhan ly do nguoi tham du den giao hoi cua ban"
 #: 
 msgid "Register Your Family"
 msgstr "Dang ky gia dinh cua ban"
-
-#: 
-msgid "Register another family"
-msgstr "Dang ky gia dinh khac"
 
 #: 
 msgid "Remove all from Cart"
@@ -11637,14 +10515,6 @@ msgid "Review and clean up files not associated with any record"
 msgstr "Xem lai va don dep cac tep khong lien ket voi bat ky ho so nao"
 
 #: 
-msgid "Role not found."
-msgstr "Khong tim thay vai tro."
-
-#: 
-msgid "Roles"
-msgstr "Vai tro"
-
-#: 
 msgid "Run"
 msgstr "Chay"
 
@@ -11667,10 +10537,6 @@ msgstr "Tim kiem qua nguoi, gia dinh, nhom, dia chi va nhieu hon nua."
 #: 
 msgid "Search and view deposit slip records"
 msgstr "Tim kiem va xem cac ban ghi phieu thu hien"
-
-#: 
-msgid "Search groups..."
-msgstr "Tim kiem nhom..."
 
 #: 
 msgid "Search people, families, groups…"
@@ -11707,10 +10573,6 @@ msgstr "Gui email cho cac gia dinh"
 #: 
 msgid "Server Error"
 msgstr "Loi may chu"
-
-#: 
-msgid "Server returned an unexpected response. Please try again."
-msgstr "May chu tra ve phan hoi khong mong doi. Vui long thu lai."
 
 #: 
 msgid "Set Permission True to give new users the ability to change their current value."
@@ -11787,10 +10649,6 @@ msgstr "Buoc 1 — Tai len tep CSV"
 #: 
 msgid "Step 2 — Map Columns"
 msgstr "Buoc 2 — Ghep noi cot"
-
-#: 
-msgid "Submitting..."
-msgstr "Dang gui..."
 
 #: 
 msgid "Supports backups from ChurchCRM and ChurchInfo."
@@ -11873,10 +10731,6 @@ msgid "Upload failed."
 msgstr "Tai len that bai."
 
 #: 
-msgid "Upload failed. Please check the file and try again."
-msgstr "Tai len that bai. Vui long kiem tra tep va thu lai."
-
-#: 
 msgid "Upload session expired. Please upload the file again."
 msgstr "Phien tai len da het han. Vui long tai len tep lai."
 
@@ -11907,10 +10761,6 @@ msgstr "Xem nguoi"
 #: 
 msgid "View all families on an interactive map"
 msgstr "Xem tat ca gia dinh tren ban do tuong tac"
-
-#: 
-msgid "View all results"
-msgstr "Xem tat ca ket qua"
 
 #: 
 msgid "View and manage all groups in your congregation"
@@ -11993,20 +10843,12 @@ msgid "We're so glad you're here! Register your family in just 3 easy steps."
 msgstr "Chung toi rat vui ban o day! Dang ky gia dinh cua ban chi trong 3 buoc don gian."
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "Chung toi rat vui gia dinh ban da tham gia!"
-
-#: 
 msgid "Welcome Back!"
 msgstr "Chao mung tro lai!"
 
 #: 
 msgid "Welcome back! Please enter your details to continue"
 msgstr "Chao mung tro lai! Vui long nhap thong tin de tiep tuc"
-
-#: 
-msgid "Welcome to the Family!"
-msgstr "Chao mung gia nhap gia dinh!"
 
 #: 
 msgid "What happens next?"
@@ -12049,28 +10891,12 @@ msgid "Your previous session timed out. Please login again."
 msgstr "Phien truoc do cua ban da het han. Vui long dang nhap lai."
 
 #: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "Dang ky cua ban da duoc nhan. Doi ngu chung toi se som lien he de don tiep ban."
-
-#: 
-msgid "all members"
-msgstr "tat ca thanh vien"
-
-#: 
 msgid "complete"
 msgstr "hoan tat"
 
 #: 
 msgid "fields"
 msgstr "truong"
-
-#: 
-msgid "from this class?"
-msgstr "khoi lop hoc nay?"
-
-#: 
-msgid "from this group?"
-msgstr "khoi nhom nay?"
 
 #: 
 msgid "full group view"
@@ -12081,20 +10907,12 @@ msgid "funds"
 msgstr "quy"
 
 #: 
-msgid "members"
-msgstr "thanh vien"
-
-#: 
 msgid "opportunities"
 msgstr "co hoi"
 
 #: 
 msgid "or connect an external service"
 msgstr "hoac ket noi dich vu ben ngoai"
-
-#: 
-msgid "our church"
-msgstr "giao hoi cua chung toi"
 
 #: 
 msgid "page"
@@ -12105,24 +10923,12 @@ msgid "properties"
 msgstr "thuoc tinh"
 
 #: 
-msgid "to another group?"
-msgstr "sang nhom khac?"
-
-#: 
-msgid "— Ignore —"
-msgstr "— Bo qua —"
-
-#: 
 msgid "— Select a group —"
 msgstr "— Chon mot nhom —"
 
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Chon loai (tuy chon) —"
-
-#: 
-msgid "Activate"
-msgstr "Kich hoat"
 
 #: 
 msgid "Active Events"
@@ -12145,10 +10951,6 @@ msgid "All Checks Passed"
 msgstr "Tat ca kiem tra deu dat"
 
 #: 
-msgid "Applying..."
-msgstr "Dang ap dung..."
-
-#: 
 msgid "Assigned Kiosk"
 msgstr "Kiosk da gan"
 
@@ -12159,10 +10961,6 @@ msgstr "Diem danh"
 #: 
 msgid "Back up modified files before upgrading if you want to keep your changes."
 msgstr "Sao luu cac tep da sua doi truoc khi nang cap neu ban muon giu lai thay doi."
-
-#: 
-msgid "Backup Complete"
-msgstr "Sao luu hoan tat"
 
 #: 
 msgid "Class / Group"
@@ -12183,14 +10981,6 @@ msgstr "Tao su kien dau tien"
 #: 
 msgid "Create a database backup before applying the update. This is strongly recommended."
 msgstr "Tao ban sao luu co so du lieu truoc khi ap dung cap nhat. Dieu nay duoc khuyen nghi manh me."
-
-#: 
-msgid "Creating Backup..."
-msgstr "Dang tao sao luu..."
-
-#: 
-msgid "Download Backup & Continue"
-msgstr "Tai sao luu va tiep tuc"
 
 #: 
 msgid "Download the latest release and apply it to your installation."
@@ -12235,10 +11025,6 @@ msgstr "Tao danh sach lop, bang diem danh va so anh"
 #: 
 msgid "Installed"
 msgstr "Da cai dat"
-
-#: 
-msgid "It is strongly recommended to have a backup before proceeding."
-msgstr "Khuyen nghi manh me nen co ban sao luu truoc khi tiep tuc."
 
 #: 
 msgid "Latest"
@@ -12364,18 +11150,10 @@ msgstr "Nguoi dung phai co quyen Ghi chu"
 msgid "Address Defaults"
 msgstr "Địa chỉ Mặc định"
 
-#: 
-msgid "All Day"
-msgstr "Cả ngày"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
 msgstr "Cho phép người dùng thêm sự kiện mới"
-
-#: 
-msgid "Are you sure you want to continue?"
-msgstr "Bạn có chắc chắn muốn tiếp tục không?"
 
 #. Context: queryparameters_qrp
 #: 
@@ -12417,10 +11195,6 @@ msgid "ChurchCRM can send emails directly."
 msgstr "ChurchCRM có thể gửi email trực tiếp."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "API Clipboard không có sẵn. Vui lòng sao chép URL theo cách thủ công."
-
-#: 
 msgid "Communication"
 msgstr "Liên lạc"
 
@@ -12440,18 +11214,6 @@ msgstr "Cấu hình Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Kết nối Mailchimp để đồng bộ hóa danh sách email cho bản tin và chiến dịch."
-
-#: 
-msgid "Copied to clipboard"
-msgstr "Đã sao chép vào clipboard"
-
-#: 
-msgid "Copy All Emails"
-msgstr "Sao chép tất cả Email"
-
-#: 
-msgid "Copy All Numbers"
-msgstr "Sao chép tất cả số"
 
 #: 
 msgid "Copy from church address"
@@ -12489,20 +11251,12 @@ msgid "Distance Unit"
 msgstr "Đơn vị khoảng cách"
 
 #: 
-msgid "Duration"
-msgstr "Thời lượng"
-
-#: 
 msgid "Email Dashboard"
 msgstr "Bảng điều khiển Email"
 
 #: 
 msgid "Email Integrations"
 msgstr "Tích hợp Email"
-
-#: 
-msgid "Email addresses copied to clipboard"
-msgstr "Địa chỉ email đã được sao chép vào clipboard"
 
 #: 
 msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
@@ -12677,14 +11431,6 @@ msgstr "Email thông báo thành viên mới"
 msgid "No cell phone on file"
 msgstr "Không có điện thoại di động trong hồ sơ"
 
-#: 
-msgid "No email addresses available"
-msgstr "Không có địa chỉ email có sẵn"
-
-#: 
-msgid "No phone numbers available"
-msgstr "Không có số điện thoại có sẵn"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Non-Attender"
@@ -12703,10 +11449,6 @@ msgstr "Chưa được phân loại"
 #: 
 msgid "Number of months since becoming a friend"
 msgstr "Số tháng kể từ khi trở thành bạn"
-
-#: 
-msgid "Parents"
-msgstr "Bố mẹ"
 
 #: 
 msgid "Password reset emails — users cannot recover their accounts"
@@ -12734,14 +11476,6 @@ msgstr "Tài sản người được sử dụng để loại trừ thành viên
 msgid "Person property used to exclude members from email lists"
 msgstr "Tài sản người được sử dụng để loại trừ thành viên khỏi danh sách email"
 
-#: 
-msgid "Phone numbers copied to clipboard"
-msgstr "Số điện thoại đã sao chép vào bộ nhớ tạm"
-
-#: 
-msgid "Phone numbers copied — paste into your messaging app"
-msgstr "Số điện thoại đã sao chép — dán vào ứng dụng nhắn tin của bạn"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
@@ -12762,18 +11496,10 @@ msgstr "So sánh cam kết"
 msgid "Pledged this year"
 msgstr "Cam kết năm nay"
 
-#: 
-msgid "Press CTRL + C to copy"
-msgstr "Nhấn CTRL + C để sao chép"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "Tài sản"
-
-#: 
-msgid "Public calendar"
-msgstr "Lịch công cộng"
 
 #. Context: query_qry
 #: 
@@ -12826,14 +11552,6 @@ msgstr "Năm tài chính thứ hai để so sánh"
 msgid "Second volunteer opportunity choice"
 msgstr "Lựa chọn cơ hội tình nguyện thứ hai"
 
-#: 
-msgid "Select calendars..."
-msgstr "Chọn lịch..."
-
-#: 
-msgid "Select event type..."
-msgstr "Chọn loại sự kiện..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Select field to search for."
@@ -12859,10 +11577,6 @@ msgstr "Lịch Hệ thống"
 #: 
 msgid "System language for the church."
 msgstr "Ngôn ngữ hệ thống cho nhà thờ."
-
-#: 
-msgid "Text All"
-msgstr "Văn bản Tất cả"
 
 #: 
 msgid "Text Dashboard"
@@ -12925,18 +11639,6 @@ msgid "These values are pre-filled when creating new families. Leave blank to re
 msgstr "Các giá trị này được điền sẵn khi tạo gia đình mới. Để trống để yêu cầu nhập thủ công."
 
 #: 
-msgid "Time"
-msgstr "Thời gian"
-
-#: 
-msgid "Timed"
-msgstr "Được định thời"
-
-#: 
-msgid "Unable to copy to clipboard. Please copy the URL manually."
-msgstr "Không thể sao chép vào bộ nhớ tạm. Vui lòng sao chép URL theo cách thủ công."
-
-#: 
 msgid "Unit used to measure distance."
 msgstr "Đơn vị dùng để đo khoảng cách."
 
@@ -12981,14 +11683,6 @@ msgstr "Email công việc"
 #: 
 msgid "but not this year"
 msgstr "nhưng không phải năm nay"
-
-#: 
-msgid "e.g. Sunday Service"
-msgstr "ví dụ Dịch vụ Chủ nhật"
-
-#: 
-msgid "member"
-msgstr "thành viên"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -13843,21 +12537,6 @@ msgstr "Kích thước tệp vượt quá giới hạn máy chủ %s"
 msgid "Missing image data in request"
 msgstr "Thiếu dữ liệu hình ảnh trong yêu cầu"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "Tìm giáo dân chưa tham dự một sự kiện"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Giáo dân vắng mặt"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Chọn sự kiện mong muốn"
-
 #: 
 msgid "Advanced filtering by group, classification, and role"
 msgstr "Lọc nâng cao theo nhóm, phân loại và chức vụ"
@@ -13935,10 +12614,6 @@ msgid "API Key"
 msgstr "Khóa API"
 
 #: 
-msgid "API key regenerated"
-msgstr "Khóa API đã được tạo lại"
-
-#: 
 msgid "Account"
 msgstr "Tài khoản"
 
@@ -14013,46 +12688,6 @@ msgstr "Số hàng mặc định hiển thị trong bảng dữ liệu. Có hi�
 #: 
 msgid "Edit own family only"
 msgstr "Chỉ chỉnh sửa gia đình của mình"
-
-#: 
-msgid "Enter text here..."
-msgstr "Nhập văn bản tại đây..."
-
-#: 
-msgid "Failed to cancel enrollment. Please try again."
-msgstr "Hủy đăng ký thất bại. Vui lòng thử lại."
-
-#: 
-msgid "Failed to delete event. Please try again."
-msgstr "Xóa sự kiện thất bại. Vui lòng thử lại."
-
-#: 
-msgid "Failed to disable two-factor authentication. Please try again."
-msgstr "Tắt xác thực hai yếu tố thất bại. Vui lòng thử lại."
-
-#: 
-msgid "Failed to generate QR code. Please try again."
-msgstr "Tạo mã QR thất bại. Vui lòng thử lại."
-
-#: 
-msgid "Failed to load calendar data. Please try again."
-msgstr "Tải dữ liệu lịch thất bại. Vui lòng thử lại."
-
-#: 
-msgid "Failed to load event. Please try again."
-msgstr "Tải sự kiện thất bại. Vui lòng thử lại."
-
-#: 
-msgid "Failed to load recovery codes. Please refresh the page."
-msgstr "Tải mã khôi phục thất bại. Vui lòng làm mới trang."
-
-#: 
-msgid "Failed to save event. Please try again."
-msgstr "Lưu sự kiện thất bại. Vui lòng thử lại."
-
-#: 
-msgid "Failed to save setting"
-msgstr "Lưu cài đặt thất bại"
 
 #. Context: locales
 #: 
@@ -14237,10 +12872,6 @@ msgid "User Config"
 msgstr "Cấu hình người dùng"
 
 #: 
-msgid "Verification failed. Please try again."
-msgstr "Xác minh thất bại. Vui lòng thử lại."
-
-#: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "Phiên bản %s đã có sẵn. Vui lòng nâng cấp cài đặt của bạn."
 
@@ -14290,10 +12921,6 @@ msgid "A tablet assigned to one event. The kiosk pulls the event's linked group 
 msgstr "Máy tính bảng được gán cho một sự kiện. Kiosk tải danh sách nhóm được liên kết của sự kiện và hiển thị để đăng ký. Nếu không có nhóm liên kết, kiosk sẽ không có danh sách để hiển thị."
 
 #: 
-msgid "Add Walk-in / Visitor"
-msgstr "Thêm khách vãng lai / Người viếng thăm"
-
-#: 
 msgid "Add people to your cart first, then come back to check them in to an event."
 msgstr "Thêm giáo dân vào danh sách đã chọn trước, sau đó quay lại để đăng ký họ tham dự sự kiện."
 
@@ -14328,10 +12955,6 @@ msgstr "Tất cả ảnh và tài liệu đã tải lên"
 #: 
 msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
 msgstr "Loại sự kiện là một mẫu — tên, thời gian bắt đầu mặc định, tần suất lặp lại, danh mục đếm điểm danh. Tùy chọn liên kết với một nhóm lớp làm đối tượng tham dự mặc định."
-
-#: 
-msgid "Attendance record deleted."
-msgstr "Đã xóa hồ sơ điểm danh."
 
 #: 
 msgid "Audit"
@@ -14394,24 +13017,12 @@ msgid "Check in all %d family members to a single event."
 msgstr "Điểm danh tất cả %d thành viên gia đình vào một sự kiện duy nhất."
 
 #: 
-msgid "Check out"
-msgstr "Đăng xuất"
-
-#: 
 msgid "Check-in By"
 msgstr "Đăng ký bởi"
 
 #: 
-msgid "Check-in failed. Please try again."
-msgstr "Đăng ký thất bại. Vui lòng thử lại."
-
-#: 
 msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
 msgstr "Đăng ký bị tắt cho sự kiện không hoạt động. Kích hoạt sự kiện từ Bảng điều khiển Sự kiện để bật đăng ký."
-
-#: 
-msgid "Check-out failed. Please try again."
-msgstr "Đăng xuất thất bại. Vui lòng thử lại."
 
 #: 
 msgid "Checked in to event: %s"
@@ -14424,10 +13035,6 @@ msgstr "Đã đăng xuất khỏi sự kiện: %s"
 #: 
 msgid "Close All Stuck Events"
 msgstr "Đóng tất cả sự kiện bị kẹt"
-
-#: 
-msgid "Confirm Check Out"
-msgstr "Xác nhận đăng xuất"
 
 #: 
 msgid "Create Repeat Events"
@@ -14454,10 +13061,6 @@ msgid "Creating backup..."
 msgstr "Đang tạo bản sao lưu..."
 
 #: 
-msgid "Creating..."
-msgstr "Đang tạo..."
-
-#: 
 msgid "Database + uploaded photos (larger)"
 msgstr "Cơ sở dữ liệu + ảnh đã tải lên (lớn hơn)"
 
@@ -14470,34 +13073,6 @@ msgid "Date range cannot exceed 1 year"
 msgstr "Phạm vi ngày không được vượt quá 1 năm"
 
 #: 
-msgid "Deactivate"
-msgstr "Hủy kích hoạt"
-
-#: 
-msgid "Delete Event Type"
-msgstr "Xóa loại sự kiện"
-
-#: 
-msgid "Delete attendance record?"
-msgstr "Xóa hồ sơ điểm danh?"
-
-#: 
-msgid "Delete check-in record for"
-msgstr "Xóa hồ sơ đăng ký cho"
-
-#: 
-msgid "Delete this event?"
-msgstr "Xóa sự kiện này?"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
-msgstr "Xóa sự kiện cũng sẽ xóa tất cả số liệu điểm danh. Không thể hoàn tác."
-
-#: 
-msgid "Deleting this event will also delete all attendance records. This cannot be undone."
-msgstr "Xóa sự kiện này cũng sẽ xóa tất cả hồ sơ điểm danh. Không thể hoàn tác."
-
-#: 
 msgid "Destructive Operation"
 msgstr "Thao tác xóa dữ liệu"
 
@@ -14508,10 +13083,6 @@ msgstr "Chỉnh sửa tên danh mục và nhấn Lưu, hoặc dùng biểu tư�
 #: 
 msgid "End Time"
 msgstr "Thời gian kết thúc"
-
-#: 
-msgid "End time must be after start time."
-msgstr "Thời gian kết thúc phải sau thời gian bắt đầu."
 
 #: 
 msgid "Ended"
@@ -14536,14 +13107,6 @@ msgstr "Chi tiết sự kiện"
 #: 
 msgid "Event Template"
 msgstr "Mẫu sự kiện"
-
-#: 
-msgid "Event already exists. Redirecting to check-in..."
-msgstr "Sự kiện đã tồn tại. Đang chuyển đến trang đăng ký..."
-
-#: 
-msgid "Event created. Redirecting to check-in..."
-msgstr "Sự kiện đã được tạo. Đang chuyển đến trang đăng ký..."
 
 #: 
 msgid "Event title is required."
@@ -14590,22 +13153,6 @@ msgid "Everyone is checked in!"
 msgstr "Tất cả đã đăng ký!"
 
 #: 
-msgid "Failed to create class. Please try again."
-msgstr "Không thể tạo lớp. Vui lòng thử lại."
-
-#: 
-msgid "Failed to create event."
-msgstr "Không thể tạo sự kiện."
-
-#: 
-msgid "Failed to create event. Please try again."
-msgstr "Không thể tạo sự kiện. Vui lòng thử lại."
-
-#: 
-msgid "Failed to delete. Please try again."
-msgstr "Không thể xóa. Vui lòng thử lại."
-
-#: 
 msgid "Fastest workflow:"
 msgstr "Quy trình nhanh nhất:"
 
@@ -14646,14 +13193,6 @@ msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
 msgstr "Định dạng lặp lại hàng năm không hợp lệ; dự kiến MM-DD (ví dụ: 04-12)"
 
 #: 
-msgid "Just now"
-msgstr "Vừa xong"
-
-#: 
-msgid "Leave blank to check out without recording the supervisor."
-msgstr "Để trống để đăng xuất mà không ghi lại người giám sát."
-
-#: 
 msgid "Link events to a group for Kiosk check-in functionality."
 msgstr "Liên kết sự kiện với nhóm để sử dụng chức năng đăng ký qua Kiosk."
 
@@ -14672,10 +13211,6 @@ msgstr "Quản lý tên sự kiện, mẫu lặp lại và số liệu điểm d
 #: 
 msgid "Missing required field: %s"
 msgstr "Thiếu trường bắt buộc: %s"
-
-#: 
-msgid "No Events Today"
-msgstr "Không có sự kiện hôm nay"
 
 #: 
 msgid "No Group"
@@ -14702,14 +13237,6 @@ msgid "Optional Settings"
 msgstr "Cài đặt tùy chọn"
 
 #: 
-msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
-msgstr "Tùy chọn — ghi lại người đang đăng xuất cho người này (ví dụ: phụ huynh đón con)."
-
-#: 
-msgid "Person checked out."
-msgstr "Người đã đăng xuất."
-
-#: 
 msgid "Person is not checked in"
 msgstr "Người chưa đăng ký"
 
@@ -14720,14 +13247,6 @@ msgstr "Người không có trong danh sách lớp đang hoạt động"
 #: 
 msgid "Pin to Calendars"
 msgstr "Ghim vào Lịch"
-
-#: 
-msgid "Please select a person to check in."
-msgstr "Vui lòng chọn một người để đăng ký."
-
-#: 
-msgid "Range end date must be on or after range start date."
-msgstr "Ngày kết thúc phạm vi phải bằng hoặc sau ngày bắt đầu phạm vi."
 
 #: 
 msgid "Range end must be a valid YYYY-MM-DD date."
@@ -14778,10 +13297,6 @@ msgid "Skip"
 msgstr "Bỏ qua"
 
 #: 
-msgid "Skip & Check Out"
-msgstr "Bỏ qua & Đăng xuất"
-
-#: 
 msgid "Start Check-in"
 msgstr "Bắt đầu đăng ký"
 
@@ -14812,10 +13327,6 @@ msgstr "Điểm danh"
 #: 
 msgid "The Events module is disabled"
 msgstr "Mô-đun Sự kiện bị tắt"
-
-#: 
-msgid "There are no events scheduled for today"
-msgstr "Không có sự kiện nào được lên lịch cho hôm nay"
 
 #: 
 msgid "This event is inactive."
@@ -14946,18 +13457,6 @@ msgid "Map Coordinates"
 msgstr "Tọa độ bản đồ"
 
 #: 
-msgid "Please select a group."
-msgstr "Vui lòng chọn một nhóm."
-
-#: 
-msgid "Please select a role."
-msgstr "Vui lòng chọn một chức vụ."
-
-#: 
-msgid "Please select both a group and a role."
-msgstr "Vui lòng chọn cả nhóm và chức vụ."
-
-#: 
 msgid "Range: -180 to 180."
 msgstr "Phạm vi: -180 đến 180."
 
@@ -14972,22 +13471,6 @@ msgstr "vd., -74.0060"
 #: 
 msgid "e.g., 40.7128"
 msgstr "vd., 40.7128"
-
-#: 
-msgid "mo"
-msgstr "tháng"
-
-#: 
-msgid "mos"
-msgstr "tháng"
-
-#: 
-msgid "yr"
-msgstr "năm"
-
-#: 
-msgid "yrs"
-msgstr "năm"
 
 #: 
 msgid "An error occurred while deleting the family."
@@ -15098,10 +13581,6 @@ msgid "You do not have permission to view this person"
 msgstr "Bạn không có quyền xem người này"
 
 #: 
-msgid "Are you sure you want to delete this event type? This cannot be undone."
-msgstr "Bạn có chắc chắn muốn xóa loại sự kiện này không? Hành động này không thể hoàn tác."
-
-#: 
 msgid "Assign to me"
 msgstr "Giao cho tôi"
 
@@ -15112,10 +13591,6 @@ msgstr "Đã giao"
 #: 
 msgid "Assigned event not found"
 msgstr "Không tìm thấy sự kiện được giao"
-
-#: 
-msgid "Cannot Delete Event Type"
-msgstr "Không thể xóa loại sự kiện"
 
 #: 
 msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
@@ -15146,20 +13621,12 @@ msgid "Register New Device"
 msgstr "Đăng ký thiết bị mới"
 
 #: 
-msgid "This event type is used by"
-msgstr "Loại sự kiện này được sử dụng bởi"
-
-#: 
 msgid "Total Kiosks"
 msgstr "Tổng số Kiosk"
 
 #: 
 msgid "Upcoming Events"
 msgstr "Sự kiện sắp tới"
-
-#: 
-msgid "event(s). Deactivate the type instead, or reassign the events first."
-msgstr "sự kiện. Hãy vô hiệu hóa loại này hoặc giao lại các sự kiện trước."
 
 #: 
 msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
@@ -15172,10 +13639,6 @@ msgstr "Đã có một tùy chọn với tên đó"
 #: 
 msgid "Cannot delete the only remaining option"
 msgstr "Không thể xóa tùy chọn duy nhất còn lại"
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Bộ nhớ tạm không khả dụng. Vui lòng sử dụng nút Tải xuống để lưu mã của bạn."
 
 #: 
 msgid "Custom Option"
@@ -15252,10 +13715,6 @@ msgstr "Mã khôi phục"
 #: 
 msgid "Set up Email"
 msgstr "Thiết lập Email"
-
-#: 
-msgid "Unable to copy to clipboard. Please copy the codes manually."
-msgstr "Không thể sao chép vào bộ nhớ tạm. Vui lòng sao chép mã theo cách thủ công."
 
 #: 
 msgid "Use Recovery Code"
@@ -15574,10 +14033,6 @@ msgid "Add Recurring Event"
 msgstr "Thêm sự kiện định kỳ"
 
 #: 
-msgid "Available after the event is saved."
-msgstr "Có sẵn sau khi sự kiện được lưu."
-
-#: 
 msgid "Boolean properties/fields accept yes / no / true / false / 1 / 0."
 msgstr "Các thuộc tính/trường Boolean chấp nhận yes / no / true / false / 1 / 0."
 
@@ -15618,10 +14073,6 @@ msgid "External calendar sharing is disabled"
 msgstr "Chia sẻ lịch bên ngoài đã bị tắt"
 
 #: 
-msgid "Failed to load event editor. Please refresh and try again."
-msgstr "Không tải được trình chỉnh sửa sự kiện. Vui lòng làm mới và thử lại."
-
-#: 
 msgid "Family Custom"
 msgstr "Tùy chỉnh gia đình"
 
@@ -15630,16 +14081,8 @@ msgid "Family Property"
 msgstr "Thuộc tính gia đình"
 
 #: 
-msgid "Fields"
-msgstr "Các trường"
-
-#: 
 msgid "Go to home"
 msgstr "Về trang chủ"
-
-#: 
-msgid "Hide advanced options"
-msgstr "Ẩn tùy chọn nâng cao"
 
 #: 
 msgid "How the CSV Import Works"
@@ -15658,14 +14101,6 @@ msgid "Loading event editor…"
 msgstr "Đang tải trình chỉnh sửa sự kiện…"
 
 #: 
-msgid "No group"
-msgstr "Không có nhóm"
-
-#: 
-msgid "Not pinned to any calendar"
-msgstr "Không ghim vào lịch nào"
-
-#: 
 msgid "Optional — sermon notes, materials, or other details copied to every generated event."
 msgstr "Tùy chọn — ghi chú bài giảng, tài liệu hoặc thông tin khác được sao chép vào mọi sự kiện được tạo."
 
@@ -15680,10 +14115,6 @@ msgstr "Tùy chỉnh cá nhân"
 #: 
 msgid "Person Property"
 msgstr "Thuộc tính cá nhân"
-
-#: 
-msgid "Show more options"
-msgstr "Hiển thị thêm tùy chọn"
 
 #: 
 msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
@@ -15710,16 +14141,8 @@ msgid "This calendar link is invalid or has been revoked. Ask the church for a c
 msgstr "Liên kết lịch này không hợp lệ hoặc đã bị thu hồi. Hãy hỏi nhà thờ để lấy liên kết hiện tại."
 
 #: 
-msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
-msgstr "Liên kết sự kiện này với danh sách lớp học hoặc chức vụ — được sử dụng bởi quy trình check-in Kiosk."
-
-#: 
 msgid "Upload a CSV to create families and people in bulk."
 msgstr "Tải lên CSV để tạo gia đình và giáo dân hàng loạt."
-
-#: 
-msgid "Volunteer-entered headcounts, broken down by category."
-msgstr "Số lượng người do tình nguyện viên nhập, phân theo danh mục."
 
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
@@ -15754,14 +14177,6 @@ msgstr "Thêm ngày lễ quốc gia vào lịch chính. Mỗi quốc gia đượ
 msgid "Choose map provider"
 msgstr "Chọn nhà cung cấp bản đồ"
 
-#: 
-msgid "Current database"
-msgstr "Cơ sở dữ liệu hiện tại"
-
-#: 
-msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
-msgstr "Dữ liệu mẫu thường chỉ được tải trên các cài đặt mới. Nhập ngay bây giờ sẽ thêm bản ghi mẫu cùng với dữ liệu hiện có và có thể tạo ra các bản trùng lặp."
-
 #. plugin:holidays:section:2:content
 #: 
 msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
@@ -15786,10 +14201,6 @@ msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Season
 msgstr "Ngày lễ được phân loại theo: Chính thức, Ngày kỷ niệm, Ngày nghỉ ngân hàng, Theo mùa và Tôn giáo. Để trống tất cả danh mục để hiển thị mọi ngày lễ, hoặc chọn loại cụ thể để thu hẹp hiển thị."
 
 #: 
-msgid "Import demo data anyway"
-msgstr "Nhập dữ liệu mẫu dù sao"
-
-#: 
 msgid "Missing pledge identifier."
 msgstr "Thiếu mã định danh cam kết tài chính."
 
@@ -15808,10 +14219,6 @@ msgstr "Mở trong Apple Maps"
 #: 
 msgid "Open in Google Maps"
 msgstr "Mở trong Google Maps"
-
-#: 
-msgid "Open in new tab"
-msgstr "Mở trong tab mới"
 
 #. plugin:holidays:section:0:title
 #: 
@@ -15844,22 +14251,10 @@ msgstr "Hệ thống"
 msgid "Timeline filters"
 msgstr "Bộ lọc dòng thời gian"
 
-#: 
-msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
-msgstr "Để bắt đầu lại với cơ sở dữ liệu sạch, hãy sử dụng Đặt lại cơ sở dữ liệu từ Bảng điều khiển quản trị trước khi nhập dữ liệu mẫu."
-
 #. plugin:holidays:section:0:content
 #: 
 msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
 msgstr "Sử dụng bộ chọn Quốc gia để chọn một hoặc nhiều quốc gia. Mỗi quốc gia bạn thêm sẽ xuất hiện như một mục lịch riêng trong thanh bên — cho phép bạn hiển thị ngày lễ cho hội chúng toàn cầu."
-
-#: 
-msgid "Your database already contains data"
-msgstr "Cơ sở dữ liệu của bạn đã chứa dữ liệu"
-
-#: 
-msgid "people"
-msgstr "người"
 
 #: 
 msgid "A downloadUrl is required to install a plugin."
@@ -16106,16 +14501,8 @@ msgid "Need help? Contact us"
 msgstr "Cần trợ giúp? Liên hệ với chúng tôi"
 
 #: 
-msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
-msgstr "Chưa chọn lịch — sự kiện này sẽ xuất hiện trong lịch hệ thống \"Sự kiện chưa ghim\" cho đến khi bạn ghim nó."
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "Mở cửa sổ 2 phút để thiết bị đăng ký tại:"
-
-#: 
-msgid "Times use church time ({{church}}), not your browser ({{browser}})."
-msgstr "Thời gian sử dụng múi giờ nhà thờ ({{church}}), không phải trình duyệt của bạn ({{browser}})."
 
 #: 
 msgid "Welcome — sign in to manage your community"
@@ -16292,4 +14679,1615 @@ msgstr "[Ghi Chú Riêng Tư — chỉ người tạo mới thấy]"
 #: 
 msgid "seconds"
 msgstr "giây"
+
+#: 
+msgid "A Calendar access token has been generated and saved."
+msgstr "Mã truy cập lịch đã được tạo và lưu."
+
+#: 
+msgid "API key regenerated"
+msgstr "Khóa API đã được tạo lại"
+
+#: 
+msgid "Access Token"
+msgstr "Truy cập thẻ"
+
+#: 
+msgid "Action Confirmation"
+msgstr "Xác nhận hành động"
+
+#: 
+msgid "Activate"
+msgstr "Kich hoat"
+
+#: 
+msgid "Add A Group Name"
+msgstr "Thêm tên nhóm"
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "Thêm khách vãng lai / Người viếng thăm"
+
+#: 
+msgid "Add an extra layer of security to your account"
+msgstr "Thêm lớp bảo mật cho tài khoản của bạn"
+
+#: 
+msgid "Added"
+msgstr "Đã thêm"
+
+#: 
+msgid "Added to cart successfully"
+msgstr "Đã thêm vào danh sách chọn"
+
+#: 
+msgid "Address is required"
+msgstr "Yêu cầu nhập địa chỉ"
+
+#: 
+msgid "All Day"
+msgstr "Cả ngày"
+
+#: 
+msgid "All Roles"
+msgstr "Tat ca vai tro"
+
+#: 
+msgid "All System Settings"
+msgstr "Tất cả cài đặt hệ thống"
+
+#: 
+msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
+msgstr "Tất cả tư cách thành viên và tài sản của nhóm sẽ bị hủy. Bản thân các thành viên trong nhóm sẽ không bị thay đổi."
+
+#: 
+msgid "All members already in cart"
+msgstr "Tất cả thành viên đã có trong danh sách"
+
+#: 
+msgid "Applied preset"
+msgstr "Da ap dung cai dat san"
+
+#: 
+msgid "Applying..."
+msgstr "Dang ap dung..."
+
+#: 
+msgid "Are you sure you want to continue?"
+msgstr "Bạn có chắc chắn muốn tiếp tục không?"
+
+#: 
+msgid "Are you sure you want to delete this deposit?"
+msgstr "Ban co chac chan muon xoa dot thu hien nay khong?"
+
+#: 
+msgid "Are you sure you want to delete this event type? This cannot be undone."
+msgstr "Bạn có chắc chắn muốn xóa loại sự kiện này không? Hành động này không thể hoàn tác."
+
+#: 
+msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
+msgstr "Bạn có chắc muốn tắt xác thực hai yếu tố không? Tài khoản của bạn sẽ kém bảo mật hơn."
+
+#: 
+msgid "Are you sure you want to move"
+msgstr "Bạn có chắc chắn muốn chuyển đi không"
+
+#: 
+msgid "Are you sure you want to remove"
+msgstr "Ban co chac chan muon xoa"
+
+#: 
+msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
+msgstr "Bạn có chắc chắn muốn xóa các thuộc tính dành riêng cho từng nhóm không? Tất cả dữ liệu thuộc tính thành viên nhóm sẽ bị mất!"
+
+#: 
+msgid "Are you sure you want to unassign this property?"
+msgstr "Bạn có chắc chắn muốn bỏ gán thuộc tính này không?"
+
+#: 
+msgid "Attendance record deleted."
+msgstr "Đã xóa hồ sơ điểm danh."
+
+#: 
+msgid "Available after the event is saved."
+msgstr "Có sẵn sau khi sự kiện được lưu."
+
+#: 
+msgid "BCC All"
+msgstr "BCC tat ca"
+
+#: 
+msgid "Background Color"
+msgstr "Màu nền"
+
+#: 
+msgid "Backup Complete"
+msgstr "Sao luu hoan tat"
+
+#: 
+msgid "Backup Downloaded, Copy on server removed"
+msgstr "Tập tin sao lưu đã được tải, bản sao lưu trên máy chủ đã được xóa đi"
+
+#: 
+msgid "Backup Skipped"
+msgstr "Đã bỏ qua sao lưu"
+
+#: 
+msgid "Backup complete! Click below to download."
+msgstr "Sao lưu hoàn tất! Nhấp vào bên dưới để tải xuống."
+
+#: 
+msgid "Backup downloaded. Server copy removed."
+msgstr "Đã tải bản sao lưu xuống. Bản sao trên máy chủ đã được xóa."
+
+#: 
+msgid "Before You Start"
+msgstr "Trước khi bắt đầu"
+
+#: 
+msgid "Browser language preference detected"
+msgstr "Đã phát hiện tùy chọn ngôn ngữ trình duyệt"
+
+#: 
+msgid "Calendar Name"
+msgstr "Tên lịch"
+
+#: 
+msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
+msgstr "Không thể tải lịch. Vui lòng kiểm tra mã truy cập hoặc cấu hình."
+
+#: 
+msgid "Can't scan?"
+msgstr "Không thể quét?"
+
+#: 
+msgid "Cannot Delete Event Type"
+msgstr "Không thể xóa loại sự kiện"
+
+#: 
+msgid "Cart emptied successfully"
+msgstr "Đã làm trống danh sách chọn"
+
+#: 
+msgid "Cart emptied to group successfully"
+msgstr "Đã chuyển danh sách vào nhóm thành công"
+
+#: 
+msgid "Change Your Locale"
+msgstr "Thay đổi địa phương"
+
+#: 
+msgid "Change role"
+msgstr "Thay đổi vai trò"
+
+#: 
+msgid "Check Number"
+msgstr "Số kiểm tra"
+
+#: 
+msgid "Check out"
+msgstr "Đăng xuất"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "Đăng ký thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "Đăng xuất thất bại. Vui lòng thử lại."
+
+#: 
+msgid "City is required"
+msgstr "Yêu cầu tên thành phố"
+
+#: 
+msgid "Click Save to apply."
+msgstr "Nhan Luu de ap dung."
+
+#: 
+msgid "Clipboard API not available. Please copy the URL manually."
+msgstr "API Clipboard không có sẵn. Vui lòng sao chép URL theo cách thủ công."
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "Bộ nhớ tạm không khả dụng. Vui lòng sử dụng nút Tải xuống để lưu mã của bạn."
+
+#: 
+msgid "Code incomplete"
+msgstr "Mã chưa đầy đủ"
+
+#: 
+msgid "Code is invalid"
+msgstr "Mã không hợp lệ"
+
+#: 
+msgid "Coming soon"
+msgstr "Sắp ra mắt"
+
+#: 
+msgid "Confirm Activation"
+msgstr "Xác nhận kích hoạt"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "Xác nhận đăng xuất"
+
+#: 
+msgid "Confirm Deactivation"
+msgstr "Xác nhận việc hủy kích hoạt"
+
+#: 
+msgid "Confirm Delete Group"
+msgstr "Xác nhận xóa bỏ Ban/Mục vụ này"
+
+#: 
+msgid "Confirm Disable Group Specific Properties"
+msgstr "Xác nhận vô hiệu hóa các thuộc tính cụ thể của nhóm"
+
+#: 
+msgid "Confirm Enable Group Specific Properties"
+msgstr "Xác nhận Bật thuộc tính cụ thể của nhóm"
+
+#: 
+msgid "Confirm with a code from your authenticator app"
+msgstr "Xác nhận bằng mã từ ứng dụng xác thực"
+
+#: 
+msgid "Copied"
+msgstr "Da sao chep"
+
+#: 
+msgid "Copied to clipboard"
+msgstr "Đã sao chép vào clipboard"
+
+#: 
+msgid "Copied!"
+msgstr "Đã sao chép!"
+
+#: 
+msgid "Copy"
+msgstr "Sao chép"
+
+#: 
+msgid "Copy All Emails"
+msgstr "Sao chép tất cả Email"
+
+#: 
+msgid "Copy All Numbers"
+msgstr "Sao chép tất cả số"
+
+#: 
+msgid "Copy Members to Group"
+msgstr "Sao chep thanh vien sang nhom"
+
+#: 
+msgid "Creating Backup..."
+msgstr "Dang tao sao luu..."
+
+#: 
+msgid "Creating..."
+msgstr "Đang tạo..."
+
+#: 
+msgid "Current database"
+msgstr "Cơ sở dữ liệu hiện tại"
+
+#: 
+msgid "Deactivate"
+msgstr "Hủy kích hoạt"
+
+#: 
+msgid "Default Name Group"
+msgstr "Nhóm tên mặc định"
+
+#: 
+msgid "Default role updated."
+msgstr "Đã cập nhật vai trò mặc định."
+
+#: 
+msgid "Delete Calendar"
+msgstr "Xóa lịch"
+
+#: 
+msgid "Delete Event Type"
+msgstr "Xóa loại sự kiện"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "Xóa hồ sơ điểm danh?"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "Xóa hồ sơ đăng ký cho"
+
+#: 
+msgid "Delete this event?"
+msgstr "Xóa sự kiện này?"
+
+#: 
+msgid "Delete this person?"
+msgstr "Xóa người này?"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "Xóa sự kiện cũng sẽ xóa tất cả số liệu điểm danh. Không thể hoàn tác."
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "Xóa sự kiện này cũng sẽ xóa tất cả hồ sơ điểm danh. Không thể hoàn tác."
+
+#: 
+msgid "Demo data imported successfully"
+msgstr "Nhập dữ liệu mẫu thành công"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "Dữ liệu mẫu thường chỉ được tải trên các cài đặt mới. Nhập ngay bây giờ sẽ thêm bản ghi mẫu cùng với dữ liệu hiện có và có thể tạo ra các bản trùng lặp."
+
+#: 
+msgid "Deposit ID"
+msgstr "ID tiền gửi"
+
+#: 
+msgid "Deposit Total"
+msgstr "Tổng số tiền gửi"
+
+#: 
+msgid "Deposit Value"
+msgstr "Gia tri dot thu hien"
+
+#: 
+msgid "Deposit saved successfully"
+msgstr "Đã lưu khoản đóng góp thành công"
+
+#: 
+msgid "Deposit(s)"
+msgstr "Tiền ký gửi"
+
+#: 
+msgid "Disable Two-Factor Authentication"
+msgstr "Tắt xác thực hai yếu tố"
+
+#: 
+msgid "Do you want to delete this person?  This cannot be undone."
+msgstr "Bạn có muốn xóa thành viên này không ? Điều này không thể hoàn lại."
+
+#: 
+msgid "Done"
+msgstr "Xong"
+
+#: 
+msgid "Download Backup & Continue"
+msgstr "Tai sao luu va tiep tuc"
+
+#: 
+msgid "Downloaded"
+msgstr "Đã tải xuống"
+
+#: 
+msgid "Downloading latest release from GitHub..."
+msgstr "Đang tải xuống phiên bản mới nhất từ GitHub..."
+
+#: 
+msgid "Duration"
+msgstr "Thời lượng"
+
+#: 
+msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
+msgstr "Mỗi lần đăng nhập, bạn cần xác nhận bằng mã từ ứng dụng xác thực"
+
+#: 
+msgid "Email addresses copied to clipboard"
+msgstr "Địa chỉ email đã được sao chép vào clipboard"
+
+#: 
+msgid "Empty Cart"
+msgstr "Xóa bỏ giỏ"
+
+#: 
+msgid "Empty Cart to Family"
+msgstr "Xóa bỏ giỏ trong Gia đình"
+
+#: 
+msgid "Empty Cart to Group"
+msgstr "Xóa bỏ giỏ trong Ban/Mục vụ"
+
+#: 
+msgid "Empty your entire cart?"
+msgstr "Xóa toàn bộ danh sách đang chọn?"
+
+#: 
+msgid "Enable Two-Factor Authentication"
+msgstr "Bật xác thực hai yếu tố"
+
+#: 
+msgid "End Date"
+msgstr "Ngày cuối"
+
+#: 
+msgid "End time must be after start time."
+msgstr "Thời gian kết thúc phải sau thời gian bắt đầu."
+
+#: 
+msgid "Enter text here..."
+msgstr "Nhập văn bản tại đây..."
+
+#: 
+msgid "Enter your username and password as usual"
+msgstr "Nhập tên người dùng và mật khẩu như thường lệ"
+
+#: 
+msgid "Error deleting payments"
+msgstr "Lỗi khi xóa các khoản thanh toán"
+
+#: 
+msgid "Error loading payments"
+msgstr "Lỗi khi tải các khoản thanh toán"
+
+#: 
+msgid "Error saving deposit"
+msgstr "Lỗi khi lưu khoản tiền gửi"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "Sự kiện đã tồn tại. Đang chuyển đến trang đăng ký..."
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "Sự kiện đã được tạo. Đang chuyển đến trang đăng ký..."
+
+#: 
+msgid "Failed to add family to cart"
+msgstr "Không thể thêm hộ gia đình vào danh sách"
+
+#: 
+msgid "Failed to add group to cart"
+msgstr "Không thể thêm nhóm vào danh sách"
+
+#: 
+msgid "Failed to add members to cart. Please try again."
+msgstr "Khong the them thanh vien vao danh sach. Vui long thu lai."
+
+#: 
+msgid "Failed to add to cart"
+msgstr "Thêm vào danh sách thất bại"
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Hủy đăng ký thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Failed to copy URL"
+msgstr "Sao chép URL thất bại"
+
+#: 
+msgid "Failed to create backup."
+msgstr "Tạo bản sao lưu thất bại."
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "Không thể tạo lớp. Vui lòng thử lại."
+
+#: 
+msgid "Failed to create event."
+msgstr "Không thể tạo sự kiện."
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "Không thể tạo sự kiện. Vui lòng thử lại."
+
+#: 
+msgid "Failed to create group. Please try again."
+msgstr "Lỗi tạo nhóm. Vui lòng thử lại."
+
+#: 
+msgid "Failed to delete class. Please try again."
+msgstr "Khong the xoa lop hoc. Vui long thu lai."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Xóa sự kiện thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Failed to delete group. Please try again."
+msgstr "Khong the xoa nhom. Vui long thu lai."
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "Không thể xóa. Vui lòng thử lại."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "Tắt xác thực hai yếu tố thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Failed to download update package."
+msgstr "Tải gói cập nhật thất bại."
+
+#: 
+msgid "Failed to empty cart"
+msgstr "Xóa danh sách thất bại"
+
+#: 
+msgid "Failed to empty cart to group"
+msgstr "Chuyển danh sách vào nhóm thất bại"
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "Tạo mã QR thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "Tải dữ liệu lịch thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Failed to load cart status."
+msgstr "Lỗi tải trạng thái danh sách chọn."
+
+#: 
+msgid "Failed to load event editor. Please refresh and try again."
+msgstr "Không tải được trình chỉnh sửa sự kiện. Vui lòng làm mới và thử lại."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Tải sự kiện thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Failed to load groups. Please refresh the page."
+msgstr "Lỗi tải nhóm. Vui lòng tải lại trang."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "Tải mã khôi phục thất bại. Vui lòng làm mới trang."
+
+#: 
+msgid "Failed to refresh upgrade information from GitHub."
+msgstr "Cập nhật thông tin nâng cấp từ GitHub thất bại."
+
+#: 
+msgid "Failed to remove family from cart"
+msgstr "Không thể xóa hộ gia đình khỏi danh sách"
+
+#: 
+msgid "Failed to remove from cart"
+msgstr "Xóa khỏi danh sách thất bại"
+
+#: 
+msgid "Failed to remove from class. Please try again."
+msgstr "Khong the xoa khoi lop hoc. Vui long thu lai."
+
+#: 
+msgid "Failed to remove group"
+msgstr "Xóa nhóm thất bại"
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Lưu sự kiện thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Failed to save setting"
+msgstr "Lưu cài đặt thất bại"
+
+#: 
+msgid "Failed to set default role. Please try again."
+msgstr "Thiết lập vai trò mặc định thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Failed to update group. Please try again."
+msgstr "Cập nhật nhóm thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Failed to update role name. Please try again."
+msgstr "Cập nhật tên vai trò thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Family added to cart"
+msgstr "Đã thêm hộ gia đình vào danh sách"
+
+#: 
+msgid "Family name must be at least 2 characters"
+msgstr "Tên gia đình phải có ít nhất 2 ký tự"
+
+#: 
+msgid "Fields"
+msgstr "Các trường"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Tìm giáo dân chưa tham dự một sự kiện"
+
+#: 
+msgid "First name is required"
+msgstr "Yêu cầu tên"
+
+#: 
+msgid "First name must be at least 2 characters"
+msgstr "Tên phải có ít nhất 2 ký tự"
+
+#: 
+msgid "Focus"
+msgstr "Tiêu điểm"
+
+#: 
+msgid "Force Import"
+msgstr "Buộc nhập dữ liệu"
+
+#: 
+msgid "Force Import will retry and may create duplicate data."
+msgstr "Buộc nhập sẽ thử lại và có thể tạo dữ liệu trùng lặp."
+
+#: 
+msgid "Force re-install initiated. Please backup your database before applying."
+msgstr "Đã bắt đầu buộc cài đặt lại. Vui lòng sao lưu CSDL trước khi thực hiện."
+
+#: 
+msgid "Foreground Color"
+msgstr "Màu viền"
+
+#: 
+msgid "Fund(s)"
+msgstr "Quỹ"
+
+#: 
+msgid "Generate new code"
+msgstr "Tạo mã mới"
+
+#: 
+msgid "Go to homepage"
+msgstr "Di den trang chu"
+
+#: 
+msgid "Group added to cart"
+msgstr "Đã thêm nhóm vào danh sách"
+
+#: 
+msgid "Group deleted successfully."
+msgstr "Da xoa nhom thanh cong."
+
+#: 
+msgid "Group removed from cart"
+msgstr "Đã xóa nhóm khỏi danh sách"
+
+#: 
+msgid "GroupID required for role selection prompt"
+msgstr "Cần có GroupID cho lời nhắc lựa chọn vai trò"
+
+#: 
+msgid "HTML URL"
+msgstr "URL HTML"
+
+#: 
+msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
+msgstr "Chuẩn bị sẵn ứng dụng xác thực (Google Authenticator, Microsoft Authenticator, Authy, v.v.)"
+
+#: 
+msgid "Hide advanced options"
+msgstr "Ẩn tùy chọn nâng cao"
+
+#: 
+msgid "Home phone is required"
+msgstr "Yêu cầu số điện thoại nhà"
+
+#: 
+msgid "ICS URL"
+msgstr "URL ICS"
+
+#: 
+msgid "Ignored"
+msgstr "Da bo qua"
+
+#: 
+msgid "Import Demo Data"
+msgstr "Nhập dữ liệu mẫu"
+
+#: 
+msgid "Import demo data anyway"
+msgstr "Nhập dữ liệu mẫu dù sao"
+
+#: 
+msgid "Import failed"
+msgstr "Nhập dữ liệu thất bại"
+
+#: 
+msgid "Import failed. Please try again."
+msgstr "Nhap that bai. Vui long thu lai."
+
+#: 
+msgid "Important"
+msgstr "Quan trọng"
+
+#: 
+msgid "Importing..."
+msgstr "Dang nhap..."
+
+#: 
+msgid "Include Sunday School classes and enrollments"
+msgstr "Bao gồm các lớp Trường Chúa Nhật và danh sách đăng ký"
+
+#: 
+msgid "Include events and calendars"
+msgstr "Bao gồm sự kiện và lịch"
+
+#: 
+msgid "Include financial data (donation funds, pledges)"
+msgstr "Bao gồm dữ liệu tài chính (quỹ dâng hiến, hứa dâng)"
+
+#: 
+msgid "Invalid Entry"
+msgstr "Entry không hợp lệ"
+
+#: 
+msgid "Invalid format"
+msgstr "Định dạng không hợp lệ"
+
+#: 
+msgid "It is strongly recommended to have a backup before proceeding."
+msgstr "Khuyen nghi manh me nen co ban sao luu truoc khi tiep tuc."
+
+#: 
+msgid "Just now"
+msgstr "Vừa xong"
+
+#: 
+msgid "Language updated to"
+msgstr "Ngôn ngữ đã được cập nhật thành"
+
+#: 
+msgid "Last name is required"
+msgstr "Yêu cầu họ"
+
+#: 
+msgid "Last name must be at least 2 characters"
+msgstr "Họ phải có ít nhất 2 ký tự"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "Để trống để đăng xuất mà không ghi lại người giám sát."
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "Để trống để giữ nguyên giá trị hiện có"
+
+#: 
+msgid "Loading"
+msgstr "Đang tải"
+
+#: 
+msgid "Loading recovery codes"
+msgstr "Đang tải mã khôi phục"
+
+#: 
+msgid "Make Default"
+msgstr "Làm mặc định"
+
+#: 
+msgid "Manual"
+msgstr "Thu cong"
+
+#: 
+msgid "Map Cart"
+msgstr "Giỏ Bản đồ"
+
+#: 
+msgid "Maximum length is"
+msgstr "Độ dài tối đa là"
+
+#: 
+msgid "Members added to cart."
+msgstr "Da them thanh vien vao danh sach."
+
+#: 
+msgid "Minimum length is"
+msgstr "Độ dài tối thiểu là"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Giáo dân vắng mặt"
+
+#: 
+msgid "Move"
+msgstr "Di chuyển"
+
+#: 
+msgid "Move Members"
+msgstr "Di chuyen thanh vien"
+
+#: 
+msgid "Move Members to Group"
+msgstr "Di chuyen thanh vien den nhom"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https://"
+msgstr "Phải là URL hợp lệ bắt đầu bằng http:// hoặc https://"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
+msgstr "Phải là URL hợp lệ (ví dụ: http://localhost hoặc https://domain.com)"
+
+#: 
+msgid "Must be a valid port number (e.g., 3306)"
+msgstr "Phải là số cổng hợp lệ (ví dụ: 3306)"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "Phải bắt đầu bằng / nếu không trống; không có dấu gạch chéo ở cuối. Chỉ cho phép chữ cái, số, gạch dưới, gạch ngang, dấu chấm và /."
+
+#: 
+msgid "Need to remove this data later?"
+msgstr "Cần xóa dữ liệu này sau?"
+
+#: 
+msgid "New Access Token"
+msgstr "Mã truy cập mới"
+
+#: 
+msgid "No Anniversaries"
+msgstr "Khong co ngay ky niem"
+
+#: 
+msgid "No Birthdays"
+msgstr "Khong co ngay sinh nhat"
+
+#: 
+msgid "No Deposits"
+msgstr "Khong co dot thu hien"
+
+#: 
+msgid "No Events Today"
+msgstr "Không có sự kiện hôm nay"
+
+#: 
+msgid "No anniversaries in the past or next 7 days"
+msgstr "Khong co ngay ky niem trong 7 ngay qua hoac toi"
+
+#: 
+msgid "No birthdays in the past or next 7 days"
+msgstr "Khong co ngay sinh nhat trong 7 ngay qua hoac toi"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "Chưa chọn lịch — sự kiện này sẽ xuất hiện trong lịch hệ thống \"Sự kiện chưa ghim\" cho đến khi bạn ghim nó."
+
+#: 
+msgid "No deposit data available yet"
+msgstr "Chua co du lieu dot thu hien"
+
+#: 
+msgid "No email addresses available"
+msgstr "Không có địa chỉ email có sẵn"
+
+#: 
+msgid "No group"
+msgstr "Không có nhóm"
+
+#: 
+msgid "No members found for this role."
+msgstr "Khong tim thay thanh vien cho vai tro nay."
+
+#: 
+msgid "No payments on this deposit"
+msgstr "Không có khoản thanh toán nào trong lần gửi này"
+
+#: 
+msgid "No payments yet. Click \"Add Payment\" to get started."
+msgstr "Chưa có khoản thanh toán nào. Nhấp vào \"Thêm thanh toán\" để bắt đầu."
+
+#: 
+msgid "No phone numbers available"
+msgstr "Không có số điện thoại có sẵn"
+
+#: 
+msgid "Not pinned to any calendar"
+msgstr "Không ghim vào lịch nào"
+
+#: 
+msgid "One-Time Code"
+msgstr "Mã một lần"
+
+#: 
+msgid "Open in New Tab"
+msgstr "Mở trong thẻ mới"
+
+#: 
+msgid "Open in new tab"
+msgstr "Mở trong tab mới"
+
+#: 
+msgid "Open your authenticator app and scan this QR code"
+msgstr "Mở ứng dụng xác thực và quét mã QR này"
+
+#: 
+msgid "Optional Data to Include"
+msgstr "Dữ liệu tùy chọn để bao gồm"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "Tùy chọn — ghi lại người đang đăng xuất cho người này (ví dụ: phụ huynh đón con)."
+
+#: 
+msgid "Parents"
+msgstr "Bố mẹ"
+
+#: 
+msgid "Password reset for"
+msgstr "Đặt lại mật khẩu cho"
+
+#: 
+msgid "Passwords do not match"
+msgstr "Mật khẩu không khớp"
+
+#: 
+msgid "Payments deleted successfully"
+msgstr "Xóa các khoản thanh toán thành công"
+
+#: 
+msgid "Person already in cart"
+msgstr "Người này đã có trong danh sách"
+
+#: 
+msgid "Person checked out."
+msgstr "Người đã đăng xuất."
+
+#: 
+msgid "Person removed from class."
+msgstr "Da xoa nguoi khoi lop hoc."
+
+#: 
+msgid "Phone numbers copied to clipboard"
+msgstr "Số điện thoại đã sao chép vào bộ nhớ tạm"
+
+#: 
+msgid "Phone numbers copied — paste into your messaging app"
+msgstr "Số điện thoại đã sao chép — dán vào ứng dụng nhắn tin của bạn"
+
+#: 
+msgid "Pinned Calendars"
+msgstr "Lịch được ghim"
+
+#: 
+msgid "Please add at least one family member."
+msgstr "Vui lòng thêm ít nhất một thành viên trong gia đình."
+
+#: 
+msgid "Please confirm activation of family"
+msgstr "Vui lòng xác nhận kích hoạt gia đình"
+
+#: 
+msgid "Please confirm deactivation of family"
+msgstr "Vui lòng xác nhận việc hủy kích hoạt gia đình"
+
+#: 
+msgid "Please confirm deletion of this group record"
+msgstr "Vui lòng xác nhận việc xóa bản ghi nhóm này"
+
+#: 
+msgid "Please confirm disabling 2 Factor Auth for this user"
+msgstr "Vui lòng xác nhận việc tắt 2 Factor Auth cho người dùng này"
+
+#: 
+msgid "Please confirm removal of user status from"
+msgstr "Vui lòng xác nhận việc xóa trạng thái người dùng khỏi"
+
+#: 
+msgid "Please confirm reset failed login count"
+msgstr "Vui lòng xác nhận đặt lại số lần đăng nhập không thành công"
+
+#: 
+msgid "Please confirm the password reset of this user"
+msgstr "Vui lòng xác nhận việc đặt lại mật khẩu của người dùng này"
+
+#: 
+msgid "Please enter a valid URL"
+msgstr "Vui lòng nhập URL hợp lệ"
+
+#: 
+msgid "Please enter a valid email address"
+msgstr "Vui lòng nhập địa chỉ email hợp lệ"
+
+#: 
+msgid "Please enter a valid email address (e.g., name@example.com)"
+msgstr "Vui lòng nhập địa chỉ email hợp lệ (ví dụ: name@example.com)"
+
+#: 
+msgid "Please enter a valid number"
+msgstr "Vui lòng nhập một số hợp lệ"
+
+#: 
+msgid "Please enter a valid phone number"
+msgstr "Vui lòng nhập số điện thoại hợp lệ"
+
+#: 
+msgid "Please fill in all required fields correctly."
+msgstr "Vui lòng điền đúng các thông tin bắt buộc."
+
+#: 
+msgid "Please map at least one column before importing"
+msgstr "Vui long ghep noi it nhat mot cot truoc khi nhap"
+
+#: 
+msgid "Please select a CSV file"
+msgstr "Vui long chon mot tep CSV"
+
+#: 
+msgid "Please select a backup file to restore"
+msgstr "Vui lòng chọn một tệp sao lưu để khôi phục"
+
+#: 
+msgid "Please select a date"
+msgstr "Vui lòng chọn một ngày"
+
+#: 
+msgid "Please select a group."
+msgstr "Vui lòng chọn một nhóm."
+
+#: 
+msgid "Please select a person to check in."
+msgstr "Vui lòng chọn một người để đăng ký."
+
+#: 
+msgid "Please select a role."
+msgstr "Vui lòng chọn một chức vụ."
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "Vui lòng chọn cả nhóm và chức vụ."
+
+#: 
+msgid "Please select rows to delete"
+msgstr "Vui lòng chọn các hàng để xóa"
+
+#: 
+msgid "Please select target Role for members"
+msgstr "Vui lòng lựa chọn vai trò cho thành viên"
+
+#: 
+msgid "Please select target group for members"
+msgstr "Vui lòng lựa chọn nhóm tế bào cho thành viên"
+
+#: 
+msgid "Please try again"
+msgstr "Vui lòng thử lại"
+
+#: 
+msgid "Press CTRL + C to copy"
+msgstr "Nhấn CTRL + C để sao chép"
+
+#: 
+msgid "Public calendar"
+msgstr "Lịch công cộng"
+
+#: 
+msgid "Quick Setup"
+msgstr "Cai dat nhanh"
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "Ngày kết thúc phạm vi phải bằng hoặc sau ngày bắt đầu phạm vi."
+
+#: 
+msgid "Recovery Codes"
+msgstr "Mã khôi phục"
+
+#: 
+msgid "Register another family"
+msgstr "Dang ky gia dinh khac"
+
+#: 
+msgid "Registration Error"
+msgstr "Lỗi đăng ký"
+
+#: 
+msgid "Remove Property"
+msgstr "Xóa thuộc tính"
+
+#: 
+msgid "Remove this family from cart?"
+msgstr "Xóa hộ gia đình này khỏi danh sách?"
+
+#: 
+msgid "Remove this group from cart?"
+msgstr "Xóa nhóm này khỏi danh sách?"
+
+#: 
+msgid "Remove this person from cart?"
+msgstr "Xóa người này khỏi danh sách?"
+
+#: 
+msgid "Removed from cart successfully"
+msgstr "Đã xóa khỏi danh sách thành công"
+
+#: 
+msgid "Restore failed. Please check the backup file and try again."
+msgstr "Khôi phục thất bại. Vui lòng kiểm tra tệp sao lưu và thử lại."
+
+#: 
+msgid "Retry Download"
+msgstr "Tử tải lại"
+
+#: 
+msgid "Role Name"
+msgstr "Tên vai trò"
+
+#: 
+msgid "Role added successfully."
+msgstr "Đã thêm vai trò thành công."
+
+#: 
+msgid "Role deleted successfully."
+msgstr "Đã xóa vai trò thành công."
+
+#: 
+msgid "Role name updated."
+msgstr "Đã cập nhật tên vai trò."
+
+#: 
+msgid "Role not found."
+msgstr "Khong tim thay vai tro."
+
+#: 
+msgid "Roles"
+msgstr "Vai tro"
+
+#: 
+msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
+msgstr "Lưu các mã khôi phục này ở nơi an toàn. Bạn có thể dùng chúng để truy cập tài khoản nếu mất quyền truy cập ứng dụng xác thực."
+
+#: 
+msgid "Saving..."
+msgstr "Đang lưu..."
+
+#: 
+msgid "Scan QR Code"
+msgstr "Quét mã QR"
+
+#: 
+msgid "Search groups..."
+msgstr "Tim kiem nhom..."
+
+#: 
+msgid "Search or select..."
+msgstr "Tìm kiếm hoặc chọn..."
+
+#: 
+msgid "Secure"
+msgstr "Bảo mật"
+
+#: 
+msgid "Select Group and Role"
+msgstr "Lựa chọn nhóm tế bào và vai trò"
+
+#: 
+msgid "Select calendars..."
+msgstr "Chọn lịch..."
+
+#: 
+msgid "Select event type..."
+msgstr "Chọn loại sự kiện..."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Chọn sự kiện mong muốn"
+
+#: 
+msgid "Sequence"
+msgstr "Sự nối tiếp"
+
+#: 
+msgid "Server error"
+msgstr "Lỗi máy chủ"
+
+#: 
+msgid "Server returned an unexpected response. Please try again."
+msgstr "May chu tra ve phan hoi khong mong doi. Vui long thu lai."
+
+#: 
+msgid "Set Up Authenticator"
+msgstr "Cài đặt ứng dụng xác thực"
+
+#: 
+msgid "Setting updated successfully"
+msgstr "Cập nhật cài đặt thành công"
+
+#: 
+msgid "Setup Complete"
+msgstr "Cài đặt hoàn tất"
+
+#: 
+msgid "Share this URL with family members to verify their information"
+msgstr "Chia sẻ URL này với các thành viên gia đình để xác minh thông tin"
+
+#: 
+msgid "Show more options"
+msgstr "Hiển thị thêm tùy chọn"
+
+#: 
+msgid "Sign In"
+msgstr "Đăng nhập"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "Bỏ qua & Đăng xuất"
+
+#: 
+msgid "Sorry, we are unable to process your request at this point in time."
+msgstr "Xin lỗi, chúng tôi không thể xử lý yêu cầu của bạn tại thời điểm này."
+
+#: 
+msgid "Start Date"
+msgstr "Ngày bắt đầu"
+
+#: 
+msgid "Submitting..."
+msgstr "Dang gui..."
+
+#: 
+msgid "System upgrade completed successfully!"
+msgstr "Nâng cấp hệ thống hoàn tất thành công!"
+
+#: 
+msgid "Text All"
+msgstr "Văn bản Tất cả"
+
+#: 
+msgid "The selected file exceeds this servers maximum upload size of"
+msgstr "Tệp đã chọn vượt quá kích thước tải lên tối đa của máy chủ này là"
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "Không có sự kiện nào được lên lịch cho hôm nay"
+
+#: 
+msgid "There was a problem retrieving the requested object"
+msgstr "Đã xảy ra sự cố khi truy xuất đối tượng được yêu cầu"
+
+#: 
+msgid "This event type is used by"
+msgstr "Loại sự kiện này được sử dụng bởi"
+
+#: 
+msgid "This field is required"
+msgstr "Trường này là bắt buộc"
+
+#: 
+msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
+msgstr "Thao tác này cũng sẽ xóa tất cả các vai trò và dữ liệu Thuộc tính Nhóm cụ thể được liên kết với bản ghi Nhóm này."
+
+#: 
+msgid "This will also delete all payments associated with this deposit"
+msgstr "Điều này cũng sẽ xóa tất cả các khoản thanh toán được liên kết với khoản tiền gửi này"
+
+#: 
+msgid "This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor."
+msgstr "Thao tác này sẽ tạo một bảng thuộc tính dành riêng cho nhóm cho nhóm này. Sau đó, bạn nên thêm các thuộc tính cần thiết bằng Trình chỉnh sửa biểu mẫu thuộc tính nhóm cụ thể."
+
+#: 
+msgid "This will replace any previously enrolled 2FA methods"
+msgstr "Điều này sẽ thay thế mọi phương thức 2FA đã đăng ký trước đó"
+
+#: 
+msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
+msgstr "Liên kết sự kiện này với danh sách lớp học hoặc chức vụ — được sử dụng bởi quy trình check-in Kiosk."
+
+#: 
+msgid "Time"
+msgstr "Thời gian"
+
+#: 
+msgid "Timed"
+msgstr "Được định thời"
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "Thời gian sử dụng múi giờ nhà thờ ({{church}}), không phải trình duyệt của bạn ({{browser}})."
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "Để bắt đầu lại với cơ sở dữ liệu sạch, hãy sử dụng Đặt lại cơ sở dữ liệu từ Bảng điều khiển quản trị trước khi nhập dữ liệu mẫu."
+
+#: 
+msgid "Today"
+msgstr "Hôm nay"
+
+#: 
+msgid "Two Factor Enrollment Error"
+msgstr "Lỗi đăng ký hai yếu tố"
+
+#: 
+msgid "Two-factor authentication has been disabled"
+msgstr "Xác thực hai yếu tố đã bị tắt"
+
+#: 
+msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
+msgstr "Xác thực hai yếu tố là một trong những cách tốt nhất để bảo vệ tài khoản. Chúng tôi khuyến nghị giữ tính năng này bật."
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the URL manually."
+msgstr "Không thể sao chép vào bộ nhớ tạm. Vui lòng sao chép URL theo cách thủ công."
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "Không thể sao chép vào bộ nhớ tạm. Vui lòng sao chép mã theo cách thủ công."
+
+#: 
+msgid "Unable to load"
+msgstr "Không thể tải"
+
+#: 
+msgid "Unable to load state list. Please check your network connection or try again later."
+msgstr "Không thể tải danh sách tỉnh/thành."
+
+#: 
+msgid "Unfocus"
+msgstr "Không tập trung"
+
+#: 
+msgid "Unknown error"
+msgstr "Lỗi không xác định"
+
+#: 
+msgid "Update package downloaded successfully."
+msgstr "Đã tải xuống gói cập nhật thành công."
+
+#: 
+msgid "Upgrade failed."
+msgstr "Nâng cấp thất bại."
+
+#: 
+msgid "Upgrade failed. Please check the logs."
+msgstr "Nâng cấp thất bại. Vui lòng kiểm tra nhật ký (logs)."
+
+#: 
+msgid "Upgrade information refreshed. Reloading page..."
+msgstr "Thông tin nâng cấp đã làm mới. Đang tải lại trang..."
+
+#: 
+msgid "Upload failed. Please check the file and try again."
+msgstr "Tai len that bai. Vui long kiem tra tep va thu lai."
+
+#: 
+msgid "User Delete Confirmation"
+msgstr "Xác nhận xóa người dùng"
+
+#: 
+msgid "Validation pending"
+msgstr "Đang chờ xác thực"
+
+#: 
+msgid "Verification URL"
+msgstr "URL xác minh"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Xác minh thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Verification recorded"
+msgstr "Xác minh được ghi lại"
+
+#: 
+msgid "Verify Code"
+msgstr "Xác minh mã"
+
+#: 
+msgid "Verifying"
+msgstr "Đang xác minh"
+
+#: 
+msgid "View Cart"
+msgstr "Xem giỏ"
+
+#: 
+msgid "View all results"
+msgstr "Xem tat ca ket qua"
+
+#: 
+msgid "Volunteer-entered headcounts, broken down by category."
+msgstr "Số lượng người do tình nguyện viên nhập, phân theo danh mục."
+
+#: 
+msgid "Warnings"
+msgstr "Cảnh báo"
+
+#: 
+msgid "We're so glad your family has joined us!"
+msgstr "Chung toi rat vui gia dinh ban da tham gia!"
+
+#: 
+msgid "Welcome to the Family!"
+msgstr "Chao mung gia nhap gia dinh!"
+
+#: 
+msgid "Yes, Empty Cart"
+msgstr "Có, xóa hết"
+
+#: 
+msgid "Yes, Remove"
+msgstr "Có, xóa bỏ"
+
+#: 
+msgid "You are about to add a new deposit without a comment"
+msgstr "Bạn sắp thêm khoản tiền gửi mới mà không có bình luận"
+
+#: 
+msgid "You can also use backup recovery codes if you lose access to your app"
+msgstr "Bạn cũng có thể dùng mã khôi phục dự phòng nếu mất quyền truy cập ứng dụng"
+
+#: 
+msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
+msgstr "Bạn có thể dùng ứng dụng xác thực để đăng nhập. Mỗi mã có hiệu lực trong 30 giây."
+
+#: 
+msgid "You must enter the same password in both boxes"
+msgstr "Bạn phải nhập cùng một mật khẩu vào cả hai hộp"
+
+#: 
+msgid "You'll receive backup codes that can be used if you lose access to your app"
+msgstr "Bạn sẽ nhận được mã dự phòng có thể dùng nếu mất quyền truy cập ứng dụng"
+
+#: 
+msgid "Your Cart is Empty"
+msgstr "Giỏ của bạn đang trống"
+
+#: 
+msgid "Your account is now protected"
+msgstr "Tài khoản của bạn hiện đã được bảo vệ"
+
+#: 
+msgid "Your account is protected"
+msgstr "Tài khoản của bạn được bảo vệ"
+
+#: 
+msgid "Your authenticator app has been successfully enrolled"
+msgstr "Ứng dụng xác thực của bạn đã được đăng ký thành công"
+
+#: 
+msgid "Your browser language preference differs from your ChurchCRM locale"
+msgstr "Tùy chọn ngôn ngữ trình duyệt của bạn khác với địa phương ChurchCRM"
+
+#: 
+msgid "Your database already contains data"
+msgstr "Cơ sở dữ liệu của bạn đã chứa dữ liệu"
+
+#: 
+msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "Dang ky cua ban da duoc nhan. Doi ngu chung toi se som lien he de don tiep ban."
+
+#: 
+msgid "Zip code is required"
+msgstr "Yêu cầu mã bưu điện"
+
+#: 
+msgid "added"
+msgstr "đã thêm"
+
+#: 
+msgid "ago"
+msgstr "trước"
+
+#: 
+msgid "all members"
+msgstr "tat ca thanh vien"
+
+#: 
+msgid "already in cart"
+msgstr "đã có trong danh sách"
+
+#: 
+msgid "day"
+msgstr "ngày"
+
+#: 
+msgid "days"
+msgstr "ngày"
+
+#: 
+msgid "deposit(s) with no payments"
+msgstr "khoản gửi không có thanh toán"
+
+#: 
+msgid "e.g. Sunday Service"
+msgstr "ví dụ Dịch vụ Chủ nhật"
+
+#: 
+msgid "event(s). Deactivate the type instead, or reassign the events first."
+msgstr "sự kiện. Hãy vô hiệu hóa loại này hoặc giao lại các sự kiện trước."
+
+#: 
+msgid "from this class?"
+msgstr "khoi lop hoc nay?"
+
+#: 
+msgid "from this group?"
+msgstr "khoi nhom nay?"
+
+#: 
+msgid "in"
+msgstr "trong"
+
+#: 
+msgid "in cart"
+msgstr "trong danh sách"
+
+#: 
+msgid "member"
+msgstr "thành viên"
+
+#: 
+msgid "members"
+msgstr "thanh vien"
+
+#: 
+msgid "members. Already had"
+msgstr "thành viên. Đã có sẵn"
+
+#: 
+msgid "mo"
+msgstr "tháng"
+
+#: 
+msgid "mos"
+msgstr "tháng"
+
+#: 
+msgid "open rate"
+msgstr "tỉ lệ mở"
+
+#: 
+msgid "our church"
+msgstr "giao hoi cua chung toi"
+
+#: 
+msgid "payment(s)?"
+msgstr "(các) khoản thanh toán?"
+
+#: 
+msgid "people"
+msgstr "người"
+
+#: 
+msgid "people added to cart"
+msgstr "người đã được thêm vào danh sách"
+
+#: 
+msgid "people already in cart"
+msgstr "người đã có sẵn trong danh sách"
+
+#: 
+msgid "people from cart"
+msgstr "người từ danh sách"
+
+#: 
+msgid "people removed from cart"
+msgstr "người đã được xóa khỏi danh sách"
+
+#: 
+msgid "to another group?"
+msgstr "sang nhom khac?"
+
+#: 
+msgid "years"
+msgstr "năm"
+
+#: 
+msgid "yr"
+msgstr "năm"
+
+#: 
+msgid "yrs"
+msgstr "năm"
+
+#: 
+msgid "— Ignore —"
+msgstr "— Bo qua —"
+
+#: 
+msgid "— Select Country —"
+msgstr "— Chọn quốc gia —"
+
+#: 
+msgid "— Select State —"
+msgstr "— Chọn tỉnh/thành phố —"
 
