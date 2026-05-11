@@ -345,22 +345,6 @@ msgid "Back to Menu"
 msgstr "Tagasi menüüsse"
 
 #: 
-msgid "Empty Cart"
-msgstr "Tühjenda korv"
-
-#: 
-msgid "Empty Cart to Group"
-msgstr "Tühjenda grupi korv"
-
-#: 
-msgid "Empty Cart to Family"
-msgstr "Tühjenda pere korv"
-
-#: 
-msgid "Map Cart"
-msgstr "Kaardikogu"
-
-#: 
 msgid "Bulk Mail Presort"
 msgstr "Masspostituse ettetellimine"
 
@@ -1443,26 +1427,6 @@ msgid "Group View"
 msgstr "Grupi vaade"
 
 #: 
-msgid "Confirm Delete Group"
-msgstr "Kinnitage grupi kustutamine"
-
-#: 
-msgid "Please confirm deletion of this group record"
-msgstr "Kinnitage selle grupi kirje kustutamine"
-
-#: 
-msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
-msgstr "Sellega kustutatakse ka kõik selle rühmaga seotud rollid ja grupi spetsiifilised atribuudid."
-
-#: 
-msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
-msgstr "Kõik rühma liikmed ja atribuudid hävitatakse. Grupi liikmeid ise ei muudeta."
-
-#: 
-msgid "Please select target group for members"
-msgstr "Valige liikmete jaoks sihtgrupp"
-
-#: 
 msgid "Default Role"
 msgstr "Vaike roll"
 
@@ -1645,10 +1609,6 @@ msgstr "Grupp"
 #: 
 msgid "Default"
 msgstr "Vaikimisi"
-
-#: 
-msgid "Make Default"
-msgstr "Muuda vaikimisi"
 
 #: 
 msgid "Exit"
@@ -2056,15 +2016,6 @@ msgid "Calendar Year"
 msgstr "Kalendriaasta"
 
 #: 
-msgid "User Delete Confirmation"
-msgstr "Kasutaja kustutamise kinnitus"
-
-#: 
-#, fuzzy
-msgid "Please confirm removal of user status from"
-msgstr "Kinnitage kasutaja oleku eemaldamine saidist"
-
-#: 
 msgid "User Editor"
 msgstr "Kasutaja muutja"
 
@@ -2121,10 +2072,6 @@ msgid "Failed Logins"
 msgstr "Ebaõnnestunud sisselogimised"
 
 #: 
-msgid "You must enter the same password in both boxes"
-msgstr "Mõlemasse lahtrisse peate sisestama sama parooli"
-
-#: 
 msgid "Your password choice is too obvious. Please choose something else."
 msgstr "Teie parooli valik on liiga ilmne. Palun vali midagi muud."
 
@@ -2155,10 +2102,6 @@ msgstr "Uus parool"
 #: 
 msgid "Confirm New Password"
 msgstr "Kinnita uus parool"
-
-#: 
-msgid "Please confirm the password reset of this user"
-msgstr "Kinnitage selle kasutaja parooli lähtestamine"
 
 #: 
 msgid "Volunteer Opportunity Editor"
@@ -2638,14 +2581,6 @@ msgid "Are you sure you want to delete the selected"
 msgstr "Kas soovite kindlasti valitud valitud kustutada?"
 
 #: 
-msgid "Deposit(s)"
-msgstr "Sissemakse (d)"
-
-#: 
-msgid "This will also delete all payments associated with this deposit"
-msgstr "Sellega kustutatakse ka kõik selle sissemaksega seotud maksed"
-
-#: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "Seda toimingut EI SAA tagasi võtta ja sellel võib olla juriidiline tähendus!"
 
@@ -2712,10 +2647,6 @@ msgstr "Õige"
 #: 
 msgid "Edit Settings"
 msgstr "Redigeeri seadeid"
-
-#: 
-msgid "Backup Downloaded, Copy on server removed"
-msgstr "Varundus alla laaditud, koopia serverist eemaldatud"
 
 #: 
 msgid "Functions"
@@ -2833,10 +2764,6 @@ msgstr "Keela rühmaspetsiifilised atribuudid"
 #: 
 msgid "Group Properties"
 msgstr "Rühma atribuudid"
-
-#: 
-msgid "There was a problem retrieving the requested object"
-msgstr "Taotletud objekti toomisel ilmnes probleem"
 
 #: 
 msgid "All"
@@ -4590,10 +4517,6 @@ msgid "Maximum upload size"
 msgstr "Maksimaalne üleslaadimise suurus"
 
 #: 
-msgid "The selected file exceeds this servers maximum upload size of"
-msgstr "Valitud fail ületab selle serveri maksimaalse üleslaadimismahu"
-
-#: 
 msgid "Failed"
 msgstr "Ebaõnnestunud"
 
@@ -4626,27 +4549,6 @@ msgstr "Taotleti vale konfiguratsiooni nime"
 #: 
 msgid "Profile Image uploaded"
 msgstr "Profiilipilt on üles laaditud"
-
-#: 
-#, fuzzy
-msgid "payment(s)?"
-msgstr "makse(d)?"
-
-#: 
-msgid "Confirm Deactivation"
-msgstr "Kinnitage desaktiveerimine"
-
-#: 
-msgid "Confirm Activation"
-msgstr "Kinnitage aktiveerimine"
-
-#: 
-msgid "Please confirm deactivation of family"
-msgstr "Kinnitage pere deaktiveerimine"
-
-#: 
-msgid "Please confirm activation of family"
-msgstr "Kinnitage pere aktiveerimine"
 
 #: 
 #, fuzzy
@@ -4751,14 +4653,6 @@ msgid "Include"
 msgstr "Kaasa"
 
 #: 
-msgid "View Cart"
-msgstr "Vaata valikukorvi"
-
-#: 
-msgid "Your Cart is Empty"
-msgstr "Teie valikukorv on tühi"
-
-#: 
 msgid "Legend"
 msgstr "Legend"
 
@@ -4773,14 +4667,6 @@ msgstr "Näidatakse õpilasi, kellel on sünnipäevad"
 #: 
 msgid "Actions"
 msgstr "Toiming"
-
-#: 
-msgid "Action Confirmation"
-msgstr "Toimingu kinnitus"
-
-#: 
-msgid "Please confirm reset failed login count"
-msgstr "Palun kinnitage nurjunud sisselogimiste arvu lähtestamine"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -4920,10 +4806,6 @@ msgid "Reset your password"
 msgstr "Taasta oma salasõna"
 
 #: 
-msgid "Sorry, we are unable to process your request at this point in time."
-msgstr "Kahjuks ei saa me teie taotlust praegu töödelda."
-
-#: 
 msgid "Kiosk Manager"
 msgstr "Tööharu haldur"
 
@@ -4936,10 +4818,6 @@ msgid "Self Verification"
 msgstr "Automaatne kinitus"
 
 #: 
-msgid "Check Number"
-msgstr "Kontrolli numbrit"
-
-#: 
 msgid "Details"
 msgstr "Üksikasjad"
 
@@ -4948,48 +4826,12 @@ msgid "Verification email sent"
 msgstr "Kinnitusmeil saadetud"
 
 #: 
-msgid "Confirm Enable Group Specific Properties"
-msgstr "Kinnitage rühma spetsiifiliste atribuutide lubamine"
-
-#: 
-msgid "This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor."
-msgstr "See loob selle rühma jaoks rühmapõhise atribuutide tabeli. Seejärel peaksite rühmapõhiste atribuutide vormiredaktoriga lisama vajalikud atribuudid."
-
-#: 
-msgid "Confirm Disable Group Specific Properties"
-msgstr "Kinnitage rühma spetsiifiliste atribuutide keelamine"
-
-#: 
-msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
-msgstr "Kas soovite kindlasti eemaldada grupispetsiifilised isikuomadused? Kõik rühmaliikmete atribuutide andmed lähevad kaotsi!"
-
-#: 
-msgid "Role Name"
-msgstr "Rolli nimi"
-
-#: 
-msgid "Sequence"
-msgstr "Järjestus"
-
-#: 
-msgid "Do you want to delete this person?  This cannot be undone."
-msgstr "Kas soovite selle inimese kustutada? Seda ei saa tagasi võtta."
-
-#: 
-msgid "Are you sure you want to unassign this property?"
-msgstr "Kas olete kindel, et soovite selle omaduse määramise tühistada?"
-
-#: 
 msgid "Select a family"
 msgstr "Valige perekond"
 
 #: 
 msgid "Release Notes"
 msgstr "Väljalaske märkused"
-
-#: 
-msgid "Move"
-msgstr "Liiguta"
 
 #. Context: locales
 #: 
@@ -5180,18 +5022,6 @@ msgid "OK"
 msgstr "OK"
 
 #: 
-msgid "Please select target Role for members"
-msgstr "Valige liikmetele sihtroll"
-
-#: 
-msgid "GroupID required for role selection prompt"
-msgstr "Rollivaliku küsimiseks on vajalik GroupID"
-
-#: 
-msgid "Select Group and Role"
-msgstr "Valige Rühm ja roll"
-
-#: 
 msgid "All Members"
 msgstr "Kõik liikmed"
 
@@ -5218,14 +5048,6 @@ msgstr "Kviitungi Saaja nimetamise meetod"
 #: 
 msgid "Salutation Utility"
 msgstr "Tervituste kasulikkus"
-
-#: 
-msgid "Add A Group Name"
-msgstr "Lisage rühma nimi"
-
-#: 
-msgid "Default Name Group"
-msgstr "Grupi Vaikenimi"
 
 #: 
 msgid "Group Role"
@@ -5395,42 +5217,6 @@ msgid "Username"
 msgstr "Kasutajanimi"
 
 #: 
-msgid "Are you sure you want to move"
-msgstr "Kas soovite kindlasti kolida"
-
-#: 
-msgid "Access Token"
-msgstr "Juurdepääsuluba"
-
-#: 
-msgid "New Access Token"
-msgstr "Uus juurdepääsuluba"
-
-#: 
-msgid "ICS URL"
-msgstr "ICS URL"
-
-#: 
-msgid "Foreground Color"
-msgstr "Esiplaani värv"
-
-#: 
-msgid "Background Color"
-msgstr "Taustavärv"
-
-#: 
-msgid "Delete Calendar"
-msgstr "Kustuta kalender"
-
-#: 
-msgid "Invalid Entry"
-msgstr "Vale sisestus"
-
-#: 
-msgid "Calendar Name"
-msgstr "Kalendri nimi"
-
-#: 
 msgid "New Calendar"
 msgstr "Uus kalender"
 
@@ -5497,10 +5283,6 @@ msgstr "vigane ekspordiväärtus"
 #: 
 msgid "Duplicate Emails"
 msgstr "Kopeerivad e-kirjad"
-
-#: 
-msgid "HTML URL"
-msgstr "HTML-i URL"
 
 #: 
 #, fuzzy
@@ -5578,10 +5360,6 @@ msgid "Latvia (Latvija)"
 msgstr "Läti"
 
 #: 
-msgid "You are about to add a new deposit without a comment"
-msgstr "Kavatsete lisada uue sissemakse ilma kommentaarita"
-
-#: 
 msgid "Record"
 msgstr "Kirje"
 
@@ -5597,14 +5375,6 @@ msgstr "Eemaldatud sündmuse"
 #: 
 msgid "Passed"
 msgstr "Surnud"
-
-#: 
-msgid "Focus"
-msgstr "Fookus"
-
-#: 
-msgid "Unfocus"
-msgstr "Keskendumata"
 
 #. Context: locales
 #: 
@@ -5658,10 +5428,6 @@ msgid "People Verify Dashboard"
 msgstr "Inimesed kontrollivad juhtpaneeli"
 
 #: 
-msgid "Verification recorded"
-msgstr "Kontroll registreeriti"
-
-#: 
 msgid "Verification URL created"
 msgstr "Kinnitus URL on loodud"
 
@@ -5680,10 +5446,6 @@ msgstr "Viga e-kirjade saatmisel"
 #: 
 msgid "Please check logs for more information"
 msgstr "Lisateabe saamiseks kontrollige logisid"
-
-#: 
-msgid "Verification URL"
-msgstr "Kinnituse URL"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5759,10 +5521,6 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Perekonnanimi, eesnimi keskminenimi"
 
 #: 
-msgid "Please confirm disabling 2 Factor Auth for this user"
-msgstr "Palun kinnitage, et keelataa selle kasutaja 2 Faktori Autoriseerimine"
-
-#: 
 msgid "Send an email notifying users when their account has been deleted"
 msgstr "Saatke meilisõnum kasutajatele, kui nende konto on kustutatud"
 
@@ -5829,10 +5587,6 @@ msgid "Hebrew"
 msgstr "heebrea keel"
 
 #: 
-msgid "open rate"
-msgstr "avatud määr"
-
-#: 
 msgid "Permissions"
 msgstr "Õigused"
 
@@ -5857,22 +5611,6 @@ msgid "Owe"
 msgstr "võlgu"
 
 #: 
-msgid "Start Date"
-msgstr "Algus kuupäev"
-
-#: 
-msgid "End Date"
-msgstr "Lõppkuupäev"
-
-#: 
-msgid "Pinned Calendars"
-msgstr "Kinnitatud kalendrid"
-
-#: 
-msgid "This field is required"
-msgstr "Selle välja täitmine on kohustuslik"
-
-#: 
 msgid "Text"
 msgstr "Tekst"
 
@@ -5884,10 +5622,6 @@ msgstr "Sündmuse kirjeldus"
 #: 
 msgid "Afrikaans"
 msgstr "afrikaani keel"
-
-#: 
-msgid "Loading"
-msgstr "Laadimine"
 
 #: 
 msgid "Today's Birthdays"
@@ -5956,24 +5690,8 @@ msgid "Ukrainian"
 msgstr "ukraina keel"
 
 #: 
-msgid "Change role"
-msgstr "Muuda rolli"
-
-#: 
 msgid "Closed"
 msgstr "Suletud"
-
-#: 
-msgid "Delete this person?"
-msgstr "Kas kustutada see inimene?"
-
-#: 
-msgid "Deposit ID"
-msgstr "Sissemakse ID"
-
-#: 
-msgid "Deposit Total"
-msgstr "Sissemakse kokku"
 
 #: 
 msgid "If that doesn't work, copy and paste the following link in your browser"
@@ -6128,144 +5846,8 @@ msgid "Loading log file..."
 msgstr "Logifaili laadimine..."
 
 #: 
-msgid "A Calendar access token has been generated and saved."
-msgstr "Kalendri juurdepääsutõend on loodud ja salvestatud."
-
-#: 
-msgid "added"
-msgstr "lisatud"
-
-#: 
-msgid "Added"
-msgstr "Lisatud"
-
-#: 
-msgid "Added to cart successfully"
-msgstr "Lisatud ostukorvi edukalt"
-
-#: 
-msgid "All members already in cart"
-msgstr "Kõik liikmed on juba ostukorvis"
-
-#: 
-msgid "already in cart"
-msgstr "juba ostukorvis"
-
-#: 
-msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
-msgstr "Kalendri omadusi ei saanud laadida. Sel kalenderil võib puududa juurdepääsutõend või see pole õigesti konfigureeritud."
-
-#: 
-msgid "Cart emptied successfully"
-msgstr "Ostukorv on edukalt tühjendatud"
-
-#: 
-msgid "Cart emptied to group successfully"
-msgstr "Ostukorv on edukalt rühma tühjendatud"
-
-#: 
-msgid "Empty your entire cart?"
-msgstr "Tühjendada kogu ostukorv?"
-
-#: 
-msgid "Failed to add family to cart"
-msgstr "Perekonna lisamine ostukorvi ebaõnnestus"
-
-#: 
-msgid "Failed to add group to cart"
-msgstr "Rühma lisamine ostukorvi ebaõnnestus"
-
-#: 
-msgid "Failed to add to cart"
-msgstr "Ostukorvi lisamine ebaõnnestus"
-
-#: 
-msgid "Failed to empty cart"
-msgstr "Ostukorvi tühjendamine ebaõnnestus"
-
-#: 
-msgid "Failed to empty cart to group"
-msgstr "Ostukorvi tühjendamine rühma ebaõnnestus"
-
-#: 
-msgid "Failed to remove family from cart"
-msgstr "Perekonna eemaldamine ostukorvist ebaõnnestus"
-
-#: 
-msgid "Failed to remove from cart"
-msgstr "Ostukorvist eemaldamine ebaõnnestus"
-
-#: 
-msgid "Failed to remove group"
-msgstr "Rühma eemaldamine ebaõnnestus"
-
-#: 
-msgid "Family added to cart"
-msgstr "Perekond on lisatud ostukorvi"
-
-#: 
 msgid "Family removed from cart"
 msgstr "Perekond on eemaldatud ostukorvist"
-
-#: 
-msgid "Group added to cart"
-msgstr "Rühm on lisatud ostukorvi"
-
-#: 
-msgid "Group removed from cart"
-msgstr "Rühm on eemaldatud ostukorvist"
-
-#: 
-msgid "in cart"
-msgstr "ostukorvis"
-
-#: 
-msgid "members. Already had"
-msgstr "liikmeid. Juba oli"
-
-#: 
-msgid "people added to cart"
-msgstr "inimest ostukorvi lisatud"
-
-#: 
-msgid "people already in cart"
-msgstr "inimest juba ostukorvis"
-
-#: 
-msgid "people from cart"
-msgstr "inimest ostukorvist"
-
-#: 
-msgid "people removed from cart"
-msgstr "inimest ostukorvist eemaldatud"
-
-#: 
-msgid "Person already in cart"
-msgstr "Isik on juba ostukorvis"
-
-#: 
-msgid "Remove this family from cart?"
-msgstr "Eemaldada see perekond ostukorvist?"
-
-#: 
-msgid "Remove this group from cart?"
-msgstr "Eemaldada see rühm ostukorvist?"
-
-#: 
-msgid "Remove this person from cart?"
-msgstr "Eemaldada see isik ostukorvist?"
-
-#: 
-msgid "Removed from cart successfully"
-msgstr "Ostukorvist edukalt eemaldatud"
-
-#: 
-msgid "Yes, Empty Cart"
-msgstr "Jah, tühjenda ostukorv"
-
-#: 
-msgid "Yes, Remove"
-msgstr "Jah, eemalda"
 
 #: 
 msgid "Add Group"
@@ -6274,10 +5856,6 @@ msgstr "Lisa rühm"
 #: 
 msgid "Back to Group List"
 msgstr "Tagasi rühmade loendisse"
-
-#: 
-msgid "Default role updated."
-msgstr "Vaikimisi roll on uuendatud."
 
 #: 
 msgid "Edit Group"
@@ -6292,36 +5870,12 @@ msgid "Failed to add role. Please try again."
 msgstr "Rolli lisamine ebaõnnestus. Palun proovige uuesti."
 
 #: 
-msgid "Failed to create group. Please try again."
-msgstr "Rühma loomine ebaõnnestus. Palun proovige uuesti."
-
-#: 
 msgid "Failed to delete role. Please try again."
 msgstr "Rolli kustutamine ebaõnnestus. Palun proovige uuesti."
 
 #: 
-msgid "Failed to load cart status."
-msgstr "Ostukorvi oleku laadimine ebaõnnestus."
-
-#: 
-msgid "Failed to load groups. Please refresh the page."
-msgstr "Rühmade laadimine ebaõnnestus. Palun värskendage lehte."
-
-#: 
-msgid "Failed to set default role. Please try again."
-msgstr "Vaikimisi rolli määramine ebaõnnestus. Palun proovige uuesti."
-
-#: 
-msgid "Failed to update group. Please try again."
-msgstr "Rühma uuendamine ebaõnnestus. Palun proovige uuesti."
-
-#: 
 msgid "Failed to update properties. Please try again."
 msgstr "Omaduste uuendamine ebaõnnestus. Palun proovige uuesti."
-
-#: 
-msgid "Failed to update role name. Please try again."
-msgstr "Rolli nime uuendamine ebaõnnestus. Palun proovige uuesti."
 
 #: 
 msgid "Leave blank to keep existing password"
@@ -6330,18 +5884,6 @@ msgstr "Jätke tühjaks, et säilitada olemasolev parool"
 #: 
 msgid "Please enter a group name."
 msgstr "Palun sisestage rühma nimi."
-
-#: 
-msgid "Role added successfully."
-msgstr "Roll on edukalt lisatud."
-
-#: 
-msgid "Role deleted successfully."
-msgstr "Roll on edukalt kustutatud."
-
-#: 
-msgid "Role name updated."
-msgstr "Rolli nimi on uuendatud."
 
 #: 
 msgid "View Group"
@@ -6354,14 +5896,6 @@ msgstr "Täna sündmused"
 #: 
 msgid "Add Family Member"
 msgstr "Lisa perekonnaliige"
-
-#: 
-msgid "Address is required"
-msgstr "Aadress on nõutav"
-
-#: 
-msgid "City is required"
-msgstr "Linn on nõutav"
 
 #: 
 msgid "Email Address"
@@ -6380,72 +5914,20 @@ msgid "Family name is required"
 msgstr "Perekonna nimi on nõutav"
 
 #: 
-msgid "Family name must be at least 2 characters"
-msgstr "Perekonna nimi peab olema vähemalt 2 tähemärki"
-
-#: 
 msgid "First name"
 msgstr "Eesnimi"
-
-#: 
-msgid "First name is required"
-msgstr "Eesnimi on nõutav"
-
-#: 
-msgid "First name must be at least 2 characters"
-msgstr "Eesnimi peab olema vähemalt 2 tähemärki"
-
-#: 
-msgid "Home phone is required"
-msgstr "Kodune telefon on nõutav"
 
 #: 
 msgid "Home phone number"
 msgstr "Kodune telefoninumber"
 
 #: 
-msgid "Invalid format"
-msgstr "Sobimatu vorming"
-
-#: 
 msgid "Last name"
 msgstr "Perekonnanimi"
 
 #: 
-msgid "Last name is required"
-msgstr "Perekonnanimi on nõutav"
-
-#: 
-msgid "Last name must be at least 2 characters"
-msgstr "Perekonnanimi peab olema vähemalt 2 tähemärki"
-
-#: 
-msgid "Maximum length is"
-msgstr "Maksimaalne pikkus on"
-
-#: 
-msgid "Minimum length is"
-msgstr "Minimaalne pikkus on"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Peab olema kehtiv URL, mis algab http:// või https:// -ga"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Peab olema kehtiv URL, mis algab http:// või https:// -ga (nt http://localhost või https://domain.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Peab olema kehtiv pordi number (nt 3306)"
-
-#: 
 msgid "Next Member"
 msgstr "Järgmine liige"
-
-#: 
-msgid "Passwords do not match"
-msgstr "Paroolid ei kattu"
 
 #: 
 msgid "Phone Type"
@@ -6456,40 +5938,8 @@ msgid "Phone number"
 msgstr "Telefoninumber"
 
 #: 
-msgid "Please add at least one family member."
-msgstr "Palun lisage vähemalt üks perekonnaliige."
-
-#: 
-msgid "Please enter a valid URL"
-msgstr "Palun sisestage kehtiv URL"
-
-#: 
-msgid "Please enter a valid email address"
-msgstr "Palun sisestage kehtiv e-posti aadress"
-
-#: 
-msgid "Please enter a valid email address (e.g., name@example.com)"
-msgstr "Palun sisestage kehtiv e-posti aadress (nt nimi@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Palun sisestage kehtiv number"
-
-#: 
-msgid "Please enter a valid phone number"
-msgstr "Palun sisestage kehtiv telefoninumber"
-
-#: 
-msgid "Please fill in all required fields correctly."
-msgstr "Palun täitke kõik nõutavad väljad õigesti."
-
-#: 
 msgid "Previous"
 msgstr "Eelmine"
-
-#: 
-msgid "Registration Error"
-msgstr "Registreerimise viga"
 
 #: 
 msgid "Role in Family"
@@ -6506,10 +5956,6 @@ msgstr "Tänava aadress"
 #: 
 msgid "Submit Registration"
 msgstr "Edasta registreerimine"
-
-#: 
-msgid "Zip code is required"
-msgstr "Postiindeks on nõutav"
 
 #: 
 msgid "A new password has been generated and sent to your email address."
@@ -6532,10 +5978,6 @@ msgid "Back to login"
 msgstr "Tagasi sisselogimisele"
 
 #: 
-msgid "Backup Skipped"
-msgstr "Varundamine vahele jäetud"
-
-#: 
 msgid "Complete"
 msgstr "Lõpetatud"
 
@@ -6548,28 +5990,8 @@ msgid "Download & Apply"
 msgstr "Laadi alla ja rakenda"
 
 #: 
-msgid "Downloaded"
-msgstr "Alla laaditud"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Uusima väljaande allalaadimine GitHub-ist..."
-
-#: 
 msgid "Enter your login name and we will email you a link to reset your password."
 msgstr "Sisestage oma sisselogimise nimi ja saadame teile e-postiga lingi oma parooli lähtestamiseks."
-
-#: 
-msgid "Failed to create backup."
-msgstr "Varukoopia loomine ebaõnnestus."
-
-#: 
-msgid "Failed to download update package."
-msgstr "Värskenduspaketi allalaadimine ebaõnnestus."
-
-#: 
-msgid "Failed to refresh upgrade information from GitHub."
-msgstr "Täienduse teabe värskendamine GitHub-ist ebaõnnestus."
 
 #: 
 msgid "File Name"
@@ -6578,10 +6000,6 @@ msgstr "Faili nimi"
 #: 
 msgid "Go to Login"
 msgstr "Mine sisselogimisele"
-
-#: 
-msgid "Language updated to"
-msgstr "Keel värskendatud"
 
 #: 
 msgid "Login Name is required"
@@ -6612,56 +6030,24 @@ msgid "Request Password Reset"
 msgstr "Taotlege parooli lähtestamist"
 
 #: 
-msgid "Retry Download"
-msgstr "Proovige allalaadimist uuesti"
-
-#: 
 msgid "Send Reset Email"
 msgstr "Saada lähtestamise e-kiri"
-
-#: 
-msgid "Setting updated successfully"
-msgstr "Säte on edukalt värskendatud"
 
 #: 
 msgid "System Upgrade Wizard"
 msgstr "Süsteemi täiendamise nõustaja"
 
 #: 
-msgid "System upgrade completed successfully!"
-msgstr "Süsteemi täiendamine on edukalt lõpetatud!"
-
-#: 
 msgid "This may take several minutes."
 msgstr "See võib võtta mitu minutit."
-
-#: 
-msgid "Update package downloaded successfully."
-msgstr "Värskenduspakett on edukalt alla laaditud."
 
 #: 
 msgid "Upgrade Complete!"
 msgstr "Täiendamine on lõpetatud!"
 
 #: 
-msgid "Upgrade failed."
-msgstr "Täiendamine ebaõnnestus."
-
-#: 
-msgid "Upgrade failed. Please check the logs."
-msgstr "Täiendamine ebaõnnestus. Kontrollige logisid."
-
-#: 
 msgid "Upgrade information refreshed successfully"
 msgstr "Täienduse teave on edukalt värskendatud"
-
-#: 
-msgid "Upgrade information refreshed. Reloading page..."
-msgstr "Täienduse teave on värskendatud. Lehe uuesti laadimine..."
-
-#: 
-msgid "Warnings"
-msgstr "Hoiatused"
 
 #: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
@@ -6724,22 +6110,6 @@ msgid "Delete Selected"
 msgstr "Kustuta valitud"
 
 #: 
-msgid "Deposit saved successfully"
-msgstr "Deposiit on edukalt salvestatud"
-
-#: 
-msgid "Error deleting payments"
-msgstr "Maksete kustutamise viga"
-
-#: 
-msgid "Error loading payments"
-msgstr "Maksete laadimise viga"
-
-#: 
-msgid "Error saving deposit"
-msgstr "Deposiidi salvestamise viga"
-
-#: 
 msgid "Funds"
 msgstr "Vahendid"
 
@@ -6756,32 +6126,12 @@ msgid "No Checks"
 msgstr "Tsekkisid pole"
 
 #: 
-msgid "No payments yet. Click \"Add Payment\" to get started."
-msgstr "Makseid pole veel. Klõpsake maksete lisamiseks alustamiseks."
-
-#: 
 msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
 msgstr "Mittemahaarvatatav summa ületab maksimaalse lubatud väärtuse (999999.99)."
 
 #: 
 msgid "Payments"
 msgstr "Maksed"
-
-#: 
-msgid "Payments deleted successfully"
-msgstr "Maksed on edukalt kustutatud"
-
-#: 
-msgid "Please select a date"
-msgstr "Palun valige kuupäev"
-
-#: 
-msgid "Please select rows to delete"
-msgstr "Palun valige kustutamiseks read"
-
-#: 
-msgid "Saving..."
-msgstr "Salvestamine..."
 
 #: 
 msgid "This action cannot be undone."
@@ -6809,10 +6159,6 @@ msgid "Base URL"
 msgstr "Base URL"
 
 #: 
-msgid "Copy"
-msgstr "Kopeeri"
-
-#: 
 msgid "Debug Info"
 msgstr "Silumise teave"
 
@@ -6835,18 +6181,6 @@ msgstr "IP-aadress"
 #: 
 msgid "Images Root"
 msgstr "Piltide juur"
-
-#: 
-msgid "Import Demo Data"
-msgstr "Impordi demoandmed"
-
-#: 
-msgid "Include events and calendars"
-msgstr "Lisa sündmused ja kalendrid"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "Kaasata finantsteave (annetuse rahastamine, lubadused)"
 
 #: 
 msgid "Invalid API key"
@@ -6881,40 +6215,12 @@ msgid "An error occurred during demo data import"
 msgstr "Demoandmete importimisel tekkis viga"
 
 #: 
-msgid "Demo data imported successfully"
-msgstr "Demoandmed on edukalt imporditud"
-
-#: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "Lisage pühapäevakooli klassid ja registreerimised"
-
-#: 
-msgid "Need to remove this data later?"
-msgstr "Kas peate need andmed hiljem eemaldama?"
-
-#: 
 msgid "No Payments on this Deposit"
 msgstr "Selle deposiidi makseid pole"
 
 #: 
-msgid "No payments on this deposit"
-msgstr "Selle deposiidi makseid pole"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "Kaasamiseks valikulised andmed"
-
-#: 
 msgid "Skipped"
 msgstr "Vahele jäetud"
-
-#: 
-msgid "Unknown error"
-msgstr "Tundmatu viga"
-
-#: 
-msgid "deposit(s) with no payments"
-msgstr "deposiit(id) ilma makseta"
 
 #: 
 msgid "%d event in %s"
@@ -7158,16 +6464,8 @@ msgid "Backup Type"
 msgstr "Varukoopia tüüp"
 
 #: 
-msgid "Backup complete! Click below to download."
-msgstr "Varukoopia on lõpetatud! Klõpsake allpool allalaadimiseks."
-
-#: 
 msgid "Backup completed successfully!"
 msgstr "Varukoopia on edukalt lõpetatud!"
-
-#: 
-msgid "Backup downloaded. Server copy removed."
-msgstr "Varukoopia alla laaditud. Serveri koopia eemaldatud."
 
 #: 
 msgid "Backup failed. Please try again."
@@ -7266,10 +6564,6 @@ msgid "Force Re-install"
 msgstr "Jõuga ümberpaigaldamine"
 
 #: 
-msgid "Force re-install initiated. Please backup your database before applying."
-msgstr "Jõuga ümberpaigaldamine käivitatud. Palun varundage oma andmebaas enne rakendamist."
-
-#: 
 msgid "Full Backup"
 msgstr "Täisvarukoopia"
 
@@ -7350,10 +6644,6 @@ msgid "Please check the backup file and try again."
 msgstr "Palun kontrollige varukoopia faili ja proovige uuesti."
 
 #: 
-msgid "Please select a backup file to restore"
-msgstr "Palun valige taastamiseks varukoopia fail"
-
-#: 
 msgid "Redirecting in"
 msgstr "Suunamine"
 
@@ -7380,10 +6670,6 @@ msgstr "Taastamise olek"
 #: 
 msgid "Restore failed."
 msgstr "Taastamine ebaõnnestus."
-
-#: 
-msgid "Restore failed. Please check the backup file and try again."
-msgstr "Taastamine ebaõnnestus. Palun kontrollige varukoopia faili ja proovige uuesti."
 
 #: 
 msgid "Restore in progress, please wait..."
@@ -7502,10 +6788,6 @@ msgid "Advanced Operations"
 msgstr "Täpsemad operatsioonid"
 
 #: 
-msgid "All System Settings"
-msgstr "Kõik süsteemi sätted"
-
-#: 
 msgid "An unexpected error occurred. Please contact your administrator."
 msgstr "Tekkis ootamatu viga. Võtke ühendust oma administraatoriga."
 
@@ -7560,10 +6842,6 @@ msgstr "Suletud deposiidid:"
 #: 
 msgid "Closed vs Total"
 msgstr "Suletud vs kokku"
-
-#: 
-msgid "Coming soon"
-msgstr "Varsti tulemas"
 
 #: 
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
@@ -7710,14 +6988,6 @@ msgid "Finance Dashboard"
 msgstr "Finantsi armatuurlaud"
 
 #: 
-msgid "Force Import"
-msgstr "Jõuga import"
-
-#: 
-msgid "Force Import will retry and may create duplicate data."
-msgstr "Jõuga import proovib uuesti ja võib luua duplikaate andmeid."
-
-#: 
 msgid "Fund Allocation"
 msgstr "Vahendite jaotus"
 
@@ -7756,10 +7026,6 @@ msgstr "ID"
 #: 
 msgid "Identify members who have not made any donations within a date range."
 msgstr "Tuvastage liikmed, kes pole kuupäevavahemikus annetusi teinud."
-
-#: 
-msgid "Import failed"
-msgstr "Import ebaõnnestus"
 
 #: 
 msgid "Jan"
@@ -7930,10 +7196,6 @@ msgid "Sep"
 msgstr "Sep"
 
 #: 
-msgid "Server error"
-msgstr "Serveri tõrge"
-
-#: 
 msgid "Settings"
 msgstr "Sätted"
 
@@ -7984,10 +7246,6 @@ msgstr "Maksuaruanded (andmise aruanne)"
 #: 
 msgid "Tax Year Reporting Checklist"
 msgstr "Maksuaasta aruandluslehekülg"
-
-#: 
-msgid "Today"
-msgstr "Täna"
 
 #: 
 msgid "Total"
@@ -8058,24 +7316,8 @@ msgid "active"
 msgstr "aktiivne"
 
 #: 
-msgid "ago"
-msgstr "tagasi"
-
-#: 
-msgid "day"
-msgstr "päev"
-
-#: 
-msgid "days"
-msgstr "päevad"
-
-#: 
 msgid "found"
 msgstr "leitud"
-
-#: 
-msgid "in"
-msgstr "aastal"
 
 #: 
 msgid "issues"
@@ -8084,10 +7326,6 @@ msgstr "probleemid"
 #: 
 msgid "open"
 msgstr "ava"
-
-#: 
-msgid "years"
-msgstr "aastad"
 
 #: 
 msgid "(Enter state/province for countries without predefined states)"
@@ -8202,10 +7440,6 @@ msgid "URL must start with http:// or https://"
 msgstr "URL peab algama http:// või https:// -ga"
 
 #: 
-msgid "Unable to load state list. Please check your network connection or try again later."
-msgstr "Osariigis nimekirja laadimise võimalus puudub. Kontrollige oma võrguühendust või proovige hiljem uuesti."
-
-#: 
 msgid "Update it to a valid URL that:"
 msgstr "Värskendage see kehtivale URL-ile, mis:"
 
@@ -8258,10 +7492,6 @@ msgid "Contact & Personal Info"
 msgstr "Kontakt ja isiklik teave"
 
 #: 
-msgid "Copied!"
-msgstr "Kopeeritud!"
-
-#: 
 msgid "Edited"
 msgstr "Muudetud"
 
@@ -8270,16 +7500,8 @@ msgid "Email PDF"
 msgstr "E-posti PDF"
 
 #: 
-msgid "Failed to copy URL"
-msgstr "URL-i kopeeramine ebaõnnestus"
-
-#: 
 msgid "Newsletter"
 msgstr "Uudiskiri"
-
-#: 
-msgid "Open in New Tab"
-msgstr "Ava uuel vahekaardil"
 
 #: 
 msgid "Personal"
@@ -8298,16 +7520,8 @@ msgid "Provide any corrections or additional information here..."
 msgstr "Esitage siinkohal kõik parandused või täiendav teave..."
 
 #: 
-msgid "Remove Property"
-msgstr "Eemalda vara"
-
-#: 
 msgid "Select Opportunities"
 msgstr "Valige võimalused"
-
-#: 
-msgid "Share this URL with family members to verify their information"
-msgstr "Jagage seda URL-i perekonna liikmetega nende teabe kontrollimiseks"
 
 #: 
 msgid "Submit Verification"
@@ -8474,24 +7688,12 @@ msgid "total"
 msgstr "kokku"
 
 #: 
-msgid "Code incomplete"
-msgstr "Kood pole lõpetatud"
-
-#: 
-msgid "Code is invalid"
-msgstr "Kood on sobimatu"
-
-#: 
 msgid "Encryption key for storing 2FA secret keys in the database"
 msgstr "Krüptimise võti 2FA salajaste võtmete salvestamiseks andmebaasi"
 
 #: 
 msgid "Two-Factor Authentication"
 msgstr "Kahe faktori autentimine"
-
-#: 
-msgid "Validation pending"
-msgstr "Valideerimine ootel"
 
 #: 
 msgid "%d Person added to the Cart."
@@ -8610,14 +7812,6 @@ msgstr "Hoiatus:"
 #: 
 msgid "Yes, delete this Opportunity"
 msgstr "Jah, kustuta see võimalus"
-
-#: 
-msgid "Fund(s)"
-msgstr "Vahend(id)"
-
-#: 
-msgid "Password reset for"
-msgstr "Parooli lähtestamine"
 
 #. Context: locales
 #: 
@@ -8786,10 +7980,6 @@ msgstr "lubadustest"
 #: 
 msgid "records"
 msgstr "kirjet"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Peab algama /-ga, kui pole tühi; ilma lõpukaldkriipsuta. Lubatud on ainult tähed, numbrid, allkriips, sidekriips, punkt ja /."
 
 #: 
 msgid "%d person"
@@ -9016,10 +8206,6 @@ msgid "Add Link"
 msgstr "Lisa Link"
 
 #: 
-msgid "Add an extra layer of security to your account"
-msgstr "Lisage oma kontole täiendav turvakiht"
-
-#: 
 msgid "Add custom external links to the navigation menu."
 msgstr "Lisage navigatsioonimenüüsse kohandatud välislingid."
 
@@ -9030,10 +8216,6 @@ msgstr "Luba Ise Allkirjastatud Sertifikaate"
 #: 
 msgid "An error occurred processing the plugin request"
 msgstr "Pistikprogrammi päringu töötlemisel ilmnes viga"
-
-#: 
-msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
-msgstr "Kas olete kindel, et soovite kahefaktorilise autentimise keelata? Teie konto muutub vähem turvaliseks."
 
 #: 
 msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
@@ -9076,28 +8258,12 @@ msgid "Backup to WebDAV Now"
 msgstr "Varunda WebDAV-i Nüüd"
 
 #: 
-msgid "Before You Start"
-msgstr "Enne Alustamist"
-
-#: 
-msgid "Browser language preference detected"
-msgstr "Brauseri keeleeelistus tuvastatud"
-
-#: 
 msgid "CRM Members Not Subscribed"
 msgstr "CRM Liikmed Ei Ole Tellinud"
 
 #: 
 msgid "Campaigns Sent"
 msgstr "Kampaaniad Saadetud"
-
-#: 
-msgid "Can't scan?"
-msgstr "Ei saa skannida?"
-
-#: 
-msgid "Change Your Locale"
-msgstr "Muutke Oma Lokaali"
 
 #: 
 msgid "ChurchCRM supports a plugin architecture for extending functionality."
@@ -9138,10 +8304,6 @@ msgstr "Seadistage see pistikprogramm oma ChurchCRM andmebaasi automaatseks varu
 #: 
 msgid "Configured"
 msgstr "Konfigureeritud"
-
-#: 
-msgid "Confirm with a code from your authenticator app"
-msgstr "Kinnitage autentimisrakenduse koodiga"
 
 #: 
 msgid "Connected"
@@ -9204,24 +8366,12 @@ msgid "Disable Plugin"
 msgstr "Keela Pistikprogramm"
 
 #: 
-msgid "Disable Two-Factor Authentication"
-msgstr "Keela Kahefaktoriline Autentimine"
-
-#: 
 msgid "Dismiss"
 msgstr "Loobu"
 
 #: 
-msgid "Done"
-msgstr "Valmis"
-
-#: 
 msgid "Each plugin requires a"
 msgstr "Iga pistikprogramm vajab"
-
-#: 
-msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
-msgstr "Iga kord sisse logides peate kinnitama autentimisrakenduse koodiga"
 
 #: 
 msgid "Email Addresses"
@@ -9240,10 +8390,6 @@ msgid "Enable Plugin"
 msgstr "Luba Pistikprogramm"
 
 #: 
-msgid "Enable Two-Factor Authentication"
-msgstr "Luba Kahefaktoriline Autentimine"
-
-#: 
 msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
 msgstr "Lubage ainult kohaliku võrgu serverite jaoks ise allkirjastatud SSL-sertifikaatidega. Keelab sertifikaadi kontrollimise."
 
@@ -9254,10 +8400,6 @@ msgstr "Lõpp-punkti URL"
 #: 
 msgid "Enter the 6-digit code from your authenticator app"
 msgstr "Sisestage oma autentimisrakenduse 6-kohaline kood"
-
-#: 
-msgid "Enter your username and password as usual"
-msgstr "Sisestage oma kasutajanimi ja parool nagu tavaliselt"
 
 #: 
 msgid "External Backup"
@@ -9332,20 +8474,12 @@ msgid "GA4 Measurement ID"
 msgstr "GA4 Mõõtmise ID"
 
 #: 
-msgid "Generate new code"
-msgstr "Genereeri uus kood"
-
-#: 
 msgid "Get Started"
 msgstr "Alusta"
 
 #: 
 msgid "Get your API key from MailChimp: Account Settings > Extras > API Keys"
 msgstr "Hangi oma API võti MailChimpist: Konto seaded > Lisad > API võtmed"
-
-#: 
-msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
-msgstr "Valmistage ette oma autentimisrakendus (Google Authenticator, Microsoft Authenticator, Authy jne)"
 
 #: 
 msgid "Help"
@@ -9358,10 +8492,6 @@ msgstr "Id"
 #: 
 msgid "Image shown when no Gravatar exists for the email address"
 msgstr "Pilt, mida kuvatakse, kui e-posti aadressile pole Gravatari"
-
-#: 
-msgid "Important"
-msgstr "Oluline"
 
 #: 
 msgid "Invalid code. Please try again."
@@ -9418,10 +8548,6 @@ msgstr "Link peab algama http:// või https://-ga"
 #: 
 msgid "Link not found"
 msgstr "Linki ei leitud"
-
-#: 
-msgid "Loading recovery codes"
-msgstr "Taastekoodide laadimine"
 
 #: 
 msgid "MailChimp API Key"
@@ -9505,16 +8631,8 @@ msgid "Not in CRM"
 msgstr "CRM-is pole"
 
 #: 
-msgid "One-Time Code"
-msgstr "Ühekordne Kood"
-
-#: 
 msgid "Open MailChimp"
 msgstr "Ava MailChimp"
-
-#: 
-msgid "Open your authenticator app and scan this QR code"
-msgstr "Avage autentimisrakendus ja skannige see QR-kood"
 
 #: 
 msgid "OpenLP Server URL"
@@ -9543,10 +8661,6 @@ msgstr "Palun seadistage oma MailChimpi API võti selle integratsiooni kasutamis
 #: 
 msgid "Please enter a link name (2-50 characters)"
 msgstr "Palun sisestage lingi nimi (2-50 tähemärki)"
-
-#: 
-msgid "Please try again"
-msgstr "Palun proovige uuesti"
 
 #: 
 msgid "Plugin Development"
@@ -9597,44 +8711,16 @@ msgid "Print"
 msgstr "Prindi"
 
 #: 
-msgid "Recovery Codes"
-msgstr "Taastekoodid"
-
-#: 
 msgid "Remote backup failed. Check server logs for details."
 msgstr "Kaugvarundamine ebaõnnestus. Üksikasjade saamiseks kontrollige serveri logisid."
-
-#: 
-msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
-msgstr "Salvestage need taastekoodid turvalisse kohta. Saate neid kasutada oma kontole juurdepääsuks, kui kaotate juurdepääsu autentimisrakendusele."
-
-#: 
-msgid "Scan QR Code"
-msgstr "Skanni QR-kood"
-
-#: 
-msgid "Secure"
-msgstr "Turvaline"
-
-#: 
-msgid "Set Up Authenticator"
-msgstr "Seadista Autentija"
 
 #: 
 msgid "Settings reset successfully"
 msgstr "Sätted lähtestati edukalt"
 
 #: 
-msgid "Setup Complete"
-msgstr "Seadistamine Lõpetatud"
-
-#: 
 msgid "Shipped with ChurchCRM."
 msgstr "Kaasas ChurchCRM-ga."
-
-#: 
-msgid "Sign In"
-msgstr "Logi Sisse"
 
 #: 
 msgid "Some settings could not be reset"
@@ -9673,10 +8759,6 @@ msgid "Third-party extensions."
 msgstr "Kolmandate osapoolte laiendused."
 
 #: 
-msgid "This will replace any previously enrolled 2FA methods"
-msgstr "See asendab kõik varem registreeritud 2FA meetodid"
-
-#: 
 msgid "Total Campaigns"
 msgstr "Kokku Kampaaniaid"
 
@@ -9685,24 +8767,8 @@ msgid "Total Subscribers"
 msgstr "Kokku Tellijaid"
 
 #: 
-msgid "Two Factor Enrollment Error"
-msgstr "Kahefaktorilise Registreerimise Viga"
-
-#: 
-msgid "Two-factor authentication has been disabled"
-msgstr "Kahefaktoriline autentimine on keelatud"
-
-#: 
-msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
-msgstr "Kahefaktoriline autentimine on üks parimaid viise konto kaitsmiseks. Soovitame tungivalt see lubatuna hoida."
-
-#: 
 msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
 msgstr "URL teie OpenLP serverile (nt http://192.168.1.100:4316)"
-
-#: 
-msgid "Unable to load"
-msgstr "Laadimine ebaõnnestus"
 
 #: 
 msgid "Unsubscribed"
@@ -9723,14 +8789,6 @@ msgstr "Väärtus on seatud - jätke tühjaks praeguse hoidmiseks"
 #: 
 msgid "Verify & Sign In"
 msgstr "Kinnita & Logi Sisse"
-
-#: 
-msgid "Verify Code"
-msgstr "Kinnita Kood"
-
-#: 
-msgid "Verifying"
-msgstr "Kontrollimine"
 
 #: 
 msgid "Vonage API Key"
@@ -9765,40 +8823,12 @@ msgid "WebDAV username is required."
 msgstr "WebDAV kasutajanimi on kohustuslik."
 
 #: 
-msgid "You can also use backup recovery codes if you lose access to your app"
-msgstr "Samuti saate kasutada varukoopiad taastekoodid, kui kaotate juurdepääsu oma rakendusele"
-
-#: 
-msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
-msgstr "Nüüd saate kasutada oma autentimisrakendust sisse logimiseks. Iga kood kehtib 30 sekundit."
-
-#: 
-msgid "You'll receive backup codes that can be used if you lose access to your app"
-msgstr "Saate varukoopiad koodid, mida saab kasutada, kui kaotate juurdepääsu oma rakendusele"
-
-#: 
 msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
 msgstr "Teie GA4 Mõõtmise ID (G-XXXXXXXXXX)"
 
 #: 
 msgid "Your MailChimp account does not have any audiences (lists) configured."
 msgstr "Teie MailChimpi kontol pole auditooriumeid (loendeid) seadistatud."
-
-#: 
-msgid "Your account is now protected"
-msgstr "Teie konto on nüüd kaitstud"
-
-#: 
-msgid "Your account is protected"
-msgstr "Teie konto on kaitstud"
-
-#: 
-msgid "Your authenticator app has been successfully enrolled"
-msgstr "Teie autentimisrakendus on edukalt registreeritud"
-
-#: 
-msgid "Your browser language preference differs from your ChurchCRM locale"
-msgstr "Teie brauseri keeleeelistus erineb teie ChurchCRM lokaalist"
 
 #: 
 msgid "e.g., Church Website"
@@ -10017,10 +9047,6 @@ msgid "2FA"
 msgstr "2FA"
 
 #: 
-msgid "Leave blank to keep existing"
-msgstr "Jäta tühjaks olemasoleva väärtuse säilitamiseks"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Nõua kõigilt kasutajatelt kahefaktorilise autentimise kasutusele võtmist"
 
@@ -10125,10 +9151,6 @@ msgid "Save Church Information"
 msgstr "Salvesta koguduse teave"
 
 #: 
-msgid "Search or select..."
-msgstr "Otsi või vali..."
-
-#: 
 msgid "State is required."
 msgstr "Maakond on kohustuslik."
 
@@ -10171,14 +9193,6 @@ msgstr "Veebisait"
 #: 
 msgid "ZIP code is required."
 msgstr "Sihtnumber on kohustuslik."
-
-#: 
-msgid "— Select Country —"
-msgstr "— Vali riik —"
-
-#: 
-msgid "— Select State —"
-msgstr "— Vali maakond —"
 
 #: 
 msgid "Address Status"
@@ -10391,10 +9405,6 @@ msgid "Age Distribution"
 msgstr "Vanuseline jaotus"
 
 #: 
-msgid "All Roles"
-msgstr "Kõik rollid"
-
-#: 
 msgid "All Time"
 msgstr "Kogu aeg"
 
@@ -10427,20 +9437,8 @@ msgid "An unexpected error occurred."
 msgstr "Ilmnes ootamatu viga."
 
 #: 
-msgid "Applied preset"
-msgstr "Rakendatud eelseadistus"
-
-#: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Kas olete kindel, et soovite selle korjanduse kustutada?"
-
-#: 
 msgid "Are you sure you want to delete this fundraiser?"
 msgstr "Kas olete kindel, et soovite selle korjandusürituse kustutada?"
-
-#: 
-msgid "Are you sure you want to remove"
-msgstr "Kas olete kindel, et soovite eemaldada"
 
 #: 
 msgid "Assign and manage donation envelope numbers"
@@ -10473,10 +9471,6 @@ msgstr "Autentimiskood"
 #: 
 msgid "Auto-mapped"
 msgstr "Automaatselt seostatud"
-
-#: 
-msgid "BCC All"
-msgstr "Pimekoopia kõigile"
 
 #: 
 msgid "Back to Admin Dashboard"
@@ -10591,10 +9585,6 @@ msgid "Clear all items from cart"
 msgstr "Eemalda kõik üksused valikust"
 
 #: 
-msgid "Click Save to apply."
-msgstr "Klõpsake Salvesta, et rakendada."
-
-#: 
 msgid "Click to upload photo"
 msgstr "Klõpsake foto üleslaadimiseks"
 
@@ -10645,14 +9635,6 @@ msgstr "Teisendage üksikisiku kirjed perekondadeks"
 #: 
 msgid "Convert to Family"
 msgstr "Teisenda perekonnaks"
-
-#: 
-msgid "Copied"
-msgstr "Kopeeritud"
-
-#: 
-msgid "Copy Members to Group"
-msgstr "Kopeeri liikmed gruppi"
 
 #: 
 msgid "Copy to Group"
@@ -10741,10 +9723,6 @@ msgstr "Kustuta lubadus"
 #: 
 msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
 msgstr "Selle omaduse kustutamine eemaldab ka kõik selle määrangud isikute, perekondade ja gruppide kirjetest."
-
-#: 
-msgid "Deposit Value"
-msgstr "Korjanduse väärtus"
 
 #: 
 msgid "Describe the issue"
@@ -10919,22 +9897,6 @@ msgid "FY %s"
 msgstr "MA %s"
 
 #: 
-msgid "Failed to add members to cart. Please try again."
-msgstr "Liikmete lisamine valikusse ebaõnnestus. Palun proovige uuesti."
-
-#: 
-msgid "Failed to delete class. Please try again."
-msgstr "Klassi kustutamine ebaõnnestus. Palun proovige uuesti."
-
-#: 
-msgid "Failed to delete group. Please try again."
-msgstr "Grupi kustutamine ebaõnnestus. Palun proovige uuesti."
-
-#: 
-msgid "Failed to remove from class. Please try again."
-msgstr "Klassist eemaldamine ebaõnnestus. Palun proovige uuesti."
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "Perekonnad jagavad aadressi ja telefoninumbrit."
 
@@ -11031,10 +9993,6 @@ msgid "Get Your Data Into ChurchCRM"
 msgstr "Importige oma andmed ChurchCRM-i"
 
 #: 
-msgid "Go to homepage"
-msgstr "Mine avalehele"
-
-#: 
 msgid "Great choice! Here's how to add your church members."
 msgstr "Suurepärane valik! Siin on, kuidas lisada koguduse liikmeid."
 
@@ -11047,20 +10005,12 @@ msgid "Group Reports"
 msgstr "Grupi aruanded"
 
 #: 
-msgid "Group deleted successfully."
-msgstr "Grupp on edukalt kustutatud."
-
-#: 
 msgid "Have Existing Data?"
 msgstr "Kas teil on olemasolevad andmed?"
 
 #: 
 msgid "If you have many records in a spreadsheet, the CSV import may be faster than entering data manually."
 msgstr "Kui teil on palju kirjeid tabelis, võib CSV import olla kiirem kui andmete käsitsi sisestamine."
-
-#: 
-msgid "Ignored"
-msgstr "Ignoreeritud"
 
 #: 
 msgid "Import Another File"
@@ -11077,10 +10027,6 @@ msgstr "Import lõpetatud"
 #: 
 msgid "Import contacts from your MailChimp audiences"
 msgstr "Importige kontakte oma MailChimp sihtrühmadest"
-
-#: 
-msgid "Import failed. Please try again."
-msgstr "Import ebaõnnestus. Palun proovige uuesti."
 
 #: 
 msgid "Import failed: "
@@ -11105,10 +10051,6 @@ msgstr "Importige, taastage või sisestage käsitsi"
 #: 
 msgid "Import, restore, or manually enter your congregation"
 msgstr "Importige, taastage või sisestage oma kogudus käsitsi"
-
-#: 
-msgid "Importing..."
-msgstr "Importimine..."
 
 #: 
 msgid "Include in Email Export"
@@ -11255,10 +10197,6 @@ msgid "Manage your personal preferences and account settings"
 msgstr "Hallake oma isiklikke eelistusi ja konto seadeid"
 
 #: 
-msgid "Manual"
-msgstr "Käsitsi"
-
-#: 
 msgid "Map cart items"
 msgstr "Kuva valiku üksused kaardil"
 
@@ -11279,10 +10217,6 @@ msgid "Member Roles"
 msgstr "Liikmete rollid"
 
 #: 
-msgid "Members added to cart."
-msgstr "Liikmed lisatud valikusse."
-
-#: 
 msgid "Memberships"
 msgstr "Liikmelisused"
 
@@ -11293,14 +10227,6 @@ msgstr "Miinimum"
 #: 
 msgid "Modify family roles for group members"
 msgstr "Muutke grupi liikmete perekonna rolle"
-
-#: 
-msgid "Move Members"
-msgstr "Liiguta liikmeid"
-
-#: 
-msgid "Move Members to Group"
-msgstr "Liiguta liikmed gruppi"
 
 #: 
 msgid "Move to Group"
@@ -11339,32 +10265,8 @@ msgid "New Person"
 msgstr "Uus isik"
 
 #: 
-msgid "No Anniversaries"
-msgstr "Aastapäevi ei ole"
-
-#: 
-msgid "No Birthdays"
-msgstr "Sünnipäevi ei ole"
-
-#: 
 msgid "No Check-ins"
 msgstr "Registreerimisi ei ole"
-
-#: 
-msgid "No Deposits"
-msgstr "Korjandusi ei ole"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "Viimase ega järgmise 7 päeva jooksul aastapäevi ei ole"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "Viimase ega järgmise 7 päeva jooksul sünnipäevi ei ole"
-
-#: 
-msgid "No deposit data available yet"
-msgstr "Korjanduste andmed ei ole veel saadaval"
 
 #: 
 msgid "No description set."
@@ -11397,10 +10299,6 @@ msgstr "Vasteid otsingule \"%s\" ei leitud. Proovige teist otsinguterminit."
 #: 
 msgid "No member properties defined."
 msgstr "Liikme omadusi pole defineeritud."
-
-#: 
-msgid "No members found for this role."
-msgstr "Selle rolli jaoks liikmeid ei leitud."
 
 #: 
 msgid "No people found"
@@ -11485,10 +10383,6 @@ msgid "People by Classification"
 msgstr "Isikud klassifikatsiooni järgi"
 
 #: 
-msgid "Person removed from class."
-msgstr "Isik eemaldati klassist."
-
-#: 
 msgid "Photo"
 msgstr "Foto"
 
@@ -11503,14 +10397,6 @@ msgstr "Valige tee alustamiseks"
 #: 
 msgid "Please check everything looks right before submitting."
 msgstr "Palun kontrollige, et kõik on õige, enne esitamist."
-
-#: 
-msgid "Please map at least one column before importing"
-msgstr "Palun seostage enne importimist vähemalt üks veerg"
-
-#: 
-msgid "Please select a CSV file"
-msgstr "Palun valige CSV fail"
 
 #: 
 msgid "Please try requesting a new password reset link or contact support if you continue to experience issues."
@@ -11557,10 +10443,6 @@ msgid "Property not found."
 msgstr "Omadust ei leitud."
 
 #: 
-msgid "Quick Setup"
-msgstr "Kiirseadistus"
-
-#: 
 msgid "Quick Tips"
 msgstr "Kiirnõuanded"
 
@@ -11591,10 +10473,6 @@ msgstr "Registreerige, miks külastajad teie kirikut külastasid"
 #: 
 msgid "Register Your Family"
 msgstr "Registreerige oma perekond"
-
-#: 
-msgid "Register another family"
-msgstr "Registreeri teine perekond"
 
 #: 
 msgid "Remove all from Cart"
@@ -11641,14 +10519,6 @@ msgid "Review and clean up files not associated with any record"
 msgstr "Vaadake üle ja puhastage failid, mis pole seotud ühegi kirjega"
 
 #: 
-msgid "Role not found."
-msgstr "Rolli ei leitud."
-
-#: 
-msgid "Roles"
-msgstr "Rollid"
-
-#: 
 msgid "Run"
 msgstr "Käivita"
 
@@ -11671,10 +10541,6 @@ msgstr "Otsige isikute, perekondade, gruppide, aadresside ja muu hulgast."
 #: 
 msgid "Search and view deposit slip records"
 msgstr "Otsige ja vaadake korjanduste kirjeid"
-
-#: 
-msgid "Search groups..."
-msgstr "Otsi gruppe..."
 
 #: 
 msgid "Search people, families, groups…"
@@ -11711,10 +10577,6 @@ msgstr "Saada e-kiri perekondadele"
 #: 
 msgid "Server Error"
 msgstr "Serveri viga"
-
-#: 
-msgid "Server returned an unexpected response. Please try again."
-msgstr "Server tagastas ootamatu vastuse. Palun proovige uuesti."
 
 #: 
 msgid "Set Permission True to give new users the ability to change their current value."
@@ -11791,10 +10653,6 @@ msgstr "Samm 1 — Laadige üles CSV fail"
 #: 
 msgid "Step 2 — Map Columns"
 msgstr "Samm 2 — Seostage veerud"
-
-#: 
-msgid "Submitting..."
-msgstr "Esitamine..."
 
 #: 
 msgid "Supports backups from ChurchCRM and ChurchInfo."
@@ -11877,10 +10735,6 @@ msgid "Upload failed."
 msgstr "Üleslaadimine ebaõnnestus."
 
 #: 
-msgid "Upload failed. Please check the file and try again."
-msgstr "Üleslaadimine ebaõnnestus. Palun kontrollige faili ja proovige uuesti."
-
-#: 
 msgid "Upload session expired. Please upload the file again."
 msgstr "Üleslaadimisseanss on aegunud. Palun laadige fail uuesti üles."
 
@@ -11911,10 +10765,6 @@ msgstr "Vaata isikuid"
 #: 
 msgid "View all families on an interactive map"
 msgstr "Vaadake kõiki perekondi interaktiivsel kaardil"
-
-#: 
-msgid "View all results"
-msgstr "Vaata kõiki tulemusi"
 
 #: 
 msgid "View and manage all groups in your congregation"
@@ -11997,20 +10847,12 @@ msgid "We're so glad you're here! Register your family in just 3 easy steps."
 msgstr "Meil on nii hea meel, et olete siin! Registreerige oma perekond vaid 3 lihtsa sammuga."
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "Meil on väga hea meel, et teie perekond on meiega liitunud!"
-
-#: 
 msgid "Welcome Back!"
 msgstr "Tere tulemast tagasi!"
 
 #: 
 msgid "Welcome back! Please enter your details to continue"
 msgstr "Tere tulemast tagasi! Palun sisestage oma andmed jätkamiseks"
-
-#: 
-msgid "Welcome to the Family!"
-msgstr "Tere tulemast perekonda!"
 
 #: 
 msgid "What happens next?"
@@ -12053,28 +10895,12 @@ msgid "Your previous session timed out. Please login again."
 msgstr "Teie eelmine seanss aegus. Palun logige uuesti sisse."
 
 #: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "Teie registreerumine on vastu võetud. Meie meeskond võtab peagi ühendust, et teid isiklikult tervitada."
-
-#: 
-msgid "all members"
-msgstr "kõik liikmed"
-
-#: 
 msgid "complete"
 msgstr "lõpetatud"
 
 #: 
 msgid "fields"
 msgstr "väljad"
-
-#: 
-msgid "from this class?"
-msgstr "sellest klassist?"
-
-#: 
-msgid "from this group?"
-msgstr "sellest grupist?"
 
 #: 
 msgid "full group view"
@@ -12085,20 +10911,12 @@ msgid "funds"
 msgstr "fondid"
 
 #: 
-msgid "members"
-msgstr "liikmed"
-
-#: 
 msgid "opportunities"
 msgstr "võimalused"
 
 #: 
 msgid "or connect an external service"
 msgstr "või ühendage väline teenus"
-
-#: 
-msgid "our church"
-msgstr "meie kirik"
 
 #: 
 msgid "page"
@@ -12109,24 +10927,12 @@ msgid "properties"
 msgstr "omadused"
 
 #: 
-msgid "to another group?"
-msgstr "teise gruppi?"
-
-#: 
-msgid "— Ignore —"
-msgstr "— Ignoreeri —"
-
-#: 
 msgid "— Select a group —"
 msgstr "— Valige grupp —"
 
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Valige tüüp (valikuline) —"
-
-#: 
-msgid "Activate"
-msgstr "Aktiveeri"
 
 #: 
 msgid "Active Events"
@@ -12149,10 +10955,6 @@ msgid "All Checks Passed"
 msgstr "Kõik kontrollid läbitud"
 
 #: 
-msgid "Applying..."
-msgstr "Rakendamine..."
-
-#: 
 msgid "Assigned Kiosk"
 msgstr "Määratud kioskiaken"
 
@@ -12163,10 +10965,6 @@ msgstr "Kohalolek"
 #: 
 msgid "Back up modified files before upgrading if you want to keep your changes."
 msgstr "Varundage muudetud failid enne uuendamist, kui soovite oma muudatusi säilitada."
-
-#: 
-msgid "Backup Complete"
-msgstr "Varundamine lõpetatud"
 
 #: 
 msgid "Class / Group"
@@ -12187,14 +10985,6 @@ msgstr "Loo esimene sündmus"
 #: 
 msgid "Create a database backup before applying the update. This is strongly recommended."
 msgstr "Looge andmebaasi varukoopia enne uuenduse rakendamist. See on tungivalt soovituslik."
-
-#: 
-msgid "Creating Backup..."
-msgstr "Varukoopia loomine..."
-
-#: 
-msgid "Download Backup & Continue"
-msgstr "Laadi varukoopia alla ja jätka"
 
 #: 
 msgid "Download the latest release and apply it to your installation."
@@ -12239,10 +11029,6 @@ msgstr "Looge klassinimekirju, kohaloleku lehti ja fotoalbumeid"
 #: 
 msgid "Installed"
 msgstr "Installitud"
-
-#: 
-msgid "It is strongly recommended to have a backup before proceeding."
-msgstr "Enne jätkamist on tungivalt soovituslik omada varukoopiat."
 
 #: 
 msgid "Latest"
@@ -12368,18 +11154,10 @@ msgstr "Kasutajal peavad olema märkmete õigused"
 msgid "Address Defaults"
 msgstr "Aadressi vaikeväärtused"
 
-#: 
-msgid "All Day"
-msgstr "Kogu päev"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
 msgstr "Luba kasutajal lisada uus sündmus"
-
-#: 
-msgid "Are you sure you want to continue?"
-msgstr "Kas olete kindel, et soovite jätkata?"
 
 #. Context: queryparameters_qrp
 #: 
@@ -12421,10 +11199,6 @@ msgid "ChurchCRM can send emails directly."
 msgstr "ChurchCRM saab saata e-kirju otse."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "Lõikepuhvri API pole saadaval. Kopeerige URL käsitsi."
-
-#: 
 msgid "Communication"
 msgstr "Suhtlus"
 
@@ -12444,18 +11218,6 @@ msgstr "Konfigureerige Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Ühendage Mailchimp e-posti loendite sünkroonimiseks uudiskirjade ja kampaaniate jaoks."
-
-#: 
-msgid "Copied to clipboard"
-msgstr "Kopeeritud lõikepuhvrisse"
-
-#: 
-msgid "Copy All Emails"
-msgstr "Kopeerige kõik e-kirjad"
-
-#: 
-msgid "Copy All Numbers"
-msgstr "Kopeerige kõik numbrid"
 
 #: 
 msgid "Copy from church address"
@@ -12493,20 +11255,12 @@ msgid "Distance Unit"
 msgstr "Vahemaa ühik"
 
 #: 
-msgid "Duration"
-msgstr "Kestus"
-
-#: 
 msgid "Email Dashboard"
 msgstr "E-posti armatuurlaud"
 
 #: 
 msgid "Email Integrations"
 msgstr "E-posti integratsioonid"
-
-#: 
-msgid "Email addresses copied to clipboard"
-msgstr "E-posti aadressid kopeeritud lõikepuhvrisse"
 
 #: 
 msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
@@ -12681,14 +11435,6 @@ msgstr "Uute liikmete teatmise e-kirjad"
 msgid "No cell phone on file"
 msgstr "Failil puudub mobiiltelefon"
 
-#: 
-msgid "No email addresses available"
-msgstr "E-posti aadresse pole saadaval"
-
-#: 
-msgid "No phone numbers available"
-msgstr "Telefoninumbreid pole saadaval"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Non-Attender"
@@ -12707,10 +11453,6 @@ msgstr "Klassifitseerimata"
 #: 
 msgid "Number of months since becoming a friend"
 msgstr "Kuude arv, kui saadud sõbraks"
-
-#: 
-msgid "Parents"
-msgstr "Vanemad"
 
 #: 
 msgid "Password reset emails — users cannot recover their accounts"
@@ -12738,14 +11480,6 @@ msgstr "Inimese omadus, mida kasutatakse liikmete välistamiseks SMS/tekstsõnum
 msgid "Person property used to exclude members from email lists"
 msgstr "Inimese omadus, mida kasutatakse liikmete välistamiseks e-posti loendist"
 
-#: 
-msgid "Phone numbers copied to clipboard"
-msgstr "Telefoninumbrid kopeeritud lõikelauale"
-
-#: 
-msgid "Phone numbers copied — paste into your messaging app"
-msgstr "Telefoninumbrid kopeeritud — kleepige oma sõnumitesse"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
@@ -12766,18 +11500,10 @@ msgstr "Lubaduse võrdlus"
 msgid "Pledged this year"
 msgstr "Lubatud sel aastal"
 
-#: 
-msgid "Press CTRL + C to copy"
-msgstr "Kopeerimiseks vajutage CTRL + C"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "Vara"
-
-#: 
-msgid "Public calendar"
-msgstr "Avalik kalender"
 
 #. Context: query_qry
 #: 
@@ -12830,14 +11556,6 @@ msgstr "Teine majandusaasta võrdluseks"
 msgid "Second volunteer opportunity choice"
 msgstr "Teine vabatahtliku võimaluse valik"
 
-#: 
-msgid "Select calendars..."
-msgstr "Valige kalendrid..."
-
-#: 
-msgid "Select event type..."
-msgstr "Valige sündmuse tüüp..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Select field to search for."
@@ -12863,10 +11581,6 @@ msgstr "Süsteemi kalendrid"
 #: 
 msgid "System language for the church."
 msgstr "Kirikule süsteemne keel."
-
-#: 
-msgid "Text All"
-msgstr "Tekstige kõik"
 
 #: 
 msgid "Text Dashboard"
@@ -12929,18 +11643,6 @@ msgid "These values are pre-filled when creating new families. Leave blank to re
 msgstr "Need väärtused täidetakse eelnevalt uute perede loomisel. Jätke tühjaks, et nõuda käsitsi sisestamist."
 
 #: 
-msgid "Time"
-msgstr "Aeg"
-
-#: 
-msgid "Timed"
-msgstr "Ajaline"
-
-#: 
-msgid "Unable to copy to clipboard. Please copy the URL manually."
-msgstr "Ei saa lõikelauale kopeerida. Kopeerige URL käsitsi."
-
-#: 
 msgid "Unit used to measure distance."
 msgstr "Vahemaa mõõtmiseks kasutatav ühik."
 
@@ -12985,14 +11687,6 @@ msgstr "Töö e-post"
 #: 
 msgid "but not this year"
 msgstr "kuid mitte sel aastal"
-
-#: 
-msgid "e.g. Sunday Service"
-msgstr "nt pühapäevane teenistus"
-
-#: 
-msgid "member"
-msgstr "liige"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -13847,21 +12541,6 @@ msgstr "Faili suurus ületab serveri piirangut %s"
 msgid "Missing image data in request"
 msgstr "Päringus puuduvad pildandmed"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "Leia inimesed, kes ei osalenud üritusel"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Puuduvad isikud"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Valige soovitud üritus"
-
 #: 
 msgid "Advanced filtering by group, classification, and role"
 msgstr "Täiustatud filtreerimine grupi, klassifikatsiooni ja rolli järgi"
@@ -13939,10 +12618,6 @@ msgid "API Key"
 msgstr "API võti"
 
 #: 
-msgid "API key regenerated"
-msgstr "API võti uuendati"
-
-#: 
 msgid "Account"
 msgstr "Konto"
 
@@ -14017,46 +12692,6 @@ msgstr "Andmetabelites kuvatavate ridade vaikearv. Jõustub järgmisel lehelaadi
 #: 
 msgid "Edit own family only"
 msgstr "Muuda ainult oma perekonda"
-
-#: 
-msgid "Enter text here..."
-msgstr "Sisestage tekst siia..."
-
-#: 
-msgid "Failed to cancel enrollment. Please try again."
-msgstr "Registreerimise tühistamine ebaõnnestus. Palun proovige uuesti."
-
-#: 
-msgid "Failed to delete event. Please try again."
-msgstr "Ürituse kustutamine ebaõnnestus. Palun proovige uuesti."
-
-#: 
-msgid "Failed to disable two-factor authentication. Please try again."
-msgstr "Kahefaktorilise autentimise keelamine ebaõnnestus. Palun proovige uuesti."
-
-#: 
-msgid "Failed to generate QR code. Please try again."
-msgstr "QR-koodi loomine ebaõnnestus. Palun proovige uuesti."
-
-#: 
-msgid "Failed to load calendar data. Please try again."
-msgstr "Kalendriandmete laadimine ebaõnnestus. Palun proovige uuesti."
-
-#: 
-msgid "Failed to load event. Please try again."
-msgstr "Ürituse laadimine ebaõnnestus. Palun proovige uuesti."
-
-#: 
-msgid "Failed to load recovery codes. Please refresh the page."
-msgstr "Taastekoode ei õnnestunud laadida. Palun värskendage lehte."
-
-#: 
-msgid "Failed to save event. Please try again."
-msgstr "Ürituse salvestamine ebaõnnestus. Palun proovige uuesti."
-
-#: 
-msgid "Failed to save setting"
-msgstr "Seade salvestamine ebaõnnestus"
 
 #. Context: locales
 #: 
@@ -14241,10 +12876,6 @@ msgid "User Config"
 msgstr "Kasutaja seaded"
 
 #: 
-msgid "Verification failed. Please try again."
-msgstr "Kinnitamine ebaõnnestus. Palun proovige uuesti."
-
-#: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "Versioon %s on saadaval. Palun uuendage oma paigaldust."
 
@@ -14295,10 +12926,6 @@ msgid "A tablet assigned to one event. The kiosk pulls the event's linked group 
 msgstr "Ühe sündmusega seotud tahvelarvuti. Kioskk laadib sündmuse seotud rühma nimekirja ja kuvab registreerimise. Ilma seotud rühmata pole kioskil nimekirja kuvada."
 
 #: 
-msgid "Add Walk-in / Visitor"
-msgstr "Lisa kõndija / külaline"
-
-#: 
 msgid "Add people to your cart first, then come back to check them in to an event."
 msgstr "Lisa inimesed esmalt oma nimekirja, seejärel tule tagasi, et registreerida neid sündmusele."
 
@@ -14333,10 +12960,6 @@ msgstr "Kõik üleslaaditud fotod ja dokumendid"
 #: 
 msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
 msgstr "Sündmuse tüüp on mall — nimi, vaikimisi algusaeg, korduvus, kohaloleku loendamise kategooriad. Valikuliselt seotud ühe klassi rühmaga vaikimisi auditooriumina."
-
-#: 
-msgid "Attendance record deleted."
-msgstr "Kohaloleku kirje kustutatud."
 
 #: 
 msgid "Audit"
@@ -14399,24 +13022,12 @@ msgid "Check in all %d family members to a single event."
 msgstr "Registreeri kõik %d pereliige ühele sündmusele."
 
 #: 
-msgid "Check out"
-msgstr "Lahku"
-
-#: 
 msgid "Check-in By"
 msgstr "Registreerinud"
 
 #: 
-msgid "Check-in failed. Please try again."
-msgstr "Registreerimine ebaõnnestus. Palun proovige uuesti."
-
-#: 
 msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
 msgstr "Registreerimine on mitteaktiivsetele sündmustele keelatud. Registreerimise lubamiseks aktiveerige sündmus sündmuste armatuurlaual."
-
-#: 
-msgid "Check-out failed. Please try again."
-msgstr "Lahkumine ebaõnnestus. Palun proovige uuesti."
 
 #: 
 msgid "Checked in to event: %s"
@@ -14429,10 +13040,6 @@ msgstr "Lahkuti sündmuselt: %s"
 #: 
 msgid "Close All Stuck Events"
 msgstr "Sulge kõik kinnijäänud sündmused"
-
-#: 
-msgid "Confirm Check Out"
-msgstr "Kinnita lahkumine"
 
 #: 
 msgid "Create Repeat Events"
@@ -14459,10 +13066,6 @@ msgid "Creating backup..."
 msgstr "Varukoopia loomine..."
 
 #: 
-msgid "Creating..."
-msgstr "Loomine..."
-
-#: 
 msgid "Database + uploaded photos (larger)"
 msgstr "Andmebaas + üleslaaditud fotod (suurem)"
 
@@ -14475,34 +13078,6 @@ msgid "Date range cannot exceed 1 year"
 msgstr "Kuupäevavahemik ei tohi ületada 1 aastat"
 
 #: 
-msgid "Deactivate"
-msgstr "Deaktiveeri"
-
-#: 
-msgid "Delete Event Type"
-msgstr "Kustuta sündmuse tüüp"
-
-#: 
-msgid "Delete attendance record?"
-msgstr "Kustuta kohaloleku kirje?"
-
-#: 
-msgid "Delete check-in record for"
-msgstr "Kustuta registreerimise kirje kasutajale"
-
-#: 
-msgid "Delete this event?"
-msgstr "Kustuta see sündmus?"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
-msgstr "Sündmuse kustutamisel kustutatakse ka kõik kohaloleku loendused. Seda ei saa tagasi võtta."
-
-#: 
-msgid "Deleting this event will also delete all attendance records. This cannot be undone."
-msgstr "Selle sündmuse kustutamisel kustutatakse ka kõik kohaloleku kirjed. Seda ei saa tagasi võtta."
-
-#: 
 msgid "Destructive Operation"
 msgstr "Hävitav toiming"
 
@@ -14513,10 +13088,6 @@ msgstr "Muutke kategooria nime ja klõpsake Salvesta, või kasutage eemaldamisek
 #: 
 msgid "End Time"
 msgstr "Lõpuaeg"
-
-#: 
-msgid "End time must be after start time."
-msgstr "Lõpuaeg peab olema pärast algusaega."
 
 #: 
 msgid "Ended"
@@ -14541,14 +13112,6 @@ msgstr "Sündmuse üksikasjad"
 #: 
 msgid "Event Template"
 msgstr "Sündmuse mall"
-
-#: 
-msgid "Event already exists. Redirecting to check-in..."
-msgstr "Sündmus on juba olemas. Suunamine registreerimisele..."
-
-#: 
-msgid "Event created. Redirecting to check-in..."
-msgstr "Sündmus loodud. Suunamine registreerimisele..."
 
 #: 
 msgid "Event title is required."
@@ -14595,22 +13158,6 @@ msgid "Everyone is checked in!"
 msgstr "Kõik on registreeritud!"
 
 #: 
-msgid "Failed to create class. Please try again."
-msgstr "Klassi loomine ebaõnnestus. Palun proovige uuesti."
-
-#: 
-msgid "Failed to create event."
-msgstr "Sündmuse loomine ebaõnnestus."
-
-#: 
-msgid "Failed to create event. Please try again."
-msgstr "Sündmuse loomine ebaõnnestus. Palun proovige uuesti."
-
-#: 
-msgid "Failed to delete. Please try again."
-msgstr "Kustutamine ebaõnnestus. Palun proovige uuesti."
-
-#: 
 msgid "Fastest workflow:"
 msgstr "Kiireim töövoog:"
 
@@ -14651,14 +13198,6 @@ msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
 msgstr "Vigane iga-aastase korduvuse vorming; oodatakse KK-PP (nt 04-12)"
 
 #: 
-msgid "Just now"
-msgstr "Just praegu"
-
-#: 
-msgid "Leave blank to check out without recording the supervisor."
-msgstr "Jätke tühjaks, et lahkuda juhendajat registreerimata."
-
-#: 
 msgid "Link events to a group for Kiosk check-in functionality."
 msgstr "Seoge sündmused rühmaga kioski registreerimisfunktsiooni jaoks."
 
@@ -14677,10 +13216,6 @@ msgstr "Hallake sündmuste nimesid, korduvusmustreid ja kohaloleku loendusi"
 #: 
 msgid "Missing required field: %s"
 msgstr "Puudub kohustuslik väli: %s"
-
-#: 
-msgid "No Events Today"
-msgstr "Täna pole sündmusi"
 
 #: 
 msgid "No Group"
@@ -14707,14 +13242,6 @@ msgid "Optional Settings"
 msgstr "Valikulised seaded"
 
 #: 
-msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
-msgstr "Valikuline — kirjendage, kes registreerib selle isiku välja (nt vanem, kes lapse järele tuleb)."
-
-#: 
-msgid "Person checked out."
-msgstr "Isik on välja registreeritud."
-
-#: 
 msgid "Person is not checked in"
 msgstr "Isik pole sisse registreeritud"
 
@@ -14725,14 +13252,6 @@ msgstr "Isik pole aktiivse klassi nimekirjas"
 #: 
 msgid "Pin to Calendars"
 msgstr "Kinnita kalendritesse"
-
-#: 
-msgid "Please select a person to check in."
-msgstr "Palun valige registreerimiseks isik."
-
-#: 
-msgid "Range end date must be on or after range start date."
-msgstr "Vahemiku lõppkuupäev peab olema alguskuupäevast samal ajal või hiljem."
 
 #: 
 msgid "Range end must be a valid YYYY-MM-DD date."
@@ -14783,10 +13302,6 @@ msgid "Skip"
 msgstr "Jäta vahele"
 
 #: 
-msgid "Skip & Check Out"
-msgstr "Jäta vahele ja lahku"
-
-#: 
 msgid "Start Check-in"
 msgstr "Alusta registreerimist"
 
@@ -14817,10 +13332,6 @@ msgstr "Registreeri kohalolek"
 #: 
 msgid "The Events module is disabled"
 msgstr "Sündmuste moodul on keelatud"
-
-#: 
-msgid "There are no events scheduled for today"
-msgstr "Täna pole ühtegi sündmust planeeritud"
 
 #: 
 msgid "This event is inactive."
@@ -14951,18 +13462,6 @@ msgid "Map Coordinates"
 msgstr "Kaardi koordinaadid"
 
 #: 
-msgid "Please select a group."
-msgstr "Palun valige rühm."
-
-#: 
-msgid "Please select a role."
-msgstr "Palun valige roll."
-
-#: 
-msgid "Please select both a group and a role."
-msgstr "Palun valige nii rühm kui ka roll."
-
-#: 
 msgid "Range: -180 to 180."
 msgstr "Vahemik: -180 kuni 180."
 
@@ -14977,22 +13476,6 @@ msgstr "nt., -74.0060"
 #: 
 msgid "e.g., 40.7128"
 msgstr "nt., 40.7128"
-
-#: 
-msgid "mo"
-msgstr "kuu"
-
-#: 
-msgid "mos"
-msgstr "kuud"
-
-#: 
-msgid "yr"
-msgstr "a."
-
-#: 
-msgid "yrs"
-msgstr "a."
 
 #: 
 msgid "An error occurred while deleting the family."
@@ -15103,10 +13586,6 @@ msgid "You do not have permission to view this person"
 msgstr "Teil puudub luba seda isikut vaadata"
 
 #: 
-msgid "Are you sure you want to delete this event type? This cannot be undone."
-msgstr "Kas olete kindel, et soovite selle sündmuse tüübi kustutada? Seda toimingut ei saa tagasi võtta."
-
-#: 
 msgid "Assign to me"
 msgstr "Määra mulle"
 
@@ -15117,10 +13596,6 @@ msgstr "Määratud"
 #: 
 msgid "Assigned event not found"
 msgstr "Määratud sündmust ei leitud"
-
-#: 
-msgid "Cannot Delete Event Type"
-msgstr "Sündmuse tüüpi ei saa kustutada"
 
 #: 
 msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
@@ -15151,20 +13626,12 @@ msgid "Register New Device"
 msgstr "Registreeri uus seade"
 
 #: 
-msgid "This event type is used by"
-msgstr "Seda sündmuse tüüpi kasutab"
-
-#: 
 msgid "Total Kiosks"
 msgstr "Kioskeid kokku"
 
 #: 
 msgid "Upcoming Events"
 msgstr "Tulevased sündmused"
-
-#: 
-msgid "event(s). Deactivate the type instead, or reassign the events first."
-msgstr "sündmus(t). Desaktiveerige tüüp või määrake sündmused ümber."
 
 #: 
 msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
@@ -15177,10 +13644,6 @@ msgstr "Selle nimega valik on juba olemas"
 #: 
 msgid "Cannot delete the only remaining option"
 msgstr "Ainus järelejäänud valikut ei saa kustutada"
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Lõikelaud pole saadaval. Kasutage koodide salvestamiseks allalaadimise nuppu."
 
 #: 
 msgid "Custom Option"
@@ -15257,10 +13720,6 @@ msgstr "Taastekood"
 #: 
 msgid "Set up Email"
 msgstr "Seadista e-post"
-
-#: 
-msgid "Unable to copy to clipboard. Please copy the codes manually."
-msgstr "Lõikelauale kopeerimine ebaõnnestus. Kopeerige koodid käsitsi."
 
 #: 
 msgid "Use Recovery Code"
@@ -15579,10 +14038,6 @@ msgid "Add Recurring Event"
 msgstr "Lisa korduv sündmus"
 
 #: 
-msgid "Available after the event is saved."
-msgstr "Saadaval pärast sündmuse salvestamist."
-
-#: 
 msgid "Boolean properties/fields accept yes / no / true / false / 1 / 0."
 msgstr "Tõeväärtuse omadused/väljad aktsepteerivad jah / ei / tõsi / väär / 1 / 0."
 
@@ -15623,10 +14078,6 @@ msgid "External calendar sharing is disabled"
 msgstr "Väline kalendri jagamine on keelatud"
 
 #: 
-msgid "Failed to load event editor. Please refresh and try again."
-msgstr "Sündmusetoimetaja laadimine ebaõnnestus. Värskendage lehte ja proovige uuesti."
-
-#: 
 msgid "Family Custom"
 msgstr "Perekonna kohandatud"
 
@@ -15635,16 +14086,8 @@ msgid "Family Property"
 msgstr "Perekonna omadus"
 
 #: 
-msgid "Fields"
-msgstr "Väljad"
-
-#: 
 msgid "Go to home"
 msgstr "Mine avalehele"
-
-#: 
-msgid "Hide advanced options"
-msgstr "Peida täpsemad suvandid"
 
 #: 
 msgid "How the CSV Import Works"
@@ -15663,14 +14106,6 @@ msgid "Loading event editor…"
 msgstr "Sündmusetoimetaja laadimine…"
 
 #: 
-msgid "No group"
-msgstr "Rühm puudub"
-
-#: 
-msgid "Not pinned to any calendar"
-msgstr "Pole ühegi kalendriga seotud"
-
-#: 
 msgid "Optional — sermon notes, materials, or other details copied to every generated event."
 msgstr "Vabatahtlik — jutluse märkmed, materjalid või muud üksikasjad kopeeritakse igasse loodud sündmusse."
 
@@ -15685,10 +14120,6 @@ msgstr "Isiku kohandatud"
 #: 
 msgid "Person Property"
 msgstr "Isiku omadus"
-
-#: 
-msgid "Show more options"
-msgstr "Kuva rohkem suvandeid"
 
 #: 
 msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
@@ -15715,16 +14146,8 @@ msgid "This calendar link is invalid or has been revoked. Ask the church for a c
 msgstr "See kalendi link on kehtetu või tühistatud. Küsige koguduselt praegust linki."
 
 #: 
-msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
-msgstr "Seob selle sündmuse klassi või teenistusnimekirjaga — kasutatakse kiosk sisseregistreerimise voos."
-
-#: 
 msgid "Upload a CSV to create families and people in bulk."
 msgstr "Laadige CSV üles, et luua massimpordi teel peresid ja inimesi."
-
-#: 
-msgid "Volunteer-entered headcounts, broken down by category."
-msgstr "Vabatahtlike sisestatud peaarvud, jaotatud kategooriate kaupa."
 
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
@@ -15759,14 +14182,6 @@ msgstr "Lisab riiklikud pühad põhikalendrisse. Iga valitud riik muutub küljer
 msgid "Choose map provider"
 msgstr "Vali kaarditeenuse pakkuja"
 
-#: 
-msgid "Current database"
-msgstr "Praegune andmebaas"
-
-#: 
-msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
-msgstr "Demoandmeid laaditakse tavaliselt ainult uuele installile. Nüüd importimine lisab näidiskirjed olemasolevatele andmetele kõrvale ning võib tekitada duplikaate."
-
 #. plugin:holidays:section:2:content
 #: 
 msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
@@ -15791,10 +14206,6 @@ msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Season
 msgstr "Pühad on märgistatud tüübi järgi: Ametlikud, Tähtpäevad, Pangapühad, Hooajalised ja Usulised. Jätke kõik kategooriad valimata, et kuvada kõik pühad, või valige konkreetsed tüübid kuvamise kitsendamiseks."
 
 #: 
-msgid "Import demo data anyway"
-msgstr "Impordi demoandmed igal juhul"
-
-#: 
 msgid "Missing pledge identifier."
 msgstr "Finantskohustuse identifikaator puudub."
 
@@ -15813,10 +14224,6 @@ msgstr "Ava Apple Mapsis"
 #: 
 msgid "Open in Google Maps"
 msgstr "Ava Google Mapsis"
-
-#: 
-msgid "Open in new tab"
-msgstr "Ava uuel vahelehel"
 
 #. plugin:holidays:section:0:title
 #: 
@@ -15849,22 +14256,10 @@ msgstr "Süsteem"
 msgid "Timeline filters"
 msgstr "Ajajoone filtrid"
 
-#: 
-msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
-msgstr "Puhta andmebaasiga alustamiseks kasutage enne demoandmete importimist admini armatuurlaualt valikut „Lähtesta andmebaas“."
-
 #. plugin:holidays:section:0:content
 #: 
 msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
 msgstr "Kasutage riikide valijat ühe või mitme riigi valimiseks. Iga lisatud riik ilmub küljeribal eraldi kalenderkirjena — see võimaldab kuvada ülemaailmse koguduse pühad."
-
-#: 
-msgid "Your database already contains data"
-msgstr "Teie andmebaas sisaldab juba andmeid"
-
-#: 
-msgid "people"
-msgstr "inimest"
 
 #: 
 msgid "A downloadUrl is required to install a plugin."
@@ -16111,16 +14506,8 @@ msgid "Need help? Contact us"
 msgstr "Vajate abi? Võtke meiega ühendust"
 
 #: 
-msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
-msgstr "Ühtegi kalendrit pole valitud — see sündmus kuvatakse süsteemikalendris „Kinnitamata sündmused“ kuni selle kinnitamiseni."
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "Avab 2-minutilise akna seadmete registreerimiseks aadressil:"
-
-#: 
-msgid "Times use church time ({{church}}), not your browser ({{browser}})."
-msgstr "Ajad kasutavad kiriku aega ({{church}}), mitte teie brauseri aega ({{browser}})."
 
 #: 
 msgid "Welcome — sign in to manage your community"
