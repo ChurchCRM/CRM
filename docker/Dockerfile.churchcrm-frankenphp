@@ -58,6 +58,9 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
     sed -i 's/^memory_limit.*$/memory_limit = 256M/g' $PHP_INI_DIR/php.ini && \
     sed -i 's/^max_execution_time.*$/max_execution_time = 120/g' $PHP_INI_DIR/php.ini
 
+# Create non-root user
+RUN groupadd -r www && useradd -r -g www www
+
 # Copy the Caddyfile that routes ChurchCRM's Slim sub-applications correctly
 COPY ./frankenphp/Caddyfile /etc/caddy/Caddyfile
 
@@ -65,11 +68,18 @@ COPY ./frankenphp/Caddyfile /etc/caddy/Caddyfile
 # Production stage - minimal runtime
 FROM base AS prod
 
+# Use non-root user
+USER www
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost/health || exit 1
+
 
 # Dev stage - includes build tools for local development inside the container
 FROM base AS dev
 
-# Install development tools
+# Install development tools and NVM + Node.js
 RUN apt-get update && \
     apt-get install -y \
         git \
@@ -77,20 +87,16 @@ RUN apt-get update && \
         python3 \
         unzip \
         curl \
-    && rm -rf /var/lib/apt/lists/*
-
-# Install Xdebug for step-debugging
-RUN install-php-extensions xdebug
-
-# Install Composer
-RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
-    php composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
-    rm composer-setup.php
-
-# Install NVM + Node.js (needed to run npm run deploy inside the container)
-RUN curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh -o /opt/node-install.sh && \
+    && rm -rf /var/lib/apt/lists/* && \
+    curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh -o /opt/node-install.sh && \
     chmod a+x /opt/node-install.sh && \
     /opt/node-install.sh && \
-    rm /opt/node-install.sh
+    rm /opt/node-install.sh && \
+    /bin/bash -c "source /root/.nvm/nvm.sh && nvm install 24 && npm install -g node-gyp" && \
+    install-php-extensions xdebug
 
-RUN /bin/bash -c "source /root/.nvm/nvm.sh && nvm install 24 && npm install -g node-gyp"
+# Install Composer with checksum verification
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
+    php -r "if (hash_file('sha384', 'composer-setup.php') === file_get_contents('https://composer.github.io/installer.sig')) { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); exit(1); }" && \
+    php composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
+    rm composer-setup.php
