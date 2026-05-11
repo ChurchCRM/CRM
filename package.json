@@ -123,7 +123,7 @@
     "devDependencies": {
         "@biomejs/biome": "^2.4.15",
         "@types/jquery": "^3.5.33",
-        "archiver": "^7.0.1",
+        "archiver": "^8.0.0",
         "css-loader": "^7.1.4",
         "cy-verify-downloads": "^0.3.0",
         "cypress": "^15.14.2",
