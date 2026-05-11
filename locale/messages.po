@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-11 15:48+0000\n"
+"POT-Creation-Date: 2026-05-11 16:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -330,6 +330,9 @@ msgid "Account Recovery"
 msgstr ""
 
 msgid "Account Unlocked"
+msgstr ""
+
+msgid "Account options"
 msgstr ""
 
 msgid "Action"
@@ -2348,9 +2351,6 @@ msgstr ""
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr ""
 
-msgid "Connect with others"
-msgstr ""
-
 msgid "Connected"
 msgstr ""
 
@@ -3393,9 +3393,6 @@ msgid "Each row is one person. People in the same family share a FamilyID. Leave
 msgstr ""
 
 msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
-msgstr ""
-
-msgid "Easy registration"
 msgstr ""
 
 #. Context: countries
@@ -5915,9 +5912,6 @@ msgstr ""
 msgid "Jersey"
 msgstr ""
 
-msgid "Join our community and stay connected with"
-msgstr ""
-
 msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
 msgstr ""
 
@@ -7004,9 +6998,6 @@ msgstr ""
 msgid "Nauru"
 msgstr ""
 
-msgid "Need help? Contact us"
-msgstr ""
-
 msgid "Need to remove this data later?"
 msgstr ""
 
@@ -7087,9 +7078,6 @@ msgid "New kiosk device registration is currently disabled. Please contact your 
 msgstr ""
 
 msgid "New member notification emails"
-msgstr ""
-
-msgid "New to"
 msgstr ""
 
 msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
@@ -8735,6 +8723,9 @@ msgstr ""
 msgid "Regenerate"
 msgstr ""
 
+msgid "Register"
+msgstr ""
+
 msgid "Register New Device"
 msgstr ""
 
@@ -8742,9 +8733,6 @@ msgid "Register Now"
 msgstr ""
 
 msgid "Register Your Church"
-msgstr ""
-
-msgid "Register Your Family"
 msgstr ""
 
 msgid "Register and manage kiosk devices for event check-in"
@@ -9867,9 +9855,6 @@ msgid "State is required."
 msgstr ""
 
 msgid "Status"
-msgstr ""
-
-msgid "Stay informed"
 msgstr ""
 
 msgid "Step 1 — Upload CSV File"
@@ -11590,9 +11575,6 @@ msgid "Welcome to"
 msgstr ""
 
 msgid "Welcome to the Family!"
-msgstr ""
-
-msgid "Welcome — sign in to manage your community"
 msgstr ""
 
 #. Context: countries
