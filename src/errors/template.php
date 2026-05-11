@@ -58,8 +58,14 @@ function buildGitHubIssueBody($title, $customSections = '') {
 /**
  * Generate common HTML structure for error pages using Tabler/Bootstrap classes
  * All CSS is in webpack/error.scss
+ * Uses relative paths for assets to work on any installation (root or subdirectory)
  */
 function renderErrorPage($title, $icon, $gradientClass, $content, $issueBody) {
+    // Relative paths work regardless of installation location (root or /churchcrm)
+    // From /errors/template.php → /skin/v2/ is ../skin/v2/
+    $cssPath = '../skin/v2/error.min.css';
+    $jsPath = '../skin/v2/error.min.js';
+    $homeUrl = '../';
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,7 +74,7 @@ function renderErrorPage($title, $icon, $gradientClass, $content, $issueBody) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/skin/v2/error.min.css">
+    <link rel="stylesheet" href="<?php echo htmlspecialchars($cssPath, ENT_QUOTES, 'UTF-8'); ?>">
 </head>
 <body class="bg-gradient-primary-purple d-flex align-items-center justify-content-center min-vh-100 p-3">
     <div class="error-wrapper w-100" style="max-width: 500px;">
@@ -79,15 +85,15 @@ function renderErrorPage($title, $icon, $gradientClass, $content, $issueBody) {
             </div>
             <div class="card-body p-4">
                 <?php echo $content; ?>
-                
+
                 <div class="d-flex gap-3 mt-4 flex-wrap">
-                    <a href="/" class="btn btn-primary flex-grow-1">Return Home</a>
+                    <a href="<?php echo htmlspecialchars($homeUrl, ENT_QUOTES, 'UTF-8'); ?>" class="btn btn-primary flex-grow-1">Return Home</a>
                     <a href="https://github.com/ChurchCRM/CRM/issues/new?title=<?php echo rawurlencode('[Error] ' . $title); ?>&body=<?php echo rawurlencode($issueBody); ?>" target="_blank" class="btn btn-outline-secondary flex-grow-1">Report Issue</a>
                 </div>
             </div>
         </div>
     </div>
-    <script src="/skin/v2/error.min.js"></script>
+    <script src="<?php echo htmlspecialchars($jsPath, ENT_QUOTES, 'UTF-8'); ?>"></script>
 </body>
 </html>
     <?php

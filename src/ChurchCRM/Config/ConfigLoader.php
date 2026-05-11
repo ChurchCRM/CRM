@@ -26,7 +26,7 @@ final class ConfigLoader
     public static function loadFromConfigPhp(string $configPath): ConfigDto
     {
         if (!is_file($configPath) || !is_readable($configPath)) {
-            self::writeErrorLog("Config file not found or not readable: {$configPath}");
+            self::writeLog('ERROR', "Config file not found or not readable: {$configPath}");
             throw new RuntimeException("Config file not found or not readable: {$configPath}");
         }
 
@@ -51,17 +51,20 @@ final class ConfigLoader
         require $configPath;
         $newError = error_get_last();
         if ($newError !== $error && $newError !== null) {
-            self::writeErrorLog("Error loading Config.php: " . $newError['message']);
+            self::writeLog('ERROR', "Error loading Config.php: " . $newError['message']);
             throw new RuntimeException("Error loading Config.php: " . $newError['message']);
+        }
+
+        // Handle blank or missing dbPort: default to 3306 (standard MySQL port)
+        if ($dbPort === null || $dbPort === '') {
+            $dbPort = '3306';
+            self::writeLog('DEBUG', 'DB_SERVER_PORT not set or blank; defaulting to 3306');
         }
 
         // Validate that required variables were set
         $missing = [];
         if ($sSERVERNAME === null) {
             $missing[] = '$sSERVERNAME (DB_SERVER_NAME)';
-        }
-        if ($dbPort === null) {
-            $missing[] = '$dbPort (DB_SERVER_PORT)';
         }
         if ($sUSER === null) {
             $missing[] = '$sUSER (DB_USER)';
@@ -81,7 +84,7 @@ final class ConfigLoader
 
         if (!empty($missing)) {
             $errorMsg = 'Config.php missing required variables: ' . implode(', ', $missing);
-            self::writeErrorLog($errorMsg);
+            self::writeLog('ERROR', $errorMsg);
             throw new RuntimeException($errorMsg);
         }
 
@@ -97,7 +100,7 @@ final class ConfigLoader
                 self::validateUrl((string)$urlValue);
             }
         } catch (RuntimeException $e) {
-            self::writeErrorLog($e->getMessage());
+            self::writeLog('ERROR', $e->getMessage());
             throw $e;
         }
 
@@ -112,11 +115,11 @@ final class ConfigLoader
         );
     }
 
-    private static function writeErrorLog(string $message): void
+    private static function writeLog(string $level, string $message): void
     {
         $logPath = sys_get_temp_dir() . '/churchcrm-' . date('Y-m-d') . '-config-error.log';
         $timestamp = date('Y-m-d\TH:i:s.uP');
-        $logEntry = "[{$timestamp}] CONFIG_ERROR: {$message}\n";
+        $logEntry = "[{$timestamp}] CONFIG_{$level}: {$message}\n";
         @file_put_contents($logPath, $logEntry, FILE_APPEND);
     }
 
