@@ -68,7 +68,7 @@ $methodLabel = $methodLabels[$pledge['method']] ?? InputUtils::escapeHTML($pledg
                 <div class="col-sm-6 col-lg-3">
                     <div class="text-muted small mb-1"><?= gettext('Family') ?></div>
                     <div class="fw-bold">
-                        <a href="<?= $sRootPath ?>/v2/family/<?= (int) $pledge['familyId'] ?>">
+                        <a href="<?= $sRootPath ?>/people/family/<?= (int) $pledge['familyId'] ?>">
                             <?= InputUtils::escapeHTML($pledge['familyName']) ?>
                         </a>
                     </div>
