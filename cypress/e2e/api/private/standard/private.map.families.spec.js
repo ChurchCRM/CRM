@@ -126,7 +126,7 @@ describe("API Private Map", () => {
             ).then((response) => {
                 response.body.forEach((item) => {
                     expect(item.type).to.equal("person");
-                    expect(item.profileUrl).to.include("PersonID=");
+                    expect(item.profileUrl).to.include("/people/view/");
                 });
             });
         });

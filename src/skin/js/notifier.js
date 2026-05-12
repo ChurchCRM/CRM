@@ -43,7 +43,7 @@ export function notify(messageOrObject, options = {}) {
 
   // Extract options
   const type = options.type || "info";
-  const duration = options.delay || 3000;
+  const duration = options.delay != null ? options.delay : 3000;
 
   // Get Notyf instance (lazy initialization)
   const notyfInstance = getNotyf();

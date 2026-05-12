@@ -853,28 +853,6 @@
     </table>
 
     <!--
- <table name="istlookup_lu" idMethod="native" phpName="IstlookupLu" >
-   <column name="lu_fam_ID" phpName="LuFamId" type="SMALLINT" size="9" primaryKey="true" required="true" defaultValue="0"/>
-   <column name="lu_LookupDateTime" phpName="LuLookupdatetime" type="TIMESTAMP" required="true" defaultValue="2016-01-01 00:00:00"/>
-   <column name="lu_DeliveryLine1" phpName="LuDeliveryline1" type="VARCHAR" size="255"/>
-   <column name="lu_DeliveryLine2" phpName="LuDeliveryline2" type="VARCHAR" size="255"/>
-   <column name="lu_City" phpName="LuCity" type="VARCHAR" size="50"/>
-   <column name="lu_State" phpName="LuState" type="VARCHAR" size="50"/>
-   <column name="lu_ZipAddon" phpName="LuZipaddon" type="VARCHAR" size="50"/>
-   <column name="lu_Zip" phpName="LuZip" type="VARCHAR" size="10"/>
-   <column name="lu_Addon" phpName="LuAddon" type="VARCHAR" size="10"/>
-   <column name="lu_LOTNumber" phpName="LuLotnumber" type="VARCHAR" size="10"/>
-   <column name="lu_DPCCheckdigit" phpName="LuDpccheckdigit" type="VARCHAR" size="10"/>
-   <column name="lu_RecordType" phpName="LuRecordtype" type="VARCHAR" size="10"/>
-   <column name="lu_LastLine" phpName="LuLastline" type="VARCHAR" size="255"/>
-   <column name="lu_CarrierRoute" phpName="LuCarrierroute" type="VARCHAR" size="10"/>
-   <column name="lu_ReturnCodes" phpName="LuReturncodes" type="VARCHAR" size="10"/>
-   <column name="lu_ErrorCodes" phpName="LuErrorcodes" type="VARCHAR" size="10"/>
-   <column name="lu_ErrorDesc" phpName="LuErrordesc" type="VARCHAR" size="255"/>
-   <vendor type="mysql">
-     <parameter name="Engine" value="InnoDB"/>
-   </vendor>
- </table>
  <table name="multibuy_mb" idMethod="native" phpName="MultibuyMb" >
    <column name="mb_ID" phpName="MbId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
    <column name="mb_per_ID" phpName="MbPerId" type="SMALLINT" size="9" required="true" defaultValue="0"/>
@@ -887,20 +865,22 @@
      <parameter name="Engine" value="InnoDB"/>
    </vendor>
  </table>
+ -->
 
- <table name="paddlenum_pn" idMethod="native" phpName="PaddlenumPn" >
-   <column name="pn_ID" phpName="PnId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
-   <column name="pn_fr_ID" phpName="PnFrId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
-   <column name="pn_Num" phpName="PnNum" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
-   <column name="pn_per_ID" phpName="PnPerId" type="SMALLINT" size="9" required="true" defaultValue="0"/>
-   <unique name="pn_ID">
-     <unique-column name="pn_ID"/>
-   </unique>
-   <vendor type="mysql">
-     <parameter name="Engine" value="InnoDB"/>
-   </vendor>
- </table>
+    <table name="paddlenum_pn" idMethod="native" phpName="PaddlenumPn" >
+        <column name="pn_ID" phpName="PnId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="pn_fr_ID" phpName="PnFrId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+        <column name="pn_Num" phpName="PnNum" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+        <column name="pn_per_ID" phpName="PnPerId" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+        <unique name="pn_ID">
+            <unique-column name="pn_ID"/>
+        </unique>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
 
+    <!--
  <table name="queryparameteroptions_qpo" idMethod="native" phpName="QueryparameteroptionsQpo" description="Defines the values for the parameters for each query">
    <column name="qpo_ID" phpName="QpoId" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
    <column name="qpo_qrp_ID" phpName="QpoQrpId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>

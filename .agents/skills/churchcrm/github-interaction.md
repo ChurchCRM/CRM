@@ -310,3 +310,21 @@ reachable from `master` and the bad code is gone from the working tree."
 it"* — run `git branch --contains` on the candidate commit and read the
 file on master. If either check fails, leave the issue open and explain
 which branch holds the fix so it can be merged.
+
+### Closing Issues as "Won't Do" — Always Remove the Milestone <!-- learned: 2026-05-10 -->
+
+When closing an issue with `--reason "not planned"` (won't do / won't fix), **always remove it from its milestone** in the same step. Leaving closed won't-do issues on a milestone inflates the ticket count and misleads milestone burn-down tracking.
+
+```bash
+# 1. Close with reason and explanation
+gh issue close 8056 --repo ChurchCRM/CRM \
+  --reason "not planned" \
+  --comment "Closing as won't do. <reason>."
+
+# 2. Remove from milestone immediately after
+gh issue edit 8056 --milestone "" --repo ChurchCRM/CRM
+```
+
+**Why:** Milestone counts are used to assess release scope. A closed "not planned" ticket still inside a milestone makes the milestone appear larger than it actually is and confuses release planning.
+
+**How to apply:** Any time the user says "close as won't do / won't fix / not planned" — always pair the close with a milestone removal. Do both in sequence without prompting.

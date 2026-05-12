@@ -3,6 +3,7 @@
 require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\WhyCame;
 use ChurchCRM\model\ChurchCRM\WhyCameQuery;
@@ -99,7 +100,7 @@ require_once __DIR__ . '/Include/Header.php';
         <textarea name="HearOfUs" class="form-control" rows="3"><?= InputUtils::escapeHTML($tHearOfUs) ?></textarea>
       </div>
       <div class="d-flex justify-content-between mt-4">
-        <a href="<?= RedirectUtils::escapeRedirectUrl($linkBack, 'PersonView.php?PersonID=' . $iPerson) ?>" class="btn btn-secondary">
+        <a href="<?= RedirectUtils::escapeRedirectUrl($linkBack, Person::getViewURIForId($iPerson)) ?>" class="btn btn-secondary">
           <i class="fa-solid fa-ban me-1"></i>
           <?= gettext('Cancel') ?>
         </a>

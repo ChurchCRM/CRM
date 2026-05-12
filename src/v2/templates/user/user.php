@@ -62,7 +62,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <!-- =============== MY ACCOUNT =============== -->
           <div class="tab-pane active show" id="tab-account">
             <h3 class="card-title"><?= gettext("My Account") ?></h3>
-            <p class="text-muted"><?= gettext("Profile and security") ?></p>
+            <p class="text-body-secondary"><?= gettext("Profile and security") ?></p>
 
             <!-- Profile -->
             <div class="row mb-4">
@@ -86,21 +86,21 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               </div>
               <div class="col-sm-9">
                 <div class="row mb-2">
-                  <div class="col-sm-4 text-muted"><?= gettext("Username") ?></div>
+                  <div class="col-sm-4 text-body-secondary"><?= gettext("Username") ?></div>
                   <div class="col-sm-8"><?= InputUtils::escapeHTML($user->getUserName()) ?></div>
                 </div>
                 <div class="row mb-2">
-                  <div class="col-sm-4 text-muted"><?= gettext("Name") ?></div>
+                  <div class="col-sm-4 text-body-secondary"><?= gettext("Name") ?></div>
                   <div class="col-sm-8">
                     <?= InputUtils::escapeHTML($user->getFullName()) ?>
-                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $personId ?>" class="ms-2 text-muted small" title="<?= gettext("Edit") ?>"><i class="ti ti-pencil"></i></a>
+                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $personId ?>" class="ms-2 text-body-secondary small" title="<?= gettext("Edit") ?>"><i class="ti ti-pencil"></i></a>
                   </div>
                 </div>
                 <div class="row mb-2">
-                  <div class="col-sm-4 text-muted"><?= gettext("Email") ?></div>
+                  <div class="col-sm-4 text-body-secondary"><?= gettext("Email") ?></div>
                   <div class="col-sm-8">
-                    <?= InputUtils::escapeHTML($user->getEmail() ?? '') ?: '<span class="text-muted">' . gettext("Not set") . '</span>' ?>
-                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $personId ?>" class="ms-2 text-muted small" title="<?= gettext("Edit") ?>"><i class="ti ti-pencil"></i></a>
+                    <?= InputUtils::escapeHTML($user->getEmail() ?? '') ?: '<span class="text-body-secondary">' . gettext("Not set") . '</span>' ?>
+                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $personId ?>" class="ms-2 text-body-secondary small" title="<?= gettext("Edit") ?>"><i class="ti ti-pencil"></i></a>
                   </div>
                 </div>
               </div>
@@ -110,7 +110,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
             <h4 class="mb-3"><?= gettext("Security") ?></h4>
             <div class="row mb-2">
-              <div class="col-sm-3 text-muted"><?= gettext("Two-Factor Authentication") ?></div>
+              <div class="col-sm-3 text-body-secondary"><?= gettext("Two-Factor Authentication") ?></div>
               <div class="col-sm-9">
                 <?php if ($user->is2FactorAuthEnabled()): ?>
                 <span class="badge bg-success-lt text-success"><i class="ti ti-shield-check me-1"></i><?= gettext("Active") ?></span>
@@ -147,7 +147,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <!-- =============== APPEARANCE =============== -->
           <div class="tab-pane" id="tab-appearance">
             <h3 class="card-title"><?= gettext("Appearance") ?></h3>
-            <p class="text-muted"><?= gettext("Customize the look and feel of the application") ?></p>
+            <p class="text-body-secondary"><?= gettext("Customize the look and feel of the application") ?></p>
 
             <!-- Theme Mode -->
             <div class="row mb-4">
@@ -224,7 +224,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <!-- =============== LOCALIZATION =============== -->
           <div class="tab-pane" id="tab-localization">
             <h3 class="card-title"><?= gettext("Localization") ?></h3>
-            <p class="text-muted"><?= gettext("Language and regional settings") ?></p>
+            <p class="text-body-secondary"><?= gettext("Language and regional settings") ?></p>
 
             <div class="row mb-3">
               <label class="col-sm-3 col-form-label" for="user-locale-setting"><?= gettext("Language") ?></label>
@@ -289,7 +289,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <!-- =============== API ACCESS =============== -->
           <div class="tab-pane" id="tab-api">
             <h3 class="card-title"><?= gettext("API Access") ?></h3>
-            <p class="text-muted"><?= gettext("Manage your API key for external integrations") ?></p>
+            <p class="text-body-secondary"><?= gettext("Manage your API key for external integrations") ?></p>
 
             <div class="row mb-3">
               <label class="col-sm-3 col-form-label"><?= gettext("API Key") ?></label>
@@ -307,7 +307,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <hr>
 
             <h4 class="mb-3"><?= gettext("Usage") ?></h4>
-            <p class="text-muted"><?= gettext("Include your API key in requests using the x-api-key header:") ?></p>
+            <p class="text-body-secondary"><?= gettext("Include your API key in requests using the x-api-key header:") ?></p>
             <pre class="p-3 bg-light rounded"><code>curl -H "x-api-key: <?= InputUtils::escapeHTML(substr($user->getApiKey(), 0, 8)) ?>..." \
      <?= SystemURLs::getURL() ?>/api/person/1</code></pre>
           </div>
@@ -315,7 +315,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <!-- =============== PERMISSIONS =============== -->
           <div class="tab-pane" id="tab-permissions">
             <h3 class="card-title"><?= gettext("Permissions") ?></h3>
-            <p class="text-muted"><?= gettext("Your current access levels (read-only)") ?></p>
+            <p class="text-body-secondary"><?= gettext("Your current access levels (read-only)") ?></p>
 
             <?php
             $permissions = [

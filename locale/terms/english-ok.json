@@ -54,7 +54,8 @@
     "Audit",
     "Host",
     "Server",
-    "Test"
+    "Test",
+    "risk"
   ],
   "fi": [
     "Azure"
@@ -166,7 +167,6 @@
     "Dominica",
     "Dominican Republic (República Dominicana)",
     "Dutch - Netherlands",
-    "ERROR",
     "ESE",
     "Ecuador",
     "El Salvador",
@@ -453,7 +453,8 @@
     "page",
     "s",
     "user:",
-    "Åland Islands (Åland)"
+    "Åland Islands (Åland)",
+    "SHA-256 checksum"
   ],
   "fr": [
     "Audit",
@@ -471,7 +472,8 @@
     "Parents",
     "Photo",
     "Test",
-    "page"
+    "page",
+    "page."
   ],
   "hi": [],
   "id": [
@@ -538,7 +540,8 @@
     "4. Kiosk",
     "Azure",
     "Kiosk",
-    "Test"
+    "Test",
+    "risk"
   ],
   "vi": [
     "Azure",
@@ -600,7 +603,8 @@
     "Online",
     "Server",
     "Test",
-    "Vonage Dashboard"
+    "Vonage Dashboard",
+    "System"
   ],
   "pl": [
     "4. Kiosk",
@@ -611,7 +615,8 @@
     "Kiosk",
     "Minimum",
     "Online",
-    "Test"
+    "Test",
+    "System"
   ],
   "ro": [
     "Administrator",
@@ -639,7 +644,9 @@
     "Orange",
     "Server",
     "Test",
-    "Vonage Dashboard"
+    "Vonage Dashboard",
+    "System",
+    "risk"
   ],
   "sw": [
     "Azure",
@@ -689,6 +696,7 @@
     "Host",
     "Online",
     "Server",
-    "Test"
+    "Test",
+    "System"
   ]
 }

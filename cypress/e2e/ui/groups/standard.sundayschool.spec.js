@@ -104,10 +104,10 @@ describe("Standard Sunday School", () => {
         cy.contains('Girls').should('exist');
 
         // Verify gender stats are numeric (validates strict === comparison works)
-        cy.get(".text-muted").contains("Boys").prev(".fw-medium").invoke("text").then((text) => {
+        cy.get(".text-muted, .text-body-secondary").contains("Boys").prev(".fw-medium").invoke("text").then((text) => {
             expect(Number(text.trim())).to.be.a("number").and.to.be.at.least(0);
         });
-        cy.get(".text-muted").contains("Girls").prev(".fw-medium").invoke("text").then((text) => {
+        cy.get(".text-muted, .text-body-secondary").contains("Girls").prev(".fw-medium").invoke("text").then((text) => {
             expect(Number(text.trim())).to.be.a("number").and.to.be.at.least(0);
         });
     });
@@ -210,13 +210,13 @@ describe("Standard Sunday School", () => {
         cy.contains("Girls").should("exist");
         cy.contains("Families").should("exist");
         // Verify the stat values are rendered (numeric, not empty/error)
-        cy.get(".text-muted").contains("Boys").prev(".fw-medium").invoke("text").then((text) => {
+        cy.get(".text-muted, .text-body-secondary").contains("Boys").prev(".fw-medium").invoke("text").then((text) => {
             expect(Number(text.trim())).to.be.a("number").and.to.be.at.least(0);
         });
-        cy.get(".text-muted").contains("Girls").prev(".fw-medium").invoke("text").then((text) => {
+        cy.get(".text-muted, .text-body-secondary").contains("Girls").prev(".fw-medium").invoke("text").then((text) => {
             expect(Number(text.trim())).to.be.a("number").and.to.be.at.least(0);
         });
-        cy.get(".text-muted").contains("Families").prev(".fw-medium").invoke("text").then((text) => {
+        cy.get(".text-muted, .text-body-secondary").contains("Families").prev(".fw-medium").invoke("text").then((text) => {
             expect(Number(text.trim())).to.be.a("number").and.to.be.at.least(0);
         });
     });

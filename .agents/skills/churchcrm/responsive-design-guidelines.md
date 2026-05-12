@@ -49,7 +49,7 @@ codebase:
 - Stat cards: `col-6` (two-up, never stack to one-up — looks empty on 375px)
 - Main columns: `col-12` (stack everything)
 - Form fields: `col-12`
-- Tables: **must** be wrapped — `.table-responsive` if rows have no action dropdowns, **otherwise** `<div style="overflow: visible;">` (see [`table-action-menu.md`](./table-action-menu.md) — `.table-responsive` clips dropdowns)
+- Tables: **must** be wrapped in `.table-responsive`. If rows have action dropdowns, ensure button has `data-bs-display="static"` to prevent clipping (see [`table-action-menu.md`](./table-action-menu.md))
 - Touch targets: minimum **44×44px** (Apple HIG)
 - Page headers: use icon-only buttons (`font-size: 0` trick, see `_tabler-bridge.scss`)
 - Labels on multi-step forms: hide under 400px (`d-none d-sm-inline`)
@@ -69,9 +69,7 @@ codebase:
   balanced two-column layouts. Do NOT use the 8/4 split at md — it cramps the
   narrow column.
 - Form fields: `col-md-6` for paired fields (name/email, date range)
-- Tables: wrapper still required — `.table-responsive` for rows without
-  action dropdowns, `<div style="overflow: visible;">` for rows with action
-  dropdowns (see `table-action-menu.md`)
+- Tables: wrap in `.table-responsive`; if rows have action dropdowns, use `data-bs-display="static"` on button (see `table-action-menu.md`)
 - Card header tabs: keep visible but consider shorter labels
   (`<span class="d-none d-xl-inline">Latest Families</span><span class="d-xl-none">New</span>`)
 

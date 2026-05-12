@@ -10,6 +10,8 @@ use ChurchCRM\Emails\verify\FamilyVerificationEmail;
 use ChurchCRM\Emails\notifications\NewPersonOrFamilyEmail;
 use ChurchCRM\model\ChurchCRM\Base\Family as BaseFamily;
 use ChurchCRM\PhotoInterface;
+use ChurchCRM\Plugin\Hook\HookManager;
+use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -61,9 +63,14 @@ class Family extends BaseFamily implements PhotoInterface
         return implode(' ', $address);
     }
 
+    public static function getFamilyViewURIForId(int $id): string
+    {
+        return SystemURLs::getRootPath() . '/people/family/' . $id;
+    }
+
     public function getViewURI(): string
     {
-        return SystemURLs::getRootPath() . '/people/family/' . $this->getId();
+        return self::getFamilyViewURIForId($this->getId());
     }
 
     public function getWeddingDay()
@@ -88,6 +95,8 @@ class Family extends BaseFamily implements PhotoInterface
     {
         $this->createTimeLineNote('create');
         NewPersonOrFamilyEmail::sendIfConfigured($this);
+
+        HookManager::doAction(Hooks::FAMILY_CREATED, $this);
     }
 
     public function postUpdate(ConnectionInterface $con = null): void
@@ -95,6 +104,8 @@ class Family extends BaseFamily implements PhotoInterface
         if (!empty($this->getDateLastEdited()) && !$this->skipPostUpdateNote) {
             $this->createTimeLineNote('edit');
         }
+
+        HookManager::doAction(Hooks::FAMILY_UPDATED, $this);
     }
 
     /**
@@ -325,7 +336,7 @@ class Family extends BaseFamily implements PhotoInterface
         $html = '<a href="' . $this->getViewURI() . '">' . $name . '</a>';
 
         if ($includePhoto && $this->getPhoto() && $this->getPhoto()->hasUploadedPhoto()) {
-            $html .= ' <button class="btn btn-sm btn-outline-secondary view-family-photo ml-1" data-family-id="' . $this->getId() . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button>';
+            $html .= ' <button class="btn btn-sm btn-outline-secondary view-family-photo ms-1" data-family-id="' . $this->getId() . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button>';
         }
 
         return $html;
@@ -370,6 +381,19 @@ class Family extends BaseFamily implements PhotoInterface
             return GeoUtils::buildDirectionsUrl('', (float) $this->getLatitude(), (float) $this->getLongitude());
         }
         return GeoUtils::buildDirectionsUrl($this->getAddress());
+    }
+
+    /**
+     * Apple Maps companion to {@see self::getDirectionsUrl()}. Used
+     * alongside the Google Maps link so users on iOS/macOS can open
+     * directions natively in the Maps app.
+     */
+    public function getAppleMapsDirectionsUrl(): string
+    {
+        if ($this->hasLatitudeAndLongitude()) {
+            return GeoUtils::buildAppleMapsDirectionsUrl('', (float) $this->getLatitude(), (float) $this->getLongitude());
+        }
+        return GeoUtils::buildAppleMapsDirectionsUrl($this->getAddress());
     }
 
     /**

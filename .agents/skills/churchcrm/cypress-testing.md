@@ -135,6 +135,74 @@ env: {
 > you which config file is missing the key. Always grep both files when
 > adding a new `*.username` / `*.password` entry.
 
+### API-key test matrix (who has what permission) <!-- learned: 2026-04-15 -->
+
+**The Cypress seed's API-key users do NOT map cleanly to "one user per
+permission."** Before writing a `403` or `200` assertion, verify against
+`cypress/data/seed.sql` (`user_usr` INSERT) and `docker.config.ts`
+(`*.api.key` env vars). Column order in `user_usr` is: AddRecords,
+EditRecords, DeleteRecords, **MenuOptions**, ManageGroups, **Finance**,
+Notes, **Admin** — in that order (positions 7–14 of the INSERT).
+
+| Env var | Seed user | `bAdmin` | `bMenuOptions` | `bFinance` | `bNotes` | `bDeleteRecords` |
+|---|---|---|---|---|---|---|
+| `admin.api.key` | `Admin` (id 1) | **1** | 0 | 0 | 0 | 0 |
+| `user.api.key` | `tony.wade@example.com` (id 3) | 0 | **1** | **1** | **1** | **1** |
+| `nofinance.api.key` | ⚠️ **not seeded** — key doesn't match any user row | — | — | — | — | — |
+| no convenience cmd | `limited.user` (id 4) | 0 | 0 | 0 | 0 | 0 |
+
+**Three things this surfaces that WILL bite you:**
+
+1. **Admin bypasses almost every role middleware.** `User::isMenuOptionsEnabled()`,
+   `isFinanceEnabled()`, `isDeleteRecordsEnabled()`, `isNotesEnabled()`, etc.
+   all return `$this->isAdmin() || $this->isXxx()`. So even though the admin
+   seed row has `bMenuOptions=0`, the admin key **passes** `MenuOptionsRoleAuthMiddleware`
+   and gets 200. You cannot test the 403 path with the admin key for any of
+   these middlewares. `AdminRoleAuthMiddleware` is the only one without a
+   bypass (it's the bypass itself).
+
+2. **`nofinance.api.key` is not in `seed.sql`.** The value in
+   `docker.config.ts` (`M_5K4ZWTdBTmMOTGTfLWCmXFbETgHNG6_…`) doesn't match
+   any `usr_apiKey` column in `cypress/data/seed.sql`. A request with that
+   key hits `AuthMiddleware` → **401** (unknown key), not 403. Existing specs
+   use `[401, 403]` (or `[401, 403, 500]`) to stay honest about this:
+   ```js
+   // ✅ CORRECT — works whether the key is seeded or not
+   cy.makePrivateNoFinanceAPICall("GET", "/api/deposits", null, [401, 403]);
+   // ❌ WRONG — strict 403 fails every run
+   cy.makePrivateNoFinanceAPICall("GET", "/api/deposits", null, 403);
+   ```
+
+3. **The only user that can trigger a pure 403 from most role middlewares
+   is `limited.user` (id 4)**, which has every permission bit = 0 and a
+   valid API key (`limitedUserApiKeyForTesting123456789012345678`). But
+   there's **no `makePrivateLimitedUserAPICall` convenience command** and
+   no `limited.user.api.key` env var. If you need 403 coverage for a
+   middleware with an admin bypass (MenuOptions, Finance-as-non-finance-user,
+   Notes, etc.), you have three options:
+   - Add an env var + command (touches `docker.config.ts`, `new-system.config.ts`,
+     and `cypress/support/api-commands.js`)
+   - Call `cy.makePrivateAPICall(Cypress.env("limited.user.api.key"), …)`
+     inline after adding the env var
+   - Document the gap with a code comment and defer to a follow-up
+
+**Which middleware maps to which bypass:**
+
+| Middleware | Bypasses on `isAdmin()`? | 403 reachable with admin key? |
+|---|---|---|
+| `AdminRoleAuthMiddleware` | — (is the bypass) | ❌ never — admin always passes |
+| `FinanceRoleAuthMiddleware` | ✅ | ❌ |
+| `MenuOptionsRoleAuthMiddleware` | ✅ | ❌ |
+| `NotesRoleAuthMiddleware` | ✅ | ❌ |
+| `DeleteRecordRoleAuthMiddleware` | ✅ | ❌ |
+| `EditRecordsRoleAuthMiddleware` | ✅ | ❌ |
+| `AddEventsRoleAuthMiddleware` | ✅ | ❌ |
+| `ManageGroupRoleAuthMiddleware` | ✅ (if `ManageGroups` bit) | ❌ |
+
+TL;DR: **never assert strict 403 on an admin-keyed call against a role-gated
+route**, and **never assert strict 403 on `makePrivateNoFinanceAPICall`** —
+use `[401, 403]`.
+
 **CRITICAL:**
 - ❌ DO NOT hardcode credentials in test files
 - ❌ DO NOT add commented-out tests or TODO comments

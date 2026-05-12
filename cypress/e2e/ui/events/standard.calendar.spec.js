@@ -282,6 +282,22 @@ describe("Standard Calendar — save (admin-session)", () => {
         });
     });
 
+    it("Create New Calendar", () => {
+        const title = "Calendar: " + new Date().getTime();
+
+        cy.visit("event/calendars");
+        cy.contains("Calendar");
+
+        cy.get('[data-bs-target="#calendarSidebar"]').click();
+        cy.get("#calendarSidebar").should("be.visible");
+        cy.get("#addCalendarBtn").click();
+        cy.get("#calendarName").should("be.visible").click().type(title);
+        cy.get("#ForegroundColor").invoke("val", "#FA8072").trigger("change");
+        cy.get("#BackgroundColor").invoke("val", "#212F3D").trigger("change");
+
+        cy.get(".modal-footer .btn-primary.float-end").click();
+    });
+
     it("InActive and LinkedGroupId flow into the POST /api/events payload", () => {
         cy.intercept("POST", "**/api/events").as("createEvent");
 

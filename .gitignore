@@ -33,6 +33,9 @@ orm/propel.php
 # Perpl/Propel generated config
 src/generated-conf/
 
+# Community plugins are installed at runtime — not committed to git
+src/plugins/community/*
+
 src/admin/data/signatures.json
 src/ChurchCRM/model/ChurchCRM/Base
 src/ChurchCRM/model/ChurchCRM/Map

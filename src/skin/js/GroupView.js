@@ -41,7 +41,7 @@ function _createModal(title, bodyHtml) {
 
   wrapper.addEventListener(
     "hidden.bs.modal",
-    function () {
+    () => {
       modal.dispose();
       wrapper.remove();
     },
@@ -87,16 +87,14 @@ function _showRoleModal(title, callback) {
   var roleEl = document.getElementById("gv-role-select");
   _populateSelect(
     roleEl,
-    roles.map(function (r) {
-      return { value: String(r.OptionId), text: i18next.t(r.OptionName) };
-    }),
+    roles.map((r) => ({ value: String(r.OptionId), text: i18next.t(r.OptionName) })),
   );
 
   result.el.addEventListener(
     "shown.bs.modal",
-    function () {
+    () => {
       new window.TomSelect(roleEl, {
-        onChange: function (value) {
+        onChange: (value) => {
           selectedRoleId = value || null;
         },
       });
@@ -106,7 +104,7 @@ function _showRoleModal(title, callback) {
 
   result.modal.show();
 
-  result.confirm.addEventListener("click", function () {
+  result.confirm.addEventListener("click", () => {
     result.confirm.disabled = true;
     result.modal.hide();
     callback(selectedRoleId);
@@ -136,25 +134,23 @@ function _showGroupAndRoleModal(title, callback) {
   var selectedRoleId = null;
 
   // Fetch all groups
-  window.CRM.groups.get().done(function (groups) {
+  window.CRM.groups.get().done((groups) => {
     var groupEl = document.getElementById("gv-group-select");
     _populateSelect(
       groupEl,
-      groups.map(function (g) {
-        return { value: String(g.Id), text: g.Name };
-      }),
+      groups.map((g) => ({ value: String(g.Id), text: g.Name })),
     );
 
     result.el.addEventListener(
       "shown.bs.modal",
-      function () {
+      () => {
         var roleWrapper = document.getElementById("gv-role-wrapper");
         var roleEl = document.getElementById("gv-role-select");
 
         new window.TomSelect(groupEl, {
           placeholder: i18next.t("Search groups..."),
           items: [],
-          onChange: function (value) {
+          onChange: (value) => {
             selectedGroupId = value || null;
             if (!value) {
               roleWrapper.classList.add("d-none");
@@ -166,7 +162,7 @@ function _showGroupAndRoleModal(title, callback) {
             roleEl.innerHTML = "";
             roleWrapper.classList.add("d-none");
 
-            window.CRM.groups.getRoles(value).done(function (roles) {
+            window.CRM.groups.getRoles(value).done((roles) => {
               if (roles.length === 0) {
                 selectedRoleId = null;
                 result.confirm.disabled = false;
@@ -179,14 +175,12 @@ function _showGroupAndRoleModal(title, callback) {
               }
               _populateSelect(
                 roleEl,
-                roles.map(function (r) {
-                  return { value: String(r.OptionId), text: i18next.t(r.OptionName) };
-                }),
+                roles.map((r) => ({ value: String(r.OptionId), text: i18next.t(r.OptionName) })),
               );
               roleWrapper.classList.remove("d-none");
               result.confirm.disabled = false;
               new window.TomSelect(roleEl, {
-                onChange: function (v) {
+                onChange: (v) => {
                   selectedRoleId = v || null;
                 },
               });
@@ -201,7 +195,7 @@ function _showGroupAndRoleModal(title, callback) {
     result.modal.show();
   });
 
-  result.confirm.addEventListener("click", function () {
+  result.confirm.addEventListener("click", () => {
     if (!selectedGroupId) return;
     result.confirm.disabled = true;
     result.modal.hide();
@@ -216,7 +210,7 @@ function initializeGroupView() {
   // ------------------------------------------------------------------ //
   // Delete group
   // ------------------------------------------------------------------ //
-  $("#deleteGroupButton").on("click", function () {
+  $("#deleteGroupButton").on("click", () => {
     bootbox.confirm({
       title: i18next.t("Confirm Delete Group"),
       message:
@@ -238,12 +232,12 @@ function initializeGroupView() {
         confirm: { label: i18next.t("Delete"), className: "btn-danger" },
         cancel: { label: i18next.t("Cancel"), className: "btn-secondary" },
       },
-      callback: function (result) {
+      callback: (result) => {
         if (result) {
           window.CRM.APIRequest({
             method: "DELETE",
             path: "groups/" + window.CRM.currentGroup,
-          }).done(function (data) {
+          }).done((data) => {
             if (data.status === "success") {
               window.location.href = window.CRM.root + "/groups/dashboard";
             }
@@ -256,18 +250,18 @@ function initializeGroupView() {
   // ------------------------------------------------------------------ //
   // Toggle Active / Email Export from Actions dropdown
   // ------------------------------------------------------------------ //
-  $("#toggleGroupActive").on("click", function (e) {
+  $("#toggleGroupActive").on("click", (e) => {
     e.preventDefault();
     $.ajax({
       type: "POST",
       url: window.CRM.root + "/api/groups/" + window.CRM.currentGroup + "/settings/active/" + !window.CRM.groupIsActive,
       dataType: "json",
-    }).done(function () {
+    }).done(() => {
       location.reload();
     });
   });
 
-  $("#toggleGroupEmailExport").on("click", function (e) {
+  $("#toggleGroupEmailExport").on("click", (e) => {
     e.preventDefault();
     $.ajax({
       type: "POST",
@@ -278,7 +272,7 @@ function initializeGroupView() {
         "/settings/email/export/" +
         !window.CRM.groupEmailExport,
       dataType: "json",
-    }).done(function () {
+    }).done(() => {
       location.reload();
     });
   });
@@ -289,13 +283,13 @@ function initializeGroupView() {
   var emailLoaded = false;
   $("#emailDropdownBtn")
     .parent()
-    .on("show.bs.dropdown", function () {
+    .on("show.bs.dropdown", () => {
       if (emailLoaded) return;
       emailLoaded = true;
       window.CRM.APIRequest({
         method: "GET",
         path: "groups/" + window.CRM.currentGroup + "/emails",
-      }).done(function (data) {
+      }).done((data) => {
         var menu = $("#emailDropdownMenu");
         menu.empty();
         if (!data.all) {
@@ -326,7 +320,7 @@ function initializeGroupView() {
         );
         // Per-role sections
         if (data.roles && Object.keys(data.roles).length > 0) {
-          $.each(data.roles, function (roleName, emails) {
+          $.each(data.roles, (roleName, emails) => {
             menu.append('<div class="dropdown-divider"></div>');
             menu.append('<h6 class="dropdown-header">' + window.CRM.escapeHtml(roleName) + "</h6>");
             menu.append(
@@ -365,13 +359,13 @@ function initializeGroupView() {
   var textLoaded = false;
   $("#textDropdownBtn")
     .parent()
-    .on("show.bs.dropdown", function () {
+    .on("show.bs.dropdown", () => {
       if (textLoaded) return;
       textLoaded = true;
       window.CRM.APIRequest({
         method: "GET",
         path: "groups/" + window.CRM.currentGroup + "/phones",
-      }).done(function (data) {
+      }).done((data) => {
         var menu = $("#textDropdownMenu");
         menu.empty();
         if (!data.phones || !data.phones.length) {
@@ -391,7 +385,7 @@ function initializeGroupView() {
         );
         // Per-role sections
         if (data.roles && Object.keys(data.roles).length > 0) {
-          $.each(data.roles, function (roleName, roleData) {
+          $.each(data.roles, (roleName, roleData) => {
             if (!roleData.phones || !roleData.phones.length) return;
             menu.append('<div class="dropdown-divider"></div>');
             menu.append('<h6 class="dropdown-header">' + window.CRM.escapeHtml(roleName) + "</h6>");
@@ -429,7 +423,7 @@ function initializeGroupView() {
   // ------------------------------------------------------------------ //
   // Assign new group property
   // ------------------------------------------------------------------ //
-  $("#assign-group-property-btn").on("click", function () {
+  $("#assign-group-property-btn").on("click", () => {
     var select = document.getElementById("group-property-select");
     if (!select) return;
     var propertyId = select.value;
@@ -440,7 +434,7 @@ function initializeGroupView() {
         method: "POST",
         path: "groups/" + window.CRM.currentGroup + "/properties/" + propertyId,
         data: JSON.stringify({ value: value }),
-      }).done(function () {
+      }).done(() => {
         location.reload();
       });
     }
@@ -448,7 +442,7 @@ function initializeGroupView() {
     if (promptText) {
       bootbox.prompt({
         title: window.CRM.escapeHtml(promptText),
-        callback: function (val) {
+        callback: (val) => {
           if (val !== null) doAssign(val);
         },
       });
@@ -465,13 +459,13 @@ function initializeGroupView() {
     bootbox.prompt({
       title: window.CRM.escapeHtml(btn.data("pro-prompt")),
       value: btn.data("pro-value"),
-      callback: function (val) {
+      callback: (val) => {
         if (val !== null) {
           window.CRM.APIRequest({
             method: "POST",
             path: "groups/" + window.CRM.currentGroup + "/properties/" + btn.data("pro-id"),
             data: JSON.stringify({ value: val }),
-          }).done(function () {
+          }).done(() => {
             location.reload();
           });
         }
@@ -493,12 +487,12 @@ function initializeGroupView() {
         confirm: { label: i18next.t("Remove"), className: "btn-danger" },
         cancel: { label: i18next.t("Cancel"), className: "btn-secondary" },
       },
-      callback: function (result) {
+      callback: (result) => {
         if (result) {
           window.CRM.APIRequest({
             method: "DELETE",
             path: "groups/" + window.CRM.currentGroup + "/properties/" + btn.data("pro-id"),
-          }).done(function () {
+          }).done(() => {
             location.reload();
           });
         }
@@ -513,7 +507,7 @@ function initializeGroupView() {
     method: "GET",
     url: window.CRM.root + "/api/groups/" + window.CRM.currentGroup + "/roles",
     dataType: "json",
-  }).then(function (data) {
+  }).then((data) => {
     window.CRM.groupRoles = data ?? [];
     initDataTable();
   });
@@ -525,27 +519,25 @@ function initializeGroupView() {
       valueField: "objid",
       labelField: "text",
       searchField: "text",
-      load: function (query, callback) {
+      load: (query, callback) => {
         if (query.length < 2) return callback();
         fetch(window.CRM.root + "/api/persons/search/" + encodeURIComponent(query))
-          .then(function (res) {
-            return res.json();
-          })
-          .then(function (data) {
+          .then((res) => res.json())
+          .then((data) => {
             callback(data);
           })
-          .catch(function () {
+          .catch(() => {
             callback();
           });
       },
       onChange: function (value) {
         if (!value) return;
-        var tsInstance = this;
-        var selectedData = tsInstance.options[value];
-        _showRoleModal(i18next.t("Select Role"), function (roleId) {
-          window.CRM.groups.addPerson(window.CRM.currentGroup, selectedData.objid, roleId).then(function () {
-            tsInstance.clear(true);
-            tsInstance.clearOptions();
+
+        var selectedData = this.options[value];
+        _showRoleModal(i18next.t("Select Role"), (roleId) => {
+          window.CRM.groups.addPerson(window.CRM.currentGroup, selectedData.objid, roleId).then(() => {
+            this.clear(true);
+            this.clearOptions();
             window.CRM.DataTableAPI.ajax.reload();
           });
         });
@@ -556,7 +548,7 @@ function initializeGroupView() {
   // ------------------------------------------------------------------ //
   // Cart: Add All Members
   // ------------------------------------------------------------------ //
-  $("#addAllToCart").on("click", function (e) {
+  $("#addAllToCart").on("click", (e) => {
     e.preventDefault();
     window.CRM.cartManager.addGroup(window.CRM.currentGroup, { showNotification: true });
   });
@@ -579,8 +571,8 @@ function initializeGroupView() {
   $(document).on("click", ".copy-role-to-group", function (e) {
     e.preventDefault();
     var roleId = $(this).data("role-id");
-    _showGroupAndRoleModal(i18next.t("Copy Members to Group"), function (data) {
-      _getMembersByRole(roleId).forEach(function (row) {
+    _showGroupAndRoleModal(i18next.t("Copy Members to Group"), (data) => {
+      _getMembersByRole(roleId).forEach((row) => {
         window.CRM.groups.addPerson(data.GroupID, row.PersonId, data.RoleID);
       });
     });
@@ -603,14 +595,14 @@ function initializeGroupView() {
         confirm: { label: i18next.t("Move"), className: "btn-warning" },
         cancel: { label: i18next.t("Cancel") },
       },
-      callback: function (result) {
+      callback: (result) => {
         if (result) {
-          _showGroupAndRoleModal(i18next.t("Move Members to Group"), function (data) {
-            _getMembersByRole(roleId).forEach(function (row) {
+          _showGroupAndRoleModal(i18next.t("Move Members to Group"), (data) => {
+            _getMembersByRole(roleId).forEach((row) => {
               window.CRM.groups.addPerson(data.GroupID, row.PersonId, data.RoleID);
               window.CRM.groups.removePerson(window.CRM.currentGroup, row.PersonId);
             });
-            setTimeout(function () {
+            setTimeout(() => {
               window.CRM.DataTableAPI.ajax.reload();
             }, 1000);
           });
@@ -625,12 +617,12 @@ function initializeGroupView() {
   // .view-person-photo click handler is registered globally in avatar-loader.ts
 
   // Change role — BS5 modal (not bootbox)
-  $(document).on("click", ".changeMembership", function (e) {
+  $(document).on("click", ".changeMembership", (e) => {
     var PersonID = $(e.currentTarget).data("personid");
-    _showRoleModal(i18next.t("Change Role"), function (roleId) {
+    _showRoleModal(i18next.t("Change Role"), (roleId) => {
       if (!roleId) return;
-      window.CRM.groups.addPerson(window.CRM.currentGroup, PersonID, roleId).done(function () {
-        window.CRM.DataTableAPI.row(function (idx, data) {
+      window.CRM.groups.addPerson(window.CRM.currentGroup, PersonID, roleId).done(() => {
+        window.CRM.DataTableAPI.row((idx, data) => {
           if (Number(data.PersonId) === Number(PersonID)) {
             data.RoleId = roleId;
             return true;
@@ -658,12 +650,10 @@ function initializeGroupView() {
         confirm: { label: i18next.t("Remove"), className: "btn-danger" },
         cancel: { label: i18next.t("Cancel") },
       },
-      callback: function (result) {
+      callback: (result) => {
         if (result) {
-          window.CRM.groups.removePerson(window.CRM.currentGroup, personId).then(function () {
-            window.CRM.DataTableAPI.row(function (idx, data) {
-              return Number(data.PersonId) === Number(personId);
-            }).remove();
+          window.CRM.groups.removePerson(window.CRM.currentGroup, personId).then(() => {
+            window.CRM.DataTableAPI.row((idx, data) => Number(data.PersonId) === Number(personId)).remove();
             window.CRM.DataTableAPI.rows().invalidate().draw(true);
           });
         }
@@ -673,9 +663,9 @@ function initializeGroupView() {
 }
 
 // Wait for locales to load before initializing
-$(document).ready(function () {
+$(document).ready(() => {
   // Print button
-  $("#printGroup").on("click", function () {
+  $("#printGroup").on("click", () => {
     window.print();
   });
 
@@ -723,7 +713,7 @@ function buildRolePills() {
     totalCount +
     "</span></a></li>";
 
-  window.CRM.groupRoles.forEach(function (role) {
+  window.CRM.groupRoles.forEach((role) => {
     var count = roleCounts[role.OptionId] || 0;
     if (count === 0) return;
     html +=
@@ -741,7 +731,7 @@ function buildRolePills() {
   // Cart role items
   var $cartMenu = $("#addToCartMenu");
   $cartMenu.find(".add-role-to-cart").remove();
-  window.CRM.groupRoles.forEach(function (role) {
+  window.CRM.groupRoles.forEach((role) => {
     var count = roleCounts[role.OptionId] || 0;
     if (count === 0) return;
     $cartMenu.append(
@@ -760,7 +750,7 @@ function buildRolePills() {
   // Copy/Move role items in Actions dropdown
   var $copyItems = $("#copyRoleItems").empty();
   var $moveItems = $("#moveRoleItems").empty();
-  window.CRM.groupRoles.forEach(function (role) {
+  window.CRM.groupRoles.forEach((role) => {
     var count = roleCounts[role.OptionId] || 0;
     if (count === 0) return;
     var roleName = i18next.t(role.OptionName);
@@ -795,9 +785,7 @@ function buildRolePills() {
     if (roleId === "" || roleId === undefined) {
       window.CRM.DataTableAPI.column(1).search("").draw();
     } else {
-      var role = window.CRM.groupRoles.find(function (r) {
-        return r.OptionId == roleId;
-      });
+      var role = window.CRM.groupRoles.find((r) => r.OptionId == roleId);
       if (role) {
         var escapedName = i18next.t(role.OptionName).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
         window.CRM.DataTableAPI.column(1)
@@ -819,7 +807,7 @@ function initDataTable() {
         width: "auto",
         title: i18next.t("Name"),
         data: "PersonId",
-        render: function (data, type, full) {
+        render: (data, type, full) => {
           var escapedName = $("<div>").text(full.Person.FullName).html();
           return (
             '<div class="d-flex align-items-center">' +
@@ -828,7 +816,7 @@ function initDataTable() {
             '" class="avatar avatar-sm me-2">' +
             '<a href="' +
             window.CRM.root +
-            "/PersonView.php?PersonID=" +
+            "/people/view/" +
             full.PersonId +
             '">' +
             escapedName +
@@ -840,10 +828,8 @@ function initDataTable() {
         width: "15%",
         title: i18next.t("Role"),
         data: "RoleId",
-        render: function (data) {
-          var thisRole = (window.CRM.groupRoles || []).filter(function (item) {
-            return item.OptionId == data;
-          })[0];
+        render: (data) => {
+          var thisRole = (window.CRM.groupRoles || []).filter((item) => item.OptionId == data)[0];
           var escapedRoleName = $("<div>").text(i18next.t(thisRole?.OptionName)).html();
           return '<span class="badge bg-secondary-lt text-secondary">' + escapedRoleName + "</span>";
         },
@@ -853,7 +839,7 @@ function initDataTable() {
         title: i18next.t("Phone"),
         data: "Person.CellPhone",
         defaultContent: "",
-        render: function (data) {
+        render: (data) => {
           if (!data) return '<span class="text-muted">\u2014</span>';
           var escaped = $("<div>").text(data).html();
           return '<a href="tel:' + escaped + '">' + escaped + "</a>";
@@ -864,7 +850,7 @@ function initDataTable() {
         title: i18next.t("Email"),
         data: "Person.Email",
         defaultContent: "",
-        render: function (data) {
+        render: (data) => {
           if (!data) return '<span class="text-muted">\u2014</span>';
           var escaped = $("<div>").text(data).html();
           return '<a href="mailto:' + escaped + '" target="_blank" rel="noopener noreferrer">' + escaped + "</a>";
@@ -877,7 +863,7 @@ function initDataTable() {
         orderable: false,
         searchable: false,
         className: "text-end w-1 no-export",
-        render: function (data, type, full) {
+        render: (data, type, full) => {
           var escapedName = $("<div>").text(full.Person.FullName).html();
           return (
             '<div class="dropdown">' +
@@ -886,7 +872,7 @@ function initDataTable() {
             '<div class="dropdown-menu dropdown-menu-end">' +
             '<a class="dropdown-item" href="' +
             window.CRM.root +
-            "/PersonView.php?PersonID=" +
+            "/people/view/" +
             full.PersonId +
             '"><i class="ti ti-eye me-2"></i>' +
             i18next.t("View") +
@@ -919,7 +905,7 @@ function initDataTable() {
     ],
     responsive: true,
     autoWidth: false,
-    drawCallback: function (settings) {
+    drawCallback: (settings) => {
       var api = new $.fn.dataTable.Api(settings);
       var totalMembers = api.rows({ search: "none" }).count();
       $("#iTotalMembers").text(totalMembers);

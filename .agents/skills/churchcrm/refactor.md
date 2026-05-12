@@ -180,6 +180,30 @@ summary: |
 - See `src/Include/Functions.php` for global helpers used during migration.
 - Follow Perpl ORM patterns described in the repository's standards docs.
 
+## SQL Upgrade Files — modification policy
+
+- **Do not modify historical upgrade scripts.** Only edit SQL files under `src/mysql/upgrade/` that correspond to the release you are preparing. Historical upgrade files (previous release numbers) must remain immutable once published to avoid altering upgrade paths for existing installations.
+- **How to determine the current release file to edit:** Use the project's release version (tag or CHANGELOG) to identify the target upgrade file (e.g., `src/mysql/upgrade/7.3.0.sql`). If you cannot find a matching file for the release you're preparing, create a new release-specific migration file instead of editing older ones.
+- **Why:** Upgrades run using the old release's in-memory code while new files are moved into place on disk. Changing prior-release SQL files can cause inconsistencies for users upgrading from older versions and may invalidate tested upgrade paths.
+- **Quick commands:**
+
+  - List existing upgrade files:
+
+    ```bash
+    ls -1 src/mysql/upgrade | sort
+    ```
+
+  - Find the release tag or changelog entry for the target release and match the filename (example using git tags):
+
+    ```bash
+    git tag --list | sort --version-sort
+    grep -i "^## \[" CHANGELOG.md | head -n 10
+    ```
+
+  - If you must introduce a DB change for the current release, add a new `src/mysql/upgrade/<new-version>.sql` migration and reference it in the release notes. Do not patch older `<x.y.z>.sql` files.
+
+If a genuine emergency requires modifying a historical upgrade script (very rare), document the change in the PR body, explain the risk, and get explicit approval from a maintainer before merging.
+
 ## Removing Methods Called From `ChurchCRMReleaseManager::doUpgrade()` <!-- learned: 2026-04-22 -->
 
 `ChurchCRMReleaseManager::doUpgrade()` runs inside a single PHP request that:

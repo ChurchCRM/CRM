@@ -1469,3 +1469,78 @@ Use `form-selectgroup form-selectgroup-pills` any time the user picks one or mor
 ### Fiscal Year Filter
 
 For finance tables, offer "All Time" / "FY {year}" pills instead of a date picker. Pass `$currentFY` from the route (computed via `FinancialService::formatFiscalYear(FiscalYearUtils::getCurrentFiscalYearId())`). Filter client-side on the Fiscal Year column.
+
+## FontAwesome 5 → 6 Migration Cheatsheet <!-- learned: 2026-04-25 -->
+
+The project uses Tabler + FA6. Older code (and code newly migrated from
+AdminLTE/BS4 islands) often still has FA5 strings, which won't render or will
+render an empty box on FA6 unless the v5 shim is loaded. When you migrate a
+module to FA6, do the **prefix swap** AND check the **renamed glyphs** —
+several of the most-used icons were renamed in FA6.
+
+### Prefix swap (every icon)
+
+| FA5 | FA6 |
+|---|---|
+| `fas` | `fa-solid` |
+| `far` | `fa-regular` |
+| `fab` | `fa-brands` |
+| `fal` | `fa-light` (Pro only — replace with `fa-regular` in this project) |
+
+### Renamed glyphs you'll hit in this codebase
+
+| FA5 name | FA6 name |
+|---|---|
+| `fa-info-circle` | `fa-circle-info` |
+| `fa-exclamation-triangle` | `fa-triangle-exclamation` |
+| `fa-exclamation-circle` | `fa-circle-exclamation` |
+| `fa-question-circle` | `fa-circle-question` |
+| `fa-check-circle` | `fa-circle-check` |
+| `fa-times-circle` | `fa-circle-xmark` |
+| `fa-times` | `fa-xmark` |
+| `fa-sign-in-alt` | `fa-right-to-bracket` |
+| `fa-sign-out-alt` | `fa-right-from-bracket` |
+| `fa-tablet-alt` | `fa-tablet-screen-button` |
+| `fa-mobile-alt` | `fa-mobile-screen-button` |
+| `fa-trash-alt` | `fa-trash-can` |
+| `fa-edit` | `fa-pen-to-square` |
+| `fa-birthday-cake` | `fa-cake-candles` |
+| `fa-arrows-alt-h` | `fa-arrows-left-right` |
+| `fa-arrows-alt-v` | `fa-arrows-up-down` |
+| `fa-male` | `fa-person` (FA6 Free; `fa-male` removed) |
+| `fa-female` | `fa-person-dress` |
+
+### BS4 → BS5 spacing while you're in there
+
+Inline FA elements often carry sibling Bootstrap-4 spacing classes. The project
+runs on Bootstrap 5; switch them in the same edit:
+
+| BS4 | BS5 |
+|---|---|
+| `mr-{n}` | `me-{n}` |
+| `ml-{n}` | `ms-{n}` |
+| `pr-{n}` | `pe-{n}` |
+| `pl-{n}` | `ps-{n}` |
+| `text-left` | `text-start` |
+| `text-right` | `text-end` |
+| `float-left` | `float-start` |
+| `float-right` | `float-end` |
+
+### Find-and-fix recipe
+
+```bash
+# Inventory FA5 strings in a file
+grep -nE 'class=["'\''](fas|far|fab) fa-' path/to/file.ts
+
+# Inventory BS4 spacing on the same elements
+grep -nE 'm[lr]-[0-9]|p[lr]-[0-9]' path/to/file.ts
+
+# Verify clean after migration
+grep -c "fas fa-\|mr-[0-9]\|ml-[0-9]" path/to/file.ts  # should be 0
+```
+
+When the file is large (e.g. `webpack/kiosk/kiosk-jsom.ts` had ~24 FA5
+strings), do the unique strings first with `Edit replace_all`, then handle
+the inline-HTML strings (which carry trailing classes like `mr-2`) with
+targeted edits. Biome will flag long single-line concatenated strings that
+became too wide after prefix expansion — accept its multi-line suggestion.

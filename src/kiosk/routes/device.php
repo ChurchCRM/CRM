@@ -298,7 +298,14 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         }
 
         // Verify the person is in the active class roster
-        $rosterIds = array_map('intval', array_column($assignment->getActiveGroupMembers(), 'PersonId'));
+        // array_column() returns zeros on a Propel ObjectCollection (it reads
+        // public props/array keys, not ORM getters), which silently 403s every
+        // photo/family request with a confusing "not in roster" error. Iterate
+        // and call ->getId() instead. See PR #8706 history; same trap recurred.
+        $rosterIds = [];
+        foreach ($assignment->getActiveGroupMembers() as $member) {
+            $rosterIds[] = (int) $member->getId();
+        }
         if (!in_array($personId, $rosterIds, true)) {
             return SlimUtils::renderErrorJSON($response, gettext('Person not in active class roster'), [], 403);
         }
@@ -325,7 +332,14 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         // Verify the requested person is actually part of the kiosk's
         // active class roster — prevents enumeration outside the assigned
         // group's members.
-        $rosterIds = array_map('intval', array_column($assignment->getActiveGroupMembers(), 'PersonId'));
+        // array_column() returns zeros on a Propel ObjectCollection (it reads
+        // public props/array keys, not ORM getters), which silently 403s every
+        // photo/family request with a confusing "not in roster" error. Iterate
+        // and call ->getId() instead. See PR #8706 history; same trap recurred.
+        $rosterIds = [];
+        foreach ($assignment->getActiveGroupMembers() as $member) {
+            $rosterIds[] = (int) $member->getId();
+        }
         if (!in_array($personId, $rosterIds, true)) {
             return SlimUtils::renderErrorJSON($response, gettext('Person not in active class roster'), [], 403);
         }

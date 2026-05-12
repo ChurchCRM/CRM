@@ -346,11 +346,26 @@ class SlimUtils
                 // Dev-mode technical details
                 if ($displayErrorDetails && $statusCode >= 500) {
                     $escaped = htmlspecialchars($exception->getMessage());
+                    $nonce = SystemURLs::getCSPNonce();
                     $extraHtml = '<div class="mb-4"><details class="card card-outline border-secondary">'
-                        . '<summary class="card-header cursor-pointer"><i class="ti ti-code"></i> '
-                        . gettext('Technical Details') . ' (Development Mode)</summary>'
-                        . '<div class="card-body"><pre class="mb-0"><code>' . $escaped . '</code></pre></div>'
-                        . '</details></div>';
+                        . '<summary class="card-header cursor-pointer d-flex justify-content-between align-items-center">'
+                        . '<span><i class="ti ti-code"></i> ' . gettext('Technical Details') . ' (Development Mode)</span>'
+                        . '<button type="button" class="btn btn-sm btn-outline-secondary copy-error-btn" style="border: none; padding: 0.25rem 0.5rem;" title="' . gettext('Copy error message') . '">'
+                        . '<i class="ti ti-copy"></i></button></summary>'
+                        . '<div class="card-body"><pre class="mb-0"><code id="errorMessage">' . $escaped . '</code></pre></div>'
+                        . '</details></div>'
+                        . '<script nonce="' . $nonce . '">'
+                        . 'document.querySelector(".copy-error-btn")?.addEventListener("click", function(e) {'
+                        . 'e.stopPropagation();'
+                        . 'const errorText = document.getElementById("errorMessage")?.textContent || "";'
+                        . 'navigator.clipboard.writeText(errorText).then(() => {'
+                        . 'const btn = this;'
+                        . 'const originalHTML = btn.innerHTML;'
+                        . 'btn.innerHTML = \'<i class="ti ti-check"></i>\';'
+                        . 'setTimeout(() => {btn.innerHTML = originalHTML;}, 2000);'
+                        . '}).catch(() => { /* clipboard unavailable — no-op */ });'
+                        . '});'
+                        . '</script>';
                 }
 
                 $sPageTitle = $title;
@@ -403,22 +418,27 @@ class SlimUtils
      */
     public static function sanitizeErrorMessage(Throwable $exception): string
     {
+        // HTTP exceptions carry intentionally user-facing messages (e.g. "Invalid login or password")
+        // set by route handlers — pass through as-is without redaction.
+        if ($exception instanceof \Slim\Exception\HttpException) {
+            return $exception->getMessage();
+        }
+
         $message = $exception->getMessage();
-        
+
         // For database-related exceptions, return generic message
-        if ($exception instanceof \PDOException || 
+        if ($exception instanceof \PDOException ||
             stripos($exception->getFile(), 'propel') !== false ||
             stripos($message, 'sql') !== false ||
             stripos($message, 'database') !== false) {
             return 'A database error occurred. Please contact your system administrator.';
         }
-        
-        // For all other exceptions, don't return the actual message in production
-        // Only return message if it doesn't contain sensitive info patterns
+
+        // For unexpected exceptions, redact messages that may contain credentials or internal details
         if (preg_match('/(password|credential|secret|api[_-]?key|token|username|user|host|localhost|127\.0\.0|\d{1,3}\.\d{1,3})/i', $message)) {
             return 'An error occurred. Please contact your system administrator.';
         }
-        
+
         return $message;
     }
 

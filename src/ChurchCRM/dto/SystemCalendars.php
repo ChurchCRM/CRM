@@ -3,9 +3,11 @@
 namespace ChurchCRM\dto;
 
 use ChurchCRM\model\ChurchCRM\Calendar;
+use ChurchCRM\Plugin\Hook\HookManager;
+use ChurchCRM\Plugin\Hooks;
+use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\SystemCalendars\AnniversariesCalendar;
 use ChurchCRM\SystemCalendars\BirthdaysCalendar;
-use ChurchCRM\SystemCalendars\HolidayCalendar;
 use ChurchCRM\SystemCalendars\SystemCalendar;
 use ChurchCRM\SystemCalendars\UnpinnedEvents;
 use Propel\Runtime\Collection\ObjectCollection;
@@ -20,7 +22,6 @@ class SystemCalendars
         $systemCalendarNames = [
             BirthdaysCalendar::class,
             AnniversariesCalendar::class,
-            HolidayCalendar::class,
             UnpinnedEvents::class,
         ];
 
@@ -29,6 +30,16 @@ class SystemCalendars
             if ($systemCalendarName::isAvailable()) {
                 $calendars[] = new $systemCalendarName();
             }
+        }
+
+        // Allow plugins to contribute additional system calendars.
+        // Lazy-init PluginManager because the API entry point does not
+        // initialize it the way Header.php does.
+        try {
+            PluginManager::init(SystemURLs::getDocumentRoot() . '/plugins');
+            $calendars = HookManager::applyFilters(Hooks::SYSTEM_CALENDARS_REGISTER, $calendars);
+        } catch (\Throwable $e) {
+            // Plugin discovery failure must not break core calendars
         }
 
         return $calendars;

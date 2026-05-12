@@ -57,7 +57,7 @@ $sRootPath = SystemURLs::getRootPath();
                         </div>
                         <div class="col">
                             <div class="fw-medium">$<?= number_format($ytdPaymentTotal ?? 0, 2) ?></div>
-                            <div class="text-muted"><?= gettext('YTD Payments') ?></div>
+                            <div class="text-body-secondary"><?= gettext('YTD Payments') ?></div>
                         </div>
                     </div>
                 </div>
@@ -74,7 +74,7 @@ $sRootPath = SystemURLs::getRootPath();
                         </div>
                         <div class="col">
                             <div class="fw-medium">$<?= number_format($ytdPledgeTotal ?? 0, 2) ?></div>
-                            <div class="text-muted"><?= gettext('YTD Pledges') ?></div>
+                            <div class="text-body-secondary"><?= gettext('YTD Pledges') ?></div>
                         </div>
                     </div>
                 </div>
@@ -91,7 +91,7 @@ $sRootPath = SystemURLs::getRootPath();
                         </div>
                         <div class="col">
                             <div class="fw-medium"><?= number_format($ytdDonorFamilies ?? 0) ?></div>
-                            <div class="text-muted"><?= gettext('Donor Families') ?></div>
+                            <div class="text-body-secondary"><?= gettext('Donor Families') ?></div>
                         </div>
                     </div>
                 </div>
@@ -108,7 +108,7 @@ $sRootPath = SystemURLs::getRootPath();
                         </div>
                         <div class="col">
                             <div class="fw-medium"><?= number_format($ytdPaymentCount) ?></div>
-                            <div class="text-muted"><?= gettext('Total Payments') ?></div>
+                            <div class="text-body-secondary"><?= gettext('Total Payments') ?></div>
                         </div>
                     </div>
                 </div>
@@ -120,7 +120,7 @@ $sRootPath = SystemURLs::getRootPath();
     <div class="card mb-3">
         <div class="card-header">
             <h3 class="card-title"><i class="fa-solid fa-bolt me-2"></i><?= gettext('Quick Actions') ?></h3>
-            <div class="ms-auto text-muted small">
+            <div class="ms-auto text-body-secondary small">
                 <i class="fa-solid fa-calendar-days me-1"></i>
                 <?= gettext('Fiscal Year') ?>: <strong><?= $fyLabel ?></strong>
             </div>
@@ -166,7 +166,7 @@ $sRootPath = SystemURLs::getRootPath();
                     <h3 class="card-title"><i class="fa-solid fa-clipboard-check me-2"></i><?= gettext('Tax Year Reporting Checklist') ?></h3>
                 </div>
                 <div class="card-body">
-                    <p class="text-muted small mb-3">
+                    <p class="text-body-secondary small mb-3">
                         <?= gettext('Complete these tasks to ensure accurate year-end tax reporting for your donors.') ?>
                     </p>
 
@@ -182,7 +182,7 @@ $sRootPath = SystemURLs::getRootPath();
                             </div>
                             <div class="flex-grow-1">
                                 <strong><?= gettext('Close All Deposits') ?></strong>
-                                <p class="mb-0 small text-muted"><?= gettext('Ensure all deposits for the tax year are closed before generating statements.') ?></p>
+                                <p class="mb-0 small text-body-secondary"><?= gettext('Ensure all deposits for the tax year are closed before generating statements.') ?></p>
                             </div>
                             <div>
                                 <?php if ($openDeposits > 0): ?>
@@ -205,7 +205,7 @@ $sRootPath = SystemURLs::getRootPath();
                             </div>
                             <div class="flex-grow-1">
                                 <strong><?= gettext('Review Donation Funds') ?></strong>
-                                <p class="mb-0 small text-muted"><?= gettext('Verify fund names and descriptions are accurate for statements.') ?></p>
+                                <p class="mb-0 small text-body-secondary"><?= gettext('Verify fund names and descriptions are accurate for statements.') ?></p>
                             </div>
                             <div>
                                 <span class="badge bg-blue-lt text-blue"><?= $activeFundCount ?> <?= gettext('active') ?></span>
@@ -229,7 +229,7 @@ $sRootPath = SystemURLs::getRootPath();
                             </div>
                             <div class="flex-grow-1">
                                 <strong><?= gettext('Church Information') ?></strong>
-                                <p class="mb-0 small text-muted"><?= gettext('Verify church name, address, and contact info appears on tax statements.') ?></p>
+                                <p class="mb-0 small text-body-secondary"><?= gettext('Verify church name, address, and contact info appears on tax statements.') ?></p>
                             </div>
                             <div>
                                 <?php if ($isAdmin): ?>
@@ -247,7 +247,7 @@ $sRootPath = SystemURLs::getRootPath();
                             </div>
                             <div class="flex-grow-1">
                                 <strong><?= gettext('Tax Report Verbiage') ?></strong>
-                                <p class="mb-0 small text-muted"><?= gettext('Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc).') ?></p>
+                                <p class="mb-0 small text-body-secondary"><?= gettext('Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc).') ?></p>
                             </div>
                             <div>
                                 <a href="<?= $sRootPath ?>/SystemSettings.php" class="btn btn-sm btn-outline-secondary">
@@ -263,7 +263,7 @@ $sRootPath = SystemURLs::getRootPath();
                             </div>
                             <div class="flex-grow-1">
                                 <strong><?= gettext('Generate Tax Statements') ?></strong>
-                                <p class="mb-0 small text-muted"><?= gettext('Print or email annual giving statements to all donors.') ?></p>
+                                <p class="mb-0 small text-body-secondary"><?= gettext('Print or email annual giving statements to all donors.') ?></p>
                             </div>
                             <div>
                                 <a href="<?= $sRootPath ?>/finance/reports" class="btn btn-sm btn-primary">
@@ -323,7 +323,7 @@ $sRootPath = SystemURLs::getRootPath();
                     </div>
                     <?php else: ?>
                     <div class="empty">
-                        <div class="empty-icon"><i class="fa-solid fa-inbox fa-3x text-muted"></i></div>
+                        <div class="empty-icon"><i class="fa-solid fa-inbox fa-3x text-body-secondary"></i></div>
                         <p class="empty-title"><?= gettext('No deposits found.') ?></p>
                         <a href="<?= $sRootPath ?>/FindDepositSlip.php" class="btn btn-primary">
                             <i class="fa-solid fa-plus me-1"></i><?= gettext('Create First Deposit') ?>
@@ -349,21 +349,21 @@ $sRootPath = SystemURLs::getRootPath();
                 </div>
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-2">
-                        <span class="text-muted"><?= gettext('Deposit') ?> #:</span>
+                        <span class="text-body-secondary"><?= gettext('Deposit') ?> #:</span>
                         <strong><?= $currentDeposit->getId() ?></strong>
                     </div>
                     <div class="d-flex justify-content-between mb-2">
-                        <span class="text-muted"><?= gettext('Date') ?>:</span>
+                        <span class="text-body-secondary"><?= gettext('Date') ?>:</span>
                         <span><?= $currentDeposit->getDate('M j, Y') ?></span>
                     </div>
                     <div class="d-flex justify-content-between mb-2">
-                        <span class="text-muted"><?= gettext('Type') ?>:</span>
+                        <span class="text-body-secondary"><?= gettext('Type') ?>:</span>
                         <span class="badge bg-blue-lt text-blue"><?= $currentDeposit->getType() ?></span>
                     </div>
                     <hr>
                     <div class="text-center mb-3">
                         <div class="h3 text-success mb-0">$<?= number_format($currentDeposit->getVirtualColumn('totalAmount') ?? 0, 2) ?></div>
-                        <small class="text-muted"><?= gettext('Total Amount') ?></small>
+                        <small class="text-body-secondary"><?= gettext('Total Amount') ?></small>
                     </div>
                     <a href="<?= $sRootPath ?>/DepositSlipEditor.php?DepositSlipID=<?= $currentDeposit->getId() ?>" class="btn btn-primary w-100">
                         <i class="fa-solid fa-pen-to-square me-1"></i><?= gettext('Edit Deposit') ?>
@@ -373,11 +373,11 @@ $sRootPath = SystemURLs::getRootPath();
             <?php else: ?>
             <div class="card mb-3">
                 <div class="card-header">
-                    <h3 class="card-title text-muted"><i class="fa-solid fa-file-invoice me-2"></i><?= gettext('No Active Deposit') ?></h3>
+                    <h3 class="card-title text-body-secondary"><i class="fa-solid fa-file-invoice me-2"></i><?= gettext('No Active Deposit') ?></h3>
                 </div>
                 <div class="card-body">
                     <div class="empty">
-                        <div class="empty-icon"><i class="fa-solid fa-circle-plus fa-3x text-muted"></i></div>
+                        <div class="empty-icon"><i class="fa-solid fa-circle-plus fa-3x text-body-secondary"></i></div>
                         <p class="empty-title"><?= gettext('Create or select a deposit to get started.') ?></p>
                         <a href="<?= $sRootPath ?>/FindDepositSlip.php" class="btn btn-success">
                             <i class="fa-solid fa-plus me-1"></i><?= gettext('Create Deposit') ?>
@@ -412,7 +412,7 @@ $sRootPath = SystemURLs::getRootPath();
                             <?= round(($closedDeposits / $totalDeposits) * 100) ?>%
                         </div>
                     </div>
-                    <small class="text-muted"><?= gettext('Closed vs Total') ?></small>
+                    <small class="text-body-secondary"><?= gettext('Closed vs Total') ?></small>
                     <?php endif; ?>
                 </div>
             </div>

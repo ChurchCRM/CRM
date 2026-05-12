@@ -101,26 +101,6 @@ body {
   justify-content: center;
 }
 
-.text-primary {
-  color: #007bff !important;
-}
-
-.text-danger {
-  color: #dc3545 !important;
-}
-
-.text-success {
-  color: #28a745 !important;
-}
-
-.text-warning {
-  color: #ffc107 !important;
-}
-
-.modal-header.bg-success {
-  background-color: #28a745 !important;
-}
-
 .btn-close-white {
   opacity: 0.8;
 }

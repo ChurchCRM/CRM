@@ -5,6 +5,7 @@ use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\NoteQuery;
 use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
 use ChurchCRM\Slim\Middleware\Api\NoteMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
@@ -43,7 +44,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     path="/person/{personId}/notes",
      *     operationId="getPersonNotes",
      *     summary="List user-type notes for a person",
-     *     description="Returns all notes of type 'note' for the person, filtered by visibility for the current user. Private notes are only visible to admins or the user who entered them.",
+     *     description="Returns all notes of type 'note' for the person, filtered by visibility for the current user. Private notes are only visible to the user who entered them.",
      *     tags={"People"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=1)),
@@ -83,7 +84,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
 
         $result = [];
         foreach ($notes as $note) {
-            if ($currentUser->isAdmin() || $note->isVisible($currentUser->getPersonId())) {
+            if ($note->isVisible($currentUser->getId())) {
                 $result[] = noteToArray($note);
             }
         }
@@ -126,7 +127,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
             return SlimUtils::renderErrorJSON($response, gettext('Note text is required'), [], 400);
         }
 
-        $private = !empty($input['private']) ? $currentUser->getPersonId() : 0;
+        $private = !empty($input['private']) ? 1 : 0;
 
         $note = new Note();
         $note->setPerId($person->getId());
@@ -150,7 +151,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     path="/family/{familyId}/notes",
      *     operationId="getFamilyNotes",
      *     summary="List user-type notes for a family",
-     *     description="Returns all notes of type 'note' for the family, filtered by visibility for the current user.",
+     *     description="Returns all notes of type 'note' for the family, filtered by visibility for the current user. Private notes are only visible to the user who entered them.",
      *     tags={"Families"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer", example=1)),
@@ -188,7 +189,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
 
         $result = [];
         foreach ($notes as $note) {
-            if ($currentUser->isAdmin() || $note->isVisible($currentUser->getPersonId())) {
+            if ($note->isVisible($currentUser->getId())) {
                 $result[] = noteToArray($note);
             }
         }
@@ -231,7 +232,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
             return SlimUtils::renderErrorJSON($response, gettext('Note text is required'), [], 400);
         }
 
-        $private = !empty($input['private']) ? $currentUser->getPersonId() : 0;
+        $private = !empty($input['private']) ? 1 : 0;
 
         $note = new Note();
         $note->setPerId(0);
@@ -255,7 +256,7 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
      *     path="/note/{noteId}",
      *     operationId="getNote",
      *     summary="Get a single note by ID",
-     *     description="Returns the note if it is visible to the current user. Private notes are only visible to admins or the user who entered them.",
+     *     description="Returns the note if it is visible to the current user. Private notes are only visible to the user who entered them. Returns 404 for notes not visible to the current user.",
      *     tags={"People"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="noteId", in="path", required=true, @OA\Schema(type="integer", example=1)),
@@ -272,7 +273,7 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
         $note = $request->getAttribute('note');
         $currentUser = AuthenticationManager::getCurrentUser();
 
-        if (!$currentUser->isAdmin() && !$note->isVisible($currentUser->getPersonId())) {
+        if (!$note->isVisible($currentUser->getId())) {
             return SlimUtils::renderErrorJSON($response, gettext('Note not found'), [], 404);
         }
 
@@ -319,7 +320,7 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
             return SlimUtils::renderErrorJSON($response, gettext('Note text is required'), [], 400);
         }
 
-        $private = !empty($input['private']) ? (int) $note->getEnteredBy() : 0;
+        $private = !empty($input['private']) ? 1 : 0;
 
         $note->setText($text);
         $note->setPrivate($private);
@@ -356,8 +357,29 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
             return SlimUtils::renderErrorJSON($response, gettext('Only the note author or an admin may delete this note'), [], 403);
         }
 
+        // Capture before deletion
+        $perId    = (int) $note->getPerId();
+        $famId    = (int) $note->getFamId();
+        $authorId = $note->getEnteredBy();
+
+        $authorPerson = PersonQuery::create()->findPk($authorId);
+        $authorName   = $authorPerson !== null ? $authorPerson->getFullName() : gettext('Unknown');
+
         try {
             $note->delete();
+
+            // Write a system timeline entry so the deletion is auditable
+            $audit = new Note();
+            if ($perId > 0) {
+                $audit->setPerId($perId);
+            }
+            if ($famId > 0) {
+                $audit->setFamId($famId);
+            }
+            $audit->setType('delete-note');
+            $audit->setText(sprintf(gettext('Note by %s deleted'), $authorName));
+            $audit->setEntered($currentUser->getId());
+            $audit->save();
 
             return SlimUtils::renderJSON($response, ['success' => true]);
         } catch (\Throwable $e) {

@@ -62,7 +62,7 @@ export function showPhotoLightbox(entityType: string, entityId: number | string)
  * @param entityId - The ID of the person or family
  */
 export function deletePhoto(entityType: string, entityId: number | string): void {
-  (window as any).CRM.APIRequest({
+  window.CRM?.APIRequest?.({
     method: "DELETE",
     path: `${entityType}/${entityId}/photo`,
   }).done(() => {

@@ -96,7 +96,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <label for="newEvtTypeCntLst" class="fw-bold form-label"><?= gettext('Attendance Count Categories') ?></label>
         <input class="form-control" type="text" name="newEvtTypeCntLst" id="newEvtTypeCntLst"
                maxlength="50" placeholder="<?= gettext('Members, Visitors, Children') ?>">
-        <small class="form-text text-muted">
+        <small class="form-text text-body-secondary">
           <?= gettext('Enter comma-separated count categories (e.g., Members, Visitors, Children).') ?>
         </small>
       </div>

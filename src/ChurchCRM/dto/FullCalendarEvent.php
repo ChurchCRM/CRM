@@ -19,6 +19,8 @@ class FullCalendarEvent
     public ?string $url = null;
     public string $id;
     public bool $editable;
+    /** @var array<string,string>|null Extra metadata passed through to FullCalendar extendedProps */
+    public ?array $extendedProps = null;
 
     public static function createFromEvent(Event $CRMEvent, Calendar $CRMCalendar): self
     {
@@ -45,6 +47,19 @@ class FullCalendarEvent
         $url = $CRMEvent->getURL();
         if ($url) {
             $fce->url = $url;
+        }
+
+        try {
+            $country = $CRMEvent->getVirtualColumn('holidayCountry');
+            $type    = $CRMEvent->getVirtualColumn('holidayType');
+            if ($country !== null || $type !== null) {
+                $fce->extendedProps = array_filter([
+                    'country' => $country,
+                    'type'    => $type,
+                ]);
+            }
+        } catch (\Throwable $e) {
+            // not a holiday event — virtual columns absent
         }
 
         return $fce;

@@ -277,21 +277,21 @@ function DoQuery()
                 <button type="button" id="removeResultsFromCart" class="btn btn-danger" > <?= gettext('Remove Results from Cart') ?></button>
             </div>
             <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-                // Wait for locales to load before setting up cart handlers
-                // CartManager uses i18next for notifications
-                window.CRM.onLocalesReady(function() {
-                    $("#addResultsToCart").click(function () {
-                        var selectedPersons = <?= json_encode($aAddToCartIDs) ?>;
-                        window.CRM.cartManager.addPerson(selectedPersons, {
-                            showNotification: true
+                $(document).ready(function() {
+                    window.CRM.onLocalesReady(function() {
+                        $("#addResultsToCart").click(function () {
+                            var selectedPersons = <?= json_encode($aAddToCartIDs) ?>;
+                            window.CRM.cartManager.addPerson(selectedPersons, {
+                                showNotification: true
+                            });
                         });
-                    });
 
-                    $("#removeResultsFromCart").click(function(){
-                        var selectedPersons = <?= json_encode($aAddToCartIDs) ?>;
-                        window.CRM.cartManager.removePerson(selectedPersons, {
-                            confirm: true,
-                            showNotification: true
+                        $("#removeResultsFromCart").click(function(){
+                            var selectedPersons = <?= json_encode($aAddToCartIDs) ?>;
+                            window.CRM.cartManager.removePerson(selectedPersons, {
+                                confirm: true,
+                                showNotification: true
+                            });
                         });
                     });
                 });

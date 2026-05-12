@@ -1,0 +1,178 @@
+name: Documentation
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'src/api/routes/**'
+      - 'src/admin/routes/api/**'
+      - 'src/api/openapi/**'
+      - 'src/kiosk/routes/api/**'
+      - 'src/plugins/routes/api/**'
+  pull_request:
+    paths:
+      - 'src/api/routes/**'
+      - 'src/admin/routes/api/**'
+      - 'src/api/openapi/**'
+      - 'src/kiosk/routes/api/**'
+      - 'src/plugins/routes/api/**'
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Optional reason for rebuild'
+        required: false
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  # ───────────────────────────────────────────────────────────────────
+  # Validate OpenAPI specs on non-master branches
+  # ───────────────────────────────────────────────────────────────────
+  validate:
+    if: github.ref != 'refs/heads/master' && github.event_name != 'workflow_dispatch'
+    name: Generate and validate OpenAPI specs
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout CRM
+        uses: actions/checkout@v6
+
+      - name: Setup PHP 8.4
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, pdo, zip
+
+      - name: Cache Composer packages
+        uses: actions/cache@v5
+        with:
+          path: src/vendor
+          key: composer-dev-${{ hashFiles('src/composer.lock') }}
+          restore-keys: composer-dev-
+
+      - name: Install Composer dependencies (including dev)
+        run: cd src && composer install --no-interaction --prefer-dist
+
+      - name: Generate Public API spec
+        run: cd src && composer run openapi-public
+
+      - name: Generate Private API spec
+        run: cd src && composer run openapi-private
+
+      - name: Upload generated specs as artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: openapi-specs-${{ github.run_id }}
+          path: openapi/*.yaml
+          retention-days: 7
+
+  # ───────────────────────────────────────────────────────────────────
+  # Generate, validate, and publish OpenAPI specs on master
+  # ───────────────────────────────────────────────────────────────────
+  publish:
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+    name: Generate, validate, and publish OpenAPI specs
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout CRM
+        uses: actions/checkout@v6
+
+      - name: Setup PHP 8.4
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, pdo, zip
+
+      - name: Cache Composer packages
+        uses: actions/cache@v5
+        with:
+          path: src/vendor
+          key: composer-dev-${{ hashFiles('src/composer.lock') }}
+          restore-keys: composer-dev-
+
+      - name: Install Composer dependencies (including dev)
+        run: cd src && composer install --no-interaction --prefer-dist
+
+      - name: Generate Public API spec
+        run: cd src && composer run openapi-public
+
+      - name: Generate Private API spec
+        run: cd src && composer run openapi-private
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git status --porcelain -- openapi/ | grep -q .; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push generated specs
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add openapi/
+          git commit -m "docs: update OpenAPI specifications"
+          git push origin master
+
+      - name: Upload generated specs as artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: openapi-specs-${{ github.run_id }}
+          path: openapi/*.yaml
+          retention-days: 7
+
+  # ───────────────────────────────────────────────────────────────────
+  # Trigger docs.churchcrm.io rebuild (manual dispatch)
+  # ───────────────────────────────────────────────────────────────────
+  trigger-rebuild:
+    if: github.event_name == 'workflow_dispatch'
+    name: Send repository_dispatch to docs.churchcrm.io
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+
+    steps:
+      - name: Trigger docs rebuild via repository_dispatch
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const owner = 'ChurchCRM';
+            const repo = 'docs.churchcrm.io';
+            const event_type = 'openapi-updated';
+            const reason = (context.payload && context.payload.inputs && context.payload.inputs.reason) ? context.payload.inputs.reason : 'manual';
+            const clientPayload = {
+              triggered_by: process.env.GITHUB_ACTOR,
+              reason: reason
+            };
+            try {
+              await github.repos.createDispatchEvent({ owner, repo, event_type, client_payload: clientPayload });
+            } catch (error) {
+              if (error.status === 401 || error.status === 403) {
+                core.setFailed(`Unable to dispatch to ${owner}/${repo}: Token has insufficient permissions. Set DOCS_REPO_TOKEN secret for cross-repo dispatch.`);
+              } else {
+                throw error;
+              }
+            }
+          github-token: ${{ secrets.DOCS_REPO_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: Log
+        run: echo "Dispatched 'openapi-updated' to ChurchCRM/docs.churchcrm.io"

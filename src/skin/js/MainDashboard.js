@@ -252,7 +252,7 @@ export function initializeMainDashboard() {
             photoIcon +
             '<div class="min-w-0 flex-grow-1"><a class="text-break" href="' +
             window.CRM.root +
-            "/PersonView.php?PersonID=" +
+            "/people/view/" +
             row.PersonId +
             '"><strong>' +
             row.FormattedName +
@@ -459,7 +459,7 @@ export function initializeMainDashboard() {
           photoIcon +
           ' <a href="' +
           window.CRM.root +
-          "/PersonView.php?PersonID=" +
+          "/people/view/" +
           row.PersonId +
           '"><strong>' +
           row.FirstName +

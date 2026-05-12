@@ -51,15 +51,6 @@ Cypress.on('uncaught:exception', (err) => {
   if (/^An unknown error has occurred:\s*\[object Object\]$/.test(message)) {
     return false;
   }
-  // Dashboard widget API calls (cart, familiesInCart) fire immediately on page
-  // load and return 500 when the PHP session is in a transitional state during
-  // system-reset tests. These 500s do not affect the test's real assertions.
-  if (
-    /"status"\s*:\s*500/.test(message) &&
-    /api\/cart\/|api\/families\/familiesInCart/.test(message)
-  ) {
-    return false;
-  }
 });
 
 window.addEventListener('error', (event) => {

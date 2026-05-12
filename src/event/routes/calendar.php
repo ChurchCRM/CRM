@@ -20,6 +20,7 @@ $app->get('/calendars', function (Request $request, Response $response) {
     ];
     if ($isAdmin) {
         $headerButtons[] = ['label' => gettext('Calendar Settings'), 'icon' => 'fa-sliders', 'collapse' => '#calendarSettings', 'adminOnly' => true];
+        $headerButtons[] = ['label' => gettext('Holiday Settings'), 'icon' => 'fa-calendar-days', 'url' => '/plugins/management/holidays', 'adminOnly' => true];
     }
 
     $calendarJSArgs = [

@@ -26,20 +26,20 @@ window.Stepper = Stepper;
 
 (() => {
   // Get root path from global CRM config and ensure it's properly formatted
-  let rootPath = window.CRM && window.CRM.root ? window.CRM.root : "";
+  let rootPath = window.CRM?.root ? window.CRM.root : "";
 
-  console.log("Setup.js - Original rootPath from window.CRM.root:", window.CRM && window.CRM.root);
+  console.log("Setup.js - Original rootPath from window.CRM.root:", window.CRM?.root);
 
   // Ensure rootPath doesn't end with slash (we'll add it in URLs)
   rootPath = rootPath.replace(/\/$/, "");
 
   // Ensure rootPath starts with slash for absolute URLs (unless it's empty for root install)
   if (rootPath && !rootPath.startsWith("/")) {
-    rootPath = "/" + rootPath;
+    rootPath = `/${rootPath}`;
   }
 
   console.log("Setup.js - Processed rootPath:", rootPath);
-  console.log("Setup.js - Will use URL:", rootPath + "/setup/SystemPrerequisiteCheck");
+  console.log("Setup.js - Will use URL:", `${rootPath}/setup/SystemPrerequisiteCheck`);
 
   // Setup state
   const state = {
@@ -94,7 +94,7 @@ window.Stepper = Stepper;
   function updateStatusBanner(status, title, detail) {
     const $banner = $("#status-banner");
     $banner.removeClass("status-checking status-success status-warning status-error");
-    $banner.addClass("status-" + status);
+    $banner.addClass(`status-${status}`);
 
     let icon = "";
     switch (status) {
@@ -201,7 +201,7 @@ window.Stepper = Stepper;
       .append($("<td>", { text: prerequisite.Name }))
       .append($("<td>", td));
 
-    const $existing = $("#" + rowId);
+    const $existing = $(`#${rowId}`);
     if ($existing.length) {
       $existing.replaceWith($prerequisiteRow);
     } else {
@@ -214,7 +214,7 @@ window.Stepper = Stepper;
 
   function toggleCollapse(group, action) {
     const groupConfig = GROUP_CONFIG[group];
-    if (!groupConfig || !groupConfig.collapse) {
+    if (!groupConfig?.collapse) {
       return;
     }
     const $target = $(groupConfig.collapse);
@@ -388,7 +388,7 @@ window.Stepper = Stepper;
           .append($("<td>", { text: "Signature Validation" }))
           .append(buildStatusCell(statusInfo, message));
 
-        $("#" + rowId).replaceWith(resultRow);
+        $(`#${rowId}`).replaceWith(resultRow);
         state.prerequisites[rowId] = satisfied;
 
         appendIntegrityDetails(config.table, rowId, data);
@@ -410,7 +410,7 @@ window.Stepper = Stepper;
             buildStatusCell(statusConfig.false, "Unable to contact integrity endpoint. Check web server error logs."),
           );
 
-        $("#" + rowId).replaceWith(resultRow);
+        $(`#${rowId}`).replaceWith(resultRow);
         state.prerequisites[rowId] = false;
         appendIntegrityDetails(config.table, rowId, null);
 
@@ -438,7 +438,7 @@ window.Stepper = Stepper;
       contentType: "application/json",
     })
       .done((data) => {
-        $.each(data, (index, prerequisite) => {
+        $.each(data, (_index, prerequisite) => {
           renderPrerequisite(prerequisite, "php");
         });
         checkFilesystem();
@@ -462,7 +462,7 @@ window.Stepper = Stepper;
       contentType: "application/json",
     })
       .done((data) => {
-        $.each(data, (index, prerequisite) => {
+        $.each(data, (_index, prerequisite) => {
           renderPrerequisite(prerequisite, "filesystem");
         });
         checkLocales();
@@ -682,7 +682,7 @@ window.Stepper = Stepper;
             try {
               const url = new URL(value);
               return url.protocol === "http:" || url.protocol === "https:";
-            } catch (e) {
+            } catch (_e) {
               return false;
             }
           },
@@ -728,14 +728,14 @@ window.Stepper = Stepper;
     getModal("setupModal").show();
 
     $.ajax({
-      url: rootPath + "/setup/",
+      url: `${rootPath}/setup/`,
       method: "POST",
       data: JSON.stringify(formData),
       contentType: "application/json",
     })
       .done((response) => {
         // Check if response contains errors (backend bug workaround)
-        if (response && response.errors) {
+        if (response?.errors) {
           // Treat as failure
           $("#setup-progress").addClass("d-none");
           $("#setup-error").removeClass("d-none");
@@ -772,7 +772,7 @@ window.Stepper = Stepper;
         $("#continue-to-login")
           .off("click")
           .on("click", () => {
-            location.replace(rootPath + "/");
+            location.replace(`${rootPath}/`);
           });
       })
       .fail((xhr) => {
@@ -783,7 +783,7 @@ window.Stepper = Stepper;
 
         // Parse error message
         let errorMessage = "An unknown error occurred.";
-        if (xhr.responseJSON && xhr.responseJSON.errors) {
+        if (xhr.responseJSON?.errors) {
           errorMessage = "<ul class='mb-0'>";
           for (const [field, error] of Object.entries(xhr.responseJSON.errors)) {
             errorMessage += `<li><strong>${field}:</strong> ${error}</li>`;
@@ -830,7 +830,6 @@ window.Stepper = Stepper;
     // Real-time password matching validation
     const passwordField = document.getElementById("DB_PASSWORD");
     const confirmPasswordField = document.getElementById("DB_PASSWORD_CONFIRM");
-    const submitButton = document.getElementById("submit-setup");
 
     function validatePasswordMatch() {
       const password = passwordField.value;

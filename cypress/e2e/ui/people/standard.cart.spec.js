@@ -44,7 +44,7 @@ describe("Standard Cart", () => {
     it("Cart Add and Remove Person", () => {
         cy.visit("v2/cart");
         cy.contains("You have no items in your cart");
-        cy.visit("PersonView.php?PersonID=1");
+        cy.visit("/people/view/1");
         
         // Wait for cart to be ready before clicking
         waitForCartReady();
@@ -102,7 +102,7 @@ describe("Standard Cart", () => {
         cy.contains("You have no items in your cart");
         
         // Add person first time
-        cy.visit("PersonView.php?PersonID=1");
+        cy.visit("/people/view/1");
         
         // Wait for cart to be ready
         waitForCartReady();
