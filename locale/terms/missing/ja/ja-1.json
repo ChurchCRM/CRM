@@ -1,7 +1,4 @@
 {
-  "Cannot delete event: %d people are currently checked in.": "イベントは削除できません：%d 人が現在チェックインしています。",
-  "Cannot delete event: event is currently assigned to a kiosk.": "イベントは削除できません：イベントは現在キオスクに割り当てられています。",
-  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "グループは削除できません：%d 個のイベントの対象者であり、%d 個のイベント タイプのデフォルト グループです。最初に再割り当てしてください。",
-  "HTML URL": "HTML URL",
-  "ICS URL": "ICS URL"
+  "HTML URL": "",
+  "ICS URL": ""
 }

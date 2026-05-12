@@ -1,6 +1,0 @@
-{
-  "Cannot delete event: %d people are currently checked in.": "Tidak dapat menghapus acara: %d orang saat ini sedang check in.",
-  "Cannot delete event: event is currently assigned to a kiosk.": "Tidak dapat menghapus acara: acara saat ini ditugaskan ke kios.",
-  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "Tidak dapat menghapus grup: ini adalah audiens untuk %d acara dan grup default untuk %d jenis acara. Tugaskan ulang terlebih dahulu.",
-  "HTML URL": "URL HTML"
-}

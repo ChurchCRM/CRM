@@ -1,6 +1,3 @@
 {
-  "Cannot delete event: %d people are currently checked in.": "Ereignis kann nicht gelöscht werden: %d Personen sind derzeit eingecheckt.",
-  "Cannot delete event: event is currently assigned to a kiosk.": "Ereignis kann nicht gelöscht werden: das Ereignis ist derzeit einem Kiosk zugewiesen.",
-  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "Gruppe kann nicht gelöscht werden: Sie ist die Zielgruppe für %d Ereignis(se) und die Standardgruppe für %d Ereignistyp(en). Weisen Sie diese zuerst neu zu.",
-  "in": "in"
+  "in": ""
 }

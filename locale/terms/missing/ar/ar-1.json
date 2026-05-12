@@ -1,6 +1,0 @@
-{
-  "Cannot delete event: %d people are currently checked in.": "لا يمكن حذف الحدث: %d شخص(ص) تم تسجيل دخولهم حالياً.",
-  "Cannot delete event: event is currently assigned to a kiosk.": "لا يمكن حذف الحدث: تم تعيين الحدث حالياً لكشك.",
-  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "لا يمكن حذف المجموعة: فهي الجمهور ل %d حدث(ثاً) والمجموعة الافتراضية ل %d نوع(أنواع) حدث. أعد تعيينها أولاً.",
-  "ICS URL": "عنوان URL لـ ICS"
-}
