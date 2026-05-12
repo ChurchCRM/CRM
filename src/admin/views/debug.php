@@ -209,6 +209,30 @@ $fmtBytes = static function ($bytes): string {
                                         </td>
                                     </tr>
                                 <?php } ?>
+                                <!-- Telemetry status row -->
+                                <?php
+                                $telemetryOn = SystemConfig::getBooleanValue('bEnableTelemetry');
+                                $posthogEndpoint = SystemConfig::getValue('sPostHogEndpoint') ?: 'https://eu.i.posthog.com';
+                                ?>
+                                <tr id="debug-telemetry-row">
+                                    <td><?= gettext('Telemetry') ?></td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-3 flex-wrap">
+                                            <?php if ($telemetryOn): ?>
+                                                <span class="badge bg-success"><i class="ti ti-check me-1"></i><?= gettext('Enabled') ?></span>
+                                                <span class="text-secondary small"><?= gettext('Sending to') ?> <code class="debug-code"><?= InputUtils::escapeHTML($posthogEndpoint) ?></code></span>
+                                            <?php else: ?>
+                                                <span class="badge bg-secondary"><?= gettext('Disabled (opt-in required)') ?></span>
+                                            <?php endif; ?>
+                                            <button type="button"
+                                                    class="btn btn-sm <?= $telemetryOn ? 'btn-ghost-danger' : 'btn-ghost-success' ?> js-debug-telemetry-toggle"
+                                                    data-enable="<?= $telemetryOn ? 'false' : 'true' ?>">
+                                                <i class="ti <?= $telemetryOn ? 'ti-toggle-right' : 'ti-toggle-left' ?> me-1"></i>
+                                                <?= $telemetryOn ? gettext('Disable') : gettext('Enable') ?>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -834,6 +858,23 @@ $fmtBytes = static function ($bytes): string {
             initializeDebugPage();
         });
     }
+
+    // Telemetry enable/disable toggle in the App tab
+    document.addEventListener('click', function(e) {
+        var btn = e.target.closest('.js-debug-telemetry-toggle');
+        if (!btn) return;
+        var enable = btn.getAttribute('data-enable') === 'true';
+        btn.disabled = true;
+        fetch('<?= SystemURLs::getRootPath() ?>/api/system/telemetry-consent', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({enable: enable})
+        }).then(function() {
+            window.location.reload();
+        }).catch(function() {
+            btn.disabled = false;
+        });
+    });
 </script>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

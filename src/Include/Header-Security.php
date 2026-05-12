@@ -18,16 +18,20 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
+$telemetryEnabled = SystemConfig::getBooleanValue('bEnableTelemetry');
+
 $csp = [
     "default-src 'self'",
-    "script-src 'self' 'nonce-" . SystemURLs::getCSPNonce() . "' 'unsafe-eval' browser-update.org https://www.googletagmanager.com",
+    "script-src 'self' 'nonce-" . SystemURLs::getCSPNonce() . "' 'unsafe-eval' browser-update.org https://www.googletagmanager.com"
+        . ($telemetryEnabled ? ' https://eu-assets.i.posthog.com' : ''),
     "object-src 'none'",
     "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
     "img-src 'self' data: https://secure.gravatar.com https://tile.openstreetmap.org https://*.tile.openstreetmap.org",
     "media-src 'self'",
     "frame-src 'self'",
     "font-src 'self' data: fonts.gstatic.com",
-    "connect-src 'self' https://www.google-analytics.com",
+    "connect-src 'self' https://www.google-analytics.com"
+        . ($telemetryEnabled ? ' https://eu.i.posthog.com https://eu-assets.i.posthog.com' : ''),
     "base-uri 'self'",
     "form-action 'self'",
     "frame-ancestors 'self'",
