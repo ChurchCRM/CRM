@@ -130,10 +130,7 @@ function initializeFamilyView() {
           data: "GroupKey",
           className: "all no-export",
           render: function (data, type, row) {
-            let linkBack = "people/family/" + window.CRM.currentFamily;
-            let editUrl = window.CRM.root + "/PledgeEditor.php?GroupKey=" + row.GroupKey + "&amp;linkBack=" + linkBack;
-            let deleteUrl =
-              window.CRM.root + "/PledgeDelete.php?GroupKey=" + row.GroupKey + "&amp;linkBack=" + linkBack;
+            let editUrl = window.CRM.root + "/finance/pledge/" + encodeURIComponent(row.GroupKey) + "/edit";
             return (
               '<div class="dropdown">' +
               '<button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown" data-bs-display="static"><i class="fa-solid fa-ellipsis-vertical"></i></button>' +
@@ -143,11 +140,11 @@ function initializeFamilyView() {
               '"><i class="fa-solid fa-pen me-2"></i>' +
               i18next.t("Edit") +
               "</a>" +
-              '<a class="dropdown-item text-danger" href="' +
-              deleteUrl +
+              '<button type="button" class="dropdown-item text-danger pledge-delete-btn" data-group-key="' +
+              row.GroupKey.replace(/"/g, "&quot;") +
               '"><i class="fa-solid fa-trash-can me-2"></i>' +
               i18next.t("Delete") +
-              "</a>" +
+              "</button>" +
               "</div></div>"
             );
           },
@@ -412,6 +409,28 @@ function initializeFamilyView() {
           });
         }
       },
+    });
+
+    // Handle pledge/payment deletion via API
+    $(document).on("click", ".pledge-delete-btn", function () {
+      const groupKey = $(this).data("group-key");
+      if (!confirm(i18next.t("Are you sure you want to permanently delete this pledge record?"))) {
+        return;
+      }
+      fetch(window.CRM.root + "/api/payments/" + encodeURIComponent(groupKey), {
+        method: "DELETE",
+      })
+        .then((res) => {
+          if (res.ok) {
+            window.CRM.notify("Deleted successfully", "success");
+            setTimeout(() => location.reload(), 800);
+          } else {
+            window.CRM.notify("Delete failed", "danger");
+          }
+        })
+        .catch(() => {
+          window.CRM.notify("Network error, please try again", "danger");
+        });
     });
   }
 }
