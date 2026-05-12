@@ -14709,10 +14709,6 @@ msgid "Cannot delete group: it is the audience for %d event(s) and the default g
 msgstr "குழுவை நீக்க இயலாது: இது %d நிகழ்வுகளுக்கான பார்வையாளர் குழுவாகவும், %d நிகழ்வு வகைகளுக்கான இயல்புநிலை குழுவாகவும் உள்ளது. முதலில் அவற்றை வேறு குழுவிற்கு மாற்றவும்."
 
 #: 
-msgid "Mailchimp"
-msgstr "மெயில்சிம்ப்"
-
-#: 
 msgid "A Calendar access token has been generated and saved."
 msgstr "ஒரு காலண்டர் அணுகல் டோக்கன் (Access Token) உருவாக்கப்பட்டு சேமிக்கப்பட்டுள்ளது."
 
