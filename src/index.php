@@ -23,18 +23,26 @@ try {
     exit(1);
 }
 
+// Derive install prefix from SCRIPT_NAME — works for root and nested subdir installs.
+// Computed before any redirect so both the PHP-version and setup redirects resolve correctly.
+//   /churchcrm/index.php  →  dirname → /churchcrm
+//   /index.php            →  dirname → /  → ''
+$_idx_script = str_replace('\\', '/', $_SERVER['SCRIPT_NAME'] ?? '/index.php');
+$_idx_root   = dirname($_idx_script);
+if ($_idx_root === '/' || $_idx_root === '.') {
+    $_idx_root = '';
+}
+
 $phpVersion = phpversion();
 if (version_compare($phpVersion, $requiredPhp, '<')) {
-    header('Location: errors/php-error.php');
+    header("Location: {$_idx_root}/errors/php-error.php");
     exit;
 }
 
-header('CRM: would redirect');
-
-if (file_exists('Include/Config.php')) {
+if (file_exists(__DIR__ . '/Include/Config.php')) {
     require_once __DIR__ . '/Include/Config.php';
 } else {
-    header('Location: setup');
+    header("Location: {$_idx_root}/setup");
     exit;
 }
 

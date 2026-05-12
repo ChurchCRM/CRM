@@ -7,6 +7,16 @@
  * renders correctly on login, password reset, and error pages.
  * Guards against regressions from the global→scoped CSS migration.
  */
+
+/** Toggle bEnableSelfRegistration via the admin API. value: "1" = on, "0" = off. */
+function setSelfReg(value) {
+    cy.makePrivateAdminAPICall(
+        "POST",
+        "admin/api/system/config/bEnableSelfRegistration",
+        { value },
+    );
+}
+
 describe("Auth Page CSS Regression", () => {
     describe("Login Page Styling", () => {
         beforeEach(() => {
@@ -17,9 +27,9 @@ describe("Auth Page CSS Regression", () => {
             cy.get("body").should("have.class", "page-auth");
         });
 
-        it("Should render login container with proper layout", () => {
+        it("Should render login container and card with proper layout", () => {
             cy.get(".login-container").should("be.visible");
-            cy.get(".login-wrapper").should("be.visible");
+            cy.get(".login-card").should("be.visible");
         });
 
         it("Should render sign-in button with auth-specific gradient styling", () => {
@@ -33,8 +43,55 @@ describe("Auth Page CSS Regression", () => {
             cy.get("input[name='Password']").should("be.visible");
         });
 
-        it("Should display login header with church name or logo", () => {
-            cy.get(".login-form-header").should("be.visible");
+        it("Should display login card header with church name or logo", () => {
+            cy.get(".login-card-header").should("be.visible");
+        });
+    });
+
+    describe("Login Page — Segmented Pill Control (self-registration)", () => {
+        after(() => {
+            // Restore self-reg to disabled after this suite so other tests
+            // are not affected by the enabled state.
+            setSelfReg("0");
+        });
+
+        it("Pill control is hidden when self-registration is disabled", () => {
+            setSelfReg("0");
+            cy.visit("/session/begin");
+            cy.get(".login-tab-control").should("not.exist");
+            // Plain form title should appear instead
+            cy.get(".login-form-title").should("be.visible");
+        });
+
+        it("Pill control is visible when self-registration is enabled", () => {
+            setSelfReg("1");
+            cy.visit("/session/begin");
+            cy.get(".login-tab-control").should("be.visible");
+            cy.get(".login-tab-btn").should("have.length", 2);
+        });
+
+        it("Sign In pill is active by default", () => {
+            setSelfReg("1");
+            cy.visit("/session/begin");
+            cy.get("#tab-signin").should("have.class", "active");
+            cy.get("#tab-register").should("not.have.class", "active");
+        });
+
+        it("Register pill links to the registration page in a new tab", () => {
+            setSelfReg("1");
+            cy.visit("/session/begin");
+            cy.get("#tab-register")
+                .should("have.attr", "href")
+                .and("include", "/external/register/");
+            cy.get("#tab-register").should("have.attr", "target", "_blank");
+        });
+
+        it("Login form is always visible regardless of self-reg setting", () => {
+            setSelfReg("1");
+            cy.visit("/session/begin");
+            cy.get("input[name='User']").should("be.visible");
+            cy.get("input[name='Password']").should("be.visible");
+            cy.get(".btn-sign-in").should("be.visible");
         });
     });
 
