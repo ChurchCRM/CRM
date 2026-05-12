@@ -6,6 +6,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\LocaleService;
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\Service\TelemetryService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\VersionUtils;
 
@@ -212,7 +213,7 @@ $fmtBytes = static function ($bytes): string {
                                 <!-- Telemetry status row -->
                                 <?php
                                 $telemetryOn = SystemConfig::getBooleanValue('bEnableTelemetry');
-                                $posthogEndpoint = SystemConfig::getValue('sPostHogEndpoint') ?: 'https://eu.i.posthog.com';
+                                $posthogEndpoint = TelemetryService::POSTHOG_ENDPOINT;
                                 ?>
                                 <tr id="debug-telemetry-row">
                                     <td><?= gettext('Telemetry') ?></td>
@@ -859,22 +860,8 @@ $fmtBytes = static function ($bytes): string {
         });
     }
 
-    // Telemetry enable/disable toggle in the App tab
-    document.addEventListener('click', function(e) {
-        var btn = e.target.closest('.js-debug-telemetry-toggle');
-        if (!btn) return;
-        var enable = btn.getAttribute('data-enable') === 'true';
-        btn.disabled = true;
-        fetch('<?= SystemURLs::getRootPath() ?>/api/system/telemetry-consent', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({enable: enable})
-        }).then(function() {
-            window.location.reload();
-        }).catch(function() {
-            btn.disabled = false;
-        });
-    });
+
 </script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/debug.min.js') ?>"></script>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

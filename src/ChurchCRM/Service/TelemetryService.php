@@ -3,11 +3,15 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\VersionUtils;
 use Monolog\LogRecord;
 
 class TelemetryService
 {
+    // Hardcoded PostHog EU project credentials — not user-configurable.
+    public const POSTHOG_KEY      = 'phc_H5dHvtXJJhGVwzJiXyoQMfMVJYHN7xMpHiLcwkIYrAh';
+    public const POSTHOG_ENDPOINT = 'https://eu.i.posthog.com';
+
     public static function isEnabled(): bool
     {
         return SystemConfig::getBooleanValue('bEnableTelemetry');
@@ -60,7 +64,7 @@ class TelemetryService
     {
         return [
             '$lib'        => 'churchcrm-php',
-            'crm_version' => \ChurchCRM\Utils\VersionUtils::getInstalledVersion(),
+            'crm_version' => VersionUtils::getInstalledVersion(),
             'locale'      => SystemConfig::getValue('sLanguage') ?: 'en_US',
             'php_version' => PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION,
             'os_family'   => strtok((string) php_uname('s'), ' '),
@@ -78,11 +82,8 @@ class TelemetryService
             return;
         }
 
-        $endpoint = rtrim(SystemConfig::getValue('sPostHogEndpoint') ?: 'https://eu.i.posthog.com', '/');
-        $apiKey   = SystemConfig::getValue('sPostHogKey');
-        if ($apiKey === '') {
-            return;
-        }
+        $endpoint = self::POSTHOG_ENDPOINT;
+        $apiKey   = self::POSTHOG_KEY;
 
         $payload = json_encode([
             'api_key'     => $apiKey,

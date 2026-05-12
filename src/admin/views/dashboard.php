@@ -142,7 +142,7 @@ $showTelemetryPrompt = !SystemConfig::getBooleanValue('bEnableTelemetry')
                         <?= gettext('Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent.') ?>
                     </p>
                     <p class="text-secondary mb-3 small">
-                        <?= gettext('What we collect:') ?> <?= gettext('page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU.') ?>
+                        <?= gettext('What we collect') ?>: <?= gettext('page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU.') ?>
                     </p>
                     <div class="d-flex gap-2 flex-wrap">
                         <button type="button" class="btn btn-info js-telemetry-consent" data-enable="true">
@@ -156,20 +156,6 @@ $showTelemetryPrompt = !SystemConfig::getBooleanValue('bEnableTelemetry')
             </div>
         </div>
     </div>
-    <script nonce="<?= InputUtils::escapeAttribute(\ChurchCRM\dto\SystemURLs::getCSPNonce()) ?>">
-    document.querySelectorAll('.js-telemetry-consent').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-            const enable = btn.getAttribute('data-enable') === 'true';
-            fetch('<?= SystemURLs::getRootPath() ?>/api/system/telemetry-consent', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({enable: enable})
-            }).then(function() {
-                document.getElementById('telemetry-consent-card').remove();
-            });
-        });
-    });
-    </script>
     <?php endif; ?>
 
     <div class="row">
