@@ -1,5 +1,5 @@
 {
-  "Cannot delete event: %d people are currently checked in.": "",
-  "Cannot delete event: event is currently assigned to a kiosk.": "",
-  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": ""
+  "Cannot delete event: %d people are currently checked in.": "Nuk mund të fshijë ngjarjen: %d njerëz janë aktualisht regjistruar.",
+  "Cannot delete event: event is currently assigned to a kiosk.": "Nuk mund të fshijë ngjarjen: ngjarja aktualisht i është caktuar një kiosku.",
+  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "Nuk mund të fshijë grupin: ajo është audience për %d ngjarje(n) dhe grupi parazgjedhje për %d lloje ngjarjesh. Caktoni ato përsëri fillimisht."
 }
