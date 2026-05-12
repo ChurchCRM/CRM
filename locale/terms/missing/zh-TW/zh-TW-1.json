@@ -1,7 +1,7 @@
 {
-  "Cannot delete event: %d people are currently checked in.": "",
-  "Cannot delete event: event is currently assigned to a kiosk.": "",
-  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "",
-  "HTML URL": "",
-  "ICS URL": ""
+  "Cannot delete event: %d people are currently checked in.": "無法刪除事件：%d 人目前已簽到。",
+  "Cannot delete event: event is currently assigned to a kiosk.": "無法刪除事件：該事件目前已分配給資訊亭。",
+  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "無法刪除群組：它是 %d 個事件的受眾，也是 %d 個事件類型的預設群組。請先重新分配那些。",
+  "HTML URL": "HTML 網址",
+  "ICS URL": "ICS 網址"
 }
