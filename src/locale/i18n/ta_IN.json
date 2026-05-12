@@ -3503,7 +3503,6 @@
     "Cannot delete event: %d people are currently checked in.": "நிகழ்வை நீக்க இயலாது: தற்போது %d நபர்கள் வருகைப் பதிவு செய்துள்ளனர்.",
     "Cannot delete event: event is currently assigned to a kiosk.": "நிகழ்வை நீக்க இயலாது: இந்நிகழ்வு தற்போது ஒரு கியோஸ்க்கிற்கு (Kiosk) ஒதுக்கப்பட்டுள்ளது.",
     "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "குழுவை நீக்க இயலாது: இது %d நிகழ்வுகளுக்கான பார்வையாளர் குழுவாகவும், %d நிகழ்வு வகைகளுக்கான இயல்புநிலை குழுவாகவும் உள்ளது. முதலில் அவற்றை வேறு குழுவிற்கு மாற்றவும்.",
-    "Mailchimp": "மெயில்சிம்ப்",
     "A Calendar access token has been generated and saved.": "ஒரு காலண்டர் அணுகல் டோக்கன் (Access Token) உருவாக்கப்பட்டு சேமிக்கப்பட்டுள்ளது.",
     "API key regenerated": "API திறவுகோல் மீண்டும் உருவாக்கப்பட்டது",
     "Access Token": "அணுகல் டோக்கன்",
