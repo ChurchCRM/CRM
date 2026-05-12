@@ -71,13 +71,37 @@ final class ChurchCRMDocBlockAnalyser implements AnalyserInterface
             return $analysis;
         }
 
-        // Extract all docblock comments from all nodes
+        // Collect docblocks: first check file-level comments, then traverse AST nodes
+        $docBlocks = [];
+        $seen = [];
+
+        // File-level docblocks (e.g., top-of-file @OA\ blocks in info files)
+        // are attached to the first statement if it exists
+        if (!empty($stmts) && isset($stmts[0])) {
+            foreach ($stmts[0]->getAttribute('comments', []) as $comment) {
+                if ($comment instanceof Comment\Doc) {
+                    $text = $comment->getText();
+                    if (!isset($seen[$text])) {
+                        $seen[$text] = true;
+                        $docBlocks[] = ['text' => $text, 'line' => $comment->getStartLine()];
+                    }
+                }
+            }
+        }
+
+        // Extract all docblock comments from all nodes via AST traversal
         $traverser = new NodeTraverser();
-        $visitor = new class() extends NodeVisitorAbstract {
+        $visitor = new class($docBlocks, $seen) extends NodeVisitorAbstract {
             /** @var array<array{text: string, line: int}> */
-            public array $docBlocks = [];
+            public array $docBlocks;
             /** @var array<string, true> */
-            private array $seen = [];
+            private array $seen;
+
+            public function __construct(&$docBlocks, &$seen)
+            {
+                $this->docBlocks = &$docBlocks;
+                $this->seen = &$seen;
+            }
 
             public function enterNode(\PhpParser\Node $node): null
             {
@@ -107,7 +131,7 @@ final class ChurchCRMDocBlockAnalyser implements AnalyserInterface
         $traverser->traverse($stmts);
 
         // Parse OpenAPI annotations from extracted docblocks
-        foreach ($visitor->docBlocks as $entry) {
+        foreach ($docBlocks as $entry) {
             $blockContext = new Context([
                 'filename' => $filename,
                 'line' => $entry['line'],

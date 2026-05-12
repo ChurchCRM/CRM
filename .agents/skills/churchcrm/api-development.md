@@ -671,7 +671,7 @@ pages have a history of orphaning rows that the API shouldn't inherit.
 **Utilities:** `src/ChurchCRM/Slim/SlimUtils.php`
 **Middleware:** `src/ChurchCRM/Slim/Middleware/`
 **OpenAPI info:** `docs/openapi/openapi-public-info.php`, `docs/openapi/openapi-private-info.php`
-**Generated specs:** `CRM/openapi/public-api.yaml`, `CRM/openapi/private-api.yaml`
+**Generated specs:** `docs/openapi/generated/public-api.yaml`, `docs/openapi/generated/private-api.yaml`
 **Documentation site:** `docs.churchcrm.io/openapi/`, `docs.churchcrm.io/docs/public-api/`, `docs.churchcrm.io/docs/private-api/`
 
 ### HTML + JSON Content Negotiation in Middleware <!-- learned: 2026-04-22 -->

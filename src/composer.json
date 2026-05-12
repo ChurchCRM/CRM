@@ -59,8 +59,10 @@
   },
   "require-dev": {
     "doctrine/annotations": "^2.0",
+    "nikic/php-parser": "^5.0",
     "phpstan/phpstan": "^2.1.6",
     "rector/rector": "^2.0.9",
+    "symfony/finder": "^5.4",
     "zircote/swagger-php": "^6.0"
   },
   "replace": {

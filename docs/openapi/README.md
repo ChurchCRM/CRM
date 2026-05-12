@@ -21,8 +21,8 @@ All generation commands should be run from the `src/` directory:
 
 ```bash
 cd src
-npm run openapi:public   # Generate public API spec
-npm run openapi:private  # Generate private API spec
+composer run openapi:public   # Generate public API spec
+composer run openapi:private  # Generate private API spec
 ```
 
 Or manually:
@@ -88,8 +88,8 @@ function getEcho(Request $request, Response $response): Response
 3. Regenerate specs:
 ```bash
 cd src
-npm run openapi-public
-npm run openapi-private
+composer run openapi:public
+composer run openapi:private
 ```
 
 ## Output Location

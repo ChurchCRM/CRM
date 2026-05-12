@@ -9,11 +9,11 @@ declare(strict_types=1);
  * Generates OpenAPI (Swagger) documentation from route file annotations.
  * This is a build/documentation tool and should not be shipped with production code.
  *
- * Usage: php openapi-generate.php [paths...] [--output file] [--format yaml|json] [--exclude path]
+ * Usage: php generate.php [paths...] [--output file] [--format yaml|json] [--exclude path]
  *
  * Examples:
- *   php openapi-generate.php openapi-public-info.php ../src/api/routes/public/ --output public-api.yaml
- *   php openapi-generate.php openapi-private-info.php ../src/api/routes/ --output private-api.yaml
+ *   php generate.php openapi-public-info.php ../src/api/routes/public/ --output public-api.yaml
+ *   php generate.php openapi-private-info.php ../src/api/routes/ --output private-api.yaml
  *
  * @license MIT
  */
@@ -123,7 +123,7 @@ foreach ($resolvedPaths as $rawPath) {
 }
 
 // Generate OpenAPI spec
-$debug = !empty($options['d']);
+$debug = !empty($options['d']) || !empty($options['debug']);
 $generator = new Generator(new DefaultLogger());
 $generator->setAnalyser(new ChurchCRMDocBlockAnalyser());
 
@@ -139,15 +139,18 @@ $format = strtolower($options['f'] ?? $options['format'] ?? 'yaml');
 $output = $options['o'] ?? $options['output'] ?? null;
 
 if ($output) {
-    // If output is relative, make it relative to the script directory or docs/
+    // If output is relative, resolve it against src/ (where composer scripts run from)
     if (!str_starts_with($output, '/')) {
-        $output = $scriptDir . '/' . $output;
+        $output = $srcDir . '/' . $output;
     }
-    
+
+    // Normalize the path to remove .. and .
+    $output = realpath(dirname($output)) . '/' . basename($output);
+
     if (is_dir($output)) {
         $output = rtrim($output, '/') . '/openapi.' . $format;
     }
-    
+
     $openapi->saveAs($output, $format);
     fwrite(STDERR, "✓ OpenAPI spec written to: $output\n");
 } else {

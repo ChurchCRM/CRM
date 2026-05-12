@@ -12,6 +12,7 @@ on:
       - 'src/api/routes/**'
       - 'src/admin/routes/api/**'
       - 'docs/openapi/**'
+      - '!docs/openapi/generated/**'
       - 'src/kiosk/routes/api/**'
       - 'src/plugins/routes/api/**'
   pull_request:
@@ -19,6 +20,7 @@ on:
       - 'src/api/routes/**'
       - 'src/admin/routes/api/**'
       - 'docs/openapi/**'
+      - '!docs/openapi/generated/**'
       - 'src/kiosk/routes/api/**'
       - 'src/plugins/routes/api/**'
   workflow_dispatch:
