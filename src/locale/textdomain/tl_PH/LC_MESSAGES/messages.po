@@ -14646,6 +14646,18 @@ msgid "seconds"
 msgstr "segundo"
 
 #: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "Hindi maaaring burahin ang kaganapan: %d mga tao ang kasalukuyang naka-check in."
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "Hindi maaaring burahin ang kaganapan: ang kaganapan ay kasalukuyang nakalaan sa isang kiosk."
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "Hindi maaaring burahin ang grupo: ito ay ang madla para sa %d kaganapan(gan) at ang default na grupo para sa %d uri(urin) ng kaganapan. Tukuyin muli ang mga ito muna."
+
+#: 
 msgid "A Calendar access token has been generated and saved."
 msgstr "Isang calendar access token ay nagawa at na-save na."
 

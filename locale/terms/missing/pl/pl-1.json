@@ -1,6 +1,3 @@
 {
-  "Cannot delete event: %d people are currently checked in.": "Nie można usunąć zdarzenia: %d osób jest obecnie zarejestrowanych.",
-  "Cannot delete event: event is currently assigned to a kiosk.": "Nie można usunąć zdarzenia: zdarzenie jest obecnie przypisane do kiosku.",
-  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "Nie można usunąć grupy: jest to odbiorcy dla %d zdarzenia/zdarzeń i domyślna grupa dla %d typu/typów zdarzeń. Najpierw przypisz je ponownie.",
   "ICS URL": ""
 }

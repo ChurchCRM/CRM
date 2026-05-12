@@ -14722,6 +14722,18 @@ msgid "seconds"
 msgstr "ثوانٍ"
 
 #: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "لا يمكن حذف الحدث: %d شخص(ص) تم تسجيل دخولهم حالياً."
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "لا يمكن حذف الحدث: تم تعيين الحدث حالياً لكشك."
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "لا يمكن حذف المجموعة: فهي الجمهور ل %d حدث(ثاً) والمجموعة الافتراضية ل %d نوع(أنواع) حدث. أعد تعيينها أولاً."
+
+#: 
 msgid "A Calendar access token has been generated and saved."
 msgstr "تم إنشاء وحفظ رمز الوصول للتقويم."
 
@@ -15409,6 +15421,10 @@ msgstr "إخفاء الخيارات المتقدمة"
 #: 
 msgid "Home phone is required"
 msgstr "رقم هاتف المنزل مطلوب"
+
+#: 
+msgid "ICS URL"
+msgstr "عنوان URL لـ ICS"
 
 #: 
 msgid "Ignored"

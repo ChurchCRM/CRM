@@ -14687,6 +14687,18 @@ msgid "seconds"
 msgstr "δευτερόλεπτα"
 
 #: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "Δεν είναι δυνατή η διαγραφή του συμβάντος: %d άτομα είναι αρχικά συνδεδεμένα."
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "Δεν είναι δυνατή η διαγραφή του συμβάντος: το συμβάν είναι αρχικά καταχωρημένο σε ένα περίπτερο."
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "Δεν είναι δυνατή η διαγραφή της ομάδας: είναι το κοινό για %d συμβάν(τα) και η προεπιλεγμένη ομάδα για %d ειδ(ος/ή) συμβάντος. Κάντε πρώτα επανάθεση εκείνων."
+
+#: 
 msgid "A Calendar access token has been generated and saved."
 msgstr "Δημιουργήθηκε και αποθηκεύτηκε ένα διακριτικό πρόσβασης ημερολογίου."
 

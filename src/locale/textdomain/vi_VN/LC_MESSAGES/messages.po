@@ -14681,6 +14681,18 @@ msgid "seconds"
 msgstr "giây"
 
 #: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "Không thể xóa sự kiện: %d người hiện đang check in."
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "Không thể xóa sự kiện: sự kiện hiện đang được gán cho một kiosk."
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "Không thể xóa nhóm: nó là đối tượng cho %d sự kiện và nhóm mặc định cho %d loại sự kiện. Gán lại các nhóm đó trước."
+
+#: 
 msgid "A Calendar access token has been generated and saved."
 msgstr "Mã truy cập lịch đã được tạo và lưu."
 

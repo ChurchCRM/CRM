@@ -14766,6 +14766,18 @@ msgid "seconds"
 msgstr "sekund"
 
 #: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "Nie można usunąć zdarzenia: %d osób jest obecnie zarejestrowanych."
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "Nie można usunąć zdarzenia: zdarzenie jest obecnie przypisane do kiosku."
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "Nie można usunąć grupy: jest to odbiorcy dla %d zdarzenia/zdarzeń i domyślna grupa dla %d typu/typów zdarzeń. Najpierw przypisz je ponownie."
+
+#: 
 msgid "A Calendar access token has been generated and saved."
 msgstr "Token dostępu do kalendarza został wygenerowany."
 
