@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\AdminService;
 use ChurchCRM\Service\AppIntegrityService;
@@ -25,6 +26,10 @@ $hasOrphanedFiles = count($orphanedFiles) > 0;
 
 // Calculate overall health status
 $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCriticalWarnings() && !$hasURLError;
+
+// Telemetry consent prompt: show when telemetry is off and not yet asked for this version.
+$showTelemetryPrompt = !SystemConfig::getBooleanValue('bEnableTelemetry')
+    && SystemConfig::getValue('sTelemetryAskedVersion') !== VersionUtils::getInstalledVersion();
 ?>
 
 <!-- Load admin dashboard CSS -->
@@ -120,6 +125,51 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
             </div>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
+    <?php endif; ?>
+
+    <?php if ($showTelemetryPrompt): ?>
+    <!-- Telemetry consent card -->
+    <div class="card mb-4 border-info" id="telemetry-consent-card">
+        <div class="card-status-top bg-info"></div>
+        <div class="card-body">
+            <div class="d-flex align-items-start gap-3">
+                <div class="pt-1">
+                    <i class="ti ti-chart-bar fs-2 text-info"></i>
+                </div>
+                <div class="flex-grow-1">
+                    <h5 class="mb-1"><?= gettext('Help improve ChurchCRM') ?></h5>
+                    <p class="text-secondary mb-2">
+                        <?= gettext('Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent.') ?>
+                    </p>
+                    <p class="text-secondary mb-3 small">
+                        <?= gettext('What we collect:') ?> <?= gettext('page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU.') ?>
+                    </p>
+                    <div class="d-flex gap-2 flex-wrap">
+                        <button type="button" class="btn btn-info js-telemetry-consent" data-enable="true">
+                            <i class="ti ti-check me-1"></i><?= gettext('Enable anonymous telemetry') ?>
+                        </button>
+                        <button type="button" class="btn btn-ghost-secondary js-telemetry-consent" data-enable="false">
+                            <?= gettext('No thanks') ?>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script nonce="<?= InputUtils::escapeAttribute(\ChurchCRM\dto\SystemURLs::getCSPNonce()) ?>">
+    document.querySelectorAll('.js-telemetry-consent').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const enable = btn.getAttribute('data-enable') === 'true';
+            fetch('<?= SystemURLs::getRootPath() ?>/api/system/telemetry-consent', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({enable: enable})
+            }).then(function() {
+                document.getElementById('telemetry-consent-card').remove();
+            });
+        });
+    });
+    </script>
     <?php endif; ?>
 
     <div class="row">

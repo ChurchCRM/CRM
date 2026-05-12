@@ -165,6 +165,44 @@ function categoryId(string $category): string {
            id="<?= $tabId ?>"
            role="tabpanel"
            aria-labelledby="<?= $tabId ?>-tab">
+        <?php if ($category === gettext('Telemetry')): ?>
+        <!-- What we collect — visible before the toggle is saved so consent is informed -->
+        <div class="card mb-3 border-info">
+          <div class="card-header">
+            <h4 class="card-title text-info"><i class="ti ti-info-circle me-2"></i><?= gettext('What is sent when telemetry is enabled') ?></h4>
+          </div>
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table table-sm mb-0">
+                <thead><tr><th><?= gettext('Data') ?></th><th><?= gettext('Example') ?></th><th><?= gettext('Purpose') ?></th></tr></thead>
+                <tbody>
+                  <tr><td><?= gettext('Installation UUID') ?></td><td><code>a3f2…</code></td><td><?= gettext('Count unique installs') ?></td></tr>
+                  <tr><td><?= gettext('ChurchCRM version') ?></td><td><code>5.12.0</code></td><td><?= gettext('Track adoption') ?></td></tr>
+                  <tr><td><?= gettext('Locale') ?></td><td><code>fr_FR</code></td><td><?= gettext('Prioritise translations') ?></td></tr>
+                  <tr><td><?= gettext('Page route') ?></td><td><code>/people/persons</code></td><td><?= gettext('Understand feature usage') ?></td></tr>
+                  <tr><td><?= gettext('PHP version') ?></td><td><code>8.2</code></td><td><?= gettext('Plan runtime support') ?></td></tr>
+                  <tr><td><?= gettext('OS family') ?></td><td><code>Linux</code></td><td><?= gettext('Understand deployments') ?></td></tr>
+                  <tr><td><?= gettext('Log level + message') ?></td><td><code>ERROR: SMTP failed</code></td><td><?= gettext('Catch recurring errors') ?></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="px-3 pb-3">
+              <strong class="d-block mb-1"><?= gettext('What is never sent') ?></strong>
+              <ul class="mb-2 ps-3 small text-secondary">
+                <li><?= gettext('Church name, address, or contact details') ?></li>
+                <li><?= gettext('User names, emails, or roles') ?></li>
+                <li><?= gettext('Member or family records') ?></li>
+                <li><?= gettext('Financial data') ?></li>
+                <li><?= gettext('IP addresses') ?></li>
+                <li><?= gettext('URLs with query strings (record IDs are stripped)') ?></li>
+              </ul>
+              <p class="small text-secondary mb-0">
+                <?= gettext('Data is processed by PostHog on EU infrastructure. You can point telemetry at your own self-hosted PostHog instance using the advanced settings below.') ?>
+              </p>
+            </div>
+          </div>
+        </div>
+        <?php endif; ?>
         <div class="card">
           <div class="card-header">
             <h3 class="card-title"><?= gettext($category) ?></h3>
