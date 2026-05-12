@@ -197,7 +197,7 @@ function categoryId(string $category): string {
                 <li><?= gettext('URLs with query strings (record IDs are stripped)') ?></li>
               </ul>
               <p class="small text-secondary mb-0">
-                <?= gettext('Data is processed by PostHog on EU infrastructure. You can point telemetry at your own self-hosted PostHog instance using the advanced settings below.') ?>
+                <?= gettext('Data is processed by PostHog on EU infrastructure and subject to their privacy policy.') ?>
               </p>
             </div>
           </div>

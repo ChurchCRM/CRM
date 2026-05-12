@@ -40,6 +40,8 @@ module.exports = {
     'event-editor': './webpack/event-editor',
     'event-types-list': './webpack/event-types-list',
     'event-cart-to-event': './webpack/event-cart-to-event',
+    'telemetry': './webpack/telemetry',
+    'debug': './webpack/debug',
   },
   output: {
     path: path.resolve('./src/skin/v2'),
