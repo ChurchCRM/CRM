@@ -66,10 +66,6 @@ FROM base AS prod
 # Use non-root user
 USER www
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-    CMD php-fpm-healthcheck || exit 1
-
 
 # Dev stage - includes build tools for local development inside the container
 FROM base AS dev
@@ -83,7 +79,7 @@ RUN apt-get update && \
         unzip \
         curl \
     && rm -rf /var/lib/apt/lists/* && \
-    curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh -o /opt/node-install.sh && \
+    curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh -o /opt/node-install.sh && \
     chmod a+x /opt/node-install.sh && \
     /opt/node-install.sh && \
     rm /opt/node-install.sh && \
@@ -92,6 +88,6 @@ RUN apt-get update && \
 
 # Install Composer with checksum verification
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
-    php -r "if (hash_file('sha384', 'composer-setup.php') === file_get_contents('https://composer.github.io/installer.sig')) { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); exit(1); }" && \
+    php -r "if (hash_file('sha384', 'composer-setup.php') === trim(file_get_contents('https://composer.github.io/installer.sig'))) { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); exit(1); }" && \
     php composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
     rm composer-setup.php

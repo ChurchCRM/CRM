@@ -43,9 +43,7 @@ RUN groupadd -r www && useradd -r -g www www
 
 # Test stage - minimal runtime environment for CI/CD
 FROM base AS test
-
-# Use non-root user
-USER www
+# Note: Apache binding to port 80 requires root privileges, so USER directive is omitted
 
 
 # Dev stage - full development environment with build tools
@@ -63,12 +61,12 @@ RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 # Install Composer with checksum verification
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
-    php -r "if (hash_file('sha384', 'composer-setup.php') === file_get_contents('https://composer.github.io/installer.sig')) { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); exit(1); }" && \
+    php -r "if (hash_file('sha384', 'composer-setup.php') === trim(file_get_contents('https://composer.github.io/installer.sig'))) { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); exit(1); }" && \
     php composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
     rm composer-setup.php
 
 # Install NVM and Node.js 24 (aligned with CI and package.json engines)
-RUN curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh -o /opt/node-install.sh && \
+RUN curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh -o /opt/node-install.sh && \
     chmod a+x /opt/node-install.sh && \
     /opt/node-install.sh && \
     rm /opt/node-install.sh && \
