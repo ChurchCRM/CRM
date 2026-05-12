@@ -1,5 +1,5 @@
 {
-  "Cannot delete event: %d people are currently checked in.": "",
-  "Cannot delete event: event is currently assigned to a kiosk.": "",
-  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": ""
+  "Cannot delete event: %d people are currently checked in.": "Kan ikke slette hendelsen: %d personer er for tiden innsjekket.",
+  "Cannot delete event: event is currently assigned to a kiosk.": "Kan ikke slette hendelsen: hendelsen er for tiden tilordnet en kiosk.",
+  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "Kan ikke slette gruppen: det er publikum for %d hendelse(r) og standardgruppen for %d hendelsestype(r). Tildel disse på nytt først."
 }

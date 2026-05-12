@@ -1,7 +1,7 @@
 {
-  "Cannot delete event: %d people are currently checked in.": "",
-  "Cannot delete event: event is currently assigned to a kiosk.": "",
-  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "",
-  "HTML URL": "",
-  "ICS URL": ""
+  "Cannot delete event: %d people are currently checked in.": "Nelze smazat akci: %d osob je v současné době přihlášeno.",
+  "Cannot delete event: event is currently assigned to a kiosk.": "Nelze smazat akci: akce je v současné době přiřazena ke kiosku.",
+  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "Skupinu nelze smazat: je publikem pro %d akci(í) a výchozí skupinou pro %d typ(y) akcí. Nejdříve je znovu přiřaďte.",
+  "HTML URL": "URL HTML",
+  "ICS URL": "URL ICS"
 }

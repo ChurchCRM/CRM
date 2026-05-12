@@ -1,5 +1,6 @@
 {
-  "Cannot delete event: %d people are currently checked in.": "",
-  "Cannot delete event: event is currently assigned to a kiosk.": "",
-  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": ""
+  "Cannot delete event: %d people are currently checked in.": "Tapahtumaa ei voi poistaa: %d henkilöä on tällä hetkellä kirjautuneena.",
+  "Cannot delete event: event is currently assigned to a kiosk.": "Tapahtumaa ei voi poistaa: tapahtuma on tällä hetkellä määritetty kioskille.",
+  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "Ryhmää ei voi poistaa: se on %d tapahtuman yleisö ja %d tapahtumatyyypin oletusryhmä. Määritä nämä uudelleen ensin.",
+  "ICS URL": "ICS URL"
 }
