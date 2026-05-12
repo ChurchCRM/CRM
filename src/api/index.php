@@ -53,6 +53,7 @@ require __DIR__ . '/routes/public/public-register.php';
 require __DIR__ . '/routes/system/property-types.php';
 require __DIR__ . '/routes/system/system-custom-fields.php';
 require __DIR__ . '/routes/system/system-issues.php';
+require __DIR__ . '/routes/system/telemetry-consent.php';
 require __DIR__ . '/routes/system/volunteer-opportunities.php';
 require __DIR__ . '/routes/cart.php';
 require __DIR__ . '/routes/background.php';
