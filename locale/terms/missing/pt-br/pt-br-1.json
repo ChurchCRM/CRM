@@ -1,6 +1,3 @@
 {
-  "Cannot delete event: %d people are currently checked in.": "Não é possível excluir o evento: %d pessoas estão registradas no momento.",
-  "Cannot delete event: event is currently assigned to a kiosk.": "Não é possível excluir o evento: o evento está atribuído a um quiosque.",
-  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "Não é possível excluir o grupo: ele é o público para %d evento(s) e o grupo padrão para %d tipo(s) de evento. Reatribua aqueles primeiro.",
-  "Manual": "Manual"
+  "Manual": ""
 }

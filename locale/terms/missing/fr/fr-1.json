@@ -1,8 +1,0 @@
-{
-  "Cannot delete event: %d people are currently checked in.": "Impossible de supprimer l'événement : %d personnes sont actuellement enregistrées.",
-  "Cannot delete event: event is currently assigned to a kiosk.": "Impossible de supprimer l'événement : l'événement est actuellement assigné à un kiosque.",
-  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "Impossible de supprimer le groupe : il est le public pour %d événement(s) et le groupe par défaut pour %d type(s) d'événement. Réaffectez-les d'abord.",
-  "HTML URL": "URL HTML",
-  "ICS URL": "URL ICS",
-  "Important": "Important"
-}
