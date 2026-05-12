@@ -1,5 +1,5 @@
 {
-  "Cannot delete event: %d people are currently checked in.": "",
-  "Cannot delete event: event is currently assigned to a kiosk.": "",
-  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": ""
+  "Cannot delete event: %d people are currently checked in.": "Không thể xóa sự kiện: %d người hiện đang check in.",
+  "Cannot delete event: event is currently assigned to a kiosk.": "Không thể xóa sự kiện: sự kiện hiện đang được gán cho một kiosk.",
+  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "Không thể xóa nhóm: nó là đối tượng cho %d sự kiện và nhóm mặc định cho %d loại sự kiện. Gán lại các nhóm đó trước."
 }

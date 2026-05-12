@@ -1,6 +1,6 @@
 {
-  "Cannot delete event: %d people are currently checked in.": "",
-  "Cannot delete event: event is currently assigned to a kiosk.": "",
-  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "",
-  "HTML URL": ""
+  "Cannot delete event: %d people are currently checked in.": "ইভেন্ট حذف করা যায় না: %d জন বর্তমানে চেক ইন করছেন।",
+  "Cannot delete event: event is currently assigned to a kiosk.": "ইভেন্ট হটানো যায় না: ইভেন্ট বর্তমানে একটি কিয়স্কে বরাদ্দ করা হয়েছে।",
+  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "গোষ্ঠী মুছে ফেলা যায় না: এটি %d ইভেন্টের শ্রোতা এবং %d ইভেন্ট প্রকারের ডিফল্ট গোষ্ঠী। প্রথমে সেগুলি পুনরায় বরাদ্দ করুন।",
+  "HTML URL": "HTML URL"
 }

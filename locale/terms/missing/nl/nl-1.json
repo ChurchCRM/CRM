@@ -1,8 +1,8 @@
 {
-  "Cannot delete event: %d people are currently checked in.": "",
-  "Cannot delete event: event is currently assigned to a kiosk.": "",
-  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "",
-  "HTML URL": "",
-  "ICS URL": "",
-  "in": ""
+  "Cannot delete event: %d people are currently checked in.": "Kan evenement niet verwijderen: %d personen zijn momenteel ingecheckt.",
+  "Cannot delete event: event is currently assigned to a kiosk.": "Kan evenement niet verwijderen: evenement is momenteel aan een kiosk toegewezen.",
+  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "Kan groep niet verwijderen: dit is het publiek voor %d evenement(en) en de standaardgroep voor %d soort(en) evenement. Wijs deze eerst opnieuw toe.",
+  "HTML URL": "HTML URL",
+  "ICS URL": "ICS URL",
+  "in": "in"
 }
