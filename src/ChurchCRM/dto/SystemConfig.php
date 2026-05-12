@@ -266,8 +266,6 @@ class   SystemConfig
             // Telemetry — master switch and internal state (sTelemetryAskedVersion excluded from UI)
             'bEnableTelemetry'                     => new ConfigItem('bEnableTelemetry', 'boolean', '0', gettext('Share anonymous usage statistics with the ChurchCRM team. No church names, member data, or personal information is ever sent.')),
             'sTelemetryAskedVersion'               => new ConfigItem('sTelemetryAskedVersion', 'text', ''),
-            'sPostHogKey'                          => new ConfigItem('sPostHogKey', 'text', 'phc_H5dHvtXJJhGVwzJiXyoQMfMVJYHN7xMpHiLcwkIYrAh', gettext('PostHog project API key. Override this to point to your own self-hosted PostHog instance.')),
-            'sPostHogEndpoint'                     => new ConfigItem('sPostHogEndpoint', 'text', 'https://eu.i.posthog.com', gettext('PostHog ingest URL. Change this to your self-hosted PostHog endpoint if you are not using the PostHog EU cloud.')),
         ];
     }
 
@@ -282,7 +280,7 @@ class   SystemConfig
             gettext('Quick Search')       => ['bSearchIncludePersons', 'bSearchIncludePersonsMax', 'bSearchIncludeAddresses', 'bSearchIncludeAddressesMax', 'bSearchIncludeFamilies', 'bSearchIncludeFamiliesMax', 'bSearchIncludeFamilyHOH', 'bSearchIncludeFamilyHOHMax', 'bSearchIncludeGroups', 'bSearchIncludeGroupsMax', 'bSearchIncludeDeposits', 'bSearchIncludeDepositsMax', 'bSearchIncludePayments', 'bSearchIncludePaymentsMax', 'bSearchIncludeFamilyCustomProperties', 'bSearchIncludeCalendarEvents', 'bSearchIncludeCalendarEventsMax'],
             gettext('Confession')         => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField'],
             // sTelemetryAskedVersion is internal state — excluded from settings UI
-            gettext('Telemetry')          => ['bEnableTelemetry', 'sPostHogKey', 'sPostHogEndpoint'],
+            gettext('Telemetry')          => ['bEnableTelemetry'],
         ];
     }
 

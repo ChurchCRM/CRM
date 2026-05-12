@@ -48,21 +48,7 @@ $MenuFirst = 1;
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <?php require_once __DIR__ . '/Header-HTML-Scripts.php'; ?>
   <?= PluginManager::getPluginHeadContent() ?>
-  <?php if (SystemConfig::getBooleanValue('bEnableTelemetry')): ?>
-  <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]);t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+" (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-  posthog.init(<?= json_encode(SystemConfig::getValue('sPostHogKey')) ?>, {
-    api_host: <?= json_encode(SystemConfig::getValue('sPostHogEndpoint') ?: 'https://eu.i.posthog.com') ?>,
-    capture_pageview: false,
-    autocapture: false,
-    capture_heatmaps: false,
-    disable_session_recording: true,
-    capture_exceptions: true,
-    person_profiles: 'never',
-    bootstrap: { distinctID: <?= json_encode(SystemConfig::getValue('sSystemID')) ?> }
-  });
-  </script>
-  <?php endif; ?>
+
 </head>
 
 <body class="antialiased">
@@ -182,7 +168,13 @@ $MenuFirst = 1;
               addRecords: <?= json_encode($currentUser->isAddRecordsEnabled()) ?>,
               editRecords: <?= json_encode($currentUser->isEditRecordsEnabled()) ?>,
           },
-          PageName:<?= json_encode($_SERVER['REQUEST_URI'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>
+          PageName:<?= json_encode($_SERVER['REQUEST_URI'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>,
+          telemetry: <?= json_encode([
+              'enabled'    => SystemConfig::getBooleanValue('bEnableTelemetry'),
+              'key'        => SystemConfig::getBooleanValue('bEnableTelemetry') ? TelemetryService::POSTHOG_KEY : '',
+              'endpoint'   => TelemetryService::POSTHOG_ENDPOINT,
+              'distinctID' => SystemConfig::getValue('sSystemID'),
+          ]) ?>
       });
       // Initialize moment locale if available
       if (typeof moment !== 'undefined' && window.CRM.shortLocale) {
@@ -502,4 +494,8 @@ foreach (NotificationService::getNotifications() as $notification) {
 // Strip query string so no record IDs reach PostHog.
 $_telemetryRoute = strtok($_SERVER['PHP_SELF'] ?? 'unknown', '?');
 TelemetryService::capturePageView($_telemetryRoute);
+
+if (SystemConfig::getBooleanValue('bEnableTelemetry')):
 ?>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/telemetry.min.js') ?>" defer></script>
+<?php endif; ?>
