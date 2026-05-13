@@ -1953,3 +1953,85 @@ describe("Family Activation", () => {
     it("...", () => { /* ... */ });
 });
 ```
+
+## Authorization Testing — Admin vs Standard Users <!-- learned: 2026-05-13 -->
+
+### User Types and Capabilities
+
+When testing authorization gates, use the appropriate session setup command:
+
+| Session Type | Usage | Capabilities |
+|--------------|-------|--------------|
+| `cy.setupAdminSession()` | Admin-only features | Full access to all admin pages, CSV export, system config, user management |
+| `cy.setupStandardSession()` | Standard user with basic permissions | View/edit own profile, view groups, participate in events; NO access to admin pages or system config |
+| `cy.setupNoFinanceSession()` | User without finance access | Same as standard, but no access to finance/donation records |
+
+### Authorization Test Pattern
+
+For features that require admin access, test three scenarios: admin **can** do it, standard user **cannot**, and unauthenticated user **cannot**:
+
+```js
+describe("CSV Export Authorization", () => {
+    it("should allow admin users to submit CSV export", () => {
+        cy.setupAdminSession();
+        cy.visit("/CSVExport.php");
+        cy.contains("CSV Export").should("be.visible");
+
+        cy.request({
+            method: "POST",
+            url: "/CSVCreateFile.php",
+            body: { Title: 1, FirstName: 1, ... }
+        }).then((response) => {
+            expect(response.status).to.eq(200);
+            expect(response.headers["content-type"]).to.include("text/csv");
+        });
+    });
+
+    it("should deny non-admin users access to CSVExport.php", () => {
+        cy.setupStandardSession();
+        cy.visit("/CSVExport.php", { failOnStatusCode: false });
+
+        // Standard users are redirected to session/begin (security redirect)
+        cy.url().should("include", "/session/begin");
+    });
+
+    it("should deny non-admin users POST to CSVCreateFile.php", () => {
+        cy.setupStandardSession();
+        cy.request({
+            method: "POST",
+            url: "/CSVCreateFile.php",
+            body: { Title: 1, FirstName: 1, ... },
+            failOnStatusCode: false
+        }).then((response) => {
+            // Non-admin users get 302 redirect (security redirect)
+            expect([301, 302]).to.include(response.status);
+        });
+    });
+
+    it("should deny unauthenticated access to CSVExport.php", () => {
+        cy.visit("/CSVExport.php", { failOnStatusCode: false });
+        cy.url().should("include", "/session/begin");
+    });
+
+    it("should deny unauthenticated POST to CSVCreateFile.php", () => {
+        cy.request({
+            method: "POST",
+            url: "/CSVCreateFile.php",
+            body: { Title: 1, FirstName: 1, ... },
+            failOnStatusCode: false
+        }).then((response) => {
+            // Unauthenticated users get redirect to login
+            expect([301, 302, 401]).to.include(response.status);
+        });
+    });
+});
+```
+
+### Key Rules for Authorization Testing
+
+1. **Use separate `describe` blocks per user type** when testing multiple permission levels in one file
+2. **For GET requests**, check URL redirect (e.g., `cy.url().should("include", "/session/begin")`)
+3. **For POST requests**, check HTTP status code (302 for `RedirectUtils::securityRedirect()`, 401/403 for API errors)
+4. **Always test the happy path first** (admin can do it), then test denials
+5. **Test both GET and POST paths** when a feature has both (form page + form submission)
+6. **Use `failOnStatusCode: false`** on `cy.visit()` and `cy.request()` when expecting non-2xx responses

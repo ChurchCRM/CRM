@@ -160,10 +160,52 @@ describe("CSV Export Authorization (GHSA-4vj2-gm78-3q63)", () => {
                 Format: "Default",
                 Submit: "Create File"
             },
-            failOnStatusCode: false
+            failOnStatusCode: false,
+            followRedirect: false
         }).then((response) => {
             // Should get 302 redirect to login or 401 Unauthorized
             expect([301, 302, 401]).to.include(response.status);
+        });
+    });
+});
+
+describe("CSV Export Authorization — Standard Users", () => {
+    beforeEach(() => {
+        cy.setupStandardSession();
+    });
+
+    it("should deny non-admin users access to CSVExport.php", () => {
+        // Should not be able to visit the form
+        cy.visit("/CSVExport.php", { failOnStatusCode: false });
+
+        // Should be redirected to access-denied page
+        cy.url().should("include", "/v2/access-denied");
+    });
+
+    it("should deny non-admin users POST to CSVCreateFile.php", () => {
+        // Attempt to POST to CSVCreateFile.php as non-admin
+        cy.request({
+            method: "POST",
+            url: "/CSVCreateFile.php",
+            body: {
+                Title: 1,
+                FirstName: 1,
+                Address1: 1,
+                City: 1,
+                State: 1,
+                Zip: 1,
+                Country: 1,
+                Email: 1,
+                Source: "all",
+                Gender: 0,
+                Format: "Default",
+                Submit: "Create File"
+            },
+            failOnStatusCode: false,
+            followRedirect: false
+        }).then((response) => {
+            // Should get 302 redirect (security redirect)
+            expect([301, 302]).to.include(response.status);
         });
     });
 });
