@@ -10,7 +10,7 @@ class TelemetryService
 {
     // Hardcoded PostHog EU project credentials — not user-configurable.
     public const POSTHOG_KEY      = 'phc_vhMEHZai3exmp3sqqtJGyVY8Dfjn877bV7zQjV99sJZy';
-    public const POSTHOG_ENDPOINT = 'https://eu.i.posthog.com';
+    public const POSTHOG_ENDPOINT = 'https://us.i.posthog.com';
 
     // Collection levels stored in sTelemetryLevel.
     public const LEVEL_NONE     = 'none';
