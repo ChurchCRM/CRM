@@ -14647,6 +14647,18 @@ msgid "seconds"
 msgstr "วินาที"
 
 #: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "ไม่สามารถลบอีเวนต์: %d คนลงเข้าสู่ระบบอยู่ในขณะนี้"
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "ไม่สามารถลบอีเวนต์: อีเวนต์ได้รับมอบหมายให้ไปยังคีออสก์ในขณะนี้"
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "ไม่สามารถลบกลุ่ม: เป็นผู้ชมสำหรับ %d อีเวนต์และกลุ่มเริ่มต้นสำหรับประเภทอีเวนต์ %d ปรับปรุงสิ่งเหล่านั้นใหม่ก่อน"
+
+#: 
 msgid "A Calendar access token has been generated and saved."
 msgstr "โทเค็นการเข้าถึงปฏิทินถูกสร้างและบันทึกแล้ว"
 

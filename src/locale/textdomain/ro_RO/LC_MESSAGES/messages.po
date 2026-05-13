@@ -14768,6 +14768,18 @@ msgid "seconds"
 msgstr "secunde"
 
 #: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "Nu se poate șterge evenimentul: %d persoane sunt în prezent înregistrate."
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "Nu se poate șterge evenimentul: evenimentul este în prezent atribuit unui kiosk."
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "Nu se poate șterge grupul: este audiența pentru %d eveniment(e) și grupul implicit pentru %d tip(uri) de eveniment. Reatribuiți acestea mai întâi."
+
+#: 
 msgid "A Calendar access token has been generated and saved."
 msgstr "Un token de acces la calendar a fost generat și salvat."
 
@@ -15441,6 +15453,10 @@ msgid "GroupID required for role selection prompt"
 msgstr "ID grup necesar pentru selectarea rolului"
 
 #: 
+msgid "HTML URL"
+msgstr "URL HTML"
+
+#: 
 msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 msgstr "Pregătiți aplicația de autentificare (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 
@@ -15451,6 +15467,10 @@ msgstr "Ascundeți opțiunile avansate"
 #: 
 msgid "Home phone is required"
 msgstr "Telefonul de acasă este obligatoriu"
+
+#: 
+msgid "ICS URL"
+msgstr "URL ICS"
 
 #: 
 msgid "Ignored"

@@ -14694,6 +14694,18 @@ msgid "seconds"
 msgstr "ሰከንዶች"
 
 #: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "ইভেন্ট حذف করা যায় না: %d জন বর্তমানে চেক ইন করছেন।"
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "ইভেন্ট হটানো যায় না: ইভেন্ট বর্তমানে একটি কিয়স্কে বরাদ্দ করা হয়েছে।"
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "গোষ্ঠী মুছে ফেলা যায় না: এটি %d ইভেন্টের শ্রোতা এবং %d ইভেন্ট প্রকারের ডিফল্ট গোষ্ঠী। প্রথমে সেগুলি পুনরায় বরাদ্দ করুন।"
+
+#: 
 msgid "A Calendar access token has been generated and saved."
 msgstr "የቀን መቁጠሪያ መድረሻ ቶከን ተዘጋጅቶ ተቀምጧል።"
 
