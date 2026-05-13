@@ -26,7 +26,8 @@ feature/{description}
 - Include issue number for bug fixes: `fix/issue-{NUMBER}`
 - No spaces or underscores
 - Keep descriptions concise (< 50 chars)
-- One branch per issue
+- **ONE ISSUE PER BRANCH** — never mix multiple issues/bug fixes into one branch. Each issue gets its own branch, even if related
+- For test-only additions tied to a specific issue: use `test/issue-{NUMBER}` prefix instead of `fix/`
 
 ### Branch Lifecycle
 
@@ -470,6 +471,38 @@ Build and lint passed. Please review the changes above. Shall I commit with:
 **Not approval:** silence, a follow-up question, or continuing the conversation.
 
 **No exceptions** — not even for "small" or "obvious" changes.
+
+### CRITICAL: Never Push Without User Approval <!-- learned: 2026-05-13 -->
+
+**Golden rule: NEVER `git push` without explicit user approval.**
+
+This is non-negotiable. Even when changes are correct, tested, and ready, the user must see the diff and explicitly approve before pushing. The cost of an accidental bad push is higher than the inconvenience of waiting for approval.
+
+**Before push, always:**
+1. Run lint + build
+2. Show the full `git diff` output to the user
+3. Ask for approval explicitly: "Build and lint passed. Please review the changes above. Ready to push?"
+4. **Wait for explicit "yes"** — silence, follow-up questions, or continuing the conversation are NOT approval
+
+**Why this matters:**
+- Users need visibility into what's being pushed to their repo
+- A wrong branch or unintended commits can cause serious issues
+- Approval is the gate that prevents mistakes from reaching production CI
+
+**What counts as explicit approval:**
+- "yes"
+- "looks good"
+- "lgtm" (looks good to me)
+- "commit it" / "push it"
+- "go ahead" / "ship it"
+
+**What does NOT count:**
+- Silence or no response
+- Follow-up questions
+- Continuing the conversation
+- "ok" without context (ambiguous)
+
+**Exception:** User can establish standing instructions (in CLAUDE.md or via memory) like "always push without asking for this repository" — but this is rare and must be explicit.
 
 ### When User Asks to Commit
 
