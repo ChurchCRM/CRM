@@ -14685,6 +14685,18 @@ msgid "seconds"
 msgstr "sekund"
 
 #: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "Nelze smazat akci: %d osob je v současné době přihlášeno."
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "Nelze smazat akci: akce je v současné době přiřazena ke kiosku."
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "Skupinu nelze smazat: je publikem pro %d akci(í) a výchozí skupinou pro %d typ(y) akcí. Nejdříve je znovu přiřaďte."
+
+#: 
 msgid "A Calendar access token has been generated and saved."
 msgstr "Byl vygenerován a uložen přístupový token kalendáře."
 
@@ -15358,6 +15370,10 @@ msgid "GroupID required for role selection prompt"
 msgstr "Pro výzvu k výběru role je vyžadované ID skupiny"
 
 #: 
+msgid "HTML URL"
+msgstr "URL HTML"
+
+#: 
 msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 msgstr "Mějte připravenou ověřovací aplikaci (Google Authenticator, Microsoft Authenticator, Authy atd.)"
 
@@ -15368,6 +15384,10 @@ msgstr "Skrýt pokročilé možnosti"
 #: 
 msgid "Home phone is required"
 msgstr "Je vyžadováno telefonní číslo domů"
+
+#: 
+msgid "ICS URL"
+msgstr "URL ICS"
 
 #: 
 msgid "Ignored"

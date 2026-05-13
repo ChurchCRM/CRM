@@ -14670,6 +14670,18 @@ msgid "seconds"
 msgstr "초"
 
 #: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "이벤트를 삭제할 수 없음: %d명이 현재 체크인 중입니다."
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "이벤트를 삭제할 수 없음: 이벤트가 현재 키오스크에 할당되어 있습니다."
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "그룹을 삭제할 수 없음: %d개의 이벤트에 대한 대상이며 %d개의 이벤트 유형에 대한 기본 그룹입니다. 먼저 다시 할당하세요."
+
+#: 
 msgid "A Calendar access token has been generated and saved."
 msgstr "캘린더 액세스 토큰이 생성되어 저장되었습니다."
 

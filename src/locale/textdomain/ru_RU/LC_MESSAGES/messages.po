@@ -14773,6 +14773,18 @@ msgid "seconds"
 msgstr "секунд"
 
 #: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "Невозможно удалить событие: %d человек(и) в данный момент зарегистрированы."
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "Невозможно удалить событие: событие в настоящее время назначено киоску."
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "Невозможно удалить группу: она является аудиторией для %d события(й) и группой по умолчанию для %d типа(ов) события. Сначала переназначьте их."
+
+#: 
 msgid "A Calendar access token has been generated and saved."
 msgstr "Токен доступа к календарю создан и сохранен."
 
@@ -15446,6 +15458,10 @@ msgid "GroupID required for role selection prompt"
 msgstr "GroupID обязателен для выбора роли"
 
 #: 
+msgid "HTML URL"
+msgstr "URL HTML"
+
+#: 
 msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 msgstr "Подготовьте приложение аутентификации (Google Authenticator, Microsoft Authenticator, Authy и т.д.)"
 
@@ -15456,6 +15472,10 @@ msgstr "Скрыть расширенные параметры"
 #: 
 msgid "Home phone is required"
 msgstr "Домашний телефон обязателен"
+
+#: 
+msgid "ICS URL"
+msgstr "URL ICS"
 
 #: 
 msgid "Ignored"

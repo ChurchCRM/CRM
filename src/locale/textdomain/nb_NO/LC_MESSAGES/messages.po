@@ -14771,6 +14771,18 @@ msgid "seconds"
 msgstr "sekunder"
 
 #: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "Kan ikke slette hendelsen: %d personer er for tiden innsjekket."
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "Kan ikke slette hendelsen: hendelsen er for tiden tilordnet en kiosk."
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "Kan ikke slette gruppen: det er publikum for %d hendelse(r) og standardgruppen for %d hendelsestype(r). Tildel disse på nytt først."
+
+#: 
 msgid "A Calendar access token has been generated and saved."
 msgstr "Et tilgangstoken for kalender er generert og lagret."
 

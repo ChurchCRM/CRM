@@ -1,8 +1,3 @@
 {
-  "Cannot delete event: %d people are currently checked in.": "Impossibile eliminare l'evento: %d persone sono attualmente registrate.",
-  "Cannot delete event: event is currently assigned to a kiosk.": "Impossibile eliminare l'evento: l'evento è attualmente assegnato a un chiosco.",
-  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "Impossibile eliminare il gruppo: è il pubblico per %d evento(i) e il gruppo predefinito per %d tipo(i) di evento. Riassegnali prima.",
-  "Focus": "Messa a fuoco",
-  "Unfocus": "Sfocatura",
-  "in": "in"
+  "in": ""
 }
