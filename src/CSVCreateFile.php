@@ -3,6 +3,12 @@
 require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
+use ChurchCRM\Utils\RedirectUtils;
+
+if (!$currentUser->isAdmin()) {
+    RedirectUtils::securityRedirect('You do not have permission to export member data.');
+}
+
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\Classification;
 use ChurchCRM\model\ChurchCRM\Base\PersonQuery;
@@ -10,7 +16,6 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
-use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Utils\CsvExporter;
 
 // Initialize data collection arrays

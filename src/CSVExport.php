@@ -3,6 +3,12 @@
 require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
+use ChurchCRM\Utils\RedirectUtils;
+
+if (!$currentUser->isAdmin()) {
+    RedirectUtils::securityRedirect('You do not have permission to export member data.');
+}
+
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
 
