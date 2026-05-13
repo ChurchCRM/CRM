@@ -212,25 +212,35 @@ $fmtBytes = static function ($bytes): string {
                                 <?php } ?>
                                 <!-- Telemetry status row -->
                                 <?php
-                                $telemetryOn = SystemConfig::getBooleanValue('bEnableTelemetry');
-                                $posthogEndpoint = TelemetryService::POSTHOG_ENDPOINT;
+                                $telemetryLevel   = TelemetryService::getLevel();
+                                $telemetryEnabled = TelemetryService::isEnabled();
+                                $levelLabels = [
+                                    TelemetryService::LEVEL_NONE     => gettext('Disabled (opt-in required)'),
+                                    TelemetryService::LEVEL_ERRORS   => gettext('Errors — server errors and JS exceptions'),
+                                    TelemetryService::LEVEL_WARNINGS => gettext('Warnings — warnings, errors, and JS exceptions'),
+                                    TelemetryService::LEVEL_FULL     => gettext('Full — page views, warnings, errors, and JS exceptions'),
+                                ];
                                 ?>
                                 <tr id="debug-telemetry-row">
                                     <td><?= gettext('Telemetry') ?></td>
                                     <td>
                                         <div class="d-flex align-items-center gap-3 flex-wrap">
-                                            <?php if ($telemetryOn): ?>
-                                                <span class="badge bg-success"><i class="ti ti-check me-1"></i><?= gettext('Enabled') ?></span>
-                                                <span class="text-secondary small"><?= gettext('Sending to') ?> <code class="debug-code"><?= InputUtils::escapeHTML($posthogEndpoint) ?></code></span>
+                                            <?php if ($telemetryEnabled): ?>
+                                                <span class="badge bg-success"><i class="ti ti-check me-1"></i><?= InputUtils::escapeHTML($levelLabels[$telemetryLevel]) ?></span>
+                                                <span class="text-secondary small"><?= gettext('Sending to') ?> <code class="debug-code"><?= InputUtils::escapeHTML(TelemetryService::POSTHOG_ENDPOINT) ?></code></span>
                                             <?php else: ?>
-                                                <span class="badge bg-secondary"><?= gettext('Disabled (opt-in required)') ?></span>
+                                                <span class="badge bg-secondary"><?= InputUtils::escapeHTML($levelLabels[TelemetryService::LEVEL_NONE]) ?></span>
                                             <?php endif; ?>
-                                            <button type="button"
-                                                    class="btn btn-sm <?= $telemetryOn ? 'btn-ghost-danger' : 'btn-ghost-success' ?> js-debug-telemetry-toggle"
-                                                    data-enable="<?= $telemetryOn ? 'false' : 'true' ?>">
-                                                <i class="ti <?= $telemetryOn ? 'ti-toggle-right' : 'ti-toggle-left' ?> me-1"></i>
-                                                <?= $telemetryOn ? gettext('Disable') : gettext('Enable') ?>
-                                            </button>
+                                            <div class="d-flex gap-1 flex-wrap">
+                                                <?php foreach ($levelLabels as $lv => $label): ?>
+                                                    <?php if ($lv === $telemetryLevel) continue; ?>
+                                                    <button type="button"
+                                                            class="btn btn-sm <?= $lv === TelemetryService::LEVEL_NONE ? 'btn-ghost-danger' : 'btn-ghost-success' ?> js-debug-telemetry-toggle"
+                                                            data-level="<?= InputUtils::escapeAttribute($lv) ?>">
+                                                        <?= InputUtils::escapeHTML($label) ?>
+                                                    </button>
+                                                <?php endforeach; ?>
+                                            </div>
                                         </div>
                                     </td>
                                 </tr>

@@ -116,6 +116,18 @@ class   SystemConfig
         ];
     }
 
+    public static function getTelemetryLevelChoices(): array
+    {
+        return [
+            'Choices' => [
+                gettext('None (disabled)') . ':none',
+                gettext('Errors — server errors and JS exceptions') . ':errors',
+                gettext('Warnings — warnings, errors, and JS exceptions') . ':warnings',
+                gettext('Full — all of the above plus page views') . ':full',
+            ],
+        ];
+    }
+
     private static function buildConfigs(): array
     {
         return [
@@ -257,8 +269,8 @@ class   SystemConfig
             'sInactiveClassification'              => new ConfigItem('sInactiveClassification', 'text', '', gettext('Comma separated list of classifications that should appear as inactive')),
             'sDefaultZip'                          => new ConfigItem('sDefaultZip', 'text', '', gettext('Default Zip')),
             'sSystemID'                            => new ConfigItem('sSystemID', 'text', ''),
-            // Telemetry — master switch and internal state (sTelemetryAskedVersion excluded from UI)
-            'bEnableTelemetry'                     => new ConfigItem('bEnableTelemetry', 'boolean', '0', gettext('Share anonymous usage statistics with the ChurchCRM team. No church names, member data, or personal information is ever sent.')),
+            // Telemetry — collection level and internal state (sTelemetryAskedVersion excluded from UI)
+            'sTelemetryLevel'                      => new ConfigItem('sTelemetryLevel', 'choice', 'none', gettext('Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent.'), '', json_encode(self::getTelemetryLevelChoices(), JSON_THROW_ON_ERROR)),
             'sTelemetryAskedVersion'               => new ConfigItem('sTelemetryAskedVersion', 'text', ''),
         ];
     }
@@ -275,7 +287,7 @@ class   SystemConfig
             gettext('Localization')       => ['sDistanceUnit', 'sPhoneFormat', 'sPhoneFormatWithExt', 'sPhoneFormatCell', 'sDateFormatLong', 'sDateFormatNoYear', 'sDateTimeFormat', 'sDateFilenameFormat', 'sDatePickerFormat', 'sDatePickerPlaceHolder'],
             gettext('Confession')         => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField'],
             // sTelemetryAskedVersion is internal state — excluded from settings UI
-            gettext('Telemetry')          => ['bEnableTelemetry'],
+            gettext('Telemetry')          => ['sTelemetryLevel'],
         ];
     }
 
