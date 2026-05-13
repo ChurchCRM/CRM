@@ -19,7 +19,7 @@ if (cfg && cfg.key && cfg.level && cfg.level !== "none") {
     autocapture: false,
     capture_heatmaps: false,
     disable_session_recording: true,
-    capture_exceptions: true,  // active at all levels (errors / warnings / full)
+    capture_exceptions: true, // active at all levels (errors / warnings / full)
     person_profiles: "never",
     bootstrap: { distinctID: cfg.distinctID || "" },
   });
