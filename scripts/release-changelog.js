@@ -151,7 +151,7 @@ function writeChangelogFile(tag, title, body, publishedAt, force) {
     '',
   ].join('\n');
 
-  fs.writeFileSync(dest, content); // lgtm[js/file-system-race] Path controlled by GitHub release tag
+  fs.writeFileSync(dest, content); // lgtm[js/file-system-race] Only runs in GitHub Actions; race/symlink risk accepted in trusted CI environment
   console.log(`Wrote changelog/${tag}.md`);
 }
 
