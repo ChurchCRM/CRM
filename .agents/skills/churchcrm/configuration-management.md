@@ -511,3 +511,11 @@ When adding or removing entries near `buildCategories()`, verify every key liste
 # Quick grep to cross-check
 grep -o "'[a-zA-Z_]*'" src/ChurchCRM/dto/SystemConfig.php | sort | uniq -d
 ```
+
+### SystemSettings.php is deprecated — do not add new settings to it <!-- learned: 2026-05-13 -->
+
+`src/SystemSettings.php` is a legacy page that is being phased out. **Nothing new should be added to it.** New configuration UI belongs in the admin MVC app:
+
+- Per-feature settings → relevant admin MVC page or debug card (e.g. `/admin/system/debug`)
+- `buildCategories()` in `SystemConfig.php` drives the settings tabs on `SystemSettings.php` — omit new config items from that array so they never appear there
+- Internal / non-UI state keys (e.g. `sTelemetryAskedVersion`) must also be excluded from `buildCategories()`
