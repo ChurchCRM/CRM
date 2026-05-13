@@ -291,8 +291,6 @@ class   SystemConfig
             gettext('Financial Settings') => ['bEnabledFinance', 'bEnabledFundraiser', 'sDepositSlipType', 'iChecksPerDepositForm', 'bDisplayBillCounts', 'bUseScannedChecks', 'bEnableNonDeductible', 'iFYMonth', 'bUseDonationEnvelopes', 'aFinanceQueries', 'sCurrencySymbol', 'sCurrencyPosition', 'sThousandsSeparator', 'sDecimalSeparator'],
             gettext('Quick Search')       => ['bSearchIncludePersons', 'bSearchIncludePersonsMax', 'bSearchIncludeAddresses', 'bSearchIncludeAddressesMax', 'bSearchIncludeFamilies', 'bSearchIncludeFamiliesMax', 'bSearchIncludeFamilyHOH', 'bSearchIncludeFamilyHOHMax', 'bSearchIncludeGroups', 'bSearchIncludeGroupsMax', 'bSearchIncludeDeposits', 'bSearchIncludeDepositsMax', 'bSearchIncludePayments', 'bSearchIncludePaymentsMax', 'bSearchIncludeFamilyCustomProperties', 'bSearchIncludeCalendarEvents', 'bSearchIncludeCalendarEventsMax'],
             gettext('Confession')         => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField'],
-            // sTelemetryAskedVersion is internal state — excluded from settings UI
-            gettext('Telemetry')          => ['sTelemetryLevel'],
         ];
     }
 
