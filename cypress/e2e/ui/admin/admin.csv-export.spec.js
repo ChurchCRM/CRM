@@ -187,6 +187,7 @@ describe("CSV Export Authorization — Standard Users", () => {
         cy.request({
             method: "POST",
             url: "/CSVCreateFile.php",
+            form: true,
             body: {
                 Title: 1,
                 FirstName: 1,
