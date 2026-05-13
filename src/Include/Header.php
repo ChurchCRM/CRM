@@ -170,8 +170,8 @@ $MenuFirst = 1;
           },
           PageName:<?= json_encode($_SERVER['REQUEST_URI'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>,
           telemetry: <?= json_encode([
-              'enabled'    => SystemConfig::getBooleanValue('bEnableTelemetry'),
-              'key'        => SystemConfig::getBooleanValue('bEnableTelemetry') ? TelemetryService::POSTHOG_KEY : '',
+              'level'      => TelemetryService::getLevel(),
+              'key'        => TelemetryService::isEnabled() ? TelemetryService::POSTHOG_KEY : '',
               'endpoint'   => TelemetryService::POSTHOG_ENDPOINT,
               'distinctID' => SystemConfig::getValue('sSystemID'),
           ]) ?>
@@ -495,7 +495,7 @@ foreach (NotificationService::getNotifications() as $notification) {
 $_telemetryRoute = strtok($_SERVER['PHP_SELF'] ?? 'unknown', '?');
 TelemetryService::capturePageView($_telemetryRoute);
 
-if (SystemConfig::getBooleanValue('bEnableTelemetry')):
+if (TelemetryService::isEnabled()):
 ?>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/telemetry.min.js') ?>" defer></script>
 <?php endif; ?>

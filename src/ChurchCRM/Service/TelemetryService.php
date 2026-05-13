@@ -12,18 +12,38 @@ class TelemetryService
     public const POSTHOG_KEY      = 'phc_H5dHvtXJJhGVwzJiXyoQMfMVJYHN7xMpHiLcwkIYrAh';
     public const POSTHOG_ENDPOINT = 'https://eu.i.posthog.com';
 
+    // Collection levels stored in sTelemetryLevel.
+    public const LEVEL_NONE     = 'none';
+    public const LEVEL_ERRORS   = 'errors';    // ERROR/CRITICAL + JS exceptions
+    public const LEVEL_WARNINGS = 'warnings';  // WARNING+ + JS exceptions
+    public const LEVEL_FULL     = 'full';      // warnings + page views + JS exceptions
+
+    public static function getLevel(): string
+    {
+        $level = SystemConfig::getValue('sTelemetryLevel');
+        return in_array($level, [self::LEVEL_ERRORS, self::LEVEL_WARNINGS, self::LEVEL_FULL], true)
+            ? $level
+            : self::LEVEL_NONE;
+    }
+
     public static function isEnabled(): bool
     {
-        return SystemConfig::getBooleanValue('bEnableTelemetry');
+        return self::getLevel() !== self::LEVEL_NONE;
+    }
+
+    /** True only at 'full' level — page views are high-volume, opt-in extra. */
+    public static function capturesPageViews(): bool
+    {
+        return self::getLevel() === self::LEVEL_FULL;
     }
 
     /**
-     * Fire a page_view event. Pass the Slim route pattern (e.g. /people/person/{id}),
-     * never a raw URL, so no record IDs reach PostHog.
+     * Fire a page_view event. Only sent at LEVEL_FULL.
+     * Pass the Slim route pattern (e.g. /people/person/{id}), never a raw URL.
      */
     public static function capturePageView(string $routePattern): void
     {
-        if (!self::isEnabled()) {
+        if (!self::capturesPageViews()) {
             return;
         }
         self::capture('page_view', array_merge(self::baseProperties(), [
@@ -32,8 +52,9 @@ class TelemetryService
     }
 
     /**
-     * Forward a Monolog WARNING+ record as a log_error event.
-     * Called by PostHogLogHandler.
+     * Forward a Monolog record as a log_error event.
+     * Called by PostHogLogHandler — the handler pre-filters by Monolog level;
+     * this method does the final level check and sends.
      */
     public static function captureLogEvent(LogRecord $record): void
     {
@@ -41,7 +62,7 @@ class TelemetryService
             return;
         }
 
-        // Strip query string from the URL stored in extra so no record IDs leak.
+        // Strip query string so no record IDs reach PostHog.
         $rawUrl = $record->extra['url'] ?? '';
         $route  = $rawUrl !== '' ? strtok($rawUrl, '?') : 'unknown';
 
@@ -57,9 +78,7 @@ class TelemetryService
         self::capture('log_error', $properties);
     }
 
-    /**
-     * Properties attached to every server-side PostHog event.
-     */
+    /** Properties attached to every server-side PostHog event. */
     private static function baseProperties(): array
     {
         return [
@@ -82,18 +101,15 @@ class TelemetryService
             return;
         }
 
-        $endpoint = self::POSTHOG_ENDPOINT;
-        $apiKey   = self::POSTHOG_KEY;
-
         $payload = json_encode([
-            'api_key'     => $apiKey,
+            'api_key'     => self::POSTHOG_KEY,
             'event'       => $event,
             'distinct_id' => $distinctId,
             'properties'  => $properties,
         ]);
 
         try {
-            $ch = curl_init($endpoint . '/capture/');
+            $ch = curl_init(self::POSTHOG_ENDPOINT . '/capture/');
             if ($ch === false) {
                 return;
             }
