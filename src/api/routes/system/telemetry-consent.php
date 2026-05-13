@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Service\TelemetryService;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\VersionUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -14,8 +15,9 @@ use Psr\Http\Message\ServerRequestInterface as Request;
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\RequestBody(required=true,
  *         @OA\JsonContent(
- *             @OA\Property(property="enable", type="boolean",
- *                 description="true = enable telemetry; false = decline for this version")
+ *             @OA\Property(property="level", type="string",
+ *                 enum={"none","errors","warnings","full"},
+ *                 description="Telemetry collection level. 'none' declines and suppresses prompt for this version.")
  *         )
  *     ),
  *     @OA\Response(response=200, description="OK",
@@ -24,12 +26,22 @@ use Psr\Http\Message\ServerRequestInterface as Request;
  * )
  */
 $app->post('/system/telemetry-consent', function (Request $request, Response $response, array $args): Response {
-    $data   = json_decode((string) $request->getBody(), true);
-    $enable = !empty($data['enable']);
+    $data  = json_decode((string) $request->getBody(), true);
+    $level = $data['level'] ?? TelemetryService::LEVEL_NONE;
 
-    SystemConfig::setValue('bEnableTelemetry', $enable ? '1' : '0');
+    $validLevels = [
+        TelemetryService::LEVEL_NONE,
+        TelemetryService::LEVEL_ERRORS,
+        TelemetryService::LEVEL_WARNINGS,
+        TelemetryService::LEVEL_FULL,
+    ];
+    if (!in_array($level, $validLevels, true)) {
+        $level = TelemetryService::LEVEL_NONE;
+    }
 
-    if (!$enable) {
+    SystemConfig::setValue('sTelemetryLevel', $level);
+
+    if ($level === TelemetryService::LEVEL_NONE) {
         // Record the version the admin declined so the prompt is suppressed
         // for the remainder of this release and re-shown after the next upgrade.
         SystemConfig::setValue('sTelemetryAskedVersion', VersionUtils::getInstalledVersion());

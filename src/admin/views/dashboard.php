@@ -4,6 +4,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\AdminService;
 use ChurchCRM\Service\AppIntegrityService;
+use ChurchCRM\Service\TelemetryService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\VersionUtils;
 
@@ -27,8 +28,8 @@ $hasOrphanedFiles = count($orphanedFiles) > 0;
 // Calculate overall health status
 $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCriticalWarnings() && !$hasURLError;
 
-// Telemetry consent prompt: show when telemetry is off and not yet asked for this version.
-$showTelemetryPrompt = !SystemConfig::getBooleanValue('bEnableTelemetry')
+// Telemetry consent prompt: show when level is 'none' and not yet asked for this version.
+$showTelemetryPrompt = !TelemetryService::isEnabled()
     && SystemConfig::getValue('sTelemetryAskedVersion') !== VersionUtils::getInstalledVersion();
 ?>
 
@@ -145,10 +146,13 @@ $showTelemetryPrompt = !SystemConfig::getBooleanValue('bEnableTelemetry')
                         <?= gettext('What we collect') ?>: <?= gettext('page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU.') ?>
                     </p>
                     <div class="d-flex gap-2 flex-wrap">
-                        <button type="button" class="btn btn-info js-telemetry-consent" data-enable="true">
-                            <i class="ti ti-check me-1"></i><?= gettext('Enable anonymous telemetry') ?>
+                        <button type="button" class="btn btn-info js-telemetry-consent" data-level="full">
+                            <i class="ti ti-check me-1"></i><?= gettext('Enable (full)') ?>
                         </button>
-                        <button type="button" class="btn btn-ghost-secondary js-telemetry-consent" data-enable="false">
+                        <button type="button" class="btn btn-ghost-info js-telemetry-consent" data-level="errors">
+                            <i class="ti ti-alert-circle me-1"></i><?= gettext('Errors only') ?>
+                        </button>
+                        <button type="button" class="btn btn-ghost-secondary js-telemetry-consent" data-level="none">
                             <?= gettext('No thanks') ?>
                         </button>
                     </div>

@@ -25,8 +25,9 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\TelemetryService;
 
-$telemetryEnabled = SystemConfig::getBooleanValue('bEnableTelemetry');
+$telemetryEnabled = TelemetryService::isEnabled();
 
 $csp = [
     "default-src 'self'",
