@@ -370,7 +370,7 @@ describe("UI: GroupPropsFormEditor Delete button (CSP regression #8520)", () => 
             "POST",
             `/api/groups/${groupID}/setGroupSpecificPropertyStatus`,
             { GroupSpecificPropertyStatus: true },
-            [200, 500],
+            200,
         );
 
         // Now login and create a test field via UI

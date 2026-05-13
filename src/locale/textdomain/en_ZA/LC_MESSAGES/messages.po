@@ -191,10 +191,6 @@ msgid "KioskVisibilityTimestamp"
 msgstr "Kiosk Visibility Timestamp"
 
 #: 
-msgid "Check Number"
-msgstr "Cheque Number"
-
-#: 
 msgid "Show Family Head of House Names"
 msgstr "Show Family Head of Household Names"
 
@@ -210,14 +206,6 @@ msgstr "Set the encryption system to use - SSL (deprecated) or TLS"
 #, fuzzy
 msgid "not found or user without an email"
 msgstr "not found or user without an email"
-
-#: 
-msgid "Foreground Color"
-msgstr "Foreground Colour"
-
-#: 
-msgid "Background Color"
-msgstr "Background Colour"
 
 #: 
 msgid "invalid event type id"

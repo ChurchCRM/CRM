@@ -1,0 +1,67 @@
+name: ❓ Question / Support
+description: Ask a question or request help
+title: "Question: "
+type: Task
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        👋 **Questions belong in GitHub** — they help the next person who searches for the same thing. Please fill in the form below.
+
+        **Want to chat live or have an urgent question?** Ping us on Discord — then still open the issue here so the answer is searchable:
+        👉 <https://discord.gg/tuWyFzj3Nj>
+
+        Before opening: please check [the docs](https://docs.churchcrm.io).
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: What are you trying to do?
+      description: Your goal or workflow.
+    validations:
+      required: true
+
+  - type: textarea
+    id: tried
+    attributes:
+      label: What have you already tried?
+      placeholder: Steps, settings, docs you've checked, etc.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+    validations:
+      required: false
+
+  - type: input
+    id: version
+    attributes:
+      label: ChurchCRM version (if relevant)
+      placeholder: "e.g. 7.1.0"
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Server-side logs / screenshots (optional)
+      description: |
+        If you're seeing an error, logs help a lot:
+
+        - **In-app:** Admin → System Maintenance → System Logs (or the 🐞 debug icon)
+        - **PHP error log:** `/var/log/php-fpm/error.log`, `/var/log/apache2/error.log`, `/var/log/nginx/error.log`
+        - **Docker:** `docker logs <container-name> --tail 200`
+
+        Please redact any private data before pasting.
+      render: shell
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        💬 **Urgent or want to chat?** <https://discord.gg/tuWyFzj3Nj>
+        📘 **Diagnostics guide:** <https://docs.churchcrm.io/administration/reporting-issues>
+
+        Thanks for asking! 🙏

@@ -135,7 +135,7 @@ $app->group('/cart', function (RouteCollectorProxy $group): void {
 
             return SlimUtils::renderJSON($response, [
             'status' => 'success',
-            'message' => gettext('records(s) successfully added to selected Group.')
+            'message' => gettext('record(s) successfully added to selected Group.')
         ]);
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Invalid request data'), [], 400, $e, $request);
@@ -177,7 +177,7 @@ $app->group('/cart', function (RouteCollectorProxy $group): void {
             Cart::removeGroup((int)$cartPayload['Group']);
             return SlimUtils::renderJSON($response, [
                 'status' => 'success',
-                'message' => gettext('records(s) successfully deleted from the selected Group.'),
+                'message' => gettext('record(s) successfully deleted from the selected Group.'),
             ]);
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Invalid request data'), [], 400, $e, $request);

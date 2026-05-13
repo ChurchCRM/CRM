@@ -150,6 +150,26 @@ describe("Admin - Church Information Page", () => {
         cy.get("#sDefaultCountry", { timeout: 5000 }).siblings(".ts-wrapper").should("exist");
     });
 
+    it("should populate language dropdown grouped by region with native names", () => {
+        cy.visit("admin/system/church-info");
+
+        // Wait for JS to populate and TomSelect to init
+        cy.get("#sLanguage", { timeout: 8000 }).siblings(".ts-wrapper").should("exist");
+
+        // Underlying <select> must have region optgroups
+        cy.get("#sLanguage optgroup").should("have.length.greaterThan", 2);
+        cy.get("#sLanguage optgroup[label='Americas']").should("exist");
+        cy.get("#sLanguage optgroup[label='Europe']").should("exist");
+
+        // Options must include locale code in brackets
+        cy.get("#sLanguage optgroup[label='Americas'] option").first()
+            .invoke("text")
+            .should("match", /\[.+\]$/);
+
+        // English (US) base locale must be present
+        cy.get("#sLanguage option[value='en_US']").should("exist");
+    });
+
     it("should copy church address to default fields", () => {
         cy.visit("admin/system/church-info");
 

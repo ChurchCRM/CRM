@@ -8,7 +8,10 @@
   ],
   "cs": [
     "Audit",
-    "Azure"
+    "Azure",
+    "Online",
+    "Server",
+    "Test"
   ],
   "el": [
     "Azure"
@@ -21,35 +24,44 @@
   ],
   "es-AR": [
     "Azure",
+    "Host",
     "Malayalam - India",
     "Manual",
     "Material"
   ],
   "es-CO": [
     "Azure",
+    "Host",
     "Malayalam - India",
     "Manual",
     "Material"
   ],
   "es-MX": [
     "Azure",
+    "Host",
     "Malayalam - India",
     "Manual",
     "Material"
   ],
   "es-SV": [
     "Azure",
+    "Host",
     "Malayalam - India",
     "Manual",
     "Material"
   ],
   "et": [
-    "Audit"
+    "Audit",
+    "Host",
+    "Server",
+    "Test",
+    "risk"
   ],
   "fi": [
     "Azure"
   ],
   "fil": [
+    "(PHP default)",
     "-----------------------------------------------------------------------------------------------------------------------------------------------",
     "2FA",
     "4. Kiosk",
@@ -69,6 +81,7 @@
     "Angola",
     "Anguilla",
     "Antarctica",
+    "App",
     "Argentina",
     "Armenia (Հայաստան)",
     "Aruba",
@@ -104,7 +117,6 @@
     "Bulgaria (България)",
     "Burkina Faso",
     "Burundi (Uburundi)",
-    "CSV",
     "Cambodia (កម្ពុជា)",
     "Cameroon (Cameroun)",
     "Canada",
@@ -115,11 +127,14 @@
     "Cell",
     "Central African Republic (République centrafricaine)",
     "Chad (Tchad)",
+    "Charset",
     "Check-in",
     "Chile",
     "Christmas Island",
+    "ChurchCRM Test Email",
     "Clipperton Island",
     "Cocos (Keeling) Islands (Kepulauan Cocos (Keeling))",
+    "Collation",
     "Colombia",
     "Communication",
     "Comoros (‫جزر القمر‬‎)",
@@ -127,6 +142,7 @@
     "Configuration",
     "Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)",
     "Congo (Republic) (Congo-Brazzaville)",
+    "Connection",
     "Continent",
     "Cook Islands",
     "Costa Rica",
@@ -137,34 +153,40 @@
     "Cyprus (Κύπρος)",
     "Czech Republic (Česká republika)",
     "Côte d’Ivoire",
-    "DSN",
     "Dashboard",
+    "Database",
     "Database:",
     "Default",
     "Denmark (Danmark)",
     "Diego Garcia",
     "Discord Chat",
+    "Disk (Images Root)",
+    "Display Errors",
     "Djibouti",
     "Document Root",
     "Dominica",
     "Dominican Republic (República Dominicana)",
     "Dutch - Netherlands",
-    "ERROR",
     "ESE",
     "Ecuador",
     "El Salvador",
     "Email Address",
     "Email BCC",
+    "Email Debug",
     "Email address",
     "Email/Username",
+    "Environment",
     "Equatorial Guinea (Guinea Ecuatorial)",
     "Eritrea",
     "Error",
-    "Error:",
+    "Error Log",
+    "Error Reporting",
     "Estonia (Eesti)",
     "Ethiopia",
     "FY %s",
     "Falkland Islands (Islas Malvinas)",
+    "Family Custom",
+    "Family Property",
     "Faroe Islands (Føroyar)",
     "Fiji",
     "Filipino - Philippines",
@@ -197,8 +219,10 @@
     "Haiti",
     "Heard & McDonald Islands",
     "Hindi - India",
+    "Hit Rate",
     "Honduras",
     "Hong Kong (香港)",
+    "Host",
     "Hostname",
     "Hungary (Magyarország)",
     "ICS URL",
@@ -236,15 +260,15 @@
     "Liechtenstein",
     "Lime",
     "Lithuania (Lietuva)",
+    "Loaded php.ini",
+    "Locale",
     "Log File",
     "Luxembourg",
     "Macau (澳門)",
     "Macedonia (FYROM) (Македонија)",
     "Madagascar (Madagasikara)",
-    "MailChimp",
     "MailChimp API Key",
     "MailChimp Dashboard",
-    "Mailchimp",
     "Malawi",
     "Malayalam - India",
     "Malaysia",
@@ -258,7 +282,12 @@
     "Material",
     "Mauritania (‫موريتانيا‬‎)",
     "Mauritius (Moris)",
+    "Max Execution Time",
+    "Max POST Size",
+    "Max Upload Size",
     "Mayotte",
+    "Memory",
+    "Memory Limit",
     "Mexico (México)",
     "Micronesia",
     "Minimum",
@@ -287,10 +316,14 @@
     "Northern Mariana Islands",
     "Norway (Norge)",
     "OK",
+    "Off",
     "Oman (‫عُمان‬‎)",
+    "On",
+    "Online",
     "Orange",
     "PDF",
-    "PDF/CSV",
+    "PHP Version",
+    "PHPMailer SMTP session",
     "Paddle",
     "Pakistan (‫پاکستان‬‎)",
     "Palau",
@@ -300,6 +333,8 @@
     "Paraguay",
     "Parents",
     "Password",
+    "Person Custom",
+    "Person Property",
     "Personal",
     "Peru (Perú)",
     "Photo",
@@ -312,11 +347,14 @@
     "Profile",
     "Puerto Rico",
     "Qatar (‫قطر‬‎)",
+    "Recovery Code",
     "Romania (România)",
     "Root Path",
     "Russia (Россия)",
     "Rwanda",
     "Réunion (La Réunion)",
+    "SMTP Configuration",
+    "SMTP Debug Log",
     "SMTP Host",
     "SMTP Password",
     "SMTP Server Address (mail.server.com:25)",
@@ -329,8 +367,14 @@
     "Samoa",
     "San Marino",
     "Saudi Arabia (‫المملكة العربية السعودية‬‎)",
+    "Schema Version",
     "Senegal (Sénégal)",
     "Serbia (Србија)",
+    "Server",
+    "Server Version",
+    "Session Handler",
+    "Session Save Path",
+    "Settings Valid",
     "Setup",
     "Seychelles",
     "Sierra Leone",
@@ -339,7 +383,6 @@
     "Slovakia (Slovensko)",
     "Slovenia (Slovenija)",
     "Social Media",
-    "Software",
     "Solomon Islands",
     "Somalia (Soomaaliya)",
     "South Africa",
@@ -349,7 +392,7 @@
     "Spain (España)",
     "Sri Lanka (ශ්‍රී ලංකාව)",
     "St. Vincent & Grenadines",
-    "Street Atlas USA",
+    "Subject",
     "Sudan (‫السودان‬‎)",
     "Suriname",
     "Swahili",
@@ -363,10 +406,13 @@
     "Tanzania",
     "Teal",
     "Telugu - India",
+    "Test",
     "Thai",
     "Thailand (ไทย)",
     "Time Zone",
     "Time zone",
+    "Timeout",
+    "Timezone",
     "Timor-Leste",
     "Tip",
     "Tip:",
@@ -404,11 +450,11 @@
     "Zimbabwe",
     "Zip Code",
     "manifest.",
-    "name@example.com",
-    "options",
     "page",
     "s",
-    "Åland Islands (Åland)"
+    "user:",
+    "Åland Islands (Åland)",
+    "SHA-256 checksum"
   ],
   "fr": [
     "Audit",
@@ -422,12 +468,12 @@
     "Format",
     "Indigo",
     "Minimum",
-    "Options",
     "Orange",
     "Parents",
     "Photo",
-    "options",
-    "page"
+    "Test",
+    "page",
+    "page."
   ],
   "hi": [],
   "id": [
@@ -436,9 +482,12 @@
     "Azure",
     "Email BCC",
     "Format",
+    "Host",
     "Malayalam - India",
     "Manual",
-    "Minimum"
+    "Minimum",
+    "Online",
+    "Server"
   ],
   "ja": [
     "Azure"
@@ -449,23 +498,33 @@
   "nl": [
     "4. Kiosk",
     "Account",
+    "App",
     "Audit",
     "Azure",
     "Continent",
+    "Database",
+    "Host",
     "Indigo",
     "Malayalam - India",
+    "Online",
+    "Server",
+    "Test",
     "Vonage Dashboard"
   ],
   "pt": [
     "Azure",
+    "Host",
     "Manual",
-    "Material"
+    "Material",
+    "Online"
   ],
   "pt-BR": [
     "Azure"
   ],
   "pt-br": [
-    "Azure"
+    "Azure",
+    "Host",
+    "Online"
   ],
   "ru": [
     "Azure"
@@ -473,72 +532,91 @@
   "sq": [
     "4. Kiosk",
     "Azure",
-    "Indigo"
+    "Indigo",
+    "Online",
+    "Test"
   ],
   "tr": [
     "4. Kiosk",
     "Azure",
-    "Kiosk"
+    "Kiosk",
+    "Test",
+    "risk"
   ],
   "vi": [
     "Azure",
     "Email BCC"
   ],
   "zh-CN": [
-    "Azure",
-    "name@example.com"
+    "Azure"
   ],
   "zh-TW": [
-    "Azure",
-    "name@example.com"
+    "Azure"
   ],
   "hu": [
-    "Azure"
+    "Azure",
+    "Online"
   ],
   "it": [
     "Account",
+    "App",
     "Audit",
     "Azure",
-    "Malayalam - India"
+    "Charset",
+    "Collation",
+    "Database",
+    "Host",
+    "Locale",
+    "Malayalam - India",
+    "Online",
+    "Server",
+    "Test",
+    "Timeout"
   ],
   "ml": [
     "-----------------------------------------------------------------------------------------------------------------------------------------------",
     "2FA",
     "Azure",
-    "CSV",
-    "DSN",
+    "Charset",
+    "Collation",
     "HTML URL",
     "ICS URL",
     "ID",
-    "MailChimp",
-    "Mailchimp",
     "OpenLP API v2 Source",
     "PDF",
-    "PDF/CSV",
-    "Street Atlas USA",
     "URL",
     "manifest."
   ],
   "nb": [
     "4. Kiosk",
     "Administrator",
+    "App",
     "Azure",
     "Cyan",
+    "Database",
     "Format",
     "Indigo",
     "Kiosk",
     "Lime",
     "Malayalam - India",
     "Minimum",
-    "Vonage Dashboard"
+    "Online",
+    "Server",
+    "Test",
+    "Vonage Dashboard",
+    "System"
   ],
   "pl": [
     "4. Kiosk",
     "Administrator",
     "Azure",
     "Format",
+    "Host",
     "Kiosk",
-    "Minimum"
+    "Minimum",
+    "Online",
+    "Test",
+    "System"
   ],
   "ro": [
     "Administrator",
@@ -549,17 +627,26 @@
     "Format",
     "Indigo",
     "Manual",
-    "Material"
+    "Material",
+    "Online",
+    "Server",
+    "Test"
   ],
   "sv": [
     "4. Kiosk",
+    "App",
     "Azure",
     "Cyan",
     "Format",
     "Indigo",
     "Material",
+    "Online",
     "Orange",
-    "Vonage Dashboard"
+    "Server",
+    "Test",
+    "Vonage Dashboard",
+    "System",
+    "risk"
   ],
   "sw": [
     "Azure",
@@ -569,12 +656,47 @@
     "Azure"
   ],
   "te": [
-    "Azure"
+    "App",
+    "Azure",
+    "Charset",
+    "Collation",
+    "Database",
+    "Display Errors",
+    "Error Reporting",
+    "Hit Rate",
+    "Host",
+    "Locale",
+    "Max Execution Time",
+    "Max POST Size",
+    "Max Upload Size",
+    "Memory Limit",
+    "Server",
+    "Test",
+    "Timeout"
   ],
   "th": [
-    "Azure"
+    "App",
+    "Azure",
+    "Charset",
+    "Collation",
+    "Database",
+    "Hit Rate",
+    "Host",
+    "Locale",
+    "Server",
+    "Session Handler",
+    "Test",
+    "Timeout"
   ],
   "uk": [
     "Azure"
+  ],
+  "de": [
+    "App",
+    "Host",
+    "Online",
+    "Server",
+    "Test",
+    "System"
   ]
 }

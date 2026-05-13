@@ -96,6 +96,7 @@ $app->post('/repeat-editor', function (Request $request, Response $response) {
     $iTypeID      = InputUtils::filterInt($body['typeId'] ?? 0);
     $sTitle       = InputUtils::legacyFilterInput($body['EventTitle'] ?? '');
     $sDesc        = InputUtils::sanitizeHTML($body['EventDescInput'] ?? '');
+    $sText        = InputUtils::sanitizeHTML($body['EventTextInput'] ?? '');
     $sStartTime   = InputUtils::legacyFilterInput($body['StartTime'] ?? '09:00');
     $sEndTime     = InputUtils::legacyFilterInput($body['EndTime'] ?? '10:00');
     $sRecurType   = InputUtils::legacyFilterInput($body['RecurType'] ?? '');
@@ -155,7 +156,7 @@ $app->post('/repeat-editor', function (Request $request, Response $response) {
             'title'           => $sTitle,
             'typeId'          => $iTypeID,
             'desc'            => $sDesc,
-            'text'            => '',
+            'text'            => $sText,
             'startTime'       => $sStartTime,
             'endTime'         => $sEndTime,
             'recurType'       => $sRecurType,

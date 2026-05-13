@@ -317,7 +317,7 @@ A dedicated onboarding wizard for new installs with 4 data-import paths:
 | Card | Link | Notes |
 |------|------|-------|
 | Explore with Demo Data | `#importDemoDataV2` (JS trigger) | `<a role="button">` — never `<button>` (breaks card padding) |
-| Import from a Spreadsheet | `CSVImport.php` | |
+| Import from a Spreadsheet | `/admin/import/csv` | Slim 4 route; supports core, custom-field, and property mappings |
 | Enter Data Manually | `/admin/get-started/manual` | guided intro page (see below) |
 | Restore a Backup | `/admin/system/restore?context=onboarding` | |
 

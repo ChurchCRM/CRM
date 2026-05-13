@@ -12,7 +12,16 @@ RewriteEngine On
 # For subdirectory (/churchcrm): RewriteBase /churchcrm
 # For subdirectory (/xyz): RewriteBase /xyz
 
-RewriteCond %{REQUEST_FILENAME} !-f
+# Skip rewriting if the request matches an existing file or directory.
+# Two conditions are used (instead of the more common combined `!-f` + `!-d`)
+# because LiteSpeed sometimes resolves %{REQUEST_FILENAME} differently from
+# Apache, causing the negative test to fail and rewriting real files to
+# index.php. The positive `-f`/`-d` form works reliably on both servers.
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Otherwise route everything to index.php
 RewriteRule ^(.*)$ index.php [QSA,L]
 
 <files rector.php>

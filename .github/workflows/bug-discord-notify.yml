@@ -1,0 +1,126 @@
+name: Bug Discord Notifications
+
+# =============================================================================
+# Post to the ChurchCRM Discord #bugs channel whenever a new issue of type
+# "Bug" is filed. Bug detection fires when ANY of the following are true:
+#
+#   1. The issue was opened with the "bug" label (set automatically by the
+#      YAML Bug Report form — see .github/ISSUE_TEMPLATE/bug_report.yml).
+#   2. The issue's Issue Type is "Bug" (set by `type: Bug` in the form
+#      frontmatter, or by the in-app reporter URL `?type=bug`).
+#   3. The "bug" label was added to an existing issue by a maintainer.
+#
+# Step (3) also runs the ensure-bug-type workflow, which normalises the Issue
+# Type — so any time this Discord notifier fires we know the issue is a bug.
+#
+# REQUIRED SECRET: DISCORD_BUGS_WEBHOOK
+#   Settings → Secrets and variables → Actions
+#
+# The workflow is idempotent: we tag notified issues with the
+# `discord-notified` label so we never ping twice for the same issue.
+# =============================================================================
+
+on:
+  issues:
+    types: [opened, labeled, reopened]
+
+permissions:
+  contents: read
+  issues: write  # for adding the `discord-notified` label
+
+concurrency:
+  group: bug-discord-notify-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  notify:
+    name: Post to Discord #bugs
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    # Only run for events that could be a "bug":
+    #   - new issue opened with the bug label
+    #   - bug label applied after the fact
+    #   - issue of Issue Type "Bug" (present on the event payload)
+    if: >
+      github.event.action == 'opened' ||
+      github.event.action == 'reopened' ||
+      (github.event.action == 'labeled' && github.event.label.name == 'bug')
+
+    steps:
+      - name: Skip if not a bug
+        id: classify
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const issue = context.payload.issue || {};
+            const labels = (issue.labels || []).map(l => (l && l.name ? l.name.toLowerCase() : ''));
+            const type = (issue.type && issue.type.name ? issue.type.name.toLowerCase() : '');
+
+            const alreadyNotified = labels.includes('discord-notified');
+            const isBug =
+              labels.includes('bug') ||
+              type === 'bug';
+
+            core.setOutput('is_bug', String(isBug && !alreadyNotified));
+            core.setOutput('already_notified', String(alreadyNotified));
+            console.log('isBug:', isBug, 'alreadyNotified:', alreadyNotified);
+
+      - name: Notify Discord — new bug
+        if: steps.classify.outputs.is_bug == 'true'
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_BUGS_WEBHOOK }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE:  ${{ github.event.issue.title }}
+          ISSUE_URL:    ${{ github.event.issue.html_url }}
+          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+          ACTION:       ${{ github.event.action }}
+        run: |
+          # Truncate very long titles (Discord embed title limit = 256 chars).
+          SAFE_TITLE="${ISSUE_TITLE:0:240}"
+          case "$ACTION" in
+            opened)   HEADING="🐛 New bug filed — #${ISSUE_NUMBER}" ;;
+            reopened) HEADING="🐛 Bug reopened — #${ISSUE_NUMBER}"  ;;
+            labeled)  HEADING="🐛 Issue tagged as bug — #${ISSUE_NUMBER}" ;;
+            *)        HEADING="🐛 Bug update — #${ISSUE_NUMBER}"   ;;
+          esac
+
+          jq -n \
+            --arg title       "$HEADING" \
+            --arg description "$SAFE_TITLE" \
+            --arg url         "$ISSUE_URL" \
+            --arg author_name "Opened by" \
+            --arg author_val  "$ISSUE_AUTHOR" \
+            --argjson color   15158332 \
+          '{
+            allowed_mentions: { parse: [] },
+            embeds: [{
+              title:       $title,
+              description: $description,
+              color:       $color,
+              url:         $url,
+              fields: [
+                { name: $author_name, value: $author_val, inline: true }
+              ],
+              footer: { text: "ChurchCRM Bugs · github.com/ChurchCRM/CRM/issues" }
+            }]
+          }' | curl -sf -X POST "$DISCORD_WEBHOOK" \
+                  -H "Content-Type: application/json" \
+                  -d @-
+
+      - name: Mark issue as notified
+        if: steps.classify.outputs.is_bug == 'true'
+        uses: actions/github-script@v9
+        with:
+          script: |
+            try {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels: ['discord-notified']
+              });
+            } catch (e) {
+              // Non-fatal: the notification already went out.
+              console.log('Could not add discord-notified label:', e.message);
+            }

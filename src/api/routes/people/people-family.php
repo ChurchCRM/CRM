@@ -10,6 +10,8 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
+use ChurchCRM\Plugin\Hook\HookManager;
+use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
@@ -473,11 +475,11 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
             ->filterByFamId($familyId)
             ->delete();
 
-        // Delete photo before deleting the record (needs the ID)
-        $family->deletePhoto();
-
-        // Delete the family record itself
+        // Delete the family record itself. Family::preDelete() removes the
+        // photo file from disk; member deletion above triggers Person::preDelete
+        // for each member, which cleans up their photos too (#1697).
         $family->delete();
+        HookManager::doAction(Hooks::FAMILY_DELETED, $familyId);
 
         return SlimUtils::renderJSON($response, ['success' => true]);
     })->add(DeleteRecordRoleAuthMiddleware::class);

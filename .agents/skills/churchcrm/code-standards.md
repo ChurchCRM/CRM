@@ -555,3 +555,57 @@ gh pr comment NUMBER --body "## Follow-up changes pushed\n\n..."
 **Logger:** `src/ChurchCRM/Utils/LoggerUtils.php`
 **Service Container:** `src/ChurchCRM/ServiceContainerBuilder.php`
 **Logs:** `src/logs/`
+
+### ChurchMetaData — Typed String/Float Getters, No Caller Casting <!-- learned: 2026-04-22 -->
+
+All string getters on `ChurchMetaData` return **typed, non-null, trimmed**
+`string` — never null, never whitespace-padded. No more `(string)`,
+`trim()`, or `!== null` defences at call sites. Fallback for empty via
+`?:`:
+
+```php
+// Before the refactor — raw mixed returns forced defensive code:
+$churchName = trim((string) ChurchMetaData::getChurchName());
+if ($churchName !== '') { ... }
+
+// Now — the getter is honest about its type:
+$churchName = ChurchMetaData::getChurchName();              // string, trimmed, possibly ''
+$display    = ChurchMetaData::getChurchName() ?: 'ChurchCRM'; // fallback is still valid
+if ($churchName !== '') { ... }                            // correct, no defensive cast
+```
+
+Lat/Lng return `float` (0.0 when unset) — use the new `hasChurchLocation(): bool`
+helper instead of the old `ChurchMetaData::getChurchLatitude() !== ''`
+idiom (which wouldn't even compile against a float return type).
+
+```php
+'churchLat'    => ChurchMetaData::getChurchLatitude(),   // float
+'churchLng'    => ChurchMetaData::getChurchLongitude(),
+'hasLocation'  => ChurchMetaData::hasChurchLocation(),   // bool
+```
+
+Affected string getters (all `: string`): `getChurchName`,
+`getChurchAddress`, `getChurchCity`, `getChurchState`, `getChurchZip`,
+`getChurchCountry`, `getChurchEmail`, `getChurchPhone`, `getChurchWebSite`,
+`getChurchTimeZone`, `getChurchLogoURL`, `getChurchFullAddress`.
+The type discipline is enforced by a private `readString()` helper in
+the class. Don't re-introduce casts outside the class.
+
+### Admin App Route Prefix is `/admin` — URLs include it <!-- learned: 2026-04-22 -->
+
+`MvcAppFactory::create('/admin', ...)` in `src/admin/index.php` mounts
+every admin route under `/admin`. A route declared as `/api/system/config/{configName}`
+inside that app is reachable at **`/admin/api/system/config/{configName}`**,
+not `/api/system/config/...`. Same for `/admin/api/system/logs`,
+`/admin/api/users/*`, etc. Applies to both JS clients and Cypress tests.
+
+```js
+// ❌ 404
+cy.request("POST", "/api/system/config/bEnableExternalCalendarAPI", { value: "1" });
+
+// ✅
+cy.request("POST", "/admin/api/system/config/bEnableExternalCalendarAPI", { value: "1" });
+```
+
+The `/v2` MVC and `/event` MVC apps follow the same pattern — each has
+its own prefix.

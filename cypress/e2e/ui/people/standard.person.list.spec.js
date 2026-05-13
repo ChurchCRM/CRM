@@ -4,7 +4,7 @@ describe("Standard People", () => {
     beforeEach(() => cy.setupStandardSession());
 
     it("Person Not Found", () => {
-        cy.visit("PersonView.php?PersonID=9999");
+        cy.visit("/people/view/9999");
         cy.location("pathname").should("include", "person/not-found");
         // New UX: show standard error title and message
         cy.contains("Person not found");
@@ -83,5 +83,33 @@ describe("Standard People", () => {
 
         // Verify filters are cleared
         cy.get(".filter-Gender").siblings(".ts-wrapper").find(".ts-control .item").should("not.exist");
+    });
+
+    it("Add individual person to cart", () => {
+        cy.request({
+            method: "DELETE",
+            url: "/api/cart/",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({}),
+        });
+
+        cy.visit("people/list");
+        cy.get("#members tbody tr", { timeout: 10000 }).should("have.length.greaterThan", 0);
+
+        cy.get("#members tbody tr:first").within(() => {
+            cy.get('[data-bs-toggle="dropdown"], .dropdown-toggle').first().click();
+        });
+        cy.get(".dropdown-menu.show .AddToCart").first().click({ force: true });
+
+        cy.request({ method: "GET", url: "/api/cart/" }).then((resp) => {
+            expect(resp.status).to.eq(200);
+            if (resp.body.Persons) {
+                expect(resp.body.Persons.length).to.be.greaterThan(0);
+            } else if (resp.body.PeopleCart) {
+                expect(resp.body.PeopleCart.length).to.be.greaterThan(0);
+            } else {
+                expect(Object.keys(resp.body).length).to.be.greaterThan(0);
+            }
+        });
     });
 });

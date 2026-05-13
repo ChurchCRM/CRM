@@ -450,7 +450,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             RedirectUtils::redirect($sPreviousPage . $iPersonID);
         } elseif (isset($_POST['PersonSubmit'])) {
             //Send to the view of this person
-            RedirectUtils::redirect('PersonView.php?PersonID=' . $iPersonID);
+            RedirectUtils::redirect(Person::getViewURIForId($iPersonID));
         } else {
             //Reload to editor to add another record, passing the family ID to pre-select it
             $redirectUrl = 'PersonEditor.php';
@@ -1076,7 +1076,7 @@ require_once __DIR__ . '/Include/Header.php';
         <?php } ?>
         <!-- Tertiary action: Cancel (gray) -->
         <?php if ($iPersonID > 0) { ?>
-        <a href="PersonView.php?PersonID=<?= $iPersonID ?>" class="btn btn-secondary">
+        <a href="<?= Person::getViewURIForId($iPersonID) ?>" class="btn btn-secondary">
             <i class="fa-solid fa-xmark me-2"></i><?= gettext('Cancel') ?>
         </a>
         <?php } else { ?>

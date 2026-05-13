@@ -108,27 +108,34 @@ For families, Delete links to `SelectDelete.php?FamilyID={id}`.
 
 ---
 
-## Overflow / Dropdown Clipping <!-- learned: 2026-03-26, updated: 2026-03-29 -->
+## Overflow / Dropdown Clipping <!-- learned: 2026-03-26, updated: 2026-05-01 -->
 
-**Root cause:** CSS forces `overflow-y: auto` whenever `overflow-x` is non-`visible`. So `.table-responsive` (`overflow-x: auto`) clips absolutely-positioned dropdowns on BOTH axes — `data-bs-display="static"` alone does NOT fix this.
+**Best practice: Use `.table-responsive` with `data-bs-display="static"` on the button.**
 
-**Required fix: use `<div style="overflow: visible;">` as the table wrapper — NOT `table-responsive`.**
+The `data-bs-display="static"` attribute tells Popper.js to position the dropdown relative to the viewport using `position: fixed` instead of relative to the scrolling container. This prevents clipping even inside `.table-responsive`, and also prevents horizontal scroll on the entire document (keeping scroll scoped to the table only).
 
 ```html
-<!-- ✅ CORRECT — dropdown can escape the container -->
-<div style="overflow: visible;">
-    <table class="table table-vcenter table-hover card-table">...</table>
-</div>
-
-<!-- ❌ WRONG — clips the dropdown, even with data-bs-display="static" -->
+<!-- ✅ CORRECT — dropdown visible, table scrolls independently -->
 <div class="table-responsive">
-    <table class="table table-vcenter table-hover card-table">...</table>
+    <table class="table table-vcenter table-hover card-table">
+        <tbody>
+            <tr>
+                <td>...</td>
+                <td class="w-1">
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown" data-bs-display="static">
+                            <i class="ti ti-dots-vertical"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end">...</div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 ```
 
-Keep `data-bs-display="static"` on the trigger button — it prevents Popper from miscalculating position inside scrollable contexts, but it is not sufficient on its own to fix clipping.
-
-**`data-bs-display="static"` IS still required** on the button:
+**`data-bs-display="static"` IS required** on the button:
 
 ```html
 <!-- PHP template -->

@@ -323,6 +323,78 @@ class DateTimeUtils
     }
 
     /**
+     * Parse a partial date in the formats CSV imports commonly produce:
+     * YYYY-MM-DD, YYYY-M-D, M/D/YYYY, M-D-YYYY, M/D/YY, M-D-YY, M/D, M-D.
+     * Year may be omitted (bare "7/4") or zero ("0000-07-04") — in which case
+     * the returned `year` is null.
+     *
+     * Unlike `parseAndValidate()`, this is lenient about missing years and is
+     * the shared source of truth for CSV importers, which must handle both
+     * month-day-only values (valid for Person.BirthYear) and full dates
+     * (required for SQL DATE custom-field columns) with the same rules. The
+     * previous behaviour called `strtotime()` directly, which silently
+     * assigned the current year to "7/4" and corrupted user data.
+     *
+     * Returns null when the input can't be interpreted as month+day.
+     *
+     * @return array{month:int, day:int, year:?int}|null
+     */
+    public static function parsePartialDate(string $raw): ?array
+    {
+        $raw = trim($raw);
+        if ($raw === '') {
+            return null;
+        }
+        // Year-less inputs validate month/day against a known leap year so 2/29
+        // round-trips correctly; year-bearing inputs validate against the actual year.
+        if (preg_match('/^(\d{4})-(\d{1,2})-(\d{1,2})$/', $raw, $m)) {
+            // YYYY-MM-DD or YYYY-M-D (e.g. 2001-07-04, 0000-07-04)
+            $y     = (int) $m[1];
+            $month = (int) $m[2];
+            $day   = (int) $m[3];
+            if (!checkdate($month, $day, $y > 0 ? $y : 2000)) {
+                return null;
+            }
+            return ['month' => $month, 'day' => $day, 'year' => $y > 0 ? $y : null];
+        }
+        if (preg_match('/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})$/', $raw, $m)) {
+            // M/D/YYYY, M-D-YYYY, M/D/YY (e.g. 1/1/2025, 7-4-2001, 7/4/25, 7/4/00)
+            $y = (int) $m[3];
+            if (strlen($m[3]) === 2) {
+                // Match PHP's strtotime rules: 00-69 => 2000-2069, 70-99 => 1970-1999
+                $y += $y >= 70 ? 1900 : 2000;
+            }
+            $month = (int) $m[1];
+            $day   = (int) $m[2];
+            if (!checkdate($month, $day, $y > 0 ? $y : 2000)) {
+                return null;
+            }
+            return ['month' => $month, 'day' => $day, 'year' => $y > 0 ? $y : null];
+        }
+        if (preg_match('/^(\d{1,2})[\/\-](\d{1,2})$/', $raw, $m)) {
+            // M/D or M-D (e.g. 1/1, 7/4, 7-4) — no year
+            $month = (int) $m[1];
+            $day   = (int) $m[2];
+            if (!checkdate($month, $day, 2000)) {
+                return null;
+            }
+            return ['month' => $month, 'day' => $day, 'year' => null];
+        }
+        // Last-resort fallback for month-name / ISO datetime / etc. The
+        // structural patterns above cover the formats most CSV exporters
+        // emit; strtotime is only used when none of them matched.
+        $ts = strtotime($raw);
+        if ($ts === false) {
+            return null;
+        }
+        return [
+            'month' => (int) date('n', $ts),
+            'day'   => (int) date('j', $ts),
+            'year'  => (int) date('Y', $ts),
+        ];
+    }
+
+    /**
      * Parses a human-entered date string into YYYY-MM-DD format.
      * Supports US (M/D/Y), European (D/M/Y), and ISO (Y-M-D) formats.
      * Migrated from parseAndValidateDate() in Functions.php.

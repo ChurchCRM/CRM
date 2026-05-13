@@ -35,7 +35,7 @@ function FontSelect($fieldname): void
         if (array_key_exists($fieldname, $_COOKIE) && $_COOKIE[$fieldname] == $n) {
             $sel = ' selected';
         }
-        echo '<option value="' . $n . '"' . $sel . '>' . gettext("$n") . '</option>';
+        echo '<option value="' . $n . '"' . $sel . '>' . $n . '</option>';
     }
     echo '</select>';
     echo '</td>';

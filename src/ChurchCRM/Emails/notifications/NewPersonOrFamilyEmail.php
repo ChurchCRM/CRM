@@ -31,7 +31,7 @@ class NewPersonOrFamilyEmail extends BaseEmail
         $email = new self($relatedObject);
         if (!$email->send()) {
             $label = $relatedObject instanceof Family ? 'New Family' : 'New Person';
-            LoggerUtils::getAppLogger()->warning(gettext($label . ' Notification Email Error') . ' :' . $email->getError());
+            LoggerUtils::getAppLogger()->warning($label . ' Notification Email Error: ' . $email->getError());
         }
     }
 
@@ -113,7 +113,7 @@ class NewPersonOrFamilyEmail extends BaseEmail
         if ($this->relatedObject instanceof Family) {
             return SystemURLs::getURL() . '/people/family/' . $this->relatedObject->getId();
         } elseif ($this->relatedObject instanceof Person) {
-            return SystemURLs::getURL() . '/PersonView.php?PersonID=' . $this->relatedObject->getId();
+            return SystemURLs::getURL() . '/people/view/' . $this->relatedObject->getId();
         }
 
         return '';

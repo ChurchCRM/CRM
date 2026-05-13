@@ -26,6 +26,8 @@ Review the list of locales and term counts.
 
 ### Step 3 — Translate all missing terms
 
+**Always on a brand-new branch.** `/locale-translate` creates a fresh `locale/{version}-{YYYY-MM-DD}-{HHMMSS}` branch on every invocation — it never reuses a prior run's branch. If you are resuming a release after a timeout, just rerun the command; a new branch will be cut and already-uploaded locales will be skipped by POEditor.
+
 Invoke the translation skill:
 
 ```

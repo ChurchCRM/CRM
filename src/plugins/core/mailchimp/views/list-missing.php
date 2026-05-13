@@ -12,7 +12,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <ol class="breadcrumb mb-0 bg-light">
                 <li class="breadcrumb-item"><a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard"><i class="fa-solid fa-home"></i></a></li>
                 <li class="breadcrumb-item"><a href="<?= SystemURLs::getRootPath() ?>/plugins/management"><?= gettext('Plugins') ?></a></li>
-                <li class="breadcrumb-item"><a href="<?= SystemURLs::getRootPath() ?>/plugins/mailchimp/dashboard"><?= gettext('MailChimp') ?></a></li>
+                <li class="breadcrumb-item"><a href="<?= SystemURLs::getRootPath() ?>/plugins/mailchimp/dashboard">Mailchimp</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><?= gettext('Not in CRM') ?></li>
             </ol>
         </nav>
@@ -41,7 +41,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
             </div>
             <div class="card-body p-0">
-                <p class="text-muted mb-3 px-3 pt-3">
+                <p class="text-body-secondary mb-3 px-3 pt-3">
                     <i class="fa-solid fa-circle-info me-1"></i>
                     <?= gettext('These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp.') ?>
                 </p>
@@ -91,7 +91,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     title: i18next.t('Name'),
                     data: 'last',
                     render: function (data, type, row) {
-                        return '<i class="fa-solid fa-user text-muted me-2"></i>' + escapeHtml(row.first || '') +"" + escapeHtml(row.last || '');
+                        return '<i class="fa-solid fa-user text-body-secondary me-2"></i>' + escapeHtml(row.first || '') +"" + escapeHtml(row.last || '');
                     },
                     searchable: true
                 },

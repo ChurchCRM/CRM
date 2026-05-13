@@ -67,11 +67,3 @@ msgstr "Mobile"
 msgid "Zip Code"
 msgstr "Post Code"
 
-#: 
-msgid "Foreground Color"
-msgstr "Foreground Colour"
-
-#: 
-msgid "Background Color"
-msgstr "Background Colour"
-

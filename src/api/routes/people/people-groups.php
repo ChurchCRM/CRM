@@ -3,13 +3,18 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Base\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\EventAudienceQuery;
+use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Group;
+use ChurchCRM\model\ChurchCRM\GroupPropMasterQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
+use ChurchCRM\Plugin\Hook\HookManager;
+use ChurchCRM\Plugin\Hooks;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Service\PersonService;
@@ -834,15 +839,43 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      * @OA\Delete(
      *     path="/groups/{groupID}",
      *     summary="Delete a group (ManageGroupRole role required)",
+     *     description="Deletes a group. Members and custom properties are cascade-deleted. Returns 409 Conflict if the group is the audience for one or more events, or is referenced by an event type — reassign those first.",
      *     tags={"Groups"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="groupID", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Group deleted successfully"),
-     *     @OA\Response(response=403, description="ManageGroupRole role required")
+     *     @OA\Response(response=403, description="ManageGroupRole role required"),
+     *     @OA\Response(response=409, description="Group is the audience for active events or referenced by event types")
      * )
      */
     $group->delete('/{groupID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
-        $request->getAttribute('group')->delete();
+        $group = $request->getAttribute('group');
+        $groupId = (int) $group->getId();
+
+        // Block if the group is attached to events (as audience or via event type default).
+        // These references have independent meaning and must be reassigned first.
+        $eventAudienceCount = EventAudienceQuery::create()->filterByGroupId($groupId)->count();
+        $eventTypeCount = EventTypeQuery::create()->filterByGroupId($groupId)->count();
+
+        if ($eventAudienceCount + $eventTypeCount > 0) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                sprintf(
+                    gettext('Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.'),
+                    $eventAudienceCount,
+                    $eventTypeCount
+                ),
+                [],
+                409
+            );
+        }
+
+        // Cascade members and custom property definitions — these are owned by
+        // the group and have no meaning once it is gone.
+        Person2group2roleP2g2rQuery::create()->filterByGroupId($groupId)->delete();
+        GroupPropMasterQuery::create()->filterByGrpId($groupId)->delete();
+
+        $group->delete();
         return SlimUtils::renderSuccessJSON($response);
     })->add(GroupMiddleware::class);
 
@@ -865,6 +898,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         foreach ($groupRoleMemberships as $groupRoleMembership) {
             if ($groupRoleMembership->getPersonId() == $person->getId()) {
                 $groupRoleMembership->delete();
+                HookManager::doAction(Hooks::GROUP_MEMBER_REMOVED, $person->getId(), $group);
                 $note = new Note();
                 $note->setText(gettext('Deleted from group') . ': ' . $group->getName());
                 $note->setType('group');
@@ -904,6 +938,12 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
 
         $groupService = new GroupService();
         $groupService->addUserToGroup($groupID, $userID, $roleID);
+
+        $membership = Person2group2roleP2g2rQuery::create()
+            ->filterByGroupId((int) $groupID)
+            ->filterByPersonId((int) $userID)
+            ->findOne();
+        HookManager::doAction(Hooks::GROUP_MEMBER_ADDED, $membership, $group, $person);
 
         $note = new Note();
         $note->setText(gettext('Added to group') . ': ' . $group->getName());

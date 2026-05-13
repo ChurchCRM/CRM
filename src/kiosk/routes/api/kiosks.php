@@ -6,7 +6,6 @@ use ChurchCRM\model\ChurchCRM\KioskDeviceQuery;
 use ChurchCRM\Slim\Middleware\Api\KioskDeviceMiddleware;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
-use ChurchCRM\Slim\Middleware\Request\Setting\SundaySchoolEnabledMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -65,8 +64,8 @@ $app->group('/api', function (RouteCollectorProxy $group): void {
      * @OA\Post(
      *     path="/kiosk/api/allowRegistration",
      *     operationId="allowKioskRegistration",
-     *     summary="Open a 30-second kiosk registration window",
-     *     description="Allows a new kiosk device to register itself within the next 30 seconds.",
+     *     summary="Open a 2-minute kiosk registration window",
+     *     description="Allows a new kiosk device to register itself within the next 2 minutes.",
      *     tags={"Kiosk"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Response(
@@ -82,10 +81,10 @@ $app->group('/api', function (RouteCollectorProxy $group): void {
      */
     $group->post('/allowRegistration', function (Request $request, Response $response): Response {
         $window = new \DateTime();
-        $window->add(new \DateInterval('PT30S'));
+        $window->add(new \DateInterval('PT2M'));
         SystemConfig::setValue('sKioskVisibilityTimestamp', $window->format('Y-m-d H:i:s'));
 
-        return SlimUtils::renderJSON($response, ['visibleUntil' => $window]);
+        return SlimUtils::renderJSON($response, ['visibleUntil' => $window->format(\DateTime::ATOM)]);
     });
 
     /**
@@ -228,4 +227,44 @@ $app->group('/api', function (RouteCollectorProxy $group): void {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to delete kiosk'), [], 500, $e, $request);
         }
     })->add(KioskDeviceMiddleware::class);
-})->add(SundaySchoolEnabledMiddleware::class)->add(AdminRoleAuthMiddleware::class)->add(AuthMiddleware::class);
+
+    /**
+     * @OA\Post(
+     *     path="/kiosk/api/devices/{kioskId}/name",
+     *     operationId="renameKiosk",
+     *     summary="Rename a kiosk device",
+     *     tags={"Kiosk"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="kioskId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"name"},
+     *             @OA\Property(property="name", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(response=200, description="Kiosk renamed"),
+     *     @OA\Response(response=400, description="Invalid request"),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Forbidden — Admin role required"),
+     *     @OA\Response(response=404, description="Kiosk not found")
+     * )
+     */
+    $group->post('/devices/{kioskId:[0-9]+}/name', function (Request $request, Response $response, array $args): Response {
+        $input = $request->getParsedBody();
+        $name = trim(InputUtils::sanitizeText((string) ($input['name'] ?? '')));
+        if ($name === '') {
+            return SlimUtils::renderErrorJSON($response, gettext('Name cannot be empty'), [], 400);
+        }
+
+        $maxNameLength = 50;
+        if (mb_strlen($name) > $maxNameLength) {
+            return SlimUtils::renderErrorJSON($response, sprintf(gettext('Name cannot be longer than %d characters'), $maxNameLength), [], 400);
+        }
+        $kioskDevice = $request->getAttribute('kioskDevice');
+        $kioskDevice->setName($name);
+        $kioskDevice->save();
+
+        return SlimUtils::renderSuccessJSON($response);
+    })->add(KioskDeviceMiddleware::class);
+})->add(AdminRoleAuthMiddleware::class)->add(AuthMiddleware::class);

@@ -13,7 +13,6 @@ $app = MvcAppFactory::create('/v2', [
 require __DIR__ . '/routes/common/mvc-helper.php';
 require __DIR__ . '/routes/search.php';
 require __DIR__ . '/routes/user.php';
-// People, family, and person routes moved to /people/ module
 require __DIR__ . '/routes/email.php';
 require __DIR__ . '/routes/text.php';
 require __DIR__ . '/routes/cart.php';

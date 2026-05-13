@@ -14,6 +14,60 @@ describe("Admin Get Started", () => {
         cy.contains("Restore a Backup");
     });
 
+    it("should expose existing-data flags on the demo import card so the UI can warn before calling the API", () => {
+        // The standard test DB already has demo data loaded, so the
+        // get-started route should render data-has-existing-data="true"
+        // on #importDemoDataV2 along with the current person/family counts.
+        // Those drive the client-side warning in importDemoData.js — we
+        // verify the server rendered the attributes here so future regressions
+        // (e.g. dropping the counts in dashboard.php) are caught.
+        cy.visit("admin/get-started");
+        cy.get("#importDemoDataV2")
+            .should("have.attr", "data-has-existing-data", "true")
+            .and("have.attr", "data-person-list-url")
+            .and("match", /\/people\/list$/);
+        cy.get("#importDemoDataV2").should("have.attr", "data-family-list-url").and("match", /\/family\/?$/);
+        cy.get("#importDemoDataV2").invoke("attr", "data-person-count").then((val) => {
+            expect(Number(val)).to.be.greaterThan(1);
+        });
+    });
+
+    it("should show an upfront warning (no API call) when the database already has data", () => {
+        cy.visit("admin/get-started");
+
+        // Intercept the demo load endpoint so we can assert it is NOT hit
+        // by the initial click — the warning should appear first and only
+        // an explicit "Import demo data anyway" click should trigger POST.
+        cy.intercept("POST", "**/api/demo/load").as("demoLoad");
+
+        cy.get("#importDemoDataV2").click();
+        cy.get("#demoImportConfirmOverlay").should("be.visible");
+
+        // The warning block and the amber "Import demo data anyway" button
+        // should both be present because the DB has data.
+        cy.get("#demoImportWarning").should("be.visible");
+        cy.contains("#demoImportWarning", "Your database already contains data");
+        cy.get("#demoImportConfirmBtn")
+            .should("have.class", "btn-warning")
+            .and("contain", "Import demo data anyway");
+
+        // The people/families counts in the warning should be rendered as
+        // clickable links to the list pages.
+        cy.get("#demoImportWarning a[href*='/people/list']")
+            .should("have.attr", "target", "_blank")
+            .and("have.attr", "rel")
+            .and("match", /noopener/);
+        cy.get("#demoImportWarning a[href*='/family/']")
+            .should("have.attr", "target", "_blank");
+
+        // And no API call has fired yet — just opening the overlay must
+        // not trigger /api/demo/load.
+        cy.get("@demoLoad.all").should("have.length", 0);
+
+        cy.get("#demoImportCancelBtn").click();
+        cy.get("#demoImportConfirmOverlay").should("not.be.visible");
+    });
+
     it("should show skip link back to Admin Dashboard", () => {
         cy.visit("admin/get-started");
         cy.contains("a", "Skip — go to Admin Dashboard").should("have.attr", "href").and("include", "admin/");

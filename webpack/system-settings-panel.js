@@ -277,7 +277,7 @@ import "../src/skin/scss/system-settings-panel.scss";
         const name = typeof s === "string" ? s : s.name;
         const cfg = this.getSettingConfig(s);
 
-        fetch(window.CRM.root + this.options.configApiPath + "/" + name)
+        fetch(`${window.CRM.root}${this.options.configApiPath}/${name}`)
           .then((response) => response.json())
           .then((data) => {
             // For ajax selects, load options from the remote URL first
@@ -295,7 +295,7 @@ import "../src/skin/scss/system-settings-panel.scss";
 
     // Load options for an ajax-type select from a remote URL, then set the value
     loadAjaxOptions(name, url, currentValue) {
-      const select = this.container.querySelector('select[name="' + name + '"]');
+      const select = this.container.querySelector(`select[name="${name}"]`);
       if (!select) return;
 
       fetch(window.CRM.root + url)
@@ -318,7 +318,7 @@ import "../src/skin/scss/system-settings-panel.scss";
 
     // Update a single input (or radio group) without re-rendering the whole panel
     applyValue(name, value) {
-      const inputs = this.container.querySelectorAll('[name="' + name + '"]');
+      const inputs = this.container.querySelectorAll(`[name="${name}"]`);
       if (inputs.length === 0) return;
 
       if (inputs.length > 1) {
@@ -444,13 +444,13 @@ import "../src/skin/scss/system-settings-panel.scss";
       this.container.querySelectorAll(".preset-btn").forEach((btn) => {
         btn.addEventListener("click", () => {
           const idx = parseInt(btn.dataset.presetIndex, 10);
-          const preset = this.options.presets && this.options.presets[idx];
-          if (!preset || !preset.values) return;
+          const preset = this.options.presets?.[idx];
+          if (!preset?.values) return;
           Object.keys(preset.values).forEach((key) => {
             this.applyValue(key, preset.values[key]);
           });
-          if (window.CRM && window.CRM.notify) {
-            window.CRM.notify(t("Applied preset") + ": " + preset.label + ". " + t("Click Save to apply."), {
+          if (window.CRM?.notify) {
+            window.CRM.notify(`${t("Applied preset")}: ${preset.label}. ${t("Click Save to apply.")}`, {
               type: "info",
               delay: 3000,
             });
@@ -474,7 +474,7 @@ import "../src/skin/scss/system-settings-panel.scss";
       const array = new Uint8Array(32);
       window.crypto.getRandomValues(array);
       return Array.from(array)
-        .map((b) => ("00" + b.toString(16)).slice(-2))
+        .map((b) => `00${b.toString(16)}`.slice(-2))
         .join("");
     }
 
@@ -485,7 +485,7 @@ import "../src/skin/scss/system-settings-panel.scss";
 
       // Disable button and show loading
       saveBtn.disabled = true;
-      saveBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-1"></i> ' + t("Saving...");
+      saveBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin me-1"></i> ${t("Saving...")}`;
 
       // Collect all setting values (empty passwords return null from getValue and are skipped)
       const settings = {};
@@ -502,7 +502,7 @@ import "../src/skin/scss/system-settings-panel.scss";
 
       // Save each setting
       const promises = Object.keys(settings).map((key) =>
-        fetch(window.CRM.root + this.options.configApiPath + "/" + key, {
+        fetch(`${window.CRM.root}${this.options.configApiPath}/${key}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -513,7 +513,7 @@ import "../src/skin/scss/system-settings-panel.scss";
 
       Promise.all(promises)
         .then(() => {
-          if (window.CRM && window.CRM.notify) {
+          if (window.CRM?.notify) {
             window.CRM.notify(t("Settings saved successfully"), { type: "success", delay: 2000 });
           }
 
@@ -521,8 +521,8 @@ import "../src/skin/scss/system-settings-panel.scss";
             this.options.onSave();
           }
         })
-        .catch((error) => {
-          if (window.CRM && window.CRM.notify) {
+        .catch((_error) => {
+          if (window.CRM?.notify) {
             window.CRM.notify(t("Failed to save settings"), { type: "error", delay: 5000 });
           }
           saveBtn.disabled = false;

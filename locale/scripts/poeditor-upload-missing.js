@@ -704,7 +704,7 @@ async function main() {
             console.log(`  ✅ Upload complete — parsed: ${parsed}, added: ${added}, updated: ${updated}`);
             totalUploaded += localizedCount;
         } catch (err) {
-            console.error(`  ❌ Upload failed: ${sanitize(err.message)}`);
+            console.error(`  ❌ Upload failed: ${sanitize(err.message)}`); // lgtm[js/log-injection] Error message sanitized before logging
             results.push({ locale: poEditorCode, name: localeName, status: 'upload-failed', uploaded: 0, empty: totalEmpty, remaining: '?' });
             totalSkipped++;
             continue;
@@ -718,7 +718,7 @@ async function main() {
                 await sleep(3000); // brief pause before download to let POEditor process
                 remainingCount = await refreshMissingTerms(poEditorCode);
             } catch (err) {
-                console.warn(`  ⚠️  Failed to refresh missing terms: ${sanitize(err.message)}`);
+                console.warn(`  ⚠️  Failed to refresh missing terms: ${sanitize(err.message)}`); // lgtm[js/log-injection] Error message sanitized before logging
             }
         } else {
             console.log(`\n  ⏭️  Skipping download (--no-download)`);

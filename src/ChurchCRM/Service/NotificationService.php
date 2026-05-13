@@ -4,8 +4,8 @@ namespace ChurchCRM\Service;
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Notification\UiNotification;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Remote\CentralServices;
 use ChurchCRM\Utils\LoggerUtils;
 
 /**
@@ -109,7 +109,7 @@ class NotificationService
     public static function fetchRemoteNotifications(): void
     {
         try {
-            $url = SystemConfig::getValue('sNotificationsURL');
+            $url = CentralServices::NOTIFICATIONS_URL;
             $contents = file_get_contents($url);
             if ($contents === false) {
                 LoggerUtils::getAppLogger()->warning('Failed to fetch remote notifications', ['url' => $url]);

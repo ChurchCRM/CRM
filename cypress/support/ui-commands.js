@@ -155,7 +155,7 @@ Cypress.Commands.add('createPersonWithBirthday', (personData) => {
     cy.get("#PersonSaveButton").click();
     
     // Wait for save to complete
-    cy.url().should("contain", "PersonView.php");
+    cy.url().should("contain", "people/view/");
 });
 
 Cypress.Commands.add('deletePersonByName', (name) => {

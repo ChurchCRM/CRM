@@ -55,118 +55,126 @@ body.page-login {
   }
 }
 
-// Container and wrapper
+// Single-card login container.
 //
-// `margin: auto` is the magic: in a column flex parent (body.page-auth) it
-// centers the container in BOTH axes when there's slack, and collapses to 0
-// when content is taller than the viewport — so the card top stays reachable
-// and the page scrolls normally on short viewports. No `align-items` /
-// `justify-content` gymnastics on the body needed.
+// `margin: auto` centres the card in both axes within the column-flex body
+// when there is slack, and collapses to 0 when content fills the viewport —
+// so the card top stays reachable and the page scrolls normally on short
+// screens. No `align-items` / `justify-content` needed on the body.
 .login-container {
   width: 100%;
-  max-width: 420px;
+  max-width: 460px;
   margin: auto;
   padding: 20px;
   position: relative;
   z-index: 2;
-
-  &.login-container-split {
-    max-width: 920px;
-  }
 }
 
-.login-wrapper {
-  display: flex;
-  flex-direction: column;
+.login-card {
+  background: white;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  background: white;
-
-  &.login-wrapper-split {
-    flex-direction: row !important;
-    min-height: 520px;
-    align-items: stretch;
-  }
 }
 
-// 2-Column layout for login with registration
-.login-form-column {
-  flex: 1 1 0;
-  padding: 45px 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+// Card header — logo, church name, tagline
+.login-card-header {
+  text-align: center;
+  padding: 32px 40px 28px;
+  border-bottom: 2px solid #f0f0f0;
+  background: linear-gradient(to bottom, rgba(102, 126, 234, 0.03), transparent);
+  border-radius: 12px 12px 0 0;
 }
 
-.login-register-column {
-  flex: 1 1 0;
-  padding: 50px 45px;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.05) 100%);
+// Card body — pill control + form
+.login-card-body {
+  padding: 28px 40px 36px;
+}
+
+// Segmented pill tab control.
+//
+// "Sign In" is a <button>; "Register" is an <a> that opens a new tab.
+// Only rendered when self-registration is enabled ($hasSelfReg = true).
+.login-tab-control {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  background: #f0f2f5;
+  border-radius: 50px;
+  padding: 4px;
+  margin-bottom: 24px;
+  gap: 2px;
+}
+
+.login-tab-btn {
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 46px;
+  background: transparent;
+  font-weight: 600;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
   align-items: center;
-  border-left: 1px solid #f0f0f0;
+  justify-content: center;
+  gap: 7px;
+  white-space: nowrap;
+  text-decoration: none; // <a> variant
 
-  .register-content {
-    text-align: center;
-    max-width: 100%;
+  i {
+    font-size: 13px;
   }
 
-  .register-icon {
-    font-size: 60px;
+  &.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.35);
+  }
+
+  &:hover:not(.active) {
+    background: rgba(102, 126, 234, 0.08);
     color: #667eea;
-    margin-bottom: 20px;
-    opacity: 0.9;
+    text-decoration: none; // <a> variant
   }
+}
 
-  .register-title {
-    font-size: 22px;
-    font-weight: 700;
-    color: #1a1a1a;
-    margin-bottom: 12px;
-    line-height: 1.3;
-  }
+// Compact church contact links below the form when self-reg is disabled
+.login-contact-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 20px;
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid #f0f0f0;
 
-  .register-text {
-    color: #666;
-    font-size: 14px;
-    line-height: 1.6;
-    margin-bottom: 28px;
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #888;
+    font-size: 12px;
+    text-decoration: none;
+    transition: color 0.2s;
 
-    strong {
-      color: #1a1a1a;
-      font-weight: 600;
+    i {
+      font-size: 11px;
+      color: #bbb;
+      transition: color 0.2s;
     }
-  }
 
-  .register-benefits {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 28px 0;
-    text-align: left;
-    display: inline-block;
-
-    li {
-      padding: 8px 0;
-      color: #666;
-      font-size: 13px;
+    &:hover {
+      color: #667eea;
 
       i {
-        color: #43d997;
-        margin-right: 8px;
-        font-weight: 700;
+        color: #667eea;
       }
     }
   }
-
-  .btn-register {
-    max-width: 100%;
-  }
 }
 
-// Form section
+// Form section (legacy — kept for non-login auth pages that may use this class)
 .login-form-section {
   padding: 45px 40px;
   display: flex;
@@ -174,16 +182,13 @@ body.page-login {
   justify-content: center;
 }
 
-// Header with logo and church name
+// Header with logo and church name (legacy alias — kept for other auth templates)
 .login-form-header {
   text-align: center;
-  margin-bottom: 35px;
-  padding-bottom: 30px;
-  border-bottom: 2px solid #f0f0f0;
   background: linear-gradient(to bottom, rgba(102, 126, 234, 0.03), transparent);
-  margin: -45px -40px 30px -40px;
-  padding: 30px 40px;
+  border-bottom: 2px solid #f0f0f0;
   border-radius: 12px 12px 0 0;
+  padding: 30px 40px;
 }
 
 .login-header-logo {
@@ -754,80 +759,61 @@ body.page-auth .btn {
 
 // Responsive design
 //
-// Two breakpoint tiers, aligned with `responsive-design-guidelines.md`:
-//
-// 1. **<1200px (Tablet + Mobile)** — the side-by-side split with the
-//    marketing sidebar only fits comfortably on actual laptops/desktops.
-//    Below the 1200px Laptop boundary, stack the columns vertically and
-//    collapse the register sidebar into a slim banner with just the button
-//    (the marketing icon/title/blurb/benefits get hidden — they're filler
-//    that loses impact in a narrow column).
-//
-// 2. **<768px (Mobile only)** — additionally tighten padding, font sizes,
-//    and the logo so the Sign In button stays reachable without scrolling
-//    on iPhone SE-class viewports.
-@media (max-width: 1199.98px) {
-  // Stack the split login wrapper vertically and drop the rigid 520px
-  // min-height that the side-by-side layout uses.
-  .login-wrapper-split {
-    flex-direction: column !important;
-    min-height: auto;
-  }
-
-  .login-container-split {
-    max-width: 480px;
-  }
-
-  // After stacking, the register column gets a top border (instead of left
-  // border) and tighter padding — but the full marketing content (icon,
-  // title, blurb, benefits, button) stays visible at every viewport.
-  .login-register-column {
-    border-left: none;
-    border-top: 1px solid #f0f0f0;
-    padding: 30px 30px;
-  }
-
-  .btn-register {
-    padding: 11px 14px;
-    font-size: 13px;
-  }
-}
-
-@media (max-width: 768px) {
-  .login-container,
-  .login-container-split {
+// Single breakpoint at 600px for the login card.
+// The single-card layout works at all widths; below 600px we tighten padding,
+// shrink the logo, and drop the pill icons to keep the Sign In button
+// on-screen without scrolling even on iPhone SE (375px).
+@media (max-width: 600px) {
+  .login-container {
     max-width: 100%;
+    padding: 12px;
   }
 
-  // Form column — tighten padding so the form fits without overflow
-  .login-form-column,
-  .login-form-section {
-    padding: 24px 20px;
+  // Header — reduced vertical footprint so form is above the fold
+  .login-card-header {
+    padding: 14px 20px 12px;
   }
 
-  // Header — reduce vertical footprint so the logo + church name don't
-  // dominate the screen on small phones
-  .login-form-header {
-    margin: -24px -20px 16px -20px;
-    padding: 18px 20px;
-  }
+  .login-header-logo {
+    margin-bottom: 10px; // override base 20px
 
-  .login-header-logo img {
-    max-height: 70px;
+    img {
+      max-height: 48px; // override base 120px / desktop 70px
+    }
   }
 
   .login-header-church-name {
-    font-size: 18px;
-    margin-bottom: 4px;
+    font-size: 16px;
+    margin-bottom: 2px;
   }
 
+  // Tagline is decorative filler — hiding it saves ~20px on small phones
   .login-header-tagline {
-    font-size: 11px;
+    display: none;
   }
 
-  // Form title — keep compact, allow it to wrap on one line where possible
+  // Card body — tighter top/bottom, form content starts higher
+  .login-card-body {
+    padding: 14px 20px 16px;
+  }
+
+  // Pill control — less gap below, icons hidden to prevent label wrap
+  .login-tab-control {
+    margin-bottom: 14px;
+  }
+
+  .login-tab-btn {
+    font-size: 13px;
+    padding: 9px 12px;
+
+    i {
+      display: none;
+    }
+  }
+
+  // Form title (self-reg off) — compact on phone
   .login-form-title {
-    margin-bottom: 18px;
+    margin-bottom: 14px;
 
     h1 {
       font-size: 17px;
@@ -843,9 +829,9 @@ body.page-auth .btn {
     }
   }
 
-  // Inputs — 16px font is required on iOS to prevent auto-zoom on focus
+  // Inputs — 16px prevents iOS auto-zoom on focus
   body.page-auth .mb-3 {
-    margin-bottom: 14px;
+    margin-bottom: 12px;
 
     > input:not([type="checkbox"]):not([type="radio"]) {
       padding: 11px 12px;
@@ -853,20 +839,20 @@ body.page-auth .btn {
     }
   }
 
+  // Form footer — less gap before Sign In button
+  .form-footer {
+    margin-bottom: 10px;
+  }
+
   .btn-sign-in {
     padding: 13px 14px;
     font-size: 14px;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
 
-  // Register column — tighter padding on phone-class viewports
-  .login-register-column {
+  // Legacy form section — tighter padding on mobile
+  .login-form-section {
     padding: 24px 20px;
-  }
-
-  .signup-link {
-    margin: 16px -20px -24px -20px;
-    padding: 16px 20px;
   }
 
   .forgot-password-card {

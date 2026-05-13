@@ -37,7 +37,7 @@ class Note extends BaseNote
 
     public function getDeleteLink(): string
     {
-        return SystemURLs::getRootPath() . '/NoteDelete.php?NoteID=' . $this->getId();
+        return 'data-delete-note-' . $this->getId();
     }
 
     public function getDisplayEditedDate(string $format = 'Y-m-d h:i:s'): string
@@ -63,8 +63,13 @@ class Note extends BaseNote
         return $this->getPrivate() !== 0;
     }
 
-    public function isVisible(int $personId): bool
+    public function isVisible(int $userId): bool
     {
-        return !$this->isPrivate() || $this->getPrivate() === $personId;
+        // Public notes visible to everyone
+        if (!$this->isPrivate()) {
+            return true;
+        }
+        // Private notes visible only to creator
+        return $this->getEnteredBy() === $userId;
     }
 }

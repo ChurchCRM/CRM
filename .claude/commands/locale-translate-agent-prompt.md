@@ -4,43 +4,92 @@ You are translating missing UI terms for the ChurchCRM church management applica
 
 ## CRITICAL RULES — READ BEFORE DOING ANYTHING
 
-1. **Create a branch FIRST** — before translating a single term
-2. **After EVERY locale:** commit → push → upload to POEditor → commit refreshed files → push
-3. **NEVER accumulate translations without committing** — sessions can timeout at any moment
-4. **If any step fails, STOP and report** — do not continue without saving work
+1. **PRE-FLIGHT FIRST** — Check GitHub for existing locale branches before creating a new one (see Pre-flight below).
+2. **Create a BRAND-NEW branch** — before translating a single term. Never reuse an existing `locale/*` or `copilot/*` branch, even one from earlier today.
+3. **Commit + push after EVERY group (5 locales max)** — never accumulate more than 5 locales without committing. Prefer committing after every 3.
+4. **This session ends in ~55 minutes** — after 45 minutes, stop translating and commit everything you have. Partial progress is better than lost work.
+5. **NO POEditor upload** — `POEDITOR_TOKEN` is not available in this environment. Skip all upload steps entirely. The user will run the upload manually after the session.
+6. **If any step fails, STOP and report** — do not continue without saving work.
 
-We have lost hours of translated work from agents that skipped these steps. They are non-negotiable.
+We have lost hours of work from agents that accumulated 10+ locales without committing.
 
 ---
 
-## Step 1: Create Branch
+## PRE-FLIGHT: Check What's Already Done <!-- added: 2026-04-25 -->
+
+**Before creating a branch or translating anything**, check if prior sessions already completed some locales:
 
 ```bash
-git checkout -b locale/7.2.0-$(date +%Y-%m-%d)
-git push -u origin locale/7.2.0-$(date +%Y-%m-%d)
+# 1. Check for existing locale branches from today
+git ls-remote --heads origin 'refs/heads/locale/*'
+
+# 2. Check for any open locale translation PRs
+gh pr list --state open --search "locale translate" --json number,title,headRefName
+
+# 3. Check what terms actually remain
+node locale/scripts/locale-translate.js --list
 ```
 
-If already on a `locale/*` branch, skip this step.
+If a prior session branch exists with commits for some locales, those locales will already show 0 terms remaining in `--list`. **Do not re-translate locales that show 0 terms.**
 
 ---
 
-## Step 2: List Remaining Locales
+## Step 1: Create a Fresh Branch
+
+```bash
+node locale/scripts/locale-branch-manager.js --init
+# Output: locale/<version>-<YYYY-MM-DD>-<HHMMSS>
+```
+
+If that fails:
+```bash
+git checkout -b "locale/$(node -p "require('./package.json').version")-$(date -u +%Y-%m-%d-%H%M%S)"
+git push -u origin HEAD
+```
+
+---
+
+## Step 2: Get Remaining Locales
 
 ```bash
 node locale/scripts/locale-translate.js --list
 ```
 
-Process locales in this priority order:
+Process locales in this order — **groups of ~5 locales, commit+push after each group:**
 
-- **TIER-1 (high impact):** es, es-MX, es-AR, es-CO, es-SV, zh-CN, zh-TW, pt-br, pt, hi, fr, ru, id, de, ja, ar
-- **TIER-2 (medium):** sw, am, vi, te, it, ko, ta, th, uk, pl, nl, el, sv
-- **TIER-3 (completeness):** ro, cs, hu, he, nb, fi, et, af, sq, fil, ml
+### Group A — Latin America & Iberia (Romance, easiest, highest GA traffic)
+`es`, `es-MX`, `pt-br`, `pt`, `es-AR`
 
-Skip locales that show 0 terms remaining (already done).
+### Group B — More Romance + Catholic Europe
+`es-CO`, `es-SV`, `fr`, `it`, `ro`
+
+### Group C — Eastern Europe (Slavic, Orthodox/Catholic majority)
+`ru`, `uk`, `pl`, `cs`, `hu`
+
+### Group D — Northern Europe (Lutheran, Protestant)
+`de`, `nl`, `sv`, `nb`, `fi`, `et`
+
+### Group E — Asia Pacific (Philippines first — 91% Christian, then Korea, Indonesia, Vietnam, China)
+`fil`, `ko`, `id`, `vi`, `zh-CN`
+
+### Group F — More Asia
+`zh-TW`, `hi`, `ja`, `ta`, `te`
+
+### Group G — Africa & other (South Africa region, East Africa)
+`sw`, `am`, `af`, `sq`, `ml`
+
+### Group H — Completion (harder scripts)
+`ar`, `el`, `he`, `th`
+
+Skip locales that show 0 terms remaining.
 
 ---
 
-## Step 3: For EACH Locale — Translate → Save → Upload
+## Step 3: For EACH Locale — Translate → Apply → Commit → Push
+
+### ⏱️ TIMING CHECKPOINTS
+- After every group (max 5 locales): commit + push before starting next group
+- If 45 minutes have elapsed: finish current locale, commit everything, stop and report
 
 ### 3a. Read the untranslated terms
 
@@ -52,9 +101,8 @@ If the locale has multiple files (`<CODE>-2.json`, etc.), read and translate eac
 
 ### 3b. Translate
 
-Produce translations following these rules:
-
 **Church vocabulary (use these, not generic CRM terms):**
+
 | English | Translation concept |
 |---------|-------------------|
 | Members / Users | Congregation / Parishioners |
@@ -64,12 +112,12 @@ Produce translations following these rules:
 | Cart (selection) | Selection / Roster |
 
 **Denomination context by locale:**
-- **Coptic Orthodox:** ar (Egyptian Arabic)
-- **Catholic:** es, es-*, it, fr, pt, pt-br, pl
-- **Orthodox:** ru, uk, el, ro
+- **Catholic:** es, es-*, it, fr, pt, pt-br, pl, ro
+- **Orthodox:** ru, uk, el
+- **Coptic Orthodox:** ar
 - **Lutheran:** de, sv, nb, fi, et
-- **Evangelical/Protestant:** ko, zh-CN, zh-TW, id, ja, vi, th
-- **General Protestant:** en, af, sq, nl, hu, cs, he, sw, am, fil, ml, ta, te, hi
+- **Evangelical/Protestant:** ko, zh-CN, zh-TW, id, ja, vi, th, fil
+- **General Protestant:** af, sq, nl, hu, cs, he, sw, am, ml, ta, te, hi
 
 **Preserve exactly:** `%d`, `%s`, `%1$s` format specifiers, markdown, URLs, HTML tags
 
@@ -97,21 +145,9 @@ Repeat for each batch file (`<CODE>-2.json`, etc.) if the locale has multiple.
 
 ### 3d. Update english-ok.json (if needed)
 
-If any translations are intentionally identical to the English key (e.g. `"Kiosk": "Kiosk"`, `"Azure": "Azure"`), add them to `locale/terms/english-ok.json` so the uploader doesn't skip them:
+If any translations are intentionally identical to the English key (e.g. `"Kiosk": "Kiosk"`, `"Email": "Email"`), add them to `locale/terms/english-ok.json` so the uploader doesn't skip them.
 
-```bash
-# Check which terms have value = key
-python3 -c "
-import json
-t = json.load(open('locale/terms/missing/<CODE>/<CODE>-1.json'))
-same = [k for k, v in t.items() if isinstance(v, str) and v == k and v != '']
-if same: print(json.dumps(same))
-"
-```
-
-If any, add to `locale/terms/english-ok.json` under the locale code.
-
-### 3e. COMMIT + PUSH (MANDATORY — do this IMMEDIATELY)
+### 3e. COMMIT + PUSH (MANDATORY — after every locale, or at most every 3)
 
 ```bash
 git add locale/terms/missing/<CODE>/ locale/terms/english-ok.json
@@ -119,40 +155,23 @@ git commit -m "locale: translate <CODE> (<LANGUAGE>, <N> terms)"
 git push origin $(git branch --show-current)
 ```
 
-### 3f. UPLOAD TO POEDITOR
-
+Verify push succeeded:
 ```bash
-node locale/scripts/poeditor-upload-missing.js --locale <CODE> --yes
+git log origin/$(git branch --show-current) --oneline | head -3
 ```
 
-This uploads translations AND refreshes the local batch files (removes accepted terms).
+**⛔ NO POEditor upload step.** Skip it entirely — `POEDITOR_TOKEN` is not available. The upload will be run manually after the session ends.
 
-The script reads `POEDITOR_TOKEN` from `.env`. Rate limits are handled automatically with retries.
-
-**If the upload fails:** Log the error message and **skip to the next locale** (Step 3h). Do NOT retry or block. The upload can be re-run manually later. The committed+pushed translations are safe on the branch regardless.
-
-### 3g. COMMIT REFRESHED FILES + PUSH (only if 3f succeeded)
-
-If the upload succeeded and batch files were refreshed:
-
-```bash
-git add locale/terms/missing/<CODE>/
-git commit -m "locale: update missing terms for <CODE> after POEditor upload"
-git push origin $(git branch --show-current)
-```
-
-Skip this step if 3f failed (nothing changed locally).
-
-### 3h. Move to the next locale. Go back to Step 3a.
+### 3f. Move to the next locale. Go back to Step 3a.
 
 ---
 
 ## Parallelization Strategy
 
-For speed, you may run up to 4 sub-agents in parallel for large locales (>10 terms each). Each sub-agent translates and applies ONE locale. After ALL sub-agents return, the parent MUST run steps 3e–3g for EACH locale before dispatching the next batch.
+For speed, run up to 4 sub-agents in parallel within a group. Each sub-agent translates and applies ONE locale. After ALL sub-agents in a group return, the parent MUST commit+push for each locale before starting the next group.
 
 **Small locales (≤10 terms):** Handle inline — no sub-agent needed.
-**Large locales (>10 terms):** One sub-agent per locale. Max 4 at a time.
+**Large locales (>10 terms):** One sub-agent per locale. Max 4 parallel.
 
 ---
 
@@ -161,17 +180,29 @@ For speed, you may run up to 4 sub-agents in parallel for large locales (>10 ter
 ```bash
 # Verify nothing remains
 node locale/scripts/locale-translate.js --list
+```
 
-# Verify all uploads reached POEditor
-node locale/scripts/poeditor-upload-missing.js --dry-run
+Report which locales were completed. The user will then run the POEditor upload manually:
+```bash
+for locale in <completed locales>; do
+  node locale/scripts/poeditor-upload-missing.js --locale $locale --yes
+done
 ```
 
 ---
 
-## If Session Times Out
+## If Session is Approaching Timeout (45+ minutes elapsed)
 
-All completed locales are safe (committed, pushed, uploaded to POEditor). To resume:
+1. Finish the locale you are currently on
+2. Commit + push everything
+3. Run `node locale/scripts/locale-translate.js --list` and report what remains
+4. Do NOT start another locale if less than 5 minutes remain
 
-1. Check out the existing branch: `git checkout locale/7.2.0-*`
-2. Run `node locale/scripts/locale-translate.js --list` to see what's left
-3. Resume from the next untranslated locale
+---
+
+## Related Skills & Docs
+
+- [`/locale-translate`](./locale-translate.md) — the canonical slash-command form of this workflow.
+- [`locale-cloud-safe-translation.md`](../../.agents/skills/churchcrm/locale-cloud-safe-translation.md) — branch-manager internals and cloud-resume rationale.
+- [`locale-stack-ranking.md`](../../.agents/skills/churchcrm/locale-stack-ranking.md) — original TIER priorities.
+- [`locale-ai-translation.md`](../../.agents/skills/churchcrm/locale-ai-translation.md) — church vocabulary + denomination context.

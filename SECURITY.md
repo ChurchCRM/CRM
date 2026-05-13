@@ -4,7 +4,7 @@
 
 Security patch announcements, CVE disclosures, and dependency update notices are posted in the **#security** channel on our Discord server.
 
-> 👉 **Join Discord:** https://discord.gg/XGppbeTw — then follow **#security** for announcements.
+> 👉 **Join Discord:** [https://discord.gg/XGppbeTw](https://discord.gg/tuWyFzj3Nj) — then follow **#security** for announcements.
 
 **Please do not:**
 - DM maintainers directly about security issues

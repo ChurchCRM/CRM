@@ -362,22 +362,6 @@ msgid "Back to Menu"
 msgstr "返回目錄"
 
 #: 
-msgid "Empty Cart"
-msgstr "清空購物車"
-
-#: 
-msgid "Empty Cart to Group"
-msgstr "清空購物車集團"
-
-#: 
-msgid "Empty Cart to Family"
-msgstr "清空購物車家庭"
-
-#: 
-msgid "Map Cart"
-msgstr "地圖購物車"
-
-#: 
 msgid "Bulk Mail Presort"
 msgstr "群發郵件預先分類"
 
@@ -666,10 +650,6 @@ msgid "Save Changes"
 msgstr "保存更改"
 
 #: 
-msgid "Church Event Editor"
-msgstr "教會活動編輯器"
-
-#: 
 msgid "Edit Event Type"
 msgstr "編輯活動類型"
 
@@ -736,21 +716,9 @@ msgid "Create Event"
 msgstr "建立活動"
 
 #: 
-msgid "Create a new Event"
-msgstr "建立新活動"
-
-#: 
-msgid "Select your event type"
-msgstr "選擇您的活動類型"
-
-#: 
 #, fuzzy
 msgid "Event Status"
 msgstr "活動狀態"
-
-#: 
-msgid "Return to Events"
-msgstr "返回至活動"
 
 #: 
 msgid "Sundays"
@@ -847,10 +815,6 @@ msgstr "電子郵件是無效的"
 #: 
 msgid "Family Info"
 msgstr "家庭資料"
-
-#: 
-msgid "Contact Info"
-msgstr "聯絡人資料"
 
 #: 
 msgid "Envelope Info"
@@ -975,11 +939,6 @@ msgstr "值"
 #: 
 msgid "Edit Value"
 msgstr "編輯值"
-
-#: 
-#, fuzzy
-msgid "Assign a New Property"
-msgstr "分配一個新的屬性"
 
 #: 
 msgid "Assign"
@@ -1220,10 +1179,6 @@ msgid "Summary Data"
 msgstr "摘要數據"
 
 #: 
-msgid "CSV"
-msgstr "CSV"
-
-#: 
 msgid "Back"
 msgstr "背面"
 
@@ -1350,10 +1305,6 @@ msgstr "數據文件格式"
 #: 
 msgid "GPS Visualizer"
 msgstr "GPS可視化"
-
-#: 
-msgid "Street Atlas USA"
-msgstr "街道地圖集美國"
 
 #: 
 #, fuzzy
@@ -1515,27 +1466,6 @@ msgstr "其他電子郵件"
 #: 
 msgid "Group View"
 msgstr "群組視圖"
-
-#: 
-msgid "Confirm Delete Group"
-msgstr "確認刪除群組"
-
-#: 
-#, fuzzy
-msgid "Please confirm deletion of this group record"
-msgstr "請確認刪除該組的記錄"
-
-#: 
-msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
-msgstr "這也將刪除所有角色和特定組相關的屬性數據與該組記錄。"
-
-#: 
-msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
-msgstr "所有組成員資格和屬性都將被銷毀。 小組成員本身不會被改變。"
-
-#: 
-msgid "Please select target group for members"
-msgstr "請為會員選擇目標群組"
 
 #: 
 #, fuzzy
@@ -1700,11 +1630,6 @@ msgid "Updated"
 msgstr "更新"
 
 #: 
-#, fuzzy
-msgid "Please confirm deletion of this note"
-msgstr "請確認刪除本說明"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "是的，刪除這條記錄"
 
@@ -1729,24 +1654,8 @@ msgid "Group"
 msgstr "組"
 
 #: 
-msgid "Option"
-msgstr "選項"
-
-#: 
-msgid "Error: Duplicate"
-msgstr "錯誤：重複"
-
-#: 
 msgid "Default"
 msgstr "默認"
-
-#: 
-msgid "Duplicate name found."
-msgstr "發現重複的名稱。"
-
-#: 
-msgid "Make Default"
-msgstr "設為默認值"
 
 #: 
 msgid "Exit"
@@ -1755,10 +1664,6 @@ msgstr "出口"
 #: 
 msgid "Add New"
 msgstr "添加新"
-
-#: 
-msgid " by that name already exists."
-msgstr "由該名稱已經存在。"
 
 #: 
 msgid "Buyer Number Editor"
@@ -2166,15 +2071,6 @@ msgid "Calendar Year"
 msgstr "日曆年份"
 
 #: 
-msgid "User Delete Confirmation"
-msgstr "用戶刪除確認書，"
-
-#: 
-#, fuzzy
-msgid "Please confirm removal of user status from"
-msgstr "請確認刪除的用戶狀態"
-
-#: 
 msgid "User Editor"
 msgstr "用戶編輯器"
 
@@ -2241,10 +2137,6 @@ msgid "Failed Logins"
 msgstr "登入失敗次數"
 
 #: 
-msgid "You must enter the same password in both boxes"
-msgstr "您必須在兩個框中輸入相同的密碼"
-
-#: 
 msgid "Your password choice is too obvious. Please choose something else."
 msgstr "選擇你的密碼是太明顯了。請選擇其他的東西。"
 
@@ -2278,11 +2170,6 @@ msgstr "新密碼"
 #, fuzzy
 msgid "Confirm New Password"
 msgstr "確認新密碼"
-
-#: 
-#, fuzzy
-msgid "Please confirm the password reset of this user"
-msgstr "請確認該用戶的密碼重置"
 
 #: 
 msgid "Volunteer Opportunity Editor"
@@ -2437,26 +2324,6 @@ msgstr "數字太大。必須是介於-2147483648和2147483647"
 #: 
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "貨幣量過於龐大。最大999999999.99美元"
-
-#: 
-msgid " Bold Italic"
-msgstr "粗體斜體"
-
-#: 
-msgid " Italic"
-msgstr "斜體"
-
-#: 
-msgid " Bold"
-msgstr "膽大"
-
-#: 
-msgid "Error making API Call to"
-msgstr "API調用出現錯誤"
-
-#: 
-msgid "Error text"
-msgstr "文本錯誤"
 
 #. plugin:mailchimp:section:2:title
 #: 
@@ -2799,14 +2666,6 @@ msgid "Are you sure you want to delete the selected"
 msgstr "您確定要刪除所選內容嗎？"
 
 #: 
-msgid "Deposit(s)"
-msgstr "存款"
-
-#: 
-msgid "This will also delete all payments associated with this deposit"
-msgstr "這也將刪除與此存款相關的所有付款"
-
-#: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "此操作無法撤消，可能會產生法律影響！"
 
@@ -2874,10 +2733,6 @@ msgstr "是"
 #: 
 msgid "Edit Settings"
 msgstr "編輯設置"
-
-#: 
-msgid "Backup Downloaded, Copy on server removed"
-msgstr "備份已下載，已刪除服務器上的副本"
 
 #: 
 msgid "Functions"
@@ -2995,10 +2850,6 @@ msgstr "禁用群組特定的屬性"
 #: 
 msgid "Group Properties"
 msgstr "組屬性"
-
-#: 
-msgid "There was a problem retrieving the requested object"
-msgstr "檢索請求對象時出現問題"
 
 #: 
 msgid "All"
@@ -3176,10 +3027,6 @@ msgid "Add Church Event"
 msgstr "增加教會活動"
 
 #: 
-msgid "List Event Types"
-msgstr "列出活動類型"
-
-#: 
 msgid "Check-in and Check-out"
 msgstr "辦理入住和退房"
 
@@ -3294,10 +3141,6 @@ msgid "Security Group"
 msgstr "安全組"
 
 #: 
-msgid "Security Groups"
-msgstr "安全組"
-
-#: 
 msgid "Security Groups Editor"
 msgstr "安全組編輯器"
 
@@ -3310,56 +3153,16 @@ msgid "Group Member Roles Editor"
 msgstr "群組成員角色編輯器"
 
 #: 
-msgid "Person Custom List Option"
-msgstr "人員自定義列表選項"
-
-#: 
-msgid "Person Custom List Options"
-msgstr "人員自定義列表選項"
-
-#: 
 msgid "Person Custom List Options Editor"
 msgstr "人員自定義列表選項編輯器"
-
-#: 
-msgid "Custom List Option"
-msgstr "自定義列表選項"
-
-#: 
-msgid "Custom List Options"
-msgstr "自定義列表選項"
 
 #: 
 msgid "Custom List Options Editor"
 msgstr "人員自定義列表選項編輯器"
 
 #: 
-msgid "Family Custom List Option"
-msgstr "家庭自定義列表選項"
-
-#: 
-msgid "Family Custom List Options"
-msgstr "家庭自定義列表選項"
-
-#: 
 msgid "Family Custom List Options Editor"
 msgstr "家庭自定義列表選項編輯器"
-
-#: 
-msgid "are not allowed."
-msgstr "是不允許的"
-
-#: 
-msgid "Name for New"
-msgstr "新名稱"
-
-#: 
-msgid "Created via Family"
-msgstr "通過家庭創建"
-
-#: 
-msgid "Updated via Family"
-msgstr "通過家庭更新"
 
 #: 
 msgid "Family Data Verified"
@@ -4792,11 +4595,6 @@ msgstr "俄語"
 
 #. Context: locales
 #: 
-msgid "Sami (Northern) (Sweden)"
-msgstr "薩米語（北部）（瑞典）"
-
-#. Context: locales
-#: 
 msgid "Albanian"
 msgstr "阿爾巴尼亞語"
 
@@ -4818,10 +4616,6 @@ msgstr "中文-台灣"
 #: 
 msgid "Maximum upload size"
 msgstr "最大上載大小"
-
-#: 
-msgid "The selected file exceeds this servers maximum upload size of"
-msgstr "所選文件超過此服務器的最大上載大小"
 
 #: 
 msgid "Failed"
@@ -4856,27 +4650,6 @@ msgstr "提交了一個無效的配置名稱請求"
 #: 
 msgid "Profile Image uploaded"
 msgstr "個人資料圖片已上傳"
-
-#: 
-#, fuzzy
-msgid "payment(s)?"
-msgstr "付款？"
-
-#: 
-msgid "Confirm Deactivation"
-msgstr "確認停用"
-
-#: 
-msgid "Confirm Activation"
-msgstr "確認激活"
-
-#: 
-msgid "Please confirm deactivation of family"
-msgstr "請確認停用家庭"
-
-#: 
-msgid "Please confirm activation of family"
-msgstr "請確認激活家庭"
 
 #: 
 #, fuzzy
@@ -4981,14 +4754,6 @@ msgid "Include"
 msgstr "包括"
 
 #: 
-msgid "View Cart"
-msgstr "查看購物車"
-
-#: 
-msgid "Your Cart is Empty"
-msgstr "您的購物車是空的"
-
-#: 
 msgid "Legend"
 msgstr "圖例"
 
@@ -5003,14 +4768,6 @@ msgstr "展示學員生日于"
 #: 
 msgid "Actions"
 msgstr "操作"
-
-#: 
-msgid "Action Confirmation"
-msgstr "確認操作"
-
-#: 
-msgid "Please confirm reset failed login count"
-msgstr "請確認重置登入失敗次數"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -5079,10 +4836,6 @@ msgstr "系統用戶登錄重置"
 #: 
 msgid "Notification for"
 msgstr "通知"
-
-#: 
-msgid "ERROR"
-msgstr "錯誤"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -5154,10 +4907,6 @@ msgid "Reset your password"
 msgstr "重置你的密碼"
 
 #: 
-msgid "Sorry, we are unable to process your request at this point in time."
-msgstr "抱歉，我們目前無法處理您的請求。"
-
-#: 
 #, fuzzy
 msgid "Kiosk Manager"
 msgstr "Kiosk管理"
@@ -5171,10 +4920,6 @@ msgid "Self Verification"
 msgstr "自助驗證"
 
 #: 
-msgid "Check Number"
-msgstr "檢查號碼"
-
-#: 
 msgid "Details"
 msgstr "詳情"
 
@@ -5183,48 +4928,12 @@ msgid "Verification email sent"
 msgstr "驗證電郵已發出"
 
 #: 
-msgid "Confirm Enable Group Specific Properties"
-msgstr "確認啟用組特定屬性"
-
-#: 
-msgid "This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor."
-msgstr "這將為該組創建組特定的屬性。然後，您應該使用組特定的屬性表編輯器添加所需的屬性。"
-
-#: 
-msgid "Confirm Disable Group Specific Properties"
-msgstr "確認啟用組特定屬性"
-
-#: 
-msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
-msgstr "您確定要刪除特定組的人員屬性嗎？所有組成員屬性數據都將丟失！"
-
-#: 
-msgid "Role Name"
-msgstr "角色名稱"
-
-#: 
-msgid "Sequence"
-msgstr "序號"
-
-#: 
-msgid "Do you want to delete this person?  This cannot be undone."
-msgstr "你想刪除此人嗎？這不能被撤消。"
-
-#: 
-msgid "Are you sure you want to unassign this property?"
-msgstr "您確定要取消分配此屬性嗎？"
-
-#: 
 msgid "Select a family"
 msgstr "選擇一個家庭"
 
 #: 
 msgid "Release Notes"
 msgstr "釋放說明"
-
-#: 
-msgid "Move"
-msgstr "移動"
 
 #. Context: locales
 #: 
@@ -5250,7 +4959,8 @@ msgid "Indonesian - Indonesia"
 msgstr "印尼語 - 印尼"
 
 #: 
-msgid "records(s) successfully added to selected Group."
+#, fuzzy
+msgid "record(s) successfully added to selected Group."
 msgstr "記錄已成功添加到選定的組。"
 
 #: 
@@ -5280,10 +4990,6 @@ msgstr "新增家庭"
 #: 
 msgid "Church Greeter"
 msgstr "教會迎賓員"
-
-#: 
-msgid "External Calendar API is disabled"
-msgstr "外部日曆API已禁用"
 
 #: 
 msgid "Special Group Settings : Sunday School Type"
@@ -5420,18 +5126,6 @@ msgid "OK"
 msgstr "確認"
 
 #: 
-msgid "Please select target Role for members"
-msgstr "請為會員選擇目標角色"
-
-#: 
-msgid "GroupID required for role selection prompt"
-msgstr "角色選擇提示需要群組ID"
-
-#: 
-msgid "Select Group and Role"
-msgstr "選擇組和角色"
-
-#: 
 msgid "All Members"
 msgstr "所有會員"
 
@@ -5458,14 +5152,6 @@ msgstr "收件人命名方法"
 #: 
 msgid "Salutation Utility"
 msgstr "Salutation Utility"
-
-#: 
-msgid "Add A Group Name"
-msgstr "新增群組名"
-
-#: 
-msgid "Default Name Group"
-msgstr "預設群組名"
 
 #: 
 msgid "Group Role"
@@ -5567,7 +5253,8 @@ msgid "Remove All from Cart"
 msgstr "從購物車中刪除全部"
 
 #: 
-msgid "records(s) successfully deleted from the selected Group."
+#, fuzzy
+msgid "record(s) successfully deleted from the selected Group."
 msgstr "順利將紀綠從所選的群組中刪除"
 
 #: 
@@ -5595,15 +5282,6 @@ msgid "Added to group"
 msgstr "增加至群組"
 
 #: 
-msgid "SMTP Host is not setup, please visit the settings page"
-msgstr "未設置SMTP主機，請訪問設置頁面"
-
-#: 
-#, fuzzy
-msgid "Debug Email Connection"
-msgstr "郵件連接除錯"
-
-#: 
 #, fuzzy
 msgid "This Family is Inactive"
 msgstr "這個家庭已停用"
@@ -5615,14 +5293,6 @@ msgstr "資料庫已被清理"
 #: 
 msgid "Anniversaries"
 msgstr "紀念日"
-
-#: 
-msgid "New Family Notification Email Error"
-msgstr "新家庭通知電子郵件錯誤"
-
-#: 
-msgid "New Person Notification Email Error"
-msgstr "新人員通知電子郵件錯誤"
 
 #: 
 msgid "View User"
@@ -5652,42 +5322,6 @@ msgstr "私人日曆"
 #: 
 msgid "Username"
 msgstr "用戶名"
-
-#: 
-msgid "Are you sure you want to move"
-msgstr "您是否肯定想移走"
-
-#: 
-msgid "Access Token"
-msgstr "訪問令牌"
-
-#: 
-msgid "New Access Token"
-msgstr "新的訪問令牌"
-
-#: 
-msgid "ICS URL"
-msgstr "ICS URL"
-
-#: 
-msgid "Foreground Color"
-msgstr "前景色"
-
-#: 
-msgid "Background Color"
-msgstr "背景顏色"
-
-#: 
-msgid "Delete Calendar"
-msgstr "刪除日曆"
-
-#: 
-msgid "Invalid Entry"
-msgstr "輸入無效"
-
-#: 
-msgid "Calendar Name"
-msgstr "日曆名稱"
 
 #: 
 msgid "New Calendar"
@@ -5735,16 +5369,8 @@ msgid "Missing calendar access token"
 msgstr "缺少日曆訪問令牌"
 
 #: 
-msgid "Calendar access token not found"
-msgstr "未找到日曆訪問令牌"
-
-#: 
 msgid "User must have Delete Records permission"
 msgstr "用戶必須具有刪除記錄權限"
-
-#: 
-msgid "ChurchCRM Central Notifications URL"
-msgstr "ChurchCRM中央通知URL"
 
 #: 
 msgid "invalid event type id"
@@ -5763,16 +5389,8 @@ msgid "invalid export value"
 msgstr "無效的匯出值"
 
 #: 
-msgid "Invalid User/Password"
-msgstr "無效的用戶/密碼"
-
-#: 
 msgid "Duplicate Emails"
 msgstr "重複的電子郵件"
-
-#: 
-msgid "HTML URL"
-msgstr "HTML URL"
 
 #: 
 #, fuzzy
@@ -5813,11 +5431,6 @@ msgid "Software Version"
 msgstr "軟件版本"
 
 #: 
-#, fuzzy
-msgid "Database Version"
-msgstr "資料庫版本"
-
-#: 
 msgid "Application Prerequisites"
 msgstr "應用程序的先決條件"
 
@@ -5828,10 +5441,6 @@ msgstr "提供的國家名稱無效"
 #: 
 msgid "LastName FirstName"
 msgstr "姓氏 名字"
-
-#: 
-msgid "Holidays"
-msgstr "假日"
 
 #: 
 msgid "Person Name"
@@ -5864,11 +5473,6 @@ msgid "Latvia (Latvija)"
 msgstr "拉脫維亞 (Latvija)"
 
 #: 
-#, fuzzy
-msgid "You are about to add a new deposit without a comment"
-msgstr "您即將添加沒有註解的新存款"
-
-#: 
 msgid "Record"
 msgstr "記錄"
 
@@ -5885,16 +5489,6 @@ msgstr "清空事件代碼"
 #, fuzzy
 msgid "Passed"
 msgstr "通過"
-
-#: 
-#, fuzzy
-msgid "Focus"
-msgstr "加入焦點"
-
-#: 
-#, fuzzy
-msgid "Unfocus"
-msgstr "移除焦點"
 
 #. Context: locales
 #: 
@@ -5953,11 +5547,6 @@ msgstr "人員驗證儀表板"
 
 #: 
 #, fuzzy
-msgid "Verification recorded"
-msgstr "驗證記錄"
-
-#: 
-#, fuzzy
 msgid "Verification URL created"
 msgstr "驗證網址已創建"
 
@@ -5980,11 +5569,6 @@ msgstr "發送電子郵件時出錯"
 #, fuzzy
 msgid "Please check logs for more information"
 msgstr "請查看日誌以獲取更多信息"
-
-#: 
-#, fuzzy
-msgid "Verification URL"
-msgstr "驗證網址"
 
 #: 
 #, fuzzy
@@ -6046,11 +5630,6 @@ msgstr "葡萄牙語-葡萄牙"
 
 #: 
 #, fuzzy
-msgid "Holiday"
-msgstr "假日"
-
-#: 
-#, fuzzy
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "指定要在驗證器應用程序中顯示的應用程序名稱"
 
@@ -6074,10 +5653,6 @@ msgstr "未釘選事件"
 #: 
 msgid "LastName, FirstName MiddleName"
 msgstr "姓, 名 中間名"
-
-#: 
-msgid "Please confirm disabling 2 Factor Auth for this user"
-msgstr "請確認為此用戶禁用雙重認證"
 
 #: 
 #, fuzzy
@@ -6118,10 +5693,6 @@ msgid "Mailchimp is not active"
 msgstr "Mailchimp無效"
 
 #: 
-msgid "Mailchimp"
-msgstr "Mailchimp"
-
-#: 
 msgid "Lists"
 msgstr "清單"
 
@@ -6155,10 +5726,6 @@ msgid "Hebrew"
 msgstr "希伯來書"
 
 #: 
-msgid "open rate"
-msgstr "開放率"
-
-#: 
 #, fuzzy
 msgid "Permissions"
 msgstr "許可權"
@@ -6189,26 +5756,6 @@ msgstr "欠"
 
 #: 
 #, fuzzy
-msgid "Start Date"
-msgstr "開始日期"
-
-#: 
-#, fuzzy
-msgid "End Date"
-msgstr "結束日期"
-
-#: 
-#, fuzzy
-msgid "Pinned Calendars"
-msgstr "釘選日曆"
-
-#: 
-#, fuzzy
-msgid "This field is required"
-msgstr "這是必填欄"
-
-#: 
-#, fuzzy
 msgid "Text"
 msgstr "文本"
 
@@ -6217,31 +5764,11 @@ msgstr "文本"
 msgid "Event Description"
 msgstr "活動說明"
 
-#: 
-#, fuzzy
-msgid "Help translate this project"
-msgstr "幫助翻譯此專案"
-
 #. Context: locales
 #: 
 #, fuzzy
 msgid "Afrikaans"
 msgstr "南非語"
-
-#: 
-#, fuzzy
-msgid "Loading"
-msgstr "載入中"
-
-#: 
-#, fuzzy
-msgid "Family Property Unassignment"
-msgstr "未分配的家庭財產"
-
-#: 
-#, fuzzy
-msgid "Do you want to remove"
-msgstr "您要刪除嗎"
 
 #: 
 #, fuzzy
@@ -6288,11 +5815,6 @@ msgstr "無效的出生日期: 缺少出生月份或日期."
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "無效的出生日期: 缺少出生的月份和日期."
 
-#: 
-#, fuzzy
-msgid "System"
-msgstr "系統"
-
 #. Context: locales
 #: 
 #, fuzzy
@@ -6331,28 +5853,8 @@ msgstr "烏克蘭文"
 
 #: 
 #, fuzzy
-msgid "Change role"
-msgstr "更改角色"
-
-#: 
-#, fuzzy
 msgid "Closed"
 msgstr "關閉"
-
-#: 
-#, fuzzy
-msgid "Delete this person?"
-msgstr "刪除此人？"
-
-#: 
-#, fuzzy
-msgid "Deposit ID"
-msgstr "存款編號"
-
-#: 
-#, fuzzy
-msgid "Deposit Total"
-msgstr "存款總額"
 
 #: 
 msgid "If that doesn't work, copy and paste the following link in your browser"
@@ -6388,10 +5890,6 @@ msgstr "泰米爾語 - 印度"
 #: 
 msgid "Not Subscribed"
 msgstr "未訂閱"
-
-#: 
-msgid "property"
-msgstr "屬性"
 
 #: 
 msgid "Default Zip"
@@ -6431,10 +5929,6 @@ msgstr "名字的一個字元和姓氏的一個字元"
 #: 
 msgid "Two characters from FirstName"
 msgstr "名字的兩個字元"
-
-#: 
-msgid "Church Email not set, please visit the settings page"
-msgstr "未設定教會電子郵件，請訪問設定頁面"
 
 #. Context: locales
 #: 
@@ -6515,144 +6009,8 @@ msgid "Loading log file..."
 msgstr "正在載入日誌檔案..."
 
 #: 
-msgid "A Calendar access token has been generated and saved."
-msgstr "已生成並儲存日曆存取權杖。"
-
-#: 
-msgid "added"
-msgstr "已添加"
-
-#: 
-msgid "Added"
-msgstr "添加日期"
-
-#: 
-msgid "Added to cart successfully"
-msgstr "成功添加到購物車"
-
-#: 
-msgid "All members already in cart"
-msgstr "所有成員均已在購物車中"
-
-#: 
-msgid "already in cart"
-msgstr "已在購物車中"
-
-#: 
-msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
-msgstr "無法載入日曆屬性。此日曆可能缺少存取權杖或設定不正確。"
-
-#: 
-msgid "Cart emptied successfully"
-msgstr "成功清空購物車"
-
-#: 
-msgid "Cart emptied to group successfully"
-msgstr "購物車成功清空到團體"
-
-#: 
-msgid "Empty your entire cart?"
-msgstr "清空整個購物車？"
-
-#: 
-msgid "Failed to add family to cart"
-msgstr "未能將家庭添加到購物車"
-
-#: 
-msgid "Failed to add group to cart"
-msgstr "未能將團體添加到購物車"
-
-#: 
-msgid "Failed to add to cart"
-msgstr "未能添加到購物車"
-
-#: 
-msgid "Failed to empty cart"
-msgstr "清空購物車失敗"
-
-#: 
-msgid "Failed to empty cart to group"
-msgstr "清空購物車到團體失敗"
-
-#: 
-msgid "Failed to remove family from cart"
-msgstr "未能從購物車中移除家庭"
-
-#: 
-msgid "Failed to remove from cart"
-msgstr "未能從購物車中移除"
-
-#: 
-msgid "Failed to remove group"
-msgstr "未能移除團體"
-
-#: 
-msgid "Family added to cart"
-msgstr "家庭已添加到購物車"
-
-#: 
 msgid "Family removed from cart"
 msgstr "家庭已從購物車移除"
-
-#: 
-msgid "Group added to cart"
-msgstr "團體已添加到購物車"
-
-#: 
-msgid "Group removed from cart"
-msgstr "團體已從購物車移除"
-
-#: 
-msgid "in cart"
-msgstr "在購物車中"
-
-#: 
-msgid "members. Already had"
-msgstr "成員。已有"
-
-#: 
-msgid "people added to cart"
-msgstr "人已添加到購物車"
-
-#: 
-msgid "people already in cart"
-msgstr "人已在購物車中"
-
-#: 
-msgid "people from cart"
-msgstr "人來自購物車"
-
-#: 
-msgid "people removed from cart"
-msgstr "人已從購物車移除"
-
-#: 
-msgid "Person already in cart"
-msgstr "此人已在購物車中"
-
-#: 
-msgid "Remove this family from cart?"
-msgstr "從購物車移除此家庭？"
-
-#: 
-msgid "Remove this group from cart?"
-msgstr "從購物車移除此團體？"
-
-#: 
-msgid "Remove this person from cart?"
-msgstr "從購物車移除此人？"
-
-#: 
-msgid "Removed from cart successfully"
-msgstr "成功從購物車移除"
-
-#: 
-msgid "Yes, Empty Cart"
-msgstr "是，清空購物車"
-
-#: 
-msgid "Yes, Remove"
-msgstr "是，移除"
 
 #: 
 msgid "Add Group"
@@ -6661,10 +6019,6 @@ msgstr "添加團體"
 #: 
 msgid "Back to Group List"
 msgstr "返回團體列表"
-
-#: 
-msgid "Default role updated."
-msgstr "預設角色已更新。"
 
 #: 
 msgid "Edit Group"
@@ -6679,36 +6033,12 @@ msgid "Failed to add role. Please try again."
 msgstr "添加角色失敗。請重試。"
 
 #: 
-msgid "Failed to create group. Please try again."
-msgstr "建立團體失敗。請重試。"
-
-#: 
 msgid "Failed to delete role. Please try again."
 msgstr "刪除角色失敗。請重試。"
 
 #: 
-msgid "Failed to load cart status."
-msgstr "載入購物車狀態失敗。"
-
-#: 
-msgid "Failed to load groups. Please refresh the page."
-msgstr "載入團體失敗。請重新整理頁面。"
-
-#: 
-msgid "Failed to set default role. Please try again."
-msgstr "設定預設角色失敗。請重試。"
-
-#: 
-msgid "Failed to update group. Please try again."
-msgstr "更新團體失敗。請重試。"
-
-#: 
 msgid "Failed to update properties. Please try again."
 msgstr "更新屬性失敗。請重試。"
-
-#: 
-msgid "Failed to update role name. Please try again."
-msgstr "更新角色名稱失敗。請重試。"
 
 #: 
 msgid "Leave blank to keep existing password"
@@ -6717,18 +6047,6 @@ msgstr "留空以保留現有密碼"
 #: 
 msgid "Please enter a group name."
 msgstr "請輸入團體名稱。"
-
-#: 
-msgid "Role added successfully."
-msgstr "角色添加成功。"
-
-#: 
-msgid "Role deleted successfully."
-msgstr "角色刪除成功。"
-
-#: 
-msgid "Role name updated."
-msgstr "角色名稱已更新。"
 
 #: 
 msgid "View Group"
@@ -6741,14 +6059,6 @@ msgstr "今日活動"
 #: 
 msgid "Add Family Member"
 msgstr "添加家庭成員"
-
-#: 
-msgid "Address is required"
-msgstr "地址是必填項"
-
-#: 
-msgid "City is required"
-msgstr "城市是必填項"
 
 #: 
 msgid "Email Address"
@@ -6767,72 +6077,20 @@ msgid "Family name is required"
 msgstr "家庭姓氏是必填項"
 
 #: 
-msgid "Family name must be at least 2 characters"
-msgstr "家庭姓氏必須至少包含 2 個字元"
-
-#: 
 msgid "First name"
 msgstr "名"
-
-#: 
-msgid "First name is required"
-msgstr "名字是必填項"
-
-#: 
-msgid "First name must be at least 2 characters"
-msgstr "名字必須至少包含 2 個字元"
-
-#: 
-msgid "Home phone is required"
-msgstr "家庭電話是必填項"
 
 #: 
 msgid "Home phone number"
 msgstr "家庭電話號碼"
 
 #: 
-msgid "Invalid format"
-msgstr "格式無效"
-
-#: 
 msgid "Last name"
 msgstr "姓"
 
 #: 
-msgid "Last name is required"
-msgstr "姓氏是必填項"
-
-#: 
-msgid "Last name must be at least 2 characters"
-msgstr "姓氏必須至少包含 2 個字元"
-
-#: 
-msgid "Maximum length is"
-msgstr "最大長度為"
-
-#: 
-msgid "Minimum length is"
-msgstr "最小長度為"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "必須是以 http:// 或 https:// 開頭的有效 URL"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "必須是以 http:// 或 https:// 開頭的有效 URL（例如：http://localhost 或 https://domain.com）"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "必須是有效的連接埠號（例如：3306）"
-
-#: 
 msgid "Next Member"
 msgstr "下一位成員"
-
-#: 
-msgid "Passwords do not match"
-msgstr "密碼不匹配"
 
 #: 
 msgid "Phone Type"
@@ -6843,40 +6101,8 @@ msgid "Phone number"
 msgstr "電話號碼"
 
 #: 
-msgid "Please add at least one family member."
-msgstr "請至少添加一名家庭成員。"
-
-#: 
-msgid "Please enter a valid URL"
-msgstr "請輸入有效的 URL"
-
-#: 
-msgid "Please enter a valid email address"
-msgstr "請輸入有效的電子郵件地址"
-
-#: 
-msgid "Please enter a valid email address (e.g., name@example.com)"
-msgstr "請輸入有效的電子郵件地址（例如：name@example.com）"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "請輸入有效的數字"
-
-#: 
-msgid "Please enter a valid phone number"
-msgstr "請輸入有效的電話號碼"
-
-#: 
-msgid "Please fill in all required fields correctly."
-msgstr "請正確填寫所有必填欄位。"
-
-#: 
 msgid "Previous"
 msgstr "上一步"
-
-#: 
-msgid "Registration Error"
-msgstr "註冊錯誤"
 
 #: 
 msgid "Role in Family"
@@ -6893,10 +6119,6 @@ msgstr "街道地址"
 #: 
 msgid "Submit Registration"
 msgstr "提交註冊"
-
-#: 
-msgid "Zip code is required"
-msgstr "郵遞區號是必填項"
 
 #: 
 msgid "A new password has been generated and sent to your email address."
@@ -6919,10 +6141,6 @@ msgid "Back to login"
 msgstr "返回登入"
 
 #: 
-msgid "Backup Skipped"
-msgstr "備份已跳過"
-
-#: 
 msgid "Complete"
 msgstr "完成"
 
@@ -6935,28 +6153,8 @@ msgid "Download & Apply"
 msgstr "下載並套用"
 
 #: 
-msgid "Downloaded"
-msgstr "已下載"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "正在從 GitHub 下載最新版本..."
-
-#: 
 msgid "Enter your login name and we will email you a link to reset your password."
 msgstr "輸入您的登入名，我們將透過電子郵件向您發送重置密碼的連結。"
-
-#: 
-msgid "Failed to create backup."
-msgstr "建立備份失敗。"
-
-#: 
-msgid "Failed to download update package."
-msgstr "下載更新包失敗。"
-
-#: 
-msgid "Failed to refresh upgrade information from GitHub."
-msgstr "無法從 GitHub 重新整理升級資訊。"
 
 #: 
 msgid "File Name"
@@ -6965,10 +6163,6 @@ msgstr "檔案名稱"
 #: 
 msgid "Go to Login"
 msgstr "前往登入"
-
-#: 
-msgid "Language updated to"
-msgstr "語言已更新為"
 
 #: 
 msgid "Login Name is required"
@@ -6999,56 +6193,24 @@ msgid "Request Password Reset"
 msgstr "請求重置密碼"
 
 #: 
-msgid "Retry Download"
-msgstr "重試下載"
-
-#: 
 msgid "Send Reset Email"
 msgstr "發送重置郵件"
-
-#: 
-msgid "Setting updated successfully"
-msgstr "設定更新成功"
 
 #: 
 msgid "System Upgrade Wizard"
 msgstr "系統升級精靈"
 
 #: 
-msgid "System upgrade completed successfully!"
-msgstr "系統升級成功完成！"
-
-#: 
 msgid "This may take several minutes."
 msgstr "這可能需要幾分鐘。"
-
-#: 
-msgid "Update package downloaded successfully."
-msgstr "更新包下載成功。"
 
 #: 
 msgid "Upgrade Complete!"
 msgstr "升級完成！"
 
 #: 
-msgid "Upgrade failed."
-msgstr "升級失敗。"
-
-#: 
-msgid "Upgrade failed. Please check the logs."
-msgstr "升級失敗。請檢查日誌。"
-
-#: 
 msgid "Upgrade information refreshed successfully"
 msgstr "升級資訊重新整理成功"
-
-#: 
-msgid "Upgrade information refreshed. Reloading page..."
-msgstr "升級資訊已重新整理。正在重新載入頁面..."
-
-#: 
-msgid "Warnings"
-msgstr "警告"
 
 #: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
@@ -7111,22 +6273,6 @@ msgid "Delete Selected"
 msgstr "刪除選中項"
 
 #: 
-msgid "Deposit saved successfully"
-msgstr "存款儲存成功"
-
-#: 
-msgid "Error deleting payments"
-msgstr "刪除付款時出錯"
-
-#: 
-msgid "Error loading payments"
-msgstr "載入付款時出錯"
-
-#: 
-msgid "Error saving deposit"
-msgstr "儲存存款時出錯"
-
-#: 
 msgid "Funds"
 msgstr "基金"
 
@@ -7143,32 +6289,12 @@ msgid "No Checks"
 msgstr "無支票"
 
 #: 
-msgid "No payments yet. Click \"Add Payment\" to get started."
-msgstr "尚無付款。點擊「添加付款」開始。"
-
-#: 
 msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
 msgstr "不可扣除金額超過允許的最大值 (999999.99)。"
 
 #: 
 msgid "Payments"
 msgstr "付款"
-
-#: 
-msgid "Payments deleted successfully"
-msgstr "付款已成功刪除"
-
-#: 
-msgid "Please select a date"
-msgstr "請選擇日期"
-
-#: 
-msgid "Please select rows to delete"
-msgstr "請選擇要刪除的行"
-
-#: 
-msgid "Saving..."
-msgstr "正在儲存..."
 
 #: 
 msgid "This action cannot be undone."
@@ -7183,7 +6309,8 @@ msgid "Total Payments"
 msgstr "總付款"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payments?"
 msgstr "付款記錄"
 
 #: 
@@ -7195,36 +6322,12 @@ msgid "Base URL"
 msgstr "基本 URL"
 
 #: 
-msgid "ChurchCRM Installation"
-msgstr "ChurchCRM 安裝"
-
-#: 
-msgid "Copy"
-msgstr "複製"
-
-#: 
-msgid "DSN"
-msgstr "DSN"
-
-#: 
-msgid "Database Server"
-msgstr "資料庫伺服器"
-
-#: 
 msgid "Debug Info"
 msgstr "偵錯資訊"
 
 #: 
 msgid "Document Root"
 msgstr "文件根目錄"
-
-#: 
-msgid "Email Configuration"
-msgstr "電子郵件配置"
-
-#: 
-msgid "Email Debug Info"
-msgstr "電子郵件偵錯資訊"
 
 #: 
 msgid "Filesystem Permissions"
@@ -7243,18 +6346,6 @@ msgid "Images Root"
 msgstr "圖像根目錄"
 
 #: 
-msgid "Import Demo Data"
-msgstr "匯入演示數據"
-
-#: 
-msgid "Include events and calendars"
-msgstr "包含活動和日曆"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "包含財務數據（捐贈基金、認獻）"
-
-#: 
 msgid "Invalid API key"
 msgstr "無效的 API 金鑰"
 
@@ -7265,10 +6356,6 @@ msgstr "未配置"
 #: 
 msgid "PHP & Server Requirements"
 msgstr "PHP 及伺服器要求"
-
-#: 
-msgid "PHP Configuration"
-msgstr "PHP 配置"
 
 #: 
 msgid "Platform"
@@ -7283,64 +6370,20 @@ msgid "SMTP Host"
 msgstr "SMTP 主機"
 
 #: 
-msgid "Server Information"
-msgstr "伺服器資訊"
-
-#: 
-msgid "Software"
-msgstr "軟體"
-
-#: 
-msgid "System & Configuration"
-msgstr "系統與配置"
-
-#: 
 msgid "Tip:"
 msgstr "提示："
-
-#: 
-msgid "Valid Settings"
-msgstr "有效設定"
 
 #: 
 msgid "An error occurred during demo data import"
 msgstr "匯入演示數據時出錯"
 
 #: 
-msgid "Demo data imported successfully"
-msgstr "演示數據成功匯入"
-
-#: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "包含主日學班級和報名"
-
-#: 
-msgid "Need to remove this data later?"
-msgstr "以後需要刪除這些數據嗎？"
-
-#: 
 msgid "No Payments on this Deposit"
 msgstr "此存款項下無付款"
 
 #: 
-msgid "No payments on this deposit"
-msgstr "此存款項下無付款"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "可選包含的數據"
-
-#: 
 msgid "Skipped"
 msgstr "已跳過"
-
-#: 
-msgid "Unknown error"
-msgstr "未知錯誤"
-
-#: 
-msgid "deposit(s) with no payments"
-msgstr "無付款的存款"
 
 #: 
 msgid "%d event in %s"
@@ -7358,10 +6401,6 @@ msgstr "所有類型"
 #: 
 msgid "Attendance Count Categories"
 msgstr "考勤統計類別"
-
-#: 
-msgid "Attendance Notes"
-msgstr "考勤筆記"
 
 #: 
 msgid "Change Event"
@@ -7419,14 +6458,6 @@ msgstr "刪除活動"
 msgid "Edit Event"
 msgstr "編輯活動"
 
-#: 
-msgid "Editing Event"
-msgstr "正在編輯活動"
-
-#: 
-msgid "Enter event title..."
-msgstr "輸入活動標題..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Event"
@@ -7477,14 +6508,6 @@ msgid "None (one-time event)"
 msgstr "無（一次性活動）"
 
 #: 
-msgid "Optional - Add sermon notes or additional event details"
-msgstr "可選 - 添加講道筆記或額外的活動詳情"
-
-#: 
-msgid "Optional notes about attendance..."
-msgstr "有關考勤的可選筆記..."
-
-#: 
 msgid "People Checked In"
 msgstr "已簽到人員"
 
@@ -7519,10 +6542,6 @@ msgstr "搜尋主管..."
 #: 
 msgid "Select Event for Check-In"
 msgstr "選擇簽到活動"
-
-#: 
-msgid "Sermon / Event Text"
-msgstr "講道/活動文字"
 
 #: 
 msgid "Unclassified"
@@ -7606,16 +6625,8 @@ msgid "Backup Type"
 msgstr "備份類型"
 
 #: 
-msgid "Backup complete! Click below to download."
-msgstr "備份完成！點擊下方下載。"
-
-#: 
 msgid "Backup completed successfully!"
 msgstr "備份成功完成！"
-
-#: 
-msgid "Backup downloaded. Server copy removed."
-msgstr "備份已下載。伺服器副本已移除。"
 
 #: 
 msgid "Backup failed. Please try again."
@@ -7714,10 +6725,6 @@ msgid "Force Re-install"
 msgstr "強制重新安裝"
 
 #: 
-msgid "Force re-install initiated. Please backup your database before applying."
-msgstr "已啟動強制重新安裝。在執行前請先備份您的資料庫。"
-
-#: 
 msgid "Full Backup"
 msgstr "完整備份"
 
@@ -7798,10 +6805,6 @@ msgid "Please check the backup file and try again."
 msgstr "請檢查備份檔案並再試一次。"
 
 #: 
-msgid "Please select a backup file to restore"
-msgstr "請選擇要還原的備份檔案"
-
-#: 
 msgid "Redirecting in"
 msgstr "重新導向於"
 
@@ -7828,10 +6831,6 @@ msgstr "還原狀態"
 #: 
 msgid "Restore failed."
 msgstr "還原失敗。"
-
-#: 
-msgid "Restore failed. Please check the backup file and try again."
-msgstr "還原失敗。請檢查備份檔案並再試一次。"
 
 #: 
 msgid "Restore in progress, please wait..."
@@ -7950,10 +6949,6 @@ msgid "Advanced Operations"
 msgstr "進階操作"
 
 #: 
-msgid "All System Settings"
-msgstr "所有系統設定"
-
-#: 
 msgid "An unexpected error occurred. Please contact your administrator."
 msgstr "發生非預期錯誤。請聯繫您的管理員。"
 
@@ -8008,10 +7003,6 @@ msgstr "已關閉的存款："
 #: 
 msgid "Closed vs Total"
 msgstr "已關閉與總計"
-
-#: 
-msgid "Coming soon"
-msgstr "即將推出"
 
 #: 
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
@@ -8158,14 +7149,6 @@ msgid "Finance Dashboard"
 msgstr "財務控制台"
 
 #: 
-msgid "Force Import"
-msgstr "強制匯入"
-
-#: 
-msgid "Force Import will retry and may create duplicate data."
-msgstr "強制匯入將重試，並可能建立重複數據。"
-
-#: 
 msgid "Fund Allocation"
 msgstr "基金分配"
 
@@ -8204,10 +7187,6 @@ msgstr "編號"
 #: 
 msgid "Identify members who have not made any donations within a date range."
 msgstr "識別在特定日期範圍內未進行任何捐贈的成員。"
-
-#: 
-msgid "Import failed"
-msgstr "匯入失敗"
 
 #: 
 msgid "Jan"
@@ -8314,10 +7293,6 @@ msgid "Orphaned Files:"
 msgstr "孤立檔案："
 
 #: 
-msgid "PDF/CSV"
-msgstr "PDF/CSV"
-
-#: 
 msgid "Payment"
 msgstr "付款"
 
@@ -8382,10 +7357,6 @@ msgid "Sep"
 msgstr "九月"
 
 #: 
-msgid "Server error"
-msgstr "伺服器錯誤"
-
-#: 
 msgid "Settings"
 msgstr "設定"
 
@@ -8436,10 +7407,6 @@ msgstr "稅務聲明（奉獻報告）"
 #: 
 msgid "Tax Year Reporting Checklist"
 msgstr "稅務年度報告檢查清單"
-
-#: 
-msgid "Today"
-msgstr "今天"
 
 #: 
 msgid "Total"
@@ -8510,24 +7477,8 @@ msgid "active"
 msgstr "活動中"
 
 #: 
-msgid "ago"
-msgstr "前"
-
-#: 
-msgid "day"
-msgstr "天"
-
-#: 
-msgid "days"
-msgstr "天"
-
-#: 
 msgid "found"
 msgstr "找到"
-
-#: 
-msgid "in"
-msgstr "在"
 
 #: 
 msgid "issues"
@@ -8536,10 +7487,6 @@ msgstr "問題"
 #: 
 msgid "open"
 msgstr "開啟"
-
-#: 
-msgid "years"
-msgstr "年"
 
 #: 
 msgid "(Enter state/province for countries without predefined states)"
@@ -8552,10 +7499,6 @@ msgstr "基礎 URL 配置無效。請檢查您的 Config.php 檔案。"
 #: 
 msgid "Base URL is not configured in Config.php"
 msgstr "Config.php 中未配置基礎 URL"
-
-#: 
-msgid "ChurchCRM Supported Locales"
-msgstr "ChurchCRM 支援的語言環境"
 
 #: 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
@@ -8582,10 +7525,6 @@ msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "以<strong>結尾斜槓</strong> (/) 結束"
 
 #: 
-msgid "Error:"
-msgstr "錯誤："
-
-#: 
 msgid "Find the line:"
 msgstr "找到這一行："
 
@@ -8608,10 +7547,6 @@ msgstr "語言"
 #: 
 msgid "Local development:"
 msgstr "本地開發："
-
-#: 
-msgid "Locale Support"
-msgstr "語言環境支援"
 
 #: 
 msgid "Location & Contact Information"
@@ -8666,10 +7601,6 @@ msgid "URL must start with http:// or https://"
 msgstr "URL 必須以 http:// 或 https:// 開始"
 
 #: 
-msgid "Unable to load state list. Please check your network connection or try again later."
-msgstr "無法載入州/省列表。請檢查您的網路連接或稍後再試。"
-
-#: 
 msgid "Update it to a valid URL that:"
 msgstr "將其更新為有效的 URL，該 URL："
 
@@ -8722,10 +7653,6 @@ msgid "Contact & Personal Info"
 msgstr "聯絡與個人資訊"
 
 #: 
-msgid "Copied!"
-msgstr "已複製！"
-
-#: 
 msgid "Edited"
 msgstr "已編輯"
 
@@ -8734,16 +7661,8 @@ msgid "Email PDF"
 msgstr "發送 PDF 電子郵件"
 
 #: 
-msgid "Failed to copy URL"
-msgstr "複製 URL 失敗"
-
-#: 
 msgid "Newsletter"
 msgstr "通訊報"
-
-#: 
-msgid "Open in New Tab"
-msgstr "在新分頁中打開"
 
 #: 
 msgid "Personal"
@@ -8762,16 +7681,8 @@ msgid "Provide any corrections or additional information here..."
 msgstr "在此處提供任何更正或附加資訊..."
 
 #: 
-msgid "Remove Property"
-msgstr "移除屬性"
-
-#: 
 msgid "Select Opportunities"
 msgstr "選擇機會"
-
-#: 
-msgid "Share this URL with family members to verify their information"
-msgstr "將此 URL 分享給家庭成員以核實他們的資訊"
 
 #: 
 msgid "Submit Verification"
@@ -8780,10 +7691,6 @@ msgstr "提交核實"
 #: 
 msgid "Thank You!"
 msgstr "謝謝！"
-
-#: 
-msgid "Translation incomplete"
-msgstr "翻譯不完整"
 
 #: 
 msgid "Visit Our Website"
@@ -8942,24 +7849,12 @@ msgid "total"
 msgstr "總計"
 
 #: 
-msgid "Code incomplete"
-msgstr "驗證碼不完整"
-
-#: 
-msgid "Code is invalid"
-msgstr "驗證碼無效"
-
-#: 
 msgid "Encryption key for storing 2FA secret keys in the database"
 msgstr "用於在資料庫中存儲 2FA 密鑰的加密密鑰"
 
 #: 
 msgid "Two-Factor Authentication"
 msgstr "二階段驗證 (2FA)"
-
-#: 
-msgid "Validation pending"
-msgstr "等待驗證"
 
 #: 
 msgid "%d Person added to the Cart."
@@ -8975,10 +7870,6 @@ msgstr[0] "%d 人已成功加入選定的家庭。"
 msgid "%d Person successfully added to selected Group."
 msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "%d 人已成功加入選定的群組。"
-
-#: 
-msgid "A "
-msgstr "一個 "
 
 #: 
 msgid "Are you sure you want to delete"
@@ -9009,10 +7900,6 @@ msgid "Delete Confirmation"
 msgstr "刪除確認"
 
 #: 
-msgid "Existing"
-msgstr "現有"
-
-#: 
 msgid "Existing Custom Family Fields"
 msgstr "現有自定義家庭欄位"
 
@@ -9035,10 +7922,6 @@ msgstr "無效的 CSRF 令牌"
 #: 
 msgid "Invalid fields or selections."
 msgstr "無效的欄位或選擇。"
-
-#: 
-msgid "Item deleted successfully"
-msgstr "項目刪除成功"
 
 #: 
 msgid "Move down"
@@ -9077,10 +7960,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "有人被分配到此志願服務機會。刪除將取消分配："
 
 #: 
-msgid "This will remove it from all people currently assigned to it."
-msgstr "這將從目前分配的所有人員中移除它。"
-
-#: 
 msgid "Volunteer Opportunity"
 msgstr "志願服務機會"
 
@@ -9091,14 +7970,6 @@ msgstr "警告："
 #: 
 msgid "Yes, delete this Opportunity"
 msgstr "是，刪除此機會"
-
-#: 
-msgid "Fund(s)"
-msgstr "基金"
-
-#: 
-msgid "Password reset for"
-msgstr "密碼重置適用於"
 
 #. Context: locales
 #: 
@@ -9267,10 +8138,6 @@ msgstr "認捐"
 #: 
 msgid "records"
 msgstr "記錄"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "如果非空則必須以/開頭；末尾不能有斜線。只允許使用字母、數字、底線、短橫線、點和/。"
 
 #: 
 msgid "%d person"
@@ -9446,10 +8313,6 @@ msgid "Failed to save the downloaded release file. Please check disk space and p
 msgstr "儲存下載的發布文件失敗。請檢查磁碟空間和權限。"
 
 #: 
-msgid "Invalid date format in start parameter"
-msgstr "開始參數中的日期格式無效"
-
-#: 
 msgid "Mismatch"
 msgstr "不匹配"
 
@@ -9499,10 +8362,6 @@ msgid "Add Link"
 msgstr "新增連結"
 
 #: 
-msgid "Add an extra layer of security to your account"
-msgstr "為您的帳戶新增額外的安全層"
-
-#: 
 msgid "Add custom external links to the navigation menu."
 msgstr "向導覽選單新增自訂外部連結。"
 
@@ -9513,10 +8372,6 @@ msgstr "允許自簽名憑證"
 #: 
 msgid "An error occurred processing the plugin request"
 msgstr "處理外掛程式請求時發生錯誤"
-
-#: 
-msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
-msgstr "您確定要停用兩步驗證嗎？您的帳戶安全性將降低。"
 
 #: 
 msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
@@ -9559,28 +8414,12 @@ msgid "Backup to WebDAV Now"
 msgstr "立即備份至WebDAV"
 
 #: 
-msgid "Before You Start"
-msgstr "開始之前"
-
-#: 
-msgid "Browser language preference detected"
-msgstr "已偵測到瀏覽器語言偏好"
-
-#: 
 msgid "CRM Members Not Subscribed"
 msgstr "未訂閱的CRM成員"
 
 #: 
 msgid "Campaigns Sent"
 msgstr "已傳送的活動"
-
-#: 
-msgid "Can't scan?"
-msgstr "無法掃描？"
-
-#: 
-msgid "Change Your Locale"
-msgstr "變更您的語言設定"
 
 #: 
 msgid "ChurchCRM supports a plugin architecture for extending functionality."
@@ -9621,10 +8460,6 @@ msgstr "設定此外掛程式以自動將您的ChurchCRM資料庫備份至相容
 #: 
 msgid "Configured"
 msgstr "已設定"
-
-#: 
-msgid "Confirm with a code from your authenticator app"
-msgstr "使用驗證器應用程式中的驗證碼確認"
 
 #: 
 msgid "Connected"
@@ -9687,24 +8522,12 @@ msgid "Disable Plugin"
 msgstr "停用外掛程式"
 
 #: 
-msgid "Disable Two-Factor Authentication"
-msgstr "停用兩步驗證"
-
-#: 
 msgid "Dismiss"
 msgstr "關閉"
 
 #: 
-msgid "Done"
-msgstr "完成"
-
-#: 
 msgid "Each plugin requires a"
 msgstr "每個外掛程式需要一個"
-
-#: 
-msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
-msgstr "每次登入時，您需要使用驗證器應用程式中的驗證碼進行確認"
 
 #: 
 msgid "Email Addresses"
@@ -9723,10 +8546,6 @@ msgid "Enable Plugin"
 msgstr "啟用外掛程式"
 
 #: 
-msgid "Enable Two-Factor Authentication"
-msgstr "啟用兩步驗證"
-
-#: 
 msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
 msgstr "僅對具有自簽名SSL憑證的區域網路伺服器啟用此選項。將停用憑證驗證。"
 
@@ -9737,10 +8556,6 @@ msgstr "端點URL"
 #: 
 msgid "Enter the 6-digit code from your authenticator app"
 msgstr "輸入驗證器應用程式中的6位數驗證碼"
-
-#: 
-msgid "Enter your username and password as usual"
-msgstr "照常輸入您的使用者名稱和密碼"
 
 #: 
 msgid "External Backup"
@@ -9815,20 +8630,12 @@ msgid "GA4 Measurement ID"
 msgstr "GA4測量ID"
 
 #: 
-msgid "Generate new code"
-msgstr "產生新驗證碼"
-
-#: 
 msgid "Get Started"
 msgstr "開始"
 
 #: 
 msgid "Get your API key from MailChimp: Account Settings > Extras > API Keys"
 msgstr "從MailChimp取得您的API金鑰：Account Settings > Extras > API Keys"
-
-#: 
-msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
-msgstr "準備好您的驗證器應用程式（Google Authenticator、Microsoft Authenticator、Authy等）"
 
 #: 
 msgid "Help"
@@ -9841,14 +8648,6 @@ msgstr "編號"
 #: 
 msgid "Image shown when no Gravatar exists for the email address"
 msgstr "當電子郵件地址沒有Gravatar時顯示的圖片"
-
-#: 
-msgid "Important"
-msgstr "重要"
-
-#: 
-msgid "Install plugins by placing them in"
-msgstr "透過將外掛程式放置在以下位置來安裝外掛程式"
 
 #: 
 msgid "Invalid code. Please try again."
@@ -9905,14 +8704,6 @@ msgstr "連結必須以 http:// 或 https:// 開頭"
 #: 
 msgid "Link not found"
 msgstr "找不到連結"
-
-#: 
-msgid "Loading recovery codes"
-msgstr "正在載入復原碼"
-
-#: 
-msgid "MailChimp"
-msgstr "MailChimp"
 
 #: 
 msgid "MailChimp API Key"
@@ -9996,16 +8787,8 @@ msgid "Not in CRM"
 msgstr "不在CRM中"
 
 #: 
-msgid "One-Time Code"
-msgstr "一次性驗證碼"
-
-#: 
 msgid "Open MailChimp"
 msgstr "開啟MailChimp"
-
-#: 
-msgid "Open your authenticator app and scan this QR code"
-msgstr "開啟您的驗證器應用程式並掃描此QR碼"
 
 #: 
 msgid "OpenLP Server URL"
@@ -10034,10 +8817,6 @@ msgstr "請設定您的MailChimp API金鑰以使用此整合。"
 #: 
 msgid "Please enter a link name (2-50 characters)"
 msgstr "請輸入連結名稱（2-50個字元）"
-
-#: 
-msgid "Please try again"
-msgstr "請重試"
 
 #: 
 msgid "Plugin Development"
@@ -10088,44 +8867,16 @@ msgid "Print"
 msgstr "列印"
 
 #: 
-msgid "Recovery Codes"
-msgstr "復原碼"
-
-#: 
 msgid "Remote backup failed. Check server logs for details."
 msgstr "遠端備份失敗。請查看伺服器日誌了解詳情。"
-
-#: 
-msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
-msgstr "請將這些復原碼儲存在安全的地方。如果您失去驗證器應用程式的存取權限，可以使用它們存取您的帳戶。"
-
-#: 
-msgid "Scan QR Code"
-msgstr "掃描QR碼"
-
-#: 
-msgid "Secure"
-msgstr "安全"
-
-#: 
-msgid "Set Up Authenticator"
-msgstr "設定驗證器"
 
 #: 
 msgid "Settings reset successfully"
 msgstr "設定已成功重設"
 
 #: 
-msgid "Setup Complete"
-msgstr "設定完成"
-
-#: 
 msgid "Shipped with ChurchCRM."
 msgstr "隨ChurchCRM附帶。"
-
-#: 
-msgid "Sign In"
-msgstr "登入"
 
 #: 
 msgid "Some settings could not be reset"
@@ -10164,10 +8915,6 @@ msgid "Third-party extensions."
 msgstr "第三方擴充功能。"
 
 #: 
-msgid "This will replace any previously enrolled 2FA methods"
-msgstr "這將取代所有之前註冊的兩步驗證方法"
-
-#: 
 msgid "Total Campaigns"
 msgstr "總活動數"
 
@@ -10176,24 +8923,8 @@ msgid "Total Subscribers"
 msgstr "總訂閱者數"
 
 #: 
-msgid "Two Factor Enrollment Error"
-msgstr "兩步驗證註冊錯誤"
-
-#: 
-msgid "Two-factor authentication has been disabled"
-msgstr "兩步驗證已停用"
-
-#: 
-msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
-msgstr "兩步驗證是保護您帳戶的最佳方式之一。我們強烈建議保持啟用狀態。"
-
-#: 
 msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
 msgstr "您的OpenLP伺服器URL（例如 http://192.168.1.100:4316）"
-
-#: 
-msgid "Unable to load"
-msgstr "無法載入"
 
 #: 
 msgid "Unsubscribed"
@@ -10214,14 +8945,6 @@ msgstr "值已設定 - 留空以保留目前值"
 #: 
 msgid "Verify & Sign In"
 msgstr "驗證並登入"
-
-#: 
-msgid "Verify Code"
-msgstr "驗證驗證碼"
-
-#: 
-msgid "Verifying"
-msgstr "正在驗證"
 
 #: 
 msgid "Vonage API Key"
@@ -10256,40 +8979,12 @@ msgid "WebDAV username is required."
 msgstr "WebDAV使用者名稱為必填項。"
 
 #: 
-msgid "You can also use backup recovery codes if you lose access to your app"
-msgstr "如果您失去對應用程式的存取權限，也可以使用備份復原碼"
-
-#: 
-msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
-msgstr "您現在可以使用驗證器應用程式登入。每個驗證碼有效期為30秒。"
-
-#: 
-msgid "You'll receive backup codes that can be used if you lose access to your app"
-msgstr "您將收到備份碼，在失去對應用程式的存取權限時可以使用"
-
-#: 
 msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
 msgstr "您的GA4測量ID（G-XXXXXXXXXX）"
 
 #: 
 msgid "Your MailChimp account does not have any audiences (lists) configured."
 msgstr "您的MailChimp帳戶未設定任何受眾（清單）。"
-
-#: 
-msgid "Your account is now protected"
-msgstr "您的帳戶現已受到保護"
-
-#: 
-msgid "Your account is protected"
-msgstr "您的帳戶受到保護"
-
-#: 
-msgid "Your authenticator app has been successfully enrolled"
-msgstr "您的驗證器應用程式已成功註冊"
-
-#: 
-msgid "Your browser language preference differs from your ChurchCRM locale"
-msgstr "您的瀏覽器語言偏好與您的ChurchCRM語言設定不同"
 
 #: 
 msgid "e.g., Church Website"
@@ -10508,10 +9203,6 @@ msgid "2FA"
 msgstr "雙重驗證"
 
 #: 
-msgid "Leave blank to keep existing"
-msgstr "留空以保留現有內容"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "要求所有使用者註冊雙重身份驗證"
 
@@ -10616,10 +9307,6 @@ msgid "Save Church Information"
 msgstr "儲存教會資訊"
 
 #: 
-msgid "Search or select..."
-msgstr "搜尋或選擇..."
-
-#: 
 msgid "State is required."
 msgstr "縣/市為必填欄位。"
 
@@ -10662,14 +9349,6 @@ msgstr "網站"
 #: 
 msgid "ZIP code is required."
 msgstr "郵遞區號為必填欄位。"
-
-#: 
-msgid "— Select Country —"
-msgstr "— 選擇國家 —"
-
-#: 
-msgid "— Select State —"
-msgstr "— 選擇縣/市 —"
 
 #: 
 msgid "Address Status"
@@ -10881,10 +9560,6 @@ msgid "Age Distribution"
 msgstr "年齡分佈"
 
 #: 
-msgid "All Roles"
-msgstr "所有角色"
-
-#: 
 msgid "All Time"
 msgstr "所有時間"
 
@@ -10917,20 +9592,8 @@ msgid "An unexpected error occurred."
 msgstr "發生意外錯誤。"
 
 #: 
-msgid "Applied preset"
-msgstr "已套用預設"
-
-#: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "您確定要刪除此奉獻存款嗎？"
-
-#: 
 msgid "Are you sure you want to delete this fundraiser?"
 msgstr "您確定要刪除此募款活動嗎？"
-
-#: 
-msgid "Are you sure you want to remove"
-msgstr "您確定要移除"
 
 #: 
 msgid "Assign and manage donation envelope numbers"
@@ -10963,10 +9626,6 @@ msgstr "驗證碼"
 #: 
 msgid "Auto-mapped"
 msgstr "自動對應"
-
-#: 
-msgid "BCC All"
-msgstr "全部密件副本"
 
 #: 
 msgid "Back to Admin Dashboard"
@@ -11025,10 +9684,6 @@ msgid "CSV Column"
 msgstr "CSV 欄位"
 
 #: 
-msgid "CSV template not found"
-msgstr "找不到 CSV 範本"
-
-#: 
 msgid "Call"
 msgstr "致電"
 
@@ -11085,10 +9740,6 @@ msgid "Clear all items from cart"
 msgstr "清除名單中的所有項目"
 
 #: 
-msgid "Click Save to apply."
-msgstr "點擊儲存以套用。"
-
-#: 
 msgid "Click to upload photo"
 msgstr "點擊上傳照片"
 
@@ -11103,10 +9754,6 @@ msgstr "欄位已自動對應到 ChurchCRM 欄位。"
 #: 
 msgid "Community Management Platform"
 msgstr "社群管理平台"
-
-#: 
-msgid "Compatible with Excel, Google Sheets, or any CSV export."
-msgstr "相容於 Excel、Google Sheets 或任何 CSV 匯出。"
 
 #: 
 msgid "Complete these in any order to get ChurchCRM ready for your congregation."
@@ -11137,24 +9784,12 @@ msgid "Connect with others"
 msgstr "與他人聯繫"
 
 #: 
-msgid "Contact us"
-msgstr "聯繫我們"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "將個人記錄轉換為家庭單位"
 
 #: 
 msgid "Convert to Family"
 msgstr "轉換為家庭"
-
-#: 
-msgid "Copied"
-msgstr "已複製"
-
-#: 
-msgid "Copy Members to Group"
-msgstr "複製成員到小組"
 
 #: 
 msgid "Copy to Group"
@@ -11245,10 +9880,6 @@ msgid "Deleting this property will also remove all its assignments from any Peop
 msgstr "刪除此屬性也會從所有人員、家庭或小組記錄中移除其分配。"
 
 #: 
-msgid "Deposit Value"
-msgstr "存款金額"
-
-#: 
 msgid "Describe the issue"
 msgstr "描述問題"
 
@@ -11281,10 +9912,6 @@ msgid "Download CSV Template"
 msgstr "下載 CSV 範本"
 
 #: 
-msgid "Download the template to see the expected column format."
-msgstr "下載範本以查看預期的欄位格式。"
-
-#: 
 msgid "Drag and drop your CSV file here"
 msgstr "將您的 CSV 檔案拖放至此處"
 
@@ -11295,10 +9922,6 @@ msgstr "重複項目"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "每個人都可以有自己的電子郵件和手機號碼。"
-
-#: 
-msgid "Each row is one person. Members of the same family share a FamilyID."
-msgstr "每一列代表一個人。同一家庭的成員共用一個 FamilyID。"
 
 #: 
 msgid "Easy registration"
@@ -11429,22 +10052,6 @@ msgid "FY %s"
 msgstr "會計年度 %s"
 
 #: 
-msgid "Failed to add members to cart. Please try again."
-msgstr "將成員加入名單失敗，請重試。"
-
-#: 
-msgid "Failed to delete class. Please try again."
-msgstr "刪除班級失敗，請重試。"
-
-#: 
-msgid "Failed to delete group. Please try again."
-msgstr "刪除小組失敗，請重試。"
-
-#: 
-msgid "Failed to remove from class. Please try again."
-msgstr "從班級中移除失敗，請重試。"
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "家庭成員共用地址和電話號碼。"
 
@@ -11541,10 +10148,6 @@ msgid "Get Your Data Into ChurchCRM"
 msgstr "將您的資料匯入 ChurchCRM"
 
 #: 
-msgid "Go to homepage"
-msgstr "前往首頁"
-
-#: 
 msgid "Great choice! Here's how to add your church members."
 msgstr "很好的選擇！以下是新增教會會眾的方法。"
 
@@ -11557,20 +10160,12 @@ msgid "Group Reports"
 msgstr "小組報告"
 
 #: 
-msgid "Group deleted successfully."
-msgstr "小組已成功刪除。"
-
-#: 
 msgid "Have Existing Data?"
 msgstr "已有資料？"
 
 #: 
 msgid "If you have many records in a spreadsheet, the CSV import may be faster than entering data manually."
 msgstr "如果您的試算表中有大量記錄，CSV 匯入可能比手動輸入資料更快。"
-
-#: 
-msgid "Ignored"
-msgstr "已忽略"
 
 #: 
 msgid "Import Another File"
@@ -11587,10 +10182,6 @@ msgstr "匯入完成"
 #: 
 msgid "Import contacts from your MailChimp audiences"
 msgstr "從您的 MailChimp 受眾中匯入聯絡人"
-
-#: 
-msgid "Import failed. Please try again."
-msgstr "匯入失敗，請重試。"
 
 #: 
 msgid "Import failed: "
@@ -11615,10 +10206,6 @@ msgstr "匯入、還原或手動輸入"
 #: 
 msgid "Import, restore, or manually enter your congregation"
 msgstr "匯入、還原或手動輸入您的會眾資料"
-
-#: 
-msgid "Importing..."
-msgstr "正在匯入..."
 
 #: 
 msgid "Include in Email Export"
@@ -11721,10 +10308,6 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr "管理主日學班級、教師和學生出席"
 
 #: 
-msgid "Manage classification lists, roles, and group types"
-msgstr "管理分類列表、角色和小組類型"
-
-#: 
 msgid "Manage donation funds for financial tracking"
 msgstr "管理奉獻基金以進行財務追蹤"
 
@@ -11769,10 +10352,6 @@ msgid "Manage your personal preferences and account settings"
 msgstr "管理您的個人偏好和帳號設定"
 
 #: 
-msgid "Manual"
-msgstr "手動"
-
-#: 
 msgid "Map cart items"
 msgstr "在地圖上顯示名單中的人員"
 
@@ -11793,10 +10372,6 @@ msgid "Member Roles"
 msgstr "成員角色"
 
 #: 
-msgid "Members added to cart."
-msgstr "成員已加入名單。"
-
-#: 
 msgid "Memberships"
 msgstr "成員關係"
 
@@ -11807,14 +10382,6 @@ msgstr "最低限度"
 #: 
 msgid "Modify family roles for group members"
 msgstr "修改小組成員的家庭角色"
-
-#: 
-msgid "Move Members"
-msgstr "移動成員"
-
-#: 
-msgid "Move Members to Group"
-msgstr "移動成員到小組"
 
 #: 
 msgid "Move to Group"
@@ -11837,10 +10404,6 @@ msgid "Name, address, contact details"
 msgstr "姓名、地址、聯絡資訊"
 
 #: 
-msgid "Need help?"
-msgstr "需要幫助？"
-
-#: 
 msgid "New"
 msgstr "新增"
 
@@ -11857,32 +10420,8 @@ msgid "New Person"
 msgstr "新增人員"
 
 #: 
-msgid "No Anniversaries"
-msgstr "無紀念日"
-
-#: 
-msgid "No Birthdays"
-msgstr "無生日"
-
-#: 
 msgid "No Check-ins"
 msgstr "無簽到記錄"
-
-#: 
-msgid "No Deposits"
-msgstr "無存款"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "過去和未來7天內沒有紀念日"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "過去和未來7天內沒有生日"
-
-#: 
-msgid "No deposit data available yet"
-msgstr "尚無奉獻存款資料"
 
 #: 
 msgid "No description set."
@@ -11915,10 +10454,6 @@ msgstr "未找到與「%s」匹配的結果。請嘗試其他搜尋字詞。"
 #: 
 msgid "No member properties defined."
 msgstr "未定義成員屬性。"
-
-#: 
-msgid "No members found for this role."
-msgstr "未找到此角色的成員。"
 
 #: 
 msgid "No people found"
@@ -11977,10 +10512,6 @@ msgid "Open user menu"
 msgstr "開啟使用者選單"
 
 #: 
-msgid "Options"
-msgstr "選項"
-
-#: 
 msgid "Other Members"
 msgstr "其他成員"
 
@@ -12007,10 +10538,6 @@ msgid "People by Classification"
 msgstr "依分類檢視人員"
 
 #: 
-msgid "Person removed from class."
-msgstr "人員已從班級中移除。"
-
-#: 
 msgid "Photo"
 msgstr "照片"
 
@@ -12025,14 +10552,6 @@ msgstr "選擇一種方式開始"
 #: 
 msgid "Please check everything looks right before submitting."
 msgstr "提交前請確認所有資訊無誤。"
-
-#: 
-msgid "Please map at least one column before importing"
-msgstr "匯入前請至少對應一個欄位"
-
-#: 
-msgid "Please select a CSV file"
-msgstr "請選擇一個 CSV 檔案"
 
 #: 
 msgid "Please try requesting a new password reset link or contact support if you continue to experience issues."
@@ -12079,10 +10598,6 @@ msgid "Property not found."
 msgstr "未找到屬性。"
 
 #: 
-msgid "Quick Setup"
-msgstr "快速設定"
-
-#: 
 msgid "Quick Tips"
 msgstr "快速提示"
 
@@ -12113,10 +10628,6 @@ msgstr "記錄來訪者造訪教會的原因"
 #: 
 msgid "Register Your Family"
 msgstr "註冊您的家庭"
-
-#: 
-msgid "Register another family"
-msgstr "註冊另一個家庭"
 
 #: 
 msgid "Remove all from Cart"
@@ -12163,14 +10674,6 @@ msgid "Review and clean up files not associated with any record"
 msgstr "檢視並清理未關聯任何記錄的檔案"
 
 #: 
-msgid "Role not found."
-msgstr "未找到角色。"
-
-#: 
-msgid "Roles"
-msgstr "角色"
-
-#: 
 msgid "Run"
 msgstr "執行"
 
@@ -12193,10 +10696,6 @@ msgstr "搜尋人員、家庭、小組、地址等。"
 #: 
 msgid "Search and view deposit slip records"
 msgstr "搜尋和檢視奉獻存款單記錄"
-
-#: 
-msgid "Search groups..."
-msgstr "搜尋小組..."
 
 #: 
 msgid "Search people, families, groups…"
@@ -12233,10 +10732,6 @@ msgstr "發送電子郵件給家庭"
 #: 
 msgid "Server Error"
 msgstr "伺服器錯誤"
-
-#: 
-msgid "Server returned an unexpected response. Please try again."
-msgstr "伺服器傳回了非預期的回應，請重試。"
 
 #: 
 msgid "Set Permission True to give new users the ability to change their current value."
@@ -12315,10 +10810,6 @@ msgid "Step 2 — Map Columns"
 msgstr "步驟 2 ——對應欄位"
 
 #: 
-msgid "Submitting..."
-msgstr "正在提交..."
-
-#: 
 msgid "Supports backups from ChurchCRM and ChurchInfo."
 msgstr "支援來自 ChurchCRM 和 ChurchInfo 的備份。"
 
@@ -12391,20 +10882,12 @@ msgid "Upload CSV"
 msgstr "上傳 CSV"
 
 #: 
-msgid "Upload a CSV file to import families and people into ChurchCRM."
-msgstr "上傳 CSV 檔案將家庭和人員匯入 ChurchCRM。"
-
-#: 
 msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
 msgstr "上傳來自 Excel、Google Sheets 或之前教會管理系統的 CSV 檔案，並將欄位對應到 ChurchCRM 欄位。"
 
 #: 
 msgid "Upload failed."
 msgstr "上傳失敗。"
-
-#: 
-msgid "Upload failed. Please check the file and try again."
-msgstr "上傳失敗。請檢查檔案後重試。"
 
 #: 
 msgid "Upload session expired. Please upload the file again."
@@ -12437,10 +10920,6 @@ msgstr "檢視人員"
 #: 
 msgid "View all families on an interactive map"
 msgstr "在互動式地圖上檢視所有家庭"
-
-#: 
-msgid "View all results"
-msgstr "檢視所有結果"
 
 #: 
 msgid "View and manage all groups in your congregation"
@@ -12523,20 +11002,12 @@ msgid "We're so glad you're here! Register your family in just 3 easy steps."
 msgstr "很高興您的到來！只需3個簡單步驟即可註冊您的家庭。"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "很高興您的家庭加入了我們！"
-
-#: 
 msgid "Welcome Back!"
 msgstr "歡迎回來！"
 
 #: 
 msgid "Welcome back! Please enter your details to continue"
 msgstr "歡迎回來！請輸入您的資訊以繼續"
-
-#: 
-msgid "Welcome to the Family!"
-msgstr "歡迎加入大家庭！"
 
 #: 
 msgid "What happens next?"
@@ -12579,28 +11050,12 @@ msgid "Your previous session timed out. Please login again."
 msgstr "您的上一次工作階段已逾時。請重新登入。"
 
 #: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "您的註冊已收到。我們的團隊將盡快與您聯繫，親自歡迎您。"
-
-#: 
-msgid "all members"
-msgstr "所有成員"
-
-#: 
 msgid "complete"
 msgstr "完成"
 
 #: 
 msgid "fields"
 msgstr "欄位"
-
-#: 
-msgid "from this class?"
-msgstr "從此班級？"
-
-#: 
-msgid "from this group?"
-msgstr "從此小組？"
 
 #: 
 msgid "full group view"
@@ -12611,24 +11066,12 @@ msgid "funds"
 msgstr "基金"
 
 #: 
-msgid "members"
-msgstr "成員"
-
-#: 
 msgid "opportunities"
 msgstr "服務機會"
 
 #: 
-msgid "options"
-msgstr "選項"
-
-#: 
 msgid "or connect an external service"
 msgstr "或連接外部服務"
-
-#: 
-msgid "our church"
-msgstr "我們的教會"
 
 #: 
 msgid "page"
@@ -12639,24 +11082,12 @@ msgid "properties"
 msgstr "屬性"
 
 #: 
-msgid "to another group?"
-msgstr "到另一個小組？"
-
-#: 
-msgid "— Ignore —"
-msgstr "— 忽略 —"
-
-#: 
 msgid "— Select a group —"
 msgstr "— 選擇小組 —"
 
 #: 
 msgid "— Select type (optional) —"
 msgstr "— 選擇類型（可選）—"
-
-#: 
-msgid "Activate"
-msgstr "啟用"
 
 #: 
 msgid "Active Events"
@@ -12679,10 +11110,6 @@ msgid "All Checks Passed"
 msgstr "所有檢查已通過"
 
 #: 
-msgid "Applying..."
-msgstr "正在套用..."
-
-#: 
 msgid "Assigned Kiosk"
 msgstr "已分配的自助終端機"
 
@@ -12693,10 +11120,6 @@ msgstr "出席"
 #: 
 msgid "Back up modified files before upgrading if you want to keep your changes."
 msgstr "如果您想保留變更，請在升級前備份已修改的檔案。"
-
-#: 
-msgid "Backup Complete"
-msgstr "備份完成"
 
 #: 
 msgid "Class / Group"
@@ -12717,14 +11140,6 @@ msgstr "建立第一個活動"
 #: 
 msgid "Create a database backup before applying the update. This is strongly recommended."
 msgstr "在套用更新前建立資料庫備份。強烈建議執行此操作。"
-
-#: 
-msgid "Creating Backup..."
-msgstr "正在建立備份..."
-
-#: 
-msgid "Download Backup & Continue"
-msgstr "下載備份並繼續"
 
 #: 
 msgid "Download the latest release and apply it to your installation."
@@ -12769,10 +11184,6 @@ msgstr "產生班級列表、簽到表和相簿"
 #: 
 msgid "Installed"
 msgstr "已安裝"
-
-#: 
-msgid "It is strongly recommended to have a backup before proceeding."
-msgstr "強烈建議在繼續之前進行備份。"
 
 #: 
 msgid "Latest"
@@ -12859,10 +11270,6 @@ msgid "Review & Delete"
 msgstr "檢視並刪除"
 
 #: 
-msgid "SHA1 Hash"
-msgstr "SHA1 雜湊"
-
-#: 
 msgid "Signature Mismatch"
 msgstr "簽章不符"
 
@@ -12902,18 +11309,10 @@ msgstr "使用者必須擁有備註權限"
 msgid "Address Defaults"
 msgstr "地址預設值"
 
-#: 
-msgid "All Day"
-msgstr "全天"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
 msgstr "允許使用者新增事件"
-
-#: 
-msgid "Are you sure you want to continue?"
-msgstr "您確定要繼續嗎?"
 
 #. Context: queryparameters_qrp
 #: 
@@ -12955,10 +11354,6 @@ msgid "ChurchCRM can send emails directly."
 msgstr "ChurchCRM可以直接傳送電子郵件。"
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "剪貼簿API不可用。請手動複製URL。"
-
-#: 
 msgid "Communication"
 msgstr "通訊"
 
@@ -12978,18 +11373,6 @@ msgstr "設定Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "連接Mailchimp以同步電子報和行銷活動的電子郵件清單。"
-
-#: 
-msgid "Copied to clipboard"
-msgstr "已複製到剪貼簿"
-
-#: 
-msgid "Copy All Emails"
-msgstr "複製所有電子郵件"
-
-#: 
-msgid "Copy All Numbers"
-msgstr "複製所有號碼"
 
 #: 
 msgid "Copy from church address"
@@ -13027,20 +11410,12 @@ msgid "Distance Unit"
 msgstr "距離單位"
 
 #: 
-msgid "Duration"
-msgstr "期間"
-
-#: 
 msgid "Email Dashboard"
 msgstr "電子郵件儀表板"
 
 #: 
 msgid "Email Integrations"
 msgstr "電子郵件整合"
-
-#: 
-msgid "Email addresses copied to clipboard"
-msgstr "電子郵件地址已複製到剪貼簿"
 
 #: 
 msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
@@ -13215,14 +11590,6 @@ msgstr "新成員通知電子郵件"
 msgid "No cell phone on file"
 msgstr "檔案中沒有手機"
 
-#: 
-msgid "No email addresses available"
-msgstr "沒有可用的電子郵件地址"
-
-#: 
-msgid "No phone numbers available"
-msgstr "沒有可用的電話號碼"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Non-Attender"
@@ -13241,10 +11608,6 @@ msgstr "未分類"
 #: 
 msgid "Number of months since becoming a friend"
 msgstr "成為朋友以來的月數"
-
-#: 
-msgid "Parents"
-msgstr "父母"
 
 #: 
 msgid "Password reset emails — users cannot recover their accounts"
@@ -13272,14 +11635,6 @@ msgstr "用於將成員從簡訊/文本列表中排除的人員屬性"
 msgid "Person property used to exclude members from email lists"
 msgstr "用於將成員從電子郵件列表中排除的人員屬性"
 
-#: 
-msgid "Phone numbers copied to clipboard"
-msgstr "電話號碼已複製到剪貼板"
-
-#: 
-msgid "Phone numbers copied — paste into your messaging app"
-msgstr "電話號碼已複製 — 粘貼到您的消息應用中"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
@@ -13300,18 +11655,10 @@ msgstr "奉獻承諾比較"
 msgid "Pledged this year"
 msgstr "今年承諾奉獻"
 
-#: 
-msgid "Press CTRL + C to copy"
-msgstr "按 CTRL + C 複製"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "屬性"
-
-#: 
-msgid "Public calendar"
-msgstr "公共日曆"
 
 #. Context: query_qry
 #: 
@@ -13364,14 +11711,6 @@ msgstr "用於比較的第二個財政年度"
 msgid "Second volunteer opportunity choice"
 msgstr "第二個志願者機會選擇"
 
-#: 
-msgid "Select calendars..."
-msgstr "選擇日曆..."
-
-#: 
-msgid "Select event type..."
-msgstr "選擇活動類型..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Select field to search for."
@@ -13397,10 +11736,6 @@ msgstr "系統日曆"
 #: 
 msgid "System language for the church."
 msgstr "教會的系統語言。"
-
-#: 
-msgid "Text All"
-msgstr "全部文本"
 
 #: 
 msgid "Text Dashboard"
@@ -13463,18 +11798,6 @@ msgid "These values are pre-filled when creating new families. Leave blank to re
 msgstr "建立新家庭時，這些值會預先填充。留空以要求手動輸入。"
 
 #: 
-msgid "Time"
-msgstr "時間"
-
-#: 
-msgid "Timed"
-msgstr "定時"
-
-#: 
-msgid "Unable to copy to clipboard. Please copy the URL manually."
-msgstr "無法複製到剪貼板。請手動複製 URL。"
-
-#: 
 msgid "Unit used to measure distance."
 msgstr "用於測量距離的單位。"
 
@@ -13519,14 +11842,6 @@ msgstr "工作電子郵件"
 #: 
 msgid "but not this year"
 msgstr "但今年不是"
-
-#: 
-msgid "e.g. Sunday Service"
-msgstr "例如主日崇拜"
-
-#: 
-msgid "member"
-msgstr "成員"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -14381,25 +12696,6 @@ msgstr "檔案大小超過伺服器限制 %s"
 msgid "Missing image data in request"
 msgstr "請求中缺少圖片資料"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "尋找未參加活動的人員"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "缺席人員"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "選擇所需活動"
-
-#: 
-msgid "name@example.com"
-msgstr "name@example.com"
-
 #: 
 msgid "Advanced filtering by group, classification, and role"
 msgstr "依小組、分類及角色進行進階篩選"
@@ -14477,10 +12773,6 @@ msgid "API Key"
 msgstr "API 金鑰"
 
 #: 
-msgid "API key regenerated"
-msgstr "API 金鑰已重新產生"
-
-#: 
 msgid "Account"
 msgstr "帳戶"
 
@@ -14555,46 +12847,6 @@ msgstr "資料表格預設顯示的列數，下次載入頁面後生效。"
 #: 
 msgid "Edit own family only"
 msgstr "僅可編輯自己的家庭"
-
-#: 
-msgid "Enter text here..."
-msgstr "請在此輸入文字..."
-
-#: 
-msgid "Failed to cancel enrollment. Please try again."
-msgstr "取消報名失敗，請再試一次。"
-
-#: 
-msgid "Failed to delete event. Please try again."
-msgstr "刪除活動失敗，請再試一次。"
-
-#: 
-msgid "Failed to disable two-factor authentication. Please try again."
-msgstr "停用雙重驗證失敗，請再試一次。"
-
-#: 
-msgid "Failed to generate QR code. Please try again."
-msgstr "產生 QR 碼失敗，請再試一次。"
-
-#: 
-msgid "Failed to load calendar data. Please try again."
-msgstr "載入行事曆資料失敗，請再試一次。"
-
-#: 
-msgid "Failed to load event. Please try again."
-msgstr "載入活動失敗，請再試一次。"
-
-#: 
-msgid "Failed to load recovery codes. Please refresh the page."
-msgstr "載入復原碼失敗，請重新整理頁面。"
-
-#: 
-msgid "Failed to save event. Please try again."
-msgstr "儲存活動失敗，請再試一次。"
-
-#: 
-msgid "Failed to save setting"
-msgstr "儲存設定失敗"
 
 #. Context: locales
 #: 
@@ -14779,10 +13031,6 @@ msgid "User Config"
 msgstr "使用者設定"
 
 #: 
-msgid "Verification failed. Please try again."
-msgstr "驗證失敗，請再試一次。"
-
-#: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "版本 %s 已可用，請升級您的安裝。"
 
@@ -14802,10 +13050,6 @@ msgstr "您目前的存取權限（唯讀）"
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d 個重複事件建立成功。"
-
-#: 
-msgid "(e.g. Members, Visitors, Children) so volunteers can record headcounts here."
-msgstr "（例如：會眾、訪客、兒童），義工可在此記錄人數。"
 
 #: 
 msgid "1. Sunday School Class"
@@ -14828,24 +13072,12 @@ msgid "A class is a Group with type \"Sunday School\". It holds the students and
 msgstr "班級是類型為「主日學」的事工部門，包含學生和老師（帶角色的會眾）。"
 
 #: 
-msgid "A linked group ties this event to a class or ministry roster. When the event is assigned to a Kiosk, the kiosk pulls the group members and shows them as a tap-to-check-in list. For Sunday School classes, link the class group here so volunteers can check students in from a tablet."
-msgstr "關聯部門將此活動與班級或事工名冊綁定。活動分配到簽到台後，簽到台會拉取部門成員並顯示為點擊簽到列表。主日學班級請在此關聯班級部門，義工即可透過平板為學生簽到。"
-
-#: 
 msgid "A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against."
 msgstr "特定的活動場次（例如「幼兒班 — 4月12日」），繼承類型的預設設定，並透過受眾關聯班級部門。義工以此記錄出席情況。"
 
 #: 
 msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
 msgstr "分配給某一活動的平板（簽到台）。簽到台拉取活動關聯部門的名冊並顯示點擊簽到。若未關聯部門，簽到台將沒有名冊可顯示。"
-
-#: 
-msgid "Add Walk-in / Visitor"
-msgstr "新增現場訪客"
-
-#: 
-msgid "Add categories on the Event Type page"
-msgstr "在活動類型頁面新增分類"
 
 #: 
 msgid "Add people to your cart first, then come back to check them in to an event."
@@ -14884,20 +13116,12 @@ msgid "An Event Type is a template — name, default start time, recurrence, att
 msgstr "活動類型是範本，包含名稱、預設開始時間、重複規則和出席計數分類，可選擇關聯一個班級部門作為預設受眾。"
 
 #: 
-msgid "Attendance record deleted."
-msgstr "出席記錄已刪除。"
-
-#: 
 msgid "Audit"
 msgstr "稽核"
 
 #: 
 msgid "Audit Events"
 msgstr "稽核活動"
-
-#: 
-msgid "Auto-totalled from counts at right"
-msgstr "自動彙總右側計數"
 
 #: 
 msgid "Back to Events"
@@ -14952,24 +13176,12 @@ msgid "Check in all %d family members to a single event."
 msgstr "將全部 %d 位家庭成員簽到同一活動。"
 
 #: 
-msgid "Check out"
-msgstr "簽出"
-
-#: 
 msgid "Check-in By"
 msgstr "簽到操作者"
 
 #: 
-msgid "Check-in failed. Please try again."
-msgstr "簽到失敗，請重試。"
-
-#: 
 msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
 msgstr "未啟用的活動禁止簽到，請在活動儀表板中啟用活動以啟用簽到。"
-
-#: 
-msgid "Check-out failed. Please try again."
-msgstr "簽出失敗，請重試。"
 
 #: 
 msgid "Checked in to event: %s"
@@ -14982,10 +13194,6 @@ msgstr "已從活動簽出：%s"
 #: 
 msgid "Close All Stuck Events"
 msgstr "關閉所有卡住的活動"
-
-#: 
-msgid "Confirm Check Out"
-msgstr "確認簽出"
 
 #: 
 msgid "Create Repeat Events"
@@ -15012,10 +13220,6 @@ msgid "Creating backup..."
 msgstr "正在建立備份…"
 
 #: 
-msgid "Creating..."
-msgstr "正在建立…"
-
-#: 
 msgid "Database + uploaded photos (larger)"
 msgstr "資料庫 + 已上傳照片（體積較大）"
 
@@ -15024,40 +13228,8 @@ msgid "Database dump only (.sql)"
 msgstr "僅資料庫轉儲（.sql）"
 
 #: 
-msgid "Date Range"
-msgstr "日期範圍"
-
-#: 
 msgid "Date range cannot exceed 1 year"
 msgstr "日期範圍不能超過1年"
-
-#: 
-msgid "Deactivate"
-msgstr "停用"
-
-#: 
-msgid "Delete Event Type"
-msgstr "刪除活動類型"
-
-#: 
-msgid "Delete attendance record?"
-msgstr "刪除出席記錄？"
-
-#: 
-msgid "Delete check-in record for"
-msgstr "刪除以下人員的簽到記錄："
-
-#: 
-msgid "Delete this event?"
-msgstr "刪除此活動？"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
-msgstr "刪除活動將同時刪除所有出席計數，此操作不可撤銷。"
-
-#: 
-msgid "Deleting this event will also delete all attendance records. This cannot be undone."
-msgstr "刪除此活動將同時刪除所有出席記錄，此操作不可撤銷。"
 
 #: 
 msgid "Destructive Operation"
@@ -15070,10 +13242,6 @@ msgstr "編輯分類名稱後點擊儲存，或使用垃圾桶圖示刪除。透
 #: 
 msgid "End Time"
 msgstr "結束時間"
-
-#: 
-msgid "End time must be after start time."
-msgstr "結束時間必須晚於開始時間。"
 
 #: 
 msgid "Ended"
@@ -15098,18 +13266,6 @@ msgstr "活動詳情"
 #: 
 msgid "Event Template"
 msgstr "活動範本"
-
-#: 
-msgid "Event already exists. Redirecting to check-in..."
-msgstr "活動已存在，正在跳轉到簽到頁面…"
-
-#: 
-msgid "Event created. Redirecting to check-in..."
-msgstr "活動已建立，正在跳轉到簽到頁面…"
-
-#: 
-msgid "Event end date/time must be on or after the start date/time."
-msgstr "活動結束日期/時間必須等於或晚於開始日期/時間。"
 
 #: 
 msgid "Event title is required."
@@ -15140,10 +13296,6 @@ msgid "Event type has no valid day-of-month configured for monthly recurrence"
 msgstr "活動類型未配置有效的每月重複日期"
 
 #: 
-msgid "Events will be created for every matching occurrence within this date range."
-msgstr "將在此日期範圍內為每個符合的場次建立活動。"
-
-#: 
 msgid "Every month on the"
 msgstr "每月的"
 
@@ -15158,22 +13310,6 @@ msgstr "每年的"
 #: 
 msgid "Everyone is checked in!"
 msgstr "所有人均已簽到！"
-
-#: 
-msgid "Failed to create class. Please try again."
-msgstr "建立班級失敗，請重試。"
-
-#: 
-msgid "Failed to create event."
-msgstr "建立活動失敗。"
-
-#: 
-msgid "Failed to create event. Please try again."
-msgstr "建立活動失敗，請重試。"
-
-#: 
-msgid "Failed to delete. Please try again."
-msgstr "刪除失敗，請重試。"
 
 #: 
 msgid "Fastest workflow:"
@@ -15192,10 +13328,6 @@ msgid "Group Roster"
 msgstr "部門名冊"
 
 #: 
-msgid "Hide Advanced Options"
-msgstr "隱藏進階選項"
-
-#: 
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr "主日學、活動與簽到台如何協同工作"
 
@@ -15208,10 +13340,6 @@ msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr "rangeStart 或 rangeEnd 的日期格式無效"
 
 #: 
-msgid "Invalid date format."
-msgstr "日期格式無效。"
-
-#: 
 msgid "Invalid date; expected format YYYY-MM-DD"
 msgstr "日期無效；期望格式為 YYYY-MM-DD"
 
@@ -15222,14 +13350,6 @@ msgstr "活動類型ID無效"
 #: 
 msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
 msgstr "年度重複格式無效；期望格式為 MM-DD（例如 04-12）"
-
-#: 
-msgid "Just now"
-msgstr "剛剛"
-
-#: 
-msgid "Leave blank to check out without recording the supervisor."
-msgstr "留空則簽出時不記錄監督員。"
 
 #: 
 msgid "Link events to a group for Kiosk check-in functionality."
@@ -15252,20 +13372,12 @@ msgid "Missing required field: %s"
 msgstr "缺少必填欄位：%s"
 
 #: 
-msgid "No Events Today"
-msgstr "今日無活動"
-
-#: 
 msgid "No Group"
 msgstr "無部門"
 
 #: 
 msgid "No active events found."
 msgstr "未找到進行中的活動。"
-
-#: 
-msgid "No attendance count categories defined for this event type yet."
-msgstr "此活動類型尚未定義出席計數分類。"
 
 #: 
 msgid "No one has been checked in to this event yet."
@@ -15284,14 +13396,6 @@ msgid "Optional Settings"
 msgstr "選用設定"
 
 #: 
-msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
-msgstr "選填 — 記錄為此人辦理簽出的人（例如接孩子的家長）。"
-
-#: 
-msgid "Person checked out."
-msgstr "人員已簽出。"
-
-#: 
 msgid "Person is not checked in"
 msgstr "該人員未簽到"
 
@@ -15302,18 +13406,6 @@ msgstr "該人員不在進行中班級名冊內"
 #: 
 msgid "Pin to Calendars"
 msgstr "固定到行事曆"
-
-#: 
-msgid "Please select a person to check in."
-msgstr "請選擇要簽到的人員。"
-
-#: 
-msgid "Pre-filled based on this event type — for recurring types, the date is the next occurrence after the last event of this type, and the time matches the type's default start time."
-msgstr "根據此活動類型預填 — 對於重複類型，日期為此類型最後一次活動後的下一場次，時間與類型預設開始時間一致。"
-
-#: 
-msgid "Range end date must be on or after range start date."
-msgstr "範圍結束日期必須等於或晚於範圍開始日期。"
 
 #: 
 msgid "Range end must be a valid YYYY-MM-DD date."
@@ -15340,10 +13432,6 @@ msgid "Recommended"
 msgstr "推薦"
 
 #: 
-msgid "Required for Kiosk"
-msgstr "簽到台必填"
-
-#: 
 msgid "Resetting will permanently delete:"
 msgstr "重置將永久刪除："
 
@@ -15364,20 +13452,8 @@ msgid "Select an event type…"
 msgstr "選擇活動類型…"
 
 #: 
-msgid "Select start and end date/time."
-msgstr "選擇開始和結束日期/時間。"
-
-#: 
-msgid "Show More Options"
-msgstr "顯示更多選項"
-
-#: 
 msgid "Skip"
 msgstr "跳過"
-
-#: 
-msgid "Skip & Check Out"
-msgstr "跳過並簽出"
 
 #: 
 msgid "Start Check-in"
@@ -15410,18 +13486,6 @@ msgstr "記錄出席"
 #: 
 msgid "The Events module is disabled"
 msgstr "活動模組已停用"
-
-#: 
-msgid "The same start and end time will be used for all generated events."
-msgstr "所有產生的活動將使用相同的開始和結束時間。"
-
-#: 
-msgid "There are no events scheduled for today"
-msgstr "今日沒有安排活動"
-
-#: 
-msgid "These are headcount buckets — volunteers fill them in after the event so the dashboard can break down attendance (e.g. how many members vs. visitors). They are separate from individual check-ins on the Check-in page."
-msgstr "這些是人數統計分類 — 義工在活動結束後填寫，以便儀表板按類型細分出席情況（例如會眾與訪客的數量）。這與簽到頁面上的個人簽到是獨立的。"
 
 #: 
 msgid "This event is inactive."
@@ -15476,16 +13540,8 @@ msgid "View Event"
 msgstr "查看活動"
 
 #: 
-msgid "What are these for?"
-msgstr "這些有什麼用？"
-
-#: 
 msgid "What does this find?"
 msgstr "這個功能查找什麼？"
-
-#: 
-msgid "What is this for?"
-msgstr "這有什麼用？"
 
 #: 
 msgid "Who is bringing them in?"
@@ -15560,18 +13616,6 @@ msgid "Map Coordinates"
 msgstr "地圖座標"
 
 #: 
-msgid "Please select a group."
-msgstr "請選擇一個群組。"
-
-#: 
-msgid "Please select a role."
-msgstr "請選擇一個角色。"
-
-#: 
-msgid "Please select both a group and a role."
-msgstr "請同時選擇群組與角色。"
-
-#: 
 msgid "Range: -180 to 180."
 msgstr "範圍：-180 至 180。"
 
@@ -15586,22 +13630,6 @@ msgstr "例如，-74.0060"
 #: 
 msgid "e.g., 40.7128"
 msgstr "例如，40.7128"
-
-#: 
-msgid "mo"
-msgstr "月"
-
-#: 
-msgid "mos"
-msgstr "月"
-
-#: 
-msgid "yr"
-msgstr "年"
-
-#: 
-msgid "yrs"
-msgstr "年"
 
 #: 
 msgid "An error occurred while deleting the family."
@@ -15712,10 +13740,6 @@ msgid "You do not have permission to view this person"
 msgstr "您沒有權限查看此人"
 
 #: 
-msgid "Are you sure you want to delete this event type? This cannot be undone."
-msgstr "您確定要刪除此事件類型嗎？此操作無法復原。"
-
-#: 
 msgid "Assign to me"
 msgstr "指派給我"
 
@@ -15726,10 +13750,6 @@ msgstr "已指派"
 #: 
 msgid "Assigned event not found"
 msgstr "找不到已指派的事件"
-
-#: 
-msgid "Cannot Delete Event Type"
-msgstr "無法刪除事件類型"
 
 #: 
 msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
@@ -15752,20 +13772,12 @@ msgid "Online"
 msgstr "線上"
 
 #: 
-msgid "Opens a 30-second window for devices to register at:"
-msgstr "為設備注冊開啟一個30秒的視窗："
-
-#: 
 msgid "Pending"
 msgstr "待處理"
 
 #: 
 msgid "Register New Device"
 msgstr "注冊新設備"
-
-#: 
-msgid "This event type is used by"
-msgstr "此事件類型被以下使用"
 
 #: 
 msgid "Total Kiosks"
@@ -15776,6 +13788,2677 @@ msgid "Upcoming Events"
 msgstr "即將到來的事件"
 
 #: 
+msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
+msgstr "電子郵件範本中顯示的教會標誌的絕對 http(s) URL（未來也將在其他地方重複使用）。為在各電子郵件用戶端中獲得最佳顯示效果，請使用寬橫幅圖片，長寬比約為 3.5:1（例如 350×100 像素），格式為 PNG 或 JPG，並透過 HTTPS 提供服務。留空或輸入無效值將回退至預設的 ChurchCRM 標誌。"
+
+#: 
+msgid "An option with that name already exists"
+msgstr "該名稱的選項已存在"
+
+#: 
+msgid "Cannot delete the only remaining option"
+msgstr "無法刪除唯一剩餘的選項"
+
+#: 
+msgid "Custom Option"
+msgstr "自訂選項"
+
+#: 
+msgid "Default Inbox Preview Text"
+msgstr "預設收件匣預覽文字"
+
+#: 
+msgid "Email is disabled"
+msgstr "電子郵件已停用"
+
+#: 
+msgid "Email is disabled. Configure email before resetting passwords, or use Change Password."
+msgstr "電子郵件已停用。請在重設密碼前設定電子郵件，或使用「變更密碼」功能。"
+
+#: 
+msgid "Email is disabled. Enable it in the Email Dashboard settings before testing."
+msgstr "電子郵件已停用。請在電子郵件儀表板設定中啟用後再進行測試。"
+
+#: 
+msgid "Enter one of your backup recovery codes"
+msgstr "請輸入您的其中一個備用恢復碼"
+
+#: 
+msgid "Enter one of your backup recovery codes to access your account"
+msgstr "請輸入您的其中一個備用恢復碼以存取您的帳號"
+
+#: 
+msgid "Existing Options"
+msgstr "現有選項"
+
+#: 
+msgid "Group not found for this role list"
+msgstr "找不到此角色清單的事工"
+
+#: 
+msgid "Inactive status can only be toggled for the classifications list"
+msgstr "停用狀態只能在分類清單中切換"
+
+#: 
+msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
+msgstr "新使用者將不會收到包含其登入資訊的歡迎電子郵件。請手動與他們分享密碼，或先設定電子郵件。"
+
+#: 
+msgid "Option name is required"
+msgstr "選項名稱為必填項目"
+
+#: 
+msgid "Option not found"
+msgstr "找不到選項"
+
+#: 
+msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr "顯示在主旨列旁的收件匣預覽文字可選填的簡短摘要。留空則讓電子郵件用戶端自動從內容產生。各郵件類型（密碼重設、新會眾、驗證）有各自的預覽文字；此為備用設定。"
+
+#: 
+msgid "Password reset emails and new-account welcome emails will not be sent until email is configured. Users will not receive credentials automatically."
+msgstr "在設定電子郵件之前，密碼重設郵件和新帳號歡迎郵件將不會發送。使用者將不會自動收到登入資訊。"
+
+#: 
+msgid "Password reset is unavailable because email is disabled. Please contact your system administrator."
+msgstr "由於電子郵件已停用，密碼重設功能無法使用。請聯絡您的系統管理員。"
+
+#: 
+msgid "Password was reset but the email could not be sent. The user is locked out — share the new password manually or use Change Password."
+msgstr "密碼已重設，但電子郵件無法發送。該使用者已被鎖定——請手動分享新密碼或使用「變更密碼」功能。"
+
+#: 
+msgid "Recovery Code"
+msgstr "恢復碼"
+
+#: 
+msgid "Set up Email"
+msgstr "設定電子郵件"
+
+#: 
+msgid "Use Recovery Code"
+msgstr "使用恢復碼"
+
+#: 
+msgid "Use a recovery code instead"
+msgstr "改用恢復碼"
+
+#: 
+msgid "Use authenticator app instead"
+msgstr "改用驗證應用程式"
+
+#: 
+msgid "%d modules loaded"
+msgstr "已載入 %d 個模組"
+
+#: 
+msgid "(PHP default)"
+msgstr "（PHP 預設）"
+
+#: 
+msgid "(none)"
+msgstr "（無）"
+
+#: 
+msgid "(not set)"
+msgstr "（未設定）"
+
+#: 
+msgid "All checks passing"
+msgstr "所有檢查通過"
+
+#: 
+msgid "App"
+msgstr "應用程式"
+
+#: 
+msgid "Browser time zone differs:"
+msgstr "瀏覽器時區不符："
+
+#: 
+msgid "Calendar time zone:"
+msgstr "日曆時區："
+
+#: 
+msgid "Cannot send test email"
+msgstr "無法發送測試電子郵件"
+
+#: 
+msgid "Charset"
+msgstr "字元集"
+
+#: 
+msgid "Church Email address is not set — the test email has nowhere to go."
+msgstr "教會電子郵件地址未設定——測試電子郵件無處可送。"
+
+#: 
+msgid "Church email — configured on the"
+msgstr "教會電子郵件——設定於"
+
+#: 
+msgid "ChurchCRM Test Email"
+msgstr "ChurchCRM 測試電子郵件"
+
+#: 
+msgid "Collation"
+msgstr "排序規則"
+
+#: 
+msgid "Connection"
+msgstr "連線"
+
+#: 
+msgid "Database"
+msgstr "資料庫"
+
+#: 
+msgid "Delivery"
+msgstr "傳送"
+
+#: 
+msgid "Disk (Images Root)"
+msgstr "磁碟（圖片根目錄）"
+
+#: 
+msgid "Display Errors"
+msgstr "顯示錯誤"
+
+#: 
+msgid "Email Debug"
+msgstr "電子郵件除錯"
+
+#: 
+msgid "Environment"
+msgstr "環境"
+
+#: 
+msgid "Error Log"
+msgstr "錯誤日誌"
+
+#: 
+msgid "Error Reporting"
+msgstr "錯誤回報"
+
+#: 
+msgid "Fix Settings"
+msgstr "修正設定"
+
+#: 
+msgid "Hit Rate"
+msgstr "命中率"
+
+#: 
+msgid "Host"
+msgstr "主機"
+
+#: 
+msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
+msgstr "若訊息在數分鐘內未送達，請檢查垃圾郵件資料夾及下方的 SMTP 除錯日誌。"
+
+#: 
+msgid "If you can read this message in your inbox, your SMTP configuration is working correctly."
+msgstr "若您可在收件匣中閱讀此訊息，表示您的 SMTP 設定運作正常。"
+
+#: 
+msgid "Incomplete"
+msgstr "未完成"
+
+#: 
+msgid "Installed on Server"
+msgstr "已安裝於伺服器"
+
+#: 
+msgid "Integrity"
+msgstr "完整性"
+
+#: 
+msgid "Issues detected"
+msgstr "偵測到問題"
+
+#: 
+msgid "Loaded php.ini"
+msgstr "已載入的 php.ini"
+
+#: 
+msgid "Locale"
+msgstr "地區設定"
+
+#: 
+msgid "Max Execution Time"
+msgstr "最長執行時間"
+
+#: 
+msgid "Max POST Size"
+msgstr "POST 最大容量"
+
+#: 
+msgid "Max Upload Size"
+msgstr "上傳最大容量"
+
+#: 
+msgid "Memory"
+msgstr "記憶體"
+
+#: 
+msgid "Memory Limit"
+msgstr "記憶體限制"
+
+#: 
+msgid "Now check the recipient inbox to confirm delivery. Look for the subject:"
+msgstr "請立即查看收件人的收件匣以確認送達。尋找主旨："
+
+#: 
+msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
+msgstr "OPcache 未啟用。啟用它是加速 PHP 頁面載入的低風險方式。"
+
+#: 
+msgid "Off"
+msgstr "關閉"
+
+#: 
+msgid "On"
+msgstr "開啟"
+
+#: 
+msgid "Open the email debug tester"
+msgstr "開啟電子郵件除錯測試工具"
+
+#: 
+msgid "PHP Version"
+msgstr "PHP 版本"
+
+#: 
+msgid "PHPMailer SMTP session"
+msgstr "PHPMailer SMTP 連線工作階段"
+
+#: 
+msgid "Prerequisites"
+msgstr "前置需求"
+
+#: 
+msgid "Review the SMTP debug log below for the handshake details, then adjust your settings."
+msgstr "請查看下方的 SMTP 除錯日誌了解交握詳情，然後調整您的設定。"
+
+#: 
+msgid "SMTP Configuration"
+msgstr "SMTP 設定"
+
+#: 
+msgid "SMTP Debug Log"
+msgstr "SMTP 除錯日誌"
+
+#: 
+msgid "SMTP Host is not configured."
+msgstr "SMTP 主機未設定。"
+
+#: 
+msgid "SMTP configuration test — if this arrived, your setup works."
+msgstr "SMTP 設定測試——若您收到此郵件，表示您的設定正常運作。"
+
+#: 
+msgid "Schema Version"
+msgstr "資料庫結構版本"
+
+#: 
+msgid "Send Again"
+msgstr "重新發送"
+
+#: 
+msgid "Send a test message to verify your SMTP configuration"
+msgstr "發送測試訊息以驗證您的 SMTP 設定"
+
+#: 
+msgid "Server"
+msgstr "伺服器"
+
+#: 
+msgid "Server Version"
+msgstr "伺服器版本"
+
+#: 
+msgid "Session Handler"
+msgstr "工作階段處理器"
+
+#: 
+msgid "Session Save Path"
+msgstr "工作階段儲存路徑"
+
+#: 
+msgid "Settings Valid"
+msgstr "設定有效"
+
+#: 
+msgid "Subject"
+msgstr "主旨"
+
+#: 
+msgid "Test"
+msgstr "測試"
+
+#: 
+msgid "Test email accepted by SMTP server"
+msgstr "測試電子郵件已被 SMTP 伺服器接受"
+
+#: 
+msgid "Test email failed to send"
+msgstr "測試電子郵件發送失敗"
+
+#: 
+msgid "This is a ChurchCRM test email."
+msgstr "這是一封 ChurchCRM 測試電子郵件。"
+
+#: 
+msgid "Timeout"
+msgstr "連線逾時"
+
+#: 
+msgid "Timezone"
+msgstr "時區"
+
+#: 
+msgid "Unable to list web server modules (non-Apache SAPI)."
+msgstr "無法列出網頁伺服器模組（非 Apache SAPI）。"
+
+#: 
+msgid "Update Settings"
+msgstr "更新設定"
+
+#: 
+msgid "View full photo"
+msgstr "檢視完整照片"
+
+#: 
+msgid "page."
+msgstr "頁面。"
+
+#: 
+msgid "user:"
+msgstr "使用者："
+
+#: 
+msgid "1. Download the template"
+msgstr "1. 下載範本"
+
+#: 
+msgid "2. Fill in your data"
+msgstr "2. 填入您的資料"
+
+#: 
+msgid "3. Upload and map"
+msgstr "3. 上傳並對應欄位"
+
+#: 
+msgid "Add Recurring Event"
+msgstr "新增週期性活動"
+
+#: 
+msgid "Boolean properties/fields accept yes / no / true / false / 1 / 0."
+msgstr "布林值屬性/欄位接受 yes / no / true / false / 1 / 0。"
+
+#: 
+msgid "ChurchCRM auto-matches each column by name. Anything it cannot match is marked as Unmapped — pick a field or leave it as Ignore."
+msgstr "ChurchCRM 會依名稱自動比對每個欄位。無法比對的欄位會標記為「未對應」——請選擇一個欄位或設為忽略。"
+
+#: 
+msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
+msgstr "無法解析 CSV 檔案。請確認它是包含標題列的有效逗號分隔檔案。"
+
+#: 
+msgid "Custom field columns you have not configured are ignored — nothing is created on the fly."
+msgstr "您未設定的自訂欄位欄會被忽略——不會自動建立任何內容。"
+
+#: 
+msgid "Custom fields and properties are supported"
+msgstr "支援自訂欄位與屬性"
+
+#: 
+msgid "Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a month and day with no year."
+msgstr "日期欄位接受 YYYY-MM-DD 或 M/D/YYYY 格式。使用 0000-MM-DD 或 M/D 可輸入無年份的月日。"
+
+#: 
+msgid "Each row is one person. People in the same family share a FamilyID. Leave columns blank when you have no value for them."
+msgstr "每列代表一個人。同一家庭的成員共用一個 FamilyID。無值的欄位請留空。"
+
+#: 
+msgid "Event Timing"
+msgstr "活動時間設定"
+
+#: 
+msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
+msgstr "從「開始日期」到「結束日期」之間每個符合的日期，都將在相同的開始/結束時間建立各自的活動。"
+
+#: 
+msgid "External calendar sharing is disabled"
+msgstr "外部日曆共享已停用"
+
+#: 
+msgid "Family Custom"
+msgstr "家庭自訂"
+
+#: 
+msgid "Family Property"
+msgstr "家庭屬性"
+
+#: 
+msgid "Go to home"
+msgstr "前往首頁"
+
+#: 
+msgid "How the CSV Import Works"
+msgstr "CSV 匯入功能說明"
+
+#: 
+msgid "Imported from CSV"
+msgstr "從 CSV 匯入"
+
+#: 
+msgid "Invalid date format"
+msgstr "無效的日期格式"
+
+#: 
+msgid "Loading event editor…"
+msgstr "正在載入活動編輯器……"
+
+#: 
+msgid "Optional — sermon notes, materials, or other details copied to every generated event."
+msgstr "選填——講道筆記、材料或其他詳情，將複製到每個生成的活動中。"
+
+#: 
+msgid "Person / Family"
+msgstr "個人 / 家庭"
+
+#: 
+msgid "Person Custom"
+msgstr "個人自訂"
+
+#: 
+msgid "Person Property"
+msgstr "個人屬性"
+
+#: 
+msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
+msgstr "日曆連結不完整。請與傳送此連結給您的人確認網址。"
+
+#: 
+msgid "The church administrator has not enabled external calendar sharing. Please contact them if you believe this is in error."
+msgstr "教會管理員尚未啟用外部日曆共享。若您認為這是錯誤，請與他們聯繫。"
+
+#: 
+msgid "The start or end date in the link could not be understood. Try the base calendar link without date parameters."
+msgstr "無法識別連結中的開始或結束日期。請嘗試不帶日期參數的基本日曆連結。"
+
+#: 
+msgid "The template already contains every column you can map — the core Person/Family fields plus each custom field and property your site defines."
+msgstr "此範本已包含所有可對應的欄位——包括核心個人/家庭欄位，以及您的系統所定義的每個自訂欄位和屬性。"
+
+#: 
+msgid "The template already includes a column for every Person/Family custom field and for every property you have defined. If you add columns manually, just use the exact name of the custom field or property as the column header and the importer will match it automatically."
+msgstr "此範本已包含每個個人/家庭自訂欄位及您所定義的每個屬性的對應欄。若您手動新增欄位，只需使用自訂欄位或屬性的確切名稱作為欄標題，匯入工具即會自動比對。"
+
+#: 
+msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
+msgstr "此日曆連結無效或已被撤銷。請向教會索取最新連結。"
+
+#: 
+msgid "Upload a CSV to create families and people in bulk."
+msgstr "上傳 CSV 以批次建立家庭和個人資料。"
+
+#: 
+msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
+msgstr "您的 CSV 檔案有重複的欄位名稱。請重新命名重複的欄位（例如在第二個欄位後加上「(2)」），然後重新上傳。"
+
+#: 
+msgid "Are you sure you want to permanently delete this donated item?"
+msgstr "您確定要永久刪除此捐贈物品嗎？"
+
+#: 
+msgid "Are you sure you want to permanently delete this paddle number?"
+msgstr "您確定要永久刪除此競拍號嗎？"
+
+#: 
+msgid "Delete Donated Item"
+msgstr "刪除捐贈物品"
+
+#: 
+msgid "Delete Paddle Number"
+msgstr "刪除競拍號"
+
+#: 
+msgid "Invalid security token. Please try again."
+msgstr "安全權杖無效。請重試。"
+
+#. plugin:holidays:summary
+#: 
+msgid "Adds public holidays to the main calendar. Each selected country becomes its own toggleable calendar in the sidebar, so users can show or hide holidays independently."
+msgstr "將公共假期新增至主行事曆。每個所選國家／地區將在側邊欄中成為獨立的可切換行事曆，讓使用者可以單獨顯示或隱藏假期。"
+
+#: 
+msgid "Choose map provider"
+msgstr "選擇地圖服務"
+
+#. plugin:holidays:section:2:content
+#: 
+msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+msgstr "每個國家／地區在側邊欄中都會有自己的行事曆列。使用各行事曆的切換按鈕可暫時隱藏某個國家／地區，而不會變更外掛設定。"
+
+#. plugin:holidays:section:1:title
+#: 
+msgid "Filtering by category"
+msgstr "依類別篩選"
+
+#: 
+msgid "Holiday Settings"
+msgstr "假期設定"
+
+#: 
+msgid "Holidays (%s)"
+msgstr "假期（%s）"
+
+#. plugin:holidays:section:1:content
+#: 
+msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Seasonal, and Religious. Leave all categories unselected to show every holiday, or pick specific types to narrow the display."
+msgstr "假期依類型標記：官方假期、紀念日、銀行假日、季節性假期與宗教節日。不選取任何類別可顯示所有假期，或選擇特定類型以縮小顯示範圍。"
+
+#: 
+msgid "Missing pledge identifier."
+msgstr "缺少財務承諾識別碼。"
+
+#: 
+msgid "No country is selected. Choose at least one country in the Holiday Calendars plugin settings."
+msgstr "未選取任何國家／地區。請在假期行事曆外掛設定中至少選擇一個國家／地區。"
+
+#: 
+msgid "No matching entries for the selected filters."
+msgstr "所選篩選條件沒有符合的項目。"
+
+#: 
+msgid "Open in Apple Maps"
+msgstr "在 Apple Maps 中開啟"
+
+#: 
+msgid "Open in Google Maps"
+msgstr "在 Google Maps 中開啟"
+
+#. plugin:holidays:section:0:title
+#: 
+msgid "Setting up countries"
+msgstr "設定國家／地區"
+
+#: 
+msgid "Show all"
+msgstr "顯示全部"
+
+#: 
+msgid "Show:"
+msgstr "顯示："
+
+#. plugin:holidays:section:2:title
+#: 
+msgid "Showing and hiding individual countries"
+msgstr "顯示與隱藏個別國家／地區"
+
+#. Context: locales
+#: 
+msgid "Swedish"
+msgstr "瑞典語"
+
+#: 
+msgid "System"
+msgstr "系統"
+
+#: 
+msgid "Timeline filters"
+msgstr "時間軸篩選"
+
+#. plugin:holidays:section:0:content
+#: 
+msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
+msgstr "使用國家／地區選擇器選擇一個或多個國家／地區。您新增的每個國家／地區將在側邊欄中顯示為獨立的行事曆項目，讓您可以顯示全球會眾的假期。"
+
+#: 
+msgid "A downloadUrl is required to install a plugin."
+msgstr "安裝外掛需要提供下載網址（downloadUrl）。"
+
+#: 
+msgid "All three fields are required."
+msgstr "三個欄位都是必填項目。"
+
+#: 
+msgid "Approved Community Plugins"
+msgstr "已核准的社群外掛"
+
+#: 
+msgid "Browse Approved"
+msgstr "瀏覽已核准的外掛"
+
+#: 
+msgid "Check for Updates"
+msgstr "檢查更新"
+
+#: 
+msgid "Checking…"
+msgstr "檢查中…"
+
+#: 
+msgid "Clear Quarantine"
+msgstr "清除隔離"
+
+#: 
+msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
+msgstr "僅在根本問題已修復後才清除隔離。伺服器拒絕啟用已隔離的外掛。"
+
+#: 
+msgid "Click \"Browse Approved\" above to install a vetted plugin, or \"Install from URL\" for an unverified build during development."
+msgstr "點選上方「瀏覽已核准的外掛」以安裝已審核的外掛，或點選「從網址安裝」以在開發期間安裝未經驗證的版本。"
+
+#: 
+msgid "Failed to clear plugin quarantine"
+msgstr "清除外掛隔離失敗"
+
+#: 
+msgid "Failed to clear quarantine"
+msgstr "清除隔離失敗"
+
+#: 
+msgid "Failed to install plugin"
+msgstr "安裝外掛失敗"
+
+#: 
+msgid "Failed to install plugin from URL"
+msgstr "從網址安裝外掛失敗"
+
+#: 
+msgid "Failed to load approved plugin list"
+msgstr "載入已核准外掛清單失敗"
+
+#: 
+msgid "Failed to load approved plugin list."
+msgstr "載入已核准外掛清單失敗。"
+
+#: 
+msgid "Failed to refresh plugin registry"
+msgstr "重新整理外掛登錄失敗"
+
+#: 
+msgid "Failed to refresh plugin registry. Check your internet connection."
+msgstr "重新整理外掛登錄失敗。請檢查您的網路連線。"
+
+#: 
+msgid "Failed to uninstall plugin"
+msgstr "解除安裝外掛失敗"
+
+#: 
+msgid "Fetching latest registry…"
+msgstr "正在擷取最新登錄…"
+
+#: 
+msgid "Get this from the plugin author. The installer will refuse the download if it does not match byte-for-byte."
+msgstr "請向外掛作者取得此值。若不能逐位元組完全相符，安裝程式將拒絕下載。"
+
+#: 
+msgid "Homepage"
+msgstr "首頁"
+
+#: 
+msgid "Install"
+msgstr "安裝"
+
+#: 
+msgid "Install Plugin from URL (Unverified)"
+msgstr "從網址安裝外掛（未驗證）"
+
+#: 
+msgid "Install Unverified"
+msgstr "安裝未驗證外掛"
+
+#: 
+msgid "Install failed"
+msgstr "安裝失敗"
+
+#: 
+msgid "Install from URL"
+msgstr "從網址安裝"
+
+#: 
+msgid "Installing…"
+msgstr "安裝中…"
+
+#: 
+msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
+msgstr "使用 kebab-case 格式。必須與 zip 壓縮檔內的頂層目錄名稱以及 plugin.json 中的 id 相符。"
+
+#: 
+msgid "Loading approved plugin list…"
+msgstr "正在載入已核准外掛清單…"
+
+#: 
+msgid "Loading…"
+msgstr "載入中…"
+
+#: 
+msgid "Matches an entry on the approved plugin list"
+msgstr "與已核准外掛清單中的項目相符"
+
+#: 
+msgid "Must be an immutable release URL served over HTTPS."
+msgstr "必須是透過 HTTPS 提供的不可變更發行版本網址。"
+
+#: 
+msgid "Plugin id"
+msgstr "外掛 ID"
+
+#: 
+msgid "Plugin installed as UNVERIFIED. Review the extracted files carefully before enabling."
+msgstr "外掛已安裝為「未驗證」狀態。請在啟用前仔細審閱解壓縮的檔案。"
+
+#: 
+msgid "Plugin installed. Review it and click Enable to activate."
+msgstr "外掛已安裝。請審閱後點選「啟用」以啟動。"
+
+#: 
+msgid "Plugin quarantine cleared. You may now enable the plugin again."
+msgstr "外掛隔離已清除。您現在可以再次啟用該外掛。"
+
+#: 
+msgid "Plugin quarantined"
+msgstr "外掛已隔離"
+
+#: 
+msgid "Plugin registry refreshed."
+msgstr "外掛登錄已重新整理。"
+
+#: 
+msgid "Plugin uninstalled"
+msgstr "外掛已解除安裝"
+
+#: 
+msgid "Plugin uninstalled."
+msgstr "外掛已解除安裝。"
+
+#: 
+msgid "Plugin zip URL (HTTPS only)"
+msgstr "外掛 zip 網址（僅限 HTTPS）"
+
+#: 
+msgid "Quarantined"
+msgstr "已隔離"
+
+#: 
+msgid "Review the plugin files on disk before enabling. Unverified plugins run with the same permissions as approved plugins."
+msgstr "啟用前請先審閱磁碟上的外掛檔案。未驗證的外掛與已核准的外掛具有相同的執行權限。"
+
+#: 
+msgid "SHA-256 checksum"
+msgstr "SHA-256 檢查碼"
+
+#: 
+msgid "SHA-256 must be a 64-character hex string."
+msgstr "SHA-256 必須是 64 個字元的十六進位字串。"
+
+#: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "ChurchCRM 維護者尚未審閱此外掛。您安裝的任何內容，其安全性與行為由您自行負責。請盡可能優先使用「瀏覽已核准的外掛」流程。"
+
+#: 
+msgid "The approved plugin list is empty. There are no third-party plugins available through the verified installer yet."
+msgstr "已核准外掛清單為空。目前尚無第三方外掛可透過已驗證安裝程式取得。"
+
+#: 
+msgid "The plugin was automatically disabled after a runtime failure."
+msgstr "外掛在執行時發生錯誤後已自動停用。"
+
+#: 
+msgid "These plugins have been reviewed and approved by the ChurchCRM maintainers. Click Install to download and install one — the plugin will not be enabled automatically."
+msgstr "這些外掛已由 ChurchCRM 維護者審閱並核准。點選「安裝」以下載並安裝——外掛不會自動啟用。"
+
+#: 
+msgid "This plugin is not on the ChurchCRM approved plugin list."
+msgstr "此外掛不在 ChurchCRM 已核准外掛清單中。"
+
+#: 
+msgid "This plugin will be installed as UNVERIFIED."
+msgstr "此外掛將以「未驗證」狀態安裝。"
+
+#: 
+msgid "URL must use HTTPS."
+msgstr "網址必須使用 HTTPS。"
+
+#: 
+msgid "Uninstall (delete from disk)"
+msgstr "解除安裝（從磁碟刪除）"
+
+#: 
+msgid "Unverified plugin"
+msgstr "未驗證的外掛"
+
+#: 
+msgid "Verified"
+msgstr "已驗證"
+
+#: 
+msgid "What this plugin does:"
+msgstr "此外掛的功能："
+
+#: 
+msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr "未驗證安裝需要同時提供 downloadUrl、sha256 和 pluginId。"
+
+#: 
+msgid "risk"
+msgstr "風險"
+
+#: 
+msgid "Name cannot be empty"
+msgstr "名稱不可為空"
+
+#: 
+msgid "Name cannot be longer than %d characters"
+msgstr "名稱不可超過 %d 個字元"
+
+#: 
+msgid "Need help? Contact us"
+msgstr "需要協助？請聯絡我們"
+
+#: 
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "開啟 2 分鐘的時間窗口讓裝置在此處登錄："
+
+#: 
+msgid "Welcome — sign in to manage your community"
+msgstr "歡迎——請登入以管理您的社群"
+
+#: 
+msgid "Are you sure you want to delete this note?"
+msgstr "您確定要刪除這則備註嗎？"
+
+#: 
+msgid "Cancel — wait 1 more minute"
+msgstr "取消 — 再等候 1 分鐘"
+
+#: 
+msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
+msgstr "無法刪除捐款基金：仍有一個或多個財務承諾參照此基金。"
+
+#: 
+msgid "Cannot delete fundraiser: %d donated items are still associated. Remove the items first."
+msgstr "無法刪除籌款活動：仍有 %d 個捐贈項目與此相關聯，請先移除這些項目。"
+
+#: 
+msgid "Cannot delete property type: %d properties still reference it. Reassign or delete those properties first."
+msgstr "無法刪除屬性類型：仍有 %d 個屬性參照此類型，請先重新指派或刪除這些屬性。"
+
+#: 
+msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
+msgstr "無法刪除義工機會：仍有 %d 人已被指派，請先移除指派。"
+
+#: 
+msgid "Class must be one of p, f, or g"
+msgstr "類別必須是 p、f 或 g 其中之一"
+
+#: 
+msgid "Copy error message"
+msgstr "複製錯誤訊息"
+
+#: 
+msgid "Could not load note."
+msgstr "無法載入備註。"
+
+#: 
+msgid "Description cannot exceed 100 characters"
+msgstr "說明不得超過 100 個字元"
+
+#: 
+msgid "Donation fund not found"
+msgstr "找不到捐款基金"
+
+#: 
+msgid "Error deleting note."
+msgstr "刪除備註時發生錯誤。"
+
+#: 
+msgid "Failed to create donation fund"
+msgstr "建立捐款基金失敗"
+
+#: 
+msgid "Failed to create fundraiser"
+msgstr "建立籌款活動失敗"
+
+#: 
+msgid "Failed to create property type"
+msgstr "建立屬性類型失敗"
+
+#: 
+msgid "Failed to create volunteer opportunity"
+msgstr "建立義工機會失敗"
+
+#: 
+msgid "Failed to delete donation fund"
+msgstr "刪除捐款基金失敗"
+
+#: 
+msgid "Failed to delete fundraiser"
+msgstr "刪除籌款活動失敗"
+
+#: 
+msgid "Failed to delete note."
+msgstr "刪除備註失敗。"
+
+#: 
+msgid "Failed to delete property type"
+msgstr "刪除屬性類型失敗"
+
+#: 
+msgid "Failed to delete volunteer opportunity"
+msgstr "刪除義工機會失敗"
+
+#: 
+msgid "Failed to update donation fund"
+msgstr "更新捐款基金失敗"
+
+#: 
+msgid "Failed to update fundraiser"
+msgstr "更新籌款活動失敗"
+
+#: 
+msgid "Failed to update property type"
+msgstr "更新屬性類型失敗"
+
+#: 
+msgid "Failed to update volunteer opportunity"
+msgstr "更新義工機會失敗"
+
+#: 
+msgid "Fundraiser not found"
+msgstr "找不到籌款活動"
+
+#: 
+msgid "Installation ID"
+msgstr "安裝識別碼"
+
+#: 
+msgid "Invalid class"
+msgstr "無效的類別"
+
+#: 
+msgid "Name cannot exceed 30 characters"
+msgstr "名稱不得超過 30 個字元"
+
+#: 
+msgid "Note by %s deleted"
+msgstr "%s 的備註已刪除"
+
+#: 
+msgid "Note not found."
+msgstr "找不到備註。"
+
+#: 
+msgid "Plugin Development Docs"
+msgstr "外掛程式開發文件"
+
+#: 
+msgid "Property type not found"
+msgstr "找不到屬性類型"
+
+#: 
+msgid "Read more"
+msgstr "閱讀更多"
+
+#: 
+msgid "Refreshing Soon"
+msgstr "即將重新整理"
+
+#: 
+msgid "Refreshing in"
+msgstr "倒數重新整理："
+
+#: 
+msgid "That name already exists."
+msgstr "該名稱已存在。"
+
+#: 
+msgid "Title is required"
+msgstr "標題為必填項目"
+
+#: 
+msgid "Volunteer opportunity not found"
+msgstr "找不到義工機會"
+
+#: 
+msgid "You do not have permission to delete this note."
+msgstr "您沒有刪除此備註的權限。"
+
+#: 
+msgid "You do not have permission to edit this note."
+msgstr "您沒有編輯此備註的權限。"
+
+#: 
+msgid "[Private Note — visible only to creator]"
+msgstr "【私人備註 — 僅限建立者查看】"
+
+#: 
+msgid "seconds"
+msgstr "秒"
+
+#: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "無法刪除事件：%d 人目前已簽到。"
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "無法刪除事件：該事件目前已分配給資訊亭。"
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "無法刪除群組：它是 %d 個事件的受眾，也是 %d 個事件類型的預設群組。請先重新分配那些。"
+
+#: 
+msgid "A Calendar access token has been generated and saved."
+msgstr "已生成並儲存日曆存取權杖。"
+
+#: 
+msgid "API key regenerated"
+msgstr "API 金鑰已重新產生"
+
+#: 
+msgid "Access Token"
+msgstr "訪問令牌"
+
+#: 
+msgid "Action Confirmation"
+msgstr "確認操作"
+
+#: 
+msgid "Activate"
+msgstr "啟用"
+
+#: 
+msgid "Add A Group Name"
+msgstr "新增群組名"
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "新增現場訪客"
+
+#: 
+msgid "Add an extra layer of security to your account"
+msgstr "為您的帳戶新增額外的安全層"
+
+#: 
+msgid "Added"
+msgstr "添加日期"
+
+#: 
+msgid "Added to cart successfully"
+msgstr "成功添加到購物車"
+
+#: 
+msgid "Address is required"
+msgstr "地址是必填項"
+
+#: 
+msgid "All Day"
+msgstr "全天"
+
+#: 
+msgid "All Roles"
+msgstr "所有角色"
+
+#: 
+msgid "All System Settings"
+msgstr "所有系統設定"
+
+#: 
+msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
+msgstr "所有組成員資格和屬性都將被銷毀。 小組成員本身不會被改變。"
+
+#: 
+msgid "All members already in cart"
+msgstr "所有成員均已在購物車中"
+
+#: 
+msgid "Applied preset"
+msgstr "已套用預設"
+
+#: 
+msgid "Applying..."
+msgstr "正在套用..."
+
+#: 
+msgid "Are you sure you want to continue?"
+msgstr "您確定要繼續嗎?"
+
+#: 
+msgid "Are you sure you want to delete this deposit?"
+msgstr "您確定要刪除此奉獻存款嗎？"
+
+#: 
+msgid "Are you sure you want to delete this event type? This cannot be undone."
+msgstr "您確定要刪除此事件類型嗎？此操作無法復原。"
+
+#: 
+msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
+msgstr "您確定要停用兩步驗證嗎？您的帳戶安全性將降低。"
+
+#: 
+msgid "Are you sure you want to move"
+msgstr "您是否肯定想移走"
+
+#: 
+msgid "Are you sure you want to remove"
+msgstr "您確定要移除"
+
+#: 
+msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
+msgstr "您確定要刪除特定組的人員屬性嗎？所有組成員屬性數據都將丟失！"
+
+#: 
+msgid "Are you sure you want to unassign this property?"
+msgstr "您確定要取消分配此屬性嗎？"
+
+#: 
+msgid "Attendance record deleted."
+msgstr "出席記錄已刪除。"
+
+#: 
+msgid "Available after the event is saved."
+msgstr "活動儲存後即可使用。"
+
+#: 
+msgid "BCC All"
+msgstr "全部密件副本"
+
+#: 
+msgid "Background Color"
+msgstr "背景顏色"
+
+#: 
+msgid "Backup Complete"
+msgstr "備份完成"
+
+#: 
+msgid "Backup Downloaded, Copy on server removed"
+msgstr "備份已下載，已刪除服務器上的副本"
+
+#: 
+msgid "Backup Skipped"
+msgstr "備份已跳過"
+
+#: 
+msgid "Backup complete! Click below to download."
+msgstr "備份完成！點擊下方下載。"
+
+#: 
+msgid "Backup downloaded. Server copy removed."
+msgstr "備份已下載。伺服器副本已移除。"
+
+#: 
+msgid "Before You Start"
+msgstr "開始之前"
+
+#: 
+msgid "Browser language preference detected"
+msgstr "已偵測到瀏覽器語言偏好"
+
+#: 
+msgid "Calendar Name"
+msgstr "日曆名稱"
+
+#: 
+msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
+msgstr "無法載入日曆屬性。此日曆可能缺少存取權杖或設定不正確。"
+
+#: 
+msgid "Can't scan?"
+msgstr "無法掃描？"
+
+#: 
+msgid "Cannot Delete Event Type"
+msgstr "無法刪除事件類型"
+
+#: 
+msgid "Cart emptied successfully"
+msgstr "成功清空購物車"
+
+#: 
+msgid "Cart emptied to group successfully"
+msgstr "購物車成功清空到團體"
+
+#: 
+msgid "Change Your Locale"
+msgstr "變更您的語言設定"
+
+#: 
+msgid "Change role"
+msgstr "更改角色"
+
+#: 
+msgid "Check Number"
+msgstr "檢查號碼"
+
+#: 
+msgid "Check out"
+msgstr "簽出"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "簽到失敗，請重試。"
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "簽出失敗，請重試。"
+
+#: 
+msgid "City is required"
+msgstr "城市是必填項"
+
+#: 
+msgid "Click Save to apply."
+msgstr "點擊儲存以套用。"
+
+#: 
+msgid "Clipboard API not available. Please copy the URL manually."
+msgstr "剪貼簿API不可用。請手動複製URL。"
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "剪貼簿不可用。請使用下載按鈕儲存您的驗證碼。"
+
+#: 
+msgid "Code incomplete"
+msgstr "驗證碼不完整"
+
+#: 
+msgid "Code is invalid"
+msgstr "驗證碼無效"
+
+#: 
+msgid "Coming soon"
+msgstr "即將推出"
+
+#: 
+msgid "Confirm Activation"
+msgstr "確認激活"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "確認簽出"
+
+#: 
+msgid "Confirm Deactivation"
+msgstr "確認停用"
+
+#: 
+msgid "Confirm Delete Group"
+msgstr "確認刪除群組"
+
+#: 
+msgid "Confirm Disable Group Specific Properties"
+msgstr "確認啟用組特定屬性"
+
+#: 
+msgid "Confirm Enable Group Specific Properties"
+msgstr "確認啟用組特定屬性"
+
+#: 
+msgid "Confirm with a code from your authenticator app"
+msgstr "使用驗證器應用程式中的驗證碼確認"
+
+#: 
+msgid "Copied"
+msgstr "已複製"
+
+#: 
+msgid "Copied to clipboard"
+msgstr "已複製到剪貼簿"
+
+#: 
+msgid "Copied!"
+msgstr "已複製！"
+
+#: 
+msgid "Copy"
+msgstr "複製"
+
+#: 
+msgid "Copy All Emails"
+msgstr "複製所有電子郵件"
+
+#: 
+msgid "Copy All Numbers"
+msgstr "複製所有號碼"
+
+#: 
+msgid "Copy Members to Group"
+msgstr "複製成員到小組"
+
+#: 
+msgid "Creating Backup..."
+msgstr "正在建立備份..."
+
+#: 
+msgid "Creating..."
+msgstr "正在建立…"
+
+#: 
+msgid "Current database"
+msgstr "目前資料庫"
+
+#: 
+msgid "Deactivate"
+msgstr "停用"
+
+#: 
+msgid "Default Name Group"
+msgstr "預設群組名"
+
+#: 
+msgid "Default role updated."
+msgstr "預設角色已更新。"
+
+#: 
+msgid "Delete Calendar"
+msgstr "刪除日曆"
+
+#: 
+msgid "Delete Event Type"
+msgstr "刪除活動類型"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "刪除出席記錄？"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "刪除以下人員的簽到記錄："
+
+#: 
+msgid "Delete this event?"
+msgstr "刪除此活動？"
+
+#: 
+msgid "Delete this person?"
+msgstr "刪除此人？"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "刪除活動將同時刪除所有出席計數，此操作不可撤銷。"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "刪除此活動將同時刪除所有出席記錄，此操作不可撤銷。"
+
+#: 
+msgid "Demo data imported successfully"
+msgstr "演示數據成功匯入"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "示範資料通常僅在全新安裝時載入。現在匯入將在現有資料旁新增範例記錄，可能會產生重複資料。"
+
+#: 
+msgid "Deposit ID"
+msgstr "存款編號"
+
+#: 
+msgid "Deposit Total"
+msgstr "存款總額"
+
+#: 
+msgid "Deposit Value"
+msgstr "存款金額"
+
+#: 
+msgid "Deposit saved successfully"
+msgstr "存款儲存成功"
+
+#: 
+msgid "Deposit(s)"
+msgstr "存款"
+
+#: 
+msgid "Disable Two-Factor Authentication"
+msgstr "停用兩步驗證"
+
+#: 
+msgid "Do you want to delete this person?  This cannot be undone."
+msgstr "你想刪除此人嗎？這不能被撤消。"
+
+#: 
+msgid "Done"
+msgstr "完成"
+
+#: 
+msgid "Download Backup & Continue"
+msgstr "下載備份並繼續"
+
+#: 
+msgid "Downloaded"
+msgstr "已下載"
+
+#: 
+msgid "Downloading latest release from GitHub..."
+msgstr "正在從 GitHub 下載最新版本..."
+
+#: 
+msgid "Duration"
+msgstr "期間"
+
+#: 
+msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
+msgstr "每次登入時，您需要使用驗證器應用程式中的驗證碼進行確認"
+
+#: 
+msgid "Email addresses copied to clipboard"
+msgstr "電子郵件地址已複製到剪貼簿"
+
+#: 
+msgid "Empty Cart"
+msgstr "清空購物車"
+
+#: 
+msgid "Empty Cart to Family"
+msgstr "清空購物車家庭"
+
+#: 
+msgid "Empty Cart to Group"
+msgstr "清空購物車集團"
+
+#: 
+msgid "Empty your entire cart?"
+msgstr "清空整個購物車？"
+
+#: 
+msgid "Enable Two-Factor Authentication"
+msgstr "啟用兩步驗證"
+
+#: 
+msgid "End Date"
+msgstr "結束日期"
+
+#: 
+msgid "End time must be after start time."
+msgstr "結束時間必須晚於開始時間。"
+
+#: 
+msgid "Enter text here..."
+msgstr "請在此輸入文字..."
+
+#: 
+msgid "Enter your username and password as usual"
+msgstr "照常輸入您的使用者名稱和密碼"
+
+#: 
+msgid "Error deleting payments"
+msgstr "刪除付款時出錯"
+
+#: 
+msgid "Error loading payments"
+msgstr "載入付款時出錯"
+
+#: 
+msgid "Error saving deposit"
+msgstr "儲存存款時出錯"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "活動已存在，正在跳轉到簽到頁面…"
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "活動已建立，正在跳轉到簽到頁面…"
+
+#: 
+msgid "Failed to add family to cart"
+msgstr "未能將家庭添加到購物車"
+
+#: 
+msgid "Failed to add group to cart"
+msgstr "未能將團體添加到購物車"
+
+#: 
+msgid "Failed to add members to cart. Please try again."
+msgstr "將成員加入名單失敗，請重試。"
+
+#: 
+msgid "Failed to add to cart"
+msgstr "未能添加到購物車"
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "取消報名失敗，請再試一次。"
+
+#: 
+msgid "Failed to copy URL"
+msgstr "複製 URL 失敗"
+
+#: 
+msgid "Failed to create backup."
+msgstr "建立備份失敗。"
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "建立班級失敗，請重試。"
+
+#: 
+msgid "Failed to create event."
+msgstr "建立活動失敗。"
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "建立活動失敗，請重試。"
+
+#: 
+msgid "Failed to create group. Please try again."
+msgstr "建立團體失敗。請重試。"
+
+#: 
+msgid "Failed to delete class. Please try again."
+msgstr "刪除班級失敗，請重試。"
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "刪除活動失敗，請再試一次。"
+
+#: 
+msgid "Failed to delete group. Please try again."
+msgstr "刪除小組失敗，請重試。"
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "刪除失敗，請重試。"
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "停用雙重驗證失敗，請再試一次。"
+
+#: 
+msgid "Failed to download update package."
+msgstr "下載更新包失敗。"
+
+#: 
+msgid "Failed to empty cart"
+msgstr "清空購物車失敗"
+
+#: 
+msgid "Failed to empty cart to group"
+msgstr "清空購物車到團體失敗"
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "產生 QR 碼失敗，請再試一次。"
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "載入行事曆資料失敗，請再試一次。"
+
+#: 
+msgid "Failed to load cart status."
+msgstr "載入購物車狀態失敗。"
+
+#: 
+msgid "Failed to load event editor. Please refresh and try again."
+msgstr "載入活動編輯器失敗。請重新整理頁面後再試。"
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "載入活動失敗，請再試一次。"
+
+#: 
+msgid "Failed to load groups. Please refresh the page."
+msgstr "載入團體失敗。請重新整理頁面。"
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "載入復原碼失敗，請重新整理頁面。"
+
+#: 
+msgid "Failed to refresh upgrade information from GitHub."
+msgstr "無法從 GitHub 重新整理升級資訊。"
+
+#: 
+msgid "Failed to remove family from cart"
+msgstr "未能從購物車中移除家庭"
+
+#: 
+msgid "Failed to remove from cart"
+msgstr "未能從購物車中移除"
+
+#: 
+msgid "Failed to remove from class. Please try again."
+msgstr "從班級中移除失敗，請重試。"
+
+#: 
+msgid "Failed to remove group"
+msgstr "未能移除團體"
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "儲存活動失敗，請再試一次。"
+
+#: 
+msgid "Failed to save setting"
+msgstr "儲存設定失敗"
+
+#: 
+msgid "Failed to set default role. Please try again."
+msgstr "設定預設角色失敗。請重試。"
+
+#: 
+msgid "Failed to update group. Please try again."
+msgstr "更新團體失敗。請重試。"
+
+#: 
+msgid "Failed to update role name. Please try again."
+msgstr "更新角色名稱失敗。請重試。"
+
+#: 
+msgid "Family added to cart"
+msgstr "家庭已添加到購物車"
+
+#: 
+msgid "Family name must be at least 2 characters"
+msgstr "家庭姓氏必須至少包含 2 個字元"
+
+#: 
+msgid "Fields"
+msgstr "欄位"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "尋找未參加活動的人員"
+
+#: 
+msgid "First name is required"
+msgstr "名字是必填項"
+
+#: 
+msgid "First name must be at least 2 characters"
+msgstr "名字必須至少包含 2 個字元"
+
+#: 
+msgid "Focus"
+msgstr "加入焦點"
+
+#: 
+msgid "Force Import"
+msgstr "強制匯入"
+
+#: 
+msgid "Force Import will retry and may create duplicate data."
+msgstr "強制匯入將重試，並可能建立重複數據。"
+
+#: 
+msgid "Force re-install initiated. Please backup your database before applying."
+msgstr "已啟動強制重新安裝。在執行前請先備份您的資料庫。"
+
+#: 
+msgid "Foreground Color"
+msgstr "前景色"
+
+#: 
+msgid "Fund(s)"
+msgstr "基金"
+
+#: 
+msgid "Generate new code"
+msgstr "產生新驗證碼"
+
+#: 
+msgid "Go to homepage"
+msgstr "前往首頁"
+
+#: 
+msgid "Group added to cart"
+msgstr "團體已添加到購物車"
+
+#: 
+msgid "Group deleted successfully."
+msgstr "小組已成功刪除。"
+
+#: 
+msgid "Group removed from cart"
+msgstr "團體已從購物車移除"
+
+#: 
+msgid "GroupID required for role selection prompt"
+msgstr "角色選擇提示需要群組ID"
+
+#: 
+msgid "HTML URL"
+msgstr "HTML 網址"
+
+#: 
+msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
+msgstr "準備好您的驗證器應用程式（Google Authenticator、Microsoft Authenticator、Authy等）"
+
+#: 
+msgid "Hide advanced options"
+msgstr "隱藏進階選項"
+
+#: 
+msgid "Home phone is required"
+msgstr "家庭電話是必填項"
+
+#: 
+msgid "ICS URL"
+msgstr "ICS 網址"
+
+#: 
+msgid "Ignored"
+msgstr "已忽略"
+
+#: 
+msgid "Import Demo Data"
+msgstr "匯入演示數據"
+
+#: 
+msgid "Import demo data anyway"
+msgstr "仍然匯入示範資料"
+
+#: 
+msgid "Import failed"
+msgstr "匯入失敗"
+
+#: 
+msgid "Import failed. Please try again."
+msgstr "匯入失敗，請重試。"
+
+#: 
+msgid "Important"
+msgstr "重要"
+
+#: 
+msgid "Importing..."
+msgstr "正在匯入..."
+
+#: 
+msgid "Include Sunday School classes and enrollments"
+msgstr "包含主日學班級和報名"
+
+#: 
+msgid "Include events and calendars"
+msgstr "包含活動和日曆"
+
+#: 
+msgid "Include financial data (donation funds, pledges)"
+msgstr "包含財務數據（捐贈基金、認獻）"
+
+#: 
+msgid "Invalid Entry"
+msgstr "輸入無效"
+
+#: 
+msgid "Invalid format"
+msgstr "格式無效"
+
+#: 
+msgid "It is strongly recommended to have a backup before proceeding."
+msgstr "強烈建議在繼續之前進行備份。"
+
+#: 
+msgid "Just now"
+msgstr "剛剛"
+
+#: 
+msgid "Language updated to"
+msgstr "語言已更新為"
+
+#: 
+msgid "Last name is required"
+msgstr "姓氏是必填項"
+
+#: 
+msgid "Last name must be at least 2 characters"
+msgstr "姓氏必須至少包含 2 個字元"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "留空則簽出時不記錄監督員。"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "留空以保留現有內容"
+
+#: 
+msgid "Loading"
+msgstr "載入中"
+
+#: 
+msgid "Loading recovery codes"
+msgstr "正在載入復原碼"
+
+#: 
+msgid "Make Default"
+msgstr "設為默認值"
+
+#: 
+msgid "Manual"
+msgstr "手動"
+
+#: 
+msgid "Map Cart"
+msgstr "地圖購物車"
+
+#: 
+msgid "Maximum length is"
+msgstr "最大長度為"
+
+#: 
+msgid "Members added to cart."
+msgstr "成員已加入名單。"
+
+#: 
+msgid "Minimum length is"
+msgstr "最小長度為"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "缺席人員"
+
+#: 
+msgid "Move"
+msgstr "移動"
+
+#: 
+msgid "Move Members"
+msgstr "移動成員"
+
+#: 
+msgid "Move Members to Group"
+msgstr "移動成員到小組"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https://"
+msgstr "必須是以 http:// 或 https:// 開頭的有效 URL"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
+msgstr "必須是以 http:// 或 https:// 開頭的有效 URL（例如：http://localhost 或 https://domain.com）"
+
+#: 
+msgid "Must be a valid port number (e.g., 3306)"
+msgstr "必須是有效的連接埠號（例如：3306）"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "如果非空則必須以/開頭；末尾不能有斜線。只允許使用字母、數字、底線、短橫線、點和/。"
+
+#: 
+msgid "Need to remove this data later?"
+msgstr "以後需要刪除這些數據嗎？"
+
+#: 
+msgid "New Access Token"
+msgstr "新的訪問令牌"
+
+#: 
+msgid "No Anniversaries"
+msgstr "無紀念日"
+
+#: 
+msgid "No Birthdays"
+msgstr "無生日"
+
+#: 
+msgid "No Deposits"
+msgstr "無存款"
+
+#: 
+msgid "No Events Today"
+msgstr "今日無活動"
+
+#: 
+msgid "No anniversaries in the past or next 7 days"
+msgstr "過去和未來7天內沒有紀念日"
+
+#: 
+msgid "No birthdays in the past or next 7 days"
+msgstr "過去和未來7天內沒有生日"
+
+#: 
+msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
+msgstr "未選取行事曆——此活動將顯示在「未釘選活動」系統行事曆中，直到您釘選它為止。"
+
+#: 
+msgid "No deposit data available yet"
+msgstr "尚無奉獻存款資料"
+
+#: 
+msgid "No email addresses available"
+msgstr "沒有可用的電子郵件地址"
+
+#: 
+msgid "No group"
+msgstr "無群組"
+
+#: 
+msgid "No members found for this role."
+msgstr "未找到此角色的成員。"
+
+#: 
+msgid "No payments on this deposit"
+msgstr "此存款項下無付款"
+
+#: 
+msgid "No payments yet. Click \"Add Payment\" to get started."
+msgstr "尚無付款。點擊「添加付款」開始。"
+
+#: 
+msgid "No phone numbers available"
+msgstr "沒有可用的電話號碼"
+
+#: 
+msgid "Not pinned to any calendar"
+msgstr "未釘選至任何日曆"
+
+#: 
+msgid "One-Time Code"
+msgstr "一次性驗證碼"
+
+#: 
+msgid "Open in New Tab"
+msgstr "在新分頁中打開"
+
+#: 
+msgid "Open in new tab"
+msgstr "在新分頁中開啟"
+
+#: 
+msgid "Open your authenticator app and scan this QR code"
+msgstr "開啟您的驗證器應用程式並掃描此QR碼"
+
+#: 
+msgid "Optional Data to Include"
+msgstr "可選包含的數據"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "選填 — 記錄為此人辦理簽出的人（例如接孩子的家長）。"
+
+#: 
+msgid "Parents"
+msgstr "父母"
+
+#: 
+msgid "Password reset for"
+msgstr "密碼重置適用於"
+
+#: 
+msgid "Passwords do not match"
+msgstr "密碼不匹配"
+
+#: 
+msgid "Payments deleted successfully"
+msgstr "付款已成功刪除"
+
+#: 
+msgid "Person already in cart"
+msgstr "此人已在購物車中"
+
+#: 
+msgid "Person checked out."
+msgstr "人員已簽出。"
+
+#: 
+msgid "Person removed from class."
+msgstr "人員已從班級中移除。"
+
+#: 
+msgid "Phone numbers copied to clipboard"
+msgstr "電話號碼已複製到剪貼板"
+
+#: 
+msgid "Phone numbers copied — paste into your messaging app"
+msgstr "電話號碼已複製 — 粘貼到您的消息應用中"
+
+#: 
+msgid "Pinned Calendars"
+msgstr "釘選日曆"
+
+#: 
+msgid "Please add at least one family member."
+msgstr "請至少添加一名家庭成員。"
+
+#: 
+msgid "Please confirm activation of family"
+msgstr "請確認激活家庭"
+
+#: 
+msgid "Please confirm deactivation of family"
+msgstr "請確認停用家庭"
+
+#: 
+msgid "Please confirm deletion of this group record"
+msgstr "請確認刪除該組的記錄"
+
+#: 
+msgid "Please confirm disabling 2 Factor Auth for this user"
+msgstr "請確認為此用戶禁用雙重認證"
+
+#: 
+msgid "Please confirm removal of user status from"
+msgstr "請確認刪除的用戶狀態"
+
+#: 
+msgid "Please confirm reset failed login count"
+msgstr "請確認重置登入失敗次數"
+
+#: 
+msgid "Please confirm the password reset of this user"
+msgstr "請確認該用戶的密碼重置"
+
+#: 
+msgid "Please enter a valid URL"
+msgstr "請輸入有效的 URL"
+
+#: 
+msgid "Please enter a valid email address"
+msgstr "請輸入有效的電子郵件地址"
+
+#: 
+msgid "Please enter a valid email address (e.g., name@example.com)"
+msgstr "請輸入有效的電子郵件地址（例如：name@example.com）"
+
+#: 
+msgid "Please enter a valid number"
+msgstr "請輸入有效的數字"
+
+#: 
+msgid "Please enter a valid phone number"
+msgstr "請輸入有效的電話號碼"
+
+#: 
+msgid "Please fill in all required fields correctly."
+msgstr "請正確填寫所有必填欄位。"
+
+#: 
+msgid "Please map at least one column before importing"
+msgstr "匯入前請至少對應一個欄位"
+
+#: 
+msgid "Please select a CSV file"
+msgstr "請選擇一個 CSV 檔案"
+
+#: 
+msgid "Please select a backup file to restore"
+msgstr "請選擇要還原的備份檔案"
+
+#: 
+msgid "Please select a date"
+msgstr "請選擇日期"
+
+#: 
+msgid "Please select a group."
+msgstr "請選擇一個群組。"
+
+#: 
+msgid "Please select a person to check in."
+msgstr "請選擇要簽到的人員。"
+
+#: 
+msgid "Please select a role."
+msgstr "請選擇一個角色。"
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "請同時選擇群組與角色。"
+
+#: 
+msgid "Please select rows to delete"
+msgstr "請選擇要刪除的行"
+
+#: 
+msgid "Please select target Role for members"
+msgstr "請為會員選擇目標角色"
+
+#: 
+msgid "Please select target group for members"
+msgstr "請為會員選擇目標群組"
+
+#: 
+msgid "Please try again"
+msgstr "請重試"
+
+#: 
+msgid "Press CTRL + C to copy"
+msgstr "按 CTRL + C 複製"
+
+#: 
+msgid "Public calendar"
+msgstr "公共日曆"
+
+#: 
+msgid "Quick Setup"
+msgstr "快速設定"
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "範圍結束日期必須等於或晚於範圍開始日期。"
+
+#: 
+msgid "Recovery Codes"
+msgstr "復原碼"
+
+#: 
+msgid "Register another family"
+msgstr "註冊另一個家庭"
+
+#: 
+msgid "Registration Error"
+msgstr "註冊錯誤"
+
+#: 
+msgid "Remove Property"
+msgstr "移除屬性"
+
+#: 
+msgid "Remove this family from cart?"
+msgstr "從購物車移除此家庭？"
+
+#: 
+msgid "Remove this group from cart?"
+msgstr "從購物車移除此團體？"
+
+#: 
+msgid "Remove this person from cart?"
+msgstr "從購物車移除此人？"
+
+#: 
+msgid "Removed from cart successfully"
+msgstr "成功從購物車移除"
+
+#: 
+msgid "Restore failed. Please check the backup file and try again."
+msgstr "還原失敗。請檢查備份檔案並再試一次。"
+
+#: 
+msgid "Retry Download"
+msgstr "重試下載"
+
+#: 
+msgid "Role Name"
+msgstr "角色名稱"
+
+#: 
+msgid "Role added successfully."
+msgstr "角色添加成功。"
+
+#: 
+msgid "Role deleted successfully."
+msgstr "角色刪除成功。"
+
+#: 
+msgid "Role name updated."
+msgstr "角色名稱已更新。"
+
+#: 
+msgid "Role not found."
+msgstr "未找到角色。"
+
+#: 
+msgid "Roles"
+msgstr "角色"
+
+#: 
+msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
+msgstr "請將這些復原碼儲存在安全的地方。如果您失去驗證器應用程式的存取權限，可以使用它們存取您的帳戶。"
+
+#: 
+msgid "Saving..."
+msgstr "正在儲存..."
+
+#: 
+msgid "Scan QR Code"
+msgstr "掃描QR碼"
+
+#: 
+msgid "Search groups..."
+msgstr "搜尋小組..."
+
+#: 
+msgid "Search or select..."
+msgstr "搜尋或選擇..."
+
+#: 
+msgid "Secure"
+msgstr "安全"
+
+#: 
+msgid "Select Group and Role"
+msgstr "選擇組和角色"
+
+#: 
+msgid "Select calendars..."
+msgstr "選擇日曆..."
+
+#: 
+msgid "Select event type..."
+msgstr "選擇活動類型..."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "選擇所需活動"
+
+#: 
+msgid "Sequence"
+msgstr "序號"
+
+#: 
+msgid "Server error"
+msgstr "伺服器錯誤"
+
+#: 
+msgid "Server returned an unexpected response. Please try again."
+msgstr "伺服器傳回了非預期的回應，請重試。"
+
+#: 
+msgid "Set Up Authenticator"
+msgstr "設定驗證器"
+
+#: 
+msgid "Setting updated successfully"
+msgstr "設定更新成功"
+
+#: 
+msgid "Setup Complete"
+msgstr "設定完成"
+
+#: 
+msgid "Share this URL with family members to verify their information"
+msgstr "將此 URL 分享給家庭成員以核實他們的資訊"
+
+#: 
+msgid "Show more options"
+msgstr "顯示更多選項"
+
+#: 
+msgid "Sign In"
+msgstr "登入"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "跳過並簽出"
+
+#: 
+msgid "Sorry, we are unable to process your request at this point in time."
+msgstr "抱歉，我們目前無法處理您的請求。"
+
+#: 
+msgid "Start Date"
+msgstr "開始日期"
+
+#: 
+msgid "Submitting..."
+msgstr "正在提交..."
+
+#: 
+msgid "System upgrade completed successfully!"
+msgstr "系統升級成功完成！"
+
+#: 
+msgid "Text All"
+msgstr "全部文本"
+
+#: 
+msgid "The selected file exceeds this servers maximum upload size of"
+msgstr "所選文件超過此服務器的最大上載大小"
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "今日沒有安排活動"
+
+#: 
+msgid "There was a problem retrieving the requested object"
+msgstr "檢索請求對象時出現問題"
+
+#: 
+msgid "This event type is used by"
+msgstr "此事件類型被以下使用"
+
+#: 
+msgid "This field is required"
+msgstr "這是必填欄"
+
+#: 
+msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
+msgstr "這也將刪除所有角色和特定組相關的屬性數據與該組記錄。"
+
+#: 
+msgid "This will also delete all payments associated with this deposit"
+msgstr "這也將刪除與此存款相關的所有付款"
+
+#: 
+msgid "This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor."
+msgstr "這將為該組創建組特定的屬性。然後，您應該使用組特定的屬性表編輯器添加所需的屬性。"
+
+#: 
+msgid "This will replace any previously enrolled 2FA methods"
+msgstr "這將取代所有之前註冊的兩步驗證方法"
+
+#: 
+msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
+msgstr "將此活動連結至班級或事工名冊——由報到站簽到流程使用。"
+
+#: 
+msgid "Time"
+msgstr "時間"
+
+#: 
+msgid "Timed"
+msgstr "定時"
+
+#: 
+msgid "Times use church time ({{church}}), not your browser ({{browser}})."
+msgstr "時間使用教會時區（{{church}}），而非您的瀏覽器時區（{{browser}}）。"
+
+#: 
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "若要從乾淨的資料庫重新開始，請在匯入示範資料前，從管理儀表板使用「重設資料庫」功能。"
+
+#: 
+msgid "Today"
+msgstr "今天"
+
+#: 
+msgid "Two Factor Enrollment Error"
+msgstr "兩步驗證註冊錯誤"
+
+#: 
+msgid "Two-factor authentication has been disabled"
+msgstr "兩步驗證已停用"
+
+#: 
+msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
+msgstr "兩步驗證是保護您帳戶的最佳方式之一。我們強烈建議保持啟用狀態。"
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the URL manually."
+msgstr "無法複製到剪貼板。請手動複製 URL。"
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "無法複製到剪貼簿。請手動複製驗證碼。"
+
+#: 
+msgid "Unable to load"
+msgstr "無法載入"
+
+#: 
+msgid "Unable to load state list. Please check your network connection or try again later."
+msgstr "無法載入州/省列表。請檢查您的網路連接或稍後再試。"
+
+#: 
+msgid "Unfocus"
+msgstr "移除焦點"
+
+#: 
+msgid "Unknown error"
+msgstr "未知錯誤"
+
+#: 
+msgid "Update package downloaded successfully."
+msgstr "更新包下載成功。"
+
+#: 
+msgid "Upgrade failed."
+msgstr "升級失敗。"
+
+#: 
+msgid "Upgrade failed. Please check the logs."
+msgstr "升級失敗。請檢查日誌。"
+
+#: 
+msgid "Upgrade information refreshed. Reloading page..."
+msgstr "升級資訊已重新整理。正在重新載入頁面..."
+
+#: 
+msgid "Upload failed. Please check the file and try again."
+msgstr "上傳失敗。請檢查檔案後重試。"
+
+#: 
+msgid "User Delete Confirmation"
+msgstr "用戶刪除確認書，"
+
+#: 
+msgid "Validation pending"
+msgstr "等待驗證"
+
+#: 
+msgid "Verification URL"
+msgstr "驗證網址"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "驗證失敗，請再試一次。"
+
+#: 
+msgid "Verification recorded"
+msgstr "驗證記錄"
+
+#: 
+msgid "Verify Code"
+msgstr "驗證驗證碼"
+
+#: 
+msgid "Verifying"
+msgstr "正在驗證"
+
+#: 
+msgid "View Cart"
+msgstr "查看購物車"
+
+#: 
+msgid "View all results"
+msgstr "檢視所有結果"
+
+#: 
+msgid "Volunteer-entered headcounts, broken down by category."
+msgstr "志工輸入的出席人數，依類別分類。"
+
+#: 
+msgid "Warnings"
+msgstr "警告"
+
+#: 
+msgid "We're so glad your family has joined us!"
+msgstr "很高興您的家庭加入了我們！"
+
+#: 
+msgid "Welcome to the Family!"
+msgstr "歡迎加入大家庭！"
+
+#: 
+msgid "Yes, Empty Cart"
+msgstr "是，清空購物車"
+
+#: 
+msgid "Yes, Remove"
+msgstr "是，移除"
+
+#: 
+msgid "You are about to add a new deposit without a comment"
+msgstr "您即將添加沒有註解的新存款"
+
+#: 
+msgid "You can also use backup recovery codes if you lose access to your app"
+msgstr "如果您失去對應用程式的存取權限，也可以使用備份復原碼"
+
+#: 
+msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
+msgstr "您現在可以使用驗證器應用程式登入。每個驗證碼有效期為30秒。"
+
+#: 
+msgid "You must enter the same password in both boxes"
+msgstr "您必須在兩個框中輸入相同的密碼"
+
+#: 
+msgid "You'll receive backup codes that can be used if you lose access to your app"
+msgstr "您將收到備份碼，在失去對應用程式的存取權限時可以使用"
+
+#: 
+msgid "Your Cart is Empty"
+msgstr "您的購物車是空的"
+
+#: 
+msgid "Your account is now protected"
+msgstr "您的帳戶現已受到保護"
+
+#: 
+msgid "Your account is protected"
+msgstr "您的帳戶受到保護"
+
+#: 
+msgid "Your authenticator app has been successfully enrolled"
+msgstr "您的驗證器應用程式已成功註冊"
+
+#: 
+msgid "Your browser language preference differs from your ChurchCRM locale"
+msgstr "您的瀏覽器語言偏好與您的ChurchCRM語言設定不同"
+
+#: 
+msgid "Your database already contains data"
+msgstr "您的資料庫已包含資料"
+
+#: 
+msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "您的註冊已收到。我們的團隊將盡快與您聯繫，親自歡迎您。"
+
+#: 
+msgid "Zip code is required"
+msgstr "郵遞區號是必填項"
+
+#: 
+msgid "added"
+msgstr "已添加"
+
+#: 
+msgid "ago"
+msgstr "前"
+
+#: 
+msgid "all members"
+msgstr "所有成員"
+
+#: 
+msgid "already in cart"
+msgstr "已在購物車中"
+
+#: 
+msgid "day"
+msgstr "天"
+
+#: 
+msgid "days"
+msgstr "天"
+
+#: 
+msgid "deposit(s) with no payments"
+msgstr "無付款的存款"
+
+#: 
+msgid "e.g. Sunday Service"
+msgstr "例如主日崇拜"
+
+#: 
 msgid "event(s). Deactivate the type instead, or reassign the events first."
 msgstr "個事件。請停用此類型，或先重新指派事件。"
+
+#: 
+msgid "from this class?"
+msgstr "從此班級？"
+
+#: 
+msgid "from this group?"
+msgstr "從此小組？"
+
+#: 
+msgid "in"
+msgstr "在"
+
+#: 
+msgid "in cart"
+msgstr "在購物車中"
+
+#: 
+msgid "member"
+msgstr "成員"
+
+#: 
+msgid "members"
+msgstr "成員"
+
+#: 
+msgid "members. Already had"
+msgstr "成員。已有"
+
+#: 
+msgid "mo"
+msgstr "月"
+
+#: 
+msgid "mos"
+msgstr "月"
+
+#: 
+msgid "open rate"
+msgstr "開放率"
+
+#: 
+msgid "our church"
+msgstr "我們的教會"
+
+#: 
+msgid "payment(s)?"
+msgstr "付款？"
+
+#: 
+msgid "people"
+msgstr "人員"
+
+#: 
+msgid "people added to cart"
+msgstr "人已添加到購物車"
+
+#: 
+msgid "people already in cart"
+msgstr "人已在購物車中"
+
+#: 
+msgid "people from cart"
+msgstr "人來自購物車"
+
+#: 
+msgid "people removed from cart"
+msgstr "人已從購物車移除"
+
+#: 
+msgid "to another group?"
+msgstr "到另一個小組？"
+
+#: 
+msgid "years"
+msgstr "年"
+
+#: 
+msgid "yr"
+msgstr "年"
+
+#: 
+msgid "yrs"
+msgstr "年"
+
+#: 
+msgid "— Ignore —"
+msgstr "— 忽略 —"
+
+#: 
+msgid "— Select Country —"
+msgstr "— 選擇國家 —"
+
+#: 
+msgid "— Select State —"
+msgstr "— 選擇縣/市 —"
 

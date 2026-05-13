@@ -38,7 +38,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     render: function ( data, type, row ){
                         var render ="<ul class='mb-0'>";
                         $.each( data, function( key, value ) {
-                            render +="<li><a href='"+ window.CRM.root +"/PersonView.php?PersonID=" +value.id +"' target='user' />"+ value.name +"</a></li>";
+                            render +="<li><a href='"+ window.CRM.root +"/people/view/" +value.id +"' target='user'>"+ value.name +"</a></li>";
                         });
                         render +="</ul>"
                         return render;
