@@ -33,6 +33,19 @@ Structured development skills live in `.agents/skills/`. **Always consult the re
 
 ---
 
+## Context Optimization
+
+The Claude Code system loads **150+ agent types + 40+ MCP tool schemas** by default (~15-20KB overhead per session). ChurchCRM uses only **8-10 tools** across all workflows.
+
+**Per-Workflow Tool Allowlists** (documented in [`.claude/churchcrm-tools-config.json`](./.claude/churchcrm-tools-config.json)) trim unused tools:
+- **Removed:** Google services, email/Slack, Sentry, DataForSEO, all language-specific agents (Rust, Go, Java, etc.), AI media gen, SEO/marketing tools
+- **Kept:** GitHub tools (PR/issue ops), Web tools (documentation), Bash (build/git), core code tools, workflow-specific agents
+- **Savings:** ~10-13KB per session = **~250K tokens/month** freed for productive work
+
+Workflows automatically load only their required tools (see config file for mapping). No user action needed — this is documentation of what's actually used.
+
+---
+
 ## Auto-Learning: Proactive Skill Updates
 
 **IMPORTANT: Agents must update skill files automatically when they learn something new — no user prompt required.**

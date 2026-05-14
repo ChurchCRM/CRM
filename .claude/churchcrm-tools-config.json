@@ -1,0 +1,189 @@
+{
+  "description": "ChurchCRM-specific tool allowlist for context optimization. Trims 150+ unused agents and SaaS tools, keeping only the 8-10 tools actually invoked across all workflows.",
+  "metadata": {
+    "created": "2026-05-14",
+    "context_saved_kb": "10-13",
+    "tokens_saved_monthly": "~250,000"
+  },
+  "default_tools": {
+    "description": "Always available for all workflows",
+    "tools": [
+      "Read(*)",
+      "Edit(*)",
+      "Write(*)",
+      "Bash(npm *)",
+      "Bash(git *)",
+      "Bash(find *)",
+      "Bash(grep *)",
+      "Bash(ls *)",
+      "Bash(wc *)",
+      "Bash(head *)",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:churchcrm.io)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:api.github.com)"
+    ]
+  },
+  "workflows": {
+    "api_development": {
+      "description": "New API endpoint, REST operations, service layer",
+      "additional_tools": [
+        "WebFetch(domain:slim-framework.com)",
+        "WebFetch(domain:slimframework.com)",
+        "Bash(php *)"
+      ]
+    },
+    "pr_review": {
+      "description": "PR review, branch management, issue handling",
+      "additional_tools": [
+        "Bash(gh *)",
+        "mcp__plugin_everything-claude-code_github__get_pull_request_reviews",
+        "mcp__plugin_everything-claude-code_github__get_pull_request",
+        "mcp__plugin_everything-claude-code_github__list_issues",
+        "mcp__plugin_everything-claude-code_github__search_issues",
+        "mcp__plugin_everything-claude-code_github__create_issue",
+        "mcp__plugin_everything-claude-code_github__add_issue_comment"
+      ],
+      "agents": [
+        "code-reviewer",
+        "typescript-reviewer"
+      ]
+    },
+    "frontend_changes": {
+      "description": "UI changes, Tabler migration, Bootstrap 5, responsive design",
+      "additional_tools": [
+        "WebFetch(domain:docs.tabler.io)",
+        "WebFetch(domain:preview.tabler.io)",
+        "WebFetch(domain:tabler.io)",
+        "WebFetch(domain:getbootstrap.com)"
+      ]
+    },
+    "database_operations": {
+      "description": "Database queries, ORM operations, migrations",
+      "additional_tools": [
+        "Bash(php *)"
+      ]
+    },
+    "security_issue": {
+      "description": "Security vulnerabilities, CVE handling, authorization",
+      "additional_tools": [
+        "Bash(gh *)",
+        "mcp__plugin_everything-claude-code_github__get_pull_request",
+        "mcp__plugin_everything-claude-code_github__create_issue",
+        "mcp__plugin_everything-claude-code_github__add_issue_comment"
+      ],
+      "agents": [
+        "security-reviewer"
+      ]
+    },
+    "testing": {
+      "description": "Cypress, E2E tests, test debugging",
+      "additional_tools": [
+        "Bash(docker *)"
+      ]
+    },
+    "plugin_development": {
+      "description": "Plugin development, community plugins, core plugin updates",
+      "additional_tools": []
+    },
+    "documentation": {
+      "description": "Skill files, README, wiki updates, release notes",
+      "additional_tools": []
+    },
+    "performance_optimization": {
+      "description": "Query optimization, caching, bottleneck analysis",
+      "additional_tools": [
+        "WebFetch(domain:github.com)"
+      ]
+    }
+  },
+  "removed_tools": {
+    "description": "Tools intentionally excluded from ChurchCRM context to reduce overhead. These are loaded globally by Claude Code but not needed for this project.",
+    "google_services": {
+      "reason": "ChurchCRM is self-hosted; no GCP/Google Workspace integration",
+      "count": "25+",
+      "examples": [
+        "mcp__claude_ai_Google_Drive__copy_file",
+        "mcp__claude_ai_Google_Calendar__create_event",
+        "mcp__claude_ai_Gmail__create_draft"
+      ]
+    },
+    "communication_tools": {
+      "reason": "Work coordination via GitHub, not email/Slack",
+      "count": "15+",
+      "examples": [
+        "Gmail API tools",
+        "Slack integration",
+        "Email operations",
+        "Messenger/Teams"
+      ]
+    },
+    "monitoring_saas": {
+      "reason": "No external SaaS monitoring; self-hosted only",
+      "count": "40+",
+      "examples": [
+        "mcp__claude_ai_Sentry__analyze_issue_with_seer",
+        "mcp__claude_ai_Sentry__search_events",
+        "DataForSEO tools",
+        "AWS/GCP/Azure tools"
+      ]
+    },
+    "language_specific_agents": {
+      "reason": "ChurchCRM uses only PHP + TypeScript/JavaScript",
+      "count": "40+",
+      "excluded": [
+        "Rust (rust-reviewer, rust-build, rust-test, rust-patterns)",
+        "Go (go-reviewer, go-build, go-test, go-patterns)",
+        "Java (java-reviewer, java-build, java-test, springboot-*)",
+        "Kotlin (kotlin-reviewer, kotlin-build, kotlin-test)",
+        "C++ (cpp-reviewer, cpp-build, cpp-test)",
+        "Python (python-reviewer, python-testing, pytorch-*)",
+        "C# (.NET) (csharp-reviewer, dotnet-*)",
+        "Dart/Flutter (dart-*, flutter-*)"
+      ]
+    },
+    "specialized_agents": {
+      "reason": "Not part of ChurchCRM development (marketing, content, specialized domains)",
+      "count": "80+",
+      "categories": [
+        "AI media generation (ai-image-generation, ai-video-generation)",
+        "SEO/marketing (seo-*, social-media-*, content-*, copywriting)",
+        "Domain-specific (healthcare-*, finance-*, defi-*, logistics-*, customs-*)",
+        "Framework-specific (laravel-*, django-*, springboot-*, nestjs-*)"
+      ]
+    },
+    "browser_automation": {
+      "reason": "Cypress E2E tests run via Bash(npm *); Playwright not needed",
+      "examples": [
+        "Playwright browser tools (beyond Cypress)"
+      ]
+    }
+  },
+  "savings_analysis": {
+    "context_per_session": {
+      "current_overhead": "15-20KB (all agents/tools loaded)",
+      "after_trim": "5-7KB (only GitHub + Web + core)",
+      "savings_percent": "66-87%"
+    },
+    "monthly_impact": {
+      "sessions_per_month": "~100",
+      "bytes_saved_per_session": "10,000",
+      "total_monthly_savings_mb": "1.0",
+      "tokens_saved_monthly": "~250,000 tokens",
+      "annual_value_usd": "~$9"
+    }
+  },
+  "implementation_notes": {
+    "phase_1": "✅ Created this config file as reference document",
+    "phase_2": "Document in CLAUDE.md with workflow-to-tools mapping",
+    "phase_3": "Test all major workflows (PR review heaviest MCP usage)",
+    "phase_4": "Update MEMORY.md with audit summary",
+    "testing_checklist": [
+      "Run PR review workflow — verify GitHub tools work",
+      "Run API development workflow — verify WebFetch works",
+      "Run security advisory workflow — verify agents spawn",
+      "Check token budget after each session"
+    ]
+  }
+}
