@@ -86,6 +86,10 @@ describe("Past Events Archiving (#8849)", () => {
 
     beforeEach(() => {
         cy.setupAdminSession({ forceLogin: true });
+        // Clear the past-events localStorage key before each test so that
+        // the persistence tests start from a known empty state and are not
+        // affected by state written by previous tests.
+        cy.clearLocalStorage("churchcrm.eventDashboard.pastOpen");
     });
 
     // -----------------------------------------------------------------------
@@ -185,21 +189,25 @@ describe("Past Events Archiving (#8849)", () => {
         cy.visit(`/event/dashboard?year=${LAST_MONTH_YEAR}`);
 
         const collapseId = `past-events-${LAST_MONTH_YEAR}-month-${LAST_MONTH}`;
+        const toggleBtn = `[data-bs-target="#${collapseId}"]`;
 
-        // Ensure it starts closed (or close it if already open to get a clean state).
-        cy.get(`#${collapseId}`).then(($el) => {
-            if ($el.hasClass("show")) {
-                // Close it first.
-                cy.get(`[data-bs-target="#${collapseId}"]`).click();
-                cy.get(`#${collapseId}`).should("not.have.class", "show");
+        // The collapse may start open (auto-expand for all-past month) or closed.
+        // We need it CLOSED before we can test the open→localStorage path.
+        // Use the aria-expanded attribute as a reliable indicator (updated by
+        // Bootstrap synchronously on click, before the animation completes).
+        cy.get(toggleBtn).then(($btn) => {
+            if ($btn.attr("aria-expanded") === "true") {
+                // Already open — click once to close it, then wait for it to close.
+                cy.wrap($btn).click();
             }
         });
+        // Wait for closed state regardless of initial condition.
+        cy.get(`#${collapseId}`).should("not.have.class", "show");
 
-        // Open the past events section.
-        cy.get(`[data-bs-target="#${collapseId}"]`).click();
+        // ---- Open it — verify localStorage is written ----
+        cy.get(toggleBtn).click();
         cy.get(`#${collapseId}`).should("have.class", "show");
 
-        // Check localStorage.
         cy.window().then((win) => {
             const stored = JSON.parse(
                 win.localStorage.getItem("churchcrm.eventDashboard.pastOpen") || "[]",
@@ -207,8 +215,8 @@ describe("Past Events Archiving (#8849)", () => {
             expect(stored).to.include(collapseId);
         });
 
-        // Now close it and check localStorage is updated.
-        cy.get(`[data-bs-target="#${collapseId}"]`).click();
+        // ---- Close it — verify localStorage is updated ----
+        cy.get(toggleBtn).click();
         cy.get(`#${collapseId}`).should("not.have.class", "show");
 
         cy.window().then((win) => {
