@@ -126,7 +126,7 @@ describe("Past Events Archiving (#8849)", () => {
             .then(($el) => {
                 // The row lives inside the collapse; if the section is already
                 // expanded (auto-expand for all-past month) just assert visibility.
-                const isShown = $el.hasClass("show");
+                const isShown = $el.hasClass("expanded");
 
                 if (!isShown) {
                     // Row must be hidden before toggle.
@@ -139,7 +139,7 @@ describe("Past Events Archiving (#8849)", () => {
 
                 // Click the toggle button.
                 cy.get(
-                    `[data-bs-target="#past-events-${LAST_MONTH_YEAR}-month-${LAST_MONTH}"]`,
+                    `[data-past-toggle="past-events-${LAST_MONTH_YEAR}-month-${LAST_MONTH}"]`,
                 ).click();
 
                 // After toggling, row must be visible.
@@ -176,7 +176,7 @@ describe("Past Events Archiving (#8849)", () => {
     it("past-events toggle button shows correct count label", () => {
         cy.visit(`/event/dashboard?year=${LAST_MONTH_YEAR}`);
 
-        cy.get(`[data-bs-target="#past-events-${LAST_MONTH_YEAR}-month-${LAST_MONTH}"]`).should(
+        cy.get(`[data-past-toggle="past-events-${LAST_MONTH_YEAR}-month-${LAST_MONTH}"]`).should(
             "contain.text",
             "past event",
         );
@@ -189,7 +189,7 @@ describe("Past Events Archiving (#8849)", () => {
         cy.visit(`/event/dashboard?year=${LAST_MONTH_YEAR}`);
 
         const collapseId = `past-events-${LAST_MONTH_YEAR}-month-${LAST_MONTH}`;
-        const toggleBtn = `[data-bs-target="#${collapseId}"]`;
+        const toggleBtn = `[data-past-toggle="${collapseId}"]`;
 
         // The collapse may start open (auto-expand for all-past month) or closed.
         // We need it CLOSED before we can test the open→localStorage path.
@@ -202,11 +202,11 @@ describe("Past Events Archiving (#8849)", () => {
             }
         });
         // Wait for closed state regardless of initial condition.
-        cy.get(`#${collapseId}`).should("not.have.class", "show");
+        cy.get(`#${collapseId}`).should("not.have.class", "expanded");
 
         // ---- Open it — verify localStorage is written ----
         cy.get(toggleBtn).click();
-        cy.get(`#${collapseId}`).should("have.class", "show");
+        cy.get(`#${collapseId}`).should("have.class", "expanded");
 
         cy.window().then((win) => {
             const stored = JSON.parse(
@@ -217,7 +217,7 @@ describe("Past Events Archiving (#8849)", () => {
 
         // ---- Close it — verify localStorage is updated ----
         cy.get(toggleBtn).click();
-        cy.get(`#${collapseId}`).should("not.have.class", "show");
+        cy.get(`#${collapseId}`).should("not.have.class", "expanded");
 
         cy.window().then((win) => {
             const stored = JSON.parse(
@@ -244,7 +244,7 @@ describe("Past Events Archiving (#8849)", () => {
 
             if (!hasCurrent) {
                 // All-past month: collapse must be pre-expanded.
-                cy.wrap($el).should("have.class", "show");
+                cy.wrap($el).should("have.class", "expanded");
             } else {
                 // Mixed month: collapse may or may not be open depending on localStorage.
                 // Just assert the element exists and the test continues.

@@ -216,8 +216,7 @@ foreach ($monthlyData as $monthData):
               <button
                 class="btn btn-sm btn-ghost-secondary w-100 text-start rounded-0 py-2 px-3"
                 type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#<?= $collapseId ?>"
+                data-past-toggle="<?= $collapseId ?>"
                 aria-expanded="<?= $autoExpand ? 'true' : 'false' ?>"
                 aria-controls="<?= $collapseId ?>"
               >
@@ -232,7 +231,7 @@ foreach ($monthlyData as $monthData):
           </tr>
         </tbody>
 
-        <tbody id="<?= $collapseId ?>" class="collapse<?= $autoExpand ? ' show' : '' ?>">
+        <tbody id="<?= $collapseId ?>" class="past-events-body<?= $autoExpand ? ' expanded' : '' ?>">
           <?php foreach ($pastEvents as $event): ?>
             <?php include __DIR__ . '/partials/event-row.php'; ?>
           <?php endforeach; ?>
@@ -352,9 +351,12 @@ foreach ($monthlyData as $monthData):
   })();
 
   // ---------------------------------------------------------------------------
-  // Past Events collapse — localStorage persistence + chevron rotation
+  // Past Events toggle — plain JS (no Bootstrap collapse: <tbody> doesn't
+  // support BS5's height-animation approach; scrollHeight on tbody is 0).
+  // State: tbody.past-events-body gets class "expanded" when open.
+  // Persistence: localStorage key "churchcrm.eventDashboard.pastOpen".
   // ---------------------------------------------------------------------------
-  (function initPastEventsCollapse() {
+  (function initPastEventsToggle() {
     var KEY = 'churchcrm.eventDashboard.pastOpen';
 
     function loadOpenMonths() {
@@ -376,19 +378,13 @@ foreach ($monthlyData as $monthData):
 
     var open = new Set(loadOpenMonths());
 
-    // Apply persisted expanded state (skip months already auto-expanded in PHP).
-    document.querySelectorAll('[id^="past-events-"]').forEach(function (el) {
-      if (open.has(el.id) && !el.classList.contains('show')) {
-        el.classList.add('show');
-        var btn = document.querySelector('[data-bs-target="#' + el.id + '"]');
-        if (btn) btn.setAttribute('aria-expanded', 'true');
+    function setExpanded(tbody, btn, expanded) {
+      if (expanded) {
+        tbody.classList.add('expanded');
+      } else {
+        tbody.classList.remove('expanded');
       }
-    });
-
-    // Sync chevron rotation with Bootstrap collapse state.
-    function updateChevron(collapseEl, expanded) {
-      var btn = document.querySelector('[data-bs-target="#' + collapseEl.id + '"]');
-      if (!btn) return;
+      btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
       var chevron = btn.querySelector('.past-events-chevron');
       if (chevron) {
         if (expanded) {
@@ -399,45 +395,53 @@ foreach ($monthlyData as $monthData):
       }
     }
 
-    // Set initial chevron state based on current show/hide.
-    document.querySelectorAll('[id^="past-events-"]').forEach(function (el) {
-      updateChevron(el, el.classList.contains('show'));
-    });
+    document.querySelectorAll('[data-past-toggle]').forEach(function (btn) {
+      var id = btn.getAttribute('data-past-toggle');
+      var tbody = document.getElementById(id);
+      if (!tbody) return;
 
-    // Track changes and persist to localStorage.
-    document.querySelectorAll('[id^="past-events-"]').forEach(function (el) {
-      el.addEventListener('shown.bs.collapse', function () {
-        open.add(el.id);
-        persist();
-        updateChevron(el, true);
-      });
-      el.addEventListener('hidden.bs.collapse', function () {
-        open.delete(el.id);
-        persist();
-        updateChevron(el, false);
+      // Apply persisted state (skip if already expanded by PHP auto-expand).
+      if (open.has(id) && !tbody.classList.contains('expanded')) {
+        setExpanded(tbody, btn, true);
+      }
+
+      // Sync initial chevron to match PHP-rendered state.
+      var isExpanded = tbody.classList.contains('expanded');
+      var chevron = btn.querySelector('.past-events-chevron');
+      if (chevron && isExpanded) {
+        chevron.classList.add('rotate-90');
+      }
+      btn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+
+      btn.addEventListener('click', function () {
+        var nowExpanded = !tbody.classList.contains('expanded');
+        setExpanded(tbody, btn, nowExpanded);
+        if (nowExpanded) {
+          open.add(id);
+        } else {
+          open.delete(id);
+        }
+        saveOpenMonths(Array.from(open));
       });
     });
-
-    function persist() {
-      saveOpenMonths(Array.from(open));
-    }
   })();
 </script>
 
 <style>
-  /* Rotate chevron when the past-events collapse is open */
+  /* Past events tbody is hidden by default; JS adds .expanded to show it. */
+  tbody.past-events-body {
+    display: none;
+  }
+  tbody.past-events-body.expanded {
+    display: table-row-group;
+  }
+  /* Rotate chevron when the past-events section is open. */
   .past-events-chevron {
     display: inline-block;
     transition: transform 0.2s ease;
   }
   .past-events-chevron.rotate-90 {
     transform: rotate(90deg);
-  }
-  /* Bootstrap 5 sets .collapse.show { display: block } which breaks <tbody>
-     layout in Firefox and Safari. Override to restore the correct table
-     display value. */
-  tbody.collapse.show {
-    display: table-row-group !important;
   }
 </style>
 
