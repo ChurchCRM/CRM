@@ -197,8 +197,12 @@ describe("Past Events Archiving (#8849)", () => {
         // Bootstrap synchronously on click, before the animation completes).
         cy.get(toggleBtn).then(($btn) => {
             if ($btn.attr("aria-expanded") === "true") {
-                // Already open — click once to close it, then wait for it to close.
-                cy.wrap($btn).click();
+                // Already open — close it with a native DOM click so the action
+                // is synchronous inside .then() and doesn't suffer from Cypress
+                // command-queue ordering: cy.wrap().click() inside .then() gets
+                // enqueued but the outer .then() resolves first, causing the
+                // subsequent should('not.have.class','expanded') to race.
+                $btn[0].click();
             }
         });
         // Wait for closed state regardless of initial condition.
