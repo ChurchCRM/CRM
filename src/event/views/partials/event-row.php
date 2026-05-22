@@ -1,4 +1,7 @@
 <?php
+use ChurchCRM\Utils\DateTimeUtils;
+use ChurchCRM\Utils\InputUtils;
+
 /**
  * Partial: a single event row for the events dashboard table.
  *

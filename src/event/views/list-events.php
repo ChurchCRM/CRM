@@ -349,7 +349,25 @@ foreach ($monthlyData as $monthData):
   // ---------------------------------------------------------------------------
   (function initPastEventsCollapse() {
     var KEY = 'churchcrm.eventDashboard.pastOpen';
-    var open = new Set(JSON.parse(localStorage.getItem(KEY) || '[]'));
+
+    function loadOpenMonths() {
+      try {
+        var parsed = JSON.parse(localStorage.getItem(KEY) || '[]');
+        return Array.isArray(parsed) ? parsed : [];
+      } catch {
+        return [];
+      }
+    }
+
+    function saveOpenMonths(arr) {
+      try {
+        localStorage.setItem(KEY, JSON.stringify(arr));
+      } catch {
+        // quota exceeded or storage blocked — fail silently
+      }
+    }
+
+    var open = new Set(loadOpenMonths());
 
     // Apply persisted expanded state (skip months already auto-expanded in PHP).
     document.querySelectorAll('[id^="past-events-month-"]').forEach(function (el) {
@@ -394,7 +412,7 @@ foreach ($monthlyData as $monthData):
     });
 
     function persist() {
-      localStorage.setItem(KEY, JSON.stringify(Array.from(open)));
+      saveOpenMonths(Array.from(open));
     }
   })();
 </script>
