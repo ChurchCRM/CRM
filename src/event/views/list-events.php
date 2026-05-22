@@ -322,12 +322,32 @@ foreach ($monthlyData as $monthData):
 </div>
 <?php endif; ?>
 
+<style>
+  /* Past events tbody is hidden by default; JS adds .expanded to show it. */
+  tbody.past-events-body {
+    display: none;
+  }
+  tbody.past-events-body.expanded {
+    display: table-row-group;
+  }
+  /* Rotate chevron when the past-events section is open. */
+  .past-events-chevron {
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+  .past-events-chevron.rotate-90 {
+    transform: rotate(90deg);
+  }
+</style>
+
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   // Auto-submit the filter form when the user picks a type or year.
   // (Replaces the previous inline onchange="this.form.submit()" which CSP blocks.)
-  document.querySelectorAll('#eventFilterForm select').forEach(function (sel) {
-    sel.addEventListener('change', function () {
-      document.getElementById('eventFilterForm').submit();
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('#eventFilterForm select').forEach(function (sel) {
+      sel.addEventListener('change', function () {
+        document.getElementById('eventFilterForm').submit();
+      });
     });
   });
 
@@ -356,7 +376,7 @@ foreach ($monthlyData as $monthData):
   // State: tbody.past-events-body gets class "expanded" when open.
   // Persistence: localStorage key "churchcrm.eventDashboard.pastOpen".
   // ---------------------------------------------------------------------------
-  (function initPastEventsToggle() {
+  document.addEventListener('DOMContentLoaded', function () {
     var KEY = 'churchcrm.eventDashboard.pastOpen';
 
     function loadOpenMonths() {
@@ -405,13 +425,13 @@ foreach ($monthlyData as $monthData):
         setExpanded(tbody, btn, true);
       }
 
-      // Sync initial chevron to match PHP-rendered state.
+      // Sync initial chevron and aria-expanded to match PHP-rendered state.
       var isExpanded = tbody.classList.contains('expanded');
+      btn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
       var chevron = btn.querySelector('.past-events-chevron');
       if (chevron && isExpanded) {
         chevron.classList.add('rotate-90');
       }
-      btn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
 
       btn.addEventListener('click', function () {
         var nowExpanded = !tbody.classList.contains('expanded');
@@ -424,26 +444,8 @@ foreach ($monthlyData as $monthData):
         saveOpenMonths(Array.from(open));
       });
     });
-  })();
+  });
 </script>
-
-<style>
-  /* Past events tbody is hidden by default; JS adds .expanded to show it. */
-  tbody.past-events-body {
-    display: none;
-  }
-  tbody.past-events-body.expanded {
-    display: table-row-group;
-  }
-  /* Rotate chevron when the past-events section is open. */
-  .past-events-chevron {
-    display: inline-block;
-    transition: transform 0.2s ease;
-  }
-  .past-events-chevron.rotate-90 {
-    transform: rotate(90deg);
-  }
-</style>
 
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
