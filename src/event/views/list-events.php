@@ -371,12 +371,13 @@ foreach ($monthlyData as $monthData):
   })();
 
   // ---------------------------------------------------------------------------
-  // Past Events toggle — plain JS (no Bootstrap collapse: <tbody> doesn't
-  // support BS5's height-animation approach; scrollHeight on tbody is 0).
+  // Past Events toggle — plain JS, event delegation on document.
+  // Using delegation (not per-button listeners) so the handler survives any
+  // post-DOMContentLoaded DOM mutations (hydration, DataTables, etc.).
   // State: tbody.past-events-body gets class "expanded" when open.
   // Persistence: localStorage key "churchcrm.eventDashboard.pastOpen".
   // ---------------------------------------------------------------------------
-  document.addEventListener('DOMContentLoaded', function () {
+  (function initPastEventsToggle() {
     var KEY = 'churchcrm.eventDashboard.pastOpen';
 
     function loadOpenMonths() {
@@ -396,8 +397,6 @@ foreach ($monthlyData as $monthData):
       }
     }
 
-    var open = new Set(loadOpenMonths());
-
     function setExpanded(tbody, btn, expanded) {
       if (expanded) {
         tbody.classList.add('expanded');
@@ -407,44 +406,55 @@ foreach ($monthlyData as $monthData):
       btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
       var chevron = btn.querySelector('.past-events-chevron');
       if (chevron) {
-        if (expanded) {
-          chevron.classList.add('rotate-90');
-        } else {
-          chevron.classList.remove('rotate-90');
-        }
+        chevron.classList.toggle('rotate-90', expanded);
       }
     }
 
-    document.querySelectorAll('[data-past-toggle]').forEach(function (btn) {
+    // Apply persisted + initial state once the DOM is ready.
+    document.addEventListener('DOMContentLoaded', function () {
+      var open = new Set(loadOpenMonths());
+
+      document.querySelectorAll('[data-past-toggle]').forEach(function (btn) {
+        var id = btn.getAttribute('data-past-toggle');
+        var tbody = document.getElementById(id);
+        if (!tbody) return;
+
+        // Apply persisted state (skip if already expanded by PHP auto-expand).
+        if (open.has(id) && !tbody.classList.contains('expanded')) {
+          setExpanded(tbody, btn, true);
+        }
+
+        // Sync initial chevron and aria-expanded to match PHP-rendered state.
+        var isExpanded = tbody.classList.contains('expanded');
+        btn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+        var chevron = btn.querySelector('.past-events-chevron');
+        if (chevron && isExpanded) {
+          chevron.classList.add('rotate-90');
+        }
+      });
+    });
+
+    // Delegated click handler on document — immune to DOM re-renders because
+    // the listener lives on a stable ancestor, not the individual buttons.
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-past-toggle]');
+      if (!btn) return;
+
       var id = btn.getAttribute('data-past-toggle');
       var tbody = document.getElementById(id);
       if (!tbody) return;
 
-      // Apply persisted state (skip if already expanded by PHP auto-expand).
-      if (open.has(id) && !tbody.classList.contains('expanded')) {
-        setExpanded(tbody, btn, true);
+      var open = new Set(loadOpenMonths());
+      var nowExpanded = !tbody.classList.contains('expanded');
+      setExpanded(tbody, btn, nowExpanded);
+      if (nowExpanded) {
+        open.add(id);
+      } else {
+        open.delete(id);
       }
-
-      // Sync initial chevron and aria-expanded to match PHP-rendered state.
-      var isExpanded = tbody.classList.contains('expanded');
-      btn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
-      var chevron = btn.querySelector('.past-events-chevron');
-      if (chevron && isExpanded) {
-        chevron.classList.add('rotate-90');
-      }
-
-      btn.addEventListener('click', function () {
-        var nowExpanded = !tbody.classList.contains('expanded');
-        setExpanded(tbody, btn, nowExpanded);
-        if (nowExpanded) {
-          open.add(id);
-        } else {
-          open.delete(id);
-        }
-        saveOpenMonths(Array.from(open));
-      });
+      saveOpenMonths(Array.from(open));
     });
-  });
+  })();
 </script>
 
 <?php
