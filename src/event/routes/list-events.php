@@ -16,7 +16,7 @@ use Slim\Views\PhpRenderer;
 
 // GET /event/dashboard — events dashboard page
 $app->get('/dashboard', function (Request $request, Response $response) {
-    $now = new DateTime();
+    $now = DateTimeUtils::getToday();
     $params = $request->getQueryParams();
     $canEditEvents = AuthenticationManager::getCurrentUser()->isAddEvent();
 
@@ -42,11 +42,6 @@ $app->get('/dashboard', function (Request $request, Response $response) {
             ->filterByStart(['min' => $yearMin, 'max' => $yearMax])
         ->endUse()
         ->filterByCheckinDate(null, Criteria::ISNOTNULL)
-        ->count();
-
-    $activeEventsThisYear = EventQuery::create()
-        ->filterByStart(['min' => $yearMin, 'max' => $yearMax])
-        ->filterByInActive(0)
         ->count();
 
     // Total number of event types defined in the system (not filtered by year).
@@ -84,7 +79,8 @@ $app->get('/dashboard', function (Request $request, Response $response) {
     // --- Build monthly event data (all Propel ORM — replaces 6 RunQuery calls) ---
     $allMonths = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
     $monthlyData = [];
-    // $now is defined once outside the foreach loop to avoid re-instantiation.
+    // $now is defined once outside the foreach loop to avoid re-instantiation
+    // and to use the church-configured timezone via DateTimeUtils::getToday().
 
     foreach ($allMonths as $mVal) {
         $daysInMonth = DateTimeUtils::getDaysInMonth($mVal, $EventYear);
@@ -222,7 +218,6 @@ $app->get('/dashboard', function (Request $request, Response $response) {
         'EventYear'              => $EventYear,
         'totalEventsThisYear'    => $totalEventsThisYear,
         'totalCheckInsThisYear'  => $totalCheckInsThisYear,
-        'activeEventsThisYear'   => $activeEventsThisYear,
         'totalCurrentEvents'     => $totalCurrentEvents,
         'totalPastEvents'        => $totalPastEvents,
         'totalEventTypes'        => $totalEventTypes,

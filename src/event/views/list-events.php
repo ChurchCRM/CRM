@@ -167,6 +167,10 @@ foreach ($monthlyData as $monthData):
     // (e.g., filtering a past year or a future-only month).
     $autoExpand = ($currentCount === 0 && $pastCount > 0);
 
+    // Collapse element ID includes year so localStorage entries don't bleed
+    // across years (e.g. March 2025 vs March 2026).
+    $collapseId = 'past-events-' . $EventYear . '-month-' . $monthNum;
+
     // Column span — 7 when the edit actions column is present, 6 otherwise.
     $colSpan = $canEditEvents ? 7 : 6;
 ?>
@@ -213,9 +217,9 @@ foreach ($monthlyData as $monthData):
                 class="btn btn-sm btn-ghost-secondary w-100 text-start rounded-0 py-2 px-3"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#past-events-month-<?= $monthNum ?>"
+                data-bs-target="#<?= $collapseId ?>"
                 aria-expanded="<?= $autoExpand ? 'true' : 'false' ?>"
-                aria-controls="past-events-month-<?= $monthNum ?>"
+                aria-controls="<?= $collapseId ?>"
               >
                 <i class="ti ti-chevron-right me-1 past-events-chevron"></i>
                 <i class="ti ti-archive me-1 text-body-secondary"></i>
@@ -228,30 +232,33 @@ foreach ($monthlyData as $monthData):
           </tr>
         </tbody>
 
-        <tbody id="past-events-month-<?= $monthNum ?>" class="collapse<?= $autoExpand ? ' show' : '' ?>">
+        <tbody id="<?= $collapseId ?>" class="collapse<?= $autoExpand ? ' show' : '' ?>">
           <?php foreach ($pastEvents as $event): ?>
             <?php include __DIR__ . '/partials/event-row.php'; ?>
           <?php endforeach; ?>
-
-          <?php if (!empty($averages)): ?>
-            <tr class="table-light">
-              <td><strong><?= gettext('Monthly Averages') ?></strong></td>
-              <td></td>
-              <td></td>
-              <td>
-                <?php
-                $avgParts = [];
-                foreach ($averages as $avg) {
-                    $avgParts[] = '<span class="text-body-secondary small">' . InputUtils::escapeHTML($avg['name']) . '</span> ' . sprintf('%.1f', $avg['avg_count']);
-                }
-                echo implode('<br>', $avgParts);
-                ?>
-              </td>
-              <td colspan="2"></td>
-              <?php if ($canEditEvents): ?><td></td><?php endif; ?>
-            </tr>
-          <?php endif; ?>
         </tbody>
+
+        <?php if (!empty($averages)): ?>
+        <!-- Monthly Averages always visible, outside the collapsible past tbody -->
+        <tbody>
+          <tr class="table-light">
+            <td><strong><?= gettext('Monthly Averages') ?></strong></td>
+            <td></td>
+            <td></td>
+            <td>
+              <?php
+              $avgParts = [];
+              foreach ($averages as $avg) {
+                  $avgParts[] = '<span class="text-body-secondary small">' . InputUtils::escapeHTML($avg['name']) . '</span> ' . sprintf('%.1f', $avg['avg_count']);
+              }
+              echo implode('<br>', $avgParts);
+              ?>
+            </td>
+            <td colspan="2"></td>
+            <?php if ($canEditEvents): ?><td></td><?php endif; ?>
+          </tr>
+        </tbody>
+        <?php endif; ?>
         <?php else: ?>
         <!-- No past events — Monthly Averages (if any) go in the current tbody -->
         <?php if (!empty($averages)): ?>
@@ -370,7 +377,7 @@ foreach ($monthlyData as $monthData):
     var open = new Set(loadOpenMonths());
 
     // Apply persisted expanded state (skip months already auto-expanded in PHP).
-    document.querySelectorAll('[id^="past-events-month-"]').forEach(function (el) {
+    document.querySelectorAll('[id^="past-events-"]').forEach(function (el) {
       if (open.has(el.id) && !el.classList.contains('show')) {
         el.classList.add('show');
         var btn = document.querySelector('[data-bs-target="#' + el.id + '"]');
@@ -393,12 +400,12 @@ foreach ($monthlyData as $monthData):
     }
 
     // Set initial chevron state based on current show/hide.
-    document.querySelectorAll('[id^="past-events-month-"]').forEach(function (el) {
+    document.querySelectorAll('[id^="past-events-"]').forEach(function (el) {
       updateChevron(el, el.classList.contains('show'));
     });
 
     // Track changes and persist to localStorage.
-    document.querySelectorAll('[id^="past-events-month-"]').forEach(function (el) {
+    document.querySelectorAll('[id^="past-events-"]').forEach(function (el) {
       el.addEventListener('shown.bs.collapse', function () {
         open.add(el.id);
         persist();
@@ -425,6 +432,12 @@ foreach ($monthlyData as $monthData):
   }
   .past-events-chevron.rotate-90 {
     transform: rotate(90deg);
+  }
+  /* Bootstrap 5 sets .collapse.show { display: block } which breaks <tbody>
+     layout in Firefox and Safari. Override to restore the correct table
+     display value. */
+  tbody.collapse.show {
+    display: table-row-group !important;
   }
 </style>
 

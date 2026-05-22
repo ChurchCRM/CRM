@@ -10,12 +10,14 @@ use ChurchCRM\Utils\InputUtils;
  *                   counts, start, inactive
  *   $sRootPath    — application root path
  *   $canEditEvents — bool
+ *
+ * Uses $_eventRowId as a local variable to avoid polluting the calling scope.
  */
-$eventId = (int) $event['id'];
+$_eventRowId = (int) $event['id'];
 ?>
 <tr>
   <td>
-    <a href="<?= $sRootPath ?>/event/view/<?= $eventId ?>" class="fw-medium text-reset text-decoration-none">
+    <a href="<?= $sRootPath ?>/event/view/<?= $_eventRowId ?>" class="fw-medium text-reset text-decoration-none">
       <?= InputUtils::escapeHTML($event['title']) ?>
     </a>
     <?php
@@ -31,7 +33,7 @@ $eventId = (int) $event['id'];
     <span class="badge bg-azure-lt"><?= InputUtils::escapeHTML($event['type_name']) ?></span>
   </td>
   <td class="text-center">
-    <a href="<?= $sRootPath ?>/event/checkin/<?= $eventId ?>" class="btn btn-sm btn-ghost-secondary" title="<?= gettext('Manage Check-ins') ?>">
+    <a href="<?= $sRootPath ?>/event/checkin/<?= $_eventRowId ?>" class="btn btn-sm btn-ghost-secondary" title="<?= gettext('Manage Check-ins') ?>">
       <i class="ti ti-clipboard-check me-1"></i>
       <?php if ($event['attendee_count'] > 0): ?>
         <span class="badge bg-primary text-white"><?= $event['attendee_count'] ?></span>
@@ -69,7 +71,7 @@ $eventId = (int) $event['id'];
     <td class="text-center">
       <div
         class="event-action-menu-placeholder"
-        data-event-id="<?= $eventId ?>"
+        data-event-id="<?= $_eventRowId ?>"
         data-event-title="<?= InputUtils::escapeAttribute($event['title']) ?>"
         data-event-inactive="<?= (int) $event['inactive'] ?>"
       ></div>
