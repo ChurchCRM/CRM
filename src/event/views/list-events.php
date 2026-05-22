@@ -55,8 +55,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </span>
           </div>
           <div class="col">
-            <div class="fw-medium"><?= (int) $activeEventsThisYear ?></div>
-            <div class="text-body-secondary"><?= gettext('Active Events') ?></div>
+            <div class="fw-medium">
+              <?= (int) $totalCurrentEvents ?>
+              <?php if ($totalPastEvents > 0): ?>
+                <small class="text-body-secondary">/ <?= (int) $totalPastEvents ?> <?= gettext('past') ?></small>
+              <?php endif; ?>
+            </div>
+            <div class="text-body-secondary"><?= gettext('Current Events') ?></div>
           </div>
         </div>
       </div>
@@ -149,12 +154,23 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 $hasEvents = !empty($monthlyData);
 
 foreach ($monthlyData as $monthData):
-    $events = $monthData['events'];
-    $numRows = $monthData['count'];
-    $monthName = $monthData['monthName'];
-    $averages = $monthData['averages'];
+    $currentEvents = $monthData['currentEvents'];
+    $pastEvents    = $monthData['pastEvents'];
+    $currentCount  = $monthData['currentCount'];
+    $pastCount     = $monthData['pastCount'];
+    $numRows       = $monthData['count'];
+    $monthName     = $monthData['monthName'];
+    $averages      = $monthData['averages'];
+    $monthNum      = (int) $monthData['month'];
+
+    // Auto-expand the past section when the month has NO current events
+    // (e.g., filtering a past year or a future-only month).
+    $autoExpand = ($currentCount === 0 && $pastCount > 0);
+
+    // Column span — 7 when the edit actions column is present, 6 otherwise.
+    $colSpan = $canEditEvents ? 7 : 6;
 ?>
-<div class="card mb-3" id="month-<?= (int) $monthData['month'] ?>">
+<div class="card mb-3" id="month-<?= $monthNum ?>">
   <div class="card-header d-flex align-items-center">
     <h3 class="card-title mb-0">
       <i class="ti ti-calendar me-2 text-body-secondary"></i>
@@ -178,72 +194,43 @@ foreach ($monthlyData as $monthData):
             <?php endif; ?>
           </tr>
         </thead>
+
+        <?php if (!empty($currentEvents)): ?>
+        <!-- ============ CURRENT EVENTS ============ -->
         <tbody>
-          <?php foreach ($events as $event): ?>
-            <?php $eventId = (int) $event['id']; ?>
-            <tr>
-              <td>
-                <a href="<?= $sRootPath ?>/event/view/<?= $eventId ?>" class="fw-medium text-reset text-decoration-none">
-                  <?= InputUtils::escapeHTML($event['title']) ?>
-                </a>
-                <?php
-                  // Quill leaves "<p><br /></p>" when the description is empty —
-                  // strip tags and trim before deciding whether to show anything.
-                  $descText = trim(strip_tags((string) ($event['desc'] ?? '')));
-                ?>
-                <?php if ($descText !== ''): ?>
-                  <div><small class="text-body-secondary"><?= InputUtils::escapeHTML($descText) ?></small></div>
-                <?php endif; ?>
-              </td>
-              <td>
-                <span class="badge bg-azure-lt"><?= InputUtils::escapeHTML($event['type_name']) ?></span>
-              </td>
-              <td class="text-center">
-                <a href="<?= $sRootPath ?>/event/checkin/<?= $eventId ?>" class="btn btn-sm btn-ghost-secondary" title="<?= gettext('Manage Check-ins') ?>">
-                  <i class="ti ti-clipboard-check me-1"></i>
-                  <?php if ($event['attendee_count'] > 0): ?>
-                    <span class="badge bg-primary text-white"><?= $event['attendee_count'] ?></span>
-                  <?php else: ?>
-                    <span class="text-body-secondary">0</span>
-                  <?php endif; ?>
-                </a>
-              </td>
-              <td>
-                <?php if (empty($event['counts'])): ?>
-                  <span class="text-body-secondary">—</span>
-                <?php else: ?>
-                  <?php
-                  $countParts = [];
-                  foreach ($event['counts'] as $count) {
-                      if ($count['count'] > 0) {
-                          $countParts[] = '<span class="text-body-secondary small">' . InputUtils::escapeHTML($count['name']) . '</span> ' . $count['count'];
-                      }
-                  }
-                  echo !empty($countParts) ? implode('<br>', $countParts) : '<span class="text-body-secondary">—</span>';
-                  ?>
-                <?php endif; ?>
-              </td>
-              <td>
-                <span class="small"><?= DateTimeUtils::formatDate($event['start'], 1) ?></span>
-              </td>
-              <td class="text-center">
-                <?php if ($event['inactive']): ?>
-                  <span class="badge bg-secondary-lt"><?= gettext('Inactive') ?></span>
-                <?php else: ?>
-                  <span class="badge bg-green-lt text-green"><?= gettext('Active') ?></span>
-                <?php endif; ?>
-              </td>
-              <?php if ($canEditEvents): ?>
-                <td class="text-center">
-                  <div
-                    class="event-action-menu-placeholder"
-                    data-event-id="<?= $eventId ?>"
-                    data-event-title="<?= InputUtils::escapeAttribute($event['title']) ?>"
-                    data-event-inactive="<?= (int) $event['inactive'] ?>"
-                  ></div>
-                </td>
-              <?php endif; ?>
-            </tr>
+          <?php foreach ($currentEvents as $event): ?>
+            <?php include __DIR__ . '/partials/event-row.php'; ?>
+          <?php endforeach; ?>
+        </tbody>
+        <?php endif; ?>
+
+        <?php if (!empty($pastEvents)): ?>
+        <!-- ============ PAST EVENTS (collapsible) ============ -->
+        <tbody class="past-events-header-tbody">
+          <tr>
+            <td colspan="<?= $colSpan ?>" class="bg-body-tertiary p-0">
+              <button
+                class="btn btn-sm btn-ghost-secondary w-100 text-start rounded-0 py-2 px-3"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#past-events-month-<?= $monthNum ?>"
+                aria-expanded="<?= $autoExpand ? 'true' : 'false' ?>"
+                aria-controls="past-events-month-<?= $monthNum ?>"
+              >
+                <i class="ti ti-chevron-right me-1 past-events-chevron"></i>
+                <i class="ti ti-archive me-1 text-body-secondary"></i>
+                <?= sprintf(
+                    ngettext('%d past event', '%d past events', $pastCount),
+                    $pastCount
+                ) ?>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+
+        <tbody id="past-events-month-<?= $monthNum ?>" class="collapse<?= $autoExpand ? ' show' : '' ?>">
+          <?php foreach ($pastEvents as $event): ?>
+            <?php include __DIR__ . '/partials/event-row.php'; ?>
           <?php endforeach; ?>
 
           <?php if (!empty($averages)): ?>
@@ -265,6 +252,30 @@ foreach ($monthlyData as $monthData):
             </tr>
           <?php endif; ?>
         </tbody>
+        <?php else: ?>
+        <!-- No past events — Monthly Averages (if any) go in the current tbody -->
+        <?php if (!empty($averages)): ?>
+        <tbody>
+          <tr class="table-light">
+            <td><strong><?= gettext('Monthly Averages') ?></strong></td>
+            <td></td>
+            <td></td>
+            <td>
+              <?php
+              $avgParts = [];
+              foreach ($averages as $avg) {
+                  $avgParts[] = '<span class="text-body-secondary small">' . InputUtils::escapeHTML($avg['name']) . '</span> ' . sprintf('%.1f', $avg['avg_count']);
+              }
+              echo implode('<br>', $avgParts);
+              ?>
+            </td>
+            <td colspan="2"></td>
+            <?php if ($canEditEvents): ?><td></td><?php endif; ?>
+          </tr>
+        </tbody>
+        <?php endif; ?>
+        <?php endif; ?>
+
       </table>
     </div>
   </div>
@@ -332,7 +343,72 @@ foreach ($monthlyData as $monthData):
       window.addEventListener('CRM.localesReady', render, { once: true });
     }
   })();
+
+  // ---------------------------------------------------------------------------
+  // Past Events collapse — localStorage persistence + chevron rotation
+  // ---------------------------------------------------------------------------
+  (function initPastEventsCollapse() {
+    var KEY = 'churchcrm.eventDashboard.pastOpen';
+    var open = new Set(JSON.parse(localStorage.getItem(KEY) || '[]'));
+
+    // Apply persisted expanded state (skip months already auto-expanded in PHP).
+    document.querySelectorAll('[id^="past-events-month-"]').forEach(function (el) {
+      if (open.has(el.id) && !el.classList.contains('show')) {
+        el.classList.add('show');
+        var btn = document.querySelector('[data-bs-target="#' + el.id + '"]');
+        if (btn) btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    // Sync chevron rotation with Bootstrap collapse state.
+    function updateChevron(collapseEl, expanded) {
+      var btn = document.querySelector('[data-bs-target="#' + collapseEl.id + '"]');
+      if (!btn) return;
+      var chevron = btn.querySelector('.past-events-chevron');
+      if (chevron) {
+        if (expanded) {
+          chevron.classList.add('rotate-90');
+        } else {
+          chevron.classList.remove('rotate-90');
+        }
+      }
+    }
+
+    // Set initial chevron state based on current show/hide.
+    document.querySelectorAll('[id^="past-events-month-"]').forEach(function (el) {
+      updateChevron(el, el.classList.contains('show'));
+    });
+
+    // Track changes and persist to localStorage.
+    document.querySelectorAll('[id^="past-events-month-"]').forEach(function (el) {
+      el.addEventListener('shown.bs.collapse', function () {
+        open.add(el.id);
+        persist();
+        updateChevron(el, true);
+      });
+      el.addEventListener('hidden.bs.collapse', function () {
+        open.delete(el.id);
+        persist();
+        updateChevron(el, false);
+      });
+    });
+
+    function persist() {
+      localStorage.setItem(KEY, JSON.stringify(Array.from(open)));
+    }
+  })();
 </script>
+
+<style>
+  /* Rotate chevron when the past-events collapse is open */
+  .past-events-chevron {
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+  .past-events-chevron.rotate-90 {
+    transform: rotate(90deg);
+  }
+</style>
 
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
