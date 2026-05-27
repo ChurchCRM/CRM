@@ -1991,8 +1991,8 @@ describe("CSV Export Authorization", () => {
         cy.setupStandardSession();
         cy.visit("/CSVExport.php", { failOnStatusCode: false });
 
-        // Standard users are redirected to session/begin (security redirect)
-        cy.url().should("include", "/session/begin");
+        // Authenticated non-admin users are redirected to access-denied (security redirect)
+        cy.url().should("include", "/v2/access-denied");
     });
 
     it("should deny non-admin users POST to CSVCreateFile.php", () => {
@@ -2010,7 +2010,7 @@ describe("CSV Export Authorization", () => {
 
     it("should deny unauthenticated access to CSVExport.php", () => {
         cy.visit("/CSVExport.php", { failOnStatusCode: false });
-        cy.url().should("include", "/session/begin");
+        cy.url().should("include", "/session/begin"); // unauthenticated → login page
     });
 
     it("should deny unauthenticated POST to CSVCreateFile.php", () => {
@@ -2030,7 +2030,7 @@ describe("CSV Export Authorization", () => {
 ### Key Rules for Authorization Testing
 
 1. **Use separate `describe` blocks per user type** when testing multiple permission levels in one file
-2. **For GET requests**, check URL redirect (e.g., `cy.url().should("include", "/session/begin")`)
+2. **For GET requests**, check URL redirect: authenticated non-admin → `/v2/access-denied`; unauthenticated → `/session/begin`
 3. **For POST requests**, check HTTP status code (302 for `RedirectUtils::securityRedirect()`, 401/403 for API errors)
 4. **Always test the happy path first** (admin can do it), then test denials
 5. **Test both GET and POST paths** when a feature has both (form page + form submission)

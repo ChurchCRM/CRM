@@ -164,7 +164,7 @@ describe("CSV Export Authorization (GHSA-4vj2-gm78-3q63)", () => {
             followRedirect: false
         }).then((response) => {
             // Should get 302 redirect to login or 401 Unauthorized
-            expect([301, 302, 401]).to.include(response.status);
+            expect([302, 401]).to.include(response.status);
         });
     });
 });
@@ -206,7 +206,7 @@ describe("CSV Export Authorization — Standard Users", () => {
             followRedirect: false
         }).then((response) => {
             // Should get 302 redirect (security redirect)
-            expect([301, 302]).to.include(response.status);
+            expect(response.status).to.eq(302);
         });
     });
 });
