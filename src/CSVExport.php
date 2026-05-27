@@ -3,8 +3,15 @@
 require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
+
+if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
+    RedirectUtils::securityRedirect('Admin');
+    exit;
+}
 
 // Get Classifications for the drop-down
 $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
