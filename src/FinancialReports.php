@@ -236,35 +236,45 @@ if ($sReportType === '') {
 
     <?php if (in_array($sReportType, ['Pledge Summary', 'Pledge Family Summary', 'Giving Report', 'Advanced Deposit Report', 'Pledge Reminders'])) :
         $funds = DonationFundQuery::create()
-            ->orderByCategory()
             ->orderByActive()
             ->orderByName()
-            ->find(); ?>
+            ->find();
+        // Partition into named categories (sorted) then uncategorized last
+        $categorized = [];
+        $uncategorized = [];
+        foreach ($funds as $fund) {
+            $cat = $fund->getCategory();
+            if ($cat !== null && $cat !== '') {
+                $categorized[$cat][] = $fund;
+            } else {
+                $uncategorized[] = $fund;
+            }
+        }
+        ksort($categorized); ?>
       <div class="mb-3">
         <label class="form-label" for="fundsList"><?= gettext('Filter by Fund') ?>:</label>
         <select name="funds[]" multiple id="fundsList" class="form-select">
           <?php
-          $currentCategory = null;
-          foreach ($funds as $fund) {
-              $category = $fund->getCategory() ?? '';
-              if ($category !== $currentCategory) {
-                  if ($currentCategory !== null) {
-                      echo '</optgroup>';
+          foreach ($categorized as $catLabel => $catFunds) {
+              echo '<optgroup label="' . InputUtils::escapeHTML($catLabel) . '">';
+              foreach ($catFunds as $fund) {
+                  echo '<option value="' . (int)$fund->getId() . '">' . InputUtils::escapeHTML($fund->getName());
+                  if ($fund->getActive() === 'false') {
+                      echo ' — INACTIVE';
                   }
-                  if ($category !== '') {
-                      echo '<optgroup label="' . InputUtils::escapeHTML($category) . '">';
-                  } else {
-                      echo '<optgroup label="' . gettext('Uncategorized') . '">';
-                  }
-                  $currentCategory = $category;
+                  echo '</option>';
               }
-              echo '<option value="' . (int)$fund->getId() . '">' . InputUtils::escapeHTML($fund->getName());
-              if ($fund->getActive() === 'false') {
-                  echo ' — INACTIVE';
-              }
-              echo '</option>';
+              echo '</optgroup>';
           }
-          if ($currentCategory !== null) {
+          if (!empty($uncategorized)) {
+              echo '<optgroup label="' . gettext('Uncategorized') . '">';
+              foreach ($uncategorized as $fund) {
+                  echo '<option value="' . (int)$fund->getId() . '">' . InputUtils::escapeHTML($fund->getName());
+                  if ($fund->getActive() === 'false') {
+                      echo ' — INACTIVE';
+                  }
+                  echo '</option>';
+              }
               echo '</optgroup>';
           } ?>
         </select>
@@ -441,7 +451,7 @@ $(document).ready(function() {
   if (fundsListEl && !fundsListEl.tomselect) new TomSelect(fundsListEl, { plugins: ["remove_button"] });
   $("#addAllFunds").click(function () {
       var all = [];
-      $("#fundsList > option").each(function () { all.push(this.value); });
+      $("#fundsList option").each(function () { all.push(this.value); });
       if (fundsListEl && fundsListEl.tomselect) { fundsListEl.tomselect.setValue(all); }
   });
   $("#clearAllFunds").click(function () {

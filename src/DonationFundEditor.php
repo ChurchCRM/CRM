@@ -59,7 +59,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
             $donation = $donationFunds[$iFieldID];
             $donation->setName(InputUtils::sanitizeText($_POST[$iFieldID . 'name']));
             $donation->setDescription(InputUtils::legacyFilterInput($_POST[$iFieldID . 'desc']));
-            $donation->setCategory(InputUtils::sanitizeText($_POST[$iFieldID . 'category']));
+            $donation->setCategory(InputUtils::sanitizeText($_POST[$iFieldID . 'category'] ?? ''));
             $isActive = isset($_POST[$iFieldID . 'active']) && $_POST[$iFieldID . 'active'] == 1;
             $donation->setActive($isActive ? 'true' : 'false');
             if (strlen($donation->getName()) === 0) {
@@ -93,7 +93,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                         ->findOne();
                     $nextOrder = $maxOrderFund !== null ? $maxOrderFund->getOrder() + 1 : 1;
                     
-                    $newFieldCategory = InputUtils::sanitizeText($_POST['newFieldCategory']);
+                    $newFieldCategory = InputUtils::sanitizeText($_POST['newFieldCategory'] ?? '');
                     $donation = new DonationFund();
                     $donation->setName($newFieldName);
                     $donation->setDescription($newFieldDesc);
