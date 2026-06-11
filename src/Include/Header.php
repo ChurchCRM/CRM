@@ -162,7 +162,7 @@ $MenuFirst = 1;
                   ]
               }
           },
-          PageName:<?= json_encode($_SERVER['REQUEST_URI']) ?>
+          PageName:<?= json_encode($_SERVER['REQUEST_URI'] ?? '', JSON_HEX_TAG) ?>
       });
       // Initialize moment locale if available
       if (typeof moment !== 'undefined' && window.CRM.shortLocale) {
