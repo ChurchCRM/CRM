@@ -65,13 +65,11 @@ class AttendanceService
         $attendRecords = EventAttendQuery::create()
             ->filterByPersonId($personId)
             ->filterByCheckinDate(null, Criteria::ISNOTNULL)
+            ->joinWithEvent(Criteria::LEFT_JOIN)
             ->useEventQuery(null, Criteria::LEFT_JOIN)
                 ->leftJoinWithEventType()
+                ->orderByStart(Criteria::DESC)
             ->endUse()
-            // NOTE: orderBy must remain outside useEventQuery() — placing it inside shifts
-            // Propel's column hydration offsets, causing event_recurrence_type to be parsed
-            // as a date and throwing a PropelException. Qualified column ref is safe here.
-            ->orderBy('events_event.event_start', Criteria::DESC)
             ->find();
 
         $records = [];
