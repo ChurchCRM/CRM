@@ -26,7 +26,9 @@ use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\HttpCache\Cache;
 
-// Photo and avatar routes (no FamilyMiddleware to speed up page loads)
+// Photo and avatar routes live in the FamilyMiddleware group below so that
+// canViewFamily() authorization (GHSA-jjcj-h3cm-p7x7) is enforced centrally.
+// Routes that require FamilyMiddleware
 $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Get(
@@ -42,14 +44,10 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
      */
     // Returns uploaded photo only - 404 if no uploaded photo
     $group->get('/photo', function (Request $request, Response $response, array $args): Response {
-        // Authorization: enforce family-scope for EditSelf-only users.
-        // Fixes GHSA-jjcj-h3cm-p7x7
-        $currentUser = AuthenticationManager::getCurrentUser();
-        if (!$currentUser->canViewFamily((int) $args['familyId'])) {
-            return SlimUtils::renderErrorJSON($response, gettext('Access denied'), [], 403);
-        }
+        /** @var \ChurchCRM\model\ChurchCRM\Family $family */
+        $family = $request->getAttribute('family');
 
-        $photo = new Photo('Family', (int)$args['familyId']);
+        $photo = new Photo('Family', $family->getId());
 
         if (!$photo->hasUploadedPhoto()) {
             throw new HttpNotFoundException($request, 'No uploaded photo exists for this family');
@@ -72,20 +70,12 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
     // Returns avatar info JSON for client-side rendering
     // No cache middleware - needs to reflect immediate photo upload changes
     $group->get('/avatar', function (Request $request, Response $response, array $args): Response {
-        // Authorization: enforce family-scope for EditSelf-only users.
-        // Fixes GHSA-jjcj-h3cm-p7x7
-        $currentUser = AuthenticationManager::getCurrentUser();
-        if (!$currentUser->canViewFamily((int) $args['familyId'])) {
-            return SlimUtils::renderErrorJSON($response, gettext('Access denied'), [], 403);
-        }
+        /** @var \ChurchCRM\model\ChurchCRM\Family $family */
+        $family = $request->getAttribute('family');
 
-        $avatarInfo = Photo::getAvatarInfo('Family', (int)$args['familyId']);
+        $avatarInfo = Photo::getAvatarInfo('Family', $family->getId());
         return SlimUtils::renderJSON($response, $avatarInfo);
     });
-});
-
-// Routes that require FamilyMiddleware
-$app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Post(
      *     path="/family/{familyId}/photo",

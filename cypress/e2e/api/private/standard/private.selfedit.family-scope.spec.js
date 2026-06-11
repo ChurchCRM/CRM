@@ -7,16 +7,15 @@
  * family's data via family API endpoints.
  *
  * Test user: amanda.black (user ID 99, `selfedit.api.key`)
- *   - Permissions: EditSelf=1 ONLY (AddRecords=0, EditRecords=0, Notes=0, Admin=0)
+ *   - Permissions: EditSelf=1, Notes=1 only (AddRecords=0, EditRecords=0, Admin=0)
  *   - Belongs to: family ID 20 (Black family)
  *
  * Expected: amanda.black CAN access family 20 (own family), but MUST receive
  * 403 for any request targeting a different family (family 1 = Campbell family).
  *
- * Note: amanda.black has Notes=0, so all /notes and /note endpoints return 403
- * via NotesRoleAuthMiddleware regardless of family. The 403 cross-family tests
- * still validate that the endpoint is blocked; the own-family notes tests are
- * omitted since they'd test NotesRoleAuth rather than family-scope authz.
+ * Notes=1 is required so that amanda.black passes the hasNoAdminPermissions()
+ * check in AuthMiddleware (GHSA-5w59-32c8-933v) — EditSelf alone is not
+ * sufficient to use the API.
  */
 describe("GHSA-jjcj-h3cm-p7x7 - EditSelf user family scope restriction", () => {
     beforeEach(() => {
@@ -44,9 +43,15 @@ describe("GHSA-jjcj-h3cm-p7x7 - EditSelf user family scope restriction", () => {
     // GET /api/family/{familyId}/notes
     // -----------------------------------------------------------------------
     describe("GET /api/family/{familyId}/notes - Family notes", () => {
-        // amanda.black has Notes=0; NotesRoleAuthMiddleware fires before FamilyMiddleware,
-        // so both own-family and cross-family return 403. The cross-family case validates
-        // the endpoint is blocked for EditSelf users on a different family.
+        it("EditSelf user can access own family notes (family 20 → 200)", () => {
+            cy.makePrivateEditSelfAPICall("GET", "/api/family/20/notes", null, 200).then(
+                (response) => {
+                    expect(response.body).to.have.property("notes");
+                    expect(response.body.notes).to.be.an("array");
+                },
+            );
+        });
+
         it("EditSelf user is BLOCKED from another family notes (family 1 → 403)", () => {
             cy.makePrivateEditSelfAPICall("GET", "/api/family/1/notes", null, 403);
         });
@@ -63,6 +68,22 @@ describe("GHSA-jjcj-h3cm-p7x7 - EditSelf user family scope restriction", () => {
                 { text: "<p>Unauthorized note attempt</p>", private: false },
                 403,
             );
+        });
+
+        it("EditSelf user can create a note on own family (family 20 → 201)", () => {
+            cy.makePrivateEditSelfAPICall(
+                "POST",
+                "/api/family/20/note",
+                { text: "<p>GHSA test note on own family</p>", private: false },
+                201,
+            ).then((response) => {
+                expect(response.body).to.have.property("note");
+                const note = response.body.note;
+                expect(note).to.have.property("famId", 20);
+
+                // Clean up
+                cy.makePrivateAdminAPICall("DELETE", `/api/note/${note.id}`, null, 200);
+            });
         });
     });
 
