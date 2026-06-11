@@ -538,6 +538,11 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                             <i class="fa-solid fa-handshake-angle me-1"></i><?= gettext('Volunteer') ?>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-item-attendance" href="#attendance" data-bs-toggle="tab">
+                            <i class="fa-solid fa-calendar-check me-1"></i><?= gettext('Attendance') ?>
+                        </a>
+                    </li>
                     <!-- Plugin tabs will be dynamically added here by JavaScript -->
                     <li class="nav-item d-none" id="nav-item-mailchimp-container">
                         <a class="nav-link" id="nav-item-mailchimp" href="#mailchimp" data-bs-toggle="tab">
@@ -735,6 +740,11 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                         </table>
                     </div>
                     <?php endif; ?>
+
+                    <div class="tab-pane" id="attendance">
+                        <?php include __DIR__ . '/partials/attendance-tab.php'; ?>
+                    </div>
+
                 </div>
             </div>
         </div>
