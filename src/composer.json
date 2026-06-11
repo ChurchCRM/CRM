@@ -61,6 +61,7 @@
     "doctrine/annotations": "^2.0",
     "nikic/php-parser": "^5.0",
     "phpstan/phpstan": "^2.1.6",
+    "phpunit/phpunit": "^11.0",
     "rector/rector": "^2.0.9",
     "symfony/finder": "^5.4",
     "zircote/swagger-php": "^6.0"
@@ -82,6 +83,11 @@
       "ChurchCRM\\": "ChurchCRM/"
     },
     "classmap": ["ChurchCRM/"]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "ChurchCRM\\Tests\\": "../tests/"
+    }
   },
   "config": {
     "allow-plugins": {
