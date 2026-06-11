@@ -194,6 +194,7 @@ CREATE TABLE `donationfund_fun` (
   `fun_Name` varchar(30) DEFAULT NULL,
   `fun_Description` varchar(100) DEFAULT NULL,
   `fun_Order` int(11) NOT NULL DEFAULT 0,
+  `fun_Category` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`fun_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
