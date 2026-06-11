@@ -477,3 +477,36 @@ foreach (NotificationService::getNotifications() as $notification) {
         <?php endif; ?>
       </div>
 <?php } ?>
+<?php
+// 2FA grace-period banner — shown inside the page body when the current user
+// is within the mandatory-2FA grace window. Uses Tabler alert colours:
+//   - alert-warning (yellow) while > 1 day remains
+//   - alert-danger  (red)    when <= 1 day remains
+$_twoFAGraceUser = AuthenticationManager::getCurrentUser();
+if ($_twoFAGraceUser !== null):
+    $_twoFAGraceStatus = $_twoFAGraceUser->getTwoFactorGraceStatus();
+    if ($_twoFAGraceStatus === 'within-grace'):
+        $_twoFADaysLeft   = $_twoFAGraceUser->getTwoFactorGraceDaysRemaining();
+        $_twoFAAlertClass = $_twoFADaysLeft <= 1 ? 'alert-danger' : 'alert-warning';
+?>
+<div class="alert <?= InputUtils::escapeHTML($_twoFAAlertClass) ?> alert-dismissible mb-0" role="alert" id="two-fa-grace-banner">
+  <div class="d-flex align-items-center">
+    <div class="me-2"><i class="ti ti-shield-lock"></i></div>
+    <div>
+      <?= sprintf(
+          ngettext(
+              'Two-factor authentication is required. You have %d day to enroll.',
+              'Two-factor authentication is required. You have %d days to enroll.',
+              $_twoFADaysLeft
+          ),
+          $_twoFADaysLeft
+      ) ?>
+      <a href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath()) ?>/v2/user/current/manage2fa" class="alert-link ms-1">
+        <?= gettext('Set up now') ?>
+      </a>
+    </div>
+  </div>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= gettext('Close') ?>"></button>
+</div>
+<?php endif; // within-grace ?>
+<?php endif; // currentUser !== null ?>
