@@ -616,3 +616,30 @@ $dt = DateTimeUtils::parsePartialDate($rawString); // returns DateTime|null
 ```
 
 Returns `null` for blank/unparseable input — always null-guard before calling ORM setters. Use this instead of `new \DateTime($userInput)` anywhere user-supplied date strings are accepted; it handles the year-less `0000-MM-DD` format that standard PHP date functions reject.
+
+### `orderBy` inside `useXxxQuery()` causes column hydration offset corruption <!-- learned: 2026-06-11 -->
+
+Placing `->orderByXxx()` or `->orderBy()` **inside** a `useXxxQuery()...endUse()` block shifts
+Propel's column hydration offsets for the outer query. This causes unrelated columns to be parsed
+as the wrong type (e.g. `event_recurrence_type = 'weekly'` parsed as a date → `PropelException`).
+
+**Always place `orderBy` on the outer query**, using the qualified column reference:
+
+```php
+// ✅ CORRECT — orderBy outside useEventQuery()
+EventAttendQuery::create()
+    ->useEventQuery(null, Criteria::LEFT_JOIN)
+        ->leftJoinWithEventType()
+    ->endUse()
+    ->orderBy('events_event.event_start', Criteria::DESC); // qualified ref, safe
+
+// ❌ WRONG — orderBy inside useEventQuery() corrupts hydration offsets
+EventAttendQuery::create()
+    ->useEventQuery(null, Criteria::LEFT_JOIN)
+        ->leftJoinWithEventType()
+        ->orderByStart(Criteria::DESC) // ← shifts column offsets → PropelException
+    ->endUse();
+```
+
+This affects any query that joins multiple tables via `useXxxQuery()` and has eager-loaded
+columns in the result set. The bug only surfaces at runtime (not at query-build time).
