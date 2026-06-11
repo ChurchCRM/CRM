@@ -52,6 +52,20 @@ Cypress.Commands.add(
 );
 
 Cypress.Commands.add(
+    "makePrivateEditSelfAPICall",
+    (method, url, body, expectedStatus = 200, timeoutMs) => {
+        return cy.makePrivateAPICall(
+            Cypress.env("selfedit.api.key"),
+            method,
+            url,
+            body,
+            expectedStatus,
+            timeoutMs,
+        );
+    },
+);
+
+Cypress.Commands.add(
     "makePrivateAPICall",
     (key, method, url, body, expectedStatus = 200, timeoutMs) => {
         const requestOptions = {
