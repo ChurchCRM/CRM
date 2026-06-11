@@ -323,6 +323,9 @@ class PdfDirectory extends ChurchInfoReport
             if (strlen($fam_City)) {
                 $sFamilyStr .= $fam_City . ', ' . $fam_State . ' ' . $fam_Zip . "\n";
             }
+            if (strlen($fam_Country) && $fam_Country !== SystemConfig::getValue('sDefaultCountry')) {
+                $sFamilyStr .= $fam_Country . "\n";
+            }
         }
 
         if ($bDirFamilyPhone && strlen($fam_HomePhone)) {
