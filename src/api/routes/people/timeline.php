@@ -55,6 +55,7 @@ $app->group('/timeline', function (RouteCollectorProxy $group): void {
      *             @OA\Property(property="timeline", type="array", @OA\Items(type="object"))
      *         )
      *     ),
+     *     @OA\Response(response=403, description="Access denied"),
      *     @OA\Response(response=404, description="Family not found")
      * )
      */

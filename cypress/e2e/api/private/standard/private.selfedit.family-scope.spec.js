@@ -100,4 +100,36 @@ describe("GHSA-jjcj-h3cm-p7x7 - EditSelf user family scope restriction", () => {
             cy.makePrivateUserAPICall("GET", "/api/timeline/family/2", null, 403);
         });
     });
+
+    // -----------------------------------------------------------------------
+    // GET /api/family/{familyId}/photo
+    // -----------------------------------------------------------------------
+    describe("GET /api/family/{familyId}/photo - Family photo", () => {
+        it("EditSelf user is BLOCKED from another family photo (family 2 → 403)", () => {
+            cy.makePrivateUserAPICall("GET", "/api/family/2/photo", null, 403);
+        });
+
+        it("EditSelf user requesting own family photo gets 404 (no photo uploaded) not 200 with image data", () => {
+            // Family 1 has no uploaded photo in test data — expect 404, not 200.
+            // The key assertion: auth passes (no 403) and we reach the photo-existence check.
+            cy.makePrivateUserAPICall("GET", "/api/family/1/photo", null, 404);
+        });
+    });
+
+    // -----------------------------------------------------------------------
+    // GET /api/family/{familyId}/avatar
+    // -----------------------------------------------------------------------
+    describe("GET /api/family/{familyId}/avatar - Family avatar", () => {
+        it("EditSelf user can access own family avatar (family 1 → 200)", () => {
+            cy.makePrivateUserAPICall("GET", "/api/family/1/avatar", null, 200).then(
+                (response) => {
+                    expect(response.body).to.exist;
+                },
+            );
+        });
+
+        it("EditSelf user is BLOCKED from another family avatar (family 2 → 403)", () => {
+            cy.makePrivateUserAPICall("GET", "/api/family/2/avatar", null, 403);
+        });
+    });
 });
