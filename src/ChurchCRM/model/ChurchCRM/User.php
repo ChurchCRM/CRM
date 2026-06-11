@@ -812,7 +812,8 @@ class User extends BaseUser
     }
 
     /**
-     * Returns the number of whole days remaining in this user's grace window.
+     * Returns the number of whole days remaining in this user's grace window,
+     * rounded UP so that any partial day (even <24 h) counts as 1.
      * Returns 0 when the deadline has passed or no deadline has been set.
      */
     public function getTwoFactorGraceDaysRemaining(): int
@@ -826,8 +827,11 @@ class User extends BaseUser
             return 0;
         }
         $diff = $now->diff($deadline);
+        // $diff->days is a floor value; add 1 whenever any sub-day component
+        // remains so that, e.g., "23 h 59 m" shows as 1 day, not 0.
+        $hasSubDayRemainder = $diff->h > 0 || $diff->i > 0 || $diff->s > 0;
 
-        return (int) $diff->days;
+        return $diff->days + ($hasSubDayRemainder ? 1 : 0);
     }
 
     public function getNewTwoFARecoveryCodes(): array
