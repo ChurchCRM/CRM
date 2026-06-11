@@ -33,7 +33,9 @@ use ChurchCRM\Utils\VersionUtils;
  *      before ZipArchive is touched.
  *   3. Zip walk rejects ZIP Slip, absolute paths, drive letters, control
  *      bytes, >2000 entries, >80 MB uncompressed, disallowed extensions
- *      (`.phar`, `.sh`, `.exe`, `.so`, `.dll`, …), and hidden files
+ *      (`.php3`–`.php8`, `.phar`, `.phtml`, `.pht`, `.sh`, `.exe`, `.so`, `.dll`, …), and hidden files
+ *      (note: plain `.php` IS allowed — plugins are PHP code; direct HTTP
+ *      execution is blocked separately via `.htaccess` / nginx deny rules),
  *      except `.editorconfig` / `.gitattributes`.
  *   4. Exactly one top-level directory whose name equals the plugin id.
  *   5. Extracted plugin.json must declare the same id, and for verified
@@ -68,8 +70,36 @@ class PluginInstaller
         'sql', 'lock',
     ];
 
-    /** Extensions that are always rejected, even if they look harmless. */
-    private const DENIED_EXTENSIONS = ['phar', 'phtml', 'pht', 'sh', 'bat', 'cmd', 'exe', 'so', 'dll'];
+    /**
+     * Extensions that are always rejected, even if they look harmless.
+     *
+     * Plain `.php` is NOT here — community plugins are PHP code and must be
+     * extractable. Their HTTP-executability is blocked instead via Apache
+     * `.htaccess` (written by {@see ensureCommunityHtaccess()}) and the
+     * nginx sample config. The variants below are blocked because no
+     * legitimate plugin needs them and several can be executed by PHP-FPM
+     * depending on server configuration.
+     */
+    private const DENIED_EXTENSIONS = [
+        // Dangerous PHP variants — blocked regardless of server config.
+        'php3', 'php4', 'php5', 'php6', 'php7', 'php8', 'phar', 'phtml', 'pht',
+        // Other server-executable / binary types.
+        'sh', 'bat', 'cmd', 'exe', 'so', 'dll', 'cgi', 'pl', 'py', 'rb',
+    ];
+
+    /**
+     * Content written to `community/.htaccess` on every plugin install.
+     * Blocks direct HTTP execution of PHP files while still allowing the
+     * app's PSR-4 autoloader to `require` them normally.
+     */
+    private const COMMUNITY_HTACCESS = <<<'HTACCESS'
+# Defense in depth (GHSA-37mf-vq43-5qp9):
+# Community plugin PHP code is loaded by the app's PSR-4 autoloader.
+# It must never be executed via a direct HTTP request.
+<FilesMatch "\.(php|phar|phtml|pht|php3|php4|php5|php6|php7|php8)$">
+    Require all denied
+</FilesMatch>
+HTACCESS;
 
     /**
      * Install an approved community plugin from its published zip URL.
@@ -168,6 +198,10 @@ class PluginInstaller
 
                 self::ensureDir(dirname($destDir));
                 self::moveStagedToDest($stagedDir, $destDir);
+
+                // Ensure the community/.htaccess deny block is in place so
+                // PHP files are never directly HTTP-executable (GHSA-37mf-vq43-5qp9).
+                self::ensureCommunityHtaccess($pluginsPath);
 
                 // Record install provenance so boot-time registry sync can
                 // later detect if this plugin is still approved.
@@ -323,6 +357,9 @@ class PluginInstaller
 
                 self::ensureDir(dirname($destDir));
                 self::moveStagedToDest($stagedDir, $destDir);
+
+                // Ensure the community/.htaccess deny block is in place.
+                self::ensureCommunityHtaccess($pluginsPath);
 
                 self::recordProvenance($declaredId, [
                     'source' => 'unverified-url',
@@ -532,6 +569,29 @@ class PluginInstaller
         }
 
         return $removed;
+    }
+
+    /**
+     * Write (or verify) the Apache `.htaccess` deny block in the community
+     * plugins directory, blocking direct HTTP execution of PHP files.
+     *
+     * The app's PSR-4 autoloader can still `require` any `.php` file inside
+     * `community/` normally — `.htaccess` only prevents HTTP requests from
+     * reaching PHP-FPM / mod_php directly.
+     *
+     * This is called after every successful install (verified and unverified)
+     * so the guard is refreshed even if someone deleted it manually.
+     */
+    private static function ensureCommunityHtaccess(string $pluginsPath): void
+    {
+        $htaccessPath = $pluginsPath . '/community/.htaccess';
+        if (!is_file($htaccessPath)) {
+            self::ensureDir(dirname($htaccessPath));
+            file_put_contents($htaccessPath, self::COMMUNITY_HTACCESS);
+            LoggerUtils::getAppLogger()->info('Wrote community plugin .htaccess deny block', [
+                'path' => $htaccessPath,
+            ]);
+        }
     }
 
     /**
@@ -808,6 +868,13 @@ class PluginInstaller
         }
         if (in_array($ext, self::DENIED_EXTENSIONS, true)) {
             throw new \RuntimeException('Zip entry has disallowed extension: ' . $name);
+        }
+        // Guard against double-extension tricks like evil.php.png or shell.php.jpg.
+        // preg_match against the full basename, not just the final extension.
+        if (preg_match('/\.(php|phar|phtml|pht|php[0-9])\./i', $basename)) {
+            throw new \RuntimeException(
+                'Zip entry has a dangerous PHP extension in filename: ' . $name
+            );
         }
         if (!in_array($ext, self::ALLOWED_EXTENSIONS, true)) {
             throw new \RuntimeException('Zip entry extension not permitted: ' . $name);
