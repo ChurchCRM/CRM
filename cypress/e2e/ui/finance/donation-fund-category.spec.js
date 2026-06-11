@@ -10,25 +10,29 @@
  * - Category-based optgroup grouping in the Financial Reports fund filter
  */
 
+// Shared test data — defined at file scope so all describe blocks can reuse them
+const categoryName = "Test Category " + Date.now();
+const fundName = "Test Fund Cat " + Date.now();
+
+/** Helper: create the test fund with a category via the DonationFundEditor UI */
+function createCategorizedFund() {
+    cy.setupAdminSession();
+    cy.visit("/DonationFundEditor.php");
+    cy.get("#newFieldName").type(fundName);
+    cy.get("#newFieldCategory").type(categoryName);
+    cy.get("#newFieldDesc").type("Category test fund");
+    cy.get("[name='AddField']").click();
+
+    // The Category column renders as an <input> inside <td>, not as text content
+    cy.get("input[name$='name'][value='" + fundName + "']")
+        .closest("tr")
+        .find("input[name$='category']")
+        .should("have.value", categoryName);
+}
+
 describe("Donation Fund Category - Editor", () => {
-    const categoryName = "Test Category " + Date.now();
-    const fundName = "Test Fund Cat " + Date.now();
-
     before(() => {
-        cy.setupAdminSession();
-
-        // Create the categorised fund once for the whole suite
-        cy.visit("/DonationFundEditor.php");
-        cy.get("#newFieldName").type(fundName);
-        cy.get("#newFieldCategory").type(categoryName);
-        cy.get("#newFieldDesc").type("Category test fund");
-        cy.get("[name='AddField']").click();
-
-        // The Category column renders as an <input> inside <td>, not as text content
-        cy.get("input[name$='name'][value='" + fundName + "']")
-            .closest("tr")
-            .find("input[name$='category']")
-            .should("have.value", categoryName);
+        createCategorizedFund();
     });
 
     beforeEach(() => {
@@ -79,6 +83,11 @@ describe("Donation Fund Category - Editor", () => {
 });
 
 describe("Donation Fund Category - Finance Dashboard", () => {
+    before(() => {
+        // Ensure a categorized fund exists regardless of spec execution order
+        createCategorizedFund();
+    });
+
     beforeEach(() => {
         cy.setupAdminSession();
     });
@@ -91,11 +100,10 @@ describe("Donation Fund Category - Finance Dashboard", () => {
     it("should render category headers for funds that have a category assigned", () => {
         cy.visit("/finance/");
 
-        // Category headers are rendered as <small> elements with class
-        // text-muted font-weight-bold text-uppercase inside the fund card
-        cy.get(".finance-card")
-            .contains("Donation Funds")
-            .parents(".card")
+        // Category headers are rendered as <small class="text-muted fw-bold text-uppercase">
+        // inside the Donation Funds card
+        cy.contains(".card-title", "Donation Funds")
+            .closest(".card")
             .find("small.text-muted")
             .should("have.length.at.least", 1);
     });
