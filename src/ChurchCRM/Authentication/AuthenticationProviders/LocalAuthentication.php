@@ -253,8 +253,9 @@ class LocalAuthentication implements IAuthenticationProvider
         // If 2FA is required and user hasn't enrolled, check grace period status.
         // block only when the grace window has expired or no grace period is configured.
         $enrollmentURL = SystemURLs::getRootPath() . '/v2/user/current/manage2fa';
-        $isOnEnrollmentPage = str_contains($_SERVER['REQUEST_URI'], '/v2/user/current/manage2fa')
-            || str_contains($_SERVER['REQUEST_URI'], '/v2/user/current/enroll2fa');
+        $requestUri = $_SERVER['REQUEST_URI'] ?? '';
+        $isOnEnrollmentPage = str_contains($requestUri, '/v2/user/current/manage2fa')
+            || str_contains($requestUri, '/v2/user/current/enroll2fa');
         if (SystemConfig::getBooleanValue('bRequire2FA') && !$this->currentUser->is2FactorAuthEnabled() && !$isOnEnrollmentPage) {
             $graceStatus = $this->currentUser->getTwoFactorGraceStatus();
             if ($graceStatus === 'expired' || $graceStatus === 'immediate') {
