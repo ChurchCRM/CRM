@@ -2,4 +2,4 @@
 -- Add fun_Category column to donationfund_fun table for better fund organization.
 
 ALTER TABLE `donationfund_fun`
-    ADD COLUMN `fun_Category` varchar(50) DEFAULT NULL;
+    ADD COLUMN IF NOT EXISTS `fun_Category` varchar(50) DEFAULT NULL;
