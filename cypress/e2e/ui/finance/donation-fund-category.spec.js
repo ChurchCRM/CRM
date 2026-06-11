@@ -110,15 +110,17 @@ describe("Donation Fund Category - Finance Dashboard", () => {
 
     it("should display the Donation Funds section on the dashboard", () => {
         cy.visit("/finance/");
-        cy.contains("Donation Funds").should("be.visible");
+        // Target the card heading specifically — cy.contains("Donation Funds") without a
+        // scope selector would match the Finance nav sidebar link first, which is hidden.
+        cy.contains("h3.card-title", "Donation Funds").should("be.visible");
     });
 
     it("should render category headers for funds that have a category assigned", () => {
         cy.visit("/finance/");
 
-        // Category headers are rendered as <small class="text-muted fw-bold text-uppercase">
-        // inside the Donation Funds card
-        cy.contains(".card-title", "Donation Funds")
+        // Category headers render as <small class="text-muted fw-bold text-uppercase">
+        // inside the card body of the Donation Funds card.
+        cy.contains("h3.card-title", "Donation Funds")
             .closest(".card")
             .find("small.text-muted")
             .should("have.length.at.least", 1);
