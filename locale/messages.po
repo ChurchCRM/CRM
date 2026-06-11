@@ -1732,6 +1732,9 @@ msgstr ""
 msgid "Cash"
 msgstr ""
 
+msgid "Category"
+msgstr ""
+
 msgid "Category Name"
 msgstr ""
 
@@ -10870,6 +10873,9 @@ msgstr ""
 msgid "Unclassified"
 msgstr ""
 
+msgid "Uncategorized"
+msgstr ""
+
 msgid "Unexpected Person Id"
 msgstr ""
 
@@ -12014,6 +12020,9 @@ msgid "deposit(s) with no payments"
 msgstr ""
 
 msgid "downloadUrl, sha256, and pluginId are all required for unverified installs."
+msgstr ""
+
+msgid "e.g. Regular Offerings"
 msgstr ""
 
 msgid "e.g. Sunday Service"

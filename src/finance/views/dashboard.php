@@ -425,15 +425,25 @@ $sRootPath = SystemURLs::getRootPath();
                 </div>
                 <div class="card-body p-0">
                     <?php if ($activeFunds->count() > 0):
-                        // Group funds by category
-                        $fundsByCategory = [];
+                        // Partition funds into named categories (sorted) then uncategorized last
+                        $categorizedFunds = [];
+                        $uncategorizedFunds = [];
                         foreach ($activeFunds as $fund) {
-                            $cat = $fund->getCategory() ?? '';
-                            $fundsByCategory[$cat][] = $fund;
+                            $cat = $fund->getCategory();
+                            if ($cat !== null && $cat !== '') {
+                                $categorizedFunds[$cat][] = $fund;
+                            } else {
+                                $uncategorizedFunds[] = $fund;
+                            }
                         }
-                        ksort($fundsByCategory);
+                        ksort($categorizedFunds);
+                        // Render named categories first, then uncategorized
+                        $allGroups = $categorizedFunds;
+                        if (!empty($uncategorizedFunds)) {
+                            $allGroups[''] = $uncategorizedFunds;
+                        }
                     ?>
-                    <?php foreach ($fundsByCategory as $category => $funds): ?>
+                    <?php foreach ($allGroups as $category => $funds): ?>
                     <?php if ($category !== ''): ?>
                     <div class="px-3 pt-2 pb-1">
                         <small class="text-muted fw-bold text-uppercase"><?= InputUtils::escapeHTML($category) ?></small>
