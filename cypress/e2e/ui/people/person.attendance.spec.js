@@ -6,9 +6,8 @@
  * Test data: person 2 (Mathew Campbell) is checked into event 1 in before()
  * and cleaned up in after(). Person 1 (Admin) has no attendance records.
  *
- * Note: check-in seeding happens in before() — before beforeEach() establishes
- * the cy.session — so cy.request never runs with an active session cookie
- * and cannot corrupt the server-side PHP session.
+ * cy.intercept uses "**/api/..." glob patterns so intercepts work when
+ * ChurchCRM is deployed under a subdirectory path.
  */
 describe("Person Attendance History Tab", () => {
     const PERSON_WITH_ATTENDANCE = 2;
@@ -44,8 +43,8 @@ describe("Person Attendance History Tab", () => {
     context("Lazy load on tab activation — person with attendance", () => {
         beforeEach(() => {
             cy.visit(`/people/view/${PERSON_WITH_ATTENDANCE}`);
-            // Intercept the attendance API call before clicking the tab
-            cy.intercept("GET", `/api/attendance/person/${PERSON_WITH_ATTENDANCE}`).as("attendanceApi");
+            // Use **/api/** glob so intercepts work under a subdirectory deployment
+            cy.intercept("GET", `**/api/attendance/person/${PERSON_WITH_ATTENDANCE}`).as("attendanceApi");
             // Click the attendance tab to trigger lazy load
             cy.get("#nav-item-attendance").click();
         });
@@ -97,7 +96,7 @@ describe("Person Attendance History Tab", () => {
             cy.get("#nav-item-timeline").click();
 
             let secondCallCount = 0;
-            cy.intercept("GET", `/api/attendance/person/${PERSON_WITH_ATTENDANCE}`, () => {
+            cy.intercept("GET", `**/api/attendance/person/${PERSON_WITH_ATTENDANCE}`, () => {
                 secondCallCount++;
             }).as("secondAttendanceApi");
 
@@ -114,7 +113,7 @@ describe("Person Attendance History Tab", () => {
     context("Person with no attendance records", () => {
         beforeEach(() => {
             cy.visit(`/people/view/${PERSON_WITHOUT_ATTENDANCE}`);
-            cy.intercept("GET", `/api/attendance/person/${PERSON_WITHOUT_ATTENDANCE}`).as("emptyAttendance");
+            cy.intercept("GET", `**/api/attendance/person/${PERSON_WITHOUT_ATTENDANCE}`).as("emptyAttendance");
             cy.get("#nav-item-attendance").click();
         });
 
@@ -136,7 +135,7 @@ describe("Person Attendance History Tab", () => {
     context("Filter controls", () => {
         beforeEach(() => {
             cy.visit(`/people/view/${PERSON_WITH_ATTENDANCE}`);
-            cy.intercept("GET", `/api/attendance/person/${PERSON_WITH_ATTENDANCE}`).as("attendanceApi");
+            cy.intercept("GET", `**/api/attendance/person/${PERSON_WITH_ATTENDANCE}`).as("attendanceApi");
             cy.get("#nav-item-attendance").click();
             cy.wait("@attendanceApi");
         });

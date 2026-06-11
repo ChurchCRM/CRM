@@ -3,11 +3,19 @@
  *
  * Fetches attendance data lazily on first Bootstrap tab `shown.bs.tab` event
  * and renders it into the #attendance tab pane. Subsequent activations use
- * cached data (no repeated network requests).
+ * cached data (no repeated network requests). On transient error the load flag
+ * is reset so the user can retry by re-activating the tab.
  *
  * i18n strings are read from the `data-i18n` JSON attribute on #attendance-tab
  * (injected by attendance-tab.php) — no inline <script> needed.
  */
+
+/**
+ * Sentinel used as the <option> value for attendance records whose
+ * eventTypeId is null. Must be a non-empty string that cannot collide
+ * with a real type ID or with the "All types" empty-string option.
+ */
+const NULL_TYPE_SENTINEL = "__null__";
 
 interface AttendanceRecord {
   attendId: number;
@@ -66,14 +74,45 @@ function churchTimeZone(): string {
 }
 
 /**
- * Parse a MySQL-style "YYYY-MM-DD HH:MM:SS" wall-clock string into a Date,
- * interpreting it as being in the church's local timezone (not the browser's).
- * We achieve this by replacing the space separator with "T" so it can be
- * fed to Intl.DateTimeFormat which handles the timezone offset correctly.
+ * Parse a MySQL-style "YYYY-MM-DD HH:MM:SS" wall-clock string into a Date
+ * whose UTC instant represents the same wall-clock moment in the church timezone.
+ *
+ * Problem: `new Date("YYYY-MM-DDTHH:mm:ss")` is parsed in the *browser* timezone,
+ * which may differ from the church timezone. Feeding that Date to
+ * `Intl.DateTimeFormat({ timeZone: churchTz })` would shift the displayed time.
+ *
+ * Solution: treat the string as a naive (timezone-free) wall-clock value in the
+ * church timezone. Determine the UTC offset that the church timezone applies to
+ * that wall-clock moment via `Intl.DateTimeFormat.formatToParts`, then adjust
+ * so the resulting Date encodes the correct UTC instant.
  */
 function parseWallClock(isoString: string): Date {
-  // Replace space with "T" if present (MySQL datetime format)
-  return new Date(isoString.replace(" ", "T"));
+  const clean = isoString.replace(" ", "T");
+  const tz = window.CRM?.timeZone ?? "UTC";
+
+  // Step 1: treat the wall-clock string as UTC to get a reference ms value.
+  const parts = clean.slice(0, 19).split(/[-T:]/).map(Number) as [number, number, number, number, number, number];
+  const naiveMs = Date.UTC(parts[0], parts[1] - 1, parts[2], parts[3], parts[4], parts[5]);
+
+  // Step 2: find what wall-clock time the church timezone displays for naiveMs.
+  const dtfParts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: tz,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  }).formatToParts(new Date(naiveMs));
+
+  const get = (type: string): number => Number(dtfParts.find((p) => p.type === type)?.value ?? "0");
+
+  // Step 3: the difference between naiveMs (treated as UTC) and the church
+  // wall-clock reading of naiveMs is the UTC offset. Apply it to get the
+  // correct UTC instant for the original wall-clock string.
+  const localMs = Date.UTC(get("year"), get("month") - 1, get("day"), get("hour"), get("minute"), get("second"));
+  return new Date(naiveMs + (naiveMs - localMs));
 }
 
 /**
@@ -126,6 +165,9 @@ function esc(value: string): string {
  *
  * Date-range filter compares the raw YYYY-MM-DD date prefix of `eventStart`
  * directly against the filter values to avoid timezone-related Date shifts.
+ *
+ * The type filter uses NULL_TYPE_SENTINEL for records with no event type,
+ * matching the sentinel written by populateTypeFilter().
  */
 function renderTable(
   tbody: HTMLTableSectionElement,
@@ -137,8 +179,10 @@ function renderTable(
   i18n: I18n,
 ): void {
   const filtered = records.filter((rec) => {
-    if (filterType && String(rec.eventTypeId ?? "") !== filterType) {
-      return false;
+    if (filterType) {
+      // Use the same sentinel as populateTypeFilter() for null type IDs
+      const recTypeKey = rec.eventTypeId !== null ? String(rec.eventTypeId) : NULL_TYPE_SENTINEL;
+      if (recTypeKey !== filterType) return false;
     }
     if (filterFrom || filterTo) {
       // Compare the YYYY-MM-DD prefix directly — avoids timezone-induced shifts
@@ -180,19 +224,30 @@ function renderTable(
 
 /**
  * Populate the event-type filter <select> from distinct types in records.
+ *
+ * Clears all options back to the default "All types" entry first, so that
+ * a retry after a transient error does not append duplicate options.
+ *
+ * Null type IDs are stored under NULL_TYPE_SENTINEL so they don't collide
+ * with the empty-string value used by the "All types" option.
  */
 function populateTypeFilter(selectEl: HTMLSelectElement, records: AttendanceRecord[]): void {
+  // Reset to only the default "All types" option (index 0) before re-populating
+  while (selectEl.options.length > 1) {
+    selectEl.remove(1);
+  }
+
   const seen = new Map<string, string>();
   for (const rec of records) {
-    const key = String(rec.eventTypeId ?? "");
+    const key = rec.eventTypeId !== null ? String(rec.eventTypeId) : NULL_TYPE_SENTINEL;
     if (!seen.has(key)) {
       seen.set(key, rec.eventTypeName);
     }
   }
 
-  for (const [typeId, typeName] of seen) {
+  for (const [typeKey, typeName] of seen) {
     const opt = document.createElement("option");
-    opt.value = typeId;
+    opt.value = typeKey;
     opt.textContent = typeName;
     selectEl.appendChild(opt);
   }
@@ -307,6 +362,15 @@ export function initAttendanceHistory(): void {
     // tab activations could both pass the `if (loaded)` check.
     loaded = true;
 
+    // Reset UI to loading state at the start of each attempt so that:
+    // - a retry after error shows the spinner again and hides the error banner
+    // - stale data/summary from a previous partial load is hidden
+    if (errorEl) errorEl.classList.add("d-none");
+    if (loadingEl) loadingEl.classList.remove("d-none");
+    if (summaryEl) summaryEl.classList.add("d-none");
+    if (tableWrapperEl) tableWrapperEl.classList.add("d-none");
+    if (filtersEl) filtersEl.classList.add("d-none");
+
     try {
       const url = `${apiRoot}/api/attendance/person/${encodeURIComponent(personId ?? "")}`;
       const resp = await fetch(url, {
@@ -327,7 +391,7 @@ export function initAttendanceHistory(): void {
         summaryEl.classList.remove("d-none");
       }
 
-      // Populate type filter
+      // Populate type filter (clears options first to avoid duplicates on retry)
       populateTypeFilter(safeTypeSelect, cachedRecords);
 
       // Show filters and table
