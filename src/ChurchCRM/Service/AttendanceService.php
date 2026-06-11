@@ -67,8 +67,8 @@ class AttendanceService
             ->filterByCheckinDate(null, Criteria::ISNOTNULL)
             ->useEventQuery(null, Criteria::LEFT_JOIN)
                 ->leftJoinWithEventType()
-                ->orderByStart(Criteria::DESC)
             ->endUse()
+            ->orderBy('events_event.event_start', Criteria::DESC)
             ->find();
 
         $records = [];
