@@ -1,6 +1,6 @@
 name: Bug Discord Notifications
 
-# =============================================================================
+# =========================================================================
 # Post to the ChurchCRM Discord #bugs channel whenever a new issue of type
 # "Bug" is filed. Bug detection fires when ANY of the following are true:
 #
@@ -18,7 +18,7 @@ name: Bug Discord Notifications
 #
 # The workflow is idempotent: we tag notified issues with the
 # `discord-notified` label so we never ping twice for the same issue.
-# =============================================================================
+# ============================================================================
 
 on:
   issues:
@@ -74,10 +74,20 @@ jobs:
           ISSUE_TITLE:  ${{ github.event.issue.title }}
           ISSUE_URL:    ${{ github.event.issue.html_url }}
           ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+          ISSUE_BODY:   ${{ github.event.issue.body }}
+          ISSUE_LABELS: ${{ toJson(github.event.issue.labels) }}
           ACTION:       ${{ github.event.action }}
         run: |
           # Truncate very long titles (Discord embed title limit = 256 chars).
           SAFE_TITLE="${ISSUE_TITLE:0:240}"
+
+          # Truncate body to 400 chars; fall back gracefully if empty.
+          SAFE_BODY=$(printf '%s' "${ISSUE_BODY:-*(no description provided)*}" | head -c 400)
+
+          # Build a comma-separated label list from the JSON array.
+          LABEL_LIST=$(echo "$ISSUE_LABELS" \
+            | jq -r '[.[] | .name] | if length == 0 then "none" else join(", ") end')
+
           case "$ACTION" in
             opened)   HEADING="🐛 New bug filed — #${ISSUE_NUMBER}" ;;
             reopened) HEADING="🐛 Bug reopened — #${ISSUE_NUMBER}"  ;;
@@ -85,12 +95,13 @@ jobs:
             *)        HEADING="🐛 Bug update — #${ISSUE_NUMBER}"   ;;
           esac
 
-          jq -n \
+          HTTP_STATUS=$(jq -n \
             --arg title       "$HEADING" \
             --arg description "$SAFE_TITLE" \
             --arg url         "$ISSUE_URL" \
-            --arg author_name "Opened by" \
             --arg author_val  "$ISSUE_AUTHOR" \
+            --arg body_val    "$SAFE_BODY" \
+            --arg labels_val  "$LABEL_LIST" \
             --argjson color   15158332 \
           '{
             allowed_mentions: { parse: [] },
@@ -100,13 +111,24 @@ jobs:
               color:       $color,
               url:         $url,
               fields: [
-                { name: $author_name, value: $author_val, inline: true }
+                { name: "Opened by", value: $author_val,  inline: true },
+                { name: "Labels",    value: $labels_val,  inline: true },
+                { name: "Body",      value: $body_val,    inline: false }
               ],
-              footer: { text: "ChurchCRM Bugs · github.com/ChurchCRM/CRM/issues" }
+              footer: {
+                text: "ChurchCRM Bugs · github.com/ChurchCRM/CRM/issues · Hazel AI monitors for stale issues and handles Discord-reported bugs"
+              }
             }]
-          }' | curl -sf -X POST "$DISCORD_WEBHOOK" \
+          }' | curl -sf -o /dev/null -w "%{http_code}" \
+                  -X POST "$DISCORD_WEBHOOK" \
                   -H "Content-Type: application/json" \
-                  -d @-
+                  -d @-)
+
+          echo "Discord webhook HTTP status: $HTTP_STATUS"
+          if [[ "$HTTP_STATUS" -lt 200 || "$HTTP_STATUS" -ge 300 ]]; then
+            echo "ERROR: Discord webhook returned non-2xx status $HTTP_STATUS" >&2
+            exit 1
+          fi
 
       - name: Mark issue as notified
         if: steps.classify.outputs.is_bug == 'true'
