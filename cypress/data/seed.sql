@@ -1933,6 +1933,7 @@ CREATE TABLE `user_usr` (
   `usr_TwoFactorAuthSecret` varchar(255) DEFAULT NULL,
   `usr_TwoFactorAuthLastKeyTimestamp` int(11) DEFAULT NULL,
   `usr_TwoFactorAuthRecoveryCodes` text DEFAULT NULL,
+  `usr_TwoFactorAuthGracePeriodStart` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`usr_per_ID`),
   UNIQUE KEY `usr_UserName` (`usr_UserName`),
   UNIQUE KEY `usr_apiKey_unique` (`usr_apiKey`)

@@ -125,6 +125,7 @@ class UserService
             'iMinPasswordChange',
             'aDisallowedPasswords',
             'bRequire2FA',
+            'i2FAGracePeriodDays',
             's2FAApplicationName'
         ];
 
