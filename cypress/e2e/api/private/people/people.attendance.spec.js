@@ -7,9 +7,9 @@
  * into event 1 (Sunday School Class Changes) via the events checkin API.
  * Cleaned up in after(). This avoids hardcoded assumptions about seed data.
  *
- * NOTE: a 403 IDOR test was removed because all seeded API-key users have
- * usr_EditRecords=1 in the seed data, meaning canEditPerson() always returns
- * true. The auth gate is covered by unit tests and the 401 test below.
+ * NOTE: all standard seeded API-key users have usr_EditRecords=1, so they cannot
+ * trigger a 403. The IDOR test uses `limited.user` (per_id=4, EditRecords=0) whose
+ * key is inlined per the pattern in cypress/e2e/ui/security/limited-access.spec.js.
  */
 describe("Person Attendance History API", () => {
     // Person 2 (Mathew Campbell) in family 1 is used for attendance seeding.
@@ -129,6 +129,23 @@ describe("Person Attendance History API", () => {
                 expect(response.body.summary.totalEvents).to.equal(0);
                 expect(response.body.summary.lastAttendanceDate).to.be.null;
                 expect(response.body.summary.streaks).to.be.an("array").that.is.empty;
+            });
+        });
+    });
+
+    context("GET /api/attendance/person/:id — 403 IDOR (limited.user)", () => {
+        it("returns 403 when caller cannot edit the target person (IDOR)", () => {
+            // limited.user (per_id=4) has usr_EditRecords=0, usr_EditSelf=0, usr_Admin=0
+            // → canEditPerson(anyone) returns false → strict 403.
+            // Target person 26 (family 5) — clearly outside limited.user's family (family 1).
+            // Inline key per existing precedent in cypress/e2e/ui/security/limited-access.spec.js.
+            cy.apiRequest({
+                method: "GET",
+                url: "/api/attendance/person/26",
+                headers: { "x-api-key": "limitedUserApiKeyForTesting123456789012345678" },
+                failOnStatusCode: false,
+            }).then((resp) => {
+                expect(resp.status).to.eq(403);
             });
         });
     });
