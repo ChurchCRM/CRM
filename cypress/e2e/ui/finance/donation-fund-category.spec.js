@@ -23,7 +23,12 @@ describe("Donation Fund Category - Editor", () => {
         cy.get("#newFieldCategory").type(categoryName);
         cy.get("#newFieldDesc").type("Category test fund");
         cy.get("[name='AddField']").click();
-        cy.contains("td", categoryName).should("exist");
+
+        // The Category column renders as an <input> inside <td>, not as text content
+        cy.get("input[name$='name'][value='" + fundName + "']")
+            .closest("tr")
+            .find("input[name$='category']")
+            .should("have.value", categoryName);
     });
 
     beforeEach(() => {
@@ -42,7 +47,13 @@ describe("Donation Fund Category - Editor", () => {
 
     it("should persist the fund category after creation", () => {
         cy.visit("/DonationFundEditor.php");
-        cy.contains("td", categoryName).should("exist");
+
+        // The Category column renders as an <input> — find the row by fund name input
+        // and assert the category input value
+        cy.get("input[name$='name'][value='" + fundName + "']")
+            .closest("tr")
+            .find("input[name$='category']")
+            .should("have.value", categoryName);
     });
 
     it("should allow editing the category of an existing fund", () => {
@@ -50,17 +61,20 @@ describe("Donation Fund Category - Editor", () => {
 
         cy.visit("/DonationFundEditor.php");
 
-        // Find the row for our fund and update its category
-        cy.contains("td", categoryName)
-            .siblings("td")
+        // Find the row for our fund via the name input and update its category input
+        cy.get("input[name$='name'][value='" + fundName + "']")
+            .closest("tr")
             .find("input[name$='category']")
             .clear()
             .type(updatedCategory);
 
         cy.get("[name='SaveChanges']").click();
 
-        // After save the updated category should appear in the table
-        cy.contains("td", updatedCategory).should("exist");
+        // After save the updated category value should appear in the category input
+        cy.get("input[name$='name'][value='" + fundName + "']")
+            .closest("tr")
+            .find("input[name$='category']")
+            .should("have.value", updatedCategory);
     });
 });
 
