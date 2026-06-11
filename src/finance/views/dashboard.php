@@ -436,12 +436,12 @@ $sRootPath = SystemURLs::getRootPath();
                     <?php foreach ($fundsByCategory as $category => $funds): ?>
                     <?php if ($category !== ''): ?>
                     <div class="px-3 pt-2 pb-1">
-                        <small class="text-muted font-weight-bold text-uppercase"><?= InputUtils::escapeHTML($category) ?></small>
+                        <small class="text-muted fw-bold text-uppercase"><?= InputUtils::escapeHTML($category) ?></small>
                     </div>
                     <?php endif; ?>
                     <ul class="list-group list-group-flush">
                         <?php foreach ($funds as $fund): ?>
-                        <li class="list-group-item d-flex justify-content-between align-items-center py-2 <?= $category !== '' ? 'pl-4' : '' ?>">
+                        <li class="list-group-item d-flex justify-content-between align-items-center py-2 <?= $category !== '' ? 'ps-4' : '' ?>">
                             <span><?= InputUtils::escapeHTML($fund->getName()) ?></span>
                             <span class="badge bg-green-lt text-green">
                                 <i class="fa-solid fa-check"></i>
