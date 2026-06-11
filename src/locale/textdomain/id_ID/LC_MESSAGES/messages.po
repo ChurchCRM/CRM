@@ -14670,6 +14670,18 @@ msgid "seconds"
 msgstr "detik"
 
 #: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "Tidak dapat menghapus acara: %d orang saat ini sedang check in."
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "Tidak dapat menghapus acara: acara saat ini ditugaskan ke kios."
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "Tidak dapat menghapus grup: ini adalah audiens untuk %d acara dan grup default untuk %d jenis acara. Tugaskan ulang terlebih dahulu."
+
+#: 
 msgid "A Calendar access token has been generated and saved."
 msgstr "Akses token Kalender telah dibuat dan disimpan."
 
@@ -15341,6 +15353,10 @@ msgstr "Grup dihapus dari keranjang"
 #: 
 msgid "GroupID required for role selection prompt"
 msgstr "GroupID diperlukan untuk prompt pemilihan peran"
+
+#: 
+msgid "HTML URL"
+msgstr "URL HTML"
 
 #: 
 msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"

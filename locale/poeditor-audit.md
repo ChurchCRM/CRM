@@ -1,7 +1,7 @@
 # ChurchCRM Locale Audit Report
 
-**Total Supported Locales:** 47
-**Complete Locales (≥90%):** 41
+**Total Supported Locales:** 48
+**Complete Locales (≥90%):** 42
 **Good Locales (75-89%):** 0
 **Needs Work (<75%):** 6
 **WIP Candidates (>5%, not yet added):** 5
@@ -10,47 +10,48 @@
 
 | Locale | Language | Translations | Percentage | Status | Supported |
 |--------|----------|--------------|------------|--------|----------|
+| `sq` | Albanian | 3873 | 100% | 🟢 Complete | ✅ Yes |
+| `ar` | Arabic | 3873 | 100% | 🟢 Complete | ✅ Yes |
+| `zh-cn` | Chinese | 3873 | 100% | 🟢 Complete | ✅ Yes |
+| `zh-tw` | Chinese (TW) | 3873 | 100% | 🟢 Complete | ✅ Yes |
+| `cs` | Czech | 3873 | 100% | 🟢 Complete | ✅ Yes |
+| `fil` | Filipino | 3873 | 100% | 🟢 Complete | ✅ Yes |
+| `fi` | Finnish | 3873 | 100% | 🟢 Complete | ✅ Yes |
+| `fr` | French | 3873 | 100% | 🟢 Complete | ✅ Yes |
+| `el` | Greek | 3873 | 100% | 🟢 Complete | ✅ Yes |
+| `he` | Hebrew | 3873 | 100% | 🟢 Complete | ✅ Yes |
+| `id` | Indonesian | 3873 | 100% | 🟢 Complete | ✅ Yes |
+| `ml` | Malayalam | 3873 | 100% | 🟢 Complete | ✅ Yes |
+| `nb` | Norwegian Bokmål | 3873 | 100% | 🟢 Complete | ✅ Yes |
+| `pt` | Portuguese | 3873 | 100% | 🟢 Complete | ✅ Yes |
+| `ru` | Russian | 3873 | 100% | 🟢 Complete | ✅ Yes |
+| `es` | Spanish | 3873 | 100% | 🟢 Complete | ✅ Yes |
+| `es-ar` | Spanish (AR) | 3873 | 100% | 🟢 Complete | ✅ Yes |
+| `es-co` | Spanish (CO) | 3873 | 100% | 🟢 Complete | ✅ Yes |
+| `es-mx` | Spanish (MX) | 3873 | 100% | 🟢 Complete | ✅ Yes |
+| `es-sv` | Spanish (SV) | 3873 | 100% | 🟢 Complete | ✅ Yes |
+| `sw` | Swahili | 3873 | 100% | 🟢 Complete | ✅ Yes |
 | `ta` | Tamil | 3873 | 100% | 🟢 Complete | ✅ Yes |
-| `sq` | Albanian | 3870 | 99.92% | 🟢 Complete | ✅ Yes |
-| `fil` | Filipino | 3870 | 99.92% | 🟢 Complete | ✅ Yes |
-| `fi` | Finnish | 3870 | 99.92% | 🟢 Complete | ✅ Yes |
-| `el` | Greek | 3870 | 99.92% | 🟢 Complete | ✅ Yes |
-| `he` | Hebrew | 3870 | 99.92% | 🟢 Complete | ✅ Yes |
-| `ml` | Malayalam | 3870 | 99.92% | 🟢 Complete | ✅ Yes |
-| `nb` | Norwegian Bokmål | 3870 | 99.92% | 🟢 Complete | ✅ Yes |
-| `pt` | Portuguese | 3870 | 99.92% | 🟢 Complete | ✅ Yes |
-| `es` | Spanish | 3870 | 99.92% | 🟢 Complete | ✅ Yes |
-| `es-ar` | Spanish (AR) | 3870 | 99.92% | 🟢 Complete | ✅ Yes |
-| `es-co` | Spanish (CO) | 3870 | 99.92% | 🟢 Complete | ✅ Yes |
-| `es-mx` | Spanish (MX) | 3870 | 99.92% | 🟢 Complete | ✅ Yes |
-| `es-sv` | Spanish (SV) | 3870 | 99.92% | 🟢 Complete | ✅ Yes |
-| `sw` | Swahili | 3870 | 99.92% | 🟢 Complete | ✅ Yes |
-| `th` | Thai | 3870 | 99.92% | 🟢 Complete | ✅ Yes |
-| `uk` | Ukrainian | 3870 | 99.92% | 🟢 Complete | ✅ Yes |
-| `vi` | Vietnamese | 3870 | 99.92% | 🟢 Complete | ✅ Yes |
+| `th` | Thai | 3873 | 100% | 🟢 Complete | ✅ Yes |
+| `uk` | Ukrainian | 3873 | 100% | 🟢 Complete | ✅ Yes |
+| `vi` | Vietnamese | 3873 | 100% | 🟢 Complete | ✅ Yes |
+| `am` | Amharic | 3872 | 99.97% | 🟢 Complete | ✅ Yes |
+| `et` | Estonian | 3872 | 99.97% | 🟢 Complete | ✅ Yes |
+| `de` | German | 3872 | 99.97% | 🟢 Complete | ✅ Yes |
+| `it` | Italian | 3872 | 99.97% | 🟢 Complete | ✅ Yes |
+| `pl` | Polish | 3872 | 99.97% | 🟢 Complete | ✅ Yes |
+| `pt-br` | Portuguese (BR) | 3872 | 99.97% | 🟢 Complete | ✅ Yes |
+| `ro` | Romanian | 3872 | 99.97% | 🟢 Complete | ✅ Yes |
+| `hi` | Hindi | 3871 | 99.95% | 🟢 Complete | ✅ Yes |
+| `hu` | Hungarian | 3871 | 99.95% | 🟢 Complete | ✅ Yes |
+| `ja` | Japanese | 3871 | 99.95% | 🟢 Complete | ✅ Yes |
+| `ko` | Korean | 3871 | 99.95% | 🟢 Complete | ✅ Yes |
+| `sv` | Swedish | 3871 | 99.95% | 🟢 Complete | ✅ Yes |
+| `te` | Telugu | 3871 | 99.95% | 🟢 Complete | ✅ Yes |
+| `nl` | Dutch | 3870 | 99.92% | 🟢 Complete | ✅ Yes |
 | `af` | Afrikaans | 3869 | 99.9% | 🟢 Complete | ✅ Yes |
-| `am` | Amharic | 3869 | 99.9% | 🟢 Complete | ✅ Yes |
-| `ar` | Arabic | 3869 | 99.9% | 🟢 Complete | ✅ Yes |
-| `et` | Estonian | 3869 | 99.9% | 🟢 Complete | ✅ Yes |
-| `de` | German | 3869 | 99.9% | 🟢 Complete | ✅ Yes |
-| `id` | Indonesian | 3869 | 99.9% | 🟢 Complete | ✅ Yes |
-| `pl` | Polish | 3869 | 99.9% | 🟢 Complete | ✅ Yes |
-| `pt-br` | Portuguese (BR) | 3869 | 99.9% | 🟢 Complete | ✅ Yes |
-| `zh-cn` | Chinese | 3868 | 99.87% | 🟢 Complete | ✅ Yes |
-| `zh-tw` | Chinese (TW) | 3868 | 99.87% | 🟢 Complete | ✅ Yes |
-| `cs` | Czech | 3868 | 99.87% | 🟢 Complete | ✅ Yes |
-| `hi` | Hindi | 3868 | 99.87% | 🟢 Complete | ✅ Yes |
-| `hu` | Hungarian | 3868 | 99.87% | 🟢 Complete | ✅ Yes |
-| `ja` | Japanese | 3868 | 99.87% | 🟢 Complete | ✅ Yes |
-| `ko` | Korean | 3868 | 99.87% | 🟢 Complete | ✅ Yes |
-| `ru` | Russian | 3868 | 99.87% | 🟢 Complete | ✅ Yes |
-| `sv` | Swedish | 3868 | 99.87% | 🟢 Complete | ✅ Yes |
-| `te` | Telugu | 3868 | 99.87% | 🟢 Complete | ✅ Yes |
 | `tr` | Turkish | 3868 | 99.87% | 🟢 Complete | ✅ Yes |
-| `nl` | Dutch | 3867 | 99.85% | 🟢 Complete | ✅ Yes |
-| `fr` | French | 3867 | 99.85% | 🟢 Complete | ✅ Yes |
-| `it` | Italian | 3867 | 99.85% | 🟢 Complete | ✅ Yes |
-| `ro` | Romanian | 3867 | 99.85% | 🟢 Complete | ✅ Yes |
+| `sk` | Slovak | 3865 | 99.79% | 🟢 Complete | ✅ Yes |
 | `my` | Burmese | 66 | 1.7% | 🟠 Needs Work | ❌ No |
 | `sl` | Slovenian | 65 | 1.68% | 🟠 Needs Work | ❌ No |
 | `sr-cyrl` | Serbian (Cyrillic) | 58 | 1.5% | 🟠 Needs Work | ❌ No |
@@ -65,7 +66,7 @@
 
 ## Status Summary
 
-- **🟢 Complete (≥90%):** 41 locales ready for production
+- **🟢 Complete (≥90%):** 42 locales ready for production
 - **🟡 Good (75-89%):** 0 locales with solid translation coverage
 - **🟠 Needs Work (<75%):** 0 locales requiring translator attention
 - **🔴 Incomplete:** 0 locales (requiring translator attention)

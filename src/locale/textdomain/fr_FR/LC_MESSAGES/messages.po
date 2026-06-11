@@ -14684,6 +14684,18 @@ msgid "seconds"
 msgstr "secondes"
 
 #: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "Impossible de supprimer l'événement : %d personnes sont actuellement enregistrées."
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "Impossible de supprimer l'événement : l'événement est actuellement assigné à un kiosque."
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "Impossible de supprimer le groupe : il est le public pour %d événement(s) et le groupe par défaut pour %d type(s) d'événement. Réaffectez-les d'abord."
+
+#: 
 msgid "A Calendar access token has been generated and saved."
 msgstr "Un jeton d'accès au calendrier a été généré et enregistré."
 
@@ -15357,6 +15369,10 @@ msgid "GroupID required for role selection prompt"
 msgstr "GroupID requière pour le rôle une sélection rapide"
 
 #: 
+msgid "HTML URL"
+msgstr "URL HTML"
+
+#: 
 msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 msgstr "Ayez votre application d'authentification prête (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 
@@ -15367,6 +15383,10 @@ msgstr "Masquer les options avancées"
 #: 
 msgid "Home phone is required"
 msgstr "Le téléphone de la maison est obligatoire"
+
+#: 
+msgid "ICS URL"
+msgstr "URL ICS"
 
 #: 
 msgid "Ignored"
@@ -15387,6 +15407,10 @@ msgstr "Échec de l'importation"
 #: 
 msgid "Import failed. Please try again."
 msgstr "Échec de l'import. Veuillez réessayer."
+
+#: 
+msgid "Important"
+msgstr "Important"
 
 #: 
 msgid "Importing..."

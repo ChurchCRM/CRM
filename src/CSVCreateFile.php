@@ -3,6 +3,7 @@
 require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\Classification;
 use ChurchCRM\model\ChurchCRM\Base\PersonQuery;
@@ -12,6 +13,11 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Utils\CsvExporter;
+
+if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
+    RedirectUtils::securityRedirect('Admin');
+    exit;
+}
 
 // Initialize data collection arrays
 $headers = [];

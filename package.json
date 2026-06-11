@@ -29,7 +29,7 @@
         "build:webpack": "webpack",
         "build:webpack:watch": "webpack --watch",
         "build:php": "run-s composer:install build:php:validate",
-        "build:openapi": "cd src && composer install --no-interaction --prefer-dist && composer run openapi-public && composer run openapi-private",
+        "build:openapi": "cd src && composer install --no-interaction --prefer-dist && composer run openapi:public && composer run openapi:private",
         "build:orm": "cd src/ && ./vendor/bin/propel build --config-dir=propel",
         "clean": "rm -rf node_modules/ temp src/vendor/ src/skin/external src/locale/vendor ai-notes/ src/logs/*.log",
         "composer:install": "cd src/ && composer validate --no-check-publish && composer install --no-dev && find vendor -type d \\( -name 'tests' -o -name 'Tests' -o -name 'test' -o -name 'docs' -o -name 'examples' -o -name 'example' \\) -exec rm -rf {} + 2>/dev/null || true",
@@ -121,12 +121,12 @@
         "tom-select": "^2.6.0"
     },
     "devDependencies": {
-        "@biomejs/biome": "^2.4.15",
+        "@biomejs/biome": "^2.4.16",
         "@types/jquery": "^3.5.33",
         "archiver": "^7.0.1",
         "css-loader": "^7.1.4",
         "cy-verify-downloads": "^0.3.0",
-        "cypress": "^15.14.2",
+        "cypress": "^15.17.0",
         "cypress-terminal-report": "^7.3.3",
         "datatables.net-plugins": "^2.3.2",
         "dotenv": "^17.4.2",
@@ -142,24 +142,12 @@
         "sass": "^1.98.0",
         "sass-loader": "^16.0.8",
         "style-loader": "^4.0.0",
-        "ts-loader": "^9.5.4",
+        "ts-loader": "^9.6.0",
         "typescript": "^6.0.3",
-        "webpack": "^5.106.2",
-        "webpack-cli": "^7.0.2"
+        "webpack": "^5.107.2",
+        "webpack-cli": "^7.0.3"
     },
     "overrides": {
-        "lodash": "4.18.1",
-        "lodash-es": "4.18.1",
-        "@xmldom/xmldom": "0.8.12",
-        "picomatch": "4.0.4",
-        "grunt": {
-            "minimatch": "3.1.4",
-            "brace-expansion": "1.1.13"
-        },
-        "npm-run-all": {
-            "minimatch": "3.1.4",
-            "brace-expansion": "1.1.13"
-        },
         "archiver": {
             "archiver-utils": {
                 "glob": {
@@ -169,6 +157,18 @@
             "readdir-glob": {
                 "minimatch": "5.1.8"
             }
+        },
+        "lodash": "4.18.1",
+        "lodash-es": "4.18.1",
+        "@xmldom/xmldom": "0.9.10",
+        "picomatch": "4.0.4",
+        "grunt": {
+            "minimatch": "3.1.4",
+            "brace-expansion": "1.1.13"
+        },
+        "npm-run-all": {
+            "minimatch": "3.1.4",
+            "brace-expansion": "1.1.13"
         },
         "svgicons2svgfont": {
             "brace-expansion": "5.0.5"

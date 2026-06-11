@@ -151,7 +151,7 @@ function writeChangelogFile(tag, title, body, publishedAt, force) {
     '',
   ].join('\n');
 
-  fs.writeFileSync(dest, content);
+  fs.writeFileSync(dest, content); // lgtm[js/file-system-race] Only runs in GitHub Actions; race/symlink risk accepted in trusted CI environment
   console.log(`Wrote changelog/${tag}.md`);
 }
 
@@ -173,7 +173,7 @@ function updateChangelogIndex(tag, publishedAt, highlights) {
   if (sepIdx === -1) throw new Error('Could not find table separator in CHANGELOG.md');
 
   lines.splice(sepIdx + 1, 0, newRow);
-  fs.writeFileSync(indexPath, lines.join('\n'));
+  fs.writeFileSync(indexPath, lines.join('\n')); // lgtm[js/http-to-file-access] Path is hardcoded CHANGELOG.md in repo root
   console.log(`Added ${tag} row to CHANGELOG.md`);
 }
 

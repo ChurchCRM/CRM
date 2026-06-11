@@ -14757,6 +14757,18 @@ msgid "seconds"
 msgstr "秒"
 
 #: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "无法删除事件：%d 人目前已签到。"
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "无法删除事件：该事件目前已分配给信息亭。"
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "无法删除小组：它是 %d 个事件的受众，也是 %d 个事件类型的默认小组。请先重新分配那些。"
+
+#: 
 msgid "A Calendar access token has been generated and saved."
 msgstr "已生成并保存日历访问令牌。"
 
@@ -15430,6 +15442,10 @@ msgid "GroupID required for role selection prompt"
 msgstr "角色选择提示需要GroupID"
 
 #: 
+msgid "HTML URL"
+msgstr "HTML 网址"
+
+#: 
 msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 msgstr "准备好您的验证器应用（Google Authenticator、Microsoft Authenticator、Authy等）"
 
@@ -15440,6 +15456,10 @@ msgstr "隐藏高级选项"
 #: 
 msgid "Home phone is required"
 msgstr "家庭电话是必填项"
+
+#: 
+msgid "ICS URL"
+msgstr "ICS 网址"
 
 #: 
 msgid "Ignored"
