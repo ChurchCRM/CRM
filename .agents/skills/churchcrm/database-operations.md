@@ -617,29 +617,33 @@ $dt = DateTimeUtils::parsePartialDate($rawString); // returns DateTime|null
 
 Returns `null` for blank/unparseable input — always null-guard before calling ORM setters. Use this instead of `new \DateTime($userInput)` anywhere user-supplied date strings are accepted; it handles the year-less `0000-MM-DD` format that standard PHP date functions reject.
 
-### `orderBy` inside `useXxxQuery()` causes column hydration offset corruption <!-- learned: 2026-06-11 -->
+### Always call `joinWith*()` at top level before `useXxxQuery()` with nested joins <!-- learned: 2026-06-11 -->
 
-Placing `->orderByXxx()` or `->orderBy()` **inside** a `useXxxQuery()...endUse()` block shifts
-Propel's column hydration offsets for the outer query. This causes unrelated columns to be parsed
-as the wrong type (e.g. `event_recurrence_type = 'weekly'` parsed as a date → `PropelException`).
+`useEventQuery()` only adds a JOIN clause — it does NOT add the related table's columns to the SELECT.
+If you call `leftJoinWithYyy()` inside `useEventQuery()` without first calling `joinWithEvent()` at
+the top level, Yyy's columns are added to SELECT BEFORE the primary table's own columns, corrupting
+Propel's numeric hydration offsets (e.g. `type_defrecurtype = 'weekly'` lands at a TIMESTAMP offset
+→ `PropelException: Error parsing date/time value 'weekly'`).
 
-**Always place `orderBy` on the outer query**, using the qualified column reference:
+**Always prefix with `->joinWithRelated(Criteria::LEFT_JOIN)` at the top level:**
 
 ```php
-// ✅ CORRECT — orderBy outside useEventQuery()
+// ✅ CORRECT — joinWithEvent at top ensures EventAttend cols come first
 EventAttendQuery::create()
+    ->joinWithEvent(Criteria::LEFT_JOIN)          // registers Event cols after EventAttend cols
     ->useEventQuery(null, Criteria::LEFT_JOIN)
-        ->leftJoinWithEventType()
+        ->leftJoinWithEventType()                 // EventType cols come last
+        ->orderByStart(Criteria::DESC)            // orderBy inside is fine here
     ->endUse()
-    ->orderBy('events_event.event_start', Criteria::DESC); // qualified ref, safe
+    ->find();
 
-// ❌ WRONG — orderBy inside useEventQuery() corrupts hydration offsets
+// ❌ WRONG — no top-level joinWithEvent; EventType cols inserted BEFORE EventAttend cols
 EventAttendQuery::create()
     ->useEventQuery(null, Criteria::LEFT_JOIN)
-        ->leftJoinWithEventType()
-        ->orderByStart(Criteria::DESC) // ← shifts column offsets → PropelException
-    ->endUse();
+        ->leftJoinWithEventType()                 // corrupts hydration offsets → PropelException
+    ->endUse()
+    ->find();
 ```
 
-This affects any query that joins multiple tables via `useXxxQuery()` and has eager-loaded
-columns in the result set. The bug only surfaces at runtime (not at query-build time).
+This affects any `EventAttendQuery` (or similar) where `useXxxQuery()` contains a nested
+`leftJoinWithYyy()`. The bug only surfaces at runtime when the joined records exist.
