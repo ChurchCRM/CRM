@@ -3,8 +3,14 @@
 /**
  * UI spec for the Attendance History tab on the Person view page.
  *
- * Test data: person 2 (Mathew Campbell) is checked into event 1 in before()
- * and cleaned up in after(). Person 1 (Admin) has no attendance records.
+ * Seeding strategy: person 2 (Mathew Campbell) is checked into event 1 in
+ * the beforeEach() of contexts that need attendance data — AFTER
+ * setupAdminSession() has established auth. The checkin call accepts both 200
+ * (freshly checked in) and 409 (already checked in from a previous test run)
+ * so duplicate checkins are silently tolerated.
+ *
+ * The after() cleanup runs as admin (cy.session is still alive after the last
+ * beforeEach of the suite) to remove the attendance record.
  *
  * cy.intercept uses "**/api/..." glob patterns so intercepts work when
  * ChurchCRM is deployed under a subdirectory path.
@@ -14,21 +20,18 @@ describe("Person Attendance History Tab", () => {
     const PERSON_WITHOUT_ATTENDANCE = 1;
     const EVENT_ID = 1;
 
-    before(() => {
-        // Seed: check person 2 into event 1 so the attendance tab has data
-        cy.makePrivateAdminAPICall("POST", `/api/events/${EVENT_ID}/checkin`, { personId: PERSON_WITH_ATTENDANCE }, 200);
-    });
-
     after(() => {
-        // Cleanup: check person 2 out of event 1
+        // Cleanup: check person 2 out of event 1.
+        // cy.session from the last beforeEach is still valid here.
+        cy.setupAdminSession();
         cy.makePrivateAdminAPICall("POST", `/api/events/${EVENT_ID}/checkout`, { personId: PERSON_WITH_ATTENDANCE }, 200);
     });
 
-    beforeEach(() => {
-        cy.setupAdminSession();
-    });
-
     context("Tab navigation", () => {
+        beforeEach(() => {
+            cy.setupAdminSession();
+        });
+
         it("shows the Attendance tab nav item on the person view", () => {
             cy.visit(`/people/view/${PERSON_WITH_ATTENDANCE}`);
             cy.get("#nav-item-attendance").should("exist").and("be.visible");
@@ -42,6 +45,15 @@ describe("Person Attendance History Tab", () => {
 
     context("Lazy load on tab activation — person with attendance", () => {
         beforeEach(() => {
+            // Auth FIRST, then seed — before() fires before any auth is set up
+            cy.setupAdminSession();
+            // Accept 200 (fresh checkin) or 409 (already checked in) — tolerate duplicates
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/events/${EVENT_ID}/checkin`,
+                { personId: PERSON_WITH_ATTENDANCE },
+                [200, 409],
+            );
             cy.visit(`/people/view/${PERSON_WITH_ATTENDANCE}`);
             // Use **/api/** glob so intercepts work under a subdirectory deployment
             cy.intercept("GET", `**/api/attendance/person/${PERSON_WITH_ATTENDANCE}`).as("attendanceApi");
@@ -112,6 +124,7 @@ describe("Person Attendance History Tab", () => {
 
     context("Person with no attendance records", () => {
         beforeEach(() => {
+            cy.setupAdminSession();
             cy.visit(`/people/view/${PERSON_WITHOUT_ATTENDANCE}`);
             cy.intercept("GET", `**/api/attendance/person/${PERSON_WITHOUT_ATTENDANCE}`).as("emptyAttendance");
             cy.get("#nav-item-attendance").click();
@@ -134,6 +147,13 @@ describe("Person Attendance History Tab", () => {
 
     context("Filter controls", () => {
         beforeEach(() => {
+            cy.setupAdminSession();
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/events/${EVENT_ID}/checkin`,
+                { personId: PERSON_WITH_ATTENDANCE },
+                [200, 409],
+            );
             cy.visit(`/people/view/${PERSON_WITH_ATTENDANCE}`);
             cy.intercept("GET", `**/api/attendance/person/${PERSON_WITH_ATTENDANCE}`).as("attendanceApi");
             cy.get("#nav-item-attendance").click();
