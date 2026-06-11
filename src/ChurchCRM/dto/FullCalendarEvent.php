@@ -49,17 +49,29 @@ class FullCalendarEvent
             $fce->url = $url;
         }
 
+        // Build extendedProps from description and holiday metadata
+        $extendedProps = [];
+
+        $desc = $CRMEvent->getDesc();
+        if ($desc) {
+            $extendedProps['description'] = $desc;
+        }
+
         try {
             $country = $CRMEvent->getVirtualColumn('holidayCountry');
             $type    = $CRMEvent->getVirtualColumn('holidayType');
-            if ($country !== null || $type !== null) {
-                $fce->extendedProps = array_filter([
-                    'country' => $country,
-                    'type'    => $type,
-                ]);
+            if ($country !== null) {
+                $extendedProps['country'] = $country;
+            }
+            if ($type !== null) {
+                $extendedProps['type'] = $type;
             }
         } catch (\Throwable $e) {
             // not a holiday event — virtual columns absent
+        }
+
+        if (!empty($extendedProps)) {
+            $fce->extendedProps = $extendedProps;
         }
 
         return $fce;
