@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\TimelineService;
@@ -62,6 +63,14 @@ $app->group('/timeline', function (RouteCollectorProxy $group): void {
         if (FamilyQuery::create()->findPk($familyId) === null) {
             throw new HttpNotFoundException($request);
         }
+
+        // Authorization: enforce family-scope for EditSelf-only users.
+        // Fixes GHSA-jjcj-h3cm-p7x7
+        $currentUser = AuthenticationManager::getCurrentUser();
+        if (!$currentUser->canViewFamily($familyId)) {
+            return SlimUtils::renderErrorJSON($response, gettext('Access denied'), [], 403);
+        }
+
         $service = new TimelineService();
         return SlimUtils::renderJSON($response, ['timeline' => $service->getForFamily($familyId)]);
     });
