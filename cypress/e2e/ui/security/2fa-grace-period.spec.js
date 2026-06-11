@@ -3,38 +3,40 @@
 /**
  * Tests for the mandatory 2FA grace period feature (#5169).
  *
- * These tests validate the grace period enforcement behaviour via the
- * API + database. Full end-to-end UI tests (banner, enrollment flow) require
- * a running CRM with 2FA support configured and are documented as follow-up.
+ * What is actually tested here:
+ *   1. i2FAGracePeriodDays config key is readable via the API and returns
+ *      exactly 7 (the configured default).
+ *   2. i2FAGracePeriodDays persists a written value and can be reset.
+ *   3. i2FAGracePeriodDays accepts 0 (immediate enforcement mode).
+ *   4. With grace=7 and mandate on, an unenrolled user can reach the
+ *      dashboard (within-grace pass-through) and sees the grace banner.
+ *   5. With grace=0 and mandate on, an unenrolled user is immediately
+ *      redirected to the enrollment page.
+ *   6. With mandate off, no grace banner is shown.
  *
- * What is tested here:
- *   1. i2FAGracePeriodDays config key is readable and writable via the API.
- *   2. The config is surfaced in getUserSettingsConfig (admin panel).
- *   3. With grace=7 and no grace-start, visiting dashboard as unenrolled
- *      user succeeds (within-grace behaviour via cookie session).
- *   4. With grace=0, unenrolled user is redirected to enrollment page.
- *   5. With grace=7 but grace start 8 days ago, unenrolled user is blocked.
- *   6. After enrollment, the grace banner is absent.
+ * TODO (require Docker environment with direct DB access):
+ *   - Verify that an unenrolled user whose grace start is >N days in the
+ *     past is blocked and redirected to manage2fa (expired status).
+ *   - Verify that the banner disappears after the user successfully enrolls.
+ *   - Verify that disabling 2FA while the mandate is active re-stamps a
+ *     fresh grace start (new window, not immediate lock-out).
  *
- * Tests 3–6 are integration tests that use the admin API to set up state,
- * then assert HTTP redirect behaviour by observing where the session lands.
- *
- * Note: these tests manipulate global config rows (bRequire2FA,
- * i2FAGracePeriodDays) and database rows — they run in the dedicated
- * Docker test environment and clean up after themselves.
+ * Note: tests that mutate global config (bRequire2FA, i2FAGracePeriodDays)
+ * restore defaults in afterEach to avoid cross-test contamination.
  */
 
 describe("2FA Grace Period — config API", () => {
-    it("GET i2FAGracePeriodDays returns the default value (7)", () => {
+    it("GET i2FAGracePeriodDays returns exactly 7 (the default)", () => {
         cy.makePrivateAdminAPICall(
             "GET",
             "/admin/api/system/config/i2FAGracePeriodDays",
             null,
             200,
         ).then((resp) => {
-            // Default is 7; accept any non-empty numeric string (admin may have changed it)
             expect(resp.body).to.have.property("value");
-            expect(Number(resp.body.value)).to.be.a("number");
+            const value = Number(resp.body.value);
+            expect(value).to.satisfy(Number.isFinite, "must be a finite number");
+            expect(value).to.equal(7);
         });
     });
 
@@ -111,8 +113,7 @@ describe("2FA Grace Period — enforcement", () => {
         );
     }
 
-    // Helper: ensure the standard user has 2FA disabled via admin API
-    // User 3 = tony.wade (standard.username in docker config)
+    // Helper: ensure the standard user (person ID 3, tony.wade) has 2FA disabled
     function disableUser2FA(userId = 3) {
         return cy.makePrivateAdminAPICall(
             "POST",
@@ -123,15 +124,13 @@ describe("2FA Grace Period — enforcement", () => {
     }
 
     afterEach(() => {
-        // Always reset to safe defaults after each test
+        // Always restore safe defaults so other tests are not affected
         setRequire2FA(false);
         setGraceDays(7);
-        // Disable 2FA for standard user to reset state
         disableUser2FA(3);
     });
 
-    it("grace=7, mandate on: unenrolled user can access dashboard (within-grace)", () => {
-        // Ensure user has no 2FA
+    it("grace=7, mandate on: unenrolled user can access dashboard (within-grace pass-through)", () => {
         disableUser2FA(3);
         setRequire2FA(true);
         setGraceDays(7);
@@ -141,11 +140,11 @@ describe("2FA Grace Period — enforcement", () => {
         cy.get("input[name=User]").type(standardUser);
         cy.get("input[name=Password]").type(standardPassword + "{enter}");
 
-        // Should land on dashboard, not enrollment page
+        // Should land on dashboard, NOT on the enrollment page
         cy.url({ timeout: 15000 }).should("not.include", "manage2fa");
         cy.url({ timeout: 15000 }).should("not.include", "enroll2fa");
 
-        // Grace banner should be visible
+        // Grace banner must be visible
         cy.get("#two-fa-grace-banner", { timeout: 10000 }).should("exist");
         cy.get("#two-fa-grace-banner").should("contain.text", "day");
     });
@@ -160,43 +159,17 @@ describe("2FA Grace Period — enforcement", () => {
         cy.get("input[name=User]").type(standardUser);
         cy.get("input[name=Password]").type(standardPassword + "{enter}");
 
-        // Should redirect to manage2fa
+        // Immediate mode: no grace window, must redirect to manage2fa
         cy.url({ timeout: 15000 }).should("include", "manage2fa");
     });
 
-    it("grace=7, mandate on, grace started 8 days ago: unenrolled user is blocked", () => {
-        disableUser2FA(3);
-        setRequire2FA(true);
-        setGraceDays(7);
-
-        // Simulate expired grace by back-dating the grace start via DB SQL fixture
-        // We use the admin SQL execution endpoint if available, otherwise skip
-        // with a note that this test requires direct DB access.
-        // Use person ID 3 (tony.wade) which maps to usr_per_ID = 3
-        cy.makePrivateAdminAPICall(
-            "POST",
-            "/admin/api/database/execute",
-            {
-                sql: "UPDATE user_usr SET usr_TwoFactorAuthGracePeriodStart = DATE_SUB(NOW(), INTERVAL 8 DAY) WHERE usr_per_ID = 3",
-            },
-            [200, 404, 405],
-        ).then((resp) => {
-            if (resp.status !== 200) {
-                // Endpoint not available — skip this sub-assertion
-                cy.log(
-                    "DB execute endpoint not available; skipping expired-grace redirect test",
-                );
-                return;
-            }
-
-            cy.clearCookies();
-            cy.visit("/session/begin");
-            cy.get("input[name=User]").type(standardUser);
-            cy.get("input[name=Password]").type(standardPassword + "{enter}");
-
-            // Should redirect to manage2fa
-            cy.url({ timeout: 15000 }).should("include", "manage2fa");
-        });
+    // TODO: add a test for the expired-grace block path once a supported API
+    // endpoint exists for back-dating usr_TwoFactorAuthGracePeriodStart, or
+    // once a Cypress DB fixture helper is available in the Docker environment.
+    it.skip("grace=7, grace start 8 days ago: unenrolled user is blocked (requires direct DB access)", () => {
+        // This test requires updating usr_TwoFactorAuthGracePeriodStart to a
+        // date in the past, which needs direct database access not currently
+        // available via the public API. Run manually in a Docker environment.
     });
 
     it("mandate off: no grace banner shown", () => {
@@ -210,7 +183,7 @@ describe("2FA Grace Period — enforcement", () => {
         cy.get("input[name=Password]").type(standardPassword + "{enter}");
 
         cy.url({ timeout: 15000 }).should("not.include", "manage2fa");
-        // Banner should NOT be present
+        // Banner must NOT be present when mandate is off
         cy.get("#two-fa-grace-banner").should("not.exist");
     });
 });
