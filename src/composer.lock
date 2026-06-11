@@ -3000,16 +3000,16 @@
         },
         {
             "name": "setasign/fpdf",
-            "version": "1.8.6",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Setasign/FPDF.git",
-                "reference": "0838e0ee4925716fcbbc50ad9e1799b5edfae0a0"
+                "reference": "051b70e4c57dedc88df41b1eff1c62894e5f9ed0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Setasign/FPDF/zipball/0838e0ee4925716fcbbc50ad9e1799b5edfae0a0",
-                "reference": "0838e0ee4925716fcbbc50ad9e1799b5edfae0a0",
+                "url": "https://api.github.com/repos/Setasign/FPDF/zipball/051b70e4c57dedc88df41b1eff1c62894e5f9ed0",
+                "reference": "051b70e4c57dedc88df41b1eff1c62894e5f9ed0",
                 "shasum": ""
             },
             "require": {
@@ -3040,9 +3040,9 @@
                 "pdf"
             ],
             "support": {
-                "source": "https://github.com/Setasign/FPDF/tree/1.8.6"
+                "source": "https://github.com/Setasign/FPDF/tree/1.9.0"
             },
-            "time": "2023-06-26T14:44:25+00:00"
+            "time": "2026-05-31T14:25:29+00:00"
         },
         {
             "name": "slim/http-cache",
@@ -5398,11 +5398,11 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "2.2.1",
+            "version": "2.2.2",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/dea9c8f2d25cc849391042b71e429c1a4bf82660",
-                "reference": "dea9c8f2d25cc849391042b71e429c1a4bf82660",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/e5cc34d491a90e79c216d824f60fe21fd4d93bd6",
+                "reference": "e5cc34d491a90e79c216d824f60fe21fd4d93bd6",
                 "shasum": ""
             },
             "require": {
@@ -5427,16 +5427,13 @@
             ],
             "authors": [
                 {
-                    "name": "Ondřej Mirtes",
-                    "email": "ondrej@mirtes.cz"
+                    "name": "Ondřej Mirtes"
                 },
                 {
-                    "name": "Markus Staab",
-                    "email": "markus.staab@redaxmedia.de"
+                    "name": "Markus Staab"
                 },
                 {
-                    "name": "Vincent Langlet",
-                    "email": "vincentlanglet@gmail.com"
+                    "name": "Vincent Langlet"
                 }
             ],
             "description": "PHPStan - PHP Static Analysis Tool",
@@ -5461,7 +5458,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-05-28T14:44:12+00:00"
+            "time": "2026-06-05T09:00:01+00:00"
         },
         {
             "name": "radebatz/type-info-extras",
