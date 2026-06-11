@@ -32,11 +32,10 @@ use ChurchCRM\Utils\VersionUtils;
  *   2. SHA-256 of the downloaded bytes must match the supplied digest
  *      before ZipArchive is touched.
  *   3. Zip walk rejects ZIP Slip, absolute paths, drive letters, control
- *      bytes, >2000 entries, >80 MB uncompressed, disallowed extensions
- *      (`.php3`–`.php8`, `.phar`, `.phtml`, `.pht`, `.sh`, `.exe`, `.so`, `.dll`, …), and hidden files
- *      (note: plain `.php` IS allowed — plugins are PHP code; direct HTTP
- *      execution is blocked separately via `.htaccess` / nginx deny rules),
- *      except `.editorconfig` / `.gitattributes`.
+ *      bytes, >2000 entries, >80 MB uncompressed, server-executable extensions
+ *      (see {@see DENIED_EXTENSIONS} for the full list), double-extension
+ *      tricks (e.g. evil.php.png), and hidden files except `.editorconfig`
+ *      / `.gitattributes`.
  *   4. Exactly one top-level directory whose name equals the plugin id.
  *   5. Extracted plugin.json must declare the same id, and for verified
  *      installs the same version, as the approved entry.
