@@ -206,7 +206,7 @@ CREATE TABLE `donationfund_fun` (
 LOCK TABLES `donationfund_fun` WRITE;
 /*!40000 ALTER TABLE `donationfund_fun` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `donationfund_fun` VALUES (1,'true','Pledges','Pledge income for the operating budget',1),(2,'true','New Building Fund','',2),(3,'true','Music Ministry','',3);
+INSERT INTO `donationfund_fun` VALUES (1,'true','Pledges','Pledge income for the operating budget',1,NULL),(2,'true','New Building Fund','',2,NULL),(3,'true','Music Ministry','',3,NULL);
 /*!40000 ALTER TABLE `donationfund_fun` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
