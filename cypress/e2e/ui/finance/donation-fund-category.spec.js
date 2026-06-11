@@ -83,9 +83,25 @@ describe("Donation Fund Category - Editor", () => {
 });
 
 describe("Donation Fund Category - Finance Dashboard", () => {
+    // Use separate fund/category names so this describe block is fully
+    // independent of the Editor describe block above (which modifies the
+    // shared fund's category in its edit test, breaking the createCategorizedFund
+    // assertion if we try to reuse the same constants).
+    const dashCategoryName = "Dashboard Category " + Date.now();
+    const dashFundName = "Dashboard Fund " + Date.now();
+
     before(() => {
         // Ensure a categorized fund exists regardless of spec execution order
-        createCategorizedFund();
+        cy.setupAdminSession();
+        cy.visit("DonationFundEditor.php");
+        cy.get("#newFieldName").type(dashFundName);
+        cy.get("#newFieldCategory").type(dashCategoryName);
+        cy.get("#newFieldDesc").type("Dashboard category test fund");
+        cy.get("[name='AddField']").click();
+        cy.get("input[name$='name'][value='" + dashFundName + "']")
+            .closest("tr")
+            .find("input[name$='category']")
+            .should("have.value", dashCategoryName);
     });
 
     beforeEach(() => {
