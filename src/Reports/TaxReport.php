@@ -207,7 +207,7 @@ if ($output === 'pdf') {
                 }
                 $this->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_City . ', ' . $fam_State . '  ' . $fam_Zip);
                 $curY += SystemConfig::getValue('incrementY');
-                if ($fam_Country !== '' && Countries::toISO($fam_Country) !== SystemConfig::getValue('sDefaultCountry')) {
+                if (Countries::isForeign($fam_Country)) {
                     $this->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_Country);
                     $curY += SystemConfig::getValue('incrementY');
                 }
@@ -221,7 +221,7 @@ if ($output === 'pdf') {
                 }
                 $this->writeAt(SystemConfig::getValue('leftX') + 5, $curY, SystemConfig::getValue('sChurchCity') . ', ' . SystemConfig::getValue('sChurchState') . '  ' . SystemConfig::getValue('sChurchZip'));
                 $curY += SystemConfig::getValue('incrementY');
-                if ($fam_Country !== '' && Countries::toISO($fam_Country) !== SystemConfig::getValue('sDefaultCountry')) {
+                if (Countries::isForeign($fam_Country)) {
                     $this->writeAt(SystemConfig::getValue('leftX') + 5, $curY, $fam_Country);
                     $curY += SystemConfig::getValue('incrementY');
                 }

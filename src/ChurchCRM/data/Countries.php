@@ -2,8 +2,15 @@
 
 namespace ChurchCRM\data;
 
+use ChurchCRM\dto\SystemConfig;
+
 class Countries
 {
+    private const LEGACY_ALIASES = [
+        'US'            => 'US',
+        'USA'           => 'US',
+        'United States' => 'US',
+    ];
     private static ?array $countries = null;
 
     private static function initializeCountries(): void
@@ -335,11 +342,8 @@ class Countries
         }
 
         // Known legacy aliases not resolvable by name lookup
-        $aliases = [
-            'USA' => 'US',
-        ];
-        if (isset($aliases[$value])) {
-            return $aliases[$value];
+        if (isset(self::LEGACY_ALIASES[$value])) {
+            return self::LEGACY_ALIASES[$value];
         }
 
         // Try resolving by full country name (e.g. 'United States' -> 'US')
@@ -353,5 +357,25 @@ class Countries
         }
 
         return $value;
+    }
+
+    /**
+     * Returns true when $country is a foreign country relative to the
+     * configured default country (sDefaultCountry).
+     * Returns false for blank/null input (treat missing country as domestic).
+     * Applies toISO() to BOTH sides so legacy stored values (e.g. "United States"
+     * stored as sDefaultCountry) are handled correctly.
+     */
+    public static function isForeign(?string $country): bool
+    {
+        if (empty($country)) {
+            return false;
+        }
+        $default = SystemConfig::getValue('sDefaultCountry');
+        if (empty($default)) {
+            return true;
+        }
+
+        return self::toISO($country) !== self::toISO($default);
     }
 }

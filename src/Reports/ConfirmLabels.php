@@ -44,8 +44,8 @@ foreach ($families as $family) {
     }
     $labelText .= sprintf("\n%s, %s  %s", $family->getCity(), $family->getState(), $family->getZip());
 
-    if ($family->getCountry() !== '' && Countries::toISO($family->getCountry()) !== SystemConfig::getValue('sDefaultCountry')) {
-        $labelText .="\n" . $family->getCountry();
+    if (Countries::isForeign($family->getCountry())) {
+        $labelText .= "\n" . $family->getCountry();
     }
 
     $pdf->addPdfLabel($labelText);
