@@ -116,6 +116,18 @@ $personListColumns = [
 ?>
 
 <?php
+
+// Initialize data quality check counts if not already set by included scripts
+if (!isset($genderDataCheckCount)) {
+    $genderDataCheckCount = 0;
+}
+if (!isset($roleDataCheckCount)) {
+    $roleDataCheckCount = 0;
+}
+if (!isset($classificationDataCheckCount)) {
+    $classificationDataCheckCount = 0;
+}
+
 // Calculate data quality status
 $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         $classificationDataCheckCount > 0;
