@@ -16,6 +16,7 @@ use Slim\Views\PhpRenderer;
 
 // GET /event/dashboard — events dashboard page
 $app->get('/dashboard', function (Request $request, Response $response) {
+    $now = DateTimeUtils::getToday();
     $params = $request->getQueryParams();
     $canEditEvents = AuthenticationManager::getCurrentUser()->isAddEvent();
 
@@ -41,11 +42,6 @@ $app->get('/dashboard', function (Request $request, Response $response) {
             ->filterByStart(['min' => $yearMin, 'max' => $yearMax])
         ->endUse()
         ->filterByCheckinDate(null, Criteria::ISNOTNULL)
-        ->count();
-
-    $activeEventsThisYear = EventQuery::create()
-        ->filterByStart(['min' => $yearMin, 'max' => $yearMax])
-        ->filterByInActive(0)
         ->count();
 
     // Total number of event types defined in the system (not filtered by year).
@@ -83,6 +79,8 @@ $app->get('/dashboard', function (Request $request, Response $response) {
     // --- Build monthly event data (all Propel ORM — replaces 6 RunQuery calls) ---
     $allMonths = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
     $monthlyData = [];
+    // $now is defined once outside the foreach loop to avoid re-instantiation
+    // and to use the church-configured timezone via DateTimeUtils::getToday().
 
     foreach ($allMonths as $mVal) {
         $daysInMonth = DateTimeUtils::getDaysInMonth($mVal, $EventYear);
@@ -104,7 +102,8 @@ $app->get('/dashboard', function (Request $request, Response $response) {
             continue;
         }
 
-        $events = [];
+        $currentEvents = [];
+        $pastEvents    = [];
         foreach ($monthEvents as $evt) {
             $eventId = (int) $evt->getId();
 
@@ -138,7 +137,7 @@ $app->get('/dashboard', function (Request $request, Response $response) {
                 ];
             }
 
-            $events[] = [
+            $row = [
                 'id'                => $eventId,
                 'type_name'         => $evt->getEventType() ? $evt->getEventType()->getName() : '',
                 'title'             => $evt->getTitle(),
@@ -152,13 +151,24 @@ $app->get('/dashboard', function (Request $request, Response $response) {
                 'checked_out_count' => $checkedOutCount,
                 'counts'            => $countsArray,
             ];
+
+            // An event is "past" when it has ended chronologically OR was deactivated.
+            $isPast = ((int) $evt->getInActive() === 1)
+                || ($evt->getEnd() !== null && $evt->getEnd() < $now);
+
+            if ($isPast) {
+                $pastEvents[] = $row;
+            } else {
+                $currentEvents[] = $row;
+            }
         }
 
         // Monthly averages — eventcounts_evtcnt has no FK relation to events_event
         // in the schema, so we filter by the event IDs we already loaded above.
         $averages = [];
-        if ($eType !== 'All' && !empty($events[0]['counts'])) {
-            $eventIds = array_column($events, 'id');
+        $allMonthEvents = array_merge($currentEvents, $pastEvents);
+        if ($eType !== 'All' && !empty($allMonthEvents[0]['counts'])) {
+            $eventIds = array_column($allMonthEvents, 'id');
 
             $avgCounts = EventCountsQuery::create()
                 ->filterByEvtcntEventid($eventIds, Criteria::IN)
@@ -177,15 +187,22 @@ $app->get('/dashboard', function (Request $request, Response $response) {
         }
 
         $monthlyData[] = [
-            'month'     => $mVal,
-            'monthName' => date('F', mktime(0, 0, 0, $mVal, 1, $EventYear)),
-            'count'     => $monthEvents->count(),
-            'events'    => $events,
-            'averages'  => $averages,
+            'month'         => $mVal,
+            'monthName'     => date('F', mktime(0, 0, 0, $mVal, 1, $EventYear)),
+            'count'         => $monthEvents->count(),
+            'currentCount'  => count($currentEvents),
+            'pastCount'     => count($pastEvents),
+            'currentEvents' => $currentEvents,
+            'pastEvents'    => $pastEvents,
+            'averages'      => $averages,
         ];
     }
 
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
+
+    // Aggregate current/past counts across all months for the stat card.
+    $totalCurrentEvents = array_sum(array_column($monthlyData, 'currentCount'));
+    $totalPastEvents    = array_sum(array_column($monthlyData, 'pastCount'));
 
     return $renderer->render($response, 'list-events.php', [
         'sRootPath'              => SystemURLs::getRootPath(),
@@ -201,7 +218,8 @@ $app->get('/dashboard', function (Request $request, Response $response) {
         'EventYear'              => $EventYear,
         'totalEventsThisYear'    => $totalEventsThisYear,
         'totalCheckInsThisYear'  => $totalCheckInsThisYear,
-        'activeEventsThisYear'   => $activeEventsThisYear,
+        'totalCurrentEvents'     => $totalCurrentEvents,
+        'totalPastEvents'        => $totalPastEvents,
         'totalEventTypes'        => $totalEventTypes,
         'eventTypesWithEvents'   => $eventTypesWithEvents,
         'availableYears'         => $availableYears,
