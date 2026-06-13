@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-12 18:34+0000\n"
+"POT-Creation-Date: 2026-06-13 18:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -767,6 +767,9 @@ msgid "All system settings and custom fields"
 msgstr ""
 
 msgid "All three fields are required."
+msgstr ""
+
+msgid "All times shown in"
 msgstr ""
 
 msgid "All timezones match"
@@ -1662,6 +1665,10 @@ msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
 msgstr ""
 
 msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr ""
+
+#, php-format
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
 msgstr ""
 
 msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
