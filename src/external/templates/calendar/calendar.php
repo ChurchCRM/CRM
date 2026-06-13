@@ -5,14 +5,16 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 
 $sPageTitle = $calendarName;
+$churchTz   = ChurchMetaData::getChurchTimeZone();
+
 require SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php";
 ?>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/fullcalendar/index.global.min.js') ?>"></script>
 <div class="register-box w-100" style="margin-top:5px;">
     <div class="register-logo">
       <a href="<?= SystemURLs::getRootPath() ?>/"><?= ChurchMetaData::getChurchName() ?></a>: <?= InputUtils::escapeHTML($calendarName) ?>
-      <?php $tz = ChurchMetaData::getChurchTimeZone(); if ($tz !== '') : ?>
-      <p class="text-muted small mb-0"><i class="ti ti-clock me-1"></i><?= gettext('All times shown in') ?> <?= InputUtils::escapeHTML($tz) ?></p>
+      <?php if ($churchTz) : ?>
+      <p class="text-muted small mb-0"><i class="ti ti-clock me-1"></i><?= gettext('All times shown in') ?> <?= InputUtils::escapeHTML($churchTz) ?></p>
       <?php endif; ?>
     </div>
     <div class="row">
@@ -59,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
       editable: false,
       selectMirror: true,
       locale: window.CRM.lang,
-      timeZone: '<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchTimeZone() ?: 'local') ?>',
+      timeZone: '<?= InputUtils::escapeAttribute($churchTz ?: 'local') ?>',
       eventSources: [
         '<?= $eventSource ?>'
       ],
@@ -71,17 +73,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
         document.getElementById('eventDetailModalLabel').textContent = event.title;
 
-        // Format date/time using the same locale as FullCalendar
-        var locale = window.CRM.lang || navigator.language;
-        var fmtDate = new Intl.DateTimeFormat(locale, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-        var fmtTime = new Intl.DateTimeFormat(locale, { hour: '2-digit', minute: '2-digit' });
+        // Use FullCalendar's own formatter — it applies the calendar's locale and timezone
+        // so times are always shown in the church timezone regardless of the visitor's browser.
+        var cal = window.CRM.fullcalendar;
+        var dateFmt = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        var timeFmt = { hour: '2-digit', minute: '2-digit' };
         var timeStr = '';
         if (event.allDay) {
-          timeStr = event.start ? fmtDate.format(event.start) : '';
+          timeStr = event.start ? cal.formatDate(event.start, dateFmt) : '';
         } else {
-          var dateStr   = event.start ? fmtDate.format(event.start) : '';
-          var startTime = event.start ? fmtTime.format(event.start) : '';
-          var endTime   = event.end   ? fmtTime.format(event.end)   : '';
+          var dateStr   = event.start ? cal.formatDate(event.start, dateFmt) : '';
+          var startTime = event.start ? cal.formatDate(event.start, timeFmt) : '';
+          var endTime   = event.end   ? cal.formatDate(event.end,   timeFmt) : '';
           timeStr = dateStr + (startTime ? ', ' + startTime : '') + (endTime ? ' – ' + endTime : '');
         }
         document.getElementById('eventDetailTimeText').textContent = timeStr;
