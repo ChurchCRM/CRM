@@ -121,12 +121,12 @@
         "tom-select": "^2.6.0"
     },
     "devDependencies": {
-        "@biomejs/biome": "^2.4.15",
+        "@biomejs/biome": "^2.4.16",
         "@types/jquery": "^3.5.33",
         "archiver": "^7.0.1",
         "css-loader": "^7.1.4",
         "cy-verify-downloads": "^0.3.0",
-        "cypress": "^15.14.2",
+        "cypress": "^15.17.0",
         "cypress-terminal-report": "^7.3.3",
         "datatables.net-plugins": "^2.3.2",
         "dotenv": "^17.4.2",
@@ -142,10 +142,10 @@
         "sass": "^1.98.0",
         "sass-loader": "^16.0.8",
         "style-loader": "^4.0.0",
-        "ts-loader": "^9.5.4",
+        "ts-loader": "^9.6.0",
         "typescript": "^6.0.3",
-        "webpack": "^5.106.2",
-        "webpack-cli": "^7.0.2"
+        "webpack": "^5.107.2",
+        "webpack-cli": "^7.0.3"
     },
     "overrides": {
         "archiver": {
