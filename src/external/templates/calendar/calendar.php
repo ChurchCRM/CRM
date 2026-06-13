@@ -2,16 +2,18 @@
 
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 $sPageTitle = $calendarName;
-require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
+require SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php";
 ?>
-<script src="<?= SystemURLs::assetVersioned('/skin/external/moment/moment-with-locales.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/fullcalendar/index.global.min.js') ?>"></script>
 <div class="register-box w-100" style="margin-top:5px;">
     <div class="register-logo">
-      <a href="<?= SystemURLs::getRootPath() ?>/"><?=  ChurchMetaData::getChurchName() ?></a>: <?= $calendarName ?></h1>
-      <p></p>
+      <a href="<?= SystemURLs::getRootPath() ?>/"><?= ChurchMetaData::getChurchName() ?></a>: <?= InputUtils::escapeHTML($calendarName) ?>
+      <?php $tz = ChurchMetaData::getChurchTimeZone(); if ($tz !== '') : ?>
+      <p class="text-muted small mb-0"><i class="ti ti-clock me-1"></i><?= gettext('All times shown in') ?> <?= InputUtils::escapeHTML($tz) ?></p>
+      <?php endif; ?>
     </div>
     <div class="row">
       <div class="col-12">
@@ -32,7 +34,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title fw-semibold" id="eventDetailModalLabel"></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= gettext('Close') ?>"></button>
       </div>
       <div class="modal-body">
         <div class="d-flex align-items-center text-body-secondary small mb-3" id="eventDetailTime">
@@ -57,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
       editable: false,
       selectMirror: true,
       locale: window.CRM.lang,
-      timeZone: '<?= ChurchMetaData::getChurchTimeZone() ?>',
+      timeZone: '<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchTimeZone() ?: 'local') ?>',
       eventSources: [
         '<?= $eventSource ?>'
       ],
@@ -69,14 +71,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
         document.getElementById('eventDetailModalLabel').textContent = event.title;
 
-        // Format date/time
+        // Format date/time using the same locale as FullCalendar
+        var locale = window.CRM.lang || navigator.language;
+        var fmtDate = new Intl.DateTimeFormat(locale, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        var fmtTime = new Intl.DateTimeFormat(locale, { hour: '2-digit', minute: '2-digit' });
         var timeStr = '';
         if (event.allDay) {
-          timeStr = event.start ? event.start.toLocaleDateString([], { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) : '';
+          timeStr = event.start ? fmtDate.format(event.start) : '';
         } else {
-          var dateStr = event.start ? event.start.toLocaleDateString([], { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) : '';
-          var startTime = event.start ? event.start.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '';
-          var endTime   = event.end   ? event.end.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '';
+          var dateStr   = event.start ? fmtDate.format(event.start) : '';
+          var startTime = event.start ? fmtTime.format(event.start) : '';
+          var endTime   = event.end   ? fmtTime.format(event.end)   : '';
           timeStr = dateStr + (startTime ? ', ' + startTime : '') + (endTime ? ' – ' + endTime : '');
         }
         document.getElementById('eventDetailTimeText').textContent = timeStr;
@@ -85,8 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
         descEl.textContent = props.description || '';
         descEl.style.display = props.description ? '' : 'none';
 
-        var modal = new bootstrap.Modal(document.getElementById('eventDetailModal'));
-        modal.show();
+        bootstrap.Modal.getOrCreateInstance(document.getElementById('eventDetailModal')).show();
       }
   });
 
@@ -95,4 +99,4 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <?php
-require(SystemURLs::getDocumentRoot() ."/Include/FooterNotLoggedIn.php");
+require SystemURLs::getDocumentRoot() ."/Include/FooterNotLoggedIn.php";

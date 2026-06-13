@@ -54,7 +54,7 @@ class FullCalendarEvent
 
         $desc = $CRMEvent->getDesc();
         if ($desc) {
-            $extendedProps['description'] = $desc;
+            $extendedProps['description'] = strip_tags($desc);
         }
 
         try {
