@@ -35,6 +35,8 @@ src/generated-conf/
 
 # Community plugins are installed at runtime — not committed to git
 src/plugins/community/*
+# ...except the checked-in .htaccess deny block (GHSA-37mf-vq43-5qp9)
+!src/plugins/community/.htaccess
 
 src/admin/data/signatures.json
 src/ChurchCRM/model/ChurchCRM/Base

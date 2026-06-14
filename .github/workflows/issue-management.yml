@@ -51,9 +51,7 @@ jobs:
   # Auto-comment on newly opened issues with appropriate templates
   # =========================================================================
   auto-comment:
-    if: |
-      github.event_name == 'issues' && github.event.action == 'opened' ||
-      (inputs.operation == 'comment-and-triage' || inputs.operation == 'all')
+    if: false
     name: Auto-comment on new issues
     timeout-minutes: 5
     runs-on: ubuntu-latest
