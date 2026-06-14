@@ -11,10 +11,18 @@
  * (which the other passing event specs also rely on).
  */
 function createTestEvent(callback) {
+    // Use a date 7 days from today so the event lands in the "current" section
+    // of the dashboard (not the past section, which is collapsed by default).
+    // quick-create defaults to today, and today's events are often already past
+    // by the time tests run (start time has elapsed).
+    const future = new Date();
+    future.setDate(future.getDate() + 7);
+    const dateStr = future.toISOString().slice(0, 10);
+
     cy.makePrivateAdminAPICall(
         "POST",
         "/api/events/quick-create",
-        { eventTypeId: 1 },
+        { eventTypeId: 1, date: dateStr },
         200,
     ).then((createResp) => {
         expect(createResp.body).to.have.property("eventId");
@@ -229,6 +237,15 @@ describe("Events Dashboard (MVC)", () => {
 
             cy.intercept("POST", "**/api/events/*/status").as("status");
             cy.visit("event/dashboard");
+
+            // Deactivated events always move to the past section (display:none).
+            // Expand its toggle so the action menu becomes interactable.
+            cy.get(`.event-action-menu-placeholder[data-event-id="${testEventId}"]`, { timeout: 10000 })
+                .parents("tbody[id^='past-events-']")
+                .invoke("attr", "id")
+                .then((tbodyId) => {
+                    cy.get(`[data-past-toggle="${tbodyId}"]`).click();
+                });
 
             cy.get(`.event-action-menu-placeholder[data-event-id="${testEventId}"]`, { timeout: 10000 })
                 .within(() => {
