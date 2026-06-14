@@ -7477,10 +7477,6 @@ msgid "Location & Contact Information"
 msgstr "Sted og kontaktinformasjon"
 
 #: 
-msgid "New to"
-msgstr "Ny i"
-
-#: 
 msgid "No locales configured"
 msgstr "Ingen lokaler konfigurert"
 
@@ -9710,10 +9706,6 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Koble til en SMTP-server slik at ChurchCRM kan sende e-post"
 
 #: 
-msgid "Connect with others"
-msgstr "Kom i kontakt med andre"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Konverter enkeltposter til familieenheter"
 
@@ -9852,10 +9844,6 @@ msgstr "Duplikater"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Hver person kan ha sin egen e-post og mobilnummer."
-
-#: 
-msgid "Easy registration"
-msgstr "Enkel registrering"
 
 #: 
 msgid "Edit Class"
@@ -10160,10 +10148,6 @@ msgstr "Ugyldig \"Fra-nummer\": \"%s\". Inkluder landskoden, f.eks. +4791234567 
 #: 
 msgid "Invite Your Team"
 msgstr "Inviter teamet ditt"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "Bli med i fellesskapet vårt og hold kontakten med"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10556,10 +10540,6 @@ msgid "Record why attendees visited your church"
 msgstr "Registrer hvorfor besøkende kom til kirken"
 
 #: 
-msgid "Register Your Family"
-msgstr "Registrer familien din"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "Fjern alle fra utvalget"
 
@@ -10726,10 +10706,6 @@ msgstr "Start på nytt"
 #: 
 msgid "Start Over"
 msgstr "Begynn på nytt"
-
-#: 
-msgid "Stay informed"
-msgstr "Hold deg oppdatert"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -14587,16 +14563,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "Navn kan ikke være lengre enn %d tegn"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "Trenger du hjelp? Kontakt oss"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "Åpner et 2-minutters vindu for enheter for å registrere seg på:"
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "Velkommen — logg inn for å administrere menigheten din"
 
 #: 
 msgid "Are you sure you want to delete this note?"

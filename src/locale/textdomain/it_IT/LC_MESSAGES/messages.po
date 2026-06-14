@@ -7413,10 +7413,6 @@ msgid "Location & Contact Information"
 msgstr "Posizione e Informazioni di Contatto"
 
 #: 
-msgid "New to"
-msgstr "Nuovo di"
-
-#: 
 msgid "No locales configured"
 msgstr "Nessuna locale configurata"
 
@@ -9646,10 +9642,6 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Collega un server SMTP per consentire a ChurchCRM di inviare e-mail"
 
 #: 
-msgid "Connect with others"
-msgstr "Connettiti con gli altri"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Converti schede individuali in unità familiari"
 
@@ -9788,10 +9780,6 @@ msgstr "Duplicati"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Ogni persona può avere la propria e-mail e numero di cellulare."
-
-#: 
-msgid "Easy registration"
-msgstr "Registrazione facile"
 
 #: 
 msgid "Edit Class"
@@ -10096,10 +10084,6 @@ msgstr "«Numero mittente» non valido: «%s». Includi il prefisso internaziona
 #: 
 msgid "Invite Your Team"
 msgstr "Invita il tuo team"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "Unisciti alla nostra comunità e resta in contatto con"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10492,10 +10476,6 @@ msgid "Record why attendees visited your church"
 msgstr "Registra il motivo della visita dei partecipanti alla parrocchia"
 
 #: 
-msgid "Register Your Family"
-msgstr "Registra la tua famiglia"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "Rimuovi tutto dal carrello"
 
@@ -10662,10 +10642,6 @@ msgstr "Ricomincia da zero"
 #: 
 msgid "Start Over"
 msgstr "Ricomincia"
-
-#: 
-msgid "Stay informed"
-msgstr "Rimani informato"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -14523,16 +14499,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "Il nome non può superare %d caratteri"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "Hai bisogno di aiuto? Contattaci"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "Apre una finestra di 2 minuti per la registrazione dei dispositivi all'indirizzo:"
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "Benvenuto — accedi per gestire la tua comunità"
 
 #: 
 msgid "Are you sure you want to delete this note?"
