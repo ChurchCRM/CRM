@@ -7467,10 +7467,6 @@ msgid "Location & Contact Information"
 msgstr "Locație și informații de contact"
 
 #: 
-msgid "New to"
-msgstr "Nou în"
-
-#: 
 msgid "No locales configured"
 msgstr "Nicio localizare configurată"
 
@@ -9706,10 +9702,6 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Conectați un server SMTP pentru ca ChurchCRM să poată trimite e-mailuri"
 
 #: 
-msgid "Connect with others"
-msgstr "Conectează-te cu alții"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Convertiți înregistrări individuale în unități de familie"
 
@@ -9848,10 +9840,6 @@ msgstr "Duplicate"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Fiecare persoană poate avea propriul e-mail și număr de mobil."
-
-#: 
-msgid "Easy registration"
-msgstr "Înregistrare ușoară"
 
 #: 
 msgid "Edit Class"
@@ -10156,10 +10144,6 @@ msgstr "\"Numărul expeditor\" invalid: \"%s\". Includeți codul de țară, de e
 #: 
 msgid "Invite Your Team"
 msgstr "Invită echipa ta"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "Alătură-te comunității noastre și rămâi conectat cu"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10552,10 +10536,6 @@ msgid "Record why attendees visited your church"
 msgstr "Înregistrați de ce vizitatorii au venit la biserică"
 
 #: 
-msgid "Register Your Family"
-msgstr "Înregistrați-vă familia"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "Elimină toți din selecție"
 
@@ -10722,10 +10702,6 @@ msgstr "Începe de la zero"
 #: 
 msgid "Start Over"
 msgstr "Începe din nou"
-
-#: 
-msgid "Stay informed"
-msgstr "Rămâi informat"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -14584,16 +14560,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "Numele nu poate depăși %d caractere"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "Aveți nevoie de ajutor? Contactați-ne"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "Deschide o fereastră de 2 minute pentru înregistrarea dispozitivelor la:"
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "Bun venit — autentificați-vă pentru a gestiona comunitatea dvs."
 
 #: 
 msgid "Are you sure you want to delete this note?"

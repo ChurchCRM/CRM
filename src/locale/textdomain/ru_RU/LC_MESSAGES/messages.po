@@ -7465,10 +7465,6 @@ msgid "Location & Contact Information"
 msgstr "Место и контакты"
 
 #: 
-msgid "New to"
-msgstr "Новинка в"
-
-#: 
 msgid "No locales configured"
 msgstr "Локали не настроены"
 
@@ -9710,10 +9706,6 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Подключите SMTP-сервер для отправки писем из ChurchCRM"
 
 #: 
-msgid "Connect with others"
-msgstr "Общайтесь с другими"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Преобразовать отдельные записи в семейные единицы"
 
@@ -9852,10 +9844,6 @@ msgstr "Дубликаты"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "У каждого человека может быть собственный email и номер мобильного."
-
-#: 
-msgid "Easy registration"
-msgstr "Простая регистрация"
 
 #: 
 msgid "Edit Class"
@@ -10160,10 +10148,6 @@ msgstr "Недействительный «Номер отправителя»: 
 #: 
 msgid "Invite Your Team"
 msgstr "Пригласите свою команду"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "Присоединяйтесь к нашему сообществу и оставайтесь на связи с"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10556,10 +10540,6 @@ msgid "Record why attendees visited your church"
 msgstr "Записать причину посещения церкви"
 
 #: 
-msgid "Register Your Family"
-msgstr "Зарегистрируйте свою семью"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "Удалить всё из корзины"
 
@@ -10726,10 +10706,6 @@ msgstr "Начать заново"
 #: 
 msgid "Start Over"
 msgstr "Начать сначала"
-
-#: 
-msgid "Stay informed"
-msgstr "Будьте в курсе"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -14589,16 +14565,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "Имя не может быть длиннее %d символов"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "Нужна помощь? Свяжитесь с нами"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "Открывает 2-минутное окно для регистрации устройств по адресу:"
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "Добро пожаловать — войдите, чтобы управлять вашим приходом"
 
 #: 
 msgid "Are you sure you want to delete this note?"

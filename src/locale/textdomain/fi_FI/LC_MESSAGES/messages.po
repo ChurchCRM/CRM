@@ -7354,10 +7354,6 @@ msgid "Location & Contact Information"
 msgstr "Sijainti ja yhteystiedot"
 
 #: 
-msgid "New to"
-msgstr "Uusi"
-
-#: 
 msgid "No locales configured"
 msgstr "Yhtään kieliasetusta ei ole määritetty"
 
@@ -9587,10 +9583,6 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Yhdistä SMTP-palvelin, jotta ChurchCRM voi lähettää sähköposteja"
 
 #: 
-msgid "Connect with others"
-msgstr "Pidä yhteyttä muihin"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Muunna yksittäiset tietueet perheyksiköiksi"
 
@@ -9729,10 +9721,6 @@ msgstr "Kaksoiskappaleet"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Jokaisella henkilöllä voi olla oma sähköposti ja matkapuhelinnumero."
-
-#: 
-msgid "Easy registration"
-msgstr "Helppo rekisteröityminen"
 
 #: 
 msgid "Edit Class"
@@ -10037,10 +10025,6 @@ msgstr "Virheellinen \"Lähettäjän numero\": \"%s\". Sisällytä maatunnus, es
 #: 
 msgid "Invite Your Team"
 msgstr "Kutsu tiimisi"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "Liity yhteisöömme ja pysy yhteydessä"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10433,10 +10417,6 @@ msgid "Record why attendees visited your church"
 msgstr "Kirjaa, miksi kävijät vierailivat seurakunnassasi"
 
 #: 
-msgid "Register Your Family"
-msgstr "Rekisteröi perheesi"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "Poista kaikki valinnasta"
 
@@ -10603,10 +10583,6 @@ msgstr "Aloita alusta"
 #: 
 msgid "Start Over"
 msgstr "Aloita uudelleen"
-
-#: 
-msgid "Stay informed"
-msgstr "Pysy ajan tasalla"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -14464,16 +14440,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "Nimi ei voi olla pidempi kuin %d merkkiä"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "Tarvitsetko apua? Ota yhteyttä"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "Avaa 2 minuutin ikkunan laitteiden rekisteröitymiselle osoitteessa:"
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "Tervetuloa — kirjaudu sisään hallitaksesi seurakuntaasi"
 
 #: 
 msgid "Are you sure you want to delete this note?"

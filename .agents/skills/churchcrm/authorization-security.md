@@ -42,6 +42,33 @@ if (!$currentUser->canEditPerson($iPersonID, $person->getFamId())) {
 }
 ```
 
+**`canViewFamily(int $familyId): bool`** - Check if user can access a specific family
+
+- `true` for Admin/EditRecords; EditSelf users restricted to their own family.
+- Enforced centrally in `FamilyMiddleware::process()` (overrides the base to run after entity load), so every route using `FamilyMiddleware` is scoped automatically.
+
+## Two-Layer EditSelf Authorization (entry gate + object-level) <!-- learned: 2026-06-14 -->
+
+EditSelf scoping is enforced in **two layers** — know which one applies:
+
+1. **Coarse entry gate (`hasNoAdminPermissions()`)** — blocks users with *none* of {AddRecords, EditRecords, DeleteRecords, MenuOptions, ManageGroups, Finance, Notes}. **EditSelf is NOT counted**, so a **pure EditSelf-only user is bounced to `/external/limited-access` everywhere internal**. This runs in `AuthMiddleware` (all `/api`, `/kiosk`, `/plugins`), `PageInit.php` (legacy pages), and — because `MvcAppFactory::create()` *always* adds `AuthMiddleware` — every MVC app (`/v2`, `/people`, `/event`, …) even when no `roleMiddleware` is set. Their only self-service surface is the token-scoped `/external/verify/{token}` flow (family derived from the token's `referenceId` — no IDOR).
+
+2. **Object-level checks** — only matter for the **EditSelf + module combo** (e.g. EditSelf+Notes) that *passes* the entry gate. Here `canEditPerson()` / `canViewFamily()` keep them scoped to their own family.
+
+### Gotcha: `PersonMiddleware` does NOT enforce object-level scope
+
+Unlike `FamilyMiddleware`, `PersonMiddleware` (and the other `AbstractEntityMiddleware` subclasses) only loads the entity — **no `canEditPerson()` check**. Do **not** add a blanket check to `PersonMiddleware`: it is shared with ManageGroups member routes (`new PersonMiddleware('userID')`), where `canEditPerson()` would wrongly 403 group admins. Put the scope check **in the handler** for person-DATA routes instead:
+
+```php
+// person notes / sensitive person-scoped routes — handler-level scope check
+$person = $request->getAttribute('person');
+if (!$currentUser->canEditPerson((int) $person->getId(), (int) $person->getFamId())) {
+    return SlimUtils::renderErrorJSON($response, gettext('Access denied'), [], 403);
+}
+```
+
+Routes that already do this: `GET /api/person/{id}` (people-person.php), `people/view.php`, and person notes GET/POST (notes.php). Family equivalents are covered centrally by `FamilyMiddleware`.
+
 ## MVC Module Middleware: View vs Add Split <!-- learned: 2026-04-09 -->
 
 When wrapping an MVC module with role middleware via `MvcAppFactory::create([... 'roleMiddleware' => ...])`, choose **the lowest permission tier the module's *read* routes need**, then add the higher tier per write route.

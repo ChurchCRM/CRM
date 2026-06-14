@@ -7470,10 +7470,6 @@ msgid "Location & Contact Information"
 msgstr "地点与联系信息"
 
 #: 
-msgid "New to"
-msgstr "新加入"
-
-#: 
 msgid "No locales configured"
 msgstr "未配置语言环境"
 
@@ -9697,10 +9693,6 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "连接 SMTP 服务器以便 ChurchCRM 可以发送电子邮件"
 
 #: 
-msgid "Connect with others"
-msgstr "与他人联系"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "将个人记录转换为家族单位"
 
@@ -9839,10 +9831,6 @@ msgstr "重复项"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "每个人可以拥有自己的电子邮件和手机号码。"
-
-#: 
-msgid "Easy registration"
-msgstr "简单注册"
 
 #: 
 msgid "Edit Class"
@@ -10147,10 +10135,6 @@ msgstr "无效的\"发送号码\"：\"%s\"。请包含国家代码，例如 +141
 #: 
 msgid "Invite Your Team"
 msgstr "邀请您的团队"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "加入我们的社区并保持联系"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10543,10 +10527,6 @@ msgid "Record why attendees visited your church"
 msgstr "记录来访者来教会的原因"
 
 #: 
-msgid "Register Your Family"
-msgstr "注册您的家庭"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "从选择列表中移除全部"
 
@@ -10713,10 +10693,6 @@ msgstr "全新开始"
 #: 
 msgid "Start Over"
 msgstr "重新开始"
-
-#: 
-msgid "Stay informed"
-msgstr "保持关注"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -14573,16 +14549,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "名称不能超过 %d 个字符"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "需要帮助？联系我们"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "打开一个 2 分钟的窗口，供设备在以下地址注册："
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "欢迎——登录以管理您的会众"
 
 #: 
 msgid "Are you sure you want to delete this note?"

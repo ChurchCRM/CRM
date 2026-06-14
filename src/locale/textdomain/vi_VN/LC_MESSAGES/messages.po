@@ -7394,10 +7394,6 @@ msgid "Location & Contact Information"
 msgstr "Vị trí & Thông tin liên hệ"
 
 #: 
-msgid "New to"
-msgstr "Mới đối với"
-
-#: 
 msgid "No locales configured"
 msgstr "Chưa có ngôn ngữ nào được cấu hình"
 
@@ -9621,10 +9617,6 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Ket noi may chu SMTP de ChurchCRM co the gui email"
 
 #: 
-msgid "Connect with others"
-msgstr "Ket noi voi nguoi khac"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Chuyen doi ho so ca nhan thanh don vi gia dinh"
 
@@ -9763,10 +9755,6 @@ msgstr "Ban sao trung"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Moi nguoi co the co email va so di dong rieng."
-
-#: 
-msgid "Easy registration"
-msgstr "Dang ky de dang"
 
 #: 
 msgid "Edit Class"
@@ -10071,10 +10059,6 @@ msgstr "\"So gui\" khong hop le: \"%s\". Bao gom ma quoc gia, vi du +14155551234
 #: 
 msgid "Invite Your Team"
 msgstr "Moi doi cua ban"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "Tham gia cong dong cua chung toi va ket noi voi"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10467,10 +10451,6 @@ msgid "Record why attendees visited your church"
 msgstr "Ghi nhan ly do nguoi tham du den giao hoi cua ban"
 
 #: 
-msgid "Register Your Family"
-msgstr "Dang ky gia dinh cua ban"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "Xoa tat ca khoi danh sach"
 
@@ -10637,10 +10617,6 @@ msgstr "Bat dau tu dau"
 #: 
 msgid "Start Over"
 msgstr "Bat dau lai"
-
-#: 
-msgid "Stay informed"
-msgstr "Cap nhat thong tin"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -14497,16 +14473,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "Tên không được dài hơn %d ký tự"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "Cần trợ giúp? Liên hệ với chúng tôi"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "Mở cửa sổ 2 phút để thiết bị đăng ký tại:"
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "Chào mừng — đăng nhập để quản lý cộng đoàn của bạn"
 
 #: 
 msgid "Are you sure you want to delete this note?"

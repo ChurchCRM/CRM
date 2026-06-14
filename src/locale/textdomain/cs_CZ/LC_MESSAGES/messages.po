@@ -7384,10 +7384,6 @@ msgid "Location & Contact Information"
 msgstr "Poloha a kontaktní informace"
 
 #: 
-msgid "New to"
-msgstr "Nový v"
-
-#: 
 msgid "No locales configured"
 msgstr "Není nakonfigurováno žádné loálí"
 
@@ -9623,10 +9619,6 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Připojte SMTP server, aby mohl ChurchCRM odesílat e-maily"
 
 #: 
-msgid "Connect with others"
-msgstr "Spojte se s ostatními"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Převést jednotlivé záznamy na rodinné jednotky"
 
@@ -9765,10 +9757,6 @@ msgstr "Duplikáty"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Každá osoba může mít svůj vlastní e-mail a mobilní číslo."
-
-#: 
-msgid "Easy registration"
-msgstr "Snadná registrace"
 
 #: 
 msgid "Edit Class"
@@ -10073,10 +10061,6 @@ msgstr "Neplatné \"Číslo odesílatele\": \"%s\". Uveďte kód země, např. +
 #: 
 msgid "Invite Your Team"
 msgstr "Pozvěte svůj tým"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "Připojte se k naší komunitě a zůstaňte ve spojení s"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10469,10 +10453,6 @@ msgid "Record why attendees visited your church"
 msgstr "Zaznamenat důvod návštěvy kostela"
 
 #: 
-msgid "Register Your Family"
-msgstr "Zaregistrujte svou rodinu"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "Odebrat vše z výběru"
 
@@ -10639,10 +10619,6 @@ msgstr "Začít znovu"
 #: 
 msgid "Start Over"
 msgstr "Začít od začátku"
-
-#: 
-msgid "Stay informed"
-msgstr "Zůstaňte informováni"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -14501,16 +14477,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "Jméno nesmí být delší než %d znaků"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "Potřebujete pomoc? Kontaktujte nás"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "Otevírá 2minutové okno pro registraci zařízení na adrese:"
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "Vítejte – přihlaste se pro správu vaší farní komunity"
 
 #: 
 msgid "Are you sure you want to delete this note?"
