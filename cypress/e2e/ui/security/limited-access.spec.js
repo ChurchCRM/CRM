@@ -70,6 +70,38 @@ describe("Limited Access User", () => {
         cy.url().should("include", "/external/limited-access");
     });
 
+    it("Direct visit to other internal MVC apps also redirects to limited-access", () => {
+        cy.clearCookies();
+        cy.visit("session/begin");
+        cy.get("input[name=User]").type(limitedUser);
+        cy.get("input[name=Password]").type(limitedPassword + "{enter}");
+        cy.url({ timeout: 10000 }).should("include", "/external/limited-access");
+
+        // The "external pages only" guarantee must hold across every internal
+        // MVC app, not just /v2 — each is gated by AuthMiddleware via MvcAppFactory.
+        cy.visit("people/dashboard", { failOnStatusCode: false });
+        cy.url().should("include", "/external/limited-access");
+    });
+
+    it("Session-based internal API call is blocked with 403", () => {
+        // Complements the api-key 403 test: a logged-in browser SESSION for a
+        // limited user must also be rejected from internal APIs (AuthMiddleware
+        // hasNoAdminPermissions gate), so they can't pivot via the cookie.
+        cy.clearCookies();
+        cy.visit("session/begin");
+        cy.get("input[name=User]").type(limitedUser);
+        cy.get("input[name=Password]").type(limitedPassword + "{enter}");
+        cy.url({ timeout: 10000 }).should("include", "/external/limited-access");
+
+        cy.request({
+            method: "GET",
+            url: "/api/person/2",
+            failOnStatusCode: false,
+        }).then((resp) => {
+            expect(resp.status).to.eq(403);
+        });
+    });
+
     it("API call with limited user key returns 403", () => {
         cy.apiRequest({
             method: "GET",

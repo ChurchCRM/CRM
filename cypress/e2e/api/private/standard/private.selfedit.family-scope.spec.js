@@ -88,6 +88,53 @@ describe("GHSA-jjcj-h3cm-p7x7 - EditSelf user family scope restriction", () => {
     });
 
     // -----------------------------------------------------------------------
+    // Person notes — GET /api/person/{personId}/notes, POST /api/person/{personId}/note
+    // Person routes use PersonMiddleware (no family scope) + NotesRoleAuthMiddleware,
+    // so the object-level canEditPerson() check lives in the handlers. amanda.black
+    // (person 99) may touch her OWN record but not another family's person (person 2,
+    // Campbell family 1).
+    // -----------------------------------------------------------------------
+    describe("Person notes - object-level scope", () => {
+        it("EditSelf user can read notes on own person record (person 99 → 200)", () => {
+            cy.makePrivateEditSelfAPICall("GET", "/api/person/99/notes", null, 200).then(
+                (response) => {
+                    expect(response.body).to.have.property("notes");
+                    expect(response.body.notes).to.be.an("array");
+                },
+            );
+        });
+
+        it("EditSelf user is BLOCKED from reading notes on another family's person (person 2 → 403)", () => {
+            cy.makePrivateEditSelfAPICall("GET", "/api/person/2/notes", null, 403);
+        });
+
+        it("EditSelf user is BLOCKED from creating a note on another family's person (person 2 → 403)", () => {
+            cy.makePrivateEditSelfAPICall(
+                "POST",
+                "/api/person/2/note",
+                { text: "<p>Unauthorized person note attempt</p>", private: false },
+                403,
+            );
+        });
+
+        it("EditSelf user can create a note on own person record (person 99 → 201)", () => {
+            cy.makePrivateEditSelfAPICall(
+                "POST",
+                "/api/person/99/note",
+                { text: "<p>GHSA test note on own record</p>", private: false },
+                201,
+            ).then((response) => {
+                expect(response.body).to.have.property("note");
+                const note = response.body.note;
+                expect(note).to.have.property("perId", 99);
+
+                // Clean up
+                cy.makePrivateAdminAPICall("DELETE", `/api/note/${note.id}`, null, 200);
+            });
+        });
+    });
+
+    // -----------------------------------------------------------------------
     // GET /api/timeline/family/{familyId}
     // -----------------------------------------------------------------------
     describe("GET /api/timeline/family/{familyId} - Family timeline", () => {

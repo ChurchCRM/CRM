@@ -76,6 +76,13 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         $person = $request->getAttribute('person');
         $currentUser = AuthenticationManager::getCurrentUser();
 
+        // Object-level scope: EditSelf+Notes users may only read notes on their
+        // own family members. EditRecords/Admin pass through. (GHSA-jjcj-h3cm-p7x7
+        // covered family notes via FamilyMiddleware; person notes need the same.)
+        if (!$currentUser->canEditPerson((int) $person->getId(), (int) $person->getFamId())) {
+            return SlimUtils::renderErrorJSON($response, gettext('Access denied'), [], 403);
+        }
+
         $notes = NoteQuery::create()
             ->filterByPerId($person->getId())
             ->filterByType('note')
@@ -121,6 +128,12 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         $person = $request->getAttribute('person');
         $currentUser = AuthenticationManager::getCurrentUser();
         $input = (array) $request->getParsedBody();
+
+        // Object-level scope: EditSelf+Notes users may only create notes on their
+        // own family members. EditRecords/Admin pass through. (GHSA-jjcj-h3cm-p7x7)
+        if (!$currentUser->canEditPerson((int) $person->getId(), (int) $person->getFamId())) {
+            return SlimUtils::renderErrorJSON($response, gettext('Access denied'), [], 403);
+        }
 
         $text = InputUtils::sanitizeHTML($input['text'] ?? '');
         if ($text === '') {
