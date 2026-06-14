@@ -7383,10 +7383,6 @@ msgid "Location & Contact Information"
 msgstr "Informasi Lokasi & Kontak"
 
 #: 
-msgid "New to"
-msgstr "Baru di"
-
-#: 
 msgid "No locales configured"
 msgstr "Bahasa tidak dikonfigurasi"
 
@@ -9610,10 +9606,6 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Hubungkan server SMTP agar ChurchCRM dapat mengirim email"
 
 #: 
-msgid "Connect with others"
-msgstr "Terhubung dengan yang lain"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Ubah catatan individu menjadi unit keluarga"
 
@@ -9752,10 +9744,6 @@ msgstr "Duplikat"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Setiap orang dapat memiliki email dan nomor ponsel sendiri."
-
-#: 
-msgid "Easy registration"
-msgstr "Pendaftaran mudah"
 
 #: 
 msgid "Edit Class"
@@ -10060,10 +10048,6 @@ msgstr "\"Nomor Pengirim\" tidak valid: \"%s\". Sertakan kode negara, misalnya +
 #: 
 msgid "Invite Your Team"
 msgstr "Undang Tim Anda"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "Bergabunglah dengan komunitas kami dan tetap terhubung dengan"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10456,10 +10440,6 @@ msgid "Record why attendees visited your church"
 msgstr "Catat mengapa peserta mengunjungi gereja Anda"
 
 #: 
-msgid "Register Your Family"
-msgstr "Daftarkan Keluarga Anda"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "Hapus semua dari Daftar"
 
@@ -10626,10 +10606,6 @@ msgstr "Mulai dari Awal"
 #: 
 msgid "Start Over"
 msgstr "Mulai Ulang"
-
-#: 
-msgid "Stay informed"
-msgstr "Tetap terinformasi"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -14486,16 +14462,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "Nama tidak boleh lebih dari %d karakter"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "Butuh bantuan? Hubungi kami"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "Membuka jendela 2 menit untuk perangkat mendaftar di:"
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "Selamat datang — masuk untuk mengelola komunitas Anda"
 
 #: 
 msgid "Are you sure you want to delete this note?"

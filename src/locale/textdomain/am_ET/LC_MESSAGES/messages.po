@@ -7400,10 +7400,6 @@ msgid "Location & Contact Information"
 msgstr "አካባቢ እና የመገናኛ መረጃ"
 
 #: 
-msgid "New to"
-msgstr "አዲስ ለ"
-
-#: 
 msgid "No locales configured"
 msgstr "ምንም ቋንቋዎች አልተዋቀሩም"
 
@@ -9633,10 +9629,6 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "SMTP ሰራዊ ታሰር በ ChurchCRM ኢሜይል ሕሪግ"
 
 #: 
-msgid "Connect with others"
-msgstr "ሌላ ሰዎች ታሰር"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "ግለሰብ ሰነዶች ቤተሰብ ዓይነ ለውጥ"
 
@@ -9775,10 +9767,6 @@ msgstr "ሰናየ"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "ሥነ ሰው ራሳቸው ኢሜይል ወ ሞባይል ቁጥር ሊሁ።"
-
-#: 
-msgid "Easy registration"
-msgstr "ቀላል ተቀናሳ"
 
 #: 
 msgid "Edit Class"
@@ -10083,10 +10071,6 @@ msgstr "ሊስ\"ከ ቁጥር\":\"%s\"። ሀገር ጊዜ ታካ ለ: +14155551
 #: 
 msgid "Invite Your Team"
 msgstr "ትዊ ጋብ"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "ወጦ ሙ ቡድን አብለ በአርግቶ ቀጥሎ"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10479,10 +10463,6 @@ msgid "Record why attendees visited your church"
 msgstr "ምንድነ ሰብ ተዋጽኦ ዳሰሱ ረ"
 
 #: 
-msgid "Register Your Family"
-msgstr "ቤተሰብ ተመዝገብ"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "ሙሉ ከገበያ ዝወር"
 
@@ -10649,10 +10629,6 @@ msgstr "ተፈላጊ ጀምር"
 #: 
 msgid "Start Over"
 msgstr "ወደ ላይ ጀምር"
-
-#: 
-msgid "Stay informed"
-msgstr "መረጃ ሰብክ"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -14510,16 +14486,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "ስም ከ%d ቁምፊ ሊረዝም አይችልም"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "እርዳታ ያስፈልጋል? ያግኙን"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "መሳሪያዎች ለመመዝገቢያ ሁለት ደቂቃ መስኮት ይከፍታል፡"
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "እንኳን ደህና መጡ — ማህበረሰብዎን ለማስተዳደር ይግቡ"
 
 #: 
 msgid "Are you sure you want to delete this note?"

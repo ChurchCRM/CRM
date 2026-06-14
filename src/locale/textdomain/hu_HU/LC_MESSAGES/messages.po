@@ -7426,10 +7426,6 @@ msgid "Location & Contact Information"
 msgstr "Hely & Kapcsolat Információ"
 
 #: 
-msgid "New to"
-msgstr "Új a"
-
-#: 
 msgid "No locales configured"
 msgstr "Nincsenek konfigurált területi beállítások"
 
@@ -9659,10 +9655,6 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "SMTP szerver csatlakoztatása, hogy a ChurchCRM küldhessen e-maileket"
 
 #: 
-msgid "Connect with others"
-msgstr "Kapcsolódjon másokhoz"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Egyéni rekordok átalakítása családi egységekké"
 
@@ -9801,10 +9793,6 @@ msgstr "Duplikátumok"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Minden személy rendelkezhet saját e-mail címmel és mobilszámmal."
-
-#: 
-msgid "Easy registration"
-msgstr "Egyszerű regisztráció"
 
 #: 
 msgid "Edit Class"
@@ -10109,10 +10097,6 @@ msgstr "Érvénytelen \"Feladó szám\": \"%s\". Adja meg az országkódot, pl. 
 #: 
 msgid "Invite Your Team"
 msgstr "Csapat meghívása"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "Csatlakozzon közösségünkhöz és maradjon kapcsolatban"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10505,10 +10489,6 @@ msgid "Record why attendees visited your church"
 msgstr "Rögzítse, miért látogattak el a vendégek a gyülekezetbe"
 
 #: 
-msgid "Register Your Family"
-msgstr "Regisztrálja családját"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "Összes eltávolítása a listából"
 
@@ -10675,10 +10655,6 @@ msgstr "Újrakezdés"
 #: 
 msgid "Start Over"
 msgstr "Kezdje elölről"
-
-#: 
-msgid "Stay informed"
-msgstr "Maradjon tájékozott"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -14536,16 +14512,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "A név nem lehet hosszabb %d karakternél"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "Segítségre van szüksége? Vegye fel velünk a kapcsolatot"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "2 perces ablakot nyit az eszközök regisztrálásához a következő címen:"
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "Üdvözöljük – jelentkezzen be közösségének kezeléséhez"
 
 #: 
 msgid "Are you sure you want to delete this note?"

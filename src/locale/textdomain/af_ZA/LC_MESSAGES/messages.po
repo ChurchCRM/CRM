@@ -7393,10 +7393,6 @@ msgid "Location & Contact Information"
 msgstr "Ligging & Kontakbesluit"
 
 #: 
-msgid "New to"
-msgstr "Nuut na"
-
-#: 
 msgid "No locales configured"
 msgstr "Geen landinstell opgestel"
 
@@ -9626,10 +9622,6 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Verbind 'n SMTP-bediener sodat ChurchCRM e-posse kan stuur"
 
 #: 
-msgid "Connect with others"
-msgstr "Verbind met ander"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Skakel individuele rekords om in familieenhede"
 
@@ -9768,10 +9760,6 @@ msgstr "Duplikate"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Elke persoon kan hul eie e-pos en sellulêre nommer hê."
-
-#: 
-msgid "Easy registration"
-msgstr "Maklike registrasie"
 
 #: 
 msgid "Edit Class"
@@ -10076,10 +10064,6 @@ msgstr "Ongeldige \"Van Nommer\": \"%s\". Sluit die landskode in, bv. +141555512
 #: 
 msgid "Invite Your Team"
 msgstr "Nooi Jou Span Uit"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "Sluit by ons gemeenskap aan en bly verbind met"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10472,10 +10456,6 @@ msgid "Record why attendees visited your church"
 msgstr "Teken waarom aanwesiges jou kerk besoek het"
 
 #: 
-msgid "Register Your Family"
-msgstr "Registreer Jou Familie"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "Verwyder Alles van Lys"
 
@@ -10642,10 +10622,6 @@ msgstr "Begin Vars"
 #: 
 msgid "Start Over"
 msgstr "Begin Oor"
-
-#: 
-msgid "Stay informed"
-msgstr "Bly op hoogte"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -14503,16 +14479,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "Naam kan nie langer as %d karakters wees nie"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "Hulp nodig? Kontak ons"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "Open 'n 2-minuut venster vir toestelle om te registreer by:"
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "Welkom — meld aan om u gemeente te bestuur"
 
 #: 
 msgid "Are you sure you want to delete this note?"

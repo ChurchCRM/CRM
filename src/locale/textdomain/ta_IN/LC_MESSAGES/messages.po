@@ -7396,10 +7396,6 @@ msgid "Location & Contact Information"
 msgstr "இடம் மற்றும் தொடர்புத் தகவல்"
 
 #: 
-msgid "New to"
-msgstr "புதியவர்"
-
-#: 
 msgid "No locales configured"
 msgstr "எந்த வட்டாரங்களும் கட்டமைக்கப்படவில்லை"
 
@@ -9632,10 +9628,6 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "ChurchCRM மின்னஞ்சல்களை அனுப்ப SMTP சேவையகத்தை இணைக்கவும்"
 
 #: 
-msgid "Connect with others"
-msgstr "மற்றவர்களுடன் இணையுங்கள்"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "தனிநபர் பதிவுகளை குடும்ப அலகுகளாக மாற்று"
 
@@ -9774,10 +9766,6 @@ msgstr "நகல்கள்"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "ஒவ்வொரு நபரும் தனது சொந்த மின்னஞ்சல் மற்றும் கைபேசி எண்ணைக் கொண்டிருக்கலாம்."
-
-#: 
-msgid "Easy registration"
-msgstr "எளிதான பதிவு"
 
 #: 
 msgid "Edit Class"
@@ -10082,10 +10070,6 @@ msgstr "தவறான \"அனுப்புநர் எண்\":\"%s\". ந
 #: 
 msgid "Invite Your Team"
 msgstr "உங்கள் குழுவை அழைக்கவும்"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "எங்கள் சமூகத்தில் சேர்ந்து இணைந்திருங்கள்"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10478,10 +10462,6 @@ msgid "Record why attendees visited your church"
 msgstr "வருகையாளர்கள் ஏன் உங்கள் திருச்சபைக்கு வந்தார்கள் என்பதைப் பதிவு செய்யுங்கள்"
 
 #: 
-msgid "Register Your Family"
-msgstr "உங்கள் குடும்பத்தைப் பதிவு செய்யுங்கள்"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "பட்டியலிலிருந்து அனைவரையும் நீக்கு"
 
@@ -10648,10 +10628,6 @@ msgstr "புதிதாகத் தொடங்கு"
 #: 
 msgid "Start Over"
 msgstr "மீண்டும் தொடங்கு"
-
-#: 
-msgid "Stay informed"
-msgstr "தகவலறிந்திருங்கள்"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -14513,16 +14489,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "பெயர் %d எழுத்துகளுக்கு மேல் இருக்க முடியாது"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "உதவி தேவையா? எங்களை தொடர்பு கொள்ளுங்கள்"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "சாதனங்கள் பதிவு செய்ய 2 நிமிட சாளரத்தை திறக்கிறது:"
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "வரவேற்கிறோம் — உங்கள் சமூகத்தை நிர்வகிக்க உள்நுழையுங்கள்"
 
 #: 
 msgid "Are you sure you want to delete this note?"
