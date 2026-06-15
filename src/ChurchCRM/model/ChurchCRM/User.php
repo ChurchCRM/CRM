@@ -261,19 +261,14 @@ class User extends BaseUser
      */
     public function canViewFamily(int $familyId): bool
     {
-        if ($this->canReadFamily()) {
-            // All authenticated users can read any family by default.
-            // EditSelf users are further restricted to their own family.
-            if ($this->isEditSelfEnabled() && !$this->isAdmin() && !$this->isEditRecordsEnabled()) {
-                $person = $this->getPerson();
-                if ($person === null) {
-                    return false;
-                }
-                return $familyId > 0 && $familyId === (int) $person->getFamId();
+        if ($this->isEditSelfEnabled() && !$this->isAdmin() && !$this->isEditRecordsEnabled()) {
+            $person = $this->getPerson();
+            if ($person === null) {
+                return false;
             }
-            return true;
+            return $familyId > 0 && $familyId === (int) $person->getFamId();
         }
-        return false;
+        return true;
     }
 
     /**
