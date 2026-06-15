@@ -76,10 +76,9 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         $person = $request->getAttribute('person');
         $currentUser = AuthenticationManager::getCurrentUser();
 
-        // Object-level scope: EditSelf+Notes users may only read notes on their
-        // own family members. EditRecords/Admin pass through. (GHSA-jjcj-h3cm-p7x7
-        // covered family notes via FamilyMiddleware; person notes need the same.)
-        if (!$currentUser->canEditPerson((int) $person->getId(), (int) $person->getFamId())) {
+        // Read baseline: all authenticated users may read notes on any person.
+        // (Notes role is still required via NotesRoleAuthMiddleware on this group.)
+        if (!$currentUser->canReadPerson((int) $person->getId())) {
             return SlimUtils::renderErrorJSON($response, gettext('Access denied'), [], 403);
         }
 

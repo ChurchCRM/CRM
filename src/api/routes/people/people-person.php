@@ -209,11 +209,11 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     @OA\Response(response=404, description="Person not found")
      * )
      */
-    // Get person by ID — IDOR check via canEditPerson (GHSA-5w59-32c8-933v)
+    // Get person by ID — read-baseline check via canReadPerson (all authenticated users)
     $group->get('', function (Request $request, Response $response, array $args): Response {
         $person = $request->getAttribute('person');
         $currentUser = AuthenticationManager::getCurrentUser();
-        if (!$currentUser->canEditPerson((int) $person->getId(), (int) $person->getFamId())) {
+        if (!$currentUser->canReadPerson((int) $person->getId())) {
             throw new HttpForbiddenException($request, gettext('You do not have permission to view this person'));
         }
         return SlimUtils::renderStringJSON($response, $person->exportTo('JSON'));
