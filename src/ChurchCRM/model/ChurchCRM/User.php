@@ -227,6 +227,26 @@ class User extends BaseUser
     }
 
     /**
+     * Check if the user can view/access a specific family's record.
+     * Admin and EditRecords users can access any family.
+     * EditSelf-only users can only access their own family.
+     *
+     * @param int $familyId The ID of the family to potentially view
+     * @return bool True if user can view this family's record
+     */
+    public function canViewFamily(int $familyId): bool
+    {
+        if ($this->isAdmin() || $this->isEditRecordsEnabled()) {
+            return true;
+        }
+        if ($this->isEditSelfEnabled()) {
+            // EditSelf users may only access their own family
+            return $familyId > 0 && $familyId === (int) $this->getPerson()->getFamId();
+        }
+        return false;
+    }
+
+    /**
      * Update password using secure bcrypt hashing.
      */
     public function updatePassword(string $password): void

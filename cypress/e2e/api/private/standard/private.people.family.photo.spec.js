@@ -149,16 +149,14 @@ describe("API Private Photo and Avatar - Family", () => {
         });
 
         it("should handle invalid family ID gracefully", () => {
+            // FamilyMiddleware performs an existence check before the handler runs,
+            // so a nonexistent familyId now correctly returns 404.
             cy.makePrivateAdminAPICall(
                 "GET",
                 `/api/family/${invalidFamilyId}/avatar`,
                 null,
-                200
-            ).then((response) => {
-                // Should return 200 with fallback data
-                expect(response.body).to.have.property("hasPhoto");
-                expect(response.body).to.have.property("initials");
-            });
+                404
+            );
         });
     });
 
