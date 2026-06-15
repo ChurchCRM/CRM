@@ -192,7 +192,29 @@ class User extends BaseUser
             && !$this->isMenuOptions()
             && !$this->isManageGroups()
             && !$this->isFinance()
-            && !$this->isNotes();
+            && !$this->isNotes()
+            && !$this->isEditSelf();
+    }
+
+    /**
+     * Returns true if the current user may access any family record.
+     * All authenticated users have this capability by default.
+     */
+    public function canReadFamily(): bool
+    {
+        return true; // read is a default capability for all authenticated users
+    }
+
+    /**
+     * Returns true if the current user may access any person record.
+     * All authenticated users have this capability by default.
+     *
+     * @param int $personId The ID of the person to potentially read
+     * @return bool True if user can read this person's record
+     */
+    public function canReadPerson(int $personId): bool
+    {
+        return true; // read is a default capability for all authenticated users
     }
 
     /**
@@ -222,7 +244,7 @@ class User extends BaseUser
             if ($person === null) {
                 return false; // orphaned user — deny access
             }
-            if ($personFamilyId > 0 && $personFamilyId === $person->getFamId()) {
+            if ($personFamilyId > 0 && $personFamilyId === (int) $person->getFamId()) {
                 return true;
             }
         }
@@ -232,26 +254,23 @@ class User extends BaseUser
 
     /**
      * Check if the user can view/access a specific family's record.
-     * Admin and EditRecords users can access any family.
-     * EditSelf-only users can only access their own family.
+     * All authenticated users can read any family by default.
+     * EditSelf-only users (without Admin or EditRecords) are restricted to their own family.
      *
      * @param int $familyId The ID of the family to potentially view
      * @return bool True if user can view this family's record
      */
     public function canViewFamily(int $familyId): bool
     {
-        if ($this->isAdmin() || $this->isEditRecordsEnabled()) {
-            return true;
-        }
-        if ($this->isEditSelfEnabled()) {
-            // EditSelf users may only access their own family
+        if ($this->isEditSelfEnabled() && !$this->isAdmin() && !$this->isEditRecordsEnabled()) {
+            // EditSelf-only users may only access their own family
             $person = $this->getPerson();
             if ($person === null) {
                 return false; // orphaned user — deny access
             }
             return $familyId > 0 && $familyId === (int) $person->getFamId();
         }
-        return false;
+        return true;
     }
 
     /**
