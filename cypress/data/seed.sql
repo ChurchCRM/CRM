@@ -194,6 +194,7 @@ CREATE TABLE `donationfund_fun` (
   `fun_Name` varchar(30) DEFAULT NULL,
   `fun_Description` varchar(100) DEFAULT NULL,
   `fun_Order` int(11) NOT NULL DEFAULT 0,
+  `fun_Category` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`fun_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -205,7 +206,7 @@ CREATE TABLE `donationfund_fun` (
 LOCK TABLES `donationfund_fun` WRITE;
 /*!40000 ALTER TABLE `donationfund_fun` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `donationfund_fun` VALUES (1,'true','Pledges','Pledge income for the operating budget',1),(2,'true','New Building Fund','',2),(3,'true','Music Ministry','',3);
+INSERT INTO `donationfund_fun` VALUES (1,'true','Pledges','Pledge income for the operating budget',1,NULL),(2,'true','New Building Fund','',2,NULL),(3,'true','Music Ministry','',3,NULL);
 /*!40000 ALTER TABLE `donationfund_fun` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
