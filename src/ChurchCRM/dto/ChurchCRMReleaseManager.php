@@ -766,6 +766,8 @@ class ChurchCRMReleaseManager
      *
      * @return array{available: bool, version: ChurchCRMRelease|null, latestVersion: ChurchCRMRelease|null}
      */
+    public static function checkSystemUpdateAvailable(): array
+    {
         try {
             $logger = LoggerUtils::getAppLogger();
             $installedVersionString = VersionUtils::getInstalledVersion();

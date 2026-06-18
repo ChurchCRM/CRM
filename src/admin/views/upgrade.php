@@ -253,6 +253,7 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                                     <i class="fa fa-triangle-exclamation me-2"></i>
                                     <span id="whatsNewErrorMsg"></span>
                                 </div>
+                                <p class="text-secondary small mb-2"><?= gettext('You can still proceed with the upgrade without viewing release notes.') ?></p>
                                 <button class="btn btn-primary" id="skipWhatsNew">
                                     <?= gettext('Continue Anyway') ?> <i class="fa fa-arrow-right ms-1"></i>
                                 </button>
@@ -261,7 +262,7 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
 
                         <!-- Step 4: Download and Apply Update -->
                         <div id="step-apply" class="content p-4" role="tabpanel" aria-labelledby="step-apply-trigger">
-                            <p class="text-secondary mb-3"><?= gettext('Download the latest release and apply it to your installation.') ?></p>
+                            <p class="text-secondary mb-3" id="downloadStepDescription"><?= gettext('Download the latest release and apply it to your installation.') ?></p>
 
                             <div id="downloadStatus"></div>
 
@@ -272,7 +273,7 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
                                         <div class="datagrid-content" id="updateFileName"></div>
                                     </div>
                                     <div class="datagrid-item">
-                                        <div class="datagrid-title">SHA1 Hash</div>
+                                        <div class="datagrid-title"><?= gettext('SHA1 Hash') ?></div>
                                         <div class="datagrid-content"><code id="updateSHA1"></code></div>
                                     </div>
                                     <div class="datagrid-item">

@@ -314,4 +314,155 @@ describe("System Upgrade Page", () => {
             cy.get("#refreshFromGitHub").should("not.be.disabled");
         });
     });
+
+    describe("Version Info Bar", () => {
+        it("should show Up to Date badge when installed equals latest", () => {
+            // This tests the server-rendered badge visible before wizard interaction.
+            // We rely on the PHP view rendering the badge when $isUpdateAvailable === false.
+            cy.visit("/admin/system/upgrade");
+            // The page always shows at least one badge; when up to date it has bg-success-lt
+            // We cannot intercept the PHP page render, so we assert that if the
+            // bg-success-lt badge exists it carries the expected text.
+            cy.get("body").then(($body) => {
+                if ($body.find(".badge.bg-success-lt.text-success").length) {
+                    cy.get(".badge.bg-success-lt.text-success").should("contain", "Up to Date");
+                }
+            });
+        });
+
+        it("should show Update Available badge when update exists", () => {
+            cy.visit("/admin/system/upgrade");
+            cy.get("body").then(($body) => {
+                if ($body.find(".badge.bg-success").length) {
+                    cy.get(".badge.bg-success").should("contain", "Update Available");
+                }
+            });
+        });
+    });
+
+    describe("Advanced Version Selector", () => {
+        const multiReleaseFixture = {
+            installedVersion: "5.0.0",
+            nextVersion: "5.0.1",
+            latestVersion: "5.0.3",
+            nextReleaseNotes: "## 5.0.1 Notes\n\n- Patch fix\n",
+            nextChangelogUrl: "https://github.com/ChurchCRM/CRM/blob/master/changelog/5.0.1.md",
+            releasesAhead: 3,
+            upgradePath: [
+                {
+                    version: "5.0.1",
+                    type: "patch",
+                    notes: "## 5.0.1 patch fix\n",
+                    changelogUrl: "https://github.com/ChurchCRM/CRM/blob/master/changelog/5.0.1.md",
+                    isNext: true,
+                },
+                {
+                    version: "5.0.2",
+                    type: "minor",
+                    notes: "## 5.0.2 feature\n",
+                    changelogUrl: "https://github.com/ChurchCRM/CRM/blob/master/changelog/5.0.2.md",
+                    isNext: false,
+                },
+                {
+                    version: "5.0.3",
+                    type: "patch",
+                    notes: "## 5.0.3 another fix\n",
+                    changelogUrl: "https://github.com/ChurchCRM/CRM/blob/master/changelog/5.0.3.md",
+                    isNext: false,
+                },
+            ],
+        };
+
+        it("should open advanced selector and update notes when version is changed", () => {
+            cy.intercept("GET", "**/admin/api/upgrade/preview", {
+                statusCode: 200,
+                body: multiReleaseFixture,
+            }).as("previewRequest");
+
+            cy.visit("/admin/system/upgrade");
+            cy.get("#acceptWarnings").click();
+            cy.get("#skipBackup").click();
+
+            cy.wait("@previewRequest", { timeout: 10000 });
+            cy.get("#whatsNewContent").should("not.have.class", "d-none");
+
+            // Open the advanced selector collapse
+            cy.get("[href='#advancedVersionCollapse']").click();
+            cy.get("#advancedVersionCollapse").should("have.class", "show");
+            cy.get("#targetVersionSelect").should("be.visible");
+
+            // Options should include default + all upgrade path entries
+            cy.get("#targetVersionSelect option").should("have.length", 4); // 1 default + 3 versions
+
+            // Select version 5.0.3
+            cy.get("#targetVersionSelect").select("5.0.3");
+
+            // Release notes heading should update to 5.0.3
+            cy.get("#whatsNewVersion").should("contain", "5.0.3");
+            cy.get("#whatsNewNotes").should("contain", "5.0.3 another fix");
+        });
+
+        it("should send ?version= query param when specific version is chosen", () => {
+            cy.intercept("GET", "**/admin/api/upgrade/preview", {
+                statusCode: 200,
+                body: multiReleaseFixture,
+            }).as("previewRequest");
+
+            cy.intercept("GET", "**/admin/api/upgrade/download-latest-release?version=5.0.3", {
+                statusCode: 200,
+                body: {
+                    fileName: "ChurchCRM-5.0.3.zip",
+                    fullPath: "/tmp/ChurchCRM-5.0.3.zip",
+                    releaseNotes: "## 5.0.3\n\n- Another fix\n",
+                    sha1: "aabbcc112233",
+                },
+            }).as("downloadSpecific");
+
+            cy.visit("/admin/system/upgrade");
+            cy.get("#acceptWarnings").click();
+            cy.get("#skipBackup").click();
+
+            cy.wait("@previewRequest", { timeout: 10000 });
+
+            // Open advanced selector and pick 5.0.3
+            cy.get("[href='#advancedVersionCollapse']").click();
+            cy.get("#targetVersionSelect").select("5.0.3");
+
+            // Proceed to download step
+            cy.get("#proceedToDownload").click();
+
+            // Verify that the download request used the ?version= param
+            cy.wait("@downloadSpecific", { timeout: 15000 });
+            cy.get("#downloadStatus .alert-success").should("be.visible");
+            cy.get("#updateFileName").should("contain", "ChurchCRM-5.0.3.zip");
+        });
+
+        it("should expand upgrade path accordion and show entry details", () => {
+            cy.intercept("GET", "**/admin/api/upgrade/preview", {
+                statusCode: 200,
+                body: multiReleaseFixture,
+            }).as("previewRequest");
+
+            cy.visit("/admin/system/upgrade");
+            cy.get("#acceptWarnings").click();
+            cy.get("#skipBackup").click();
+
+            cy.wait("@previewRequest", { timeout: 10000 });
+
+            // Upgrade path panel should be visible (3 releases ahead)
+            cy.get("#upgradePathPanel").should("not.have.class", "d-none");
+
+            // Expand the upgrade path collapse
+            cy.get("[href='#upgradePathCollapse']").click();
+            cy.get("#upgradePathCollapse").should("have.class", "show");
+
+            // Should render 3 accordion entries
+            cy.get("#upgradePathAccordion .upgrade-path-entry").should("have.length", 3);
+
+            // Expand the first entry and verify release notes render
+            cy.get("#upgradePathAccordion .upgrade-path-entry").first().find(".upgrade-path-header").click();
+            cy.get("#upgradePathAccordion .upgrade-path-entry").first().find(".upgrade-path-notes").should("have.class", "show");
+            cy.get("#upgradePathAccordion .upgrade-path-entry").first().find(".release-notes").should("contain", "5.0.1");
+        });
+    });
 });

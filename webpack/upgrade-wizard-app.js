@@ -336,7 +336,9 @@ function renderVersionSelector(upgradePath, defaultNextVersion) {
   $select.append(`<option value="">${i18next.t("Recommended")}: ${escapeHtml(defaultNextVersion || "")}</option>`);
 
   upgradePath.forEach((entry) => {
-    const label = `${entry.version} (${entry.type})`;
+    const friendlyLabel = { major: i18next.t("Major"), minor: i18next.t("Feature"), patch: i18next.t("Bug Fix") };
+    const typeLabel = friendlyLabel[entry.type] || entry.type;
+    const label = `${entry.version} — ${typeLabel}`;
     $select.append(`<option value="${escapeHtml(entry.version)}">${escapeHtml(label)}</option>`);
   });
 
@@ -372,13 +374,19 @@ function renderVersionSelector(upgradePath, defaultNextVersion) {
  * Return a Tabler badge HTML string for a release type label
  */
 function badgeForType(type) {
+  const labelMap = {
+    major: i18next.t("Major"),
+    minor: i18next.t("Feature"),
+    patch: i18next.t("Bug Fix"),
+  };
   const map = {
     major: "bg-danger-lt text-danger",
     minor: "bg-azure-lt text-azure",
     patch: "bg-secondary-lt text-secondary",
   };
   const cls = map[type] || map.patch;
-  return `<span class="badge ${cls}">${escapeHtml(type)}</span>`;
+  const label = labelMap[type] || escapeHtml(type);
+  return `<span class="badge ${cls}">${label}</span>`;
 }
 
 /**
@@ -398,6 +406,13 @@ function escapeHtml(str) {
  */
 function autoDownloadUpdate() {
   const $downloadStatus = $("#downloadStatus");
+
+  // Update the step description to reflect the selected version (if any)
+  if (selectedTargetVersion) {
+    $("#downloadStepDescription").text(
+      i18next.t("Download version {{version}} and apply it to your installation.", { version: selectedTargetVersion })
+    );
+  }
 
   if (window.CRM.updateFile) {
     $("#updateDetails").removeClass("d-none");
