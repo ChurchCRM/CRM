@@ -305,6 +305,15 @@ describe("System Upgrade Page", () => {
                 body: {},
             }).as("doUpgrade");
 
+            // The do-upgrade success handler fires a 1s setTimeout that:
+            //   1. calls GET /session/end (logs the user out server-side)
+            //   2. starts a 5s countdown then navigates to window.location.href = '/'
+            // Both of these corrupt the cy.session('admin-session') cache and cause
+            // every subsequent test to get a 302 to /session/begin.
+            // Intercept both to keep the page alive and the session intact.
+            cy.intercept("GET", "**/session/end", { statusCode: 200, body: "" }).as("sessionEnd");
+            cy.intercept("GET", "/", { statusCode: 200, body: "<html><body></body></html>" }).as("rootRedirect");
+
             cy.visit("/admin/system/upgrade");
 
             // Step 1: pre-flight
@@ -381,12 +390,12 @@ describe("System Upgrade Page", () => {
 
     describe("Refresh from GitHub", () => {
         it("should call refresh API", () => {
-            // Freeze all JS timers before visiting the page.
             // The success handler calls setTimeout(() => window.location.reload(), 1500).
-            // Without cy.clock() that reload fires ~1500ms after the intercept resolves,
-            // which lands during the NEXT test's beforeEach and invalidates the
-            // cy.session('admin-session') cache, causing all subsequent tests to
-            // redirect to /session/begin.
+            // Intercept the resulting GET on the current page URL so the reload is
+            // swallowed and does not corrupt the cy.session('admin-session') cache.
+            cy.intercept("GET", "**/admin/system/upgrade*", (req) => {
+                req.reply({ statusCode: 200, body: "<html><body></body></html>" });
+            }).as("pageReload");
 
             cy.intercept("POST", "**/admin/api/upgrade/refresh-upgrade-info", {
                 statusCode: 200,
@@ -394,30 +403,19 @@ describe("System Upgrade Page", () => {
             }).as("refreshInfo");
 
             cy.visit("/admin/system/upgrade");
-            cy.clock(); // Freeze timers AFTER page load — before click — so the 1500ms reload setTimeout never fires
 
             cy.get("#refreshFromGitHub").click();
             cy.wait("@refreshInfo");
-
-            // Assert the API was called with the expected status.
-            // cy.clock() ensures the 1500ms setTimeout never fires, so the page
-            // does not reload and the session remains valid for subsequent tests.
             cy.get("@refreshInfo").its("response.statusCode").should("eq", 200);
         });
 
         it("should handle refresh failure", () => {
-            // Freeze timers defensively — the failure branch does not call reload,
-            // but this keeps both tests symmetric and prevents any future regression
-            // if the handler is changed to also reload on failure.
-
             cy.intercept("POST", "**/admin/api/upgrade/refresh-upgrade-info", {
                 statusCode: 500,
                 body: { message: "GitHub API unavailable" },
             }).as("refreshFail");
 
             cy.visit("/admin/system/upgrade");
-            cy.clock(); // Freeze timers AFTER page load
-
             cy.get("#refreshFromGitHub").click();
             cy.wait("@refreshFail");
 
