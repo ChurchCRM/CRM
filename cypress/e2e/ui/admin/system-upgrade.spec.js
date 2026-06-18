@@ -390,19 +390,19 @@ describe("System Upgrade Page", () => {
 
     describe("Refresh from GitHub", () => {
         it("should call refresh API", () => {
-            // The success handler calls setTimeout(() => window.location.reload(), 1500).
-            // Intercept the resulting GET on the current page URL so the reload is
-            // swallowed and does not corrupt the cy.session('admin-session') cache.
-            cy.intercept("GET", "**/admin/system/upgrade*", (req) => {
-                req.reply({ statusCode: 200, body: "<html><body></body></html>" });
-            }).as("pageReload");
-
             cy.intercept("POST", "**/admin/api/upgrade/refresh-upgrade-info", {
                 statusCode: 200,
                 body: { data: {}, message: "Refreshed" },
             }).as("refreshInfo");
 
             cy.visit("/admin/system/upgrade");
+
+            // Register the reload intercept AFTER cy.visit() so the initial page load
+            // is not swallowed. The reload from the success handler fires 1500ms after
+            // the intercept resolves; this stub catches that GET without blanking the page.
+            cy.intercept("GET", "**/admin/system/upgrade*", (req) => {
+                req.reply({ statusCode: 200, body: "<html><body></body></html>" });
+            }).as("pageReload");
 
             cy.get("#refreshFromGitHub").click();
             cy.wait("@refreshInfo");
