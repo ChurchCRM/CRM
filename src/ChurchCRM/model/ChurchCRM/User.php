@@ -218,7 +218,11 @@ class User extends BaseUser
             }
 
             // Can edit family members (if person has a family)
-            if ($personFamilyId > 0 && $personFamilyId === $this->getPerson()->getFamId()) {
+            $person = $this->getPerson();
+            if ($person === null) {
+                return false; // orphaned user — deny access
+            }
+            if ($personFamilyId > 0 && $personFamilyId === $person->getFamId()) {
                 return true;
             }
         }
@@ -241,7 +245,11 @@ class User extends BaseUser
         }
         if ($this->isEditSelfEnabled()) {
             // EditSelf users may only access their own family
-            return $familyId > 0 && $familyId === (int) $this->getPerson()->getFamId();
+            $person = $this->getPerson();
+            if ($person === null) {
+                return false; // orphaned user — deny access
+            }
+            return $familyId > 0 && $familyId === (int) $person->getFamId();
         }
         return false;
     }
