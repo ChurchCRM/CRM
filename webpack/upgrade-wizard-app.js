@@ -410,7 +410,7 @@ function autoDownloadUpdate() {
   // Update the step description to reflect the selected version (if any)
   if (selectedTargetVersion) {
     $("#downloadStepDescription").text(
-      i18next.t("Download version {{version}} and apply it to your installation.", { version: selectedTargetVersion })
+      i18next.t("Download version {{version}} and apply it to your installation.", { version: selectedTargetVersion }),
     );
   }
 
