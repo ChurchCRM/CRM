@@ -128,10 +128,7 @@ $app->group('/api/user/{userId:[0-9]+}', function (RouteCollectorProxy $group): 
     $group->delete('/', function (Request $request, Response $response, array $args): Response {
         $user = $request->getAttribute('user');
         $userName = $user->getName();
-        $userConfig = UserConfigQuery::create()->findPk($user->getId());
-        if ($userConfig !== null) {
-            $userConfig->delete();
-        }
+        UserConfigQuery::create()->filterByPeronId($user->getId())->delete();
 
         $user->delete();
         if (SystemConfig::getBooleanValue('bSendUserDeletedEmail')) {
