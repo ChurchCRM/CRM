@@ -436,7 +436,7 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                                 <td class="text-center">
                                     <span class="badge bg-secondary-lt text-secondary"><?= $familyMember->getFamilyRoleName() ?></span>
                                 </td>
-                                <td><?= $isSelf ? '' : $familyMember->getFormattedBirthDate(); ?></td>
+                                <td><?= $isSelf ? '<span class="text-body-secondary">—</span>' : $familyMember->getFormattedBirthDate(); ?></td>
                                 <td>
                                     <?php $tmpEmail = $familyMember->getEmail();
                                     if ($tmpEmail !== '') { ?>

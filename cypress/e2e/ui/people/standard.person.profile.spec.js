@@ -78,6 +78,16 @@ describe("Person Profile", () => {
         cy.contains(noteText);
     });
 
+    it("birthday appears exactly once on the profile page (not duplicated in family table)", () => {
+        // Person 2 (Mathew Campbell) has BirthMonth=6, BirthDay=15, BirthYear=1970
+        // Default sDateFormatLong = m/d/Y → rendered as "06/15/1970".
+        // Before fix #8957 the date appeared both in the Personal card and in the
+        // family-members table self-row, causing visible doubling.
+        cy.visit(`/people/view/${personId}`);
+
+        cy.contains("06/15/1970").should("have.length", 1);
+    });
+
     it("Edit Why Came", () => {
         cy.visit(`/people/view/${personId}`);
 
