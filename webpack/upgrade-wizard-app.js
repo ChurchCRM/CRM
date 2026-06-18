@@ -635,7 +635,9 @@ function setupForceReinstallButton() {
   });
 
   $("#confirmForceReinstall").click(() => {
-    bootstrap.Modal.getInstance(document.getElementById("forceReinstallModal")).hide();
+    // Use getOrCreateInstance to safely close the modal even when the instance
+    // was not created via Bootstrap's normal data-API (e.g. in tests).
+    bootstrap.Modal.getOrCreateInstance(document.getElementById("forceReinstallModal")).hide();
 
     // Clear stale download state so the Download & Apply step starts fresh
     window.CRM.updateFile = null;

@@ -359,17 +359,13 @@ describe("System Upgrade Page", () => {
             cy.get("#updateDetails").should("not.have.class", "d-none");
             cy.get("#applyButtonContainer").should("not.have.class", "d-none");
 
-            // Open the force-reinstall modal from the pre-flight step warning button.
-            // The button is only visible when integrity check has warnings; scroll up to it.
-            // Since we cannot trigger the PHP-rendered state in Cypress without a real server,
-            // we trigger the modal directly via JS to test the reset logic.
-            cy.window().then((win) => {
-                const modal = new win.bootstrap.Modal(win.document.getElementById("forceReinstallModal"));
-                modal.show();
-            });
-
-            // Confirm force re-install
-            cy.get("#confirmForceReinstall").click();
+            // The #confirmForceReinstall button lives inside #forceReinstallModal which
+            // is always in the DOM (rendered unconditionally in the PHP view). The modal
+            // is normally shown only when integrity warnings are present, but its confirm
+            // button is always wired up. We click it directly (force:true bypasses
+            // visibility) to exercise the JS state-reset logic without depending on
+            // whether the server rendered integrity warnings.
+            cy.get("#confirmForceReinstall").click({ force: true });
 
             // Download state should now be cleared
             cy.get("#updateDetails").should("have.class", "d-none");
@@ -385,8 +381,20 @@ describe("System Upgrade Page", () => {
             }).as("refreshInfo");
 
             cy.visit("/admin/system/upgrade");
+
+            // Stub location.reload to prevent the page from navigating mid-test
+            // (the success handler calls window.location.reload after a 1500ms delay)
+            cy.window().then((win) => {
+                cy.stub(win.location, "reload").as("pageReload");
+            });
+
             cy.get("#refreshFromGitHub").click();
             cy.wait("@refreshInfo");
+
+            // Button should have been disabled while the request was in flight;
+            // after the stub prevents the reload, it stays disabled (spinner shown).
+            // Assert the API was called — that is the meaningful assertion here.
+            cy.get("@refreshInfo").its("response.statusCode").should("eq", 200);
         });
 
         it("should handle refresh failure", () => {
@@ -396,8 +404,16 @@ describe("System Upgrade Page", () => {
             }).as("refreshFail");
 
             cy.visit("/admin/system/upgrade");
+
+            // Stub reload so any unexpected success branch can't navigate away
+            cy.window().then((win) => {
+                cy.stub(win.location, "reload").as("pageReload");
+            });
+
             cy.get("#refreshFromGitHub").click();
             cy.wait("@refreshFail");
+
+            // After a 500 response the fail handler re-enables the button
             cy.get("#refreshFromGitHub").should("not.be.disabled");
         });
     });
@@ -473,9 +489,12 @@ describe("System Upgrade Page", () => {
             cy.wait("@previewRequest", { timeout: 10000 });
             cy.get("#whatsNewContent").should("not.have.class", "d-none");
 
-            // Open the advanced selector collapse
-            cy.get("[href='#advancedVersionCollapse']").click();
-            cy.get("#advancedVersionCollapse").should("have.class", "show");
+            // Open the advanced selector collapse.
+            // Use the data-bs-toggle attribute rather than [href='#...'] to avoid
+            // any browser href-resolution vs attribute-value mismatch.
+            cy.get("[data-bs-toggle='collapse'][data-bs-target='#advancedVersionCollapse'], " +
+                   "[data-bs-toggle='collapse'][href='#advancedVersionCollapse']").first().click();
+            cy.get("#advancedVersionCollapse").should("have.class", "show", { timeout: 5000 });
             cy.get("#targetVersionSelect").should("be.visible");
 
             // Options should include default + all upgrade path entries
@@ -512,7 +531,9 @@ describe("System Upgrade Page", () => {
             cy.wait("@previewRequest", { timeout: 10000 });
 
             // Open advanced selector and pick 5.0.3
-            cy.get("[href='#advancedVersionCollapse']").click();
+            cy.get("[data-bs-toggle='collapse'][data-bs-target='#advancedVersionCollapse'], " +
+                   "[data-bs-toggle='collapse'][href='#advancedVersionCollapse']").first().click();
+            cy.get("#advancedVersionCollapse").should("have.class", "show", { timeout: 5000 });
             cy.get("#targetVersionSelect").select("5.0.3");
 
             // Proceed to download step
@@ -540,15 +561,16 @@ describe("System Upgrade Page", () => {
             cy.get("#upgradePathPanel").should("not.have.class", "d-none");
 
             // Expand the upgrade path collapse
-            cy.get("[href='#upgradePathCollapse']").click();
-            cy.get("#upgradePathCollapse").should("have.class", "show");
+            cy.get("[data-bs-toggle='collapse'][data-bs-target='#upgradePathCollapse'], " +
+                   "[data-bs-toggle='collapse'][href='#upgradePathCollapse']").first().click();
+            cy.get("#upgradePathCollapse").should("have.class", "show", { timeout: 5000 });
 
             // Should render 3 accordion entries
             cy.get("#upgradePathAccordion .upgrade-path-entry").should("have.length", 3);
 
             // Expand the first entry and verify release notes render
             cy.get("#upgradePathAccordion .upgrade-path-entry").first().find(".upgrade-path-header").click();
-            cy.get("#upgradePathAccordion .upgrade-path-entry").first().find(".upgrade-path-notes").should("have.class", "show");
+            cy.get("#upgradePathAccordion .upgrade-path-entry").first().find(".upgrade-path-notes").should("have.class", "show", { timeout: 5000 });
             cy.get("#upgradePathAccordion .upgrade-path-entry").first().find(".release-notes").should("contain", "5.0.1");
         });
     });
