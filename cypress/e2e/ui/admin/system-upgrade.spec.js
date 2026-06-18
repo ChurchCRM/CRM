@@ -381,6 +381,14 @@ describe("System Upgrade Page", () => {
 
     describe("Refresh from GitHub", () => {
         it("should call refresh API", () => {
+            // Freeze all JS timers before visiting the page.
+            // The success handler calls setTimeout(() => window.location.reload(), 1500).
+            // Without cy.clock() that reload fires ~1500ms after the intercept resolves,
+            // which lands during the NEXT test's beforeEach and invalidates the
+            // cy.session('admin-session') cache, causing all subsequent tests to
+            // redirect to /session/begin.
+            cy.clock();
+
             cy.intercept("POST", "**/admin/api/upgrade/refresh-upgrade-info", {
                 statusCode: 200,
                 body: { data: {}, message: "Refreshed" },
@@ -392,13 +400,17 @@ describe("System Upgrade Page", () => {
             cy.wait("@refreshInfo");
 
             // Assert the API was called with the expected status.
-            // The success handler triggers window.location.reload after 1500ms;
-            // cy.wait resolves well before that timer fires, so the reload
-            // does not interfere with this assertion.
+            // cy.clock() ensures the 1500ms setTimeout never fires, so the page
+            // does not reload and the session remains valid for subsequent tests.
             cy.get("@refreshInfo").its("response.statusCode").should("eq", 200);
         });
 
         it("should handle refresh failure", () => {
+            // Freeze timers defensively — the failure branch does not call reload,
+            // but this keeps both tests symmetric and prevents any future regression
+            // if the handler is changed to also reload on failure.
+            cy.clock();
+
             cy.intercept("POST", "**/admin/api/upgrade/refresh-upgrade-info", {
                 statusCode: 500,
                 body: { message: "GitHub API unavailable" },
