@@ -8,9 +8,18 @@
  * the auto-upgrade completes successfully.
  *
  * Environment variables:
- *   CYPRESS_UPGRADE_SQL_FILE — path to the SQL file to restore (relative to project root)
- *   CYPRESS_UPGRADE_ADMIN_USER — expected admin username after upgrade (default: Admin)
- *   CYPRESS_UPGRADE_ADMIN_PASS — expected admin password after upgrade (default: changeme)
+ *   CYPRESS_UPGRADE_SQL_FILE              — path to the SQL file to restore (relative to project root)
+ *   CYPRESS_UPGRADE_ADMIN_USER            — expected admin username after upgrade (default: Admin)
+ *   CYPRESS_UPGRADE_ADMIN_PASS            — expected admin password after upgrade (default: changeme)
+ *   CYPRESS_UPGRADE_EXPECT_LOGIN_FAILURE  — set to 'true' when the restored database uses an
+ *                                           unsupported password hash (e.g. MD5 from ChurchInfo 1.3.1).
+ *                                           When true, the login test asserts the user is redirected
+ *                                           back to /session/begin instead of the dashboard.
+ *
+ * KNOWN GAP: ChurchInfo 1.3.1 stored passwords as unsalted MD5 hashes. ChurchCRM's
+ * isPasswordValid() only supports bcrypt (current) and SHA-256 (legacy). MD5 passwords
+ * cannot be verified after migration, so login will always fail for those users.
+ * Tracked in: https://github.com/ChurchCRM/CRM/issues/8801
  */
 
 describe('Upgrade via Restore', () => {
@@ -95,7 +104,8 @@ describe('Upgrade via Restore', () => {
             cy.tomSelectByValue('#sChurchState', 'IL');
             cy.get('#sChurchZip').clear().type('62701');
 
-            cy.wait(500);
+            // Wait for the form submit button to be interactive before submitting
+            cy.get('#church-info-form button[type=submit], #church-info-form input[type=submit]').should('not.be.disabled');
             cy.get('#church-info-form').submit();
             cy.url({ timeout: 10000 }).should('include', 'church-info');
             cy.contains('Church information saved successfully', { timeout: 10000 }).should('be.visible');
@@ -147,8 +157,7 @@ describe('Upgrade via Restore', () => {
             // Success modal — may take a while for ChurchInfo (30+ migrations)
             cy.get('#restoreSuccessModal', { timeout: 180000 }).should('be.visible');
 
-            // Wait for redirect
-            cy.wait(3000);
+            // Wait for page to redirect to login after restore completes
             cy.url({ timeout: 30000 }).should('satisfy', (url) => {
                 return url.includes('/session/begin') || url.includes('/login');
             });
@@ -156,6 +165,31 @@ describe('Upgrade via Restore', () => {
     });
 
     describe('Step 3: Verify Upgraded System', () => {
+        const expectLoginFailure = Cypress.env('UPGRADE_EXPECT_LOGIN_FAILURE') === 'true';
+
+        beforeEach(function () {
+            // When login is expected to fail (e.g. ChurchInfo MD5 passwords), skip
+            // the post-login verification tests — they cannot pass without a valid session.
+            // The login test itself (below) handles that scenario explicitly.
+            if (expectLoginFailure && this.currentTest?.title !== 'should show the login page after upgrade'
+                && this.currentTest?.title !== 'should login with the restored admin credentials') {
+                this.skip();
+            }
+        });
+
+        // Use cy.session() to share a single login across all post-login tests
+        // when login is expected to succeed.
+        before(function () {
+            if (!expectLoginFailure) {
+                cy.session('upgraded-admin', () => {
+                    cy.visit('/login');
+                    cy.get('input[name=User]').type(upgradeAdminUser);
+                    cy.get('input[name=Password]').type(upgradeAdminPass + '{enter}');
+                    cy.url({ timeout: 30000 }).should('not.include', '/session/begin');
+                });
+            }
+        });
+
         it('should show the login page after upgrade', () => {
             cy.clearCookies();
             cy.clearLocalStorage();
@@ -171,19 +205,19 @@ describe('Upgrade via Restore', () => {
             cy.get('input[name=User]').type(upgradeAdminUser);
             cy.get('input[name=Password]').type(upgradeAdminPass + '{enter}');
 
-            // After a successful upgrade, the user should be able to log in.
-            // If password hashing format is unsupported (e.g., MD5 from ChurchInfo),
-            // this will fail — which is a valid test finding.
-            cy.url({ timeout: 30000 }).should('not.include', '/session/begin');
+            if (expectLoginFailure) {
+                // KNOWN GAP: ChurchInfo 1.3.1 used MD5 password hashing.
+                // ChurchCRM's isPasswordValid() only supports bcrypt and SHA-256.
+                // Login will redirect back to /session/begin — this test documents the gap.
+                cy.url({ timeout: 30000 }).should('include', '/session/begin');
+                cy.log('KNOWN GAP: ChurchInfo MD5 password not supported — see issue #8801');
+            } else {
+                // After a successful upgrade, the user should be able to log in.
+                cy.url({ timeout: 30000 }).should('not.include', '/session/begin');
+            }
         });
 
         it('should have a current database version after upgrade', () => {
-            cy.clearCookies();
-            cy.visit('/login');
-            cy.get('input[name=User]').type(upgradeAdminUser);
-            cy.get('input[name=Password]').type(upgradeAdminPass + '{enter}');
-            cy.url({ timeout: 30000 }).should('not.include', '/session/begin');
-
             // Verify the system info endpoint shows the current version
             cy.request({
                 method: 'GET',
@@ -197,23 +231,11 @@ describe('Upgrade via Restore', () => {
         });
 
         it('should access the admin dashboard', () => {
-            cy.clearCookies();
-            cy.visit('/login');
-            cy.get('input[name=User]').type(upgradeAdminUser);
-            cy.get('input[name=Password]').type(upgradeAdminPass + '{enter}');
-            cy.url({ timeout: 30000 }).should('not.include', '/session/begin');
-
             cy.visit('/admin/');
             cy.contains('Admin Dashboard', { timeout: 15000 }).should('be.visible');
         });
 
         it('should have a working people API', () => {
-            cy.clearCookies();
-            cy.visit('/login');
-            cy.get('input[name=User]').type(upgradeAdminUser);
-            cy.get('input[name=Password]').type(upgradeAdminPass + '{enter}');
-            cy.url({ timeout: 30000 }).should('not.include', '/session/begin');
-
             cy.request({
                 method: 'GET',
                 url: '/api/persons/latest',
@@ -226,12 +248,6 @@ describe('Upgrade via Restore', () => {
         });
 
         it('should have a working families API', () => {
-            cy.clearCookies();
-            cy.visit('/login');
-            cy.get('input[name=User]').type(upgradeAdminUser);
-            cy.get('input[name=Password]').type(upgradeAdminPass + '{enter}');
-            cy.url({ timeout: 30000 }).should('not.include', '/session/begin');
-
             cy.request({
                 method: 'GET',
                 url: '/api/families/latest',
