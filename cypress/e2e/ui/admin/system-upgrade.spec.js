@@ -367,7 +367,13 @@ describe("System Upgrade Page", () => {
             // whether the server rendered integrity warnings.
             cy.get("#confirmForceReinstall").click({ force: true });
 
-            // Download state should now be cleared
+            // Primary assertion: verify the JS state was cleared
+            cy.window().should((win) => {
+                expect(win.CRM.updateFile).to.be.null;
+            });
+
+            // Secondary DOM assertions: the download details and apply button
+            // should be hidden now that state has been reset
             cy.get("#updateDetails").should("have.class", "d-none");
             cy.get("#applyButtonContainer").should("have.class", "d-none");
         });
@@ -382,18 +388,13 @@ describe("System Upgrade Page", () => {
 
             cy.visit("/admin/system/upgrade");
 
-            // Stub location.reload to prevent the page from navigating mid-test
-            // (the success handler calls window.location.reload after a 1500ms delay)
-            cy.window().then((win) => {
-                cy.stub(win.location, "reload").as("pageReload");
-            });
-
             cy.get("#refreshFromGitHub").click();
             cy.wait("@refreshInfo");
 
-            // Button should have been disabled while the request was in flight;
-            // after the stub prevents the reload, it stays disabled (spinner shown).
-            // Assert the API was called — that is the meaningful assertion here.
+            // Assert the API was called with the expected status.
+            // The success handler triggers window.location.reload after 1500ms;
+            // cy.wait resolves well before that timer fires, so the reload
+            // does not interfere with this assertion.
             cy.get("@refreshInfo").its("response.statusCode").should("eq", 200);
         });
 
@@ -404,12 +405,6 @@ describe("System Upgrade Page", () => {
             }).as("refreshFail");
 
             cy.visit("/admin/system/upgrade");
-
-            // Stub reload so any unexpected success branch can't navigate away
-            cy.window().then((win) => {
-                cy.stub(win.location, "reload").as("pageReload");
-            });
-
             cy.get("#refreshFromGitHub").click();
             cy.wait("@refreshFail");
 
@@ -489,11 +484,10 @@ describe("System Upgrade Page", () => {
             cy.wait("@previewRequest", { timeout: 10000 });
             cy.get("#whatsNewContent").should("not.have.class", "d-none");
 
-            // Open the advanced selector collapse.
-            // Use the data-bs-toggle attribute rather than [href='#...'] to avoid
-            // any browser href-resolution vs attribute-value mismatch.
-            cy.get("[data-bs-toggle='collapse'][data-bs-target='#advancedVersionCollapse'], " +
-                   "[data-bs-toggle='collapse'][href='#advancedVersionCollapse']").first().click();
+            // Open the advanced selector collapse by its visible text label.
+            // The link uses href='#advancedVersionCollapse' (no data-bs-target),
+            // so we select by text content to avoid href URL-resolution issues.
+            cy.contains('a[data-bs-toggle="collapse"]', 'Advanced: choose a specific target version').click();
             cy.get("#advancedVersionCollapse").should("have.class", "show", { timeout: 5000 });
             cy.get("#targetVersionSelect").should("be.visible");
 
@@ -531,8 +525,7 @@ describe("System Upgrade Page", () => {
             cy.wait("@previewRequest", { timeout: 10000 });
 
             // Open advanced selector and pick 5.0.3
-            cy.get("[data-bs-toggle='collapse'][data-bs-target='#advancedVersionCollapse'], " +
-                   "[data-bs-toggle='collapse'][href='#advancedVersionCollapse']").first().click();
+            cy.contains('a[data-bs-toggle="collapse"]', 'Advanced: choose a specific target version').click();
             cy.get("#advancedVersionCollapse").should("have.class", "show", { timeout: 5000 });
             cy.get("#targetVersionSelect").select("5.0.3");
 
@@ -560,9 +553,9 @@ describe("System Upgrade Page", () => {
             // Upgrade path panel should be visible (3 releases ahead)
             cy.get("#upgradePathPanel").should("not.have.class", "d-none");
 
-            // Expand the upgrade path collapse
-            cy.get("[data-bs-toggle='collapse'][data-bs-target='#upgradePathCollapse'], " +
-                   "[data-bs-toggle='collapse'][href='#upgradePathCollapse']").first().click();
+            // Expand the upgrade path collapse by its visible text label.
+            // Same reason as above: use text-content selector, not [href='#...'].
+            cy.contains('a[data-bs-toggle="collapse"]', 'Show full upgrade path').click();
             cy.get("#upgradePathCollapse").should("have.class", "show", { timeout: 5000 });
 
             // Should render 3 accordion entries
