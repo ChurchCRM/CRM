@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-25 08:05+0000\n"
+"POT-Creation-Date: 2026-06-15 14:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,6 +115,12 @@ msgstr[1] ""
 #, php-format
 msgid "%d orphaned files were detected on your server."
 msgstr ""
+
+#, php-format
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] ""
+msgstr[1] ""
 
 #, php-format
 msgid "%d person"
@@ -310,6 +316,9 @@ msgstr ""
 msgid "Access Token"
 msgstr ""
 
+msgid "Access denied"
+msgstr ""
+
 #. plugin:mailchimp:section:2:content
 msgid ""
 "Access the MailChimp Dashboard from the Email menu. The dashboard shows:\n"
@@ -332,6 +341,9 @@ msgstr ""
 msgid "Account Unlocked"
 msgstr ""
 
+msgid "Account options"
+msgstr ""
+
 msgid "Action"
 msgstr ""
 
@@ -345,9 +357,6 @@ msgid "Activate"
 msgstr ""
 
 msgid "Active"
-msgstr ""
-
-msgid "Active Events"
 msgstr ""
 
 msgid "Active Groups"
@@ -766,6 +775,9 @@ msgstr ""
 msgid "All three fields are required."
 msgstr ""
 
+msgid "All times shown in"
+msgstr ""
+
 msgid "All timezones match"
 msgstr ""
 
@@ -989,6 +1001,9 @@ msgid "Are you sure you want to delete this event type? This cannot be undone."
 msgstr ""
 
 msgid "Are you sure you want to delete this fundraiser?"
+msgstr ""
+
+msgid "Are you sure you want to delete this note?"
 msgstr ""
 
 msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
@@ -1638,6 +1653,9 @@ msgstr ""
 msgid "Cancel and Return to Family View"
 msgstr ""
 
+msgid "Cancel — wait 1 more minute"
+msgstr ""
+
 msgid "Cannot Delete Event Type"
 msgstr ""
 
@@ -1655,11 +1673,41 @@ msgstr ""
 msgid "Cannot delete a family with donation records. Contact a finance administrator."
 msgstr ""
 
+#, php-format
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr ""
+
+msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
+msgstr ""
+
+#, php-format
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr ""
+
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr ""
+
+#, php-format
+msgid "Cannot delete fundraiser: %d donated items are still associated. Remove the items first."
+msgstr ""
+
+#, php-format
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr ""
+
+#, php-format
+msgid "Cannot delete property type: %d properties still reference it. Reassign or delete those properties first."
+msgstr ""
+
 msgid "Cannot delete the only remaining option"
 msgstr ""
 
 #, php-format
 msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
+msgstr ""
+
+#, php-format
+msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
 msgstr ""
 
 msgid "Cannot execute query."
@@ -2016,6 +2064,9 @@ msgstr ""
 msgid "Class List Export"
 msgstr ""
 
+msgid "Class must be one of p, f, or g"
+msgstr ""
+
 msgid "Classes"
 msgstr ""
 
@@ -2313,9 +2364,6 @@ msgstr ""
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr ""
 
-msgid "Connect with others"
-msgstr ""
-
 msgid "Connected"
 msgstr ""
 
@@ -2419,6 +2467,9 @@ msgstr ""
 msgid "Copy Members to Group"
 msgstr ""
 
+msgid "Copy error message"
+msgstr ""
+
 msgid "Copy from church address"
 msgstr ""
 
@@ -2446,6 +2497,9 @@ msgid "Costs"
 msgstr ""
 
 msgid "Could not connect to MailChimp. Please check your API key."
+msgstr ""
+
+msgid "Could not load note."
 msgstr ""
 
 msgid "Could not parse the CSV file. Check that it is a valid comma-separated file with a header row."
@@ -2602,6 +2656,9 @@ msgid "Current DB Version"
 msgstr ""
 
 msgid "Current Deposit"
+msgstr ""
+
+msgid "Current Events"
 msgstr ""
 
 msgid "Current Fiscal Year"
@@ -3106,6 +3163,9 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
+msgid "Description cannot exceed 100 characters"
+msgstr ""
+
 msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
 msgstr ""
 
@@ -3257,6 +3317,9 @@ msgstr ""
 msgid "Donation Funds"
 msgstr ""
 
+msgid "Donation fund not found"
+msgstr ""
+
 msgid "Donations and giving records are tracked at the family level. If you plan to record giving for an individual who lives alone, create a single-person family for them."
 msgstr ""
 
@@ -3346,9 +3409,6 @@ msgid "Each row is one person. People in the same family share a FamilyID. Leave
 msgstr ""
 
 msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
-msgstr ""
-
-msgid "Easy registration"
 msgstr ""
 
 #. Context: countries
@@ -3800,6 +3860,9 @@ msgstr ""
 msgid "Error decoding signature definition file"
 msgstr ""
 
+msgid "Error deleting note."
+msgstr ""
+
 msgid "Error deleting payments"
 msgstr ""
 
@@ -4105,10 +4168,16 @@ msgstr ""
 msgid "Failed to create class. Please try again."
 msgstr ""
 
+msgid "Failed to create donation fund"
+msgstr ""
+
 msgid "Failed to create event."
 msgstr ""
 
 msgid "Failed to create event. Please try again."
+msgstr ""
+
+msgid "Failed to create fundraiser"
 msgstr ""
 
 msgid "Failed to create group. Please try again."
@@ -4117,10 +4186,22 @@ msgstr ""
 msgid "Failed to create link"
 msgstr ""
 
+msgid "Failed to create property type"
+msgstr ""
+
+msgid "Failed to create volunteer opportunity"
+msgstr ""
+
 msgid "Failed to delete class. Please try again."
 msgstr ""
 
+msgid "Failed to delete donation fund"
+msgstr ""
+
 msgid "Failed to delete event. Please try again."
+msgstr ""
+
+msgid "Failed to delete fundraiser"
 msgstr ""
 
 msgid "Failed to delete group. Please try again."
@@ -4135,10 +4216,19 @@ msgstr ""
 msgid "Failed to delete note"
 msgstr ""
 
+msgid "Failed to delete note."
+msgstr ""
+
 msgid "Failed to delete orphaned files"
 msgstr ""
 
+msgid "Failed to delete property type"
+msgstr ""
+
 msgid "Failed to delete role. Please try again."
+msgstr ""
+
+msgid "Failed to delete volunteer opportunity"
 msgstr ""
 
 msgid "Failed to delete. Please try again."
@@ -4273,16 +4363,28 @@ msgstr ""
 msgid "Failed to uninstall plugin"
 msgstr ""
 
+msgid "Failed to update donation fund"
+msgstr ""
+
+msgid "Failed to update fundraiser"
+msgstr ""
+
 msgid "Failed to update group. Please try again."
 msgstr ""
 
 msgid "Failed to update properties. Please try again."
 msgstr ""
 
+msgid "Failed to update property type"
+msgstr ""
+
 msgid "Failed to update role name. Please try again."
 msgstr ""
 
 msgid "Failed to update role. Please try again."
+msgstr ""
+
+msgid "Failed to update volunteer opportunity"
 msgstr ""
 
 msgid "Failed to upload family photo"
@@ -4813,6 +4915,9 @@ msgid "Fundraiser"
 msgstr ""
 
 msgid "Fundraiser Listing"
+msgstr ""
+
+msgid "Fundraiser not found"
 msgstr ""
 
 msgid "Funds"
@@ -5615,6 +5720,9 @@ msgstr ""
 msgid "Install from URL"
 msgstr ""
 
+msgid "Installation ID"
+msgstr ""
+
 msgid "Installed"
 msgstr ""
 
@@ -5675,13 +5783,13 @@ msgstr ""
 msgid "Invalid Number"
 msgstr ""
 
-msgid "Invalid User/Password"
-msgstr ""
-
 msgid "Invalid Year"
 msgstr ""
 
 msgid "Invalid assignment type"
+msgstr ""
+
+msgid "Invalid class"
 msgstr ""
 
 msgid "Invalid code. Please try again."
@@ -5818,9 +5926,6 @@ msgstr ""
 
 #. Context: countries
 msgid "Jersey"
-msgstr ""
-
-msgid "Join our community and stay connected with"
 msgstr ""
 
 msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
@@ -6892,6 +6997,9 @@ msgstr ""
 msgid "Name cannot be longer than %d characters"
 msgstr ""
 
+msgid "Name cannot exceed 30 characters"
+msgstr ""
+
 msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
 msgstr ""
 
@@ -6904,9 +7012,6 @@ msgstr ""
 
 #. Context: countries
 msgid "Nauru"
-msgstr ""
-
-msgid "Need help? Contact us"
 msgstr ""
 
 msgid "Need to remove this data later?"
@@ -6989,9 +7094,6 @@ msgid "New kiosk device registration is currently disabled. Please contact your 
 msgstr ""
 
 msgid "New member notification emails"
-msgstr ""
-
-msgid "New to"
 msgstr ""
 
 msgid "New users will not receive a welcome email with their credentials. Share the password with them manually, or configure email first."
@@ -7349,7 +7451,14 @@ msgstr ""
 msgid "Note Editor"
 msgstr ""
 
+#, php-format
+msgid "Note by %s deleted"
+msgstr ""
+
 msgid "Note not found"
+msgstr ""
+
+msgid "Note not found."
 msgstr ""
 
 msgid "Note text is required"
@@ -8083,9 +8192,6 @@ msgstr ""
 msgid "Please confirm deletion of this group record"
 msgstr ""
 
-msgid "Please confirm deletion of this note"
-msgstr ""
-
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr ""
 
@@ -8262,6 +8368,9 @@ msgid "Pledges and Payments"
 msgstr ""
 
 msgid "Plugin Development"
+msgstr ""
+
+msgid "Plugin Development Docs"
 msgstr ""
 
 msgid "Plugin Help"
@@ -8453,6 +8562,9 @@ msgstr ""
 msgid "Property not found."
 msgstr ""
 
+msgid "Property type not found"
+msgstr ""
+
 msgid "Provide any corrections or additional information here..."
 msgstr ""
 
@@ -8542,6 +8654,9 @@ msgstr ""
 msgid "Re-install"
 msgstr ""
 
+msgid "Read more"
+msgstr ""
+
 msgid "Ready to back up"
 msgstr ""
 
@@ -8615,7 +8730,16 @@ msgstr ""
 msgid "Refresh List"
 msgstr ""
 
+msgid "Refreshing Soon"
+msgstr ""
+
+msgid "Refreshing in"
+msgstr ""
+
 msgid "Regenerate"
+msgstr ""
+
+msgid "Register"
 msgstr ""
 
 msgid "Register New Device"
@@ -8625,9 +8749,6 @@ msgid "Register Now"
 msgstr ""
 
 msgid "Register Your Church"
-msgstr ""
-
-msgid "Register Your Family"
 msgstr ""
 
 msgid "Register and manage kiosk devices for event check-in"
@@ -9600,6 +9721,10 @@ msgstr ""
 msgid "Skipped"
 msgstr ""
 
+#. Context: locales
+msgid "Slovak"
+msgstr ""
+
 #. Context: countries
 msgid "Slovakia (Slovensko)"
 msgstr ""
@@ -9750,9 +9875,6 @@ msgid "State is required."
 msgstr ""
 
 msgid "Status"
-msgstr ""
-
-msgid "Stay informed"
 msgstr ""
 
 msgid "Step 1 — Upload CSV File"
@@ -10084,6 +10206,9 @@ msgid "That field name already exists."
 msgstr ""
 
 msgid "That fund name already exists."
+msgstr ""
+
+msgid "That name already exists."
 msgstr ""
 
 msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
@@ -10433,6 +10558,9 @@ msgid "Title FirstName MiddleInitial. LastName"
 msgstr ""
 
 msgid "Title FirstName MiddleName LastName"
+msgstr ""
+
+msgid "Title is required"
 msgstr ""
 
 msgid "Title page"
@@ -11303,6 +11431,9 @@ msgstr ""
 msgid "Volunteer opportunities"
 msgstr ""
 
+msgid "Volunteer opportunity not found"
+msgstr ""
+
 msgid "Volunteer-entered headcounts, broken down by category."
 msgstr ""
 
@@ -11464,9 +11595,6 @@ msgid "Welcome to"
 msgstr ""
 
 msgid "Welcome to the Family!"
-msgstr ""
-
-msgid "Welcome — sign in to manage your community"
 msgstr ""
 
 #. Context: countries
@@ -11654,6 +11782,12 @@ msgstr ""
 msgid "You can review and verify your family information using the link below. If you need additional access, please contact your church administrator."
 msgstr ""
 
+msgid "You do not have permission to delete this note."
+msgstr ""
+
+msgid "You do not have permission to edit this note."
+msgstr ""
+
 msgid "You do not have permission to view this person"
 msgstr ""
 
@@ -11835,6 +11969,9 @@ msgid "Zip code is required"
 msgstr ""
 
 msgid "ZipArchive extension required for upgrades"
+msgstr ""
+
+msgid "[Private Note — visible only to creator]"
 msgstr ""
 
 msgid "active"
@@ -12072,6 +12209,9 @@ msgstr ""
 msgid "page."
 msgstr ""
 
+msgid "past"
+msgstr ""
+
 msgid "payment(s)?"
 msgstr ""
 
@@ -12120,6 +12260,9 @@ msgid "risk"
 msgstr ""
 
 msgid "s"
+msgstr ""
+
+msgid "seconds"
 msgstr ""
 
 msgid "seconds..."

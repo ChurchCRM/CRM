@@ -135,6 +135,74 @@ env: {
 > you which config file is missing the key. Always grep both files when
 > adding a new `*.username` / `*.password` entry.
 
+### API-key test matrix (who has what permission) <!-- learned: 2026-04-15 -->
+
+**The Cypress seed's API-key users do NOT map cleanly to "one user per
+permission."** Before writing a `403` or `200` assertion, verify against
+`cypress/data/seed.sql` (`user_usr` INSERT) and `docker.config.ts`
+(`*.api.key` env vars). Column order in `user_usr` is: AddRecords,
+EditRecords, DeleteRecords, **MenuOptions**, ManageGroups, **Finance**,
+Notes, **Admin** — in that order (positions 7–14 of the INSERT).
+
+| Env var | Seed user | `bAdmin` | `bMenuOptions` | `bFinance` | `bNotes` | `bDeleteRecords` |
+|---|---|---|---|---|---|---|
+| `admin.api.key` | `Admin` (id 1) | **1** | 0 | 0 | 0 | 0 |
+| `user.api.key` | `tony.wade@example.com` (id 3) | 0 | **1** | **1** | **1** | **1** |
+| `nofinance.api.key` | ⚠️ **not seeded** — key doesn't match any user row | — | — | — | — | — |
+| no convenience cmd | `limited.user` (id 4) | 0 | 0 | 0 | 0 | 0 |
+
+**Three things this surfaces that WILL bite you:**
+
+1. **Admin bypasses almost every role middleware.** `User::isMenuOptionsEnabled()`,
+   `isFinanceEnabled()`, `isDeleteRecordsEnabled()`, `isNotesEnabled()`, etc.
+   all return `$this->isAdmin() || $this->isXxx()`. So even though the admin
+   seed row has `bMenuOptions=0`, the admin key **passes** `MenuOptionsRoleAuthMiddleware`
+   and gets 200. You cannot test the 403 path with the admin key for any of
+   these middlewares. `AdminRoleAuthMiddleware` is the only one without a
+   bypass (it's the bypass itself).
+
+2. **`nofinance.api.key` is not in `seed.sql`.** The value in
+   `docker.config.ts` (`M_5K4ZWTdBTmMOTGTfLWCmXFbETgHNG6_…`) doesn't match
+   any `usr_apiKey` column in `cypress/data/seed.sql`. A request with that
+   key hits `AuthMiddleware` → **401** (unknown key), not 403. Existing specs
+   use `[401, 403]` (or `[401, 403, 500]`) to stay honest about this:
+   ```js
+   // ✅ CORRECT — works whether the key is seeded or not
+   cy.makePrivateNoFinanceAPICall("GET", "/api/deposits", null, [401, 403]);
+   // ❌ WRONG — strict 403 fails every run
+   cy.makePrivateNoFinanceAPICall("GET", "/api/deposits", null, 403);
+   ```
+
+3. **The only user that can trigger a pure 403 from most role middlewares
+   is `limited.user` (id 4)**, which has every permission bit = 0 and a
+   valid API key (`limitedUserApiKeyForTesting123456789012345678`). But
+   there's **no `makePrivateLimitedUserAPICall` convenience command** and
+   no `limited.user.api.key` env var. If you need 403 coverage for a
+   middleware with an admin bypass (MenuOptions, Finance-as-non-finance-user,
+   Notes, etc.), you have three options:
+   - Add an env var + command (touches `docker.config.ts`, `new-system.config.ts`,
+     and `cypress/support/api-commands.js`)
+   - Call `cy.makePrivateAPICall(Cypress.env("limited.user.api.key"), …)`
+     inline after adding the env var
+   - Document the gap with a code comment and defer to a follow-up
+
+**Which middleware maps to which bypass:**
+
+| Middleware | Bypasses on `isAdmin()`? | 403 reachable with admin key? |
+|---|---|---|
+| `AdminRoleAuthMiddleware` | — (is the bypass) | ❌ never — admin always passes |
+| `FinanceRoleAuthMiddleware` | ✅ | ❌ |
+| `MenuOptionsRoleAuthMiddleware` | ✅ | ❌ |
+| `NotesRoleAuthMiddleware` | ✅ | ❌ |
+| `DeleteRecordRoleAuthMiddleware` | ✅ | ❌ |
+| `EditRecordsRoleAuthMiddleware` | ✅ | ❌ |
+| `AddEventsRoleAuthMiddleware` | ✅ | ❌ |
+| `ManageGroupRoleAuthMiddleware` | ✅ (if `ManageGroups` bit) | ❌ |
+
+TL;DR: **never assert strict 403 on an admin-keyed call against a role-gated
+route**, and **never assert strict 403 on `makePrivateNoFinanceAPICall`** —
+use `[401, 403]`.
+
 **CRITICAL:**
 - ❌ DO NOT hardcode credentials in test files
 - ❌ DO NOT add commented-out tests or TODO comments
@@ -1885,3 +1953,85 @@ describe("Family Activation", () => {
     it("...", () => { /* ... */ });
 });
 ```
+
+## Authorization Testing — Admin vs Standard Users <!-- learned: 2026-05-13 -->
+
+### User Types and Capabilities
+
+When testing authorization gates, use the appropriate session setup command:
+
+| Session Type | Usage | Capabilities |
+|--------------|-------|--------------|
+| `cy.setupAdminSession()` | Admin-only features | Full access to all admin pages, CSV export, system config, user management |
+| `cy.setupStandardSession()` | Standard user with basic permissions | View/edit own profile, view groups, participate in events; NO access to admin pages or system config |
+| `cy.setupNoFinanceSession()` | User without finance access | Same as standard, but no access to finance/donation records |
+
+### Authorization Test Pattern
+
+For features that require admin access, test three scenarios: admin **can** do it, standard user **cannot**, and unauthenticated user **cannot**:
+
+```js
+describe("CSV Export Authorization", () => {
+    it("should allow admin users to submit CSV export", () => {
+        cy.setupAdminSession();
+        cy.visit("/CSVExport.php");
+        cy.contains("CSV Export").should("be.visible");
+
+        cy.request({
+            method: "POST",
+            url: "/CSVCreateFile.php",
+            body: { Title: 1, FirstName: 1, ... }
+        }).then((response) => {
+            expect(response.status).to.eq(200);
+            expect(response.headers["content-type"]).to.include("text/csv");
+        });
+    });
+
+    it("should deny non-admin users access to CSVExport.php", () => {
+        cy.setupStandardSession();
+        cy.visit("/CSVExport.php", { failOnStatusCode: false });
+
+        // Authenticated non-admin users are redirected to access-denied (security redirect)
+        cy.url().should("include", "/v2/access-denied");
+    });
+
+    it("should deny non-admin users POST to CSVCreateFile.php", () => {
+        cy.setupStandardSession();
+        cy.request({
+            method: "POST",
+            url: "/CSVCreateFile.php",
+            body: { Title: 1, FirstName: 1, ... },
+            failOnStatusCode: false
+        }).then((response) => {
+            // Non-admin users get 302 redirect (security redirect)
+            expect([301, 302]).to.include(response.status);
+        });
+    });
+
+    it("should deny unauthenticated access to CSVExport.php", () => {
+        cy.visit("/CSVExport.php", { failOnStatusCode: false });
+        cy.url().should("include", "/session/begin"); // unauthenticated → login page
+    });
+
+    it("should deny unauthenticated POST to CSVCreateFile.php", () => {
+        cy.request({
+            method: "POST",
+            url: "/CSVCreateFile.php",
+            body: { Title: 1, FirstName: 1, ... },
+            failOnStatusCode: false
+        }).then((response) => {
+            // Unauthenticated users get redirect to login
+            expect([301, 302, 401]).to.include(response.status);
+        });
+    });
+});
+```
+
+### Key Rules for Authorization Testing
+
+1. **Use separate `describe` blocks per user type** when testing multiple permission levels in one file
+2. **For GET requests**, check URL redirect: authenticated non-admin → `/v2/access-denied`; unauthenticated → `/session/begin`
+3. **For POST requests**, check HTTP status code (302 for `RedirectUtils::securityRedirect()`, 401/403 for API errors)
+4. **Always test the happy path first** (admin can do it), then test denials
+5. **Test both GET and POST paths** when a feature has both (form page + form submission)
+6. **Use `failOnStatusCode: false`** on `cy.visit()` and `cy.request()` when expecting non-2xx responses

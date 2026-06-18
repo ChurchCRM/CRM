@@ -1,6 +1,6 @@
 {
     "name": "churchcrm",
-    "version": "7.3.0",
+    "version": "7.4.1",
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -29,7 +29,7 @@
         "build:webpack": "webpack",
         "build:webpack:watch": "webpack --watch",
         "build:php": "run-s composer:install build:php:validate",
-        "build:openapi": "cd src && composer install --no-interaction --prefer-dist && composer run openapi-public && composer run openapi-private",
+        "build:openapi": "cd src && composer install --no-interaction --prefer-dist && composer run openapi:public && composer run openapi:private",
         "build:orm": "cd src/ && ./vendor/bin/propel build --config-dir=propel",
         "clean": "rm -rf node_modules/ temp src/vendor/ src/skin/external src/locale/vendor ai-notes/ src/logs/*.log",
         "composer:install": "cd src/ && composer validate --no-check-publish && composer install --no-dev && find vendor -type d \\( -name 'tests' -o -name 'Tests' -o -name 'test' -o -name 'docs' -o -name 'examples' -o -name 'example' \\) -exec rm -rf {} + 2>/dev/null || true",
@@ -84,20 +84,20 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^7.2.0",
         "@tabler/core": "^1.4.0",
-        "@tabler/icons-webfont": "^3.41.1",
+        "@tabler/icons-webfont": "^3.44.0",
         "@uppy/core": "^5.2.0",
         "@uppy/dashboard": "^5.1.1",
         "@uppy/image-editor": "^4.2.0",
         "@uppy/webcam": "^5.1.0",
         "@uppy/xhr-upload": "^5.2.0",
-        "apexcharts": "^5.10.6",
+        "apexcharts": "^5.15.0",
         "avatar-initials": "^6.0.0",
         "bootbox": "^6.0.4",
         "bootstrap": "^5.3.8",
         "bootstrap-datepicker": "^1.10.1",
         "bs-stepper": "^1.7.0",
-        "datatables.net": "^2.3.7",
-        "datatables.net-bs5": "^2.3.7",
+        "datatables.net": "^2.3.8",
+        "datatables.net-bs5": "^2.3.8",
         "datatables.net-buttons": "^3.2.6",
         "datatables.net-buttons-bs5": "^3.2.6",
         "datatables.net-responsive": "^3.0.8",
@@ -105,61 +105,49 @@
         "datatables.net-select": "^3.1.3",
         "datatables.net-select-bs5": "^3.1.3",
         "daterangepicker": "^3.1.0",
-        "dompurify": "^3.4.1",
+        "dompurify": "^3.4.11",
         "flag-icons": "^7.5.0",
-        "fullcalendar": "^6.1.20",
-        "i18next": "^26.0.6",
+        "fullcalendar": "^6.1.21",
+        "i18next": "^26.3.1",
         "inputmask": "^5.0.9",
         "jquery": "^3.7.1",
         "just-validate": "^4.3.0",
         "leaflet": "^1.9.4",
-        "marked": "^18.0.2",
+        "marked": "^18.0.5",
         "moment": "^2.30.1",
         "notyf": "^3.10.0",
-        "pdfmake": "^0.3.6",
+        "pdfmake": "^0.3.11",
         "quill": "2.0.2",
-        "tom-select": "^2.6.0"
+        "tom-select": "^2.6.1"
     },
     "devDependencies": {
-        "@biomejs/biome": "^2.4.12",
+        "@biomejs/biome": "^2.5.0",
         "@types/jquery": "^3.5.33",
         "archiver": "^7.0.1",
         "css-loader": "^7.1.4",
         "cy-verify-downloads": "^0.3.0",
-        "cypress": "^15.14.1",
+        "cypress": "^15.17.0",
         "cypress-terminal-report": "^7.3.3",
         "datatables.net-plugins": "^2.3.2",
         "dotenv": "^17.4.2",
         "grunt": "^1.6.2",
         "grunt-cli": "^1.5.0",
         "grunt-contrib-copy": "^1.0.0",
-        "i18next-cli": "^1.56.1",
+        "i18next-cli": "^1.64.1",
         "i18next-conv": "^16.0.0",
         "mini-css-extract-plugin": "^2.10.2",
-        "mysql2": "^3.22.2",
+        "mysql2": "^3.22.5",
         "node-sha1": "^1.0.1",
         "npm-run-all": "^4.1.5",
-        "sass": "^1.98.0",
-        "sass-loader": "^16.0.7",
+        "sass": "^1.101.0",
+        "sass-loader": "^17.0.0",
         "style-loader": "^4.0.0",
-        "ts-loader": "^9.5.4",
+        "ts-loader": "^9.6.0",
         "typescript": "^6.0.3",
-        "webpack": "^5.106.2",
-        "webpack-cli": "^7.0.2"
+        "webpack": "^5.107.2",
+        "webpack-cli": "^7.0.3"
     },
     "overrides": {
-        "lodash": "4.18.1",
-        "lodash-es": "4.18.1",
-        "@xmldom/xmldom": "0.8.12",
-        "picomatch": "4.0.4",
-        "grunt": {
-            "minimatch": "3.1.4",
-            "brace-expansion": "1.1.13"
-        },
-        "npm-run-all": {
-            "minimatch": "3.1.4",
-            "brace-expansion": "1.1.13"
-        },
         "archiver": {
             "archiver-utils": {
                 "glob": {
@@ -169,6 +157,18 @@
             "readdir-glob": {
                 "minimatch": "5.1.8"
             }
+        },
+        "lodash": "4.18.1",
+        "lodash-es": "4.18.1",
+        "@xmldom/xmldom": "0.9.10",
+        "picomatch": "4.0.4",
+        "grunt": {
+            "minimatch": "3.1.4",
+            "brace-expansion": "1.1.13"
+        },
+        "npm-run-all": {
+            "minimatch": "3.1.4",
+            "brace-expansion": "1.1.13"
         },
         "svgicons2svgfont": {
             "brace-expansion": "5.0.5"

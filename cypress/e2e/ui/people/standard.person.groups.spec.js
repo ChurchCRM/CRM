@@ -35,7 +35,7 @@ describe("Person Group Interactions", () => {
         });
 
         it("should display Groups tab with assigned groups", () => {
-            cy.visit(`PersonView.php?PersonID=${personId}`);
+            cy.visit(`/people/view/${personId}`);
 
             // Click Groups tab
             cy.get("#nav-item-groups").click();
@@ -48,7 +48,7 @@ describe("Person Group Interactions", () => {
         });
 
         it("should show group action menu with View, Change Role, Remove", () => {
-            cy.visit(`PersonView.php?PersonID=${personId}`);
+            cy.visit(`/people/view/${personId}`);
             cy.get("#nav-item-groups").click();
 
             // Target the specific "Church Board" group row
@@ -76,7 +76,7 @@ describe("Person Group Interactions", () => {
         });
 
         it("should show remove confirmation when clicking Remove", () => {
-            cy.visit(`PersonView.php?PersonID=${personId}`);
+            cy.visit(`/people/view/${personId}`);
             cy.get("#nav-item-groups").click();
 
             // Target the specific "Church Board" group row
@@ -106,7 +106,7 @@ describe("Person Group Interactions", () => {
         });
 
         it("should open Add to Group modal from Actions dropdown", () => {
-            cy.visit(`PersonView.php?PersonID=${personId}`);
+            cy.visit(`/people/view/${personId}`);
 
             // Open Actions dropdown and click Assign New Group
             cy.get("#person-actions-dropdown").click();

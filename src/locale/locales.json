@@ -456,6 +456,17 @@
     "momentLocale": "ru",
     "isRTL": false
   },
+  "Slovak": {
+    "poEditor": "sk",
+    "locale": "sk_SK",
+    "languageCode": "sk",
+    "countryCode": "SK",
+    "dataTables": "Slovak",
+    "fullCalendar": true,
+    "fullCalendarLocale": "sk",
+    "datePicker": true,
+    "isRTL": false
+  },
   "Spanish - Argentina": {
     "poEditor": "es-AR",
     "locale": "es_AR",

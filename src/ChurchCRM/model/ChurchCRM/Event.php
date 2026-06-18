@@ -5,9 +5,15 @@ namespace ChurchCRM\model\ChurchCRM;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Base\Event as BaseEvent;
+use ChurchCRM\model\ChurchCRM\CalendarEventQuery;
+use ChurchCRM\model\ChurchCRM\EventAttendQuery;
+use ChurchCRM\model\ChurchCRM\EventAudienceQuery;
+use ChurchCRM\model\ChurchCRM\EventCountsQuery;
+use ChurchCRM\model\ChurchCRM\KioskAssignmentQuery;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Map\TableMap;
 
 /**
@@ -22,6 +28,38 @@ use Propel\Runtime\Map\TableMap;
 class Event extends BaseEvent
 {
     private bool $editable = true;
+
+    /**
+     * Cascade-delete child rows that reference this event before the row
+     * itself is removed.
+     *
+     * Event child tables (all FK'd to events_event.event_id) are semantically
+     * owned by the event and have no independent meaning once the event is
+     * gone. Propel does not auto-cascade these FKs, so if we do not clean them
+     * up explicitly they become orphaned rows that break integrity reports
+     * and surface as "phantom" check-ins, audience links, etc.
+     *
+     * Handled here:
+     *  - calendar_event         (which calendars the event appears on)
+     *  - event_audience         (group audience links — cross-ref table)
+     *  - eventattend_event_attend (attendance records)
+     *  - kioskassignment_kasm    (kiosk → event pins)
+     *  - eventcounts_evtcnt      (attendance summary — no FK at DB level)
+     *
+     * See #8670.
+     */
+    public function preDelete(ConnectionInterface $con = null): bool
+    {
+        $eventId = (int) $this->getId();
+
+        CalendarEventQuery::create()->filterByEventId($eventId)->delete($con);
+        EventAudienceQuery::create()->filterByEventId($eventId)->delete($con);
+        EventAttendQuery::create()->filterByEventId($eventId)->delete($con);
+        EventCountsQuery::create()->filterByEvtcntEventid($eventId)->delete($con);
+        KioskAssignmentQuery::create()->filterByEventId($eventId)->delete($con);
+
+        return parent::preDelete($con);
+    }
 
     public function toArray(string $keyType = TableMap::TYPE_PHPNAME, bool $includeLazyLoadColumns = true, array $alreadyDumpedObjects = [], bool $includeForeignObjects = false): array
     {

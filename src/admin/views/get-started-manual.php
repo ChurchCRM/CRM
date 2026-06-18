@@ -27,7 +27,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </div>
                         <div>
                             <h6 class="mb-1"><?= gettext('Add Your First Family') ?></h6>
-                            <p class="text-muted mb-2">
+                            <p class="text-body-secondary mb-2">
                                 <?= gettext('A family represents a household. It holds the shared address and home phone number for all family members living together.') ?>
                             </p>
                             <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php" class="btn btn-success btn-sm">
@@ -39,11 +39,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <!-- Step 2 -->
                     <div class="d-flex align-items-start mb-2">
                         <div class="me-3 mt-1">
-                            <span class="badge bg-primary badge-pill" style="font-size:1rem;padding:.5em .75em;">2</span>
+                            <span class="badge bg-primary rounded-pill" style="font-size:1rem;padding:.5em .75em;">2</span>
                         </div>
                         <div>
                             <h6 class="mb-1"><?= gettext('Add People to the Family') ?></h6>
-                            <p class="text-muted mb-2">
+                            <p class="text-body-secondary mb-2">
                                 <?= gettext('Once you have a family, add each household member as a person. Assign them a family role (e.g. Head of Household, Spouse, Child).') ?>
                             </p>
                             <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php" class="btn btn-primary btn-sm">
@@ -123,15 +123,15 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </h5>
                 </div>
                 <div class="card-body">
-                    <p class="small text-muted mb-2">
+                    <p class="small text-body-secondary mb-2">
                         <strong><?= gettext('Family') ?>:</strong>
                         <?= gettext('A household. Stores the shared mailing address and home phone.') ?>
                     </p>
-                    <p class="small text-muted mb-2">
+                    <p class="small text-body-secondary mb-2">
                         <strong><?= gettext('Person') ?>:</strong>
                         <?= gettext('An individual church member. Stores name, birthday, personal email, and mobile.') ?>
                     </p>
-                    <p class="small text-muted mb-0">
+                    <p class="small text-body-secondary mb-0">
                         <i class="fa-solid fa-circle-info text-info me-1"></i>
                         <?= gettext('A person does not need to belong to a family, but assigning one makes address management much easier.') ?>
                     </p>
@@ -145,7 +145,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </h5>
                 </div>
                 <div class="card-body">
-                    <p class="small text-muted mb-3">
+                    <p class="small text-body-secondary mb-3">
                         <?= gettext('If you have many records in a spreadsheet, the CSV import may be faster than entering data manually.') ?>
                     </p>
                     <a href="<?= SystemURLs::getRootPath() ?>/admin/import/csv" class="btn btn-outline-info btn-sm w-100">

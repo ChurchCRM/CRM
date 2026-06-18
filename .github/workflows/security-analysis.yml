@@ -48,12 +48,18 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+  security-events: write
+
 jobs:
   # CodeQL: Semantic analysis for JavaScript/TypeScript
   # Understands data flow, tracks tainted input through function calls
   codeql-analysis:
     name: 'CodeQL (JS/TS)'
     runs-on: ubuntu-latest
+    env:
+      CODEQL_ACTION_FILE_COVERAGE_ON_PRS: 'true'
     permissions:
       security-events: write
       contents: read
@@ -228,4 +234,4 @@ jobs:
         with:
           name: devskim-security-results
           path: devskim-results.sarif
-          retention-days: 30
+          retention-days: 15

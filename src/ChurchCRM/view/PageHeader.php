@@ -86,10 +86,12 @@ class PageHeader
             } else {
                 // Link button
                 $url = $btn['url'] ?? '#';
-                if ($url !== '#' && !str_starts_with($url, 'http')) {
+                $isExternal = $url !== '#' && str_starts_with($url, 'http');
+                if (!$isExternal && $url !== '#') {
                     $url = SystemURLs::getRootPath() . $url;
                 }
-                $html .= '<a href="' . $url . '" class="btn btn-sm btn-outline-secondary">'
+                $targetAttr = $isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
+                $html .= '<a href="' . $url . '" class="btn btn-sm btn-outline-secondary"' . $targetAttr . '>'
                     . $icon . $label . '</a>';
             }
         }

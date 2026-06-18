@@ -1,0 +1,274 @@
+name: Release & Start Next
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+
+# End-of-cycle one-click flow:
+#
+#   1. publish    — finds the latest successful master Build/Test/Package run,
+#                   downloads its ChurchCRM-<version>.zip, and creates a
+#                   GitHub Release (draft by default). The tag is auto-
+#                   detected from package.json on that build's commit, so you
+#                   don't retype the version.
+#
+#   2. start_next — chains into release-prepare.yml (reusable) to bump master
+#                   to the version you typed in `next_version` and open the
+#                   "Start <next> release" PR.
+#
+# Review the draft release + the bump PR. If happy, click "Publish release"
+# on GitHub and merge the PR.
+#
+# For mid-cycle re-bumps (e.g. patch → minor because a feature landed) run
+# the standalone "Start New Release" workflow directly — it remains the
+# right tool for that scope change.
+
+on:
+  workflow_dispatch:
+    inputs:
+      next_version:
+        description: 'Next version to start AFTER this release (e.g. 7.2.4 patch, 7.3.0 minor, 8.0.0 major). The current version being released is auto-detected from package.json on master.'
+        required: true
+        type: string
+      prerelease:
+        description: 'Mark the release being published as pre-release (RCs / betas)'
+        required: false
+        type: boolean
+        default: false
+      draft:
+        description: 'Create as draft so you can review before publishing'
+        required: false
+        type: boolean
+        default: true
+      run_id:
+        description: 'Optional: specific Build/Test/Package run ID to release from. Leave blank for the latest successful master build.'
+        required: false
+        type: string
+      release_version_override:
+        description: 'Optional: override the auto-detected release tag. Leave blank to use package.json on the source build commit.'
+        required: false
+        type: string
+
+jobs:
+  # ───────────────────────────────────────────────────────────────────
+  # Publish the CURRENT version as a GitHub Release.
+  # ───────────────────────────────────────────────────────────────────
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: read
+      pull-requests: write
+    env:
+      # gh CLI needs to know the repo to query since we don't check out the
+      # working tree — without this, commands like `gh run download` fail with
+      # "fatal: not a git repository".
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    outputs:
+      release_tag: ${{ steps.tag.outputs.tag }}
+      release_url: ${{ steps.release.outputs.release_url }}
+    steps:
+      - name: Resolve source build run
+        id: run
+        env:
+          INPUT_RUN_ID: ${{ inputs.run_id }}
+        run: |
+          set -euo pipefail
+          if [ -n "$INPUT_RUN_ID" ]; then
+            run_id="$INPUT_RUN_ID"
+            echo "Using explicit run_id=$run_id from workflow input."
+          else
+            run_id=$(gh run list \
+              --workflow=build-test-package.yml \
+              --branch=master \
+              --event=push \
+              --status=success \
+              --limit=1 \
+              --json databaseId \
+              --jq '.[0].databaseId // empty')
+            if [ -z "$run_id" ]; then
+              echo "::error::No successful master build found. Merge to master and wait for a green build, or pass a run_id explicitly."
+              exit 1
+            fi
+            echo "Auto-resolved latest successful master build: run_id=$run_id"
+          fi
+
+          commit=$(gh run view "$run_id" --json headSha --jq .headSha)
+          run_url=$(gh run view "$run_id" --json url --jq .url)
+
+          echo "run_id=$run_id" >> "$GITHUB_OUTPUT"
+          echo "commit=$commit" >> "$GITHUB_OUTPUT"
+          echo "run_url=$run_url" >> "$GITHUB_OUTPUT"
+
+          echo "Releasing from run #$run_id (commit $commit)"
+
+      - name: Resolve release tag
+        id: tag
+        env:
+          INPUT_OVERRIDE: ${{ inputs.release_version_override }}
+          NEXT_VERSION: ${{ inputs.next_version }}
+          COMMIT: ${{ steps.run.outputs.commit }}
+        run: |
+          set -euo pipefail
+
+          if [ -n "$INPUT_OVERRIDE" ]; then
+            tag="$INPUT_OVERRIDE"
+            echo "Using explicit release_version_override=$tag from workflow input."
+          else
+            # Read package.json at the source build's commit. Avoids checking
+            # out the whole tree just to inspect one file.
+            pkg_b64=$(gh api "repos/$GH_REPO/contents/package.json?ref=$COMMIT" --jq '.content')
+            tag=$(echo "$pkg_b64" | base64 -d | node -e "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>console.log(JSON.parse(s).version))")
+            if [ -z "$tag" ]; then
+              echo "::error::Could not auto-detect version from package.json at $COMMIT. Pass release_version_override explicitly."
+              exit 1
+            fi
+            echo "Auto-detected tag=$tag from package.json at $COMMIT."
+          fi
+
+          # Sanity: next_version must differ from the tag we're about to release.
+          if [ "$tag" = "$NEXT_VERSION" ]; then
+            echo "::error::next_version ($NEXT_VERSION) matches the version being released ($tag). Pick a higher version for next_version."
+            exit 1
+          fi
+
+          # Suggestion table (visibility for patch/minor/major decision).
+          BASE="${tag%%-*}"
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$BASE"
+          NEXT_PATCH="$MAJOR.$MINOR.$((PATCH+1))"
+          NEXT_MINOR="$MAJOR.$((MINOR+1)).0"
+          NEXT_MAJOR="$((MAJOR+1)).0.0"
+
+          {
+            echo "## Version check"
+            echo ""
+            echo "| Role | Version |"
+            echo "|---|---|"
+            echo "| Releasing now           | \`$tag\` |"
+            echo "| Next version (typed)    | \`$NEXT_VERSION\` |"
+            echo "| Suggested next patch    | \`$NEXT_PATCH\` |"
+            echo "| Suggested next minor    | \`$NEXT_MINOR\` |"
+            echo "| Suggested next major    | \`$NEXT_MAJOR\` |"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+
+      - name: Download release artifact
+        id: artifact
+        env:
+          RUN_ID: ${{ steps.run.outputs.run_id }}
+        run: |
+          set -euo pipefail
+          mkdir -p release-download
+          # gh run download unwraps the upload-artifact outer zip, so we end up
+          # with the real ChurchCRM-<version>.zip on disk (no double-unzip).
+          gh run download "$RUN_ID" \
+            --pattern 'ChurchCRM-*' \
+            --dir release-download
+
+          zip_path=$(find release-download -type f -name 'ChurchCRM-*.zip' | head -n 1)
+          if [ -z "$zip_path" ]; then
+            echo "::error::No ChurchCRM-*.zip found in artifacts for run $RUN_ID"
+            find release-download -maxdepth 3 -print
+            exit 1
+          fi
+
+          mv "$zip_path" ./
+          zip_name=$(basename "$zip_path")
+          echo "zip_name=$zip_name" >> "$GITHUB_OUTPUT"
+          echo "Found release asset: $zip_name"
+
+      - name: Create GitHub Release (delete and recreate if exists)
+        id: release
+        env:
+          TAG: ${{ steps.tag.outputs.tag }}
+          TARGET_COMMIT: ${{ steps.run.outputs.commit }}
+          ZIP_NAME: ${{ steps.artifact.outputs.zip_name }}
+          IS_DRAFT: ${{ inputs.draft }}
+          IS_PRERELEASE: ${{ inputs.prerelease }}
+        run: |
+          set -euo pipefail
+
+          # Check if release exists
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Release $TAG already exists — deleting it and recreating from scratch."
+            gh release delete "$TAG" --yes || {
+              echo "::warning::Failed to delete release $TAG, attempting with --force flag"
+              gh release delete "$TAG" --yes --force || true
+            }
+            echo "Waiting 2 seconds for GitHub to finalize deletion..."
+            sleep 2
+          fi
+
+          # Delete the git tag if it exists (GitHub usually deletes it automatically)
+          echo "Checking for git tag $TAG..."
+          if gh api "repos/$GH_REPO/git/refs/tags/$TAG" >/dev/null 2>&1; then
+            echo "Git tag $TAG exists — deleting via API."
+            gh api -X DELETE "repos/$GH_REPO/git/refs/tags/$TAG" || {
+              echo "::warning::Failed to delete git tag via API, it may have been auto-deleted"
+              true
+            }
+            echo "Waiting 2 seconds for tag deletion to propagate..."
+            sleep 2
+          else
+            echo "Git tag $TAG does not exist or already deleted."
+          fi
+
+          echo "Creating fresh release $TAG targeting $TARGET_COMMIT."
+          gh release create "$TAG" "$ZIP_NAME" \
+            --title "$TAG" \
+            --target "$TARGET_COMMIT" \
+            --generate-notes \
+            --draft="$IS_DRAFT" \
+            --prerelease="$IS_PRERELEASE" || {
+            echo "::error::Failed to create release. Check token permissions and ensure tag $TAG is fully deleted."
+            exit 1
+          }
+
+          release_url=$(gh release view "$TAG" --json url --jq .url)
+          echo "release_url=$release_url" >> "$GITHUB_OUTPUT"
+
+      - name: Publish summary
+        if: always()
+        env:
+          TAG: ${{ steps.tag.outputs.tag }}
+          IS_DRAFT: ${{ inputs.draft }}
+          IS_PRERELEASE: ${{ inputs.prerelease }}
+          RUN_ID: ${{ steps.run.outputs.run_id }}
+          RUN_URL: ${{ steps.run.outputs.run_url }}
+          COMMIT: ${{ steps.run.outputs.commit }}
+          ZIP_NAME: ${{ steps.artifact.outputs.zip_name }}
+          RELEASE_URL: ${{ steps.release.outputs.release_url }}
+        run: |
+          {
+            echo "## Release Summary"
+            echo ""
+            echo "- **Tag:** \`$TAG\`"
+            echo "- **Draft:** $IS_DRAFT"
+            echo "- **Pre-release:** $IS_PRERELEASE"
+            echo "- **Source build:** [run #$RUN_ID]($RUN_URL)"
+            echo "- **Commit:** \`$COMMIT\`"
+            if [ -n "${ZIP_NAME:-}" ]; then
+              echo "- **Asset:** \`$ZIP_NAME\`"
+            fi
+            if [ -n "${RELEASE_URL:-}" ]; then
+              echo ""
+              echo "### [Open release page]($RELEASE_URL)"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  # ───────────────────────────────────────────────────────────────────
+  # Bump master to the next version + open "Start <next> release" PR.
+  # Reuses release-prepare.yml so the bump logic lives in one place.
+  # ───────────────────────────────────────────────────────────────────
+  start_next:
+    needs: publish
+    if: success()
+    uses: ./.github/workflows/release-prepare.yml
+    with:
+      version: ${{ inputs.next_version }}
+    permissions:
+      contents: write
+      pull-requests: write

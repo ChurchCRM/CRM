@@ -375,8 +375,8 @@ Private spec: `Calendar`, `People`, `Families`, `Groups`, `Properties`, `Finance
 
 After annotating, run from `CRM/src/`:
 ```bash
-composer run openapi-public   # → CRM/openapi/public-api.yaml
-composer run openapi-private  # → CRM/openapi/private-api.yaml
+composer run openapi:public   # → CRM/docs/openapi/generated/public-api.yaml
+composer run openapi:private  # → CRM/docs/openapi/generated/private-api.yaml
 ```
 
 Commit the updated YAML files to the CRM repo. The rest is automated:
@@ -393,7 +393,7 @@ cd docs.churchcrm.io && npm run regen
 
 ### Global annotations / tags
 
-Defined in `src/api/openapi/openapi-public-info.php` and `src/api/openapi/openapi-private-info.php`. If you add a new tag, add it there first.
+Defined in `docs/openapi/openapi-public-info.php` and `docs/openapi/openapi-private-info.php`. If you add a new tag, add it there first.
 
 ## Calling External APIs: Nominatim Geocoding <!-- learned: 2026-03-08 -->
 
@@ -492,28 +492,186 @@ if ($event !== null) {
 Same rule applies anywhere a "canonical" mutator method exists on a model — prefer the
 model method over hand-rolling the same sequence of ORM calls.
 
-### Note Privacy: nte_Private Stores personId, Not a Boolean <!-- learned: 2026-03-29 -->
+### Notes REST API — Full Route Set <!-- learned: 2026-04-29 -->
 
-`nte_Private` is **not** a boolean flag. It stores either `0` (public) or the author's `personId` (private). `Note::isVisible($personId)` checks `getPrivate() === $personId`, so storing `1` instead of a real personId means only person with ID=1 can see the note.
+Notes have a dedicated route file at `src/api/routes/people/notes.php` covering person notes, family notes, and single-note CRUD. All routes require `NotesRoleAuthMiddleware`.
+
+```
+GET    /person/{personId}/notes   — list type=note for person (visibility-filtered)
+POST   /person/{personId}/note    — create note for person
+GET    /family/{familyId}/notes   — list type=note for family (visibility-filtered)
+POST   /family/{familyId}/note    — create note for family
+GET    /note/{noteId}             — fetch single note (visibility check)
+PUT    /note/{noteId}             — update text/private (author or admin only)
+DELETE /note/{noteId}             — delete + write type=delete-note audit entry
+```
+
+**Delete audit trail pattern** — capture author name BEFORE deleting, then write a `type='delete-note'` Note so the timeline stays auditable:
 
 ```php
-// ✅ CORRECT — store the author's personId for private notes
-$private = !empty($input['private']) ? (int) $currentUser->getPersonId() : 0;
-
-// For PUT, preserve the original author's visibility (not the editor's):
-$private = !empty($input['private']) ? (int) $note->getEnteredBy() : 0;
-
-// ❌ WRONG — stores 1, which only makes it visible to person with id=1
-$private = !empty($input['private']) ? 1 : 0;
+$authorPerson = PersonQuery::create()->findPk($note->getEnteredBy());
+$authorName   = $authorPerson?->getFullName() ?? gettext('Unknown');
+$note->delete();
+$audit = new Note();
+if ($perId > 0) { $audit->setPerId($perId); }
+if ($famId > 0) { $audit->setFamId($famId); }
+$audit->setType('delete-note');
+$audit->setText(sprintf(gettext('Note by %s deleted'), $authorName));
+$audit->setEntered($currentUser->getId());
+$audit->save();
 ```
+
+### Note Privacy: nte_Private Is a Boolean Flag <!-- learned: 2026-04-28 -->
+
+`nte_Private` **is a boolean** — store `1` (private) or `0` (public). `Note::isPrivate()` checks `getPrivate() !== 0`. Visibility is determined by `Note::isVisible($userId)` which checks `getEnteredBy() === $userId` — not the value of `nte_Private`. Admins do **not** get API access to other users' private notes; the TimelineService shows admins a `[Private Note]` placeholder instead.
+
+```php
+// ✅ CORRECT — boolean 1/0
+$private = !empty($input['private']) ? 1 : 0;
+
+// ❌ WRONG — do not store personId in nte_Private; isVisible() uses getEnteredBy(), not getPrivate()
+$private = !empty($input['private']) ? (int) $currentUser->getId() : 0;
+```
+
+### note_nte Requires utf8mb4 for Emoji Support <!-- learned: 2026-04-29 -->
+
+MySQL `utf8`/`utf8mb3` is 3-byte max. Saving emoji in `nte_Text` causes `SQLSTATE[22007] Incorrect string value`. Fixed in `7.3.1-cleanup.sql` and `Install.sql`. Any new table storing user text should declare `utf8mb4_unicode_ci` from the start.
+
+## DELETE Endpoints: Block-If-In-Use over Cascade <!-- learned: 2026-04-15 -->
+
+**Project convention for every new DELETE API endpoint:** return **409 Conflict**
+when the resource is still referenced by dependent data, rather than cascading
+the delete or silently orphaning the children. This is strictly safer than the
+legacy `*Delete.php` pages, which tend to cascade.
+
+### Pattern
+
+```php
+use ChurchCRM\model\ChurchCRM\<Child>Query;
+
+$group->delete('/{id:[0-9]+}', function (Request $request, Response $response, array $args): Response {
+    try {
+        $id = (int) $args['id'];
+        $parent = <Parent>Query::create()->findPk($id);
+        if ($parent === null) {
+            return SlimUtils::renderErrorJSON($response, gettext('<Parent> not found'), [], 404);
+        }
+
+        // Block deletion when any children still reference the parent.
+        // Callers must clear the references first — we do NOT cascade.
+        $childCount = <Child>Query::create()->filterBy<ParentFkColumn>($id)->count();
+        if ($childCount > 0) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                sprintf(
+                    gettext('Cannot delete <parent>: %d <child-name> still reference it. Remove them first.'),
+                    $childCount
+                ),
+                [],
+                409
+            );
+        }
+
+        $parent->delete();
+        return SlimUtils::renderSuccessJSON($response);
+    } catch (\Throwable $e) {
+        return SlimUtils::renderErrorJSON($response, gettext('Failed to delete <parent>'), [], 500, $e, $request);
+    }
+});
+```
+
+### OpenAPI annotation
+
+Every such DELETE route must add a `409` response:
+
+```php
+ * @OA\Delete(
+ *     ...
+ *     @OA\Response(response=200, description="Deleted"),
+ *     @OA\Response(response=404, description="Not found"),
+ *     @OA\Response(response=409, description="<Parent> is in use by <child-name>"),
+ *     ...
+ * )
+```
+
+### Delegate to a service if one already blocks+renumbers
+
+Some resources have a service that already encapsulates the block-then-renumber
+behavior. **Prefer delegation over inlining the check**, so all callers get the
+same semantics. Canonical example:
+
+```php
+use ChurchCRM\Service\DonationFundService;
+
+$group->delete('/{id:[0-9]+}', function (Request $request, Response $response, array $args): Response {
+    try {
+        // DonationFundService::deleteFund:
+        //   throws InvalidArgumentException if the fund is missing (→ 404)
+        //   throws RuntimeException if pledge_plg rows reference the fund (→ 409)
+        //   renumbers fun_Order on success
+        (new DonationFundService())->deleteFund((int) $args['id']);
+        return SlimUtils::renderSuccessJSON($response);
+    } catch (\InvalidArgumentException $e) {
+        return SlimUtils::renderErrorJSON($response, gettext('Donation fund not found'), [], 404);
+    } catch (\RuntimeException $e) {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            gettext('Cannot delete donation fund: it is still referenced by one or more pledges.'),
+            [],
+            409,
+            $e,
+            $request
+        );
+    } catch (\Throwable $e) {
+        return SlimUtils::renderErrorJSON($response, gettext('Failed to delete donation fund'), [], 500, $e, $request);
+    }
+});
+```
+
+**Do not** leak the service's raw exception message to the client — localize via
+`gettext()` and log the exception via `renderErrorJSON`'s 5th/6th arguments.
+`SlimUtils::renderErrorJSON` sanitizes messages matching
+`/(password|credential|secret|api[_-]?key|token|username|user|host|localhost|127\.0\.0|\d{1,3}\.\d{1,3})/i`
+back to a default, and the service message `"Cannot delete fund 'X': it has N associated pledge(s)."`
+will be sanitized if the fund name contains `user` / `host` / etc.
+
+### Reference implementations in-tree
+
+| Resource | Route file | Pattern | Dependent table + FK |
+|---|---|---|---|
+| DonationFund | `src/api/routes/finance/finance-donation-funds.php` | Service-delegated | `pledge_plg.plg_fundID` |
+| FundRaiser | `src/api/routes/finance/finance-fundraisers.php` | Inline count | `donateditem_di.di_fr_ID` |
+| PropertyType | `src/api/routes/system/property-types.php` | Inline count | `property_pro.pro_prt_ID` |
+| VolunteerOpportunity | `src/api/routes/system/volunteer-opportunities.php` | Inline count | `person2volunteeropp_p2vo.p2vo_vol_ID` |
+| Event Type | `src/event/routes/types.php` | Block + cascade count-names | `events_event.event_type` |
+
+### When cascade IS the right answer
+
+Block-if-in-use is the default, but some FK relationships represent
+owner-owned composition where cascade is semantically correct. Known-good
+cascades in this codebase:
+
+- **Deposit → Pledges** — `Deposit::preDelete()` (`src/ChurchCRM/model/ChurchCRM/Deposit.php`)
+  calls `$this->getPledges()->delete()`. A deposit is a batch container; the
+  pledges inside it have no independent existence, so cascading is correct.
+- **Family → Notes + non-Payment pledges** — `src/api/routes/people/people-family.php`
+  deletes notes and non-`Payment` pledges but blocks the delete for
+  non-finance users if `Payment` pledges exist. This is a hybrid:
+  finance-protected data is blocked, the rest cascades.
+- **Property (definition) → RecordProperty assignments** —
+  `src/api/routes/people/people-properties.php` deletes the assignments
+  before deleting the definition. A property definition owns its assignments.
+
+When in doubt, **block**. Cascading is a one-way door and the legacy `*Delete.php`
+pages have a history of orphaning rows that the API shouldn't inherit.
 
 ## Files
 
 **API Routes:** `src/api/routes/`, `src/admin/routes/api/`
 **Utilities:** `src/ChurchCRM/Slim/SlimUtils.php`
 **Middleware:** `src/ChurchCRM/Slim/Middleware/`
-**OpenAPI info:** `src/api/openapi/openapi-public-info.php`, `src/api/openapi/openapi-private-info.php`
-**Generated specs:** `CRM/openapi/public-api.yaml`, `CRM/openapi/private-api.yaml`
+**OpenAPI info:** `docs/openapi/openapi-public-info.php`, `docs/openapi/openapi-private-info.php`
+**Generated specs:** `docs/openapi/generated/public-api.yaml`, `docs/openapi/generated/private-api.yaml`
 **Documentation site:** `docs.churchcrm.io/openapi/`, `docs.churchcrm.io/docs/public-api/`, `docs.churchcrm.io/docs/private-api/`
 
 ### HTML + JSON Content Negotiation in Middleware <!-- learned: 2026-04-22 -->

@@ -63,9 +63,14 @@ class Family extends BaseFamily implements PhotoInterface
         return implode(' ', $address);
     }
 
+    public static function getFamilyViewURIForId(int $id): string
+    {
+        return SystemURLs::getRootPath() . '/people/family/' . $id;
+    }
+
     public function getViewURI(): string
     {
-        return SystemURLs::getRootPath() . '/people/family/' . $this->getId();
+        return self::getFamilyViewURIForId($this->getId());
     }
 
     public function getWeddingDay()
@@ -331,7 +336,7 @@ class Family extends BaseFamily implements PhotoInterface
         $html = '<a href="' . $this->getViewURI() . '">' . $name . '</a>';
 
         if ($includePhoto && $this->getPhoto() && $this->getPhoto()->hasUploadedPhoto()) {
-            $html .= ' <button class="btn btn-sm btn-outline-secondary view-family-photo ml-1" data-family-id="' . $this->getId() . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button>';
+            $html .= ' <button class="btn btn-sm btn-outline-secondary view-family-photo ms-1" data-family-id="' . $this->getId() . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button>';
         }
 
         return $html;

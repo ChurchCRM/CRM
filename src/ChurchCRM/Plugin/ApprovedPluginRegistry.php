@@ -6,37 +6,22 @@ use ChurchCRM\Remote\CentralServices;
 use ChurchCRM\Utils\LoggerUtils;
 
 /**
- * Loads and queries the list of community plugins that ChurchCRM maintainers
- * have vetted and approved for installation via the URL-based installer.
+ * Queries the list of community plugins that ChurchCRM maintainers have vetted
+ * and approved for installation via the URL-based installer.
  *
- * The registry is a flat JSON file (src/plugins/approved-plugins.json). Each
- * entry must specify:
- *   - id              (kebab-case plugin id, must match plugin.json)
- *   - name            (display name)
- *   - version         (semver, must match plugin.json)
- *   - downloadUrl     (HTTPS only)
- *   - sha256          (hex SHA-256 of the zip bytes)
- *   - risk            ("low" | "medium" | "high" — see plugin-security-scan.md)
- *   - riskSummary     (one-sentence human-readable summary of the worst-case
- *                      capability the plugin exercises)
- *   - permissions     (array of capability tags, e.g. "network.outbound",
- *                      "db.write", "fs.write", "secrets.store", "ui.inject",
- *                      "cron", "hooks.person", "hooks.financial"; see the
- *                      capability inventory in plugin-security-scan.md)
- *   - minimumCRMVersion (optional, enforced on install)
- *   - author          (optional)
- *   - homepage        (optional HTTPS URL)
- *   - reviewedAt      (optional ISO-8601 date the maintainers reviewed the zip)
- *   - notes           (optional)
+ * The registry lives at the URL defined in CentralServices::PLUGIN_REGISTRY_URL
+ * (the External branch of the CRM repo). It is fetched lazily on first use
+ * within a session and then stored in $_SESSION['RemotePluginRegistry'] for
+ * the remainder of that session. There is no local fallback — if the remote
+ * fetch fails, $_SESSION['RemotePluginRegistry'] is set to an empty array and
+ * installs are refused until the registry can be fetched successfully in a
+ * later session.
  *
- * This class is intentionally read-only — adding an approved plugin requires a
- * pull request that updates approved-plugins.json.
+ * Adding an approved plugin requires a PR to the External branch registry file.
+ * See .agents/skills/churchcrm/plugin-security-scan.md for the review checklist.
  */
 class ApprovedPluginRegistry
 {
-    /** Default filename relative to the plugins directory. */
-    public const FILENAME = 'approved-plugins.json';
-
     /** @see CentralServices::PLUGIN_REGISTRY_URL */
     public const REGISTRY_URL = CentralServices::PLUGIN_REGISTRY_URL;
 
@@ -74,73 +59,28 @@ class ApprovedPluginRegistry
     /** @var array<string, array<string, mixed>>|null */
     private static ?array $cache = null;
 
-    /** Path the current cache was loaded from. */
-    private static ?string $cachePath = null;
-
     /**
-     * Load all approved plugin entries, keyed by plugin id.
+     * Return all approved plugin entries keyed by plugin id.
+     * Fetches the remote registry on the first call within a login session
+     * (lazy — never at login time). Subsequent calls within the same session
+     * return the cached result without a network round-trip.
      *
      * @return array<string, array<string, mixed>>
      */
-    public static function all(string $pluginsPath): array
+    public static function all(): array
     {
-        $registryPath = rtrim($pluginsPath, '/') . '/' . self::FILENAME;
-
-        if (self::$cache !== null && self::$cachePath === $registryPath) {
+        if (self::$cache !== null) {
             return self::$cache;
         }
 
-        self::$cache = [];
-        self::$cachePath = $registryPath;
-
-        if (!is_file($registryPath) || !is_readable($registryPath)) {
-            LoggerUtils::getAppLogger()->debug('Approved plugin registry missing', ['path' => $registryPath]);
-
-            return [];
+        // Fetch once per login session. array_key_exists distinguishes "never
+        // fetched" from "fetched but empty" so a failed fetch doesn't retry
+        // on every request within the same session.
+        if (!array_key_exists('RemotePluginRegistry', $_SESSION)) {
+            self::fetchRemoteRegistry();
         }
 
-        // IO failure or JSON corruption on a registry that exists is
-        // distinct from "registry missing": the file is there but
-        // unreadable or malformed. Throw so callers (admin UI, install
-        // endpoint) can return a 500 instead of silently treating a
-        // corrupt registry as an empty allowlist.
-        $raw = @file_get_contents($registryPath);
-        if ($raw === false) {
-            $message = sprintf('Approved plugin registry exists but could not be read: %s', $registryPath);
-            LoggerUtils::getAppLogger()->error($message);
-            self::$cache = null;
-            self::$cachePath = null;
-            throw new \RuntimeException($message);
-        }
-
-        try {
-            $data = json_decode($raw, true, 512, JSON_THROW_ON_ERROR);
-        } catch (\Throwable $e) {
-            $message = 'Approved plugin registry contains invalid JSON: ' . $e->getMessage();
-            LoggerUtils::getAppLogger()->error($message, ['path' => $registryPath]);
-            self::$cache = null;
-            self::$cachePath = null;
-            throw new \RuntimeException($message, 0, $e);
-        }
-
-        $entries = $data['plugins'] ?? [];
-        if (!is_array($entries)) {
-            return [];
-        }
-
-        foreach ($entries as $entry) {
-            if (!is_array($entry) || !self::isValidEntry($entry)) {
-                continue;
-            }
-            self::$cache[$entry['id']] = $entry;
-        }
-
-        // Remote entries (fetched at login, stored in session) take precedence
-        // over the local fallback file so the registry can be updated without a
-        // CRM release.
-        if (!empty($_SESSION['RemotePluginRegistry']) && is_array($_SESSION['RemotePluginRegistry'])) {
-            self::$cache = array_merge(self::$cache, $_SESSION['RemotePluginRegistry']);
-        }
+        self::$cache = $_SESSION['RemotePluginRegistry'] ?? [];
 
         return self::$cache;
     }
@@ -150,23 +90,19 @@ class ApprovedPluginRegistry
      *
      * @return array<string, mixed>|null
      */
-    public static function find(string $pluginsPath, string $pluginId): ?array
+    public static function find(string $pluginId): ?array
     {
-        $entries = self::all($pluginsPath);
-
-        return $entries[$pluginId] ?? null;
+        return self::all()[$pluginId] ?? null;
     }
 
     /**
      * Look up an approved plugin by the download URL supplied by the user.
-     * This lets the installer accept a URL-based install request and still
-     * anchor the result to a vetted registry entry.
      *
      * @return array<string, mixed>|null
      */
-    public static function findByDownloadUrl(string $pluginsPath, string $downloadUrl): ?array
+    public static function findByDownloadUrl(string $downloadUrl): ?array
     {
-        foreach (self::all($pluginsPath) as $entry) {
+        foreach (self::all() as $entry) {
             if (hash_equals((string) $entry['downloadUrl'], $downloadUrl)) {
                 return $entry;
             }
@@ -177,8 +113,9 @@ class ApprovedPluginRegistry
 
     /**
      * Fetch the approved-plugins registry from the remote URL configured in
-     * sPluginRegistryURL and store the validated entries in the session.
-     * Called once at login by AuthenticationManager — never in the render path.
+     * CentralServices::PLUGIN_REGISTRY_URL and store the validated entries in
+     * the session. Always sets $_SESSION['RemotePluginRegistry'] (to [] on
+     * failure) so the once-per-session gate in all() does not retry on error.
      */
     public static function fetchRemoteRegistry(): void
     {
@@ -186,12 +123,15 @@ class ApprovedPluginRegistry
             $contents = file_get_contents(self::REGISTRY_URL);
             if ($contents === false) {
                 LoggerUtils::getAppLogger()->warning('Failed to fetch remote plugin registry', ['url' => self::REGISTRY_URL]);
+                $_SESSION['RemotePluginRegistry'] = [];
 
                 return;
             }
             $data = json_decode($contents, true, 512, JSON_THROW_ON_ERROR);
             $entries = $data['plugins'] ?? [];
             if (!is_array($entries)) {
+                $_SESSION['RemotePluginRegistry'] = [];
+
                 return;
             }
             $validated = [];
@@ -201,21 +141,20 @@ class ApprovedPluginRegistry
                 }
             }
             $_SESSION['RemotePluginRegistry'] = $validated;
-            self::$cache = null; // invalidate so next all() call merges fresh data
-            self::$cachePath = null;
+            self::$cache = null;
         } catch (\Exception $e) {
             LoggerUtils::getAppLogger()->warning('Error processing remote plugin registry', ['error' => $e->getMessage()]);
+            $_SESSION['RemotePluginRegistry'] = [];
         }
     }
 
     /**
-     * Reset the in-memory cache. Intended for tests or after the JSON file is
-     * rewritten in the same request.
+     * Reset the in-memory cache. Intended for tests or after a remote refresh
+     * in the same request.
      */
     public static function reset(): void
     {
         self::$cache = null;
-        self::$cachePath = null;
     }
 
     /**
@@ -267,7 +206,6 @@ class ApprovedPluginRegistry
             return false;
         }
 
-        // permissions is optional but, if present, must be an array of known tags.
         if (isset($entry['permissions'])) {
             if (!is_array($entry['permissions'])) {
                 LoggerUtils::getAppLogger()->warning('Approved plugin entry rejected (permissions not an array)', [

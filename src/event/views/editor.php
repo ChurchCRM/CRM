@@ -16,7 +16,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
          Date/Time, Description, Additional Information, + collapsible Advanced
          section with Active/Inactive, Linked Group, Attendance Counts) here. -->
     <div id="event-editor-mount">
-      <div class="text-center py-5 text-muted">
+      <div class="text-center py-5 text-body-secondary">
         <div class="spinner-border spinner-border-sm me-2" role="status"></div>
         <?= gettext('Loading event editor…') ?>
       </div>

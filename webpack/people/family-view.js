@@ -9,11 +9,14 @@
  */
 import L from "leaflet";
 import { initRefreshCoordinatesBtn } from "./geo-refresh";
+import { initTimelineFilter } from "./timeline-filter";
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize map if coordinates exist
+  document.querySelectorAll(".timeline-container").forEach(initTimelineFilter);
+  // Initialize map if coordinates exist and the map container is in the DOM
   const config = window.CRM?.familyMapConfig;
-  if (config && config.lat !== undefined && config.lng !== undefined) {
+  const mapEl = document.getElementById("map1");
+  if (config && config.lat !== undefined && config.lng !== undefined && mapEl) {
     const map = L.map("map1", {
       scrollWheelZoom: false,
       dragging: false,

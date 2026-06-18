@@ -171,7 +171,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <div class="mb-3">
                             <label for="Prompt" class="form-label"><?= gettext('Prompt') ?>:</label>
                             <input class="form-control" type="text" name="Prompt" value="<?= InputUtils::escapeAttribute($sPrompt) ?>" maxlength="50">
-                            <small class="form-text text-muted d-block mt-1"><?= gettext('Entering a Prompt value will allow the association of a free-form value.') ?></small>
+                            <small class="form-text text-body-secondary d-block mt-1"><?= gettext('Entering a Prompt value will allow the association of a free-form value.') ?></small>
                         </div>
                         <div class="d-flex">
                             <button type="submit" class="btn btn-success me-2" name="Submit">

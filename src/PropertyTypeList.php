@@ -86,7 +86,7 @@ require_once __DIR__ . '/Include/Header.php';
                     <th><?= gettext('Class') ?></th>
                     <th class="text-center">
                         <?= gettext('In Use') ?>
-                        <i class="fa-solid fa-circle-info text-muted ms-1" title="<?= gettext('Number of records using this property type') ?>" data-bs-toggle="tooltip"></i>
+                        <i class="fa-solid fa-circle-info text-body-secondary ms-1" title="<?= gettext('Number of records using this property type') ?>" data-bs-toggle="tooltip"></i>
                     </th>
                     <?php if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()): ?>
                     <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
@@ -155,7 +155,7 @@ require_once __DIR__ . '/Include/Header.php';
             }
             if (!$hasRows): ?>
                 <tr>
-                    <td colspan="<?= AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled() ? '4' : '3' ?>" class="text-center text-muted py-4">
+                    <td colspan="<?= AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled() ? '4' : '3' ?>" class="text-center text-body-secondary py-4">
                         <i class="fa-solid fa-inbox fa-3x mb-3 d-block"></i>
                         <?= gettext('No property types found') ?>
                         <?php if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()): ?>

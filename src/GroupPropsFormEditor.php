@@ -339,7 +339,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                             }
                             ?>
                         </select>
-                        <small class="form-text text-muted">
+                        <small class="form-text text-body-secondary">
                             <a href="<?= SystemURLs::getSupportURL() ?>" target="_blank"><?= gettext('Help on types..') ?></a>
                         </small>
                     </div>

@@ -3,6 +3,7 @@
 namespace ChurchCRM\dto;
 
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 
 class PeopleCustomField
@@ -28,7 +29,7 @@ class PeopleCustomField
 
         if ($masterField->getTypeId() == 9) {
             $this->icon = 'fa fa-user';
-            $this->link = SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $this->value;
+            $this->link = Person::getViewURIForId((int) $this->value);
             $person = PersonQuery::create()->findPk($this->value);
             if ($person) {
                 $this->formattedValue = $person->getFullName();

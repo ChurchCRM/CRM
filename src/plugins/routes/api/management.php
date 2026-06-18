@@ -438,8 +438,7 @@ $group->post('/plugins/{pluginId}/reset', function (Request $request, Response $
  */
 $group->get('/approved', function (Request $request, Response $response): Response {
     try {
-        $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
-        $entries = array_values(ApprovedPluginRegistry::all($pluginsPath));
+        $entries = array_values(ApprovedPluginRegistry::all());
 
         return SlimUtils::renderJSON($response, [
             'success' => true,
@@ -729,8 +728,7 @@ $group->delete('/plugins/{pluginId}/quarantine', function (Request $request, Res
 $group->post('/registry/refresh', function (Request $request, Response $response): Response {
     try {
         ApprovedPluginRegistry::fetchRemoteRegistry();
-        $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
-        $entries = array_values(ApprovedPluginRegistry::all($pluginsPath));
+        $entries = array_values(ApprovedPluginRegistry::all());
 
         return SlimUtils::renderJSON($response, [
             'success' => true,

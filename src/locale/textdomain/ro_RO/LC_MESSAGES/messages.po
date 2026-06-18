@@ -361,22 +361,6 @@ msgid "Back to Menu"
 msgstr "Inapoi la Meniu"
 
 #: 
-msgid "Empty Cart"
-msgstr "Coș gol"
-
-#: 
-msgid "Empty Cart to Group"
-msgstr "Coșul de Grup gol"
-
-#: 
-msgid "Empty Cart to Family"
-msgstr "Coșul de Familie gol"
-
-#: 
-msgid "Map Cart"
-msgstr "Hartă Coș"
-
-#: 
 msgid "Bulk Mail Presort"
 msgstr "Presortarea e-mailurilor în vrac"
 
@@ -1481,27 +1465,6 @@ msgid "Group View"
 msgstr "Vezi Grup"
 
 #: 
-msgid "Confirm Delete Group"
-msgstr "Confirmă ștergere grup"
-
-#: 
-#, fuzzy
-msgid "Please confirm deletion of this group record"
-msgstr "Vă rugăm să confirmați ștergerea acestei înregistrări grup"
-
-#: 
-msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
-msgstr "Aceasta va șterge toate rolurile și datele proprietăților specifice grupului asociate cu această înregistrare de grup"
-
-#: 
-msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
-msgstr "Toate apartenențele la grup și proprietățile vor fi distruse. Membrii grupului nu vor fi modificați."
-
-#: 
-msgid "Please select target group for members"
-msgstr "Alegeți grupul țintă pentru membri"
-
-#: 
 #, fuzzy
 msgid "Default Role"
 msgstr "Rol implicit"
@@ -1662,11 +1625,6 @@ msgid "Updated"
 msgstr "Actualizat"
 
 #: 
-#, fuzzy
-msgid "Please confirm deletion of this note"
-msgstr "Vă rugăm să confirmați ștergerea această notă"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "Da, șterge această înregistrare"
 
@@ -1693,10 +1651,6 @@ msgstr "Grup"
 #: 
 msgid "Default"
 msgstr "Lipsă"
-
-#: 
-msgid "Make Default"
-msgstr "Face Implicit"
 
 #: 
 msgid "Exit"
@@ -2111,15 +2065,6 @@ msgid "Calendar Year"
 msgstr "An calendaristic"
 
 #: 
-msgid "User Delete Confirmation"
-msgstr "Ștergere utilizator Confirmarea"
-
-#: 
-#, fuzzy
-msgid "Please confirm removal of user status from"
-msgstr "Vă rugăm să confirmați eliminarea stării de utilizator de la"
-
-#: 
 msgid "User Editor"
 msgstr "Utilizator Editor"
 
@@ -2185,10 +2130,6 @@ msgid "Failed Logins"
 msgstr "Conectări nereușite"
 
 #: 
-msgid "You must enter the same password in both boxes"
-msgstr "Trebuie să introduceți aceeași parolă în ambele casete"
-
-#: 
 msgid "Your password choice is too obvious. Please choose something else."
 msgstr "Alegerea parolei dumneavoastră este prea evident. Vă rugăm să alegeți altceva."
 
@@ -2221,11 +2162,6 @@ msgstr "Parolă nouă"
 #, fuzzy
 msgid "Confirm New Password"
 msgstr "Confirmați noua parolă"
-
-#: 
-#, fuzzy
-msgid "Please confirm the password reset of this user"
-msgstr "Vă rugăm să confirmați resetare a parolei de acest utilizator"
 
 #: 
 msgid "Volunteer Opportunity Editor"
@@ -2718,14 +2654,6 @@ msgid "Are you sure you want to delete the selected"
 msgstr "Sunteți sigur că vrețis ă ștergeți selecția "
 
 #: 
-msgid "Deposit(s)"
-msgstr "Depozit(te)"
-
-#: 
-msgid "This will also delete all payments associated with this deposit"
-msgstr "Aceasta va șterge și toate plățile legat de depozit"
-
-#: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "Această acțiune NU poate fi anulată și poate avea implicații legale!"
 
@@ -2792,10 +2720,6 @@ msgstr "Adevărat"
 #: 
 msgid "Edit Settings"
 msgstr "Editeaza setarile"
-
-#: 
-msgid "Backup Downloaded, Copy on server removed"
-msgstr "Back-up descărcar, copia de pe server eliminată"
 
 #: 
 msgid "Functions"
@@ -2913,10 +2837,6 @@ msgstr "Dezactivează proprietățile specifice grupului"
 #: 
 msgid "Group Properties"
 msgstr "Proprietăți grup"
-
-#: 
-msgid "There was a problem retrieving the requested object"
-msgstr "A apărut o problemă la preluare obiectului solicitat"
 
 #: 
 msgid "All"
@@ -4672,10 +4592,6 @@ msgid "Maximum upload size"
 msgstr "Mărime maximă încărcare"
 
 #: 
-msgid "The selected file exceeds this servers maximum upload size of"
-msgstr "Fișierul selectat depășește mărimea maximă acceptată de server"
-
-#: 
 msgid "Failed"
 msgstr "Eșuat"
 
@@ -4708,27 +4624,6 @@ msgstr "A fost solicitat un nume de configurare nevalid"
 #: 
 msgid "Profile Image uploaded"
 msgstr "Fotografie profil încărcată"
-
-#: 
-#, fuzzy
-msgid "payment(s)?"
-msgstr "plată(ți)?"
-
-#: 
-msgid "Confirm Deactivation"
-msgstr "Confirmați dezactivarea"
-
-#: 
-msgid "Confirm Activation"
-msgstr "Confirmați activarea"
-
-#: 
-msgid "Please confirm deactivation of family"
-msgstr "Confirmați dezactivarea familiei"
-
-#: 
-msgid "Please confirm activation of family"
-msgstr "Confirmați activarea familiei"
 
 #: 
 #, fuzzy
@@ -4833,14 +4728,6 @@ msgid "Include"
 msgstr "Include"
 
 #: 
-msgid "View Cart"
-msgstr "Vezi coș"
-
-#: 
-msgid "Your Cart is Empty"
-msgstr "Coșul tău este gol"
-
-#: 
 msgid "Legend"
 msgstr "Legendă"
 
@@ -4855,14 +4742,6 @@ msgstr "Se afișează studenții cu zile de naștere în"
 #: 
 msgid "Actions"
 msgstr "Acțiuni"
-
-#: 
-msgid "Action Confirmation"
-msgstr "Confirmare acțiune"
-
-#: 
-msgid "Please confirm reset failed login count"
-msgstr "Vă rugăm să confirmați resetarea numărului de conectări eșuat"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -5002,10 +4881,6 @@ msgid "Reset your password"
 msgstr "Resetează-ți parola"
 
 #: 
-msgid "Sorry, we are unable to process your request at this point in time."
-msgstr "Ne pare rău, nu am putut procesa solicitarea"
-
-#: 
 msgid "Kiosk Manager"
 msgstr "Gestionar chioșc (kiosk)"
 
@@ -5018,10 +4893,6 @@ msgid "Self Verification"
 msgstr "Auto verificare"
 
 #: 
-msgid "Check Number"
-msgstr "Număr verificare"
-
-#: 
 msgid "Details"
 msgstr "Detalii"
 
@@ -5030,48 +4901,12 @@ msgid "Verification email sent"
 msgstr "Email de verificare trimis"
 
 #: 
-msgid "Confirm Enable Group Specific Properties"
-msgstr "Confirmați Activarea proprietăților specifice grupului"
-
-#: 
-msgid "This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor."
-msgstr "Aceasta va crea un tabel de proprietăți specifice grupului pentru acest grup. Apoi ar trebui să adăugați proprietățile necesare cu Editorul formularului de proprietăți specifice grupului."
-
-#: 
-msgid "Confirm Disable Group Specific Properties"
-msgstr "Confirmați Dezactivați proprietățile specifice grupului"
-
-#: 
-msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
-msgstr "Sigur doriți să eliminați proprietățile persoanei specifice grupului? Toate datele proprietăților membrilor grupului se vor pierde!"
-
-#: 
-msgid "Role Name"
-msgstr "Nume role"
-
-#: 
-msgid "Sequence"
-msgstr "Secvență"
-
-#: 
-msgid "Do you want to delete this person?  This cannot be undone."
-msgstr "Vreți să ștergeți această persoană? Nu puteți reveni"
-
-#: 
-msgid "Are you sure you want to unassign this property?"
-msgstr "Sigur doriți să anulați atribuirea acestei proprietăți?"
-
-#: 
 msgid "Select a family"
 msgstr "Selectează o famiie"
 
 #: 
 msgid "Release Notes"
 msgstr "Note"
-
-#: 
-msgid "Move"
-msgstr "Mută"
 
 #. Context: locales
 #: 
@@ -5262,18 +5097,6 @@ msgid "OK"
 msgstr "OK"
 
 #: 
-msgid "Please select target Role for members"
-msgstr "Vă rugăm să selectați rolul țintă pentru membri"
-
-#: 
-msgid "GroupID required for role selection prompt"
-msgstr "ID grup necesar pentru selectarea rolului"
-
-#: 
-msgid "Select Group and Role"
-msgstr "Selectează Grup și Rol"
-
-#: 
 msgid "All Members"
 msgstr "Toți membrii"
 
@@ -5300,14 +5123,6 @@ msgstr "Metoda de denumire a destinatarilor"
 #: 
 msgid "Salutation Utility"
 msgstr "Utilitarul pentru Salut"
-
-#: 
-msgid "Add A Group Name"
-msgstr "Adaugă un nume grupului"
-
-#: 
-msgid "Default Name Group"
-msgstr "Nume implicit grup"
 
 #: 
 msgid "Group Role"
@@ -5477,42 +5292,6 @@ msgid "Username"
 msgstr "Nume utilizator"
 
 #: 
-msgid "Are you sure you want to move"
-msgstr "Ești sigur/ă că vrei să muți"
-
-#: 
-msgid "Access Token"
-msgstr "Token de acces"
-
-#: 
-msgid "New Access Token"
-msgstr "Token de acces nou"
-
-#: 
-msgid "ICS URL"
-msgstr "ICS URL"
-
-#: 
-msgid "Foreground Color"
-msgstr "Culoare prin plan"
-
-#: 
-msgid "Background Color"
-msgstr "Culoare fundal"
-
-#: 
-msgid "Delete Calendar"
-msgstr "Șterge calendar"
-
-#: 
-msgid "Invalid Entry"
-msgstr "Intrare nevalidă"
-
-#: 
-msgid "Calendar Name"
-msgstr "Nume calendar"
-
-#: 
 msgid "New Calendar"
 msgstr "Calendar nou"
 
@@ -5577,16 +5356,8 @@ msgid "invalid export value"
 msgstr "valoarea exportului este invalidă"
 
 #: 
-msgid "Invalid User/Password"
-msgstr "Utilizator/Parolă nevalidă"
-
-#: 
 msgid "Duplicate Emails"
 msgstr "Email-uri duplicate"
-
-#: 
-msgid "HTML URL"
-msgstr "HTML URL"
 
 #: 
 #, fuzzy
@@ -5664,10 +5435,6 @@ msgid "Latvia (Latvija)"
 msgstr "Letonia (Letonia)"
 
 #: 
-msgid "You are about to add a new deposit without a comment"
-msgstr "Sunteți pe cale să adăugați o nouă depunere fără un comentariu"
-
-#: 
 msgid "Record"
 msgstr "Înregistrare"
 
@@ -5683,14 +5450,6 @@ msgstr "Emptied into Event"
 #: 
 msgid "Passed"
 msgstr "A trecut"
-
-#: 
-msgid "Focus"
-msgstr "Focalizare"
-
-#: 
-msgid "Unfocus"
-msgstr "Defocalizare"
 
 #. Context: locales
 #: 
@@ -5741,10 +5500,6 @@ msgid "People Verify Dashboard"
 msgstr "Panou de verificare a persoanelor"
 
 #: 
-msgid "Verification recorded"
-msgstr "Verificare înregistrată"
-
-#: 
 msgid "Verification URL created"
 msgstr "URL de verificare creat"
 
@@ -5763,10 +5518,6 @@ msgstr "Trimiterea email(urilor) a eșuat"
 #: 
 msgid "Please check logs for more information"
 msgstr "Vă rugăm să verificați jurnalele (logs) pentru mai multe informații"
-
-#: 
-msgid "Verification URL"
-msgstr "URL de verificare"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5844,10 +5595,6 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Nume, prenume, al doile prenume"
 
 #: 
-msgid "Please confirm disabling 2 Factor Auth for this user"
-msgstr "Vă rugăm să confirmați autentificare în 2 factori pentru acest utilizator"
-
-#: 
 msgid "Send an email notifying users when their account has been deleted"
 msgstr "Trimite un email prin care să notifici utilizatorii când contul lor a fost șters"
 
@@ -5913,10 +5660,6 @@ msgid "Hebrew"
 msgstr "Ebraică"
 
 #: 
-msgid "open rate"
-msgstr "Rata de deschidere"
-
-#: 
 msgid "Permissions"
 msgstr "Permisiuni"
 
@@ -5941,22 +5684,6 @@ msgid "Owe"
 msgstr "Datorie"
 
 #: 
-msgid "Start Date"
-msgstr "Data de început"
-
-#: 
-msgid "End Date"
-msgstr "Data de încheiere"
-
-#: 
-msgid "Pinned Calendars"
-msgstr "Calendare fixate"
-
-#: 
-msgid "This field is required"
-msgstr "Câmpul este obligatoriu"
-
-#: 
 msgid "Text"
 msgstr "Text"
 
@@ -5968,10 +5695,6 @@ msgstr "Descriere eveniment"
 #: 
 msgid "Afrikaans"
 msgstr "Africană"
-
-#: 
-msgid "Loading"
-msgstr "Se încarcă"
 
 #: 
 msgid "Today's Birthdays"
@@ -6040,24 +5763,8 @@ msgid "Ukrainian"
 msgstr "Ucrainean"
 
 #: 
-msgid "Change role"
-msgstr "Schimba rolul"
-
-#: 
 msgid "Closed"
 msgstr "Inchis"
-
-#: 
-msgid "Delete this person?"
-msgstr "Ștergi această personă"
-
-#: 
-msgid "Deposit ID"
-msgstr "Depozit ID"
-
-#: 
-msgid "Deposit Total"
-msgstr "Total depozit"
 
 #: 
 msgid "If that doesn't work, copy and paste the following link in your browser"
@@ -6212,144 +5919,8 @@ msgid "Loading log file..."
 msgstr "Se încarcă fișierul jurnal..."
 
 #: 
-msgid "A Calendar access token has been generated and saved."
-msgstr "Un token de acces la calendar a fost generat și salvat."
-
-#: 
-msgid "added"
-msgstr "adăugat"
-
-#: 
-msgid "Added"
-msgstr "Adăugat"
-
-#: 
-msgid "Added to cart successfully"
-msgstr "Adăugat în coș cu succes"
-
-#: 
-msgid "All members already in cart"
-msgstr "Toți membrii sunt deja în coș"
-
-#: 
-msgid "already in cart"
-msgstr "deja în coș"
-
-#: 
-msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
-msgstr "Proprietățile calendarului nu au putut fi încărcate. Acestui calendar îi poate lipsi un token de acces sau nu este configurat corect."
-
-#: 
-msgid "Cart emptied successfully"
-msgstr "Coș golit cu succes"
-
-#: 
-msgid "Cart emptied to group successfully"
-msgstr "Coș golit în grup cu succes"
-
-#: 
-msgid "Empty your entire cart?"
-msgstr "Goliți întregul coș?"
-
-#: 
-msgid "Failed to add family to cart"
-msgstr "Eșec la adăugarea familiei în coș"
-
-#: 
-msgid "Failed to add group to cart"
-msgstr "Eșec la adăugarea grupului în coș"
-
-#: 
-msgid "Failed to add to cart"
-msgstr "Eșec la adăugarea în coș"
-
-#: 
-msgid "Failed to empty cart"
-msgstr "Eșec la golirea coșului"
-
-#: 
-msgid "Failed to empty cart to group"
-msgstr "Eșec la golirea coșului în grup"
-
-#: 
-msgid "Failed to remove family from cart"
-msgstr "Eșec la eliminarea familiei din coș"
-
-#: 
-msgid "Failed to remove from cart"
-msgstr "Eșec la eliminarea din coș"
-
-#: 
-msgid "Failed to remove group"
-msgstr "Eșec la eliminarea grupului"
-
-#: 
-msgid "Family added to cart"
-msgstr "Familie adăugată în coș"
-
-#: 
 msgid "Family removed from cart"
 msgstr "Familie eliminată din coș"
-
-#: 
-msgid "Group added to cart"
-msgstr "Grup adăugat în coș"
-
-#: 
-msgid "Group removed from cart"
-msgstr "Grup eliminat din coș"
-
-#: 
-msgid "in cart"
-msgstr "în coș"
-
-#: 
-msgid "members. Already had"
-msgstr "membri. Aveau deja"
-
-#: 
-msgid "people added to cart"
-msgstr "persoane adăugate în coș"
-
-#: 
-msgid "people already in cart"
-msgstr "persoane deja în coș"
-
-#: 
-msgid "people from cart"
-msgstr "persoane din coș"
-
-#: 
-msgid "people removed from cart"
-msgstr "persoane eliminate din coș"
-
-#: 
-msgid "Person already in cart"
-msgstr "Persoană deja în coș"
-
-#: 
-msgid "Remove this family from cart?"
-msgstr "Eliminați această familie din coș?"
-
-#: 
-msgid "Remove this group from cart?"
-msgstr "Eliminați acest grup din coș?"
-
-#: 
-msgid "Remove this person from cart?"
-msgstr "Eliminați această persoană din coș?"
-
-#: 
-msgid "Removed from cart successfully"
-msgstr "Eliminat din coș cu succes"
-
-#: 
-msgid "Yes, Empty Cart"
-msgstr "Da, golește coșul"
-
-#: 
-msgid "Yes, Remove"
-msgstr "Da, elimină"
 
 #: 
 msgid "Add Group"
@@ -6358,10 +5929,6 @@ msgstr "Adaugă grup"
 #: 
 msgid "Back to Group List"
 msgstr "Înapoi la lista grupurilor"
-
-#: 
-msgid "Default role updated."
-msgstr "Rolul implicit a fost actualizat."
 
 #: 
 msgid "Edit Group"
@@ -6376,36 +5943,12 @@ msgid "Failed to add role. Please try again."
 msgstr "Eșec la adăugarea rolului. Vă rugăm să încercați din nou."
 
 #: 
-msgid "Failed to create group. Please try again."
-msgstr "Eșec la crearea grupului. Vă rugăm să încercați din nou."
-
-#: 
 msgid "Failed to delete role. Please try again."
 msgstr "Eșec la ștergerea rolului. Vă rugăm să încercați din nou."
 
 #: 
-msgid "Failed to load cart status."
-msgstr "Eșec la încărcarea stării coșului."
-
-#: 
-msgid "Failed to load groups. Please refresh the page."
-msgstr "Eșec la încărcarea grupurilor. Vă rugăm să reîmprospătați pagina."
-
-#: 
-msgid "Failed to set default role. Please try again."
-msgstr "Eșec la setarea rolului implicit. Vă rugăm să încercați din nou."
-
-#: 
-msgid "Failed to update group. Please try again."
-msgstr "Eșec la actualizarea grupului. Vă rugăm să încercați din nou."
-
-#: 
 msgid "Failed to update properties. Please try again."
 msgstr "Eșec la actualizarea proprietăților. Vă rugăm să încercați din nou."
-
-#: 
-msgid "Failed to update role name. Please try again."
-msgstr "Eșec la actualizarea numelui rolului. Vă rugăm să încercați din nou."
 
 #: 
 msgid "Leave blank to keep existing password"
@@ -6414,18 +5957,6 @@ msgstr "Lăsați gol pentru a păstra parola existentă"
 #: 
 msgid "Please enter a group name."
 msgstr "Vă rugăm să introduceți un nume de grup."
-
-#: 
-msgid "Role added successfully."
-msgstr "Rol adăugat cu succes."
-
-#: 
-msgid "Role deleted successfully."
-msgstr "Rol șters cu succes."
-
-#: 
-msgid "Role name updated."
-msgstr "Numele rolului a fost actualizat."
 
 #: 
 msgid "View Group"
@@ -6438,14 +5969,6 @@ msgstr "Evenimente astăzi"
 #: 
 msgid "Add Family Member"
 msgstr "Adaugă membru de familie"
-
-#: 
-msgid "Address is required"
-msgstr "Adresa este obligatorie"
-
-#: 
-msgid "City is required"
-msgstr "Orașul este obligatoriu"
 
 #: 
 msgid "Email Address"
@@ -6464,72 +5987,20 @@ msgid "Family name is required"
 msgstr "Numele familiei este obligatoriu"
 
 #: 
-msgid "Family name must be at least 2 characters"
-msgstr "Numele familiei trebuie să aibă cel puțin 2 caractere"
-
-#: 
 msgid "First name"
 msgstr "Prenume"
-
-#: 
-msgid "First name is required"
-msgstr "Prenumele este obligatoriu"
-
-#: 
-msgid "First name must be at least 2 characters"
-msgstr "Prenumele trebuie să aibă cel puțin 2 caractere"
-
-#: 
-msgid "Home phone is required"
-msgstr "Telefonul de acasă este obligatoriu"
 
 #: 
 msgid "Home phone number"
 msgstr "Număr de telefon de acasă"
 
 #: 
-msgid "Invalid format"
-msgstr "Format nevalid"
-
-#: 
 msgid "Last name"
 msgstr "Nume de familie"
 
 #: 
-msgid "Last name is required"
-msgstr "Numele de familie este obligatoriu"
-
-#: 
-msgid "Last name must be at least 2 characters"
-msgstr "Numele de familie trebuie să aibă cel puțin 2 caractere"
-
-#: 
-msgid "Maximum length is"
-msgstr "Lungimea maximă este"
-
-#: 
-msgid "Minimum length is"
-msgstr "Lungimea minimă este"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "Trebuie să fie un URL valid care începe cu http:// sau https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "Trebuie să fie un URL valid care începe cu http:// sau https:// (ex: http://localhost sau https://domeniu.com)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "Trebuie să fie un număr de port valid (ex: 3306)"
-
-#: 
 msgid "Next Member"
 msgstr "Membru următor"
-
-#: 
-msgid "Passwords do not match"
-msgstr "Parolele nu se potrivesc"
 
 #: 
 msgid "Phone Type"
@@ -6540,40 +6011,8 @@ msgid "Phone number"
 msgstr "Număr de telefon"
 
 #: 
-msgid "Please add at least one family member."
-msgstr "Vă rugăm să adăugați cel puțin un membru de familie."
-
-#: 
-msgid "Please enter a valid URL"
-msgstr "Vă rugăm să introduceți un URL valid"
-
-#: 
-msgid "Please enter a valid email address"
-msgstr "Vă rugăm să introduceți o adresă de e-mail validă"
-
-#: 
-msgid "Please enter a valid email address (e.g., name@example.com)"
-msgstr "Vă rugăm să introduceți o adresă de e-mail validă (ex: nume@exemplu.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "Vă rugăm să introduceți un număr valid"
-
-#: 
-msgid "Please enter a valid phone number"
-msgstr "Vă rugăm să introduceți un număr de telefon valid"
-
-#: 
-msgid "Please fill in all required fields correctly."
-msgstr "Vă rugăm să completați corect toate câmpurile obligatorii."
-
-#: 
 msgid "Previous"
 msgstr "Anterior"
-
-#: 
-msgid "Registration Error"
-msgstr "Eroare de înregistrare"
 
 #: 
 msgid "Role in Family"
@@ -6590,10 +6029,6 @@ msgstr "Adresa străzii"
 #: 
 msgid "Submit Registration"
 msgstr "Trimite înregistrarea"
-
-#: 
-msgid "Zip code is required"
-msgstr "Codul poștal este obligatoriu"
 
 #: 
 msgid "A new password has been generated and sent to your email address."
@@ -6616,10 +6051,6 @@ msgid "Back to login"
 msgstr "Înapoi la autentificare"
 
 #: 
-msgid "Backup Skipped"
-msgstr "Copie de rezervă omisă"
-
-#: 
 msgid "Complete"
 msgstr "Finalizat"
 
@@ -6632,28 +6063,8 @@ msgid "Download & Apply"
 msgstr "Descarcă și aplică"
 
 #: 
-msgid "Downloaded"
-msgstr "Descărcat"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "Se descarcă cea mai recentă lansare de pe GitHub..."
-
-#: 
 msgid "Enter your login name and we will email you a link to reset your password."
 msgstr "Introduceți numele de utilizator și vă vom trimite prin e-mail un link pentru a vă reseta parola."
-
-#: 
-msgid "Failed to create backup."
-msgstr "Eșec la crearea copiei de rezervă."
-
-#: 
-msgid "Failed to download update package."
-msgstr "Eșec la descărcarea pachetului de actualizare."
-
-#: 
-msgid "Failed to refresh upgrade information from GitHub."
-msgstr "Eșec la reîmprospătarea informațiilor de actualizare de pe GitHub."
 
 #: 
 msgid "File Name"
@@ -6662,10 +6073,6 @@ msgstr "Nume fișier"
 #: 
 msgid "Go to Login"
 msgstr "Mergi la autentificare"
-
-#: 
-msgid "Language updated to"
-msgstr "Limba a fost actualizată la"
 
 #: 
 msgid "Login Name is required"
@@ -6696,56 +6103,24 @@ msgid "Request Password Reset"
 msgstr "Solicită resetarea parolei"
 
 #: 
-msgid "Retry Download"
-msgstr "Reîncearcă descărcarea"
-
-#: 
 msgid "Send Reset Email"
 msgstr "Trimite e-mail de resetare"
-
-#: 
-msgid "Setting updated successfully"
-msgstr "Setare actualizată cu succes"
 
 #: 
 msgid "System Upgrade Wizard"
 msgstr "Asistent de actualizare sistem"
 
 #: 
-msgid "System upgrade completed successfully!"
-msgstr "Actualizarea sistemului a fost finalizată cu succes!"
-
-#: 
 msgid "This may take several minutes."
 msgstr "Acest lucru poate dura câteva minute."
-
-#: 
-msgid "Update package downloaded successfully."
-msgstr "Pachetul de actualizare a fost descărcat cu succes."
 
 #: 
 msgid "Upgrade Complete!"
 msgstr "Actualizare finalizată!"
 
 #: 
-msgid "Upgrade failed."
-msgstr "Actualizarea a eșuat."
-
-#: 
-msgid "Upgrade failed. Please check the logs."
-msgstr "Actualizarea a eșuat. Vă rugăm să verificați jurnalele."
-
-#: 
 msgid "Upgrade information refreshed successfully"
 msgstr "Informațiile de actualizare au fost reîmprospătate cu succes"
-
-#: 
-msgid "Upgrade information refreshed. Reloading page..."
-msgstr "Informațiile de actualizare au fost reîmprospătate. Se reîncarcă pagina..."
-
-#: 
-msgid "Warnings"
-msgstr "Avertismente"
 
 #: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
@@ -6808,22 +6183,6 @@ msgid "Delete Selected"
 msgstr "Șterge selecția"
 
 #: 
-msgid "Deposit saved successfully"
-msgstr "Depozit salvat cu succes"
-
-#: 
-msgid "Error deleting payments"
-msgstr "Eroare la ștergerea plăților"
-
-#: 
-msgid "Error loading payments"
-msgstr "Eroare la încărcarea plăților"
-
-#: 
-msgid "Error saving deposit"
-msgstr "Eroare la salvarea depozitului"
-
-#: 
 msgid "Funds"
 msgstr "Fonduri"
 
@@ -6840,32 +6199,12 @@ msgid "No Checks"
 msgstr "Fără cecuri"
 
 #: 
-msgid "No payments yet. Click \"Add Payment\" to get started."
-msgstr "Nicio plată încă. Faceți clic pe „Adaugă plată” pentru a începe."
-
-#: 
 msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
 msgstr "Suma nedeductibilă depășește valoarea maximă permisă (999999.99)."
 
 #: 
 msgid "Payments"
 msgstr "Plăți"
-
-#: 
-msgid "Payments deleted successfully"
-msgstr "Plăți șterse cu succes"
-
-#: 
-msgid "Please select a date"
-msgstr "Vă rugăm să selectați o dată"
-
-#: 
-msgid "Please select rows to delete"
-msgstr "Vă rugăm să selectați rândurile pentru ștergere"
-
-#: 
-msgid "Saving..."
-msgstr "Se salvează..."
 
 #: 
 msgid "This action cannot be undone."
@@ -6893,10 +6232,6 @@ msgid "Base URL"
 msgstr "URL de bază"
 
 #: 
-msgid "Copy"
-msgstr "Copiază"
-
-#: 
 msgid "Debug Info"
 msgstr "Informații depanare"
 
@@ -6919,18 +6254,6 @@ msgstr "Adresă IP"
 #: 
 msgid "Images Root"
 msgstr "Rădăcină imagini"
-
-#: 
-msgid "Import Demo Data"
-msgstr "Importă date demo"
-
-#: 
-msgid "Include events and calendars"
-msgstr "Include evenimente și calendare"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "Include date financiare (fonduri donații, angajamente)"
 
 #: 
 msgid "Invalid API key"
@@ -6965,40 +6288,12 @@ msgid "An error occurred during demo data import"
 msgstr "A apărut o eroare în timpul importului datelor demo"
 
 #: 
-msgid "Demo data imported successfully"
-msgstr "Datele demo au fost importate cu succes"
-
-#: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "Include clasele de Școală duminicală și înscrierile"
-
-#: 
-msgid "Need to remove this data later?"
-msgstr "Trebuie să eliminați aceste date mai târziu?"
-
-#: 
 msgid "No Payments on this Deposit"
 msgstr "Fără plăți în acest depozit"
 
 #: 
-msgid "No payments on this deposit"
-msgstr "Fără plăți în acest depozit"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "Date opționale de inclus"
-
-#: 
 msgid "Skipped"
 msgstr "Omis"
-
-#: 
-msgid "Unknown error"
-msgstr "Eroare necunoscută"
-
-#: 
-msgid "deposit(s) with no payments"
-msgstr "depozite fără plăți"
 
 #: 
 msgid "%d event in %s"
@@ -7244,16 +6539,8 @@ msgid "Backup Type"
 msgstr "Tip Backup"
 
 #: 
-msgid "Backup complete! Click below to download."
-msgstr "Backup finalizat! Faceți clic mai jos pentru a descărca."
-
-#: 
 msgid "Backup completed successfully!"
 msgstr "Backup finalizat cu succes!"
-
-#: 
-msgid "Backup downloaded. Server copy removed."
-msgstr "Backup descărcat. Copia de pe server a fost eliminată."
 
 #: 
 msgid "Backup failed. Please try again."
@@ -7352,10 +6639,6 @@ msgid "Force Re-install"
 msgstr "Reinstalare forțată"
 
 #: 
-msgid "Force re-install initiated. Please backup your database before applying."
-msgstr "Reinstalarea forțată a fost inițiată. Vă rugăm să faceți un backup al bazei de date înainte de aplicare."
-
-#: 
 msgid "Full Backup"
 msgstr "Backup complet"
 
@@ -7436,10 +6719,6 @@ msgid "Please check the backup file and try again."
 msgstr "Vă rugăm să verificați fișierul de backup și să încercați din nou."
 
 #: 
-msgid "Please select a backup file to restore"
-msgstr "Vă rugăm să selectați un fișier de backup pentru restaurare"
-
-#: 
 msgid "Redirecting in"
 msgstr "Redirecționare în"
 
@@ -7466,10 +6745,6 @@ msgstr "Stare restaurare"
 #: 
 msgid "Restore failed."
 msgstr "Restaurare eșuată."
-
-#: 
-msgid "Restore failed. Please check the backup file and try again."
-msgstr "Restaurarea a eșuat. Vă rugăm să verificați fișierul de backup și să încercați din nou."
 
 #: 
 msgid "Restore in progress, please wait..."
@@ -7588,10 +6863,6 @@ msgid "Advanced Operations"
 msgstr "Operațiuni avansate"
 
 #: 
-msgid "All System Settings"
-msgstr "Toate setările de sistem"
-
-#: 
 msgid "An unexpected error occurred. Please contact your administrator."
 msgstr "A apărut o eroare neașteptată. Vă rugăm să contactați administratorul."
 
@@ -7646,10 +6917,6 @@ msgstr "Depozite închise:"
 #: 
 msgid "Closed vs Total"
 msgstr "Închise vs Total"
-
-#: 
-msgid "Coming soon"
-msgstr "În curând"
 
 #: 
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
@@ -7796,14 +7063,6 @@ msgid "Finance Dashboard"
 msgstr "Panou de control finanțe"
 
 #: 
-msgid "Force Import"
-msgstr "Import forțat"
-
-#: 
-msgid "Force Import will retry and may create duplicate data."
-msgstr "Importul forțat va reîncerca și poate crea date duplicate."
-
-#: 
 msgid "Fund Allocation"
 msgstr "Alocare fonduri"
 
@@ -7842,10 +7101,6 @@ msgstr "ID"
 #: 
 msgid "Identify members who have not made any donations within a date range."
 msgstr "Identificați membrii care nu au făcut nicio donație într-un interval de date."
-
-#: 
-msgid "Import failed"
-msgstr "Import eșuat"
 
 #: 
 msgid "Jan"
@@ -8016,10 +7271,6 @@ msgid "Sep"
 msgstr "Sep"
 
 #: 
-msgid "Server error"
-msgstr "Eroare server"
-
-#: 
 msgid "Settings"
 msgstr "Setări"
 
@@ -8070,10 +7321,6 @@ msgstr "Declarații fiscale (Raport donații)"
 #: 
 msgid "Tax Year Reporting Checklist"
 msgstr "Listă de verificare pentru raportarea anului fiscal"
-
-#: 
-msgid "Today"
-msgstr "Astăzi"
 
 #: 
 msgid "Total"
@@ -8144,24 +7391,8 @@ msgid "active"
 msgstr "activ"
 
 #: 
-msgid "ago"
-msgstr "în urmă"
-
-#: 
-msgid "day"
-msgstr "zi"
-
-#: 
-msgid "days"
-msgstr "zile"
-
-#: 
 msgid "found"
 msgstr "găsit"
-
-#: 
-msgid "in"
-msgstr "în"
 
 #: 
 msgid "issues"
@@ -8170,10 +7401,6 @@ msgstr "probleme"
 #: 
 msgid "open"
 msgstr "deschis"
-
-#: 
-msgid "years"
-msgstr "ani"
 
 #: 
 msgid "(Enter state/province for countries without predefined states)"
@@ -8240,10 +7467,6 @@ msgid "Location & Contact Information"
 msgstr "Locație și informații de contact"
 
 #: 
-msgid "New to"
-msgstr "Nou în"
-
-#: 
 msgid "No locales configured"
 msgstr "Nicio localizare configurată"
 
@@ -8286,10 +7509,6 @@ msgstr "URL-ul trebuie să se termine cu un slash la sfârșit (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL-ul trebuie să înceapă cu http:// sau https://"
-
-#: 
-msgid "Unable to load state list. Please check your network connection or try again later."
-msgstr "Nu s-a putut încărca lista de state. Vă rugăm să verificați conexiunea la rețea sau încercați din nou mai târziu."
 
 #: 
 msgid "Update it to a valid URL that:"
@@ -8344,10 +7563,6 @@ msgid "Contact & Personal Info"
 msgstr "Informații de contact și personale"
 
 #: 
-msgid "Copied!"
-msgstr "Copiat!"
-
-#: 
 msgid "Edited"
 msgstr "Editat"
 
@@ -8356,16 +7571,8 @@ msgid "Email PDF"
 msgstr "Trimite PDF prin e-mail"
 
 #: 
-msgid "Failed to copy URL"
-msgstr "Eșec la copierea URL-ului"
-
-#: 
 msgid "Newsletter"
 msgstr "Buletin informativ"
-
-#: 
-msgid "Open in New Tab"
-msgstr "Deschide în filă nouă"
 
 #: 
 msgid "Personal"
@@ -8384,16 +7591,8 @@ msgid "Provide any corrections or additional information here..."
 msgstr "Furnizați orice corecții sau informații suplimentare aici..."
 
 #: 
-msgid "Remove Property"
-msgstr "Elimină proprietatea"
-
-#: 
 msgid "Select Opportunities"
 msgstr "Selectați oportunități"
-
-#: 
-msgid "Share this URL with family members to verify their information"
-msgstr "Partajați acest URL cu membrii familiei pentru a le verifica informațiile"
 
 #: 
 msgid "Submit Verification"
@@ -8560,24 +7759,12 @@ msgid "total"
 msgstr "total"
 
 #: 
-msgid "Code incomplete"
-msgstr "Cod incomplet"
-
-#: 
-msgid "Code is invalid"
-msgstr "Codul este nevalid"
-
-#: 
 msgid "Encryption key for storing 2FA secret keys in the database"
 msgstr "Cheie de criptare pentru stocarea cheilor secrete 2FA în baza de date"
 
 #: 
 msgid "Two-Factor Authentication"
 msgstr "Autentificare cu doi factori"
-
-#: 
-msgid "Validation pending"
-msgstr "Validare în așteptare"
 
 #: 
 msgid "%d Person added to the Cart."
@@ -8699,14 +7886,6 @@ msgstr "Avertisment:"
 #: 
 msgid "Yes, delete this Opportunity"
 msgstr "Da, șterge această oportunitate"
-
-#: 
-msgid "Fund(s)"
-msgstr "Fonduri"
-
-#: 
-msgid "Password reset for"
-msgstr "Resetare parolă pentru"
 
 #. Context: locales
 #: 
@@ -8875,10 +8054,6 @@ msgstr "din angajamente"
 #: 
 msgid "records"
 msgstr "înregistrări"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "Trebuie să înceapă cu / dacă nu este gol; fără bară oblică finală. Sunt permise doar litere, cifre, liniuță jos, cratimă, punct și /."
 
 #: 
 msgid "%d person"
@@ -9107,10 +8282,6 @@ msgid "Add Link"
 msgstr "Adăugare Link"
 
 #: 
-msgid "Add an extra layer of security to your account"
-msgstr "Adăugați un nivel suplimentar de securitate la contul dvs."
-
-#: 
 msgid "Add custom external links to the navigation menu."
 msgstr "Adăugați linkuri externe personalizate în meniul de navigare."
 
@@ -9121,10 +8292,6 @@ msgstr "Permite Certificate Auto-Semnate"
 #: 
 msgid "An error occurred processing the plugin request"
 msgstr "A apărut o eroare la procesarea cererii pluginului"
-
-#: 
-msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
-msgstr "Sigur doriți să dezactivați autentificarea cu doi factori? Contul dvs. va fi mai puțin sigur."
 
 #: 
 msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
@@ -9167,28 +8334,12 @@ msgid "Backup to WebDAV Now"
 msgstr "Copie de Rezervă WebDAV Acum"
 
 #: 
-msgid "Before You Start"
-msgstr "Înainte de a Începe"
-
-#: 
-msgid "Browser language preference detected"
-msgstr "Preferința de limbă a browserului detectată"
-
-#: 
 msgid "CRM Members Not Subscribed"
 msgstr "Membri CRM Neabonați"
 
 #: 
 msgid "Campaigns Sent"
 msgstr "Campanii Trimise"
-
-#: 
-msgid "Can't scan?"
-msgstr "Nu puteți scana?"
-
-#: 
-msgid "Change Your Locale"
-msgstr "Schimbați Localizarea"
 
 #: 
 msgid "ChurchCRM supports a plugin architecture for extending functionality."
@@ -9229,10 +8380,6 @@ msgstr "Configurați acest plugin pentru a face automat copii de rezervă ale ba
 #: 
 msgid "Configured"
 msgstr "Configurat"
-
-#: 
-msgid "Confirm with a code from your authenticator app"
-msgstr "Confirmați cu un cod din aplicația dvs. de autentificare"
 
 #: 
 msgid "Connected"
@@ -9295,24 +8442,12 @@ msgid "Disable Plugin"
 msgstr "Dezactivați Pluginul"
 
 #: 
-msgid "Disable Two-Factor Authentication"
-msgstr "Dezactivați Autentificarea cu Doi Factori"
-
-#: 
 msgid "Dismiss"
 msgstr "Respinge"
 
 #: 
-msgid "Done"
-msgstr "Terminat"
-
-#: 
 msgid "Each plugin requires a"
 msgstr "Fiecare plugin necesită un"
-
-#: 
-msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
-msgstr "De fiecare dată când vă autentificați, va trebui să confirmați cu un cod din aplicația dvs. de autentificare"
 
 #: 
 msgid "Email Addresses"
@@ -9331,10 +8466,6 @@ msgid "Enable Plugin"
 msgstr "Activați Pluginul"
 
 #: 
-msgid "Enable Two-Factor Authentication"
-msgstr "Activați Autentificarea cu Doi Factori"
-
-#: 
 msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
 msgstr "Activați aceasta doar pentru serverele din rețeaua locală cu certificate SSL auto-semnate. Dezactivează verificarea certificatelor."
 
@@ -9345,10 +8476,6 @@ msgstr "URL Punct Final"
 #: 
 msgid "Enter the 6-digit code from your authenticator app"
 msgstr "Introduceți codul de 6 cifre din aplicația dvs. de autentificare"
-
-#: 
-msgid "Enter your username and password as usual"
-msgstr "Introduceți numele de utilizator și parola ca de obicei"
 
 #: 
 msgid "External Backup"
@@ -9423,20 +8550,12 @@ msgid "GA4 Measurement ID"
 msgstr "ID Măsurare GA4"
 
 #: 
-msgid "Generate new code"
-msgstr "Generare cod nou"
-
-#: 
 msgid "Get Started"
 msgstr "Începeți"
 
 #: 
 msgid "Get your API key from MailChimp: Account Settings > Extras > API Keys"
 msgstr "Obțineți cheia API de la MailChimp: Setări Cont > Extra > Chei API"
-
-#: 
-msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
-msgstr "Pregătiți aplicația de autentificare (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 
 #: 
 msgid "Help"
@@ -9449,10 +8568,6 @@ msgstr "Id"
 #: 
 msgid "Image shown when no Gravatar exists for the email address"
 msgstr "Imagine afișată când nu există Gravatar pentru adresa de email"
-
-#: 
-msgid "Important"
-msgstr "Important"
 
 #: 
 msgid "Invalid code. Please try again."
@@ -9509,10 +8624,6 @@ msgstr "Linkul trebuie să înceapă cu http:// sau https://"
 #: 
 msgid "Link not found"
 msgstr "Link negăsit"
-
-#: 
-msgid "Loading recovery codes"
-msgstr "Se încarcă codurile de recuperare"
 
 #: 
 msgid "MailChimp API Key"
@@ -9596,16 +8707,8 @@ msgid "Not in CRM"
 msgstr "Nu este în CRM"
 
 #: 
-msgid "One-Time Code"
-msgstr "Cod de Unică Folosință"
-
-#: 
 msgid "Open MailChimp"
 msgstr "Deschide MailChimp"
-
-#: 
-msgid "Open your authenticator app and scan this QR code"
-msgstr "Deschideți aplicația de autentificare și scanați acest cod QR"
 
 #: 
 msgid "OpenLP Server URL"
@@ -9634,10 +8737,6 @@ msgstr "Vă rugăm să configurați cheia dvs. API MailChimp pentru a utiliza ac
 #: 
 msgid "Please enter a link name (2-50 characters)"
 msgstr "Introduceți un nume de link (2-50 caractere)"
-
-#: 
-msgid "Please try again"
-msgstr "Încercați din nou"
 
 #: 
 msgid "Plugin Development"
@@ -9688,44 +8787,16 @@ msgid "Print"
 msgstr "Imprimare"
 
 #: 
-msgid "Recovery Codes"
-msgstr "Coduri de Recuperare"
-
-#: 
 msgid "Remote backup failed. Check server logs for details."
 msgstr "Copia de rezervă la distanță a eșuat. Verificați jurnalele serverului pentru detalii."
-
-#: 
-msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
-msgstr "Salvați aceste coduri de recuperare într-un loc sigur. Le puteți folosi pentru a accesa contul dacă pierdeți accesul la aplicația de autentificare."
-
-#: 
-msgid "Scan QR Code"
-msgstr "Scanați Codul QR"
-
-#: 
-msgid "Secure"
-msgstr "Sigur"
-
-#: 
-msgid "Set Up Authenticator"
-msgstr "Configurați Autentificatorul"
 
 #: 
 msgid "Settings reset successfully"
 msgstr "Setări resetate cu succes"
 
 #: 
-msgid "Setup Complete"
-msgstr "Configurare Finalizată"
-
-#: 
 msgid "Shipped with ChurchCRM."
 msgstr "Inclus în ChurchCRM."
-
-#: 
-msgid "Sign In"
-msgstr "Autentificare"
 
 #: 
 msgid "Some settings could not be reset"
@@ -9764,10 +8835,6 @@ msgid "Third-party extensions."
 msgstr "Extensii terțe."
 
 #: 
-msgid "This will replace any previously enrolled 2FA methods"
-msgstr "Aceasta va înlocui orice metode 2FA înrolate anterior"
-
-#: 
 msgid "Total Campaigns"
 msgstr "Total Campanii"
 
@@ -9776,24 +8843,8 @@ msgid "Total Subscribers"
 msgstr "Total Abonați"
 
 #: 
-msgid "Two Factor Enrollment Error"
-msgstr "Eroare de Înrolare 2FA"
-
-#: 
-msgid "Two-factor authentication has been disabled"
-msgstr "Autentificarea cu doi factori a fost dezactivată"
-
-#: 
-msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
-msgstr "Autentificarea cu doi factori este una dintre cele mai bune modalități de a proteja contul dvs. Vă recomandăm cu tărie să o mențineți activată."
-
-#: 
 msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
 msgstr "URL la serverul dvs. OpenLP (ex. http://192.168.1.100:4316)"
-
-#: 
-msgid "Unable to load"
-msgstr "Imposibil de încărcat"
 
 #: 
 msgid "Unsubscribed"
@@ -9814,14 +8865,6 @@ msgstr "Valoarea este setată - lăsați necompletat pentru a păstra valoarea c
 #: 
 msgid "Verify & Sign In"
 msgstr "Verificare & Autentificare"
-
-#: 
-msgid "Verify Code"
-msgstr "Verificare Cod"
-
-#: 
-msgid "Verifying"
-msgstr "Se verifică"
 
 #: 
 msgid "Vonage API Key"
@@ -9856,40 +8899,12 @@ msgid "WebDAV username is required."
 msgstr "Numele de utilizator WebDAV este obligatoriu."
 
 #: 
-msgid "You can also use backup recovery codes if you lose access to your app"
-msgstr "Puteți utiliza și coduri de recuperare dacă pierdeți accesul la aplicație"
-
-#: 
-msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
-msgstr "Acum puteți utiliza aplicația de autentificare pentru a vă autentifica. Fiecare cod este valid timp de 30 de secunde."
-
-#: 
-msgid "You'll receive backup codes that can be used if you lose access to your app"
-msgstr "Veți primi coduri de rezervă care pot fi utilizate dacă pierdeți accesul la aplicație"
-
-#: 
 msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
 msgstr "ID-ul dvs. de Măsurare GA4 (G-XXXXXXXXXX)"
 
 #: 
 msgid "Your MailChimp account does not have any audiences (lists) configured."
 msgstr "Contul dvs. MailChimp nu are audiențe (liste) configurate."
-
-#: 
-msgid "Your account is now protected"
-msgstr "Contul dvs. este acum protejat"
-
-#: 
-msgid "Your account is protected"
-msgstr "Contul dvs. este protejat"
-
-#: 
-msgid "Your authenticator app has been successfully enrolled"
-msgstr "Aplicația dvs. de autentificare a fost înrolată cu succes"
-
-#: 
-msgid "Your browser language preference differs from your ChurchCRM locale"
-msgstr "Preferința de limbă a browserului dvs. diferă de localizarea ChurchCRM"
 
 #: 
 msgid "e.g., Church Website"
@@ -10108,10 +9123,6 @@ msgid "2FA"
 msgstr "2FA"
 
 #: 
-msgid "Leave blank to keep existing"
-msgstr "Lăsați necompletat pentru a păstra valoarea existentă"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Solicitați tuturor utilizatorilor să se înscrie pentru autentificarea în doi factori"
 
@@ -10216,10 +9227,6 @@ msgid "Save Church Information"
 msgstr "Salvați informațiile parohiei"
 
 #: 
-msgid "Search or select..."
-msgstr "Căutați sau selectați..."
-
-#: 
 msgid "State is required."
 msgstr "Județul este obligatoriu."
 
@@ -10262,14 +9269,6 @@ msgstr "Site web"
 #: 
 msgid "ZIP code is required."
 msgstr "Codul poștal este obligatoriu."
-
-#: 
-msgid "— Select Country —"
-msgstr "— Selectați țara —"
-
-#: 
-msgid "— Select State —"
-msgstr "— Selectați județul —"
 
 #: 
 msgid "Address Status"
@@ -10483,10 +9482,6 @@ msgid "Age Distribution"
 msgstr "Distribuție pe vârste"
 
 #: 
-msgid "All Roles"
-msgstr "Toate rolurile"
-
-#: 
 msgid "All Time"
 msgstr "Tot timpul"
 
@@ -10519,20 +9514,8 @@ msgid "An unexpected error occurred."
 msgstr "A apărut o eroare neașteptată."
 
 #: 
-msgid "Applied preset"
-msgstr "Presetare aplicată"
-
-#: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "Sunteți sigur că doriți să ștergeți această ofertă?"
-
-#: 
 msgid "Are you sure you want to delete this fundraiser?"
 msgstr "Sunteți sigur că doriți să ștergeți această strângere de fonduri?"
-
-#: 
-msgid "Are you sure you want to remove"
-msgstr "Sunteți sigur că doriți să eliminați"
 
 #: 
 msgid "Assign and manage donation envelope numbers"
@@ -10565,10 +9548,6 @@ msgstr "Cod de autentificare"
 #: 
 msgid "Auto-mapped"
 msgstr "Mapat automat"
-
-#: 
-msgid "BCC All"
-msgstr "BCC tuturor"
 
 #: 
 msgid "Back to Admin Dashboard"
@@ -10683,10 +9662,6 @@ msgid "Clear all items from cart"
 msgstr "Elimină toate persoanele din selecție"
 
 #: 
-msgid "Click Save to apply."
-msgstr "Faceți clic pe Salvare pentru a aplica."
-
-#: 
 msgid "Click to upload photo"
 msgstr "Faceți clic pentru a încărca o fotografie"
 
@@ -10727,24 +9702,12 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Conectați un server SMTP pentru ca ChurchCRM să poată trimite e-mailuri"
 
 #: 
-msgid "Connect with others"
-msgstr "Conectează-te cu alții"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Convertiți înregistrări individuale în unități de familie"
 
 #: 
 msgid "Convert to Family"
 msgstr "Convertește în familie"
-
-#: 
-msgid "Copied"
-msgstr "Copiat"
-
-#: 
-msgid "Copy Members to Group"
-msgstr "Copiază membrii în grup"
 
 #: 
 msgid "Copy to Group"
@@ -10835,10 +9798,6 @@ msgid "Deleting this property will also remove all its assignments from any Peop
 msgstr "Ștergerea acestei proprietăți va elimina și toate atribuirile sale din orice înregistrare de persoane, familii sau grupuri."
 
 #: 
-msgid "Deposit Value"
-msgstr "Valoarea ofertei"
-
-#: 
 msgid "Describe the issue"
 msgstr "Descrieți problema"
 
@@ -10881,10 +9840,6 @@ msgstr "Duplicate"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Fiecare persoană poate avea propriul e-mail și număr de mobil."
-
-#: 
-msgid "Easy registration"
-msgstr "Înregistrare ușoară"
 
 #: 
 msgid "Edit Class"
@@ -11011,22 +9966,6 @@ msgid "FY %s"
 msgstr "An fiscal %s"
 
 #: 
-msgid "Failed to add members to cart. Please try again."
-msgstr "Nu s-au putut adăuga membrii în selecție. Încercați din nou."
-
-#: 
-msgid "Failed to delete class. Please try again."
-msgstr "Nu s-a putut șterge clasa. Încercați din nou."
-
-#: 
-msgid "Failed to delete group. Please try again."
-msgstr "Nu s-a putut șterge grupul. Încercați din nou."
-
-#: 
-msgid "Failed to remove from class. Please try again."
-msgstr "Nu s-a putut elimina din clasă. Încercați din nou."
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "Familiile au aceeași adresă și număr de telefon."
 
@@ -11123,10 +10062,6 @@ msgid "Get Your Data Into ChurchCRM"
 msgstr "Introduceți datele în ChurchCRM"
 
 #: 
-msgid "Go to homepage"
-msgstr "Mergi la pagina principală"
-
-#: 
 msgid "Great choice! Here's how to add your church members."
 msgstr "Alegere excelentă! Iată cum să adăugați enoriașii."
 
@@ -11139,20 +10074,12 @@ msgid "Group Reports"
 msgstr "Rapoarte grup"
 
 #: 
-msgid "Group deleted successfully."
-msgstr "Grupul a fost șters cu succes."
-
-#: 
 msgid "Have Existing Data?"
 msgstr "Aveți date existente?"
 
 #: 
 msgid "If you have many records in a spreadsheet, the CSV import may be faster than entering data manually."
 msgstr "Dacă aveți multe înregistrări într-un tabel de calcul, importul CSV poate fi mai rapid decât introducerea manuală a datelor."
-
-#: 
-msgid "Ignored"
-msgstr "Ignorat"
 
 #: 
 msgid "Import Another File"
@@ -11169,10 +10096,6 @@ msgstr "Import finalizat"
 #: 
 msgid "Import contacts from your MailChimp audiences"
 msgstr "Importă contactele din audiențele MailChimp"
-
-#: 
-msgid "Import failed. Please try again."
-msgstr "Importul a eșuat. Încercați din nou."
 
 #: 
 msgid "Import failed: "
@@ -11199,10 +10122,6 @@ msgid "Import, restore, or manually enter your congregation"
 msgstr "Importă, restaurează sau introduceți manual enoriașii"
 
 #: 
-msgid "Importing..."
-msgstr "Se importă..."
-
-#: 
 msgid "Include in Email Export"
 msgstr "Include în exportul e-mail"
 
@@ -11225,10 +10144,6 @@ msgstr "\"Numărul expeditor\" invalid: \"%s\". Includeți codul de țară, de e
 #: 
 msgid "Invite Your Team"
 msgstr "Invită echipa ta"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "Alătură-te comunității noastre și rămâi conectat cu"
 
 #: 
 msgid "Jump to any setup step:"
@@ -11347,10 +10262,6 @@ msgid "Manage your personal preferences and account settings"
 msgstr "Gestionează preferințele personale și setările contului"
 
 #: 
-msgid "Manual"
-msgstr "Manual"
-
-#: 
 msgid "Map cart items"
 msgstr "Afișează selecția pe hartă"
 
@@ -11371,10 +10282,6 @@ msgid "Member Roles"
 msgstr "Roluri membri"
 
 #: 
-msgid "Members added to cart."
-msgstr "Membrii au fost adăugați în selecție."
-
-#: 
 msgid "Memberships"
 msgstr "Apartenențe"
 
@@ -11385,14 +10292,6 @@ msgstr "Minim"
 #: 
 msgid "Modify family roles for group members"
 msgstr "Modifică rolurile familiale ale membrilor de grup"
-
-#: 
-msgid "Move Members"
-msgstr "Mută membrii"
-
-#: 
-msgid "Move Members to Group"
-msgstr "Mută membrii în grup"
 
 #: 
 msgid "Move to Group"
@@ -11431,32 +10330,8 @@ msgid "New Person"
 msgstr "Persoană nouă"
 
 #: 
-msgid "No Anniversaries"
-msgstr "Fără aniversări"
-
-#: 
-msgid "No Birthdays"
-msgstr "Fără zile de naștere"
-
-#: 
 msgid "No Check-ins"
 msgstr "Fără înregistrări de prezență"
-
-#: 
-msgid "No Deposits"
-msgstr "Fără oferte"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "Fără aniversări în ultimele sau următoarele 7 zile"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "Fără zile de naștere în ultimele sau următoarele 7 zile"
-
-#: 
-msgid "No deposit data available yet"
-msgstr "Nu sunt disponibile încă date despre oferte"
 
 #: 
 msgid "No description set."
@@ -11489,10 +10364,6 @@ msgstr "Niciun rezultat pentru \"%s\". Încercați un alt termen de căutare."
 #: 
 msgid "No member properties defined."
 msgstr "Nu sunt definite proprietăți ale membrului."
-
-#: 
-msgid "No members found for this role."
-msgstr "Nu s-au găsit membri pentru acest rol."
 
 #: 
 msgid "No people found"
@@ -11577,10 +10448,6 @@ msgid "People by Classification"
 msgstr "Persoane după clasificare"
 
 #: 
-msgid "Person removed from class."
-msgstr "Persoana a fost eliminată din clasă."
-
-#: 
 msgid "Photo"
 msgstr "Fotografie"
 
@@ -11595,14 +10462,6 @@ msgstr "Alegeți o cale pentru a începe"
 #: 
 msgid "Please check everything looks right before submitting."
 msgstr "Verificați dacă totul arată corect înainte de a trimite."
-
-#: 
-msgid "Please map at least one column before importing"
-msgstr "Mapați cel puțin o coloană înainte de import"
-
-#: 
-msgid "Please select a CSV file"
-msgstr "Selectați un fișier CSV"
 
 #: 
 msgid "Please try requesting a new password reset link or contact support if you continue to experience issues."
@@ -11649,10 +10508,6 @@ msgid "Property not found."
 msgstr "Proprietatea nu a fost găsită."
 
 #: 
-msgid "Quick Setup"
-msgstr "Configurare rapidă"
-
-#: 
 msgid "Quick Tips"
 msgstr "Sfaturi rapide"
 
@@ -11679,14 +10534,6 @@ msgstr "Înregistrați angajamente și plăți noi"
 #: 
 msgid "Record why attendees visited your church"
 msgstr "Înregistrați de ce vizitatorii au venit la biserică"
-
-#: 
-msgid "Register Your Family"
-msgstr "Înregistrați-vă familia"
-
-#: 
-msgid "Register another family"
-msgstr "Înregistrați altă familie"
 
 #: 
 msgid "Remove all from Cart"
@@ -11733,14 +10580,6 @@ msgid "Review and clean up files not associated with any record"
 msgstr "Revizuiți și curățați fișierele neasociate cu nicio înregistrare"
 
 #: 
-msgid "Role not found."
-msgstr "Rolul nu a fost găsit."
-
-#: 
-msgid "Roles"
-msgstr "Roluri"
-
-#: 
 msgid "Run"
 msgstr "Execută"
 
@@ -11763,10 +10602,6 @@ msgstr "Căutați în persoane, familii, grupuri, adrese și altele."
 #: 
 msgid "Search and view deposit slip records"
 msgstr "Căutați și vizualizați înregistrările de oferte"
-
-#: 
-msgid "Search groups..."
-msgstr "Căutare în grupuri..."
 
 #: 
 msgid "Search people, families, groups…"
@@ -11803,10 +10638,6 @@ msgstr "Trimite e-mail familiilor"
 #: 
 msgid "Server Error"
 msgstr "Eroare server"
-
-#: 
-msgid "Server returned an unexpected response. Please try again."
-msgstr "Serverul a returnat un răspuns neașteptat. Încercați din nou."
 
 #: 
 msgid "Set Permission True to give new users the ability to change their current value."
@@ -11873,20 +10704,12 @@ msgid "Start Over"
 msgstr "Începe din nou"
 
 #: 
-msgid "Stay informed"
-msgstr "Rămâi informat"
-
-#: 
 msgid "Step 1 — Upload CSV File"
 msgstr "Pasul 1 — Încărcați fișierul CSV"
 
 #: 
 msgid "Step 2 — Map Columns"
 msgstr "Pasul 2 — Mapați coloanele"
-
-#: 
-msgid "Submitting..."
-msgstr "Se trimite..."
 
 #: 
 msgid "Supports backups from ChurchCRM and ChurchInfo."
@@ -11969,10 +10792,6 @@ msgid "Upload failed."
 msgstr "Încărcarea a eșuat."
 
 #: 
-msgid "Upload failed. Please check the file and try again."
-msgstr "Încărcarea a eșuat. Verificați fișierul și încercați din nou."
-
-#: 
 msgid "Upload session expired. Please upload the file again."
 msgstr "Sesiunea de încărcare a expirat. Încărcați fișierul din nou."
 
@@ -12003,10 +10822,6 @@ msgstr "Vizualizează persoanele"
 #: 
 msgid "View all families on an interactive map"
 msgstr "Vizualizați toate familiile pe o hartă interactivă"
-
-#: 
-msgid "View all results"
-msgstr "Vizualizează toate rezultatele"
 
 #: 
 msgid "View and manage all groups in your congregation"
@@ -12089,20 +10904,12 @@ msgid "We're so glad you're here! Register your family in just 3 easy steps."
 msgstr "Ne bucurăm că sunteți aici! Înregistrați-vă familia în doar 3 pași simpli."
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "Ne bucurăm că familia dumneavoastră ni s-a alăturat!"
-
-#: 
 msgid "Welcome Back!"
 msgstr "Bine ați revenit!"
 
 #: 
 msgid "Welcome back! Please enter your details to continue"
 msgstr "Bine ați revenit! Introduceți datele dumneavoastră pentru a continua"
-
-#: 
-msgid "Welcome to the Family!"
-msgstr "Bine ați venit în parohie!"
 
 #: 
 msgid "What happens next?"
@@ -12145,28 +10952,12 @@ msgid "Your previous session timed out. Please login again."
 msgstr "Sesiunea anterioară a expirat. Vă rugăm să vă autentificați din nou."
 
 #: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "Înregistrarea dumneavoastră a fost primită. Echipa noastră vă va contacta în curând pentru a vă ura personal bun venit."
-
-#: 
-msgid "all members"
-msgstr "toți membrii"
-
-#: 
 msgid "complete"
 msgstr "finalizat"
 
 #: 
 msgid "fields"
 msgstr "câmpuri"
-
-#: 
-msgid "from this class?"
-msgstr "din această clasă?"
-
-#: 
-msgid "from this group?"
-msgstr "din acest grup?"
 
 #: 
 msgid "full group view"
@@ -12177,20 +10968,12 @@ msgid "funds"
 msgstr "fonduri"
 
 #: 
-msgid "members"
-msgstr "membri"
-
-#: 
 msgid "opportunities"
 msgstr "oportunități"
 
 #: 
 msgid "or connect an external service"
 msgstr "sau conectați un serviciu extern"
-
-#: 
-msgid "our church"
-msgstr "parohia noastră"
 
 #: 
 msgid "page"
@@ -12201,24 +10984,12 @@ msgid "properties"
 msgstr "proprietăți"
 
 #: 
-msgid "to another group?"
-msgstr "într-un alt grup?"
-
-#: 
-msgid "— Ignore —"
-msgstr "— Ignorare —"
-
-#: 
 msgid "— Select a group —"
 msgstr "— Selectați un grup —"
 
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Selectați tipul (opțional) —"
-
-#: 
-msgid "Activate"
-msgstr "Activează"
 
 #: 
 msgid "Active Events"
@@ -12241,10 +11012,6 @@ msgid "All Checks Passed"
 msgstr "Toate verificările au trecut"
 
 #: 
-msgid "Applying..."
-msgstr "Se aplică..."
-
-#: 
 msgid "Assigned Kiosk"
 msgstr "Chioșc atribuit"
 
@@ -12255,10 +11022,6 @@ msgstr "Prezență"
 #: 
 msgid "Back up modified files before upgrading if you want to keep your changes."
 msgstr "Faceți copii de siguranță ale fișierelor modificate înainte de actualizare, dacă doriți să păstrați modificările."
-
-#: 
-msgid "Backup Complete"
-msgstr "Copie de siguranță finalizată"
 
 #: 
 msgid "Class / Group"
@@ -12279,14 +11042,6 @@ msgstr "Creează primul eveniment"
 #: 
 msgid "Create a database backup before applying the update. This is strongly recommended."
 msgstr "Creați o copie de siguranță a bazei de date înainte de a aplica actualizarea. Este recomandat insistent."
-
-#: 
-msgid "Creating Backup..."
-msgstr "Se creează copia de siguranță..."
-
-#: 
-msgid "Download Backup & Continue"
-msgstr "Descarcă copia de siguranță și continuă"
 
 #: 
 msgid "Download the latest release and apply it to your installation."
@@ -12331,10 +11086,6 @@ msgstr "Generați liste de clasă, foi de prezență și albume foto"
 #: 
 msgid "Installed"
 msgstr "Instalat"
-
-#: 
-msgid "It is strongly recommended to have a backup before proceeding."
-msgstr "Este recomandat insistent să aveți o copie de siguranță înainte de a continua."
 
 #: 
 msgid "Latest"
@@ -12460,18 +11211,10 @@ msgstr "Utilizatorul trebuie să aibă permisiunea pentru note"
 msgid "Address Defaults"
 msgstr "Setări implicite adresă"
 
-#: 
-msgid "All Day"
-msgstr "Toată ziua"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
 msgstr "Permiteți utilizatorului să adauge un nou eveniment"
-
-#: 
-msgid "Are you sure you want to continue?"
-msgstr "Sunteti sigur ca doriti sa continuati?"
 
 #. Context: queryparameters_qrp
 #: 
@@ -12513,10 +11256,6 @@ msgid "ChurchCRM can send emails directly."
 msgstr "ChurchCRM poate trimite e-mailuri direct."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "API Clipboard nu este disponibil. Copiaţi adresa URL manual."
-
-#: 
 msgid "Communication"
 msgstr "Comunicare"
 
@@ -12536,18 +11275,6 @@ msgstr "Configurați Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "Conectați Mailchimp pentru a sincroniza listele de e-mailuri pentru buletine și campanii."
-
-#: 
-msgid "Copied to clipboard"
-msgstr "Copiat în clipboard"
-
-#: 
-msgid "Copy All Emails"
-msgstr "Copiaţi toate e-mailurile"
-
-#: 
-msgid "Copy All Numbers"
-msgstr "Copiaţi toate numerele"
 
 #: 
 msgid "Copy from church address"
@@ -12585,20 +11312,12 @@ msgid "Distance Unit"
 msgstr "Unitate de distanță"
 
 #: 
-msgid "Duration"
-msgstr "Durata"
-
-#: 
 msgid "Email Dashboard"
 msgstr "Tablou de bord e-mail"
 
 #: 
 msgid "Email Integrations"
 msgstr "Integrări e-mail"
-
-#: 
-msgid "Email addresses copied to clipboard"
-msgstr "Adresele de e-mail au fost copiate în clipboard"
 
 #: 
 msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
@@ -12773,14 +11492,6 @@ msgstr "E-mailuri de notificare pentru noi membri"
 msgid "No cell phone on file"
 msgstr "Niciun telefon mobil în dosar"
 
-#: 
-msgid "No email addresses available"
-msgstr "Nicio adresă de e-mail disponibilă"
-
-#: 
-msgid "No phone numbers available"
-msgstr "Niciun număr de telefon disponibil"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Non-Attender"
@@ -12799,10 +11510,6 @@ msgstr "Neclasificat"
 #: 
 msgid "Number of months since becoming a friend"
 msgstr "Numărul de luni din când au devenit prieteni"
-
-#: 
-msgid "Parents"
-msgstr "Părinți"
 
 #: 
 msgid "Password reset emails — users cannot recover their accounts"
@@ -12830,14 +11537,6 @@ msgstr "Proprietate persoană utilizată pentru a exclude membrii din listele SM
 msgid "Person property used to exclude members from email lists"
 msgstr "Proprietate persoană utilizată pentru a exclude membrii din listele de e-mail"
 
-#: 
-msgid "Phone numbers copied to clipboard"
-msgstr "Numerele de telefon copiate în clipboard"
-
-#: 
-msgid "Phone numbers copied — paste into your messaging app"
-msgstr "Numerele de telefon copiate — lipiți în aplicația de mesagerie"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
@@ -12858,18 +11557,10 @@ msgstr "Comparația angajamentelor"
 msgid "Pledged this year"
 msgstr "Angajat anul acesta"
 
-#: 
-msgid "Press CTRL + C to copy"
-msgstr "Apăsați CTRL + C pentru a copia"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "Proprietate"
-
-#: 
-msgid "Public calendar"
-msgstr "Calendar public"
 
 #. Context: query_qry
 #: 
@@ -12922,14 +11613,6 @@ msgstr "Al doilea an fiscal pentru comparație"
 msgid "Second volunteer opportunity choice"
 msgstr "A doua alegere de oportunitate de voluntar"
 
-#: 
-msgid "Select calendars..."
-msgstr "Selectați calendare..."
-
-#: 
-msgid "Select event type..."
-msgstr "Selectați tipul evenimentului..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Select field to search for."
@@ -12955,10 +11638,6 @@ msgstr "Calendare de sistem"
 #: 
 msgid "System language for the church."
 msgstr "Limbă de sistem pentru biserică."
-
-#: 
-msgid "Text All"
-msgstr "Text Toate"
 
 #: 
 msgid "Text Dashboard"
@@ -13021,18 +11700,6 @@ msgid "These values are pre-filled when creating new families. Leave blank to re
 msgstr "Aceste valori sunt completate anterior la crearea de noi familii. Lăsați gol pentru a necesita introducerea manuală."
 
 #: 
-msgid "Time"
-msgstr "Timp"
-
-#: 
-msgid "Timed"
-msgstr "Cronometrat"
-
-#: 
-msgid "Unable to copy to clipboard. Please copy the URL manually."
-msgstr "Nu se poate copia în clipboard. Vă rugăm să copiați URL-ul manual."
-
-#: 
 msgid "Unit used to measure distance."
 msgstr "Unitate folosită pentru a măsura distanța."
 
@@ -13077,14 +11744,6 @@ msgstr "E-mail de lucru"
 #: 
 msgid "but not this year"
 msgstr "dar nu în acest an"
-
-#: 
-msgid "e.g. Sunday Service"
-msgstr "de exemplu, Serviciul de duminică"
-
-#: 
-msgid "member"
-msgstr "membru"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -13939,21 +12598,6 @@ msgstr "Dimensiunea fișierului depășește limita serverului de %s"
 msgid "Missing image data in request"
 msgstr "Date imagine lipsă în cerere"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "Găsiți persoane care nu au participat la un eveniment"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Persoane absente"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Selectați evenimentul dorit"
-
 #: 
 msgid "Advanced filtering by group, classification, and role"
 msgstr "Filtrare avansată după grup, clasificare și rol"
@@ -14031,10 +12675,6 @@ msgid "API Key"
 msgstr "Cheie API"
 
 #: 
-msgid "API key regenerated"
-msgstr "Cheia API a fost regenerată"
-
-#: 
 msgid "Account"
 msgstr "Cont"
 
@@ -14109,46 +12749,6 @@ msgstr "Numărul implicit de rânduri afișate în tabelele de date. Intră în 
 #: 
 msgid "Edit own family only"
 msgstr "Editați doar propria familie"
-
-#: 
-msgid "Enter text here..."
-msgstr "Introduceți textul aici..."
-
-#: 
-msgid "Failed to cancel enrollment. Please try again."
-msgstr "Anularea înscrierii a eșuat. Vă rugăm să încercați din nou."
-
-#: 
-msgid "Failed to delete event. Please try again."
-msgstr "Ștergerea evenimentului a eșuat. Vă rugăm să încercați din nou."
-
-#: 
-msgid "Failed to disable two-factor authentication. Please try again."
-msgstr "Dezactivarea autentificării în doi pași a eșuat. Vă rugăm să încercați din nou."
-
-#: 
-msgid "Failed to generate QR code. Please try again."
-msgstr "Generarea codului QR a eșuat. Vă rugăm să încercați din nou."
-
-#: 
-msgid "Failed to load calendar data. Please try again."
-msgstr "Încărcarea datelor calendarului a eșuat. Vă rugăm să încercați din nou."
-
-#: 
-msgid "Failed to load event. Please try again."
-msgstr "Încărcarea evenimentului a eșuat. Vă rugăm să încercați din nou."
-
-#: 
-msgid "Failed to load recovery codes. Please refresh the page."
-msgstr "Încărcarea codurilor de recuperare a eșuat. Vă rugăm să reîmprospătați pagina."
-
-#: 
-msgid "Failed to save event. Please try again."
-msgstr "Salvarea evenimentului a eșuat. Vă rugăm să încercați din nou."
-
-#: 
-msgid "Failed to save setting"
-msgstr "Salvarea setării a eșuat"
 
 #. Context: locales
 #: 
@@ -14333,10 +12933,6 @@ msgid "User Config"
 msgstr "Configurare utilizator"
 
 #: 
-msgid "Verification failed. Please try again."
-msgstr "Verificarea a eșuat. Vă rugăm să încercați din nou."
-
-#: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "Versiunea %s este disponibilă. Vă rugăm să actualizați instalarea."
 
@@ -14388,10 +12984,6 @@ msgid "A tablet assigned to one event. The kiosk pulls the event's linked group 
 msgstr "O tabletă atribuită unui singur eveniment. Chioșcul preia lista grupului legat de eveniment și afișează opțiunea de înregistrare prin atingere. Fără un grup legat, chioșcul nu are o listă de afișat."
 
 #: 
-msgid "Add Walk-in / Visitor"
-msgstr "Adaugă vizitator / persoană neînregistrată"
-
-#: 
 msgid "Add people to your cart first, then come back to check them in to an event."
 msgstr "Adaugă mai întâi persoane în selecție, apoi revino pentru a le înregistra prezența la un eveniment."
 
@@ -14426,10 +13018,6 @@ msgstr "Toate fotografiile și documentele încărcate"
 #: 
 msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
 msgstr "Un Tip de Eveniment este un șablon — denumire, oră de începere implicită, recurență, categorii de numărare a prezenței. Opțional legat de un grup de clasă ca audiență implicită."
-
-#: 
-msgid "Attendance record deleted."
-msgstr "Înregistrarea prezenței a fost ștearsă."
 
 #: 
 msgid "Audit"
@@ -14492,24 +13080,12 @@ msgid "Check in all %d family members to a single event."
 msgstr "Înregistrează prezența tuturor celor %d membri ai familiei la un eveniment."
 
 #: 
-msgid "Check out"
-msgstr "Ieșire"
-
-#: 
 msgid "Check-in By"
 msgstr "Prezență înregistrată de"
 
 #: 
-msgid "Check-in failed. Please try again."
-msgstr "Înregistrarea prezenței a eșuat. Vă rugăm să încercați din nou."
-
-#: 
 msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
 msgstr "Înregistrarea prezenței este dezactivată pentru evenimentele inactive. Activați evenimentul din Tabloul de Bord Evenimente pentru a activa înregistrarea."
-
-#: 
-msgid "Check-out failed. Please try again."
-msgstr "Ieșirea a eșuat. Vă rugăm să încercați din nou."
 
 #: 
 msgid "Checked in to event: %s"
@@ -14522,10 +13098,6 @@ msgstr "Ieșire înregistrată de la evenimentul: %s"
 #: 
 msgid "Close All Stuck Events"
 msgstr "Închide toate evenimentele blocate"
-
-#: 
-msgid "Confirm Check Out"
-msgstr "Confirmați ieșirea"
 
 #: 
 msgid "Create Repeat Events"
@@ -14552,10 +13124,6 @@ msgid "Creating backup..."
 msgstr "Se creează copia de rezervă..."
 
 #: 
-msgid "Creating..."
-msgstr "Se creează..."
-
-#: 
 msgid "Database + uploaded photos (larger)"
 msgstr "Baza de date + fotografii încărcate (mai mare)"
 
@@ -14568,34 +13136,6 @@ msgid "Date range cannot exceed 1 year"
 msgstr "Intervalul de date nu poate depăși 1 an"
 
 #: 
-msgid "Deactivate"
-msgstr "Dezactivare"
-
-#: 
-msgid "Delete Event Type"
-msgstr "Șterge tipul de eveniment"
-
-#: 
-msgid "Delete attendance record?"
-msgstr "Ștergeți înregistrarea prezenței?"
-
-#: 
-msgid "Delete check-in record for"
-msgstr "Șterge înregistrarea de prezență pentru"
-
-#: 
-msgid "Delete this event?"
-msgstr "Ștergeți acest eveniment?"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
-msgstr "Ștergerea unui eveniment va șterge și toate numărătorile de prezență. Această acțiune nu poate fi anulată."
-
-#: 
-msgid "Deleting this event will also delete all attendance records. This cannot be undone."
-msgstr "Ștergerea acestui eveniment va șterge și toate înregistrările de prezență. Această acțiune nu poate fi anulată."
-
-#: 
 msgid "Destructive Operation"
 msgstr "Operațiune distructivă"
 
@@ -14606,10 +13146,6 @@ msgstr "Editați un nume de categorie și faceți clic pe Salvare sau folosiți 
 #: 
 msgid "End Time"
 msgstr "Ora de sfârșit"
-
-#: 
-msgid "End time must be after start time."
-msgstr "Ora de sfârșit trebuie să fie după ora de începere."
 
 #: 
 msgid "Ended"
@@ -14634,14 +13170,6 @@ msgstr "Detalii Eveniment"
 #: 
 msgid "Event Template"
 msgstr "Șablon Eveniment"
-
-#: 
-msgid "Event already exists. Redirecting to check-in..."
-msgstr "Evenimentul există deja. Redirecționare la înregistrarea prezenței..."
-
-#: 
-msgid "Event created. Redirecting to check-in..."
-msgstr "Evenimentul a fost creat. Redirecționare la înregistrarea prezenței..."
 
 #: 
 msgid "Event title is required."
@@ -14688,22 +13216,6 @@ msgid "Everyone is checked in!"
 msgstr "Toți au fost înregistrați!"
 
 #: 
-msgid "Failed to create class. Please try again."
-msgstr "Crearea clasei a eșuat. Vă rugăm să încercați din nou."
-
-#: 
-msgid "Failed to create event."
-msgstr "Crearea evenimentului a eșuat."
-
-#: 
-msgid "Failed to create event. Please try again."
-msgstr "Crearea evenimentului a eșuat. Vă rugăm să încercați din nou."
-
-#: 
-msgid "Failed to delete. Please try again."
-msgstr "Ștergerea a eșuat. Vă rugăm să încercați din nou."
-
-#: 
 msgid "Fastest workflow:"
 msgstr "Cel mai rapid flux de lucru:"
 
@@ -14744,14 +13256,6 @@ msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
 msgstr "Format de recurență anuală invalid; se așteaptă LL-ZZ (ex. 04-12)"
 
 #: 
-msgid "Just now"
-msgstr "Chiar acum"
-
-#: 
-msgid "Leave blank to check out without recording the supervisor."
-msgstr "Lăsați necompletat pentru a înregistra ieșirea fără a înregistra supraveghetorul."
-
-#: 
 msgid "Link events to a group for Kiosk check-in functionality."
 msgstr "Legați evenimentele de un grup pentru funcționalitatea de înregistrare la chioșc."
 
@@ -14770,10 +13274,6 @@ msgstr "Gestionați denumirile evenimentelor, modelele de recurență și număr
 #: 
 msgid "Missing required field: %s"
 msgstr "Câmp obligatoriu lipsă: %s"
-
-#: 
-msgid "No Events Today"
-msgstr "Nu există evenimente astăzi"
 
 #: 
 msgid "No Group"
@@ -14800,14 +13300,6 @@ msgid "Optional Settings"
 msgstr "Setări Opționale"
 
 #: 
-msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
-msgstr "Opțional — înregistrați cine preia această persoană (ex. un părinte care ridică un copil)."
-
-#: 
-msgid "Person checked out."
-msgstr "Persoana a ieșit."
-
-#: 
 msgid "Person is not checked in"
 msgstr "Persoana nu este înregistrată"
 
@@ -14818,14 +13310,6 @@ msgstr "Persoana nu se află în lista activă a clasei"
 #: 
 msgid "Pin to Calendars"
 msgstr "Fixează în Calendare"
-
-#: 
-msgid "Please select a person to check in."
-msgstr "Vă rugăm să selectați o persoană pentru înregistrare."
-
-#: 
-msgid "Range end date must be on or after range start date."
-msgstr "Data de sfârșit a intervalului trebuie să fie la sau după data de început a intervalului."
 
 #: 
 msgid "Range end must be a valid YYYY-MM-DD date."
@@ -14876,10 +13360,6 @@ msgid "Skip"
 msgstr "Omite"
 
 #: 
-msgid "Skip & Check Out"
-msgstr "Omite & Ieșire"
-
-#: 
 msgid "Start Check-in"
 msgstr "Începeți înregistrarea"
 
@@ -14910,10 +13390,6 @@ msgstr "Înregistrați prezența"
 #: 
 msgid "The Events module is disabled"
 msgstr "Modulul Evenimente este dezactivat"
-
-#: 
-msgid "There are no events scheduled for today"
-msgstr "Nu există evenimente programate pentru astăzi"
 
 #: 
 msgid "This event is inactive."
@@ -15044,18 +13520,6 @@ msgid "Map Coordinates"
 msgstr "Coordonate Hartă"
 
 #: 
-msgid "Please select a group."
-msgstr "Vă rugăm să selectați un grup."
-
-#: 
-msgid "Please select a role."
-msgstr "Vă rugăm să selectați un rol."
-
-#: 
-msgid "Please select both a group and a role."
-msgstr "Vă rugăm să selectați atât un grup, cât și un rol."
-
-#: 
 msgid "Range: -180 to 180."
 msgstr "Interval: de la -180 la 180."
 
@@ -15070,22 +13534,6 @@ msgstr "ex., -74.0060"
 #: 
 msgid "e.g., 40.7128"
 msgstr "ex., 40.7128"
-
-#: 
-msgid "mo"
-msgstr "lun"
-
-#: 
-msgid "mos"
-msgstr "luni"
-
-#: 
-msgid "yr"
-msgstr "an"
-
-#: 
-msgid "yrs"
-msgstr "ani"
 
 #: 
 msgid "An error occurred while deleting the family."
@@ -15196,10 +13644,6 @@ msgid "You do not have permission to view this person"
 msgstr "Nu aveți permisiunea de a vizualiza această persoană"
 
 #: 
-msgid "Are you sure you want to delete this event type? This cannot be undone."
-msgstr "Ești sigur că dorești să ștergi acest tip de eveniment? Această acțiune nu poate fi anulată."
-
-#: 
 msgid "Assign to me"
 msgstr "Atribuiți-mi"
 
@@ -15210,10 +13654,6 @@ msgstr "Atribuit"
 #: 
 msgid "Assigned event not found"
 msgstr "Evenimentul atribuit nu a fost găsit"
-
-#: 
-msgid "Cannot Delete Event Type"
-msgstr "Nu se poate șterge tipul de eveniment"
 
 #: 
 msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
@@ -15244,20 +13684,12 @@ msgid "Register New Device"
 msgstr "Înregistrați un dispozitiv nou"
 
 #: 
-msgid "This event type is used by"
-msgstr "Acest tip de eveniment este folosit de"
-
-#: 
 msgid "Total Kiosks"
 msgstr "Total chioșcuri"
 
 #: 
 msgid "Upcoming Events"
 msgstr "Evenimente viitoare"
-
-#: 
-msgid "event(s). Deactivate the type instead, or reassign the events first."
-msgstr "eveniment(e). Dezactivați tipul sau reatribuiți mai întâi evenimentele."
 
 #: 
 msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
@@ -15270,10 +13702,6 @@ msgstr "Există deja o opțiune cu acel nume"
 #: 
 msgid "Cannot delete the only remaining option"
 msgstr "Nu se poate șterge singura opțiune rămasă"
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "Clipboard-ul nu este disponibil. Vă rugăm să utilizați butonul Descărcare pentru a salva codurile."
 
 #: 
 msgid "Custom Option"
@@ -15350,10 +13778,6 @@ msgstr "Cod de recuperare"
 #: 
 msgid "Set up Email"
 msgstr "Configurați e-mailul"
-
-#: 
-msgid "Unable to copy to clipboard. Please copy the codes manually."
-msgstr "Imposibil de copiat în clipboard. Copiați codurile manual."
 
 #: 
 msgid "Use Recovery Code"
@@ -15672,10 +14096,6 @@ msgid "Add Recurring Event"
 msgstr "Adăugați eveniment recurent"
 
 #: 
-msgid "Available after the event is saved."
-msgstr "Disponibil după salvarea evenimentului."
-
-#: 
 msgid "Boolean properties/fields accept yes / no / true / false / 1 / 0."
 msgstr "Proprietățile/câmpurile booleane acceptă yes / no / true / false / 1 / 0."
 
@@ -15716,10 +14136,6 @@ msgid "External calendar sharing is disabled"
 msgstr "Partajarea calendarului extern este dezactivată"
 
 #: 
-msgid "Failed to load event editor. Please refresh and try again."
-msgstr "Nu s-a putut încărca editorul de evenimente. Reîmprospătați pagina și încercați din nou."
-
-#: 
 msgid "Family Custom"
 msgstr "Personalizat familie"
 
@@ -15728,16 +14144,8 @@ msgid "Family Property"
 msgstr "Proprietate familie"
 
 #: 
-msgid "Fields"
-msgstr "Câmpuri"
-
-#: 
 msgid "Go to home"
 msgstr "Mergeți la pagina principală"
-
-#: 
-msgid "Hide advanced options"
-msgstr "Ascundeți opțiunile avansate"
 
 #: 
 msgid "How the CSV Import Works"
@@ -15756,14 +14164,6 @@ msgid "Loading event editor…"
 msgstr "Se încarcă editorul de evenimente…"
 
 #: 
-msgid "No group"
-msgstr "Niciun grup"
-
-#: 
-msgid "Not pinned to any calendar"
-msgstr "Neataşat niciunui calendar"
-
-#: 
 msgid "Optional — sermon notes, materials, or other details copied to every generated event."
 msgstr "Opțional — note de predică, materiale sau alte detalii copiate la fiecare eveniment generat."
 
@@ -15778,10 +14178,6 @@ msgstr "Personalizat persoană"
 #: 
 msgid "Person Property"
 msgstr "Proprietate persoană"
-
-#: 
-msgid "Show more options"
-msgstr "Afișați mai multe opțiuni"
 
 #: 
 msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
@@ -15808,16 +14204,8 @@ msgid "This calendar link is invalid or has been revoked. Ask the church for a c
 msgstr "Linkul calendarului este invalid sau a fost revocat. Solicitați bisericii un link actual."
 
 #: 
-msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
-msgstr "Asociază acest eveniment cu o clasă sau lista unui minister — utilizat de fluxul de înregistrare la Kiosk."
-
-#: 
 msgid "Upload a CSV to create families and people in bulk."
 msgstr "Încărcați un CSV pentru a crea familii și persoane în masă."
-
-#: 
-msgid "Volunteer-entered headcounts, broken down by category."
-msgstr "Numărători introduse de voluntari, defalcate pe categorii."
 
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
@@ -15852,14 +14240,6 @@ msgstr "Adaugă sărbătorile legale în calendarul principal. Fiecare țară se
 msgid "Choose map provider"
 msgstr "Alegeți furnizorul de hărți"
 
-#: 
-msgid "Current database"
-msgstr "Baza de date curentă"
-
-#: 
-msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
-msgstr "Datele demonstrative sunt încărcate în mod normal doar la instalări noi. Importarea acum va adăuga înregistrări exemplu alături de datele existente și poate crea duplicate."
-
 #. plugin:holidays:section:2:content
 #: 
 msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
@@ -15884,10 +14264,6 @@ msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Season
 msgstr "Sărbătorile sunt etichetate după tip: Oficiale, Comemorative, Zile bancare, Sezoniere și Religioase. Lăsați toate categoriile neselectate pentru a afișa toate sărbătorile sau selectați tipuri specifice pentru a restrânge afișarea."
 
 #: 
-msgid "Import demo data anyway"
-msgstr "Importați oricum datele demonstrative"
-
-#: 
 msgid "Missing pledge identifier."
 msgstr "Identificatorul angajamentului financiar lipsește."
 
@@ -15906,10 +14282,6 @@ msgstr "Deschide în Apple Maps"
 #: 
 msgid "Open in Google Maps"
 msgstr "Deschide în Google Maps"
-
-#: 
-msgid "Open in new tab"
-msgstr "Deschide în filă nouă"
 
 #. plugin:holidays:section:0:title
 #: 
@@ -15942,22 +14314,10 @@ msgstr "Sistem"
 msgid "Timeline filters"
 msgstr "Filtre cronologie"
 
-#: 
-msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
-msgstr "Pentru a începe cu o bază de date curată, utilizați Resetare bază de date din Panoul de administrare înainte de a importa datele demonstrative."
-
 #. plugin:holidays:section:0:content
 #: 
 msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
 msgstr "Utilizați selectorul de Țări pentru a alege una sau mai multe țări. Fiecare țară adăugată va apărea ca o intrare de calendar separată în bara laterală — permițând afișarea sărbătorilor pentru o parohie globală."
-
-#: 
-msgid "Your database already contains data"
-msgstr "Baza dvs. de date conține deja date"
-
-#: 
-msgid "people"
-msgstr "persoane"
 
 #: 
 msgid "A downloadUrl is required to install a plugin."
@@ -16200,22 +14560,1797 @@ msgid "Name cannot be longer than %d characters"
 msgstr "Numele nu poate depăși %d caractere"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "Aveți nevoie de ajutor? Contactați-ne"
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "Deschide o fereastră de 2 minute pentru înregistrarea dispozitivelor la:"
+
+#: 
+msgid "Are you sure you want to delete this note?"
+msgstr "Sigur doriți să ștergeți această notă?"
+
+#: 
+msgid "Cancel — wait 1 more minute"
+msgstr "Anulați — mai așteptați 1 minut"
+
+#: 
+msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
+msgstr "Nu se poate șterge fondul de donații: este referit de unul sau mai multe angajamente financiare."
+
+#: 
+msgid "Cannot delete fundraiser: %d donated items are still associated. Remove the items first."
+msgstr "Nu se poate șterge campania de strângere de fonduri: există încă %d articole donate asociate. Eliminați mai întâi articolele."
+
+#: 
+msgid "Cannot delete property type: %d properties still reference it. Reassign or delete those properties first."
+msgstr "Nu se poate șterge tipul de proprietate: %d proprietăți îl referă încă. Reasignați sau ștergeți mai întâi acele proprietăți."
+
+#: 
+msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
+msgstr "Nu se poate șterge oportunitatea de voluntariat: %d persoane sunt încă atribuite. Eliminați mai întâi atribuirile."
+
+#: 
+msgid "Class must be one of p, f, or g"
+msgstr "Clasa trebuie să fie p, f sau g"
+
+#: 
+msgid "Copy error message"
+msgstr "Copiați mesajul de eroare"
+
+#: 
+msgid "Could not load note."
+msgstr "Nu s-a putut încărca nota."
+
+#: 
+msgid "Description cannot exceed 100 characters"
+msgstr "Descrierea nu poate depăși 100 de caractere"
+
+#: 
+msgid "Donation fund not found"
+msgstr "Fondul de donații nu a fost găsit"
+
+#: 
+msgid "Error deleting note."
+msgstr "Eroare la ștergerea notei."
+
+#: 
+msgid "Failed to create donation fund"
+msgstr "Crearea fondului de donații a eșuat"
+
+#: 
+msgid "Failed to create fundraiser"
+msgstr "Crearea campaniei de strângere de fonduri a eșuat"
+
+#: 
+msgid "Failed to create property type"
+msgstr "Crearea tipului de proprietate a eșuat"
+
+#: 
+msgid "Failed to create volunteer opportunity"
+msgstr "Crearea oportunității de voluntariat a eșuat"
+
+#: 
+msgid "Failed to delete donation fund"
+msgstr "Ștergerea fondului de donații a eșuat"
+
+#: 
+msgid "Failed to delete fundraiser"
+msgstr "Ștergerea campaniei de strângere de fonduri a eșuat"
+
+#: 
+msgid "Failed to delete note."
+msgstr "Ștergerea notei a eșuat."
+
+#: 
+msgid "Failed to delete property type"
+msgstr "Ștergerea tipului de proprietate a eșuat"
+
+#: 
+msgid "Failed to delete volunteer opportunity"
+msgstr "Ștergerea oportunității de voluntariat a eșuat"
+
+#: 
+msgid "Failed to update donation fund"
+msgstr "Actualizarea fondului de donații a eșuat"
+
+#: 
+msgid "Failed to update fundraiser"
+msgstr "Actualizarea campaniei de strângere de fonduri a eșuat"
+
+#: 
+msgid "Failed to update property type"
+msgstr "Actualizarea tipului de proprietate a eșuat"
+
+#: 
+msgid "Failed to update volunteer opportunity"
+msgstr "Actualizarea oportunității de voluntariat a eșuat"
+
+#: 
+msgid "Fundraiser not found"
+msgstr "Campania de strângere de fonduri nu a fost găsită"
+
+#: 
+msgid "Installation ID"
+msgstr "ID instalare"
+
+#: 
+msgid "Invalid class"
+msgstr "Clasă invalidă"
+
+#: 
+msgid "Name cannot exceed 30 characters"
+msgstr "Numele nu poate depăși 30 de caractere"
+
+#: 
+msgid "Note by %s deleted"
+msgstr "Nota creată de %s a fost ștearsă"
+
+#: 
+msgid "Note not found."
+msgstr "Nota nu a fost găsită."
+
+#: 
+msgid "Plugin Development Docs"
+msgstr "Documentație dezvoltare plugin"
+
+#: 
+msgid "Property type not found"
+msgstr "Tipul de proprietate nu a fost găsit"
+
+#: 
+msgid "Read more"
+msgstr "Citiți mai mult"
+
+#: 
+msgid "Refreshing Soon"
+msgstr "Se actualizează în curând"
+
+#: 
+msgid "Refreshing in"
+msgstr "Se actualizează în"
+
+#: 
+msgid "That name already exists."
+msgstr "Acel nume există deja."
+
+#: 
+msgid "Title is required"
+msgstr "Titlul este obligatoriu"
+
+#: 
+msgid "Volunteer opportunity not found"
+msgstr "Oportunitatea de voluntariat nu a fost găsită"
+
+#: 
+msgid "You do not have permission to delete this note."
+msgstr "Nu aveți permisiunea de a șterge această notă."
+
+#: 
+msgid "You do not have permission to edit this note."
+msgstr "Nu aveți permisiunea de a edita această notă."
+
+#: 
+msgid "[Private Note — visible only to creator]"
+msgstr "[Notă privată — vizibilă doar creatorului]"
+
+#: 
+msgid "seconds"
+msgstr "secunde"
+
+#: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "Nu se poate șterge evenimentul: %d persoane sunt în prezent înregistrate."
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "Nu se poate șterge evenimentul: evenimentul este în prezent atribuit unui kiosk."
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "Nu se poate șterge grupul: este audiența pentru %d eveniment(e) și grupul implicit pentru %d tip(uri) de eveniment. Reatribuiți acestea mai întâi."
+
+#: 
+msgid "A Calendar access token has been generated and saved."
+msgstr "Un token de acces la calendar a fost generat și salvat."
+
+#: 
+msgid "API key regenerated"
+msgstr "Cheia API a fost regenerată"
+
+#: 
+msgid "Access Token"
+msgstr "Token de acces"
+
+#: 
+msgid "Action Confirmation"
+msgstr "Confirmare acțiune"
+
+#: 
+msgid "Activate"
+msgstr "Activează"
+
+#: 
+msgid "Add A Group Name"
+msgstr "Adaugă un nume grupului"
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "Adaugă vizitator / persoană neînregistrată"
+
+#: 
+msgid "Add an extra layer of security to your account"
+msgstr "Adăugați un nivel suplimentar de securitate la contul dvs."
+
+#: 
+msgid "Added"
+msgstr "Adăugat"
+
+#: 
+msgid "Added to cart successfully"
+msgstr "Adăugat în coș cu succes"
+
+#: 
+msgid "Address is required"
+msgstr "Adresa este obligatorie"
+
+#: 
+msgid "All Day"
+msgstr "Toată ziua"
+
+#: 
+msgid "All Roles"
+msgstr "Toate rolurile"
+
+#: 
+msgid "All System Settings"
+msgstr "Toate setările de sistem"
+
+#: 
+msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
+msgstr "Toate apartenențele la grup și proprietățile vor fi distruse. Membrii grupului nu vor fi modificați."
+
+#: 
+msgid "All members already in cart"
+msgstr "Toți membrii sunt deja în coș"
+
+#: 
+msgid "Applied preset"
+msgstr "Presetare aplicată"
+
+#: 
+msgid "Applying..."
+msgstr "Se aplică..."
+
+#: 
+msgid "Are you sure you want to continue?"
+msgstr "Sunteti sigur ca doriti sa continuati?"
+
+#: 
+msgid "Are you sure you want to delete this deposit?"
+msgstr "Sunteți sigur că doriți să ștergeți această ofertă?"
+
+#: 
+msgid "Are you sure you want to delete this event type? This cannot be undone."
+msgstr "Ești sigur că dorești să ștergi acest tip de eveniment? Această acțiune nu poate fi anulată."
+
+#: 
+msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
+msgstr "Sigur doriți să dezactivați autentificarea cu doi factori? Contul dvs. va fi mai puțin sigur."
+
+#: 
+msgid "Are you sure you want to move"
+msgstr "Ești sigur/ă că vrei să muți"
+
+#: 
+msgid "Are you sure you want to remove"
+msgstr "Sunteți sigur că doriți să eliminați"
+
+#: 
+msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
+msgstr "Sigur doriți să eliminați proprietățile persoanei specifice grupului? Toate datele proprietăților membrilor grupului se vor pierde!"
+
+#: 
+msgid "Are you sure you want to unassign this property?"
+msgstr "Sigur doriți să anulați atribuirea acestei proprietăți?"
+
+#: 
+msgid "Attendance record deleted."
+msgstr "Înregistrarea prezenței a fost ștearsă."
+
+#: 
+msgid "Available after the event is saved."
+msgstr "Disponibil după salvarea evenimentului."
+
+#: 
+msgid "BCC All"
+msgstr "BCC tuturor"
+
+#: 
+msgid "Background Color"
+msgstr "Culoare fundal"
+
+#: 
+msgid "Backup Complete"
+msgstr "Copie de siguranță finalizată"
+
+#: 
+msgid "Backup Downloaded, Copy on server removed"
+msgstr "Back-up descărcar, copia de pe server eliminată"
+
+#: 
+msgid "Backup Skipped"
+msgstr "Copie de rezervă omisă"
+
+#: 
+msgid "Backup complete! Click below to download."
+msgstr "Backup finalizat! Faceți clic mai jos pentru a descărca."
+
+#: 
+msgid "Backup downloaded. Server copy removed."
+msgstr "Backup descărcat. Copia de pe server a fost eliminată."
+
+#: 
+msgid "Before You Start"
+msgstr "Înainte de a Începe"
+
+#: 
+msgid "Browser language preference detected"
+msgstr "Preferința de limbă a browserului detectată"
+
+#: 
+msgid "Calendar Name"
+msgstr "Nume calendar"
+
+#: 
+msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
+msgstr "Proprietățile calendarului nu au putut fi încărcate. Acestui calendar îi poate lipsi un token de acces sau nu este configurat corect."
+
+#: 
+msgid "Can't scan?"
+msgstr "Nu puteți scana?"
+
+#: 
+msgid "Cannot Delete Event Type"
+msgstr "Nu se poate șterge tipul de eveniment"
+
+#: 
+msgid "Cart emptied successfully"
+msgstr "Coș golit cu succes"
+
+#: 
+msgid "Cart emptied to group successfully"
+msgstr "Coș golit în grup cu succes"
+
+#: 
+msgid "Change Your Locale"
+msgstr "Schimbați Localizarea"
+
+#: 
+msgid "Change role"
+msgstr "Schimba rolul"
+
+#: 
+msgid "Check Number"
+msgstr "Număr verificare"
+
+#: 
+msgid "Check out"
+msgstr "Ieșire"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "Înregistrarea prezenței a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "Ieșirea a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "City is required"
+msgstr "Orașul este obligatoriu"
+
+#: 
+msgid "Click Save to apply."
+msgstr "Faceți clic pe Salvare pentru a aplica."
+
+#: 
+msgid "Clipboard API not available. Please copy the URL manually."
+msgstr "API Clipboard nu este disponibil. Copiaţi adresa URL manual."
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "Clipboard-ul nu este disponibil. Vă rugăm să utilizați butonul Descărcare pentru a salva codurile."
+
+#: 
+msgid "Code incomplete"
+msgstr "Cod incomplet"
+
+#: 
+msgid "Code is invalid"
+msgstr "Codul este nevalid"
+
+#: 
+msgid "Coming soon"
+msgstr "În curând"
+
+#: 
+msgid "Confirm Activation"
+msgstr "Confirmați activarea"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "Confirmați ieșirea"
+
+#: 
+msgid "Confirm Deactivation"
+msgstr "Confirmați dezactivarea"
+
+#: 
+msgid "Confirm Delete Group"
+msgstr "Confirmă ștergere grup"
+
+#: 
+msgid "Confirm Disable Group Specific Properties"
+msgstr "Confirmați Dezactivați proprietățile specifice grupului"
+
+#: 
+msgid "Confirm Enable Group Specific Properties"
+msgstr "Confirmați Activarea proprietăților specifice grupului"
+
+#: 
+msgid "Confirm with a code from your authenticator app"
+msgstr "Confirmați cu un cod din aplicația dvs. de autentificare"
+
+#: 
+msgid "Copied"
+msgstr "Copiat"
+
+#: 
+msgid "Copied to clipboard"
+msgstr "Copiat în clipboard"
+
+#: 
+msgid "Copied!"
+msgstr "Copiat!"
+
+#: 
+msgid "Copy"
+msgstr "Copiază"
+
+#: 
+msgid "Copy All Emails"
+msgstr "Copiaţi toate e-mailurile"
+
+#: 
+msgid "Copy All Numbers"
+msgstr "Copiaţi toate numerele"
+
+#: 
+msgid "Copy Members to Group"
+msgstr "Copiază membrii în grup"
+
+#: 
+msgid "Creating Backup..."
+msgstr "Se creează copia de siguranță..."
+
+#: 
+msgid "Creating..."
+msgstr "Se creează..."
+
+#: 
+msgid "Current database"
+msgstr "Baza de date curentă"
+
+#: 
+msgid "Deactivate"
+msgstr "Dezactivare"
+
+#: 
+msgid "Default Name Group"
+msgstr "Nume implicit grup"
+
+#: 
+msgid "Default role updated."
+msgstr "Rolul implicit a fost actualizat."
+
+#: 
+msgid "Delete Calendar"
+msgstr "Șterge calendar"
+
+#: 
+msgid "Delete Event Type"
+msgstr "Șterge tipul de eveniment"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "Ștergeți înregistrarea prezenței?"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "Șterge înregistrarea de prezență pentru"
+
+#: 
+msgid "Delete this event?"
+msgstr "Ștergeți acest eveniment?"
+
+#: 
+msgid "Delete this person?"
+msgstr "Ștergi această personă"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "Ștergerea unui eveniment va șterge și toate numărătorile de prezență. Această acțiune nu poate fi anulată."
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "Ștergerea acestui eveniment va șterge și toate înregistrările de prezență. Această acțiune nu poate fi anulată."
+
+#: 
+msgid "Demo data imported successfully"
+msgstr "Datele demo au fost importate cu succes"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "Datele demonstrative sunt încărcate în mod normal doar la instalări noi. Importarea acum va adăuga înregistrări exemplu alături de datele existente și poate crea duplicate."
+
+#: 
+msgid "Deposit ID"
+msgstr "Depozit ID"
+
+#: 
+msgid "Deposit Total"
+msgstr "Total depozit"
+
+#: 
+msgid "Deposit Value"
+msgstr "Valoarea ofertei"
+
+#: 
+msgid "Deposit saved successfully"
+msgstr "Depozit salvat cu succes"
+
+#: 
+msgid "Deposit(s)"
+msgstr "Depozit(te)"
+
+#: 
+msgid "Disable Two-Factor Authentication"
+msgstr "Dezactivați Autentificarea cu Doi Factori"
+
+#: 
+msgid "Do you want to delete this person?  This cannot be undone."
+msgstr "Vreți să ștergeți această persoană? Nu puteți reveni"
+
+#: 
+msgid "Done"
+msgstr "Terminat"
+
+#: 
+msgid "Download Backup & Continue"
+msgstr "Descarcă copia de siguranță și continuă"
+
+#: 
+msgid "Downloaded"
+msgstr "Descărcat"
+
+#: 
+msgid "Downloading latest release from GitHub..."
+msgstr "Se descarcă cea mai recentă lansare de pe GitHub..."
+
+#: 
+msgid "Duration"
+msgstr "Durata"
+
+#: 
+msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
+msgstr "De fiecare dată când vă autentificați, va trebui să confirmați cu un cod din aplicația dvs. de autentificare"
+
+#: 
+msgid "Email addresses copied to clipboard"
+msgstr "Adresele de e-mail au fost copiate în clipboard"
+
+#: 
+msgid "Empty Cart"
+msgstr "Coș gol"
+
+#: 
+msgid "Empty Cart to Family"
+msgstr "Coșul de Familie gol"
+
+#: 
+msgid "Empty Cart to Group"
+msgstr "Coșul de Grup gol"
+
+#: 
+msgid "Empty your entire cart?"
+msgstr "Goliți întregul coș?"
+
+#: 
+msgid "Enable Two-Factor Authentication"
+msgstr "Activați Autentificarea cu Doi Factori"
+
+#: 
+msgid "End Date"
+msgstr "Data de încheiere"
+
+#: 
+msgid "End time must be after start time."
+msgstr "Ora de sfârșit trebuie să fie după ora de începere."
+
+#: 
+msgid "Enter text here..."
+msgstr "Introduceți textul aici..."
+
+#: 
+msgid "Enter your username and password as usual"
+msgstr "Introduceți numele de utilizator și parola ca de obicei"
+
+#: 
+msgid "Error deleting payments"
+msgstr "Eroare la ștergerea plăților"
+
+#: 
+msgid "Error loading payments"
+msgstr "Eroare la încărcarea plăților"
+
+#: 
+msgid "Error saving deposit"
+msgstr "Eroare la salvarea depozitului"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "Evenimentul există deja. Redirecționare la înregistrarea prezenței..."
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "Evenimentul a fost creat. Redirecționare la înregistrarea prezenței..."
+
+#: 
+msgid "Failed to add family to cart"
+msgstr "Eșec la adăugarea familiei în coș"
+
+#: 
+msgid "Failed to add group to cart"
+msgstr "Eșec la adăugarea grupului în coș"
+
+#: 
+msgid "Failed to add members to cart. Please try again."
+msgstr "Nu s-au putut adăuga membrii în selecție. Încercați din nou."
+
+#: 
+msgid "Failed to add to cart"
+msgstr "Eșec la adăugarea în coș"
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Anularea înscrierii a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Failed to copy URL"
+msgstr "Eșec la copierea URL-ului"
+
+#: 
+msgid "Failed to create backup."
+msgstr "Eșec la crearea copiei de rezervă."
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "Crearea clasei a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Failed to create event."
+msgstr "Crearea evenimentului a eșuat."
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "Crearea evenimentului a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Failed to create group. Please try again."
+msgstr "Eșec la crearea grupului. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Failed to delete class. Please try again."
+msgstr "Nu s-a putut șterge clasa. Încercați din nou."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Ștergerea evenimentului a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Failed to delete group. Please try again."
+msgstr "Nu s-a putut șterge grupul. Încercați din nou."
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "Ștergerea a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "Dezactivarea autentificării în doi pași a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Failed to download update package."
+msgstr "Eșec la descărcarea pachetului de actualizare."
+
+#: 
+msgid "Failed to empty cart"
+msgstr "Eșec la golirea coșului"
+
+#: 
+msgid "Failed to empty cart to group"
+msgstr "Eșec la golirea coșului în grup"
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "Generarea codului QR a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "Încărcarea datelor calendarului a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Failed to load cart status."
+msgstr "Eșec la încărcarea stării coșului."
+
+#: 
+msgid "Failed to load event editor. Please refresh and try again."
+msgstr "Nu s-a putut încărca editorul de evenimente. Reîmprospătați pagina și încercați din nou."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Încărcarea evenimentului a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Failed to load groups. Please refresh the page."
+msgstr "Eșec la încărcarea grupurilor. Vă rugăm să reîmprospătați pagina."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "Încărcarea codurilor de recuperare a eșuat. Vă rugăm să reîmprospătați pagina."
+
+#: 
+msgid "Failed to refresh upgrade information from GitHub."
+msgstr "Eșec la reîmprospătarea informațiilor de actualizare de pe GitHub."
+
+#: 
+msgid "Failed to remove family from cart"
+msgstr "Eșec la eliminarea familiei din coș"
+
+#: 
+msgid "Failed to remove from cart"
+msgstr "Eșec la eliminarea din coș"
+
+#: 
+msgid "Failed to remove from class. Please try again."
+msgstr "Nu s-a putut elimina din clasă. Încercați din nou."
+
+#: 
+msgid "Failed to remove group"
+msgstr "Eșec la eliminarea grupului"
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Salvarea evenimentului a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Failed to save setting"
+msgstr "Salvarea setării a eșuat"
+
+#: 
+msgid "Failed to set default role. Please try again."
+msgstr "Eșec la setarea rolului implicit. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Failed to update group. Please try again."
+msgstr "Eșec la actualizarea grupului. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Failed to update role name. Please try again."
+msgstr "Eșec la actualizarea numelui rolului. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Family added to cart"
+msgstr "Familie adăugată în coș"
+
+#: 
+msgid "Family name must be at least 2 characters"
+msgstr "Numele familiei trebuie să aibă cel puțin 2 caractere"
+
+#: 
+msgid "Fields"
+msgstr "Câmpuri"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Găsiți persoane care nu au participat la un eveniment"
+
+#: 
+msgid "First name is required"
+msgstr "Prenumele este obligatoriu"
+
+#: 
+msgid "First name must be at least 2 characters"
+msgstr "Prenumele trebuie să aibă cel puțin 2 caractere"
+
+#: 
+msgid "Focus"
+msgstr "Focalizare"
+
+#: 
+msgid "Force Import"
+msgstr "Import forțat"
+
+#: 
+msgid "Force Import will retry and may create duplicate data."
+msgstr "Importul forțat va reîncerca și poate crea date duplicate."
+
+#: 
+msgid "Force re-install initiated. Please backup your database before applying."
+msgstr "Reinstalarea forțată a fost inițiată. Vă rugăm să faceți un backup al bazei de date înainte de aplicare."
+
+#: 
+msgid "Foreground Color"
+msgstr "Culoare prin plan"
+
+#: 
+msgid "Fund(s)"
+msgstr "Fonduri"
+
+#: 
+msgid "Generate new code"
+msgstr "Generare cod nou"
+
+#: 
+msgid "Go to homepage"
+msgstr "Mergi la pagina principală"
+
+#: 
+msgid "Group added to cart"
+msgstr "Grup adăugat în coș"
+
+#: 
+msgid "Group deleted successfully."
+msgstr "Grupul a fost șters cu succes."
+
+#: 
+msgid "Group removed from cart"
+msgstr "Grup eliminat din coș"
+
+#: 
+msgid "GroupID required for role selection prompt"
+msgstr "ID grup necesar pentru selectarea rolului"
+
+#: 
+msgid "HTML URL"
+msgstr "URL HTML"
+
+#: 
+msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
+msgstr "Pregătiți aplicația de autentificare (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
+
+#: 
+msgid "Hide advanced options"
+msgstr "Ascundeți opțiunile avansate"
+
+#: 
+msgid "Home phone is required"
+msgstr "Telefonul de acasă este obligatoriu"
+
+#: 
+msgid "ICS URL"
+msgstr "URL ICS"
+
+#: 
+msgid "Ignored"
+msgstr "Ignorat"
+
+#: 
+msgid "Import Demo Data"
+msgstr "Importă date demo"
+
+#: 
+msgid "Import demo data anyway"
+msgstr "Importați oricum datele demonstrative"
+
+#: 
+msgid "Import failed"
+msgstr "Import eșuat"
+
+#: 
+msgid "Import failed. Please try again."
+msgstr "Importul a eșuat. Încercați din nou."
+
+#: 
+msgid "Importing..."
+msgstr "Se importă..."
+
+#: 
+msgid "Include Sunday School classes and enrollments"
+msgstr "Include clasele de Școală duminicală și înscrierile"
+
+#: 
+msgid "Include events and calendars"
+msgstr "Include evenimente și calendare"
+
+#: 
+msgid "Include financial data (donation funds, pledges)"
+msgstr "Include date financiare (fonduri donații, angajamente)"
+
+#: 
+msgid "Invalid Entry"
+msgstr "Intrare nevalidă"
+
+#: 
+msgid "Invalid format"
+msgstr "Format nevalid"
+
+#: 
+msgid "It is strongly recommended to have a backup before proceeding."
+msgstr "Este recomandat insistent să aveți o copie de siguranță înainte de a continua."
+
+#: 
+msgid "Just now"
+msgstr "Chiar acum"
+
+#: 
+msgid "Language updated to"
+msgstr "Limba a fost actualizată la"
+
+#: 
+msgid "Last name is required"
+msgstr "Numele de familie este obligatoriu"
+
+#: 
+msgid "Last name must be at least 2 characters"
+msgstr "Numele de familie trebuie să aibă cel puțin 2 caractere"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "Lăsați necompletat pentru a înregistra ieșirea fără a înregistra supraveghetorul."
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "Lăsați necompletat pentru a păstra valoarea existentă"
+
+#: 
+msgid "Loading"
+msgstr "Se încarcă"
+
+#: 
+msgid "Loading recovery codes"
+msgstr "Se încarcă codurile de recuperare"
+
+#: 
+msgid "Make Default"
+msgstr "Face Implicit"
+
+#: 
+msgid "Manual"
+msgstr "Manual"
+
+#: 
+msgid "Map Cart"
+msgstr "Hartă Coș"
+
+#: 
+msgid "Maximum length is"
+msgstr "Lungimea maximă este"
+
+#: 
+msgid "Members added to cart."
+msgstr "Membrii au fost adăugați în selecție."
+
+#: 
+msgid "Minimum length is"
+msgstr "Lungimea minimă este"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Persoane absente"
+
+#: 
+msgid "Move"
+msgstr "Mută"
+
+#: 
+msgid "Move Members"
+msgstr "Mută membrii"
+
+#: 
+msgid "Move Members to Group"
+msgstr "Mută membrii în grup"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https://"
+msgstr "Trebuie să fie un URL valid care începe cu http:// sau https://"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
+msgstr "Trebuie să fie un URL valid care începe cu http:// sau https:// (ex: http://localhost sau https://domeniu.com)"
+
+#: 
+msgid "Must be a valid port number (e.g., 3306)"
+msgstr "Trebuie să fie un număr de port valid (ex: 3306)"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "Trebuie să înceapă cu / dacă nu este gol; fără bară oblică finală. Sunt permise doar litere, cifre, liniuță jos, cratimă, punct și /."
+
+#: 
+msgid "Need to remove this data later?"
+msgstr "Trebuie să eliminați aceste date mai târziu?"
+
+#: 
+msgid "New Access Token"
+msgstr "Token de acces nou"
+
+#: 
+msgid "No Anniversaries"
+msgstr "Fără aniversări"
+
+#: 
+msgid "No Birthdays"
+msgstr "Fără zile de naștere"
+
+#: 
+msgid "No Deposits"
+msgstr "Fără oferte"
+
+#: 
+msgid "No Events Today"
+msgstr "Nu există evenimente astăzi"
+
+#: 
+msgid "No anniversaries in the past or next 7 days"
+msgstr "Fără aniversări în ultimele sau următoarele 7 zile"
+
+#: 
+msgid "No birthdays in the past or next 7 days"
+msgstr "Fără zile de naștere în ultimele sau următoarele 7 zile"
 
 #: 
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
 msgstr "Niciun calendar selectat — acest eveniment va apărea în calendarul de sistem \"Evenimente neprinse\" până când îl fixați."
 
 #: 
-msgid "Opens a 2-minute window for devices to register at:"
-msgstr "Deschide o fereastră de 2 minute pentru înregistrarea dispozitivelor la:"
+msgid "No deposit data available yet"
+msgstr "Nu sunt disponibile încă date despre oferte"
+
+#: 
+msgid "No email addresses available"
+msgstr "Nicio adresă de e-mail disponibilă"
+
+#: 
+msgid "No group"
+msgstr "Niciun grup"
+
+#: 
+msgid "No members found for this role."
+msgstr "Nu s-au găsit membri pentru acest rol."
+
+#: 
+msgid "No payments on this deposit"
+msgstr "Fără plăți în acest depozit"
+
+#: 
+msgid "No payments yet. Click \"Add Payment\" to get started."
+msgstr "Nicio plată încă. Faceți clic pe „Adaugă plată” pentru a începe."
+
+#: 
+msgid "No phone numbers available"
+msgstr "Niciun număr de telefon disponibil"
+
+#: 
+msgid "Not pinned to any calendar"
+msgstr "Neataşat niciunui calendar"
+
+#: 
+msgid "One-Time Code"
+msgstr "Cod de Unică Folosință"
+
+#: 
+msgid "Open in New Tab"
+msgstr "Deschide în filă nouă"
+
+#: 
+msgid "Open in new tab"
+msgstr "Deschide în filă nouă"
+
+#: 
+msgid "Open your authenticator app and scan this QR code"
+msgstr "Deschideți aplicația de autentificare și scanați acest cod QR"
+
+#: 
+msgid "Optional Data to Include"
+msgstr "Date opționale de inclus"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "Opțional — înregistrați cine preia această persoană (ex. un părinte care ridică un copil)."
+
+#: 
+msgid "Parents"
+msgstr "Părinți"
+
+#: 
+msgid "Password reset for"
+msgstr "Resetare parolă pentru"
+
+#: 
+msgid "Passwords do not match"
+msgstr "Parolele nu se potrivesc"
+
+#: 
+msgid "Payments deleted successfully"
+msgstr "Plăți șterse cu succes"
+
+#: 
+msgid "Person already in cart"
+msgstr "Persoană deja în coș"
+
+#: 
+msgid "Person checked out."
+msgstr "Persoana a ieșit."
+
+#: 
+msgid "Person removed from class."
+msgstr "Persoana a fost eliminată din clasă."
+
+#: 
+msgid "Phone numbers copied to clipboard"
+msgstr "Numerele de telefon copiate în clipboard"
+
+#: 
+msgid "Phone numbers copied — paste into your messaging app"
+msgstr "Numerele de telefon copiate — lipiți în aplicația de mesagerie"
+
+#: 
+msgid "Pinned Calendars"
+msgstr "Calendare fixate"
+
+#: 
+msgid "Please add at least one family member."
+msgstr "Vă rugăm să adăugați cel puțin un membru de familie."
+
+#: 
+msgid "Please confirm activation of family"
+msgstr "Confirmați activarea familiei"
+
+#: 
+msgid "Please confirm deactivation of family"
+msgstr "Confirmați dezactivarea familiei"
+
+#: 
+msgid "Please confirm deletion of this group record"
+msgstr "Vă rugăm să confirmați ștergerea acestei înregistrări grup"
+
+#: 
+msgid "Please confirm disabling 2 Factor Auth for this user"
+msgstr "Vă rugăm să confirmați autentificare în 2 factori pentru acest utilizator"
+
+#: 
+msgid "Please confirm removal of user status from"
+msgstr "Vă rugăm să confirmați eliminarea stării de utilizator de la"
+
+#: 
+msgid "Please confirm reset failed login count"
+msgstr "Vă rugăm să confirmați resetarea numărului de conectări eșuat"
+
+#: 
+msgid "Please confirm the password reset of this user"
+msgstr "Vă rugăm să confirmați resetare a parolei de acest utilizator"
+
+#: 
+msgid "Please enter a valid URL"
+msgstr "Vă rugăm să introduceți un URL valid"
+
+#: 
+msgid "Please enter a valid email address"
+msgstr "Vă rugăm să introduceți o adresă de e-mail validă"
+
+#: 
+msgid "Please enter a valid email address (e.g., name@example.com)"
+msgstr "Vă rugăm să introduceți o adresă de e-mail validă (ex: nume@exemplu.com)"
+
+#: 
+msgid "Please enter a valid number"
+msgstr "Vă rugăm să introduceți un număr valid"
+
+#: 
+msgid "Please enter a valid phone number"
+msgstr "Vă rugăm să introduceți un număr de telefon valid"
+
+#: 
+msgid "Please fill in all required fields correctly."
+msgstr "Vă rugăm să completați corect toate câmpurile obligatorii."
+
+#: 
+msgid "Please map at least one column before importing"
+msgstr "Mapați cel puțin o coloană înainte de import"
+
+#: 
+msgid "Please select a CSV file"
+msgstr "Selectați un fișier CSV"
+
+#: 
+msgid "Please select a backup file to restore"
+msgstr "Vă rugăm să selectați un fișier de backup pentru restaurare"
+
+#: 
+msgid "Please select a date"
+msgstr "Vă rugăm să selectați o dată"
+
+#: 
+msgid "Please select a group."
+msgstr "Vă rugăm să selectați un grup."
+
+#: 
+msgid "Please select a person to check in."
+msgstr "Vă rugăm să selectați o persoană pentru înregistrare."
+
+#: 
+msgid "Please select a role."
+msgstr "Vă rugăm să selectați un rol."
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "Vă rugăm să selectați atât un grup, cât și un rol."
+
+#: 
+msgid "Please select rows to delete"
+msgstr "Vă rugăm să selectați rândurile pentru ștergere"
+
+#: 
+msgid "Please select target Role for members"
+msgstr "Vă rugăm să selectați rolul țintă pentru membri"
+
+#: 
+msgid "Please select target group for members"
+msgstr "Alegeți grupul țintă pentru membri"
+
+#: 
+msgid "Please try again"
+msgstr "Încercați din nou"
+
+#: 
+msgid "Press CTRL + C to copy"
+msgstr "Apăsați CTRL + C pentru a copia"
+
+#: 
+msgid "Public calendar"
+msgstr "Calendar public"
+
+#: 
+msgid "Quick Setup"
+msgstr "Configurare rapidă"
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "Data de sfârșit a intervalului trebuie să fie la sau după data de început a intervalului."
+
+#: 
+msgid "Recovery Codes"
+msgstr "Coduri de Recuperare"
+
+#: 
+msgid "Register another family"
+msgstr "Înregistrați altă familie"
+
+#: 
+msgid "Registration Error"
+msgstr "Eroare de înregistrare"
+
+#: 
+msgid "Remove Property"
+msgstr "Elimină proprietatea"
+
+#: 
+msgid "Remove this family from cart?"
+msgstr "Eliminați această familie din coș?"
+
+#: 
+msgid "Remove this group from cart?"
+msgstr "Eliminați acest grup din coș?"
+
+#: 
+msgid "Remove this person from cart?"
+msgstr "Eliminați această persoană din coș?"
+
+#: 
+msgid "Removed from cart successfully"
+msgstr "Eliminat din coș cu succes"
+
+#: 
+msgid "Restore failed. Please check the backup file and try again."
+msgstr "Restaurarea a eșuat. Vă rugăm să verificați fișierul de backup și să încercați din nou."
+
+#: 
+msgid "Retry Download"
+msgstr "Reîncearcă descărcarea"
+
+#: 
+msgid "Role Name"
+msgstr "Nume role"
+
+#: 
+msgid "Role added successfully."
+msgstr "Rol adăugat cu succes."
+
+#: 
+msgid "Role deleted successfully."
+msgstr "Rol șters cu succes."
+
+#: 
+msgid "Role name updated."
+msgstr "Numele rolului a fost actualizat."
+
+#: 
+msgid "Role not found."
+msgstr "Rolul nu a fost găsit."
+
+#: 
+msgid "Roles"
+msgstr "Roluri"
+
+#: 
+msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
+msgstr "Salvați aceste coduri de recuperare într-un loc sigur. Le puteți folosi pentru a accesa contul dacă pierdeți accesul la aplicația de autentificare."
+
+#: 
+msgid "Saving..."
+msgstr "Se salvează..."
+
+#: 
+msgid "Scan QR Code"
+msgstr "Scanați Codul QR"
+
+#: 
+msgid "Search groups..."
+msgstr "Căutare în grupuri..."
+
+#: 
+msgid "Search or select..."
+msgstr "Căutați sau selectați..."
+
+#: 
+msgid "Secure"
+msgstr "Sigur"
+
+#: 
+msgid "Select Group and Role"
+msgstr "Selectează Grup și Rol"
+
+#: 
+msgid "Select calendars..."
+msgstr "Selectați calendare..."
+
+#: 
+msgid "Select event type..."
+msgstr "Selectați tipul evenimentului..."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Selectați evenimentul dorit"
+
+#: 
+msgid "Sequence"
+msgstr "Secvență"
+
+#: 
+msgid "Server error"
+msgstr "Eroare server"
+
+#: 
+msgid "Server returned an unexpected response. Please try again."
+msgstr "Serverul a returnat un răspuns neașteptat. Încercați din nou."
+
+#: 
+msgid "Set Up Authenticator"
+msgstr "Configurați Autentificatorul"
+
+#: 
+msgid "Setting updated successfully"
+msgstr "Setare actualizată cu succes"
+
+#: 
+msgid "Setup Complete"
+msgstr "Configurare Finalizată"
+
+#: 
+msgid "Share this URL with family members to verify their information"
+msgstr "Partajați acest URL cu membrii familiei pentru a le verifica informațiile"
+
+#: 
+msgid "Show more options"
+msgstr "Afișați mai multe opțiuni"
+
+#: 
+msgid "Sign In"
+msgstr "Autentificare"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "Omite & Ieșire"
+
+#: 
+msgid "Sorry, we are unable to process your request at this point in time."
+msgstr "Ne pare rău, nu am putut procesa solicitarea"
+
+#: 
+msgid "Start Date"
+msgstr "Data de început"
+
+#: 
+msgid "Submitting..."
+msgstr "Se trimite..."
+
+#: 
+msgid "System upgrade completed successfully!"
+msgstr "Actualizarea sistemului a fost finalizată cu succes!"
+
+#: 
+msgid "Text All"
+msgstr "Text Toate"
+
+#: 
+msgid "The selected file exceeds this servers maximum upload size of"
+msgstr "Fișierul selectat depășește mărimea maximă acceptată de server"
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "Nu există evenimente programate pentru astăzi"
+
+#: 
+msgid "There was a problem retrieving the requested object"
+msgstr "A apărut o problemă la preluare obiectului solicitat"
+
+#: 
+msgid "This event type is used by"
+msgstr "Acest tip de eveniment este folosit de"
+
+#: 
+msgid "This field is required"
+msgstr "Câmpul este obligatoriu"
+
+#: 
+msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
+msgstr "Aceasta va șterge toate rolurile și datele proprietăților specifice grupului asociate cu această înregistrare de grup"
+
+#: 
+msgid "This will also delete all payments associated with this deposit"
+msgstr "Aceasta va șterge și toate plățile legat de depozit"
+
+#: 
+msgid "This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor."
+msgstr "Aceasta va crea un tabel de proprietăți specifice grupului pentru acest grup. Apoi ar trebui să adăugați proprietățile necesare cu Editorul formularului de proprietăți specifice grupului."
+
+#: 
+msgid "This will replace any previously enrolled 2FA methods"
+msgstr "Aceasta va înlocui orice metode 2FA înrolate anterior"
+
+#: 
+msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
+msgstr "Asociază acest eveniment cu o clasă sau lista unui minister — utilizat de fluxul de înregistrare la Kiosk."
+
+#: 
+msgid "Time"
+msgstr "Timp"
+
+#: 
+msgid "Timed"
+msgstr "Cronometrat"
 
 #: 
 msgid "Times use church time ({{church}}), not your browser ({{browser}})."
 msgstr "Orele folosesc ora parohiei ({{church}}), nu a browserului dvs. ({{browser}})."
 
 #: 
-msgid "Welcome — sign in to manage your community"
-msgstr "Bun venit — autentificați-vă pentru a gestiona comunitatea dvs."
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "Pentru a începe cu o bază de date curată, utilizați Resetare bază de date din Panoul de administrare înainte de a importa datele demonstrative."
+
+#: 
+msgid "Today"
+msgstr "Astăzi"
+
+#: 
+msgid "Two Factor Enrollment Error"
+msgstr "Eroare de Înrolare 2FA"
+
+#: 
+msgid "Two-factor authentication has been disabled"
+msgstr "Autentificarea cu doi factori a fost dezactivată"
+
+#: 
+msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
+msgstr "Autentificarea cu doi factori este una dintre cele mai bune modalități de a proteja contul dvs. Vă recomandăm cu tărie să o mențineți activată."
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the URL manually."
+msgstr "Nu se poate copia în clipboard. Vă rugăm să copiați URL-ul manual."
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "Imposibil de copiat în clipboard. Copiați codurile manual."
+
+#: 
+msgid "Unable to load"
+msgstr "Imposibil de încărcat"
+
+#: 
+msgid "Unable to load state list. Please check your network connection or try again later."
+msgstr "Nu s-a putut încărca lista de state. Vă rugăm să verificați conexiunea la rețea sau încercați din nou mai târziu."
+
+#: 
+msgid "Unfocus"
+msgstr "Defocalizare"
+
+#: 
+msgid "Unknown error"
+msgstr "Eroare necunoscută"
+
+#: 
+msgid "Update package downloaded successfully."
+msgstr "Pachetul de actualizare a fost descărcat cu succes."
+
+#: 
+msgid "Upgrade failed."
+msgstr "Actualizarea a eșuat."
+
+#: 
+msgid "Upgrade failed. Please check the logs."
+msgstr "Actualizarea a eșuat. Vă rugăm să verificați jurnalele."
+
+#: 
+msgid "Upgrade information refreshed. Reloading page..."
+msgstr "Informațiile de actualizare au fost reîmprospătate. Se reîncarcă pagina..."
+
+#: 
+msgid "Upload failed. Please check the file and try again."
+msgstr "Încărcarea a eșuat. Verificați fișierul și încercați din nou."
+
+#: 
+msgid "User Delete Confirmation"
+msgstr "Ștergere utilizator Confirmarea"
+
+#: 
+msgid "Validation pending"
+msgstr "Validare în așteptare"
+
+#: 
+msgid "Verification URL"
+msgstr "URL de verificare"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Verificarea a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Verification recorded"
+msgstr "Verificare înregistrată"
+
+#: 
+msgid "Verify Code"
+msgstr "Verificare Cod"
+
+#: 
+msgid "Verifying"
+msgstr "Se verifică"
+
+#: 
+msgid "View Cart"
+msgstr "Vezi coș"
+
+#: 
+msgid "View all results"
+msgstr "Vizualizează toate rezultatele"
+
+#: 
+msgid "Volunteer-entered headcounts, broken down by category."
+msgstr "Numărători introduse de voluntari, defalcate pe categorii."
+
+#: 
+msgid "Warnings"
+msgstr "Avertismente"
+
+#: 
+msgid "We're so glad your family has joined us!"
+msgstr "Ne bucurăm că familia dumneavoastră ni s-a alăturat!"
+
+#: 
+msgid "Welcome to the Family!"
+msgstr "Bine ați venit în parohie!"
+
+#: 
+msgid "Yes, Empty Cart"
+msgstr "Da, golește coșul"
+
+#: 
+msgid "Yes, Remove"
+msgstr "Da, elimină"
+
+#: 
+msgid "You are about to add a new deposit without a comment"
+msgstr "Sunteți pe cale să adăugați o nouă depunere fără un comentariu"
+
+#: 
+msgid "You can also use backup recovery codes if you lose access to your app"
+msgstr "Puteți utiliza și coduri de recuperare dacă pierdeți accesul la aplicație"
+
+#: 
+msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
+msgstr "Acum puteți utiliza aplicația de autentificare pentru a vă autentifica. Fiecare cod este valid timp de 30 de secunde."
+
+#: 
+msgid "You must enter the same password in both boxes"
+msgstr "Trebuie să introduceți aceeași parolă în ambele casete"
+
+#: 
+msgid "You'll receive backup codes that can be used if you lose access to your app"
+msgstr "Veți primi coduri de rezervă care pot fi utilizate dacă pierdeți accesul la aplicație"
+
+#: 
+msgid "Your Cart is Empty"
+msgstr "Coșul tău este gol"
+
+#: 
+msgid "Your account is now protected"
+msgstr "Contul dvs. este acum protejat"
+
+#: 
+msgid "Your account is protected"
+msgstr "Contul dvs. este protejat"
+
+#: 
+msgid "Your authenticator app has been successfully enrolled"
+msgstr "Aplicația dvs. de autentificare a fost înrolată cu succes"
+
+#: 
+msgid "Your browser language preference differs from your ChurchCRM locale"
+msgstr "Preferința de limbă a browserului dvs. diferă de localizarea ChurchCRM"
+
+#: 
+msgid "Your database already contains data"
+msgstr "Baza dvs. de date conține deja date"
+
+#: 
+msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "Înregistrarea dumneavoastră a fost primită. Echipa noastră vă va contacta în curând pentru a vă ura personal bun venit."
+
+#: 
+msgid "Zip code is required"
+msgstr "Codul poștal este obligatoriu"
+
+#: 
+msgid "added"
+msgstr "adăugat"
+
+#: 
+msgid "ago"
+msgstr "în urmă"
+
+#: 
+msgid "all members"
+msgstr "toți membrii"
+
+#: 
+msgid "already in cart"
+msgstr "deja în coș"
+
+#: 
+msgid "day"
+msgstr "zi"
+
+#: 
+msgid "days"
+msgstr "zile"
+
+#: 
+msgid "deposit(s) with no payments"
+msgstr "depozite fără plăți"
+
+#: 
+msgid "e.g. Sunday Service"
+msgstr "de exemplu, Serviciul de duminică"
+
+#: 
+msgid "event(s). Deactivate the type instead, or reassign the events first."
+msgstr "eveniment(e). Dezactivați tipul sau reatribuiți mai întâi evenimentele."
+
+#: 
+msgid "from this class?"
+msgstr "din această clasă?"
+
+#: 
+msgid "from this group?"
+msgstr "din acest grup?"
+
+#: 
+msgid "in"
+msgstr "în"
+
+#: 
+msgid "in cart"
+msgstr "în coș"
+
+#: 
+msgid "member"
+msgstr "membru"
+
+#: 
+msgid "members"
+msgstr "membri"
+
+#: 
+msgid "members. Already had"
+msgstr "membri. Aveau deja"
+
+#: 
+msgid "mo"
+msgstr "lun"
+
+#: 
+msgid "mos"
+msgstr "luni"
+
+#: 
+msgid "open rate"
+msgstr "Rata de deschidere"
+
+#: 
+msgid "our church"
+msgstr "parohia noastră"
+
+#: 
+msgid "payment(s)?"
+msgstr "plată(ți)?"
+
+#: 
+msgid "people"
+msgstr "persoane"
+
+#: 
+msgid "people added to cart"
+msgstr "persoane adăugate în coș"
+
+#: 
+msgid "people already in cart"
+msgstr "persoane deja în coș"
+
+#: 
+msgid "people from cart"
+msgstr "persoane din coș"
+
+#: 
+msgid "people removed from cart"
+msgstr "persoane eliminate din coș"
+
+#: 
+msgid "to another group?"
+msgstr "într-un alt grup?"
+
+#: 
+msgid "years"
+msgstr "ani"
+
+#: 
+msgid "yr"
+msgstr "an"
+
+#: 
+msgid "yrs"
+msgstr "ani"
+
+#: 
+msgid "— Ignore —"
+msgstr "— Ignorare —"
+
+#: 
+msgid "— Select Country —"
+msgstr "— Selectați țara —"
+
+#: 
+msgid "— Select State —"
+msgstr "— Selectați județul —"
 

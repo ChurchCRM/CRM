@@ -45,7 +45,7 @@ $sPageTitle = gettext('Delete Confirmation') . ': ' . gettext('Family');
 //Get the family record in question
 $family = FamilyQuery::create()->findPk((int) $iFamilyID);
 if ($family === null) {
-    RedirectUtils::redirect(SystemURLs::getRootPath() . '/v2/family');
+    RedirectUtils::redirect('people/family');
 }
 $fam_Name = $family->getName();
 

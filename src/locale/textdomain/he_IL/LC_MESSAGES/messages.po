@@ -345,22 +345,6 @@ msgid "Back to Menu"
 msgstr "חזרה לתפריט"
 
 #: 
-msgid "Empty Cart"
-msgstr "רוקן סל"
-
-#: 
-msgid "Empty Cart to Group"
-msgstr "רוקן סל לקבוצה"
-
-#: 
-msgid "Empty Cart to Family"
-msgstr "רוקן סל למשפחה"
-
-#: 
-msgid "Map Cart"
-msgstr "מפה את הסל"
-
-#: 
 msgid "Bulk Mail Presort"
 msgstr "מיון מקדים להודעות המוניות"
 
@@ -1442,26 +1426,6 @@ msgid "Group View"
 msgstr "תצוגת קבוצה"
 
 #: 
-msgid "Confirm Delete Group"
-msgstr "אשר מחיקת קבוצה"
-
-#: 
-msgid "Please confirm deletion of this group record"
-msgstr "אנא אשר את מחיקת רשומת הקבוצה הזו"
-
-#: 
-msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
-msgstr "פעולה זו תמחק גם את כל התפקידים ונתוני המאפיינים הספציפיים לקבוצה הקשורים לרשומת קבוצה זו."
-
-#: 
-msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
-msgstr "כל החברויות והמאפיינים בקבוצה יימחקו. חברי הקבוצה עצמם לא ישתנו."
-
-#: 
-msgid "Please select target group for members"
-msgstr "אנא בחר קבוצת יעד עבור החברים"
-
-#: 
 msgid "Default Role"
 msgstr "תפקיד ברירת מחדל"
 
@@ -1618,10 +1582,6 @@ msgid "Updated"
 msgstr "עודכן"
 
 #: 
-msgid "Please confirm deletion of this note"
-msgstr "אנא אשר את מחיקת ההערה הזו"
-
-#: 
 msgid "Yes, delete this record"
 msgstr "כן, מחק רשומה זו"
 
@@ -1648,10 +1608,6 @@ msgstr "קבוצה"
 #: 
 msgid "Default"
 msgstr "ברירת מחדל"
-
-#: 
-msgid "Make Default"
-msgstr "הגדר כברירת מחדל"
 
 #: 
 msgid "Exit"
@@ -2059,14 +2015,6 @@ msgid "Calendar Year"
 msgstr "שנה לוח שנה"
 
 #: 
-msgid "User Delete Confirmation"
-msgstr "אישור מחיקת משתמש"
-
-#: 
-msgid "Please confirm removal of user status from"
-msgstr "אנא אשר הסרת סטטוס משתמש מ-"
-
-#: 
 msgid "User Editor"
 msgstr "עורך משתמשים"
 
@@ -2123,10 +2071,6 @@ msgid "Failed Logins"
 msgstr "כניסות שנכשלו"
 
 #: 
-msgid "You must enter the same password in both boxes"
-msgstr "עליך להזין את אותה סיסמה בשני התיבות"
-
-#: 
 msgid "Your password choice is too obvious. Please choose something else."
 msgstr "בחירת הסיסמה שלך ברורה מדי. אנא בחר משהו אחר"
 
@@ -2157,10 +2101,6 @@ msgstr "סיסמה חדשה"
 #: 
 msgid "Confirm New Password"
 msgstr "אשר סיסמה חדשה"
-
-#: 
-msgid "Please confirm the password reset of this user"
-msgstr "אנא אשר את איפוס הסיסמה של משתמש זה"
 
 #: 
 msgid "Volunteer Opportunity Editor"
@@ -2640,14 +2580,6 @@ msgid "Are you sure you want to delete the selected"
 msgstr "אנא אשר שברצונך למחוק את המסומן"
 
 #: 
-msgid "Deposit(s)"
-msgstr "פקדונות"
-
-#: 
-msgid "This will also delete all payments associated with this deposit"
-msgstr "פעולה זו תמחק גם את התשלומים הקשורים להפקדה זו"
-
-#: 
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "פעולה זו אינה ניתנת לביטול, ויתכנו לה השלכות משפטיות!"
 
@@ -2714,10 +2646,6 @@ msgstr "כן"
 #: 
 msgid "Edit Settings"
 msgstr "ערוך הגדרות"
-
-#: 
-msgid "Backup Downloaded, Copy on server removed"
-msgstr "הגיבוי הורד, העותק בשרת הוסר"
 
 #: 
 msgid "Functions"
@@ -2835,10 +2763,6 @@ msgstr "בטל מאפיינים ספציפיים לקבוצה"
 #: 
 msgid "Group Properties"
 msgstr "מאפייני קבוצה"
-
-#: 
-msgid "There was a problem retrieving the requested object"
-msgstr "הייתה בעיה באחזור האובייקט המבוקש"
 
 #: 
 msgid "All"
@@ -4594,10 +4518,6 @@ msgid "Maximum upload size"
 msgstr "גודל העלאה מקסימלי"
 
 #: 
-msgid "The selected file exceeds this servers maximum upload size of"
-msgstr "הקובץ שנבחר חורג מגודל ההעלאה המקסימלי של השרת"
-
-#: 
 msgid "Failed"
 msgstr "נכשל"
 
@@ -4630,27 +4550,6 @@ msgstr "התבקש שם תצורה לא חוקי"
 #: 
 msgid "Profile Image uploaded"
 msgstr "תמונת פרופיל הועלתה"
-
-#: 
-#, fuzzy
-msgid "payment(s)?"
-msgstr "תשלומים?"
-
-#: 
-msgid "Confirm Deactivation"
-msgstr "אישור ביטול הפעלה"
-
-#: 
-msgid "Confirm Activation"
-msgstr "אישור הפעלה"
-
-#: 
-msgid "Please confirm deactivation of family"
-msgstr "אנא אשר השבתת משפחה"
-
-#: 
-msgid "Please confirm activation of family"
-msgstr "אנא אשר הפעלת משפחה"
 
 #: 
 #, fuzzy
@@ -4755,14 +4654,6 @@ msgid "Include"
 msgstr "כלול"
 
 #: 
-msgid "View Cart"
-msgstr "הצג עגלה"
-
-#: 
-msgid "Your Cart is Empty"
-msgstr "העגלה שלך ריקה"
-
-#: 
 msgid "Legend"
 msgstr "מקרא"
 
@@ -4777,14 +4668,6 @@ msgstr "מציג תלמידים שיום הולדתם ב-"
 #: 
 msgid "Actions"
 msgstr "פעולות"
-
-#: 
-msgid "Action Confirmation"
-msgstr "אישור פעולה"
-
-#: 
-msgid "Please confirm reset failed login count"
-msgstr "אנא אשר איפוס ספירת התחברויות שנכשלו"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -4923,10 +4806,6 @@ msgid "Reset your password"
 msgstr "אפס את הסיסמה שלך"
 
 #: 
-msgid "Sorry, we are unable to process your request at this point in time."
-msgstr "מצטערים, איננו יכולים לעבד את בקשתך בזמן זה"
-
-#: 
 msgid "Kiosk Manager"
 msgstr "מנהל קיוסק"
 
@@ -4939,10 +4818,6 @@ msgid "Self Verification"
 msgstr "אימות עצמי"
 
 #: 
-msgid "Check Number"
-msgstr "בדוק מספר"
-
-#: 
 msgid "Details"
 msgstr "פרטים"
 
@@ -4951,48 +4826,12 @@ msgid "Verification email sent"
 msgstr "דואר אלקטרוני לאימות נשלח"
 
 #: 
-msgid "Confirm Enable Group Specific Properties"
-msgstr "אשר הפעלת מאפיינים ייחודיים לקבוצה"
-
-#: 
-msgid "This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor."
-msgstr "פעולה זו תיצור טבלת מאפיינים ייחודית לקבוצה זו. לאחר מכן תצטרך להוסיף את המאפיינים הנדרשים באמצעות עורך טופס המאפיינים הייחודיים לקבוצה."
-
-#: 
-msgid "Confirm Disable Group Specific Properties"
-msgstr "אשר השבתת מאפיינים ייחודיים לקבוצה"
-
-#: 
-msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
-msgstr "האם אתה בטוח שברצונך להסיר את המאפיינים הייחודיים של האנשים בקבוצה? כל נתוני המאפיינים של חברי הקבוצה יאבדו!"
-
-#: 
-msgid "Role Name"
-msgstr "שם התפקיד"
-
-#: 
-msgid "Sequence"
-msgstr "רצף"
-
-#: 
-msgid "Do you want to delete this person?  This cannot be undone."
-msgstr "האם ברצונך למחוק את האדם הזה? לא ניתן לבטל פעולה זו."
-
-#: 
-msgid "Are you sure you want to unassign this property?"
-msgstr "האם אתה בטוח שברצונך לבטל את שיוך המאפיין הזה?"
-
-#: 
 msgid "Select a family"
 msgstr "בחר משפחה"
 
 #: 
 msgid "Release Notes"
 msgstr "הערות גרסה"
-
-#: 
-msgid "Move"
-msgstr "העבר"
 
 #. Context: locales
 #: 
@@ -5183,18 +5022,6 @@ msgid "OK"
 msgstr "אישור"
 
 #: 
-msgid "Please select target Role for members"
-msgstr "אנא בחר תפקיד יעד עבור החברים"
-
-#: 
-msgid "GroupID required for role selection prompt"
-msgstr "נדרש GroupID עבור בחירת תפקיד"
-
-#: 
-msgid "Select Group and Role"
-msgstr "בחר קבוצה ותפקיד"
-
-#: 
 msgid "All Members"
 msgstr "כל החברים"
 
@@ -5221,14 +5048,6 @@ msgstr "שיטת שיום נמענים"
 #: 
 msgid "Salutation Utility"
 msgstr "כלי ברכות"
-
-#: 
-msgid "Add A Group Name"
-msgstr "הוסף שם קבוצה"
-
-#: 
-msgid "Default Name Group"
-msgstr "קבוצת שם ברירת מחדל"
 
 #: 
 msgid "Group Role"
@@ -5398,42 +5217,6 @@ msgid "Username"
 msgstr "שם משתמש"
 
 #: 
-msgid "Are you sure you want to move"
-msgstr "האם אתה בטוח שברצונך להזיז"
-
-#: 
-msgid "Access Token"
-msgstr "אסימון גישה"
-
-#: 
-msgid "New Access Token"
-msgstr "אסימון גישה חדש"
-
-#: 
-msgid "ICS URL"
-msgstr "כתובת ICS"
-
-#: 
-msgid "Foreground Color"
-msgstr "צבע טקסט"
-
-#: 
-msgid "Background Color"
-msgstr "צבע רקע"
-
-#: 
-msgid "Delete Calendar"
-msgstr "מחק לוח שנה"
-
-#: 
-msgid "Invalid Entry"
-msgstr "קלט לא תקין"
-
-#: 
-msgid "Calendar Name"
-msgstr "שם לוח שנה"
-
-#: 
 msgid "New Calendar"
 msgstr "לוח שנה חדש"
 
@@ -5498,16 +5281,8 @@ msgid "invalid export value"
 msgstr "ערך ייצוא לא חוקי"
 
 #: 
-msgid "Invalid User/Password"
-msgstr "משתמש/סיסמה לא חוקיים"
-
-#: 
 msgid "Duplicate Emails"
 msgstr "מיילים כפולים"
-
-#: 
-msgid "HTML URL"
-msgstr "כתובת URL של HTML"
 
 #: 
 #, fuzzy
@@ -5585,10 +5360,6 @@ msgid "Latvia (Latvija)"
 msgstr "לטביה (Latvija)"
 
 #: 
-msgid "You are about to add a new deposit without a comment"
-msgstr "אתה עומד להוסיף הפקדה חדשה ללא הערה"
-
-#: 
 msgid "Record"
 msgstr "רשומה"
 
@@ -5603,14 +5374,6 @@ msgstr "רוקן לתוך אירוע"
 #: 
 msgid "Passed"
 msgstr "עבר"
-
-#: 
-msgid "Focus"
-msgstr "מיקוד"
-
-#: 
-msgid "Unfocus"
-msgstr "בטל מיקוד"
 
 #. Context: locales
 #: 
@@ -5664,10 +5427,6 @@ msgid "People Verify Dashboard"
 msgstr "לוח בקרה לאימות אנשים"
 
 #: 
-msgid "Verification recorded"
-msgstr "האימות נרשם"
-
-#: 
 msgid "Verification URL created"
 msgstr "נוצר URL לאישור"
 
@@ -5686,10 +5445,6 @@ msgstr "שגיאה בשליחת אימייל/ים"
 #: 
 msgid "Please check logs for more information"
 msgstr "לקבלת מידע נוסף - אנא בדוק רישומי מערכת"
-
-#: 
-msgid "Verification URL"
-msgstr "URL לאישור"
 
 #: 
 msgid "Unexpected Person Id"
@@ -5765,10 +5520,6 @@ msgid "LastName, FirstName MiddleName"
 msgstr "שם משפחה, שם פרטי שם אמצעי"
 
 #: 
-msgid "Please confirm disabling 2 Factor Auth for this user"
-msgstr "אנא אשר ביטול אימות דו-שלבי למשתמש זה"
-
-#: 
 msgid "Send an email notifying users when their account has been deleted"
 msgstr "שלח הודעת דוא\"ל למשתמשים כאשר החשבון שלהם נמחק"
 
@@ -5834,10 +5585,6 @@ msgid "Hebrew"
 msgstr "עברית"
 
 #: 
-msgid "open rate"
-msgstr "שיעור פתיחה"
-
-#: 
 msgid "Permissions"
 msgstr "הרשאות"
 
@@ -5862,22 +5609,6 @@ msgid "Owe"
 msgstr "חייב"
 
 #: 
-msgid "Start Date"
-msgstr "תאריך התחלה"
-
-#: 
-msgid "End Date"
-msgstr "תאריך סיום"
-
-#: 
-msgid "Pinned Calendars"
-msgstr "לוחות שנה מוצמדים"
-
-#: 
-msgid "This field is required"
-msgstr "שדה זה נדרש"
-
-#: 
 msgid "Text"
 msgstr "טקסט"
 
@@ -5889,10 +5620,6 @@ msgstr "תיאור אירוע"
 #: 
 msgid "Afrikaans"
 msgstr "אפריקאנס"
-
-#: 
-msgid "Loading"
-msgstr "טוען"
 
 #: 
 msgid "Today's Birthdays"
@@ -5961,24 +5688,8 @@ msgid "Ukrainian"
 msgstr "אוקראינית"
 
 #: 
-msgid "Change role"
-msgstr "שנה תפקיד"
-
-#: 
 msgid "Closed"
 msgstr "נסגר"
-
-#: 
-msgid "Delete this person?"
-msgstr "מחק את האדם הזה?"
-
-#: 
-msgid "Deposit ID"
-msgstr "מזהה ההפקדה"
-
-#: 
-msgid "Deposit Total"
-msgstr "סך ההפקדה"
 
 #: 
 msgid "If that doesn't work, copy and paste the following link in your browser"
@@ -6133,144 +5844,8 @@ msgid "Loading log file..."
 msgstr "טוען קובץ יומן..."
 
 #: 
-msgid "A Calendar access token has been generated and saved."
-msgstr "אסימון גישה ליומן נוצר ונשמר."
-
-#: 
-msgid "added"
-msgstr "נוסף"
-
-#: 
-msgid "Added"
-msgstr "נוסף"
-
-#: 
-msgid "Added to cart successfully"
-msgstr "נוסף לסל בהצלחה"
-
-#: 
-msgid "All members already in cart"
-msgstr "כל החברים כבר נמצאים בסל"
-
-#: 
-msgid "already in cart"
-msgstr "כבר נמצא בסל"
-
-#: 
-msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
-msgstr "לא ניתן לטעון את מאפייני היומן. ייתכן שחסר אסימון גישה או שהיומן אינו מוגדר כהלכה."
-
-#: 
-msgid "Cart emptied successfully"
-msgstr "הסל רוקן בהצלחה"
-
-#: 
-msgid "Cart emptied to group successfully"
-msgstr "הסל רוקן לקבוצה בהצלחה"
-
-#: 
-msgid "Empty your entire cart?"
-msgstr "האם לרוקן את כל הסל שלך?"
-
-#: 
-msgid "Failed to add family to cart"
-msgstr "הוספת המשפחה לסל נכשלה"
-
-#: 
-msgid "Failed to add group to cart"
-msgstr "הוספת הקבוצה לסל נכשלה"
-
-#: 
-msgid "Failed to add to cart"
-msgstr "הוספת הפריט לסל נכשלה"
-
-#: 
-msgid "Failed to empty cart"
-msgstr "ריקון הסל נכשל"
-
-#: 
-msgid "Failed to empty cart to group"
-msgstr "ריקון הסל לקבוצה נכשל"
-
-#: 
-msgid "Failed to remove family from cart"
-msgstr "הסרת המשפחה מהסל נכשלה"
-
-#: 
-msgid "Failed to remove from cart"
-msgstr "הסרת הפריט מהסל נכשלה"
-
-#: 
-msgid "Failed to remove group"
-msgstr "הסרת הקבוצה נכשלה"
-
-#: 
-msgid "Family added to cart"
-msgstr "המשפחה נוספה לסל"
-
-#: 
 msgid "Family removed from cart"
 msgstr "המשפחה הוסרה מהסל"
-
-#: 
-msgid "Group added to cart"
-msgstr "הקבוצה נוספה לסל"
-
-#: 
-msgid "Group removed from cart"
-msgstr "הקבוצה הוסרה מהסל"
-
-#: 
-msgid "in cart"
-msgstr "בסל"
-
-#: 
-msgid "members. Already had"
-msgstr "חברים. כבר היו"
-
-#: 
-msgid "people added to cart"
-msgstr "אנשים נוספו לסל"
-
-#: 
-msgid "people already in cart"
-msgstr "אנשים כבר נמצאים בסל"
-
-#: 
-msgid "people from cart"
-msgstr "אנשים מהסל"
-
-#: 
-msgid "people removed from cart"
-msgstr "אנשים הוסרו מהסל"
-
-#: 
-msgid "Person already in cart"
-msgstr "האדם כבר נמצא בסל"
-
-#: 
-msgid "Remove this family from cart?"
-msgstr "להסיר משפחה זו מהסל?"
-
-#: 
-msgid "Remove this group from cart?"
-msgstr "להסיר קבוצה זו מהסל?"
-
-#: 
-msgid "Remove this person from cart?"
-msgstr "להסיר אדם זה מהסל?"
-
-#: 
-msgid "Removed from cart successfully"
-msgstr "הוסר מהסל בהצלחה"
-
-#: 
-msgid "Yes, Empty Cart"
-msgstr "כן, רוקן סל"
-
-#: 
-msgid "Yes, Remove"
-msgstr "כן, הסר"
 
 #: 
 msgid "Add Group"
@@ -6279,10 +5854,6 @@ msgstr "הוסף קבוצה"
 #: 
 msgid "Back to Group List"
 msgstr "חזרה לרשימת הקבוצות"
-
-#: 
-msgid "Default role updated."
-msgstr "תפקיד ברירת המחדל עודכן."
 
 #: 
 msgid "Edit Group"
@@ -6297,36 +5868,12 @@ msgid "Failed to add role. Please try again."
 msgstr "הוספת התפקיד נכשלה. נסה שנית."
 
 #: 
-msgid "Failed to create group. Please try again."
-msgstr "יצירת הקבוצה נכשלה. נסה שנית."
-
-#: 
 msgid "Failed to delete role. Please try again."
 msgstr "מחיקת התפקיד נכשלה. נסה שנית."
 
 #: 
-msgid "Failed to load cart status."
-msgstr "טעינת מצב הסל נכשלה."
-
-#: 
-msgid "Failed to load groups. Please refresh the page."
-msgstr "טעינת הקבוצות נכשלה. רענן את הדף."
-
-#: 
-msgid "Failed to set default role. Please try again."
-msgstr "הגדרת תפקיד ברירת המחדל נכשלה. נסה שנית."
-
-#: 
-msgid "Failed to update group. Please try again."
-msgstr "עדכון הקבוצה נכשל. נסה שנית."
-
-#: 
 msgid "Failed to update properties. Please try again."
 msgstr "עדכון המאפיינים נכשל. נסה שנית."
-
-#: 
-msgid "Failed to update role name. Please try again."
-msgstr "עדכון שם התפקיד נכשל. נסה שנית."
 
 #: 
 msgid "Leave blank to keep existing password"
@@ -6335,18 +5882,6 @@ msgstr "השאר ריק כדי לשמור על הסיסמה הקיימת"
 #: 
 msgid "Please enter a group name."
 msgstr "אנא הזן שם קבוצה."
-
-#: 
-msgid "Role added successfully."
-msgstr "התפקיד נוסף בהצלחה."
-
-#: 
-msgid "Role deleted successfully."
-msgstr "התפקיד נמחק בהצלחה."
-
-#: 
-msgid "Role name updated."
-msgstr "שם התפקיד עודכן."
 
 #: 
 msgid "View Group"
@@ -6359,14 +5894,6 @@ msgstr "אירועים היום"
 #: 
 msgid "Add Family Member"
 msgstr "הוסף בן משפחה"
-
-#: 
-msgid "Address is required"
-msgstr "כתובת היא שדה חובה"
-
-#: 
-msgid "City is required"
-msgstr "עיר היא שדה חובה"
 
 #: 
 msgid "Email Address"
@@ -6385,72 +5912,20 @@ msgid "Family name is required"
 msgstr "שם משפחה הוא שדה חובה"
 
 #: 
-msgid "Family name must be at least 2 characters"
-msgstr "שם המשפחה חייב להכיל לפחות 2 תווים"
-
-#: 
 msgid "First name"
 msgstr "שם פרטי"
-
-#: 
-msgid "First name is required"
-msgstr "שם פרטי הוא שדה חובה"
-
-#: 
-msgid "First name must be at least 2 characters"
-msgstr "השם הפרטי חייב להכיל לפחות 2 תווים"
-
-#: 
-msgid "Home phone is required"
-msgstr "טלפון בבית הוא שדה חובה"
 
 #: 
 msgid "Home phone number"
 msgstr "מספר טלפון בבית"
 
 #: 
-msgid "Invalid format"
-msgstr "פורמט לא תקין"
-
-#: 
 msgid "Last name"
 msgstr "שם משפחה"
 
 #: 
-msgid "Last name is required"
-msgstr "שם משפחה הוא שדה חובה"
-
-#: 
-msgid "Last name must be at least 2 characters"
-msgstr "שם המשפחה חייב להכיל לפחות 2 תווים"
-
-#: 
-msgid "Maximum length is"
-msgstr "האורך המקסימלי הוא"
-
-#: 
-msgid "Minimum length is"
-msgstr "האורך המינימלי הוא"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https://"
-msgstr "חייב להיות כתובת URL תקינה המתחילה ב-http:// או https://"
-
-#: 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
-msgstr "חייב להיות כתובת URL תקינה (למשל, http://localhost)"
-
-#: 
-msgid "Must be a valid port number (e.g., 3306)"
-msgstr "חייב להיות מספר פורט תקין (למשל, 3306)"
-
-#: 
 msgid "Next Member"
 msgstr "החבר הבא"
-
-#: 
-msgid "Passwords do not match"
-msgstr "הסיסמאות אינן תואמות"
 
 #: 
 msgid "Phone Type"
@@ -6461,40 +5936,8 @@ msgid "Phone number"
 msgstr "מספר טלפון"
 
 #: 
-msgid "Please add at least one family member."
-msgstr "אנא הוסף לפחות בן משפחה אחד."
-
-#: 
-msgid "Please enter a valid URL"
-msgstr "אנא הזן כתובת URL תקינה"
-
-#: 
-msgid "Please enter a valid email address"
-msgstr "אנא הזן כתובת אימייל תקינה"
-
-#: 
-msgid "Please enter a valid email address (e.g., name@example.com)"
-msgstr "אנא הזן כתובת אימייל תקינה (למשל name@example.com)"
-
-#: 
-msgid "Please enter a valid number"
-msgstr "אנא הזן מספר תקין"
-
-#: 
-msgid "Please enter a valid phone number"
-msgstr "אנא הזן מספר טלפון תקין"
-
-#: 
-msgid "Please fill in all required fields correctly."
-msgstr "אנא מלא את כל שדות החובה בצורה נכונה."
-
-#: 
 msgid "Previous"
 msgstr "הקודם"
-
-#: 
-msgid "Registration Error"
-msgstr "שגיאת רישום"
 
 #: 
 msgid "Role in Family"
@@ -6511,10 +5954,6 @@ msgstr "כתובת רחוב"
 #: 
 msgid "Submit Registration"
 msgstr "שלח רישום"
-
-#: 
-msgid "Zip code is required"
-msgstr "מיקוד הוא שדה חובה"
 
 #: 
 msgid "A new password has been generated and sent to your email address."
@@ -6537,10 +5976,6 @@ msgid "Back to login"
 msgstr "חזרה להתחברות"
 
 #: 
-msgid "Backup Skipped"
-msgstr "דילוג על גיבוי"
-
-#: 
 msgid "Complete"
 msgstr "הושלם"
 
@@ -6553,28 +5988,8 @@ msgid "Download & Apply"
 msgstr "הורד והחל"
 
 #: 
-msgid "Downloaded"
-msgstr "הורד"
-
-#: 
-msgid "Downloading latest release from GitHub..."
-msgstr "מוריד את הגרסה האחרונה מ-GitHub..."
-
-#: 
 msgid "Enter your login name and we will email you a link to reset your password."
 msgstr "הזן את שם המשתמש שלך ונשלח לך קישור לאיפוס סיסמה."
-
-#: 
-msgid "Failed to create backup."
-msgstr "יצירת הגיבוי נכשלה."
-
-#: 
-msgid "Failed to download update package."
-msgstr "הורדת חבילת העדכון נכשלה."
-
-#: 
-msgid "Failed to refresh upgrade information from GitHub."
-msgstr "רענון מידע השדרוג מ-GitHub נכשל."
 
 #: 
 msgid "File Name"
@@ -6583,10 +5998,6 @@ msgstr "שם הקובץ"
 #: 
 msgid "Go to Login"
 msgstr "עבור להתחברות"
-
-#: 
-msgid "Language updated to"
-msgstr "השפה עודכנה ל-"
 
 #: 
 msgid "Login Name is required"
@@ -6617,56 +6028,24 @@ msgid "Request Password Reset"
 msgstr "בקש איפוס סיסמה"
 
 #: 
-msgid "Retry Download"
-msgstr "נסה הורדה שנית"
-
-#: 
 msgid "Send Reset Email"
 msgstr "שלח אימייל לאיפוס"
-
-#: 
-msgid "Setting updated successfully"
-msgstr "ההגדרה עודכנה בהצלחה"
 
 #: 
 msgid "System Upgrade Wizard"
 msgstr "אשף שדרוג המערכת"
 
 #: 
-msgid "System upgrade completed successfully!"
-msgstr "שדרוג המערכת הושלם בהצלחה!"
-
-#: 
 msgid "This may take several minutes."
 msgstr "זה עשוי לקחת מספר דקות."
-
-#: 
-msgid "Update package downloaded successfully."
-msgstr "חבילת העדכון הורדה בהצלחה."
 
 #: 
 msgid "Upgrade Complete!"
 msgstr "השדרוג הושלם!"
 
 #: 
-msgid "Upgrade failed."
-msgstr "השדרוג נכשל."
-
-#: 
-msgid "Upgrade failed. Please check the logs."
-msgstr "השדרוג נכשל. אנא בדוק את היומנים."
-
-#: 
 msgid "Upgrade information refreshed successfully"
 msgstr "מידע השדרוג רוענן בהצלחה"
-
-#: 
-msgid "Upgrade information refreshed. Reloading page..."
-msgstr "מידע השדרוג רוענן. טוען את הדף מחדש..."
-
-#: 
-msgid "Warnings"
-msgstr "אזהרות"
 
 #: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
@@ -6729,22 +6108,6 @@ msgid "Delete Selected"
 msgstr "מחק בחירה"
 
 #: 
-msgid "Deposit saved successfully"
-msgstr "ההפקדה נשמרה בהצלחה"
-
-#: 
-msgid "Error deleting payments"
-msgstr "שגיאה במחיקת תשלומים"
-
-#: 
-msgid "Error loading payments"
-msgstr "שגיאה בטעינת תשלומים"
-
-#: 
-msgid "Error saving deposit"
-msgstr "שגיאה בשמירת הפקדה"
-
-#: 
 msgid "Funds"
 msgstr "קרנות"
 
@@ -6761,32 +6124,12 @@ msgid "No Checks"
 msgstr "ללא המחאות"
 
 #: 
-msgid "No payments yet. Click \"Add Payment\" to get started."
-msgstr "אין עדיין תשלומים. לחץ על \"הוסף תשלום\" כדי להתחיל."
-
-#: 
 msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
 msgstr "הסכום שאינו מוכר לניכוי חורג מהערך המותר."
 
 #: 
 msgid "Payments"
 msgstr "תשלומים"
-
-#: 
-msgid "Payments deleted successfully"
-msgstr "התשלומים נמחקו בהצלחה"
-
-#: 
-msgid "Please select a date"
-msgstr "אנא בחר תאריך"
-
-#: 
-msgid "Please select rows to delete"
-msgstr "אנא בחר שורות למחיקה"
-
-#: 
-msgid "Saving..."
-msgstr "שומר..."
 
 #: 
 msgid "This action cannot be undone."
@@ -6814,10 +6157,6 @@ msgid "Base URL"
 msgstr "כתובת URL בסיסית"
 
 #: 
-msgid "Copy"
-msgstr "העתק"
-
-#: 
 msgid "Debug Info"
 msgstr "מידע ניפוי שגיאות"
 
@@ -6840,18 +6179,6 @@ msgstr "כתובת IP"
 #: 
 msgid "Images Root"
 msgstr "שורש תמונות"
-
-#: 
-msgid "Import Demo Data"
-msgstr "ייבא נתוני דוגמה"
-
-#: 
-msgid "Include events and calendars"
-msgstr "כלול אירועים ולוחות שנה"
-
-#: 
-msgid "Include financial data (donation funds, pledges)"
-msgstr "כלול נתונים פיננסיים (קרנות תרומה, התחייבויות)"
 
 #: 
 msgid "Invalid API key"
@@ -6886,40 +6213,12 @@ msgid "An error occurred during demo data import"
 msgstr "אירעה שגיאה במהלך ייבוא נתוני דוגמה"
 
 #: 
-msgid "Demo data imported successfully"
-msgstr "נתוני הדוגמה יובאו בהצלחה"
-
-#: 
-msgid "Include Sunday School classes and enrollments"
-msgstr "כלול כיתות ורישומי בית ספר של יום ראשון"
-
-#: 
-msgid "Need to remove this data later?"
-msgstr "צריך להסיר את הנתונים האלו מאוחר יותר?"
-
-#: 
 msgid "No Payments on this Deposit"
 msgstr "אין תשלומים בהפקדה זו"
 
 #: 
-msgid "No payments on this deposit"
-msgstr "אין תשלומים בהפקדה זו"
-
-#: 
-msgid "Optional Data to Include"
-msgstr "נתונים אופציונליים להכללה"
-
-#: 
 msgid "Skipped"
 msgstr "דולג"
-
-#: 
-msgid "Unknown error"
-msgstr "שגיאה לא ידועה"
-
-#: 
-msgid "deposit(s) with no payments"
-msgstr "הפקדות ללא תשלומים"
 
 #: 
 msgid "%d event in %s"
@@ -7163,16 +6462,8 @@ msgid "Backup Type"
 msgstr "סוג גיבוי"
 
 #: 
-msgid "Backup complete! Click below to download."
-msgstr "הגיבוי הושלם! לחץ למטה להורדה."
-
-#: 
 msgid "Backup completed successfully!"
 msgstr "הגיבוי הושלם בהצלחה!"
-
-#: 
-msgid "Backup downloaded. Server copy removed."
-msgstr "הגיבוי הורד. העותק מהשרת הוסר."
 
 #: 
 msgid "Backup failed. Please try again."
@@ -7271,10 +6562,6 @@ msgid "Force Re-install"
 msgstr "אלץ התקנה מחדש"
 
 #: 
-msgid "Force re-install initiated. Please backup your database before applying."
-msgstr "הופעלה התקנה מחדש כפויה. נא לגבות את מסד הנתונים לפני היישום."
-
-#: 
 msgid "Full Backup"
 msgstr "גיבוי מלא"
 
@@ -7355,10 +6642,6 @@ msgid "Please check the backup file and try again."
 msgstr "נא לבדוק את קובץ הגיבוי ולנסות שוב."
 
 #: 
-msgid "Please select a backup file to restore"
-msgstr "נא לבחור קובץ גיבוי לשחזור"
-
-#: 
 msgid "Redirecting in"
 msgstr "מנתב מחדש בעוד"
 
@@ -7385,10 +6668,6 @@ msgstr "מצב שחזור"
 #: 
 msgid "Restore failed."
 msgstr "השחזור נכשל."
-
-#: 
-msgid "Restore failed. Please check the backup file and try again."
-msgstr "השחזור נכשל. נא לבדוק את הקובץ ולנסות שוב."
 
 #: 
 msgid "Restore in progress, please wait..."
@@ -7507,10 +6786,6 @@ msgid "Advanced Operations"
 msgstr "פעולות מתקדמות"
 
 #: 
-msgid "All System Settings"
-msgstr "כל הגדרות המערכת"
-
-#: 
 msgid "An unexpected error occurred. Please contact your administrator."
 msgstr "אירעה שגיאה בלתי צפויה. נא ליצור קשר עם מנהל המערכת."
 
@@ -7565,10 +6840,6 @@ msgstr "הפקדות סגורות:"
 #: 
 msgid "Closed vs Total"
 msgstr "סגורות מול סה\"כ"
-
-#: 
-msgid "Coming soon"
-msgstr "בקרוב"
 
 #: 
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
@@ -7715,14 +6986,6 @@ msgid "Finance Dashboard"
 msgstr "לוח בקרה כספי"
 
 #: 
-msgid "Force Import"
-msgstr "אלץ ייבוא"
-
-#: 
-msgid "Force Import will retry and may create duplicate data."
-msgstr "אילוץ ייבוא יבצע ניסיון חוזר ועלול ליצור כפילויות."
-
-#: 
 msgid "Fund Allocation"
 msgstr "הקצאת כספים/קרנות"
 
@@ -7761,10 +7024,6 @@ msgstr "מזהה"
 #: 
 msgid "Identify members who have not made any donations within a date range."
 msgstr "זהה חברים שלא תרמו בטווח תאריכים מסוים."
-
-#: 
-msgid "Import failed"
-msgstr "הייבוא נכשל"
 
 #: 
 msgid "Jan"
@@ -7935,10 +7194,6 @@ msgid "Sep"
 msgstr "ספט'"
 
 #: 
-msgid "Server error"
-msgstr "שגיאת שרת"
-
-#: 
 msgid "Settings"
 msgstr "הגדרות"
 
@@ -7989,10 +7244,6 @@ msgstr "הצהרות מס (דוח תרומות)"
 #: 
 msgid "Tax Year Reporting Checklist"
 msgstr "רשימת ביקורת לדיווח שנת מס"
-
-#: 
-msgid "Today"
-msgstr "היום"
 
 #: 
 msgid "Total"
@@ -8063,24 +7314,8 @@ msgid "active"
 msgstr "פעיל"
 
 #: 
-msgid "ago"
-msgstr "לפני"
-
-#: 
-msgid "day"
-msgstr "יום"
-
-#: 
-msgid "days"
-msgstr "ימים"
-
-#: 
 msgid "found"
 msgstr "נמצא"
-
-#: 
-msgid "in"
-msgstr "ב-"
 
 #: 
 msgid "issues"
@@ -8089,10 +7324,6 @@ msgstr "בעיות"
 #: 
 msgid "open"
 msgstr "פתוח"
-
-#: 
-msgid "years"
-msgstr "שנים"
 
 #: 
 msgid "(Enter state/province for countries without predefined states)"
@@ -8159,10 +7390,6 @@ msgid "Location & Contact Information"
 msgstr "מיקום ופרטי קשר"
 
 #: 
-msgid "New to"
-msgstr "חדש ב-"
-
-#: 
 msgid "No locales configured"
 msgstr "לא הוגדרו שפות"
 
@@ -8205,10 +7432,6 @@ msgstr "ה-URL חייב להסתיים בלוכסן (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "ה-URL חייב להתחיל ב-http:// או https://"
-
-#: 
-msgid "Unable to load state list. Please check your network connection or try again later."
-msgstr "לא ניתן לטעון רשימת מדינות."
 
 #: 
 msgid "Update it to a valid URL that:"
@@ -8263,10 +7486,6 @@ msgid "Contact & Personal Info"
 msgstr "פרטי קשר ומידע אישי"
 
 #: 
-msgid "Copied!"
-msgstr "הועתק!"
-
-#: 
 msgid "Edited"
 msgstr "נערך"
 
@@ -8275,16 +7494,8 @@ msgid "Email PDF"
 msgstr "שלח PDF באימייל"
 
 #: 
-msgid "Failed to copy URL"
-msgstr "העתקת ה-URL נכשלה"
-
-#: 
 msgid "Newsletter"
 msgstr "ניוזלטר"
-
-#: 
-msgid "Open in New Tab"
-msgstr "פתח בלשונית חדשה"
 
 #: 
 msgid "Personal"
@@ -8303,16 +7514,8 @@ msgid "Provide any corrections or additional information here..."
 msgstr "ספק תיקונים או מידע נוסף כאן..."
 
 #: 
-msgid "Remove Property"
-msgstr "הסר מאפיין"
-
-#: 
 msgid "Select Opportunities"
 msgstr "בחר הזדמנויות"
-
-#: 
-msgid "Share this URL with family members to verify their information"
-msgstr "שתף URL זה עם בני המשפחה לאישור המידע שלהם"
 
 #: 
 msgid "Submit Verification"
@@ -8479,24 +7682,12 @@ msgid "total"
 msgstr "סה\"כ"
 
 #: 
-msgid "Code incomplete"
-msgstr "קוד לא מלא"
-
-#: 
-msgid "Code is invalid"
-msgstr "קוד לא תקין"
-
-#: 
 msgid "Encryption key for storing 2FA secret keys in the database"
 msgstr "מפתח הצפנה ל-2FA"
 
 #: 
 msgid "Two-Factor Authentication"
 msgstr "אימות דו-שלבי"
-
-#: 
-msgid "Validation pending"
-msgstr "ממתין לאימות"
 
 #: 
 msgid "%d Person added to the Cart."
@@ -8615,14 +7806,6 @@ msgstr "אזהרה:"
 #: 
 msgid "Yes, delete this Opportunity"
 msgstr "כן, מחק הזדמנות זו"
-
-#: 
-msgid "Fund(s)"
-msgstr "קרנות"
-
-#: 
-msgid "Password reset for"
-msgstr "איפוס סיסמה עבור"
 
 #. Context: locales
 #: 
@@ -8791,10 +7974,6 @@ msgstr "מההתחייבויות"
 #: 
 msgid "records"
 msgstr "רשומות"
-
-#: 
-msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
-msgstr "חייב להתחיל ב-/ אם לא ריק; ללא קו נטוי בסוף. מותרים רק אותיות, מספרים, קו תחתון, מקף, נקודה ו-/."
 
 #: 
 msgid "%d person"
@@ -9021,10 +8200,6 @@ msgid "Add Link"
 msgstr "הוסף קישור"
 
 #: 
-msgid "Add an extra layer of security to your account"
-msgstr "הוסף שכבת אבטחה נוספת לחשבונך"
-
-#: 
 msgid "Add custom external links to the navigation menu."
 msgstr "הוסף קישורים חיצוניים מותאמים אישית לתפריט הניווט."
 
@@ -9035,10 +8210,6 @@ msgstr "אפשר אישורים חתומים עצמאית"
 #: 
 msgid "An error occurred processing the plugin request"
 msgstr "אירעה שגיאה בעיבוד בקשת התוסף"
-
-#: 
-msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
-msgstr "האם אתה בטוח שברצונך לבטל את האימות הדו-שלבי? חשבונך יהיה פחות מאובטח."
 
 #: 
 msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
@@ -9081,28 +8252,12 @@ msgid "Backup to WebDAV Now"
 msgstr "גבה ל-WebDAV עכשיו"
 
 #: 
-msgid "Before You Start"
-msgstr "לפני שתתחיל"
-
-#: 
-msgid "Browser language preference detected"
-msgstr "זוהתה העדפת שפת דפדפן"
-
-#: 
 msgid "CRM Members Not Subscribed"
 msgstr "חברי CRM שאינם מנויים"
 
 #: 
 msgid "Campaigns Sent"
 msgstr "קמפיינים שנשלחו"
-
-#: 
-msgid "Can't scan?"
-msgstr "לא מצליח לסרוק?"
-
-#: 
-msgid "Change Your Locale"
-msgstr "שנה את ההגדרות האזוריות"
 
 #: 
 msgid "ChurchCRM supports a plugin architecture for extending functionality."
@@ -9143,10 +8298,6 @@ msgstr "הגדר תוסף זה לגיבוי אוטומטי של מסד הנתו�
 #: 
 msgid "Configured"
 msgstr "מוגדר"
-
-#: 
-msgid "Confirm with a code from your authenticator app"
-msgstr "אשר עם קוד מאפליקציית האימות שלך"
 
 #: 
 msgid "Connected"
@@ -9209,24 +8360,12 @@ msgid "Disable Plugin"
 msgstr "השבת תוסף"
 
 #: 
-msgid "Disable Two-Factor Authentication"
-msgstr "השבת אימות דו-שלבי"
-
-#: 
 msgid "Dismiss"
 msgstr "סגור"
 
 #: 
-msgid "Done"
-msgstr "סיום"
-
-#: 
 msgid "Each plugin requires a"
 msgstr "כל תוסף דורש"
-
-#: 
-msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
-msgstr "בכל כניסה תצטרך לאשר עם קוד מאפליקציית האימות שלך"
 
 #: 
 msgid "Email Addresses"
@@ -9245,10 +8384,6 @@ msgid "Enable Plugin"
 msgstr "הפעל תוסף"
 
 #: 
-msgid "Enable Two-Factor Authentication"
-msgstr "הפעל אימות דו-שלבי"
-
-#: 
 msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
 msgstr "הפעל זאת רק עבור שרתי רשת מקומית עם אישורי SSL חתומים עצמאית. משבית את אימות האישור."
 
@@ -9259,10 +8394,6 @@ msgstr "כתובת URL של נקודת הקצה"
 #: 
 msgid "Enter the 6-digit code from your authenticator app"
 msgstr "הזן את הקוד בן 6 ספרות מאפליקציית האימות שלך"
-
-#: 
-msgid "Enter your username and password as usual"
-msgstr "הזן את שם המשתמש והסיסמה שלך כרגיל"
 
 #: 
 msgid "External Backup"
@@ -9337,20 +8468,12 @@ msgid "GA4 Measurement ID"
 msgstr "מזהה מדידה GA4"
 
 #: 
-msgid "Generate new code"
-msgstr "צור קוד חדש"
-
-#: 
 msgid "Get Started"
 msgstr "התחל"
 
 #: 
 msgid "Get your API key from MailChimp: Account Settings > Extras > API Keys"
 msgstr "קבל את מפתח ה-API שלך מ-MailChimp: הגדרות חשבון > תוספות > מפתחות API"
-
-#: 
-msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
-msgstr "הכן את אפליקציית האימות שלך (Google Authenticator, Microsoft Authenticator, Authy וכו')"
 
 #: 
 msgid "Help"
@@ -9363,10 +8486,6 @@ msgstr "מזהה"
 #: 
 msgid "Image shown when no Gravatar exists for the email address"
 msgstr "תמונה המוצגת כאשר אין Gravatar עבור כתובת הדוא\"ל"
-
-#: 
-msgid "Important"
-msgstr "חשוב"
 
 #: 
 msgid "Invalid code. Please try again."
@@ -9423,10 +8542,6 @@ msgstr "הקישור חייב להתחיל ב-http:// או https://"
 #: 
 msgid "Link not found"
 msgstr "הקישור לא נמצא"
-
-#: 
-msgid "Loading recovery codes"
-msgstr "טוען קודי שחזור"
 
 #: 
 msgid "MailChimp API Key"
@@ -9510,16 +8625,8 @@ msgid "Not in CRM"
 msgstr "לא ב-CRM"
 
 #: 
-msgid "One-Time Code"
-msgstr "קוד חד-פעמי"
-
-#: 
 msgid "Open MailChimp"
 msgstr "פתח MailChimp"
-
-#: 
-msgid "Open your authenticator app and scan this QR code"
-msgstr "פתח את אפליקציית האימות שלך וסרוק את קוד ה-QR הזה"
 
 #: 
 msgid "OpenLP Server URL"
@@ -9548,10 +8655,6 @@ msgstr "אנא הגדר את מפתח ה-API של MailChimp שלך כדי להש
 #: 
 msgid "Please enter a link name (2-50 characters)"
 msgstr "אנא הזן שם קישור (2-50 תווים)"
-
-#: 
-msgid "Please try again"
-msgstr "אנא נסה שוב"
 
 #: 
 msgid "Plugin Development"
@@ -9602,44 +8705,16 @@ msgid "Print"
 msgstr "הדפס"
 
 #: 
-msgid "Recovery Codes"
-msgstr "קודי שחזור"
-
-#: 
 msgid "Remote backup failed. Check server logs for details."
 msgstr "הגיבוי המרוחק נכשל. בדוק יומני שרת לפרטים."
-
-#: 
-msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
-msgstr "שמור קודי שחזור אלה במקום בטוח. תוכל להשתמש בהם לגישה לחשבונך אם תאבד גישה לאפליקציית האימות שלך."
-
-#: 
-msgid "Scan QR Code"
-msgstr "סרוק קוד QR"
-
-#: 
-msgid "Secure"
-msgstr "מאובטח"
-
-#: 
-msgid "Set Up Authenticator"
-msgstr "הגדר אפליקציית אימות"
 
 #: 
 msgid "Settings reset successfully"
 msgstr "ההגדרות אופסו בהצלחה"
 
 #: 
-msgid "Setup Complete"
-msgstr "ההגדרה הושלמה"
-
-#: 
 msgid "Shipped with ChurchCRM."
 msgstr "מגיע עם ChurchCRM."
-
-#: 
-msgid "Sign In"
-msgstr "התחבר"
 
 #: 
 msgid "Some settings could not be reset"
@@ -9678,10 +8753,6 @@ msgid "Third-party extensions."
 msgstr "הרחבות צד שלישי."
 
 #: 
-msgid "This will replace any previously enrolled 2FA methods"
-msgstr "פעולה זו תחליף כל שיטות 2FA שנרשמו בעבר"
-
-#: 
 msgid "Total Campaigns"
 msgstr "סך הקמפיינים"
 
@@ -9690,24 +8761,8 @@ msgid "Total Subscribers"
 msgstr "סך המנויים"
 
 #: 
-msgid "Two Factor Enrollment Error"
-msgstr "שגיאת רישום דו-גורמי"
-
-#: 
-msgid "Two-factor authentication has been disabled"
-msgstr "אימות דו-גורמי הושבת"
-
-#: 
-msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
-msgstr "אימות דו-גורמי הוא אחת הדרכים הטובות ביותר להגן על חשבונך. אנו ממליצים בחום להשאירו מופעל."
-
-#: 
 msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
 msgstr "כתובת URL לשרת OpenLP שלך (למשל, http://192.168.1.100:4316)"
-
-#: 
-msgid "Unable to load"
-msgstr "לא ניתן לטעון"
 
 #: 
 msgid "Unsubscribed"
@@ -9728,14 +8783,6 @@ msgstr "הערך מוגדר - השאר ריק לשמירת הנוכחי"
 #: 
 msgid "Verify & Sign In"
 msgstr "אמת והתחבר"
-
-#: 
-msgid "Verify Code"
-msgstr "אמת קוד"
-
-#: 
-msgid "Verifying"
-msgstr "מאמת"
 
 #: 
 msgid "Vonage API Key"
@@ -9770,40 +8817,12 @@ msgid "WebDAV username is required."
 msgstr "שם משתמש WebDAV נדרש."
 
 #: 
-msgid "You can also use backup recovery codes if you lose access to your app"
-msgstr "תוכל גם להשתמש בקודי שחזור גיבוי אם תאבד גישה לאפליקציה שלך"
-
-#: 
-msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
-msgstr "כעת תוכל להשתמש באפליקציית האימות שלך להתחברות. כל קוד תקף ל-30 שניות."
-
-#: 
-msgid "You'll receive backup codes that can be used if you lose access to your app"
-msgstr "תקבל קודי גיבוי שניתן להשתמש בהם אם תאבד גישה לאפליקציה שלך"
-
-#: 
 msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
 msgstr "מזהה מדידה GA4 שלך (G-XXXXXXXXXX)"
 
 #: 
 msgid "Your MailChimp account does not have any audiences (lists) configured."
 msgstr "לחשבון MailChimp שלך אין קהלים (רשימות) מוגדרים."
-
-#: 
-msgid "Your account is now protected"
-msgstr "חשבונך מוגן כעת"
-
-#: 
-msgid "Your account is protected"
-msgstr "חשבונך מוגן"
-
-#: 
-msgid "Your authenticator app has been successfully enrolled"
-msgstr "אפליקציית האימות שלך נרשמה בהצלחה"
-
-#: 
-msgid "Your browser language preference differs from your ChurchCRM locale"
-msgstr "העדפת השפה של הדפדפן שלך שונה מהלוקאל של ChurchCRM שלך"
 
 #: 
 msgid "e.g., Church Website"
@@ -10022,10 +9041,6 @@ msgid "2FA"
 msgstr "2FA"
 
 #: 
-msgid "Leave blank to keep existing"
-msgstr "השאר ריק לשמירה על הקיים"
-
-#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "דרוש מכל המשתמשים להירשם לאימות דו-שלבי"
 
@@ -10130,10 +9145,6 @@ msgid "Save Church Information"
 msgstr "שמור פרטי קהילה"
 
 #: 
-msgid "Search or select..."
-msgstr "חפש או בחר..."
-
-#: 
 msgid "State is required."
 msgstr "מחוז נדרש."
 
@@ -10176,14 +9187,6 @@ msgstr "אתר אינטרנט"
 #: 
 msgid "ZIP code is required."
 msgstr "מיקוד נדרש."
-
-#: 
-msgid "— Select Country —"
-msgstr "— בחר מדינה —"
-
-#: 
-msgid "— Select State —"
-msgstr "— בחר מחוז —"
 
 #: 
 msgid "Address Status"
@@ -10396,10 +9399,6 @@ msgid "Age Distribution"
 msgstr "התפלגות גילאים"
 
 #: 
-msgid "All Roles"
-msgstr "כל התפקידים"
-
-#: 
 msgid "All Time"
 msgstr "כל הזמנים"
 
@@ -10432,20 +9431,8 @@ msgid "An unexpected error occurred."
 msgstr "אירעה שגיאה בלתי צפויה."
 
 #: 
-msgid "Applied preset"
-msgstr "הגדרה מוגדרת מראש הוחלה"
-
-#: 
-msgid "Are you sure you want to delete this deposit?"
-msgstr "האם אתם בטוחים שברצונכם למחוק הפקדת תרומות זו?"
-
-#: 
 msgid "Are you sure you want to delete this fundraiser?"
 msgstr "האם אתם בטוחים שברצונכם למחוק גיוס כספים זה?"
-
-#: 
-msgid "Are you sure you want to remove"
-msgstr "האם אתם בטוחים שברצונכם להסיר"
 
 #: 
 msgid "Assign and manage donation envelope numbers"
@@ -10478,10 +9465,6 @@ msgstr "קוד אימות"
 #: 
 msgid "Auto-mapped"
 msgstr "מופה אוטומטית"
-
-#: 
-msgid "BCC All"
-msgstr "BCC לכולם"
 
 #: 
 msgid "Back to Admin Dashboard"
@@ -10596,10 +9579,6 @@ msgid "Clear all items from cart"
 msgstr "ניקוי כל הפריטים מהרשימה"
 
 #: 
-msgid "Click Save to apply."
-msgstr "לחצו על שמירה להחלה."
-
-#: 
 msgid "Click to upload photo"
 msgstr "לחצו להעלאת תמונה"
 
@@ -10640,24 +9619,12 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "חברו שרת SMTP כדי ש-ChurchCRM יוכל לשלוח דוא\"ל"
 
 #: 
-msgid "Connect with others"
-msgstr "התחברו עם אחרים"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "המרת רשומות בודדות ליחידות משפחתיות"
 
 #: 
 msgid "Convert to Family"
 msgstr "המרה למשפחה"
-
-#: 
-msgid "Copied"
-msgstr "הועתק"
-
-#: 
-msgid "Copy Members to Group"
-msgstr "העתקת חברים לקבוצה"
 
 #: 
 msgid "Copy to Group"
@@ -10748,10 +9715,6 @@ msgid "Deleting this property will also remove all its assignments from any Peop
 msgstr "מחיקת מאפיין זה תסיר גם את כל ההקצאות שלו מכל רשומות אנשים, משפחות או קבוצות."
 
 #: 
-msgid "Deposit Value"
-msgstr "ערך הפקדת תרומות"
-
-#: 
 msgid "Describe the issue"
 msgstr "תארו את הבעיה"
 
@@ -10794,10 +9757,6 @@ msgstr "כפילויות"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "לכל אדם יכולים להיות דוא\"ל ומספר נייד משלו."
-
-#: 
-msgid "Easy registration"
-msgstr "הרשמה קלה"
 
 #: 
 msgid "Edit Class"
@@ -10924,22 +9883,6 @@ msgid "FY %s"
 msgstr "שנת כספים %s"
 
 #: 
-msgid "Failed to add members to cart. Please try again."
-msgstr "הוספת חברים לרשימה נכשלה. אנא נסו שוב."
-
-#: 
-msgid "Failed to delete class. Please try again."
-msgstr "מחיקת כיתה נכשלה. אנא נסו שוב."
-
-#: 
-msgid "Failed to delete group. Please try again."
-msgstr "מחיקת קבוצה נכשלה. אנא נסו שוב."
-
-#: 
-msgid "Failed to remove from class. Please try again."
-msgstr "הסרה מהכיתה נכשלה. אנא נסו שוב."
-
-#: 
 msgid "Families share an address and phone number."
 msgstr "משפחות חולקות כתובת ומספר טלפון."
 
@@ -11036,10 +9979,6 @@ msgid "Get Your Data Into ChurchCRM"
 msgstr "הכניסו את הנתונים שלכם ל-ChurchCRM"
 
 #: 
-msgid "Go to homepage"
-msgstr "מעבר לדף הבית"
-
-#: 
 msgid "Great choice! Here's how to add your church members."
 msgstr "בחירה מצוינת! כך תוסיפו את חברי הקהילה שלכם."
 
@@ -11052,20 +9991,12 @@ msgid "Group Reports"
 msgstr "דוחות קבוצות"
 
 #: 
-msgid "Group deleted successfully."
-msgstr "הקבוצה נמחקה בהצלחה."
-
-#: 
 msgid "Have Existing Data?"
 msgstr "יש לכם נתונים קיימים?"
 
 #: 
 msgid "If you have many records in a spreadsheet, the CSV import may be faster than entering data manually."
 msgstr "אם יש לכם רשומות רבות בגיליון אלקטרוני, ייבוא CSV עשוי להיות מהיר יותר מהזנה ידנית."
-
-#: 
-msgid "Ignored"
-msgstr "נדלג"
 
 #: 
 msgid "Import Another File"
@@ -11082,10 +10013,6 @@ msgstr "הייבוא הושלם"
 #: 
 msgid "Import contacts from your MailChimp audiences"
 msgstr "ייבוא אנשי קשר מקהלי MailChimp שלכם"
-
-#: 
-msgid "Import failed. Please try again."
-msgstr "הייבוא נכשל. אנא נסו שוב."
 
 #: 
 msgid "Import failed: "
@@ -11112,10 +10039,6 @@ msgid "Import, restore, or manually enter your congregation"
 msgstr "ייבוא, שחזור או הזנה ידנית של הקהילה שלכם"
 
 #: 
-msgid "Importing..."
-msgstr "מייבא..."
-
-#: 
 msgid "Include in Email Export"
 msgstr "כלילה בייצוא דוא\"ל"
 
@@ -11138,10 +10061,6 @@ msgstr "«מספר שולח» לא חוקי: «%s». כללו את קידומת 
 #: 
 msgid "Invite Your Team"
 msgstr "הזמינו את הצוות שלכם"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "הצטרפו לקהילה שלנו והישארו מחוברים עם"
 
 #: 
 msgid "Jump to any setup step:"
@@ -11260,10 +10179,6 @@ msgid "Manage your personal preferences and account settings"
 msgstr "ניהול ההעדפות האישיות והגדרות החשבון שלכם"
 
 #: 
-msgid "Manual"
-msgstr "ידני"
-
-#: 
 msgid "Map cart items"
 msgstr "הצגת פריטי רשימה על המפה"
 
@@ -11284,10 +10199,6 @@ msgid "Member Roles"
 msgstr "תפקידי חברים"
 
 #: 
-msgid "Members added to cart."
-msgstr "חברים נוספו לרשימה."
-
-#: 
 msgid "Memberships"
 msgstr "חברויות"
 
@@ -11298,14 +10209,6 @@ msgstr "מינימום"
 #: 
 msgid "Modify family roles for group members"
 msgstr "שינוי תפקידים משפחתיים עבור חברי קבוצה"
-
-#: 
-msgid "Move Members"
-msgstr "העברת חברים"
-
-#: 
-msgid "Move Members to Group"
-msgstr "העברת חברים לקבוצה"
 
 #: 
 msgid "Move to Group"
@@ -11344,32 +10247,8 @@ msgid "New Person"
 msgstr "אדם חדש"
 
 #: 
-msgid "No Anniversaries"
-msgstr "אין ימי נישואין"
-
-#: 
-msgid "No Birthdays"
-msgstr "אין ימי הולדת"
-
-#: 
 msgid "No Check-ins"
 msgstr "אין רישומי נוכחות"
-
-#: 
-msgid "No Deposits"
-msgstr "אין הפקדות תרומות"
-
-#: 
-msgid "No anniversaries in the past or next 7 days"
-msgstr "אין ימי נישואין ב-7 הימים האחרונים או הבאים"
-
-#: 
-msgid "No birthdays in the past or next 7 days"
-msgstr "אין ימי הולדת ב-7 הימים האחרונים או הבאים"
-
-#: 
-msgid "No deposit data available yet"
-msgstr "אין נתוני הפקדות זמינים עדיין"
 
 #: 
 msgid "No description set."
@@ -11402,10 +10281,6 @@ msgstr "אין תוצאות עבור «%s». נסו מונח חיפוש אחר."
 #: 
 msgid "No member properties defined."
 msgstr "לא הוגדרו מאפייני חבר."
-
-#: 
-msgid "No members found for this role."
-msgstr "לא נמצאו חברים לתפקיד זה."
 
 #: 
 msgid "No people found"
@@ -11490,10 +10365,6 @@ msgid "People by Classification"
 msgstr "אנשים לפי סיווג"
 
 #: 
-msgid "Person removed from class."
-msgstr "האדם הוסר מהכיתה."
-
-#: 
 msgid "Photo"
 msgstr "תמונה"
 
@@ -11508,14 +10379,6 @@ msgstr "בחרו נתיב להתחלה"
 #: 
 msgid "Please check everything looks right before submitting."
 msgstr "אנא בדקו שהכל נראה תקין לפני ההגשה."
-
-#: 
-msgid "Please map at least one column before importing"
-msgstr "אנא מפו לפחות עמודה אחת לפני הייבוא"
-
-#: 
-msgid "Please select a CSV file"
-msgstr "אנא בחרו קובץ CSV"
 
 #: 
 msgid "Please try requesting a new password reset link or contact support if you continue to experience issues."
@@ -11562,10 +10425,6 @@ msgid "Property not found."
 msgstr "המאפיין לא נמצא."
 
 #: 
-msgid "Quick Setup"
-msgstr "הגדרה מהירה"
-
-#: 
 msgid "Quick Tips"
 msgstr "טיפים מהירים"
 
@@ -11592,14 +10451,6 @@ msgstr "רישום התחייבויות כספיות ותשלומים חדשים
 #: 
 msgid "Record why attendees visited your church"
 msgstr "תעדו מדוע משתתפים ביקרו בקהילה שלכם"
-
-#: 
-msgid "Register Your Family"
-msgstr "רשמו את משפחתכם"
-
-#: 
-msgid "Register another family"
-msgstr "רישום משפחה נוספת"
 
 #: 
 msgid "Remove all from Cart"
@@ -11646,14 +10497,6 @@ msgid "Review and clean up files not associated with any record"
 msgstr "סקירה וניקוי קבצים שאינם משויכים לאף רשומה"
 
 #: 
-msgid "Role not found."
-msgstr "התפקיד לא נמצא."
-
-#: 
-msgid "Roles"
-msgstr "תפקידים"
-
-#: 
 msgid "Run"
 msgstr "הפעלה"
 
@@ -11676,10 +10519,6 @@ msgstr "חיפוש באנשים, משפחות, קבוצות, כתובות ועו
 #: 
 msgid "Search and view deposit slip records"
 msgstr "חיפוש וצפייה ברשומות שוברי הפקדה"
-
-#: 
-msgid "Search groups..."
-msgstr "חיפוש קבוצות..."
 
 #: 
 msgid "Search people, families, groups…"
@@ -11716,10 +10555,6 @@ msgstr "שליחת דוא\"ל למשפחות"
 #: 
 msgid "Server Error"
 msgstr "שגיאת שרת"
-
-#: 
-msgid "Server returned an unexpected response. Please try again."
-msgstr "השרת החזיר תגובה בלתי צפויה. אנא נסו שוב."
 
 #: 
 msgid "Set Permission True to give new users the ability to change their current value."
@@ -11786,20 +10621,12 @@ msgid "Start Over"
 msgstr "התחלה מחדש"
 
 #: 
-msgid "Stay informed"
-msgstr "הישארו מעודכנים"
-
-#: 
 msgid "Step 1 — Upload CSV File"
 msgstr "שלב 1 — העלאת קובץ CSV"
 
 #: 
 msgid "Step 2 — Map Columns"
 msgstr "שלב 2 — מיפוי עמודות"
-
-#: 
-msgid "Submitting..."
-msgstr "שולח..."
 
 #: 
 msgid "Supports backups from ChurchCRM and ChurchInfo."
@@ -11882,10 +10709,6 @@ msgid "Upload failed."
 msgstr "ההעלאה נכשלה."
 
 #: 
-msgid "Upload failed. Please check the file and try again."
-msgstr "ההעלאה נכשלה. בדקו את הקובץ ונסו שוב."
-
-#: 
 msgid "Upload session expired. Please upload the file again."
 msgstr "פג תוקף הפעלת ההעלאה. אנא העלו את הקובץ שוב."
 
@@ -11916,10 +10739,6 @@ msgstr "צפייה באנשים"
 #: 
 msgid "View all families on an interactive map"
 msgstr "צפייה בכל המשפחות על מפה אינטראקטיבית"
-
-#: 
-msgid "View all results"
-msgstr "צפייה בכל התוצאות"
 
 #: 
 msgid "View and manage all groups in your congregation"
@@ -12002,20 +10821,12 @@ msgid "We're so glad you're here! Register your family in just 3 easy steps."
 msgstr "שמחים שאתם כאן! רשמו את משפחתכם ב-3 שלבים פשוטים."
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "שמחים שמשפחתכם הצטרפה אלינו!"
-
-#: 
 msgid "Welcome Back!"
 msgstr "ברוכים השבים!"
 
 #: 
 msgid "Welcome back! Please enter your details to continue"
 msgstr "ברוכים השבים! אנא הזינו את הפרטים שלכם כדי להמשיך"
-
-#: 
-msgid "Welcome to the Family!"
-msgstr "ברוכים הבאים למשפחה!"
 
 #: 
 msgid "What happens next?"
@@ -12058,28 +10869,12 @@ msgid "Your previous session timed out. Please login again."
 msgstr "פג תוקף ההפעלה הקודמת שלכם. אנא התחברו שוב."
 
 #: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "ההרשמה שלכם התקבלה. הצוות שלנו ייצור קשר בקרוב כדי לקבל את פניכם באופן אישי."
-
-#: 
-msgid "all members"
-msgstr "כל החברים"
-
-#: 
 msgid "complete"
 msgstr "הושלם"
 
 #: 
 msgid "fields"
 msgstr "שדות"
-
-#: 
-msgid "from this class?"
-msgstr "מכיתה זו?"
-
-#: 
-msgid "from this group?"
-msgstr "מקבוצה זו?"
 
 #: 
 msgid "full group view"
@@ -12090,20 +10885,12 @@ msgid "funds"
 msgstr "קרנות"
 
 #: 
-msgid "members"
-msgstr "חברים"
-
-#: 
 msgid "opportunities"
 msgstr "הזדמנויות"
 
 #: 
 msgid "or connect an external service"
 msgstr "או חברו שירות חיצוני"
-
-#: 
-msgid "our church"
-msgstr "הקהילה שלנו"
 
 #: 
 msgid "page"
@@ -12114,24 +10901,12 @@ msgid "properties"
 msgstr "מאפיינים"
 
 #: 
-msgid "to another group?"
-msgstr "לקבוצה אחרת?"
-
-#: 
-msgid "— Ignore —"
-msgstr "— דלג —"
-
-#: 
 msgid "— Select a group —"
 msgstr "— בחרו קבוצה —"
 
 #: 
 msgid "— Select type (optional) —"
 msgstr "— בחרו סוג (אופציונלי) —"
-
-#: 
-msgid "Activate"
-msgstr "הפעלה"
 
 #: 
 msgid "Active Events"
@@ -12154,10 +10929,6 @@ msgid "All Checks Passed"
 msgstr "כל הבדיקות עברו"
 
 #: 
-msgid "Applying..."
-msgstr "מחיל..."
-
-#: 
 msgid "Assigned Kiosk"
 msgstr "קיוסק מוקצה"
 
@@ -12168,10 +10939,6 @@ msgstr "נוכחות"
 #: 
 msgid "Back up modified files before upgrading if you want to keep your changes."
 msgstr "גבו קבצים שהשתנו לפני השדרוג אם ברצונכם לשמור על השינויים."
-
-#: 
-msgid "Backup Complete"
-msgstr "הגיבוי הושלם"
 
 #: 
 msgid "Class / Group"
@@ -12192,14 +10959,6 @@ msgstr "יצירת האירוע הראשון"
 #: 
 msgid "Create a database backup before applying the update. This is strongly recommended."
 msgstr "צרו גיבוי מסד נתונים לפני החלת העדכון. זה מומלץ מאוד."
-
-#: 
-msgid "Creating Backup..."
-msgstr "יוצר גיבוי..."
-
-#: 
-msgid "Download Backup & Continue"
-msgstr "הורדת גיבוי והמשך"
 
 #: 
 msgid "Download the latest release and apply it to your installation."
@@ -12244,10 +11003,6 @@ msgstr "יצירת רשימות כיתה, גליונות נוכחות ואלבו
 #: 
 msgid "Installed"
 msgstr "מותקן"
-
-#: 
-msgid "It is strongly recommended to have a backup before proceeding."
-msgstr "מומלץ מאוד שיהיה לכם גיבוי לפני שתמשיכו."
 
 #: 
 msgid "Latest"
@@ -12373,18 +11128,10 @@ msgstr "למשתמש חייבת להיות הרשאת הערות"
 msgid "Address Defaults"
 msgstr "ברירות מחדל של כתובת"
 
-#: 
-msgid "All Day"
-msgstr "כל היום"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
 msgstr "אפשר למשתמש להוסיף אירוע חדש"
-
-#: 
-msgid "Are you sure you want to continue?"
-msgstr "האם אתה בטוח שאתה רוצה להמשיך?"
 
 #. Context: queryparameters_qrp
 #: 
@@ -12426,10 +11173,6 @@ msgid "ChurchCRM can send emails directly."
 msgstr "ChurchCRM יכול לשלוח דוא\"ל ישירות."
 
 #: 
-msgid "Clipboard API not available. Please copy the URL manually."
-msgstr "API לוח הגזירים אינו זמין. אנא העתק את כתובת ה- URL באופן ידני."
-
-#: 
 msgid "Communication"
 msgstr "תקשורת"
 
@@ -12449,18 +11192,6 @@ msgstr "הגדר את Vonage"
 #: 
 msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr "חבר את Mailchimp כדי לסנכרן רשימות דוא\"ל לניוזלטרים קמפיינים."
-
-#: 
-msgid "Copied to clipboard"
-msgstr "הועתק ללוח הגזירים"
-
-#: 
-msgid "Copy All Emails"
-msgstr "העתק את כל ההודעות"
-
-#: 
-msgid "Copy All Numbers"
-msgstr "העתק את כל המספרים"
 
 #: 
 msgid "Copy from church address"
@@ -12498,20 +11229,12 @@ msgid "Distance Unit"
 msgstr "יחידת מרחק"
 
 #: 
-msgid "Duration"
-msgstr "משך"
-
-#: 
 msgid "Email Dashboard"
 msgstr "לוח בקרה של דוא\"ל"
 
 #: 
 msgid "Email Integrations"
 msgstr "אינטגרציות דוא\"ל"
-
-#: 
-msgid "Email addresses copied to clipboard"
-msgstr "כתובות דוא\"ל הועתקו ללוח הגזירים"
 
 #: 
 msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
@@ -12686,14 +11409,6 @@ msgstr "הודעות דוא\"ל על חברים חדשים"
 msgid "No cell phone on file"
 msgstr "אין טלפון סלולרי בקובץ"
 
-#: 
-msgid "No email addresses available"
-msgstr "אין כתובות דוא\"ל זמינות"
-
-#: 
-msgid "No phone numbers available"
-msgstr "אין מספרי טלפון זמינים"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Non-Attender"
@@ -12712,10 +11427,6 @@ msgstr "לא סווג"
 #: 
 msgid "Number of months since becoming a friend"
 msgstr "מספר החודשים מאז היותו חבר"
-
-#: 
-msgid "Parents"
-msgstr "הורים"
 
 #: 
 msgid "Password reset emails — users cannot recover their accounts"
@@ -12743,14 +11454,6 @@ msgstr "רכוש אדם המשמש להוצאת חברים מרשימות SMS / 
 msgid "Person property used to exclude members from email lists"
 msgstr "רכוש אדם המשמש להוצאת חברים מרשימות דוא\"ל"
 
-#: 
-msgid "Phone numbers copied to clipboard"
-msgstr "מספרי טלפון הועתקו ללוח"
-
-#: 
-msgid "Phone numbers copied — paste into your messaging app"
-msgstr "מספרי טלפון הועתקו - הדבק לאפליקציית ההודעות שלך"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
@@ -12771,18 +11474,10 @@ msgstr "השוואת התחייבות"
 msgid "Pledged this year"
 msgstr "התחייב השנה"
 
-#: 
-msgid "Press CTRL + C to copy"
-msgstr "לחץ על CTRL + C להעתקה"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
 msgstr "רכוש"
-
-#: 
-msgid "Public calendar"
-msgstr "לוח שנה ציבורי"
 
 #. Context: query_qry
 #: 
@@ -12835,14 +11530,6 @@ msgstr "השנה הכספית השנייה להשוואה"
 msgid "Second volunteer opportunity choice"
 msgstr "בחירת הזדמנות התנדבות שנייה"
 
-#: 
-msgid "Select calendars..."
-msgstr "בחר לוחות שנה..."
-
-#: 
-msgid "Select event type..."
-msgstr "בחר סוג אירוע..."
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Select field to search for."
@@ -12868,10 +11555,6 @@ msgstr "לוחות שנה של המערכת"
 #: 
 msgid "System language for the church."
 msgstr "שפת מערכת לכנסייה."
-
-#: 
-msgid "Text All"
-msgstr "הודעה לכולם"
 
 #: 
 msgid "Text Dashboard"
@@ -12934,18 +11617,6 @@ msgid "These values are pre-filled when creating new families. Leave blank to re
 msgstr "ערכים אלה מלאים מראש בעת יצירת משפחות חדשות. השאר ריק כדי לדרוש ערך ידני."
 
 #: 
-msgid "Time"
-msgstr "זמן"
-
-#: 
-msgid "Timed"
-msgstr "מתוזמן"
-
-#: 
-msgid "Unable to copy to clipboard. Please copy the URL manually."
-msgstr "לא ניתן להעתיק ללוח. אנא העתק את ה- URL באופן ידני."
-
-#: 
 msgid "Unit used to measure distance."
 msgstr "יחידה המשמשת למדידת מרחק."
 
@@ -12990,14 +11661,6 @@ msgstr "דוא\"ל עבודה"
 #: 
 msgid "but not this year"
 msgstr "אך לא השנה"
-
-#: 
-msgid "e.g. Sunday Service"
-msgstr "לדוגמה שירות ראשון"
-
-#: 
-msgid "member"
-msgstr "חבר"
 
 #. plugin:mailchimp:section:1:content
 #: 
@@ -13852,21 +12515,6 @@ msgstr "גודל הקובץ חורג ממגבלת השרת של %s"
 msgid "Missing image data in request"
 msgstr "נתוני תמונה חסרים בבקשה"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "מצא אנשים שלא השתתפו באירוע"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "אנשים חסרים"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "בחר את האירוע הרצוי"
-
 #: 
 msgid "Advanced filtering by group, classification, and role"
 msgstr "סינון מתקדם לפי קבוצה, סיווג ותפקיד"
@@ -13944,10 +12592,6 @@ msgid "API Key"
 msgstr "מפתח API"
 
 #: 
-msgid "API key regenerated"
-msgstr "מפתח API נוצר מחדש"
-
-#: 
 msgid "Account"
 msgstr "חשבון"
 
@@ -14022,46 +12666,6 @@ msgstr "מספר השורות המוצגות כברירת מחדל בטבלאו�
 #: 
 msgid "Edit own family only"
 msgstr "עריכת המשפחה שלי בלבד"
-
-#: 
-msgid "Enter text here..."
-msgstr "הכנס טקסט כאן..."
-
-#: 
-msgid "Failed to cancel enrollment. Please try again."
-msgstr "ביטול ההרשמה נכשל. אנא נסה שוב."
-
-#: 
-msgid "Failed to delete event. Please try again."
-msgstr "מחיקת האירוע נכשלה. אנא נסה שוב."
-
-#: 
-msgid "Failed to disable two-factor authentication. Please try again."
-msgstr "השבתת אימות דו-שלבי נכשלה. אנא נסה שוב."
-
-#: 
-msgid "Failed to generate QR code. Please try again."
-msgstr "יצירת קוד QR נכשלה. אנא נסה שוב."
-
-#: 
-msgid "Failed to load calendar data. Please try again."
-msgstr "טעינת נתוני לוח השנה נכשלה. אנא נסה שוב."
-
-#: 
-msgid "Failed to load event. Please try again."
-msgstr "טעינת האירוע נכשלה. אנא נסה שוב."
-
-#: 
-msgid "Failed to load recovery codes. Please refresh the page."
-msgstr "טעינת קודי השחזור נכשלה. אנא רענן את הדף."
-
-#: 
-msgid "Failed to save event. Please try again."
-msgstr "שמירת האירוע נכשלה. אנא נסה שוב."
-
-#: 
-msgid "Failed to save setting"
-msgstr "שמירת ההגדרה נכשלה"
 
 #. Context: locales
 #: 
@@ -14246,10 +12850,6 @@ msgid "User Config"
 msgstr "הגדרות משתמש"
 
 #: 
-msgid "Verification failed. Please try again."
-msgstr "האימות נכשל. אנא נסה שוב."
-
-#: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "גרסה %s זמינה. אנא שדרג את ההתקנה שלך."
 
@@ -14300,10 +12900,6 @@ msgid "A tablet assigned to one event. The kiosk pulls the event's linked group 
 msgstr "טאבלט המוקצה לאירוע אחד. הקיוסק שולף את רשימת הקבוצה המקושרת לאירוע ומציג כניסה בנגיעה. ללא קבוצה מקושרת אין לקיוסק רשימה להציג."
 
 #: 
-msgid "Add Walk-in / Visitor"
-msgstr "הוסף אורח/מבקר"
-
-#: 
 msgid "Add people to your cart first, then come back to check them in to an event."
 msgstr "הוסף אנשים לעגלה תחילה, ולאחר מכן חזור לבצע צ׳ק-אין לאירוע."
 
@@ -14338,10 +12934,6 @@ msgstr "כל התמונות והמסמכים שהועלו"
 #: 
 msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
 msgstr "סוג אירוע הוא תבנית — שם, שעת התחלה ברירת מחדל, חזרתיות, קטגוריות ספירת נוכחות. ניתן לקשר אותו לקבוצת כיתה אחת כקהל ברירת מחדל."
-
-#: 
-msgid "Attendance record deleted."
-msgstr "רשומת נוכחות נמחקה."
 
 #: 
 msgid "Audit"
@@ -14404,24 +12996,12 @@ msgid "Check in all %d family members to a single event."
 msgstr "בצע צ׳ק-אין לכל %d חברי המשפחה לאירוע אחד."
 
 #: 
-msgid "Check out"
-msgstr "יציאה"
-
-#: 
 msgid "Check-in By"
 msgstr "כניסה על ידי"
 
 #: 
-msgid "Check-in failed. Please try again."
-msgstr "הצ׳ק-אין נכשל. אנא נסה שוב."
-
-#: 
 msgid "Check-in is disabled for inactive events. Activate the event from the Events Dashboard to enable check-in."
 msgstr "הצ׳ק-אין מושבת עבור אירועים לא פעילים. הפעל את האירוע מלוח האירועים כדי לאפשר צ׳ק-אין."
-
-#: 
-msgid "Check-out failed. Please try again."
-msgstr "הצ׳ק-אאוט נכשל. אנא נסה שוב."
 
 #: 
 msgid "Checked in to event: %s"
@@ -14434,10 +13014,6 @@ msgstr "בוצע צ׳ק-אאוט מאירוע: %s"
 #: 
 msgid "Close All Stuck Events"
 msgstr "סגור את כל האירועים התקועים"
-
-#: 
-msgid "Confirm Check Out"
-msgstr "אשר יציאה"
 
 #: 
 msgid "Create Repeat Events"
@@ -14464,10 +13040,6 @@ msgid "Creating backup..."
 msgstr "יוצר גיבוי..."
 
 #: 
-msgid "Creating..."
-msgstr "יוצר..."
-
-#: 
 msgid "Database + uploaded photos (larger)"
 msgstr "מסד נתונים + תמונות שהועלו (גדול יותר)"
 
@@ -14480,34 +13052,6 @@ msgid "Date range cannot exceed 1 year"
 msgstr "טווח התאריכים אינו יכול לעלות על שנה אחת"
 
 #: 
-msgid "Deactivate"
-msgstr "השבת"
-
-#: 
-msgid "Delete Event Type"
-msgstr "מחק סוג אירוע"
-
-#: 
-msgid "Delete attendance record?"
-msgstr "למחוק רשומת נוכחות?"
-
-#: 
-msgid "Delete check-in record for"
-msgstr "מחק רשומת כניסה עבור"
-
-#: 
-msgid "Delete this event?"
-msgstr "למחוק אירוע זה?"
-
-#: 
-msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
-msgstr "מחיקת אירוע תמחק גם את כל ספירות הנוכחות. לא ניתן לבטל פעולה זו."
-
-#: 
-msgid "Deleting this event will also delete all attendance records. This cannot be undone."
-msgstr "מחיקת אירוע זה תמחק גם את כל רשומות הנוכחות. לא ניתן לבטל פעולה זו."
-
-#: 
 msgid "Destructive Operation"
 msgstr "פעולה הרסנית"
 
@@ -14518,10 +13062,6 @@ msgstr "ערוך שם קטגוריה ולחץ שמור, או השתמש בסמל
 #: 
 msgid "End Time"
 msgstr "שעת סיום"
-
-#: 
-msgid "End time must be after start time."
-msgstr "שעת הסיום חייבת להיות אחרי שעת ההתחלה."
 
 #: 
 msgid "Ended"
@@ -14546,14 +13086,6 @@ msgstr "פרטי אירוע"
 #: 
 msgid "Event Template"
 msgstr "תבנית אירוע"
-
-#: 
-msgid "Event already exists. Redirecting to check-in..."
-msgstr "האירוע כבר קיים. מנתב לצ׳ק-אין..."
-
-#: 
-msgid "Event created. Redirecting to check-in..."
-msgstr "האירוע נוצר. מנתב לצ׳ק-אין..."
 
 #: 
 msgid "Event title is required."
@@ -14600,22 +13132,6 @@ msgid "Everyone is checked in!"
 msgstr "כולם עשו צ׳ק-אין!"
 
 #: 
-msgid "Failed to create class. Please try again."
-msgstr "יצירת הכיתה נכשלה. אנא נסה שוב."
-
-#: 
-msgid "Failed to create event."
-msgstr "יצירת האירוע נכשלה."
-
-#: 
-msgid "Failed to create event. Please try again."
-msgstr "יצירת האירוע נכשלה. אנא נסה שוב."
-
-#: 
-msgid "Failed to delete. Please try again."
-msgstr "המחיקה נכשלה. אנא נסה שוב."
-
-#: 
 msgid "Fastest workflow:"
 msgstr "זרימת העבודה המהירה ביותר:"
 
@@ -14656,14 +13172,6 @@ msgid "Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)"
 msgstr "פורמט חזרה שנתית לא תקין; נדרש MM-DD (לדוג׳ 04-12)"
 
 #: 
-msgid "Just now"
-msgstr "הרגע"
-
-#: 
-msgid "Leave blank to check out without recording the supervisor."
-msgstr "השאר ריק לצ׳ק-אאוט ללא רישום המפקח."
-
-#: 
 msgid "Link events to a group for Kiosk check-in functionality."
 msgstr "קשר אירועים לקבוצה לצורך פונקציית צ׳ק-אין בקיוסק."
 
@@ -14682,10 +13190,6 @@ msgstr "נהל שמות אירועים, תבניות חזרתיות וספירו
 #: 
 msgid "Missing required field: %s"
 msgstr "שדה חובה חסר: %s"
-
-#: 
-msgid "No Events Today"
-msgstr "אין אירועים היום"
 
 #: 
 msgid "No Group"
@@ -14712,14 +13216,6 @@ msgid "Optional Settings"
 msgstr "הגדרות אופציונליות"
 
 #: 
-msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
-msgstr "אופציונלי — רשום מי מוציא את האדם (לדוג׳ הורה שאוסף ילד)."
-
-#: 
-msgid "Person checked out."
-msgstr "האדם עשה צ׳ק-אאוט."
-
-#: 
 msgid "Person is not checked in"
 msgstr "האדם אינו מחובר"
 
@@ -14730,14 +13226,6 @@ msgstr "האדם אינו ברשימת הכיתה הפעילה"
 #: 
 msgid "Pin to Calendars"
 msgstr "נעץ ביומנים"
-
-#: 
-msgid "Please select a person to check in."
-msgstr "אנא בחר אדם לצ׳ק-אין."
-
-#: 
-msgid "Range end date must be on or after range start date."
-msgstr "תאריך סיום הטווח חייב להיות ביום ההתחלה או אחריו."
 
 #: 
 msgid "Range end must be a valid YYYY-MM-DD date."
@@ -14788,10 +13276,6 @@ msgid "Skip"
 msgstr "דלג"
 
 #: 
-msgid "Skip & Check Out"
-msgstr "דלג וצא"
-
-#: 
 msgid "Start Check-in"
 msgstr "התחל צ׳ק-אין"
 
@@ -14822,10 +13306,6 @@ msgstr "קח נוכחות"
 #: 
 msgid "The Events module is disabled"
 msgstr "מודול האירועים מושבת"
-
-#: 
-msgid "There are no events scheduled for today"
-msgstr "אין אירועים מתוכננים להיום"
 
 #: 
 msgid "This event is inactive."
@@ -14956,18 +13436,6 @@ msgid "Map Coordinates"
 msgstr "קואורדינטות מפה"
 
 #: 
-msgid "Please select a group."
-msgstr "אנא בחר קבוצה."
-
-#: 
-msgid "Please select a role."
-msgstr "אנא בחר תפקיד."
-
-#: 
-msgid "Please select both a group and a role."
-msgstr "אנא בחר גם קבוצה וגם תפקיד."
-
-#: 
 msgid "Range: -180 to 180."
 msgstr "טווח: -180 עד 180."
 
@@ -14982,22 +13450,6 @@ msgstr "לדוגמה, -74.0060"
 #: 
 msgid "e.g., 40.7128"
 msgstr "לדוגמה, 40.7128"
-
-#: 
-msgid "mo"
-msgstr "חוד׳"
-
-#: 
-msgid "mos"
-msgstr "חוד׳"
-
-#: 
-msgid "yr"
-msgstr "שנ׳"
-
-#: 
-msgid "yrs"
-msgstr "שנ׳"
 
 #: 
 msgid "An error occurred while deleting the family."
@@ -15108,10 +13560,6 @@ msgid "You do not have permission to view this person"
 msgstr "אין לך הרשאה לצפות בפרטי אדם זה"
 
 #: 
-msgid "Are you sure you want to delete this event type? This cannot be undone."
-msgstr "האם אתה בטוח שברצונך למחוק סוג אירוע זה? לא ניתן לבטל פעולה זו."
-
-#: 
 msgid "Assign to me"
 msgstr "הקצה לי"
 
@@ -15122,10 +13570,6 @@ msgstr "הוקצה"
 #: 
 msgid "Assigned event not found"
 msgstr "האירוע המוקצה לא נמצא"
-
-#: 
-msgid "Cannot Delete Event Type"
-msgstr "לא ניתן למחוק סוג אירוע"
 
 #: 
 msgid "Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first."
@@ -15156,20 +13600,12 @@ msgid "Register New Device"
 msgstr "רשום מכשיר חדש"
 
 #: 
-msgid "This event type is used by"
-msgstr "סוג אירוע זה משמש את"
-
-#: 
 msgid "Total Kiosks"
 msgstr "סה\"כ קיוסקים"
 
 #: 
 msgid "Upcoming Events"
 msgstr "אירועים קרובים"
-
-#: 
-msgid "event(s). Deactivate the type instead, or reassign the events first."
-msgstr "אירוע(ים). השבת את הסוג במקום זאת, או הקצה מחדש את האירועים תחילה."
 
 #: 
 msgid "Absolute http(s) URL of the church logo shown in email templates (and re-used elsewhere in the future). For best rendering across email clients, use a wide banner image at roughly a 3.5:1 aspect ratio (for example 350×100 px), PNG or JPG, served over HTTPS. Leave blank or enter an invalid value to fall back to the default ChurchCRM logo."
@@ -15182,10 +13618,6 @@ msgstr "כבר קיימת אפשרות בשם זה"
 #: 
 msgid "Cannot delete the only remaining option"
 msgstr "לא ניתן למחוק את האפשרות היחידה שנותרה"
-
-#: 
-msgid "Clipboard not available. Please use the Download button to save your codes."
-msgstr "הלוח אינו זמין. אנא השתמשו בלחצן ההורדה לשמירת הקודים שלכם."
 
 #: 
 msgid "Custom Option"
@@ -15262,10 +13694,6 @@ msgstr "קוד שחזור"
 #: 
 msgid "Set up Email"
 msgstr "הגדרת דואר אלקטרוני"
-
-#: 
-msgid "Unable to copy to clipboard. Please copy the codes manually."
-msgstr "לא ניתן להעתיק ללוח. אנא העתיקו את הקודים באופן ידני."
 
 #: 
 msgid "Use Recovery Code"
@@ -15584,10 +14012,6 @@ msgid "Add Recurring Event"
 msgstr "הוסף אירוע חוזר"
 
 #: 
-msgid "Available after the event is saved."
-msgstr "זמין לאחר שמירת האירוע."
-
-#: 
 msgid "Boolean properties/fields accept yes / no / true / false / 1 / 0."
 msgstr "מאפיינים/שדות בוליאניים מקבלים yes / no / true / false / 1 / 0."
 
@@ -15628,10 +14052,6 @@ msgid "External calendar sharing is disabled"
 msgstr "שיתוף לוח שנה חיצוני מושבת"
 
 #: 
-msgid "Failed to load event editor. Please refresh and try again."
-msgstr "טעינת עורך האירועים נכשלה. אנא רענן ונסה שוב."
-
-#: 
 msgid "Family Custom"
 msgstr "משפחה מותאמת אישית"
 
@@ -15640,16 +14060,8 @@ msgid "Family Property"
 msgstr "מאפיין משפחה"
 
 #: 
-msgid "Fields"
-msgstr "שדות"
-
-#: 
 msgid "Go to home"
 msgstr "עבור לדף הבית"
-
-#: 
-msgid "Hide advanced options"
-msgstr "הסתר אפשרויות מתקדמות"
 
 #: 
 msgid "How the CSV Import Works"
@@ -15668,14 +14080,6 @@ msgid "Loading event editor…"
 msgstr "טוען עורך אירועים…"
 
 #: 
-msgid "No group"
-msgstr "ללא שירות"
-
-#: 
-msgid "Not pinned to any calendar"
-msgstr "לא מקושר לאף לוח שנה"
-
-#: 
 msgid "Optional — sermon notes, materials, or other details copied to every generated event."
 msgstr "אופציונלי — הערות דרשה, חומרים, או פרטים אחרים שמועתקים לכל אירוע שנוצר."
 
@@ -15690,10 +14094,6 @@ msgstr "אדם מותאם אישית"
 #: 
 msgid "Person Property"
 msgstr "מאפיין אדם"
-
-#: 
-msgid "Show more options"
-msgstr "הצג אפשרויות נוספות"
 
 #: 
 msgid "The calendar link is incomplete. Please check the URL with the person who sent it to you."
@@ -15720,16 +14120,8 @@ msgid "This calendar link is invalid or has been revoked. Ask the church for a c
 msgstr "קישור לוח השנה אינו תקין או שבוטל. בקש מהקהילה קישור עדכני."
 
 #: 
-msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
-msgstr "קושר אירוע זה לרשימת שירות או כיתה — משמש בתהליך הכניסה של הקיוסק."
-
-#: 
 msgid "Upload a CSV to create families and people in bulk."
 msgstr "העלה CSV ליצירת משפחות ואנשים בכמות."
-
-#: 
-msgid "Volunteer-entered headcounts, broken down by category."
-msgstr "ספירת נוכחים שהוזנה על ידי מתנדב, מחולקת לפי קטגוריה."
 
 #: 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
@@ -15764,14 +14156,6 @@ msgstr "מוסיף חגים לאומיים ללוח השנה הראשי. כל מ
 msgid "Choose map provider"
 msgstr "בחר ספק מפות"
 
-#: 
-msgid "Current database"
-msgstr "מסד נתונים נוכחי"
-
-#: 
-msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
-msgstr "נתוני הדגמה נטענים בדרך כלל רק בהתקנות חדשות. ייבוא עכשיו יוסיף רשומות לדוגמה לצד הנתונים הקיימים שלך ועשוי ליצור כפילויות."
-
 #. plugin:holidays:section:2:content
 #: 
 msgid "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
@@ -15796,10 +14180,6 @@ msgid "Holidays are tagged by type: Official, Observances, Bank Holidays, Season
 msgstr "חגים מסומנים לפי סוג: רשמיים, אירועים, חגי בנקים, עונתיים ודתיים. השאר את כל הקטגוריות לא מסומנות כדי להציג כל חג, או בחר סוגים ספציפיים לצמצום התצוגה."
 
 #: 
-msgid "Import demo data anyway"
-msgstr "ייבא נתוני הדגמה בכל זאת"
-
-#: 
 msgid "Missing pledge identifier."
 msgstr "מזהה ההתחייבות הכספית חסר."
 
@@ -15818,10 +14198,6 @@ msgstr "פתח ב-Apple Maps"
 #: 
 msgid "Open in Google Maps"
 msgstr "פתח ב-Google Maps"
-
-#: 
-msgid "Open in new tab"
-msgstr "פתח בכרטיסייה חדשה"
 
 #. plugin:holidays:section:0:title
 #: 
@@ -15854,22 +14230,10 @@ msgstr "מערכת"
 msgid "Timeline filters"
 msgstr "פילטרי ציר זמן"
 
-#: 
-msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
-msgstr "כדי להתחיל מחדש עם מסד נתונים נקי, השתמש באיפוס מסד הנתונים מלוח הבקרה של מנהל המערכת לפני ייבוא נתוני הדגמה."
-
 #. plugin:holidays:section:0:content
 #: 
 msgid "Use the Countries picker to choose one or more countries. Each country you add will appear as a separate calendar entry in the sidebar — enabling you to show holidays for a global congregation."
 msgstr "השתמש בבורר המדינות כדי לבחור מדינה אחת או יותר. כל מדינה שתוסיף תופיע כערך לוח שנה נפרד בסרגל הצד — ומאפשרת לך להציג חגים עבור קהילה עולמית."
-
-#: 
-msgid "Your database already contains data"
-msgstr "מסד הנתונים שלך כבר מכיל נתונים"
-
-#: 
-msgid "people"
-msgstr "אנשים"
 
 #: 
 msgid "A downloadUrl is required to install a plugin."
@@ -16112,22 +14476,1801 @@ msgid "Name cannot be longer than %d characters"
 msgstr "השם לא יכול להיות ארוך מ-%d תווים"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "זקוק לעזרה? צור איתנו קשר"
+msgid "Opens a 2-minute window for devices to register at:"
+msgstr "פותח חלון של 2 דקות לרישום מכשירים ב:"
+
+#: 
+msgid "Are you sure you want to delete this note?"
+msgstr "האם אתה בטוח שברצונך למחוק פתק זה?"
+
+#: 
+msgid "Cancel — wait 1 more minute"
+msgstr "ביטול — המתן עוד דקה אחת"
+
+#: 
+msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
+msgstr "לא ניתן למחוק את קרן התרומות: היא עדיין מוזכרת בהתחייבות אחת או יותר."
+
+#: 
+msgid "Cannot delete fundraiser: %d donated items are still associated. Remove the items first."
+msgstr "לא ניתן למחוק את מסע גיוס התרומות: %d פריטים תרומה עדיין משויכים. הסר את הפריטים תחילה."
+
+#: 
+msgid "Cannot delete property type: %d properties still reference it. Reassign or delete those properties first."
+msgstr "לא ניתן למחוק את סוג הנכס: %d נכסים עדיין מפנים אליו. הקצה מחדש או מחק נכסים אלה תחילה."
+
+#: 
+msgid "Cannot delete volunteer opportunity: %d people are still assigned. Remove the assignments first."
+msgstr "לא ניתן למחוק את הזדמנות גיוס המתנדבים: %d אנשים עדיין מוקצים. הסר את ההקצאות תחילה."
+
+#: 
+msgid "Class must be one of p, f, or g"
+msgstr "המחלקה חייבת להיות אחת מ-p, f, או g"
+
+#: 
+msgid "Copy error message"
+msgstr "העתק הודעת שגיאה"
+
+#: 
+msgid "Could not load note."
+msgstr "לא ניתן לטעון את הפתק."
+
+#: 
+msgid "Description cannot exceed 100 characters"
+msgstr "התיאור לא יכול לעלות על 100 תווים"
+
+#: 
+msgid "Donation fund not found"
+msgstr "קרן התרומות לא נמצאה"
+
+#: 
+msgid "Error deleting note."
+msgstr "שגיאה במחיקת הפתק."
+
+#: 
+msgid "Failed to create donation fund"
+msgstr "יצירת קרן התרומות נכשלה"
+
+#: 
+msgid "Failed to create fundraiser"
+msgstr "יצירת מסע גיוס התרומות נכשלה"
+
+#: 
+msgid "Failed to create property type"
+msgstr "יצירת סוג הנכס נכשלה"
+
+#: 
+msgid "Failed to create volunteer opportunity"
+msgstr "יצירת הזדמנות גיוס המתנדבים נכשלה"
+
+#: 
+msgid "Failed to delete donation fund"
+msgstr "מחיקת קרן התרומות נכשלה"
+
+#: 
+msgid "Failed to delete fundraiser"
+msgstr "מחיקת מסע גיוס התרומות נכשלה"
+
+#: 
+msgid "Failed to delete note."
+msgstr "מחיקת הפתק נכשלה."
+
+#: 
+msgid "Failed to delete property type"
+msgstr "מחיקת סוג הנכס נכשלה"
+
+#: 
+msgid "Failed to delete volunteer opportunity"
+msgstr "מחיקת הזדמנות גיוס המתנדבים נכשלה"
+
+#: 
+msgid "Failed to update donation fund"
+msgstr "עדכון קרן התרומות נכשל"
+
+#: 
+msgid "Failed to update fundraiser"
+msgstr "עדכון מסע גיוס התרומות נכשל"
+
+#: 
+msgid "Failed to update property type"
+msgstr "עדכון סוג הנכס נכשל"
+
+#: 
+msgid "Failed to update volunteer opportunity"
+msgstr "עדכון הזדמנות גיוס המתנדבים נכשל"
+
+#: 
+msgid "Fundraiser not found"
+msgstr "מסע גיוס התרומות לא נמצא"
+
+#: 
+msgid "Installation ID"
+msgstr "מזהה התקנה"
+
+#: 
+msgid "Invalid class"
+msgstr "מחלקה לא חוקית"
+
+#: 
+msgid "Name cannot exceed 30 characters"
+msgstr "השם לא יכול לעלות על 30 תווים"
+
+#: 
+msgid "Note by %s deleted"
+msgstr "הפתק של %s נמחק"
+
+#: 
+msgid "Note not found."
+msgstr "הפתק לא נמצא."
+
+#: 
+msgid "Plugin Development Docs"
+msgstr "תיעוד פיתוח תוספים"
+
+#: 
+msgid "Property type not found"
+msgstr "סוג הנכס לא נמצא"
+
+#: 
+msgid "Read more"
+msgstr "קרא עוד"
+
+#: 
+msgid "Refreshing Soon"
+msgstr "מתרענן בקרוב"
+
+#: 
+msgid "Refreshing in"
+msgstr "מתרענן בעוד"
+
+#: 
+msgid "That name already exists."
+msgstr "שם זה כבר קיים."
+
+#: 
+msgid "Title is required"
+msgstr "הכותרת נדרשת"
+
+#: 
+msgid "Volunteer opportunity not found"
+msgstr "הזדמנות גיוס המתנדבים לא נמצאה"
+
+#: 
+msgid "You do not have permission to delete this note."
+msgstr "אין לך הרשאה למחוק פתק זה."
+
+#: 
+msgid "You do not have permission to edit this note."
+msgstr "אין לך הרשאה לערוך פתק זה."
+
+#: 
+msgid "[Private Note — visible only to creator]"
+msgstr "[פתק פרטי — גלוי ליוצר בלבד]"
+
+#: 
+msgid "seconds"
+msgstr "שניות"
+
+#: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "לא ניתן למחוק אירוע: %d אנשים כרגע מחוברים."
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "לא ניתן למחוק אירוע: אירוע מוקצה כרגע לקיוסק."
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "לא ניתן למחוק קבוצה: זה הקהל עבור %d אירוע(ים) והקבוצה ברירת המחדל עבור %d סוג(י) אירוע. הקצה מחדש אלה תחילה."
+
+#: 
+msgid "A Calendar access token has been generated and saved."
+msgstr "אסימון גישה ליומן נוצר ונשמר."
+
+#: 
+msgid "API key regenerated"
+msgstr "מפתח API נוצר מחדש"
+
+#: 
+msgid "Access Token"
+msgstr "אסימון גישה"
+
+#: 
+msgid "Action Confirmation"
+msgstr "אישור פעולה"
+
+#: 
+msgid "Activate"
+msgstr "הפעלה"
+
+#: 
+msgid "Add A Group Name"
+msgstr "הוסף שם קבוצה"
+
+#: 
+msgid "Add Walk-in / Visitor"
+msgstr "הוסף אורח/מבקר"
+
+#: 
+msgid "Add an extra layer of security to your account"
+msgstr "הוסף שכבת אבטחה נוספת לחשבונך"
+
+#: 
+msgid "Added"
+msgstr "נוסף"
+
+#: 
+msgid "Added to cart successfully"
+msgstr "נוסף לסל בהצלחה"
+
+#: 
+msgid "Address is required"
+msgstr "כתובת היא שדה חובה"
+
+#: 
+msgid "All Day"
+msgstr "כל היום"
+
+#: 
+msgid "All Roles"
+msgstr "כל התפקידים"
+
+#: 
+msgid "All System Settings"
+msgstr "כל הגדרות המערכת"
+
+#: 
+msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
+msgstr "כל החברויות והמאפיינים בקבוצה יימחקו. חברי הקבוצה עצמם לא ישתנו."
+
+#: 
+msgid "All members already in cart"
+msgstr "כל החברים כבר נמצאים בסל"
+
+#: 
+msgid "Applied preset"
+msgstr "הגדרה מוגדרת מראש הוחלה"
+
+#: 
+msgid "Applying..."
+msgstr "מחיל..."
+
+#: 
+msgid "Are you sure you want to continue?"
+msgstr "האם אתה בטוח שאתה רוצה להמשיך?"
+
+#: 
+msgid "Are you sure you want to delete this deposit?"
+msgstr "האם אתם בטוחים שברצונכם למחוק הפקדת תרומות זו?"
+
+#: 
+msgid "Are you sure you want to delete this event type? This cannot be undone."
+msgstr "האם אתה בטוח שברצונך למחוק סוג אירוע זה? לא ניתן לבטל פעולה זו."
+
+#: 
+msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
+msgstr "האם אתה בטוח שברצונך לבטל את האימות הדו-שלבי? חשבונך יהיה פחות מאובטח."
+
+#: 
+msgid "Are you sure you want to move"
+msgstr "האם אתה בטוח שברצונך להזיז"
+
+#: 
+msgid "Are you sure you want to remove"
+msgstr "האם אתם בטוחים שברצונכם להסיר"
+
+#: 
+msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
+msgstr "האם אתה בטוח שברצונך להסיר את המאפיינים הייחודיים של האנשים בקבוצה? כל נתוני המאפיינים של חברי הקבוצה יאבדו!"
+
+#: 
+msgid "Are you sure you want to unassign this property?"
+msgstr "האם אתה בטוח שברצונך לבטל את שיוך המאפיין הזה?"
+
+#: 
+msgid "Attendance record deleted."
+msgstr "רשומת נוכחות נמחקה."
+
+#: 
+msgid "Available after the event is saved."
+msgstr "זמין לאחר שמירת האירוע."
+
+#: 
+msgid "BCC All"
+msgstr "BCC לכולם"
+
+#: 
+msgid "Background Color"
+msgstr "צבע רקע"
+
+#: 
+msgid "Backup Complete"
+msgstr "הגיבוי הושלם"
+
+#: 
+msgid "Backup Downloaded, Copy on server removed"
+msgstr "הגיבוי הורד, העותק בשרת הוסר"
+
+#: 
+msgid "Backup Skipped"
+msgstr "דילוג על גיבוי"
+
+#: 
+msgid "Backup complete! Click below to download."
+msgstr "הגיבוי הושלם! לחץ למטה להורדה."
+
+#: 
+msgid "Backup downloaded. Server copy removed."
+msgstr "הגיבוי הורד. העותק מהשרת הוסר."
+
+#: 
+msgid "Before You Start"
+msgstr "לפני שתתחיל"
+
+#: 
+msgid "Browser language preference detected"
+msgstr "זוהתה העדפת שפת דפדפן"
+
+#: 
+msgid "Calendar Name"
+msgstr "שם לוח שנה"
+
+#: 
+msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
+msgstr "לא ניתן לטעון את מאפייני היומן. ייתכן שחסר אסימון גישה או שהיומן אינו מוגדר כהלכה."
+
+#: 
+msgid "Can't scan?"
+msgstr "לא מצליח לסרוק?"
+
+#: 
+msgid "Cannot Delete Event Type"
+msgstr "לא ניתן למחוק סוג אירוע"
+
+#: 
+msgid "Cart emptied successfully"
+msgstr "הסל רוקן בהצלחה"
+
+#: 
+msgid "Cart emptied to group successfully"
+msgstr "הסל רוקן לקבוצה בהצלחה"
+
+#: 
+msgid "Change Your Locale"
+msgstr "שנה את ההגדרות האזוריות"
+
+#: 
+msgid "Change role"
+msgstr "שנה תפקיד"
+
+#: 
+msgid "Check Number"
+msgstr "בדוק מספר"
+
+#: 
+msgid "Check out"
+msgstr "יציאה"
+
+#: 
+msgid "Check-in failed. Please try again."
+msgstr "הצ׳ק-אין נכשל. אנא נסה שוב."
+
+#: 
+msgid "Check-out failed. Please try again."
+msgstr "הצ׳ק-אאוט נכשל. אנא נסה שוב."
+
+#: 
+msgid "City is required"
+msgstr "עיר היא שדה חובה"
+
+#: 
+msgid "Click Save to apply."
+msgstr "לחצו על שמירה להחלה."
+
+#: 
+msgid "Clipboard API not available. Please copy the URL manually."
+msgstr "API לוח הגזירים אינו זמין. אנא העתק את כתובת ה- URL באופן ידני."
+
+#: 
+msgid "Clipboard not available. Please use the Download button to save your codes."
+msgstr "הלוח אינו זמין. אנא השתמשו בלחצן ההורדה לשמירת הקודים שלכם."
+
+#: 
+msgid "Code incomplete"
+msgstr "קוד לא מלא"
+
+#: 
+msgid "Code is invalid"
+msgstr "קוד לא תקין"
+
+#: 
+msgid "Coming soon"
+msgstr "בקרוב"
+
+#: 
+msgid "Confirm Activation"
+msgstr "אישור הפעלה"
+
+#: 
+msgid "Confirm Check Out"
+msgstr "אשר יציאה"
+
+#: 
+msgid "Confirm Deactivation"
+msgstr "אישור ביטול הפעלה"
+
+#: 
+msgid "Confirm Delete Group"
+msgstr "אשר מחיקת קבוצה"
+
+#: 
+msgid "Confirm Disable Group Specific Properties"
+msgstr "אשר השבתת מאפיינים ייחודיים לקבוצה"
+
+#: 
+msgid "Confirm Enable Group Specific Properties"
+msgstr "אשר הפעלת מאפיינים ייחודיים לקבוצה"
+
+#: 
+msgid "Confirm with a code from your authenticator app"
+msgstr "אשר עם קוד מאפליקציית האימות שלך"
+
+#: 
+msgid "Copied"
+msgstr "הועתק"
+
+#: 
+msgid "Copied to clipboard"
+msgstr "הועתק ללוח הגזירים"
+
+#: 
+msgid "Copied!"
+msgstr "הועתק!"
+
+#: 
+msgid "Copy"
+msgstr "העתק"
+
+#: 
+msgid "Copy All Emails"
+msgstr "העתק את כל ההודעות"
+
+#: 
+msgid "Copy All Numbers"
+msgstr "העתק את כל המספרים"
+
+#: 
+msgid "Copy Members to Group"
+msgstr "העתקת חברים לקבוצה"
+
+#: 
+msgid "Creating Backup..."
+msgstr "יוצר גיבוי..."
+
+#: 
+msgid "Creating..."
+msgstr "יוצר..."
+
+#: 
+msgid "Current database"
+msgstr "מסד נתונים נוכחי"
+
+#: 
+msgid "Deactivate"
+msgstr "השבת"
+
+#: 
+msgid "Default Name Group"
+msgstr "קבוצת שם ברירת מחדל"
+
+#: 
+msgid "Default role updated."
+msgstr "תפקיד ברירת המחדל עודכן."
+
+#: 
+msgid "Delete Calendar"
+msgstr "מחק לוח שנה"
+
+#: 
+msgid "Delete Event Type"
+msgstr "מחק סוג אירוע"
+
+#: 
+msgid "Delete attendance record?"
+msgstr "למחוק רשומת נוכחות?"
+
+#: 
+msgid "Delete check-in record for"
+msgstr "מחק רשומת כניסה עבור"
+
+#: 
+msgid "Delete this event?"
+msgstr "למחוק אירוע זה?"
+
+#: 
+msgid "Delete this person?"
+msgstr "מחק את האדם הזה?"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. This cannot be undone."
+msgstr "מחיקת אירוע תמחק גם את כל ספירות הנוכחות. לא ניתן לבטל פעולה זו."
+
+#: 
+msgid "Deleting this event will also delete all attendance records. This cannot be undone."
+msgstr "מחיקת אירוע זה תמחק גם את כל רשומות הנוכחות. לא ניתן לבטל פעולה זו."
+
+#: 
+msgid "Demo data imported successfully"
+msgstr "נתוני הדוגמה יובאו בהצלחה"
+
+#: 
+msgid "Demo data is normally only loaded on fresh installations. Importing now will add sample records alongside your existing data and may create duplicates."
+msgstr "נתוני הדגמה נטענים בדרך כלל רק בהתקנות חדשות. ייבוא עכשיו יוסיף רשומות לדוגמה לצד הנתונים הקיימים שלך ועשוי ליצור כפילויות."
+
+#: 
+msgid "Deposit ID"
+msgstr "מזהה ההפקדה"
+
+#: 
+msgid "Deposit Total"
+msgstr "סך ההפקדה"
+
+#: 
+msgid "Deposit Value"
+msgstr "ערך הפקדת תרומות"
+
+#: 
+msgid "Deposit saved successfully"
+msgstr "ההפקדה נשמרה בהצלחה"
+
+#: 
+msgid "Deposit(s)"
+msgstr "פקדונות"
+
+#: 
+msgid "Disable Two-Factor Authentication"
+msgstr "השבת אימות דו-שלבי"
+
+#: 
+msgid "Do you want to delete this person?  This cannot be undone."
+msgstr "האם ברצונך למחוק את האדם הזה? לא ניתן לבטל פעולה זו."
+
+#: 
+msgid "Done"
+msgstr "סיום"
+
+#: 
+msgid "Download Backup & Continue"
+msgstr "הורדת גיבוי והמשך"
+
+#: 
+msgid "Downloaded"
+msgstr "הורד"
+
+#: 
+msgid "Downloading latest release from GitHub..."
+msgstr "מוריד את הגרסה האחרונה מ-GitHub..."
+
+#: 
+msgid "Duration"
+msgstr "משך"
+
+#: 
+msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
+msgstr "בכל כניסה תצטרך לאשר עם קוד מאפליקציית האימות שלך"
+
+#: 
+msgid "Email addresses copied to clipboard"
+msgstr "כתובות דוא\"ל הועתקו ללוח הגזירים"
+
+#: 
+msgid "Empty Cart"
+msgstr "רוקן סל"
+
+#: 
+msgid "Empty Cart to Family"
+msgstr "רוקן סל למשפחה"
+
+#: 
+msgid "Empty Cart to Group"
+msgstr "רוקן סל לקבוצה"
+
+#: 
+msgid "Empty your entire cart?"
+msgstr "האם לרוקן את כל הסל שלך?"
+
+#: 
+msgid "Enable Two-Factor Authentication"
+msgstr "הפעל אימות דו-שלבי"
+
+#: 
+msgid "End Date"
+msgstr "תאריך סיום"
+
+#: 
+msgid "End time must be after start time."
+msgstr "שעת הסיום חייבת להיות אחרי שעת ההתחלה."
+
+#: 
+msgid "Enter text here..."
+msgstr "הכנס טקסט כאן..."
+
+#: 
+msgid "Enter your username and password as usual"
+msgstr "הזן את שם המשתמש והסיסמה שלך כרגיל"
+
+#: 
+msgid "Error deleting payments"
+msgstr "שגיאה במחיקת תשלומים"
+
+#: 
+msgid "Error loading payments"
+msgstr "שגיאה בטעינת תשלומים"
+
+#: 
+msgid "Error saving deposit"
+msgstr "שגיאה בשמירת הפקדה"
+
+#: 
+msgid "Event already exists. Redirecting to check-in..."
+msgstr "האירוע כבר קיים. מנתב לצ׳ק-אין..."
+
+#: 
+msgid "Event created. Redirecting to check-in..."
+msgstr "האירוע נוצר. מנתב לצ׳ק-אין..."
+
+#: 
+msgid "Failed to add family to cart"
+msgstr "הוספת המשפחה לסל נכשלה"
+
+#: 
+msgid "Failed to add group to cart"
+msgstr "הוספת הקבוצה לסל נכשלה"
+
+#: 
+msgid "Failed to add members to cart. Please try again."
+msgstr "הוספת חברים לרשימה נכשלה. אנא נסו שוב."
+
+#: 
+msgid "Failed to add to cart"
+msgstr "הוספת הפריט לסל נכשלה"
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "ביטול ההרשמה נכשל. אנא נסה שוב."
+
+#: 
+msgid "Failed to copy URL"
+msgstr "העתקת ה-URL נכשלה"
+
+#: 
+msgid "Failed to create backup."
+msgstr "יצירת הגיבוי נכשלה."
+
+#: 
+msgid "Failed to create class. Please try again."
+msgstr "יצירת הכיתה נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Failed to create event."
+msgstr "יצירת האירוע נכשלה."
+
+#: 
+msgid "Failed to create event. Please try again."
+msgstr "יצירת האירוע נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Failed to create group. Please try again."
+msgstr "יצירת הקבוצה נכשלה. נסה שנית."
+
+#: 
+msgid "Failed to delete class. Please try again."
+msgstr "מחיקת כיתה נכשלה. אנא נסו שוב."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "מחיקת האירוע נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Failed to delete group. Please try again."
+msgstr "מחיקת קבוצה נכשלה. אנא נסו שוב."
+
+#: 
+msgid "Failed to delete. Please try again."
+msgstr "המחיקה נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "השבתת אימות דו-שלבי נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Failed to download update package."
+msgstr "הורדת חבילת העדכון נכשלה."
+
+#: 
+msgid "Failed to empty cart"
+msgstr "ריקון הסל נכשל"
+
+#: 
+msgid "Failed to empty cart to group"
+msgstr "ריקון הסל לקבוצה נכשל"
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "יצירת קוד QR נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "טעינת נתוני לוח השנה נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Failed to load cart status."
+msgstr "טעינת מצב הסל נכשלה."
+
+#: 
+msgid "Failed to load event editor. Please refresh and try again."
+msgstr "טעינת עורך האירועים נכשלה. אנא רענן ונסה שוב."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "טעינת האירוע נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Failed to load groups. Please refresh the page."
+msgstr "טעינת הקבוצות נכשלה. רענן את הדף."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "טעינת קודי השחזור נכשלה. אנא רענן את הדף."
+
+#: 
+msgid "Failed to refresh upgrade information from GitHub."
+msgstr "רענון מידע השדרוג מ-GitHub נכשל."
+
+#: 
+msgid "Failed to remove family from cart"
+msgstr "הסרת המשפחה מהסל נכשלה"
+
+#: 
+msgid "Failed to remove from cart"
+msgstr "הסרת הפריט מהסל נכשלה"
+
+#: 
+msgid "Failed to remove from class. Please try again."
+msgstr "הסרה מהכיתה נכשלה. אנא נסו שוב."
+
+#: 
+msgid "Failed to remove group"
+msgstr "הסרת הקבוצה נכשלה"
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "שמירת האירוע נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Failed to save setting"
+msgstr "שמירת ההגדרה נכשלה"
+
+#: 
+msgid "Failed to set default role. Please try again."
+msgstr "הגדרת תפקיד ברירת המחדל נכשלה. נסה שנית."
+
+#: 
+msgid "Failed to update group. Please try again."
+msgstr "עדכון הקבוצה נכשל. נסה שנית."
+
+#: 
+msgid "Failed to update role name. Please try again."
+msgstr "עדכון שם התפקיד נכשל. נסה שנית."
+
+#: 
+msgid "Family added to cart"
+msgstr "המשפחה נוספה לסל"
+
+#: 
+msgid "Family name must be at least 2 characters"
+msgstr "שם המשפחה חייב להכיל לפחות 2 תווים"
+
+#: 
+msgid "Fields"
+msgstr "שדות"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "מצא אנשים שלא השתתפו באירוע"
+
+#: 
+msgid "First name is required"
+msgstr "שם פרטי הוא שדה חובה"
+
+#: 
+msgid "First name must be at least 2 characters"
+msgstr "השם הפרטי חייב להכיל לפחות 2 תווים"
+
+#: 
+msgid "Focus"
+msgstr "מיקוד"
+
+#: 
+msgid "Force Import"
+msgstr "אלץ ייבוא"
+
+#: 
+msgid "Force Import will retry and may create duplicate data."
+msgstr "אילוץ ייבוא יבצע ניסיון חוזר ועלול ליצור כפילויות."
+
+#: 
+msgid "Force re-install initiated. Please backup your database before applying."
+msgstr "הופעלה התקנה מחדש כפויה. נא לגבות את מסד הנתונים לפני היישום."
+
+#: 
+msgid "Foreground Color"
+msgstr "צבע טקסט"
+
+#: 
+msgid "Fund(s)"
+msgstr "קרנות"
+
+#: 
+msgid "Generate new code"
+msgstr "צור קוד חדש"
+
+#: 
+msgid "Go to homepage"
+msgstr "מעבר לדף הבית"
+
+#: 
+msgid "Group added to cart"
+msgstr "הקבוצה נוספה לסל"
+
+#: 
+msgid "Group deleted successfully."
+msgstr "הקבוצה נמחקה בהצלחה."
+
+#: 
+msgid "Group removed from cart"
+msgstr "הקבוצה הוסרה מהסל"
+
+#: 
+msgid "GroupID required for role selection prompt"
+msgstr "נדרש GroupID עבור בחירת תפקיד"
+
+#: 
+msgid "HTML URL"
+msgstr "כתובת URL של HTML"
+
+#: 
+msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
+msgstr "הכן את אפליקציית האימות שלך (Google Authenticator, Microsoft Authenticator, Authy וכו')"
+
+#: 
+msgid "Hide advanced options"
+msgstr "הסתר אפשרויות מתקדמות"
+
+#: 
+msgid "Home phone is required"
+msgstr "טלפון בבית הוא שדה חובה"
+
+#: 
+msgid "ICS URL"
+msgstr "כתובת ICS"
+
+#: 
+msgid "Ignored"
+msgstr "נדלג"
+
+#: 
+msgid "Import Demo Data"
+msgstr "ייבא נתוני דוגמה"
+
+#: 
+msgid "Import demo data anyway"
+msgstr "ייבא נתוני הדגמה בכל זאת"
+
+#: 
+msgid "Import failed"
+msgstr "הייבוא נכשל"
+
+#: 
+msgid "Import failed. Please try again."
+msgstr "הייבוא נכשל. אנא נסו שוב."
+
+#: 
+msgid "Important"
+msgstr "חשוב"
+
+#: 
+msgid "Importing..."
+msgstr "מייבא..."
+
+#: 
+msgid "Include Sunday School classes and enrollments"
+msgstr "כלול כיתות ורישומי בית ספר של יום ראשון"
+
+#: 
+msgid "Include events and calendars"
+msgstr "כלול אירועים ולוחות שנה"
+
+#: 
+msgid "Include financial data (donation funds, pledges)"
+msgstr "כלול נתונים פיננסיים (קרנות תרומה, התחייבויות)"
+
+#: 
+msgid "Invalid Entry"
+msgstr "קלט לא תקין"
+
+#: 
+msgid "Invalid format"
+msgstr "פורמט לא תקין"
+
+#: 
+msgid "It is strongly recommended to have a backup before proceeding."
+msgstr "מומלץ מאוד שיהיה לכם גיבוי לפני שתמשיכו."
+
+#: 
+msgid "Just now"
+msgstr "הרגע"
+
+#: 
+msgid "Language updated to"
+msgstr "השפה עודכנה ל-"
+
+#: 
+msgid "Last name is required"
+msgstr "שם משפחה הוא שדה חובה"
+
+#: 
+msgid "Last name must be at least 2 characters"
+msgstr "שם המשפחה חייב להכיל לפחות 2 תווים"
+
+#: 
+msgid "Leave blank to check out without recording the supervisor."
+msgstr "השאר ריק לצ׳ק-אאוט ללא רישום המפקח."
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "השאר ריק לשמירה על הקיים"
+
+#: 
+msgid "Loading"
+msgstr "טוען"
+
+#: 
+msgid "Loading recovery codes"
+msgstr "טוען קודי שחזור"
+
+#: 
+msgid "Make Default"
+msgstr "הגדר כברירת מחדל"
+
+#: 
+msgid "Manual"
+msgstr "ידני"
+
+#: 
+msgid "Map Cart"
+msgstr "מפה את הסל"
+
+#: 
+msgid "Maximum length is"
+msgstr "האורך המקסימלי הוא"
+
+#: 
+msgid "Members added to cart."
+msgstr "חברים נוספו לרשימה."
+
+#: 
+msgid "Minimum length is"
+msgstr "האורך המינימלי הוא"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "אנשים חסרים"
+
+#: 
+msgid "Move"
+msgstr "העבר"
+
+#: 
+msgid "Move Members"
+msgstr "העברת חברים"
+
+#: 
+msgid "Move Members to Group"
+msgstr "העברת חברים לקבוצה"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https://"
+msgstr "חייב להיות כתובת URL תקינה המתחילה ב-http:// או https://"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
+msgstr "חייב להיות כתובת URL תקינה (למשל, http://localhost)"
+
+#: 
+msgid "Must be a valid port number (e.g., 3306)"
+msgstr "חייב להיות מספר פורט תקין (למשל, 3306)"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "חייב להתחיל ב-/ אם לא ריק; ללא קו נטוי בסוף. מותרים רק אותיות, מספרים, קו תחתון, מקף, נקודה ו-/."
+
+#: 
+msgid "Need to remove this data later?"
+msgstr "צריך להסיר את הנתונים האלו מאוחר יותר?"
+
+#: 
+msgid "New Access Token"
+msgstr "אסימון גישה חדש"
+
+#: 
+msgid "No Anniversaries"
+msgstr "אין ימי נישואין"
+
+#: 
+msgid "No Birthdays"
+msgstr "אין ימי הולדת"
+
+#: 
+msgid "No Deposits"
+msgstr "אין הפקדות תרומות"
+
+#: 
+msgid "No Events Today"
+msgstr "אין אירועים היום"
+
+#: 
+msgid "No anniversaries in the past or next 7 days"
+msgstr "אין ימי נישואין ב-7 הימים האחרונים או הבאים"
+
+#: 
+msgid "No birthdays in the past or next 7 days"
+msgstr "אין ימי הולדת ב-7 הימים האחרונים או הבאים"
 
 #: 
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
 msgstr "לא נבחר לוח שנה — אירוע זה יופיע תחת לוח השנה של המערכת \"אירועים לא מוצמדים\" עד שתצמיד אותו."
 
 #: 
-msgid "Opens a 2-minute window for devices to register at:"
-msgstr "פותח חלון של 2 דקות לרישום מכשירים ב:"
+msgid "No deposit data available yet"
+msgstr "אין נתוני הפקדות זמינים עדיין"
+
+#: 
+msgid "No email addresses available"
+msgstr "אין כתובות דוא\"ל זמינות"
+
+#: 
+msgid "No group"
+msgstr "ללא שירות"
+
+#: 
+msgid "No members found for this role."
+msgstr "לא נמצאו חברים לתפקיד זה."
+
+#: 
+msgid "No payments on this deposit"
+msgstr "אין תשלומים בהפקדה זו"
+
+#: 
+msgid "No payments yet. Click \"Add Payment\" to get started."
+msgstr "אין עדיין תשלומים. לחץ על \"הוסף תשלום\" כדי להתחיל."
+
+#: 
+msgid "No phone numbers available"
+msgstr "אין מספרי טלפון זמינים"
+
+#: 
+msgid "Not pinned to any calendar"
+msgstr "לא מקושר לאף לוח שנה"
+
+#: 
+msgid "One-Time Code"
+msgstr "קוד חד-פעמי"
+
+#: 
+msgid "Open in New Tab"
+msgstr "פתח בלשונית חדשה"
+
+#: 
+msgid "Open in new tab"
+msgstr "פתח בכרטיסייה חדשה"
+
+#: 
+msgid "Open your authenticator app and scan this QR code"
+msgstr "פתח את אפליקציית האימות שלך וסרוק את קוד ה-QR הזה"
+
+#: 
+msgid "Optional Data to Include"
+msgstr "נתונים אופציונליים להכללה"
+
+#: 
+msgid "Optional — record who is checking this person out (e.g. a parent picking up a child)."
+msgstr "אופציונלי — רשום מי מוציא את האדם (לדוג׳ הורה שאוסף ילד)."
+
+#: 
+msgid "Parents"
+msgstr "הורים"
+
+#: 
+msgid "Password reset for"
+msgstr "איפוס סיסמה עבור"
+
+#: 
+msgid "Passwords do not match"
+msgstr "הסיסמאות אינן תואמות"
+
+#: 
+msgid "Payments deleted successfully"
+msgstr "התשלומים נמחקו בהצלחה"
+
+#: 
+msgid "Person already in cart"
+msgstr "האדם כבר נמצא בסל"
+
+#: 
+msgid "Person checked out."
+msgstr "האדם עשה צ׳ק-אאוט."
+
+#: 
+msgid "Person removed from class."
+msgstr "האדם הוסר מהכיתה."
+
+#: 
+msgid "Phone numbers copied to clipboard"
+msgstr "מספרי טלפון הועתקו ללוח"
+
+#: 
+msgid "Phone numbers copied — paste into your messaging app"
+msgstr "מספרי טלפון הועתקו - הדבק לאפליקציית ההודעות שלך"
+
+#: 
+msgid "Pinned Calendars"
+msgstr "לוחות שנה מוצמדים"
+
+#: 
+msgid "Please add at least one family member."
+msgstr "אנא הוסף לפחות בן משפחה אחד."
+
+#: 
+msgid "Please confirm activation of family"
+msgstr "אנא אשר הפעלת משפחה"
+
+#: 
+msgid "Please confirm deactivation of family"
+msgstr "אנא אשר השבתת משפחה"
+
+#: 
+msgid "Please confirm deletion of this group record"
+msgstr "אנא אשר את מחיקת רשומת הקבוצה הזו"
+
+#: 
+msgid "Please confirm disabling 2 Factor Auth for this user"
+msgstr "אנא אשר ביטול אימות דו-שלבי למשתמש זה"
+
+#: 
+msgid "Please confirm removal of user status from"
+msgstr "אנא אשר הסרת סטטוס משתמש מ-"
+
+#: 
+msgid "Please confirm reset failed login count"
+msgstr "אנא אשר איפוס ספירת התחברויות שנכשלו"
+
+#: 
+msgid "Please confirm the password reset of this user"
+msgstr "אנא אשר את איפוס הסיסמה של משתמש זה"
+
+#: 
+msgid "Please enter a valid URL"
+msgstr "אנא הזן כתובת URL תקינה"
+
+#: 
+msgid "Please enter a valid email address"
+msgstr "אנא הזן כתובת אימייל תקינה"
+
+#: 
+msgid "Please enter a valid email address (e.g., name@example.com)"
+msgstr "אנא הזן כתובת אימייל תקינה (למשל name@example.com)"
+
+#: 
+msgid "Please enter a valid number"
+msgstr "אנא הזן מספר תקין"
+
+#: 
+msgid "Please enter a valid phone number"
+msgstr "אנא הזן מספר טלפון תקין"
+
+#: 
+msgid "Please fill in all required fields correctly."
+msgstr "אנא מלא את כל שדות החובה בצורה נכונה."
+
+#: 
+msgid "Please map at least one column before importing"
+msgstr "אנא מפו לפחות עמודה אחת לפני הייבוא"
+
+#: 
+msgid "Please select a CSV file"
+msgstr "אנא בחרו קובץ CSV"
+
+#: 
+msgid "Please select a backup file to restore"
+msgstr "נא לבחור קובץ גיבוי לשחזור"
+
+#: 
+msgid "Please select a date"
+msgstr "אנא בחר תאריך"
+
+#: 
+msgid "Please select a group."
+msgstr "אנא בחר קבוצה."
+
+#: 
+msgid "Please select a person to check in."
+msgstr "אנא בחר אדם לצ׳ק-אין."
+
+#: 
+msgid "Please select a role."
+msgstr "אנא בחר תפקיד."
+
+#: 
+msgid "Please select both a group and a role."
+msgstr "אנא בחר גם קבוצה וגם תפקיד."
+
+#: 
+msgid "Please select rows to delete"
+msgstr "אנא בחר שורות למחיקה"
+
+#: 
+msgid "Please select target Role for members"
+msgstr "אנא בחר תפקיד יעד עבור החברים"
+
+#: 
+msgid "Please select target group for members"
+msgstr "אנא בחר קבוצת יעד עבור החברים"
+
+#: 
+msgid "Please try again"
+msgstr "אנא נסה שוב"
+
+#: 
+msgid "Press CTRL + C to copy"
+msgstr "לחץ על CTRL + C להעתקה"
+
+#: 
+msgid "Public calendar"
+msgstr "לוח שנה ציבורי"
+
+#: 
+msgid "Quick Setup"
+msgstr "הגדרה מהירה"
+
+#: 
+msgid "Range end date must be on or after range start date."
+msgstr "תאריך סיום הטווח חייב להיות ביום ההתחלה או אחריו."
+
+#: 
+msgid "Recovery Codes"
+msgstr "קודי שחזור"
+
+#: 
+msgid "Register another family"
+msgstr "רישום משפחה נוספת"
+
+#: 
+msgid "Registration Error"
+msgstr "שגיאת רישום"
+
+#: 
+msgid "Remove Property"
+msgstr "הסר מאפיין"
+
+#: 
+msgid "Remove this family from cart?"
+msgstr "להסיר משפחה זו מהסל?"
+
+#: 
+msgid "Remove this group from cart?"
+msgstr "להסיר קבוצה זו מהסל?"
+
+#: 
+msgid "Remove this person from cart?"
+msgstr "להסיר אדם זה מהסל?"
+
+#: 
+msgid "Removed from cart successfully"
+msgstr "הוסר מהסל בהצלחה"
+
+#: 
+msgid "Restore failed. Please check the backup file and try again."
+msgstr "השחזור נכשל. נא לבדוק את הקובץ ולנסות שוב."
+
+#: 
+msgid "Retry Download"
+msgstr "נסה הורדה שנית"
+
+#: 
+msgid "Role Name"
+msgstr "שם התפקיד"
+
+#: 
+msgid "Role added successfully."
+msgstr "התפקיד נוסף בהצלחה."
+
+#: 
+msgid "Role deleted successfully."
+msgstr "התפקיד נמחק בהצלחה."
+
+#: 
+msgid "Role name updated."
+msgstr "שם התפקיד עודכן."
+
+#: 
+msgid "Role not found."
+msgstr "התפקיד לא נמצא."
+
+#: 
+msgid "Roles"
+msgstr "תפקידים"
+
+#: 
+msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
+msgstr "שמור קודי שחזור אלה במקום בטוח. תוכל להשתמש בהם לגישה לחשבונך אם תאבד גישה לאפליקציית האימות שלך."
+
+#: 
+msgid "Saving..."
+msgstr "שומר..."
+
+#: 
+msgid "Scan QR Code"
+msgstr "סרוק קוד QR"
+
+#: 
+msgid "Search groups..."
+msgstr "חיפוש קבוצות..."
+
+#: 
+msgid "Search or select..."
+msgstr "חפש או בחר..."
+
+#: 
+msgid "Secure"
+msgstr "מאובטח"
+
+#: 
+msgid "Select Group and Role"
+msgstr "בחר קבוצה ותפקיד"
+
+#: 
+msgid "Select calendars..."
+msgstr "בחר לוחות שנה..."
+
+#: 
+msgid "Select event type..."
+msgstr "בחר סוג אירוע..."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "בחר את האירוע הרצוי"
+
+#: 
+msgid "Sequence"
+msgstr "רצף"
+
+#: 
+msgid "Server error"
+msgstr "שגיאת שרת"
+
+#: 
+msgid "Server returned an unexpected response. Please try again."
+msgstr "השרת החזיר תגובה בלתי צפויה. אנא נסו שוב."
+
+#: 
+msgid "Set Up Authenticator"
+msgstr "הגדר אפליקציית אימות"
+
+#: 
+msgid "Setting updated successfully"
+msgstr "ההגדרה עודכנה בהצלחה"
+
+#: 
+msgid "Setup Complete"
+msgstr "ההגדרה הושלמה"
+
+#: 
+msgid "Share this URL with family members to verify their information"
+msgstr "שתף URL זה עם בני המשפחה לאישור המידע שלהם"
+
+#: 
+msgid "Show more options"
+msgstr "הצג אפשרויות נוספות"
+
+#: 
+msgid "Sign In"
+msgstr "התחבר"
+
+#: 
+msgid "Skip & Check Out"
+msgstr "דלג וצא"
+
+#: 
+msgid "Sorry, we are unable to process your request at this point in time."
+msgstr "מצטערים, איננו יכולים לעבד את בקשתך בזמן זה"
+
+#: 
+msgid "Start Date"
+msgstr "תאריך התחלה"
+
+#: 
+msgid "Submitting..."
+msgstr "שולח..."
+
+#: 
+msgid "System upgrade completed successfully!"
+msgstr "שדרוג המערכת הושלם בהצלחה!"
+
+#: 
+msgid "Text All"
+msgstr "הודעה לכולם"
+
+#: 
+msgid "The selected file exceeds this servers maximum upload size of"
+msgstr "הקובץ שנבחר חורג מגודל ההעלאה המקסימלי של השרת"
+
+#: 
+msgid "There are no events scheduled for today"
+msgstr "אין אירועים מתוכננים להיום"
+
+#: 
+msgid "There was a problem retrieving the requested object"
+msgstr "הייתה בעיה באחזור האובייקט המבוקש"
+
+#: 
+msgid "This event type is used by"
+msgstr "סוג אירוע זה משמש את"
+
+#: 
+msgid "This field is required"
+msgstr "שדה זה נדרש"
+
+#: 
+msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
+msgstr "פעולה זו תמחק גם את כל התפקידים ונתוני המאפיינים הספציפיים לקבוצה הקשורים לרשומת קבוצה זו."
+
+#: 
+msgid "This will also delete all payments associated with this deposit"
+msgstr "פעולה זו תמחק גם את התשלומים הקשורים להפקדה זו"
+
+#: 
+msgid "This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor."
+msgstr "פעולה זו תיצור טבלת מאפיינים ייחודית לקבוצה זו. לאחר מכן תצטרך להוסיף את המאפיינים הנדרשים באמצעות עורך טופס המאפיינים הייחודיים לקבוצה."
+
+#: 
+msgid "This will replace any previously enrolled 2FA methods"
+msgstr "פעולה זו תחליף כל שיטות 2FA שנרשמו בעבר"
+
+#: 
+msgid "Ties this event to a class or ministry roster — used by the Kiosk check-in flow."
+msgstr "קושר אירוע זה לרשימת שירות או כיתה — משמש בתהליך הכניסה של הקיוסק."
+
+#: 
+msgid "Time"
+msgstr "זמן"
+
+#: 
+msgid "Timed"
+msgstr "מתוזמן"
 
 #: 
 msgid "Times use church time ({{church}}), not your browser ({{browser}})."
 msgstr "הזמנים משתמשים בשעון הקהילה ({{church}}), ולא בשעון הדפדפן שלך ({{browser}})."
 
 #: 
-msgid "Welcome — sign in to manage your community"
-msgstr "ברוך הבא — התחבר כדי לנהל את קהילתך"
+msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr "כדי להתחיל מחדש עם מסד נתונים נקי, השתמש באיפוס מסד הנתונים מלוח הבקרה של מנהל המערכת לפני ייבוא נתוני הדגמה."
+
+#: 
+msgid "Today"
+msgstr "היום"
+
+#: 
+msgid "Two Factor Enrollment Error"
+msgstr "שגיאת רישום דו-גורמי"
+
+#: 
+msgid "Two-factor authentication has been disabled"
+msgstr "אימות דו-גורמי הושבת"
+
+#: 
+msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
+msgstr "אימות דו-גורמי הוא אחת הדרכים הטובות ביותר להגן על חשבונך. אנו ממליצים בחום להשאירו מופעל."
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the URL manually."
+msgstr "לא ניתן להעתיק ללוח. אנא העתק את ה- URL באופן ידני."
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the codes manually."
+msgstr "לא ניתן להעתיק ללוח. אנא העתיקו את הקודים באופן ידני."
+
+#: 
+msgid "Unable to load"
+msgstr "לא ניתן לטעון"
+
+#: 
+msgid "Unable to load state list. Please check your network connection or try again later."
+msgstr "לא ניתן לטעון רשימת מדינות."
+
+#: 
+msgid "Unfocus"
+msgstr "בטל מיקוד"
+
+#: 
+msgid "Unknown error"
+msgstr "שגיאה לא ידועה"
+
+#: 
+msgid "Update package downloaded successfully."
+msgstr "חבילת העדכון הורדה בהצלחה."
+
+#: 
+msgid "Upgrade failed."
+msgstr "השדרוג נכשל."
+
+#: 
+msgid "Upgrade failed. Please check the logs."
+msgstr "השדרוג נכשל. אנא בדוק את היומנים."
+
+#: 
+msgid "Upgrade information refreshed. Reloading page..."
+msgstr "מידע השדרוג רוענן. טוען את הדף מחדש..."
+
+#: 
+msgid "Upload failed. Please check the file and try again."
+msgstr "ההעלאה נכשלה. בדקו את הקובץ ונסו שוב."
+
+#: 
+msgid "User Delete Confirmation"
+msgstr "אישור מחיקת משתמש"
+
+#: 
+msgid "Validation pending"
+msgstr "ממתין לאימות"
+
+#: 
+msgid "Verification URL"
+msgstr "URL לאישור"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "האימות נכשל. אנא נסה שוב."
+
+#: 
+msgid "Verification recorded"
+msgstr "האימות נרשם"
+
+#: 
+msgid "Verify Code"
+msgstr "אמת קוד"
+
+#: 
+msgid "Verifying"
+msgstr "מאמת"
+
+#: 
+msgid "View Cart"
+msgstr "הצג עגלה"
+
+#: 
+msgid "View all results"
+msgstr "צפייה בכל התוצאות"
+
+#: 
+msgid "Volunteer-entered headcounts, broken down by category."
+msgstr "ספירת נוכחים שהוזנה על ידי מתנדב, מחולקת לפי קטגוריה."
+
+#: 
+msgid "Warnings"
+msgstr "אזהרות"
+
+#: 
+msgid "We're so glad your family has joined us!"
+msgstr "שמחים שמשפחתכם הצטרפה אלינו!"
+
+#: 
+msgid "Welcome to the Family!"
+msgstr "ברוכים הבאים למשפחה!"
+
+#: 
+msgid "Yes, Empty Cart"
+msgstr "כן, רוקן סל"
+
+#: 
+msgid "Yes, Remove"
+msgstr "כן, הסר"
+
+#: 
+msgid "You are about to add a new deposit without a comment"
+msgstr "אתה עומד להוסיף הפקדה חדשה ללא הערה"
+
+#: 
+msgid "You can also use backup recovery codes if you lose access to your app"
+msgstr "תוכל גם להשתמש בקודי שחזור גיבוי אם תאבד גישה לאפליקציה שלך"
+
+#: 
+msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
+msgstr "כעת תוכל להשתמש באפליקציית האימות שלך להתחברות. כל קוד תקף ל-30 שניות."
+
+#: 
+msgid "You must enter the same password in both boxes"
+msgstr "עליך להזין את אותה סיסמה בשני התיבות"
+
+#: 
+msgid "You'll receive backup codes that can be used if you lose access to your app"
+msgstr "תקבל קודי גיבוי שניתן להשתמש בהם אם תאבד גישה לאפליקציה שלך"
+
+#: 
+msgid "Your Cart is Empty"
+msgstr "העגלה שלך ריקה"
+
+#: 
+msgid "Your account is now protected"
+msgstr "חשבונך מוגן כעת"
+
+#: 
+msgid "Your account is protected"
+msgstr "חשבונך מוגן"
+
+#: 
+msgid "Your authenticator app has been successfully enrolled"
+msgstr "אפליקציית האימות שלך נרשמה בהצלחה"
+
+#: 
+msgid "Your browser language preference differs from your ChurchCRM locale"
+msgstr "העדפת השפה של הדפדפן שלך שונה מהלוקאל של ChurchCRM שלך"
+
+#: 
+msgid "Your database already contains data"
+msgstr "מסד הנתונים שלך כבר מכיל נתונים"
+
+#: 
+msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "ההרשמה שלכם התקבלה. הצוות שלנו ייצור קשר בקרוב כדי לקבל את פניכם באופן אישי."
+
+#: 
+msgid "Zip code is required"
+msgstr "מיקוד הוא שדה חובה"
+
+#: 
+msgid "added"
+msgstr "נוסף"
+
+#: 
+msgid "ago"
+msgstr "לפני"
+
+#: 
+msgid "all members"
+msgstr "כל החברים"
+
+#: 
+msgid "already in cart"
+msgstr "כבר נמצא בסל"
+
+#: 
+msgid "day"
+msgstr "יום"
+
+#: 
+msgid "days"
+msgstr "ימים"
+
+#: 
+msgid "deposit(s) with no payments"
+msgstr "הפקדות ללא תשלומים"
+
+#: 
+msgid "e.g. Sunday Service"
+msgstr "לדוגמה שירות ראשון"
+
+#: 
+msgid "event(s). Deactivate the type instead, or reassign the events first."
+msgstr "אירוע(ים). השבת את הסוג במקום זאת, או הקצה מחדש את האירועים תחילה."
+
+#: 
+msgid "from this class?"
+msgstr "מכיתה זו?"
+
+#: 
+msgid "from this group?"
+msgstr "מקבוצה זו?"
+
+#: 
+msgid "in"
+msgstr "ב-"
+
+#: 
+msgid "in cart"
+msgstr "בסל"
+
+#: 
+msgid "member"
+msgstr "חבר"
+
+#: 
+msgid "members"
+msgstr "חברים"
+
+#: 
+msgid "members. Already had"
+msgstr "חברים. כבר היו"
+
+#: 
+msgid "mo"
+msgstr "חוד׳"
+
+#: 
+msgid "mos"
+msgstr "חוד׳"
+
+#: 
+msgid "open rate"
+msgstr "שיעור פתיחה"
+
+#: 
+msgid "our church"
+msgstr "הקהילה שלנו"
+
+#: 
+msgid "payment(s)?"
+msgstr "תשלומים?"
+
+#: 
+msgid "people"
+msgstr "אנשים"
+
+#: 
+msgid "people added to cart"
+msgstr "אנשים נוספו לסל"
+
+#: 
+msgid "people already in cart"
+msgstr "אנשים כבר נמצאים בסל"
+
+#: 
+msgid "people from cart"
+msgstr "אנשים מהסל"
+
+#: 
+msgid "people removed from cart"
+msgstr "אנשים הוסרו מהסל"
+
+#: 
+msgid "to another group?"
+msgstr "לקבוצה אחרת?"
+
+#: 
+msgid "years"
+msgstr "שנים"
+
+#: 
+msgid "yr"
+msgstr "שנ׳"
+
+#: 
+msgid "yrs"
+msgstr "שנ׳"
+
+#: 
+msgid "— Ignore —"
+msgstr "— דלג —"
+
+#: 
+msgid "— Select Country —"
+msgstr "— בחר מדינה —"
+
+#: 
+msgid "— Select State —"
+msgstr "— בחר מחוז —"
 

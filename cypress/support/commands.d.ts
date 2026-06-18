@@ -109,6 +109,21 @@ declare namespace Cypress {
     ): Chainable<any>;
 
     /**
+     * Make API request as an EditSelf-only user (amanda.black, family 20)
+     * Used for testing family-scope authorization (GHSA-jjcj-h3cm-p7x7)
+     * @param method - HTTP method
+     * @param url - Request URL
+     * @param body - Request body
+     * @param expectedStatus - Expected status code (default: 200)
+     */
+    makePrivateEditSelfAPICall(
+      method: string,
+      url: string,
+      body?: any,
+      expectedStatus?: number
+    ): Chainable<any>;
+
+    /**
      * Make API request with specific API key
      * @param key - API key to use
      * @param method - HTTP method

@@ -25,7 +25,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
 <div class="register-box" style="max-width: 900px;">
     <div class="register-logo text-center mb-4">
         <a href="<?= SystemURLs::getRootPath() ?>/" class="h2"><?= ChurchMetaData::getChurchName() ?></a>
-        <p class="text-muted mt-2"><?= gettext("We're so glad you're here! Register your family in just 3 easy steps.") ?></p>
+        <p class="text-body-secondary mt-2"><?= gettext("We're so glad you're here! Register your family in just 3 easy steps.") ?></p>
     </div>
     <div class="card registration-card">
         <div id="registration-stepper" class="bs-stepper">
@@ -337,17 +337,17 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                                                     </h6>
                                                 </div>
                                                 <div id="displayFamilyPersonCardEmailBlock<?= $x ?>" class="mb-2 d-none">
-                                                    <i class="fa-solid fa-envelope text-muted me-2"></i>
+                                                    <i class="fa-solid fa-envelope text-body-secondary me-2"></i>
                                                     <strong><?= gettext('Email') ?>:</strong>
                                                     <div class="ms-4"><span id="displayFamilyPersonCardEmail<?= $x ?>"></span></div>
                                                 </div>
                                                 <div id="displayFamilyPersonCardPhoneBlock<?= $x ?>" class="mb-2 d-none">
-                                                    <i class="fa-solid fa-phone text-muted me-2"></i>
+                                                    <i class="fa-solid fa-phone text-body-secondary me-2"></i>
                                                     <strong><?= gettext('Phone') ?>:</strong>
                                                     <div class="ms-4"><span id="displayFamilyPersonCardPhone<?= $x ?>"></span></div>
                                                 </div>
                                                 <div id="displayFamilyPersonCardBDayBlock<?= $x ?>" class="mb-0 d-none">
-                                                    <i class="fa-solid fa-cake-candles text-muted me-2"></i>
+                                                    <i class="fa-solid fa-cake-candles text-body-secondary me-2"></i>
                                                     <strong><?= gettext('Birthday') ?>:</strong>
                                                     <div class="ms-4"><span id="displayFamilyPersonCardBDay<?= $x ?>"></span></div>
                                                 </div>

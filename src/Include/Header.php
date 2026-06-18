@@ -7,6 +7,7 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\view\MenuRenderer;
 use ChurchCRM\Service\SystemService;
@@ -56,7 +57,7 @@ $MenuFirst = 1;
     <div class="modal-dialog">
       <div class="modal-content" id="bugForm">
         <form name="issueReport">
-          <input type="hidden" name="pageName" value="<?= $_SERVER['REQUEST_URI'] ?>"/>
+          <input type="hidden" name="pageName" value="<?= InputUtils::escapeAttribute($_SERVER['REQUEST_URI'] ?? '') ?>"/>
           <div class="modal-header">
             <h5 class="modal-title"><i class="ti ti-bug me-2"></i><?= gettext('Report an Issue') ?></h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= gettext('Close') ?>"></button>
@@ -67,7 +68,7 @@ $MenuFirst = 1;
               <?= gettext('Clicking "Open GitHub Issue" will open a new tab with your system info pre-filled. No personally identifiable information will be included unless you add it.') ?>
             </div>
             <div class="mb-3">
-              <label for="issueDescription" class="fw-bold"><?= gettext('Describe the issue') ?> <span class="text-muted fw-normal">(<?= gettext('optional') ?>)</span></label>
+              <label for="issueDescription" class="fw-bold"><?= gettext('Describe the issue') ?> <span class="text-body-secondary fw-normal">(<?= gettext('optional') ?>)</span></label>
               <textarea id="issueDescription" class="form-control" rows="4" placeholder="<?= gettext('What went wrong? What did you expect to happen?') ?>"></textarea>
             </div>
           </div>
@@ -161,7 +162,7 @@ $MenuFirst = 1;
                   ]
               }
           },
-          PageName:"<?= $_SERVER['REQUEST_URI']; ?>"
+          PageName:<?= json_encode($_SERVER['REQUEST_URI'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>
       });
       // Initialize moment locale if available
       if (typeof moment !== 'undefined' && window.CRM.shortLocale) {
@@ -349,7 +350,7 @@ $MenuFirst = 1;
             </div>
           </a>
           <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-            <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $currentUser->getPersonId() ?>"
+            <a href="<?= Person::getViewURIForId($currentUser->getPersonId()) ?>"
                class="dropdown-item">
               <i class="ti ti-user me-2"></i><?= gettext("Profile") ?>
             </a>
@@ -433,7 +434,7 @@ $MenuFirst = 1;
           <div class="col">
             <h2 class="page-title"><?= $sPageTitle ?></h2>
             <?php if (!empty($sPageSubtitle)) : ?>
-            <div class="text-muted mt-1"><?= $sPageSubtitle ?></div>
+            <div class="text-body-secondary mt-1"><?= $sPageSubtitle ?></div>
             <?php endif; ?>
           </div>
         </div>

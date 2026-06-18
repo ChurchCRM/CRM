@@ -4,7 +4,7 @@ describe("Standard People", () => {
     beforeEach(() => cy.setupStandardSession());
 
     it("Person Not Found", () => {
-        cy.visit("PersonView.php?PersonID=9999");
+        cy.visit("/people/view/9999");
         cy.location("pathname").should("include", "person/not-found");
         // New UX: show standard error title and message
         cy.contains("Person not found");

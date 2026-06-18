@@ -20,7 +20,7 @@ Structured development skills live in `.agents/skills/`. **Always consult the re
 | Database / ORM work | `database-operations.md` → `db-schema-migration.md` |
 | UI / frontend changes | `responsive-design-guidelines.md` → `bootstrap-5-migration.md` → `frontend-development.md` → `webpack-typescript.md` |
 | Datetime / timezone work | `timezone-handling.md` (event editor, calendar, kiosk, anything cross-tz) |
-| i18n / translations | `i18n-localization.md` → `frontend-development.md` |
+| i18n / translations | `i18n-localization.md` → `locale-translation-workflow.md` → `frontend-development.md` |
 | Security issue | `security-best-practices.md` → `authorization-security.md` |
 | New community plugin | `plugin-system.md` → `plugin-development.md` → `plugin-create.md` → `plugin-security-scan.md` |
 | Core plugin update (`src/plugins/core/*`) | `plugin-system.md` → `plugin-development.md` → `plugin-migration.md` |
@@ -30,6 +30,19 @@ Structured development skills live in `.agents/skills/`. **Always consult the re
 | Refactor | `refactor.md` → `service-layer.md` |
 | Performance | `performance-optimization.md` → `database-operations.md` |
 | Configuration | `configuration-management.md` |
+
+---
+
+## Context Optimization
+
+The Claude Code system loads **150+ agent types + 40+ MCP tool schemas** by default (~15-20KB overhead per session). ChurchCRM uses only **8-10 tools** across all workflows.
+
+**Per-Workflow Tool Allowlists** (documented in [`.claude/churchcrm-tools-config.json`](./.claude/churchcrm-tools-config.json)) trim unused tools:
+- **Removed:** Google services, email/Slack, Sentry, DataForSEO, all language-specific agents (Rust, Go, Java, etc.), AI media gen, SEO/marketing tools
+- **Kept:** GitHub tools (PR/issue ops), Web tools (documentation), Bash (build/git), core code tools, workflow-specific agents
+- **Savings:** ~10-13KB per session = **~250K tokens/month** freed for productive work
+
+Workflows automatically load only their required tools (see config file for mapping). No user action needed — this is documentation of what's actually used.
 
 ---
 
@@ -69,27 +82,16 @@ Update the relevant skill file immediately when you:
 4. **Keep it concise** — one paragraph max, prefer code examples over prose
 5. **Date the entry** — append `<!-- learned: YYYY-MM-DD -->` as an HTML comment on the section header line
 
-### Example Auto-Update (what to write)
-
-```markdown
-### Casting Foreign Keys in Propel Relations <!-- learned: 2026-02-28 -->
-
-When traversing Propel relations via `->getXxx()`, always cast the FK to `(int)`
-before passing to query methods — Propel does not auto-cast string inputs from
-`$_POST`/route params.
-
-```php
-// ✅ CORRECT
-$group = GroupQuery::create()->findPk((int)$groupId);
-
-// ❌ WRONG — silently returns null when $groupId is a string "42"
-$group = GroupQuery::create()->findPk($groupId);
-```
-```
-
 ### Memory File Sync
 
 After updating a skill file, also check if [`.claude/projects/.../memory/MEMORY.md`] needs a one-line summary added under **Critical Patterns**.
+
+---
+
+## After PR Review Sessions
+
+- After completing PR review fixes and pushing, always update the relevant skill files in `.claude/skills/` with new learnings (cypress-testing.md, api-development.md, git-workflow.md, etc.) before ending the session
+- If no genuine new learnings emerged, explicitly say so rather than padding with trivia
 
 ---
 
@@ -101,35 +103,15 @@ These rules apply to **every code change** in this project.
 
 ---
 
-## Mandatory Code Review Before Any Commit
-
-**NEVER commit or push without first showing the user the diff and getting explicit approval.**
-
-This applies even when the user asks you to "fix" or "make changes" — finishing the code is not permission to commit.
-
-### Required sequence for every commit:
-
-1. Make the changes
-2. Run `git diff` and show the output to the user
-3. Explicitly ask: *"Please review the changes above. Shall I commit?"*
-4. Wait for explicit approval (e.g. "yes", "looks good", "commit it")
-5. Only then run `git add` + `git commit` + `git push`
-
-### What counts as explicit approval
-
-✅ "yes", "looks good", "lgtm", "commit it", "go ahead", "ship it"
-
-❌ Silence, continuing the conversation, asking follow-up questions — these are NOT approval
-
-### No exceptions
-
-Even if you are confident the changes are correct, even if the user said "fix the bug" — always show the diff and wait for approval before committing.
-
----
-
 ## Git & PR Workflow
 
 @.agents/skills/churchcrm/git-workflow.md
+
+### Branch Hygiene
+
+- Before committing skill/memory/doc updates, always verify current branch with `git branch --show-current` and switch to master or a dedicated docs branch if on a feature branch
+- Never commit cross-cutting documentation changes onto an unrelated feature branch
+- If uncommitted changes exist when starting a new task, stash or commit them first and confirm branch state before proceeding
 
 ### Always Resolve PR Comments After Push
 
@@ -183,6 +165,12 @@ When fixing a failed test:
 - `code-standards.md` — General best practices
 
 **Remember: Skills get documented the moment you learn something. Never defer skill updates.**
+
+### Test Data Assumptions
+
+- Never assume Cypress test fixtures or library data (e.g., Yasumi holidays) have specific shapes without verifying — check the actual data source first
+- Always include leading slashes in `cy.visit()` URLs
+- When tests reference country/locale-specific data, prefer locales with documented variety (e.g., Netherlands for multi-category holidays)
 
 ---
 

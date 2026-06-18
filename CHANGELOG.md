@@ -10,6 +10,18 @@ Release notes are stored in the [`changelog/`](./changelog/) folder — one file
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| [7.4.0](./changelog/7.4.0.md) | June 2026 | ChurchCRM 7.4.0 refines security and improves user experience with UI enhancements
+
+Redesigned single-card login interface, enhanced password reset security with cryptographic tokens, export controls limited to administrators, Slovak language support added, Docker images now run as non-root user |
+| [7.3.3](./changelog/7.3.3.md) | May 2026 | ChurchCRM 7.3.3 strengthens stability with security hardening and installation fixes
+
+Subdirectory navigation fixes, automatic database port defaults, configuration file access blocking, safe event/group deletions, CSV country auto-detection |
+| [7.3.2](./changelog/7.3.2.md) | May 2026 | ChurchCRM 7.3.2 hardens security and refines data workflows
+
+Configuration file access blocking, safe group/event deletion with orphan cleanup, member import respects default country setting, kiosk event dropdown displays dates, 1760 translation updates across 40 locales |
+| [7.3.1](./changelog/7.3.1.md) | April 2026 | ChurchCRM 7.3.1 enhances security and modernizes note management for congregations
+
+Shared family timeline with synchronized notes, professional-grade REST API security for pastoral notes, API lockout and 2FA protection restored, Kiosk 60-second smart-refresh reduces network load, lazy-loading plugin system with remote registry |
 | [7.3.0](./changelog/7.3.0.md) | April 2026 | ChurchCRM 7.3.0 expands customization with plugins and fixes timezone issues, Community Plugin System, Timezone refactoring for wall-clock precision, Kiosk support for all group types, Timeline filters on member profiles, Regional language grouping |
 | [7.2.2](./changelog/7.2.2.md) | April 2026 | CSRF hardening (GHSA-3xq9-c86x-cwpp), person delete fix, orphaned images cleanup, 41 locales |
 | [7.2.1](./changelog/7.2.1.md) | April 2026 | Permission consolidation, admin menu bypass fix, photo cache bust, FrankenPHP redirect fix |

@@ -12,7 +12,5 @@
     "City, State, Zip": "City, Post Code",
     "Cell Phone": "Mobile Phone",
     "Cell": "Mobile",
-    "Zip Code": "Post Code",
-    "Foreground Color": "Foreground Colour",
-    "Background Color": "Background Colour"
+    "Zip Code": "Post Code"
 }

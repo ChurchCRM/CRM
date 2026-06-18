@@ -1,5 +1,5 @@
 const personEditorPath = "PersonEditor.php";
-const personViewPath = "PersonView.php";
+const personViewPath = "people/view/";
 
 describe("Standard Person", () => {
     const uniqueSeed = Date.now().toString();
