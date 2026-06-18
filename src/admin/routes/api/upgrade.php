@@ -102,7 +102,18 @@ $app->group('/api/upgrade', function (RouteCollectorProxy $group): void {
     $group->post('/do-upgrade', function (Request $request, Response $response, array $args): Response {
         try {
             $input = $request->getParsedBody();
-            UpgradeAPIService::doUpgrade($input['fullPath'], $input['sha1']);
+            $fullPath = $input['fullPath'] ?? null;
+            $sha1 = $input['sha1'] ?? null;
+            if (!$fullPath || !$sha1) {
+                return SlimUtils::renderErrorJSON($response, gettext('Missing required fields: fullPath and sha1'), [], 400, null, $request);
+            }
+            // Prevent path traversal: ensure the file is inside the system temp directory
+            $realPath = realpath($fullPath);
+            $tempDir = realpath(sys_get_temp_dir());
+            if ($realPath === false || $tempDir === false || strncmp($realPath, $tempDir, strlen($tempDir)) !== 0) {
+                return SlimUtils::renderErrorJSON($response, gettext('Invalid file path'), [], 400, null, $request);
+            }
+            UpgradeAPIService::doUpgrade($realPath, $sha1);
             return SlimUtils::renderSuccessJSON($response);
         } catch (\Throwable $e) {
             // Return a localized, user-safe error message and log full details server-side

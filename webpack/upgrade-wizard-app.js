@@ -179,12 +179,12 @@ function setupBackupStep() {
         let errorMessage = i18next.t("Failed to create backup.");
 
         if (xhr.responseJSON?.message) {
-          errorMessage = `<strong>${i18next.t("Failed to create backup.")}</strong><br>${xhr.responseJSON.message}`;
+          errorMessage = `<strong>${i18next.t("Failed to create backup.")}</strong><br>${escapeHtml(xhr.responseJSON.message)}`;
         } else if (xhr.responseText) {
           try {
             const response = JSON.parse(xhr.responseText);
             if (response.message) {
-              errorMessage = `<strong>${i18next.t("Failed to create backup.")}</strong><br>${response.message}`;
+              errorMessage = `<strong>${i18next.t("Failed to create backup.")}</strong><br>${escapeHtml(response.message)}`;
             }
           } catch (_e) {
             errorMessage = `<strong>${i18next.t("Failed to create backup.")}</strong><br>${xhr.status}: ${xhr.statusText}`;
@@ -459,12 +459,12 @@ function performDownload() {
       let errorMessage = i18next.t("Failed to download update package.");
 
       if (xhr.responseJSON?.message) {
-        errorMessage = `<strong>${i18next.t("Failed to download update package.")}</strong><br>${xhr.responseJSON.message}`;
+        errorMessage = `<strong>${i18next.t("Failed to download update package.")}</strong><br>${escapeHtml(xhr.responseJSON.message)}`;
       } else if (xhr.responseText) {
         try {
           const response = JSON.parse(xhr.responseText);
           if (response.message) {
-            errorMessage = `<strong>${i18next.t("Failed to download update package.")}</strong><br>${response.message}`;
+            errorMessage = `<strong>${i18next.t("Failed to download update package.")}</strong><br>${escapeHtml(response.message)}`;
           }
         } catch (_e) {
           errorMessage =
@@ -550,12 +550,12 @@ function setupApplyStep() {
         let errorMessage = i18next.t("Upgrade failed. Please check the logs.");
 
         if (xhr.responseJSON?.message) {
-          errorMessage = `<strong>${i18next.t("Upgrade failed.")}</strong><br>${xhr.responseJSON.message}`;
+          errorMessage = `<strong>${i18next.t("Upgrade failed.")}</strong><br>${escapeHtml(xhr.responseJSON.message)}`;
         } else if (xhr.responseText) {
           try {
             const response = JSON.parse(xhr.responseText);
             if (response.message) {
-              errorMessage = `<strong>${i18next.t("Upgrade failed.")}</strong><br>${response.message}`;
+              errorMessage = `<strong>${i18next.t("Upgrade failed.")}</strong><br>${escapeHtml(response.message)}`;
             }
           } catch (_e) {
             errorMessage = `<strong>${i18next.t("Upgrade failed.")}</strong><br>${xhr.status}: ${xhr.statusText}`;
@@ -618,7 +618,7 @@ function setupRefreshButton() {
 
         let errorMessage = i18next.t("Failed to refresh upgrade information from GitHub.");
         if (xhr.responseJSON?.message) {
-          errorMessage = xhr.responseJSON.message;
+          errorMessage = escapeHtml(xhr.responseJSON.message);
         }
         window.CRM.notify(errorMessage, { type: "error", delay: 5000 });
       });
@@ -636,6 +636,14 @@ function setupForceReinstallButton() {
 
   $("#confirmForceReinstall").click(() => {
     bootstrap.Modal.getInstance(document.getElementById("forceReinstallModal")).hide();
+
+    // Clear stale download state so the Download & Apply step starts fresh
+    window.CRM.updateFile = null;
+    selectedTargetVersion = null;
+    $("#downloadStatus").empty();
+    $("#updateDetails").addClass("d-none");
+    $("#applyButtonContainer").addClass("d-none");
+    $("#applyStatus").empty();
 
     upgradeStepper.to(0);
     setTimeout(() => {

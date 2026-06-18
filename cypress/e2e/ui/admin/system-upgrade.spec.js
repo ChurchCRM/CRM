@@ -288,6 +288,93 @@ describe("System Upgrade Page", () => {
             cy.get("#backupStatus .alert-danger").should("be.visible");
             cy.get("#doBackup").should("not.be.disabled");
         });
+
+        it("should apply update and show completion step", () => {
+            cy.intercept("GET", "**/admin/api/upgrade/preview", {
+                statusCode: 200,
+                body: previewFixture,
+            }).as("previewRequest");
+
+            cy.intercept("GET", "**/admin/api/upgrade/download-latest-release", {
+                statusCode: 200,
+                body: downloadFixture,
+            }).as("downloadRelease");
+
+            cy.intercept("POST", "**/admin/api/upgrade/do-upgrade", {
+                statusCode: 200,
+                body: {},
+            }).as("doUpgrade");
+
+            cy.visit("/admin/system/upgrade");
+
+            // Step 1: pre-flight
+            cy.get("#acceptWarnings").click();
+
+            // Step 2: skip backup
+            cy.get("#skipBackup").click();
+
+            // Step 3: What's New — wait for preview and proceed
+            cy.wait("@previewRequest", { timeout: 10000 });
+            cy.get("#whatsNewContent").should("not.have.class", "d-none");
+            cy.get("#proceedToDownload").click();
+
+            // Step 4: Download & Apply — wait for download then click Apply
+            cy.wait("@downloadRelease", { timeout: 15000 });
+            cy.get("#applyButtonContainer").should("not.have.class", "d-none");
+            cy.get("#applyUpdate").click();
+
+            // Wait for do-upgrade API call
+            cy.wait("@doUpgrade", { timeout: 15000 });
+
+            // Success alert should appear
+            cy.get("#applyStatus .alert-success").should("be.visible");
+
+            // Stepper should advance to Complete step
+            cy.get("#step-complete", { timeout: 5000 }).should("be.visible");
+        });
+
+        it("should reset download state when force re-install is confirmed", () => {
+            cy.intercept("GET", "**/admin/api/upgrade/preview", {
+                statusCode: 200,
+                body: previewFixture,
+            }).as("previewRequest");
+
+            cy.intercept("GET", "**/admin/api/upgrade/download-latest-release", {
+                statusCode: 200,
+                body: downloadFixture,
+            }).as("downloadRelease");
+
+            cy.visit("/admin/system/upgrade");
+
+            // Walk through to Download & Apply step
+            cy.get("#acceptWarnings").click();
+            cy.get("#skipBackup").click();
+
+            cy.wait("@previewRequest", { timeout: 10000 });
+            cy.get("#proceedToDownload").click();
+
+            cy.wait("@downloadRelease", { timeout: 15000 });
+
+            // Verify download state is visible before force-reinstall
+            cy.get("#updateDetails").should("not.have.class", "d-none");
+            cy.get("#applyButtonContainer").should("not.have.class", "d-none");
+
+            // Open the force-reinstall modal from the pre-flight step warning button.
+            // The button is only visible when integrity check has warnings; scroll up to it.
+            // Since we cannot trigger the PHP-rendered state in Cypress without a real server,
+            // we trigger the modal directly via JS to test the reset logic.
+            cy.window().then((win) => {
+                const modal = new win.bootstrap.Modal(win.document.getElementById("forceReinstallModal"));
+                modal.show();
+            });
+
+            // Confirm force re-install
+            cy.get("#confirmForceReinstall").click();
+
+            // Download state should now be cleared
+            cy.get("#updateDetails").should("have.class", "d-none");
+            cy.get("#applyButtonContainer").should("have.class", "d-none");
+        });
     });
 
     describe("Refresh from GitHub", () => {
