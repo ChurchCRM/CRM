@@ -387,7 +387,6 @@ describe("System Upgrade Page", () => {
             // which lands during the NEXT test's beforeEach and invalidates the
             // cy.session('admin-session') cache, causing all subsequent tests to
             // redirect to /session/begin.
-            cy.clock();
 
             cy.intercept("POST", "**/admin/api/upgrade/refresh-upgrade-info", {
                 statusCode: 200,
@@ -395,6 +394,7 @@ describe("System Upgrade Page", () => {
             }).as("refreshInfo");
 
             cy.visit("/admin/system/upgrade");
+            cy.clock(); // Freeze timers AFTER page load — before click — so the 1500ms reload setTimeout never fires
 
             cy.get("#refreshFromGitHub").click();
             cy.wait("@refreshInfo");
@@ -409,7 +409,6 @@ describe("System Upgrade Page", () => {
             // Freeze timers defensively — the failure branch does not call reload,
             // but this keeps both tests symmetric and prevents any future regression
             // if the handler is changed to also reload on failure.
-            cy.clock();
 
             cy.intercept("POST", "**/admin/api/upgrade/refresh-upgrade-info", {
                 statusCode: 500,
@@ -417,6 +416,8 @@ describe("System Upgrade Page", () => {
             }).as("refreshFail");
 
             cy.visit("/admin/system/upgrade");
+            cy.clock(); // Freeze timers AFTER page load
+
             cy.get("#refreshFromGitHub").click();
             cy.wait("@refreshFail");
 
