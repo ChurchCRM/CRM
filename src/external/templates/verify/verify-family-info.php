@@ -40,7 +40,11 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                     <?php $familyPhoto = $family->getPhoto(); ?>
                     <div class="avatar avatar-lg">
                         <?php if ($familyPhoto->hasUploadedPhoto()) { ?>
-                            <img src="data:<?= $familyPhoto->getPhotoContentType() ?>;base64,<?= base64_encode($familyPhoto->getPhotoBytes()) ?>" alt="<?= InputUtils::escapeAttribute($family->getName()) ?>" class="avatar-img">
+                            <?php try { ?>
+                                <img src="data:<?= $familyPhoto->getPhotoContentType() ?>;base64,<?= base64_encode($familyPhoto->getPhotoBytes()) ?>" alt="<?= InputUtils::escapeAttribute($family->getName()) ?>" class="avatar-img">
+                            <?php } catch (\Exception $e) { ?>
+                                <span class="avatar-title initials"><?= htmlspecialchars(substr($family->getName(), 0, 2), ENT_QUOTES, 'UTF-8') ?></span>
+                            <?php } ?>
                         <?php } else { ?>
                             <span class="avatar-title initials"><?= htmlspecialchars(substr($family->getName(), 0, 2), ENT_QUOTES, 'UTF-8') ?></span>
                         <?php } ?>
@@ -109,7 +113,11 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                                 <?php $personPhoto = $person->getPhoto(); ?>
                                 <div class="avatar avatar-xlg mx-auto">
                                     <?php if ($personPhoto->hasUploadedPhoto()) { ?>
-                                        <img src="data:<?= $personPhoto->getPhotoContentType() ?>;base64,<?= base64_encode($personPhoto->getPhotoBytes()) ?>" alt="<?= InputUtils::escapeAttribute($person->getFullName()) ?>" class="avatar-img">
+                                        <?php try { ?>
+                                            <img src="data:<?= $personPhoto->getPhotoContentType() ?>;base64,<?= base64_encode($personPhoto->getPhotoBytes()) ?>" alt="<?= InputUtils::escapeAttribute($person->getFullName()) ?>" class="avatar-img">
+                                        <?php } catch (\Exception $e) { ?>
+                                            <span class="avatar-title initials"><?= htmlspecialchars(substr(trim($person->getFirstName() . ' ' . $person->getLastName()), 0, 2), ENT_QUOTES, 'UTF-8') ?></span>
+                                        <?php } ?>
                                     <?php } else { ?>
                                         <span class="avatar-title initials"><?= htmlspecialchars(substr(trim($person->getFirstName() . ' ' . $person->getLastName()), 0, 2), ENT_QUOTES, 'UTF-8') ?></span>
                                     <?php } ?>
