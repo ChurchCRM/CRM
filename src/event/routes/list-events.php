@@ -173,7 +173,7 @@ $app->get('/dashboard', function (Request $request, Response $response) {
         if (!empty($allMonthEvents)) {
             $countTotals = []; // ['Adults' => ['total' => 60, 'n' => 2], ...]
             foreach ($allMonthEvents as $evt) {
-                foreach ($evt['counts'] as $c) {
+                foreach ($evt['counts'] ?? [] as $c) {
                     $name = $c['name'];
                     if (!isset($countTotals[$name])) {
                         $countTotals[$name] = ['total' => 0, 'n' => 0];
@@ -182,6 +182,7 @@ $app->get('/dashboard', function (Request $request, Response $response) {
                     $countTotals[$name]['n']++;
                 }
             }
+            ksort($countTotals); // Sort by name for deterministic output across months
             foreach ($countTotals as $name => $data) {
                 if ($data['n'] > 0) {
                     $averages[] = [
