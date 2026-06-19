@@ -1929,7 +1929,7 @@ INSERT INTO `user_usr` VALUES (1,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0b
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `user_usr` with 4 row(s)
+-- Dumped table `user_usr` with 8 row(s)
 --
 
 --
