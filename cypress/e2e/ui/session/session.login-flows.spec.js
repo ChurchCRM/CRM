@@ -28,6 +28,7 @@ describe("Session Login Flows", () => {
         it("Login redirects to the change-password page", () => {
             login("mustchange.user", "changeme");
             cy.url({ timeout: 10000 }).should("include", "/v2/user/current/changepassword");
+            cy.get("#OldPassword").should("exist");
         });
     });
 
