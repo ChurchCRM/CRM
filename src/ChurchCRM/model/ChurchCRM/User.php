@@ -139,16 +139,25 @@ class User extends BaseUser
 
     public function isAddEventEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || $this->isEnabledSecurity('bAddEvent');
     }
 
     public function isEmailEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || $this->isEnabledSecurity('bEmailMailto');
     }
 
     public function isCreateDirectoryEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || $this->isEnabledSecurity('bCreateDirectory');
     }
 
