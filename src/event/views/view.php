@@ -147,7 +147,7 @@ $inactive = (int) $event->getInActive() === 1;
     <?php if ($eventEnded && !empty($linkedGroups)): ?>
       <?php
         $rawEmails = array_unique(array_filter(array_column($nonAttendees, 'email')));
-        $nonAttendeeEmails = implode(',', $rawEmails);
+        $nonAttendeeEmails = implode(',', array_map('rawurlencode', $rawEmails));
         $eventTitle = $event->getTitle();  // raw, not HTML-escaped — used only in URL encoding
       ?>
       <div class="card">
@@ -163,7 +163,7 @@ $inactive = (int) $event->getInActive() === 1;
           <?php if (!empty($nonAttendees)): ?>
             <div class="card-options gap-1">
               <?php if ($emailEnabled && $nonAttendeeEmails !== ''): ?>
-                <a href="mailto:?bcc=<?= rawurlencode($nonAttendeeEmails) ?>&subject=<?= rawurlencode($eventTitle) ?>"
+                <a href="mailto:?bcc=<?= $nonAttendeeEmails ?>&subject=<?= rawurlencode($eventTitle) ?>"
                    class="btn btn-sm btn-outline-primary">
                   <i class="ti ti-mail me-1"></i><?= gettext('Email All') ?>
                 </a>

@@ -84,7 +84,8 @@ $app->get('/view/{id}', function (Request $request, Response $response, array $a
     }
 
     // Compute non-attendees (group members who did not check in), shown only after event ends
-    $eventEnded = $event->getEnd() !== null && $event->getEnd() < new DateTime();
+    $eventEnd = $event->getEnd();
+    $eventEnded = $eventEnd !== null && $eventEnd < new DateTime();
     $nonAttendees = [];
     if ($eventEnded && $groups->count() > 0) {
         $members = PersonQuery::create()
@@ -94,7 +95,7 @@ $app->get('/view/{id}', function (Request $request, Response $response, array $a
             ->endUse()
             ->leftJoinEventAttend()
             ->addJoinCondition('EventAttend', 'event_attend.event_id = ?', $event->getId())
-            ->where('event_attend.checkin_date IS NULL')
+            ->where('event_attend.event_id IS NULL')
             ->groupBy('Person.Id')
             ->find();
 

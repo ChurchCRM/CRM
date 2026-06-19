@@ -147,8 +147,10 @@ describe("Event Detail - Did Not Attend List", () => {
     });
 
     it("Checked-in member appears in Attendance and not in Did Not Attend", () => {
-        // checkedInName was captured in before() — no API call needed here
-        if (!checkedInName) return; // nothing to assert if roster has no check-ins
+        // checkedInName was captured in before() — no API call needed here.
+        // Assert the variable was actually set; a falsy value means the seed
+        // data has no group members, which would be a setup problem.
+        cy.wrap(checkedInName).should("exist");
 
         cy.visit(`event/view/${pastGroupEventId}`);
 
