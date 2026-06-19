@@ -121,6 +121,31 @@ if (isset($_POST['save']) && $iPersonID > 0) {
             $Admin = 0;
         }
 
+        // accessMode radio is the authoritative source when present. Derive
+        // Admin/EditSelf and clear module perms for non-custom modes so that
+        // the DB stays consistent even when JS is unavailable.
+        if (isset($_POST['accessMode'])) {
+            $accessModePost = $_POST['accessMode'];
+            if ($accessModePost === 'admin') {
+                $Admin      = 1;
+                $EditSelf   = 0;
+            } elseif ($accessModePost === 'self') {
+                $Admin        = 0;
+                $EditSelf     = 1;
+                $AddRecords   = 0;
+                $EditRecords  = 0;
+                $DeleteRecords = 0;
+                $MenuOptions  = 0;
+                $ManageGroups = 0;
+                $Finance      = 0;
+                $Notes        = 0;
+            } else {
+                // 'custom' or any unrecognised value: use submitted module perms as-is.
+                $Admin    = 0;
+                $EditSelf = 0;
+            }
+        }
+
         // EditSelf is exclusive: a non-admin EditSelf user has no other permissions.
         // Enforce this server-side so the DB is always consistent regardless of what
         // the UI submits (defense-in-depth behind the JS that disables other fields).
