@@ -120,6 +120,20 @@ if (isset($_POST['save']) && $iPersonID > 0) {
         } else {
             $Admin = 0;
         }
+
+        // EditSelf is exclusive: a non-admin EditSelf user has no other permissions.
+        // Enforce this server-side so the DB is always consistent regardless of what
+        // the UI submits (defense-in-depth behind the JS that disables other fields).
+        if ($EditSelf === 1 && $Admin === 0) {
+            $AddRecords = 0;
+            $EditRecords = 0;
+            $DeleteRecords = 0;
+            $MenuOptions = 0;
+            $ManageGroups = 0;
+            $Finance = 0;
+            $Notes = 0;
+        }
+
         // Initialize error flag
         $bErrorFlag = false;
 
@@ -408,43 +422,66 @@ require_once __DIR__ . '/Include/Header.php';
             <i class="ti ti-info-circle me-2"></i><?= gettext('Changes will not take effect until next logon.') ?>
         </div>
 
-        <div class="row mb-3">
-            <label class="col-sm-5 col-form-label" for="Admin"><?= gettext('Administrator') ?></label>
-            <div class="col-sm-7">
-                <label class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" name="Admin" id="Admin" value="1"<?= $usr_Admin ? ' checked' : '' ?>>
-                    <span class="form-check-label"><?= gettext('Grants all privileges') ?></span>
+        <?php
+        // Access level is a single choice. EditSelf is exclusive by design, so it
+        // is its own mode rather than a toggle alongside module permissions.
+        $accessMode = $usr_Admin ? 'admin' : ($usr_EditSelf ? 'self' : 'custom');
+        $accessModes = [
+            ['value' => 'admin', 'icon' => 'ti-shield-check', 'label' => gettext('Administrator'), 'desc' => gettext('Full access — grants all privileges.')],
+            ['value' => 'self', 'icon' => 'ti-user-check', 'label' => gettext('Self-service only'), 'desc' => gettext('Can only review and verify their own family. No other access.')],
+            ['value' => 'custom', 'icon' => 'ti-adjustments', 'label' => gettext('Custom'), 'desc' => gettext('Choose specific permissions below.')],
+        ];
+        ?>
+        <div class="mb-3">
+            <label class="form-label"><?= gettext('Access level') ?></label>
+            <div class="form-selectgroup form-selectgroup-boxes d-flex flex-column flex-md-row gap-2" id="accessModeGroup">
+                <?php foreach ($accessModes as $mode): ?>
+                <label class="form-selectgroup-item flex-fill">
+                    <input type="radio" name="accessMode" value="<?= $mode['value'] ?>" class="form-selectgroup-input"<?= $accessMode === $mode['value'] ? ' checked' : '' ?>>
+                    <span class="form-selectgroup-label d-block text-start p-3">
+                        <span class="d-flex align-items-center mb-1">
+                            <i class="ti <?= $mode['icon'] ?> me-2 text-primary fs-3"></i>
+                            <span class="fw-bold"><?= $mode['label'] ?></span>
+                        </span>
+                        <span class="d-block text-body-secondary small"><?= $mode['desc'] ?></span>
+                    </span>
                 </label>
+                <?php endforeach; ?>
             </div>
         </div>
-
-        <hr>
 
         <?php
-        $permissions = [
-            ['name' => 'AddRecords', 'label' => gettext('Add Records'), 'checked' => $usr_AddRecords, 'hint' => ''],
-            ['name' => 'EditRecords', 'label' => gettext('Edit Records'), 'checked' => $usr_EditRecords, 'hint' => ''],
-            ['name' => 'DeleteRecords', 'label' => gettext('Delete Records'), 'checked' => $usr_DeleteRecords, 'hint' => ''],
-            ['name' => 'MenuOptions', 'label' => gettext('Manage Properties and Classifications'), 'checked' => $usr_MenuOptions, 'hint' => ''],
-            ['name' => 'ManageGroups', 'label' => gettext('Manage Groups and Roles'), 'checked' => $usr_ManageGroups, 'hint' => ''],
-            ['name' => 'Finance', 'label' => gettext('Manage Donations and Finance'), 'checked' => $usr_Finance, 'hint' => ''],
-            ['name' => 'Notes', 'label' => gettext('View, Add and Edit Notes'), 'checked' => $usr_Notes, 'hint' => ''],
-            ['name' => 'EditSelf', 'label' => gettext('Edit Self'), 'checked' => $usr_EditSelf, 'hint' => gettext('Edit own family only')],
-        ];
-        foreach ($permissions as $perm):
+        // Real flags the server reads. Admin/EditSelf are hidden and driven by the
+        // access-level selector above; module switches live in the Custom panel.
         ?>
-        <div class="row mb-2 permission-row">
-            <label class="col-sm-5 col-form-label" for="<?= $perm['name'] ?>"><?= $perm['label'] ?></label>
-            <div class="col-sm-7">
-                <label class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" name="<?= $perm['name'] ?>" id="<?= $perm['name'] ?>" value="1"<?= $perm['checked'] ? ' checked' : '' ?>>
-                    <?php if ($perm['hint']): ?>
-                    <span class="form-check-label text-body-secondary"><?= $perm['hint'] ?></span>
-                    <?php endif; ?>
-                </label>
+        <input type="checkbox" class="d-none" name="Admin" id="Admin" value="1"<?= $usr_Admin ? ' checked' : '' ?>>
+        <input type="checkbox" class="d-none" name="EditSelf" id="EditSelf" value="1"<?= $usr_EditSelf ? ' checked' : '' ?>>
+
+        <div id="customPermissions"<?= $accessMode === 'custom' ? '' : ' style="display:none;"' ?>>
+            <hr>
+            <p class="text-body-secondary small mb-3"><?= gettext('Grant individual permissions:') ?></p>
+            <?php
+            $permissions = [
+                ['name' => 'AddRecords', 'label' => gettext('Add Records'), 'checked' => $usr_AddRecords],
+                ['name' => 'EditRecords', 'label' => gettext('Edit Records'), 'checked' => $usr_EditRecords],
+                ['name' => 'DeleteRecords', 'label' => gettext('Delete Records'), 'checked' => $usr_DeleteRecords],
+                ['name' => 'MenuOptions', 'label' => gettext('Manage Properties and Classifications'), 'checked' => $usr_MenuOptions],
+                ['name' => 'ManageGroups', 'label' => gettext('Manage Groups and Roles'), 'checked' => $usr_ManageGroups],
+                ['name' => 'Finance', 'label' => gettext('Manage Donations and Finance'), 'checked' => $usr_Finance],
+                ['name' => 'Notes', 'label' => gettext('View, Add and Edit Notes'), 'checked' => $usr_Notes],
+            ];
+            foreach ($permissions as $perm):
+            ?>
+            <div class="row mb-2 permission-row">
+                <label class="col-sm-5 col-form-label" for="<?= $perm['name'] ?>"><?= $perm['label'] ?></label>
+                <div class="col-sm-7">
+                    <label class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="<?= $perm['name'] ?>" id="<?= $perm['name'] ?>" value="1"<?= $perm['checked'] ? ' checked' : '' ?>>
+                    </label>
+                </div>
             </div>
+            <?php endforeach; ?>
         </div>
-        <?php endforeach; ?>
     </div>
     <div class="card-footer text-end">
         <a href="<?= SystemURLs::getRootPath() ?>/admin/system/users" class="btn btn-secondary me-2"><?= gettext('Cancel') ?></a>
@@ -525,6 +562,37 @@ require_once __DIR__ . '/Include/Header.php';
     $(document).ready(function() {
         var personSelectEl = document.getElementById("personSelect");
         if (personSelectEl && !personSelectEl.tomselect) new TomSelect(personSelectEl);
+
+        // Access level is one of three mutually exclusive modes. The radio
+        // selector drives the hidden Admin/EditSelf flags and the Custom panel,
+        // so EditSelf can never coexist with module or admin permissions.
+        const modulePerms = ['AddRecords', 'EditRecords', 'DeleteRecords', 'MenuOptions', 'ManageGroups', 'Finance', 'Notes'];
+        const adminCb     = document.getElementById('Admin');
+        const editSelfCb  = document.getElementById('EditSelf');
+        const customBlock = document.getElementById('customPermissions');
+        const modeRadios  = document.querySelectorAll('input[name="accessMode"]');
+
+        function applyMode(mode, clearModules) {
+            if (customBlock) customBlock.style.display = mode === 'custom' ? '' : 'none';
+            if (adminCb) adminCb.checked = mode === 'admin';
+            if (editSelfCb) editSelfCb.checked = mode === 'self';
+            if (mode !== 'custom' && clearModules) {
+                modulePerms.forEach(function(name) {
+                    const el = document.getElementById(name);
+                    if (el) el.checked = false;
+                });
+            }
+        }
+
+        modeRadios.forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                if (this.checked) applyMode(this.value, true);
+            });
+        });
+
+        // On load, only sync visibility — keep the stored module switch states.
+        const initial = document.querySelector('input[name="accessMode"]:checked');
+        if (initial) applyMode(initial.value, false);
     });
 </script>
 <?php
