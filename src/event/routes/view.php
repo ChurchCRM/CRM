@@ -74,12 +74,40 @@ $app->get('/view/{id}', function (Request $request, Response $response, array $a
     }
 
     // Linked groups (audience)
+    $groups = $event->getGroups();
     $linkedGroups = [];
-    foreach ($event->getGroups() as $group) {
+    foreach ($groups as $group) {
         $linkedGroups[] = [
             'id'   => (int) $group->getId(),
             'name' => $group->getName(),
         ];
+    }
+
+    // Compute non-attendees (group members who did not check in), shown only after event ends
+    $eventEnded = $event->getEnd() !== null && $event->getEnd() < new DateTime();
+    $nonAttendees = [];
+    if ($eventEnded && $groups->count() > 0) {
+        $members = PersonQuery::create()
+            ->joinWithPerson2group2roleP2g2r()
+            ->usePerson2group2roleP2g2rQuery()
+                ->filterByGroup($groups)
+            ->endUse()
+            ->leftJoinEventAttend()
+            ->addJoinCondition('EventAttend', 'event_attend.event_id = ?', $event->getId())
+            ->where('event_attend.checkin_date IS NULL')
+            ->groupBy('Person.Id')
+            ->find();
+
+        foreach ($members as $person) {
+            $nonAttendees[] = [
+                    'personId'  => $person->getId(),
+                    'fullName'  => $person->getFullName(),
+                    'email'     => $person->getEmail(),
+                    'cellPhone' => $person->getCellPhone(),
+                    'homePhone' => $person->getHomePhone(),
+                ];
+        }
+        usort($nonAttendees, fn ($a, $b) => strcmp($a['fullName'], $b['fullName']));
     }
 
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
@@ -97,5 +125,8 @@ $app->get('/view/{id}', function (Request $request, Response $response, array $a
         'counts'         => $counts,
         'linkedGroups'   => $linkedGroups,
         'canEditEvents'  => AuthenticationManager::getCurrentUser()->isAddEvent(),
+        'eventEnded'     => $eventEnded,
+        'nonAttendees'   => $nonAttendees,
+        'emailEnabled'   => SystemConfig::isEmailEnabled(),
     ]);
 });
