@@ -128,7 +128,7 @@ describe("Self-only access — EditSelf account user reaches the verify page (am
 
     function loginAsEditSelf() {
         cy.clearCookies();
-        cy.visit("/session/begin");
+        cy.visit("session/begin");
         cy.get("input[name=User]").type(editSelfUser);
         cy.get("input[name=Password]").type(editSelfPassword + "{enter}");
         cy.url({ timeout: 10000 }).should("include", "/external/limited-access");
@@ -156,7 +156,7 @@ describe("Self-only access — EditSelf account user reaches the verify page (am
 
     it("Direct visit to an internal page redirects back to limited-access", () => {
         loginAsEditSelf();
-        cy.visit("/v2/dashboard", { failOnStatusCode: false });
+        cy.visit("v2/dashboard", { failOnStatusCode: false });
         cy.url().should("include", "/external/limited-access");
     });
 

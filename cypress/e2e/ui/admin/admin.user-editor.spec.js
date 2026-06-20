@@ -9,27 +9,10 @@ describe("User Editor - ORM Migration Tests", () => {
         cy.setupAdminSession();
     });
 
-    // Unconditionally reset the admin username before the username test runs.
-    // If a prior run was aborted mid-way (after mutating to 'admin_orm_test' but
-    // before restoring), this ensures the DB is always in a clean state.
-    before(() => {
-        cy.setupAdminSession();
-        cy.intercept("POST", "**/UserEditor.php*").as("resetUser");
-        cy.visit("UserEditor.php?PersonID=1");
-        cy.get("#UserName").then(($input) => {
-            const current = $input.val();
-            if (current !== "Admin") {
-                cy.get("#UserName").clear().type("Admin");
-                cy.get("#SaveButton").click();
-                cy.wait("@resetUser");
-            }
-        });
-    });
-
     function createCustomUser() {
+        // makePrivateAdminAPICall uses x-api-key (cy.request), NOT the browser
+        // session — the admin session cookie is unaffected and stays valid.
         cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId}`, null, [200, 204, 404]);
-        // makePrivateAdminAPICall resets the session — re-login before visiting.
-        cy.setupAdminSession({ forceLogin: true });
         cy.intercept("POST", "**/UserEditor.php*").as("saveUser");
         cy.visit(`UserEditor.php?NewPersonID=${throwawayPersonId}`);
         cy.contains("User Editor");
@@ -37,8 +20,8 @@ describe("User Editor - ORM Migration Tests", () => {
     }
 
     function deleteUser() {
+        // Same: API-key call does not affect the browser session.
         cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId}`, null, [200, 204, 404]);
-        cy.setupAdminSession({ forceLogin: true });
     }
 
     it("Should persist a single Custom permission via ORM", () => {
@@ -72,13 +55,21 @@ describe("User Editor - ORM Migration Tests", () => {
         // The username field is independent of access level, so exercising it on
         // the admin user (PersonID 1) is safe — its mode/permissions are untouched.
         //
-        // A before() hook unconditionally resets the username to 'Admin'
-        // before this test runs, so an aborted prior run cannot leave the DB dirty.
-        cy.intercept("POST", "**/UserEditor.php*").as("saveUser");
+        // Reset to canonical username first in case a prior run was interrupted
+        // after mutating to 'admin_orm_test' but before restoring.
+        cy.intercept("POST", "**/UserEditor.php*").as("resetIfNeeded");
         cy.visit("UserEditor.php?PersonID=1");
         cy.contains("User Editor");
+        cy.get("#UserName").then(($input) => {
+            if ($input.val() !== "Admin") {
+                cy.get("#UserName").clear().type("Admin");
+                cy.get("#SaveButton").click();
+                cy.wait("@resetIfNeeded");
+            }
+        });
 
         const newUsername = "admin_orm_test";
+        cy.intercept("POST", "**/UserEditor.php*").as("saveUser");
         cy.get("#UserName").clear().type(newUsername);
         cy.get("#SaveButton").click();
         cy.wait("@saveUser");
