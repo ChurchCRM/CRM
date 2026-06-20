@@ -1,5 +1,5 @@
 {
-  "Cannot delete event: %d people are currently checked in.": "Hindi maaaring burahin ang kaganapan: %d mga tao ang kasalukuyang naka-check in.",
-  "Cannot delete event: event is currently assigned to a kiosk.": "Hindi maaaring burahin ang kaganapan: ang kaganapan ay kasalukuyang nakalaan sa isang kiosk.",
-  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "Hindi maaaring burahin ang grupo: ito ay ang madla para sa %d kaganapan(gan) at ang default na grupo para sa %d uri(urin) ng kaganapan. Tukuyin muli ang mga ito muna."
+  "Account options": "",
+  "Register": "",
+  "Slovak": ""
 }

@@ -7553,10 +7553,6 @@ msgid "Location & Contact Information"
 msgstr "地點與聯絡資訊"
 
 #: 
-msgid "New to"
-msgstr "新加入"
-
-#: 
 msgid "No locales configured"
 msgstr "未配置語言環境"
 
@@ -9780,10 +9776,6 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "連接 SMTP 伺服器以便 ChurchCRM 發送電子郵件"
 
 #: 
-msgid "Connect with others"
-msgstr "與他人聯繫"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "將個人記錄轉換為家庭單位"
 
@@ -9922,10 +9914,6 @@ msgstr "重複項目"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "每個人都可以有自己的電子郵件和手機號碼。"
-
-#: 
-msgid "Easy registration"
-msgstr "簡易註冊"
 
 #: 
 msgid "Edit Class"
@@ -10230,10 +10218,6 @@ msgstr "無效的「發送號碼」：「%s」。請包含國碼，例如 +14155
 #: 
 msgid "Invite Your Team"
 msgstr "邀請您的團隊"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "加入我們的社群並與以下保持聯繫"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10626,10 +10610,6 @@ msgid "Record why attendees visited your church"
 msgstr "記錄來訪者造訪教會的原因"
 
 #: 
-msgid "Register Your Family"
-msgstr "註冊您的家庭"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "從名單中移除全部"
 
@@ -10796,10 +10776,6 @@ msgstr "全新開始"
 #: 
 msgid "Start Over"
 msgstr "重新開始"
-
-#: 
-msgid "Stay informed"
-msgstr "保持關注"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -14656,16 +14632,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "名稱不可超過 %d 個字元"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "需要協助？請聯絡我們"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "開啟 2 分鐘的時間窗口讓裝置在此處登錄："
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "歡迎——請登入以管理您的社群"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -14838,6 +14806,18 @@ msgstr "【私人備註 — 僅限建立者查看】"
 #: 
 msgid "seconds"
 msgstr "秒"
+
+#: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "無法刪除事件：%d 人目前已簽到。"
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "無法刪除事件：該事件目前已分配給資訊亭。"
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "無法刪除群組：它是 %d 個事件的受眾，也是 %d 個事件類型的預設群組。請先重新分配那些。"
 
 #: 
 msgid "A Calendar access token has been generated and saved."
@@ -15513,6 +15493,10 @@ msgid "GroupID required for role selection prompt"
 msgstr "角色選擇提示需要群組ID"
 
 #: 
+msgid "HTML URL"
+msgstr "HTML 網址"
+
+#: 
 msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 msgstr "準備好您的驗證器應用程式（Google Authenticator、Microsoft Authenticator、Authy等）"
 
@@ -15523,6 +15507,10 @@ msgstr "隱藏進階選項"
 #: 
 msgid "Home phone is required"
 msgstr "家庭電話是必填項"
+
+#: 
+msgid "ICS URL"
+msgstr "ICS 網址"
 
 #: 
 msgid "Ignored"

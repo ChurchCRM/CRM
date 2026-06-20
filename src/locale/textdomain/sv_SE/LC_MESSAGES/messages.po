@@ -7500,10 +7500,6 @@ msgid "Location & Contact Information"
 msgstr "Plats & Kontaktinformation"
 
 #: 
-msgid "New to"
-msgstr "Ny i"
-
-#: 
 msgid "No locales configured"
 msgstr "Inga språk konfigurerade"
 
@@ -9733,10 +9729,6 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Anslut en SMTP-server så att ChurchCRM kan skicka e-post"
 
 #: 
-msgid "Connect with others"
-msgstr "Håll kontakten med andra"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Konvertera enskilda poster till familjeenheter"
 
@@ -9875,10 +9867,6 @@ msgstr "Dubbletter"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Varje person kan ha sin egen e-post och sitt eget mobilnummer."
-
-#: 
-msgid "Easy registration"
-msgstr "Enkel registrering"
 
 #: 
 msgid "Edit Class"
@@ -10183,10 +10171,6 @@ msgstr "Ogiltigt \"Avsändarnummer\": \"%s\". Inkludera landskoden, t.ex. +46701
 #: 
 msgid "Invite Your Team"
 msgstr "Bjud in ditt team"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "Gå med i vår gemenskap och håll kontakten med"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10579,10 +10563,6 @@ msgid "Record why attendees visited your church"
 msgstr "Registrera varför besökare kom till din kyrka"
 
 #: 
-msgid "Register Your Family"
-msgstr "Registrera din familj"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "Ta bort alla från urvalet"
 
@@ -10749,10 +10729,6 @@ msgstr "Börja om"
 #: 
 msgid "Start Over"
 msgstr "Börja från början"
-
-#: 
-msgid "Stay informed"
-msgstr "Håll dig informerad"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -14610,16 +14586,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "Namnet får inte vara längre än %d tecken"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "Behöver du hjälp? Kontakta oss"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "Öppnar ett 2-minutersfönster för enheter att registrera sig på:"
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "Välkommen — logga in för att hantera din församling"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -14792,6 +14760,18 @@ msgstr "[Privat anteckning — synlig endast för skaparen]"
 #: 
 msgid "seconds"
 msgstr "sekunder"
+
+#: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "Kan inte ta bort event: %d personer är för närvarande incheckade."
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "Kan inte ta bort event: event är för närvarande tilldelad en kiosk."
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "Kan inte ta bort grupp: det är målgruppen för %d event(s) och standardgruppen för %d eventtyp(er). Tilldela om dessa först."
 
 #: 
 msgid "A Calendar access token has been generated and saved."

@@ -9,7 +9,7 @@ use ChurchCRM\view\PageHeader;
 
 $linkBack = RedirectUtils::getLinkBackFromRequest('');
 
-$iFundRaiserID = $_SESSION['iCurrentFundraiser'];
+$iFundRaiserID = (int) ($_SESSION['iCurrentFundraiser'] ?? 0);
 
 if ($iFundRaiserID > 0) {
     //Get the paddlenum records for this fundraiser

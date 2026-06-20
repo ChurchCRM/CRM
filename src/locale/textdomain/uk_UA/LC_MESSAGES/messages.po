@@ -7401,10 +7401,6 @@ msgid "Location & Contact Information"
 msgstr "Місцезнаходження та контакти"
 
 #: 
-msgid "New to"
-msgstr "Новий у"
-
-#: 
 msgid "No locales configured"
 msgstr "Мови не налаштовані"
 
@@ -9646,10 +9642,6 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Підключіть SMTP-сервер для надсилання листів з ChurchCRM"
 
 #: 
-msgid "Connect with others"
-msgstr "Спілкуйтеся з іншими"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Перетворити окремі записи на сімейні одиниці"
 
@@ -9788,10 +9780,6 @@ msgstr "Дублікати"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Кожна людина може мати власний email і номер мобільного."
-
-#: 
-msgid "Easy registration"
-msgstr "Проста реєстрація"
 
 #: 
 msgid "Edit Class"
@@ -10096,10 +10084,6 @@ msgstr "Недійсний \"номер від\":\"%s\". Включіть код
 #: 
 msgid "Invite Your Team"
 msgstr "Запросіть вашу команду"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "Приєднайтеся до нашої спільноти і залишайтеся на зв'язку з"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10492,10 +10476,6 @@ msgid "Record why attendees visited your church"
 msgstr "Запишіть, чому відвідувачі відвідали вашу церкву"
 
 #: 
-msgid "Register Your Family"
-msgstr "Зареєструйте вашу сім'ю"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "Видалити все з вибору"
 
@@ -10662,10 +10642,6 @@ msgstr "Почати заново"
 #: 
 msgid "Start Over"
 msgstr "Почати заново"
-
-#: 
-msgid "Stay informed"
-msgstr "Залишайтеся в курсі"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -14525,16 +14501,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "Назва не може бути довшою за %d символів"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "Потрібна допомога? Зв'яжіться з нами"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "Відкриває 2-хвилинне вікно для реєстрації пристроїв за адресою:"
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "Ласкаво просимо — увійдіть, щоб керувати вашою парафією"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -14707,6 +14675,18 @@ msgstr "[Приватна нотатка — видима лише автору]
 #: 
 msgid "seconds"
 msgstr "секунд"
+
+#: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "Неможливо видалити подію: %d осіб зараз зареєстровані."
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "Неможливо видалити подію: подія зараз призначена кіоску."
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "Неможливо видалити групу: вона є аудиторією для %d подій та групою за замовчуванням для %d типів подій. Спочатку перепризначте їх."
 
 #: 
 msgid "A Calendar access token has been generated and saved."

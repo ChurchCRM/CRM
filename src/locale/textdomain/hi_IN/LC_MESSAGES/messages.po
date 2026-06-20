@@ -7351,10 +7351,6 @@ msgid "Location & Contact Information"
 msgstr "स्थान और संपर्क जानकारी"
 
 #: 
-msgid "New to"
-msgstr "नया"
-
-#: 
 msgid "No locales configured"
 msgstr "कोई स्थानीयता कॉन्फ़िगर नहीं है"
 
@@ -9584,10 +9580,6 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "SMTP सर्वर कनेक्ट करें ताकि ChurchCRM ईमेल भेज सके"
 
 #: 
-msgid "Connect with others"
-msgstr "दूसरों से जुड़ें"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "व्यक्तिगत रिकॉर्ड को पारिवारिक इकाइयों में बदलें"
 
@@ -9726,10 +9718,6 @@ msgstr "डुप्लिकेट"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "प्रत्येक व्यक्ति का अपना ईमेल और मोबाइल नंबर हो सकता है।"
-
-#: 
-msgid "Easy registration"
-msgstr "आसान पंजीकरण"
 
 #: 
 msgid "Edit Class"
@@ -10034,10 +10022,6 @@ msgstr "अमान्य \"प्रेषक नंबर\": \"%s\"। दे
 #: 
 msgid "Invite Your Team"
 msgstr "अपनी टीम को आमंत्रित करें"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "हमारे समुदाय से जुड़ें और जुड़े रहें"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10430,10 +10414,6 @@ msgid "Record why attendees visited your church"
 msgstr "रिकॉर्ड करें कि उपस्थित लोग आपकी कलीसिया में क्यों आए"
 
 #: 
-msgid "Register Your Family"
-msgstr "अपने परिवार का पंजीकरण करें"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "सूची से सभी हटाएँ"
 
@@ -10600,10 +10580,6 @@ msgstr "नए सिरे से शुरू करें"
 #: 
 msgid "Start Over"
 msgstr "फिर से शुरू करें"
-
-#: 
-msgid "Stay informed"
-msgstr "सूचित रहें"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -14461,16 +14437,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "नाम %d अक्षरों से अधिक लंबा नहीं हो सकता"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "सहायता चाहिए? हमसे संपर्क करें"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "उपकरणों को पंजीकरण करने के लिए 2-मिनट की विंडो खोलता है:"
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "स्वागत है — अपनी मण्डली प्रबंधित करने के लिए साइन इन करें"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -14643,6 +14611,18 @@ msgstr "[निजी नोट — केवल निर्माता को
 #: 
 msgid "seconds"
 msgstr "सेकंड"
+
+#: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "ईवेंट को हटाया नहीं जा सकता: %d लोग वर्तमान में चेक इन हैं।"
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "ईवेंट को हटाया नहीं जा सकता: ईवेंट वर्तमान में एक कियोस्क को असाइन किया गया है।"
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "समूह को हटाया नहीं जा सकता: यह %d ईवेंट के लिए दर्शक है और %d ईवेंट प्रकार के लिए डिफ़ॉल्ट समूह है। पहले उन्हें फिर से असाइन करें।"
 
 #: 
 msgid "A Calendar access token has been generated and saved."

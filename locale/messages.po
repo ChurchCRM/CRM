@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-12 18:34+0000\n"
+"POT-Creation-Date: 2026-06-15 14:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,6 +115,12 @@ msgstr[1] ""
 #, php-format
 msgid "%d orphaned files were detected on your server."
 msgstr ""
+
+#, php-format
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] ""
+msgstr[1] ""
 
 #, php-format
 msgid "%d person"
@@ -310,6 +316,9 @@ msgstr ""
 msgid "Access Token"
 msgstr ""
 
+msgid "Access denied"
+msgstr ""
+
 #. plugin:mailchimp:section:2:content
 msgid ""
 "Access the MailChimp Dashboard from the Email menu. The dashboard shows:\n"
@@ -348,9 +357,6 @@ msgid "Activate"
 msgstr ""
 
 msgid "Active"
-msgstr ""
-
-msgid "Active Events"
 msgstr ""
 
 msgid "Active Groups"
@@ -767,6 +773,9 @@ msgid "All system settings and custom fields"
 msgstr ""
 
 msgid "All three fields are required."
+msgstr ""
+
+msgid "All times shown in"
 msgstr ""
 
 msgid "All timezones match"
@@ -1662,6 +1671,10 @@ msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
 msgstr ""
 
 msgid "Cannot delete a family with donation records. Contact a finance administrator."
+msgstr ""
+
+#, php-format
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
 msgstr ""
 
 msgid "Cannot delete donation fund: it is still referenced by one or more pledges."
@@ -2643,6 +2656,9 @@ msgid "Current DB Version"
 msgstr ""
 
 msgid "Current Deposit"
+msgstr ""
+
+msgid "Current Events"
 msgstr ""
 
 msgid "Current Fiscal Year"
@@ -12191,6 +12207,9 @@ msgid "page"
 msgstr ""
 
 msgid "page."
+msgstr ""
+
+msgid "past"
 msgstr ""
 
 msgid "payment(s)?"

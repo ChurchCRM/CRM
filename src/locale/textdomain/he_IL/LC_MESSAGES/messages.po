@@ -7390,10 +7390,6 @@ msgid "Location & Contact Information"
 msgstr "מיקום ופרטי קשר"
 
 #: 
-msgid "New to"
-msgstr "חדש ב-"
-
-#: 
 msgid "No locales configured"
 msgstr "לא הוגדרו שפות"
 
@@ -9623,10 +9619,6 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "חברו שרת SMTP כדי ש-ChurchCRM יוכל לשלוח דוא\"ל"
 
 #: 
-msgid "Connect with others"
-msgstr "התחברו עם אחרים"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "המרת רשומות בודדות ליחידות משפחתיות"
 
@@ -9765,10 +9757,6 @@ msgstr "כפילויות"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "לכל אדם יכולים להיות דוא\"ל ומספר נייד משלו."
-
-#: 
-msgid "Easy registration"
-msgstr "הרשמה קלה"
 
 #: 
 msgid "Edit Class"
@@ -10073,10 +10061,6 @@ msgstr "«מספר שולח» לא חוקי: «%s». כללו את קידומת 
 #: 
 msgid "Invite Your Team"
 msgstr "הזמינו את הצוות שלכם"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "הצטרפו לקהילה שלנו והישארו מחוברים עם"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10469,10 +10453,6 @@ msgid "Record why attendees visited your church"
 msgstr "תעדו מדוע משתתפים ביקרו בקהילה שלכם"
 
 #: 
-msgid "Register Your Family"
-msgstr "רשמו את משפחתכם"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "הסרת הכל מהרשימה"
 
@@ -10639,10 +10619,6 @@ msgstr "התחלה מחדש"
 #: 
 msgid "Start Over"
 msgstr "התחלה מחדש"
-
-#: 
-msgid "Stay informed"
-msgstr "הישארו מעודכנים"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -14500,16 +14476,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "השם לא יכול להיות ארוך מ-%d תווים"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "זקוק לעזרה? צור איתנו קשר"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "פותח חלון של 2 דקות לרישום מכשירים ב:"
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "ברוך הבא — התחבר כדי לנהל את קהילתך"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -14682,6 +14650,18 @@ msgstr "[פתק פרטי — גלוי ליוצר בלבד]"
 #: 
 msgid "seconds"
 msgstr "שניות"
+
+#: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "לא ניתן למחוק אירוע: %d אנשים כרגע מחוברים."
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "לא ניתן למחוק אירוע: אירוע מוקצה כרגע לקיוסק."
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "לא ניתן למחוק קבוצה: זה הקהל עבור %d אירוע(ים) והקבוצה ברירת המחדל עבור %d סוג(י) אירוע. הקצה מחדש אלה תחילה."
 
 #: 
 msgid "A Calendar access token has been generated and saved."

@@ -1,8 +1,7 @@
 {
-  "Cannot delete event: %d people are currently checked in.": "Kan inte ta bort event: %d personer är för närvarande incheckade.",
-  "Cannot delete event: event is currently assigned to a kiosk.": "Kan inte ta bort event: event är för närvarande tilldelad en kiosk.",
-  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "Kan inte ta bort grupp: det är målgruppen för %d event(s) och standardgruppen för %d eventtyp(er). Tilldela om dessa först.",
-  "ICS URL": "ICS URL",
+  "ICS URL": "",
   "Unfocus": "",
-  "HTML URL": "HTML URL"
+  "Account options": "",
+  "Register": "",
+  "Slovak": ""
 }

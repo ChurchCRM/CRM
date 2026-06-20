@@ -7390,10 +7390,6 @@ msgid "Location & Contact Information"
 msgstr "Localisation & Information de contact"
 
 #: 
-msgid "New to"
-msgstr "Nouveau dans"
-
-#: 
 msgid "No locales configured"
 msgstr "Aucun paramètre régional configuré"
 
@@ -9623,10 +9619,6 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Connecter un serveur SMTP pour que ChurchCRM puisse envoyer des e-mails"
 
 #: 
-msgid "Connect with others"
-msgstr "Entrer en contact avec d'autres"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Convertir des fiches individuelles en unités familiales"
 
@@ -9765,10 +9757,6 @@ msgstr "Doublons"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Chaque personne peut avoir son propre e-mail et numéro de portable."
-
-#: 
-msgid "Easy registration"
-msgstr "Inscription facile"
 
 #: 
 msgid "Edit Class"
@@ -10073,10 +10061,6 @@ msgstr "« Numéro d'expéditeur » invalide : « %s ». Incluez l'indicatif du 
 #: 
 msgid "Invite Your Team"
 msgstr "Inviter votre équipe"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "Rejoignez notre communauté et restez connecté avec"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10469,10 +10453,6 @@ msgid "Record why attendees visited your church"
 msgstr "Enregistrer la raison de la visite des participants à l'église"
 
 #: 
-msgid "Register Your Family"
-msgstr "Inscrire votre famille"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "Tout retirer du panier"
 
@@ -10639,10 +10619,6 @@ msgstr "Repartir de zéro"
 #: 
 msgid "Start Over"
 msgstr "Recommencer"
-
-#: 
-msgid "Stay informed"
-msgstr "Rester informé"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -14500,16 +14476,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "Le nom ne peut pas dépasser %d caractères"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "Besoin d'aide ? Contactez-nous"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "Ouvre une fenêtre de 2 minutes pour que les appareils s'enregistrent à l'adresse :"
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "Bienvenue — connectez-vous pour gérer votre communauté"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -14682,6 +14650,18 @@ msgstr "[Note privée — visible uniquement par le créateur]"
 #: 
 msgid "seconds"
 msgstr "secondes"
+
+#: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "Impossible de supprimer l'événement : %d personnes sont actuellement enregistrées."
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "Impossible de supprimer l'événement : l'événement est actuellement assigné à un kiosque."
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "Impossible de supprimer le groupe : il est le public pour %d événement(s) et le groupe par défaut pour %d type(s) d'événement. Réaffectez-les d'abord."
 
 #: 
 msgid "A Calendar access token has been generated and saved."
@@ -15357,6 +15337,10 @@ msgid "GroupID required for role selection prompt"
 msgstr "GroupID requière pour le rôle une sélection rapide"
 
 #: 
+msgid "HTML URL"
+msgstr "URL HTML"
+
+#: 
 msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 msgstr "Ayez votre application d'authentification prête (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 
@@ -15367,6 +15351,10 @@ msgstr "Masquer les options avancées"
 #: 
 msgid "Home phone is required"
 msgstr "Le téléphone de la maison est obligatoire"
+
+#: 
+msgid "ICS URL"
+msgstr "URL ICS"
 
 #: 
 msgid "Ignored"
@@ -15387,6 +15375,10 @@ msgstr "Échec de l'importation"
 #: 
 msgid "Import failed. Please try again."
 msgstr "Échec de l'import. Veuillez réessayer."
+
+#: 
+msgid "Important"
+msgstr "Important"
 
 #: 
 msgid "Importing..."

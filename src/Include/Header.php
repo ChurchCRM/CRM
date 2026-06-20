@@ -59,7 +59,7 @@ $MenuFirst = 1;
     <div class="modal-dialog">
       <div class="modal-content" id="bugForm">
         <form name="issueReport">
-          <input type="hidden" name="pageName" value="<?= $_SERVER['REQUEST_URI'] ?>"/>
+          <input type="hidden" name="pageName" value="<?= InputUtils::escapeAttribute($_SERVER['REQUEST_URI'] ?? '') ?>"/>
           <div class="modal-header">
             <h5 class="modal-title"><i class="ti ti-bug me-2"></i><?= gettext('Report an Issue') ?></h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= gettext('Close') ?>"></button>
@@ -164,7 +164,7 @@ $MenuFirst = 1;
                   ]
               }
           },
-          PageName:"<?= $_SERVER['REQUEST_URI']; ?>",
+          PageName:<?= json_encode($_SERVER['REQUEST_URI'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR) ?>,
           telemetry: <?= json_encode([
               'level'      => TelemetryService::getLevel(),
               'key'        => TelemetryService::isEnabled() ? TelemetryService::POSTHOG_KEY : '',

@@ -1,6 +1,6 @@
 {
     "name": "churchcrm",
-    "version": "7.4.0",
+    "version": "7.4.1",
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -90,7 +90,7 @@
         "@uppy/image-editor": "^4.2.0",
         "@uppy/webcam": "^5.1.0",
         "@uppy/xhr-upload": "^5.2.0",
-        "apexcharts": "^5.11.0",
+        "apexcharts": "^5.15.0",
         "avatar-initials": "^6.0.0",
         "bootbox": "^6.0.4",
         "bootstrap": "^5.3.8",
@@ -105,51 +105,60 @@
         "datatables.net-select": "^3.1.3",
         "datatables.net-select-bs5": "^3.1.3",
         "daterangepicker": "^3.1.0",
-        "dompurify": "^3.4.2",
+        "dompurify": "^3.4.11",
         "flag-icons": "^7.5.0",
-        "fullcalendar": "^6.1.20",
-        "i18next": "^26.1.0",
+        "fullcalendar": "^6.1.21",
+        "i18next": "^26.3.1",
         "inputmask": "^5.0.9",
         "jquery": "^3.7.1",
         "just-validate": "^4.3.0",
         "leaflet": "^1.9.4",
-        "marked": "^18.0.3",
+        "marked": "^18.0.5",
         "moment": "^2.30.1",
         "notyf": "^3.10.0",
-        "pdfmake": "^0.3.8",
+        "pdfmake": "^0.3.11",
         "posthog-js": "^1.257.0",
         "quill": "2.0.2",
-        "tom-select": "^2.6.0"
+        "tom-select": "^2.6.1"
     },
     "devDependencies": {
-        "@biomejs/biome": "^2.4.15",
+        "@biomejs/biome": "^2.5.0",
         "@types/jquery": "^3.5.33",
         "archiver": "^7.0.1",
         "css-loader": "^7.1.4",
         "cy-verify-downloads": "^0.3.0",
-        "cypress": "^15.14.2",
+        "cypress": "^15.17.0",
         "cypress-terminal-report": "^7.3.3",
         "datatables.net-plugins": "^2.3.2",
         "dotenv": "^17.4.2",
         "grunt": "^1.6.2",
         "grunt-cli": "^1.5.0",
         "grunt-contrib-copy": "^1.0.0",
-        "i18next-cli": "^1.56.12",
+        "i18next-cli": "^1.64.1",
         "i18next-conv": "^16.0.0",
         "mini-css-extract-plugin": "^2.10.2",
-        "mysql2": "^3.22.3",
+        "mysql2": "^3.22.5",
         "node-sha1": "^1.0.1",
         "npm-run-all": "^4.1.5",
-        "sass": "^1.98.0",
-        "sass-loader": "^16.0.8",
+        "sass": "^1.101.0",
+        "sass-loader": "^17.0.0",
         "style-loader": "^4.0.0",
-        "ts-loader": "^9.5.4",
+        "ts-loader": "^9.6.0",
         "typescript": "^6.0.3",
-        "webpack": "^5.106.2",
-        "webpack-cli": "^7.0.2"
+        "webpack": "^5.107.2",
+        "webpack-cli": "^7.0.3"
     },
     "overrides": {
-        "archiver": "<8.0.0",
+        "archiver": {
+            "archiver-utils": {
+                "glob": {
+                    "minimatch": "9.0.7"
+                }
+            },
+            "readdir-glob": {
+                "minimatch": "5.1.8"
+            }
+        },
         "lodash": "4.18.1",
         "lodash-es": "4.18.1",
         "@xmldom/xmldom": "0.9.10",
@@ -161,16 +170,6 @@
         "npm-run-all": {
             "minimatch": "3.1.4",
             "brace-expansion": "1.1.13"
-        },
-        "archiver": {
-            "archiver-utils": {
-                "glob": {
-                    "minimatch": "9.0.7"
-                }
-            },
-            "readdir-glob": {
-                "minimatch": "5.1.8"
-            }
         },
         "svgicons2svgfont": {
             "brace-expansion": "5.0.5"

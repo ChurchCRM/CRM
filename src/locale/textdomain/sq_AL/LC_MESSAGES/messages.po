@@ -7381,10 +7381,6 @@ msgid "Location & Contact Information"
 msgstr "Vendndodhja dhe informacioni i kontaktit"
 
 #: 
-msgid "New to"
-msgstr "I ri në"
-
-#: 
 msgid "No locales configured"
 msgstr "Nuk ka gjuhë të konfiguruara"
 
@@ -9614,10 +9610,6 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Lidhu një server SMTP në mënyrë që ChurchCRM të mund të dërgojë email-e"
 
 #: 
-msgid "Connect with others"
-msgstr "Lidhu me të tjerët"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Konverto rekorde individuale në njësi familjare"
 
@@ -9756,10 +9748,6 @@ msgstr "Duplikatat"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Çdo person mund të ketë email-in e tij dhe numrin e celularit."
-
-#: 
-msgid "Easy registration"
-msgstr "Regjistrimi i lehtë"
 
 #: 
 msgid "Edit Class"
@@ -10064,10 +10052,6 @@ msgstr "Numër \"Nga\" i pavlefshëm: \"%s\". Përfshij kodin e vendit, p.sh. +1
 #: 
 msgid "Invite Your Team"
 msgstr "Ftoje Skuadrën Tuaj"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "Bashkohu komunitetit tonë dhe qëndroje i lidhur me"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10460,10 +10444,6 @@ msgid "Record why attendees visited your church"
 msgstr "Regjistroj pse vizituesit vizituan kishën tuaj"
 
 #: 
-msgid "Register Your Family"
-msgstr "Regjistroj Familjen Tuaj"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "Hiq Të Gjithë nga Listja Përzgjedhese"
 
@@ -10630,10 +10610,6 @@ msgstr "Fillo nga e Para"
 #: 
 msgid "Start Over"
 msgstr "Fillo Përsëri"
-
-#: 
-msgid "Stay informed"
-msgstr "Qëndroni të informuar"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -14491,16 +14467,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "Emri nuk mund të jetë më i gjatë se %d karaktere"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "Keni nevojë për ndihmë? Na kontaktoni"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "Hap një dritare 2-minutëshe për pajisjet për t'u regjistruar në:"
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "Mirë se vini — hyni për të menaxhuar komunitetin tuaj"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -14673,6 +14641,18 @@ msgstr "[Shënim Privat — i dukshëm vetëm për krijuesin]"
 #: 
 msgid "seconds"
 msgstr "sekonda"
+
+#: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "Nuk mund të fshijë ngjarjen: %d njerëz janë aktualisht regjistruar."
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "Nuk mund të fshijë ngjarjen: ngjarja aktualisht i është caktuar një kiosku."
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "Nuk mund të fshijë grupin: ajo është audience për %d ngjarje(n) dhe grupi parazgjedhje për %d lloje ngjarjesh. Caktoni ato përsëri fillimisht."
 
 #: 
 msgid "A Calendar access token has been generated and saved."

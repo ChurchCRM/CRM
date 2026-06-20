@@ -1,5 +1,5 @@
 {
-  "Cannot delete event: %d people are currently checked in.": "ഇവന്റ് ഡിലീറ്റ് ചെയ്യാൻ കഴിയില്ല: %d ആളുകൾ നിലവിൽ ചെക്ക് ഇൻ ചെയ്ത്.",
-  "Cannot delete event: event is currently assigned to a kiosk.": "ഇവന്റ് ഡിലീറ്റ് ചെയ്യാൻ കഴിയില്ല: ഇവന്റ് നിലവിൽ കിയോസ്കിനായി നിയോഗിച്ചിരിക്കുന്നു.",
-  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "ഗ്രൂപ്പ് ഡിലീറ്റ് ചെയ്യാൻ കഴിയില്ല: ഇത് %d ഇവന്റ്‌ങ്ങളുടെ ദর്ശകരാണ്, %d ഇവന്റ് തരങ്ങളുടെ ഡിഫോൾട്ട് ഗ്രൂപ്പ്. ആദ്യം വീണ്ടും നിയോഗിക്കുക."
+  "Account options": "",
+  "Register": "",
+  "Slovak": ""
 }

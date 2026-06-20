@@ -2,8 +2,15 @@
 
 namespace ChurchCRM\data;
 
+use ChurchCRM\dto\SystemConfig;
+
 class Countries
 {
+    private const LEGACY_ALIASES = [
+        'US'            => 'US',
+        'USA'           => 'US',
+        'United States' => 'US',
+    ];
     private static ?array $countries = null;
 
     private static function initializeCountries(): void
@@ -308,5 +315,67 @@ class Countries
         }
 
         throw new \Exception(gettext('Invalid country name supplied'));
+    }
+
+    /**
+     * Normalize a stored country value to an ISO 3166-1 alpha-2 code.
+     *
+     * Legacy data may contain aliases like 'USA' or full names like 'United States'
+     * instead of the canonical 2-letter code ('US'). This method resolves those
+     * variants so callers can compare consistently against sDefaultCountry (which
+     * always stores an ISO code).
+     *
+     * Returns the original value unchanged when it cannot be resolved, so display
+     * code can still render something meaningful for truly unknown values.
+     */
+    public static function toISO(?string $value): string
+    {
+        if ($value === null || $value === '') {
+            return '';
+        }
+
+        self::initializeCountries();
+
+        // Already a valid ISO code
+        if (isset(self::$countries[$value])) {
+            return $value;
+        }
+
+        // Known legacy aliases not resolvable by name lookup
+        if (isset(self::LEGACY_ALIASES[$value])) {
+            return self::LEGACY_ALIASES[$value];
+        }
+
+        // Try resolving by full country name (e.g. 'United States' -> 'US')
+        try {
+            $country = self::getCountryByName($value);
+            if ($country !== null) {
+                return $country->getCountryCode();
+            }
+        } catch (\Exception $e) {
+            // Unknown name — fall through to return original value
+        }
+
+        return $value;
+    }
+
+    /**
+     * Returns true when $country is a foreign country relative to the
+     * configured default country (sDefaultCountry).
+     * Returns false for blank/null input (treat missing country as domestic).
+     * Applies toISO() to BOTH sides so legacy stored values (e.g. "United States"
+     * stored as sDefaultCountry) are handled correctly.
+     */
+    public static function isForeign(?string $country): bool
+    {
+        if (empty($country)) {
+            return false;
+        }
+        $default = SystemConfig::getValue('sDefaultCountry');
+        if (empty($default)) {
+            return true;
+        }
+
+        return self::toISO($country) !== self::toISO($default);
     }
 }

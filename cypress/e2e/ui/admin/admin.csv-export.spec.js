@@ -99,3 +99,114 @@ describe("CSV Export Page", () => {
         cy.contains("ChMeetings Export").should("not.exist");
     });
 });
+
+describe("CSV Export Authorization (GHSA-4vj2-gm78-3q63)", () => {
+    it("should allow admin users to submit CSV export form", () => {
+        cy.setupAdminSession();
+
+        // Should be able to visit the form
+        cy.visit("/CSVExport.php");
+        cy.contains("CSV Export").should("be.visible");
+
+        // Should be able to submit the form (POST to CSVCreateFile.php)
+        cy.request({
+            method: "POST",
+            url: "/CSVCreateFile.php",
+            body: {
+                Title: 1,
+                FirstName: 1,
+                Address1: 1,
+                City: 1,
+                State: 1,
+                Zip: 1,
+                Country: 1,
+                Email: 1,
+                Source: "all",
+                Gender: 0,
+                Format: "Default",
+                Submit: "Create File"
+            }
+        }).then((response) => {
+            // Should succeed with 200 and CSV content-type
+            expect(response.status).to.eq(200);
+            expect(response.headers["content-type"]).to.include("text/csv");
+        });
+    });
+
+    it("should deny unauthenticated access to CSVExport.php", () => {
+        // Attempt to access CSVExport.php without authentication
+        cy.visit("/CSVExport.php", { failOnStatusCode: false });
+
+        // Should be redirected to login (or show auth error)
+        cy.url().should("include", "/session/begin");
+    });
+
+    it("should deny unauthenticated POST to CSVCreateFile.php", () => {
+        // Attempt to POST to CSVCreateFile.php without authentication
+        cy.request({
+            method: "POST",
+            url: "/CSVCreateFile.php",
+            body: {
+                Title: 1,
+                FirstName: 1,
+                Address1: 1,
+                City: 1,
+                State: 1,
+                Zip: 1,
+                Country: 1,
+                Email: 1,
+                Source: "all",
+                Gender: 0,
+                Format: "Default",
+                Submit: "Create File"
+            },
+            failOnStatusCode: false,
+            followRedirect: false
+        }).then((response) => {
+            // Should get 302 redirect to login or 401 Unauthorized
+            expect([302, 401]).to.include(response.status);
+        });
+    });
+});
+
+describe("CSV Export Authorization — Standard Users", () => {
+    beforeEach(() => {
+        cy.setupStandardSession();
+    });
+
+    it("should deny non-admin users access to CSVExport.php", () => {
+        // Should not be able to visit the form
+        cy.visit("/CSVExport.php", { failOnStatusCode: false });
+
+        // Should be redirected to access-denied page
+        cy.url().should("include", "/v2/access-denied");
+    });
+
+    it("should deny non-admin users POST to CSVCreateFile.php", () => {
+        // Attempt to POST to CSVCreateFile.php as non-admin
+        cy.request({
+            method: "POST",
+            url: "/CSVCreateFile.php",
+            form: true,
+            body: {
+                Title: 1,
+                FirstName: 1,
+                Address1: 1,
+                City: 1,
+                State: 1,
+                Zip: 1,
+                Country: 1,
+                Email: 1,
+                Source: "all",
+                Gender: 0,
+                Format: "Default",
+                Submit: "Create File"
+            },
+            failOnStatusCode: false,
+            followRedirect: false
+        }).then((response) => {
+            // Should get 302 redirect (security redirect)
+            expect(response.status).to.eq(302);
+        });
+    });
+});

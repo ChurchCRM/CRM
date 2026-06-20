@@ -1,7 +1,7 @@
 {
-  "Cannot delete event: %d people are currently checked in.": "ईवेंट को हटाया नहीं जा सकता: %d लोग वर्तमान में चेक इन हैं।",
-  "Cannot delete event: event is currently assigned to a kiosk.": "ईवेंट को हटाया नहीं जा सकता: ईवेंट वर्तमान में एक कियोस्क को असाइन किया गया है।",
-  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "समूह को हटाया नहीं जा सकता: यह %d ईवेंट के लिए दर्शक है और %d ईवेंट प्रकार के लिए डिफ़ॉल्ट समूह है। पहले उन्हें फिर से असाइन करें।",
-  "HTML URL": "HTML URL",
-  "ICS URL": "ICS URL"
+  "HTML URL": "",
+  "ICS URL": "",
+  "Account options": "",
+  "Register": "",
+  "Slovak": ""
 }

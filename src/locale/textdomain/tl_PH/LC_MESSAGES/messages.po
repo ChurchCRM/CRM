@@ -7352,10 +7352,6 @@ msgid "Location & Contact Information"
 msgstr "Lokasyon at Impormasyon ng Pakikipag-ugnayan"
 
 #: 
-msgid "New to"
-msgstr "Bago sa"
-
-#: 
 msgid "No locales configured"
 msgstr "Walang mga locale na na-configure"
 
@@ -9585,10 +9581,6 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Kumonekta ng SMTP server para makapagpadala ng mga email ang ChurchCRM"
 
 #: 
-msgid "Connect with others"
-msgstr "Makipag-ugnayan sa iba"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "I-convert ang mga indibidwal na rekord sa mga yunit ng pamilya"
 
@@ -9727,10 +9719,6 @@ msgstr "Mga Duplicate"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Ang bawat tao ay maaaring magkaroon ng sariling email at numero ng mobile."
-
-#: 
-msgid "Easy registration"
-msgstr "Madaling pagpaparehistro"
 
 #: 
 msgid "Edit Class"
@@ -10035,10 +10023,6 @@ msgstr "Hindi wastong \"Mula sa Numero\":\"%s\". Isama ang country code, hal. +1
 #: 
 msgid "Invite Your Team"
 msgstr "Imbitahan ang Iyong Koponan"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "Sumali sa aming komunidad at manatiling konektado sa"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10431,10 +10415,6 @@ msgid "Record why attendees visited your church"
 msgstr "Itala kung bakit dumalo ang mga kalahok sa iyong simbahan"
 
 #: 
-msgid "Register Your Family"
-msgstr "Irehistro ang Iyong Pamilya"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "Alisin lahat mula sa Cart"
 
@@ -10601,10 +10581,6 @@ msgstr "Magsimulang Muli"
 #: 
 msgid "Start Over"
 msgstr "Magsimulang Muli"
-
-#: 
-msgid "Stay informed"
-msgstr "Manatiling may kaalaman"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -14462,16 +14438,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "Hindi maaaring higit sa %d na karakter ang pangalan"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "Kailangan ng tulong? Makipag-ugnayan sa amin"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "Nagbubukas ng 2-minutong window para sa mga device na magrehistro sa:"
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "Maligayang pagdating — mag-sign in upang pamahalaan ang iyong komunidad"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -14644,6 +14612,18 @@ msgstr "[Pribadong Tala — nakikita lamang ng tagalikha]"
 #: 
 msgid "seconds"
 msgstr "segundo"
+
+#: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "Hindi maaaring burahin ang kaganapan: %d mga tao ang kasalukuyang naka-check in."
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "Hindi maaaring burahin ang kaganapan: ang kaganapan ay kasalukuyang nakalaan sa isang kiosk."
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "Hindi maaaring burahin ang grupo: ito ay ang madla para sa %d kaganapan(gan) at ang default na grupo para sa %d uri(urin) ng kaganapan. Tukuyin muli ang mga ito muna."
 
 #: 
 msgid "A Calendar access token has been generated and saved."

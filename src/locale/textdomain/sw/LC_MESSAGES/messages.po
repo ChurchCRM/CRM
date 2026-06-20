@@ -7388,10 +7388,6 @@ msgid "Location & Contact Information"
 msgstr "Mahali na Taarifa za Mawasiliano"
 
 #: 
-msgid "New to"
-msgstr "Mpya katika"
-
-#: 
 msgid "No locales configured"
 msgstr "Hakuna lugha zilizosanidiwa"
 
@@ -9621,10 +9617,6 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Unganisha seva ya SMTP ili ChurchCRM iweze kutuma barua pepe"
 
 #: 
-msgid "Connect with others"
-msgstr "Ungana na wengine"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Badilisha rekodi za mtu binafsi kuwa vitengo vya familia"
 
@@ -9763,10 +9755,6 @@ msgstr "Nakala Rudufu"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Kila mtu anaweza kuwa na barua pepe yake na nambari ya simu ya mkononi."
-
-#: 
-msgid "Easy registration"
-msgstr "Usajili rahisi"
 
 #: 
 msgid "Edit Class"
@@ -10071,10 +10059,6 @@ msgstr "Nambari batili ya \"Kutoka\":\"%s\". Jumuisha msimbo wa nchi, k.m. +1415
 #: 
 msgid "Invite Your Team"
 msgstr "Alika Timu Yako"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "Jiunge na jumuiya yetu na ubaki umeunganishwa na"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10467,10 +10451,6 @@ msgid "Record why attendees visited your church"
 msgstr "Rekodi sababu za wageni kutembelea kanisa lako"
 
 #: 
-msgid "Register Your Family"
-msgstr "Sajili Familia Yako"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "Ondoa wote kutoka Orodha"
 
@@ -10637,10 +10617,6 @@ msgstr "Anza Upya"
 #: 
 msgid "Start Over"
 msgstr "Anza Tena"
-
-#: 
-msgid "Stay informed"
-msgstr "Endelea kupata taarifa"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -14498,16 +14474,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "Jina haliwezi kuwa ndefu zaidi ya herufi %d"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "Unahitaji msaada? Wasiliana nasi"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "Inafungua dirisha la dakika 2 kwa vifaa kusajili:"
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "Karibu — ingia ili kusimamia mkutano wako"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -14680,6 +14648,18 @@ msgstr "[Kumbukumbu ya Siri — inaonekana kwa muumbaji pekee]"
 #: 
 msgid "seconds"
 msgstr "sekunde"
+
+#: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "Haiwezi kubadilisha tukio: watu %d wamefanya kuingia sasa."
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "Haiwezi kubadilisha tukio: tukio limegawana kwa kiosk."
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "Haiwezi kufuta kundi: ni hadihudhi kwa tukio(s) %d na kundi-kuchagua kwa aina ya tukio %d. Gawania upya kwanza."
 
 #: 
 msgid "A Calendar access token has been generated and saved."

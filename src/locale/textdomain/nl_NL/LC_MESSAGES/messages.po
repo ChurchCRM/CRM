@@ -7356,10 +7356,6 @@ msgid "Location & Contact Information"
 msgstr "Locatie en Contactgegevens"
 
 #: 
-msgid "New to"
-msgstr "Nieuw voor"
-
-#: 
 msgid "No locales configured"
 msgstr "Geen talen geconfigureerd"
 
@@ -9589,10 +9585,6 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Een SMTP-server koppelen zodat ChurchCRM e-mails kan versturen"
 
 #: 
-msgid "Connect with others"
-msgstr "Verbinding maken met anderen"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Individuele dossiers omzetten naar gezinseenheden"
 
@@ -9731,10 +9723,6 @@ msgstr "Duplicaten"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Elke persoon kan een eigen e-mailadres en mobiel nummer hebben."
-
-#: 
-msgid "Easy registration"
-msgstr "Eenvoudige registratie"
 
 #: 
 msgid "Edit Class"
@@ -10039,10 +10027,6 @@ msgstr "Ongeldige \"Van nummer\": \"%s\". Voeg de landcode toe, bijv. +141555512
 #: 
 msgid "Invite Your Team"
 msgstr "Uw team uitnodigen"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "Word lid van onze gemeenschap en blijf verbonden met"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10435,10 +10419,6 @@ msgid "Record why attendees visited your church"
 msgstr "Registreer waarom bezoekers uw kerk bezochten"
 
 #: 
-msgid "Register Your Family"
-msgstr "Uw gezin registreren"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "Alles uit winkelwagen verwijderen"
 
@@ -10605,10 +10585,6 @@ msgstr "Opnieuw beginnen"
 #: 
 msgid "Start Over"
 msgstr "Opnieuw starten"
-
-#: 
-msgid "Stay informed"
-msgstr "Blijf geïnformeerd"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -14466,16 +14442,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "Naam mag niet langer zijn dan %d tekens"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "Hulp nodig? Neem contact met ons op"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "Opent een venster van 2 minuten voor apparaten om te registreren op:"
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "Welkom — meld u aan om uw gemeente te beheren"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -14648,6 +14616,18 @@ msgstr "[Privénotitie — alleen zichtbaar voor de auteur]"
 #: 
 msgid "seconds"
 msgstr "seconden"
+
+#: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "Kan evenement niet verwijderen: %d personen zijn momenteel ingecheckt."
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "Kan evenement niet verwijderen: evenement is momenteel aan een kiosk toegewezen."
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "Kan groep niet verwijderen: dit is het publiek voor %d evenement(en) en de standaardgroep voor %d soort(en) evenement. Wijs deze eerst opnieuw toe."
 
 #: 
 msgid "A Calendar access token has been generated and saved."

@@ -1,5 +1,5 @@
 {
-  "Cannot delete event: %d people are currently checked in.": "לא ניתן למחוק אירוע: %d אנשים כרגע מחוברים.",
-  "Cannot delete event: event is currently assigned to a kiosk.": "לא ניתן למחוק אירוע: אירוע מוקצה כרגע לקיוסק.",
-  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "לא ניתן למחוק קבוצה: זה הקהל עבור %d אירוע(ים) והקבוצה ברירת המחדל עבור %d סוג(י) אירוע. הקצה מחדש אלה תחילה."
+  "Account options": "",
+  "Register": "",
+  "Slovak": ""
 }
