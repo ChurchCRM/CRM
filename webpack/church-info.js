@@ -6,7 +6,11 @@
  * - States:    GET /api/public/data/countries/{code}/states
  */
 
+import { initDateFormatPreviews } from "./date-format-preview";
+
 document.addEventListener("DOMContentLoaded", () => {
+  // ── Date format live previews ────────────────────────────────────────────
+  initDateFormatPreviews();
   // ── Language picker ─────────────────────────────────────────────────────
   const langSelect = document.getElementById("sLanguage");
   if (langSelect) {
