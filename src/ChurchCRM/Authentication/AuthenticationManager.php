@@ -104,8 +104,14 @@ class AuthenticationManager
         $logger = LoggerUtils::getAppLogger();
         switch ($AuthenticationRequest::class) {
             case APITokenAuthenticationRequest::class:
+                // Use a temporary provider that does NOT overwrite the session.
+                // If the request also carries a browser session (e.g., cy.request() in
+                // Cypress shares the cookie jar), persisting APITokenAuthentication into
+                // $_SESSION would corrupt the session for all subsequent browser page loads,
+                // since APITokenAuthentication::validateUserSessionIsActive() always returns
+                // false. The API-key path is stateless by design — no session mutation needed.
                 $AuthenticationProvider = new APITokenAuthentication();
-                self::setAuthenticationProvider($AuthenticationProvider);
+                // Intentionally NOT calling setAuthenticationProvider() here.
                 break;
             case LocalUsernamePasswordRequest::class:
                 $AuthenticationProvider = new LocalAuthentication();
@@ -113,20 +119,28 @@ class AuthenticationManager
                 break;
             case LocalTwoFactorTokenRequest::class:
                 try {
-                    self::getAuthenticationProvider();
+                    $AuthenticationProvider = self::getAuthenticationProvider();
                 } catch (\Exception $e) {
                     $logger->warning(
                         "Tried to supply two factor authentication code, but didn't have an existing session.  This shouldn't ever happen",
                         ['exception' => $e]
                     );
+                    $AuthenticationProvider = new LocalAuthentication();
+                    self::setAuthenticationProvider($AuthenticationProvider);
                 }
                 break;
             default:
                 $logger->error('Unknown AuthenticationRequest type supplied', ['providedAuthenticationRequestClass' => $AuthenticationRequest::class]);
+                // Fall back to session provider or create a new one to avoid undefined variable.
+                try {
+                    $AuthenticationProvider = self::getAuthenticationProvider();
+                } catch (\Exception $e) {
+                    $AuthenticationProvider = new LocalAuthentication();
+                }
                 break;
         }
 
-        $result = self::getAuthenticationProvider()->authenticate($AuthenticationRequest);
+        $result = $AuthenticationProvider->authenticate($AuthenticationRequest);
 
         if (null !== $result->nextStepURL) {
             $logger->debug('Authentication requires additional step: ' . $result->nextStepURL);
