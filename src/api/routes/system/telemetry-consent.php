@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\TelemetryService;
+use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\VersionUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -20,6 +21,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
  *                 description="Telemetry collection level. 'none' declines and suppresses prompt for this version.")
  *         )
  *     ),
+ *     @OA\Response(response=403, description="Admin role required"),
  *     @OA\Response(response=200, description="OK",
  *         @OA\JsonContent(@OA\Property(property="status", type="string"))
  *     )
@@ -48,4 +50,4 @@ $app->post('/system/telemetry-consent', function (Request $request, Response $re
     }
 
     return SlimUtils::renderJSON($response, ['status' => 'ok']);
-});
+})->add(AdminRoleAuthMiddleware::class);
