@@ -10,9 +10,13 @@ describe("User Editor - ORM Migration Tests", () => {
     });
 
     function createCustomUser() {
-        // makePrivateAdminAPICall uses x-api-key (cy.request), NOT the browser
-        // session — the admin session cookie is unaffected and stays valid.
         cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId}`, null, [200, 204, 404]);
+        // The API call sends the session cookie alongside x-api-key, causing PHP to
+        // overwrite $_SESSION['AuthenticationProvider'] with APITokenAuthentication.
+        // Clear all cookies so cy.session's validate step fails and triggers a
+        // fresh login, restoring LocalAuthentication in the PHP session.
+        cy.clearCookies();
+        cy.setupAdminSession();
         cy.intercept("POST", "**/UserEditor.php*").as("saveUser");
         cy.visit(`UserEditor.php?NewPersonID=${throwawayPersonId}`);
         cy.contains("User Editor");
@@ -20,8 +24,9 @@ describe("User Editor - ORM Migration Tests", () => {
     }
 
     function deleteUser() {
-        // Same: API-key call does not affect the browser session.
         cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId}`, null, [200, 204, 404]);
+        // Same: clear cookies so the next test's beforeEach gets a fresh login.
+        cy.clearCookies();
     }
 
     it("Should persist a single Custom permission via ORM", () => {

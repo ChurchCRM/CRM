@@ -25,7 +25,7 @@ Cypress.Commands.add('setupLoginSession', (sessionName, username, password, opti
         effectiveSessionName,
         () => {
             // Perform the login
-            cy.visit('/login');
+            cy.visit('session/begin');
             cy.get('input[name=User]').type(username);
             cy.get('input[name=Password]').type(password + '{enter}');
             // Wait for redirect away from session/login pages
@@ -108,7 +108,7 @@ Cypress.Commands.add('setupNoFinanceSession', (options = {}) => {
  */
 Cypress.Commands.add('loginWithCredentials', (username, password, sessionName = 'custom-session', expectSuccess = true) => {
     cy.session(sessionName, () => {
-        cy.visit('/login');
+        cy.visit('session/begin');
         cy.get('input[name=User]').type(username);
         cy.get('input[name=Password]').type(password + '{enter}');
     }, {
