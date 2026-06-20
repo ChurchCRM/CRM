@@ -82,11 +82,10 @@ describe("API Public User", () => {
     });
 
     // 2FA Authentication tests
-    // NOTE: Tests below require a seeded user with usr_TwoFactorAuthSecret set.
-    // Add a dedicated 2FA user to cypress/data/seed.sql before unskipping.
+    // Uses the seeded `twofa_user` (password "changeme", usr_TwoFactorAuthSecret
+    // is a Defuse-encrypted TOTP secret that decrypts to JBSWY3DPEBLW64TMMQ======).
     describe("2FA Authentication", () => {
-        it.skip("Login returns 202 requiresOTP when valid password supplied but OTP omitted", () => {
-            // Requires seed user: { userName: "twofa_user", password: "changeme", usr_TwoFactorAuthSecret: "<valid TOTP secret>" }
+        it("Login returns 202 requiresOTP when valid password supplied but OTP omitted", () => {
             cy.apiRequest({
                 method: "POST",
                 url: "/api/public/user/login",
@@ -99,8 +98,7 @@ describe("API Public User", () => {
             });
         });
 
-        it.skip("Login returns 401 on invalid OTP", () => {
-            // Requires the same twofa_user seed entry
+        it("Login returns 401 on invalid OTP", () => {
             cy.apiRequest({
                 method: "POST",
                 url: "/api/public/user/login",
@@ -144,6 +142,23 @@ describe("API Public User", () => {
             }).then((resp) => {
                 expect(resp.status).to.eq(401);
                 // Same generic message as wrong password — prevents confirming lockout state
+                expect(resp.body.error).to.eq("Invalid login or password");
+            });
+        });
+
+        it("Correct password returns 401 for a pre-locked seeded account", () => {
+            // `locked.user` is seeded with usr_FailedLogins = 99 (well over
+            // iMaxFailedLogins), so it is locked from the first request — no need
+            // to exhaust attempts. Correct credentials must still return the
+            // generic 401 so lockout state can't be probed.
+            cy.apiRequest({
+                method: "POST",
+                url: "/api/public/user/login",
+                headers: { "content-type": "application/json" },
+                body: { userName: "locked.user", password: "changeme" },
+                failOnStatusCode: false,
+            }).then((resp) => {
+                expect(resp.status).to.eq(401);
                 expect(resp.body.error).to.eq("Invalid login or password");
             });
         });

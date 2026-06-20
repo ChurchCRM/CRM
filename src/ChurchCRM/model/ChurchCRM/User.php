@@ -567,7 +567,15 @@ class User extends BaseUser
 
     private function getDecryptedTwoFactorAuthRecoveryCodes(): array
     {
-        return explode(',', Crypto::decryptWithPassword($this->getTwoFactorAuthRecoveryCodes(), KeyManagerUtils::getTwoFASecretKey()));
+        $encrypted = $this->getTwoFactorAuthRecoveryCodes();
+        if (empty($encrypted)) {
+            return [];
+        }
+        try {
+            return explode(',', Crypto::decryptWithPassword($encrypted, KeyManagerUtils::getTwoFASecretKey()));
+        } catch (\Exception $e) {
+            return [];
+        }
     }
 
     public function disableTwoFactorAuthentication(): void
@@ -601,15 +609,24 @@ class User extends BaseUser
 
     public function isTwoFACodeValid(string $twoFACode): bool
     {
-        $google2fa = new Google2FA();
-        $window = 2;
-        $timestamp = $google2fa->verifyKeyNewer($this->getDecryptedTwoFactorAuthSecret(), $twoFACode, $this->getTwoFactorAuthLastKeyTimestamp(), $window);
-        if ($timestamp !== false) {
-            $this->setTwoFactorAuthLastKeyTimestamp($timestamp);
-            $this->save();
+        try {
+            $google2fa = new Google2FA();
+            $window = 2;
+            $timestamp = $google2fa->verifyKeyNewer(
+                $this->getDecryptedTwoFactorAuthSecret(),
+                $twoFACode,
+                $this->getTwoFactorAuthLastKeyTimestamp(),
+                $window
+            );
+            if ($timestamp !== false) {
+                $this->setTwoFactorAuthLastKeyTimestamp($timestamp);
+                $this->save();
 
-            return true;
-        } else {
+                return true;
+            }
+
+            return false;
+        } catch (\Exception $e) {
             return false;
         }
     }
