@@ -234,7 +234,10 @@ class LoggerUtils
                 ]));
             });
 
-            self::$authLogger->pushHandler(new PostHogLogHandler());
+            // NOTE: PostHogLogHandler is intentionally NOT added here.
+            // The auth logger records failed login attempts and password resets
+            // which contain raw usernames in the message — PII that must never
+            // reach an external telemetry service.
         }
 
         return self::$authLogger;

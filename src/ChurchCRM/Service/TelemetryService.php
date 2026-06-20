@@ -10,7 +10,7 @@ class TelemetryService
 {
     // Hardcoded PostHog EU project credentials — not user-configurable.
     public const POSTHOG_KEY      = 'phc_vhMEHZai3exmp3sqqtJGyVY8Dfjn877bV7zQjV99sJZy';
-    public const POSTHOG_ENDPOINT = 'https://us.i.posthog.com';
+    public const POSTHOG_ENDPOINT = 'https://eu.i.posthog.com';
 
     // Collection levels stored in sTelemetryLevel.
     public const LEVEL_NONE     = 'none';
@@ -64,7 +64,7 @@ class TelemetryService
 
         // Strip query string so no record IDs reach PostHog.
         $rawUrl = $record->extra['url'] ?? '';
-        $route  = $rawUrl !== '' ? strtok($rawUrl, '?') : 'unknown';
+        $route  = $rawUrl !== '' ? explode('?', $rawUrl, 2)[0] : 'unknown';
 
         $properties = array_merge(self::baseProperties(), [
             'level'          => $record->level->name,
@@ -86,7 +86,7 @@ class TelemetryService
             'crm_version' => VersionUtils::getInstalledVersion(),
             'locale'      => SystemConfig::getValue('sLanguage') ?: 'en_US',
             'php_version' => PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION,
-            'os_family'   => strtok((string) php_uname('s'), ' '),
+            'os_family'   => explode(' ', (string) php_uname('s'), 2)[0],
         ];
     }
 
