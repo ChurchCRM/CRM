@@ -471,16 +471,16 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'sDefaultZip'      => SystemConfig::getValue('sDefaultZip'),
             'sDefaultCountry'  => SystemConfig::getValue('sDefaultCountry'),
             // Date & Time Formats
-            'sDateFormatLong'      => SystemConfig::getValue('sDateFormatLong')      ?: 'm/d/Y',
-            'sDateFormatNoYear'    => SystemConfig::getValue('sDateFormatNoYear')    ?: 'm/d',
-            'sDateTimeFormat'      => SystemConfig::getValue('sDateTimeFormat')      ?: 'm/d/Y g:i a',
-            'sDateFilenameFormat'  => SystemConfig::getValue('sDateFilenameFormat')  ?: 'Ymd-Gis',
-            'sDatePickerFormat'    => SystemConfig::getValue('sDatePickerFormat')    ?: 'Y-m-d',
-            'sDatePickerPlaceHolder' => SystemConfig::getValue('sDatePickerPlaceHolder') ?: 'yyyy-mm-dd',
+            'sDateFormatLong'      => SystemConfig::getValue('sDateFormatLong')      ?: SystemConfig::getConfigItem('sDateFormatLong')->getDefault(),
+            'sDateFormatNoYear'    => SystemConfig::getValue('sDateFormatNoYear')    ?: SystemConfig::getConfigItem('sDateFormatNoYear')->getDefault(),
+            'sDateTimeFormat'      => SystemConfig::getValue('sDateTimeFormat')      ?: SystemConfig::getConfigItem('sDateTimeFormat')->getDefault(),
+            'sDateFilenameFormat'  => SystemConfig::getValue('sDateFilenameFormat')  ?: SystemConfig::getConfigItem('sDateFilenameFormat')->getDefault(),
+            'sDatePickerFormat'    => SystemConfig::getValue('sDatePickerFormat')    ?: SystemConfig::getConfigItem('sDatePickerFormat')->getDefault(),
+            'sDatePickerPlaceHolder' => SystemConfig::getValue('sDatePickerPlaceHolder') ?: SystemConfig::getConfigItem('sDatePickerPlaceHolder')->getDefault(),
             // Phone Number Formats
-            'sPhoneFormat'         => SystemConfig::getValue('sPhoneFormat')         ?: '(999) 999-9999',
-            'sPhoneFormatWithExt'  => SystemConfig::getValue('sPhoneFormatWithExt')  ?: '(999) 999-9999 x99999',
-            'sPhoneFormatCell'     => SystemConfig::getValue('sPhoneFormatCell')     ?: '(999) 999-9999',
+            'sPhoneFormat'         => SystemConfig::getValue('sPhoneFormat')         ?: SystemConfig::getConfigItem('sPhoneFormat')->getDefault(),
+            'sPhoneFormatWithExt'  => SystemConfig::getValue('sPhoneFormatWithExt')  ?: SystemConfig::getConfigItem('sPhoneFormatWithExt')->getDefault(),
+            'sPhoneFormatCell'     => SystemConfig::getValue('sPhoneFormatCell')     ?: SystemConfig::getConfigItem('sPhoneFormatCell')->getDefault(),
         ];
 
         $pageArgs = [
@@ -588,16 +588,16 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
                 'sDefaultZip'      => $body['sDefaultZip'] ?? '',
                 'sDefaultCountry'  => $body['sDefaultCountry'] ?? '',
                 // Date & Time Formats
-                'sDateFormatLong'      => $body['sDateFormatLong'] ?? 'm/d/Y',
-                'sDateFormatNoYear'    => $body['sDateFormatNoYear'] ?? 'm/d',
-                'sDateTimeFormat'      => $body['sDateTimeFormat'] ?? 'm/d/Y g:i a',
-                'sDateFilenameFormat'  => $body['sDateFilenameFormat'] ?? 'Ymd-Gis',
-                'sDatePickerFormat'    => $body['sDatePickerFormat'] ?? 'Y-m-d',
-                'sDatePickerPlaceHolder' => $body['sDatePickerPlaceHolder'] ?? 'yyyy-mm-dd',
+                'sDateFormatLong'      => trim((string)($body['sDateFormatLong'] ?? ''))      !== '' ? $body['sDateFormatLong']      : SystemConfig::getConfigItem('sDateFormatLong')->getDefault(),
+                'sDateFormatNoYear'    => trim((string)($body['sDateFormatNoYear'] ?? ''))    !== '' ? $body['sDateFormatNoYear']    : SystemConfig::getConfigItem('sDateFormatNoYear')->getDefault(),
+                'sDateTimeFormat'      => trim((string)($body['sDateTimeFormat'] ?? ''))      !== '' ? $body['sDateTimeFormat']      : SystemConfig::getConfigItem('sDateTimeFormat')->getDefault(),
+                'sDateFilenameFormat'  => trim((string)($body['sDateFilenameFormat'] ?? ''))  !== '' ? $body['sDateFilenameFormat']  : SystemConfig::getConfigItem('sDateFilenameFormat')->getDefault(),
+                'sDatePickerFormat'    => trim((string)($body['sDatePickerFormat'] ?? ''))    !== '' ? $body['sDatePickerFormat']    : SystemConfig::getConfigItem('sDatePickerFormat')->getDefault(),
+                'sDatePickerPlaceHolder' => trim((string)($body['sDatePickerPlaceHolder'] ?? '')) !== '' ? $body['sDatePickerPlaceHolder'] : SystemConfig::getConfigItem('sDatePickerPlaceHolder')->getDefault(),
                 // Phone Number Formats
-                'sPhoneFormat'         => $body['sPhoneFormat'] ?? '(999) 999-9999',
-                'sPhoneFormatWithExt'  => $body['sPhoneFormatWithExt'] ?? '(999) 999-9999 x99999',
-                'sPhoneFormatCell'     => $body['sPhoneFormatCell'] ?? '(999) 999-9999',
+                'sPhoneFormat'         => trim((string)($body['sPhoneFormat'] ?? ''))         !== '' ? $body['sPhoneFormat']         : SystemConfig::getConfigItem('sPhoneFormat')->getDefault(),
+                'sPhoneFormatWithExt'  => trim((string)($body['sPhoneFormatWithExt'] ?? ''))  !== '' ? $body['sPhoneFormatWithExt']  : SystemConfig::getConfigItem('sPhoneFormatWithExt')->getDefault(),
+                'sPhoneFormatCell'     => trim((string)($body['sPhoneFormatCell'] ?? ''))     !== '' ? $body['sPhoneFormatCell']     : SystemConfig::getConfigItem('sPhoneFormatCell')->getDefault(),
             ];
 
             $pageArgs = [
@@ -673,17 +673,17 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         SystemConfig::setValue('sDefaultState', $body['sDefaultState'] ?? '');
         SystemConfig::setValue('sDefaultZip', $body['sDefaultZip'] ?? '');
         SystemConfig::setValue('sDefaultCountry', $body['sDefaultCountry'] ?? '');
-        // Date & Time Formats (optional, fall back to defaults on empty)
-        SystemConfig::setValue('sDateFormatLong', $body['sDateFormatLong'] ?? 'm/d/Y');
-        SystemConfig::setValue('sDateFormatNoYear', $body['sDateFormatNoYear'] ?? 'm/d');
-        SystemConfig::setValue('sDateTimeFormat', $body['sDateTimeFormat'] ?? 'm/d/Y g:i a');
-        SystemConfig::setValue('sDateFilenameFormat', $body['sDateFilenameFormat'] ?? 'Ymd-Gis');
-        SystemConfig::setValue('sDatePickerFormat', $body['sDatePickerFormat'] ?? 'Y-m-d');
-        SystemConfig::setValue('sDatePickerPlaceHolder', $body['sDatePickerPlaceHolder'] ?? 'yyyy-mm-dd');
-        // Phone Number Formats (optional)
-        SystemConfig::setValue('sPhoneFormat', $body['sPhoneFormat'] ?? '(999) 999-9999');
-        SystemConfig::setValue('sPhoneFormatWithExt', $body['sPhoneFormatWithExt'] ?? '(999) 999-9999 x99999');
-        SystemConfig::setValue('sPhoneFormatCell', $body['sPhoneFormatCell'] ?? '(999) 999-9999');
+        // Date & Time Formats — fall back to each key's declared default when empty/whitespace.
+        // An empty string passed to PHP's date() produces empty output app-wide.
+        foreach (['sDateFormatLong', 'sDateFormatNoYear', 'sDateTimeFormat', 'sDateFilenameFormat', 'sDatePickerFormat', 'sDatePickerPlaceHolder'] as $key) {
+            $val = trim((string) ($body[$key] ?? ''));
+            SystemConfig::setValue($key, $val !== '' ? $val : SystemConfig::getConfigItem($key)->getDefault());
+        }
+        // Phone Number Formats — same empty-value guard.
+        foreach (['sPhoneFormat', 'sPhoneFormatWithExt', 'sPhoneFormatCell'] as $key) {
+            $val = trim((string) ($body[$key] ?? ''));
+            SystemConfig::setValue($key, $val !== '' ? $val : SystemConfig::getConfigItem($key)->getDefault());
+        }
 
         // Flash success via the system-wide notify. If geocoding silently
         // failed (Nominatim returned no result for a non-empty address) we

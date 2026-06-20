@@ -169,7 +169,7 @@ function categoryId(string $category): string {
           <div class="card-header">
             <h3 class="card-title"><?= gettext($category) ?></h3>
           </div>
-          <?php if ($category === 'Localization'): ?>
+          <?php if ($category === gettext('Localization')): ?>
           <div class="card-body">
             <div class="alert alert-info mb-0">
               <div class="d-flex align-items-start">

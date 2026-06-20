@@ -25,7 +25,7 @@ export const DATETIME_PRESETS: ReadonlyArray<{ label: string; format: string }> 
 /**
  * Convert a PHP date format string to a rendered date string using the given Date.
  *
- * Supported tokens: Y y m n d j H G h g i s A a D l N w
+ * Supported tokens: Y y m n d j H G h g i s A a D l N w M F
  * Unsupported tokens are passed through literally.
  */
 export function formatPhpDate(format: string, date: Date): string {
@@ -109,10 +109,14 @@ export function formatPhpDate(format: string, date: Date): string {
  *
  * @param inputEl - The <input> element containing the PHP date format string
  * @param presets - Array of preset objects to render as buttons (optional)
+ * @param literal - When true, display the raw input value instead of token-expanding it.
+ *                  Use for fields like sDatePickerPlaceHolder that hold a literal
+ *                  pattern (e.g. yyyy-mm-dd), not a PHP date format string.
  */
 export function attachDatePreview(
   inputEl: HTMLInputElement,
   presets: ReadonlyArray<{ label: string; format: string }> = DATE_PRESETS,
+  literal = false,
 ): void {
   const wrapper = document.createElement("div");
   wrapper.className = "date-format-preview-wrapper mt-1";
@@ -159,8 +163,9 @@ export function attachDatePreview(
       previewSpan.textContent = "";
       return;
     }
-    const now = new Date();
-    const rendered = formatPhpDate(fmt, now);
+    // literal fields (e.g. sDatePickerPlaceHolder) hold a raw pattern string,
+    // not a PHP date format — display the value as-is, no token expansion.
+    const rendered = literal ? fmt : formatPhpDate(fmt, new Date());
     previewSpan.textContent = `Preview: ${rendered}`;
   }
 
@@ -200,7 +205,8 @@ export function initDateFormatPreviews(): void {
   for (const id of plainFields) {
     const el = document.getElementById(id) as HTMLInputElement | null;
     if (el) {
-      attachDatePreview(el, []);
+      // literal=true: this field holds a raw placeholder pattern, not a PHP date format
+      attachDatePreview(el, [], true);
     }
   }
 }
