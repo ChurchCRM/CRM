@@ -12,6 +12,7 @@ use ChurchCRM\Utils\ExecutionTime;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\VersionUtils;
 use Github\Client;
+use Github\ResultPager;
 
 class ChurchCRMReleaseManager
 {
@@ -112,6 +113,7 @@ class ChurchCRMReleaseManager
         $logger = LoggerUtils::getAppLogger();
         $logger->debug('checkForUpdates() called');
         $_SESSION['ChurchCRMReleases'] = self::populateReleases();
+        unset($_SESSION['ChurchCRMAllStableReleases']);
         $logger->debug('checkForUpdates() complete - ' . count($_SESSION['ChurchCRMReleases']) . ' releases cached');
     }
 
@@ -618,12 +620,16 @@ class ChurchCRMReleaseManager
 
         $client = new Client();
         try {
-            $gitHubReleases = $client->repo()
-                ->releases()
-                ->all(
+            $pager = new ResultPager($client);
+            $gitHubReleases = $pager->fetchAll(
+                $client->repo()->releases(),
+                'all',
+                [
                     self::GITHUB_USER_NAME,
-                    self::GITHUB_REPOSITORY_NAME
-                );
+                    self::GITHUB_REPOSITORY_NAME,
+                    ['per_page' => 100],
+                ]
+            );
         } catch (\Exception $e) {
             LoggerUtils::getAppLogger()->warning('Failed to fetch all releases for preview', ['error' => $e->getMessage()]);
             return array_values(array_filter(
@@ -699,12 +705,6 @@ class ChurchCRMReleaseManager
         return self::downloadRelease($release);
     }
 
-    /**
-     * Check if a system update is available for the current installation
-     * Returns an array with 'available' (bool) and 'version' (ChurchCRMRelease|null) keys
-     *
-     * @return array{available: bool, version: ChurchCRMRelease|null, latestVersion: ChurchCRMRelease|null}
-     */
     /**
      * Build preview data for the "What's New" wizard step.
      * Returns next release notes, upgrade path (all releases ahead), and version selector list.

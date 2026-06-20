@@ -256,6 +256,23 @@ function fetchUpgradePreview() {
 function renderWhatsNew(data) {
   const { nextVersion, nextReleaseNotes, nextChangelogUrl, releasesAhead, upgradePath } = data;
 
+  // Already up-to-date: show a clear message and hide the proceed button
+  if (releasesAhead === 0) {
+    $("#whatsNewVersion").text("");
+    $("#whatsNewNotes").html("");
+    $("#whatsNewChangelogLink").addClass("d-none");
+    $("#upgradePathPanel").addClass("d-none");
+    $("#advancedVersionCollapse").closest(".mb-4").addClass("d-none");
+    $("#proceedToDownload").addClass("d-none");
+    $("#whatsNewContent").prepend(
+      `<div class="alert alert-success d-flex align-items-center gap-2 mb-3">
+        <i class="fa fa-circle-check fa-lg"></i>
+        <span><strong>${i18next.t("You're up to date!")}</strong> ${i18next.t("No upgrades are available for your current version.")}</span>
+      </div>`,
+    );
+    return;
+  }
+
   // Version heading
   $("#whatsNewVersion").text(nextVersion || "");
 
@@ -297,7 +314,7 @@ function renderUpgradePath(upgradePath) {
       ? `<span class="badge bg-primary-lt text-primary ms-1">${i18next.t("installing next")}</span>`
       : "";
     const changelogLink = entry.changelogUrl
-      ? `<a href="${entry.changelogUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost-secondary btn-sm ms-auto">
+      ? `<a href="${escapeHtml(entry.changelogUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost-secondary btn-sm ms-auto">
            <i class="fa fa-external-link me-1"></i>${i18next.t("Changelog")}
          </a>`
       : "";

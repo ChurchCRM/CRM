@@ -110,7 +110,7 @@ $app->group('/api/upgrade', function (RouteCollectorProxy $group): void {
             // Prevent path traversal: ensure the file is inside the system temp directory
             $realPath = realpath($fullPath);
             $tempDir = realpath(sys_get_temp_dir());
-            if ($realPath === false || $tempDir === false || strncmp($realPath, $tempDir, strlen($tempDir)) !== 0) {
+            if ($realPath === false || $tempDir === false || !str_starts_with($realPath, $tempDir . DIRECTORY_SEPARATOR)) {
                 return SlimUtils::renderErrorJSON($response, gettext('Invalid file path'), [], 400, null, $request);
             }
             UpgradeAPIService::doUpgrade($realPath, $sha1);
