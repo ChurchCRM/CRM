@@ -7,15 +7,15 @@
  * family's data via family API endpoints.
  *
  * Test user: amanda.black (user ID 99, `selfedit.api.key`)
- *   - Permissions: EditSelf=1, Notes=1 only (AddRecords=0, EditRecords=0, Admin=0)
+ *   - Permissions: EditSelf=1 only (Notes=0, AddRecords=0, EditRecords=0, Admin=0)
  *   - Belongs to: family ID 20 (Black family)
  *
  * Expected: amanda.black CAN access family 20 (own family), but MUST receive
  * 403 for any request targeting a different family (family 1 = Campbell family).
  *
- * Notes=1 is required so that amanda.black passes the hasNoAdminPermissions()
- * check in AuthMiddleware (GHSA-5w59-32c8-933v) — EditSelf alone is not
- * sufficient to use the API.
+ * EditSelf is sufficient to pass the hasNoAdminPermissions() check in AuthMiddleware
+ * (hasNoAdminPermissions() returns false for users with isEditSelf=true). No other
+ * role (e.g. Notes) is required.
  */
 describe("GHSA-jjcj-h3cm-p7x7 - EditSelf user family scope restriction", () => {
     beforeEach(() => {
