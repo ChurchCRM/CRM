@@ -21,6 +21,13 @@ class AuthenticationManager
     // This class exists to abstract the implementations of various authentication providers
     // Currently, only local auth is implemented; hence the zero-indexed array elements.
 
+    /**
+     * Holds the authenticated user for the current request when API token auth is used.
+     * This allows getCurrentUser() to return the correct API user even after the session
+     * provider has been restored to LocalAuthentication (to avoid session corruption).
+     */
+    private static ?User $currentRequestUser = null;
+
     public static function getAuthenticationProvider(): IAuthenticationProvider
     {
         if (
@@ -41,6 +48,12 @@ class AuthenticationManager
 
     public static function getCurrentUser(): User
     {
+        // For API token requests, the authenticated user is cached here to avoid
+        // reading from the session (which has been restored to the previous provider).
+        if (self::$currentRequestUser instanceof User) {
+            return self::$currentRequestUser;
+        }
+
         try {
             $currentUser = self::getAuthenticationProvider()->getCurrentUser();
             if (!$currentUser instanceof User) {
@@ -102,16 +115,23 @@ class AuthenticationManager
     public static function authenticate(AuthenticationRequest $AuthenticationRequest): AuthenticationResult
     {
         $logger = LoggerUtils::getAppLogger();
+        $previousProvider = null; // used by APITokenAuthenticationRequest to restore session provider
         switch ($AuthenticationRequest::class) {
             case APITokenAuthenticationRequest::class:
-                // Use a temporary provider that does NOT overwrite the session.
-                // If the request also carries a browser session (e.g., cy.request() in
-                // Cypress shares the cookie jar), persisting APITokenAuthentication into
-                // $_SESSION would corrupt the session for all subsequent browser page loads,
-                // since APITokenAuthentication::validateUserSessionIsActive() always returns
-                // false. The API-key path is stateless by design — no session mutation needed.
+                // Use a temporary provider for API key auth that does NOT permanently
+                // overwrite the session. Save the existing session provider (if any)
+                // and restore it after authenticate() so that a concurrent browser
+                // session using the same PHP session ID is not corrupted.
+                // (cy.request() in Cypress shares the browser cookie jar, so the
+                // session cookie is sent on API key requests too.)
+                $previousProvider = null;
+                try {
+                    $previousProvider = self::getAuthenticationProvider();
+                } catch (\Exception $e) {
+                    // No existing session provider — pure API-only request, no restoration needed.
+                }
                 $AuthenticationProvider = new APITokenAuthentication();
-                // Intentionally NOT calling setAuthenticationProvider() here.
+                self::setAuthenticationProvider($AuthenticationProvider);
                 break;
             case LocalUsernamePasswordRequest::class:
                 $AuthenticationProvider = new LocalAuthentication();
@@ -141,6 +161,21 @@ class AuthenticationManager
         }
 
         $result = $AuthenticationProvider->authenticate($AuthenticationRequest);
+
+        // For API token requests: restore the previous session provider immediately so
+        // the session is NOT left with APITokenAuthentication at request end.
+        // APITokenAuthentication::validateUserSessionIsActive() always returns false,
+        // which would break subsequent browser page loads on the same PHP session.
+        // We cache the authenticated API user in $currentRequestUser so getCurrentUser()
+        // can still return the correct user for the remainder of this request.
+        if ($AuthenticationRequest instanceof APITokenAuthenticationRequest) {
+            if ($result->isAuthenticated) {
+                self::$currentRequestUser = $AuthenticationProvider->getCurrentUser();
+            }
+            if ($previousProvider !== null) {
+                self::setAuthenticationProvider($previousProvider);
+            }
+        }
 
         if (null !== $result->nextStepURL) {
             $logger->debug('Authentication requires additional step: ' . $result->nextStepURL);
