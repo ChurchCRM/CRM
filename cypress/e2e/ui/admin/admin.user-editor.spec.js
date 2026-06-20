@@ -9,6 +9,23 @@ describe("User Editor - ORM Migration Tests", () => {
         cy.setupAdminSession();
     });
 
+    // Unconditionally reset the admin username before the username test runs.
+    // If a prior run was aborted mid-way (after mutating to 'admin_orm_test' but
+    // before restoring), this ensures the DB is always in a clean state.
+    before(() => {
+        cy.setupAdminSession();
+        cy.intercept("POST", "**/UserEditor.php*").as("resetUser");
+        cy.visit("UserEditor.php?PersonID=1");
+        cy.get("#UserName").then(($input) => {
+            const current = $input.val();
+            if (current !== "Admin") {
+                cy.get("#UserName").clear().type("Admin");
+                cy.get("#SaveButton").click();
+                cy.wait("@resetUser");
+            }
+        });
+    });
+
     function createCustomUser() {
         cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId}`, null, [200, 204, 404]);
         // makePrivateAdminAPICall resets the session — re-login before visiting.
@@ -54,23 +71,25 @@ describe("User Editor - ORM Migration Tests", () => {
     it("Should update username via ORM", () => {
         // The username field is independent of access level, so exercising it on
         // the admin user (PersonID 1) is safe — its mode/permissions are untouched.
+        //
+        // A before() hook unconditionally resets the username to 'Admin'
+        // before this test runs, so an aborted prior run cannot leave the DB dirty.
         cy.intercept("POST", "**/UserEditor.php*").as("saveUser");
         cy.visit("UserEditor.php?PersonID=1");
         cy.contains("User Editor");
 
-        cy.get("#UserName").invoke("val").then((originalUsername) => {
-            const newUsername = "admin_orm_test";
+        const newUsername = "admin_orm_test";
+        cy.get("#UserName").clear().type(newUsername);
+        cy.get("#SaveButton").click();
+        cy.wait("@saveUser");
 
-            cy.get("#UserName").clear().type(newUsername);
-            cy.get("#SaveButton").click();
-            cy.wait("@saveUser");
+        cy.visit("UserEditor.php?PersonID=1");
+        cy.get("#UserName").should("have.value", newUsername);
 
-            cy.visit("UserEditor.php?PersonID=1");
-            cy.get("#UserName").should("have.value", newUsername);
-
-            cy.get("#UserName").clear().type(originalUsername);
-            cy.get("#SaveButton").click();
-            cy.wait("@saveUser");
-        });
+        // Restore to canonical seed username
+        cy.intercept("POST", "**/UserEditor.php*").as("restoreUser");
+        cy.get("#UserName").clear().type("Admin");
+        cy.get("#SaveButton").click();
+        cy.wait("@restoreUser");
     });
 });
