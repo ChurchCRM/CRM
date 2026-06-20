@@ -488,7 +488,7 @@ foreach (NotificationService::getNotifications() as $notification) {
 <?php
 // Server-side page view telemetry for legacy (non-API) pages.
 // Strip query string so no record IDs reach PostHog.
-$_telemetryRoute = strtok($_SERVER['PHP_SELF'] ?? 'unknown', '?');
+$_telemetryRoute = explode('?', $_SERVER['PHP_SELF'] ?? 'unknown', 2)[0];
 TelemetryService::capturePageView($_telemetryRoute);
 
 if (TelemetryService::isEnabled()):
