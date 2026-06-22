@@ -782,7 +782,8 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $body = $request->getParsedBody();
 
         SystemConfig::setValue('sLanguage', $body['sLanguage'] ?? 'en_US');
-        SystemConfig::setValue('sTimeZone', $body['sTimeZone'] ?? '');
+        $tz = trim((string)($body['sTimeZone'] ?? ''));
+        SystemConfig::setValue('sTimeZone', in_array($tz, timezone_identifiers_list(), true) ? $tz : date_default_timezone_get());
         $distanceUnit = $body['sDistanceUnit'] ?? 'miles';
         SystemConfig::setValue('sDistanceUnit', in_array($distanceUnit, ['miles', 'kilometers'], true) ? $distanceUnit : 'miles');
 
