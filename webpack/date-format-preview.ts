@@ -175,6 +175,144 @@ export function attachDatePreview(
 }
 
 /**
+ * Render a phone-format mask using sample digits.
+ *
+ * ChurchCRM phone formats use `9` as a digit placeholder (e.g. "(999) 999-9999").
+ * Each `9` is replaced with a digit from a fixed sample sequence so the preview
+ * shows a realistic example. All other characters pass through literally.
+ */
+export function formatPhonePreview(format: string): string {
+  if (!format) {
+    return "";
+  }
+  // Long enough to cover the widest mask (phone + extension)
+  const sampleDigits = "5551234567890123456789";
+  let idx = 0;
+  let result = "";
+  for (const ch of format) {
+    if (ch === "9") {
+      result += sampleDigits[idx % sampleDigits.length];
+      idx++;
+    } else {
+      result += ch;
+    }
+  }
+  return result;
+}
+
+/**
+ * Location-friendly phone-format presets (use `9` as a digit placeholder).
+ * ChurchCRM serves churches worldwide, so offer common non-US masks too.
+ */
+export const PHONE_PRESETS: ReadonlyArray<{ label: string; format: string }> = [
+  { label: "US / Canada", format: "(999) 999-9999" },
+  { label: "UK", format: "99999 999999" },
+  { label: "Intl (E.164)", format: "+99 999 999 9999" },
+  { label: "France", format: "99 99 99 99 99" },
+  { label: "Germany", format: "9999 9999999" },
+  { label: "Australia", format: "9999 999 999" },
+];
+
+/** Phone presets that include an extension component */
+export const PHONE_EXT_PRESETS: ReadonlyArray<{ label: string; format: string }> = [
+  { label: "US / Canada", format: "(999) 999-9999 x99999" },
+  { label: "UK", format: "99999 999999 x9999" },
+  { label: "Intl (E.164)", format: "+99 999 999 9999 x9999" },
+];
+
+/**
+ * Render a row of preset buttons beneath an input. Clicking a button sets the
+ * input value and dispatches input + change so previews and dirty-tracking
+ * update. Lighter than attachDatePreview (no inline preview span).
+ */
+export function attachPresetButtons(
+  inputEl: HTMLInputElement,
+  presets: ReadonlyArray<{ label: string; format: string }>,
+): void {
+  const btnRow = document.createElement("div");
+  btnRow.className = "mt-1 d-flex flex-wrap gap-1";
+  btnRow.setAttribute("aria-label", "Format presets");
+
+  for (const preset of presets) {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "btn btn-outline-secondary btn-sm";
+    btn.textContent = preset.label;
+    btn.dataset.format = preset.format;
+    btn.setAttribute("aria-label", `Set format to ${preset.format}`);
+    btn.addEventListener("click", () => {
+      inputEl.value = preset.format;
+      inputEl.dispatchEvent(new Event("input", { bubbles: true }));
+      inputEl.dispatchEvent(new Event("change", { bubbles: true }));
+    });
+    btnRow.appendChild(btn);
+  }
+
+  inputEl.insertAdjacentElement("afterend", btnRow);
+}
+
+/**
+ * Attach location-friendly phone-format presets to the phone format inputs
+ * on the Localization page.
+ */
+export function initPhonePresets(): void {
+  for (const id of ["sPhoneFormat", "sPhoneFormatCell"]) {
+    const el = document.getElementById(id) as HTMLInputElement | null;
+    if (el) {
+      attachPresetButtons(el, PHONE_PRESETS);
+    }
+  }
+  const ext = document.getElementById("sPhoneFormatWithExt") as HTMLInputElement | null;
+  if (ext) {
+    attachPresetButtons(ext, PHONE_EXT_PRESETS);
+  }
+}
+
+/**
+ * Wire up the consolidated "Display Preview" summary on the Church Info page.
+ *
+ * Every element with class `.format-preview-value` declares a `data-source`
+ * (the id of the format input it mirrors) and a `data-kind` of
+ * "date" | "literal" | "phone". When the source input is empty, the input's
+ * placeholder (the documented default) is previewed instead.
+ *
+ * Call this once from church-info.js after DOMContentLoaded.
+ */
+export function initFormatSummaryPreview(): void {
+  function render(el: HTMLElement, src: HTMLInputElement): void {
+    const kind = el.dataset.kind || "date";
+    const fmt = (src.value.trim() || src.placeholder || "").trim();
+    if (!fmt) {
+      el.textContent = "—";
+      return;
+    }
+    if (kind === "phone") {
+      el.textContent = formatPhonePreview(fmt);
+    } else if (kind === "literal") {
+      el.textContent = fmt;
+    } else {
+      el.textContent = formatPhpDate(fmt, new Date());
+    }
+  }
+
+  const previews = document.querySelectorAll<HTMLElement>(".format-preview-value");
+  for (const el of previews) {
+    const sourceId = el.dataset.source;
+    if (!sourceId) {
+      continue;
+    }
+    const src = document.getElementById(sourceId) as HTMLInputElement | null;
+    if (!src) {
+      continue;
+    }
+    const update = (): void => render(el, src);
+    src.addEventListener("input", update);
+    src.addEventListener("change", update);
+    update();
+  }
+}
+
+/**
  * Wire up live date previews for all date-format inputs on the Church Info page.
  * Call this once from church-info.js after DOMContentLoaded.
  */

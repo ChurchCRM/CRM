@@ -6,23 +6,7 @@
  * - States:    GET /api/public/data/countries/{code}/states
  */
 
-import { initDateFormatPreviews } from "./date-format-preview";
-
 document.addEventListener("DOMContentLoaded", () => {
-  // ── Date format live previews ────────────────────────────────────────────
-  initDateFormatPreviews();
-  // ── Language picker ─────────────────────────────────────────────────────
-  const langSelect = document.getElementById("sLanguage");
-  if (langSelect) {
-    const selected = langSelect.dataset.selectedLocale || "";
-    window.CRM.populateLocaleDropdown(langSelect, selected)
-      .then(() => {
-        if (window.TomSelect && !langSelect.tomselect) {
-          new window.TomSelect(langSelect, { allowEmptyOption: false, dropdownParent: "body" });
-        }
-      })
-      .catch((e) => console.error("Failed to load language options:", e));
-  }
   const countrySelect = document.getElementById("sChurchCountry");
   const stateContainer = document.getElementById("sChurchStateContainer");
   const defaultCountrySelect = document.getElementById("sDefaultCountry");

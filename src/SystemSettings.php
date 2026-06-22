@@ -169,23 +169,6 @@ function categoryId(string $category): string {
           <div class="card-header">
             <h3 class="card-title"><?= gettext($category) ?></h3>
           </div>
-          <?php if ($category === gettext('Localization')): ?>
-          <div class="card-body">
-            <div class="alert alert-info mb-0">
-              <div class="d-flex align-items-start">
-                <i class="fa-solid fa-circle-info me-3 mt-1 flex-shrink-0"></i>
-                <div>
-                  <strong><?= gettext('Localization settings have moved') ?></strong><br>
-                  <?= gettext('Date formats and phone number formats are now managed on the') ?>
-                  <a href="<?= SystemURLs::getRootPath() ?>/admin/system/church-info#localization" class="alert-link">
-                    <?= gettext('Church Information page') ?>
-                  </a>
-                  <?= gettext('under the <em>Date &amp; Time Formats</em> and <em>Phone Number Formats</em> sections.') ?>
-                </div>
-              </div>
-            </div>
-          </div>
-          <?php else: ?>
           <div class="table-responsive">
             <table class="table table-vcenter card-table">
               <thead>
@@ -287,7 +270,6 @@ function categoryId(string $category): string {
           <div class="card-footer text-end">
             <input type="submit" class="btn btn-primary" name="save" value="<?= gettext('Save Settings') ?>">
           </div>
-          <?php endif; ?>
         </div>
       </div>
       <?php
