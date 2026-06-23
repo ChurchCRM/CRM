@@ -197,16 +197,27 @@ class User extends BaseUser
 
     /**
      * Returns true if the current user may read basic metadata for any family.
-     * All authenticated users have this capability by default.
+     * All authenticated users have this capability by default (read-default policy).
+     *
+     * $familyId is reserved for future row-level security (e.g. pastoral-confidentiality
+     * holds or per-family privacy flags). Pass the family ID at every call site so that
+     * adding ABAC checks later requires no call-site changes.
+     *
+     * @param int $familyId The ID of the family to potentially read
+     * @return bool True if user can read this family's record
      */
-    public function canReadFamily(): bool
+    public function canReadFamily(int $familyId = 0): bool
     {
         return true; // read is a default capability for all authenticated users
     }
 
     /**
      * Returns true if the current user may read basic metadata for any person.
-     * All authenticated users have this capability by default.
+     * All authenticated users have this capability by default (read-default policy).
+     *
+     * $personId is reserved for future row-level security (e.g. pastoral-confidentiality
+     * holds or per-person privacy flags). Pass the person ID at every call site so that
+     * adding ABAC checks later requires no call-site changes.
      *
      * @param int $personId The ID of the person to potentially read
      * @return bool True if user can read this person's record
