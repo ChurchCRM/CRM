@@ -21,6 +21,7 @@ export default defineConfig({
     'selfedit.api.key': 'amandaBlackEditSelfOnlyApiKey12345678901',
     'plainauth.api.key': 'plainAuthReadOnlyApiKeyForTesting12345678901',
     'limited.api.key': 'limitedUserApiKeyForTesting123456789012345678',
+    'editrecords.api.key': 'judithMatthewsEditRecordsNoNotesApiKey1234',
     'admin.username': 'admin',
     'admin.password': 'changeme',
     'standard.username': 'tony.wade@example.com',

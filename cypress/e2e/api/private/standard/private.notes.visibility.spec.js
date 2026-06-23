@@ -247,18 +247,24 @@ describe("Notes Visibility Policy (#9036)", () => {
     // Timeline: note filtering for different user types
     // -----------------------------------------------------------------------
     describe("Timeline note filtering — GET /timeline/person/{id}", () => {
-        it("limited.user (Notes=0) gets person timeline → 200, note items absent, system/audit items present", () => {
-            cy.makePrivateLimitedAPICall("GET", "/api/timeline/person/2", null, 200).then(resp => {
+        it("judith.matthews (EditRecords, Notes=0) gets person timeline → 200, note items absent", () => {
+            // judith.matthews passes AuthMiddleware (has EditRecords) but canReadNotes()=false.
+            // Timeline returns 200; type='note' items must be stripped by TimelineService.
+            cy.makePrivateEditRecordsAPICall("GET", "/api/timeline/person/2", null, 200).then(resp => {
                 expect(resp.body).to.have.property("timeline");
                 const timeline = resp.body.timeline;
-                // No user-entered note items (type='note') for zero-perms users
+                // No user-entered note items (type='note') for no-Notes users
                 const noteItems = timeline.filter(item => item.type === "note");
                 expect(noteItems).to.have.length(0);
-                // System/audit items (create, edit, photo, etc.) are still visible
-                // We don't assert they exist (person 2 may have none in CI seed),
-                // but we do assert the endpoint returns 200 without error.
+                // Endpoint returns 200 with an array
                 expect(timeline).to.be.an("array");
             });
+        });
+
+        it("limited.user (Notes=0, all flags=0) CANNOT GET person timeline → 403", () => {
+            // limited.user is blocked by AuthMiddleware::hasNoAdminPermissions() → 403.
+            // This is different from the 'authenticated but no notes' case above.
+            cy.makePrivateLimitedAPICall("GET", "/api/timeline/person/2", null, 403);
         });
 
         it("Notes=1 user gets person timeline → 200 with public note, WITHOUT admin's private note", () => {
@@ -309,12 +315,16 @@ describe("Notes Visibility Policy (#9036)", () => {
     });
 
     describe("Timeline note filtering — GET /timeline/family/{id}", () => {
-        it("limited.user (Notes=0) gets family timeline → 200, note items absent", () => {
-            cy.makePrivateLimitedAPICall("GET", "/api/timeline/family/2", null, 200).then(resp => {
+        it("judith.matthews (EditRecords, Notes=0) gets family timeline → 200, note items absent", () => {
+            cy.makePrivateEditRecordsAPICall("GET", "/api/timeline/family/2", null, 200).then(resp => {
                 expect(resp.body).to.have.property("timeline");
                 const noteItems = resp.body.timeline.filter(item => item.type === "note");
                 expect(noteItems).to.have.length(0);
             });
+        });
+
+        it("limited.user (all flags=0) CANNOT GET family timeline → 403", () => {
+            cy.makePrivateLimitedAPICall("GET", "/api/timeline/family/2", null, 403);
         });
 
         it("Notes=1 user gets family timeline → 200 with public note, admin's private absent", () => {
