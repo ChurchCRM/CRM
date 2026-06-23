@@ -48,12 +48,33 @@ describe("API Public Data", () => {
         });
     });
 
+    it("Canada States uppercase country code returns 200", () => {
+        cy.request({
+            method: "GET",
+            url: "/api/public/data/countries/CA/states",
+        }).then((resp) => {
+            const result = JSON.parse(JSON.stringify(resp.body));
+            expect(resp.status).to.eq(200);
+            expect(result["BC"]).to.eq("British Columbia");
+        });
+    });
+
     // --- Valid ISO code with no states file returns 200 with empty object ---
     // XK (Kosovo) is in the Countries list but has no locale/states/xk.json file.
     it("Valid country code with no states file returns 200 empty object", () => {
         cy.request({
             method: "GET",
             url: "/api/public/data/countries/xk/states",
+        }).then((resp) => {
+            expect(resp.status).to.eq(200);
+            expect(resp.body).to.deep.equal({});
+        });
+    });
+
+    it("Valid country code uppercase with no states file returns 200 empty object", () => {
+        cy.request({
+            method: "GET",
+            url: "/api/public/data/countries/XK/states",
         }).then((resp) => {
             expect(resp.status).to.eq(200);
             expect(resp.body).to.deep.equal({});
