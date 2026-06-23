@@ -700,7 +700,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             Object.keys(tomSelectInstances).forEach(function(colName) {
                 var instance = tomSelectInstances[colName];
                 if (instance && instance.ts) {
-                    instance.ts.clear(true); // true = trigger onChange event
+                    instance.ts.clear(false); // false = trigger onChange event (true = silent, suppresses onChange)
                 }
             });
         });
