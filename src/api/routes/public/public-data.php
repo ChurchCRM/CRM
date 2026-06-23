@@ -72,5 +72,6 @@ function getStates(Request $request, Response $response, array $args): Response
 {
     $states = new States($args['countryCode']);
 
-    return SlimUtils::renderJSON($response, $states->getAll());
+    // JSON_FORCE_OBJECT ensures an empty states array encodes as {} not []
+    return SlimUtils::renderStringJSON($response, json_encode($states->getAll(), JSON_THROW_ON_ERROR | JSON_FORCE_OBJECT));
 }
