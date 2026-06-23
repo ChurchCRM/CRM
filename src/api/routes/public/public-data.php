@@ -10,8 +10,8 @@ use Slim\Routing\RouteCollectorProxy;
 $app->group('/public/data', function (RouteCollectorProxy $group): void {
     $group->get('/countries', 'getCountries');
     $group->get('/countries/', 'getCountries');
-    $group->get('/countries/{countryCode:[A-Z]{2}}/states', 'getStates');
-    $group->get('/countries/{countryCode:[A-Z]{2}}/states/', 'getStates');
+    $group->get('/countries/{countryCode:[A-Za-z]{2}}/states', 'getStates');
+    $group->get('/countries/{countryCode:[A-Za-z]{2}}/states/', 'getStates');
 });
 
 /**
