@@ -80,6 +80,23 @@ Cypress.Commands.add(
 );
 
 Cypress.Commands.add(
+    "makePrivateLimitedAPICall",
+    (method, url, body, expectedStatus = 200, timeoutMs) => {
+        // limited.user (id=4): usr_Notes=0, usr_Admin=0, usr_EditRecords=0,
+        // usr_EditSelf=0 — truly zero-permission user. Use this fixture to test
+        // that endpoints requiring the Notes flag correctly return 403.
+        return cy.makePrivateAPICall(
+            Cypress.env("limited.api.key"),
+            method,
+            url,
+            body,
+            expectedStatus,
+            timeoutMs,
+        );
+    },
+);
+
+Cypress.Commands.add(
     "makePrivateAPICall",
     (key, method, url, body, expectedStatus = 200, timeoutMs) => {
         const requestOptions = {

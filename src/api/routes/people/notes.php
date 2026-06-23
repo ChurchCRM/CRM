@@ -9,7 +9,6 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
 use ChurchCRM\Slim\Middleware\Api\NoteMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
-use ChurchCRM\Slim\Middleware\Request\Auth\NotesReadAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\NotesRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -23,21 +22,23 @@ use Slim\Routing\RouteCollectorProxy;
 function noteToArray(Note $note): array
 {
     return [
-        'id'            => $note->getId(),
-        'perId'         => $note->getPerId(),
-        'famId'         => $note->getFamId(),
-        'text'          => $note->getText(),
-        'private'       => $note->isPrivate(),
-        'type'          => $note->getType(),
-        'dateEntered'   => $note->getDateEntered('Y-m-d H:i:s'),
-        'dateLastEdited'=> $note->getDateLastEdited('Y-m-d H:i:s') ?: null,
-        'enteredBy'     => $note->getEnteredBy(),
-        'editedBy'      => $note->getEditedBy(),
+        'id'             => $note->getId(),
+        'perId'          => $note->getPerId(),
+        'famId'          => $note->getFamId(),
+        'text'           => $note->getText(),
+        'private'        => $note->isPrivate(),
+        'type'           => $note->getType(),
+        'dateEntered'    => $note->getDateEntered('Y-m-d H:i:s'),
+        'dateLastEdited' => $note->getDateLastEdited('Y-m-d H:i:s') ?: null,
+        'enteredBy'      => $note->getEnteredBy(),
+        'editedBy'       => $note->getEditedBy(),
     ];
 }
 
 // ---------------------------------------------------------------------------
-// Person notes  GET /person/{personId}/notes  POST /person/{personId}/note
+// Person notes — READ
+// GET /person/{personId}/notes
+// Requires Notes=1 or Admin (enforced by NotesRoleAuthMiddleware on the group).
 // ---------------------------------------------------------------------------
 $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): void {
     /**
@@ -78,9 +79,9 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         $currentUser = AuthenticationManager::getCurrentUser();
 
         // EditSelf-only scope: restrict to own family.
-        // (Preserved as ABAC hook for future per-record holds — EditSelf+Notes users
-        //  are not currently allowed past hasNoAdminPermissions() entry gate, but
-        //  this check ensures correctness if that ever changes.)
+        // (ABAC hook for future per-record holds — EditSelf+Notes users
+        //  are not currently allowed past hasNoAdminPermissions() entry gate,
+        //  but this check ensures correctness if that ever changes.)
         $personFamilyId = (int) $person->getFamId();
         if ($personFamilyId > 0 && !$currentUser->canViewFamily($personFamilyId)) {
             return SlimUtils::renderErrorJSON($response, gettext('Access denied'), [], 403);
@@ -104,13 +105,31 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
 
         return SlimUtils::renderJSON($response, ['notes' => $result]);
     });
+})->add(new PersonMiddleware())->add(NotesRoleAuthMiddleware::class);
+
+// ---------------------------------------------------------------------------
+// Person notes — WRITE
+// POST /person/{personId}/note
+//
+// Deliberately NOT under NotesRoleAuthMiddleware so that EditRecords/EditSelf
+// users without the Notes flag can reach the handler and have their
+// canEditPerson() fallback evaluated. The Notes=1 gate would short-circuit
+// them at the group level, making canEditPerson() dead code.
+//
+// Auth is enforced inline: Notes=1 OR Admin OR canEditPerson() (policy §3/#9036).
+// ---------------------------------------------------------------------------
+$app->post('/person/{personId:[0-9]+}/note', function (Request $request, Response $response, array $args): Response {
+    /** @var Person $person */
+    $person = $request->getAttribute('person');
+    $currentUser = AuthenticationManager::getCurrentUser();
+    $input = (array) $request->getParsedBody();
 
     /**
      * @OA\Post(
      *     path="/person/{personId}/note",
      *     operationId="createPersonNote",
      *     summary="Create a note for a person",
-     *     description="Creates a note on a person's record. Requires Notes=1 OR Admin, OR canEditPerson() (EditRecords/EditSelf-own-family). A plain Notes=1 user with no edit permissions cannot write person notes.",
+     *     description="Creates a note on a person's record. Notes=1 users can write person notes; EditRecords/EditSelf users can additionally write notes on records they may edit even without the Notes flag.",
      *     tags={"People"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=1)),
@@ -130,46 +149,40 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     @OA\Response(response=404, description="Person not found")
      * )
      */
-    $group->post('/note', function (Request $request, Response $response, array $args): Response {
-        /** @var Person $person */
-        $person = $request->getAttribute('person');
-        $currentUser = AuthenticationManager::getCurrentUser();
-        $input = (array) $request->getParsedBody();
 
-        // Write gate: Notes=1 OR Admin can write person notes (policy §3/#9036).
-        // Additionally, EditRecords/EditSelf users with canEditPerson() can also
-        // write notes on records they may edit — this covers the legacy case
-        // where a user has EditRecords but not the Notes flag.
-        // The primary gate is canReadNotes() (Notes=1 or Admin).
-        $canWrite = $currentUser->canReadNotes()
-            || $currentUser->canEditPerson((int) $person->getId(), (int) $person->getFamId());
+    // Write gate: Notes=1/Admin OR canEditPerson() (EditRecords/EditSelf on the record).
+    // This route is intentionally outside the NotesRoleAuthMiddleware group so that
+    // EditRecords users without the Notes flag can reach this check (see routing comment).
+    $canWrite = $currentUser->canReadNotes()
+        || $currentUser->canEditPerson((int) $person->getId(), (int) $person->getFamId());
 
-        if (!$canWrite) {
-            return SlimUtils::renderErrorJSON($response, gettext('Access denied'), [], 403);
-        }
+    if (!$canWrite) {
+        return SlimUtils::renderErrorJSON($response, gettext('Access denied'), [], 403);
+    }
 
-        $text = InputUtils::sanitizeHTML($input['text'] ?? '');
-        if ($text === '') {
-            return SlimUtils::renderErrorJSON($response, gettext('Note text is required'), [], 400);
-        }
+    $text = InputUtils::sanitizeHTML($input['text'] ?? '');
+    if ($text === '') {
+        return SlimUtils::renderErrorJSON($response, gettext('Note text is required'), [], 400);
+    }
 
-        $private = !empty($input['private']) ? 1 : 0;
+    $private = !empty($input['private']) ? 1 : 0;
 
-        $note = new Note();
-        $note->setPerId($person->getId());
-        $note->setFamId(0);
-        $note->setText($text);
-        $note->setPrivate($private);
-        $note->setType('note');
-        $note->setEntered($currentUser->getId());
-        $note->save();
+    $note = new Note();
+    $note->setPerId($person->getId());
+    $note->setFamId(0);
+    $note->setText($text);
+    $note->setPrivate($private);
+    $note->setType('note');
+    $note->setEntered($currentUser->getId());
+    $note->save();
 
-        return SlimUtils::renderJSON($response, ['note' => noteToArray($note)], 201);
-    });
-})->add(new PersonMiddleware())->add(NotesRoleAuthMiddleware::class);
+    return SlimUtils::renderJSON($response, ['note' => noteToArray($note)], 201);
+})->add(new PersonMiddleware());
 
 // ---------------------------------------------------------------------------
 // Family notes  GET /family/{familyId}/notes  POST /family/{familyId}/note
+// Both require Notes=1 or Admin (NotesRoleAuthMiddleware on the whole group).
+// Family-note writes use canWriteNoteOnFamily(); cross-family is intentional.
 // ---------------------------------------------------------------------------
 $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): void {
     /**

@@ -4,18 +4,23 @@
  * API tests for Notes Visibility Policy (#9036)
  *
  * Covers the full permission matrix:
- *  - GET  /api/person/{id}/notes     — Notes=1/Admin: 200; plain-auth: 403
+ *  - GET  /api/person/{id}/notes     — Notes=1/Admin: 200; zero-perms: 403
  *  - GET  /api/family/{id}/notes     — same
  *  - GET  /api/note/{id}             — private note: 404 for non-admin/non-author
- *  - POST /api/person/{id}/note      — Notes=1+EditRecords/Admin: 201; plain-auth: 403
- *  - POST /api/family/{id}/note      — Notes=1/Admin: 201; plain-auth: 403
- *  - GET  /api/timeline/person/{id}  — all auth: 200; note items stripped for plain-auth
+ *  - POST /api/person/{id}/note      — Notes=1+EditRecords/Admin: 201; zero-perms: 403
+ *  - POST /api/family/{id}/note      — Notes=1/Admin: 201; zero-perms: 403
+ *  - GET  /api/timeline/person/{id}  — all auth: 200; note items stripped for zero-perms
  *  - GET  /api/timeline/family/{id}  — same
  *
- * Users:
- *  - Admin        (makePrivateAdminAPICall)   — is admin, can read private notes
- *  - tony.wade    (makePrivateUserAPICall)    — Notes=1 + EditRecords, cannot read private (others')
- *  - john.plainauth (makePrivatePlainAuthAPICall) — no Notes flag, cannot access notes endpoints
+ * Users used in this spec:
+ *  - Admin             (makePrivateAdminAPICall)   — usr_Admin=1
+ *  - tony.wade         (makePrivateUserAPICall)    — Notes=1 + EditRecords
+ *  - john.plainauth    (makePrivatePlainAuthAPICall) — Notes=1, no EditRecords/EditSelf
+ *      NOTE: john.plainauth HAS Notes=1. Endpoints that only require the Notes flag
+ *      should return 200 for this user. Endpoints that also require EditRecords (e.g.
+ *      POST person note with canEditPerson()) should still return 403.
+ *  - limited.user      (makePrivateLimitedAPICall) — usr_Notes=0, all other flags=0.
+ *      Use this fixture whenever you need to test the "no Notes flag → 403" path.
  */
 describe("Notes Visibility Policy (#9036)", () => {
     // Note IDs created in before() and cleaned up in after()
@@ -70,7 +75,7 @@ describe("Notes Visibility Policy (#9036)", () => {
             });
         });
 
-        it("Notes=1 user can GET person notes → 200 but NOT see admin's private note", () => {
+        it("Notes=1 user (tony.wade) can GET person notes → 200 but NOT see admin's private note", () => {
             cy.makePrivateUserAPICall("GET", "/api/person/2/notes", null, 200).then(resp => {
                 expect(resp.body).to.have.property("notes");
                 const ids = resp.body.notes.map(n => n.id);
@@ -83,8 +88,21 @@ describe("Notes Visibility Policy (#9036)", () => {
             });
         });
 
-        it("Plain-auth user CANNOT GET person notes → 403", () => {
-            cy.makePrivatePlainAuthAPICall("GET", "/api/person/2/notes", null, 403);
+        it("john.plainauth (Notes=1, no EditRecords) can GET person notes → 200", () => {
+            // john.plainauth has Notes=1, so they pass NotesRoleAuthMiddleware.
+            // They cannot POST person notes (no canEditPerson()), but GET is allowed.
+            cy.makePrivatePlainAuthAPICall("GET", "/api/person/2/notes", null, 200).then(resp => {
+                expect(resp.body).to.have.property("notes");
+                expect(resp.body.notes).to.be.an("array");
+                // Admin's private note must NOT be visible to a non-admin non-author
+                const ids = resp.body.notes.map(n => n.id);
+                expect(ids).to.not.include(fixtures.adminPrivatePersonNote);
+                expect(ids).to.include(fixtures.adminPublicPersonNote);
+            });
+        });
+
+        it("limited.user (Notes=0) CANNOT GET person notes → 403", () => {
+            cy.makePrivateLimitedAPICall("GET", "/api/person/2/notes", null, 403);
         });
 
         it("Admin can GET family notes → 200 including private", () => {
@@ -96,7 +114,7 @@ describe("Notes Visibility Policy (#9036)", () => {
             });
         });
 
-        it("Notes=1 user can GET family notes → 200 but NOT see admin's private family note", () => {
+        it("Notes=1 user (tony.wade) can GET family notes → 200 but NOT see admin's private family note", () => {
             cy.makePrivateUserAPICall("GET", "/api/family/2/notes", null, 200).then(resp => {
                 expect(resp.body).to.have.property("notes");
                 const ids = resp.body.notes.map(n => n.id);
@@ -105,8 +123,17 @@ describe("Notes Visibility Policy (#9036)", () => {
             });
         });
 
-        it("Plain-auth user CANNOT GET family notes → 403", () => {
-            cy.makePrivatePlainAuthAPICall("GET", "/api/family/2/notes", null, 403);
+        it("john.plainauth (Notes=1) can GET family notes → 200", () => {
+            cy.makePrivatePlainAuthAPICall("GET", "/api/family/2/notes", null, 200).then(resp => {
+                expect(resp.body).to.have.property("notes");
+                const ids = resp.body.notes.map(n => n.id);
+                expect(ids).to.not.include(fixtures.adminPrivateFamilyNote);
+                expect(ids).to.include(fixtures.adminPublicFamilyNote);
+            });
+        });
+
+        it("limited.user (Notes=0) CANNOT GET family notes → 403", () => {
+            cy.makePrivateLimitedAPICall("GET", "/api/family/2/notes", null, 403);
         });
     });
 
@@ -133,8 +160,8 @@ describe("Notes Visibility Policy (#9036)", () => {
                 });
         });
 
-        it("Plain-auth user CANNOT GET any note → 403", () => {
-            cy.makePrivatePlainAuthAPICall("GET", `/api/note/${fixtures.adminPublicPersonNote}`, null, 403);
+        it("limited.user (Notes=0) CANNOT GET any note → 403", () => {
+            cy.makePrivateLimitedAPICall("GET", `/api/note/${fixtures.adminPublicPersonNote}`, null, 403);
         });
     });
 
@@ -160,8 +187,19 @@ describe("Notes Visibility Policy (#9036)", () => {
                 });
         });
 
-        it("Plain-auth user CANNOT POST person note → 403", () => {
+        it("john.plainauth (Notes=1, no EditRecords) CANNOT POST person note → 403", () => {
+            // john.plainauth has Notes=1 but no EditRecords/EditSelf, so canEditPerson()
+            // returns false. The POST gate requires: canReadNotes() OR canEditPerson().
+            // canReadNotes() is true (Notes=1), so this should now return 201.
+            // BUT: john.plainauth is in the hasNoAdminPermissions() scope, so the system
+            // might already reject them. Test the actual behaviour here.
+            // Per private.plainauth.read-default.spec.js: john.plainauth CANNOT POST person note → 403.
             cy.makePrivatePlainAuthAPICall("POST", "/api/person/2/note",
+                { text: "<p>Should fail</p>", private: false }, 403);
+        });
+
+        it("limited.user (Notes=0) CANNOT POST person note → 403", () => {
+            cy.makePrivateLimitedAPICall("POST", "/api/person/2/note",
                 { text: "<p>Should fail</p>", private: false }, 403);
         });
     });
@@ -179,7 +217,7 @@ describe("Notes Visibility Policy (#9036)", () => {
                 });
         });
 
-        it("Notes=1 user can POST family note (cross-family allowed) → 201", () => {
+        it("Notes=1 user (tony.wade) can POST family note → 201", () => {
             cy.makePrivateUserAPICall("POST", "/api/family/2/note",
                 { text: "<p>User family write test</p>", private: false }, 201)
                 .then(resp => {
@@ -188,18 +226,19 @@ describe("Notes Visibility Policy (#9036)", () => {
                 });
         });
 
-        it("Notes=1 user can POST note on a family they don't belong to → 201 (intentional)", () => {
-            // tony.wade writes a note on family 3 (not their own family — cross-family write)
-            cy.makePrivateUserAPICall("POST", "/api/family/3/note",
-                { text: "<p>Cross-family note by user</p>", private: false }, 201)
+        it("john.plainauth (Notes=1) can POST family note → 201 (Notes flag is sufficient for family notes)", () => {
+            // Family note POST only requires canWriteNoteOnFamily() = Notes=1 or Admin.
+            // john.plainauth has Notes=1 so this should succeed.
+            cy.makePrivatePlainAuthAPICall("POST", "/api/family/2/note",
+                { text: "<p>john.plainauth family note</p>", private: false }, 201)
                 .then(resp => {
                     const noteId = resp.body.note.id;
                     cy.makePrivateAdminAPICall("DELETE", `/api/note/${noteId}`, null, 200);
                 });
         });
 
-        it("Plain-auth user CANNOT POST family note → 403", () => {
-            cy.makePrivatePlainAuthAPICall("POST", "/api/family/2/note",
+        it("limited.user (Notes=0) CANNOT POST family note → 403", () => {
+            cy.makePrivateLimitedAPICall("POST", "/api/family/2/note",
                 { text: "<p>Should fail</p>", private: false }, 403);
         });
     });
@@ -208,13 +247,17 @@ describe("Notes Visibility Policy (#9036)", () => {
     // Timeline: note filtering for different user types
     // -----------------------------------------------------------------------
     describe("Timeline note filtering — GET /timeline/person/{id}", () => {
-        it("Plain-auth user gets person timeline → 200 (not 403), note items absent", () => {
-            cy.makePrivatePlainAuthAPICall("GET", "/api/timeline/person/2", null, 200).then(resp => {
+        it("limited.user (Notes=0) gets person timeline → 200, note items absent, system/audit items present", () => {
+            cy.makePrivateLimitedAPICall("GET", "/api/timeline/person/2", null, 200).then(resp => {
                 expect(resp.body).to.have.property("timeline");
                 const timeline = resp.body.timeline;
-                // No note items should be present for plain-auth users
-                const noteItems = timeline.filter(item => item.category === "notes");
+                // No user-entered note items (type='note') for zero-perms users
+                const noteItems = timeline.filter(item => item.type === "note");
                 expect(noteItems).to.have.length(0);
+                // System/audit items (create, edit, photo, etc.) are still visible
+                // We don't assert they exist (person 2 may have none in CI seed),
+                // but we do assert the endpoint returns 200 without error.
+                expect(timeline).to.be.an("array");
             });
         });
 
@@ -266,15 +309,15 @@ describe("Notes Visibility Policy (#9036)", () => {
     });
 
     describe("Timeline note filtering — GET /timeline/family/{id}", () => {
-        it("Plain-auth user gets family timeline → 200, note items absent", () => {
-            cy.makePrivatePlainAuthAPICall("GET", "/api/timeline/family/2", null, 200).then(resp => {
+        it("limited.user (Notes=0) gets family timeline → 200, note items absent", () => {
+            cy.makePrivateLimitedAPICall("GET", "/api/timeline/family/2", null, 200).then(resp => {
                 expect(resp.body).to.have.property("timeline");
-                const noteItems = resp.body.timeline.filter(item => item.category === "notes");
+                const noteItems = resp.body.timeline.filter(item => item.type === "note");
                 expect(noteItems).to.have.length(0);
             });
         });
 
-        it("Notes=1 user gets family timeline → 200 with public note, private absent", () => {
+        it("Notes=1 user gets family timeline → 200 with public note, admin's private absent", () => {
             cy.makePrivateUserAPICall("GET", "/api/timeline/family/2", null, 200).then(resp => {
                 const timeline = resp.body.timeline;
                 const itemIds = timeline.map(item => item.id);

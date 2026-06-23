@@ -20,6 +20,7 @@ export default defineConfig({
     'nofinance.api.key': 'M_5K4ZWTdBTmMOTGTfLWCmXFbETgHNG6_6FNZXJJulicn_WweBjm',
     'selfedit.api.key': 'amandaBlackEditSelfOnlyApiKey12345678901',
     'plainauth.api.key': 'plainAuthReadOnlyApiKeyForTesting12345678901',
+    'limited.api.key': 'limitedUserApiKeyForTesting123456789012345678',
     'admin.username': 'admin',
     'admin.password': 'changeme',
     'standard.username': 'tony.wade@example.com',

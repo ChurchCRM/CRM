@@ -68,12 +68,12 @@ if (isset($_POST['Submit'])) {
         $currentUser = AuthenticationManager::getCurrentUser();
         // Are we adding or editing?
         if ($iNoteID <= 0) {
-            // Scope check for new notes: user must be able to edit the target person/family.
+            // Write gate for new person note: Notes=1 OR Admin OR canEditPerson().
+            // Matches the API POST /person/{id}/note gate (policy §3/#9036).
             if ($iPersonID > 0) {
-                // Load the person to get their family ID for canEditPerson()
-                $targetPerson = \ChurchCRM\model\ChurchCRM\PersonQuery::create()->findPk($iPersonID);
+                $targetPerson = PersonQuery::create()->findPk($iPersonID);
                 $targetFamId  = $targetPerson !== null ? (int) $targetPerson->getFamId() : 0;
-                if (!$currentUser->canEditPerson($iPersonID, $targetFamId)) {
+                if (!$currentUser->canReadNotes() && !$currentUser->canEditPerson($iPersonID, $targetFamId)) {
                     $sNoteTextError = '<br><span class="text-danger">' . gettext('You do not have permission to add a note for this person.') . '</span>';
                     $bErrorFlag = true;
                 }
@@ -93,7 +93,16 @@ if (isset($_POST['Submit'])) {
                 $note->save();
             }
         } else {
+            // Fix #A: guard against stale/invalid NoteID in the POST (edit) path.
+            // If the note was deleted between page load and submit, findPk() returns
+            // null and calling getEnteredBy() on it would be a fatal error.
             $note = NoteQuery::create()->findPk($iNoteID);
+            if ($note === null) {
+                $_SESSION['sGlobalMessage'] = gettext('The note you are trying to edit no longer exists.');
+                $_SESSION['sGlobalMessageClass'] = 'danger';
+                RedirectUtils::redirect($sBackPage ?: SystemURLs::getRootPath() . '/');
+            }
+
             // Admin can edit any note; author can edit their own note.
             if (!$currentUser->isAdmin() && $note->getEnteredBy() !== $currentUser->getId()) {
                 $sNoteTextError = '<br><span class="text-danger">' . gettext('You do not have permission to edit this note.') . '</span>';
@@ -111,15 +120,23 @@ if (isset($_POST['Submit'])) {
         RedirectUtils::redirect($sBackPage);
     }
 } else {
-    // Are we adding or editing?
+    // Are we loading an existing note for editing?
     if (isset($_GET['NoteID'])) {
         // Get the NoteID from the querystring
         $iNoteID = InputUtils::legacyFilterInput($_GET['NoteID'], 'int');
         $dbNote = NoteQuery::create()->findPk($iNoteID);
 
+        // Fix (load path): guard against non-existent NoteID.
+        // Without this check, calling getText() / getPrivate() etc. on null is a fatal error.
+        if ($dbNote === null) {
+            $_SESSION['sGlobalMessage'] = gettext('Note not found.');
+            $_SESSION['sGlobalMessageClass'] = 'danger';
+            RedirectUtils::redirect($sBackPage ?: SystemURLs::getRootPath() . '/');
+        }
+
         $currentUser = AuthenticationManager::getCurrentUser();
         // Admin can edit any note; all others can only edit their own notes.
-        if ($dbNote && !$currentUser->isAdmin() && $dbNote->getEnteredBy() !== $currentUser->getId()) {
+        if (!$currentUser->isAdmin() && $dbNote->getEnteredBy() !== $currentUser->getId()) {
             $_SESSION['sGlobalMessage'] = gettext('You do not have permission to edit this note.');
             $_SESSION['sGlobalMessageClass'] = 'danger';
             RedirectUtils::redirect($sBackPage ?: SystemURLs::getRootPath() . '/');

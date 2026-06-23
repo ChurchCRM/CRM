@@ -26,17 +26,25 @@ class TimelineService
     {
         $timeline = [];
 
-        // Only include note items when the user has Notes read permission.
-        // Plain-auth (no Notes flag) sees no note items at all — notes require
-        // an explicit capability grant (Notes=1 or Admin). Non-note items such
-        // as calendar events and system audit entries are always included.
-        if ($this->currentUser->canReadNotes()) {
-            $familyNotes = NoteQuery::create()->findByFamId($familyID);
-            foreach ($familyNotes as $dbNote) {
-                $item = $this->noteToTimelineItem($dbNote);
-                if ($item !== null) {
-                    $timeline[$item['key']] = $item;
-                }
+        // Fetch ALL note-table rows for the family (notes AND system/audit events).
+        // The note table stores both user-entered notes (type='note') and system
+        // audit entries (type='create', 'edit', 'photo', 'group', 'delete-note', …).
+        //
+        // Visibility rules (#9036):
+        //   - plain-auth (no Notes flag): system/audit items only; user notes stripped.
+        //   - Notes=1 non-admin: user notes filtered by isVisibleTo() (own private notes
+        //     visible, other users' private notes hidden); all system/audit items visible.
+        //   - Admin: everything visible.
+        $familyNotes = NoteQuery::create()->findByFamId($familyID);
+        foreach ($familyNotes as $dbNote) {
+            // Strip user-entered note items for plain-auth users.
+            // System/audit types (create, edit, photo, …) are never gated on Notes.
+            if ($dbNote->getType() === 'note' && !$this->currentUser->canReadNotes()) {
+                continue;
+            }
+            $item = $this->noteToTimelineItem($dbNote);
+            if ($item !== null) {
+                $timeline[$item['key']] = $item;
             }
         }
 
@@ -84,8 +92,14 @@ class TimelineService
     {
         $timeline = [];
 
-        // Plain-auth users (no Notes permission) see no note items.
-        if (!$this->currentUser->canReadNotes()) {
+        // Fetch note-table rows for this person, optionally filtered by type.
+        // When $noteType is specified (e.g. 'note' for the public notes panel)
+        // we skip the fetch entirely for plain-auth users since all rows in that
+        // subset would be stripped anyway. When $noteType is null (full timeline),
+        // we still fetch so that system/audit entries (type≠'note') are included
+        // for plain-auth users.
+        $canReadNotes = $this->currentUser->canReadNotes();
+        if ($noteType === 'note' && !$canReadNotes) {
             return $timeline;
         }
 
@@ -95,6 +109,11 @@ class TimelineService
             $personQuery->filterByType($noteType);
         }
         foreach ($personQuery->find() as $dbNote) {
+            // Strip user-entered note items for plain-auth users.
+            // System/audit types (create, edit, photo, …) bypass the Notes gate.
+            if ($dbNote->getType() === 'note' && !$canReadNotes) {
+                continue;
+            }
             $item = $this->noteToTimelineItem($dbNote);
             if ($item !== null) {
                 $timeline[$item['key']] = $item;

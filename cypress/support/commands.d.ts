@@ -140,6 +140,18 @@ declare namespace Cypress {
     ): Chainable<any>;
 
     /**
+     * Make API request as limited.user (id=4) — usr_Notes=0, usr_Admin=0,
+     * usr_EditRecords=0, usr_EditSelf=0. Use to verify that Notes-gated
+     * endpoints return 403 for truly zero-permission users.
+     */
+    makePrivateLimitedAPICall(
+      method: string,
+      url: string,
+      body?: any,
+      expectedStatus?: number
+    ): Chainable<any>;
+
+    /**
      * Make API request with specific API key
      * @param key - API key to use
      * @param method - HTTP method
