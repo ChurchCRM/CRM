@@ -4,6 +4,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
 use ChurchCRM\data\Countries;
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\dto\LocaleInfo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\TestEmail;
@@ -11,6 +12,7 @@ use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Service\AppIntegrityService;
+use ChurchCRM\Service\LocaleService;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -462,10 +464,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'sChurchEmail'     => SystemConfig::getValue('sChurchEmail'),
             'iChurchLatitude'  => ($latFloat !== 0.0 || $lngFloat !== 0.0) ? (string) $latFloat : '',
             'iChurchLongitude' => ($latFloat !== 0.0 || $lngFloat !== 0.0) ? (string) $lngFloat : '',
-            'sTimeZone'        => SystemConfig::getValue('sTimeZone'),
             'sChurchWebSite'   => SystemConfig::getValue('sChurchWebSite'),
-            'sLanguage'        => SystemConfig::getValue('sLanguage'),
-            'sDistanceUnit'    => SystemConfig::getValue('sDistanceUnit'),
             'sDefaultCity'     => SystemConfig::getValue('sDefaultCity'),
             'sDefaultState'    => SystemConfig::getValue('sDefaultState'),
             'sDefaultZip'      => SystemConfig::getValue('sDefaultZip'),
@@ -482,7 +481,6 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             ]),
             'churchInfo'         => $churchInfo,
             'countries'          => Countries::getNames(),
-            'timezones'          => timezone_identifiers_list(),
             'sGlobalMessage'     => $sGlobalMessage,
             'sGlobalMessageClass' => $sGlobalMessageClass,
         ];
@@ -568,10 +566,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
                 'sChurchEmail'     => $churchEmail,
                 'iChurchLatitude'  => $rawLatInput !== '' ? $rawLatInput : (string) (float) SystemConfig::getValue('iChurchLatitude'),
                 'iChurchLongitude' => $rawLngInput !== '' ? $rawLngInput : (string) (float) SystemConfig::getValue('iChurchLongitude'),
-                'sTimeZone'        => $body['sTimeZone'] ?? '',
                 'sChurchWebSite'   => $body['sChurchWebSite'] ?? '',
-                'sLanguage'        => $body['sLanguage'] ?? '',
-                'sDistanceUnit'    => $body['sDistanceUnit'] ?? 'miles',
                 'sDefaultCity'     => $body['sDefaultCity'] ?? '',
                 'sDefaultState'    => $body['sDefaultState'] ?? '',
                 'sDefaultZip'      => $body['sDefaultZip'] ?? '',
@@ -588,7 +583,6 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
                 ]),
                 'churchInfo'         => $churchInfo,
                 'countries'          => Countries::getNames(),
-                'timezones'          => timezone_identifiers_list(),
                 'sGlobalMessage'     => $validationError,
                 'sGlobalMessageClass' => 'danger',
                 'validationError'    => $validationError,
@@ -642,11 +636,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         SystemConfig::setValue('sChurchEmail', $body['sChurchEmail'] ?? '');
         SystemConfig::setValue('iChurchLatitude', $latitude);
         SystemConfig::setValue('iChurchLongitude', $longitude);
-        SystemConfig::setValue('sTimeZone', $body['sTimeZone'] ?? '');
         SystemConfig::setValue('sChurchWebSite', $body['sChurchWebSite'] ?? '');
-        SystemConfig::setValue('sLanguage', $body['sLanguage'] ?? 'en_US');
-        $distanceUnit = $body['sDistanceUnit'] ?? 'miles';
-        SystemConfig::setValue('sDistanceUnit', in_array($distanceUnit, ['miles', 'kilometers'], true) ? $distanceUnit : 'miles');
         SystemConfig::setValue('sDefaultCity', $body['sDefaultCity'] ?? '');
         SystemConfig::setValue('sDefaultState', $body['sDefaultState'] ?? '');
         SystemConfig::setValue('sDefaultZip', $body['sDefaultZip'] ?? '');
@@ -676,14 +666,161 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         'sChurchCountry' => 'text',
         'sChurchPhone'   => 'text',
         'sChurchEmail'   => 'text',
-        'sTimeZone'       => 'text',
         'sChurchWebSite'  => 'text',
-        'sLanguage'       => 'text',
-        'sDistanceUnit'   => 'text',
         'sDefaultCity'    => 'text',
         'sDefaultState'   => 'text',
         'sDefaultZip'     => 'text',
         'sDefaultCountry' => 'text',
+    ]));
+
+    // ── Localization & Formats ───────────────────────────────────────────────
+    // System-wide locale, date/time formats, and phone number formats. These
+    // are not church-identity data, so they live on their own page.
+    $group->get('/localization', function (Request $request, Response $response): Response {
+        $renderer = new PhpRenderer(__DIR__ . '/../views/');
+
+        $sGlobalMessage      = '';
+        $sGlobalMessageClass = 'success';
+        if (isset($_SESSION['sGlobalMessage'])) {
+            $sGlobalMessage      = $_SESSION['sGlobalMessage'];
+            $sGlobalMessageClass = $_SESSION['sGlobalMessageClass'] ?? 'success';
+            unset($_SESSION['sGlobalMessage'], $_SESSION['sGlobalMessageClass']);
+        }
+
+        $localeSettings = [
+            'sLanguage'              => SystemConfig::getValue('sLanguage'),
+            'sTimeZone'              => SystemConfig::getValue('sTimeZone'),
+            'sDistanceUnit'          => SystemConfig::getValue('sDistanceUnit') ?: 'miles',
+            // Date & Time Formats — fall back to declared defaults when unset.
+            'sDateFormatLong'        => SystemConfig::getValue('sDateFormatLong')        ?: SystemConfig::getConfigItem('sDateFormatLong')->getDefault(),
+            'sDateFormatNoYear'      => SystemConfig::getValue('sDateFormatNoYear')      ?: SystemConfig::getConfigItem('sDateFormatNoYear')->getDefault(),
+            'sDateTimeFormat'        => SystemConfig::getValue('sDateTimeFormat')        ?: SystemConfig::getConfigItem('sDateTimeFormat')->getDefault(),
+            'sDateFilenameFormat'    => SystemConfig::getValue('sDateFilenameFormat')    ?: SystemConfig::getConfigItem('sDateFilenameFormat')->getDefault(),
+            'sDatePickerFormat'      => SystemConfig::getValue('sDatePickerFormat')      ?: SystemConfig::getConfigItem('sDatePickerFormat')->getDefault(),
+            'sDatePickerPlaceHolder' => SystemConfig::getValue('sDatePickerPlaceHolder') ?: SystemConfig::getConfigItem('sDatePickerPlaceHolder')->getDefault(),
+            // Phone Number Formats
+            'sPhoneFormat'           => SystemConfig::getValue('sPhoneFormat')           ?: SystemConfig::getConfigItem('sPhoneFormat')->getDefault(),
+            'sPhoneFormatWithExt'    => SystemConfig::getValue('sPhoneFormatWithExt')    ?: SystemConfig::getConfigItem('sPhoneFormatWithExt')->getDefault(),
+            'sPhoneFormatCell'       => SystemConfig::getValue('sPhoneFormatCell')       ?: SystemConfig::getConfigItem('sPhoneFormatCell')->getDefault(),
+        ];
+
+        // Per-locale stats for the Display Preview: translation completeness %
+        // (from locale/poeditor.json) + whether the GNU locale is installed on
+        // the host OS (so the admin knows date/number formatting will work).
+        // The system-locale check shells out via LocaleService; if exec() is
+        // disabled we degrade gracefully (systemAvailable = null = "unknown").
+        $localeStats        = [];
+        $systemCheckEnabled = true;
+        $availableNormalized = [];
+        try {
+            $availableSystem = LocaleService::getAvailableSystemLocales();
+            $availableNormalized = array_unique(array_map(
+                static fn ($l) => preg_replace('/(\.[^.]*)?(@.*)?$/', '', $l),
+                $availableSystem
+            ));
+        } catch (\Throwable $e) {
+            $systemCheckEnabled = false;
+        }
+
+        foreach (LocaleService::getSupportedLocales() as $displayName => $cfg) {
+            $code = $cfg['locale'] ?? '';
+            if ($code === '') {
+                continue;
+            }
+            $info         = new LocaleInfo($code, null);
+            $languageCode = $cfg['languageCode'] ?? '';
+
+            $systemAvailable = null;
+            if ($systemCheckEnabled) {
+                $systemAvailable = in_array($code, $availableNormalized, true)
+                    || in_array($languageCode, $availableNormalized, true)
+                    || in_array(str_replace('_', '-', $code), $availableNormalized, true);
+            }
+
+            // Translation % comes from locale/poeditor.json; guard so a missing
+            // file on a given install degrades to "not tracked" instead of 500.
+            $showPercentage = false;
+            $percentage     = 0;
+            try {
+                $showPercentage = $info->shouldShowTranslationPercentage();
+                $percentage     = $showPercentage ? $info->getTranslationPercentage() : 100;
+            } catch (\Throwable $e) {
+                $showPercentage = false;
+            }
+
+            $localeStats[$code] = [
+                'name'            => $displayName,
+                'nativeName'      => $info->getNativeName(),
+                'flag'            => $info->getCountryFlagCode(),
+                'percentage'      => $percentage,
+                'showPercentage'  => $showPercentage,
+                'systemAvailable' => $systemAvailable,
+            ];
+        }
+
+        $pageArgs = [
+            'sRootPath'          => SystemURLs::getRootPath(),
+            'sPageTitle'         => gettext('Localization & Formats'),
+            'sPageSubtitle'      => gettext('System language, time zone, date/time formats, and phone number formats'),
+            'aBreadcrumbs'       => PageHeader::breadcrumbs([
+                [gettext('Admin'), '/admin/'],
+                [gettext('Localization & Formats')],
+            ]),
+            'localeSettings'     => $localeSettings,
+            'localeStats'        => $localeStats,
+            'systemCheckEnabled' => $systemCheckEnabled,
+            'timezones'          => timezone_identifiers_list(),
+            'sGlobalMessage'     => $sGlobalMessage,
+            'sGlobalMessageClass' => $sGlobalMessageClass,
+        ];
+
+        return $renderer->render($response, 'localization.php', $pageArgs);
+    });
+
+    $group->post('/localization', function (Request $request, Response $response): Response {
+        // Body fields have already been sanitized by InputSanitizationMiddleware
+        $body = $request->getParsedBody();
+
+        $supportedLocales = array_keys(LocaleService::getSupportedLocales());
+        $lang = $body['sLanguage'] ?? 'en_US';
+        SystemConfig::setValue('sLanguage', in_array($lang, $supportedLocales, true) ? $lang : 'en_US');
+        $tz = trim((string)($body['sTimeZone'] ?? ''));
+        SystemConfig::setValue('sTimeZone', in_array($tz, timezone_identifiers_list(), true) ? $tz : date_default_timezone_get());
+        $distanceUnit = $body['sDistanceUnit'] ?? 'miles';
+        SystemConfig::setValue('sDistanceUnit', in_array($distanceUnit, ['miles', 'kilometers'], true) ? $distanceUnit : 'miles');
+
+        // Date & Time Formats — fall back to each key's declared default when
+        // empty/whitespace. An empty string passed to PHP's date() produces
+        // empty output app-wide.
+        foreach (['sDateFormatLong', 'sDateFormatNoYear', 'sDateTimeFormat', 'sDateFilenameFormat', 'sDatePickerFormat', 'sDatePickerPlaceHolder'] as $key) {
+            $val = trim((string) ($body[$key] ?? ''));
+            SystemConfig::setValue($key, $val !== '' ? $val : SystemConfig::getConfigItem($key)->getDefault());
+        }
+        // Phone Number Formats — same empty-value guard.
+        foreach (['sPhoneFormat', 'sPhoneFormatWithExt', 'sPhoneFormatCell'] as $key) {
+            $val = trim((string) ($body[$key] ?? ''));
+            SystemConfig::setValue($key, $val !== '' ? $val : SystemConfig::getConfigItem($key)->getDefault());
+        }
+
+        $_SESSION['sGlobalMessage']      = gettext('Localization settings saved successfully');
+        $_SESSION['sGlobalMessageClass'] = 'success';
+
+        return $response
+            ->withHeader('Location', SystemURLs::getRootPath() . '/admin/system/localization')
+            ->withStatus(303);
+    })->add(new InputSanitizationMiddleware([
+        'sLanguage'       => 'text',
+        'sTimeZone'       => 'text',
+        'sDistanceUnit'   => 'text',
+        'sDateFormatLong'      => 'text',
+        'sDateFormatNoYear'    => 'text',
+        'sDateTimeFormat'      => 'text',
+        'sDateFilenameFormat'  => 'text',
+        'sDatePickerFormat'    => 'text',
+        'sDatePickerPlaceHolder' => 'text',
+        'sPhoneFormat'         => 'text',
+        'sPhoneFormatWithExt'  => 'text',
+        'sPhoneFormatCell'     => 'text',
     ]));
 
 });

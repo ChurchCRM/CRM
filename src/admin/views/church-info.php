@@ -231,58 +231,6 @@ $validationError     = $validationError ?? '';
         </div>
     </div>
 
-    <!-- Language & Localization -->
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title"><i class="fa-solid fa-globe me-2"></i><?= gettext('Language & Localization') ?></h3>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="mb-3 col-md-4">
-                            <label for="sLanguage"><?= gettext('Language') ?></label>
-                            <select class="form-select" id="sLanguage" name="sLanguage"
-                                data-selected-locale="<?= InputUtils::escapeAttribute($churchInfo['sLanguage']) ?>"
-                                style="width: 100%;"></select>
-                            <small class="form-text text-body-secondary">
-                                <?= gettext('System language for the church.') ?>
-                            </small>
-                        </div>
-                        <div class="mb-3 col-md-4">
-                            <label for="sTimeZone"><?= gettext('Time Zone') ?></label>
-                            <select class="form-select auto-tomselect" id="sTimeZone" name="sTimeZone" style="width: 100%;">
-                                <?php foreach ($timezones as $tz): ?>
-                                <option value="<?= InputUtils::escapeHTML($tz) ?>"
-                                    <?= ($churchInfo['sTimeZone'] === $tz) ? 'selected' : '' ?>>
-                                    <?= InputUtils::escapeHTML($tz) ?>
-                                </option>
-                                <?php endforeach; ?>
-                            </select>
-                            <small class="form-text text-body-secondary">
-                                <?= gettext('Used for scheduling events and reporting times.') ?>
-                            </small>
-                        </div>
-                        <div class="mb-3 col-md-4">
-                            <label for="sDistanceUnit"><?= gettext('Distance Unit') ?></label>
-                            <select class="form-select" id="sDistanceUnit" name="sDistanceUnit">
-                                <option value="miles" <?= ($churchInfo['sDistanceUnit'] === 'miles') ? 'selected' : '' ?>>
-                                    <?= gettext('miles') ?>
-                                </option>
-                                <option value="kilometers" <?= ($churchInfo['sDistanceUnit'] === 'kilometers') ? 'selected' : '' ?>>
-                                    <?= gettext('kilometers') ?>
-                                </option>
-                            </select>
-                            <small class="form-text text-body-secondary">
-                                <?= gettext('Unit used to measure distance.') ?>
-                            </small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Address Defaults -->
     <div class="row">
         <div class="col-12">
@@ -377,7 +325,6 @@ $validationError     = $validationError ?? '';
                             <?php endif; ?>
                         </address>
                     </div>
-
                     <?php if (empty($churchInfo['sChurchName'])): ?>
                     <div class="alert alert-warning mt-3">
                         <i class="fa-solid fa-triangle-exclamation me-2"></i>
