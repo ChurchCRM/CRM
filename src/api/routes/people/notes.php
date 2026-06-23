@@ -78,7 +78,8 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
 
         // Read baseline: all authenticated users may read notes on any person.
         // (Notes role is still required via NotesRoleAuthMiddleware on this group.)
-        if (!$currentUser->canReadPerson((int) $person->getId())) {
+        $personFamilyId = (int) $person->getFamId();
+        if ($personFamilyId > 0 && !$currentUser->canViewFamily($personFamilyId)) {
             return SlimUtils::renderErrorJSON($response, gettext('Access denied'), [], 403);
         }
 

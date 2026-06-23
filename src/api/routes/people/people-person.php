@@ -213,7 +213,8 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
     $group->get('', function (Request $request, Response $response, array $args): Response {
         $person = $request->getAttribute('person');
         $currentUser = AuthenticationManager::getCurrentUser();
-        if (!$currentUser->canReadPerson((int) $person->getId())) {
+        $personFamilyId = (int) $person->getFamId();
+        if ($personFamilyId > 0 && !$currentUser->canViewFamily($personFamilyId)) {
             throw new HttpForbiddenException($request, gettext('You do not have permission to view this person'));
         }
         return SlimUtils::renderStringJSON($response, $person->exportTo('JSON'));
