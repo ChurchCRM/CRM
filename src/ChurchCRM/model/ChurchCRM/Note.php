@@ -4,6 +4,7 @@ namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Base\Note as BaseNote;
+use ChurchCRM\model\ChurchCRM\User;
 
 /**
  * Skeleton subclass for representing a row from the 'note_nte' table.
@@ -63,13 +64,45 @@ class Note extends BaseNote
         return $this->getPrivate() !== 0;
     }
 
+    /**
+     * Returns true if the given user may see this note.
+     *
+     * Rules:
+     * - Public notes are visible to all authenticated users with Notes access.
+     * - The note's author always sees their own private note.
+     * - Admins (canReadPrivateNotes()) see all private notes.
+     * - Everyone else: private notes are invisible (filtered out, not 403).
+     *
+     * Note-level visibility is enforced here; Notes role access is enforced at
+     * the route/middleware layer (NotesReadAuthMiddleware / NotesRoleAuthMiddleware).
+     */
+    public function isVisibleTo(User $user): bool
+    {
+        if (!$this->isPrivate()) {
+            return true;
+        }
+        // Author always sees their own private note
+        if ($this->getEnteredBy() === $user->getId()) {
+            return true;
+        }
+        // Admins (and future canReadPrivateNotes() recipients) see all private notes
+        return $user->canReadPrivateNotes(
+            $this->getPerId() !== 0 ? (int) $this->getPerId() : null,
+            $this->getFamId() !== 0 ? (int) $this->getFamId() : null,
+        );
+    }
+
+    /**
+     * @deprecated Use isVisibleTo(User $user) instead.
+     *             This method exists only for backward compatibility.
+     */
     public function isVisible(int $userId): bool
     {
         // Public notes visible to everyone
         if (!$this->isPrivate()) {
             return true;
         }
-        // Private notes visible only to creator
+        // Private notes visible only to creator (legacy: no admin override)
         return $this->getEnteredBy() === $userId;
     }
 }

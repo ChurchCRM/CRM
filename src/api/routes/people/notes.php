@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
 use ChurchCRM\Slim\Middleware\Api\NoteMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\NotesReadAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\NotesRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -44,7 +45,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     path="/person/{personId}/notes",
      *     operationId="getPersonNotes",
      *     summary="List user-type notes for a person",
-     *     description="Returns all notes of type 'note' for the person, filtered by visibility for the current user. Private notes are only visible to the user who entered them.",
+     *     description="Returns all notes of type 'note' for the person, filtered by visibility for the current user. Requires Notes=1 or Admin. Private notes authored by others are excluded for Notes=1 users; admins see all including private.",
      *     tags={"People"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=1)),
@@ -67,7 +68,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
      *         )
      *     ),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Notes permission required"),
+     *     @OA\Response(response=403, description="Notes read permission required"),
      *     @OA\Response(response=404, description="Person not found")
      * )
      */
@@ -76,8 +77,10 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         $person = $request->getAttribute('person');
         $currentUser = AuthenticationManager::getCurrentUser();
 
-        // Read baseline: all authenticated users may read notes on any person.
-        // (Notes role is still required via NotesRoleAuthMiddleware on this group.)
+        // EditSelf-only scope: restrict to own family.
+        // (Preserved as ABAC hook for future per-record holds — EditSelf+Notes users
+        //  are not currently allowed past hasNoAdminPermissions() entry gate, but
+        //  this check ensures correctness if that ever changes.)
         $personFamilyId = (int) $person->getFamId();
         if ($personFamilyId > 0 && !$currentUser->canViewFamily($personFamilyId)) {
             return SlimUtils::renderErrorJSON($response, gettext('Access denied'), [], 403);
@@ -91,7 +94,10 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
 
         $result = [];
         foreach ($notes as $note) {
-            if ($note->isVisible($currentUser->getId())) {
+            // isVisibleTo() enforces: public→all, private→author+admin only.
+            // Notes=1 non-admin non-author users get private notes filtered out
+            // (returns 200 with subset, not 403).
+            if ($note->isVisibleTo($currentUser)) {
                 $result[] = noteToArray($note);
             }
         }
@@ -104,6 +110,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     path="/person/{personId}/note",
      *     operationId="createPersonNote",
      *     summary="Create a note for a person",
+     *     description="Creates a note on a person's record. Requires Notes=1 OR Admin, OR canEditPerson() (EditRecords/EditSelf-own-family). A plain Notes=1 user with no edit permissions cannot write person notes.",
      *     tags={"People"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=1)),
@@ -111,7 +118,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
      *         @OA\JsonContent(
      *             required={"text"},
      *             @OA\Property(property="text", type="string", description="HTML note content (Quill output)"),
-     *             @OA\Property(property="private", type="boolean", description="Mark note as private (visible to admins only)", example=false)
+     *             @OA\Property(property="private", type="boolean", description="Mark note as private (visible to admins and author only)", example=false)
      *         )
      *     ),
      *     @OA\Response(response=201, description="Note created",
@@ -119,7 +126,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     ),
      *     @OA\Response(response=400, description="Note text is required"),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Notes permission required"),
+     *     @OA\Response(response=403, description="Notes permission required or access denied"),
      *     @OA\Response(response=404, description="Person not found")
      * )
      */
@@ -129,9 +136,15 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         $currentUser = AuthenticationManager::getCurrentUser();
         $input = (array) $request->getParsedBody();
 
-        // Object-level scope: EditSelf+Notes users may only create notes on their
-        // own family members. EditRecords/Admin pass through. (GHSA-jjcj-h3cm-p7x7)
-        if (!$currentUser->canEditPerson((int) $person->getId(), (int) $person->getFamId())) {
+        // Write gate: Notes=1 OR Admin can write person notes (policy §3/#9036).
+        // Additionally, EditRecords/EditSelf users with canEditPerson() can also
+        // write notes on records they may edit — this covers the legacy case
+        // where a user has EditRecords but not the Notes flag.
+        // The primary gate is canReadNotes() (Notes=1 or Admin).
+        $canWrite = $currentUser->canReadNotes()
+            || $currentUser->canEditPerson((int) $person->getId(), (int) $person->getFamId());
+
+        if (!$canWrite) {
             return SlimUtils::renderErrorJSON($response, gettext('Access denied'), [], 403);
         }
 
@@ -164,7 +177,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     path="/family/{familyId}/notes",
      *     operationId="getFamilyNotes",
      *     summary="List user-type notes for a family",
-     *     description="Returns all notes of type 'note' for the family, filtered by visibility for the current user. Private notes are only visible to the user who entered them.",
+     *     description="Returns all notes of type 'note' for the family, filtered by visibility for the current user. Requires Notes=1 or Admin. Private notes authored by others are excluded for Notes=1 users; admins see all including private.",
      *     tags={"Families"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer", example=1)),
@@ -185,7 +198,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
      *         )
      *     ),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Notes permission required"),
+     *     @OA\Response(response=403, description="Notes read permission required"),
      *     @OA\Response(response=404, description="Family not found")
      * )
      */
@@ -202,7 +215,8 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
 
         $result = [];
         foreach ($notes as $note) {
-            if ($note->isVisible($currentUser->getId())) {
+            // isVisibleTo() enforces: public→all, private→author+admin only.
+            if ($note->isVisibleTo($currentUser)) {
                 $result[] = noteToArray($note);
             }
         }
@@ -215,6 +229,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     path="/family/{familyId}/note",
      *     operationId="createFamilyNote",
      *     summary="Create a note for a family",
+     *     description="Creates a note on a family record. Requires Notes=1 or Admin. Cross-family writes are intentional (e.g. visitation teams adding notes on families they visit). See canWriteNoteOnFamily().",
      *     tags={"Families"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer", example=1)),
@@ -222,7 +237,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
      *         @OA\JsonContent(
      *             required={"text"},
      *             @OA\Property(property="text", type="string", description="HTML note content (Quill output)"),
-     *             @OA\Property(property="private", type="boolean", description="Mark note as private (visible to admins only)", example=false)
+     *             @OA\Property(property="private", type="boolean", description="Mark note as private (visible to admins and author only)", example=false)
      *         )
      *     ),
      *     @OA\Response(response=201, description="Note created",
@@ -239,6 +254,11 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         $family = $request->getAttribute('family');
         $currentUser = AuthenticationManager::getCurrentUser();
         $input = (array) $request->getParsedBody();
+
+        // canWriteNoteOnFamily() enforces Notes=1/Admin; cross-family is intentional.
+        if (!$currentUser->canWriteNoteOnFamily((int) $family->getId())) {
+            return SlimUtils::renderErrorJSON($response, gettext('Access denied'), [], 403);
+        }
 
         $text = InputUtils::sanitizeHTML($input['text'] ?? '');
         if ($text === '') {
@@ -269,7 +289,7 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
      *     path="/note/{noteId}",
      *     operationId="getNote",
      *     summary="Get a single note by ID",
-     *     description="Returns the note if it is visible to the current user. Private notes are only visible to the user who entered them. Returns 404 for notes not visible to the current user.",
+     *     description="Returns the note if it is visible to the current user. Admins see all notes including private. Notes=1 non-admin users see only public notes and their own private notes. Returns 404 for notes not visible to the current user (including private notes the caller cannot read — to avoid leaking note existence).",
      *     tags={"People"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="noteId", in="path", required=true, @OA\Schema(type="integer", example=1)),
@@ -286,7 +306,9 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
         $note = $request->getAttribute('note');
         $currentUser = AuthenticationManager::getCurrentUser();
 
-        if (!$note->isVisible($currentUser->getId())) {
+        // isVisibleTo() implements: public→all, private→author+admin.
+        // 404 (not 403) is intentional: avoids leaking that a private note exists.
+        if (!$note->isVisibleTo($currentUser)) {
             return SlimUtils::renderErrorJSON($response, gettext('Note not found'), [], 404);
         }
 

@@ -25,11 +25,18 @@ class TimelineService
     public function getForFamily(int $familyID): array
     {
         $timeline = [];
-        $familyNotes = NoteQuery::create()->findByFamId($familyID);
-        foreach ($familyNotes as $dbNote) {
-            $item = $this->noteToTimelineItem($dbNote);
-            if ($item !== null) {
-                $timeline[$item['key']] = $item;
+
+        // Only include note items when the user has Notes read permission.
+        // Plain-auth (no Notes flag) sees no note items at all — notes require
+        // an explicit capability grant (Notes=1 or Admin). Non-note items such
+        // as calendar events and system audit entries are always included.
+        if ($this->currentUser->canReadNotes()) {
+            $familyNotes = NoteQuery::create()->findByFamId($familyID);
+            foreach ($familyNotes as $dbNote) {
+                $item = $this->noteToTimelineItem($dbNote);
+                if ($item !== null) {
+                    $timeline[$item['key']] = $item;
+                }
             }
         }
 
@@ -76,6 +83,12 @@ class TimelineService
     private function notesForPerson(int $personID, ?string $noteType = null): array
     {
         $timeline = [];
+
+        // Plain-auth users (no Notes permission) see no note items.
+        if (!$this->currentUser->canReadNotes()) {
+            return $timeline;
+        }
+
         $personQuery = NoteQuery::create()
             ->filterByPerId($personID);
         if ($noteType !== null) {
@@ -124,26 +137,31 @@ class TimelineService
     }
 
     /**
+     * Convert a Note ORM object to a timeline item array, applying the new
+     * visibility policy from #9036:
+     *
+     * - Public notes: visible to all authenticated users with Notes access.
+     * - Private notes (author == current user): full content, edit link shown.
+     * - Private notes (Admin viewing other's note): full content, edit link shown.
+     *   (Admins can now read and edit any private note — old [Private Note] placeholder
+     *   is removed. This is a user-visible behavior change called out in the PR.)
+     * - Private notes (Notes=1 non-admin viewing other's note): omitted (return null).
+     *
+     * The private badge ($item['isPrivate']) is preserved so the UI can still render
+     * the "Private" chip for notes the current user can see.
+     *
      * @return mixed|null
      */
     public function noteToTimelineItem(Note $dbNote)
     {
-        $item = null;
-        $isVisible = $dbNote->isVisible($this->currentUser->getId());
-
-        if ($isVisible) {
-            $displayEditedBy = $this->resolveAuthorName($dbNote);
-            $text = $dbNote->getText();
-            $editLink = $dbNote->getEditLink();
-            $deleteLink = 'api-delete-note-' . $dbNote->getId();
-        } elseif ($this->currentUser->isAdmin() && $dbNote->isPrivate()) {
-            $text = gettext('[Private Note — visible only to creator]');
-            $editLink = '';
-            $deleteLink = 'api-delete-note-' . $dbNote->getId();
-            $displayEditedBy = $this->resolveAuthorName($dbNote);
-        } else {
+        // isVisibleTo() handles: public→true, private-own→true, private-admin→true, else→false.
+        if (!$dbNote->isVisibleTo($this->currentUser)) {
             return null;
         }
+
+        $displayEditedBy = $this->resolveAuthorName($dbNote);
+        $editLink   = $dbNote->getEditLink();
+        $deleteLink = 'api-delete-note-' . $dbNote->getId();
 
         $item = $this->createTimeLineItem(
             $dbNote->getId(),
@@ -152,15 +170,15 @@ class TimelineService
             $dbNote->getDisplayEditedDate('Y'),
             gettext('by') . ' ' . $displayEditedBy,
             '',
-            $text,
-            $editLink ?? '',
-            $deleteLink ?? ''
+            $dbNote->getText(),
+            $editLink,
+            $deleteLink,
         );
 
         // Override key to use 24-hour format so krsort orders notes and events correctly
         $item['key'] = $dbNote->getDisplayEditedDate('Y-m-d H:i:s') . '-' . $dbNote->getId();
 
-        if ($isVisible && $dbNote->isPrivate()) {
+        if ($dbNote->isPrivate()) {
             $item['isPrivate'] = true;
         }
 

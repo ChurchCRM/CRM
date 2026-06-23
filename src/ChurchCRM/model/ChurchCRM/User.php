@@ -283,6 +283,48 @@ class User extends BaseUser
     }
 
     /**
+     * Returns true if the current user may read non-private notes on the given object.
+     * Requires the Notes role (or Admin via isNotesEnabled()).
+     *
+     * $personId / $familyId are reserved for future row-level security (e.g.
+     * pastoral-confidentiality flags). Pass them at every call site so that
+     * adding ABAC checks later requires no call-site changes.
+     *
+     * @param int|null $personId Reserved for future ABAC use
+     * @param int|null $familyId Reserved for future ABAC use
+     */
+    public function canReadNotes(?int $personId = null, ?int $familyId = null): bool
+    {
+        return $this->isNotesEnabled();
+    }
+
+    /**
+     * Returns true if the current user may read private notes authored by other users.
+     * Today: Admin only. Note authors always see their own private notes regardless.
+     *
+     * $personId / $familyId are reserved for future ABAC extensions.
+     *
+     * @param int|null $personId Reserved for future ABAC use
+     * @param int|null $familyId Reserved for future ABAC use
+     */
+    public function canReadPrivateNotes(?int $personId = null, ?int $familyId = null): bool
+    {
+        return $this->isAdmin();
+    }
+
+    /**
+     * Returns true if the current user may create a note on the given family.
+     * Notes=1 or Admin currently grants cross-family write (intentional, see #9036/#9003).
+     * Parameter is reserved as the ABAC hook for future per-family privacy holds.
+     *
+     * @param int|null $familyId Reserved for future ABAC use
+     */
+    public function canWriteNoteOnFamily(?int $familyId = null): bool
+    {
+        return $this->isNotesEnabled();
+    }
+
+    /**
      * Update password using secure bcrypt hashing.
      */
     public function updatePassword(string $password): void

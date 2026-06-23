@@ -10,6 +10,7 @@ use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\NoteQuery;
 use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
@@ -64,27 +65,44 @@ if (isset($_POST['Submit'])) {
 
     // Were there any errors?
     if (!$bErrorFlag) {
+        $currentUser = AuthenticationManager::getCurrentUser();
         // Are we adding or editing?
         if ($iNoteID <= 0) {
-            $note = new Note();
-            $note->setPerId($iPersonID);
-            $note->setFamId($iFamilyID);
-            $note->setPrivate($bPrivate);
-            $note->setText($sNoteText);
-            $note->setType('note');
-            $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
-            $note->save();
+            // Scope check for new notes: user must be able to edit the target person/family.
+            if ($iPersonID > 0) {
+                // Load the person to get their family ID for canEditPerson()
+                $targetPerson = \ChurchCRM\model\ChurchCRM\PersonQuery::create()->findPk($iPersonID);
+                $targetFamId  = $targetPerson !== null ? (int) $targetPerson->getFamId() : 0;
+                if (!$currentUser->canEditPerson($iPersonID, $targetFamId)) {
+                    $sNoteTextError = '<br><span class="text-danger">' . gettext('You do not have permission to add a note for this person.') . '</span>';
+                    $bErrorFlag = true;
+                }
+            } elseif ($iFamilyID > 0 && !$currentUser->canWriteNoteOnFamily($iFamilyID)) {
+                $sNoteTextError = '<br><span class="text-danger">' . gettext('You do not have permission to add a note for this family.') . '</span>';
+                $bErrorFlag = true;
+            }
+
+            if (!$bErrorFlag) {
+                $note = new Note();
+                $note->setPerId($iPersonID);
+                $note->setFamId($iFamilyID);
+                $note->setPrivate($bPrivate);
+                $note->setText($sNoteText);
+                $note->setType('note');
+                $note->setEntered($currentUser->getId());
+                $note->save();
+            }
         } else {
             $note = NoteQuery::create()->findPk($iNoteID);
-            // Only the creator can edit their note
-            if ($note->getEnteredBy() !== AuthenticationManager::getCurrentUser()->getId()) {
+            // Admin can edit any note; author can edit their own note.
+            if (!$currentUser->isAdmin() && $note->getEnteredBy() !== $currentUser->getId()) {
                 $sNoteTextError = '<br><span class="text-danger">' . gettext('You do not have permission to edit this note.') . '</span>';
                 $bErrorFlag = true;
             } else {
                 $note->setPrivate($bPrivate);
                 $note->setText($sNoteText);
                 $note->setDateLastEdited(new DateTime());
-                $note->setEditedBy(AuthenticationManager::getCurrentUser()->getId());
+                $note->setEditedBy($currentUser->getId());
                 $note->save();
             }
         }
@@ -99,8 +117,9 @@ if (isset($_POST['Submit'])) {
         $iNoteID = InputUtils::legacyFilterInput($_GET['NoteID'], 'int');
         $dbNote = NoteQuery::create()->findPk($iNoteID);
 
-        // Only the creator can edit a private note
-        if ($dbNote && $dbNote->isPrivate() && $dbNote->getEnteredBy() !== AuthenticationManager::getCurrentUser()->getId()) {
+        $currentUser = AuthenticationManager::getCurrentUser();
+        // Admin can edit any note; all others can only edit their own notes.
+        if ($dbNote && !$currentUser->isAdmin() && $dbNote->getEnteredBy() !== $currentUser->getId()) {
             $_SESSION['sGlobalMessage'] = gettext('You do not have permission to edit this note.');
             $_SESSION['sGlobalMessageClass'] = 'danger';
             RedirectUtils::redirect($sBackPage ?: SystemURLs::getRootPath() . '/');
