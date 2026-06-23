@@ -1,7 +1,7 @@
 /**
  * Date Format Preview Module
  *
- * Provides live preview of PHP date format strings in the Church Info form.
+ * Provides live preview of PHP date format strings in the Localization & Formats form.
  * Converts PHP date tokens (Y, m, d, g, G, i, a, A, …) to their corresponding
  * values using the current date/time, and renders them as a preview string.
  *
@@ -269,14 +269,14 @@ export function initPhonePresets(): void {
 }
 
 /**
- * Wire up the consolidated "Display Preview" summary on the Church Info page.
+ * Wire up the consolidated "Display Preview" summary on the Localization page.
  *
  * Every element with class `.format-preview-value` declares a `data-source`
  * (the id of the format input it mirrors) and a `data-kind` of
  * "date" | "literal" | "phone". When the source input is empty, the input's
  * placeholder (the documented default) is previewed instead.
  *
- * Call this once from church-info.js after DOMContentLoaded.
+ * Call this once from localization.js after DOMContentLoaded.
  */
 export function initFormatSummaryPreview(): void {
   function render(el: HTMLElement, src: HTMLInputElement): void {
@@ -313,8 +313,8 @@ export function initFormatSummaryPreview(): void {
 }
 
 /**
- * Wire up live date previews for all date-format inputs on the Church Info page.
- * Call this once from church-info.js after DOMContentLoaded.
+ * Wire up live date previews for all date-format inputs on the Localization page.
+ * Call this once from localization.js after DOMContentLoaded.
  */
 export function initDateFormatPreviews(): void {
   // Date format fields (use DATE_PRESETS)

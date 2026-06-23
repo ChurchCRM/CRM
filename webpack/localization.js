@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!el.tomselect) {
         new window.TomSelect(el, {
           allowEmptyOption: true,
-          placeholder: window.i18next ? window.i18next.t("Search or select...") : "Search or select...",
+          placeholder: "Search or select...",
         });
       }
     });
