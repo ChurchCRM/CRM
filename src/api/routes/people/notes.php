@@ -36,9 +36,14 @@ function noteToArray(Note $note): array
 }
 
 // ---------------------------------------------------------------------------
-// Person notes — READ
-// GET /person/{personId}/notes
-// Requires Notes=1 or Admin (enforced by NotesRoleAuthMiddleware on the group).
+// Person notes — READ + WRITE
+// Both GET and POST are in the same group under NotesRoleAuthMiddleware.
+// The inline canEditPerson() check on POST further restricts who may write:
+//   - EditRecords/Admin: any person
+//   - EditSelf: own family's persons only
+//   - Notes=1 alone (no EditRecords/EditSelf): cannot write person notes
+// This matches the existing test contracts in private.plainauth.read-default.spec.js
+// and private.selfedit.family-scope.spec.js.
 // ---------------------------------------------------------------------------
 $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): void {
     /**
@@ -105,31 +110,13 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
 
         return SlimUtils::renderJSON($response, ['notes' => $result]);
     });
-})->add(new PersonMiddleware())->add(NotesRoleAuthMiddleware::class);
-
-// ---------------------------------------------------------------------------
-// Person notes — WRITE
-// POST /person/{personId}/note
-//
-// Deliberately NOT under NotesRoleAuthMiddleware so that EditRecords/EditSelf
-// users without the Notes flag can reach the handler and have their
-// canEditPerson() fallback evaluated. The Notes=1 gate would short-circuit
-// them at the group level, making canEditPerson() dead code.
-//
-// Auth is enforced inline: Notes=1 OR Admin OR canEditPerson() (policy §3/#9036).
-// ---------------------------------------------------------------------------
-$app->post('/person/{personId:[0-9]+}/note', function (Request $request, Response $response, array $args): Response {
-    /** @var Person $person */
-    $person = $request->getAttribute('person');
-    $currentUser = AuthenticationManager::getCurrentUser();
-    $input = (array) $request->getParsedBody();
 
     /**
      * @OA\Post(
      *     path="/person/{personId}/note",
      *     operationId="createPersonNote",
      *     summary="Create a note for a person",
-     *     description="Creates a note on a person's record. Notes=1 users can write person notes; EditRecords/EditSelf users can additionally write notes on records they may edit even without the Notes flag.",
+     *     description="Creates a note on a person's record. Requires Notes=1 or Admin (via NotesRoleAuthMiddleware) plus canEditPerson() to scope writes: EditRecords/Admin may write on any person; EditSelf users only on their own family members; Notes=1-only users (no EditRecords/EditSelf) are blocked.",
      *     tags={"People"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=1)),
@@ -145,39 +132,44 @@ $app->post('/person/{personId:[0-9]+}/note', function (Request $request, Respons
      *     ),
      *     @OA\Response(response=400, description="Note text is required"),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Notes permission required or access denied"),
+     *     @OA\Response(response=403, description="Notes permission required or canEditPerson() denied"),
      *     @OA\Response(response=404, description="Person not found")
      * )
      */
+    $group->post('/note', function (Request $request, Response $response, array $args): Response {
+        /** @var Person $person */
+        $person = $request->getAttribute('person');
+        $currentUser = AuthenticationManager::getCurrentUser();
+        $input = (array) $request->getParsedBody();
 
-    // Write gate: Notes=1/Admin OR canEditPerson() (EditRecords/EditSelf on the record).
-    // This route is intentionally outside the NotesRoleAuthMiddleware group so that
-    // EditRecords users without the Notes flag can reach this check (see routing comment).
-    $canWrite = $currentUser->canReadNotes()
-        || $currentUser->canEditPerson((int) $person->getId(), (int) $person->getFamId());
+        // Write gate: canEditPerson() enforces EditRecords/Admin (any person) or
+        // EditSelf (own-family persons only). Notes=1 alone is not sufficient —
+        // the Notes flag grants read access to notes, not write access to person records.
+        // The outer NotesRoleAuthMiddleware already ensures Notes=1 or Admin,
+        // so a Notes=1+EditRecords user passes both checks correctly.
+        if (!$currentUser->canEditPerson((int) $person->getId(), (int) $person->getFamId())) {
+            return SlimUtils::renderErrorJSON($response, gettext('Access denied'), [], 403);
+        }
 
-    if (!$canWrite) {
-        return SlimUtils::renderErrorJSON($response, gettext('Access denied'), [], 403);
-    }
+        $text = InputUtils::sanitizeHTML($input['text'] ?? '');
+        if ($text === '') {
+            return SlimUtils::renderErrorJSON($response, gettext('Note text is required'), [], 400);
+        }
 
-    $text = InputUtils::sanitizeHTML($input['text'] ?? '');
-    if ($text === '') {
-        return SlimUtils::renderErrorJSON($response, gettext('Note text is required'), [], 400);
-    }
+        $private = !empty($input['private']) ? 1 : 0;
 
-    $private = !empty($input['private']) ? 1 : 0;
+        $note = new Note();
+        $note->setPerId($person->getId());
+        $note->setFamId(0);
+        $note->setText($text);
+        $note->setPrivate($private);
+        $note->setType('note');
+        $note->setEntered($currentUser->getId());
+        $note->save();
 
-    $note = new Note();
-    $note->setPerId($person->getId());
-    $note->setFamId(0);
-    $note->setText($text);
-    $note->setPrivate($private);
-    $note->setType('note');
-    $note->setEntered($currentUser->getId());
-    $note->save();
-
-    return SlimUtils::renderJSON($response, ['note' => noteToArray($note)], 201);
-})->add(new PersonMiddleware());
+        return SlimUtils::renderJSON($response, ['note' => noteToArray($note)], 201);
+    });
+})->add(new PersonMiddleware())->add(NotesRoleAuthMiddleware::class);
 
 // ---------------------------------------------------------------------------
 // Family notes  GET /family/{familyId}/notes  POST /family/{familyId}/note

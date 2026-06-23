@@ -188,12 +188,10 @@ describe("Notes Visibility Policy (#9036)", () => {
         });
 
         it("john.plainauth (Notes=1, no EditRecords) CANNOT POST person note → 403", () => {
-            // john.plainauth has Notes=1 but no EditRecords/EditSelf, so canEditPerson()
-            // returns false. The POST gate requires: canReadNotes() OR canEditPerson().
-            // canReadNotes() is true (Notes=1), so this should now return 201.
-            // BUT: john.plainauth is in the hasNoAdminPermissions() scope, so the system
-            // might already reject them. Test the actual behaviour here.
-            // Per private.plainauth.read-default.spec.js: john.plainauth CANNOT POST person note → 403.
+            // john.plainauth has Notes=1 but no EditRecords/EditSelf.
+            // POST /person/{id}/note requires Notes=1 (middleware) AND canEditPerson()
+            // (inline check). canEditPerson() returns false (no EditRecords/EditSelf)
+            // so the request is blocked with 403 at the object-level scope check.
             cy.makePrivatePlainAuthAPICall("POST", "/api/person/2/note",
                 { text: "<p>Should fail</p>", private: false }, 403);
         });
