@@ -42,6 +42,12 @@ class MpdfRenderer implements PdfRendererInterface
     /**
      * @param Environment|null $twig  Optional Twig environment.  When omitted a default
      *                                environment pointing at src/templates/reports/ is created.
+     *
+     * NOTE: The injected Twig environment MUST have GettextExtension registered
+     * for report templates to work (templates call gettext() for translations).
+     * When providing a custom Twig instance, ensure it includes:
+     *   $twig->addExtension(new \ChurchCRM\Twig\GettextExtension());
+     * Failure to do so will result in a Twig RuntimeError at render time.
      */
     public function __construct(?Environment $twig = null)
     {
@@ -68,7 +74,7 @@ class MpdfRenderer implements PdfRendererInterface
         return $response
             ->withHeader('Content-Type', 'application/pdf')
             ->withHeader('Content-Disposition', $outputMode . '; filename="' . $filename . '.pdf"')
-            ->withHeader('Content-Length', (string) strlen($pdfContent));
+            ->withHeader('Content-Length', (string) mb_strlen($pdfContent, '8bit'));
     }
 
     /**
@@ -87,7 +93,11 @@ class MpdfRenderer implements PdfRendererInterface
      */
     private function createMpdf(): Mpdf
     {
-        $paperFormat = SystemConfig::getValue('sPaperFormat') ?: 'Letter';
+        // Whitelist the stored paper format to prevent an unhandled MpdfException
+        // if the database value is invalid (e.g., from a manual DB edit or migration).
+        $validFormats = ['A3', 'A4', 'A5', 'Letter', 'Legal'];
+        $paperFormat  = SystemConfig::getValue('sPaperFormat') ?: 'Letter';
+        $paperFormat  = in_array($paperFormat, $validFormats, true) ? $paperFormat : 'Letter';
 
         return new Mpdf([
             'mode'              => 'utf-8',

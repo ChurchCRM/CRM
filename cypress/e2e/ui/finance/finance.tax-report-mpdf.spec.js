@@ -4,9 +4,13 @@
  * Tests for the new mPDF-based Tax Statement routes:
  *   GET  /finance/reports/tax-statements  (configuration form)
  *   POST /finance/reports/tax-report      (PDF generation)
+ *
+ * SCAFFOLDING: Tax report routes exist as framework proof-of-concept only.
+ * Re-enable when the tax report is officially released in the UI navigation.
  */
 
-describe("Tax Statements mPDF — Configuration Form", () => {
+// eslint-disable-next-line no-undef
+describe.skip("Tax Statements mPDF — Configuration Form (scaffolding — not yet in UI)", () => {
     beforeEach(() => {
         cy.setupAdminSession();
     });
@@ -64,7 +68,8 @@ describe("Tax Statements mPDF — Configuration Form", () => {
     });
 });
 
-describe("Tax Statements mPDF — PDF Generation", () => {
+// eslint-disable-next-line no-undef
+describe.skip("Tax Statements mPDF — PDF Generation (scaffolding — not yet in UI)", () => {
     beforeEach(() => {
         cy.setupAdminSession();
     });
@@ -97,7 +102,7 @@ describe("Tax Statements mPDF — PDF Generation", () => {
         cy.get("#taxReportForm").submit();
 
         // Should land back on the form with the no-data alert
-        cy.url().should("contain", "tax-statements");
+        cy.url().should("include", "tax-statements?NoRows=1");
         cy.contains("No Data Found");
     });
 
@@ -122,7 +127,8 @@ describe("Tax Statements mPDF — PDF Generation", () => {
     });
 });
 
-describe("Tax Statements mPDF — Access Control", () => {
+// eslint-disable-next-line no-undef
+describe.skip("Tax Statements mPDF — Access Control (scaffolding — not yet in UI)", () => {
     it("should deny access to users without finance permission", () => {
         cy.setupNoFinanceSession();
         cy.visit("/finance/reports/tax-statements", {

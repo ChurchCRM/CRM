@@ -85,7 +85,8 @@
             {% for row in rows %}
                 <tr>
                     {% for cell in row %}
-                        <td>{{ cell }}</td>
+                        {# cell is pre-sanitised HTML — do NOT remove |raw #}
+                        <td>{{ cell|raw }}</td>
                     {% endfor %}
                 </tr>
             {% endfor %}
@@ -94,7 +95,8 @@
         <tfoot>
             <tr class="totals-row">
                 {% for cell in totals %}
-                    <td>{{ cell }}</td>
+                    {# cell is pre-sanitised HTML — do NOT remove |raw #}
+                    <td>{{ cell|raw }}</td>
                 {% endfor %}
             </tr>
         </tfoot>
