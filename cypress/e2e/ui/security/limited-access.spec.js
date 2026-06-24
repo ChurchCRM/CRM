@@ -127,11 +127,22 @@ describe("Self-only access — EditSelf account user reaches the verify page (am
     const editSelfPassword = "onlyMyFamily";
 
     function loginAsEditSelf() {
-        cy.clearCookies();
-        cy.visit("session/begin");
-        cy.get("input[name=User]").type(editSelfUser);
-        cy.get("input[name=Password]").type(editSelfPassword + "{enter}");
-        cy.url({ timeout: 10000 }).should("include", "/external/limited-access");
+        // Use a unique session name so each test gets a fresh amanda.black login,
+        // ensuring no stale session state from prior tests leaks in.
+        const sessionName = `editself-session-${Date.now()}`;
+        cy.session(sessionName, () => {
+            cy.clearCookies();
+            cy.visit("session/begin");
+            cy.get("input[name=User]").type(editSelfUser);
+            cy.get("input[name=Password]").type(editSelfPassword + "{enter}");
+            cy.url({ timeout: 10000 }).should("include", "/external/limited-access");
+        }, {
+            validate: () => {
+                cy.getCookies().should("satisfy", (cookies) => {
+                    return cookies.some((cookie) => cookie.name.startsWith("CRM-"));
+                });
+            },
+        });
     }
 
     it("Login redirects to /external/limited-access (not the dashboard)", () => {

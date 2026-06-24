@@ -13,9 +13,9 @@ describe("User Editor - ORM Migration Tests", () => {
         cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId}`, null, [200, 204, 404]);
         // The API call sends the session cookie alongside x-api-key, causing PHP to
         // overwrite $_SESSION['AuthenticationProvider'] with APITokenAuthentication.
-        // Clear all cookies so cy.session's validate step fails and triggers a
-        // fresh login, restoring LocalAuthentication in the PHP session.
-        cy.clearCookies();
+        // Clear all cy.session() caches so that setupAdminSession() is forced to
+        // run the full setup function (fresh PHP login), creating a clean session.
+        cy.then(() => Cypress.session.clearAllSavedSessions());
         cy.setupAdminSession();
         cy.intercept("POST", "**/UserEditor.php*").as("saveUser");
         cy.visit(`UserEditor.php?NewPersonID=${throwawayPersonId}`);
@@ -25,8 +25,8 @@ describe("User Editor - ORM Migration Tests", () => {
 
     function deleteUser() {
         cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId}`, null, [200, 204, 404]);
-        // Same: clear cookies so the next test's beforeEach gets a fresh login.
-        cy.clearCookies();
+        // Same: clear all session caches so the next test's beforeEach re-logs in fresh.
+        cy.then(() => Cypress.session.clearAllSavedSessions());
     }
 
     it("Should persist a single Custom permission via ORM", () => {
