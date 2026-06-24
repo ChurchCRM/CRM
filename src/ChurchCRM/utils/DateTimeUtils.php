@@ -456,6 +456,11 @@ class DateTimeUtils
      * Returns a single date if start == end, otherwise a range.
      * Uses the configured timezone for date parsing.
      *
+     * @note Returns English month/day names regardless of the system locale.
+     *       PHP's DateTime::format('F') / format('M') always produces English.
+     *       For locale-aware formatting, use IntlDateFormatter instead.
+     *       Locale-aware output is tracked as a separate improvement ticket.
+     *
      * @param string $dateStart Start date in Y-m-d format
      * @param string $dateEnd   End date in Y-m-d format
      *
