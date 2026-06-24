@@ -1,9 +1,11 @@
 describe("User Editor - ORM Migration Tests", () => {
-    // Throwaway person (Constance Hart, family 2) — not a seeded user, so it's
-    // safe to create/mutate/delete here without polluting other suites. Module
-    // permissions only render under the "Custom" access level, and a brand-new
-    // user defaults to Custom (no Admin/EditSelf), so the panel is visible.
+    // Throwaway persons — not seeded users, safe to create/delete here.
+    // Each test uses a DIFFERENT person ID so parallel CI workers (test-root
+    // and test-subdir) never race on the same DB row.
+    // Test 1: PersonID=6 (Constance Hart, constance.hart@example.com, family 2)
+    // Test 2: PersonID=5 (Albert Campbell, albert.garcia@example.com, family 1)
     const throwawayPersonId = 6;
+    const throwawayPersonId2 = 5;
 
     beforeEach(() => {
         cy.setupAdminSession();
@@ -31,6 +33,22 @@ describe("User Editor - ORM Migration Tests", () => {
         cy.then(() => Cypress.session.clearAllSavedSessions());
     }
 
+    function createCustomUser2() {
+        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId2}`, null, [200, 204, 404]);
+        cy.then(() => Cypress.session.clearAllSavedSessions());
+        cy.setupAdminSession();
+        cy.wait(1000);
+        cy.intercept("POST", "**/UserEditor.php*").as("saveUser");
+        cy.visit(`UserEditor.php?NewPersonID=${throwawayPersonId2}`);
+        cy.contains("User Editor");
+        cy.get("#customPermissions").should("be.visible");
+    }
+
+    function deleteUser2() {
+        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId2}`, null, [200, 204, 404]);
+        cy.then(() => Cypress.session.clearAllSavedSessions());
+    }
+
     it("Should persist a single Custom permission via ORM", () => {
         createCustomUser();
         cy.get("#Finance").check();
@@ -44,16 +62,16 @@ describe("User Editor - ORM Migration Tests", () => {
     });
 
     it("Should persist multiple Custom permission changes via ORM", () => {
-        createCustomUser();
+        createCustomUser2();
         cy.get("#EditRecords").should("be.visible").check();
         cy.get("#SaveButton").click();
         cy.wait("@saveUser");
         cy.wait(500);
 
-        cy.visit(`UserEditor.php?PersonID=${throwawayPersonId}`);
+        cy.visit(`UserEditor.php?PersonID=${throwawayPersonId2}`);
         cy.get("#customPermissions").should("be.visible");
         cy.get("#EditRecords").should("be.checked");
-        deleteUser();
+        deleteUser2();
     });
 
     it("Should update username via ORM", () => {
