@@ -40,6 +40,9 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Get(
      *     path="/finance/reports/tax-statements",
+     * @todo SCAFFOLDING: This route is framework proof-of-concept only.
+     *       It is not linked from any navigation menu.
+     *       Remove this @todo when the route is officially released in the UI.
      *     operationId="getTaxStatementForm",
      *     summary="Tax Statement configuration form",
      *     description="Renders the Giving Report configuration form. Requires Finance role.",
@@ -101,6 +104,9 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Post(
      *     path="/finance/reports/tax-report",
+     * @todo SCAFFOLDING: This route is framework proof-of-concept only.
+     *       It is not linked from any navigation menu.
+     *       Remove this @todo when the route is officially released in the UI.
      *     operationId="generateTaxReportPdf",
      *     summary="Generate Tax Statement PDF",
      *     description="Generates a Giving Report / Tax Statement PDF via mPDF. Requires Finance role. Redirects to tax-statements?NoRows=1 when no matching data is found.",
@@ -137,6 +143,8 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
 
         // Sanitize inputs
         $letterhead = InputUtils::legacyFilterInput($body['letterhead'] ?? '');
+        // Whitelist-validate letterhead against allowed enum values
+        $letterhead = in_array($letterhead, ['graphic', 'address', 'none'], true) ? $letterhead : 'address';
         $remittance = ($body['remittance'] ?? 'no') === 'yes';
         $sDateStart = InputUtils::legacyFilterInput($body['DateStart'] ?? '', 'date');
         $sDateEnd   = InputUtils::legacyFilterInput($body['DateEnd'] ?? '', 'date');

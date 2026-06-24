@@ -74,7 +74,8 @@
         {% for entry in entries %}
             {% if col == 0 %}<tr>{% endif %}
             <td class="directory-cell" style="width:{{ (100 / cols)|round(1) }}%;">
-                {{ entry }}
+                {# entry is pre-sanitised HTML — do NOT remove |raw #}
+                {{ entry|raw }}
             </td>
             {% set col = col + 1 %}
             {% if col == cols %}
