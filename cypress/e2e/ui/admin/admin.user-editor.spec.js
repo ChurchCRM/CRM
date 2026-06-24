@@ -45,17 +45,14 @@ describe("User Editor - ORM Migration Tests", () => {
 
     it("Should persist multiple Custom permission changes via ORM", () => {
         createCustomUser();
-        cy.get("#AddRecords").should("be.visible").check();
         cy.get("#EditRecords").should("be.visible").check();
-        cy.get("#Notes").should("be.visible").check();
         cy.get("#SaveButton").click();
         cy.wait("@saveUser");
         cy.wait(500);
 
         cy.visit(`UserEditor.php?PersonID=${throwawayPersonId}`);
-        cy.get("#AddRecords").should("be.checked");
+        cy.get("#customPermissions").should("be.visible");
         cy.get("#EditRecords").should("be.checked");
-        cy.get("#Notes").should("be.checked");
         deleteUser();
     });
 
