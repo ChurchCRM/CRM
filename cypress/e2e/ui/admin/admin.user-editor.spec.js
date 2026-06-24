@@ -17,6 +17,8 @@ describe("User Editor - ORM Migration Tests", () => {
         // run the full setup function (fresh PHP login), creating a clean session.
         cy.then(() => Cypress.session.clearAllSavedSessions());
         cy.setupAdminSession();
+        // Small wait to allow the fresh PHP session to fully propagate before visiting.
+        cy.wait(1000);
         cy.intercept("POST", "**/UserEditor.php*").as("saveUser");
         cy.visit(`UserEditor.php?NewPersonID=${throwawayPersonId}`);
         cy.contains("User Editor");
