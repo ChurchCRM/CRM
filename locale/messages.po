@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-15 14:23+0000\n"
+"POT-Creation-Date: 2026-06-23 18:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -145,6 +145,10 @@ msgid "%d year old"
 msgid_plural "%d years old"
 msgstr[0] ""
 msgstr[1] ""
+
+#, php-format
+msgid "%d% of interface text is translated for this language."
+msgstr ""
 
 msgid "(Enter state/province for countries without predefined states)"
 msgstr ""
@@ -284,6 +288,9 @@ msgid "A system update is available. Please upgrade your installation."
 msgstr ""
 
 msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr ""
+
+msgid "AM / PM"
 msgstr ""
 
 msgid "API Access"
@@ -1440,6 +1447,9 @@ msgstr ""
 msgid "Birthdays"
 msgstr ""
 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr ""
+
 msgid "Birthdays by Month"
 msgstr ""
 
@@ -1756,6 +1766,9 @@ msgid "Cell"
 msgstr ""
 
 msgid "Cell Phone"
+msgstr ""
+
+msgid "Cell Phone Format"
 msgstr ""
 
 #. Context: countries
@@ -2204,6 +2217,9 @@ msgid "Comma-separated query IDs that require finance permissions to view"
 msgstr ""
 
 msgid "Comment"
+msgstr ""
+
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
 msgstr ""
 
 #. plugin:custom-links:section:4:content
@@ -2844,16 +2860,31 @@ msgstr ""
 msgid "Date & Time"
 msgstr ""
 
+msgid "Date &amp; Time Format"
+msgstr ""
+
+msgid "Date &amp; Time Formats"
+msgstr ""
+
 msgid "Date End"
 msgstr ""
 
 msgid "Date Entered"
 msgstr ""
 
+msgid "Date Picker Format"
+msgstr ""
+
+msgid "Date Picker Placeholder"
+msgstr ""
+
 msgid "Date Start"
 msgstr ""
 
 msgid "Date Updated"
+msgstr ""
+
+msgid "Date Without Year"
 msgstr ""
 
 msgid "Date fields accept YYYY-MM-DD or M/D/YYYY. Use 0000-MM-DD or M/D for a month and day with no year."
@@ -2863,6 +2894,12 @@ msgid "Date range cannot exceed 1 year"
 msgstr ""
 
 msgid "Day"
+msgstr ""
+
+msgid "Day, 2 digits"
+msgstr ""
+
+msgid "Day, no leading zero"
 msgstr ""
 
 msgid "Deactivate"
@@ -2942,6 +2979,12 @@ msgid "Default number of rows shown in data tables. Takes effect on next page lo
 msgstr ""
 
 msgid "Default role updated."
+msgstr ""
+
+msgid "Default: (999) 999-9999"
+msgstr ""
+
+msgid "Default: (999) 999-9999 x99999"
 msgstr ""
 
 msgid "Define custom fields to collect additional family data"
@@ -4002,6 +4045,9 @@ msgstr ""
 msgid "Everyone is checked in!"
 msgstr ""
 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr ""
+
 msgid "Exclude Inactive Families"
 msgstr ""
 
@@ -4618,6 +4664,9 @@ msgstr ""
 msgid "File upload error"
 msgstr ""
 
+msgid "Filename Date Format"
+msgstr ""
+
 msgid "Files may be modified or missing. Consider re-deploying from an official release."
 msgstr ""
 
@@ -4891,6 +4940,9 @@ msgid "Full Group View"
 msgstr ""
 
 msgid "Full Path"
+msgstr ""
+
+msgid "Fully translated."
 msgstr ""
 
 msgid "Functions"
@@ -5377,6 +5429,9 @@ msgstr ""
 msgid "Hindi - India"
 msgstr ""
 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr ""
+
 msgid "Hit Rate"
 msgstr ""
 
@@ -5407,6 +5462,9 @@ msgstr ""
 msgid "Home phone number"
 msgstr ""
 
+msgid "Home/Work Phone Format"
+msgstr ""
+
 msgid "Homepage"
 msgstr ""
 
@@ -5422,6 +5480,15 @@ msgid "Host"
 msgstr ""
 
 msgid "Hostname"
+msgstr ""
+
+msgid "Hour 12h, 2 digits"
+msgstr ""
+
+msgid "Hour 12h, no zero"
+msgstr ""
+
+msgid "Hour 24h, 2 digits"
 msgstr ""
 
 msgid "How Sunday School + Events + Kiosks fit together"
@@ -5667,6 +5734,9 @@ msgid "Included"
 msgstr ""
 
 msgid "Includes database and all uploaded photos. Larger file size."
+msgstr ""
+
+msgid "Includes time component. Default: m/d/Y g:i a"
 msgstr ""
 
 msgid "Incomplete"
@@ -6035,13 +6105,16 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
-msgid "Language & Localization"
+msgid "Language &amp; Region"
 msgstr ""
 
 msgid "Language and regional settings"
 msgstr ""
 
 msgid "Language updated to"
+msgstr ""
+
+msgid "Language, time zone, date & phone formats"
 msgstr ""
 
 #. Context: countries
@@ -6286,6 +6359,12 @@ msgstr ""
 msgid "Localization"
 msgstr ""
 
+msgid "Localization & Formats"
+msgstr ""
+
+msgid "Localization settings saved successfully"
+msgstr ""
+
 msgid "Location"
 msgstr ""
 
@@ -6323,6 +6402,9 @@ msgid "Login Name is required"
 msgstr ""
 
 msgid "Login to your account"
+msgstr ""
+
+msgid "Long Date Format"
 msgstr ""
 
 msgid "Longitude"
@@ -6777,6 +6859,9 @@ msgstr ""
 msgid "Minimum length is"
 msgstr ""
 
+msgid "Minutes"
+msgstr ""
+
 msgid "Mismatch"
 msgstr ""
 
@@ -6856,6 +6941,21 @@ msgstr ""
 
 #. Context: queryparameters_qrp
 msgid "Month"
+msgstr ""
+
+msgid "Month &amp; Year"
+msgstr ""
+
+msgid "Month, 2 digits"
+msgstr ""
+
+msgid "Month, full"
+msgstr ""
+
+msgid "Month, no leading zero"
+msgstr ""
+
+msgid "Month, short"
 msgstr ""
 
 msgid "Monthly"
@@ -7436,6 +7536,9 @@ msgstr ""
 msgid "Not in CRM"
 msgstr ""
 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr ""
+
 msgid "Not pinned to any calendar"
 msgstr ""
 
@@ -7750,6 +7853,9 @@ msgid "PHP Active"
 msgstr ""
 
 msgid "PHP Version"
+msgstr ""
+
+msgid "PHP format for date picker inputs. Default: Y-m-d"
 msgstr ""
 
 msgid "PHPMailer SMTP session"
@@ -8082,6 +8188,9 @@ msgstr ""
 msgid "Phone Number Format"
 msgstr ""
 
+msgid "Phone Number Formats"
+msgstr ""
+
 msgid "Phone Type"
 msgstr ""
 
@@ -8105,6 +8214,9 @@ msgid ""
 "- Australia: +61412345678\n"
 "\n"
 "Recipient phone numbers in ChurchCRM member profiles should include the country code for SMS to work correctly."
+msgstr ""
+
+msgid "Phone with Extension"
 msgstr ""
 
 msgid "Photo"
@@ -9182,6 +9294,9 @@ msgstr ""
 msgid "Save Event Type"
 msgstr ""
 
+msgid "Save Localization Settings"
+msgstr ""
+
 msgid "Save Name"
 msgstr ""
 
@@ -9419,6 +9534,9 @@ msgstr ""
 msgid "Select your options above and click a backup button."
 msgstr ""
 
+msgid "Selected Language"
+msgstr ""
+
 msgid "Selected record successfully removed from the Cart."
 msgstr ""
 
@@ -9491,6 +9609,9 @@ msgid "Server Version"
 msgstr ""
 
 msgid "Server error"
+msgstr ""
+
+msgid "Server locale support could not be checked (exec is disabled)."
 msgstr ""
 
 msgid "Server returned an unexpected response. Please try again."
@@ -9987,6 +10108,9 @@ msgstr ""
 msgid "Supported formats:"
 msgstr ""
 
+msgid "Supported — this locale is installed on the server."
+msgstr ""
+
 msgid "Supports backups from ChurchCRM and ChurchInfo."
 msgstr ""
 
@@ -10065,6 +10189,9 @@ msgid "System diagnostic information and configuration"
 msgstr ""
 
 msgid "System language for the church."
+msgstr ""
+
+msgid "System language, time zone, date/time formats, and phone number formats"
 msgstr ""
 
 msgid "System upgrade completed successfully!"
@@ -10361,6 +10488,9 @@ msgstr ""
 msgid "These are the family role numbers designated as spouse"
 msgstr ""
 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr ""
+
 msgid "These files are not part of the official release and may pose security risks."
 msgstr ""
 
@@ -10413,6 +10543,9 @@ msgid "This group currently has no properties!  You can add them in the Group Ed
 msgstr ""
 
 msgid "This is a ChurchCRM test email."
+msgstr ""
+
+msgid "This is how dates and phone numbers will appear throughout the system."
 msgstr ""
 
 msgid "This is how your church information will appear on reports and directories."
@@ -10720,6 +10853,12 @@ msgid "Translating missing strings to improve coverage"
 msgstr ""
 
 msgid "Translation Progress"
+msgstr ""
+
+msgid "Translation completeness"
+msgstr ""
+
+msgid "Translation tracking is not available for this language."
 msgstr ""
 
 #. Context: countries
@@ -11052,6 +11191,9 @@ msgstr ""
 msgid "Usage"
 msgstr ""
 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr ""
+
 #. plugin:custom-links:section:4:title
 msgid "Use Cases"
 msgstr ""
@@ -11100,6 +11242,12 @@ msgid "Used as the default start time when creating events of this type."
 msgstr ""
 
 msgid "Used for scheduling events and reporting times."
+msgstr ""
+
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr ""
+
+msgid "Used on reports and member lists. Default: m/d/Y"
 msgstr ""
 
 msgid "Used to end a letter before Signer"
@@ -11576,6 +11724,12 @@ msgstr ""
 msgid "Wednesdays"
 msgstr ""
 
+msgid "Weekday, full"
+msgstr ""
+
+msgid "Weekday, short"
+msgstr ""
+
 msgid "Weekly"
 msgstr ""
 
@@ -11606,6 +11760,9 @@ msgid "What Gets Tracked"
 msgstr ""
 
 msgid "What are Orphaned Files?"
+msgstr ""
+
+msgid "What do these codes mean?"
 msgstr ""
 
 msgid "What does this find?"
@@ -11715,6 +11872,12 @@ msgid "YTD Pledges"
 msgstr ""
 
 msgid "Year"
+msgstr ""
+
+msgid "Year, 2 digits"
+msgstr ""
+
+msgid "Year, 4 digits"
 msgstr ""
 
 msgid "Yearly on"
@@ -11990,6 +12153,9 @@ msgid "all members"
 msgstr ""
 
 msgid "already in cart"
+msgstr ""
+
+msgid "am / pm"
 msgstr ""
 
 msgid "and"
