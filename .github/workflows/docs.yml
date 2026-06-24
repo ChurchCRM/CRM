@@ -11,6 +11,7 @@ on:
     paths:
       - 'src/api/routes/**'
       - 'src/admin/routes/api/**'
+      - 'src/finance/routes/**'
       - 'docs/openapi/**'
       - '!docs/openapi/generated/**'
       - 'src/kiosk/routes/api/**'
@@ -19,6 +20,7 @@ on:
     paths:
       - 'src/api/routes/**'
       - 'src/admin/routes/api/**'
+      - 'src/finance/routes/**'
       - 'docs/openapi/**'
       - '!docs/openapi/generated/**'
       - 'src/kiosk/routes/api/**'
@@ -47,7 +49,7 @@ jobs:
 
     steps:
       - name: Checkout CRM
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: Setup PHP 8.4
         uses: shivammathur/setup-php@v2
@@ -56,7 +58,7 @@ jobs:
           extensions: mbstring, pdo, zip
 
       - name: Cache Composer packages
-        uses: actions/cache@v5
+        uses: actions/cache@v4
         with:
           path: src/vendor
           key: composer-dev-${{ hashFiles('src/composer.lock') }}
@@ -72,7 +74,7 @@ jobs:
         run: cd src && composer run openapi:private
 
       - name: Upload generated specs as artifacts
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
           name: openapi-specs-${{ github.run_id }}
           path: docs/openapi/generated/*.yaml
@@ -91,7 +93,7 @@ jobs:
 
     steps:
       - name: Checkout CRM
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: Setup PHP 8.4
         uses: shivammathur/setup-php@v2
@@ -100,7 +102,7 @@ jobs:
           extensions: mbstring, pdo, zip
 
       - name: Cache Composer packages
-        uses: actions/cache@v5
+        uses: actions/cache@v4
         with:
           path: src/vendor
           key: composer-dev-${{ hashFiles('src/composer.lock') }}
@@ -134,7 +136,7 @@ jobs:
           git push origin master
 
       - name: Upload generated specs as artifacts
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
           name: openapi-specs-${{ github.run_id }}
           path: docs/openapi/generated/*.yaml
