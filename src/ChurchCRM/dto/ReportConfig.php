@@ -47,7 +47,23 @@ class ReportConfig
         $this->churchZip           = (string) SystemConfig::getValue('sChurchZip');
         $this->churchPhone         = (string) SystemConfig::getValue('sChurchPhone');
         $this->churchEmail         = (string) SystemConfig::getValue('sChurchEmail');
-        $this->letterheadImagePath = (string) SystemConfig::getValue('bDirLetterHead');
+
+        // Resolve letterhead image to an absolute, readable path.
+        // bDirLetterHead defaults to '../Images/church_letterhead.jpg' (relative
+        // to the legacy script directory).  mPDF resolves <img src> relative to
+        // the PHP process CWD, not the template directory, so we must supply an
+        // absolute path.  If the path is not readable we fall back to '' so the
+        // template can conditionally skip the letterhead block.
+        $rawLetterhead = (string) SystemConfig::getValue('bDirLetterHead');
+        $absLetterhead = realpath($rawLetterhead);
+        if ($absLetterhead === false) {
+            // Try resolving relative to the document root
+            $absLetterhead = realpath(SystemURLs::getDocumentRoot() . '/' . ltrim($rawLetterhead, '/'));
+        }
+        $this->letterheadImagePath = ($absLetterhead !== false && is_readable($absLetterhead))
+            ? $absLetterhead
+            : '';
+
         $this->defaultCountry      = (string) SystemConfig::getValue('sDefaultCountry');
         $this->todayFormatted      = date((string) SystemConfig::getValue('sDateFormatLong'));
 
@@ -64,7 +80,7 @@ class ReportConfig
     /**
      * Variables expected by _letter.html.twig and any letter-style report.
      *
-     * @return array<string, string>
+     * @return array<string, mixed>
      */
     public function toLetterheadArray(): array
     {
@@ -86,7 +102,7 @@ class ReportConfig
      * Letterhead variables + tax-report-specific text.
      * Ready to merge into the template data array for tax-report.html.twig.
      *
-     * @return array<string, string>
+     * @return array<string, mixed>
      */
     public function toTaxReportArray(): array
     {
