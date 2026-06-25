@@ -93,7 +93,7 @@ msgstr "Nama Belakang"
 
 #: 
 msgid "Required"
-msgstr "Wajib"
+msgstr "Wajib diisi"
 
 #: 
 msgid "First Name"
@@ -113,7 +113,7 @@ msgstr "Amplop"
 
 #: 
 msgid "Work/Other Email"
-msgstr "Email Kerja/Lainnya"
+msgstr "Email Kantor/Lainnya"
 
 #: 
 msgid "Membership Date"
@@ -121,7 +121,7 @@ msgstr "Tanggal Keanggotaan"
 
 #: 
 msgid "Age / Years Married"
-msgstr "Umur / Tahun Menikah"
+msgstr "Umur / Tahun Pernikahan"
 
 #. Context: queryparameters_qrp
 #: 
@@ -444,7 +444,7 @@ msgstr "Tambah Pembayaran"
 #: 
 #, fuzzy
 msgid "Load Authorized"
-msgstr "Load transaksi yang sudah terotorisasi"
+msgstr "Muat  transaksi yang sudah terotorisasi"
 
 #: 
 msgid "Run Transactions"
@@ -536,11 +536,11 @@ msgstr "Ukuran Font"
 
 #: 
 msgid "Title page"
-msgstr "Halaman Judul"
+msgstr "Judul halaman"
 
 #: 
 msgid "Use Title Page"
-msgstr "Gunakan halaman judul"
+msgstr "Gunakan judul halaman"
 
 #: 
 msgid "Church Name"
@@ -604,7 +604,7 @@ msgstr "URL dari Gambar"
 
 #: 
 msgid "Donation Fund Editor"
-msgstr "Sunting Dana Donatur"
+msgstr "Sunting Donatur Dana"
 
 #: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
@@ -745,7 +745,7 @@ msgstr "Pilihan Keamanan"
 
 #: 
 msgid "You must select a group."
-msgstr "Kamu harus memilih sebuah grup"
+msgstr "Anda harus memilih sebuah grup."
 
 #: 
 msgid "Edit List Options"
@@ -757,11 +757,11 @@ msgstr "Bantuan mengenai tipe"
 
 #: 
 msgid "You must enter a name"
-msgstr "Anda harus memasukan sebuah nama"
+msgstr "Anda harus memasukan nama"
 
 #: 
 msgid "That field name already exists."
-msgstr "Nama field itu sudah digunakan"
+msgstr "Nama field tersebut sudah digunakan"
 
 #: 
 msgid "Family Editor"
@@ -773,7 +773,7 @@ msgstr "Nama pertama harus dimasukkan"
 
 #: 
 msgid "Invalid Birth Date."
-msgstr "Tanggal ulang tahun tidak valid"
+msgstr "Tanggal kelahiran tidak valid"
 
 #: 
 msgid "Not a valid Wedding Date"
@@ -805,11 +805,11 @@ msgstr "Nama depan"
 
 #: 
 msgid "Middle"
-msgstr "nama tengah"
+msgstr "Nama tengah"
 
 #: 
 msgid "Last"
-msgstr "nama akhir"
+msgstr "Nama belakang "
 
 #: 
 msgid "Role"
@@ -897,7 +897,7 @@ msgstr "Hapus foto"
 
 #: 
 msgid "Timeline"
-msgstr "tenggat waktu"
+msgstr "Rentang waktu"
 
 #: 
 msgid "Pledges and Payments"
@@ -957,7 +957,7 @@ msgstr "Konfirmasi penghapusan"
 
 #: 
 msgid "You are about to delete the profile photo, this procedure is irreversible."
-msgstr "Anda akan menghapus foto profil, langkah ini tidak dapat diulangi"
+msgstr "Anda akan menghapus foto profil, prosedur ini tidak dapat dibatalkan"
 
 #: 
 msgid "Do you want to proceed?"
@@ -1011,7 +1011,7 @@ msgstr "Laporan simpanan individu"
 
 #: 
 msgid "Advanced Deposit Report"
-msgstr "Laporan tabungan canggih"
+msgstr "Laporan tabungan detail"
 
 #: 
 msgid "Next"
@@ -1024,12 +1024,12 @@ msgstr "sortir berdasarkan keluarga"
 #: 
 #, fuzzy
 msgid "Report Start Date"
-msgstr "Laporan dimulai pda tanggal"
+msgstr "Tanggal awal laporan"
 
 #: 
 #, fuzzy
 msgid "Report End Date"
-msgstr "Laporan diakhiri pada tanggal"
+msgstr "Tanggal akhir laporan"
 
 #: 
 #, fuzzy
@@ -1051,16 +1051,16 @@ msgstr "Sortir berdasarkan simpanan"
 
 #: 
 msgid "If deposit is selected, date criteria will be ignored."
-msgstr "Jika simpanan dipilih, kriteria tanggal akan diacuhkan"
+msgstr "Jika simpanan dipilih, kriteria tanggal akan diabaikan"
 
 #: 
 msgid "All deposits within date range"
-msgstr "Semua simpanan di dalam range data"
+msgstr "Semua simpanan di dalam kurun tanggal"
 
 #: 
 #, fuzzy
 msgid "Filter by Payment Type"
-msgstr "Sortir dengan tipe pembayaran"
+msgstr "Sortir berdasarkan tipe pembayaran"
 
 #: 
 msgid "All Methods"
@@ -1129,7 +1129,7 @@ msgstr "Slip Pembayaran"
 
 #: 
 msgid "Sort Data by:"
-msgstr "Atur data dengan"
+msgstr "Sortir data berdasarkan:"
 
 #: 
 msgid "Deposit"
@@ -1219,7 +1219,7 @@ msgstr "Hasilkan Lembar Tawaran"
 
 #: 
 msgid "Generate Certificates"
-msgstr "Hasilkan Sertifikat"
+msgstr "Buat Sertifikat"
 
 #: 
 msgid "Donated items for this fundraiser"
@@ -1335,7 +1335,7 @@ msgstr "Peran Anggota Grup"
 
 #: 
 msgid "Clone roles"
-msgstr "Peran klon"
+msgstr "Duplikasikan peran"
 
 #: 
 msgid "from group"
@@ -1392,11 +1392,11 @@ msgstr "Grup ini saat ini tidak memiliki properti! Anda dapat menambahkannya di 
 
 #: 
 msgid "Return to Person Record"
-msgstr "Kembali ke Rekam Orang"
+msgstr "Kembali ke data perorangan"
 
 #: 
 msgid "Editing"
-msgstr "Editing"
+msgstr "Penyuntingan"
 
 #: 
 msgid "data for member"
@@ -1413,11 +1413,11 @@ msgstr "Belum ada properti yang ditambahkan"
 
 #: 
 msgid "Show in"
-msgstr "Menunjukkan"
+msgstr "Tampilkan di"
 
 #: 
 msgid "Person View"
-msgstr "Tampilan Orang"
+msgstr "Tampilan Perorangan "
 
 #: 
 msgid "Other Email"
@@ -1521,7 +1521,7 @@ msgstr "Peran Keluarga"
 
 #: 
 msgid "Family Geographic"
-msgstr "Keluarga Geografis"
+msgstr "Lokasi geografis keluarga"
 
 #: 
 msgid "Volunteer Opportunities"
@@ -1677,7 +1677,7 @@ msgstr "Email Kantor Tidak Valid"
 
 #: 
 msgid "Birth Month"
-msgstr "Bulan lahir"
+msgstr "Bulan kelahiran"
 
 #: 
 msgid "Birth Day"
@@ -1685,7 +1685,7 @@ msgstr "Hari kelahiran"
 
 #: 
 msgid "Birth Year"
-msgstr "tahun lahir"
+msgstr "Tahun kelahiran"
 
 #: 
 msgid "Hide Age"
@@ -1697,7 +1697,7 @@ msgstr "Buat keluarga baru (menggunakan nama belakang)"
 
 #: 
 msgid "Friend Date"
-msgstr "Teman kencan"
+msgstr "Tanggal bergabung"
 
 #: 
 msgid "Person Profile"
@@ -4817,7 +4817,7 @@ msgstr "Laporkan masalah"
 
 #: 
 msgid "Self Verification"
-msgstr "Verifikasi diri"
+msgstr "Verifikasi Mandiri"
 
 #: 
 msgid "Details"
@@ -4847,11 +4847,11 @@ msgstr "Thai"
 
 #: 
 msgid "Pending Self Verify"
-msgstr "Verifikasi Diri Tertunda"
+msgstr "Verifikasi Mandiri Tertunda"
 
 #: 
 msgid "Self Verify"
-msgstr "Verifikasi diri"
+msgstr "Verifikasi Mandiri"
 
 #. Context: locales
 #: 
@@ -6748,11 +6748,11 @@ msgstr "%d klasifikasi hilang"
 
 #: 
 msgid "%d missing gender"
-msgstr "%d jenis kelamin hilang"
+msgstr "%d jenis kelamin belum diisi"
 
 #: 
 msgid "%d missing role"
-msgstr "%d peran hilang"
+msgstr "%d peran belum diisi"
 
 #: 
 msgid "A payment is an actual donation received. It will be added to the current deposit."
@@ -7408,7 +7408,7 @@ msgstr "Dukungan Bahasa Sistem"
 
 #: 
 msgid "URL does not contain a valid hostname"
-msgstr "URL tidak berisi nama host yang valid"
+msgstr "URL tidak mengandung nama host yang valid"
 
 #: 
 msgid "URL hostname is not valid"
@@ -9234,7 +9234,7 @@ msgstr "Ketidakcocokan Versi"
 
 #: 
 msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
-msgstr "Versi database Anda lebih baru dari perangkat lunak yang diinstal. Ini biasanya berarti perangkat lunak dikembalikan ke versi yang lebih lama. Silakan upgrade ChurchCRM untuk sesuai dengan database Anda."
+msgstr "Versi database Anda lebih baru dari perangkat lunak yang diinstal. Ini biasanya berarti perangkat lunak dikembalikan ke versi yang lebih lama. Silakan upgrade ChurchCRM agar sesuai dengan database Anda."
 
 #: 
 msgid "or later to continue."
@@ -15368,7 +15368,7 @@ msgstr "Penting"
 
 #: 
 msgid "Importing..."
-msgstr "Mengimpor..."
+msgstr "Sedang mengimpor..."
 
 #: 
 msgid "Include Sunday School classes and enrollments"
@@ -15493,7 +15493,7 @@ msgstr "Token Akses Baru"
 
 #: 
 msgid "No Anniversaries"
-msgstr "Tidak Ada Hari Peringatan"
+msgstr "Tidak Ada Hari Peringatan Pernikahan"
 
 #: 
 msgid "No Birthdays"
@@ -15585,7 +15585,7 @@ msgstr "Atur ulang kata sandi untuk"
 
 #: 
 msgid "Passwords do not match"
-msgstr "Kata sandi tidak cocok"
+msgstr "Kata sandi tidak sesuai"
 
 #: 
 msgid "Payments deleted successfully"
@@ -15773,7 +15773,7 @@ msgstr "Pemulihan gagal. Periksa file cadangan dan coba lagi."
 
 #: 
 msgid "Retry Download"
-msgstr "Coba Unduh Lagi"
+msgstr "Coba Unduh ulang"
 
 #: 
 msgid "Role Name"
@@ -15894,7 +15894,7 @@ msgstr "Mengirim..."
 
 #: 
 msgid "System upgrade completed successfully!"
-msgstr "Pembaruan sistem berhasil diselesaikan!"
+msgstr "Pembaruan sistem berhasil !"
 
 #: 
 msgid "Text All"
@@ -15946,7 +15946,7 @@ msgstr "Waktu"
 
 #: 
 msgid "Timed"
-msgstr "Berjadwal"
+msgstr "Terjadwal"
 
 #: 
 msgid "Times use church time ({{church}}), not your browser ({{browser}})."
@@ -15994,7 +15994,7 @@ msgstr "Batalkan fokus"
 
 #: 
 msgid "Unknown error"
-msgstr "Kesalahan tidak dikenal"
+msgstr "Kesalahan tidak diketahui"
 
 #: 
 msgid "Update package downloaded successfully."
@@ -16042,7 +16042,7 @@ msgstr "Verifikasi Kode"
 
 #: 
 msgid "Verifying"
-msgstr "Memverifikasi"
+msgstr "Sedang diverifikasi"
 
 #: 
 msgid "View Cart"
@@ -16054,7 +16054,7 @@ msgstr "Lihat semua hasil"
 
 #: 
 msgid "Volunteer-entered headcounts, broken down by category."
-msgstr "Jumlah peserta yang dimasukkan sukarelawan, dikelompokkan berdasarkan kategori."
+msgstr "Jumlah peserta yang dimasukkan relawan, dikelompokkan berdasarkan kategori."
 
 #: 
 msgid "Warnings"
@@ -16066,7 +16066,7 @@ msgstr "Kami sangat senang keluarga Anda bergabung dengan kami!"
 
 #: 
 msgid "Welcome to the Family!"
-msgstr "Selamat Bergabung dalam Keluarga!"
+msgstr "Selamat Bergabung dalam Keluarga kami!"
 
 #: 
 msgid "Yes, Empty Cart"
@@ -16158,7 +16158,7 @@ msgstr "setoran tanpa pembayaran"
 
 #: 
 msgid "e.g. Sunday Service"
-msgstr "misalnya Pelayanan Minggu"
+msgstr "mis: Kebaktian Minggu"
 
 #: 
 msgid "event(s). Deactivate the type instead, or reassign the events first."
@@ -16259,4 +16259,17 @@ msgstr "— Pilih Negara —"
 #: 
 msgid "— Select State —"
 msgstr "— Pilih Provinsi —"
+
+#: 
+msgid "Account options"
+msgstr "Opsi Akun"
+
+#: 
+msgid "Register"
+msgstr "Daftar"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Slovak"
 
