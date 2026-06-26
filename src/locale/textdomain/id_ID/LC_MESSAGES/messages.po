@@ -16265,3 +16265,236 @@ msgstr "Daftar"
 msgid "Slovak"
 msgstr "Slovakia"
 
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d acara yang lalu"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "%d% teks antarmuka telah diterjemahkan untuk bahasa ini."
+
+#: 
+msgid "Access denied"
+msgstr "Akses ditolak"
+
+#: 
+msgid "All times shown in"
+msgstr "Semua waktu ditampilkan dalam"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "Ulang tahun dan peringatan. Default: h/t"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "Tidak dapat menghapus kalender: %d acara masih ditugaskan ke sana. Hapus atau tetapkan ulang terlebih dahulu."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "Format Telepon Seluler"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "Kode pemformatan umum (contoh: Jumat, 7 Maret 2025, 15:09)"
+
+#: 
+msgid "Current Events"
+msgstr "Acara Saat Ini"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "Format Tanggal &amp; Waktu"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "Format Tanggal &amp; Waktu"
+
+#: 
+msgid "Date Picker Format"
+msgstr "Format Pemilih Tanggal"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "Teks Petunjuk Pemilih Tanggal"
+
+#: 
+msgid "Date Without Year"
+msgstr "Tanggal Tanpa Tahun"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "Hari, 2 digit"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "Hari, tanpa nol di depan"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "Contoh: \"l, j F Y\" menghasilkan \"Jumat, 7 Maret 2025\". Karakter lain (spasi, koma, garis miring) muncul seperti yang diketik."
+
+#: 
+msgid "Filename Date Format"
+msgstr "Format Tanggal untuk Nama File"
+
+#: 
+msgid "Fully translated."
+msgstr "Diterjemahkan sepenuhnya."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "Teks petunjuk di kolom tanggal. Default: tttt-bb-hh"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "Format Telepon Rumah/Kerja"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "Jam 12j, 2 digit"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "Jam 12j, tanpa nol"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "Jam 24j, 2 digit"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "Menyertakan komponen waktu. Default: h/t/T g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "Bahasa &amp; Wilayah"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "Bahasa, zona waktu, format tanggal dan telepon"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Lokalisasi &amp; Format"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "Pengaturan lokalisasi berhasil disimpan"
+
+#: 
+msgid "Long Date Format"
+msgstr "Format Tanggal Panjang"
+
+#: 
+msgid "Minutes"
+msgstr "Menit"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "Bulan &amp; Tahun"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "Bulan, 2 digit"
+
+#: 
+msgid "Month, full"
+msgstr "Bulan, nama lengkap"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "Bulan, tanpa nol di depan"
+
+#: 
+msgid "Month, short"
+msgstr "Bulan, singkatan"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "Tidak diinstal di server — tanggal dan angka mungkin tidak diformat dengan benar. Minta host Anda untuk menginstalnya (mis. locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "Format PHP untuk pemilih tanggal. Default: T-b-h"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "Format Nomor Telepon"
+
+#: 
+msgid "Phone with Extension"
+msgstr "Telepon dengan Ekstensi"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Simpan Pengaturan Lokalisasi"
+
+#: 
+msgid "Selected Language"
+msgstr "Bahasa yang Dipilih"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "Dukungan lokal server tidak dapat diperiksa (exec dinonaktifkan)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "Didukung — lokal ini telah diinstal di server."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "Bahasa sistem, zona waktu, format tanggal/waktu dan format nomor telepon"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "Kolom-kolom ini menggunakan kode pemformatan (huruf yang mewakili bagian tanggal). Pilih preset di bawah setiap kolom, atau buat sendiri menggunakan referensi. Pratinjau langsung menampilkan tampilan tepatnya. Biarkan kosong untuk menggunakan default sistem."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "Begini tampilan tanggal dan nomor telepon di seluruh sistem."
+
+#: 
+msgid "Translation completeness"
+msgstr "Kelengkapan Terjemahan"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "Pelacakan terjemahan tidak tersedia untuk bahasa ini."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "Gunakan 9 sebagai pengganti digit (mis. (999) 999-9999). Biarkan kosong untuk menggunakan default sistem."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "Digunakan dalam nama file yang diekspor. Default: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "Digunakan dalam laporan dan daftar anggota. Default: h/t/T"
+
+#: 
+msgid "Weekday, full"
+msgstr "Hari kerja, nama lengkap"
+
+#: 
+msgid "Weekday, short"
+msgstr "Hari kerja, singkatan"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "Apa arti kode-kode ini?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "Tahun, 2 digit"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "Tahun, 4 digit"
+
+#: 
+msgid "past"
+msgstr "lalu"
+

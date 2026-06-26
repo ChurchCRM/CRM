@@ -16294,3 +16294,253 @@ msgstr "பதிவு செய்"
 msgid "Slovak"
 msgstr "ஸ்லோவாக்"
 
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d கடந்த நிகழ்வு"
+msgstr[1] "%d கடந்த நிகழ்வுகள்"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "இந்த மொழியில் இடைமுக உரையின் %d%% மொழிபெயர்க்கப்பட்டுள்ளது."
+
+#: 
+msgid "AM / PM"
+msgstr "முற்பகல் / பிற்பகல்"
+
+#: 
+msgid "Access denied"
+msgstr "அணுகல் மறுக்கப்பட்டது"
+
+#: 
+msgid "All times shown in"
+msgstr "அனைத்து நேரங்களும் காட்டப்படுகின்றன"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "பிறந்தநாள்கள் மற்றும் ஆண்டுவிழாக்கள். இயல்புநிலை: மா/நா"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "காலண்டரை நீக்க முடியாது: %d நிகழ்வுகள் இன்னும் ஒதுக்கப்பட்டுள்ளன. முதலில் அவற்றை அகற்றவும் அல்லது மீண்டும் ஒதுக்கவும்."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "மொபைல் தொலைபேசி வடிவம்"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "பொதுவான வடிவமைப்பு குறியீடுகள் (எடுத்துக்காட்டுகள்: வெள்ளி, 7 மார்ச் 2025, பிற்பகல் 3:09)"
+
+#: 
+msgid "Current Events"
+msgstr "தற்போதைய நிகழ்வுகள்"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "தேதி மற்றும் நேர வடிவம்"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "தேதி மற்றும் நேர வடிவங்கள்"
+
+#: 
+msgid "Date Picker Format"
+msgstr "தேதி தேர்வி வடிவம்"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "தேதி தேர்வி இட நிரப்பி"
+
+#: 
+msgid "Date Without Year"
+msgstr "ஆண்டு இல்லாத தேதி"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "நாள், 2 இலக்கங்கள்"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "நாள், முன்னணி பூஜ்ஜியம் இல்லாமல்"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "இயல்புநிலை: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "இயல்புநிலை: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "எடுத்துக்காட்டு: \"l, j F Y\" என்பது \"Friday, 7 March 2025\" ஐ உருவாக்குகிறது. மற்ற எல்லா எழுத்துகளும் (இடைவெளிகள், கமாக்கள், சாய்கோடுகள்) தட்டச்சு செய்தபடியே தோன்றும்."
+
+#: 
+msgid "Filename Date Format"
+msgstr "கோப்பு பெயர் தேதி வடிவம்"
+
+#: 
+msgid "Fully translated."
+msgstr "முழுமையாக மொழிபெயர்க்கப்பட்டது."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "தேதி உள்ளீடுகளில் காட்டப்படும் குறிப்பு உரை. இயல்புநிலை: yyyy-mm-dd"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "வீட்டு/பணி தொலைபேசி வடிவம்"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "மணி 12மணி, 2 இலக்கங்கள்"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "மணி 12மணி, பூஜ்ஜியம் இல்லாமல்"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "மணி 24மணி, 2 இலக்கங்கள்"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "நேர கூறு அடங்கும். இயல்புநிலை: மா/நா/ஆ g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "மொழி மற்றும் பகுதி"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "மொழி, நேர வலையம், தேதி மற்றும் தொலைபேசி வடிவங்கள்"
+
+#: 
+msgid "Localization & Formats"
+msgstr "உள்ளூரமைப்பு மற்றும் வடிவங்கள்"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "உள்ளூரமைப்பு அமைப்புகள் வெற்றிகரமாக சேமிக்கப்பட்டன"
+
+#: 
+msgid "Long Date Format"
+msgstr "நீண்ட தேதி வடிவம்"
+
+#: 
+msgid "Minutes"
+msgstr "நிமிடங்கள்"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "மாதம் மற்றும் ஆண்டு"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "மாதம், 2 இலக்கங்கள்"
+
+#: 
+msgid "Month, full"
+msgstr "மாதம், முழு பெயர்"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "மாதம், முன்னணி பூஜ்ஜியம் இல்லாமல்"
+
+#: 
+msgid "Month, short"
+msgstr "மாதம், சுருக்கம்"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "சர்வரில் நிறுவப்படவில்லை — இந்த இடத்திற்கான தேதிகள் மற்றும் எண்கள் சரியாக வடிவமைக்கப்படாமல் இருக்கலாம். உங்கள் ஹோஸ்டை நிறுவுமாறு கேளுங்கள் (எ.கா. locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "தேதி தேர்வி உள்ளீடுகளுக்கான PHP வடிவம். இயல்புநிலை: Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "தொலைபேசி எண் வடிவங்கள்"
+
+#: 
+msgid "Phone with Extension"
+msgstr "எக்ஸ்டென்ஷனுடன் தொலைபேசி"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "உள்ளூரமைப்பு அமைப்புகளை சேமி"
+
+#: 
+msgid "Selected Language"
+msgstr "தேர்ந்தெடுக்கப்பட்ட மொழி"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "சர்வர் இடப்பகுதி ஆதரவை சரிபார்க்க முடியவில்லை (exec முடக்கப்பட்டுள்ளது)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "ஆதரிக்கப்படுகிறது — இந்த இடப்பகுதி சர்வரில் நிறுவப்பட்டுள்ளது."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "கணினி மொழி, நேர வலையம், தேதி/நேர வடிவங்கள் மற்றும் தொலைபேசி எண் வடிவங்கள்"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "இந்த புலங்கள் வடிவமைப்பு குறியீடுகளை பயன்படுத்துகின்றன (தேதியின் பகுதிகளை குறிக்கும் எழுத்துகள்). ஒவ்வொரு புலத்திற்கும் கீழே ஒரு முன்னமைவை தேர்ந்தெடுக்கவும் அல்லது குறிப்பைப் பயன்படுத்தி உங்களுடையதை உருவாக்கவும். நேரடி முன்னோட்டம் சரியாக எப்படி தோற்றமளிக்கும் என்பதை காட்டுகிறது. கணினி இயல்புநிலையைப் பயன்படுத்த வெறுமையாக விடவும்."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "முழு கணினியிலும் தேதிகள் மற்றும் தொலைபேசி எண்கள் இப்படி தோன்றும்."
+
+#: 
+msgid "Translation completeness"
+msgstr "மொழிபெயர்ப்பு முழுமை"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "இந்த மொழிக்கான மொழிபெயர்ப்பு கண்காணிப்பு கிடைக்கவில்லை."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "இலக்க இட நிரப்பியாக 9 ஐ பயன்படுத்தவும் (எ.கா. (999) 999-9999). கணினி இயல்புநிலையைப் பயன்படுத்த வெறுமையாக விடவும்."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "ஏற்றுமதி செய்யப்பட்ட கோப்பு பெயர்களில் பயன்படுத்தப்படுகிறது. இயல்புநிலை: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "அறிக்கைகள் மற்றும் உறுப்பினர் பட்டியல்களில் பயன்படுத்தப்படுகிறது. இயல்புநிலை: மா/நா/ஆ"
+
+#: 
+msgid "Weekday, full"
+msgstr "வாரத்தின் நாள், முழு பெயர்"
+
+#: 
+msgid "Weekday, short"
+msgstr "வாரத்தின் நாள், சுருக்கம்"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "இந்த குறியீடுகளுக்கு என்ன அர்த்தம்?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "ஆண்டு, 2 இலக்கங்கள்"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "ஆண்டு, 4 இலக்கங்கள்"
+
+#: 
+msgid "am / pm"
+msgstr "முற்பகல் / பிற்பகல்"
+
+#: 
+msgid "past"
+msgstr "கடந்த"
+
