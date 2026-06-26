@@ -23,6 +23,7 @@ module.exports = {
     'admin-dashboard': './webpack/admin-dashboard',
     'get-started': './webpack/get-started',
     'church-info': './webpack/church-info',
+    localization: './webpack/localization',
     'system-settings-panel': './webpack/system-settings-panel',
     'kiosk-registration-closed': './webpack/kiosk-registration-closed',
     kiosk: './webpack/kiosk',
