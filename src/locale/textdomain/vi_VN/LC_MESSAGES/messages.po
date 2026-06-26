@@ -9108,10 +9108,6 @@ msgid "Inactive Groups"
 msgstr "Nhóm không hoạt động"
 
 #: 
-msgid "Language & Localization"
-msgstr "Ngôn ngữ & Bản địa hóa"
-
-#: 
 msgid "Map"
 msgstr "Bản đồ"
 
@@ -10905,10 +10901,6 @@ msgstr "— Chon mot nhom —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Chon loai (tuy chon) —"
-
-#: 
-msgid "Active Events"
-msgstr "Su kien dang hoat dong"
 
 #: 
 msgid "Add Event"

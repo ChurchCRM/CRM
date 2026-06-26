@@ -9097,10 +9097,6 @@ msgid "Inactive Groups"
 msgstr "비활성 그룹"
 
 #: 
-msgid "Language & Localization"
-msgstr "언어 및 지역화"
-
-#: 
 msgid "Map"
 msgstr "지도"
 
@@ -10894,10 +10890,6 @@ msgstr "— 그룹 선택 —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— 유형 선택 (선택 사항) —"
-
-#: 
-msgid "Active Events"
-msgstr "진행 중인 행사"
 
 #: 
 msgid "Add Event"

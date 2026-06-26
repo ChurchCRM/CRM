@@ -9074,10 +9074,6 @@ msgid "Inactive Groups"
 msgstr "กลุ่มที่ไม่ได้ใช้งาน"
 
 #: 
-msgid "Language & Localization"
-msgstr "ภาษาและการแปลภาษา"
-
-#: 
 msgid "Map"
 msgstr "แผนที่"
 
@@ -10871,10 +10867,6 @@ msgstr "— เลือกกลุ่ม —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— เลือกประเภท (ไม่บังคับ) —"
-
-#: 
-msgid "Active Events"
-msgstr "กิจกรรมที่ใช้งานอยู่"
 
 #: 
 msgid "Add Event"

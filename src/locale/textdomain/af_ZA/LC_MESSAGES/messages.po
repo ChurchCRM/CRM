@@ -9112,10 +9112,6 @@ msgid "Inactive Groups"
 msgstr "Onaktiewe Groepe"
 
 #: 
-msgid "Language & Localization"
-msgstr "Taal en Lokalisering"
-
-#: 
 msgid "Map"
 msgstr "Kaart"
 
@@ -10910,10 +10906,6 @@ msgstr "— Kies 'n ministerie —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Kies tipe (opsioneel) —"
-
-#: 
-msgid "Active Events"
-msgstr "Aktiewe Gebeurtenisse"
 
 #: 
 msgid "Add Event"

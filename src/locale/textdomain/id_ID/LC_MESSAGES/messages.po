@@ -444,7 +444,7 @@ msgstr "Tambah Pembayaran"
 #: 
 #, fuzzy
 msgid "Load Authorized"
-msgstr "Muat  transaksi yang sudah terotorisasi"
+msgstr "Muat transaksi yang sudah terotorisasi"
 
 #: 
 msgid "Run Transactions"
@@ -809,7 +809,7 @@ msgstr "Nama tengah"
 
 #: 
 msgid "Last"
-msgstr "Nama belakang "
+msgstr "Nama belakang"
 
 #: 
 msgid "Role"
@@ -1417,7 +1417,7 @@ msgstr "Tampilkan di"
 
 #: 
 msgid "Person View"
-msgstr "Tampilan Perorangan "
+msgstr "Tampilan Perorangan"
 
 #: 
 msgid "Other Email"
@@ -9097,10 +9097,6 @@ msgid "Inactive Groups"
 msgstr "Kelompok Tidak Aktif"
 
 #: 
-msgid "Language & Localization"
-msgstr "Bahasa & Lokalisasi"
-
-#: 
 msgid "Map"
 msgstr "Peta"
 
@@ -10894,10 +10890,6 @@ msgstr "— Pilih grup —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Pilih tipe (opsional) —"
-
-#: 
-msgid "Active Events"
-msgstr "Acara Aktif"
 
 #: 
 msgid "Add Event"

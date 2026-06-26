@@ -9191,10 +9191,6 @@ msgid "Inactive Groups"
 msgstr "Grupuri inactive"
 
 #: 
-msgid "Language & Localization"
-msgstr "Limbă și localizare"
-
-#: 
 msgid "Map"
 msgstr "Hartă"
 
@@ -10990,10 +10986,6 @@ msgstr "— Selectați un grup —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Selectați tipul (opțional) —"
-
-#: 
-msgid "Active Events"
-msgstr "Evenimente active"
 
 #: 
 msgid "Add Event"

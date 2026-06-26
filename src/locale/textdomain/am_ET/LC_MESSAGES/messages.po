@@ -9119,10 +9119,6 @@ msgid "Inactive Groups"
 msgstr "ንቁ ያልሆኑ ቡድኖች"
 
 #: 
-msgid "Language & Localization"
-msgstr "ቋንቋ እና ስፍራ ማስተካከያ"
-
-#: 
 msgid "Map"
 msgstr "ካርታ"
 
@@ -10917,10 +10913,6 @@ msgstr "— ቡድን ምረጫ —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— ዓይነት ምረጫ (ተንብርካካ) —"
-
-#: 
-msgid "Active Events"
-msgstr "ነቅል ሁነታ"
 
 #: 
 msgid "Add Event"

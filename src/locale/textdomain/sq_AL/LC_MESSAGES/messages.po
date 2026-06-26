@@ -9100,10 +9100,6 @@ msgid "Inactive Groups"
 msgstr "Grupet joaktive"
 
 #: 
-msgid "Language & Localization"
-msgstr "Gjuha dhe lokalizimi"
-
-#: 
 msgid "Map"
 msgstr "Hartë"
 
@@ -10898,10 +10894,6 @@ msgstr "— Zgjidh një grupmesion —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Zgjidh llojin (opsionale) —"
-
-#: 
-msgid "Active Events"
-msgstr "Ngjarjet Aktive"
 
 #: 
 msgid "Add Event"

@@ -9194,10 +9194,6 @@ msgid "Inactive Groups"
 msgstr "Неактивные группы"
 
 #: 
-msgid "Language & Localization"
-msgstr "Язык и локализация"
-
-#: 
 msgid "Map"
 msgstr "Карта"
 
@@ -10994,10 +10990,6 @@ msgstr "— Выберите группу —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Выберите тип (необязательно) —"
-
-#: 
-msgid "Active Events"
-msgstr "Активные мероприятия"
 
 #: 
 msgid "Add Event"

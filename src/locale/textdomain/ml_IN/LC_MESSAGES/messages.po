@@ -9071,10 +9071,6 @@ msgid "Inactive Groups"
 msgstr "നിഷ്ക്രിയ ഗ്രൂപ്പുകൾ"
 
 #: 
-msgid "Language & Localization"
-msgstr "ഭാഷ & പ്രാദേശീകരണം"
-
-#: 
 msgid "Map"
 msgstr "മാപ്പ്"
 
@@ -10869,10 +10865,6 @@ msgstr "— ഒരു ഗ്രൂപ്പ് തിരഞ്ഞെടുക്
 #: 
 msgid "— Select type (optional) —"
 msgstr "— തരം തിരഞ്ഞെടുക്കുക (ഐച്ഛികം) —"
-
-#: 
-msgid "Active Events"
-msgstr "സജീവ ഇവന്റുകൾ"
 
 #: 
 msgid "Add Event"

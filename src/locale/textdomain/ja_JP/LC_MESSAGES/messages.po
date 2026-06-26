@@ -9062,10 +9062,6 @@ msgid "Inactive Groups"
 msgstr "非アクティブなグループ"
 
 #: 
-msgid "Language & Localization"
-msgstr "言語とローカライゼーション"
-
-#: 
 msgid "Map"
 msgstr "地図"
 
@@ -10859,10 +10855,6 @@ msgstr "— グループを選択 —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— タイプを選択（任意） —"
-
-#: 
-msgid "Active Events"
-msgstr "アクティブなイベント"
 
 #: 
 msgid "Add Event"
