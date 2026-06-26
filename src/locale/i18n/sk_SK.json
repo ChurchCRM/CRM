@@ -1517,6 +1517,12 @@
     "added to this event": "pridaný k tomuto podujatiu",
     "e.g., Sunday School, Bible Study...": "napr. Nedeľná škola, Biblická štúdia...",
     "optional": "voliteľné",
+    "person": {
+        "one": "osoba",
+        "few": "osoby",
+        "many": "ľudí",
+        "other": "ľudí"
+    },
     "%d Orphaned Files Detected": "Zistených %d opustených súborov",
     "%d files have failed integrity validation.": "%d súborov zlyhalo pri overení integrity.",
     "%d files will be permanently deleted.": "%d súborov bude natrvalo odstránených.",
@@ -1839,6 +1845,24 @@
     "total": "celkovo",
     "Encryption key for storing 2FA secret keys in the database": "Šifrovací kľúč na ukladanie tajných kľúčov 2FA v databáze",
     "Two-Factor Authentication": "Dvojfaktorová autentifikácia",
+    "%d Person added to the Cart.": {
+        "one": "%d osoba bola pridaná do Košíka.",
+        "few": "%d osoby boli pridané do Košíka.",
+        "many": "%d ľudí bolo pridaných do Košíka.",
+        "other": "%d ľudí bolo pridaných do Košíka."
+    },
+    "%d Person successfully added to selected Family.": {
+        "one": "%d osoba bola úspešne pridaná do vybranej rodiny.",
+        "few": "%d osoby boli úspešne pridané do vybranej rodiny.",
+        "many": "%d ľudí bolo úspešne pridaných do vybranej rodiny.",
+        "other": "%d ľudí bolo úspešne pridaných do vybranej rodiny."
+    },
+    "%d Person successfully added to selected Group.": {
+        "one": "%d osoba bola úspešne pridaná do vybranej skupiny.",
+        "few": "%d osoby boli úspešne pridané do vybranej skupiny.",
+        "many": "%d ľudí bolo úspešne pridaných do vybranej skupiny.",
+        "other": "%d ľudí bolo úspešne pridaných do vybranej skupiny."
+    },
     "Are you sure you want to delete": "Ste si istí, že chcete odstrániť",
     "By deleting this field, you will irrevocably lose all family data assigned for this field!": "Odstránením tohto poľa neodvolateľne stratíte všetky rodinné dáta priradené k tomuto poľu!",
     "By deleting this field, you will irrevocably lose all person data assigned for this field!": "Odstránením tohto poľa neodvolateľne stratíte všetky osobné dáta priradené k tomuto poľu!",
@@ -1905,6 +1929,12 @@
     "e.g., Visitors, Children": "napr. Návštevníci, Deti",
     "of pledges": "záväzkov",
     "records": "záznamy",
+    "%d person": {
+        "one": "%d osoba",
+        "few": "%d osoby",
+        "many": "%d ľudí",
+        "other": "%d ľudí"
+    },
     "All Classifications": "Všetky klasifikácie",
     "Photo Directory": "Fotografický adresár",
     "Reset Filters": "Resetovať filtre",
@@ -1956,6 +1986,12 @@
     "Timezone mismatch detected": "Zistená nezrovnalosť časového pásma",
     "mismatch detected": "nezrovnalosť zistená",
     "mismatches detected": "nezrovnalosti zistené",
+    "%d hour": {
+        "one": "%d hodina",
+        "few": "%d hodiny",
+        "many": "%d hodín",
+        "other": "%d hodín"
+    },
     "About WebDAV Backups": "O WebDAV zálohách",
     "Add Link": "Pridať odkaz",
     "Add custom external links to the navigation menu.": "Pridajte vlastné externé odkazy do navigačného menu.",
@@ -2221,6 +2257,12 @@
     "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.": "Verzia vašej databázy je novšia ako nainštalovaný softvér. To zvyčajne znamená, že softvér bol vrátený na staršiu verziu. Upgradujte ChurchCRM tak, aby zodpovedal vašej databáze.",
     "or later to continue.": "alebo novšiu na pokračovanie.",
     "\"Why Came\" Notes": "\"Prečo prišli\" Poznámky",
+    "%d result for \"%s\"": {
+        "one": "%d výsledok pre \"%s\"",
+        "few": "%d výsledky pre \"%s\"",
+        "many": "%d výsledkov pre \"%s\"",
+        "other": "%d výsledkov pre \"%s\""
+    },
     "(optional — leave blank to include all roles)": "(voliteľné — ponechajte prázdne na zahrnutie všetkých rolí)",
     "A family represents a household. It holds the shared address and home phone number for all family members living together.": "Rodina predstavuje domácnosť. Obsahuje spoločnú adresu a domáce telefónne číslo pre všetkých členov rodiny žijúcich spolu.",
     "A household. Stores the shared mailing address and home phone.": "Domácnosť. Ukladá spoločnú poštovú adresu a domáci telefón.",
@@ -3021,6 +3063,12 @@
     "View All": "Zobraziť všetko",
     "Yellow": "Žltá",
     "Your current access levels (read-only)": "Vaše aktuálne úrovne prístupu (iba na čítanie)",
+    "%d repeat event created successfully.": {
+        "one": "%d opakovaná udalosť bola úspešne vytvorená.",
+        "few": "%d opakované udalosti boli úspešne vytvorené.",
+        "many": "%d opakovaných udalostí bolo úspešne vytvorených.",
+        "other": "%d opakovaných udalostí bolo úspešne vytvorených."
+    },
     "1. Sunday School Class": "1. Trieda nedeľnej školy",
     "2. Event Type": "2. Typ podujatia",
     "3. Event": "3. Podujatie",
@@ -3868,5 +3916,8 @@
     "yrs": "r.",
     "— Ignore —": "— Ignorovať —",
     "— Select Country —": "— Vybrať krajinu —",
-    "— Select State —": "— Vyberte štát —"
+    "— Select State —": "— Vyberte štát —",
+    "Account options": "Možnosti účtu",
+    "Register": "Registrácia",
+    "Slovak": "Slovenčina"
 }

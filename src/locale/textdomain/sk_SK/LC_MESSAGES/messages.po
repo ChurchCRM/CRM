@@ -6365,6 +6365,14 @@ msgid "optional"
 msgstr "voliteľné"
 
 #: 
+msgid "person"
+msgid_plural "people"
+msgstr[0] "osoba"
+msgstr[1] "osoby"
+msgstr[2] "ľudí"
+msgstr[3] "ľudí"
+
+#: 
 msgid "%d Orphaned Files Detected"
 msgstr "Zistených %d opustených súborov"
 
@@ -7653,6 +7661,30 @@ msgid "Two-Factor Authentication"
 msgstr "Dvojfaktorová autentifikácia"
 
 #: 
+msgid "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
+msgstr[0] "%d osoba bola pridaná do Košíka."
+msgstr[1] "%d osoby boli pridané do Košíka."
+msgstr[2] "%d ľudí bolo pridaných do Košíka."
+msgstr[3] "%d ľudí bolo pridaných do Košíka."
+
+#: 
+msgid "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
+msgstr[0] "%d osoba bola úspešne pridaná do vybranej rodiny."
+msgstr[1] "%d osoby boli úspešne pridané do vybranej rodiny."
+msgstr[2] "%d ľudí bolo úspešne pridaných do vybranej rodiny."
+msgstr[3] "%d ľudí bolo úspešne pridaných do vybranej rodiny."
+
+#: 
+msgid "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
+msgstr[0] "%d osoba bola úspešne pridaná do vybranej skupiny."
+msgstr[1] "%d osoby boli úspešne pridané do vybranej skupiny."
+msgstr[2] "%d ľudí bolo úspešne pridaných do vybranej skupiny."
+msgstr[3] "%d ľudí bolo úspešne pridaných do vybranej skupiny."
+
+#: 
 msgid "Are you sure you want to delete"
 msgstr "Ste si istí, že chcete odstrániť"
 
@@ -7921,6 +7953,14 @@ msgid "records"
 msgstr "záznamy"
 
 #: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d osoba"
+msgstr[1] "%d osoby"
+msgstr[2] "%d ľudí"
+msgstr[3] "%d ľudí"
+
+#: 
 msgid "All Classifications"
 msgstr "Všetky klasifikácie"
 
@@ -8123,6 +8163,14 @@ msgstr "nezrovnalosť zistená"
 #: 
 msgid "mismatches detected"
 msgstr "nezrovnalosti zistené"
+
+#: 
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d hodina"
+msgstr[1] "%d hodiny"
+msgstr[2] "%d hodín"
+msgstr[3] "%d hodín"
 
 #: 
 msgid "About WebDAV Backups"
@@ -9184,6 +9232,14 @@ msgstr "alebo novšiu na pokračovanie."
 #: 
 msgid "\"Why Came\" Notes"
 msgstr "\"Prečo prišli\" Poznámky"
+
+#: 
+msgid "%d result for \"%s\""
+msgid_plural "%d results for \"%s\""
+msgstr[0] "%d výsledok pre \"%s\""
+msgstr[1] "%d výsledky pre \"%s\""
+msgstr[2] "%d výsledkov pre \"%s\""
+msgstr[3] "%d výsledkov pre \"%s\""
 
 #: 
 msgid "(optional — leave blank to include all roles)"
@@ -12785,6 +12841,14 @@ msgid "Your current access levels (read-only)"
 msgstr "Vaše aktuálne úrovne prístupu (iba na čítanie)"
 
 #: 
+msgid "%d repeat event created successfully."
+msgid_plural "%d repeat events created successfully."
+msgstr[0] "%d opakovaná udalosť bola úspešne vytvorená."
+msgstr[1] "%d opakované udalosti boli úspešne vytvorené."
+msgstr[2] "%d opakovaných udalostí bolo úspešne vytvorených."
+msgstr[3] "%d opakovaných udalostí bolo úspešne vytvorených."
+
+#: 
 msgid "1. Sunday School Class"
 msgstr "1. Trieda nedeľnej školy"
 
@@ -16186,4 +16250,17 @@ msgstr "— Vybrať krajinu —"
 #: 
 msgid "— Select State —"
 msgstr "— Vyberte štát —"
+
+#: 
+msgid "Account options"
+msgstr "Možnosti účtu"
+
+#: 
+msgid "Register"
+msgstr "Registrácia"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Slovenčina"
 

@@ -16353,3 +16353,16 @@ msgstr "— Velg land —"
 msgid "— Select State —"
 msgstr "— Velg fylke —"
 
+#: 
+msgid "Account options"
+msgstr "Kontoalternativer"
+
+#: 
+msgid "Register"
+msgstr "Registrer"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Slovakisk"
+

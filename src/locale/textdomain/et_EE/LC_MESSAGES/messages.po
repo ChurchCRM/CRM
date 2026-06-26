@@ -16264,3 +16264,16 @@ msgstr "— Vali riik —"
 msgid "— Select State —"
 msgstr "— Vali maakond —"
 
+#: 
+msgid "Account options"
+msgstr "Konto sätted"
+
+#: 
+msgid "Register"
+msgstr "Registreeri"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Slovaki"
+

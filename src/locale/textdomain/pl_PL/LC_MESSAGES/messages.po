@@ -15427,6 +15427,10 @@ msgid "Home phone is required"
 msgstr "Telefon domowy jest wymagany"
 
 #: 
+msgid "ICS URL"
+msgstr "Adres URL ICS"
+
+#: 
 msgid "Ignored"
 msgstr "Zignorowane"
 
@@ -16343,4 +16347,17 @@ msgstr "— Wybierz kraj —"
 #: 
 msgid "— Select State —"
 msgstr "— Wybierz województwo —"
+
+#: 
+msgid "Account options"
+msgstr "Opcje konta"
+
+#: 
+msgid "Register"
+msgstr "Zarejestruj się"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Słowacki"
 

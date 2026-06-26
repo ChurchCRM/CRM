@@ -16405,3 +16405,16 @@ msgstr "— Selecionar país —"
 msgid "— Select State —"
 msgstr "— Selecionar distrito —"
 
+#: 
+msgid "Account options"
+msgstr "Opções de conta"
+
+#: 
+msgid "Register"
+msgstr "Registar"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Eslovaco"
+

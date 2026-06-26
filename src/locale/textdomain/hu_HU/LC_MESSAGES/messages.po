@@ -16294,3 +16294,16 @@ msgstr "— Ország kiválasztása —"
 msgid "— Select State —"
 msgstr "— Megye kiválasztása —"
 
+#: 
+msgid "Account options"
+msgstr "Fiók beállításai"
+
+#: 
+msgid "Register"
+msgstr "Regisztráció"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Szlovák"
+

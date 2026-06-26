@@ -16264,3 +16264,16 @@ msgstr "— Chagua Nchi —"
 msgid "— Select State —"
 msgstr "— Chagua Mkoa —"
 
+#: 
+msgid "Account options"
+msgstr "Chaguo za akaunti"
+
+#: 
+msgid "Register"
+msgstr "Jiandikishe"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Kislowaki"
+

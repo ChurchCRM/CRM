@@ -16101,6 +16101,10 @@ msgid "Unable to load state list. Please check your network connection or try ag
 msgstr "Kunde inte ladda regionlistan. Kontrollera din nätverksanslutning eller försök igen senare."
 
 #: 
+msgid "Unfocus"
+msgstr "Avsluta fokus"
+
+#: 
 msgid "Unknown error"
 msgstr "Okänt fel"
 
@@ -16367,4 +16371,17 @@ msgstr "— Välj land —"
 #: 
 msgid "— Select State —"
 msgstr "— Välj län —"
+
+#: 
+msgid "Account options"
+msgstr "Kontoalternativ"
+
+#: 
+msgid "Register"
+msgstr "Registrera"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Slovakiska"
 

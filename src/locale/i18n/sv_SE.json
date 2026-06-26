@@ -3826,6 +3826,7 @@
     "Unable to copy to clipboard. Please copy the codes manually.": "Det gick inte att kopiera till urklipp. Kopiera koderna manuellt.",
     "Unable to load": "Det gick inte att läsa in",
     "Unable to load state list. Please check your network connection or try again later.": "Kunde inte ladda regionlistan. Kontrollera din nätverksanslutning eller försök igen senare.",
+    "Unfocus": "Avsluta fokus",
     "Unknown error": "Okänt fel",
     "Update package downloaded successfully.": "Uppdateringspaketet har laddats ner.",
     "Upgrade failed.": "Uppgradering misslyckades.",
@@ -3892,5 +3893,8 @@
     "yrs": "år",
     "— Ignore —": "— Ignorera —",
     "— Select Country —": "— Välj land —",
-    "— Select State —": "— Välj län —"
+    "— Select State —": "— Välj län —",
+    "Account options": "Kontoalternativ",
+    "Register": "Registrera",
+    "Slovak": "Slovakiska"
 }

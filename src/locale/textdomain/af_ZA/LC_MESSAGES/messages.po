@@ -14647,6 +14647,18 @@ msgid "seconds"
 msgstr "sekondes"
 
 #: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "Kan nie byeenkomst uitvee nie: %d mense is tans ingesluit."
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "Kan nie byeenkomst uitvee nie: byeenkomst is tans aan 'n kiosk toegewys."
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "Kan nie groep uitvee nie: dit is die gehoor vir %d byeenkomste en die standaardgroep vir %d soort byeenkomste. Wys dié eers weer toe."
+
+#: 
 msgid "A Calendar access token has been generated and saved."
 msgstr "'n Kalendertoegangsteken is gegenereer en gestoor."
 
@@ -16252,4 +16264,17 @@ msgstr "— Kies Land —"
 #: 
 msgid "— Select State —"
 msgstr "— Kies Streek —"
+
+#: 
+msgid "Account options"
+msgstr "Rekeningsopsies"
+
+#: 
+msgid "Register"
+msgstr "Registreer"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Slowaaks"
 

@@ -16263,3 +16263,16 @@ msgstr "— Chọn quốc gia —"
 msgid "— Select State —"
 msgstr "— Chọn tỉnh/thành phố —"
 
+#: 
+msgid "Account options"
+msgstr "Tùy chọn tài khoản"
+
+#: 
+msgid "Register"
+msgstr "Đăng ký"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Slovakia"
+

@@ -14647,6 +14647,18 @@ msgid "seconds"
 msgstr "saniye"
 
 #: 
+msgid "Cannot delete event: %d people are currently checked in."
+msgstr "Etkinlik silinemez: %d kişi şu anda giriş yapmıştır."
+
+#: 
+msgid "Cannot delete event: event is currently assigned to a kiosk."
+msgstr "Etkinlik silinemez: etkinlik şu anda bir kioyska atanmıştır."
+
+#: 
+msgid "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first."
+msgstr "Grup silinemez: %d etkinlik(ler) için kitledir ve %d etkinlik türü(nü) için varsayılan gruptur. Önce bunları yeniden atayın."
+
+#: 
 msgid "A Calendar access token has been generated and saved."
 msgstr "Bir takvim erişim belirteci oluşturuldu ve kaydedildi."
 
@@ -16248,4 +16260,17 @@ msgstr "— Ülke Seçin —"
 #: 
 msgid "— Select State —"
 msgstr "— İl Seçin —"
+
+#: 
+msgid "Account options"
+msgstr "Hesap seçenekleri"
+
+#: 
+msgid "Register"
+msgstr "Kayıt Ol"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Slovakça"
 

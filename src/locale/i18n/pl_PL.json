@@ -3676,6 +3676,7 @@
     "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)": "Przygotuj aplikację uwierzytelniającą (Google Authenticator, Microsoft Authenticator, Authy itp.)",
     "Hide advanced options": "Ukryj opcje zaawansowane",
     "Home phone is required": "Telefon domowy jest wymagany",
+    "ICS URL": "Adres URL ICS",
     "Ignored": "Zignorowane",
     "Import Demo Data": "Importuj dane demo",
     "Import demo data anyway": "Importuj dane demonstracyjne mimo to",
@@ -3904,5 +3905,8 @@
     "yrs": "lata",
     "— Ignore —": "— Ignoruj —",
     "— Select Country —": "— Wybierz kraj —",
-    "— Select State —": "— Wybierz województwo —"
+    "— Select State —": "— Wybierz województwo —",
+    "Account options": "Opcje konta",
+    "Register": "Zarejestruj się",
+    "Slovak": "Słowacki"
 }

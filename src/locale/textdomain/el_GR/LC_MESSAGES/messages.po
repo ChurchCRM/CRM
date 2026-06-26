@@ -16269,3 +16269,16 @@ msgstr "— Επιλογή χώρας —"
 msgid "— Select State —"
 msgstr "— Επιλογή περιφέρειας —"
 
+#: 
+msgid "Account options"
+msgstr "Επιλογές λογαριασμού"
+
+#: 
+msgid "Register"
+msgstr "Εγγραφή"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Σλοβάκικη"
+

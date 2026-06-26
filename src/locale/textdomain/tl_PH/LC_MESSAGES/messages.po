@@ -16228,3 +16228,16 @@ msgstr "— Pumili ng Bansa —"
 msgid "— Select State —"
 msgstr "— Pumili ng Estado —"
 
+#: 
+msgid "Account options"
+msgstr "Mga opsyon ng account"
+
+#: 
+msgid "Register"
+msgstr "Magrehistro"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Slovako"
+
