@@ -9112,10 +9112,6 @@ msgid "Inactive Groups"
 msgstr "Ανενεργές ομάδες"
 
 #: 
-msgid "Language & Localization"
-msgstr "Γλώσσα και τοπικές ρυθμίσεις"
-
-#: 
 msgid "Map"
 msgstr "Χάρτης"
 
@@ -10910,10 +10906,6 @@ msgstr "— Επιλέξτε ομάδα —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Επιλέξτε τύπο (προαιρετικό) —"
-
-#: 
-msgid "Active Events"
-msgstr "Ενεργές εκδηλώσεις"
 
 #: 
 msgid "Add Event"

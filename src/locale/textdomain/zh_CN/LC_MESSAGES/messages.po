@@ -9184,10 +9184,6 @@ msgid "Inactive Groups"
 msgstr "非活跃小组"
 
 #: 
-msgid "Language & Localization"
-msgstr "语言和本地化"
-
-#: 
 msgid "Map"
 msgstr "地图"
 
@@ -10981,10 +10977,6 @@ msgstr "— 选择小组 —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— 选择类型（可选）—"
-
-#: 
-msgid "Active Events"
-msgstr "进行中的活动"
 
 #: 
 msgid "Add Event"

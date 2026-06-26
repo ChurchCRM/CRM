@@ -9145,10 +9145,6 @@ msgid "Inactive Groups"
 msgstr "Inaktív csoportok"
 
 #: 
-msgid "Language & Localization"
-msgstr "Nyelv és lokalizáció"
-
-#: 
 msgid "Map"
 msgstr "Térkép"
 
@@ -10943,10 +10939,6 @@ msgstr "— Válasszon csoportot —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Válasszon típust (nem kötelező) —"
-
-#: 
-msgid "Active Events"
-msgstr "Aktív események"
 
 #: 
 msgid "Add Event"

@@ -9073,10 +9073,6 @@ msgid "Inactive Groups"
 msgstr "Passiiviset ryhmät"
 
 #: 
-msgid "Language & Localization"
-msgstr "Kieli ja lokalisointi"
-
-#: 
 msgid "Map"
 msgstr "Kartta"
 
@@ -10871,10 +10867,6 @@ msgstr "— Valitse ryhmä —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Valitse tyyppi (valinnainen) —"
-
-#: 
-msgid "Active Events"
-msgstr "Aktiiviset tapahtumat"
 
 #: 
 msgid "Add Event"

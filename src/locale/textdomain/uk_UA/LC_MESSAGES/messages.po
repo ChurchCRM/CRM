@@ -9130,10 +9130,6 @@ msgid "Inactive Groups"
 msgstr "Неактивні групи"
 
 #: 
-msgid "Language & Localization"
-msgstr "Мова та локалізація"
-
-#: 
 msgid "Map"
 msgstr "Карта"
 
@@ -10930,10 +10926,6 @@ msgstr "— Виберіть групу —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Виберіть тип (необов'язково) —"
-
-#: 
-msgid "Active Events"
-msgstr "Активні події"
 
 #: 
 msgid "Add Event"

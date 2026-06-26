@@ -9083,10 +9083,6 @@ msgid "Inactive Groups"
 msgstr "నిష్క్రియ గ్రూప్‌లు"
 
 #: 
-msgid "Language & Localization"
-msgstr "భాష & స్థానికీకరణ"
-
-#: 
 msgid "Map"
 msgstr "మ్యాప్"
 
@@ -10881,10 +10877,6 @@ msgstr "— సమూహాన్ని ఎంచుకోండి —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— రకాన్ని ఎంచుకోండి (ఐచ్ఛికం) —"
-
-#: 
-msgid "Active Events"
-msgstr "సక్రియ ఈవెంట్‌లు"
 
 #: 
 msgid "Add Event"

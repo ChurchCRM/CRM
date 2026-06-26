@@ -9196,10 +9196,6 @@ msgid "Inactive Groups"
 msgstr "Inaktive grupper"
 
 #: 
-msgid "Language & Localization"
-msgstr "Språk og lokalisering"
-
-#: 
 msgid "Map"
 msgstr "Kart"
 
@@ -10994,10 +10990,6 @@ msgstr "— Velg en gruppe —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Velg type (valgfritt) —"
-
-#: 
-msgid "Active Events"
-msgstr "Aktive arrangementer"
 
 #: 
 msgid "Add Event"

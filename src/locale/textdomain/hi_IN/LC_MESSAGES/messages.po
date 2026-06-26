@@ -9070,10 +9070,6 @@ msgid "Inactive Groups"
 msgstr "निष्क्रिय समूह"
 
 #: 
-msgid "Language & Localization"
-msgstr "भाषा और स्थानीयकरण"
-
-#: 
 msgid "Map"
 msgstr "नक्शा"
 
@@ -10868,10 +10864,6 @@ msgstr "— एक समूह चुनें —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— प्रकार चुनें (वैकल्पिक) —"
-
-#: 
-msgid "Active Events"
-msgstr "सक्रिय कार्यक्रम"
 
 #: 
 msgid "Add Event"

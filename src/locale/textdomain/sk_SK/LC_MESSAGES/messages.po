@@ -9042,10 +9042,6 @@ msgid "Inactive Groups"
 msgstr "Neaktívne skupiny"
 
 #: 
-msgid "Language & Localization"
-msgstr "Jazyk a lokalizácia"
-
-#: 
 msgid "Map"
 msgstr "Mapa"
 
@@ -10834,10 +10830,6 @@ msgstr "— Vyberte skupinu —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Vyberte typ (voliteľné) —"
-
-#: 
-msgid "Active Events"
-msgstr "Aktívne podujatia"
 
 #: 
 msgid "Add Event"

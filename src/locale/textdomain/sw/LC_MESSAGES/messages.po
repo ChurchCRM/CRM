@@ -9107,10 +9107,6 @@ msgid "Inactive Groups"
 msgstr "Vikundi Visivyo Hai"
 
 #: 
-msgid "Language & Localization"
-msgstr "Lugha na Ujanibishaji"
-
-#: 
 msgid "Map"
 msgstr "Ramani"
 
@@ -10905,10 +10901,6 @@ msgstr "— Chagua kikundi —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Chagua aina (si lazima) —"
-
-#: 
-msgid "Active Events"
-msgstr "Matukio Yanayoendelea"
 
 #: 
 msgid "Add Event"
