@@ -1,9 +1,9 @@
 {
-  "Cannot delete event: %d people are currently checked in.": "",
-  "Cannot delete event: event is currently assigned to a kiosk.": "",
-  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "",
-  "in": "",
-  "Account options": "",
-  "Register": "",
-  "Slovak": ""
+  "Cannot delete event: %d people are currently checked in.": "Kan nie byeenkomst uitvee nie: %d mense is tans ingesluit.",
+  "Cannot delete event: event is currently assigned to a kiosk.": "Kan nie byeenkomst uitvee nie: byeenkomst is tans aan 'n kiosk toegewys.",
+  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "Kan nie groep uitvee nie: dit is die gehoor vir %d byeenkomste en die standaardgroep vir %d soort byeenkomste. Wys dié eers weer toe.",
+  "in": "in",
+  "Account options": "Rekeningsopsies",
+  "Register": "Registreer",
+  "Slovak": "Slowaaks"
 }
