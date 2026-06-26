@@ -1,53 +1,53 @@
 {
   "person": {
-    "one": "",
-    "few": "",
-    "many": "",
-    "other": ""
+    "one": "osoba",
+    "few": "osoby",
+    "many": "ľudí",
+    "other": "ľudí"
   },
   "%d Person added to the Cart.": {
-    "one": "",
-    "few": "",
-    "many": "",
-    "other": ""
+    "one": "%d osoba bola pridaná do Košíka.",
+    "few": "%d osoby boli pridané do Košíka.",
+    "many": "%d ľudí bolo pridaných do Košíka.",
+    "other": "%d ľudí bolo pridaných do Košíka."
   },
   "%d Person successfully added to selected Family.": {
-    "one": "",
-    "few": "",
-    "many": "",
-    "other": ""
+    "one": "%d osoba bola úspešne pridaná do vybranej rodiny.",
+    "few": "%d osoby boli úspešne pridané do vybranej rodiny.",
+    "many": "%d ľudí bolo úspešne pridaných do vybranej rodiny.",
+    "other": "%d ľudí bolo úspešne pridaných do vybranej rodiny."
   },
   "%d Person successfully added to selected Group.": {
-    "one": "",
-    "few": "",
-    "many": "",
-    "other": ""
+    "one": "%d osoba bola úspešne pridaná do vybranej skupiny.",
+    "few": "%d osoby boli úspešne pridané do vybranej skupiny.",
+    "many": "%d ľudí bolo úspešne pridaných do vybranej skupiny.",
+    "other": "%d ľudí bolo úspešne pridaných do vybranej skupiny."
   },
   "%d person": {
-    "one": "",
-    "few": "",
-    "many": "",
-    "other": ""
+    "one": "%d osoba",
+    "few": "%d osoby",
+    "many": "%d ľudí",
+    "other": "%d ľudí"
   },
   "%d hour": {
-    "one": "",
-    "few": "",
-    "many": "",
-    "other": ""
+    "one": "%d hodina",
+    "few": "%d hodiny",
+    "many": "%d hodín",
+    "other": "%d hodín"
   },
   "%d result for \"%s\"": {
-    "one": "",
-    "few": "",
-    "many": "",
-    "other": ""
+    "one": "%d výsledok pre \"%s\"",
+    "few": "%d výsledky pre \"%s\"",
+    "many": "%d výsledkov pre \"%s\"",
+    "other": "%d výsledkov pre \"%s\""
   },
   "%d repeat event created successfully.": {
-    "one": "",
-    "few": "",
-    "many": "",
-    "other": ""
+    "one": "%d opakovaná udalosť bola úspešne vytvorená.",
+    "few": "%d opakované udalosti boli úspešne vytvorené.",
+    "many": "%d opakovaných udalostí bolo úspešne vytvorených.",
+    "other": "%d opakovaných udalostí bolo úspešne vytvorených."
   },
-  "Account options": "",
-  "Register": "",
-  "Slovak": ""
+  "Account options": "Možnosti účtu",
+  "Register": "Registrácia",
+  "Slovak": "Slovenčina"
 }
