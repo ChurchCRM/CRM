@@ -10,6 +10,7 @@
 
 | Locale | Language | Translations | Percentage | Status | Supported |
 |--------|----------|--------------|------------|--------|----------|
+| `id` | Indonesian | 3868 | 100% | 🟢 Complete | ✅ Yes |
 | `sq` | Albanian | 3865 | 99.92% | 🟢 Complete | ✅ Yes |
 | `ar` | Arabic | 3865 | 99.92% | 🟢 Complete | ✅ Yes |
 | `zh-cn` | Chinese | 3865 | 99.92% | 🟢 Complete | ✅ Yes |
@@ -20,7 +21,6 @@
 | `fr` | French | 3865 | 99.92% | 🟢 Complete | ✅ Yes |
 | `el` | Greek | 3865 | 99.92% | 🟢 Complete | ✅ Yes |
 | `he` | Hebrew | 3865 | 99.92% | 🟢 Complete | ✅ Yes |
-| `id` | Indonesian | 3865 | 99.92% | 🟢 Complete | ✅ Yes |
 | `ml` | Malayalam | 3865 | 99.92% | 🟢 Complete | ✅ Yes |
 | `nb` | Norwegian Bokmål | 3865 | 99.92% | 🟢 Complete | ✅ Yes |
 | `pt` | Portuguese | 3865 | 99.92% | 🟢 Complete | ✅ Yes |
