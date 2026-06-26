@@ -16219,3 +16219,16 @@ msgstr "— देश चुनें —"
 msgid "— Select State —"
 msgstr "— राज्य चुनें —"
 
+#: 
+msgid "Account options"
+msgstr "खाता विकल्प"
+
+#: 
+msgid "Register"
+msgstr "पंजीकरण करें"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "स्लोवाक"
+

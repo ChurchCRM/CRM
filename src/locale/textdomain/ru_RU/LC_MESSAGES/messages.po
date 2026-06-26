@@ -16355,3 +16355,16 @@ msgstr "— Выберите страну —"
 msgid "— Select State —"
 msgstr "— Выберите регион —"
 
+#: 
+msgid "Account options"
+msgstr "Параметры учётной записи"
+
+#: 
+msgid "Register"
+msgstr "Зарегистрироваться"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Словацкий"
+

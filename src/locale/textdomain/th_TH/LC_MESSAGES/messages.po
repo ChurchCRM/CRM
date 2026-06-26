@@ -16229,3 +16229,16 @@ msgstr "— เลือกประเทศ —"
 msgid "— Select State —"
 msgstr "— เลือกจังหวัด —"
 
+#: 
+msgid "Account options"
+msgstr "ตัวเลือกบัญชี"
+
+#: 
+msgid "Register"
+msgstr "ลงทะเบียน"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "ภาษาสโลวัก"
+

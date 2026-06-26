@@ -16285,3 +16285,16 @@ msgstr "— Seleziona paese —"
 msgid "— Select State —"
 msgstr "— Seleziona regione —"
 
+#: 
+msgid "Account options"
+msgstr "Opzioni account"
+
+#: 
+msgid "Register"
+msgstr "Registrati"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Slovacco"
+

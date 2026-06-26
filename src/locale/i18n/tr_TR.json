@@ -3490,6 +3490,9 @@
     "You do not have permission to edit this note.": "Bu notu düzenleme izniniz yok.",
     "[Private Note — visible only to creator]": "[Özel Not — yalnızca oluşturan kişi tarafından görülebilir]",
     "seconds": "saniye",
+    "Cannot delete event: %d people are currently checked in.": "Etkinlik silinemez: %d kişi şu anda giriş yapmıştır.",
+    "Cannot delete event: event is currently assigned to a kiosk.": "Etkinlik silinemez: etkinlik şu anda bir kioyska atanmıştır.",
+    "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "Grup silinemez: %d etkinlik(ler) için kitledir ve %d etkinlik türü(nü) için varsayılan gruptur. Önce bunları yeniden atayın.",
     "A Calendar access token has been generated and saved.": "Bir takvim erişim belirteci oluşturuldu ve kaydedildi.",
     "API key regenerated": "API anahtarı yeniden oluşturuldu",
     "Access Token": "Erişim belirteci",
@@ -3889,5 +3892,8 @@
     "yrs": "yıl",
     "— Ignore —": "— Yok Say —",
     "— Select Country —": "— Ülke Seçin —",
-    "— Select State —": "— İl Seçin —"
+    "— Select State —": "— İl Seçin —",
+    "Account options": "Hesap seçenekleri",
+    "Register": "Kayıt Ol",
+    "Slovak": "Slovakça"
 }

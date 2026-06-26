@@ -16273,3 +16273,16 @@ msgstr "— ሀገር ምረጥ —"
 msgid "— Select State —"
 msgstr "— ክልል ምረጥ —"
 
+#: 
+msgid "Account options"
+msgstr "የሂሳብ ምርጫዎች"
+
+#: 
+msgid "Register"
+msgstr "ይመዝገቡ"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "ስሎቫክ"
+

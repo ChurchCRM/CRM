@@ -3490,6 +3490,9 @@
     "You do not have permission to edit this note.": "Jy het nie toestemming om hierdie nota te wysig nie.",
     "[Private Note — visible only to creator]": "[Privaatnota — slegs sigbaar vir skepper]",
     "seconds": "sekondes",
+    "Cannot delete event: %d people are currently checked in.": "Kan nie byeenkomst uitvee nie: %d mense is tans ingesluit.",
+    "Cannot delete event: event is currently assigned to a kiosk.": "Kan nie byeenkomst uitvee nie: byeenkomst is tans aan 'n kiosk toegewys.",
+    "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "Kan nie groep uitvee nie: dit is die gehoor vir %d byeenkomste en die standaardgroep vir %d soort byeenkomste. Wys dié eers weer toe.",
     "A Calendar access token has been generated and saved.": "'n Kalendertoegangsteken is gegenereer en gestoor.",
     "API key regenerated": "API-sleutel hergenereer",
     "Access Token": "Toegangstoken",
@@ -3890,5 +3893,8 @@
     "yrs": "jre.",
     "— Ignore —": "— Ignoreer —",
     "— Select Country —": "— Kies Land —",
-    "— Select State —": "— Kies Streek —"
+    "— Select State —": "— Kies Streek —",
+    "Account options": "Rekeningsopsies",
+    "Register": "Registreer",
+    "Slovak": "Slowaaks"
 }

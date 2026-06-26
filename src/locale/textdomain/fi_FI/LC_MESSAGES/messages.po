@@ -16230,3 +16230,16 @@ msgstr "— Valitse maa —"
 msgid "— Select State —"
 msgstr "— Valitse maakunta —"
 
+#: 
+msgid "Account options"
+msgstr "Tilin vaihtoehdot"
+
+#: 
+msgid "Register"
+msgstr "Rekisteröidy"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Slovakki"
+

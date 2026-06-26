@@ -16232,3 +16232,16 @@ msgstr "— దేశం ఎంచుకోండి —"
 msgid "— Select State —"
 msgstr "— రాష్ట్రం ఎంచుకోండి —"
 
+#: 
+msgid "Account options"
+msgstr "ఖాతా ఎంపికలు"
+
+#: 
+msgid "Register"
+msgstr "నమోదు చేయండి"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "స్లోవాక్"
+

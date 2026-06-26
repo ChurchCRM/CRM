@@ -16346,3 +16346,16 @@ msgstr "— Selectați țara —"
 msgid "— Select State —"
 msgstr "— Selectați județul —"
 
+#: 
+msgid "Account options"
+msgstr "Opțiuni cont"
+
+#: 
+msgid "Register"
+msgstr "Înregistrare"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Slovac"
+

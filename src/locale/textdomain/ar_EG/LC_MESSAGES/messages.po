@@ -16304,3 +16304,16 @@ msgstr "— اختر الدولة —"
 msgid "— Select State —"
 msgstr "— اختر المحافظة —"
 
+#: 
+msgid "Account options"
+msgstr "خيارات الحساب"
+
+#: 
+msgid "Register"
+msgstr "سجل"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "السلوفاكية"
+

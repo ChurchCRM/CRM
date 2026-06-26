@@ -16291,3 +16291,16 @@ msgstr "— Виберіть країну —"
 msgid "— Select State —"
 msgstr "— Виберіть область —"
 
+#: 
+msgid "Account options"
+msgstr "Параметри облікового запису"
+
+#: 
+msgid "Register"
+msgstr "Зареєструватися"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Словацька"
+

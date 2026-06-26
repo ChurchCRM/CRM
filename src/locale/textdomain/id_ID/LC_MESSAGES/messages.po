@@ -16263,5 +16263,5 @@ msgstr "Daftar"
 #. Context: locales
 #: 
 msgid "Slovak"
-msgstr "Slovak"
+msgstr "Slovakia"
 
