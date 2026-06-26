@@ -1,0 +1,20 @@
+# ChurchCRM Croatian Translation
+# Language: Croatian (hr)
+# Locale: hr_HR
+# Generated: $(date -u +"%Y-%m-%dT%H:%M:%SZ")
+# Denomination: Catholic (dominant in Croatia ~87%)
+
+msgid ""
+msgstr ""
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+
+# Croatian has 3 plural forms:
+# Form 0: n mod 10 == 1 and n mod 100 != 11 (e.g., 1, 21, 31)
+# Form 1: n mod 10 in 2..4 and n mod 100 not in 10..19 (e.g., 2, 3, 4, 22, 23)
+# Form 2: everything else (e.g., 0, 5-20, 25-30)
+
+# Add translations below
