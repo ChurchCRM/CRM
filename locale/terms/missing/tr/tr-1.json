@@ -1,10 +1,10 @@
 {
-  "Cannot delete event: %d people are currently checked in.": "",
-  "Cannot delete event: event is currently assigned to a kiosk.": "",
-  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "",
-  "HTML URL": "",
-  "ICS URL": "",
-  "Account options": "",
-  "Register": "",
-  "Slovak": ""
+  "Cannot delete event: %d people are currently checked in.": "Etkinlik silinemez: %d kişi şu anda giriş yapmıştır.",
+  "Cannot delete event: event is currently assigned to a kiosk.": "Etkinlik silinemez: etkinlik şu anda bir kioyska atanmıştır.",
+  "Cannot delete group: it is the audience for %d event(s) and the default group for %d event type(s). Reassign those first.": "Grup silinemez: %d etkinlik(ler) için kitledir ve %d etkinlik türü(nü) için varsayılan gruptur. Önce bunları yeniden atayın.",
+  "HTML URL": "HTML URL",
+  "ICS URL": "ICS URL",
+  "Account options": "Hesap seçenekleri",
+  "Register": "Kayıt Ol",
+  "Slovak": "Slovakça"
 }
