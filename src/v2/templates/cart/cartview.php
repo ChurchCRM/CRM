@@ -28,11 +28,12 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
       <a href="<?= SystemURLs::getRootPath() ?>/Reports/NameTags.php?labeltype=74536&labelfont=times&labelfontsize=36" class="btn btn-outline-secondary" title="<?= gettext('Print name tags') ?>"><i class="fa-solid fa-file-pdf me-2"></i><?= gettext('Tags') ?></a>
     </div>
     <?php if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { ?>
-      <div class="btn-group" role="group">
-        <a href="mailto:<?= InputUtils::escapeAttribute($sEmailLink) ?>" class="btn btn-outline-info" title="<?= gettext('Email cart items') ?>" target="_blank" rel="noopener noreferrer">
+      <!-- Email buttons populated asynchronously by /api/cart/emails -->
+      <div class="btn-group d-none" role="group" id="cart-email-actions">
+        <a href="#" class="btn btn-outline-info" id="cart-email-to" title="<?= gettext('Email cart items') ?>" target="_blank" rel="noopener noreferrer">
           <i class="fa-solid fa-paper-plane me-2"></i><?= gettext('Email') ?>
         </a>
-        <a href="mailto:?bcc=<?= InputUtils::escapeAttribute($sEmailLink) ?>" class="btn btn-outline-secondary" title="<?= gettext('Email with hidden recipients') ?>" target="_blank" rel="noopener noreferrer">
+        <a href="#" class="btn btn-outline-secondary" id="cart-email-bcc" title="<?= gettext('Email with hidden recipients') ?>" target="_blank" rel="noopener noreferrer">
           <i class="fa-solid fa-user-secret me-2"></i>BCC
         </a>
       </div>
@@ -118,10 +119,6 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
   </div>
 </div>
 
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-  $(document).ready(function () {
-    $("#cart-listing-table").DataTable(window.CRM.plugin.dataTable);
-  });
-</script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/cart-view.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

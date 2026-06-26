@@ -31,6 +31,7 @@ module.exports = {
     'people-family-list': './webpack/people/family-list',
     'people-family-view': './webpack/people/family-view',
     'people-person-view': './webpack/people/person-view',
+    'people-dashboard': './webpack/people/people-dashboard',
     'error': './webpack/error',
     'groups-sundayschool-dashboard': './webpack/groups-sundayschool-dashboard',
     'groups-sundayschool-class-view': './webpack/groups-sundayschool-class-view',
@@ -41,6 +42,7 @@ module.exports = {
     'event-editor': './webpack/event-editor',
     'event-types-list': './webpack/event-types-list',
     'event-cart-to-event': './webpack/event-cart-to-event',
+    'cart-view': './webpack/cart-view',
   },
   output: {
     path: path.resolve('./src/skin/v2'),
