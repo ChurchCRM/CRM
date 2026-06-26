@@ -114,7 +114,7 @@ $app->group('/api/user/{userId:[0-9]+}', function (RouteCollectorProxy $group): 
 
     /**
      * @OA\Delete(
-     *     path="/api/user/{userId}/",
+     *     path="/api/user/{userId}",
      *     summary="Delete a user account (Admin role required)",
      *     tags={"Admin"},
      *     security={{"ApiKeyAuth":{}}},
@@ -125,10 +125,13 @@ $app->group('/api/user/{userId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     @OA\Response(response=403, description="Admin role required")
      * )
      */
-    $group->delete('/', function (Request $request, Response $response, array $args): Response {
+    $group->delete('', function (Request $request, Response $response, array $args): Response {
         $user = $request->getAttribute('user');
         $userName = $user->getName();
-        UserConfigQuery::create()->filterByPeronId($user->getId())->delete();
+        $userConfig = UserConfigQuery::create()->findPk($user->getId());
+        if ($userConfig !== null) {
+            $userConfig->delete();
+        }
 
         $user->delete();
         if (SystemConfig::getBooleanValue('bSendUserDeletedEmail')) {

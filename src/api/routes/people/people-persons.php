@@ -5,6 +5,7 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\PersonService;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -144,6 +145,32 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
 
         return SlimUtils::renderJSON($response, ['people' => $people->toArray()]);
     });
+});
+
+/**
+ * @OA\Get(
+ *     path="/people/emails",
+ *     summary="Get mailing email addresses for all active-family people, grouped by classification role",
+ *     tags={"People"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Response(response=200, description="Email lists for all people and per role",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="all", type="array", @OA\Items(type="string"),
+ *                 description="All unique email addresses (including sToEmailAddress if configured)"),
+ *             @OA\Property(property="byRole", type="object",
+ *                 description="Emails grouped by classification role name",
+ *                 @OA\AdditionalProperties(type="array", @OA\Items(type="string")))
+ *         )
+ *     ),
+ *     @OA\Response(response=403, description="User does not have email permission")
+ * )
+ */
+$app->get('/people/emails', function (Request $request, Response $response): Response {
+    if (!$_SESSION['user']->isEmailEnabled()) {
+        return SlimUtils::renderErrorJSON($response, gettext('Email is disabled for this user'), [], 403, null, $request);
+    }
+    $personService = new PersonService();
+    return SlimUtils::renderJSON($response, $personService->getMailingEmails());
 });
 
 /**

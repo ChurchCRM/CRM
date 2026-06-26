@@ -139,7 +139,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <a id="editSettings" href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="btn btn-outline-secondary">
                   <i class="ti ti-settings me-1"></i><?= gettext("Advanced Settings") ?>
                 </a>
-                <small class="form-hint mt-1"><?= gettext("Manage additional preferences like email delimiters and display options") ?></small>
+                <small class="form-hint mt-1"><?= gettext("Manage additional preferences and display options") ?></small>
               </div>
             </div>
           </div>

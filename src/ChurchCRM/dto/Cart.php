@@ -2,10 +2,10 @@
 
 namespace ChurchCRM\dto;
 
-use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\Service\GroupService;
 
 class Cart
@@ -192,23 +192,41 @@ class Cart
             ->find();
     }
 
-    public static function getEmailLink(): string
+    /**
+     * Returns unique email addresses for all people in the cart, plus sToEmailAddress if configured.
+     * Respects the iDoNotEmailPropertyId exclusion setting (consistent with PersonService::getMailingEmails).
+     *
+     * @return string[]
+     */
+    public static function getEmails(): array
     {
-        /* @var $cartPerson ChurchCRM\Person */
-        $people = Cart::getCartPeople();
-        $emailAddressArray = [];
-        foreach ($people as $cartPerson) {
-            if (!empty($cartPerson->getEmail())) {
-                $emailAddressArray[] = $cartPerson->getEmail();
+        $doNotEmailSet = [];
+        $doNotEmailPropId = (int) SystemConfig::getValue('iDoNotEmailPropertyId');
+        if ($doNotEmailPropId > 0) {
+            foreach (RecordPropertyQuery::create()->filterByPropertyId($doNotEmailPropId)->find() as $r) {
+                $doNotEmailSet[(int) $r->getRecordId()] = true;
             }
         }
-        $delimiter = AuthenticationManager::getCurrentUser()->getUserConfigString('sMailtoDelimiter');
-        $sEmailLink = implode($delimiter, array_unique(array_filter($emailAddressArray)));
-        if (!empty(SystemConfig::getValue('sToEmailAddress')) && !stristr($sEmailLink, (string) SystemConfig::getValue('sToEmailAddress'))) {
-            $sEmailLink .= $delimiter . SystemConfig::getValue('sToEmailAddress');
+
+        $emails = [];
+        $emailsSeen = [];
+        foreach (Cart::getCartPeople() as $cartPerson) {
+            if (isset($doNotEmailSet[(int) $cartPerson->getId()])) {
+                continue;
+            }
+            $email = (string) $cartPerson->getEmail();
+            if ($email !== '' && !isset($emailsSeen[strtolower($email)])) {
+                $emailsSeen[strtolower($email)] = true;
+                $emails[] = $email;
+            }
         }
 
-        return $sEmailLink;
+        $defaultTo = SystemConfig::getValue('sToEmailAddress');
+        if ($defaultTo !== '' && !isset($emailsSeen[strtolower($defaultTo)])) {
+            $emails[] = $defaultTo;
+        }
+
+        return $emails;
     }
 
     public static function getSMSLink(): string

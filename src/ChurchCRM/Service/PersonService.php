@@ -2,11 +2,13 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunity;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
+use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 class PersonService
@@ -97,6 +99,69 @@ class PersonService
         }
 
         return $result;
+    }
+
+    /**
+     * Returns mailing email lists for all active-family people, grouped by classification role.
+     * Respects the iDoNotEmailPropertyId exclusion setting and appends sToEmailAddress when configured.
+     *
+     * @return array{all: string[], byRole: array<string, string[]>}
+     */
+    public function getMailingEmails(): array
+    {
+        $doNotEmailSet = [];
+        $doNotEmailPropId = (int) SystemConfig::getValue('iDoNotEmailPropertyId');
+        if ($doNotEmailPropId > 0) {
+            foreach (RecordPropertyQuery::create()->filterByPropertyId($doNotEmailPropId)->find() as $r) {
+                $doNotEmailSet[(int) $r->getRecordId()] = true;
+            }
+        }
+
+        $roleNameMap = [];
+        foreach (ListOptionQuery::create()->filterById(1)->find() as $opt) {
+            $roleNameMap[(int) $opt->getOptionId()] = $opt->getOptionName();
+        }
+
+        $persons = PersonQuery::create()
+            ->leftJoinWithFamily()
+            ->useQuery('Family')
+                ->filterByDateDeactivated(null)
+            ->endUse()
+            ->find();
+
+        $all = [];
+        $byRole = [];
+        $emailsSeen = [];
+
+        foreach ($persons as $person) {
+            if (isset($doNotEmailSet[(int) $person->getId()])) {
+                continue;
+            }
+            $email = (string) $person->getEmail();
+            if ($email === '' || isset($emailsSeen[$email])) {
+                continue;
+            }
+            $emailsSeen[$email] = true;
+            $all[] = $email;
+
+            $roleName = $roleNameMap[(int) $person->getClsId()] ?? gettext('Member');
+            $byRole[$roleName][] = $email;
+        }
+
+        $defaultTo = SystemConfig::getValue('sToEmailAddress');
+        if ($defaultTo !== '') {
+            if (!in_array($defaultTo, $all, true)) {
+                $all[] = $defaultTo;
+            }
+            foreach ($byRole as &$roleEmails) {
+                if (!in_array($defaultTo, $roleEmails, true)) {
+                    $roleEmails[] = $defaultTo;
+                }
+            }
+            unset($roleEmails);
+        }
+
+        return ['all' => $all, 'byRole' => $byRole];
     }
 
     /**
