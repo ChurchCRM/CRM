@@ -15455,6 +15455,10 @@ msgid "Home phone is required"
 msgstr "Hemtelefon krävs"
 
 #: 
+msgid "ICS URL"
+msgstr "ICS-URL"
+
+#: 
 msgid "Ignored"
 msgstr "Ignorerad"
 
@@ -16384,4 +16388,254 @@ msgstr "Registrera"
 #: 
 msgid "Slovak"
 msgstr "Slovakiska"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d passerat evenemang"
+msgstr[1] "%d passerade evenemang"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "%d% av gränssnittstexten är översatt för detta språk."
+
+#: 
+msgid "AM / PM"
+msgstr "FM / EM"
+
+#: 
+msgid "Access denied"
+msgstr "Åtkomst nekad"
+
+#: 
+msgid "All times shown in"
+msgstr "Alla tider visas i"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "Födelsedagar och jubileer. Standard: d/m"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "Kan inte ta bort kalender: %d evenemang är fortfarande tilldelat. Ta bort eller tilldela om dem först."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "Format för mobiltelefon"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "Vanliga formateringskoder (exempel: fredag 7 mars 2025, 15:09)"
+
+#: 
+msgid "Current Events"
+msgstr "Aktuella händelser"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "Datum- och tidsformat"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "Datum- och tidsformat"
+
+#: 
+msgid "Date Picker Format"
+msgstr "Format för datumväljare"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "Platshållare för datumväljare"
+
+#: 
+msgid "Date Without Year"
+msgstr "Datum utan år"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "Dag, 2 siffror"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "Dag, utan inledande nolla"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "Standard: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "Standard: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "Exempel: \"l, j F Y\" ger \"Fredag, 7 Mars 2025\". Alla andra tecken (mellanslag, kommatecken, snedstreck) visas som inskrivet."
+
+#: 
+msgid "Filename Date Format"
+msgstr "Datumformat för filnamn"
+
+#: 
+msgid "Fully translated."
+msgstr "Helt översatt."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "Ledtext i datumfält. Standard: åååå-mm-dd"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "Format för hem/arbetstelefon"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "Timme 12h, 2 siffror"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "Timme 12h, utan nolla"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "Timme 24h, 2 siffror"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "Inkluderar tidskomponent. Standard: d/m/Y g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "Språk och region"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "Språk, tidszon, datum- och telefonformat"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Lokalisering och format"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "Lokaliseringsinställningar sparades"
+
+#: 
+msgid "Long Date Format"
+msgstr "Långt datumformat"
+
+#: 
+msgid "Minutes"
+msgstr "Minuter"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "Månad och år"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "Månad, 2 siffror"
+
+#: 
+msgid "Month, full"
+msgstr "Månad, fullständigt namn"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "Månad, utan inledande nolla"
+
+#: 
+msgid "Month, short"
+msgstr "Månad, förkortad"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "Inte installerat på servern — datum och nummer kanske inte formateras korrekt. Be din värd att installera det (t.ex. locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "PHP-format för datumväljare. Standard: Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "Format för telefonnummer"
+
+#: 
+msgid "Phone with Extension"
+msgstr "Telefon med anknytning"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Spara lokaliseringsinställningar"
+
+#: 
+msgid "Selected Language"
+msgstr "Valt språk"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "Serverlokalens stöd kunde inte kontrolleras (exec är inaktiverat)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "Stöds — denna lokale är installerad på servern."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "Systemspråk, tidszon, datum-/tidsformat och telefonnummerformat"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "Dessa fält använder formateringskoder (bokstäver som representerar delar av ett datum). Välj en förinställning under varje fält eller bygg en egen med hjälp av referensen. Förhandsgranskningen visar exakt hur det ser ut. Lämna tomt för att använda systemstandarden."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "Så här visas datum och telefonnummer i hela systemet."
+
+#: 
+msgid "Translation completeness"
+msgstr "Översättningsgrad"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "Översättningsspårning är inte tillgänglig för detta språk."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "Använd 9 som sifferplatshållare (t.ex. (999) 999-9999). Lämna tomt för systemstandarden."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "Används i exporterade filnamn. Standard: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "Används i rapporter och medlemslistor. Standard: d/m/Y"
+
+#: 
+msgid "Weekday, full"
+msgstr "Veckodag, fullt namn"
+
+#: 
+msgid "Weekday, short"
+msgstr "Veckodag, förkortad"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "Vad betyder dessa koder?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "År, 2 siffror"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "År, 4 siffror"
+
+#: 
+msgid "am / pm"
+msgstr "fm / em"
+
+#: 
+msgid "past"
+msgstr "förfluten"
 

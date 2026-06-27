@@ -16264,3 +16264,239 @@ msgstr "Registrácia"
 msgid "Slovak"
 msgstr "Slovenčina"
 
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "%d%% textu rozhrania je preložených pre tento jazyk."
+
+#: 
+msgid "Access denied"
+msgstr "Prístup zamietnutý"
+
+#: 
+msgid "All times shown in"
+msgstr "Všetky časy zobrazené v"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "Narodeniny a výročia. Predvolené: d/m"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "Nemožno odstrániť kalendár: %d udalosť/udalostí sú stále priradené. Najprv ich odstráňte alebo preraďte."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "Formát mobilného telefónu"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "Bežné kódy formátovania (príklady: piatok, 7. marca 2025, 15:09)"
+
+#: 
+msgid "Current Events"
+msgstr "Aktuálne udalosti"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "Formát dátumu a času"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "Formáty dátumu a času"
+
+#: 
+msgid "Date Picker Format"
+msgstr "Formát výberu dátumu"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "Text nápovedy výberu dátumu"
+
+#: 
+msgid "Date Without Year"
+msgstr "Dátum bez roka"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "Deň, 2 číslice"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "Deň, bez úvodnej nuly"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "Predvolené: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "Predvolené: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "Príklad: \"l, j F Y\" vytvorí \"Piatok, 7. Marca 2025\". Ostatné znaky (medzery, čiarky, lomky) sa zobrazia presne ako sú napísané."
+
+#: 
+msgid "Filename Date Format"
+msgstr "Formát dátumu pre názov súboru"
+
+#: 
+msgid "Fully translated."
+msgstr "Plne preložené."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "Text nápovedy v poliach dátumu. Predvolené: rrrr-mm-dd"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "Formát domáceho/pracovného telefónu"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "Hodina 12h, 2 číslice"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "Hodina 12h, bez nuly"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "Hodina 24h, 2 číslice"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "Obsahuje časovú zložku. Predvolené: d/m/Y g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "Jazyk a región"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "Jazyk, časové pásmo, formáty dátumu a telefónu"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Lokalizácia a formáty"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "Nastavenia lokalizácie boli úspešne uložené"
+
+#: 
+msgid "Long Date Format"
+msgstr "Dlhý formát dátumu"
+
+#: 
+msgid "Minutes"
+msgstr "Minúty"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "Mesiac a rok"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "Mesiac, 2 číslice"
+
+#: 
+msgid "Month, full"
+msgstr "Mesiac, plný názov"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "Mesiac, bez úvodnej nuly"
+
+#: 
+msgid "Month, short"
+msgstr "Mesiac, skratka"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "Nie je nainštalované na serveri — dátumy a čísla sa nemusia správne formátovať. Požiadajte poskytovateľa o inštaláciu (napr. locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "Formát PHP pre výber dátumu. Predvolené: Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "Formáty telefónnych čísel"
+
+#: 
+msgid "Phone with Extension"
+msgstr "Telefón s klapkou"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Uložiť nastavenia lokalizácie"
+
+#: 
+msgid "Selected Language"
+msgstr "Vybraný jazyk"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "Nie je možné skontrolovať podporu národného prostredia servera (exec je zakázaný)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "Podporované — toto národné prostredie je nainštalované na serveri."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "Systémový jazyk, časové pásmo, formáty dátumu/času a telefónnych čísel"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "Tieto polia používajú kódy formátovania (písmená predstavujúce časti dátumu). Vyberte predvolbu pod každým poľom alebo vytvorte vlastnú pomocou referenčnej dokumentácie. Živý náhľad ukazuje presne, ako bude výsledok vyzerať. Ponechajte prázdne pre použitie predvoleného nastavenia systému."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "Takto budú dátumy a telefónne čísla zobrazené v celom systéme."
+
+#: 
+msgid "Translation completeness"
+msgstr "Úplnosť prekladu"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "Sledovanie prekladu nie je pre tento jazyk k dispozícii."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "Použite 9 ako zástupný znak pre číslicu (napr. (999) 999-9999). Ponechajte prázdne pre predvolené nastavenie systému."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "Používa sa v názvoch exportovaných súborov. Predvolené: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "Používa sa v správach a zoznamoch členov. Predvolené: d/m/Y"
+
+#: 
+msgid "Weekday, full"
+msgstr "Deň týždňa, plný názov"
+
+#: 
+msgid "Weekday, short"
+msgstr "Deň týždňa, skratka"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "Čo tieto kódy znamenajú?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "Rok, 2 číslice"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "Rok, 4 číslice"
+
+#: 
+msgid "past"
+msgstr "minulosť"
+
