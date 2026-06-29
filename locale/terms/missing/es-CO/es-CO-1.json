@@ -1,9 +1,9 @@
 {
   "%d past event": {
     "one": "%d evento pasado",
-    "many": "%d eventos pasados",
+    "many": "",
     "other": "%d eventos pasados"
   },
-  "AM / PM": "AM / PM",
-  "am / pm": "am / pm"
+  "AM / PM": "",
+  "am / pm": ""
 }

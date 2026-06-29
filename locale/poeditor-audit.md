@@ -1,10 +1,10 @@
 # ChurchCRM Locale Audit Report
 
-**Total Supported Locales:** 48
-**Complete Locales (≥90%):** 42
+**Total Supported Locales:** 49
+**Complete Locales (≥90%):** 43
 **Good Locales (75-89%):** 0
 **Needs Work (<75%):** 6
-**WIP Candidates (>5%, not yet added):** 5
+**WIP Candidates (>5%, not yet added):** 4
 
 ## Locale Completeness Overview
 
@@ -52,7 +52,7 @@
 | `fil` | Filipino | 3924 | 99.9% | 🟢 Complete | ✅ Yes |
 | `id` | Indonesian | 3924 | 99.9% | 🟢 Complete | ✅ Yes |
 | `ro` | Romanian | 3924 | 99.9% | 🟢 Complete | ✅ Yes |
-| `hr` | Croatian | 3825 | 97.38% | 🟢 Complete | ❌ No |
+| `hr` | Croatian | 3825 | 97.38% | 🟢 Complete | ✅ Yes |
 | `my` | Burmese | 66 | 1.68% | 🟠 Needs Work | ❌ No |
 | `sl` | Slovenian | 65 | 1.65% | 🟠 Needs Work | ❌ No |
 | `sr-cyrl` | Serbian (Cyrillic) | 58 | 1.48% | 🟠 Needs Work | ❌ No |
@@ -66,7 +66,7 @@
 
 ## Status Summary
 
-- **🟢 Complete (≥90%):** 42 locales ready for production
+- **🟢 Complete (≥90%):** 43 locales ready for production
 - **🟡 Good (75-89%):** 0 locales with solid translation coverage
 - **🟠 Needs Work (<75%):** 0 locales requiring translator attention
 - **🔴 Incomplete:** 0 locales (requiring translator attention)
@@ -78,7 +78,6 @@ These locales have translations but are not yet in locales.json:
 
 | Language | Code | Translations | Percentage | Status |
 |----------|------|--------------|------------|--------|
-| Croatian | `hr` | 3825 | 97.38% | ⭐ Ready to add |
 | Burmese | `my` | 66 | 1.68% | 📝 Monitor |
 | Slovenian | `sl` | 65 | 1.65% | 📝 Monitor |
 | Serbian (Cyrillic) | `sr-cyrl` | 58 | 1.48% | 📝 Monitor |
