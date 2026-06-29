@@ -3920,7 +3920,14 @@
     "Account options": "Параметры учётной записи",
     "Register": "Зарегистрироваться",
     "Slovak": "Словацкий",
+    "%d past event": {
+        "one": "%d прошедшее событие",
+        "few": "%d прошедших события",
+        "many": "%d прошедших событий",
+        "other": "%d прошедшего события"
+    },
     "%d% of interface text is translated for this language.": "%d% текста интерфейса переведено для этого языка.",
+    "AM / PM": "ДП / ПП",
     "Access denied": "Доступ запрещён",
     "All times shown in": "Все время отображается в",
     "Birthdays and anniversaries. Default: m/d": "Дни рождения и юбилеи. По умолчанию: д/м",
@@ -3978,5 +3985,6 @@
     "What do these codes mean?": "Что означают эти коды?",
     "Year, 2 digits": "Год, 2 цифры",
     "Year, 4 digits": "Год, 4 цифры",
+    "am / pm": "дп / пп",
     "past": "прошлое"
 }

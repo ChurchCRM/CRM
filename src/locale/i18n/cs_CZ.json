@@ -3909,6 +3909,11 @@
     "Account options": "Možnosti účtu",
     "Register": "Registrovat se",
     "Slovak": "Slovenština",
+    "%d past event": {
+        "one": "%d minulá událost",
+        "few": "%d minulé události",
+        "other": "%d minulých událostí"
+    },
     "%d% of interface text is translated for this language.": "%d% textu rozhraní je přeloženo pro tento jazyk.",
     "Access denied": "Přístup zamítnut",
     "All times shown in": "Všechny časy zobrazeny v",

@@ -16318,6 +16318,16 @@ msgid "Slovak"
 msgstr "السلوفاكية"
 
 #: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d حدث سابق"
+msgstr[1] "%d حدث سابق"
+msgstr[2] "%d حدثان سابقان"
+msgstr[3] "%d أحداث سابقة"
+msgstr[4] "%d حدثًا سابقًا"
+msgstr[5] "%d أحداث سابقة"
+
+#: 
 msgid "%d% of interface text is translated for this language."
 msgstr "تمت ترجمة %d%% من نص الواجهة لهذه اللغة."
 

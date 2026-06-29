@@ -3942,6 +3942,14 @@
     "Account options": "خيارات الحساب",
     "Register": "سجل",
     "Slovak": "السلوفاكية",
+    "%d past event": {
+        "zero": "%d حدث سابق",
+        "one": "%d حدث سابق",
+        "two": "%d حدثان سابقان",
+        "few": "%d أحداث سابقة",
+        "many": "%d حدثًا سابقًا",
+        "other": "%d أحداث سابقة"
+    },
     "%d% of interface text is translated for this language.": "تمت ترجمة %d%% من نص الواجهة لهذه اللغة.",
     "AM / PM": "ص / م",
     "Access denied": "تم رفض الوصول",

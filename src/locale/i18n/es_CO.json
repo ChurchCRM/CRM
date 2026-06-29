@@ -3909,6 +3909,11 @@
     "Account options": "Opciones de cuenta",
     "Register": "Registrarse",
     "Slovak": "Eslovaco",
+    "%d past event": {
+        "one": "%d evento pasado",
+        "many": "%d eventos pasados",
+        "other": "%d eventos pasados"
+    },
     "%d% of interface text is translated for this language.": "%d% del texto de la interfaz está traducido para este idioma.",
     "Access denied": "Acceso denegado",
     "All times shown in": "Todos los horarios mostrados en",

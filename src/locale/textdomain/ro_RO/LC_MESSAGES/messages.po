@@ -16360,6 +16360,13 @@ msgid "Slovak"
 msgstr "Slovac"
 
 #: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d eveniment trecut"
+msgstr[1] "%d evenimente trecute"
+msgstr[2] "%d evenimente trecute"
+
+#: 
 msgid "%d% of interface text is translated for this language."
 msgstr "%d% din textul interfeței este tradus pentru această limbă."
 

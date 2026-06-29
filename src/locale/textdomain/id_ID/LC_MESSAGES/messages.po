@@ -16331,6 +16331,14 @@ msgid "Day, no leading zero"
 msgstr "Hari, tanpa nol di depan"
 
 #: 
+msgid "Default: (999) 999-9999"
+msgstr "Bawaan: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "Bawaan: (999) 999-9999 x99999"
+
+#: 
 msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
 msgstr "Contoh: \"l, j F Y\" menghasilkan \"Jumat, 7 Maret 2025\". Karakter lain (spasi, koma, garis miring) muncul seperti yang diketik."
 

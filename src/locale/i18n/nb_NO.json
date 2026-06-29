@@ -3903,6 +3903,7 @@
         "other": "%d tidligere hendelser"
     },
     "%d% of interface text is translated for this language.": "%d% av grensesnitteksten er oversatt for dette språket.",
+    "AM / PM": "FM / EM",
     "Access denied": "Tilgang nektet",
     "All times shown in": "Alle tider vises i",
     "Birthdays and anniversaries. Default: m/d": "Fødselsdager og jubileer. Standard: d/m",
@@ -3960,5 +3961,6 @@
     "What do these codes mean?": "Hva betyr disse kodene?",
     "Year, 2 digits": "År, 2 sifre",
     "Year, 4 digits": "År, 4 sifre",
+    "am / pm": "fm / em",
     "past": "fortid"
 }

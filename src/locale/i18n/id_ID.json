@@ -3905,6 +3905,8 @@
     "Date Without Year": "Tanggal Tanpa Tahun",
     "Day, 2 digits": "Hari, 2 digit",
     "Day, no leading zero": "Hari, tanpa nol di depan",
+    "Default: (999) 999-9999": "Bawaan: (999) 999-9999",
+    "Default: (999) 999-9999 x99999": "Bawaan: (999) 999-9999 x99999",
     "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed.": "Contoh: \"l, j F Y\" menghasilkan \"Jumat, 7 Maret 2025\". Karakter lain (spasi, koma, garis miring) muncul seperti yang diketik.",
     "Filename Date Format": "Format Tanggal untuk Nama File",
     "Fully translated.": "Diterjemahkan sepenuhnya.",
