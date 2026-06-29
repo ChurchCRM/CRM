@@ -62,13 +62,20 @@ MAX_WAIT=120   # seconds
 INTERVAL=5
 elapsed=0
 
-# Readiness check: prefer curl; fall back to a pure-bash TCP connect so the
-# script works on minimal runners that have Docker but not curl.
+# Readiness check — three tiers, best-to-worst HTTP fidelity:
+#   1. curl  (-sf fails on HTTP 4xx/5xx — full HTTP status check)
+#   2. wget  (-q --spider fails on HTTP 4xx/5xx — full HTTP status check)
+#   3. /dev/tcp  (TCP-only; returns exit 0 as soon as Apache is listening,
+#               regardless of HTTP response code — cannot detect PHP startup
+#               failures that produce HTTP 500.  Use logs to verify if curl
+#               and wget are both unavailable.)
 check_ready() {
     if command -v curl &>/dev/null; then
         curl -sf "${WEB_URL}/" -o /dev/null 2>/dev/null
+    elif command -v wget &>/dev/null; then
+        wget -q --spider "${WEB_URL}/" 2>/dev/null
     else
-        # bash /dev/tcp is a built-in that does not require any extra packages.
+        # TCP-only fallback — cannot verify HTTP response code.
         bash -c "cat < /dev/null > /dev/tcp/localhost/${WEBSERVER_PORT}" 2>/dev/null
     fi
 }
