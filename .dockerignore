@@ -1,0 +1,54 @@
+# Root-level .dockerignore — used when the Docker build context is the repo root.
+# This is required by docker/Dockerfile.sbx and any future root-context builds.
+#
+# Keep this file conservative: only exclude directories that are large, regenerated
+# by the build, or not needed inside the container.  The builder stage does a fresh
+# `npm ci` and `composer install`, so host-generated dependency trees must be excluded
+# to guarantee a clean, reproducible build.
+
+# Version control (large + not needed)
+.git
+.gitattributes
+
+# Host-generated Node dependencies (builder runs npm ci)
+node_modules/
+
+# Host-generated PHP dependencies (builder runs composer install)
+src/vendor/
+
+# Application runtime state
+src/logs/
+src/cache/
+
+# Test artifacts
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+cypress/reports/
+
+# Build / temp directories
+temp/
+dist/
+build/
+ai-notes/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# CI config (not needed inside container)
+.github/
+.travis.yml
+.circleci/
+
+# Agent documentation (large; not needed for the application build)
+.agents/
+
+# DevContainer (not needed inside container)
+.devcontainer/

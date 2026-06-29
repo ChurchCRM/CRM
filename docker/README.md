@@ -5,9 +5,86 @@ This directory contains two types of Docker configurations:
 
 | Configuration | Use Case |
 |---------------|----------|
+| `docker-compose.sbx.yaml` | **Docker Sandbox** — fully self-contained kit; all build steps inside Docker (no host Node/PHP required). |
 | `docker-compose.yaml` | Development and testing (Apache + PHP). Used by the automated test suite and local development. |
 | `docker-compose.nginx.yaml` | Self-hosted or production reference (nginx + PHP-FPM). Starting point for your own deployment. |
 | `docker-compose.frankenphp.yaml` | Self-hosted or production reference (FrankenPHP). Simpler single-container alternative to nginx + PHP-FPM. |
+
+---
+
+Docker Sandbox (sbx)
+---
+
+Use this kit when Docker is available on the host but **Node, PHP, and Composer are not installed locally** — for example in an agent sandbox, a stripped-down CI runner, or any environment where you want a zero-dependency one-command start.
+
+All build steps — `npm ci`, `composer install`, Webpack, Grunt, Biome — run **inside a multi-stage Docker build stage**. Nothing is compiled on the host.
+
+## Quick Start
+
+```bash
+# From the repo root:
+npm run docker:sbx:start
+```
+
+The first run builds the image (downloads toolchain + runs the full build inside Docker) and takes 5–15 minutes depending on network and CPU.  Subsequent runs reuse the cached image and start in seconds.
+
+Alternatively, invoke Compose directly:
+
+```bash
+docker compose -f docker/docker-compose.sbx.yaml up -d --build
+```
+
+## Services
+
+| Service | Image | Default Port | Notes |
+|---------|-------|-------------|-------|
+| `webserver-sbx` | `churchcrm/crm:php8-sbx` (built locally) | `80` | Apache + PHP 8.4 with compiled app baked in |
+| `database` | `mariadb:10.11` | `3306` (internal) | Seeded with demo data on first start |
+| `adminer` | `adminer` | `8088` | Database GUI |
+
+## Access
+
+| URL | Credentials |
+|-----|-------------|
+| `http://localhost` | admin / changeme |
+| `http://localhost:8088` (Adminer) | Server: `database` \| User: `churchcrm` \| Password: `changeme` |
+
+## Demo Data vs Fresh Install
+
+By default, the database is seeded with ChurchCRM demo data so you can log in immediately.  To start with a fresh setup wizard instead:
+
+1. Remove the `../cypress/data` bind-mount from the `database` service in `docker-compose.sbx.yaml`.
+2. Run `docker compose -f docker/docker-compose.sbx.yaml down -v` to clear the database volume.
+3. Run `docker compose -f docker/docker-compose.sbx.yaml up -d --build` to restart with an empty database.
+
+## Commands
+
+| Command | Purpose |
+|---------|---------|
+| `npm run docker:sbx:start` | Build image and start all services |
+| `npm run docker:sbx:stop` | Stop containers (preserves data volumes) |
+| `npm run docker:sbx:down` | Stop and remove containers + volumes |
+| `npm run docker:sbx:logs` | Live tail of container logs |
+| `npm run docker:sbx:rebuild` | Full teardown + rebuild (after code changes) |
+
+## How It Differs From Other Configurations
+
+| | sbx | dev | devcontainer |
+|-|-----|-----|-------------|
+| Host requirements | Docker only | Docker + Node | VS Code + Dev Containers extension |
+| Where build runs | Inside Docker multi-stage | Inside dev container (after manual exec) | Inside devcontainer |
+| App source | Baked into image | Bind-mounted from host | Bind-mounted from host |
+| Hot-reload JS/CSS | ✗ (requires rebuild) | ✓ (`npm run build:webpack:watch`) | ✓ |
+| Xdebug | ✗ | ✓ | ✓ |
+| Best for | Sandbox agents, quick demo, zero-setup evaluation | Active development | VS Code development |
+
+## Files
+
+| File | Description |
+|------|-------------|
+| `docker-compose.sbx.yaml` | Compose file (database + webserver + adminer) |
+| `Dockerfile.sbx` | Multi-stage build (builder → runtime) |
+| `scripts/sbx-start.sh` | Helper script with health wait + access URLs |
 
 ---
 
