@@ -1,0 +1,127 @@
+# Sandbox (sbx) Dockerfile for ChurchCRM
+#
+# Multi-stage build — ALL build steps run inside Docker.
+# No Node, PHP, or Composer is required on the host.
+#
+# Stage 1 (builder): Installs the full toolchain, copies the repo, then runs
+#   npm ci  →  npm run build
+#   (npm run build installs Composer deps in src/ and builds all frontend assets)
+#
+# Stage 2 (runtime): Minimal Apache + PHP image with the compiled app baked in.
+#
+# Build context must be the repo root so COPY can access the full source tree.
+# The companion docker/docker-compose.sbx.yaml sets context: .. automatically.
+#
+# Usage (from repo root):
+#   docker compose -f docker/docker-compose.sbx.yaml up -d --build
+#
+# Or directly:
+#   docker build -f docker/Dockerfile.sbx -t churchcrm/crm:php8-sbx .
+
+ARG PHP_VERSION=8.4
+
+##############################################################################
+# Stage 1: builder — full build toolchain (Node 24 + PHP + Composer)
+##############################################################################
+FROM php:${PHP_VERSION}-apache AS builder
+
+# System libraries needed for PHP extensions and the Node build toolchain
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        build-essential \
+        ca-certificates \
+        curl \
+        git \
+        gettext \
+        locales \
+        locales-all \
+        libfreetype6-dev \
+        libjpeg-dev \
+        libpng-dev \
+        libxml2-dev \
+        libzip-dev \
+        make \
+        python3 \
+        unzip \
+    && rm -rf /var/lib/apt/lists/*
+
+# PHP extensions (full set — matches the base stage of Dockerfile.churchcrm-apache-php8)
+RUN docker-php-ext-install -j$(nproc) xml exif pdo_mysql gettext iconv mysqli zip && \
+    docker-php-ext-configure gd --with-freetype --with-jpeg && \
+    docker-php-ext-install -j$(nproc) gd
+
+# Install Composer with checksum verification (mirrors pattern in existing Dockerfiles)
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
+    php -r "if (hash_file('sha384', 'composer-setup.php') === trim(file_get_contents('https://composer.github.io/installer.sig'))) { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); exit(1); }" && \
+    php composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
+    rm composer-setup.php
+
+# Install Node.js 24 via NodeSource (matches engines.node in package.json and CI)
+RUN curl -fsSL https://deb.nodesource.com/setup_24.x | bash - && \
+    apt-get install -y --no-install-recommends nodejs && \
+    rm -rf /var/lib/apt/lists/*
+
+# Copy repo source (root .dockerignore excludes node_modules/, src/vendor/, .git/ etc.)
+WORKDIR /build
+COPY . /build
+
+# Full build:
+#   npm ci          — installs Node dependencies from package-lock.json
+#   npm run build   — runs build:php (composer install in src/) and build:frontend
+#                     (webpack, grunt, biome format, signature generation)
+RUN npm ci && npm run build
+
+##############################################################################
+# Stage 2: runtime — minimal Apache + PHP serving the pre-built application
+##############################################################################
+FROM php:${PHP_VERSION}-apache AS runtime
+
+# Runtime system libraries + PHP extensions in a single layer.
+# The runtime .so libraries (libfreetype6, libjpeg62-turbo, libpng16-16, libzip4)
+# are listed explicitly BEFORE the purge so apt marks them as manually-installed
+# and does NOT remove them when --auto-remove cleans up the -dev header packages.
+# Without this, --auto-remove treats the .so files as auto-installed transitive
+# deps of the -dev packages and removes them too, causing dlopen() failures for
+# gd.so and zip.so at PHP startup.
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        gettext \
+        locales \
+        locales-all \
+        libfreetype6 \
+        libfreetype6-dev \
+        libjpeg62-turbo \
+        libjpeg-dev \
+        libpng16-16 \
+        libpng-dev \
+        libxml2 \
+        libxml2-dev \
+        libzip4 \
+        libzip-dev \
+    && docker-php-ext-install -j$(nproc) xml exif pdo_mysql gettext iconv mysqli zip \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) gd \
+    && apt-get purge -y --auto-remove \
+        libfreetype6-dev libjpeg-dev libpng-dev libxml2-dev libzip-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Apache: ChurchCRM's config (AllowOverride all — required for .htaccess routing)
+# Path is relative to the build context (repo root)
+COPY docker/apache/default.conf /etc/apache2/apache2.conf
+RUN a2enmod rewrite
+
+# PHP settings — mirrors the base stage of Dockerfile.churchcrm-apache-php8
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
+    sed -i 's/^upload_max_filesize.*$/upload_max_filesize = 2M/g'  "$PHP_INI_DIR/php.ini" && \
+    sed -i 's/^post_max_size.*$/post_max_size = 2G/g'              "$PHP_INI_DIR/php.ini" && \
+    sed -i 's/^memory_limit.*$/memory_limit = 2G/g'               "$PHP_INI_DIR/php.ini" && \
+    sed -i 's/^max_execution_time.*$/max_execution_time = 120/g'   "$PHP_INI_DIR/php.ini"
+
+# Copy pre-built application from the builder stage
+COPY --from=builder /build/src /var/www/html
+
+# Sandbox database config: connects to the 'database' service defined in docker-compose.sbx.yaml
+COPY docker/Config.php /var/www/html/Include/Config.php
+
+# Ensure the logs directory is writable (ChurchCRM writes daily log files here)
+RUN mkdir -p /var/www/html/logs && chmod -R a+rwx /var/www/html/logs
+
+EXPOSE 80
