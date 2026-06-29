@@ -9097,10 +9097,6 @@ msgid "Inactive Groups"
 msgstr "비활성 그룹"
 
 #: 
-msgid "Language & Localization"
-msgstr "언어 및 지역화"
-
-#: 
 msgid "Map"
 msgstr "지도"
 
@@ -10894,10 +10890,6 @@ msgstr "— 그룹 선택 —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— 유형 선택 (선택 사항) —"
-
-#: 
-msgid "Active Events"
-msgstr "진행 중인 행사"
 
 #: 
 msgid "Add Event"
@@ -16251,4 +16243,266 @@ msgstr "— 국가 선택 —"
 #: 
 msgid "— Select State —"
 msgstr "— 시/도 선택 —"
+
+#: 
+msgid "Account options"
+msgstr "계정 옵션"
+
+#: 
+msgid "Register"
+msgstr "등록하기"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "슬로바키아어"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d개의 지난 일정"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "이 언어의 인터페이스 텍스트 중 %d%%가 번역되어 있습니다."
+
+#: 
+msgid "AM / PM"
+msgstr "오전 / 오후"
+
+#: 
+msgid "Access denied"
+msgstr "접근 거부"
+
+#: 
+msgid "All times shown in"
+msgstr "모든 시간 표시 기준:"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "생일 및 기념일. 기본값: 월/일"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "달력을 삭제할 수 없습니다: %d개의 일정이 아직 할당되어 있습니다. 먼저 제거하거나 재할당하세요."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "휴대폰 형식"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "일반 서식 코드 (예: 2025년 3월 7일 금요일 오후 3:09)"
+
+#: 
+msgid "Current Events"
+msgstr "현재 일정"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "날짜 및 시간 형식"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "날짜 및 시간 형식"
+
+#: 
+msgid "Date Picker Format"
+msgstr "날짜 선택기 형식"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "날짜 선택기 자리 표시자"
+
+#: 
+msgid "Date Without Year"
+msgstr "연도 없는 날짜"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "일, 2자리"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "일, 앞 자리 0 없음"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "기본값: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "기본값: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "예: \"l, j F Y\"는 \"Friday, 7 March 2025\"를 생성합니다. 다른 모든 문자(공백, 쉼표, 슬래시)는 입력한 대로 표시됩니다."
+
+#: 
+msgid "Filename Date Format"
+msgstr "파일명 날짜 형식"
+
+#: 
+msgid "Fully translated."
+msgstr "완전히 번역됨."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "날짜 입력 필드의 힌트 텍스트. 기본값: yyyy-mm-dd"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "집/직장 전화 형식"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "12시간제, 2자리"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "12시간제, 0 없음"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "24시간제, 2자리"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "시간 포함. 기본값: m/d/Y g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "언어 및 지역"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "언어, 시간대, 날짜 및 전화 형식"
+
+#: 
+msgid "Localization & Formats"
+msgstr "현지화 및 형식"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "현지화 설정이 성공적으로 저장되었습니다"
+
+#: 
+msgid "Long Date Format"
+msgstr "긴 날짜 형식"
+
+#: 
+msgid "Minutes"
+msgstr "분"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "월 및 연도"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "월, 2자리"
+
+#: 
+msgid "Month, full"
+msgstr "월, 전체 이름"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "월, 앞 자리 0 없음"
+
+#: 
+msgid "Month, short"
+msgstr "월, 약어"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "서버에 설치되지 않음 — 이 로캘의 날짜와 숫자가 올바르게 형식화되지 않을 수 있습니다. 호스트에게 설치를 요청하세요 (예: locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "날짜 선택기 입력을 위한 PHP 형식. 기본값: Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "전화번호 형식"
+
+#: 
+msgid "Phone with Extension"
+msgstr "내선번호 포함 전화"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "현지화 설정 저장"
+
+#: 
+msgid "Selected Language"
+msgstr "선택된 언어"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "서버 로캘 지원을 확인할 수 없습니다 (exec가 비활성화됨)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "지원됨 — 이 로캘이 서버에 설치되어 있습니다."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "시스템 언어, 시간대, 날짜/시간 형식 및 전화번호 형식"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "이 필드는 날짜의 각 부분을 나타내는 서식 코드를 사용합니다. 각 필드 아래에서 사전 설정을 선택하거나 참조를 사용하여 직접 만드세요. 실시간 미리보기에서 정확히 어떻게 보일지 확인할 수 있습니다. 시스템 기본값을 사용하려면 비워 두세요."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "시스템 전체에서 날짜와 전화번호가 이렇게 표시됩니다."
+
+#: 
+msgid "Translation completeness"
+msgstr "번역 완성도"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "이 언어에 대한 번역 추적을 사용할 수 없습니다."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "숫자 자리 표시자로 9를 사용하세요 (예: (999) 999-9999). 시스템 기본값을 사용하려면 비워 두세요."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "내보낸 파일 이름에 사용됩니다. 기본값: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "보고서 및 회원 목록에 사용됩니다. 기본값: m/d/Y"
+
+#: 
+msgid "Weekday, full"
+msgstr "요일, 전체 이름"
+
+#: 
+msgid "Weekday, short"
+msgstr "요일, 약어"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "이 코드들은 무엇을 의미하나요?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "연도, 2자리"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "연도, 4자리"
+
+#: 
+msgid "am / pm"
+msgstr "오전 / 오후"
+
+#: 
+msgid "past"
+msgstr "과거"
 

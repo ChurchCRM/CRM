@@ -9139,10 +9139,6 @@ msgid "Inactive Groups"
 msgstr "المجموعات غير النشطة"
 
 #: 
-msgid "Language & Localization"
-msgstr "اللغة والتعريب"
-
-#: 
 msgid "Map"
 msgstr "خريطة"
 
@@ -10941,10 +10937,6 @@ msgstr "— حدد جماعة —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— اختر النوع (اختياري) —"
-
-#: 
-msgid "Active Events"
-msgstr "الأحداث النشطة"
 
 #: 
 msgid "Add Event"
@@ -16311,4 +16303,271 @@ msgstr "— اختر الدولة —"
 #: 
 msgid "— Select State —"
 msgstr "— اختر المحافظة —"
+
+#: 
+msgid "Account options"
+msgstr "خيارات الحساب"
+
+#: 
+msgid "Register"
+msgstr "سجل"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "السلوفاكية"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d حدث سابق"
+msgstr[1] "%d حدث سابق"
+msgstr[2] "%d حدثان سابقان"
+msgstr[3] "%d أحداث سابقة"
+msgstr[4] "%d حدثًا سابقًا"
+msgstr[5] "%d أحداث سابقة"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "تمت ترجمة %d%% من نص الواجهة لهذه اللغة."
+
+#: 
+msgid "AM / PM"
+msgstr "ص / م"
+
+#: 
+msgid "Access denied"
+msgstr "تم رفض الوصول"
+
+#: 
+msgid "All times shown in"
+msgstr "تُعرض جميع الأوقات بـ"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "أعياد الميلاد والذكرى السنوية. الافتراضي: ش/ي"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "لا يمكن حذف التقويم: لا يزال %d حدث (أحداث) مرتبطاً به. أزلها أو أعد تعيينها أولاً."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "تنسيق الهاتف المحمول"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "رموز التنسيق الشائعة (أمثلة: الجمعة، 7 مارس 2025، 3:09 م)"
+
+#: 
+msgid "Current Events"
+msgstr "الأحداث الحالية"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "تنسيق التاريخ والوقت"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "تنسيقات التاريخ والوقت"
+
+#: 
+msgid "Date Picker Format"
+msgstr "تنسيق منتقي التاريخ"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "عنصر نائب منتقي التاريخ"
+
+#: 
+msgid "Date Without Year"
+msgstr "تاريخ بدون سنة"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "اليوم، رقمان"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "اليوم، بدون صفر بادئ"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "الافتراضي: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "الافتراضي: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "مثال: \"l, j F Y\" تنتج \"الجمعة، 7 مارس 2025\". أي أحرف أخرى (مسافات، فواصل، شرطات مائلة) تظهر كما هي مكتوبة."
+
+#: 
+msgid "Filename Date Format"
+msgstr "تنسيق تاريخ اسم الملف"
+
+#: 
+msgid "Fully translated."
+msgstr "مترجم بالكامل."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "نص التلميح في حقول التاريخ. الافتراضي: سسسس-شش-يي"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "تنسيق هاتف المنزل/العمل"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "الساعة 12س، رقمان"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "الساعة 12س، بدون صفر"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "الساعة 24س، رقمان"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "يتضمن مكوّن الوقت. الافتراضي: ش/ي/س g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "اللغة والمنطقة"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "اللغة، المنطقة الزمنية، تنسيقات التاريخ والهاتف"
+
+#: 
+msgid "Localization & Formats"
+msgstr "التوطين والتنسيقات"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "تم حفظ إعدادات التوطين بنجاح"
+
+#: 
+msgid "Long Date Format"
+msgstr "تنسيق التاريخ الطويل"
+
+#: 
+msgid "Minutes"
+msgstr "دقائق"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "الشهر والسنة"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "الشهر، رقمان"
+
+#: 
+msgid "Month, full"
+msgstr "الشهر، الاسم الكامل"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "الشهر، بدون صفر بادئ"
+
+#: 
+msgid "Month, short"
+msgstr "الشهر، مختصر"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "غير مثبّت على الخادم — قد لا يتم تنسيق التواريخ والأرقام بشكل صحيح. اطلب من مستضيفك تثبيته (مثل locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "تنسيق PHP لحقول منتقي التاريخ. الافتراضي: Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "تنسيقات أرقام الهاتف"
+
+#: 
+msgid "Phone with Extension"
+msgstr "هاتف مع رقم تحويل"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "حفظ إعدادات التوطين"
+
+#: 
+msgid "Selected Language"
+msgstr "اللغة المحددة"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "تعذّر التحقق من دعم اللغة المحلية للخادم (exec معطّل)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "مدعوم — هذه اللغة المحلية مثبّتة على الخادم."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "لغة النظام، المنطقة الزمنية، تنسيقات التاريخ/الوقت وتنسيقات أرقام الهاتف"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "تستخدم هذه الحقول رموز التنسيق (أحرف تمثّل أجزاء من التاريخ). اختر إعداداً مسبقاً أسفل كل حقل، أو أنشئ خاصتك باستخدام المرجع. يُظهر المعاينة الحية كيف سيبدو بالضبط. اتركه فارغاً لاستخدام الإعداد الافتراضي للنظام."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "هكذا ستظهر التواريخ وأرقام الهاتف في جميع أنحاء النظام."
+
+#: 
+msgid "Translation completeness"
+msgstr "اكتمال الترجمة"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "تتبع الترجمة غير متاح لهذه اللغة."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "استخدم 9 كعنصر نائب للأرقام (مثل (999) 999-9999). اتركه فارغاً لاستخدام الإعداد الافتراضي للنظام."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "يُستخدم في أسماء الملفات المُصدَّرة. الافتراضي: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "يُستخدم في التقارير وقوائم الأعضاء. الافتراضي: ش/ي/س"
+
+#: 
+msgid "Weekday, full"
+msgstr "يوم الأسبوع، كامل"
+
+#: 
+msgid "Weekday, short"
+msgstr "يوم الأسبوع، مختصر"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "ماذا تعني هذه الرموز؟"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "السنة، رقمان"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "السنة، أربعة أرقام"
+
+#: 
+msgid "am / pm"
+msgstr "ص / م"
+
+#: 
+msgid "past"
+msgstr "الماضي"
 

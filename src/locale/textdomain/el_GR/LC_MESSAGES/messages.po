@@ -9112,10 +9112,6 @@ msgid "Inactive Groups"
 msgstr "Ανενεργές ομάδες"
 
 #: 
-msgid "Language & Localization"
-msgstr "Γλώσσα και τοπικές ρυθμίσεις"
-
-#: 
 msgid "Map"
 msgstr "Χάρτης"
 
@@ -10910,10 +10906,6 @@ msgstr "— Επιλέξτε ομάδα —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Επιλέξτε τύπο (προαιρετικό) —"
-
-#: 
-msgid "Active Events"
-msgstr "Ενεργές εκδηλώσεις"
 
 #: 
 msgid "Add Event"
@@ -16276,4 +16268,267 @@ msgstr "— Επιλογή χώρας —"
 #: 
 msgid "— Select State —"
 msgstr "— Επιλογή περιφέρειας —"
+
+#: 
+msgid "Account options"
+msgstr "Επιλογές λογαριασμού"
+
+#: 
+msgid "Register"
+msgstr "Εγγραφή"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Σλοβάκικη"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d παρελθοντική εκδήλωση"
+msgstr[1] "%d παρελθοντικές εκδηλώσεις"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "%d%% του κειμένου της διεπαφής έχει μεταφραστεί για αυτή τη γλώσσα."
+
+#: 
+msgid "AM / PM"
+msgstr "ΠΜ / ΜΜ"
+
+#: 
+msgid "Access denied"
+msgstr "Η πρόσβαση απαγορεύτηκε"
+
+#: 
+msgid "All times shown in"
+msgstr "Όλες οι ώρες εμφανίζονται σε"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "Γενέθλια και επέτειοι. Προεπιλογή: μ/η"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "Δεν είναι δυνατή η διαγραφή ημερολογίου: %d εκδήλωση/εκδηλώσεις εξακολουθούν να αντιστοιχίζονται σε αυτό. Αφαιρέστε ή επαναντιστοιχίστε τα πρώτα."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "Μορφή κινητού τηλεφώνου"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "Κοινοί κωδικοί μορφοποίησης (παραδείγματα: Παρασκευή, 7 Μαρτίου 2025, 15:09)"
+
+#: 
+msgid "Current Events"
+msgstr "Τρέχουσες εκδηλώσεις"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "Μορφή ημερομηνίας και ώρας"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "Μορφές ημερομηνίας και ώρας"
+
+#: 
+msgid "Date Picker Format"
+msgstr "Μορφή επιλογέα ημερομηνίας"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "Κείμενο βοήθειας επιλογέα ημερομηνίας"
+
+#: 
+msgid "Date Without Year"
+msgstr "Ημερομηνία χωρίς έτος"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "Ημέρα, 2 ψηφία"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "Ημέρα, χωρίς αρχικό μηδέν"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "Προεπιλογή: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "Προεπιλογή: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "Παράδειγμα: \"l, j F Y\" δίνει \"Παρασκευή, 7 Μαρτίου 2025\". Οποιοδήποτε άλλο χαρακτήρα (κενά, κόμματα, κάθετοι) εμφανίζεται όπως πληκτρολογήθηκε."
+
+#: 
+msgid "Filename Date Format"
+msgstr "Μορφή ημερομηνίας για ονόματα αρχείων"
+
+#: 
+msgid "Fully translated."
+msgstr "Πλήρως μεταφρασμένο."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "Κείμενο υπόδειξης σε πεδία ημερομηνίας. Προεπιλογή: εεεε-μμ-ηη"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "Μορφή τηλεφώνου σπιτιού/εργασίας"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "Ώρα 12ω, 2 ψηφία"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "Ώρα 12ω, χωρίς μηδέν"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "Ώρα 24ω, 2 ψηφία"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "Περιλαμβάνει συνιστώσα ώρας. Προεπιλογή: μ/η/Ε g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "Γλώσσα και περιοχή"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "Γλώσσα, ζώνη ώρας, μορφές ημερομηνίας και τηλεφώνου"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Τοπικοποίηση και μορφές"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "Οι ρυθμίσεις τοπικοποίησης αποθηκεύτηκαν επιτυχώς"
+
+#: 
+msgid "Long Date Format"
+msgstr "Μακρά μορφή ημερομηνίας"
+
+#: 
+msgid "Minutes"
+msgstr "Λεπτά"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "Μήνας και έτος"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "Μήνας, 2 ψηφία"
+
+#: 
+msgid "Month, full"
+msgstr "Μήνας, πλήρες όνομα"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "Μήνας, χωρίς αρχικό μηδέν"
+
+#: 
+msgid "Month, short"
+msgstr "Μήνας, συντομογραφία"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "Δεν είναι εγκατεστημένο στον διακομιστή — οι ημερομηνίες και αριθμοί ενδέχεται να μη μορφοποιηθούν σωστά. Ζητήστε από τον πάροχό σας να το εγκαταστήσει (π.χ. locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "Μορφή PHP για τον επιλογέα ημερομηνίας. Προεπιλογή: Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "Μορφές αριθμού τηλεφώνου"
+
+#: 
+msgid "Phone with Extension"
+msgstr "Τηλέφωνο με εσωτερική κλήση"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Αποθήκευση ρυθμίσεων τοπικοποίησης"
+
+#: 
+msgid "Selected Language"
+msgstr "Επιλεγμένη γλώσσα"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "Δεν ήταν δυνατή η επαλήθευση της υποστήριξης locale του διακομιστή (το exec είναι απενεργοποιημένο)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "Υποστηρίζεται — αυτό το locale είναι εγκατεστημένο στον διακομιστή."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "Γλώσσα συστήματος, ζώνη ώρας, μορφές ημερομηνίας/ώρας και μορφές αριθμού τηλεφώνου"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "Αυτά τα πεδία χρησιμοποιούν κωδικούς μορφοποίησης (γράμματα που αντιπροσωπεύουν μέρη ημερομηνίας). Επιλέξτε μια προεπιλογή κάτω από κάθε πεδίο ή φτιάξτε τη δική σας χρησιμοποιώντας την αναφορά. Η ζωντανή προεπισκόπηση δείχνει ακριβώς πώς θα φαίνεται. Αφήστε κενό για τη χρήση της προεπιλογής συστήματος."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "Έτσι θα εμφανίζονται οι ημερομηνίες και οι αριθμοί τηλεφώνου σε όλο το σύστημα."
+
+#: 
+msgid "Translation completeness"
+msgstr "Πληρότητα μετάφρασης"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "Η παρακολούθηση μετάφρασης δεν είναι διαθέσιμη για αυτή τη γλώσσα."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "Χρησιμοποιήστε 9 ως πλαίσιο κράτησης θέσης ψηφίου (π.χ. (999) 999-9999). Αφήστε κενό για τη χρήση της προεπιλογής συστήματος."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "Χρησιμοποιείται σε εξαγόμενα ονόματα αρχείων. Προεπιλογή: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "Χρησιμοποιείται σε αναφορές και λίστες μελών. Προεπιλογή: μ/η/Ε"
+
+#: 
+msgid "Weekday, full"
+msgstr "Ημέρα εβδομάδας, πλήρης"
+
+#: 
+msgid "Weekday, short"
+msgstr "Ημέρα εβδομάδας, σύντομη"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "Τι σημαίνουν αυτοί οι κωδικοί;"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "Έτος, 2 ψηφία"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "Έτος, 4 ψηφία"
+
+#: 
+msgid "am / pm"
+msgstr "πμ / μμ"
+
+#: 
+msgid "past"
+msgstr "παρελθόν"
 

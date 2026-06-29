@@ -9071,10 +9071,6 @@ msgid "Inactive Groups"
 msgstr "Mga Hindi Aktibong Grupo"
 
 #: 
-msgid "Language & Localization"
-msgstr "Wika at Lokalisasyon"
-
-#: 
 msgid "Map"
 msgstr "Mapa"
 
@@ -10869,10 +10865,6 @@ msgstr "— Pumili ng grupo —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Pumili ng uri (opsyonal) —"
-
-#: 
-msgid "Active Events"
-msgstr "Mga Aktibong Kaganapan"
 
 #: 
 msgid "Add Event"
@@ -16235,4 +16227,251 @@ msgstr "— Pumili ng Bansa —"
 #: 
 msgid "— Select State —"
 msgstr "— Pumili ng Estado —"
+
+#: 
+msgid "Account options"
+msgstr "Mga opsyon ng account"
+
+#: 
+msgid "Register"
+msgstr "Magrehistro"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Slovako"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d nakaraang kaganapan"
+msgstr[1] "%d nakaraang kaganapan"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "%d% ng teksto ng interface ay isinalin para sa wikang ito."
+
+#: 
+msgid "Access denied"
+msgstr "Hindi pinahintulutan ang access"
+
+#: 
+msgid "All times shown in"
+msgstr "Lahat ng oras ay ipinapakita sa"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "Mga kaarawan at anibersaryo. Default: m/d"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "Hindi maaaring tanggalin ang kalendaryo: %d kaganapan pa rin ang nakatalagang dito. Alisin o italaga muli ang mga ito muna."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "Format ng Cell Phone"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "Mga karaniwang formatting code (mga halimbawa: Biyernes, 7 Marso 2025, 3:09 PM)"
+
+#: 
+msgid "Current Events"
+msgstr "Mga Kasalukuyang Kaganapan"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "Format ng Petsa at Oras"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "Mga Format ng Petsa at Oras"
+
+#: 
+msgid "Date Picker Format"
+msgstr "Format ng Date Picker"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "Placeholder ng Date Picker"
+
+#: 
+msgid "Date Without Year"
+msgstr "Petsa Nang Walang Taon"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "Araw, 2 digit"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "Araw, walang nangunguna na zero"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "Halimbawa: \"l, j F Y\" ay nagbubunga ng \"Biyernes, 7 Marso 2025\". Ang anumang ibang karakter (mga puwang, tuldok, pahilis) ay lilitaw gaya ng natype."
+
+#: 
+msgid "Filename Date Format"
+msgstr "Format ng Petsa para sa Filename"
+
+#: 
+msgid "Fully translated."
+msgstr "Ganap na isinalin."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "Teksto ng pahiwatig na ipinapakita sa mga input ng petsa. Default: taon-buan-araw"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "Format ng Telepono sa Bahay/Trabaho"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "Oras 12h, 2 digit"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "Oras 12h, walang zero"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "Oras 24h, 2 digit"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "Kasama ang bahagi ng oras. Default: m/d/Y g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "Wika at Rehiyon"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "Wika, time zone, mga format ng petsa at telepono"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Lokalisasyon at Mga Format"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "Matagumpay na nai-save ang mga setting ng lokalisasyon"
+
+#: 
+msgid "Long Date Format"
+msgstr "Mahabang Format ng Petsa"
+
+#: 
+msgid "Minutes"
+msgstr "Minuto"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "Buwan at Taon"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "Buwan, 2 digit"
+
+#: 
+msgid "Month, full"
+msgstr "Buwan, buo"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "Buwan, walang nangunguna na zero"
+
+#: 
+msgid "Month, short"
+msgstr "Buwan, pinaikli"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "Hindi naka-install sa server — ang mga petsa at numero ay maaaring hindi mag-format nang tama. Hilingin sa iyong host na i-install ito (hal. locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "PHP format para sa mga date picker input. Default: Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "Mga Format ng Numero ng Telepono"
+
+#: 
+msgid "Phone with Extension"
+msgstr "Telepono na may Extension"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "I-save ang Mga Setting ng Lokalisasyon"
+
+#: 
+msgid "Selected Language"
+msgstr "Napiling Wika"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "Hindi masuri ang suporta ng locale ng server (ang exec ay hindi pinagana)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "Sinusuportahan — ang locale na ito ay naka-install sa server."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "Wika ng sistema, time zone, mga format ng petsa/oras at numero ng telepono"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "Ang mga field na ito ay gumagamit ng mga formatting code (mga titik na kumakatawan sa mga bahagi ng petsa). Pumili ng preset sa ibaba ng bawat field, o gumawa ng sarili gamit ang sanggunian. Ang live preview ay nagpapakita ng eksakto kung paano ito magmumukhang. Iwanang blangko para gamitin ang default ng sistema."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "Ganito ang hitsura ng mga petsa at numero ng telepono sa buong sistema."
+
+#: 
+msgid "Translation completeness"
+msgstr "Pagkakumpleto ng Pagsasalin"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "Hindi available ang pagsubaybay ng pagsasalin para sa wikang ito."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "Gumamit ng 9 bilang placeholder para sa digit (hal. (999) 999-9999). Iwanang blangko para gamitin ang default ng sistema."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "Ginagamit sa mga nae-export na pangalan ng file. Default: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "Ginagamit sa mga ulat at listahan ng miyembro. Default: m/d/Y"
+
+#: 
+msgid "Weekday, full"
+msgstr "Araw ng Linggo, buo"
+
+#: 
+msgid "Weekday, short"
+msgstr "Araw ng Linggo, pinaikli"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "Ano ang ibig sabihin ng mga code na ito?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "Taon, 2 digit"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "Taon, 4 digit"
+
+#: 
+msgid "past"
+msgstr "nakaraan"
 

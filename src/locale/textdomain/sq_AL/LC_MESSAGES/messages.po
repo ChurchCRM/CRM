@@ -9100,10 +9100,6 @@ msgid "Inactive Groups"
 msgstr "Grupet joaktive"
 
 #: 
-msgid "Language & Localization"
-msgstr "Gjuha dhe lokalizimi"
-
-#: 
 msgid "Map"
 msgstr "Hartë"
 
@@ -10898,10 +10894,6 @@ msgstr "— Zgjidh një grupmesion —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Zgjidh llojin (opsionale) —"
-
-#: 
-msgid "Active Events"
-msgstr "Ngjarjet Aktive"
 
 #: 
 msgid "Add Event"
@@ -16264,4 +16256,259 @@ msgstr "— Zgjidhni vendin —"
 #: 
 msgid "— Select State —"
 msgstr "— Zgjidhni rajonin —"
+
+#: 
+msgid "Account options"
+msgstr "Opsionet e llogarisë"
+
+#: 
+msgid "Register"
+msgstr "Regjistrohu"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Sllovake"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d ngjarje e kaluar"
+msgstr[1] "%d ngjarje të kaluara"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "%d%% e tekstit të ndërfaqes është përkthyer për këtë gjuhë."
+
+#: 
+msgid "Access denied"
+msgstr "Qasja refuzohet"
+
+#: 
+msgid "All times shown in"
+msgstr "Të gjitha oraret shfaqen në"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "Ditëlindjet dhe përvjetorët. I paracaktuar: m/d"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "Nuk mund të fshihet kalendari: %d ngjarje(e) janë ende të caktuara. Hiqini ose ricaktojini fillimisht."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "Formati i telefonit celular"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "Kodet e zakonshme të formatimit (shembuj: e Premte, 7 Mars 2025, 15:09)"
+
+#: 
+msgid "Current Events"
+msgstr "Ngjarjet aktuale"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "Formati i datës dhe orës"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "Formatët e datës dhe orës"
+
+#: 
+msgid "Date Picker Format"
+msgstr "Formati i zgjedhësit të datës"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "Teksti ndihmës i zgjedhësit të datës"
+
+#: 
+msgid "Date Without Year"
+msgstr "Data pa vit"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "Dita, 2 shifra"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "Dita, pa zero kryesore"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "I paracaktuar: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "I paracaktuar: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "Shembull: \"l, j F Y\" prodhon \"Friday, 7 March 2025\". Çdo karakter tjetër (hapësirat, presjet, vijat e pjerrëta) shfaqet siç është shtypur."
+
+#: 
+msgid "Filename Date Format"
+msgstr "Formati i datës për emrin e skedarit"
+
+#: 
+msgid "Fully translated."
+msgstr "Plotësisht i përkthyer."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "Teksti ndihmës në fushat e datës. I paracaktuar: vvvv-mm-dd"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "Formati i telefonit të shtëpisë/punës"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "Ora 12h, 2 shifra"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "Ora 12h, pa zero"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "Ora 24h, 2 shifra"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "Përfshin komponentin e kohës. I paracaktuar: m/d/V g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "Gjuha dhe rajoni"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "Gjuha, zona kohore, formatët e datës dhe telefonit"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Lokalizimi dhe formatët"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "Cilësimet e lokalizimit u ruajtën me sukses"
+
+#: 
+msgid "Long Date Format"
+msgstr "Formati i gjatë i datës"
+
+#: 
+msgid "Minutes"
+msgstr "Minutat"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "Muaji dhe viti"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "Muaji, 2 shifra"
+
+#: 
+msgid "Month, full"
+msgstr "Muaji, emri i plotë"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "Muaji, pa zero kryesore"
+
+#: 
+msgid "Month, short"
+msgstr "Muaji, i shkurtër"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "Nuk është instaluar në server — datat dhe numrat mund të mos formatohen saktë. Kërkojini hostin tuaj ta instalojë (p.sh. locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "Formati PHP për zgjedhësin e datës. I paracaktuar: V-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "Formatët e numrit të telefonit"
+
+#: 
+msgid "Phone with Extension"
+msgstr "Telefon me zgjerim"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Ruaj cilësimet e lokalizimit"
+
+#: 
+msgid "Selected Language"
+msgstr "Gjuha e zgjedhur"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "Mbështetja e lokaleve të serverit nuk mund të kontrollohej (exec është çaktivizuar)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "Mbështetet — ky lokal është instaluar në server."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "Gjuha e sistemit, zona kohore, formatët e datës/orës dhe formatët e numrit të telefonit"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "Këto fusha përdorin kode formatimi (shkronja që përfaqësojnë pjesë të një date). Zgjidhni një paracaktim nën çdo fushë, ose ndërtoni tuajin duke përdorur referencën. Parapamja e drejtpërdrejtë tregon saktësisht si do të duket. Lëreni bosh për të përdorur paracaktimin e sistemit."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "Kështu do të shfaqen datat dhe numrat e telefonit në të gjithë sistemin."
+
+#: 
+msgid "Translation completeness"
+msgstr "Plotësia e përkthimit"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "Gjurmimi i përkthimit nuk është i disponueshëm për këtë gjuhë."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "Përdorni 9 si zëvendësues shifre (p.sh. (999) 999-9999). Lëreni bosh për të përdorur paracaktimin e sistemit."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "Përdoret në emrat e skedarëve të eksportuar. I paracaktuar: Vmd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "Përdoret në raporte dhe lista anëtarësh. I paracaktuar: m/d/V"
+
+#: 
+msgid "Weekday, full"
+msgstr "Dita e javës, e plotë"
+
+#: 
+msgid "Weekday, short"
+msgstr "Dita e javës, e shkurtër"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "Çfarë do të thotë këto kode?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "Viti, 2 shifra"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "Viti, 4 shifra"
+
+#: 
+msgid "past"
+msgstr "e kaluar"
 

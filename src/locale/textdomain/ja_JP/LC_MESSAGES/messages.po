@@ -9062,10 +9062,6 @@ msgid "Inactive Groups"
 msgstr "非アクティブなグループ"
 
 #: 
-msgid "Language & Localization"
-msgstr "言語とローカライゼーション"
-
-#: 
 msgid "Map"
 msgstr "地図"
 
@@ -10859,10 +10855,6 @@ msgstr "— グループを選択 —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— タイプを選択（任意） —"
-
-#: 
-msgid "Active Events"
-msgstr "アクティブなイベント"
 
 #: 
 msgid "Add Event"
@@ -16216,4 +16208,266 @@ msgstr "— 国を選択 —"
 #: 
 msgid "— Select State —"
 msgstr "— 都道府県を選択 —"
+
+#: 
+msgid "Account options"
+msgstr "アカウント設定"
+
+#: 
+msgid "Register"
+msgstr "登録"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "スロバキア語"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d件の過去のイベント"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "この言語のインターフェーステキストの %d%% が翻訳されています。"
+
+#: 
+msgid "AM / PM"
+msgstr "午前 / 午後"
+
+#: 
+msgid "Access denied"
+msgstr "アクセスが拒否されました"
+
+#: 
+msgid "All times shown in"
+msgstr "すべての時刻を表示："
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "誕生日と記念日。デフォルト：月/日"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "カレンダーを削除できません：%d 件のイベントがまだ割り当てられています。先に削除または再割り当てしてください。"
+
+#: 
+msgid "Cell Phone Format"
+msgstr "携帯電話番号フォーマット"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "一般的な書式コード（例：2025年3月7日 金曜日 午後3時09分）"
+
+#: 
+msgid "Current Events"
+msgstr "現在のイベント"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "日付と時刻の形式"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "日付と時刻の形式"
+
+#: 
+msgid "Date Picker Format"
+msgstr "日付ピッカーの形式"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "日付ピッカーのプレースホルダー"
+
+#: 
+msgid "Date Without Year"
+msgstr "年なしの日付"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "日、2桁"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "日、先頭の0なし"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "デフォルト：(999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "デフォルト：(999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "例：\"l, j F Y\" は \"Friday, 7 March 2025\" を生成します。その他の文字（スペース、カンマ、スラッシュ）はそのまま表示されます。"
+
+#: 
+msgid "Filename Date Format"
+msgstr "ファイル名の日付形式"
+
+#: 
+msgid "Fully translated."
+msgstr "完全に翻訳されています。"
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "日付入力に表示されるヒントテキスト。デフォルト：yyyy-mm-dd"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "自宅/職場の電話番号形式"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "12時間制、2桁"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "12時間制、0なし"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "24時間制、2桁"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "時刻を含む。デフォルト：月/日/年 時:分 午前/午後"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "言語と地域"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "言語、タイムゾーン、日付と電話番号の形式"
+
+#: 
+msgid "Localization & Formats"
+msgstr "ローカライズと形式"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "ローカライズ設定が正常に保存されました"
+
+#: 
+msgid "Long Date Format"
+msgstr "長い日付形式"
+
+#: 
+msgid "Minutes"
+msgstr "分"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "月と年"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "月、2桁"
+
+#: 
+msgid "Month, full"
+msgstr "月、フルネーム"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "月、先頭の0なし"
+
+#: 
+msgid "Month, short"
+msgstr "月、略称"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "サーバーにインストールされていません — このロケールの日付と数値が正しく書式設定されない可能性があります。ホストにインストールを依頼してください（例：locale-gen）。"
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "日付ピッカー入力のPHP形式。デフォルト：Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "電話番号の形式"
+
+#: 
+msgid "Phone with Extension"
+msgstr "内線付き電話"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "ローカライズ設定を保存"
+
+#: 
+msgid "Selected Language"
+msgstr "選択された言語"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "サーバーのロケールサポートを確認できませんでした（execが無効）。"
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "サポート済み — このロケールはサーバーにインストールされています。"
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "システム言語、タイムゾーン、日付/時刻形式、および電話番号形式"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "これらのフィールドは書式コード（日付の各部分を表す文字）を使用します。各フィールドの下でプリセットを選択するか、参照を使用して独自に作成してください。ライブプレビューで正確な表示を確認できます。システムのデフォルトを使用するには空白のままにしてください。"
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "システム全体で日付と電話番号はこのように表示されます。"
+
+#: 
+msgid "Translation completeness"
+msgstr "翻訳の完成度"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "この言語の翻訳追跡は利用できません。"
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "数字のプレースホルダーとして9を使用してください（例：(999) 999-9999）。システムのデフォルトを使用するには空白のままにしてください。"
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "エクスポートされたファイル名で使用されます。デフォルト：Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "レポートとメンバーリストで使用されます。デフォルト：月/日/年"
+
+#: 
+msgid "Weekday, full"
+msgstr "曜日、フルネーム"
+
+#: 
+msgid "Weekday, short"
+msgstr "曜日、略称"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "これらのコードはどういう意味ですか？"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "年、2桁"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "年、4桁"
+
+#: 
+msgid "am / pm"
+msgstr "午前 / 午後"
+
+#: 
+msgid "past"
+msgstr "過去"
 

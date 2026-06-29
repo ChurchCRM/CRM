@@ -9130,10 +9130,6 @@ msgid "Inactive Groups"
 msgstr "Неактивні групи"
 
 #: 
-msgid "Language & Localization"
-msgstr "Мова та локалізація"
-
-#: 
 msgid "Map"
 msgstr "Карта"
 
@@ -10930,10 +10926,6 @@ msgstr "— Виберіть групу —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Виберіть тип (необов'язково) —"
-
-#: 
-msgid "Active Events"
-msgstr "Активні події"
 
 #: 
 msgid "Add Event"
@@ -16298,4 +16290,269 @@ msgstr "— Виберіть країну —"
 #: 
 msgid "— Select State —"
 msgstr "— Виберіть область —"
+
+#: 
+msgid "Account options"
+msgstr "Параметри облікового запису"
+
+#: 
+msgid "Register"
+msgstr "Зареєструватися"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Словацька"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d минула подія"
+msgstr[1] "%d минулі події"
+msgstr[2] "%d минулих подій"
+msgstr[3] "%d минулих подій"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "%d% тексту інтерфейсу перекладено для цієї мови."
+
+#: 
+msgid "AM / PM"
+msgstr "ДП / ПП"
+
+#: 
+msgid "Access denied"
+msgstr "Доступ заборонено"
+
+#: 
+msgid "All times shown in"
+msgstr "Весь час відображається в"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "Дні народження та ювілеї. За замовчуванням: д/м"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "Неможливо видалити календар: до нього прив'язано %d подій(у). Спочатку видаліть або перепризначте їх."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "Формат мобільного телефону"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "Загальні коди форматування (приклади: п'ятниця, 7 березня 2025, 15:09)"
+
+#: 
+msgid "Current Events"
+msgstr "Поточні події"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "Формат дати та часу"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "Формати дати та часу"
+
+#: 
+msgid "Date Picker Format"
+msgstr "Формат вибору дати"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "Підказка вибору дати"
+
+#: 
+msgid "Date Without Year"
+msgstr "Дата без року"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "День, 2 цифри"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "День, без початкового нуля"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "За замовчуванням: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "За замовчуванням: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "Приклад: «l, j F Y» дає «П'ятниця, 7 Березня 2025». Будь-які інші символи (пробіли, коми, слеші) відображаються як введені."
+
+#: 
+msgid "Filename Date Format"
+msgstr "Формат дати для імені файлу"
+
+#: 
+msgid "Fully translated."
+msgstr "Повністю перекладено."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "Підказка у полях введення дати. За замовчуванням: рррр-мм-дд"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "Формат домашнього/робочого телефону"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "Година 12г, 2 цифри"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "Година 12г, без нуля"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "Година 24г, 2 цифри"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "Включає компонент часу. За замовчуванням: д/м/Y г:хв a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "Мова та регіон"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "Мова, часовий пояс, формати дати та телефону"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Локалізація та формати"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "Налаштування локалізації успішно збережено"
+
+#: 
+msgid "Long Date Format"
+msgstr "Довгий формат дати"
+
+#: 
+msgid "Minutes"
+msgstr "Хвилини"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "Місяць та рік"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "Місяць, 2 цифри"
+
+#: 
+msgid "Month, full"
+msgstr "Місяць, повний"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "Місяць, без початкового нуля"
+
+#: 
+msgid "Month, short"
+msgstr "Місяць, скорочено"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "Не встановлено на сервері — дати та числа можуть відображатися некоректно. Попросіть хостинг встановити це (наприклад, locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "Формат PHP для введення дати. За замовчуванням: Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "Формати номерів телефонів"
+
+#: 
+msgid "Phone with Extension"
+msgstr "Телефон з додатковим номером"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Зберегти налаштування локалізації"
+
+#: 
+msgid "Selected Language"
+msgstr "Вибрана мова"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "Не вдалося перевірити підтримку локалі сервером (exec вимкнено)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "Підтримується — цю локаль встановлено на сервері."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "Системна мова, часовий пояс, формати дати/часу та форматів телефонних номерів"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "Ці поля використовують коди форматування (літери, що позначають частини дати). Виберіть попередньо встановлений варіант під кожним полем або створіть власний за допомогою довідника. Попередній перегляд показує точний вигляд. Залиште пустим для системового значення за замовчуванням."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "Так виглядатимуть дати та номери телефонів у всій системі."
+
+#: 
+msgid "Translation completeness"
+msgstr "Повнота перекладу"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "Відстеження перекладу недоступне для цієї мови."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "Використовуйте 9 як заповнювач цифри (наприклад, (999) 999-9999). Залиште пустим для системового значення за замовчуванням."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "Використовується в іменах файлів, що експортуються. За замовчуванням: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "Використовується у звітах та списках учасників. За замовчуванням: д/м/Y"
+
+#: 
+msgid "Weekday, full"
+msgstr "День тижня, повна назва"
+
+#: 
+msgid "Weekday, short"
+msgstr "День тижня, скорочено"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "Що означають ці коди?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "Рік, 2 цифри"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "Рік, 4 цифри"
+
+#: 
+msgid "am / pm"
+msgstr "дп / пп"
+
+#: 
+msgid "past"
+msgstr "минуле"
 
