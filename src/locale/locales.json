@@ -83,7 +83,7 @@
     "locale": "hr_HR",
     "languageCode": "hr",
     "countryCode": "HR",
-    "dataTables": "Croatian",
+    "dataTables": "hr",
     "fullCalendar": true,
     "fullCalendarLocale": "hr",
     "datePicker": true,
