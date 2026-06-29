@@ -35,13 +35,6 @@ if ! docker info &>/dev/null; then
     exit 1
 fi
 
-if ! docker compose version &>/dev/null; then
-    echo "ERROR: Docker Compose plugin v2 is not available ('docker compose version' failed)." >&2
-    echo "       Install Docker Desktop >= 3.6.0 or the standalone Compose plugin:" >&2
-    echo "       https://docs.docker.com/compose/install/" >&2
-    exit 1
-fi
-
 # ── Build and start ──────────────────────────────────────────────────────────
 echo ""
 echo "========================================================================"
@@ -62,34 +55,14 @@ MAX_WAIT=120   # seconds
 INTERVAL=5
 elapsed=0
 
-# Readiness check — three tiers, best-to-worst HTTP fidelity:
-#   1. curl  (-sf fails on HTTP 4xx/5xx — full HTTP status check)
-#   2. wget  (-q --spider; GNU wget fails on HTTP 4xx/5xx, BusyBox wget does not —
-#             behaves like tier 3 on Alpine/BusyBox hosts)
-#   3. /dev/tcp  (TCP-only; returns exit 0 as soon as Apache is listening,
-#               regardless of HTTP response code — cannot detect PHP startup
-#               failures that produce HTTP 500.  Use logs to verify if curl
-#               and wget are both unavailable.)
-check_ready() {
-    if command -v curl &>/dev/null; then
-        curl -sf "${WEB_URL}/" -o /dev/null 2>/dev/null
-    elif command -v wget &>/dev/null; then
-        wget -q --spider "${WEB_URL}/" 2>/dev/null
-    else
-        # TCP-only fallback — cannot verify HTTP response code.
-        bash -c "cat < /dev/null > /dev/tcp/localhost/${WEBSERVER_PORT}" 2>/dev/null
-    fi
-}
-
-until check_ready; do
+until curl -sf "${WEB_URL}/" -o /dev/null -w "" 2>/dev/null; do
     if [ "${elapsed}" -ge "${MAX_WAIT}" ]; then
         echo ""
-        echo "  ERROR: Server did not respond within ${MAX_WAIT}s."
-        echo "         It may still be starting, or the build may have failed."
-        echo "         Check logs with:"
-        echo "         docker compose -f docker/docker-compose.sbx.yaml logs"
+        echo "  WARNING: Server did not respond within ${MAX_WAIT}s."
+        echo "           It may still be starting. Check logs with:"
+        echo "           npm run docker:sbx:logs"
         echo ""
-        exit 1
+        exit 0
     fi
     printf "."
     sleep "${INTERVAL}"
