@@ -75,7 +75,8 @@ RUN npm ci && npm run build
 ##############################################################################
 FROM php:${PHP_VERSION}-apache AS runtime
 
-# Runtime system libraries (same as builder minus the build toolchain)
+# Runtime system libraries + PHP extensions in a single layer so -dev
+# header packages can be purged after compilation, keeping the image smaller.
 RUN apt-get update && apt-get install -y --no-install-recommends \
         gettext \
         locales \
@@ -85,12 +86,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libpng-dev \
         libxml2-dev \
         libzip-dev \
+    && docker-php-ext-install -j$(nproc) xml exif pdo_mysql gettext iconv mysqli zip \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) gd \
+    && apt-get purge -y --auto-remove \
+        libfreetype6-dev libjpeg-dev libpng-dev libxml2-dev libzip-dev \
     && rm -rf /var/lib/apt/lists/*
-
-# PHP extensions
-RUN docker-php-ext-install -j$(nproc) xml exif pdo_mysql gettext iconv mysqli zip && \
-    docker-php-ext-configure gd --with-freetype --with-jpeg && \
-    docker-php-ext-install -j$(nproc) gd
 
 # Apache: ChurchCRM's config (AllowOverride all — required for .htaccess routing)
 # Path is relative to the build context (repo root)

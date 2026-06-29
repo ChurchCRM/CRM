@@ -34,8 +34,12 @@
 #
 # PORT OVERRIDES
 # --------------
-# Set WEBSERVER_PORT or ADMINER_PORT in docker/.env (or export them) before
-# running if port 80 or 8088 are already in use on the host.
+# WEBSERVER_PORT and ADMINER_PORT are not defined in docker/.env (which uses
+# DEV_WEBSERVER_PORT / DEV_ADMINER_PORT for other profiles).  To override the
+# sbx defaults, export the vars before running:
+#   export WEBSERVER_PORT=8080
+#   export ADMINER_PORT=8089
+#   docker compose -f docker/docker-compose.sbx.yaml up -d --build
 #
 # STOPPING
 # --------

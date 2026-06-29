@@ -58,11 +58,12 @@ elapsed=0
 until curl -sf "${WEB_URL}/" -o /dev/null -w "" 2>/dev/null; do
     if [ "${elapsed}" -ge "${MAX_WAIT}" ]; then
         echo ""
-        echo "  WARNING: Server did not respond within ${MAX_WAIT}s."
-        echo "           It may still be starting. Check logs with:"
-        echo "           npm run docker:sbx:logs"
+        echo "  ERROR: Server did not respond within ${MAX_WAIT}s."
+        echo "         It may still be starting, or the build may have failed."
+        echo "         Check logs with:"
+        echo "         docker compose -f docker/docker-compose.sbx.yaml logs"
         echo ""
-        exit 0
+        exit 1
     fi
     printf "."
     sleep "${INTERVAL}"

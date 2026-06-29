@@ -116,7 +116,7 @@ Development
     * **Note:** Containers run in background with `--profile dev`
 4. Launch terminal in web container: `npm run docker:dev:login:web`
 5. `cd` into project directory: `cd /home/ChurchCRM`
-6. Build ChurchCRM: `npm run deploy`
+6. Build ChurchCRM: `npm run build`
 7. Make logs writable: `chmod a+rwx src/logs`
 8. Stop docker: `npm run docker:dev:stop`
 9. View live logs: `npm run docker:dev:logs`
@@ -149,7 +149,7 @@ Testing
 * PHP 8.4+ with extensions: `bcmath`, `curl`, `fileinfo`, `filter`, `gd`, `gettext`, `iconv`, `mbstring`, `mysqli`, `PDO`, `pdo_mysql`, `session`, `sodium`, `zip`, `zlib`
 * [Composer](https://getcomposer.org/) (PHP dependency manager)
 
-> **Note:** PHP and Composer are required on the **build host** because `npm run deploy` compiles PHP
+> **Note:** PHP and Composer are required on the **build host** because `npm run build` compiles PHP
 > dependencies via Composer locally before mounting them into Docker. If you want to avoid installing
 > PHP locally, use the **Dev** workflow instead — it builds everything inside the Docker container.
 
@@ -158,7 +158,7 @@ Testing
 1. Clone repo: `git clone git@github.com:ChurchCRM/CRM.git`
 2. Change into project directory: `cd CRM`
 3. Install Node dependencies: `npm ci`
-4. Build code locally: `npm run deploy`
+4. Build code locally: `npm run build`
 5. Start test containers: `npm run docker:test:start`
 6. Run tests: `npm run test`
 7. Stop docker: `npm run docker:test:stop`
