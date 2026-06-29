@@ -82,7 +82,7 @@
         "test:new-system": "npx cypress run --config-file cypress/configs/new-system.config.ts"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^7.2.0",
+        "@fortawesome/fontawesome-free": "^7.3.0",
         "@tabler/core": "^1.4.0",
         "@tabler/icons-webfont": "^3.44.0",
         "@uppy/core": "^5.2.0",
@@ -108,7 +108,7 @@
         "dompurify": "^3.4.11",
         "flag-icons": "^7.5.0",
         "fullcalendar": "^6.1.21",
-        "i18next": "^26.3.1",
+        "i18next": "^26.3.3",
         "inputmask": "^5.0.9",
         "jquery": "^3.7.1",
         "just-validate": "^4.3.0",
@@ -133,7 +133,7 @@
         "grunt": "^1.6.2",
         "grunt-cli": "^1.5.0",
         "grunt-contrib-copy": "^1.0.0",
-        "i18next-cli": "^1.64.1",
+        "i18next-cli": "^1.64.2",
         "i18next-conv": "^17.0.0",
         "mini-css-extract-plugin": "^2.10.2",
         "mysql2": "^3.22.5",
