@@ -1,10 +1,10 @@
 {
   "%d past event": {
     "one": "%d minulá udalosť",
-    "few": "",
-    "many": "",
+    "few": "%d minulé udalosti",
+    "many": "%d minulej udalosti",
     "other": "%d minulých udalostí"
   },
-  "AM / PM": "",
-  "am / pm": ""
+  "AM / PM": "dop. / pop.",
+  "am / pm": "dop. / pop."
 }
