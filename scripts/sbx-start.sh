@@ -35,6 +35,13 @@ if ! docker info &>/dev/null; then
     exit 1
 fi
 
+if ! docker compose version &>/dev/null; then
+    echo "ERROR: Docker Compose plugin v2 is not available ('docker compose version' failed)." >&2
+    echo "       Install Docker Desktop >= 3.6.0 or the standalone Compose plugin:" >&2
+    echo "       https://docs.docker.com/compose/install/" >&2
+    exit 1
+fi
+
 # ── Build and start ──────────────────────────────────────────────────────────
 echo ""
 echo "========================================================================"
@@ -55,7 +62,18 @@ MAX_WAIT=120   # seconds
 INTERVAL=5
 elapsed=0
 
-until curl -sf "${WEB_URL}/" -o /dev/null -w "" 2>/dev/null; do
+# Readiness check: prefer curl; fall back to a pure-bash TCP connect so the
+# script works on minimal runners that have Docker but not curl.
+check_ready() {
+    if command -v curl &>/dev/null; then
+        curl -sf "${WEB_URL}/" -o /dev/null 2>/dev/null
+    else
+        # bash /dev/tcp is a built-in that does not require any extra packages.
+        bash -c "cat < /dev/null > /dev/tcp/localhost/${WEBSERVER_PORT}" 2>/dev/null
+    fi
+}
+
+until check_ready; do
     if [ "${elapsed}" -ge "${MAX_WAIT}" ]; then
         echo ""
         echo "  ERROR: Server did not respond within ${MAX_WAIT}s."

@@ -16,6 +16,11 @@ node_modules/
 # Host-generated PHP dependencies (builder runs composer install)
 src/vendor/
 
+# Host-generated / sensitive config file — the runtime stage overwrites this with
+# docker/Config.php, but excluding it here prevents any host DB credentials from
+# appearing in an intermediate build layer.
+src/Include/Config.php
+
 # Application runtime state
 src/logs/
 src/cache/
