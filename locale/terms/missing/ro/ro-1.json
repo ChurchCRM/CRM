@@ -1,10 +1,10 @@
 {
-  "Important": "",
+  "Important": "Important",
   "%d past event": {
     "one": "%d eveniment trecut",
-    "few": "",
+    "few": "%d evenimente trecute",
     "other": "%d evenimente trecute"
   },
-  "AM / PM": "",
-  "am / pm": ""
+  "AM / PM": "AM / PM",
+  "am / pm": "am / pm"
 }
