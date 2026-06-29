@@ -75,16 +75,26 @@ RUN npm ci && npm run build
 ##############################################################################
 FROM php:${PHP_VERSION}-apache AS runtime
 
-# Runtime system libraries + PHP extensions in a single layer so -dev
-# header packages can be purged after compilation, keeping the image smaller.
+# Runtime system libraries + PHP extensions in a single layer.
+# The runtime .so libraries (libfreetype6, libjpeg62-turbo, libpng16-16, libzip4)
+# are listed explicitly BEFORE the purge so apt marks them as manually-installed
+# and does NOT remove them when --auto-remove cleans up the -dev header packages.
+# Without this, --auto-remove treats the .so files as auto-installed transitive
+# deps of the -dev packages and removes them too, causing dlopen() failures for
+# gd.so and zip.so at PHP startup.
 RUN apt-get update && apt-get install -y --no-install-recommends \
         gettext \
         locales \
         locales-all \
+        libfreetype6 \
         libfreetype6-dev \
+        libjpeg62-turbo \
         libjpeg-dev \
+        libpng16-16 \
         libpng-dev \
+        libxml2 \
         libxml2-dev \
+        libzip4 \
         libzip-dev \
     && docker-php-ext-install -j$(nproc) xml exif pdo_mysql gettext iconv mysqli zip \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
