@@ -52,12 +52,12 @@
 | `fil` | Filipino | 3924 | 99.9% | 🟢 Complete | ✅ Yes |
 | `id` | Indonesian | 3924 | 99.9% | 🟢 Complete | ✅ Yes |
 | `ro` | Romanian | 3924 | 99.9% | 🟢 Complete | ✅ Yes |
+| `hr` | Croatian | 3825 | 97.38% | 🟢 Complete | ❌ No |
 | `my` | Burmese | 66 | 1.68% | 🟠 Needs Work | ❌ No |
 | `sl` | Slovenian | 65 | 1.65% | 🟠 Needs Work | ❌ No |
 | `sr-cyrl` | Serbian (Cyrillic) | 58 | 1.48% | 🟠 Needs Work | ❌ No |
 | `en-za` | English (ZA) | 52 | 1.32% | N/A | ✅ Yes |
 | `lv` | Latvian | 42 | 1.07% | 🟠 Needs Work | ❌ No |
-| `hr` | Croatian | 30 | 0.76% | 🟠 Needs Work | ❌ No |
 | `en-au` | English (AU) | 27 | 0.69% | N/A | ✅ Yes |
 | `en` | English | 14 | 0.36% | N/A | ✅ Yes |
 | `en-ca` | English (CA) | 11 | 0.28% | N/A | ✅ Yes |
@@ -78,11 +78,11 @@ These locales have translations but are not yet in locales.json:
 
 | Language | Code | Translations | Percentage | Status |
 |----------|------|--------------|------------|--------|
+| Croatian | `hr` | 3825 | 97.38% | ⭐ Ready to add |
 | Burmese | `my` | 66 | 1.68% | 📝 Monitor |
 | Slovenian | `sl` | 65 | 1.65% | 📝 Monitor |
 | Serbian (Cyrillic) | `sr-cyrl` | 58 | 1.48% | 📝 Monitor |
 | Latvian | `lv` | 42 | 1.07% | 📝 Monitor |
-| Croatian | `hr` | 30 | 0.76% | 📝 Monitor |
 
 **Note:** 
 - English variants (en-*) are marked as N/A since English is the default language
