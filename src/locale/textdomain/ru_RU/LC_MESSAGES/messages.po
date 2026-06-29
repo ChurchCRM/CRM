@@ -16369,8 +16369,20 @@ msgid "Slovak"
 msgstr "Словацкий"
 
 #: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d прошедшее событие"
+msgstr[1] "%d прошедших события"
+msgstr[2] "%d прошедших событий"
+msgstr[3] "%d прошедшего события"
+
+#: 
 msgid "%d% of interface text is translated for this language."
 msgstr "%d% текста интерфейса переведено для этого языка."
+
+#: 
+msgid "AM / PM"
+msgstr "ДП / ПП"
 
 #: 
 msgid "Access denied"
@@ -16599,6 +16611,10 @@ msgstr "Год, 2 цифры"
 #: 
 msgid "Year, 4 digits"
 msgstr "Год, 4 цифры"
+
+#: 
+msgid "am / pm"
+msgstr "дп / пп"
 
 #: 
 msgid "past"

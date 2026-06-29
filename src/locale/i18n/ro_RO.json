@@ -3908,6 +3908,11 @@
     "Account options": "Opțiuni cont",
     "Register": "Înregistrare",
     "Slovak": "Slovac",
+    "%d past event": {
+        "one": "%d eveniment trecut",
+        "few": "%d evenimente trecute",
+        "other": "%d evenimente trecute"
+    },
     "%d% of interface text is translated for this language.": "%d% din textul interfeței este tradus pentru această limbă.",
     "Access denied": "Acces refuzat",
     "All times shown in": "Toate orele afișate în",

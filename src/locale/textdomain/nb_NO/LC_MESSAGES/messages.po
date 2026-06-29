@@ -16377,6 +16377,10 @@ msgid "%d% of interface text is translated for this language."
 msgstr "%d% av grensesnitteksten er oversatt for dette språket."
 
 #: 
+msgid "AM / PM"
+msgstr "FM / EM"
+
+#: 
 msgid "Access denied"
 msgstr "Tilgang nektet"
 
@@ -16603,6 +16607,10 @@ msgstr "År, 2 sifre"
 #: 
 msgid "Year, 4 digits"
 msgstr "År, 4 sifre"
+
+#: 
+msgid "am / pm"
+msgstr "fm / em"
 
 #: 
 msgid "past"
