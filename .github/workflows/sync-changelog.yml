@@ -45,7 +45,7 @@ jobs:
       # Auto-trigger: release tag. Manual trigger: workflow_dispatch input.
       TAG: ${{ github.event.release.tag_name || inputs.tag }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           ref: master
 
