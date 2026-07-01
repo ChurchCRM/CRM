@@ -1,3 +1,102 @@
+describe("User Editor - Permission Visibility and Persistence Tests", () => {
+    beforeEach(() => {
+        cy.setupAdminSession();
+    });
+
+    it("Should display module-level permission checkboxes (AddEvent, EmailMailto, CreateDirectory)", () => {
+        // These were previously hidden in the User Config table below the
+        // main Permissions card — #8458. They must now appear as checkboxes
+        // in the Permissions card for discoverability.
+        cy.visit('UserEditor.php?PersonID=1');
+        cy.contains("User Editor");
+
+        cy.get('#ucfg_AddEvent').should('exist').and('be.visible');
+        cy.get('#ucfg_EmailMailto').should('exist').and('be.visible');
+        cy.get('#ucfg_CreateDirectory').should('exist').and('be.visible');
+    });
+
+    it("Should persist module-level permission toggle (AddEvent)", () => {
+        cy.intercept('POST', '**/UserEditor.php*').as('saveUser');
+
+        cy.visit('UserEditor.php?PersonID=1');
+
+        // Toggle AddEvent and save
+        cy.get('#ucfg_AddEvent').check();
+        cy.get('#SaveButton').click();
+        cy.wait('@saveUser');
+
+        // Verify it persisted
+        cy.visit('UserEditor.php?PersonID=1');
+        cy.get('#ucfg_AddEvent').should('be.checked');
+
+        // Clean up
+        cy.get('#ucfg_AddEvent').uncheck();
+        cy.get('#SaveButton').click();
+        cy.wait('@saveUser');
+    });
+});
+
+describe("Admin bypass - module feature-flag checks (#8667)", () => {
+    // Capture original flag values so they can be restored after each test
+    // even if the test assertion fails.
+    let savedEventsEnabled;
+    let savedFinanceEnabled;
+
+    before(() => {
+        cy.makePrivateAdminAPICall("GET", "/admin/api/system/config/bEnabledEvents", null, 200)
+            .then((resp) => { savedEventsEnabled = resp.body.value; });
+        cy.makePrivateAdminAPICall("GET", "/admin/api/system/config/bEnabledFinance", null, 200)
+            .then((resp) => { savedFinanceEnabled = resp.body.value; });
+    });
+
+    afterEach(() => {
+        // Restore flags regardless of test outcome so other tests are not affected.
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/admin/api/system/config/bEnabledEvents",
+            { value: savedEventsEnabled ?? "1" },
+            200,
+        );
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/admin/api/system/config/bEnabledFinance",
+            { value: savedFinanceEnabled ?? "1" },
+            200,
+        );
+    });
+
+    beforeEach(() => {
+        cy.setupAdminSession();
+    });
+
+    it("Admin should access /event/dashboard even when bEnabledEvents is off", () => {
+        // Explicitly disable bEnabledEvents, then assert the admin bypass works:
+        // canViewEvents() must return true for admins regardless of the flag.
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/admin/api/system/config/bEnabledEvents",
+            { value: "0" },
+            200,
+        );
+        cy.visit('event/dashboard');
+        cy.url().should('not.include', 'access-denied');
+        cy.contains('Events Dashboard').should('exist');
+    });
+
+    it("Admin should access /finance/ even when bEnabledFinance is off", () => {
+        // Explicitly disable bEnabledFinance, then assert the admin bypass works.
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/admin/api/system/config/bEnabledFinance",
+            { value: "0" },
+            200,
+        );
+        cy.visit('finance/');
+        cy.url().should('not.include', 'access-denied');
+        cy.contains('Finance Dashboard').should('exist');
+    });
+});
+
 describe("User Editor - ORM Migration Tests", () => {
     beforeEach(() => {
         cy.setupAdminSession();
