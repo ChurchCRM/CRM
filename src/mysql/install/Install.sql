@@ -911,6 +911,7 @@ CREATE TABLE `user_usr` (
   `usr_TwoFactorAuthSecret` VARCHAR(255) NULL,
   `usr_TwoFactorAuthLastKeyTimestamp` INT NULL,
   `usr_TwoFactorAuthRecoveryCodes` TEXT NULL,
+  `usr_TwoFactorAuthGracePeriodStart` TIMESTAMP NULL DEFAULT NULL,
   PRIMARY KEY  (`usr_per_ID`),
   UNIQUE KEY `usr_UserName` (`usr_UserName`),
   UNIQUE KEY `usr_apiKey` (`usr_apiKey`)
