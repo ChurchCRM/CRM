@@ -7477,10 +7477,6 @@ msgid "Location & Contact Information"
 msgstr "Sted og kontaktinformasjon"
 
 #: 
-msgid "New to"
-msgstr "Ny i"
-
-#: 
 msgid "No locales configured"
 msgstr "Ingen lokaler konfigurert"
 
@@ -9200,10 +9196,6 @@ msgid "Inactive Groups"
 msgstr "Inaktive grupper"
 
 #: 
-msgid "Language & Localization"
-msgstr "Språk og lokalisering"
-
-#: 
 msgid "Map"
 msgstr "Kart"
 
@@ -9710,10 +9702,6 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Koble til en SMTP-server slik at ChurchCRM kan sende e-post"
 
 #: 
-msgid "Connect with others"
-msgstr "Kom i kontakt med andre"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Konverter enkeltposter til familieenheter"
 
@@ -9852,10 +9840,6 @@ msgstr "Duplikater"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Hver person kan ha sin egen e-post og mobilnummer."
-
-#: 
-msgid "Easy registration"
-msgstr "Enkel registrering"
 
 #: 
 msgid "Edit Class"
@@ -10160,10 +10144,6 @@ msgstr "Ugyldig \"Fra-nummer\": \"%s\". Inkluder landskoden, f.eks. +4791234567 
 #: 
 msgid "Invite Your Team"
 msgstr "Inviter teamet ditt"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "Bli med i fellesskapet vårt og hold kontakten med"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10556,10 +10536,6 @@ msgid "Record why attendees visited your church"
 msgstr "Registrer hvorfor besøkende kom til kirken"
 
 #: 
-msgid "Register Your Family"
-msgstr "Registrer familien din"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "Fjern alle fra utvalget"
 
@@ -10726,10 +10702,6 @@ msgstr "Start på nytt"
 #: 
 msgid "Start Over"
 msgstr "Begynn på nytt"
-
-#: 
-msgid "Stay informed"
-msgstr "Hold deg oppdatert"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -11018,10 +10990,6 @@ msgstr "— Velg en gruppe —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Velg type (valgfritt) —"
-
-#: 
-msgid "Active Events"
-msgstr "Aktive arrangementer"
 
 #: 
 msgid "Add Event"
@@ -14587,16 +14555,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "Navn kan ikke være lengre enn %d tegn"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "Trenger du hjelp? Kontakt oss"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "Åpner et 2-minutters vindu for enheter for å registrere seg på:"
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "Velkommen — logg inn for å administrere menigheten din"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -16392,4 +16352,267 @@ msgstr "— Velg land —"
 #: 
 msgid "— Select State —"
 msgstr "— Velg fylke —"
+
+#: 
+msgid "Account options"
+msgstr "Kontoalternativer"
+
+#: 
+msgid "Register"
+msgstr "Registrer"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Slovakisk"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d tidligere hendelse"
+msgstr[1] "%d tidligere hendelser"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "%d% av grensesnitteksten er oversatt for dette språket."
+
+#: 
+msgid "AM / PM"
+msgstr "FM / EM"
+
+#: 
+msgid "Access denied"
+msgstr "Tilgang nektet"
+
+#: 
+msgid "All times shown in"
+msgstr "Alle tider vises i"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "Fødselsdager og jubileer. Standard: d/m"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "Kan ikke slette kalender: %d hendelse(r) er fortsatt tilknyttet. Fjern eller tilordne dem på nytt først."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "Format for mobiltelefon"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "Vanlige formateringskoder (eksempler: fredag 7. mars 2025, 15:09)"
+
+#: 
+msgid "Current Events"
+msgstr "Aktuelle hendelser"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "Dato- og tidsformat"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "Dato- og tidsformater"
+
+#: 
+msgid "Date Picker Format"
+msgstr "Format for datoplukker"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "Plassholder for datoplukker"
+
+#: 
+msgid "Date Without Year"
+msgstr "Dato uten år"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "Dag, 2 sifre"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "Dag, uten ledende null"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "Standard: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "Standard: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "Eksempel: \"l, j F Y\" gir \"Fredag, 7 Mars 2025\". Alle andre tegn (mellomrom, kommaer, skråstreker) vises som skrevet."
+
+#: 
+msgid "Filename Date Format"
+msgstr "Datoformat for filnavn"
+
+#: 
+msgid "Fully translated."
+msgstr "Fullstendig oversatt."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "Hjelpetekst i datofelt. Standard: åååå-mm-dd"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "Format for hjem/jobbtelefon"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "Time 12t, 2 sifre"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "Time 12t, uten null"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "Time 24t, 2 sifre"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "Inkluderer tidskomponent. Standard: d/m/Y g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "Språk og region"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "Språk, tidssone, dato- og telefonformater"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Lokalisering og formater"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "Lokaliseringsinnstillingene ble lagret"
+
+#: 
+msgid "Long Date Format"
+msgstr "Langt datoformat"
+
+#: 
+msgid "Minutes"
+msgstr "Minutter"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "Måned og år"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "Måned, 2 sifre"
+
+#: 
+msgid "Month, full"
+msgstr "Måned, fullt navn"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "Måned, uten ledende null"
+
+#: 
+msgid "Month, short"
+msgstr "Måned, forkortet"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "Ikke installert på serveren — datoer og tall formateres kanskje ikke riktig. Be verten om å installere det (f.eks. locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "PHP-format for datoplukker. Standard: Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "Formater for telefonnummer"
+
+#: 
+msgid "Phone with Extension"
+msgstr "Telefon med intern"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Lagre lokaliseringsinnstillinger"
+
+#: 
+msgid "Selected Language"
+msgstr "Valgt språk"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "Serverlokalens støtte kunne ikke kontrolleres (exec er deaktivert)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "Støttes — denne lokalen er installert på serveren."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "Systemspråk, tidssone, dato-/tidsformater og telefonnummerformater"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "Disse feltene bruker formateringskoder (bokstaver som representerer deler av en dato). Velg et forhåndsinnstilt alternativ under hvert felt, eller lag ditt eget med referansen. Forhåndsvisningen viser nøyaktig resultatet. La stå tomt for å bruke systemstandarden."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "Slik vises datoer og telefonnumre i hele systemet."
+
+#: 
+msgid "Translation completeness"
+msgstr "Oversettelsesgrad"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "Oversettingssporing er ikke tilgjengelig for dette språket."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "Bruk 9 som sifferplassholder (f.eks. (999) 999-9999). La stå tomt for systemstandarden."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "Brukes i eksporterte filnavn. Standard: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "Brukes i rapporter og medlemslister. Standard: d/m/Y"
+
+#: 
+msgid "Weekday, full"
+msgstr "Ukedag, fullt navn"
+
+#: 
+msgid "Weekday, short"
+msgstr "Ukedag, forkortet"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "Hva betyr disse kodene?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "År, 2 sifre"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "År, 4 sifre"
+
+#: 
+msgid "am / pm"
+msgstr "fm / em"
+
+#: 
+msgid "past"
+msgstr "fortid"
 

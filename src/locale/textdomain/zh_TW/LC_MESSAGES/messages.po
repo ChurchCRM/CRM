@@ -7553,10 +7553,6 @@ msgid "Location & Contact Information"
 msgstr "地點與聯絡資訊"
 
 #: 
-msgid "New to"
-msgstr "新加入"
-
-#: 
 msgid "No locales configured"
 msgstr "未配置語言環境"
 
@@ -9271,10 +9267,6 @@ msgid "Inactive Groups"
 msgstr "非活躍小組"
 
 #: 
-msgid "Language & Localization"
-msgstr "語言與本地化"
-
-#: 
 msgid "Map"
 msgstr "地圖"
 
@@ -9780,10 +9772,6 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "連接 SMTP 伺服器以便 ChurchCRM 發送電子郵件"
 
 #: 
-msgid "Connect with others"
-msgstr "與他人聯繫"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "將個人記錄轉換為家庭單位"
 
@@ -9922,10 +9910,6 @@ msgstr "重複項目"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "每個人都可以有自己的電子郵件和手機號碼。"
-
-#: 
-msgid "Easy registration"
-msgstr "簡易註冊"
 
 #: 
 msgid "Edit Class"
@@ -10230,10 +10214,6 @@ msgstr "無效的「發送號碼」：「%s」。請包含國碼，例如 +14155
 #: 
 msgid "Invite Your Team"
 msgstr "邀請您的團隊"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "加入我們的社群並與以下保持聯繫"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10626,10 +10606,6 @@ msgid "Record why attendees visited your church"
 msgstr "記錄來訪者造訪教會的原因"
 
 #: 
-msgid "Register Your Family"
-msgstr "註冊您的家庭"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "從名單中移除全部"
 
@@ -10796,10 +10772,6 @@ msgstr "全新開始"
 #: 
 msgid "Start Over"
 msgstr "重新開始"
-
-#: 
-msgid "Stay informed"
-msgstr "保持關注"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -11088,10 +11060,6 @@ msgstr "— 選擇小組 —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— 選擇類型（可選）—"
-
-#: 
-msgid "Active Events"
-msgstr "進行中的活動"
 
 #: 
 msgid "Add Event"
@@ -14656,16 +14624,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "名稱不可超過 %d 個字元"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "需要協助？請聯絡我們"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "開啟 2 分鐘的時間窗口讓裝置在此處登錄："
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "歡迎——請登入以管理您的社群"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -16461,4 +16421,266 @@ msgstr "— 選擇國家 —"
 #: 
 msgid "— Select State —"
 msgstr "— 選擇縣/市 —"
+
+#: 
+msgid "Account options"
+msgstr "帳戶選項"
+
+#: 
+msgid "Register"
+msgstr "註冊"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "斯洛伐克文"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d個過去的事件"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "此語言的介面文字已翻譯 %d%%。"
+
+#: 
+msgid "AM / PM"
+msgstr "上午 / 下午"
+
+#: 
+msgid "Access denied"
+msgstr "存取被拒"
+
+#: 
+msgid "All times shown in"
+msgstr "所有時間顯示為"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "生日和紀念日。預設：月/日"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "無法刪除行事曆：%d 個事件仍指派至此行事曆。請先刪除或重新指派。"
+
+#: 
+msgid "Cell Phone Format"
+msgstr "手機號碼格式"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "常見格式代碼（範例：2025年3月7日 星期五 下午3:09）"
+
+#: 
+msgid "Current Events"
+msgstr "目前事件"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "日期和時間格式"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "日期和時間格式"
+
+#: 
+msgid "Date Picker Format"
+msgstr "日期選擇器格式"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "日期選擇器佔位符"
+
+#: 
+msgid "Date Without Year"
+msgstr "不含年份的日期"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "日，2位數字"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "日，無前導零"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "預設：(999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "預設：(999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "範例：\"l, j F Y\" 產生 \"Friday, 7 March 2025\"。其他字元（空格、逗號、斜線）將原樣顯示。"
+
+#: 
+msgid "Filename Date Format"
+msgstr "檔案名稱日期格式"
+
+#: 
+msgid "Fully translated."
+msgstr "已完全翻譯。"
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "日期輸入欄位中的提示文字。預設：yyyy-mm-dd"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "家庭/工作電話格式"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "12小時制，2位數字"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "12小時制，無前導零"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "24小時制，2位數字"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "包含時間元件。預設：月/日/年 時:分 上午/下午"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "語言和地區"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "語言、時區、日期和電話格式"
+
+#: 
+msgid "Localization & Formats"
+msgstr "本地化和格式"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "本地化設定儲存成功"
+
+#: 
+msgid "Long Date Format"
+msgstr "長日期格式"
+
+#: 
+msgid "Minutes"
+msgstr "分鐘"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "月份和年份"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "月，2位數字"
+
+#: 
+msgid "Month, full"
+msgstr "月，完整名稱"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "月，無前導零"
+
+#: 
+msgid "Month, short"
+msgstr "月，縮寫"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "未安裝在伺服器上 — 此區域設定的日期和數字可能無法正確格式化。請聯絡主機安裝（例如 locale-gen）。"
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "日期選擇器的 PHP 格式。預設：Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "電話號碼格式"
+
+#: 
+msgid "Phone with Extension"
+msgstr "含分機的電話"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "儲存本地化設定"
+
+#: 
+msgid "Selected Language"
+msgstr "已選語言"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "無法檢查伺服器區域設定支援（exec 已停用）。"
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "支援 — 此區域設定已安裝在伺服器上。"
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "系統語言、時區、日期/時間格式和電話號碼格式"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "這些欄位使用格式代碼（代表日期各部分的字母）。在每個欄位下方選擇預設，或使用參考資料自訂。即時預覽顯示確切效果。留空則使用系統預設值。"
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "這就是日期和電話號碼在整個系統中的顯示方式。"
+
+#: 
+msgid "Translation completeness"
+msgstr "翻譯完整性"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "此語言不支援翻譯追蹤。"
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "使用 9 作為數字佔位符（例如 (999) 999-9999）。留空則使用系統預設值。"
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "用於匯出的檔案名稱。預設：Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "用於報告和成員清單。預設：月/日/年"
+
+#: 
+msgid "Weekday, full"
+msgstr "星期幾，完整名稱"
+
+#: 
+msgid "Weekday, short"
+msgstr "星期幾，縮寫"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "這些代碼是什麼意思？"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "年，2位數字"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "年，4位數字"
+
+#: 
+msgid "am / pm"
+msgstr "上午 / 下午"
+
+#: 
+msgid "past"
+msgstr "過去"
 

@@ -109,6 +109,37 @@ declare namespace Cypress {
     ): Chainable<any>;
 
     /**
+     * Make API request as a plain authenticated user (john.plainauth, no EditSelf/EditRecords/Admin)
+     * Used for testing that read access is available to all authenticated users by default.
+     * User has Notes=1 (passes AuthMiddleware) but no edit or admin capabilities.
+     * @param method - HTTP method
+     * @param url - Request URL
+     * @param body - Request body
+     * @param expectedStatus - Expected status code (default: 200)
+     */
+    makePrivatePlainAuthAPICall(
+      method: string,
+      url: string,
+      body?: any,
+      expectedStatus?: number
+    ): Chainable<any>;
+
+    /**
+     * Make API request as an EditSelf-only user (amanda.black, family 20)
+     * Used for testing family-scope authorization (GHSA-jjcj-h3cm-p7x7)
+     * @param method - HTTP method
+     * @param url - Request URL
+     * @param body - Request body
+     * @param expectedStatus - Expected status code (default: 200)
+     */
+    makePrivateEditSelfAPICall(
+      method: string,
+      url: string,
+      body?: any,
+      expectedStatus?: number
+    ): Chainable<any>;
+
+    /**
      * Make API request with specific API key
      * @param key - API key to use
      * @param method - HTTP method

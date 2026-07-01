@@ -350,8 +350,9 @@ function NewCalendar(Request $request, Response $response, $args): Response
 
     $Calendar = new Calendar();
     $Calendar->setName($input['Name']);
-    $Calendar->setForegroundColor($fgColor);
-    $Calendar->setBackgroundColor($bgColor);
+    // Strip leading '#' — the DB column stores 6-char hex; FullCalendarEvent.php prepends '#' on read.
+    $Calendar->setForegroundColor(ltrim($fgColor, '#'));
+    $Calendar->setBackgroundColor(ltrim($bgColor, '#'));
     $Calendar->save();
 
     return SlimUtils::renderJSON($response, $Calendar->toArray());
@@ -369,12 +370,28 @@ function NewCalendar(Request $request, Response $response, $args): Response
  *         @OA\JsonContent(@OA\Property(property="success", type="boolean", example=true))
  *     ),
  *     @OA\Response(response=400, description="Missing or invalid calendar ID"),
- *     @OA\Response(response=401, description="Unauthorized")
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=409, description="Calendar still has events assigned; remove them first")
  * )
  */
 function deleteUserCalendar(Request $request, Response $response, array $args): Response
 {
-    $request->getAttribute('calendar')->delete();
+    $calendar = $request->getAttribute('calendar');
+
+    $eventCount = $calendar->countCalendarEvents();
+    if ($eventCount > 0) {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            sprintf(
+                gettext('Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first.'),
+                $eventCount
+            ),
+            [],
+            409
+        );
+    }
+
+    $calendar->delete();
 
     return SlimUtils::renderSuccessJSON($response);
 }

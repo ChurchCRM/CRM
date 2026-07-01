@@ -7413,10 +7413,6 @@ msgid "Location & Contact Information"
 msgstr "Posizione e Informazioni di Contatto"
 
 #: 
-msgid "New to"
-msgstr "Nuovo di"
-
-#: 
 msgid "No locales configured"
 msgstr "Nessuna locale configurata"
 
@@ -9136,10 +9132,6 @@ msgid "Inactive Groups"
 msgstr "Gruppi inattivi"
 
 #: 
-msgid "Language & Localization"
-msgstr "Lingua e localizzazione"
-
-#: 
 msgid "Map"
 msgstr "Mappa"
 
@@ -9646,10 +9638,6 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "Collega un server SMTP per consentire a ChurchCRM di inviare e-mail"
 
 #: 
-msgid "Connect with others"
-msgstr "Connettiti con gli altri"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "Converti schede individuali in unità familiari"
 
@@ -9788,10 +9776,6 @@ msgstr "Duplicati"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "Ogni persona può avere la propria e-mail e numero di cellulare."
-
-#: 
-msgid "Easy registration"
-msgstr "Registrazione facile"
 
 #: 
 msgid "Edit Class"
@@ -10096,10 +10080,6 @@ msgstr "«Numero mittente» non valido: «%s». Includi il prefisso internaziona
 #: 
 msgid "Invite Your Team"
 msgstr "Invita il tuo team"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "Unisciti alla nostra comunità e resta in contatto con"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10492,10 +10472,6 @@ msgid "Record why attendees visited your church"
 msgstr "Registra il motivo della visita dei partecipanti alla parrocchia"
 
 #: 
-msgid "Register Your Family"
-msgstr "Registra la tua famiglia"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "Rimuovi tutto dal carrello"
 
@@ -10662,10 +10638,6 @@ msgstr "Ricomincia da zero"
 #: 
 msgid "Start Over"
 msgstr "Ricomincia"
-
-#: 
-msgid "Stay informed"
-msgstr "Rimani informato"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -10954,10 +10926,6 @@ msgstr "— Seleziona un gruppo —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Seleziona tipo (facoltativo) —"
-
-#: 
-msgid "Active Events"
-msgstr "Eventi Attivi"
 
 #: 
 msgid "Add Event"
@@ -14523,16 +14491,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "Il nome non può superare %d caratteri"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "Hai bisogno di aiuto? Contattaci"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "Apre una finestra di 2 minuti per la registrazione dei dispositivi all'indirizzo:"
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "Benvenuto — accedi per gestire la tua comunità"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -16324,4 +16284,259 @@ msgstr "— Seleziona paese —"
 #: 
 msgid "— Select State —"
 msgstr "— Seleziona regione —"
+
+#: 
+msgid "Account options"
+msgstr "Opzioni account"
+
+#: 
+msgid "Register"
+msgstr "Registrati"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "Slovacco"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d evento passato"
+msgstr[1] "%d eventi passati"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "%d% del testo dell'interfaccia è tradotto per questa lingua."
+
+#: 
+msgid "Access denied"
+msgstr "Accesso negato"
+
+#: 
+msgid "All times shown in"
+msgstr "Tutti gli orari mostrati in"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "Compleanni e anniversari. Predefinito: d/m"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "Impossibile eliminare il calendario: %d evento/i è ancora assegnato. Rimuoverli o riassegnarli prima."
+
+#: 
+msgid "Cell Phone Format"
+msgstr "Formato telefono cellulare"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "Codici di formattazione comuni (esempi: venerdì 7 marzo 2025, 15:09)"
+
+#: 
+msgid "Current Events"
+msgstr "Eventi attuali"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "Formato data e ora"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "Formati data e ora"
+
+#: 
+msgid "Date Picker Format"
+msgstr "Formato selettore data"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "Segnaposto selettore data"
+
+#: 
+msgid "Date Without Year"
+msgstr "Data senza anno"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "Giorno, 2 cifre"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "Giorno, senza zero iniziale"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "Predefinito: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "Predefinito: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "Esempio: \"l, j F Y\" produce \"Venerdì, 7 Marzo 2025\". Qualsiasi altro carattere (spazi, virgole, barre) appare come digitato."
+
+#: 
+msgid "Filename Date Format"
+msgstr "Formato data per nome file"
+
+#: 
+msgid "Fully translated."
+msgstr "Completamente tradotto."
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "Testo suggerimento nei campi data. Predefinito: aaaa-mm-gg"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "Formato telefono casa/lavoro"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "Ora 12h, 2 cifre"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "Ora 12h, senza zero"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "Ora 24h, 2 cifre"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "Include componente orario. Predefinito: d/m/Y g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "Lingua e regione"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "Lingua, fuso orario, formati data e telefono"
+
+#: 
+msgid "Localization & Formats"
+msgstr "Localizzazione e formati"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "Impostazioni di localizzazione salvate con successo"
+
+#: 
+msgid "Long Date Format"
+msgstr "Formato data lunga"
+
+#: 
+msgid "Minutes"
+msgstr "Minuti"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "Mese e anno"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "Mese, 2 cifre"
+
+#: 
+msgid "Month, full"
+msgstr "Mese, completo"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "Mese, senza zero iniziale"
+
+#: 
+msgid "Month, short"
+msgstr "Mese, abbreviato"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "Non installato sul server — date e numeri potrebbero non formattarsi correttamente. Chiedere all'hosting di installarlo (es. locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "Formato PHP per il selettore data. Predefinito: Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "Formati numero di telefono"
+
+#: 
+msgid "Phone with Extension"
+msgstr "Telefono con interno"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Salva impostazioni di localizzazione"
+
+#: 
+msgid "Selected Language"
+msgstr "Lingua selezionata"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "Impossibile verificare il supporto delle impostazioni locali del server (exec disabilitato)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "Supportato — queste impostazioni locali sono installate sul server."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "Lingua di sistema, fuso orario, formati data/ora e formati numero di telefono"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "Questi campi usano codici di formattazione (lettere che rappresentano parti di una data). Scegliere un valore preimpostato sotto ogni campo, o crearne uno personalizzato. L'anteprima mostra esattamente come apparirà. Lasciare vuoto per usare il default di sistema."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "Ecco come appariranno le date e i numeri di telefono in tutto il sistema."
+
+#: 
+msgid "Translation completeness"
+msgstr "Completezza della traduzione"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "Il monitoraggio della traduzione non è disponibile per questa lingua."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "Usare 9 come segnaposto per le cifre (es. (999) 999-9999). Lasciare vuoto per il default di sistema."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "Usato nei nomi dei file esportati. Predefinito: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "Usato in report e liste membri. Predefinito: d/m/Y"
+
+#: 
+msgid "Weekday, full"
+msgstr "Giorno della settimana, completo"
+
+#: 
+msgid "Weekday, short"
+msgstr "Giorno della settimana, abbreviato"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "Cosa significano questi codici?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "Anno, 2 cifre"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "Anno, 4 cifre"
+
+#: 
+msgid "past"
+msgstr "passato"
 

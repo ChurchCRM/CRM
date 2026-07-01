@@ -197,6 +197,38 @@ class User extends BaseUser
     }
 
     /**
+     * Returns true if the current user may read basic metadata for any family.
+     * All authenticated users have this capability by default (read-default policy).
+     *
+     * $familyId is reserved for future row-level security (e.g. pastoral-confidentiality
+     * holds or per-family privacy flags). Pass the family ID at every call site so that
+     * adding ABAC checks later requires no call-site changes.
+     *
+     * @param int $familyId The ID of the family to potentially read
+     * @return bool True if user can read this family's record
+     */
+    public function canReadFamily(int $familyId = 0): bool
+    {
+        return true; // read is a default capability for all authenticated users
+    }
+
+    /**
+     * Returns true if the current user may read basic metadata for any person.
+     * All authenticated users have this capability by default (read-default policy).
+     *
+     * $personId is reserved for future row-level security (e.g. pastoral-confidentiality
+     * holds or per-person privacy flags). Pass the person ID at every call site so that
+     * adding ABAC checks later requires no call-site changes.
+     *
+     * @param int $personId The ID of the person to potentially read
+     * @return bool True if user can read this person's record
+     */
+    public function canReadPerson(int $personId): bool
+    {
+        return true; // read is a default capability for all authenticated users
+    }
+
+    /**
      * Check if the user can edit a specific person's record.
      * Combines role-based (EditRecords) and object-level (EditSelf + family/own) authorization.
      *
@@ -219,12 +251,36 @@ class User extends BaseUser
             }
 
             // Can edit family members (if person has a family)
-            if ($personFamilyId > 0 && $personFamilyId === $this->getPerson()->getFamId()) {
+            $person = $this->getPerson();
+            if ($person === null) {
+                return false; // orphaned user — deny access
+            }
+            if ($personFamilyId > 0 && $personFamilyId === (int) $person->getFamId()) {
                 return true;
             }
         }
 
         return false;
+    }
+
+    /**
+     * Check if the user can view/access a specific family's record.
+     * All authenticated users can read any family by default (canReadFamily()).
+     * EditSelf-only users are further restricted to their own family.
+     *
+     * @param int $familyId The ID of the family to potentially view
+     * @return bool True if user can view this family's record
+     */
+    public function canViewFamily(int $familyId): bool
+    {
+        if ($this->isEditSelfEnabled() && !$this->isAdmin() && !$this->isEditRecordsEnabled()) {
+            $person = $this->getPerson();
+            if ($person === null) {
+                return false;
+            }
+            return $familyId > 0 && $familyId === (int) $person->getFamId();
+        }
+        return true;
     }
 
     /**
@@ -542,7 +598,15 @@ class User extends BaseUser
 
     private function getDecryptedTwoFactorAuthRecoveryCodes(): array
     {
-        return explode(',', Crypto::decryptWithPassword($this->getTwoFactorAuthRecoveryCodes(), KeyManagerUtils::getTwoFASecretKey()));
+        $encrypted = $this->getTwoFactorAuthRecoveryCodes();
+        if (empty($encrypted)) {
+            return [];
+        }
+        try {
+            return explode(',', Crypto::decryptWithPassword($encrypted, KeyManagerUtils::getTwoFASecretKey()));
+        } catch (\Exception $e) {
+            return [];
+        }
     }
 
     public function disableTwoFactorAuthentication(): void
@@ -663,15 +727,24 @@ class User extends BaseUser
 
     public function isTwoFACodeValid(string $twoFACode): bool
     {
-        $google2fa = new Google2FA();
-        $window = 2;
-        $timestamp = $google2fa->verifyKeyNewer($this->getDecryptedTwoFactorAuthSecret(), $twoFACode, $this->getTwoFactorAuthLastKeyTimestamp(), $window);
-        if ($timestamp !== false) {
-            $this->setTwoFactorAuthLastKeyTimestamp($timestamp);
-            $this->save();
+        try {
+            $google2fa = new Google2FA();
+            $window = 2;
+            $timestamp = $google2fa->verifyKeyNewer(
+                $this->getDecryptedTwoFactorAuthSecret(),
+                $twoFACode,
+                $this->getTwoFactorAuthLastKeyTimestamp(),
+                $window
+            );
+            if ($timestamp !== false) {
+                $this->setTwoFactorAuthLastKeyTimestamp($timestamp);
+                $this->save();
 
-            return true;
-        } else {
+                return true;
+            }
+
+            return false;
+        } catch (\Exception $e) {
             return false;
         }
     }

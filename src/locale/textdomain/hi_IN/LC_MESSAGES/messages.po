@@ -7351,10 +7351,6 @@ msgid "Location & Contact Information"
 msgstr "स्थान और संपर्क जानकारी"
 
 #: 
-msgid "New to"
-msgstr "नया"
-
-#: 
 msgid "No locales configured"
 msgstr "कोई स्थानीयता कॉन्फ़िगर नहीं है"
 
@@ -9074,10 +9070,6 @@ msgid "Inactive Groups"
 msgstr "निष्क्रिय समूह"
 
 #: 
-msgid "Language & Localization"
-msgstr "भाषा और स्थानीयकरण"
-
-#: 
 msgid "Map"
 msgstr "नक्शा"
 
@@ -9584,10 +9576,6 @@ msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr "SMTP सर्वर कनेक्ट करें ताकि ChurchCRM ईमेल भेज सके"
 
 #: 
-msgid "Connect with others"
-msgstr "दूसरों से जुड़ें"
-
-#: 
 msgid "Convert individual records into family units"
 msgstr "व्यक्तिगत रिकॉर्ड को पारिवारिक इकाइयों में बदलें"
 
@@ -9726,10 +9714,6 @@ msgstr "डुप्लिकेट"
 #: 
 msgid "Each person can have their own email and mobile number."
 msgstr "प्रत्येक व्यक्ति का अपना ईमेल और मोबाइल नंबर हो सकता है।"
-
-#: 
-msgid "Easy registration"
-msgstr "आसान पंजीकरण"
 
 #: 
 msgid "Edit Class"
@@ -10034,10 +10018,6 @@ msgstr "अमान्य \"प्रेषक नंबर\": \"%s\"। दे
 #: 
 msgid "Invite Your Team"
 msgstr "अपनी टीम को आमंत्रित करें"
-
-#: 
-msgid "Join our community and stay connected with"
-msgstr "हमारे समुदाय से जुड़ें और जुड़े रहें"
 
 #: 
 msgid "Jump to any setup step:"
@@ -10430,10 +10410,6 @@ msgid "Record why attendees visited your church"
 msgstr "रिकॉर्ड करें कि उपस्थित लोग आपकी कलीसिया में क्यों आए"
 
 #: 
-msgid "Register Your Family"
-msgstr "अपने परिवार का पंजीकरण करें"
-
-#: 
 msgid "Remove all from Cart"
 msgstr "सूची से सभी हटाएँ"
 
@@ -10600,10 +10576,6 @@ msgstr "नए सिरे से शुरू करें"
 #: 
 msgid "Start Over"
 msgstr "फिर से शुरू करें"
-
-#: 
-msgid "Stay informed"
-msgstr "सूचित रहें"
 
 #: 
 msgid "Step 1 — Upload CSV File"
@@ -10892,10 +10864,6 @@ msgstr "— एक समूह चुनें —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— प्रकार चुनें (वैकल्पिक) —"
-
-#: 
-msgid "Active Events"
-msgstr "सक्रिय कार्यक्रम"
 
 #: 
 msgid "Add Event"
@@ -14461,16 +14429,8 @@ msgid "Name cannot be longer than %d characters"
 msgstr "नाम %d अक्षरों से अधिक लंबा नहीं हो सकता"
 
 #: 
-msgid "Need help? Contact us"
-msgstr "सहायता चाहिए? हमसे संपर्क करें"
-
-#: 
 msgid "Opens a 2-minute window for devices to register at:"
 msgstr "उपकरणों को पंजीकरण करने के लिए 2-मिनट की विंडो खोलता है:"
-
-#: 
-msgid "Welcome — sign in to manage your community"
-msgstr "स्वागत है — अपनी मण्डली प्रबंधित करने के लिए साइन इन करें"
 
 #: 
 msgid "Are you sure you want to delete this note?"
@@ -16258,4 +16218,267 @@ msgstr "— देश चुनें —"
 #: 
 msgid "— Select State —"
 msgstr "— राज्य चुनें —"
+
+#: 
+msgid "Account options"
+msgstr "खाता विकल्प"
+
+#: 
+msgid "Register"
+msgstr "पंजीकरण करें"
+
+#. Context: locales
+#: 
+msgid "Slovak"
+msgstr "स्लोवाक"
+
+#: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d पिछली घटना"
+msgstr[1] "%d पिछली घटनाएं"
+
+#: 
+msgid "%d% of interface text is translated for this language."
+msgstr "इस भाषा के लिए %d%% इंटरफ़ेस टेक्स्ट अनुवादित है।"
+
+#: 
+msgid "AM / PM"
+msgstr "पूर्वाह्न / अपराह्न"
+
+#: 
+msgid "Access denied"
+msgstr "पहुंच अस्वीकार"
+
+#: 
+msgid "All times shown in"
+msgstr "सभी समय दिखाए गए हैं"
+
+#: 
+msgid "Birthdays and anniversaries. Default: m/d"
+msgstr "जन्मदिन और वर्षगांठ। डिफ़ॉल्ट: म/दि"
+
+#: 
+msgid "Cannot delete calendar: %d event(s) are still assigned to it. Remove or reassign them first."
+msgstr "कैलेंडर हटाया नहीं जा सकता: %d ईवेंट अभी भी इसे सौंपे गए हैं। पहले उन्हें हटाएं या पुनः सौंपें।"
+
+#: 
+msgid "Cell Phone Format"
+msgstr "मोबाइल फ़ोन प्रारूप"
+
+#: 
+msgid "Common formatting codes (examples use Friday, 7 March 2025, 3:09 PM)"
+msgstr "सामान्य स्वरूपण कोड (उदाहरण: शुक्रवार, 7 मार्च 2025, अपराह्न 3:09)"
+
+#: 
+msgid "Current Events"
+msgstr "वर्तमान घटनाएं"
+
+#: 
+msgid "Date &amp; Time Format"
+msgstr "दिनांक और समय प्रारूप"
+
+#: 
+msgid "Date &amp; Time Formats"
+msgstr "दिनांक और समय प्रारूप"
+
+#: 
+msgid "Date Picker Format"
+msgstr "दिनांक चयनकर्ता प्रारूप"
+
+#: 
+msgid "Date Picker Placeholder"
+msgstr "दिनांक चयनकर्ता प्लेसहोल्डर"
+
+#: 
+msgid "Date Without Year"
+msgstr "वर्ष के बिना दिनांक"
+
+#: 
+msgid "Day, 2 digits"
+msgstr "दिन, 2 अंक"
+
+#: 
+msgid "Day, no leading zero"
+msgstr "दिन, अग्रणी शून्य के बिना"
+
+#: 
+msgid "Default: (999) 999-9999"
+msgstr "डिफ़ॉल्ट: (999) 999-9999"
+
+#: 
+msgid "Default: (999) 999-9999 x99999"
+msgstr "डिफ़ॉल्ट: (999) 999-9999 x99999"
+
+#: 
+msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
+msgstr "उदाहरण: \"l, j F Y\" से \"Friday, 7 March 2025\" बनता है। कोई भी अन्य वर्ण (रिक्त स्थान, अल्पविराम, स्लैश) जैसे टाइप किया गया वैसे दिखाई देते हैं।"
+
+#: 
+msgid "Filename Date Format"
+msgstr "फ़ाइल नाम दिनांक प्रारूप"
+
+#: 
+msgid "Fully translated."
+msgstr "पूरी तरह अनुवादित।"
+
+#: 
+msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
+msgstr "दिनांक इनपुट में दिखाई देने वाला संकेत टेक्स्ट। डिफ़ॉल्ट: yyyy-mm-dd"
+
+#: 
+msgid "Home/Work Phone Format"
+msgstr "घर/कार्य फ़ोन प्रारूप"
+
+#: 
+msgid "Hour 12h, 2 digits"
+msgstr "घंटा 12ह, 2 अंक"
+
+#: 
+msgid "Hour 12h, no zero"
+msgstr "घंटा 12ह, शून्य के बिना"
+
+#: 
+msgid "Hour 24h, 2 digits"
+msgstr "घंटा 24ह, 2 अंक"
+
+#: 
+msgid "Includes time component. Default: m/d/Y g:i a"
+msgstr "समय घटक शामिल है। डिफ़ॉल्ट: म/दि/वर्ष g:i a"
+
+#: 
+msgid "Language &amp; Region"
+msgstr "भाषा और क्षेत्र"
+
+#: 
+msgid "Language, time zone, date & phone formats"
+msgstr "भाषा, समय क्षेत्र, दिनांक और फ़ोन प्रारूप"
+
+#: 
+msgid "Localization & Formats"
+msgstr "स्थानीयकरण और प्रारूप"
+
+#: 
+msgid "Localization settings saved successfully"
+msgstr "स्थानीयकरण सेटिंग्स सफलतापूर्वक सहेजी गईं"
+
+#: 
+msgid "Long Date Format"
+msgstr "लंबा दिनांक प्रारूप"
+
+#: 
+msgid "Minutes"
+msgstr "मिनट"
+
+#: 
+msgid "Month &amp; Year"
+msgstr "महीना और वर्ष"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "महीना, 2 अंक"
+
+#: 
+msgid "Month, full"
+msgstr "महीना, पूर्ण नाम"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "महीना, अग्रणी शून्य के बिना"
+
+#: 
+msgid "Month, short"
+msgstr "महीना, संक्षिप्त"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "सर्वर पर स्थापित नहीं है — इस लोकेल के लिए दिनांक और संख्याएं सही ढंग से फ़ॉर्मेट नहीं हो सकतीं। अपने होस्ट से इसे इंस्टॉल करने के लिए कहें (जैसे locale-gen)।"
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "दिनांक चयनकर्ता के लिए PHP प्रारूप। डिफ़ॉल्ट: Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "फ़ोन नंबर प्रारूप"
+
+#: 
+msgid "Phone with Extension"
+msgstr "एक्सटेंशन सहित फ़ोन"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "स्थानीयकरण सेटिंग्स सहेजें"
+
+#: 
+msgid "Selected Language"
+msgstr "चयनित भाषा"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "सर्वर लोकेल समर्थन की जाँच नहीं की जा सकी (exec अक्षम है)।"
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "समर्थित — यह लोकेल सर्वर पर स्थापित है।"
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "सिस्टम भाषा, समय क्षेत्र, दिनांक/समय प्रारूप और फ़ोन नंबर प्रारूप"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "ये फ़ील्ड स्वरूपण कोड (दिनांक के भागों को दर्शाने वाले अक्षर) का उपयोग करते हैं। प्रत्येक फ़ील्ड के नीचे एक प्रीसेट चुनें, या संदर्भ का उपयोग करके अपना बनाएं। लाइव पूर्वावलोकन दिखाता है कि यह बिल्कुल कैसा दिखेगा। सिस्टम डिफ़ॉल्ट उपयोग करने के लिए रिक्त छोड़ें।"
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "पूरे सिस्टम में दिनांक और फ़ोन नंबर इस प्रकार दिखाई देंगे।"
+
+#: 
+msgid "Translation completeness"
+msgstr "अनुवाद पूर्णता"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "इस भाषा के लिए अनुवाद ट्रैकिंग उपलब्ध नहीं है।"
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "अंक प्लेसहोल्डर के रूप में 9 का उपयोग करें (जैसे (999) 999-9999)। सिस्टम डिफ़ॉल्ट उपयोग करने के लिए रिक्त छोड़ें।"
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "निर्यात किए गए फ़ाइल नामों में उपयोग किया जाता है। डिफ़ॉल्ट: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "रिपोर्ट और सदस्य सूचियों में उपयोग किया जाता है। डिफ़ॉल्ट: म/दि/वर्ष"
+
+#: 
+msgid "Weekday, full"
+msgstr "सप्ताह का दिन, पूर्ण"
+
+#: 
+msgid "Weekday, short"
+msgstr "सप्ताह का दिन, संक्षिप्त"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "इन कोडों का क्या अर्थ है?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "वर्ष, 2 अंक"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "वर्ष, 4 अंक"
+
+#: 
+msgid "am / pm"
+msgstr "पूर्वाह्न / अपराह्न"
+
+#: 
+msgid "past"
+msgstr "बीता हुआ"
 

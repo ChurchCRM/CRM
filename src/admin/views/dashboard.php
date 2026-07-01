@@ -201,7 +201,20 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                             </a>
                         </div>
 
-                        <!-- 2. Add Your Data -->
+                        <!-- 2. Localization & Formats -->
+                        <div class="col-md-6 col-lg-4 mb-3">
+                            <a href="<?= SystemURLs::getRootPath() ?>/admin/system/localization" class="quick-start-card">
+                                <div class="quick-start-icon bg-teal">
+                                    <i class="fa-solid fa-globe"></i>
+                                </div>
+                                <div class="quick-start-content">
+                                    <h6><?= gettext('Localization & Formats') ?></h6>
+                                    <small><?= gettext('Language, time zone, date & phone formats') ?></small>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- 3. Add Your Data -->
                         <div class="col-md-6 col-lg-4 mb-3">
                             <a href="<?= SystemURLs::getRootPath() ?>/admin/get-started" class="quick-start-card">
                                 <div class="quick-start-icon bg-success">

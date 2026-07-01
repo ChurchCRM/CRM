@@ -58,7 +58,7 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     }
 
     // GHSA-fcw7-mmfh-7vjm: Prevent IDOR - verify user has permission to view this person
-    if (!$currentUser->canEditPerson($iPersonID, $person->getFamId())) {
+    if (!$currentUser->canReadPerson($iPersonID)) {
         return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/access-denied?role=PersonView');
     }
 

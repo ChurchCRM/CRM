@@ -67,6 +67,9 @@ while ($aRow = mysqli_fetch_array($rsFunds)) {
 // Handle URL via _GET first
 if (array_key_exists('PledgeOrPayment', $_GET)) {
     $PledgeOrPayment = InputUtils::legacyFilterInput($_GET['PledgeOrPayment'], 'string');
+    if (!in_array($PledgeOrPayment, ['Pledge', 'Payment'], true)) {
+        $PledgeOrPayment = 'Pledge';
+    }
 }
 $sGroupKey = '';
 if (array_key_exists('GroupKey', $_GET)) {
@@ -515,7 +518,7 @@ require_once __DIR__ . '/Include/Header.php';
 
 ?>
 
-<form method="post" action="PledgeEditor.php?CurrentDeposit=<?= $iCurrentDeposit ?>&GroupKey=<?= $sGroupKey ?>&PledgeOrPayment=<?= $PledgeOrPayment ?>&linkBack=<?= $linkBack ?>" name="PledgeEditor">
+<form method="post" action="PledgeEditor.php?CurrentDeposit=<?= $iCurrentDeposit ?>&GroupKey=<?= InputUtils::escapeAttribute($sGroupKey) ?>&PledgeOrPayment=<?= InputUtils::escapeAttribute($PledgeOrPayment) ?>&linkBack=<?= InputUtils::escapeAttribute($linkBack) ?>" name="PledgeEditor">
 
     <!-- Mode Indicator Banner -->
     <div class="row mb-3">
