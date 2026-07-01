@@ -170,7 +170,10 @@ describe("Event Detail - Did Not Attend List", () => {
 
     it("Check-in button is hidden for past events", () => {
         cy.visit(`event/view/${pastGroupEventId}`);
-        cy.contains("a", "Check-in").should("not.exist");
+        // Use a.btn to avoid matching the sidebar nav link
+        // "Check-in and Check-out" which always appears in the
+        // navigation regardless of event state.
+        cy.contains("a.btn", "Check-in").should("not.exist");
     });
 
     it("Print button appears on the Attendance card for past group events", () => {
