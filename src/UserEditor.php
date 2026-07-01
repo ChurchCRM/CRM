@@ -153,6 +153,32 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                     $newUser->save();
 
                     $newUser->createTimeLineNote("created");
+
+                    // Save module-level security permissions (stored in userconfig_ucfg).
+                    // The user row just created; mirror the existing default-clone pattern.
+                    $securityMap = [
+                        'ucfg_AddEvent' => 'bAddEvent',
+                        'ucfg_EmailMailto' => 'bEmailMailto',
+                        'ucfg_CreateDirectory' => 'bCreateDirectory',
+                    ];
+                    foreach ($securityMap as $postKey => $cfgName) {
+                        $newPerm = isset($_POST[$postKey]) ? 'TRUE' : 'FALSE';
+                        $defaultUcfg = UserConfigQuery::create()
+                            ->filterByPeronId(0)
+                            ->filterByName($cfgName)
+                            ->findOne();
+                        if ($defaultUcfg !== null) {
+                            $ucfg = $defaultUcfg->copy();
+                            $ucfg->setPeronId((int)$iPersonID);
+                        } else {
+                            $ucfg = new UserConfig();
+                            $ucfg->setPeronId((int)$iPersonID);
+                            $ucfg->setName($cfgName);
+                        }
+                        $ucfg->setPermission($newPerm);
+                        $ucfg->save();
+                    }
+
                     if (SystemConfig::isEmailEnabled()) {
                         $email = new NewAccountEmail($newUser, $rawPassword);
                         $email->send();
@@ -195,10 +221,22 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                             ->filterByPeronId($iPersonID)
                             ->filterByName($cfgName)
                             ->findOne();
-                        if ($ucfg !== null) {
-                            $ucfg->setPermission($newPerm);
-                            $ucfg->save();
+                        if ($ucfg === null) {
+                            $defaultUcfg = UserConfigQuery::create()
+                                ->filterByPeronId(0)
+                                ->filterByName($cfgName)
+                                ->findOne();
+                            if ($defaultUcfg !== null) {
+                                $ucfg = $defaultUcfg->copy();
+                                $ucfg->setPeronId($iPersonID);
+                            } else {
+                                $ucfg = new UserConfig();
+                                $ucfg->setPeronId($iPersonID);
+                                $ucfg->setName($cfgName);
+                            }
                         }
+                        $ucfg->setPermission($newPerm);
+                        $ucfg->save();
                     }
                 } else {
                     // Set the error text for duplicate when currently existing
@@ -301,11 +339,28 @@ if (isset($_POST['save']) && ($iPersonID > 0)) {
     $new_value = $_POST['new_value'];
     $new_permission = $_POST['new_permission'];
     $type = $_POST['type'];
+
+    // Build the set of ucfg_ids for the permissions already handled by the
+    // Permissions-card checkboxes (Block 1 above) so Block 2 does not
+    // overwrite them with the UserConfig-table dropdown values.
+    $permCardNames = ['bAddEvent', 'bEmailMailto', 'bCreateDirectory'];
+    $permCardIds = [];
+    foreach (UserConfigQuery::create()->filterByPeronId(0)->filterByName($permCardNames)->find() as $pcRow) {
+        $permCardIds[] = (int) $pcRow->getId();
+    }
+
     ksort($type);
     reset($type);
     while ($current_type = current($type)) {
         // Sanitize the array key to prevent SQL injection
         $id = InputUtils::filterInt(key($type));
+
+        // These permissions are owned by the Permissions-card checkboxes saved above;
+        // skipping here prevents the table dropdown from overwriting them.
+        if (in_array($id, $permCardIds, true)) {
+            next($type);
+            continue;
+        }
         // Filter Input
         if ($current_type === 'text' || $current_type === 'textarea') {
             $value = InputUtils::legacyFilterInput($new_value[$id]);

@@ -37,24 +37,63 @@ describe("User Editor - Permission Visibility and Persistence Tests", () => {
 });
 
 describe("Admin bypass - module feature-flag checks (#8667)", () => {
+    // Capture original flag values so they can be restored after each test
+    // even if the test assertion fails.
+    let savedEventsEnabled;
+    let savedFinanceEnabled;
+
+    before(() => {
+        cy.makePrivateAdminAPICall("GET", "/admin/api/system/config/bEnabledEvents", null, 200)
+            .then((resp) => { savedEventsEnabled = resp.body.value; });
+        cy.makePrivateAdminAPICall("GET", "/admin/api/system/config/bEnabledFinance", null, 200)
+            .then((resp) => { savedFinanceEnabled = resp.body.value; });
+    });
+
+    afterEach(() => {
+        // Restore flags regardless of test outcome so other tests are not affected.
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/admin/api/system/config/bEnabledEvents",
+            { value: savedEventsEnabled ?? "1" },
+            200,
+        );
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/admin/api/system/config/bEnabledFinance",
+            { value: savedFinanceEnabled ?? "1" },
+            200,
+        );
+    });
+
     beforeEach(() => {
         cy.setupAdminSession();
     });
 
-    it("Admin should access /event/dashboard even when bEnabledEvents could be off", () => {
-        // This test verifies the admin bypass works: canViewEvents() should
-        // return true for admins regardless of the bEnabledEvents flag.
-        // The admin session set up by cy.setupAdminSession() is always admin,
-        // so this should always succeed. If this test ever fails, it means
-        // a permission check regressed to blocking admins behind a feature flag.
+    it("Admin should access /event/dashboard even when bEnabledEvents is off", () => {
+        // Explicitly disable bEnabledEvents, then assert the admin bypass works:
+        // canViewEvents() must return true for admins regardless of the flag.
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/admin/api/system/config/bEnabledEvents",
+            { value: "0" },
+            200,
+        );
         cy.visit('event/dashboard');
         cy.url().should('not.include', 'access-denied');
-        cy.contains('Events').should('exist');
+        cy.contains('Events Dashboard').should('exist');
     });
 
-    it("Admin should access /finance/ even when bEnabledFinance could be off", () => {
+    it("Admin should access /finance/ even when bEnabledFinance is off", () => {
+        // Explicitly disable bEnabledFinance, then assert the admin bypass works.
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/admin/api/system/config/bEnabledFinance",
+            { value: "0" },
+            200,
+        );
         cy.visit('finance/');
         cy.url().should('not.include', 'access-denied');
+        cy.contains('Finance Dashboard').should('exist');
     });
 });
 
