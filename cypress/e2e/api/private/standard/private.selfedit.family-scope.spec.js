@@ -18,6 +18,12 @@
  * Expected: 403 on EVERY internal endpoint. The only self-service surface for an
  * EditSelf user is the token-scoped external verify flow (/external/verify/{token}),
  * which is covered in cypress/e2e/ui/security/limited-access.spec.js.
+ *
+ * Note: avatar, nav, and photo GET endpoints use FamilyReadMiddleware (canReadFamily())
+ * instead of FamilyMiddleware (canViewFamily()), making them accessible to plain-auth
+ * users. They still return 403 here because AuthMiddleware::hasNoAdminPermissions()
+ * blocks EditSelf-exclusive users before FamilyReadMiddleware is ever reached.
+ * See private.plainauth.read-default.spec.js for 200-response coverage of those endpoints.
  */
 describe("GHSA-jjcj-h3cm-p7x7 - EditSelf is exclusive: all internal APIs return 403", () => {
     const lockedOutGets = [
@@ -29,6 +35,8 @@ describe("GHSA-jjcj-h3cm-p7x7 - EditSelf is exclusive: all internal APIs return 
         "/api/family/1/photo",
         "/api/family/20/avatar",
         "/api/family/1/avatar",
+        "/api/family/20/nav",   // low-sensitivity via FamilyReadMiddleware — still 403 (AuthMiddleware blocks first)
+        "/api/family/1/nav",
         "/api/timeline/family/20",
         "/api/timeline/family/1",
         "/api/person/99",       // OWN person record — still 403

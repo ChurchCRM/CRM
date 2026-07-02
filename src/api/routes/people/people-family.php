@@ -26,9 +26,18 @@ use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\HttpCache\Cache;
 
-// Photo and avatar routes live in the FamilyMiddleware group below so that
-// canViewFamily() authorization (GHSA-jjcj-h3cm-p7x7) is enforced centrally.
-// Routes that require FamilyMiddleware
+// ── Low-sensitivity family read endpoints ────────────────────────────────────
+// Photo, avatar, and nav are considered non-sensitive metadata. They use
+// FamilyMiddleware(false) which enforces entity existence (404 if family not
+// found) but applies the read-default baseline (canReadFamily) instead of the
+// family-scope restriction. This makes them accessible to any authenticated
+// user who has passed the hasNoAdminPermissions() check in AuthMiddleware —
+// including EditSelf+Notes users who are otherwise scoped to their own family
+// for sensitive data.
+//
+// Sensitive endpoints (full profile, geolocation, write ops, notes, timeline)
+// remain in the FamilyMiddleware::class group below which enforces canViewFamily()
+// per GHSA-jjcj-h3cm-p7x7.
 $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Get(
@@ -38,8 +47,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Binary image data"),
-     *     @OA\Response(response=403, description="Access denied"),
-     *     @OA\Response(response=404, description="No uploaded photo exists for this family")
+     *     @OA\Response(response=404, description="No uploaded photo exists for this family or family not found")
      * )
      */
     // Returns uploaded photo only - 404 if no uploaded photo
@@ -64,11 +72,11 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Avatar info object (type, url, initials, color, etc.)"),
-     *     @OA\Response(response=403, description="Access denied")
+     *     @OA\Response(response=404, description="Family not found")
      * )
      */
-    // Returns avatar info JSON for client-side rendering
-    // No cache middleware - needs to reflect immediate photo upload changes
+    // Returns avatar info JSON for client-side rendering.
+    // No cache middleware - needs to reflect immediate photo upload changes.
     $group->get('/avatar', function (Request $request, Response $response, array $args): Response {
         /** @var \ChurchCRM\model\ChurchCRM\Family $family */
         $family = $request->getAttribute('family');
@@ -76,6 +84,55 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         $avatarInfo = Photo::getAvatarInfo('Family', $family->getId());
         return SlimUtils::renderJSON($response, $avatarInfo);
     });
+
+    /**
+     * @OA\Get(
+     *     path="/family/{familyId}/nav",
+     *     summary="Get previous and next family IDs for navigation",
+     *     tags={"Families"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Navigation IDs",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="PreFamilyId", type="integer"),
+     *             @OA\Property(property="NextFamilyId", type="integer")
+     *         )
+     *     )
+     * )
+     */
+    $group->get('/nav', function (Request $request, Response $response, array $args): Response {
+        /** @var Family $family */
+        $family = $request->getAttribute('family');
+
+        $familyNav = [];
+        $familyNav['PreFamilyId'] = 0;
+        $familyNav['NextFamilyId'] = 0;
+
+        $tempFamily = FamilyQuery::create()
+            ->filterById($family->getId(), Criteria::LESS_THAN)
+            ->orderById(Criteria::DESC)->findOne();
+        if ($tempFamily) {
+            $familyNav['PreFamilyId'] = $tempFamily->getId();
+        }
+
+        $tempFamily = FamilyQuery::create()
+            ->filterById($family->getId(), Criteria::GREATER_THAN)
+            ->orderById()
+            ->findOne();
+        if ($tempFamily) {
+            $familyNav['NextFamilyId'] = $tempFamily->getId();
+        }
+
+        return SlimUtils::renderJSON($response, $familyNav);
+    });
+})->add(new FamilyMiddleware(false));
+
+// ── Sensitive / write family endpoints ───────────────────────────────────────
+// All routes here use FamilyMiddleware with enforceViewScope=true (the default),
+// which applies canViewFamily() and restricts EditSelf-scoped users to their own
+// family per GHSA-jjcj-h3cm-p7x7. Write routes additionally carry per-route
+// EditRecords / DeleteRecord middleware.
+$app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Post(
      *     path="/family/{familyId}/photo",
@@ -159,6 +216,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Family object"),
+     *     @OA\Response(response=403, description="Access denied"),
      *     @OA\Response(response=404, description="Family not found")
      * )
      */
@@ -192,47 +250,6 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         $geoLocationInfo = array_merge($familyDrivingInfo, $familyLatLong);
 
         return SlimUtils::renderJSON($response, $geoLocationInfo);
-    });
-
-    /**
-     * @OA\Get(
-     *     path="/family/{familyId}/nav",
-     *     summary="Get previous and next family IDs for navigation",
-     *     tags={"Families"},
-     *     security={{"ApiKeyAuth":{}}},
-     *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
-     *     @OA\Response(response=200, description="Navigation IDs",
-     *         @OA\JsonContent(
-     *             @OA\Property(property="PreFamilyId", type="integer"),
-     *             @OA\Property(property="NextFamilyId", type="integer")
-     *         )
-     *     )
-     * )
-     */
-    $group->get('/nav', function (Request $request, Response $response, array $args): Response {
-        /** @var Family $family */
-        $family = $request->getAttribute('family');
-
-        $familyNav = [];
-        $familyNav['PreFamilyId'] = 0;
-        $familyNav['NextFamilyId'] = 0;
-
-        $tempFamily = FamilyQuery::create()
-            ->filterById($family->getId(), Criteria::LESS_THAN)
-            ->orderById(Criteria::DESC)->findOne();
-        if ($tempFamily) {
-            $familyNav['PreFamilyId'] = $tempFamily->getId();
-        }
-
-        $tempFamily = FamilyQuery::create()
-            ->filterById($family->getId(), Criteria::GREATER_THAN)
-            ->orderById()
-            ->findOne();
-        if ($tempFamily) {
-            $familyNav['NextFamilyId'] = $tempFamily->getId();
-        }
-
-        return SlimUtils::renderJSON($response, $familyNav);
     });
 
     /**
