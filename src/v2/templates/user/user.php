@@ -5,11 +5,22 @@ use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\view\PageHeader;
 
 $sPageTitle = gettext("Settings");
 $sPageSubtitle = $user->getFullName();
 $isOwnProfile = (AuthenticationManager::getCurrentUser()->getId() === $user->getId());
 $personId = $user->getPersonId();
+$firstName = $user->getPerson() ? $user->getPerson()->getFirstName() : '';
+// $accountLabel is HTML-escaped here at construction; emit with raw <?= ?>
+$accountLabel = $isOwnProfile
+    ? gettext('My Account')
+    : ($firstName !== '' ? sprintf(gettext("%s's Account"), InputUtils::escapeHTML($firstName)) : gettext('Account'));
+if (AuthenticationManager::getCurrentUser()->isAdmin()) {
+    $sPageHeaderButtons = PageHeader::buttons([
+        ['label' => gettext('Edit'), 'url' => '/UserEditor.php?PersonID=' . $personId, 'icon' => 'fa-pencil'],
+    ]);
+}
 $photo = new Photo('Person', $personId);
 $hasUploadedPhoto = $photo->hasUploadedPhoto();
 // Append the photo file mtime as a cache-busting version token. The
@@ -36,7 +47,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <div class="card-body">
         <div class="list-group list-group-transparent" id="settingsNav">
           <a href="#tab-account" class="list-group-item list-group-item-action d-flex align-items-center active" data-bs-toggle="list">
-            <i class="ti ti-user me-2"></i><?= gettext("My Account") ?>
+            <i class="ti ti-user me-2"></i><?= $accountLabel ?>
           </a>
           <a href="#tab-appearance" class="list-group-item list-group-item-action d-flex align-items-center" data-bs-toggle="list">
             <i class="ti ti-palette me-2"></i><?= gettext("Appearance") ?>
@@ -61,7 +72,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
           <!-- =============== MY ACCOUNT =============== -->
           <div class="tab-pane active show" id="tab-account">
-            <h3 class="card-title"><?= gettext("My Account") ?></h3>
+            <h3 class="card-title"><?= $accountLabel ?></h3>
             <p class="text-body-secondary"><?= gettext("Profile and security") ?></p>
 
             <!-- Profile -->
