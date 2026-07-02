@@ -140,6 +140,19 @@ declare namespace Cypress {
     ): Chainable<any>;
 
     /**
+     * Regression sentinel: EditSelf+Notes user (user 100, Lena Black, family 20).
+     * Post-PR#9016 the user is blocked by AuthMiddleware (403). Once EditSelf
+     * exclusivity is relaxed, avatar/nav/photo should assert 200 (FamilyReadMiddleware)
+     * vs 403 (FamilyMiddleware) for a non-own family.
+     */
+    makePrivateEditSelfPlusNotesAPICall(
+      method: string,
+      url: string,
+      body?: any,
+      expectedStatus?: number
+    ): Chainable<any>;
+
+    /**
      * Make API request with specific API key
      * @param key - API key to use
      * @param method - HTTP method
