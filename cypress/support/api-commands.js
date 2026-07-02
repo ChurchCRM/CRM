@@ -91,6 +91,12 @@ Cypress.Commands.add(
                 "x-api-key": key,
             },
             body: body,
+            // Prevent the browser session cookie from being sent alongside the API key.
+            // cy.request() shares the browser cookie jar by default; sending both the
+            // session cookie and x-api-key causes PHP's AuthenticationManager to
+            // overwrite $_SESSION['AuthenticationProvider'] with APITokenAuthentication,
+            // which breaks subsequent browser page loads on the same session.
+            withCredentials: false,
         };
 
         if (typeof timeoutMs === 'number') {

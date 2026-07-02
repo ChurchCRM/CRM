@@ -60,34 +60,63 @@ class User extends BaseUser
     // ─────────────────────────────────────────────────────────────────
 
     // -- Per-user permissions (backed by user_usr columns) --
+    //
+    // EditSelf is an exclusive mode: when a non-admin user has EditSelf=1,
+    // all module permissions (AddRecords, EditRecords, …, Notes, Finance) are
+    // treated as false regardless of what is stored in the database. This
+    // ensures hasNoAdminPermissions() correctly blocks EditSelf users from
+    // the internal API surface and every consumer sees a consistent view.
+
+    private function isEditSelfExclusive(): bool
+    {
+        return !$this->isAdmin() && $this->isEditSelf();
+    }
 
     public function isAddRecordsEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || $this->isAddRecords();
     }
 
     public function isEditRecordsEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || $this->isEditRecords();
     }
 
     public function isDeleteRecordsEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || $this->isDeleteRecords();
     }
 
     public function isMenuOptionsEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || $this->isMenuOptions();
     }
 
     public function isManageGroupsEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || $this->isManageGroups();
     }
 
     public function isNotesEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || $this->isNotes();
     }
 
@@ -102,21 +131,33 @@ class User extends BaseUser
 
     public function isFinanceEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || (SystemConfig::getBooleanValue('bEnabledFinance') && $this->isFinance());
     }
 
     public function isAddEventEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || $this->isEnabledSecurity('bAddEvent');
     }
 
     public function isEmailEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || $this->isEnabledSecurity('bEmailMailto');
     }
 
     public function isCreateDirectoryEnabled(): bool
     {
+        if ($this->isEditSelfExclusive()) {
+            return false;
+        }
         return $this->isAdmin() || $this->isEnabledSecurity('bCreateDirectory');
     }
 
@@ -185,7 +226,10 @@ class User extends BaseUser
         if ($this->isAdmin()) {
             return false;
         }
-
+        if ($this->isEditSelf()) {
+            // EditSelf is exclusive — no module permissions apply
+            return true;
+        }
         return !$this->isAddRecords()
             && !$this->isEditRecords()
             && !$this->isDeleteRecords()
