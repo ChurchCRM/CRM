@@ -16506,3 +16506,8 @@ msgstr "Tahun, 4 digit"
 msgid "past"
 msgstr "lalu"
 
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Kroasia"
+

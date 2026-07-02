@@ -5187,6 +5187,20 @@ msgid "Maximum number of Calendar Events"
 msgstr "Maksimalni broj događaja u kalendaru"
 
 #: 
+msgid "%d month old"
+msgid_plural "%d months old"
+msgstr[0] "%d mjesec star"
+msgstr[1] "%d mjeseca star"
+msgstr[2] "%d mjeseci star"
+
+#: 
+msgid "%d year old"
+msgid_plural "%d years old"
+msgstr[0] "%d godinu star"
+msgstr[1] "%d godine star"
+msgstr[2] "%d godina star"
+
+#: 
 msgid "Missing PHP ZipArchive"
 msgstr "Nedostaje PHP ZipArchive"
 
@@ -5931,6 +5945,13 @@ msgid "Skipped"
 msgstr "Preskočeno"
 
 #: 
+msgid "%d event in %s"
+msgid_plural "%d events in %s"
+msgstr[0] "%d događaj u %s"
+msgstr[1] "%d događaja u %s"
+msgstr[2] "%d događaja u %s"
+
+#: 
 msgid "All Event Types"
 msgstr "Sve vrste događaja"
 
@@ -6098,6 +6119,13 @@ msgstr "npr. Nedjeljna škola, Biblijska studija..."
 #: 
 msgid "optional"
 msgstr "neobavezno"
+
+#: 
+msgid "person"
+msgid_plural "people"
+msgstr[0] "osoba"
+msgstr[1] "osobe"
+msgstr[2] "osoba"
 
 #: 
 msgid "%d Orphaned Files Detected"
@@ -7380,6 +7408,27 @@ msgid "Two-Factor Authentication"
 msgstr "Dvofaktorska autentifikacija"
 
 #: 
+msgid "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
+msgstr[0] "%d osoba dodana u košaricu."
+msgstr[1] "%d osobe dodane u košaricu."
+msgstr[2] "%d osoba dodano u košaricu."
+
+#: 
+msgid "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
+msgstr[0] "%d osoba uspješno dodana u odabranu obitelj."
+msgstr[1] "%d osobe uspješno dodane u odabranu obitelj."
+msgstr[2] "%d osoba uspješno dodano u odabranu obitelj."
+
+#: 
+msgid "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
+msgstr[0] "%d osoba uspješno dodana u odabranu skupinu."
+msgstr[1] "%d osobe uspješno dodane u odabranu skupinu."
+msgstr[2] "%d osoba uspješno dodano u odabranu skupinu."
+
+#: 
 msgid "Are you sure you want to delete"
 msgstr "Jeste li sigurni da želite obrisati"
 
@@ -7648,6 +7697,13 @@ msgid "records"
 msgstr "zapisi"
 
 #: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d osoba"
+msgstr[1] "%d osobe"
+msgstr[2] "%d osoba"
+
+#: 
 msgid "All Classifications"
 msgstr "Sve klasifikacije"
 
@@ -7850,6 +7906,13 @@ msgstr "nepodudaranje otkriveno"
 #: 
 msgid "mismatches detected"
 msgstr "nepodudaranja otkrivena"
+
+#: 
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d sat"
+msgstr[1] "%d sata"
+msgstr[2] "%d sati"
 
 #: 
 msgid "About WebDAV Backups"
@@ -8903,6 +8966,13 @@ msgstr "ili noviju za nastavak."
 #: 
 msgid "\"Why Came\" Notes"
 msgstr "Bilješke „Zašto sam došao“"
+
+#: 
+msgid "%d result for \"%s\""
+msgid_plural "%d results for \"%s\""
+msgstr[0] "%d rezultat za \"%s\""
+msgstr[1] "%d rezultata za \"%s\""
+msgstr[2] "%d rezultata za \"%s\""
 
 #: 
 msgid "(optional — leave blank to include all roles)"
@@ -12484,6 +12554,13 @@ msgid "Your current access levels (read-only)"
 msgstr "Vaše trenutne razine pristupa (samo za čitanje)"
 
 #: 
+msgid "%d repeat event created successfully."
+msgid_plural "%d repeat events created successfully."
+msgstr[0] "%d ponavljajući događaj uspješno kreiran."
+msgstr[1] "%d ponavljajuća događaja uspješno kreirana."
+msgstr[2] "%d ponavljajućih događaja uspješno kreirano."
+
+#: 
 msgid "1. Sunday School Class"
 msgstr "1. Razred nedjeljne škole"
 
@@ -15880,6 +15957,13 @@ msgid "Slovak"
 msgstr "Slovački"
 
 #: 
+msgid "%d past event"
+msgid_plural "%d past events"
+msgstr[0] "%d prošli događaj"
+msgstr[1] "%d prošla događaja"
+msgstr[2] "%d prošlih događaja"
+
+#: 
 msgid "%d% of interface text is translated for this language."
 msgstr "%d%% teksta sučelja je prevedeno za ovaj jezik."
 
@@ -16010,4 +16094,113 @@ msgstr "Minute"
 #: 
 msgid "Month &amp; Year"
 msgstr "Mesec i godina"
+
+#: 
+msgid "Month, 2 digits"
+msgstr "Mjesec, 2 znamenke"
+
+#: 
+msgid "Month, full"
+msgstr "Mjesec, puni naziv"
+
+#: 
+msgid "Month, no leading zero"
+msgstr "Mjesec, bez početne nule"
+
+#: 
+msgid "Month, short"
+msgstr "Mjesec, kratki naziv"
+
+#: 
+msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr "Nije instalirano na poslužitelju — datumi i brojevi možda neće biti ispravno oblikovani za ovu jezičnu postavku. Zamolite svog pružatelja usluge da ga instalira (npr. locale-gen)."
+
+#: 
+msgid "PHP format for date picker inputs. Default: Y-m-d"
+msgstr "PHP format za unos odabira datuma. Zadano: Y-m-d"
+
+#: 
+msgid "Phone Number Formats"
+msgstr "Formati telefonskih brojeva"
+
+#: 
+msgid "Phone with Extension"
+msgstr "Telefon s lokalnim brojem"
+
+#: 
+msgid "Save Localization Settings"
+msgstr "Spremi postavke lokalizacije"
+
+#: 
+msgid "Selected Language"
+msgstr "Odabrani jezik"
+
+#: 
+msgid "Server locale support could not be checked (exec is disabled)."
+msgstr "Podrška za jezičnu postavku poslužitelja nije mogla biti provjerena (exec je onemogućen)."
+
+#: 
+msgid "Supported — this locale is installed on the server."
+msgstr "Podržano — ova jezična postavka je instalirana na poslužitelju."
+
+#: 
+msgid "System language, time zone, date/time formats, and phone number formats"
+msgstr "Sistemski jezik, vremenska zona, formati datuma/vremena i formati telefonskih brojeva"
+
+#: 
+msgid "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default."
+msgstr "Ova polja koriste kodove za oblikovanje (slova koja predstavljaju dijelove datuma). Odaberite unaprijed postavljenu vrijednost ispod svakog polja ili izradite vlastitu koristeći referencu. Pregled uživo prikazuje točno kako će izgledati. Ostavite prazno za korištenje zadane sistemske vrijednosti."
+
+#: 
+msgid "This is how dates and phone numbers will appear throughout the system."
+msgstr "Ovako će se datumi i telefonski brojevi prikazivati diljem sustava."
+
+#: 
+msgid "Translation completeness"
+msgstr "Potpunost prijevoda"
+
+#: 
+msgid "Translation tracking is not available for this language."
+msgstr "Praćenje prijevoda nije dostupno za ovaj jezik."
+
+#: 
+msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
+msgstr "Koristite 9 kao zamjenski znak za znamenku (npr. (999) 999-9999). Ostavite prazno za korištenje zadane sistemske vrijednosti."
+
+#: 
+msgid "Used in exported file names. Default: Ymd-Gis"
+msgstr "Koristi se u imenima izvezenih datoteka. Zadano: Ymd-Gis"
+
+#: 
+msgid "Used on reports and member lists. Default: m/d/Y"
+msgstr "Koristi se u izvješćima i popisima članova. Zadano: m/d/Y"
+
+#: 
+msgid "Weekday, full"
+msgstr "Dan u tjednu, puni naziv"
+
+#: 
+msgid "Weekday, short"
+msgstr "Dan u tjednu, kratki naziv"
+
+#: 
+msgid "What do these codes mean?"
+msgstr "Što znače ovi kodovi?"
+
+#: 
+msgid "Year, 2 digits"
+msgstr "Godina, 2 znamenke"
+
+#: 
+msgid "Year, 4 digits"
+msgstr "Godina, 4 znamenke"
+
+#: 
+msgid "past"
+msgstr "prošlo"
+
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Hrvatski"
 

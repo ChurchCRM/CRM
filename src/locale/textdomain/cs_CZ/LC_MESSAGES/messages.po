@@ -16523,3 +16523,8 @@ msgstr "Rok, 4 číslice"
 msgid "past"
 msgstr "minulost"
 
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Chorvatština"
+

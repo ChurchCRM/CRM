@@ -1226,6 +1226,16 @@
     "Unexpected Person Id": "Neočekivani ID osobe",
     "Search Calendar Events": "Pretraži događaje u kalendaru",
     "Maximum number of Calendar Events": "Maksimalni broj događaja u kalendaru",
+    "%d month old": {
+        "one": "%d mjesec star",
+        "few": "%d mjeseca star",
+        "other": "%d mjeseci star"
+    },
+    "%d year old": {
+        "one": "%d godinu star",
+        "few": "%d godine star",
+        "other": "%d godina star"
+    },
     "Missing PHP ZipArchive": "Nedostaje PHP ZipArchive",
     "Add Results to Cart": "Dodaj rezultate u košaricu",
     "Remove Results from Cart": "Ukloni rezultate iz košarice",
@@ -1408,6 +1418,11 @@
     "An error occurred during demo data import": "Greška tijekom uvoza demo podataka",
     "No Payments on this Deposit": "Nema plaćanja za ovu uplatu",
     "Skipped": "Preskočeno",
+    "%d event in %s": {
+        "one": "%d događaj u %s",
+        "few": "%d događaja u %s",
+        "other": "%d događaja u %s"
+    },
     "All Event Types": "Sve vrste događaja",
     "All Types": "Sve vrste",
     "Attendance Count Categories": "Kategorije broja prisutnih",
@@ -1450,6 +1465,11 @@
     "added to this event": "dodano ovom događaju",
     "e.g., Sunday School, Bible Study...": "npr. Nedjeljna škola, Biblijska studija...",
     "optional": "neobavezno",
+    "person": {
+        "one": "osoba",
+        "few": "osobe",
+        "other": "osoba"
+    },
     "%d Orphaned Files Detected": "%d sirotih datoteka otkriveno",
     "%d files have failed integrity validation.": "%d datoteka nije prošlo provjeru integriteta.",
     "%d files will be permanently deleted.": "%d datoteka bit će trajno obrisano.",
@@ -1770,6 +1790,21 @@
     "total": "ukupno",
     "Encryption key for storing 2FA secret keys in the database": "Ključ šifriranja za pohranu tajnih ključeva 2FA u bazi podataka",
     "Two-Factor Authentication": "Dvofaktorska autentifikacija",
+    "%d Person added to the Cart.": {
+        "one": "%d osoba dodana u košaricu.",
+        "few": "%d osobe dodane u košaricu.",
+        "other": "%d osoba dodano u košaricu."
+    },
+    "%d Person successfully added to selected Family.": {
+        "one": "%d osoba uspješno dodana u odabranu obitelj.",
+        "few": "%d osobe uspješno dodane u odabranu obitelj.",
+        "other": "%d osoba uspješno dodano u odabranu obitelj."
+    },
+    "%d Person successfully added to selected Group.": {
+        "one": "%d osoba uspješno dodana u odabranu skupinu.",
+        "few": "%d osobe uspješno dodane u odabranu skupinu.",
+        "other": "%d osoba uspješno dodano u odabranu skupinu."
+    },
     "Are you sure you want to delete": "Jeste li sigurni da želite obrisati",
     "By deleting this field, you will irrevocably lose all family data assigned for this field!": "Brisanjem ovog polja nepovratno ćete izgubiti sve obiteljske podatke dodijeljene za ovo polje!",
     "By deleting this field, you will irrevocably lose all person data assigned for this field!": "Brisanjem ovog polja nepovratno ćete izgubiti sve osobne podatke dodijeljene za ovo polje!",
@@ -1836,6 +1871,11 @@
     "e.g., Visitors, Children": "npr. Posjetitelji, Djeca",
     "of pledges": "od zavjeta",
     "records": "zapisi",
+    "%d person": {
+        "one": "%d osoba",
+        "few": "%d osobe",
+        "other": "%d osoba"
+    },
     "All Classifications": "Sve klasifikacije",
     "Photo Directory": "Fotoimenik",
     "Reset Filters": "Resetiraj filtere",
@@ -1887,6 +1927,11 @@
     "Timezone mismatch detected": "Otkriveno nepodudaranje vremenske zone",
     "mismatch detected": "nepodudaranje otkriveno",
     "mismatches detected": "nepodudaranja otkrivena",
+    "%d hour": {
+        "one": "%d sat",
+        "few": "%d sata",
+        "other": "%d sati"
+    },
     "About WebDAV Backups": "O WebDAV sigurnosnim kopijama",
     "Add Link": "Dodaj vezu",
     "Add custom external links to the navigation menu.": "Dodajte prilagođene vanjske veze u navigacijski izbornik.",
@@ -2150,6 +2195,11 @@
     "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.": "Verzija vaše baze podataka je novija od instaliranog softvera. To obično znači da je softver vraćen na stariju verziju. Molim nadogradite ChurchCRM da se podudara s vašom bazom podataka.",
     "or later to continue.": "ili noviju za nastavak.",
     "\"Why Came\" Notes": "Bilješke „Zašto sam došao“",
+    "%d result for \"%s\"": {
+        "one": "%d rezultat za \"%s\"",
+        "few": "%d rezultata za \"%s\"",
+        "other": "%d rezultata za \"%s\""
+    },
     "(optional — leave blank to include all roles)": "(neobavezno — ostavite prazno za uključivanje svih uloga)",
     "A family represents a household. It holds the shared address and home phone number for all family members living together.": "Obitelj predstavlja kućanstvo. Sadrži zajedničku adresu i kućni broj telefona za sve članove obitelji koji žive zajedno.",
     "A household. Stores the shared mailing address and home phone.": "Kućanstvo. Pohranjuje zajedničku poštansku adresu i kućni telefon.",
@@ -2945,6 +2995,11 @@
     "View All": "Prikaži sve",
     "Yellow": "Žuta",
     "Your current access levels (read-only)": "Vaše trenutne razine pristupa (samo za čitanje)",
+    "%d repeat event created successfully.": {
+        "one": "%d ponavljajući događaj uspješno kreiran.",
+        "few": "%d ponavljajuća događaja uspješno kreirana.",
+        "other": "%d ponavljajućih događaja uspješno kreirano."
+    },
     "1. Sunday School Class": "1. Razred nedjeljne škole",
     "2. Event Type": "2. Vrsta događaja",
     "3. Event": "3. Događaj",
@@ -3791,6 +3846,11 @@
     "Account options": "Opcije računa",
     "Register": "Registriraj se",
     "Slovak": "Slovački",
+    "%d past event": {
+        "one": "%d prošli događaj",
+        "few": "%d prošla događaja",
+        "other": "%d prošlih događaja"
+    },
     "%d% of interface text is translated for this language.": "%d%% teksta sučelja je prevedeno za ovaj jezik.",
     "Access denied": "Pristup odbijen",
     "All times shown in": "Sva vremena prikazana u",
@@ -3823,5 +3883,32 @@
     "Localization settings saved successfully": "Postavke lokalizacije uspješno spremljene",
     "Long Date Format": "Dugi format datuma",
     "Minutes": "Minute",
-    "Month &amp; Year": "Mesec i godina"
+    "Month &amp; Year": "Mesec i godina",
+    "Month, 2 digits": "Mjesec, 2 znamenke",
+    "Month, full": "Mjesec, puni naziv",
+    "Month, no leading zero": "Mjesec, bez početne nule",
+    "Month, short": "Mjesec, kratki naziv",
+    "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen).": "Nije instalirano na poslužitelju — datumi i brojevi možda neće biti ispravno oblikovani za ovu jezičnu postavku. Zamolite svog pružatelja usluge da ga instalira (npr. locale-gen).",
+    "PHP format for date picker inputs. Default: Y-m-d": "PHP format za unos odabira datuma. Zadano: Y-m-d",
+    "Phone Number Formats": "Formati telefonskih brojeva",
+    "Phone with Extension": "Telefon s lokalnim brojem",
+    "Save Localization Settings": "Spremi postavke lokalizacije",
+    "Selected Language": "Odabrani jezik",
+    "Server locale support could not be checked (exec is disabled).": "Podrška za jezičnu postavku poslužitelja nije mogla biti provjerena (exec je onemogućen).",
+    "Supported — this locale is installed on the server.": "Podržano — ova jezična postavka je instalirana na poslužitelju.",
+    "System language, time zone, date/time formats, and phone number formats": "Sistemski jezik, vremenska zona, formati datuma/vremena i formati telefonskih brojeva",
+    "These fields use formatting codes (letters that stand for parts of a date). Pick a preset below each field, or build your own using the reference. The live preview shows exactly how it will look. Leave blank to use the system default.": "Ova polja koriste kodove za oblikovanje (slova koja predstavljaju dijelove datuma). Odaberite unaprijed postavljenu vrijednost ispod svakog polja ili izradite vlastitu koristeći referencu. Pregled uživo prikazuje točno kako će izgledati. Ostavite prazno za korištenje zadane sistemske vrijednosti.",
+    "This is how dates and phone numbers will appear throughout the system.": "Ovako će se datumi i telefonski brojevi prikazivati diljem sustava.",
+    "Translation completeness": "Potpunost prijevoda",
+    "Translation tracking is not available for this language.": "Praćenje prijevoda nije dostupno za ovaj jezik.",
+    "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default.": "Koristite 9 kao zamjenski znak za znamenku (npr. (999) 999-9999). Ostavite prazno za korištenje zadane sistemske vrijednosti.",
+    "Used in exported file names. Default: Ymd-Gis": "Koristi se u imenima izvezenih datoteka. Zadano: Ymd-Gis",
+    "Used on reports and member lists. Default: m/d/Y": "Koristi se u izvješćima i popisima članova. Zadano: m/d/Y",
+    "Weekday, full": "Dan u tjednu, puni naziv",
+    "Weekday, short": "Dan u tjednu, kratki naziv",
+    "What do these codes mean?": "Što znače ovi kodovi?",
+    "Year, 2 digits": "Godina, 2 znamenke",
+    "Year, 4 digits": "Godina, 4 znamenke",
+    "past": "prošlo",
+    "Croatian": "Hrvatski"
 }

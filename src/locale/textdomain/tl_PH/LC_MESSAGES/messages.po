@@ -16475,3 +16475,8 @@ msgstr "Taon, 4 digit"
 msgid "past"
 msgstr "nakaraan"
 
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Kroasya"
+

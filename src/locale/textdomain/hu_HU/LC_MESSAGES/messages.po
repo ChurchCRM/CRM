@@ -16557,3 +16557,8 @@ msgstr "de / du"
 msgid "past"
 msgstr "elmúlt"
 
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Horvát"
+

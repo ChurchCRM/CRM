@@ -3891,6 +3891,7 @@
         "other": "%d กิจกรรมที่ผ่านมา"
     },
     "%d% of interface text is translated for this language.": "ข้อความส่วนติดต่อผู้ใช้ถูกแปลแล้ว %d%% สำหรับภาษานี้",
+    "AM / PM": "ก่อนเที่ยง / หลังเที่ยง",
     "Access denied": "ปฏิเสธการเข้าถึง",
     "All times shown in": "เวลาทั้งหมดแสดงเป็น",
     "Birthdays and anniversaries. Default: m/d": "วันเกิดและวันครบรอบ ค่าเริ่มต้น: ด/ว",
@@ -3948,5 +3949,7 @@
     "What do these codes mean?": "รหัสเหล่านี้หมายความว่าอะไร?",
     "Year, 2 digits": "ปี, 2 หลัก",
     "Year, 4 digits": "ปี, 4 หลัก",
-    "past": "ที่ผ่านมา"
+    "am / pm": "ก่อนเที่ยง / หลังเที่ยง",
+    "past": "ที่ผ่านมา",
+    "Croatian": "โครเอเชีย"
 }
