@@ -8,7 +8,6 @@ use ChurchCRM\Slim\SlimUtils;
 use Laminas\Diactoros\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 
 /**
  * Low-sensitivity family read middleware.
@@ -49,7 +48,7 @@ class FamilyReadMiddleware extends AbstractEntityMiddleware
     }
 
     /**
-     * Load and attach the family entity; apply read-baseline authorisation only.
+     * Apply read-baseline authorisation only.
      *
      * Unlike FamilyMiddleware, this does NOT call canViewFamily() and therefore
      * never restricts EditSelf-scoped users to their own family. Access is still
@@ -59,28 +58,12 @@ class FamilyReadMiddleware extends AbstractEntityMiddleware
      * for future row-level security (e.g. pastoral-confidentiality holds). It
      * currently always returns true.
      */
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    protected function postEntityLoad(ServerRequestInterface $request, mixed $entity): ?ResponseInterface
     {
-        $response = new Response();
-        $id = SlimUtils::getRouteArgument($request, $this->getRouteParamName());
-
-        if (empty(trim($id))) {
-            return SlimUtils::renderErrorJSON($response, gettext('Missing') . ' ' . $this->getRouteParamName(), [], 412);
-        }
-
-        $entity = $this->loadEntity($id);
-
-        if (empty($entity)) {
-            return SlimUtils::renderErrorJSON($response, $this->getNotFoundMessage(), [], 404);
-        }
-
-        // Read-baseline check: uses canReadFamily() (currently always true).
-        // The real entry gate is AuthMiddleware::hasNoAdminPermissions().
         $currentUser = AuthenticationManager::getCurrentUser();
-        if (!$currentUser->canReadFamily((int) $id)) {
-            return SlimUtils::renderErrorJSON($response, gettext('Access denied'), [], 403);
+        if (!$currentUser->canReadFamily($entity->getId())) {
+            return SlimUtils::renderErrorJSON(new Response(), gettext('Access denied'), [], 403);
         }
-
-        return $handler->handle($request->withAttribute($this->getAttributeName(), $entity));
+        return null;
     }
 }
