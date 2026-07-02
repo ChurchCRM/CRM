@@ -153,7 +153,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                     $newUser->save();
 
                     // Save bAddEvent (Manage Events) permission for the new user
-                    if (User::isEventsEnabled() && array_key_exists('AddEvent', $_POST)) {
+                    if (User::isEventsEnabled() && isset($_POST['AddEvent'])) {
                         $addEventDefaultRow = UserConfigQuery::create()
                             ->filterByPeronId(0)
                             ->filterByName('bAddEvent')
@@ -163,12 +163,12 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                             $addEventUcfgNew
                                 ->setPeronId((int)$iPersonID)
                                 ->setId($addEventDefaultRow->getId())
-                                ->setName('bAddEvent')
-                                ->setValue('0')
-                                ->setType('boolean')
+                                ->setName($addEventDefaultRow->getName())
+                                ->setValue($addEventDefaultRow->getValue())
+                                ->setType($addEventDefaultRow->getType())
                                 ->setTooltip($addEventDefaultRow->getTooltip())
                                 ->setPermission('TRUE')
-                                ->setCat('SECURITY');
+                                ->setCat($addEventDefaultRow->getCat());
                             $addEventUcfgNew->save();
                         }
                     }
@@ -301,7 +301,7 @@ if (isset($_POST['save']) && ($iPersonID > 0)) {
         if ($bAddEventDefRow !== null) {
             $bAddEventUcfgId = $bAddEventDefRow->getId();
             if (array_key_exists($bAddEventUcfgId, $type)) {
-                $new_permission[$bAddEventUcfgId] = array_key_exists('AddEvent', $_POST) ? 'TRUE' : 'FALSE';
+                $new_permission[$bAddEventUcfgId] = isset($_POST['AddEvent']) ? 'TRUE' : 'FALSE';
             }
         }
     }
