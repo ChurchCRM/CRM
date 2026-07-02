@@ -152,6 +152,29 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                     $newUser->updatePassword($rawPassword);
                     $newUser->save();
 
+                    // Save bAddEvent (Manage Events) permission for the new user.
+                    // Always write an explicit row (TRUE or FALSE) so the new user never
+                    // silently inherits the shared default (PeronId=0) value.
+                    if (User::isEventsEnabled()) {
+                        $addEventDefaultRow = UserConfigQuery::create()
+                            ->filterByPeronId(0)
+                            ->filterByName('bAddEvent')
+                            ->findOne();
+                        if ($addEventDefaultRow !== null) {
+                            $addEventUcfgNew = new UserConfig();
+                            $addEventUcfgNew
+                                ->setPeronId((int)$iPersonID)
+                                ->setId($addEventDefaultRow->getId())
+                                ->setName($addEventDefaultRow->getName())
+                                ->setValue($addEventDefaultRow->getValue())
+                                ->setType($addEventDefaultRow->getType())
+                                ->setTooltip($addEventDefaultRow->getTooltip())
+                                ->setPermission(isset($_POST['AddEvent']) ? 'TRUE' : 'FALSE')
+                                ->setCat($addEventDefaultRow->getCat());
+                            $addEventUcfgNew->save();
+                        }
+                    }
+
                     $newUser->createTimeLineNote("created");
                     if (SystemConfig::isEmailEnabled()) {
                         $email = new NewAccountEmail($newUser, $rawPassword);
@@ -209,6 +232,12 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                 $usr_Notes = $user->getNotes();
                 $usr_Admin = $user->getAdmin();
                 $usr_EditSelf = $user->getEditSelf();
+                // Load bAddEvent (Manage Events) — raw ucfg permission, no admin bypass
+                $addEventUcfgRow = UserConfigQuery::create()
+                    ->filterByPeronId($iPersonID)
+                    ->filterByName('bAddEvent')
+                    ->findOne();
+                $usr_AddEvent = ($addEventUcfgRow !== null && $addEventUcfgRow->getPermission() === 'TRUE');
                 $sAction = 'edit';
             }
         } else {
@@ -231,6 +260,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
             $usr_Notes = 0;
             $usr_Admin = 0;
             $usr_EditSelf = 1;
+            $usr_AddEvent = false;
         }
 
         // New user without person selected yet
@@ -247,6 +277,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
         $usr_Notes = 0;
         $usr_Admin = 0;
         $usr_EditSelf = 1;
+        $usr_AddEvent = false;
         $sUserName = '';
         $vNewUser = 'true';
 
@@ -261,6 +292,22 @@ if (isset($_POST['save']) && ($iPersonID > 0)) {
     $new_value = $_POST['new_value'];
     $new_permission = $_POST['new_permission'];
     $type = $_POST['type'];
+
+    // When Events module is enabled, sync the Permissions card 'Manage Events' checkbox
+    // into the ucfg section so it takes precedence over the User Config table dropdown.
+    if (User::isEventsEnabled() && !empty($type)) {
+        $bAddEventDefRow = UserConfigQuery::create()
+            ->filterByPeronId(0)
+            ->filterByName('bAddEvent')
+            ->findOne();
+        if ($bAddEventDefRow !== null) {
+            $bAddEventUcfgId = $bAddEventDefRow->getId();
+            if (array_key_exists($bAddEventUcfgId, $type)) {
+                $new_permission[$bAddEventUcfgId] = isset($_POST['AddEvent']) ? 'TRUE' : 'FALSE';
+            }
+        }
+    }
+
     ksort($type);
     reset($type);
     while ($current_type = current($type)) {
@@ -445,6 +492,17 @@ require_once __DIR__ . '/Include/Header.php';
             </div>
         </div>
         <?php endforeach; ?>
+
+        <?php if (User::isEventsEnabled()): ?>
+        <div class="row mb-2 permission-row">
+            <label class="col-sm-5 col-form-label" for="AddEvent"><?= gettext('Manage Events') ?></label>
+            <div class="col-sm-7">
+                <label class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" name="AddEvent" id="AddEvent" value="1"<?= !empty($usr_AddEvent) ? ' checked' : '' ?>>
+                </label>
+            </div>
+        </div>
+        <?php endif; ?>
     </div>
     <div class="card-footer text-end">
         <a href="<?= SystemURLs::getRootPath() ?>/admin/system/users" class="btn btn-secondary me-2"><?= gettext('Cancel') ?></a>
