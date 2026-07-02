@@ -432,6 +432,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                                 <i class="<?= $inCart ? 'ti ti-trash' : 'ti ti-shopping-cart-plus' ?> me-2"></i>
                                 <span class="cart-label"><?= $inCart ? gettext('Remove from Cart') : gettext('Add to Cart') ?></span>
                             </button>
+                            <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()): ?>
                             <div class="dropdown-divider"></div>
                             <button type="button"
                                 class="dropdown-item text-danger delete-person"
@@ -439,6 +440,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                                 data-person_name="<?= InputUtils::escapeAttribute($person->getFullName()) ?>">
                                 <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
                             </button>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </td>

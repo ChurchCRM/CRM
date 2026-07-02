@@ -173,8 +173,10 @@ $canEditRecords = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(
                     <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $person->getID() ?>"><i class="fa-solid fa-pen me-2"></i><?= gettext('Edit') ?></a>
                     <?php endif; ?>
                     <button class="dropdown-item AddToCart" data-cart-id="<?= $person->getId() ?>" data-cart-type="person"><i class="fa-solid fa-cart-plus me-2"></i><?= gettext('Add to Cart') ?></button>
+                    <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()): ?>
                     <div class="dropdown-divider"></div>
                     <button class="dropdown-item text-danger delete-person" data-person_name="<?= $person->getFullName() ?>" data-person_id="<?= $person->getId() ?>" data-view="family"><i class="fa-solid fa-trash-can me-2"></i><?= gettext('Delete') ?></button>
+                    <?php endif; ?>
                 </div>
             </div>
         <?php }
