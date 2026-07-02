@@ -16,9 +16,11 @@ $firstName = $user->getPerson() ? $user->getPerson()->getFirstName() : '';
 $accountLabel = $isOwnProfile
     ? gettext('My Account')
     : ($firstName !== '' ? sprintf(gettext("%s's Account"), InputUtils::escapeHTML($firstName)) : gettext('Account'));
-$sPageHeaderButtons = PageHeader::buttons([
-    ['label' => gettext('Edit'), 'url' => '/UserEditor.php?PersonID=' . $personId, 'icon' => 'fa-pencil'],
-]);
+if (AuthenticationManager::getCurrentUser()->isAdmin()) {
+    $sPageHeaderButtons = PageHeader::buttons([
+        ['label' => gettext('Edit'), 'url' => '/UserEditor.php?PersonID=' . $personId, 'icon' => 'fa-pencil'],
+    ]);
+}
 $photo = new Photo('Person', $personId);
 $hasUploadedPhoto = $photo->hasUploadedPhoto();
 // Append the photo file mtime as a cache-busting version token. The
