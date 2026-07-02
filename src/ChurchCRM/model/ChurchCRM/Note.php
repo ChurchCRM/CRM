@@ -70,8 +70,9 @@ class Note extends BaseNote
      * Rules:
      * - Public notes are visible to all authenticated users with Notes access.
      * - The note's author always sees their own private note.
-     * - Admins (canReadPrivateNotes()) see all private notes.
-     * - Everyone else: private notes are invisible (filtered out, not 403).
+     * - Everyone else — including Admins — cannot see another user's private note
+     *   (filtered out, not 403). Admins may still delete a private note without
+     *   reading it (enforced separately in the DELETE note route).
      *
      * Note-level visibility is enforced here; Notes role access is enforced at
      * the route/middleware layer (NotesReadAuthMiddleware / NotesRoleAuthMiddleware).
@@ -85,7 +86,8 @@ class Note extends BaseNote
         if ($this->getEnteredBy() === $user->getId()) {
             return true;
         }
-        // Admins (and future canReadPrivateNotes() recipients) see all private notes
+        // Everyone else (Admins included) is denied by canReadPrivateNotes() → false.
+        // Kept as a call so a future ABAC delegate rule can grant per-record access.
         return $user->canReadPrivateNotes(
             $this->getPerId() !== 0 ? (int) $this->getPerId() : null,
             $this->getFamId() !== 0 ? (int) $this->getFamId() : null,

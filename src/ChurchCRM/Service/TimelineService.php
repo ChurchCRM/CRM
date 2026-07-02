@@ -161,10 +161,12 @@ class TimelineService
      *
      * - Public notes: visible to all authenticated users with Notes access.
      * - Private notes (author == current user): full content, edit link shown.
-     * - Private notes (Admin viewing other's note): full content, edit link shown.
-     *   (Admins can now read and edit any private note — old [Private Note] placeholder
-     *   is removed. This is a user-visible behavior change called out in the PR.)
-     * - Private notes (Notes=1 non-admin viewing other's note): omitted (return null).
+     * - Private notes (other user with Notes access viewing another's note): content
+     *   is hidden. A redacted placeholder ("Private note by {author}") is shown with
+     *   NO content and NO edit link. Admins additionally get a delete action so they
+     *   can moderate the note without reading it; non-admins get no delete link.
+     * - Private notes (plain-auth, no Notes flag): omitted entirely (return null) —
+     *   note-type items are already stripped upstream before this method is reached.
      *
      * The private badge ($item['isPrivate']) is preserved so the UI can still render
      * the "Private" chip for notes the current user can see.
@@ -173,8 +175,16 @@ class TimelineService
      */
     public function noteToTimelineItem(Note $dbNote)
     {
-        // isVisibleTo() handles: public→true, private-own→true, private-admin→true, else→false.
+        // isVisibleTo() handles: public→true, private-own→true, else→false.
         if (!$dbNote->isVisibleTo($this->currentUser)) {
+            // Private note the current user cannot read. Show a redacted placeholder
+            // ("Private note by {author}") to anyone with Notes access so they know a
+            // private note exists here; only admins receive the delete action. Users
+            // without Notes access had note items stripped upstream, so return null.
+            if ($dbNote->isPrivate() && $this->currentUser->canReadNotes()) {
+                return $this->redactedPrivateNoteItem($dbNote);
+            }
+
             return null;
         }
 
@@ -200,6 +210,38 @@ class TimelineService
         if ($dbNote->isPrivate()) {
             $item['isPrivate'] = true;
         }
+
+        return $item;
+    }
+
+    /**
+     * Build a redacted timeline item for a private note the current user may NOT read.
+     * Shows "Private note by {author}" with no content and no edit link. Admins also
+     * get the delete action so they can moderate the note without reading it; other
+     * users with Notes access see the placeholder only.
+     *
+     * @return array<string, mixed>
+     */
+    private function redactedPrivateNoteItem(Note $dbNote): array
+    {
+        $authorName = $this->resolveAuthorName($dbNote);
+        $deleteLink = $this->currentUser->isAdmin() ? 'api-delete-note-' . $dbNote->getId() : '';
+
+        $item = $this->createTimeLineItem(
+            $dbNote->getId(),
+            $dbNote->getType(),
+            $dbNote->getDisplayEditedDate(),
+            $dbNote->getDisplayEditedDate('Y'),
+            gettext('by') . ' ' . $authorName,
+            '',
+            sprintf(gettext('Private note by %s'), $authorName),
+            '',           // no edit link — content is not readable
+            $deleteLink,  // delete only for admins (moderation)
+        );
+
+        $item['key'] = $dbNote->getDisplayEditedDate('Y-m-d H:i:s') . '-' . $dbNote->getId();
+        $item['isPrivate'] = true;
+        $item['redacted']  = true;
 
         return $item;
     }

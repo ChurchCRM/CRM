@@ -105,8 +105,12 @@ if (isset($_POST['Submit'])) {
                 RedirectUtils::redirect($sBackPage ?: SystemURLs::getRootPath() . '/');
             }
 
-            // Admin can edit any note; author can edit their own note.
-            if (!$currentUser->isAdmin() && $note->getEnteredBy() !== $currentUser->getId()) {
+            // Author can edit their own note (public or private). An admin can edit
+            // any PUBLIC note, but not another user's private note — private notes are
+            // readable only by their author, so admins cannot view/edit them.
+            $isAuthor = $note->getEnteredBy() === $currentUser->getId();
+            $adminMayEdit = $currentUser->isAdmin() && !$note->getPrivate();
+            if (!$isAuthor && !$adminMayEdit) {
                 $sNoteTextError = '<br><span class="text-danger">' . gettext('You do not have permission to edit this note.') . '</span>';
                 $bErrorFlag = true;
             } else {
@@ -137,8 +141,12 @@ if (isset($_POST['Submit'])) {
         }
 
         $currentUser = AuthenticationManager::getCurrentUser();
-        // Admin can edit any note; all others can only edit their own notes.
-        if (!$currentUser->isAdmin() && $dbNote->getEnteredBy() !== $currentUser->getId()) {
+        // Author can edit their own note (public or private). An admin can edit any
+        // PUBLIC note, but not another user's private note — private notes are
+        // readable only by their author, so admins cannot open them in the editor.
+        $isAuthor = $dbNote->getEnteredBy() === $currentUser->getId();
+        $adminMayEdit = $currentUser->isAdmin() && !$dbNote->getPrivate();
+        if (!$isAuthor && !$adminMayEdit) {
             $_SESSION['sGlobalMessage'] = gettext('You do not have permission to edit this note.');
             $_SESSION['sGlobalMessageClass'] = 'danger';
             RedirectUtils::redirect($sBackPage ?: SystemURLs::getRootPath() . '/');

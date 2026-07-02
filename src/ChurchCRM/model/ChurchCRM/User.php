@@ -300,16 +300,23 @@ class User extends BaseUser
 
     /**
      * Returns true if the current user may read private notes authored by other users.
-     * Today: Admin only. Note authors always see their own private notes regardless.
      *
-     * $personId / $familyId are reserved for future ABAC extensions.
+     * Policy: a private note is readable ONLY by its author. No one else — not even
+     * an Admin — may view its content. (Admins may still delete/moderate a private
+     * note without reading it; see the DELETE note route.) Note authors always see
+     * their own private notes; that is handled in Note::isVisibleTo(), so this method
+     * governs only the "read someone else's private note" case and therefore returns
+     * false for everyone.
+     *
+     * $personId / $familyId are reserved for future ABAC extensions (e.g. a future
+     * per-record delegate granted read access to specific private notes).
      *
      * @param int|null $personId Reserved for future ABAC use
      * @param int|null $familyId Reserved for future ABAC use
      */
     public function canReadPrivateNotes(?int $personId = null, ?int $familyId = null): bool
     {
-        return $this->isAdmin();
+        return false;
     }
 
     /**

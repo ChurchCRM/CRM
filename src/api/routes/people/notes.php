@@ -100,7 +100,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
 
         $result = [];
         foreach ($notes as $note) {
-            // isVisibleTo() enforces: public→all, private→author+admin only.
+            // isVisibleTo() enforces: public→all, private→author only.
             // Notes=1 non-admin non-author users get private notes filtered out
             // (returns 200 with subset, not 403).
             if ($note->isVisibleTo($currentUser)) {
@@ -220,7 +220,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
 
         $result = [];
         foreach ($notes as $note) {
-            // isVisibleTo() enforces: public→all, private→author+admin only.
+            // isVisibleTo() enforces: public→all, private→author only.
             if ($note->isVisibleTo($currentUser)) {
                 $result[] = noteToArray($note);
             }
@@ -350,8 +350,14 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
         $note = $request->getAttribute('note');
         $currentUser = AuthenticationManager::getCurrentUser();
 
-        if (!$currentUser->isAdmin() && $note->getEnteredBy() !== $currentUser->getId()) {
-            return SlimUtils::renderErrorJSON($response, gettext('Only the note author or an admin may edit this note'), [], 403);
+        // Editing requires reading the note first, so it follows the same visibility
+        // rule: the author may edit their own note (public or private); an admin may
+        // edit any note that is visible to them (all public notes) but NOT another
+        // user's private note, which is hidden from admins under the author-only policy.
+        $isAuthor = $note->getEnteredBy() === $currentUser->getId();
+        $adminMayEdit = $currentUser->isAdmin() && !$note->isPrivate();
+        if (!$isAuthor && !$adminMayEdit) {
+            return SlimUtils::renderErrorJSON($response, gettext('You do not have permission to edit this note'), [], 403);
         }
 
         $input = (array) $request->getParsedBody();
