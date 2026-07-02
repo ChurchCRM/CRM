@@ -18,6 +18,7 @@ export default defineConfig({
     'admin.api.key': 'ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM',
     'user.api.key': 'JZJApQ9XOnF7nvupWZlTWBRrqMtHE9eNcWBTUzEWGqL4Sdqp6C',
     'nofinance.api.key': 'M_5K4ZWTdBTmMOTGTfLWCmXFbETgHNG6_6FNZXJJulicn_WweBjm',
+    'nofundraiser.api.key': 'financeNoFundraiserApiKeyForTesting12345',
     'selfedit.api.key': 'amandaBlackEditSelfOnlyApiKey12345678901',
     'selfedit.plus.notes.api.key': 'editSelfPlusNotesApiKeyForTesting12345678901',
     'plainauth.api.key': 'plainAuthReadOnlyApiKeyForTesting12345678901',

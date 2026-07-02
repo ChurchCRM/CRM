@@ -259,10 +259,10 @@ describe("API Private Fundraisers", () => {
         });
 
         it("Denies a caller without Manage Fundraisers permission", () => {
-            // The caller either lacks the ManageFundraisers role (403) or presents
-            // an API key that isn't seeded in the test DB (401). Both are treated as
-            // "access denied" for this permission gate.
-            cy.makePrivateNoFinanceAPICall(
+            // Uses a dedicated seed user (per_ID=96) who has Finance=1 but
+            // ManageFundraisers=0, proving the ManageFundraisers gate fires
+            // independently of the Finance role.
+            cy.makePrivateNoManageFundraisersAPICall(
                 "GET",
                 "/api/fundraisers",
                 null,

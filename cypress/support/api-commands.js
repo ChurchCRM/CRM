@@ -52,6 +52,22 @@ Cypress.Commands.add(
 );
 
 Cypress.Commands.add(
+    "makePrivateNoManageFundraisersAPICall",
+    (method, url, body, expectedStatus = 200, timeoutMs) => {
+        // Backed by a seed user (per_ID=96) with Finance=1 but ManageFundraisers=0.
+        // Proves the ManageFundraisers gate fires independently of the Finance role.
+        return cy.makePrivateAPICall(
+            Cypress.env("nofundraiser.api.key"),
+            method,
+            url,
+            body,
+            expectedStatus,
+            timeoutMs,
+        );
+    },
+);
+
+Cypress.Commands.add(
     "makePrivatePlainAuthAPICall",
     (method, url, body, expectedStatus = 200, timeoutMs) => {
         return cy.makePrivateAPICall(
