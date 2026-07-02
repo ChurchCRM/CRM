@@ -156,15 +156,15 @@ class TimelineService
     }
 
     /**
-     * Convert a Note ORM object to a timeline item array, applying the new
-     * visibility policy from #9036:
+     * Convert a Note ORM object to a timeline item array, applying the
+     * visibility policy from #9036 (as corrected: canReadPrivateNotes() → isAdmin()):
      *
      * - Public notes: visible to all authenticated users with Notes access.
      * - Private notes (author == current user): full content, edit link shown.
-     * - Private notes (other user with Notes access viewing another's note): content
-     *   is hidden. A redacted placeholder ("Private note by {author}") is shown with
-     *   NO content and NO edit link. Admins additionally get a delete action so they
-     *   can moderate the note without reading it; non-admins get no delete link.
+     * - Private notes (admin viewing another user's note): full content and edit
+     *   link shown (admin sees everything via canReadPrivateNotes() → isAdmin()).
+     * - Private notes (Notes=1 non-admin non-author): redacted placeholder
+     *   ("Private note by {author}") with no content and no edit/delete link.
      * - Private notes (plain-auth, no Notes flag): omitted entirely (return null) —
      *   note-type items are already stripped upstream before this method is reached.
      *

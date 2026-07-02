@@ -106,10 +106,10 @@ if (isset($_POST['Submit'])) {
             }
 
             // Author can edit their own note (public or private). An admin can edit
-            // any PUBLIC note, but not another user's private note — private notes are
-            // readable only by their author, so admins cannot view/edit them.
+            // any note, including another user's private note (admin sees full content
+            // via canReadPrivateNotes() → isAdmin()).
             $isAuthor = $note->getEnteredBy() === $currentUser->getId();
-            $adminMayEdit = $currentUser->isAdmin() && !$note->getPrivate();
+            $adminMayEdit = $currentUser->isAdmin();
             if (!$isAuthor && !$adminMayEdit) {
                 $sNoteTextError = '<br><span class="text-danger">' . gettext('You do not have permission to edit this note.') . '</span>';
                 $bErrorFlag = true;
@@ -142,10 +142,10 @@ if (isset($_POST['Submit'])) {
 
         $currentUser = AuthenticationManager::getCurrentUser();
         // Author can edit their own note (public or private). An admin can edit any
-        // PUBLIC note, but not another user's private note — private notes are
-        // readable only by their author, so admins cannot open them in the editor.
+        // note, including private notes by other users (admin sees full content via
+        // canReadPrivateNotes() → isAdmin()).
         $isAuthor = $dbNote->getEnteredBy() === $currentUser->getId();
-        $adminMayEdit = $currentUser->isAdmin() && !$dbNote->getPrivate();
+        $adminMayEdit = $currentUser->isAdmin();
         if (!$isAuthor && !$adminMayEdit) {
             $_SESSION['sGlobalMessage'] = gettext('You do not have permission to edit this note.');
             $_SESSION['sGlobalMessageClass'] = 'danger';

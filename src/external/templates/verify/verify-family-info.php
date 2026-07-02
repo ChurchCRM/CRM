@@ -36,12 +36,17 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
         <div class="card-body">
             <div class="row align-items-center">
                 <div class="col-auto">
-                            <div class="avatar avatar-lg<?= $family->getPhoto()->hasUploadedPhoto() ? ' view-family-photo' : '' ?>"<?= $family->getPhoto()->hasUploadedPhoto() ? ' data-family-id="' . $family->getId() . '"' : '' ?> data-image-entity-type="family" data-image-entity-id="<?= $family->getId() ?>">
-                        <?php if ($family->getPhoto()->hasUploadedPhoto()) { ?>
-                            <img src="data:<?= $family->getPhoto()->getPhotoContentType() ?>;base64,<?= base64_encode($family->getPhoto()->getPhotoBytes()) ?>" alt="<?= InputUtils::escapeAttribute($family->getName()) ?>" class="avatar-img">
-                            <span class="avatar-initials d-none"><?= substr($family->getName(), 0, 2) ?></span>
+                    <?php // Photos render inline as base64: this token page has no session, so the avatar API would 403. ?>
+                    <?php $familyPhoto = $family->getPhoto(); ?>
+                    <div class="avatar avatar-lg">
+                        <?php if ($familyPhoto->hasUploadedPhoto()) { ?>
+                            <?php try { ?>
+                                <img src="data:<?= $familyPhoto->getPhotoContentType() ?>;base64,<?= base64_encode($familyPhoto->getPhotoBytes()) ?>" alt="<?= InputUtils::escapeAttribute($family->getName()) ?>" class="avatar-img">
+                            <?php } catch (\Exception $e) { ?>
+                                <span class="avatar-title initials"><?= htmlspecialchars(substr($family->getName(), 0, 2), ENT_QUOTES, 'UTF-8') ?></span>
+                            <?php } ?>
                         <?php } else { ?>
-                            <span class="avatar-title initials"><?= substr($family->getName(), 0, 2) ?></span>
+                            <span class="avatar-title initials"><?= htmlspecialchars(substr($family->getName(), 0, 2), ENT_QUOTES, 'UTF-8') ?></span>
                         <?php } ?>
                     </div>
                 </div>
@@ -104,14 +109,17 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                 <div class="col-lg-4 col-md-6">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body text-center">
-                            <!-- Avatar with Initials -->
                             <div class="mb-3">
-                                <div class="avatar avatar-xlg mx-auto<?= $person->getPhoto()->hasUploadedPhoto() ? ' view-person-photo' : '' ?>"<?= $person->getPhoto()->hasUploadedPhoto() ? ' data-person-id="' . $person->getId() . '"' : '' ?> data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>">
-                                    <?php if ($person->getPhoto()->hasUploadedPhoto()) { ?>
-                                        <img src="data:<?= $person->getPhoto()->getPhotoContentType() ?>;base64,<?= base64_encode($person->getPhoto()->getPhotoBytes()) ?>" alt="<?= InputUtils::escapeAttribute($person->getFullName()) ?>" class="avatar-img">
-                                        <span class="avatar-initials d-none"><?= substr(trim($person->getFirstName() . ' ' . $person->getLastName()), 0, 2) ?></span>
+                                <?php $personPhoto = $person->getPhoto(); ?>
+                                <div class="avatar avatar-xlg mx-auto">
+                                    <?php if ($personPhoto->hasUploadedPhoto()) { ?>
+                                        <?php try { ?>
+                                            <img src="data:<?= $personPhoto->getPhotoContentType() ?>;base64,<?= base64_encode($personPhoto->getPhotoBytes()) ?>" alt="<?= InputUtils::escapeAttribute($person->getFullName()) ?>" class="avatar-img">
+                                        <?php } catch (\Exception $e) { ?>
+                                            <span class="avatar-title initials"><?= htmlspecialchars(substr(trim($person->getFirstName() . ' ' . $person->getLastName()), 0, 2), ENT_QUOTES, 'UTF-8') ?></span>
+                                        <?php } ?>
                                     <?php } else { ?>
-                                        <span class="avatar-title initials"><?= substr(trim($person->getFirstName() . ' ' . $person->getLastName()), 0, 2) ?></span>
+                                        <span class="avatar-title initials"><?= htmlspecialchars(substr(trim($person->getFirstName() . ' ' . $person->getLastName()), 0, 2), ENT_QUOTES, 'UTF-8') ?></span>
                                     <?php } ?>
                                 </div>
                             </div>

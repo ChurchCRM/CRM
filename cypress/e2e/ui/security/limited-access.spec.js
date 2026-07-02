@@ -6,8 +6,14 @@
  * Seed data: user "limited.user" (person ID 4, family 2) has
  * usr_EditSelf=1 and all other permissions=0.
  * Password: "changeme" (same as admin).
+ *
+ * The exclusive-permission invariant (EditSelf=1 → all module perms = 0) is
+ * enforced at two levels:
+ *   1. PHP model: User::isEditSelfExclusive() suppresses module perms at runtime
+ *   2. DB migration: src/mysql/upgrade/7.4.2-editself-exclusive.sql clears any
+ *      orphaned module permissions left from pre-PR-9016 installations.
  */
-describe("Limited Access User", () => {
+describe("Self-only access — EditSelf account user (limited.user)", () => {
     const limitedUser = "limited.user";
     const limitedPassword = "changeme";
 

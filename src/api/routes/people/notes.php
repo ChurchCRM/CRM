@@ -350,12 +350,11 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
         $note = $request->getAttribute('note');
         $currentUser = AuthenticationManager::getCurrentUser();
 
-        // Editing requires reading the note first, so it follows the same visibility
-        // rule: the author may edit their own note (public or private); an admin may
-        // edit any note that is visible to them (all public notes) but NOT another
-        // user's private note, which is hidden from admins under the author-only policy.
+        // Editing requires reading the note. Admins see all notes (including
+        // private) via canReadPrivateNotes() → isAdmin(), so they may edit any note.
+        // Non-admin non-authors are rejected.
         $isAuthor = $note->getEnteredBy() === $currentUser->getId();
-        $adminMayEdit = $currentUser->isAdmin() && !$note->isPrivate();
+        $adminMayEdit = $currentUser->isAdmin();
         if (!$isAuthor && !$adminMayEdit) {
             return SlimUtils::renderErrorJSON($response, gettext('You do not have permission to edit this note'), [], 403);
         }

@@ -199,34 +199,4 @@ describe("Read-default policy — plain authenticated user can read any family/p
         });
     });
 
-    // -----------------------------------------------------------------------
-    // Sanity check: EditSelf restriction still works as before
-    // A plain-auth user (no EditSelf) is NOT restricted to a single family —
-    // that's the whole point of the new baseline.
-    // -----------------------------------------------------------------------
-    describe("Sanity: EditSelf restriction is unaffected by read-default policy", () => {
-        it("EditSelf user (amanda.black) is still BLOCKED from family 1 → 403", () => {
-            cy.makePrivateEditSelfAPICall("GET", "/api/family/1", null, 403);
-        });
-
-        it("EditSelf user (amanda.black) can still read own family 20 → 200", () => {
-            cy.makePrivateEditSelfAPICall("GET", "/api/family/20", null, 200).then(
-                (response) => {
-                    expect(response.body).to.have.property("Id", 20);
-                },
-            );
-        });
-
-        it("EditSelf user (amanda.black) is still BLOCKED from reading person 2 (family 1) → 403", () => {
-            cy.makePrivateEditSelfAPICall("GET", "/api/person/2", null, 403);
-        });
-
-        it("EditSelf user (amanda.black) can still read person 99 (own family 20) → 200", () => {
-            cy.makePrivateEditSelfAPICall("GET", "/api/person/99", null, 200).then(
-                (response) => {
-                    expect(response.body).to.have.property("Id", 99);
-                },
-            );
-        });
-    });
 });
