@@ -54,7 +54,9 @@ document.addEventListener('DOMContentLoaded', function() {
   // and register before building the calendar, otherwise the toolbar buttons
   // (today / month / week / day / list) render with English defaults even
   // though the dates format correctly via the native Intl locale.
-  window.CRM.onLocalesReady(function() {
+  // Defensive fallback: if locale-loader.min.js itself failed to load,
+  // onLocalesReady will be undefined — render immediately in English.
+  function initCalendar() {
   window.CRM.fullcalendar =  new FullCalendar.Calendar(document.getElementById('calendar'), {
       headerToolbar: {
         start: 'prev,next today',
@@ -103,7 +105,12 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   window.CRM.fullcalendar.render();
-  });
+  }
+  if (typeof window.CRM.onLocalesReady === "function") {
+    window.CRM.onLocalesReady(initCalendar);
+  } else {
+    initCalendar();
+  }
 });
 </script>
 

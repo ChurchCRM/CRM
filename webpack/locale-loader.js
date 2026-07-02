@@ -216,6 +216,10 @@ async function loadLocaleFiles(localeConfig) {
       // Set flag BEFORE dispatching so synchronous event listeners see it as true
       window.CRM.localesLoaded = true;
       window.dispatchEvent(new Event("CRM.localesReady"));
+    } else {
+      // i18next unavailable (not loaded); locale files are done — unblock waiters
+      window.CRM.localesLoaded = true;
+      window.dispatchEvent(new Event("CRM.localesReady"));
     }
   } catch (error) {
     console.error("Error loading locale files:", error);
