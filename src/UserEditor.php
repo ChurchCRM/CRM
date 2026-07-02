@@ -152,8 +152,10 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                     $newUser->updatePassword($rawPassword);
                     $newUser->save();
 
-                    // Save bAddEvent (Manage Events) permission for the new user
-                    if (User::isEventsEnabled() && isset($_POST['AddEvent'])) {
+                    // Save bAddEvent (Manage Events) permission for the new user.
+                    // Always write an explicit row (TRUE or FALSE) so the new user never
+                    // silently inherits the shared default (PeronId=0) value.
+                    if (User::isEventsEnabled()) {
                         $addEventDefaultRow = UserConfigQuery::create()
                             ->filterByPeronId(0)
                             ->filterByName('bAddEvent')
@@ -167,7 +169,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                                 ->setValue($addEventDefaultRow->getValue())
                                 ->setType($addEventDefaultRow->getType())
                                 ->setTooltip($addEventDefaultRow->getTooltip())
-                                ->setPermission('TRUE')
+                                ->setPermission(isset($_POST['AddEvent']) ? 'TRUE' : 'FALSE')
                                 ->setCat($addEventDefaultRow->getCat());
                             $addEventUcfgNew->save();
                         }
