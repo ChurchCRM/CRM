@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-29 14:28+0000\n"
+"POT-Creation-Date: 2026-07-02 04:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -324,6 +324,9 @@ msgid "Access Token"
 msgstr ""
 
 msgid "Access denied"
+msgstr ""
+
+msgid "Access level"
 msgstr ""
 
 #. plugin:mailchimp:section:2:content
@@ -1643,6 +1646,9 @@ msgstr ""
 msgid "Campaigns Sent"
 msgstr ""
 
+msgid "Can only review and verify their own family. No other access."
+msgstr ""
+
 msgid "Can't delete yourself"
 msgstr ""
 
@@ -1976,6 +1982,9 @@ msgid "Choose map provider"
 msgstr ""
 
 msgid "Choose opportunities..."
+msgstr ""
+
+msgid "Choose specific permissions below."
 msgstr ""
 
 #. plugin:gravatar:section:1:content
@@ -3519,9 +3528,6 @@ msgstr ""
 msgid "Edit Records"
 msgstr ""
 
-msgid "Edit Self"
-msgstr ""
-
 msgid "Edit Settings"
 msgstr ""
 
@@ -3535,9 +3541,6 @@ msgid "Edit a category name and click Save, or use the trash icon to remove. New
 msgstr ""
 
 msgid "Edit custom properties for a group member"
-msgstr ""
-
-msgid "Edit own family only"
 msgstr ""
 
 msgid "Edit records permission"
@@ -4946,6 +4949,9 @@ msgstr ""
 msgid "Full Path"
 msgstr ""
 
+msgid "Full access — grants all privileges."
+msgstr ""
+
 msgid "Fully translated."
 msgstr ""
 
@@ -5182,7 +5188,7 @@ msgstr ""
 msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
 msgstr ""
 
-msgid "Grants all privileges"
+msgid "Grant individual permissions:"
 msgstr ""
 
 msgid "Graphic"
@@ -9557,6 +9563,9 @@ msgid "Self Verification"
 msgstr ""
 
 msgid "Self Verify"
+msgstr ""
+
+msgid "Self-service only"
 msgstr ""
 
 msgid "Sell to everyone"
