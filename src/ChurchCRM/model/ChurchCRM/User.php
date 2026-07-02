@@ -105,6 +105,11 @@ class User extends BaseUser
         return $this->isAdmin() || (SystemConfig::getBooleanValue('bEnabledFinance') && $this->isFinance());
     }
 
+    public function isManageFundraisersEnabled(): bool
+    {
+        return $this->isAdmin() || (SystemConfig::getBooleanValue('bEnabledFundraiser') && $this->isManageFundraisers());
+    }
+
     public function isAddEventEnabled(): bool
     {
         return $this->isAdmin() || $this->isEnabledSecurity('bAddEvent');
@@ -161,6 +166,7 @@ class User extends BaseUser
             'menuOptions'         => $this->isMenuOptionsEnabled(),
             'manageGroups'        => $this->isManageGroupsEnabled(),
             'finance'             => $this->isFinanceEnabled(),
+            'manageFundraisers'   => $this->isManageFundraisersEnabled(),
             'notes'               => $this->isNotesEnabled(),
             'editSelf'            => $this->isEditSelfEnabled(),
             // Module permissions (userconfig_ucfg rows)
@@ -192,6 +198,7 @@ class User extends BaseUser
             && !$this->isMenuOptions()
             && !$this->isManageGroups()
             && !$this->isFinance()
+            && !$this->isManageFundraisers()
             && !$this->isNotes();
     }
 

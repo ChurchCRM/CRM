@@ -258,11 +258,11 @@ describe("API Private Fundraisers", () => {
             });
         });
 
-        it("Denies a caller without Finance permission", () => {
-            // The no-finance API key may resolve to a user that lacks the
-            // Finance role (403) or to a key that isn't seeded at all (401).
-            // Matches the existing finance-deposits.spec.js convention.
-            cy.makePrivateNoFinanceAPICall(
+        it("Denies a caller without Manage Fundraisers permission", () => {
+            // Uses a dedicated seed user (per_ID=96) who has Finance=1 but
+            // ManageFundraisers=0, proving the ManageFundraisers gate fires
+            // independently of the Finance role.
+            cy.makePrivateNoManageFundraisersAPICall(
                 "GET",
                 "/api/fundraisers",
                 null,

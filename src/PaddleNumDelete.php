@@ -10,9 +10,9 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 
-// Security: require Delete Records + Finance permissions (GHSA-3xq9-c86x-cwpp)
+// Security: require Delete Records + Manage Fundraisers permissions (GHSA-3xq9-c86x-cwpp)
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled(), 'DeleteRecords');
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageFundraisersEnabled(), 'ManageFundraisers');
 
 // Read destructive-action inputs from the right superglobal per request method:
 // GET renders the confirmation page, POST performs the delete. Using $_REQUEST
