@@ -16602,3 +16602,8 @@ msgstr "An, 4 cifre"
 msgid "past"
 msgstr "trecut"
 
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Croată"
+

@@ -16483,3 +16483,8 @@ msgstr "Jaar, 4 cijfers"
 msgid "past"
 msgstr "verleden"
 
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Kroatisch"
+

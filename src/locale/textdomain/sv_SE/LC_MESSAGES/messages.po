@@ -16639,3 +16639,8 @@ msgstr "fm / em"
 msgid "past"
 msgstr "förfluten"
 
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "Kroatiska"
+

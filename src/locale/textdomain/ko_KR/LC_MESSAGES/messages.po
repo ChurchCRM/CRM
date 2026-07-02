@@ -16506,3 +16506,8 @@ msgstr "오전 / 오후"
 msgid "past"
 msgstr "과거"
 
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "크로아티아어"
+

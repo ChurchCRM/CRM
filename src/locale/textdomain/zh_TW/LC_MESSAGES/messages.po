@@ -16684,3 +16684,8 @@ msgstr "上午 / 下午"
 msgid "past"
 msgstr "過去"
 
+#. Context: locales
+#: 
+msgid "Croatian"
+msgstr "克羅埃西亞語"
+
