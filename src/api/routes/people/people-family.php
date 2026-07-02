@@ -17,6 +17,7 @@ use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
+use ChurchCRM\Slim\Middleware\Api\FamilyReadMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\GeoUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -28,7 +29,7 @@ use Slim\HttpCache\Cache;
 
 // ── Low-sensitivity family read endpoints ────────────────────────────────────
 // Photo, avatar, and nav are considered non-sensitive metadata. They use
-// FamilyMiddleware(false) which enforces entity existence (404 if family not
+// FamilyReadMiddleware which enforces entity existence (404 if family not
 // found) but applies the read-default baseline (canReadFamily) instead of the
 // family-scope restriction. This makes them accessible to any authenticated
 // user who has passed the hasNoAdminPermissions() check in AuthMiddleware —
@@ -36,7 +37,7 @@ use Slim\HttpCache\Cache;
 // for sensitive data.
 //
 // Sensitive endpoints (full profile, geolocation, write ops, notes, timeline)
-// remain in the FamilyMiddleware::class group below which enforces canViewFamily()
+// remain in the FamilyMiddleware group below which enforces canViewFamily()
 // per GHSA-jjcj-h3cm-p7x7.
 $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): void {
     /**
@@ -125,10 +126,10 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
 
         return SlimUtils::renderJSON($response, $familyNav);
     });
-})->add(new FamilyMiddleware(false));
+})->add(FamilyReadMiddleware::class);
 
 // ── Sensitive / write family endpoints ───────────────────────────────────────
-// All routes here use FamilyMiddleware with enforceViewScope=true (the default),
+// All routes here use FamilyMiddleware (the scope-enforcing version),
 // which applies canViewFamily() and restricts EditSelf-scoped users to their own
 // family per GHSA-jjcj-h3cm-p7x7. Write routes additionally carry per-route
 // EditRecords / DeleteRecord middleware.

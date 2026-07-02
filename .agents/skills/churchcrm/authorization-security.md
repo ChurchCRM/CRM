@@ -47,16 +47,20 @@ if (!$currentUser->canEditPerson($iPersonID, $person->getFamId())) {
 - `true` for Admin/EditRecords; EditSelf users restricted to their own family.
 - Enforced centrally in `FamilyMiddleware::process()` (overrides the base to run after entity load), so every route using `FamilyMiddleware` is scoped automatically.
 
-## Low-Sensitivity Family Read Endpoints — FamilyMiddleware(false) <!-- learned: 2026-07-02 -->
+## Low-Sensitivity Family Read Endpoints — FamilyReadMiddleware <!-- learned: 2026-07-02 -->
 
 Not all family API routes need the `canViewFamily()` scope restriction. Avatar, nav (prev/next IDs),
 and photo GET are considered non-sensitive metadata; they are accessible to any authenticated user
 who passes `hasNoAdminPermissions()` in `AuthMiddleware` (i.e. has at least Notes, EditRecords, etc.).
 
-Use `new FamilyMiddleware(false)` on a separate route group for these endpoints. The entity is still
-loaded (so nonexistent family IDs still return 404), but authorization uses `canReadFamily()` instead
-of `canViewFamily()`. This mirrors the person pattern where avatar/photo GET routes are registered
-without `PersonMiddleware` at all.
+Use a **separate `FamilyReadMiddleware` class** (not a constructor parameter on `FamilyMiddleware`)
+for these endpoints. The entity is still loaded (404 on missing family), but authorisation uses
+`canReadFamily()` instead of `canViewFamily()`. This mirrors the person pattern where avatar/photo
+GET routes are registered without `PersonMiddleware`.
+
+**Anti-pattern:** Do NOT add a constructor parameter to `FamilyMiddleware` (e.g. `new FamilyMiddleware(false)`).
+Slim 4 resolves `FamilyMiddleware::class` by calling `new FamilyMiddleware()` at request time; a
+non-injected constructor parameter causes all family routes to return 500.
 
 ```php
 // Low-sensitivity group — read baseline, no EditSelf scope restriction
@@ -64,14 +68,14 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
     $group->get('/avatar', ...);
     $group->get('/nav', ...);
     $group->get('/photo', ...)->add(new Cache(...));
-})->add(new FamilyMiddleware(false));
+})->add(FamilyReadMiddleware::class);
 
 // Sensitive group — canViewFamily() scope enforced (GHSA-jjcj-h3cm-p7x7)
 $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): void {
     $group->get('', ...);
     $group->get('/geolocation', ...);
     // write routes ...
-})->add(FamilyMiddleware::class); // default enforceViewScope=true
+})->add(FamilyMiddleware::class);
 ```
 
 Endpoints that remain fully scoped (EditSelf restricted to own family):
